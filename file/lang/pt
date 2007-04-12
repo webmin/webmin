@@ -1,0 +1,146 @@
+index_title=Administrador de Ficheiros
+index_nojava=Este módulo requer java para funcionar, mas o seu navegador não suporta java
+
+top_open=Abrir
+top_view=Ver
+top_edit=Editar
+top_refresh=Refrescar
+top_info=Informações
+top_delete=Apagar
+top_new=Novo
+top_upload=Carregar
+top_rename=Renomear
+top_copy=Copiar
+top_cut=Cortar
+top_paste=Colar
+
+right_name=Nome
+right_size=Tamanho
+right_user=Utilizador
+right_group=Grupo
+right_date=Data
+
+edit_enormal=Apenas ficheiros normais podem ser editados
+edit_title=A editar $1
+edit_title2=A criar ficheiro
+edit_filename=Nome do ficheiro:
+edit_eover=$1 não pode ser sobrescrito
+edit_esave=Erro ao guardar ficheiro : $1
+edit_eaccess=Você não está autorizado para guardar '$1'
+
+info_file=Ficheiro
+info_path=Caminho:
+info_type=Tipo:
+info_size=Tamanho:
+info_mod=Modificado:
+info_link=Enlace com:
+info_perms=Permissões
+info_user=Utilizador:
+info_group=Grupo:
+info_other=Outro:
+info_sticky=Restrição:
+info_sticky2=Apenas os proprietários podem apagar ficheiros
+info_own=Propriedade
+info_setuid=Colocar UID:
+info_setuid2=Executar como utilizador
+info_setgid=Colocar GID:
+info_setgid2=Ficheiros herdados do grupo
+info_setgid3=Executar como grupo
+info_apply=Aplicar alterações a
+info_apply1=Este directório apenas
+info_apply2=Este directório e os seus ficheiros
+info_apply3=Este directório e todos os subdirectórios
+info_efailed=Erro ao actualizar $1 : $2
+info_read=Leitura
+info_write=Escrita
+info_list=Lista
+info_exec=Execução
+
+delete_dtitle=Apagar directório
+delete_ftitle=Apagar ficheiro
+delete_ddesc=Tem a certeza que quer permanentemente apagar o directório $1 e todo o seu conteúdo?
+delete_fdesc=Tem a certeza que quer apagar permanentemente o ficheiro $1 ?
+delete_efailed=Erro ao apagar $1 : $2
+
+mkdir_title=Novo Directório
+mkdir_dir=Novo directório:
+mkdir_eexists=$1 já existe
+mkdir_efailed=Erro na criação de directório : $1
+mkdir_eaccess=Você não está autorizado para criar '$1'
+
+link_title=Criar Enlace
+link_from=Enlace de:
+link_to=Enlace com:
+link_eexists=$1 já existe
+link_efailed=Erro no enlace : $1
+link_efrom=Você não está autorizado para criar enlaces de '$1'
+link_efollow=Você não está autorizado para criar enlaces simbólicos
+
+rename_title=Renomear $1
+rename_old=Nome antigo:
+rename_new=Nome novo:
+rename_ok=Renomear
+rename_eexists=Já existe um ficheiro denominado $1
+rename_efailed=Erro na renomeação : $1
+rename_eold=Você não está autorizado para renomear '$1'
+rename_enew=Você não está autorizado para renomear para '$1'
+
+file_type0=Directório
+file_type1=Ficheiro de texto
+file_type2=Ficheiro de imagem
+file_type3=Ficheiro binário
+file_type4=Ficheiro
+file_type5=Enlace simbólico
+file_type6=Ficheiro de dispositivo
+file_type7=Tubo
+
+view_enormal=Apenas ficheiros normais podem ser vistos
+view_eaccess=Você não está autorizado para aceder a $1
+view_eopen=Erro ao abrir $1 : $2
+
+paste_ecopy=Tem de cortar ou copiar primeiro antes de colar
+paste_egone=O ficheiro cpoiado $1 já não existe
+paste_eover=$1 não pode ser sobrescrito
+paste_eself=Não pode colar um ficheiro sobre si mesmo
+paste_emfailed=Erro ao mover : $1
+paste_ecfailed=Erro ao copiar : $1
+
+upload_efailed=Erro ao abrir ficheiro carregado : $1
+upload_title=Carregar Ficheiro
+upload_file=Ficheiro paa carregar
+upload_dir=Carregar para o directório
+upload_ok=Carregar
+upload_conv=Converter linhas de DOS?
+upload_efile=Não foram seleccionados ficheiros para carregar.
+upload_edir=Directório de carga não existe.
+upload_eperm=Você não está autorizado para criar $1
+upload_ewrite=Erro ao escrever para $1 : $2.
+
+find_eaccess=Você não está autorizado para aceder a $1
+find_eexist=$1 não existe em $2
+find_edir=$1 não é um directório de $2
+
+cancel=Cancelar
+
+chmod_eaccess=Você não está autorizado para aceder a '$1'
+chmod_euser=$1 : não existe tal utilizador
+chmod_egroup=$1 : não existe tal grupo
+chmod_elink=erro no enlace simbólico : $1
+chmod_echown=erro na alteração de proprietário : $1
+chmod_echmod=erro na alteração de permissões : $1
+
+copy_efrom=Você não está autorizado para copiar de '$1'
+copy_eto=Você não está autorizado para copiar para '$1'
+copy_elink=erro no enlace simbólico : $1
+
+delete_eaccess=Você não está autorizado para apagar '$1'
+
+list_eaccess=Você não está autorizado para aceder a este directório
+
+move_eto=Você não está autorizado para mover para '$1'
+move_afrom=Você não está autorizado para mover '$1'
+
+acl_user=Aceder a ficheiros no servidor como utilizador
+acl_umask=Máscara de utilizador para novos ficheiros
+acl_follow=Seguir sempre enlaces simbólicos?
+acl_dirs=Apenas permitir acesso a directórios

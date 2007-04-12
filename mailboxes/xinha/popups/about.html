@@ -1,0 +1,296 @@
+<!--
+
+(c) dynarch.com, 2003-2004
+Author: Mihai Bazon, http://dynarch.com/mishoo
+Distributed as part of HTMLArea 3.0
+
+"You are not expected to understand this...  I don't neither."
+
+                      (from The Linux Kernel Source Code,
+                            ./arch/x86_64/ia32/ptrace.c:90)
+
+;-)
+
+-->
+
+<html style="height: 100%">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>About Xinha</title>
+<script type="text/javascript" src="popup.js"></script>
+<script type="text/javascript">
+window.resizeTo(450, 250);
+var TABS = [];
+var CURRENT_TAB = 0;
+var CONTENT_HEIGHT_DIFF = 0;
+var CONTENT_WIDTH_DIFF = 0;
+function selectTab(idx) {
+  var ct = TABS[CURRENT_TAB];
+  ct.className = ct.className.replace(/\s*tab-current\s*/, ' ');
+  ct = TABS[CURRENT_TAB = idx];
+  ct.className += ' tab-current';
+  for (var i = TABS.length; --i >= 0;) {
+    var area = document.getElementById("tab-area-" + i);
+    if (CURRENT_TAB == i) {
+      area.style.display = "block";
+    } else {
+      area.style.display = "none";
+    }
+  }
+  document.body.style.visibility = "hidden";
+  document.body.style.visibility = "visible";
+  document.cookie = "HTMLAREA-ABOUT-TAB=" + idx;
+}
+var editor = null;
+function initDocument() {
+  editor = window.dialogArguments;
+  Xinha = window.opener.Xinha;
+
+  var plugins = document.getElementById("plugins");
+  var j = 0;
+  var html = "<table width='99%' cellpadding='2' cellspacing=2 style='margin-top: 1em; collapse-borders: collapse; border: 1px solid black;'>" +
+    "<thead><tr>" +
+    "<td>Name</td>" +
+    "<td>Developer</td>" +
+    "<td>Sponsored by</td>" +
+    "<td>License</td>" +
+    "</tr></thead><tbody>";
+  for (var i in editor.plugins) {
+    var info = editor.plugins[i];
+    if (typeof info != 'object' || !info.name || typeof info.name !='string')   continue;
+    html += "<tr><td>" + info.name + " v" + info.version + "</td>" +
+            "<td><a href='" + info.developer_url + "' target='_blank' title='Visit developer website'>" +
+      info.developer + "</a></td>" +
+      "<td><a href='" + info.sponsor_url + "' target='_blank' title='Visit sponsor website'>" +
+      info.sponsor + "</a></td>" +
+      "<td>" + info.license + "</td></tr>";
+    ++j;
+  }
+
+  if (j) {
+          html += "</tbody></table>" +
+      "<p>License \"htmlArea\" means that the plugin is distributed under the same terms " +
+      "as Xinha itself.</p>";
+    plugins.innerHTML = "<p>The following plugins have been loaded.</p>" + html;
+  } else {
+    plugins.innerHTML = "<p>No plugins have been loaded</p>";
+  }
+
+  plugins.innerHTML += "<p>User agent reports:<br/>" + navigator.userAgent + "</p>";
+
+  var content = document.getElementById("content");
+  if (window.innerHeight) {
+    CONTENT_HEIGHT_DIFF = window.innerHeight - 250;
+    CONTENT_WIDTH_DIFF = window.innerWidth - content.offsetWidth;
+  } else {
+    CONTENT_HEIGHT_DIFF = document.body.offsetHeight - 250;
+    CONTENT_WIDTH_DIFF = document.body.offsetWidth - 400;
+  }
+  window.onresize();
+  var bar = document.getElementById("tabbar");
+  j = 0;
+  for (var i = bar.firstChild; i; i = i.nextSibling) {
+    TABS.push(i);
+    i.__msh_tab = j;
+    i.onmousedown = function(ev) { selectTab(this.__msh_tab); Xinha._stopEvent(ev || window.event); };
+    var area = document.getElementById("tab-area-" + j);
+    if (/tab-current/.test(i.className)) {
+      CURRENT_TAB = j;
+      area.style.display = "block";
+    } else {
+      area.style.display = "none";
+    }
+    ++j;
+  }
+  if (document.cookie.match(/HTMLAREA-ABOUT-TAB=([0-9]+)/))
+    selectTab(RegExp.$1);
+}
+window.onresize = function() {
+  var content = document.getElementById("content");
+  if (window.innerHeight) {
+    content.style.height = (window.innerHeight - CONTENT_HEIGHT_DIFF) + "px";
+    content.style.width = (window.innerWidth - CONTENT_WIDTH_DIFF) + "px";
+  } else {
+    content.style.height = (document.body.offsetHeight - CONTENT_HEIGHT_DIFF) + "px";
+    //content.style.width = (document.body.offsetWidth - CONTENT_WIDTH_DIFF) + "px";
+  }
+}
+</script>
+<style>
+  html,body,textarea,table
+  { font-family: helvetica,arial,sans-serif;
+    font-size: 11px; padding: 0px; margin: 0px;
+  }
+
+  body { padding: 0px; background: #f5f6f6; color: black; }
+  a:link, a:visited { color: #00f; }
+  a:hover           { color: #f00; }
+  a:active          { color: #f80; }
+  button            { font: 11px; border-width: 1px; background-color:#f5f6f6; color:black; }
+
+  p { margin: 0.5em 0px; }
+
+  #tdheader h1
+  { font: bold 40px "Staccato222 BT", cursive; margin: 0px; padding-left:4px; border-bottom: 1px solid #6a6; }
+  h1 { font: bold 20px; margin: 0px; border-bottom: 1px solid #6a6; }
+  h2 { font: bold 110%; margin: 0.7em 0px; }
+
+  thead {
+    font-weight: bold;
+    background-color: #CCC;
+  }
+
+  thead td { padding-left:4px; }
+
+  .buttons {
+    text-align: right; padding: 3px;
+    background-color: white;
+    border-top: 1px solid #555;
+  }
+
+  #tabbar {
+    position: relative;
+    left: 10px;
+  }
+  .tab {
+    color: #OOO;
+    cursor: pointer;
+    margin-left: -5px;
+    float: left; position: relative;
+    border: 1px solid #555;
+    top: -3px; left: -2px;
+    padding: 2px 10px 3px 10px;
+    border-top: none; background-color: #CCC;
+    -moz-border-radius: 0px 0px 4px 4px;
+    z-index: 0;
+  }
+  .tab-current
+  {
+    color: #000;
+    top: -4px;
+    background-color: #f5f6f6;
+    padding: 3px 10px 4px 10px;
+    z-index: 10;
+  }
+
+  li, ol, ul { margin-top: 0px; margin-bottom: 0px; }
+</style></head>
+<body onload="__dlg_init(); initDocument();"
+><table cellspacing="0" cellpadding="0" style="border-collapse: collapse;
+      width: 100%; height: 100%;">
+
+<tr style="height: 1em"><td id="tdheader">
+
+<h1><img src="../images/xinha_logo.gif" alt="Xinha" /></h1>
+
+</td></tr>
+<tr><td id="tdcontent" style="padding: 0.5em;">
+
+<div style="overflow: auto; height: 250px;" id="content">
+<div id="tab-areas">
+
+<div id="tab-area-0">
+
+  <p>A free WYSIWYG editor replacement for <tt>&lt;textarea&gt;</tt> fields.</p>
+  <p>Visit the <a href="http://xinha.gogo.co.nz/">Xinha Website</a> for more information.</p>
+
+  <p>
+   Use of Xinha is granted by the terms of the htmlArea License (based on BSD license)
+  </p>
+  <p>
+    Xinha was originally based on work by Mihai Bazon which is:
+  </p>
+  <blockquote><pre>Copyright (c) 2003-2004 dynarch.com.
+    Copyright (c) 2002-2003 interactivetools.com, inc.
+    This copyright notice MUST stay intact for use.</pre></blockquote>
+
+</div>
+
+<div id="tab-area-1">
+
+  <p>
+   The development of Xinha would not have been possible without the original work of <a href="http://dynarch.com/">Mihai Bazon</a>, <a href="http://interactivetools.com" target="_blank">InteractiveTools.com</a>, and the many sponsors and contributors from around the world.
+  </p>
+
+</div>
+
+<div id="tab-area-2">
+<pre>htmlArea License (based on BSD license)
+Copyright (c) 2002-2004, interactivetools.com, inc.
+Copyright (c) 2003-2004 dynarch.com
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1) Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+2) Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3) Neither the name of interactivetools.com, inc. nor the names of its
+   contributors may be used to endorse or promote products derived from this
+   software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.</pre>
+</div>
+
+<div id="tab-area-3">
+<div id="plugins">
+</div>
+</div>
+
+
+<div id="tab-area-4">
+  <script type="text/javascript">
+    if(window.opener && window.opener.Xinha)
+    {
+      var ver = window.opener.Xinha.version;
+      document.write('<pre>'
+                      + '\nRelease: ' + ver.Release + ' (' + ver.Date + ')'
+                      + '\nHead: ' + ver.Head
+                      + '\nRevision: ' + ver.Revision
+                      + '\nLast Changed By: ' + ver.RevisionBy
+                      + '\n' +
+                      '</pre>');
+    }
+    else
+    {
+      document.write('<pre>Version information unavailable.</pre>');
+    }
+  </script>
+</div>
+
+</div></div>
+
+
+</td></tr>
+<tr style="height: 1em"><td id="tdfooter">
+
+
+<div class="buttons">
+<div id="tabbar"
+><div class="tab tab-current"
+>About</div><div class="tab"
+>Thanks</div><div class="tab"
+>License</div><div class="tab"
+>Plugins</div><div class="tab"
+>Version</div></div>
+<button type="button" onclick="__dlg_close(null);">Close</button>
+</div>
+
+</td></tr></table>
+
+</body></html>

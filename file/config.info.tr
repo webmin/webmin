@@ -1,0 +1,4 @@
+hide_dot_files=Nokta ile baþlayan dosyalar gösterilsin mi?,1,0-Evet,1-Hayýr
+iconsize=Araç çubuðundaki butonlarýn boyutu,1,1-Küçük,0-Geniþ ve etiketli
+nocharset=Uygun karakter seti kullanýlmaya çalýþýlsýn mý?,1,0-Evet,1-Hayýr
+extract=JAR'daki .class dosyalarý açýlsýn mý?,1,1-Evet,0-Hayýr

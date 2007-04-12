@@ -1,0 +1,229 @@
+index_title=Gestionnaire de Fichier
+index_nojava=Ce module nécessite que java soit en fonction, mais votre fureteur ne le supporte pas
+switch_euser=L'utilisateur Unix n'existe pas !
+
+top_open=Ouvrir
+top_view=Voir
+top_edit=Éditer
+top_refresh=Rafraîchir
+top_info=Information
+top_delete=Supprimer
+top_new=Nouveau
+top_upload=Envoyer
+top_rename=Renommer
+top_copy=Copier
+top_cut=Couper
+top_paste=Coller
+top_share=Partage
+top_search=Trouver
+
+right_name=Nom
+right_size=Taille
+right_user=Usager
+right_group=Groupe
+right_date=Date
+
+edit_enormal=Seulement les fichiers normaux peuvent être éditer
+edit_title=Éditer '$1'
+edit_title2=Créer un fichier
+edit_filename=Nom de fichier:
+edit_eover='$1' ne peut être écrit par-dessus
+edit_esave=Impossible d'ouvrir le fichier '$1'
+edit_eaccess=Vous n'êtes pas autorisé à sauver '$1'
+
+info_file=Fichier
+info_path=Chemin:
+info_type=Type:
+info_size=Taille:
+info_mod=Modifié:
+info_link=Liens vers:
+info_perms=Permissions
+info_user=Usager:
+info_group=Groupe:
+info_other=Autre:
+info_sticky=Collant:
+info_sticky2=Seulement son propriétaire peut effacer un fichier
+info_own=Propriétaire
+info_setuid=SUID:
+info_setuid2=Exécuter comme usager
+info_setgid=SGID:
+info_setgid2=Les fichiers hérite du groupe
+info_setgid3=Exécuter comme groupe
+info_apply=Appliquer les changements à
+info_apply1=Ce répertoire seulement
+info_apply2=Ce répertoire et à ses fichiers
+info_apply3=Ce répertoire et tout ses sous-répertoires
+info_efailed=Impossible de mettre à jour '$1' : $2
+info_read=Lire
+info_write=Écrire
+info_list=Lister
+info_exec=Exécuter
+
+delete_dtitle=Supprimer un répertoire
+delete_ftitle=Supprimer un fichier
+delete_ddesc=Vous êtes sur que vous voulez supprimer définitivement le répertoire '$1' et tout son contenu?
+delete_fdesc=Vous êtes sur que vous voulez supprimer définitivement le fichier $1?
+delete_efailed=Impossible de supprimer '$1' : $2
+
+mkdir_title=Nouveau Répertoire
+mkdir_dir=Nouveau répertoire:
+mkdir_eexists='$1' existe déjà
+mkdir_efailed=Impossible de créer le répertoire : $1
+mkdir_eaccess=Vous n'êtes pas autorisé à créer '$1'
+
+link_title=Créer un Lien Symbolique
+link_from=Lien de:
+link_to=Lien vers:
+link_eexists='$1' Existe déjà
+link_efailed=Impossible de faire le lien symbolique '$1'
+link_efrom=Vous n'êtes pas autorisé à créer aucun lien symbolique de '$1'
+link_efollow=Vous n'êtes pas autorisé à créer aucun lien symbolique
+
+rename_title=Renommer '$1'
+rename_old=Ancien nom:
+rename_new=Nouveau nom:
+rename_ok=Renommer
+rename_eexists=Un fichier appelé '$1' existe déjà
+rename_efailed=Impossible de renommer '$1'
+rename_eold=Vous n'êtes pas autorisé à renommer '$1'
+rename_enew=Vous n'êtes pas autorisé à renommer pour '$1'
+
+file_type0=Répertoire
+file_type1=Fichier texte
+file_type2=Fichier image
+file_type3=Fichier binaire
+file_type4=Fichier
+file_type5=Lien symbolique
+file_type6=Fichier de périphérique
+file_type7=Tuyau
+
+view_enormal=Seulement un fichier normal peut être visionné
+view_eaccess=Vous n'êtes pas autorisé d'accéder à '$1'
+view_eopen=Impossible d'ouvrir '$1' : $2
+
+paste_ecopy=Vous devez copier ou couper avant de coller
+paste_egone=Le fichier copié '$1' n'existe plus
+paste_eover='$1' ne peut être écrasé
+paste_eself=Vous ne pouvez coller un fichier par-dessus lui-même
+paste_emfailed=Impossible de déplacer '$1'
+paste_ecfailed=Impossible de copier '$1'
+
+over_title=Le fichier existe
+over_msg=Le fichier $1 existe déjà. Utiliser le champ ci-dessous pour entrer un nouveau fichier pour le fichier collé.
+over_new=Nouveau nom de fichier::
+over_ok=Ok
+
+upload_efailed=Impossible d'ouvrir l'envoie '$1'
+upload_title=Envoie de Fichier
+upload_file=Fichier à envoyer
+upload_dir=Envoyer dans un répertoire
+upload_ok=Envoie
+upload_conv=Convertir les retours de chariot en format DOS?
+upload_efile=Aucun fichier n'ont été sélectionné pour envoyer.
+upload_edir=Le répertoire d'envoi n'existe pas.
+upload_eperm=Vous n'êtes pas autorisé à créer '$1'
+upload_ewrite=Impossible d'écrire dans '$1' : $2
+
+find_eaccess=Vous n'êtes pas autorisé d'accéder à '$1'
+find_eexist='$1' n'existe pas dans '$2'
+find_edir='$1' n'est pas un répertoire dans '$2'
+
+cancel=Annuler
+
+chmod_eaccess=Vous n'êtes pas autorisé d'accéder à '$1'
+chmod_euser=$1 : usager inexistant
+chmod_egroup=$1 : groupe inexistant
+chmod_elink=lien symbolique impossible : $1
+chmod_echown=Impossible de changer de propriétaire : $1
+chmod_echmod=Impossible de changer de permission : $1
+
+copy_efrom=Vous n'êtes pas autorisé à copier de '$1'
+copy_eto=Vous n'êtes pas autorisé à copier vers '$1'
+copy_elink=lien symbolique impossible : $1
+
+delete_eaccess=Vous n'êtes pas autorisé à supprimer '$1'
+
+list_eaccess=Vous n'êtes pas autorisé d'accéder ce répertoire
+list_edir=Echec du listage de $1 : $2
+
+move_eto=Vous n'êtes pas autorisé à déplacer vers '$1'
+move_afrom=Vous n'êtes pas autorisé à déplacer '$1'
+
+acl_user=Accéder au système de fichier en étant un usager
+acl_user_def=Pareil que le login Webmin
+acl_umask=Démasquer tout nouveau fichier
+acl_follow=Toujours suivre les liens symboliques?
+acl_dirs=Seulement accès aux répertoires
+acl_home=Inclure le répertoire personnel de l'utilisateur Webmin
+
+share_title=Partage
+share_samba=Windows
+share_nfs=NFS
+share_son=Partage de fichiers Windows activé
+share_soff=Partage de fichiers Windows désactivé
+share_writable=En écriture ?
+share_available=Actuellement disponible ?
+share_sheader=Options de partage
+share_only=Seulement
+share_guest=Accès Invité ?
+share_comment=Commentaire
+share_nheader=Options d'export NFS
+share_non=Partage de fichiers NFS activé
+share_noff=Partage de fichiers NFS désactivé
+share_desc=Description
+share_ro=Machines en lecture seule
+share_rw=Machines en lecture/écriture
+share_root=Machines avec accès root
+share_none=Aucune
+share_all=Toutes
+share_listed=Listées ...
+share_host=Machines
+share_opts=Options
+share_s0=Ne faire confiance à personne
+share_s1=Faire confiance aux non-root
+share_s2=Faire confiance à tout le monde
+share_lro=Lecture seule
+share_lrw=Lecture-écriture
+
+log_create_export=Export NFS $1 créé
+log_modify_export=Export NFS $1 modifié
+log_delete_export=Export NFS $1 supprimé
+log_create_share=Ressource partagée Samba $1 créée
+log_modify_share=Ressource partagée Samba $1 modifiée
+log_delete_share=Ressource partagée Samba $1 supprimée
+log_save=Fichier $1 sauvé
+log_chmod=Permissions modifiées sur le fichier $1
+log_mkdir=Répertoire $1 créé
+log_upload=Fichier $1 téléchargé
+log_link=Lien symbolique de $1 vers $2 créé
+log_relink=Lien symbolique de $1 vers $2 modifié
+log_copy=Lien symbolique de $1 vers $2 copié
+log_move=Fichier renommé de $1 en $2
+log_delete=Fichier $1 supprimé
+
+search_eaccess=Vous n'avez pas le droit de chercher dans ce répertoire
+search_title=Trouver des fichiers
+search_ok=Chercher maintenant
+search_dir=Répertoire de recherche
+search_match=Pour les fichiers correspondant à
+search_user=Possédé par utilisateur
+search_group=Possédé par groupe
+search_any=N'importe
+search_type=Type de fichier
+search_types_=N'importe
+search_types_f=Fichier
+search_types_d=Répertoire
+search_types_l=Lien symbolique
+search_types_p=Tube nommé
+search_size=Taille de fichier
+search_more=Plus de
+search_less=Moins de
+search_xdev=Chercher au-delà des points de montage ?
+search_edir=Répertoire de recherche manquant ou invalide
+search_ematch=Expression rationnelle manquante
+search_euser=Nom d'utilisateur manquant
+search_egroup=Nom de groupe manquant
+search_esize=La taille de fichier doit être un entier
+search_crit=Critères de recherche
+search_list=Résultats de la recherche
+

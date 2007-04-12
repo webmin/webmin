@@ -1,0 +1,197 @@
+index_title=檔案管理者
+index_nojava=這個模組需要 Java 才能正確的運作, 但是您的瀏覽器似乎不支援 Java
+
+top_ret=返回
+top_config=設定
+top_down=下載
+top_open=開啟
+top_view=檢視
+top_edit=編輯
+top_refresh=重讀
+top_info=資訊
+top_search=搜尋
+top_delete=刪除
+top_new=新增
+top_upload=上傳
+top_rename=改名
+top_copy=複製
+top_cut=剪下
+top_paste=貼上
+
+right_name=名稱
+right_size=大小
+right_user=使用者
+right_group=群組
+right_date=日期
+
+edit_enormal=只能編輯一般的檔案
+edit_title=編輯 $1 中
+edit_title2=建立檔案中
+edit_filename=檔案名稱:
+edit_goto=前往
+edit_find=尋找
+edit_gotoline=前往的列數
+edit_replace=取代
+edit_all=全部取代
+edit_searchfor=尋找內容
+edit_replaceby=取代成為
+edit_eover=$1 無法被覆蓋
+edit_esave=無法儲存檔案 : $1
+edit_eaccess=您不被允許儲存 '$1'
+edit_efollow=您不被允許寫入符號連結 '$1'
+edit_notfound=找不到這個 $1 文件
+edit_saveclose=儲存並關閉
+edit_elength=檔案被截斷！
+
+info_file=檔案
+info_path=路徑:
+info_type=類別:
+info_size=大小:
+info_mod=修改時間:
+info_link=連結到:
+info_perms=權限
+info_user=使用者:
+info_group=群組:
+info_other=其他:
+info_sticky=設定位元:
+info_sticky2=只有擁有者才能刪除檔案
+info_own=所有權
+info_setuid=設定 UID:
+info_setuid2=以使用者權限執行
+info_setgid=設定 GID:
+info_setgid2=檔案繼承群組
+info_setgid3=以群組權限執行
+info_apply=套用變更到
+info_apply1=只有這個目錄
+info_apply2=這個目錄與其中的檔案
+info_apply3=這個目錄與所有的子目錄
+info_efailed=無法重讀 $1 : $2
+info_read=讀取
+info_write=寫入
+info_list=列出
+info_exec=執行
+
+search_eaccess=您不被允許搜尋這個目錄
+search_title=搜尋檔案
+search_ok=搜尋
+search_dir=搜尋目錄
+search_match=符合的檔案名稱
+search_user=擁有的使用者
+search_group=擁有的群組
+search_any=任意
+search_type=檔案的類型
+search_types_=任意
+search_types_f=檔案
+search_types_d=目錄
+search_types_l=符號連結(Symbolic link)
+search_types_p=具名管道(Named pipe)
+search_size=檔案大小
+search_more=超過
+search_less=小於
+search_xdev=Search past mounts?
+search_edir=未找到或無效的搜尋目錄
+search_ematch=未找到符合的 regexp
+search_euser=未找到使用者名稱
+search_egroup=未找到群組名稱
+search_esize=檔案的大小必須是整數
+search_crit=搜尋條件
+search_list=搜尋結果
+
+delete_dtitle=刪除目錄
+delete_ftitle=刪除檔案
+delete_mtitle=刪除多個檔案
+delete_ddesc=您確定要永久的刪除目錄 $1 與其所有內容嗎？
+delete_fdesc=您確定要永久的刪除檔案 $1 嗎？
+delete_mdesc=您確定要永久的刪除這些檔案和目錄嗎？ :
+delete_efailed=無法刪除 $1 : $2
+
+mkdir_title=新增目錄
+mkdir_dir=目錄:
+mkdir_eexists=$1 已經存在
+mkdir_efailed=建立目錄失敗 : $1
+mkdir_eaccess=您不被允許建立 '$1'
+
+link_title=建立連結
+link_from=連結自:
+link_to=連結到:
+link_eexists=$1 已經存在
+link_efailed=連結失敗 : $1
+link_efrom=您不被允許連結 '$1'
+link_efollow=您不被允許建立符號連結
+
+rename_title=變更名稱 $1
+rename_old=舊檔名:
+rename_new=變更為:
+rename_ok=改名
+rename_eexists=叫做 $1 的檔案已經存在
+rename_efailed=改名失敗 : $1
+rename_eold=您不被允許改名自 '$1'
+rename_enew=您不被允許改名成 '$1'
+
+file_type0=目錄
+file_type1=文字檔
+file_type2=影像檔
+file_type3=二進位檔
+file_type4=檔案
+file_type5=符號連結
+file_type6=設備控制檔
+file_type7=管線
+
+view_enormal=只有一般的檔案可以被檢視
+view_eaccess=您不被允許存取 $1
+view_eopen=無法開啟n $1 : $2
+
+paste_ecopy=在您貼上要先剪下或複製
+paste_egone=複製的檔案 $1 已經不存在
+paste_eover=$1 無法被蓋寫
+paste_eself=您不能把檔案貼到本身上
+paste_emfailed=移動失敗 : $1
+paste_ecfailed=拷貝失敗 : $1
+
+upload_efailed=開啟上傳失敗 : $1
+upload_title=上傳檔案
+upload_file=要上傳的檔案
+upload_dir=上傳到目錄
+upload_ok=上傳
+upload_conv=是否要改變 DOS 的換行符號?
+upload_efile=沒有選擇要上傳的檔案.
+upload_edir=上傳的目錄不存在.
+upload_eperm=您不被允許建立 $1
+upload_ewrite=無法寫入到 $1 : $2.
+upload_already=檔案 $1 已經存在，您確定要覆蓋它嗎？
+upload_elink=無法上傳符號連結
+upload_zip=要解壓縮 ZIP 或 TAR 的檔案嗎？
+upload_yes=是的，然後刪除
+
+
+find_eaccess=您不被允許存取 $1
+find_eexist=$1 不存在於 $2
+find_edir=$1 不是一個目錄在 $2
+
+cancel=取消
+close=關閉
+eopen=下載失敗：$1
+
+chmod_eaccess=您不被允許存取 '$1'
+chmod_euser=$1 : 沒有這個使用者
+chmod_egroup=$1 : 沒有這個群組
+chmod_elink=符號連結失敗d : $1
+chmod_echown=變更擁有者失敗 : $1
+chmod_echmod=變更權限失敗 : $1
+
+copy_efrom=您不被允許拷貝自 '$1'
+copy_eto=您不被允許拷貝到 '$1'
+copy_elink=符號連結失敗 : $1
+
+delete_eaccess=您不被允許刪除 '$1'
+
+list_eaccess=您不被允許存取這個目錄
+
+move_eto=您不被允許移動到 '$1'
+move_afrom=您不被允許移動自 '$1'
+
+acl_user=以使用者權限存取伺服器上的檔案
+acl_umask=建立檔案的遮罩
+acl_follow=是否跟隨符號連結?
+acl_dirs=只允許存取到目錄
+

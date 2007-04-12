@@ -1,0 +1,226 @@
+index_title=ファイル マネージャ
+index_nojava=このモジュールは動作するのに Java を必要としますが、ご使用のブラウザは Java をサポートしていません
+
+top_open=開く
+top_view=表示
+top_edit=編集
+top_refresh=更新
+top_info=情報
+top_delete=削除
+top_new=新規
+top_upload=アップロード
+top_rename=名称変更
+top_copy=コピー
+top_cut=カット
+top_paste=ペースト
+top_share=共有
+top_search=検索
+
+right_name=ファイル名
+right_size=サイズ
+right_user=ユーザ
+right_group=グループ
+right_date=日時
+
+edit_enormal=標準ファイルのみ編集できます
+edit_title=$1 を編集中
+edit_title2=ファイルを作成中
+edit_filename=ファイル名:
+edit_eover=$1 は上書きできません
+edit_esave=ファイルを保存できませんでした: $1
+edit_eaccess='$1' を保存できません
+
+info_file=ファイル
+info_path=パス:
+info_type=種類:
+info_size=サイズ:
+info_mod=変更:
+info_link=リンク先:
+info_perms=許可
+info_user=ユーザ:
+info_group=グループ:
+info_other=その他:
+info_sticky=スティッキー:
+info_sticky2=所有者のみがファイルを削除できます
+info_own=所有権
+info_setuid=setuid (ユーザ ID を設定):
+info_setuid2=次のユーザとして実行
+info_setgid=setgid (グループ ID を設定):
+info_setgid2=ファイルの継承グループ
+info_setgid3=次のグループとして実行
+info_apply=変更を適用
+info_apply1=このディレクトリのみ
+info_apply2=このディレクトリとそこに含まれているファイル
+info_apply3=このディレクトリとすべてのサブディレクトリ
+info_efailed=$1 を更新できませんでした: $2
+info_read=読取り
+info_write=書込み
+info_list=リスト
+info_exec=実行
+
+delete_dtitle=ディレクトリの削除
+delete_ftitle=ファイルの削除
+delete_ddesc=ディレクトリ $1 とその内容を永久に削除してもよろしいですか？
+delete_fdesc=ユーザ $1を永久に削除してもよろしいですか？
+delete_efailed=$1 を削除できませんでした: $2
+
+mkdir_title=新規のディレクトリ
+mkdir_dir=新規のディレクトリ:
+mkdir_eexists=$1 はすでに存在します
+mkdir_efailed=ディレクトリを作成できませんでした: $1
+mkdir_eaccess='$1' を作成できません
+
+link_title=リンクの作成
+link_from=リンク元:
+link_to=リンク先:
+link_eexists=$1 はすでに存在します
+link_efailed=リンクできませんでした: $1
+link_efrom='$1' からリンクできません
+link_efollow=シンボリック リンクを作成できません
+
+rename_title=$1 の名称変更
+rename_old=古い名前:
+rename_new=新しい名前:
+rename_ok=名称変更
+rename_eexists=$1 というファイルはすでに存在しています
+rename_efailed=名前を変更できませんでした: $1
+rename_eold='$1' の名前を変更できません
+rename_enew='$1' の名前を変更できません
+
+file_type0=ディレクトリ
+file_type1=テキスト ファイル
+file_type2=画像ファイル
+file_type3=バイナリ ファイル
+file_type4=ファイル
+file_type5=シンボリック リンク
+file_type6=デバイス ファイル
+file_type7=パイプ
+
+view_enormal=標準ファイルのみ表示できます
+view_eaccess=$1 にアクセスできません
+view_eopen=$1 を開けませんでした: $2
+
+paste_ecopy=ペーストする前にカットまたはコピーしてください
+paste_egone=コピーしたファイル $1 はもう存在しません
+paste_eover=$1 は上書きできません
+paste_eself=ファイルをそのファイル自身にペーストすることはできません
+paste_emfailed=移動できませんでした: $1
+paste_ecfailed=コピーできませんでした: $1
+
+over_title=既存のファイル
+over_msg=ファイル $1 はすでに存在します。ペーストされたファイルの新規ファイル名を下のフィールドに入力してください。
+over_new=新規のファイル名:
+over_ok=OK
+
+upload_efailed=アップロードを開けませんでした: $1
+upload_title=ファイルのアップロード
+upload_file=アップロードするファイル
+upload_dir=アップロード ディレクトリ
+upload_ok=アップロード
+upload_conv=DOS 改行に変換しますか？
+upload_efile=アップロードするファイルが選択されていません。
+upload_edir=アップロードのディレクトリが存在しません。
+upload_eperm=$1 を作成できません
+upload_ewrite=$1 に書き込めませんでした: $2.
+
+find_eaccess=$1 にアクセスできません
+find_eexist=$1 は $2 には存在しません
+find_edir=$1 は $2 内のディレクトリではありません
+
+cancel=キャンセル
+
+chmod_eaccess='$1' にアクセスできません
+chmod_euser=$1 : そのユーザは存在しません
+chmod_egroup=$1 : そのグループは存在しません
+chmod_elink=symlink が失敗しました: $1
+chmod_echown=chown が失敗しました: $1
+chmod_echmod=chmod  が失敗しました: $1
+
+copy_efrom='$1' からはコピーできません
+copy_eto='$1' へはコピーできません
+copy_elink=symlink が失敗しました: $1
+
+delete_eaccess='$1' を削除できません
+
+list_eaccess=このディレクトリにアクセスできません
+list_edir=$1 をリストできませんでした: $2
+
+move_eto='$1' へは移動できません
+move_afrom='$1' は移動できません
+
+acl_user=サーバのファイルに次のユーザとしてアクセス
+acl_umask=新規ファイルの Umask
+acl_follow=symlink を常にたどりますか？
+acl_dirs=次のディレクトリへのアクセスのみを許可
+
+share_title=共有
+share_samba=Windows
+share_nfs=NFS
+share_son=Windows ファイルの共有を有効
+share_soff=Windows ファイルの共有を無効
+share_writable=書込みできますか？
+share_available=現在アクティブですか？
+share_sheader=共有オプション
+share_only=次のみ
+share_guest=ゲストのアクセスを可能にしますか？
+share_comment=コメント
+share_nheader=NFS エクスポート オプション
+share_non=NFS ファイルの共有を有効
+share_noff=NFS ファイルの共有を無効
+share_desc=説明
+share_ro=読取り専用のホスト
+share_rw=読取り-書込み可能のホスト
+share_root=root アクセスのホスト
+share_none=なし
+share_all=すべて
+share_listed=リスト..
+share_host=ホスト
+share_opts=オプション
+share_s0=すべてのユーザを信頼しない
+share_s1=root 以外を信頼
+share_s2=すべてのユーザを信頼
+share_lro=読取り専用
+share_lrw=読取り-書込み
+
+log_create_export=NFS エクスポート $1 を作成しました
+log_modify_export=NFS エクスポート $1 を変更しました
+log_delete_export=NFS エクスポート$1 を削除しました
+log_create_share=Samba の共有 $1 を作成しました
+log_modify_share=Samba の共有 $1 を変更しました
+log_delete_share=Samba の共有 $1 を削除しました
+log_save=ファイル $1 を保存しました
+log_chmod=ファイル $1 の許可を変更しました
+log_mkdir=ディレクトリ $1 を作成しました
+log_upload=ファイル $1 をアップロードしました
+log_link=$2へのシンボリック リンク $1 を作成しました
+log_relink=$2 へのシンボリック リンク $1 を変更しました
+log_copy=ファイル $1 を $2 にコピーしました
+log_move=ファイル $1 を $2 に移動しました
+log_delete=ファイル $1 を削除しました
+
+search_eaccess=このディレクトリを検索できません
+search_title=ファイルの検索
+search_ok=すぐに検索
+search_dir=検索ディレクトリ
+search_match=一致したファイル
+search_user=所有ユーザ
+search_group=所有グループ
+search_any=任意
+search_type=ファイルの種類
+search_types_=任意
+search_types_f=ファイル
+search_types_d=ディレクトリ
+search_types_l=シンボリック リンク
+search_types_p=名前付きパイプ
+search_size=ファイル サイズ
+search_more=次より大きい
+search_less=次より小さい
+search_xdev=過去のマウントを検索しますか？
+search_edir=検索ディレクトリがないか無効です
+search_ematch=一致した正規表現がありません
+search_euser=ユーザ名がありません
+search_egroup=グループ名がありません
+search_esize=ファイル サイズは整数でなければなりません
+search_crit=検索条件
+search_list=検索結果
+

@@ -1,0 +1,11 @@
+desc=Read User Mail
+category=servers
+longdesc=Read email in users' mailboxes.
+desc_de=Lese Benutzer-E-Mail
+desc_zh_TW.Big5=Ū���ϥΪ̶l��
+desc_ca=Lectura del Correu d'Usuaris
+desc_fr=Lecture du Courrier des Usagers
+readonly=1
+os_support=!windows
+desc_es=Lectura de Correo de Usuarios
+desc_zh_TW.UTF-8=讀取使用者郵件

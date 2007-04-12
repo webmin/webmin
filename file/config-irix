@@ -1,0 +1,9 @@
+xfs_acl=&has_command("chacl")
+xfs_attr=&has_command("attr")
+getfacl=./irix-getfacl.pl
+setfacl=./irix-setfacl.pl
+hide_dot_files=0
+iconsize=0
+nocharset=0
+extract=1
+force_text=0

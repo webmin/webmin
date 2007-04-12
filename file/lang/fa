@@ -1,0 +1,383 @@
+﻿
+index_title=مدير پرونده
+index_nojava=اين پيمانه جهت اجرا شدن نياز به جاوا دارد اما مرورگر شمااز جاوا پشتيباني نمي‌کند.
+index_eremote=کاربر يونيکسي که با $1 جهت ورود به وب‌مين مطابقت کند وجود ندارد.
+
+switch_euser=کاربر يونيکس وجود ندارد!
+
+top_ret=شاخص
+top_down=ذخيره
+top_edit=ويرايش
+top_refresh=بازآوري
+top_info=اطلاعات
+top_eacl=ACL
+top_attr=Attrs
+top_ext=EXT
+top_delete=حذف
+top_new=جديد
+top_upload=بارگيري
+top_rename=تغيير نام
+top_copy=رونوشت
+top_cut=بريدن
+top_paste=چسباندن
+top_share=اشتراک گذاري
+top_mount=سوار کردن
+top_search=يافتن
+top_config=پيکربندي
+
+right_name=نام
+right_size=اندازه
+right_user=کاربر
+right_group=گروه
+right_date=تاريخ
+
+edit_enormal=فقط پرونده‌هاي عادي قابل ويرايش مي‌باشند
+edit_title=در حال ويرايش $1
+edit_title2=در حال ايجاد کردن پرونده
+edit_filename=نام پرونده: 
+edit_goto=برو به
+edit_find=يافتن
+edit_gotoline=برو به خط
+edit_replace=جايگزين کردن
+edit_all=جايگزين کردن همه
+edit_searchfor=جستجو براي
+edit_replaceby=جايگزين کردن با
+edit_eover=$1 قادر به نوشتن مجدد نمي‌باشد
+edit_esave=عدم موفقيت در ذخيره کردن پرونده: $1
+edit_eaccess=شما اجازه ذخيره کردن نداريد '$1'
+edit_efollow=شما اجازه نوشتن برروي اتصال نمادين '$1' را نداريد
+edit_notfound=متن '$1' يافت نشد
+edit_saveclose=ذخيره کردن و بستن
+edit_elength=پرونده کوتاه شده‌است
+
+info_file=پرونده
+info_path=مسير:
+info_type=نوع:
+info_size=اندازه:
+info_mod=تاريخ اصلاح:
+info_link=اتصال به:
+info_perms=مجوزها
+info_user=کاربر:
+info_group=گروه:
+info_other=ديگران:
+info_octal=مبناي هشت:
+info_sticky=محکم:
+info_sticky2=تنها مالک مي‌تواند پرونده‌ها را حذف کند
+info_own=مالکيت
+info_setUID=قراردادن UID:
+info_setUID2=اجرا به‌عنوان کاربر
+info_setgid=قراردادن GID:
+info_setgid2=پرونده‌ها از گروه ارث برند
+info_setgid3=اجرا به‌عنوان گروه
+info_apply=به‌کاربستن تغييرات در
+info_apply1=فقط اين فهرست راهنما
+info_apply2=اين فهرست راهنما و پرونده‌هايش
+info_apply3=اين فهرست راهنما و کليه زير فهرستها
+info_efailed=عدم موفقيت در به‌روزرساني $1
+info_read=خواندن
+info_write=نوشتن
+info_list=ليست
+info_exec=اجرا
+
+eacl_eacls=عدم موفقيت در خواندن ACLها: $1
+eacl_acltype=نوع ACL
+eacl_aclname=به‌کاربستن در
+eacl_aclperms=مجوزها
+eacl_add=اضافه کردن ACL نوع:
+eacl_remove=حذف ACL
+eacl_efs=سيستم پرونده $1 از ACLها پشتيباني نمي‌کند
+eacl_create=ايجاد ACL
+eacl_edit=ويرايش ACL
+eacl_user=مالک پرونده $1
+eacl_group=گروه پرونده $1
+eacl_eowner=کاربر يا گروه جهت به‌کاربستن يافت نشد
+eacl_efailed=عدم موفقيت در قرار دادن ACL براي $1: $2
+eacl_emask=حداکثر مي‌توان يک پوشش ورودي ACL داشت
+eacl_edefmask=حداکثر مي‌توان يک پوشش ورودي ACL پيش‌گزيده داشت
+eacl_title=ACL براي $1
+eacl_owner=مالک پرونده
+eacl_edefaults=اگر پرونده شامل تعدادي ACL پيش‌گزيده باشد بايد کاربر، گروه و ACLهاي پيش‌گزيده ديگري داشته باشد
+
+acltype_user=کاربر
+acltype_group=گروه
+acltype_other=ديگران
+acltype_mask=پوشش
+acltype_default_user=کاربر پيش‌گزيده
+acltype_default_group=گروه پيش‌گزيده
+acltype_default_other=ديگران پيش‌گزيده
+acltype_default_mask=پوشش پيش‌گزيده
+
+delete_mtitle=حذف چندين پرونده
+delete_dtitle=حذف فهرست راهنما
+delete_ftitle=حذف پرونده
+delete_ddesc=آيا از حذف دائم فهرست راهنماي $1 و همه محتويات آن مطمئن هستيد؟
+delete_fdesc=آيا از حذف پرونده $1 مطمئن هستيد؟
+delete_mdesc=آيا از حذف دائمي اين پرونده‌ها و فهرست راهنماها مطمئن هستيد؟
+delete_efailed=عدم موفقيت در حذف $1: $2
+
+mkdir_title=فهرست راهنماي جديد
+mkdir_dir=فهرست راهنماي جديد:
+mkdir_eexists=$1 از قبل وجود دارد
+mkdir_efailed=عدم موفقيت در ايجاد فهرست راهنماي: $1
+mkdir_eaccess=شما اجازه ايجاد $1 را نداريد
+
+link_title=ايجاد اتصال
+link_from=اتصال از:
+link_to=اتصال به:
+link_eexists=$1 از قبل وجود دارد
+link_efrom=منبع اتصال بايد يک مسير مطلق باشد
+link_efailed=عدم موفقيت در اتصال: $1
+link_efrom2=شما اجازه اتصال از '$1' را نداريد
+link_efollow=شما اجازه ايجاد اتصال نمادين را نداريد
+
+rename_title=تغيير نام $1
+rename_old=نام قبلي:
+rename_new=نام جديد:
+rename_ok=تغيير نام
+rename_eexists=پرونده‌اي با نام $1 از قبل وجود دارد
+rename_efailed=عدم موفقيت در تغيير نام: $1
+rename_eold=شما اجازه تغيير نام '$1' را نداريد
+rename_enew=شما اجازه تغيير نام به '$1' را نداريد
+
+file_type0=فهرست راهنما
+file_type1=پرونده متني
+file_type2=پرونده تصويري
+file_type3=پرونده دودويي
+file_type4=پرونده
+file_type5=اتصال نمادين
+file_type6=پرونده دستگاه
+file_type7=لوله
+
+view_enormal=فقط پرونده‌هاي متني را مي‌توان ديد
+view_enormal2=فقط پرونده‌هاي معمولي را مي‌توان بار کرد
+view_eaccess=شما اجازه دستيابي به $1 را نداريد
+view_eopen=عدم موفقيت در باز کردن $1:$2
+view_edir=ايجاد بايگاني تنها براي فهرست راهنماهاي امکان پذير مي‌باشد
+view_ecmd=دستور $1 که براي ايجاد بايگاني لازم است نصب نشده‌است
+view_ecomp=عدم موفقيت در ايجاد بايگاني: $1
+view_earchive=شما اجازه بارکردن بايگانيها را نداريد
+view_earchmax=فهرست راهنماي انتخاب شده بزرگ‌تر از بيشترين مقداري است که براي بايگاني در نظر گرفته شده‌است ($1 بايت)
+
+paste_ecopy=شما قبل از چسباندن بايد ببريد يا رونوشت نمائيد
+paste_egone=پرونده رونوشت شده $1 وجود ندارد
+paste_eover=$1 قابل باز نويسي نمي‌باشد
+paste_eself=شما نمي‌توانيد يک پرونده را برروي خودش بچسبانيد
+paste_emfailed=عدم موفقيت در انتقال: $1
+paste_ecfailed=عدم موفقيت در رونوشت: $1
+
+over_title=پرونده وجود دارد
+over_msg=پرونده $1 از قبل وجود دارد از حوزه زير جهت وارد کردن نام جديد براي پرونده چسبانده شده‌استفاده نمائيد
+over_new=نام پرونده جديد:
+over_ok=تاييد
+
+upload_efailed=عدم موفقيت در باز کردن بارگيري شده: $1
+upload_title=بارگيري پرونده
+upload_file=پرونده جهت بارگيري
+upload_dir=بارگيري به فهرست راهنما
+upload_ok=بارگيري
+upload_conv=آيا خطوط جديد DOS تبديل شوند؟
+upload_efile=پرونده‌اي براي بارگيري انتخاب نشده
+upload_edir=فهرست راهنماي مقصد بارگيري موجود نيست
+upload_eperm=شما اجازه ايجاد $1 را نداريد
+upload_ewrite=عدم موفقيت در نوشتن درون $1:$2
+upload_already=پرونده $1 از قبل وجود دارد از باز نويسي روي آن مطمئن هستيد
+upload_elink=نمي‌توان به يک اتصال نمادين بارگيري نمود
+upload_zip=آيا پرونده‌هاي tarيا zip از فشردگي خارج شوند؟
+upload_yes=بله و سپس حذف شود
+
+find_eaccess=شما اجازه دستيابي به $1 را نداريد
+find_eexist=$1 درون $2 وجود ندارد
+find_edir=$1 يک فهرست راهنما در $2 نيست
+
+cancel=لغو
+close=بستن
+eopen=عدم موفقيت در بارگيري کردن: $1
+
+chmod_eaccess=شما اجازه دستيابي به '$1' را نداريد
+chmod_euser=$1: چنين کاربري وجود ندارد
+chmod_egroup=$1: چنين گروهي وجود ندارد
+chmod_elink=عدم موفقيت در اتصال نمادين
+chmod_echown=عدم موفقيت در تغيير مالکيت: $1
+chmod_echmod=عدم موفقيت در تغيير chmod: $1
+chmod_efollow=شما اجازه اجازه ويرايش اتصالهاي نمادين را نداريد
+
+copy_efrom=شما اجازه اجازه رونوشت برداشتن از $1 را نداريد
+copy_eto=شما اجازه اجازه رونويسي در $1 را نداريد
+copy_elink=عدم موفقيت در اتصال نمادين: $1
+
+delete_eaccess=شما اجازه اجازه حذف $1 را نداريد
+
+list_eaccess=شما اجازه اجازه دستيابي به اين فهرست راهنما را نداريد
+list_edir=عدم موفقيت در ليست کردن$1: $2
+
+move_eto=شما اجازه اجازه منتقل کردن به $1 را نداريد
+move_afrom=شما اجازه اجازه انتقال '$1' را نداريد
+
+acl_user=دستيابي به پرونده برروي کارساز به‌عنوان کاربر
+acl_user_def=مانند وب‌مين
+acl_umask=پوشش براي پرونده‌هاي جديد
+acl_follow=آيا اتصالهاي نمادين دنبال شوند؟
+acl_fyes=اگر صاحبان آن يکسان باشند
+acl_ro=آيا حالت فقط خواندني است؟
+acl_dirs=فقط اجازه دستيابي به اين فهرست (هاي) راهنما داه شود
+acl_nodirs=دستيابي به فهرست (هاي) راهنما ممنوع شود
+acl_home=به اضافه فهرست شخصي کاربر وب‌مين
+acl_log=آيا کليه اصلاحات پرونده‌ها ثبت شود؟
+acl_goto=اولين فهرست راهنماي اجازه داده شده باز شود؟
+acl_max=بيشينه اندازه بار گذاري
+acl_unlim=نامحدود
+acl_b=بايت
+acl_archive=آيا مي‌توان بايگانيهاي فهرستهاي راهنما را بار کرد؟
+acl_archmax=بله، اگر کوچک‌تر است از:
+acl_buttons=دگمه‌هاي قابل دستيابي در نوار ابزار
+acl_button_save=ذخيره(بار کردن پرونده)
+acl_button_edit=ويرايش(ويرايش پرونده‌هاي متني)
+acl_button_info=اطلاعات (ويرايش مجوزها و مالکيت )
+acl_button_acl=ACL (ويرايش ACL)
+acl_button_attr=Attr (ويرايش خصيصه‌هاي XFS)
+acl_button_ext=EXT (ويرايش خصيصه‌هاي EXT )
+acl_button_search=يافتن (يافتن پرونده‌ها)
+acl_button_delete=حذف(حذف پرونده‌ها)
+acl_button_new=جديد(ايجاد پرونده متني)
+acl_button_upload=بارگيري(بارگيري پرونده‌ها توسط کارخواه)
+acl_button_mkdir=جديد (ايجاد فهرست راهنما)
+acl_button_makelink=جديد (ايجاد اتصال نمادين)
+acl_button_rename=تغيير نام (تغيير نام پرونده)
+acl_button_sharing=اشتراک گذاري(تنظيم کردن سامبا و اشتراک گذاري پرونده NFS)
+acl_button_mount=سوار (سوار يا پياده کردن سيستم پرونده )
+acl_button_copy=رونوشت٬ برش و چسباندن
+acl_unarchive=آيا مي‌توان پرونده‌هاي بايگاني بارگيري شده را استخراج نمود؟
+acl_unarchive2=هميشه سعي شود
+acl_unarchive1=$Yes
+acl_unarchive0=$No
+acl_dostounix=آيا مي‌توان خطوط جديد تبديل شده Dos داشت؟
+acl_chroot=تغيير فهرست راهنماي مدير سيستم براي مدير پرونده وارد شده:
+acl_relto=(وابسته به فهرست راهنماي هر مدير سيستم chroot)
+
+share_title=اشتراک گذاري
+share_samba=ويندوز
+share_nfs=NFS
+share_son=اشتراک گذاري پرونده ويندوز فعال شود
+share_soff=اشتراک گذاري پرونده ويندوز غيرفعال شود
+share_writable=آيا قابل نوشتن است؟
+share_available=آيا در حال حاضر فعال است؟
+share_sheader=گزينه‌هاي اشتراک گذاري
+share_only=فقط
+share_guest=آيا براي مهمان قابل دستيابي است؟
+share_comment=شرح
+share_nheader=گزينه‌هاي برون‌برد NFS
+share_non=اشتراک گذاري پرونده NFS فعال شود
+share_noff=اشتراک گذاري پرونده NFS غيرفعال شود
+share_desc=شرح
+share_ro=ميزبانهاي فقط خواندني
+share_rw=ميزبانهاي خواندني و نوشتني
+share_root=ميزبانهاي دستيابي به ريشه
+share_none=هيچ
+share_all=همه
+share_listed=ليست شده..
+share_host=ميزبانها
+share_opts=گزينه‌ها
+share_s0=هيچ کس مطمئن نيست
+share_s1=هيچ کس غير از root مطمئن نيست
+share_s2=همه مطمئن هستند
+share_lro=فقط خواندني
+share_lrw=خواندني و نوشتني
+
+log_create_export=برون‌برد $1 NFS ايجاد شد.
+log_modify_export=برون‌برد $1 NFS تغيير کرد.
+log_delete_export=برون‌برد $1 NFS حذف شد.
+log_create_share=اشتراک $1 سامبا ايجاد شد
+log_modify_share=اشتراک $1 سامبا تغيير کرد
+log_delete_share=اشتراک $1 سامبا حذف شد
+log_save=پرونده $1 ذخيره شد
+log_chmod=مجوزهاي پرونده $1 تغيير داده شد
+log_mkdir=فهرست راهنماي $1ايجاد شد
+log_upload=پرونده $1 بار گذاري شد
+log_link=اتصال نمادين از $1 به $2 ايجاد شد
+log_relink=اتصال نمادين از $1 به $2 تغيير کرد
+log_copy=از پرونده $1 در $2 رونويسي شد
+log_move=پرونده $1 به $2 حرکت داده شد
+log_delete=پرونده $1حذف شد
+log_attr=خصيصه‌هاي پرونده $1 قرار داده شد
+log_acl=ACL پرونده $1قرار داده شد
+
+search_eaccess=شما اجازه جستجو در اين فهرست راهنما را نداريد
+search_title=يافتن پرونده‌ها
+search_ok=جستجو
+search_dir=جستجو در فهرست راهنما
+search_match=براي تطبق دادن پرونده‌ها
+search_user=کاربر مالک
+search_group=گروه مالک
+search_any=همه
+search_type=نوع پرونده
+search_types_=همه
+search_types_f=پرونده
+search_types_d=فهرست راهنما
+search_types_l=اتصال نمادين
+search_types_p=لوله نامدار
+search_size=اندازه پرونده
+search_more=بيش از
+search_less=کمتر از
+search_xdev=آيا سوار شده‌هاي قبلي نيز جستجو شود؟
+search_edir=فهرست راهنماي جستجو نامعتبر است و يا يافت نشد
+search_ematch=عبارت با قاعده تطبيق يافت نشد
+search_euser=اسم‌کاربر يافت نشد
+search_egroup=نام گروه يافت نشد
+search_esize=اندازه پرونده بايد يک عدد صحيح باشد
+search_crit=معيارهاي جستجو
+search_list=نتايج جستجو
+
+facl_eaccess=شما اجازه قرار دادن ACLها براي اين پرونده را نداريد
+
+attr_eattrs=عدم موفقيت در دريافت خصيصه‌ها: $1
+attr_efs=سيستم پرونده $1 از خصيصه‌ها پشتيباني نمي‌کند
+attr_add=افزودن خصيصه
+attr_name=نام خصيصه
+attr_value=مقدار خصيصه
+attr_efailed=عدم موفقيت در قرار دادن خصيصه‌ها براي $1: $2
+attr_title=خصيصه پرونده براي $1
+attr_create=افزودن خصيصه
+attr_edit=ويرايش خصيصه
+attr_ename=نام خصيصه يافت نشد
+
+ext_eattrs=عدم موفقيت در دريافت خصيصه‌هايEXT: $1
+ext_efs=سيستم پرونده $1از خصيصه‌هاي EXT پشتيباني نمي‌کند
+ext_title=خصيصه‌هايEXTبراي $1
+ext_header=خصيصه‌هاي پروندهEXT
+ext_efailed=عدم موفقيت در قرار دادن خصيصه‌ها براي $1: $2
+
+eattr_A=زمانهاي دستيابي به‌روزرساني نشود
+eattr_a=تنها مي‌توان به پرونده‌ها اضافه کرد
+eattr_c=داده‌ها برروي ديسک فشرده سازي شوند
+eattr_d=با زباله پشتيبان تهيه نشود
+eattr_i=اجازه اصلاحات داده نشود
+eattr_s=به هنگام حذف کردن بلاکها صفر شوند
+eattr_S=هميشه پس از نوشتن همزمان شوند
+eattr_u=محتويات براي غيرحذفيها حفظ شوند
+
+mount_eaccess=شما اجازه سوار کردن سيستم پرونده را نداريد
+mount_efstab=هيچ سيستم پرونده‌اي در اين نقطه از سوار وجود دارد
+mount_epoint=$1 يک نقطه سوار نيست
+mount_rusure1=آيا شما مطمئن هستيد که مي‌خواهيد $1 از $2را سوار نمائيد ?
+mount_rusure2=آيا شما مطمئن هستيد که مي‌خواهيد $1 از $2را پياده نمائيد؟
+mount_err1=عدم موفقيت در سوار کردن $1: $2
+mount_err2=عدم موفقيت در پياده کردن $1: $2
+mount_title1=سوار کردن سيستم پرونده
+mount_title2=پياده کردن سيستم پرونده
+
+zip_err=نمي توان پرونده : $1را استخراج نمود
+zip_ecmd=دستور $1يافت نشد
+zip_eunzip=عدم موفقيت در Unzipکردن: $1
+zip_ename=به نظر مي‌رسد يک پرونده zip, tar يا tar.gz نيست
+zip_euntar=عدم موفقيت درUn-tarکردن: $1
+zip_euntar2=عدم موفقيت در خارج کردن از فشرده سازي و un-tar کردن: $1
+
+ddir_title=فهرست راهنماي بار کردن
+ddir_rusure=براي بار کردن محتويات $1 به‌صورت يک پرونده بايگاني يکي از دگمه‌هاي نوع بايگاني زير را فشار دهيد.
+ddir_zip=ZIP
+ddir_tgz=TAR.GZ
+ddir_tar=TAR
+
+ebutton=اين خصوصيت قابل دستيابي نيست
+
+

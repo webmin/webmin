@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Simple example of Xinha</title>
+<script type="text/javascript">
+/************************************************************************
+ * Please refer to http://xinha.python-hosting.com/wiki/NewbieGuide
+ ************************************************************************
+ * You must set _editor_url to the URL (including trailing slash) where
+ * where xinha is installed, it's highly recommended to use an absolute URL
+ *  eg: _editor_url = "/path/to/xinha/";
+ * You may try a relative URL if you wish]
+ *  eg: _editor_url = "../";  
+ * in this example we do a little regular expression to find the absolute path.
+ ************************************************************************/
+var _editor_url  = document.location.href.replace(/examples\/simple_example\.html.*/, '')
+// And the language we need to use in the editor.
+var _editor_lang = "en";
+</script>
+<!-- Load up the actual editor core -->
+<script type="text/javascript" src="../XinhaCore.js"></script>
+<script type="text/javascript">
+/************************************************************************
+ * Plugins you will be using in the editors on this page.
+ * List all the plugins you will need, even if not all the editors will
+ * use all the plugins.
+ ************************************************************************
+ * Please refer to http://xinha.python-hosting.com/wiki/Plugins for the
+ * list of availables plugins
+ ************************************************************************/
+var xinha_plugins =
+[
+ 'CharacterMap',
+ 'ContextMenu',
+ 'FullScreen',
+ 'ListType',
+ 'SpellChecker',
+ 'Stylist',
+ 'SuperClean',
+ 'TableOperations'
+];
+/************************************************************************
+ * Names of the textareas you will be turning into editors
+ ************************************************************************/
+var xinha_editors =
+[
+  'myTextArea',
+  'anotherOne'
+];
+/************************************************************************
+ * Initialisation function
+ ************************************************************************/
+function xinha_init()
+{
+  // THIS BIT OF JAVASCRIPT LOADS THE PLUGINS, NO TOUCHING  :)
+  if(!Xinha.loadPlugins(xinha_plugins, xinha_init)) return;
+  /*************************************************************************
+   * We create a default configuration to be used by all the editors.
+   * If you wish to configure some of the editors differently this will be
+   * done later after editors are initiated.
+   ************************************************************************
+   * Please refer to http://xinha.python-hosting.com/wiki/Documentation/Customise
+   * for the configuration parameters
+   ************************************************************************/
+  var xinha_config = new Xinha.Config();
+  /************************************************************************
+   * We first create editors for the textareas.
+   * You can do this in two ways, either
+   *
+   *   xinha_editors   = Xinha.makeEditors(xinha_editors, xinha_config, xinha_plugins);
+   *
+   * if you want all the editor objects to use the same set of plugins, OR;
+   *
+   *   xinha_editors = Xinha.makeEditors(xinha_editors, xinha_config);
+   *   xinha_editors['myTextArea'].registerPlugins(['Stylist','FullScreen']);
+   *   xinha_editors['anotherOne'].registerPlugins(['CSS','SuperClean']);
+   *
+   * if you want to use a different set of plugins for one or more of the
+   * editors.
+   ************************************************************************/
+  xinha_editors = Xinha.makeEditors(xinha_editors, xinha_config, xinha_plugins);
+  /************************************************************************
+   * If you want to change the configuration variables of any of the
+   * editors,  this is the place to do that, for example you might want to
+   * change the width and height of one of the editors, like this...
+   ************************************************************************/
+  xinha_editors.myTextArea.config.width = '640px';
+  xinha_editors.myTextArea.config.height = '480px';
+  /************************************************************************
+   * Or remove the statusbar on the other one, like this...
+   * For every possible configuration, please refer to
+   * http://xinha.python-hosting.com/wiki/Documentation/ConfigVariablesList
+   ************************************************************************/
+  xinha_editors.anotherOne.config.statusBar = false;
+  /************************************************************************
+   * Finally we "start" the editors, this turns the textareas into
+   * Xinha editors.
+   ************************************************************************/
+  Xinha.startEditors(xinha_editors);
+}
+window.onload = xinha_init;
+</script>
+<link type="text/css" rel="stylesheet" title="blue-look" href="../skins/blue-look/skin.css">
+<link type="text/css" rel="alternate stylesheet" title="green-look" href="../skins/green-look/skin.css">
+<link type="text/css" rel="alternate stylesheet" title="xp-blue" href="../skins/xp-blue/skin.css">
+<link type="text/css" rel="alternate stylesheet" title="xp-green" href="../skins/xp-green/skin.css">
+<link type="text/css" rel="alternate stylesheet" title="inditreuse" href="../skins/inditreuse/skin.css">
+<link type="text/css" rel="alternate stylesheet" title="blue-metallic" href="../skins/blue-metallic/skin.css">
+</head>
+
+<body>
+
+<form onsubmit="alert(this.myTextArea.value); alert(this.anotherOne.value); return false;">
+<textarea id="myTextArea" name="myTextArea" rows="10" cols="80" style="width:100%">
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam et tellus vitae justo varius placerat. Suspendisse iaculis
+velit semper dolor. Donec gravida tincidunt mi. Curabitur tristique
+ante elementum turpis. Aliquam nisl. Nulla posuere neque non
+tellus. Morbi vel nibh. Cum sociis natoque penatibus et magnis dis
+parturient montes, nascetur ridiculus mus. Nam nec wisi. In wisi.
+Curabitur pharetra bibendum lectus.&lt;/p&gt;
+</textarea>
+<textarea id="anotherOne" name="anotherOne" rows="10" cols="80" style="width:100%">
+&lt;ul&gt;
+&lt;li&gt; Phasellus et massa sed diam viverra semper.  &lt;/li&gt;
+&lt;li&gt; Mauris tincidunt felis in odio.              &lt;/li&gt;
+&lt;li&gt; Nulla placerat nunc ut pede.                 &lt;/li&gt;
+&lt;li&gt; Vivamus ultrices mi sit amet urna.           &lt;/li&gt;
+&lt;li&gt; Quisque sed augue quis nunc laoreet volutpat.&lt;/li&gt;
+&lt;li&gt; Nunc sit amet metus in tortor semper mattis. &lt;/li&gt;
+&lt;/ul&gt;
+</textarea>
+<input type="submit">
+</form>
+
+</body>
+</html>

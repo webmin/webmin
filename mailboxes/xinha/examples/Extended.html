@@ -1,0 +1,299 @@
+<html>
+
+<head>
+  <title>Settings</title>
+  <link rel="stylesheet" type="text/css" href="../popups/popup.css" />
+  <script type="text/javascript">
+
+function getAbsolutePos(el) {
+	var r = { x: el.offsetLeft, y: el.offsetTop };
+	if (el.offsetParent) {
+		var tmp = getAbsolutePos(el.offsetParent);
+		r.x += tmp.x;
+		r.y += tmp.y;
+	}
+	return r;
+};
+
+function getSelectedValue(el) {
+  if(!el)
+    return "";
+  return el[el.selectedIndex].value;
+}
+
+function setSelectedValue(el, val) {
+  if(!el)
+    return "";
+  var ops = el.getElementsByTagName("option");
+  for (var i = ops.length; --i >= 0;) {
+    var op = ops[i];
+    op.selected = (op.value == val);
+  }
+  el.value = val;
+}
+
+function getCheckedValue(el) {
+  if(!el)
+    return "";
+  var radioLength = el.length;
+  if(radioLength == undefined)
+    if(el.checked)
+      return el.value;
+    else
+      return "false";
+  for(var i = 0; i < radioLength; i++) {
+    if(el[i].checked) {
+      return el[i].value;
+    }
+  }
+  return "";
+}
+
+function setCheckedValue(el, val) {
+  if(!el)
+    return;
+  var radioLength = el.length;
+  if(radioLength == undefined) {
+    el.checked = (el.value == val.toString());
+    return;
+  }
+  for(var i = 0; i < radioLength; i++) {
+    el[i].checked = false;
+    if(el[i].value == val.toString()) {
+      el[i].checked = true;
+    }
+  }
+}
+
+function __dlg_onclose() {
+	opener.Dialog._return(null);
+};
+
+// closes the dialog and passes the return info upper.
+function __dlg_close(val) {
+	opener.Dialog._return(val);
+	window.close();
+};
+
+function __dlg_close_on_esc(ev) {
+	ev || (ev = window.event);
+	if (ev.keyCode == 27) {
+		window.close();
+		return false;
+	}
+	return true;
+};
+
+function __dlg_init(bottom) {
+  var body = document.body;
+	var body_height = 0;
+	if (typeof bottom == "undefined") {
+		var div = document.createElement("div");
+		body.appendChild(div);
+		var pos = getAbsolutePos(div);
+		body_height = pos.y;
+	} else {
+		var pos = getAbsolutePos(bottom);
+		body_height = pos.y + bottom.offsetHeight;
+	}
+	window.dialogArguments = opener.Dialog._arguments;
+	if (!document.all) {
+		window.sizeToContent();
+		window.sizeToContent();	// for reasons beyond understanding,
+					// only if we call it twice we get the
+					// correct size.
+		window.addEventListener("unload", __dlg_onclose, true);
+		window.innerWidth = body.offsetWidth + 5;
+		window.innerHeight = body_height + 2;
+		// center on parent
+		var x = opener.screenX + (opener.outerWidth - window.outerWidth) / 2;
+		var y = opener.screenY + (opener.outerHeight - window.outerHeight) / 2;
+		window.moveTo(x, y);
+	} else {
+		// window.dialogHeight = body.offsetHeight + 50 + "px";
+		// window.dialogWidth = body.offsetWidth + "px";
+		window.resizeTo(body.offsetWidth, body_height);
+		var ch = body.clientHeight;
+		var cw = body.clientWidth;
+		window.resizeBy(body.offsetWidth - cw, body_height - ch);
+		var W = body.offsetWidth;
+		var H = 2 * body_height - ch;
+		var x = (screen.availWidth - W) / 2;
+		var y = (screen.availHeight - H) / 2;
+		window.moveTo(x, y);
+	}
+	document.body.onkeypress = __dlg_close_on_esc;
+};
+
+function placeFocus() {
+var bFound = false;
+  // for each form
+  for (f=0; f < document.forms.length; f++) {
+    // for each element in each form
+    for(i=0; i < document.forms[f].length; i++) {
+      // if it's not a hidden element
+      if (document.forms[f][i].type != "hidden") {
+        // and it's not disabled
+        if (document.forms[f][i].disabled != true) {
+            // set the focus to it
+            document.forms[f][i].focus();
+            var bFound = true;
+        }
+      }
+      // if found in this element, stop looking
+      if (bFound == true)
+        break;
+    }
+    // if found in this form, stop looking
+    if (bFound == true)
+      break;
+  }
+}
+
+function Init() {
+  __dlg_init();
+  var param = window.dialogArguments;
+  if(param) {
+    var el;
+    for (var field in param) {
+      //alert(field + '="' + param[field] + '"');
+      el = document.getElementById(field);
+      if (el.tagName.toLowerCase()=="input"){
+        if ((el.type.toLowerCase()=="radio") || (el.type.toLowerCase()=="checkbox")){
+          setCheckedValue(el, param[field]);
+        } else {
+          el.value = param[field];
+        }
+      } else if (el.tagName.toLowerCase()=="select"){
+        setSelectedValue(el, param[field]);
+      } else if (el.tagName.toLowerCase()=="textarea"){
+        el.value = param[field];
+      }
+    }
+  }
+  placeFocus();
+};
+
+// pass data back to the calling window
+function onOK() {
+  var param = new Object();
+  var el = document.getElementsByTagName('input');
+  for (var i=0; i<el.length;i++){
+    if ((el[i].type.toLowerCase()=="radio") || (el[i].type.toLowerCase()=="checkbox")){
+      if (getCheckedValue(el[i])!=''){
+        param[el[i].id] = getCheckedValue(el[i]);
+      }
+    } else {
+      param[el[i].id] = el[i].value;
+    }
+  }
+  el = document.getElementsByTagName('select');
+  for (var i=0; i<el.length;i++){
+    param[el[i].id] = getSelectedValue(el[i]);
+  }
+  el = document.getElementsByTagName('textarea');
+  for (var i=0; i<el.length;i++){
+    param[el[i].id] = el[i].value;
+  }
+  __dlg_close(param);
+  return false;
+};
+
+function onCancel() {
+  __dlg_close(null);
+  return false;
+};
+
+</script>
+
+<style type="text/css">
+	.fr { width: 16em; float: left; padding: 2px 5px; text-align: right; }
+</style>
+
+</head>
+
+<body class="dialog" onload="Init(); window.resizeTo(360, 590);">
+<div class="title">Settings</div>
+  <form action="" method="get">
+    <div class="fr">Editor width:</div>
+      <input type="text" name="width" id="width" title="" />
+    <p />
+    <div class="fr">Editor height:</div>
+      <input type="text" name="height" id="height" title="" />
+    <p />
+    <div class="fr">Size includes bars</div>
+      <input type="checkbox" name="sizeIncludesBars" id="sizeIncludesBars" value="true" />
+    <p />
+    <div class="fr">Status Bar</div>
+      <input type="checkbox" name="statusBar" id="statusBar" value="true" />
+    <p />
+    <div class="fr">Mozilla Parameter Handler:</div>
+    <select name="mozParaHandler" id="mozParaHandler">
+      <option value="built-in">built-in</option>
+      <option value="dirty">dirty</option>
+      <option value="best">best</option>
+    </select>
+    <div class="space"></div>
+    <div class="fr">Undo steps:</div>
+      <input type="text" name="undoSteps" id="undoSteps" title="" />
+    <p />
+    <div class="fr">Base href:</div>
+      <input type="text" name="baseHref" id="baseHref" title="" />
+    <p />
+    <div class="fr">Strip base href</div>
+      <input type="checkbox" name="stripBaseHref" id="stripBaseHref" value="true" />
+    <p />
+    <div class="fr">Strip self named anchors</div>
+      <input type="checkbox" name="stripSelfNamedAnchors" id="stripSelfNamedAnchors" value="true" />
+    <p />
+    <div class="fr">only 7bit printables in URLs</div>
+      <input type="checkbox" name="only7BitPrintablesInURLs" id="only7BitPrintablesInURLs" value="true" />
+    <p />
+    <div class="fr">7bit Clean</div>
+      <input type="checkbox" name="sevenBitClean" id="sevenBitClean" value="true" />
+    <p />
+    <div class="fr">kill Word on paste</div>
+      <input type="checkbox" name="killWordOnPaste" id="killWordOnPaste" value="true" />
+    <p />
+    <div class="fr">flow toolbars</div>
+      <input type="checkbox" name="flowToolbars" id="flowToolbars" value="true" />
+    <p />
+    <div class="fr">show loading</div>
+      <input type="checkbox" name="showLoading" id="showLoading" value="true" />
+    <p />
+
+    <div id="CharacterMapOptions" class="options">
+    <hr size="0.5">
+    <div class="fr">CharacterMap mode :</div>
+      <select id="CharacterMapMode" name="CharacterMapMode">
+        <option value="popup">popup</option>
+        <option value="panel">panel</option>
+      </select>
+    </div>
+    <p />
+
+    <div id="ListTypeOptions" class="options">
+    <hr size="0.5">
+    <div class="fr">ListType mode :</div>
+      <select id="ListTypeMode" name="ListTypeMode">
+        <option value="toolbar">toolbar</option>
+        <option value="panel">panel</option>
+      </select>
+    </div>
+    <p />
+
+    <div id="CharCounterOptions" class="options">
+    <hr size="0.5">
+    <div class="fr">CharCounter (showChar) :</div><input type="checkbox" name="showChar" id="showChar" value="true" /><br />
+    <div class="fr">CharCounter (showWord) :</div><input type="checkbox" name="showWord" id="showWord" value="true" /><br />
+    <div class="fr">CharCounter (showHtml) :</div><input type="checkbox" name="showHtml" id="showHtml" value="true" />
+    </div>
+    <p />
+
+  <div id="buttons">
+    <button type="submit" name="ok" onclick="return onOK();">OK</button>
+    <button type="button" name="cancel" onclick="return onCancel();">Cancel</button>
+  </div>
+</form>
+</body>
+</html>

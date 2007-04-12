@@ -1,0 +1,4 @@
+hide_dot_files=Visualizza i file che iniziano con un punto?,1,0-Si,1-No
+iconsize=Dimensioni dei pulsanti nella barra degli strumenti,1,1-Piccoli,0-Grandi con etichette
+nocharset=Tenta di usare il set di caratteri appropriato?,1,0-Si,1-No
+extract=Estrarre i file .class dall'archivio JAR?,1,1-Si,0-No

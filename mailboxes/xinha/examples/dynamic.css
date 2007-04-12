@@ -1,0 +1,56 @@
+  /*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
+    --  DynamicCSS plugin example CSS file.  Used by full_example.js
+    --  when the DynamicCSS plugin is included in an auto-generated example.
+    --  @TODO Make this CSS more useful.
+    --
+    --  $HeadURL: http://svn.xinha.python-hosting.com/tags/0.92beta/examples/dynamic.css $
+    --  $LastChangedDate: 2007-01-19 23:24:36 +0100 (Fr, 19 Jan 2007) $
+    --  $LastChangedRevision: 677 $
+    --  $LastChangedBy: ray $
+    --------------------------------------------------------------------------*/
+
+p {
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 9pt;
+  FONT-WEIGHT: normal;
+  COLOR: #000000;
+}
+
+p.p1 {
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 11pt;
+  FONT-WEIGHT: normal;
+  COLOR: #000000;
+}
+
+p.p2 {
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 13pt;
+  FONT-WEIGHT: normal;
+  COLOR: #000000;
+}
+
+div {
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 9pt;
+  FONT-WEIGHT: bold;
+  COLOR: #000000;
+}
+
+div.div1 {
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 11pt;
+  FONT-WEIGHT: bold;
+  COLOR: #000000;
+}
+
+div.div2 {
+  FONT-FAMILY: Arial, Helvetica;
+  FONT-SIZE: 13pt;
+  FONT-WEIGHT: bold;
+  COLOR: #000000;
+}
+
+.quote { font-style: italic; color: #ee9; }
+.highlight { background-color: yellow; color: #000; }
+.deprecated { text-decoration: line-through; color: #aaa; }

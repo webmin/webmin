@@ -1,0 +1,322 @@
+index_title=File Manager
+index_nojava=Този модул използва java, но Вашият браузър няма java поддръжка
+index_eremote=Няма Unix потребител който да съвпада с Webmin потребителското име $1.
+switch_euser=Unix потребителя не съществува!
+
+top_ret=Index
+top_down=Запис
+top_edit=Редактиране
+top_refresh=Опресни
+top_info=Информация
+top_eacl=ACL
+top_attr=Аттр.
+top_ext=EXT
+top_delete=Изтрий
+top_new=Нов
+top_upload=Upload
+top_rename=Преименувай
+top_copy=Копирай
+top_cut=Отрежи
+top_paste=Постави
+top_share=Sharing
+top_mount=Mount
+top_search=Търси
+top_config=Конфигурация
+
+right_name=Име
+right_size=Размер
+right_user=Потребител
+right_group=Група
+right_date=Дата
+
+edit_enormal=Само обикновените файлове могат да бъда редактирани
+edit_title=Редактиране на $1
+edit_title2=Създаване на файл
+edit_filename=Файл:
+edit_goto=Върви
+edit_find=Търси
+edit_gotoline=Върви на ред
+edit_replace=Замени
+edit_all=Замени всички
+edit_searchfor=Търси за
+edit_replaceby=Замени със
+edit_eover=$1 не може да бъде презаписан
+edit_esave=Грешка при запис на файл : $1
+edit_eaccess=Нямате права да запишете '$1'
+edit_notfound=Текстът $1 не е намерен
+edit_saveclose=Запиши & Затвори
+
+info_file=Файл
+info_path=Път:
+info_type=Тип:
+info_size=Размер:
+info_mod=Модифициран на:
+info_link=Връзка към:
+info_perms=Права
+info_user=Потребителски:
+info_group=Групови:
+info_other=Всички други:
+info_octal=Осмични:
+info_sticky=Sticky:
+info_sticky2=Само собсвениците могат да изтриват файлове
+info_own=Собственик
+info_setuid=Setuid:
+info_setuid2=Изпълнявай като потребител
+info_setgid=Setgid:
+info_setgid2=Файловете наследяват група
+info_setgid3=Изпълнявай като група
+info_apply=Приложи промените на
+info_apply1=Само тази директория
+info_apply2=Тази директория и файловете в нея
+info_apply3=Тази директория и всички нейни поддиректории
+info_efailed=Грешка при обновяване на $1 : $2
+info_read=Четене
+info_write=Запис
+info_list=Преглед
+info_exec=Изпълняване
+
+eacl_eacls=Грешка при четене на ACL : $1
+eacl_acltype=ACL Тип
+eacl_aclname=Приложи на
+eacl_aclperms=Права
+eacl_add=Добави ACL от типа :
+eacl_remove=Премахни ACL
+eacl_efs=Файловата система $1 не поддържа ACL
+eacl_create=Създай ACL
+eacl_edit=Редактирай ACL
+eacl_user=Собственик на файл $1
+eacl_group=Група за файл $1
+eacl_eowner=Липсващ потребител или група за прилагане
+eacl_efailed=Грешка при задаване на ACL за $1 : $2
+eacl_emask=Може да съществува само един mask ACL 
+eacl_edefmask=Може да съществува най-много едно подразбиращо се mask ACL
+eacl_title=ACL за $1
+eacl_owner=Собственик на файл
+eacl_edefaults=Ако на файл е задедан подразбиращ се ACL, той трябва да има подразбиращ се потребителски, групов и друг ACL.
+
+acltype_user=Потребител
+acltype_group=Група
+acltype_other=Други
+acltype_mask=Маска
+acltype_default_user=Подразбиращ се потребител
+acltype_default_group=Подразбираща се група
+acltype_default_other=Подразбиращи се други
+acltype_default_mask=Подразбираща се маска
+
+delete_mtitle=Изтрий няколко файла
+delete_dtitle=Изтрой директория
+delete_ftitle=Изтрий файл
+delete_ddesc=Сигурни ли сте, че искате да изтриете директория $1 и всичко в нея?
+delete_fdesc=Сигурни ли сте, че искате да изтриете файл $1 ?
+delete_mdesc=Сигурни ли сте, че искате да изтрие тези файлове и директории? :
+delete_efailed=Грешка при изтриване на $1 : $2
+
+mkdir_title=Създаване на директория
+mkdir_dir=Нова директория:
+mkdir_eexists=$1 вече съществува
+mkdir_efailed=Грешка при създаване на директория : $1
+mkdir_eaccess=Нямате права за създаване на '$1'
+
+link_title=Създаване на препратка
+link_from=Препратка за:
+link_to=Препратка към:
+link_eexists=$1 вече съществува
+link_efailed=Грешка : $1
+link_efrom=Нямате права за създавате препратка на '$1'
+link_efollow=Нямате права за създаване на препратки
+
+rename_title=Преименуване на $1
+rename_old=Старо има:
+rename_new=Ново име:
+rename_ok=Преименувай
+rename_eexists=Файл с име $1 вече съществува
+rename_efailed=Грешка при преименуване : $1
+rename_eold=Нямате права за преименуване на '$1'
+rename_enew=Невъзможно преименуване в '$1'
+
+file_type0=Директория
+file_type1=Текстов файл
+file_type2=Графичен файл
+file_type3=Бинарен файл
+file_type4=Файл
+file_type5=Препратка
+file_type6=Устройство
+file_type7=Pipe
+
+view_enormal=Само обикновенни файлове могат да бъдат разглеждани
+view_enormal2=Само обикновенни файлове могат да бъдат download-вани
+view_eaccess=Нямате права за достъп до $1
+view_eopen=Грешка при отваряне на $1 : $2
+
+paste_ecopy=Трябва да сте копирали или отрязали нещо преди да изпълявате "постави"
+paste_egone=Копираният файл $1 вече не съществува
+paste_eover=$1 не може да бъде презаписан
+paste_eself=Не можете да изпълните "постави" върху същият файл
+paste_emfailed=Грешка при преместване на : $1
+paste_ecfailed=Грешка при копиране на : $1
+
+over_title=Файлът съществува вече
+over_msg=Файлът $1 съществува вече. Използвайте полето за да въведете ново име на файла.
+over_new=Ново име:
+over_ok=Ок
+
+upload_efailed=Грешка при отваряне на upload : $1
+upload_title=Upload на файл
+upload_file=Файл за upload
+upload_dir=Upload в директория
+upload_ok=Upload
+upload_conv=Ковертирай в DOS формат новите редове?
+upload_efile=Не е посочен файл за upload.
+upload_edir=Upload директорията не съществува.
+upload_eperm=Нямате права за създаване на $1
+upload_ewrite=Грешка при запис на $1 : $2.
+upload_already=Файлът $1 вече съществува. Сигурни ли сте, че искате да го презапишете?
+
+find_eaccess=Нямате права за достъп до $1
+find_eexist=$1 не съществува в $2
+find_edir=$1 не е директория в $2
+
+cancel=Откажи
+close=Затвори
+
+chmod_eaccess=Нямате права за достъп до '$1'
+chmod_euser=$1 : несъществуващ потребител
+chmod_egroup=$1 : несъществуваща група
+chmod_elink=Грешка при създаване на препратка : $1
+chmod_echown=Грешка при промяна на собственика : $1
+chmod_echmod=Грешка при промяна на правата : $1
+chmod_efollow=Нямате права за промяна на препратки
+
+copy_efrom=Нямате права да копирате от '$1'
+copy_eto=Нямате права да копирате на '$1'
+copy_elink=грешка при създаване на препратка : $1
+
+delete_eaccess=Нямате права да изтриете '$1'
+
+list_eaccess=Нямате права за достъп до тази директория
+list_edir=Грешка при показване не $1 : $2
+
+move_eto=Нямате права да премесвате в '$1'
+move_afrom=Нямате права да преместите '$1'
+
+acl_user=Достъп до файловете на сървъра като потребител
+acl_user_def=Същият като Webmin login
+acl_umask=Umask за новите файлове
+acl_follow=Винаги следвай препратките?
+acl_ro=Режим само за четене?
+acl_dirs=Разреши достъп само до директориите
+acl_home=Включи home директорията на Webmin потребителя
+acl_log=Записвай в журнала всички промени на файлове?
+acl_goto=Показвай първата разрешена директория?
+
+share_title=Sharing
+share_samba=Windows
+share_nfs=NFS
+share_son=Windows споделяне на файлове разрешено
+share_soff=Windows споделяне на файлове забранено
+share_writable=Права за запис?
+share_available=Разрешем в момента?
+share_sheader=Sharing настройките
+share_only=Само
+share_guest=Анонимен достъп?
+share_comment=Коментар
+share_nheader=Настройки на NFS еспорт
+share_non=NFS споделяне на файлове разрешено
+share_noff=NFS споделяне на файлове забранено
+share_desc=Описание
+share_ro=Хостове с права само за четене
+share_rw=Хостове с права за четене и запис
+share_root=Хостове с админстраторски права
+share_none=Нищо
+share_all=Всичко
+share_listed=Избраните..
+share_host=Хостове
+share_opts=Настройки
+share_s0=Не се доверявай на никой
+share_s1=Довери не не админстраторите
+share_s2=Довери се на всички
+share_lro=Само за четене
+share_lrw=Четене и запис
+
+log_create_export=Създаден NFS експорт $1
+log_modify_export=Модифициран NFS експорт $1
+log_delete_export=Изтрит NFS експорт $1
+log_create_share=Създадено Samba споделяне $1
+log_modify_share=Модофицирано Samba споделяне $1
+log_delete_share=Изтрито Samba споделяне $1
+log_save=Записан е файл $1
+log_chmod=Променени правата на файл $1
+log_mkdir=Създадена директория $1
+log_upload=Upload-нат файл $1
+log_link=Създадене препратка от $1 към $2
+log_relink=Модифициране препратка от $1 към $2
+log_copy=Копиран е файл от $1 на $2
+log_move=Преместен е файл от $1 на $2
+log_delete=Изтри файл $1
+log_attr=Зададени атрибути на файл $1
+log_acl=Зададен ACL на файл $1
+
+search_eaccess=Нямате права за търсене в тази директория
+search_title=Търси файл
+search_ok=Търси
+search_dir=Търси директория
+search_match=Файлове, които
+search_user=Собственост на потребител
+search_group=Собственост на група
+search_any=Всички
+search_type=Вид файл
+search_types_=Всички
+search_types_f=Файл
+search_types_d=Директория
+search_types_l=Прапратка
+search_types_p=Named pipe
+search_size=Размер на файл
+search_more=Повече от
+search_less=По-малко от
+search_xdev=Търси в монтираните у-ва?
+search_edir=Липсваща или невалидна дитректория за търсене
+search_ematch=Липсващ регулярен израз за търсене
+search_euser=Липсващо име на потребител
+search_egroup=Липсващо име на група
+search_esize=Размера на файла трябва да е цяло число
+search_crit=Критерии за търсене
+search_list=Резултати от търсене
+
+facl_eaccess=Нямате права за задаване на ACL ма този файл
+
+attr_eattrs=Грешка при разчитане на атрибутите : $1
+attr_efs=Файловата система $1 не поддържа атрибути
+attr_add=Добави атрибут
+attr_name=Име на атрибут
+attr_value=Стойност на атрибут
+attr_efailed=Грешка при разчитане на атрибутите $1 : $2
+attr_title=Файлови атрибути на $1
+attr_create=Добави атрибут
+attr_edit=Промяна на атрибут
+attr_ename=Липсва име на атрибут
+
+ext_eattrs=Грешка при разчитане на EXT атрибутите : $1
+ext_efs=Файловата система $1 не поддържа EXT атрибути
+ext_title=EXT атрибути на $1
+ext_header=EXT файлови атрибути
+ext_efailed=Гершка при задаване атрибутите на  $1 : $2
+
+eattr_A=Не обновявай последният момент на достъп
+eattr_a=Може само да бъде добавяно към файла
+eattr_c=Компресирай данните на диск
+eattr_d=Не прави backup със dump
+eattr_i=Забрави модификации
+eattr_s=Запълни с нули при изтриване
+eattr_S=Винаги прави sync след операция за запис
+eattr_u=Записи съдържанието за да има възможност за връщане на изтрит файл
+
+mount_eaccess=Нямате права за монтиране на файлови системи
+mount_efstab=Няма намерена файлова състема на посоченият mounth point
+mount_epoint=$1 е невалиден mount point
+mount_rusure1=Сигурни ли сте, че искате да монтирате $1 от $2 ?
+mount_rusure2=Сигурни ли сте, че искате да размонтиране $1 от $2 ?
+mount_err1=Грешка при монтиране $1 : $2
+mount_err2=Грешка при размонтиране $1 : $2
+mount_title1=Монтирана е файлова система
+mount_title2=Размонтиране е файлова система
+

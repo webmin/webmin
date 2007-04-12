@@ -1,0 +1,8 @@
+hide_dot_files=Show files starting with a dot?,1,0-Yes,1-No
+iconsize=Size of buttons in toolbar,1,1-Small,0-Large with labels
+nocharset=Attempt to use proper character set?,1,0-Yes,1-No
+extract=Extract .class files from JAR?,1,1-Yes,0-No
+width=Width for scaled images,3,Default (300 pixels)
+fixed=Font size for text,3,Default (12 points)
+small_fixed=Font size for buttons,3,Default (10 points)
+force_text=Editor for HTML files,1,1-Text editor,0-HTML editor

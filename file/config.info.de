@@ -1,0 +1,4 @@
+hide_dot_files=Zeige Dateien mit einem Punkt am Anfang?,1,0-Ja,1-Nein
+iconsize=Gr&#246;&#223;e der Buttons in der Toolbar,1,1-Klein,0-Gro&#223; mit Bildunterschrift
+nocharset=Versuche passende Zeichens&#228;tze zu benutzen?,1,0-Ja,1-Nein
+extract=.class&#45;Dateien aus dem JAR extrahieren?,1,1-Ja,0-Nein

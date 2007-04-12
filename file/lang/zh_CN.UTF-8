@@ -1,0 +1,323 @@
+index_title=文件管理器
+index_nojava=本模块需要java支持才能工作，但是您的浏缆器不支持java
+index_eremote=没有区配 Webmin登录名 $1 的Unix用户。
+switch_euser=Unix 用户不存在！
+
+top_ret=索引
+top_down=保存
+top_edit=编辑
+top_refresh=刷新
+top_info=信息
+top_eacl=ACL
+top_attr=属性
+top_ext=扩展
+top_delete=删除
+top_new=新建
+top_upload=上传
+top_rename=改名
+top_copy=复制
+top_cut=剪切
+top_paste=粘贴
+top_share=共享
+top_mount=加载
+top_search=查找
+top_config=配置
+
+right_name=名称
+right_size=大小
+right_user=用户
+right_group=组
+right_date=日期
+
+edit_enormal=只能编辑正常文件
+edit_title=正在编辑 $1
+edit_title2=正在创建文件
+edit_filename=文件名：
+edit_goto=转到
+edit_find=查找
+edit_gotoline=转到行
+edit_replace=替换
+edit_all=全部替换
+edit_searchfor=搜索
+edit_replaceby=被替换
+edit_eover=$1 不能被覆盖
+edit_esave=保存文件失败 ： $1
+edit_eaccess=你未被允许保存 '$1'
+edit_notfound=未找到文本 $1 
+edit_saveclose=保存并关闭
+
+info_file=文件
+info_path=路径：
+info_type=类型：
+info_size=大小：
+info_mod=修改：
+info_link=联结到：
+info_perms=许可
+info_user=用户：
+info_group=组：
+info_other=其它：
+info_octal=八进制：
+info_sticky=粘性：
+info_sticky2=只有所由者才能删除文件
+info_own=所有权
+info_setuid=设置 uid：
+info_setuid2=以用户执行
+info_setgid=设置 gid：
+info_setgid2=文件继承组
+info_setgid3=以组执行
+info_apply=应用更改至
+info_apply1=仅此目录
+info_apply2=本目录及其文件
+info_apply3=本目录及其所有子目录
+info_efailed=更新 $1 ：$2 失败
+info_read=读取
+info_write=写入
+info_list=列表
+info_exec=执行
+
+eacl_eacls=读取 ACLs 失败 ： $1
+eacl_acltype=ACL 类型
+eacl_aclname=应用到
+eacl_aclperms=许可
+eacl_add=添加 类型的ACL：
+eacl_remove=移除ACL
+eacl_efs=文件系统 $1 不支持 ACLs
+eacl_create=创建 ACL
+eacl_edit=编辑 ACL
+eacl_user=文件所有者 $1
+eacl_group=文件组 $1
+eacl_eowner=缺少要应用到的用户或组
+eacl_efailed=为$1 ： $2设置ACLs失败
+eacl_emask=最多只能有一个掩码 ACL 条目
+eacl_edefmask=最多只能有一个默认掩码 ACL 条目
+eacl_title=$1的ACL
+eacl_owner=文件所有者
+eacl_edefaults=如果一个文件有任何默认的ACL，则它必须有默认用户，组和其他的ACLs。
+
+acltype_user=用户
+acltype_group=组
+acltype_other=其他
+acltype_mask=掩码
+acltype_default_user=默认用户
+acltype_default_group=默认组
+acltype_default_other=默认其他
+acltype_default_mask=默认掩码
+
+delete_mtitle=删除多个文件
+delete_dtitle=删除目录
+delete_ftitle=删除文件
+delete_ddesc=确实要永久删除目录 $1 及其内容？
+delete_fdesc=确实要永久删除文件 $1？
+delete_mdesc=确实要永久删除这些目录和文件？ ：
+delete_efailed=删除 $1 ：$2 失败
+
+mkdir_title=新建目录
+mkdir_dir=新建目录：
+mkdir_eexists=$1 已经存在
+mkdir_efailed=创建目录 $1 失败
+mkdir_eaccess=你无权创建 '$1'
+
+link_title=创建链接
+link_from=链接自：
+link_to=链接到：
+link_eexists=$1 已经存在
+link_efailed=链接失败：$1
+link_efrom=你无权链接自 '$1'
+link_efollow=你无权创建符号链接
+
+rename_title=重命名$1
+rename_old=原名：
+rename_new=新名：
+rename_ok=重命名
+rename_eexists=文件 $1 已存在
+rename_efailed=重命名失败： $1
+rename_eold=你无权重命名 '$1'
+rename_enew=你无权重命名为 '$1'
+
+file_type0=目录
+file_type1=文本文件
+file_type2=映象文件
+file_type3=二进制文件
+file_type4=文件
+file_type5=符号链接
+file_type6=设备文件
+file_type7=管道
+
+view_enormal=只能查看正常文件
+view_enormal2=只能下载正常文件
+view_eaccess=你无权访问 $1
+view_eopen=打开 $1： $2 失败
+
+paste_ecopy=在粘贴之前必须剪切或拷贝
+paste_egone=拷贝的文件 $1 已经不存在
+paste_eover=$1 不能覆盖
+paste_eself=不能将文件粘贴至自身
+paste_emfailed=移动失败：$1
+paste_ecfailed=拷贝失败：$1
+
+over_title=文件存在
+over_msg=文件 $1 已经存在。在下面的字段中为要粘贴的文件输入一个新名。
+over_new=新文件名：
+over_ok=确定
+
+upload_efailed=打开上传失败：$1
+upload_title=上传文件
+upload_file=要上传的文件
+upload_dir=上传到目录
+upload_ok=上传
+upload_conv=是否转换DOS换行符号？
+upload_efile=没有选定要上传的文件。
+upload_edir=上传目录不存在。
+upload_eperm=你无权创建 $1
+upload_ewrite=写入 $1：$2 失败。
+upload_already=文件 $1 已经存在。您确定要覆盖它吗？
+
+find_eaccess=你无权访问 $1
+find_eexist=在$2中不存在$1
+find_edir=$1 不是 $2 中的目录
+
+cancel=取消
+close=关闭
+
+chmod_eaccess=你无权访问 '$1'
+chmod_euser=$1：无此用户
+chmod_egroup=$1：无此用户组
+chmod_elink=symlink 失败：$1
+chmod_echown=chown 失败：$1
+chmod_echmod=chmod 失败：$1
+chmod_efollow=您未被允许编辑符号链接
+
+copy_efrom=你无权从 '$1' 拷贝
+copy_eto=你无权拷贝到 '$1'
+copy_elink=symlink 失败 '$1'
+
+delete_eaccess=你无权删除 '$1'
+
+list_eaccess=你无权访问此目录
+list_edir=显示列表失败 $1 ： $2
+
+move_eto=你无权移动到 '$1'
+move_afrom=你无权移动 '$1'
+
+acl_user=作为用户访问服务器的文件
+acl_user_def=与Webmin登录相同
+acl_umask=对新文件去除掩码
+acl_follow=是否总是跟随符号链接？
+acl_ro=只读模式？
+acl_dirs=仅允许访问目录
+acl_home=包含Webmin用户的主目录？
+acl_log=对所有文件的修改保存日志？
+acl_goto=打开最先允许的目录？
+
+share_title=共享
+share_samba=Windows
+share_nfs=NFS
+share_son=启用 Windows 文件共享
+share_soff=禁用 Windows 文件共享
+share_writable=可写入？
+share_available=现在活动吗？
+share_sheader=共享选项
+share_only=仅
+share_guest=Guest 访问？
+share_comment=注释
+share_nheader=NFS 导出选项
+share_non=已启用 NFS 文件共享
+share_noff=已禁用 NFS 文件共享
+share_desc=描述
+share_ro=只读主机
+share_rw=读写主机
+share_root=Root 访问主机
+share_none=无
+share_all=所有
+share_listed=已列出的…
+share_host=主机
+share_opts=选项
+share_s0=不信任任何人
+share_s1=信任非 Root 用户
+share_s2=信任所有人
+share_lro=只读
+share_lrw=读写
+
+log_create_export=已创建的 NFS 导出 $1
+log_modify_export=已修改的 NFS 导出 $1
+log_delete_export=已删除的 NFS 导出 $1
+log_create_share=已创建的 Samba 共享 $1
+log_modify_share=已修改的 Samba 共享 $1
+log_delete_share=已删除的 Samba 共享 $1
+log_save=已保存文件 $1
+log_chmod=已改变文件 $1 的权限
+log_mkdir=已创建的目录 $1
+log_upload=已上传的文件 $1
+log_link=已创建的符号连接 $1 到 $2
+log_relink=已修改的符号连接 $1 到 $2
+log_copy=已拷贝的文件 $1 到 $2
+log_move=已移动的文件 $1 到 $2
+log_delete=已删除的文件 $1
+log_attr=设置文件 $1 的属性
+log_acl=设置文件 $1 的ACL
+
+search_eaccess=您无权搜索此目录
+search_title=找到文件
+search_ok=现在搜索
+search_dir=搜索目录
+search_match=文件匹配
+search_user=用户所有
+search_group=组所有
+search_any=任何
+search_type=文件类型
+search_types_=任何
+search_types_f=文件
+search_types_d=目录
+search_types_l=符号连接
+search_types_p=命名管道
+search_size=文件大小
+search_more=多于
+search_less=少于
+search_xdev=搜索以前的加载？
+search_edir=丢失或无效的搜索目录
+search_ematch=丢失匹配的正则表达式
+search_euser=丢失用户名
+search_egroup=丢失组名
+search_esize=文件大小值必须是整数
+search_crit=搜索标准
+search_list=搜索结果
+
+facl_eaccess=你未被允许设置此文件的ACLs
+
+attr_eattrs=获取属性失败：$1
+attr_efs=文件系统 $1 不支持属性
+attr_add=添加属性
+attr_name=属性名称
+attr_value=属性值
+attr_efailed=为 $1 ： $2 设置属性失败
+attr_title=$1的文件属性
+attr_create=添加属性
+attr_edit=编辑属性
+attr_ename=缺少属性名称
+
+ext_eattrs=获取扩展属性失败： $1
+ext_efs=文件系统 $1 不支持扩展属性
+ext_title=$1 的扩展属性
+ext_header=扩展文件属性
+ext_efailed=为 $1 ： $2设置属性失败
+
+eattr_A=不更新访问次数
+eattr_a=只能添加到文件末尾
+eattr_c=压缩磁盘数据
+eattr_d=不使用dump备份
+eattr_i=不允许修改
+eattr_s=删除时将块归零
+eattr_S=写入后总是同步
+eattr_u=为反删除保存内容
+
+mount_eaccess=你未被允许加载文件系统
+mount_efstab=此加载点上不存在文件系统
+mount_epoint=$1 不是加载点
+mount_rusure1=你确定要从 $2加载 $1 吗？
+mount_rusure2=你确定要从 $2卸载 $1 吗？
+mount_err1=加载失败 $1 ： $2
+mount_err2=卸载失败 $1 ： $2
+mount_title1=加载文件系统
+mount_title2=卸载文件系统
+
+

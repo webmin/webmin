@@ -1,0 +1,48 @@
+   /*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
+    --  Xinha example CSS file.  This is ripped from Trac ;)
+    --
+    --  $HeadURL: http://svn.xinha.python-hosting.com/tags/0.92beta/examples/full_example.css $
+    --  $LastChangedDate: 2007-01-19 23:24:36 +0100 (Fr, 19 Jan 2007) $
+    --  $LastChangedRevision: 677 $
+    --  $LastChangedBy: ray $
+    --------------------------------------------------------------------------*/
+
+ body {
+   background: #fff;
+   color: #000;
+   margin: 10px;
+  }
+  body, th, td {
+   font: normal 13px verdana,arial,'Bitstream Vera Sans',helvetica,sans-serif;
+  }
+  h1, h2, h3, h4 {
+   font-family: arial,verdana,'Bitstream Vera Sans',helvetica,sans-serif;
+   font-weight: bold;
+   letter-spacing: -0.018em;
+  }
+  h1 { font-size: 21px; margin: .15em 1em 0 0 }
+  h2 { font-size: 16px; margin: 2em 0 .5em; }
+  h3 { font-size: 14px; margin: 1.5em 0 .5em; }
+  hr { border: none;  border-top: 1px solid #ccb; margin: 2em 0; }
+  address { font-style: normal }
+  img { border: none }
+
+  :link, :visited {
+   text-decoration: none;
+   color: #b00;
+   border-bottom: 1px dotted #bbb;
+  }
+  :link:hover, :visited:hover {
+   background-color: #eee;
+   color: #555;
+  }
+  h1 :link, h1 :visited ,h2 :link, h2 :visited, h3 :link, h3 :visited,
+  h4 :link, h4 :visited, h5 :link, h5 :visited, h6 :link, h6 :visited {
+   color: inherit;
+  }
+
+  .area_holder
+  {
+    margin:10px;
+  }
+  label {font-size: 11px;}

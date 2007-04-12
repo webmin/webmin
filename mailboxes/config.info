@@ -1,0 +1,76 @@
+line0=Configurable options,11
+wrap_width=Width to wrap mail messages at,0,6
+perpage=Mail messages to display per page,0,6
+track_read=Keep track of read/unread emails,1,1-Yes,0-No
+show_to=Show To: address in mailboxes?,1,1-Yes,0-No
+max_records=Maximum number of users to display,0,6
+top_buttons=Show buttons at top for,1,2-Mailboxes and mails,1-Mailboxes only,0-Never
+arrows=Show pager arrows at bottom for,1,2-Mailboxes and mails,1-Mailboxes only,0-Never
+show_delall=Show button to delete entire mailbox?,1,1-Yes,0-No
+show_size=User display mode,1,0-Username only,1-Username and size,2-Full details
+show_size_below=&nbsp; &nbsp; &nbsp; &nbsp;Username and size - Where to display size,1,0-To the right of username,1-Below the username
+column_count=Number of columns in which to display usernames,1,3-3,4-4,5-5,6-6,7-7,8-8,9-9
+ignore_users=Ignore these usernames (do not show),15,userIgnoreList
+ignore_users_enabled=&nbsp; &nbsp; &nbsp; &nbsp; Ignore list status,1,1-Enabled,0-Disabled
+show_count=Show number of messages in inbox?,1,1-Yes,0-No
+show_sent=Show number of messages in sent mail folder?,1,1-Yes,0-No
+sort_mode=Sort mailboxes by,1,2-Size,1-Username,0-Order in password file
+show_mail=Only show users who have mail?,1,1-Yes,0-No
+size_mode=Include all folders in size?,1,1-Yes,0-No (first folder only)
+fwd_mode=Forward messages with quoting?,1,0-Yes,1-No
+delete_warn=Ask for confirmation before deleting?,10,y-Yes,n-No,For mbox files larger than
+view_html=Show message body as,4,0-Always plain text,1-Text if possible&#44; HTML otherwise,2-HTML if possible&#44; text otherwise,3-Convert HTML to plain text
+html_edit=Use HTML editor for composing?,1,2-Always,1-When replying to HTML email,0-Never
+html_quote=HTML quoting mode,1,1-Message below &lt;hr&gt;,0-Message inside &lt;blockquote&gt;
+check_mod=Check for mailbox modification when deleting mail?,1,1-Yes,0-No
+log_read=Record the reading of mail in the Webmin Actions Log?,1,1-Yes,0-No
+bcc_to=Bcc: sent messages to,0
+sig_file=Signature file,10,*-None,.signature-~/.signature,Other file
+show_body=Show message body previews in list?,1,1-Yes,0-No
+open_mode=Open messages in,1,1-New window,0-List window
+link_mode=Open links in,1,1-New window,0-Same window
+download=Attachment MIME types to always download,9,20,4,\t
+date_fmt=Date format in mail list,1,dmy-DD/MM/YYYY,mdy-MM/DD/YYYY,ymd-YYYY/MM/DD
+date_tz=Timezone for date displays,3,System default
+
+line3=Spam options,11
+spam_buttons=Show spam reporting buttons for,2,list-Mailboxes,mail-Messages
+spam_del=Delete spam when reporting?,1,1-Yes,0-No
+spam_report=Report spam using,1,sa_learn-sa&#45;learn --spam,spamassassin-spamassasin -r,-Decide automatically
+
+line3.5=From address options,11
+from_addr=From: address to use when sending email manually,3,From mailbox username
+webmin_from=From: address to use when Webmin sends email,3,Default (webmin@<i>yourhost</i>)
+from_virtualmin=Get From: address from Virtualmin?,1,1-Yes,0-No
+from_dom=Domain to use in From: address,3,System hostname
+
+line1=System configuration,11
+mail_system=Mail server installed,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,3-Detect automatically
+send_mode=Send mail using,10,-Mail server program,SMTP server
+no_crlf=Add carriage return ( \r ) to each line?,1,0-Yes,1-No
+smtp_user=SMTP login name for mail server,3,None
+smtp_pass=SMTP password for mail server,3,None
+smtp_auth=SMTP authentication method,4,-Default,Cram-MD5-Cram&#45;MD5,Digest-MD5-Digest&#45;MD5,Plain-Plain,Login-Login
+auto=Detect location of mail files automatically?,1,1-Yes&#44; based on mail server,0-No&#44; use settings below ..
+mail_dir=User mail file directory,3,None
+mail_style=Mail file directory style,4,0-mail/username,1-mail/u/username,2-mail/u/us/username,3-mail/u/s/username
+mail_file=Mail file in user home directories,3,None
+mail_sub=Mail directory in user home directories,3,None
+mail_usermin=Usermin-style folders subdirectory in home directory,3,None
+mailbox_user=Usermin Read Mail configuration directory in home directory,3,None
+
+line2=User synchronization,11
+sync_create=Create mailbox when user is created?,1,1-Yes,0-No
+sync_modify=Rename mailbox when user is renamed?,1,1-Yes,0-No
+sync_delete=Delete mailbox when user is deleted?,1,1-Yes,0-No
+sync_perms=Permissions for new mailboxes,0,4
+
+line4=VPOPMail options,11
+vpopmail_dir=Base directory for VPOPMail,0
+
+line5=Qmail+LDAP options,11
+ldap_host=LDAP server,0
+ldap_port=LDAP port,3,Default
+ldap_login=Login for LDAP server,0
+ldap_pass=Password for LDAP server,0
+ldap_base=Base for mail users,0

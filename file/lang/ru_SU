@@ -1,0 +1,299 @@
+index_title=Менеджер файлов
+index_nojava=Для функционирования этого модуля требуется java, однако ваш браузер java не поддерживает
+index_eremote=Нет пользователя Unix соответствующего пользователю Webmin $1.
+switch_euser=Пользователь Unix не существует!
+
+top_ret=Меню
+top_down=Сохранить
+top_edit=Изменить
+top_refresh=Обновить
+top_info=Свойства
+top_eacl=ACL
+top_attr=Атрибуты
+top_ext=EXT
+top_delete=Удалить
+top_new=Ссылка
+top_upload=Загрузить
+top_rename=Переименовать
+top_copy=Копировать
+top_cut=Вырезать
+top_paste=Вставить
+top_share=Сеть
+top_search=Найти
+
+right_name=Имя
+right_size=Размер
+right_user=Пользователь
+right_group=Группа
+right_date=Дата
+
+edit_enormal=Можно редактировать только обычные файлы
+edit_title=Редактирование $1
+edit_title2=Создание файла
+edit_filename=Имя файла:
+edit_eover=$1 не может быть перезаписан
+edit_esave=Не удалось сохранить файл : $1
+edit_eaccess=У вас недостаточно прав для сохранения '$1'
+
+info_file=Файл
+info_path=Путь:
+info_type=Тип:
+info_size=Размер:
+info_mod=Изменен:
+info_link=Ссылка на:
+info_perms=Права
+info_user=Пользователя:
+info_group=Группы:
+info_other=Прочих:
+info_octal=Восьмеричный вид:
+info_sticky=Бит sticky:
+info_sticky2=Только владельцы могут удалять файлы
+info_own=Принадлежность
+info_setuid=Бит setuid:
+info_setuid2=Выполнять от имени пользователя
+info_setgid=Бит setgid:
+info_setgid2=Файлы наследуют группу
+info_setgid3=Выполнять от имени группы
+info_apply=Применить изменения
+info_apply1=Только к этому каталогу
+info_apply2=К этому каталогу и его файлам
+info_apply3=К Этому каталогу и всем его подкаталогам
+info_efailed=Не удалось обновить $1 : $2
+info_read=Чтение
+info_write=Запись
+info_list=Просмотр
+info_exec=Выполнение
+
+eacl_eacls=Не удалось считать ACL : $1
+eacl_acltype=Тип ACL
+eacl_aclname=Применить к
+eacl_aclperms=Права
+eacl_add=Добавить ACL :
+eacl_remove=Удалить ACL
+eacl_efs=Эта файловая система $1 не поддерживает ACL
+eacl_create=Создать ACL
+eacl_edit=Изменить ACL
+eacl_user=Владелец файла $1
+eacl_group=Группа файла $1
+eacl_eowner=Не указан пользователь или группа для которой вносятся изменения
+eacl_efailed=Не удалось установить ACL для $1 : $2
+eacl_emask=There can be at most one mask ACL entry
+eacl_edefmask=There can be at most one default mask ACL entry
+eacl_title=ACL для $1
+eacl_owner=Владелец файла
+eacl_edefaults=If a file has any default ACL, it must have default user, group and other ACLs.
+
+acltype_user=Пользователь
+acltype_group=Группа
+acltype_other=Прочие
+acltype_mask=Маска
+acltype_default_user=Пользователь по умолчанию
+acltype_default_group=Группа по умолчанию
+acltype_default_other=Прочие по умолчанию
+acltype_default_mask=Маска по умолчанию
+
+delete_mtitle=Удаление нескольких файлов
+delete_dtitle=Удаление каталога
+delete_ftitle=Удаление файла
+delete_ddesc=Навсегда удалить каталог $1 со всем его содержимым?
+delete_fdesc=Навсегда удалить файл $1 ?
+delete_mdesc=Навсегда удалить указанные файлы и каталоги? :
+delete_efailed=Не удалось удалить $1 : $2
+
+mkdir_title=Новый каталог
+mkdir_dir=Новый каталог:
+mkdir_eexists=$1 уже существует
+mkdir_efailed=Не удалось создать каталог : $1
+mkdir_eaccess=У вас недостаточно прав для создания '$1'
+
+link_title=Создание ссылки
+link_from=Источник:
+link_to=Место назначения:
+link_eexists=$1 уже существует
+link_efailed=Создать ссылку не удалось : $1
+link_efrom=У вас недостаточно прав для создания ссылки '$1'
+link_efollow=У вас недостаточно прав для создания ссылок
+
+rename_title=Переименование $1
+rename_old=Старое имя:
+rename_new=Новое имя:
+rename_ok=Переименовать
+rename_eexists=Файл с именем $1 уже существует
+rename_efailed=Переименовать не удалось : $1
+rename_eold=У вас недостаточно прав для переименования '$1'
+rename_enew=У вас недостаточно прав для переименования в '$1'
+
+file_type0=Каталог
+file_type1=Текстовый файл
+file_type2=Файл изображения
+file_type3=Бинарный файл
+file_type4=Файл
+file_type5=Символьная ссылка
+file_type6=Файл устройства
+file_type7=Канал
+
+view_enormal=Можно просматривать только обычные файлы
+view_enormal2=Можно загружать только обычные файлы
+view_eaccess=У вас недостаточно прав для доступа к $1
+view_eopen=Не удалось открыть $1 : $2
+
+paste_ecopy=Перед вставкой необходимо вырезать или копировать
+paste_egone=Копируемый файл $1 больше не существует
+paste_eover=$1 не может быть перезаписан
+paste_eself=Нельзя переписать файл самим собой
+paste_emfailed=Не удалось переместить : $1
+paste_ecfailed=Не удалось скопировать : $1
+
+over_title=Файл существует
+over_msg=Файл $1 уже существует. Укажите для вставляемого файла новое имя.
+over_new=Новое имя файла:
+over_ok=ОК
+
+upload_efailed=Не удалось начать загрузку : $1
+upload_title=Загрузка файла
+upload_file=Файл для загрузки
+upload_dir=Загружать в каталог
+upload_ok=Загрузить
+upload_conv=Преобразовать переводы строк DOS?
+upload_efile=Не выбран файл для загрузки.
+upload_edir=Каталог для загрузки не существует.
+upload_eperm=У вас недостаточно прав для создания $1
+upload_ewrite=Не удалось записать в $1 : $2.
+
+find_eaccess=У вас недостаточно прав для доступа к $1
+find_eexist=$1 не существует в $2
+find_edir=$1 не является каталогом в $2
+
+cancel=Отмена
+
+chmod_eaccess=У вас недостаточно прав для доступа к '$1'
+chmod_euser=$1 : нет такого пользователя
+chmod_egroup=$1 : нет такой группы
+chmod_elink=Ошибка при вызове symlink : $1
+chmod_echown=Ошибка при вызове chown : $1
+chmod_echmod=Ошибка при вызове chmod : $1
+chmod_efollow=У вас недостаточно прав для изменения символьных ссылок
+
+copy_efrom=У вас недостаточно прав для копирования из '$1'
+copy_eto=У вас недостаточно прав для копирования в '$1'
+copy_elink=Ошибка при вызове symlink : $1
+
+delete_eaccess=У вас недостаточно прав для удаления '$1'
+
+list_eaccess=У вас недостаточно прав для доступа к этому каталогу
+list_edir=Не удалось просмотреть $1 : $2
+
+move_eto=У вас недостаточно прав для перемещения в '$1'
+move_afrom=У вас недостаточно прав для перемещения '$1'
+
+acl_user=Обращаться к файлам на сервере под именем пользователя
+acl_user_def=Пользователя Webmin
+acl_umask=Umask для новых файлов
+acl_follow=Всегда переходить по символьным ссылкам?
+acl_ro=Режим только для чтения?
+acl_dirs=Позволять доступ только к каталогам
+acl_home=Включая домашний каталог пользователя Webmin
+acl_log=Вести журнал всех изменений файлов?
+acl_goto=Открывать первый доступный каталог?
+
+share_title=Доступ по сети
+share_samba=Windows
+share_nfs=NFS
+share_son=Доступ из сети Windows разрешен
+share_soff=Доступ из сети Windows запрещен
+share_writable=Запись разрешена?
+share_available=Доступен в данный момент?
+share_sheader=Настройка доступа
+share_only=Только
+share_guest=Доступ без аутентификации (Guest)?
+share_comment=Комментарий
+share_nheader=Настройка доступа по протоколу NFS
+share_non=Доступ по NFS разрешен
+share_noff=Доступ по NFS запрещен
+share_desc=Описание
+share_ro=Узлы, имеющие доступ только для чтения
+share_rw=Узлы, имеющие доступ для чтения и записи
+share_root=Узлы, для которых разрешен доступ с правами root
+share_none=Нет
+share_all=Все
+share_listed=Указанные..
+share_host=Узлы
+share_opts=Настройка
+share_s0=Доверять nobody
+share_s1=Доверять не-root
+share_s2=Доверять всем
+share_lro=Только чтение
+share_lrw=Чтение/запись
+
+log_create_export=Создан ресурс NFS $1
+log_modify_export=Изменен ресурс NFS $1
+log_delete_export=Удален ресурс NFS $1
+log_create_share=Создан ресурс Samba $1
+log_modify_share=Изменен ресурс Samba $1
+log_delete_share=Удален ресурс Samba $1
+log_save=Сохранен файл $1
+log_chmod=Изменены права на файл $1
+log_mkdir=Создан каталог $1
+log_upload=Загружен файл $1
+log_link=Создана символьная ссылка $1 на $2
+log_relink=Изменена символьная ссылка $1 на $2
+log_copy=Скопирован файл $1 в $2
+log_move=Перемещен файл $1 в $2
+log_delete=Удален файл $1
+log_attr=Изменены атрибуты файла $1
+log_acl=Для файла $1 назначен ACL
+
+search_eaccess=У вас недостаточно прав для поиска в этом каталоге
+search_title=Поиск файлов
+search_ok=Искать
+search_dir=Искать в каталоге
+search_match=Файлы совпадающие с
+search_user=Принадлежащие пользователю
+search_group=Принадлежащие группе
+search_any=Любой
+search_type=Тип файла
+search_types_=Любой
+search_types_f=Файл
+search_types_d=Каталог
+search_types_l=Символьная ссылка
+search_types_p=Именованный канал
+search_size=Размер файла
+search_more=Более
+search_less=Менее
+search_xdev=Искать в подмонтированных файловых системах?
+search_edir=Каталог для поиска не указан или указан неверно
+search_ematch=Регулярное выражение для поиска не указано или указано неверно
+search_euser=Имя пользователя не указано или указано неверно
+search_egroup=Имя группы не указано или указано неверно
+search_esize=Размер файла должен быть целым числом
+search_crit=Критерий поиска
+search_list=Результаты поиска
+
+facl_eaccess=У вас недостаточно прав для изменения ACL для этого файла
+
+attr_eattrs=Не удалось считать атрибуты : $1
+attr_efs=Файловая система $1 не поддерживает атрибуты
+attr_add=Добавить атрибут
+attr_name=Название атрибута
+attr_value=Значение атрибута
+attr_efailed=Не удалось установить атрибуты для $1 : $2
+attr_title=Атрибуты файла для $1
+attr_create=Добавить атрибут
+attr_edit=Изменить атрибут
+attr_ename=Не указано название атрибута
+
+ext_eattrs=Не удалось получить атрибуты EXT : $1
+ext_efs=Файловая система $1 не поддерживает атрибуты EXT
+ext_title=Атрибуты EXT для $1
+ext_header=Атрибуты EXT файла
+ext_efailed=Не удалось установить атрибуты EXT $1 : $2
+
+eattr_A=Не обновлять время доступа
+eattr_a=Возможно только добавление к файлу
+eattr_c=Сжимать данные на диске
+eattr_d=Не производить резервное копирование с помощью dump
+eattr_i=Запретить изменение
+eattr_s=Обнулять блоки при удалении
+eattr_S=Всегда синхронизировать после записи
+eattr_u=Сохранять содержимое файла для восстановления
+
