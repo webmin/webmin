@@ -1,0 +1,28 @@
+<header>Autoryzacja</header>
+
+Ta strona s³u¿y do ustawiania opcji zwi±zanych z&nbsp;autoryzacj± dla serwera
+SSH. Niektórymi mniej oczywistymi opcjami s±&nbsp;:
+
+<dl>
+<dt><b>Zezwalaæ na autoryzacjê has³em</b>
+<dd>Je¶li jest ona ustawiona na Nie, u¿ytkownicy bêd± musieli mieæ
+    ustawione klucze publiczne w swoich katalogach <tt>.ssh</tt>, zanim
+    uzyskaj± mo¿liwo¶æ zalogowania siê. Je¶li ustawione na Tak, u¿ytkownik
+    bêdzie mia³ mo¿liwo¶æ podania has³a dla autoryzacji w&nbsp;wprzypadku
+    niemo¿liwo¶ci weryfikacji za pomoc± klucza publicznego. <p>
+
+<dt><b>Zezwalaæ na autoryzacjê RSA?</b>
+<dd>Je¶li jest ona ustawiona na Nie, u¿ytkownicy bêd± zawsze musieli podawaæ
+    swoje has³a, nawet gdy zostan± ustawione ich klucze publiczne. <p> 
+
+<dt><b>Sprawdzaæ prawa dostêpu do plików z&nbsp;kluczami?</b>
+<dd>Je¶li ustawione na Tak, serwer SSH bêdzie sprawdza³ katalogi <tt>.ssh</tt>
+    u¿ytkowników i&nbsp;ich katalogi nadrzêdne, aby siê upewniæ, ¿e nie maj±
+    one praw zapisu dla grupy, oraz czy plik <tt>.ssh/identity</tt>, aby siê
+    upewniæ, ¿e nie ma on praw odczytu dla kogokolwiek innego. Je¶li ustawione
+    na Nie, ¿adna kontrola praw dostêpu do plików nie bêdzie przeprowadzana.
+    <p>
+
+</dl>
+<hr>
+

@@ -1,0 +1,49 @@
+---- Changes since 1.150 ----
+Updated the Module Config setting for password encryption to support both standard Unix MD5 and the MD5 variant output by the slappasswd program.
+When a user's home directory is a symlink, both the target of the link and the link itself are deleted.
+Added the ability to edit shadow password attributes for Unix users. Thanks to Stephan Borg for this and the following feature.
+Added the ability to re-name a Unix group.
+---- Changes since 1.160 ----
+Added API functions for managing users and groups, with the same interface as those in the Users and Groups module.
+IMAP folders to create can now contain spaces.
+---- Changes since 1.170 ----
+Added support for pre- and post- change scripts, set on the Module Config page.
+Added Module Config options to set defaults for Samba and LDAP options.
+Added a Module Config option to select sources for the shell list. This can speed up display of the user editing form if the database has a large number of users.
+Copied the batch user creation, modification and deletion feature from the Users and Groups module to this one.
+Improved support for systems that are not using NSS to get Unix users and groups from the LDAP database being managed.
+Added Module Config options for overriding those in the Users and Groups module.
+---- Changes since 1.180 ----
+Groups can now be now be flagged as Samba groups, which adds the sambaGroup object class.
+Multiple object classes for IMAP users can now be specified.
+If more than one LDAP server host is listed in the configuration file, they will be tried in turn until a successful connection is made.
+---- Changes since 1.200 ----
+Added Module Config page options for extra properties for LDAP groups, similar to those for users.
+---- Changes since 1.210 ----
+Added access control (configurable in the Webmin Users module) to restrict which users and groups can be managed.
+Added checkboxes on the main page for deleting multiple users or groups at once.
+Multiple users can be locked or un-locked at once from the module's main page.
+---- Changes since 1.220 ----
+When creating users from a batch file, a new option is available to create Samba LDAP properties for them as well.
+Users and groups can be searched using greater-than and less-than comparisons.
+---- Changes since 1.240 ----
+Added an extra Module Config field for specifying custom attributes for which duplicates are not allowed, like a user's email address.
+---- Changes since 1.250 ----
+When deleting multiple users, their address book entries and IMAP inbox are deleted too.
+---- Changes since 1.260 ----
+Add LDAP attributes for created, modified and deleted users are made available to pre and post scripts in the USERADMIN_LDAP_* environment variables.
+Changed the way the given name and surname attributes are stored.
+Password quality restrictions set in the Users and Groups module are also checked in this module.
+---- Changes since 1.270 ----
+The sambaPwdLastSet and sambaPwdCanChange LDAP attributes are updated when a Samba user's password is changed.
+When deleting an IMAP user, the address book is fully removed by a recursive delete.
+---- Changes since 1.280 ----
+Enhanced the batch file format to allow atrbitrary LDAP attributes to be specified in name=value format for new or modified users.
+---- Changes since 1.290 ----
+The IMAP quota for users with access to Cyrus is now editable, rather than being fixed on  the Module Config page.
+Added a Module Config option to display secondary groups as a text box, which makes more sense on systems with a large number of groups.
+---- Changes since 1.310 ----
+In a user batch file, # is only treated as a comment at the start of a line.
+For Samba users, the primary group SID is taken from the actual SID of the selected primary group, where available.
+---- Changes since 1.320 ----
+Limit the result size to the configured display maximum when requesting users and groups from the LDAP server.

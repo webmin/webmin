@@ -1,0 +1,13 @@
+name=ProFTPD
+desc=ProFTPD Server
+desc_pl=Serwer ProFTPD
+category=servers
+desc_ca=Servidor ProFTP
+desc_es=Servidor ProFTPD
+desc_de=ProFTPd FTP-Server
+desc_ru_SU=óÅÒ×ÅÒ ProFTP
+desc_ru_RU=Ñåğâåğ ProFTP
+longdesc=Configure the powerful ProFTPD FTP server. Supports all options in most of the standard modules.
+desc_zh_TW.Big5=ProFTP¦øªA¾¹
+desc_zh_TW.UTF-8=ProFTPä¼ºæœå™¨
+os_support=!windows

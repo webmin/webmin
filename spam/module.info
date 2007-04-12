@@ -1,0 +1,9 @@
+name=SpamAssassin
+desc=SpamAssassin Mail Filter
+category=servers
+longdesc=Set up and configure SpamAssassin to filter email received by your system.
+desc_de=SpamAssassin E-Mail-Filter
+desc_ca=Filtre de Correu SpamAssassin
+desc_fr=Filtre de courrier SpamAssassin
+desc_es=SpamAssassin - Filtro de Correo
+os_support=!windows

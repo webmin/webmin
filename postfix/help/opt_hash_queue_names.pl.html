@@ -1,0 +1,17 @@
+<header>Nazwa katalogów kolejki podzielonej na podkatalogi</header>
+
+<center><tt>hash_queue_names</tt></center>
+<hr>
+
+Ten parametr okre¶la nazwy katalogów kolejki, która zosta³a rozdzielona
+pomiêdzy wielopoziomowe podkatalogi. Podzia³u NIE WOLNO robiæ
+w&nbsp;katalogu zrzucania poczty, który ma prawa zapisu dla ca³ego ¶wiata.
+Podzia³ MUSI byæ zrobiony dla katalogu odroczonych logów, lub ucierpi
+wydajno¶æ systemu poczty. <p>
+
+Niestety, podzia³ kolejki poczty przychodz±cej lub odroczonej mo¿e
+w&nbsp;rzeczywisto¶ci spowolniæ system poczty (<tt>mailq</tt> przy pustej
+kolejce mo¿e zaj±æ kilka sekund), wiêc powinno siê go robiæ jedynie
+w&nbsp;sytuacjach krytycznych.
+
+<hr>

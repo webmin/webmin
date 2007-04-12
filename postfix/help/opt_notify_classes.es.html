@@ -1,0 +1,44 @@
+<header>Problemas de que informar al postmaster</header>
+
+<center><tt>notify_classes</tt></center>
+<hr>
+
+Debería configurar un alias <b>postmaster</b> que apunte a una persona
+real. Se necesita este alias para que la gente pueda informar de errores en
+el reparto de correo.
+
+<p>
+
+El propio servidor Postfix informa de problemas al alias postmaster. Puede
+no estar interesado en todos los tipos de mensajes de error, de manera que
+este mecanismo de informe es configurable. Por defecto sólo se informa de
+los problemas serios (recursos, software) al postmaster:
+
+<p>
+
+<b>Por defecto:</b> <tt>resource, software</tt>
+
+<p>
+
+El significado de las clases es el siguiente:
+
+<ul>
+<li><tt>bounce:</tt> Enviar al postmaster copias de los mensajes no entregables
+<li><tt>2bounce:</tt> Enviar los rebotes dobles al postmaster 
+<li><tt>delay:</tt> Informar al postmaster de los mensajes retrasados. En
+este caso el postmaster sólo recibe las cabeceras de los mensajes. 
+<li><tt>policy:</tt> Informar al postmaster de las peticiones de cliente
+rechazadas por restricciones UCE (spam). El postmaster recibe una
+transcripción de toda la sesión SMTP.
+<li><tt>protocol:</tt> Informar al postmaster de los errores de protocolo
+(en la parte cliente o servidora) o de los intentos de un cliente de
+ejecutar comandos no implementados. El postmaster recibe una transcripción
+completa de la sesión SMTP.
+<li><tt>resource:</tt> Informa al postmaster del correo no repartido debido
+a problemas de recursos (por ejemplo, imposibilidad de escribir ficheros en
+la cola de mensajes).
+<li><tt>software:</tt> Informa al postmaster de los correos no repartidos
+debido a problemas con el software.
+</ul>
+
+<hr>

@@ -1,0 +1,17 @@
+<header>Kasta post till okända lokala användare</header>
+
+<center><tt>local_recipient_maps</tt></center>
+<hr>
+
+Denna parameter anger alternativa uppslagningstabeller med alla användare
+som är lokal i avseende på <tt>$mydestination</tt> (domäner att ta emot e-post för)
+och <tt>$inet_interfaces</tt> (nätverksinterface att ta emot e-post för). Om parametern
+ges ett värde kommer SMTP-servern att kasta e-post adresserad till okända lokala användare.
+
+<p>Ange tabeller med enbart användarnamn, som <tt>unix:passwd.byname</tt>, och aliastabeller.
+Exempel: <tt>$alias_maps unix:passwd.byname</tt>.
+
+<p>Varning: om Postfix-SMTP-server körs med chroot kan du bli tvungen att kopiera in
+passwd-databasen. Detta är systemberoende.
+
+<hr>

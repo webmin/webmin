@@ -1,0 +1,61 @@
+index_title=Tarefas Agendadas (Cron)
+index_user=Utilizador
+index_active=Activo?
+index_command=Comando
+index_none=Não há tarefas agendadas neste sistema
+index_create=Criar nova tarefa agendada
+index_allow=Controlo de acesso de utilizadores a tarefas agendadas
+index_return=lista de tarefas agendadas
+
+edit_title=Editar Tarefa Agendada
+create_title=Criar Tarefa Agendada
+edit_ecannot=Você não está autorizado para editar tarefas agendadas para este utilizador
+edit_details=Detalhes da Tarefa
+edit_user=Executar tarefa agendada como
+edit_active=Activo?
+edit_commands=Comandos
+edit_command=Comando
+edit_input=Entrada para o comando
+edit_when=A executar quando
+edit_mins=Minutos
+edit_hours=Horas
+edit_days=Dias
+edit_months=Meses
+edit_weekdays=Dias da semana
+edit_all=Todos
+edit_selected=Seleccionados ..
+edit_run=Executar agora
+
+save_err=Erro ao guardar tarefa agendada
+save_ecmd=Você não introduziu um comando para executar
+save_euser=Você tem de seleccionar um utilizador
+save_eallow=O utilizador '$1' não está autorizado para aceder às tarefas agendadas
+save_ecannot=Você não está autorizado para criar tarefas agendadas para '$1'
+save_enone=Você não escolheu qualquer $1 para executar
+
+allow_title=Controlo de Acesso de Tarefas Agendadas
+allow_desc=Este formulário permite-lhe controlar que utilizadores podem criar e executar tarefas agendadas.
+allow_ecannot=Você não pode controlar o acesso de utilizadores às tarefas agendadas
+allow_all1=Recusar todos os utilizadores
+allow_all1=Recusar todos os utilizadores excepto o root
+allow_all3=Permitir todos os utilizadores
+allow_allow=Permitir apenas os utilizadores listados
+allow_deny=Recusar apenas os utilizadores listados
+
+env_title=Ambiente de tarefas agendadas
+env_ecannot=Você não pode editar o ambiente de tarefas agendadas para este utilizador
+env_desc=Ambiente de tarefas agendadas para $1
+env_name=Nome da Variável
+env_value=Valor
+env_ename='$1' não um nome de variável válido
+
+exec_title=Executar Tarefa Agendada
+exec_ecannot=Você não está autorizado para executar tarefas agendadas para este utilizador
+exec_cmd=Saída de resultados do comando $1 ..
+exec_none=Sem saída de resultados gerada
+
+acl_users=Pode editar tarefas agendadas para
+acl_all=Todos os utilizadores
+acl_only=Apenas utilizadores
+acl_except=Todos excepto os utilizadores
+acl_control=Pode controlar o acesso do utilizador às terefas agendadas?

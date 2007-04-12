@@ -1,0 +1,42 @@
+<header>Software Packages</header>
+
+<h3>Introduction to Packages</h3>
+A software package is a collection of files that make up a program. These
+files may all be combined into one package file for distribution or
+downloading, to be extracted and placed in their correct locations when
+the package is installed. <p>
+
+A package management system automates most of the work in installing and
+deleting programs. Because packages are usually pre-compiled, you do not
+have to worry about <tt>Makefiles</tt> and <tt>configure</tt> scripts when
+installing. Because the package management system keeps track of all
+packages, it can remove all trace of a program when uninstalling. <p>
+
+<h3>Installed Packages</h3>
+Packages are organised into classes and subclasses, like <tt>System</tt>
+or <tt>X11/Utilities</tt>. At the top of the main page is a tree of folders
+and packages, in which each folder represents a class. To open a folder, simply
+click on it. To view more information about a package, click on its name. <p>
+
+Below the package tree is a form for searching the package database. This
+will search for packages whose name or description matches whatever text
+you enter. <p>
+
+<h3>Install a New Package</h3>
+Below the package search button is a form for installing a new package.
+You may install either from a file on your system, a file on the computer
+on which you are running your web browser, or from an FTP or HTTP URL.
+In the last case, Webmin will contact the FTP server or web site and download
+the package file. If your system is behind a firewall, make sure you have
+the proxy servers configured correctly in the <i>Webmin Configuration</i>
+module. <p>
+
+<h3>Identify a File</h3>
+At the bottom of the main page is a form for identifying some file on
+your system. You may enter either an absolute path like
+<tt>/etc/inetd.conf</tt>, or a command like <tt>elm</tt>. Webmin will attempt
+to find the file in the package management system, and display information
+about the file and the packages that use it. <p>
+
+<hr>
+

@@ -1,0 +1,32 @@
+<header>Clave de Acceso</header>
+
+Cuando un usuario hace login vía telnet o desde la consola, normalmente
+debe de suministrar una clave de acceso. Hay cuatro opciones diferentes para
+la clave de acceso:
+<ul>
+<if $config{'empty_mode'} == 1>
+<li><b>Preguntar en su primer login</b><br>
+    Cuando el usuario hace login por primera vez vía telnet o desde la consola
+    en modo texto, el sistema le pide que introduzca su nueva clave de
+    aceso. <p>
+</if>
+<if $config{'empty_mode'} == 0>
+<li><b>No se necesita clave de acceso</b><br>
+    El usuario puede hacer login en el sistema sin digitar clave de acceso.
+    Esta opción debe de utilizarse con mucho cuidado. <p>
+</if>
+<li><b>No puede hacer login</b><br>
+    Si se selecciona esta opción, el usurio no puede hacer login en el
+    sistema de ningún modo incluso ni para leer su correo del servidor POP3.<p>
+<li><b>Clave de acceo encriptada</b><br>
+    Las claves de acceso de Unix son almacenadas en un formulario encriptado
+    de una vía. Esta opción te permite digitar la clave de acceso para un
+    usuario como una cadena encriptada (quizá tomada del archivo de claves
+    de acceso de otro sistema). <p>
+<li><b>Limpiar texto de clave de acceso</b><br>
+    Para activar la clave de acceso para un usuario, selecciona esta opción
+    y digítala en el campo de texto. Webmin coge la clave de acceso que
+    digitas, la encripta y la almacena en el archivo de claves de acceso. <p>
+</ul>
+<hr>
+

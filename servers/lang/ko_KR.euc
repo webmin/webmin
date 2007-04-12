@@ -1,0 +1,55 @@
+index_title=Webmin 서버
+index_edit=편집
+index_none=등록된 서버가 없습니다.
+index_add=새 서버 등록
+index_broad=서버 브로드캐스트
+index_findmsg=로컬 네트워크에서 버전 0.75 이상의 Webmin 서버를 자동으로 찾으려면 이 버튼을 누르십시오.
+index_scan=서버 검색
+index_scanmsg=네트워크 $1의 모든 주소를 검사하여 버전 0.75 이상의 Webmin 서버를 찾으려면 이 버튼을 누르십시오.
+index_return=서버
+
+edit_title=서버 편집
+create_title=서버 등록
+edit_details=서버 세부 정보
+edit_host=호스트 이름
+edit_port=포트
+edit_type=서버 유형
+edit_ssl=SSL 서버입니까?
+edit_link=링크 유형
+edit_mode0=서버로의 일반 링크
+edit_mode1=Webmin을 통해 로그인할 때 필요한 사항
+edit_user=사용자 이름
+edit_pass=암호
+edit_ecannot=서버를 편집할 수 없습니다
+
+save_err=서버를 저장하지 못했습니다
+save_ehost=없거나 잘못된 호스트 이름
+save_eport=없거나 잘못된 포트
+save_euser=없는 사용자 이름
+save_epass=없는 암호
+
+find_title=서버 찾기
+find_new=$1에서 새 서버를 찾았습니다
+find_already=$1에서 알 수 없는 서버를 찾았습니다
+find_me=$1에서 이 서버를 찾았습니다
+find_escan=검색할 네트워크는 클래스 C 네트워크 주소여야 합니다.
+find_none=검색에 응답한 서버가 없습니다.
+find_ecannot=서버를 찾을 수 없습니다
+
+log_modify=서버 $1 수정됨
+log_create=서버 $1 등록됨
+log_delete=서버 $1 삭제됨
+log_find=서버 $1 검색됨
+
+link_elogin=$2(으)로서 $1에 로그인하지 못했습니다
+link_ecannot=이 서버를 사용할 수 없습니다
+link_essl=perl Net::SSLeay 라이브러리가 설치되어 있지 않습니다
+
+lib_other=그 외
+
+acl_edit=서버를 편집할 수 있습니다
+acl_find=서버를 찾을 수 있습니다
+acl_servers=서버를 사용할 수 있습니다
+acl_sall=모든 서버
+acl_ssel=선택한 서버..
+

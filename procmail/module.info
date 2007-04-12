@@ -1,0 +1,12 @@
+name=Procmail
+desc=Procmail Mail Filter
+category=servers
+desc_ca=Filtre de Correu Procmail
+desc_es=Filtro de Correo Procmail
+desc_de=Procmail E-Mail-Filter
+desc_ru_SU=ğÏŞÔÏ×ÙÊ ÆÉÌØÔÒ Procmail
+desc_ru_RU=Ïî÷òîâûé ôèëüòğ Procmail
+longdesc=Edit recipes in the global /etc/procmailrc file, which apply to all incoming email.
+desc_fr=Filtre de courrier Procmail
+os_support=!windows
+desc_it=Filtro Procmail per la posta

@@ -1,0 +1,23 @@
+<header>Begränsa e-post-vidaresändning</header>
+
+<center><tt>relay_domains</tt></center>
+<hr>
+
+Denna parameter anger de klientdomäner (med underdomäner) som detta e-postsystem
+sänder vidare e-post från, och anger de destinationsdomäner (med underdomäner)
+som systemet sänder vidare e-post till.
+
+<p>
+<include relay_rules>
+
+<p>Ange en lista över datorer eller domäner, <tt>/fil/namn</tt>-mönster eller
+<tt>type:name</tt>-uppslagningstabeller, separerade med kommatecken och/eller blanksteg.
+Ett filnamn ersätts med filens innehåll; en <tt>type:name</tt>-tabell matchar då en
+(föräldra-)domän är uppslagsnyckel.
+
+<p>OBS: Postfix kommer inte automatiskt att sända vidare e-post till domäner
+som anger detta system som primär eller backup-MX-dator. Se restriktionen
+<tt>permit_mx_backup</tt> i beskrivningen av parametern
+<a href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a>.
+
+<hr>

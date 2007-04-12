@@ -1,0 +1,16 @@
+line1=Yapýlandýrýlabilir seçenekler,11
+max_len=Görüntülenecek maksimum komut uzunluðu,3,Limitsiz
+line2=Sistem yapýlandýrmasý,11
+cron_dir=Crontab Dizini,0
+cron_get_command=Kullanýcýnýn cron'u okumasý için gerekli komut,0
+cron_edit_command=Kullanýcýnýn cron'u deðiþtirmesi için gerekli komut,0
+cron_copy_command=Standart giriþleride kullanýcýnýn cron'unun kabul edilmesi için gerekli komut,0
+cron_delete_command=Kullanýcýnýn cron'unun silmek için gerekli komut,0
+cron_input=Cron cron iþlerinin girilmesini desteklesin ?,1,1-Evet,0-Hayýr
+cron_allow_file=Ýzin verilen kullanýcýlarýn listelendiði dosya,0
+cron_deny_file=Ýzin verilmeyen kullanýcýlarýn listelendiði dosya,0
+cron_deny_all=Ýzin dosyalarýnýn dýþýndaki haklar,1,0-Hepsini reddet,1-Root dýþýnda hepsini reddet,2-Hepsini kabul et
+vixie_cron=Vixie-Cron uzantýlarý desteklensin mi?,1,1-Evet,0-Hayýr
+system_crontab=Vixie-Cron sistem crontab dosyasý yolu,0
+cronfiles_dir=Ekstra cron dosyalarý dizini yolu,3,None
+run_parts=run-parts komutu,0

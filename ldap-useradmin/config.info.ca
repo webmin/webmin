@@ -1,0 +1,83 @@
+line1=Opcions del servidor LDAP,11
+auth_ldap=Fitxer de configuració de la llibreria LDAP NSS de Linux,3,Cap
+ldap_host=Servidor LDAP,3,Del fitxer de configuració NSS
+ldap_port=Port del servidor LDAP,3,Per defecte o del fitxer de configuració NSS
+ldap_tls=El servidor LDAP utilitza TLS,1,1-Sí,0-No
+login=Lliga't al servidor LDAP com a,3,Nom de lligam del fitxer de configiració NSS
+pass=Credencials per al nom de lligam anterior,12
+user_base=Base dels usuaris,3,Del fitxer de configuració NSS 
+group_base=Base dels grups,3,Del fitxer de configuració NSS
+other_class=Altres objectClasses per afegir als usuaris nous,0
+gother_class=Altres objectClasses per afegir als grups nous,0
+given=Mostra els camps per al nom i cognom donats,1,1-Sí,0-No
+given_class=Classe d'objectes a afegir per al nom donat,0
+slappasswd=Camí complet del programa <tt>slappasswd</tt>,0
+
+line9=Atributs LDAP,11
+props=Propietats LDAP per a tots els usuaris nous<br>(En format <i>nomcamp</i>: <i>valor</i>),9,40,3,\t
+mod_props=Propietats LDAP dels usuaris modificats<br>(En format <i>nomcamp</i>: <i>valor</i>),9,40,3,\t
+fields=Propietats d'usuari LDAP per permetre l'edició de<br>(En format <i>nomcamp</i> <i>descripcio</i>),9,40,3,\t
+group_props=Propietats LDAP per a tots els grups nous<br>(En format <i>nomcamp</i>: <i>valor</i>),9,40,3,\t
+group_mod_props=Propietats LDAP per als grups modificats<br>(En format <i>nomcamp</i>: <i>valor</i>),9,40,3,\t
+group_fields=Propietats extra de grups LDAP per permetre l'edició de<br>(AL format de <i>fieldname</i> <i>description</i>),9,40,3,\t
+multi_fields=Permet valors múltiples a les propietats extra,1,1-Sí,0-No
+noclash=Atributs que no permeten duplicats,0
+
+line5=Opcions del directori arrel,11
+homedir_perms=Permisos dels nous directoris arrel,3,Del mòdul d'Usuaris i Grups
+user_files=Copia els fitxers als nous directoris arrel,3,Del mòdul d'Usuaris i Grups
+home_base=Base automàtica del directori arrel,3,Del mòdul d'Usuaris i Grups
+home_style=Estil automàtic drl directori arrel,4,0-home/username,1-home/u/username,2-home/u/us/username,3-home/u/s/username,4-Només el directori base,5-home/primary_group/username,-Del mòdul d'Usuaris i Grups
+
+line6=Opcions d'usuari nou,11
+base_uid=UID més baix per a usuaris nous,3,Del mòdul d'Usuaris i Grups
+base_gid=GID més baix per a grups nous,3,Del mòdul d'Usuaris i Grups
+md5=Mètode de xifratge de les contrasenyes,1,3-LDAP MD5,1-MD5 de Unix,0-crypt,2-Text planer
+shells=Construeix la llista de shells de,2,fixed-Llista integrada,passwd-Usuaris del sistema,shells-/etc/shells
+
+line7=Valors per defecte dels usuaris nous,11
+default_group=Grup primari per defecte dels usuaris nous,3,Del mòdul d'Usuaris i Grups
+default_secs=Grups secundaris per defecte dels usuaris nous,3,Del mòdul d'Usuaris i Grups
+default_shell=Shell per defecte dels usuaris nous,3,Del mòdul d'Usuaris i Grups
+default_min=Dies mínims per defecte dels usuaris nous,3,Del mòdul d'Usuaris i Grups
+default_max=Dies mínims per defecte dels usuaris nous,3,Del mòdul d'Usuaris i Grups
+default_warn=Dies d'avís per defecte dels usuaris nous,3,Del mòdul d'Usuaris i Grups
+default_inactive=Dies inactius per defecte dels usuaris nous,3,Del mòdul d'Usuaris i Grups
+default_expire=Data de caducitat per defecte dels usuaris nous (dd/mm/aaaa),3,Del mòdul d'Usuaris i Grups
+default_other=Crea i actualitza als altres mòduls,1,1-Sí,0-No,-Del mòdul d'Usuaris i Grups
+
+line8=Opcions de presentació,11
+display_max=Nombre màxim d'usuaris o grups a mostrar,3,Del mòdul d'Usuaris i Grups
+passwd_stars=Amaga la contrasenya en text planer,1,1-Sí,0-No,-Del mòdul d'Usuaris i Grups
+random_password=Genera la contrasenya dels usuaris nous,1,1-Sí,0-No,-Del mòdul d'Usuaris i Grups
+charset=Joc de caràcters per editar els usuaris i els grups,3,De l'idioma de Webmin
+secmode=Mostra els grups secundaris al formulari de l'usuari,1,0-Sí,1-No,2-Com una finestra de text
+
+line2=Opcions de compte Samba,11
+samba_class=Classe d'objecte LDAP per a usuaris de Samba,0
+samba_def=Activa el compte Samba per defecte,1,1-Sí,0-No
+samba_domain=Domini SID de Samba3,0
+samba_props=Propietats LDAP per als nous usuaris de Samba,9,40,3,\t
+samba_gclass=Classe d'objectes LDAP dels grups de Samba,10,-sambaGroup (Samba 2),sambaSamGroup-sambaSamGroup (esquema antic Samba 3),sambaGroupMapping-sambaGroupMapping (Esquema nou Samba 3),Una altra
+samba_gid=SID del grup primari,10,none-Cap,-Dedueix-lo automàticament
+
+line3=Opcions del servidor IMAP Cyrus,11
+imap_class=Classe d'objecte LDAP per als usuaris d'IMAP,0
+imap_def=Activa el compte IMAP per defecte,1,1-Sí,0-No
+imap_host=Host del servidor IMAP Cyrus,3,Cap
+imap_login=Usuari d'administració del servidor IMAP,0
+imap_pass=Contrasenya d'administració del servidor IMAP,0
+imap_props=Propietats LDAP per als nous usuaris IMAP,9,40,5,\t
+imap_folders=Carpetes a crear per als nous usuaris IMAP,9,30,3,\t
+imap_folderalt=Camí de les carpetes,1,1-usuari.$user.$folder,0-$folder
+domain=Domini de correu de l'atribut de correu,3,No afegeixis atributs de correu
+mailfmt=Format de l'adreá de correu,1,0-cognom.nom@domini,1-usuari@domini
+quota=Quota per defecte dels nous usuaris de Cyrus,3,Cap
+quota_support=El servidor IMAP suporta quotes,1,1-Sí,0-No
+addressbook=Base de la llibreta d'adreces,3,Cap,,,Kb
+maillocaladdress=Atribut dels àlies de correu,3,Per defecte (alias)
+alias_same=Dos usuaris poden tenir el mateix àlies,1,1-Sí,0-No
+
+line4=Ordres abans i després,11
+pre_command=Ordre a executar abans de fer els canvis,0
+post_command=Ordre a executar després de fer els canvis,0

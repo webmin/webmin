@@ -1,0 +1,3 @@
+# RBAC authorization		# Webmin ACL
+solaris.jobs.admin		noconfig=1
+solaris.jobs.user		mode=3,allow=0,kill=0,noconfig=1

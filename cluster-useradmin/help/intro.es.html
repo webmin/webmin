@@ -1,0 +1,32 @@
+<header>Usuarios y Grupos del Cluster</header>
+
+Este módulo de Webmin le permite gestionar los usuarios y grupos
+configurados en múltiples servidores de un cluster desde una misma
+interface. Es similar al módulo Usuarios y Grupos, pero con la capacidad de
+llevar a cabo la mayoría de sus funciones (como creación, actualización y
+borrado) de usuarios sobre varios servidores Webmin en una sola operación. <p>
+
+La parte superior de la página principal bajo la cabecera Servidores
+Gestionados lista los otros servidores Webmin cuyos usuarios y grupos se
+gestionan mediante este módulo. Para añadir un servidor a esta lista,
+primero debe añadirlo al módulo Índice de Servidores Webmin, con un nombre
+de usuario y contraseña especificados para ingresar en el servidor Webmin
+de dicha máquina. Entonces puede seleccionar el servidor de la lista a
+continuación del botón Añadir Servidor. <p>
+
+Cuando se añade un servidor, el módulo comprobará que está usando el mismo
+formato de fichero de usuarios que este servidor, y a continuación
+descargará una lista de todos los usuarios y grupos como caché local. Un
+servidor que siempre aparecerá en la lista de los disponibles para añadir
+es 'este servidor', para que pueda gestionar los usuarios locales y en
+múltiples servidores remotos desde una sola interface. <p>
+
+Una vez que hay al menos un icono en Servidores Gestionados, puede usar los
+formularios Encontrar Usuarios y Encontrar Grupos para buscar usuarios y
+grupos a lo largo de los servidores, y los botones Añadir Usuario y Añadir
+Grupo para añadir a todos los servidores. El botón sincronizar se puede
+usar para crear automáticamente cualquier usuario que exista en algunos
+servidores del cluster pero no en los demás. <p>
+
+<hr>
+

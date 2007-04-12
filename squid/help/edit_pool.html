@@ -1,0 +1,17 @@
+<header>Edit Delay Pool</header>
+
+<p>
+<b>Pool number</b>
+<br>
+  This is a number starting from 1, which is chosen for you by Webmin.  It simply labels the pool so that more than one pool can be configured and treated differently by Squid.
+<p>
+<b>Pool class</b>
+<br>
+This defines the class type of the pool.  Each delay pool can have a class selected from classes 1, 2 or 3.  The classes have the following meanings: "1-Aggregate", "2-Aggregate and Individual", "3-Aggregate, Individual, and Network".  The simplest, class 1, specifies a bandwidth that all clients to which this pool belongs cannot surpass.  Class 2 specifies both an aggregate bandwidth and a bandwidth that each individual can use, creating a heirarchy of limits where all individuals combined must fit into the aggregate while each individual is limited by the individual limit.  Finally, Class 3 specifies an aggregate and individual bandwith in addition to a network bandwidth which applies to an entire subnet.  Class 3 is usually only useful on very large networks that have more than one network subnet.
+<p>
+Limits can be specified in any unit preferred, though it will be saved to the Squid configuration file in bytes.  The first field is the average throughput that will be allotted to the pool, while the second is the size of the bucket used, which roughly corresponds to a burstable bandwidth maximum.
+<p>
+After creating a pool for the first time, a new section will appear at the bottom of the page, permitting the selection of which ACLs the pool will apply to.  ACLs are created on the <b>Access Control</b> page, and any ACL may be used to select which connections a delay pool will apply to.  <b>Allowing</b> an ACL will apply the delay pool to the matching connections, while <b>Denying</b> an ACL will cause matching connections to bypass the delay pool.  Thus, unless all connections will have the same delay pool applied to them, you'll want to add two ACLs, the first will be the ACL you'd like to apply the delay pool to, and the second will be the <tt>all</tt> ACL so that only your selected clients will be restricted.
+<p>
+Don't forget to apply changes after creating a new pool and adding ACLs to match.
+

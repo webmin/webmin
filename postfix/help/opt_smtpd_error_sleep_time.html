@@ -1,0 +1,12 @@
+<header>Timeout before sending 4xx/5xx error response</header>
+
+<center><tt>smtpd_error_sleep_time</tt></center>
+<hr>
+
+This parameter specifies the time in seconds the SMTP server waits before
+sending a <tt>4xx</tt> or <tt>5xx</tt> SMTP server error response. This
+prevents naive clients from going into an error - disconnect - connect - error
+loop.
+
+
+<hr>

@@ -1,0 +1,248 @@
+index_title=Administración de Impresoras
+index_name=Impresora
+index_desc=Descripción
+index_to=Imprime en
+index_driver=Filtro (Controlador)
+index_enabled=¿Activado?
+index_accepting=¿Aceptando?
+index_jobs=Tareas
+index_none=No hay impresoras instaladas en este sistema
+index_list=relación...
+index_add=Añadir una nueva impresora
+index_stop=Parar Planificador
+index_stopmsg=Haz click en este botón para parar el proceso en curso del planificador de impresión. Esto hará prevenir que cualquier usuario local o remoto impriman en tu sistema.
+index_start=Arrancar Planificador
+index_startmsg=Haz click en este botón para arrancar el proceso del planificador de impresión. Esto permitirá que los usuarios locales y remotos impriman en tu sistema.
+index_restart=Rearrancar Planificador
+index_restartmsg=Haz click en este botón para rearrancar el proceso del planificador de impresión. Esto forzará la aplicación de la configuración en curso.
+index_return=Lista de impresoras
+
+edit_eedit=No estás autorizado a editar esta impresora
+edit_eadd=No estás autorizado a añadir impresoras
+edit_add=Crear Impresora
+edit_edit=Editar Impresora
+edit_conf=Configuración de Impresora
+edit_name=Nombre
+edit_acc=¿Aceptando requerimientos?
+edit_why=No - Por qué no
+edit_desc=Descripción
+edit_ena=¿Impresión activada?
+edit_acl=Control de Acceso
+edit_allow=Permitir a todos
+edit_deny=Denegar a todos
+edit_allowu=Permitir a usuarios listados...
+edit_denyu=Denegar a usuarios listados...
+edit_banner=¿Imprimo página de cabecera?
+edit_opt=Opcional
+edit_default=¿Es la impresora por Defecto?
+edit_already=Ya es la impresora por defecto
+edit_max=Medida máxima de tarea de impresión
+edit_unlimited=Ilimitado
+edit_dacc=El controlador acepta
+edit_dtext=Texto
+edit_dpost=Postscript
+edit_dother=Otros
+edit_alt=Nombres alternativos de impresora
+edit_dest=Destino de la impresión
+edit_dev=Dispositivo local
+edit_file=Archivo local
+edit_remote=Servidor Unix remoto
+edit_rqueue=Impresora
+edit_type=Tipo
+edit_smb=Servidor Windows remoto
+edit_share=Impresora
+edit_user=Usuario
+edit_pass=Clave de Acceso
+edit_wgroup=Grupo de Trabajo
+edit_hpnp=Servidor HPNP remoto
+edit_port=Puerto
+edit_direct=Conexión TCP directa
+edit_dport=Puerto
+edit_driver=Controlador de Impresora
+edit_check=¿Reviso si el servidor remoto está activo?
+
+blocks=bloques
+
+save_err=Error al salvar impresora
+save_eadd=No estás autorizado a añadir impresoras
+save_eedit=No estás autorizado a editar esta impresora
+save_ename='$1' no es un nombre válido de impresora
+save_edup=Ya existe una impresora llamada '$1'
+save_eallow=No se han digitado usuarios a autorizar
+save_edeny=No se han digitado usuarios a denegar
+save_euser=El usuario '$1' no existe
+save_etype=Debes de seleccionar al menos un tipo para que sea aceptado por este controlador
+save_emax=La medida máxima de tareas de impresión debe de ser un entero
+save_efile='$1' no existe
+save_erhost=La máquina remota '$1' no existe
+save_erqueue='$1' no es un nombre de cola remota válido
+save_eremote=Los controladores no pueden ser usados con impresoras Unix remotas
+save_edhost=La máquina directa '$1' no existe
+save_edport=Puerto directo falta o es inválido
+
+jobs_title=Tareas de impresión
+jobs_header=Imprimir tareas en $1
+jobs_id=ID de Tarea
+jobs_size=Medida
+jobs_by=Puesto Por
+jobs_when=Puesto a las
+jobs_file=Nombre de Archivo
+jobs_cancel=Haz click en una ID de tarea de la lista superior para cancelarla.
+jobs_cancelview=Haz click en una ID de tarea de la lista superior para cancelarla o haz click en la medida de la tarea para verla.
+jobs_none=No hay tareas de impresión en $1
+jobs_all=Cancelar todas las tareas de impresión
+jobs_bytes=octetos
+jobs_test=Imprimir Página de Prueba
+
+cancel_ecannot=No estás autorizado a cancelar tareas de impresión
+cancel_err=Error al cancelar tarea de impresión
+cancel_egone=La tarea de impresión $1 ya no existe
+
+view_ecannot=No puedes ver esta tarea de impresión
+view_egone=Esta tarea de impresión ya no existe
+
+start_ecannot=No estás autorizado a arrancar el planificador
+start_err=Error al arrancar planificador
+
+stop_ecannot=No estás autorizado a parar el planificador
+stop_err=Error al parar planificador
+
+restart_ecannot=No estás autorizado a rearrancar el planificador de impresión
+restart_err=No pude rearrancar el planificador de impresión
+
+webmin_none=Ninguno
+webmin_nonemsg=Impresora Postscript o de texto
+webmin_remotemsg=Impresora remota
+webmin_model=Modelo
+webmin_prog=Programa
+webmin_driver=Controlador de Webmin
+webmin_uniprint=Controlador Uniprint
+webmin_edrivers=Error al obtener los controladores desde $1. Los controladores de impresoras de Webmin que utilicen ghostscript no estarán disponibles
+webmin_egs=El comando $1 no fue encontrado. Los controladores de impresora de Webmin que utilicen ghostscript no estarán disponibles
+webmin_edriver='$1' no existe
+
+caldera_none=Ninguno
+caldera_nonemsg=Impresora remota o sin buffer
+caldera_prog=Programa
+caldera_coas=Controlador COAS
+caldera_printer=Impresora y resolución
+caldera_eof=¿Envío Fin-de-Archivo (EOF)?
+caldera_paper=Medida del papel
+caldera_double=¿Imprimo por ambas caras?
+caldera_gsopts=Opciones GS adicionales
+caldera_uniprint=Controlador Uniprint
+caldera_eprog='$1' no existe
+caldera_edriver=No se ha seleccionado controlador de impresora
+caldera_eres=No se ha seleccionado resolución
+
+redhat_none=Ninguno
+redhat_nonemsg=Impresora postscript o de texto
+redhat_prog=Programa
+redhat_driver=Controlador Redhat
+redhat_printer=Impresora y resolución
+redhat_eof=¿Envío Fin-de-Archivo (EOF)?
+redhat_paper=Medida del papel
+redhat_pages=Página por página de salida
+redhat_gsopts=Opciones GS adicionales
+redhat_hmargin=Márgen Derecho/Izquierdo
+redhat_vmargin=Márgen Superior/Inferior
+redhat_crlf=¿Fijo el texto en modo escalonando-escalera?
+redhat_eprog='$1' no existe
+redhat_edriver=No se ha seleccionado controlador de impresora
+redhat_ehmargin=Márgen derecho/izquierdo falta o es inválido
+redhat_evmargin=Márgen superior/inferior falta o es inválido
+redhat_eres=No se ha seleccionado resolución
+redhat_printer2=Model y conductor de impresora
+
+suse_none=Ninguna
+suse_nonemsg=Impresora postscript o de texto
+suse_prog=Programa
+suse_driver=Controlador APSfilter
+suse_printer=Tipo de impresora
+suse_res=Resolución en DPI
+suse_colour=¿Impresora a color?
+suse_paper=Medida del papel
+suse_method=Método de filtrado
+suse_auto=Automático
+suse_ascii=ASCII
+suse_raw=Sin búfer
+suse_extra=Opciones extra de ghostscript
+suse_yast2=Conductor de YAST2
+suse_edriver=No se ha selecciona tipo de impresora
+suse_eres=Resuloción falta o es inválida
+
+estop=No pude parar lpd: $1
+
+acl_printers=Impresoras que este usuario puede configurar
+acl_add=¿Puedo añadir impresoras nuevas?
+acl_cancel=¿Puedo ver y cancelar tareas de impresión?
+acl_stop=¿Puedo parar o arrancar el planificador?
+acl_restart=Sólo rearrancar
+acl_listed=Sólo en las impresoras seleccionadas...
+acl_pall=Todas las impresoras
+acl_psel=Las seleccionadas...
+acl_view=¿Mostrar impresoras no configurables?
+acl_test=¿Puedo imprimir páginas de prueba?
+acl_user=Gestionar tareas de impresión propiedad de
+acl_user_all=Todos los usuarios
+acl_user_this=Usuario actual de Webmin
+
+log_stop=Parado Gestor de impresión
+log_start=Arrancado gestor de impresión
+log_restart=Rearrancado planificador de impresión
+log_cancel_job=Cancelada tarea de impresión $2 en $1
+log_cancel_all=Canceladas todas las tareas de impresión en $1
+log_create=Creada impresora $1 en $2
+log_modify=Modificada impresora $1 en $2
+log_delete=Borrada impresora $1 en $2
+log_create_l=Creada $3 impresora $1 en $2
+log_modify_l=Modificada $3 impresora $1 en $2
+log_delete_l=Borrada $3 impresora $1 en $2
+
+linux_paralel=Puerto Paralelo $1
+linux_serial=Puerto Serial $1 (COM$1)
+linux_null=Dispositivo Nulo
+linux_usb=Impresora USB $1
+
+freebsd_paralel=Puerto Paralelo
+freebsd_serial=Puerto Serial $1 (COM$1)
+
+openbsd_paralel=Puerto Paralelo
+openbsd_serial=Puerto Serial $1 (COM$1)
+
+unixware_paralel=Puerto Paralelo $1
+unixware_serial=Puerto Serial $1
+unixware_null=Dispositivo Nulo
+
+hpux_paralel=Paralelo $1
+hpux_serial=Serial $1
+hpux_null=Dispositivo Nulo
+
+lprng_paralel=Puerto Paralelo $1
+lprng_serial=Puerto Serial $1 (COM$1)
+lprng_null=Dispositivo Nulo
+
+solaris_paralel=Puerto Paralelo
+solaris_uparalel=Puerto Paralelo Ultra 5/10
+solaris_serial=Puerto Serial $1
+solaris_null=Dispositivo Nulo
+
+test_title=Imprimir Página de Prueba
+test_ecannot=No estás autorizado a imprimir páginas de prueba
+test_desc=Este formulario te permite imprimir una página de prueba en la impresora $1. Selecciona el tipo de página que deseas imprimir:
+test_0=Página Postcript en blanco y negro
+test_1=Página Postscript en color
+test_2=Texto ASCII
+test_3=Cualquier fichero cargado
+test_print=Imprimir página
+test_exec=Imprimiendo página de prueba con el comando $1...
+test_failed=... ¡Falló el comando!
+test_ok=... comando completado.
+
+cups_none=Ninguno
+cups_nonemsg=Impresora remota o directa
+cups_prog=Programa
+cups_driver=Controlador CUPS
+cups_eprog='$1' no es un programa válido
+cups_opts=Opciones para $1
+

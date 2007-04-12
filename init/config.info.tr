@@ -1,0 +1,12 @@
+expert=Kiþisel çalýþma seviyesinin seçimine izin verilsin,1,1-Evet,0-Hayýr
+desc=Ýþlemleri açýklamalarý ile görüntüle,1,1-Evet,0-Hayýr
+init_base=Çalýþma seviyelerinin olduðu dizin,0
+init_dir=Directory containing master init scripts,0
+soft_links=Açýlýþ seviyeleri dosyasý için kullanýlacak link tipi,1,0-Hard,1-Soft
+order_digits=Ýþlem sýralamasýndaki rakam sayýsý,0
+local_script=Yerel baþlangýç komutlarý betiði,3
+reboot_command=Sistemi yeniden baþlatma komutu,0
+shutdown_command=Sistemi kapatma komutu,0
+start_stop_msg=Sistem açýlýþ/kapanýþ mesajlarýný desteklesin,1,0-Hayýr,1-Evet
+inittab_id=Açýlýþ çalýþma seviyesi için inittab ID ,0
+daemons_dir=Caldera daemon'larý dizini,3,Hiçbiri

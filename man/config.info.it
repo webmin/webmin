@@ -1,0 +1,14 @@
+line2=Configurazione di sistema,11
+man_cmd=Comando per visualizzare la pagina del manuale,0
+man_cmd_sect=Comando per visualizzare la pagina del manuale da una sezione,0
+search_cmd=Comando per la ricerca delle pagine,0
+man_dir=Directory delle pagine del manuale (MANPATH),0
+list_cmd=Comando per visualizzare il percorso del file del manuale,0
+list_cmd_sect=Comando per visualizzare il percorso del file del manuale da una sezione,0
+man2html_path=Percorso di man2html,3,Non usare man2html
+doc_dir=Directory della documentazione dei package,3,Nessuna
+howto_dir=Directory dei documenti HOWTO,3,Nessuna
+kernel_dir=Directory della documentazione del kernel,3,Nessuna
+kde_dir=Directory della documentazione KDE,3,Nessuna
+custom_dir=Directory della documentazione personalizzata,3,Nessuna
+custom_desc=Nome per la documentazione personalizzata,3,Predefinito

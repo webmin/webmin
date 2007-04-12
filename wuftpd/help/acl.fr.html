@@ -1,0 +1,12 @@
+<header>Limites et Contrôle d'Accès</header>
+
+Cette page contient plusieurs tables pour définir les limites et les options de contrôle d'accès.  La première table vous permet de spécifier les adresses IP des clients à refuser l'accès au serveur FTP et afficher un message d'erreur à partir d'un fichier texte au client refusé.  Les adresses IP peuvent être donnée complète ou partielle, une adresse réseau/masque de sous-réseau, des noms d'hôtes, des noms d'hôtes incomplets (comme <tt>*.foo.com</tt>) ou des fichiers contenant des adresses additionnelles.  Tout les types d'adresses peuvent être précédé par un ! pour l'annuler.<p>
+
+La seconde table vous permet de limiter le nombre de session ouverte par les clients d'une même classe.  Pour chaque classe vous pouvez entrer le nombre maximum de sessions ouverte, le jour et l'heure à laquel ce maximum est forcé (dans la syntaxe UUCP, comme <tt>MoTuTh0800-1700</tt>), et un fichier de message d'erreur à afficher aux clients quand cette limite est dépassé.<p>
+
+La troisième table vous permet de définir la limite de fichier et de donnée par session.   Pour chaque limite, vous devez choisir s'il s'applie au fichier ou au nombre de bytes transféré, la direction du transfert qui s'applique à cette limite et la classe de la limite à qui elle s'applique.<p>
+
+La quatrième table vous permet de de refuser l'accès à certain fichiers.  Pour chaque fichier vou savez besoin d'entrer le chemin absolu, choisir si le chemin est relatif au répertoire <tt>chroot</tt> (pour les usagers anonyme et "guest") et choisir la classe d'usager qui s'applique à cette restriction.  Noté que si un chemin se termine par un /, le serveur FTP refusera l'accès à tout les fichiers de ce répertoire.<br>
+Tout comme, la cinquième table permet de donner un accès à certain fichier dont l'accès est refuser par la quatrième table.<p>
+
+<hr>

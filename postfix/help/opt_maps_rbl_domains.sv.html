@@ -1,0 +1,15 @@
+<header>DNS-domäner för uppslagning av svartlistning</header>
+
+<center><tt>maps_rbl_domains</tt></center>
+<hr>
+
+Denna parameter anger en lista över DNS-domäner som listar nätverksadresser
+för svartlistade datorer.
+
+<p>RBL-svartlistningsuppslagningar är avslagna som standard. Se parametern
+<a href=opt_smtpd_client_restrictions><tt>smtpd_client_restrictions</tt></a>.
+
+<p>Listan fungerar så här: slå upp klientens
+nätverksadress och neka den om den finns listan under någon av nedanstående domäner.
+
+<hr>

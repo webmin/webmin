@@ -1,0 +1,9 @@
+mysqlshow=Cesta k pøíkazu mysqlshow,0
+mysqladmin=Cesta k pøíkazu mysqladmin,0
+mysql=Cesta k pøíkazu mysql,0
+start_cmd=Pøíkaz ke startu mysql serveru,0
+stop_cmd=Pøíkaz k zastavení mysql serveru,3,Automatic
+mysql_libs=Cesta k adresáøi sdílenıch knihoven,3,None
+login=Administraèní login,0
+pass=Administraèní heslo,0
+perpage=Poèet øádkù zobrazenıch na astránce,0

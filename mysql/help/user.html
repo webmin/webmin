@@ -1,0 +1,18 @@
+For each user, the following parameters are available :
+<dl>
+<dt><b>Username</b>
+<dd>For this field, you may either enter a specific username, or choose the
+    <tt>Anonymous user</tt> option in which case the permissions will apply
+    to any user who is not in the <tt>User Permissions</tt> list.<p>
+<dt><b>Password</b>
+<dd>The password required by this user when logging in. If <tt>None</tt>,
+    then no password is needed. <p>
+<dt><b>Hosts</b>
+<dd>The IP address or hostname of the host this user is allowed to login from.
+    This field can also contain an SQL regular expression matching multiple
+    hosts, like <tt>192.168.1.%</tt> or <tt>%.foo.com</tt>. <p>
+<dt><b>Permissions</b>
+<dd>The MySQL operations this user is allowed to perform on <b>any</b>
+    database. <p>
+</ul>
+

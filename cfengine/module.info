@@ -1,0 +1,10 @@
+name=CFEngine
+desc=Configuration Engine
+category=cluster
+desc_ca=Motor de Configuració
+desc_es=Motor de Configuración
+desc_de=Konfigurations-Automat
+longdesc=Configure the CFengine program, for checking and maintaining various system-administration settings.
+desc_fr=Moteur de configuration
+os_support=!windows
+desc_sv=Konfigurations Motor

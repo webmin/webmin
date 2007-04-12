@@ -1,0 +1,320 @@
+main_return=الرجوع الى $1
+main_homepage=وبمن
+main_feedback=تعليقات..
+main_switch=تبديل المستخدم..
+main_logout=تسجيل الخروج
+main_version=الاصدار $1 on $2 ($3)
+main_title=وبمن $1 on $2 ($3)
+main_title2=وبمن
+main_none=ليس لديك الصلاحية للدخول لاي وحدة من 
+وحدات وبمن
+main_skill=مستوى المهارة
+main_readonly=(نمط القراءة فقط)
+
+link_essl=The Net::SSLeay Perl module needed to make HTTPS connections is 
+not installed on your system.
+
+category_servers=الخوادم
+category_hardware=العتاد
+category_system=النظام
+category_webmin=وبمن
+category_net=الشبكة
+category_syslet=أدوات النظام
+category_cluster=قطاع
+category_info=معلومات
+category_=أخرى
+
+longcategory_servers=وحدات لاجراء تعديلات على 
+الخوادم
+longcategory_hardware=وحدات لاجراء تعديلات على 
+الطابعات والاقراص الصلبة
+longcategory_system=وحدات للمستخدمين ونظام 
+الملفات واعدادات أخرى للنظام
+longcategory_webmin=وحدات للتعديل على نظام وبمن
+longcategory_net=Modules for configuring networking and network services
+longcategory_cluster=Modules that can manage multiple servers from a single 
+interface
+longcategory_info=Modules that display information about your system
+longcategory_=Modules that do not fall into any other category
+
+header_webmin=الصفحة الرئيسة لوبمن
+header_module=Module Index
+header_help=Help..
+header_config=Module Config
+header_servers=خوادم وبمن
+
+index=index
+yes=نعم
+no=لا
+save=حفظ
+create=انشاء
+delete=حذف
+find=بحث
+error=خطأ
+error_previous=الصفحة السابقة
+efilewrite=فشلت الكتابة الى $1 : $2
+efileclose=تابة الى $1 : $2 $1عند اقفالg : $2
+efileopen=Failed to open $1 for writing : $2
+default=الافتراضي
+modify=تعديل
+reset=اعادة الى الحالة الاصلية
+ok=موافق
+cancel=الغاء
+helpsearch=بحث في المستندات
+switch_remote_euser=The Unix user $1 does not exist.
+programname=وبمن
+
+chooser_title1=اختار ملف
+chooser_title2=مجلد
+chooser_dir=Directory of $1
+chooser_ok=موافق
+chooser_date=اختار التاريخ
+
+users_title1=اختار مجموعة مستخدمين
+users_title2=اختار مستخدم واحد
+users_sel=المستخدمين الذين تم اختيارهم
+users_all=كل المستخدمين
+users_ok=موافق
+users_cancel=الغاء
+users_clear=مسح
+
+groups_title1=اختار مجموعات
+groups_title2=اختار مجموعة
+groups_all=كل المجموعات
+groups_sel=المجموعات المختارة
+groups_ok=موافق
+groups_cancel=الغاء
+groups_clear=مسح
+
+modules_title1=Select Modules..
+modules_title2=Select Module..
+modules_sel=Selected Modules
+modules_all=All Modules
+modules_ok=موافق
+modules_cancel=الغاء
+modules_clear=مسح
+
+config_ecannot=You are not allowed to configure this module
+config_title=Configuration
+config_dir=For module $1
+config_header=Configurable options for $1
+config_none=None
+config_eaccess=You are not allowed to access this module
+config_err=Failed to save config
+config_nochange=Don't change
+config_setto=Set to
+config_ewebmin=Parameter type 14 only works in Webmin
+
+help_err=Failed to display help
+help_epath=Missing or invalid help path
+help_efile=Failed to read help file $1
+help_eheader=Missing &lt;header&gt; section
+help_einclude=Failed to include $1
+help_eif=$1 failed : $2
+help_eexec=$1 failed : $2
+
+referer_title=تحذير امان
+referer_warn=<b>Warning!</b> Webmin has detected that the program $2 was 
+linked to from the URL $1, which appears to be outside the Webmin server. 
+This may be an attempt to trick your server into executing a dangerous 
+command.
+referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 
+was linked to from an unknown URL, which appears to be outside the Webmin 
+server. This may be an attempt to trick your server into executing a 
+dangerous command.
+referer_ok=Continue executing Webmin program
+referer_again=لا تظهر هذا التحذير في المستقبل.
+
+session_header=الدخول الى وبمن
+session_mesg=لابد من ادخال اسم مستخدم وكلمة 
+مرور للدخول $1.
+session_mesg2=لابد من ادخال اسم مستخدم وكلمة 
+مرور للدخول
+session_user=اسم المستخدم
+session_pass=كلمة المرور
+session_login=دخول
+session_clear=مسح
+session_failed=فشل تسجيل الدخول الرجاء المحاولة 
+مرة أخرى
+session_logout=تم تسجيل الخروج بنجاح ، الرجاء 
+استخدام النموذج التالي للدخول مرة أخرى
+session_timed_out=Session timed out after $1 minutes of inactivity.
+session_save=هل تريد ان يقوم المتصفح بتذكر 
+معلومات الدخول  ؟
+
+pam_header=الدخول الى وبمن
+pam_mesg=You must respond to the question below to login to Webmin server on 
+$1.
+pam_mesg2=You must respond to the question below to login.
+pam_login=المواصلة
+pam_restart=اعادة التشغيل
+
+acl_root=Root directory for file chooser
+acl_nodot=Hide dot files in file chooser?
+acl_home=User's home directory
+acl_uedit=Users visible in user chooser
+acl_uedit_all=جميع المستخدمين
+acl_uedit_none=لا يوجد مستخدمين
+acl_uedit_only=المستخدمين فقط
+acl_uedit_except=الجميع ما عدا المستخدمين
+acl_uedit_uid=Users with UIDs in range
+acl_uedit_group=المستخدمين الذين ينتمون الى 
+مجموعات
+acl_gedit=Groups visible in group chooser
+acl_gedit_all=جميع المجموعات
+acl_gedit_none=لا يوجد مجموعات
+acl_gedit_only=فقط المجموعات
+acl_gedit_except=الجميع ما عدا المجموعات
+acl_gedit_gid=Groups with GIDs in range
+acl_feedback=Can send feedback email?
+acl_feedback2=موافق
+acl_feedback1=موافق ولكن بدون ملفات الاعدادات
+acl_feedback0=لا
+acl_feedback3=موافق مع ارفاق ملفات الاعدادات
+acl_rpc=Can accept RPC calls?
+acl_rpc2=Only for <tt>root</tt> or <tt>admin</tt>
+acl_rpc1=موافق
+acl_rpc0=لا
+acl_readonly=User is in demo mode?<br>(Some modules may not be available)
+
+month_1=يناير
+month_2=فبراير
+month_3=مارس
+month_4=ابريل
+month_5=مايو
+month_6=جون
+month_7=يوليه
+month_8=اغسطس
+month_9=سبتمبر
+month_10=أوكتوبر
+month_11=نوفمبر
+month_12=ديسمبر
+
+day_0=اﻷحد
+day_1=اﻷثنين
+day_2=الثلاثاء
+day_3=الاربعاء
+day_4=الخميس
+day_5=الجمعة
+day_6=السبت
+
+month_1=يناير
+month_2=فبراير
+month_3=مارس
+month_4=ابريل
+month_5=مايو
+month_6=جون
+month_7=يوليه
+month_8=اغسطس
+month_9=سبتمبر
+month_10=أوكتوبر
+month_11=نوفمبر
+month_12=ديسمبر
+
+day_0=اﻷحد
+day_1=اﻷثنين
+day_2=الثلاثاء
+day_3=الاربعاء
+day_4=الخميس
+day_5=الجمعة
+day_6=السبت
+
+emodule=Access denied : User $1 is not allowed to use the $2 module
+elock_tries=Failed to lock file $1 after $2 minutes
+
+skill_high=خبير
+skill_medium=متوسط
+skill_low=قليل الخبرة
+
+feedback_title=Webmin Feedback
+feedback_desc=This form allows you to report bugs on make suggestions to the 
+Webmin developers regarding any problems or missing features that you have 
+found. When the Send button is clicked, the details entered into the form 
+will be emailed to $1.
+feedback_desc2=This feedback will be sent to the developer of Webmin, not 
+your system administrator, ISP or hosting company. Please write your 
+feedback in english, even if you are currently running Webmin in another 
+language.
+feedback_header=Feedback details
+feedback_name=الاسم
+feedback_email=البريد الالكتروني
+feedback_module=Regarding module
+feedback_all=All modules
+feedback_text=وصف المشكلة أو الاقتراح
+feedback_os=Include operating system details in email?
+feedback_osdesc=If this option is selected, the automatic feedback email 
+will include your operating system name and version.
+feedback_config=Include module configuration in email?
+feedback_configdesc=If this is selected, the email will include the 
+configuration of the related module and the contents of any config files 
+that the module uses. For example, if the feedback was related to the 
+<i>Users and Groups</i> module, your <tt>/etc/passwd</tt> and 
+<tt>/etc/shadow</tt> files would be sent.
+feedback_attach=Additional files to attach
+feedback_send=Send Feedback
+feedback_mailserver=الارسال عبر ملقم البريد الصادر
+feedback_mailserver_def=Local sendmail program
+feedback_err=Failed to send feedback
+feedback_emodule=You chose to include module configuration in the email, but 
+did not select a module.
+feedback_emodule2=Selected module does not exist
+feedback_econfig=You do not have full access to the selected module.
+feedback_via=Sent feedback to $1 via SMTP server $2
+feedback_prog=Sent feedback to $1 using sendmail program $2
+feedback_esend=Failed to send feedback via sendmail program or local SMTP 
+server.
+feedback_to=ارسل تعليقات الى العناوين
+feedback_enoto=لم يتم ادخال عناوين ليتم ارسال 
+التعليقات اليها
+feedback_ecannot=غير مسموح لك بارسال تعليقات
+feedback_ecannot2=غير مسموح لك بارسال تعليقات 
+مدمجة مع ملفات اعدادات
+
+progress_size=جاري التحميل $1 ($2 bytes) ..
+progress_nosize=جاري التحميل $1 ..
+progress_data=تم تلقي $1 bytes ($2 %)
+progress_data2=تم تلقي $1 bytes
+progress_done=.. انتهى التحميل
+progress_incache=Found $1 in cache ..
+
+readparse_cdheader=Missing Content-Disposition header
+readparse_enc=Expecting form-data encoding, but got normal encoding
+readparse_max=Data exceeded maximum size of $1 bytes
+
+password_expired=تم انتهاء صلاحية كلمة المرور 
+ويجب تحديد كلمة مرور جديدة
+password_header=قم باختيار كلمة مرور جديدة
+password_user=اسم المستخدم
+password_old=كلمة المرور الحالية
+password_new1=كلمة المرور الجديدة
+password_new2=تأكيد كلمة المرور الجديدة
+password_ok=تغيير
+password_clear=مسح
+password_done=Your password has been successfully changed. You may now <a 
+href='$1'>login again</a> with the new password.
+password_err=فشل تغيير كلمة المرور
+password_euser=لم اجد اسمك في قائمة المستخدمين
+password_eold=كلمة المرور الحالية غير صحيحة
+password_enew1=لم تقم بادخال كلمة مرور جديدة
+password_enew2=كلمة المرور غير مطابقة
+password_epam=PAM error : $1
+password_emodpam=لم يتم تنصيب وحدة بيرل الضرورية 
+لاجراء التعديلات على كلمة المرور
+
+ui_mandatory=هذا الحقل اجباري
+ui_checkmandatory=لم يتم الاختيار
+ui_errors=تم ايجاد عدة اخطاء :
+ui_nothing=لم يتم ادخال شيئ
+ui_searchcol=Find rows where
+ui_searchfor=تحتوي على النص
+ui_searchok=بحث
+ui_selall=اختيار الكل
+ui_selinv=عكس الاختيار.
+ui_edate=تاريخ غير صحيح
+ui_etime=وقت غير صحيح
+ui_paging=Showing rows $1 to $2 of $3
+ui_rowlabel=$2 in row $1 :
+
+header_statusmsg=$1 logged into $2 $3 on $4 ($5)
+
+

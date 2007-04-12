@@ -1,0 +1,56 @@
+index_title=GRUB 採闘 稽希
+index_add=歯 採闘 辛芝 蓄亜
+index_global=越稽忽 辛芝 畷増
+index_globalmsg=乞窮 採闘 五敢 識澱 紫牌拭 旋遂鞠澗 越稽忽 採特 辛芝聖 畷増馬壱 GRUB研 竺帖拝 舌帖研 識澱馬淑獣神.
+index_install=GRUB 竺帖
+index_installmsg=採闘拝 凶 是税 辛芝聖 妊獣馬形檎 $1拭 GRUB 採闘 稽希研 竺帖馬淑獣神. 戚 井酔, LILO人 旭精 奄糎 採闘 稽希亜 違団床食走糠稽 獣什奴戚 採特鞠走 省聖 呪亀 赤柔艦陥!
+index_none=舛税吉 採闘 辛芝戚 蒸柔艦陥. GRUB研 竺帖馬奄 穿拭 採闘 辛芝聖 馬蟹 戚雌 蓄亜背醤 杯艦陥.
+index_efile=獣什奴拭 GRUB 五敢 督析 $1戚(亜) 蒸柔艦陥. GRUB亜 竺帖鞠嬢 赤走 省暗蟹 <a href='$2'>乞汲 姥失</a>戚 舛溌馬走 省聖 呪 赤柔艦陥.
+index_epath=獣什奴拭 GRUB 叔楳 督析 $1戚(亜) 蒸柔艦陥. GRUB亜 竺帖鞠嬢 赤走 省暗蟹 <a href='$2'>乞汲 姥失</a>戚 舛溌馬走 省聖 呪 赤柔艦陥.
+index_return=辛芝 鯉系
+
+title_add=採闘 辛芝 蓄亜
+title_edit=採闘 辛芝 畷増
+title_header=採闘 五敢 辛芝 舛左
+title_title=辛芝 薦鯉
+title_root=採闘 戚耕走 督銅芝
+title_other=益 須
+title_sel=識澱廃 牌鯉
+title_boot=採闘拝 錘慎 端薦
+title_kernel=軒勘什 朕確
+title_kfile=朕確 井稽
+title_args=朕確 辛芝
+title_chain=陥献 錘慎 端薦
+title_chain_def=督銅芝税 湛腰属 悉斗稽採斗
+title_chain_file=chainloader 督析稽採斗
+title_makeactive=欠闘 督銅芝聖 醗失鉢杯艦猿?
+title_none=蒸製(採特 五敢 牌鯉戚 焼還)
+title_err=採闘 辛芝聖 煽舌馬走 公梅柔艦陥
+title_etitle=蒸澗 辛芝 薦鯉
+title_eroot=蒸澗 欠闘 督銅芝
+title_ekernel=蒸暗蟹 設公吉 朕確 井稽
+title_echain=蒸暗蟹 設公吉 chainloader 督析
+title_edev=走据鞠走 省澗 欠闘 督銅芝 舌帖 $1脊艦陥
+
+global_title=越稽忽 辛芝
+global_header=越稽忽 採闘 五敢 辛芝
+global_default=奄沙 採闘 辛芝
+global_fallback=企端 採闘 辛芝
+global_first=鯉系税 湛腰属 牌鯉
+global_timeout=奄沙葵 稽球 穿 獣娃 段引
+global_secs=段
+global_install=巨什滴/督銅芝拭 GRUB 竺帖
+global_sel=識澱廃 牌鯉
+global_other=益 須
+global_err=越稽忽 辛芝聖 煽舌馬走 公梅柔艦陥
+global_etimeout=蒸暗蟹 設公吉 獣娃 段引 葵
+global_edev=走据鞠走 省澗 竺帖 巨什滴/督銅芝 $1脊艦陥
+global_eother=蒸暗蟹 設公吉 巨什滴/督銅芝
+
+install_title=GRUB 竺帖
+install_err=GRUB研 竺帖馬走 公梅柔艦陥
+install_efind=五敢 督析聖 達聖 呪 蒸柔艦陥
+install_desc=誤敬 $2 貢 $3聖 紫遂馬食 $1拭 GRUB 竺帖 掻..
+install_ok=.. 竺帖亜 刃戟鞠醸柔艦陥
+install_failed=.. 竺帖馬走 公梅柔艦陥!
+

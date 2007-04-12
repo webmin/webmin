@@ -1,0 +1,9 @@
+#!/usr/local/bin/perl
+# edit_sync.cgi
+# Display options for the automatic setting up of SSH for new users
+
+require './sshd-lib.pl';
+&header($text{'sync_title'}, "");
+print "<hr>\n";
+
+print "<form action=save_sync.cgi>\n";

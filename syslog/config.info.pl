@@ -1,0 +1,12 @@
+syslog_conf=¦cie¿ka do pliku konfiguracyjnego sysloga,0
+m4_conf=Czy konfiguracja sysloga tworzona poprzez m4?,1,1-Tak,0-Nie
+m4_path=¦cie¿ka do m4,0
+sync=Mo¿na wy³±czyæ zrzucanie buforów po ka¿dym komunikacie?,1,1-Tak,0-Nie
+pipe=Potrafi logowaæ do FIFO?,1,2-Do poleceñ,1-Do nazwanych FIFO,0-Nie
+pri_dir=Obs³uguje zaawansowany wybór priorytetów?,1,2-Stylu FreeBSD,1-Stylu Linuksa,0-Nie
+pri_all=Obs³uguje wszystkie priorytety?,1,1-Tak,0-Nie
+tags=Tagged sections supported?,1,1-Tak,0-Nie
+pid_file=Plik z&nbsp;numerem PID sysloga,3,Brak
+syslogd=¦cie¿ka do programu serwera syslog,0
+facilities=Obs³ugiwane kana³y logowania,0
+lines=Domy¶lna liczba wy¶wietlanych linii,0

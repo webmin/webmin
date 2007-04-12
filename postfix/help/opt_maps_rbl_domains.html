@@ -1,0 +1,21 @@
+<header>DNS domains for blacklist lookups</header>
+
+<center><tt>maps_rbl_domains</tt></center>
+<hr>
+
+This parameter specifies an optional list of DNS domains that publish the
+network addresses of blacklisted hosts.
+
+<p>
+
+By default, RBL blacklist lookups are disabled. See the
+<a href=opt_smtpd_client_restrictions><tt>smtpd_client_restrictions</tt></a>
+parameter.
+
+<p>
+
+The real-time blackhole list works as follows: reverse the client
+network address, and reject service if it is listed below any of
+the following domains.
+
+<hr>

@@ -1,0 +1,10 @@
+name=Cluster Users
+desc=Cluster Users and Groups
+os_support=slackware-linux redhat-linux mandrake-linux solaris debian-linux suse-linux united-linux hpux freebsd osf1 open-linux unixware turbo-linux openbsd corel-linux cobalt-linux irix netbsd msc-linux aix generic-linux openserver macos gentoo-linux trustix-linux coherent-linux
+depends=useradmin servers
+category=cluster
+desc_ca=Usuaris i Grups de Cluster
+desc_es=Cluster - Usuarios y Grupos
+desc_de=Cluster - Benutzer und Gruppen
+longdesc=Create, update and delete users and groups across multiple servers. Unlike NIS, each server has its own passwd and group files which are remotely updated by this module.
+desc_fr=Utilisateurs et groupes de clusters

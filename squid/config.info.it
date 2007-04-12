@@ -1,0 +1,13 @@
+squid_conf=Full path to squid config file,0
+squid_start=Command to start squid,3,Automatic
+squid_stop=Command to stop squid,3,Automatic
+squid_path=Squid executable,0
+pid_file=Full path to PID file,0
+cache_dir=Full path to squid cache directory,0
+cachemgr_path=Squid cachemgr.cgi executable,0
+log_dir=Full path to squid log directory,0
+calamaris=Path to calamaris log analysis program,3,Not installed
+cal_args=Arguments to calamaris command,0
+cal_max=Maximum log lines to pass to calamaris,3,Unlimited
+crypt_conf=Encryption method for proxy passwords,1,0-crypt,1-md5base64
+sort_conf=Sort proxy users,1,1-Yes,0-No

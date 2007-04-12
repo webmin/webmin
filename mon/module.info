@@ -1,0 +1,12 @@
+name=mon
+desc=MON Service Monitor
+category=system
+depends=init
+os_support=*-linux
+desc_ca=Monitor de Serveis MON
+desc_es=Monitor de Servicio MON
+desc_de=MON Dienste-Monitor
+desc_ru_SU=нПОЙФПТ УМХЦВ MON
+desc_ru_RU=Монитор служб MON
+longdesc=Setup MON, a powerful service monitor and alerting system.
+readonly=1

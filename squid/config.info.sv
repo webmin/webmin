@@ -1,0 +1,11 @@
+squid_conf=Fullständig sökväg till inställningsfil för squid,0
+squid_start=Kommando för att starta squid,3,Automatiskt
+squid_stop=Kommando för att stanna squid,3,Automatiskt
+squid_path=Squid-körfil,0
+pid_file=Fullständig sökväg till PID-fil,0
+cache_dir=Fullständig sökväg till squid-cache-katalog,0
+cachemgr_path=Squid-cachemgr.cgi-körfil,0
+log_dir=Fullständig sökväg till squid-loggkatalog,0
+calamaris=Sökväg till logganalyseringsprogrammet calamaris,3,Inte installerat
+cal_args=Argument till calamaris-kommando,0
+cal_max=Maximalt antal loggrader som ska skickas till calamaris,3,Obegränsat

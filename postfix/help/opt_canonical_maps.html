@@ -1,0 +1,26 @@
+<header>Address mapping lookup tables</header>
+
+<center><tt>canonical_maps</tt></center>
+<hr>
+
+This parameter specifies optional address mapping lookup tables. The mapping is
+applied to both sender and recipient addresses, in both envelopes and in
+headers. This is typically used to clean up dirty addresses from legacy mail
+systems, or to replace login names by <tt>Firstname.Lastname</tt>. See
+<a href=canonical>Canonical Mapping</a> for details.
+
+<p>
+
+By default, no canonical address mapping is done.
+
+<p>
+
+Sensible possible values:
+<ul>
+<li> <tt>dbm:/etc/postfix/canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical, nis:canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical, netinfo:/canonical</tt> 
+</ul>
+
+<hr>

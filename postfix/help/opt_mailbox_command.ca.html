@@ -1,0 +1,42 @@
+<header>Ordre externa a utilitzar en lloc del lliurament a la bústia</header>
+
+<center><tt>mailbox_command</tt></center>
+<hr>
+
+Aquest paràmetre especifica l'ordre externa opcional a utilitzar en lloc 
+del lliurament a la bústia. L'ordre s'executa com l'usuari destinatari,
+amb els valors d'entorn apropiats de <tt>HOME</tt>, <tt>SHELL</tt> 
+<tt>LOGNAME</tt>. Excepció: el lliurament per a <tt>root</tt> es fa com a
+<tt>$default_user</tt>.
+
+<p>
+
+Altres variables d'entorn d'interès: <tt>USER</tt> (nom de l'usuari 
+destinatari), <tt>EXTENSION</tt> (extensió de l'adreça), <tt>DOMAIN</tt>
+(part del domini de l'adreça) i <tt>LOCAL</tt> (la part local de l'adreça).
+
+<p>
+
+Contràriament a altres paràmetres de configuració de Postfix, aquest 
+paràmetre no està subjecte a substitucions de paràmetres.  Això és per a
+fer més fàcil especificar sintaxi shell (vegeu l'exemple de sota).
+
+<p>
+
+Eviteu metacaràcters shell, perquè forçaran Postfix a executar un procés
+shell de fort consum. <tt>Procmail</tt> ell sol ja ho és prou.
+
+<p>
+
+SI FAS SERVIR AIXÒ PER LLIURAR CORREU A TOT EL SISTEMA, HAS D'ESTABLIR 
+UN ÀLIES QUE REENVIÏ EL CORREU DE ROOT A UN USUARI REAL.
+
+<p>
+
+Exemples:
+<ul>
+<li><tt>/algun/lloc/procmail</tt> 
+<li><tt>/algun/lloc/procmail -a "$EXTENSION"</tt>
+</ul>
+
+<hr>

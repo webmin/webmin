@@ -1,0 +1,13 @@
+inetd_conf_file=Inetd yapýlandýrma dosyasý,0
+extended_inetd=Uzatýlmýþ inetd desteði,1,0-Hayýr,1-Temel,2-Enhanced
+show_empty=Program olmadan servisleri göster,1,1-Evet,0-Hayýr
+rpc_inetd=Inetd, RPC programlarýný desteklesin,1,1-Evet,0-Hayýr
+sort_mode=Servisleri ve programlarý sýralama ,1,0-Dosyadaki þekliyle,1-Ada göre,2-Assignment
+services_file=Að servisleri dosyasý,0
+rpc_file=RPC servisleri dosyasý,0
+protocols_file=Að protokolleri dosyasý,0
+rpc_protocols=RPC alt protokulleri,0
+restart_command=Inetd'yi yeniden baþlatma komutu,0
+tcpd_path=tcpd'nin tam yolu,3
+allow_file=tcpd kabul dosyasýnýn tam yeri,3
+deny_file=tcpd reddetme dosyasýnýn tam yeri,3

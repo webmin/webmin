@@ -1,0 +1,37 @@
+index_title=改变口令
+index_header=选择要改变口令的用户
+index_return=用户列表
+index_user=改变用户口令：
+index_euseradmin=无法使用这个模块， 因为「用户和组」模块尚未安装或不支持您的系统。
+index_toomany=您的系统上的用户太多，无法全部同时显示。请在下方输入要改变其口令的用户名：
+
+passwd_title=改变口令
+passwd_header=改变Unix用户口令
+passwd_for=正在改变口令
+passwd_old=旧口令
+passwd_new=新口令
+passwd_repeat=确认新口令（再输入一次）
+passwd_change=改变
+passwd_reset=清除表格
+passwd_err=无法改变口令
+passwd_ecannot=您没有修改该用户口令的权限
+passwd_euser=用户不存在
+passwd_eold=旧口令不正确
+passwd_erepeat=确认口令不符合
+passwd_ecmd=$1失败: $2
+passwd_ok=用户$1的口令已成功更改。如果这是您的Webmin用户，您可能需要再次登录。
+
+log_passwd=改变用户$1口令
+
+acl_repeat=必须再次输入新口令？
+acl_old=必须输入旧口令？
+acl_old_this=只允许其他用户
+acl_others=在其他模块中改变口令？
+acl_users=可以改变其口令的用户
+acl_mode0=所有用户
+acl_mode1=仅限于用户
+acl_mode2=所有用户除了
+acl_mode3=仅限该用户
+acl_mode4=UID范围中的用户
+acl_mode5=主要组中的用户
+acl_mode6=用户匹配

@@ -1,0 +1,28 @@
+<header>Éditer un processus</header>
+
+Cette page affiche les détails d'un processus. Voici les informations affichées :
+<dl>
+<dt><b>Commande</b>
+<dd>Le programme et la ligne de commande avec les arguments qui ont servi à exécuter le processus.
+<dt><b>Numéro</b>
+<dd>Le numéro de processus unique (PID).
+<dt><b>Processus parent</b>
+<dd>Le processus qui l'a créé.  Cliquer sur celui-ci pour avoir ses détails.
+<dt><b>Utilisateur</b>
+<dd>L'utilisateur à qui appartient le processus et qui a ses permissions.
+<dt><b>Utilisation processeur</b>
+<dd>Le pourcentage processeur que ce processus utilise en ce moment.
+<dt><b>Taille</b>
+<dd>La quantité de mémoire consommée par ce processus. Cette quantité peut être partagée avec d'autre processus.
+<dt><b>Temps d'exécution</b>
+<dd>Le temps total en minutes du temps processeur utilisé par ce processus depuis qu'il a été démarré. Tant que le processus n'utilisera pas assez le processeur les minutes écoulées ne seront pas les mêmes que celles depuis qu'il a été exécuté.
+<dt><b>Niveau de priorité</b>
+<dd>La priorité avec laquelle le processus est exécuté. <a href = nice>Plus d'informations</a> sont disponible ici sur le sujet.
+</dl>
+Des informations additionnelles peuvent être affichéesen fonction de la version d'Unix exacte que vous utilisez.<p>
+
+Sous les informations sur le processus se trouve un bouton qui envoie un signal au processus correspondant. Choisissez le signal que vous voulez envoyer au processus et cliquez sur le bouton <tt>Envoyer un signal</tt>. Les signaux les plus utiles sont <tt>KILL</tt> et <tt>TERM</tt> pour tuer un processus.<p>
+
+Si le processus a des enfants, ils seront affichés au bas de la page, cliquer sur le numéro correspondant pour afficher les informations détaillées.
+
+<hr>

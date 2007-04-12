@@ -1,0 +1,5 @@
+interfaces=執行 DHCP 的介面在,3,自動
+lease_file=DHCP 伺服器的租約檔案,0
+pid_file=到 DHCP 伺服器 PID 檔案的路徑,0
+dhcpd_path=DHCP 伺服器執行檔,0
+dhcpd_conf=DHCP 伺服器組態檔,0

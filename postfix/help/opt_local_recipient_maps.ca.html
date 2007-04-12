@@ -1,0 +1,23 @@
+<header>Rebutja els usuaris locals desconeguts</header>
+
+<center><tt>local_recipient_maps</tt></center>
+<hr>
+
+Aquest paràmetre especifica les taules opcionals de consulta amb tots els
+usuaris que són locals respecte a <tt>$mydestination</tt> (&quot;per quins
+dominis es rep correu&quot;) i <tt>$inet_interfaces</tt> (&quot;interfícies
+de xarxa per rebre correu&quot;). Si aquest paràmetre està definit. llavors 
+el servidor SMTP rebutjarà el correu per a usuaris locals desconeguts.
+
+<p>
+
+Poseu taules amb noms d'usuaris buits com <tt>unix:passwd.pernom</tt>
+i mapes d'àlies. Exemple: <tt>$alias_maps unix:passwd.pernom</tt>.
+
+<p>
+
+Compte: Si el servidor SMTP Postfix s'executa amb <tt>chroot</tt>,
+pot ser que hagis de copiar la base de dades passwd a la gàbia.
+Això és dependent del sistema.
+
+<hr>

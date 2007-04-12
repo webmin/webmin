@@ -1,0 +1,39 @@
+<header>Edit Process</header>
+
+This page displays details of a running process. At the top
+the following information is displayed :
+<dl>
+<dt><b>Command</b>
+<dd>The program and command line arguments for this process
+<dt><b>Process ID</b>
+<dd>The unique process ID
+<dt><b>Parent Process</b>
+<dd>The process that created this one. Click on it to display the details of
+    the parent.
+<dt><b>User</b>
+<dd>The user who owns this process, and with whose permissions it runs
+<dt><b>CPU Use</b>
+<dd>The percentage of CPU time this process is currently using
+<dt><b>Size</b>
+<dd>The amount of memory occupied by this process. Some of this may be
+    shared by other processes
+<dt><b>Run Time</b>
+<dd>The total amount of CPU time used by this process since it was started,
+    in minutes. Unless the process was very CPU intensive, this will not be
+    the same as the number of minutes elapsed since it began.
+<dt><b>Nice Level</b>
+<dd>The priority at which this process runs. <a href=nice>More information</a>
+    about the nice level is available.
+</dl>
+Additional information may also be displayed, depending on the exact Unix
+version you are running. <p>
+
+Below the process information is a button for sending a signal to the
+process. Select the signal that you want to send from the
+list, then click the <tt>Send Signal</tt> button. The most useful signals 
+are <tt>KILL</tt> and <tt>TERM</tt>, for killing the process. <p>
+
+If this process has any children, they will be displayed at the bottom of
+the page. Click on an ID from the list to display detailed information. 
+<hr>
+

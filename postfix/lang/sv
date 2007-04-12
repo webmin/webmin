@@ -1,0 +1,273 @@
+index_title=E-postagenten Postfix
+index_epath=Postfixs kontrollkommando $1 är inte installerat på ditt system. Dina <a href='$2'>modulinställningar</a> kanske är felaktiga, eller också har Postfix inte installerats.
+
+internal_error=Internt fel
+index_econfig=Inställningskommandot $1 för Postfix finns inte. Dina <a href='$2'>modulinställningar</a> kanske är felaktiga.
+index_stop=Stoppa Postfix
+index_start=Starta Postfix
+index_stopmsg=Tryck på denna knapp för att sluta köra e-postservern Postfix. Detta gör så att ingen e-post från andra system delas ut till lokala användare och hindrar klienter som använder detta system som e-postserver att skicka e-post. 
+index_startmsg=Tryck på denna knapp för att starta e-postservern Postfix. Innan Postfix startats delas ingen e-post från andra system ut till lokala användare, och e-postklienter kan inte använda detta system som e-postserver.
+opts_err=Det gick inte att spara inställningarna
+
+check_error=Ett fel upptäcktes när de aktuella Postfix-inställningarna kontrollerades. Du behöver rätta till Postfix-inställningarna manuellt.
+
+address_rewriting_title=Adressomskrivningar och maskeringar
+address_rewriting_ecannot=Du får inte ändra adressomskrivningar och maskeringar
+aliases_title=E-postalias
+aliases_ecannot=Du får inte ändra alias
+aliases_no_alias_file=Ingen alias-fil finns
+aliases_cant_write=Det går inte att skriva till alias-fil
+aliases_cant_read=Det går inte att läsa alias-fil
+aliasopts_title=Aliasinställningar
+aliases_internal_error=Alias: internt fel
+edit_alias_title=Version av alias-inställningar
+alias_save=Spara alias
+alias_save_err=Det gick inte att spara alias
+alias_delete_create=Vill du verkligen ta bort ett alias som du håller på att skapa!?
+delete_alias=Ta bort alias
+
+general_title=Allmänna inställningar
+general_title_sensible=Mest användbara allmänna inställningar
+general_title_others=Andra allmänna inställningar
+general_ecannot=Du får inte ändra de allmänna inställningarna
+what_is_it=Vad är det?
+
+opts_default=Standard
+opts_none=Ingen
+opts_relayhost=Skicka utgående e-post via dator
+opts_direct=Skicka direkt
+opts_myorigin=Domän som ska användas i utgående e-post
+opts_myorigin_as_myhostname=Använd datornamn
+opts_myorigin_as_mydomain=Använd domännamn
+opts_mydestination=Ta emot e-post för dessa domäner
+opts_mydestination_default=Lokal dator
+opts_mydestination_domainwide=Hela domänen
+opts_notify_classes=Problem som ska rapporteras till postmaster
+opts_queue_directory=Kökatalog för e-post
+opts_mail_owner=Kö- och processägande
+opts_default_privs=Standardrättigheter för den lokala e-posthanteraren
+opts_inet_interfaces=Nätverksinterface för mottagning av e-post
+opts_all_interfaces=Alla
+
+opts_local_recipient_maps=Kasta post till okända lokala användare
+opts_no=Nej
+opts_save=Spara och ta i drift
+
+
+opts_allow_percent_hack=Skriv om "användare%domän" till "användare@domän"
+opts_append_at_myorigin=Skriv om "användare" till "användare@$mydomain"
+opts_append_dot_mydomain=Skriv om "användare@dator" till "användare@dator.$mydomain"
+opts_empty_address_recipient=Skicka e-post utan mottagare till...
+opt_empty_recip_default=Standard
+opts_swap_bangpath=Skriv om "site!användare" till "användare@site"
+opts_masquerade_domains=Adressmaskering
+opts_masquerade_exceptions=Maskeringsundantag
+index_return=Postfix-inställningar
+
+
+opts_alias_maps=Alias-databaser som används av den lokala MTA:n
+opts_alias_database=Alias-databas byggd av kommandot &quot;newaliases&quot; 
+aliases_warning=Varning: <ul><li>när det första fältet inte är tomt används standardkommandot för Postfix alias-skapande till att bygga upp motsvarande databas; <li>annars används Sendmails kompatibilitetskommando &quot;newaliases&quot;. Detta använder databaserna i det andra fältet.</ul>
+
+aliases_name=Namn
+aliases_value=Alias för ...
+
+new_alias=Lägg till ett alias
+new_aliasmsg=Tryck på denna knapp för att lägga till ett alias
+
+
+local_delivery_ecannot=Du får inte ändra de lokala sändinställningarna
+local_delivery_title=Lokal sändning
+opts_local_transport=Namn på transportmetod för lokal sändning
+opts_local_transport_local=Lokal
+opts_local_command_shell=Skal för sändning till externt kommando
+opts_local_command_shell_direct=Inget (direkt exekvering av kommandon)
+opts_forward_path=Sökväg för eftersändning
+opts_allow_mail_to_commands=Godkänd e-postleverans till externa kommandon
+opts_allow_mail_to_files=Godkänd e-postleverans till externa filer
+opts_home_mailbox=Sökväg till användarens brevlåda (relativt hemkatalogen)
+opts_home_mailbox_default=Ingen (använd standardvägen <tt>/var/någonting</tt>)
+opts_luser_relay=Destinationsadress för okända mottagare
+opts_luser_relay_none=Ingen (studsa brevet)
+opts_mail_spool_directory=Spool-katalog
+opts_mailbox_command=Externt kommando istället för sändning till brevlåda
+opts_mailbox_command_none=Inget
+opts_mailbox_transport=Valbar verklig transportmetod
+opts_mailbox_transport_none=Ingen
+opts_fallback_transport=Alternativ transport för okända mottagare
+opts_fallback_transport_none=Ingen
+opts_local_destination_concurrency_limit=Maximalt antal parallella sändningar till samma lokala mottagare
+opts_local_destination_recipient_limit=Maximalt antal mottagare per lokal meddelandesändning
+opts_local_destination_recipient_limit_default=Standard
+opts_prepend_delivered_header=Lägg till <tt>Delivered-To:</tt> när ...
+opts_prepend_delivered_header_default=Standard
+
+
+resource_title=Allmän resursstyrning
+resource_ecannot=Du får inte ändra parametrarna för resursstyrning
+opts_bounce_size_limit=Maximal storlek för studsat meddelande
+opts_command_time_limit=Längsta tid för att skicka till externa kommandon
+opts_default_process_limit=Maximalt antal Postfix-underprocesser
+opts_deliver_lock_attempts=Maximalt antal försök att få fillås
+opts_deliver_lock_delay=Tid (sekunder) mellan fillåsningsförsök
+opts_duplicate_filter_limit=Maximalt antal adresser som dublettfiltret minns
+opts_fork_attempts=Maximalt antal försök att starta underprocess
+opts_fork_delay=Tid (sekunder) mellan försök att starta underprocess
+opts_header_size_limit=Maximal minnesåtgång för att processa meddelandehuvud
+opts_line_length_limit=Maximal minnesåtgång för att hantera inlästa rader
+opts_message_size_limit=Maximal meddelandestorlek
+opts_qmgr_message_active_limit=Maximalt antal meddelanden i den aktiva kön
+opts_qmgr_message_recipient_limit=Maximalt antal mottagare i minnet
+opts_queue_minfree=Minsta lediga utrymme i köfilsystemet
+opts_stale_lock_time=Maximal tid innan kvarglömd låsning släpps
+opts_transport_retry_time=Tid (sekunder) mellan försök att kontakta en defekt MDT
+
+
+opts_always_bcc=Adress som är osynlig mottagare av varje meddelande
+opts_always_bcc_none=Ingen
+opts_daemon_timeout=Tidsgräns för hantering av förfrågningar
+opts_default_database_type=Standardtyp för databas
+opts_default_transport=Standardtyp av meddelandetransport
+opts_double_bounce_sender=Avsändaradress för studsad e-post
+opts_hash_queue_depth=Antal underkatalognivåer under kökatalogen
+opts_hash_queue_names=Namn på kökataloger som delas upp på underkataloger
+opts_hopcount_limit=Maximalt antal <tt>Received:</tt>-huvuden
+opts_ipc_idle=Väntetid efter nedkoppling av intern IPC-klient
+opts_ipc_timeout=Tidsgräns för I/O på intern kommunikationskanal
+opts_mail_name=E-postsystemets namn
+opts_mail_version=Officiell version för e-postsystemet
+opts_max_idle=Väntetid till nästa tjänsteförfrågning
+opts_max_use=Maximalt antal behandlade tjänsteförfrågningar före avslutning
+opts_mydomain=Lokalt internetdomännamn
+opts_mydomain_default=Standard (sätts av systemet)
+opts_myhostname=Internet-datornamn för detta e-postsystem
+opts_myhostname_default=Standard (sätts av systemet)
+opts_mynetworks=Lokala nätverk
+opts_mynetworks_default=Standard (alla anslutna nätverk)
+opts_bounce_notice_recipient=Skicka meddelande om studs till ...
+opts_2bounce_notice_recipient=Skicka meddelande om dubbelstuds till ...
+opts_delay_notice_recipient=Skicka meddelande om fördröjning till ...
+opts_error_notice_recipient=Skicka felmeddelanden till ...
+opts_process_id_directory=Låsfilskatalog, relativt kökatalog
+opts_program_directory=Postfix stödprogram- och demonkatalog
+opts_recipient_delimiter=Separator mellan användarnamn och adressändelser
+opts_relocated_maps_default=Standard (deaktiverad)
+opts_sun_mailtool_compatibility=Slå av kärnans fillås för brevlådor
+opts_trigger_timeout=Maximal tid för att skicka en triggning till en demon
+opts_delay_warning_time=Tid (timmar) innan varningsmeddelande om utebliven sändning skickas
+opts_delay_warning_time_default=Deaktiverat
+
+
+smtpd_title=SMTP-serverinställningar
+smtpd_ecannot=Du får inte ändra SMTP-serverinställningarna
+opts_disable_vrfy_command=Deaktivera SMTP-kommandot VRFY
+opts_smtpd_banner=SMTP-välkomstbanner
+opts_smtpd_etrn_restrictions=Begränsa ETRN-kommando för ...
+opts_smtpd_recipient_limit=Maximalt antal mottagare per sändning
+opts_smtpd_timeout=Tidsgräns (sekunder) för SMTP-överföringar
+opts_smtpd_error_sleep_time=Tidsgräns innan 4xx/5xx-felsvar skickas
+opts_smtpd_soft_error_limit=Antal fel för att tillfälligt strunta i en klient
+opts_smtpd_hard_error_limit=Antal fel för att koppla ned
+opts_smtpd_client_restrictions=Begränsningar för klienters datornamn/adresser
+opts_smtpd_helo_required=HELO krävs
+opts_smtpd_helo_restrictions=Begränsningar av HELO-kommandon
+opts_smtpd_sender_restrictions=Begränsningar för avsändaradresser
+opts_smtpd_recipient_restrictions=Begränsningar för mottagaradresser
+opts_allow_untrusted_routing=Tillåt icke auktoriserad routing
+opts_maps_rbl_domains=DNS-domäner för uppslagning av svartlistning
+opts_relay_domains=Begränsa e-post-vidaresändning
+opts_access_map_reject_code=SMTP-serveråtgärd vid intrångsförsök
+opts_invalid_hostname_reject_code=SMTP-serveråtgärd vid datornamnsavvisande
+opts_maps_rbl_reject_code=SMTP-serveråtgärd vid RBL-domänöverträdelse
+opts_reject_code=SMTP-serveråtgärd vid klientspärr
+opts_relay_domains_reject_code=SMTP-serveråtgärd vid förbjuden vidaresändning
+opts_unknown_address_reject_code=SMTP-serveråtgärd vid domänspärr
+opts_unknown_client_reject_code=SMTP-serveråtgärd vid spärr pga okänd klient
+opts_unknown_hostname_reject_code=SMTP-serveråtgärd vid spärr pga okänt datornamn
+
+
+smtp_title=SMTP-klientinställningar
+smtp_ecannot=Du får inte ändra i SMTP-klientinställningarna
+opts_best_mx_transport=Åtgärd när man blivit bästa MX-val
+opts_best_mx_transport_default=Standard (studsa brevet)
+opts_fallback_relay=Datorer/domäner dit e-post med ogiltig adress skickas
+opts_ignore_mx_lookup_error=Strunta i MX-uppslagningsfel
+opts_smtp_skip_4xx_greeting=Hoppa över 4xx-hälsning
+opts_smtp_skip_quit_response=Vänta inte på QUIT-svar
+opts_smtp_destination_concurrency_limit=Maximalt antal parallella sändningar till samma destination
+opts_smtp_destination_recipient_limit=Maximalt antal mottagare per sändning
+opts_smtp_connect_timeout=Tidsgräns för fullbordande av TCP-uppkopplingar
+opts_smtp_helo_timeout=Tidsgräns för välkomstbanner
+opts_smtp_mail_timeout=Tidsgräns för svar på MAIL FROM
+opts_smtp_rcpt_timeout=Tidsgräns för svar på RCPT TO
+opts_smtp_data_init_timeout=Tidsgräns för svar på DATA
+opts_smtp_data_xfer_timeout=Tidsgräns för svar på meddelandeöverföring
+opts_smtp_data_done_timeout=Tidsgräns vid väntan på svar på avslutande &quot;.&quot;
+opts_smtp_quit_timeout=Tidsgräns för svar på QUIT
+
+
+rate_title=Sändningsparametrar
+rate_ecannot=Du får inte ändra på sändningsparametrarna
+opts_default_destination_concurrency_limit=Maximalt antal parallella sändningar till samma destination
+opts_default_destination_recipient_limit=Maximalt antal mottagare per meddelandesändning
+opts_initial_destination_concurrency=Startnivå för samtidig sändning till samma destination
+opts_maximal_backoff_time=Maxtid mellan försök att sända ett fördröjt meddelande
+opts_maximal_queue_lifetime=Maximal kötid (dagar) innan meddelandet anses osändbart
+opts_minimal_backoff_time=Minsta tid mellan försök att sända ett fördröjt meddelande
+opts_queue_run_delay=Tid (s) mellan läsningar av fördröjningskön
+opts_defer_transports=Transportmetoder som inte bör användas
+
+
+debug_title=Debug-inställningar
+debug_ecannot=Du får inte ändra debug-inställningarna
+opts_debug_peer_list=Lista över domän/nätverksmönster för vilka utförlig loggning ska göras
+opts_debug_peer_level=Utförlig loggningsnivå när ovanstående lista matchar
+
+
+ldap_title=LDAP-uppslagningar
+ldap_ecannot=Du får inte ändra inställningarna för LDAP-uppslagningar
+ldap_non_existent=LDAP verkar inte finnas på ditt Postfix-system
+opts_ldap_lookup_timeout=Tidsgräns för LDAP-uppslagningar
+opts_ldap_search_base=LDAP-databas som ska genomletas
+opts_ldap_server_host=Dator för LDAP-server
+
+canonical_title=Kanonisk översättning
+canonical_ecannot=Du får inte ändra inställningarna för kanonisk översättning
+opts_canonical_maps=Tabeller för adressöversättning
+opts_recipient_canonical_maps=Tabeller med mottagaradresser
+opts_sender_canonical_maps=Tabeller med avsändaradresser
+edit_canonical_maps=Ändra kanoniska översättningar
+edit_recipient_canonical_maps=Ändra översättning av mottagaradress
+edit_sender_canonical_maps=Ändra översättning av avsändaradress
+edit_canonical_maps_general=Tryck på någon av dessa knappar för att ändra adressöversättningarna
+canonical_edit_title=Ändra en adressöversättning
+
+mapping_name=Namn
+mapping_value=översätts till ...
+new_mapping=Ny översättning
+new_mappingmsg=Tryck på denna knapp för att lägga till en översättning
+map_save=Spara översättning
+delete_map=Ta bort översättning
+edit_map_title=Ändra en översättning
+map_save_err=Ett fel uppstod när en översättning sparades
+mapps_no_map_file=Du har inte angivit någon översättningsfil
+map_delete_create=Du får inte ta bort en översättning som du håller på att ändra
+maps_internal_error=Översättning: internt fel
+maps_cant_write=Det går inte att skriva
+help_map_format=Vilket format ska användas?
+
+
+virtual_title=Virtella domäner
+virtual_ecannot=Du får inte ändra inställningarna för virtuella domäner
+opts_virtual_maps=Domänuppslagningstabeller
+
+transport_title=Transportuppslagning
+transport_ecannot=Du får inte ändra inställningarna för transportuppslagning
+opts_transport_maps=Transport-uppslagningstabeller
+
+relocated_title=Omflyttningsuppslagning
+relocated_ecannot=Du får inte ändra inställningarna för omflyttningsuppslagning
+opts_relocated_maps=&quot;Användaren har flyttats&quot;-tabeller
+
+map_click=Klicka på en översättning för att ändra dess inställningar:
+no_map=(Ingen översättning finns. Definiera en översättning först; därefter kan du ändra i den)

@@ -1,0 +1,238 @@
+quota_unlimited=Obegränsad
+
+acl_fss=Filsystem som denna användare får ändra i
+acl_fall=Alla filsystem
+acl_fsel=Angivna ...
+acl_quotaon=Kunna slå på och av quota?
+acl_quotanew=Kunna ställa in quota för nya användare?
+acl_ugrace=Kunna ändra tidsintervall för användare?
+acl_vtotal=Kunna se totalt diskutrymme?
+acl_ggrace=Kunna ändra tidsintervall för grupper?
+acl_uquota=Användare som denna användare får ändra quota för
+acl_gquota=Grupper som denna användare får ändra quota för
+acl_uall= Alla användare
+acl_uonly= Endast användarna
+acl_uexcept= Alla användare utom
+acl_ugroup= Användare med primär grupp
+acl_gall= Alla grupper
+acl_gnone= Inga grupper
+acl_gonly= Endast grupperna
+acl_gexcept= Alla grupper utom
+
+activate_eallow=Du får inte slå på och av quota på detta filsystem
+activate_eon=Det gick inte att slå på quota
+activate_eoff=Det gick inte att slå av quota
+
+check_title=Kontrollera quota
+check_return=Lista över $1
+check_ecannot=Du får inte kontrollera quota på detta filsystem
+check_running=Kommandot <tt>quotacheck</tt> körs nu för att kontrollera block- och filanvändningen på <tt>$1</tt>. Om det är ett stort filsystem kan detta ta en stund ...
+check_done=... Klart.
+check_rgroup=grupp
+check_ruser=användare
+
+cgroup_efail=Det gick inte att kopiera quota
+cgroup_ecannot=Du får inte kopiera quota
+cgroup_egallow=Du får inte kopiera denna grupps quota
+cgroup_enogroup=Du har inte angivit någon grupp att kopiera till
+cgroup_eallowto=Du får inte kopiera quota till '$1'
+
+cgform_title=Kopiera quota
+cgform_return=gruppquota
+cgform_ecannot=Du får inte kopiera quota
+cgform_egroup=Du får inte kopiera denna grupps quota
+cgform_copyto=Kopiera quota för <tt>$1</tt> på ALLA filsystem till ...
+cgform_all=Alla grupper på ditt system
+cgform_select=Angivna grupper
+cgform_contain=Grupper med följande användare
+cgform_doit=Kopiera
+
+cuser_efail=Det gick inte att kopiera quota
+cuser_ecannot=Du får inte kopiera quota
+cuser_euallow=Du får inte kopiera denna användares quota
+cuser_enouser=Du har inte angivit någon användare att kopiera till
+cuser_eallowto=Du får inte kopiera quota till '$1'
+
+cuform_title=Kopiera quota
+cuform_return=användarquota
+cuform_ecannot=Du får inte kopiera quota
+cuform_euallow=Du får inte kopiera denna användares quota
+cuform_copyto=Kopiera quota för <tt>$1</tt> på ALLA filsystem till ...
+cuform_all=Alla användare på ditt system
+cuform_select=Angivna användare
+cuform_members=Medlemmar i angivna grupper
+cuform_doit=Kopiera
+
+egroup_title=Ändra quota
+egroup_freturn=filsystemslista
+egroup_greturn=grupplista
+egroup_eallowgr=Du får inte ändra quota för '$1'
+egroup_eallowfs=Du får inte ändra quota på detta filsystem
+egroup_quotas=Quota för <tt>$1</tt> på <tt>$2</tt>
+egroup_bused=Använda block
+egroup_sblimit=Mjuk blockgräns
+egroup_hblimit=Hård blockgräns
+egroup_fused=Använda filer
+egroup_sflimit=Mjuk filgräns
+egroup_hflimit=Hård filgräns
+egroup_update=Uppdatera
+egroup_listall=Lista alla quota
+
+euser_title=Ändra quota
+euser_freturn=filsystemslista
+euser_ureturn=användarlista
+euser_eallowus=Du får inte ändra quota för '$1'
+euser_eallowfs=Du får inte ändra quota på detta filsystem
+euser_quotas=Quota för <tt>$1</tt> på <tt>$2</tt>
+euser_bused=Använda block
+euser_sblimit=Mjuk blockgräns
+euser_hblimit=Hård blockgräns
+euser_fused=Använda filer
+euser_sflimit=Mjuk filgräns
+euser_hflimit=Hård filgräns
+euser_update=Uppdatera
+euser_listall=Lista alla quota
+
+gfilesys_title=Gruppquota
+gfilesys_return=filsystemslista
+gfilesys_ecannot=Du får inte ändra quota för '$1'
+gfilesys_all=Alla quota för 
+gfilesys_blocks=Block
+gfilesys_files=Filer
+gfilesys_fs=Filsystem
+gfilesys_used=Använda
+gfilesys_soft=Mjuk gräns
+gfilesys_hard=Hård gräns
+gfilesys_nogquota=Gruppen <tt>$1</tt> har ingen quota på något filsystem
+gfilesys_edit=Ändra quota på:
+gfilesys_copy=Kopiera quota
+
+ggracef_title=Tidsintervall
+ggracef_return=grupplista
+ggracef_ecannot=Du får inte ändra tidsintervall på detta filsystem
+ggracef_info=Varje filsystem har ett tidsintervall för block- och filquota. Detta tidsintervall anger hur länge en grupp får överskrida sin mjuka gräns innan den hindras att skapa fler filer.
+ggracef_graces=Grupptidsintervall för <tt>$1</tt>
+ggracef_block=För blockquota
+ggracef_file=För filquota
+ggracef_update=Uppdatera
+
+ggraces_esave=Det gick inte att spara tidsintervall
+ggraces_eedit=Du får inte ändra tidsintervall på detta filsystem
+ggraces_enumber='$1' är inte ett antal
+
+index_quser=Användarquota
+index_qgroup=Gruppquota
+index_qboth=Användar- och gruppquota
+index_active=Aktiv
+index_disable=Slå av quota
+index_inactive=Inaktiv
+index_enable=Slå på quota
+index_title=Diskquota
+index_fs=Filsystem
+index_type=Typ
+index_mount=Monterad från
+index_status=Status
+index_action=Funktion
+index_return=index
+index_euser=Ändra användarquota:
+index_egroup=Ändra gruppquota:
+index_nosupport=Inget lokalt filsystem stödjer quota
+
+lgroups_failed=Det gick inte att lista grupper
+lgroups_eallow=Du får inte ändra quota på detta filsystem
+lgroups_title=Filsystemsquota
+lgroups_return=filsystemslista
+lgroups_toomany=Det är för många grupper som har quota på <tt>$1</tt> för att det ska gå att visa på en sida
+lgroups_quotas=Alla gruppquota på <tt>$1</tt>
+lgroups_blocks=Block
+lgroups_files=Filer
+lgroups_group=Grupp
+lgroups_used=Använd
+lgroups_soft=Mjuk gräns
+lgroups_hard=Hård gräns
+lgroups_noquota=Ingen grupp har quota på <tt>$1</tt>
+lgroups_equota=Ändra quota för:
+lgroups_grace=Ändra tidsintervall
+lgroups_check=Kontrollera quota
+
+sgroup_egroup=Du får inte ändra quota för denna grupp
+sgroup_efs=Du får inte ändra quota på detta filsystem
+
+ssync_ecannot=Du får inte ställa in standardquota för detta filsystem
+
+suser_euser=Du får inte ändra quota för denna användare
+suser_efs=Du får inte ändra quota på detta filsystem
+
+ufilesys_title=Användarquota
+ufilesys_return=filsystemslista
+ufilesys_ecannot=Du får inte ändra quota för '$1'
+ufilesys_all=All quota för <tt>$1</tt>
+ufilesys_blocks=Block
+ufilesys_files=Filer
+ufilesys_fs=Filsystem
+ufilesys_used=Använd
+ufilesys_soft=Mjuk gräns
+ufilesys_hard=Hård gräns
+ufilesys_nouquota=Användare <tt>$1</tt> har ingen quota på något filsystem
+ufilesys_edit=Ändra quota på:
+ufilesys_copy=Kopiera quota
+
+ugracef_title=Tidsintervall
+ugracef_return=användarlista
+ugracef_ecannot=Du får inte ändra tidsintervall på detta filsystem
+ugracef_info=Varje filsystem har ett tidsintervall för block- och filquota. Detta tidsintervall anger hur länge en användare får överskrida sin mjuka gräns innan den hindras att skapa fler filer.
+ugracef_graces=Användartidsintervall för <tt>$1</tt>
+ugracef_block=För blockquota
+ugracef_file=För filquota
+ugracef_update=Uppdatera
+
+ugraces_esave=Det gick inte att spara tidsintervall
+ugraces_eedit=Du får inte ändra tidsintervall på detta filsystem
+ugraces_enumber='$1' är inte ett antal
+
+lusers_failed=Det gick inte att lista användare
+lusers_eallow=Du får inte ändra quota på detta filsystem
+lusers_title=Filsystemsquota
+lusers_return=filsystemslista
+lusers_toomany=Det är för många användare som har quota på <tt>$1</tt> för att det ska gå att visa på en sida
+lusers_qoutas=All användarquota på <tt>$1</tt>
+lusers_blocks=Block
+lusers_files=Filer
+lusers_user=Användare
+lusers_used=Använd
+lusers_soft=Mjuk gräns
+lusers_hard=Hård gräns
+lusers_noquota=Ingen användare har quota på <tt>$1</tt>
+lusers_equota=Ändra quota för:
+lusers_egrace=Ändra tidsintervall
+lusers_check=Kontrollera quota
+lusers_info=Webmin kan ställas in att automatiskt sätta quota på detta filsystem när en ny Unix-användare skapas. Detta fungerar endast då Webmin-modulen $1 används för att lägga till användare.
+lusers_useradmin=Användare och grupper
+lusers_newuser=Quota för nya användare
+lusers_sblimit=Mjuk blockgräns
+lusers_hblimit=Hård blockgräns
+lusers_sflimit=Mjuk filgräns
+lusers_hflimit=Hård filgräns
+lusers_apply=Ta i drift
+
+grace_seconds=Sekunder
+grace_minutes=Minuter
+grace_hours=Timmar
+grace_days=Dagar
+grace_weeks=Veckor
+grace_months=Månader
+
+log_activate_u=Slog på användarquota på $1
+log_activate_g=Slog på gruppquota på $1
+log_activate_ug=Slog på användar- och gruppquota på $1
+log_deactivate_u=Slog av användarquota $1
+log_deactivate_g=Slog av gruppquota på $1
+log_deactivate_ug=Slog av användar- och gruppquota på $1
+log_save=Ändrade quota för $1 på $2
+log_sync=Ändrade quota för nya användare på $1
+log_grace_u=Ändrade tidsintervall för användare på $1
+log_grace_g=Ändrade tidsintervall för grupper på $1
+log_check=Kontrollerade quota på $1
+log_copy_u=Kopierade användaren $1s quota
+log_copy_g=Kopierade gruppen $1s quota
+

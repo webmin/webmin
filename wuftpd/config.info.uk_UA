@@ -1,0 +1,9 @@
+ftpgroups=Повний шлях до файлу ftpgroups,0
+ftpd_path=Повний шлях до wuftpd,0
+ftphosts=Повний шлях до файлу ftphosts,0
+ftpconversions=Повний шлях до файлу ftpconversions,0
+pid_file=Файл PID сервера FTP,0
+ftpusers=Повний шлях до файлу ftpusers,0
+ftpaccess=Повний шлях до файлу ftpaccess,0
+line2=Системні параметри,11
+

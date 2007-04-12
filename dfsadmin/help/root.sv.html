@@ -1,0 +1,29 @@
+<header>Root-tillgång</header>
+
+Här anger du de datorer som servern ska acceptera root-användaren för.
+Om en klient inte finns på denna listan, kommer NFS-servern att behandla
+root som en <a href=anon>anonym användare</a> - även om klienten får
+montera resursen.
+
+<if $gconfig{'os_version'} == 7>
+    <br>Du kan ange datorer på följande sätt:
+	<dl>
+	<dt><b>Datornamn eller IP-adress</b> (t ex <i>ftp.foo.com</i> eller <i>1.2.3.4</i>)
+	<dd>Matchar datorer med angivet namn eller IP-nummer
+	<dt><b>Nätverksgrupp</b> (t ex <i>administration</i>)
+	<dd>Matchar alla datorer i nätverksgruppen
+	<dt><b>DNS-domän</b> (t ex <i>.foo.com</i>)
+	<dd>Matchar alla datorer i domänen
+	<dt><b>Nätverk</b> (t ex <i>@10.254.1</i>)
+	<dd>Matchar alla datorer på nätverket
+	<dt><b>Nätverk/nätmask</b> (t ex <i>@10.254.1/24</i>)
+	<dd>Matchar alla datorer på nätverket
+	</dl>
+    <p>Dessutom kan du framför varje datorbestämning som anges ovan skriva
+    ett <i>-</i>, som betyder att datorn, nätverksgruppen, domänen eller
+    nätverket <b>inte</b> får montera denna resurs. Detta är användbart
+    om du vill tillåta montering från en grupp datorer, men utesluta en
+    viss dator.
+</if>
+<hr>
+

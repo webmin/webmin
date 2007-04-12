@@ -1,0 +1,17 @@
+<header>Desenmascaramiento de interrupciones</header>
+Configura la opción de desenmascaramiento de interrupciones de la unidad.<p>
+
+Permite al controlador de discos desenmascarar otras interrupciones durante
+el procesamiento de una interrupción de disco, lo que mejora enormemente
+los tiempos de respuesta en Linux y elimina los errores "serial port
+overrun".<p>
+
+<u>Use esta característica con precación</u>: ciertas combinaciones de
+controladora y disco no toleran las aumentadas latencias de I/O como
+resultado de la activación de esta característica, dando como resultado
+<i>corrupciones masivas de los sistemas de ficheros</i>.<br>
+
+En particular, las controladoras (E)IDE CMD-640B y RZ1000 pueden no ser
+fiables (a causa de un error del hardware) cuando se usa esta opción con
+versiones del núcleo anteriores a 2.0.13.<br>
+<hr>

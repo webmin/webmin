@@ -1,0 +1,27 @@
+<header>Accés Root</header>
+
+Controla a quins hosts el servidor els respectarà l'usuari root.
+Si un client no és a la llista, tot i poder muntar el recurs només
+lectura o lectura/escriptura, el servidor NFS tractarà l'usuari root
+com a <a href=anon>Usuari Anònim</a>.
+<if $gconfig{'os_version'} == 7>
+   <br>Els hosts es poden especificar de les següents maneres:<p>
+   <dl>
+      <dt><b>Nom de host o adreça IP</b> (com ara <i>ftp.foo.com</i> o <i>1.2.3.4</i>)
+      <dd>Coincideix amb el host del mateix nom o adreça
+      <dt><b>Grup de xarxa</b> (com ara <i>enginyers</i>)
+      <dd>Coincideix amb qualsevol host membre del grup de xarxa
+      <dt><b>Domini DNS</b> (com ara <i>.foo.com</i>)
+      <dd>Coincideix amb qualsevol host del domini
+      <dt><b>Xarxa</b> (com ara <i>@10.254.1</i>)
+      <dd>Coincideix amb qualsevol host de la xarxa
+      <dt><b>Xarxa/màscara</b> (com ara <i>@10.254.1/24</i>)
+      <dd>Coincideix amb qualsevol host de la xarxa
+   </dl><p>
+   A més a més, totes les notacions anteriors poden prefixar-se amb <i>-</i>,
+   que vol dir que el host, grup de xarxa, domini o xarxa <b>no</b> té
+   permès de muntar el recurs. Això pot ser útil per permetre l'accés a
+   tot un grup de hosts, però denegant-lo a un dels membres.
+</if>
+<hr>
+

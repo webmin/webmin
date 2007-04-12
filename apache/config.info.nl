@@ -1,0 +1,12 @@
+httpd_dir=Apache server hoofd directory,0
+httpd_path=Pad naar httpd programma,0
+apachectl_path=Pad naar het apachectl commando,3,een
+start_cmd=Commando om apache te starten,3,Automatisch
+stop_cmd=Commando om apache te stoppen,3,Automatisch
+show_list=Geef virtuele servers weer als,1,0-Iconen,1-Lijst
+show_order=Sorteer virtuele servers op,1,0-Volgorde in configuratie bestand,1-Servernaam,2-IP Adres
+httpd_conf=Pad naar httpd.conf,3,Automatisch
+srm_conf=Pad naar srm.conf,3,Automatisch
+access_conf=Pad naar access.conf,3,Automatisch
+mime_types=Pad naar mime.types,3,Automatisch
+virt_file=Bestand om virtuele servers aan toe te voegen,3,httpd.conf

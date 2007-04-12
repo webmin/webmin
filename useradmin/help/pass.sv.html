@@ -1,0 +1,29 @@
+<header>Lösenord</header>
+
+När en användare loggar in via nätverk eller konsol behöver den vanligen
+ange ett lösenord. Det finns fyra alternativ för lösenordet:
+<ul>
+<if $config{'empty_mode'} == 1>
+<li><b>Ange vid första inloggning</b>
+    <br>När användaren loggar in första gången via nätverk eller konsol
+    i textläge, kommer systemet att fråga användaren om ett lösenord.
+</if>
+<if $config{'empty_mode'} == 0>
+<li><b>Inget lösenord</b>
+    <br>Användaren kan logga in på systemet utan lösenord. Det här alternativet
+    ska man vara mycket försiktig med.
+</if>
+<li><b>Får ej logga in</b>
+    <br>Om man väljer detta alternativ får användaren inte logga in på
+    systemet, inte ens för att läsa e-post via en POP3-server.
+<li><b>Krypterat lösenord</b>
+    <br>Unix-lösenord lagras på envägskrypterad form. Med detta alternativ
+    kan man ange lösenord för en användare som en krypterad sträng, som kan
+    hämtas från en lösenordsfil på ett annat system.
+<li><b>Lösenord i klartext</b>
+    <br>Välj detta alternativ för att ange lösenordet i klartext. Skriv in
+    lösenordet i fältet. Webmin krypterar lösenordet och lagrar den
+    krypterade strängen i lösenordsfilen.
+</ul>
+<hr>
+

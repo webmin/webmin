@@ -1,0 +1,7 @@
+line1=Configurable options,11
+auto=Automatically include logfiles from,2,apache-Apache,squid-Squid,proftpd-ProFTPd,wuftpd-WUFTPd
+naked=Add Webmin header and footer to Webalizer report?,1,0-Yes,1-No
+line2=System configuration,11
+webalizer=Path to webalizer command,0
+webalizer_conf=Path to webalizer configuration file,0
+alt_conf=Sample webalizer configuration file,3,None

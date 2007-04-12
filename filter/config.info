@@ -1,0 +1,3 @@
+virtualmin_spam=Full path to Virtualmin spam user lookup program,3,Not installed,40
+warn_procmail=Show warning if Procmail is not installed?,1,1-Yes,0-No
+alias_files=Full path to global alias files,9,40,3,\t

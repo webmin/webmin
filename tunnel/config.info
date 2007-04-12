@@ -1,0 +1,4 @@
+url=URL to connect to,3,Ask user
+loginmode=Login to remote server,1,0-No,1-Yes&#44; with fixed username,2-Yes&#44; with login supplied by user
+user=Fixed username,0
+pass=Fixed password,12

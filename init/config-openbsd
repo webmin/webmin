@@ -1,0 +1,7 @@
+reboot_command=reboot
+shutdown_command=halt
+local_script=/etc/rc.local
+status_check=0
+order=0
+sort_mode=0
+no_chkconfig=0

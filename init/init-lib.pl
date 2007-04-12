@@ -1,0 +1,1120 @@
+# init-lib.pl
+# Common functions for SYSV-style boot/shutdown sequences.
+# These functions assume that under a directory (like /etc/ or /etc/rc.d/)
+# there is a directory called rcX.d for each runlevel X. In each runlevel
+# directory is a list of files with names like S64foobar or K99smeg, where
+# the first letter is S (for commands run at boot time) or K (shutdown time),
+# the next 2 digits the execution order and the rest the action name.
+#
+# Typically, each runlevel file is linked (hard or soft) to a file in
+# the directory init.d. Each file in init.d may have several links to it from
+# different runlevels (for startup and shutdown). However, some runlevel
+# files may not be links at all.
+
+do '../web-lib.pl';
+&init_config();
+do '../ui-lib.pl';
+
+# Work out init mode
+if ($config{'hostconfig'}) {
+	$init_mode = "osx";
+	}
+elsif ($config{'rc_dir'}) {
+	$init_mode = "rc";
+	}
+elsif ($config{'init_base'}) {
+	$init_mode = "init";
+	}
+elsif ($config{'local_script'}) {
+	$init_mode = "local";
+	}
+elsif ($gconfig{'os_type'} eq 'windows') {
+	$init_mode = "win32";
+	}
+
+# runlevel_actions(level, S|K)
+# Return a list of actions started or stopped in some run-level, each in
+# the format:
+#  number name inode
+sub runlevel_actions
+{
+local($dir, $f, @stbuf, @rv);
+$dir = &runlevel_dir($_[0]);
+opendir(DIR, $dir);
+foreach $f (readdir(DIR)) {
+	if ($f !~ /^([A-Z])(\d+)(.*)$/ || $1 ne $_[1]) { next; }
+	if (!(@stbuf = stat("$dir/$f"))) { next; }
+	push(@rv, "$2 $3 $stbuf[1]");
+	}
+closedir(DIR);
+@rv = sort { @a = split(/\s/,$a); @b = split(/\s/,$b); $a[0] <=> $b[0]; } @rv;
+return $_[1] eq "S" ? @rv : reverse(@rv);
+}
+
+
+# list_runlevels()
+# Returns a list of known runlevels
+sub list_runlevels
+{
+local(@rv);
+opendir(DIR, $config{init_base});
+foreach (readdir(DIR)) {
+	if (/^rc([A-z0-9])\.d$/ || /^(boot)\.d$/) {
+		#if (!$config{show_opts} && $1 < 1) { next; }
+		push(@rv, $1);
+		}
+	}
+closedir(DIR);
+return sort(@rv);
+}
+
+
+# list_actions()
+# List boot time actions from init.d
+sub list_actions
+{
+local($dir, $f, @stbuf, @rv);
+$dir = $config{init_dir};
+opendir(DIR, $dir);
+foreach $f (sort { lc($a) cmp lc($b) } readdir(DIR)) {
+	if ($f eq "." || $f eq ".." || $f =~ /\.bak$/ || $f eq "functions" ||
+	    $f eq "core" || $f eq "README" || $f eq "rc" || $f eq "rcS" ||
+	    -d "$dir/$f" || $f =~ /\.swp$/ || $f eq "skeleton" ||
+	    $f =~ /\.lock$/ || $f =~ /\.dpkg-(old|dist)$/ ||
+	    $f =~ /^\.depend\./) { next; }
+	if (@stbuf = stat("$dir/$f")) {
+		push(@rv, "$f $stbuf[1]");
+		}
+	}
+closedir(DIR);
+foreach $f (split(/\s+/, $config{'extra_init'})) {
+	if (@stbuf = stat($f)) {
+		push(@rv, "$f $stbuf[1]");
+		}
+	}
+return @rv;
+}
+
+
+# action_levels(S|K, action)
+# Return a list of run levels in which some action (from init.d) is started
+# or stopped. Each item is in the format:
+#  level order name
+sub action_levels
+{
+local(@stbuf, $rl, $dir, $f, @stbuf2, @rv);
+@stbuf = stat(&action_filename($_[1]));
+foreach $rl (&list_runlevels()) {
+	$dir = &runlevel_dir($rl);
+	opendir(DIR, $dir);
+	foreach $f (readdir(DIR)) {
+		if ($f =~ /^([A-Z])(\d+)(.*)$/ && $1 eq $_[0]) {
+			@stbuf2 = stat("$dir/$f");
+			if ($stbuf[1] == $stbuf2[1]) {
+				push(@rv, "$rl $2 $3");
+				last;
+				}
+			}
+		}
+	closedir(DIR);
+	}
+return @rv;
+}
+
+
+# action_filename(name)
+# Returns the name of the file in init.d for some action
+sub action_filename
+{
+return $_[0] =~ /^\// ? $_[0] : "$config{init_dir}/$_[0]";
+}
+
+
+# runlevel_filename(level, S|K, order, name)
+sub runlevel_filename
+{
+local $n = $_[3];
+$n =~ s/^(.*)\///;
+return &runlevel_dir($_[0])."/$_[1]$_[2]$n";
+}
+
+
+# add_rl_action(action, runlevel, S|K, order)
+# Add some existing action to a runlevel
+sub add_rl_action
+{
+$file = &runlevel_filename($_[1], $_[2], $_[3], $_[0]);
+while(-r $file) {
+	if ($file =~ /^(.*)_(\d+)$/) { $file = "$1_".($2+1); }
+	else { $file = $file."_1"; }
+	}
+&lock_file($file);
+if ($config{soft_links}) {
+	&symlink_file(&action_filename($_[0]), $file);
+	}
+else {
+	&link_file(&action_filename($_[0]), $file);
+	}
+&unlock_file($file);
+}
+
+
+# delete_rl_action(name, runlevel, S|K)
+# Delete some action from a runlevel
+sub delete_rl_action
+{
+local(@stbuf, $dir, $f, @stbuf2);
+@stbuf = stat(&action_filename($_[0]));
+$dir = &runlevel_dir($_[1]);
+opendir(DIR, $dir);
+foreach $f (readdir(DIR)) {
+	if ($f =~ /^([A-Z])(\d+)(.+)$/ && $1 eq $_[2]) {
+		@stbuf2 = stat("$dir/$f");
+		if ($stbuf[1] == $stbuf2[1]) {
+			# found file to delete.. unlink
+			&unlink_logged("$dir/$f");
+			last;
+			}
+		}
+	}
+closedir(DIR);
+}
+
+
+# reorder_rl_action(name, runlevel, S|K, new_order)
+sub reorder_rl_action
+{
+local(@stbuf, $dir, $f, @stbuf2);
+@stbuf = stat(&action_filename($_[0]));
+$dir = &runlevel_dir($_[1]);
+opendir(DIR, $dir);
+foreach $f (readdir(DIR)) {
+	if ($f =~ /^([A-Z])(\d+)(.+)$/ && $1 eq $_[2]) {
+		@stbuf2 = stat("$dir/$f");
+		if ($stbuf[1] == $stbuf2[1]) {
+			# Found file that needs renaming
+			$file = &runlevel_dir($_[1])."/$1$_[3]$3";
+			while(-r $file) {
+				if ($file =~ /^(.*)_(\d+)$/)
+					{ $file = "$1_".($2+1); }
+				else { $file = $file."_1"; }
+				}
+			&rename_logged("$dir/$f", $file);
+			last;
+			}
+		}
+	}
+closedir(DIR);
+}
+
+
+# rename_action(old, new)
+# Change the name of an action in init.d, and re-direct all soft links
+# to it from the runlevel directories
+sub rename_action
+{
+local($file, $idx, $old);
+foreach (&action_levels('S', $_[0])) {
+	/^(\S+)\s+(\S+)\s+(\S+)$/;
+	$file = &runlevel_dir($1)."/S$2$3";
+	if (readlink($file)) {
+		# File is a symbolic link.. change it
+		&lock_file($file);
+		&unlink_file($file);
+		&symlink_file("$config{init_dir}/$_[1]", $file);
+		&unlock_file($file);
+		}
+	if (($idx = index($file, $_[0])) != -1) {
+		$old = $file;
+		substr($file, $idx, length($_[0])) = $_[1];
+		&rename_logged($old, $file);
+		}
+	}
+foreach (&action_levels('K', $_[0])) {
+	/^(\S+)\s+(\S+)\s+(\S+)$/;
+	$file = &runlevel_dir($1)."/K$2$3";
+	if (readlink($file)) {
+		# File is a symbolic link.. change it
+		&lock_file($file);
+		&unlink_file($file);
+		&symlink_file("$config{init_dir}/$_[1]", $file);
+		&unlock_file($file);
+		}
+	if (($idx = index($file, $_[0])) != -1) {
+		$old = $file;
+		substr($file, $idx, length($_[0])) = $_[1];
+		&rename_logged($old, $file);
+		}
+	}
+&rename_logged("$config{init_dir}/$_[0]", "$config{init_dir}/$_[1]");
+}
+
+
+# rename_rl_action(runlevel, S|K, order, old, new)
+# Change the name of a runlevel file
+sub rename_rl_action
+{
+&rename_logged(&runlevel_dir($_[0])."/$_[1]$_[2]$_[3]",
+               &runlevel_dir($_[0])."/$_[1]$_[2]$_[4]");
+}
+
+# get_inittab_runlevel()
+# Returns the runlevels entered at boot time. If more than one is returned,
+# actions from all of them are used!
+sub get_inittab_runlevel
+{
+local %iconfig = &foreign_config("inittab");
+local @rv;
+local $id = $config{'inittab_id'};
+if (open(TAB, $iconfig{'inittab_file'})) {
+	# Read the inittab file
+	while(<TAB>) {
+		if (/^$id:(\d+):/) { @rv = ( $1 ); }
+		}
+	close(TAB);
+	}
+elsif (&has_command("runlevel")) {
+	# Use runlevel command to get current level
+	local $out = &backquote_command("runlevel");
+	if ($out =~ /^(\S+)\s+(\S+)/) {
+		push(@rv, $2);
+		}
+	}
+if ($config{"inittab_rl_$rv[0]"}) {
+	@rv = split(/,/, $config{"inittab_rl_$rv[0]"});
+	}
+push(@rv, $config{'inittab_extra'});
+return &unique(@rv);
+}
+
+# init_description(file, \%hasargs)
+sub init_description
+{
+open(FILE, $_[0]);
+local @lines = <FILE>;
+close(FILE);
+local $data = join("", @lines);
+if ($_[1]) {
+	foreach (@lines) {
+		if (/^\s*(['"]?)([a-z]+)\1\)/i) {
+			$_[1]->{$2}++;
+			}
+		}
+	}
+
+local $desc;
+if ($config{'daemons_dir'}) {
+	# First try the daemons file
+	local %daemon;
+	if ($_[0] =~ /\/([^\/]+)$/ &&
+	    &read_env_file("$config{'daemons_dir'}/$1", \%daemon) &&
+	    $daemon{'DESCRIPTIVE'}) {
+		return $daemon{'DESCRIPTIVE'};
+		}
+	}
+if ($config{'chkconfig'}) {
+	# Find the redhat-style description: section
+	foreach (@lines) {
+		s/\r|\n//g;
+		if (/^#+\s*description:(.*?)(\\?$)/) {
+			$desc = $1;
+			}
+		elsif (/^#+\s*(.*?)(\\?$)/ && $desc && $1) {
+			$desc .= "\n".$1;
+			}
+		if ($desc && !$2) {
+			last;
+			}
+		}
+	}
+elsif ($config{'init_info'} || $data =~ /BEGIN INIT INFO/) {
+	# Find the suse-style Description: line
+	foreach (@lines) {
+		s/\r|\n//g;
+		if (/^#\s*(Description|Short-Description):\s*(.*)/) {
+			$desc = $2;
+			}
+		}
+	}
+else {
+	# Use the first comments
+	foreach (@lines) {
+		s/\r|\n//g;
+		next if (/^#!\s*\/(bin|sbin|usr)\// || /\$id/i || /^#+\s+@/ ||
+			 /source function library/i || /^#+\s*copyright/i);
+		if (/^#+\s*(.*)/) {
+			last if ($desc && !$1);
+			$desc .= $1."\n" if ($1);
+			}
+		elsif (/\S/) { last; }
+		}
+	$_[0] =~ /\/([^\/]+)$/;
+	$desc =~ s/^Tag\s+(\S+)\s*//i;
+	$desc =~ s/^\s*$1\s+//;
+	}
+return $desc;
+}
+
+# chkconfig_info(file)
+# If a file has a chkconfig: section specifying the runlevels to start in and
+# the orders to use, return an array containing the levels (as array ref),
+# start order, stop order and description.
+sub chkconfig_info
+{
+local @rv;
+local $desc;
+open(FILE, $_[0]);
+while(<FILE>) {
+	if (/^#\s*chkconfig:\s+(\S+)\s+(\d+)\s+(\d+)/) {
+		@rv = ( $1 eq '-' ? [ ] : [ split(//, $1) ], $2, $3 );
+		}
+	elsif (/^#\s*description:\s*(.*)/) {
+		$desc = $1;
+		}
+	}
+close(FILE);
+$rv[3] = $desc if ($desc && @rv);
+return @rv;
+}
+
+# action_status(action)
+# Returns 0 if some action doesn't exist, 1 if it does but is not enabled,
+# or 2 if it exists and is enabled
+sub action_status
+{
+if ($init_mode eq "init") {
+	# Look for init script
+	local ($a, $exists, $starting, %daemon);
+	foreach $a (&list_actions()) {
+		local @a = split(/\s+/, $a);
+		if ($a[0] eq $_[0]) {
+			$exists++;
+			local @boot = &get_inittab_runlevel();
+			foreach $s (&action_levels("S", $a[0])) {
+				local ($l, $p) = split(/\s+/, $s);
+				$starting++ if (&indexof($l, @boot) >= 0);
+				}
+			}
+		}
+	if ($starting && $config{'daemons_dir'} &&
+	    &read_env_file("$config{'daemons_dir'}/$_[0]", \%daemon)) {
+		$starting = lc($daemon{'ONBOOT'}) eq 'yes' ? 1 : 0;
+		}
+	return !$exists ? 0 : $starting ? 2 : 1;
+	}
+elsif ($init_mode eq "local") {
+	# Look for entry in rc.local
+	local $fn = "$module_config_directory/$_[0].sh";
+	local $cmd = "$fn start";
+	open(LOCAL, $config{'local_script'});
+	while(<LOCAL>) {
+		s/\r|\n//g;
+		$found++ if ($_ eq $cmd);
+		}
+	close(LOCAL);
+	return $found && -r $fn ? 2 : -r $fn ? 1 : 0;
+	}
+elsif ($init_mode eq "win32") {
+	# Look for a win32 service, enabled at boot
+	local ($svc) = &list_win32_services($_[0]);
+	return !$svc ? 0 :
+	       $svc->{'boot'} == 2 ? 2 : 1;
+	}
+elsif ($init_mode eq "rc") {
+	# Look for an RC script
+	local @rcs = &list_rc_scripts();
+	local ($rc) = grep { $_->{'name'} eq $_[0] } @rcs;
+	return !$rc ? 0 :
+	       $rc->{'enabled'} ? 2 : 1;
+	}
+}
+
+# enable_at_boot(action, description, startcode, stopcode, statuscode)
+# Makes some action start at boot time, creating the script by copying the
+# specified file if necessary
+sub enable_at_boot
+{
+local $st = &action_status($_[0]);
+return if ($st == 2);	# already starting!
+local ($daemon, %daemon);
+
+if ($init_mode eq "init" || $init_mode eq "local") {
+	# In these modes, we create a script to run
+	if ($config{'daemons_dir'} &&
+	    &read_env_file("$config{'daemons_dir'}/$_[0]", \%daemon)) {
+		$daemon++;
+		}
+	local $fn;
+	if ($init_mode eq "init") {
+		# Normal init.d system
+		$fn = &action_filename($_[0]);
+		}
+	else {
+		# Need to create hack init script
+		$fn = "$module_config_directory/$_[0].sh";
+		}
+	local @chk = &chkconfig_info($fn);
+	local @start = @{$chk[0]} ? @{$chk[0]} : &get_start_runlevels();
+	local $start_order = $chk[1] || "9" x $config{'order_digits'};
+	local $stop_order = $chk[2] || "9" x $config{'order_digits'};
+	local @stop;
+	if (@chk) {
+		local %starting = map { $_, 1 } @start;
+		@stop = grep { !$starting{$_} && /^\d+$/ } &list_runlevels();
+		}
+
+	local $need_links = 0;
+	if ($st == 1 && $daemon) {
+		# Just update daemons file
+		$daemon{'ONBOOT'} = 'yes';
+		&lock_file("$config{'daemons_dir'}/$_[0]");
+		&write_env_file("$config{'daemons_dir'}/$_[0]", \%daemon);
+		&unlock_file("$config{'daemons_dir'}/$_[0]");
+		}
+	elsif ($st == 1) {
+		# Just need to create links (later)
+		$need_links++;
+		}
+	elsif ($_[1]) {
+		# Need to create the init script
+		&lock_file($fn);
+		&open_tempfile(ACTION, ">$fn");
+		&print_tempfile(ACTION, "#!/bin/sh\n");
+		if ($config{'chkconfig'}) {
+			# Redhat-style description: and chkconfig: lines
+			&print_tempfile(ACTION, "# description: $_[1]\n");
+			&print_tempfile(ACTION, "# chkconfig: $config{'chkconfig'} ",
+				     "$start_order $stop_order\n");
+			}
+		elsif ($config{'init_info'}) {
+			# Suse-style init info section
+			&print_tempfile(ACTION, "### BEGIN INIT INFO\n",
+				     "# Provides: $_[0]\n",
+				     "# Required-Start: \$network \$syslog\n",
+				     "# Required-Stop: \$network\n",
+				     "# Default-Start: ",join(" ", @start),"\n",
+				     "# Description: $_[1]\n",
+				     "### END INIT INFO\n");
+			}
+		else {
+			&print_tempfile(ACTION, "# $_[1]\n");
+			}
+		&print_tempfile(ACTION, "\n");
+		&print_tempfile(ACTION, "case \"\$1\" in\n");
+
+		if ($_[2]) {
+			&print_tempfile(ACTION, "'start')\n");
+			&print_tempfile(ACTION, &tab_indent($_[2]));
+			&print_tempfile(ACTION, "\tRETVAL=\$?\n");
+			if ($config{'subsys'}) {
+				&print_tempfile(ACTION, "\tif [ \"\$RETVAL\" = \"0\" ]; then\n");
+				&print_tempfile(ACTION, "\t\ttouch $config{'subsys'}/$_[0]\n");
+				&print_tempfile(ACTION, "\tfi\n");
+				}
+			&print_tempfile(ACTION, "\t;;\n");
+			}
+
+		if ($_[3]) {
+			&print_tempfile(ACTION, "'stop')\n");
+			&print_tempfile(ACTION, &tab_indent($_[3]));
+			&print_tempfile(ACTION, "\tRETVAL=\$?\n");
+			if ($config{'subsys'}) {
+				&print_tempfile(ACTION, "\tif [ \"\$RETVAL\" = \"0\" ]; then\n");
+				&print_tempfile(ACTION, "\t\trm -f $config{'subsys'}/$_[0]\n");
+				&print_tempfile(ACTION, "\tfi\n");
+				}
+			&print_tempfile(ACTION, "\t;;\n");
+			}
+
+		if ($_[4]) {
+			&print_tempfile(ACTION, "'status')\n");
+			&print_tempfile(ACTION, &tab_indent($_[4]));
+			&print_tempfile(ACTION, "\t;;\n");
+			}
+
+		if ($_[2] && $_[3]) {
+			&print_tempfile(ACTION, "'restart')\n");
+			&print_tempfile(ACTION, "\t\$0 stop ; \$0 start\n");
+			&print_tempfile(ACTION, "\tRETVAL=\$?\n");
+			&print_tempfile(ACTION, "\t;;\n");
+			}
+
+		&print_tempfile(ACTION, "*)\n");
+		&print_tempfile(ACTION, "\techo \"Usage: \$0 { start | stop }\"\n");
+		&print_tempfile(ACTION, "\tRETVAL=1\n");
+		&print_tempfile(ACTION, "\t;;\n");
+		&print_tempfile(ACTION, "esac\n");
+		&print_tempfile(ACTION, "exit \$RETVAL\n");
+		&close_tempfile(ACTION);
+		chmod(0755, $fn);
+		&unlock_file($fn);
+		$need_links++;
+		}
+
+	if ($need_links && $init_mode eq "init") {
+		local $date = &read_file_contents($fn);
+		if (&has_command("chkconfig") && !$config{'no_chkconfig'} &&
+		    (@chk && $chk[3] || $data =~ /Default-Start:/i)) {
+			# Call the chkconfig command to link up
+			&system_logged("chkconfig --add ".quotemeta($_[0]));
+			&system_logged("chkconfig ".quotemeta($_[0])." on");
+			}
+		else {
+			# Just link up the init script
+			local $s;
+			foreach $s (@start) {
+				&add_rl_action($_[0], $s, "S", $start_order);
+				}
+			local @klevels = &action_levels("K", $_[0]);
+			if (!@klevels) {
+				# Only add K scripts if none exist
+				foreach $s (@stop) {
+					&add_rl_action($_[0], $s, "K", $stop_order);
+					}
+				}
+			}
+		}
+	elsif ($need_links) {
+		# Just add rc.local entry
+		local $lref = &read_file_lines($config{'local_script'});
+		local $i;
+		for($i=0; $i<@$lref && $lref->[$i] !~ /^exit\s/; $i++) { }
+		splice(@$lref, $i, 0, "$fn start");
+		if ($config{'local_down'}) {
+			# Also add to shutdown script
+			$lref = &read_file_lines($config{'local_down'});
+			for($i=0; $i<@$lref &&
+				  $lref->[$i] !~ /^exit\s/; $i++) { }
+			splice(@$lref, $i, 0, "$fn stop");
+			}
+		&flush_file_lines();
+		}
+	}
+elsif ($init_mode eq "win32") {
+	# Enable and/or create a win32 service
+	if ($st == 1) {
+		# Just enable
+		&enable_win32_service($_[0]);
+		}
+	else {
+		# Need to create service, which calls wrapper program
+		eval "use Win32::Daemon";
+
+        	# modify the string handed over
+	        # so it does not contain backslashes ...
+        	$_[2] =~ s/\\/\//g;
+
+		local $perl_path = &get_perl_path();
+		local %svc = ( 'name' => $_[0],
+			 'display' => $_[1],
+			 'path' => $perl_path,
+			 'user' => '',
+			 'description' => "OCM Webmin Pro Service",
+			 'pwd' => $module_root_directory,
+			 'parameters' => "\"$module_root_directory/win32.pl\" $_[2]",
+			);
+		if (!Win32::Daemon::CreateService(\%svc)) {
+			print STDERR "Failed to create Win32 service : ",
+			     Win32::FormatMessage(Win32::Daemon::GetLastError()),"\n";
+			}
+		}
+	}
+elsif ($init_mode eq "rc") {
+	# Enable and/or create an RC script
+	&lock_rc_files();
+	if ($st == 1) {
+		# Just enable
+		&enable_rc_script($_[0]);
+		}
+	else {
+		# Need to create a local rc script, and enable
+		local @dirs = split(/\s+/, $config{'rc_dir'});
+		local $file = $dirs[$#dirs]."/".$_[0].".sh";
+		local $name = $_[0];
+		$name =~ s/-/_/g;
+		&open_lock_tempfile(SCRIPT, ">$file");
+		&print_tempfile(SCRIPT, "#!/bin/sh\n");
+		&print_tempfile(SCRIPT, "#\n");
+		&print_tempfile(SCRIPT, "# PROVIDE: $_[0]\n");
+		&print_tempfile(SCRIPT, "# REQUIRE: LOGIN\n");
+		&print_tempfile(SCRIPT, "\n");
+		&print_tempfile(SCRIPT, ". /etc/rc.subr\n");
+		&print_tempfile(SCRIPT, "\n");
+		&print_tempfile(SCRIPT, "name=$name\n");
+		&print_tempfile(SCRIPT, "rcvar=`set_rcvar`\n");
+		&print_tempfile(SCRIPT, "start_cmd=\"$_[2]\"\n");
+		&print_tempfile(SCRIPT, "stop_cmd=\"$_[3]\"\n") if ($_[3]);
+		&print_tempfile(SCRIPT, "status_cmd=\"$_[4]\"\n") if ($_[4]);
+		&print_tempfile(SCRIPT, "\n");
+		&print_tempfile(SCRIPT, "load_rc_config \${name}\n");
+		&print_tempfile(SCRIPT, "run_rc_command \"\$1\"\n");
+		&close_tempfile(SCRIPT);
+		&set_ownership_permissions(undef, undef, 0755, $file);
+		&enable_rc_script($_[0]);
+		}
+	&unlock_rc_files();
+	}
+}
+
+# disable_at_boot(action)
+# Turns off some action from starting at boot
+sub disable_at_boot
+{
+local $st = &action_status($_[0]);
+return if ($st != 2);	# not currently starting
+
+if ($init_mode eq "init") {
+	# Unlink or disable init script
+	local ($daemon, %daemon);
+	local $file = &action_filename($_[0]);
+	local @chk = &chkconfig_info($file);
+
+	if ($config{'daemons_dir'} &&
+	    &read_env_file("$config{'daemons_dir'}/$_[0]", \%daemon)) {
+		# Update daemons file
+		$daemon{'ONBOOT'} = 'no';
+		&lock_file("$config{'daemons_dir'}/$_[0]");
+		&write_env_file("$config{'daemons_dir'}/$_[0]", \%daemon);
+		&unlock_file("$config{'daemons_dir'}/$_[0]");
+		}
+	elsif (&has_command("chkconfig") && !$config{'no_chkconfig'} && @chk) {
+		# Call chkconfig to remove the links
+		&system_logged("chkconfig --del ".quotemeta($_[0]));
+		}
+	else {
+		# Just unlink the S links
+		foreach (&action_levels('S', $_[0])) {
+			/^(\S+)\s+(\S+)\s+(\S+)$/;
+			&delete_rl_action($_[0], $1, 'S');
+			}
+
+		if (@chk) {
+			# Take out the K links as well, since we know how to put
+			# them back from the chkconfig info
+			foreach (&action_levels('K', $_[0])) {
+				/^(\S+)\s+(\S+)\s+(\S+)$/;
+				&delete_rl_action($_[0], $1, 'K');
+				}
+			}
+		}
+	}
+elsif ($init_mode eq "local") {
+	# Take out of rc.local file
+	local $lref = &read_file_lines($config{'local_script'});
+	local $cmd = "$module_config_directory/$_[0].sh start";
+	local $i;
+	for($i=0; $i<@$lref; $i++) {
+		if ($lref->[$i] eq $cmd) {
+			splice(@$lref, $i, 1);
+			last;
+			}
+		}
+	if ($config{'local_down'}) {
+		# Take out of shutdown script
+		$lref = &read_file_lines($config{'local_down'});
+		local $cmd = "$module_config_directory/$_[0].sh stop";
+		for($i=0; $i<@$lref; $i++) {
+			if ($lref->[$i] eq $cmd) {
+				splice(@$lref, $i, 1);
+				last;
+				}
+			}
+		}
+	&flush_file_lines();
+	}
+elsif ($init_mode eq "win32") {
+	# Disable the service
+	&disable_win32_service($_[0]);
+	}
+elsif ($init_mode eq "rc") {
+	# Disable an RC script
+	&lock_rc_files();
+	&disable_rc_script($_[0]);
+	&unlock_rc_files();
+	}
+}
+
+# start_action(name)
+# Start the action with the given name, using whatever method is appropriate
+# for this operating system. Returns a status code (0 or 1) and output.
+sub start_action
+{
+local ($name) = @_;
+if ($init_mode eq "init" || $init_mode eq "local") {
+	# Run the init script or Webmin-created wrapper
+	local $fn = $init_mode eq "init" ? &action_filename($name) :
+			"$module_config_directory/$name.sh";
+	if (!-x $fn) {
+		return (0, "$fn does not exist");
+		}
+	local $temp = &transname();
+	&foreign_require("proc", "proc-lib.pl");
+	open(TEMP, ">$temp");
+	&proc::safe_process_exec_logged("$fh start", 0, 0, TEMP);
+	close(TEMP);
+	local $ex = $?;
+	local $out = &read_file_contents($temp);
+	return (!$ex, $out);
+	}
+elsif ($init_mode eq "rc") {
+	# Run FreeBSD RC script
+	return &start_rc_script($name);
+	}
+elsif ($init_mode eq "win32") {
+	# Start Windows service
+	local $err = &start_win32_service($name);
+	return (!$err, $err);
+	}
+else {
+	return (0, "Bootup mode $init_mode not supported");
+	}
+}
+
+# stop_action(name)
+# Stop the action with the given name, using whatever method is appropriate
+# for this operating system.
+sub stop_action
+{
+local ($name) = @_;
+if ($init_mode eq "init" || $init_mode eq "local") {
+	# Run the init script or Webmin-created wrapper
+	local $fn = $init_mode eq "init" ? &action_filename($name) :
+			"$module_config_directory/$name.sh";
+	if (!-x $fn) {
+		return (0, "$fn does not exist");
+		}
+	local $temp = &transname();
+	&foreign_require("proc", "proc-lib.pl");
+	open(TEMP, ">$temp");
+	&proc::safe_process_exec_logged("$fh stop", 0, 0, TEMP);
+	close(TEMP);
+	local $ex = $?;
+	local $out = &read_file_contents($temp);
+	return (!$ex, $out);
+	}
+elsif ($init_mode eq "rc") {
+	# Run FreeBSD RC script
+	return &stop_rc_script($name);
+	}
+elsif ($init_mode eq "win32") {
+	# Start Windows service
+	local $err = &stop_win32_service($name);
+	return (!$err, $err);
+	}
+else {
+	return (0, "Bootup mode $init_mode not supported");
+	}
+}
+
+# restart_action(action)
+# Calls a stop then a start
+sub restart_action
+{
+local ($name) = @_;
+&stop_action($name);
+&start_action($name);
+}
+
+# tab_indent(lines)
+sub tab_indent
+{
+local ($rv, $l);
+foreach $l (split(/\n/, $_[0])) {
+	$rv .= "\t$l\n";
+	}
+return $rv;
+}
+
+# get_start_runlevels()
+# Returns a list of runlevels that actions should be started in
+sub get_start_runlevels
+{
+if ($config{'boot_levels'}) {
+	return split(/[ ,]+/, $config{'boot_levels'});
+	}
+else {
+	local @boot = &get_inittab_runlevel();
+	return ( $boot[0] );
+	}
+}
+
+sub runlevel_dir
+{
+if ($_[0] eq "boot") {
+	return "$config{init_base}/boot.d";
+	}
+else {
+	return "$config{init_base}/rc$_[0].d";
+	}
+}
+
+# list_win32_services([name])
+# Returns a list of known Win32 services
+sub list_win32_services
+{
+local ($name) = @_;
+local @rv;
+local $svc;
+
+# Get the current statuses
+if ($name) {
+	&open_execute_command(SC, "sc query $name", 1, 1);
+	}
+else {
+	&open_execute_command(SC, "sc query type= service state= all", 1, 1);
+	}
+while(<SC>) {
+	s/\r|\n//g;
+	if (/^SERVICE_NAME:\s+(\S.*\S)/) {
+		$svc = { 'name' => $1 };
+		push(@rv, $svc);
+		}
+	elsif (/^DISPLAY_NAME:\s+(\S.*)/ && $svc) {
+		$svc->{'desc'} = $1;
+		}
+	elsif (/^\s+TYPE\s+:\s+(\d+)\s+(\S+)/ && $svc) {
+		$svc->{'type'} = $1;
+		$svc->{'type_desc'} = $2;
+		}
+	elsif (/^\s+STATE\s+:\s+(\d+)\s+(\S+)/ && $svc) {
+		$svc->{'state'} = $1;
+		$svc->{'state_desc'} = $2;
+		}
+	}
+close(SC);
+
+# For each service, see if it starts at boot or not
+foreach $svc (@rv) {
+	&open_execute_command(SC, "sc qc \"$svc->{'name'}\"", 1, 1);
+	while(<SC>) {
+		s/\r|\n//g;
+		if (/^\s+START_TYPE\s+:\s+(\d+)\s+(\S+)/) {
+			$svc->{'boot'} = $1;
+			$svc->{'boot_desc'} = $2;
+			}
+		}
+	close(SC);
+	}
+
+return @rv;
+}
+
+# start_win32_service(name)
+# Attempts to start a service, returning undef on success, or some error message
+sub start_win32_service
+{
+local ($name) = @_;
+local $out = &backquote_command("sc start \"$name\" 2>&1");
+return $? ? $out : undef;
+}
+
+# stop_win32_service(name)
+# Attempts to stop a service, returning undef on success, or some error message
+sub stop_win32_service
+{
+local ($name) = @_;
+local $out = &backquote_command("sc stop \"$name\" 2>&1");
+return $? ? $out : undef;
+}
+
+# enable_win32_service(name)
+# Marks some service as starting at boot time
+sub enable_win32_service
+{
+local ($name) = @_;
+local $out = &backquote_command("sc config \"$name\" start= auto 2>&1");
+return $? ? $out : undef;
+}
+
+# disable_win32_service(name)
+# Marks some service as disabled at boot time
+sub disable_win32_service
+{
+local ($name) = @_;
+local $out = &backquote_command("sc config \"$name\" start= demand 2>&1");
+return $? ? $out : undef;
+}
+
+# create_win32_service(name, command, desc)
+# Creates a new win32 service, enabled at boot time
+sub create_win32_service
+{
+local ($name, $cmd, $desc) = @_;
+local $out = &backquote_command("sc create \"$name\" DisplayName= \"$desc\" type= share start= auto binPath= \"$cmd\" 2>&1");
+return $? ? $out : undef;
+}
+
+# delete_win32_service(name)
+# Delete some existing service
+sub delete_win32_service
+{
+local ($name) = @_;
+local $out = &backquote_command("sc delete \"$name\" 2>&1");
+return $? ? $out : undef;
+}
+
+# list_rc_scripts()
+# Returns a list of known RC scripts, and their enabled statuses
+sub list_rc_scripts
+{
+# Build a list of those that are enabled in the rc.conf files
+local @rc = &get_rc_conf();
+local (%enabled, %cmt);
+foreach my $r (@rc) {
+	if ($r->{'name'} =~ /^(\S+)_enable$/) {
+		local $name = $1;
+		if (lc($r->{'value'}) eq 'yes') {
+			$enabled{$name} = 1;
+			}
+		$r->{'cmt'} =~ s/\s*\(\s*or\s+NO\)//i;
+		$r->{'cmt'} =~ s/\s*\(YES.*NO\)//i;
+		$cmt{$name} ||= $r->{'cmt'};
+		}
+	}
+
+# Scan the script dirs
+local @rv;
+foreach my $dir (split(/\s+/, $config{'rc_dir'})) {
+	opendir(DIR, $dir);
+	foreach my $f (readdir(DIR)) {
+		next if ($f =~ /^\./ || $f =~ /\.(bak|tmp)/i);
+		local $name = $f;
+		$name =~ s/\.sh$//;
+		local $data = &read_file_contents("$dir/$f");
+		local $ename = $name;
+		$ename =~ s/-/_/g;
+		push(@rv, { 'name' => $name,
+			    'file' => "$dir/$f",
+			    'enabled' => $data !~ /rc\.subr/ ? 2 :
+					 $enabled{$ename},
+			    'startstop' => $data =~ /rc\.subr/ ||
+					   $data =~ /start\)/,
+			    'desc' => $cmt{$name},
+			    'standard' => ($dir !~ /local/)
+			  });
+		}
+	closedir(DIR);
+	}
+return sort { $a->{'name'} cmp $b->{'name'} } @rv;
+}
+
+# save_rc_conf(name, value)
+sub save_rc_conf
+{
+local $found;
+local @rcs = split(/\s+/, $config{'rc_conf'});
+local $rcfile = $rcs[$#rcs];
+&open_readfile(CONF, $rcfile);
+local @conf = <CONF>;
+close(CONF);
+&open_tempfile(CONF, ">$rcfile");
+foreach (@conf) {
+	if (/^\s*([^=]+)\s*=\s*(.*)/ && $1 eq $_[0]) {
+		&print_tempfile(CONF, "$_[0]=\"$_[1]\"\n") if (@_ > 1);
+		$found++;
+		}
+	else {
+		&print_tempfile(CONF, $_);
+		}
+	}
+if (!$found && @_ > 1) {
+	&print_tempfile(CONF, "$_[0]=\"$_[1]\"\n");
+	}
+&close_tempfile(CONF);
+}
+
+# get_rc_conf()
+sub get_rc_conf
+{
+local ($file, @rv);
+foreach $file (split(/\s+/, $config{'rc_conf'})) {
+	local $lnum = 0;
+	&open_readfile(FILE, $file);
+	while(<FILE>) {
+		local $cmt;
+		s/\r|\n//g;
+		if (s/#(.*)$//) {
+			$cmt = $1;
+			}
+		if (/^\s*([^=\s]+)\s*=\s*"(.*)"/ ||
+		    /^\s*([^=\s]+)\s*=\s*'(.*)'/ ||
+		    /^\s*([^=\s]+)\s*=\s*(\S+)/) {
+			push(@rv, { 'name' => $1,
+				    'value' => $2,
+				    'line' => $lnum,
+				    'file' => $file,
+				    'cmt' => $cmt });
+			}
+		$lnum++;
+		}
+	close(FILE);
+	}
+return @rv;
+}
+
+# enable_rc_script(name)
+# Mark some RC script as enabled at boot
+sub enable_rc_script
+{
+local ($name) = @_;
+$name =~ s/-/_/g;
+&save_rc_conf($name."_enable", "YES");
+}
+
+# disable_rc_script(name)
+# Mark some RC script as disabled at boot
+sub disable_rc_script
+{
+local ($name) = @_;
+$name =~ s/-/_/g;
+local $enabled;
+foreach my $r (&get_rc_conf()) {
+	if ($r->{'name'} eq $name."_enable" &&
+	    lc($r->{'value'}) eq 'yes') {
+		$enabled = 1;
+		}
+	}
+&save_rc_conf($name."_enable", "NO") if ($enabled);
+}
+
+# start_rc_script(name)
+# Attempt to start some RC script, and returns 1 or 0 and the output
+sub start_rc_script
+{
+local ($name) = @_;
+local @rcs = &list_rc_scripts();
+local ($rc) = grep { $_->{'name'} eq $name } @rcs;
+$rc || return "No script found for $name";
+local $out = &backquote_logged("$rc->{'file'} forcestart 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+# stop_rc_script(name)
+# Attempt to stop some RC script, and return either undef on success or an
+# error message on failure.
+sub stop_rc_script
+{
+local ($name) = @_;
+local @rcs = &list_rc_scripts();
+local ($rc) = grep { $_->{'name'} eq $name } @rcs;
+$rc || return "No script found for $name";
+local $out = &backquote_logged("$rc->{'file'} forcestop 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+sub lock_rc_files
+{
+foreach my $f (split(/\s+/, $config{'rc_conf'})) {
+	&lock_file($f);
+	}
+}
+
+sub unlock_rc_files
+{
+foreach my $f (split(/\s+/, $config{'rc_conf'})) {
+	&unlock_file($f);
+	}
+}
+
+1;
+

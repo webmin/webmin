@@ -1,0 +1,4 @@
+<template>
+<common_name><loctext xml:lang='C'>TEMPLATE_COMMON_NAME</loctext></common_name>
+<description><loctext xml:lang='C'>TEMPLATE_DESCRIPTION</loctext></description>
+<documentation>

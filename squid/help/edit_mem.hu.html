@@ -1,0 +1,39 @@
+<header>Memóriahasználat; fordította: Szakács Gergely</header><p>
+
+<b>Memóriahasználati korlát</b>: Alapértelmezés szerint 8MB.<p>
+MEGJEGYZÉS: Ez a paraméter nem szabályozza a maximális folyamatméretet, csak a Squid memóriahasználatának egy aspektusát korlátozza. A Squid más célra is használ memóriát. A rendszeren futó folyamat így akár az itt meghatározott két-háromszorosa is lehet.<p>
+
+Meghatározza az ideális mennyiségû memóriát a következõknek:
+<ul>
+<li>Átmenõ objektumok
+<li>Forró objektumok
+<li>Negatívan gyorstárazott objektumok
+</ul>
+<p>
+Az ilyen objektumokhoz 4 kB-os tömbökben tárolódnak az adatok. Ez a paraméter meghatározza a hozzárendelt 4 kB-os tömbök ideális együttes méretének maximumát. A legmagasabb prioritása az átmenõ objektumoknak van.<p>
+
+Az átmenõ objektumoknak prioritása van a többiekkel szemben. Amikor több hely szükségeltetik a bejövõ adatoknak, a memóriából kiürülnek a negatívan-gyorstárazott és a forró objektumok. Másképp megfogalmazva, a negatívan gyorstárazott és forró objektumok feltöltenek minden, az átmenõ objektumok által nem igényelt területet.<p>
+
+Ha a körülmények úgy hozzák, meg lehet haladni ezt a szintet. Ha például a bejövõ kérések az itt meghatározottnál több memóriát igényelnek az átmenõ objektumoknak, úgy a Squid átlépheti ezt a korlátozást, hogy kiszolgálja az új kéréseket. Amikor a terhelés csökken, egyre több tömb szabadul fel egészen addig, míg a túlcsordulási szint meg nem jelenik. Ettõl kezdve a tömbök forró objektumokat fognak tárolni.<p>
+
+<b>FQDN gyorstárméret</b>: Alapértelmezés szerint 1024.  A Fully Qualified Domain Name gyorstár-bejegyzések maximuma.<p>
+
+<b>Memória túlcsordulási szint</b>: Alapértelmezés szerint 95%. Amikor ezt a szintet eléri a rendszer, a memóriából kiürülnek a forró és az átmenõ objektumok, a hely felszabadítása érdekében.<p>
+
+<b>Memória biztonsági szint</b>: Alapértelmezés szerint 90%. Miután a túlcsordulási szintet elérte, a Squid eddig a szintig fogja üríteni a memóriát.<p>
+
+<b>Lemezterület túlcsordulási szint</b>: Alapértelmezés szerint 95%. Amikor ezt a szintet eléri, a Squid a lemez agresszív ürítésébe kezd.<p>
+
+<b>Lemezterület biztonsági szint</b>: Alapértelmezés szerint 90%. Miután a túlcsordulási szintet elérte, a Squid tovább üríti a lemezterületet, mag az eléri ezt a szintet.<p>
+
+<b>Gyorstárazott objektum maximális mérete</b>: Alapértelmezés szerint 4096 kB. Ez a beállítás meghatározza a gyorstárban tárolható objektumok maximális méretét. Bármely ennél nagyobb méretû objektum nem lesz eltárolva a gyorstárban, és minden alkalommal a forrásszerverrõl kell betölteni azokat.<p>
+
+<b>IP-cím gyorstár mérete</b>: Alapértelmezés szerint 1024. Az IP-gyorstárban tárolandó bejegyzések száma.<p>
+
+<b>IP-gyorstár túlcsordulási szint</b>: Alapértelmezés szerint 95%. Ezen a ponton a Squid elkezdi kiüríteni az IP-bejegyzéseket a gyorstárból.<p>
+
+<b>IP-gyorstár biztonsági szint</b>: Alapértelmezés szerint 90%. Miután megkezdõdött az IP-gyorstár ürítése, a folyamat addig tart, amíg az IP-gyorstárban lévõ bejegyzések száma el nem éri ezt a szintet.<p>
+
+<hr>
+
+

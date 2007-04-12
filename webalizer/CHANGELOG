@@ -1,0 +1,8 @@
+---- Changes since 1.160 ----
+Added support for Include* Webalizer directives.
+---- Changes since 1.250 ----
+Added a Module Config option to prevent the Webmin header and footer from being added when viewing a Webalizer report.
+---- Changes since 1.260 ----
+Log files from ProFTPd and WU-FTPd are now automatically made available for generating reports on.
+---- Changes since 1.270 ----
+Added buttons for scheduling and de-scheduling multiple Webalizer reports at once.

@@ -1,0 +1,21 @@
+<header>Redes locales</header>
+
+<center><tt>mynetworks</tt></center>
+<hr>
+
+Este parámetro especifica la lista de redes que son locales a esta máquina.
+La listala usa el software anti-UCE (anti-spam) para distinguir a los
+clientes locales de los externos. Vea <tt>permit_mynetworks</tt> y <a
+href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a>
+en la configuración SMTP.
+
+<p>
+
+Por defecto es una lista de todas las redes a las que esta máquina está
+conectada: una red completa de clase A (X.0.0.0/8), una red entera de clase
+B (X.X.0.0/16), etc. Si quiere un control más estricto, especifique una
+lista de patrones red/máscara, donde la máscara indica el número de bits en
+la parte de red de una dirección IP. También puede especificar la ruta
+absoluta a un fichero de patrones en lugar de listar dichos patrones aquí.
+
+<hr>

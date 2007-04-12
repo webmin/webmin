@@ -1,0 +1,7 @@
+noconfig=0
+mgetty=1
+options=1
+dialin=1
+secrets=1
+direct=0
+sync=1

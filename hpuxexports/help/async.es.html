@@ -1,0 +1,22 @@
+<header>Escrituras asíncronas</header>
+
+"Sí" - Las escrituras en el servidor se hacen asíncronamente. Cuando su
+cliente NFS envía una petición de escritura a un servidor NFS, el servidor
+devuelve una respuesta positiva antes de escribir los datos a disco. El
+cliente puede entonces enviar otra petición de escritura sin esperar a que
+el servidor termine la anterior. La velocidad de escritura es mejor con
+escrituras asíncronas. Sin embargo, si el servidor se cae después de
+devolver la respuesta positiva pero antes de escribir los datos a disco,
+los datos se perderán, y el cliente no será notificado del hecho.
+<p>
+"No" - Las escrituras en el servidor se hacen síncronamente. Cuando su
+cliente NFS envía una petición de escritura a un servidor NFS, el servidor
+escribe los datos a disco antes de devolver una respuesta positiva a su
+cliente. Su cliente debe esperar hasta que el servidor haya escrito los
+datos a disco antes de poder enviar otra petición de escritura.
+La velocidad de escritura no es tan buena con escrituras síncronas como con
+escrituras asíncronas.
+<p>
+El valor por defecto es "No".
+<hr>
+

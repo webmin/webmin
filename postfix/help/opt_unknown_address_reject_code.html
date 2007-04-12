@@ -1,0 +1,20 @@
+<header>SMTP server response on domain reject</header>
+
+<center><tt>unknown_address_reject_code</tt></center>
+<hr>
+
+This parameter specifies the SMTP server response code when a client violates the
+<tt>reject_unknown_sender_domain</tt> or
+<tt>reject_unknown_recipient_domain</tt> restriction rules that are:<br>
+<i>Access denied: Unknown domain for sender or recipient email address (without DNS A or MX record)</i><br>
+<br>
+Note that the postfix default value used for <tt>unknown_address_reject_code</tt> is
+code 450 also used for other errors. This code in 'standard RFC 822' means
+'Requested mail action not taken: mailbox busy or access denied' and
+ask the sender to try again later (hoping the DNS will answer correctly
+later).<br>
+<p>
+Do not change this unless you have a complete understanding of RFC 822.
+</p>
+
+<hr>

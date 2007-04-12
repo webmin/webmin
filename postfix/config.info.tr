@@ -1,0 +1,6 @@
+postfix_control_command=Postfix kontrol komutunun tam yolu,0
+postfix_config_command=Postfix yapýlandýrma komutunun tam yolu,0
+postfix_config_file=Full path to Postfix config file,0
+postfix_aliases_table_command=Postfix takma isim oluþturma komutunun tam yolu,0
+postfix_newaliases_command=&quot;newaliases&quot; komutunun tam yolu (Sendmail uyumluluðu),0
+postfix_lookup_table_command=Postfix'in komut yönetim tablosunun tam yolu (`postmap'),0

@@ -1,0 +1,154 @@
+index_title=Amministrazione Stampanti
+index_name=Stampante
+index_desc=Descrizione
+index_to=Stampa in
+index_driver=Driver
+index_jobs=Jobs
+index_none=Nessuna stampante installata nel sistema
+index_list=lista..
+index_add=Aggiungi una nuova stampante
+index_stop=Ferma lo Scheduling
+index_stopmsg=Seleziona il pulsante per fermare il processo di stampa. 
+Questo blocca la stampa a utenti locali e remoti.
+index_start=Inizia lo Scheduling
+index_startmsg=Seleziona il pulsante per iniziare il processo di stampa. 
+Questo permette a utenti locali e remoti di stampare sul tuo sistema
+index_return=lista stampante
+
+edit_eedit=Non sei autorizzato a modificare la stampante
+edit_eadd=Non sei autorizzato ad aggiungere stampanti
+edit_add=Crea una Stampante
+edit_edit=Modifica una Stampante
+edit_conf=Configurazione Stampante
+edit_name=Nome
+edit_acc=Accetta richieste?
+edit_why=No - Perche' no
+edit_desc=Descrizione
+edit_ena=Stampante Abilitata?
+edit_acl=Controllo Accessi
+edit_allow=Autorizza tutti
+edit_deny=Non Autorizzare nessuno
+edit_allowu=Autorizza gli utenti elencati...
+edit_denyu=Non autorizza gli utenti elencati...
+edit_banner=Stampa una intestazione?
+edit_opt=Opzionale
+edit_default=Stampante di Default?
+edit_already=La stampante e' gia' di default
+edit_max=Massima grandezza del processo di stampa
+edit_dacc=Driver accettati
+edit_dtext=Testo
+edit_dpost=Postscript
+edit_dother=Altri
+edit_alt=Nomi alternativi della stampante
+edit_dest=Destinazione Stampa
+edit_dev=Dispositivo Locale
+edit_file=File Locale
+edit_remote=Server Unix Remoto
+edit_rqueue=Stampante
+edit_type=Tipo
+edit_smb=Server Windows remoto
+edit_share=Stampante
+edit_user=Utente
+edit_pass=Password
+edit_wgroup=Gruppo di Lavoro
+edit_hpnp=Server remoto HPNP
+edit_port=Porta
+edit_driver=Driver della Stampante
+
+blocks=blocchi
+
+save_err=Errore nel salvataggio della stampante
+save_eadd=Non sei autorizzato ad aggiungere stampanti
+save_eedit=on sei autorizzato a modificare questa stampante
+save_ename='$1' non e' un nome valido per la stampante
+save_edup=La stampante '$1' e' gia' presente
+save_eallow=Nessun utente autorizzato inserito
+save_edeny=Nessun utente non autorizzato inserito
+save_euser=L'utente '$1' non esiste
+save_etype=Devi selezionare almeno un tipo di driver per accettare
+save_emax=La dimensione massima per un processo di stampa deve essere un 
+numero intero
+save_efile='$1' non esiste
+save_erhost=L'host remoto '$1' non esiste
+save_erqueue='$1' non e' un nome valido di coda remota di stampa
+save_eremote=Il driver non puo' essere usato con una stampante remota Unix
+
+jobs_title=Processi di Stampa
+jobs_header=Processi di Stampa in $1
+jobs_id=ID Processo
+jobs_size=Dimensione
+jobs_by=Inviato da
+jobs_when=Inviato alle
+jobs_file=Nome del file
+jobs_cancel=Seleziona l'ID del processo per eliminarlo
+jobs_cancelview=Seleziona l'ID del processo per eliminarlo, o seleziona la 
+dimensione del processo per vederlo.
+jobs_none=Nessun processo di stampa in $1
+
+cancel_ecannot=Non sei autorizzato ad eliminare i processi di stampa
+cancel_err=Errore nella cancellazione del processo di stampa
+cancel_egone=Il processo di stampa $1 non esiste
+
+view_ecannot=Non puoi vedere questo processo di stampa
+view_egone=Questo processo di stampa non esiste
+
+start_ecannot=Non sei autorizzato a far partire lo scheduler
+start_err=Errore nell'esecuzione dello scheduler
+
+stop_ecannot=Non sei autorizzato a bloccare lo scheduler
+stop_err=Errore nel bloccare lo scheduler
+
+webmin_none=Nessuno
+webmin_nonemsg=Stampante Postscript o di testo
+webmin_remotemsg=Stampante remota
+webmin_model=Modello
+webmin_prog=Programma
+webmin_driver=Driver Webmin
+webmin_uniprint=Driver Uniprint
+webmin_edrivers=Errore nell'utilizzare il driver da $1. I driver Webmin 
+della stampante che usano il ghostscript non sono disponibili
+webmin_egs=Il comando $1 non e' stato trovato. I driver Webmin della 
+stampante che usano il ghostscript non sono disponibili
+webmin_edriver='$1' non esiste
+
+caldera_none=Nessuno
+caldera_nonemsg=Stampante remota o di tipo raw
+caldera_prog=Programma
+caldera_coas=Driver COAS
+caldera_printer=Stampante e risoluzione
+caldera_eof=Invia EOF (Fine File)?
+caldera_paper=Dimensione della carta
+caldera_double=Stampa su entrambi i lati?
+caldera_gsopts=Opzione GS aggiuntiva
+caldera_uniprint=Driver Uniprint
+caldera_eprog='$1' non esiste
+caldera_edriver=Driver della stampante non selezionato
+caldera_eres=Nessuna risoluzione selezionata
+
+redhat_none=Nessuno
+redhat_nonemsg=Stampante Postscript o di testo
+redhat_prog=Programma
+redhat_driver=Driver RedHat
+redhat_printer=Stampante e risoluzione
+redhat_eof=Invia EOF (Fine File)?
+redhat_paper=Dimensione della carta
+redhat_pages=Pages per output page
+redhat_gsopts=Opzione GS aggiuntiva
+redhat_hmargin=margine Destro/Sinistro
+redhat_vmargin=margine Superiore/inferiore
+redhat_crlf=Fix stair-stepping text?
+redhat_eprog='$1' non esiste
+redhat_edriver=Driver della stampante non selezionato
+redhat_ehmargin=Margine sinistro/destro errato o invalido
+redhat_evmargin=Margine superiore/inferiore errato o invalido
+redhat_eres=Nessuna risoluzione selezionata
+
+acl_printers=Stampanti che questo utente puo' configurare
+acl_add=Puo' aggiungere nuove stampanti?
+acl_cancel=Puo' vedere o annullare i processi della stampante ?
+acl_stop=Puo' bloccare o far partire lo scheduler ?
+acl_all=Su tutte le stampanti
+acl_listed=Solo sulle stampanti selezionate..
+
+
+

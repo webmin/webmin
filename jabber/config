@@ -1,0 +1,4 @@
+jabber_config=/opt/jabber/etc/jabber.xml
+jabber_dir=/opt/jabber
+start_cmd=/opt/jabber/etc/jabberd.init start
+stop_cmd=/opt/jabber/etc/jabberd.init stop

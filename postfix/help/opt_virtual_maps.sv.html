@@ -1,0 +1,20 @@
+<header>Domänuppslagningstabeller</header>
+
+<center><tt>virtual_maps</tt></center>
+<hr>
+
+Denna parameter anger uppslagningstabeller som används till att leda om
+vissa adresser eller hela domäner till någon annan adress. Detta används
+vanligen för att implementera stöd för virtuella domäner.
+
+<p>Standard är att ingen adressomledning görs.
+
+<p>Exempel:
+<ul>
+<li><tt>dbm:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, nis:virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, netinfo:/virtual</tt>
+</ul>
+
+<hr>

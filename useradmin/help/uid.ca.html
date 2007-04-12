@@ -1,0 +1,26 @@
+<header>ID de l'usuari</header>
+
+L'ID de l'usuari o UID és allò que el sistema fa servir realment per
+aplicar els permisos sobre els fitxers i els processos. Si dos usuaris
+tenen el mateix UID, llavors poden accedir els fitxers de l'altre -per
+tant, cada usuari ha de tenir un UID únic.
+
+En crear un usuari nou, tindràs les opcions següents:
+<dl>
+<dt>Automàtic
+<dd>El UID serà assignat automàticament per Webmin, basant-se en els que estan actualment en ús.
+<dt>Calculat
+<dd>El UID es calcularà basant-se en el nom d'usuari, fent servir un algoritme de suma de comprovació.
+<dt>Introduït
+<dd>La darrera opció permet introduir el UID que vulguis.
+</dl><p>
+
+L'usuari <tt>root</tt> sempre té l'UID 0. Si crees un altre usuari amb
+UID 0, aquest usuari tindrà el mateix poder que <tt>root</tt>.  <p>
+
+Si estàs editant un usuari existent i li canvies el UID, l'opció
+<a href=chuid>Canvia l'ID d'usuari dels fitxers</a> determina a quins 
+fitxers se'ls canvia la propietat.  <p>
+
+<hr>
+

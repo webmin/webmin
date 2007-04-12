@@ -1,0 +1,11 @@
+smb_conf=Lokalizacja pliku konfiguracyjnego Samby,0
+smb_passwd=Lokalizacja pliku hase³ Samby,3
+samba_status_program=Pe³na ¶cie¿ka do <tt>smbstatus</tt>,0
+samba_password_program=Pe³na ¶cie¿ka do <tt>smbpasswd</tt>,0
+samba_server=Pe³na ¶cie¿ka do <tt>smbd</tt>,0
+name_server=Pe³na ¶cie¿ka do <tt>nmbd</tt>,0
+swat_path=Pe³na ¶cie¿ka do <tt>swat</tt>,3,Brak
+dont_convert=Lista u¿ytkowników Uniksa nie dodawanych do listy hase³ Samby,0
+sort_mode=Porz±dkowaæ u¿ytkowników i&nbsp;grupy wg nazw,1,1-Tak,0-Nie
+start_cmd=Polecenie uruchamiaj±ce serwery Samby,3,Brak
+stop_cmd=Polecenie zatrzymuj±ce serwery Samby,3,Brak

@@ -1,0 +1,44 @@
+<header>Configuración de Hostsentry</header>
+
+Hostsentry es una herramienta de detección de intrusos de máquina que lleva
+a cabo detección automática de ingresos anómalos. Esto significa que
+monitoriza a los usuarios que ingresan y salen de su sistema y registra los
+comportamientos sospechosos, según se defina en las opciones que elija en
+esta página. <p>
+
+Las opciones disponibles son :
+<ul>
+<li><b>Fichero donde registrar los ingresos</b><br>
+    El fichero de su sistema donde registrar los ingresos y salidas de su
+    sistema. En general no debería cambiar esta opción. <p>
+
+<li><b>Usuarios cuyos ingresos ignorar</b><br>
+    Cualquier usuario listado en este campo no será monitorizado por
+    Hostsentry cuando ingrese en el sistema. <p>
+
+<li><b>Orden de los módulos de procesamiento de Hostsentry</b><br>
+    Hostsentry tiene un diseño modular, en el que cada módulo lleva a cabo
+    un tipo determinado de detección de anomalías. Esta sección le permite
+    elegir qué módulos usar, y el orden en que se ejecutan para procesar
+    los ingresos y salidas al sistema. <p>
+
+<li><b>Máquinas que no considerar externas</b><br>
+    Si está activado el módulo 'Detectar ingresos desde dominios externos'
+    todas las máquinas salvo las listadas en este campo serás consideradas
+    externas y por lo tanto estarán sujetas a informar de los ingresos
+    desde ellas. <p>
+
+<li><b>Máquinas en las que confiar varios ingresos remotos</b><br>
+    Si el módulo 'Detectar ingresos simultáneos múltiples' está activado,
+    se informará de cualquier conjunto de dos o más ingresos del mismo
+    usuario desde máquinas que no estén en estén lista. <p>
+</ul>
+
+Al final de la página hay un botón para iniciar Hostsentry (si no está en
+ejecución) o pararlo (si ya está en ejecución). Puesto que Hostsentry
+ejecuta como un proceso en segundo plano (demonio), si no está ejecutando
+no se llevará a cabo monitorización alguna de ingresos y salidas del
+sistema. <p>
+
+<hr>
+

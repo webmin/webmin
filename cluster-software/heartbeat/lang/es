@@ -1,0 +1,78 @@
+index_title=Monitor Heartbeat
+index_return=monitor heartbeat
+index_edir=El directorio de configuración de heartbeat $1 no existe. Quizás Heartbeat no está instalado o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+index_start=Arrancar Monitor Heartbeat
+index_startmsg=Haz click en este botón para arrancar el proceso del monitor de Heartbeat. Esto activará el servicio automático de no-fallo en tu sistema con la configuración en curso.
+index_apply=Aplicar Cambios
+index_applymsg=Haz click en este botón para forzar que el proceso de monitor Heartbeat en ejecución recarge la configuración en curso.
+
+conf_title=Opciones de Configuración
+conf_header=Opciones de configuración de Heartbeat
+conf_serial=Puerto serial de heartbeat
+conf_baud=Velocidad en baudios para puerto serial
+conf_udp=Dispositivo ethernet de heartbeat
+conf_none=Ninguno
+conf_udpport=Puerto UDP de heartbeat
+conf_keepalive=Tiempo entre latidos
+conf_secs=segundos
+conf_deadtime=Tiempo antes de que el nodo sea considerado muerto
+conf_watchdog=Archivo de dispositivo Watchdog
+conf_node=Máquinas en grupo
+conf_logfile=Archivo de diario de Heartbeat
+conf_logfacility=Facilildad de diario de Syslog
+conf_initdead=Tiempo muerto inicial
+conf_ok=Salvar Opciones
+conf_err=No pude salvar opciones
+conf_ebaud=Velocidad en baudios falta o es inválida
+conf_eudp=Dispositivo heartbeat falta o es inválido
+conf_eudpport=Puerto heartbeat falta o es inválido
+conf_ekeepalive=Tiempo entre latidos falta o es inválido
+conf_edeadtime=Tiempo muerto falta o es inválido
+conf_ewatchdog=Archivo de dispositivo watchdog falta o no existe
+conf_enonode=No se han digitado máquinas de grupo
+conf_ethisnode=Esta máquina $1 no está en la lista de máquinas en grupo
+conf_elogfile=Nombre de archivo de diario falta o es inválido
+conf_einitdead=Tiempo muertpo inicial falta o es inválido
+conf_einitdead2=El tiempo muerto inicial debe de ser al menos dos veces el tiempo antes que un nodo se considere muerto
+
+res_title=Recursos de Grupo
+res_node=Nodo Primario
+res_ips=Direcciones IP
+res_servs=Servicios de Nodo
+res_none=Ninguno
+res_nores=No se han definido recursos de grupo en tu sistema.
+res_add=Añadir un recurso de grupo
+res_return=lista de recursos
+
+node_create=Añadir Recurso de Grupo
+node_edit=Editar Recurso de Grupo
+node_header=Detalles de recurso de grupo
+node_node=Nodo primario para recurso
+node_ips=Direcciones IP para recurso
+node_ip=Dirección IP
+node_cidr=CIDR de Máscara de red
+node_broad=Dirección de Difusión
+node_servs=Servicios para recurso
+node_serv=Servicio
+node_args=Argumentos adicionales
+node_err=No pude salvar recurso de grupo
+node_enone=Nodo primario falta o es inválido
+node_eip='$1' no es una dirección IP válida
+node_ecidr='$1' no es un CIDR válido
+node_ebroad='$1' no es una dirección de difusión válida
+
+auth_title=Claves de Autenticación
+auth_header=Autenticación de nodo de grupo
+auth_mode=Modo de autenticación
+auth_crc=CRC (Sin seguridad)
+auth_sha1=SHA1 con clave de acceso
+auth_md5=MD5 con clave de acceso
+auth_err=No pude salvar claves de autenticación
+auth_emd5=Clave de acceso MD5 falta o es inválida
+auth_esha1=Clave de acceso SHA1 falta o es inválida
+
+start_err=No pude arrancar heartbeat
+
+apply_err=No pude aplicar cambios
+apply_epid=El proceso ya no se está ejecutando
+

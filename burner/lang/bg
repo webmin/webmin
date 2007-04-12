@@ -1,0 +1,121 @@
+index_title=CD Запис
+index_profiles=Профили на запис
+index_name=Име на профил
+index_type=Вид запис
+index_files=Файл(ове) за запис
+index_add=Добави нов профил от вида:
+index_type1=Единичен ISO имидж
+index_type2=Файлове и директории
+index_type3=Аудио тракове
+index_type4=Копиране на CD
+index_none=Няма дефинирани профили на запис.
+index_global=Глобални опции
+index_ecdrecord=Командата за CD запис $1 не бе открита на вашата система. Вероятно не е инсталирана или вашата <a href='$2'>модулна конфигурация</a> е грешна.
+index_return=списък на профили
+
+edit_title=Промяна на профил на запис
+create_title=Създаване на профил на запис
+edit_emkisofs=The ISO filesystem building command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+edit_empg123=The MP3 decoding command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+edit_ecdrdao=The CD copying command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+edit_header=Burn profile options
+edit_name=Profile name
+edit_iso=ISO image to write
+edit_isosize=Get size from ISO file?
+edit_dirs=Directories to include
+edit_source=Source file or directory
+edit_dest=Directory on CD
+edit_rock=Generate RockRidge (unix) extensions?
+edit_rock2=Yes, with sensible permissions
+edit_joliet=Generate Joliet (windows) extensions?
+edit_long=Allow long filenames?
+edit_trans=Generate TRANS.TBL file?
+edit_volid=CD volume ID
+edit_mp3s=MP3 files and directories
+edit_burn=Запази и запиши сега
+edit_test=Запази и тествай запис сега
+edit_return=профил на запис
+edit_ask=Попитай за потвърждение преди запис?
+edit_sdev=Source CD device
+edit_other=Other device..
+edit_fly=Метод на копиране
+edit_fly1=Директно от CD към записвачка
+edit_fly0=Използвай временен файл
+edit_srcdrv=Source device driver
+edit_dstdrv=Destination device driver
+
+save_err=Failed to save profile
+save_ename=Missing profile name
+save_eiso=Missing or invalid ISO image filename
+save_esource=Missing or invalid source directory $1
+save_edest=Missing directory on CD for $1
+save_edirs=No source directories chosen
+save_emp3s=No MP3 files or directories entered
+save_emp3=MP3 file or directory '$1' does not exist
+save_eother=Source device file does not exist
+
+burn_title=Burn CD
+burn_rutest1=Are you sure you want to test burning the ISO image $1 ?
+burn_rusure1=Are you sure you want to burn the ISO image $1 to CD ?
+burn_rutest2=Are you sure you want to test burning the chosen directories ?
+burn_rusure2=Are you sure you want to burn the chosen directories to CD ?
+burn_rutest3=Are you sure you want to test burning the chosen audio tracks ?
+burn_rusure3=Are you sure you want to burn the chosen audio tracks to CD ?
+burn_rusure4=Are you sure you want to copy from $1 ?
+burn_ok=Yes, burn now!
+burn_cancel=No, so delete temporary ISO
+burn_eject=Eject CD after burning
+burn_blank=Blank CD before burning?
+burn_bfast=Fast blank
+burn_ball=Slow blank
+burn_bg=Start burn process in background
+burn_edev=You cannot burn a CD until a CD-write device has been configured on the <a href='$1'>Device Options</a> page.
+burn_header=Burning CD with command $1 ..
+burn_theader=Testing burn with command $1 ..
+burn_header2=Burning CD in background process with command $1 ..
+burn_theader2=Testing burn in background process with command $1 ..
+burn_mheader=Making ISO filesystem with command $1 ..
+burn_mfailed=Failed to create ISO filesystem!
+burn_egone=ISO image has been deleted - You will need to return to the <a href='$1'>burn profile</a> to re-generate it.
+burn_egone2=Temporary audio tracks have been deleted - You will need to return to the <a href='$1'>burn profile</a> to re-generate it.
+burn_700=Warning! Your ISO image is $1 MB in size, which is above the 700 MB allowed on even an 80 minute CD.
+burn_650=Warning! Your ISO image is $1 MB in size, which is above the 650 MB allowed on a normal CD. However, it will fit on an 80 minute CD.
+burn_size=The generated ISO image is $1 MB in size, out of a total of $2 MB which is allowed on a normal CD.
+burn_nomp3s=There are no files in the selected directories.
+burn_mp3header=Converting MP3s to audio tracks with command $1 ..
+burn_mp3failed=Failed to convert MP3 files!
+burn_mp3format=The file $1 does not appear to be in MP3	format.
+burn_746=Warning! Your audio tracks total $1 MB in size, which is above the 746 MB allowed on a normal audio CD. However, they will fit on an 80 minute CD.
+burn_807=Warning! Your audio tracks total $1 MB in size, which is above the 807 MB allowed on even an 80 minute CD.
+burn_mp3size=The converted audio tracks are $1 MB in size, out of a total of $2 MB which is allowed on a normal audio CD.
+burn_seconddesc=Insert the blank destination CD and click the button below.
+burn_second=Burn Destination CD
+
+dev_title=Device Options
+dev_header=CD burner device options
+dev_device=Burner device
+dev_none=&lt;None selected&gt;
+dev_speed=Write speed
+dev_other=Other..
+dev_extra=Extra <tt>cdrecord</tt> options
+dev_err=Failed to save device options
+dev_eother=Missing or invalid write speed
+
+mkisofs_title=ISO Filesystem Options
+mkisofs_header=Global ISO filesystem options
+mkisofs_novers=Include version number in filenames?
+mkisofs_notrans=Allow all characters in filenames?
+mkisofs_nobak=Skip backup files?
+mkisofs_fsyms=Follow symbolic links?
+
+config_cdrecord=CD burning command
+config_mkisofs=ISO filesystem building command
+config_mpg123=MP3 decoding command
+config_cdrdao=CD copying command
+config_temp=Temporary files directory
+config_temp_def=Webmin's temp directory
+config_ecdrecord=Missing or invalid CD burning command
+config_emkisofs=Missing or invalid ISO filesystem building command
+config_empg123=Missing or invalid MP3 decoding command
+config_ecdrdao=Missing or invalid CD copying command
+config_etemp=Missing or invalid temporary file directory

@@ -1,0 +1,12 @@
+httpd_dir=Apache服务器根目录,0
+httpd_path=httpd执行文件路径,0
+apachectl_path=命令apachectl的路径,3,没有
+start_cmd=启动apache命令,3,自动
+stop_cmd=停止apache命令,3,自动
+show_list=虚拟服务器显示方式,1,0-图标,1-列表
+show_order=虚拟服务器排序方式,1,0-按配置文件的设置,1-按服务器名,2-按IP地址
+httpd_conf=httpd.conf的路径,3,自动
+srm_conf=srm.conf的路径,3,自动
+access_conf=access.conf的路径,3,自动
+mime_types=mime.types的路径,3,自动
+virt_file=增加虚拟服务器的文件,3,httpd.conf

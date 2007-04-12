@@ -1,0 +1,6 @@
+<exec_method name='EXEC_NAME'
+	type='method'
+	timeout_seconds='EXEC_TIMEOUT_SECONDS'
+	exec='EXEC_EXEC'>
+	EXEC_METHOD_CREDENTIAL
+</exec_method>

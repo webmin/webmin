@@ -1,0 +1,15 @@
+index_title=Shell
+index_ok=Executa l&#039;ordre:
+index_history=Historial d'ordres
+index_clear=Neteja l&#039;historial
+index_clearcmds=Neteja les ordres
+index_desc=Introdueix una ordre shell a executar en el camp de sota. L'ordre <tt>cd</tt> es pot utilitzar per a canviar el directori per a ordres subsegüents.
+index_pok=Executa l'ordre anterior
+index_edit=Edita l'anterior
+
+acl_user=Executa les ordres com a usuari
+acl_user_def=Usuari Webmin actual
+
+log_run=He executat l'ordre $1
+log_clear=He netejat l'historial d'ordres
+

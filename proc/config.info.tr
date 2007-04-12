@@ -1,0 +1,6 @@
+line1=Yapýlandýrýlabilir seçenekler,11
+default_mode=Öntanýmlý iþlem listeleme stili,4,son-Son seçilen,aðaç-Ýþlem aðacý,kullanýcý-Kullanýcýya göre ,boyut-Boyuta göre,iþlemci-Ýþlemci kullanýmýna göre,arama-Arama formu,çalýþtýr-Çalýþtýrma formu
+cut_length=Komutlarda gösterilecek maksimum karakter sayýsý,3,Limitsiz
+trace_java=Sistem çaðrýsý takibini þu þekilde göster,1,1-Java applet,0-Metin
+line2=Sistem yapýlandýrmasý,11
+ps_style=PS komutu çýktýsý biçimi,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

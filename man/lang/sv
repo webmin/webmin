@@ -1,0 +1,65 @@
+index_title=Systemdokumentation
+index_header=Sökning i systemets manualsidor
+index_for=Sök efter
+index_where=Sök i
+index_alldoc=All dokumentation
+index_man=Manualsidor
+index_doc=Paketdokumentation
+index_kernel=Kärnans dokumentation
+index_info=Info-sidor
+index_howto=HOWTO-dokument
+index_kde=KDE-dokumentation
+index_perl=Perl-moduldokumentation
+index_help=Webmin-hjälp
+index_reset=Återställ
+index_search=Sök
+index_return=sökformulär
+index_type=Matcha
+index_name=Endast namn
+index_data=Namn och innehåll
+index_other_man=Manualsidor
+index_other_help=Webmin-hjälp
+index_other_doc=Paketdokumentation
+index_other_kernel=Kärnans dokumentation
+index_other_howto=HOWTO-dokument
+index_other_perl=Perl-moduldokumentation
+
+search_efor=Det fanns ingen manualsida för detta
+search_title=Sökresultat
+search_desc=Beskrivning
+search_type=Typ
+search_file=Sida eller fil
+search_man=Manualsida
+search_howto=HOWTO-dokument
+search_doc=Paketdokumentation
+search_kernel=Kärnans dokumentation
+search_kde=KDE-dokumentation
+search_perl=Perl-modul
+search_help=Webmin-hjälp
+search_none=Det fanns ingen dokumentation som passade $1.
+search_for=efter $1
+
+howto_title=HOWTO-dokument
+howto_header=HOWTO-dokumentfil $1
+howto_epath=Ogiltig sökväg till HOWTO-dokument
+
+doc_title=Paketdokumentation
+doc_header=Paketdokumentfil $1
+doc_epath=Ogiltig sökväg till paketdokumentation
+
+man_title=Manualsida
+man_header=Manualsida för $1 ($2)
+man_noentry=Det finns ingen manualsida för $1.
+
+kernel_title=Kärnans dokumentation
+kernel_header=Kärndokumentfil $1
+kernel_epath=Ogiltig sökväg till kärnans dokumentation
+
+kde_title=KDE-dokumentation
+kde_header=KDE-dokumentfil $1
+kde_epath=Ogiltig sökväg till KDE-dokumentation
+
+perl_title=Perl-modul
+perl_header=Dokumentation för Perl-modul $1
+perl_emod=Ogiltigt Perl-modulnamn
+

@@ -1,0 +1,13 @@
+index_elink=Tünel için henüz bir URL belirlenmedi.
+link_eurl=Geçersiz URL tüneli: $1
+link_elogin=$1 için giriþ engellendi $2 gibi 
+link_eautologin=$1 için geçersiz giriþ ya da þifre. <a href='$2'>týklayýn</a> giriþ için
+link_enouser=$1 e giriþ için bir kullanýcý adý ve þifre gerekli, ancak hiçbir þey bulunamadý.
+
+login_title=Websiteye giriþ için
+login_desc=$1 e giriþ yapabilmek için kullanýcý adý ve þifre gerekli.
+login_header=Geçerli Website 
+login_user=kullanýcý adý
+login_pass=þifre
+login_login=giriþ
+login_clear=temizle

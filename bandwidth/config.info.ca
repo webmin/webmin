@@ -1,0 +1,3 @@
+firewall_system=Tipus de tallafocs,4,firewall-IPtables,ipfw-IPFW,ipfilter-IPFilter,shorewall-Shorewall,-Detecta'l automàticament
+bandwidth_log=Fitxer de registre a crear per als missatges del tallafocs,0
+bandwidth_dir=Directori de dades de <i>bandwidth</i>,3,Defecte (/etc/webmin/bandwidth/hours)

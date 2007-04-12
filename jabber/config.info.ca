@@ -1,0 +1,8 @@
+line2=Configuració del sistema,11
+jabber_config=Fitxer de configuració XML de Jabber,0
+jabber_dir=Directori base de Jabber,0
+jabber_daemon=Camí del programa servidor jabber,3,Sota el directori base
+jabber_spool=Directori de hosts de jabber,3,El directori base
+jabber_lib=Directori de llibreries compartides de jabber,3,Cap
+start_cmd=Ordre d'inici de jabber,0
+stop_cmd=Ordre d'aturada de jabber,3,Mata el procés

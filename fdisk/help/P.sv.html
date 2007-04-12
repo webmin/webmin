@@ -1,0 +1,15 @@
+<header>Programmera bästa PIO</header>
+Försök att åter programmera IDE-interfacechipsetet för angiven PIO-mod, eller
+försök att automatiskt ställa in "bästa" PIO-mod som stöds av disken.
+
+<p>Kärnan stödjer endast detta för ett fåtal "kända" chipset och även för
+dessa är stödet skakigt. En del IDE-chipset kan inte ändra PIO-mod för en
+enstaka disk, vilket medför att båda diskarnas PIO-mod ändras. Många
+IDE-chipset stöder antingen fler eller färre än de standardiserade sex
+(0 till 5) PIO-moderna, så den hastighet som verkligen ställs in beror
+på chipset och drivrutin.
+
+<p><i>Var försiktig med denna inställning!</i>
+<br>Det finns inget "drulleskydd" och om inställningarna blir fel kan det
+orsaka <i>ett trasigt filsystem!</i>
+<hr>

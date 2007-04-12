@@ -1,0 +1,6 @@
+autofs_file=
+nmblookup_path=nmblookup
+browse_server=
+auto_file=
+smbclient_path=smbclient
+long_fstypes=1

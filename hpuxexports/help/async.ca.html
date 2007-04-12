@@ -1,0 +1,23 @@
+<header>Escriptures asíncrones</header>
+
+"Sí" - Les escriptures sobre el servidor es realitzen de forma asíncrona.
+Quan el client NFS envia una petició d'escriptura a un servidor NFS,
+el servidor retorna una resposta afirmativa al client abans d'escriure 
+res al seu disc. Llavors, el client pot enviar una altra petició
+d'escriptura sense haver completat l'anterior.
+El rendiment amb escriptura asíncrona és millor que el de l'escriptura
+síncrona. No obstant, si cau el servidor després d'enviar la resposta 
+afirmativa al client i abans d'escriure les dades al disc, les dades
+es perden i el client no en té constància.
+<p>
+"No" - Les escriptures sobre el servidor es realitzen de forma síncrona.
+Quan el client NFS envia una petició d'escriptura a un servidor NFS,
+el servidor escriu les dades al seu disc abans de retornar una resposta
+afirmativa al client. El client s'ha d'esperar que el servidor hagi
+acabat d'escriure les dades abans d'enviar una altra petició d'escriptura.
+El rendiment de l'escriptura síncrona no és tant bo com el de l'escriptura
+asíncrona.
+<p>
+Per defecte, és "No".
+<hr>
+

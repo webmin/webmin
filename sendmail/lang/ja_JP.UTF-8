@@ -1,0 +1,516 @@
+index_title=sendmail 設定
+index_econfig=sendmail 設定ファイル $1 は存在しません。ご使用の <a href='$2'>モジュール設定</a> が不正な可能性があります。
+index_eversion=このsendmail 設定ファイルは最新の sendmail バージョン用でないように思われます。Webmin はバージョン 8.8 以降のみサポートします。
+index_epath=sendmail 実行ファイル $1 がシステムにインストールされていませんご使用の<a href='$2'>モジュール設定</a> が不正か、sendmail  がインストールされていない可能性があります。
+index_return=sendmail 設定
+index_stop=sendmail を停止
+index_stopmsg=実行中の sendmail プロセスを停止するにはこのボタンをクリックしてください。これは、他のシステムからローカル ユーザにメールが配信されるのを停止し、このシステムをメール サーバとして使用中のクライアントがメールを送信するのを防ぎます。
+index_start=sendmail を開始
+index_startmsg=コマンド $1 でsendmail を起動するにはこのボタンをクリックしてください。これを実行するまでは、他のシステムからローカル ユーザにメールが配信されず、クライアントはこのシステムをメール サーバとして使用できません。
+
+opts_title=sendmail オプション
+opts_ecannot=sendmail オプションを編集できません
+opts_ds=ホスト経由でメールを送信
+opts_direct=直接配信
+opts_dr=認定されないユーザ名をホストに転送
+opts_dh=ローカル ユーザからホストにメールを転送
+opts_local=ローカル配信
+opts_queuela=送信用ロード平均の最大値
+opts_refusela=受信用ロード平均の最大値
+opts_maxch=子プロセス最大値
+opts_throttle=接続数/秒の最大値
+opts_minqueueage=送信を再試行するまでの最小時間
+opts_runsize=最大キュー サイズ
+opts_queuereturn=中止するまでの時間
+opts_queuewarn=警告を送信するまでの時間
+opts_queue=メール キュー ディレクトリ
+opts_postmaster=エラー メッセージの送信先
+opts_forward=ユーザ転送ファイル
+opts_minfree=最小空きディスク領域
+opts_maxmessage=最大メッセージ サイズ
+opts_loglevel=ログ レベル
+opts_mimebounce=MIME エンコードのバウンス メッセージにしますか？
+opts_default=デフォルト
+opts_save=保存して適用
+opts_err=オプションを保存できませんでした
+opts_ehost='$1' は無効なホスト名またはドメイン名です
+opts_einvalid='$1' は $2 に対する無効な値です
+opts_blame=ファイル セキュリティ オプション
+opts_selected=選択..
+opts_blocks=ブロック
+opts_bytes=バイト
+opts_dmode=配信モード
+opts_background=バックグラウンド
+opts_queue-only=キューのみ
+opts_interactive=対話式
+opts_deferred=後で
+
+aliases_title=メール エイリアス
+aliases_ecannot=エイリアスを編集できません
+aliases_addr=アドレス
+aliases_to=エイリアス..
+aliases_type1=アドレス $1
+aliases_type2=ファイル$1 内のアドレス
+aliases_type3=ファイル $1
+aliases_type4=プログラム $1
+aliases_type5=自動応答ファイル $1
+aliases_none=なし
+aliases_return=エイリアス リスト
+
+aform_type0=なし
+aform_type1=E メール アドレス
+aform_type2=ファイル内のアドレス
+aform_type3=ファイルに書込み
+aform_type4=プログラムに送る
+aform_type5=ファイルから自動応答
+aform_edit=エイリアスを編集
+aform_create=エイリアスを作成
+aform_name=アドレス
+aform_enabled=有効にしますか？
+aform_val=エイリアス
+aform_afile=編集..
+aform_return=エイリアス
+
+afile_title=アドレス ファイルの編集
+afile_desc=ファイル $1 のアドレスを編集するには下のテキスト エリアを使用してください。
+afile_efile=$1 は編集できません。
+afile_undo=変更を元に戻す
+
+rfile_title=自動応答ファイルの編集
+rfile_desc=$1 の自動応答メッセージを編集するには下のテキスト エリアを使用してください。メッセージは自動応答がアクティブになったときに展開されるマクロ $SUBJECT, $FROM, $TO, $DATE および $BODY を含むことができます。.
+rfile_efile=$1 は編集できません。
+rfile_undo=変更を元に戻す
+
+asave_err=エイリアスを保存できませんでした
+asave_ecannot2=エイリアスを編集できません
+asave_ecannot=このエイリアスは編集できません
+asave_emax=$1 より多くのエイリアスは作成できません
+asave_eaddr='$1' は無効なアドレスです
+asave_ealready='$1' のエイリアスはすでに存在しています
+asave_ematch='$1' に一致するエイリアスのみ作成する許可があります
+asave_etype=この種類のエイリアスは作成できません
+asave_etype1='$1' は無効な E メール アドレスです
+asave_etype2=アドレス ファイル  '$1' は無効か存在しません
+asave_etype3='$1' は無効なファイル名です
+asave_etype4='$1' は無効なプログラムか存在しません
+asave_etype5=自動応答ファイル  '$1' は無効か存在しません
+asave_etype4none=プログラムがありません
+
+cws_title=ローカル ドメイン
+cws_ecannot=ローカル ドメインは編集できません
+cws_domains=このサーバが処理するドメイン
+cws_desc1=$1 へのメールのほかに、sendmail は左のテキスト ボックスにリストされているドメインとホスト名へのローカル配信メールのみを受け付けます。メール サーバが複数の E メール ドメインを処理するには、それらのドメインがここにリストされている必要があります。
+cws_desc2=通常は、リストにドメインを含んでいるだけでは十分でないことに注意してください。このドメインの DNSレコードが存在し、システムを指していることを確認する必要があります。
+cws_err=ローカル ドメインを保存できません
+cws_ehost='$1' は無効なホスト名またはドメイン名です
+cws_eip='$1' は IP アドレスでドメインではありません
+
+masq_title=ドメインのマスカレード
+masq_ecannot=マスカレードは設定できません
+masq_domain=ドメインとしてマスカレード
+masq_domains=マスカレードされるドメイン
+masq_desc1=上にドメインが指定されている場合、sendmail は <tt>From (送信者)</tt> に指定されているすべての送信メッセージのアドレスをそのドメインから発信するように代替します。さらに、左にリストされているホストまたはドメインからシステムに渡されるすべての E メール メッセージは、 <tt>From (送信者)</tt> のアドレスが同様に変更されます。ここで定義されたマスカレードされるドメインは、<a href='$1'>Outgoing Addresses (宛先アドレス)</a> ページを使用した特定のユーザ用に上書き可能であることに注意してください。
+masq_desc2=この機能は、ご使用のシステムからの E メールをホスト名ではなく、ドメイン名から発信するように見せたい場合、またはシステムがそれぞれ独自のメール サーバを実行している、他の複数のホストへのメールのハブとなっている場合に便利です。
+masq_err=ドメイン マスカレードを保存できませんでした
+masq_edomain='$1' は次としてマスカレードする無効なドメインです
+masq_ehost='$1' は無効なホスト名またはドメイン名です
+masq_eip='$1' は IP アドレスでドメインではありません
+
+trusts_title=信任ユーザ
+trusts_ecannot=信任ユーザを編集できません
+trusts_users=sendmail によるローカル信任ユーザ
+trusts_desc=ローカル ユーザが E メールを送信すると、ユーザが左に表示されている場合に sendmail はそのユーザに別の<tt>From: (送信者)</tt> アドレスを供給することのみを許可します。この制限はご使用のシステムからユーザが偽の<tt>From:</tt> アドレスを作成することを防ぎます。
+trusts_err=信任ユーザを保存できませんでした
+trusts_euser='$1' は無効なユーザです
+
+virtusers_title=アドレス マッピング
+virtusers_ecannot=アドレス マッピングを編集できません
+virtusers_edirective=ご使用の sendmail 設定ファイルはアドレス マッピングに必要なディレクティブを持っていません。
+virtusers_efile=アドレス マッピング データベース $2 を構築するのに使われるテキスト ファイル $1が存在しません。正しいパスを使用するために <a href='$3'>モジュール設定</a> を変更する必要があります。
+virtusers_desc1=アドレス マッピングは <a href='$1'>エイリアス</a>と類似していますが、複数の E メール ドメインを処理するシステムにより適しています。ドメイン全体から 1 つのアドレスへメールをリダイレクトしたり、ユーザを同じ名前で別のドメインで処理、または1 つのドメインから別のドメインへのすべてのメールをマップするのに使用できます。
+virtusers_desc2=アドレス マッピングに使用する <a href='$1'>ローカル ドメイン</a> テーブルへのエントリを持ち、ご使用のシステムを指す各ドメインに対し DNS MX レコードがあることが必要になることに注意してください。
+virtusers_for=メール宛先..
+virtusers_to=送信先..
+virtusers_error=エラー $1
+virtusers_domain=ドメイン $1
+virtusers_address=アドレス $1
+virtusers_return=アドレス マッピング リスト
+
+vform_edit=マッピングを編集
+vform_create=マッピングを作成
+vform_for=メール宛先
+vform_address=アドレス
+vform_domain=ドメイン
+vform_to=送信先
+vform_msg=メッセージ
+vform_error=エラーを返す
+vform_err_nouser=nouser
+vform_err_nohost=nohost
+vform_err_unav=unavailable
+vform_err_temp=tempfail
+vform_err_proto=protocol
+vform_end=終わりに移動
+vform_ecannot=このアドレス マッピングは編集できません
+
+vsave_ecannot=アドレス マッピングを編集できません
+vsave_ecannot2=このアドレス マッピングは編集できません
+vsave_emax=$1より多くのアドレス マッピングは作成できません
+vsave_err=アドレス マッピングを保存できませんでした
+vsave_efrom='$1' は無効なアドレスです
+vsave_efromdup='$1' のアドレス マッピングはすでに定義されています
+vsave_edom='$1' は無効なドメインです
+vsave_edomdup='$1' のアドレス マッピングはすでに定義されています
+vsave_ematch=ソース アドレスが '$1' と一致しません
+vsave_ecannot3=アドレス マッピングを作成できません
+vsave_eaddr='$1' は無効なアドレスです
+vsave_ecannot4=ドメインへのアドレス マッピングは作成できません
+vsave_edomdom=ドメインは別のドメインにのみマップできます
+vsave_ecannot5=エラーを返すマッピングは作成できません
+
+mailers_title=ドメイン ルート
+mailers_cannot=ドメイン ルートは編集できません
+mailers_edirective=ご使用の sendmail 設定ファイルはドメイン ルートに必要なディレクティブを持っていません。
+mailers_efile=ドメインルート データベース $2 を構築するのに使われるテキスト ファイル $1が存在しません。正しいパスを使用するために <a href='$3'>モジュール設定</a> を変更する必要があります。
+mailers_desc1=ドメイン ルートは、特定のドメインにメールの特別転送方法を定義する方法を供給します。これは、ご使用のシステムがネットワークの外側からアクセスできないメール サーバのゲートウェイの場合、または特定のドメインへのすべてのメールを別のサーバ経由の経路に強制したい場合に便利です。
+mailers_desc2=他の ルート ドメインの <a href='$1'>ローカル ドメイン</a> リストにエントリを<b>持ってはいけません<b>。ただし、ゲートウェイとなるドメインに対し、ご使用のシステムを指している DNS MX レコードを持つ必要があります。
+mailers_for=メール宛先..
+mailers_delivery=配信
+mailers_to=送信先..
+mailers_return=ドメイン ルーティング リスト
+
+mform_edit=ルーティングを編集
+mform_create=ルーティングを作成
+mform_for=メール宛先
+mform_host=ホスト
+mform_domain=ドメイン
+mform_delivery=配信
+mform_to=送信先
+mform_ignore=SMTP 配信に MX を無視
+mform_smtp=SMTP
+mform_esmtp=拡張 SMTP
+mform_smtp8=8 ビット SMTP
+mform_relay=SMTP リレー
+mform_local=ローカル ユーザ
+mform_prog=プログラムに送る
+mform_uucp=UUCp
+mform_usenet=USENET に投稿
+mform_fax=HylaFAX
+mform_pop=POP3
+mform_procmail=Procmail
+mform_mail11=DECnet mail11
+mform_error=エラー
+mform_ecannot=ドメイン ルートを編集できません
+
+msave_ecannot=ドメイン ルートを編集できません
+msave_err=ドメイン ルートを保存できませんでした
+msave_edomain='$1' は無効なホスト名またはドメイン名です
+msave_edup='$1' のドメイン ルートはすでに定義されています
+
+generics_title=送信アドレス
+generics_cannot=送信アドレスを編集できません
+generics_econfig=ご使用の sendmail 設定ファイルは送信アドレス マッピングに必要なディレクティブを持っていません。
+generics_efile=送信アドレス マッピング データベース $2 を構築するのに使われるテキスト ファイル $1が存在しません。正しいパスを使用するために <a href='$3'>モジュール設定</a> を変更する必要があります。
+generics_desc1=送信アドレス マッピングはご使用のシステムから、またはローカル ネットワークの他のホストがシステムに送信するメールの<tt>From: (送信者)</tt> アドレスを変更できるようにします。これは 1 つのシステムで複数のドメインをホスティングしていて、あるユーザからのメールが別のドメインから送信されたように見せたい場合に便利です。
+generics_desc2=送信アドレス マッピングに使用するアドレスがある各ドメインに対し <a href='$1'>送信ドメイン</a> テーブルにエントリを持っている必要があります。さらに、送信アドレスマッピングはローカル ユーザに配信されるメールには動作しないことに注意してください。
+generics_from=送信元..
+generics_to=変更..
+generics_return=アドレス マッピング リスト
+
+gform_edit=マッピングを編集
+gform_create=マッピングを作成
+gform_from=送信元..
+gform_to=変更..
+gform_ecannot=この送信アドレスは編集できません
+
+gsave_ecannot=送信アドレスを編集できません
+gsave_ecannot2=この送信アドレスは編集できません
+gsave_err=送信アドレスを保存できませんでした
+gsave_efrom='$1' は次のアドレスからは無効です
+gsave_ematch=From (送信者)アドレスが '$1' と一致しません
+gsave_eto='$1' は無効な新規アドレスです
+
+cgs_title=送信ドメイン
+cgs_ecannot=送信ドメインを編集できません
+cgs_header=送信アドレス ドメイン
+cgs_desc=ローカル ユーザが送信したメールのほかに、sendmail は右のテキスト ボックスにリストされているホストまたはドメインへのメールに対して <a href='$1'>送信アドレス</a> マッピングを行います。そのため、From (送信者)アドレスのドメインと動作する送信アドレスのエントリがこのリストに含まれている必要があります。
+cgs_err=送信ドメインを保存できませんでした
+cgs_ehost='$1' は無効なホスト名またはドメイン名です
+cgs_eip='$1' は IP アドレスでドメインではありません
+
+domains_title=ドメイン マッピング
+domains_ecannot=ドメイン マッピングは編集できません
+domains_econfig=ご使用の sendmail 設定ファイルはドメイン マッピングに必要なディレクティブを持っていません。
+domains_efile=ドメインマッピング データベース $2 を構築するのに使われるテキスト ファイル $1が存在しません。正しいパスを使用するために <a href='$3'>モジュール設定</a> を変更する必要があります。
+domains_desc=ドメイン マッピングはメッセージを送信し、中継またはご使用のシステムでユーザに配信する<tt>To:</tt> アドレスを変更します。また、リレーされるメッセージまたはローカル ユーザへのメッセージの<tt>From:</tt> アドレスも変更されます。これは、ドメイン名が変更された場合および古いドメインをすべて新規のドメインに変更したい場合に便利です。
+domains_from=マッピング元のドメイン..
+domains_to=マッピング先のドメイン..
+domains_return=ドメイン マッピング リスト
+
+dform_edit=マッピングを編集
+dform_create=マッピングを作成
+dform_from=マッピング元のドメイン
+dform_to=マッピング先のドメイン
+dform_ecannot=ドメイン マッピングは編集できません
+
+dsave_ecannot=ドメイン マッピングは編集できません
+dsave_err=ドメインマッピングを保存できませんでした
+dsave_edomain='$1' は無効なドメイン名です
+
+access_title=スパム制御
+access_ecannot=スパム制御を設定できません
+access_econfig=ご使用の sendmail 設定ファイルはスパム制御に必要なディレクティブを持っていません。
+access_efile=スパム制御 データベース $2 を構築するのに使われるテキスト ファイル $1が存在しません。正しいパスを使用するために <a href='$3'>モジュール設定</a> を変更する必要があります。
+access_desc1=sendmail のスパム制御機能は、特定のアドレスからのメールを拒否することにより、ユーザがスパム メールを受信するのを防ぎ、ご使用のシステムがスパム メールの送信者によってメールのリレーに使用されるのを防ぎます。デフォルトでは sendmail は任意のアドレスからローカル ユーザへのメールを受け入れますが、ご使用のシステムからクライアントまたはメール サーバがメールをリレーするのを防ぎます。通常はスパム メールを拒否するためのスパム制御の規則と、ご使用のシステムを通じてネットワークの他のマシンがメールをリレーするのを許可する規則を追加します。
+access_desc2=デフォルトでは、sendmail はご使用のシステムで実行中のメール クライアントがメールを SMTP 経由で任意の宛先にリレーすることを許可します。そのため、ローカル<tt>127.0.0</tt> ネットワークをこれらのリレーを許可されたリストに加える必要はありません。
+access_source=ソース..
+access_action=アクション..
+access_return=スパム制御リスト
+
+sform_edit=スパム制御規則を編集
+sform_create=スパム制御規則を作成
+sform_source=メールのソース
+sform_type0=E メール アドレス
+sform_type1=ネットワーク
+sform_type2=ユーザ
+sform_type3=ドメイン
+sform_action=アクション
+sform_ok=許容
+sform_relay=リレーを許可
+sform_reject=拒否
+sform_discard=自動的に削除
+sform_err=エラー コード
+sform_msg=メッセージ
+sform_ecannot=スパム制御を設定できません
+
+ssave_ecannot=スパム制御を設定できません
+ssave_err=スパム制御規則を保存できませんでした
+ssave_etype0='$1' は無効なアドレスです
+ssave_etype1='$1' は無効なネットワーク アドレスです
+ssave_etype2='$1' は無効なユーザ名です
+ssave_etype3='$1' は無効なドメインです
+ssave_ecode='$1' は無効な SMTP エラー コードです
+
+relay_title=リレー ドメイン
+relay_ecannot=リレー ドメインを編集できません
+relay_eversion=sendmail バージョン8.9 以降のみがリレー ドメイン機能をサポートします。
+relay_domains=リレーが許可されたドメイン
+relay_desc1=sendmail は <a href='$1'>スパム制御</a> 規則で許可された場合以外は、左のテキスト ボックスにリストされたドメインにのみメールをリレーすることを許可します。ローカル ユーザ宛とリストされたドメイン宛でない受信メール メッセージは拒否されます。
+relay_desc2=ご使用のシステムがネットワークの外側から直接アクセスできないドメインへのゲートウェイとして動作している場合 ( <a href='$1'>ドメイン ルート</a> 機能を使用) は、それらのすべてのドメインはここにリストされている必要があります。
+relay_err=リレー ドメインを保存できません
+relay_edomain='$1' は無効なドメイン名です
+
+mailq_title=メール キュー
+mailq_ecannot=メール キューを表示できません
+mailq_id=メール ID
+mailq_sent=送信済み
+mailq_from=送信元
+mailq_to=宛先
+mailq_size=サイズ
+mailq_status=ステータス
+mailq_unknown=不明
+mailq_sending=送信中
+mailq_dmsg=メール キューからのメッセージを表示するには、上のリストからその ID をクリックしてください。
+mailq_force=キューされたメールの即座の発信を強制するには、 <a href='$1'>ここをクリックしてください</a>.
+mailq_none=現在配信にキューされたメール メッセージはありません
+mailq_delete=選択されたメッセージを削除する
+mailq_return=メール キュー
+
+flushq_title=キューのフラッシュ
+flushq_desc=コマンド $1 でメールの配信を強制中..
+
+delq_err=メッセージを削除できませんでした
+delq_ecannot=メッセージのキューを解除できません
+delq_locked=ファイルは現在、送信についてロックされています
+delq_enone=削除するメッセージが選択されていません
+delq_title=メッセージの削除
+delq_file=メール ファイル $1 を削除中..
+delq_efile=ファイル名が無効です
+delq_egone=すでに削除または配信しました
+delq_elocked=送信がロックされています
+delq_ok=削除しました
+
+boxes_title=ユーザ メールボックス
+boxes_user=ユーザ
+boxes_size=メールボックス サイズ
+boxes_none=メールなし
+boxes_return=メールボックス
+boxes_sent=送信済みメール
+boxes_ecannot=メールを読めません
+
+mail_title=ユーザ E メール
+mail_from=送信元
+mail_date=日付
+mail_subject=件名
+mail_to=宛先
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=優先度
+mail_highest=最優先
+mail_high=高
+mail_normal=標準
+mail_low=低
+mail_lowest=最後
+mail_for=$1 内
+mail_sent=送信済みメール リスト内
+mail_size=サイズ
+mail_delete=選択されたメッセージを削除
+mail_compose=新規メールを作成
+mail_return=ユーザ E メール
+mail_pos=$3の $2へのメッセージ $1 
+mail_none=このメールボックスにはメッセージがありません
+mail_ecannot=このユーザーのメールは読めません
+mail_all=すべて選択
+mail_invert=選択の反転
+mail_search=メッセージの検索
+mail_body=本文
+mail_match=一致
+mail_ok=検索
+mail_nonefrom=なし
+
+view_title=E メールを読む
+view_desc=$2のメッセージ $1
+view_sent=送信済みメール リストのメッセージ $1
+view_qdesc=キューされたメッセージ $1
+view_headers=メール ヘッダ
+view_attach=添付ファイル
+view_reply=返信
+view_reply2=全員に返信
+view_enew=新規として編集
+view_forward=転送
+view_delete=削除
+view_ecannot=このユーザーのメールは読めません
+
+compose_title=E メールの作成
+reply_title=E メールへの返信
+forward_title=E メールの転送
+reply_headers=メール ヘッダ
+reply_attach=転送された添付ファイル
+reply_attach2=添付ファイル
+reply_send=送信
+reply_ecannot=このユーザとしてはメールを送信できません
+
+send_err=メールを送信できませんでした
+send_eto=To （宛先）アドレスがありません
+send_efrom=From (送信者) アドレスがありません
+send_title=送信されたメール
+send_ok=$1 へのメールの送信を完了しました
+send_ecannot=このユーザとしてはメールを送信できません
+send_esmtp=SMTP コマンド $1 が失敗しました: $2
+send_efile=添付ファイル $1 は存在しません
+send_eattach=添付ファイルのサイズは $1 KB を越えられません。
+send_eperms=ユーザ $1 は $2 を読み取れません
+send_eperms2=ファイル $1 は送信できません
+
+delete_ecannot=このユーザからのメールを削除できます
+delete_enone=削除するメッセージが選択されていません
+
+search_title=検索結果
+search_ecannot=このユーザのメールは検索できません
+search_ematch=検索するにはテキストを入力する必要があります。
+search_none=メッセージが見つかりませんでした。
+search_results=$1 と一致するメール メッセージ..
+
+file_title=sendmail ファイル
+file_desc=sendmail ファイル $1 を手動で編集するには下のテキスト ボックスを使用してください。
+file_undo=変更を元に戻す
+file_edit=$1 を手動で編集
+file_ealiases=すべてのエイリアスにアクセスできる場合にのみ、エイリアス ファイルを編集できます。
+file_evirtusers=すべてのアドレス マッピングにアクセスできる場合にのみ、アドレス マッピング ファイルを編集できます。
+file_emailers=ドメイン ルートファイルは編集できません。
+file_egenerics=すべての送信アドレスにアクセスできる場合にのみ、送信アドレス ファイルを編集できます。
+file_edomains=ドメイン マップ ファイルは編集できません。
+file_eaccess=スパム制御ファイルは編集できません。
+file_emode=不明なモードです
+file_err=ファイルを編集できませんでした
+
+acl_opts=sendmail オプションを編集可能にしますか？
+acl_cws=ローカル ドメインを編集可能にしますか？
+acl_masq=ドメイン マスカレードを設定可能にしますか？
+acl_trusts=信任ユーザを設定可能にしますか？
+acl_cgs=送信ドメインを編集可能にしますか？
+acl_relay=リレー ドメインを編集可能にしますか？
+acl_mailers=ドメイン ルートを設定可能にしますか？
+acl_access=スパム制御を設定可能にしますか？
+acl_domains=ドメイン マッピングを設定可能にしますか？
+acl_stop=sendmail を起動、停止可能にしますか？
+acl_mailq=メール キューを管理可能にしますか？
+acl_viewdel=表示と削除
+acl_view=表示のみ
+acl_virtusers=このユーザが編集できるアドレス マッピング
+acl_none=なし
+acl_same=同名のユーザ
+acl_all=すべて
+acl_matching=一致
+acl_vtypes=このユーザが編集できるアドレス マッピングの種類
+acl_vtype0=エラーの返し先
+acl_vtype1=ドメイン
+acl_vtype2=アドレス
+acl_vmax=アドレス マッピングの最大数
+acl_unlimited=無制限
+acl_aliases=このユーザが編集できるエイリアス
+acl_atypes=このユーザが編集できるエイリアスの種類
+acl_atype1=E メール アドレス
+acl_atype2=ファイル内のアドレス
+acl_atype3=ファイルに書込み
+acl_atype4=プログラムに送る
+acl_atype5=自動応答
+acl_amax=エイリアスの最大数
+acl_outgoing=このユーザが編集できる送信アドレス
+acl_read=メールを読み取れるユーザ
+acl_users=次のユーザのみ
+acl_userse=次のユーザ以外すべて
+acl_usersg=グループのメンバー
+acl_from=アドレスから許可
+acl_any=任意のアドレス
+acl_fdoms=メールボックス @ ドメイン
+acl_faddrs=リストされたアドレス
+acl_fdom=任意のアドレス @ ドメイン
+acl_apath=ディレクトリへのファイルとプログラムを制限
+acl_attach=添付ファイルの合計サイズの最大値
+acl_sent=送信済みメールをメールボックスに保存
+
+log_opts=sendmail オプションを変更しました
+log_alias_create=エイリアス $1 を作成しました
+log_alias_modify=エイリアス $1 を変更しました
+log_alias_delete=エイリアス $1 を削除しました
+log_alias_manual=エイリアス ファイル $1 を手動で編集しました
+log_cws=ローカル ドメインを変更しました
+log_masq=ドメイン マスカレードを変更しました
+log_trusts=信任ユーザを変更しました
+log_virtuser_create=アドレス マッピング $1 を作成しました
+log_virtuser_modify=アドレス マッピング $1 を変更しました
+log_virtuser_delete=アドレス マッピング $1 を削除しました
+log_virtuser_manual=アドレス マッピング ファイル $1 を手動で編集しました
+log_mailer_create=ドメイン ルート $1 を作成しました
+log_mailer_modify=ドメイン ルート $1 を変更しました
+log_mailer_delete=ドメイン ルート $1 を削除しました
+log_mailer_manual=ドメイン ルート ファイル $1 を手動で編集しました
+log_generic_create=送信アドレス $1 を作成しました
+log_generic_modify=送信アドレス $1 を変更しました
+log_generic_delete=送信アドレス $1 を削除しました
+log_generic_manual=送信アドレス ファイル $1 を手動で編集しました
+log_cgs=送信ドメインを変更しました
+log_domain_create=ドメイン マッピング $1 を作成しました
+log_domain_modify=ドメイン マッピング $1 を変更しました
+log_domain_delete=ドメイン マッピング $1 を削除しました
+log_domain_manual=ドメイン マッピング ファイル $1 を手動で編集しました
+log_access_create=$1 へのスパム制御を作成しました
+log_access_modify=$1 へのスパム制御を変更しました
+log_access_delete=$1 へのスパム制御を削除しました
+log_access_manual=スパム制御ファイル $1 を手動で編集しました
+log_relay=リレー ドメインを変更しました
+log_flushq=キューをフラッシュしました
+log_delmailq=$1 からのメールをキューから削除しました
+log_delmailqs=キューから $1 メールを削除しました
+log_stop=sendmail デーモンを停止しました
+log_start=sendmail デーモンを起動しました
+log_delmail=$1 メッセージを $2 から削除しました
+log_send=$1 にメールを送信しました
+
+match_from=From: (送信者)一致
+match_subject=Subject: (件名)一致
+match_to=To: (宛先)一致
+match_cc=Cc:一致
+match_date=Date: (日時)一致
+match_body=Body (本文)が一致
+match_size=サイズが次より大きいです

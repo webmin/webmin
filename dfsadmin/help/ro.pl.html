@@ -1,0 +1,39 @@
+<header>Dostêp tylko do odczytu</header>
+
+Okre¶la, które hosty maj± uzyskiwaæ dostêp do tego zasobu w&nbsp;trybie
+tylko do odczytu. Mo¿liwe s± trzy ustawienia dla tej opcji&nbsp;: 
+<ul>
+<li><b>¯aden</b><br>
+    ¯aden host nie ma dostêpu w&nbsp;trybie tylko do odczytu.
+<li><b>Wszystkie hosty</b><br>
+    Dowolny host mo¿e zamontowaæ ten zasób w&nbsp;trybie tylko do odczytu
+    Je¶li jeste¶ pod³±czony do Internetu, oznacza to, ¿e ktokolwiek
+    z&nbsp;dowolnego miejsca na ¶wiecie mo¿e czytaæ pliki 
+    w&nbsp;udostêpnionym katalogu.
+<li><b>Wymienione hosty</b><br>
+<if $gconfig{'os_version'} < 7>
+    Z&nbsp;wymienionych poni¿ej hostów i&nbsp;adresów IP mo¿na zamontowaæ
+    ten zasób w&nbsp;trybie tylko do odczytu.
+<else>
+    Hosty spe³niaj±ce poni¿sze warunki mog± montowaæ ten zasób
+    w&nbsp;trybie tylko do odczytu. Mo¿na je podaæ w&nbsp;postaci&nbsp;: <p>
+	<dl>
+	<dt><b>Nazwy hosta lub adresu IP</b> (np. <i>ftp.foo.com</i> lub 
+            <i>1.2.3.4</i>)
+	<dd>Spe³nia go host o&nbsp;podanej nazwie lub adresie IP
+	<dt><b>Grupy sieciowej</b> (np. <i>inzynieria</i>)
+	<dd>Spe³nia go dowolny host bêd±cy cz³onkiem grupy sieciowej
+	<dt><b>Domeny DNS-u</b> (np. <i>.foo.com</i>)
+	<dd>Spe³nia go dowolny host w&nbsp;domenie
+	<dt><b>Sieci</b> (np. <i>@10.254.1</i>)
+	<dd>Spe³nia go dowolny host w&nbsp;sieci
+	<dt><b>Sieci z&nbsp;mask±</b> (np. <i>@10.254.1/24</i>)
+	<dd>Spe³nia go dowolny host w&nbsp;sieci
+	</dl><p>
+    Dodatkowo, dowoln± z&nbsp;powy¿szych notacji mo¿na poprzedziæ <i>-</i>,
+    co oznacza ¿e host, grupa sieciowa, domena lub sieæ <b>nie</b> mo¿e
+    montowaæ tego zasobu. Mo¿e to byæ przydatne do umo¿liwienia dostêpu dla
+    zbioru hostów z&nbsp;wy³±czeniem jednego jego cz³onka.
+</if>
+</ul>
+<hr>

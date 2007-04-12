@@ -1,0 +1,27 @@
+<header>PPTP VPN Client</header>
+
+This module allows you to create VPN connections to other servers using the
+PPTP protocol. The module makes use of the standard Linux PPTP client program, and
+the PPP daemon. Remote servers must be running a PPTP daemon, which can be
+configured using Webmin's PPTP VPN Server module. <p>
+
+Multiple tunnels may be defined, each of which must have a
+remote server to connect to, a login name and a password. A tunnel can also
+have several associated static routes, to be brought up when it is connected.
+By default, only a route to the server at the other end of the tunnel is
+created when it is activated. <p>
+
+Once a tunnel has been created, it can be activated using the <b>Connect to</b>
+button at the bottom of the main page. Multiple tunnels can be active at any
+one time, and those that are active can be shut down with the <b>Disconnect
+from</b> button. <p>
+
+Also on the main page is the <b>Edit Global PPP Options</b> button for editing
+settings that apply to all tunnels. The most important are those related to
+MPPE, an encryption protocol using by Microsoft VPN servers to secure PPTP
+connections. However, support in both the PPP daemon and the kernel is needed
+for MPPE to work. PPPd versions 2.4.2 and above support MPPE natively, and
+a patch exists for older versions as well. <p>
+
+<hr>
+

@@ -1,0 +1,65 @@
+index_title=시스템 문서
+index_header=시스템 설명서 페이지 검색
+index_for=검색 대상
+index_where=검색 위치
+index_alldoc=모든 문서
+index_man=설명서 페이지
+index_doc=패키지 문서
+index_kernel=커널 문서
+index_info=정보 페이지
+index_howto=HOWTO 문서
+index_kde=KDE 문서
+index_perl=Perl 모듈 문서
+index_help=Webmin 도움말
+index_reset=재설정
+index_search=검색
+index_return=검색 양식
+index_type=일치
+index_name=이름만
+index_data=이름과 내용
+index_other_man=설명서 페이지
+index_other_help=Webmin 도움말
+index_other_doc=패키지 문서
+index_other_kernel=커널 문서
+index_other_howto=HOWTO 문서
+index_other_perl=Perl 모듈 문서
+
+search_efor=검색할 설명서 페이지를 입력하지 않았습니다
+search_title=검색 결과
+search_desc=설명
+search_type=유형
+search_file=페이지 또는 파일
+search_man=설명서 페이지
+search_howto=HOWTO 문서
+search_doc=패키지 문서
+search_kernel=커널 문서
+search_kde=KDE 문서
+search_perl=Perl 모듈
+search_help=Webmin 도움말
+search_none=$1과(와) 일치하는 문서가 없습니다.
+search_for=$1 검색
+
+howto_title=HOWTO 문서
+howto_header=HOWTO 문서 파일 $1
+howto_epath=잘못된 HOWTO 문서 경로
+
+doc_title=패키지 문서
+doc_header=패키지 문서 파일 $1
+doc_epath=잘못된 패키지 문서 경로
+
+man_title=설명서 페이지
+man_header=$1의 설명서 페이지($2)
+man_noentry=$1의 설명서 페이지가 존재하지 않습니다!
+
+kernel_title=커널 문서
+kernel_header=커널 문서 파일 $1
+kernel_epath=잘못된 커널 문서 경로
+
+kde_title=KDE 문서
+kde_header=KDE 문서 파일 $1
+kde_epath=잘못된 KDE 문서 경로
+
+perl_title=Perl 모듈
+perl_header=Perl 모듈 $1 문서
+perl_emod=잘못된 Perl 모듈 이름
+

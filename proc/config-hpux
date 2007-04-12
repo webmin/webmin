@@ -1,0 +1,5 @@
+ps_style=hpux
+default_mode=last
+base_ppid=0
+cut_length=80
+trace_java=1

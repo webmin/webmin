@@ -1,0 +1,13 @@
+admin_log=Fichier de log pour le serveur d'administration
+default_admin=Serveur d'administration
+default_domain=Nom de domaine par d&#233;faut
+default_kdc=KDC
+default_log=Fichier de log par d&#233;faut
+default_realm=Realm
+dns_kdc=Utiliser les DNS pour rechercher le KDC
+domain=Nom de domaine
+index_title=Configuration de Kerberos5
+kdc_log=Fichier de log de KDC
+libdefaults=Configuration par d&#233;faut
+logging=Fichiers de log
+save=Mise &#224; jour les modifications

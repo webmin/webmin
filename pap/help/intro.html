@@ -1,0 +1,32 @@
+<header>PPP Dialin Server</header>
+
+This module allows you to setup your Linux machine with an attached modem
+as a dialin server that allows other machines to dial up to it, login and open
+PPP sessions. It can also be used to allow logins and PPP connections from
+another machine connected directly to yours via a null-modem cable. <p>
+
+In order to setup dialin access, you must follow these steps :
+<ol>
+<li>In the Serial Port Configuration page, add an entry for the port on
+    which your modem is connected. The will start Mgetty on that port to
+    automatically answer phone calls received by your modem, and display
+    a login prompt. If all you want to do is allow text-only logins via
+    modem or from a dumb terminal, this is the only step that you need to
+    do. <p>
+
+<li>In the PPP Options page, set the IP address that will be assigned
+    for connecting clients and any other options that you need. The most
+    useful is 'Automatically detect PPP connections on serial ports?', which
+    will cause any client that immediately starts a PPP session after
+    connecting to skip the usual text-based unix login. However, if this
+    option is turned on then you should also enable 'Require authentication?'
+    to prevent untrusted clients from connecting. <p>
+
+<li>If authentication is enabled, use the PPP Accounts page to create accounts
+    for all the people that you want to allow login by. For each account,
+    the server should be set to 'Any' and the valid addresses to 'Allow any'.
+    <p>
+</ol>
+
+<hr>
+

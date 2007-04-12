@@ -1,0 +1,220 @@
+main_return=Обратно към $1
+main_homepage=Домашна страница
+main_feedback=Feedback..
+main_switch=Смени юзер..
+main_logout=Изход
+main_version=Версия $1 на $2 ($3)
+main_title=Webmin $1 на $2 ($3)
+main_title2=Webmin
+main_none=Вие нямате достъп до Webmin модулите.
+main_skill=Skill level
+link_essl=Net::SSLeay Perl модулът необходим за осъществяване на HTTPS връзка не е инсталиран на тази система.
+
+category_servers=Сървъри
+category_hardware=Хардуер
+category_system=Система
+category_webmin=Webmin
+category_net=Мрежа
+category_syslet=Сислети
+category_cluster=Клъстър
+category_info=Информация
+category_=Други
+
+longcategory_servers=Модули за конфигуриране на WEB, MAIL, FTP и други сървъри
+longcategory_hardware=Модули за принтери, дискове и други хардуерни конфигурации
+longcategory_system=Модули за юзери, файлови системи, Cron jobs и други системни настройки
+longcategory_webmin=Модули за конфигуриране на Webmin
+longcategory_net=Модули за конфигуриране на мрежа и мрежови услуги
+longcategory_cluster=Модули за управление на група сървъри от един интерфес
+longcategory_info=Модули показващи информация за системата
+longcategory_=Модули неспадащи към никоя категория
+
+header_webmin=Webmin Индекс
+header_module=Модулен Индекс
+header_help=Помощ..
+header_config=Модулна Конфигурация
+header_servers=Webmin Сървъри
+
+index=Индекс
+yes=Да
+no=Не
+save=Запазване
+create=Създаване
+delete=Изтриване
+find=Намери
+error=Грешка
+efilewrite=Грешка при писане в $1 : $2
+default=Подразбиране
+modify=Промени
+reset=Изчистване
+ok=ОК
+cancel=Отказ
+helpsearch=Търсене в документацията..
+switch_remote_euser=Unix юзера $1 не съществува.
+programname=Webmin
+
+chooser_title1=Изберете Файл..
+chooser_title2=Изберете Директория..
+chooser_dir=Директорията $1
+chooser_ok=Ок
+
+users_title1=Изберете Юзери..
+users_title2=Изберете Юзер..
+users_sel=Избрани Юзери
+users_all=Всички Юзери
+users_ok=Ок
+users_cancel=Отказ
+users_clear=Изчистване
+
+groups_title1=Изберете Групи..
+groups_title2=Изберете Група..
+groups_all=Всички Групи
+groups_sel=Избрани Групи
+groups_ok=Ок
+groups_cancel=Отказ
+groups_clear=Изчистване
+
+config_ecannot=Нямате права за конфигуриране на този модул
+config_title=Конфигурация
+config_dir=За модул $1
+config_header=Конфигурационни опции за $1
+config_none=Няма
+config_eaccess=Нямате права за достъп до този модул
+config_err=Грешка при запазване на конфигурацията
+config_nochange=Не променяй
+config_setto=Промени на
+
+help_err=Грешка при показване на помощта
+help_epath=Липсващ или невалиден път към помощта
+help_efile=Грешка при четене на помощен файл $1
+help_eheader=Липсваща &lt;header&gt; секция
+help_einclude=Грашка при включването на $1
+help_eif=$1 failed : $2
+help_eexec=$1 failed : $2
+
+referer_title=Security Warning
+referer_warn=<b>Warning!</b> Webmin has detected that the program $2 was linked to from the URL $1, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 was linked to from an unknown URL, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_ok=Continue executing Webmin program
+referer_again=Don't show this warning in future.
+
+session_header=Добре дошли в Webmin!
+session_mesg=Моля, въведете вашето Име и Парола за достъп до Webmin сървър на $1.
+session_mesg2=Моля, попълнете вашето Име и Парола за достъп.
+session_user=Име
+session_pass=Парола
+session_login=Вход
+session_clear=Изчисти
+session_failed=Влизането неуспешно. Моля опитайте отново.
+session_logout=Успешен изход.
+session_timed_out=Сесията е затворена поради $1 минути бездействие.
+session_save=Запомняне на паролата?
+
+acl_root=Коренова директория за файлов избор
+acl_home=Домашна директория на юзера
+acl_uedit=Юзери видими при избор на юзер
+acl_uedit_all=Всички юзери
+acl_uedit_none=Никакви юзери
+acl_uedit_only=Само юзери
+acl_uedit_except=Всички освен юзери
+acl_uedit_uid=Юзери с UID-и в рамката
+acl_uedit_group=Юзери с група
+acl_gedit=Групи видими при избор на група
+acl_gedit_all=Всички групи
+acl_gedit_none=Никакви групи
+acl_gedit_only=Само групи
+acl_gedit_except=Всички освен групи
+acl_gedit_gid=Групи с GID-та в рамката
+acl_feedback=Can send feedback email?
+acl_feedback2=Да
+acl_feedback1=Да, но без конфигурационни фаилове
+acl_feedback0=Не
+acl_rpc=Могат да приемат RPC заявки?
+acl_rpc2=Само за <tt>root</tt> или <tt>admin</tt>
+acl_rpc1=Да
+acl_rpc0=Не
+
+month_1=Януари
+month_2=Февруари
+month_3=Март
+month_4=Април
+month_5=Май
+month_6=Юни
+month_7=Юли
+month_8=Август
+month_9=Септември
+month_10=Октомври
+month_11=Ноември
+month_12=Декември
+
+day_0=Неделя
+day_1=Понеделник
+day_2=Вторник
+day_3=Сряда
+day_4=Четвъртък
+day_5=Петък
+day_6=Събота
+
+smonth_1=Яну
+smonth_2=Фев
+smonth_3=Мар
+smonth_4=Апр
+smonth_5=Май
+smonth_6=Юни
+smonth_7=Юли
+smonth_8=Авг
+smonth_9=Сеп
+smonth_10=Окт
+smonth_11=Ное
+smonth_12=Дек
+
+sday_0=Нд
+sday_1=Пн
+sday_2=Вт
+sday_3=Ср
+sday_4=Чт
+sday_5=Пт
+sday_6=Сб
+
+emodule=Достъпът отказан : Юзер $1 няма права за ползване на $2 модул
+elock_tries=Грешка при заключване на файл $1 след $2 минути
+
+skill_high=Експерт
+skill_medium=Напреднал
+skill_low=Новак
+
+feedback_title=Webmin Feedback
+feedback_desc=This form allows you to report bugs on make suggestions to the Webmin developers regarding any problems or missing features that you have found. When the Send button is clicked, the details entered into the form will be emailed to $1.
+feedback_desc2=This feedback will be sent to the developer of Usermin, not your system administrator, ISP or hosting company. Please write your feedback in english, even if you are currently running Webmin in another language.
+feedback_header=Feedback детайли
+feedback_name=Вашето име
+feedback_email=Вашият email адрес
+feedback_module=Относно модул
+feedback_all=Всички модули
+feedback_text=Описание на проблема и предложения
+feedback_os=Включване на данни за операционната система в email-а?
+feedback_osdesc=Ако тази опция е избрана, автоматичният feedback email ще включва името и версията на вашата операционна система.
+feedback_config=Включване на данни за модулната конфигурация в email-а?
+feedback_configdesc=Ако тази опция е избрана, автоматичният feedback email ще включва конфигурацията на свързаните с проблема модули и съдържанието на всички конфигурационни файлове които те използват. Например, ако feedback-ът е свързан с  модула <i>Users and Groups</i> , вашите <tt>/etc/passwd</tt> и <tt>/etc/shadow</tt> файлове ще бъдат изпратени.
+feedback_attach=Допълнителни прикачени файлове
+feedback_send=Изпращане на Feedback-а
+feedback_mailserver=Изпрати през SMTP сървър
+feedback_mailserver_def=Локална sendmail програма
+feedback_err=Грешка при изпращането на feedback-а
+feedback_emodule=Вие избрахте да включите конфигурацията на модули в email-а, но не сте избрали модули.
+feedback_emodule2=Избрания модул не съществува
+feedback_econfig=Вие намате пълен достъп до избрания модул.
+feedback_via=Изпращане на feedback до $1 през SMTP сървър $2
+feedback_prog=Изпращане на feedback до $1 използвайки sendmail програма $2
+feedback_esend=Грешка при изпращане на feedback през sendmail програма или локален SMTP сървър.
+feedback_to=Изпращане на feedback до адреси
+feedback_enoto=Не са въведени адреси за изпращане на feedback
+feedback_ecannot=Вие нямате права за изпращане на feedback
+feedback_ecannot2=Вие нямате права за изпращане на feedback съдържащ конфигурационни файлове
+
+progress_size=Сваляне на $1 ($2 bytes) ..
+progress_nosize=Сваляне на $1 ..
+progress_data=Получени $1 bytes ($2 %)
+progress_data2=Получени $1 bytes
+progress_done=.. Свалянето успешно.
+

@@ -1,0 +1,11 @@
+name=Cluster Software
+desc=Cluster Software Packages
+os_support=cobalt-linux mandrake-linux redhat-linux open-linux msc-linux suse-linux united-linux turbo-linux debian-linux solaris openserver gentoo-linux trustix-linux coherent-linux slackware-linux windows
+depends=software servers
+category=cluster
+desc_hu=Klaszter szoftver csomag
+desc_ca=Paquets de Programari de Cluster
+desc_es=Cluster - Paquetes de Software
+desc_de=Cluster - Softwaremanagement
+longdesc=Install RPMs, debian and solaris packages across multiple servers from one source.
+desc_fr=Paquetages logiciels de clusters

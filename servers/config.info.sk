@@ -1,0 +1,8 @@
+line1=Nastaviteµné mo¾nosti,11
+resolve=Resolvova» adresy nájdených serverov,1,1-Áno,0-Nie
+scan_time=Èas pre èakanie na odpoveï pri skenovaní,0,5
+display_mode=Zobrazi» servre ako,1,1-Tabuµku,0-Ikonky
+sort_mode=Triedi» servre podµa,1,4-IP adresy,1-mena,2-popisu,3-OS,5-skupiny,0-poradia vytvorenia
+show_status=Zobrazova» stav serverov,1,1-Áno,0-Nie
+line2=Systémová konfigurácia,11
+groups_dir=Adresár pre MSC cluster skupiny,0

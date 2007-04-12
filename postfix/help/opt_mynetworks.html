@@ -1,0 +1,21 @@
+<header>Local networks</header>
+
+<center><tt>mynetworks</tt></center>
+<hr>
+
+This parameter specifies the list of networks that are local to this machine.
+The list is used by the anti-UCE software to distinguish local clients from
+strangers. See <tt>permit_mynetworks</tt> and
+<a href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a>
+in the SMTP configuration.
+
+<p>
+
+The default is a list of all networks attached to the machine: a complete class
+A network (X.0.0.0/8), a complete class B network (X.X.0.0/16), and so on. If
+you want stricter control, specify a list of network/mask patterns, where the
+mask specifies the number of bits in the network part of a host address. You
+can also specify the absolute pathname of a pattern file instead of listing the
+patterns here.
+
+<hr>

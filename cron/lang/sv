@@ -1,0 +1,64 @@
+index_title=Schemalagda cronjobb
+index_user=Användare
+index_active=Aktiv?
+index_action=Åtgärd
+index_command=Kommando
+index_none=Inga cronjobb finns på detta system
+index_create=Skapade ett nytt schemalagt cronjobb
+index_allow=Styr användaråtkomst till cronjobb
+index_return=cron-lista
+
+edit_title=Ändra cronjobb
+create_title=Skapa cronjobb
+edit_ecannot=Du får inte ändra cronjobb ägda av denna användare
+edit_details=Jobbinformation
+edit_user=Kör cronjobbet som
+edit_active=Aktivt?
+edit_commands=Kommandon
+edit_command=Kommando
+edit_input=Inmatning till kommandot
+edit_when=När ska jobbet utföras?
+edit_mins=Minuter
+edit_hours=Timmar
+edit_days=Dagar
+edit_months=Månader
+edit_weekdays=Veckodagar
+edit_boot=Vid start
+edit_all=Alla
+edit_selected=Valt ...
+edit_run=Kör nu
+
+save_err=Det gick inte att spara cronjobb
+save_ecmd=Du har inte angivit något kommando som ska utföras
+save_euser=Du måste välja en användare
+save_euser2=Användare '$1' finns inte
+save_eallow=Användare '$1' får inte komma åt cron
+save_ecannot=Du får inte skapa eller ändra cronjobb för '$1'
+save_enone=Du valde inte någon $1 att utföra
+
+allow_title=Styr cron-tillgång
+allow_desc=I detta formulär kan du ange vilka användare som får skapa och köra cronjobb.
+allow_ecannot=Du får inte styra användarnas tillgång till cron
+allow_all1=Förbjud alla användare
+allow_all2=Förbjud alla användare utom root
+allow_all3=Tillåt alla användare
+allow_allow=Tillåt bara uppräknade användare
+allow_deny=Förbjud bara uppräknade användare
+
+env_title=Cron-omgivning
+env_ecannot=Du får inte ändra cron-omgivningen för denna användare
+env_desc=Cron-omgivning för $1
+env_name=Variabelnamn
+env_value=Värde
+env_ename='$1' är inte ett giltigt variabelnamn
+
+exec_title=Utför cronjobb
+exec_ecannot=Du får inte utföra cronjobb för denna användare
+exec_cmd=Resultat från kommando $1 ...
+exec_none=Inget resultat fanns
+
+acl_users=Får ändra cronjobb för
+acl_all=Alla användare
+acl_only=Bara användare
+acl_except=Alla utom användare
+acl_control=Kunna styra användaråtkomst till cron?

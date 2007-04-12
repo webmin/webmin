@@ -1,0 +1,31 @@
+<header>Användare och klasser</header>
+
+WU FTP-servern tillåter klassificering av användare baserat på den adress
+de loggar in från och deras användartyp. Det finns tre användaretyper:
+<ul>
+<li><b>Unix</b> - Vanliga användare i systemet.
+<li><b>Gäst</b> - Unix-användare som har klassificerats som gäster.
+<li><b>Anonym</b> - Inloggningar av användarna <tt>anonym</tt> eller
+<tt>ftp</tt>, om detta tillåts i systemet.
+</ul><p>
+
+Högst upp på sidan kan man definiera klasser beroende på användartyp och
+uppkopplingsadress. Varje inloggning förs till den första klass som matchar,
+vilket betyder att man bör ordna klasserna från mest till minst specifik.
+Adresserna för en klass kan vara fullständiga eller partiella IP-adresser,
+IP-nätverk/nätmaskar, datornamn, datornamn med jokertecken (t ex
+<tt>*.foo.com</tt>) eller absoluta sökvägar till filer som innehåller
+adresser. Varje adressangivelse kan också negeras genom att ett !
+(utropstecken) skrivs först.
+
+<p>På mitten av sidan kan man ange de Unix-användare och -grupper som ska
+behandlas som gäster. En gästanvändare har ungefär samma rättigheter som en
+vanlig Unix-användare, men är begränsad till en viss katalog med hjälp av
+<tt>chroot</tt>.
+
+<p>Längst ned på sidan kan man ange Unix-användare och -grupper som ska nekas
+åtkomst till FTP-servern. Användare kan anges med namn, UID (t ex
+<tt>%3000</tt>) eller UID-intervall (t ex <tt>%3000-3006</tt>). Grupper kan
+anges på liknande sätt.
+
+<hr>

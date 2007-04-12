@@ -1,0 +1,10 @@
+﻿
+line2=پيکربندي سيستم,11
+sshd_path=مسير کامل برنامه sshd,0
+sshd_config=مسير کامل پرونده پيکربندي sshd,0
+client_config=مسير کامل پرونده پيکربندي کارخواه ssh,0
+pid_file=مسير کامل پرونده PID sshd,0
+start_cmd=فرماني براي آغازکردن sshd,3,فقط کارساز اجرا شود
+restart_cmd=فرماني براي به‌کاربستن پيکربندي sshd,3,فقط سيگنال HUP فرستاده شود 
+keygen_path=مسير کامل برنامه ssh-keygen,0
+

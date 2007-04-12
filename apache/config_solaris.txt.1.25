@@ -1,0 +1,2 @@
+httpd_dir=/usr/local/webadmin/apache/test
+httpd_path=/jaz/apache_1.2.5/src/httpd

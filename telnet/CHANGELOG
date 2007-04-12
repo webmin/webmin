@@ -1,0 +1,3 @@
+---- Changes since 1.270 ----
+Added a Module Config option for connecting to a server other than the one running Webmin, via an automatic process process on the Webmin server.
+Made SSL mode the default on all operating systems.

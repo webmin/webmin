@@ -1,0 +1,16 @@
+<header>Header Checks</header>
+
+The optional header checks table allows email to be redirected based on its headers. Each entry in the table has a POSIX regular expression on the left-hand side, and an action on the right. <p>
+
+The regular expression can be something like :<br>
+<tt>/name=[^>]*\.(bat|cmd|exe|com|pif|reg|scr|vb|vbe|vbs)/</tt><br>
+to match attachments whose filenames end with extensions signifying potentially dangerous Windows executables. <p>
+
+The action can be like :<br>
+<tt>REJECT</tt><br>
+to simply reject mail matching the expression, or :<br>
+<tt>REDIRECT spam@yourdomain.com</tt><br>
+To forward mail to another address. <p>
+
+<footer>
+

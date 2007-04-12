@@ -1,0 +1,302 @@
+# Sun Solaris
+Sun Solaris			2.5.1	solaris		2.5.1	$uname =~ /SunOS.*\s5\.5\.1\s/i
+Sun Solaris			2.6	solaris		2.6	$uname =~ /SunOS.*\s5\.6\s/i
+Sun Solaris			$1	solaris		$1	$uname =~ /SunOS.*\s5\.(\S+)\s/i
+
+# Caldera clones
+Lycoris Desktop/LX		1.0	open-linux	3.1e	$etc_issue =~ /Lycoris Desktop/i
+
+# Caldera's Linux
+Caldera OpenLinux eServer	2.3	open-linux	2.3e	$etc_issue =~ /OpenLinux.*eServer.*\n.*\s2\.3\s/i
+Caldera OpenLinux		2.3	open-linux	2.3	$etc_issue =~ /OpenLinux.*\n.*\s2\.3\s/i
+Caldera OpenLinux		2.4	open-linux	2.4	$etc_issue =~ /OpenLinux.*\n.*\s2\.4\s/i
+Caldera OpenLinux		2.5	open-linux	2.5	$etc_issue =~ /OpenLinux.*\n.*\s2\.5\s/i || $etc_issue =~ /Caldera.*2000/i
+Caldera OpenLinux		3.1	open-linux	3.1e	$etc_issue =~ /OpenLinux.*3\.1/i
+Caldera OpenLinux		3.2	open-linux	3.2e	$etc_issue =~ /OpenLinux.*3\.2/i
+
+# Redhat enterprise clones
+Whitebox Linux			$1	redhat-linux	10.0	`cat /etc/whitebox-release 2>/dev/null` =~ /White\s+Box\s+Enterprise\s+Linux\s+release\s+(\S+)/i
+Tao Linux			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Tao\s+Linux\s+release\s+(\S+)/i
+CentOS Linux			$1	redhat-linux	10.0	`cat /etc/centos-release /etc/redhat-release 2>/dev/null` =~ /CentOS\s+release\s+(\S+)/i && $1 < 4
+CentOS Linux			$1	redhat-linux	12.0	`cat /etc/centos-release /etc/redhat-release 2>/dev/null` =~ /CentOS\s+release\s+(\S+)/i && $1 >= 4
+Scientific Linux		$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Scientific\s+Linux.*\s+release\s+(\S+)/i && $1 < 4
+Scientific Linux		$1	redhat-linux	12.0	`cat /etc/redhat-release 2>/dev/null` =~ /Scientific\s+Linux.*\s+release\s+(\S+)/i && $1 >= 4
+Gralinux			$1	redhat-linux	$2+8.0	`cat /etc/redhtat-release 2>/dev/null` =~ /Gralinux\s+(ES|AS|WS)\s+release\s+(\d+)/i
+NeoShine Linux			$1	redhat-linux	$1+10	`cat /etc/neoshine-release 2>/dev/null` =~ /NeoShine\s+Linux.*release\s+(\d+)/i
+
+# Redhat enterprise versions
+Redhat Enterprise Linux			2.1AS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /(Advanced\s+Server.*2\.1)|(AS.*2\.1)/i
+Redhat Enterprise Linux			2.1ES	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /ES.*2\.1/
+Redhat Enterprise Linux			2.1WS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /WS.*2\.1/
+Redhat Enterprise Linux			3.0AS	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /(3\.0AS)|(2\.9\.5AS)|(AS\s+release\s+3)/i
+Redhat Enterprise Linux			"$2$1"	redhat-linux	$2 >= 4 ? $2+8.0 : 10.0	`cat /etc/redhat-release 2>/dev/null` =~ /(ES|AS|WS)\s+release\s+(\S+)/
+Redhat Enterprise Linux			$1	redhat-linux	$1+8.0	`cat /etc/redhat-release 2>/dev/null` =~ /Red.*Hat\s+Enterprise\s+Linux\s+Server\s+release\s+(\d+)/
+
+# Redhat enterprise desktop
+Redhat Linux Desktop			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Desktop\s+release\s+(\S+)/i || `cat /etc/redhat-release 2>/dev/null` =~ /ES\s+release\s+(\S+)/i
+
+# Redhat clones
+AlphaCore Linux			$1	redhat-linux	11.0	`cat /etc/alphacore-release 2>/dev/null` =~ /Alpha\s*Core\s+release\s+(\S+)\s/i
+X/OS Linux			$1	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /X\/OS.*release\s(\S+)\s/i
+Asianux				$1	redhat-linux	10.0	`cat /etc/release /etc/asianux-release 2>/dev/null` =~ /Asianux\s+release\s+(\S+)/i
+Haansoft Linux			$1	redhat-linux	10.0	`cat /etc/Haansoft-release 2>/dev/null` =~ /Haansoft\s+Linux\s+OS\s+release\s+(\S+)/i
+cAos Linux			$1	redhat-linux	sprintf("%.1f", 10.0+$1)	`cat /etc/caos-release 2>/dev/null` =~ /release\s+(\S+)/i
+
+# Free Redhat Linux and Fedora
+Redhat Linux			$1	redhat-linux	$1	`cat /etc/redhat-release 2>/dev/null` =~ /red.*hat.*release\s+(\S+)/i && `cat /etc/redhat-release 2>/dev/null` !~ /[eE]nterprise|AS|ES|WS|[aA]dvanced/
+Redhat Linux			"Fedora $1"	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /Fedora.*\s([0-9\.]+)\s/i || `cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /Fedora.*\sFC(\S+)\s/i
+
+# Slackware clones
+White Dwarf Linux		2.1.0	slackware-linux	8.1	`cat /tmp/wd/version 2>/dev/null` =~ /2\.1\.0/
+Slamd64 Linux			$1	slackware-linux	11.1	`cat /etc/slamd64-version 2>/dev/null` =~ /([0-9\.]+)/
+
+# Slackware Linux
+Slackware Linux			$1	slackware-linux	$1	`cat /etc/slackware-version 2>/dev/null` =~ /([0-9\.]+)/
+
+# Debian clones
+Xandros Linux			2.0	debian-linux	3.0	$etc_issue =~ /Xandros.*\s2\.0/i
+Xandros Linux			3.0	debian-linux	3.1	$etc_issue =~ /Xandros.*\s3\.0/i
+Xandros Linux			$1	debian-linux	3.2	$etc_issue =~ /Xandros.*\s(4\.\d+)/i
+APLINUX				1.3	debian-linux	3.1	$etc_issue =~ /APLINUX.*1\.3/i
+BigBlock			$1	suse-linux	8.2	`cat /etc/bigblock-revision 2>/dev/null` =~ /Version:\s(1[0-9\.-]+)\s/i
+BigBlock			$1	debian-linux	3.0	`cat /etc/bigblock-revision 2>/dev/null` =~ /Version:\s(2[0-9\.-]+)\s/i
+Ubuntu Linux			$1	debian-linux	3.1	$etc_issue =~ /Ubuntu.*\s([0-9\.]+)\s/i
+
+# Debian Linux versions with numbers
+Debian Linux			$1	debian-linux	$1	$etc_issue =~ /Debian.*\s([0-9\.]+)\s/i
+Debian Linux			3.2	debian-linux	3.2	$etc_issue =~ /Debian.*\stesting\/unstable\s/i
+
+# SuSE enterprise versions
+SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =~ /VERSION\s+=\s+(\S+)/i
+SuSE SLES Linux			$1	suse-linux	sprintf("%.1f", $1)	$etc_issue =~ /SuSE\s+SLES-(\S+)/i
+
+# SuSE Linux
+SuSE Linux			$1	suse-linux	$1	`cat /etc/SuSE-release 2>/dev/null` =~ /([0-9\.]+)/ || $etc_issue =~ /SuSE\s+Linux\s+(\S+)\s/i
+
+# United Linux only ever had version 1.0 I think
+United Linux			$1	united-linux	$1	`cat /etc/UnitedLinux-release 2>/dev/null` =~ /([0-9\.]+)/
+
+# Corel Linux
+Corel Linux			$1	corel-linux	$1	$etc_issue =~ /Corel\s+LINUX\s+(\S+)/i
+
+# Turbo Linux
+TurboLinux			$1	turbo-linux	sprintf("%.1f", $1)	`cat /etc/turbolinux-release 2>/dev/null` =~ /([0-9\.]+)/i
+
+# Cobalt Linux, from the Raq and Qube systems
+Cobalt Linux			$1	cobalt-linux	$1	$etc_issue =~ /Cobalt\s+Linux\s+release\s+(\S+)/i || `cat /etc/cobalt-release 2>/dev/null` =~ /([0-9\.]+)/
+Cobalt Linux			6.4	cobalt-linux	6.4	`uname -r` =~ /2.2.16/ && -r "/etc/cobalt-release"
+
+# Mandrake corporate
+Mandrake Linux Corporate Server	1.0	redhat-linux	6.2	$etc_issue =~ /Mandrake\s+Corporate\s+Server\s+release\s+1\.0/i
+
+# Mandrake derivatives
+pclinuxos Linux			2005	mandrake-linux	10.0	`cat /etc/mandrake-release 2>/dev/null` =~ /pclinuxos\s+Linux\s+release\s+2005/i
+pclinuxos Linux			2006	mandrake-linux	10.0	`cat /etc/mandrake-release 2>/dev/null` =~ /pclinuxos\s+Linux\s+release\s+2006/i
+
+# Mandrake Linux
+Mandrake Linux			5.3	redhat-linux	5.0	$etc_issue =~ /Mandrake\s+release\s+5\.3/i
+Mandrake Linux			6.0	redhat-linux	6.0	$etc_issue =~ /Mandrake\s+release\s+6\.0/i
+Mandrake Linux			6.1	redhat-linux	6.0	$etc_issue =~ /Mandrake\s+release\s+6\.1/i
+Mandrake Linux			7.0	redhat-linux	6.1	$etc_issue =~ /Mandrake\s+release\s+7\.0/i
+Mandrake Linux			7.1	redhat-linux	6.2	$etc_issue =~ /Mandrake\s+release\s+7\.1/i
+Mandrake Linux			$1	mandrake-linux	$1	`cat /etc/mandrake-release 2>/dev/null` =~ /Mandrake.*?([0-9\.]+)/i || $etc_issue =~ /Mandrake\s+release\s+([0-9\.]+)/i || $etc_issue =~ /Mandrakelinux\s+release\s+([0-9\.]+)/i
+Mandriva Linux			$2	mandrake-linux	10.2	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2006\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i
+Mandriva Linux			$2	mandrake-linux	10.3	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i
+
+# Conectiva Linux (now subsumed into Mandrake?)
+Conectiva Linux			3.0	redhat-linux	5.2	$etc_issue =~ /Conectiva.*Linux.*3\.0/i
+Conectiva Linux			4.0	redhat-linux	6.0	$etc_issue =~ /Conectiva.*Linux.*4\.0/i
+Conectiva Linux			4.1	redhat-linux	6.1	$etc_issue =~ /Conectiva.*Linux.*4\.1/i
+Conectiva Linux			4.2	redhat-linux	6.1	$etc_issue =~ /Conectiva.*Linux.*4\.2/i
+Conectiva Linux			5.0	redhat-linux	6.2	$etc_issue =~ /Conectiva.*Linux.*5\.0/i
+Conectiva Linux			5.1	redhat-linux	6.2	$etc_issue =~ /Conectiva.*Linux.*5\.1/i
+Conectiva Linux			6.0	redhat-linux	7.0	$etc_issue =~ /Conectiva.*Linux.*6\.0/i
+Conectiva Linux			7.0	redhat-linux	7.1	$etc_issue =~ /Conectiva.*Linux.*7\.0/i
+Conectiva Linux			8	redhat-linux	7.3	$etc_issue =~ /Conectiva.*Linux.*\s8/i
+Conectiva Linux			9	redhat-linux	8.0	$etc_issue =~ /Conectiva.*Linux.*\s9/i
+Conectiva Linux			10	redhat-linux	10.0	$etc_issue =~ /Conectiva.*Linux.*\s10\s/i
+
+# ThizLinux Desktop
+ThizLinux Desktop		5.0	redhat-linux	7.2	$etc_issue =~ /Thiz.*Linux.*\s5\.0/i
+ThizLinux Desktop		6.0	redhat-linux	7.3	$etc_issue =~ /Thiz.*Linux.*\s6\.0/i
+ThizLinux Desktop		6.2	redhat-linux	7.3	$etc_issue =~ /Thiz.*Linux.*\s6\.2/i
+ThizLinux Desktop		7.0	redhat-linux	8.0	$etc_issue =~ /Thiz.*Linux.*\s7\.0/i
+
+# ThizLinux Server
+ThizServer			4.3	redhat-linux	7.1	$etc_issue =~ /Thiz.*\s?Server.*\s4\.3/i
+ThizServer			6.0	redhat-linux	7.3	$etc_issue =~ /Thiz.*\s?Server.*\s6\.0/i
+ThizServer			7.0	redhat-linux	8.0	$etc_issue =~ /Thiz.*\s?Server.*\s7\.0/i
+
+# MSC Linux, which used date-based versions (no longer released)
+MSC Linux			January 2001	msc-linux	2001.2	`cat /etc/msclinux-release 2>/dev/null` =~ /2001.*January/i || $etc_issue =~ /2001.*January/i
+MSC Linux			February 2001	msc-linux	2001.2	`cat /etc/msclinux-release 2>/dev/null` =~ /2001.*February/i || $etc_issue =~ /2001.*February/i
+MSC Linux			May 2001	msc-linux	2001.5	`cat /etc/msclinux-release 2>/dev/null` =~ /2001.*May/i || $etc_issue =~ /2001.*May/i
+MSC Linux			June 2001	msc-linux	2001.6	`cat /etc/msclinux-release 2>/dev/null` =~ /2001.*June/i || $etc_issue =~ /2001.*June/i
+MSC Linux			August 2001	msc-linux	2001.8	`cat /etc/msclinux-release 2>/dev/null` =~ /2001.*August/i || $etc_issue =~ /2001.*August/i
+MSC Linux			February 2002	msc-linux	2002.2	`cat /etc/msclinux-release 2>/dev/null` =~ /2002.*February/i || $etc_issue =~ /2002.*February/i
+MSC Linux			March 2002	msc-linux	2002.3	`cat /etc/msclinux-release 2>/dev/null` =~ /2002.*March/i || $etc_issue =~ /2002.*March/i
+MSC Linux			May 2002	msc-linux	2002.5	`cat /etc/msclinux-release 2>/dev/null` =~ /2002.*May/i || $etc_issue =~ /2002.*May/i
+MSC Linux			July 2002	msc-linux	2002.7	`cat /etc/msclinux-release 2>/dev/null` =~ /2002.*July/i || $etc_issue =~ /2002.*July/i
+MSC Linux			Nov 2002	msc-linux	2002.11	`cat /etc/msclinux-release 2>/dev/null` =~ /2002.*Nov/i || $etc_issue =~ /2002.*Nov/i
+
+# SCI Linux, which has replaced MSC Linux
+SCI Linux			2003 Summer	msc-linux	2003.6	`cat /etc/scilinux-relase 2>/dev/null` =~ /2003.*Summer/i
+SCI Linux			2004 Summer	msc-linux	2004.6	`cat /etc/scilinux-relase 2>/dev/null` =~ /2004.*Summer/i
+SCI Linux			2005 Summer	msc-linux	2005.6	`cat /etc/scilinux-relase 2>/dev/null` =~ /2005.*Summer/i
+
+# PPC Linux
+LinuxPPC			2000	redhat-linux	6.1	$etc_issue =~ /LinuxPPC\s+2000/i
+
+# Trustix enterprise
+Trustix SE			$1	trustix-linux	sprintf("%.1f", $1)	$etc_issue =~ /Trustix.*Enterprise.*([0-9\.]+)/i
+
+# Trustix Linux
+Trustix				1.1	redhat-linux	6.2	$etc_issue =~ /Trustix.*1\.1/i
+Trustix				1.2	redhat-linux	7.0	$etc_issue =~ /Trustix.*1\.2/i
+Trustix				1.5	redhat-linux	7.1	$etc_issue =~ /Trustix.*1\.5/i
+Trustix				$1	trustix-linux	$1	$etc_issue =~ /Trustix.*\s([0-9\.]+)/i
+
+# Trustix clones
+Tawie Server Linux		$1	trustix-linux	$1	$etc_issue =~ /Tawie\s+Server\s+Linux.*([0-9\.]+)/i
+TinySofa Linux			1.0	trustix-linux	2.0	$etc_issue =~ /tinysofa.*release\s+1\.0/i
+TinySofa Linux			Classic 2.0	trustix-linux	2.2	`cat /etc/tinysofa-release 2>/dev/null` =~ /classic.*release\s+2\.0/i
+TinySofa Linux			Enterprise 2.0	redhat-linux	11.0	`cat /etc/tinysofa-release 2>/dev/null` =~ /enterprise.*release\s+2\.0/i
+
+# Cendio Linux (discontinued?)
+Cendio LBS Linux		3.1	redhat-linux	6.1	$etc_issue =~ /Cendio\s*LBS.*\s3\.1/i || `cat /etc/lbs-release 2>/dev/null` =~ /3\.1/
+Cendio LBS Linux		3.2	redhat-linux	6.2	$etc_issue =~ /Cendio\s*LBS.*\s3\.2/i || `cat /etc/lbs-release 2>/dev/null` =~ /3\.2/
+Cendio LBS Linux		3.3	redhat-linux	6.2	$etc_issue =~ /Cendio\s*LBS.*\s3\.3/i || `cat /etc/lbs-release 2>/dev/null` =~ /3\.3/
+Cendio LBS Linux		4.0	redhat-linux	7.1	$etc_issue =~ /Cendio\s*LBS.*\s4\.0/i || `cat /etc/lbs-release 2>/dev/null` =~ /4\.0/
+Cendio LBS Linux		4.1	redhat-linux	7.1	$etc_issue =~ /Cendio\s*LBS.*\s4\.1/i || `cat /etc/lbs-release 2>/dev/null` =~ /4\.1/
+
+# Ute Linux (never got beyond 1.0)
+Ute Linux			1.0	redhat-linux	6.2	`cat /etc/ute-release 2>/dev/null` =~ /Ute\s+Linux\s+release\s+1\.0/i
+
+# Lanthan Linux (appears to be dead)
+Lanthan Linux			1.0	redhat-linux	6.2	$etc_issue =~ /Lanthan\s+Linux\s+release\s+1\.0/i || `cat /etc/lanthan-release 2>/dev/null` =~ /1\.0/
+Lanthan Linux			2.0	redhat-linux	7.0	$etc_issue =~ /Lanthan\s+Linux\s+release\s+2\.0/i || `cat /etc/lanthan-release 2>/dev/null` =~ /2\.0/
+Lanthan Linux			3.0	redhat-linux	7.1	$etc_issue =~ /Lanthan\s+Linux\s+release\s+3\.0/i || `cat /etc/lanthan-release 2>/dev/null` =~ /3\.0/
+
+# Yellow Dog Linux, for PPC
+Yellow Dog Linux		2.0	redhat-linux	7.0	$etc_issue =~ /Yellow\s+Dog\s+Linux\s+release\s+2\.0\s+/i || `cat /etc/yellowdog-release 2>/dev/null` =~ /Yellow\s+Dog\s+Linux\s+release\s+2\.0\s+/i
+Yellow Dog Linux		2.1	redhat-linux	7.1	$etc_issue =~ /Yellow\s+Dog\s+Linux\s+release\s+2\.1\s+/i || `cat /etc/yellowdog-release 2>/dev/null` =~ /Yellow\s+Dog\s+Linux\s+release\s+2\.1\s+/i
+Yellow Dog Linux		2.2	redhat-linux	7.2	$etc_issue =~ /Yellow\s+Dog\s+Linux\s+release\s+2\.2\s+/i || `cat /etc/yellowdog-release 2>/dev/null` =~ /Yellow\s+Dog\s+Linux\s+release\s+2\.2\s+/i
+Yellow Dog Linux		2.3	redhat-linux	8.0	$etc_issue =~ /Yellow\s+Dog\s+Linux\s+release\s+2\.3\s+/i || `cat /etc/yellowdog-release 2>/dev/null` =~ /Yellow\s+Dog\s+Linux\s+release\s+2\.3\s+/i
+Yellow Dog Linux		3.0	redhat-linux	9.0	$etc_issue =~ /Yellow\s+Dog\s+Linux\s+release\s+3\.0\s+/i || `cat /etc/yellowdog-release 2>/dev/null` =~ /Yellow\s+Dog\s+Linux\s+release\s+3\.0\s+/i
+Yellow Dog Linux		4.0	redhat-linux	11.0	$etc_issue =~ /Yellow\s+Dog\s+Linux\s+release\s+4\.0\s+/i || `cat /etc/yellowdog-release 2>/dev/null` =~ /\s4\.0\s/i
+
+# Latinux (appears to be discontinued?)
+Corvus Latinux			8.0	redhat-linux	7.1	`cat /etc/latinux-release 2>/dev/null` =~ /Latinux\s+8\s/i
+
+# Immunix Linux (discontinued)
+Immunix Linux			$1	redhat-linux	$1	$etc_issue =~ /Immunix.*\s([0-9\.]+)/i || `cat /etc/immunix-release 2>/dev/null` =~ /([0-9\.]+)/
+
+# All versions of Gentoo (which don't appear to have version numbers)
+Gentoo Linux			Any version	gentoo-linux	*	-d "/usr/portage"
+
+# Secure Linux (now called Trustix?)
+Secure Linux			1.0	redhat-linux	7.2	`cat /etc/securelinux-release 2>/dev/null` =~ /SecureLinux.*1\.0/i
+
+# OpenNA Linux
+OpenNA Linux			1.0	redhat-linux	9.0	`cat /etc/openna-release 2>/dev/null` =~ /release\s+1\.0\s/i
+OpenNA Linux			2.0	redhat-linux	10.0	`cat /etc/openna-release 2>/dev/null` =~ /release\s+2\.0\s/i
+
+# SoL Linux 
+SoL Linux			17.00	sol-linux	17.00	-r "/etc/antitachyon-distribution" && `uname -r` =~ /2\.4\./
+SoL Linux			18.00	sol-linux	18.00	-r "/etc/antitachyon-distribution" && `uname -r` =~ /2\.6\./
+
+# Coherent Linux
+Coherent Technology Linux	$1	coherent-linux	$1	$etc_issue =~ /coherent\s*technology.*\s([0-9\.]+)/i || `cat /etc/coherent-release 2>/dev/null` =~ /([0-9\.]+)/ 
+
+# Linux for the playstation
+Playstation Linux		1.0	redhat-linux	6.2	$etc_issue =~ /PS2\s+Linux\s+release\s+1.0/i
+
+# StartCom Linux
+StartCom Linux			$1	redhat-linux	10.0	`cat /etc/startcom-release 2>/dev/null` =~ /([0-9\.]+)/
+
+# Yoper Linux
+Yoper Linux			2.0	redhat-linux	10.0	`cat /etc/yoper-release 2>/dev/null` =~ /Yoper\s+Linux\s+2.0/i
+Yoper Linux			2.1	redhat-linux	11.0	`cat /etc/yoper-release 2>/dev/null` =~ /Yoper\s+Linux\s+2.1/i
+Yoper Linux			2.2	redhat-linux	12.0	`cat /etc/yoper-release 2>/dev/null` =~ /Yoper\s+Linux\s+2.2/i
+
+# Caixa Linux
+Caixa Magica			8.1	suse-linux	8.0	`cat /etc/CxM-release 2>/dev/null` =~ /8\.1/ || $etc_issue =~ /Caixa\s+8\.1\s/i
+Caixa Magica			10.0	suse-linux	9.2	`cat /etc/CxM-release 2>/dev/null` =~ /10\.0/ || $etc_issue =~ /Caixa\s+10\.0\s/i
+
+# All FreeBSD versions
+FreeBSD				$1	freebsd		$1	$uname =~ /FreeBSD.*?\s([0-9\.]+)/i
+
+# FreeBSD clones
+DragonFly BSD			1.0	freebsd		4.8	$uname =~ /DragonFly.*?\s1\.0A/i
+DragonFly BSD			1.2	freebsd		4.10	$uname =~ /DragonFly.*?\s1\.2A/i
+
+# All OpenBSD versions
+OpenBSD				$1	openbsd		$1	$uname =~ /OpenBSD.*?\s([0-9\.]+)/i
+
+# All NetBSD versions
+NetBSD				1.5	netbsd		1.5	$uname =~ /NetBSD.*1\.5/i
+NetBSD				1.6	netbsd		1.6	$uname =~ /NetBSD.*1\.6/i
+NetBSD				2.0	netbsd		2.0	$uname =~ /NetBSD.*2\.0/i
+NetBSD				3.0	netbsd		3.0	$uname =~ /NetBSD.*3\.0/i
+
+# BSDI (may not be detected properly)
+BSDI				$1	freebsd		$1	$uname =~ /BSDI.*\s([0-9\.]+)/i
+
+# HP/UX
+HP/UX				$1	hpux		$1	$uname =~ /HP-UX.*(1[01]\.[0-9\.]+)/
+
+# Irix
+SGI Irix			$1	irix		$1	$uname =~ /IRIX.*([0-9]+\.[0-9]+)/i
+
+# DEC OSF/1 or Tru64 (discontinued)
+DEC/Compaq OSF/1		4.0	osf1		4.0	$uname =~ /OSF1.*4\.0/
+DEC/Compaq OSF/1		5.1	osf1		5.1	$uname =~ /OSF1.*V5.1/
+
+# AIX
+IBM AIX				"$2.$1"	aix		"$2.$1"	$uname =~ /AIX\s+\S+\s+(\d+)\s+(\d+)\s+/i
+
+# SCO's operating systems (no longer developed)
+SCO UnixWare			2	unixware	2
+SCO UnixWare			7	unixware	7
+SCO UnixWare			8	unixware	8
+SCO OpenServer			5	openserver	5	$uname =~ /SCO_SV.*\s5\./i
+SCO OpenServer			6	openserver	6	$uname =~ /SCO_SV.*\s6\./i
+
+# Apple's OS X versions
+Mac OS X			10.0	macos		1.3	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.0/i
+Mac OS X			10.1	macos		1.4	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.1/i
+Mac OS X			10.2	macos		6.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.2/i
+Mac OS X			10.3	macos		7.0	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.3/i
+Mac OS X			10.4	macos		8.1	`sw_vers 2>/dev/null` =~ /ProductVersion:\s+10\.4/i
+
+# Darwin, the open source version of OS X
+Darwin				$1	macos		$1	$uname =~ /Darwin.*\s([0-9\.]+)/
+
+# OpenDarwin
+OpenDarwin			6.6.1	macos		6.0
+OpenDarwin			6.6.2	macos		6.0
+OpenDarwin			7.2.1	macos		7.0
+
+# Webmin running under Windows
+Cygwin				1.1	cygwin		1.1
+Cygwin				1.3	cygwin		1.3
+
+# Sun's desktop Linux and Solaris systems
+Sun Java Desktop System		1.0 (Linux)	suse-linux	9.1	`cat /etc/SuSE-release 2>/dev/null` =~ /Java Desktop System.*\nVERSION = 1\.0/i
+Sun Java Desktop System		2.0 (Linux)	suse-linux	9.2	`cat /etc/SuSE-release 2>/dev/null` =~ /Java Desktop System.*\nVERSION = 2\.0/i
+Sun Java Desktop System		3.0 (Linux)	suse-linux	9.2	`cat /etc/SuSE-release 2>/dev/null` =~ /Java Desktop System.*\nVERSION = 3\.0/i
+Sun Java Desktop System		2.0 (Solaris)	solaris		9	$uname =~ /SunOS.*\s5\.9\s/i && `cat /etc/sun-release 2>/dev/null` =~ /Sun\s+Java\s+Desktop/
+
+# All other Linux variants, identified by kernel version
+Generic Linux			2.0	generic-linux	2.0	`uname -r` =~ /2\.0\./
+Generic Linux			2.2	generic-linux	2.2	`uname -r` =~ /2\.2\./
+Generic Linux			2.4	generic-linux	2.4	`uname -r` =~ /2\.4\./
+Generic Linux			2.5	generic-linux	2.5	`uname -r` =~ /2\.4\./
+Generic Linux			2.6	generic-linux	2.6	`uname -r` =~ /2\.6\./
+Generic Linux			2.7	generic-linux	2.7	`uname -r` =~ /2\.7\./
+
+# Windows
+Windows				XP	windows		xp	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /XP/
+Windows				2000	windows		2000	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /2000/
+Windows				2003	windows		2003	(-d "c:/windows" || -d "c:/winnt") && `ver` =~ /2003|\s5\.2/
+

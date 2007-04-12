@@ -1,0 +1,23 @@
+<header>Resposta del servidor SMTP en cas de rebuig del client</header>
+
+<center><tt>reject_code</tt></center>
+<hr>
+
+Aquest paràmetre especifica el codi de resposta del servidor SMTP quan un
+client viola la regla <tt>smtpd_client_restrictions</tt>, això és:
+<i>Accés denegat: nom de host del client SMT rebutjat.</i><br>
+<br>
+Tingues en compte que el valor per defecte utilitzat per postfix per a
+<tt>reject_code</tt> és el codi 554, i aquest codi en l'estàndard 
+RFC 822 voldria dir 'Acció de correu demanada rebutjada: accés denegat'.
+Així, amb Postfix, la violació d'una regla <tt>smtpd_client_restrictions</tt>
+no reflecteix exactament l'explicació RFC822 del codi informat.<br>
+<p>
+Per evitar confusions, pots canviar-ho, per exemple, pel 575 (un altre motiu
+és que el codi 554 és el valor per defecte de postfix d'altres errors),
+altrament, no ho canviïs si no tens un coneixement complet de RFC 822.
+</p>
+
+
+<hr>
+

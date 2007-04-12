@@ -1,0 +1,13 @@
+gs_lib=
+printcap_file=
+show_status=1
+gs_path=gs
+driver_style=irix
+print_style=irix
+model_path=/var/spool/lp/model
+smbclient_path=
+gs_fontpath=
+hpnp_path=/usr/lib/print/hpnpf
+sort_mode=0
+display_mode=0
+show_jobs=0

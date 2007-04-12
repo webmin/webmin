@@ -1,0 +1,11 @@
+kde_dir=/opt/kde2/share/doc/HTML/default
+man_cmd=man PAGE
+list_cmd=man -w PAGE
+kernel_dir=/usr/src/linux/Documentation
+man2html_path=man2html
+doc_dir=/usr/share/doc/packages
+man_dir=/usr/man
+man_cmd_sect=man SECTION PAGE
+list_cmd_sect=man -w SECTION PAGE
+howto_dir=/usr/share/doc/HOWTO/en-text
+search_cmd=man -k PAGE

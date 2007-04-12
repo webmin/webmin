@@ -1,0 +1,94 @@
+index_title=Còpia de Fitxers de Configuració
+index_emods=No hi ha cap mòdul Webmin del sistema que suporti còpies de configuració.
+index_dest=Destinació de la còpia
+index_mods=Mòduls Webmin
+index_sched=Planificada
+index_when=Sí, $1
+index_count=$1 mòduls
+index_add=Afegeix una nova còpia planificada
+index_none=Encara no s'ha definit cap còpia planificada.
+index_header=Copia ara la configuració
+index_now=Copia-ho Ara
+index_return=a la llista de còpies planificades
+index_return2=als formularis de còpia i restauració
+index_header2=Restaura ara la configuració
+index_now2=Restaura-ho Ara
+index_apply=Aplica les configuracions
+index_jobs=Còpies Planificades
+index_nostrftime=Atenció - alguns treballs de còpia utilitzen % en els noms de fitxer, però la substitució strftime no es troba activada a la pàgina de Configuració del Mòdul.
+
+edit_title1=Creació de Còpia Planificada
+edit_title2=Edició de Còpia Planificada
+edit_header=Opcions de la còpia planificada
+edit_email=Envia el resultat a l'adreça
+edit_emode=Quan cal enviar el correu
+edit_emode0=Sempre
+edit_emode1=Només quan es produeixi algun error
+edit_sched=Còpia planificada activada
+edit_schedyes=Sí, a les hores seleccionades a sota...
+edit_mods=Mòduls a copiar
+edit_dest=Destinació de la còpia
+edit_mods2=Mòduls a restaurar
+edit_dest2=Restaura de
+edit_what=Inclou en la còpia
+edit_webmin=Fitxers de configuració dels mòduls Webmin
+edit_nofiles=Fitxers de configuració del servidor
+edit_run=Desa-ho i Fes la Còpia Ara
+edit_return=al formulari de còpia
+edit_other=Altres fitxers llistats...
+
+save_err=No he pogut desar la còpia
+save_emods=No has seleccionat cap mòdul
+save_ewebmin=No has seleccionat ni els fitxers de configuració de Webmin ni els del servidor
+
+backup_mode0=Fitxer local
+backup_mode1=Servidor FTP
+backup_mode2=Servidor SSH
+backup_mode3=Fitxer pujat
+backup_mode4=Descarrega amb el navegador
+backup_path=fitxer del servidor
+backup_login=Entra com a usuari
+backup_pass=amb contrasenya
+backup_epre=El mòdul $1 ha rebutjat la còpia: $2
+backup_enone=Cap mòdul ha donat cap fitxer existent per copiar!
+backup_etar=TAR ha fallat: $1
+backup_egunzip=La còpia està comprimida, però <tt>gunzip</tt> no està instal·lat
+backup_euntar=L'extracció TAR ha fallat: $1
+backup_enone2=Cap dels fitxers dels mòduls seleccionats es troba a la còpia
+backup_epre2=El mòdul $1 ha rebutjat la restauració: $2
+
+backup_err=La còpia ha fallat
+backup_edest=Hi falta un fitxer local absolut o bé és invàlid
+backup_eserver1=Hi falta el servidor FTP o bé és invàlid
+backup_eserver2=Hi falta el servidor SSH o bé és invàlid
+backup_epath=Hi falta el camí absolut del servidor FTP o bé és invàlid
+backup_euser=Caràcters invàlids en l'usuari del servidor FTP
+backup_epass=Caràcters invàlids en la contrasenya del servidor FTP
+backup_emods=No has seleccionat cap mòdul
+backup_title=Configuració de Còpia
+backup_doing=Començant la còpia dels fitxers de configuració de mòduls a $1...
+backup_failed=... ha fallat! $1
+backup_done=... completa. La mida final de la còpia és de $1 i conté $2 fitxers.
+
+restore_err=La restauració ha fallat
+restore_title=Configuració de Restauració
+restore_doing=Començant la restauració dels fitxers de configuració de mòduls de $1...
+restore_failed=... ha fallat! $1
+restore_done=... completa. S'han restaurat $1 fitxers.
+
+nice_ftp=$2 on $1 via FTP
+nice_ssh=$2 on $1 via SSH
+nice_upload=fitxer pujat
+nice_download=navegador
+
+log_backup=He copiat $1 mòduls a $2
+log_restore=He restaurat $1 mòduls de $2
+log_create_backup=He creat còpia de $1 mòduls a $2
+log_modify_backup=He modificat la còpia de $1 mòduls a $2
+log_delete_backup=He suprimit la còpia de $1 mòduls a $2
+log_run_backup=He executat la còpia de $1 mòduls a $2
+
+run_title=Còpia de Configuracions
+run_doing=Iniciant la còpia de $1 mòduls a $2...
+run_ok=...la còpia s'ha completat correctament.
+run_failed=...la còpia ha fallat! Vegeu el missatge d'error per saber-ne el motiu.

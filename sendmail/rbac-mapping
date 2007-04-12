@@ -1,0 +1,2 @@
+# RBAC authorization		# Webmin ACL
+solaris.mail.mailq		noconfig=0,opts=0,cws=0,masq=0,trusts=0,vmode=0,amode=0,omode=0,cgs=0,relay=0,mailq=1,mailers=0,access=0,domains=0,stop=0,flushq=0

@@ -1,0 +1,81 @@
+<header>Mòdul SMF</header>
+<h2><i>Aquesta pàgina d'ajuda és incompleta</i></h2>
+<hr>
+<h3>Introducció</h3>
+Aquest mòdul permet visualitzar/modificar/actualitzar/afegir serveis SMF
+en Solaris 10. La pàgina principal consisteix en un llistat de serveis, i
+pots seleccionar una categoria específica, veure serveis desactivats,
+ordenar les entrades, etc. Des d'aquí també pots executar una utilitat
+de tipus assistent que gestiona la creació de serveiss i visualitza l'estat
+del servei, les dependències/dependents i les propietats/grups de propietats
+de cada servei. </p>
+
+<h3>Finestra Principal</h3>
+Per defecte, la finestra principal dels mòduls SMF llista els serveis activats
+en el sistema, amb els seus estats, el FMRI que identifica el servei o la
+descripció subministrada amb el servei. Pots aplicar canvis d'estat a múltiples
+serveis marcant els serveis desitjats i fent clic a activa/desactiva, etc.
+També pots suprimir les instàncies de serveis especificades, però evidentment
+evita fer-ho amb serveis importants. <p>
+
+<h3>Finestra de Visualització d'Instàncies</h3>
+Fent clic sobre el FMRI d'una instància en particular a la finestra principal
+et porta al visualitzador d'instàncies, que mostra el nom/descripció, estat
+i qualssevol estats inusuals associats (que es poden clicar i visualitzar),
+referències als fitxers de registre associats (que, altre cop, es poden
+clicar i visualitzar). Des d'aquí, també és possible visualitzar els arbres
+de dependències/dependents de lainstància fent clic sobre l'enllaç apropiat,
+i visualitzar/editar propietats i grups de propietats fent clic també 
+a l'enllaç apropiat.
+
+<h3>Finestres d'Edició de Propietats/Grups de Propietats</h3>
+Fent clic a l'enllaç Visualitza/Edita Propietats/Grups de Propietats en el
+visor de la instància s'obre l'editor de propietats de grup, mostrant els
+grups de propietats associats amb el FMRI seleccionat. Pots
+afegir/suprimir/modificar aquí els grups de propietats, i fer el mateix 
+amb les propietats associades fent clic sobre el grup de propietats rellevant
+a l'editor de grups de propietats. <p>
+
+<h3>Finestra de Visualització de Dependències/Dependents</h3>
+Fent clic a l'enllaç de l'Arbre de Dependències/Dependents en el visor
+d'instàncies obre l'arbre de dependències/dependents de la instància.
+Per defecte, la vista mostra el primer nivell de dependències/dependents,
+però fent clic al botó +, pots expandir l'arbre per veure que depèn del
+servei que depèn del servei, etc. Igual que a la finestra principal,
+els canvis d'estat espoden aplicar a múltiples serveis, utilitzant les
+caselles de verificació per identificar els serveis que vols canviar.
+Fent clic sobre el FMRI d'una instància obre els arbres de 
+dependències/dependents d'aquesta instància. <p>
+
+<h3>Assistent de Creació de Serveis</h3>
+Fent clic sobre el botó "Crea un Nou Servei" s'obre l'assistent de
+creaciço de serveis SMF, que recull la informació necessària per crear un
+nou servei SMF, el formata en un manifest i l'importa al repositori SMF.
+Si la importació és correcta, el servei apareixerà al llistat de serveis
+principal. <p>
+
+<h3>Formulari de Recerca d'Instàncies de Serveis</h3>
+Su subministra una cerca de FMRIs rudimentària, en la qual introduir 
+una part d'un servei FMRI és suficient per trobar tots els FMRIs que 
+coincideixin, p. ex. "nfs" retorna tots els serveis amb "nfs" al FMRI.
+També hi ha una utilitat de navegació. <p>
+
+<h3>Per a més informació</h3>
+Consulta les pàgines següents del manual que t'ajudaran a conèixer SMF:
+
+<ul>
+<li><a href="/man/view_man.cgi?page=smf&sec=5">smf(5)</a>
+<li><a href="/man/view_man.cgi?page=service_bundle&sec=4">service_bundle(4)</a>
+<li><a href="/man/view_man.cgi?page=svccfg&sec=1M">svccfg(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcadm&sec=1M">svcadm(1M)</a>
+<li><a href="/man/view_man.cgi?page=svc.startd&sec=1M">svc.startd(1M)</a>
+<li><a href="/man/view_man.cgi?page=svc.configd&sec=1M">svc.configd(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcprop&sec=1M">svcprop(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcs&sec=1M">svcs(1M)</a> <p>
+</ul><p>
+
+<hr>
+<form>
+<input type="button" onClick='window.close()' value="Tanca la Finestra">
+</form>
+

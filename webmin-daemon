@@ -1,0 +1,4 @@
+IDENT=webmin
+DESCRIPTIVE="Webmin administration server"
+OPTIONS=""
+ONBOOT="yes"

@@ -1,0 +1,8 @@
+reboot_command=shutdown -r now
+shutdown_command=shutdown -p now
+local_script=/etc/rc.local
+local_down=/etc/rc.shutdown
+status_check=0
+order=0
+sort_mode=0
+no_chkconfig=0

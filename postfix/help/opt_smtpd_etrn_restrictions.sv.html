@@ -1,0 +1,16 @@
+<header>Begränsa ETRN-kommando för ...</header>
+
+<center><tt>smtpd_etrn_restrictions</tt></center>
+<hr>
+
+Denna parameter anger de klienter som får använda <tt>ETRN</tt>-kommandot.
+Postfix nuvarande <tt>ETRN</tt> skiljer sig från andra
+<tt>ETRN</tt>-implementationer genom att den skickar köad e-post till alla
+destinationer. Detta kommer att ändras i framtiden.
+
+<p>Standard är att tillåta <tt>ETRN</tt> från alla datorer. Följande
+begränsningar är möjliga:
+
+<include smtpd_restrictions>
+
+<hr>

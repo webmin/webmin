@@ -1,0 +1,4 @@
+---- Changes since 1.260 ----
+First version of this module.
+---- Changes since 1.270 ----
+Error logs from Webmin and Usermin, and kernel messages are now viewable in this module.

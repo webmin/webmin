@@ -1,0 +1,6 @@
+line1=Yapýlandýrýlabilir seçenekler,11
+display=Kullanýcý ve grup görüntüleme biçimi,1,1-Sadece isim,0-Ýsim ve modüller
+select=Kullanýcý modüllerini bu þekilde görüntüle,1,0-Tablo,1-Menü
+order=Kullanýcý ve gruplarý bu þekilde sýrala,1,0-Dosyadaki sýrasý ile,1-Ýsim ile
+line2=Sistem yapýlandýrmasý,11
+ssleay=Openssl ya da ssleay programý yolu,3,Otomatik

@@ -1,0 +1,73 @@
+index_title=定時執行工作 (Cron)
+index_user=使用者
+index_active=是否啟動？
+index_command=命令
+index_none=在這個系統中沒有定時執行工作
+index_create=建立新的定時執行工作
+index_allow=控制使用者存取定時執行工作
+index_return=定時執行工作列表
+
+edit_title=編輯定時執行工作
+create_title=建立定時執行工作
+edit_ecannot=您沒有權限編輯這個使用者的定時執行工作
+edit_details=工作詳細資料
+edit_user=執行定時執行工作的使用者
+edit_active=是否啟動？
+edit_commands=命令
+edit_command=命令
+edit_input=給命令的輸入
+edit_when=執行的時間
+edit_mins=分
+edit_hours=時
+edit_days=日
+edit_months=月
+edit_weekdays=星期
+edit_all=全部
+edit_selected=選擇的...
+edit_run=現在執行
+edit_return=定時執行工作
+
+save_err=儲存定時執行工作失敗
+save_ecmd=您沒有輸入要執行的指令
+save_euser=您必須選擇一個使用者
+save_euser2=使用者 '$1' 不存在
+save_eallow=使用者 '$1' 沒有權限使用定時執行工作
+save_ecannot=您不被允許為使用者 '$1' 建立定時執行工作
+save_enone=您沒有選擇任何 $1 以執行
+
+allow_title=定時執行存取控制
+allow_desc=這個表單可以任您控制使用者是否可以建立或執行定時執行工作。
+allow_ecannot=您不能控制使用者存取定時執行
+allow_all1=拒絕所有使用者
+allow_all2=拒絕除了 root 以外的所有使用者
+allow_all3=允許所有使用者
+allow_allow=只允許列出的使用者
+allow_deny=只拒絕列出的使用者
+
+env_title=定時執行環境
+env_ecannot=您不能編輯這個使用者的定時執行環境
+env_desc=使用者 $1 的定時執行環境
+env_name=變數名稱
+env_value=數值
+env_ename='$1' 不是一個有效的變數名稱
+
+exec_title=執行定時執行工作
+exec_ecannot=您沒有權限執行這個使用者的定時執行工作
+exec_cmd=由命令 $1 的輸出...
+exec_none=沒有產生輸出
+
+acl_users=可以編輯的哪些使用者定時執行工作
+acl_all=全部的使用者
+acl_this=目前的 Webmin 使用者
+acl_only=只有使用者
+acl_except=全部的使用者，除了
+acl_control=是否可以控制可存取定時執行工作的使用者?
+
+log_modify=為 $1 修改了定時執行工作
+log_modify_l=為 $1 修改了定時執行工作 "$2"
+log_create=為 $1 建立了定時執行工作
+log_create_l=為 $1 建立了定時執行工作 "$2"
+log_delete=為 $1 刪除了定時執行工作
+log_exec=以 $1 身份執行了定時執行工作
+log_exec_l=以 $1 身份執行了定時執行工作 "$2"
+log_allow=變更了使用者的定時執行工作存取權限

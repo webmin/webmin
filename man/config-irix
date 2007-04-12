@@ -1,0 +1,5 @@
+search_cmd=man -k PAGE
+man_dir=/usr/share/catman/a_man /usr/share/catman/u_man /usr/share/catman/p_man
+man_cmd_sect=man SECTION PAGE
+man_cmd=man PAGE
+strip_letters=1

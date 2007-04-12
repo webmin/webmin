@@ -1,0 +1,43 @@
+index_enopfile=Plik hase³ PPP '$1' nie istnieje w&nbsp;Twoim systemie. Byæ mo¿e PPP nie jest zainstalowane
+index_table=Konta PPP do wdzwaniania i&nbsp;dzwonienia
+index_user=Nazwa u¿ytkownika
+index_server=Serwer
+index_uany=DOWOLNA
+index_sany=DOWOLNY
+index_create=Utwórz nowe konto PPP
+index_info=Webmina mo¿na skonfigurowaæ tak, aby jakiekolwiek zmiany u¿ytkowników Uniksa powodowa³y automatyczne zmiany kont PPP. Bêdzie to dzia³aæ jedynie w&nbsp;przypadku, gdy wszelkie zmiany, dodawanie i&nbsp;usuwanie u¿ytkowników odbywaj± siê poprzez modu³ Webmina <tt>U¿ytkownicy i&nbsp;grupy</tt>.
+index_onadd=Dodaj nowe konto PPP przy dodawaniu nowego u¿ytkownika Uniksa, dla serwera
+index_onchange=Zmieñ konto PPP przy zmianie u¿ytkownika Uniksa
+index_ondelete=Usuñ konto PPP przy usuwaniu u¿ytkownika Uniksa
+index_apply=Zastosuj
+
+secrets_title=Konta PPP
+secrets_return=indeksu
+
+edit_secret_etitle=Zmieñ konto PPP
+edit_secret_ctitle=Utwórz konto PPP
+edit_secret_acc=Konto PPP
+edit_secret_user=Nazwa<br>u¿ytkownika
+edit_secret_serv=Serwer
+edit_secret_sany=Dowolny
+edit_secret_uany=Dowolna
+edit_secret_pass=Has³o
+edit_secret_none=Brak
+edit_secret_ffile=Z&nbsp;pliku 
+edit_secret_leave=Pozostaw niezmienione
+edit_secret_setto=Ustaw na
+edit_secret_vaddr=Dozwolone<br>adresy
+edit_secret_aany=Pozwól wszystkim
+edit_secret_anone=Nie pozwól ¿adnemu
+edit_secret_alist=Pozwól wymienionym..
+edit_secret_save=Zachowaj
+edit_secret_del=Usuñ 
+edit_secret_return=listy kont
+
+save_secret_esave=Nie uda³o siê zachowaæ konta
+save_secret_enoip='$1' nie jest poprawnym adresem
+
+log_create=Utworzono u¿ytkownika PPP $1
+log_modify=Zmieniono u¿ytkownika PPP $1
+log_delete=Usuniêto u¿ytkownika PPP $1
+log_sync=Zmieniono synchronizacjê z&nbsp;u¿ytkownikami uniksowymi

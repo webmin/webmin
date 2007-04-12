@@ -1,0 +1,11 @@
+<header>Processus sous Unix</header>
+
+Un processus est simplement un programme exécuté sur votre système. Votre navigateur web, un gestionnaire de fenêtre, un terminal et le serveur X sont tous des processus avec lesquels vous interagissez directement. Plusieurs autres processus sont exécutés en arrière plan, comme un serveur web et d'autre tâches systèmes. Un nouveau processus est créé chaque fois que vous entrez une commande comme <tt>ls</tt> ou <tt>pwd</tt> ce qui implique qu'un processus a souvent une courte durée de vie.<p>
+
+Chaque processus a un numéro unique. A chaque exécution de programme, le numéro est incrémenté et recommencera à 1 une fois arrivé à 32768 en sautant les numéros encore utilisés. Le même numéro  ne pourra jamais être utilisé par deux processus en même temps.<p>
+
+A part le processus initial (généralement appelé <tt>init</tt>), chaque processus a un parent à partir duquel il a été créé. Par exemple, si vous exécutez <tt>vi</tt> à partir de votre interpréteur de commandes, <tt>vi</tt> aura l'intepréteur de commandes comme parent.  Un processus peut avoir plusieurs enfants mais un seul et unique parent.<p>
+
+Chaque processus s'exécute avec les permissions de l'usager et du groupe, qui s'applique quand il accède fichier et répertoire.  Les usagers et processus peuvent seulement tuer d'autre processus dont ils sont propriétaire, à l'exception de <tt>root</tt> qui peut tout faire.<p>
+
+<hr>

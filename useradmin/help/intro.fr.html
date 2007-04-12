@@ -1,0 +1,54 @@
+<header>Utilisateurs et groupes</header>
+
+<h3>Introduction aux utilisateurs</h3>
+Un utilisateur Unix est généralement quelqu'un qui peut ouvrir une
+session sur le système, à distance par telnet ou sur la console.
+Chaque fichier appartient à un utilisateur, et chaque processus
+s'exécute avec les droits d'un utilisateur. L'accès aux fichiers
+et aux processus est défini par l'utilisateur avec lequel la
+session est ouverte. <p>
+
+En général il y a trois types d'utilisateurs sur un système Unix :
+<ul>
+<li><b>Les utilisateurs système</b><br>
+    Des comptes comme <tt>bin</tt>, <tt>lp</tt> et <tt>uucp</tt> possèdent
+    des fichiers comme des commandes dans <tt>/bin</tt>, des files d'attente
+    d'impression ou encore des données UCCP. L'ouverture de session avec
+    ces comptes n'est pas normalement possible, ils ne sont utilisés que
+    par divers processus système. Ces utilisateurs sont crées à
+    l'installation du système. <p>
+<li><b>Les véritable personnes</b><br>
+    Ce sont des comptes appartenant à de vrais utilisateurs, crées par
+    l'administrateur système. Vous pouvez permettre à ces utilisateurs
+    d'ouvrir des sessions, ou peut-être seulement d'envoyer et recevoir du
+    courrier par SMTP et POP3. <p>
+<li><b>L'utilisateur <tt>root</tt></b><br>
+    L'utilisateur <tt>root</tt> a le pouvoir de lire et d'écrire n'importe
+    quel fichier ou répertoire et contrôler tous les processus. Ce compte
+    est utilisé pour la maintenance, et c'est avec ce que compte que Webmin
+    s'exécute. <p>
+</ul>
+
+En haut de la page de ce module se trouve un tableau des utilisateurs
+existants sur votre système. Vous pouvez cliquer sur un utilisateur pour
+l'éditer ou cliquer sur le lien en dessous du tableau pour en créer un
+nouveau. <p>
+
+<h3>Introduction aux groupes</h3>
+Un groupe est simplement une liste d'utilisateurs Unix. Chaque utilisateur
+appartient à au moins un groupe (primaire) et optionnellement à d'autres.
+Tous les fichiers appartiennent à un groupe et tout processus d'exécute avec
+les permissions d'un groupe. <p>
+
+En dessous de la liste des utilisateurs se trouve un tableau des groupes
+xistants. Vous pouvez cliquer sur un groupe pour l'éditer ou cliquer sur le
+lien en dessous du tableau pour en créer un nouveau. <p>
+
+<h3>Journal d'ouvertures de sessions</h3>
+Chaque fois qu'un utilisateur se connecte par telnet, FTP ou depuis la console
+le système enregistre le début et la fin de la connexion. Au bas de cette page
+se trouve un petit formulaire qui permet d'afficher le journal des sessions
+de tous les utilisateurs ou d'un seul en particulier. <p>
+
+<hr>
+

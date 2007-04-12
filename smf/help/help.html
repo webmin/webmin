@@ -1,0 +1,77 @@
+<header>SMF Module</header>
+<h2><i>This help page is incomplete</i></h2>
+<hr>
+<h3>Introduction</h3>
+This module allows you to view/modify/update/add SMF services in Solaris
+10. The main page consists of a listing of services, and you can select a 
+specific category, view disabled serivces, sort entries etc. From here you
+can also launch a wizard-type utility that manages service creation, view
+the service state, dependencies/dependent, and view property groups/properties
+for each service. </p>
+
+<h3>Main Window</h3>
+By default, main SMF module window lists the enabled services on the system,
+showing their states, the FMRI that identifies the service, and the description
+that is supplied with the service. You can apply state changes to multiple
+services by checking the desired serivces, and clicking enable/disable etc.
+You can also delete the service instances specified, but obviously avoid doing
+this for important services. <p>
+
+<h3>Instance Viewer Window</h3>
+Clicking on the FMRI of a particular instance in the main window brings up the
+instance viewer, which displays instance name/description, state, any associated
+manual pages (which can be clicked and viewed), explanations for
+unusual states (which can be clicked and viewed), references to associated
+logfiles (which again can be clicked and viewed). From here it is
+also possible to view the dependency/dependent trees for the instance
+by clicking the appropriate link, and view/edit property groups/properties
+by also clicking the appropriate link.
+
+<h3>Property Group/Property Editor Windows</h3>
+Clicking on the View/Edit Property Groups/Properties link in the instance viewer
+brings up the property group editor, displaying the property groups associated
+with the selected FMRI. You can add/delete/modify property groups here,
+and do the same to the associated properties by clicking the relevant property
+group in the property group editor. <p>
+
+<h3>Dependency/Dependent Viewer Window</h3>
+Clicking on the View Dependency/Dependent Tree link in the instance viewer
+brings up the dependency/dependent tree for that instance. By default, the view
+shows first-level dependencies/dependents, but by clicking the + button,
+you can expand the tree to see what depends on the services that depend
+on the service etc. Similarly to the main window, state changes can be
+applied to multiple services, using checkboxes to identify the services
+you want to change. Clicking on an instance FMRI brings up the dependency/
+dependent trees for that instance. <p>
+
+<h3>Service Creation Wizard</h3>
+Clicking the "Create New Serivce" button brings up the SMF service creation
+wizard, which collects the required information to create a new SMF service,
+formats it into a manifest and imports it into the SMF repository. Successful
+import will result in the service appearing in the main services listing.<p>
+
+<h3>Service Instance Search Form</h3>
+A rudimentary FMRI search is supplied, whereby entering
+a part of service FMRI is sufficient to find all matching FMRIs, e.g.
+"nfs" retrieves all services with "nfs" in FMRI. A "browse" facility is also
+supplied. <p>
+
+<h3>For more information</h3>
+Please consult the following manual pages which will help you get to know
+SMF:
+
+<ul>
+<li><a href="/man/view_man.cgi?page=smf&sec=5">smf(5)</a>
+<li><a href="/man/view_man.cgi?page=service_bundle&sec=4">service_bundle(4)</a>
+<li><a href="/man/view_man.cgi?page=svccfg&sec=1M">svccfg(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcadm&sec=1M">svcadm(1M)</a>
+<li><a href="/man/view_man.cgi?page=svc.startd&sec=1M">svc.startd(1M)</a>
+<li><a href="/man/view_man.cgi?page=svc.configd&sec=1M">svc.configd(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcprop&sec=1M">svcprop(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcs&sec=1M">svcs(1M)</a> <p>
+</ul><p>
+
+<hr>
+<form>
+<input type="button" onClick='window.close()' value="Close Window">
+</form>

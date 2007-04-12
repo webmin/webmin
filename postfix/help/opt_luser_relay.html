@@ -1,0 +1,36 @@
+<header>Destination address for unknown recipients</header>
+
+<center><tt>luser_relay</tt></center>
+<hr>
+
+This parameter specifies an optional destination address for unknown
+recipients. By default, mail for unknown local recipients is bounced.
+
+<p>
+
+The following expansions are done: 
+
+<ul>
+<li><tt>$user</tt> (recipient username), 
+<li><tt>$shell</tt> (recipient shell), 
+<li><tt>$home</tt> (recipient home directory),
+<li><tt>$recipient</tt> (full recipient address), 
+<li><tt>$extension</tt> (recipient address extension), 
+<li><tt>$domain</tt> (recipient domain), 
+<li><tt>$local</tt> (entire recipient localpart), 
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Specify <tt>${name?value}</tt> or <tt>${name:value}</tt> to expand value only
+when <tt>$name</tt> does (does not) exist.
+
+<p>
+
+Examples:
+<ul>
+<li><tt>$user@other.host</tt>
+<li><tt>$local@other.host</tt>
+<li><tt>admin+$local</tt>
+</ul>
+
+<hr>

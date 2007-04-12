@@ -1,0 +1,157 @@
+index_title=Stan systemu i serwerów
+index_name=Nazwa us³ugi
+index_host=Na ho¶cie
+index_desc=Monitorowanie
+index_up=Stan
+index_local=Lokalnym
+index_add=Dodaj monitorowanie:
+index_sched=Monitorowanie okresowe
+index_return=listy us³ug
+
+type_apache=Serwera WWW Apache
+type_inetd=Serwera internetowego i RPC
+type_xinetd=Rozszerzonego serwera internetowego
+type_squid=Serwera proxy Squid
+type_bind8=Serwera DNS BIND
+type_dnsadmin=Serwera DNS BIND 4
+type_dhcpd=Serwera DHCP
+type_tcp=Zdalnej us³ugi TCP
+type_http=Zdalnej us³ugi HTTP
+type_sendmail=Serwera Sendmail
+type_postfix=Serwera Postfix
+type_ping=Zdalny ping
+type_proc=Sprawdzenie procesu
+type_mysql=Serwera baz danych MySQL
+type_postgresql=Serwera baz danych PostgreSQL
+type_samba=Serwerów Samby
+type_nfs=Serwera NFS
+type_exec=Uruchomienie polecenia
+type_file=Sprawdzenie pliku
+type_traffic=Obci±¿enie sieci
+type_space=Miejsce na dysku
+type_load=¦rednie obci±¿enie systemu
+
+mon_create=Utwórz monitorowanie
+mon_edit=Zmieñ monitorowanie
+mon_header=Dane monitorowania
+mon_desc=Opis
+mon_remote=Uruchom na ho¶cie
+mon_local=Lokalnym
+mon_none=nie zdefiniowano zdalnych serwerów
+mon_nosched=Sprawdzaæ okresowo?
+mon_status=Stan bie¿±cy
+mon_up=Podniesiony
+mon_down=Wy³±czony
+mon_not=Nie zainstalowany
+mon_ondown=Koñcz±c monitorowanie uruchom polecenie
+mon_onup=Zaczynaj±c monitorowanie uruchom polecenie
+mon_clone=Monitorowany modu³
+mon_err=Nie uda³o siê zachowaæ monitorowania
+mon_edesc=Nie podano opisu
+mon_elogin=Nieprawid³owy login dla RPC na serwerze Webmina $1
+mon_eremote=Serwer Webmina $1 nie obs³uguje RPC
+mon_estatus=Serwer Webmina $1 nie posiada modu³u <tt>Stan systemu i&nbsp;serwerów</tt>
+mon_ecannot=Nie masz uprawnieñ do zmiany monitorowañ
+mon_ertype=Ten rodzaj monitorowania jest niedostêpny na $1
+
+sched_title=Monitorowanie okresowe
+sched_header=Opcje okresowego monitorowania w&nbsp;tle
+sched_mode=W³±czone sprawdzanie okresowe?
+sched_email=Przes³aæ poczt± raport o&nbsp;stanie do
+sched_none=Nikogo
+sched_from=Adres From: dla poczty
+sched_int=Sprawdzaæ co
+sched_period_0=minut
+sched_period_1=godzin
+sched_period_2=dni
+sched_period_3=miesiêcy
+sched_period_4=tygodni
+sched_offset=z&nbsp;przesuniêciem
+sched_warn=Przesy³aæ wiadomo¶æ
+sched_warn1=Gdy zmieni siê stan us³ugi
+sched_warn0=Gdy us³uga zostanie wy³±czona
+sched_single=Wysy³aæ osobn± wiadomo¶æ dla ka¿dej us³ugi?
+sched_hours=Monitoruj w&nbsp;godzinach
+sched_days=Monitoruj w&nbsp;dni
+sched_err=Nie uda³o siê zachowaæ monotorowania okresowego
+sched_eemail=Brak adresu e-mail
+sched_eint=Brakuj±cy lub niepoprawny okres
+sched_eoffset=Brakuj±ce lub niepoprawne przesuniêcie
+sched_ehours=Nie wybrano godzin monitorowania
+sched_edays=Nie wybrano dni monitorowania
+sched_ecannot=Nie masz uprawnieñ do zmiany monitorowania okresowego
+
+up_since=Dzia³a od $1
+depends_mod=W&nbsp;systemie nie jest zainstalowany modu³ $1
+depends_os=Twój system nie obs³uguje modu³u $1
+depends_remote=Serwer $2 nie obs³uguje modu³u $1
+
+tcp_host=Po³±czenie z&nbsp;hostem
+tcp_port=Po³±czenie z&nbsp;portem
+tcp_alarm=Czas przeterminowania po³±czenia
+tcp_ehost=Nie podana lub niepoprawna nazwa hosta
+tcp_eport=Nie podany lub niepoprawny numer portu
+tcp_ealarm=Nie podany lub niepoprawny czas przeterminowania
+
+http_url=¯±dany URL
+http_alarm=Czas przeterminowania po³±czenia
+http_eurl=Nie podany lub niepoprawny URL
+http_ealarm=Nie podany lub niepoprawny czas przeterminowania
+
+ping_host=Pingowany host
+ping_wait=Czas oczekiwania na odpowied¼
+ping_ehost=Nie podana lub niepoprawna nazwa hosta
+ping_ewait=Nie podany lub niepoprawny czas oczekiwania
+ping_econfig=Nie podano polecenia pinguj±cego w&nbsp;konfiguracji modu³u
+
+proc_pid=Dzia³a z&nbsp;numerem PID $1
+proc_cmd=Sprawdzane polecenie
+proc_ecmd=Nie podano polecenia
+
+exec_cmd=Polecenie, którego kod zakoñczenia sprawdzaæ
+exec_ecmd=Nie podano polecenia
+
+file_file=Sprawdzany plik
+file_test=Wykonywany test
+file_test_0=Plik musi istnieæ
+file_test_1=Plik nie mo¿e istnieæ
+file_test_2=Plik musi byæ wiêkszy ni¿
+file_test_3=Plik musi byæ mniejszy ni¿
+file_bytes=bajtów
+file_efile=Nie podano nazwy sprawdzanego pliku
+file_esize=Niew³a¶ciwy rozmiar pliku
+
+traffic_iface=Monitorowany interfejs
+traffic_bytes=Maksymalna liczba bajtów/sekundê
+traffic_dir=Monitorowany kierunek
+traffic_dir0=Przychodz±cy i&nbsp;wychodz±cy
+traffic_dir1=Tylko przychodz±cy
+traffic_dir2=Tylko wychodz±cy
+traffic_desc=To monitorowanie ¶ledzi ruch w&nbsp;sieci na wybranym interfejsie oraz pokazuje monitorowanie jako wy³±czone, gdy ruch przekracza zadan± warto¶æ podan± poni¿ej. Dzia³a to poprawnie jedynie, gdy monitorowanie okresowe jest w³±czone i&nbsp;ustawione na krótki okres czasu, jak np. 5 minut.
+traffic_eifaces=W&nbsp;systemie nie ma pliku /proc/net/dev
+traffic_ebytes=Nie podana lub nieporawna liczba bajtów/sekundê
+
+space_fs=Sprawdzany system plików
+space_min=Minimalna ilo¶æ wolnego miejsca (w&nbsp;kB)
+space_desc=Wolne $1
+space_nofs=System plików nie zamontowany
+space_other=Inne..
+space_emin=Nie podana lub niepoprawna ilo¶æ wolnego miejsca
+space_eother=Nie podany lub niepoprawny system plików
+
+load_time=Sprawdzaæ ¶rednie obci±¿enie z&nbsp;okresu
+load_1=1 minuta
+load_5=5 minut
+load_15=15 minut
+load_max=Maksymalne ¶rednie obci±¿enie
+load_emax=Nie podane lub nie poprawne maksymalne ¶rednie obci±¿enie
+load_ecmd=W&nbsp;systemie nie znaleziono polecenia <tt>uptime</tt>
+load_efmt=Nie uda³o siê przetworzyæ wyniku polecenia <tt>uptime</tt>
+
+log_create=Utworzono monitorowanie $1
+log_modify=Zmieniono monitorowanie $1
+log_delete=Usuniêto monitorowanie $1
+log_sched=Zmieniono monitorowanie okresowe
+
+acl_edit=Mo¿e zmieniaæ i&nbsp;tworzyæ monitorowania?
+acl_sched=Mo¿e zmieniaæ monitorowania okresowe?

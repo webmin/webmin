@@ -1,0 +1,4 @@
+max_users=Maksimum getal gebruikers om te vertoon,0
+input_type=Gebruikerskeuse tik,1,1-List box,0-teksveld
+sort_mode=Sorteer gebruikers volgens,1,0-volgorde in l&#234;er,1-gebruikersnaam
+passwd_cmd=Opdrag op wagwoord te verander,3,Opdateer stelsell&#234;ers direk

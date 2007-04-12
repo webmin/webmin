@@ -1,0 +1,10 @@
+line2=System configuration,11
+pptpd=Full path to PPTP daemon program,0
+file=PPTP configuration file,0
+pid_file=Full path to PPTP PID file,0
+pap_file=PPP accounts file,0
+ppp_options=Default PPP options file,0
+pptp_ppp_options=PPTP PPP options file,3,Default (/etc/ppp/options.pptp)
+start_cmd=Command to start PPTP daemon,3,Just run program
+stop_cmd=Command to stop PPTP daemon,3,Just kill program
+log_file=File to which PPP messages are logged,0

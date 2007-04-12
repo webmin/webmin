@@ -1,0 +1,167 @@
+index_title=DHCP 伺服器
+index_dhcpdnotfound=在您的系統上找不到 DHCP 伺服器 <i>$1</i>. 可能是因為尚未安裝, 或是您的 <a href=\"/config.cgi?$module_name\">DHCP 模組組態</a>有錯誤.
+index_return=索引
+index_dhcpdver=DHCP 伺服器 <i>$1</i> 似乎不是正確的版本. Webmin 只支援 ISC 的 DHCPD 第二版.
+index_subtitle=子網路與共享的網路
+index_nosubdef=尚未定義子網路或共享的網路.
+index_addsub=增加一個新的子網路
+index_addnet=增加一個新的共享網路
+index_nomemb=沒有成員
+index_1memb=1 個成員
+index_memb=個成員
+index_hst=主機與主機群組
+index_nohst=尚未定義主機或群組.
+index_addhst=增加新的主機
+index_addhstg=增加新的主機群組
+index_buttego=編輯全域選項
+index_ego=編輯 DHCP 選香並套用在所有的子網路, 共享網路, 主機與群組
+index_buttlal=列出使用中的租約
+index_lal=列出目前 DHCP 伺服器發出給動態指定 IP 位址的租約.
+index_buttapply=套用變更
+index_apply=按下這個按鈕以經由停止並重新啟動執行中的 DHCP 伺服器, 並套用目前的組態.
+index_buttstart=啟動伺服器
+index_start=按下這個按鈕以啟動 DHCP 伺服器, 並使用目前的組態.
+
+butt_save=儲存
+butt_eco=編輯客戶端選項
+butt_del=刪除
+butt_create=建立
+
+esub_crheader=建立子網路
+esub_edheader=編輯子網路
+esub_tabhdr=子網路詳細資料
+esub_naddr=網路位址
+esub_nmask=子網路遮罩
+esub_arange=IP 位址範圍
+esub_dbooptpq=是否使用動態的 BOOTP?
+esub_shnet=共享的網路
+esub_return=子網路列表
+
+esh_crheader=建立共享的網路
+esh_eheader=編輯共享的網路
+esh_tabhdr=共享網路的詳細資料
+esh_netname=網路名稱
+esh_return=子網路列表
+
+ehost_crheader=建立主機
+ehost_eheader=編輯主機
+ehost_tabhdr=主機詳細資料
+ehost_hname=主機名稱
+ehost_fixedip=固定的 IP 位址
+ehost_return=主機列表
+
+egroup_crheader=建立主機群組
+egroup_eheader=編輯主機群組
+egroup_tblhdr=群組詳細資料
+egroup_hosts=這個群組中的主機
+egroup_nchoice=是否以使用者名稱作為客戶端主機名稱?
+egroup_return=主機列表
+
+yes=是
+no=否
+default=預設
+secs=秒
+none=無
+
+listl_header=DHCP 租約
+listl_lfnotexist=DHCPd 租約檔案 <tt>$1</tt> 不存在.
+listl_lfnotcont=DHCPd 租約檔案 <tt>$1</tt> 不包含任何使用中的租約.
+listl_ipaddr=IP 位址
+listl_ether=乙太網路位址
+listl_host=主機名稱
+listl_start=開始日期
+listl_end=結束日期
+listl_return=子網路列表
+
+restart_errmsg1=重新啟動 dhcpd 失敗
+restart_errmsg2=送出控制訊號給程序失敗
+start_failstart=啟動 dhcpd 失敗
+
+sgroup_faildel=刪除群組失敗
+sgroup_failsave=儲存群組失敗
+
+shost_faildel=刪除主機失敗
+shost_failsave=儲存主機失敗
+shost_invalidhn=不是一個有效的主機名稱
+shost_invalidhwa='$1' 不是一個有效的 $2 位址
+
+sopt_failsave=儲存客戶端選項失敗
+sopt_invalidip=不是一個有效的 IP 位址
+sopt_invalidint=不是一個整數
+sopt_invalidipp=不是一個有效的 IP 位址對 (例如 1.2.3.4,5.6.7.8)
+
+sshared_faildel=刪除共享網路失敗
+sshared_failsave=儲存共享網路失敗
+sshared_invalidsname=遺失或錯誤的共享網路名稱
+
+ssub_faildel=刪除子網路失敗
+ssub_failsave=儲存子網路失敗
+ssub_invalidsubaddr=不是一個有效的子網路位址
+ssub_invalidnmask=不是一個有效的子網路遮罩
+ssub_invalidipr=不是一個有效的 IP 位址
+
+plib_deflt=預設的租約時間
+plib_bfname=開機檔案名稱
+plib_maxlt=最大租約時間
+plib_bfserv=開機檔案伺服器
+plib_thisserv=這個伺服器
+plib_servname=伺服器名稱
+plib_llbc=使用 BOOTP 客戶端的租約長度
+plib_forever=永遠
+plib_lebc=使用 BOOTP 客戶端的租約結束
+plib_never=永不
+plib_invalidlt=不是一個有效的租約時間
+plib_invalidsn=不是一個有效伺服器名稱
+plib_leformat=租約結束日期格式必須是 年/月/日 時:分:秒
+plib_copt=客戶端選項
+plib_chname=客戶端主機名稱
+plib_defrouters=預設的路由器
+plib_snmask=子網路遮罩
+plib_babbr=廣播位址
+plib_domname=網域名稱
+plib_dnsserv=DNS 伺服器
+plib_timeserv=時間伺服器
+plib_logserv=紀錄伺服器
+plib_swapserv=交換檔伺服器
+plib_rdpath=根目錄磁碟路徑
+plib_nisdom=NIS 網域名稱
+plib_nisserv=NIS 伺服器
+plib_fontserv=字型伺服器
+plib_xdmserv=XDM 伺服器
+plib_statrouters=靜態路由
+plib_ntpserv=NTP 伺服器
+plib_nbns=NetBIOS 名稱伺服器
+plib_nbscope=NetBIOS 範圍
+plib_nbntype=NetBIOS 節點類型
+
+eopt_header=客戶端選項
+eopt_subtitle=給子網路 $1
+eopt_returnsub=子網路列表
+eopt_snettitle=給共享網路 $1
+eopt_hosttitle=給主機 $1
+eopt_returnhost=主機列表
+eopt_grouptitle=給 $1 群組成員
+eopt_alltitle=給所有網路, 主機與群組
+eopt_returnindex=索引
+eopt_tabhdr=客戶端選項
+eopt_chost=客戶端者機名稱
+eopt_defrouters=預設路由器
+eopt_smask=子網路遮罩
+eopt_baddr=廣播位址
+eopt_domname=網域名稱
+eopt_dnsserv=DNS 伺服器
+eopt_timeserv=時間伺服器
+eopt_logserv=紀錄伺服器
+eopt_swapserv=交換檔伺服器
+eopt_rdpath=根目錄磁碟路徑
+eopt_nisdom=NIS 網域名稱
+eopt_nisserv=NIS 伺服器
+eopt_fontserv=字型伺服器
+eopt_xdmserv=XDM 伺服器
+eopt_statrouters=靜態路由
+eopt_ntpserv=NTP 伺服器
+eopt_nbns=NetBIOS 名稱伺服器
+eopt_nbs=NetBIOS 範圍
+eopt_nbntype=NetBIOS 節點類型
+
+

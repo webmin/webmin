@@ -1,0 +1,8 @@
+line2=Configuració del sistema,11
+slpd_conf=Camí del fitxer de configuració d'OpenSLP,0
+slpd_reg=Camí del fitxer d'enregistrament d'OpenSLP,0
+slpd_log=Camí del fitxer de registre d'OpenSLP,0
+slpd_pid=Camí del fitxer de PID d'OpenSLP,0
+slpd=Camí del dimoni executable d'OpenSLP,0
+start_cmd=Ordre per iniciar OpenSLP,3,Executa el dimoni
+stop_cmd=Ordre per aturar OpenSLP,3,Mata el procés

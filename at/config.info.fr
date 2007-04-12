@@ -1,0 +1,5 @@
+line2=Configuration du syst&#232;me,11
+at_style=Type de syst&#232;me At,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+at_dir=R&#233;pertoire des t&#226;ches At,0
+allow_file=Fichiers des utilisateurs At autoris&#233;s,3,Aucun
+deny_file=Fichiers des utilisateurs At interdits,3,Aucun

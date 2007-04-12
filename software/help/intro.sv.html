@@ -1,0 +1,43 @@
+<header>Programpaket</header>
+
+<h3>Introduktion till paket</h3>
+Ett programpaket är en samling filer som tillsammans utgör ett program. Dessa
+filer kan samlas ihop till en paketfil som kan distribueras och laddas ned
+och sedan packas upp, så att filerna kan placeras på rätt ställen när paketet
+installeras.
+
+<p>Ett pakethanteringssystem automatiserar mycket av installation och
+radering av program. Programmen i paketen är oftast färdigkompilerade, vilket
+gör att man inte behöver bry sig om några <tt>Makefiler</tt> eller
+<tt>konfigureringsscript</tt> när man installerar paketet.
+Pakethanteringssystemet håller reda på paketen och kan därför ta bort allt
+som hör till ett visst paket när det ska avinstalleras.
+
+<h3>Installerade paket</h3>
+Paketen är ordnade i klasser och underklasser, t ex <tt>System</tt> och
+<tt>X11/Utilities</tt>. Högst upp på startsidan finns ett träd med mappar
+och paket, där varje mapp representerar en klass. Klicka på en mapp för
+att öppna den och klicka på ett paketnamn för att få mer information om
+paketet.
+
+<p>Nedanför paketträdet finns ett sökformulär, där man kan skriva in text
+och sedan söka i paketdatabasen efter paket vars namn eller beskrivning
+matchar texten.
+
+<h3>Installera ett nytt paket</h3>
+Nedanför Sök-knappen finns ett formulär för att installera ett nytt paket.
+Man kan installera från en fil på systemet, en fil på datorn man kör
+webbrowsern på eller från en FTP- eller HTTP-url. I det senare fallet
+kommer Webmin att kontakta FTP- eller webservern och ladda ned paketfilen.
+Om systemet finns bakom en brandvägg är det viktigt att först kontrollera
+i modulen <i>Webmin-inställningar</i> att proxyservern är korrekt inställd.
+
+<h3>Identifiera en fil</h3>
+Längst ned på startsidan finns ett formulär för att identifiera en fil i
+systemet. Fyll i en absolut sökväg, t ex <tt>/etc/inetd.conf</tt>, eller ett
+kommando, t ex <tt>elm</tt>. Webmin kommer att leta efter filen i
+pakethanteringssystemet och visa information om filen och om de paket som
+använder den.
+
+<hr>
+

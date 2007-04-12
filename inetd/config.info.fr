@@ -1,0 +1,21 @@
+
+show_empty=Montrer les services sans programmes,1,1-Oui,
+
+
+line1=Options Configurables,11
+sort_mode=Trier les  services et les programmes par,1,0-Ordre dans le fichier,1-Nom,2-Attribution
+line2=Configuration du systeme,11
+inetd_conf_file=Fichier de configuration de Inetd,0
+inetd_dir=Repertoire de configuration de Inetd,3,Aucun
+extended_inetd=Support etendu d'Inetd,1,0-D'origine,1-De base,2-Ameliore
+rpc_inetd=Supporte les programmes RPC,1,1-Oui,0-Non
+qm_mode=Supporte les programmes serveur non-existants,1,1-Oui,0-Non
+ipv6=Supporte services IPv6,1,1-Oui,0-Non
+services_file=ficier des services Reseau,0
+rpc_file=Fichier des services RPC,0
+protocols_file=Fichiers des protocoles Reseau,0
+rpc_protocols=Sous-protocoles RPC,0
+restart_command=Commande pour redemarrer Inetd,0
+tcpd_path=Chemin complet vers tcpd,3
+allow_file=Chemin complet vers fichiers autorises tcpd,3
+deny_file=Chemin complet vers fichiers interdits tcpd,3

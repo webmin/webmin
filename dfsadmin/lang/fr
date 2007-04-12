@@ -1,0 +1,5 @@
+log_modify=Partage NFS $1 modifié
+log_rename=Partage NFS $1 modifié en $2
+log_create=Partage NFS $1 créé
+log_delete=Partage NFS $1 supprimé
+log_apply=Modifications appliquées

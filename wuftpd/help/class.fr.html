@@ -1,0 +1,17 @@
+<header>Usagers et Classes</header>
+
+Le serveur WU FTP vous permet de classifié les usagers basé sur l'adresse sur laquels ils sont quand ils ouvrent une session et sur leurs type d'usagers.  Les trois types sont:
+<ul>
+	<li><b>Unix</b> - Usagers normal sur votre système.
+	<li><b>Invité</b> - Usagers Unix qui sont considérés comme des invités.
+	<li><b>Anonyme</b> - Si disponible sur votre système, ce sont ceux qui ouvre une session en utilisant le nom d'usager <tt>ftp</tt> ou <tt>anonymous</tt>.
+</ul><p>
+
+La section du haut de cette page vous permet de définir le nom des classes, basé sur les types d'usagers ou l'adresse source.  Chaque ouverture de session est classé dans la première classe correspondante, alors les classes devoient être en ordre du plus au moins spécifique.  Les addresses IP correspondantes pour chaque classes peuvent être complète ou partiel, adresse réseau/masque de sous-réseau, nom d'hôtes complète ou partielle (comme <tt>*.foo.com</tt>) ou des fichiers contenant des adresses aditionnelles.  Tout les types d'adresses peut être précédé d'un ! pour l'inverser.<p>
+
+La section du centre de la page vous permet de contrôler quel usagers Unix sont considéré comme des invité.  Un usager invité a les mêmes droits qu'un usager normal Unix, mais restreint à un certain répertoire utilisant <tt>chroot</tt>.<p>
+
+La section du bas de la page contrôle quel usagers Unix et invité seront refusé d'accès sur le serveur FTP.  Vous pouvez spécifié les usagers par noms ou par numéro de groupe (comme <tt>%3000</tt> ou <tt>%3000-3010</tt>).<p>
+
+<hr>
+

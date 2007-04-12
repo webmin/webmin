@@ -1,0 +1,31 @@
+<header>Omflyttningsuppslagning</header>
+
+"Har flyttat"-filen innehåller den information som används i studsmeddelanden
+av typen &quot;user has moved to new_location&quot;.
+
+<p>Uppslagningarna är kastoberoende, dvs små och stora bokstäver behandlas
+lika.
+
+<p>Fältet &quot;Hänvisar till ...&quot; anger kontaktinformation, t ex en
+e-postadress, eller kanske en gatuadress eller ett telefonnummer. Det är
+något av följande:
+
+<ul>
+<li><tt>user@domain</tt>: Matchar <tt>user@domain</tt>. Denna form har
+högst prioritet.
+
+<li><tt>user</tt>: Matchar <tt>användare@site</tt> när site är
+<tt>$myorigin</tt>, finns i <tt>$mydestination</tt> eller i
+<tt>$inet_interfaces</tt>.
+
+<li><tt>@domain</tt>: Matchar alla adresser under domänen. Denna form har
+lägst prioritet.
+</ul>
+
+<p>ADRESSEXPANSION: Om adressen inte går att slå upp i tabellen och adressens
+lokala del innehåller en mottagarbegränsare (exempelvis
+<tt>användare+foo@domän</tt>), kommer sökningen
+att upprepas för den icke expanderade adressen (exempelvis
+<tt>användare@domän</tt>).
+
+<hr>

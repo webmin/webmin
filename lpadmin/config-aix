@@ -1,0 +1,13 @@
+iface_perms=711
+gs_lib=/usr/X11R6/lib/X11/fonts/Type1
+gs_fontpage=/usr/X11R6/lib/X11/fonts/Type1
+print_style=aix
+gs_path=gs
+smbclient_path=/usr/local/samba/bin/smbclient
+iface_arg=2
+driver_style=webmin
+show_status=0
+sort_mode=0
+display_mode=0
+show_jobs=0
+printcap_file=/etc/qconfig

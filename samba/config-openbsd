@@ -1,0 +1,16 @@
+alt_smb_conf=/usr/local/etc/smb.conf.default
+dont_convert=-499 root daemon bin sys adm lp smtp uucp nuucp listen nobody noaccess nobody4 pop lp mail postmaster news man games
+list_printers_command=lpc status | grep "[A-z0-9]:" | sed -e 's/://g'
+name_server=/usr/local/sbin/nmbd
+run_from_inetd=0
+samba_password_program=/usr/local/bin/smbpasswd
+samba_server=/usr/local/sbin/smbd
+samba_status_program=/usr/local/bin/smbstatus
+smb_conf=/usr/local/etc/smb.conf
+smb_passwd=/usr/local/private/smbpasswd
+text_lists=0
+swat_path=/usr/local/sbin/swat
+sort_mode=0
+smbgroupedit=/usr/local/bin/smbgroupedit
+pdbedit=/usr/local/bin/pdbedit
+net=/usr/local/bin/net

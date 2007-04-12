@@ -1,0 +1,38 @@
+<header>Anonimowe FTP</header>
+
+Pierwsza tabela umo¿liwia zdefiniowanie kartoteki, do której prze³±czy
+siê serwer za pomoc± <tt>chroot</tt> gdy loguje siê anonimowy u¿ytkownik.
+Dla ró¿nych klas mog± byæ u¿yte inne kartoteki. Je¿eli nie zdefiniowano
+¿adnej kartoteki, serwer FTP prze³±czy siê do katroteki home u¿ytkownika
+<tt>ftp</tt>.
+<p>
+
+Poniewa¿ serwer u¿ywa zewnêtrznych programów, takich jak <tt>ls</tt>
+i&nbsp;<tt>tar</tt>, anonimowa kartoteka "root" musi zawieraæ kartotekê
+<tt>bin</tt> z&nbsp;tymi programami, kartotekê <tt>lib</tt> zawieraj±c±
+wszystkie niezbêdne biblioteki dzielone, oraz kartotekê <tt>etc</tt>
+zawieraj±ca zbiory <tt>passwd</tt> i&nbsp;<tt>group</tt>. Kiedy serwer
+wykonuje <tt>chroot</tt>, by ograniczyæ dostêp jedynie do anonimowej
+kartoteki "root", to nie ma mo¿liwo¶ci dostêpu do ¿adnych programów poza t±
+kartotek±. 
+<p>
+
+Druga tabela umo¿liwa zdefiniowanie kartotek, do których serwer wykona
+<tt>chroot</tt> dla go¶ci. Dla ka¿dej kartoteki mo¿na okre¶liæ, których
+u¿ytkowników ona dotyczy poprzez wprowadzenie nazwy, UID (jak <tt>%3000</tt>)
+lub zakresu UID (jak <tt>%3000-3006</tt>). Je¿eli nie wprowadzono
+u¿ytkowników, to kartoteka bêdzie u¿yta dla wszystkich go¶ci.
+<p>
+
+Trzecia tabela umo¿liwia zdefiniowanie grupy Unixa, do której bêd±
+prze³±czeni u¿ytkownicy anonimowi (zamiast pierwotnej grupy u¿ytkownika
+<tt>ftp</tt>. Dla ka¿dej takie grupy mo¿na wybraæ jedn± lub wiêcej
+klas u¿ytkowników, na przyk³ad po to, by umo¿liwiæ dostêp do niektórych
+plików tylko spod okre¶lonych adresów IP.
+<p>
+
+U&nbsp;do³u strony definiujemy jakie has³a bêd± wymagane od anonimowych
+u¿ytkowników FTP. Tradycyjnie powinien to byæ prawid³owy adres email.
+<p>
+
+<hr>

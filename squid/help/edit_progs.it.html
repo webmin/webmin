@@ -1,0 +1,29 @@
+<header>Helper Programs</header>
+
+<b>FTP column width</b>: Default is 32.  Sets the width of ftp listings. This should be set to fit in the width of a standard browser. Setting this too small can cut off long filenames when browsing ftp sites.
+<p>
+<b>Anon FTP login</b>: Default is 'Squid@'.  If you want the anonymous login password to be more informative (and enable the use of picky ftp servers), set this to something resonable for your domain, like wwwuser@somewhere.net.<p>
+ The reason why this is domainless by default is that the request can be made on the behalf of a user in any domain, depending on how the cache is used. Some ftp server also validate that the email address is valid (for example perl.com).
+<p>
+<b>Squid DNS program</b>: Default is dnsserver.  Specify the location of the executable for dnslookup process.  The default is a non-blocking caching nameserver that is installed with Squid by default.
+<p>
+<b>Number of DNS programs</b>: Default is 5.  The number of processes spawned to service DNS name lookups. For heavily loaded caches on large servers, you should probably increase this value to at least 10.  The maximum is 32.
+<p>
+<b>Append domain to requests</b>: Default is off.  Normally the 'dnsserver' disables the RES_DEFNAMES resolver option (see res_init(3)).  This prevents caches in a hierarchy from interpreting single-component hostnames locally.  To allow dnsserver to handle single-component names, enable this option.
+<p>
+<b>DNS server addresses</b>: Default is to use the resolv.conf file.  Use this if you want to specify a list of DNS name servers (IP addresses) to use instead of those given in your /etc/resolv.conf file.
+<p>
+<b>Cache clearing program</b>: Default is 'unlinkd'.  Specify the location of the executable for file deletion process. This may not be needed if you are using async-io since it's handled by a thread in some versions.
+<p>
+<b>Squid ping program</b>: Defaults to 'pinger'.  Specify the location of the executable for the pinger process. This is only useful if you configured Squid (during compliation) with the '--enable-icmp' option.
+<p>
+<b>Custom redirect program</b>: Defaults to none.  Specify the location of the executable for the URL redirector. Since they can perform almost any function there isn't one included. See the Release-Notes for information on how to write one.
+<p>
+<b>Number of redirect programs</b>: Defaults to 5 if a redirector is configured.  The number of redirector processes to spawn. If you start too few Squid will have to wait for them to process a backlog of URLs, slowing it down. If you start too many they will use RAM and other system resources.
+<p>
+<b>Custom Authentication program</b>: Defaults to none.  Specify the command for the external authenticator.  Such a program reads a line containing "username password" and replies "OK" or "ERR" in an endless loop.  If you use an authenticator, make sure you have 1 acl of type proxy_auth.<p>
+If you want to use the traditional proxy authentication, set this line to something like /usr/bin/ncsa_auth /usr/etc/passwd.  Assuming ncsa_auth has been compiled and installed on your system.
+<p>
+<b>Number of authentication programs</b>: Defaults to 5 if an authenticator has been enabled.
+
+<hr>

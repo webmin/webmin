@@ -1,0 +1,107 @@
+index_title=Monitor Heartbeat
+index_return=al monitor heartbeat
+index_edir=El directori de configuració $1 de heartbeat no existeix. Pot ser que el Heartbeat no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_start=Inicia el Monitor Heartbeat
+index_startmsg=Fes clic sobre aquest botó per iniciar el procés monitor heartbeat. Això activarà el servei automàtic de fallades amb la configuració actual.
+index_apply=Aplica els Canvis
+index_applymsg=Fes clic sobre aquest botó per forçar la recàrrega de la configuració actual sobre el procés en execució.
+index_eha_cf=No s'ha trobat al sistema el fitxer $1 de configuració de heartbeat. Pot ser que encara no s'hagi copiat al seu lloc, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_eharesources=No s'ha trobat al sistema el fitxer de recursos $1. Pot ser que encara no s'hagi copiat al seu lloc, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_ehauthkeys=No s'ha trobat al sistema el fitxer $1 de claus d'autenticació. Pot ser que encara no s'hagi copiat al seu lloc, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_ereq_resource_cmd=No s'ha trobat al sistema el script per demanar recursos a l'altre node ($1). Pot ser que encara no estigui copiat al seu lloc, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_version=Heartbeat versió $1
+index_noversion=Atenció - No s'ha pogut detectar automàticament la versió de Heartbeat instal·lada al sistema. L'hauries de configurar a la pàgina de <a href='$1'>configuració del mòdul</a>.
+index_status=Estat de Heartbeat
+
+conf_title=Opcions de Configuració
+conf_header=Opcions de configuració de heartbeat
+conf_serial=Ports sèrie heartbeat
+conf_baud=Bauds del port sèrie
+conf_bcast=Interfícies Ethernet de heartbeat
+conf_none=Cap
+conf_udpport=Port UDP de heartbeat
+conf_mcast=Dispositiu heartbeat multiemissió
+conf_mcastv=Dispositiu $1, grup $2, port $3, TTL $4, loopback $5
+conf_enabled=Activat
+conf_disabled=Desactivat
+conf_keepalive=Temps entre batecs
+conf_nice_failback=Comportament per Defecte de Nice
+conf_secs=segons
+conf_deadtime=Temps abans de donar el node per mort
+conf_watchdog=Fitxer de dispositiu "gos guardià"
+conf_node=Hosts en el <i>cluster</i>
+conf_logfile=Fitxer de registre de heartbeat
+conf_logfacility=Utilitat de registre syslog
+conf_initdead=Temps inicial de mort
+conf_ok=Desa les Opcions
+conf_err=No he pogut desar les opcions
+conf_ebaud=Hi falta la velocitat en bauds o bé és invàlida
+conf_ebcast=No has introduït cap interfície de retransmissió heartbeat
+conf_ebcastif='$1' no és una interfície de retransmissió vàlida
+conf_eudpport=Hi falta el port de heartbeat o bé és invàlid
+conf_ekeepalive=Hi falta el temps entre batecs o bé és invàlid
+conf_edeadtime=Hi falta el temps de mort o bé és invàlid
+conf_ewatchdog=Hi falta el de dispositiu "gos guardià" o bé és invàlid
+conf_enonode=No has introduït cap host al <i>cluster</i>
+conf_ethisnode=El host $1 no és a la llista de hosts del <i>cluster</i>
+conf_elogfile=Hi falta el nom del fitxer de registre o bé és invàlid
+conf_einitdead=Hi falta el temps inicial de mort o bé és invàlid 
+conf_einitdead2=El temps inicial de mort ha de ser almenys el doble del temps abans de considerar mort un node
+conf_emcast_dev=Hi falta el dispositiu multiemissió o bé és invàlid
+conf_emcast_ip=Hi falta l'adreça multiemissió del grup
+conf_emcast_port=Hi falta el número del port multiemissió o bé és invàlid
+conf_emcast_ttl=Hi falta el temps de vida multiemissió o bé és invàlid
+conf_auto_on=${conf_enabled}
+conf_auto_off=${conf_disabled}
+conf_auto_legacy=Mode original
+conf_auto_=${default}
+
+res_title=Recursos del <i>Cluster</i>
+res_node=Node Primari
+res_ips=Adreces IP
+res_servs=Serveis del Node
+res_none=Cap
+res_nores=No hi ha cap recurs del <i>cluster</i> definit al sistema.
+res_add=Afegeix un recurs del <i>cluster</i>
+res_return=a la llista de recursos
+res_active=Estat del Recurs
+res_getserv=Obtingues Recurs
+res_hbdown=Heartbeat desactivat
+res_up=ACTIVAT
+res_down=DESACTIVAT
+
+node_create=Addició de Recurs de <i>Cluster</i>
+node_edit=Edició de recurs de <i>Cluster</i>
+node_header=Detalls del recurs de <i>cluster</i>
+node_node=Node primari del recurs
+node_ips=Adreces IP del recurs
+node_ip=Adreces IP
+node_cidr=CIDR de la màscara de xarxa
+node_broad=Adreça de retransmissió
+node_servs=Serveis del recurs
+node_serv=Servei
+node_args=Arguments addicionals
+node_err=No he pogut desar el recurs del <i>cluster</i>
+node_enone=Hi falta el node primari o bé és invàlid
+node_eip='$1' no és una adreça IP vàlida
+node_ecidr='$1' no és un CIDR vàlid
+node_ebroad='$1' no és una adreça de retransmissió vàlida
+
+auth_title=Claus d'Autenticació
+auth_header=Autenticació de node del <i>cluster</i>
+auth_mode=Mode d'autenticació
+auth_crc=CRC (Sense seguretat)
+auth_sha1=SHA1 amb contrasenya
+auth_md5=MD5 amb contrasenya
+auth_err=No he pogut desar les claus d'autenticació
+auth_emd5=Hi falta la contrasenya MD5 o bé és invàlida
+auth_esha1=Hi falta la contrasenya SHA1 o bé és invàlida
+
+start_err=No he pogut iniciar heartbeat
+
+apply_err=No he pogut aplicar els canvis
+apply_epid=El procés ja no esta`en execució
+
+
+
+

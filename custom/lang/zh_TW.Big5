@@ -1,0 +1,42 @@
+index_title=自訂的命令
+index_edit=編輯命令
+index_none=尚未定義任何自訂的命令
+index_create=建立新的自訂命令
+index_return=命令
+
+edit_title=編輯命令
+create_title=建立命令
+edit_ecannot=您不被允許編輯命令
+edit_details=命令細節
+edit_desc=描述
+edit_cmd=命令
+edit_user=以使用者執行
+edit_raw=命令是否以 HTML 輸出?
+edit_su=使用使用者的環境變數
+edit_params=命令參數
+edit_name=名稱
+edit_type=類別
+edit_quote=是否使用引號?
+edit_type0=文字
+edit_type1=使用者
+edit_type2=使用者編號 (UID)
+edit_type3=群組
+edit_type4=群組編號 (GID)
+edit_type5=檔案
+edit_type6=目錄
+edit_type7=選項...
+edit_type8=密碼
+
+save_err=儲存命令失敗
+save_ecannot=您不被允許編輯命令
+save_ecmd=沒有輸入命令
+save_edesc=沒有輸入描述
+save_euser=遺失或錯誤的使用者
+
+run_err=執行命令失敗
+run_ecannot=您不被允許執行這個命令
+run_euser=遺失或錯誤的使用者
+run_egroup=遺失或錯誤的群組
+run_title=執行命令
+run_out=從 $1 的輸出...
+run_noout=沒有產生輸出

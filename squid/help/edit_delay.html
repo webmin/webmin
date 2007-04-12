@@ -1,0 +1,10 @@
+<header>Delay Pools</header>
+<p>
+Delay pools provides a means a restrict bandwidth usage of clients.  With delay pools, clients can be restricted at the individual level, or in groups.  ACLs are used to apply bandwidth limits to users.
+<p>
+This page displays any existing pools, and their limits.  Also, there is a section for global options, which at this time only has one option.
+<p>
+<b>Initial bucket level</b>
+<br>
+Because of the way delay pools work, a new client could potentially be permitted to use more than their fair share of bandwidth because their new bucket would be empty.  In a congested network, this would mean that other connections from clients with nearly full buckets would be starved of bandwidth for some period of time.  This option defaults to 50%, and can likely be left alone, unless your <b>max</b> values are very large (the max value when configuring limits actually applies to the bucket size for the pool).
+

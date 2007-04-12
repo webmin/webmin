@@ -1,0 +1,103 @@
+<header>Blandade inställningar</header>
+
+<b>DNS-testadresser vid start</b>: DNS-servrar som Squid ska skicka
+förfrågningar till för att testa att DNS-uppslagningarna fungerar.
+
+<p><b>SIGUSR1-loggfilsrotationer</b>: Standardvärdet är 10 eller 0 beroende på
+systemet. Parametern anger det antal loggfilsrotationer som utförs när man
+skriver 'squid -k rotate'. Värdet 10 roterar alla filer med ändelser 0 till
+och med 9. Om variabeln logfile_rotate sätts till 0 kommer rotationen att
+slås av, men filerna kommer fortfarande att stängas och öppnas igen. Detta
+gör att man kan döpa om loggfilerna själv innan man skickar rotate-kommandot.
+
+<p>Observera att kommandot 'squid -k rotate' vanligtvis skickar en USR1-signal
+till den squid-process som körs. I vissa situationer (t ex på Linux med Async
+I/O) används USR1 till andra saker, så -k rotate skickar en annan signal. Det
+är bäst att du vänjer dig vid att skriva 'squid -k rotate' istället för
+'kill 'USR1 <pid>'.
+
+<p><b>Felmeddelandetext</b>: HTML-text som ska skickas med felmeddelanden.
+Ange gärna en "mailto"-URL till admin-adressen eller kanske bara en länk till
+företagets websida.
+
+<p>För att denna text ska skrivas in i felmeddelandena måste man skriva om
+felfilsmallarna (finns i katalogen "errors"). Där texten i 'err_html_text'
+ska stå sätter man in taggen %L i mallfilen.
+
+<p><b>Statistik per klient</b> Om man vill slå av funktionen att samla in
+statistik per klient slår man av client_db här.
+
+<p><b>X-Forwarded-For-rubrik</b>: Standardinställningen är 'på'. Squid
+skickar med systemets IP-adress eller namn i de HTTP-förfrågningar den skickar
+vidare om parametern är påslagen. Detta är standardutseendet:
+
+<p><center>X-Forwarded-For: 192.1.2.3</center>
+
+<p>Om inställningen är avslagen ser det ut så här:
+
+<p><center>X-Forwarded-For: unknown</center>
+
+<p><b>Logga ICP-uppslagningar</b>: Standardinställningen är 'på'. 
+IP-uppslagningar loggas till access.log om parametern är påslagen. Om ens
+ICP-trafik är mycket hög är det bra att slå av denna för att snabba upp
+systemet eller för att förenkla logganalyser.
+
+<p><b>Minimalt antal direkta hops</b>: Standardvärdet är 4. Om man använder
+ICMP-ping bör man utföra direkta hämtningar för siter som är närmre än detta
+antal hops bort.
+
+<p><b>Spara minne för framtida bruk</b>: Standardinställningen är 'ja'.
+Om detta är påslaget kommer Squid att hålla en del allokerat, men outnyttjat,
+minne tillgängligt för framtida bruk. Om du har ont om minne och tror att ditt
+malloc-bibliotek presterar bättre än Squid-rutinerna bör du slå av denna
+inställning.
+
+<p><b>Sparad minnesmängd</b>: Standardinställningen är 'Obegränsad'. Om värdet
+sätts till något tal skilt från noll kommer Squid spara högst så mycket
+allokerat, outnyttjat minne i minnesbankar. Alla free()-förfrågningar som
+överstiger denna gräns kommer att hanteras av malloc-biblioteket. Squid
+allokerar inte minne i förväg utan sparar endast objekt som annars skulle
+kastas av free(). Det är alltså ofarligt att sätta en ganska hög gräns, även
+om systemet använder mindre minne.
+
+<p>Om inget värde (standard) eller värdet noll angivits, kommer Squid att
+spara så mycket minne som möjligt så att det alltså inte finns någon
+begränsning för den minnesmängd som används för att spara objekt.
+
+<p><b>Huvuden som släpps igenom</b>: Standardinställningen är 'Alla'. Denna
+inställning ersätter den gamla 'http_anonymizer'-variabeln med en som går att
+konfigurera i större utsträckning. Nu går det att ange precis de huvuden som
+är eller inte är tillåtna och vilka som ska tas bort från utgående
+förfrågningar.
+
+<p>Det finns två sätt att använda denna inställning; antingen släppa igenom
+vissa, angivna huvuden (och därmed spärra alla andra) eller spärra vissa,
+angivna huvuden (och därmed släppa igenom alla andra).
+
+<p><b>Förfalska användarprogram</b>: Standardinställningen är 'inget'. Om
+User-Agent-huvudet filtreras med inställningen <b>Huvuden som släpps igenom</b>
+kommer det att medföra att en del webservrar inte svarar på förfrågningar.
+Denna inställning används för att förfalska ett huvud.
+
+<p><b>HTTP Accel-dator</b>: Standardinställningen är 'ingen'. Om man vill
+köra Squid som en httpd-accelerator ska adressen till HTTP-servern anges här.
+
+<p><b>HTTP Accel-port</b>: Standardinställningen är 'ingen'. Om inställningen
+<b>HTTP Accel-dator</b> används måste också HTTP-serverns port anges här.
+
+<p><b>HTTP Accel med proxy</b>: Standardinställningen är 'av'. Slå på denna
+om Squid ska användas som en vanlig proxy samtidigt som den ska agera
+HTTP-accelerator. Den bör också slås på om transparent proxying används.
+
+<p><b>HTTP Accel använder Host-huvud</b>: Standardinställningen är 'av'.
+HTTP/1.1-förfrågningar innehåller ett Host:-huvud, som i grund och botten är
+datornamnet i URL:en. Squid kan agera accelerator för flera HTTP-servrar
+genom att titta på detta huvud. Squid kontrollerar dock INTE värdet för detta
+Host-huvud, vilket utgör ett enormt säkerhetshål. Vi rekommenderar att denna
+inställning förblir avslagen om man inte verkligen vet vad man håller på med.
+
+<p>Det är dock nödvändigt att slå på den om Squid körs som en transparent
+proxy, annars kommer inte virtuella servrar, som behöver Host-huvudet, att
+cachas ordentligt.
+
+<hr>

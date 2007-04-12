@@ -1,0 +1,11 @@
+postfix_lookup_table_command=Повний шлях до команди керування таблицею пошуку Postfix ('postmap'),0
+postfix_config_command=Повний шлях до програми настроювання Postfix,0
+line1= параметри, ЩоНалаштовуються,11
+line2=Системні параметри,11
+postfix_newaliases_command=Повний шлях до команди &quot;newaliases&quot; (сумісна з Sendmail),0
+perpage=Кількість повідомлень, відображуваних на одній сторінці,0,6
+max_records=Максимальна кількість показуваних користувачів пошти,0,6
+postfix_aliases_table_command=Повний шлях до програми створення псевдонімів Postfix,0
+postfix_config_file=Повний шлях до файлу настроювань Postfix,0
+postfix_control_command=Повний шлях до програми керування Postfix,0
+

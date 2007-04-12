@@ -1,0 +1,17 @@
+name=UpDown
+desc=Upload and Download
+longdesc=Upload multiple files to the server, and download multiple URLs either immediately or in the background at a scheduled time.
+desc_ca=Càrregues i Descàrregues
+desc_de=Upload und Download
+desc_zh_TW.Big5=¤W¶Ç©M¤U¸ü
+desc_ms=Muatnaik dan Muaturun
+desc_ru_SU=úÁÇÒÕÚËÁ É ÓÏÈÒÁÎÅÎÉÅ
+desc_ru_RU=Çàãğóçêà è ñîõğàíåíèå
+desc_sk=Upload a Download
+desc_fr=Upload et Download
+desc_tr=Yükleme ve İndirme
+desc_es=Cargas y Descargas
+readonly=1
+desc_hu=Feltötlés és Letöltés
+desc_nl=Uploaden en Downloaden
+desc_zh_TW.UTF-8=ä¸Šå‚³å’Œä¸‹è¼‰

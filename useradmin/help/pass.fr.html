@@ -1,0 +1,33 @@
+<header>Mot de passe</header>
+
+Quand un utilisateur ouvre une session par telnet ou sur la console, il
+doit normalement fournir un mot de passe. Il y a quatre options différentes
+pour le mot de passe :
+
+<ul>
+<if $config{'empty_mode'} == 1>
+<li><b>Demander le mot de passe à la première ouverture de session</b><br>
+    Quand l'utilisateur ouvre une session pour la première fois par telnet
+    ou sur la console, le système va lui demander sont mot de passe. <p>
+</if>
+<if $config{'empty_mode'} == 0>
+<li><b>Aucun mot de passe requis</b><br>
+    Cet utilisateur peut ouvrir une session sans fournir de mot de passe.
+    Cette option doit être utilisée avec précautions. <p>
+</if>
+<li><b>Aucune ouverture de session permise</b><br>
+    Si cette option est choisie, l'utilisateur ne pourra pas du tout ouvrir
+    de session sur le système, même pour consulter ses mails sur un serveur
+    POP3. <p>
+<li><b>Mot de passe crypté</b><br>
+    Les mots de passe Unix sont enregistrés sous une forme cryptée. Cette
+    option permet d'entrer le mot de passe pour un utilisateur sous sa forme
+    déjà crypté (en le prenant du fichier de mots de passe d'un autre
+    système par exemple). <p>
+<li><b>Mot de passe en texte clair</b><br>
+    Pour définir le mot de passe d'un utilisateur, seléctionnez cette option
+    et entrez-le dans le champ de texte. Webmin l'encryptera et
+    l'enregistrera dans le fichier des mots de passe. <p>
+</ul>
+<hr>
+

@@ -1,0 +1,193 @@
+index_title=Running Processes
+index_display=Display
+index_tree=PID
+index_user=User
+index_size=Memory
+index_cpu=CPU
+index_search=Search
+index_zone=Zone
+index_run=Run..
+index_return=process list
+index_mem2=<b>Real memory:</b> $1 total / $2 free
+index_swap2=<b>Swap space:</b> $1 total / $2 free
+index_loadname=CPU load averages:
+index_loadnums=$1 (1 mins) , $2 (5 mins) , $3 (15 mins)
+index_cpuname=CPU type:
+index_inzone=In zone $1
+
+pid=Process ID
+owner=Owner
+command=Command
+cpu=CPU
+size=Size
+parent=Parent process
+runtime=Run time
+nice=Nice level
+stime=Started
+
+search_user=Owned by
+search_match=Matching
+search_cpupc=Using more than $1% CPU
+search_fs=Using filesystem
+search_files=Using file
+search_submit=Search
+search_none=No matching processes found.
+search_kill=Send Signal
+search_ignore=Ignore search processes in result
+search_return=search form
+search_sigterm=Terminate Processes
+search_sigkill=Kill Processes
+search_port=Using port
+search_protocol=protocol
+search_ip=Using IP address
+
+run_command=Command to run
+run_submit=Run
+run_mode=Run mode
+run_bg=Run in background
+run_fg=Wait until complete
+run_input=Input to command
+run_title=Command Output
+run_output=Output from $1 ..
+run_none=No output generated
+run_ecannot=You are not allowed to run commands
+run_as=Run as user
+run_euser=Missing or invalid username
+run_euser2=You are not allowed to run commands as the selected user
+
+edit_title=Process Information
+edit_gone=This process is no longer running
+edit_sub=Subprocesses
+edit_kill=Send Signal
+edit_change=Change
+edit_prilow=Low priority
+edit_prihigh=High priority
+edit_pridef=Default
+edit_none=None
+edit_ecannot=You are not allowed to edit processes
+edit_sigterm=Terminate
+edit_sigkill=Kill
+edit_sigstop=Suspend
+edit_sigcont=Resume
+edit_open=Files and Connections
+edit_trace=Trace Process
+edit_return=process details
+
+kill_err=Failed to send signal $1 to process $2
+kill_title=Send Signal
+kill_sent=sent
+kill_ecannot=You are not allowed to kill processes
+
+renice_err=Failed to renice process $1
+renice_ecannot=You are not allowed to renice processes
+
+linux_pri=Priority
+linux_tty=TTY
+linux_status=Status
+linux_wchan=Waiting In
+linux_mem=Memory
+linux_group=Group
+linux_ruser=Real user
+linux_rgroup=Real group
+linux_pgid=Process group ID
+linux_stime=$stime
+
+linuxstat_R=Running
+linuxstat_S=Sleeping
+linuxstat_D=Deep sleep
+linuxstat_T=Stopped
+linuxstat_Z=Zombie
+
+freebsd_ruser=Real user
+freebsd_rgroup=Real group
+freebsd_tty=TTY
+freebsd_pgid=Process group
+freebsd_stime=$stime
+freebsd_lim=Memory limit
+
+hpux_pri=Priority
+hpux_tty=TTY
+hpux_status=Status
+hpux_wchan=Waiting for
+hpux_stime=$stime
+
+hpuxstat_0=Nonexistent
+hpuxstat_S=Sleeping
+hpuxstat_W=Waiting
+hpuxstat_R=Running
+hpuxstat_I=Intermediate
+hpuxstat_Z=Zombie
+hpuxstat_T=Stopped
+hpuxstat_G=Growing
+
+macos_tty=TTY
+
+sysv_group=Group
+sysv_ruser=Real user
+sysv_rgroup=Real group
+sysv_pgid=Process group ID
+sysv_tty=TTY
+sysv_stime=$stime
+sysv_task=Task ID
+sysv_zone=Zone name
+
+log_run=Ran command "$1"
+log_kill=Sent signal $1 to process $2
+log_kills=Send signal $1 to $2 processes
+log_kill_l=Sent signal $1 to process $2
+log_kills_l=Sent signal $1 to processes<br>$2
+
+acl_manage=Manage processes as user
+acl_manage_def=Current Webmin user
+acl_edit=Can kill and renice processes?
+acl_run=Can run commands?
+acl_only=Can only see own processes?
+acl_who=Can manage processes for users
+acl_who0=All users
+acl_who1=Current Webmin user
+acl_who2=Listed users ..
+
+kill_kill=Kill Process
+kill_term=&nbsp;Terminate&nbsp;&nbsp;
+kill_hup=&nbsp;&nbsp;Restart&nbsp;&nbsp;&nbsp;
+kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;&nbsp;
+kill_cont=&nbsp;&nbsp;Continue&nbsp;&nbsp;
+
+open_title=Open Files and Connections
+open_proc=For process $1 (PID $2)
+open_header1=Open files
+open_header2=Open network connections
+open_type=Type
+open_proto=Protocol
+open_desc=Details
+open_fd=File Descriptor
+open_listen1=Listening on port $1
+open_listen2=Listening on address $1 port $2
+open_recv=Receiving on $1:$2
+open_conn=Connected from $1 to $2 in state $3
+open_cwd=Current dir
+open_rtd=Root dir
+open_txt=Program code
+open_mem=Shared library
+open_dir=Directory
+open_reg=Regular file
+open_chr=Character special
+open_blk=Block special
+open_size=File size
+open_inode=Inode
+open_file=Path
+
+trace_title=Trace Process
+trace_start=Starting system call trace for $1 ..
+trace_doing=System call trace for $1 :
+trace_done=.. process has terminated.
+trace_failed=.. tracing failed!
+trace_sorry=This page requires Java support in your browser. To use a text-only process trace, adjust the module configuration.
+trace_syscalls=Trace system calls:
+trace_all=All
+trace_sel=Listed..
+trace_change=Change
+
+windows_threads=Threads in process
+
+syslog_dmesg=Kernel messages

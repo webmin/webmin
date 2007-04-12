@@ -1,0 +1,20 @@
+<header>Filesystem Backup</header>
+
+This module allows you to backup and restore entire filesystems using the
+<tt>dump</tt> and <tt>restore</tt> family of commands. Filesystem backups are
+normally made to tape, but can also be saved to a file on another filesystem
+if you do not have a tape drive. <p>
+
+On some operating systems, the <tt>tar</tt> command will be used instead when
+backing up a filesystem that does not have a native <tt>dump</tt>. For example,
+NFS, FAT and Reiserfs have no filesystem-specific backup commands. The
+<tt>tar</tt> format cannot store certain advanced file information,
+such as ACLs, EXT and XFS attributes, so it is preferable to use the
+<tt>dump</tt> format where possible. <p>
+
+The main page of the module contains a list of configured backups
+(if any), a button for adding a new backup and a button for restoring a backup
+of some filesystem type. <p>
+
+<hr>
+

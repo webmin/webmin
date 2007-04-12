@@ -1,0 +1,6 @@
+lease=5
+hwtime=0
+seconds=1
+timeserver_hardware=1
+zone_style=solaris
+ntp_only=0

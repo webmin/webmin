@@ -1,0 +1,4 @@
+---- Changes since 1.180 ----
+If a user exists in the LDAP database instead of the local password file, he will be updated there instead.
+---- Changes since 1.280 ----
+Added an access control option to exclude users from the list of those whose passwords can be changed, if allowing by group membership.

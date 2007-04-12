@@ -1,0 +1,23 @@
+<header>Propietats LDAP per a tots els usuaris modificats</header>
+
+Aquesta opció es pot utilitzar per a especificar propietats que s'actualitzaran
+en els usuaris LDAP quan aquests es modifiquin. S'han d'introduir amb el
+següent format: <p>
+
+nom1: valor<br>
+nom2: valor<br>
+<p>
+
+Es poden utilitzar les substitucions següents, que es reemplacen quan es desa
+l'usuari: <p>
+
+${USER}	El nom d'usuari<br>
+${PLAINPASS} La contrasenya no xifrada de l'usuari, si n'hi ha<br>
+${REAL} El nom real de l'usuari<br>
+${UID} El número UID Unix de l'usuari<br>
+${GID} El número GID Unix del grup de l'usuari<br>
+${HOME} EL directori arrel de l'usuari<br>
+${SHELL} La shell d'entrada de l'usuari<br>
+<p>
+<footer>
+

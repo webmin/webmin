@@ -1,0 +1,18 @@
+<header>Procesos en Ejecución - Vista por Memoria</header>
+
+Esta página muestra todos los procesos en ejecución clasificados por uso de
+memoria. Para cada proceso se muestra la PID, propietario, medida en kB y el
+comando. Haz click en la PID para mostrar más información acerca del proceso
+en ejecución. <p>
+
+Esta vista puede ser útil para buscar qué comandos están usando excesiva
+cantidad de memoria bajo tu sistema. Sin embargo, la memoria utilizada puede
+ser áltamente poco significativa para procesos como el servidor X que puede
+incluir búfers de marco mapeados en su utilización de memoria. Múltiples
+instancias del mismo proceso (como <tt>httpd</tt> o <tt>bash</tt>) comparten
+mucha de su memoria, haciendo aparecer la utilización total mayor de lo que
+realmente es. <p>
+
+<include overview.es>
+<hr>
+

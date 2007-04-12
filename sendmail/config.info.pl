@@ -1,0 +1,23 @@
+sendmail_cf=Pe³na ¶cie¿ka do sendmail.cf,8
+sendmail_pid=Pe³na ¶cie¿ka do pliku z PID sendmaila,8
+sendmail_command=Polecenie uruchamiaj±ce sendmaila jako server,0
+sendmail_stop_command=Polecenie zatrzymuj±ce sendmaila,3,Zabij proces
+mailq_refresh=Przed od¶wie¿eniem kolejki czekaj sekund,3,Nie od¶wie¿aj
+perpage=Liczba wiadomo¶ci na stronie,0
+wrap_width=£am linie wiadomo¶ci w kolumnie,0
+sort_mode=Wy¶wietlaj tabele wg,1,0-Porz±dku w zbiorze,1-Nazwy
+send_mode=Wysy³aj pocztê ³±cz±c siê z,3,Programem sendmail
+order_mail=Czytaj±c pocztê zacznij od,1,0-Najnowszej,1-Najstarszej
+makemap_path=Polecenie <tt>makemap</tt>,0
+sendmail_path=Polecenie <tt>sendmail</tt>,0
+alias_file=Pe³na ¶cie¿ka do pliku aliasów sendmaila,3,Automatycznie
+virtusers_file=Plik ¼ród³owy bazy danych <tt>virtusers</tt>,3,Ten sam co DBM
+mailers_file=Plik ¼ród³owy bazy danych <tt>mailertable</tt>,3,Ten sam co DBM
+generics_file=Plik ¼ród³owy bazy danych <tt>generics</tt>,3,Ten sam co DBM
+access_file=Plik ¼ród³owy bazy danych <tt>access</tt>,3,Ten sam co DBM
+domains_file=Plik ¼ród³owy bazy danych <tt>domains</tt>,3,Ten sam co DBM
+mail_dir=Skrzynki pocztowe u¿ytkowników,3
+smrsh_dir=Katalog SMRSH,3,Brak
+wrap_mode=Tryb zawijania w&nbsp;polach tekstowym poczty,1,-Domy¶lne,wrap=on-W³±czone,wrap=off-Wy³±czone,wrap=auto-Automatycznie 
+track_read=¦ledzenie przeczytanych/nieprzeczytanych wiadomo¶ci,1,1-Tak,0-Nie
+show_to=Pokazywaæ adresy To: w&nbsp;skrzynkach pocztowych?,1,1-Tak,0-Nie

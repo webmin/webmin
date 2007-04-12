@@ -1,0 +1,3 @@
+frox=/usr/local/sbin/frox
+frox_conf=/usr/local/etc/frox.conf
+alt_frox_conf=/usr/local/etc/frox.conf.sample

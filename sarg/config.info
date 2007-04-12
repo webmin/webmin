@@ -1,0 +1,3 @@
+sarg=Full path to sarg executable,0
+sarg_conf=Full path to SARG configuration file,0
+naked=Add Webmin header and footer to SARG report?,1,0-Yes,1-No

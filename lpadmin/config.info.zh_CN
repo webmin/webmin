@@ -1,0 +1,10 @@
+print_style=打印机配置类型,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare
+driver_style=打印机驱动类型,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX
+printcap_file=打印机文件,3,无
+model_path=接口程序所在目录,3,空
+smbclient_path=smbclient的路径,3,空
+gs_path=ghostscript的路径,3,空
+gs_fontpath=Ghostscript字体所在目录,3,缺省
+gs_lib=Ghostscript库所在目录,3,缺省
+hpnp_path=hpnp程序的路径,3,空
+show_status=显示允许运行和接受的状态而不是驱动?,1,1-是,0-否

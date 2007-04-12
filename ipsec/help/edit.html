@@ -1,0 +1,57 @@
+<header>Edit or Create Connection</header>
+
+This page allowes you to create a new IPsec connection, or edit the
+details of an existing one. A connection with the same settings must be
+created on the systems at both ends of the VPN tunnel that you want to create.
+<p>
+
+Fields in the <b>IPsec VPN connection details</b> section that must be provided
+for each connection and their recommended settings are listed below :
+<dl>
+<dt><b>Connection name</b>
+<dd>A short name for this connection with no spaces.
+<dt><b>At IPsec startup</b>
+<dd>If <b>Add connection</b> is chosen, this connection will only be established
+    when explicity started. If <b>Start connection</b> is chosen then it will
+    be launched as soon as the IPsec server is started. The former option is
+    best for tunnels to remote systems that are only periodically active, while
+    the latter is suitable for permanent VPN links.
+<dt><b>Compress data?</b>
+<dd>Should be left set to <b>Default</b>.
+<dt><b>Connection type</b>
+<dd>Should also be left set to <b>Default</b>.
+</dl>
+
+Addtional information must be supplied for the systems on either end of the
+connection. This must be the same on both systems, although generally the
+<b>Local</b> and <b>Remote</b> details are swapped so that the settings for
+this host are always in the <b>Local or left system's settings</b> section.
+The fields in each section and their suggested settings are :
+<dl>
+<dt><b>Public IP address</b>
+<dd>This field should be set to the fixed IP address of the system, or 
+    <b>Automatic</b> for a host whose IP is dynamically assigned. Both the local
+    and remote sections cannot have this field set to <b>Automatic</b> at the
+    same time though.
+<dt><b>System identifier</b>
+<dd>The <b>Hostname</b> option should be selected and the system's hostname
+    entered into the text field. FreeSWAN uses this setting to determine which
+    section of the connection applied to which host.
+<dt><b>Private subnet behind system</b>
+<dd>If this system has an internal network connected to it that the other
+    host should be granted access to, enter a network address and prefix length
+    (like <i>192.168.1.0/24</i>) into this field.
+<dt><b>System's public key</b>
+<dd>You should generally select <b>Entered below</b> and enter the system's
+    RSA public key into the text box. This can be seen on the <b>Show Public
+    Key</b> page on that system.
+<dt><b>Next hop to other system</b>
+<dd>Unless you have an unusual network setup, this field should be set to
+    <b>Default route</b>.
+</dl>
+
+After creating or editing a connection, the <b>Apply Configuration</b> button
+on the module's main page must be used to activate the changes. <p>
+
+<hr>
+

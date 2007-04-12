@@ -1,0 +1,20 @@
+<header>Alias-databaser som används av den lokala e-posthanteraren</header>
+
+<center><tt>alias_maps</tt></center>
+<hr>
+
+Denna parameter anger en lista över de alias-databaser som den lokala e-posthanteraren
+använder. Standardlistan är systemberoende. System som använder NIS har som standard att
+söka igenom den lokala alias-databasen, sedan NIS-alias-databasen. Se <a href=aliases>alias</a>
+för information om syntax.
+
+<p>Typiska inställningar är:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>hash:/etc/postfix/aliases</tt>
+<li> <tt>hash:/etc/aliases, nis:mail.aliases</tt>
+</ul>
+
+<hr>
+

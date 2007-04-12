@@ -1,0 +1,9 @@
+desc=Cluster Copy Files
+category=cluster
+depends=cron
+longdesc=Schedule the transfer of files from this server to multiple servers in a Webmin cluster.
+desc_de=Cluster - Dateien kopieren
+desc_ca=Còpia de Fitxers de Cluster
+desc_fr=Copie des fichiers des clusters
+desc_es=Cluster - Copia de Ficheros
+desc_nl=Cluster - Bestanden kopi&euml;ren

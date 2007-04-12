@@ -1,0 +1,64 @@
+index_title=ADSL客戶端
+index_eadsl=在您的系統上找不到或RP-PPPoE $1指令錯誤，也許尚未安裝或您的 <a href='$2'>模組組態</a>不正確。
+index_econfig=在您的系統上找不到RP-PPPoE ADSL 組態檔 $1 ，也許尚未安裝或您的 <a href='$2'>模組組態</a>不正確。
+index_emodem=目前的數據機組態檔案是適用在Redhat Linux上，不是個ADSL連線，用<a href='$2'>模組組態</a>頁來選擇在$1其他的<tt>ifcfg-ppp*</tt>檔案，或是模組可以為您產生個原先未存在的檔案。
+index_stop=停用ADSL
+index_stopdesc=您的ADSL連線目前已經啟用，IP位置為$1，按此按鈕以指令$2來停用。
+index_start=啟動ADSL
+index_startdesc=您的ADSL連線目前已停用，按此按鈕以指令$1來啟用。
+index_boot=開機時啟動
+index_bootdesc=變更此選項來選擇是ADSL連線否在開機時啟用。
+index_return=模組索引
+index_version=RP-PPPoE 版本$1
+index_esetup=在您的系統上找不到 Redhat ADSL 組態檔 $1，不過，按下方按鈕，模組可以以預設的方式建立檔案。
+index_setup=設定組態檔
+index_cancel=取消連線
+index_canceldesc=ADSL客戶端目前正在嘗試連線，按此按鈕以指令$1來取消。
+index_header=ADSL客戶端組態選項
+index_desc=下方設定是在您系統上用於啟用所有新的ADSL連線，如果您更改此處，連線必須停用和重新啟用，修改項目才會生效。
+index_eth=乙太網路介面
+index_other=其他..
+index_demand=要求連線?
+index_timeout=是, 逾時時間
+index_secs=秒
+index_user=使用者帳戶
+index_sec=使用者密碼
+index_dns=從ISP取得DNS組態?
+index_save=儲存設定
+index_mss=限制封包大小?
+index_psize=是,大小為
+index_bytes=位元組
+index_fw=連線時起用防火牆
+index_fw_none=無
+index_fw_standalone=用於單一主機
+index_fw_masquerade=用於NAT gateway
+index_connect=嘗試連線時間
+index_forever=持續
+
+start_err=啟用ADSL連線失敗
+start_title=啟用ADSL
+start_ip=ADSL已經以IP位置$1連線。
+start_demand=因為連線要求已啟用,您的ADSL連線只會在需要時起用。
+start_bg=ADSL連線在20未成功連線，ADSL客戶端會在背景持續嘗試連線直到成功為止。
+
+save_err=儲存ADSL組態檔失敗
+save_eeth=錯誤或無效的乙太網路介面
+save_etimeout=錯誤或無效的要求時間
+save_euser=錯誤或無效的使用者名稱
+save_econnect=錯誤或無效的連線逾時時間
+save_emss=錯誤或無效的最大封包大小
+save_title=儲存組態
+save_desc=ADSL客戶端組態已經成功儲存，不過此組態不會在下次重新連線前生效。
+
+stop_err=停用ADSL連線失敗
+stop_title=停用ADSL
+stop_ok=ADSL連線已成功停用
+stop_failed=ADSL連線因為某些理由持續連線!
+
+log_save=儲存客戶端組態
+log_stop=停用ADSL
+log_start=啟用ADSL
+log_bootup=在開機時啟用ADSL
+log_bootdown=取消在開機時啟用ADSL
+log_setup=設定預設組態檔
+

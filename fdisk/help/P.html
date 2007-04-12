@@ -1,0 +1,8 @@
+<header>Reprogram best PIO</header>
+Attempt to reprogram the IDE interface chipset for the specified PIO mode, or attempt to auto-tune for the "best" PIO mode supported by the drive.<p>
+
+This feature is supported in the kernel for only a few "known" chipsets, and even then the support is iffy at best.  Some IDE chipsets are unable to alter the PIO mode for a single drive, in which case this flag may cause the PIO mode for both drives to be set.  Many IDE chipsets support either fewer or more than the standard six (0 to 5) PIO modes, so the exact speed setting that is actually implemented will vary by chipset/driver sophistication.<p>
+
+<i>Use with extreme caution!</i><br>
+This feature includes zero protection for the unwary, and an unsuccessful outcome may result in <i>severe filesystem corruption!</i>
+<hr>

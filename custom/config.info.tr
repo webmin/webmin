@@ -1,0 +1,6 @@
+line1=Yapýlandýrýlabilir seçenekler,11
+display_mode=Ana sayfada neler gösterilsin,1,0-Bütün komutlar ve parametreleri,1-Komutlarýn linkleri
+width=Dosya düzenleyicisi penceresinin geniþliði,3,Öntanýmlý (80 karakter)
+height=Dosya düzenleyicisi penceresinin yüksekliði,3,Öntanýmlý (20 karakter)
+line2=Sistem yapýlandýrmasý,11
+su_shell=<tt>su</tt> komutu -s kabul seçeneðini desteklesin mi?,1,1-Evet,0-Hayýr

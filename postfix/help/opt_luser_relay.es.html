@@ -1,0 +1,37 @@
+<header>Dirección destino para destinatarios desconocidos</header>
+
+<center><tt>luser_relay</tt></center>
+<hr>
+
+Este parámetro especifica una dirección opcional de destino para
+destinatarios desconocidos. Por defecto, el correo para destinatarios
+locales desconocidos es enviado.
+
+<p>
+
+Se realizan las siguientes expansiones:
+
+<ul>
+<li><tt>$user</tt> (nombre de usuario de destinatario),
+<li><tt>$shell</tt> (shell de destinatario),
+<li><tt>$home</tt> (directorio inicial de destinatario),
+<li><tt>$recipient</tt> (dirección completa de destinatario),
+<li><tt>$extension</tt> (extensión de dirección de destinatario),
+<li><tt>$domain</tt> (dominio de destinatario),
+<li><tt>$local</tt> (parte local completa de destinatario),
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Especifica <tt>${name?value}</tt> o <tt>${name:value}</tt> para expandir el valor
+sólo cuando <tt>$name</tt> (no) exista.
+
+<p>
+
+Ejemplos:
+<ul>
+<li><tt>$user@otra.máquina</tt>
+<li><tt>$local@otra.máquina</tt>
+<li><tt>admin+$local</tt>
+</ul>
+
+<hr>

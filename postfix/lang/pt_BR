@@ -1,0 +1,465 @@
+index_title=Configuração do Postfix
+index_epath=O comando de controle do Postfix $1 não está instalado em seu sistema. Cheque se a <a href='$2'>configuração do módulo</a> não está correta, ou se o Postfix não está instalado.
+
+internal_error=Erro Interno
+index_econfig=O comando de configuração do Postfix $1 não existe. Cheque se a <a href='$2'>configuração do módulo</a> está incorreta.
+index_stop=Parar o Postfix
+index_start=Iniciar o Postfix
+index_stopmsg=Clique neste botão para parar a execução do Servidor de Email Postfix. Isto irá parar a entrega de mensagens vindas de outros sistemas aos usuários locais, e impede que usuários usando este servidor como Servidor de Email enviem mensagens.
+index_startmsg=Clique neste botão para iniciar o Servidor de Email Postfix. Até que isto seja feito os usuários locais não estarão recebendo mensagens vindas de outros sistemas, e clientes não poderão usar este Servidor como sistema de Email.
+index_version=Postfix versão $1
+opts_err=Falhou salvando as configurações
+
+check_error=Erro checando a configuração atual do Postfix. Por favor fixe a configuração manualmente.
+
+address_rewriting_title=Reescrevendo e Mascarando endereços
+address_rewriting_ecannot=Você não tem permissão para editar Reescrevendo e Mascarando Endereços
+aliases_title=Aliases de Email
+aliases_ecannot=Você não tem permissão para editar Aliases
+aliases_no_alias_file=Arquivos de Aliases não existe
+aliases_failed_delete=Falha para deletar alias: $1
+aliases_cant_write=Não foi possível escrever no arquivo de alias
+aliases_cant_read=Não foi possível ler arquivo de alias
+aliasopts_title=Opções de Aliases
+aliases_internal_error=Aliases: erro interno
+edit_alias_title=Editando Propriedades de Alias
+alias_save=Salvar Alias
+alias_save_err=Falha para salvar alias
+alias_delete_create=Você quer deletar um alias que está criando atualmente !?
+delete_alias=Deletar Alias
+aliases_click=Clique em qualquer alias para editar suas propriedades:
+
+general_title=Opções Gerais
+general_title_sensible=Opções Gerais mais usadas
+general_title_others=Outras Opções Gerais
+general_ecannot=Você não tem permissão para editar Opções Gerais
+what_is_it=O que é isto?
+
+opts_default=Padrão
+opts_none=None
+opts_relayhost=Saída de email via host
+opts_direct=Enviar diretamente
+opts_myorigin=Que domínio usar na saída de email
+opts_myorigin_as_myhostname=Usar o nome da máquina
+opts_myorigin_as_mydomain=Usar o nome do domínio
+opts_mydestination=Receber email de que domínios
+opts_mydestination_default=Máquina Local
+opts_mydestination_domainwide=Domínio completo
+opts_notify_classes=Que problemas reportar ao postmaster
+opts_queue_directory=Diretório da Fila de Correio
+opts_mail_owner=Usuário do Correio
+opts_default_privs=Direitos padrões do agente de entrega
+opts_inet_interfaces=Interfaces de rede para receber email
+opts_all_interfaces=Todas
+
+opts_local_recipient_maps=Rejeitar usuários locais desconhecidos
+opts_no=Não
+opts_save=Salvar e aplicar
+
+
+opts_allow_percent_hack=Reescrever "usuario%dominio" para "usuario@dominio"
+opts_append_at_myorigin=Reescrever "usuario" para "usuario@$mydomain"
+opts_append_dot_mydomain=Reescrever "usuario@host" para "usuario@host.$mydomain"
+opts_empty_address_recipient=Enviar email com destinatário vazio para...
+opt_empty_recip_default=Padrão
+opts_swap_bangpath=Reescrever "site!usuario" para "usuario@site"
+opts_masquerade_domains=Mascarando Endereço
+opts_masquerade_exceptions=Mascarando exceções
+index_return=Configuração do Postfix
+
+
+opts_alias_maps=Database de Alias usado pelo agente de entrega local
+opts_alias_database=Alias databases built by &quot;newaliases&quot; command
+aliases_warning=Warning: <ul><li>when the first field is not empty, the default Postfix aliases-generation command is used to build up the corresponding databases ; <li>else the Sendmail compatibility command &quot;newaliases&quot; is used, this will use the second field's databases.</ul>
+
+aliases_name=Nome
+aliases_value=Alias para...
+
+new_alias=Criar um novo alias
+new_aliasmsg=Clique neste botão para criar um novo alias
+
+
+local_delivery_ecannot=Você não tem permissão para editar as opções de entrega local
+local_delivery_title=Entrega Local
+opts_local_transport=Nome do transporte para entrega local
+opts_local_transport_local=Local
+opts_local_command_shell=Shell to use for delivery to external command
+opts_local_command_shell_direct=None (direct exec of commands)
+opts_forward_path=Procurar lista para encaminhar
+opts_allow_mail_to_commands=Valid mail delivery to external commands
+opts_allow_mail_to_files=Valid mail delivery to external files
+opts_home_mailbox=Home-relative pathname of user mailbox file
+opts_home_mailbox_default=None (use standard <tt>/var/something</tt>)
+opts_luser_relay=Destination address for unknown recipients
+opts_luser_relay_none=None (bounce mail)
+opts_mail_spool_directory=Diretorio de spool
+opts_mailbox_command=External command to use instead of mailbox delivery
+opts_mailbox_command_none=None
+opts_mailbox_transport=Optional actual transport to use
+opts_mailbox_transport_none=None
+opts_fallback_transport=Optional transport for unknown recipients
+opts_fallback_transport_none=None
+opts_local_destination_concurrency_limit=Max number of parallel deliveries to the same local recipient
+opts_local_destination_recipient_limit=Max number of recipients per local message delivery
+opts_local_destination_recipient_limit_default=Default
+opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
+opts_prepend_delivered_header_default=Padrao
+
+
+resource_title=General resource control
+resource_ecannot=You are not allowed to edit resource control parameters
+opts_bounce_size_limit=Max size of bounced message
+opts_command_time_limit=Max time for delivery to external commands
+opts_default_process_limit=Max number of Postfix child processes
+opts_deliver_lock_attempts=Max attempts to acquire file lock
+opts_deliver_lock_delay=Time in seconds between file lock attempts
+opts_duplicate_filter_limit=Max number of addresses remembered by the duplicate filter
+opts_fork_attempts=Max attempts to fork a process
+opts_fork_delay=Time in seconds between fork attempts
+opts_header_size_limit=Max memory used for processing headers
+opts_line_length_limit=Max memory used for handling input lines
+opts_message_size_limit=Max size of a message
+opts_qmgr_message_active_limit=Max number of messages in the active queue
+opts_qmgr_message_recipient_limit=Max number of in-memory recipients
+opts_queue_minfree=Min free space in the queue file system
+opts_stale_lock_time=Max time after which stale lock is released
+opts_transport_retry_time=Time in seconds between attempts to contact a broken MDT
+
+
+opts_always_bcc=Address that receives bcc of each message
+opts_always_bcc_none=None
+opts_daemon_timeout=Timeout on handling requests
+opts_default_database_type=Default database type
+opts_default_transport=Default message delivery transport
+opts_double_bounce_sender=Sender address for bounce mail
+opts_hash_queue_depth=Number of subdir levels below the queue dir
+opts_hash_queue_names=Name of queue dirs split accross subdirs
+opts_hopcount_limit=Max number of <tt>Received:</tt> headers
+opts_ipc_idle=Idle time after internal IPC client disconnects
+opts_ipc_timeout=Timeout for I/O on internal comm channels
+opts_mail_name=Mail system name
+opts_mail_version=Official mail system version
+opts_max_idle=Time to wait for next service request
+opts_max_use=Max service requests handled before exiting
+opts_mydomain=Local internet domain name
+opts_mydomain_default=Default (provided by system)
+opts_myhostname=Internet hostname of this mail system
+opts_myhostname_default=Default (provided by system)
+opts_mynetworks=Local networks
+opts_mynetworks_default=Default (all attached networks)
+opts_bounce_notice_recipient=Send postmaster notice on bounce to...
+opts_2bounce_notice_recipient=Send postmaster notice on 2bounce to...
+opts_delay_notice_recipient=Send postmaster notice on delay to...
+opts_error_notice_recipient=Send postmaster notice on error to...
+opts_process_id_directory=Lock file dir, relative to queue dir
+opts_program_directory=Postfix support programs and daemons dir
+opts_recipient_delimiter=Separator usernames / address extensions
+opts_relocated_maps_default=Default (disabled)
+opts_sun_mailtool_compatibility=Disable kernel file lock on mailboxes
+opts_trigger_timeout=Max time to send a trigger to a daemon
+opts_delay_warning_time=Time in hours before sending a warning for no delivery
+opts_delay_warning_time_default=Disabled
+
+
+smtpd_title=SMTP server options
+smtpd_ecannot=You are not allowed to edit the SMTP server options
+opts_disable_vrfy_command=Disable SMTP VRFY command
+opts_smtpd_banner=SMTP greeting banner
+opts_smtpd_etrn_restrictions=Restrict ETRN command upon...
+opts_smtpd_recipient_limit=Max number of recipients accepted for delivery
+opts_smtpd_timeout=Timeout in seconds for SMTP transactions
+opts_smtpd_error_sleep_time=Timeout before sending 4xx/5xx error response
+opts_smtpd_soft_error_limit=Error count for temporarily ignore a client
+opts_smtpd_hard_error_limit=Error count for closing connection
+opts_smtpd_client_restrictions=Restrictions on client hostnames/addresses
+opts_smtpd_helo_required=HELO is required
+opts_smtpd_helo_restrictions=Restrictions on sends in HELO commands
+opts_smtpd_sender_restrictions=Restrictions on sender addresses
+opts_smtpd_recipient_restrictions=Restrictions on recipient addresses
+opts_allow_untrusted_routing=Allow untrusted routing
+opts_maps_rbl_domains=DNS domains for blacklist lookups
+opts_relay_domains=Restrict mail relaying
+opts_access_map_reject_code=SMTP server response on access map violation
+opts_invalid_hostname_reject_code=SMTP server response on invalid hostname reject
+opts_maps_rbl_reject_code=SMTP server response on RBL domains violation
+opts_reject_code=SMTP server response on client reject
+opts_relay_domains_reject_code=SMTP server response on forbidden relaying
+opts_unknown_address_reject_code=SMTP server response on unknown domain reject
+opts_unknown_client_reject_code=SMTP server response on unknown client reject
+opts_unknown_hostname_reject_code=SMTP server response on unknown hostname reject
+
+
+smtp_title=SMTP client options
+smtp_ecannot=You are not allowed to edit the SMTP client options
+opts_best_mx_transport=Action when listed as best MX host
+opts_best_mx_transport_default=Default (bounce message)
+opts_fallback_relay=Hosts/domains to hand off mail to on invalid destination 
+opts_ignore_mx_lookup_error=Ignore MX lookup error
+opts_smtp_skip_4xx_greeting=Skip 4xx greeting
+opts_smtp_skip_quit_response=Skip wait for the QUIT command
+opts_smtp_destination_concurrency_limit=Max number of parallel deliveries to the same destination
+opts_smtp_destination_recipient_limit=Max number of recipients per delivery
+opts_smtp_connect_timeout=Timeout for completing TCP connections
+opts_smtp_helo_timeout=Timeout on waiting for the greeting banner
+opts_smtp_mail_timeout=Timeout on waiting for answer to MAIL FROM
+opts_smtp_rcpt_timeout=Timeout on waiting for answer to RCPT TO
+opts_smtp_data_init_timeout=Timeout on waiting for answer to DATA
+opts_smtp_data_xfer_timeout=Timeout on waiting for answer to transmit of message content
+opts_smtp_data_done_timeout=Timeout on waiting for answer to ending &quot;.&quot;
+opts_smtp_quit_timeout=Timeout on waiting for answer to QUIT
+
+
+rate_title=Delivery rates
+rate_ecannot=You are not allowed to edit the delivery rates options
+opts_default_destination_concurrency_limit=Max number of parallel deliveries to the same destination
+opts_default_destination_recipient_limit=Max number of recipients per message delivery
+opts_initial_destination_concurrency=Initial concurrency level for delivery to the same destination
+opts_maximal_backoff_time=Max time (secs) between attempts to deliver a deferred message
+opts_maximal_queue_lifetime=Max time (days) in queue before message is undeliverable
+opts_minimal_backoff_time=Min time (secs) between attempts to deliver a deferred message
+opts_queue_run_delay=Time (secs) between scanning the deferred queue
+opts_defer_transports=Transports that should not be delivered
+
+
+debug_title=Debugging features
+debug_ecannot=You are not allowed to edit the debugging features
+opts_debug_peer_list=List of domain/network patterns for which verbose log is enabled
+opts_debug_peer_level=Verbose logging level when matching the above list
+debug_version=Postfix Module for Webmin - Version $1
+
+ldap_title=LDAP lookups
+ldap_ecannot=You are not allowed to edit the LDAP lookups options
+ldap_non_existent=It seems that LDAP is nonexistent in your Postfix system
+opts_ldap_lookup_timeout=Timeout for LDAP database lookups
+opts_ldap_search_base=LDAP database to search
+opts_ldap_server_host=LDAP server hostname
+
+canonical_title=Canonical Mapping
+canonical_ecannot=You are not allowed to edit the canonical mapping configuration
+opts_canonical_maps=Address mapping lookup tables
+opts_recipient_canonical_maps=Tables for RECIPIENT addresses
+opts_sender_canonical_maps=Tables for SENDER addresses
+edit_canonical_maps=Edit canonical maps
+edit_recipient_canonical_maps=Edit recipient canonical maps
+edit_sender_canonical_maps=Edit sender canonical maps
+edit_canonical_maps_general=Click on one of these buttons to edit the canonical maps
+canonical_edit_title=Edit A Canonical Map
+
+mapping_name=Name
+mapping_value=Maps to...
+new_mapping=New mapping
+new_mappingmsg=Click this button to create a new mapping
+map_save=Save mapping
+delete_map=Delete mapping
+edit_map_title=Edit A Map
+map_save_err=Error while saving a mapping
+mapps_no_map_file=No map file defined
+map_delete_failed=Failed to delete map: $1
+map_delete_create=Can not delete a map you're just creating
+maps_internal_error=Map: internal error
+maps_cant_write=Can not write
+help_map_format=What format should I use?
+
+
+virtual_title=Virtual Domains
+virtual_ecannot=You are not allowed to edit the virtual domains mapping configuration
+opts_virtual_maps=Domain mapping lookup tables
+opts_virtual_alias_maps=$opts_virtual_maps
+opts_virtual_alias_domains=Domains to perform virtual mapping for
+virtual_same=From domain mapping tables
+
+transport_title=Transport Mapping
+transport_ecannot=You are not allowed to edit the transport mapping configuration
+opts_transport_maps=Transport mapping lookup tables
+
+relocated_title=Relocated Mapping
+relocated_ecannot=You are not allowed to edit the relocated mapping configuration
+opts_relocated_maps=Relocated mapping lookup tables
+
+map_click=Click on any mapping to edit its properties:
+no_map=(No map is currently defined. Define a map first, then you can edit it)
+no_map2=No map is currently defined. Define a map first, then you can edit it.
+
+stop_efailed=Failed to stop Postfix
+stop_ecannot=You are not allowed to stop Postfix
+
+query_get_efailed=Failed to query Postfix config command to get the current value of parameter $1: <tt>$2</tt>
+query_set_efailed=Failed to query Postfix config command to set the current value of parameter $1 to $2: <tt>$3</tt>
+reload_ecannot=You are not allowed to reload Postfix
+reload_efailed=Failed to reload Postfix.
+regenerate_ecannot=You are not allowed to regenerate the Aliases
+regenerate_alias_efailed=Failed to regenerate aliases: <tt>$1</tt>
+regenerate_table_efailed=Failed to regenerate table $1: <tt>$2</tt>
+
+acl_resource=Can edit resources?
+acl_aliases=Can edit aliases?
+acl_aliases_options=Can edit aliases options?
+acl_general=Can edit general options?
+acl_address_rewriting=Can edit adress rewriting?
+acl_canonical=Can edit canonical?
+acl_virtual=Can edit virtual?
+acl_transport=Can edit transport?
+acl_relocated=Can edit relocated?
+acl_local_delivery=Can edit local delivery?
+acl_smtpd=Can edit smtpd?
+acl_smtp=Can edit smtp?
+acl_rate=Can edit rate?
+acl_debug=Can edit debug?
+acl_ldap=Can edit ldap?
+acl_startstop=Can start and stop postfix?
+acl_mailq=Can manage mail queue?
+acl_boxes=Can read users' email?
+
+boxes_title=User Mailboxes
+boxes_user=User
+boxes_size=Mailbox size
+boxes_none=No mail
+boxes_return=mailboxes
+boxes_sent=Sent mail
+boxes_ecannot=You are not allowed to read email
+boxes_toomany=There are too many users on your system to list all their mailboxes.
+boxes_go=View mail for user:
+
+mail_title=User Email
+mail_from=From
+mail_date=Date
+mail_subject=Subject
+mail_to=To
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=Priority
+mail_highest=Highest
+mail_high=High
+mail_normal=Normal
+mail_low=Low
+mail_lowest=Lowest
+mail_for=In $1
+mail_for2=For user $1
+mail_sent=In sent mail list
+mail_size=Size
+mail_delete=Delete
+mail_compose=Compose
+mail_return=user mailbox
+mail_pos=Messages $1 to $2 of $3
+mail_none=This mailbox has no messages
+mail_ecannot=You are not allowed to read this user's email
+mail_all=Select all
+mail_invert=Invert selection
+mail_search=Find messages where
+mail_body=Body
+mail_match=matches
+mail_ok=Search
+mail_nonefrom=None
+mail_mark=Mark as:
+mail_mark0=Unread
+mail_mark1=Read
+mail_mark2=Special
+mail_forward=Forward
+mail_rfc=From line
+mail_move=Move to:
+
+view_title=Read Email
+view_desc=Message $1 in $2
+view_desc2=Message $1 for user $2
+view_desc3=Message $1
+view_sent=Message $1 in sent mail list
+view_qdesc=Queued message $1
+view_headers=Mail headers
+view_allheaders=View all headers
+view_noheaders=View basic headers
+view_attach=Attachments
+view_reply=Reply
+view_reply2=Reply to all
+view_enew=Edit as new
+view_forward=Forward
+view_delete=Delete
+view_strip=Remove Attachments
+view_ecannot=You are not allowed to read this user's email
+view_mark=Mark message as:
+view_mark0=Unread
+view_mark1=Read
+view_mark2=Special
+view_return=original email
+view_sub=Attached Email
+
+compose_title=Compose Email
+reply_title=Reply to Email
+forward_title=Forward Email
+enew_title=Edit Email
+reply_headers=Mail headers
+reply_attach=Forwarded attachments
+reply_mailforward=Forwarded messages
+reply_attach2=Client and server-side Attachments
+reply_send=Send Mail
+reply_ecannot=You are not allowed to send mail as this user
+
+send_err=Failed to send mail
+send_eto=Missing To address
+send_efrom=Missing From address
+send_title=Mail Sent
+send_ok=Mail sent successfully to $1
+send_ecannot=You are not allowed to send mail as this user
+send_esmtp=SMTP command $1 failed : $2
+send_efile=Attached file $1 does not exist
+send_eattach=Attachments cannot total more that $1 kB in size.
+send_eperms=User $1 cannot read $2
+send_eperms2=You are not allowed to send file $1
+send_epath=Sendmail executable $1 does not exist.
+send_ewrapper=Postfix sendmail interface program does not exist
+
+delete_title=Delete Mail
+delete_rusure=Are you sure you want to delete the $1 selected messages from $2? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
+delete_rusure2=Are you sure you want to delete this message from $1? This may take some time for a large mail file. Until the deletion has finished, no other action should be performed.
+delete_ok=Delete Now
+delete_ecannot=You are now allowed to delete mail from this user
+delete_enone=No mail selected to delete
+delete_emnone=No mail selected to mark
+delete_emoveuser=User to move mail to does not exist
+delete_emovenone=No mail selected to move
+
+search_title=Search Results
+search_ecannot=You are not allowed to search this user's email
+search_ematch=You must enter text to match against.
+search_none=No messages found.
+search_results2=$1 mail messages matching $2 ..
+search_results3=$1 mail messages not matching $2 ..
+
+match_from=From: matches
+match_subject=Subject: matches
+match_to=To: matches
+match_cc=Cc: matches
+match_date=Date: matches
+match_body=Body matches
+match_size=Size is greater than
+match_!from=From: doesn't match
+match_!subject=Subject: doesn't match
+match_!to=To: doesn't match
+match_!cc=Cc: doesn't match
+match_!date=Date: doesn't match
+match_!body=Body doesn't match
+match_!size=Size is less than
+
+mailq_title=Mail Queue
+mailq_count=$1 messages
+mailq_none=No mail messages are currently queued for delivery
+mailq_id=Mail ID
+mailq_date=Sent
+mailq_from=From
+mailq_to=To
+mailq_cc=Cc
+mailq_subject=Subject
+mailq_return=mail queue
+mailq_delete=Delete selected messages
+mailq_all=Select all
+mailq_invert=Invert selection
+mailq_size=Size
+mailq_ecannot=You are not allowed to view the mail queue
+mailq_egone=The message is no longer in the queue
+mailq_status=Status
+
+qview_title=Queued Message
+qview_desc=From file $1
+qview_headers=Mail headers
+qview_attach=Attachments
+
+

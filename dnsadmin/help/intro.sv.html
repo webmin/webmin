@@ -1,0 +1,96 @@
+<body bgcolor=#ffffff>
+<center><img src=images/dnsadmin.gif></center>
+<h2><i>Denna hjälpsida är inte fullständig</i></h2>
+
+<hr>
+<h3>Introduktion</h3>
+I denna modul kan du konfigurera BIND (Berkeley Internet Name Daemon)
+DNS-servern på denna maskin. DNS-servern skriver om datornamn, t ex
+<i>www.foo.com</i>, till IP-adresser, t ex <i>10.1.2.3</i>, och
+IP-adresser till datornamn.
+
+<hr>
+<h3>Grundläggande DNS</h3>
+Varje DNS-server har hand om ett antal framåt- och bakåtdomäner. En
+framåtdomän är ett namn, t ex <i>foo.com</i> och en bakåtdomän är ett
+nummer, t ex <i>204.165.66</i>. För varje domän kan DNS-servern vara
+primär server (huvudserver och ansvarig för data om domänen) eller
+sekundär server (backup för domänen).
+
+<dl>
+<dt><b>Framåtdomäner</b>
+<dd>Om DNS-servern har hand om en framåtdomän, t ex <i>foo.com</i>, kan
+    den svara på förfrågningar om datornamn i denna domän.
+    För de domäner som denna server är primär server kan du också lägga
+    till datorer och andra uppgifter till domänen i denna modul.
+    För domäner där servern är sekundär server kan du ange primär server
+    (den som servern ska hämta information från).
+
+<dt><b>Bakåtdomäner</b>
+<dd>Bakåtdomäner kopplar ihop IP-adresser (t ex <i>203.165.66.77</i>) med
+    datornamn (t ex <i>www.foo.com</i>). En bakåtdomän innehåller
+    datornamn för alla IP-adresser i ett nätverk (t ex <i>203.165.66</i>).
+    För de domäner som denna server är primär server kan du också lägga till
+    poster med IP-adresser och datornamn i denna modul.
+    För domäner där servern är sekundär server kan du ange primär server
+    (den som servern ska hämta information från).
+</dl>
+
+<hr>
+<h3>Sätta upp DNS-servern</h3>
+Om du redan kör en BIND DNS-server på systemet kan du hoppa över detta.
+Om Webmin upptäcker att inställningsfilen för den primära DNS-servern
+(oftast <tt>/etc/named.boot</tt>) saknas på systemet, antar det att
+du inte har satt upp någon DNS-server än.
+
+<p>En DNS-server behöver en lista över rotnamnservrar för att svara på
+DNS-förfrågningar utanför den egna domänen. Om din server inte redan är
+uppsatt kan Webmin
+
+<ol>
+<li>ladda ned en lista från FTP-servern på <tt>rs.internic.net</tt>.
+    Om datorn som Webmin körs på är kopplad till Internet - och inte
+    sitter bakom en brandvägg - är detta det bästa alternativet.
+<li>använda den lista som skickas med Webmin. Eftersom rotservrar inte
+    ändras så ofta, bör detta fungera.
+<li>sätta upp namnserver endast för internt bruk. Om du jobbar på ett
+    nätverk som inte är anslutet till Internet är detta det alternativ du
+    bör välja.
+</ol>
+
+<hr>
+<h3>Skapa en primär domän</h3>
+Fyll i formuläret under <b>Lägg till primär domän</b> på
+<a href=/dnsadmin/>DNS-serversidan</a> för att skapa en ny primär domän.
+Fälten har följande innebörd:
+<ul>
+<li><b>Uppslagning</b>
+    <br>Anger om detta är en framåt- eller bakåtdomän.
+<li><b>Domän/nät</b>
+    <br>För framåtdomäner anges här domän (t ex <tt>foo.com</tt>).
+    För bakåtdomäner anges här IP-nätet (t ex <tt>203.123.221</tt>).
+<li><b>Filnamn</b>
+    <br>Namn på den fil som domäninformation ska lagras i. Om detta fält
+    lämnas tomt, kommer ett filnamn automatiskt att genereras.
+<li><b>E-postadress</b>
+    <br>Varje DNS-domän måste ha en e-postadress till den person som
+    ansvarar för domänen.
+<li><b>Namnserver</b>
+    <br>Detta fält ska innehålla fullständigt namn på den namnserver som
+    hanterar domänen. Det är oftast namnet på den dator du kör Webmin på.
+</ul>
+
+<hr>
+<h3>Skapa en sekundär domän</h3>
+
+<hr>
+<h3>Ändra en primär domän</h3>
+
+<hr>
+<h3>Ändra domänposter</h3>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Tillbaka till modul</a>
+ 
+

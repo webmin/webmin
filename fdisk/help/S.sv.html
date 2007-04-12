@@ -1,0 +1,17 @@
+<header>Tid för standby</header>
+Sätter tidsintervall för standby (spindown) för disken.<p>
+
+Detta värde anger hur länge disken ska vänta (utan diskaktivitet) innan
+motorn slås av för att spara ström.
+<br>När detta har skett kan svarstiden för disken ligga uppåt 30 sekunder
+(de flesta diskar är dock mycket snabbare).
+
+<p>Värdet anges på ett speciellt sätt. Värdet noll betyder "av". Värden
+mellan 1 och 240 tolkas som ett antal femsekundersmultipler och anger
+tidsintervall från fem sekunder till tjugo minuter.
+
+<br>Värden mellan 241 och 251 tolkas som mellan 1 och 11 30-minutersenheter
+och anger tidsintervall från 30 minuter till 5,5 timmar. 252 betyder 21
+minuter, 253 sätter tiden till det av tillverkaren fördefinierade intervallet
+och 255 betyder 21 minuter och 15 sekunder.
+<hr>

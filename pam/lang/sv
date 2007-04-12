@@ -1,0 +1,226 @@
+index_title=PAM-autentisering
+index_name=Tjänst
+index_desc=Beskrivning
+index_add=Lägg till en PAM-tjänst
+index_return=tjänstelista
+index_none=Det gick inte att hitta någon PAM-inställningsfil på ditt system i katalogen $1. PAM kanske inte stöds, eller också är dina <a href='$2'>modulinställningar</a> felaktiga.
+
+desc_su=Byt användare
+desc_login=Logga in lokalt eller från annan dator
+desc_samba=Samba Windows-filserver
+desc_imap=IMAP-e-postserver
+desc_pop=POP-e-postserver
+desc_kde=KDE-inloggning
+desc_rexec=Fjärrkörningsserver
+desc_rlogin=Fjärrinloggningsserver
+desc_rsh=Fjärrskalsserver
+desc_passwd=Lösenordsbyte
+desc_chfn=Byt finger-information
+desc_chsh=Byt skal
+desc_ftp=Filöverföringsserver
+desc_ftpd=Filöverföringsserver
+desc_wu-ftpd=WuFTPd-filöverföringsserver
+desc_xscreensaver=Skärmsläckare
+desc_other=Övriga tjänster
+desc_netatalk.pamd=$desc_netatalk
+desc_netatalk=Netatalk Apple-filserver
+desc_webmin=Webmin-webbserver
+desc_xdm=Lokal eller fjärr-X-inloggning
+desc_gdm=Gnome X-inloggning
+desc_linuxconf=LinuxConf-inloggning
+desc_linuxconf-pair=Ytterligare LinuxConf-inloggning
+desc_xlock=Skärmlås
+desc_vlock=Lås för virtuell konsol
+desc_kbdrate=Tangentrepeteringsparametrar
+desc_halt=Halt-system
+desc_poweroff=Strömavstängningssystem
+desc_reboot=Omstartssystem
+desc_shutdown=Avstängningssystem
+desc_mcserv=Midnight commander
+desc_kppp=KDE PPP-klientverktyg
+desc_xserver=X11-server
+desc_gnorpm-auth=Gnome RPM-verktyg
+desc_kpackage=KDE RPM-verktyg
+desc_ppp=PPP-demoninloggning
+desc_rp3-config=Redhat PPP-klientverktyg
+desc_up2date=Redhat Linux-uppdateringshjälp
+desc_sudo=Begränsad root-kommandoexekvering
+desc_httpd=Webbserver
+desc_qpop=POP-e-postserver
+desc_sshd=SSH-inloggning
+desc_squid=Squid-proxyserver
+
+edit_title=Ändra PAM-tjänst
+edit_header=Information om PAM-tjänst
+edit_name=Namn på tjänsten
+edit_header_auth=Autentiseringsåtgärder
+edit_header_account=Kontoverifieringsåtgärder
+edit_header_session=Åtgärder för uppsättning av session
+edit_header_password=Tillvägagångssätt för att byta lösenord
+edit_mod=PAM-modul
+edit_desc=Beskrivning
+edit_args=Parametrar
+edit_addmod=Lägg till åtgärd för:
+edit_control=Felnivå
+edit_none=Du har inte angivit någon PAM-modul för detta
+edit_delete=Ta bort PAM-tjänst
+edit_move=Flytta
+edit_return=PAM-tjänst
+
+pam_pwdb.so=Autentisering med Unix-lösenord
+pam_securetty.so=Utför säker TTY-kontroll för root
+pam_nologin.so=<tt>/etc/nologin</tt>-filkontroll
+pam_mail.so=Meddelande om nytt e-brev
+pam_lastlog.so=Meddelande om senaste inloggning
+pam_rootok.so=Kontrollera: endast <tt>root</tt> tillåten
+pam_cracklib.so=Stark lösenordskontroll
+pam_access.so=Kontrollera åtkomststyrfilen
+pam_deny.so=Neka alltid åtkomst
+pam_env.so=Sätt miljövariabler
+pam_ftp.so=FTP-autentiseringskontroll
+pam_time.so=Kontroll av inloggningstid
+pam_group.so=Sätt gruppmedlemskap
+pam_listfile.so=Kontrollera filinnehåll
+pam_limits.so=Sätt resursbegränsningar
+pam_mkhomedir.so=Skapa hemkatalog
+pam_motd.so=Visa fil med dagens ord
+pam_permit.so=Tillåt alltid åtkomst
+pam_radius.so=Autentisering med RADIUS-server
+pam_rhosts.so=Kontrollera <tt>.rhosts</tt>-filer
+pam_rhosts_auth.so=Kontrollera <tt>.rhosts</tt>-filer
+pam_shells.so=Kontrollera giltigt skal
+pam_unix.so=Autentisering med gammalt Unix-lösenord
+pam_userdb.so=Autentisering med DBM-fillösenord
+pam_warn.so=Loggvarning
+pam_wheel.so=Kontrollera<tt>wheel</tt>-grupp
+pam_issue.so=Visa filen <tt>/etc/issue</tt>
+pam_ldap.so=Autentisering med LDAP-server
+pam_unix_auth.so=Autentisering med Unix-lösenord
+pam_unix_sess.so=Inställningar för Unix-session
+pam_unix_session.so=Inställningar för Unix-session
+pam_unix_acct.so=Verifiering av Unix-konto
+pam_unix_passwd.so=Ändring av Unix-lösenord
+pam_stress.so=Belastningstest av applikation
+pam_tally.so=Spåra misslyckade inloggningsförsök
+pam_passwd+.so=Kontroll av lösenords styrka
+pam_filter.so=Inmatnings/utmatningsfilter
+pam_desgold.so=Autentisering med DESGold-smartcard
+pam_console.so=Kontrollera endast för konsolen
+pam_xauth.so=X-autentisering
+
+control_requisite=Obligatoriskt
+control_required=Nödvändigt
+control_sufficient=Tillräckligt
+control_optional=Valfritt
+control_desc_requisite=Skicka felmeddelande omedelbart när autentiseringen misslyckas
+control_desc_required=Skicka felmeddelande om att autentiseringen misslyckats när den är klar
+control_desc_sufficient=Skicka meddelande om lyckad autentisering direkt den har lyckats
+control_desc_optional=Det spelar ingen roll om autentiseringen lyckas eller ej.
+
+create_title=Skapa PAM-tjänst
+create_header=Inställningar för ny PAM-tjänst
+create_name=Tjänstenamn
+create_desc=Beskrivning
+create_mods=Grund-PAM-moduler
+create_0=Ingen
+create_1=Unix-autentisering
+create_2=Neka all åtkomst
+
+mod_edit=Ändra PAM-modul
+mod_create=Lägg till PAM-modul
+mod_header=Inställningar för PAM-modul
+mod_name=Tjänstenamn
+mod_mod=PAM-modul
+mod_type=Använd i tjänst
+mod_type_auth=Autentisering
+mod_type_account=Kontoverifiering
+mod_type_session=Sessionsuppkoppling
+mod_type_password=Lösenordsbyte
+mod_control=Kontrollnivå
+mod_args=Argument till modulen
+mod_err=Det gick inte att spara modulen
+
+pwdb_shadow=Ska en skugglösenordsfil användas?
+pwdb_nullok=Ska tomma lösenord accepteras?
+pwdb_md5=Ska MD5-krypterade lösenord användas?
+pwdb_nodelay=Fördröjning efter misslyckat inloggningsförsök?
+
+listfile_item=Sök i fil efter
+listfile_item_user=användarnamn
+listfile_item_tty=TTY
+listfile_item_rhost=klientdatornamn
+listfile_item_ruser=klientanvändarnamn
+listfile_item_group=grupp
+listfile_item_shell=skal
+listfile_sense=Om det hittas i filen
+listfile_file=Fil att söka i
+listfile_onerr=Vid filfel
+listfile_fail=Misslyckas
+listfile_succeed=Lyckas
+listfile_apply=Begränsa kontrollen till
+listfile_all=Alla användare
+listfile_user=Endast användare
+listfile_group=Endast grupp
+
+cracklib_type=Ange lösenordstyp i prompten
+cracklib_retry=Maximalt antal försök innan autentiseringen misslyckas
+cracklib_eretry=Antalet försök har inte angivits eller är felaktigt angivet
+cracklib_etype=Lösenordstyp saknas eller är felaktigt angiven
+
+rhosts_equiv=Läsa filen <tt>/etc/hosts.equiv</tt>?
+rhosts_rhosts=Läsa användarnas <tt>.rhosts</tt>-filer?
+rhosts_promiscuous=<tt>+</tt>-post tillåter alla datorer?
+rhosts_suppress=Logga autentiseringsmisslyckanden?
+
+env_var=Variabelnamn
+env_def=Standardvärde
+env_over=Värde som gäller över standardvärdet
+env_evar=Variabelnamn får inte innehålla mellanslag
+
+securetty_ttys=Säkra TTY:er
+
+shells_shells=Tillåtna användarskal
+
+tally_deny=Skicka meddelande om misslyckat försök innan åtkomst nekas
+tally_reset=Nollställ felräknaren vid lyckad autentisering
+tally_edeny=Antal misslyckade försök saknas eller är felaktigt angivet
+tally_magic=Ska misslyckade försök räknas även för <tt>root</tt>?
+tally_root=Kan <tt>root</tt>-kontot nekas åtkomst?
+
+time_services=Tjänster
+time_ttys=TTY:er
+time_users=Användare
+time_times=Åtkomsttider
+time_info=Alla fält kan innehålla flera värden separerade med |, och man kan använda * som jokertecken och ! som negationstecken.
+
+group_services=Tjänster
+group_ttys=TTY:er
+group_users=Användare
+group_times=Åtkomsttider
+group_groups=Lägg till grupper
+group_info=Alla fält kan innehålla flera värden separerade med |, och man kan använda * som jokertecken och ! som negationstecken.
+
+wheel_group=Kontrollera medlemskap i gruppen
+wheel_group_def=Standard (<tt>wheel</tt> eller GID 0)
+wheel_trust=Ska medlemmar i denna grupp släppas igenom utan ytterligare autentisering?
+wheel_deny=Neka medlemmar i denna grupp istället för att släppa fram dem?
+wheel_egroup=Namn på gruppen saknas eller är felaktigt angivet
+
+motd_file=Fil som ska visas
+motd_file_def=Standard (<tt>/etc/motd</tt>)
+motd_efile=Namn på filen saknas eller är felaktigt angivet
+
+mail_nopen=Ska ett meddelande om e-post visas vid inloggning?
+mail_close=Ska ett meddelande om e-post visas vid utloggning?
+mail_empty=Ska systemet varna om e-postfilen är tom?
+mail_noenv=Ska $MAIL-miljövariabeln sättas?
+mail_dir=E-post-spool-katalog
+mail_edir=E-post-spool-katalog saknas eller är felaktigt angiven
+
+log_pam_create=Lade till PAM-tjänsten $1
+log_pam_delete=Tog bort PAM-tjänsten $1
+log_mod_create=Lade till PAM-modulen $1 till tjänsten $2
+log_mod_modify=Ändrade PAM-modulen $1 i tjänsten $2
+log_mod_delete=Tog bort PAM-modulen $1 i tjänsten $2
+log_mod_move=Bytte PAM-moduler i tjänsten $3
+log_mod_move_l=Bytte PAM-modulerna $1 och $2 i tjänsten $3

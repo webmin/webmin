@@ -1,0 +1,2 @@
+line2=Configuration du syst&#232;me,11
+krb5_conf=Fichier de configuration de kerberos5,0

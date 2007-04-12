@@ -1,0 +1,108 @@
+index_title=Rotació de Fitxers de Registre
+index_econf=No s'ha trobat al sistema el fitxer de configuració de rotació de registres $1. O bé logrotate no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
+index_ecmd=No s'ha trobat al sistema el programa de rotació de registres $1. O bé no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
+index_eversion=No he pogut obtenir la versió de logrotate amb l'ordre $1: $2
+index_version=Logrotate versió $1
+index_add=Afegeix un nou fitxer de registre per rotar.
+index_file=Fitxer de registre
+index_period=Període de rotació
+index_post=Ordre de post-rotació
+index_none=Encara no s'ha definit cap fitxer de registre.
+index_global=Edita les Opcions Globals
+index_globaldesc=Fes clic sobre aquest botó per editar la configuració que s'aplica a tots els fitxers de registre i definir els valors per defecte dels registres.
+index_sched=Edita la Planificació
+index_scheddesc=Fes clic sobre aquest botó per editar la planificació en base a la qual cron executa logrotate, o bé per activar-lo o desactivar-lo.
+index_nocmd=Cap
+index_notset=No establert
+index_return=a la llista de fitxers de registre
+index_force=Força la Rotació de Registres
+index_forcedesc=Força la rotació immediata de tots els fitxers de registre, encara que no sigui l'hora.
+index_logrotate=Rota els Registres
+index_delete=Suprimeix les Rotacions de registres Seleccionades
+
+period_daily=Diàriament
+period_weekly=Setmanalment
+period_monthly=Mensualment
+period_never=Mai
+
+edit_title1=Creació de Fitxer de Registre
+edit_title2=Edició de Fitxer de Registre
+edit_header=Detalls del fitxer de registre rotat
+edit_file=Camins dels fitxers de registre
+edit_sched=Planificació de la rotació
+edit_rotate=Nombre de fitxers de registre vells a mantenir
+edit_compress=Comprimeix els fitxers de registre vells
+edit_delaycompress=Demora la compressió fins al proper cicle
+edit_copytruncate=Trunca el fitxer de registre sobre la marxa
+edit_ifempty=Rota encara que el fitxer de registre estigui buit
+edit_missingok=Ignora el fitxer de registre si no hi és
+edit_size=Mida màxima abans de rotar
+edit_always=Ignorada
+edit_ext=Extensió dels noms de fitxer rotats
+edit_mail=Envia el fitxer de registre per correu abans d'esborrar-lo
+edit_mailto=Sí, a l'adreça
+edit_mailno=No, no l'enviïs
+edit_mailfl=Fitxer de registre a enviar
+edit_mailfirst=El més nou que s'hagi acabat de rotar
+edit_maillast=El més vell que està a punt d'esborrar-se
+edit_create=Recrea el fitxer de registre després de la rotació
+edit_createas=Sí, amb mode $1 i propietat de l'usuari $2 i el grup $3
+edit_createno=No, no el recreïs
+edit_createsame=Sí, amb els permisos antics
+edit_olddir=Emmagatzema els registres vells rotats
+edit_olddirto=en un directori
+edit_olddirsame=en el mateix directori que el fitxer de registre
+edit_errors=Envia els missatges d'error per correu a
+edit_errorsno=Ningú
+edit_errorsto=L'adreça o usuari
+edit_post=Ordres a executar després de la rotació
+edit_pre=Ordres a executar abans de la rotació
+edit_default=$default ($1)
+edit_sharedscripts=Executa els scripts només una vegada per a tots els fitxers
+edit_now=Fes la Rotació Ara
+
+global_title=Opcions Globals
+global_header=Opcions per defecte de tots els fitxers de registre
+
+save_err=No he pogut desar el registre
+save_efile=Hi falta el nom del fitxer de registre o bé és invàlid
+save_esize=Hi falta la mida màxima o bé és invàlida
+save_erotate=Hi falta el nombre màxim de registres vells a mantenir o bé és invàlid
+save_ecreatemode=Hi falta el mode de creació de 3 o 4 dígits octals o bé és invàlid
+save_ecreateuser=Hi falta l'usuari de creació o bé és invàlid
+save_ecreategroup=Hi falta el grup de creació o bé és invàlid
+save_emust1=Has d'introduir un mode de creació si introdueixes un usuari de creació
+save_emust2=Has d'introduir un usuari de creació si introdueixes un grup de creació
+save_eolddirto=Hi falta el directori de registres rotats antics o bé és invàlid
+save_eext=Hi falta l'extensió dels fitxers de registre rotats
+save_emailto=Hi falta l'adreça de correu per als registres rotats
+save_eerrors=Hi falta l'adreça de correu per als missatges d'error
+save_epre=El script de pre-rotació no pot contenir cap línia <tt>endscript</tt> ni <tt>endrotate</tt>
+save_epost=El script de post-rotació no pot contenir cap línia <tt>endscript</tt> ni <tt>endrotate</tt>
+
+log_modify_sched=He canviat el treball cron de rotació de registres
+log_create_sched=He creat el treball cron de rotació de registres
+log_delete_sched=He suprimit el treball cron de rotació de registres
+log_global=He modificat les opcions globals
+log_create=He afegit la rotació del fitxer de registre $1
+log_modify=He modificat la rotació del fitxer de registre $1
+log_delete=He suprimit la rotació del fitxer de registre $1
+log_delete_logs=He suprimit la rotació de $1 fitxers de registre
+
+sched_title=Planificació de la Rotació de Registres
+sched_desc=Per tal que es dugui a terme la rotació de registres configurada utilitzant aquest mòdul, cal que cron executi l'ordre $1 a intervals regulars (normalment, a diari).
+sched_runparts=Actualment, l'ordre de rotació de registres s'executa des del script $1 $2, i no es pot adaptar.
+sched_sched=Treball cron de rotació de registres
+sched_disabled=Desactivat
+sched_enabled=Activat, a les hores de sota...
+sched_save=Actualitza el Treball Cron
+sched_err=No he pogut desar la planificació de la rotació
+
+force_title=Forçat de la Rotació de Registres
+force_doing=Forçant la rotació immediata de tots els registres...
+force_doingone=Forçant la rotació immediata d'un fitxer de registre...
+force_done=...fet.
+force_failed=...ha fallat! Vegeu la sortida de sobre per saber-ne el perquè.
+
+delete_err=No he pogut suprimir els registres
+delete_enone=No has seleccionar cap registre

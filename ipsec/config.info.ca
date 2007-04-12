@@ -1,0 +1,8 @@
+file=Fitxer de configuració IPsec FreeSWAN,0
+secrets=Fitxer de secrets IPsec,0
+ipsec=Camí complet de l'ordre ipsec,0
+policies_dir=Directori de fitxers de política,0
+start_cmd=Ordre per iniciar el servidor IPsec,0
+stop_cmd=Ordre per aturar el servidor IPsec,0
+restart_cmd=Ordre per reiniciar el servidor IPsec,3,Atura i inicia
+logfile=Fitxer de registre dels missatges d'IPsec,0

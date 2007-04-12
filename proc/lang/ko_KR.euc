@@ -1,0 +1,118 @@
+index_title=프로세스 관리자
+index_display=표시
+index_tree=PID
+index_user=사용자
+index_size=메모리
+index_cpu=CPU
+index_search=검색
+index_run=실행..
+index_return=프로세스 목록
+index_mem=<b>실제 메모리:</b> 총 메모리 $1KB/사용 가능한 메모리 $2KB
+index_swap=<b>스왑 공간:</b> 총 공간 $1KB/사용 가능한 공간 $2KB
+index_load=<b>CPU 평균 부하:</b> $1(5분), $2(10분), $3(15분)
+
+pid=프로세스 ID
+owner=소유자
+command=명령
+cpu=CPU
+size=크기
+parent=상위 프로세스
+runtime=실행 시간
+nice=양호한 수준
+
+search_user=소유자
+search_match=일치
+search_cpupc=$1% 이상 CPU 사용
+search_fs=파일 시스템 사용
+search_files=파일 사용
+search_submit=검색
+search_none=일치하는 프로세스가 없습니다.
+search_kill=신호 보냄
+search_ignore=검색 프로세스 무시
+search_return=검색 양식
+
+run_command=실행할 명령
+run_submit=실행
+run_mode=실행 모드
+run_bg=백그라운드에서 실행
+run_fg=완료할 때까지 대기
+run_input=명령 입력
+run_title=명령 결과
+run_output=$1의 결과..
+run_none=생성된 결과가 없습니다
+
+edit_title=프로세스 정보
+edit_gone=이 프로세스는 더 이상 실행되고 있지 않습니다
+edit_sub=하위 프로세스
+edit_kill=신호 보냄
+edit_change=변경
+edit_prilow=낮은 순위
+edit_prihigh=높은 순위
+edit_pridef=기본 순위
+edit_none=없음
+
+kill_err=프로세스 $2에 신호 $1을(를) 보내지 못했습니다
+kill_title=신호 보냄
+kill_sent=전송 완료
+
+renice_err=프로세스 $1을(를) renice하지 못했습니다
+
+linux_pri=우선 순위
+linux_tty=TTY
+linux_status=상태
+linux_wchan=대기 위치
+linux_mem=메모리
+linux_group=그룹
+linux_ruser=실제 사용자
+linux_rgroup=실제 그룹
+linux_pgid=프로세스 그룹 ID
+
+linuxstat_R=실행 중
+linuxstat_S=일시 중지
+linuxstat_D=장시간 중지
+linuxstat_T=중지됨
+linuxstat_Z=좀비
+
+freebsd_ruser=실제 사용자
+freebsd_rgroup=실제 그룹
+freebsd_tty=TTY
+freebsd_pgid=프로세스 그룹
+freebsd_lstart=시작 시간
+freebsd_lim=메모리 한계
+
+hpux_pri=우선 순위
+hpux_tty=TTY
+hpux_status=상태
+hpux_wchan=대기
+
+hpuxstat_0=존재하지 않음
+hpuxstat_S=일시 중지
+hpuxstat_W=대기 중
+hpuxstat_R=실행 중
+hpuxstat_I=중간
+hpuxstat_Z=좀비
+hpuxstat_T=중지됨
+hpuxstat_G=증가 중
+
+macos_tty=TTY
+
+sysv_group=그룹
+sysv_ruser=실제 사용자
+sysv_rgroup=실제 그룹
+sysv_pgid=프로세스 그룹 ID
+sysv_tty=TTY
+
+log_run=명령 "$1" 실행됨
+log_kill=프로세스 $2에 신호 $1 보냄 완료
+log_kills=프로세스 $2에 신호 $1 보냄 완료
+log_kill_l=프로세스 $2에 신호 $1 보냄 완료
+log_kills_l=프로세스 $2에 신호 $1 보냄 완료<br>
+
+acl_manage=사용자로서 프로세스 관리
+
+kill_kill=프로세스 중단
+kill_term=&nbsp;종료&nbsp;&nbsp;
+kill_hup=&nbsp;&nbsp;다시 시작&nbsp;&nbsp;&nbsp;
+kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;중지&nbsp;&nbsp;&nbsp;&nbsp;
+kill_cont=&nbsp;&nbsp;계속&nbsp;&nbsp;
+

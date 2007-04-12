@@ -1,0 +1,96 @@
+#!/usr/local/bin/perl
+# Show mail file options
+
+require './dovecot-lib.pl';
+&ui_print_header(undef, $text{'mail_title'}, "");
+$conf = &get_config();
+
+print &ui_form_start("save_mail.cgi", "post");
+print &ui_table_start($text{'mail_header'}, "width=100%", 4);
+
+# Mail file location
+$envmode = 4;
+$env = &find_value("default_mail_env", $conf);
+for($i=0; $i<@mail_envs; $i++) {
+	$envmode = $i if ($mail_envs[$i] eq $env);
+	}
+print &ui_table_row($text{'mail_env'},
+	&ui_radio("envmode", $envmode,
+		[ ( map { [ $_, $text{'mail_env'.$_}."<br>" ] } (0.. 3) ),
+		  [ 4, &text('mail_env4',
+			&ui_textbox("other", $envmode == 4 ? $env : undef, 30)) ] ],
+		), 3);
+
+# Check interval
+$check = &find_value("mailbox_check_interval", $conf);
+print &ui_table_row($text{'mail_check'},
+	&ui_radio("check", $check eq '' ? 0 : $check == 0 ? 1 : 2,
+		  [ [ 1, $text{'mail_never'} ],
+		    [ 2, &ui_textbox("checki", $check ? $check : "", 10).
+			 " ".$text{'mail_secs'} ],
+		    [ 0, &getdef("mailbox_check_interval",
+				 [ [ 0, $text{'mail_never'} ] ]) ] ]), 3);
+
+# Idle interval
+$idle = &find_value("mailbox_idle_check_interval", $conf);
+print &ui_table_row($text{'mail_idle'},
+	&ui_radio("idle", $idle eq '' ? 0 : $idle == 0 ? 1 : 2,
+		  [ [ 1, $text{'mail_never'} ],
+		    [ 2, &ui_textbox("idlei", $idle ? $idle : "", 10).
+			 " ".$text{'mail_secs'} ],
+		    [ 0, &getdef("mailbox_idle_check_interval",
+				 [ [ 0, $text{'mail_never'} ] ]) ] ]), 3);
+
+# Full FS access
+@opts = ( [ "yes", $text{'yes'} ], [ "no", $text{'no'} ] );
+$full = &find_value("mail_full_filesystem_access", $conf);
+print &ui_table_row($text{'mail_full'},
+	&ui_radio("full", $full,
+	  [ @opts,
+	    [ "", &getdef("mail_full_filesystem_access", \@opts) ] ]), 3);
+
+# CRLF save mode
+$crlf = &find_value("mail_save_crlf", $conf);
+@opts = ( [ "yes", $text{'yes'} ], [ "no", $text{'no'} ] );
+print &ui_table_row($text{'mail_crlf'},
+	&ui_radio("crlf", $crlf,
+	  [ @opts,
+	    [ "", &getdef("mail_save_crlf", \@opts) ] ]), 3);
+
+# Allow changing of files
+$dirty = &find("mbox_dirty_syncs", $conf, 2) ?
+		"mbox_dirty_syncs" : "maildir_check_content_changes";
+$change = &find_value($dirty, $conf);
+print &ui_table_row($text{'mail_change'},
+	&ui_radio("change", $change,
+	  [ @opts,
+	    [ "", &getdef($dirty, \@opts) ] ]), 3);
+
+# Permissions on files
+$umask = &find_value("umask", $conf);
+print &ui_table_row($text{'mail_umask'},
+	&ui_opt_textbox("umask", $umask, 5, &getdef("umask")), 3);
+
+# UIDL format
+if (&find("pop3_uidl_format", $conf, 2)) {
+	$uidl = &find_value("pop3_uidl_format", $conf);
+	@opts = ( $uidl ? ( ) : ( [ "", $text{'mail_uidl_none'} ] ),
+		  [ "%v.%u", $text{'mail_uidl_dovecot'} ],
+		  [ "%08Xv%08Xu", $text{'mail_uidl_uw'} ],
+		  [ "%f", $text{'mail_uidl_courier0'} ],
+		  [ "%u", $text{'mail_uidl_courier1'} ],
+		  [ "%v-%u", $text{'mail_uidl_courier2'} ],
+		  [ "%Mf", $text{'mail_uidl_tpop3d'} ] );
+	($got) = grep { $_->[0] eq $uidl } @opts;
+	print &ui_table_row($text{'mail_uidl'},
+		&ui_select("pop3_uidl_format", $got ? $uidl : "*",
+			   [ @opts, [ "*", $text{'mail_uidl_other'} ] ])."\n".
+		&ui_textbox("pop3_uidl_format_other", $got ? "" : $uidl, 10),
+		3);
+	}
+
+print &ui_table_end();
+print &ui_form_end([ [ "save", $text{'save'} ] ]);
+
+&ui_print_footer("", $text{'index_return'});
+

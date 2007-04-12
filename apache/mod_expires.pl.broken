@@ -1,0 +1,113 @@
+# mod_expires.pl
+# Defines editors for setting expires times
+
+sub mod_expires_directives
+{
+local($rv);
+$rv = [ [ 'ExpiresActive ExpiresByType ExpiresDefault', 1, 5,
+          'virtual directory htaccess' ] ];
+return &make_directives($rv, $_[0], "mod_expires");
+}
+
+sub edit_ExpiresActive_ExpiresByType_ExpiresDefault
+{
+local($rv, $max, $i);
+$rv = "Generate Expires headers?\n".
+      &choice_input($_[0]->[0]->{'value'}, "ExpiresActive", "off",
+      "Yes,on", "No,off")."<br>\n";
+$rv .= "Default expiry time?\n";
+$rv .= sprintf "<input type=radio name=ExpireDefault_def value=1 %s> None\n",
+        $_[2]->[0] ? "" : "checked";
+$rv .= sprintf "&nbsp; <input type=radio name=ExpireDefault_def value=2 %s>\n",
+        $_[2]->[0] ? "checked" : "";
+$rv .= &expires_input("ExpiresDefault", $_[2]->[0]->{'value'})."<br>\n";
+$rv .= "<table border>\n".
+       "<tr $tb> <td><b>MIME type</b></td> <td><b>Expiry time</b></td> </tr>\n";
+$max = @{$_[1]} + 1;
+for($i=0; $i<$max; $i++) {
+	if ($_[1]->[$i]->{'value'} =~ /^(\S+)\s+(.*)$/) {
+		$type = $1; $when = $2;
+		}
+	else { $type = $when = ""; }
+	$rv .= "<tr $cb>\n";
+	$rv .= "<td><input name=Expires_type_$i size=15 value=\"$type\"></td>\n";
+	$rv .= "<td>".&expires_input("Expires_when_$i", $when)."</td>\n";
+	$rv .= "</tr>\n";
+	}
+$rv .= "</table>\n";
+return (2, "Expires headers", $rv);
+}
+sub save_Expires
+{
+local($i, $type, @rv);
+for($i=0; defined($type = $in{"Expires_type_$i"}); $i++) {
+	if ($type !~ /\S/) { next; }
+	$type =~ /^(\S+)\/(\S+)$/ || &error("'$type' is not a valid MIME type");
+	push(@rv, "$type ".&parse_expires("Expires_when_$i"));
+	}
+return ( &parse_choice("ExpiresActive", "off"),
+         \@rv,
+         $in{'ExpiresDefault_def'} ? [ ] : &parse_expires("ExpiresDefault") );
+}
+
+@Expires_units = (60, 60, 24, 30, 365);
+@Expires_words = ('second', 'minute', 'hour', 'day', 'week', 'month', 'year');
+
+# expires_input(name, value)
+sub expires_input
+{
+local(@tm, @w, $i, $rv, $from, $secs);
+if ($_[1] =~ /^"(\S+)\s+(plus\s+)?(.*)"$/) {
+	@w = split(/\s+/, $3);
+	$from = ($1 =~ /access|now/ ? "A" : "M");
+	@tm = (0, 0, 0, 0, 0, 0, 0);
+	for($i=0; $i<@w; $i+=2) {
+		$w[$i+1] =~ s/s$//g;
+		$tm[&indexof($w[$i+1], @Expires_words)] = $w[$i];
+		}
+	}
+elsif ($_[1] =~ /^(A|M)(\d+)$/) {
+	$from = $1;
+	$secs = $2;
+	for($i=0; $i<@Expires_units; $i++) {
+		push(@tm, $secs % $Expires_units[$i]);
+		$secs = int($secs / $Expires_units[$i]);
+		}
+	push(@tm, $secs);
+	splice(@tm, 4, 1, 0);
+	}
+else {
+	$from = "A";
+	@tm = (0, 0, 0, 0, 0, 0, 0);
+	}
+$rv = "<select name=$_[0]_from>\n";
+$rv .= sprintf "<option value=M %s>Modification\n",
+        $from eq "M" ? "checked" : "";
+$rv .= sprintf "<option value=A %s>Access\n",
+        $from eq "A" ? "checked" : "";
+$rv .= "</select> time plus&nbsp;\n";
+for($i=0; $i<7; $i++) {
+	$rv .= "<input size=3 name=$_[0]_$i value=\"$tm[$i]\">".
+		substr($Expires_words[$i],0,1)."\n";
+	}
+return $rv;
+}
+
+# parse_expires(name)
+sub parse_expires
+{
+local($rv, $i, $v);
+$rv = $in{"$_[0]_from"} eq "A" ? "access" : "modification";
+$rv .= " plus";
+for($i=0; $i<7; $i++) {
+	$v = $in{"$_[0]_$i"};
+	if ($v !~ /^\d*$/) { &error("'$v' is not a valid number of ".
+	                            "$Expires_words[$i]s"); }
+	if ($v) { $rv .= " $v $Expires_words[$i]s"; }
+	}
+if ($rv =~ /plus$/) { $rv .= " 0 seconds"; }
+return "\"$rv\"";
+}
+
+1;
+

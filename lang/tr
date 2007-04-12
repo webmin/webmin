@@ -1,0 +1,125 @@
+main_return=Geri Dön ($1) 
+main_homepage=Ana Sayfa
+main_feedback=Feedback..
+main_switch=Kullanýcý Deðiþtir..
+main_logout=Çýkýþ
+main_version=$2'de Sürüm $1 ($3)
+main_title=$2'de Webmin $1 ($3)
+main_none=Herhangi bir webmin modülüne ulaþmak için izininiz yoktur.
+
+category_servers=Sunucular
+category_hardware=Donaným
+category_system=Sistem
+category_webmin=Webmin
+category_net=Að
+category_=Diðer
+
+header_webmin=Webmin Indeksi
+header_module=Modül Indeksi
+header_help=Yardým..
+header_config=Modül Ayarlarý
+header_servers=Webmin Sunucularý
+
+index=Ana Sayfa
+yes=Evet
+no=Hayýr
+save=Kaydet
+create=Oluþtur
+delete=Sil
+find=Ara
+error=Hata
+default=Default
+modify=Deðiþtir
+reset=Reset
+ok=Tamam
+cancel=Ýptal
+
+chooser_title1=Dosya Seç..
+chooser_title2=Dizin Seç..
+chooser_dir=$1'deki Dizin
+chooser_ok=Tamam
+
+users_title1=Kullanýcýlarý Seç..
+users_title2=Kullanýcý Seç..
+users_sel=Seçilen Kullanýcýlar
+users_all=Bütün Kullanýcýlar
+users_ok=Tamam
+users_cancel=Ýptal
+users_clear=Temizle
+
+groups_title1=Gruplarý Seç..
+groups_title2=Grubu Seç..
+groups_all=Bütün Gruplar
+groups_sel=Seçilen Gruplar
+groups_ok=Tamam
+groups_cancel=Ýptal
+groups_clear=Temizle
+
+config_ecannot=Bu modülü ayarlamak için izin verilmedi
+config_title=Ayarlama
+config_dir=For module $1
+config_header=$1'deki ayarlanabilir seçenekler
+config_none=None
+config_eaccess=Bu modülü ayarlamak için izin verilmedi
+
+help_err=Yardýmýn görüntülenmesinde hata oluþtu
+help_epath=Yardým dosyasý bulunamadý
+help_efile=$1'in yadým dosyasýnýn okunmasýnda hata oluþtu
+help_eheader=Aranan &lt;baþlýk&gt; bölüm
+help_einclude=$1'in içeriðinde hata oluþtu
+help_eif=$1'de hata oluþtu : $2
+help_eexec=$1'de hata oluþtu : $2
+
+referer_title=Güvenlik Uyarýsý
+referer_warn=<b>Uyarý!!!<b> Webmin program $2 programýnýn $1 URL'sinden link aldýðýný tespit etti.Bu makinenize dýþarýdan bir saldýrý giriþimi olabilir.
+referer_ok=Webmin programýný çalýþtýrmaya devam et.
+referer_again=Gelecekte bu uyarýyý bir daha gösterme.
+
+session_header=Webmin'e Giriþ
+session_mesg=$1'deki Webmin sunucusuna girmek için bir kullanýcý adý ve þifre girmelisiniz.
+session_user=Kullanýcý Adý
+session_pass=Þifre
+session_login=Giriþ
+session_clear=Temizle
+session_failed=Giriþ Baþarýsýz. Lütfen tekrar deneyiniz.
+session_logout=Çýkýþ baþarýlý. Takip eden formu doldurarak tekrar girebilirsiniz.
+session_timed_out=Oturum $1 dakika iþlem yapýlmadýðýnda inaktif olacaktýr.
+
+month_1=Ocak
+month_2=Þubat
+month_3=Mart
+month_4=Nisan
+month_5=Mayýs
+month_6=Haziran
+month_7=Temmuz
+month_8=Aðustos
+month_9=Eylül
+month_10=Ekim
+month_11=Kasim
+month_12=Aralik
+
+day_0=Pazar
+day_1=Pazartesi
+day_2=Salý
+day_3=Çarþamba
+day_4=Perþembe
+day_5=Cuma
+day_6=Cumartesi
+
+smonth_1=Oca
+smonth_2=Þub
+smonth_3=Mar
+smonth_4=Nis
+smonth_5=May
+smonth_6=Haz
+smonth_7=Tem
+smonth_8=Aðu
+smonth_9=Eyl
+smonth_10=Eki
+smonth_11=Kas
+smonth_12=Ara
+
+ui_selall=Tümünü seç
+ui_selinv=Seçilenleri tersine çevir
+
+config_dir=$1 modülü için

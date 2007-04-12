@@ -1,0 +1,8 @@
+Readme file of webmin module for Mon 
+created on 10th Sept 2001 
+
+TO install..
+Untar the file from / directory with root previliages.
+Add this module in the webmin-user module access list
+You can add entry"mon" in /etc/webmin/webmin.acl or use webmin to append user module access list.
+

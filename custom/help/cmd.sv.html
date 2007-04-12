@@ -1,0 +1,46 @@
+Varje kommandoord har en beskrivning (visas på knappen på förstasidan) och
+ett kommando som utförs. Detta kommando kan innehålla skaloperatorer som
+|, &gt; och ; för att utföra flera kommandon och pipelines. Kommandot kan
+också innehålla parametrar som <tt>$foo</tt>, som byts ut mot inmatningar
+när kommandot körs.
+
+<p>Dessa parametrar kan du skriva in i tabellen längst ned på sidan. För
+varje parameter måste du ange:
+
+<dl>
+<dt><b>Namn</b>
+<dd>En unik bestämning för denna parameter. Om du anger namnet <tt>foo</tt>
+    kommer <tt>$foo</tt> att bytas ut mot parametervärdet när kommandot körs.
+<p><dt><b>Beskrivning</b>
+<dd>Beskrivningen som ska skrivas ut vid denna parameter på förstasidan.
+<p><dt><b>Typ</b>
+<dd>Denna inställning bestämmer hur parametern tas emot. Alternativen är:
+	<ul>
+	<li><b>Text</b>
+	    <br>Fri textinmatning.
+	<li><b>Användare</b>
+	    <br>Ett användarnamn i ditt system.
+	<li><b>UID</b>
+	    <br>UID för en användare i ditt system.
+	<li><b>Grupp</b>
+	    <brEtt gruppnamn i ditt system.
+	<li><b>GID</b>
+	    <brGID för en grupp i ditt system.
+	<li><b>Fil</b>
+	    <br>Fullständig sökväg till en fil.
+	<li><b>Katalog</b>
+	    <br>Fillständig sökväg till en katalog.
+	<li><b>Inställlning</b>
+	    <br>Ja/Nej-inmatning som kommer att sätta parametern till det
+	    som står i fältet bredvid typinmatningen endast om Ja väljs.
+	<li><b>Lösenord</b>
+	    <br>Fri textinmatning, men vid inmatning byts tecknen ut mot
+	    asterisker på skärmen.
+	</ul><p>
+<dt><b>Citationstecken runt parameter?</b>
+<dd>Om du svarar Ja, kommer parametern att omges med citationstecken före
+utbytet, vilket medför att man kan mata in värden som innehåller mellanslag.
+</dl>
+
+<hr>
+

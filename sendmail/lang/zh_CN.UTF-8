@@ -1,0 +1,664 @@
+index_title=Sendmail 配置
+index_econfig=Sendmail 配置文件 $1 不存在。可能您的<a href='$2'>模块配置</a>有误。
+index_eversion=Sendmail 配置文件似乎不是最新的 Sendmail 程序版本专用的。Webmin 仅支持 8.8 或更高版本。
+index_epath=您的系统未安装Sendmail 可执行文件 $1。可能您的<a href='$2'>模块配置</a> 有误，或者未安装 Sendmail 程序。
+index_return=Sendmail 配置
+index_stop=停止 Sendmail
+index_stopmsg=点击此按扭停止运行 Sendmail 进程。这将会阻止其它系统发送邮件给本地用户，也会阻止将本系统当成邮件服务器的客户发送邮件。
+index_start=启动 Sendmail
+index_startmsg=单击此按扭以命令 $1 启动 Sendmail。在此之前，其它系统的邮件将不能发送给本地用户，客户也无法将本系统当成邮件服务器。
+index_version=Sendmail 配置 $1
+
+opts_title=Sendmail 选项
+opts_ecannot=您没有编辑 Sendmail 选项的权限
+opts_ds=通过主机向外发送邮件
+opts_direct=直接传递
+opts_dr=将不合格用户名转发给主机
+opts_dh=将本地用户的邮件转发给主机
+opts_local=本地传递
+opts_queuela=最大发送负载均值
+opts_refusela=最大接收负载均值
+opts_maxch=最大子进程数
+opts_throttle=最大每秒连接数
+opts_minqueueage=重试发送的最小时间间隔
+opts_runsize=队列最大值
+opts_queuereturn=放弃前的等待时间
+opts_queuewarn=发送警告前的等待时间
+opts_queue=邮件队列目录
+opts_postmaster=发送错误消息至
+opts_forward=用户转发文件
+opts_minfree=最小磁盘可用空间
+opts_maxmessage=最大邮件大小
+opts_loglevel=日志级别
+opts_mimebounce=MIME 编码反弹邮件？
+opts_default=默认
+opts_save=保存并应用
+opts_err=无法保存选项
+opts_ehost='$1' 不是有效的主机名或域名
+opts_einvalid='$1' 不是 '$2' 的有效值
+opts_blame=文件安全选项
+opts_selected=已选择..
+opts_blocks=块
+opts_bytes=字节
+opts_dmode=递送方式
+opts_background=背景
+opts_queue-only=仅队列
+opts_interactive=交互式
+opts_deferred=延迟
+opts_gecos=以用户的真名来接收邮件
+opts_hops=最大的邮件跃点计数
+opts_daemon=SMTP端口选项
+
+aliases_title=邮件别名
+aliases_ecannot=您没有编辑别名的权限
+aliases_addr=地址
+aliases_to=别名为..
+aliases_type1=地址 $1
+aliases_type2=在文件 $1 中的地址
+aliases_type3=文件 $1
+aliases_type4=程序 $1
+aliases_type5=自动答复文件 $1
+aliases_type6=答复过滤器文件$1
+aliases_none=无
+aliases_return=别名列表
+aliases_toomany=您系统中的邮件地址太多，本页无法全部显示。
+aliases_go=寻找匹配的别名：
+
+aform_ecannot=你没有编辑该别名的权限
+aform_type0=无
+aform_type1=邮件地址
+aform_type2=文件中的地址
+aform_type3=写入文件
+aform_type4=传送到程序
+aform_type5=自动从文件答复
+aform_type6=应用过滤器文件
+aform_edit=编辑别名
+aform_create=创建别名
+aform_name=地址
+aform_enabled=启用？
+aform_val=别名为
+aform_afile=编辑..
+aform_return=别名
+
+afile_title=编辑地址文件
+afile_desc=使用下面的文本区来编辑文件 $1 中的地址。
+afile_efile=您没有编辑 $1的权限。
+afile_undo=撤销更改
+afile_ewrite=无法写入至地址文件：$1
+
+ffile_title=编辑筛选程序文件
+ffile_desc=在文件$1中使用下面的表格来设置筛选程序文件。
+ffile_efile=您没有编辑$1的权限。
+ffile_line=如果转发至$1、$2及$3，然后再转发至$4
+ffile_from=来自
+ffile_to=发往
+ffile_subject=主题
+ffile_cc=CC
+ffile_body=正文
+ffile_what0=不匹配
+ffile_what1=匹配
+ffile_other=其他转发至$1
+ffile_err=无法保存筛选程序文件
+ffile_ematch=缺少匹配
+ffile_eaction=未输入转发地址
+
+rfile_title=编辑自动答复文件
+rfile_desc=在文件 $1 中使用下面的文本区来编辑自动答复邮件。该邮件包含宏 $SUBJECT、$FROM、$TO、$DATE 和 $BODY，它们在自动答复激活时将扩展。
+rfile_desc2=您也可以在邮件的顶端编写这样的几行:<br><tt>来自: foo@bar.com</tt><br><tt>主题: On holiday</tt><br>来新增或更换自动答复使用的默认设置，用空白行与邮件正文分离。 
+rfile_efile=您没有编辑 $1的权限。
+rfile_undo=撤销改变
+
+asave_err=无法保存别名
+asave_ecannot2=您没有编辑别名的权限
+asave_ecannot=您没有编辑此别名的权限
+asave_emax=您没有创建超过 $1 个别名的权限
+asave_eaddr='$1' 不是一个有效的地址
+asave_ealready=别名 '$1' 已存在
+asave_ematch=您只能创建与'$1'匹配的别名
+asave_etype=您不能创建这种类型的别名
+asave_etype1='$1' 不是一个有效的邮件地址
+asave_etype2=地址文件 '$1' 无效或不存在
+asave_etype3='$1' 不是一个有效的文件名
+asave_etype4='$1'不是有效的程序或不存在
+asave_etype5=自动答复文件 '$1' 无效或不存在
+asave_etype4none=没有提供程序
+asave_etype6=筛选文件'$1'无效
+asave_esame=您只能创建与您的webmin 登录名称一样的别名
+
+cws_title=本地域
+cws_ecannot=您没有编辑本地域的权限
+cws_domains=本服务器处理的域
+cws_desc1=除了发送给 $1 的邮件外， Sendmail 仅接受列在左表中的本地域和主机名的本地递送邮件。如果您要让邮件服务器处理多个电子邮件域，您必须将这些域列在此列表中。
+cws_desc2=注意，表中仅包含一个域通常是不够用的。您必须确认该域的DNS记录存在且指向您的系统。
+cws_err=无法保存本地域
+cws_ehost='$1' 不是一个有效的主机或域名
+cws_eip='$1' 是一个IP 地址，而不是域
+
+masq_title=域名伪装
+masq_ecannot=您没有配置伪装的权限
+masq_domain=伪装成域名
+masq_domains=要伪装的域名
+masq_desc1=如果上面已经提供域名，sendmail将把所有外发邮件的<tt>来源</tt>地址改为看起来像是发送地址。此外，任何从左表中列出的主机和域、且经过您的系统发送的电子邮件的<tt>来源</tt>地址也会同样被更改。注意，此处定义的任何域伪装均可使用特定用户的<a hred='$1'>发送地址</a>页来覆盖。
+masq_desc2=当您想要您的邮件看来是发自域而不是您的主机，或者您的系统是其它许多自行运行邮件服务器主机的中转站时，这种功能将十分有用。
+masq_err=无法保存域名伪装
+masq_edomain='$1' 不是一个有效的要伪装域名
+masq_ehost='$1' 不是一个有效的主机名或域名
+masq_eip='$1' 是IP地址，不是域
+
+trusts_title=可信任用户
+trusts_ecannot=您没有编辑可信用户的权限
+trusts_users=sendmail 可信任的本地用户
+trusts_desc=如果本地用户尝试发送邮件，sendmail 仅允许列于左表中的用户指定一个不同的<tt>来源：</tt> 地址。这个限制可以防止他人利用您的系统发送包含伪装的<tt>来源：</tt>地址的的伪装邮件。
+trusts_err=无法保存信任用户
+trusts_euser='$1' 是一个有效的用户
+
+virtusers_title=地址映射
+virtusers_ecannot=您没有编辑地址映射的权限
+virtusers_efeature=您的sendmail配置尚未启动地址映射(<tt>virtuser</tt>)功能。<a href='$1'>点击这里</a>以设置sendmail功能。
+virtusers_efile=用于创建地址映射数据库$2的文本文件$1不存在。您可能需要修改<a href='$3'>模块配置</a>以使用正确路径。
+virtusers_createfile=或者如果该功能已启动，<a href='$1'>点击这里</a>以创建本文件。
+virtusers_desc1=地址映射类似<a href='$1'>别名</a>，但是更适合于处置多个邮件域的系统。地址映射能将整个域的邮件重定向到一个地址，处理不同域中的同名用户，或者把一个域的所有邮件映射到另一个域。
+virtusers_desc2=注意：对用于地址映射的任何域，您都必须在<a href='$1'>本地域</a>表中有一个条目，而且指向您的系统的每个域都必须有一个DNS MX记录。
+virtusers_for=邮件给..
+virtusers_to=发送给..
+virtusers_error=错误 $1
+virtusers_domain=域 $1
+virtusers_address=地址 $1
+virtusers_return=地址映射列表
+virtusers_toomany=您系统中的地址映射，本页无法全部显示。
+virtusers_go=寻找匹配的地址映射：
+
+vform_edit=编辑映射
+vform_create=创建映射
+vform_for=发送给
+vform_address=地址
+vform_domain=域
+vform_to=发送给
+vform_msg=信息
+vform_error=返回错误
+vform_err_nouser=无用户
+vform_err_nohost=无主机
+vform_err_unav=不可用
+vform_err_temp=tempfail
+vform_err_proto=协议
+vform_end=移到结尾
+vform_ecannot=您没有编辑此地址映射的权限
+
+vsave_ecannot=您没有编辑地址映射的权限
+vsave_ecannot2=您没有编辑此地址映射的权限
+vsave_emax=您没有创建超过 $1个地址映射的权限
+vsave_err=无法保存地址映射
+vsave_efrom='$1'不是一个有效的地址
+vsave_efromdup='$1'的地址映射已经被定义
+vsave_edom='$1' 不是一个有效的域
+vsave_edomdup='$1'的地址映射已经被定义
+vsave_ematch=源地址和'$1'不匹配
+vsave_esame=您没有为您的用户名创建地址映射的权限
+vsave_ecannot3=您没有创建地址的映射的权限
+vsave_eaddr='$1' 不是一个有效的地址
+vsave_ecannot4=您没有创建到域的映射的权限
+vsave_edomdom=只有域才可映射至另一个域
+vsave_ecannot5=您没有创建返回错误的映射的权限
+
+mailers_title=域路由
+mailers_cannot=您没有编辑域路由的权限
+mailers_edirective=Sendmail 配置文件未包含域路由所必需的指令。
+mailers_efeature=您的sendmail配置未启动域路由(<tt>mailertable</tt>)功能。a href='$1'>点击这里</a>以设置sendmail功能。
+mailers_efile=创建域路由数据库$2所需的文本文件$1不存在。您可能需修改<a href='$3'>模块配置</a>来使用正确的路径。
+mailers_desc1=域路由为发送邮件到某些域提供了一种特殊的传输方法。如果您的系统是不能用于外部到达的邮件服务网关时，或者您想要强制给所有一个特定域的邮件经过其他服务器时，这个功能将非常有用。
+mailers_desc2=您<b>不应</b>该为路由域在<a href='$1'>本地域</a>列表中定义一个条目。但是，对任何作为网关的域，您应有一个指向您的系统的 DNS MX 记录。
+mailers_for=邮件给...
+mailers_delivery=递送
+mailers_to=发送给..
+mailers_return=域路由列表
+
+mform_edit=编辑路由
+mform_create=创建路由
+mform_for=邮件给..
+mform_host=主机
+mform_domain=域
+mform_delivery=递送
+mform_to=发送给
+mform_ignore=忽略SMTP递送的MX
+mform_smtp=SMTP
+mform_esmtp=扩展的 SMTP
+mform_smtp8=8位 SMTP
+mform_relay=SMTP 转送
+mform_local=本地用户
+mform_prog=送往程序
+mform_uucp=UUCp
+mform_usenet=张贴到 USENET
+mform_fax=HylaFAX
+mform_pop=POP3
+mform_procmail=Procmail
+mform_mail11=DECnet mail11
+mform_error=错误
+mform_ecannot=您没有编辑域路由的权限
+
+msave_ecannot=您没有编辑域路由的权限
+msave_err=无法保存域路由
+msave_edomain='$1' 不是一个有效的主机或域
+msave_edup='$1' 的域路由已被定义
+
+generics_title=发送地址
+generics_cannot=您没有编辑发送地址的权限
+generics_econfig=您的Sendmail 配置文件未包含发送地址映射所必需的指令。
+generics_efeature=您的sendmail配置未启动发送地址映射(<tt>类</tt>)功能。<a href='$1'>点击此处</a>以设置sendmail功能。
+generics_efile=创建发送地址数据库$2所需的文本文件$1不存在。您可能需修改<a href='$3'>模块配置</a>来使用正确的路径。
+generics_desc1=发送地址映射可以让您修改您的系统发送的邮件的地址，或者局域网上其它主机通过您系统发送的邮件的<tt>来源：</tt>地址。如果一个系统上包含多个域，或您希望来自某些用户的邮件看来似乎来自不同的域时，此功能将非常有用。
+generics_desc2=注意：对每个需要发送地址映射的域，您应在其<a href='$1'>发送域</a>表中设有一个条目。另外，发送地址映射对递送到本地用户的邮件无效。
+generics_from=邮件来自..
+generics_to=改变到..
+generics_return=地址映射列表
+generics_toomany=您的系统中包含了太多的发送地址，本页无法全部显示。
+generics_go=寻找匹配的发送地址：
+
+gform_edit=编辑映射
+gform_create=创建映射
+gform_from=邮件来自
+gform_to=改变到
+gform_ecannot=您没有编辑发送地址的权限
+
+gsave_ecannot=您没有编辑发送地址的权限
+gsave_ecannot2=您没有编辑发送地址的权限
+gsave_err=无法保存外发地址
+gsave_efrom='$1' 不是一个有效的来源地址
+gsave_ematch=来源地址和'$1'不匹配
+gsave_eto='$1' 不是一个有效的新地址
+
+cgs_title=发送域
+cgs_ecannot=您没有编辑发送地址的权限
+cgs_header=发送地址域
+cgs_desc=除了本地用户发送的邮件外，Sendmail只对列于右边文本框中的主机和域执行<a href='$1'>发送地址</a>映射。因此，为使一个外发地址发生作用，发信地址所在的域必须包括在这个表中。
+cgs_err=无法保存外发域
+cgs_ehost='$1' 不是一个有效的主机名或域名
+cgs_eip='$1' 是IP地址,不是域
+
+domains_title=域映射
+domains_ecannot=您没有编辑域映射的权限
+domains_econfig=Sendmail 配置文件未包含域映射所必需的指令。
+domains_efeature=您的sendmail配置尚未启动域映射(<tt>domaintable</tt>)功能。<a href='$1'>点击这里</a>以设置sendmail功能。
+domains_efile=创建地址映射数据库$2所需要的文本文件 $1 不存在。您可能需修改<a href='$3'>模块配置</a>才能使用正确的路径。
+domains_desc=域映射修改从您系统的用户发出的、通过您系统的用户转送的、或发送给您系统上用户的邮件<tt>发往：</tt>地址。转送的消息或发送至本地用户的邮件的<tt>来源：</tt>地址也被修改。如果您更改了域名，而且想将所有地方出现的旧域名都改成新域名时，这个功能将非常有用。
+domains_from=来自域..
+domains_to=发往域..
+domains_return=域映射列表
+
+dform_edit=编辑映射
+dform_create=创建映射
+dform_from=来源域
+dform_to=发往域
+dform_ecannot=您没有编辑域映射的权限
+
+dsave_ecannot=您没有编辑域映射的权限
+dsave_err=无法保存域映射
+dsave_edomain='$1' 不是一个有效的域名
+
+access_title=垃圾邮件控制
+access_ecannot=您没有配置垃圾邮件控制的权限
+access_efeature=您的sendmail配置未启动垃圾邮件控制(<tt>access_db</tt>)功能。<a href='$1'>点击这里</a>以设置sendmail功能。
+access_efile=创建地址映射数据库$2所需要的文本文件$1不存在。您可能需修改<a href='$3'>模块配置</a>才能使用正确的路径。
+access_desc1=Sendmail 的垃圾邮件控制功能让您拒收来自某些地址的邮件，而且也防止其他人使用您的系统转发垃圾邮件。Sendmail 的默认设置是接收本地用户的邮件，但是禁止任何客户或邮件服务器通过您的系统转发邮件。一般而言，您可以增加添加垃圾邮件控制规则以拒收特定的邮件来源，并且也允许本网络上的其它计算机通过本系统转发邮件的规则。
+access_desc2=注意：sendmail 默认设置允许本系统上运行的邮件客户程序通过 SMTP 转发邮件至任何目的地。因此无需在允许转发的列表中添加本地 <tt>127.0.0</tt> 网络地址。
+access_source=源..
+access_action=动作..
+access_return=垃圾邮件列表
+access_toomany=您系统中的垃圾邮件控制太多，无法整页显示。
+access_go=寻找匹配的垃圾邮件控制：
+
+sform_edit=编辑垃圾邮件控制规则
+sform_create=创建垃圾邮件控制规则
+sform_source=邮件来源
+sform_type0=邮件地址
+sform_type1=网络
+sform_type2=用户
+sform_type3=域
+sform_action=动作
+sform_ok=接受
+sform_relay=允许转发
+sform_reject=拒绝
+sform_discard=悄悄抛弃
+sform_err=错误代码
+sform_msg=消息
+sform_ecannot=您没有配置垃圾邮件控制的权限
+
+ssave_ecannot=您没有编辑垃圾邮件控制的权限
+ssave_err=无法保存垃圾邮件控制规则
+ssave_etype0='$1' 不是一个有效的地址
+ssave_etype1='$1' 不是一个有效的网络地址
+ssave_etype2='$1' 不是一个有效的用户名
+ssave_etype3='$1' 不是一个有效的域
+ssave_ecode='$1' 不是一个有效的SMTP错误代码
+ssave_ealready=垃圾邮件控制规则'$1'已经存在
+
+relay_title=转发域
+relay_ecannot=您没有编辑转发域的权限
+relay_eversion=只有sendmail8.9或以上版本才支持转发域功能。
+relay_domains=允许转发的域
+relay_desc1=除非<a href='$1'>垃圾邮件控制</a>规则允许，否则sendmail仅允许列在左侧文本框中的域转发邮件。所有不是发送给本地用户和未列在表中域的外来邮件都将被拒收。
+relay_desc2=假如本系统是不能从网络外部直接访问的几个域的网关(使用<a href='$1'>域路由</a> 功能)，那么所有的这些域都应在此罗列出。
+relay_err=无法保存转发域
+relay_edomain='$1' 不是一个有效的域名
+
+mailq_title=邮件队列
+mailq_count=$1邮件
+mailq_ecannot=您没有编辑邮件队列的权限
+mailq_id=邮件 ID
+mailq_sent=发送时间
+mailq_from=来自
+mailq_to=发往
+mailq_size=大小
+mailq_status=状态
+mailq_unknown=未知
+mailq_sending=发送中
+mailq_dmsg=要查看邮件队列中的一个邮件，请单击上表中的邮件ID。
+mailq_force=要强制立即递送队列中的邮件，<a href='$1'>单击这里</a>。
+mailq_none=当前队列中没有待发的邮件
+mailq_delete=删除选中的邮件
+mailq_return=邮件队列
+mailq_flush=清除邮件队列
+mailq_flushdesc=点击此按钮以强制立即发送所有待发的邮件，并且显示发送结果。
+
+flushq_title=请除队列
+flushq_desc=用命令 $1 强制递送邮件..
+
+delq_err=无法删除邮件
+delq_ecannot=您没有清除队列中邮件的权限
+delq_locked=当前文件正在发送而被锁定
+delq_enone=没有选择要删除的邮件
+delq_title=正在删除邮件
+delq_file=正在删除文件$1 ..
+delq_efile=无效的文件名！
+delq_egone=已经删除或发送
+delq_elocked=因发送而被锁定
+delq_ok=已成功删除
+
+boxes_title=用户邮箱
+boxes_user=用户
+boxes_size=邮箱大小
+boxes_none=没有邮件
+boxes_return=邮箱
+boxes_sent=发送邮件
+boxes_ecannot=您没有读取邮件的权限
+boxes_toomany=您的系统中用户太多，无法在此显示他们的所有邮件。
+boxes_go=检查用户邮件：
+
+mail_title=用户邮件
+mail_from=来自
+mail_date=日期
+mail_subject=主题
+mail_to=发往
+mail_cc=转送
+mail_bcc=密送
+mail_pri=优先级
+mail_highest=最高
+mail_high=高
+mail_normal=一般
+mail_low=低
+mail_lowest=最低
+mail_for=在 $1
+mail_for2=用于用户$1
+mail_sent=在发送邮件列表中
+mail_size=大小
+mail_delete=删除选定的邮件
+mail_compose=编写新邮件
+mail_return=用户邮箱
+mail_pos=将邮件 $1发送 $3 的 $2 
+mail_none=该邮箱中无邮件
+mail_ecannot=您没有阅读该用户的邮件的权限
+mail_all=全部选中
+mail_invert=逆向选取
+mail_search=寻找邮件，其中
+mail_body=正文
+mail_match=匹配
+mail_ok=搜索
+mail_nonefrom=无
+mail_mark=将已选中的邮件标记为：
+mail_mark0=未阅读
+mail_mark1=阅读
+mail_mark2=特别
+mail_forward=转发已选择的
+mail_rfc=寄件人行
+
+view_title=阅读邮件
+view_desc=$2中的邮件$1
+view_desc2=用户$2的邮件$1
+view_desc3=邮件$1
+view_sent=已发送邮件列表中的邮件$1
+view_qdesc=待发的邮件 $1
+view_headers=邮件头
+view_allheaders=查看所有邮件头
+view_noheaders=察看基本邮件头
+view_attach=附件
+view_reply=回复
+view_reply2=回复给所有
+view_enew=编辑新邮件
+view_forward=转发
+view_delete=删除
+view_strip=移除附件
+view_ecannot=您没有阅读该用户的邮件的权限
+view_mark=
+view_mark0=未阅读
+view_mark1=阅读
+view_mark2=特别
+view_return=原件
+view_sub=带有附件的邮件
+
+compose_title=编写邮件
+reply_title=回复邮件
+forward_title=转发邮件
+reply_headers=邮件头
+reply_attach=转发的附件
+reply_mailforward=已转发的邮件
+reply_attach2=客户端和服务器的附件
+reply_send=发送
+reply_ecannot=您没有以这个用户的身份发送邮件的权限
+
+send_err=无法发送邮件
+send_eto=未输入“发往”地址
+send_efrom=丢失“来自”地址
+send_title=已发送的邮件
+send_ok=邮件已成功发送到 $1
+send_ecannot=您没有以这个用户的身份发送邮件的权限
+send_esmtp=SMTP 命令 $1 失败：$2
+send_efile=附件 $1 不存在
+send_eattach=附件大小总量不能超过 $1 kB。
+send_eperms=用户 $1 不能阅读 $2
+send_eperms2=您没有发送文件$1的权限
+send_epath=Sendmail程序 $1不存在。
+
+delete_ecannot=您没有删除这个用户的邮件的权限
+delete_enone=没选择要删除的邮件
+delete_emnone=没有选择要标记的邮件
+
+search_title=搜索结果
+search_ecannot=您没有搜索该用户的邮件的权限
+search_ematch=您必须再次输入匹配的文本。
+search_none=找不到邮件。
+search_results2=$1邮件匹配$2 ..
+search_results3=$1邮件不匹配$2 ..
+
+file_title=编辑 Sendmail 文件
+file_desc=利用下表手工编辑 Sendmail 文件 $1。
+file_undo=撤销更改
+file_edit=手工编辑 $1
+file_ealiases=如果您能访问所有别名，您也只能编辑一个别名文件。
+file_evirtusers=如果您能访问所有地址映射，您只能编辑本地址映射文件。
+file_emailers=您没有编辑域路由文件的权限。
+file_egenerics=如果您能访问所有外发地址，您只能编辑本外发地址文件。
+file_edomains=您没有编辑域映射文件的权限。
+file_eaccess=您没有编辑垃圾邮件控制文件的权限。
+file_emode=未知的模式！
+file_err=无法编辑文件
+
+acl_opts=是否可以编辑 sendmail 选项？
+acl_cws=是否可以编辑本地域？
+acl_masq=是否可以配置域伪装？
+acl_trusts=是否可以编辑可信用户？
+acl_cgs=是否可以编辑发送域？
+acl_relay=是否可以编辑转发域？
+acl_mailers=是否可以配置域路由？
+acl_access=是否可以配置垃圾邮件控制?
+acl_domains=是否可以配置域映射？
+acl_stop=是否可启动停止sendmail？
+acl_mailq=是否可管理邮件队列？
+acl_viewdel=查看并删除
+acl_view=仅限查看
+acl_virtusers=本用户可以编辑的地址映射
+acl_none=无
+acl_same=同名的用户
+acl_all=所有
+acl_vsame=已username@启动
+acl_matching=匹配
+acl_vtypes=本用户可以编辑的地址映射
+acl_vtype0=返回错误
+acl_vtype1=“发往”域
+acl_vtype2=“发往”地址
+acl_vmax=最大地址映射数
+acl_unlimited=不限
+acl_aliases=本用户可编辑的别名
+acl_atypes=本用户可编辑的别名类型
+acl_atype1=邮件地址
+acl_atype2=文件中的地址
+acl_atype3=写入文件
+acl_atype4=提供给程序
+acl_atype5=自动转发
+acl_atype6=筛选程序文件
+acl_amax=最大别名数
+acl_outgoing=本用户可以编辑的发送地址
+acl_read=可阅读其邮件的用户
+acl_users=仅限用户
+acl_userse=所有用户除了
+acl_usersg=组的成员
+acl_from=允许“来自”地址
+acl_any=任何地址
+acl_fdoms=邮箱 @ 域
+acl_faddrs=列出的地址
+acl_fdom=任何地址 @ 域
+acl_fromname=来源地址的真名
+acl_apath=限制文件和程序到目录
+acl_attach=最大附件总大小
+acl_sent=在邮箱中储存已发送的邮件
+acl_canattach=可以粘附服务器文件吗？
+acl_boxname=显示邮箱名称为
+acl_boxname0=文件名
+acl_boxname1=用户的真名
+acl_boxname2=无
+acl_usersm=匹配的用户
+acl_asame=与用户相同
+
+log_opts=已更改 sendmail 选项
+log_alias_create=已创建别名 $1
+log_alias_modify=已修改别名 $1
+log_alias_delete=已删除别名 $1
+log_alias_manual=已手工编辑别名文件 $1
+log_cws=已改变本地域名
+log_masq=已改变域名伪装
+log_trusts=已改变信任的用户
+log_virtuser_create=已创建地址映射 $1
+log_virtuser_modify=已修改地址映射 $1
+log_virtuser_delete=已删除地址映射 $1
+log_virtuser_manual=已手工编辑地址映射文件 $1
+log_mailer_create=已创建域名路由 $1
+log_mailer_modify=已修改域名路由 $1
+log_mailer_delete=已删除域名路由 $1
+log_mailer_manual=已手工编辑域名路由文件 $1
+log_generic_create=已创建发送地址 $1
+log_generic_modify=已修改发送地址 $1
+log_generic_delete=已删除发送地址 $1
+log_generic_manual=已手工编辑发送地址文件 $1
+log_cgs=已改变发送域名
+log_domain_create=已创建域名映射 $1
+log_domain_modify=已修改域名映射 $1
+log_domain_delete=已删除域名映射 $1
+log_domain_manual=已手工编辑域名映射文件 $1
+log_access_create=已为 $1 创建垃圾邮件控制
+log_access_modify=已为 $1 更新垃圾邮件控制
+log_access_delete=已为 $1 删除垃圾邮件控制
+log_access_manual=已手工编辑垃圾邮件控制文件 $1
+log_relay=已改变转发域
+log_flushq=已清除邮件队列
+log_delmailq=已从队列删除来自 $1 的邮件
+log_delmailqs=已从队列删除来自 $1 的邮件
+log_stop=已停止 sendmail 守护进程
+log_start=已启动 sendmail 守护进程
+log_delmail=已从 $2 删除 $1邮件 
+log_send=已发送邮件到 $1
+log_feature_create=已添加M4条目$1
+log_feature_modify=已修改M4条目 $1
+log_feature_delete=已删除M4条目$1
+log_feature_move=已移动M4条目$1
+
+match_from=来自：匹配
+match_subject=主题：匹配
+match_to=发往：匹配
+match_cc=转发：匹配
+match_date=日期：匹配
+match_body=本文匹配
+match_size=大小大于
+match_!from=来自：不匹配
+match_!subject=主题：不匹配
+match_!to=发往：不匹配
+match_!cc=转发：不匹配
+match_!date=日期：不匹配
+match_!body=本文不匹配
+match_!size=大小小于
+
+features_title=Sendmail M4配置
+features_desc=本页列出了Sendmail M4 配置文件 $1的相关条目，实际配置文件$2的相关文件已建立。
+features_type=条目类型
+features_value=配置文件中的行
+features_type0=其他
+features_type1=功能
+features_type2=定义
+features_type3=未定义
+features_type4=邮件程序
+features_type5=操作系统类型
+features_add=添加新的条目类型
+features_build=重新创建 Sendmail 配置
+features_buildmsg=点击该按钮从上面罗列的M4配置条目中重新创建Sendmail 配置文件$1。
+features_return=M4配置
+features_emc=在您的系统中找不到Sendmail M4 配置文件 $2。可能没有安装（对于Sendmail软件包安装方式来说，这种情况经常出现），或者 <a href='$1'>模块配置</a>有误。
+features_efeatures=在您的系统中找不到Sendmail M4配置基本目录 $2。或者目录有误。可能没有安装（对于Sendmail软件包安装方式来说，这种情况经常出现），或者 <a href='$1'>模块配置</a>有误。
+features_econfig=您的<a href='$1'>模块配置</a>中没有设定Sendmail M4基本目录和M4配置文件的位置。如果您已经从源程序安装Sendmail，这些程序应该处于原始的源目录之下。
+features_move=移至
+features_manual=手工编辑文件
+
+feature_add=添加配置条目
+feature_edit=编辑配置条目
+feature_header=M4 配置条目细节
+feature_text=配置行
+feature_feat=功能
+feature_values=参数
+feature_def=定义名称
+feature_defval=值
+feature_defmode1=设置为..
+feature_defmode0=未定义
+feature_mailer=邮件传递方法
+feature_ostype=操作系统类型
+feature_old=当前的配置行
+feature_err=无法保存配置条目
+feature_efeat=功能 $1 已存在
+feature_edef=定义 $1 已存在
+feature_emailer=邮件程序 $1 已存在
+feature_eostype=操作系统类型已定义为 $1
+feature_manual=编辑 M4 文件
+feature_mdesc=您可以在本页上手工编辑endmail M4配置文件$1。要谨慎一些，因为将不会对文件进行语法检查。
+
+feat_access_db=垃圾邮件控制文件
+feat_virtusertable=地址映射
+feat_mailertable=域路由
+feat_genericstable=发送地址
+feat_domaintable=域映射
+
+mailer_local=本地 Unix 传送
+
+build_title=重新创建 Sendmail 配置
+build_em4=在您的系统中没有找到重新创建Sendmail 配置文件的命令$1。
+build_ebuild=无法建立配置: $1
+build_rusure=您确定要用以创建的新版本 $2 来替换Sendmail 配置文件$1？
+build_rusure2=您在Sendmail选择页面上更改Sendmail 时要了解，重新创建配置文件可能会覆盖已经在M4文件中所做的更改。
+build_ok=是的，现在替换
+build_diff=下列的更改将写入您的 Sendmail 配置文件 ..
+build_nodiff=您的 Sendmail 配置文件已经是最新的了。
+

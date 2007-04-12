@@ -1,0 +1,49 @@
+index_title=Exportacions NFS
+index_add=Afegeix una nova exportació
+index_dirs=Directoris
+index_clients=Clients
+index_everyone=Tothom
+index_none=Encara no s'ha definit cap exportació
+index_delete=Suprimeix les Exportacions Seleccionades
+index_apply=Aplica els Canvis
+index_applydesc=Fes clic sobre aquest botó per alicar la configuració actual d'exportacions de fitxers. Això farà que tots els directoris llistats més amunt quedin disponibles amb les opcions especificades.
+index_return=a la llista d'exportacions
+
+delete_err=No he pogut suprimir les exportacions
+delete_enone=No n'has seleccionat cap
+
+edit_title1=Edició d'Exportació
+edit_title2=Creació d'Exportació
+edit_header1=Opcions de l'exportació
+edit_dirs=Directoris a exportar
+edit_alldirs=Exporta els subdirectoris
+edit_ro=Només lectura
+edit_kerb=Utilitza Kerberos
+edit_header2=Mapejat d'usuari remot
+edit_maproot=Mapeja l'usuari root a
+edit_mapusers=Mapeja tots els usuaris a
+edit_unpriv=Usuari no privilegiat
+edit_uid=Usuari / UID
+edit_gids=I grups / GIDs
+edit_mapall=Mapeja tots els usuaris a
+edit_header3=Clients d'aquesta exportació
+edit_clients=Clients
+edit_hosts=Hosts / grups de xarxa
+edit_network=Xarxa
+edit_mask=Màscara
+
+save_err=No he pogut desar l'exportació
+save_edir='$1' no és un directori o bé no existeix
+save_enone=Has d'introduir almenys un directori per exportar
+save_esub=Només pots donar un directori si tries l'opció <b>Exporta els subdirectoris</b>
+save_eroot=Si utilitzes l'opció <b>Exporta els subdirectoris</b>, el directori exportat ha de ser l'arrel d'un sistema de fitxers <i>local</i>
+save_euser='$1' no és un usuari o UID vàlid
+save_egroup='$1' no és un grup o GID vàlid
+save_ekerb=Les opcions de mapejar l'usuari root, mapejar tots els usuaris i utilitzar Kerberos són mútuament excloents
+save_ehosts=Has d'introduir almenys un host d'exportació
+save_enetwork='$1' no és una xarxa vàlida
+save_enetmask='$1' no és una màscara vàlida
+save_esame1=El directori <tt>$1</tt> ja està exportat a <tt>$2</tt>. El sistema operatiu no permet que els directoris del mateix sistema de fitxers <i>local</i> siguin exportats al mateix host per separat
+save_esame2=El directori <tt>$1</tt> ja està exportat a <tt>$2</tt>. El sistema operatiu no permet que els directoris del mateix sistema de fitxers <i>local</i> siguin exportats a la mateixa xarxa per separat
+
+restart_err=No he pogut aplicar els canvis

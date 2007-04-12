@@ -1,0 +1,109 @@
+index_title=CVS Server
+index_ecvs=The CVS command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_eversion=Failed to get the version from CVS command $1. Output was $2.
+index_eroot=Your CVS root directory has not been set correctly. You must use the <a href='$1'>module configuration</a> to set it before this module will work.
+index_initdesc=Alternately, you can create a new CVS repository under $1 by clicking the button below.
+index_init=Initialize Repository
+index_version=CVS version $1
+index_setup=Setup CVS Server
+index_setupdesc=The CVS server does not appear to be currently setup on your system. Click this button to have it run from $1 so that remote users can access your CVS repository.
+index_act=Activate CVS Server
+index_actdesc=The CVS server is setup to run from $1 on your system, but not currently active. Click this button if you want to activate it and allow remote users to access your CVS repository.
+index_actdesc2=The CVS server is setup to run from $1 on your system for the CVS root $2, but not currently active. Click this button if you want to activate it and allow remote users to access your CVS repository.
+index_deact=Deactivate CVS Server
+index_deactdesc=The CVS server is setup to run from $1 on your system, and is active. Click this button if you want to deactivate it and prevent remote users from accessing your CVS repository.
+index_deactdesc2=The CVS server is setup to run from $1 on your system for the CVS root $2, and is active. Click this button if you want to deactivate it and prevent remote users from accessing your CVS repository.
+index_return=module index
+index_asuser=Run as user:
+index_einetroot=Warning! The CVS root set in the module configuration does not match the root for the CVS server. This can be fixed by deactivating and reactivating the CVS server.
+
+setup_einet=Neither <tt>inetd</tt> or <tt>xinetd</tt> appear to be installed on your system.
+setup_ecannot=You are not allowed to setup the CVS server
+
+passwd_title=CVS Users
+passwd_header=CVS server users
+passwd_desc=The CVS server will allow the users listed below to login and access the repository. If an unlisted user tries to login, the server may attempt to verify the user's password against the system password file instead, depending on the server configuration.
+passwd_add=Add a new CVS user.
+passwd_none=No CVS server users have been defined yet.
+passwd_sync=The options below configure synchronization between Unix users created through Webmin and CVS users.
+passwd_sync_create=Add a new CVS user when a Unix user is added.
+passwd_sync_modify=Update a CVS user when the matching Unix user is modified.
+passwd_sync_delete=Delete a CVS user when the matching Unix user is deleted.
+passwd_return=user list
+passwd_ecannot=You are not allowed to manage CVS users
+
+edit_title1=Create CVS User
+edit_title2=Edit CVS User
+edit_header=CVS user details
+edit_user=Login username
+edit_pass=Login password
+edit_pass3=Copy from unix
+edit_pass2=None required
+edit_pass1=Leave unchanged
+edit_pass0=Set to..
+edit_unix=Access files as unix user
+edit_unixdef=Same as username
+
+save_err=Failed to save CVS user
+save_euser=Missing or invalid username
+save_eunix=Missing or invalid unix user
+save_ecopy=Unix user to copy password from does not exist
+save_emd5=Unix password to copy is in MD5 format
+
+access_title=User Access Control
+access_header=Read-only CVS users
+access_readers1=No read-only users
+access_readers0=Listed users are read-only ..
+access_writers1=All users can write
+access_writers0=Only listed users can write ..
+access_desc=If a user is in both the readers and writers lists, he will be given read-only access.
+access_err=Failed to save user access control
+access_euser=User '$1' does not exist
+access_ecannot=You are not allowed to edit user access control
+
+cvsweb_title=Browse Repository
+cvsweb_ecmd=The CVS command $1 was not found on your system. This command is needed for viewing the CVS repository.
+cvsweb_ecannot=You are not allowed to view the CVS repository
+
+config_title=Server Configuration
+config_header=Server configuration options
+config_auth=Check users against system password file?
+config_top=Create top-level CVS directories?
+config_hist=Event types to log in history
+config_hist_all=All types
+config_hist_sel=Selected types ..
+config_hist_F=Release
+config_hist_O=Checkout
+config_hist_E=Export
+config_hist_T=RTag
+config_hist_C=Merge with collisions
+config_hist_G=Successful merge
+config_hist_U=Working file copied
+config_hist_W=Working file deleted
+config_hist_A=File added
+config_hist_M=File modified
+config_hist_R=File removed
+config_lock=Lock files directory
+config_err=Failed to save server configuration
+config_elock=Missing or invalid lock files directory
+config_ecannot=You are not allowed to edit the server configuration
+
+log_setup=Setup CVS server
+log_activate=Activated CVS server
+log_deactivate=Deactivated CVS server
+log_create_user=Created user $1
+log_delete_user=Deleted user $1
+log_modify_user=Modified user $1
+log_access=Changed user access control
+log_config=Changed server configuration
+
+acl_passwd=Can manage CVS users?
+acl_access=Can edit user access control?
+acl_config=Can edit server configuration?
+acl_cvsweb=Can view CVS repository?
+acl_setup=Can setup inetd or xinetd to run CVS server?
+acl_init=Can initialized repository?
+
+init_err=Failed to initialize repository
+init_ecannot=You are not allowed to initialize a repository
+

@@ -1,0 +1,14 @@
+show_list=0
+httpd_dir=/usr/pkg/etc/httpd
+httpd_path=/usr/pkg/sbin/httpd
+apachectl_path=/usr/pkg/sbin/apachectl
+httpd_conf=/usr/pkg/etc/httpd/httpd.conf
+mime_types=/usr/pkg/etc/httpd/mime.types
+srm_conf=/usr/pkg/etc/httpd/srm.conf
+access_conf=/usr/pkg/etc/httpd/access.conf
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

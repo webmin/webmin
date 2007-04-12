@@ -1,0 +1,5 @@
+---- Changes since 1.200 ----
+First version of this module, which can manage user attributes, profiles, authorizations and the system policy. Currently only supports Solaris, which is the only OS that includes RBAC as standard.
+Added support for managing projects as well, to limit resource use on a per-user basis. Also added a page for showing currently active resource controls.
+---- Changes since 1.300 ----
+Added support for editing a project's pool and maximum memory.

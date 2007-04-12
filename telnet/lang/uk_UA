@@ -1,0 +1,9 @@
+index_credits=Аплет розроблен під ліцензі GPL <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Меіъnеr</a>.
+index_warn=Увага! Цей сеанс telnet <b>не</b> шифрується.
+index_nojava=Для роботи цього модуля необхідна підтримка java, але ваш браузер не підтримує java
+index_title=SSH/Telnet Login
+index_esocket=На порту $2 вузли $1 сервер telnet не виявлений.
+index_elookup=Не удалося знайти IP-адреса $1 для перевірки сервера telnet чи SSH.
+index_esocket2=На порту $2 вузли $1 сервер SSH не виявлений.
+index_sshcredits=Містить у собі програмне забезпечення Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+

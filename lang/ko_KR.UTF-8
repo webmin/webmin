@@ -1,0 +1,155 @@
+main_return=$1(生)稽 宜焼姶
+main_homepage=幡 凪戚走
+main_feedback=杷球拷..
+main_switch=紫遂切 穿発..
+main_logout=稽益焼数
+main_version=$2税 獄穿 $1($3)
+main_title=$2税 Webmin $1($3)
+main_none=Webmin 乞汲拭 企廃 羨悦 映廃戚 蒸柔艦陥.
+main_skill=奄管 呪層
+
+category_servers=辞獄
+category_hardware=馬球裾嬢
+category_system=獣什奴
+category_webmin=Webmin
+category_net=革闘趨天
+category_syslet=Syslets
+category_=益 須
+
+header_webmin=Webmin 昔畿什
+header_module=乞汲 昔畿什
+header_help=亀崇源..
+header_config=乞汲 姥失
+header_servers=Webmin 辞獄
+
+index=昔畿什
+yes=森
+no=焼艦神
+save=煽舌
+create=拙失
+delete=肢薦
+find=達奄
+error=神嫌
+default=奄沙葵
+modify=呪舛
+reset=仙竺舛
+ok=溌昔
+cancel=昼社
+
+chooser_title1=督析 識澱..
+chooser_title2=巨刑塘軒 識澱..
+chooser_dir=$1税 巨刑塘軒
+chooser_ok=溌昔
+
+users_title1=紫遂切 識澱..
+users_title2=紫遂切 識澱..
+users_sel=識澱廃 紫遂切
+users_all=乞窮 紫遂切
+users_ok=溌昔
+users_cancel=昼社
+users_clear=走酔奄
+
+groups_title1=益血 識澱..
+groups_title2=益血 識澱..
+groups_all=乞窮 益血
+groups_sel=識澱廃 益血
+groups_ok=溌昔
+groups_cancel=昼社
+groups_clear=走酔奄
+
+config_ecannot=戚 乞汲聖 姥失拝 呪 蒸柔艦陥
+config_title=姥失
+config_dir=乞汲 $1
+config_header=$1税 姥失 亜管廃 辛芝
+config_none=蒸製
+config_eaccess=戚 乞汲拭 羨悦拝 呪 蒸柔艦陥
+
+help_err=亀崇源聖 妊獣馬走 公梅柔艦陥
+help_epath=蒸暗蟹 設公吉 亀崇源 井稽
+help_efile=亀崇源 督析 $1聖(研) 石走 公梅柔艦陥
+help_eheader=蒸澗 &lt;袴軒越&gt; 悉芝
+help_einclude=$1聖(研) 匂敗獣徹走 公梅柔艦陥
+help_eif=$1 叔鳶: $2
+help_eexec=$1 叔鳶: $2
+
+referer_title=左照 井壱
+referer_warn=<b>井壱! </b>覗稽益轡 $2亜 尻衣鞠嬢赤澗 URL $1精 Webmin 辞獄税 須採税 元滴 績戚 姶走鞠醸柔艦陥.戚澗 辞獄研 紗食 是蝿廃 誤敬聖 叔楳馬形澗 獣亀析 呪 赤柔艦陥.
+referer_warn_unknown=<b>井壱! </b>覗稽益轡 $1戚(亜) 尻衣鞠嬢赤澗 URL精 Webmin 辞獄税 須採税 元滴 績戚 姶走鞠醸柔艦陥.) 戚澗 辞獄研 紗食辞 是蝿廃 誤敬聖 叔楳馬形澗 獣亀析 呪 赤柔艦陥.
+referer_ok=Webmin 覗稽益轡 叔楳 域紗
+referer_again=蒋生稽 戚 井壱研 妊獣 照敗
+
+session_header=Webmin拭 稽益昔
+session_mesg=$1税 Webmin 辞獄拭 稽益昔拝 紫遂切 戚硯引 章硲研 脊径背醤 杯艦陥.
+session_user=紫遂切 戚硯
+session_pass=章硲
+session_login=稽益昔
+session_clear=走酔奄
+session_failed=稽益昔馬走 公梅柔艦陥. 陥獣 獣亀馬淑獣神.
+session_logout=稽益焼数鞠醸柔艦陥. 焼掘税 丞縦聖 紫遂馬食 陥獣 稽益昔馬淑獣神.
+session_timed_out=室芝戚 $1歳 疑照 搾醗失鉢吉 板 獣娃 段引鞠醸柔艦陥.
+session_save=稽益昔聖 慎姥旋生稽 奄常杯艦猿?
+
+acl_root=督析 識澱切税 欠闘 巨刑塘軒
+acl_uedit=紫遂切 識澱切拭 蟹展蟹澗 紫遂切
+acl_uedit_all=乞窮 紫遂切
+acl_uedit_none=紫遂切 蒸製
+acl_uedit_only=紫遂切幻
+acl_uedit_except=紫遂切研 薦須廃 乞砧
+acl_uedit_uid=骨是 鎧税 UID亜 赤澗 紫遂切
+acl_uedit_group=益血拭 紗廃 紫遂切
+acl_gedit=益血 識澱切拭 妊獣吉 益血
+acl_gedit_all=乞窮 益血
+acl_gedit_none=益血 蒸製
+acl_gedit_only=益血幻
+acl_gedit_except=益血聖 薦須廃 乞砧
+acl_gedit_gid=骨是 鎧税 GID亜 赤澗 益血
+
+month_1=1杉
+month_2=2杉
+month_3=3杉
+month_4=4杉
+month_5=5杉
+month_6=6杉
+month_7=7杉
+month_8=8杉
+month_9=9杉
+month_10=10杉
+month_11=11杉
+month_12=12杉
+
+day_0=析推析
+day_1=杉推析
+day_2=鉢推析
+day_3=呪推析
+day_4=鯉推析
+day_5=榎推析
+day_6=塘推析
+
+smonth_1=1杉
+smonth_2=2杉
+smonth_3=3杉
+smonth_4=4杉
+smonth_5=5杉
+smonth_6=6杉
+smonth_7=7杉
+smonth_8=8杉
+smonth_9=9杉
+smonth_10=10杉
+smonth_11=11杉
+smonth_12=12杉
+
+sday_0=析
+sday_1=杉
+sday_2=鉢
+sday_3=呪
+sday_4=鯉
+sday_5=榎
+sday_6=塘
+
+emodule=羨悦 暗採喫: 紫遂切 $1精(澗) 乞汲 $2聖(研) 紫遂拝 呪 蒸柔艦陥
+elock_tries=$2歳戚 井引廃 板 督析 $1聖(研) 節益走 公梅柔艦陥
+
+skill_high=穿庚亜
+skill_medium=掻厭
+skill_low=段厭
+

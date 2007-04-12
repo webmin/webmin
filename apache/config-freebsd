@@ -1,0 +1,14 @@
+show_list=0
+httpd_dir=/usr/local/etc/apache
+httpd_path=/usr/local/sbin/httpd
+apachectl_path=/usr/local/sbin/apachectl
+httpd_conf=/usr/local/etc/apache/httpd.conf
+mime_types=/usr/local/etc/apache/mime.types
+srm_conf=/usr/local/etc/apache/srm.conf
+access_conf=/usr/local/etc/apache/access.conf
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

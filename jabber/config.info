@@ -1,0 +1,8 @@
+line2=System configuration,11
+jabber_config=Jabber XML config file,0
+jabber_dir=Jabber base directory,0
+jabber_daemon=Path to jabber server program,3,Under base directory
+jabber_spool=Jabber hosts directory,3,Under base directory
+jabber_lib=Jabber shared libraries directory,3,None
+start_cmd=Command to start jabber,0
+stop_cmd=Command to stop jabber,3,Kill process

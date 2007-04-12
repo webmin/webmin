@@ -1,0 +1,2 @@
+exports_file=Exports 文件,0
+restart_command=重新启动 mountd 和 nfsd 的命令,0

@@ -1,0 +1,9 @@
+default_mode=Style de liste de processus par défaut,4,last-Dernier choisi,tree-Arborescence,user-Par utilisateur,size-Par taille,cpu-Par consommation processeur,search-Page de recherche,run-Page d'exécution
+ps_style=Type de sortie de la commande 'ps',1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS
+
+
+line1=Options Configurables,11
+lenngth=Nombre maximum de caracteres des commandes,3,illimite
+line2=Configuration du systeme,11
+
+

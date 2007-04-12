@@ -1,0 +1,35 @@
+<header>Mapeo de transporte</header>
+
+El fichero opcional de transporte especifica un mapeo entre jerarquías de
+dominios y transportes de reparto de mensajes y/o máquinas de reenvío. El
+mapeo lo usa el demonio trivial-rewrite(8).
+
+<p>
+
+El formato de la tabla de trasnporte es como sigue:
+<ul>
+<li><b><tt>domain</tt></b> mapeado a.. <b><tt>transport:nexthop</tt></b>:
+El correo para el dominio se reparte a través del siguiente salto del
+transporte.
+<li><b><tt>.domain</tt></b> mapeado a.. <b><tt>transport:nexthop</tt></b>:
+El correo a cualquier subdominio del dominio se reparte a través del
+siguiente salto del transporte.
+</ul>
+
+Nota: las entradas del mapa de transporte tienen precedencia sobre los
+dominios especificados en el parámetro <tt>mydestination</tt>. Si usa el
+mapa opcional de transporte puede ser más seguro especificar entradas
+explícitas para todos los dominios indicados en $mydestination, por ejemplo:
+<ul>
+<li><tt>nombredemaquina.mi.dominio</tt> ... <tt>local:</tt>
+<li><tt>localhost.mi.dominio</tt> ... <tt>local:</tt>
+</ul>
+
+La interpretación del campo "siguiente salto" es dependiente del
+transporte. En el caso de SMTP especifique <tt>máquina:servicio</tt> para
+un puerto distinto del habitual en el servidor, y use <tt>[maquina]</tt> o
+<tt>[maquina:puerto]</tt> para desactivar búsquedas DNS MX
+(intercambiadores de correo). La forma <tt>[]</tt> también se puede usar
+con direcciones IP en lugar de con nombres de máquina.
+
+<hr>

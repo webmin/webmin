@@ -1,0 +1,12 @@
+<header>Introduction Au Partage NFS</header>
+
+<include nfs>
+
+<h3>NFS sous Linux</h3>
+Ce module vous permet de configurer les r&#233;pertoires (appel&#233; <i>partages</i> ou <i>exports</i> dans Linux) qui vont &#234;tre partag&#233;s via NFS depuis votre syst&#232;me. La premi&#232;re page affiche la liste des r&#233;pertoires et des clients &#224; qui ils sont partag&#233;s, vous permettant de cliquer sur le client pour &#233;diter les options ou pour commencer le partage d'un nouveau r&#233;pertoire.<p>
+
+Sous la liste de partages de la premi&#232;re page se trouve un bouton qui active la configuration. Ceci est fait en arr&#234;tant et red&#233;marrant le processus du serveur NFS.<p>
+
+Si certain r&#233;pertoires et un de ses sous-r&#233;pertoires sont partag&#233;s, les options du r&#233;pertoire le plus sp&#233;cifique s'applique aux clients.  Par exemple, si <tt>/usr</tt> et <tt>/usr/local</tt> sont tous les deux partag&#233;s, un client accedant &#224; <tt>/usr/local/bin</tt> sera affect&#233; par les options du partage de <tt>/usr</tt>.<p>
+
+<hr>

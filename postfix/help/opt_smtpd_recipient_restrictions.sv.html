@@ -1,0 +1,90 @@
+<header>Begränsningar för mottagaradresser</header>
+
+<center><tt>smtpd_recipient_restrictions</tt></center>
+<hr>
+
+Denna parameter anger begränsningar för de mottagaradresser som
+SMTP-klienter kan skicka i RCPT TO-kommandon.
+
+<p>
+<include relay_rules>
+
+Dessa destinationer behöver inte anges i
+<a href=opt_relay_domains><tt>$relay_domains</tt></a>.
+
+<p>Följande begränsningar är möjliga (* är en del av standardinställningen):
+
+<ul>
+<li><tt>*permit_mynetworks:</tt> släpp fram om klientens adress matchar
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>reject_unknown_client:</tt> spärra om klientens datornamn är okänt.
+<li><tt>reject_maps_rbl:</tt> spärra om klienten finns uppräknad under
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject_invalid_hostname:</tt> spärra HELO-datornamn med felaktig syntax.
+<li><tt>reject_unknown_hostname:</tt> spärra HELO-datornamn utan DNS A- eller MX-post.
+<li><tt>reject_unknown_sender_domain:</tt> spärra avsändardomän utan A- eller MX-post.
+<li> <tt>*check_relay_domains:</tt> släpp endast fram e-post:
+<ul>
+<li>till destinationer som matchar
+	<a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	<a href=opt_mydestination><tt>$mydestination</tt></a>,
+	eller <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li>från betrodda klienter som matchar
+	<a href=opt_relay_domains><tt>$relay_domains</tt></a> med underdomäner,
+<li>från ej betrodda klienter till destinationer som matchar
+	<a href=opt_relay_domains><tt>$relay_domains</tt></a> med underdomäner
+	(utom adresser med avsändarangiven routing).
+</ul>
+	Släpp inte fram något annat.
+<li><tt>permit_auth_destination:</tt> släpp fram e-post:
+<ul>
+<li>till destinationer som matchar
+	<a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	<a href=opt_mydestination><tt>$mydestination</tt></a>,
+	eller <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li>till destinationer som matchar
+	<a href=opt_relay_domains><tt>$relay_domains</tt></a> med underdomäner,
+	utom adresser med avsändarangiven routing.
+</ul>
+<li><tt>reject_unauth_destination:</tt> spärra e-post om den inte sänts
+<ul>
+<li>till destinationer som matchar
+	<a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	<a href=opt_mydestination><tt>$mydestination</tt></a>,
+	eller <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li>till destinationer som matchar
+	<a href=opt_relay_domains><tt>$relay_domains</tt></a> med underdomäner,
+	utom adresser med avsändarangiven routing.
+</ul>
+<li><tt>reject_unauth_pipelining:</tt> spärra e-post från pipelinande spamprogram som inte fungerar.
+<li><tt>permit_mx_backup:</tt> släpp fram e-post från siter som har med mig som MX-dator.
+<li><tt>reject_unknown_recipient_domain:</tt> spärra domäner utan A- eller MX-post.
+<li><tt>check_recipient_access maptype:mapname:</tt> slå upp mottagaradress, föräldradomän eller lokaldel@.
+	Spärra om resultatet blir REJECT eller &quot;[45]xx text&quot;.
+	Släpp fram annars.
+
+<li><tt>check_client_access maptype:mapname:</tt> se
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li><tt>check_helo_access maptype:mapname:</tt> se
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li><tt>check_sender_access maptype:mapname:</tt> se
+        <a href=opt_smtpd_sender_restrictions>smtpd_sender_restrictions</a>.
+<li><tt>reject_non_fqdn_hostname:</tt> spärra HELO-datornamn som inte är på FQDN-form.
+<li><tt>reject_non_fqdn_sender:</tt> spärra avsändaradresser som inte är på FQDN-form.
+<li><tt>reject_non_fqdn_recipient:</tt> spärra mottagaradresser som inte är på FQDN-form.
+<li><tt>reject:</tt> spärra. Sätt denna begränsning sist i begränsningslistan.
+<li><tt>permit:</tt> släpp fram. Sätt denna begränsning sist i begränsningslistan.
+</ul>
+
+Begränsningar görs i angiven ordning; den första begränsning som passar in
+används.
+
+<p>Ange en lista med begränsningar, separerade med kommatecken och/eller
+blanksteg. Långa rader görs genom att nästa rad börjas med ett blanksteg.
+
+<p><b>Obs: minst en av nedanstående begränsningar måste anges, annars
+kommer Postfix att vägra ta emot e-post:</b>
+
+<br><tt>reject, check_relay_domains, reject_unauth_destination</tt>
+
+<hr>

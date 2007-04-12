@@ -1,0 +1,18 @@
+<header>Propietats LDAP extres per permetre'n l'edició</header>
+
+Si la teva base de dades LDAP utilitza atributs que no estan directament
+suportats per Webmin, aquesta opció de configuració es pot utilitzar per
+afegir camps extra a la pàgina d'edició de l'usuari per gestionar-los.
+Pot ser útil per editar propietats de Qmail+LDAP com ara mailForwardingAddress
+i mailMessageStore.<p>
+
+Els atributs a editar s'han d'introduir amb el format:<p>
+
+nom1 descripció1<br>
+nom2 descripció2<br>
+<p>
+El nom és el nom de l'atribut LDAP, i la descripció és el text a mostrar amb
+Webmin. El nom pot anar opcionalment seguit de +, que indica que aquest
+atribut pot tenir valors múltiples. <p>
+<footer>
+

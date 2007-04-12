@@ -1,0 +1,6 @@
+line1=Opcions configurables,11
+install=Instal·la el GRUB al disc/partició,0
+line2=Configuració del sistema,11
+menu_file=Fitxer de configuració de menús del GRUB,0
+grub_path=Camí de l'executable grub,0
+device_map=Fitxer de mapeig de noms de dispositius,3,Pren-lo de GRUB

@@ -1,0 +1,17 @@
+expert=Pozwalaæ na wybór poszczególnych poziomów pracy systemu,1,1-Tak,0-Nie
+desc=Wy¶wietlaæ dzia³ania wraz z&nbsp;opisami,1,2,Tak&#044; i&nbsp;pokazuj wszystkie poziomy,1-Tak,0-Nie
+init_base=Katalog zawieraj±cy podkatalogi poziomów pracy,0
+init_dir=Katalog zawieraj±cy nadrzêdne skrypty startowe,0
+soft_links=Stosowany rodzaj dowi±zañ do plików poziomów pracy,1,0-Twarde,1-Miêkkie
+order_digits=Liczba cyfr okre¶laj±cych kolejno¶æ uruchamiania,0
+local_script=Lokalny skrypt poleceñ startowych,3
+reboot_command=Polecenie restartuj±ce system,0
+shutdown_command=Polecenie zamykaj±ce system,0
+start_stop_msg=System wspomaga komunikaty startowe/zamykaj±ce,1,0-Nie,1-Tak
+inittab_id=ID inicjalnego poziomu pracy w&nbsp;inittab-ie,0
+daemons_dir=Katalog demonów Caldery,3,Brak
+startup_dirs=Katalogi StartupItems Darwina,0
+darwin_setup=Katalog dla indywidualnych StartupItems,0
+hostconfig=Plik hostconfig Darwina,0
+plist=Nazwa p-listy w katalogu StartupItems,0
+status_check=Pokazywaæ bie¿±cy stan akcji,1,2-Na stronach indeksowej i&nbsp;akcji,1-Tylko na stronie akcji,0-Nie

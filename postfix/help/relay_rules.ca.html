@@ -1,0 +1,27 @@
+Per defecte, Postfix ponteja correu:
+
+<ul>
+<li> des de clients fiables l'adreça IP dels quals coincideix amb 
+     <a href=opt_mynetworks><tt>$mynetworks</tt></a>,
+<li> des de clients fiables que coincideixin amb <tt>$relay_domains</tt> o subdominis del mateix,
+<li> des de clients no fiables a les destinacions que coincideixen amb
+     <tt>$relay_domains</tt>
+     o subdominis del mateix, excepte adreces amb enrutament específic del remitent.
+</ul>
+
+El valor per defecte del valor de <tt>relay_domains</tt> és
+<a href=opt_mydestination><tt>$mydestination</tt></a>.
+
+<p>
+
+Amés a més d'això, el servidor SMTP Postfix accepta per defecte el correu per
+al qual Postfix n'és la destinació final de:
+
+<ul>
+<li> les destinacions que coincideixen amb
+     <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+<li> les destinacions que coincideixen amb
+     <a href=opt_mydestination><tt>$mydestination</tt></a>,
+<li> les destinacions que coincideixen amb
+     <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>.
+</ul>

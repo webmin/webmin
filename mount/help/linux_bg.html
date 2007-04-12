@@ -1,0 +1,6 @@
+<header>Retry mounts in background?</header>
+
+If the first NFS mount attempt times out, retry the mount in the background.<br>
+After a mount operation is backgrounded, all subsequent mounts on the same NFS server will be backgrounded immediately, without first attempting the mount. A missing mount point is treated as a timeout, to allow for nested NFS mounts.<br>
+<br><i>mount options: bg/fg</i>
+<hr>

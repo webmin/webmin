@@ -1,0 +1,12 @@
+soft_links=1
+show_opts=0
+reboot_command=shutdown -r now
+shutdown_command=shutdown -h now
+inittab_id=id
+expert=0
+desc=1
+status_check=0
+order=0
+sort_mode=0
+local_script=/etc/conf.d/local.start
+no_chkconfig=0

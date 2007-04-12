@@ -1,0 +1,2 @@
+# RBAC authorization		# Webmin ACL
+solaris.system.date		noconfig=1,ntp=0

@@ -1,0 +1,12 @@
+line0=Configurable options,11
+view_condition=Display condition in rules list?,1,1-Yes,0-No
+view_comment=Display comment in rules list?,1,1-Yes,0-No
+comment_mod=Store comments as,1,0-# comments in save file,1-&#45;&#45;comment option
+cluster_mode=Update cluster servers,1,0-Whenever a change is made,1-When applying the configuration
+before_cmd=Command to run before changing rules,3,None
+after_cmd=Command to run after changing rules,3,None
+before_apply_cmd=Command to run before applying configuration,3,None
+after_apply_cmd=Command to run after applying configuration,3,None
+line1=System configuration,11
+save_file=IPtables save file to edit,3,Use operating system or Webmin default
+direct=Directly edit firewall rules instead of save file?,1,1-Yes,0-No

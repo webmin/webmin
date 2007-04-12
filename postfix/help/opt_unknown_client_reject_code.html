@@ -1,0 +1,19 @@
+<header>SMTP server response on unknown client reject</header>
+
+<center><tt>unknown_client_reject_code</tt></center>
+<hr>
+
+This parameter specifies the SMTP server response code when a client without address
+to name mapping violates the <tt>reject_unknown_clients</tt> restriction rule that is:<br>
+<i>Access denied: Unknown SMTP client hostname (without DNS A or MX record)</i><br>
+<br>
+Note that the postfix default value used for <tt>unknown_client_reject_code</tt> is
+code 450 also used for other errors. This code in 'standard RFC 822' means
+'Requested mail action not taken: mailbox busy or access denied' and
+ask the sender to try again later (hoping the DNS will answer correctly
+later).<br>
+<p>
+Do not change this unless you have a complete understanding of RFC 822.
+</p>
+
+<hr>

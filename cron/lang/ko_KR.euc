@@ -1,0 +1,71 @@
+index_title=예약된 cron 작업
+index_user=사용자
+index_active=활성 상태입니까?
+index_command=명령
+index_none=이 시스템에 cron 작업이 없습니다
+index_create=예약된 cron 작업을 새로 작성했습니다
+index_allow=cron 작업에 대한 사용자 접근 제어
+index_return=cron 목록
+
+edit_title=cron 작업 편집
+create_title=cron 작업 작성
+edit_ecannot=이 사용자의 cron 작업을 편집할 수 없습니다
+edit_details=작업 세부 정보
+edit_user=cron 작업 실행 자격
+edit_active=활성 상태입니까?
+edit_commands=명령
+edit_command=명령
+edit_input=명령 입력
+edit_when=실행 일시
+edit_mins=분
+edit_hours=시
+edit_days=일
+edit_months=월
+edit_weekdays=평일
+edit_all=모두
+edit_selected=선택한 시간..
+edit_run=지금 실행
+
+save_err=cron 작업을 저장하지 못했습니다
+save_ecmd=실행할 명령을 입력하지 않았습니다
+save_euser=사용자를 선택해야 합니다
+save_euser2=사용자 '$1'이(가) 존재하지 않습니다
+save_eallow=사용자 '$1'은(는) cron에 접근할 수 없습니다.
+save_ecannot='$1'의 cron 작업을 작성 또는 편집할 수 없습니다.
+save_enone=실행할 $1을(를) 선택하지 않았습니다.
+
+allow_title=cron 접근 제어
+allow_desc=이 양식을 사용하여 어떤 사용자가 cron 작업을 작성 및 실행할 수 있는지를 제어할 수 있습니다.
+allow_ecannot=cron에 대한 사용자 접근을 제어할 수 없습니다
+allow_all1=모든 사용자 거부
+allow_all2=root를 제외한 모든 사용자 거부
+allow_all3=모든 사용자 허용
+allow_allow=목록에 있는 사용자만 허용
+allow_deny=목록에 있는 사용자만 거부
+
+env_title=cron 환경
+env_ecannot=이 사용자의 cron 환경을 편집할 수 없습니다
+env_desc=$1의 cron 환경
+env_name=변수 이름
+env_value=값
+env_ename='$1'은(는) 유효한 변수 이름이 아닙니다
+
+exec_title=cron 작업 실행
+exec_ecannot=이 사용자의 cron 작업을 실행할 수 없습니다
+exec_cmd=명령 $1의 출력..
+exec_none=생성된 출력이 없습니다
+
+acl_users=cron 작업 편집이 가능한 대상
+acl_all=모든 사용자
+acl_only=사용자만
+acl_except=사용자를 제외한 모두
+acl_control=cron에 대한 사용자 접근을 제어할 수 있습니까?
+
+log_modify=$1의 cron 작업 수정됨
+log_modify_l=$1의 cron 작업 "$2" 수정됨
+log_create=$1의 cron 작업 작성됨
+log_create_l=$1의 cron 작업 "$2" 작성됨
+log_delete=$1의 cron 작업 삭제됨
+log_exec=$1(으)로서 Cron 작업 실행됨
+log_exec_l=$1(으)로서 cron 작업 "$2" 실행됨
+log_allow=cron에 대한 사용자 접근 권한 변경됨

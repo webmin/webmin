@@ -1,0 +1,16 @@
+display_max=Maximalt antal användare och grupper som ska visas,0
+user_repquota_command=Kommando för att visa användare på ett filsystem,0
+group_repquota_command=Kommando för att visa grupper på filsystem,0
+user_edquota_command=Kommando för att ändra en användares quota,0
+group_edquota_command=Kommando för att ändra en grupps quota,0
+user_quota_command=Kommando för att kontrollera en användares quota,0
+group_quota_command=Kommando för att kontrollera en grupps quota,0
+user_copy_command=Kommando för att kopiera en användares quota,0
+group_copy_command=Kommando för att kopiera en grupps quota,0
+user_quotaon_command=Kommando för att slå på användares quota,0
+group_quotaon_command=Kommando för att slå på gruppers quota,0
+user_quotaoff_command=Kommando för att slå av användares quota,0
+group_quotaoff_command=Kommando för att slå av gruppers quota,0
+quotacheck_command=Kommando för att kontrollera quota,0
+user_grace_command=Kommando för att ändra en användares tidsintervall för att överskrida quota,0
+group_grace_command=Kommando för att ändra en grupps tidsintervall för att överskrida quota,0

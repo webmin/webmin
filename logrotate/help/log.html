@@ -1,0 +1,47 @@
+<dl>
+<dt><b>Rotation schedule</b>
+<dd>Controls how often the log is rotated.<p>
+
+<dt><b>Maximum size before rotating</b>
+<dd>Sets a limit on the size of the log file before it is rotated. This field
+    can be used instead of the rotation schedule if you prefer a size rather
+    than time-based limit.<p>
+
+<dt><b>Number of old logs to keep</b>
+<dd>Determines how many old generations of the log file to save. These will
+    typically have the same name as the original log, but with .0, .1 and so
+    on appended. If your enter <i>0</i>, no old logs will be kept and thus the
+    contents of the log file will be lost when it is rotated. <p>
+
+<dt><b>Compress old log files?</b>
+<dd>When this option is enabled, old logs will be compressed with <tt>gzip</tt>
+    after rotation to reduce the amount of disk space that they consume. <p>
+
+<dt><b>Rotate even if log file is empty?</b>
+<dd>If enabled, this option tells <tt>logrotate</tt> to still rotate the log
+    file even if it is empty, resulting in old copies with zero size being
+    saved. <p>
+
+<dt><b>Re-create log file after rotation?</b>
+<dd>When this option is enabled, the log file will be re-created after rotation
+    instead of simply being left for the server that writes to it to re-create.
+    By default it will be created with the original permissions and owner, but
+    you can use the fields next to the <b>Yes</b> option to specify alternate
+    file permissions, user and group. <p>
+
+<dt><b>Store old rotated logs in</b>
+<dd>When this field is set to <b>Same directory as log file</b>, the old
+    rotated copies of the log file will be stored in the same directory as
+    the original log. The <b>Directory</b> option can be used to specify an
+    alternate location - however, it must be on the same filesystem as the
+    log file. <p>
+
+<dt><b>Commands to run after rotation</b>
+<dd>When this text box is filled in, the entered shell commands will be run
+    after the log has been rotated. Many servers need to be re-started after
+    their log has been renamed, so that they will write to the new file
+    properly. In this case, you might enter a command like <i>killall -HUP
+    httpd</i> to trigger a re-start after rotation. <p>
+
+</dl>
+

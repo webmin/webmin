@@ -1,0 +1,71 @@
+<header>Åtgärd</header>
+
+Talar om vilken åtgärd som ska vidtas.
+
+<p>Giltiga åtgärder är:
+
+<h4>Fortsätt</h4>
+Processen startas om så fort den av någon anledning avslutats (t ex getty).
+
+<h4>Vänta</h4>
+Processen startas när den angivna körnivån nås och <i>init</i> väntar på att
+den ska avslutas.
+
+<h4>En gång på nivå</h4>
+Processen kommer att köras en gång när den angivna körnivån nås.
+
+<h4>Vid start</h4>a
+Processen kommer att köras när systemet startas. Körnivåfältet ignoreras.
+
+<h4>Vid start, vänta på avslutning</h4>
+Processen kommer att köras när systemet startas och <i>init</i> väntar på att
+den ska avslutas (t ex /etc/rc). Körnivåfältet ignoreras.
+
+<h4>Gör ingenting</h4>
+Gör ingenting.
+
+<h4>Alltid vid A, B, C</h4>
+En process som markerats med en <tt>på begäran</tt>-körnivå kommer att köras
+varje gång den specificerade <tt>på begäran</tt>-körnivån anropas. Körnivån
+kommer dock inte att ändras (på begäran-körnivåer är 'a', 'b' och 'c').
+
+<h4>På standardnivå</h4>
+<tt>Initdefault</tt>-posten anger den körnivå som ska gälla vid systemstart.
+Om du inte angivit någon standardnivå kommer init att fråga efter körnivå
+via konsolen. Processfältet ignoreras.
+
+<h4>Under systemstart</h4>
+Processen kommer att köras under systemstart, före alla processer som
+angivits under <tt><b>Vid start</b></tt> och <tt><b>Vid start, vänta på
+avslutning</b></tt>. Körnivåfältet ignoreras.
+
+<h4>Vid strömavbrott</h4>
+Processen kommer att köras vid strömavbrott. Init får vanligen reda på
+detta via en process som kommunicerar med en UPS anslutet till datorn.
+<i>Init</i> väntar på att processen ska avslutas innan den fortsätter.
+
+<h4>Vid strömavbrott, utan väntetid</h4>
+Likadant som <tt><b>Vid strömavbrott</b></tt> utom att <i>init</i> inte
+väntar på att processen ska avslutas.
+
+<h4>Då strömmen kommer tillbaka</h4>
+Processen kommer att köras då <i>init</i> får veta att strömmen kommit
+tillbaka.
+
+<h4>Vid UPS-svikt</h4>
+Processen kommer att köras då <i>init</i> får veta att UPS-batteriet är
+nästan slut och spänningen kommer att försvinna (förutsatt att den externa
+UPSen och den övervakande processen kan upptäcka detta).
+
+<h4>Ctrl-Alt-Del</h4>
+Processen kommer att köras då <i>init</i> får signalen <i>SIGINT</i>. Detta
+betyder att någon vid systemkonsolen har tryckt CTRL-ALT-DEL. Vanligen vill
+man då köra någon slags <tt>shutdown</tt>, antingen för att gå över i
+single-user eller för att starta om maskinen.
+
+<h4>Speciell tangentkombination</h4>
+Processen kommer att köras då <i>init</i> tar emot en signal från
+tangentbordshanteraren som betyder att en speciell tangentkombination
+skrevs in på konsoltangentbordet.
+
+<hr>

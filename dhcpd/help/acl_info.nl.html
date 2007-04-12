@@ -1,0 +1,54 @@
+<header>DHCPd ACL subsysteem</header>
+
+<h3>DOELSTELLING:</h3>
+Het belangrijkste doel van het DHCPd ACL subsysteem is het bieden van een 
+krachtig, flexibel en gemakkelijk uit te breiden besturingsmechanisme voor 
+verscheidene objecten in de DHCPd configuratie. Deze objecten betreffen: 
+gedeelde netwerken (shared networks), subnetten, groepen hosts en individuele 
+hosts. <p>
+
+Daarnaast maakt het ACL subsysteem het mogelijk om andere voorzieningen aan 
+te sturen zoals: unieke objectnamen en het aanbrengen van wijzigingen aan de 
+configuratie, het bekijken en verwijderen van DHCP leases. <p>
+
+<h3>CONCEPTEN:</h3>
+We kunnen ons de DHCP configuratie voorstellen als een boomstruktuur. Elk 
+knooppunt in de boomstruktuur stelt een configuratie voor van een ander 
+DHCP object (fig. 0). <p>
+
+Het ACL subsysteem ondersteunt twee toegangsniveaus:
+<ul>
+<li>globaal: lezen, schrijven en aanmaken;</li>
+<li>per-object: lezen en schrijven.</li>
+</ul>
+
+Globale toegang bestaat voor elk type object (hosts, groepen, subnetten,
+gedeelde netwerken) en beheren operaties met een heel object van een 
+gegeven type:
+<ul type=circle>
+<li>Globaal aanmaken</li>
+<li>Globaal lezen</li>
+<li>Globaal schrijven</li>
+</ul>
+
+Toegang per object biedt een meer flexibele manier om toegang te regelen.
+Een ACL voor toegang per object bestaat voor ieder individueel object. 
+Op dit moment zijn ACL's per object alleen geïmplementeerd voor hosts 
+en subnetten:
+<ul type=circle>
+<li>Per-object lezen</li>
+<li>Per-object schrijven</li>
+</ul>
+
+Het ACL subsysteem kan werken met vier verschillende beveiligingsniveaus 
+(of modes).
+<p>
+
+<img SRC="images/ctree0.gif" ALT="DHCPd configuratieboom, beveiligingsniveau 0, check subnetX toegang" height=229 width=314>
+
+<img SRC="images/ctree1.gif" ALT="DHCPd configuratieboom, beveiligingsniveau 1, check subnetX toegang" height=229 width=314>
+
+<img SRC="images/ctree2.gif" ALT="DHCPd configuratieboom, beveiligingsniveau 2, check subnetX toegang" height=229 width=314>
+
+<img SRC="images/ctree3.gif" ALT="DHCPd configuratieboom, beveiligingsniveau 3, check subnetX toegang" height=229 width=314>
+

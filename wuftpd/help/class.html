@@ -1,0 +1,29 @@
+<header>Users and Classes</header>
+
+The WU FTP server allows you to classify users based on the address they
+login from and their user type. The three user types are :
+<ul>
+<li><b>Unix</b> - Normal users on your system.
+<li><b>Guest</b> - Unix users who have been classified as guests.
+<li><b>Anonymous</b> - Logins by the <tt>anonymous</tt> or <tt>ftp</tt> user,
+		       if allowed on your system.
+</ul><p>
+
+The top section of this page allows you to define named classes, based
+on user types and source addresses. Every login is classified into the
+first matching class, so classes should be ordered from the most to least
+specific. The matching addresses for each class can be full or partial
+IP addresses, IP networks/netmasks, hostnames, host wildcards
+(like <tt>*.foo.com</tt>) or the absolute paths to files containing additional
+addresses. Any type of address can be preceded with a ! to negate it. <p>
+
+The middle section of this page allows you to control which Unix users
+to classify as guests. A guest user has similar rights to a normal Unix
+user, but is restricted to a certain directory using <tt>chroot</tt>. <p>
+
+The lower section of the page controls which Unix and guest users will
+be denied access to the FTP server. You may specify users by name, by
+GID (like <tt>%3000</tt>) or by GID range (like <tt>%3000-3010</tt>). <p>
+
+<hr>
+

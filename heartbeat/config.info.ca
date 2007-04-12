@@ -1,0 +1,16 @@
+line2=Configuració del sistema,11
+ha_dir=Directori de configuració de heartbeat,0
+ha_cf=Camí del fitxer de configuració de heartbeat,3,Automàtic
+haresources=Camí del fitxer de recursos,3,Automàtic
+authkeys=Camí del fitxer de claus d'autenticació,3,Automàtic
+resource_d=Directori de scripts de serveis heartbeat,3,Automàtic
+heartbeat=Camí de l'ordre heartbeat,0
+pid_file=Camí del fitxer de PID de heartbeat,0
+start_cmd=Ordre per iniciar heartbeat,0
+apply_cmd=Ordre per aplicar canvis,3,Automàtic
+serials=Patró dels fitxers de ports sèrie,0
+alt_ha_cf=Fitxer d'exemple de configuració de heartbeat,3,Cap
+req_resource_cmd=Script per prendre el Recurs,0
+alt_haresources=Fitxer d'exemple de recursos,3,Cap
+alt_authkeys=FItxer d'exemple de claus d'autenticació,3,Cap
+version=Versió de Heartbeat instal·lada,3,Dedueix automàticament

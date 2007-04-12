@@ -1,0 +1,35 @@
+---- Changes since 1.140 ----
+Added options for having the UID automatically computed based on the username, either by a checksum or using an external program.
+---- Changes since 1.150 ----
+When full user details are displayed, added checkboxes and a button for deleting multiple users at once.
+Added a similar button for deleting multiple groups at once too.
+User batch data can now be pasted into a text box, in addition to uploading a file or selecting a file on the server.
+When a user's home directory is a symlink, both the target of the link and the link itself are deleted.
+Added a Module Config option to set the default for the create, modify and delete in other modules options.
+---- Changes since 1.160 ----
+Added a checkbox for temporarily disabling a user, by putting an ! in front of its encrypted password.
+---- Changes since 1.170 ----
+Added a Module Config option to select sources for the shell list.
+---- Changes since 1.180 ----
+Added an option on the Module Config page to show the last login time for users.
+---- Changes since 1.200 ----
+MD5 password encryption is now used on Solaris, when configured in policy.conf.
+---- Changes since 1.210 ----
+Added a new access control option to restrict users by regular expression.
+Multiple users can be locked or un-locked at once from the module's main page.
+Disabled users now appear in italics in the user list.
+---- Changes since 1.220 ----
+Added a Module Config option to specify the real base for home directories to create, such as /export/home on systems using an automounter.
+---- Changes since 1.230 ----
+Users can now be searched for by GID, and using greater-than and less-than comparisons.
+---- Changes since 1.240 ----
+When exporting users, they can now be selected by GID range.
+---- Changes since 1.250 ----
+Added an access control option to prevent the renaming of users.
+---- Changes since 1.290 ----
+Added a Module Config option to display secondary groups as a text box, which makes more sense on systems with a large number of groups.
+---- Changes since 1.300 ----
+Cleaned up user and group creation links on main page, add links to jump to user and group lists, and duplicated buttons for operating on many users and groups at once.
+Use the nscd -i command to refresh its cache after adding a user or group.
+---- Changes since 1.310 ----
+In a user batch file, # is only treated as a comment at the start of a line.

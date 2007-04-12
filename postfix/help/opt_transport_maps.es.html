@@ -1,0 +1,25 @@
+<header>Tablas de búsqueda de mapeos de transporte</header>
+
+<center><tt>transport_maps</tt></center>
+<hr>
+
+Este parámetro especifica tablas opcioneas con mapeos de dominio a
+(transporte, siguiente salto). Vea <a href=transport>Mapeo de
+Transporte</a> para los detalles de la sintaxis.
+
+<p>
+
+Por defecto esta característica está desactivada. Especifique los tipos de
+bases de datos que usar.
+
+<p>
+
+Posibles valores sensatos son:
+<ul>
+<li> <tt>dbm:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, nis:transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, netinfo:/transport</tt> 
+</ul>
+
+<hr>

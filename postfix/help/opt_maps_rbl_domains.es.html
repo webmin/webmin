@@ -1,0 +1,21 @@
+<header>Dminios de DNS para búsqueda en lista negra</header>
+
+<center><tt>maps_rbl_domains</tt></center>
+<hr>
+
+Este parámetro especifica una lista opcional de dominios DNS que publican
+las direcciones de red de máquinas en la lista negra.
+
+<p>
+
+Por defecto, las búsquedas el listas negras RBL están desactivadas. Mira el
+parémtro <a href=opt_smtpd_client_restrictions>
+<tt>smtpd_client_restrictions</tt></a>.
+
+<p>
+
+La lista de agujero negro en tiempo real funciona como sigue: pone inversa
+la dirección de rede del cliente y rechaza el servicio si está listada bajo
+cualquiera de los siguientes dominios.
+
+<hr>

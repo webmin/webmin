@@ -1,0 +1,2 @@
+---- Changes since 1.130 ----
+Added a button for having a PPP connection started at boot time, by automatically creating an init script.

@@ -1,0 +1,67 @@
+index_title=GRUB Boot Loader
+index_add=Add a new boot option
+index_global=Edit Global Options
+index_globalmsg=Edit global bootup options that apply to all boot menu choices, and choose the device that GRUB is installed onto.
+index_install=Install GRUB
+index_installmsg=Install the GRUB boot loader on $1 to display the options above at bootup time. This will override any existing boot loader such as LILO, and may render your system unbootable!
+index_none=No boot options have been defined. Make sure you add at least one before installing grub.
+index_efile=The GRUB menu file $1 was not found on your system. Maybe GRUB is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_epath=The GRUB executable $1 was not found on your system. Maybe GRUB is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_return=options list
+
+title_add=Add Boot Option
+title_edit=Edit Boot Option
+title_header=Boot menu option details
+title_title=Option title
+title_root=Boot image partition
+title_noverify=Don't mount and verify partition
+title_other=Other
+title_sel=Selected
+title_boot=Operating system to boot
+title_kernel=Kernel
+title_kfile=Path to kernel
+title_args=Kernel options
+title_initrd=Initial ramdisk file
+title_chain=Other OS
+title_chain_def=From first sector of partition
+title_chain_file=From chainloader file
+title_makeactive=Make root partition active?
+title_none=None (non-booting menu entry)
+title_err=Failed to save boot option
+title_etitle=Missing option title
+title_eroot=Missing root partition
+title_ekernel=Missing or invalid kernel path
+title_echain=Missing or invalid chainloader file
+title_edev=Unsupported root partition device $1
+title_einitrd=Missing initial ramdisk filename
+title_lock=Password locked?
+
+global_title=Global Options
+global_header=Global boot menu options
+global_default=Default boot option
+global_fallback=Fallback boot option
+global_first=First on list
+global_timeout=Timeout before loading default
+global_forever=Wait forever
+global_secs=seconds
+global_install=Install GRUB on disk/partition
+global_sel=Selected
+global_other=Other
+global_password=Boot password
+global_none=None
+global_password_file=Use menu file if password is entered:
+global_pass
+global_err=Failed to save global options
+global_etimeout=Missing or invalid timeout
+global_edev=Unsupported install disk/partition $1
+global_eother=Missing or invalid disk/partition
+global_epassword=Missing or invalid boot password
+global_epasswordfile=Missing alternate menu filename
+
+install_title=Install GRUB
+install_err=Failed to install GRUB
+install_efind=Could not find menu file
+install_desc=Installing GRUB on $1 with commands $2 and $3 ..
+install_ok=.. install complete.
+install_failed=.. install failed!
+

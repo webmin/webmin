@@ -1,0 +1,14 @@
+<header>Solaris Zones</header>
+
+The zones facility in Solaris provides an isolated  environ ment  for  running applications. Processes running in a zone are prevented from  monitoring  or  interfering  with  other activity  in  the system. Access to other processes, network interfaces, file systems, devices, and inter-process communication  facilities  are  restricted  to prevent interaction between processes in different zones. <p>
+
+Zones provide an excellent way of creating virtual systems to which people can be given full root access, without compromising the integrity of the real system or other zones. They can also be used to partition a single powerful system into multiple virtual servers, for example in order to run testing and production application environments. <p>
+
+Each zone has its own root directory to which processes running in the zone are restricted. This is similar to the standard Unix chroot facility, but far simpler to set up as all needed system library and program directories are linked into the zone automatically when it is created. <p>
+
+Virtual network interfaces can be assigned to zones to give them their own IP addresses, so that different servers can be run in different zones just as they could be on multiple physical systems. <p>
+
+This module allows you to create zones, boot and reboot them independently of the main operating system, and manage their network interfaces, package directories, filesystems and other attributes. <p>
+
+<footer>
+

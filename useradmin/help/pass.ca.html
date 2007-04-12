@@ -1,0 +1,38 @@
+<header>Contrasenya</header>
+
+Quan un usuari entra al sistema via telnet o a la consola, normalment ha de
+donar una contrasenya. Hi ha quatre opcions diferents per la contrasenya:
+
+<ul>
+   <if $config{'empty_mode'} == 1>
+   <li><b>Demana-la en entrar per primer cop</b><br>
+      Quan l'usuari entra al sistema per primer cop via telnet o a la consola,
+      el sistema li demanarà que introdueixi la nova contrasenya.
+      <p>
+   </if>
+   <if $config{'empty_mode'} == 0>
+   <li><b>No cal contrasenya</b><br>
+      L'usuari pot entrar al sistema sense donar una contrasenya. Cal fer
+      servir aquesta opció amb compte.
+      <p>
+   </if>
+   <li><b>Entrada no permesa</b><br>
+      Si tries aquesta opció, l'usuari no podrà entrar al sistema en absolut,
+      ni tan sols per llegir el correu d'un servidor POP3.
+      <p>
+   <li><b>Contrasenya prexifrada</b><br>
+      Les contrasenyes Unix s'emmagatzemen amb una forma de xifratge
+      unidireccional. Aquesta opció permet introduir la contrasenya d'un
+      usuari com una cadena xifrada (potser presa d'un fitxer de contrasenyes
+      d'un altre sistema).
+      <p>
+   <li><b>Contrasenya normal</b><br>
+      Per establir la contrasenya d'un usuari, selecciona aquesta opció i
+      introdueix-la al camp de text. Webmin prendrà la contrasenya introduïda,
+      la xifrarà i l'emmagatzemarà al fitxer de contrasenyes.
+      <p>
+</ul>
+
+<hr>
+
+

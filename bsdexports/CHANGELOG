@@ -1,0 +1,3 @@
+---- Changes since 1.270 ----
+Added checkboxes and a button for deleting multiple shares at once.
+Extracted all hard-coded english strings, so that the module can be converted to other languages.

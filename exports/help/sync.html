@@ -1,0 +1,9 @@
+<header>Immediately sync all writes?</header>
+
+When this option is enabled, all NFS writes by clients for this export will
+be written to disk before success is reported back to the client. This is
+slower, but ensures data integrity.<br>
+When the option is disabled, writes by NFS clients may be buffered until later.<br>
+<br><i>exportfs options: sync, async<br>
+default: enabled (but disabled for releases of nfs-utils previous to 1.0.0)</i>
+<hr>

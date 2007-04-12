@@ -1,0 +1,106 @@
+--- /usr/bin/moncmd	Thu Sep  6 13:46:26 2001
++++ /webmin-0.87/mon/moncmd.pl	Mon Sep 10 13:40:37 2001
+@@ -2,6 +2,8 @@
+ #
+ # moncmd - send a command to the mon server
+ #
++# original file is modified to suit for the operation in this webmin module of msclinux--dt 09 Sept 2001
++#
+ # Jim Trocki, trockij@transmeta.com
+ #
+ # $Id: moncmd 1.2 Fri, 12 Jan 2001 08:13:31 -0800 trockij $
+@@ -53,10 +55,12 @@
+ if ($opt_f) {
+     if ($opt_f eq "-") {
+     	$H = STDIN;
++#print LOG "READING H from STDIN<br>";
+     } else {
+     	open (IN, $opt_f) ||
+ 	    die "could not open input file: $!\n";
+ 	$H = IN;
++#print LOG "READING H from IN<br>";
+     }
+ 
+ } elsif (!@ARGV) {
+@@ -77,14 +81,18 @@
+ # get auth info
+ #
+ if ($opt_a) {
++#open (LOG,">/tmp/monlog");
+     if ($opt_l) {
+     	$USER = $opt_l;
++#print LOG "USER READ FROM -l OPTION =$USER\n";
+     } else {
+ 	die "could not determine username\n"
+ 	    unless defined ($USER = getpwuid($EUID));
++#print LOG "USER DEFAULT TAKEN=$USER\n";
+     }
+ 
+     if (-t STDIN) {
++#print LOG "READING PASSWD FROM STDIN\n";
+ 	system "stty -echo";
+ 	print "Password: ";
+ 	chop ($PASS = <STDIN>);
+@@ -94,19 +102,27 @@
+ 
+     } elsif (!@ARGV) {
+ 	$cmd = <$H>;
++#print LOG "READING CMD FROM $H\n";
++#print LOG "CMD:$cmd\n";
+ 	while (defined ($cmd) && $cmd =~ /user=|pass=/i) {
++	#while (defined ($cmd) && $cmd =~ /user|pass/i) {
+ 	    chomp $cmd;
++#print LOG "CMD AFTER CHOMP:$cmd\n";
+ 	    if ($cmd =~ /^user=(\S+)$/i) {
+ 		$USER=$1 if (!defined ($USER));
++#print LOG "READING USER FROM $H:$USER\n";
+ 	    } elsif ($cmd =~ /^pass=(\S+)$/i) {
+ 		$PASS=$1;
++#print LOG "READING PASSWD FROM $H:$PASS\n";
+ 	    }
+ 	    
+ 	    $cmd = <$H>;
++	    $cmd1=$cmd;	
++#print LOG "FINAL CMD: $cmd\n";
+ 	}
+ 
+     }
+-
++     
+     die "inadequate authentication information supplied\n"
+     	if ($USER eq "" || $PASS eq "");
+ }
+@@ -148,13 +164,16 @@
+ 
+ 
+ if ($opt_f or !@ARGV) {
+-    $cmd = <$H> if ($opt_f || !@ARGV);
++    #$cmd = <$H> if ($opt_f || !@ARGV);
++    $cmd = (<$H>||$cmd1) if ($opt_f || !@ARGV);
+     $l = "";
++#print LOG "ENTERING TO SEND THE CMD:$cmd\n";
+     while (defined ($cmd) && defined ($l)) {
+ 	#
+ 	# send the command
+ 	#
+ 	chomp $cmd;
++#print LOG "SENDING THE CMD:$cmd\n";
+ 	($l, @out) = do_cmd (MON, $cmd);
+ 	last if (!defined ($l));
+ 	for (@out) {
+@@ -181,6 +200,7 @@
+ 
+ close(MON);
+ 
++#close(LOG);
+ 
+ #
+ # submit a command to the server, wait for a response
+@@ -193,6 +213,7 @@
+ 
+     @out = ();
+     print $fd "$cmd\n";
++#print LOG "SUBMITTING CMD:$cmd\n";
+     while (defined($l = <$fd>)) {
+         chomp $l;
+         if ($l =~ /^(\d{3}\s)/) {

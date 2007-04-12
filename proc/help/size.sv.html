@@ -1,0 +1,16 @@
+<header>Processer - minnesöversikt</header>
+
+På denna sida visas alla processer som är igång, ordnade efter
+minnesutnyttjande. För varje process anges PID, ägare, storlek i kB och
+kommando. Klicka på ett PID för att få upp mer information om processen.
+
+<p>Detta kan du använda för att hitta kommandon som slukar minne i systemet.
+Det angivna minnesutnyttjandet kan dock vara missledande för sådana
+processer som X-servern, där även minnesåtgången för buffrar i X tas med.
+Multipla processer för samma program (t ex <tt>httpd</tt> och <tt>bash</tt>)
+har en stor del av minnet gemensamt vilket gör att de totalt ser ut att
+använda mer minne än de egentligen gör.
+
+<include overview>
+<hr>
+

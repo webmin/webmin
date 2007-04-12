@@ -1,0 +1,22 @@
+<header>Opciones Administrativas</header>
+
+<b>Ejecutar como usuario Unix</b>: Por defecto es 'nobody' o 'squid' dependiendo del sistema. Si la caché es ejecutada como root, cambiará su ID efectiva/real a este valor.
+<p>
+<b>Ejecutar como grupo Unix</b>: Por defecto es 'nogroup' o 'squid' dependiendo del sistema. Si la caché es ejecutada como root, cambiará su ID de grupo efectiva/real a este valor.
+<p>
+<b>Campo de autenticación Proxy</b>: Especifica el nombre de esfera de influencia que es reportado al cliente para autenticación proxy (parte del texto que el usuario verá al ser solicitado por su nombre y clave de acceso).
+<p>
+<b>Dirección de correo del gestor de caché</b>: Por defecto es 'webmaster' o 'root' dependiendo del sistema. Dirección de correo del gestor local de caché que recibirá correo si la caché finaliza.
+<p>
+<b>Nombre de máquina visible</b>: Si quieres presentar un nombre especial de máquina en los mensajes de error, etc... entonces define éste. De otro modo, el valor devuelto de gethostname() será utilizado. Si tienes múltiples cachés en un grupo y hay errores acerca de reenvío-IP tienes que hacer que tengan nombres individuales con este valor.
+<p>
+<b>Nombre único de máquina</b>: Si quieres tener múltiples máquinas con el mismo <b>nombre visible de máquina</b>, entonces tienes que dar a cada máquina un <b>nombre único de máquina</b> de tal manera que se puedan detectar los bucles de reenvío.
+<p>
+<b>Máquina de anuncio de caché</b>: Nombre de máquina donde los mensajes de anuncio serán enviados. Para saber más sobre las jerarquías de caché mira en <a href="http://www.squid-cache.org/Doc/FAQ/FAQ-4.html" target="Reference">Las PRF (FAQ) de Squid</a>.  Por defecto es 'tracker.ircache.net' si el anuncio está activado mediante un período de anunciación.
+<p>
+<b>Puerto de anuncio de caché</b>: Puerto de máquina a donde se envían los mensajes de anunciación. Por defecto 3131 al activar la anunciación.
+<p>
+<b>Período de anunciación</b>: Frecuencia de anunciaciones.  Activa anunciaciones a una jerarquía de caché mediante el valor de '1 día'. Por defecto es '0', el cual desactiva las anunciaciones.
+
+<hr>
+

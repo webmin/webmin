@@ -1,0 +1,17 @@
+<header>Alias och sökvägar</header>
+
+På den här sidan kan man skapa alias som fungerar då FTP-klientanvändaren
+använder kommandot <tt>cd</tt>. I den första tabellen kan man skriva om
+<tt>cd</tt>-alias till absoluta sökvägar. Om man exempelvis skapar ett alias
+<tt>foo</tt> för <tt>/usr/local/foo</tt> kommer kommandot <tt>cd foo</tt>
+i FTP-klienten att göra så att användaren hamnar i katalogen
+<tt>/usr/local/foo</tt>.
+
+<p>I den andra textrutan kan man skriva in kataloger som ska sökas igenom
+när en relativ <tt>cd</tt> skrivs in. Om exempelvis katalogen
+<tt>/usr/local</tt> finns i sökrutan och användaren skriver in <tt>cd bin</tt>
+kommer den att flyttas till <tt>/usr/local/bin</tt> under förutsättning att
+det inte finns någon <tt>bin</tt>-katalog i arbetskatalogen och inget alias
+för <tt>bin</tt>.
+
+<hr>

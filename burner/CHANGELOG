@@ -1,0 +1,8 @@
+---- Changes since 1.140 ----
+Audio CDs can now be burned from WAV and OGG files as well as MP3s.
+---- Changes since 1.150 ----
+Added detailed access control to limit a Webmin user to only using certain existing burn profiles, or to create profiles limited to selected directories.
+---- Changes since 1.190 ----
+IDE CDROM devices are shown in the device list on Linux 2.6 systems, which support buring directly via IDE rather than using SCSI emulation.
+---- Changes since 1.270 ----
+Added checkboxes and a button for deleting multiple profiles at once.

@@ -1,0 +1,6 @@
+line1=Voliteµné mo¾nosti,11
+sort_mode=Triedi» súbory záznamov podµa,1,1-Mena súboru záznamov,0-Poradia v konfiguraènom súbore
+add_file=Prida» novú sekciu pre logrotate,3,Primárny konfiguraèný súbor
+line2=Systémové nastavenia,11
+logrotate_conf=Cesta ku konfiguraènému súboru programu logrotate,0
+logrotate=Cesta k programu logrotate,0

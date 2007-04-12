@@ -1,0 +1,7 @@
+fstab_file=Fichier listant les systèmes de fichiers montés au démarrage,0
+auto_file=Fichier 'automount' NFS,3
+autofs_file=Fichier 'automount' du noyau,3
+long_fstypes=Utiliser les types de système de fichier long,1,1-Oui,0-Non
+smbclient_path=Chemin d'accès de <tt>smbclient</tt>,3
+nmblookup_path=Chemin d'accès de <tt>nmblookup</tt>,3
+browse_server=Serveur de requête de la liste,3,hôte local

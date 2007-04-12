@@ -1,0 +1,35 @@
+index_title=Zmiany hase³
+index_header=Podaj u¿ytkownika, którego has³o zmieniæ
+index_return=listy u¿ytkowników
+index_user=Zmiana has³a u¿ytkownika:
+index_euseradmin=Nie mo¿na korzystaæ z&nbsp;tego modu³u, gdy¿ nie zainstalowano w&nbsp;systemie modu³u U¿ytkownicy i&nbsp;grupy.
+index_toomany=W&nbsp;systemie jest zbyt wielu u¿ytkowników, aby ich wszystkich tu pokazaæ. Podaj poni¿ej nazwê u¿ytkownika, którego has³o chcesz zmieniæ.
+
+passwd_title=Zmieñ has³o
+passwd_header=Zmiana has³a uniksowego
+passwd_for=Zmiana has³a dla
+passwd_old=Poprzednie has³o
+passwd_new=Nowe has³o
+passwd_repeat=Nowe has³o (ponownie)
+passwd_change=Zmieñ
+passwd_reset=Wyczy¶æ formularz
+passwd_err=Nie uda³o siê zmieniæ has³a
+passwd_ecannot=Nie masz uprawnieñ do zmiany hase³ u¿ytkowników
+passwd_euser=Taki u¿ytkownik nie istnieje
+passwd_eold=Nieprawid³owe poprzednie has³o
+passwd_erepeat=Nowe has³a nie s± identyczne
+passwd_ok=Has³o u¿ytkownika $1 zmieniono pomy¶lnie. Je¶li jest to u¿ytkownik Webmina jako który pracujesz, mo¿esz byæ zmuszony do ponownego zalogowania siê.
+
+log_passwd=Zmieniono has³o u¿ytkownika $1
+
+acl_repeat=Musi podawaæ has³o dwukrotnie?
+acl_old=Musi podawaæ poprzednie has³o?
+acl_old_this=Tylko dla u¿ytkowników
+acl_others=Zmieniaæ has³o w&nbsp;innych modu³ach?
+acl_users=U¿ytkownicy, których has³a mo¿na zmieniaæ
+acl_mode0=Wszyscy
+acl_mode1=Tylko u¿ytkownicy
+acl_mode2=Wszyscy oprócz
+acl_mode3=Tylko ten u¿ytkownik
+acl_mode4=U¿ytkownicy o&nbsp;nrach UID z&nbsp;zakresu
+acl_mode5=U¿ytkownicy, których grup± podstawow± jest

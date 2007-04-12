@@ -1,0 +1,12 @@
+show_list=1
+httpd_dir=/server/apache/
+httpd_path=/server/apache/bin/httpd
+mime_types=/server/apache/conf/mime.types
+start_cmd=/etc/rc.d/bin/apache up
+stop_cmd=/etc/rc.d/bin/apache down
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

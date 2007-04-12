@@ -1,0 +1,7 @@
+name=PPTP
+desc=PPTP VPN Client
+category=net
+depends=net proc syslog
+os_support=*-linux
+longdesc=Configure and establish connections to a VPN server using the PPTP protocol.
+desc_ca=Client VPN PPTP

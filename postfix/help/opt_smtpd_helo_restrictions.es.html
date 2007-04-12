@@ -1,0 +1,49 @@
+<header>Restricciones de qué pueden enviar los clientes en el comando HELO</header>
+
+<center><tt>smtpd_helo_restrictions</tt></center>
+<hr>
+
+Este parámetro especifica restricciones adicionales en qué pueden enviar
+los clientes SMTP en los comandos HELO y EHLO.
+
+<p>
+
+Por defecto se permite todo. Estás disponibles las siguientes
+restricciones:
+
+<ul>
+<li>  <tt>permit_mynetworks:</tt> permitir si la dirección del cliente
+          coincide con <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li>  <tt>reject_unknown_client:</tt> rechazar la solicitud si el nombre
+          del cliente es desconocido.
+<li>  <tt>reject_maps_rbl:</tt> rechazar si el cliente está listado en
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li>  <tt>reject_invalid_hostname:</tt> rechazar HELO si la sintaxis del
+          nombre de máquina es incorrecta.
+<li>  <tt>reject_unknown_hostname:</tt> rechazar el nombre de máquina del
+          HELO si no dispone de registro DNS A o MX.
+<li>  <tt>reject_non_fqdn_hostname:</tt> rechazar el nombre de máquina del
+          HELO si no está plenamente cualificado (FQDN).
+<li>  <tt>check_helo_access maptype:mapname:</tt> ibuscar el nombre de
+          máquina del HELO o sus dominios padre.
+	Rechazar si el resultado es REJECT o &quot;[45]xx texto&quot;.
+	Permitir en cualquier otro caso.
+<li>  <tt>check_client_access maptype:mapname:</tt> vea
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li>  <tt>reject:</tt> rechazar la petición. Sitúe esto al final de una
+          restricción.
+<li>  <tt>permit:</tt> permitir la petición. Sitúe esto al final de una
+          restricción.
+</ul>
+
+Las restricciones se aplican en el orden que se especifiquen: la primera
+restricción que coincida es la que aplica.
+
+<p>
+
+Especifique una lista de restricciones, separadas por comas y/o espacios en
+blanco. Continúe las líneas largas comenzando la línea siguiente con
+espacio.
+
+
+<hr>

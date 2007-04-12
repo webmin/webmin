@@ -1,0 +1,9 @@
+line1=Configurable options,11
+show_list=Display domains as,1,0-Icons,1-List
+soa_style=Serial number style,1,0-Running number,1-Date based (YYYYMMDDnn)
+records_order=Order to display records in,1,1-Alphabetical,0-As added
+updserial_on=Generally handle serial numbers,1,0-No,1-Yes
+line2=System configuration,11
+named_boot_file=Primary configuration file,0
+named_pid_file=Process ID file,3,None
+named_pathname=Full path to named,0

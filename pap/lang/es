@@ -1,0 +1,43 @@
+index_title=Cuentas PPP
+index_enopfile=El archivo de claves de acceso PPP '$1' no existe en tu sistema. Quizás PPP no ha sido instalado
+index_table=Cuentas PPP de Entrada y Salida
+index_user=Nombre de usuario
+index_server=Servidor
+index_uany=CUALQUIERA (ANY)
+index_sany=CUALQUIERA (ANY)
+index_create=Crear nueva cuenta PPP
+index_info=Webmin puede ser configurado de tal manera que los cambios de la lista de usuarios de Unix sea automáticamente aplicada a la lista de cuentas PPP. Esto sólo funciona si el módulo Webmin de <tt>Usuarios y Grupos</tt>se utiliza para añadir, borrar o cambiar usuarios.
+index_onadd=Añadir cuenta PPP al añadir un usuario Unix, para el servidor
+index_onchange=Cambiar cuenta PPP cuando un usuario Unix cambie
+index_ondelete=Borrar cuenta PPP cuando un usuario Unix sea borrado
+index_apply=Aplicar
+index_return=índice
+
+edit_secret_etitle=Editar Cuenta PPP
+edit_secret_ctitle=Crear Cuenta PPP
+edit_secret_acc=Cuenta PPP
+edit_secret_user=Nombre de usuario
+edit_secret_serv=Servidor
+edit_secret_sany=Cualquiera
+edit_secret_uany=Cualquiera
+edit_secret_pass=Clave de acceso
+edit_secret_none=Ninguna
+edit_secret_ffile=Desde archivo
+edit_secret_leave=Dejar sin cambio
+edit_secret_setto=Poner a
+edit_secret_vaddr=Direcciones válidas
+edit_secret_aany=Permitir cualquiera
+edit_secret_anone=No permitir a nadie
+edit_secret_alist=Permitir las listadas...
+edit_secret_save=Salvar
+edit_secret_del=Borrar
+edit_secret_return=lista de cuentas
+
+save_secret_esave=No pude salvar cuenta 
+save_secret_enoip='$1' no es una dirección válida
+
+log_create=Creado usuario PPP $1
+log_modify=Modificado usuario PPP $1
+log_delete=Borrado usuario PPP $1
+log_sync=Cambiada sincronización de usuario unix
+

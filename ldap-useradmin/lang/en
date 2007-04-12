@@ -1,0 +1,96 @@
+index_title=LDAP Users and Groups
+index_econfig=The LDAP NSS configuration file $1 was not found on your system. You will need to adjust the <a href='$2'>module configuration</a> to use the correct path.
+index_econfig2=The LDAP NSS configuration file $1 appears to be the LDAP <i>server</i> configuration file. You will need to adjust the <a href='$2'>module configuration</a> to use the path to the NSS <i>client</i> config file.
+index_ehost=If no LDAP NSS configuration file is set in the <a href='$1'>module configuration</a>, an LDAP server, login, password, base user DN and base group DN must be set instead.
+index_eperl=The $1 Perl module that this module requires is not installed or is not working properly. <a href='$2'>Click here</a> to have it downloaded and installed now.
+index_eperl2=The error reported by Perl when trying to load the module was :
+index_eldap=$1. Maybe your <a href='$2'>module configuration</a> is incorrect.
+index_eimap=$1. Maybe your <a href='$2'>module configuration</a> is incorrect.
+index_emd5=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the $2 Perl module is not installed. <a href='$3'>Click here</a> to have the $2 module downloaded and installed.
+index_eslappasswd=This module has been <a href='$1'>configured</a> to use LDAP MD5 encryption for passwords, but the program <tt>$2</tt> used for encrypting a password is not installed.
+index_eusearch=Failed to search for users under $1 : $2
+index_uadd=Add a new LDAP user.
+index_gadd=Add a new LDAP group.
+index_unone=No LDAP users were found under $1.
+index_gnone=No LDAP groups were found under $1.
+index_return=user list
+index_egsearch=Failed to search for groups under $1 : $2
+index_samba=Samba?
+index_cyrus=IMAP?
+index_users=LDAP Users
+index_groups=LDAP Groups
+
+conn_econn=Failed to connect to LDAP server $1 port $2
+conn_elogin=Failed to bind to LDAP server $1 as $2 : $3
+imap_econn=Failed to connect to IMAP server $1
+imap_elogin=Failed to login to IMAP server $1 as $2 : $3
+
+uedit_cap=User capabilities
+uedit_samba=Samba login?
+uedit_cyrus=IMAP server login?
+uedit_dn=User's LDAP DN
+uedit_classes=LDAP object classes
+uedit_alias=Mail aliases
+uedit_fields=Additional LDAP fields
+uedit_firstname=First name
+uedit_lastname=Last name
+uedit_raw=LDAP Attributes
+uedit_return=user details
+uedit_quota=IMAP quota
+uedit_unquota=Don't change
+
+usave_eadd=Failed to add user to LDAP database : $1
+usave_emod=Failed to modify user in LDAP database : $1
+usave_emoddn=Failed to rename user in LDAP database : $1
+usave_egroupmod=Failed to modify group $1 in LDAP database : $2
+usave_edelete=Failed to delete user from LDAP database : $1
+usave_eicreate=Failed to create user
+usave_eiacl=Failed to grant rights to admin
+usave_eimap=The user was saved successfully in the LDAP database, but an IMAP error occurred : $1 : $2
+usave_eisub=Failed to subscribe user to folder $1
+usave_eiquota=Failed to set IMAP quota
+usave_eifolder=Failed to create folder $1
+usave_eilogin=Failed to login as new user
+usave_ecyruspass=The user's normal password must be entered or the No password required option selected when enabling IMAP.
+usave_ebook=Failed to create addressbook entry : $1
+usave_emodbook=Failed to modify addressbook entry : $1
+usave_emodbookdn=Failed to rename addressbook entry : $1
+usave_egone=User no longer exists!
+usave_ex86=This module cannot be used to set the password for a Samba user on non-Intel systems, as it depends upon a compiled x86 program.
+usave_esamba=This module cannot be used to set the password for a Samba user, as the Samba Windows File Sharing module is not installed.
+usave_ealiasdup=The alias $1 is already used by $2
+usave_eattrdup=The object $1 is already using the $2 $3
+usave_eattrdupu=The user $1 is already using the $2 $3
+usave_eattrdupg=The group $1 is already using the $2 $3
+usave_ereal=Missing real name
+usave_equota=Missing or invalid IMAP quota
+
+search_err=Search for $1 under $2 failed : $3
+
+gedit_dn=Group's LDAP DN
+gedit_return=group details
+gedit_cap=Group capabilities
+gedit_samba=Samba group?
+
+gsave_egone=Group no longer exists!
+gsave_edelete=Failed to delete group from LDAP database : $1
+gsave_eadd=Failed to add group to LDAP database : $1
+gsave_emod=Failed to modify group in LDAP database : $1
+gsave_emoddn=Failed to rename group in LDAP database : $1
+
+gdel_group=Deleting LDAP group entry ..
+
+udel_pass=Deleting LDAP user entry ..
+udel_book=Deleting from addressbook ..
+udel_imap=Deleting IMAP folder ..
+udel_warnimap=The existing mail postbox will be deleted when deleting the home directory!
+udel_failed=.. failed! : $1
+
+raw_title=LDAP Attributes
+raw_name=Attribute name
+raw_value=Values
+raw_for=For $1
+
+batch_samba=Create Samba account for new users?
+batch_descafter3=In <b>create</b> and <b>modify</b> lines, you can optionally append extra fields containing LDAP atttributes in <i>name</i>=<i>value</i> format, to be assigned to the new or modified users.
+batch_eattr=Invalid LDAP attribute at line $1 : $2

@@ -1,0 +1,14 @@
+show_list=0
+httpd_dir=/var/www
+httpd_path=/usr/sbin/httpd
+apachectl_path=/usr/sbin/apachectl
+httpd_conf=/var/www/conf/httpd.conf
+mime_types=/var/www/conf/mime.types
+srm_conf=/var/www/conf/srm.conf
+access_conf=/var/www/conf/access.conf
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

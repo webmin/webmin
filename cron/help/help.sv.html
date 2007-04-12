@@ -1,0 +1,68 @@
+<body bgcolor=#ffffff>
+<title>Schemalagda kommandon och jobb</title>
+<center><img src="images/cron.gif"></center><br>
+<h2><i>Denna hjälpsida är inte fullständig</i></h2>
+<hr>
+<h3>Introduktion</h3>
+I denna modul kan du schemalägga automatisk körning av kommandon vid
+tider som du anger. Modulen använder den vanliga Unix-demonen <tt>cron</tt>,
+som kan köra kommandon som olika användare vid bestämda minuter, timmar,
+på bestämda dagar i månaden, veckodagar och månader. Varje jobb ägs av
+en användare, och när det utförs körs det med denna användares rättigheter.
+
+<p>Förstasidan listar alla schemalagda jobb grupperade efter användare.
+En del system har jobb som är en del av operativsystemet och som ägs av
+användare som <tt>root</tt> eller <tt>sys</tt>. Det kan också finnas
+jobb som har lagts in med hjälp av <tt>crontab</tt>-kommandot och som
+då ägs av den användare som lade in dem.
+
+<hr>
+<h3>Schemalägga ett nytt jobb</h3>
+Tryck på <tt>Schemalägg nytt jobb</tt> nedanför listan för att lägga till
+ett nytt jobb till listan. Du får då upp ett formulär där du anger följande
+uppgifter:
+	<ul>
+	<li><b>Användare att köra som</b>
+	    <br>Inloggningsnamnet för den Unix-användare jobbet ska köras som.
+	<li><b>Aktivt?</b>
+	    <br>Om ett jobb inte är aktivt, kommer det fortfarande att visas i listan, men inte köras.
+	<li><b>Kommando</b>
+	    <br>Det Unix-kommando som ska köras vid angivna tidpunkter.
+	    Detta kan vara vilket kommando som helst som du kan skriva på
+	    kommandoraden.
+	<li><b>Inmatning till kommandot</b>
+	    <br>Om du fyller i något i detta fält kommer det att matas in
+	    till kommandot när det körs. Om kommandot till exempel är
+	    <tt>mail foo@bar.com</tt> och inmatningen <tt>hello world</tt>,
+	    kommer den inmatade texten att e-postas till <tt>foo@bar.com</tt>.
+	<li><b>Tidpunkter</b>
+	    <br>Här anger du vid vilka tidpunkter kommandot ska köras.
+	    Tidpunkterna anges som bestämda minuter, timmar, datum, månader
+	    eller veckodagar. För vart och ett av dessa alternativ kan du
+	    välja <tt>Alla</tt> eller välja de tidpunkter som kommandot ska
+	    köras på.
+
+	    <p>Om du exempelvis väljer timme 5 och veckodag tisdag, kommer
+	    kommandot att köras varje minut från 5:00 till 5:59 på tisdagar.
+	    <br>Om du väljer minut 30 och timme 14, kommer kommandot att
+	    köras varje dag klockan 14:30.
+	</ul>
+<p>När du har fyllt i formuläret trycker du på <tt>Skapa</tt>-knappen
+längst ned på sidan. Jobbet kommer att schemaläggas direkt.
+
+<hr>
+<h3>Ändra ett schemalagt jobb</h3>
+Klicka på ett kommando i listan på förstasidan för att ändra i jobbet.
+Det är samma formulär för att ändra ett jobb som för att skapa ett.
+När du har gjort de ändringar du ville göra trycker du på <tt>Spara</tt>
+längst ned på sidan.
+
+<p>Tryck på <tt>Ta bort</tt> längst ned i formuläret för att ta bort
+jobbet från listan. Detta kommer att ta bort jobbet direkt utan att
+begära någon bekräftelse.
+
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Tillbaka till modul</a>
+

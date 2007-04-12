@@ -1,0 +1,37 @@
+index_title=Endre Passord
+index_header=Velg en bruker for å endre hans/hennes passord
+index_return=bruker liste
+index_user=Endre passord for bruker:
+index_euseradmin=Denne modulen kan ikke brukes siden bruker og gruppe modulen ikke er installert eller ikke støttes på maskinen. 
+index_toomany=Det er for mange brukere for å kunne vise på skjermen.  Skriv inn navnet på brukeren som du ønsker og endre passord på nedenfor..
+
+passwd_title=Endre Passord
+passwd_header=Endrer Unix bruker passord
+passwd_for=Endre passord for
+passwd_old=Gammelt passord
+passwd_new=Nytt passord 
+passwd_repeat=Nytt passord (igjen)
+passwd_change=Endre
+passwd_reset=Tøm skjema
+passwd_err=Feilet under endring av passord
+passwd_ecannot=Du har ikke tillatelse til å endre denne brukerens passord
+passwd_euser=Bruker eksisterer ikke
+passwd_eold=Feil gammelt passord
+passwd_erepeat=Nytt passord er ikke like 
+passwd_ecmd=$1 feilet : $2
+passwd_ok=Passord for bruker $1 endret suksessfullt. Hvis dette er webmin brukeren din, må du trolig logge inn på ny.
+
+log_passwd=Endret passord på bruker $1
+
+acl_repeat=Må skrive inn nytt passord igjen?
+acl_old=Må skrive inn gammelt passord igjen?
+acl_old_this=Bare for andre brukere  
+acl_others=Endre passord i andre moduler?
+acl_users=Brukere som passordet kan bli endret
+acl_mode0=Alle brukere (gruppen)
+acl_mode1=Bare brukere (gruppen)
+acl_mode2=Alle unntatt brukere (gruppen) 
+acl_mode3=Bare denne brukeren
+acl_mode4=Brukere med UID innenfor rekkevidde
+acl_mode5=brukere med primær gruppen 
+acl_mode6=Brukere som passer 

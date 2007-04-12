@@ -1,0 +1,8 @@
+sshd_path=c:/program files/openssh/usr/sbin/sshd.exe
+sshd_config=c:/program files/openssh/etc/sshd_config
+client_config=c:/program files/openssh/etc/ssh_config
+keygen_path=c:/program files/openssh/bin/ssh-keygen.exe
+sync_create=0
+sync_auth=1
+sync_pass=0
+sync_gnupg=0

@@ -1,0 +1,18 @@
+<header>Ports and Networking</header>
+
+<b>Proxy port</b>: Defaults to 3128.  This value sets what port your Squid server will listen on for http requests.  Client browsers will need to be configured to connect to a proxy on this port, or transparency will need to be setup, also. <p>
+
+<b>ICP port</b>: The port number where Squid sends and receives ICP requests to and from neighbor caches.  Default is 3130.  To disable use "0".  May be overridden with -u on the command line. <p>
+
+<b>Incoming TCP Address</b>: Defaults to none.  Defines the HTTP socket which accepts connections from clients and other caches. <p>
+
+<b>Outgoing TCP Address</b>: Defaults to none.  Defines the HTTP socket for connections made to remote servers and other caches. <p>
+
+<b>Outgoing UDP Address</b>: Defaults to none.  Defines the ICP socket receiving packets from other caches. <p>
+
+<b>Incoming UDP Address</b>: Defaults to none.  Defines the socket for ICP packets being sent out to other caches. <p>
+
+<b>TCP receive buffer</b>: Size of the TCP buffer.  Defaults to the OS receive buffer. <p>
+
+<hr>
+

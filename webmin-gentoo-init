@@ -1,0 +1,19 @@
+#!/sbin/runscript
+# Copyright 1999-2002 Gentoo Technologies, Inc.
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+depend() { 
+	need net logger 
+}
+
+start() {
+	ebegin "Starting webmin"
+	/etc/webmin/start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping webmin"
+	/etc/webmin/stop
+	eend $?
+}

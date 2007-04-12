@@ -1,0 +1,3 @@
+exports_file=/etc/exports
+restart_command=exportfs -au; exportfs -a
+export_style=hpux

@@ -1,0 +1,15 @@
+---- Changes since 1.140 ----
+Added an option to have environment variable substitution done on edited filenames.
+---- Changes since 1.150 ----
+Added an option to clear Webmin-related environment variables before running a command.
+---- Changes since 1.210 ----
+File editors can how have parameters, which are substituted into the filename before editing.
+---- Changes since 1.220 ----
+Added a new type of command - an SQL query or update that will be performed against a database for which a Perl DBI driver is installed.
+---- Changes since 1.230 ----
+If other servers are defined in the Webmin Servers Index module, custom commands can be configured to run on one or more other Webmin hosts in a cluster.
+---- Changes since 1.250 ----
+The output from a command is now shown as it is generated, for commands run locally.
+Added a Module Config parameter to change the number of columns used to display command buttons in.
+---- Changes since 1.270 ----
+The contents of uploaded files are no longer logged.

@@ -1,0 +1,14 @@
+<header>Cuenta de Sectores</header>
+Configura la cuenta de sectores para el read-ahead del sistema de ficheros.<p>
+
+Se usa para mejorar las prestaciones en lecturas secuenciales de ficheros
+grandes, mediante la prelectura de bloques adicionales antes de que sean
+necesarios para la tarea en ejecución. En la versión actual del núcleo de
+Linux (2.0.10) tiene un valor por defecto de 8 sectores (4 KB). Este valor
+parece bueno para la mayoría de los usos, pero en un sistema donde la mayor
+parte de los accesos a disco son búsquedas aleatoria, puede que un valor
+más pequeño proporcione mejores prestaciones. Adicionalmente hay muchos
+discos IDE que disponen de funcionalidad de read-ahead por hardware, que
+alivia la necesidad de read-ahead del sistema de ficheros en muchas
+situaciones.
+<hr>

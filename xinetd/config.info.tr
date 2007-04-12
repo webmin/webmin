@@ -1,0 +1,7 @@
+line2=Sistem yapýlandýrmasý,11
+xinetd_conf=Xinetd yapýlandýrma dosyasý,0
+protocols_file=Að protokolleri dosyasý,0
+pid_file=Xinetd PID dosyasýnýn yolu,3,Yok (bunun yerine iþleme bak)
+start_cmd=Xinetd'yi baþlatma komutu,0
+add_dir=Yeni servislerin ekleneceði dizin,15,add_dir
+lookup_servs=Ana sayfada port numaralarýna bakýlsýn mý?,1,1-Evet,0-Hayýr

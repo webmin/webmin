@@ -1,0 +1,26 @@
+<header>Begränsningar för klienters datornamn/adresser</header>
+
+<center><tt>smtpd_client_restrictions</tt></center>
+<hr>
+
+Denna parameter anger valbara begränsningar för SMTP-klienternas datornamn
+och adresser.
+
+<p>Standardbeteendet är att tillåta uppkopplingar från alla datorer.
+Följande begränsningar kan göras:
+
+<include smtpd_restrictions>
+
+Begränsningar görs i angiven ordning; den första begränsning som passar in
+används.
+
+<p>Ange en lista med begränsningar, separerade med kommatecken och/eller
+blanksteg. Långa rader görs genom att nästa rad börjas med ett blanksteg.
+
+<p>Vettiga exempel:
+<ul>
+<li><tt>permit_mynetworks, reject_unknown_client</tt>
+<li><tt>reject_maps_rbl, reject_unknown_client</tt>
+</ul>
+
+<hr>

@@ -1,0 +1,25 @@
+<header>Unix Processes</header>
+
+A process is simply a running program on your system. Your web browser,
+window manager, terminal window and X server are all processes that you
+interact with directly. Many other processes run in the background,
+such as web servers and other system tasks. A new process is created every
+time you type a command like <tt>ls</tt> or <tt>pwd</tt>, though such processes
+are typically short-lived. <p>
+
+Every process has a unique ID, called the process ID or PID. While every
+process running at any one time has a different ID, over time PIDs may be
+re-used. <p>
+
+Apart from the initial process (typically called <tt>init</tt>) each has a
+parent process from which it was created. For example, if you run <tt>vi</tt>
+from your shell prompt, <tt>vi</tt>'s parent process will be your shell.
+A process can have any number of children, but only one parent. <p>
+
+Each process runs with the permissions of some user and group, which apply
+when it accesses files and directories. Users and processes may only kill
+other processes that they own, with the exception of <tt>root</tt> who
+can kill anything. <p>
+
+<hr>
+

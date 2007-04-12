@@ -1,0 +1,10 @@
+host=Nom del host a connectar,3,Automàtic
+port=Port de connexió,3,Defecte
+proxy=Utilitza una proxy per connectar amb altres hosts?,1,1-Sí,0-No
+mode=Tipus de connexió,1,0-Telnet,1-Secure Shell (recomanada)
+sizemode=Mida de l'applet,1,0-80x24 caràcters (tipus de lletra per defecte),1-Màxima,2-Personalitzada
+size=Amplada x alçada personalitzada,0
+fontsize=Mida de la lletra en punts,3,Defecte
+detach=Mode de finestra separada,1,1-Sí,0-No
+no_test=Prova el servidor telnet o SSH,1,0-Sí,1-No
+applet=Applet SSH a utilitzar,1,1-Versió nova (SSH 1 i 2),0-Versió vella (Només SSH 1)

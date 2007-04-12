@@ -1,0 +1,205 @@
+TITLES:
+index_title=MON Service Monitor
+index_return=MON index
+index_edir=The MON directory $1 does not exist. Maybe MON is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+mon_global_title=Global Varibles Configuration
+mon_conf_title=Basic Configuration
+mon_status_title=Operational Status
+hostgroups_title=MON Configuration-Hostgroups
+services_title=Watchgroups-Sevice Definitions
+
+HEADERS:
+head_hostgroups=Hostgroups and Services
+head_groups=Hostgroup Name
+head_members=Hostgroup Members
+head_services=Hostgroup Services to Watch
+head_service=Service to watch
+head_param=Service Parameters
+head_watch=Watch the Group?
+head_monauth=Provide Authentication for MONCMD
+head_usr=Username
+head_pass=Password
+head_mand=( Parameters in "RED COLOR"are Mandatory )
+
+ERRORS:
+err_nomon=package 'mon' is not installed on the system
+err_nomonconf=The MON configuration file $1 was not found on your system. Maybe MON is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+err_nowatch=No Watchgroups selected. Select at least one Watchgroup to proceed.
+err_noserv=No Services selected for the watchgroup
+err_nomemb=No Hosts/Members selected for the watchgroup
+err_monrun=MON is not running on the hostmachine. Please start MON.
+stop_err=Failed to stop MON
+stop_epid=No longer running
+start_err=Failed to start MON
+restart_err=Failed to restart MON
+restart_epid=Failed to get PID
+
+LABLES:
+other=Other(space seperated)
+next=Next
+mon_stat=MON Status
+mon_off=MON Services not Started
+mon_start=Start MON Services
+mon_stop=Stop MON Services
+mon_restart=Restart MON Services
+mon_startdesc=Click this button to start the MON server. Until it is started, no configured monitoring will be done.
+mon_stopdesc=Click this button to stop the MON server. When stopping, configured monitoring will cease.
+mon_restartdesc=Click this button to apply the current MON configuration by restarting the server process.
+line=(one on each line)
+save_apply=Save and Apply
+watch=Watchgroup
+members=Members
+def_perargs=wd {Sat-Sun}
+
+SERVICES DEFINITIONS:
+def_desc=description
+def_inter=interval
+def_mon=monitor
+def_dep=dpend
+def_per=period
+def_alert=alert
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Host Groups
+groups_group=Group name
+groups_members=Member hosts
+
+watches_title=Watch Lists
+watches_group=Watching group
+watches_services=Services being watched
+watches_sadd=Add service..
+watches_add=Add watch list for group :
+watches_return=watch lists
+watches_none=No watch lists have been defined yet.
+
+global_title=Global Options
+global_header=Global MON configuration options
+global_maxprocs=Maximum MON processes
+global_histlength=Event history length
+global_alertdir=Alert programs directory
+global_mondir=Monitor programs directory
+global_authtype=Authentication type
+global_authtype_=Default
+global_authtype_getpwnam=System calls
+global_authtype_userfile=MON users file
+global_authtype_shadow=Shadow file
+global_userfile=MON user's file
+global_emaxprocs=Missing or invalid number of MON processes
+global_ehistlength=Missing or invalid event history length
+global_ealertdir=Missing or invalid alert programs directory
+global_emondir=Missing or invalid monitor programs directory
+global_euserfile=Missing MON users file
+
+watch_title=Edit Watch List
+watch_header=Host group watch details
+watch_group=Host group to watch
+watch_services=Services being watched
+watch_service=Service name
+watch_monitor=Monitor to use
+watch_interval=Check every
+watch_periods=Monitoring periods
+
+service_title=Add Service
+service_title2=Edit Service
+service_header=Watched service details
+service_name=Name of service
+service_interval=Check every
+service_desc=Description
+service_units_s=seconds
+service_units_m=minutes
+service_units_h=hours
+service_units_d=days
+service_units_w=weeks
+service_monitor=Using monitor
+service_mon1=Standard monitor
+service_mon0=Other monitor ..
+service_args=Monitor parameters
+service_period=Monitoring period $1
+service_days=Days to check
+service_hours=Hours to check
+service_all=All
+service_pstr=Period specification
+service_new=New monitoring period
+service_alerts=Alerts for period
+service_alert=Alert
+service_atype=Run when
+service_atype_alert=Service goes down
+service_atype_upalert=Services comes up
+service_atype_startupalert=MON starts up
+service_aargs=Additional parameters
+service_every=Send alert
+service_every_def=Every time monitor is run
+service_every_time=Every
+service_num=Maximum alerts to send
+service_unlimited=Unlimited
+service_after=Failures before alert
+service_immediate=Immediately
+service_after_num=After $1 failures
+service_aftertime=Within time interval
+service_newperiod=Add a new period
+service_delperiod=Delete this period
+service_err=Failed to save service
+service_ename=Missing or invalid service name
+service_einterval=Missing or invalid check interval
+service_eother=Missing or invalid monitor
+service_ehour=Missing or invalid hour for period $1 (must be like 9am or 5pm)
+service_eperiod=No days or hours specified for period $1
+service_eevery=Missing or invalid service alert interval
+service_eafter=Missing or invalid number of failures before alert
+service_enum=Missing or invalid maximum alerts to sent
+service_epstr=Missing period specification
+service_known0=<tt>Time::Period</tt> string
+service_known1=Specified days and hours
+service_known2=Defined period
+
+status_title=MON Status
+status_ecgi=The MON status CGI program $1 does not exist. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+status_eperl=The MON status CGI program requires the $1 perl module. <a href='$2'>Click here</a> to install it directly from CPAN.
+status_esame=The MON status CGI program $1 has been set to the <tt>mon.cgi</tt> script in this Webmin module, not the CGI program that comes with MON. Adjust the <a href='$2'>module configuration</a> to use the correct path.
+
+users_title=MON Users
+users_etype=The MON users list cannot be edited because MON is not currenly configured to use it for authentication on the <a href='$1'>Global Options</a> page.
+users_header=Allowed MON users in $1
+users_nousers=No MON users have been defined in $1.
+users_add=Create a new user.
+users_return=MON users list
+
+user_create=Create MON User
+user_edit=Edit MON User
+user_header=MON user details
+user_user=Username
+user_pass=Password
+user_leave=Leave unchanged
+user_err=Failed to save user
+user_euser=Missing or invalid username
+user_esame=A user with the same name already exists
+
+auth_title=Client Commands
+auth_desc=This page allows you to control which MON commands can be run by which users when using the client programs.
+auth_cmd=MON command
+auth_users=Allowed users
+auth_none=Nobody
+auth_all=Everybody
+auth_sel=Only users
+auth_err=Failed to save client commands
+auth_eusers=No users enter for command $1
+
+periods_title=Defined Periods
+periods_period=Period name
+periods_times=Days and times
+periods_alldays=All days
+periods_allhours=All hours
+periods_err=Failed to save defined periods
+periods_ename='$1' is not a valid period name
+periods_ehour=Missing or invalid hour for period $1 (must be like 9am or 5pm)
+
+show_title=Operational Status
+show_ecgi=The MON status program $1 does not exist. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.

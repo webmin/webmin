@@ -1,0 +1,8 @@
+line1=Options configurables,11
+refresh_days=Intervalle de rafra&#238;chissement de la liste des modules CPAN,0,5
+save_partial=Garder le module t&#233;l&#233;charg&#233; si l'installation &#233;choue ?,1,1-Oui,0-Non
+def_args=Arguments par d&#233;faut pour Makefile.PL,0
+incpackages=Inclure les modules Perl des paquetages logiciels ?,1,1-Oui,0-Non
+line2=Configuration du syst&#232;me,11
+packages=Liste des modules Perl CPAN
+cpan=URL de base des modules CPAN

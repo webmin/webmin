@@ -1,0 +1,32 @@
+<header>Nombre de sectors per a E/S de sectors múltiples</header>
+
+Estableix el nombre de sectors per a E/S de sectors múltiples a la unitat.
+<p>
+
+El mode de sector múltiple (altrament dit Mode de Bloc IDE), és una
+característica dels discs durs IDE més moderns, que permet la transferència
+de múltiples sectors per interrupció d'E/S, en lloc de la transferència usual
+d'un sector per interrupció.
+<p>
+Quan aquesta característica està activada, acostuma a reduir la càrrega 
+del sistema operatiu d'E/S de disc en un 30-50%. EN molts sistemes, també
+proporciona un increment de la transferència de dades del 5 al 50%. Algunes
+unitats, no obstant (sobretot la sèrie WD Caviar), poden anar més lentes
+amb el mode de bloc múltiple activat. Això pot variar.
+<p>.
+La majoria d'unitats suporten els valors mínims de 2, 4, 8 o 16 (sectors).
+Pot haver-hi valors més grans, depenent de la unitat. Un valor de 16 o 32
+pot ser òptim en molts sistemes.
+<p>
+Western Digital recomana valors més petits, de 4 o 8, en moltes de les
+seves unitats, degut als buffers petits (32 Kb) i als als algoritmes de
+buffer no optimitzats.
+<p>
+Algunes unitats pretenen suportar mode de blocs múltiples, però perden
+dades amb algunes configuracions.<br>
+En circumstàncies comptades, aquests errors poden provocar una corrupció
+massiva del sistema de fitxers.
+
+<hr>
+
+

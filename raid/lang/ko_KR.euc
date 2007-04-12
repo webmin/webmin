@@ -1,0 +1,73 @@
+index_title=리눅스 RAID
+index_none=구성된 RAID 장치가 없습니다.
+index_add=RAID 장치 수준 작성:
+index_return=RAID 장치
+index_emdstat=시스템에 커널 RAID 상태 파일 $1이(가) 존재하지 않습니다. 아마 커널이 RAID를 지원하지 않는듯 합니다.
+index_emkraid=시스템에 RAID 도구 패키지가 설치되어 있지 않습니다.
+
+linear=연결됨(선형)
+raid0=스트라이프(RAID0)
+raid1=미러(RAID1)
+raid4=패리티(RAID4)
+raid5=중복(RAID5)
+
+create_title=RAID 장치 작성
+create_header=RAID 장치 옵션
+create_device=장치 파일
+create_level=RAID 수준
+create_disks=RAID 파티션
+create_spares=예비 파티션
+create_pdisk=패리티 파티션
+create_pauto=자동
+create_nodisks=RAID에 사용할 수 있는 빈 파티션이 없습니다.
+create_super=영구 슈퍼 블록입니까?
+create_parity=패리티 알고리즘
+create_chunk=덩어리 크기
+create_force=RAID를 강제로 초기화합니까?
+create_rdev=RAID 장치 $1
+create_err=RAID를 작성하지 못했습니다
+create_edisks=선택한 파티션이 없습니다
+create_edisks2=미러링용 파티션을 둘 이상 선택해야 합니다
+create_espare=예비 파티션 $1은(는) RAID 파티션과 달라야 합니다
+create_epdisk=패리티 파티션은 RAID 파티션과 달아야 합니다
+
+view_title=RAID 장치
+view_header=RAID 장치 옵션
+view_device=장치 파일
+view_level=RAID 수준
+view_status=상태
+view_mounted=활성 상태이면서 $1에 마운트되어 있음
+view_active=활성 상태입니까?
+view_inactive=비활성
+view_super=영구 슈퍼 블록입니까?
+view_parity=패리티 알고리즘
+view_chunk=덩어리 크기
+view_stop=비활성화
+view_start=활성화
+view_mkfs=ext2 파일 시스템 작성..
+view_disks=RAID 파티션
+view_spares=예비 파티션
+view_size=사용 가능한 크기
+view_resync=재동기화 완료율
+view_down=(다운)
+view_cannot=이 RAID 장치는 현재 마운트되어 있기 때문에 수정할 수 없습니다.
+
+mkfs_title=파일 시스템 작성
+mkfs_header=이 양식으로 $1에 새 Linux EXT2 파일 시스템을 구축할 수 있습니다. 기존의 <b>모든</b> 데이터가 삭제됩니다!
+mkfs_options=새 Linux 파일 시스템 옵션
+mkfs_err=파일 시스템을 작성하지 못했습니다
+mkfs_exec=$1 명령 실행 중..
+mkfs_failed=.. 명령을 실행하지 못했습니다!
+mkfs_ok=.. 명령을 완료했습니다
+
+emkraid=<tt>mkraid</tt> 실패: $1
+eraidstop=<tt>raidstop</tt> 실패: $1
+eraidstart=<tt>raidstart</tt> 실패: $1
+eforce=이 RAID를 강제로 초기화해야 합니다: $1
+
+log_create=$1 RAID 장치 $2 작성됨
+log_stop=RAID 장치 $1 비활성화됨
+log_start=RAID 장치 $1 활성화됨
+log_delete=RAID 장치 $1 삭제됨
+log_mkfs=$2에 $1 파일 시스템 작성됨
+

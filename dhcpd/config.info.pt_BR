@@ -1,0 +1,19 @@
+line1=Opções Configuráveis,11
+lease_sort=Ordernar leases por,1,0-Ordem em arquivo,1-Endereço IP,2-Nãome de computador
+hostnet_list=Mostrar subredes e computadores como,1,0-Ícones,1-Lista
+dhcpd_nocols=Ícones in row,0
+lease_tz=Display leases times in,1,0-GMT,1-Local time
+show_ip=Mostrar endereço IP para computadores?,1,1-Sim,0-Não
+show_mac=Mostrar endereço MAC para computadores?,1,1-Sim,0-Não
+desc_name=Mostrar descrição de objetos ao invés de nomes?,1,1-Sim,0-Não
+group_name=Mostrar nomes de grupo como,1,1-<tt>nome de&#45;domínio</tt>,0-Nome ou membro
+display_max=Número máximo de subredes e computadores a serem
+mostrados,3,Ilimitado
+line2=Configuração do sistema,11
+dhcpd_conf=Arquivo de configuração do servidor de DHCP,0
+dhcpd_path=Executável do servidor de DHCP,0
+start_cmd=Comando para iniciar o servidor de DHCP,3,Inicie servidor
+restart_cmd=Comando para aplicar configurações,3,Matar e reinicar
+pid_file=Caminho para o arquivo PID do servidor DHCP,0
+lease_file=Arquivo de lease do servidor DHCP,0
+interfaces_type=Tipo de arquivo de Interfaces,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,-Webmin

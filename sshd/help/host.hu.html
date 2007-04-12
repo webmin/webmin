@@ -1,0 +1,22 @@
+<header>Fordította: Szakács Gergely</header><p>
+
+Ezen az oldalon egyedi gazdákra, egyes mintáknak megfelelõ gazdanevekre, vagy minden gazdára érvényesíthetõ beállításokat olvashat. A kevésbé nyilvánvaló opciók alább láthatók:
+
+<dl>
+<dt><b>Bejelentkezés felhasználóként</b>
+<dd>Normális esetben, ha nincs megadva felhasználónév az <tt>ssh</tt> parancssorban, a rendszer az aktuális felhasználónévvel kapcsolódik a távoli SSH-kiszolgálóra. Mindazonáltal ezzel az opcióval más alapértelmezett felhasználónév is megadható, egy adott vagy több gazda részére.<p>
+
+<dt><b>Escape karakter</b>
+<dd>Interaktív SSH-bejelentkezés esetén az escape karakter a kapcsolatból való kilépésre, illetve annak felfüggesztésére is használható.<p>
+
+<dt><b>SSH-forgalom tömörítése</b>
+<dd>Ha ez az opció be van kapcsolva, úgy az SSH-kliens tömöríteni fogja az összes erre a gazdára érkezõ adatot a <tt>gzip</tt> algoritmus használatával. Ez abban az esetben lehet hasznos, ha nagy fájlokat másol <tt>scp</tt>-vel egy lassú linken keresztül.<p>
+
+<dt><b>Helyi portok továbbítása a kiszolgálóra</b>
+<dd>Ebben a táblázatban megadhat olyan helyi portszámokat, amelyeket aztán az SSH-kiszolgáló valamely gazdára és portra továbbít. Ez abban az esetben lehet hasznos, ha egyes hálózatokhoz csak SSH-val tud bejelentkezni, ugyanakkor további szolgáltatásokhoz (pl. web vagy POP-kiszolgálók) is hozzá akar férni.<p>
+
+<dt><b>Kiszolgálóportok továbbítása a helyi gépre</b>
+<dd>Ebben a táblázatban megadhat olyan portszámokat, amelyeket aztán a rendszer továbbít valamely gazdára és portra a kliens hálózatán.<p>
+
+</dl>
+

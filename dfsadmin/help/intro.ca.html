@@ -1,0 +1,26 @@
+<header>Introducció als Recursos NFS</header>
+
+<include nfs>
+
+<h3>NFS de Solaris</h3>
+Aquest mòdul permet configurar els directoris (dits <i>recursos</i> 
+en Solaris) exportats a través de NFS des del sistema. La primera pàgina
+mostra una llista de directoris i els clients als quals s'exporten,
+cosa que permet clicar el nom d'un directori i editar-ne les opcions
+o iniciar la compartició d'un nou directori. <p>
+
+Sota la llista de recursos de la primera pàgina, hi ha un botó que
+farà activa la configuració actual. Això es fa aturant els processos
+NFS servidors i tornant-los a iniciar. <p>
+
+Solaris no permet reexportar un directori NFS muntat des d'un altre
+servidor - només es poden exportar els directoris dels sistemes de
+fitxers locals. Si un directori compartit conté el punt de muntatge 
+d'un altre sistema de fitxers local, els clients NFS d'aquest recurs
+no veuran cap fitxer per sota d'aquest punt de muntage.
+El servidor ha de reexportar cada sistema de fitxers local de forma
+separada, per tal que els clients el muntin en el punt correcte de
+la jerarquia de directoris. <p>
+
+<hr>
+

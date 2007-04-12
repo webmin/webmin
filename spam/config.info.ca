@@ -1,0 +1,10 @@
+local_cf=Fitxer o directori de configuració de SpamAssassin,0
+spamassassin=Camí complet de l'ordre SpamAssassin,0
+sa_learn=Camí complet de l'ordre sa-learn,0
+procmailrc=Fitxer de configuració de procmail,3,Del mòdul Procmail
+warn_procmail=Mostra un avís si SpamAssassin no està configurat,1,1-Sí,0-No
+processes=Noms del procés dimoni SpamAssassin,0
+restart_cmd=Ordre per reiniciar els processos,3,Envia el senyal HUP
+procmail_cmd=Ordre de SpamAssassin per a la configuració de Procmail,10,*-Detecta-la automàticament
+before_cmd=Ordre a executar abans de canviar les regles,3,Cap
+after_cmd=Ordre a executar després de canviar les regles,3,Cap

@@ -1,0 +1,13 @@
+desc=Backup Configuration Files
+category=webmin
+longdesc=Perform manual or scheduled backups and restores of configuration files managed by Webmin modules.
+depends=cron mailboxes
+desc_de=Sicherung von Konfigurationsdateien
+desc_ca=Còpia de Fitxers de Configuració
+desc_sk=Záloha konfiguraèných súborov
+desc_fr=Fichiers de configuration des sauvegardes
+desc_tr=Yapýlandýrma Dosyalarýný Yedekle
+readonly=1
+desc_es=Copia Seguridad Archivos Configuraci&#243;n
+desc_hu=Konfigurációs file -ok mentése
+desc_sv=Backaupp Konfigurations Filer

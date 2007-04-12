@@ -1,0 +1,5 @@
+id=postgresql
+type=postgresql
+desc=PostgreSQL Database Server
+depends=postgresql
+nosched=0

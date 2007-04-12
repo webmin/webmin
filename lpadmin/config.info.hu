@@ -1,0 +1,10 @@
+print_style=A&nbsp;nyomtatóalrendszer fajtája,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare
+driver_style=A nyomtatómeghajtó fajtája,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SuSE
+printcap_file=A nyomtatók listáját tartalmazó file,3,Nincs
+model_path=Az illesztõprogramok katalógusa,3,Nincs
+smbclient_path=Az <tt>smbclient</tt> program,3,Nincs
+gs_path=A <tt>ghostscript</tt> program,3,Nincs
+gs_fontpath=A Ghostscript fontok katalógusa,3,Szokásos
+gs_lib=A Ghostscript könyvtárak katalógusa,3,Szokásos
+hpnp_path=A <tt>hpnp</tt> program,3,Nincs
+show_status=A nyomtató állapota megjelenjen a fõtáblázatban?,1,1-Igen,0-Nem

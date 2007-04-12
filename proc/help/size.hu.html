@@ -1,0 +1,19 @@
+<header>Futó processzek - memória nézet</header>
+
+Ez az oldal minden futó processzt megmutat, a memóriahasználat alapján
+rangsorolva. Minden processznek megjelenik a PID-je, a tulajdonosa, a mérete 
+kilobájtban és parancs neve. Bõvebb információkért kattintson a futó
+processz PID-jére.<p>
+
+Ez a nézet hasznos lehet olyan parancsok felderítéséhez, amelyek az Ön
+rendszerén túlságosan sok memóriát használnak. Azonban a memóriahasználat
+félrevezetõen nagy lehet olyan processzeknél - mint amilyen az X kiszolgáló -,
+amelyek memóriahasználatuknál tartalmazzák a térképezett vázbuffereket (mapped 
+frame buffers). Ha ugyanaz a processz többször elõfordul (mint pl. a
+<tt>httpd</tt> vagy a <tt>bash</tt> esetében), akkor a memória nagy részét
+megosztják, így az összesen felhasznált méret jóval nagyobbnak tûnik, mint
+amekkora valójában.<p>
+
+<include overview>
+<hr>
+

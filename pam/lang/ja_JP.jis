@@ -1,0 +1,242 @@
+index_title=PAM 認証
+index_name=サービス
+index_desc=説明
+index_add=新規の PAM サービスを追加
+index_return=サービス リスト
+index_none=システムのディレクトリ $1 には PAM 設定ファイルがありませんでした。PAM がサポートされていないか、 <a href='$2'>モジュール設定</a> が不正な可能性があります。
+
+desc_su=ユーザの切替
+desc_login=ローカルまたはリモート ログイン
+desc_samba=Samba Windows ファイル サーバ
+desc_imap=IMAP メール サーバ
+desc_pop=POP メール サーバ
+desc_kde=KDE ログイン
+desc_rexec=リモート exec サーバ
+desc_rlogin=リモート ログイン サーバ
+desc_rsh=リモート シェル サーバ
+desc_passwd=パスワードを変更
+desc_chfn=finger 情報を変更
+desc_chsh=シェルを変更
+desc_ftp=ファイル転送サーバ
+desc_ftpd=ファイル転送サーバ
+desc_wu-ftpd=WuFTPd ファイル転送サーバ
+desc_xscreensaver=スクリーン セーバー
+desc_other=他のサービス
+desc_netatalk.pamd=$desc_netatalk
+desc_netatalk=Netatalk Apple ファイル サーバ
+desc_webmin=Webmin web サーバ
+desc_xdm=ローカルまたはリモート X login
+desc_gdm=Gnome X login
+desc_linuxconf=LinuxConf ログイン
+desc_linuxconf-pair=LinuxConf 追加ログイン
+desc_linuxconf-auth=LinuxConf 認証
+desc_xlock=スクリーン ロック
+desc_vlock=仮想コンソール ロック
+desc_kbdrate=キーボード レート制御
+desc_halt=システムを中断
+desc_poweroff=システムの電源をオフ
+desc_reboot=システムを再起動
+desc_shutdown=システムをシャットダウン
+desc_mcserv=Midnight commander
+desc_kppp=KDE PPP クライアント ツール
+desc_xserver=X11 サーバ
+desc_gnorpm-auth=Gnome RPM ツール
+desc_kpackage=KDE RPM ツール
+desc_ppp=PPP デーモン ログイン
+desc_rp3-config=Redhat PPP クライアント ツール
+desc_up2date=Redhat Linux アップデート エージェント
+desc_up2date-config=Redhat Linux  アップデート設定
+desc_sudo=root コマンドの実行制限
+desc_httpd=Web サーバ
+desc_qpop=POP メール サーバ
+desc_sshd=SSH ログイン
+desc_squid=Squid プロキシ サーバ
+desc_bindconf=Redhat BIND 設定ツール
+desc_apacheconf=Redhat Apache 設定ツール
+desc_adsl-config=Redhat ADSL 設定ツール
+desc_internet-config=Redhat インターネット設定ツール
+desc_isdn-config=Redhat ISDN 設定ツール
+desc_kontrol-panel=Redhat KDE コントロール パネル
+desc_kscreensaver=KDE スクリーン セーバー
+desc_printconf-gui=Redhat プリンタ設定ツール
+desc_rhn_register=Redhat ネットワークの登録
+desc_system-auth=共通認証
+
+edit_title=PAM サービスの編集
+edit_header=PAM サービスの詳細
+edit_name=サービス名
+edit_header_auth=認証手順
+edit_header_account=アカウント確認手順
+edit_header_session=セッション セットアップ 手順
+edit_header_password=パスワードの変更手順
+edit_mod=PAM モジュール
+edit_desc=説明
+edit_args=パラメータ
+edit_addmod=ステップを追加: 
+edit_control=障害レベル
+edit_none=この手順には PAM モジュールが指定されていません
+edit_delete=PAM サービスを削除
+edit_move=移動
+edit_return=PAM サービス
+
+pam_pwdb.so=Unix パスワードの認証
+pam_securetty.so=root のセキュア TTY 検査
+pam_nologin.so=<tt>/etc/nologin</tt> ファイル チェック
+pam_mail.so=新規メールを通知
+pam_lastlog.so=最後のログインを通知
+pam_rootok.so=<tt>root</tt> ユーザのみ検査
+pam_cracklib.so=強力なパスワード検査
+pam_access.so=アクセス制御ファイルの検査
+pam_deny.so=常にアクセスを拒否
+pam_env.so=環境変数を設定
+pam_ftp.so=FTP 認証検査
+pam_time.so=ログイン時間を検査
+pam_group.so=グループ メンバーシップの設定
+pam_listfile.so=ファイルの内容を検査
+pam_limits.so=リソース制限を設定
+pam_mkhomedir.so=ホーム ディレクトリを作成
+pam_motd.so=本日のメッセージ ファイルを表示
+pam_permit.so=常にアクセスを許可
+pam_radius.so=RADIUS サーバの認証
+pam_rhosts.so=　<tt>.rhosts</tt> ファイルを検査
+pam_rhosts_auth.so=　<tt>.rhosts</tt> ファイルを検査
+pam_shells.so=有効なシェルを検査
+pam_unix.so=古い Unix パスワード認証
+pam_userdb.so=DBM ファイルのパスワード認証
+pam_warn.so=ログの警告
+pam_wheel.so=<tt>wheel</tt> グループの検査 
+pam_issue.so=表示<tt>/etc/issue</tt> ファイル
+pam_ldap.so=LDAP サーバの認証
+pam_unix_auth.so=Unix パスワードの認証
+pam_unix_sess.so=Unix セッションのセットアップ
+pam_unix_session.so=Unix セッションのセットアップ
+pam_unix_acct.so=Unix アカウントを確認
+pam_unix_passwd.so=Unix パスワードの変更
+pam_stress.so=アプリケーション ストレス テスト
+pam_tally.so=トラックでログインできませんでした
+pam_passwd+.so=パスワードの強度を検査
+pam_filter.so=入力/出力フィルタ
+pam_desgold.so=DESGold smartcard 認証
+pam_console.so=コンソールのみ検査
+pam_xauth.so=X 認証
+pam_stack.so=他の PAM サービスを呼び出し
+
+control_requisite=要件
+control_required=必須
+control_sufficient=十分
+control_optional=オプション
+control_desc_requisite=障害時に即座に認証を失敗させる
+control_desc_required=障害時に最後に認証を失敗させる
+control_desc_sufficient=成功時に即座に認証を完了する
+control_desc_optional=成功または失敗を無視する
+
+create_title=PAM サービスの作成
+create_header=新規の PAM サービスのオプション
+create_name=サービス名
+create_desc=説明
+create_mods=初期 PAM モジュール
+create_0=なし
+create_1=Unix 認証
+create_2=すべてのアクセスを拒否
+
+mod_edit=PAM モジュールを編集
+mod_create=PAM モジュールを追加
+mod_header=PAM モジュール オプション
+mod_name=サービス名
+mod_mod=PAM モジュール
+mod_type=サービスで使用
+mod_type_auth=認証
+mod_type_account=アカウントの確認
+mod_type_session=セッション セットアップ
+mod_type_password=パスワードの変更
+mod_control=障害レベル
+mod_args=モジュールの引数
+mod_err=モジュールを保存できませんでした
+
+pwdb_shadow=シャドー パスワード ファイルを使用しますか？
+pwdb_nullok=NULL パスワードを許可しますか？
+pwdb_md5=MD5 暗号化パスワードを使用しますか？
+pwdb_nodelay=ログインに失敗後遅延しますか？
+
+listfile_item=ファイルを検索
+listfile_item_user=ユーザ名
+listfile_item_tty=TTY
+listfile_item_rhost=リモート ホスト名
+listfile_item_ruser=リモート ユーザ名
+listfile_item_group=グループ
+listfile_item_shell=シェル
+listfile_sense=ファイルで見つかった場合
+listfile_file=検索するファイル
+listfile_onerr=ファイル エラー
+listfile_fail=失敗
+listfile_succeed=成功
+listfile_apply=検査を制限
+listfile_all=すべてのユーザ
+listfile_user=次のユーザのみ
+listfile_group=グループのみ
+
+cracklib_type=プロンプトのパスワードの種類
+cracklib_retry=失敗までの最大試行数
+cracklib_eretry=試行数がないか無効です
+cracklib_etype=パスワードの種類がないか無効です
+
+rhosts_equiv=<tt>/etc/hosts.equiv</tt> ファイルを読み取りますか？
+rhosts_rhosts=ユーザの<tt>.rhosts</tt> ファイルを読み取りますか？
+rhosts_promiscuous=<tt>+</tt> エントリをすべてのホストに許可しますか？
+rhosts_suppress=認証の失敗をログに記録しますか？
+
+env_var=変数名
+env_def=デフォルト値
+env_over=上書き値
+env_evar=変数名にスペースを入れることはできません
+
+securetty_ttys=セキュア TTY
+
+shells_shells=有効なユーザ シェル
+
+tally_deny=アクセスを拒否するまでの試行回数
+tally_reset=成功時に失敗数をリセット
+tally_edeny=失敗の試行数がないか無効です
+tally_magic=失敗数の適用<tt>root</tt>?
+tally_root=<tt>root</tt> アカウントを拒否可能にしますか？
+
+time_services=サービス
+time_ttys=TTY
+time_users=ユーザ
+time_times=アクセス時間
+time_info=すべてのフィールドは  | で分離した複数の値を含むことができ、値はワイルド カードとして * または否定辞として ! を使用できます。
+
+group_services=サービス
+group_ttys=TTY
+group_users=ユーザ
+group_times=アクセス時間
+group_groups=グループを追加
+group_info=すべてのフィールドは  | で分離した複数の値を含むことができ、値はワイルド カードとして * または否定辞として ! を使用できます。
+
+wheel_group=グループのメンバーシップを検査
+wheel_group_def=デフォルト(<tt>wheel</tt> または GID 0)
+wheel_trust=グループ メンバーが詳細認証をバイパス可能にしますか？
+wheel_deny=グループ メンバーを許可するかわりに拒否しますか？
+wheel_egroup=グループ名がないか無効です
+
+motd_file=表示するファイル
+motd_file_def=デフォルト(<tt>/etc/motd</tt>)
+motd_efile=ファイル名がないか無効です
+
+mail_nopen=ログインでメールの通知を表示しますか？
+mail_close=ログ アウトでメールの通知を表示しますか？
+mail_empty=メール ファイルが空の場合は通知しますか？
+mail_noenv= $MAIL 環境変数を設定しますか？
+mail_dir=メール スプール ディレクトリ
+mail_edir=メール スプール ディレクトリがないか無効です
+
+stack_service=PAM サービスに検査を渡す
+
+log_pam_create=PAM サービス $1 を作成しました
+log_pam_delete=PAM サービス $1 を削除しました
+log_mod_create=PAM モジュール $1 をサービス $2 に追加しました
+log_mod_modify=サービス $2 内のPAM モジュール $1 を変更しました
+log_mod_delete=サービス $2 内のPAM モジュール $1 を削除しました
+log_mod_move=サービス $3 の PAM モジュールをスワップしました
+log_mod_move_l=サービス $3内のPAM モジュール $1 と $2をスワップしました
+

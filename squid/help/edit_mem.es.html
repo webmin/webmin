@@ -1,0 +1,59 @@
+<header>Uso de Memoria</header>
+
+<b>Límite de uso de memoria</b>: Por defecto 8 MB.  <p>
+NOTA: Este parámetro no especifica la medida máxima por
+proceso. Coloca un límite en un aspecto del uso de
+memoria de Squid. Squid usa la memoria para otras cosas
+también. Tu proceso puede llegar a ser dos o tres veces
+mayor que el valor que pongas aquí.
+<p>
+Especifica la cantidad ideal de memoria a usar para:
+<ul>
+<li>Objetos En-Tránsito
+<li>Objetos Calientes
+<li>Objetos de Caché-Negativa
+</ul>
+<p>
+Los datos para estos objetos se almacenan en bloques de 4 KB.
+Este parámetro especifica el límite superior ideal de la
+medida total de bloques de 4 KB reservados. Los objetos
+En-Tránsito se llevan la prioridad mayor.
+<p>
+Los objetos En-tránsito tienen prioridad sobre los demás. Si
+se necesita espacio adicional para los datos que llegan, se
+liberan los objetos calientes y los de caché negativa. En
+otras palabras, los objetos calientes y de caché negativa
+llenan el espacio no usado que no haga falta para otros
+objetos en-tránsito.
+<p>
+Si las circustancias lo requieren, este límite puede ser
+excedido. Específicamente, si tu porcentaje de requerimientos
+entrantes requiere más de esta cantidad de memoria para
+mantener los objetos en-tránsito, Squid excederá este límite
+para satisfacer los nuevos requerimientos. Cuando la carga
+se decremente, se liberarán los bloques hasta que se alcance
+el nivel de pleamar. De ahí en adelante, se usarán los
+bloques para almacenar objetos calientes.
+<p>
+
+<b>Medida de caché NDCC (FQDN)</b>: Por defecto es 1024. Número máximo de entradas de caché de Nombre de Dominio Complétamente Calificado. <p>
+
+<b>Marca de pleamar de Memoria</b>: Por defecto es 95%. Al alcanzar esta marca de pleamar, los objetos calientes y los en tránsito se liberan de memoria. <p>
+
+<b>Marca de bajamar de Memoria</b>: Por defecto es 90%. Tras alcanzar la marca de pleamar, Squid liberará memoria hasta que el uso baje por debajo de la marca de bajamar. <p>
+
+<b>Marca de pleamar de disco</b>: Por defecto es 95%. Al alcanzar esta marca de pleamar, Squid empezará a limpiar el disco agresívamente. <p>
+
+<b>Marca de bajamar de disco</b>: Por defecto es 90%.  Tras alcanzar la marca de pleamar, Squid continuará limpiando el disco hasta llegar por debajo de esta marca de bajamar. <p>
+
+<b>Medida máxima de objeto de caché</b>: Por defecto 4096 KB. Este valor limita la medida de los objetos que se almacenarán en la caché. Cualquier cosa por encima de esta medida nunca será puesta en caché y debe de ser cargada desde el servidor original cada vez. <p>
+
+<b>Medida de caché de la dirección IP</b>: Por defecto es 1024. Número de entradas a almacenar en la caché de IP. <p>
+
+<b>Marca de pleamar de caché IP</b>: Por defecto es 95%. El punto en el cual Squid limpia las entradas de caché de IP. <p>
+
+<b>Marca de bajamar de caché IP</b>: Por defecto es 90%.  Tras empezar el vaciado de caché IP, este continuará hasta que el número de entradas en la caché IP caiga por debajo de este porcentaje. <p>
+
+<hr>
+
+

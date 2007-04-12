@@ -1,0 +1,9 @@
+<header>Temps d'inactivité avant la mise en attente</header>
+Défini le temps d'inactivité avant que le disque se place dans un état d'attente (le disque cesse de tourner).<p>
+
+Cette valeur est utiliser par le disque pour déterminer combien de temps d'attente (sans activité du disque) avant d'arrêter le moteur du disque, et ainsi économiser l'énergie.<br>
+Dans certaine circonstances, le disque peut prendre jusqu'à 30 secondes pour redémarrer et répondre à a un accès au disque, mais la majorité des disques sont plus rapide.<p>
+
+L'encodage de la valeur est particulière.  Une valeur de 0 signifie que cette option est inutilisé.  Une valeur entre 1 et 240 spécifie le multiple de 5 secondes d'attente.  Ainsi le temps d'attente va de 5 secondes à 20 minutes.<br>
+Les valeurs entre 241 et 251 représente les unités de 1 à 11 de bloc de 30 minutes d'attente, ce qui va de 30 minutes à 5 heures et demi.  Une valeur de 252 ramène le temps à 21 minutes, 253 une valeur spécifié par le fabriquant du disque et 255 21 minutes et 15 secondes.
+<hr>

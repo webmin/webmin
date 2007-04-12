@@ -1,0 +1,6 @@
+postfix_control_command=Vollst&auml;ndiger Pfad zum Postfix Kontrollprogramm,0
+postfix_config_command=Vollst&auml;ndiger Pfad zum Postfix Konfigurationsprogramm,0
+postfix_config_file=Vollst&auml;ndiger Pfad zur Postfix Konfigurationsdatei,0
+postfix_aliases_table_command=Vollst&auml;ndiger Pfad zum Befehl zum Erstellen von Postfix-Aliasen,0
+postfix_newaliases_command=Vollst&auml;ndiger Pfad zum &quot;newaliases&quot; (Sendmail Kompatibilit&auml;t) Befehl,0
+postfix_lookup_table_command=Vollst&auml;ndiger Pfad zum Lookup-Tabellen Management-Befehl (`postmap'),0

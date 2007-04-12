@@ -1,0 +1,15 @@
+<header>Cluster Copy Files</header>
+
+This module allows you to set up scheduled transfers of files from a master
+server to other servers in a Webmin cluster. This can be useful for distributing
+files like <tt>/etc/hosts</tt>, <tt>httpd.conf</tt> and others for which no
+networking protocol like NIS or LDAP is available. <p>
+
+The module's main page lists all defined scheduled copies, and has a link for
+creating a new one. For each copy you can define the source files, destination
+directory, target servers, and times to run at. The targets must have first
+been created
+in the <b>Webmin Servers Index</b> module with a login and password. <p>
+
+<hr>
+

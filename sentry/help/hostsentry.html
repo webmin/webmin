@@ -1,0 +1,41 @@
+<header>Hostsentry Configuration</header>
+
+Hostsentry is a host based intrusion detection tool that performs login
+anomaly detection. This means that it monitors users logging into and out
+of your server and logs suspicious behaviour, as defined by the options
+chosen on this page. <p>
+
+The available options are :
+<ul>
+<li><b>Logins record file</b><br>
+    The file on your system in which logins and logouts are recorded. Generally,
+    this option should not be changed. <p>
+
+<li><b>Users to ignore logins by</b><br>
+    Any users listed in this field will not have their logins monitored by
+    Hostsentry. <p>
+
+<li><b>Hostsentry modules in processing order</b><br>
+    Hostsentry has a modular design, in which each module performs a specific
+    type of login anomaly detection. This section allows you to choose which
+    modules are used, and the order in which they are run to process logins
+    and logouts. <p>
+
+<li><b>Hosts not to consider foreign</b><br>
+    If the 'Detect login from foreign domain' module is enabled, all hosts
+    except those in this field will be considered foreign and thus subject
+    to reporting. <p>
+
+<li><b>Hosts to trust multiple logins from</b><br>
+    If the 'Detect multiple similtaneous logins' module is enabled, two or
+    more logins by the same user at the same time from a host not in this
+    list will be reported. <p>
+</ul>
+
+At the bottom of the page is a button for either starting Hostsentry (if it
+is not running), or stopping it (if it is running). Because Hostsentry runs
+as a background process (or daemon), if it is not running no monitoring of
+logins and logouts will be done. <p>
+
+<hr>
+

@@ -1,0 +1,31 @@
+<header>Åtkomstkontroll</header>
+
+<b>Listor för åtkomstkontroll</b>: Åtkomstlistor (ACL:er) är listor med
+villkor som ska matchas av reguljära uttryck. En åtkomstlista kan också vara
+en fil där varje rad innehåller ett reguljärt uttryck eller en post. Rutan för
+åtkomstlistor på denna sida har flera ändringsbara fält, och det går också att
+lägga till åtkomstlistorr.
+
+<p>Följande fält finns:
+
+<p><em>Namn</em> är åtkomstlistans identitet. När man skapar en
+<b>proxy-begränsning</b> är det detta namn som definierar vad som begränsas.
+
+<p><em>Typ</em> är den informationstyp som åtkomstlistan ska matchas mot.
+
+<p><em>Matchar ...</em> är den adress, port, URL, användare, etc som
+åtkomstlistan ska matcha.
+
+<p><b>Proxy-begränsningar</b>: Proxy-begränsningar är regler som släpper
+igenom eller spärrar en förfrågning baserat på om dess åtkomstlista matchar
+förfrågningen. Det finns tre fält i denna ruta:
+
+<p><em>Åtgärd</em> är antingen <em>tillåt</em> eller <em>spärra</em>.
+
+<p><em>Listor</em> är de åtkomstlistor som förfrågningen matchas mot för att se om den ska tillåtas eller spärras. Om ACL:en föregås av ett utropstecken kommer den att negeras, dvs allt <em>utom</em> poster i denna ACL kommer att tillåtas eller spärras.
+
+<p><em>Flytta</em> gör att du kan ändra ordningen på listans begränsningar. Ordningen är viktig, eftersom Squid bara läser i listan tills den hittar något som matchar.
+
+<p><b>ICP-begränsningar</b>: Denna ruta används för att begränsa ICP-förfrågningar.  ICP-förfrågningar är signaler från andra cacher. Fälten fungerar likadant som för <b>Proxy-begränsningar</b>.
+
+<hr>

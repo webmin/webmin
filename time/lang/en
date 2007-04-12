@@ -1,0 +1,60 @@
+index_title=System Time
+index_timeserver=Time Server
+index_addresses=Timeserver hostnames or addresses
+index_zone=Timezone
+index_eformat=Unrecognized <tt>hwclock</tt> output format
+index_sched=Synchronize on schedule?
+index_schedyes=Yes, at times below ..
+index_sync=Sync and Apply
+index_hardware2=Set hardware time too
+index_tzheader=Time Zone
+index_tz=Change timezone to
+
+action_save=Save
+action_apply=Apply
+action_sync=Set system time to hardware time
+action_sync_s=Set hardware time to system time
+action_timeserver_sys=Sync system time
+action_timeserver_hw=Sync hardware time
+action_savezone=Change timezone
+
+acl_sys=User can edit system time?
+acl_hw=User can edit hardware time?
+acl_timezone=User can set timezone?
+acl_ntp=Can synchronize with time server?
+acl_yes=Yes
+acl_no=No
+acl_error=You have access to the system time module, but you can't edit neither system time or hardware time
+acl_nosys=You are not allowed to edit system time
+acl_nohw=You are not allowed to edit hardware time
+acl_nontp=You are not allowed to synchronized with a time server
+
+sys_title=System Time
+hw_title=Hardware Time
+
+day=Day
+month=Month
+date=Date
+hour=Hour
+year=Year
+
+error_cnf=Error : $1 command not found
+error_hw=Can't set the hardware time : $1
+error_sync=Can't sync with system time : $1
+error_ediff=Time server different with local time is too large : $1 days
+error_entp=NTP time synchronization failed : $1
+
+log_set_date=Set system time to $1
+log_set_hwclock=Set hardware clock to $1
+log_remote_date=Fetched system time from $2
+log_remote_hwclock=Fetched hardware time from $2
+log_remote_date_l=Fetched system time $1 from $2
+log_remote_hwclock_l=Fetched hardware time $1 from $2
+log_sync=Synchronised system time with hardware time
+log_sync_s=Synchronised hardware time with system time
+log_timezone=Changed timezone to $1
+
+timezone_err=Failed to save timezone
+timezone_ecannot=You are not allowed to change the timezone
+timezone_enone=No zone selected
+

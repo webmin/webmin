@@ -1,0 +1,73 @@
+index_title=RAID w&nbsp;Linuksie
+index_none=Nie skonfigurowano urz±dzeñ RAID
+index_add=Utwórz urz±dzenie RAID poziomu:
+index_return=Urz±dzenia RAID
+index_emdstat=W&nbsp;systemie brak pliku stanu RAID w&nbsp;kernelu $1. Prawdopodobnie Twój kernel nie obs³uguje RAID.
+index_emkraid=W&nbsp;systemie nie zainstalowano pakietu narzêdzi RAID.
+
+linear=Z³±czenie (liniowo)
+raid0=Rozdzielenie (RAID0)
+raid1=Powielenie (RAID1)
+raid4=Z&nbsp;parzysto¶ci± (RAID4)
+raid5=Nadmiarowy (RAID5)
+
+create_title=Utwórz urz±dzenie RAID
+create_header=Opcje urz±dzenia RAID
+create_device=Plik urz±dzenia
+create_level=Poziom RAID
+create_disks=Partycje w&nbsp;RAID
+create_spares=Partycja zapasowa
+create_pdisk=Partycja parzysto¶ci
+create_pauto=Automatycznie
+create_nodisks=Brak wolnych partycji dostêpnych dla RAID.
+create_super=Trwa³y superblok?
+create_parity=Algorytm parzysto¶ci
+create_chunk=Rozmiar fragmentu
+create_force=Wymusiæ inicjalizacjê RAID?
+create_rdev=Urz±dzenie RAID $1
+create_err=Nie uda³o siê utworzyæ RAID
+create_edisks=Nie wybrano partycji
+create_edisks2=Dla powielania trzeba wybraæ co najmniej 2 partycje
+create_espare=Partycja zapasowa $1 nie mo¿e byæ jednocze¶nie partycj± RAID
+create_epdisk=Partycja parzysto¶ci nie mo¿e byæ jednocze¶nie partycj± RAID
+
+view_title=Urz±dzenie RAID
+view_header=Opcje urz±dzenia RAID
+view_device=Plik urz±dzenia
+view_level=Poziom RAID
+view_status=Stan
+view_mounted=Aktywne i&nbsp;zamontowane w&nbsp;$1
+view_active=Aktywne
+view_inactive=Nieaktywne
+view_super=Trwa³y superblok?
+view_parity=Algorytm parzysto¶ci
+view_chunk=Rozmiar fragmentu
+view_stop=Dezaktywuj
+view_start=Aktywuj
+view_mkfs=Utwórz system plików ext2 ..
+view_disks=Partycje w&nbsp;RAID
+view_spares=Partycje zapasowe
+view_size=U¿yteczny rozmiar
+view_resync=Procent odtworzenia
+view_down=(nieczynne)
+view_cannot=Tego urz±dzenia RAID nie mo¿na zmieniaæ, gdy¿ jest aktualnie zamontowane.
+
+mkfs_title=Utwórz system plików
+mkfs_header=Za pomoc± tego formularza mo¿esz utworzyæ nowy system plików Linuksa EXT2 na $1. <b>Wszystkie</b> istniej±ce dane zostan± usuniête!
+mkfs_options=Opcje nowego systemu plików Linuksa
+mkfs_err=Nie uda³o siê utworzyæ systemu plików
+mkfs_exec=Wykonywanie polecenia $1 ..
+mkfs_failed=.. nie powiod³o siê!
+mkfs_ok=.. zakoñczone.
+
+emkraid=<tt>mkraid</tt> nie powiod³o siê&nbsp;: $1
+eraidstop=<tt>raidstop</tt> nie powiod³o siê&nbsp;: $1
+eraidstart=<tt>raidstart</tt> nie powiod³o siê&nbsp;: $1
+eforce=Musisz wymusiæ inicjalizacjê tego RAID&nbsp;: $1
+
+log_create=Utworzono $1 raid device $2
+log_stop=Dezaktywowano urz±dzenie RAID $1
+log_start=Aktywowano urz±dzenie RAID $1
+log_delete=Usuniêto urz±dzenie RAID $1
+log_mkfs=Utworzono $1 system plików na $2
+

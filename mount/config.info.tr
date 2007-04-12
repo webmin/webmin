@@ -1,0 +1,10 @@
+line1=Yapýlandýrýlabilir seçenekler,11
+browse_server=Tarama listesinin istenildiði sunucu,3,localhost
+long_fstypes=Uzun dosya sistemi biçimindeki isimleri kullan,1,1-Evet,0-Hayýr
+sort_mode=Dosya sistemlerini sýralam biçimi,1,2-Mount noktasý,1-Tip,0-Dosyadaki sýra
+line2=Sistem yapýlandýrmasý,11
+fstab_file=Açýlýþta baðlanacak olan dosya sistemlerinin bulunduðu dosya,0
+auto_file=NFS otomatik baðlantý dosyasý,3
+autofs_file=Çekirdek otomatik baðlantý dosyasý,3
+smbclient_path=smbclient komutunun tam yolu,3
+nmblookup_path=nmblookup komutunun tam yolu,3

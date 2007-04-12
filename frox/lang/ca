@@ -1,0 +1,147 @@
+index_title=Proxy FTP Frox
+index_econf=No s'ha trobat al sistema el fitxer $1 de configuració de Frox. Pot ser que no estigui instal·lat o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_ecmd=No s'ha trobat al sistema el programa servidor $1 de Frox. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+#index_version=Frox versió $1
+index_apply=Aplica la Configuració
+index_applydesc=Fes clic sobre aquest botó per activar la configuració actual de Frox enviant un senyal HUP al seu procés.
+index_stop=Atura el Servidor Frox
+index_stopdesc=Fes clic sobre aquest botó per tancar el procés servidor de proxy FTP Frox. Les connexions FTP encaminades a través d'aquest servidor deixaran de funcionar fins que es reiniciï el servidor.
+index_start=Inicia el Servidor Frox
+index_startdesc=Fes clic sobre aquest botó per iniciar el procés servidor de proxy FTP Frox. Si has configurat correctament el tallafocs, les connexions FTP encaminades a través d'aquest servidor no funcionaran fins que Frox s'estigui executant.
+index_inetd=Frox està configurat per executar-se des d'inetd, així que no es pot iniciar ni aturar fent servir aquest mòdul.
+index_return=a l'índex de mòduls
+
+net_title=Opcions de Xarxa
+net_header=Opcions relatives a la xarxa
+edit_Listen=Escolta les adreces
+net_all=Totes
+edit_Port=Escolta el port
+edit_BindToDevice=Escolta la interfície
+edit_FromInetd=Executa'l des d'inetd
+edit_NoDetach=Mode d'execució del servidor
+net_bg=En segon pla
+net_fg=En primer pla
+net_none=Cap
+edit_ResolvLoadHack=Prova l'adreça a resoldre
+edit_FTPProxy=Servidor proxy FTP (nom:port)
+edit_TcpOutgoingAddr=Adreces origen de les connexions de sortida
+edit_PASVAddress=Adreces origen de les connexions PASV
+net_err=No he pogut desar les opcions de xarxa
+net_ehost=Hi falta el nom de host o adreça IP, o bé és invàlida
+net_eport=Hi falta el número de port o bé és invàlid
+net_eproxy=Hi falta el servidor proxy adreça:port o bé és invàlid
+net_eip=Hi falta l'adreça IP o bé és invàlida
+net_eresolv=Hi falta el nom del DNS o bé és invàlid
+net_eiface=Hi falta el nom de la interfície o bé és invàlida
+
+general_title=Opcions Generals
+general_header=Opcions generals d'usuari,grup i fitxers Frox
+edit_User=Executa com a usuari Unix
+edit_Group=Executa com a grup Unix
+edit_WorkingDir=Directori de fitxers temporals
+edit_DontChroot=Chroot a directori
+edit_LogLevel=Nivell de registre
+edit_PidFile=Grava el PID al fitxer
+general_nowhere=Enlloc
+general_err=No he pogut desar les opcions generals
+general_edir=Hi falta el directori o bé no existeix
+general_elevel=Hi falta el nivell de registre o bé no és un número
+general_epidfile=Hi falta el camí o bé no és un camí absolut
+edit_euser=Hi falta el nom de l'usuari Unix o bé és invàlid
+edit_egroup=Hi falta el nom del grup Unix o bé és invàlid
+edit_efrom=Hi falta el número de port inicial o bé és invàlid
+edit_eto=Hi falta el número de port final o bé és invàlid
+edit_erange=El port inicial ha de ser menor que el port final
+
+ftp_title=Opcions del Protocol FTP
+ftp_header=Opcions de proxy del protocol FTP
+edit_APConv=Converteix les connexions actives a passives
+edit_PAConv=Converteix les connexions passives a actives
+edit_BounceDefend=Bloqueja les peticions de dades als ports baixos
+edit_SameAddress=Permet connexions de dades només des de l'adreça client
+edit_AllowNonASCII=Permet noms de fitxer no ASCII
+edit_TransparentData=Fes també proxy de les connexions de dades
+edit_ControlPorts=Rang de ports de control de sortida
+edit_PassivePorts=Rang de ports passius de sortida
+edit_ActivePorts=Rang de ports actius de sortida
+edit_from=De
+edit_to=a
+ftp_err=No he pogut desar les opcions del protocol FTP
+ftp_econv=No es pot activar al mateix temps la conversió d'activa a passiva i de passiva a activa!
+
+cache_title=Opcions del Cau
+cache_header=Opcions del cau i de rastreig de virus
+cache_module=Mode del cau
+cache_none=Desactivat
+cache_local=Fes servir el directori local de fitxers temporals
+cache_http=Fes servir el servidor proxy HTTP...
+edit_CacheSize=Mida del cau local
+edit_HTTPProxy=nom:port del servidor proxy
+edit_MinCacheSize=Mida mínima a desar al cau
+edit_StrictCaching=Mapejat estricte de noms de fitxer al cau
+edit_CacheOnFQDN=Consulta els noms complets del servidor per posar al cau
+edit_CacheAll=Posa també al cau les descàrregues no anònimes
+edit_VirusScanner=Programa de rastreig de virus
+edit_VSOK=Estat de sortida OK del rastrejador de virus
+edit_VSProgressMsgs=Segons entre els missatges de progrés
+cache_vnone=Cap (rastreig desactivat)
+cache_err=No he pogut desar les opcions del cau
+cache_esize=Hi falta la mida o bé és invàlida
+cache_eproxy=Hi falta el nom:port o bé és invàlid
+cache_escanner=Hi falta el programa de rastreig o bé és invàlid
+cache_eint=Hi falta o bé no és numèric
+
+acl_title=Control d'Accés
+acl_header=Opcions de control d'accés i de limitació de recursos
+edit_DoNTP=Accepta també les connexions de proxy no transparents
+edit_NTPAddress=host:port local de les connexions no transparents
+acl_same=El mateix que el port principal
+edit_Timeout=Temps límit abans de tancar la connexió
+edit_MaxForks=Nombre màxim de processos
+edit_MaxForksPerHost=Nombre màxim de processos per client
+edit_MaxTransferRate=Ritme màxim de transferència
+acl_bps=bytes/seg
+acl_acl=Llista de control d'accés
+acl_action=Acció
+acl_src=Adreça/xarxa client
+acl_dest=Adreça/xarxa servidora
+acl_ports=Ports de destinació
+acl_any=Qualsevol
+acl_err=No he pogut desar les opcions de control d'accés
+acl_etimeout=Hi falta el nombre de segons o bé és invàlid
+acl_eforks=Hi falta el nombre de processos o bé és invàlid
+acl_erate=Hi falten els bytes per segon o bé són invàlids
+acl_entp=Hi falta l'adreça:port de proxy o bé és invàlid
+acl_esrc=Hi falta l'adreça client, xarxa/mida o xarxa/màscara, o bé és invàlida a l'ACL $1
+acl_edest=Hi falta l'adreça del servidor, xarxa/mida o xarxa/màscara a l'ACL $1
+acl_eports=Llista de de ports o rangs de ports invàlida a l'ACL $1
+acl_enone=No s'ha introduït cap entrada a la llista de control d'accés
+
+iptables_title=Configuració del Redireccionament de Ports
+iptables_inst0=No sembla que les ordres del tallafoc IPtables necessàries per configurar el redireccionament de ports estiguin instal·lades al sistema. Mira el mòdul <a href='$1'>Tallafocs Linux</a> per a més detalls.
+iptables_inst1=No sembla que el mòdul del <a href='$1'>Tallafocs Linux</a> estigui completament configurat. Aquest mòdul fa servir aquest altre per tal de configurar el redireccionament de ports.
+iptables_desc=Per tal que Frox funcioni adequadament, el trànsit encaminat a través del sistema sobre el port $1 s'ha de reenviar al port $2, que és el que escolta Frox. Això es pot fer afegint una regla IPtables al tallafocs, assumint que aquest està gestionat pel mòdul <a href='$3'>Tallafocs Linux</a>.
+iptables_disabled=El redireccionament de ports està desactivat
+iptables_enabled=El redireccionament de ports està activat per als clients de la xarxa $1
+iptables_enabled2=El redireccionament de ports està activat per als clients de la interfície $1
+iptables_save=Desa i Aplica
+iptables_err=No he pogut desar el redireccionament de ports
+iptables_enet=Hi falta l'adreça de xarxa o bé és invàlida (hauria de ser com 192.168.1.0/24)
+iptables_eapply=L'aplicació ha fallat: $1
+iptables_eiface=Hi falta la interfície de xarxa o bé és invàlida
+
+start_err=No he pogut iniciar Frox
+stop_err=No he pogut aturar Frox
+stop_egone=Ja no està en execució!
+
+log_net=He canviat les opcions de xarxa
+log_general=He canviat les opcions generals
+log_ftp=He canviat les opcions del protocol FTP
+log_cache=He canviat les opcions del cau
+log_acl=He canviat les opcions de control d'accés
+log_iptables_1=He activat el redireccionament de ports
+log_iptables_2=He desactivat el redireccionament de ports
+log_stop=He aturat el servidor Frox
+log_start=He iniciat el servidor Frox
+log_apply=He aplicat la configuració
+

@@ -1,0 +1,2 @@
+default_mode=缺省列表风格,4,last-上次选择,tree-进程树,user-按用户名排序,size-按大小排序,cpu-按CPU排序,search-搜索表格,run-运行表格
+ps_style=ps 命令风格,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS

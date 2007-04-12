@@ -1,0 +1,57 @@
+<header>Subsistema de ACL de DHCPd</header>
+
+<h3>OBJETIVOS:</h3>
+Los principales objetivos del subsistema de ACL es proporcionar un mecanismo 
+de control de acceso potente, flexible y extendible, a diferentes objetos 
+de la configuración de dhcpd. Estos objetos son redes compartidas, subredes, 
+grupos de máquinas y máquinas.<p>
+
+El subsistema de ACL también le permite controlar algunas otras
+características, tales como: nombres únicos de objeto, aplicar los cambios
+de configuración, ver y borrar concesiones de dhcpd.<p>
+
+<h3>CONCEPTOS:</h3>
+Se puede considerar el fichero de configuración de dhcpd como una
+estructura en árbol. Cada nodo de este árbol representa una configuración
+de diferentes objetos DHCP (fig. 0)<p>
+
+El subsistema de ACL tiene dos niveles de permisos:
+<ul>
+<li>global: lectura, escritura, creación.</li>
+<li>por objeto: lectura, escritura.</li>
+</ul>
+
+Existen permisos globales para cada tipo de objetos (máquinas, grupos,
+subredes, redes compartidas) y controlan las operaciones de todo un
+conjunto de objetos del mismo tipo:
+<ul type=circle>
+<li>Creación global</li>
+<li>Lectura global</li>
+<li>Escritura global</li>
+</ul>
+
+Los permisos por objeto proporcionan un mecanismo de control de acceso más
+flexible. Existen ACL de los permisos por objeto para cada objeto
+individual. En la actualidad sólo están implementadas las ACL porobjeto
+para máquinas y subredes:
+<ul type=circle>
+<li>Lectura por objeto</li>
+<li>Escritura por objeto</li>
+</ul>
+
+El subsistema de ACL puede funcionar en 4 diferentes niveles (o modos) de
+seguridad:
+<p>
+
+<img SRC="images/ctree0.gif" ALT="árbol de configuración de dhcpd, nivel de
+seguridad 0, comprobar los permisos de subnetX" height=229 width=314>
+
+<img SRC="images/ctree1.gif" ALT="árbol de configuración de dhcpd, nivel de
+seguridad 1, comprobar los permisos de subnetX" height=229 width=314>
+
+<img SRC="images/ctree2.gif" ALT="árbol de configuración de dhcpd, nivel de
+seguridad 2, comprobar los permisos de subnetX" height=229 width=314>
+
+<img SRC="images/ctree3.gif" ALT="árbol de configuración de dhcpd, nivel de
+seguridad 3, comprobar los permisos de subnetX" height=229 width=314>
+

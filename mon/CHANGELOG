@@ -1,0 +1,2 @@
+---- Changes since 1.250 ----
+The status of the MON server can be displayed by Webmin using the monshow command.

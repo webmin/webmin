@@ -1,0 +1,18 @@
+---- Changes since 1.140 ----
+Added an option to create a share's directory when adding the share.
+---- Changes since 1.150 ----
+Added a page for binding the Samba server to a Windows domain.
+---- Changes since 1.160 ----
+Added a new options page for configuring Winbind-related settings.
+---- Changes since 1.180 ----
+Added an option on the user synchronization page for setting the group SID or RID for new users.
+---- Changes since 1.200 ----
+The smbstatus and smbpasswd programs are now run with an option to specify the Samba configuration file, for sites running multiple Samba instances or using a non-standard config file.
+---- Changes since 1.220 ----
+When a user is re-named under Samba 3, it is deleted and re-added to the Samba users database, as the pdbedit command does not support renaming.
+---- Changes since 1.250 ----
+Added an icon for manually editing the Samba configuration file.
+---- Changes since 1.260 ----
+Added checkboxes and a button to the View Connections page for disconnecting multiple users at once.
+---- Changes since 1.270 ----
+Added checkboxes and a button for deleting multiple shares at once.

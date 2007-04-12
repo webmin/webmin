@@ -1,0 +1,52 @@
+<header>Disk Quotas</header>
+
+<h3>Introduction</h3>
+Quotas are a method of controlling how much disk space users and groups
+can use. For each filesystem you can place limits on how much disk space
+and how many files each user may use. Some Unix systems may also allow you
+to limit the space and files used by all members of some group. <p>
+
+Quotas can only be setup for local Unix filesystems. NFS filesystems mounted
+from other systems use the quotas from the server, if any. Non Unix filesystems
+like MS-DOS or ISO9660 cannot support quotas at all. <p>
+
+For each user four limits are imposed :
+<dl>
+<dt><b>Soft block limit</b>
+<dd>The number of disk blocks allowed before a warning message is displayed.
+<dt><b>Hard block limit</b>
+<dd>The maximum number of blocks that the user's file may occupy.
+<dt><b>Soft file limit</b>
+<dd>The number of files allowed before a warning message is displayed.
+<dt><b>Hard file limit</b>
+<dd>The maximum number of files that the user may own.
+</dl>
+Disk blocks are typically 512 or 1024 bytes in size, depending on the
+operating system. When computing quotas, all file sizes are rounded up to
+the nearest block. Thus even an empty file uses at least on block. <p>
+
+For the purpose of file quotas, every directory, device, symbolic link
+or normal file counts towards the maximum number of files a user may own.
+Technically, the file quota is actually a quota on <i>inodes</i>. <p>
+
+<h3>The Disk Quotas Module</h3>
+The main page of this module shows a list of local filesystems that
+can support quotas. If quotas are currently enabled for a filesystem, you
+may click on its path to display the quotas for each user. If not, clicking
+on <tt>Enabled Quotas</tt> will activate quotas for that filesystem. <p>
+
+<if $gconfig{'os_type'} =~ /linux/>
+The Linux operating system does not allow quotas to be turned on unless
+the filesystem has the <tt>Use Quotas</tt> option set in the Disks and
+Filesystems module. If none of your filesystems have this option set then
+none will be listed on the main page. <p>
+</if>
+
+Below the list of filesystems is a button for displaying all quotas for
+a selected user. This will only be displayed if at least one filesystem has
+user quotas enabled. Similarly, if at least one filesystem has group quotas
+enabled there will be a button for displaying all quotas for a selected
+group. <p>
+
+<hr>
+

@@ -1,0 +1,19 @@
+<header>Control de Acceso</header>
+
+Dependiendo de la versión de SSH que esté usando, se pueden configurar una
+o dos clases de control de acceso. <p>
+
+Para el control de acceso por máquina, puede permitir o denegar máquinas
+introduciendo una lista de nombres de máquina (como <tt>www.foo.com</tt>),
+direcciones IP o patrones de nombre (como <tt>*.foo.com</tt>). Sin embargo, 
+esta clase de control de acceso no está soportada por todas las versiones 
+del servidor SSH. <p>
+
+Para el control de acceso por usuario o grupo, los nombres de usuario
+pueden ser tanto cuentas locales (como <tt>jcameron</tt>), patrones de
+cuentas (como <tt>jcam*</tt>) o una combinación de nombre de usuario y
+máquina cliente (como <tt>jcameron@www.foo.com</tt>). Los grupos permitidos
+o denegados también pueden ser nombres de grupo normales o patrones de
+grupos, pero no pueden incluir nombres de máquinas. <p>
+
+<hr>

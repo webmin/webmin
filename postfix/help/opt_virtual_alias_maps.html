@@ -1,0 +1,24 @@
+<header>Domain mapping lookup tables</header>
+
+<center><tt>virtual_maps</tt></center>
+<hr>
+
+This parameter specifies optional lookup tables to redirect specific addresses
+or even complete domains to another address. This is typically used to
+implement virtual domain support.
+
+<p>
+
+By default, no address redirection is done. 
+
+<p>
+
+Examples:
+<ul>
+<li><tt>dbm:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, nis:virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, netinfo:/virtual</tt>
+</ul>
+
+<hr>

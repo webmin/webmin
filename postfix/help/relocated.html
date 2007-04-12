@@ -1,0 +1,32 @@
+<header>Relocated Mapping</header>
+
+
+The optional relocated file provides the information that is used in &quot;user
+has moved to new_location&quot; bounce messages.
+
+<p>
+
+Table lookups are case insensitive.
+
+<p>
+
+The &quot;Maps to...&quot; field specifies contact information such as an email
+address, or perhaps a street address or telephone number. It's one of the
+following:
+<ul>
+<li><tt>user@domain</tt>: Matches <tt>user@domain</tt> . This form has precedence over
+all other forms.
+
+<li><tt>user</tt>: Matches <tt>user@site</tt> when site is <tt>$myorigin</tt>,
+when site is listed in <tt>$mydestination</tt>, or when site is listed in
+<tt>$inet_interfaces</tt> .
+
+<li><tt>@domain</tt>: Matches every address in domain. This form has the lowest
+precedence.
+</ul>
+
+ADDRESS EXTENSION: When the search fails, and the address localpart contains
+the optional recipient delimiter (e.g., <tt>user+foo@domain</tt>), the search
+is repeated for the unextended address (e.g. <tt>user@domain</tt>).
+
+<hr>

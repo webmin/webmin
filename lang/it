@@ -1,0 +1,279 @@
+main_return=Torna a $1
+main_homepage=Pagina principale
+main_feedback=Segnalazione
+main_switch=Cambia utente
+main_logout=Esci
+main_version=Versione $1 su $2 ($3)
+main_title=Webmin $1 on $2 ($3)
+main_title2=Webmin
+main_none=Non hai accesso a nessun modulo Webmin
+main_skill=Skill level
+main_readonly=(Read-only mode)
+
+link_essl=Il modulo The Net::SSLeay Perl &#232; richiesto per le connessioni HTTPS non &#232; installato nel sistema
+
+category_servers=Servers
+category_hardware=Hardware
+category_system=Sistema
+category_webmin=Webmin
+category_net=Rete
+category_syslet=Syslets
+category_cluster=Cluster
+category_info=Informazioni
+category_=Altro
+
+longcategory_servers=Moduli per la configurazione web, email, FTP ed altri server
+longcategory_hardware=Moduli per configurazioen stampanti, dischi ed altro hardware
+longcategory_system=Moduli per impostazioni utente, filesystems, cron jobs ed altro
+longcategory_webmin=Moduli per la configurazioen di Webmin
+longcategory_net=Moduli per la configurazione della rete e dei servizi di rete
+longcategory_cluster=Moduli per gestire server multipli da una singola interfaccia
+longcategory_info=Moduli per visualizzare informazioni sul sistema
+longcategory_=Altri moduli
+
+header_webmin=Indice Webmin
+header_module=Indice moduli
+header_help=Aiuto
+header_config=Configurazione moduli
+header_servers=Server Webmin
+
+index=Index
+yes=Si
+no=No
+save=Salva
+create=Crea
+elimina=Elimina
+find=Trova
+error=Errore
+error_previous=Pagina precedente
+efilewrite=Errore di scrittura su $1 : $2
+efileclose=Errore di scrittura su $1 chiudendo: $2
+efileopen=Errore di lettura $1 per scrittura: $2
+default=Default
+modify=Modifica
+reset=Reset
+ok=Ok
+cancel=Cancella
+helpsearch=Cerca documentazione
+switch_remote_euser=L'utente $1 non esiste
+programname=Webmin
+
+chooser_title1=Scegli file
+chooser_title2=Scegli directory
+chooser_dir=Directory di $1
+chooser_ok=Ok
+chooser_date=Scegli data
+
+users_title1=Scegli utenti
+users_title2=Scegli utenti
+users_sel=Utenti selezionati
+users_all=Tutti gli utenti
+users_ok=Ok
+users_cancel=Cancella
+users_clear=Pulisci
+
+groups_title1=Scegli gruppi
+groups_title2=Scegli gruppo
+groups_all=Tutti i gruppi
+groups_sel=Gruppi selezionati
+groups_ok=Ok
+groups_cancel=Cancella
+groups_clear=Pulisci
+
+modules_title1=Scegli moduli
+modules_title2=Scegli modulo
+modules_sel=Moduli selezionati
+modules_all=Tutti i moduli
+modules_ok=Ok
+modules_cancel=Cancella
+modules_clear=Pulisci
+
+config_ecannot=Non hai i permessi per configurare questo modulo
+config_title=Configurazione
+config_dir=Per il modulo $1
+config_header=Opzioni di configurazione per $1
+config_none=Nessuno
+config_eaccess=Non hai i permessi per accedere a questo modulo
+config_err=Errore saltavaggio configurazione
+config_nochange=Non cambiare
+config_setto=Imposta a 
+config_ewebmin=Parametri del tipo 14 funzionano solo in Webmin
+
+help_err=Errore nella consultazione dell'aiuto
+help_epath=Percorso dell'errore mancante non corretto
+help_efile=Errore nella letura del file help $1
+help_eheader=Sezione  &lt;header&gt; mancante
+help_einclude=Errore di inclusione $1
+help_eif=$1 errore : $2
+help_eexec=$1 errore : $2
+
+referer_title=Allarme di sicurezza
+referer_warn=<b>ATTENZIONE!</b> Webmin ha ricevuto richiesta per il programma $2 dal referer $1, il quale sembra esterno a questo server. Potrebbe trattarsi di un tentativo di esecuzione di codice dannoso. Contattare l'amministratore.
+referer_warn_unknown=<b>ATTENZIONE!</b> Webmin ha ricevuto richiesta per il programma $1 &#232; da un referer sconosciuto, il quale sembra esterno a questo server. Potrebbe trattarsi di un tentativo di esecuzione di codice dannoso. Contattare l'amministratore. 
+referer_ok=Continua esecuzione programma Webmin
+referer_again=Non mostrare questo messaggio in futuro
+
+session_header=Login a Webmin
+session_mesg=Inserisci nome utente e password per il login al server Webmin su $1
+session_mesg2=Inserisci nome utente e password per il login
+session_user=Nome utente
+session_pass=Password
+session_login=Login
+session_clear=Pulisci
+session_failed=Errore di login. Reinserire dati. 
+session_logout=Logout eseguito. Per entrare di nuovo usare questo form.
+session_timed_out=Timeout di sessione dopo $1 minuti di inattivit&#224;
+session_save=Ricorda login permanentemente
+
+pam_header=Login a Webmin
+pam_mesg=Rispondi alla domanda per il login al server Webmin su $1.
+pam_mesg2=Rispondi alla domanda per il login
+pam_login=Continua
+pam_restart=Restart
+
+acl_root=Directory root per la scelta del file
+acl_home=Home directory dell'utente
+acl_uedit=Utenti visibili nella scelta dell'utente
+acl_uedit_all=Tutti gli utenti
+acl_uedit_none=No utenti
+acl_uedit_only=Solo utenti
+acl_uedit_except=Tutti tranne gli 
+acl_uedit_uid=Utenti con UIDs nel range
+acl_uedit_group=Utenti con gruppo
+acl_gedit=Gruppi visibili nel gruppo di chi sceglie
+acl_gedit_all=Tutti i gruppi
+acl_gedit_none=Nessun gruppo
+acl_gedit_only=Solo gruppi
+acl_gedit_except=Tutti tranne i gruppi
+acl_gedit_gid=Gruppi con GIDs nel range
+acl_feedback=Pu&#242; iniviare emal di segnalazione?
+acl_feedback2=Si
+acl_feedback1=Si, senza file di configurazione
+acl_feedback0=No
+acl_feedback3=Si, con file di configurazione
+acl_rpc=Accettare chiamate RPC?
+acl_rpc2=Solo per  <tt>root</tt> o <tt>admin</tt>
+acl_rpc1=Si
+acl_rpc0=No
+acl_readonly=Utente in modalit&#224; demo?<br>(alcuni moduli potrebebro non essere disponibili)
+
+month_1=Gennaio
+month_2=Febbraio
+month_3=Marzo
+month_4=Aprile
+month_5=Maggio
+month_6=Giugno
+month_7=Luglio
+month_8=Agosto
+month_9=Settembre
+month_10=Ottobre
+month_11=Novembre
+month_12=Dicembre
+
+day_0=Domenica
+day_1=Luned&#236;
+day_2=Marted&#236;
+day_3=Mercoled&#236;
+day_4=Gioved&#236;
+day_5=Venerd&#236;
+day_6=Sabato
+
+smonth_1=Gen
+smonth_2=Feb
+smonth_3=Mar
+smonth_4=Apr
+smonth_5=Mag
+smonth_6=Giu
+smonth_7=Lug
+smonth_8=Ago
+smonth_9=Set
+smonth_10=Ott
+smonth_11=Nov
+smonth_12=Dic
+
+sday_0=Do
+sday_1=Lu
+sday_2=Ma
+sday_3=Me
+sday_4=Gi
+sday_5=Ve
+sday_6=Sa
+
+emodule=Accesso negato: l'utente $1 non &#232; autorizzato ad usare il modulo $2
+elock_tries=Errore nel lock del file $1 dopo  $2 minuti
+
+skill_high=Esperto
+skill_medium=Intermedio
+skill_low=Inesperto
+
+feedback_title=Webmin segnalazione
+feedback_desc=Questo form ti permette di inviare segnalazioni o bugs agli sviluppatori Webmin circa i problemi riscontrati nell'utilizzo. Al click le informazioni sottostanti saranno inviate a $1.
+feedback_desc2=Questa segnalazione sar&#224; inviata agli sviluppatori Webmin, non al tuo system administrator, ISP o fornitore hosting. Si raccomanda pertanto di compilare la segnalazione in inglese.
+feedback_header=Dettagli della segnalazione
+feedback_name=Il tuo nome
+feedback_email=Il tuo indirizzo email
+feedback_module=Riguardo il modulo
+feedback_all=Tutti i moduli
+feedback_text=Descrizione del problema o suggerimento
+feedback_os=Includi dettagli del sistema operativo nel messaggio?
+feedback_osdesc=Se questa opzione &#232; selezionata, la segnalazione automatica email includer&#224; il nome e versione del tuo sistema operativo
+feedback_config=Includi il modulo di configurazione nel messaggio?
+feedback_configdesc=Se questo &#232; selezionato, il messaggio riporter&#224; la configurazione dei relativi moduli ed i contenuti di ogni config file che il modulo usa. Esempio:, se la segnalazione riguarda il modulo<i>utenti e gruppi</i>,il tuo <tt>/etc/passwd</tt> e <tt>/etc/shadow</tt> file saranno inviati.
+feedback_attach=File addizionali da allegare
+feedback_send=Invia segnalazione
+feedback_mailserver=Invia attraverso SMTP server
+feedback_mailserver_def=Programma sendmail locale
+feedback_err=Errore nell'invio della segnalazione
+feedback_emodule=Hai scelto di includere la configurazione del modulo, ma non hai scelto un modulo
+feedback_emodule2=Il modulo selezionato non esiste
+feedback_econfig=Non hai pieno accesso al modulo selezionato
+feedback_via=Inviata segnalazione a $1 attraverso SMTP server $2
+feedback_prog=Inviata segnalazione a $1 con programma sendmail $2
+feedback_esend=Errore nella segnalazione attraverso programma sendmail o server SMTP locale
+feedback_to=Invia segnalazione a indirizzi
+feedback_enoto=Nessun indirizzo indicato  al quale inviare la segnalazione
+feedback_ecannot=Non hai i permessi per invare la  segnalazione
+feedback_ecannot2=Non hai i permessi per inviare la segnalazione con file di configurazione
+
+progress_size=Downloading $1 ($2 bytes) ...
+progress_nosize=Downloading $1 ...
+progress_data=Ricevuti $1 bytes ($2 %)
+progress_data2=Ricevuti $1 bytes
+progress_done=...download complatato.
+
+readparse_cdheader=Header Content-Disposition mancante
+readparse_enc=Attesa codifica form-data, ma ricevuta codifica normale
+readparse_max=Ecceduta la dimensione massima di $1 bytes
+
+password_expired=La tua password &#232; scaduta, devi sceglierne una nuova
+password_header=Scegli nuova password
+password_user=Nome utente
+password_old=Password attuale
+password_new1=Nuova password
+password_new2=Conferma nuova password
+password_ok=Cambia
+password_clear=Pulisci
+password_done=La tua password &#232; stata modificata. Procedi ora al <a href='$1'>login</a> con la nuova password.
+password_err=Errore nel cambio
+password_euser=Il tuo nome di login non &#232; stato trovato nel file password!
+password_eold=La password attaule non &#232; corretta
+password_enew1=Inserisci nuova password
+password_enew2=Le nuove password non corrispondono
+password_epam=Errore PAM : $1
+password_emodpam=Il modulo Authen::PAM perl richiesto per il cambio password non &#232; installato! 
+
+ui_mandatory=Campo obbligatorio
+ui_checkmandatory=Non &#232; stato selezionato nulla
+ui_errors=Diversi errori riscontrati:
+ui_nothing=Non &#232; stato inserito nulla
+ui_searchcol=Trova righe dove
+ui_searchfor=Contiene il testo
+ui_searchok=Cerca
+ui_selall=Scegli tutti
+ui_selinv=Selezione invertita.
+ui_edate=Data errata
+ui_etime=Orario non valido
+ui_paging=Elenco righe da $1 a $2 di $3
+ui_rowlabel=$2 in riga $1 :
+
+header_statusmsg=$1 collegato a $2 $3 su $4 ($5)

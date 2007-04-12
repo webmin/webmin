@@ -1,0 +1,31 @@
+index_title=Webmin Servers
+index_none=Nejsou registrovány ¾ádné servery.
+index_add=Registrovat server
+index_find=Hledat servery
+index_findmsg=Po kliknutí na toto tlaèítko budou automaticky vyhledány jiné verze 0.75 a vy¹¹í na serverech ve Va¹í lokální síti.
+index_return=servery
+
+edit_title=Editovat Server
+create_title=Registrovat Server
+edit_details=Detaily Serveru
+edit_host=Jméno poèítaèe
+edit_port=Port
+edit_type=Typ Serveru
+edit_ssl=SSL server?
+edit_link=Typ linku
+edit_mode0=Normální link no server
+edit_mode1=Login pomocí Webminu
+edit_user=jméno
+edit_pass=heslo
+
+save_err=Chyba pøi ukládání serveru
+save_ehost=Chybìjící nebo nesprávné hostname
+save_eport=Chybìjící nebo nesprávný port
+save_euser=Chybìjící u¾ivatelské jméno
+save_epass=Chybìjící heslo
+
+find_title=Hledat servery
+find_new=Nalezen nový server na $1
+find_already=Nalezen známý server na $1
+find_me=Nalezen tento server na $1
+

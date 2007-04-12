@@ -1,0 +1,25 @@
+<header>System Logs NG</header>
+
+This module allows you to configure the Syslog-NG program, which is a
+replacement for the classic Unix Syslog daemon. It is responsible for taking
+log messages from various sources (such as programs or other systems), and
+then writing those messages to the correct log files. <p>
+
+The Syslog-NG configuration is made up of four different types of objects, 
+which when combined together determine which logs are written where. They are :
+<dl>
+<dt>Log Sources
+<dd>Each source specifies one or more way in which log messages can be received by the server, such as from the network, Linux kernel or other programs on the system.
+
+<dt>Log Destinations
+<dd>A destination is a file, remote server, logged in user or program that can
+
+receive log messages. Just defining a destination doesn't cause anything to be written to it - you must link it up with a Log Target first.
+<dt>Log Filters
+<dd>A filter matches messages based on a variety of conditions, such as their facility (source program type), priority (severity level), program, host and sender's network address. Filters are used in log targets to control which messages go to which destinations.
+
+<dt>Log Targets
+<dd>Targets are where everything comes together. Each target defines zero or more sources, filters and destinations, which specify that messages from the given sources matching the given filters should be written to the given destinations.
+
+</dl>
+

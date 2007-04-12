@@ -1,0 +1,7 @@
+browse_server=
+auto_file=
+autofs_file=
+nmblookup_path=
+long_fstypes=1
+smbclient_path=
+fstab_file=/etc/fstab

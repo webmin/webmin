@@ -1,0 +1,49 @@
+<dl>
+<dt><b>Calendrier de rotation</b>
+<dd>Contrôle la fréquence à laquelle est effectuée la rotation des journaux.<p>
+
+<dt><b>Taille maximale avant d'effectuer la rotation</b>
+<dd>Défini une limite de taille avant d'effectuer la rotation. Utilisez ce champs
+    au lien du calendrier de rotation si vous préférez effectuer la rotation
+    d'après un critère de taille limite plutôt que de temps limite.<p>
+
+<dt><b>Nombre de vieux journaux à garder</b>
+<dd>Détermine le nombre d'ancien journaux à garder. Ordinairement, ceux-ci
+    auront le même nom que le journal initial avec un .0, .1, etc. ajouté
+    à la fin du nom. Si vous entrez <i>0</i>, aucun vieux journal ne sera
+    gardé. Par conséquent, le contenu du fichier journal sera perdu au moment
+    de la rotation. <p>
+
+<dt><b>Compresser les fichiers des anciens journaux?</b>
+<dd>Quand cette option et activée, les vieux journaux sont compressés avec
+    <tt>gzip</tt> après la rotation afin de réduire l'espace disque utilisé. <p>
+
+<dt><b>Faire la rotation même si le fichier journal est vide?</b>
+<dd>Quand elle est activée, cette options indique à <tt>logrotate</tt> d'effectuer
+    quand même la rotation du journal, même si le fichier est vide, avec pour résultat
+    d'enregistrer un vieux journal de taille zéro. <p>
+
+<dt><b>Recréer le fichier journal après la rotation?</b>
+<dd>Quand cette option est activée, le fichier journal est recréé après la rotation au
+    lieu d'en laisser le soin au serveur qui écrit dedans. Par défaut, il sera créé
+    avec les permissions et le propriétaire d'origine, mais vous pouvez utiliser
+    le champs à côté de l'option <b>Oui</b> pour spécifier une autre valeur pour
+    le mode de permission, le propriétaire et le groupe. <p>
+
+<dt><b>Sauvegarder les vieux journaux dans</b>
+<dd>Quand ce champs est défini à <b>Le même répertoire que le fichier journal</b>, 
+    les copies de vieux journaux sont enregistrées dans le même répertoire que
+    le journal d'origine. L'option <b>Le répertoire</b> peut être utilisée pour
+    spécifier un autre emplacement - cependant, celui-ci doit être situé dans le
+    même système de fichiers que le fichier journal. <p>
+
+<dt><b>Commandes à exécuter après la rotation</b>
+<dd>Quand cette boîte de texte est remplie, la commande shell qui s'y trouve
+    est exécutée après une fois la rotation effectuée. Pour écrire correctement
+    dans le nouveau fichier, Plusieurs serveurs ont besoin  d'être redémarrés
+    après que le nom de leur fichier journal ait été modifié,  Pour de tels cas
+    vous devrez entrer une commande du genre <i>killall -HUP httpd</i> pour provoquer
+    le redémarrage après la rotation. <p>
+
+</dl>
+

@@ -1,0 +1,5 @@
+dfstab_file=NFS 檔案分享位置,0
+export_types=支援的檔案分享類別,0
+fstypes_file=分享的檔案類型檔,3,無
+share_all_command=啟動分享的指令,0
+unshare_all_command=停止分享的指令,0

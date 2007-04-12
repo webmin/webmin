@@ -1,0 +1,56 @@
+#        webmin-0.099     pap/lang/de
+#
+#        created: 09-mar-2001                by: Dieter Huerten
+#        last modified: 05-jul-2001          Rev.: 14-07-2002
+#        modified/translated by: Dieter Huerten
+#        for changes, completions, ...  mailto:dieter.huerten@telebel.de
+#
+# erzeugt: 09.03.2001                  durch: Dieter H&uuml;rten
+# letzte &Auml;nderung: 05.07.2001          Rev.: 14.07.2002
+# modifiziert/&uuml;bersetzt durch: Dieter H&uuml;rten
+# f&uuml;r &Auml;nderungen, Erg&auml;nzungen, etc. mailto:dieter.huerten@telebel.de
+#
+
+index_enopfile=Die PPP-Pa&szlig;wortdatei '$1' existiert nicht auf Ihrem System. M&ouml;glicherweise ist PPP nicht installiert.
+index_table=PPP-Konten (Einwahl und Anwahl)
+index_user=Benutzername
+index_server=Server &nbsp;
+index_uany=Beliebig
+index_sany=Beliebig
+index_create=Erzeuge neues PPP-Konto
+index_info=Webmin kann so konfiguriert werden, da&szlig; &Auml;nderungen der Unix-Benutzerliste automatisch auf die PPP-Konten angewandt werden. Dies wird nur funktionieren, wenn das Webmin-Modul <tt>Benutzer und Gruppen</tt> zum Hinzuf&uuml;gen, L&ouml;schen oder &Auml;ndern von Benutzern benutzt wird.
+index_onadd=Hinzuf&uuml;gen eines PPP-Kontos, wenn ein Unix-Benutzer f&uuml;r den nebenstehenden Server hinzugef&uuml;gt wird:&nbsp;
+index_onchange=&Auml;ndern des PPP-Kontos, wenn ein Unix-Benutzer ge&auml;ndert wird.
+index_ondelete=L&ouml;schen des PPP-Kontos, wenn ein Unix-Benutzer gel&ouml;scht wird.
+index_apply=Anwenden
+index_return=Index
+
+secrets_title=PPP-Konten
+
+edit_secret_etitle=PPP-Konto bearbeiten
+edit_secret_ctitle=PPP-Konto anlegen
+edit_secret_acc=PPP-Konten
+edit_secret_user=Benutzername
+edit_secret_serv=Server &nbsp;
+edit_secret_sany=Beliebig
+edit_secret_uany=Beliebig
+edit_secret_pass=Pa&szlig;wort
+edit_secret_none=Kein Pa&szlig;wort
+edit_secret_ffile=Von Datei
+edit_secret_leave=Unver&auml;ndert lassen
+edit_secret_setto=Setze auf
+edit_secret_vaddr=G&uuml;ltige Adresse
+edit_secret_aany=Erlaube alle
+edit_secret_anone=Erlaube keine
+edit_secret_alist=Erlaube angezeigte...
+edit_secret_save=Speichern
+edit_secret_del=L&ouml;schen
+edit_secret_return=Kontenliste
+
+save_secret_esave=Fehler beim Speichern des Kontos
+save_secret_enoip='$1' ist keine g&uuml;ltige Adresse
+
+log_create=Angelegter PPP-Benutzer $1
+log_modify=Ge&auml;nderter PPP-Benutzer $1
+log_delete=Gel&ouml;schter PPP-Benutzer $1
+log_sync=Unix-Benutzersynchronisierung ge&auml;ndert

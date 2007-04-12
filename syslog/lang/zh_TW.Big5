@@ -1,0 +1,66 @@
+index_title=系統紀錄
+index_m4msg=您的系統紀錄組態檔 $1 似乎包含了 <tt>m4</tt> 命令. 在它可以被編輯前, Webmin 必須將這個檔案用 <tt>m4</tt> 處理, 以安全的移除這些命令.
+index_m4=從組態檔中移除 m4 命令
+index_active=是否啟動?
+index_tag=程式
+index_to=紀錄目標
+index_rule=選擇的訊息
+index_file=檔案 $1
+index_pipe=命名的管線 $1
+index_pipe2=管線到指令 $1
+index_host=系統紀錄伺服器在 $1
+index_all=所有使用者
+index_users=使用者 $1
+index_add=增加一個新的系統紀錄
+index_return=系統紀錄
+index_restart=套用變更
+index_restartmsg=按下這個按鈕以重新啟動 <tt>syslog</tt> 程序, 並確定所有的變更能生效.
+index_start=啟動系統紀錄伺服器
+index_startmsg=按下這個按鈕以啟動系統紀錄伺服器 $1. 在它被啟動前, 不會記錄任何事件.
+all=全部
+
+restart_ekill=無法送出控制訊號給系統紀錄程序 $1: $2
+
+edit_title=編輯系統紀錄
+create_title=增加系統紀錄
+edit_header1=紀錄目標
+edit_logto=紀錄到
+edit_file=檔案
+edit_sync=紀錄訊息之後同步
+edit_pipe=命名的管線
+edit_pipe2=管線到指令
+edit_host=系統紀錄伺服器在
+edit_users=本地端使用者
+edit_allusers=所有登入的使用者
+edit_active=是否啟動紀錄?
+edit_header2=要紀錄的訊息類別
+edit_facil=設備
+edit_pri=優先值
+edit_all=全部
+edit_one=一個
+edit_many=多個
+edit_pdir0=在...或之上
+edit_pdir1=恰好是...
+edit_pdir2=低於...
+edit_pdir3=全部, 除了...
+edit_none=無
+edit_sel=選擇的...
+edit_view=檢視紀錄檔
+edit_tag=只給程式
+
+view_title=檢視紀錄檔
+view_header=最後 $1 行, 在 $2
+view_empty=紀錄檔是空的
+view_refresh=重新讀取
+
+save_err=無法儲存紀錄
+save_efile='$1' 不是一個有效的檔名: $2
+save_epipe='$1' 不是個有效的命名的管線
+save_epipe2=遺失管線到的指令
+save_ehost=系統紀錄主機 '$1' 不存在
+save_enousers=沒有輸入本地端的使用者
+save_euser=使用者 '$1' 不存在
+save_efacils=沒有輸入設備
+save_esel=沒有要紀錄的訊息類別
+save_epri=沒有選擇優先值
+

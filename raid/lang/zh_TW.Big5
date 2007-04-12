@@ -1,0 +1,67 @@
+index_title=Linux 磁碟陣列
+index_none=沒有磁碟陣列設備被組態.
+index_add=建立磁碟陣列設備等級:
+index_return=磁碟陣列設備
+index_emdstat=核心的磁碟陣列狀態檔案 $1 不存在於您的系統上. 您的核心可能並不支援磁碟陣列.
+index_emkraid=您的系統尚未安裝磁碟陣列工具套件.
+
+linear=串聯的 (線性)
+raid0=交錯的 (RAID0)
+raid1=映射的 (RAID1)
+raid4=同位元 (RAID4)
+raid5=備援的 (RAID5)
+
+create_title=建立磁碟陣列設備
+create_header=磁碟陣列設備選項
+create_device=設備控制檔案
+create_level=磁碟陣列等級
+create_disks=磁碟陣列中的分割區
+create_spares=備援的分割區
+create_pdisk=同位元檢查的分割區
+create_pauto=自動
+create_nodisks=沒有空白的分割區可以給磁碟陣列使用.
+create_super=是否使用持續性的 superblock?
+create_parity=同位元演算法
+create_chunk=數量大小
+create_force=是否強制啟動磁碟陣列?
+create_rdev=磁碟陣列設備 $1
+create_err=無法建立磁碟陣列
+create_edisks=沒有選擇分割區
+create_edisks2=至少要選擇 2 個分割區以供映射使用
+create_espare=備援的分割區 $1 不能同時作為磁碟陣列分割區
+create_epdisk=同位元檢查的分割區不能同時作為磁碟陣列分割區
+
+view_title=磁碟陣列設備
+view_header=磁碟陣列設備選項
+view_device=設備控制檔案
+view_level=磁碟陣列等級
+view_status=狀態
+view_mounted=已經啟動並掛載在 $1
+view_active=運作中
+view_inactive=停止使用
+view_super=是否使用持續性的 superblock?
+view_parity=同位元演算法
+view_chunk=數量大小
+view_stop=使之不運作
+view_start=運作中
+view_mkfs=建立 EXT2 檔案系統...
+view_disks=磁碟陣列中的分割區
+view_spares=備援的分割區
+view_size=不可使用的大小
+view_resync=完成重新同步的百分比
+view_down=(Down)
+view_cannot=這個磁碟陣列無法被變更, 因為它目前正被掛載.
+
+mkfs_title=建立檔案系統
+mkfs_header=這個表單可以讓您建立新的 Linux EXT2 檔案系統在 $1 上. <b>全部的</b>現存資料將會被清除!
+mkfs_options=新增 Linux 檔案系統選項
+mkfs_err=無法建立檔案系統
+mkfs_exec=執行命令 $1 中...
+mkfs_failed=... 命令失敗!
+mkfs_ok=... 命令完成.
+
+emkraid=<tt>(建立磁碟陣列) mkraid</tt> 失敗: $1
+eraidstop=<tt>(停止磁碟陣列) raidstop</tt> 失敗: $1
+eraidstart=<tt>(啟動磁碟陣列) raidstart</tt> 失敗: $1
+eforce=您必須強制這個磁碟陣列的初始化: $1
+

@@ -1,0 +1,3 @@
+# RBAC authorization		# Webmin ACL
+solaris.admin.fsmgr.write	noconfig=1
+solaris.admin.fsmgr.read	create=0,types=NONE,hide=0,noconfig=1

@@ -1,0 +1,131 @@
+index_title=进程管理
+index_display=显示
+index_tree=PID
+index_user=用户
+index_size=内存
+index_cpu=CPU
+index_search=搜索
+index_run=运行..
+index_return=进程列表
+index_mem=<b>实存：</b>总计$1 kB / $2 Kb可用空间 
+index_swap=<b>交换空间量：</b>总计 $1 kB / $2 kB 可用空间
+index_load=<b>CPU 负载平均量：</b> $1 (1分钟) , $2 (5 分钟) , $3 (15 分钟)
+
+pid=进程标识
+owner=用户
+command=命令
+cpu=CPU
+size=大小
+parent=父进程
+runtime=运行时间
+nice=Nice 级别
+
+search_user=拥有者
+search_match=匹配
+search_cpupc=使用了超过$1%的 CPU
+search_fs=使用文件系统
+search_files=使用文件
+search_submit=搜索
+search_none=没有找到匹配的进程。
+search_kill=发送信号
+search_ignore=在结果中忽略搜索进程
+search_return=搜索表
+search_sigterm=停止进程
+search_sigkill=删除进程
+search_port=使用的端口
+search_protocol=协议
+
+run_command=运行的命令
+run_submit=运行
+run_mode=运行模式
+run_bg=后台运行
+run_fg=等待直至完成
+run_input=输入到命令
+run_title=命令输出
+run_output=从$1 .. 输出
+run_none=没有产生输出
+run_ecannot=您没有执行命令的权限
+
+edit_title=进程信息
+edit_gone=此进程不再运行
+edit_sub=子进程
+edit_kill=发送信号
+edit_change=改变
+edit_prilow=低优先级
+edit_prihigh=高优先级
+edit_pridef=默认
+edit_none=无
+edit_ecannot=你没有编辑进程的权限
+edit_sigterm=停止进程
+edit_sigkill=删除进程
+
+kill_err=发送信号 $1 到进程 $2 失败
+kill_title=发送信号
+kill_sent=发送
+kill_ecannot=您没有删除进程的权限
+
+renice_err=renice 进程 $1 失败
+renice_ecannot=您没有renice进程的权限
+
+linux_pri=优先级
+linux_tty=TTY
+linux_status=状态
+linux_wchan=等待
+linux_mem=内存
+linux_group=组
+linux_ruser=真正用户
+linux_rgroup=真正组
+linux_pgid=进程组ID
+
+linuxstat_R=正在运行
+linuxstat_S=睡眠中
+linuxstat_D=深睡中
+linuxstat_T=已停止
+linuxstat_Z=僵停状态
+
+freebsd_ruser=真正用户
+freebsd_rgroup=真正组
+freebsd_tty=TTY
+freebsd_pgid=进程组
+freebsd_lstart=开始时间
+freebsd_lim=内存限制
+
+hpux_pri=优先级
+hpux_tty=TTY
+hpux_status=状态
+hpux_wchan=等待
+
+hpuxstat_0=不存在
+hpuxstat_S=睡眠中
+hpuxstat_W=等待中
+hpuxstat_R=正在运行
+hpuxstat_I=中级
+hpuxstat_Z=僵停状态
+hpuxstat_T=停止
+hpuxstat_G=正在增长
+
+macos_tty=TTY
+
+sysv_group=组
+sysv_ruser=真正用户
+sysv_rgroup=真正组
+sysv_pgid=进程组ID
+sysv_tty=TTY
+
+log_run=已运行命令 "$1"
+log_kill=已向进程 $2发送信号 $1 
+log_kills=已到 $2 进程发送信号 $1 
+log_kill_l=已向进程 $2发送信号 $1 
+log_kills_l=已向进程<br>$2发送信号 $1 
+
+acl_manage=以用户的身份管理进程
+acl_manage_def=当前Webmin用户
+acl_edit=可以删除并renice进程吗？
+acl_run=可以执行命令吗？
+
+kill_kill=删除进程
+kill_term=&nbsp;&nbsp;&nbsp;&nbsp;终止&nbsp;&nbsp;&nbsp;&nbsp;
+kill_hup=&nbsp;&nbsp;重新启动&nbsp;&nbsp;
+kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;停止&nbsp;&nbsp;&nbsp;&nbsp;
+kill_cont=&nbsp;&nbsp;&nbsp;&nbsp;继续&nbsp;&nbsp;&nbsp;&nbsp;
+

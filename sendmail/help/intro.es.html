@@ -1,0 +1,39 @@
+<header>Configuración de Sendmail</header>
+
+<h3>Introducción a Sendmail</h3>
+Sendmail es el programa estándar de Unix para transportar y entregar correo.
+Cuando un usuario bajo tu sistema desea enviar correo a alguien de otra
+máquina sendmail es el programa que realiza actualmente el proceso de
+entregar el correo. Similármente, cuando alguien de otro sistema envía
+correo a uno de tus usuarios, sendmail recibirá el correo y lo almacenará
+en el archivo de correo del usuario. <p>
+
+Sendmail es sólamente un MTA (agente de transporte de correo "mail"),
+queriendo esto decir que no presenta ninguna interfaz de usuario a la
+gente que desee enviar correo. Programas como Eudora, elm o /bin/mail con
+los que los usuarios interactúan son llamados MUA (agentes de correo del
+usuario). Un MUA no entrega correo por sí mismo, en su lugar sólo pasa
+el correo a sendmail para que éste lo haga. <p>
+
+Los MUAs de usuario pueden ser ejecutados diréctamente en tu sistema (MUAs
+como pine, elm o /bin/mail) o en una máquina a parte que puede ser un PC
+monousuario (para MUAs como Eudora, Exchange y Communicator de Netscape).
+En el primer caso, el correo es enviado diréctamente invocando sendmail y
+pasándole el mensaje y recibido mediante la lectura del archivo de spool
+de correo del usuario. Para MUAs ejecutados en otra máquina, el correo es
+enviado conectando al proceso de sendmail de tu sistema mediante el
+protocolo SMTP y recibido conectando a un servidor a parte POP3. <p>
+
+<h3>El Módulo Sendmail</h3>
+La página principal de este módulo muestra una tabla de iconos, cada uno se
+usa para configurar diferentes partes de la funcionalidad de sendmail.
+Sin embargo, las características que hay tras algunos iconos puede que no
+estén disponibles si no han sido configuradas en tu <tt>sendmail</tt>.
+Al instalar sendmail, puedes seleccionar qué características están disponibles
+mediante la edición de un <tt>.mc</tt> que es convertido mediante <tt>m4</tt>
+en tu <tt>sendmail.cf</tt>. Muchas características (como el Mapeo de
+Direcciones, Enmascaramiento de Dominio y Control de 'a Rechazar') puede
+que no estén disponibles a menos que las hayas activado en la instalación. <p>
+
+<hr>
+

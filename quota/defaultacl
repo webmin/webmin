@@ -1,0 +1,11 @@
+noconfig=0
+filesys=*
+umode=0
+gmode=0
+enable=1
+default=1
+ugrace=1
+ggrace=1
+diskspace=1
+ro=0
+email=1

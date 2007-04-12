@@ -1,0 +1,7 @@
+line1=Configurable options,11
+max_size=Maximum number of records to display,0
+manual_build=Automatically rebuild NIS maps?,1,0-Yes,1-No
+line2=System configuration,11
+client_conf=NIS client config file,0
+nsswitch_conf=NIS client switch file,0
+securenets=Trusted networks file,3,None

@@ -1,0 +1,18 @@
+<header>Send outgoing mail via host</header>
+
+<center><tt>relayhost</tt></center>
+<hr>
+
+Typically, you use <tt>Deliver directly</tt> so that Postfix will forward any
+outgoing mail not destined for users of your system to the given host.
+
+<p>
+
+If you want to forward all mail to an intranet <b>mail gateway</b> (for example
+if your intranet has a firewall), except for mail for the local machine, you
+will setup the value to your mail gateway. Most of the time, organization has
+set up internal MX records, so using directly your domain name will bind to the
+mail gateway machine.
+
+<hr>
+

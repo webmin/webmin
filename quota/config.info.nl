@@ -1,0 +1,16 @@
+display_max=Maximum aantal te tonen gebruikers of groepen,0
+user_repquota_command=Commando om gebruikers te tonen van een bestandssysteem,0
+group_repquota_command=Commando om groepen te tonen van een bestandssysteem,0
+user_edquota_command=Commando om quotum van gebruiker te wijzigen,0
+group_edquota_command=Commando om quotum van groep te wijzigen,0
+user_quota_command=Commando om quotum van gebruikers te controleren,0
+group_quota_command=Commando om quotum van groep te controleren,0
+user_copy_command=Commando om quotum van gebruiker te kopieëren,0
+group_copy_command=Commando om quotum van groep te kopieëren,0
+user_quotaon_command=Commando om quota van gebruiker aan te zetten,0
+group_quotaon_command=Commando om quota van groep aan te zetten,0
+user_quotaoff_command=Commando om quota van gebruiker uit te zetten,0
+group_quotaoff_command=Commando om quota van groep uit te zetten,0
+quotacheck_command=Commando om quota te controleren,0
+user_grace_command=Commando om waarschuwingstijd van een gebruiker te wijzigen,0
+group_grace_command=Commando om waarschuwingstijd van een groep te wijzigen,0

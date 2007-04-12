@@ -1,0 +1,15 @@
+inetd_conf_file=Archivo de configuración de inetd,0
+inetd_dir=Directorio de configuración de Inetd,3,Ninguno
+extended_inetd=Soporte extendido de inetd,1,0-No,1-Básico,2-Mejorado
+show_empty=Mostrar servicios que no tengan programa,1,1-Sí,0-No
+rpc_inetd=Inetd sporta programas RPC,1,1-Sí,0-No
+ipv6=Soporta servicios de IPv6,1,1-Sí,0-No
+sort_mode=Clasificar servicios y programas por,1,0-Orden en el archivo,1-Nombre,2-Asignación
+services_file=Archivo de servicios de Red,0
+rpc_file=Archivo de servicios RPC,0
+protocols_file=Archivo de protocolos de Red,0
+rpc_protocols=Subprotocolos RPC,0
+restart_command=Comando para rearrancar inetd,0
+tcpd_path=Trayectoria completa a tcpd,3
+allow_file=Trayectoria completa a archivo de autorizaciones de tcpd,3
+deny_file=Trayectoria completa a archivo de no autorizaciones de tcpd,3

@@ -1,0 +1,37 @@
+<header>FTP Anónimo</header>
+
+La primera tabla de esta página te permite especificar el directorio al
+que el servidor cambiará cuando un usuario anónimo haga login. Se puede
+seleccionar un directorio diferente dependiendo de las clases de usuario
+o se puede utilizar un solo directorio para todas las clases. Si no se
+especifica ningún directorio, el servidor FTP cambiará al directorio
+inicial del usuario <tt>ftp</tt>. <p>
+
+A causa de que el servidor llama a programas externos como <tt>ls</tt> y
+<tt>tar</tt>, el directorio anónimo raíz debe de contener un directorio
+<tt>bin</tt> con esos programas, un directorio <tt>lib</tt> que contenga
+cualquier biblioteca compartida que haga falta y un directorio <tt>etc</tt>
+que contenga los archivos <tt>passwd</tt> y <tt>group</tt>. Cuando un
+servidor utiliza <tt>chroot</tt> para limitar el acceso al directorio
+anónimo raíz, no puede acceder a ningún programa fuera de ese directorio.<p>
+
+La segunda tabla controla a qué directorio el servidor hará <tt>chroot</tt>
+cuando los usuarios sean invitados. Para cada directorio se puede especificar
+a qué usuarios se aplicará; para ello sólo debes de digitar sus nombres,
+UIDs (como <tt>%3000</tt>) o rangos de UID (como <tt>%3000-3006</tt>). Si
+no se digitan usuarios, el directorio se utiliza para todos los usuarios
+invitados. <p>
+
+La tercera tabla te permite controlar como qué grupo de Unix los usuarios
+anónimos de FTP serán tratados, en vez del grupo primario del usuario
+<tt>ftp</tt>. Para cada grupo digitado puedes seleccionar una o más clases
+de usuario; por ejemplo para garantizar el acceso a ciertos archivos por
+parte de usuarios anónimos de ciertas direcciones IP. <p>
+
+Finalmente, la sección inferior de la página contiene entradas para controlar
+qué claves de acceso son aceptables para los logins anónimos de FTP.
+Tradicionalmente, los usuarios FTP deberían de enviar una dirección de
+correo válida como su clave de acceso para login anónimo.<p>
+
+<hr>
+

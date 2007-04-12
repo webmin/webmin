@@ -1,0 +1,29 @@
+<header>Filsystemsgrupper</header>
+
+Quotasystemet på Unix räknar ihop alla filer som ägs av en grupp när
+gruppquota ska kontrolleras. Det spelar ingen roll vilka grupper
+användaren som äger filerna är med i.
+
+<p>På denna sida visas alla grupper som har quota på något filsystem. Här
+kan man klicka på ett gruppnamn för att ändra dess quota eller välja en
+grupp från menyn nedanför listan och trycka på <tt>Ändra quota</tt>. Om
+någon grupp inte finns med på listan finns det ingen begränsning för
+hur många filer eller hur mycket diskutrymme som gruppen får använda.
+
+<p>Nedanför listan finns knappen <tt>Ändra tidsintervall</tt>. När man
+klickar på den får man upp ett formulär där man kan ställa in den
+tid som en grupp får överskrida sin mjuka gräns innan den hindras från att
+utnyttja mer diskutrymme.
+
+<p>Om man trycker på <tt>Kontrollera quota</tt> läser systemet igenom hela
+filsystemet och kontrollerar block- och filutnyttjandet för alla grupper.
+Detta kan vara nödvändigt att göra om quota har varit avstängt någon tid
+eller om det just har slagits på för någon grupp.
+
+<p>Längst ned på sidan finns ett formulär för att definiera block-
+och filquota för nya grupper. Dessa inställningar gäller endast för de
+grupper som skapas med Webmin-modulen Användare och grupper.
+
+<hr>
+
+

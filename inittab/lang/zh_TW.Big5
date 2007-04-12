@@ -1,0 +1,37 @@
+inittab_title=SysV 系統啟動組態
+inittab_new=建立一個新的啟動程序
+inittab_id=名稱
+inittab_runlevels=執行層級
+inittab_action=動作方式
+inittab_process=啟動程序
+inittab_none=無
+inittab_respawn=衍生
+inittab_wait=等待
+inittab_once=只執行一次
+inittab_boot=開機時
+inittab_bootwait=開機時, 等待結束
+inittab_off=不做事
+inittab_ondemand=不論在 A, B, C
+inittab_initdefault=系統開機後
+inittab_sysinit=開機程序中
+inittab_powerwait=失去電源時
+inittab_powerfail=失去電源時, 不等待
+inittab_powerokwait=電源回復時
+inittab_powerfailnow=電源失效
+inittab_ctrlaltdel=暖開機 (Ctrl-Alt-Del)
+inittab_kbdrequest=特殊鍵組合
+inittab_kbrequest=特殊鍵組合
+inittab_return=inittab 索引
+
+edit_inittab_err=您不被允許編輯一個程序
+edit_inittab_title=編輯程序 $1
+edit_inittab_details=程序詳細資料
+edit_inittab_del=刪除
+edit_inittab_save=儲存
+
+new_inittab_err=您不被允許建立一個新程序
+new_inittab_title=新程序
+
+save_inittab_err=您不被允許儲存一個程序
+save_inittab_noid=錯誤, 沒有輸入程序名稱
+save_inittab_already=錯誤, 程序名稱已經存在

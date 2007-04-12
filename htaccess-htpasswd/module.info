@@ -1,0 +1,14 @@
+name=HTAccess Files
+desc=Protected Web Directories
+depends=useradmin apache
+longdesc=Create .htaccess and htpasswd files to protect web-acessible directories.
+desc_de=Passwortgesch&#252;tzte WWW-Verzeichnisse (htpasswd)
+desc_zh_TW.Big5=ºô¯¸¥Ø¿ı«OÅ@
+desc_ms=Direktori Web Dilindungi
+desc_ca=Directoris Web Protegits
+desc_fr=R&#233;pertoires Web prot&#233;g&#233;s
+readonly=1
+desc_es=Directorios Web Protegidos
+desc_hu=Védett Web könyvtárak
+desc_zh_TW.UTF-8=ç¶²ç«™ç›®éŒ„ä¿è­·
+library=htaccess-lib.pl

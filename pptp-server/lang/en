@@ -1,0 +1,145 @@
+index_title=PPTP VPN Server
+index_version=PoPToP version $1
+index_epptpd=The PoPToP PPTP server $1 was not found on your system, or is not the right program. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_econfig=The PPTP server configuration file $1 was not found on your system. Maybe your <a href='$2'>module configuration</a> is incorrect.
+index_stop=Stop PPTP server
+index_stopdesc=Click this button to shut down the running PPTP server process, so that no new connections will be accepted. Existing VPN connections will remain active though.
+index_start=Start PPTP server
+index_startdesc=Click this button to start up the PPTP server process so that it can receive VPN connections from clients.
+index_apply=Apply Configuration
+index_applydesc=Click this button to apply the current PPTP server options by stopping and re-starting the PPTP server process. Changes to the PPP options and PPP accounts will be always apply to any new connections
+index_return=module index
+index_epppd=The PPP server program $1 is not installed on your system. The PPTP depends upon it to operate.
+
+conf_title=PPTP Server Options
+conf_ecannot=You are not allowed to edit PPTP server options
+conf_header=PPTP server configuration
+conf_speed=PPP baud rate
+conf_baud=bps
+conf_listen=Listen on address
+conf_all=All addresses
+conf_localip=IP addresses for server end of connection
+conf_remoteip=IP addresses to allocate to clients
+conf_ipxnets=IPX networks to allocate
+conf_from=From
+conf_to=to
+conf_option=PPP options file
+conf_mode0=Global settings
+conf_mode1=PPTP-specific settings
+conf_mode2=Custom file
+conf_ipdesc=IP address in both ranges can be entered either singly (like 192.168.1.1) or as ranges (like 192.168.2.32-64)
+conf_err=Failed to save server options
+conf_espeed=Missing or invalid baud rate
+conf_elisten=Missing or invalid address to listen on
+conf_eoption=Missing or invalid-looking custom PPP options file
+conf_elocalip='$1' is not a valid local IP address or range
+conf_eremoteip='$1' is not a valid remote IP address or range
+conf_efrom=Missing or invalid IPX network from address
+conf_eto=Missing or invalid IPX network to address
+
+options_title=PPP Options
+options_ecannot=You are not allowed to edit PPP options
+options_desc0=The PPP options below from $1 apply to ALL incoming connections received by your system, including those to dialup modems.
+options_desc1=The PPP options below from $1 apply only to all PPTP connections.
+options_desc2=They will be used by any new connections established after this form is saved.
+options_header=PPP connection options
+options_proxyarp=Create proxy ARP entry?
+options_lock=Lock PTY device file?
+options_auth=Require authentication?
+options_auth0=No, but prevent routed IPs
+options_auth1=Never
+options_auth2=Always
+options_login=Also do unix authentication?
+options_pap=PAP authentication
+options_chap=CHAP authentication
+options_req=Must be used
+options_all=May be used
+options_ref=Cannot be used
+options_name=Server name for authentication
+options_hn=Real hostname
+options_mtu=Maximum sending packet size
+options_mru=Maximum receiving packet size
+options_err=Failed to save PPP options
+options_emtu=Missing or invalid maximum sending packet size
+options_emru=Missing or invalid maximum receiving packet size
+options_ename=Missing or invalid server name for authentication
+options_version=PPPd version $1
+options_msdesc=The options below enable the MS-CHAP authentication method and MPPE encryption, used by default by Windows VPN clients. However, MPPE requires support in both the PPP daemon and operating system kernel.
+options_mschap=MS-CHAP authentication
+options_mschap-v2=MS-CHAP version 2 authentication
+options_chapms=$options_mschap
+options_chapms-v2=$options_mschap-v2
+
+secrets_title=PPP Accounts
+secrets_ecannot=You are not allowed to edit PPP accounts
+secrets_return=index
+secrets_none=No PPP accounts have been created yet.
+secrets_enopfile=The PPP passwords file $1 does not exist on your system. Maybe PPP is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+secrets_table=PPP accounts for $1
+secrets_user=Username
+secrets_ips=IP addresses
+secrets_uany=ANY
+secrets_sany=ANY
+secrets_create=Create new PPP account.
+secrets_desc=The PPP accounts listed on this page are taken from the file $1, which is used for $3 authentication. Only those for your server $2 are shown, not accounts for making outgoing connections.
+secrets_delete=Delete Selected PPP Accounts
+
+edit_secret_etitle=Edit PPP Account
+edit_secret_ctitle=Create PPP Account
+edit_secret_acc=PPP Account
+edit_secret_user=Username
+edit_secret_serv=Server
+edit_secret_sany=Any
+edit_secret_uany=Any
+edit_secret_pass=Password
+edit_secret_none=None
+edit_secret_ffile=From file 
+edit_secret_leave=Leave unchanged
+edit_secret_setto=Set to
+edit_secret_vaddr=Valid Addresses
+edit_secret_aany=Allow any
+edit_secret_anone=Allow none
+edit_secret_alist=Allow listed..
+edit_secret_save=Save
+edit_secret_del=Delete
+edit_secret_return=account list
+
+save_secret_esave=Failed to save account 
+save_secret_enoip='$1' is not a valid address
+
+stop_err=Failed to stop PPTP server
+stop_egone=No longer running
+stop_ecannot=You are not allowed to stop the PPTP server
+
+start_err=Failed to start PPTP server
+start_ecannot=You are not allowed to start the PPTP server
+
+apply_err=Failed to re-start PPTP server
+apply_ecannot=You are not allowed to re-start the PPTP server
+
+conns_title=Active Connections
+conns_ecannot=You are not allowed to manage active connections
+conns_desc=This page lists the currently active PPTP connections to your server. To forcibly disconnect one, click on its interface name.
+conns_iface=PPP interface
+conns_client=Client address
+conns_stime=Connected since
+conns_local=Server VPN address
+conns_remote=Client VPN address
+conns_none=No PPTP connections appear to be active at this time.
+conns_unknown=Unknown
+conns_user=Username
+
+disc_err=Failed to disconnect
+disc_egone=Connections is no longer active
+disc_ekill=Process is no longer running
+
+log_secret_create=Created PPP account $1
+log_secret_modify=Modified PPP account $1
+log_secret_delete=Deleted PPP account $1
+log_deletes=Deleted $1 PPP accounts
+log_conf=Modified PPTP server options
+log_options=Modifed PPP options
+log_disc=Disconnected client $1
+log_start=Started PPTP server
+log_stop=Stopped PPTP server
+log_apply=Applied PPTP server configuration

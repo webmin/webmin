@@ -1,0 +1,2 @@
+---- Changes since 1.300 ----
+Added a Module Config option to automatically find the Postfix aliases file, rather than always assuming Sendmail.

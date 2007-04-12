@@ -1,0 +1,31 @@
+index_title=Canvi d'Idioma i Tema
+index_lang=Idioma de la interfície d'usuari de Webmin
+index_langglobal=Idioma global ($1)
+index_langset=Tria personal...
+index_theme=Tema de la interfície d'usuari de Webmin
+index_themeglobal=Tema global ($1)
+index_themeset=Tria personal...
+index_pass=Contrasenya d'entrada a Webmin
+index_passleave=Deixa-la tal com està
+index_passset=Estableix a...
+index_ok=Fes els Canvis
+index_themedef=Tema Antic de Webmin
+index_desc2=Aquest mòdul es pot fer servir per canviar $1, només per al teu compte de Webmin.
+index_d3=$1, $2 i $3
+index_d2=$1 i $2
+index_d1=$1 
+index_dlang=l'idioma amb què es mostren els mòduls
+index_dtheme=el tema que controla l'aparença de Webmin
+index_dpass=la contrasenya d'entrada
+
+change_title=Canvi de Valors
+change_user=Modificant l'entrada de Webmin...
+change_done=...fet
+change_restart=Reiniciant Webmin...
+change_redirect=Redireccionant al menú principal...
+change_ecolon=La contrasenya no pot contenir el caràcter :
+
+acl_lang=Pot canviar l'idioma
+acl_theme=Pot canviar el tema
+acl_pass=Pot canviar la contrasenya (si està establerta a Webmin)
+

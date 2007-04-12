@@ -1,0 +1,11 @@
+<header>Process</header>
+
+This field contains the command line of the program which should be executed
+on the specified runlevel (e.g. /etc/init.d/rc, /sbin/getty...).<br>
+
+If the process field starts with a `+' character, <i>init</i> will not do
+utmp and wtmp accounting for that process. This is needed for gettys that
+insist on doing their own utmp/wtmp housekeeping. This is also a historic
+bug.<p>
+
+<hr>

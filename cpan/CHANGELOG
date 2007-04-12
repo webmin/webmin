@@ -1,0 +1,16 @@
+---- Changes since 1.130 ----
+When installing Perl modules from CPAN, an option is available to have any dependencies automatically downloaded and installed as well.
+---- Changes since 1.200 ----
+On systems that use RPM packages, modules installed from RPMs will be displayed in the list as well.
+---- Changes since 1.210 ----
+On systems that use Debian packages, modules installed from packages will be displayed in the list as well.
+---- Changes since 1.250 ----
+Added checkboxes and buttons on the module's main page for removing and upgrading multiple Perl modules at once.
+---- Changes since 1.270 ----
+Added a button at the bottom of the page for installing all of the Perl modules optionally used by Webmin.
+---- Changes since 1.300 ----
+Perl modules that try to auto-install depencies from CPAN no longer hang during the install process.
+---- Changes since 1.320 ----
+Fixed a bug that prevented a custom temp files directory from being used when installing Perl modules.
+---- Changes since 1.330 ----
+When installing a Perl module from CPAN and it already exists in an operating system package (such as from APT or YUM), use that instead.

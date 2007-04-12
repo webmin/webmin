@@ -1,0 +1,2 @@
+# RBAC authorization		# Webmin ACL
+solaris.dhcpmgr.write		noconfig=1

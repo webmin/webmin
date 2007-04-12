@@ -1,0 +1,9 @@
+named_conf=named.conf dosyasýnýn tam yolu,0
+named_path=named çalýþtýrýlabilir dosyasýnýn tam yolu,0
+show_list=Alanlarý görüntüleme þekli,1,0-Ýkonlarla,1-Listeyle
+soa_style=Seri nuamarasý tipi,1,0-Çalýþma numarasý ile,1-Tarih tabanlý (YYYYAAGGss)
+records_order=Kayýtlarý görüntüleme þekli,1,1-Ýsime göre,2-Deðerine göre,3-By IP,0-Eklenmiþ olarak
+chroot=BIND altýnda çalýþtýrýlacak Chroot dizini,3,Öntanýmlý
+start_cmd=BIND'i baþlatma komutu,3,Öntanýmlý
+max_zones=Görüntülenecek en çok bölge sayýsý,0
+rev_def=Ters kayýtlarý güncelle,1,0-Öntanýmlý olarak açýk,1-Öntanýmlý olarak kapalý

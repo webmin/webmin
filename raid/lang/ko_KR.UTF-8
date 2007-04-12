@@ -1,0 +1,73 @@
+index_title=軒勘什 RAID
+index_none=姥失吉 RAID 舌帖亜 蒸柔艦陥.
+index_add=RAID 舌帖 呪層 拙失:
+index_return=RAID 舌帖
+index_emdstat=獣什奴拭 朕確 RAID 雌殿 督析 $1戚(亜) 糎仙馬走 省柔艦陥. 焼原 朕確戚 RAID研 走据馬走 省澗牛 杯艦陥.
+index_emkraid=獣什奴拭 RAID 亀姥 鳶徹走亜 竺帖鞠嬢 赤走 省柔艦陥.
+
+linear=尻衣喫(識莫)
+raid0=什闘虞戚覗(RAID0)
+raid1=耕君(RAID1)
+raid4=鳶軒銅(RAID4)
+raid5=掻差(RAID5)
+
+create_title=RAID 舌帖 拙失
+create_header=RAID 舌帖 辛芝
+create_device=舌帖 督析
+create_level=RAID 呪層
+create_disks=RAID 督銅芝
+create_spares=森搾 督銅芝
+create_pdisk=鳶軒銅 督銅芝
+create_pauto=切疑
+create_nodisks=RAID拭 紫遂拝 呪 赤澗 朔 督銅芝戚 蒸柔艦陥.
+create_super=慎姥 輯遁 鷺系脊艦猿?
+create_parity=鳶軒銅 硝壱軒葬
+create_chunk=帰嬢軒 滴奄
+create_force=RAID研 悪薦稽 段奄鉢杯艦猿?
+create_rdev=RAID 舌帖 $1
+create_err=RAID研 拙失馬走 公梅柔艦陥
+create_edisks=識澱廃 督銅芝戚 蒸柔艦陥
+create_edisks2=耕君元遂 督銅芝聖 却 戚雌 識澱背醤 杯艦陥
+create_espare=森搾 督銅芝 $1精(澗) RAID 督銅芝引 含虞醤 杯艦陥
+create_epdisk=鳶軒銅 督銅芝精 RAID 督銅芝引 含焼醤 杯艦陥
+
+view_title=RAID 舌帖
+view_header=RAID 舌帖 辛芝
+view_device=舌帖 督析
+view_level=RAID 呪層
+view_status=雌殿
+view_mounted=醗失 雌殿戚檎辞 $1拭 原錘闘鞠嬢 赤製
+view_active=醗失 雌殿脊艦猿?
+view_inactive=搾醗失
+view_super=慎姥 輯遁 鷺系脊艦猿?
+view_parity=鳶軒銅 硝壱軒葬
+view_chunk=帰嬢軒 滴奄
+view_stop=搾醗失鉢
+view_start=醗失鉢
+view_mkfs=ext2 督析 獣什奴 拙失..
+view_disks=RAID 督銅芝
+view_spares=森搾 督銅芝
+view_size=紫遂 亜管廃 滴奄
+view_resync=仙疑奄鉢 刃戟晴
+view_down=(陥錘)
+view_cannot=戚 RAID 舌帖澗 薄仙 原錘闘鞠嬢 赤奄 凶庚拭 呪舛拝 呪 蒸柔艦陥.
+
+mkfs_title=督析 獣什奴 拙失
+mkfs_header=戚 丞縦生稽 $1拭 歯 Linux EXT2 督析 獣什奴聖 姥逐拝 呪 赤柔艦陥. 奄糎税 <b>乞窮</b> 汽戚斗亜 肢薦桔艦陥!
+mkfs_options=歯 Linux 督析 獣什奴 辛芝
+mkfs_err=督析 獣什奴聖 拙失馬走 公梅柔艦陥
+mkfs_exec=$1 誤敬 叔楳 掻..
+mkfs_failed=.. 誤敬聖 叔楳馬走 公梅柔艦陥!
+mkfs_ok=.. 誤敬聖 刃戟梅柔艦陥
+
+emkraid=<tt>mkraid</tt> 叔鳶: $1
+eraidstop=<tt>raidstop</tt> 叔鳶: $1
+eraidstart=<tt>raidstart</tt> 叔鳶: $1
+eforce=戚 RAID研 悪薦稽 段奄鉢背醤 杯艦陥: $1
+
+log_create=$1 RAID 舌帖 $2 拙失喫
+log_stop=RAID 舌帖 $1 搾醗失鉢喫
+log_start=RAID 舌帖 $1 醗失鉢喫
+log_delete=RAID 舌帖 $1 肢薦喫
+log_mkfs=$2拭 $1 督析 獣什奴 拙失喫
+

@@ -1,0 +1,23 @@
+<header>User ID</header>
+The user ID or UID is what the system really uses to enforce permissions
+on files and processes. If two users have the same UID, they will be able
+to access each others files - so every user should have a unique UID.<p>
+
+When creating a new user, you will have the following options:
+<dl>
+<dt>Automatic
+<dd>The UID will be assigned automatically by Webmin, based on those currently in use.
+<dt>Calculated
+<dd>The UID will be computed based on the username, using a checksum algorithm.
+<dt>Entered
+<dd>The final option allows you to enter whatever UID you like.
+</dl><p>
+
+The <tt>root</tt> user always has a UID of 0. If you create another user
+with UID 0, that user will have the same powers as <tt>root</tt>. <p>
+
+If you are editing an existing user and change the UID, the
+<a href=chuid>Change user ID on files?</a> option determines which files
+(if any) have their ownership changed. <p>
+<hr>
+

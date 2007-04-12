@@ -1,0 +1,88 @@
+index_title=Schedulazione Cron Job
+index_user=Utente
+index_active=Attivo?
+index_command=Comando
+index_none=Non ci sono cron job in questo sistema
+index_none2=Non ci sono cron job a cui tu hai accesso.
+index_create=Crea un nuovo cron job
+index_allow=Controllo accesso utente al cron job
+index_return=cron list
+
+edit_title=Modifica Cron Job
+create_title=Creazione Cron Job
+edit_ecannot=Non sei autorizzato a modificare i cron job di questo utente
+edit_details=Dettagli Job
+edit_user=Esegui cron job come
+edit_active=Attivo?
+edit_commands=Comandi
+edit_command=Comando
+edit_input=Input al comando
+edit_when=Quando eseguirlo
+edit_mins=Minuti
+edit_hours=Ore
+edit_days=Giorni
+edit_months=Mesi
+edit_weekdays=Giorni della settimana
+edit_all=Tutti
+edit_selected=Selezionati ..
+edit_run=Esegui Adesso
+edit_return=cron job
+edit_ctrl=Nota: Ctrl-click (o comando-click sul Mac) per selezionare o deselezionare minuti, ore, giorni e mesi.
+edit_special1=Esegui su schedulazione selezionata ..
+edit_special0=Esegui al momento selezionato qui sotto ..
+edit_special_hourly=Ogni ora
+edit_special_daily=Ogni giorno (a mezzanotte)
+edit_special_weekly=Ogni settimana (di domenica)
+edit_special_monthly=Ogni mese (al primo del mese)
+edit_special_yearly=Ogni anno (al primo gennaio)
+edit_special_reboot=Alla partenza del sistema
+
+save_err=Salvataggio cron job fallito
+save_ecmd=Non hai inserito il comando da eseguire
+save_euser=Devi selezionare un utente
+save_euser2=L'utente '$1' non esiste
+save_eallow=L'utente '$1' non è autorizzato ad accedere a cron
+save_ecannot=Non sei autorizzato a creare o modificare cron job per '$1'
+save_enone=Non hai scelto nessun $1 da eseguire
+
+allow_title=Controllo Accesso Cron
+allow_desc=Questo form permette di controllare quali utenti possono creare e eseguire cron job.
+allow_ecannot=Non puoi controllare l'accesso utenti a cron
+allow_all1=Nega a tutti gli utenti
+allow_all2=Nega a tutti gli utenti tranne root
+allow_all3=Permetti a tutti gli utenti
+allow_allow=Permetti solo agli utenti elencati
+allow_deny=Nega solo agli utenti elencati
+
+env_title=Cron Environment
+env_ecannot=Non puoi modificare l'environment di cron per questo utente
+env_desc=Cron Environment per $1
+env_name=Nome Variabile
+env_value=Valore
+env_ename='$1' non è un nome di variabile valido
+
+exec_title=Esegui Cron Job
+exec_ecannot=Non sei autorizzato ad eseguire cron job per questo utente
+exec_cmd=Output dal comando $1 ..
+exec_none=Nessun output generato
+
+acl_users=Possibilità di modifica cron job per
+acl_all=Tutti gli utenti
+acl_this=L'utente webmin corrente
+acl_only=Solo utenti
+acl_except=Tutti tranne utenti
+acl_control=Possibilità di controllare l'accesso utenti a cron?
+acl_uid=Utenti con UID da...a
+acl_gid=Utenti con gruppo primario
+
+log_modify=Modificato cron job per $1
+log_modify_l=Modificato cron job "$2" per $1
+log_create=Creato cron job per $1
+log_create_l=Creato cron job "$2" per $1
+log_delete=Cancellato cron job per $1
+log_exec=Esecuzione cron job come $1
+log_exec_l=Esecuzione cron job "$2" come $1
+log_allow=Cambiato accesso utente a cron
+
+ecopy=È stato individuato un errore nella nuova configurazione di Cron : $1 $2
+

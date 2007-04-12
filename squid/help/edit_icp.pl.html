@@ -1,0 +1,42 @@
+<header>Inne proxy</header>
+
+<b>Inne buforuj±ce serwery proxy</b>: Pokazane s± wszystkie (równoprawne,
+macierzyste i multicastowe) aktualnie skonfigurowane serwery proxy. Naci¶nij
+na nazwê hosta lub adres wybranego serwera, aby zmieniæ lub obejrzeæ jego
+aktualn± konfiguracjê. <p>
+
+<b>Sprowadzaæ bezpo¶rednio URL-e zawieraj±ce</b>: Domy¶lnie ".cgi"
+i&nbsp;"?". Pozwala zmusiæ Squida, aby zawsze sprowadza³ strony pewnego
+rodzaju bezpo¶rednio z&npsp;¼ród³owego serwera. Zazwyczaj opcja ta nie
+wymaga zmiany jak wiêkszo¶æ rzeczy, które s± obs³ugiwane przez Squida
+automatycznie. <p>
+
+<b>Czas przeterminowania zapytania ICP</b>: Domy¶lnie ma warto¶æ
+'optymaln±'. Je¶li chcesz nadpisaæ warto¶æ ustalon± przez Squida, podaj
+warto¶æ niezerow±. W&nbsp;starych wersjach Squida warto¶ci± domy¶ln± by³o
+2000. <p>
+
+<b>Czas przeterminowania multicastu ICP</b>: Domy¶lnie 2000&nbsp;ms, czyli
+2&nbsp;sekundy. Do uczestników wymiany multicastowej Squid regularnie
+wysy³a "sondê" ICP, aby policzyæ ilu innych uczestników s³ucha na zadanym
+adresie multicastowym. Ta warto¶æ okre¶la, jak d³ugo Squid powinien czekaæ
+na odpowiedzi, aby wszystkie policzyæ. <p>
+
+<b>Czas uznania partnera za nieczynnego</b>: Domy¶lnie 10 sekund. Ta opcja
+decyduje, jak d³ugo Squid bêdzie czeka³ przed uznaniem partnera proxy za
+nieczynnego. Je¶li w&nbsp;ci±gu tego czasu nie nadejdzie odpowied¼ ICP,
+Squid uzna, ¿e partner nie dzia³a i&nbsp;nie bêdzie oczekiwa³ od niego
+¿adnych dalszych odpowiedzi ICP. Jednak¿e, bêdzie on nadal wysy³a³ zapytania
+ICP i&nbsp;zaznaczy sobie, ¿e partner dzia³a po otrzymaniu od niego
+pierwszej odpowiedzi ICP. <p>
+
+Ten okres przeterminowania ma równie¿ znaczenie, gdy Squid oczekuje na
+odpowied¼ ICP od innych proxy. Je¶li od chwili otrzymania ostatniej
+odpowiedzi ICP up³ynê³o wiêcej sekund, ni¿ podano w powy¿szej opcji, Squid
+nie bêdzie oczekiwa³ odpowiedzi ICP na swoje nastêpne zapytanie. Wobec tego,
+je¶li ustawiony przez Ciebie czas pomiêdzy wysy³anymi zapytaniami ICP jest
+wiêkszy od tego czasu przeterminowania, bêdziesz obserwowa³ mnóstwo zapytañ
+wysy³anych BEZPO¦REDNIO do ¼ród³owych serwerów zamiast do Twoich
+macierzystych proxy. <p>
+
+<hr>

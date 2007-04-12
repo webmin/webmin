@@ -1,0 +1,12 @@
+syslog_conf=Sökväg till syslog-inställningsfil,0
+m4_conf=Syslog-inställningar tolkas med m4?,1,1-Ja,0-Nej
+m4_path=Sökväg till m4,0
+sync=Kunna slå av synkning efter varje meddelande?,1,1-Ja,0-Nej
+pipe=Stöd för loggning till pipor?,1,2-Till kommandon,1-Till namngivna pipor,0-Nej
+pri_dir=Stöd för avancerat prioritetsval?,1,2-FreeBSD-typ,1-Linux-typ,0-Ingen
+pri_all=Stöd för alla prioriteter?,1,1-Ja,0-Nej
+tags=Stöd för taggade sektioner?,1,1-Ja,0-Nej
+pid_file=Syslog-PID-fil,3,Ingen
+syslogd=Sökväg till syslogserver,0
+facilities=Resurser som stöds,0
+lines=Standardantal rader som ska visas,0

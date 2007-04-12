@@ -1,0 +1,29 @@
+<header>Máquinas Autorizadas</header>
+
+En esta página puedes controlar qué máquinas están autorizadas a acceder a
+tu servidor de base de datos y qué clase de autenticación necesitarán.
+Cada regla de control de acceso se puede aplicar a una sola máquina, a
+toda una red, a todas las máquinas de una red o sólo a los usuarios que
+se conecten desde esta máquina. Además, cada regla se puede aplicar a una
+base de datos seleccionada o a todas las bases de datos del servidor. <p>
+
+Al seleccionar el modo de autenticación para las máquinas autorizadas,
+están disponibles las siguienes opciones:
+<dl>
+<dt><b>Clave de acceso de texto en claro</b>
+<dd>El usuario debe de suministrar una clave de acceso que coincida con la
+    puesta en la página de <tt>Usuarios de PostgreSQL</tt>. <p>
+<dt><b>Clave de acceso encriptada</b>
+<dd>El usuario debe de suministrar una clave de acceso cuya encriptación
+    coincida con la de <tt>Usuarios de PostgreSQL</tt>. <p>
+<dt><b>No se requiere autenticación</b>
+<dd>No se necesita clave de acceso de ningún tipo. <p>
+<dt><b>Rechazar conexión</b>
+<dd>No permitir conexiones desde esta máquina. Esto es útil para denegar
+    el acceso desde máquinas específicas siempre que hayas garantizado
+    el aceso a toda una red.
+    <p>
+</dl>
+
+<hr>
+

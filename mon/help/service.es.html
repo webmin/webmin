@@ -1,0 +1,290 @@
+<header>Ayuda de MON sobre las Definiciones de Servicios</header>
+<p>Esta es la segunda y última etapa en la configuración de MON.
+<p>Se muestran los valores por defecto para los servicios obligatorios 
+<marcado en color ROJO>. Vea el tema de ayuda correspondiente a continuación 
+para más ayuda acerca de las Definiciones de Servicios.
+<p>Para <b>"mail.alert"</b>, asegúrese de que el demonio <b>"sendmail"</b>
+está iniciado en la máquina.
+
+<H3>Definiciones de Servicios</H3>
+
+<P>
+<DL COMPACT>
+<DT><B>service</B><I> servicename</I>
+
+<DD>
+Una definición de servicio comienza por la palabra clave <B>service</B>
+seguida de una palabra, que es la etiqueta de este servicio.
+<P>
+Los componentes de un servicio son un intervalo, un monitor y una o más
+definiciones de periodos de tiempo, como se definen a continuación.
+<P>
+Si se define un nombre de servicio &quot;default&quot; dentro de un grupo
+de coincidencia llamada &quot;dafault&quot; (ver arriba), entonces se usará
+la definición "por defecto/por defecto" para el manejo de eventos de MON
+desconocidos.
+<P>
+<DT><B>interval</B><I> timeval</I>
+
+<DD>
+La palabra clave <B>interval</B> seguida por un valor de tiempo especifica
+la frecuencia con que se activará un guión de monitorización. Los valores
+de tiempo se definen como &quot;30s&quot;, &quot;5m&quot;, &quot;1h&quot;, 
+o &quot;1d&quot;, significando 30 segundos, 5 minutos, 1 hora, o 1 día. La
+parte numérica puede ser una fracción, como &quot;1.5h&quot; o una hora y
+media. Este formato para especificar tiempo lo conoceremos como <I>timeval</I>.
+
+<P>
+<DT><B>traptimeout</B><I> timeval</I>
+
+<DD>
+Esta palabra clave tiene como argumento la misma especificación de tiempo
+que <B>interval</B><I>,</I> y hace que el servicio espere un evento desde
+una fuente externa al menos con esa frecuencia, de lo contrario se
+anotará un fallo. Esto se usa para un servicio tipo heartbit.
+<P>
+<DT><B>trapduration</B><I> timeval</I>
+
+<DD>
+Si se recibe un evento, habitualmente el estado del servicio al que se
+dirige dicho evento permanecerá constante. Si se especifica <B>trapduration</B>
+el servicio se mantendrá en estado fallido el tiempo indicado por 
+<I>timeval</I>, para a continuación cambiar a &quot;success&quot;.
+<P>
+<DT><B>randskew</B><I> timeval</I>
+
+<DD>
+Más que planificar la ejecución del guión de monitorización al inicio de
+cada intervalo, ajustar aleatoriamente el intervalo especificado por el
+parámetro <B>interval</B> hasta <B>randskew</B> unidades en cualquier sentido.
+
+El valor de la deriva se especific como el del parámetro <B>interval</B>: 
+&quot;30s&quot;, &quot;5m&quot;, etc... Por ejemplo, si <B>interval</B> es
+1m, y <B>randskew</B> es &quot;5s&quot;, entonces <I>mon</I> planificará el
+guión de monitorización para ejecutarse con entre 55 y 65 segundos de
+intervalo. La intención es ayudar a distribuir la carga del servidor cuando
+se monitorizan muchos servicios con los mismos intervalos.
+<P>
+<DT><B>monitor</B><I> nombre-monitor [arg...]</I>
+
+<DD>
+La palabra clave <B>monitor</B> seguida de un nombre de guión y sus
+argumentos especifica el monitor que ejecutar cuando expire el
+temporizador. Se mantienen las convenciones del intérprete de comandos en
+cuanto al "quoting" de los argumentos que pasar al guión de monitorización.
+El guión se lanza desde el directorio indicado por el argumento <B>-s</B>,
+y las siguientes palabras proporcionadas son los argumentos del programa de
+monitorización, seguidos de la lista de máquinas en el grupo a que hace
+referencia el grupo de vigilancia actual. Si la línea de monitor acaba con
+un &quot;;;&quot; como palabra separada, no se añaden los grupos de
+máquinas a la lista de argumentos cuando se lanza el programa.
+<P>
+<DT><B>allow_empty_group</B>
+
+<DD>
+La opción <B>allow_empty_group</B> permite lanzar un monitor incluso cuando
+el grupo de máquinas de esta vigilancia está vacío por estar desactivadas
+las máquinas. El comportamiento por defecto es no lanzar el monitor cuando
+todas las máquinas de un grupo están desactivadas.
+<P>
+<DT><B>description</B><I> descriptiontext</I>
+
+<DD>
+El texto a continuación de <B>description</B> lo consultan los programas
+cliente, y se le pasa a las alertas y monitores a través de una variable de
+entorno. Debería contener una breve descripción del servicio, adecuada para
+incluirla en un correo electrónico o en una página web.
+<P>
+<DT><B>exclude_hosts</B><I> host [host...]</I>
+
+<DD>
+Cualquier máquina listada a continuación de <B>exclude_hosts</B> se
+excluirá de la comprobación del servicio.
+<P>
+<DT><B>exclude_period</B><I> periodspec</I>
+
+<DD>
+No ejecutar un monitor planificado durante el periodo de tiempo
+identificado por <I>periodspec</I>.
+
+<P>
+<DT><B>depend</B><I> dependexpression</I>
+
+<DD>
+La palabra clave <B>depend</B> se usa para especificar una expresión de
+dependencia, que evalúa a verdadero o falso, en sentido booleano. Las
+dependencias son verdaderas expresiones de PERL, y como tales deben cumplir
+todas sus reglas sintácticas. Las expresiones se evalúan en su propio
+espacio de paquete para que no tengan efectos laterales indeseados. Si se
+encuentra un error de sintaxis durante la evaluación de la expresión, se
+registra tal hecho mediante syslog.
+<P>
+Antes de evaluar la expresión se llevan a cabo las siguientes sustituciones
+en la expresión: las frases que parecen &quot;grupo:servicio&quot; se
+sustituyen por el valor del estado operacional actual del servicio
+especificado. Estos estados operacionales se calculan de manera recursiva,
+de manera que si el servicio A depende del servicio B, y el servicio B
+depende del C, entonces el servicio A depende del C. Los estados
+operacionales exitosos (que evalúan a &quot;1&quot;) son
+&quot;STAT_OK&quot;, &quot;STAT_COLDSTART&quot;,
+&quot;STAT_WARMSTART&quot;, y &quot;STAT_UNKNOWN&quot;. Se puede usar la 
+palabra &quot;SELF&quot; (todo en mayúsculas) en el grupo
+(&quot;SELF:service&quot;), y es una abreviatura del grupo de vigilancia
+actual.
+<P>
+Puede usar esta característica para controlar las alertas de los servicios
+que dependen de otros, por ejemplo, una prueba de SMTP que depende de que
+la máquina sea alcanzable mediante ping.
+<P>
+<DT><B>dep_behavior</B><I> {a|m}</I>
+
+<DD>
+La evaluación de los grafos de dependencias pueden controlar la eliminación
+de alertas o invocaciones de monitores.
+<P>
+<B>Eliminación de alertas</B>.
+
+Cuando esta opción vale &quot;a&quot; la expresión de dependencias se
+evaluará después de que el monitor del servicio termine o se reciba un
+evento. Sólo se enviará una alerta si la evaluación tiene éxito,
+significando que ninguno de los nodos en el grafo de dependencias informó
+de fallo.
+<P>
+<B>Eliminación de monitores</B>.
+
+Cuando esta opción vale &quot;m&quot;, la expresión de dependencias se
+evalúa antes de que se ejecute el monitor del servicio. Si la evaluación
+tiene éxito se ejecutará el monitor. En cualquier otro caso, el monitor no
+se ejecutará y el estado del servicio permanecerá sin cambios.
+<P>
+</DL>
+<A NAME="lbAO">&nbsp;</A>
+<H3>Definiciones de Periodo</H3>
+
+<P>
+Se usan los periodos para definir las condiciones que deberían permitir el
+reparto de las alertas.
+<P>
+<DL COMPACT>
+<DT><B>period</B><I> [label:] periodspec</I>
+
+<DD>
+Un periodo agrupa una o más alarmas y variables que controlan cuán a menudo
+sucede una alerta cuando sucede un fallo. La palabra clave <B>period</B>
+tiene dos formas. La primera toma como argumento una especificación de
+periodo del módulo de PERL 5 de Patrick Ryan Time::Period. Consulte
+&quot;perldoc Time::Period&quot; para más información.
+<P>
+La segunda forma necesita una etiqueta seguida de una especificación de
+periodo, definida arriba. La etiqueta consiste de caracteres alfabéticos o
+carácter de subrayado seguido de cero o más caracteres alfanuméricos o de
+subrayado, terminados por un carácter de dos puntos. Esta forma permite
+múltiples periodos con la misma definición de periodo. Uno de los usos es
+disponer de una definición de periodo que no tenga parámetros
+<B>alertafter</B> o <B>alertevery</B> para un determinado periodo de
+tiempo, y otra para el mismo periodo de tiempo con un conjunto diferente de
+alertas que no contengan esos parámetros.
+<P>
+<DT><B>alertevery</B><I> timeval</I>
+
+<DD>
+La palabra clave <B>alertevery</B> (en el interior de una definición de 
+<B>period</B>) toma el mismo tipo de argumento que la variable <B>interval</B>
+y limita el número de veces que se envía una alerta cuando el servicio
+permanece indisponible. Por ejemplo, si el intervalo es &quot;1h&quot;, 
+entonces las alertas en ese periodo sólo se dispararán una vez a la hora.
+Si se omite la palabra clave <B>alertevery</B> en una entrada de periodo,
+se enviará una alerta cada vez que se detecte un fallo. Por defecto, si la
+salida de dos fallos consecutivos cambia, entonces se ignorará el intervalo
+<B>alertevery</B>. Si la palabra &quot;summary&quot; es el último
+argumento, sólo se considerarán las líneas de salida del resumen cuando se
+compare la salida de fallos consecutivos.
+<P>
+<DT><B>alertafter</B><I> num</I>
+
+<DD>
+<P>
+<DT><B>alertafter</B><I> num timeval</I>
+
+<DD>
+La palabra clave <B>alertafter</B> (en el interior de una sección 
+<B>period</B>) tiene dos formas: sólo con el argumento &quot;num&quot;, o
+con los argumentos &quot;num timeval&quot;. En la primera forma sólo se
+invocará una alerta tras &quot;num&quot; fallos consecutivos.
+<P>
+En la segunda forma, los argumentos son un entero positivo seguido de un
+intervalo, como se describión antes en la variable <B>interval</B>. Si se
+especifican estos parámetros las alertas de ese periodo sólo se llamarán
+después de que sucedan tantos fallos durante ese intervalo. Por ejemplo, si
+se indica <B>alertafter</B> con los argumentos &quot;3&nbsp;30m&quot;,
+entonces la alerta se llamará si suceden 3 fallos en 30 minutos.
+<P>
+<DT><B>numalerts</B><I> num</I>
+
+<DD>
+<P>
+Esta variable le dice al servidor que no llame más de <I>num</I> alertas
+durante un fallo. El contador de alertas es propio de cada periodo, y se
+pone a cero tras cada éxito.
+<P>
+<DT><B>comp_alerts</B>
+
+<DD>
+<P>
+Si se especifica esta opción, entonces las "upalerts" sólo se llamarán si
+la alerta &quot;down&quot; correspondiente ya ha sido llamada.
+<P>
+<DT><B>alert</B><I> alert [arg...]</I>
+
+<DD>
+Un periodo puede contener múltiples alertas, que se disparan cuando sucede
+un fallo en el servicio. Una alerta se especifica con la palabra clave
+<B>alert</B>, seguida de un parámetro <B>exit</B> opcional, y argumentos
+que se interpretan de igual manera que en la definición de <B>monitor</B>,
+pero sin la excepción del &quot;;;&quot;. El parámetro <B>exit</B> toma la
+forma de <B>exit=x</B> o <B>exit=x-y</B> y tiene el efecto de que sólo se
+llame a la alerta si el estado de salida del guión de monitorización cae
+dentro del rango del parámetro <B>exit</B>. Si, por ejemplo, la línea de la
+alerta es <I>alert exit=10-20 mail.alert mis</I>, entonces
+<I>mail-alert</I> sólo se invocará (con <I>mis</I> como argumentos) cuando
+el valor de salida del programa sea entre 10 y 20. Esta característica
+permite disparar diferentes alertas ante diferentes niveles de severidad
+(como cuando el espacio libre en disco cae del 8% al 3%).
+<P>
+Vea la sección <B>PROGRAMAS DE ALERTA</B> anterior para una lista de los
+parámetros que MON pasará automáticamente para alertar a los programas.
+<P>
+<DT><B>upalert</B><I> alert [arg...]</I>
+
+<DD>
+Una <B>upalert</B> es lo contrario de una <B>alert</B>. Se llama a una
+"upalert" cuando un servicio hace la transición desde un estado de fallo a
+uno de funcionamiento. El guión <B>upalert</B> se llama proporcionando los
+mismos parámetros que al guión <B>alert</B>, con el añadido del parámetro 
+<B>-u</B>, que permite indicar al guión de alerta que se le está llamando
+como un "upalert" Se pueden especificar múltiples "upalerts" en una
+especificación determinada de periodo. Dese cuenta de que el comportamiento
+por defecto es que se enviará un "upalert" sin importar si se enviaron
+previamente alertas &quot;down&quot;, puesto que las "upalerts" se disparan
+en una transición de estados. Configure la opción por periodo 
+<B>comp_alerts</B> para aparejar las "upalerts" con las alertas
+&quot;down&quot;.
+<P>
+<DT><B>startupalert</B><I> alert [arg...]</I>
+
+<DD>
+Una <B>startupalert</B> sólo se llama cuando el servidor <B>mon</B> inicia
+su ejecución.
+<P>
+<DT><B>upalertafter</B><I> timeval</I>
+
+<DD>
+El parámetro <B>upalertafter</B> se especifica como una cadena de texto que
+sigue la sintaxis del parámetro <B>interval</B> (&quot;30s&quot;,
+&quot;1m&quot;, etc.), y controla la activación de una <B>upalert</B>.
+
+Si un servicio se recupera tras haber estado caído un tiempo igual o
+superior al valor de esta opción se llamará una <B>upalert</B>. Use esta
+opción para evitar la llamada a los "upalerts" debidas a &quot;blips&quot;
+(breves indisponibilidades del servicio).
+<P>

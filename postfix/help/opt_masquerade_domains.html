@@ -1,0 +1,17 @@
+<header>Address masquerading</header>
+
+<center><tt>masquerade_domains</tt></center>
+<hr>
+
+Address masquerading is a method to hide all hosts below a domain behind their
+mail gateway, and to make it appear as if the mail comes from the gateway
+itself, instead of from individual machines.
+
+<p>
+
+Address masquerading is disabled by default. To enable, specify one or more
+domain names separated by whitespace or commas. For example: <tt>$mydomain</tt>
+; in this example, addresses of the form <tt>user@host.$mydomain</tt> would be
+rewritten to <tt>user@$mydomain</tt>.
+
+<hr>

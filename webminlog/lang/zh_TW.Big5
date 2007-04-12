@@ -1,0 +1,59 @@
+index_title=Webmin 動作紀錄
+index_header=搜尋Webmin動作紀錄
+index_uall=由任一使用者
+index_user=由使用者
+index_nuser=由任何使用者除了
+index_mall=由任何模組
+index_module=以模組
+index_tall=任何時間
+index_today=僅今日
+index_time=在 $1 和 $2 之間
+index_search=搜尋
+index_return=搜尋方式
+index_nolog=<b>注意</b> - <a href='$1'>紀錄Webmin</a> 目前沒有啟用，所以在搜尋動作紀錄檔案中將不會有任何結果
+index_nologfiles=<b>注意</b> - <a href='$1'>紀錄檔案變更</a>目前沒有啟用，所以詳細紀錄動作將不會包含檔案變更和執行命令
+
+search_title=搜尋結果
+search_date=日期
+search_time=時間
+search_user=使用者
+search_host=使用者地址
+search_module=模組
+search_action=動作
+search_none=沒有符合您的搜尋的動作。
+search_return=搜尋結果
+search_sid=在會話 $2 中使用者 $1 的動作
+search_critall=所有被記錄的動作
+search_crit=被記錄的動作
+search_critu=由使用者 $1
+search_critnu=由所有人除了 $1
+search_critm=來自模組 $1
+search_critt=在 $1 和 $2 之間
+search_critt2=在 $1 上
+search_config=改變模組配置
+search_etime=錯誤的開始或結束時間
+search_err=搜尋錯誤
+
+view_title=動作內容
+view_header=被記錄的動作 $1 內容
+view_action=描述
+view_module=Webmin 模組
+view_script=由腳本產生
+view_user=Webmin 使用者
+view_ip=使用者 IP 或主機名稱
+view_sid=Session ID
+view_time=日期和時間
+view_nofiles=對此動作沒有記錄配置檔案的更動
+view_type_create=新增檔案 $1
+view_type_modify=改變檔案 $1
+view_type_delete=刪除檔案 $1
+view_type_exec=執行命令
+view_type_sql=在資料庫 $1 中執行 SQL 語法
+view_type_kill=發送信號 $1 到 PID $2
+view_type_symlink=新增符號連接 $1 -&gt; $2
+view_type_unsymlink=刪除符號連接 $1 -&gt; $2
+view_type_resymlink=更新符號連接 $1 -&gt; $2
+view_type_mkdir=新增目錄 $1
+view_type_rmdir=刪除目錄 $1
+view_type_rename=將 $1 改名為 $2
+

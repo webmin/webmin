@@ -1,0 +1,79 @@
+main_return=Voltar a $1
+main_homepage=Home Page
+main_feedback=Comentários..
+main_switch=Trocar utilizador..
+main_version=Versão $1 em servidor $2 ($3)
+main_title=Webmin $1 em servidor $2 ($3)
+
+header_webmin=Índex do Webmin
+header_module=Índex do Módulo
+header_help=Ajuda..
+header_config=Configuração do Módulo
+header_servers=Servidores Webmin
+
+index=índex
+yes=Sim
+no=Não
+save=Guardar
+create=Criar
+delete=Apagar
+find=Procurar
+error=Erro
+
+chooser_title1=Escolher Ficheiro..
+chooser_title2=Escolher Directório..
+chooser_dir=Directório de $1
+chooser_ok=Ok
+
+users_title1=Seleccionar Utilizadores..
+users_title2=Seleccionar Utilizador..
+users_sel=Utilizadores Seleccionados
+users_all=Todos os Utilizadores
+users_ok=Ok
+users_cancel=Cancelar
+users_clear=Limpar
+
+groups_title1=Seleccionar Grupos..
+groups_title2=Seleccionar Grupo..
+groups_all=Todos os Grupos
+groups_sel=Grupos Seleccionados
+groups_ok=Ok
+groups_cancel=Cancelar
+groups_clear=Limpar
+
+config_ecannot=Você não está autorizado para configurar este módulo
+config_title=Configuração
+config_dir=Para o módulo $1
+config_header=Opções configuráveis para $1
+config_none=Nenhum
+config_eaccess=Você não está autorizado para aceder a este módulo
+
+help_err=Erro ao mostrar a ajuda
+help_epath=Falta o caminho para o ficheiro de ajuda
+help_efile=Erro ao ler o ficheiro de ajuda $1
+help_eheader=Falta a  &lt;header&gt; secção
+help_einclude=Erro ao incluir $1
+help_eif=$1 falhou : $2
+help_eexec=$1 falhou : $2
+
+month_1=Janeiro
+month_2=Fevereiro
+month_3=Março
+month_4=Abril
+month_5=Maio
+month_6=Junho
+month_7=Julho
+month_8=Agosto
+month_9=Setembro
+month_10=Outubro
+month_11=Novembro
+month_12=Dezembro
+
+day_0=Domingo
+day_1=Segunda-Feira
+day_2=Terça-Feira
+day_3=Quarta-Feira
+day_4=Quinta-Feira
+day_5=Sexta-Feira
+day_6=Sábado
+

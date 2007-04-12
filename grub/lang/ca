@@ -1,0 +1,69 @@
+index_title=Gestor d'Engegada GRUB
+index_add=Afegeix una nova opció d'engegada
+index_global=Edita les Opcions Globals
+index_globalmsg=Edita les opcions globals d'engegada que s'apliquen a totes les opcions del menú d'engegada, i tria el dispositiu on està instal·lat el GRUB.
+index_install=Instal·la el GRUB
+index_installmsg=Instal·la el gestor d'engegada GRUB a $1 per mostrar les opcions de dalt en el moment d'engegar. Això obviarà qualsevol altre gestor d'engegada existent, com ara el LILO, i pot fer que el sistema no es pugui engegar!
+index_none=No has definit cap opció d'engegada. Assegura't que n'afegeixes almenys una abans d'instal·lar el grub.
+index_efile=No s'ha trobat el fitxer de menús del GRUB $1. Pot ser que el GRUB no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_epath=No s'ha trobat l'executable del GRUB $1. Pot ser que el GRUB no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_return=a la llista d'opcions
+
+title_add=Afegeix Opció d'Engegada
+title_edit=Edita Opció d'Engegada
+title_header=Detalls de l'opció del menú d'engegada
+title_title=Títol de l'opció
+title_root=Partició d'engegada
+title_noverify=No muntis ni verifiquis la partició
+title_other=Altres
+title_sel=Seleccionat
+title_boot=Sistema operatiu a engegar
+title_kernel=Kernel Linux
+title_kfile=Camí del kernel
+title_args=Opcions del kernel
+title_initrd=Fitxer ramdisk inicial
+title_chain=Altres SO
+title_chain_def=Del primer sector de la partició
+title_chain_file=Del fitxer <i>chainloader</i>
+title_makeactive=Fes activa la partició arrel
+title_none=Cap (entrada de menú inactiva)
+title_err=No he pogut desar l'opció d'engegada
+title_etitle=Hi falta el títol de l'opció
+title_eroot=Hi falta la partició arrel
+title_ekernel=Hi falta el camí del kernel o bé no és vàlid
+title_echain=Hi falta el fitxer <i>chainloader</i> o bé no és vàlid
+title_edev=Dispositiu de particions arrel $1 no suportat
+title_einitrd=Hi falta el nom del fitxer ramdisk inicial
+title_lock=Contrasenya bloquejada
+
+global_title=Opcions Globals
+global_header=Opcions globals del menú d'engegada
+global_default=Opció d'engegada per defecte
+global_fallback=Opció alternativa d'engegada
+global_first=Primera de la llista
+global_timeout=Temps límit abans de carregar l'opció per defecte
+global_forever=Espera indefinidament
+global_secs=segons
+global_install=Instal·la el GRUB al disc/partició
+global_sel=Seleccionat
+global_other=Altres
+global_password=Contrasenya d'engegada
+global_none=Cap
+global_password_file=Si s'introdueix una contrasenya, fes servir el fitxer de menú:
+global_pass
+global_err=No he pogut desar les opcions globals
+global_etimeout=Hi falta el temps límit o bé no és vàlid
+global_edev=Disc/partició d'instal·lació $1 no suportat
+global_eother=Hi falta el disc/partició o bé no és vàlid
+global_epassword=Hi falta la contrasenya d'engegada o bé no és vàlida
+global_epasswordfile=Hi falta el fitxer alternatiu de menú o bé no és vàlid
+
+install_title=Instal·la el GRUB
+install_err=No he pogut instal·lar el GRUB
+install_efind=No he pogut trobar el fitxer de menú
+install_desc=Instal·lant el GRUB a $1 amb les ordres $2 i $3...
+install_ok=...instal·lació completa.
+install_failed=...la instal·lació ha fallat!
+
+
+

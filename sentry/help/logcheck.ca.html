@@ -1,0 +1,36 @@
+<header>Configuració de Logcheck</header>
+
+Logcheck és un programa que monitoritza automàticament els fitxers de
+registre del sistema de forma regular i notifica per correu les violacions
+de seguretat. Busca els missatges generats per diversos programes
+(incloent-hi Portsentry i Hostsentry) que indiquen intents de pirateig,
+i genera un informe que s'envia per correu a l'adreça escollida. <p>
+
+Les opcions d'aquesta pàgina són:
+<ul>
+<li><b>Envia els informes a<br>
+   L'adreça de correu on s'envien els informes de violació de seguretat. <p>
+
+<li><b>Missatges de registre de pirateig</b><br>
+   Una llista de missatges que, trobats en algun dels fitxers de registres,
+   indiquen un intent de pirateig. <p>
+
+<li><b>Missatges de registre de violació</b><br>
+   Una llista de missatges que indiquen una violació potencial de seguretat.
+   Tots els missatges que estiguin en aquesta llista excepte els de la llista
+   'Excepte' de sota seran ignorats. <p>
+
+<li><b>Missatges de registre ignorats</b><br>
+   Tots els missatges de registre d'aquest camp seran sempre ignorats,
+   fins i tot si coincideixen amb una de les cadenes de missatges de 
+   violació o pirateig. <p>
+</ul>
+
+Al peu de la pàgina, hi ha un formulari per triar exactament quan s'ha
+d'executar Logcheck. De tota manera, si la instal·lació de Logcheck fa
+servir un script cron que el força a executar-se cada hora o cada dia, 
+aquest formulari no es mostrarà. <p>
+
+<p>
+
+

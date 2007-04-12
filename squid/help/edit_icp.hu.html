@@ -1,0 +1,16 @@
+<header>Egyéb gyorstárak; fordította: Szakács Gergely</header><p>
+
+<b>Egyéb proxy gyorstár kiszolgálók</b>: Itt van felsorolva az összes, jelenleg konfigurált testvér, szülõ és multicast gyorstár. Kattintson a gazdanévre vagy a címre, hogy módosítsa, vagy megtekintse a teljes konfigurációt.<p>
+
+<b>A következõket tartalmazó URL-ek közvetlen lehozatala</b>: Alapértelmezés szerint ".cgi" és "?". Ennek segítségével beállíthatja, hogy a Squid mindig a forrásszerverrõl olvasson be bizonyos tartalomtípusokat. Normális esetben ezen az opción nem szükséges változtatni, mivel a legtöbb dolgot a Squid külsõ beavatkozás nélkül is megoldja.<p>
+
+<b>ICP-kérés holtideje</b>: Alapértelmezés szerint az 'optimális' érték. Ha felül akarja írni a Squid által meghatározott értéket, állítsa ezt az opciót bármely, nullától eltérõ értékre. A Squid korábbi verzióiban az alapértelmezett érték 2000 volt.<p>
+
+<b>Multicast ICP holtidõ</b>: Alapértelmezés szerint 2000 msec, vagy 2 másodperc. Multicast felek esetén a Squid rendszeresen ICP "szondákat" küld el annak kiderítésére, hogy hány további felhasználó kapcsolódik a megadott multicast címre. Ez az érték meghatározza, hogy a Squid mennyi ideig várjon a válaszok megszámlálásával.<p>
+
+<b>Levált fél holtideje</b>: Alapértelmezés szerint 10 másodperc. Ez az opció megszabja, hogy mennyi ideig várakozzon a Squid, mielõtt egy kapcsolódó gyorstárat "halottnak" tekint. Ha az itt megadott idõn belül nem érkezik ICP-válasz, úgy a Squid leváltnak fogja tekinteni a gyorstárat és nem fog további ICP-válaszokra számítani. Ettõl függetlenül a Squid továbbra is küld ICP-kéréseket, és az elsõ érvényes visszajelzés után élõnek fogja nyilvánítani a szóban forgó felet.<p>
+
+Ez a beállítás akkor is érvényes, amikor a Squid ICP-válaszra vár a felektõl. Abban az esetben, ha több mint 'dead_peer' másodperc eltelt a legutolsó ICP-válasz beérkezése óta, a Squid a következõ kérésre már nem fog választ várni. Ennek megfelelõen, ha a kérések közti intervallum nagyobb, mint a holtidõ, úgy a kérések többsége nem a szülõkhöz, hanem KÖZVETLENÜL a forráskiszolgálókhoz fog érkezni.<p>
+
+<hr>
+

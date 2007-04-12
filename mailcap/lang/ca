@@ -1,0 +1,46 @@
+index_title=Programes de Tipus MIME
+index_none=Encara no s'ha definit cap programa manipulador de tipus MIME.
+index_add=Afegeix un nou programa de tipus MIME.
+index_type=Tipus MIME
+index_program=Programa manipulador
+index_cmt=Descripció
+index_delete=Suprimeix els seleccionats
+index_disable=Desactiva els seleccionats
+index_enable=Activa els seleccionats
+index_enabled=Activat
+index_return=a la llista de programes
+
+edit_title1=Creació de Programa de Tipus MIME
+edit_title2=Edició de Programa de Tipus MIME
+edit_header=Detalls del programa manipulador de tipus MIME
+edit_type=Tipus MIME
+edit_enabled=Activat
+edit_program=Programa manipulador
+edit_cmt=Descripció
+edit_egone=El programa ja no existeix!
+edit_test=Ordre de prova
+edit_none=Cap (utilitza sempre el programa)
+edit_term=Mostra la sortida en una terminal
+edit_copious=Produeix un munt de sortides
+edit_desc=Descripció de tipus MIME
+
+save_err=No he pogut desar el programa de tipus MIME
+save_etype=Hi falta el tipus MIME o bé és invàlid
+save_eprogram=Hi falta el programa manipulador
+save_eclash=Ja existeix un programa activat per al tipus MIME introduït
+save_etest=Hi falta l'ordre de prova o bé és invàlida
+save_edesc=Descripció de tipus MIME invàlida
+
+delete_err=No he pogut suprimir els programes de tipus MIME
+disable_err=No he pogut desactivar els programes de tipus MIME
+disable_eclash=Ja existeix un programa de tipus MIME desactivat per a $1
+enable_err=No he pogut activar els programes de tipus MIME
+enable_eclash=Ja existeix un programa de tipus MIME activat per a $1
+delete_enone=No n'has seleccionat cap
+
+log_delete_mailcap=He suprimit el programa de tipus MIME per a $1
+log_create_mailcap=He creat el programa de tipus MIME per a $1
+log_modify_mailcap=He modificat el programa de tipus MIME per a $1
+log_delete_mailcaps=He suprimit $1 programes de tipus MIME
+log_disable_mailcaps=He desactivat $1 programes de tipus MIME
+log_enable_mailcaps=He activat $1 programes de tipus MIME

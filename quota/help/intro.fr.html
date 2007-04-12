@@ -1,0 +1,32 @@
+<header>Quotas Disque</header>
+
+<h3>Introduction</h3>
+Les quotas est une méthode pour contrôler combien d'espace disque chaque utilisateur et groupe peut utiliser.  Pour chaque système de fichier vous pouvez placer des limites sur combien d'espace disque et combien de fichier chaques usagers peut utiliser.  Certains systèmes Unix vous permettent de limiter à tous les membres d'un groupe.
+
+Les quotas peuvent seulement être configuré sur un système de fichier Unix local.  Les disques NFS monté de d'autres systèmes utilise les quotas du serveur, s'il y en a.  Les systèmes de fichier n'appartenant pas à Unix comme MS-DOS ou ISO9660 ne supporte pas les quotas.<p>
+
+Pour chaque usager quatre limites sont imposées :
+<dl>
+<dt><b>Limite douce de bloc</b>
+<dd>Le nombre de blocs alloué avant qu'un message d'avertissement apparaisse
+<dt><b>Limite dure de bloc</b>
+<dd>Nombre maximum de blocs qu'un usager peut occuper.
+<dt><b>Limite douce de fichier</b>
+<dd>Nombre de fichier alloué avant qu'un message d'avertissement apparaisse.
+<dt><b>Limite dure de fichier</b>
+<dd>Nombre maximum de fichiers qu'un usager peut occuper.
+</dl>
+Les blocs disque occupe généralement 512 à 4096 bytes de taille, tout dépendant du système d'exploitation.  Dans le calcul des quotas, toutes les tailles de fichier sont arrondies au bloc le plus près.  Même les fichiers vide utilise au moins un bloc.<p>
+
+Dans les quotas de fichier, même les répertoires, liens symbolique ou fichier normal compte dans le maximum de fichiers qu'un utilisateur peut avoir.  Techniquement, le quota de fichier est celui des <i>inodes</i>.<p>
+
+<h3>Module de Quotas Disque</h3>
+La page de ce module affiche la liste des systèmes de fichier que supporte quotas.  Si un quota est actif pour un système de fichier vous pouvez cliquer sur le chemin pour afficher les quotas de chaque usager.  Sinon, cliquer sur <tt>Activer les Quotas</tt> pour les activer sur le système de fichier.<p>
+
+<if $gconfig{'os_type'}  = ~ /linux/>
+Le système d'exploitation Linux n'alloue pas les quotas tant que le système de fichier n'a pas l'option <tt>Utilisation de Quotas</tt> définit dans le module de Disque et de Système de fichier de Webmin.<p>
+</if>
+
+Sous la liste des systèmes de fichier se trouve un bouton qui affiche tous les quotas pour un usager sélectionné.  Ceci est affiché seulement si au moins un système de fichier supporte les quotas pour un usager.  Tout comme les groupes.<p>
+
+<hr>

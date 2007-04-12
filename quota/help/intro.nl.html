@@ -1,0 +1,60 @@
+<header>Disk Quota</header>
+
+<h3>Introductie</h3>
+
+Quota zijn een manier om het gebruik van harddisk ruimte door gebruikers en
+groepen in de hand te houden. Voor elk bestandssysteem kunt u beperkingen
+aanbrengen op het gebruik van harddisk ruimte en het aantal bestanden. Sommige
+Unix systemen geven u ook te mogelijkheid om de ruimte en bestanden van de 
+gezamenlijke leden van een groep ('de groep') te beperken. <p>
+
+Quota kunnen alleen worden opgezet voor lokale Unix bestandssystemen. NFS 
+bestandssystemen die vanaf andere systemen worden gemount, zijn onderhevig 
+aan de quota van hun eigen server (voor zover van toepassing). Niet-Unix
+bestandssystemen zoals MS-DOS of ISO9660 ondersteunen geen quota.<p>
+
+Voor elke gebruiker zijn vier limieten van kracht:
+
+<dl>
+<dt><b>Zachte bloklimiet</b>
+<dd>Het aantal blokken dat mag worden gebruikt vóór er een waarschuwing wordt gegeven.
+<dt><b>Harde bloklimiet</b>
+<dd>Het maximum aantal blokken dat de bestanden van een gebruiker mogen gebruiken.
+<dt><b>Zachte bestandslimiet</b>
+<dd>Het aantal bestanden dat mag worden gebruikt vóórdat een waarschuwing wordt gegeven.
+<dt><b>Harde bestandslimiet</b>
+<dd>Het maximum aantal bestanden dat een gebruiker mag bezitten.
+</dl>
+
+Disk blokken zijn normaliter 512 of 1024 bytes groot, afhankelijk van het besturingssysteem.
+Bij het berekenen van quota worden alle bestanden naar boven afgerond op gehele blokken. 
+Daarom telt ook een leeg bestand voor één blok. <p>
+
+Ten behoeve van bestandsquota wordt iedere map, device, symbolische verwijzing of
+normaal bestand meegeteld om het maximum aantal bestanden dat een gebruiker mag
+bezitten vast te stellen. 
+Technisch gesproken is het bestandsquotum een quota in <i>inodes</i>. <p>
+
+<h3>Het Disk Quota Module</h3>
+De hoofdpagina van dit module toont een lijst met lokale bestandssystemen 
+die quota ondersteunen. Als Quota zijn aangezet voor een bestandssysteem, kunt
+u op het pad ervan klikken om de quota van de individuele gebruikers te tonen. 
+Als quota niet aangezet zijn, kunt u klikken op <tt>Quota Aanzetten</tt> om 
+quota voor dit bestandssysteem te activeren.
+
+<if $gconfig{'os_type'} =~ /linux/>
+In het Linux besturingssysteem kunnen quota alleen worden aangezet als het bestandssysteem 
+de <tt>Use Quotas</tt> optie heeft in het Disks en Filesystems module.  
+Als geen enkel bestandssysteem deze optie heeft, zal er geen bestandssysteem 
+op de hoofdpagina worden getoond. <p>
+</if>
+
+Onder de lijst met bestandssystemen vindt u een knop om het quotum van één 
+bepaalde gebruiker te tonen en eventueel te wijzigen. Deze wordt alleen getoond 
+als tenminste één bestandssysteem de gebruikersquota optie actief heeft. 
+Als tenminste één bestandssysteem de groepsquota optie actief heeft, zal een knop worden
+getoond waarmee het quotum van een bepaalde groep kan worden getoond en desgewenst 
+gewijzigd. <p>
+
+<hr>
+

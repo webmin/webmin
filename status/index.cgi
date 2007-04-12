@@ -1,0 +1,169 @@
+#!/usr/local/bin/perl
+# index.cgi
+# List all services currently being monitored
+
+require './status-lib.pl';
+print "Refresh: $config{'refresh'}\r\n"
+	if ($config{'refresh'});
+&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+
+# If we are using SNMP for notification, make sure the Perl module is installed
+if ($config{'snmp_server'}) {
+	eval "use Net::SNMP";
+	if ($@) {
+		eval "use SNMP_Session";
+		}
+	if ($@) {
+		&ui_print_endpage(
+		    &ui_config_link('index_esnmp',
+			[ "<tt>Net::SNMP</tt>",
+			  "../cpan/download.cgi?source=3&cpan=Net::SNMP&mode=2&return=/$module_name/&returndesc=".&urlize($text{'index_return'}),
+			  undef ]));
+		}
+	}
+
+@serv = &list_services();
+$mid = int((@serv-1) / 2);
+$oldstatus = &read_file($oldstatus_file, \%oldstatus);
+
+if (@serv) {
+	&show_button();
+	if ($config{'sort_mode'} == 1) {
+		@serv = sort { $a->{'desc'} cmp $b->{'desc'} } @serv;
+		}
+	elsif ($config{'sort_mode'} == 2) {
+		@serv = sort { $a->{'remote'} cmp $b->{'remote'} } @serv;
+		}
+	elsif ($config{'sort_mode'} == 3) {
+		@serv = sort { $oldstatus{$a->{'id'}} <=> $oldstatus{$b->{'id'}} } @serv;
+		}
+	if (!$config{'index_status'} && $oldstatus) {
+		local @st = stat("$module_config_directory/oldstatus");
+		local $t = localtime($st[9]);
+		print &text('index_oldtime', $t),"<br>\n";
+		}
+
+	# Show table of defined monitors
+	@links = ( );
+	if ($access{'edit'}) {
+		print &ui_form_start("delete_mons.cgi", "post");
+		push(@links, &select_all_link("d", 1),
+			     &select_invert_link("d", 1) );
+		}
+	print &ui_links_row(\@links);
+	if ($config{'columns'} == 2) {
+		print "<table width=100%><tr>\n";
+		print "<td width=50% valign=top>\n";
+		&service_table(@serv[0 .. $mid]);
+		print "</td> <td width=50% valign=top>\n";
+		&service_table(@serv[$mid+1 .. $#serv]) if (@serv > 1);
+		print "</td></tr></table>\n";
+		}
+	else {
+		&service_table(@serv);
+		}
+	print &ui_links_row(\@links);
+	if ($access{'edit'}) {
+		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		}
+	}
+else {
+	print "<b>$text{'index_none'}</b><p>\n";
+	}
+&show_button();
+
+print "<hr>\n";
+print &ui_buttons_start();
+if ($access{'sched'}) {
+	print &ui_buttons_row("edit_sched.cgi",
+			      $text{'index_sched'},
+			      $text{'index_scheddesc'});
+	}
+if (!$config{'index_status'}) {
+	print &ui_buttons_row("refresh.cgi",
+			      $text{'index_refresh'},
+			      $text{'index_refreshdesc'});
+	}
+print "</tr></table>\n";
+
+&remote_finished();
+&ui_print_footer("/", $text{'index'});
+
+sub service_table
+{
+# Table header
+local @tds = $access{'edit'} ? ( "width=5" ) : ( );
+print &ui_columns_start([
+	$access{'edit'} ? ( "" ) : ( ),
+	$text{'index_desc'},
+	$text{'index_host'},
+	$config{'index_status'} ? ( $text{'index_up'} ) :
+	 $oldstatus ? ( $text{'index_last'} ) : ( ),
+	], 100, 0, \@tds);
+
+# One row per monitor
+foreach $s (@_) {
+	local @cols;
+	local $esc = &html_escape($s->{'desc'});
+	$esc = "<i>$esc</i>" if ($s->{'nosched'} == 1);
+	if ($access{'edit'}) {
+		push(@cols, "<a href='edit_mon.cgi?id=$s->{'id'}'>$esc</a>");
+		}
+	else {
+		push(@cols, $esc);
+		}
+	push(@cols, &nice_remotes($s));
+
+	# Work out and show all the up icons
+	local @ups;
+	if ($config{'index_status'}) {
+		# Showing the current status
+		@stats = &service_status($s, 1);
+		@ups = map { $_->{'up'} } @stats;
+		}
+	elsif ($oldstatus) {
+		# Getting status from last check
+		$stat = &expand_oldstatus($oldstatus{$s->{'id'}});
+		@ups = map { defined($stat->{$_}) ? ( $stat->{$_} ) : ( ) }
+			   &expand_remotes($s);
+		}
+	if (!@ups) {
+		push(@cols, "");
+		}
+	else {
+		local @icons;
+		foreach my $up (@ups) {
+			push(@icons, "<img src=images/".
+			      ($up == 1 ? "up.gif" :
+			      $up == -1 ? "not.gif" :
+			      $up == -2 ? "webmin.gif" :
+			      $up == -3 ? "timed.gif" :
+			      $up == -4 ? "skip.gif" :
+					  "down.gif").">");
+			}
+		push(@cols, join("", @icons));
+		}
+	if ($access{'edit'}) {
+		print &ui_checked_columns_row(\@cols, \@tds, "d", $s->{'id'});
+		}
+	else {
+		print &ui_columns_row(\@cols, \@tds);
+		}
+	}
+print &ui_columns_end();
+}
+
+sub show_button
+{
+if ($access{'edit'}) {
+	print "<form action=edit_mon.cgi>\n";
+	print "<input type=submit value='$text{'index_add'}'> ",
+	      "<select name=type>\n";
+	foreach $h (sort { $a->[1] cmp $b->[1] } &list_handlers()) {
+		printf "<option value=%s>%s\n",
+			$h->[0], $h->[1] || $h->[0];
+		}
+	print "</select></form>\n";
+	}
+}
+

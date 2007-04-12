@@ -1,0 +1,15 @@
+<header>Användar-ID</header>
+Användar-ID eller UID är det som systemet egentligen använder sig av för
+att kontrollera rättigheter för filer och processer. Om två användare har
+samma UID kommer de att kunna komma åt varandras filer; därför bör varje
+användare ha ett unikt UID. När en ny användare skapas kommer Webmin att
+i detta fält fylla i ett UID som inte används av någon annan användare.
+
+<p><tt>root</tt>-användaren har alltid UID 0. Om man skapar en användare till
+med UID 0 kommer denna användare att ha samma rättigheter som <tt>root</tt>.
+
+<p>Om man ändrar UID för någon användare kommer inställningen
+<a href=chuid>Byta användar-ID för filer?</a> att bestämma vilka filer som
+ska byta ägare.
+<hr>
+

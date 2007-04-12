@@ -1,0 +1,39 @@
+<header>Processz szerkesztése</header>
+
+Ez az oldal a futó processz tulajdonságait jeleníti meg. Legfelül a
+következõ információk találhatók:
+<dl>
+<dt><b>Parancs</b>
+<dd>A processz programneve és parancssori argumentumai.
+<dt><b>Processz ID</b>
+<dd>Az egyéni processz ID-je (azonosítója).
+<dt><b>Szülõ processz</b>
+<dd>Az a processz, amely ezt létrehozta. A szülõ részleteinek megtekintéséhez
+kattintson a linkre.
+<dt><b>Felhasználó</b>
+<dd>A felhasználó, amely a processz tulajdonosa illetve milyen jogosultságokkal
+futtatja azt.
+<dt><b>CPU-idõ felhasználás</b>
+<dd>Az a százalékban meghatározott CPU-idõ, amelyet a processz éppen használ.
+<dt><b>Méret</b>
+<dd>Az a memóriamennyiség, amelyet a processz elfoglal. Ebben benne van az
+is, amelyet más processzekkel oszt meg.
+<dt><b>A futás ideje</b>
+<dd>A percekben megadott összes CPU-idõ, amelyet a processz az indulástól
+számítva elhasznált. Ez nem egyezik meg az indításától eltelt
+idõvel, kivéve ha igen intenzív a processz CPU-igénye.
+<dt><b>Nice-szint</b>
+<dd>A prioritás, amellyel a processz fut. <a href=nice>Bõvebb információ itt</a>
+érhetõ el a nice-szintekrõl.
+</dl>
+Hogy egyéb információk is megjelennek-e az attól függ, hogy milyen Unix
+változatot használ.<p>
+
+A processz információk alatt van egy nyomógomb, amellyel jelzéseket
+küldhet a processznek. Válassza ki a listából a kívánt jelzést, majd
+kattintson a <tt>Jelzés küldése</tt> gombra. A processz kilövéséhez
+alkalmazható szignálok: a <tt>KILL</tt> és a <tt>TERM</tt>.<p>
+
+Ha a processznek voltak gyerekei, akkor azok megjelennek az oldal alján.
+Bõvebb információkért kattintson az azonosítójukra.
+<hr>

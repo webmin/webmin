@@ -1,0 +1,11 @@
+man_cmd=Comando para mostrar página del manual,0
+man_cmd_sect=Comando para mostrar página de una sección,0
+search_cmd=Comando para buscar páginas,0
+man_dir=Directorio de páginas del manual,0
+list_cmd=Comando que muestra la trayectoria de página del manual,0
+list_cmd_sect=Comando que muestra la trayectoria de página del manual de una sección,0
+man2html_path=Trayectoria a man2html,3,No usar man2html
+doc_dir=Directorio de documentación del paquete,3,Ninguno
+howto_dir=Directorios de documento COMO-HACER (HOWTO),3,Ninguno
+kernel_dir=Directorio de documentación del kernel,3,Ninguno
+kde_dir=Directorio de documentación de KDE,3,Ninguno

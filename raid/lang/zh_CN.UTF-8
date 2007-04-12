@@ -1,0 +1,77 @@
+index_title=Linux RAID
+index_none=没有配置 RAID 设备
+index_add=创建此等级的 RAID 设备：
+index_return=RAID 设备
+index_emdstat=在您的系统中没发现内核的 RAID 状态文件$1，您的系统内核可能不支持 RAID。
+index_emkraid=您的系统上没有安装 RAID 工具包。
+
+linear=已连接(线性)
+raid0=分带的 (RAID0)
+raid1=镜像的 (RAID1)
+raid4=奇偶校验的 (RAID4)
+raid5=冗余的 (RAID5)
+
+create_title=创建 RAID 设备
+create_header=RAID 设备选项
+create_device=设备文件
+create_level=RAID 等级
+create_disks=在 RAID 中的分区
+create_spares=空闲分区
+create_pdisk=奇偶校验分区
+create_pauto=自动
+create_nodisks=没有空闲分区供 RAID 使用
+create_super=保留超级块？
+create_parity=奇偶校验算法
+create_chunk=块区的大小
+create_force=强制 RAID 初始化？
+create_rdev=RAID 设备 $1
+create_lvm=LVM VG $1, LV $2
+create_err=创建 RAID 失败
+create_edisks=没有选择分区
+create_edisks2=至少要为镜像选择两个分区
+create_espare=空闲分区 $1 不能又是 RAID 分区
+create_epdisk=奇偶校验分区不能又是 RAID 分区
+
+view_title=RAID 设备
+view_header=RAID 设备选项
+view_device=设备文件
+view_level=RAID 等级
+view_status=状态
+view_mounted=激活并装到 $1
+view_mount=在$1上加载
+view_lvm=在 LVM VG $1 上激活并使用
+view_active=活动
+view_inactive=不活动
+view_super=保留超级块？
+view_parity=奇偶校验算法
+view_chunk=块区的大小
+view_stop=禁用
+view_start=活动
+view_disks=RAID 分区
+view_spares=空闲分区
+view_size=可用空间
+view_resync=已重新同步的百分比
+view_down=(Down)
+view_cannot=RAID 设备已装上，此时不能更改。
+view_mkfs2=创建这种类型的文件系统：
+view_mkfsdesc=选择文件系统类型，并点击这个按钮在逻辑卷创建新的文件系统。这样做将会删除该卷上当前的任何数据。
+
+mkfs_title=创建文件系统
+mkfs_header2=您使用该表格在$1上创建新的$2文件。<b>所有</b>现有的数据将会被删除！
+mkfs_options=新 Linux 文件系统选项
+mkfs_err=创建文件系统失败
+mkfs_exec=执行命令 $1 ..
+mkfs_failed=.. 命令失败!
+mkfs_ok=.. 命令完成。
+
+emkraid=<tt>mkraid</tt> 失败: $1
+eraidstop=<tt>raidstop</tt> 失败: $1
+eraidstart=<tt>raidstart</tt> 失败: $1
+eforce=您必须强行初始化 RAID :$1
+
+log_create=已创建 $1 RAID 设备 $2
+log_stop=已禁用 RAID 设备 $1
+log_start=已激活 RAID 设备 $1
+log_delete=已删除 RAID 设备 $1
+log_mkfs=已在 $2 上创建 $1 文件系统
+

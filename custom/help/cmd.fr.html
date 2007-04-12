@@ -1,0 +1,35 @@
+Chaque commande a une description (affiché sur le bouton de la page principale), et une commande actuel à exécuter.  Cette commande peut contenir des opérateurs de l'interpréteur de commande comme | et ; pour l'exécution de commandes multiples et de transferts de données.  Il peut aussi contenir des paramètres comme <tt>$foo</tt>, qui sont remplacer par une saisie de l'usager quand la commande est exécutée.<p>
+
+Ces paramètres peuvent être entré dans la table au bas de la page.  Pour chaque pramètre vous devez entrer :
+<dl>
+<dt><b>Nom</b>
+<dd>Un code unique pour ce paramètre.  Si le nom est <tt>foo</tt>, bien <tt>$foo</tt> sera remplacé par la valeur de ce paramètre quand la commande est exécutée.<p>
+<dt><b>Description</b>
+<dd>La description après le paramètre sur la page principale.<p>
+<dt><b>Type</b>
+<dd>Cette option contrôle comment le paramètre est entré.  Les options valides sont :
+	<ul>
+	<li><b>Texte</b><br>
+	    Une entrée libre de texte.
+	<li><b>Usager</b><br>
+	    Un nom d'usager sur votre système.
+	<li><b>Numéro d'Usager</b><br>
+	    Le numéro d'un usager de votre système.
+	<li><b>Groupe</b><br>
+	    Un nom de groupe de votre système.
+	<li><b>Numéro de Groupe</b><br>
+	    Le numéro d'un groupe de votre système.
+	<li><b>Fichuer</b><br>
+	    Le chemin complet d'un fichier.
+	<li><b>Répertoire</b><br>
+	    Le chemin complet d'un répertoire.
+	<li><b>Option</b><br>
+	    Une sasie Oui/Non qui va définir le paramètre à n'importe quoi qui est dans le champs après l'entrée de ce type si Oui est choisit.
+	<li><b>Mot de Passe</b><br>
+	    Une saisie de texte libre, mais où le contenu va être remplacé par des * à l'affichage.
+	</ul><p>
+<dt><b>Paramètre entre "" ?</b>
+<dd>Si Oui, le paramètre va etre mit entre "", permettant à l'usager d'entrer des valeurs contenant des espaces.<p>
+</dl>
+
+<hr>

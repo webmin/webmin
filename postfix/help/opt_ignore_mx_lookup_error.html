@@ -1,0 +1,10 @@
+<header>Ignore MX lookup error</header>
+
+<center><tt>ignore_mx_lookup_error</tt></center>
+<hr>
+
+This parameter controls what happens when a name server fails to respond to an
+MX lookup request. By default, Postfix defers delivery and tries again after
+some delay. Specify <tt>yes</tt> to force an A record lookup instead.
+
+<hr>

@@ -1,0 +1,68 @@
+line1=Opcions del directori arrel,11
+homedir_perms=Permisos dels nous directoris arrel,0
+user_files=Copia els fitxers als nous directoris arrel a partir de,9,40,3
+home_base=Base automàtica del directori arrel,3,No establerta
+real_base=Base real del directori arrel,3,La mateixa que abans
+home_style=Estil automàtic del directori arrel,4,0-home/usuari,1-home/u/usuari,2-home/u/us/usuari,3-home/u/s/usuari,4-Només el directori base,5-home/grup_primari/usuari
+ 
+line2=Opcions d'usuari nou,11
+base_uid=UID més baix per a nous usuaris,0,5
+base_gid=GID més baix per a nous grups,0,5
+uid_mode=Mètode d'introducció del UID per defecte,4,0-Introduït per l'usuari,1-Autoincremental,2-Calculat
+gid_mode=Mètode d'introducció del GID per defecte,4,0-Introduït per l'usuari,1-Autoincremental,2-Calculat
+uid_calc=Mètode de càlcul del UID,4,0-Suma de comprovació Berkeley,1-Programa mkuid personalitzat
+gid_calc=Mètode de càlcul del GID,4,0-Suma de comprovació Berkeley,1-Programa mkgid personalitzat
+new_user_group=Crea un grup nou per als usuaris nous,1,1-Sí,0-No
+new_user_gid=Assigna el mateix al nou usuari i al grup,1,1-Sí,0-No
+md5=Mètode de xifratge de contrasenyes,1,2-MD5,1-Determinat automàticament,0-DES crypt
+alias_check=Comprova duplicats amb els àlies de sendmail,1,1-Sí,0-No
+delete_only=Esborra només els fitxers propietat de l'usuari,1,1-Sí,0-No
+max_length=Llargària màxima dels noms d'usuaris i grups,3,Il·limitada
+username_re=Expressió regular Perl per comprovar el nom d'usuari,3,Cap
+shells=Construeix la llista de shells e,2,fixed-Llista integrada,passwd-Usuaris existents,shells-/etc/shells
+
+line3=Valors per defecte d'usuari nou,11
+default_group=Grup per defecte dels nous usuaris,6,Omissió
+default_secs=Grups secundaris per defecte dels usuaris nous,3,Cap
+default_shell=Shell per defecte dels nous usuaris,3,La primera de la llista
+default_min=Dies mínims per defecte dels usuaris nous,3,Cap
+default_max=Dies màxims per defecte dels usuaris nous,3,Cap
+default_warn=Dies d'avís per defecte dels usuaris nous,3,Cap
+default_inactive=Dies d'inactivitat per defecte dels usuaris nous,3,Cap
+default_expire=Data de caducitat per defecte dels usuaris nous (dd/mm/aaaa),3,Cap
+default_other=Crea i actualitza en els altres mòduls,1,1-Sí,0-No
+
+line4=Opcions de mostra,11
+display_max=Màxim nombre d'usuaris o grups a mostrar,0
+sort_mode=Ordena els usuaris i grups per,1,0-L'ordre del fitxer,1-Nom d'usuari,2-Nom real,3-Nom de fonts,4-Shell,5-UID o GID,6-Directori arrel
+last_count=Nombre d'entrades prèvies a mostrar,3,Il·limitat
+last_show=Mostra la darrera entrada a la llista d'usuaris,1,1-Sí,0-No
+display_mode=Mostra els usuaris i grups,1,2-Categoritzats per grup primari,1-Amb tots els detalls,0-Només amb el nom
+passwd_stars=Oculta les contrasenyes en text planer,1,1-Sí,0-No
+from_files=Pren la informació de l'Usuari i el Grup de,1,1-Fitxers,0-Crides de sistema
+random_password=Genera contrasenya per als nous usuaris,1,1-Sí,0-No
+extra_real=Mostra els detalls del despatx i el telèfon,1,1-Sí,0-No
+delete_root=Permet la supressió d'usuaris i grups de sistema,1,1-Sí,0-No
+secmode=Mostra els grups secundaris al formulari de l'usuari,1,0-Sí,1-No,2-Com a caixa de text
+
+line5=Restriccions de les contrasenyes,11
+passwd_min=Llargària mínima de la contrasenya,3,Sense mínims
+passwd_dict=Evita contrasenyes amb paraules de diccionari,1,1-Sí,0-No
+passwd_re=Expressió regular perl per a verificar la contrasenya,3,Cap
+passwd_same=Evita que les contrasenyes continguin noms d'usuari,1,1-Sí,0-No
+passwd_prog=Prograna extern de comprovació de contrasenyes,3,Cap
+
+line0=Ordres 'd'abans i després,11
+pre_command=Orde a executar abans de fer els canvis,0
+post_command=Orde a executar després de fer els canvis,0
+
+line6=Configuració del sistema,11
+passwd_file=Fitxer de contrasenyes,3,Generat
+group_file=Fitxer de grup,0
+shadow_file=Fitxer de contrasenyes ocultes,3
+master_file=Fitxer mestre de contrasenyes BSD,3
+netinfo_domain=Domini NetInfo a gestionar,3,Domini local (<tt>.</tt>)
+lock_string=Substitueix la contrasenya dels comptes blocats amb,0
+lock_prepend=Prefixa les contrasenyes dels comptes desactivats temporalment amb,3,Defecte (!)
+gshadow_file=Fitxer de grups ocults,3
+nscd_restart=Ordre per reiniciar nscd,3,Envia el senyal HUP

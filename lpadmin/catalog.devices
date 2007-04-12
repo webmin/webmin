@@ -1,0 +1,211 @@
+x11             X Windows version 11, release >=4   [Unix and VMS only]
+x11alpha        X Windows masquerading as a device with alpha capability
+x11cmyk         X Windows masquerading as a 1-bit-per-plane CMYK device
+x11cmyk2        X Windows as a 2-bit-per-plane CMYK device
+x11cmyk4        X Windows as a 4-bit-per-plane CMYK device
+x11cmyk8        X Windows as an 8-bit-per-plane CMYK device
+x11gray2        X Windows as a 2-bit gray-scale device
+x11gray4        X Windows as a 4-bit gray-scale device
+x11mono         X Windows masquerading as a black-and-white device
+lvga256         Linux vgalib, 256-color VGA modes  [Linux only]
+vgalib          Linux PC with VGALIB   [Linux only]
+sxlcrt          CRT sixels, e.g. for VT240-like terminals
+appledmp        Apple Dot Matrix Printer (should also work with Imagewriter)
+iwhi            Apple Imagewriter in high-resolution mode
+iwlo            Apple Imagewriter in low-resolution mode
+iwlq            Apple Imagewriter LQ in 320 x 216 dpi mode
+t4693d2         Tektronix 4693d color printer, 2 bits per R/G/B component
+t4693d4         Tektronix 4693d color printer, 4 bits per R/G/B component
+t4693d8         Tektronix 4693d color printer, 8 bits per R/G/B component
+tek4696         Tektronix 4695/4696 inkjet plotter
+ap3250          Epson AP3250 printer
+epson           Epson-compatible dot matrix printers (9- or 24-pin)
+eps9mid         Epson-compatible 9-pin, interleaved lines (intermediate resolution)
+eps9high        Epson-compatible 9-pin, interleaved lines (triple resolution)
+epsonc          Epson LQ-2550 and Fujitsu 3400/2400/1200 color printers
+lp8000          Epson LP-8000 laser printer
+lq850           Epson LQ850 printer at 360 x 360 DPI resolution; also good for Canon BJ300 with LQ850 emulation
+st800           Epson Stylus 800 printer
+stcolor         Epson Stylus Color
+hl7x0           Brother HL 720 and HL 730 (HL 760 is PCL compliant)
+uniprint        Unified printer driver -- Configurable Color ESC/P-, ESC/P2-, HP-RTL/PCL mono/color driver
+cdeskjet        H-P DeskJet 500C with 1 bit/pixel color
+cdjcolor        H-P DeskJet 500C with 24 bit/pixel color and high-quality color (Floyd-Steinberg) dithering; also good for DeskJet 540C and Citizen Projet IIc (-r200x300)
+cdjmono         H-P DeskJet 500C printing black only; also good for DeskJet 510, 520, and 540C (black only)
+cdj500          H-P DeskJet 500C (same as cdjcolor)
+cdj550          H-P DeskJet 550C/560C/660C/660Cse
+cdj670          H-P DeskJet 670 (supports also hp690; experimental driver of hp8xx package)
+cdj850          H-P DeskJet 850 (supports also hp855, hp870, and hp1100; experimental driver of hp8xx package)
+cdj880          H-P DeskJet 880 (experimental driver of patched hp8xx package)
+cdj890          H-P DeskJet 890 (experimental driver of hp8xx package)
+cdj970          H-P 970Cxi Driver under development
+cdj1600         H-P DeskJet 1600 (experimental driver of hp8xx package)
+djet820c        H-P DeskJet 820c, EXPERIMENTAL: NO COLOR, HARDCODED PAPER SIZES (A4, letter)
+deskjet         H-P DeskJet and DeskJet Plus
+djet500         H-P DeskJet 500; use -r600 for DJ 600 series
+djet500c        H-P DeskJet 500C alternate driver (does not work on 550C or 560C)
+dnj650c         H-P DesignJet 650C
+paintjet        alternate H-P PaintJet color printer
+pj              H-P PaintJet XL driver
+pjetxl          alternate H-P PaintJet XL driver
+pjxl            H-P PaintJet XL color printer
+pjxl300         H-P PaintJet XL300 color printer; also good for PaintJet 1200C and CopyJet
+hpdj            printers (e.g. H-P DeskJets) understanding PCL-3 (black and colour)
+stp             STP driver -- Configurable Color ESC/P-, ESC/P2-, HP-RTL/PCL mono/color driver
+laserjet        H-P LaserJet
+ljet2p          H-P LaserJet IId/IIp/III* with TIFF compression
+ljet3           H-P LaserJet III* with Delta Row compression
+ljet3d          H-P LaserJet IIID with duplex capability
+ljet4           H-P LaserJet 4 (defaults to 600 dpi)
+lj4dith         H-P LaserJet 4 with Floyd-Steinberg dithering
+ljetplus        H-P LaserJet Plus
+lj5mono         H-P LaserJet 5 & 6 family (PCL XL), bitmap: see below for restrictions & advice
+lj5gray         H-P LaserJet 5 & 6 family, gray-scale bitmap; see below for restrictions & advice
+cljet5          H-P Color LaserJet 5/5M
+lp2563          H-P 2563B line printer
+bj10e           Canon BubbleJet BJ10e
+bj200           Canon BubbleJet BJ200
+bjc600          Canon Color BubbleJet BJC-600, BJC-4000 and BJC-70 also good for Apple printers like the StyleWriter 2x00
+bjc800          Canon Color BubbleJet BJC-800
+lbp8            Canon LBP-8II laser printer
+lips3           Canon LIPS III laser printer in English (CaPSL) mode
+lxm5700m        LexMark 5700 printer
+lex7000         Lexmark 7000 printer
+lex5700         Lexmark 5700 printer
+lex3200         Lexmark 3200 printer
+lex2050         Lexmark 2050 printer
+declj250        alternate DEC LJ250 driver
+dl2100          DEC DEClaser 2100 printer
+la50            DEC LA50 printer
+la70            DEC LA70 printer
+la75            DEC LA75 printer
+la75plus        DEC LA75plus printer
+ln03            DEC LN03 printer
+lj250           DEC LJ250 Companion color printer
+ccr             CalComp Raster format
+cp50            Mitsubishi CP50 color printer
+ibmpro          IBM 9-pin Proprinter
+imagen          Imagen ImPress printers
+jetp3852        IBM Jetprinter ink-jet color printer (Model #3852)
+m8510           C.Itoh M8510 printer
+necp6           NEC P6/P6+/P60 printers at 360 x 360 DPI resolution
+oce9050         OCE 9050 printer
+oki182          Okidata MicroLine 182
+oki4w           Okidata OkiPage 4w+ LED printer
+okiibm          Okidata MicroLine IBM-compatible printers
+r4081           Ricoh 4081 laser printer
+sj48            StarJet 48 inkjet printer
+xes             Xerox XES printers (2700, 3700, 4045, etc.)
+pbm             Portable Bitmap (plain format)
+pbmraw          Portable Bitmap (raw format)
+pgm             Portable Graymap (plain format)
+pgmraw          Portable Graymap (raw format)
+pgnm            Portable Graymap (plain format), optimizing to PBM if possible
+pgnmraw         Portable Graymap (raw format), optimizing to PBM if possible
+pnm             Portable Pixmap (plain format) (RGB), optimizing to PGM or PBM if possible
+pnmraw          Portable Pixmap (raw format) (RGB), optimizing to PGM or PBM if possible
+ppm             Portable Pixmap (plain format) (RGB)
+ppmraw          Portable Pixmap (raw format) (RGB)
+pkm             Portable inKmap (plain format) (4-bit CMYK => RGB)
+pkmraw          Portable inKmap (raw format) (4-bit CMYK => RGB)
+plan9bm         Plan 9 bitmap format
+inferno         Inferno bitmaps
+dfaxhigh        DigiBoard, Inc.'s DigiFAX software format (high resolution)
+dfaxlow         DigiFAX low (normal) resolution
+faxg3           Group 3 fax, with EOLs but no header or EOD
+faxg32d         Group 3 2-D fax, with EOLs but no header or EOD
+faxg4           Group 4 fax, with EOLs but no header or EOD
+tiffcrle        TIFF "CCITT RLE 1-dim" (= Group 3 fax with no EOLs)
+tiffg3          TIFF Group 3 fax (with EOLs)
+tiffg32d        TIFF Group 3 2-D fax
+tiffg4          TIFF Group 4 fax
+tiff12nc        TIFF 12-bit RGB, no compression
+tiff24nc        TIFF 24-bit RGB, no compression (NeXT standard format)
+tifflzw         TIFF LZW (tag = 5) (monochrome)
+tiffpack        TIFF PackBits (tag = 32773) (monochrome)
+psmono          PostScript (Level 1) monochrome image
+psgray          PostScript (Level 1) 8-bit gray image
+psrgb           PostScript (Level 2) 24-bit color image
+bit             Plain bits, monochrome
+bitrgb          Plain bits, RGB
+bitcmyk         Plain bits, CMYK
+mgrmono         1-bit monochrome MGR devices
+mgrgray2        2-bit gray scale MGR devices
+mgrgray4        4-bit gray scale MGR devices
+mgrgray8        8-bit gray scale MGR devices
+mgr4            4-bit (VGA) color MGR devices
+mgr8            8-bit color MGR devices
+pcxmono         PCX file format, monochrome (1-bit black and white)
+pcxgray         PCX file format, 8-bit gray scale
+pcx16           PCX file format, 4-bit planar (EGA/VGA) color
+pcx256          PCX file format, 8-bit chunky color
+pcx24b          PCX file format, 24-bit color (3 8-bit planes)
+pcxcmyk         PCX file format, 4-bit chunky CMYK color
+pngmono         Monochrome Portable Network Graphics (PNG)
+pnggray         8-bit gray Portable Network Graphics (PNG)
+png16           4-bit color Portable Network Graphics (PNG)
+png256          8-bit color Portable Network Graphics (PNG)
+png16m          24-bit color Portable Network Graphics (PNG)
+sgirgb          SGI RGB pixmap format
+bmpmono         Monochrome MS Windows .BMP file format
+bmp16           4-bit (EGA/VGA) .BMP file format
+bmp256          8-bit (256-color) .BMP file format
+bmp16m          24-bit .BMP file format
+cgmmono         Monochrome (black-and-white) CGM -- LOW LEVEL OUTPUT ONLY
+cgm8            8-bit (256-color) CGM -- DITTO
+cgm24           24-bit color CGM -- DITTO
+cif             CIF file format for VLSI
+jpeg            JPEG format, RGB output
+jpeggray        JPEG format, gray output
+miff24          ImageMagick MIFF format, 24-bit direct color, RLE compressed
+pdfwrite        PDF output (like Adobe Acrobat Distiller)
+pswrite         PostScript output (like PostScript Distillery)
+epswrite        EPS output (like PostScript Distillery)
+pxlmono         Black-and-white PCL XL
+pxlcolor        Color PCL XL
+bjc6000a1.upp   Canon BJC 6000, 360x360DpI, plain paper, color, rendered
+bjc6000b1.upp   Canon BJC 6000, 720x720DpI, plain paper, color, rendered
+bjc610a0.upp    Canon BJC 610, 360x360DpI, plain paper high speed, color, rendered
+bjc610a1.upp    Canon BJC 610, 360x360DpI, plain paper, color, rendered
+bjc610a2.upp    Canon BJC 610, 360x360DpI, coated paper, color, rendered
+bjc610a3.upp    Canon BJC 610, 360x360DpI, transparency film, color, rendered
+bjc610a4.upp    Canon BJC 610, 360x360DpI, back print film, color, rendered
+bjc610a5.upp    Canon BJC 610, 360x360DpI, fabric sheet, color, rendered
+bjc610a6.upp    Canon BJC 610, 360x360DpI, glossy paper, color, rendered
+bjc610a7.upp    Canon BJC 610, 360x360DpI, high gloss film, color, rendered
+bjc610a8.upp    Canon BJC 610, 360x360DpI, high resolution paper, color, rendered
+bjc610b1.upp    Canon BJC 610, 720x720DpI, plain paper, color, rendered
+bjc610b2.upp    Canon BJC 610, 720x720DpI, coated paper, color, rendered
+bjc610b3.upp    Canon BJC 610, 720x720DpI, transparency film, color, rendered
+bjc610b4.upp    Canon BJC 610, 720x720DpI, back print film, color, rendered
+bjc610b6.upp    Canon BJC 610, 720x720DpI, glossy paper, color, rendered
+bjc610b7.upp    Canon BJC 610, 720x720DpI, high gloss paper, color, rendered
+bjc610b8.upp    Canon BJC 610, 720x720DpI, high resolution paper, color, rendered
+cdj550.upp      HP Deskjet 550c, 300x300DpI, Gamma=2
+necp2x.upp      NEC Prinwriter 2X, 360x360DpI, Plain Paper
+necp2x6.upp     NEC Prinwriter 2X, 360x360DpI, Plain Paper
+ras1.upp        SUN rasterfile, 1 Bit, 2 Colors (Ghostscript-Rendering)
+ras24.upp       SUN rasterfile, 24 Bit, 7 Colors (RGB-Error-Diffusion)
+ras3.upp        SUN rasterfile, 3 Bit, 7 Colors (RGB-Ghostscript)
+ras32.upp       SUN rasterfile, 32 Bit, 6+1 Colors (CMYK-Error-Diffusion)
+ras4.upp        SUN rasterfile, 4 Bit, 6+1 Colors (CMYK-Ghostscript)
+ras8m.upp       SUN rasterfile, 8 Bit, 2 Colors (Error-Diffusion)
+stc.upp         Epson Stylus Color I (and PRO Series), 360x360DpI, Plain Paper
+stc1520h.upp    Epson Stylus Color 1520, 1440x720DpI, Inkjet Paper
+stc2.upp        Epson Stylus Color II / IIs, 360x360DpI, Plain Paper
+stc2_h.upp      Epson Stylus Color II, 720x720DpI, Special Paper
+stc2s_h.upp     Epson Stylus Color IIs, 720x720DpI, Special Paper
+stc500p.upp     Epson Stylus Color 500, 360x360DpI, not Weaved, Plain Paper
+stc500ph.upp    Epson Stylus Color 500, 720x720DpI, not Weaved, Plain Paper
+stc600ih.upp    Epson Stylus Color 600, 1440x720DpI, Inkjet Paper
+stc600p.upp     Epson Stylus Color 600, 720x720DpI, Plain Paper
+stc600pl.upp    Epson Stylus Color 600, 360x360DpI, Plain Paper
+stc740ih.upp    Epson Stylus Color 740, 1440x720DpI, Inkjet Paper
+stc740p.upp     Epson Stylus Color 740, 720x720DpI, Plain Paper
+stc740pl.upp    Epson Stylus Color 740, 360x360DpI, Plain Paper
+stc800ih.upp    Epson Stylus Color 800, 1440x720DpI, Inkjet Paper
+stc800p.upp     Epson Stylus Color 800, 720x720DpI, Plain Paper
+stc800pl.upp    Epson Stylus Color 800, 360x360DpI, Plain Paper
+stc_h.upp       Epson Stylus Color I (and PRO Series), 720x720DpI, Special Paper
+stc_l.upp       Epson Stylus Color I (and PRO Series), 360x360DpI, noWeave
+stcany.upp      Any Epson Stylus Color, 360x360DpI

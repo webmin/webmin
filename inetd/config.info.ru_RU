@@ -1,0 +1,12 @@
+restart_command=Команда для перезапуска inetd,0
+services_file=Файл с сетевыми сервисами,0
+protocols_file=Файл с сетевыми протоколами,0
+rpc_file=Файл с RPC сервисами,0
+extended_inetd=Поддержка расширенного inetd,1,0-Нет,1-Базовый,2-Улучшенный
+tcpd_path=Полный путь к tcpd,3
+inetd_conf_file=Конфигурационный файл inetd,0
+rpc_inetd=Поддержка RPC программ в inetd,1,1-Да,0-Нет
+rpc_protocols=RPC субпротоколы,0
+allow_file=Полный путь к файлу разрешения доступа tcpd,3
+deny_file=Полный путь к файлу запрета доступа tcpd,3
+show_empty=Показывать сервисы без программ,1,1-Да,0-Нет

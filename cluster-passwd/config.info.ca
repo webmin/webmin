@@ -1,0 +1,3 @@
+max_users=Nombre màxim d'usuaris a mostrar,0
+input_type=Tipus de selecció d'usuaris,1,1-Caixa de llista,0-Camp de text
+sort_mode=Ordena els usuaris per,1,0-Ordre del fitxer,1-Nom d'usuari

@@ -1,0 +1,11 @@
+man_cmd=Kommando för att visa manualsida,0
+man_cmd_sect=Kommando för att visa manualsida ur en speciell avdelning,0
+search_cmd=Kommando för att leta efter sidor,0
+man_dir=Katalog för manualsidor (MANPATH),0
+list_cmd=Kommando för att visa sökväg till manualsida,0
+list_cmd_sect=Kommando för att visa sökväg till manualsida ur en speciell avdelning,0
+man2html_path=Sökväg till man2html,3,Använd inte man2html
+doc_dir=Katalog för paketdokumentation,3,Ingen
+howto_dir=Katalog(er) för HOWTO-dokument,3,Ingen
+kernel_dir=Katalog för kärnans dokumentation,3,Ingen
+kde_dir=Katalog för KDE-dokumentation,3,Ingen

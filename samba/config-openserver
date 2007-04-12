@@ -1,0 +1,15 @@
+list_printers_command=ls /etc/lp/printers
+text_lists=0
+smb_passwd=/usr/local/samba/private/smbpasswd
+samba_password_program=/usr/local/samba/bin/smbpasswd
+dont_convert=-499 root daemon bin sys adm lp smtp uucp nuucp listen nobody noaccess nobody4
+samba_status_program=/usr/local/samba/bin/smbstatus
+smb_conf=/usr/local/samba/lib/smb.conf
+samba_server=/usr/local/samba/bin/smbd
+name_server=/usr/local/samba/bin/nmbd
+run_from_inetd=0
+swat_path=/usr/local/samba/bin/swat
+sort_mode=0
+smbgroupedit=/usr/local/samba/bin/smbgroupedit
+pdbedit=/usr/local/samba/bin/pdbedit
+net=/usr/local/samba/bin/net

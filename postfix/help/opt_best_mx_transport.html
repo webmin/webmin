@@ -1,0 +1,16 @@
+<header>Action when listed as best MX host</header>
+
+<center><tt>best_mx_transport</tt></center>
+<hr>
+
+This parameter controls what happens when the local system is listed as the
+best MX host for a destination. By default, Postfix reports a &quot;mail loops
+back to myself&quot; error and bounces the message.
+
+<p>
+
+Specify <tt>local</tt> to pass the mail to the local delivery agent. You can
+specify any transport that is defined in Postfix <tt>master.cf</tt> file.
+
+
+<hr>

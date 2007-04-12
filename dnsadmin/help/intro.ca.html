@@ -1,0 +1,102 @@
+<body bgcolor=#ffffff>
+<center><img src=images/dnsadmin.gif></center>
+<h2><i>Aquesta pàgina d'ajuda és incompleta</i></h2>
+
+<hr>
+<h3>Introducció</h3>
+Aquest mòdul permet configurar el servidor DNS BIND (Berkeley Internet Name
+Daemon) instal·lat en aquesta màquina. El servidor DNS és el responsable
+de convertir noms de host com <i>www.foo.com</i> a adreces IP com
+<i>10.1.2.3</i>, i adreces IP a noms de host.
+
+<hr>
+<h3>DNS Bàsic</h3>
+Cada servidor DNS gestiona un cert nombre de dominis inversos i de
+retransmissió. Un domini de retransmissió es alguna cosa com ara
+<i>foo.com</i>, i un domini invers <i>204.165.66</i>. Per a cada
+domini, el servidor DNS pot ser o bé el servidor primari (la font
+original de dades per al domini), o bé un servidor secundari
+(una font de reserva per al domini). <p>
+
+<dl>
+<dt><b>Dominis de Retransmissió</b>
+<dd>Si el servidor DNS gestiona un domini de retransmissió com ara
+   <i>foo.com</i>, llavors podrà respondre peticions de noms de host
+   dins d'aquest domini. Per als dominis per als quals aquest servidor
+   és el primari, pots fer servir aquest mòdul per afegir hosts (i altres
+   registres) al domini. Per als dominis secundaris, pots especificar 
+   els(s) servidor(s) primaris des d'on s'ha de descarregar la
+   informació dels hosts. <p>
+<dt><b>Dominis Inversos</b>
+<dd>Els dominis inversos mapegen adreces IP (com <i>203.165.66.77</i>) a
+   noms de host (com <i>www.foo.com</i>). Un domini invers subministra
+   noms de host per a totes les adreces IP d'una xarxa (com <i>203.165.66</i>).
+   Per dominis per als qual aquest és el servidor primari, aquest mòdul permet
+   afegir registres IP-a-nomdehost al domini. Per als servidors secundaris, 
+   pots especificar els(s) servidor(s) primaris des d'on s'ha de descarregar
+   la informació dels hosts. <p>
+</dl>
+
+<hr>
+<h3>Configuració del Servidor DNS</h3>
+SI el sistema ja té un servidor DNS BIND en execució, llavors pots 
+ignorar aquesta secció. No obstant, si Webmin detecta que el fitxer
+de configuració del DNS primari (normalment, <tt>/etc/named.boot</tt>)
+no és present al sistema, assumeix que el servidor encara no ha estat
+configurat. <p>
+
+Per l'ús normal d'Internet, cal que el servidor DNS tingui una llista 
+dels servidors de nom arrel, de manera que pugui respondre les consultes 
+DNS que queden fora dels seus dominis. Si el servidor no està configurat,
+Webmin pot:
+<ol>
+<li>Descarregar aquesta llista des del servidor FTP d'InterNIC a
+   <tt>rs.internic.net</tt>. Assumint que el host on s'està executant
+   Webmin està connectat a Internet i no està bloquejat per cap tallafocs,
+   aquesta és la millor opció. <p>
+<li>Fer servir una còpia de la llista que ve distribuïda amb Webmin.
+   Donat que els servidors de noms arrel no canvien gaire sovint,
+   hauria de funcionar bé. <p>
+<li>Configurar el servidor de noms només per ús 'intern'. Si estàs en
+   una xarxa que no està connectada a Internet, llavors aquesta és 
+   l'opció que necessites. <p>
+</ol>
+
+<hr>
+<h3>Creació d'un Domini Primari</h3>
+Per crear un domini primari nou, emplena el formulari d'<b>Afegeix un nou
+domini primari</b> a la pàgina del <a href=/dnsadmin/>Servidor DNS</a>.
+El significat dels camps és:
+<ul>
+<li><b>Mapejat</b><br>
+   Determina si aquest és un domini invers o de retransmissió<p>
+<li><b>Domini/Xarxa</b><br>
+   Per als dominis de retransmissió, el domini a afegir (com ara
+   <tt>foo.com</tt>). Per als dominis inversos, la xarxa IP a afegir
+   (com ara <tt>203.123.221</tt>). <p>
+<li><b>Nom de fitxer</b><br>
+   El nom del fitxer en el qual s'emmagatzema la informació dels dominis.
+   Si deixes aquest nom en blanc, es genera automàticament un nom apropiat.<p>
+<li><b>E-mail de contacte</b><br>
+   Cada domini DNS ha de tenir una adreça de correu electrònic associada,
+   que hauria de ser la de la persona responsable del domini. <p>
+<li><b>Servidor de noms</b><br>
+   Ha de contenir el nom completament qualificat del servidor de noms
+   responsable d'aquest domini. Aquest serà gairebé sempre el nom del
+   host en què s'està executant Webmin. <p>
+</ul>
+
+<hr>
+<h3>Creació d'un Domini Secundari</h3>
+
+<hr>
+<h3>Edició d'un Domini Primari</h3>
+
+<hr>
+<h3>Edició dels Registres de Domini</h3>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Torna al mòdul</a><p>
+ 
+

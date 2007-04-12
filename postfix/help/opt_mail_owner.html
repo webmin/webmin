@@ -1,0 +1,16 @@
+<header>Queue and process ownership</header>
+
+<center><tt>mail_owner</tt></center>
+<hr>
+
+This parameter specifies the owner of the Postfix queue and of most Postfix
+daemon processes.
+
+<p>
+
+Specify the name of a user account THAT DOES NOT SHARE A GROUP WITH OTHER
+ACCOUNTS AND THAT OWNS NO OTHER FILES OR PROCESSES ON THE SYSTEM. In
+particular, don't specify <tt>nobody</tt> or <tt>daemon</tt>. PLEASE USE A
+DEDICATED USER.
+
+<hr>

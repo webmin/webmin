@@ -1,0 +1,32 @@
+<header>Problem som ska rapporteras till postmaster</header>
+
+<center><tt>notify_classes</tt></center>
+<hr>
+
+Du bör sätta upp aliaset <b>postmaster</b> som pekar på en verklig person.
+Detta alias måste finnas, så att folk kan rapportera sina e-postproblem.
+
+<p>Postfix-systemet rapporterar också problem till postmaster. Det är möjligt
+att alla sorters problemrapporter inte är intressanta och därför går denna
+rapportering att konfigurera. Som standard rapporteras endast allvarliga
+(resurs-, program-) problem till postmaster:
+
+<p><b>Standard:</b> <tt>resource, software</tt>
+
+<p>De olika klasserna har följande betydelse:
+
+<ul>
+<li><tt>bounce:</tt> Skicka kopia till postmaster av e-post som inte kunde skickas.
+<li><tt>2bounce:</tt> Skicka dubbelstudsar till postmaster. 
+<li><tt>delay:</tt> Informera postmaster om fördröjd e-post. I detta fall skickas endast e-posthuvudena.
+<li><tt>policy:</tt> Informera postmaster om klientförfrågningar som 
+nekades på grund av (UCE-)policybegränsningar. Postmaster får ett sammandrag av hela SMTP-sessionen.
+<li><tt>protocol:</tt> Informera postmaster om protokollfel (på klient- eller serversidan) eller
+klientförsök att utföra kommandon som inte finns. Postmaster får ett sammandrag av hela
+SMTP-sessionen.
+<li><tt>resource:</tt> Informera postmaster om e-post som inte sänts på grund av resursproblem
+(exempelvis fel vid skrivning till köfilen).
+<li><tt>software:</tt> Informera postmaster om e-post som inte sänts på grund av programfel.
+</ul>
+
+<hr>

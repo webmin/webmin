@@ -1,0 +1,17 @@
+<header>Separador usado entre los nombres de usuario y extensiones de
+dirección</header>
+
+<center><tt>recipient_delimiter</tt></center>
+<hr>
+
+Este parámetro especifica el separador entre los nombres de usuario y las
+extensiones de dirección (<tt>usuario+foo</tt>). Vea <a
+href=canonical>Mapeo Canónigo</a>, <a href=relocated>Mapeo
+Relocalizado</a>, <a href=virtual>Dominios Virtuales </a> y local(8) para
+consultar los efectos que esto tiene en las búsquedas en los ficheros de alias,
+canónigos, virtuales, relocalizados y <tt>.forward</tt>. Básicamente, el
+software intenta <tt>usuario+foo</tt> y <tt>.forward+foo</tt> antes de
+intentar <tt>usuario</tt> y <tt>.forward</tt>.
+
+
+<hr>

@@ -1,0 +1,24 @@
+<header>Unix-processer</header>
+
+En process är enkelt uttryckt ett program som körs på systemet. Webbrowsern,
+fönsterhanteraren, terminalfönstret och X-servern är processer som man kan
+påverka direkt. Andra processer kör i bakgrunden, exempelvis webservrar
+och andra systemprogram. Varje gång man skriver in ett kommando, t ex
+<tt>ls</tt> ellr <tt>pwd</tt>, skapas en process (fast dessa processer är
+väldigt kortlivade).
+
+<p>Varje process har ett unikt ID som kallas process-ID eller PID. Processer
+som kör samtidigt har olika ID, men med tiden återanvänds PID-nummer.
+
+<p>Bortsett från initieringsprocessen (vanligen <tt>init</tt>) har varje
+process en föräldraprocess som skapade den. Om man t ex kör <tt>vi</tt>
+från skalprompten är föräldraprocessen till <tt>vi</tt> skalet. En process
+kan ha ett obegränsat antal underprocesser men endast en förälder.
+
+<p>Varje process körs med någon användares och grupps rättigheter, som
+gäller då processen försöker komma åt filer och kataloger. Användare och
+processer får bara slå ihjäl processer som de själva äger, utom <tt>root</tt>,
+som får slå ihjäl allt.
+
+<hr>
+

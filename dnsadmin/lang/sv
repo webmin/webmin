@@ -1,0 +1,26 @@
+log_servers=Ändrade övriga DNS-servrar
+log_logging=Ändrade loggning och fel
+log_acls=Ändrade åtkomstkontrollistor
+log_files=Ändrade filer och kataloger
+log_forwarding=Ändrade eftersändning och överföringar
+log_net=Ändrade adresser och topologi
+log_misc=Ändrade blandade inställningar
+log_zonedef=Ändrade zonstandarder
+log_apply=Tog ändringar i drift
+log_start=Startade DNS-server
+log_master=Skapade master-zon $1
+log_slave=Skapade slavzon $1
+log_stub=Skapade återvändszon $1
+log_forward=Skapade genomfartszon $1
+log_delete_master=Tog bort master-zon $1
+log_delete_slave=Tog bort slavzon $1
+log_delete_stub=Tog bort återvändszon $1
+log_delete_forward=Tog bort genomfartszon $1
+log_text=Ändrade poster för $1 för hand
+log_soa=Ändrade zonparametrar för $1
+log_opts=Ändrade zoninställningar för $1
+log_delete_record=Tog borg $1 post $2 i zon $3
+log_create_record=Lade till $1 post $2 i zon $3
+log_modify_record=Modifierade $1 post $2 i zon $3
+log_boot=Skapade fil för primära inställningar
+

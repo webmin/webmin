@@ -1,0 +1,44 @@
+index_title=SMART Drive Status
+index_ecmd=The SMART control command $1 was not found on your system, or is not set correctly in the <a href='$2'>module configuration</a>. It must be installed before this module can be used.
+index_ecmd2=The command $1 does not appear to be the SMART control command. It must be set correctly in the <a href='$2'>module configuration</a> before this module can be used.
+index_version=SMARTsuite version $1
+index_show=Show status of drive:
+index_ok=Show
+index_eidescsi=No IDE or SCSI drives were found on your system.
+index_drive=Status of drive $1
+index_desc=Location
+index_size=Drive size
+index_model=Make and model
+index_support=Supports SMART?
+index_enabled=SMART enabled?
+index_check=Passed drive check?
+index_short=Short Self Test
+index_ext=Extended Self Test
+index_data=Data Collection Test
+index_errors=Errors logged
+index_ecount=$1 errors detected
+index_return=module index
+
+monitor_type=SMART Drive Check
+monitor_drive=Drive to check
+monitor_errors=Check error log too?
+monitor_other=Other..
+monitor_edrive=Missing or invalid drive to check
+monitor_nosuch=No such drive
+monitor_nosmart=No SMART support
+
+short_title=Short Self Test
+short_doing=Starting short self test of $1 ..
+short_failed=.. failed!
+short_ok=.. test started OK. See the drive status on the module's main page for the results.
+
+ext_title=Extended Self Test
+ext_doing=Starting extended self test of $1 ..
+ext_failed=$short_failed
+ext_ok=$short_ok
+
+data_title=Data Collection Test
+data_doing=Starting offline data collection on $1 ..
+data_failed=.. failed!
+data_ok=.. collection started OK. See the drive status on the module's main page for the results.
+

@@ -1,0 +1,8 @@
+<header>Remount with noatime option during backup?</header>
+
+When this option is enabled, the filesystem being backed up will be remounted with the <tt>noatime</tt> option before the backup starts. This prevents the file reads done by the backup process from updating the last-accessed time of each file, and thus reduces disk activity. <p>
+
+When the backup is complete, the original filesystem mount options will be restored. <p>
+
+<footer>
+

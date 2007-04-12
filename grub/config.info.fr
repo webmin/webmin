@@ -1,0 +1,6 @@
+line1=Options de configuration,11
+install=Installer GRUB sur disque/partition,0
+line2=Configuration du syst&#232;me,11
+menu_file=Fichier du menu de GRUB,0
+grub_path=Chemin vers le programme grub,0
+device_map=Fichier de correspondance des noms,3,Lire depuis GRUB

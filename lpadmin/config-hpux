@@ -1,0 +1,17 @@
+iface_perms=711
+gs_lib=
+iface_arg=6
+model_path=/usr/spool/lp/model
+scheduler_stop=lpshut
+gs_path=gs
+scheduler_start=lpsched
+smbclient_path=/usr/local/samba/bin/smbclient
+print_style=hpux
+gs_fontpath=
+hpnp_path=/usr/lib/hpnp/bin/hpnpf
+iface_owner=lp:lp
+driver_style=hpux
+show_status=0
+sort_mode=0
+display_mode=0
+show_jobs=0

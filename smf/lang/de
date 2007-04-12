@@ -1,0 +1,13 @@
+close_window=Fenster schliessen
+whats_this_stateinfo=Angezeigt werden Informationen, die zum Dienstinstanz-Staus geh&#246;ren, welche durch svcs ermittelt wurden. Beachten Sie dazu: svcs(1). smf(5).
+whats_this_template_common_name=Geben sie den beschreibenden Namen f&#252;r den Dienst an.
+whats_this_template_description=Beschreiben Sie den Dienst.
+whats_this_template_detail=Geben Sie die Details des Dienstes, den beschreibenden Namen und eine Beschreibung dessen an, was der Dienst tut.
+whats_this_title=Was ist das?
+wizard_add=Hinzuf&#252;gen
+wizard_back=Zur&#252;ck
+wizard_finish=Beenden
+wizard_new=Neu
+wizard_next=N&#228;chste
+wizard_remove=Entfernen
+wizard_update=Aktualisieren

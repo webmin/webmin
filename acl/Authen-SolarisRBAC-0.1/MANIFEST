@@ -1,0 +1,6 @@
+Changes
+MANIFEST
+Makefile.PL
+SolarisRBAC.pm
+SolarisRBAC.xs
+test.pl

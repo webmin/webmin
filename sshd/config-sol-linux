@@ -1,0 +1,11 @@
+sshd_path=/usr/sbin/sshd
+sshd_config=/etc/ssh2/sshd2_config
+client_config=/etc/ssh2/ssh2_config
+pid_file=/var/run/sshd2_22.pid
+start_cmd=/etc/rc.d/bin/sshd up
+stop_cmd=/etc/rc.d/bin/sshd up
+keygen_path=/usr/bin/ssh-keygen2
+sync_create=0
+sync_auth=1
+sync_pass=0
+sync_gnupg=0

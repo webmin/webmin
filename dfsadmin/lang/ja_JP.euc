@@ -1,0 +1,5 @@
+log_modify=NFS 共有 $1 を変更しました
+log_rename=NFS 共有を $1 から $2 に変更しました
+log_create=NFS 共有 $1 を作成しました
+log_delete=NFS 共有 $1 を削除しました
+log_apply=変更を適用しました

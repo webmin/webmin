@@ -1,0 +1,21 @@
+<header>Enviar el correo saliente a través de una máquina</header>
+
+<center><tt>relayhost</tt></center>
+<hr>
+
+En al configuración más habitual usará <tt>Repartir directamente</tt> para
+que Postfix reenvíe al destinatario cualquier correo saliente no destinado
+a usuarios locales de su sistema.
+
+<p>
+
+Si quiere reenviar todo el correo a una <b>pasarela de correo</b> en su
+Intranet (por ejemplo en el caso de que su Intranet disponga de un
+cortafuegos), excepto el correo para la máquina local, deberá establecer el
+valor de su pasarela de correo. La mayor parte de las ocasiones la
+organización habrá configurado registros MX internos, de manera que
+bastaría con poner su nombre de dominio para localizar la pasarela de
+correo.
+
+<hr>
+

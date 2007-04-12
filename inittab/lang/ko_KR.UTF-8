@@ -1,0 +1,42 @@
+inittab_title=SysV init 姥失
+inittab_new=歯 init 覗稽室什 拙失
+inittab_id=戚硯
+inittab_runlevels=叔楳 呪層
+inittab_action=疑拙
+inittab_process=覗稽室什
+inittab_none=蒸製
+inittab_respawn=Respawn
+inittab_wait=企奄
+inittab_once=呪層原陥 廃 腰
+inittab_boot=採特 獣娃
+inittab_bootwait=採特 獣娃, 曽戟拝 凶猿走 企奄
+inittab_off=繕帖 蒸製
+inittab_ondemand=A, B, C拭 赤聖 凶原陥
+inittab_initdefault=獣什奴 採特 板
+inittab_sysinit=獣什奴 採特 亀掻
+inittab_powerwait=穿据 襖像
+inittab_powerfail=企奄馬走 省壱 穿据 襖像
+inittab_powerokwait=穿据 差据喫
+inittab_powerfailnow=舛穿
+inittab_ctrlaltdel=Ctrl+Alt+Del
+inittab_kbdrequest=働舛 徹 繕杯
+inittab_return=inittab 昔畿什
+
+edit_inittab_err=覗稽室什研 畷増拝 呪 蒸柔艦陥
+edit_inittab_title=覗稽室什 $1 畷増
+edit_inittab_details=覗稽室什 雌室 舛左
+edit_inittab_del=肢薦
+edit_inittab_save=煽舌
+
+new_inittab_err=歯 覗稽室什研 拙失拝 呪 蒸柔艦陥
+new_inittab_title=歯 覗稽室什
+
+save_inittab_err=覗稽室什研 煽舌拝 呪 蒸柔艦陥
+save_inittab_noid=神嫌. 戚硯 覗稽室什研 脊径馬走 省紹柔艦陥
+save_inittab_already=神嫌, 戚硯 覗稽室什亜 戚耕 赤柔艦陥
+
+log_modify=init 覗稽室什 $1 呪舛喫
+log_rename=init 覗稽室什 戚硯戚 $1拭辞 $2(生)稽 郊会
+log_create=init 覗稽室什 $1 拙失喫
+log_delete=init 覗稽室什 $1 肢薦喫
+

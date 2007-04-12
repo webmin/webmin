@@ -1,0 +1,24 @@
+<header>Alias databases built by Postfix</header>
+
+<center><tt>alias_database</tt></center>
+<hr>
+
+This parameter specifies the alias database(s) that are built with
+&quot;newaliases&quot; or &quot;sendmail -bi&quot;. This is a separate
+configuration parameter, because
+<a href=opt_alias_maps><tt>alias_maps</tt></a> may specify tables that
+are not necessarily all under control by Postfix.
+
+<p>
+
+Typical configurations are:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>dbm:/etc/mail/aliases</tt>
+<li> <tt>hash:/etc/aliases</tt>
+<li> <tt>hash:/etc/aliases, hash:/opt/majordomo/aliases</tt>
+</ul>
+
+<hr>
+

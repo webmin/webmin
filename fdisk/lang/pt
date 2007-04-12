@@ -1,0 +1,133 @@
+index_title=Administrador de Partições
+index_err=Erro ao listar discos
+index_disk=Disco
+index_parts=Partições
+index_location=Localização
+index_cylinders=Cilindros
+index_model=Modelo
+index_controller=Controlador
+index_scsiid=Alvo
+index_none=Não foram encontradas partições
+index_num=Nº
+index_type=Tipo
+index_extent=Extenção
+index_start=Inicio
+index_end=Fim
+index_addpri=Adicionar partição primária
+index_addlog=Adicionar partição lógica
+index_addext=Adicionar partição extendida
+index_return=lista de discos
+
+extended=Extendida
+opt_default=Predefinido
+opt_error='$1' não é uma $2 válida
+select_device=$1 dispositivo $2
+select_part=$1 dispositivo $2 partição $3
+select_fd=Disquete $1
+
+edit_title=Editar Partição
+create_title=Criar Partição
+edit_ecannot=Você não está autorizado para editar este disco
+edit_details=Detalhes da Partição
+edit_location=Localização
+edit_device=Ficheiro de dispositivos
+edit_type=Tipo
+edit_extent=Extensão
+edit_status=Estado
+edit_mount=Montado em $1 como $2
+edit_umount=Para ser montado em $1 como $2
+edit_mountvm=Montado como memória virtual
+edit_umountvm=Para ser montado como memória virtual
+edit_notexist=Ainda não foi criada
+edit_notused=Não está em uso
+edit_size=Tamanho
+edit_blocks=$1 blocos
+edit_inuse=Esta partição não pode ser alterada porque está actualmente em uso
+edit_mkfs=Criar Novo Sistema de Ficheiros
+edit_mkfsmsg=Constroi um novo $1 de sistema de ficheiros nesta partição, apagando permanentemente qualquer ficheiro. Deverá fazer isto depois de criar uma nova partição ou alterar uma existente.
+edit_fsck=Reparar Sistema de Ficheiros
+edit_fsckmsg=Chama o programa $1 para reparar o sistema de ficheiros para que possa ser montado. Isto pode ser necessário se o sistema não encerrou correctamente.
+edit_tune=Afinar o Sistema de Ficheiros
+edit_tunemsg=Permite que você modifique parâmetros de um sistema de ficheiros existente.
+
+mkfs_title=Novo Sistema de Ficheiros
+mkfs_ecannot=Você não está autorizado para construir um novo sistema de ficheiros neste disco
+mkfs_desc1=Ao clicar no botão no fundo do formulário, irá construir um novo sistema de ficheiros $1 no dispositivo $2. Todos os dados nesta partição serão permanentemente apagados.
+mkfs_desc2=Esta partição foi montada em $1 como $2. Se criar um novo sistema de ficheiros irá apagar todos os ficheiros que eram anteriormente acessíveis dentro deste directório.
+mkfs_options=Opções do Sistema de Ficheiros
+mkfs_create=Criar Sistema de Ficheiros
+mkfs_err=Erro ao criar sistema de ficheiros
+mkfs_exec=A executar comando $1 ..
+mkfs_failed=.. erro no comando!
+mkfs_ok=.. comando completo.
+
+fsck_title=Reparar Sistema de Ficheiros
+fsck_ecannot=Você não está autorizado para verificar (fsck) este disco
+fsck_desc1=Ao clicar no botão <tt>Reparar Sistema de Ficheiros</tt>, irá tentar reparar o sistema de ficheiros danificado $1 em $2 para ser montado em $3. Se o sistema de ficheiros não estiver danificado, nenhumas alterações serão feitas.
+fsck_desc2=A reparação do sistema de ficheiros será feita utilizando o comando $1, que automáticamente tentará corrigir quisquer problemas encontrados. Para maior controle na reparação de sistema de ficheiros, utilize manualmente o comando $2 no modo interactivo na linha de comandos do Unix.
+fsck_repair=Reparar Sistema de Ficheiros
+fsck_exec=A executar o comando $1 ..
+fsck_err0=não foram encontrados erros
+fsck_err1=erros encontrados e corrigidos
+fsck_err3=erros encontrados e corrigidos - é necessário reiniciar
+fsck_err4=erros encontrados mas NÃO corrigidos
+fsck_err16=erro na linha de comando
+fsck_unknown=código de retorno $1 desconhecido
+
+tunefs_title=Afinar Sistema de Ficheiros
+tunefs_ecannot=Você não está autorizado para afinar este sistema de ficheiros
+tunefs_desc=Este formulário permite-lhe ajustar vários parâmetros do sistema de ficheiros $1 em $2 para ser montado em $3. Os ficheiros existentes neste sistema de ficheiros não serão afectados.
+tunefs_params=Parâmetros de Afinação
+tunefs_tune=Afinar Sistema de Ficheiros
+tunefs_c=Intervalo entre verificações
+tunefs_e=Acção caso haja erro
+tunefs_continue=Continuar
+tunefs_remount=Montar em modo de leitura apenas
+tunefs_panic=Pânico
+tunefs_u=Utilizador reservado
+tunefs_g=Grupo reservado
+tunefs_m=Blocos reservados
+tunefs_i=Tempo entre verificações
+tunefs_days=Dias
+tunefs_weeks=Semanas
+tunefs_months=Meses
+tunefs_err=Erro ao afinar sistema de ficheiros
+tunefs_exec=A executar comando $1 ..
+tunefs_failed=.. erro no comando!
+tunefs_ok=.. comando completo.
+
+reboot_title=Reiniciar Sistema
+reboot_msg=A reiniciar sistema neste momento ..
+reboot_ok=Reiniciar Sistema Já
+reboot_why=Você alterou a tabela da partição em $1. Para que esta alteração seja efectiva neste sistema, terá de reiniciar o sistema.
+
+save_err=Erro ao guardar partição
+save_ecannot=Você não está autorizado para editar este disco
+save_estart='$1' não é um cilindro de início válido
+save_eend='$1' não é um cilindro final válido
+save_emin=O cilindro inicial tem de ser >= $1
+save_emax=O cilindro final tem de ser <= $1
+save_eminmax=O cilindro inicial tem de ser menor que o final
+save_eoverlap=Sobreposição detectada com a partição $1 ($2 a $3)
+
+ext2_b=Tamanho do bloco
+ext2_f=Tamanho do fragmento
+ext2_i=Bytes por i-node
+ext2_m=Blocos reservados
+ext2_g=Blocos por grupo
+ext2_c=Verificar se há blocos danificados?
+
+msdos_f=Número de FATs
+msdos_F=Tamanho da FAT
+msdos_i=ID do volume
+msdos_n=Nome do volume
+msdos_r=Entradas de root
+msdos_s=Tamanho do cluster
+msdos_c=Verificar se há blocos danificados?
+
+minix_n=Tamanho do nome do ficheiro
+minix_i=Número de i-nodes
+minix_b=Número de blocos
+minix_c=Verificar se há blocos danificados?
+
+acl_disks=Discos que este utilizador pode particionar e formatar

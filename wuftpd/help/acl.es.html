@@ -1,0 +1,39 @@
+<header>Límites y Control de Acceso</header>
+
+Esta página contiene varias tablas para poner las opciones de Límites y
+control de acceso. <p>
+
+La primera tabla te permite especificar la dirección IP del cliente
+al que hay que denegar el acceso al servidor FTP y un archivo de mensajes
+de error a mostrar al cliente que no tiene acceso. Las direcciones
+pueden ser suministradas como direcciones IP completas o parciales. Las
+direcciones IP, las redes/máscaras de red IP, nombres de máquina, comodines
+de máquinas (como <tt>*.fpp.com</tt> o trayectorias absolutas a archivos que
+contienen direcciones adicionales. Cualquier tipo de dirección puede ir
+precedido con un carácter ! para negarla. <p>
+
+La segunda tabla te permite limitar el número de logins simultáneos de los
+cliente de cada clase. Para cada clase puedes digitar el máximo número de
+logins simultáneos, los días y horas en que se activa el máximo (en estilo
+UUCP, como <tt>MoTuTh0800-1700</tt>), y un archivo de mensajes de error a
+mostrar a los clientes cuando se alcance el límite. <p>
+
+La tercera tabla te permite poner los límites de archivo por-sesión y de
+transferencia de datos. Para cada límite, debes de escoger si se aplica
+a los archivos o a los bytes transferidos, la dirección de transferencia
+a la que se aplica el límite, si el límite se aplica sólo a las transferencias
+de archivos o a todos los datos y las clases de usuarios para las que es
+el límite.
+
+La cuarta tabla te permite denegar el acceso a ciertos archivos. Para cada
+archivo necesitas digitar una trayectoria absoluta, escoger si la
+trayectoria es relativa al directorio <tt>chroot</tt> (para usuarios
+invitados o anónimos) y seleccionar las clases de usuarios a los que se
+aplica esta restricción. Si un archivo a denegar termina con un carácter /,
+el servidor FTP denegará el acceso a todos los archivos de ese directorio.<p>
+
+Similármente, la quinta tabla te permite garantizar el acceso a archivos
+que serían normalmente denegados por la tabla de arriba. <p>
+
+<hr>
+

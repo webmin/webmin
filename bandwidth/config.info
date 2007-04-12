@@ -1,0 +1,3 @@
+firewall_system=Firewall type,4,firewall-IPtables,ipfw-IPFW,ipfilter-IPFilter,shorewall-Shorewall,-Detect automatically
+bandwidth_log=Log file to create for firewall messages,0
+bandwidth_dir=Directory for bandwidth data,3,Default (/etc/webmin/bandwidth/hours)

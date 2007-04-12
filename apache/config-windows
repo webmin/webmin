@@ -1,0 +1,16 @@
+show_list=0
+httpd_path=c:/program files/apache group/apache2/bin/Apache.exe
+httpd_conf=
+httpd_dir=c:/program files/apache group/apache2
+mime_types=
+srm_conf=
+access_conf=
+show_order=0
+max_servers=100
+test_config=0
+test_manual=0
+test_always=0
+test_apachectl=0
+start_cmd=net start apache2
+stop_cmd=net stop apache2
+#apply_cmd="c:/program files/apache group/apache2/bin/Apache.exe" -k restart

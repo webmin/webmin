@@ -1,0 +1,20 @@
+index_title=變更語言和佈景
+index_lang=Webmin介面語言
+index_langglobal=全域語言 ($1)
+index_langset=個人選擇 ..
+index_theme=Webmin介面佈景
+index_themeglobal=全域佈景 ($1)
+index_themeset=個人選擇 ..
+index_pass=Webmin登入密碼
+index_passleave=離開不改變
+index_passset=設成 ..
+index_ok=變更
+index_themedef=舊Webmin佈景
+index_desc=此模組可以用來改變您個人登入Webmin時，所想在模組顯示的語言和佈景主題。
+
+change_title=變更設定
+change_user=變更Webmin登入 ..
+change_done=.. 完成
+change_restart=重新啟動Webmin ..
+change_redirect=重新導向主目錄 ..
+change_ecolon您的密碼不能被包含 : 字元

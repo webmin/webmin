@@ -1,0 +1,4 @@
+id=mysql
+type=mysql
+desc=MySQL Database Server
+depends=mysql

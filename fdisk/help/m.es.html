@@ -1,0 +1,29 @@
+<header>Cuenta de sectores para la entrada/salida de múltiples sectores</header>
+Configura la cuenta de sectores para la I/O de múltiples sectores de la
+unidad.<p>
+
+El modo de múltiples sectores (conocido como Modo Bloque IDE) es una
+característica de la mayoría de discos duros IDE actuales, que permite la
+transferencia de múltipoles sectores por interrupción de I/O, más que el
+habitual sector por cada interrupción.<p>
+
+Cuando esta característica está activa, habitualmente reduce la sobrecarga
+del sistema operativo para operaciones de I/O a disco entre un 30% y un
+50%. En muchos sistemas además proporciona incrementos de las velocidades
+de transferencia de entre un 5% y un 50%. Sin embargo algunas unidades (las
+más notables son las series Caviar de Western Digital) parecen ir más
+lentos con este modo activado. Sus resultados podrán variar.<p>
+
+La mayoría de los discos soportan como mínimo los valores de 2, 4, 8 y 16
+(sectores). Valores mayores pueden ser posibles dependiendo del disco. Un
+valor de 16 o 32 parece el óptimo para muchos sistemas.<p>
+
+Western Digital recomienda valores tan bajos como 4 u 8 en muchos de sus
+discos debido a los tamaños tan limitados (32 KB) de sus cachés de disco y
+debido a la no optimización de los algoritmos de buffering.<p>
+
+Algunos discos dicen soportar modo múltiple pero pierden datos con ciertas
+configuraciones.<br>En circunstancias raras dichos fallos pueden resultar en
+corrupciones masivas de los sistemas de ficheros.
+
+<hr>

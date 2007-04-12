@@ -1,0 +1,13 @@
+<header>FTP Anonyme</header>
+
+La première table sur cette page vous permet de spécifier le répertoire que le serveur va définir comme répertoire racine quand un usager anonyme ouvrira une session.  Un répertoire différent peut être choisit pour un usager d'une autre classe, ou le même répertoire peut être utilisé pour toute les classes.  Si aucun répertoire est spécifié, le serveur FTP définira comme répertoire racine le répertoire personnel de l'usager <tt>ftp</tt>.<p>
+
+Car le serveur appèle des programmes externe comme <tt>ls</tt> et <tt>tar</tt>, le répertoire racine doit contenir un répertoire <tt>bin</tt> avec ces différents exécutables, un répertoire <tt>lib</tt> contenant toutes les librairies partagées nécessaires et un répertoire <tt>etc</tt> qui contient les fichiers <tt>passwd</tt> et <tt>group</tt>.  QUand le serveur change le répertoire racine pour limiter les accès de l'usager anonyme, il ne peut accèder à aucun programme en dehors de ce répertoire.<p>
+
+La deuxième table contrôle quel répertoire le serveur va définir comme répertoire racine pour les usagers invité.  Pour chaque répertoire vous pouvez spécifier quel usagers ce répertoire s'applique en entrant le nom d'usagers, les numéros d'usager (comme <tt>%3000</tt> ou <tt>%3000-3006</tt>).  Si aucun usager n'est entré, le répertoire va s'appliquer à tout les usagers invité.<p>
+
+La troisième table vous permet de contrôler quel groupe Unix l'usagers anonyme va être considéré par le serveur FTP autre que le groupe <tt>ftp</tt>.  Pour chaque groupe entré vous pouvez choisir un ou plusieurs classes d'usager, par exemple pour donner l'accèss à certain fichier à un usager anonyme d'une certaine adresse IP.<p>
+
+Finalement, la section du bas de cette page vous permet de choisir quel type de mot de passe est acceptable pour usager anonyme qui ouvre une session.  Traditionnelement l'usager FTP doit envoyer une adresse de couriel valide comme mot de passe.<p>
+
+<hr>

@@ -1,0 +1,8 @@
+host=Hostiteµ pre spojenie,3,Automaticky
+port=Port pre spojeni,3,©tandardný
+mode=Typ spojenia,1,0-Telnet,1-Bezpeèný Shell (doporuèené)
+sizemode=Veµkos» appletu,1,0-80x24 znakov (pri ¹tandardnom písme),1-Maximálna,2-Vlastná veµkos»
+size=Vlastná ¹írka x vý¹ka,0
+fontsize=Veµkos» písma v bodoch,3,©tandardná
+detach=Mód samostatných okien,1,1-Áno,0-Nie
+no_test=Testova» èi je telnet alebo SSH server?,1,0-Áno,1-Nie

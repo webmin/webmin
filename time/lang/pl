@@ -1,0 +1,43 @@
+index_title=Czas systemowy
+index_timeserver=Serwer czasu
+index_address=Nazwa/Adres
+index_zone=Strefa czasowa
+index_tz=Bie¿±ca lokalizacja
+
+action_save=Zachowaj
+action_apply=Zastosuj
+action_sync=Synchronizuj czas systemowy z czasem sprzêtowym
+action_sync_s=Synchronizuj czas sprzêtowy z czasem systemowym
+action_timeserver_sys=Synchronizuj czas systemowy
+action_timeserver_hw=Synchronizuj czas sprzêtowy
+action_savezone=Zmieñ strefê czasow±
+
+acl_sys=U¿ytkownik mo¿e zmieniaæ czas systemowy
+acl_hw=U¿ytkownik mo¿e zmieniaæ czas sprzêtowy
+acl_yes=Tak
+acl_no=Nie
+acl_error=Masz dostêp do modu³u czasu systemowego, ale nie mo¿esz zmieniaæ ani czasu systemowego ani sprzêtowego
+acl_nosys=Nie masz uprawnieñ do zmiany czasu systemowego
+acl_nohw==Nie masz uprawnieñ do zmiany czasu sprzêtowego
+
+sys_title=Czas systemowy
+hw_title=Czas sprzêtowy
+
+day=Dzieñ tygodnia
+month=Miesi±c
+date=Dzieñ
+hour=Godzina
+year=Rok
+
+error_cnf=B³±d&nbsp;: $1 nie ma takiego polecenia
+error_hw=Nie mogê ustawiæ czasu sprzêtowego&nbsp;: $1
+error_sync=Nie mogê ustawiæ czasu systemowego&nbsp;: $1
+
+log_set_date=Ustawiono czas systemowy na $1
+log_set_hwclock=Ustawiono zagar sprzêtowy na $1
+log_remote_date=Pobrano czas systemowy z&nbsp;$2
+log_remote_hwclock=Pobrano czas sprzêtowy z&nbsp;$2
+log_remote_date_l=Pobrano czas systemowy $1 z&nbsp;$2
+log_remote_hwclock_l=Pobrano czas sprzêtowy $1 z&nbsp;$2
+log_sync=Zsynchronizowano czas systemowy z&nbsp;zegarem sprzêtowym
+log_sync_s=Zsynchronizowano zegar sprzêtowy z&nbsp;czasem systemowym

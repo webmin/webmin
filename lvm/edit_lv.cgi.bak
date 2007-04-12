@@ -1,0 +1,163 @@
+#!/usr/local/bin/perl
+# Display a form for editing an existing logical volume
+
+require './lvm-lib.pl';
+&foreign_require("fdisk", "fdisk-lib.pl");
+&ReadParse();
+($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
+@lvs = &list_logical_volumes($in{'vg'});
+
+if ($in{'lv'}) {
+	($lv) = grep { $_->{'name'} eq $in{'lv'} } @lvs;
+	&header($lv->{'is_snap'} ? $text{'lv_edit_snap'}
+				 : $text{'lv_edit'}, "");
+	@stat = &device_status($lv->{'device'});
+	}
+else {
+	&header($in{'snap'} ? $text{'lv_create_snap'} : $text{'lv_create'}, "");
+	$lv = { 'perm' => 'rw',
+		'alloc' => 'n',
+		'is_snap' => $in{'snap'},
+	 	'size' => ($vg->{'pe_total'} - $vg->{'pe_alloc'})*
+			  $vg->{'pe_size'} };
+	}
+print "<center><font size=+2>",&text('lv_vg', $vg->{'name'}),
+      "</font></center>\n";
+print "<hr>\n";
+
+print "<form action=save_lv.cgi>\n";
+print "<input type=hidden name=vg value='$in{'vg'}'>\n";
+print "<input type=hidden name=lv value='$in{'lv'}'>\n";
+print "<input type=hidden name=snap value='$in{'snap'}'>\n";
+print "<table border width=100%>\n";
+print "<tr $tb> <td><b>$text{'lv_header'}</b></td> </tr>\n";
+print "<tr $cb> <td><table width=100%>\n";
+
+if ($stat[2]) {
+	print "<tr> <td><b>$text{'lv_name'}</b></td>\n";
+	print "<td>$lv->{'name'}</td>\n";
+
+	print "<td><b>$text{'lv_size'}</b></td>\n";
+	print "<td>$lv->{'size'} kB</td> </tr>\n";
+	}
+else {
+	print "<tr> <td><b>$text{'lv_name'}</b></td>\n";
+	print "<td><input name=name size=15 value='$lv->{'name'}'></td>\n";
+
+	print "<td><b>$text{'lv_size'}</b></td>\n";
+	print "<td><input name=size size=8 value='$lv->{'size'}'> kB</td> </tr>\n";
+	}
+
+print "<tr> <td><b>$text{'lv_petotal'}</b></td>\n";
+print "<td>",&text('lv_petotals', $vg->{'pe_alloc'}, $vg->{'pe_total'}),
+      "</td>\n";
+
+print "<td><b>$text{'lv_pesize'}</b></td>\n";
+print "<td>$vg->{'pe_size'} kB</td> </tr>\n";
+
+if ($in{'lv'}) {
+	print "<tr> <td><b>$text{'lv_device'}</b></td>\n";
+	print "<td><tt>$lv->{'device'}</tt></td>\n";
+
+	print "<td><b>$text{'lv_status'}</b></td> <td>\n";
+	if (!@stat) {
+		print $text{'lv_notused'};
+		}
+	else {
+		$msg = &device_message(@stat);
+		print $msg;
+		}
+	print "</td> </tr>\n";
+	}
+
+if ($lv->{'is_snap'}) {
+	print "<tr> <td><b>$text{'lv_snapof'}</b></td> <td>\n";
+	if ($in{'lv'}) {
+		# Show which LV this is a snapshot of
+		local @snapof = grep { $_->{'size'} == $lv->{'size'} &&
+				       $_->{'has_snap'} } @lvs;
+		if (@snapof == 1) {
+			print "<tt>$snapof[0]->{'name'}</tt>";
+			}
+		else {
+			print "<i>$text{'lv_nosnap'}</i>";
+			}
+		}
+	else {
+		# Allow selection of snapshot source
+		print "<select name=snapof>\n";
+		foreach $l (@lvs) {
+			print "<option>$l->{'name'}\n" if (!$l->{'is_snap'});
+			}
+		print "</select>\n";
+		}
+	print "</td> </tr>\n";
+	}
+elsif ($stat[2]) {
+	# Display current permissons and allocation method
+	print "<tr> <td><b>$text{'lv_perm'}</b></td>\n";
+	print "<td>",$text{"lv_perm".$lv->{'perm'}},"</td>\n";
+
+	print "<td><b>$text{'lv_alloc'}</b></td>\n";
+	print "<td>",$text{"lv_alloc".$lv->{'alloc'}},"</td> </tr>\n";
+	}
+else {
+	# Allow editing of permissons and allocation method
+	print "<tr> <td><b>$text{'lv_perm'}</b></td>\n";
+	printf "<td><input type=radio name=perm value=rw %s> %s\n",
+		$lv->{'perm'} eq 'rw' ? 'checked' : '', $text{'lv_permrw'};
+	printf "<input type=radio name=perm value=r %s> %s</td>\n",
+		$lv->{'perm'} eq 'r' ? 'checked' : '', $text{'lv_permr'};
+
+	print "<td><b>$text{'lv_alloc'}</b></td>\n";
+	printf "<td><input type=radio name=alloc value=y %s> %s\n",
+		$lv->{'alloc'} eq 'y' ? 'checked' : '', $text{'lv_allocy'};
+	printf "<input type=radio name=alloc value=n %s> %s</td> </tr>\n",
+		$lv->{'alloc'} eq 'n' ? 'checked' : '', $text{'lv_allocn'};
+	}
+
+if (!$in{'lv'} && !$lv->{'is_snap'}) {
+	print "<tr> <td><b>$text{'lv_stripe'}</b></td> <td colspan=3>\n";
+	printf "<input type=radio name=stripe_def value=1 checked> %s\n",
+		$text{'lv_nostripe'};
+	print "<input type=radio name=stripe_def value=0>\n";
+	print &text('lv_stripes', "<input name=stripe size=4>"),
+	      "</td> </tr>\n";
+	}
+
+print "</table></td></tr></table>\n";
+print "<table width=100%><tr>\n";
+if ($stat[2]) {
+	print "<td><b>$text{'lv_cannot'}</b></td>\n";
+	}
+elsif ($in{'lv'}) {
+	print "<td><input type=submit value='$text{'save'}'></td>\n";
+	print "<td align=right><input type=submit name=delete ",
+	      "value='$text{'delete'}'></td>\n";
+	}
+else {
+	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	}
+print "</tr></table></form>\n";
+
+if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'}) {
+	# Show buttons for creating filesystems
+	print "<hr>\n";
+	print "<table width=100%><tr>\n";
+	print "<form action=mkfs_form.cgi>\n";
+	print "<input type=hidden name=dev value='$lv->{'device'}'>\n";
+	print "<td><input type=submit value='$text{'lv_mkfs'}'>\n";
+	print "<select name=fs>\n";
+	foreach $f (&fdisk::supported_filesystems()) {
+		printf "<option value=%s %s>%s (%s)\n",
+			$f, $stat[1] eq $f ? "selected" : "",
+			$fdisk::text{"fs_$f"}, $f;
+		}
+	print "</select></td>\n";
+	print "<td>$text{'lv_mkfsdesc'}</td>\n";
+	print "</form></tr></table>\n";
+	}
+
+print "<hr>\n";
+&footer("", $text{'index_return'});
+

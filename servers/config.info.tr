@@ -1,0 +1,8 @@
+line1=Yapýlandýrýlabilir seçenekler,11
+resolve=Bulunan sunucu adreslerini çözümle,1,1-Evet,0-Hayýr
+scan_time=Yanýtlarý taramak için bekleme süresi,0,5
+display_mode=Sunucularý þu þekilde göster,1,1-Tablo,0-Simgeler
+sort_mode=Sunucularý sýralama biçimi,1,4-IP Adresi,1-Makine adý,2-Açýklama,3-OS,5-Grup,0-Oluþturulduðu sýra ile
+show_status=Sunucular için durum gösterilsin,1,1-Evet,0-Hayýr
+line2=Sistem yapýlandýrmasý,11
+groups_dir=MSC cluster grup dizini,0

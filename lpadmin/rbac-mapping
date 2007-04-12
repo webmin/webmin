@@ -1,0 +1,4 @@
+# RBAC authorizations		# Webmin ACL
+solaris.admin.printer.modify,solaris.admin.printer.delete	noconfig=1
+solaris.admin.printer.modify	delete=0,noconfig=1
+solaris.admin.printer.read	printers=NONE,cancel=0,add=0,stop=0,view=1,test=0,user=,noconfig=1

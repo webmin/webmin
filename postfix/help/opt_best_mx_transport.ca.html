@@ -1,0 +1,17 @@
+<header>Acció en cas d'estar llistat com a millor host MX</header>
+
+<center><tt>best_mx_transport</tt></center>
+<hr>
+
+Aquest paràmetre controla què passa quan el sistema local està llistat
+com a millor host MX per a una destinació donada. Per defecte, Postfix 
+dóna el missatge d'error &quot;mail loops back to myself&quot; i rebota
+el missatge.
+
+<p>
+
+Especifica <tt>local</tt> per passar el correu a un agent de lliurament local.
+Pots especificar qualsevol transport definit al fitxer <tt>master.cf</tt>
+de Postfix.
+
+<hr>

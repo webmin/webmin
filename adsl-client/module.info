@@ -1,0 +1,16 @@
+name=ADSL
+desc=ADSL Client
+os_support=*-linux
+category=net
+longdesc=Set up a PPP client with the RP-PPPoE package.
+depends=net
+desc_ca=Client ADSL
+desc_bg=ADSL Êëèåíò
+desc_zh_TW.Big5=ADSL«È¤áºÝ
+desc_de=ADSL-Client
+desc_ja_JP.euc=ADSL ¥¯¥é¥¤¥¢¥ó¥È
+desc_tr=ADSL Ýstemcisi
+desc_es=Cliente ADSL
+desc_zh_TW.UTF-8=ADSLå®¢æˆ¶ç«¯
+desc_ja_JP.UTF-8=ADSL ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆ
+desc_ar=ADSL Ø²Ø¨ÙˆÙ† Ø§Ù„

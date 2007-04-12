@@ -1,0 +1,8 @@
+line0=Opcions configurables,11
+view_condition=Mostra les condicions,1,1-Sí,0-No
+view_comment=Mostra els comentaris,1,1-Sí,0-No
+view_counters=Mostra els comptadors,1,1-Sí,0-No
+cluster_mode=Actualitza els servidors del cluster,1,0-Quan es faci un canvi,1-En aplicar la configuració
+line1=Configuració del sistema,11
+save_file=Fitxer de desat IPFW a editar,3,Per defecte de Webmin
+ipfw=Camí complet de l'ordre ipfw,0

@@ -1,0 +1,16 @@
+cron_get_command=ユーザのcronジョブを読み取るコマンド,0
+system_crontab=Vixie-Cronシステムのcrontabファイルへのパス,0
+line1=設定可能なオプション,11
+vixie_cron=Vixie-Cron拡張をサポートしますか?,1,1-はい,0-いいえ
+line2=システム設定,11
+cron_deny_file=ファイルの一覧を拒否されたユーザ,0
+cronfiles_dir=外部cronファイルディレクトリ,3,無し
+cron_edit_command=ユーザのcronジョブを編集するコマンド,0
+cron_deny_all=allow又はdenyファイルを除くパーミッション,1,0-全て拒否,1-root以外を拒否,2-全て許可
+max_len=表示するコマンドの長さ,3,無制限
+run_parts=run-partsコマンド,0
+cron_input=cronジョブへの入力はサポートされていますか?,1,1-はい,0-いいえ
+cron_copy_command=標準入力からユーザのcronジョブを受け付けるコマンド,0
+cron_dir=crontabディレクトリ,0
+cron_allow_file=ファイルの一覧を許可されたユーザ,0
+cron_delete_command=ユーザのcronジョブを削除するコマンド,0

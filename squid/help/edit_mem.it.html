@@ -1,0 +1,58 @@
+<header>Memory Usage</header>
+
+<b>Memory usage limit</b>: Defaults to 8MB.  <p>
+NOTE: This parameter does not specify the maximum process
+size.  It places a limit on one aspect of Squid's memory
+usage.  Squid uses memory for other things as well.
+Your process will probably become twice or three times
+as big as the value you put here. 
+<p>
+It specifies the ideal amount of memory to be used
+for:
+<ul>
+<li>In-Transit objects
+<li>Hot Objects
+<li>Negative-Cached objects
+</ul>
+<p>
+Data for these objects are stored in 4 kB blocks.  This
+parameter specifies the ideal upper limit on the total size of
+4 kB blocks allocated.  In-Transit objects take the highest
+priority.
+<p>
+In-transit objects have priority over the others.  When
+additional space is needed for incoming data, negative-cached
+and hot objects will be released.  In other words, the
+negative-cached and hot objects will fill up any unused space
+not needed for in-transit objects.
+<p>
+If circumstances require, this limit will be exceeded.
+Specifically, if your incoming request rate requires more than
+this amount of memory to hold in-transit objects, Squid will
+exceed this limit to satisfy the new requests.  When the load
+decreases, blocks will be freed until the high-water mark is
+reached.  Thereafter, blocks will be used to store hot
+objects.
+<p>
+
+<b>FQDN cache size</b>: Defaults to 1024.  Maximum number of Fully Qualified Domain Name cache entries. <p>
+
+<b>Memory high-water mark</b>: Defaults to 95%.  When this high mark is reached, hot objects and in transit objects will be released to free memory. <p>
+
+<b>Memory low-water mark</b>: Defaults to 90%.  After the high water mark is reached, Squid will free memory until usage has dropped below this mark. <p>
+
+<b>Disk high-water mark</b>: Defaults to 95%.  When this high mark is reached, Squid will begin aggressively flushing the disk. <p>
+
+<b>Disk low-water mark</b>: Defaults to 90%.  After the high water mark is reached, Squid will continue to flush the disk until usage drops below this mark. <p>
+
+<b>Maximum cached object size</b>: Defaults to 4096 kB.  This setting limits the size of objects that will be stored by the cache.  Anything over this size will never be cached and must be loaded from the origin server everytime. <p>
+
+<b>IP address cache size</b>: Defaults to 1024.  Number of entries to be stored in the IP cache. <p>
+
+<b>IP cache high-water mark</b>: Defaults to 95%.  The point at which Squid begins to flush IP cache entries. <p>
+
+<b>IP cache low-water mark</b>: Defaults to 90%.  After IP cache flushing begins, it will continue until the number of entries in the IP cache drops below this percentage. <p>
+
+<hr>
+
+

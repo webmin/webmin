@@ -1,0 +1,19 @@
+---- Changes since 1.130 ----
+Mounting of SMB filesystems is now supported on FreeBSD, using the mount_smbfs command and /etc/nsmbrc file.
+Filesystems can now be sorted by directory, type or order in fstab and mtab files.
+CIFS filesystems can now be mounted on Linux.
+---- Changes since 1.150 ----
+Added support for NFS version 4 on Linux, thanks to code contributed by Frederic Jolly.
+---- Changes since 1.180 ----
+Added additional access control options to limit filesystems and associate mounts with users.
+---- Changes since 1.200 ----
+The priority for swap files and devices can now be edited on Linux.
+---- Changes since 1.240 ----
+Added some more options for Linux CIFS mounts.
+---- Changes since 1.270 ----
+When un-mounting a busy filesystem on Linux systems, an option is presented to do a forced (lazy) un-mount instead, which will generally succeed.
+---- Changes since 1.300 ----
+Added support for HFS and FATX filesystems under Linux.
+Partitions specified using the UUID notation in /etc/fstab are now supported, as seen on Ubuntu Linux.
+---- Changes since 1.330 ----
+Mounted filesystems can now be displayed on Intel macs, without needing the gcc program.

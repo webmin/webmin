@@ -1,0 +1,24 @@
+<header>Base de datos de alias construídas por Postfix</header>
+
+<center><tt>alias_database</tt></center>
+<hr>
+
+Este parámetro especifica la base de datos de alias que son construídas con
+&quot;newaliases&quot; o &quot;sendmail -bi&quot;. Este es un parámetro a
+parte de la configuración debido a que
+<a href=opt_alias_maps><tt>alias_maps</tt></a> puede especificar tablas que
+no están necesáriamente bajo el control de Postfix.
+
+<p>
+
+Las típicas configuraciones son:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>dbm:/etc/mail/aliases</tt>
+<li> <tt>hash:/etc/aliases</tt>
+<li> <tt>hash:/etc/aliases, hash:/opt/majordomo/aliases</tt>
+</ul>
+
+<hr>
+

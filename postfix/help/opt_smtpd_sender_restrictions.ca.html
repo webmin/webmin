@@ -1,0 +1,44 @@
+<header>Restriccions en les adreces del remitent</header>
+
+<center><tt>smtpd_sender_restrictions</tt></center>
+<hr>
+
+Aquest paràmetre especifica les restriccions opcionals sobre les adreces
+remitents que els clients SMTP poden enviar en ordres MAIL FROM.
+
+<p>
+
+El valor per defecte és permetre qualsevol adreça remitent.
+Es troben disponibles les restriccions següents:
+
+<ul>
+<li><tt>permit_mynetworks:</tt> permet si l'adreça del client coincideix amb
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>reject_unknown_client:</tt> rebutja la petició si el nom de host client és desconegut.
+<li><tt>reject_maps_rbl:</tt> rebutja si el client està llistat a
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject_invalid_hostname:</tt> rebutja nom de host HELO amb sintaxi incorrecta.
+<li><tt>reject_unknown_hostname:</tt> rebutja nom de host HELO sense cap registre DNS A o MX.
+<li><tt>reject_unknown_sender_domain:</tt> rebutja domini remitent sense cap registre A o MX.
+<li><tt>check_sender_access maptype:mapname:</tt> consulta l'adreça remitent, domini pare, o partlocal@.
+    	Rebutja si el resultat és REJECT o &quot;[45]xx text&quot;
+        Permet altrament.
+<li><tt>check_client_access maptype:mapname:</tt> vegeu
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li><tt>check_helo_access maptype:mapname:</tt> vegeu
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li><tt>reject_non_fqdn_hostname:</tt> rebutja nom de host HELO que no està en format FQDN
+<li><tt>reject_non_fqdn_sender:</tt> rebutja adreça remitent que no està en format FQDN
+<li><tt>reject:</tt> rebutja la petició. Posa-ho al final d'una restricció.
+<li><tt>permit:</tt> permet la petició. Posa-ho al final d'una restricció.
+</ul>
+
+Les restriccions s'apliquen en l'ordre especificat; la primera restricció
+que coincideixi guanya.
+
+<p>
+
+Especifica una llista de restriccions, separades per comes i/o espais.
+Continua les línies llargues començant la línia següent amb un espai.
+
+<hr>

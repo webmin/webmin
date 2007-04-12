@@ -1,0 +1,4 @@
+---- Changes since 1.140 ----
+Added buttons to the module's main page for enabling or disabling multiple services at once.
+---- Changes since 1.300 ----
+Added support for IPv6 addresses.

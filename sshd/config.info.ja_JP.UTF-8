@@ -1,0 +1,7 @@
+start_cmd=sshdの起動コマンド,3,通常実行
+pid_file=sshdのPIDファイルへのフルパス,0
+sshd_config=sshd 設定ファイルへのフルパス.0
+line2=システム設定,11
+keygen_path=ssh-keygenプログラムへのフルパス,0
+client_config=sshクライアント設定ファイルへのフルパス,0
+sshd_path=sshdプログラムへのフルパス.0

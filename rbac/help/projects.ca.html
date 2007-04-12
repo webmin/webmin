@@ -1,0 +1,44 @@
+<header>Projectes</header>
+
+Els projectes proporcionen una manera de forçar límits sobre l'us dels recursos
+per a diferents usuaris i grups. Es poden utilitzar per restringir el nombre
+de fitxers que un usuari pot obrir, la mida màxima de fitxer, ús de la CPU,
+allotjament de memòria i altres. <p>
+
+Cada procés i usuari pertany a un o més projectes. El projecte inicial d'un
+usuari es determina en el moment d'entrar, i serà o bé el <tt>projecte per
+defecte</tt> o bé el projecte configurat a la secció <b>Atributs d'Usuari</b>
+d'aquest mòdul. Els usuaris es poden canviar entre diferents projectes 
+utilitzant l'ordre <tt>newtask</tt>. <p>
+
+Cada projecte té una llista d'usuaris i grups que hi tenen permès l'accés,
+per exemple fent el canvi amb l'ordre <tt>newtask</tt>. Que un usuari sigui
+membre d'un projecte no vol dir necessàriament que hi pertanyi automàticament
+en entrar al sistema . això s'ha de configurar a la secció
+<b>Atributs d'Usuari</b>. <p>
+
+Els atributs més importants d'un projecte són els límits de recursos que
+s'apliquen als seus usuaris membres. Cadascun té els atributs següents:<br>
+
+<dl>
+<dt><b>Recurs</b><br>
+<dd>El recurs que controla, com ara <tt>process.max-file-descriptor</tt> per a la mida màxima de creació de fitxers, o <tt>process.max-cpu-time</tt> per al temps de CPU que un procés pot consumir.
+
+<dt><b>Tipus de recurs</b><br>
+<dd>Determina qui pot modificar el límit d'aquest recurs, i gairebé sempre està configurat a <b>Privilegiat</b>. Aquest atribut és opcional - si se selecciona <b>&lt;Cap&gt;</b>, s'aplicarà el límit global del recurs del sistema. EL significat de les altres opcions és:
+	<ul>
+	<li><b>Privilegiat</b> - Només ho poden modificar els usuaris privilegiats (superusuaris).
+	<li><b>Sistema</b> - Fix per a tota la duració de la instància del sistema operatiu.
+	<li><b>Bàsic</b> - El propietari del procés ho pot modificar.
+	</ul>
+
+<dt><b>Límit superior</b><br>
+<dd>El límit superior d'ús que un procés té permès de consumir abans que es dispari l'acció. Això s'introdueix en bytes, segons o nombre de fils, depenent del tipus de recurs.
+
+<dt><b>Acció quan s'excedeix</b><br>
+<dd>Determina el que passa a un procés quan excedeix el límit. Típicament està configurat a <b>Denega</b>, que simplement provoca la fallada de la crida del sistema que ha intentat excedir el límit. No obstant, també poden ser útils les opcions d'enviar un senyal al procés.
+
+</dl>
+
+<footer>
+

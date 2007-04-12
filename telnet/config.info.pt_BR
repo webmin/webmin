@@ -1,0 +1,8 @@
+host=Nome do host ao qual se conectar,3,Automático
+port=Porta para conectar,3,Padrão
+mode=Tipo de conexão,1,0-Telnet,1-Secure Shell (recomendado)
+sizemode=Tamanho do Applet,1,0-80x24 caracteres (na fonte padrão),1-Máximo,2-Tamanho customizado
+size=Largura x altura customizada,0
+fontsize=Tamanho da fonte em pontos,3,Padrão
+detach=Modo de janela separada,1,1-Sim,0-Não
+no_test=Testar telnet ou servidor SSH,1,0-Sim,1-Não

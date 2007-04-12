@@ -1,0 +1,19 @@
+<header>Allow untrusted routing</header>
+
+<center><tt>allow_untrusted_routing</tt></center>
+<hr>
+
+This parameter controls if Postfix will forward mail with sender-specified
+routing (user[@%!]remote[@%!]site) from untrusted clients to destinations that
+are blessed by the <a href=opt_relay_domains><tt>relay_domains</tt></a>
+parameter.
+
+<p>
+
+By default, untrusted clients are not allowed to specify routing.
+This closes a nasty open relay loophole where a backup MX host can
+be tricked into forwarding junk mail to a primary MX host which
+then spams it out to the world.
+
+
+<hr>

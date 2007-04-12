@@ -1,0 +1,9 @@
+noconfig=0
+users=
+mode=0
+allow=1
+command=1
+create=1
+delete=1
+move=1
+kill=1

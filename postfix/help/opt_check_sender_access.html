@@ -1,0 +1,16 @@
+<header>Check sender access mapping table</header>
+
+<center><tt>smtpd_client_restrictions: check_sender_access</tt></center>
+<hr>
+
+<p>
+Search the named access table for the sender name, domains, address, 
+or networks obtained by stripping least significant octets. 
+
+</p><p>
+The <a href=opt_access_map_reject_code>access_map_reject_code</a> parameter 
+specifies the response code for REJECT results (default: 550).
+
+</p>
+
+<hr>

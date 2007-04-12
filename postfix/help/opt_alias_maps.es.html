@@ -1,0 +1,22 @@
+<header>Bases de datos de alias usadas por agente de entrega local</header>
+
+<center><tt>alias_maps</tt></center>
+<hr>
+
+Este parámetro especifica la lista de bases de datos de alias usadas por el
+agente de entrega local. La lista por defecto depende del sistema. En sistemas
+con NIS, por defecto se busca la base de datos local de alias y luego la
+base de datos de NIS. Mira en aliases(5) para detalles sobre la sintáxis.
+
+<p>
+
+Las típicas configuraciones son:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>hash:/etc/postfix/aliases</tt>
+<li> <tt>hash:/etc/aliases, nis:mail.aliases</tt>
+</ul>
+
+<hr>
+

@@ -1,0 +1,5 @@
+line1=Opcions configurables,11
+includes=Mostra el contingut dels fitxers d'inclosió<br>(si no s'utilitzen variables en els noms de fitxers),1,1-Sí,0-No
+line2=Configuració del sistema,11
+procmailrc=Camí del fitxer procmailrc del sistema,0
+procmail=Camí del programa procmail,0

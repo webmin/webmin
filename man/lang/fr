@@ -1,0 +1,70 @@
+index_title=Pages de manuel
+index_header=Recherche dans les pages de manuel
+index_for=Rechercher
+index_where=Chercher dans
+index_alldoc=Toutes les documentations
+index_man=Pages des manuel
+index_doc=Documentation des composants
+index_kernel=Documentation noyau
+index_info=Pages Info
+index_howto=Documents HOWTO
+index_kde=Documentation KDE
+index_perl=Documentation de module Perl
+index_help=Aide Webmin
+index_reset=Annuler
+index_search=Rechercher
+index_return=formulaire de recherche
+index_type=Correspondance
+index_name=Nom seul
+index_data=Nom et contenu
+index_google=Moteur de recherche Google
+index_others=Lors de la recherche de documentation d'un autre module, permettre la recherche dans ...
+index_other_man=Pages de manuel
+index_other_help=Aide de Webmin
+index_other_doc=Documentation de composant
+index_other_kernel=Documentation du noyau
+index_other_howto=Documents HOWTO
+index_other_perl=Documentation de module Perl
+index_other_google=Moteur de recherche Google
+index_and=Correspondance totale
+index_or=Correspondance partielle
+
+search_efor=Aucune page du manuel à rechercher
+search_title=Résultats de la recherche
+search_desc=Description
+search_type=Type
+search_file=Page ou fichier
+search_man=Page de manuel
+search_howto=Document HOWTO
+search_doc=Documentation de composant
+search_kernel=Documentation du noyau
+search_kde=Documentation KDE
+search_none=Aucune page correspondant à $1 n'a été trouvée.
+search_perl=Module Perl
+search_help=Aide de Webmin
+search_for=Pour $1
+search_google=Résultat de la recherche Google
+
+howto_title=Document HOWTO
+howto_header=Fichier HOWTO $1
+howto_epath=Chemin de documents HOWTO invalide
+
+doc_title=Documentation de composant
+doc_header=Fichier de documentation composant $1
+doc_epath=Chemin de la documentation des composants invalide
+
+man_title=Page de manuel
+man_header=Page de manuel pour $1($2)
+man_noentry=La page de manuel de $1 n'existe pas !
+
+kernel_title=Documentation du noyau
+kernel_header=Fichier de documentation noyau $1
+kernel_epath=Chemin de la documentation du noyau invalide
+
+kde_title=Documentation KDE
+kde_header=Fichier de documentation KDE $1
+kde_epath=Chemin de documentation KDE invalide
+
+perl_title=Module Perl
+perl_header=Documentation du module Perl $1
+perl_emod=Nom du module Perl invalide

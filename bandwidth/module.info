@@ -1,0 +1,10 @@
+desc=Bandwidth Monitoring
+depends=net cron
+category=net
+longdesc=View reports on bandwidth usage by host, port, protocol and time on a Linux system.
+desc_de=Bandbreitenmessung (Netzwerk-Traffic)
+desc_ca=Monitorització d'Amplada de Banda
+desc_fr=Surveillance de bande passante
+desc_es=Monitorizaci&#243;n de Ancho de Banda
+desc_hu=Forgalmi monitor
+os_support=!windows

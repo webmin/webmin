@@ -1,0 +1,48 @@
+<header>Cache Options</header>
+
+<b>Cache Directories</b>: You can specify multiple cache directory lines to spread the cache among different disk partitions.<p>
+
+<em>Directory</em> is a top-level directory where cache swap files will be stored.  If you want to use an entire disk for caching, then this can be the mount-point directory. The directory must exist and be writable by the Squid process.  Squid will NOT create this directory for you.
+<p>
+<em>Size</em> is the amount of disk space (MB) to use under this directory.  The default is 100 MB.  Change this to suit your configuration.
+<p>
+<em>1st level dirs</em> is the number of first-level subdirectories which will be created under the <em>Directoryi</em>.  The default is 16.
+<p>
+<em>2nd level dirs</em> is the number of second-level subdirectories which will be created under each first-level directory.  The default is 256.
+<P>
+<b>Average Object Size</b>: Defaults to 13 kB. Average object size, used to estimate number of objects your cache can hold.
+<p>
+<b>Objects per bucket</b>: Defaults to 50.  Target number of objects per bucket in the store hash table. Lowering this value increases the total number of buckets and also the storage maintenance rate.
+<p>
+<b>Don't Cache URLs for ACLs</b>: Defaults to none.  Select any ACLs for which you do not want Squid to cache data.  Helpful for defining an internal web server that should not be cached.
+<p>
+<b>Maximum cache time</b>: Defaults to 1 year.  This parameter defines the maximum LRU age.  For example, setting this to '1 week' will cause objects to be removed if they have not been accessed for a week or more.
+<p>
+<b>Failed request cache time</b> Defaults to 5 minutes.  Time-to-Live (TTL) for failed requests.  Certain types of failures (such as "connection refused" and "404 Not Found") are negatively-cached for a configurable amount of time.  Note that this is different from negative caching of DNS lookups.
+<p>
+<b>DNS lookup cache time</b>: Defaults to 6 hours (360 minutes).  Time-to-Live (TTL) for positive caching of successful DNS lookups.  If you want to minimize the use of Squid's ipcache, set this to 1, not 0.
+<p>
+<b>Failed DNS cache time</b>: Defaults to 5 minutes.  Time-to-Live (TTL) for negative caching of failed DNS lookups.
+<p>
+<b>Connect Timeout</b>: Default is 120 seconds.  Some systems (notably Linux) can not be relied upon to properly time out connect(2) requests.  Therefore the Squid process enforces its own timeout on server connections.  This parameter specifies how long to wait for the connect to complete.
+<p>
+<b>Read timeout</b>: Default is 15 minutes.  The read_timeout is applied on server-side connections.  After each successful read(), the timeout will be extended by this amount.  If no data is read again after this amount of time, the request is aborted and logged with ERR_READ_TIMEOUT.
+<p>
+<b>Site selection timeout</b>: Default is 4 seconds.  For URN to multiple URL's URL selection.
+<p>
+<b>Client request timeout</b>: Default is 15 minutes.  The read_timeout is applied on server-side connections.  After each successful read(), the timeout will be extended by this amount.  If no data is read again after this amount of time, the request is aborted and logged with ERR_READ_TIMEOUT.
+<p>
+<b>Max client connect time</b>: Default is 1 day.  The maximum amount of time that a client (browser) is allowed to remain connected to the cache process.  This protects the Cache from having a lot of sockets (and hence file descriptors) tied up in a CLOSE_WAIT state from remote clients that go away without properly shutting down (either because of a network failure or because of a poor client implementation).
+<p>
+<b>Max shutdown time</b>: Defaults to 30 seconds.  When SIGTERM or SIGHUP is received, the cache is put into "shutdown pending" mode until all active sockets are closed. This value is the lifetime to set for all open descriptors during shutdown mode.  Any active clients after this many seconds will receive a 'timeout' message.
+<p>
+<b>Half-closed clients</b>:  Defaults to 'on'.  Some clients may shutdown the sending side of their TCP connections, while leaving their receiving sides open.  Sometimes, Squid can not tell the difference between a half-closed and a fully-closed TCP connection.  By default, half-closed client connections are kept open until a read(2) or write(2) on the socket returns an error.  Change this option to 'off' and Squid will immediately close client connections when read(2) returns "no more data to read".
+<p>
+<b>Persistant timeout</b>: Defaults to 120 seconds.  Timeout for idle persistent connections to clients, servers and other proxies.  Persistent connections will be disabled if this is less than 10 seconds.
+<p>
+<b>WAIS relay host</b>: Default is none.  Hostname or address to relay WAIS requests to.
+<p>
+<b>WAIS relay port</b>: Default is none.  Port to direct relay WAIS requests to.
+
+<hr>
+ 

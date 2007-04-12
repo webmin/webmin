@@ -1,0 +1,23 @@
+<header>Resposta del servidor SMTP a la violació de fqdn</header>
+
+<center><tt>non_fqdn_reject_code</tt></center>
+<hr>
+
+Aquest paràmetre especifica el codi de resposta del servidor SMTP quan un correu
+viola la regla <tt>reject_non_fqdn_hostname</tt>, o la
+<tt>reject_non_fqdn_sender</tt>, o la <tt>reject_non_fqdn_recipient</tt>,
+que pot ser:<br>
+<i>Accés denegat: Domini invàlid per al nom de host, adreça e-mail del 
+remitent o destinatari HELO client (no FQDN)</i><br>
+<br>
+Tingues en compte que el valor per defecte de postfix utilitzat per a
+<tt>non_fqdn_reject_code</tt> és el codi 504, i aquest codi en l'estàndard
+RFC 822 voldria dir 'Parametre de l'ordre no implementat'.
+Així, amb Postfix, una violació de la regla <tt>non_fqdn_reject_code</tt>
+no reflecteix exactament l'explicació RFC822 del codi informat.<br>
+<p>
+Per evitar la confusió, pots canviar-ho, per exemple, pel codi 578, 
+altrament no ho canviïs si no tens un complet coneixement de RFC 822.
+</p>
+
+<hr>

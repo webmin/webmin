@@ -1,0 +1,13 @@
+<ul>
+<li><tt>reject_unknown_client:</tt> rebutja la petició si el nom del client és desconegut.
+<li><tt>permit_mynetworks:</tt> permet si l'adreça del client coincideix amb
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>check_client_access maptype:mapname:</tt> consulta el nom del client,
+        els dominis pare, l'adreça del client o les xarxes obtingudes
+        filtarnt els octets. Rebutja si el resultat és REJECT o
+	&quot;[45]xx text&quot;. Permet altrament.
+<li><tt>reject_maps_rbl:</tt> rebutja si el client està llistat a
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject:</tt> rebutja la petició. Posa-ho al final d'una restricció.
+<li><tt>permit:</tt> permet la petició. Posa-ho al final d'una restricció.
+</ul>

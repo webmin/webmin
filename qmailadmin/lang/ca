@@ -1,0 +1,404 @@
+index_title=Configuració de QMail
+index_edir=El directori base $1 de QMail no existeix. Pot ser que QMail no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_edir2=No sembla que el directori $1 sigui el directori base de QMail. Pot ser que QMail no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_return=a la configuració de QMail
+index_stop=Atura els processos QMail
+index_stopmsg=Fes clic sobre aquest botó per aturar els processos QMail en segon pla responsables del lliurament del correu en cua. Sense aquest processos, no s'enviarà ni es rebrà correu apropiadament.
+index_start=Inicia els processos QMail
+index_startmsg=Fes clic sobre aquest boto per iniciar els processos QMail en segon pla responsables del lliurament del correu en cua. Sense aquest processos, no s'enviarà ni es rebrà correu apropiadament.
+
+opts_title=Opcions de QMail
+opts_me=Nom de host local
+opts_helo=Nom de host per a SMTP HELO
+opts_toconnect=Temps límit d'espera de connexió SMTP
+opts_secs=segons
+opts_toremote=Temps límit d'espera de connexió SMTP sortint
+opts_bytes=Mida màxima de missatge
+opts_unlimited=Il·limitada
+opts_timeout=Temps límit d'espera de dades SMTP entrants
+opts_localip=Nom de host per enviar correu a l'adreça IP local
+opts_greet=Missatge de benvinguda SMTP
+opts_err=No he pogut desar les opcions de QMail
+opts_eme=Nom de host local invàlid
+opts_etoconnect=Temps límit d'espera de connexió SMTP invàlid
+opts_etoremote=Temps límit d'espera de connexió SMTP sortint invàlid
+opts_ebytes=Mida màxima de missatge invàlida
+opts_etimeout=Temps límit d'espera de dades SMTP entrants invàlid
+opts_elocalip=Nom de host per a l'adreça IP local invàlid
+
+aliases_title=Àlies de Correu
+aliases_addr=Adreça
+aliases_to=Àlies de...
+aliases_type1=Adreça $1
+aliases_type2=Directori de correu $1
+aliases_type3=Fitxer de correu $1
+aliases_type4=Programa $1
+aliases_type5=Fitxer d'autoresposta $1
+aliases_type6=Aplica el fitxer de filtre $1
+aliases_none=Cap
+aliases_return=a la llista d'àlies
+aliases_toomany=Hi ha massa àlies de correu al teu sistema com per mostrar-los en aquesta pàgina.
+aliases_go=Busca els àlies que coincideixin amb:
+aliases_delete=Suprimeix els Àlies Seleccionats
+
+aform_type0=Cap
+aform_type1=Adreça de correu
+aform_type2=Directori de correu
+aform_type3=Fitxer de correu
+aform_type4=Dóna-ho al programa
+aform_type5=Autoresposta del fitxer
+aform_type6=Aplica el fitxer de filtre
+aform_edit=Edita d'Àlies
+aform_create=Crea Àlies
+aform_name=Adreça
+aform_val=Àlies de
+aform_afile=Edita...
+aform_novirt=&lt;Tots els dominis&gt;
+aform_return=a l'àlies
+
+asave_err=No he pogut desar l'àlies
+asave_eaddr='$1' no és una adreça vàlida
+asave_ealready=Ja existeix un àlies de '$1'
+asave_etype1='$1' no és una adreça de correu vàlida
+asave_etype2='$1' no és un directori de correu vàlid
+asave_etype3='$1' no és un nom de fitxer de correu vàlid
+asave_etype4='$1' no és un programa vàlid o no existeix
+asave_etype5=El fitxer d'autoresposta '$1' no és vàlid
+asave_etype4none=No has donat cap programa
+asave_etype6=El fitxer de filtre '$1' no és vàlid
+
+adelete_err=No he pogut suprimir els àlies
+adelete_enone=No n'hi ha cap de seleccionat
+
+locals_title=Dominis Locals
+locals_domains=Dominis locals d'aquest servidor
+locals_desc=Qmail acceptarà retrametre o lliurar localment correu només als dominis de correu i noms de hosts llistats a la caixa de l'esquerra. Si vols que el servidor de correu gestioni dominis de correu múltiples, cal que estiguin tots llistats en aquest formulari.
+locals_only=Només el nom de host local $1
+locals_sel=Els dominis llistats...
+
+rcpts_title=Dominis Acceptats
+rcpts_domains=Dominis locals i de reemissió acceptats
+rcpts_all=Qualsevol domini
+rcpts_sel=Dominis llistats...
+rcpts_desc=Qmail acceptarà retrametre o lliurar localment correu només als dominis de correu i noms de hosts llistats a la caixa de l'esquerra. També pots introduir-hi patrons que coincideixin amb tots els hosts d'un domini local, com <tt>.foo.com</tt>. Si vols que el teu servidor de correu retrameti el correu dels clients, cal que acceptis correu des de qualsevol domini.
+rcpts_domains2=Dominis locals i de reemissió addicionals
+rcpts_desc2=Si tens un nombre gran de dominis acceptats, hauries d'introduir en aquesta caixa els que es facin servir amb menys freqüència. En general, els teus primers 50 dominis permesos s'haurien d'introduir a la caixa de text superior,  la resta en aquesta altra.
+
+bads_title=Adreces Rebutjades
+bads_addresses=Adreces de correu rebutjades
+bads_desc=Qmail rebutjarà retrametre o lliurar localment correu des dels dominis de correu i noms de hosts llistats a la caixa de l'esquerra, que s'han d'introduir com <tt>usuari@nomdedomini</tt>. Si vols rebutjar el correu des de tot un domini, cal introduir-lo com a <tt>@nomdedomini</tt>.
+
+routes_title=Rutes de Dominis
+routes_toomany=Hi ha massa rutes de dominis al sistema com per poder-les mostraren aquesta pàgina.
+routes_go=Busca les rutes de dominis que coincideixin amb:
+routes_from=Correu del domini
+routes_to=Envia a través del servidor
+routes_direct=Lliura directament
+routes_defroute=Lliura tota la resta de correu a través de: 
+routes_return=a les rutes de dominis
+routes_delete=Suprimeix les Rutes de Dominis Seleccionades
+
+rform_edit=Edita la Ruta de Domini
+rform_create=Creat la Ruta de Domini
+rform_from=Correu del host o domini
+rform_to=Envia a través del servidor SMTP
+rform_port=Port SMTP
+
+rsave_err=No he pogut desar la ruta de domini
+rsave_efrom='$1' no és un nom de domini vàlid
+rsave_eto='$1' no és un servidor SMTP vàlid
+rsave_eport='$1' no és un número de port vàlid
+
+rdelete_err=No he pogut suprimir les rutes de dominis
+
+percents_title=Dominis d'Adreces %
+percents_domains=Dominis que suporten adreces %
+percents_desc=QMail acceptarà correu amb adreces amb format <tt>usuari%primerdomini@segondomini</tt> si <tt>segondomini</tt> està llistat al la caixa de l'esquerra. Llavors, els missatges amb aquest format seran reenviats a <tt>usuari@primerdomini</tt> per aquest servidor de corre.
+
+virts_title=Mapejats Virtuals
+virts_toomany=Hi ha massa mapejats virtuals al sistema com per mostrar-los tots em aquesta pàgina.
+virts_go=Busca els mapejats virtuals que coincideixin amb:
+virts_from=Correu per a
+virts_prepend=Afegeix prefix
+virts_all=Totes les adreces
+virts_none=No virtual
+virts_desc=QMail fa servir els mapejats virtuals per gestionar el correu per a diferents dominis dins del servidor, prefixant el text de l'adreça de correu de la part de l'usuari abans de cap altre procés. Pots fer-los servir per establir dominis de correu virtuals, creant un mapejat nou per a un domini i fent servir llavors la pàgina d'<a href='$1'>Àlies de Correu</a> per crear àlies en aquest domini.
+virts_return=als mapejats virtuals
+virts_delete=Suprimeix els Mapejats Virtuals Seleccionats
+
+vform_edit=Edita Mapejat Virtual
+vform_create=Creat Mapejat Virtual
+vform_from=Correu per a l'adreça
+vform_all=Qualsevol adreça que no coincideixi amb cap altre mapejat virtual
+vform_domain=Adreces amb domini
+vform_user=Adreça
+vform_to=Prefixa l'usuari amb
+vform_none=Res
+vform_prepend=Prefix especificat
+vform_auto=Prefix triat automàticament
+
+vsave_err=No he pogut desar el mapejat virtual
+vsave_edomain='$1' no és un domini de correu vàlid
+vsave_euser='$1' no és un nom d'usuari de correu vàlid
+vsave_eprepend='$1' no és un prefix de mapejat vàlid
+vsave_eboth=No pots seleccionar '$vform_all' i '$vform_none' alhora
+
+vdelete_err=No he pogut suprimir els mapejats virtuals
+
+stop_err=El procés qmail-send ja no està en execució
+
+log_stop=Processos QMail aturats
+log_start=Processos QMail iniciats
+log_opts=He canviat les opcions de QMail
+log_alias_create=He creat l'àlies $1
+log_alias_delete=He suprimit l'àlies $1
+log_alias_modify=He modificat l'àlies $1
+log_delete_aliases=He suprimit $1 àlies
+log_virt_create=He creat el mapejat virtual $1
+log_virt_delete=He suprimit el mapejat virtual $1
+log_virt_modify=He modificat el mapejat virtual $1
+log_delete_virts=he suprimit $1 mapejats virtuals
+log_virtall_create=He creat el mapejat virtual global
+log_virtall_delete=He suprimit el mapejat virtual global
+log_virtall_modify=He modificat el mapejat virtual global
+log_locals=He canviat els dominis locals
+log_rcpts=He canviat els dominis acceptats
+log_bads=He canviat les adreces rebutjades
+log_percents=He canviat els dominis d'adreces %
+log_route_create=He creat la ruta de $1
+log_route_delete=He suprimit la ruta de $1
+log_route_modifed=He modificat la ruta de $1
+log_delete_routes=He suprimit $1 rutes
+log_defroute=He modificat la ruta per defecte
+log_assign_create= He creat l'usuari de correu $1
+log_assign_delete=He suprimit l'usuari de correu $1
+log_assign_modifed=He modificat l'usuari de correu $1
+log_delete_assigns=He suprimit $1 usuaris de correu
+log_delmail=He suprimit $1 missatges de $2
+log_movemail=He desplaçat $1 missatges de $2 a $3
+log_send=He enviat correu a $1
+
+rfile_title=Edició del Fitxer d'Autoresposta
+rfile_desc=Fes servir l'àrea de text de sota per editar el missatge d'autoresposta de $1. El missatge pot contenir les macros $SUBJECT, $FROM, $TO, $DATE i $BODY, que s'expandiran quan s'activi l'autoresposta.
+rfile_desc2=També pots establir capçaleres de missatge que s'afegeixin o substitueixin les capçaleres per defecte emprades en l'autoresposta posant-hi línies com:<br><tt>From: foo@bar.com</tt><br><tt>Subject: De vacances</tt><br>al capdamunt del missatge, separades del cos per una línia en blanc.
+rfile_efile=No tens permís per editar $1.
+rfile_undo=Desfés els canvis
+rfile_replies=Rastreja les respostes per evitar bucles infinits de correu
+rfile_none=No
+rfile_file=Sí, utilitzant el fitxer de registre
+rfile_period=Interval mínim entre respostes
+rfile_default=per defecte (1 hora)
+rfile_secs=segons
+rfile_ereplies=Hi falta el fitxer de registre per traçar respostes
+rfile_eperiod=Hi falta el nombre de segons entre respostes o bé és invàlid
+rfile_no_autoreply=No enviïs autorespostes a
+rfile_from=Adreça From: de resposta
+rfile_auto=Automàtica (basada en l'adreça del destinatari)
+rfile_efrom=Hi falta l'adreça From:
+rfile_fromdesc=S'ha d'especificar l'adreça From: sempre que sigui possible, ja que el mètode automàtic pot no ser fiable.
+
+ffile_title=Edició del Fitxer de Filtre
+ffile_desc=Fes servir el formulari de sota per configurar les regles de filtratge del fitxer al fitxer $1.
+ffile_efile=No tens permís per editar $1.
+ffile_line=Si el camp $1 $2 $3 llavors redirecciona'l a $4
+ffile_from=de
+ffile_to=a
+ffile_subject=títol
+ffile_cc=CC
+ffile_body=cos
+ffile_what0=no coincideix amb
+ffile_what1=coincideix amb
+ffile_other=Altrament redirecciona'l a $1
+ffile_err=No he pogut desar el fitxer de filtre
+ffile_ematch=Hi falta el patró
+ffile_eaction=Hi falta l'adreça de redirecció
+
+queue_title=Cua de Correu
+queue_none=Actualment no hi ha cap missatge en cua per a lliurar
+queue_count=$1 missatges
+queue_id=ID del Correu
+queue_date=Enviat
+queue_from=De
+queue_to=A
+queue_cc=Cc
+queue_subject=Tema
+queue_return=a la cua de correu
+queue_delete=Suprimeix els missatges seleccionats
+queue_all=Selecciona'ls tots
+queue_invert=Inverteix la selecció
+
+qview_title=Missatge en Cua
+qview_desc=Del fitxer $1
+qview_headers=Capçaleres de correu
+qview_attach=Adjuncions
+
+assigns_title=Assignacions d'Usuari de Correu
+assigns_return=a les assignacions d'usuari de correu
+assigns_toomany=Hi ha massa usuaris de correu al sistema com per mostrar-los en aquesta pàgina.
+assigns_go=Busca usuaris de correu que coincideixin amb:
+assigns_address=Adreça de destinació
+assigns_user=Usuari Unix
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Directori arrel
+assigns_desc=Les assignacions d'usuaris de correu permeten crear bústies per als usuaris que no estan definits a la llista d'usuaris de Unix. Cada assignació lliurarà el correu d'un usuari o un patró d'usuaris triat, com si s'estigués lliurant a la bústia d'un usuari real de Unix.
+assigns_delete=Suprimeix els Usuaris de Correu Seleccionats
+
+sform_edit=Edita usuari de correu
+sform_create=Crea usuari de correu
+sform_address=Nom d'usuari de l'adreça
+sform_mode0=Nom d'usuari exacte
+sform_mode1=Noms d'usuaris que comencin amb
+sform_user=Usuari Unix
+sform_uid=UID
+sform_gid=GID
+sform_home=Directori arrel
+
+ssave_err=No he pogut desar l'usuari de correu
+ssave_eaddress=Hi falta el nom d'usuari de l'adreça o bé és invàlid
+ssave_euser=Hi falta l'usuari Unix o bé és invàlid
+ssave_euid=Hi falta l'UID o bé és invàlid
+ssave_egid=Hi falta el GID o bé és invàlid
+ssave_ehome=Hi falta el directori arrel o bé és invàlid
+
+sdelete_err=No he pogut suprimir els usuaris de correus
+
+delete_egone=El missatge en cua ja no existeix
+delete_ebogus=Nom de fitxer de cua invàlid
+
+boxes_title=Bústies d'Usuari
+boxes_user=Usuari
+boxes_size=Mida de la bústia
+boxes_none=No hi ha correu
+boxes_return=a les bústies
+boxes_sent=Correu enviat
+boxes_ecannot=No tens permís per llegir correu
+boxes_toomany=Hi ha massa usuaris al sistema per llistar-ne totes les bústies.
+boxes_go=Veure el correu de l'usuari:
+
+mail_title=Correu d'Usuari
+mail_from=De
+mail_date=Data
+mail_subject=Assumpte
+mail_to=A
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=Prioritat
+mail_highest=Altíssima
+mail_high=Alta
+mail_normal=Normal
+mail_low=Baixa
+mail_lowest=Baixíssima
+mail_for=A $1
+mail_for2=De l'usuari $1
+mail_sent=A la llista de correu enviat
+mail_size=Mida
+mail_delete=Suprimeix
+mail_compose=Redacta
+mail_return=a la bústia de l'usuari
+mail_pos=Missatges $1 a $2 de $3
+mail_none=Aquesta bústia no té missatges
+mail_ecannot=No tens permís per llegir el correu d'aquest usuari
+mail_all=Selecciona'ls tots
+mail_invert=Inverteix la selecció
+mail_search=Troba missatges on
+mail_body=El cos
+mail_match=coincideixi amb
+mail_ok=Busca
+mail_nonefrom=Cap
+mail_mark=Marca com:
+mail_mark0=No llegit
+mail_mark1=Llegit
+mail_mark2=Especial
+mail_forward=Reenviat
+mail_rfc=De la línia
+mail_move=Desplaça a:
+mail_eexists=El missatge ja no existeix!
+
+view_title=Lectura de Correu
+view_desc=Missatge $1 a $2
+view_desc2=Missatge $1 per a l'usuari $2
+view_desc3=Missatge $1
+view_sent=Missatge $1 de la llista de correu enviat
+view_qdesc=Missatge en cua $1
+view_headers=Capçaleres de correu
+view_allheaders=Mostra totes les capçaleres
+view_noheaders=Mostra les capçaleres normals
+view_attach=Adjuncions
+view_reply=Respon
+view_reply2=Respon a tothom
+view_enew=Edita com a nou
+view_forward=Reenvia
+view_delete=Suprimeix
+view_strip=Treu les adjuncions
+view_ecannot=No tens permís per llegir el correu d'aquest usuari
+view_mark=Marca el missatge com:
+view_mark0=No llegit
+view_mark1=Llegit
+view_mark2=Especial
+view_return=al correu original
+view_sub=Correu adjuntat
+
+compose_title=Redacció de Correu
+reply_title=Resposta de Correu
+forward_title=Reenviament de Correu
+enew_title=Edició de Correu
+reply_headers=Capçaleres de correu
+reply_attach=Adjuncions reenviades
+reply_mailforward=Missatges reenviats
+reply_attach2=Adjuncions de la part del servidor i del client
+reply_send=Envia el Correu
+reply_ecannot=No tens permís per enviar correu com a aquest usuari
+
+send_err=No he pogut enviar el correu
+send_eto=Hi falta l'adreça del destinatari
+send_efrom=Hi falta l'adreça del remitent
+send_title=Tramesa de Correu
+send_ok=Correu a $1 enviat amb èxit
+send_ecannot=No tens permís per enviar correu com a aquest usuari
+send_esmtp=L'ordre $1 de SMTP ha fallat: $2
+send_efile=El fitxer adjuntat $1 no existeix
+send_eattach=Les adjuncions no poden fer més de $1 Kb en total.
+send_eperms=L'usuari $1 no pot llegir $2
+send_eperms2=No tens permís per enviar el fitxer $1
+send_epath=L'executable $1 de sendmail no existeix.
+
+delete_title=Supressió de Correu
+delete_rusure=Segur que vols suprimir els $1 missatges seleccionats de $2? Això pot trigar una mica si el fitxer de correu és gran. Fins que no s'hagi acabat d'esborrar, convé no executar cap altra acció.
+delete_rusure2=Segur que vols esborrar el missatge de $1? Això pot trigar una mica si el fitxer de correu és gran. Fins que no s'hagi acabat d'esborrar, convé no executar cap altra acció.
+delete_ok=Suprimeix-ho Ara
+delete_ecannot=Ara ja pots suprimir el correu d'aquest usuari
+delete_enone=No has seleccionat cap correu per suprimir
+delete_emnone=No has seleccionat cap correu per marcar
+delete_nobutton=No has fet clic a cap botó
+
+search_title=Resultats de la Cerca
+search_ecannot=No tens permís per buscar dins del correu d'aquest usuari
+search_ematch=Has d'introduir el text a buscar.
+search_efield=Has de seleccionar un tipus de recerca.
+search_none=No s'ha trobat cap missatge
+search_results2=$1 missatges de correu que coincideixen amb $2...
+search_results3=$1 missatges de correu que no coincideixen amb $2...
+
+match_from=De: coincideix
+match_subject=Assumpte: coincideix
+match_to=A: coincideix
+match_cc=Cc: coincideix
+match_date=Data: coincideix
+match_body=El cos coincideix
+match_size=La mida és més gran de
+match_headers=Les capçaleres coincideixen
+match_=-----------------
+match_!from=De: no coincideix
+match_!subject=Assumpte: no coincideix
+match_!to=A: no coincideix
+match_!cc=Cc: no coincideix
+match_!date=Data: no coincideix
+match_!body=El cos no coincideix
+match_!size=La mida és més petita de
+match_!headers=Les capçaleres no coincideixen
+
+delq_titles=Supressió de Missatges
+delq_rusure=Segur que vols suprimir els $1 missatges en cua seleccionats?
+delq_confirm=Suprimeix els missatges
+

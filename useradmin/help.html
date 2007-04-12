@@ -1,0 +1,154 @@
+<body bgcolor=#ffffff>
+<title>Users and Groups</title>
+<center><img src="images/useradmin.gif"></center><br>
+<h2><i>This help page is incomplete</i></h2>
+<hr>
+<h3>Introduction</h3>
+This module allows you to create, edit and delete Unix users and groups.
+Typically, there is one Unix user account for each person who wants to
+login to your system. In addition, various system programs will have
+their own accounts, such as <tt>uucp</tt> or <tt>www</tt>. Every user
+belongs to one or more groups, one of which is the primary group for
+the user. <p>
+
+The main <tt>Users and Groups</tt> page shows all the local users and
+groups on your system. NIS and NIS+ users and groups will not be shown
+in the list, because they are not stored locally and cannot be edited.
+However, groups can contain NIS users and users can have an NIS group
+as their primary group. <p>
+
+If your machine is an NIS or NIS+ server and the table sources
+are not <tt>/etc/passwd</tt> and <tt>/etc/group</tt>, you can change the
+<a href="../config.cgi?useradmin">module configuration</a> to edit the
+appropriate files. The <tt>Command to run after change</tt> parameter can
+be set to something like <tt>cd /var/yp ; make</tt> to update NIS maps
+after every change to the password and group files. <p>
+
+<hr>
+<h3>Editing an Existing User</h3>
+To edit a user, just click on the user's name from the list on the
+main page. This will display a form in which you can edit the following
+user details :<p>
+	<ul>
+	<li><b>Username</b><br>
+	    The name that the user uses to login to the system. Each user
+	    must have a unique login name. <p>
+	<li><b>Real name</b><br>
+	    The user's real name. This is stored in the comment field in
+	    the password file. <p>
+	<li><b>Encrypted password</b> and <b>Plain text password</b><br>
+	    The Unix password file stores passwords in one-way encrypted
+	    form only. This means that the form cannot display the user's
+	    plain-text password, only the encrypted form. To set a new
+	    password for a user you can either enter the password into
+	    the <tt>Plain text password</tt> field, or copy and paste an
+	    encrypted string into the <tt>Encrypted password</tt> field. <p>
+	<li><b>Password type</b><br>
+	    If you choose <tt>No password</tt> here, then no password is
+	    needed to login to the account. If you choose <tt>Locked</tt>,
+	    then no login is allowed. Only if <tt>Normal password</tt> is
+	    chosen will the passwords described above be used. <p>
+	<li><b>Unix UID</b><br>
+	    The UID is the number that the system <b>really</b> uses for
+	    controlling access to files. Every user should have a unique
+	    UID. If you change the Unix UID, then the <tt>Change UID</tt>
+	    option at the bottom of the page determines what happens to
+	    files owned by that user. <p>
+	<li><b>Home directory</b><br>
+	    Every user should have a home directory to store personal files.
+	    Typically, user home directories are all located under one
+	    parent directory, such as <tt>/home</tt>. <p>
+	<li><b>Shell program</b><br>
+	    When a user logs into the system, their shell program is run to
+	    process whatever commands the user types. If a user has a shell
+	    like <tt>/bin/false</tt>, then they will not be able to login.
+	    This is useful for users who should only have FTP or email
+	    access. <p>
+	<li><b>Primary group</b><br>
+	    A user's primary group is the group which will usually be
+	    assigned to any new files the user creates. If you change the
+	    primary group, the <tt>Change GID</tt> option at the bottom
+	    of the page controls what happens to files owned by that user
+	    and group. <p>
+	<li><b>Other groups</b><br>
+	    This is a list of all the other groups a user belongs to. Only
+	    local groups will be shown, not NIS or NIS+ groups. <p>
+	</ul><p>
+Some other user properties are only available if your system has a
+shadow password file and the module configuration knows about it. They
+are :<p>
+	<ul>
+	<li><b>foo</b><br>
+	    foo. <p>
+	</ul><p>
+
+<hr>
+<h3>Creating a New User</h3>
+To create a new user, click on the <tt>Create New User</tt> link below
+the list of existing users on the main page. This will display the same
+form as is used for editing a user, but with almost all the fields empty.
+The only field that will be automatically filled in for you is the UID,
+which Webmin will compute by picking a free UID at the end of a sequence
+of existing UIDs. <p>
+
+When a new user is created, the user's home directory can be created as
+well. To have webmin create and set the permissions on the directory you
+specify, choose <tt>Create home directory</tt> at the bottom of the page.
+You should do this for all normal users you add. <p>
+
+The <tt>Files to copy</tt> option in the module preferences can be used
+to copy various files (such as <tt>.cshrc</tt> or <tt>.profile</tt>) into
+the home directory of a newly created user. You should change this
+parameter to a space-separated list of files to copy. <p>
+
+<hr>
+<h3>Deleting a User</h3>
+To delete an existing user, click on the <tt>Delete</tt> button in the
+user details form. This will take you to a page asking if you want to
+delete the user's home directory as well. Be very careful when choosing
+to do this, as some system users have the root directory as their 
+home directory. <p>
+
+In general, you should never change the UID, username or shell of system
+users such as <tt>root</tt>, <tt>bin</tt> or <tt>nobody</tt>. Doing so
+could make your system unusable or unbootable. Do not try to delete any
+of these users either, <b>especially</b> <tt>root</tt>. <p>
+
+<hr>
+<h3>Editing an Existing Group</h3>
+To edit a group, click on the group name from the list of groups on the
+main page. This will bring you to a form in which you can edit the
+following group properties :
+	<ul>
+	<li><b>Group name</b><br>
+	    The unique name for this group. <p>
+	<li><b>Group GID</b><br>
+	    Like this UID for a Unix user, this is a number that the system
+	    uses to identify the group. Each group should have a unique
+	    GID. <p>
+	<li><b>Members</b><br>
+	    The list of all users in this group. This can include NIS or
+	    NIS+ users as well, if they are in use on your system. <p>
+	<li><b>Password</b><br>
+	    Not used? <p>
+	</ul><p>
+
+<hr>
+<h3>Creating a New Group</h3>
+To create a new group, click on the <tt>Create new group</tt> link 
+beneath the list of existing groups. This links to the same form as is
+used for editing an existing group, but with all the fields blank except
+for the GID. This is automatically filled by finding a free GID for the
+new group. <p>
+
+<hr>
+<h3>Deleting a Group</h3>
+To delete an existing group, click on the <tt>Delete Group</tt> button
+on the group details page. This will immediately delete the group without
+asking. No files or directories will be deleted though. <p>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Return to module</a><p>
+ 
+

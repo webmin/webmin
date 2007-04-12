@@ -1,0 +1,24 @@
+<header>Tabalas de búsqueda del mapeo de dominio</header>
+
+<center><tt>virtual_maps</tt></center>
+<hr>
+
+Este parámetro especifica tablas de búsqueda adicionales para redirigir
+direcciones específicas, o incluso dominios completos, a otra dirección. Se
+usa habitualmente para el soporte de dominios virtuales.
+
+<p>
+
+Por defecto no se hace redirección de direcciones.
+
+<p>
+
+Ejemplos:
+<ul>
+<li><tt>dbm:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, nis:virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, netinfo:/virtual</tt>
+</ul>
+
+<hr>

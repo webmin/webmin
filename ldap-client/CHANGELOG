@@ -1,0 +1,5 @@
+---- Changes since 1.280 ----
+First version of this module.
+---- Changes since 1.290 ----
+Added Module Config options for specifying a different LDAP server to connect to for the browser and validation features.
+Object and attribute lists in the LDAP browser are now sorted.

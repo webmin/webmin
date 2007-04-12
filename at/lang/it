@@ -1,0 +1,39 @@
+index_title=Comandi pianificati
+index_header=Nuovo comando pianificato
+index_user=Esegui come utente
+index_date=Esegui il giorno
+index_time=Esegui all'orario
+index_cmd=Comando da eseguire
+index_id=Job ID
+index_exec=Esegui il
+index_created=Creato il
+index_dir=Esegui nella directory
+index_return=lista comandi
+index_cdate=Giorno attuale
+index_ctime=Orario attuale
+
+edit_title=Comando pianificato
+edit_cmd=Script completo da eseguire
+edit_header=Dettagli del comando pianficato
+edit_delete=Cancella questo comando
+edit_ejob=Questo comando pianificato non esiste più
+edit_ecannot=Non hai il permesso di modificare questo comando pianificato
+
+create_err=Errore nella creazione del comando pianificato
+create_euser=Nome utente invalido o mancante
+create_edate=Orario o giorno mancanti o non validi
+create_ecmd=Nessun comando inserito
+create_efuture=Orario e giorno sono nel passato
+create_edir=Directory mancante o non valida
+create_ecannot=Non sei autorizzato a creare comandi pianificati per questo utente
+
+delete_err=Cancellazione del comando non riuscita
+delete_egone=Comando in esecuzione o già cancellato
+
+acl_users=Puoi modificare comandi pianificati per
+acl_all=Tutti gli utenti
+acl_this=Utenti Webmin correnti
+acl_only=Solo utenti
+acl_except=Tutti tranne gli utenti
+
+

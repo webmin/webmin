@@ -1,0 +1,111 @@
+<header>Cache-inställningar</header>
+
+<b>Cache-kataloger</b>: Du kan ange flera cache-kataloger för att
+sprida cachen över flera diskpartitioner.
+
+<p><em>Katalog</em> är en toppnivåkatalog där cachernas swapfiler
+läggs. Om du vill använda en hel disk för cachning kan du ange
+monteringspunktens katalog här. Katalogen måste finnas och vara
+skrivbar för Squid-processen. Squid kommer INTE att skapa katalogen åt
+dig.
+
+<p><em>Storlek</em> är det diskutrymme (MB) som ska användas under
+denna katalog. Standardvärdet är 100 MB. Ställ in detta så att det
+passar dina inställningar.
+
+<p><em>Förstanivåkataloger</em> är antalet underkataloger på första
+nivån som ska skapas under <em>Katalog</em>. Standardvärdet är 16.
+
+<p><em>Andranivåkataloger</em> är antalet underkataloger på andra
+nivån, som ska skapas under varje förstanivåkatalog. Standardvärdet är
+256.
+
+<P><b>Medelstorlek på objekt</em>: Standardvärdet är 13
+kB. Medelstorlek för de filer som ska cachas; används för att
+uppskatta antalet filer som cachen kan ta emot.
+
+<p><b>Antal objekt per katalog</b>: Standardvärdet är 50. Antal objekt
+per katalog i lagringshashtabellen. Om detta värde minskas ökas
+antalet kataloger samt underhållsbehovet för dessa.
+
+<p><b>Cacha inte URL:er för åtkomstlistor</b>: Standardinställningen
+är Ingen.  Ange de åtkomstlistor som Squid inte ska cacha data
+för. Detta är användbart om du vill sätta upp en intern webserver som
+inte ska cachas.
+
+<p><b>Maximal cachetid</b>: Standardvärdet är 1 år. Parametern anger
+maximal LRU-ålder. Om du exempelvis sätter denna till '1 vecka' kommer
+alla objekt tas bort som inte har rörts på minst en vecka.
+
+<p><b>Cachetid för misslyckad förfrågning</b> Standardvärdet är 5
+minuter. Time-to-Live (TTL) för misslyckade förfrågningar. Vissa
+sorters fel (t ex "connection refused" and "404 Not Found") cachas
+negativt under en viss tid som går att ställa in. Observera att detta
+inte är samma sak som negativ cachning av DNS-uppslagningar.
+
+<p><b>Cachetid för DNS-uppslagning</b>: Standardvärdet är 6 timmar
+(360 minuter). Time-to-Live (TTL) för positiv cachning av lyckade
+DNS-uppslagningar. För att minimera användningen av Squids ipcache ska
+denna parameter sättas till 1, <b>inte 0</b>.
+
+<p><b>Cachetid för misslyckad DNS-uppslagning</b>: Standardvärdet är 5
+minuter. Time-to-Live (TTL) för negativ cachning av misslyckade
+DNS-uppslagningar.
+
+<p><b>Tidsgräns för uppkoppling</b>: Standardvärdet är 120
+sekunder. Vissa system (särskilt Linux) har ingen funktionalitet för
+att strypa connect(2)-förfrågningar. Därför lägger Squid-processen på
+en egen tidsgräns på serveruppkopplingar. Denna parameter anger hur
+länge processen ska vänta på att uppkopplingen ska fullbordas.
+
+<p><b>Tidsgräns för läsning</b>: Standardvärdet är 15
+minuter. Variabeln read_timeout används vid serveruppkopplingar. Efter
+varje lyckad read() ökas tidsgränsen med detta värde. Om inga data
+lästs under denna tid avbryts förfrågningen och loggas med
+ERR_READ_TIMEOUT.
+
+<p><b>Tidsgräns för siteval</b>: Standardvärdet är 4 sekunder. Detta
+används för URL-val vid URN för flera URL:er.
+
+<p><b>Tidsgräns för klientförfrågning</b>:  Standardvärdet är 15
+minuter. read_timeout används på serverns sida av uppkopplingen. Efter
+varje lyckad read() kommer tidsgränsen att förlängas med detta
+värde. Om en klient inte har sänt någon förfrågning under denna tid,
+bryts förbindelsen.
+
+<p><b>Maximal uppkopplingstid för klient</b>: Standardvärdet är 1
+dag. Den längsta tid en klient (browser) får vara uppkopplad mot
+cacheprocessen. Detta hindrar att cachen får en massa sockets (och
+därmed också fildeskriptorer) fastlåsta i CLOSE_WAIT-läge för att
+klienter försvinner utan att avsluta förbindelsen ordentligt (på grund
+av nätverkstrassel eller dålig klientimplementation).
+
+<p><b>Maximal avstängningstid</b>: Standardvärdet är 30 sekunder. När
+processen tar emot SIGTERM eller SIGHUP går cachen in i "väntar på
+stopp"-läge tills alla sockets har stängts. Denna parameter anger den
+livslängd som alla öppna deskriptorer ges i avstängningsläget. Om det
+finns några aktiva klienter kvar efter denna tid får de ett
+'timeout'-meddelande.
+
+<p><b>Halvstängda klienter</b>: Standardvärdet är "på". En del
+klienter slår av sändningssidan av sina TCP-förbindelser, men lämnar
+mottagningssidan öppen.  Ibland kan Squid inte känna skillnad på en
+halvstängd och en helt avslutad TCP-förbindelse. Det vanliga beteendet
+är att halvstängda klientförbindelser hålls öppna tills en read(2)
+eller write(2) på denna socket ger ett felmeddelande. Om inställningen
+ändras till "av" kommer Squid omedelbart att stänga klientförbindelser
+då read(2) returnerar "no more data to read".
+
+<p><b>Kvardröjande tidsgräns</b>: Standardvärdet är 120
+sekunder. Tidsgräns för väntande kvardröjande uppkopplingar till
+klienter, servrar och andra maskiner.  Kvardröjande uppkopplingar
+kommer att slås av om denna gräns är mindre än 10 sekunder.
+
+<p><b>Dator för WAIS-relä</b>: Standardinställningen är
+ingen. Datornamn eller -adress som WAIS-förfrågningar ska skickas
+till.
+
+<p><b>Port för WAIS-relä</b>: Standardinställningen är ingen. Port som
+WAIS-förfrågningar ska skickas till.
+
+<hr>

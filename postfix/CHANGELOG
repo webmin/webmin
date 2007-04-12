@@ -1,0 +1,38 @@
+---- Changes since 1.130 ----
+Added a button to the mail queue page for flushing the queue.
+---- Changes since 1.140 ----
+Added the ability to search the mail queue.
+Removed the mail reading feature and associated ACLs, as this functionality has been moved to the Read User Mail module.
+---- Changes since 1.150 ----
+Added an option to the autoreply file editing page for specifying addresses to never auto-repond to. Accepts wildcards like *@foo.com or fred@*.
+---- Changes since 1.160 ----
+Added an icon for checking the current Postfix configuration.
+---- Changes since 1.190 ----
+Added support for the mynetworks_style option.
+---- Changes since 1.200 ----
+The header_checks table for rejecting or redirecting email based on its headers can now be edited.
+---- Changes since 1.210 ----
+Added buttons on the mail queue page to re-queue, hold and un-hold messages.
+---- Changes since 1.220 ----
+Added support for the body_checks table, and improved the UI for editing the header_checks table. Thanks to Vincent Ertner for sponsoring this feature.
+Added a button on all map lists to edit the map data file manually.
+---- Changes since 1.230 ----
+When deleting messages from the mail queue, Webmin will prompt for confirmation first.
+---- Changes since 1.240 ----
+Added support for the new RBL lookup parameters, thanks to Roberto Tecchio.
+When creating an autoreply alias, you can enter regexps that the headers will be checked against to prevent the reply.
+Added a page for editing Postfix server processes, as defined in the master.cf file.
+---- Changes since 1.250 ----
+Added a Module Config option to display aliases and other tables in one column instead of two, to increase readability when long aliases or domain names exist.
+Added checkboxes and buttons on the aliases, virtual domains and other list pages for deleting several at once.
+Added an icon for editing the Postfix main and master configuration files.
+---- Changes since 1.290 ----
+All Postfix table entries (including aliases) can have human-readable descriptions associated with them. These are stored as comments in the appropriate config file.
+---- Changes since 1.300 ----
+Added locking and logging for all actions, so that changes can be viewed in the Webmin Actions Log module.
+Users who are not allowed to manually edit the Postfix main.cf are also prevented from manually editing map files.
+Added an access control option to limit the directory for maps files.
+---- Changes since 1.310 ----
+Added a Module Config option for the path to postsuper, which is used instead of assuming that it is in the PATH.
+---- Changes since 1.330 ----
+Postfix configuration parameters are read from main.cf directly, instead of calling the postconf command (which is slow).

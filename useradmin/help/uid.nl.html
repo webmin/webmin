@@ -1,0 +1,18 @@
+<header>Gebruikers ID</header>
+De gebruikers ID of UID is het gegeven dat het systeem werkelijk gebruikt om
+de toegang tot bestanden en processen te beheren. Twee gebruikers met
+dezelfde UID hebben toegang tot elkaars bestanden en processen -
+daarom behoort iedere gebruiker een unieke UID te hebben.
+Als u een nieuwe gebruiker aanmaakt, zal Webmin dit veld invullen met een UID 
+die nog niet door een andere gebruiker wordt benut. 
+<strong>U kunt dit veld dus beter niet zelf invullen
+</strong> <p>
+De <tt>root</tt> gebruiker heeft altijd een UID=0 (nul). Als u een andere 
+gebruiker aanmaakt met UID=0, dan heeft die gebruiker dezelfde rechten
+als <tt>root</tt>. <p>
+
+Als u een bestaande gebruiker wijzigt en de UID verandert, wordt door de
+<a href=chuid>Gebruikers ID van bestanden veranderen?</a> optie bepaald van 
+welke bestanden (voorzover aanwezig) het eigendom meeveranderd wordt. <p>
+<hr>
+

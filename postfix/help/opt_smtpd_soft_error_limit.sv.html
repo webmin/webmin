@@ -1,0 +1,11 @@
+<header>Antal fel för att tillfälligt strunta i en klient</header>
+
+<center><tt>smtpd_soft_error_limit</tt></center>
+<hr>
+
+Denna parameter anger en lägsta gräns för antalet fel en SMTP-klient får
+göra. Om klienten åstadkommer detta antal fel under en session kommer
+servern att vänta <tt>error_count</tt> sekunder innan den svarar på
+nya förfrågningar från denna klient.
+
+<hr>

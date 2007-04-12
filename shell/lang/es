@@ -1,0 +1,12 @@
+acl_user=Ejecutar comando como usuario
+acl_user_def=Usuario de Webmin en curso
+index_clear=Limpiar historial
+index_clearcmds=Limpiar comandos
+index_desc=Introduzca un comando de consola de Unix a ejecutar en la caja de texto inferior. El comando <tt>cd</tt> se puede usar para cambiar de directorio a los siguientes comandos.
+index_edit=Editar anterior
+index_history=Historial de comandos
+index_ok=Ejecutar comando:
+index_pok=Ejecutar comando previo
+index_title=Comandos de Consola
+log_clear=Historial de comandos limpio
+log_run=Comando $1 ejecutado

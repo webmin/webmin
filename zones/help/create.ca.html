@@ -1,0 +1,25 @@
+<header>Creació de Zona</header>
+
+Aquest formulari permet crear i opcionalment instal·lar una nova zona en
+aquest sistema. Has d'introduir almenys el nom de la zona, que ha de ser únic
+i format per lletres i números. Es pot seleccionar un directori de fitxers de
+zona, però normalment el directori per defecte és el millor. <p>
+
+Com que cada zona normalment necessita una interfície de xarxa privada per
+aquest servidor, pots introduir-ne l'adreça IP en aquest formulari i
+seleccionar la interfície real a la qual està vinculada. Totes les zones tenen
+automàticament una interfície loopback virtual com ara <tt>lo0:1</tt>, que
+no s'ha de configurar manualment. <p>
+
+Si tries d'instal·lar el programari del sistema de la zona després de crear-la,
+la nova zona estarà immediatament disponible per al seu ús. No obstant, si vols
+afegir o canviar directoris de paquets, pots triar no instal·lar-la ara, ja que
+això impedirà de fer aquests canvis. <p>
+
+En aquest formulari, també s'hi poden especificar els directoris de paquets
+a afegir abans d'instal·lar la zona. Els directoris <tt>/lib</tt>,
+<tt>/platform</tt>, <tt>/sbin</tt> i <tt>/usr</tt> sempre s'inclouen
+automàticament a les zones noves. <p>
+
+<footer>
+

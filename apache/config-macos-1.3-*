@@ -1,0 +1,17 @@
+httpd_path=/usr/sbin/httpd
+apachectl_path=/usr/sbin/apachectl
+start_cmd=
+httpd_dir=/etc/httpd
+virt_file=
+access_conf=/dev/null
+srm_conf=/dev/null
+stop_cmd=
+httpd_conf=/etc/httpd/httpd.conf
+show_list=0
+mime_types=/etc/httpd/mime.types
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

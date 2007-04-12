@@ -1,0 +1,11 @@
+dhcpd_conf=DHCP-Server Konfigurationsdatei,0
+dhcpd_nocols=Icons in Reihe,0
+dhcpd_path=Ausf&uuml;hrbare Datei des DHCP-Servers,0
+hostnet_list=Zeige Sub-Netze und Hosts als,1,0-Icons,1-Liste
+interfaces=Schnittstellen an denen DHCP l&auml;uft,3,Automatisch
+lease_file=DHCP-Server Lease-Datei,0
+lease_sort=Sortiere Leases nach,1,0-Reihenfolge in Datei,1-IP&#045Adresse,2-Hostname
+lease_tz=Zeige Leases-Zeiten in,1,0-GMT,1-Lokalzeit
+pid_file=Pfad zur DHCP-Server PID-Datei,0
+restart_cmd=Befehl zum Anwenden der Konfiguration,3,Beenden und Neustart
+start_cmd=Befehl zum Start des DHCP-Servers,3,Starte ausf&uuml;hrbare Server&#045Datei

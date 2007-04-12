@@ -1,0 +1,133 @@
+<body bgcolor=#ffffff>
+<title>Servicios de Internet</title>
+<center><img src="images/inetd.gif"></center><br>
+<h2><i>Esta página de ayuda está incompleta</i></h2>
+<hr>
+<h3>Introducción</h3>
+Este módulo te permite gestionar y configurar servicios de internet como
+<tt>telnet</tt>, <tt>ftp</tt> y <tt>finger</tt>. Cada servicio de internet
+tiene un nombre, número de puerto y protocolo (como <tt>telnet</tt> en
+puerto <tt>tcp</tt> 23). Muchos servicios también tienen un programa servidor
+para manejar conexiones de red para esos servicios. <p>
+
+Los servicios con un programa asociado son controlados por un daemon
+<tt>inetd</tt> de Unix, que escucha por conexiones de red en nombre de
+todos sus servicios. Cuando se recibe una conexión, el programa servidor es
+arrancado para manejar los datos de la nueva conexión. <p>
+
+No todos los servicios de internet son gestionados por este mósulo. Los
+servidores que reciben muchas conexiones como HTTPD, SMB o NFS son ejecutados
+de forma separada para evitar el tener que arrancar un nuevo proceso para
+cada requerimiento. Estos servicios pueden ser configurados mediante otros
+módulos de Qebmin, como <a href=/samba/>Samba</a> o <a href=/apache/>Apache</a>. <p>
+
+La página principal de este módulo lista todos los servicios de internet
+y de RPC de tu sistema. Los servicios con un programa asignado se
+muestran en negrita. La lista de servicios de internet, servicios de RPC
+y de programas se recoge de los archivos <tt>/etc/services</tt>, <tt>/etc/rpc</tt> y
+<tt>/etc/inetd.conf</tt>. <p>
+
+<hr>
+<h3>Creando un Nuevo Servicio</h3>
+Para crear un nuevo servicio de internet, haz click en el enlace
+<tt>Crear un Nuevo Servicio</tt> bajo la lista de servicios activos.
+Esto te llevará a un formumario en el cual se puede suministrar los
+detalles del nuevo servicio:
+	<ul>
+	<li><b>Nombre del Servicio</b><br>
+	    Cada servicio debe de tener un par de nombre único y protocolo.
+	    Esto quiere decir que dos servicios pueden tener el mismo
+	    nombre sólamente si utilizan protocolos diferentes. <p>
+	<li><b>Protocolo</b><br>
+	    El protocolo de comunicaciones usado por este servicio. Casi
+	    todos los servicios de internet usan el protocolo <tt>TCP</tt>
+	    y el resto usan <tt>UDP</tt>. <p>
+	<li><b>Puerto</b><br>
+	    Cada servicio tiene un número de puerto que debe de ser único
+	    dentro del protocolo usado por el servicio. El número de puerto
+	    debe de estar entre 0 y 65535 tanto para <tt>TCP</tt> como para <tt>UDP</tt>. <p>
+	<li><b>Aliases</b><br>
+	    Una lista de nombres alternativos usados para referirse a este
+	    servicio. No se puede usar un alias que ya exista o poner alias
+	    a un servicio ya existente con el mismo protocolo. <p>
+	</ul><p>
+Los nombres de servicio de internet se pueden utilizar en lugar de los
+nombres de máquina en comandos como <tt>telnet</tt>. Por ejemplo, puedes
+digitar <tt>telnet foo.bar.com smtp</tt> para conectarte al puerto 25
+en la máquina <tt>foo.bar.com</tt>, asumiendo que el servicio de internet
+<tt>smtp</tt> se defina corréctamente. <p>
+
+Para servicios con un programa asociado, debes de seleccionar la opción
+<tt>Usar el programa inferior</tt>.
+	<ul>
+	<li><b>Programa</b><br>
+	    Algunos raros servicios son manejados intérnamente por <tt>inetd</tt>.
+	    Sin embargo, para casi todos los nuevos servicios que crees,
+	    la trayectoria completa al programa a ejecutar para el servicio
+	    debería de suministrarse aquí.<p>
+	<li><b>Argumentos</b><br>
+	    Argumentos de línea de comando a pasar al programa superior. El
+	    primer argumento debería de ser el nombre del programa, y el
+	    resto otros parámetros a pasar.<p>
+	<li><b>Modo de Espera</b><br>
+	    Éste determina si <tt>inetd</tt> esperará hasta que el programa
+	    se complete antes de arrancar cualquier otro o no. Para la mayoría
+	    de los servicios, éste debería de ser <tt>No esperar</tt>. <p>
+	<li><b>Ejecutar como</b><br>
+	    El nombre de usuario bajo el que debería de ejecutarse el programa
+	    servidor. La mayoría de servidores necesitarán ser ejecutados
+	    como <tt>root</tt>. <p>
+	</ul><p>
+Cuando se añade un nuevo servicio, no surtirá efecto inmediatamente. Debe
+pulsar el botón <tt>Aplicar Cambios</tt> en la página principal para que se
+añada el servicio. <p>
+
+<hr>
+<h3>Editando un Servicio Existente</h3>
+Para editar un servicio pulse en el nombre del servicio en la lista de la
+página principal. Esto mostrará el mismo formulario usado en la creación de
+un servicio y le permitirá editar los detalles del mismo. También puede
+pulsar el botón <tt>Borrar</tt> en la parte inferior de la página para
+borrar el servicio. <p>
+
+Tenga cuidado al editar o borrar servicios de sistema existentes tales como
+<tt>telnet</tt> o <tt>ftp</tt>. Estos cambios podrían hacer imposible
+ingresar en su máquina (o aún peor). <p>
+
+Cuando se modifica un servicio, no tendrá efecto de manera inmediata.
+Primero debe pulsar el botón <tt>Aplicar Cambios</tt> en la página
+principal para que los cambios surtan efecto. <p>
+
+<hr>
+<h3>Creando y Editando Programas RPC</h3>
+En general nunca necesitará crear o editar programas RPC en su sistema. Sin
+embargo, de hacerlo, el procedimiento es similar a crear y editar servicios
+de Internet. <p>
+ 
+El formulario para editar y crear programas RPC siempre contendrá al menos
+los siguientes campos :
+	<ul>
+	<li><b>Nombre del Programa</b><br>
+	    Un nombre único para este programa RPC (dentro del mismo
+	    protocolo). <p>
+	<li><b>Número</b><br>
+	    Cada programa RPC tiene un número de programa único,
+	    determinado cuando se escribió el programa. <p>
+	<li><b>Aliases</b><br>
+	    Otros nombres que se pueden usar para referirse a este programa
+	    RPC. <p>
+	</ul><p>
+
+Algunos sistemas operativos (como Solaris) permiten asociar un programa
+servidor con cada servicio RPC. Este programa será ejectado por
+<tt>inetd</tt> cuando reciba una petición para el programa. <p>
+Si su sistema soporta programas servidores RPC iniciados desde inetd,
+también serán visibles los siquientes campos :
+	<ul>
+	<li>???
+	</ul>
+ 
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Volver a módulo</a><p>
+ 

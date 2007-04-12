@@ -1,0 +1,2 @@
+exports_file=Fichier des systèmes de fichier exporté,0
+restart_command=Commande pour redémarrer le serveur,0

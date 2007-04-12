@@ -1,0 +1,192 @@
+index_title=Processos en Execució
+index_display=Mostra
+index_tree=PID
+index_user=Usuari
+index_size=Memòria
+index_cpu=CPU
+index_search=Busca
+index_zone=Zona
+index_run=Executa...
+index_return=a la llista de processos
+index_mem=<b>Memòria real:</b> $1 Kb total / $2 Kb lliures
+index_swap=<b>Àrea d'intercanvi:</b> $1 Kb total / $2 Kb lliures
+index_load=<b>Càrrega mitjana de la CPU:</b> $1 (1 mins) , $2 (5 mins) , $3 (15 mins)
+index_loadname=Mitjanes de càrrega de la CPU:
+index_loadnums=$1 (1 mins) , $2 (5 mins) , $3 (15 mins)
+index_cpuname=Tipus de CPU:
+
+pid=ID del procés
+owner=Usuari
+command=Ordre
+cpu=CPU
+size=Mida
+parent=Procés pare
+runtime=Temps d'execució
+nice=Nivell <i>nice</i>
+stime=Iniciat
+
+search_user=de l'usuari
+search_match=amb patró de coincidència
+search_cpupc=que utilitza més del $1% de la CPU
+search_fs=que utilitza el sistema de fitxers
+search_files=que utilitza el fitxer
+search_submit=Busca
+search_none=No s'ha trobat cap procés que coincideixi.
+search_kill=Envia el Senyal
+search_ignore=Ignora els processos de recerca en el resultat
+search_return=al formulari de recerca
+search_sigterm=Acaba els Processos
+search_sigkill=Mata els Processos
+search_port=que utilitza el port
+search_protocol=protocol
+search_ip=Utilitzant l'adreça IP
+
+run_command=Ordre a executar
+run_submit=Executa
+run_mode=Mode d'execució
+run_bg=Executa en segon pla
+run_fg=Espera't fins que acabi
+run_input=Entrada de l'Ordre
+run_title=Sortida de l'Ordre
+run_output=Sortida de $1...
+run_none=No s'ha generat cap sortida
+run_ecannot=No tens permís per executar ordres
+run_as=Executa com a usuari
+run_euser=Hi falta el nom d'usuari o bé és invàlid
+run_euser2=No tens permís per executar ordres com l'usuari seleccionat
+
+edit_title=Informació del Procés
+edit_gone=Aquest procés ja no està en execució
+edit_sub=Subprocessos
+edit_kill=Envia el Senyal
+edit_change=Canvia
+edit_prilow=Prioritat baixa
+edit_prihigh=Prioritat alta
+edit_pridef=Defecte
+edit_none=Cap
+edit_ecannot=No tens permís per editar processos
+edit_sigterm=Acaba'l
+edit_sigkill=Mata'l
+edit_sigstop=Suspen-lo
+edit_sigcont=Repren-lo
+edit_open=Fitxers i Connexions
+edit_trace=Rastreja el Procés
+edit_return=als detalls del procés
+
+kill_err=No he pogut enviar el senyal $1 al procés $2
+kill_title=Envia el Senyal
+kill_sent=he enviat
+kill_ecannot=No tens permís per matar processos
+
+renice_err=No he pogut canviar el nivell <i>nice</i> de $1
+renice_ecannot=No tens permís per canviar els nivells <i>nice</i> dels processos.
+
+linux_pri=Prioritat
+linux_tty=TTY
+linux_status=Estat
+linux_wchan=Esperant a
+linux_mem=Memòria
+linux_group=Grup
+linux_ruser=Usuari real
+linux_rgroup=Grup real
+linux_pgid=ID del grup de processos
+linux_stime=$stime
+
+linuxstat_R=Executant
+linuxstat_S=Dormint
+linuxstat_D=Dormint profundament
+linuxstat_T=Aturat
+linuxstat_Z=Zombi
+
+freebsd_ruser=Usuari real
+freebsd_rgroup=Grup real
+freebsd_tty=TTY
+freebsd_pgid=Grup de processos
+freebsd_lstart=$stime
+freebsd_lim=Límit de memòria
+
+hpux_pri=Prioritat
+hpux_tty=TTY
+hpux_status=Estat
+hpux_wchan=Esperant a
+hpux_stime=$stime
+
+hpuxstat_0=Inexistent
+hpuxstat_S=Dormint
+hpuxstat_W=Esperant
+hpuxstat_R=Executant
+hpuxstat_I=Intermedi
+hpuxstat_Z=Zombi
+hpuxstat_T=Aturat
+hpuxstat_G=Creixent
+
+macos_tty=TTY
+
+sysv_group=Grup
+sysv_ruser=Usuari real
+sysv_rgroup=Grup real
+sysv_pgid=ID del grup de processos
+sysv_tty=TTY
+sysv_stime=$stime
+sysv_task=ID de Tasca
+sysv_zone=Nom de la Zona
+
+log_run=He executat l'ordre "$1"
+log_kill=He enviat el senyal $1 al procés $2
+log_kills=He enviat el senyal $1 a $2 processos
+log_kill_l=He enviat el senyal $1 al procés $2
+log_kills_l=He enviat el senyal $1 als processos<br>$2
+
+acl_manage=Gestiona els processos com un usuari
+acl_edit=Pot matar i canviar el <i>nice</i> dels processos
+acl_manage_def=Usuari Webmin actual
+acl_run=Pot executar ordres
+acl_only=Només pot veure els seus processos
+acl_who=Pot gestionar els processos dels usuaris
+acl_who0=Tots els usuaris
+acl_who1=Usuari Webmin actual
+acl_who2=Usuaris llistats...
+
+kill_kill=Mata el procés
+kill_term=&nbsp;Mata&nbsp;&nbsp;
+kill_hup=&nbsp;&nbsp;Reinicia&nbsp;&nbsp;&nbsp;
+kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;Atura&nbsp;&nbsp;&nbsp;&nbsp;
+kill_cont=&nbsp;&nbsp;Continua&nbsp;&nbsp;
+
+open_title=Obertura de Fitxers i Connexions
+open_proc=Del procés $1 (PID $2)
+open_header1=Fitxers oberts
+open_header2=Connexions de xarxa obertes
+open_type=Tipus
+open_proto=Protocol
+open_desc=Detalls
+open_fd=Descriptor de fitxer
+open_listen1=Escoltant el port $1
+open_listen2=Escoltant l'adreça $1 port $2
+open_recv=Rebent sobre $1:$2
+open_conn=Connectat des de $1 a $2 en estat $3
+open_cwd=Directori actual
+open_rtd=Directori arrel
+open_txt=Codi de programa
+open_mem=Llibreria compartida
+open_dir=Directori
+open_reg=Fitxer regular
+open_chr=Especial de tipus caràcter
+open_blk=Especial de tipus bloc
+open_size=Mida del fitxer
+open_inode=Inode
+open_file=Camí
+
+trace_title=Rastreig de Procés
+trace_start=Iniciant el rastreig de les crides del sistema de $1...
+trace_doing=Rastreig de les crides del sistema de $1:
+trace_done=...el procés s'ha acabat.
+trace_failed=...el rastreig ha fallat!
+trace_sorry=Aquesta pàgina necessita que el navegador tingui suport de Java. Per emprar un rastreig de procés només text, ajusta la configuració del mòdul.
+trace_syscalls=Rastreja les crides del sistema:
+trace_all=Totes
+trace_sel=Les llistades...
+trace_change=Canvia
+
+windows_threads=Fils del procés
+syslog_dmesg=Missatges del kernel

@@ -1,0 +1,15 @@
+<header>Disable kernel file lock on mailboxes</header>
+
+<center><tt>sun_mailtool_compatibility</tt></center>
+<hr>
+
+This parameter disables kernel file locks on mailboxes.
+
+<p>
+
+This is needed on SUN workstations because the <tt>mailtool</tt> program keeps
+an exclusive kernel lock while its window is open. SUN software uses
+<tt>user.lock</tt> files only. Unless you remove all SUN mail software, kernel
+locks just give a false sense of security.
+
+<hr>

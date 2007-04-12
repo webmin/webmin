@@ -1,0 +1,19 @@
+<header>Enmascaramiento de direcciones</header>
+
+<center><tt>masquerade_domains</tt></center>
+<hr>
+
+El enmascaramiento de direcciones es un método de ocultar todas las
+máquinas de un dominio tras su pasarela de correo, y hacer que todo el
+correo parezca provenir de la pasarela de correo, y no de las máquinas
+individuales.
+
+<p>
+
+El enmascaramiento de direcciones está desactivado por defecto. Para
+activarlo especifique uno o más nombres de dominio separados por espacios
+en blanco o comas. Por ejemplo: <tt>$midominio</tt>; en este ejemplo las
+direcciones de la forma <tt>usuario@maquina.$midominio</tt> serán rescritas
+como <tt>usuario@$midominio</tt>.
+
+<hr>

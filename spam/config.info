@@ -1,0 +1,10 @@
+local_cf=SpamAssassin configuration file or directory,0
+spamassassin=Full path to SpamAssassin command,0
+sa_learn=Full path to sa-learn command,0
+procmailrc=Procmail configuration file,3,From Procmail module
+warn_procmail=Display warning if SpamAssassin is not set up?,1,1-Yes,0-No
+processes=SpamAssassin daemon process names,0
+restart_cmd=Command to restart processes,3,Just send HUP signal
+procmail_cmd=SpamAssassin command for Procmail configuration,10,*-Detect automatically
+before_cmd=Command to run before changing rules,3,None
+after_cmd=Command to run after changing rules,3,None

@@ -1,0 +1,23 @@
+<header>Access Control</header>
+
+<b>Access control lists</b>: ACLs are lists of terms to be matched using regulard expressions of literal expressions.  An ACL may also be a file that contains one item or regular expression per line. The ACL box on this page has several fields which may be edited.  New ACLs may also be created.
+<p>
+The fields present are:
+<p>
+<em>Name</em> is the name by which the ACL can be identified.  When creating a <b>Proxy Restriction</b> this is the name used to define what is being restricted.
+<p>
+<em>Type</em> is the type of information that the ACL is to be matched against. 
+<p>
+<em>Matching..</em> is the address, port, URL, user, etc. that the ACL will be matching to.
+<p>
+<b>Proxy restrictions</b>: Proxy restrictions are rules that either allow or deny a given request based on whether its ACL matches the specifics of the reuqest.  There are three fields in this box.
+<p>
+<em>Action</em> is either <em>allow</em> or <em>deny</em>.
+<p>
+<em>ACLs</em> are the ACLs that will be matched against to decide whether the request is allowed or denied.  If prepended by an exclamation point the ACL will be negated, in other words everything <em>except</em> members of that ACL will be allowed or denied. 
+<p>
+<em>Move</em> allows the order of restrictions in the list.  The order in which they appear is important, because Squid only reads the list until it has found the first match.
+<p>
+<b>ICP restrictions</b>: This box is for restricting ICP requests.  ICP requests are requests from other neighbor caches.  This section work the same as <b>Proxy restrictions</b>.
+
+<hr>

@@ -1,0 +1,8 @@
+index_credits=Applet, GPL lisansý ile <a href='$1'>Matthias L. Jugel &amp; Marcus Meißner</a> tarafýndan geliþtirilmiþtir.
+index_elookup=Telnet ya da SSH sunucusunu test etmek için girilen $1 'in IP adresinin bulunmasýnda hata oluþtu
+index_esocket=$1'in $2 portunda çalýþan bir telnet sunucusu yoktur.
+index_esocket2=$1'in $2 portunda çalýþan bir SSH sunucusu yoktur
+index_nojava=Bu modül java'yý kullamaktadýr, fakat tarayýcýnýz javayý desteklememektedir
+index_sshcredits=Programýn içeriðindeki yazýlým Cryptix Development Team (<a href=$1>$1</a>) tarafýndan geliþtirilmiþtir.
+index_title=SSH/Telnet Giriþi
+index_warn=UYARI! Bu telnet iþlemi <b>þifrelenmemiþtir</b>

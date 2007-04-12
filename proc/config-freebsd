@@ -1,0 +1,5 @@
+default_mode=last
+ps_style=freebsd
+base_ppid=0
+cut_length=80
+trace_java=1

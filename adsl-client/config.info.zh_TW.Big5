@@ -1,0 +1,8 @@
+line2=系統組態,11
+pppoe_conf=PPPOE ADSL組態檔案,0
+conf_style=組態檔案格式,1,0-標準RP-PPPoE 設定,1-Redhat網路檔案
+pap_file=PPP帳號檔案,0
+pppoe_cmd=pppoe指令路徑,0
+start_cmd=啟用ADSL連線指令,0
+stop_cmd=停用ADSL連線指令,0
+status_cmd=取得ADSL連線狀態指令,0

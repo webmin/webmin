@@ -1,0 +1,48 @@
+#!/bin/sh
+# webmin	This shell script takes care of starting and stopping
+#		webmin
+#
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+NAME=miniserv
+DAEMON=/usr/libexec/webmin/miniserv.pl
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ ${NETWORKING} = "no" ] && exit 0
+
+# check if the webmin conf file is present
+[ -f /etc/webmin/miniserv.conf ] || exit 0
+
+case "$1" in
+start)
+    [ ! -e $SVIlock ] || exit 1
+    if [ -f /etc/webmin/miniserv.conf ]; then
+	echo -n "Starting $IDENT: "
+	ssd -S -n $NAME -x $DAEMON -- /etc/webmin/miniserv.conf 2>&1 >/dev/null
+        touch $SVIlock
+        echo "."
+    else
+	echo "$NAME not configured (in /etc/webmin/miniserv.conf): Skipped!"
+    fi
+    ;;
+
+stop)
+    [ -e $SVIlock ] || exit 0
+    echo -n "Stopping $IDENT: "
+    ssd -K -p /var/run/miniserv.pid >/dev/null 2>&1 && echo -n "miniserv"
+    rm -f $SVIlock
+    echo "."
+    ;;
+
+*)
+    echo "Usage: $0 {start|stop}"
+    exit 1
+esac
+
+exit 0
+

@@ -1,0 +1,33 @@
+<header>Begränsningar och åtkomstkontroll</header>
+
+På denna sida finns flera tabeller med inställningar för begränsningar
+och åtkomstkontroll. I den första tabellen kan man ange klient-IP-adresser
+som ska nekas åtkomst till FTP-server och en felmeddelandefil som ska visas
+för klienten som nekas. Adresser kan anges som fullständiga eller partiella
+IP-adresser, IP-nätverk/nätmaskar, datornamn, datornamn med jokertecken
+(t ex <tt>*.foo.com</tt>) eller absoluta sökvägar till filer som innehåller
+adresser. Alla dessa adressangivelser kan anges med ett ! (utropstecken)
+först, vilket tolkas som att den angivna adressen tillåts komma åt
+FTP-servern.
+
+<p>I den andra tabellen kan man begränsa antalet samtidiga inloggningar
+för klienter i en viss klass. För varje klass kan man ange maximalt antal
+samtidiga inloggningar, dag(ar) och tidpunkt(er) då denna begränsning gäller
+(på UUCP-form, t ex <tt>MoTuTh0800-1700</tt>) och ett felmeddelande som ska
+visas då klienter nekas inloggning på grund av denna begränsning.
+
+<p>I den tredje tabellen kan man sätta gränser för fil- och dataöverföring
+per session. För varje gräns måste man ange om den gäller antal filer eller
+byte som överförs, överföringsriktning, om gränsen endast gäller för
+filöverföring eller för all data och den användarklassen som gränsen gäller
+för.
+
+<p>I den fjärde tabellen kan man neka åtkomst till vissa filer. För varje
+fil måste man ange en absolut sökväg, ange om sökvägen gäller relativt
+<tt>chroot</tt>-katalogen (för anonyma och gästanvändare) och ange de
+användarklasser som begränsningen gäller för. Om en filangivelse slutar
+med ett / kommer FTP-servern att neka åtkomst till alla filer i katalogen.
+<br>På liknande sätt kan man i den femte tabellen tillåta åtkomst till
+filer som annars skulle spärras i tabellen ovan.
+
+<hr>

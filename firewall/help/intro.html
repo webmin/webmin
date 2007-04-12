@@ -1,0 +1,72 @@
+<header>Linux Firewall</header>
+
+<h3>Module introduction</h3>
+
+This module allows you to configure the IPtables firewall features found in
+the 2.4 series of Linux kernels. Unlike some other firewall configuration
+programs, instead of creating a shell script that sets up the firewall, it
+reads and edits a save file in the format read and written by
+<tt>iptables-restore</tt> and <tt>iptables-save</tt> respectively. <p>
+
+If you already have a firewall on your system that has been setup manually
+or from a script file, the module will offer to convert it to an IPtables
+save file for you, and create a script to be run at boot time to activate
+the rules in the file. However, if you do this then you should no longer
+edit your firewall rules script and should disable it from running at boot
+time as well. <p>
+
+<h3>IPtables overview</h3>
+
+Every network packet that comes into, goes out from or is forwarded by your system
+is checked against one or more chains to determine what will happen to it.
+Each chain contains zero or more rules, each of which has a condition (to
+determine which packets it matches) and an action (to control what happens
+to those matching packets). Each chain also has a default action that controls
+what happens to packets that do not match any rule. <p>
+
+Each chain is part of a table, of which there are currently three :
+<ul>
+<li><b>Packet filtering (<tt>filter</tt>)</b><br>
+    The chains in this table can be used to control data coming into your
+    system from other hosts on the network, data sent out from your system
+    by users and processes, and data forwarded by your system if it is acting
+    as a router. <p>
+<li><b>Network address translation (<tt>nat</tt>)</b><br>
+    This table can be used for setting up NAT or masquerading, which is useful
+    if you want to give an entire network of machines access to the internet
+    through only one real IP address. <p>
+<li><b>Packet alteration (<tt>mangle</tt>)</b><br>
+    This chain is for modifying packets forwarded by or sent out from your
+    system. <p>
+</ul>
+
+In addition to the standard chains that are part of each table, you can also
+create your own chains that can be run by rules in the build-in chains. This
+can be useful for grouping and sharing rules that might be used in multiple
+places. <p>
+
+<h3>The main page</h3>
+
+The main page of this module lists all the chains and rules from one of
+the available tables, selected from the list in the top-left. Below is a
+section for each chain in the current table, with all rules in each chain
+listed and their conditions described to the best of the module's ability.
+For each chain, you can change the default action using the drop-down list
+if the chain is one of the build-in ones for the table, or delete it with
+the Delete chain button if it is user-defined. <p>
+
+You can click on any rule in a chain to edit it, click on the arrows on the
+right of each row to move it up or down, or click on the Add rule button to add
+a new one. Adding or editing a rule will take you to a page on which you
+can select the action for each rule, and the conditions for which the action
+is executed. <p>
+
+At the bottom of the page is a button for making the current firewall
+configuration active, by loading it into the kernel with the
+<tt>iptables-restore</tt> command. Below it is a button for doing the reverse -
+taking the configuration that is currently in the kernel and making it
+available for editing. Finally, if your distribution supports it, there is
+a button to change whether the firewall is activated at boot time or not. <p>
+
+<hr>
+

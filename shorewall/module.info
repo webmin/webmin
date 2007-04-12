@@ -1,0 +1,8 @@
+name=Shorewall
+desc=Shorewall Firewall
+category=net
+os_support=*-linux
+depends=syslog
+longdesc=Lets you edit the most useful tables of the simple Shoreline Firewall
+desc_ca=Tallafocs Shorewall
+desc_es=Cortafuegos Shorewall

@@ -1,0 +1,7 @@
+line1=Opcions configurables,11
+max_size=Nombre màxim de registres a mostrar,0
+manual_build=Reconstruir els mapes NIS automàticament,1,0-Sí,1-No
+line2=Configuració del sistema,11
+client_conf=Fitxer de configuració client NIS,0
+nsswitch_conf=Fitxer de canvi de client NIS,0
+securenets=Fitxer de xarxes fiables,3,Cap

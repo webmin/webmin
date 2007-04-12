@@ -1,0 +1,13 @@
+<header>Système de Fichier pour Groupes</header>
+
+Le système quota Unix compte tous les fichiers appartenant à un groupe formant le quota de ce groupe.  Les groupes réels dans lesquels l'utilisateur qui possède le fichier est dedans n'importe pas. <p>
+
+Cette page liste tous les groupes qui ont des quotas sur un certain système de fichier. Vous pouvez cliquer sur un nom de groupe pour éditeur leurs quotas, ou choisir un groupe à partir du menu sous la liste et cliquer sur <tt>Éditer Quotas</tt>.  Si un groupe n'est pas dans la liste c'est qu'il n'a aucune limite sur le nombre de fichier ou d'espace disque qu'il peut utiliser.<p>
+
+Sous la liste de groupes se trouve le bouton <tt>Éditer le Temps de Grâce</tt>.  Ceci vous amène à une page pour le temps alloué à un groupe de dépasser sa limite douce avant d'être empêché d'utiliser plus d'espace disque. <p>
+
+Cliquer le bouton <tt>Vérification des Quotas</tt> exécute un balayage du système de fichier entier pour calculer l'utilisation de bloc et de fichier par chaque groupe. Ceci peut être nécessaire si les quotas ont été interrompus quelque temps ou s'il vienne d'être mit effectif pour un certain groupe. <p>
+
+En bas de la page se trouve un formulaire pour configurer le nombre de bloc initial et de fichier pour de nouveaux groupes.  Ceux-ci seront seulement appliqués pour des groupes créés avec le module de gestion d'utilisateurs et de groupe de Webmin.<p>
+
+<hr>

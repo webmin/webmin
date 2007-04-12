@@ -1,0 +1,4 @@
+bootup=1
+reboot=1
+shutdown=1
+noconfig=0

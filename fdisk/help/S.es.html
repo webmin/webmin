@@ -1,0 +1,9 @@
+<header>Tiempo de espera quieto</header>
+Pone el tiempo de espera quieto (no da vueltas) para el conductor.<p>
+
+Este valor se usa por el dispositivo para determinar cuánto esperar (sin actividad de disco) antes de para el motor para ahorrar energía<br>
+Bajo esas circustancias, el conductor puede tardar tanto como 30 segundos en responder a subsecuentes accesos de disco, aunque la mayoría de los conductores son mucho más rápidos.<p>
+
+La codificación del valor de tiempo de espera es en alguna manera peculiar. Un valor de cero indica "desactivado". Los valores de 1 a 240 especifican múltiplos de 5 segundos, para tiempos de espera desde 5 segundos a 20 minutos.<br>
+Los valores desde 241 a 251 especifican desde 1 a 11 unidades de 30 minutos, para tiempos de espera desde 30 minutos a 5,5 horas. Un valor de 252 indica un tiempo de espera de 21 minutos, 253 pone un tiempo de espera definido por el fabricante y 255 es interpretado como 12 minutos más 15 segundos.
+<hr>

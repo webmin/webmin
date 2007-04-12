@@ -1,0 +1,18 @@
+<header>Restringir el comando ETRN ante...</header>
+
+<center><tt>smtpd_etrn_restrictions</tt></center>
+<hr>
+
+Este parámetro restringe qué clientes tienen permiso para enviar el comando
+<tt>ETRN</tt>. El <tt>ETRN</tt> de Postfix difiere de otras
+implementaciones de <tt>ETRN</tt> en que envía el correo hacia todos los
+destinos. Esto cambiará en el futuro.
+
+<p>
+
+Por defecto se permite <tt>ETRN</tt> desde cualquier máquina. Están
+disponibles las siguientes restricciones:
+
+<include smtpd_restrictions>
+
+<hr>

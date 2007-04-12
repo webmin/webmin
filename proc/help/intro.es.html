@@ -1,0 +1,26 @@
+<header>Procesos Unix</header>
+
+Un proceso es simplemente una programa que se está ejecutando bajo tu sistema.
+Tu visor web, gestor de ventanas, ventana de terminales y servidor X son
+todos procesos con los que interactúas directamente. Muchos otros procesos son
+ejecutados en segundo plano como servidores web y otras tareas del sistema.
+Se crea un nuevo proceso cada vez que digitas un comando como <tt>ls</tt>
+o <tt>pwd</tt>, aunque típicamente estos comandos son de corta vida. <p>
+
+Cada proceso tiene una ID única, llamada la ID del proceso o PID. Al ejecutar
+cada proceso en un momento dado, se le asigna una ID diferente, con
+el tiempo las PIDs pueden ser reutilizadas. <p>
+
+Aparte del proceso inicial (típicamente llamado <tt>init</tt>) cada uno tiene
+un proceso padre desde el cual ha sido creado. Por ejemplo, si ejecutas
+<tt>vi</tt> desde el prompt del shell, el proceso padre de <tt>vi</tt> será
+tu shell. Un proceso puede tener cualquier número de hijos, pero sólo un
+padre. <p>
+
+Cada proceso se ejecuta con los permisos de algún usuario y grupo los cuales
+se aplican cada vez que accede a archivos y directorios. Los usuarios y
+procesos pueden matar sólamente los procesos que les pertenezcan, con la
+excepción de <tt>root</tt> que puede matar a cualquiera. <p>
+
+<hr>
+

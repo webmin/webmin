@@ -1,0 +1,4 @@
+id=sendmail
+type=sendmail
+desc=Sendmail Server
+depends=sendmail

@@ -1,0 +1,3 @@
+webalizer=/usr/local/bin/webalizer
+webalizer_conf=/etc/webalizer.conf
+auto=apache,squid

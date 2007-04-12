@@ -1,0 +1,61 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; Linux 2.2.14-6.1.1 i686) [Netscape]">
+</head>
+<body>
+
+<center><h1>Subsistema ACL DHCPD</h1></center>
+
+<h3>
+OBJECTIUS:</h3>
+&nbsp;&nbsp;&nbsp; Els objectius principals del subsistema acl són subministrar
+un mecanisme de control d'accés potent, flexible y extensible de diferents
+objectes amb configuració dhcpd. Aquests objectes són xarxes compartides,
+subxarxes, grups de hosts i hosts.
+<br>&nbsp;&nbsp;&nbsp; El subsistema acl permet controlar algunes altres
+característiques, com ara: noms únics d'objecte, aplicació de la 
+configuració modificada, visualització i supressió de <i>leases</i> dhcpd
+<h3>
+CONCEPTES:</h3>
+&nbsp;&nbsp;&nbsp; Podem veure el fitxer de configuració dhcpd com una estructura d'arbre.
+Cada node d'aquest arbre representa una configuració d'objectes dhcp diferents
+(fig. 0).
+<p>&nbsp;&nbsp;&nbsp; El subsistema acl té 2 nivells de permisos:
+<ul>
+<li>
+global: lectura, escriptura, creació;</li>
+
+<li>
+per objecte: lectura, escriptura.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Existeixen permisos globals per a cada tipus d'objecte
+(hosts, grups, subxarxes, xarxes compartides) i controlen les operacions
+d'un conjunt sencer d'un tipus donat.
+<br>Creació global
+<br>Lectura global
+<br>Escriptura global
+<br>&nbsp;&nbsp;&nbsp; Els permisos per objecte donen una forma més
+flexible de control d'accés. Existeixen permisos acl per objecte per
+cada objecte individual. Per ara, només estan implementades les acls 
+per objecte de hosts i subxarxes.
+<br>Lectura per objecte
+<br>Escriptura per objecte
+<br>&nbsp;&nbsp;&nbsp; El subsistema acl pot operar en 4 nivells diferents
+de seguretat (o modes).
+<br><img SRC="ctree0.gif" ALT="arbre de configuració dhcpd, nivell de seguretat 0, comprovació de permisos subnetX" height=229 width=314>
+<br>&nbsp;
+<p><img SRC="ctree1.gif" ALT="arbre de configuració dhcpd, nivell de seguretat 1, comprovació de permisos subnetX" height=229 width=314>
+<p><img SRC="ctree2.gif" ALT="arbre de configuració dhcpd, nivell de seguretat 2, comprovació de permisos subnetX" height=229 width=314>
+<p><img SRC="ctree3.gif" ALT="arbre de configuració dhcpd, nivell de seguretat 3, comprovació de permisos subnetX" height=229 width=314>
+<h3>
+NOTES D'USUARI:</h3>
+&nbsp;
+<h3>
+NODES DE DESENVOLUPAMENT:</h3>
+
+</body>
+</html>
+
+

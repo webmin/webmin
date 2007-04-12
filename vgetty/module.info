@@ -1,0 +1,11 @@
+name=Vgetty
+desc=Voicemail Server
+category=hardware
+depends=inittab
+os_support=*-linux
+desc_ru_SU=óÅÒ×ÅÒ ÇÏÌÏÓÏ×ÏÊ ĞÏŞÔÙ
+desc_ru_RU=Ñåğâåğ ãîëîñîâîé ïî÷òû
+desc_ca=Servidor de Correu de Veu
+longdesc=Set up your system as an answering machine using vgetty
+desc_es=Vgetty - Contestador Autom&#225;tico
+desc_hu=Hangüzenet szerver

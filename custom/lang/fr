@@ -1,0 +1,91 @@
+index_title=Commandes Personnalis&#233;es
+index_edit=&#201;diter la commande
+index_fedit=&#201;diter l'&#233;diteur de fichier
+index_none=Aucune commande personnalis&#233;e d&#233;finie
+index_create=Cr&#233;er une nouvelle commande personnalis&#233;e
+index_ecreate=Cr&#233;er un nouvel &#233;diteur de fichier
+index_return=liste des commandes
+index_cmd=Commande
+index_desc=Description
+index_ed=Editer ..
+
+edit_title=&#201;diter une Commande
+create_title=Cr&#233;er une Commande
+edit_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; &#233;diter une commande
+edit_details=D&#233;tails de la commande
+edit_desc=Description
+edit_cmd=Commande
+edit_user=Ex&#233;cuter comme usager
+edit_raw=Sortie HTML de la commande?
+edit_su=Utiliser l'environnement de l'utilisateur ?
+edit_params=Param&#232;tres de la commande
+edit_name=Nom
+edit_type=Type
+edit_quote=Param&#232;tre?
+edit_type0=Texte
+edit_type1=Usager
+edit_type2=UID
+edit_type3=Groupe
+edit_type4=GID
+edit_type5=Fichier
+edit_type6=R&#233;pertoire
+edit_type7=Option
+edit_type8=Mot de passe
+
+save_err=Impossible d'enregistrer la commande
+save_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; &#233;diter une commande
+save_ecmd=Aucune commande entr&#233;e
+save_edesc=Aucune description entr&#233;e
+save_euser=Usager absent ou invalide
+
+run_err=Impossible d'ex&#233;cuter cette commande
+run_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; ex&#233;cuter cette commande
+run_euser=Usager absent ou invalide
+run_egroup=Groupe absent ou invalide
+run_title=Ex&#233;cuter une Commande
+run_out=Sortie de $1 ..
+run_noout=Aucune sortie g&#233;n&#233;r&#233;e
+
+log_modify=Commande $1 modifi&#233;e
+log_create=Commande $1 cr&#233;&#233;e
+log_delete=Commande $1 supprim&#233;e
+log_exec=Commande $1 ex&#233;cut&#233;e
+log_modify_edit=Editeur de fichier $1 modifi&#233;
+log_create_edit=Editeur de fichier $1 cr&#233;&#233;
+log_delete_edit=Editeur de fichier $1 supprim&#233;
+log_save_edit=Fichier $1 sauv&#233;
+
+acl_cmds=Commandes que cet utilisateur peut lancer
+acl_call=Toutes les commandes
+acl_csel=S&#233;lectionn&#233;es ...
+acl_edit=Peut cr&#233;er et &#233;diter des commandes ?
+
+file_ecannot=Vous n'avez pas le droit d'&#233;diter des fichiers
+fcreate_title=Cr&#233;er un &#233;diteur de fichier
+fedit_title=Editer un &#233;diteur de fichier
+file_details=D&#233;tails de l'&#233;diteur de fichier
+file_desc=Description
+file_edit=Fichier &#224; &#233;diter
+file_owner=Appartenance du fichier
+file_user=Utilisateur
+file_group=Groupe
+file_leave=Laisser tel quel
+file_perms=Permissions du fichier
+file_set=Donner en octal
+file_before=Commande &#224; lancer avant de sauver
+file_after=Commande &#224; lancer apr&#232;s la sauvegarde
+file_err=Echec de la sauvegarde de l'&#233;diteur de fichier
+file_eedit=Nom du fichier &#224; &#233;diter manquant
+file_edesc=Description manquante
+file_euser=Nom d'utilisateur manquant ou invalide
+file_egroup=Nom de groupe manquant ou invalide
+file_eperms=Permissions octales manquantes ou invalides
+
+view_err=Echec de l'&#233;dition du fichier
+view_ecannot=Vous n'avez pas le droit d'&#233;diter ce fichier
+view_title=Editer un fichier
+view_efile=Ecriture vers $1 &#233;chou&#233;e : $2
+
+form_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; lancer cette commande
+form_title=Ex&#233;cuter une commande
+form_exec=Ex&#233;cuter

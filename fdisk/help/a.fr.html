@@ -1,0 +1,5 @@
+<header>Décompte de Secteur</header>
+Définit le décompte de secteur pour le 'read-ahead' du système de fichier.<p>
+
+Ceci est utilisé pour améliorer les performances dans la lecture de grand fichier séquentiel en lisant d'avance des blocs additionels qui seront demandé par la tâche.  Le noyau 2.0.x a comme valeur par défaut 8 secteurs (4kb) qui semble être une bonne valeur pour la majorité des utilisations, mais un système où les accès aux fichiers sont fait au hasard, une plus petite valeur peut améliorer les performances.  De plus, plusieurs disques IDE ont une fonction similiaire interne qui soulage le système de fichier de cette tâche.
+<hr>

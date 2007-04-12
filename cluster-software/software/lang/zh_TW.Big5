@@ -1,0 +1,127 @@
+index_title=軟體套件
+index_installed=已經安裝的套件
+index_close=關閉全部
+index_open=開啟全部
+index_search=搜尋套件:
+index_install=安裝一個新套件
+index_installmsg=選擇安裝新的 $1 套件的原始位置...
+index_local=從本地端檔案
+index_uploaded=從上傳的檔案
+index_ftp=從 FTP 或 HTTP URL
+index_installok=安裝
+index_ident=指認檔案
+index_identmsg=輸入一個命令或檔案的路徑以搜尋 $1 資料庫.
+index_identok=找尋目標:
+index_return=套件列表
+
+search_title=套件搜尋
+search_nomatch=沒有套件符合 '$1'
+search_none=無
+search_desc=描述
+search_class=分類
+search_pack=套件
+search_match=套件符合 '$1'
+
+edit_title=編輯套件
+edit_details=編輯詳細資料
+edit_desc=描述
+edit_pack=套件
+edit_class=分類
+edit_none=無
+edit_ver=版本
+edit_vend=廠商
+edit_arch=操作平台
+edit_inst=已安裝
+edit_list=列出檔案
+edit_uninst=解除安裝
+edit_return=套件詳細資料
+
+list_title=套件檔案
+list_files=套件 $1 的檔案
+list_path=路徑
+list_owner=擁有者
+list_group=群組
+list_type=類別
+list_size=大小
+list_status=狀態
+
+delete_err=無法刪除套件 $1
+delete_epack=套件 $1 不存在
+delete_title=刪除套件
+delete_rusure=您確定要刪除套件 $1 嗎? 總共有 $2 個檔案 ($3 位元組) 將會被永遠刪除.
+delete_ok=確定刪除
+
+file_title=檔案資訊
+file_notfound=沒有關於 $1 的檔案資訊存在
+file_path=路徑
+file_type=類別
+file_perms=權限
+file_owner=擁有者
+file_group=群組
+file_size=大小
+file_link=連結到
+file_pack=套件
+file_class=分類
+file_desc=描述
+file_none=無
+
+install_err=無法安裝套件
+install_elocal=沒有提供本地端檔案
+install_elocal2='$1' 不存在
+install_eupload=您的瀏覽器不支援檔案上傳
+install_eurl=無法理解的 URL '$1'
+install_edir=不是一個有效的 $1 目錄
+install_ezip=不是一個有效的壓縮檔或 gzip $1 檔案
+install_efile=不是一個有效的 $1 檔案
+install_title=安裝套件
+install_header=安裝套件
+install_packs=要被安裝的套件
+install_ok=安裝
+
+do_err=無法安裝套件 $1
+do_title=安裝套件
+do_efailed=安裝失敗: $1
+do_efailedmsg1=您可以試著回到前一頁並選擇不同的安裝選項以重新安裝一次.
+do_efailedmsg2=不然的話, <a href='$1'>按下這兒以刪除暫存的套件檔案</a>以節省磁碟空間.
+do_success=套件 $1 成功的被安裝
+do_details=套件詳細資料
+do_desc=描述
+do_class=分類
+do_pack=套件
+do_ver=版本
+do_vend=廠商
+do_arch=操作平台
+do_inst=已安裝
+do_none=無
+do_files=套件檔案
+
+pkgadd_root=根目錄
+pkgadd_eroot=根目錄 '$1' 不存在
+pkgadd_unknown=未知
+
+rpm_upgrade=是否要昇級套件?
+rpm_replacepkgs=是否要蓋寫套件?
+rpm_nodeps=是否忽略依存性?
+rpm_oldpackage=是否用較舊的檔案取代較新的?
+rpm_noscripts=是否執行命令殼指令稿?
+rpm_excludedocs=是否安裝文件?
+rpm_replacefiles=是否蓋寫檔案?
+rpm_root=根目錄
+rpm_eroot=根目錄 '$1' 不存在
+
+bsd_unknown=未知
+bsd_scripts=是否執行 預先/後置 的安裝命令稿?
+bsd_force=如果遺失了前置的要求, 是否強制安裝?
+
+slack_unclass=其他
+slack_unknown=未知
+slack_missing=遺失
+slack_root=根目錄
+slack_eroot=遺失或錯誤的根目錄
+
+debian_unknown=未知
+debian_depends=是否忽略依存性問題?
+debian_conflicts=是否忽略套件衝突?
+debian_overwrite=是否蓋寫來自其他套件的檔案?
+debian_downgrade=是否用較新的套件取代較舊的?
+

@@ -1,0 +1,71 @@
+index_title=森鉦吉 cron 拙穣
+index_user=紫遂切
+index_active=醗失 雌殿脊艦猿?
+index_command=誤敬
+index_none=戚 獣什奴拭 cron 拙穣戚 蒸柔艦陥
+index_create=森鉦吉 cron 拙穣聖 歯稽 拙失梅柔艦陥
+index_allow=cron 拙穣拭 企廃 紫遂切 羨悦 薦嬢
+index_return=cron 鯉系
+
+edit_title=cron 拙穣 畷増
+create_title=cron 拙穣 拙失
+edit_ecannot=戚 紫遂切税 cron 拙穣聖 畷増拝 呪 蒸柔艦陥
+edit_details=拙穣 室採 舛左
+edit_user=cron 拙穣 叔楳 切維
+edit_active=醗失 雌殿脊艦猿?
+edit_commands=誤敬
+edit_command=誤敬
+edit_input=誤敬 脊径
+edit_when=叔楳 析獣
+edit_mins=歳
+edit_hours=獣
+edit_days=析
+edit_months=杉
+edit_weekdays=汝析
+edit_all=乞砧
+edit_selected=識澱廃 獣娃..
+edit_run=走榎 叔楳
+
+save_err=cron 拙穣聖 煽舌馬走 公梅柔艦陥
+save_ecmd=叔楳拝 誤敬聖 脊径馬走 省紹柔艦陥
+save_euser=紫遂切研 識澱背醤 杯艦陥
+save_euser2=紫遂切 '$1'戚(亜) 糎仙馬走 省柔艦陥
+save_eallow=紫遂切 '$1'精(澗) cron拭 羨悦拝 呪 蒸柔艦陥.
+save_ecannot='$1'税 cron 拙穣聖 拙失 暁澗 畷増拝 呪 蒸柔艦陥.
+save_enone=叔楳拝 $1聖(研) 識澱馬走 省紹柔艦陥.
+
+allow_title=cron 羨悦 薦嬢
+allow_desc=戚 丞縦聖 紫遂馬食 嬢恐 紫遂切亜 cron 拙穣聖 拙失 貢 叔楳拝 呪 赤澗走研 薦嬢拝 呪 赤柔艦陥.
+allow_ecannot=cron拭 企廃 紫遂切 羨悦聖 薦嬢拝 呪 蒸柔艦陥
+allow_all1=乞窮 紫遂切 暗採
+allow_all2=root研 薦須廃 乞窮 紫遂切 暗採
+allow_all3=乞窮 紫遂切 買遂
+allow_allow=鯉系拭 赤澗 紫遂切幻 買遂
+allow_deny=鯉系拭 赤澗 紫遂切幻 暗採
+
+env_title=cron 発井
+env_ecannot=戚 紫遂切税 cron 発井聖 畷増拝 呪 蒸柔艦陥
+env_desc=$1税 cron 発井
+env_name=痕呪 戚硯
+env_value=葵
+env_ename='$1'精(澗) 政反廃 痕呪 戚硯戚 焼鑑艦陥
+
+exec_title=cron 拙穣 叔楳
+exec_ecannot=戚 紫遂切税 cron 拙穣聖 叔楳拝 呪 蒸柔艦陥
+exec_cmd=誤敬 $1税 窒径..
+exec_none=持失吉 窒径戚 蒸柔艦陥
+
+acl_users=cron 拙穣 畷増戚 亜管廃 企雌
+acl_all=乞窮 紫遂切
+acl_only=紫遂切幻
+acl_except=紫遂切研 薦須廃 乞砧
+acl_control=cron拭 企廃 紫遂切 羨悦聖 薦嬢拝 呪 赤柔艦猿?
+
+log_modify=$1税 cron 拙穣 呪舛喫
+log_modify_l=$1税 cron 拙穣 "$2" 呪舛喫
+log_create=$1税 cron 拙穣 拙失喫
+log_create_l=$1税 cron 拙穣 "$2" 拙失喫
+log_delete=$1税 cron 拙穣 肢薦喫
+log_exec=$1(生)稽辞 Cron 拙穣 叔楳喫
+log_exec_l=$1(生)稽辞 cron 拙穣 "$2" 叔楳喫
+log_allow=cron拭 企廃 紫遂切 羨悦 映廃 痕井喫

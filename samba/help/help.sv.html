@@ -1,0 +1,191 @@
+<body bgcolor=#ffffff>
+<title>Samba-hanteraren</title>
+<center><img src="images/samba.gif"></center>
+<h2><i>Denna hjälpsida är inte färdig</i></h2>
+<hr>
+<h3>Introduktion</h3>
+Samba är ett freeware-program som gör att PC med Windows 95 och NT ska
+kunna komma åt filer och skrivare på ett Unix-system som om den vore en
+Windows-fil/skrivarserver. I en del Unix-system, t ex RedHat Linux, följer
+Samba med i standardinstallationen, medan de flesta system kräver att man
+ladder ned och installerar det separat.
+
+<p>Om Samba inte finns installerat på ditt system kommer startsidan för
+denna modul att innehålla ett felmeddelande som innebär att systemet inte
+kan hitta inställningsfilen för Samba, och det kommer inte att gå att
+dela några filer och kataloger. Om Samba är installerat
+och du ändå får detta felmeddelande bör du kontrollera
+<a href="/config.cgi?samba">modulinställningarna</a> så att Webmin letar
+på rätt ställe efter inställningsfilen och Samba-program.
+
+<p>Om Samba är ordentligt installerat kommer startsidan att innehålla en
+lista över alla fil- och skrivarresurser på systemet. Om Webmin har
+upptäckt att Samba-servern inte är igång finns det också möjlighet att
+starta servern via startsidan. Detta kan behöva göras om Samba inte startar
+vid systemstart.
+
+<hr>
+<h3>Skapa en filresurs</h3>
+En filresurs i Samba är en katalog som kan monteras av klient-PC. Varje
+resurs har ett kortnamn, t ex <tt>docs</tt> eller <tt>www</tt>, som
+motsvarar en katalog på Unix-systemet. Klienten använder normalt notationen
+<tt>\\server\resurs</tt> för att komma åt resursen.
+
+<p>Klicka på <tt>Skapa filresurs</tt> nedanför listan över befintliga
+resurser för att skapa en ny filresurs. Du får då upp ett formulär där
+uppgifter om den nya resursen kan skrivas in. Samba stödjer en stor
+mängd inställningar, men de viktigaste är:
+
+<table border width=100%>
+<tr> <td><b>Resursnamn</b></td>
+<td>Varje resurs måste ha ett namn som klienterna använder för att komma
+åt den. Ett specialfall är resursen <tt>Alla hemkataloger</tt> som förklaras
+senare.
+</td> </tr>
+<tr> <td><b>Sökväg</b></td>
+<td>Katalogen som utgör resursen. Klienter som använder resursen kan endast
+komma åt filer i eller under katalogen.</td> </tr>
+<tr> <td><b>Öppna för skrivning</b></td>
+<td>Här bestämmer man om klienter får skriva i filer och kataloger i denna
+resurs.</td> </tr>
+<tr> <td><b>Åtkomst för gäster</b></td>
+<td>Om man tillåter gästanvändare för en resurs kan klienterna komma åt den
+utan att ange något lösenord. Man kan välja att inte tillåta gästanvändare,
+tillåta både gäst- och vanliga användare eller att tillåta endast
+gästanvändare.</td></tr>
+</table>
+Information om övriga resursinställningar finns i avsnittet <b>Ytterligare
+inställningar</b> nedan.
+
+<p>När man har skrivit in uppgifter om den nya resursen trycker man på
+<tt>Skapa</tt>. Resursen kommer direkt att bli tillgänglig för klienterna.
+Om allt är uppsatt ordentligt på ens nätverk kommer användarna att kunna
+använda funktionen <tt>Nätverksomgivning</tt> under Windows för att se
+servern och alla dess resurser. Den nyss skapade resurser kan då tilldelas
+en enhetsbokstav på PC:n.
+
+<hr>
+<h3>Skapa en skrivarresurs</h3>
+En skrivarresurs i Samba är en lokal eller annan Unix-skrivare som man vill
+ska vara tillgänglig även för PC-klienter. Precis som för filresurser har
+varje skrivarresurs ett kortnamn ( <tt>hp5si</tt>) och klienterna kommer
+åt den med hjälp av notationen <tt>\\server\resurs</tt>.
+
+<p>Man klickar på länken <tt>Skapa skrivarresurs</tt> för att skapa en ny
+skrivarresurs och får då upp ett liknande formulär som när man skapar
+filresurser. Där skriver man in uppgifter om den nya resursern. De viktigaste
+inställningarna för en skrivarresurs är:
+<table border width=100%>
+<tr> <td><b>Resursnamn</b></td>
+<td>Varje resurs måste ha ett namn som klienter använder för att komma åt den.
+Ett specialfall är resursen <tt>Alla skrivare</tt> som förklaras senare.
+</td> </tr>
+<tr> <td><b>Skrivare</b></td>
+<td>Den Unix-skrivare som utgör resursen. Det kan vara vilken skrivare som
+helst, som man kan skriva till med kommandot <tt>lpr</tt>.</td> </tr>
+<tr> <td><b>Sökväg</b></td>
+<td>Katalog för temporära skrivarfiler.</td> </tr>
+<tr> <td><b>Gäståtkomst</b></td>
+<td>Om man tillåter gästanvändare för en resurs kan klienterna komma åt den
+utan att ange något lösenord. Man kan välja att inte tillåta gästanvändare,
+tillåta både gäst- och vanliga användare eller att tillåta endast
+gästanvändare.</td></tr>
+<tr> <td><b>Skrivartyp</b></td>
+<td>Namn på den skrivardrivrutin som ska användas. Om man skriver in ett
+namn som motsvarar en skrivardrivrutin på klienterna kommer användarna inte
+att behöva välja skrivardrivrutin när denna skrivare läggs till.</td> </tr>
+</table>
+
+<p>Precis som för filresurser kan man göra många fler inställningar.
+Så fort en skrivarresurs skapats blir den tillgänglig för klienterna.
+Under Windows 95 och NT kan man lägga till en skrivare med inställningen
+<tt>Add Printer</tt> på skrivarkontrollpanelen. När skrivaren väl lagts till
+kan användaren skriva ut på den som på vilken annan nätverks- eller lokal
+skrivare som helst.
+
+<hr>
+<h3>Skapa en kopia</h3>
+
+
+<hr>
+<h3>Ändra resurs</h3>
+Man klickar på ett resursnamn i listan för att ändra uppgifter om den, och
+får då upp samma formulär som när resurser skapas. Man skriver in de ändringar
+man vill göra och trycker sedan på <tt>Spara</tt> längst ned till vänster.
+
+<p>Man trycker på <tt>Ta bort</tt> längst ned till höger för att ta bort
+en resurs. De användare som för tillfället använder resursen kommer inte att
+kastas ut, men det går inte att göra nya uppkopplingar.
+
+<hr>
+<h3>Användare och säkerhet</h3>
+För resurser där gästanvändare inte tillåts kommer Samba att begära att
+klienten skickar ett användarnamn och ett lösenord. Vanligen kontrolleras
+dessa mot Unix-användarlistan, som hålls à jour med modulen
+<a href=/useradmin/>Användarhanteraren</a>. Samba kan också underhålla en
+egen lista med användarnamn och lösenord; se avsnittet <b>Krypterade
+lösenord</b> för mer information.
+
+<p>En del Windows-versioner tillåter inte att användaren anger ett användarnamn
+då en resurs efterfrågas, utan använder istället det namn som angavs då
+användaren "loggade in" på Windows. Om samma användarnamn används både på
+Windows och Unix är detta inte ett problem. Om så inte är fallet finns det
+två alternativ:
+<ol>
+<li>Windows 95 och NT kan montera resurser manuellt genom att man skriver
+    <tt>net use <i>drive:</i> <i>resurs</i></tt> vid kommandoprompten eller
+    att man trycker på nätverksknappen i ett filfönster och skriver in
+    sökvägen för resursen. För båda dessa sätt gäller att resursen skrivs
+    på formen <tt>\\server\resurs%användare</tt>, där <i>användare</i> är det
+    användarnamn man vill använda för att logga in på servern.
+<li>Samba kan ställas in för att söka efter den användare som hör till det
+    lösenord som anges. Alternativet <tt>Unix-användare</tt> innebär att
+    man kan ange de användare eller grupper som ska sökas igenom. Observera
+    att detta inte är särskilt säkert om antalet användare som ska sökas
+    igenom blir stort, eftersom det då är stor risk att flera användare har
+    samma lösenord.
+</ul>
+
+<hr>
+<h3>Krypterade lösenord</h3>
+Vanligtvis skickas lösenord okrypterade över nätverket mellan Sambaservern
+och PC-klienten. Detta är inte bra av följande anledningar:
+<ol>
+<li>Vem som helst kan tjuvlyssna på nätverket och då få tillgång till 
+    andras lösenord.
+<li>De senaste versionerna av Windows 9x och NT kan inte skicka lösenord
+    okrypterade. Om en användare då försöker komma åt Sambaservern från ett
+    sådant system kommer den att få felmeddelandet <tt>???</tt>. Ändringen
+    finns från och med NT-servicepaket 3.
+</ol>
+
+Samba stödjer kryptering av lösenord, men det går inte att kontrollera de
+lösenord som klienterna skickar mot den vanliga Unix-lösenordsfilen eftersom
+det inte är samma kryptering som används. Av denna anledning måste Samba
+ha en egen lista över användare och lösenord.
+
+<p>Så här gör man för att ställa om Samba till att acceptera krypterade
+lösenord:
+<ol>
+<li>Kontrollera att Samba-versionen stödjer lösenordskryptering. Sätt
+    inställningen <tt>Krypterade lösenord</tt> i
+    <tt>Lösenordsinställningar</tt> till Ja. Om det inte fungerar måste
+    en version med stöd för lösenordskryptering hämtas eller kompileras.
+<li>Klicka på <tt>Omvandla Unix-användare till Samba-användare</tt> längst
+    ned på startsidan. Man får då upp en sida där man kan välja att omvandla
+    alla eller bara några av Unix-användarna till Samba-användare.
+    Användarnamn, riktiga namn, UID och skal kommer att omvandlas, men inte
+    lösenord.
+<li>Använd inställningen <tt>Ändra Samba-användarlista</tt> för att skriva
+    in lösenord. Den visar en lista över alla Samba-användare, där man kan
+    välja den användare man vill lägga till lösenord för. För varje användare
+    kan man sätta lösenordet till <tt>Låst</tt> (inloggning spärrad),
+    <tt>Inget lösenord</tt> (inget lösenord behöver anges) eller det lösenord
+    som ska anges vid inloggning.
+</ul>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Tillbaka till modul</a>
+ 
+

@@ -1,0 +1,8 @@
+line2=System configuration,11
+slpd_conf=Path to OpenSLP configuration file,0
+slpd_reg=Path to OpenSLP registration file,0
+slpd_log=Path to OpenSLP log file,0
+slpd_pid=Path to OpenSLP PID file,0
+slpd=Path to OpenSLP daemon executable,0
+start_cmd=Command to start OpenSLP,3,Just run daemon
+stop_cmd=Command to stop OpenSLP,3,Kill process

@@ -1,0 +1,28 @@
+<header>Autenticació</header>
+
+Aquesta pàgina és per configurar les opcions relacionades amb 
+l'autenticació del servidor SSH. Algunes de les opcions menys òbvies són:
+
+<dl>
+   <dt><b>Permet l'autenticació amb contrasenya</b>
+   <dd>Si és No, els usuaris hauran de tenir els seus directoris <tt>.ssh</tt>
+       configurats amb una clau pública abans de poder connectar. Si és Sí,
+       l'usuari tindrà permès d'introduir una contrasenya per autenticar-se
+       si la validació no es fa amb una clau pública.
+       <p>
+   <dt><b>Permet autenticació RSA</b>
+   <dd>Si és No, els usuaris sempre hauran d'introduir la seva contrasenya
+       encara que tinguin configurada la seva clau pública.
+       <p>
+   <dt><b>Comprova els permisos dels fitxers de claus</b>
+   <dd>Si és Sí, el servidor SSH comprovarà el directori <tt>.ssh</tt> de
+       cada usuari, i qualsevol directori pare, per assegurar que no
+       són modificables per grup; i el fitxer <tt>.ssh/identity</tt> per
+       assegurar que no es llegible per ningú més. Si és No, no es fa la
+       comprovació dels permisos dels fitxers.
+       <p>
+</dl>
+
+<hr>
+
+

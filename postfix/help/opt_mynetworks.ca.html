@@ -1,0 +1,21 @@
+<header>Xarxes locals</header>
+
+<center><tt>mynetworks</tt></center>
+<hr>
+
+Aquest paràmetre especifica la llista de xarxes que són locals en aquesta
+màquina. La llista és utilitzada pel programari anti-UCE per diferenciar 
+els clients locals dels forasters. Vegeu <tt>permit_mynetworks</tt> i
+<a href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a>
+a la configuració SMPT.
+
+<p>
+
+El valor per defecte és una llista de totes les xarxes adjuntes a la màquina:
+una xarxa de classe A completa (X.0.0.0/8), una xarxa de classe B completa
+(X.X.0.0/16), i així anar fent. Si vols un control més estricte, especifica
+una llista de patrons xarxa/màscara, on la màscara especifica el nombre de
+bits de la part de xarxa en l'adreça del host. També pots especificar el
+camí absolut d'un fitxer en lloc de llistar aquí els patrons.
+
+<hr>

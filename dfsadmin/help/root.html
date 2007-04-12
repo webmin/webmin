@@ -1,0 +1,27 @@
+<header>Root Access</header>
+
+Controls which hosts the server will respect the root user on. If a client
+is not on the list, even if it can mount the share read-only or read-write
+the NFS server will treat the root user on client as the
+<a href=anon>Anonymous User</a>.
+<if $gconfig{'os_version'} == 7>
+    <br>Hosts can be specified in the following ways :<p>
+	<dl>
+	<dt><b>Hostname or IP address</b> (like <i>ftp.foo.com</i> or <i>1.2.3.4</i>)
+	<dd>Matches the host with the given name or address
+	<dt><b>Netgroup</b> (like <i>engineering</i>)
+	<dd>Matches any host that is a member of the netgroup
+	<dt><b>DNS domain</b> (like <i>.foo.com</i>)
+	<dd>Matches any host in the domain
+	<dt><b>Network</b> (like <i>@10.254.1</i>)
+	<dd>Matches any host in the network
+	<dt><b>Network/netmask</b> (like <i>@10.254.1/24</i>)
+	<dd>Matches any host in the network
+	</dl><p>
+    In addition, any of the above notations can be prefixed by a <i>-</i>,
+    meaning that the host, netgroup, domain or network is <b>not</b> allowed
+    to mount this share. This can be useful for allowing access by a set
+    of hosts, but denying one member.
+</if>
+<hr>
+

@@ -1,0 +1,12 @@
+# RBAC authorization		# Webmin ACL
+# XXX how to combine roles?
+*				+noconfig=1,users=0,roles=0,auths=0,profs=0,execs=0,policy=0,roleassign=,profassign=,authassign=0,projects=0,prctl=1
+solaris.role.write		+users=1,roles=1
+solaris.role.delegate		+roleassign=x,users=1
+solaris.role.assign		+roleassign=*,users=1
+solaris.profmgr.read		+profs=2
+solaris.profmgr.write		+profs=1
+solaris.profmgr.execattr.write	+execs=1
+solaris.profmgr.assign		+profassign=*,users=1
+solaris.profmgr.delegate	+profassign=x,users=1
+solaris.admin.privilege.write	+auths=1,authassign=1

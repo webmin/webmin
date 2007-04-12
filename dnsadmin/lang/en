@@ -1,0 +1,27 @@
+
+log_servers=Changed other DNS servers
+log_logging=Changed logging and errors
+log_acls=Changed access control lists
+log_files=Changed files and directories
+log_forwarding=Changed forwarding and transfers
+log_net=Changed addresses and topology
+log_misc=Changed miscellaneous options
+log_zonedef=Changed zone defaults
+log_apply=Applied changes
+log_start=Started DNS server
+log_master=Created master zone $1
+log_slave=Created slave zone $1
+log_stub=Created stub zone $1
+log_forward=Created forward zone $1
+log_delete_master=Deleted master zone $1
+log_delete_slave=Deleted slave zone $1
+log_delete_stub=Deleted stub zone $1
+log_delete_forward=Deleted forward zone $1
+log_text=Manually edited records for $1
+log_soa=Changed zone parameters for $1
+log_opts=Changed zone options for $1
+log_delete_record=Deleted $1 record $2 in zone $3
+log_create_record=Created $1 record $2 in zone $3
+log_modify_record=Modified $1 record $2 in zone $3
+log_boot=Created primary configuration file
+

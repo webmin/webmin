@@ -1,0 +1,6 @@
+line1=Nastaviteµné mo¾nosti,11
+display=Spôsob zobrazenia u¾ívateµov a skupín,1,1-Iba mená,0-Mená a moduly
+select=Zobraz u¾ívateµské moduly v ,1,0-Tabuµke,1-Rozbaµovacom menu
+order=Zoraï u¾ívateµov a skupiny podµa,1,0-Poradia v súbore,1-Mena
+line2=Nastavenie Systému,11
+ssleay=Cesta k programu openssl alebo ssleay,3,Automatická

@@ -1,0 +1,47 @@
+<header>Opcje administracyjne</header>
+
+<b>Uruchom jako u¿ytkownik Uniksa</b>: Domy¶lnie jest 'nobody' lub 'squid'
+w&nbsp;zale¿no¶ci od systemu. Je¶li proxy jest uruchomione jako root, zmieni
+ono swój efektywny/rzeczywisty UID na tê warto¶æ. <p>
+
+<b>Uruchom jako grupa Uniksa</b>: Domy¶lnie jest 'nogroup' lub 'squid'
+w&nbsp;zale¿no¶ci od systemu. Je¶li proxy jest uruchomione jako root, zmieni
+ono swój efektywny/rzeczywisty ID grupy na tê warto¶æ. <p>
+
+<b>Dziedzina autoryzacji proxy</b>: Okre¶la nazwê dziedziny, która bêdzie
+zakomunikowana klientowi dla autoryzacji proxy (czê¶æ tekstu, któr±
+u¿ytkownik zobaczy, gdy zostanie poproszony o&nbsp;nazwê u¿ytkownika
+i&nbsp;has³o). <p>
+
+<b>Adres e-mail zarz±dcy proxy</b>: Domy¶lnie jest 'webmaster' or 'root'
+w&nbsp;zale¿no¶ci od systemu. Adres e-mail lokalnego zarz±dcy proxy, który
+bêdzie otrzymywa³ wiadomo¶æ w&nbsp;padu proxy. <p>
+
+<b>Widoczna nazwa hosta</b>: Je¶li chcesz przedstawiæ okre¶lon± nazwê hosta
+w&nbsp;komunikatach o&nbsp;b³êdach itp., to podaj j± tu. W przeciwnym razie
+bêdzie u¿yta warto¶æ zwracana przez gethostname(). Je¶li posiadasz wiele
+proxy w&nbsp;klastrze i&nbsp;otrzymujesz b³êdy dotycz±ce przekazywania IP,
+musisz nadaæ im indywidualne nazwy za pomoc± tego ustawienia. <p>
+
+<b>Unikalna nazwa hosta</b>: Je¶li chcesz mieæ wiele maszyn z&nbsp;t± sam±
+<b>Widoczn± nazw± hosta</b> to musisz nadaæ ka¿dej z&nbsp;nich inn±
+<b>Unikaln± nazwê hosta</b> tak, aby zapêtlanie podczas przekazywania mog³o
+zostaæ wykryte. <p>
+
+<b>Host rozg³aszania cache</b>: Nazwa hosta, do którego bêd± wysy³ane
+komunikaty rozg³oszeniowe. Wiêcej na temat hierarchii proxy znajdziesz
+w&nbsp;<a href="http://www.squid-cache.org/Doc/FAQ/FAQ-4.html"
+target="Reference">FAQ-u Squida</a>. Domy¶lnie jest to
+'tracker.ircache.net', je¶li rozg³aszanie zosta³o w³±czone poprzez podanie
+okresu rozg³aszania. <p>
+
+<b>Port rozg³aszania cache</b>: Port hosta, na który komunikaty
+rozg³oszeniowe bêd± wysy³ane. Domy¶lnie jest to 3131, gdy rozg³aszanie jest
+w³±czone. <p>
+
+<b>Czêstotliwo¶æ rozg³aszania</b>: Czêstotliwo¶æ rozg³oszeñ. W³±cz
+rozg³aszanie do hierarchii proxy poprzez ustawienia jej na '1 dzieñ'.
+Domy¶lnie jest '0', co wy³±cza rozg³aszanie.
+
+<hr>
+

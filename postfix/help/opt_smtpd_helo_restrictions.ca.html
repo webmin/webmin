@@ -1,0 +1,40 @@
+<header>Restriccions en les trameses d'ordres HELO</header>
+
+<center><tt>smtpd_helo_restrictions</tt></center>
+<hr>
+
+Aquest paràmetre especifica restriccions opcionals sobre el que els clients
+SMTP poden enviar amb les ordres HELO i EHLO de SMTP.
+
+<p>
+
+El valor per defecte és permetre-ho tot. Hi ha les següents restriccions
+disponibles:
+
+<ul>
+<li>  <tt>permit_mynetworks:</tt> permet si l'adreça client coincideix am
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li>  <tt>reject_unknown_client:</tt> rebutja la petició si el nom de host client és desconegut.
+<li>  <tt>reject_maps_rbl:</tt>rebutja si el client està llistat a
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li>  <tt>reject_invalid_hostname:</tt> rebutja el nom de host HELO hostname amb sintaxi incorrecta.
+<li>  <tt>reject_unknown_hostname:</tt> rebutja el nom de host HELO sense un registre DNS A o MX.
+<li>  <tt>reject_non_fqdn_hostname:</tt> rebutja el nom de host HELO que no està en format FQD
+<li>  <tt>check_helo_access maptype:mapname:</tt> consulta el nom de host HELO o els dominis pares.
+        Rebutja si el resultat és REJECT o &quot;[45]xx text&quot;.
+        Permet altrament.
+<li>  <tt>check_client_access maptype:mapname:</tt> vegeu
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li>  <tt>reject:</tt> rebutja la petició. Poseu-ho al final d'una restricció.
+<li>  <tt>permit:</tt> permet la petició. Poseu-ho al final d'una restricció.
+</ul>
+
+Les restriccions s'apliquen en l'ordre especificat; la primera restricció
+que coincideixi guanya.
+
+<p>
+
+Especifiqueu una llista de restriccions, separades per comes o espais.
+Continueu les línies llargues començant la línia següent amb un espai.
+
+<hr>

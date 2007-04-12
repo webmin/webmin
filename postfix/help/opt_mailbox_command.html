@@ -1,0 +1,41 @@
+<header>External command to use instead of mailbox delivery</header>
+
+<center><tt>mailbox_command</tt></center>
+<hr>
+
+This parameter specifies the optional external command to use instead of mailbox
+delivery. The command is run as the recipient with proper <tt>HOME</tt>,
+<tt>SHELL</tt> and <tt>LOGNAME</tt> environment settings. Exception: delivery
+for <tt>root</tt> is done as <tt>$default_user</tt>.
+
+<p>
+
+Other environment variables of interest: <tt>USER</tt> (recipient username),
+<tt>EXTENSION</tt> (address extension), <tt>DOMAIN</tt> (domain part of address),
+and <tt>LOCAL</tt> (the address localpart).
+
+<p>
+
+Unlike other Postfix configuration parameters, this
+parameter is not subjected to parameter substitutions. This is to
+make it easier to specify shell syntax (see example below).
+
+<p>
+
+Avoid shell meta characters because they will force Postfix to run
+an expensive shell process. <tt>Procmail</tt> alone is expensive enough.
+
+<p>
+
+IF YOU USE THIS TO DELIVER MAIL SYSTEM-WIDE, YOU MUST SET UP AN
+ALIAS THAT FORWARDS MAIL FOR ROOT TO A REAL USER.
+
+<p>
+
+Examples:
+<ul>
+<li><tt>/some/where/procmail</tt> 
+<li><tt>/some/where/procmail -a "$EXTENSION"</tt>
+</ul>
+
+<hr>

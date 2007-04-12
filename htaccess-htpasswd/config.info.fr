@@ -1,0 +1,4 @@
+htaccess=Nom du fichier d'option Apache,0
+htpasswd=Nom du fichier des utilisateurs,0
+sort=Tri des utilisateurs par,1,1-Nom d'utilisateur,0-Ordre dans le fichier
+md5=Cryptage MD5?,1,1-Oui,0-Non

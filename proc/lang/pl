@@ -1,0 +1,124 @@
+index_title=Zarz±dca procesów
+index_display=Wy¶wietl wg
+index_tree=PID
+index_user=U¿ytkownika
+index_size=Pamiêci
+index_cpu=CPU
+index_search=Szukaj
+index_run=Uruchom..
+index_return=listy procesów
+index_mem=<b>Pamiêæ rzeczywista:</b> $1 kB ³±cznie / $2 kB wolne
+index_swap=<b>Przestrzeñ wymiany:</b> $1 kB ³±cznie / $2 kB wolne
+index_load=<b>¦rednie obci±¿enie CPU:</b> $1 (5 min) , $2 (10 min) , $3 (15 min)
+
+pid=Nr ID procesu
+owner=W³a¶ciciel
+command=Polecenie
+cpu=Wykorzystanie CPU
+size=Rozmiar
+parent=Nr ID rodzica
+runtime=Czas dzia³ania
+nice=Poziom <i>nice</i>
+
+search_user=W³a¶ciciel
+search_match=Wzorzec nazwy
+search_cpupc=Wykorzystuj±cy wiêcej ni¿ $1% CPU
+search_fs=Korzystaj±cy z&nbsp;systemu plików
+search_files=Korzystaj±cy z&nbsp;pliku
+search_submit=Szukaj
+search_none=Nie znaleziono odpowiednich procesów.
+search_kill=Wy¶lij sygna³
+search_ignore=Pomin±æ procesy przeszukuj±ce
+search_return=formularza szukania
+
+run_command=Polecenie do uruchomienia
+run_submit=Uruchom
+run_mode=Sposób uruchomienia
+run_bg=Uruchom w&nbsp;tle
+run_fg=Czekaj na zakoñczenie
+run_input=Dane wej¶ciowe
+run_title=Wynik polecenia
+run_output=Wynik polecenia $1 ..
+run_none=Brak wyników
+run_ecannot=Nie masz uprawnieñ do uruchamiania poleceñ
+
+edit_title=Informacje o procesie
+edit_gone=Ten proces ju¿ nie dzia³a
+edit_sub=Podprocesy
+edit_kill=Wy¶lij sygna³
+edit_change=Zmieñ
+edit_prilow=Niski priorytet
+edit_prihigh=Wysoki priorytet
+edit_pridef=Domy¶lne
+edit_none=Brak
+edit_ecannot=Nie masz uprawnieñ do zmian procesów
+
+kill_err=Nie uda³o siê wys³aæ sygna³u $1 do procesu $2
+kill_title=Wy¶lij sygna³
+kill_sent=wy¶lij
+kill_ecannot=Nie masz uprawnieñ do zabijania procesów
+
+renice_err=Nie uda³o siê zmieniæ nice dla procesu $1
+renice_ecannot=Nie masz uprawnieñ do zmiany nice dla procesów
+
+linux_pri=Priorytet
+linux_tty=Terminal
+linux_status=Stan
+linux_wchan=Czeka w
+linux_mem=Pamiêæ
+linux_group=Grupa
+linux_ruser=Rzeczywisty u¿ytkownik
+linux_rgroup=Rzeczywista grupa
+linux_pgid=Nr ID grupy procesów
+
+linuxstat_R=Dzia³a
+linuxstat_S=U¶piony
+linuxstat_D=G³êboko u¶piony
+linuxstat_T=Zatrzymany
+linuxstat_Z=Zombie
+
+freebsd_ruser=Rzeczywisty u¿ytkownik
+freebsd_rgroup=Rzeczywista grupa
+freebsd_tty=Terminal
+freebsd_pgid=Grupa procesu
+freebsd_lstart=Czas uruchomienia
+freebsd_lim=Ograniczenie pamiêci
+
+hpux_pri=Priorytet
+hpux_tty=Terminal
+hpux_status=Stan
+hpux_wchan=Czeka na
+
+hpuxstat_0=Nie istnieje
+hpuxstat_S=U¶piony
+hpuxstat_W=Czeka
+hpuxstat_R=Dzia³a
+hpuxstat_I=Przej¶ciowy
+hpuxstat_Z=Zombie
+hpuxstat_T=Zatrzymany
+hpuxstat_G=Growing
+
+macos_tty=Terminal
+
+sysv_group=Grupa
+sysv_ruser=Rzeczywisty u¿ytkownik
+sysv_rgroup=Rzeczywista grupa
+sysv_pgid=Nr ID grupy procesów
+sysv_tty=Terminal
+
+log_run=Uruchomiono polecenie "$1"
+log_kill=Wys³ano sygna³ $1 do procesu $2
+log_kills=Wys³ano sygna³ $1 do procesów $2
+log_kill_l=Wys³ano sygna³ $1 do procesu $2
+log_kills_l=Wys³ano sygna³ $1 do procesów<br>$2
+
+acl_manage=Zarz±dzaæ procesami jako u¿ytkownik
+acl_manage_def=Aktualny u¿ytkownik Webmina
+acl_edit=Mo¿e zabijaæ i&nbsp;zmieniaæ nice dla procesów
+acl_run=Mo¿e uruchamiaæ polecenia
+
+kill_kill=Zabij proces
+kill_term=&nbsp;&nbsp;Przerwij&nbsp;&nbsp;
+kill_hup=&nbsp;Zrestartuj&nbsp;
+kill_stop=&nbsp;Zatrzymaj&nbsp;&nbsp;
+kill_cont=&nbsp;Kontynuuj&nbsp;&nbsp;

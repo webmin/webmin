@@ -1,0 +1,9 @@
+smb_conf=Samba yapýlandýrma dosyasýnýn yeri,0
+smb_passwd=Samba parola dosyasý yeri,3
+samba_status_program=smbstatus'un tam yeri,0
+samba_password_program=smbpasswd'ýn tam yeri,0
+samba_server=smbd'in tam yeri,0
+name_server=nmbd'in tam yeri,0
+swat_path=swat'in tam yeri,3,Hiçbiri
+dont_convert=Samba parol dosyasýna eklenmeyen Unix kullanýcýlarý dosyasý,0
+sort_mode=Kullanýcý ve gruplarý isimlerine göre sýrala,1,1-Evet,0-Hayýr

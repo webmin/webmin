@@ -1,0 +1,12 @@
+line1=Opcions configurables,11
+lines=Nombre de línies a mostrar per defecte,0,6
+refresh=Segons entre refrescs de la vista de registres,3,Mai
+compressed=Inclou els registres comprimits a les recerques,1,1-Sí,0-No
+line2=Configuració del sistema,11
+syslogng_conf=Camí del fitxer de configuració de Syslog-NG,0
+alt_syslogng_conf=Camí del fitxer de configuració alternatiu,3,Cap
+syslogng_cmd=Camí del programa Syslog-NG,0
+pid_file=Syslog-Fitxer de PID de NG,3,Cap
+start_cmd=Ordre per iniciar Syslog-NG,3,Executa el servidor
+restart_cmd=Ordre per aplicar els canvis,3,Mata i reinicia el servidor
+tail_cmd=Ordre i arguments de <tt>tail</tt>,3,Per defecte (tail -n LINIES)

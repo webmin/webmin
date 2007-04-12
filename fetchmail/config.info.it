@@ -1,0 +1,4 @@
+config_file=Fetchmail config file to edit,3,All user's .fetchmailrc files
+fetchmail_path=Path to the fetchmail program,0
+daemon_user=User to run the fetchmail daemon as,0
+pid_file=Path to the fetchmail daemon PID file,0

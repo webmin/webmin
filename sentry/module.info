@@ -1,0 +1,12 @@
+name=Sentry
+desc=Security Sentries
+category=system
+depends=cron
+desc_ca=Sentinelles de Seguretat
+desc_es=Centinelas de Seguridad
+desc_de=Sicherheits-Dienste
+desc_ru_SU=óÉÓÔÅÍÁ ÂÅÚÏĞÁÓÎÏÓÔÉ
+desc_ru_RU=Ñèñòåìà áåçîïàñíîñòè
+longdesc=Configure the portsentry, hostsentry and logcheck system security monitoring programs.
+readonly=1
+os_support=!windows

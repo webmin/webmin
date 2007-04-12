@@ -1,0 +1,31 @@
+<header>Zones Solaris</header>
+
+La utilitat de zones en Solaris proporciona un entorn aïllat per a l'execució 
+d'aplicacions. Els processos que s'executen en una zona tenen prohibit de
+monitoritzar o interferir amb les altres activitats del sistema. L'accés a
+altres processos, interfícies de xarxa, sistemes de fitxers, dispositius i
+utilitats de comunicació entre processos estan restringides per evitar la
+interacció entre els processos de diferents zones. <p>
+
+Les zones proporcionen una forma excel·lent de crear sistemes virtuals on
+la gent pot tenir accés root complet sense comprometre la integritat del
+sistema real o de les altres zones. També es pot utilitzar per particionar
+un sol sistema potent en múltiples servidors virtuals, per exemple per tal
+d'executar entorns d'aplicació de proves i de producció. <p>
+
+Cada zona té el seu propi directori arrel al qual els processos estan
+restringits. Això és similar a la utilitat estàndard chroot de Unix, però
+molt més fàcil de configurar, ja que totes les llibreries del sistema i
+directoris de programes s'enllacen automàticament dins de la zona quan aquesta
+es crea. <p>
+
+Es poden assignar interfícies de xarxa virtual a les zones per donar-les-hi
+les seves pròpies adreces IP, de manera que els diferents servidors es puguin
+executar en zones diferents com si estiguessin en múltiples sistemes físics. <p>
+
+Aquest mòdul permet crear zones, engegar-les i reengegar-les independentment
+del sistema operatiu principal. i gestionar les seves interfícies de xarxa,
+directoris de paquets, sistemes de fitxers i altres atributs. <p>
+
+<footer>
+

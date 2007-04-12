@@ -1,0 +1,148 @@
+﻿
+﻿index_title=زمانبندي کارهاي کرون
+
+index_user=کاربر
+index_active=فعال
+index_command=توضيح
+index_when=زمان اجرا
+index_none=هيچ کار کروني روي اين سيستم وجود ندارد
+index_none2=هيچ کار کروني روي اين سيستم وجود ندارد که شما به آن دستيابي پيدا کنيد.
+index_create=ايجاد يک زمانبندي کار کرون جديد
+index_ecreate=ايجاد يک متغير محيطي جديد
+index_allow=کنترل دستيابي کاربر به کار کرون
+index_return=ليست کرون
+index_env=متغير محيطي
+index_move=حرکت
+index_run=اجرا
+
+edit_title=ويرايش کارهاي کرون
+create_title=ايجاد کار کرون
+edit_ecannot=شما اجازه ويرايش کار کرون را براي اين کاربر نداريد
+edit_details=جزئيات کار
+edit_user=اجراي کار کرون به‌عنوان
+edit_active=فعال است؟
+edit_commands=توضيحات
+edit_command=توضيح
+edit_input=توضيحات
+edit_when=زماني که اجرا شد
+edit_mins=دقيقه
+edit_hours=ساعت
+edit_days=روز
+edit_months=ماه
+edit_weekdays=هفته
+edit_all=همه
+edit_selected=گزيده‌ها..
+edit_run=هم‌اکنون اجرا کن
+edit_return=کار کرون
+edit_ctrl=توجه: Ctrl-click (ياCommand-clik بر روي مک)براي گزيدن يا انصراف دقيقه، ساعت، روز و ماه.
+edit_special1=زمانبندي ساده..
+edit_special0=زمانها و تاريخهاي گزيده شده در زير..
+edit_special_hourly=ساعتي
+edit_special_daily=روزانه (در نيمه شب)
+edit_special_weekly=هفتگي(در يکشنبه)
+edit_special_monthly=ماهيانه(در اولين)
+edit_special_yearly=سالانه (اولين jan)
+edit_special_reboot=زماني که سيستم راه‌اندازي شد
+lcedit_special_hourly=ساعتي
+lcedit_special_daily=روزانه (در نيمه شب)
+lcedit_special_weekly=هفتگي (در يکشنبه)
+lcedit_special_monthly=ماهيانه (دراولين)
+lcedit_special_yearly=ساليانه (اولين jan)
+lcedit_special_reboot=زماني که سيستم راه‌اندازي شد
+
+save_err=عدم موفقيت در ذخيره سازي کار کرون
+save_ecmd=شما نمي‌توانيد وارد شويد يک دستور در حال اجرا مي‌باشد
+save_euser=شما بايد يک کاربر را انتخاب کنيد
+save_euser2=کاربر $1 وجود ندارد
+save_eallow=کاربر $1 اجازه دستيابي به کرون را ندارد
+save_ecannot=شما اجازه نداريد ايجاد يا ويرايشي در کارهاي کرون کاربر ‘$1’انجام دهيد
+save_enone=شما نمي‌توانيد هيچ $1 را براي اجرا کردن انتخاب کنيد
+save_ecannot2=شما اجازه ايجاد هيچ کار کروني را نداريد
+
+allow_title=کنترل دستيابي به کرون
+allow_desc=اين فرم به شما اجازه کنترل کردن کاربراني را که امکان ايجاد و اجراي کارهاي کرون را دارند مي‌دهد.
+allow_ecannot=شما نمي‌توانيد دستيابي کاربران به کرون را کنترل کنيد.
+allow_all1=محدود کردن تمام کاربران
+allow_all2=محدود کردن تمام کاربران بجز root
+allow_all3=اجازه دادن به تمام کاربران
+allow_allow=اجازه فقط براي کاربران ليست شده
+allow_deny=محدوديت فقط براي کاربران ليست شده
+
+env_title1=ويرايش متغير محيطي
+env_title2=ايجاد متغير محيطي
+env_name=نام متغير
+env_value=مقدار
+env_user=براي کاربر
+env_active=فعال
+env_details=جزئيات متغير محيطي
+env_err=عدم موفقيت در ذخيره سازي متغير محيطي
+env_ename=ناپيدا يا نامعتبر بودن نام متغير
+env_order=تنظيمات اين متغير محيطي فقط براي کارهاي کروني که در صفحه اصلي ليست شده قابل اعمال مي‌باشد.
+env_where=افزودن متغير محيطي
+env_where2=انتقال متغير محلي
+env_top=پيش از همهء کارهاي کرون براي کاربر
+env_bot=پس از همهء کارهاي کرون
+env_leave=وضعيت جاري
+
+exec_title=اجراي کار کرون
+exec_ecannot=شما اجازه نداريد کارهاي کرون را براي اين کاربر به اجرا درآوريد
+exec_cmd=بروندادن از فرمان $1..
+exec_cmdbg=اجراي فرمان $1 به‌عنوان فراوند پشت صحنه
+exec_none=خروجي توليد نشده
+
+acl_users=مي‌تواند کارهاي کرون را ويرايش کنيد براي
+acl_all=همهء کاربران
+acl_this=کاربر وب‌مين جاري
+acl_only=فقط کاربران
+acl_except=همه بجز کاربران
+acl_control=مي‌توانيد دستيابي کاربر به کرون را کنترل کنيد؟
+acl_command=نمايش و ويرايش فرامين کرون؟
+acl_UID=کاربران به ترتيب شماره شناسايي
+acl_gid=کاربران متعلق به گروه اصلي
+acl_create=امکان ايجاد کارهاي کرون؟
+acl_delete=امکان حذف کارهاي کرون؟
+acl_move=امکان انتقال کارهاي کرون؟
+acl_kill=امکان پايان دادن به کارهاي کرون؟
+
+log_modify=اصلاح کار کرون براي $1
+log_modify_l=اصلاح کار کرون”$2” براي $1
+log_create=ايجاد کار کرون براي $1
+log_create_l=ايجاد کار کرون ”$2” براي $1
+log_delete=حذف کار کرون براي $1
+log_exec=به اجرا درآوردن کار کرون براي $1
+log_exec_l=اجرا کردن کار کرون ”$2” مانند $1
+log_allow=تغيير دستيابي کاربران به کرون
+log_env_create=ايجاد متغير محيطي براي $1
+log_env_modify=اصلاح متغير محيطي براي $1
+log_env_delete=حذف متغير محيطي براي $1
+log_move=انتقال کار کرون براي
+
+ecopy=يک خطا در پيکربندي کرون جديد رخ داده بود: $1 $2
+
+when_min=هر دقيقه
+when_hour=every hour at $1 past the hour*******
+when_day=هر روز از $2:$1
+when_month=on day $3 every month at $2:$1******
+when_weekday=هر $3 از $2:$1
+when_cron=در زمان کرون $1
+
+ucwhen_min=هر دقيقه
+ucwhen_hour=هر ساعت بعد از $1
+ucwhen_day=هر روز در $2
+ucwhen_month=هر روز $3 هر ماه در $2:$1
+ucwhen_weekday=هر $3 در $2:$1
+ucwhen_cron=در زمان کرون $1
+
+move_err=عدم موفقيت در انتقال کار کرون
+move_etype=اين کار نمي‌تواند منتقل شود
+
+kill_err=عدم موفقيت در پايان دادن به کار کرون
+kill_ecannot=شما اجازه پايان دادن به اين کار را نداريد
+kill_egone=No longer running
+kill_ekill=عدم موفقيت در کشتن :$1
+kill_title=پايان کار کرون
+kill_rusure=آيا به پايان دادن فراوند $1 توسط PID $2 اطمينان داريد؟
+kill_rusure2=آيا به پايان دادن فراوند $1 توسط PID $2و همهء زير فراوندهاي مربوط به آن اطمينان داريد؟
+kill_ok=بله، به آن پايان بده
+
+

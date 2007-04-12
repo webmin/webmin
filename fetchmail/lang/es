@@ -1,0 +1,88 @@
+index_title=Recolector de Correo Fetchmail
+index_poll=Servidor a interrogar
+index_proto=Protocolo
+index_users=Usuarios locales y remotos
+index_add=A&#241;adir un nuevo servidor
+index_run=Revisar todos los servidores
+index_global=Editar valores por defecto
+index_user=Usuario Unix
+index_conf=Configuraci&#243;n de Fetchmail
+index_ok=A&#241;adir servidor Fetchmail para usuario:
+index_file=Configuraci&#243;n de Fetchmail en $1
+index_return=lista de servidores
+index_start=Arrancar Demonio Fetchmail
+index_stop=Parar Demonio Fetchmail
+index_startmsg=Haz click en este bot&#243;n para arrancar el demonio de fetchmail de este servidor y hacer que revise el correo cada $1 segundos.<br>El demonio se ejecutar&#225; como usuario $2 y usar&#225; la configuraci&#243;n de arriba.
+index_stopmsg=Haz click en este bot&#243;n para parar el demonio de fetchmail que actu&#225;lmente se est&#225; ejecutando como usuario $1. El correo ya no se descargar&#225; autom&#225;ticamente cada $2 segundos.
+index_efetchmail=El programa de fetchmail $1 no pudo ser hallado. Quiz&#225;s fetchmail no est&#225; instalado en tu sistema o tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
+index_none=No hay usuarios de Unix que tengan archivos <tt>.fetchmailrc</tt>.
+
+poll_create=A&#241;adir Servidor
+poll_edit=Editar Servidor
+poll_header=Opciones de servidor de correo
+poll_poll=Nombre de Servidor
+poll_skip=&#191;Interrogaci&#243;n activada?
+poll_via=Servidor de correo a contactar
+poll_via_def=El mismo que el nombre del servidor
+poll_proto=Protocolo
+poll_port=Puerto del Servidor
+poll_uheader=Detalles de usuario del servidor de Correo
+poll_user=Usuario remoto
+poll_pass=Clave de acceso remota
+poll_is=Usuario(s) local(es)
+poll_keep=&#191;Dejo los mensajes en el servidor?
+poll_fetchall=&#191;Recojo siempre todos los mensajes?
+poll_err=No pude salvar el servidor
+poll_epoll=Nombre de servidor falta o es inv&#225;lido
+poll_evia=Nombre de servidor de correo inv&#225;lido
+poll_eport=N&#250;mero de puerto falta o es inv&#225;lido
+poll_euser=Nombre de usuario remoto falta o es inv&#225;lido
+poll_adduser=A&#241;adir otro usuario
+poll_check=Revisar este servidor
+poll_interface=Condici&#243;n de chequeo
+poll_interface_def=Siempre chequear
+poll_interface_ifc=S&#243;lo si la interfaz est&#225; levantada
+poll_interface_ip=con direcci&#243;n / m&#225;scara de red
+poll_einterface=Interfaz de red falta o es inv&#225;lida
+poll_enet=Direcci&#243;n falta o es inv&#225;lida
+poll_emask=M&#225;scara de red de direcci&#243;n inv&#225;lida
+poll_preconnect=Comando a ejecutar antes de conectar
+poll_postconnect=Comando a ejecutar tras conectar
+poll_ecannot=No est&#225;s autorizado a editar la configuraci&#243;n de fetchmail de este usuario
+poll_efile=S&#243;lo los archivos de configuraci&#243;n de fetchmail de los usuarios pueden ser editados
+
+stop_err=No pude parar fetchmail
+start_err=No pude arrancar fetchmail
+start_einterval=Intervalo de chequeo falta o es inv&#225;lido
+
+check_title=Revisando Servidores
+check_exec=Revisando si hay correo en servidor(es) mediante comando $1...
+check_ok=... revisi&#243;n terminada.
+check_failed=... &#161;revisi&#243;n fallida!
+
+global_title=Valores por Defecto
+global_header=Valores por defecto para todos los servidores
+global_err=No pude salvar valores por defecto
+
+log_create_poll_file=A&#241;adido servidor $1 en archivo $2
+log_modify_poll_file=Modificado servidor $1 en archivo $2
+log_delete_poll_file=Borrado servidor $1 en archivo $2
+log_create_poll_user=A&#241;adido servidor $1 para usuario $2
+log_modify_poll_user=Modificado servidor $1 para usuario $2
+log_delete_poll_user=Borrado servidor $1 para usuario $2
+log_check_file_file=Revisados todos los servidores en archivo $1
+log_check_file_server=Revisado servidor $2 en archivo $1
+log_check_user_file=Revisados todos los servidores para usuario $1
+log_check_user_server=Revisado servidor $2 para usuario $1
+log_check_server_l=Revisado servidor $2 en archivo $1
+log_global_user=Cambiados valores globales para usuario $1
+log_global_file=Cambiados valores globales en archivo $1
+log_start=Arrancado demonio fetchmail
+log_stop=Parado demonio fetchmail
+
+acl_users=Puede editar configuraci&#243;n de fetchmail para
+acl_all=Todos los usuarios
+acl_this=El usuario en curso de webmin
+acl_only=S&#243;lo los usuarios
+acl_except=Todos excepto los usuarios
+

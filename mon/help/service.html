@@ -1,0 +1,444 @@
+<header>MON Help on Service Definitions</header>
+<p>This is second and last stage for MON configuration.
+<p>Default values are shown for the Mandatory services <marked in RED color>. See the respective help topic below for more help on the Service Definitions.
+<p>For <b>"mail.alert"</b>, ensure that the sendmail is configured and <b>"sendmail"</b> deamon is started on the hostmachine.
+
+<H3>Service Definitions</H3>
+
+<P>
+<DL COMPACT>
+<DT><B>service</B><I> servicename</I>
+
+<DD>
+A service definition begins with they keyword
+<B>service</B>
+
+followed by a word which is the tag for this service.
+<P>
+The components of a service are an interval, monitor, and
+one or more time period definitions, as defined below.
+<P>
+If a service name of &quot;default&quot; is defined within a watch
+group called &quot;dafault&quot; (see above), then the default/default
+definition will be used for handling unknown mon traps.
+<P>
+<DT><B>interval</B><I> timeval</I>
+
+<DD>
+The keyword
+<B>interval</B>
+
+followed by a time value specifies the frequency that
+a monitor script will be triggered.
+Time values are defined as &quot;30s&quot;, &quot;5m&quot;, &quot;1h&quot;, or &quot;1d&quot;,
+meaning 30 seconds, 5 minutes, 1 hour, or 1 day. The numeric portion
+may be a fraction, such as &quot;1.5h&quot; or an hour and a half. This
+format of a time specification will be referred to as
+<I>timeval</I>.
+
+<P>
+<DT><B>traptimeout</B><I> timeval</I>
+
+<DD>
+This keyword takes the same time specification argument as
+<B>interval</B><I>,</I>
+
+and makes the service expect a trap from an external source
+at least that often, else a failure will be registered. This is
+used for a heartbeat-style service.
+<P>
+<DT><B>trapduration</B><I> timeval</I>
+
+<DD>
+If a trap is received, the status of the service the trap was delivered
+to will normally remain constant. If
+<B>trapduration</B>
+
+is specified, the status of the service will remain in a failure
+state for the duration specified by
+<I>timeval</I>,
+
+and then it will be reset to &quot;success&quot;.
+<P>
+<DT><B>randskew</B><I> timeval</I>
+
+<DD>
+Rather than schedule the monitor script to run at the start of each
+interval, randomly adjust the interval specified by the
+<B>interval</B>
+
+parameter by plus-or-minus
+<B>randskew.</B>
+
+The skew value is specified as the
+<B>interval</B>
+
+parameter: &quot;30s&quot;, &quot;5m&quot;, etc...
+For example if
+<B>interval</B>
+
+is 1m, and
+<B>randskew</B>
+
+is &quot;5s&quot;, then
+<I>mon</I>
+
+will schedule the monitor script some time between every
+55 seconds and 65 seconds.
+The intent is to help distribute the load on the server when
+many services are scheduled at the same intervals.
+<P>
+<DT><B>monitor</B><I> monitor-name [arg...]</I>
+
+<DD>
+The keyword
+<B>monitor</B>
+
+followed by a script name and arguments
+specifies the monitor to run when the timer
+expires. Shell-like quoting conventions are
+followed when specifying the arguments to send
+to the monitor script.
+The script is invoked from the directory
+given with the
+<B>-s</B>
+
+argument, and all following words are supplied
+as arguments to the monitor program, followed by the
+list of hosts in the group referred to by the current watch group.
+If the monitor line ends with &quot;;;&quot; as a separate word,
+the host groups are not appended to the argument list
+when the program is invoked.
+<P>
+<DT><B>allow_empty_group</B>
+
+<DD>
+The
+<B>allow_empty_group</B>
+
+option will allow a monitor to be invoked even when the
+hostgroup for that watch is empty because of
+disabled hosts. The default behavior is not
+to invoke the monitor when all hosts in a hostgroup
+have been disabled.
+<P>
+<DT><B>description</B><I> descriptiontext</I>
+
+<DD>
+The text following
+<B>description</B>
+
+is queried by client programs, passed to alerts and monitors via an
+environment variable. It should contain a brief description of the
+service, suitable for inclusion in an email or on a web page.
+<P>
+<DT><B>exclude_hosts</B><I> host [host...]</I>
+
+<DD>
+Any hosts listed after
+<B>exclude_hosts</B>
+
+will be excluded from the service check.
+<P>
+<DT><B>exclude_period</B><I> periodspec</I>
+
+<DD>
+Do not run a scheduled monitor during the time
+identified by
+<I>periodspec</I>.
+
+<P>
+<DT><B>depend</B><I> dependexpression</I>
+
+<DD>
+The
+<B>depend</B>
+
+keyword is used to specify a dependency expression, which
+evaluates to either true of false, in the boolean sense.
+Dependencies are actual Perl expressions, and must obey all syntactical
+rules. The expressions are evaluated in their own package space so as
+to not accidentally have some unwanted side-effect.
+If a syntax error is found when evaluating the expression, it
+is logged via syslog.
+<P>
+Before evaluation, the following substitutions on the expression occur:
+phrases which look like &quot;group:service&quot; are substituted with the value
+of the current operational status of that specified service. These
+opstatus substitutions are computed recursively, so if service A
+depends upon service B, and service B depends upon service C, then
+service A depends upon service C. Successful operational statuses (which
+evaluate to &quot;1&quot;) are &quot;STAT_OK&quot;, &quot;STAT_COLDSTART&quot;, &quot;STAT_WARMSTART&quot;, and
+&quot;STAT_UNKNOWN&quot;.  The word &quot;SELF&quot; (in all caps) can be used for the group
+(e.g. &quot;SELF:service&quot;), and is an abbreviation for the current watch group.
+<P>
+This feature can be used to control alerts for services which are
+dependent on other services, e.g. an SMTP test which is dependent upon
+the machine being ping-reachable.
+<P>
+<DT><B>dep_behavior</B><I> {a|m}</I>
+
+<DD>
+The evaluation of dependency graphs
+can control the
+suppression of either alert or monitor invocations.
+<P>
+<B>Alert suppression</B>.
+
+If this option is set to &quot;a&quot;,
+then the dependency expression
+will be evaluated after the
+monitor for the service exits or
+after a trap is received.
+An alert will only be sent
+if the evaluation succeeds, meaning
+that none of the nodes in the dependency
+graph indicate failure.
+<P>
+<B>Monitor suppression</B>.
+
+If it is set to &quot;m&quot;,
+then the dependency expression will be evaulated
+before the monitor for the service is about to run.
+If the evaulation succeeds, then the monitor
+will be run. Otherwise, the monitor will not
+be run and the status of the service will remain
+the same.
+<P>
+</DL>
+<A NAME="lbAO">&nbsp;</A>
+<H3>Period Definitions</H3>
+
+<P>
+Periods are used to define the conditions which
+should allow alerts
+to be delivered.
+<P>
+<DL COMPACT>
+<DT><B>period</B><I> [label:] periodspec</I>
+
+<DD>
+A period groups one or more alarms and variables
+which control how often an alert happens when there
+is a failure.
+The
+<B>period</B>
+
+keyword has two forms. The first
+takes an argument which is a
+period specification from Patrick Ryan's
+Time::Period Perl 5 module. Refer to
+&quot;perldoc Time::Period&quot; for more information.
+<P>
+The second form requires a label followed by a period specification, as
+defined above. The label is a tag consisting of an alphabetic character
+or underscore followed by zero or more alphanumerics or underscores
+and ending with a colon. This
+form allows multiple periods with the same period definition. One use
+is to have a period definition which has no
+<B>alertafter</B>
+
+or
+<B>alertevery</B>
+
+parameters for a particular time period, and another
+for the same time period with a different
+set of alerts that does contain those
+parameters.
+<P>
+<DT><B>alertevery</B><I> timeval</I>
+
+<DD>
+The
+<B>alertevery</B>
+
+keyword (within a
+<B>period</B>
+
+definition) takes the same type of argument as the
+<B>interval</B>
+
+variable, and limits the number of times an alert
+is sent when the service continues to fail.
+For example, if the interval is &quot;1h&quot;, then only
+the alerts in the period section will only
+be triggered once every hour. If the
+<B>alertevery</B>
+
+keyword is
+omitted in a period entry, an alert will be sent
+out every time a failure is detected. By default,
+if the output of two successive failures changes,
+then the alertevery interval is overridden.
+If the word
+&quot;summary&quot; is the last argument, then only the summary
+output lines will be considered when comparing the
+output of successive failures.
+<P>
+<DT><B>alertafter</B><I> num</I>
+
+<DD>
+<P>
+<DT><B>alertafter</B><I> num timeval</I>
+
+<DD>
+The
+<B>alertafter</B>
+
+keyword (within a
+<B>period</B>
+
+section) has two forms: only with the &quot;num&quot;
+argument, or with the &quot;num timeval&quot; arguments.
+In the first form, an alert will only be invoked
+after &quot;num&quot; consecutive failures.
+<P>
+In the second form,
+the arguments are a positive integer followed by an interval,
+as described by the
+<B>interval</B>
+
+variable above.
+If these parameters are specified,
+then the alerts for that period will only
+be called after that many failures happen
+within that interval. For example,
+if
+<B>alertafter</B>
+
+is given the arguments &quot;3&nbsp;30m&quot;, then the alert will be called
+if 3 failures happen within 30 minutes.
+<P>
+<DT><B>numalerts</B><I> num</I>
+
+<DD>
+<P>
+This variable tells the server to call no more than
+<I>num</I>
+
+alerts during a
+failure. The alert counter is kept on a per-period basis,
+and is reset upon each success.
+<P>
+<DT><B>comp_alerts</B>
+
+<DD>
+<P>
+If this option is specified, then upalerts will only be
+called if a corresponding &quot;down&quot; alert has been called.
+<P>
+<DT><B>alert</B><I> alert [arg...]</I>
+
+<DD>
+A period may contain multiple alerts, which are triggered
+upon failure of the service. An alert is specified with
+the
+<B>alert</B>
+
+keyword, followed by an optional
+<B>exit</B>
+
+parmeter, and arguments which are interpreted the same as
+the
+<B>monitor</B>
+
+definition, but without the &quot;;;&quot; exception. The
+<B>exit</B>
+
+parameter takes the form of 
+<B>exit=x</B>
+
+or
+<B>exit=x-y</B>
+
+and has the effect that the alert is only called if the
+exit status of the monitor script falls within the range
+of the
+<B>exit</B>
+
+parameter. If, for example, the alert line is
+<I>alert exit=10-20 mail.alert mis</I>
+
+then
+<I>mail-alert</I>
+
+will only be invoked with
+<I>mis</I>
+
+as its arguments if the monitor
+program's exit value is between 10 and 20. This feature
+allows you to trigger different alerts at different
+severity levels (like when free disk space goes from 8% to 3%).
+<P>
+See the
+<B>ALERT PROGRAMS</B>
+
+section above for a list of the pramaeters mon will pass 
+automatically to alert programs.
+<P>
+<DT><B>upalert</B><I> alert [arg...]</I>
+
+<DD>
+An
+<B>upalert</B>
+
+is the compliment of an
+<B>alert</B>.
+
+An upalert is called when a services makes the state transition from
+failure to success. The
+<B>upalert</B>
+
+script is called supplying
+the same parameters as the
+<B>alert</B>
+
+script, with the addition of the
+<B>-u</B>
+
+parameter which is simply used to let
+an alert script know that it is being called
+as an upalert. Multiple upalerts may be
+specified for each period definition.
+Please note that the default behavior is that
+an upalert will be sent
+regardless if there were any prior &quot;down&quot; alerts
+sent, since upalerts are triggered on a state
+transition. Set the per-period
+<B>comp_alerts</B>
+
+option to pair upalerts with &quot;down&quot; alerts.
+<P>
+<DT><B>startupalert</B><I> alert [arg...]</I>
+
+<DD>
+A
+<B>startupalert</B>
+
+is only called when the
+<B>mon</B>
+
+server starts execution.
+<P>
+<DT><B>upalertafter</B><I> timeval</I>
+
+<DD>
+The
+<B>upalertafter</B>
+
+parameter is specified as a string that
+follows the syntax of the
+<B>interval</B>
+
+parameter (&quot;30s&quot;, &quot;1m&quot;, etc.), and
+controls the triggering of an
+<B>upalert</B>.
+
+If a service comes back up after
+being down for a time greater than
+or equal to the value of this option, an
+<B>upalert</B>
+
+will be called. Use this option to prevent
+upalerts to be called because of &quot;blips&quot; (brief outages).
+<P>

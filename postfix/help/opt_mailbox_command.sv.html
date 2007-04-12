@@ -1,0 +1,31 @@
+<header>Externt kommando istället för sändning till brevlåda</header>
+
+<center><tt>mailbox_command</tt></center>
+<hr>
+
+Denna parameter anger ett externt kommando som ska köras istället
+för att e-post ska sändas till brevlådan. Kommandot körs som mottagaren med
+riktiga <tt>HOME</tt>-, <tt>SHELL</tt>- och <tt>LOGNAME</tt>-miljöinställningar.
+Ett undantag är att e-post till <tt>root</tt> körs som <tt>$default_user</tt>.
+
+<p>Övriga omgivningsvariabler av intresse: <tt>USER</tt> (mottagarens användarnamn),
+<tt>EXTENSION</tt> (adressändelse), <tt>DOMAIN</tt> (domändelen av adressen),
+och <tt>LOCAL</tt> (den lokala delen av adressen).
+
+<p>Till skillnad från övriga Postfix-konfigurationsparametrar påverkas inte denna
+parameter av parametersubstitutioner. Detta beteende gör det lättare att ange
+skalsyntax (se exempel nedan).
+
+<p>Undvik metatecken eftersom de kommer att tvinga Postfix att köra en tung
+skalprocess. <tt>Procmail</tt> är i sig tillräckligt tungt.
+
+<p><b>Om detta används för att sända e-post över hela systemet, måste ett alias
+sättas upp som skickar vidare roots e-post till en riktig användare.</b>
+
+<p>Exempel:
+<ul>
+<li><tt>/some/where/procmail</tt> 
+<li><tt>/some/where/procmail -a "$EXTENSION"</tt>
+</ul>
+
+<hr>

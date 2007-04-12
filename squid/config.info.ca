@@ -1,0 +1,24 @@
+line1=Opcions configurables,11
+cal_all=Genera tots els informes de calamaris,1,1-Sí,0-No
+cal_fmt=Format de sortida de calamaris,1,w-HTML,m-Text
+cal_extra=Paràmetres extra de la línia d'ordres de calamaris,0
+cal_max=Nombre màxim de línies de registre per passar a calamaris,3,Il·limitat
+crypt_conf=Mètode de xifratge per a les contrasenyes de proxy,1,0-crypt,1-md5base64
+sort_conf=Ordena els usuaris de la proxy,1,1-Sí,0-No
+restart_pos=Mostra els botons Inicia/Atura/Aplica,1,2-A la pàgina principal,1-A les capçaleres,0-A tots dos llocs
+sync_create=Crea els usuaris de la proxy en crear usuaris del sistema,1,1-Sí,0-No
+sync_modify=Actualitza els usuaris de la proxy en actualitzar els usuaris del sistema,1,1-Sí,0-No
+sync_delete=Suprimeix els usuaris de la proxy en suprimir usuaris del sistema,1,1-Sí,0-No
+line2=Configuració del sistema,11
+squid_conf=Camí complet del fitxer de configuració de squid,0
+squid_start=Ordre d'inici de squid,3,Automàtica
+squid_stop=Ordre per aturar squid,3,Automàtica
+squid_restart=Ordre per aplicar els canvis,3,Automàtica
+squid_path=Executable squid,0
+pid_file=Camí complet del fitxer de PID,0
+cache_dir=Camí complet del directori cau de squid,0
+cachemgr_path=Executable cachemgr.cgi de squid,0
+log_dir=Camí complet del directori de registres de squid,0
+calamaris=Camí del programa analitzador de registres calamaris,3,No instal·lat
+squidclient=Camí del programa squidclient,3,No instal·lat
+

@@ -1,0 +1,16 @@
+line2=System configuration,11
+ha_dir=Heartbeat config directory,0
+ha_cf=Path to heartbeat config file,3,Automatic
+haresources=Path to resources file,3,Automatic
+authkeys=Path to authentication keys file,3,Automatic
+resource_d=Heartbeat service scripts directory,3,Automatic
+heartbeat=Path to heartbeat command,0
+pid_file=Path to heartbeat PID file,0
+start_cmd=Command to start heartbeat,0
+apply_cmd=Command to apply changes,3,Automatic
+serials=Pattern for serial port files,0
+alt_ha_cf=Sample heartbeat config file,3,None
+req_resource_cmd=Script to take Resource,0
+alt_haresources=Sample resources file,3,None
+alt_authkeys=Sample authentication keys file,3,None
+version=Version of Heartbeat installed,3,Work out automatically

@@ -1,0 +1,32 @@
+<header>Mail Aliases</header>
+
+The aliases provide a system-wide mechanism to redirect mail for local
+recipients.
+
+<p>
+
+The <tt>Alias to...</tt> field contains one or more of the following,
+comma-separated:
+
+<ul><li><tt>address</tt>: Mail is forwarded to <tt>address</tt>, which is compatible
+with the RFC 822 standard.
+
+<li><tt>/file/name</tt>: Mail is appended to <tt>/file/name</tt>. See
+local(8) for details of delivery to file. Delivery is not limited to regular
+files. For example, to dispose of unwanted mail, deflect it to
+<tt>/dev/null</tt>.
+
+<li><tt>|command</tt>: Mail is piped into <tt>command</tt>. Commands that
+contain special characters, such as whitespace, should be enclosed between
+double quotes. See local(8) for details of delivery to command.
+When the command fails, a limited amount of command output is mailed back to
+the sender.
+
+<li><tt>:include:/file/name</tt>: Mail is sent to the destinations listed
+in the named file. Lines in <tt>:include:</tt> files have the same syntax as
+the right-hand side of alias entries.
+
+</ul>
+
+<hr>
+

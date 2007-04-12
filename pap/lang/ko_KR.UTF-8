@@ -1,0 +1,44 @@
+index_enopfile=獣什奴拭 PPP 章硲 督析 '$1'戚(亜) 糎仙馬走 省柔艦陥. PPP亜 竺帖鞠嬢 赤走 省精 依析 呪 赤柔艦陥
+index_table=PPP 穿鉢 羨紗 貢 穿鉢 杏奄 域舛
+index_user=紫遂切 戚硯
+index_server=辞獄
+index_uany=績税
+index_sany=績税
+index_create=歯 PPP 域舛 拙失
+index_info=政莞什 紫遂切 鯉系税 痕井 鎧遂聖 PPP 域舛 鯉系拭 切疑生稽 旋遂馬亀系 Webmin聖 姥失拝 呪 赤柔艦陥. 戚君廃 姥失精 <tt>紫遂切 貢 益血</tt> Webmin 乞汲戚 紫遂切研 蓄亜, 肢薦 暁澗 痕井馬澗 汽 紫遂吃 凶幻 亜管杯艦陥.
+index_onadd=辞獄拭 政莞什 紫遂切 蓄亜 獣 辞獄税 PPP 域舛 蓄亜
+index_onchange=政莞什 紫遂切 痕井 獣 PPP 域舛 痕井
+index_ondelete=政莞什 紫遂切 肢薦 獣 PPP 域舛 肢薦
+index_apply=旋遂
+
+secrets_title=PPP 域舛
+secrets_return=昔畿什
+
+edit_secret_etitle=PPP 域舛 畷増
+edit_secret_ctitle=PPP 域舛 拙失
+edit_secret_acc=PPP 域舛
+edit_secret_user=紫遂切 戚硯
+edit_secret_serv=辞獄
+edit_secret_sany=績税
+edit_secret_uany=績税
+edit_secret_pass=章硲
+edit_secret_none=蒸製
+edit_secret_ffile=社什督析:
+edit_secret_leave=痕井鞠走 省精 雌殿稽 政走
+edit_secret_setto=竺舛 企雌
+edit_secret_vaddr=政反廃 爽社
+edit_secret_aany=績税 域舛 買遂
+edit_secret_anone=買遂 照敗
+edit_secret_alist=蟹伸吉 域舛 買遂..
+edit_secret_save=煽舌
+edit_secret_del=肢薦
+edit_secret_return=域舛 鯉系
+
+save_secret_esave=域舛聖 煽舌馬走 公梅柔艦陥
+save_secret_enoip='$1'精(澗) 政反廃 爽社亜 焼鑑艦陥
+
+log_create=PPP 紫遂切 $1 拙失喫
+log_modify=PPP 紫遂切 $1 呪舛喫
+log_delete=PPP 紫遂切 $1 肢薦喫
+log_sync=政莞什 紫遂切 疑奄鉢 痕井喫
+

@@ -1,0 +1,17 @@
+index_elink=A&#250;n no se ha configurado ninguna URL a la que hacer tunel
+index_open=Abrir
+index_url=Introduzca URL a abrir:
+link_eautologin=Login o password no v&#225;lido para $1. <a href='$2'>Pulse aqu&#237;</a> para hacer login.
+link_ebadurl=No tiene permisos para acceder a la URL $1
+link_elogin=Fall&#243; el login a $1 como $2
+link_enouser=Se requiere un nombre de usuario y una contrase&#241;a para acceder a $1, pero no se ha configurado ninguna.
+link_eurl=URL de tunel no v&#225;lida : $1
+login_clear=Limpiar
+login_desc=Debe proporcionar un nombre de usuario y una contrase&#241;a para acceder a $1.
+login_header=Autenticaci&#243;n de sitio Web
+login_login=Usuario
+login_pass=Contrase&#241;a
+login_title=Acceder a sitio Web
+login_user=Usuario
+seturl_err=Fall&#243; la apertura de URL
+seturl_eurl=URL introducida no v&#225;lida

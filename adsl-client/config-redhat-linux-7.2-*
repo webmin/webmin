@@ -1,0 +1,7 @@
+pppoe_conf=/etc/sysconfig/network-scripts/ifcfg-ppp0
+conf_style=1
+pap_file=/etc/ppp/pap-secrets
+pppoe_cmd=pppoe
+start_cmd=adsl-start
+stop_cmd=adsl-stop
+status_cmd=adsl-status

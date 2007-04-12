@@ -1,0 +1,162 @@
+index_title=System- und Server-Status
+index_name=Dienstname
+index_host=Auf Rechner
+index_desc=&Uuml;berwache
+index_up=Status
+index_local=Lokal
+index_add=F&uuml;ge &Uuml;berwachung hinzu:
+index_sched=Zeitgesteuerte &Uuml;berwachung
+index_return=Dienstliste
+
+type_apache=Apache Webserver
+type_inetd=Internet und RPC-Server (inetd)
+type_xinetd=Erweiterter Internet-Server (xinetd)
+type_squid=Squid Proxy-Server
+type_bind8=BIND-DNS-Server
+type_dnsadmin=BIND 4 DNS-Server
+type_dhcpd=DHCP-Server
+type_tcp=Remote TCP-Dienst
+type_http=Remote HTTP-Dienst
+type_sendmail=Sendmail-Server
+type_postfix=Postfix-Server
+type_ping=Remote Ping
+type_proc=Prozess &uuml;berpr&uuml;fen
+type_mysql=MySQL-Server
+type_postgresql=PostgreSQL-Server
+type_samba=Samba-Server
+type_nfs=NFS-Server
+type_exec=Befehl ausf&uuml;hren
+type_file=Datei &uuml;berpr&uuml;fen
+type_traffic=Netzwerkbenutzung
+type_space=Plattenspeicher
+type_load=Durchschnittl. Systemauslastung
+
+mon_create=Überwachung erstellen
+mon_edit=Überwachung bearbeiten
+mon_header=&Uuml;berwachungsdetails
+mon_desc=Beschreibung
+mon_remote=Starte auf Rechner
+mon_local=Lokal
+mon_warn1=Ja, und sende email bei Änderung
+mon_warn0=Ja, und sende email beim herunterfahren
+mon_warn2=Ja, und sende email wenn heruntergefahren
+mon_none=Keine Remote-Server definiert
+mon_nosched=Regelm&auml;ssig &uuml;berpr&uuml;fen?
+mon_status=Aktueller Status
+mon_up=Bereit
+mon_down=Nicht bereit
+mon_not=Nicht installiert
+mon_ondown=Wenn der &uuml;berwachte Prozess beendet wird, starte
+mon_onup=Wenn der &uuml;berwachte Prozess gestartet wird, starte
+mon_clone=Zu &uuml;berwachendes Modul
+mon_err=Fehler beim Speichern der Einstellungen f&uuml;r die &Uuml;berwachung
+mon_edesc=Fehlende Beschreibung
+mon_elogin=Ung&uuml;ltiges RPC-Login f&uuml;r Webmin-Server $1
+mon_eremote=Webmin-Server $1 unterst&uuml;tzt kein RPC
+mon_estatus=Webmin-Server $1 hat kein System- und Server-Status-Modul
+mon_ecannot=Sie haben keine Berechtigung, &Uuml;berwachungen zu erstellen
+mon_ertype=Diese Art von &Uuml;berwachung ist auf $1 nicht verf&uuml;gbar.
+
+sched_title=Zeitgesteuerte Überwachung
+sched_header=Einstellungen f&uuml;r die zeitgesteuerte &Uuml;berwachung im Hintergrund
+sched_mode=Zeitgesteuerte &Uuml;berpr&uuml;fung aktiviert?
+sched_email=Statusbericht mailen an:
+sched_pager=Status an Pager Nr.:
+sched_none=Niemand
+sched_from=Absenderadresse f&uuml;r E-Mail
+sched_int=&Uuml;berpr&uuml;fen alle:
+sched_period_0=Minuten
+sched_period_1=Stunden
+sched_period_2=Tage
+sched_period_3=Monate
+sched_period_4=Wochen
+sched_offset=Versetzt
+sched_warn=E-Mail senden:
+sched_warn1=Wenn sich ein Dienst-Status &auml;ndert
+sched_warn0=Wenn ein Dienst beendet wird
+sched_single=Eine Mail pro Dienst senden?
+sched_hours=&Uuml;berpr&uuml;fung st&uuml;ndlich:
+sched_days=&Uuml;berpr&uuml;fung t&auml;glich
+sched_err=Fehler beim Speichern der zeitgesteuerten &Uuml;berpr&uuml;fung
+sched_eemail=Fehlende Email-Adresse
+sched_eint=Fehlendes oder ung&uuml;ltiges Intervall
+sched_eoffset=Fehlendes oder ung&uuml;ltiges Offset
+sched_ehours=Keine Stunden ausgew&auml;hlt
+sched_edays=Keine Tage ausgew&auml;hlt
+sched_ecannot=Sie sind nicht berechtigt, die zeitgesteuerte &Uuml;berwachung zu bearbeiten.
+
+up_since=L&auml;uft seit $1
+depends_mod=Das Modul $1 ist nicht auf Ihrem System installiert.
+depends_os=Das Modul $1 wird auf Ihrem System nicht unterst&uuml;tzt.
+depends_remote=Das Modul $1 wird nicht auf Rechner $2 unterst&uuml;tzt.
+
+tcp_host=Verbindung zu Rechner
+tcp_port=Verbindung zu Port
+tcp_alarm=Verbindungs-Timeout
+tcp_ehost=Fehlender oder ung&uuml;ltiger Rechnername
+tcp_eport=Fehlender oder ung&uuml;ltiger Port
+tcp_ealarm=Fehlender oder ung&uuml;ltiger Verbindungs-Timeout
+
+http_url=Anzufordernde URL
+http_alarm=Verbindungs-Timeout
+http_eurl=Fehlende oder ung&uuml;ltige URL
+http_ealarm=Fehlender oder ung&uuml;ltiger Verbindungs-Timeout
+
+ping_host=Anzupingender Rechner
+ping_wait=Verbindungs-Timeout
+ping_ehost=Fehlender oder ung&uuml;ltiger Rechnername
+ping_ewait=Fehlender oder ung&uuml;ltiger Verbindungs-Timeout
+ping_econfig=In der Modulkonfiguration wurde noch kein ping-Befehl eingetragen.
+
+proc_pid=Laufend mit PID $1
+proc_cmd=Zu testender Befehl
+proc_ecmd=Fehlender Befehl
+
+exec_cmd=Befehl, dessen R&uuml;ckgabewaert getestet wird
+exec_ecmd=Fehlender Befehl
+
+file_file=Zu &uuml;berpr&uuml;fende Datei
+file_test=Durchzuf&uuml;hrender Test
+file_test_0=Datei muss existieren
+file_test_1=Datei darf nicht existieren
+file_test_2=Datei muss gr&ouml;sser sein als
+file_test_3=Datei muss kleiner sein als
+file_bytes=Bytes
+file_efile=Fehlender Dateiname
+file_esize=Ung&uuml;ltige Dateigr&ouml;sse
+
+traffic_iface=Zu &uuml;berwachende Schnittstelle
+traffic_bytes=Maximale Bytes pro Sekunde
+traffic_dir=Zu &uuml;berwachende Richtung
+traffic_dir0=Ein- und ausgehend
+traffic_dir1=Nur eingehend
+traffic_dir2=Nur ausgehend
+traffic_desc=Diese &Uuml;berwachung pr&uuml;ft die Nertzwerklast auf der gew&auml;hlten Schnittstelle und zeigt den Dienst als beendet an, wenn die Last den unten einzugebenden Grenzwert &uuml;bersteigt. Dies ist nur sinnvoll, wenn die zeitgesteuerte &Uuml;berwachung aktiviert ist und sie auf ein keines Intervall eingestellt ist.
+traffic_eifaces=Ihr Betriebssystem hat keine /proc/net/dev Datei.
+traffic_ebytes=Fehlende oder ung&uuml;ltige Anzahl von Bytes/Sekunde
+
+space_fs=Zu &uuml;berpr&uuml;fendes Dateisystem
+space_min=Minimaler freier Platz (in kB)
+space_desc=$1 frei
+space_nofs=Dateisystem nicht gemounted
+space_other=Andere..
+space_emin=Fehlender oder ung&uuml;ltiger freier Platz
+space_eother=Fehlendes oder ung&uuml;ltiges Dateisystem
+
+load_time=Durchnittliche Systemlast
+load_5=5 Minuten
+load_10=10 Minuten
+load_15=15 Minuten
+load_max=Maximale durchschnittliche Systemlast
+load_emax=Fehlende oder ung&uuml;ltige durchschnittliche Systemlast
+load_ecmd=Der Befehl <tt>uptime</tt> wurde nicht gefunden.
+load_efmt=Die Ausgabe des <tt>uptime</tt>-Befehls konnte nicht verarbeitet werden.
+
+log_create=&Uuml;berwachung $1 erstellt
+log_modify=&Uuml;berwachung $1 ge&auml;ndert
+log_delete=&Uuml;berwachung $1 gel&ouml;scht
+log_sched=Zeitgesteurte &Uuml;berwachung ge&auml;ndert
+
+acl_edit=Kann &Uuml;berwachungen erstellen und &auml;ndern?
+acl_sched=Kann zeitgesteurte &Uuml;berwachungen erstellen?
+

@@ -1,0 +1,45 @@
+<header>Composants Logiciel</header>
+
+<h3>Introduction aux composants</h3>
+Un composant logiciel est un ensemble de fichiers qui forment un programme.
+Ces fichiers peuvent être combinés dans un seul paquet pour être distribués ou
+téléchargés puis d'être décompressés et placés au bon endroit lors de
+l'installation du composant. <p>
+
+Un système de gestion de composant automatise la majorité du travail
+d'installation et de suppression des programmes. Parceque les composants
+sont généralement pré-compilés, vous n'avez pas à vous préoccuper des
+<tt>Makefiles</tt> et <tt>configure</tt> durant l'installation. Comme
+le système de gestion garde toutes les informations des composants installés,
+il peut supprimer toutes les traces d'un programme lors de la
+désinstallation. <p>
+
+<h3>Composants installés</h3>
+Les composants sont organisés en catégories et sous-catégories, comme
+<tt>System</tt> ou <tt>X11/Utilities</tt>. En haut de la page principale
+se trouve une arborescence de dossiers et composants, dans laquelle chaque
+dossier représente une catégorie. Pour ouvrir un dossier, cliquez simplement
+dessus. Pour voir plus d'informations sur un composant, cliquez sur son nom. <p>
+
+Sous l'arborescence se trouve un formulaire pour rechercher dans la base de
+données des composants. Ceci cherchera des composants dont le nom ou la
+description correspond au texte que vous aurez saisi. <p>
+
+<h3>Installer un nouveau composant</h3>
+Sous la recherche de composant se trouve un autre formulaire pour installer
+un nouveau composant. Vous pouvez l'installer soit à partir d'un fichier
+présent sur le système, d'un fichier présnt sur l'ordinateur où vous exécutez
+votre navigateur web ou encore d'une adresse FTP ou HTTP. Dans le dernier cas,
+Webmin contactera le serveur FTP ou Web et téléchargera le fichier. Si votre
+système se trouve derrière un firewall, assurez-vous que vous avez correctement
+configuré le serveur proxy dans le module de <i>Configuration de Webmin</i>. <p>
+
+<h3>Identifier un Fichier</h3>
+Au bas de la page se trouve un formulaire pour identifier des fichiers de votre
+système. Vous pouvez saisir n'importe quel chemin absolu comme
+<tt>/etc/inetd.conf</tt>, ou un commande comme <tt>elm</tt>. Webmin va tenter
+de trouver le fichier dans le système de gestion des composants et affichera
+des informations sur ce fichier et les composants qui l'utilisent. <p>
+
+<hr>
+

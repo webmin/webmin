@@ -1,0 +1,114 @@
+index_title=시스템 및 서버 상태
+index_name=서비스 이름
+index_host=호스트에서
+index_desc=모니터링
+index_up=상태
+index_local=로컬
+index_add=추가할 모니터 유형:
+index_sched=예약된 모니터링
+index_return=서비스 목록
+
+type_apache=Apache 웹 서버
+type_inetd=인터넷 및 RPC 서버
+type_xinetd=확장 인터넷 서버
+type_squid=Squid 프록시 서버
+type_bind8=BIND DNS 서버
+type_dnsadmin=BIND 4 DNS 서버
+type_dhcpd=DHCP 서버
+type_tcp=원격 TCP 서비스
+type_http=원격 HTTP 서비스
+type_sendmail=Sendmail 서버
+type_postfix=Postfix 서버
+type_ping=원격 Ping
+type_proc=검사 프로세스
+type_mysql=MySQL 데이터베이스 서버
+type_postgresql=PostgreSQL 데이터베이스 서버
+type_samba=Samba 서버
+type_nfs=NFS 서버
+type_exec=명령 실행
+type_file=파일 검사
+
+mon_create=모니터 작성
+mon_edit=모니터 편집
+mon_header=모니터 세부 정보
+mon_desc=설명
+mon_remote=호스트에서 실행
+mon_local=로컬
+mon_none=정의된 원격 서버가 없습니다
+mon_nosched=예약한 대로 검사합니까?
+mon_status=현재 상태
+mon_up=작동
+mon_down=다운
+mon_not=설치 안됨
+mon_ondown=모니터가 다운되면 명령을 실행하십시오
+mon_onup=모니터가 작동하면 명령을 실행하십시오
+mon_clone=모니터할 모듈
+mon_err=모니터를 저장하지 못했습니다
+mon_edesc=설명 없음
+mon_elogin=Webmin 서버 $1의 RPC에 대한 로그인이 잘못되었습니다
+mon_eremote=Webmin 서버 $1이(가) RPC를 지원하지 않습니다
+mon_estatus=Webmin 서버 $1에 시스템 및 서버 상태 모듈이 없습니다
+
+sched_title=예약된 모니터링
+sched_header=예약된 백그라운드 모니터링 옵션
+sched_mode=예약된 검사를 사용 가능하게 합니까?
+sched_email=상태 보고서를 전자 메일로 받을 대상
+sched_none=없음
+sched_from=발신자: 전자 메일 주소
+sched_int=모두 선택
+sched_period_0=분
+sched_period_1=시
+sched_period_2=일
+sched_period_3=월
+sched_period_4=주
+sched_offset=오프셋 있음
+sched_warn=전자 메일을 보낼 시기
+sched_warn1=서비스 상태 변경 시
+sched_warn0=서비스 다운 시
+sched_single=각 서비스마다 하나의 전자 메일을 보냅니까?
+sched_hours=모니터 실행 기간(시)
+sched_days=모니터 실행 기간(일)
+sched_err=예약된 모니터링을 저장하지 못했습니다
+sched_eemail=없는 전자 메일 주소
+sched_eint=없거나 잘못된 간격
+sched_eoffset=없거나 잘못된 오프셋
+sched_ehours=선택한 실행 기간(시)이 없습니다
+sched_edays=실행 기간(일)을 선택하지 않았습니다
+
+up_since=$1 이후 작동
+depends_mod=시스템에 모듈 $1이(가) 설치되어 있지 않습니다
+depends_os=시스템에서 모듈 $1이(가) 지원되지 않습니다
+depends_remote=서버 $2에서 모듈 $1이(가) 지원되지 않습니다
+
+tcp_host=연결할 호스트
+tcp_port=연결할 포트
+tcp_alarm=연결 시간 초과
+tcp_ehost=없거나 잘못된 호스트 이름
+tcp_eport=없거나 잘못된 포트 번호
+tcp_ealarm=없거나 잘못된 연결 시간 초과
+
+http_url=요청할 URL
+http_alarm=연결 시간 초과
+http_eurl=없거나 잘못된 URL
+http_ealarm=없거나 잘못된 연결 시간 초과
+
+ping_host=Ping할 호스트
+ping_ehost=없거나 잘못된 호스트 이름
+ping_econfig=모듈 구성에 설정된 Ping 명령이 없습니다
+
+proc_pid=PID $1을(를) 사용하여 실행 중
+proc_cmd=검사할 명령
+proc_ecmd=없는 명령
+
+exec_cmd=종료 상태를 검사할 명령
+exec_ecmd=없는 명령
+
+file_file=검사할 파일
+file_test=수행할 테스트
+file_test_0=파일이 있습니다
+file_test_1=파일이 없습니다
+file_test_2=파일이 다음보다 큽니다
+file_test_3=파일이 다음보다 작습니다
+file_bytes=바이트
+file_efile=검사할 파일 이름이 없습니다
+file_esize=파일 크기가 잘못되었습니다

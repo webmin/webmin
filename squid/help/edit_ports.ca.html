@@ -1,0 +1,29 @@
+<header>Ports i Xarxa</header>
+
+<b>Port de proxy</b>: Per defecte, 3128. Aquest valor estableix el port que
+escoltarà Squid en espera de peticions HTTP. Els fullejadors client hauran
+d'estar configurats a aquest port per poder connectar amb la proxy, o bé
+caldrà configurar també la proxy transparent.
+<p>
+<b>Port ICP</b>: El número de port on Squid rep i envia peticions dels caus
+veïns. Per defecte, és 3130. Per desactivar-lo, posa-hi "0". Es pot ignorar
+amb -u a la línia d'ordres.
+<p>
+<b>Adreça TCP entrant</b>: Per defecte, cap. Defineix el sòcol HTTP que 
+accepta les connexions des dels clients i altres caus.
+<p>
+<b>Adreça TCP sortint</b>: Per defecte, cap. Defineix el sòcol HTTP per les
+connexions que es fan a servidors remots i altres caus.
+<p>
+<b>Adreça UDP entrant</b>: Per defecte, cap.  Defineix el sòcol ICP que rep
+paquets d'altres caus.
+<p>
+<b>Adreça UDP sortint</b>: Per defecte, cap.  Defineix el sòcol ICP que envia
+paquets a altres caus.
+<p>
+<b>Buffer de recepció TCP</b>: Mida del buffer TCP.  Per defecte, el buffer
+de recepció del SO.
+<p>
+
+<hr>
+

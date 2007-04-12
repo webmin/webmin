@@ -1,0 +1,17 @@
+<header>Avbrottsbortmaskning</header>
+Sätter flaggan interrupt-unmask för disken.
+
+<p>Detta gör att disken kan maska bort andra avbrott då ett diskavbrott
+bearbetas, vilket förbättrar Linux' svarstid och eliminerar fel av typen
+"serial port overrun".
+
+<p><u>Var försiktig med att använda denna egenskap</u>: vissa
+disk/kontroller-kombinationer accepterar inte de ökade tidsfördröjningar
+som kan uppkomma då bortmaskningen är aktiverad, vilket kan orsaka ett
+<i>totalt söndertrasat filsystem</i>.
+
+<br>I synnerhet kan CMD-640B och RZ1000 (E)IDE vara opålitliga (beroende på
+brister i hårdvaran) då bortmaskning används tillsammans med kärnversioner
+äldre än 2.0.13.
+
+<hr>

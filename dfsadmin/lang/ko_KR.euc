@@ -1,0 +1,5 @@
+log_modify=NFS 공유 $1 수정됨
+log_rename=NFS 공유 $1이(가) $2(으)로 변경됨
+log_create=NFS 공유 $1 작성됨
+log_delete=NFS 공유 $1 삭제됨
+log_apply=변경 내용 적용됨

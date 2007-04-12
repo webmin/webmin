@@ -1,0 +1,28 @@
+<header>Acceso de Root</header>
+
+Controla qué máquinas serán tratadas como si el usuario que entra fuera root.
+Si un cliente no está en la lista, incluso si puede montar la compartición
+como de sólo-lectura o de lectura-escritura, el servidor NFS tratará al
+usuario root del cliente como si fuera un <a href=anon.es>Usuario Anónimo</a>.
+<if $gconfig{'os_version'} == 7>
+    <br>Las máquinas puede ser especificadas de la siguiente manera:<p>
+	<dl>
+	<dt><b>Nombre de máquina o dirección IP</b> (como <i>ftp.foo.com</i> o <i>1.2.3.4</i>)
+	<dd>Que coincida la máquina del mismo nombre o dirección
+	<dt><b>Grupo de Red</b> (como <i>ingeniería</i>)
+	<dd>Que coincida cualquier máquina que sea miembro del grupo de red
+	<dt><b>Dominio DNS</b> (como <i>.foo.com</i>)
+	<dd>Que coincida cualquier máquina del dominio
+	<dt><b>Red</b> (como <i>@10.254.1</i>)
+	<dd>Que coincida cualquier máquina de la red
+	<dt><b>Red/máscara de red</b> (como <i>@10.254.1/24</i>)
+	<dd>Que coincida cualquier máquina de la red
+	</dl><p>
+    Además, cualquiera de las anotaciones de arriba puede llevar el
+    prefijo <i>-</i>, queriendo esto decir que la máquina, grupo de red,
+    dominio o red <b>no</b> tiene permisos para montar esta compartición.
+    Esto puede ser útil si desea permitir el acceso a un conjunto de máquinas
+    pero denegárselo a un miembro.
+</if>
+<hr>
+

@@ -1,0 +1,55 @@
+index_title=Loggning av Webmin-aktivitet
+index_header=Sök i Webmin-loggen efter aktivitet ...
+index_uall=från alla användare
+index_user=från användare
+index_mall=i alla moduler
+index_module=i modul
+index_tall=när som helst
+index_today=endast idag
+index_time=mellan $1 och $2
+index_search=Sök
+index_return=sökformulär
+index_nolog=<b>Obs</b> - <a href='$1'>Loggning i Webmin</a> är för tillfället inte aktiverat, så sökningar i loggen kommer inte att ge några resultat.
+index_nologfiles=<b>Obs</b> - <a href='$1'>Loggning av filändringar</a> är för tillfället inte aktiverat, så ändrade filer och utförda kommandon kommer inte att komma med bland de loggade händelserna.
+
+search_title=Sökresultat
+search_date=Datum
+search_time=Tid
+search_user=Användare
+search_host=Klientadress
+search_module=Modul
+search_action=Aktivitet
+search_none=Ingen aktivitet matchade din sökning.
+search_return=sökresultat
+search_sid=Aktivitet av användare $1 i session $2
+search_critall=All loggad aktivitet
+search_crit=Loggad aktivitet
+search_critu=från användare $1
+search_critm=i modul $1
+search_critt=mellan $1 och $2
+search_critt2=på $1
+search_config=Ändrade modulinställningarna
+
+view_title=Uppgifter om aktivitet
+view_header=Uppgifter om loggad aktivitet $1
+view_action=Beskrivning
+view_module=Webmin-modul
+view_script=Genererad av script
+view_user=Webmin-användare
+view_ip=Klient-IP eller datornamn
+view_sid=Sessions-ID
+view_time=Datum och tid
+view_nofiles=Inga ändringar i config-filen loggades för denna aktivitet
+view_type_create=Skapade filen $1
+view_type_modify=Ändrade filen $1
+view_type_delete=Tog bort filen $1
+view_type_exec=Utförde kommando
+view_type_sql=Utförde SQL-kommando i databasen $1
+view_type_kill=Skickade signal $1 till PID $2
+view_type_symlink=Skapade den symboliska länken $1 -&gt; $2
+view_type_unsymlink=Tog bort den symboliska länken $1 -&gt; $2
+view_type_resymlink=Modifierade den symboliska länke $1 -&gt; $2
+view_type_mkdir=Skapade katalogen $1
+view_type_rmdir=Tog bort katalogen $1
+view_type_rename=Bytte namn på $1 till $2
+

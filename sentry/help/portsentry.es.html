@@ -1,0 +1,56 @@
+<header>Configuración de Portsentry</header>
+
+Portsentry es un programa diseñado para detectar y responder en tiempo real
+a los escaneos de puertos contra una máquina. Puede hacerlo de dos maneras
+- escuchando en un conjunto de puertos seleccionados (modo básico), o
+monitorizando todos los puertos por debajo de uno dado. Cuando se detecta
+una conexión a uno de los puertos monitorizados, Portsentry registra el
+evento en los historiales y (opcionalmente) ejecuta una acción para
+bloquear en el futuro cualquier tráfico desde la máquina atacante. <p>
+
+Las opciones de esta página soLas opciones de esta página son :
+<ul>
+<li><b>Puertos TCP que monitorizar</b><br>
+    En modo básico, Portsentry escuchará en todos los puertos TCP listados
+    en la primera línea de esta opción. En modo avanzado, escuchará en
+    todos los puertos por debajo del indicado en la segunda línea,
+    excluyendo aquellos listados en el campo 'excepto'. <p>
+    
+<li><b>UDP ports to monitor</b><br>
+    Like the TCP ports option, but controls which UDP ports are monitored. <p>
+
+<li><b>Bloquear los sondeos TCP</b><br>
+    Esta opción controla qué acción llevará a cabo Portsentry cuando
+    detecte una conexión TCP a uno de los puertos monitorizados. Las
+    opciones son 'Sí' (bloquear las futuras conexiones desde la máquina),
+    'No' (no hacer nada), o 'Ejecutar comando asesino' (ejecutar un comando
+    especificado en el fichero de configuración). En todos los casos la
+    conexión se registrará en los históricos del sistema. <p>
+
+<li><b>Bloquear sondeos UDP</b><br>
+    Como la opción de bloquear los sondeos TCP, pero controla qué sucede
+    cuando se detecta una "conexión" UDP. <p>
+
+<li><b>Mensaje para las conexiones bloqueadas</b><br>
+    Cuando Portsentry está escuchando en un puerto, cualquier conexión que
+    se establezca será respondida con este mensaje antes de cerrar la
+    conexión. <p>
+
+<li><b>Número de conexiones antes de activar el bloqueo</b><br>
+    El número de conexiones 'de gracia' que una máquina tiene permitido
+    hacer a un puerto monitorizado antes de ser bloqueada. Si se pone a
+    cero, la primera conexión activará el bloqueo de la máquina. <p>
+
+<li><b>Máquinas cuyo tráfico ignorar</b><br>
+    Las direcciones IP, nombres de máquina, o dirección/máscara de las
+    máquinas y redes cuyo tráfico ignorar. <p>
+
+</ul>
+
+En la parte inferior de la página hay un botón para iniciar Portsentry (de
+no estar ejecutando) o pararlo (si está en ejecución). Puesto que
+Portsentry ejecuta un par de procesos en segundo plano (demonios), si no
+está ejecutando no se hará ninguna monitorización de escaneos de puertos. <p>
+
+<hr>
+

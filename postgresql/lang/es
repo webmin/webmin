@@ -1,0 +1,304 @@
+index_title=Servidor de Base de Datos PostgreSQL
+index_notrun=PostgreSQL no se está ejecutando en tu sistema - la lista de bases de datos no pudo ser recuperada.
+index_start=Arrancar Servidor PostgreSQL
+index_startmsg=Haz click en este botón para arrancar el servidor de base de datos PostgreSQL en tu sistema con el comando <br>$1<br>. Este módulo de Webmin no puede administrar la base de datos hasta que esté arrancada.
+index_nopass=Webmin necesita saber tu login de administración de PostgreSQL y tu clave de acceso con el fin de gestionar tu base de datos. Por favor, digita debajo tu nombre de usuario de administración y la clave de acceso.
+index_ltitle=Login a PostgreSQL
+index_login=Login
+index_pass=Clave de acceso
+index_clear=Limpiar
+index_stop=Parar Servidor PostgreSQL
+index_stopmsg=Haz click en este botón para parar el servidor de base de datos PostgreSQL de tu sistema. Esto prevendrá que cualquier usuario o programa acceda a la base de datos, incluyendo a este módulo de Webmin.
+index_dbs=Bases de Datos PostgreSQL
+index_add=Crear una nueva base de datos
+index_users=Opciones de Usuario
+index_return=lista de base de datos
+index_esql=El programa cliente de PostgreSQL $1 no ha sido encontrado en tu sistema. Quizás PostgreSQL no está instalada o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+index_ehba=El archivo de configuración de máquina de PostgreSQL $1 no ha sido encontrado en tu sistema. Quizás PostgreSQL no ha sido inicializada o tu <a href='$2'>configuración del módulo</a> es incorrecta.
+index_superuser=El programa cliente de PostgreSQL psql no se pudo ejecutar en tu sistema. Quizás PostgreSQL no está instalado en tu sistema o tu <a href='$1'>configuración del módulo</a> no es correcta.
+index_eversion=La base de datos PostgreSQL de tu sistema es de la versión $1, pero Webmin sólamente soporta las versiones $2 y superiores.
+index_elibrary=El programa cliente $1 de PostgreSQL no pudo ser ejecutado porque no se pudo hallar las bibliotecas compartidas de Postgres. Revisa la <a href='$2'>configuración del módulo</a> y segúrate de que la <i>Trayectoria a las bibliotecas compartidas de PostgreSQL</i> está bién puesta.
+index_version=Versión $1 de POostgreSQL
+
+login_err=Falló el login
+login_ecannot=No estás autorizado a configurar el login a la base de datos
+login_elogin=Login de administración sin poner
+login_epass=Nombre de usuario o clave de acceso de administración incorrectos
+
+dbase_title=Editar Base de Datos
+dbase_noconn=Esta base de datos no está aceptando conexiones en este momento. Por ello, no se pueden realizar acciones en ella.
+dbase_tables=Tablas de Base de Datos
+dbase_add=Crear una nueva tabla
+dbase_drop=Eliminar Base de Datos
+dbase_exec=Ejecutar SQL
+dbase_none=Esta base de datos no tiene tablas.
+dbase_fields=Campos:
+dbase_return=lista de tablas
+dbase_ecannot=No estás autorizado a editar esta base de datos
+
+table_title=Editar Tabla
+table_title2=Crear Tabla
+table_opts=Opciones de campo
+table_header=Tabla $1 en base de datos $2
+table_field=Nombre de campo
+table_type=Tipo
+table_null=¿Permitir nulos?
+table_arr=¿Arreglo?
+table_none=Ninguno
+table_add=Añadir tipo de campo:
+table_return=lista de campos
+table_data=Ver Datos
+table_drop=Eliminar Tabla
+table_name=Nombre de Tabla
+table_initial=Campos iniciales
+table_header2=Opciones de nueva tabla
+table_err=No pude crear tabla
+table_ename=Nombre de tabla inválido o sin poner
+table_efield='$1' no es un nombre de campo válido
+table_etype=Tipo sin poner para campo $1
+table_esize=Medida de tipo sin poner para campo $1
+table_enone=No se han digitado campos iniciales
+table_fielddrop=Borrar Campo
+
+field_title1=Añadir Campo
+field_title2=Modificar Campo
+field_in=En tabla $1 en base de datos $2
+field_header=Parámetros de Campo
+field_name=Nombre de campo
+field_type=Tipo de datos
+field_size=Ancho de tipo
+field_none=Ninguno
+field_null=¿Permito nulos?
+field_arr=¿Campo de arreglo?
+field_key=¿Clave primaria?
+field_uniq=¿Única?
+field_err=No pude salvar campo
+field_esize='$1' no es una medida válida de campo
+field_eenum=No se han digitado valores enumerados
+field_efield='$1' no es un nombre válido de campo
+field_ekey=Los campos que permiten nulos no pueden formar parte de la clave primaria
+
+exec_title=Ejecutar SQL
+exec_header=Digita comando SQL a ejecutar en base de datos $1...
+exec_exec=Ejecutar
+exec_err=No pude ejecutar SQL
+exec_out=Salida del comando SQL $1...
+exec_none=No se ha devuelto dato alguno
+
+stop_err=No pude para el servidor de base de datos
+stop_epidfile=No pude abrir el archivo PID $1
+stop_ekill=No pude matar el proceso $1: $2
+stop_ecannot=No estás autorizado a para el servidor de base de datos
+start_err=No pude arrancar el servidor de base de datos
+start_ecannot=No estás autorizado a arrancar el servidor de base de datos
+
+ddrop_err=No pude eliminar la base de datos
+ddrop_title=Eliminar Base de Datos
+ddrop_rusure=¿Estás seguro de querer eliminar la base de datos $1?. $2 tablas conteniendo $3 filas de datos serán borradas.
+ddrop_mysql=A causa de que ésta es la base de datos maestra, ¡eliminarla haría probáblemente que tu servidor PostgreSQL quedara inservible!
+ddrop_ok=Eliminar Base de Datos
+
+tdrop_err=No pude eliminar tabla
+tdrop_title=Eliminar Tabla
+tdrop_rusure=¿Estás seguro de querer eliminar la tabla $1 en la base de datos $2?. $3 filas de datos serán borradas.
+tdrop_ok=Eliminar Tabla
+
+view_title=Datos de Tabla
+view_pos=Filas $1 a $2 de $3
+view_none=Esta tabla no contiene dato alguno
+view_edit=Editar filas seleccionadas
+view_new=Añadir fila
+view_delete=Borrar filas seleccionadas
+view_nokey=Los datos de esta tabla no pueden ser editados ya que no tiene clave primaria.
+view_all=Seleccionar todo
+view_invert=Invertir selección
+
+newdb_title=Crear Base de Datos
+newdb_header=Nuevas opciones de Base de Datos
+newdb_db=Nombre de base de datos
+newdb_path=Trayectoria de archivo de base de datos
+newdb_err=No pude crear base de datos
+newdb_edb=Nombre de base de datos inválido o sin poner
+newdb_ecannot=No estás autorizado a crear bases de datos
+newdb_epath=Trayectoria de base de datos sin poner
+
+user_title=Usuarios de PostgreSQL
+user_ecannot=No estás autorizado a editar usuarios
+user_name=Nombre de usuario
+user_db=¿Puedo crear bases de datos?
+user_other=¿Puedo crear usuarios?
+user_until=Válido hasta
+user_add=Crear un nuevo usuario
+user_forever=Para siempre
+user_pass=¿Requiere clave de acceso?
+user_edit=Editar Usuario
+user_create=Crear Usuario
+user_return=lista de usuarios
+user_header=Detalles de usuario de PostgreSQL
+user_passwd=Clave de acceso
+user_none=Ninguna
+user_err=No pude salvar usuario
+user_epass=Clave de acceso inválida o sin poner
+user_ename=Nombre de usuario inválido o sin poner
+
+host_ecannot=No estás autorizado a editar máquinas autorizadas
+host_title=Máquinas Autorizadas
+host_desc=Cuando un cliente se conecta a la base de datos, las máquinas listadas debajo son procesadas en orden hasta que una coincide y el cliente es autorizado o denegado.
+host_local=Conexión local
+host_address=Dirección de máquina
+host_db=Base de datos
+host_auth=Modo de autenticación
+host_any=Cualquier máquina de red
+host_all=Todas las bases de datos
+host_same=Igual al nombre de usuario
+host_add=Crear una nueva máquina autorizada
+host_ident=Revisar servidor de <tt>identificación</tt> en máquina
+host_trust=No se requiere autenticación
+host_reject=Rechazar conexión
+host_password=Clave de acceso de texto
+host_crypt=Clave de acceso encriptada
+host_krb4=Kerberos V4
+host_krb5=Kerberos V5
+host_passwordarg=Usar archivo de clave de acceso
+host_identarg=Usar mapa de usuario
+host_create=Crear Máquina Autorizada
+host_edit=Editar Máquina Autorizada
+host_single=Máquina única
+host_network=Red
+host_netmask=Máscara de red
+host_return=lista de acceso a máquina
+host_err=No pude salvar máquina autorizada
+host_eident=Mapa de usuario inválido o sin poner
+host_epassword=Archivo de claves de acceso inválido o sin poner
+host_enetmask=Máscara de red inválida o sin poner
+host_enetwork=Red inválida o sin poner
+host_ehost=Dirección IP de máquina inválida o sin poner
+host_move=Mover
+
+grant_title=Privilegios garantizados
+grant_tvi=Objeto
+grant_type=Tipo
+grant_db=Base de Datos
+grant_public=Todo el mundo
+grant_group=Grupo $1
+grant_add=Añadir garantía en base de datos:
+grant_return=lista de privilegios
+grant_ecannot=No estás autorizado a editar privilegios
+grant_create=Crear Garantía
+grant_edit=Editar Garantía
+grant_header=Privilegios garantizados a usuarios
+grant_to=Garantizar privilegios sobre
+grant_table=Tabla
+grant_view=Vista o índice
+grant_users=Garantizar privilegios a
+grant_user=Usuario
+grant_what=Privilegios
+grant_r=Tabla
+grant_v=Vista
+grant_i=Índice
+grant_S=Secuencia
+grant_none=No existen tablas, vistas, secuencias o índices a los que garantizarles privilegios.
+
+group_title=Grupos de PostgreSQL
+group_ecannot=No estás autorizado a editar grupos
+group_name=Nombre de grupo
+group_id=ID de Grupo
+group_mems=Miembros
+group_add=Crear un nuevo grupo
+group_edit=Editar Grupo
+group_create=Crear Grupo
+group_header=Detalles de grupo de PostgreSQL
+group_return=lista de grupos
+group_err=No pude salvar grupo
+group_ename=Nombre de grupo inválido o sin poner
+group_egid=ID de grupo inválida o sin poner
+group_etaken=El nombre de grupo ya está en uso
+group_none=No existen actuálmente grupos de PostgreSQL
+
+esql=SQL $1 falló: $2
+
+log_start=Arrancado servidor de PostgreSQL
+log_stop=parado servidor de PostgreSQL
+log_db_create=Creada base de datos $1
+log_db_delete=Eliminada base de datos $1
+log_table_create=Creada tabla $1 en base de datos $2
+log_table_delete=Eliminada tabla $1 de la base de datos $2
+log_field_create=Añadido campo $1 $3 a $2 en base de datos $3
+log_field_modify=Modificado campo $1 $4 en $2 en base de datos $3
+log_field_delete=Borrado campo $1 de $2 en base de datos $3
+log_data_create=Añadida fila a tabla $2 en base de datos $3
+log_data_modify=Modificadas $1 filas en tabla $2 en base de datos $3
+log_data_delete=Borradas $1 filas de la tabla $2 en base de datos $3
+log_exec=Ejecutado SQL en base de datos $1
+log_exec_l=Ejecutado comando SQL $2 en base de datos $1
+log_create_user=Creado usuario $1
+log_delete_user=Borrado usuario $1
+log_modify_user=Modificado usuario $1
+log_create_group=Creado grupo $1
+log_delete_group=Borrado grupo $1
+log_modify_group=Modificado grupo $1
+log_create_local=Creada conexión local autorizada
+log_modify_local=Modificada conexión local autorizada
+log_delete_local=Borrada conexión local autorizada
+log_move_local=Movida conexión local autorizada
+log_create_all=Creada máquina autorizada a cualquiera
+log_modify_all=Modificada máquina autorizada a cualquiera
+log_delete_all=Borrada máquina autorizada a cualquiera
+log_move_all=Movida cualquier máquina autorizada
+log_create_hba=Creada máquina autorizada $1
+log_modify_hba=Modificada máquina autorizada $1
+log_delete_hba=Borrada máquina autorizada $1
+log_move_hba=Movida máquina $1 autorizada
+log_grant=Garantizados privilegios sobre $1 en base de datos $2
+log_pgconf=Archivo $1 de configuración de ejecución modificado
+
+acl_dbs=Bases de datos que este usuario puede gestionar
+acl_dbscannot=Este control de acceso será efectivo tras arrancar el servidor de base de datos PostgreSQL.
+acl_dall=Todas las bases de datos
+acl_dsel=Las seleccionadas...
+acl_create=¿Puede crear nuevas bases de datos?
+acl_delete=¿Puede eliminar bases de datos?
+acl_stop=¿Puede parar y arrancar el servidor PostgreSQL?
+acl_users=¿Puede editar usuarios, grupos y garantías?
+acl_pgconf=¿Puede editar los parámetros de configuración de ejecución?
+
+fdrop_err=Error durante el borrado del campo
+fdrop_header=Borrar éste
+fdrop_lose_data=Selecciona la caja para confirmar que comprendes esas definiciones, tales como índices y valores por defecto, en todos los campos que pueden perderse.
+fdrop_perform=Borrar Campo
+fdrop_title=Borrar Campo
+
+pgconf_non_grant=No estás autorizado a editar los parámetros de configuración de ejecución
+pgconf_title=Configuración de ejecución
+pgconf_editmsg=Editar el archivo $1
+
+pgconf_default=por defecto
+pgconf_boolean_string_error=Error en el tipo booleano
+pgconf_error=valor de $1 error "$2"
+
+pgconf_boolean_true=verdadero
+pgconf_boolean_false=falso
+
+pgconf_boolean_on=puesto
+pgconf_boolean_off=quitado
+
+pgconf_int=entero
+pgconf_bool=booleano
+pgconf_double=punto flotante
+pgconf_string=cadena
+
+pgconfst_connection_parameters=Parámetros de Conexión
+pgconfst_performance=Rendimiento
+pgconfst_optimizer_parameters=Parámetros de Optimizador
+pgconfst_geqo_optimizer_parameters=Parémtros de Optimizador GEQO
+pgconfst_inheritance=Herencia
+pgconfst_deadlock=BloqueoMortal
+pgconfst_expression_depth_limitation=Límite de profundidad de Expresión
+pgconfst_write_ahead_log=Diario de Escritura adelantada (WAL)
+pgconfst_debug_display=Mostrar depuración
+pgconfst_syslog=Diario de sistema
+pgconfst_statistics=Estadísticas
+pgconfst_lock_tracing=Traza de Bloqueo
+pgconfst_etc=Otros
+
+pgconf_wal_sync_method_com=Dependencia de Plataforma.

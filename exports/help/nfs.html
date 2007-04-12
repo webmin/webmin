@@ -1,0 +1,22 @@
+<h3>Introduction to NFS</h3>
+
+NFS is the standard file-sharing protocol used by Unix systems. NFS allows
+one system to export a directory across the network to one or more other
+hosts, allowing users and programs on those hosts to access exported files
+as though they were local. <p>
+
+An NFS server is a system which exports one or more directories, while an NFS
+client is a system that mounts one or more directories from a server. A
+host can be both an NFS server and a client of other servers. <p>
+
+A server controls which clients can mount an exported directory by checking
+the IP address of the client against a list of allowed hosts for the
+requested directory. The server can also designate an export read-only,
+or read-only for certain clients. <p>
+
+Unlike other network filesystems, an NFS client does not have to login to
+the server when mounting an exported directory. The server trusts the client
+to authenticate users (either with Unix credentials, or with trough a Kerberos5 authentication)
+and provide the ID of the current user when accessing
+exported files.  Thus you should only allow client hosts that you trust to
+mount exported directories. <p>

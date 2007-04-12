@@ -1,0 +1,146 @@
+#!/usr/local/bin/perl
+#
+# postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
+# for webmin by Jamie Cameron
+#
+# Copyright (c) 2000 by Mandrakesoft
+#
+# Permission to use, copy, modify, and distribute this software and its
+# documentation under the terms of the GNU General Public License is hereby 
+# granted. No representations are made about the suitability of this software 
+# for any purpose. It is provided "as is" without express or implied warranty.
+# See the GNU General Public License for more details.
+#
+#
+# A word about this module.
+#
+# Postfix provides a command to control its parameters: `postconf'.
+# That's the reason why I don't parse and set the values manually.
+# It's much better because it can resist to changes of the Postfix
+# config files.
+#
+# However, to `set back to default' an already changed parameter,
+# there is no way to do it in the case of dynamic parameters.
+# [example: I mean that for `static' parameters, which defaults to
+# `0', I can set the parameter to `0' ; but for `dynamic'
+# parameters such as domainname [which comes from a system call]
+# I have no way]
+# So for this special case, I parse the config file, and delete
+# manually the correct line.
+#
+# gc.
+#
+
+
+require './postfix-lib.pl';
+
+if (&has_command($config{'postfix_config_command'}) &&
+    &backquote_command("$config{'postfix_config_command'} mail_version 2>&1", 1) =~ /mail_version\s*=\s*(.*)/) {
+	# Got the version
+	$postfix_version = $1;
+	}
+&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
+	&help_search_link("postfix", "man", "doc", "google"),
+	undef, undef, $postfix_version ?
+		&text('index_version', $postfix_version) : undef);
+
+# Save the version for use by other CGIs
+&open_tempfile(VERSION, ">$module_config_directory/version", 0, 1);
+&print_tempfile(VERSION, "$postfix_version\n");
+&close_tempfile(VERSION);
+
+# Verify the postfix control command
+if (!-x $config{'postfix_control_command'}) {
+	print &text('index_epath',
+		"<tt>$config{'postfix_control_command'}</tt>",
+		"../config.cgi?$module_name"),"<p>\n";
+
+	&foreign_require("software", "software-lib.pl");
+	$lnk = &software::missing_install_link(
+			"postfix", $text{'index_postfix'},
+			"../$module_name/", $text{'index_title'});
+	print $lnk,"<p>\n" if ($lnk);
+
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
+# Verify the postfix config command
+if (!-x $config{'postfix_config_command'}) {
+	print &text('index_econfig',
+		"<tt>$config{'postfix_config_command'}</tt>",
+		"../config.cgi?$module_name"),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
+# Verify the postsuper command
+if (!-x $config{'postfix_super_command'}) {
+	print &text('index_esuper',
+		"<tt>$config{'postfix_super_command'}</tt>",
+		"../config.cgi?$module_name"),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
+# Verify that current configuration is valid
+if ($config{'index_check'} && ($err = &check_postfix())) {
+	print &text('check_error'),"<p>\n";
+	print "<pre>$err</pre>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
+@onames =  ( "general", "address_rewriting", "aliases", "canonical", "virtual", "transport", "relocated", "header", "body",
+	     "local_delivery", "resource",
+	     "smtpd", "smtp",
+	     "rate", "debug", $postfix_version > 2 ? ( ) : ( "ldap" ),
+	     "master", "mailq", "postfinger", "boxes", "manual" );
+
+$access{'boxes'} = &foreign_available("mailboxes");
+foreach $oitem (@onames)
+{
+	if ($access{$oitem}) {
+		push (@olinks, $oitem eq "boxes" ? "../mailboxes/"
+						 : $oitem . ".cgi");
+		push (@otitles, $oitem eq 'manual' ? $text{'cmanual_title'}
+						   : $text{$oitem . "_title"});
+		if ($oitem eq 'mailq' && !$config{'mailq_count'}) {
+			# Count the queue
+			local @mqueue = &list_queue();
+			local $mcount = scalar(@mqueue);
+			$otitles[$#otitles] .=
+				"<br>".&text('mailq_count', $mcount);
+			}
+		push (@oicons, "images/" . $oitem . ".gif");
+	}
+}
+
+&icons_table(\@olinks, \@otitles, \@oicons);
+
+
+if ($access{'startstop'})
+{
+    print "<hr>\n";
+
+    if (&is_postfix_running())
+    {
+	print "<table cellpadding=5 width=100%><tr><td>\n";
+	print "<form action=stop.cgi>\n";
+	print "<input type=submit value=\"$text{'index_stop'}\">\n";
+	print "</td> <td>$text{'index_stopmsg'}\n";
+    }
+    else
+    {
+	print "<table cellpadding=5 width=100%><tr><td>\n";
+	print "<form action=start.cgi>\n";
+	print "<input type=submit value=\"$text{'index_start'}\">\n";
+	print "</td> <td>$text{'index_startmsg'}\n";
+    }
+    print "</td></tr></table></form>\n";
+}
+
+&ui_print_footer("/", $text{'index'});
+
+
+

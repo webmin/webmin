@@ -1,0 +1,171 @@
+main_return=Zpìt na $1
+main_homepage=Hlavní strana
+main_feedback=Feedback..
+main_switch=Pøepnout na u¾ivatele..
+main_version=Verze $1 na serveru $2 ($3)
+main_title=Webmin $1 na serveru $2 ($3)
+main_none=Nemáte právo k ¾ádným modulùm.
+main_logout=Odhlá¹ení
+main_skill=Znalostní úroveò
+
+category_system=Systém
+category_hardware=Hardware
+category_net=Sí»
+category_=Ostatní
+category_webmin=Webmin
+category_servers=Servery
+
+header_webmin=<nobr>Zpìt na index Webminu</nobr>
+header_module=<nobr>Zpìt na index modulu</nobr>
+header_help=Nápovìda..
+header_config=<nobr>Nastavení modulu</nobr>
+header_servers=Servery Webminu
+
+index=index
+yes=Ano
+no=Ne
+save=Ulo¾it
+create=Vytvoøit
+delete=Smazat
+find=Vyhledat
+error=Chyba
+default=Výchozí
+modify=Zmìnit
+reset=Reset
+ok=OK
+cancel=Storno
+helpsearch=Vyhledání dokumentace..
+switch_remote_euser=Unixový u¾ivatel $1 neexistuje.
+
+chooser_title1=Vybrat soubor..
+chooser_title2=Vybrat adresáø..
+chooser_dir=Adresáø $1
+chooser_ok=Ok
+
+users_title1=Vybrat u¾ivatele..
+users_title2=Vybrat u¾ivatele..
+users_sel=Vybraní u¾ivatelé
+users_all=V¹ichni u¾ivatelé
+users_ok=Ok
+users_cancel=Storno
+users_clear=Vyprázdnit
+
+groups_title1=Vybrat skupiny..
+groups_title2=Vybrat skupinu..
+groups_all=V¹echny skupiny
+groups_sel=Vybrané skupiny
+groups_ok=Ok
+groups_cancel=Storno
+groups_clear=Vyprázdnit
+
+config_ecannot=Nemáte oprávnìní pro konfiguraci tohoto modulu
+config_title=Nastavení
+config_dir=Pro modul $1
+config_header=Nastavení voleb pro $1
+config_none=nic
+config_eaccess=Nemáte pøístup k tomuto modulu.
+config_err=Chyba pøi ukládání nastavení
+
+help_err=Chyba pøi zobrazení nápovìdy.
+help_epath=Chybìjící cesta k souboru nápovìdy
+help_efile=Nelze èíst soubor $1 nápovìdy.
+help_eheader=Chybí &lt;header&gt; sekce.
+help_einclude=Chyba pøi vkládání $1.
+help_eif=$1 chyba : $2
+help_eexec=$1 chyba : $2
+
+referer_title=Bezpeènostní varování
+referer_warn=<b>Varování !</b> Webmin detekoval program $2, který se pøipojil z adresy $1, které se zdá být mimo rozsah Webmin serveru. Mù¾e to být trik jak spustit nebezpeèný pøíkaz.
+referer_warn_unknown=<b>Varování !</b> Webmin detekoval program $1, který se pøipojil z neznámé adresy, které se zdá být mimo rozsah Webmin serveru. Mù¾e to být trik jak spustit nebezpeèný pøíkaz.
+referer_ok=Pokraèovat ve vykonání programu
+referer_again=Pøí¹tì toto varování nezobrazovat.
+
+session_header=Pøihlá¹ení do Webminu
+session_mesg=Pro pøihlá¹ení do Webminu na serveru $1 musíte zadat u¾ivatelské jméno a heslo.
+session_mesg2=Pro pøihlá¹ení musíte zadat u¾ivatelské jméno a heslo.
+session_user=U¾ivatelské jméno
+session_pass=Heslo
+session_login=Pøihlásit
+session_clear=Vyprázdnit
+session_failed=Pøihlá¹ení se nezdaøilo. Zkuste to znovu.
+session_logout=Byl jste odhlá¹en z Webminu.
+session_timed_out=Vypr¹el èasový limit po neaktivitì $1 minut.
+session_save=Trvale zapamatovat heslo ?
+
+acl_root=Koøenový adresáø pro formuláø výbìru souboru
+acl_uedit=U¾ivatelé zobrazení ve formuláøi pro výbìr u¾ivatelù
+acl_uedit_all=V¹ichni u¾ivatelé
+acl_uedit_none=¾ádní u¾ivatelé
+acl_uedit_only=Pouze u¾ivatelé
+acl_uedit_except=V¹ichni u¾ivatelé kromì
+acl_uedit_uid=U¾ivatelé s UID v rozsahu
+acl_uedit_group=U¾ivatelé ve skupinì
+acl_gedit=Skupiny zobrazené ve formuláøi pro výbìr skupin
+acl_gedit_all=V¹echny skupiny
+acl_gedit_none=¾ádné skupiny
+acl_gedit_only=Pouze skupiny
+acl_gedit_except=V¹echny skupiny kromì
+acl_gedit_gid=Skupiny s GID v rozsahu
+acl_feedback=Povolit odeslaní feedback emailu ?
+acl_feedback2=Ano
+acl_feedback1=Ano, ale bey konfiguraèních souborù
+acl_feedback0=Ne
+acl_rpc=Povolit vytváøení RPC volání ?
+acl_rpc2=Pouze pro u¾ivatele <tt>root</tt> nebo <tt>admin</tt>
+acl_rpc1=Ano
+acl_rpc0=Ne
+
+month_1=Leden
+month_2=Únor
+month_3=Bøezen
+month_4=Duben
+month_5=Kvìten
+month_6=Èerven
+month_7=Èervenec
+month_8=Srpen
+month_9=Záøí
+month_10=Øíjen
+month_11=Listopad
+month_12=Prosinec
+
+day_0=Nedìle
+day_1=Pondìlí
+day_2=Úterý
+day_3=Støeda
+day_4=Ètvrtek
+day_5=Pátek
+day_6=Sobota
+
+smonth_1=1
+smonth_2=2
+smonth_3=3
+smonth_4=4
+smonth_5=5
+smonth_6=6
+smonth_7=7
+smonth_8=8
+smonth_9=9
+smonth_10=10
+smonth_11=11
+smonth_12=12
+
+sday_0=Ne
+sday_1=Po
+sday_2=Út
+sday_3=St
+sday_4=Èt
+sday_5=Pá
+sday_6=Sa
+
+emodule=Pøístup zakázán: u¾ivatel $1 nemá oprávnìní k modulu $2.
+elock_tries=Chyba pøi zamykání souboru $1 po $2 minutách.
+
+skill_high=Expert
+skill_medium=Støednì pokroèilý
+skill_low=Zaèáteèník
+
+progress_size=Probíhá stahování $1 ($2 bytù) ..
+progress_nosize=Probíhá stahování $1 ..
+progress_data=Pøijato $1 bytù ($2 %)
+progress_data2=Pøijato $1 bytù
+progress_done=.. stahování dokonèeno.

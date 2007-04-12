@@ -1,0 +1,15 @@
+index_title=Command Shell
+index_ok=Execute command:
+index_history=Command history
+index_clear=Clear history
+index_clearcmds=Clear commands
+index_desc=Enter a shell command to execute in the text field below. The <tt>cd</tt> command may be used to change directory for subsequent commands.
+index_pok=Execute previous command
+index_edit=Edit previous
+
+acl_user=Execute commands as user
+acl_user_def=Current Webmin user
+
+log_run=Ran command $1
+log_clear=Cleared command history
+

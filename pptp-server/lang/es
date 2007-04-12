@@ -1,0 +1,133 @@
+index_title=Servidor VPN PPTP
+index_version=PoPToP versión $1
+index_epptpd=El servidor $1 PPTP PoPToP no se ha encontrado en el sistema o bien no es el programa correcto. Puede ser que no este instalado o que la <a href='$2'>configuración del módulo</a> sea incorrecta.
+index_econfig=No se ha encontrado en el sistema el fichero $1 de configuración del servidor PPTP. Puede ser que la <a href='$2'>configuración del módulo</a> sea incorrecta.
+index_stop=Detener el servidor PPTP
+index_stopdesc=Presione sobre este botón para cerrar el proceso PPTP servidor en ejecución, de manera que no se accepte ninguna nueva conexión. Pero, las conexiones VPN existentes continuarán activas.
+index_start=Iniciar el servidor PPTP
+index_startdesc=Presione sobre este botón para iniciar el proceso PPTP servidor de manera que se pueda recibir conexiones VPN de los clientes.
+index_apply=Aplicar la Configuración
+index_applydesc=Presione sobre este botón para aplicar las opciones actuales del servidor PPTP deteniendo y reiniciando el proceso PPTP servidor. Los cambios de las opciones PPP y las cuentas PPP se aplicaran siempre en cualquier nueva conexión. 
+index_return=índice de módulos
+index_epppd=El programa servidor PPP $1 no está instalado. PPTP depende para poder operar.
+
+conf_title=Opciones del Servidor PPTP
+conf_header=Configuración del servidor PPTP
+conf_speed=Velocitad en baudios del PPP
+conf_baud=bps
+conf_listen=Escucha la dirección
+conf_all=Todas las direcciones
+conf_localip=Direcciones IP para el final de conexión del servidor
+conf_remoteip=Direcciones IP para asignar a los clientes
+conf_ipxnets=Redes IPX a alojar
+conf_from=De
+conf_to=a
+conf_option=Fichero de opciones PPP
+conf_mode0=Configuración global
+conf_mode1=Valores específicos de PPTP
+conf_mode2=Fichero personalizado
+conf_ipdesc=Las direcciones IP de ambos rangos se pueden introducir com una sola dirección (como 192.168.1.1) o como un rango (como 192.168.2.32-64)
+conf_err=No he podido salvar las opciones del servidor
+conf_espeed=Falta la velocidad en baudios o bien es inválida
+conf_elisten=Falta la dirección a escuchar o bien es inválida
+conf_eoption=Falta el fichero de opciones PPP personalizado o bien es inválido
+conf_elocalip='$1' no es una dirección IP ni un rango local válido
+conf_eremoteip='$1' no es una dirección IP ni un rango remoto válido
+conf_efrom=Falta la dirección de origen de la red IPX o bien es inválida
+conf_eto=Falta la dirección de destinación de la red IPX o bien es inválida
+
+options_title=Opciones del PPP
+options_desc0=Las opciones PPP a bajo de $1 se aplican a TODAS las conexiones de entrada recibidas por el sistema, incluyendo las llamadas por modem.
+options_desc1=Las opciones PPP a bajo de $1 se aplican solo a todas las conexiones PPTP.
+options_desc2=Seran utilizadas para cualquier nueva conexión que se establezca después de salvar este formulario.
+options_header=Opciones de conexión PPP
+options_proxyarp=Crear entrada ARP de proxy
+options_lock=Bloquea el fichero de dispositivo PTY
+options_auth=Pide autenticación
+options_auth0=No, pero evite IPs enrutadas
+options_auth1=Nunca
+options_auth2=Siempre
+options_login=Haz también autenticación Unix
+options_pap=Autenticación PAP
+options_chap=Autenticación CHAP
+options_req=Hay que utilizar
+options_all=Se puede utilizar
+options_ref=No se puede utilizar
+options_name=Nombre del servidor para la autenticación
+options_hn=Nombre del host real
+options_mtu=Longitud máxima de los paquetes enviados
+options_mru=Longitud máxima de los paquetes recibidos
+options_err=No he podido salvar las opciones PPP
+options_emtu=Falta la longitud máxima de los paquetes enviados o bien es inválida
+options_emru=Falta la longitud máxima de los paquetes recibidos o bien es inválida
+options_ename=Falta el nombre del servidor para la autenticación o bien es inválido
+options_version=PPPd versión $1
+options_msdesc= Las opciones de a bajo activan el método de autenticación MS-CHAP y el cifrado MPPE, que es el utilizado por defecto por los clientes VPN de Windows. No obstante, MPPE necesita soporte tanto en el demonio PPP como en el kernel del sistema operativo.
+options_mschap=Autenticación MS-CHAP
+options_mschap-v2=Autenticación MS-CHAP versión 2
+options_chapms=$options_mschap
+options_chapms-v2=$options_mschap-v2
+
+secrets_title=Cuentas PPP
+secrets_return=el índice
+secrets_none=Todavía no se ha creado ninguna cuenta PPP.
+secrets_enopfile=El fichero de contraseñas PPP $1 no existe. Puede ser que el PPP no este instalado, o bien que la <a href='$2'>configuración del módulo</a> sea incorrecta.
+secrets_table=Cuentas PPP de $1
+secrets_user=Usuario
+secrets_ips=Direcciones IP
+secrets_uany=Cualquiera
+secrets_sany=Cualquiera
+secrets_create=Crear una nueva cuenta PPP
+secrets_desc=Las cuentas PPP listadas en esta página se extraen del fichero $1, que se utiliza para la autenticación $3. Sólo se muestran las de tu servidor $2, no las cuentas para hacer conexiones hacia el exterior.
+
+edit_secret_etitle=Edición de Cuenta PPP
+edit_secret_ctitle=Creación de Cuenta PPP
+edit_secret_acc=Cuenta PPP
+edit_secret_user=Usuario
+edit_secret_serv=Servidor
+edit_secret_sany=Cualquiera
+edit_secret_uany=Cualquiera
+edit_secret_pass=Contraseña
+edit_secret_none=Ninguna
+edit_secret_ffile=Del fichero
+edit_secret_leave=No lo canvies
+edit_secret_setto=Establece a
+edit_secret_vaddr=Direcciones Válidas
+edit_secret_aany=Permitirlas todas
+edit_secret_anone=No permitas ninguna
+edit_secret_alist=Permitir las listadas
+edit_secret_sav=Salvar
+edit_secret_del=Suprimir
+edit_secret_return=la lista de cuentas
+
+save_secret_esave=No he podido salvar la cuenta
+save_secret_enoip='$1' no es una dirección válida
+
+stop_err=No he podido detener el servidor PPTP
+stop_egone=Ya no está en ejecución
+start_err=No he podido iniciar el servidor PPTP
+apply_err=No he podido reiniciar el servidor PPTP
+
+conns_title=Conexiones Activas
+conns_desc=Esta página muestra las conexiones PPTP actualmente activas en el servidor. Para desconenctar una a la fuerza, presione sobre el nombre de su interfaz.
+conns_iface=Interfaz PPP
+conns_client=Dirección del cliente
+conns_stime=Conectado desde
+conns_local=Dirección VPN del servidor
+conns_remote=Dirección VPN del cliente
+conns_none=No hay ninguna conexión PPTP activa en estos momentos.
+conns_unknown=Desconocido
+
+disc_err=No he podido desconectar
+disc_egone=La conexión ya no es activa
+disc_ekill=El proceso ya no está en ejecución
+
+log_secret_create=He creado la cuenta PPP $1
+log_secret_modify=He modificado la cuenta PPP $1
+log_secret_delete=He suprimido la cuenta PPP $1
+log_conf=He modificado las opciones del servidor PPTP
+log_options=He modificado las opciones PPP
+log_disc=He desconectado el cliente $1
+log_start=He iniciado el servidor PPTP
+log_stop=He detenido el servidor PPTP
+log_apply=He aplicado la configuración del servidor PPTP

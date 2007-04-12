@@ -1,0 +1,9 @@
+desc=SMART Drive Status
+os_support=*-linux
+depends=fdisk
+category=hardware
+longdesc=Check the status of IDE drives to detect problems and potential failures.
+desc_sk=SMART stav diskov
+desc_ca=Estat de les Unitats SMART
+desc_de=SMART Festplatten-Status
+desc_es=Estado de Dispositivos SMART

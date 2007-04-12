@@ -1,0 +1,9 @@
+line2=Configuració del sistema,11
+pppd=Camí del servidor pppd,0
+pap_file=Fitxer de comptes PAP,0
+encrypt_pass=Xifra les contrasenyes del fitxer de secrets,1,1-Sí,0-No
+ppp_options=Fitxer d'opcions PPP,0
+mgetty=Camí del programa mgetty,0
+login_config=Fitxer de configuració d'entrades de mgetty,0
+dialin_config=FItxer de configuració de trucades entrants de mgetty,0
+serials=Patró dels ports sèrie,0

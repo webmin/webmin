@@ -1,0 +1,32 @@
+<header>Restrictions on client hostnames/addresses</header>
+
+<center><tt>smtpd_client_restrictions</tt></center>
+<hr>
+
+This parameter specifies optional restrictions on SMTP client host names and
+addresses.
+
+<p>
+
+The default is to allow connections from any host.  The following
+restrictions are available:
+
+<include smtpd_restrictions>
+
+Restrictions are applied in the order as specified; the first
+restriction that matches wins.
+
+<p>
+
+Specify a list of restrictions, separated by commas and/or whitespace.
+Continue long lines by starting the next line with whitespace.
+
+<p>
+
+Sensible examples:
+<ul>
+<li><tt>permit_mynetworks, reject_unknown_client</tt>
+<li><tt>reject_maps_rbl, reject_unknown_client</tt>
+</ul>
+
+<hr>

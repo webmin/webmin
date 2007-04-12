@@ -1,0 +1,477 @@
+#!/usr/local/bin/perl
+# view_table.cgi
+# Display all data in some table
+
+if (-r 'mysql-lib.pl') {
+	require './mysql-lib.pl';
+	}
+else {
+	require './postgresql-lib.pl';
+	}
+require './view-lib.pl';
+
+if ($config{'charset'}) {
+	$force_charset = $config{'charset'};
+	}
+if ($ENV{'CONTENT_TYPE'} !~ /boundary=/) {
+	&ReadParse();
+	}
+else {
+	&ReadParseMime();
+	}
+&can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
+@str = &table_structure($in{'db'}, $in{'table'});
+foreach $s (@str) {
+	$keyed++ if ($s->{'key'} eq 'PRI');
+	}
+if (!$keyed && $module_name eq "postgresql") {
+	# Can use oid as key
+	eval { $main::error_must_die = 1;
+	       $d = &execute_sql($in{'db'}, "select oid from ".
+					    &quotestr($in{'table'}).
+					    " where 0 = 1"); };
+	if (!$@) {
+		# Has an OID, so use it
+		$use_oids = 1;
+		$keyed = 1;
+		}
+	}
+
+# Get search and limiting SQL
+($search, $searchhids, $searchargs, $advcount) = &get_search_args(\%in);
+$limitsql = &get_search_limit(\%in);
+($sortsql, $sorthids, $sortargs) = &get_search_sort(\%in);
+
+# Work out where clause for rows we are operating on
+$where_select = "select ".($use_oids ? "oid" : "*").
+		" from ".&quotestr($in{'table'})." $search $sortsql $limitsql";
+
+if ($in{'delete'}) {
+	# Deleting selected rows
+	$d = &execute_sql($in{'db'}, $where_select);
+	@t = map { $_->{'field'} } @str;
+	$count = 0;
+	foreach $r (split(/\0/, $in{'row'})) {
+		local @where;
+		local @r = @{$d->{'data'}->[$r]};
+		if ($use_oids) {
+			# Where clause just uses OID
+			push(@where, "oid = $r[0]");
+			}
+		else {
+			# Where clause uses keys
+			for($i=0; $i<@t; $i++) {
+				if ($str[$i]->{'key'} eq 'PRI') {
+					if ($r[$i] eq 'NULL') {
+						push(@where, &quotestr($t[$i]).
+							     " is null");
+						}
+					else {
+						$r[$i] =~ s/'/''/g;
+						push(@where, &quotestr($t[$i]).
+							     " = '$r[$i]'");
+						}
+					}
+				}
+			}
+		&execute_sql_logged($in{'db'},
+				    "delete from ".&quotestr($in{'table'}).
+				    " where ".join(" and ", @where));
+		$count++;
+		}
+	&webmin_log("delete", "data", $count, \%in);
+	&redirect("view_table.cgi?db=$in{'db'}&".
+		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
+		  $searchargs.$sortargs);
+	}
+elsif ($in{'save'}) {
+	# Update edited rows
+	$d = &execute_sql($in{'db'}, $where_select);
+	@t = map { $_->{'field'} } @str;
+	$count = 0;
+	for($j=0; $j<$config{'perpage'}; $j++) {
+		next if (!defined($in{"${j}_$t[0]"}));
+		local (@where, @set);
+		local @r = @{$d->{'data'}->[$j]};
+		local @params;
+		if ($use_oids) {
+			# Where clause just uses OID
+			push(@where, "oid = $r[0]");
+			}
+		for($i=0; $i<@t; $i++) {
+			if (!$use_oids) {
+				# Where clause uses keys
+				if ($str[$i]->{'key'} eq 'PRI') {
+					if ($r[$i] eq 'NULL') {
+						push(@where, &quotestr($t[$i]).
+							     " is null");
+						}
+					else {
+						$r[$i] =~ s/'/''/g;
+						push(@where, &quotestr($t[$i]).
+							     " = '$r[$i]'");
+						}
+					}
+				}
+			local $ij = $in{"${j}_$t[$i]"};
+			local $ijdef = $in{"${j}_$t[$i]_def"};
+			next if ($ijdef || !defined($ij));
+			if (!$config{'blob_mode'} || !&is_blob($str[$i])) {
+				$ij =~ s/\r//g;
+				}
+			push(@set, &quotestr($t[$i])." = ?");
+			push(@params, $ij eq '' ? undef : $ij);
+			}
+		&execute_sql_logged($in{'db'},
+				    "update ".&quotestr($in{'table'})." set ".
+				    join(" , ", @set)." where ".
+				    join(" and ", @where), @params);
+		$count++;
+		}
+	&webmin_log("modify", "data", $count, \%in);
+	&redirect("view_table.cgi?db=$in{'db'}&".
+		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
+		  $searchargs.$sortargs);
+	}
+elsif ($in{'savenew'}) {
+	# Adding a new row
+	for($j=0; $j<@str; $j++) {
+		if (!$config{'blob_mode'} || !&is_blob($str[$j])) {
+			$in{$j} =~ s/\r//g;
+			}
+		push(@set, $in{$j} eq '' ? undef : $in{$j});
+		}
+	&execute_sql_logged($in{'db'}, "insert into ".&quotestr($in{'table'}).
+		    " values (".join(" , ", map { "?" } @set).")", @set);
+	&redirect("view_table.cgi?db=$in{'db'}&".
+		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
+		  $searchargs.$sortargs);
+	&webmin_log("create", "data", undef, \%in);
+	}
+elsif ($in{'cancel'} || $in{'new'}) {
+	undef($in{'row'});
+	}
+
+$desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
+&ui_print_header($desc, $text{'view_title'}, "");
+
+$d = &execute_sql_safe($in{'db'},
+	"select count(*) from ".&quotestr($in{'table'})." ".$search);
+$total = int($d->{'data'}->[0]->[0]);
+if ($in{'jump'} > 0) {
+	$in{'start'} = int($in{'jump'} / $config{'perpage'}) *
+		       $config{'perpage'};
+	if ($in{'start'} >= $total) {
+		$in{'start'} = $total - $config{'perpage'};
+		$in{'start'} = int(($in{'start'} / $config{'perpage'}) + 1) *
+			       $config{'perpage'};
+		}
+	}
+else {
+	$in{'start'} = int($in{'start'});
+	}
+if ($in{'new'} && $total > $config{'perpage'}) {
+	# go to the last screen for adding a row
+	$in{'start'} = $total - $config{'perpage'};
+	$in{'start'} = int(($in{'start'} / $config{'perpage'}) + 1) *
+		       $config{'perpage'};
+	}
+if ($in{'start'} || $total > $config{'perpage'}) {
+	print "<center>\n";
+	if ($in{'start'}) {
+		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
+		       "<img src=/images/left.gif border=0 align=middle></a>\n",
+			$in{'db'}, $in{'table'},
+			$in{'start'} - $config{'perpage'},
+			$searchargs, $sortargs;
+		}
+	print "<font size=+1>",&text('view_pos', $in{'start'}+1,
+	      $in{'start'}+$config{'perpage'} > $total ? $total :
+	      $in{'start'}+$config{'perpage'}, $total),"</font>\n";
+	if ($in{'start'}+$config{'perpage'} < $total) {
+		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
+		       "<img src=/images/right.gif border=0 align=middle></a> ",
+			$in{'db'}, $in{'table'},
+			$in{'start'} + $config{'perpage'},
+			$searchargs, $sortargs;
+		}
+	print "</center>\n";
+	}
+
+print "<table width=100% cellspacing=0 cellpadding=0>\n";
+
+if ($in{'field'}) {
+	# Show details of simple search
+	print "<tr> <td><b>",&text('view_searchhead', "<tt>$in{'for'}</tt>",
+			   "<tt>$in{'field'}</tt>"),"</b></td>\n";
+	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
+	      "table=$in{'table'}$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";
+	}
+elsif ($in{'advanced'}) {
+	# Show details of advanced search
+	print "<tr> <td><b>",&text('view_searchhead2', $advcount),"</b></td>\n";
+	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
+	      "table=$in{'table'}$sortargs'>$text{'view_searchreset'}</a></td> </tr>\n";
+	}
+if ($in{'sortfield'}) {
+	# Show current sort order
+	print "<tr> <td><b>",&text($in{'sortdir'} ? 'view_sorthead2' : 'view_sorthead1',
+			      "<tt>$in{'sortfield'}</tt>"),"</b></td>\n";
+	print "<td align=right><a href='view_table.cgi?db=$in{'db'}&",
+	      "table=$in{'table'}$searchargs'>$text{'view_sortreset'}</a></td> </tr>\n";
+	}
+
+print "</table>\n";
+
+if ($config{'blob_mode'}) {
+	print &ui_form_start("view_table.cgi", "form-data");
+	}
+else {
+	print &ui_form_start("view_table.cgi", "post");
+	}
+print &ui_hidden("db", $in{'db'}),"\n";
+print &ui_hidden("table", $in{'table'}),"\n";
+print &ui_hidden("start", $in{'start'}),"\n";
+print $searchhids;
+print $sorthids;
+$check = !defined($in{'row'}) && !$in{'new'} && $keyed;
+if ($total || $in{'new'}) {
+	# Get the rows of data, and show the table header
+	$d = &execute_sql_safe($in{'db'},
+		"select * from ".&quotestr($in{'table'})." $search $sortsql $limitsql");
+	@data = @{$d->{'data'}};
+	@tds = $check ? ( "width=5" ) : ( );
+	($has_blob) = grep { &is_blob($_) } @str;
+
+	@rowlinks = $check ? ( &select_all_link("row"),
+			       &select_invert_link("row") ) : ( );
+	print &ui_links_row(\@rowlinks);
+	print &ui_columns_start([
+		$check ? ( "" ) : ( ),
+		map { &column_sort_link($_->{'field'}) } @str
+		], 100, 0, \@tds);
+
+	# Add an empty row for inserting
+	$realrows = scalar(@data);
+	if ($in{'new'}) {
+		push(@data, [ map { undef } @str ]);
+		$row{$realrows} = 1;
+		}
+
+	# Show the rows, some of which may be editable
+	map { $row{$_}++ } split(/\0/, $in{'row'});
+	$w = int(100 / scalar(@str));
+	$w = 10 if ($w < 10);
+	for($i=0; $i<@data; $i++) {
+		local @d = map { $_ eq "NULL" ? undef : $_ } @{$data[$i]};
+		if ($row{$i} && ($config{'add_mode'} || $has_blob)) {
+			# Show multi-line row editor
+			$et = "<table border>\n";
+			$et .= "<tr $tb> <td><b>$text{'view_field'}</b></td> ".
+			      "<td><b>$text{'view_data'}</b></td> </tr>\n";
+			for($j=0; $j<@str; $j++) {
+				local $nm = $i == $realrows ? $j :
+						"${i}_$str[$j]->{'field'}";
+				$et .= "<tr $cb> <td><b>$str[$j]->{'field'}</b></td> <td>\n";
+				if ($config{'blob_mode'} &&
+				    &is_blob($str[$j]) && $d[$j]) {
+					# Show as keep/upload inputs
+					$et .= &ui_radio($nm."_def", 1,
+					    [ [ 1, $text{'view_keep'} ],
+					      [ 0, $text{'view_set'} ] ])." ".
+					  &ui_upload($nm);
+					}
+				elsif ($config{'blob_mode'} &&
+				       &is_blob($str[$j])) {
+					# Show upload input
+					$et .= &ui_upload($nm);
+					}
+				elsif ($str[$j]->{'type'} =~ /^enum\((.*)\)$/) {
+					# Show as enum list
+					$et .= &ui_select($nm, $d[$j],
+					    [ [ "", "&nbsp;" ],
+					      map { [ $_ ] } &split_enum($1) ],
+					    1, 0, 1);
+					}
+				elsif ($str[$j]->{'type'} =~ /\((\d+)\)/) {
+					# Show as known-size text
+					local $nw = $1 > 70 ? 70 : $1;
+					$et .= &ui_textbox($nm, $d[$j], $nw);
+					}
+				elsif (&is_blob($str[$j])) {
+					# Show as multiline text
+					$et .= &ui_textarea($nm, $d[$j], 5, 70);
+					}
+				else {
+					# Show as fixed-size text
+					$et .= &ui_textbox($nm, $d[$j], 30);
+					}
+				$et .= "</td></tr>\n";
+				}
+			$et .= "</table>";
+			print &ui_columns_row([ $check ? ( "" ) : ( ), $et ],
+					      [ @tds, "colspan=".scalar(@d) ] );
+			}
+		elsif ($row{$i}) {
+			# Show one-line row-editor
+			local @cols;
+			for($j=0; $j<@d; $j++) {
+				local $l = $d[$j] =~ tr/\n/\n/;
+				local $nm = $i == $realrows ? $j :
+						"${i}_$d->{'titles'}->[$j]";
+				if ($config{'blob_mode'} &&
+				    &is_blob($str[$j])) {
+					# Cannot edit this blob
+					push(@cols, undef);
+					}
+				elsif ($str[$j]->{'type'} =~ /^enum\((.*)\)$/) {
+					# Show as enum list
+					push(@cols, &ui_select($nm, $d[$j],
+					    [ [ "", "&nbsp;" ],
+					      map { [ $_ ] } &split_enum($1) ],
+					    1, 0, 1));
+					}
+				elsif ($str[$j]->{'type'} =~ /\((\d+)\)/) {
+					# Show as known-size text
+					local $nw = $1 > 70 ? 70 : $1;
+					push(@cols,
+					     &ui_textbox($nm, $d[$j], $nw));
+					}
+				elsif ($l) {
+					# Show as multiline text
+					$l++;
+					push(@cols,
+					     &ui_textarea($nm, $d[$j], $l, $w));
+					}
+				else {
+					# Show as known size text
+					push(@cols,
+					     &ui_textbox($nm, $d[$j], $w));
+					}
+				}
+			print &ui_columns_row([ $check ? ( "" ) : ( ), @cols ],
+					      \@tds);
+			}
+		else {
+			# Show row contents
+			local @cols;
+			local $j = 0;
+			foreach $c (@d) {
+				if ($config{'blob_mode'} &&
+				    &is_blob($str[$j]) && $c ne '') {
+					# Show download link for blob
+					push(@cols, "<a href='download.cgi?db=$in{'db'}&table=$in{'table'}&start=$in{'start'}".$searchargs.$sortargs."&row=$i&col=$j'>$text{'view_download'}</a>");
+					}
+				else {
+					# Just show text (up to limit)
+					if ($config{'max_text'} &&
+					    length($c) > $config{'max_text'}) {
+						$c = substr($c, 0,
+						  $config{'max_text'})." ...";
+						}
+					push(@cols, &html_escape($c));
+					}
+				$j++;
+				}
+			if ($check) {
+				print &ui_checked_columns_row(\@cols, \@tds,
+							      "row", $i);
+				}
+			else {
+				print &ui_columns_row(\@cols, \@tds);
+				}
+			}
+		}
+	print &ui_columns_end();
+	print &ui_links_row(\@rowlinks);
+	}
+else {
+	print "<b>$text{'view_none'}</b> <p>\n";
+	}
+
+# Show buttons to edit / delete rows
+if (!$keyed) {
+	print "<b>$text{'view_nokey'}</b><p>\n";
+	print &ui_form_end();
+	}
+elsif (!$check) {
+	if ($in{'new'}) {
+		print &ui_form_end([ [ "savenew", $text{'save'} ],
+				     [ "cancel", $text{'cancel'} ] ]);
+		}
+	else {
+		print &ui_form_end([ [ "save", $text{'save'} ],
+				     [ "cancel", $text{'cancel'} ] ]);
+		}
+	}
+elsif ($total) {
+	print &ui_form_end([ [ "edit", $text{'view_edit'} ],
+			     [ "new", $text{'view_new'} ],
+			     [ "delete", $text{'view_delete'} ] ]);
+	}
+else {
+	print &ui_form_end([ [ "new", $text{'view_new'} ] ]);
+	}
+
+if (!$in{'field'} && $total > $config{'perpage'}) {
+	# Show search and jump buttons
+	print "<hr>\n";
+	print "<table width=100%><tr>\n";
+	print "<form action=view_table.cgi>\n";
+	print "<input type=hidden name=search value=1>\n";
+	print &ui_hidden("db", $in{'db'});
+	print &ui_hidden("table", $in{'table'});
+	$sel = &ui_select("field", undef,
+			[ map { [ $_->{'field'}, $_->{'field'} ] } @str ]);
+	$match = &ui_select("match", 0,
+			[ map { [ $_, $text{'view_match'.$_} ] } (0.. 3) ]);
+	print "<td>",&text('view_search2', "<input name=for size=20>", $sel,
+			   $match);
+	print "&nbsp;&nbsp;",
+	      "<input type=submit value='$text{'view_searchok'}'></td>\n";
+	print "</form>\n";
+
+	print "<form action=view_table.cgi>\n";
+	print &ui_hidden("db", $in{'db'});
+	print &ui_hidden("table", $in{'table'});
+	print "<td align=right><input type=submit value='$text{'view_jump'}'> ";
+	print "<input name=jump size=6></td></form>\n";
+
+	print "</tr><tr>\n";
+
+	print "<form action=search_form.cgi>\n";
+	print &ui_hidden("db", $in{'db'});
+	print &ui_hidden("table", $in{'table'});
+	print "<td><input type=submit value='$text{'view_adv'}'></td>\n";
+	print "</form>\n";
+
+	print "</tr> </table>\n";
+	}
+
+if ($access{'edonly'}) {
+	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}",$text{'dbase_return'},
+		"", $text{'index_return'});
+	}
+else {
+	&ui_print_footer("edit_table.cgi?db=$in{'db'}&table=".
+			 &urlize($in{'table'}),
+			$text{'table_return'},
+			"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+			"", $text{'index_return'});
+	}
+
+# column_sort_link(name)
+# Returns HTML for a link to switch sorting mode
+sub column_sort_link
+{
+local ($field) = @_;
+local $dir = $in{'sortfield'} eq $field ? !$in{'sortdir'} : 0;
+local $img = $in{'sortfield'} eq $field && $dir ? "sortascgrey.gif" :
+	     $in{'sortfield'} eq $field && !$dir ? "sortdescgrey.gif" :
+	     $dir ? "sortasc.gif" : "sortdesc.gif";
+return "<table cellpadding=0 cellspacing=0><tr><td><a href='view_table.cgi?db=$in{'db'}&table=".
+       &urlize($in{'table'})."&start=$in{'start'}&sortfield=$field&sortdir=$dir$searchargs'>".
+       "<b>$field</b></td><td align=right><img valign=middle src=../images/$img border=0></td>".
+       "</tr></table>";
+}
+

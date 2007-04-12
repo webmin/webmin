@@ -1,0 +1,7 @@
+fstab_file=列出開機時掛載檔案系統的檔案,0
+auto_file=NFS 自動掛載檔案,3
+autofs_file=核心自動掛載檔案,3
+long_fstypes=是否使用長檔案系統類別,1,1-是,0-否
+smbclient_path=到 <tt>smbclient</tt> 的完整路徑,3
+nmblookup_path=到 <tt>nmblookup</tt> 的完整路徑,3
+browse_server=要求瀏覽列表的伺服器來源為Server to request browse list from,3,localhost

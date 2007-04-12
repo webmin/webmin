@@ -1,0 +1,64 @@
+<header>Podstawianie kanoniczne</header>
+
+Fakultatywny plik podstawieñ kanonicznych okre¶la podstawianie lokalnych
+i&nbsp;zdalnych adresów. Podstawianie jest wykorzystywane przez demona
+cleanup(8). Podstawianie adresów jest rekurencyjne. <p>
+
+Plik s³u¿y jako dane wej¶ciowe dla polecenia postmap(1). Jego wynik,
+w&nbsp;postaci pliku indeksowego w&nbsp;formacie dbm lub db, jest
+wykorzystywany do szybkiego przeszukiwania przez system poczty. <p>
+
+Podstawianie kanoniczne dotyczy zarówno adresów w&nbsp;nag³ówkach wiadomo¶ci
+(tzn. adresów pojawiaj±cych siê w&nbsp;wiadomo¶ci), jak te¿ adresów na
+"kopercie" wiadomo¶ci (np. adresów u¿ywanych w&nbsp;poleceniach protoko³u
+SMTP). Traktuj to jak zestaw regu³ <tt>S3</tt> Sendmaila, je¶li chcesz. <p>
+
+Standardowo, mo¿na by u¿ywaæ tabeli kanonicznej do zast±pienia nazw
+logowania przez <tt>Imie.Nazwisko</tt> lub do porz±dkowania adresów
+odziedziczonych po poprzednich systemach poczty. <p>
+
+Podstawianie kanoniczne nie s³u¿y do tego by w&nbsp;nim wprowadzaæ
+zamieszanie z&nbsp;obs³ug± domen wirtualnych. U¿ywaj w&nbsp;tym celu
+podstawiania <a href=virtual>domen wirtualnych</a>. <p>
+
+Podstawianie kanoniczne nie s³u¿y do tego by w&nbsp;nim wprowadzaæ
+zamieszanie z&nbsp;lokalnymi aliasami. U¿ywaj w&nbsp;tym celu podstawiania
+<a href=aliases>aliasów pocztowych</a>. <p>
+
+Format podstawieñ kanonicznych jest nastêpuj±cy (podstawienia s± wykonywane
+w&nbsp;poni¿szej kolejno¶ci):
+
+<ul>
+
+<li><b><tt>uzytkownik@domena</tt></b> podstawiany... <b><tt>adres</tt></b>: <br>
+<tt>u¿ytkownik@domena</tt> jest zastêpowany przez <tt>adres</tt>. Ta postaæ
+ma najwy¿szy priorytet. Jest ona przydatna do porz±dkowania adresów
+odziedziczonych po poprzednich systemach poczty. Mo¿na j± równie¿
+wykorzystaæ do otrzymania adresów postaci <tt>Imie.Nazwisko</tt>, lecz ni¿ej
+opisano prostsze rozwi±zanie.
+
+<li><b><tt>uzytkownik</tt></b> podstawiany... <b><tt>adres</tt></b>: <br>
+<tt>u¿ytkownik@miejsce</tt> jest zastêpowany przez <tt>adres</tt> gdy
+<tt>miejsce</tt> jest to¿same z&nbsp;<tt>$myorigin</tt>, gdy jest wymienione
+w¶ród <tt>$mydestination</tt>, lub gdy jest wymienione w¶ród
+<tt>$inet_interfaces</tt>. Ta postaæ jest przydatna do zastêpowania nazw
+logowania przez <tt>Imie.Nazwisko</tt>.
+
+<li><b><tt>@domena</tt></b> podstawiany... <b><tt>adres</tt></b>: <br>
+Dowolny adres w&nbsp;<tt>domena</tt> jest zastêpowany przez <tt>adres</tt>.
+Ta postaæ ma najni¿szy priorytet. </ul>
+
+We wszystkich powy¿szych przypadkach, gdy adres ma postaæ
+<tt>@innadomena</tt>, wynikiem jest ten sam u¿ytkownik
+w&nbsp;<tt>innadomena</tt>. <p>
+
+ROZSZERZENIA ADRESÓW: Gdy przeszukiwanie tabeli zakoñczy siê niepowodzeniem
+a&nbsp;lokalna czê¶æ adresu zawiera fakultatywny ogranicznik odbiorcy (np.
+<tt>uzytkownik+cos@domena</tt>), przeszukiwanie jest powtarzane dla
+nierozszerzonego adresu (np. <tt>uzytkownik@domena</tt>) i&nbsp;niepasuj±ce
+rozszerzenie jest przenoszone na wynik przeszukiwania tebeli. Kolejno¶æ
+dopasowywania jest nastêpuj±ca: <tt>uzytkownik+cos@domena</tt>,
+<tt>uzytkownik@domena</tt>, <tt>uzytkownik+cos</tt>, <tt>uzytkownik</tt>
+oraz <tt>@domena</tt>.
+
+<hr>

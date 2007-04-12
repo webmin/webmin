@@ -1,0 +1,12 @@
+acl_user=Laksanakan arahan sebagai pengguna
+acl_user_def=Pengguna Webmin semasa
+index_clear=Lapangkan sejarah
+index_clearcmds=Lapangkan arahan
+index_desc=Masukkan arahan cengkerang Unix untuk dilaksana di dalam medan teks di bawah. Arahan <tt>cd</tt> boleh digunakan untuk menukar direktori untuk arahan berikut.
+index_edit=Edit sebelum
+index_history=Sejarah arahan
+index_ok=Lansana arahan:
+index_pok=Laksanakan arahan sebelumnya
+index_title=Arahan Cengkerang
+log_clear=Lapangkan sejarah arahan
+log_run=Telah larikan arahan $1

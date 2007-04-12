@@ -1,0 +1,24 @@
+<header>Alias A</header>
+
+Cada alias puede redirigir correo a varios receptores y cada receptor
+puede ser uno de los siguientes:
+<dl>
+<dt><b>Dirección de Correo</b>
+<dd>O bien una dirección completa de correo como <tt>foo@bar.com</tt>, o
+    el nombre de otro usuario de tu sistema como <tt>jcameron</tt>.
+<dt><b>Direcciones en Archivo</b>
+<dd>Para esta clase de alias debes de especificar la trayectoria completa
+    de un archivo que contenga una lista de direcciones de correo, una en
+    cada línea. Cada dirección puede ir totalmente calificada o ser el
+    nombre de otro usuario de tu sistema.
+<dt><b>Escribir en Archivo</b>
+<dd>En este caso, el correo será escrito en el archivo especificado. Para
+    hacer que se pierda todo el correo de alguna dirección, pon
+    <tt>/dev/null</tt> como nombre de archivo.
+<dt><b>Alimentar a Programa</b>
+<dd>Cada vez que un mensaje de correo llega para este alias, el programa
+    especificado será ejecutado y todo el mensaje de correo (cabeceras y
+    cuerpo) pasado a él como entrada estándar.
+</dl>
+<hr>
+

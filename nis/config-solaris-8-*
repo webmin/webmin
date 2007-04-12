@@ -1,0 +1,6 @@
+nsswitch_conf=/etc/nsswitch.conf
+sources=files nis nisplus hosts=dns passwd=compat group=compat ldap printers=user printers=xfn
+client_conf=
+securenets=/var/yp/securenets
+max_size=100
+manual_build=0

@@ -1,0 +1,3 @@
+add_ecfengine=CFengine ist auf dem Server $1 nicht installiert
+add_echeck=Auf dem Server $1 ist das Webmin-Modul f&#252;r den Konfigurationsautomat nicht zu finden.
+add_err=Konnte Server nicht hinzuf&#252;gen.

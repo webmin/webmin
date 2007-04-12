@@ -1,0 +1,8 @@
+desc=Cluster Shell Commands
+category=cluster
+longdesc=Run commands on multiple servers at once.
+desc_ca=Ordres Shell de Cluster
+desc_de=Cluster - Kommandozeile
+desc_fr=Commandes shell de clusters
+desc_es=Cluster - Comandos de Consola 
+desc_nl=Cluster - Shell Opdrachten

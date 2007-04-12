@@ -1,0 +1,25 @@
+<header>Edit Zone</header>
+
+This page allows you to make global configuration changes to a zone, perform various actions like rebooting and deleting, and manage the zone's configurable objects such as network interfaces and filesystems. <p>
+
+The first section shows the zone's current status and allows you to select if it is started at system boot or edit it's resource pool. These settings are applied by clicking the <b>Save</b> button. <p>
+
+Depending on the zone's status, various actions such as <b>Reboot</b>, <b>Shutdown</b> and <b>Bootup</b> can be performed on the zone using the buttons below the general zone configuration section. When a zone is in the <b>Halted</b> state, you can use the <b>Un-Install</b> button to remove all of it's private configuration files so that new package directories can be added. When a zone is not yet installed, the <b>Install</b> will add the system software needed for it to become usable. <p>
+
+Each zone has several types of configurable objects, listed on the rest of the page. These are :
+<ul>
+<li><b>Network interfaces</b><br>
+    Virtual IP addresses that are private to the zone.
+<li><b>Inherited package directories</b><br>
+    Read-only directories that are shared between the global system and the zone.
+<li><b>Additional filesystems</b><br>
+    Partitions on disks in the real system that are mounted by the zone, and
+    accessible only to it.
+<li><b>Resouce controls</b><br>
+    Restrictions on CPU time and other resources that apply to the zone.
+<li><b>Generic zone attributes</b><br>
+    Comments and other user-defined information associated with the zone.
+</ul>
+
+<footer>
+

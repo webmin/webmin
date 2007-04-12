@@ -1,0 +1,26 @@
+<header>Lista de búsquda para remisión</header>
+
+<center><tt>forward_path</tt></center>
+<hr>
+
+Este parámetro especifica una lista de búsqueda. Se usa el primer archivo
+que se encuentra.
+
+<p>
+
+Se realizan las siguientes expansiones:
+<ul>
+<li><tt>$user</tt> (nombre de usuario de destinatario),
+<li><tt>$shell</tt> (shell de destinatario),
+<li><tt>$home</tt> (directorio inicial de destinatario),
+<li><tt>$recipient</tt> (dirección completa de destinatario),
+<li><tt>$extension</tt> (extensión de dirección de destinatario),
+<li><tt>$domain</tt> (dominio de destinatario),
+<li><tt>$local</tt> (parte local completa del destinatario),
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Especifica <tt>${name?value}</tt> o <tt>${name:value}</tt> para expandir valor
+sólo cuando <tt>$name</tt> (no) exista.
+
+<hr>

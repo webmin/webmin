@@ -1,0 +1,12 @@
+ha_cf=
+authkeys=
+haresources=
+resource_d=
+stop_cmd=kill `cat /var/run/heartbeat.pid`
+start_cmd=/usr/lib/heartbeat/heartbeat
+pid_file=/var/run/heartbeat.pid
+ha_dir=/etc/ha.d
+apply_cmd=/usr/lib/heartbeat/heartbeat -r
+serials=/dev/ttyS*
+req_resource_cmd=/usr/lib/heartbeat/req_resource
+heartbeat=/usr/lib/heartbeat/heartbeat

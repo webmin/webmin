@@ -1,0 +1,14 @@
+virts=*
+global=1
+create=1
+vuser=1
+noconfig=0
+stop=1
+apply=1
+vaddr=1
+dir=/
+types=*
+pipe=1
+names=1
+dirsmode=0
+aliasdir=/

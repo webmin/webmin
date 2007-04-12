@@ -1,0 +1,8 @@
+ha_dir=A szívverés konfiguráció könyvtára,0
+ha_cf=A szívverés konfigurációs file könyvtára,3,Automatikus
+haresources=Az erõforrás file könyvtára,3,Automatikus
+authkeys=Az autentikációs kulcs file könyvtára,3,Automatikus
+resource_d=A szívverés szolgáltatás parancsfile könyvtára,3,Automatikus
+pid_file=A szívverés PID file könyvtára,0
+start_cmd=A szívverés indító parancs,0
+apply_cmd=A módosulások elfogadásához szükséges parancs,3,Automatikus

@@ -1,0 +1,35 @@
+index_title=Zlecone polecenia
+index_header=Zlecenie nowego polecenia
+index_user=Uruchom jako u¿ytkownik
+index_date=Uruchom dnia
+index_time=o&nbsp;godzinie
+index_cmd=Polecenia do uruchomienia
+index_id=Nr ID Zadania
+index_exec=Bêdzie uruchomione
+index_created=Zosta³o tworzone
+index_dir=Uruchom w&nbsp;katalogu
+index_return=listy poleceñ
+
+edit_title=Zlecone polecenie
+edit_cmd=Pe³en uruchamiany skrypt
+edit_header=Dane zleconego polecenia
+edit_delete=Anuluj to polecenie
+edit_ejob=Zlecone polecenie ju¿ nie istnieje!
+edit_ecannot=Nie masz uprawnieñ do zmiany tego zleconego polecenia
+
+create_err=Nie uda³o siê zleciæ polecenia
+create_euser=Nie podana lub niepoprawna nazwa u¿ytkownika
+create_edate=Nie podany lub niepoprawny czas
+create_ecmd=Nie podano poleceñ
+create_efuture=Data i&nbsp;czas jest z&nbsp;przesz³o¶ci
+create_edir=Nie podany lub niepoprawny katalog
+create_ecannot=Nie masz uprawnieñ do tworzenia zleconych poleceñ dla tego u¿ytkownika
+
+delete_err=Nie uda³o siê anulowaæ polecenia
+delete_egone=Polecenie zosta³o ju¿ uruchomione lub usuniête
+
+acl_users=Mo¿e zmieniaæ zlecone polecenia dla
+acl_all=Wszystkich u¿ytkowników
+acl_this=Aktualnego u¿ytkownika Webmina
+acl_only=Tylko dla u¿ytkowników
+acl_except=Oprócz u¿ytkowników

@@ -1,0 +1,112 @@
+index_title=CD燒錄
+index_profiles=燒錄設定檔
+index_name=設定檔名稱
+index_type=燒錄類型
+index_files=寫入檔案
+index_add=新增一個設定檔類型:
+index_type1=單一ISO映像檔
+index_type2=檔案和目錄
+index_type3=音訊資料
+index_none=目前沒有定義的燒錄設定檔
+index_global=通用選項
+index_ecdrecord=CD燒錄 在系統上找不到進行燒錄的$1.也許沒有安裝,或你的 <a href='$2'>模組組態設定</a> 有問題。
+index_return=燒錄設定檔清單
+
+edit_title=編輯燒錄設定檔
+create_title=新增燒錄設定檔案
+edit_emkisofs=在你的系統上找不到產生ISO檔案的命令 $1.也許還沒有安裝, 或你的 <a href='$2'>模組組態設定</a>有問題。
+edit_empg123=在你的系統上找不到MP3編碼指令也許還沒有安裝, 或你的 <a href='$2'>模組組態設定</a>有問題。
+edit_header=燒錄設定檔選項
+edit_name=設定檔名稱
+edit_iso=寫入ISO映像檔
+edit_isosize=取得ISO映像檔案大小?
+edit_dirs=要加入的目錄
+edit_source=原始目錄
+edit_dest=CD上的目錄
+edit_rock=使用RockRidge格式(for unix)?
+edit_rock2=是的, with sensible permissions
+edit_joliet=使用Joliet格式(for windows)?
+edit_long=支援長檔名?
+edit_trans=產生TRANS.TBL檔案?
+edit_volid=CD標籤名稱
+edit_mp3s=MP3檔案和目錄
+edit_burn=儲存並燒錄
+edit_test=儲存並測試燒錄
+edit_return=燒錄設定檔
+edit_ask=在燒錄前詢問組態資訊?
+
+save_err=儲存燒錄設定檔失敗
+save_ename=沒有輸入設定檔名稱
+save_eiso=沒有輸入或錯誤的ISO映像檔名
+save_esource=沒有輸入或錯誤的原始目錄 $1
+save_edest=沒有輸入CD上的目錄 $1
+save_edirs=沒有選取原始目錄
+save_emp3s=沒有輸入MP3檔案或目錄
+save_emp3=MP3檔案或目錄 '$1'不存在
+
+burn_title=燒錄CD
+burn_rutest1=你想要測試燒錄 ISO映像檔 $1嗎 ?
+burn_rusure1=你想要燒錄映像檔$1成CD ?
+burn_rutest2=你想要測試燒錄選取的資料夾 ?
+burn_rusure2=你確定要燒錄選取的資料夾 ?
+burn_rutest3=你確定要測試燒錄選取的音軌 ?
+burn_rusure3=你確定要燒錄選取的音軌 ?
+burn_ok=是的,燃燒吧!
+burn_cancel=不, 刪除暫存的ISO檔
+burn_eject=燒錄完成後退出CD片
+burn_blank=在燒錄前清除CD?
+burn_bfast=快速抹除
+burn_ball=慢速抹除
+burn_bg=在背景執行燒錄程序
+burn_edev=你不能在<a href='$1'>裝置選項</a>頁設定燒錄裝置時進行燒錄。
+burn_header=使用命令$1燒錄CD中 ..
+burn_theader=使用命令 $1測試燒錄中 ..
+burn_header2=用指令$1在背景燒錄CD ..
+burn_theader2=用指令$1在背景測試燒錄CD ..
+burn_mheader=使用命令$1產生ISO檔案 ..
+burn_mfailed=產生ISO檔案失敗!
+burn_egone=ISO映像檔案刪除 - 你必須回到 <a href='$1'>燒錄設定檔案/a>重新建立一個。
+burn_egone2=暫存音軌刪除 - 你必須回到 <a href='$1'>燒錄設定檔案/a>重新建立一個。
+burn_700=警告! 你的ISO映像檔案有 $1 MB , 80分鐘的CD只允許燒錄700mb。
+burn_650=警告! 你的ISO映像檔案有 $1 MB , 一般的CD只允許燒錄650mb。或許你可以使用80分鐘的CD。
+burn_size=所產生的ISO映像檔大小有 $1 MB,超過在一般CD所允許的$2 MB。
+burn_nomp3s=沒有選取在目錄中檔案
+burn_mp3header=用指令$1轉換MP3成音樂音軌中 ..
+burn_mp3failed=轉換MP3檔案失敗!
+burn_mp3format=檔案$1不是MP3格式
+burn_746=警告!您的音軌全部大小$1 MB,超過在一般CD上所允許的746 MB，或許你可以使用80分鐘的CD。
+burn_807=警告!您的音軌全部大小$1 MB,超過在一般CD上所允許的807 MB
+burn_mp3size=所轉換的音軌全部大小$1 MB,超過在一般音樂CD上所允許的 $2 MB
+
+dev_title=燒錄裝置選項
+dev_header=CD燒錄裝置選項
+dev_device=燒錄裝置
+dev_none=&lt;不選取d&gt;
+dev_speed=燒錄速度
+dev_other=其他..
+dev_extra=額外 <tt>CD燒錄</tt>選項
+dev_err=儲存裝置選項失敗
+dev_eother=沒有輸入或錯誤的燒錄速度
+
+mkisofs_title=ISO映像檔選項
+mkisofs_header=通用ISO檔案名稱選項
+mkisofs_novers=在檔案名稱中加入版本編號?
+mkisofs_notrans=檔案名稱允許所有字元?
+mkisofs_nobak=忽略備份檔案?
+mkisofs_fsyms=使用符號連結?
+
+config_cdrecord=CD燒錄指令
+config_mkisofs=產生ISO檔指令
+config_mpg123=MP3編碼指令
+config_temp=暫存檔目錄
+config_temp_def=Webmin的暫存目錄
+config_ecdrecord=沒有輸入或錯誤的CD燒錄指令
+config_emkisofs=沒有輸入或錯誤的產生ISO檔案指令
+config_empg123=沒有輸入或錯誤的MP3編碼指令
+config_etemp=沒有輸入或錯誤的暫存目錄
+
+index_type4=複製光碟
+edit_ecdrdao=在您的系統上找不到CD複製指令$1，也許您尚未安裝或是您的 <a href='$2'>模組組態</a>不正確。
+edit_sdev=來源光碟裝置
+edit_other=其他裝置..
+

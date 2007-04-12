@@ -1,0 +1,2 @@
+standard_url=URL de la liste des modules standard,3,www.webmin.com
+third_url=URL de la liste des modules non-standard,3,www.webmin.com

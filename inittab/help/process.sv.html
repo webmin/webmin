@@ -1,0 +1,10 @@
+<header>Process</header>
+
+I detta fält finns kommandoraden för det program som ska köras på den
+angivna nivån (t ex /etc/init.d/rc, /sbin/getty ...).
+
+<br>Om processfältet börjar med ett '+'-tecken kommer <i>init</i> inte
+att utföra utmp eller wtmp för processen. Detta behövs för gettys som
+sköter sin egen utmp/wtmp. Det är också en klassisk bugg.
+
+<hr>

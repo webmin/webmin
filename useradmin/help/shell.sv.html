@@ -1,0 +1,19 @@
+<header>Skal</header>
+
+När en användare loggar in via nätverk eller konsol, eller öppnar ett
+<tt>xterm</tt>-fönster i X, kommer användarens skalprogram att köras för
+att tolka de kommandon som skrivs in. Om en användare inte har något giltigt
+skalprogram eller har ett skal som inte kan göra något (t ex
+<tt>/bin/false</tt>), kommer denna användare inte att kunna logga in.
+Detta kan användas för att skapa användare som endast ska kunna läsa och
+skicka e-post.
+
+<p>I detta fält listas alla skal som används av någon användare i systemet.
+Välj ett av dessa eller <i>Övriga ...</i> och fyll i fullständig sökväg till
+skalet i textfältet nedanför.
+
+<p>Alla Unix-system har skalen Bourne shell (<tt>/bin/sh</tt>) och C Shell
+(<tt>/bin/csh</tt>). Andra vanliga - och mer användarvänliga - skal är
+<tt>tcsh</tt>, <tt>zsh</tt> och <tt>bash</tt>. 
+<hr>
+

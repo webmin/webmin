@@ -1,0 +1,22 @@
+<header>Demonio de Gestión de Configuración</header>
+
+El demonio de gestión de configuración es un proceso en segundo plano que
+desempeña varias funciones. Puede ejecutar la configuración principal a
+intervalos regulares, puede aceptar peticiones de otras máquinas para
+ejecutar la configuración principal inmediatamente, y puede transferir
+ficheros a otras máquinas que soliciten una copia a este servidor con la
+acción 'Copiar Ficheros'. <p>
+
+El demonio tiene su propio fichero de configuración, con una estructura de
+acciones y clases similar a la del fichero de configuración principal. Si
+la configuración está vacía, debería comenzar por crear una acción
+<i>Opciones del demonio de configuración</i> que defina los comandos que
+ejecutar periódicamente y cuando se reciban peticiones de otras máquinas.
+También se pueden añadir otros tipos de acciones para restringir el acceso
+desde determinadas máquinas a los ficheros copiados. <p>
+
+Al final de la página hay un botón para iniciar el demonio (de no estar
+actualmente en ejecución) o detenerlo (si está en ejecución). <p>
+
+<hr>
+

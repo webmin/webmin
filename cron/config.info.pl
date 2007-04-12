@@ -1,0 +1,13 @@
+cron_dir=Katalog tablic crona,0
+cron_get_command=Polecenie czytania zadañ u¿ytkownika dla crona,0
+cron_edit_command=Polecenie modyfikacji zadañ u¿ytkownika dla crona,0
+cron_copy_command=Polecenie przyjêcia zadania u¿ytkownika ze standardowego wej¶cia,0
+cron_delete_command=Polecenie usuniêcia zadañ u¿ytkownika dla crona,0
+cron_input=Cron pozwala na dodawanie zadañ,1,1-Tak,0-Nie
+cron_allow_file=Plik z list± dopuszczonych u¿ytkowników,0
+cron_deny_file=Plik z list± u¿ytkowników bez dostêpu,0
+cron_deny_all=Uprawnienia przy braku plików pozwoleñ/zakazu,1,0-Zablokuj dla wszystkich,1-Zablokuj oprócz roota,2-Pozwól wszystkim
+vixie_cron=Obsluga rozszerzeñ vixie-crona,1,1-Tak,0-Nie
+system_crontab=Scie¿ka do systemowego pliku zadañ vixie-crona,0
+cronfiles_dir=¦cie¿ka do katalogu z dodatkowymi plikami crona,3,Brak
+run_parts=polecenie run-parts,0

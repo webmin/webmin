@@ -1,0 +1,16 @@
+display_max=最多显示的用户和组数量,0
+user_repquota_command=在一个文件系统上列表显示用户的命令,0
+group_repquota_command=在一个文件系统上列表显示组的命令,0
+user_edquota_command=编辑用户磁盘配额的命令,0
+group_edquota_command=编辑用户组磁盘配额的命令,0
+user_quota_command=检查用户磁盘配额的命令,0
+group_quota_command=检查用户组磁盘配额的命令,0
+user_copy_command=拷贝用户磁盘配额的命令,0
+group_copy_command=拷贝用户组磁盘配额的命令,0
+user_quotaon_command=打开用户磁盘配额的命令,0
+group_quotaon_command=打开用户组磁盘配额的命令,0
+user_quotaoff_command=关闭用户盘配额的命令,0
+group_quotaoff_command=关闭用户组磁盘配额的命令,0
+quotacheck_command=检查磁盘配额的命令,0
+user_grace_command=编辑用户使用时间的命令,0
+group_grace_command=编辑用户组使用时间的命令,0

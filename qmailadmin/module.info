@@ -1,0 +1,11 @@
+name=QMail
+desc=QMail Configuration
+category=servers
+desc_ca=Configuració de QMail
+desc_es=Configuración de QMail
+desc_de=QMail Mailserver
+desc_ru_SU=îÁÓÔÒÏÊËÉ QMail
+desc_ru_RU=Íàñòğîéêè QMail
+longdesc=Configure the QMail mail server, a simpler alternative to Sendmail.
+os_support=!windows
+library=qmail-lib.pl

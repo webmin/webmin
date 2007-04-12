@@ -1,0 +1,429 @@
+index_title=Postfix 郵件程式
+index_epath=Postfix 控制指令 $1 沒有安裝在您的系統上. 可能是您的<a href='$2'>模組組態</a>有錯誤, 或是 Postfix 尚未被安裝.
+
+internal_error=內部錯誤
+index_econfig=找不到 Postfix 組態指令 $1. 可能是您的<a href='$2'>模組組態</a>有錯誤.
+index_stop=停止 Postfix
+index_start=啟動 Postfix
+index_stopmsg=按下這個按鈕以停止 Postfix 郵件伺服器. 這將停止其他系統寄送郵件給本地端的使用者, 並且防止客戶端以這個系統為郵件伺服器遞送郵件.
+index_startmsg=按下這個按鈕以啟動 Postfix 郵件伺服器. 在這個動作被完成前, 郵件將無法被遞送到本地端系統上的使用者, 客戶端有無法以這個系統作為郵件伺服器.
+opts_err=無法儲存選項
+
+check_error=當檢查目前Postfix組態設定時發生錯誤，請手動修復Postfix組態設定。
+
+address_rewriting_title=位址重寫與偽裝
+address_rewriting_ecannot=您不被允許編輯位址重寫或偽裝
+aliases_title=郵件別名
+aliases_ecannot=您不被允許編輯別名
+aliases_no_alias_file=沒有別名檔案
+aliases_failed_delete=刪除別名失敗: $1
+aliases_cant_write=無法寫入別名檔案
+aliases_cant_read=無法讀取別名檔案
+aliasopts_title=別名選項
+aliases_internal_error=別名: 內部錯誤
+edit_alias_title=別名內容編輯
+alias_save=儲存別名
+alias_save_err=無法儲存別名
+alias_delete_create=您是否要賒除您目前建立的別名!?
+delete_alias=刪除別名
+aliases_click=點選任一別名來編輯屬性:
+
+general_title=一般選項
+general_title_sensible=最有用的一般選項
+general_title_others=其他一般選項
+general_ecannot=您不被允許編輯一般選項
+what_is_it=這是什麼?
+
+opts_default=預設值
+opts_none=無
+opts_relayhost=遞送外送郵件經由主機
+opts_direct=直接遞送
+opts_myorigin=外送郵件所要使用的網域
+opts_myorigin_as_myhostname=使用主機名稱
+opts_myorigin_as_mydomain=使用網域名稱
+opts_mydestination=要接收郵件的網域
+opts_mydestination_default=本地端機器
+opts_mydestination_domainwide=整個網域
+opts_notify_classes=要回報個 postmaster 個錯誤
+opts_queue_directory=郵件佇列目錄
+opts_mail_owner=郵件擁有者
+opts_default_privs=預設的遞送代理器權力
+opts_inet_interfaces=接收郵件的網路介面
+opts_all_interfaces=全部
+
+opts_local_recipient_maps=拒絕未知的本地端使用者
+opts_no=否
+opts_save=儲存並套用
+
+
+opts_allow_percent_hack=寫 "user%domain" 成 "user@domain"
+opts_append_at_myorigin=重寫 "user" 成 "user@$mydomain"
+opts_append_dot_mydomain=重寫 "user@host" 成 "user@host.$mydomain"
+opts_empty_address_recipient=遞送沒有收信人郵件到...
+opt_empty_recip_default=預設
+opts_swap_bangpath=重寫 "site!user" 成 "user@site"
+opts_masquerade_domains=地址偽裝
+opts_masquerade_exceptions=偽裝的例外
+index_return=Postfix 組態
+
+
+opts_alias_maps=本地端遞送代理器使用的別名資料庫
+opts_alias_database=別名資料庫由指令 &quot;newaliases&quot; 建立
+aliases_warning=警告: <ul><li>當第一個欄位不是空白時, 預設的 Postfix 別名產生指令會被於產生對應的資料庫; <li>否則將執行 Sendmail 相容的命令 &quot;newaliases&quot;, 這將使用在第二個欄位的資料庫.</ul>
+
+aliases_name=名稱
+aliases_value=別名為...
+
+new_alias=建立新的別名
+new_aliasmsg=按下這個按鈕以建立新的別名
+
+
+local_delivery_ecannot=您不被允許編輯本地端遞送選項
+local_delivery_title=本地端遞送
+opts_local_transport=本地端遞送的傳送者名稱
+opts_local_transport_local=本地端
+opts_local_command_shell=遞送時外部指令所使用的命令殼
+opts_local_command_shell_direct=無 (直接執行指令)
+opts_forward_path=轉送的搜尋列表
+opts_allow_mail_to_commands=有效的遞送時外部指令
+opts_allow_mail_to_files=有效的郵件遞送外部檔案
+opts_home_mailbox=使用者郵件信箱檔案的使用者相關家目錄路徑名稱
+opts_home_mailbox_default=無 (使用標準的 <tt>/var/something</tt>)
+opts_luser_relay=未知收件者第目標位址
+opts_luser_relay_none=無 (退回 mail)
+opts_mail_spool_directory=儲存目錄
+opts_mailbox_command=不使用信箱遞送時的外部指令
+opts_mailbox_command_none=無
+opts_mailbox_transport=實際傳送時的選項
+opts_mailbox_transport_none=無
+opts_fallback_transport=未知收件者的傳送選項
+opts_fallback_transport_none=無
+opts_local_destination_concurrency_limit=遞送到本地端收件者的最大平行處理數目
+opts_local_destination_recipient_limit=每個本地端收訊息遞送的作最大收件者數目
+opts_local_destination_recipient_limit_default=預設值
+opts_prepend_delivered_header=預設的 <tt>遞送到:</tt> 當...
+opts_prepend_delivered_header_default=預設值
+
+
+resource_title=一般資源控制
+resource_ecannot=您不被允許編輯資源控制參數
+opts_bounce_size_limit=退回訊息的最大大小
+opts_command_time_limit=遞送到外部指令的最大時間
+opts_default_process_limit=Postfix 的最大子程序數目
+opts_deliver_lock_attempts=取得檔案鎖定的最大嘗試次數
+opts_deliver_lock_delay=檔案鎖定嘗試的間隔時間
+opts_duplicate_filter_limit=複製過濾器記憶的最大位置數目
+opts_fork_attempts=衍生程序的最大嘗試數目
+opts_fork_delay=衍生嘗試的間隔時間
+opts_header_size_limit=程序標頭使用的最大記憶體使用量
+opts_line_length_limit=處理輸入行時的最大記憶體使用量
+opts_message_size_limit=信息的最大大小
+opts_qmgr_message_active_limit=運作中佇列的最大訊息數量
+opts_qmgr_message_recipient_limit=記憶體中收件人的最大數量
+opts_queue_minfree=佇列檔案系統的最小保留空間
+opts_stale_lock_time=鎖定釋放的等待時間
+opts_transport_retry_time=連接中斷的 MDT 嘗試間隔時間
+
+
+opts_always_bcc=每個訊息隱藏副本的接收位址
+opts_always_bcc_none=無
+opts_daemon_timeout=處理要求的逾時值
+opts_default_database_type=預設的資料庫類別
+opts_default_transport=預設的訊息遞送傳輸
+opts_double_bounce_sender=退回郵件的寄件者位址
+opts_hash_queue_depth=主列目錄下面的子目錄數目
+opts_hash_queue_names=佇列目錄子目錄的的分隔名稱
+opts_hopcount_limit=<tt>收件人:</tt> 標頭的最大數目
+opts_ipc_idle=在內部 IPC 客戶端中隊連結後的閒置時間
+opts_ipc_timeout=輸出入內部頻道的逾時值
+opts_mail_name=郵件系統時間
+opts_mail_version=官方的郵件系統版本
+opts_max_idle=等待下一個服務要求的等待時間
+opts_max_use=在離開前處理的最大服務要求
+opts_mydomain=本地端的網際網路網域名稱
+opts_mydomain_default=預設值 (由系統提供)
+opts_myhostname=這個郵件系統的網際網路主機名稱
+opts_myhostname_default=預設值 (由系統提供)
+opts_mynetworks=本地端網路
+opts_mynetworks_default=預設值 (所有連接的網路)
+opts_bounce_notice_recipient=送給郵件管理者通知, 當退件從...
+opts_2bounce_notice_recipient=送給郵件管理者通知, 當 2 退件從...
+opts_delay_notice_recipient=送給郵件管理者通知, 當延遲遞送到...
+opts_error_notice_recipient=送給郵件管理者通知, 當錯誤到...
+opts_process_id_directory=鎖定檔案目錄, 相對於佇列目錄
+opts_program_directory=Postfix支援程式與守護者目錄
+opts_recipient_delimiter=使用者名稱/位址 的分離器
+opts_relocated_maps_default=預設值 (關閉)
+opts_sun_mailtool_compatibility=在郵件信箱上檔案關閉核心鎖定
+opts_trigger_timeout=送出信號給守護器的最大時間
+opts_delay_warning_time=遞送未遞送的警告前之等待時間
+opts_delay_warning_time_default=關閉
+
+
+smtpd_title=SMTP 伺服器選項
+smtpd_ecannot=您不被允許編輯 SMTP 伺服器選項
+opts_disable_vrfy_command=關閉 SMTP VRFY 指令
+opts_smtpd_banner=SMTP 歡迎標頭
+opts_smtpd_etrn_restrictions=限制 ETRN 指令基於...
+opts_smtpd_recipient_limit=遞送時接受的最大收件人數目
+opts_smtpd_timeout=SMTP 傳送時的逾時時間
+opts_smtpd_error_sleep_time=在送出 4xx/5xx 錯誤回應前的逾時時間
+opts_smtpd_soft_error_limit=暫時忽略客戶端的錯誤計數
+opts_smtpd_hard_error_limit=關閉連接的錯誤計數
+opts_smtpd_client_restrictions=客戶端 主機名稱/位址 的限制
+opts_smtpd_helo_required=HELO 是必要的
+opts_smtpd_helo_restrictions=送出 HELO 指令的限制
+opts_smtpd_sender_restrictions=遞送者位址的限制
+opts_smtpd_recipient_restrictions=收件人位址的限制
+opts_allow_untrusted_routing=允許不現任的路由
+opts_maps_rbl_domains=黑名單查詢的 DNS 網域
+opts_relay_domains=郵件回應的限制
+opts_access_map_reject_code=對應侵犯的 SMTP 伺服器回應
+opts_invalid_hostname_reject_code=拒絕錯誤主機名稱的 SMTP 伺服器回應
+opts_maps_rbl_reject_code=RBL 網域侵犯的 SMTP 伺服器回應
+opts_reject_code=拒絕客戶端的 SMTP 伺服器回應
+opts_relay_domains_reject_code=禁止中繼的 SMTP 伺服器回應
+opts_unknown_address_reject_code=拒絕未知網域的 SMTP 伺服器回應
+opts_unknown_client_reject_code=拒絕未知客戶端的 SMTP 伺服器回應
+opts_unknown_hostname_reject_code=拒絕未知主機名稱的 SMTP 伺服器回應
+
+
+smtp_title=SMTP 客戶端選項
+smtp_ecannot=您不被允許編輯 SMTP 客戶端選項
+opts_best_mx_transport=當列出為最佳 MX 主機時的動作
+opts_best_mx_transport_default=預設值 (退回訊息)
+opts_fallback_relay=處理錯誤目標時使用的 主機/網域
+opts_ignore_mx_lookup_error=忽略 MX 查詢錯誤
+opts_smtp_skip_4xx_greeting=跳過 4xx 歡迎
+opts_smtp_skip_quit_response=跳過等待 QUIT 指令
+opts_smtp_destination_concurrency_limit=遞送到相同目標的最大同時處理數目
+opts_smtp_destination_recipient_limit=每個遞送的最大收件人數目
+opts_smtp_connect_timeout=完成 TCP 連接的逾時值
+opts_smtp_helo_timeout=等待歡迎標頭的等待逾時
+opts_smtp_mail_timeout=等待 MAIL FROM 回應的逾時值
+opts_smtp_rcpt_timeout=等待 RCPT TO 回應的逾時值
+opts_smtp_data_init_timeout=等待 DATA 回應的逾時值
+opts_smtp_data_xfer_timeout=等待傳輸信息本體回應的逾時值
+opts_smtp_data_done_timeout=等待結束的 &quot;.&quot; 回應的逾時值
+opts_smtp_quit_timeout=等待 QUIT 回應的逾時值
+
+
+rate_title=遞送速率
+rate_ecannot=您不被允許編輯遞送速率選項
+opts_default_destination_concurrency_limit=最大遞送到相同目標的最大的平行處理數量
+opts_default_destination_recipient_limit=每個訊息遞送的最大收件人數量
+opts_initial_destination_concurrency=遞送訊息到相同目標的初始化同時處理層級
+opts_maximal_backoff_time=在遞送不同訊息間的最大等待時間 (秒)
+opts_maximal_queue_lifetime=無法寄達訊息在佇列中的最大等待時間 (天)
+opts_minimal_backoff_time=遞送不同訊息間的最小等待時間 (秒)
+opts_queue_run_delay=掃描不同佇列間的等待時間 (秒)
+opts_defer_transports=不應該遞送時的傳送器
+
+
+debug_title=除錯功能
+debug_ecannot=您不被允許編輯除錯功能
+opts_debug_peer_list=啟動冗長紀錄等級的 網域/網路 樣式列表
+opts_debug_peer_level=冗長的紀錄等級當符合上面的列表
+debug_version=Webmin的Postfix模組 - 版本 $1
+
+ldap_title=LDAP 查詢
+ldap_ecannot=您不被允許編輯 LDAP 查詢選項
+ldap_non_existent=LDAP 似乎不存在於您的 Postfix 系統
+opts_ldap_lookup_timeout=LDAP 資料庫查詢的逾時值
+opts_ldap_search_base=要搜尋的 LDAP 資料庫
+opts_ldap_server_host=LDAP 伺服器名稱
+
+canonical_title=主要的對應表
+canonical_ecannot=您不被允許編輯主要的對應表組態
+opts_canonical_maps=位址對應查詢表
+opts_recipient_canonical_maps=RECIPIENT 位址表
+opts_sender_canonical_maps=SENDER 位址表
+edit_canonical_maps=編輯主要對應表
+edit_recipient_canonical_maps=編輯主要收件人對應表
+edit_sender_canonical_maps=編輯主要寄件人對應表
+edit_canonical_maps_general=按下其中之一的按鍵以編輯主要對應表
+canonical_edit_title=編輯一個主要對應表
+
+mapping_name=名稱
+mapping_value=對應到...
+new_mapping=新對應
+new_mappingmsg=按下這個按鈕以建立一個新對應
+map_save=儲存對應
+delete_map=刪除對應
+edit_map_title=編輯對應
+map_save_err=儲存對應時發生錯誤
+mapps_no_map_file=沒有定義對應檔案
+map_delete_failed=無法刪除對應: $1
+map_delete_create=無法刪除您剛建立的對應表
+maps_internal_error=對應: 內部錯誤
+maps_cant_write=無法寫入
+help_map_format=我因該使用哪一個格式?
+
+
+virtual_title=虛擬網域
+virtual_ecannot=您不被允許編輯虛擬網域對應組態
+opts_virtual_maps=網域對應查詢表
+
+transport_title=傳輸對應表
+transport_ecannot=您不被允許編輯傳輸對應表組態
+opts_transport_maps=傳輸對應查詢表
+
+relocated_title=重新定位對應表
+relocated_ecannot=您不被允許編輯主要的對應表組態
+opts_relocated_maps=重新定位對應查詢表
+
+map_click=按下任何的對應表以編輯它的內容:
+no_map=(目前沒有定義的對應表. 請先定義一個對應表m 然後您才能編輯之)
+no_map2=沒有定義對應檔案，請先定義對應，然後才能編輯
+
+stop_efailed=停止Postfix失敗
+stop_ecannot=您不被允許停止Postfix
+
+query_get_efailed=Postfix組態指令查詢目前變數$1失敗: <tt>$2</tt>
+query_set_efailed=Postfix組態指令設定目前變數$1為 $2失敗: <tt>$3</tt>
+reload_ecannot=您不被允許重讀Postfix
+reload_efailed=重讀Postfix失敗
+regenerate_ecannot=您不被允許重建別名
+regenerate_alias_efailed=重建別名失敗: <tt>$1</tt>
+regenerate_table_efailed=重建表格 $1失敗: <tt>$2</tt>
+
+acl_resource=可以編輯資源?
+acl_aliases=可以編輯別名?
+acl_aliases_options=可以編輯別名選項?
+acl_general=可以編輯一般選項?
+acl_address_rewriting=可以編輯位址重寫?
+acl_canonical=可以編輯主要的對應表?
+acl_virtual=可以編輯虛擬網域?
+acl_transport=可以編輯傳輸對應表?
+acl_relocated=可以編輯重新定位對應表?
+acl_local_delivery=可以編輯本地端遞送?
+acl_smtpd=可以編輯smtpd?
+acl_smtp=可以編輯smtp?
+acl_rate=可以編輯遞送速率?
+acl_debug=可以編輯除錯功能?
+acl_ldap=可以編輯ldap?
+acl_startstop=可以啟動和停止postfix?
+
+boxes_title=使用者信箱
+boxes_user=使用者名稱
+boxes_size=信箱大小
+boxes_none=沒有郵件
+boxes_return=信箱
+boxes_sent=傳送郵件
+boxes_ecannot=您不被允許讀取電子郵件
+boxes_toomany=在系統上郵件信箱清單中太多使用者
+boxes_go=檢視使用者郵件:
+
+mail_title=使用者電子郵件
+mail_from=寄件人
+mail_date=日期
+mail_subject=主題
+mail_to=收件人
+mail_cc=副本抄送
+mail_bcc=隱藏副本
+mail_pri=優先值
+mail_highest=最高
+mail_high=高
+mail_normal=一般
+mail_low=低
+mail_lowest=最低
+mail_for=在 $1
+mail_for2=使用者 $1
+mail_sent=在傳送郵件列表
+mail_size=大小
+mail_delete=刪除選擇的郵件
+mail_compose=寫作新郵件
+mail_return=使用者電子郵件
+mail_pos=郵件 $1 到 $2 共 $3
+mail_none=信箱中沒有郵件
+mail_ecannot=您不被允許讀取這個使用者的郵件
+mail_all=選擇全部
+mail_invert=反向選取
+mail_search=找尋郵件, 其中
+mail_body=本體
+mail_match=符合
+mail_ok=搜尋
+mail_nonefrom=無
+mail_mark=標記:
+mail_mark0=未讀
+mail_mark1=已讀
+mail_mark2=特別
+mail_forward=轉寄
+mail_rfc=從列
+
+view_title=讀取電子郵件
+view_desc=郵件 $1 在 $2
+view_desc2=使用者 $2的訊息 $1
+view_desc3=訊息 $1
+view_sent=訊息 $1 在傳送郵件清單
+view_qdesc=佇列中的郵件 $1
+view_headers=郵件標頭
+view_allheaders=檢視完整檔頭
+view_noheaders=檢視基本檔頭
+view_attach=附件夾帶
+view_reply=回覆
+view_reply2=回覆給全部
+view_enew=編輯新的 
+view_forward=轉寄
+view_delete=刪除
+view_strip=移除附件 
+view_ecannot=您不被允許讀取這個使用者的郵件
+view_mark=標記訊息為:
+view_mark0=未讀
+view_mark1=已讀
+view_mark2=特別 
+view_return=原始郵件
+view_sub=附加郵件
+
+compose_title=寫作電子郵件
+reply_title=回覆到電子郵件
+forward_title=轉寄到電子郵件
+enew_title=編輯郵件 
+reply_headers=郵件標頭
+reply_attach=轉寄附件夾帶
+reply_mailforward=轉送訊息
+reply_attach2=附件夾帶
+reply_send=送出
+reply_ecannot=您不被允許以這個使用者名稱送出郵件
+
+send_err=郵件送出失敗
+send_eto=遺失收件人郵件位址
+send_efrom=遺失寄件人郵件位址
+send_title=送出郵件
+send_ok=郵件成功的送給 $1
+send_ecannot=您不被允許以這個使用者名稱送出郵件
+send_esmtp=SMTP 命令 $1 失敗: $2
+send_efile=附加檔 $1不存在 
+send_eattach=附加檔大小總和不能大於 $1 kB
+send_eperms=使用者 $1 無法讀取 $2
+send_eperms2=您不被允許傳送檔案 $1
+send_epath=Sendmail 執行 $1不存在 
+send_ewrapper=Postfix sendmail介面程式不存在
+
+delete_ecannot=您不被允許刪除這個使用者的郵件
+delete_enone=沒有選擇要刪除的郵件
+delete_emnone=沒有選取標記郵件  
+
+search_title=搜尋結果
+search_ecannot=您不被允許搜尋這個使用者的郵件
+search_ematch=您必須輸入搜尋的條件
+search_none=找不到符合的郵件.
+search_results2=$1 郵件訊息符合 $2 ..
+search_results3=$1 郵件訊息不符合 $2 ..
+
+match_from=來源: 符合 
+match_subject=主旨: 符合
+match_to=To: 符合
+match_cc=Cc: 符合
+match_date=日期: 符合
+match_body=內文符合
+match_size=大小大於 
+match_!from=來源: 不符合
+match_!subject=主旨: 不符合
+match_!to=To: 不符合
+match_!cc=Cc: 不符合
+match_!date=日期: 不符合
+match_!body=內文不符合
+match_!size=大小小於
+
+

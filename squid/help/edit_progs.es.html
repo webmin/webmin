@@ -1,0 +1,29 @@
+<header>Programas de Ayuda</header>
+
+<b>Ancho de columna FTP</b>: Por defecto es 32. Pone el ancho de los listados ftp. Se debe poner para adaptarse al ancho del navegador estándar. Ponerlo muy pequeño puede cortar nombres largos de archivo al navegar por sitios ftp.
+<p>
+<b>Login anónimo FTP</b>: Por defecto es 'Squid@'. Si deseas que la clave de acceso anónima sea más informativa (y activar el uso de servidores ftp de recogida), pon esto a algo razonable para tu dominio, como wwwusuario@enalgúnlugar.red.<p>
+ La razón de que esto no tenga por defecto dominio es que el requerimiento puede realizarse en nombre de un usuario de cualquier dominio, dependiendo de cómo se use la caché. Algún servidor ftp también valida que la dirección de correo sea válida (por ejemplo perl.com).
+<p>
+<b>Programa DNS de Squid</b>: Por defecto es dnsserver. Especifica la localización del ejecutable para el proceso dnslookup. El valor por defecto es un servidor de nombres de caché no-por-bloques que está instalado con Squid por defecto.
+<p>
+<b>Número de programas DNS</b>: Por defecto es 5. El número de procesos lanzados para el servicio de búsqueda de nombre de DNS. Para cachés muy cargadas en grandes servidores, deberías probáblemente incrementar este valor a, al menos, 10. El máximo es 32.
+<p>
+<b>Añadir dominio a requerimientos</b>: Por defecto está desactivado. Normálmente el 'dnsserver' desactiva la opción del resolutor RES_DEFNAMES (ve res_init(3)). Esto previene que las cachés dentro de una jerarquía interpreten nombres de máquina de componentes simples locálmente. Para permitir que dnsserver maneje nombre de componentes simples, activa esta opción.
+<p>
+<b>Direcciones de servidor DNS</b>: Por defecto se utiliza el archivo 'resolv.conf'. Utiliza esto si deseas especificar una lista de servidores de nombre DNS (direcciones IP) para utilizar en vez de los datos en tu archivo '/etc/resolv.conf'.
+<p>
+<b>Programa de limpieza de caché</b>: Por defecto es 'unlinkd'. Especifica la localización del ejecutable para el proceso de borrado de archivo. Esto puede no ser necesario si utilizas e/s asíncrona ya que es manejado por un hilo en algunas versiones.
+<p>
+<b>Program de sonido (ping) de Squid</b>: Por defecto es 'pinger'. Especifica la localización del ejecutable para proceso de sonido de ping. Esto es sólo útil si has configurado Squid (durante la compilación) con la opción '--enable-icmp'.
+<p>
+<b>programa de redireccionamiento de Cliente</b>: Por defecto ninguno. Especifica la localización del ejecutable para el redireccionador de URL. Ya que se puede realizar casi cualquier función no hay ninguna incluída. Mira las Notas-de-Versión para información sobre cómo escribir uno.
+<p>
+<b>Número de programas de redireccionamiento</b>: Por defecto es 5 si se configura un redireccionador. El número de proceso de redireccionamiento a lanzar. Si arrancas demasiados pocos, Squid tendrá que esperar para que ellos procesen un montón de URLs, ralentizando el sistema. Si arrancas demasiados, utilizarán RAM y otros recursos del sistema.
+<p>
+<b>Programa de Autenticación de Cliente</b>: Por defecto ninguno. Especifica el comando para autenticadores externos. Un programa así, lee una línea que contenga "nombre de usuario clave de acceso" y replica "OK" o "ERR" en un bucle sin fin. Si usas un autenticador, asegúrate de tener 1 acl del tipo proxy_auth.<p>
+Si deseas usar la autenticación tradicional de proxy, pon esta línea a algo como /usr/bin/ncsa_auth /usr/etc/passwd. Asumiendo que ncsa_auth ha sido compilado e instalado en tu sistema.
+<p>
+<b>Número de programas de autenticación</b>: Por defecto es 5 si se ha activado la autenticación.
+
+<hr>

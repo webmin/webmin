@@ -1,0 +1,24 @@
+<header>Webmin CFengine Cluster</header>
+
+This page allows you to easily run CFengine on multiple hosts, using a single
+master configuration. It is an alternative to using the Configuration Engine
+Daemon and Remote Configuration Hosts pages elsewhere in this module, but like
+other cluster Webmin modules it requires that Webmin be installed on each of
+the hosts to be managed, and that each be defined in the Webmin Servers
+module. <p>
+
+The top part of the page displays hosts on which CFengine is installed and can
+be run from this page. To add a new host, first add it in the Webmin Servers
+with a username and password, select it from the list next to the Add Server
+button and then click the button. The server must have the CFengine module
+installed and configured properly. <p>
+
+At the bottom of the page is a form for running CFengine on all listed hosts
+simultaneously. If you click the lower button the configuration from this host will
+be copied to each of the other hosts, overwriting any existing CFengine
+configuration file. This allows you to maintain one master configuration on this
+server and have it distributed when needed. Hostname classes can be used to
+have different actions executed on different servers if needed. <p>
+
+<hr>
+

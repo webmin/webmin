@@ -1,0 +1,17 @@
+iface_perms=755
+printcap_file=/etc/printcap
+gs_lib=
+iface_arg=
+gs_path=gs
+spool_dir=/var/spool/lpd
+gs_fontpath=
+smbclient_path=smbclient
+print_style=cups
+driver_style=cups
+show_status=0
+sort_mode=0
+display_mode=0
+start_cmd=/etc/init.d/cups start
+stop_cmd=/etc/init.d/cups stop
+model_path=/usr/share/cups/model
+show_jobs=0

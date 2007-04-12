@@ -1,0 +1,23 @@
+<header>Resposta del servidor SMTP en cas de violació de mapa d'accés</header>
+
+<center><tt>access_map_reject_code</tt></center>
+<hr>
+
+Aquest paràmetre especifica el codi de resposta del servidor SMTP 
+quan un client viola una restricció del <tt>mapa d'accés</tt> que és:<br>
+<i>Accés denegat: violació del mapa d'accés (al client SMTP o al nom de host,
+adreça e-mail del remitent o destinatari HELO client)</i><br>
+<br>
+Tingues en compte que el valor per defecte de postfix utilitzat per a
+<tt>access_map_reject_code</tt> és el codi 554, i aquest codi en l'estàndard
+RFC 822 voldria dir 'Acció de correu demanada rebutjada: accés denegat'.
+Així, amb Postfix, una violacio de la regla <tt>access map</tt>
+no reflecteix exactament l'explicació RFC822 del codi informat.<br>
+<p>
+Per evitar la confusió, pots canviar-ho, per exemple, pel codi 570
+(una altra raó és que aquest és també el valor per defecte de postfix
+d'altres menes d'errors), altrament no ho canviïs si no tens un complet
+coneixement de RFC 822.
+</p>
+
+<hr>

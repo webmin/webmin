@@ -1,0 +1,50 @@
+index_title=Systémový èas
+index_timeserver=Èasový server
+index_address=Host/Adresa
+
+action_save=Zapsat
+action_apply=Pou¾ít
+action_sync=Sjednotit systémový èas s hardwarovým èasem
+action_sync_s=Sjednotit hardwarový èas se systémovým èasem
+action_timeserver_sys=Sjednotit systémový èas
+action_timeserver_hw=Sjednotit hardwarový èas
+
+acl_sys=U¾ivatel mù¾e editovat systémový èas
+acl_hw=U¾ivatel mù¾e editovat hardwarový èas
+acl_yes=Ano
+acl_no=Ne
+acl_error=Máte pøístup k modulu systémového èasu, ale nemù¾ete editovat ani systémový ani hardwarový èas
+acl_nosys=Nemù¾ete editovat systémový èas
+acl_nohw=Nemù¾ete editovat hardwarový èas
+
+sys_title=Systémový èas
+hw_title=Hardwarový èas
+
+day=Den
+month=Mìsíc
+date=Datum
+hour=Hodina
+year=Rok
+month_1=Leden
+month_2=Únor
+month_3=Bøezen
+month_4=Duben
+month_5=Kvìten
+month_6=Èerven
+month_7=Èervenec
+month_8=Srpen
+month_9=Záøí
+month_10=Øíjen
+month_11=Listopad
+month_12=Prosinec
+day_1=Pondìlí
+day_2=Úterý
+day_3=Støeda
+day_4=Ètvrtek
+day_5=Pátek
+day_6=Sobota
+day_7=Nedìle
+
+error_cnf=Chyba : $1 pøíkaz nenalezen
+error_hw=Nemohu nastavit hardwarová èas: $1
+error_sync=Nemù¾u nastavit systémový èas: $1

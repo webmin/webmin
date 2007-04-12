@@ -1,0 +1,11 @@
+line1=Opcions configurables,11
+config_file=Fitxer de configuració fetchmail per editar,3,Els fitxers .fetchmailrc de tots els usuaris
+view_mode=Mostra la llista d'usuaris com,1,1-Només noms d'usuari,0-Noms d'usuari i configuració de fetchmail
+max_users=Nombre màxim d'usuaris a mostrar,3,Il·limitat
+mda_command=Ordre de lliurament de correu,3,Utiliza SMTP
+line2=Configuració del sistema,11
+fetchmail_path=Camí del programa fetchmail,0
+daemon_user=Usuari sota el qual s'executa el dimoni de fetchmail,0
+pid_file=Camí del fitxer de PID del dimoni de fetchmail,0
+start_cmd=Ordre per iniciar el dimoni fetchmail,3,Executa fetchmail
+stop_cmd=Ordre per aturar el dimoni fetchmail,3,Executa fetchmail -q

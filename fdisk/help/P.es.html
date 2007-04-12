@@ -1,0 +1,8 @@
+<header>Reprogramar mejor PIO</header>
+Intenta reprogramar el conjunto de chips de la interfaz IDE para el modo PIO especificado o intenta autosintonizar para el "mejor" modo PIO soportado por el conductor.<p>
+
+Esta característica es soportada en el kernel para sólo unos pocos conjuntos de chips "conocidos" e, incluso entonces, el soporte es dudoso como poco. Algunos conjuntos de chips IDE son incapaces de alterar el modo PIO de un solo conductor, en cuyo caso esta bandera puede causar que se ponga el modo PIO para ambos conductores. Muchos conjuntos de chip IDE soportan o menos o más del estándar de seis (0 a 5) modos PIO, por ello el valor de la velocidad exacta que se implementa actuálmente variará segúna ls sofisticación del conjunto de chips/conductor.<p>
+
+<i>¡Usar con extrema precaución!</i><br>
+Esta característica incluye protección cero para los que no sepan y un manejo fracasado puede resultar en una <i>¡corrupción severa del sistema de archivos!</i>.
+<hr>

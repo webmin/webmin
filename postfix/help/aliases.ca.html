@@ -1,0 +1,32 @@
+<header>Àlies de Correu</header>
+
+Els àlies ofereixen un mecanisme global per redireccionar el correu dels
+destinataris locals.
+
+<p>
+
+El camp <tt>Àlies de...</tt> conté un o més dels valors següents,
+separats per comes:
+
+<ul><li><tt>adreça</tt>: EL correu es redireigeix a <tt>address</tt>,
+que és compatible amb l'estàndard RFC 822.
+
+<li><tt>/fitxer/nom</tt>: El correu s'afegeix a <tt>/fitxer/nom</tt>.
+Vegeu local(8) per més detalls sobre el lliurament a fitxer. El lliurament
+no està limitat a fitxers regulars. Per exemple, per desfer-se del correu
+no desitjat, es pot redirigir a <tt>/dev/null</tt>.
+
+<li><tt>|ordre</tt>: El correu es passa a l'ordre <tt>ordre</tt>.
+Les ordres que contenen caràcters especials tals com espais, cal tancar-les
+entre cometes dobles. Vegeu local(8) per més detalls sobre el lliurament
+a fitxer. Quan l'ordre fracassa, s'envia una part de la resposta de l'ordre
+al remitent.
+
+<li><tt>:include:/fitxer/nom</tt>: El correu s'envia a les destinacions
+llistades al fitxer. Les línies dels fitxers <tt>:include:</tt> tenen la 
+mateixa sintaxi que les entrades d'àlies del cantó dret.
+
+</ul>
+
+<hr>
+

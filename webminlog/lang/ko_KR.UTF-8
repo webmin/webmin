@@ -1,0 +1,55 @@
+index_title=Webmin 疑拙 稽益
+index_header=Webmin 稽益拭辞 疑拙 伊事..
+index_uall=績税 紫遂切紺
+index_user=紫遂切紺
+index_mall=績税 乞汲拭辞
+index_module=乞汲拭辞
+index_tall=情薦窮走
+index_today=神潅幻
+index_time=$1 貢 $2 紫戚
+index_search=伊事
+index_return=伊事 丞縦
+index_nolog=<b>凧壱</b> - <a href='$1'>Webmin拭 稽焔</a>戚 薄仙 紫遂 災管生稽 竺舛鞠嬢 赤生糠稽 疑拙 稽益研 伊事背亀 衣引亜 持失鞠走 省柔艦陥.
+index_nologfiles=<b>凧壱</b> - <a href='$1'>督析 痕井 鎧遂 稽益</a>亜 薄仙 紫遂 災管生稽 竺舛鞠嬢 赤生糠稽 稽益吉 疑拙税 舛左拭澗 痕井吉 督析戚蟹 叔楳吉 誤敬戚 匂敗鞠走 省柔艦陥.
+
+search_title=伊事 衣引
+search_date=劾促
+search_time=獣娃
+search_user=紫遂切
+search_host=適虞戚情闘 爽社
+search_module=乞汲
+search_action=疑拙
+search_none=伊事 繕闇拭 限澗 疑拙戚 蒸柔艦陥.
+search_return=伊事 衣引
+search_sid=室芝 $2拭辞 紫遂切 $1拭 税廃 疑拙
+search_critall=稽益吉 乞窮 疑拙
+search_crit=稽益吉 疑拙
+search_critu=紫遂切 $1拭 税廃
+search_critm=乞汲 $1拭辞
+search_critt=$1 貢 $2 紫戚
+search_critt2=$1拭辞
+search_config=乞汲 姥失 痕井喫
+
+view_title=疑拙 舛左
+view_header=稽焔吉 疑拙 $1税 舛左
+view_action=竺誤
+view_module=Webmin 乞汲
+view_script=什滴験闘稽 持失喫
+view_user=Webmin 紫遂切
+view_ip=適虞戚情闘 IP 暁澗 硲什闘 戚硯
+view_sid=室芝 ID
+view_time=劾促 貢 獣娃
+view_nofiles=戚 疑拙拭 企背 稽益吉 姥失 督析 痕井 鎧遂戚 蒸柔艦陥
+view_type_create=督析 $1 拙失喫
+view_type_modify=督析 $1 痕井喫
+view_type_delete=督析 $1 肢薦喫
+view_type_exec=誤敬 叔楳喫
+view_type_sql=汽戚斗今戚什 $1拭辞 SQL 庚 叔楳喫
+view_type_kill=PID $2拭 重硲 $1 穿勺喫
+view_type_symlink=宿瑳遣 元滴 $1 -&gt; $2 拙失喫
+view_type_unsymlink=宿瑳遣 元滴 $1 -&gt; $2 肢薦喫
+view_type_resymlink=宿瑳遣 元滴 $1 -&gt; $2 呪舛喫
+view_type_mkdir=巨刑塘軒 $1 拙失喫
+view_type_rmdir=巨刑塘軒 $1 薦暗喫
+view_type_rename=戚硯戚 $1拭辞 $1(生)稽 郊会
+

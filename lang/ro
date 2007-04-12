@@ -1,0 +1,288 @@
+main_return=Inapoi la $1
+main_homepage=Index
+main_feedback=Feedback..
+main_switch=Schimba utilizator..
+main_logout=Inchide
+main_version=Versiunea $1 pe $2 ($3)
+main_title=Webmin $1 pe $2 ($3)
+main_title2=Webmin
+main_none=Nu aveti acces la toate modulele Webmin.
+main_skill=Nivel de pricepere
+main_readonly=(Doar in mod citire)
+
+link_essl=Modulul perl The Net::SSLeay necesar pentru a face conexiuni HTTPS nu este instalat pe sistemul dumneavoastra.
+
+category_servers=Servere
+category_hardware=Hardware
+category_system=Sistem
+category_webmin=Webmin
+category_net=Retea
+category_syslet=Syslets
+category_cluster=Cluster
+category_info=Informatii
+category_=Altele
+
+longcategory_servers=Module pentru configurare web, email, FTP si alte servere
+longcategory_hardware=Module pentru imprimanta, disc si alte configuratii hardware
+longcategory_system=Module pentru utilizatori, fisiere sistem, Cron jobs si alte setari
+longcategory_webmin=Module pentru configurarea Webmin
+longcategory_net=Module pentru configurare retea si servicii de retea
+longcategory_cluster=Module pentru managamentul mai multor servere dintr-o singura interfata
+longcategory_info=Module care afiseaza informatii despre propriul sistem
+longcategory_=Module care nu pot fi incadrate in nicio alta categorie
+
+header_webmin=Webmin Index
+header_module=Module Index
+header_help=Ajutor..
+header_config=Modul Configurare
+header_servers=Webmin Servere
+
+index=index
+yes=Da
+no=Nu
+save=Salvare
+create=Creare
+delete=Stergere
+find=Cautare
+error=Eroare
+error_previous=pagina precedenta
+error_stack=Apeleaza Stack Trace
+error_file=Fisier
+error_line=Linie
+error_sub=Functie
+error_stackline=In fisierul $1 la linia $2 apeleaza $3
+efilewrite=Incercare esuata de scriere in $1 : $2
+efileclose=Incercare esuata de scriere in $1 la inchidere : $2
+efileopen=Incercare esuata de deschidere $1 in mod scriere : $2
+default=Implicit
+modify=Modificare
+reset=Reseteaza
+ok=OK
+cancel=Renunta
+helpsearch=Cauta Documentatie..
+switch_remote_euser=Utilizatorul Unix $1 nu exista.
+programname=Webmin
+
+chooser_title1=Alege fisier..
+chooser_title2=Alege director..
+chooser_dir=Directoare $1
+chooser_ok=Ok
+chooser_date=Alege data
+
+users_title1=Selecteaza utilizatori..
+users_title2=Selecteaza utilizator..
+users_sel=Utilizatori selectati
+users_all=Toti utilizatorii
+users_ok=Ok
+users_cancel=Renunta
+users_clear=Goleste
+
+groups_title1=Selecteaza grupuri..
+groups_title2=Selecteaza grup..
+groups_all=Toate grupurile
+groups_sel=Grupurile selectate
+groups_ok=Ok
+groups_cancel=Renunta
+groups_clear=Goleste
+
+modules_title1=Selecteaza Module..
+modules_title2=Selecteaza Modul..
+modules_sel=Modul selectat
+modules_all=Toate Modulele
+modules_ok=Ok
+modules_cancel=Renunta
+modules_clear=Goleste
+
+config_ecannot=Nu aveti permisiunea sa configurati acest modul
+config_title=Configurare
+config_dir=Pentru modulul $1
+config_header=Optiuni configurabile pentru $1
+config_none=Nimic
+config_eaccess=Nu aveti permisiunea sa accesati acest modul
+config_err=Incercare esuata de salvare a configurarii
+config_nochange=Nu schimbati
+config_setto=Setare la
+config_ewebmin=Parametrul de tip 14 functioneaza doar in Webmin
+
+help_err=Afisare ajutor esuata
+help_epath=Calea catre ajutor: lipsa sau invalida
+help_efile=Citire fisier ajutor $1 esuata
+help_eheader=Lipsa sectiune &lt;header&gt;
+help_einclude=Esec in includerea $1
+help_eif=$1 esuat : $2
+help_eexec=$1 esuat : $2
+
+referer_title=Avertisment de securitate
+referer_warn=<b>Atentie!</b> Webmin a detectat ca programul $2 a fost atasat de la URL $1, care pare sa fie in afara serverului Webmin. Aceasta poate fi o incercare de a pacali serverul in a executa o comanda periculoasa.
+referer_warn_unknown=<b>Atentie!</b> Webmin a detectat ca programul $1 a fost atasat de la un URL necunoscut, care pare sa fie in afara serverului Webmin. Aceasta poate fi o incercare de a pacali serverul in a executa o comanda periculoasa.
+referer_ok=Continuati executia programului Webmin
+referer_again=Nu arata acest avertisment in viitor.
+referer_eurl=URL original invalid!
+referer_eself=referer_save.cgi nu poate fi legat direct!
+
+session_header=Login la Webmin
+session_mesg=Trebuie sa introduceti nume de utilizator si parola pentru a va loga serverul Webmin pe $1.
+session_mesg2=Trebuie sa introduceti utilizator si parola pentru login.
+session_user=Utilizator
+session_pass=Parola
+session_login=Login
+session_clear=Goleste
+session_failed=Login esuat. Varugam incercati din nou.
+session_logout=Logout efectuat cu succes. Utilizati formularul de mai jos pentru a va loga din nou.
+session_timed_out=Sesiunea expira dupa $1 minute de inactivitate.
+session_save=Tine minte login permanent?
+
+pam_header=Login la Webmin
+pam_mesg=Trebuie sa raspundeti la intrebarea de mai jos pentru a va loga la serverul Webmin pe $1.
+pam_mesg2=Trebuie sa raspundeti la intrebarea de mai jos pentru a va loga.
+pam_login=Continua
+pam_restart=Restart
+
+acl_root=Directorul de Root pentru alegerea fisierului
+acl_nodot=Ascunde fisiere tip punct la alegerea fisierului?
+acl_home=Directorul Home al utilizatorului
+acl_uedit=Utilizatori vizibili pentru alegere
+acl_uedit_all=Toti utilizatorii
+acl_uedit_none=Niciun utilizator
+acl_uedit_only=Doar utilizatorii
+acl_uedit_except=Toti in afara de utilizatorii
+acl_uedit_uid=Utilizatorii cu UID in intervalul
+acl_uedit_group=Utilizatori avand grupul
+acl_gedit=Grupuri vizibile pentru alegere
+acl_gedit_all=Toate grupurile
+acl_gedit_none=Niciun grup
+acl_gedit_only=Doar grupurile
+acl_gedit_except=Toate cu exceptia grupurilor
+acl_gedit_gid=Grupuri cu GID in intervalul
+acl_feedback=Poate trimite email cu feedback?
+acl_feedback2=Da
+acl_feedback1=Da, dar fara fisier de configurare
+acl_feedback0=Nu
+acl_feedback3=Da, cu fisier de configurare
+acl_rpc=Poate accepta apeluri RPC?
+acl_rpc2=Doar pentru <tt>root</tt> sau <tt>admin</tt>
+acl_rpc1=Da
+acl_rpc0=Nu
+acl_readonly=Utilizatorul este in mod demo?<br>(Unele module pot fi nedisponibile)
+
+month_1=Ianuarie
+month_2=Februarie
+month_3=Martie
+month_4=Aprilie
+month_5=Mai
+month_6=Iunie
+month_7=Iulie
+month_8=August
+month_9=Septembrie
+month_10=Octombrie
+month_11=Noiembrie
+month_12=Decembrie
+
+day_0=Duminica
+day_1=Luni
+day_2=Marti
+day_3=Miercuri
+day_4=Joi
+day_5=Vineri
+day_6=Sambata
+
+smonth_1=Ian
+smonth_2=Feb
+smonth_3=Mar
+smonth_4=Apr
+smonth_5=Mai
+smonth_6=Iun
+smonth_7=Iul
+smonth_8=Aug
+smonth_9=Sep
+smonth_10=Oct
+smonth_11=Noi
+smonth_12=Dec
+
+sday_0=Du
+sday_1=Lu
+sday_2=Ma
+sday_3=Mi
+sday_4=Jo
+sday_5=Vi
+sday_6=Sa
+
+emodule=Acces interzis : Utilizatorul $1 nu este autorizat sa utilizeze modulul $2
+elock_tries=Esec in blocarea fisierului $1 dupa $2 minute
+
+skill_high=Expert
+skill_medium=Intermediar
+skill_low=Incepator
+
+feedback_title=Webmin Feedback
+feedback_desc=Acest formular permite raportarea deficientelor sau a sugestiilor la dezvoltatorii Webmin, referitor la orice probleme sau detalii lipsa pe care le-ati descoperit. Cand este apasat butonul Send, detaliile introduse in formular vor fi trimise prin email la $1.
+feedback_desc2=Acest feedback va fi trimis la dezvoltatorul Webmin, nu la administratorul de sistem, ISP sau compania de gazduire. Va rugam scrieti feedback-ul dumneavoastra in engleaza, chiar daca actualmente rulati Webmin in alta limba.
+feedback_header=Detalii feedback
+feedback_name=Numele dumneavoastra
+feedback_email=Adresa de email
+feedback_module=Referitor la  modulul
+feedback_all=Toate modulele
+feedback_text=Descrierea problemei sau a sugestiei
+feedback_os=Se includ detalii despre sistemul de operare in email?
+feedback_osdesc=Daca aceasta optiune este selectata, emailul automat pentru feedback va include numele si versiunea sistemului de operare.
+feedback_config=Se include modulul de configurare in email?
+feedback_configdesc=Daca acesta este selectat, email-ul va include configurarea modulului referit si continutul oricaror fisiere pe care modulul le foloseste. De exemplu, daca feedback-ul este referitor la modulul <i>Users and Groups</i>, fisierele <tt>/etc/passwd</tt> si <tt>/etc/shadow</tt> vor fi trimise.
+feedback_attach=Fisiere aditionale de atasat
+feedback_send=Trimite Feedback
+feedback_mailserver=Trimite via server SMTP
+feedback_mailserver_def=Program local de sendmail
+feedback_err=Trimitere feedback esuata
+feedback_emodule=Ati ales sa includeti modulul de configurare in email, dar nu ati selectat niciun modul.
+feedback_emodule2=Modulul selectat nu exista
+feedback_econfig=Nu aveti acces deplin la modulul selectat.
+feedback_via=Trimite feedback to $1 via SMTP server $2
+feedback_prog=Trimite feedback to $1 using sendmail program $2
+feedback_esend=Trimitere feedback via program sendmail sau server local SMTP esuata.
+feedback_to=Trimite feedback la adresele
+feedback_enoto=Nicio adresa nu a fost introdusa pentru trimitere feedback la
+feedback_ecannot=Nu aveti dreptul sa trimiteti feedback
+feedback_ecannot2=Nu aveti dreptul sa trimiteti feedback care sa contina fisiere de configurare
+
+progress_size=Descarca $1 ($2 bytes) ..
+progress_nosize=Descarca $1 ..
+progress_data=Primit $1 bytes ($2 %)
+progress_data2=Primit $1 bytes
+progress_done=.. descarcare completa.
+progress_incache=Gasit $1 in cache ..
+
+readparse_cdheader=Lipsa Content-Disposition header
+readparse_enc=Asteapta form-data encoding, dar schimba in normal encoding
+readparse_max=Datele depasesc dimensiunea maxima de $1 bytes
+
+password_expired=Parola dumneavoastra a expirat, alegeti una noua.
+password_header=Selectati parola noua
+password_user=Utilizator
+password_old=Parola curenta
+password_new1=Parola noua
+password_new2=Parola noua (din nou)
+password_ok=Schimba
+password_clear=Goleste
+password_done=Parola dumneavoastra a fost schimbata cu succes. Va puteti acum <a href='$1'>loga din nou</a> cu noua parola.
+password_err=Schimbare parola esuata
+password_euser=Numele de login nu a fost gasit in fisierul password!
+password_eold=Parola curenta este incorecta
+password_enew1=Nu ati introdus noua parola
+password_enew2=Noua parola nu corespunde
+password_epam=Eroare PAM : $1
+password_emodpam=Modulul perl Authen::PAM necesar pentru schimbarea parolei nu este instalat!
+
+ui_mandatory=Acest camp este obligatoriu
+ui_checkmandatory=Nu ati selectat nimic
+ui_errors=Au fost gasite mai multe erori :
+ui_nothing=Nu ati introdus nimic
+ui_searchcol=Cauta linii unde
+ui_searchfor=Contine textul
+ui_searchok=Cauta
+ui_selall=Selecteaza tot.
+ui_selinv=Selectie inversa.
+ui_edate=Data invalida
+ui_etime=Ora invalida
+ui_paging=Arata liniile $1 la $2 din $3
+ui_rowlabel=$2 in linia $1 :
+
+header_statusmsg=$1 logat in $2 $3 pe $4 ($5)

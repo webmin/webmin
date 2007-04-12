@@ -1,0 +1,44 @@
+index_enopfile=在您的系統中找不到 PPP 密碼檔案'$1'，也許還 PPP 沒安裝
+index_table=PPP 撥入和撥出帳號
+index_user=帳號
+index_server=伺服器
+index_uany=任何
+index_sany=任何
+index_create=新增 PPP 帳號
+index_info=Webmin可以變更組態，使Unix 使用者清單將自動套用到 PPP帳號清單，這項功能只在<tt>使用者和群組</tt> Webmin模組能使用新增,刪除或更改使用者。
+index_onadd=新增PPP帳號當新增一個Unix使用者在系統時
+index_onchange=更變PPP帳號當Unix使用者被改變時
+index_ondelete=刪除PPP帳號當Unix使用者被刪除時
+index_apply=套用
+
+secrets_title=PPP帳號
+secrets_return=索引
+
+edit_secret_etitle=編輯PPP帳號
+edit_secret_ctitle=新增PPP帳號
+edit_secret_acc=PPP帳號
+edit_secret_user=使用者名稱
+edit_secret_serv=伺服器
+edit_secret_sany=任何
+edit_secret_uany=任何
+edit_secret_pass=密碼
+edit_secret_none=無
+edit_secret_ffile=從檔案
+edit_secret_leave=離開不變更
+edit_secret_setto=設定到
+edit_secret_vaddr=無效的位置
+edit_secret_aany=允許所有
+edit_secret_anone=無允許
+edit_secret_alist=允許清單中..
+edit_secret_save=儲存
+edit_secret_del=刪除
+edit_secret_return=帳號清單
+
+save_secret_esave=儲存帳號失敗
+save_secret_enoip='$1' 不是個有效的位置
+
+log_create=新增 PPP 使用者 $1
+log_modify=修改 PPP 使用者 $1
+log_delete=刪除 PPP 使用者 $1
+log_sync=同步更變unix使用者
+

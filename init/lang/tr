@@ -1,0 +1,71 @@
+index_title=Açýlýþ ve Kapanýþ
+index_add=Yeni bir açýlýþ veya kapanýþ komutu ekle
+index_reboot=Sistemi Yeniden Baþlat
+index_rebootmsg=Bu butonu týkayarak makineyi hemen yeniden baþlatabilirsiniz.Sistemdeki bütün kullanýcýlarýn baðlantýsý kesilecek ve bütün servisler yeniden baþlatýlacaktýr.
+index_shutdown=Sistemi kapat
+index_shutdownmsg=Bu butonu týklayarak makineyi hemen kapatabilirsiniz.Sistemdeki büyün servisler durdurulup, bütün kullanýcýlarýn baðlantýsý kesilecek ve sistem kapatýlacaktýr(eðer donaným destekliyor ise)
+index_script=$1 programcýðý açýlýþta çalýþacak olan programlarý listelemiþtir. Sistem yeniden baþlatýldýðýnda yeniden baþlatýlan daemon ya da sunuculara kendi komutlarýnýzý ekleyebilirsiniz.
+index_return=açýlýþ ve kapanýþ hareketi
+index_action=Servis
+index_desc=Açýklama
+index_boot=Açýlýþta baþlasýn mý?
+
+edit_title=Servis Deðiþtir
+create_title=Servis Oluþtur
+edit_ecannot=Açýlýþ servisleri deðiþtirmeye hakkýnýz yotur
+edit_details=Servis Ayarlarý
+edit_name=Ýsim
+edit_desc=Açýklama
+edit_startmsg=Açýlýþ mesajý
+edit_stopmsg=Kapanýþ mesajý
+edit_start=Açýlýþ komutlarý
+edit_stop=Kapanýþ komutlarý
+edit_boot=Açýlýþta baþlatýlsýn mý?
+edit_script=Servis Programcýðý 
+edit_badS=Çünkü bu servis düzgün olarak oluþturulamadý,bu sadece çalýþma seviyesi $1 olarak baþlatýlabilir.
+edit_badK=Çünkü bu servis düzgün olarak oluþturulamadý,bu sadece çalýþma seviyesi $1 olarak durdurulabilir.  
+edit_fix=Butonu týklayarak bu servisi diðer çalýþma seviyelerine uygun hale getirebilirsiniz.
+edit_levels= Baþlatma ve durdurmadaki çalýþma seviyeleri 
+edit_rl=Çalýþma seviyesi $1
+edit_startat=Baþla
+edit_stopat=Dur
+edit_startnow=Þimdi Baþlat
+edit_stopnow=Þimdi Durdur
+edit_return=servis
+
+save_err=Servisi kaydetmede hata oluþtu
+save_ecannot=Açýlýþ servislerini deðiþtirmeye hakkýnýz yoktur
+save_ealready='$1' servisi her zaman mevcut.
+save_ewrite=$1'e yazmada hata oluþtu : $2
+
+ss_ecannot=Açýlýþ servislerini baþlatma ya da durdurmaya izininiz yoktur.
+ss_start=Servis Baþlat 
+ss_stop=Servis Durdur
+ss_exec=$1 Çalýþtýrýlýyor ..
+
+shutdown_ecannot=Sistemi kapatmaya izininiz yoktur
+shutdown_title=Kapanýþ
+shutdown_rusure=$1 komutu ile sistemi kapatmak istediðiniza eminmisiniz?
+shutdown_ok=Sistemi Kapat
+shutdown_exec=$1 komutu ile kapatýlýyor ..
+
+reboot_ecannot=Sistemi tekrar baþlatmaya izininiz yoktur
+reboot_title=Tekrar Baþlat
+reboot_rusure=Sisteminizi $1komutu ile tekrar baþlatman istediðinizden eminmisiniz ?
+reboot_ok=Sistemi Tekrar Baþlat
+reboot_exec=$1 komutu ile yeniden baþlatýlýyor ..
+
+acl_script=Açýlýþ programcýðýný deðiþtirebilsin?
+acl_actions=Deðiþtirme, oluþturma ya da silme servislerini yapabilsin?
+acl_reboot=Sistemi yeniden baþlatabilsin?
+acl_shutdown=Sistemi kapatabilsin?
+
+log_rename=Ýþlem $1, $2 olarak yeniden isimlendirildi
+log_modify=Ýþlem $1 deðiþtirildi
+log_create=Ýþlem $1 oluþturuldu
+log_delete=Ýþlem $1 silindi
+log_start=Açýlýþ iþlemi $1 baþlatýldý
+log_stop=Kapanýþ iþlemi $1 durduruldu
+log_reboot=Sistem yeniden baþlatýldý
+log_shutdown=Sistem kapatýldý
+log_local=Açýlýþ betiði deðiþtirildi

@@ -1,0 +1,30 @@
+<header>Squid-inställningar</header>
+
+<h3>Introduktion till Squid</h3>
+Squid är en cachande proxy-webserverdemon med alla funktioner. Med Squid kan
+servern spara lokala kopior på web-objekt som hämtats från andra servrar.
+Nästa gång någon på det lokala nätverket vill hämta ett sådant objekt hämtas
+det från cachen, vilket gör att det går mycket fortare att ladda ned och
+kommer inte att ta upp så mycket bandbredd för att hämta samma objekt igen
+från ursprungsservern. Detta kan lätta belastningen för nätverk med många
+användare och överlag ge snabbare svarstider.
+
+<p>En annan fördel med att använda Squid är att det möjliggör åtkomstkontroll.
+Squid medger omfattande möjligheter att blockera åtkomst för vissa siter,
+användare, nätverk, typ av datainnehåll osv. Squid kan köras i transparent mod,
+traditionell proxy-mod och omvänd proxy mod (httpd-accelerator).
+
+<h3>Squid-modulen</h3>
+Huvudsidan för denna modul innehåller en mängd ikoner som var och en hör till
+inställningar för en viss del av Squid. Första gången som inställningar för
+Squid görs kommer alla variabler att ha sina standardvärden. Gå till respektive
+hjälpsida för att få se dessa standardvärden.
+
+<p>De flesta hjälpsidor för denna modul är utdrag ur standardfilen squid.conf
+som finns med varje Squid-installation. Mer information finns på
+<a href="http://www.squid-cache.org" target="Reference">Squids hemsida</a>.
+
+<hr>
+Eventuella buggrapporter skickas till <a href="mailto:joe@swelltech.com">Joe Cooper</a>.
+Felrapporter för de svenska sidorna skickas till <a href="mailto:lisa@cendio.se">Lisa Hallingström</a>.
+

@@ -1,0 +1,63 @@
+index_title=Avvio e Spegnimento
+index_add=Crea una nuova azione di avvio o spegnimento
+index_reboot=Riavvia Sistema
+index_rebootmsg=Clicca questo pulsante per riavviare immediatamente il
+sistema. Tutti gli utenti saranno disconnessi e tutti i servizi riavviati.
+index_shutdown=Spegni Sistema
+index_shutdownmsg=Clicca questo pulsante per spegnere immediatamente il
+sistema. Tutti i servizi verranno bloccati, tutti gli utenti disconnessi ed
+il computer verr&agrave; spento (se l'hardware lo supporta).
+index_script=Lo script $1 verr&agrave; lanciato all'avvio. Puoi aggiungere i
+tuoi comandi per riavviare i demoni o i server quando il sistema viene
+riavviato.
+index_return=azioni di avvio e spegnimento
+
+edit_title=Edit Action
+create_title=Create Action
+edit_ecannot=You are not allowed to edit bootup actions
+edit_details=Action Details
+edit_name=Name
+edit_desc=Description
+edit_startmsg=Bootup message
+edit_stopmsg=Shutdown message
+edit_start=Bootup commands
+edit_stop=Shutdown commands
+edit_script=Action Script
+edit_badS=Because this action was not created properly, it is started only in runlevel $1.
+edit_badK=Because this action was not created properly, it is stopped only in runlevel $1.
+edit_fix=Click here to make this action available to other runlevels
+edit_levels=Runlevels to start and stop in
+edit_rl=Runlevel $1
+edit_startat=Start at
+edit_stopat=Stop at
+edit_startnow=Start Now
+edit_stopnow=Stop Now
+edit_return=action
+
+save_err=Failed to save action
+save_ecannot=You are not allowed to edit bootup actions
+save_ealready=An action called '$1' already exists
+save_ewrite=Failed to write to $1 : $2
+
+ss_ecannot=You are not allowed to start or stop bootup actions
+ss_start=Start Action
+ss_stop=Stop Action
+ss_exec=Executing $1 ..
+
+shutdown_ecannot=You are not allowed to shutdown the system
+shutdown_title=Shutdown
+shutdown_rusure=Are you sure you want to shutdown the system with the command $1 ?
+shutdown_ok=Shutdown System
+shutdown_exec=Shutting down with command $1 ..
+
+reboot_ecannot=You are not allowed to reboot the system
+reboot_title=Reboot
+reboot_rusure=Are you sure you want to reboot the system with the command $1 ?
+reboot_ok=Reboot System
+reboot_exec=Rebooting with command $1 ..
+
+acl_script=Can edit the bootup script?
+acl_actions=Can edit, create and delete actions?
+acl_reboot=Can reboot the system?
+acl_shutdown=Can shutdown the system?
+

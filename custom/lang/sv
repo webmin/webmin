@@ -1,0 +1,56 @@
+index_title=Egna kommandon
+index_edit=Ändra kommando
+index_none=Inga egna kommandon definierade
+index_create=Skapa ett nytt kommando
+index_return=kommandon
+acl_commands=Kommandon som denna användare får köra
+acl_create=Kunna skapa och ändra kommandon?
+yes=Ja
+no=Nej
+
+edit_title=Ändra kommando
+create_title=Skapa kommando
+edit_ecannot=Du får inte ändra kommandon
+edit_details=Uppgifter om kommandot
+edit_desc=Beskrivning
+edit_cmd=Kommando
+edit_user=Kör som användare
+edit_raw=Ska kommandot generera HTML?
+edit_params=Kommandoparametrar
+edit_name=Namn
+edit_type=Typ
+edit_quote=Sätta citattecken runt parameter?
+edit_su=Använda användarens miljö?
+edit_type0=Text
+edit_type1=Användare
+edit_type2=UID
+edit_type3=Grupp
+edit_type4=GID
+edit_type5=Fil
+edit_type6=Katalog
+edit_type7=Inställning ...
+edit_type8=Lösenord
+
+save_err=Det gick inte att spara kommando
+save_ecannot=Du får inte ändra kommandon
+save_ecmd=Du har inte angivit något kommando
+save_edesc=Du har inte angivit någon beskrivning av kommandot
+save_euser=Användaren finns inte eller är inte giltig
+
+run_err=Det gick inte att utföra kommandot
+run_ecannot=Du får inte utföra detta kommando
+run_euser=Användaren finns inte eller är inte giltig
+run_egroup=Gruppen finns inte eller är inte giltig
+run_title=Utför kommando
+run_out=Resultat från $1 ...
+run_noout=Inget resultat finns
+
+log_modify=Modifierade kommando $1
+log_create=Skapade kommando $1
+log_delete=Tog bort kommando $1
+log_exec=Utförde kommando $1
+
+acl_cmds=Kommandon som denna användare får köra
+acl_call=Alla kommandon
+acl_csel=Angivna ...
+acl_edit=Kunna skapa och ändra kommandon?

@@ -1,0 +1,176 @@
+index_title=Programpaket
+index_installed=Installerade paket
+index_close=Stäng allt
+index_open=Öppna allt
+index_search=Sök efter paket:
+index_install=Installera ett nytt paket
+index_installmsg=Välj varifrån du vill installera det nya paketet <tt>$1</tt>:
+index_local=Från lokal fil
+index_uploaded=Från nedladdad fil
+index_ftp=Från ftp eller http, URL
+index_installok=Installera
+index_ident=Identifiera en fil
+index_identmsg=Ange kommando eller sökvägen till en fil som systemet ska söka efter i databasen <tt>$1</tt>.
+index_identok=Sök efter:
+index_return=paketlista
+
+search_title=Paketsökning
+search_nomatch=Inget paket stämde med $1
+search_none=Inget
+search_desc=Beskrivning
+search_class=Klass
+search_pack=Paket
+search_match=Paket som stämmer med $1
+search_return=sökresultat
+
+edit_title=Ändra paket
+edit_details=Uppgifter om paket
+edit_desc=Beskrivning
+edit_pack=Paket
+edit_class=Klass
+edit_none=Ingen
+edit_ver=Version
+edit_vend=Leverantör
+edit_arch=Arkitektur
+edit_inst=Installerat
+edit_list=Lista filer
+edit_uninst=Avinstallera
+edit_return=uppgifter om paket
+
+list_title=Paketfiler
+list_files=Filer tillhörande paket $1
+list_path=Sökväg
+list_owner=Ägare
+list_group=Grupp
+list_type=Typ
+list_size=Storlek
+list_status=Status
+
+delete_err=Det gick inte att ta bort paket $1
+delete_epack=Paket $1 finns inte
+delete_title=Ta bort paket
+delete_rusure=Vill du verkligen ta bort paket $1? Upp till $2 filer ($3 bytes) kommer att raderas permanent.
+delete_ok=Ta bort
+
+file_title=Filinformation
+file_notfound=Det finns ingen tillgänglig information om $1
+file_path=Sökväg
+file_type=Typ
+file_perms=Rättigheter
+file_owner=Ägare
+file_group=Grupp
+file_size=Storlek
+file_link=Länk till
+file_pack=Paket
+file_class=Klass
+file_desc=Beskrivning
+file_none=Ingen
+
+install_err=Det gick inte att installera paketet
+install_elocal=Du har inte angivit någon lokal fil
+install_elocal2='$1' finns inte
+install_eupload=Din browser stödjer inte nedladdning av filer
+install_eurl=URL:en '$1' är obegriplig
+install_edir=Inte en giltig $1-katalog
+install_ezip=Inte en giltig komprimerad eller gzippad $1-fil
+install_efile=Inte en giltig $1-fil
+install_title=Installera paket
+install_header=Installera paket
+install_packs=Paket som ska installeras
+install_ok=Installera
+
+do_err=Det gick inte att installera paket $1
+do_title=Installera paket
+do_efailed=Installationen misslyckades: $1
+do_efailedmsg1=Du kan försöka att göra om installationen genom att gå tillbaka till föregående sida och ändra installationsinställningarna.
+do_efailedmsg2=Annars kan du <a href='$1'>klicka här</a> för att radera den temporära paketfilen för att spara diskutrymme.
+do_success=Paket $1 har installerats
+do_details=Uppgifter om paket
+do_desc=Beskrivning
+do_class=Klass
+do_pack=Paket
+do_ver=Version
+do_vend=Leverantör
+do_arch=Arkitektur
+do_inst=Installerat
+do_none=Inget
+do_files=Paketfiler
+
+pkgadd_root=Rotkatalog
+pkgadd_eroot=Rotkatalog '$1' finns inte
+pkgadd_unknown=Okänd
+
+rpm_upgrade=Uppgradera paket?
+rpm_replacepkgs=Skriva över paket?
+rpm_nodeps=Strunta i beroenden?
+rpm_oldpackage=Byta ut en ny version mot en äldre?
+rpm_noscripts=Utföra installationsscript?
+rpm_excludedocs=Installera dokumentation?
+rpm_replacefiles=Skriva över filer?
+rpm_root=Rotkatalog
+rpm_eroot=Rotkatalog '$1' finns inte
+
+bsd_unknown=Okänd
+bsd_scripts=Utföra pre- och postinstallationsscript?
+bsd_force=Driva igenom installation även om nödvändiga förutsättningar ej är uppfyllda?
+
+slack_unclass=Övrig
+slack_unknown=Okänd
+slack_missing=Saknas
+slack_root=Rotkatalog
+slack_eroot=Rotkatalog saknas eller är felaktigt angiven
+
+debian_unknown=Okänd
+debian_depends=Strunta i beroendeproblem?
+debian_conflicts=Strunta i paketkonflikter?
+debian_overwrite=Skriva över filer från andra paket?
+debian_downgrade=Byta ut nyare paket mot äldre?
+
+log_install_package=Installerade paket $1
+log_install_apt_l=Installerade paket $1 från APT
+log_install_apt=Installerade $2 paket från APT
+log_check_apt_l=Uppgraderade paket $1 från APT
+log_check_apt=Uppgraderade $2 paket från APT
+log_delete=Avinstallerade paket $1
+
+rhn_input=Paket från Redhat Network
+rhn_install=Installerar paket med kommando $1 ...
+rhn_ok=... installationen klar.
+rhn_failed=... installationen misslyckades!
+rhn_title=Ange RHN-paket
+rhn_pack=Paket
+rhn_version=Version
+rhn_form=inställningar för Redhat Network
+rhn_auto=Kontrollera automatiskt om uppgraderingar finns?
+rhn_interval=Kontrollintervall
+rhn_secs=sekunder
+rhn_apply=Spara och ta i drift
+rhn_now=Spara och kontrollera nu
+rhn_err=Det gick inte att spara RHN-inställningarna
+rhn_einterval=Intervallet saknas eller är felaktigt
+rhn_einterval2=Kontrollintervallet måste vara minst 120 sekunder
+rhn_check=Kontrollerar om det finns uppdateringar
+rhn_checkdesc=Kontrollerar om det finns uppdaterade paket från Redhat Network med hjälp av kommandot $1 ...
+rhn_nocheck=... inga paket uppdaterades.
+rhn_proxy=Proxyserver-URL för nedladdning
+rhn_none=Avslagen
+rhn_eproxy=Proxyserver saknas eller är felaktigt angiven
+rhn_skip=Hoppa över paket som matchar
+
+apt_input=Paket från Debian APT
+apt_install=Installerar paket med kommandot $1 ...
+apt_ok=... installationen klar.
+apt_failed=... installationen misslyckades!
+apt_form=Uppgradera alla paket
+apt_update=Synkronisera paketlistan (<tt>update</tt>)
+apt_dist=Utför distributionsuppgradering (<tt>upgrade-dist</tt>)
+apt_sim=Visa endast vilka paket som borde uppgraderas
+apt_apply=Uppgradera nu
+apt_upgrade=Uppgradera alla paket
+apt_updatedesc=Synkroniserar paketlistan med kommandot $1 ...
+apt_updatefailed=... synkroniseringen misslyckades!
+apt_updateok=... synkroniseringen klar.
+apt_upgradedesc=Uppgraderar alla paket med kommandot $1 ...
+apt_upgradedescsim=Simulerar uppgradering av alla paket med kommandot $1 ...
+apt_upgradefailed=... uppgraderingen mislyckades!
+apt_upgradeok=... uppgraderingen klar.

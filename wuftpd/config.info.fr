@@ -1,0 +1,7 @@
+ftpd_path=Chemin de wuftpd,0
+ftpaccess=Chemin du fichier ftpaccess,0
+ftpconversions=Chemin du fichier ftpconversions,0
+ftpgroups=Chemin du fichier ftpgroups,0
+ftphosts=Chemin du fichier ftphosts,0
+ftpusers=Chemin du fichier ftpusers,0
+pid_file=Fichier de numéro de processus du serveur ftp,0

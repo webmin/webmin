@@ -1,0 +1,41 @@
+<header>Paquetes de Software de Cluster</header>
+
+Este módulo de Webmin le permite gestionar el software instalado en
+múltiples servidores de un cluster desde una interface común. Es similar al
+módulo Paquetes de Software, pero con la posibilidad de realizar la mayoría
+de las funciones (como instalación, consulta y borrado de paquetes) en
+muchos servidores Webmin en una sola operación. <p>
+
+La parte superior de la página principal bajo la cabecera Servidores
+Gestionados lista los otros servidores Webmin cuyo software se gestiona
+mediante este módulo. Para añadir un servidor a la lista primero debe
+añadirlo al módulo Índice de Servidores Webmin, con un nombre de usuario y
+contraseña que usar para ingresar en dicho servidor. Puede seleccionar el
+servidor de la lista junto al botón Añadir Servidor. <p>
+
+Cuando se añade un servidor, el módulo comprobará que está usando el mismo
+sistema de gestión de paquetes que este servidor (como RPM o Debian), y
+entonces descargará una lista de todos los paquetes instalados como caché
+local. <p>
+
+Un servidor que siempre aparecerá en la lista de aquéllos que poder añadir
+es 'este servidor', para que pueda gestionar los paquetes locales y en
+servidores remotos desde una misma interface. <p>
+
+Una vez que haya al menos un icono en Servidores Gestionados, puede usar el
+formulario Paquetes Instalados para buscar paquetes en todos los
+servidores, o pulsar el botón Refrescar Lista de Paquetes para volver a
+descargar la lista de paquetes desde todos los servidores, en caso de haber
+añadido o desinstalado paquetes mediante algún otro módulo o método. <p>
+
+Al final de la página hay un formulario para instalar nuevos paquetes en
+todos los servidores gestionados. Puede escoger instalar desde un fichero
+en este servidor, desde un fichero en el servidor, o desde un fichero
+descargado mediante HTTP o FTP desde cualquier otro sitio. Cuando instale
+desde un fichero descargado puede elegir si cada servidor debería descargar
+su propia copia desde el sitio original, o recibir una copia desde este
+servidor. La primera opción será más rápida si el sitio desde el que
+descargar el paquete están dentro de su propia red local. <p>
+
+<hr>
+

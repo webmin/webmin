@@ -1,0 +1,4 @@
+dovecot=Programa servidor Dovecot,0
+dovecot_config=Camí complet del fitxer de configuració de Dovecot,0
+init_script=Nom del script d'inicialització de Dovecot,3,No n'hi ha cap
+pid_file=Fitxer de PID del servidor Dovecot,0

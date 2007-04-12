@@ -1,0 +1,12 @@
+syslog_conf=A syslog konfigurációs file-jának teljes elérési útja,0
+m4_conf=A syslog konfigurációját elõfeldolgozza az <tt>m4</tt>?,1,1-Igen,0-Nem
+m4_path=Az <tt>m4</tt> teljes elérési útja,0
+sync=Letiltható a minden üzenet utáni lemezre írás?,1,1-Igen,0-Nem
+pipe=Tud a démon csõvezetékbe írni?,1,2-Program bemenetére,1-Nevesített csõvezetékbe,0-Nem
+pri_dir=A démon képes rafináltan szétválogatni az üzeneteket prioritás szerint?,1,2-FreeBSD stílusban,1-Linux stílusban,0-Nem
+pri_all=A démon képes kezelni minden prioritási szintet?,1,1-Igen,0-Nem
+tags=Lehet a naplóbejegyzéseket a küldõ program szerint szétválogatni?,1,1-Igen,0-Nem
+pid_file=A démonhoz tartozó PID file,3,Nincs
+syslogd=A syslog démon teljes elérési útja,0
+facilities=A naplóbejegyzések lehetséges kategóriái,0
+lines=A megjelenített sorok száma,0

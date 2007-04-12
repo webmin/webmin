@@ -1,0 +1,103 @@
+<body bgcolor=#ffffff>
+<center><img src=images/dnsadmin.gif></center>
+<h2><i>Esta página de ayuda no está completa</i></h2>
+
+<hr>
+<h3>Introducción</h3>
+Este módulo le permite configurar el servidor DNS BIND (Berkeley Internet
+Name Daemon) en esta máquina. El servidor DNS es responsable de convertir
+nombres de máquina tales como <i>www.foo.com</i> en direcciones IP como
+<i>10.1.2.3</i>, y direcciones IP en nombres de máquina.
+
+<hr>
+<h3>Conceptos Básicos de DNS</h3>
+Cada servidor DNS gestiona cierto número de dominios directos e inversos.
+Un dominio directo es algo como <i>foo.com</i>, y un dominio inverso es
+como <i>204.165.66</i>. Para cada dominio el servidor DNS puede ser
+primario (el origen primario de los datos del dominio) o secundario (un
+respaldo de los datos del dominio). <p>
+
+<dl>
+<dt><b>Dominios Directos</b>
+<dd>Si su servidor DNS gestiona un dominio directo como <i>foo.com</i>,
+    entonces será capaz de responder a preguntas sobre nombres de máquina
+    dentro de este dominio. Para dominios para los que este servidor sea
+    promario puede usar este módulo para añadir máquinas (y otros
+    registros) al dominio. Para dominios secudarios puede especificar
+    el(los) servidor(es) primario(s) desde los que descargar la información
+    de las máquinas. <p>
+
+<dt><b>Dominios Inversos</b>
+<dd>Los dominios inversos mapean direcciones IP (como <i>203.165.66.77</i>)
+    a nombres de máquina (como <i>www.foo.com</i>). Un dominio inverso
+    proporcinoa nombres a todas las direcciones IP de una red (como
+    <i>203.165.66</i>). Para dominios para los que este servidor sea primario
+    este módulo le permite añadir registros de IP a nombre de máquina para
+    el dominio. Para dominios secundarios puede especificar el(los)
+    servidor(es) DNS desde los que descargarse los mapeos de direcciones
+    IP. <p>
+</dl>
+
+<hr>
+<h3>Configurando el Servidor DNS</h3>
+Si su sistema ya tiene un servidor DNS BIND en ejecución, entonces puede
+ignorar esta sección. Sin embargo, si Webmin detecta que el fichero de
+configuración del servidor DNS primario (habitualmente
+<tt>/etc/named.boot</tt>) no existe en su sistema, asumirá que aún no ha
+configurado el servidor DNS. <p>
+
+Para un uso normal en Internet, un servidor DNS debe disponer de una lista
+de servidores de nombres raíz que puedan responder a consultas externas a
+sus dominios. Si su servidor no está configurado, Webmin podrá :
+
+<ol>
+<li>Descargar esta lista desde el servidor FTP de Internic en
+<tt>rs.internic.net</tt>. Suponiendo que la máquina donde ejecuta Webmin
+    tiene conexión a Internet y que no está bloqueado por un cortafuegos,
+    esta es la mejor opción. <p>
+<li>Usar la copia de la lista distribuída con Webmin. Puesto que los
+    servidores de nombres raíz no cambian a menudo esto debería funcionar
+    borrectamente. <p>
+<li>Configurar el servidor de nombres sólo para uso interno. Si está en una
+    red sin conexión  a Internet, esta es la opción que necesita. <p>
+</ol>
+
+<hr>
+<h3>Creando un Dominio Primario</h3>
+Para crear un nuevo dominio primario, rellene el formulario bajo <b>Añadir
+nuevo dominio primario</b> en la página <a href=/dnsadmin/>Servidor
+DNS</a>. El significado de los campos es :
+<ul>
+<li><b>Mapeo</b><br>
+    Determina si éste es un dominio directo o inverso<p>
+<li><b>Dominio/Red</b><br>
+    Para dominios directos, el dominio que añadir (como <tt>foo.com</tt>).
+    Para dominios inversos, la red IP que añadir (como <tt>203.123.221</tt>). 
+    <p>
+<li><b>Nombre de fichero</b><br>
+    El nombre del fichero en que guardar la información del dominio. Si
+    deja este campo en blando se generará automáticamente un nombre de
+    ficheros adecuado. <p>
+<li><b>email de contacto</b><br>
+    Cada dominio DNS debe tener asociado una dirección de correo
+    electrónico, que debe ser el de la persona responsable del dominio. <p>
+<li><b>Servidor de nombres</b><br>
+    Debe contener el nombre plenamente cualificado del servidor de nombres
+    responsable de este dominio. Casi siempre será el mismo nombre que el
+    de la máquina donde está ejecutando Webmin. <p>
+</ul>
+
+<hr>
+<h3>Creando un Dominio Secundario</h3>
+
+<hr>
+<h3>Editando un Dominio Primario</h3>
+
+<hr>
+<h3>Editando Registros de Dominio</h3>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Volver al módulo</a><p>
+ 
+

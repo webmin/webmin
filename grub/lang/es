@@ -1,0 +1,67 @@
+index_title=Gestor de arranque GRUB 
+index_add=Agregar una nueva opci&#243;n de arranque
+index_global=Editar Opciones Globales
+index_globalmsg=Editar opciones de arranque globales que aplican a todas las selecciones del men&#250; de arranque, y seleccione el dispositivo en el cual GRUB se instalar&#225;.
+index_install=Instalar GRUB
+index_installmsg=Instalar el gestor de arranque GRUB en $1 para desplegar las opciones de arriba en tiempo de arranque. Esto sobreescribir&#225; otros cargadores de arranque existentes, como LILO, y puede dejar a su sistema inarrancable!
+index_none=No se han definido opciones de arranque. Aseg&#250;rese que agreg&#243; al menos una antes de instalar grub.
+index_efile=El archivo $1 del men&#250; de GRUB no fu&#233; encontrado en su sistema. Quiz&#225;s GRUB no est&#225; instalado, o la <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
+index_epath=El ejecutable de GRUB $1 no fu&#233; encontrado en su sistema. Quiz&#225;s GRUB no est&#225; instalado, o la <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
+index_return=lista de opciones
+
+title_add=Agregar Opci&#243;n de Arranque
+title_edit=Editar Opci&#243;n de Arranque
+title_header=Detalles de opciones del men&#250; de arranque
+title_title=T&#237;tulo de la opci&#243;n
+title_root=Partici&#243;n de la im&#225;gen de arranque
+title_noverify=No montar y verificar la partici&#243;n
+title_other=Otra
+title_sel=Seleccionada
+title_boot=Sistema operativo a arrancar
+title_kernel=N&#250;cleo de Linux
+title_kfile=Camino del n&#250;cleo
+title_args=Opciones del n&#250;cleo
+title_initrd=Archivos ramdisk inicial
+title_chain=Otros SO
+title_chain_def=Del primer sector de la partici&#243;n
+title_chain_file=Desde archivo chainloader
+title_makeactive=&#191;Dejar la partici&#243;n ra&#237;z activa?
+title_none=Ninguna (entrada del men&#250; no-arranque)
+title_err=Fallo al salvar opciones de arranque
+title_etitle=T&#237;tulo de la opci&#243;n no ingresado
+title_eroot=PArtici&#243;n ra&#237;z no ingresada
+title_ekernel=Camino del n&#250;cleo no ingresado o no v&#225;lido
+title_echain=Archivo chainloader no ingresado o no v&#225;lido
+title_edev=Dispositivo de partici&#243;n ra&#237;z $1 no soportado
+title_einitrd=Nombre de archivo de ramdisk inicial no ingresado
+title_lock=&#191;Contrase&#241;a bloqueada?
+
+global_title=Opciones Globales
+global_header=Opciones globales del men&#250; de arranque
+global_default=Opciones de arranque por defecto
+global_fallback=Opci&#243;n de retraso de arranque
+global_first=Primero en la lista
+global_timeout=Tiempo de espera antes de cargar por defecto
+global_forever=Esperar por siempre
+global_secs=segundos
+global_install=Instalar GRUB en disco/partici&#243;n
+global_sel=Seleccionado
+global_other=Otro
+global_password=Contrase&#241;a de arranque
+global_none=Ninguna
+global_password_file=Usar archivo de men&#250; si la contrase&#241;a es ingresada:
+global_pass
+global_err=Fallo al salvar opciones globales
+global_etimeout=Tiempo de espera no ingresado o no v&#225;lido
+global_edev=Disco/partici&#243;n instalada $1 no soportada
+global_eother=Disco/partici&#243;n no ingresada o no v&#225;lida
+global_epassword=Contrase&#241;a de arranque no ingresada o no v&#225;lida
+global_epasswordfile=Nombre de archivo de men&#250; alternativo no ingresado
+
+install_title=Instalar GRUB
+install_err=Fallo al instalar GRUB
+install_efind=No se puede encontrar el archivo de men&#250;
+install_desc=Instalando GRUB en $1 con comandos $2 y $3 ..
+install_ok=.. instalaci&#243;n completada.
+install_failed=.. fall&#243; instalaci&#243;n!
+

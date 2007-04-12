@@ -1,0 +1,22 @@
+<header>Resposta del servidor SMTP en cas de rebuig per nom de host desconegut</header>
+
+<center><tt>unknown_hostname_reject_code</tt></center>
+<hr>
+
+Aquest paràmetre especifica el codi de resposta del servidor SMTP quan un
+viola la restricció <tt>reject_unknown_hostname</tt>, això és:
+
+<i>Accés denegat: Nom de host HELO del client desconegut (sense registre DNS A o MX).</i><br>
+<br>
+Tingues en compte que el valor per defecte utilitzat per postfix per a
+<tt>unknown_hostname_reject_code</tt> és el codi 501, i aquest codi en
+l'estàndard RFC 822 voldria dir 'Error de sintaxi en els paràmetres o arguments'.
+Així, en Postfix, un codi d'estat 501 no reflecteix exactament l'explicació de RFC822.<br>
+<p>
+Per evitar confusions pots canviar-ho, per exemple, pel 577 (un altre motiu 
+és que el codi 501 també és el valor per defecte de postfix d'altres menes
+d'errors), altrament no ho canviïs si no tens un complet coneixement de 
+RFC 822.
+</p>
+
+<hr>

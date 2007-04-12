@@ -1,0 +1,19 @@
+<header>Webmin PostgreSQL Backup Form Help</header>
+
+<p />
+    The PostgreSQL system user id must have write permission on any 
+directory used as a target for any backup.
+
+<p />
+    Regardless of the backup file format selected, each database 
+will be backed up into a single file having the form:
+&lt;name&gt;.&lt;extension&gt; where &lt;extension&gt; will be one 
+of 'post', 'tar', or 'sql'.
+
+<p />
+   Commands specified to run before and after backup are triggered 
+before and after <em><strong>each</strong></em> database and 
+<strong>NOT</strong> just once before and once after the entire set.
+
+<footer>
+

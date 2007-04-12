@@ -1,0 +1,81 @@
+index_title=Bandwidth Monitoring
+index_efiresys=None of the supported firewalls (IPtables, IPFW, IPFilter or Shorewall) were detected your system. Check the appropriate modules to ensure that they are configured.
+index_efiresys2=The configured $1 firewall system was not found on your system. Adjust the <a href='$2'>module configuration</a> to use the correct firewall.
+index_elog=The file $1 used for bandwidth logging is actually a directory on your system. Adjust the <a href='$2'>module configuration</a> to use a different path.
+index_edir=The directory for storing bandwidth data $1 does not exist, or is not a directory. Adjust the <a href='$2'>module configuration</a> to use a different path.
+index_emod=The Webmin module $1 is not installed on this system or is not supported by your OS. The Bandwidth Monitoring module cannot operate without it.
+index_esyslog=Neither of the System Logs modules are installed on this system and supported by your OS. The Bandwidth Monitoring module cannot operate without one of them.
+index_firesys=Using $1 firewall and $2
+index_setupcannot=However, you do not have permissions to set it up!
+index_setupdesc=Before this module can report on network usage on your system, it must be set up to monitor traffic on the selected external network interface.
+index_missing3=Several firewall rules must be added, and a syslog configuration entry created.
+index_missing2=Several firewall rules must be added.
+index_missing1=A syslog configuration entry must be created.
+index_iface=External network interface
+index_setup=Setup Now
+index_by=Show traffic by
+index_hour=hour
+index_host=host
+index_proto=protocol
+index_iport=internal port
+index_oport=external port
+index_port=port
+index_for=for
+index_all=&lt;everything&gt;
+index_forhour=hour..
+index_forhost=host..
+index_forproto=protocol..
+index_foriport=internal port..
+index_foroport=external port..
+index_search=Generate Report
+index_none=No traffic has been summarized by this module yet. If you have just set it up, it may take at least one hour for traffic to be processed.
+index_ehour=Invalid hour - must in the format yyyy-mm-dd hh:mm
+index_eport=Unknown port name
+index_eproto=Missing protocol
+index_ehost=Missing or invalid host
+index_from=For traffic after
+index_to=For traffic before
+index_efrom=Invalid starting date and time
+index_eto=Invalid ending date and time
+index_err=Failed to generate report
+index_usage=Network traffic <font color=#ff0000>downloaded</font> and <font color=#0000ff>uploaded</font>
+index_hhour=Hour
+index_hhost=Host
+index_hday=Day
+index_hproto=Protocol
+index_hiport=Port
+index_hoport=Port
+index_hport=Port
+index_low=Server ports only?
+index_resolv=Resolve hostnames?
+index_nomatch=No traffic matched the selected criteria.
+index_turnoff=Turn Off Monitoring
+index_turnoffdesc=Click this button to remove the firewall rules, syslog configuration and Cron job used for bandwidth monitoring. All existing collected data will remain untouched.
+index_rotate=Update Statistics
+index_rotatedesc=Click this button to process all logged network traffic up to the current time, making it immediately available for reporting.
+index_eiptables=Warning - Your IPtables configuration has an error : $1. Setting up bandwidth monitoring will clear all firewall rules.
+index_return=report form
+
+log_setup=Setup bandwidth monitoring on interface $1
+log_turnoff=Disabled bandwidth monitoring
+log_rotate=Updated statistics
+
+acl_setup=Can setup and disable monitoring?
+
+turnoff_ecannot=You are not allowed to disable monitoring
+
+setup_ecannot=You are not allowed to enable monitoring
+setup_ezone=Failed to fine Shorewall zone for the selected interface
+
+system_firewall=IPtables
+system_ipfw=IPFW
+system_ipfilter=IPFilter
+system_shorewall=Shorewall
+
+syslog_syslog=Syslog
+syslog_syslog-ng=Syslog-NG
+
+rotate_title=Updating Statistics
+rotate_doing=Processing logged network traffic ..
+rotate_done=.. done.
+

@@ -1,0 +1,19 @@
+<header>Rättigheter</header>
+
+I den första tabellen kan man begränsa tillgången till vissa kommandon.
+För varje kommando kan man ange om det ska tillåtas eller förbjudas samt
+för vilka användartyper och -klasser detta gäller. Om kommandot inte
+förbjuds kommer det att vara tillåtet för alla användare.
+
+<p>I den andra tabellen kan man spärra nedladdning av filer vars namn
+innehåller vissa tecken eller som matchar vissa reguljära uttryck. Detta
+är användbart om den anonyma FTP-servern har en katalog för <tt>inkommande</tt>
+filer och man vill förhindra att användarna skapar 'dolda' kataloger att
+lagra warez i. I det första fältet i tabellen kan man skriva in ett
+reguljärt uttryck, t ex <tt>^[A-z0-9]$</tt>, som definierar tillåtna tecken.
+I det andra fältet kan man skriva in reguljära uttryck för <b>icke</b>
+tillåtna filnamn och i den sista kolumnen skriver man in fullständig sökväg
+till den felmeddelandefil som ska skickas till FTP-klienten när en illegal
+fil laddas ned.
+
+<hr>

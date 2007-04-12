@@ -1,0 +1,54 @@
+# webmin-0.90heartbeat/lang/hu
+# translated by Gabor Keve <gabor.keve@it-worx.hu>
+#
+index_title=Szívverés Monitor
+index_return=Szívverés monitor
+index_edir=A szívverés konfigurációs könyvtár $1 nem létezik. Talán a szívverés nincs installálva, vagy az Ön <a href='$2'>modul konfigurációja</a> hibás.
+index_start=Szívverés Monitor indítása
+index_startmsg=Kattintson erre a gombra ha el szeretné indítani a szívverés monitort. Ez érvényesíti az automatikus szolgáltatás failover az Ön rendszerében az aktuális konfigurációval.
+index_apply=Modosulások elfogadása
+index_applymsg=Click this button to force the running szívverés monitor process to reload the current konfigurációuration.
+
+conf_title=Konfigurációs beállítások
+conf_header=Szívverés konfigurációs beállítások
+conf_serial=Soros szívverés port
+conf_baud=A soros port baud sebessége
+conf_udp=Ethernet szívverés eszköz
+conf_none=Nincs
+conf_udpport=UDP szívverés port
+conf_keepalive=A szívverések közti idõ
+conf_secs=másodperc
+conf_deadtime=Az idõ, miután a csomópont halottnak lesz tekintve
+conf_watchdog=Watchdog eszköz file
+conf_node=Hosztok a füzéren
+node_edit=A fürtök erõforrásainak szerkesztése
+node_header=Fürt erõforrásainak részletezése
+node_node=Elsõszámú csomópontja az erõforrásoknak
+node_ips=Az erõforrás IP címe
+node_ip=IP címek
+node_cidr=Hálózati maszk CIDR
+node_broad=Üzenetszórás címe
+node_servs=Az erõforrás szolgáltatás
+node_serv=Szolgáltatás
+node_args=Kiegészítõ paraméterek
+node_err=Nem lehet menteni a fürt erõforrásokat
+node_enone=Hibás vagy érvénytelen elsõdleges csomópont
+node_eip='$1' nem valós IP cím
+node_ecidr='$1' nem valós CIDR
+node_ebroad='$1' nem valós üzenetszóró cím
+
+auth_title=Hitelesítési kulcs
+auth_header=Fürt csomópont hitelesítés
+auth_mode=Hitelesítési mód
+auth_crc=CRC (Nem biztonságos)
+auth_sha1=SHA1 jelszóval
+auth_md5=MD5 jelszóval
+auth_err=Nem lehet menteni a hitelesítési kulcsot
+auth_emd5=Hibás vagy érvénytelen MD5 jelszó
+auth_esha1=Hibás vagy érvénytelen SHA1 jelszó
+
+start_err=Nem lehet indítani a szívverést
+
+apply_err=Nem lehet menteni a változásokat
+apply_epid=A folyamat már nem fut
+

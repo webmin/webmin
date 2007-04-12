@@ -1,0 +1,32 @@
+<header>Shell to use for delivery to external command</header>
+
+<center><tt>local_command_shell</tt></center>
+<hr>
+
+This parameter controls what shell will be used for delivery to external
+command. By default, external commands are executed directly; commands are
+given to <tt>/bin/sh</tt> only when they contain shell meta characters or
+shell built-in commands.
+
+<p>
+
+Specify a different shell when you need more control over what
+programs can be run from e.g. <tt>.forward</tt> files. 
+
+<p>
+
+&quot;sendmail's restricted shell&quot; <tt>smrsh</tt> is what most people will
+use (<tt>smrsh</tt> is part of recent sendmail distributions)
+
+<p>
+
+Note: when a shell is specified, it is invoked even when the
+command contains no shell built-in commands or meta characters.
+
+<p>
+
+Example: <tt>/some/where/smrsh -c</tt>
+
+<p>
+
+<hr>

@@ -1,0 +1,33 @@
+<header>Anonym FTP</header>
+
+I den första tabellen kan man ange den katalog som servern ska gå till
+med <tt>chroot</tt> när en anonym FTP-användare loggar in. Man kan ange
+olika kataloger för skilda användarklasser eller låta alla klasser använda
+samma katalog. Om ingen katalog anges här kommer FTP-servern att göra
+<tt>chroot</tt> till hemkatalogen för <tt>ftp</tt>-användaren.
+
+<p>Eftersom servern anropar externa program som <tt>ls</tt> och <tt>tar</tt>
+måste den anonyma rotkatalogen innehålla en <tt>bin</tt>-katalog med dessa
+program, en <tt>lib</tt>-katalog med de delade bibliotek som behövs och en
+<tt>etc</tt>-katalog som innehåller <tt>passwd</tt>- och
+<tt>group</tt>-filerna. När servern använder <tt>chroot</tt> för att
+begränsa åtkomsten till den anonyma rotkatalogen kan den inte använda
+program utanför denna katalog.
+
+<p>I den andra tabellen anges den katalog som servern ska göra <tt>chroot</tt>
+till för gästanvändare. För varje katalog kan man ange de användare som
+katalogen ska användas för genom att skriva in användarnamn, UID (t ex
+<tt>%3000</tt>) eller UID-intervall (t ex <tt>%3000-3006</tt>). Om inga
+användare anges kommer katalogen att används för alla gästanvändare.
+
+<p>I den tredje tabellen kan man ange den Unix-grupp som anonyma
+FTP-användare ska höra till om man inte vill använda den primära gruppen
+för <tt>ftp</tt>-användaren. För varje grupp kan man ange en eller flera
+användarklasser för att exempelvis tillåta åtkomst till vissa filer för
+anonyma användare från vissa IP-adresser.
+
+<p>I den nedersta delen av sidan kan man ange de krav man ställer på
+lösenord för anonym FTP-inloggning. Normalt bör FTP-användare
+skriva in en giltig e-postadress som anonymt lösenord.
+
+<hr>

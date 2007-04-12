@@ -1,0 +1,17 @@
+<header>Nombre de directorios de cola partidos a través de los subdirectorios</header>
+
+<center><tt>hash_queue_names</tt></center>
+<hr>
+
+Este parámetro especifica los nombres de directorios de cola que están partidos
+a través de múltiples niveles de subdirectorio. NO SE DEBE DE USAR con directorios
+de acceso total de escritura. DEBE DE USARSE para directorios de archivo de
+diario diferido o el rendimiento del sistema sufrirá por ello.
+
+<p>
+
+Desafortunádamente, hacer esto con la cola entrante o diferida puede ralentizar
+el sistema de correo (<tt>mailq</tt> con ula cola vacía puede estar varios
+segundos), por ello debería hacerse sólo en caso de emergencia.
+
+<hr>

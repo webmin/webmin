@@ -1,0 +1,26 @@
+<header>Asynchronous writes</header>
+
+"Yes" - Writes to the server are done asynchronously.
+When your NFS client sends a write request to an NFS
+server, the server returns a positive response to your client
+before writing any data to its disk. Your client can then send
+another write request without waiting for the server to
+complete the previous write.
+Write performance is better with asynchronous writes than
+with synchronous writes. However, if the server crashes
+after sending the positive response to the client but before
+writing the data to disk, the data is lost, and the client is not
+notified.
+<p>
+"No" - Writes to the server are done synchronously. When
+your NFS client sends a write request to an NFS server, the
+server writes the data to its disk before returning a positive
+response to your client. Your client must wait until the server
+writes the data to disk before it can send another write
+request.
+Write performance is not as good with synchronous writes
+as with asynchronous writes.
+<p>
+The default is "No".
+<hr>
+

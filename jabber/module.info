@@ -1,0 +1,11 @@
+name=Jabber
+desc=Jabber IM Server
+category=servers
+desc_ca=Servidor IM Jabber
+desc_es=Jabber - Mensajer&#237;a Instant&#225;nea
+desc_de=Jabber IM-Server
+desc_ru_SU=уЕТЧЕТ УППВЭЕОЙК Jabber
+desc_ru_RU=Сервер сообщений Jabber
+longdesc=Configure the multi-protocol Jabber messaging server.
+cpan=1
+os_support=!windows

@@ -1,0 +1,82 @@
+index_title=Start och avstängning
+index_add=Skapa en ny start- eller avstängningsfunktion
+index_reboot=Starta om systemet
+index_rebootmsg=Tryck på denna knapp för att omedelbart starta om systemet. Alla inloggade användare kommer att loggas ut och alla tjänster startas om.
+index_shutdown=Stäng av systemet
+index_shutdownmsg=Tryck på denna knapp för att omedelbart stänga av systemet. Alla tjänster kommer att stängas av, alla användare kommer att loggas ut och maskinen kommer att stängas av (om din hårdvara stödjer detta).
+index_script=Scriptet $1 som visas nedan kommer att köras när systemet startar. Du kan lägga till egna kommandon för att starta demoner eller servrar när systemet startas om.
+index_return=start- och avstängningsfunktioner
+index_action=Funktion
+index_desc=Beskrivning
+index_boot=Starta vid systemstart?
+index_status=Startad nu?
+
+edit_title=Ändra funtion
+create_title=Skapa funktion
+edit_ecannot=Du får inte ändra startfunktioner
+edit_details=Uppgifter om funktionen
+edit_name=Namn
+edit_desc=Beskrivning
+edit_boot=Starta vid systemstart?
+edit_startmsg=Startmeddelande
+edit_stopmsg=Avstängningsmeddelande
+edit_start=Startkommandon
+edit_stop=Avstängningskommandon
+edit_script=Funktionsscript
+edit_badS=Eftersom denna funktion inte definierats på ett korrekt sätt, kommer den bara att köras på körnivå $1.
+edit_badK=Eftersom denna funktion inte definierats på ett korrekt sätt, kommer den bara att avslutas på körnivå $1.
+edit_fix=Tryck här för att göra funktionen tillgänglig för andra körnivåer
+edit_levels=Körnivåer att köra och avsluta på
+edit_rl=Körnivå $1
+edit_startat=Starta
+edit_stopat=Avsluta
+edit_startnow=Starta nu
+edit_stopnow=Avsluta nu
+edit_restartnow=Starta om nu
+edit_condrestartnow=Starta om ifall det behövs
+edit_reloadnow=Ladda om nu
+edit_statusnow=Visa status
+edit_return=funktion
+edit_status=Startad nu?
+edit_unknown=Okänd
+
+save_err=Det gick inte att spara funktion
+save_ecannot=Du får inte ändra startfunktioner
+save_ealready=Det finns redan en funktion som heter '$1'
+save_ewrite=Det gick inte att skriva till $1: $2
+
+ss_ecannot=Du får inte starta eller avsluta startfunktioner
+ss_start=Startfunktion
+ss_stop=Avstängningsfunktion
+ss_restart=Omstartsfunktion
+ss_reload=Omladdningsfunktion
+ss_status=Funktionsstatus
+ss_exec=Utför $1 ...
+
+shutdown_ecannot=Du får inte stänga av systemet
+shutdown_title=Stäng av
+shutdown_rusure=Vill du verkligen stänga av systemet med kommandot $1?
+shutdown_ok=Stäng av systemet
+shutdown_exec=Stänger av med kommando $1 ...
+
+reboot_ecannot=Du får inte starta om systemet
+reboot_title=Starta om
+reboot_rusure=Vill du verkligen starta om systemet med kommandot $1?
+reboot_ok=Starta om systemet
+reboot_exec=Startar om med kommando $1 ...
+
+acl_script=Kunna ändra startscriptet?
+acl_actions=Kunna ändra, skapa och ta bort funktioner?
+acl_reboot=Kunna starta om systemet?
+acl_shutdown=Kunna stänga av systemet?
+
+log_rename=Bytte namn på funktion $1 till $2
+log_modify=Modifierade funktion $1
+log_create=Lade till funktion $1
+log_delete=Tog bort funktion $1
+log_start=Startade systemstartsfunktion $1
+log_stop=Stannade systemstoppsfunktion $1
+log_reboot=Startade om systemet
+log_shutdown=Ta ned systemet
+log_local=Modifierade systemstartsscript
+log_bootup=Ändrade startfunktion för $1

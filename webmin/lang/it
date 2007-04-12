@@ -1,0 +1,181 @@
+index_title=Configurazione Webmin 
+index_return=configurazione webmin
+
+access_title=Accesso IP controllato  
+access_desc=Il server Webmin pu&ograve; essere configurato in modo da impedire o consentire l'accesso ad indirizzi IP predefiniti utilizzando questa maschera. Possono essere inseriti anche nomi di host (come foo.bar.com) e reti IP (come 10.254.3.0 o 10.254.1.0/255.255.255.128). Dovresti limitare l'accesso al tuo server ad indirizzi sicuri, specialmente se accessibile tramite internet. In caso contrario, chiunque scopra la tua password potr&agrave; avere controllo completo del tuo sistema. 
+access_header=Controllo Accesso
+access_all=Accetta qualsiasi indirizzo
+access_allow=Accetta solo gli indirizzi immessi
+access_deny=Rifiuta solo gli indirizzi immessi
+access_err=Errore nell'aggiornamento della lista di accesso
+access_enone=Nessun indirizzo immesso
+access_enet='$1' non &egrave; un indirizzo di rete valido
+access_emask='$1' non &egrave; una netmask valida
+access_eip='$1' non &egrave; un indirizzo IP o di rete valido
+access_ehost=Non riesco a trovare l'indirizzo IP per '$1'
+access_eself=Il tuo indirizzo IP corrente ($1) verrebbe respinto.
+
+bind_title=Porte e Indirizzi
+bind_desc=Se l'host su cui Webmin sta girando ha pi&ugrave; di un indirizzo IP,il server pu&ograve; essere configurato in modo da accettare connessioni solo su di un indirizzo utilizzando questa maschera. Inoltre puoi configurare la porta TCP su cui Webmin accetta connessioni. Nota - il tuo web browser puo' richiederti di registrarti nuovamente dopo aver cambiato la porta o l'indirizzo.
+bind_header=Indirizzo IP e Porta
+bind_ip=Ascolta sull'indirizzo IP
+bind_all=Tutti
+bind_port=Ascolta sulla porta
+bind_err=Errore nel cambio di indirizzo
+bind_eip=Impossibile leggere l'indirizzo IP per '$1'
+bind_eassign=L'indirizzo '$1' non &egrave; assegnato a questo sistema
+bind_eport=La porta $1 &egrave; gi&agrave; in uso
+
+log_title=Logging
+log_desc=Webmin pu&ograve; essere configurato in modo da scrivere un log degli hit del webserver, nel formato standard CLF. Se il logging &egrave; abilitato, puoi scegliere se registrare indirizzi IP o nomi degli host, e quanto spesso il file di log e' ripulito. Se abilitati, i log vengono salvati sul file $1.
+log_header=Logging del Web Server
+log_disable=Disabilita logging
+log_enable=Abilita logging
+log_resolv=Scrivi sul log nomi host simbolici 
+log_clear=Svuota il log ogni $1 ora
+log_err=Errore nel salvataggio opzioni di log
+log_ehours='$1' non &egrave; un numero valido di ore
+
+proxy_title=Proxy Servers
+proxy_desc=Se l'host sul quale Webmin sta girando si trova dietro ad un firewall, potrebbe essere necessario impostare il server proxy da utilizzare per accedere a siti web e FTP. Alcuni moduli, come ad esempio i <tt>Pacchetti Software</tt>, utilizzeranno questi indirizzi per scaricare files o programmi.
+proxy_header=Servers Proxy
+proxy_http=Proxy HTTP
+proxy_ftp=Proxy FTP
+proxy_none=Nessuno
+proxy_nofor=Nessun proxy per
+proxy_err=Impossibile salvare i proxies
+proxy_ehttp=Il server proxy HTTP deve essere immesso come URL
+proxy_eftp=Il server proxy FTP deve essere immesso come URL
+
+ui_title=Interfaccia Utente
+ui_desc=Questa maschera permette di modificare le impostazioni dell'interfaccia utente utilizzate da tutti i moduli. Quando inserisci i colori, ciascuno va specificato utilizzando il sistema RGB, in cui ciascun valore &egrave; un numero esadecimale da 00 a ff. 
+ui_header=Opzioni Interfaccia Utente
+ui_default=Predefinito
+cs_page=Sfondo delle pagine
+cs_text=Testo normale
+cs_table=Sfondo tabelle
+cs_header=Intestazione tabelle
+cs_link=Testo collegamento
+ui_texttitles=Visualizza titoli come testo
+ui_err=Impossibile salvare i colori
+ui_ered=Valore del rosso non valido '$1'
+ui_egreen=Valore del verde non valido '$1'
+ui_eblue=Valore del blu non valido '$1'
+
+mods_title=Moduli Webmin
+mods_desc1=I moduli di Webmin possono essere aggiunti dopo l'installazione utilizzando la maschera qui a destra. I moduli vengono normalmente distribuiti in file con estenzione<tt>.wbm</tt>, ciascuno dei quali contenente uno o pi&ugrave; moduli. Se un modulo &egrave; distribuito in modo da girare solo su di un particolare host, potrebbe risultare impossibile installarlo.
+mods_install=Installa Modulo
+mods_local=Dal filesystem locale
+mods_uploaded=Tramite un file-upload
+mods_ftp=Da un indirizzo URL ftp o http 
+mods_installok=Installa Module da File
+mods_desc2=Se vuoi avere pi&ugrave; di una copia dello stesso modulo in configurazioni differenti, il modulo qui a destra permette di clonare qualunque modulo presente. Il clone avr&agrave; un modulo differente, una nuova configurazione, nuove opzioni per il controllo d'accesso e potr&agrave; essere utilizzato da utenti differenti.
+mods_clone=Clona Module
+mods_cname=Modulo da clonare
+mods_cnew=Nome del modulo clonato
+mods_cloneok=Clona Modulo
+mods_desc3=I moduli presenti e cloni di moduli possono essere cancellati utilizzando la maschera qui sotto. Se un modulo con cloni &egrave; cancellato anche i rispettivi cloni verranno cancellati. Una volta cancellato, &egrave; necessario ristallare un modulo prima di poterlo utilizzare nuovamente. Un modulo non pu&ograve; essere rimosso se altri moduli dipendono su di esso.
+mods_delete=Rimuovi Moduli
+mods_deleteok=Rimuovi Moduli Selezionati
+
+install_err1=Impossibile installare il modulo da $1
+install_efile=Impossibile trovare il file
+install_err2=Impossibile installare il file inviato
+install_ebrowser=Il tuo browser non consente il file-upload
+install_err3=Impossibile installare il modulo da $1
+install_eurl=URL non valido
+install_etar=Archivio modulo non valido : $1
+install_einfo=Nel modulo $1 non &egrave; presente il file module.info 
+install_enone=Il file non sembra contenere alcun modulo
+install_eos=Il Modulo $1 non supporta questo sistema operativo ($2 $3)
+install_ever=Il Modulo $1 richiede Webmin versione $2 o superiori
+install_edep=Il Modulo $1 dipende dal modulo $2
+install_eextract=Estrazione fallita : $1
+install_title=Installa Modulo
+install_desc=I seguenti moduli sono stati installati con successo e aggiunti alla tua lista di controllo accessi :
+install_line=$1 in $2 ($3 kB)
+
+clone_err=Impossibile clonare il modulo
+clone_elink=symlink fallito : $1
+clone_ecopy=impossibile copiare la configurazione : $1
+clone_desc=Clone di $1
+
+delete_err=Impossibile rimuovere i moduli
+delete_edep=Il Modulo $1 non pu&ograve; essere rimosso, visto che il modulo $2 dipende da esso
+delete_desc1=$1 (Clone di $2)
+delete_desc2=$1 in $2 ($3 kB)
+delete_title=Rimuovi Moduli
+delete_msg=I seguenti moduli sono stati rimossi con successo dalla vostra installazione di Webmin :
+
+os_title=Sistema Operativo
+os_desc=Questa maschera ti permette di modificare il sistema operativo che Webmin crede che il tuo sistema utilizzi. Questo pu&ograve; essere utile per chi ha fatto un upgrade ad una nuova versione del sistema operativo. Nota - La configurazione dei moduli installati non verr&agrave; modificata, anche se ci sono differenze tra il nuovo sistema ed il vecchio.
+os_desc2=Puoi inoltre modificare il percorso di ricerca utilizzato da webmin quando esegue i programmi, e il percorso delle librerie dinamiche passato ai programmi stessi.
+os_header=Sistema Operativo
+os_curros=Sistema Operativo attuale
+os_currver=Versione corrente del sistema operativo
+os_new=Nuovo sistema operativo
+os_path=Percorso di ricerca dei programmi
+os_ld_path=Percorso di ricerca delle librerie
+
+lang_title=Lingua
+lang_title2=Lingua di Webmin
+lang_lang=Utilizza la lingua
+lang_intro=Questa pagina permette di scegliere quale linguaggio verr&agrave; utilizzato da Webmin per visualizzare titoli, richieste e messaggi.
+lang_ok=Modifica Lingua
+
+ssl_title=Crittografia SSL 
+ssl_desc1=Sull'host su cui Webmin sta girando sembra essere installato il modulo Perl SSLeay. Utilizzandolo, Webmin supporta la comunicazione crittata tra il tuo browser ed il server. Se stai utilizzando il tuo server Webmin su Internet, dovresti decisamente considerare questa opzione per impedire ad un malintenzionatodi scoprire la tua password per accedere a Webmin. 
+ssl_desc2=Attenzione - abilita il supporto SSL solo se il tuo browser lo prevede ( come ad esempio Netscape o IE), e se non &egrave; presente un firewall che impedisce le richieste <b>https</b> tra il tuo browser e l'host Webmin.
+ssl_header=Supporto SSL
+ssl_enable=Abilita il supporto SSL, se disponibile
+ssl_disable=Disabilita il supporto SSL, anche se disponibile
+
+startpage_title=Opzioni Pagina Principale 
+startpage_intro=Questa pagina permette di impostare quante icone vuoi visualizzare per ciascuna riga nella pagina principale
+startpage_tabs=Categorizza i moduli?
+startpage_nocol=Numero di colonne
+startpage_alt=Use intestazione alternativa
+startpage_ecols='$1' non &egrave; un numero valido di colonne
+startpage_gotoone=Vai direttamente al modulo<br>se l'utente ne ha uno solo?
+
+upgrade_title=Aggiorna Webmin
+upgrade_desc=Questa maschera ti permette di aggiornare la tua installazione di Webmin con una nuova versione. Puoi installare da un file locale, tramite un file-upload o dall'ultima versione disponibile su <a href="http://www.webmin.com/">www.webmin.com</a>. In modo analogo ad un aggiornamento manuale, tutti i file di configurazione verranno mantenuti intatti.
+upgrade_local=Da un file locale
+upgrade_uploaded=Tramite un file-upload
+upgrade_ftp=Ultima versione da www.webmin.com
+upgrade_ok=Aggiorna Webmin
+upgrade_err1=Impossibile aggiornare da $1
+upgrade_err2=Impossibile aggiornare dal file immesso 
+upgrade_err3=Impossibile aggiornare da www.webmin.com
+upgrade_efile=Impossibile trovare il file
+upgrade_ebrowser=Il tuo browser non supporta i file uploads
+upgrade_eversion=Impossibile aggiornare con una versione meno recente $1
+upgrade_egunzip=Il programma <tt>gunzip</tt> non &egrave; presente su questo sistema
+upgrade_etar=Archivio tar di webmin non valido
+upgrade_setup=Eseguo lo script setup.sh per aggiornare Webmin .. Attendere un minuto sino a quando non termina prima di procedere.
+
+ca_title=Certificate Authority
+ca_old=Certificato esistente
+ca_header1=Crea un nuovo certificato CA 
+ca_header2=Modifica certificato CA 
+ca_newmsg1=Il tuo server Webmin &egrave; gi&a; predisposto come CA. Puoi utilizzare questa maschera per impostarlo nuovamente, ma i certificati gi&agrave; emessi cesseranno di funzionare.
+ca_newmsg2=Questa maschera dovrebbe essere utilizzata per impostare il tuo server Webmin come una certificate authority (CA) in modo da consentire agli utenti di richiedere certificati in <tt>Utenti Webmin</tt> per essere identificati dal server senza doversi registrare.
+ca_cn=Nome Authority
+ca_email=Indirizzo Email
+ca_ou=Divisione
+ca_o=Organizzazione
+ca_sp=Stato
+ca_c=Codice Paese
+ca_create=Imposta certificate authority
+ca_oldmsg1=Il certificato CA che questo server sta utilizzando &egrave; visualizzato qui sotto. Lo puoi modificare incollando un certificato emesso da un'altra CA,ma ogni certificato gi&agrave; emesso agli utenti cesser&agrave; di funzionare.
+ca_oldmsg2=Se hai gi&agrave; impostato una CA su un altro server Webmin, puoi incollare il certificato qui sotto, senza dover reimpostare una nuova CA. In questo modo consentirai agli utenti riconosciuti dall'altro server di essere riconosciuti anche da questo.
+ca_err=Impossibile impostare la certificate authority
+ca_setupok=La tua certificate authority &egrave; stata configurata con successo. Gli utenti potranno utilizzare il modulo <tt>Utenti Webmin</tt> per richiedere un certificato.
+ca_stop=Ferma certificate authority
+ca_stopmsg=Clicca questo pulsante per impedire a Webmin di accettare certificati esistenti o crearne di nuovi. Ci&ograve; forzer&agrave; gli utenti ad utilizzare il metodo di autenticazione basato su nome e password.
+ca_stopok=La tua certificate authority &egrave; stata fermata.
+ca_eminiserv=SSL client certificates sono supportati solo con miniserv.
+ca_eversion=La versione di Perl Net::SSLeay installata non supporta gli SSL client certificates.
+ca_essleay=Il comando di amministrazione SSL  $1 non &egrave; stato trovato sul tuo sistema. Potresti dover modificare il percorso nella configurazione Utenti Webmin.
+ca_essl=La certificazione SSL pu&ograve; essere impostata solo quando il webserver gira in modalit&agrave; SSL.
+

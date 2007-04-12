@@ -1,0 +1,14 @@
+name=Webalizer
+desc=Webalizer Logfile Analysis
+category=servers
+depends=cron
+desc_zh_TW.Big5=¬y¶qºÊ±±
+desc_ca=Anàlisi de Registres Webalizer
+longdesc=Generate reports from webserver, proxy server and FTP log files
+desc_de=Webalizer Logfile-Analyse
+desc_fr=Analyseur de fichiers logs Webalizer
+readonly=1
+desc_es=Webalizer - An&#225;lisis de Hist&#243;ricos (Logs)
+desc_hu=Webalizer naplófile elemzõ
+desc_zh_TW.UTF-8=æµé‡ç›£æ§
+os_support=!windows

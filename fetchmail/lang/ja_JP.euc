@@ -1,0 +1,33 @@
+index_title=Fetchmail メール取得
+index_poll=ポーリングするサーバ
+index_proto=プロトコル
+index_users=リモートおよびローカル ユーザ
+index_add=新規サーバを追加
+index_run=リストされたサーバの検査
+index_user=Unix ユーザ
+index_conf=Fetchmail 設定
+index_ok=次のユーザ用の Fetchmail 設定を編集:
+index_file=$1 のFetchmail 設定
+index_return=サーバ リスト
+
+poll_create=サーバを追加
+poll_edit=サーバを編集
+poll_header=メール サーバ オプション
+poll_poll=サーバ名
+poll_skip=ポーリングを有効にしますか？
+poll_via=接続するメール サーバ
+poll_via_def=サーバ名と同じ
+poll_proto=プロトコル
+poll_port=サーバ ポート
+poll_uheader=メール サーバのユーザの詳細
+poll_user=リモート ユーザ
+poll_pass=リモート パスワード
+poll_is=ローカル ユーザ
+poll_keep=サーバにメッセージを残しますか？
+poll_fetchall=常にすべてのメッセージを取り出しますか？
+poll_err=サーバを保存できませんでした
+poll_epoll=サーバ名がないか無効です
+poll_evia=メール サーバ名が無効です
+poll_eport=ポート番号がないか無効です
+poll_euser=リモート ユーザ名がないか無効です
+

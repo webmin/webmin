@@ -1,0 +1,4 @@
+line2=Configuració del sistema,11
+idmapd_conf=Camí del fitxer de configuració de mapejats d'ids,0
+idmapd_path=Camí del dimoni rpc.idmapd,0
+restart_command=Ordre per reiniciar el dimoni idmapd,0

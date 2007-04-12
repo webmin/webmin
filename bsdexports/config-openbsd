@@ -1,0 +1,2 @@
+restart_command=killall -HUP mountd nfsd || (mountd ; nfsd)
+exports_file=/etc/exports

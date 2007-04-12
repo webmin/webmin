@@ -1,0 +1,22 @@
+<header>LDAP properties for all modified users</header>
+
+This option can be used to specifiy properties that will be updated in
+LDAP users when they are modified. They must be entered in the following format :<p>
+
+name1: value1<br>
+name2: value2<br>
+<p>
+
+The following substitutions can be used, which are replaced when the user
+is saved :<p>
+
+${USER}	The user's login name<br>
+${PLAINPASS} The user's un-encrypted password, if one was given<br>
+${REAL} The user's real name<br>
+${UID} The user's Unix UID number<br>
+${GID} The user's Unix group ID number<br>
+${HOME} The user's home directory<br>
+${SHELL} The user's login shell<br>
+<p>
+<footer>
+

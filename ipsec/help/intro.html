@@ -1,0 +1,51 @@
+<header>IPsec VPN Configuration</header>
+
+This module allows you to configure FreeSWAN, a free implementation of the
+IPsec VPN protocols for Linux. IPsec transparently encrypts all data travelling
+between two networks, and unlike other VPN protocols makes use of 
+existing IP addresses for the VPN rather than creating new ones. It is
+typically used to allow remote clients access to a private internal LAN
+over the Internet. <p>
+
+For two systems to communicate using IPsec, each must have a connection
+defined containing the IP address, identifying hostname, RSA key and
+private network (if any) of both systems. Each configured connection will
+show up as an icon on the module's main page. Often the configuration details
+that you enter when creating a connection will be identical on both systems,
+only with the <b>local</b> and <b>remote</b> section swapped.
+
+Every host that wants to communicate using IPsec must have a public/private
+key pair, used for both encryption and authentication. Each end of a connection
+must know the other end's public key, which can be either stored in the
+connection settings or looked up from a DNS server. The <b>Show Public Key</b>
+feature of this module can be used to display this host's key. <p>
+
+IPsec is more complex to set up that other VPN protocols, but is more
+secure and capable, and considered the industry standard. Unfortunately,
+there are many configuration errors that you can make which may cause
+your connection to fail to start, or to simply silently fail to route traffic.
+Even though this module protects you from simple mistakes, it cannot save
+you from more serious conceptual problems. <p>
+
+<hr>
+
+On this module's main page are icons for any existing IPsec connections
+and a link for creating a new one, both of which will taken you to a similar
+connection details form if clicked on. Below them are icons for editing
+global settings (such as the network interfaces to use), and displaying the
+system's public key. <p>
+
+If you are using FreeSWAN version 2, you will also see icons for editing
+the various policy files that determine what kind of communication (encrypted
+or clear) will be used for various networks. Typically these can be left
+unchanged, as the default is to encrypt whenever possible. <p>
+
+Near the bottom of the page are buttons for starting or stopping the FreeSWAN
+server process, and applying the current settings when it is running. Your
+system will be unable to establish or receive IPsec connections unless the
+server is active. The <b>Start Connection</b> button in this section can be used
+to force the establishment of an IPsec tunnel that is not automatically 
+brought up when the server is started. <p>
+
+<hr>
+

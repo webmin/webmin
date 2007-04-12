@@ -1,0 +1,24 @@
+<header>Network interfaces for receiving mail</header>
+
+<center><tt>inet_interfaces</tt></center>
+<hr>
+
+This parameter specifies the network interface addresses that this mail system
+receives mail on.
+
+<p>
+
+By default, the software claims all active interfaces on the machine. The
+parameter also controls delivery of mail to <tt>user@[ip.address]</tt>.
+
+<p>
+
+Typical configurations are:
+
+<ul>
+<li> <tt>all</tt>
+<li> <tt>$myhostname</tt>
+<li> <tt>$myhostname, localhost</tt>
+</ul>
+
+<hr>

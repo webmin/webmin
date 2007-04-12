@@ -1,0 +1,17 @@
+index_title=Manualove stranky
+index_header=Vyhledavani manualovych stranek
+index_for=Hledat
+index_exact=Exact match?
+index_section=Manual section
+index_all=Vse
+index_reset=Smazat
+index_search=Vyhledat
+index_return=Vyhledavaci fomular
+
+search_efor=Nebyly zadany zadne manualove stranky
+search_title=Vysledek hledani
+search_noentry=Nebyly nalezeny zadne manualove stranky pro $1.
+search_page=Manualova stranka
+search_section=Sekce
+search_desc=Popis
+search_none=No manual pages matching $1 found.

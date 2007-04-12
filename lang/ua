@@ -1,0 +1,297 @@
+main_return=Повернутись до $1
+main_homepage=Домашня сторінка
+main_feedback=Відгук..
+main_switch=Змінити користувача..
+main_logout=Вийти
+main_version=Версія $1 на $2 ($3)
+main_title=Webmin $1 на $2 ($3)
+main_title2=Webmin
+main_none=У вас немає прав доступу до жодного з модулів Webmin.
+main_skill=Досвід
+main_readonly=(Права лише на читання)
+
+link_essl=Для створення HTTPS з'єднання потрібен модуль Perl Net::SSLeay Perl, що не встановлений на вашій системі
+
+category_servers=Сервери
+category_hardware=Пристрої
+category_system=Система
+category_webmin=Webmin
+category_net=Мережа
+category_syslet=Сислети
+category_cluster=Кластер
+category_info=Інформація
+category_=Інше
+
+longcategory_servers=Модулі для налаштування web, email, FTP та інших серверів
+longcategory_hardware=Модулі для принетрів, жорстких дисків та налаштувань інших пристроїв
+longcategory_system=Модулі для користувачів, файлових систем, планувань(Cron jobs) та інших системних налаштувань
+longcategory_webmin=Модулі для налаштування самого Webmin
+longcategory_net=Модулі для налаштування мережі й мережевих сервісів
+longcategory_cluster=Модулі для адміністрування кількох серверів через одну оболонку
+longcategory_info=Модулі для відображення інформації про систему
+longcategory_=Всі інші модулі
+
+header_webmin=Головне меню Webmin
+header_module=Меню модуля
+header_help=Довідка..
+header_config=Налаштування модуля
+header_servers=Сервери Webmin
+
+index=індекс
+yes=Так
+no=Ні
+save=Зберегти
+create=Створити
+delete=Видалити
+find=Знайти
+error=Помилка
+error_previous=попередня сторінка
+error_stack=Помилка звернення до стеку
+error_file=Файл
+error_line=Рядок
+error_sub=Функція
+error_stackline=У файлі $1 в рядку $2 при виконанні $3
+efilewrite=Не можу записать в $1 : $2
+efileclose=Помилка запису $1 при закритті : $2
+efileopen=Помилка при відкритті $1 для запису : $2
+default=За замовчуванням
+modify=Змінити
+reset=Скинути
+ok=OK
+cancel=Скасувати
+helpsearch=Знайти документацію..
+switch_remote_euser=Користувача UNIX $1 не існує.
+programname=Webmin
+
+chooser_title1=Вибір файла..
+chooser_title2=Вибір теки..
+chooser_dir=Тека $1
+chooser_ok=Ok
+chooser_date=Вибрати дату
+
+users_title1=Вибір користувачів..
+users_title2=Вибір користувача..
+users_sel=Обрані користувачі
+users_all=Всі користувачі
+users_ok=Ok
+users_cancel=Скасувати
+users_clear=Почистити
+
+groups_title1=Вибір груп..
+groups_title2=Вибір групи..
+groups_all=Всі групи
+groups_sel=Обрані групи
+groups_ok=Ok
+groups_cancel=Скасувати
+groups_clear=Почистити
+
+modules_title1=Обрати модулі..
+modules_title2=Обрати модуль..
+modules_sel=Обрані модулі
+modules_all=Всі модулі
+modules_ok=Ok
+modules_cancel=Скасувати
+modules_clear=Почистити
+
+config_ecannot=Вам бракує прав для налаштування цього модуля
+config_title=Налаштування
+config_dir=модуля $1
+config_header=Налаштування модуля $1
+config_none=Жодного
+config_eaccess=Вам бракує прав для доступу до цього модуля
+config_err=Не можу зберегти налаштування
+config_nochange=Не змінювати
+config_setto=Встановити
+config_ewebmin=У Webmin працюють лише параметри типу 14
+
+help_err=Не можу вивести довідку
+help_epath=Шлях до довідки відсутній або невірний
+help_efile=Не можу прочитати файл довідки $1
+help_eheader=Відсутній &lt;заголовок&gt; розділу
+help_einclude=Не можу під'єднати $1
+help_eif=Помилка $1 : $2
+help_eexec=Помилка $1 : $2
+
+referer_title=Попередження про небезпеку
+referer_warn=<b>Увага!</b> Посилання на програму $2 знаходиться поза сервером Webmin(URL = $1). Можливо це спроба обманути вас і запустити небезпечну команду.
+referer_warn_unknown=<b>Увага!</b> Посилання на програму $1 знаходиться за невідомою адресою поза сервером Webmin. Можливо це спроба обманути вас і запустити небезпечну команду.<b>Внимание!</b>
+referer_ok=Продовжити виконання програми Webmin
+referer_again=Більше не показувати це попередження.
+referer_eurl=Вихідна адреса невірна!
+referer_eself=Неможливо зробити з referer_save.cgi пряме посилання!
+
+session_header=Вхід у Webmin
+session_mesg=Для входу на сервер Webmin на $1 необхідно вказати ім'я користувача і пароль.
+session_mesg2=Для входу необхідно вказати ім'я користувача й пароль.
+session_user=Ім'я користувача
+session_pass=Пароль
+session_login=Вхід
+session_clear=Почистити
+session_failed=Вхід не вдався. Спопробуйте ще.
+session_logout=Вихід успішний. Заходьте ще.
+session_timed_out=Сесію автоматично завершено після $1 хвилин простою.
+session_save=Зберегти ім'я користувачі й пароль?
+
+pam_header=Увійти до Webmin
+pam_mesg=Ви повинні відповісти на питання (нижче) для входу до Webmin на $1.
+pam_mesg2=Ви повинні відповісти на питання (нижче) для входу.
+pam_login=Продовжити
+pam_restart=Перезапустити
+
+acl_root=Коренева тека
+acl_nodot=Сховати файли, що почитнаються з крапки (dot files) у виборі файлів?
+acl_home=Домашня тека користувача
+acl_uedit=Видимі користувачі
+acl_uedit_all=Всі користувачі
+acl_uedit_none=Жодного користувача
+acl_uedit_only=Лише вказані користувачі
+acl_uedit_except=Всі користувачі без вказаних
+acl_uedit_uid=Користувачі з UID в діапазоні
+acl_uedit_group=Користувачі з групою
+acl_gedit=Видимі групи
+acl_gedit_all=Всі групи
+acl_gedit_none=Жодної групи
+acl_gedit_only=Лише вказані групи
+acl_gedit_except=Всі групи без вказаних
+acl_gedit_gid=Групи з GID у діапазоні
+acl_feedback=Відправляти листи з відгуками?
+acl_feedback2=Так
+acl_feedback1=Так, але без файлів налаштувань
+acl_feedback0=Ні
+acl_feedback3=Так, з файлами налаштувань
+acl_rpc=Приймати RPC запити?
+acl_rpc2=Лише для <tt>root</tt> або <tt>admin</tt>
+acl_rpc1=Так
+acl_rpc0=Ні
+acl_readonly=У вас права лише на читання?<br>(Деякі модулі будуть не робочі)
+
+month_1=Січень
+month_2=Лютий
+month_3=Березень
+month_4=Увітень
+month_5=Травень
+month_6=Червень
+month_7=Липень
+month_8=Серпень
+month_9=Вересень
+month_10=Жовтень
+month_11=Листопад
+month_12=Грудень
+
+day_0=Неділя
+day_1=Понеділок
+day_2=Вівторок
+day_3=Середа
+day_4=Четвер
+day_5=П'ятниця
+day_6=Субота
+
+smonth_1=Січ
+smonth_2=Лют
+smonth_3=Бер
+smonth_4=Кві
+smonth_5=Тра
+smonth_6=Чер
+smonth_7=Лип
+smonth_8=Сер
+smonth_9=Вер
+smonth_10=Жов
+smonth_11=Лис
+smonth_12=Гру
+
+sday_0=Нд
+sday_1=Пн
+sday_2=Вт
+sday_3=Ср
+sday_4=Чт
+sday_5=Пт
+sday_6=Сб
+
+emodule=У доступі відмовлено : Користувачу $1 бракує прав на використання модуля $2
+elock_tries=Не можу заблокувати файл $1 після $2 хвилин
+
+skill_high=Профі
+skill_medium=Досвідчений
+skill_low=Початківець
+
+feedback_title=Відгук про Webmin
+feedback_desc=Ця форма дозволяє звітувати про недоліки й подавати ідеї розробникам Webmin. Ми будемо вдячні за слушні зауваження та корисні поради. Натиснувши кнопку Надіслати (Send), ви відправите введені дані на електронну пошту $1.
+feedback_desc2=Відгук буде надіслано розробникам Usermin, НЕ вашому адміністраторуr, ISP- чи Хостинг-компанії. Будь ласка пишіть відгук англійською навіть якщо зараз використовуєте перекладений Webmin.
+feedback_header=Дедалі відгуку
+feedback_name=Ваше ім'я
+feedback_email=Ваша електронна адреса
+feedback_module=Regarding module
+feedback_all=Всі модулі
+feedback_text=Опис проблеми чи ваші пропозиції
+feedback_os=Долучити до листа інформацію про операційну систему?
+feedback_osdesc=Надавати у відгуку інформацію про вашу операційну систему.
+feedback_config=Вкласти налаштування модуля в лист?
+feedback_configdesc=Надсилати у відгуку інформацію про налаштування відповідного модуля і вміст усіх файлів, котрі він використовує. Для прикладу якщо відгук стосується модуля <i>Користувачі й Групи (Users and Groups)</i>, буде відіслано файли з <tt>/etc/passwd</tt> і <tt>/etc/shadow</tt>.
+feedback_attach=Додати файли
+feedback_send=Надіслати відгук
+feedback_mailserver=Надіслати через SMTP-сервер
+feedback_mailserver_def=Локальна sendmail програма
+feedback_err=Не можу надіслати відгук
+feedback_emodule=Ви долучили налаштування модуля до відгуку, але не вказали самого модуля.
+feedback_emodule2=Обраного модуля не існує
+feedback_econfig=У вас немає повного доступу до обраного модуля.
+feedback_via=Надіслати відгук на $1 через SMTP-сервер $2
+feedback_prog=Послати відгук щодо $1 використовуючи sendmail $2
+feedback_esend=Не можу надіслати відгук через sendmail програму або локальний SMTP-сервер.
+feedback_to=Надіслати відгук на адреси
+feedback_enoto=Не введено адрес для надсилання відгуків
+feedback_ecannot=Вам не дозволено надсилати відгуки
+feedback_ecannot2=Вам не дозволено надсилати відгуки із вкладеними файлами налаштувань
+
+progress_size=Завантажено $1 ($2 байтів) ..
+progress_nosize=Завантажено $1 ..
+progress_data=Отримано $1 байтів ($2 %)
+progress_data2=Отримано $1 байтів
+progress_done=.. завантаження завершено.
+progress_incache=Знайдено $1 в кеші ..
+
+readparse_cdheader=Відсутня інформація про розташування вмісту (Content-Disposition)
+readparse_enc=Очікувалось кодування як для даних з форми, але отримано звичайне
+readparse_max=Дані перевищели максимальний розмір ($1 bytes)
+
+password_expired=Термін дії вашого паролю закінчився, ви повинні вказати новий.
+password_header=Вибір нового паролю
+password_user=Ім'я користувача
+password_old=Поточний пароль
+password_new1=Новий пароль
+password_new2=Ще раз
+password_ok=Змінити
+password_clear=Почистити
+password_done=Ваш пароль успішно змінено. Тепер <a href='$1'>увійдіть</a> з новим паролем.
+password_err=Не можу змінити пароль
+password_euser=Ваше ім'я користувача не знайдено в файлі паролів!
+password_eold=Поточний пароль невірний
+password_enew1=Ви не ввели нового паролю
+password_enew2=Новий пароль і його повтор не співпадають
+password_epam=Помилка PAM : $1
+password_emodpam=Для зміни паролю потрібен модуль Perl Authen::PAM, який не встановлено!
+
+ui_mandatory=Це поле обов'язкове
+ui_checkmandatory=Ви нічого не обрали!
+ui_errors=Знайдено помилки :
+ui_nothing=Ви нічого не ввели!
+ui_searchcol=Знайти рядки, в яких
+ui_searchfor=Містить текст
+ui_searchok=Шукати
+ui_selall=Обрати все.
+ui_selinv=Інвертувати вибір.
+ui_edate=Невірна дата
+ui_etime=Невірний час
+ui_paging=Показано рядки від $1 до $2 з $3
+ui_rowlabel=$2 в рядку $1 :
+
+header_statusmsg=$1 увійшов в $2 $3 на $4 ($5)
+
+uptracker_title=Завантаження файла на сервер
+uptracker_file=Ім'я файла
+uptracker_size=Розмір
+uptracker_pc=Виконано
+uptracker_eid=Не визначено ID завантаження
+uptracker_eid2=ID завантаження невірне!
+uptracker_of=$1 з $2
+

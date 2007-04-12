@@ -1,0 +1,16 @@
+<header>Timeout on waiting for the greeting banner</header>
+
+<center><tt>smtp_helo_timeout</tt></center>
+<hr>
+
+This parameter specifies the SMTP client timeout in seconds for receiving the
+SMTP greeting banner.
+
+<p>
+
+When the server drops the connection without sending a greeting banner, or when
+it sends no greeting banner within the deadline, the SMTP client tries the next
+address on the mail exchanger list.
+
+
+<hr>

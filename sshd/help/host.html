@@ -1,0 +1,31 @@
+This page displays options for either a single host, hosts whose names
+match some pattern, or all hosts. Some of the less obvious options are :
+
+<dl>
+<dt><b>Login as user</b>
+<dd>Normally if no username is given on the <tt>ssh</tt> command line, the
+    name of the current user is used to login to the remote SSH server.
+    However, this option can be used to specify a different default username
+    for a particular host or hosts. <p>
+
+<dt><b>Escape character</b>
+<dd>When making an interactive SSH login, the escape character can be used
+    to break out of the connection and close or suspend it. <p>
+
+<dt><b>Compress SSH traffic?</b>
+<dd>If this option is enabled, the SSH client will compress all data
+    sent to this host with the <tt>gzip</tt> algorithm. This can be useful
+    if you are copying large files with <tt>scp</tt> over a slow link. <p>
+
+<dt><b>Local ports to forward to server</b>
+<dd>In this table you can enter local port numbers which will be forwarded
+    to some host and port by the SSH server. This can be useful if your
+    only access to some network is via SSH login to one machine on that
+    network, and you want to access other services like web or POP servers. <p>
+
+<dt><b>Server ports to forward to local</b>
+<dd>In this table you can enter port numbers on the server which will be
+    forwarded to some host and port on the client machine's network. <p>
+
+</dl>
+

@@ -1,0 +1,5 @@
+auto_file=/etc/sysconfig/amd
+long_fstypes=1
+fstab_file=/etc/fstab
+smbclient_path=smbclient
+nmblookup_path=nmblookup

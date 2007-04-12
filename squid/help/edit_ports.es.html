@@ -1,0 +1,17 @@
+<header>Puertos y Trabajo en Red</header>
+
+<b>Puerto Proxy</b>: Por defecto es 3128. Este valor dice en qué puerto escuchará tu servidor Squid por requerimientos http. Los navegadores cliente necesitarán ser configurados para conectarse al proxy en este puerto o la transparencia deberá también de ser configurada. <p>
+
+<b>Puerto ICP</b>: El número de puerto donde Squid envía y recibe requerimientos ICP hacia y desde cachés vecinas. Por defecto es 3130. Para desactivarlo usa el "0". Puede ser ignorado mediante la línea de comando -u. <p>
+
+<b>Direcciones TCP de Entrada</b>: Por defecto ninguna. Define el socket HTTP que acepta conexiones desde clientes y otras cachés. <p>
+
+<b>Direcciones TCP de Salida</b>: Por defecto es ninguna. Define el socket HTTP para conexiones realizadas a servidores remotos y a otras cachés. <p>
+
+<b>Direcciones UDP de Salida</b>: Por defecto es ninguna. Define el socket ICP que recibe paquetes de otras cachés. <p>
+
+<b>Direcciones UDP de Entrada</b>: Por defecto es ninguna. Define el socket para los paquetes ICP que se envían a otras cachés. <p>
+
+<b>Búfer de recepción TCP</b>: Medida del búfer TCP. Por defecto es el búfer de recepción del SO. <p>
+
+<hr>

@@ -1,0 +1,6 @@
+line1=Configurable options,11
+sort_mode=Sort log files by,1,1-Log filename,0-Order in config file
+add_file=Add new logrotate sections to,3,Primary configuration file
+line2=System configuration,11
+logrotate_conf=Path to logrotate configuration file,0
+logrotate=Path to logrotate program,0

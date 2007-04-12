@@ -1,0 +1,34 @@
+﻿ ﻿
+index_title= تغيير زبان و واسط گرافيکي 
+
+index_lang= زبان واسط گرافيکي کاربر وب‌مين
+index_langglobal=زبان سراسري($1)
+index_langset= انتخاب شخصي..
+index_theme= واسط گرافيکي کاربر وب‌مين
+index_themeglobal=واسط گرافيکي پيشفرض
+index_themeset= انتخاب شخصي..
+index_pass= اسم‌رمز ورود به وب‌مين
+index_passleave= بدون تغيير
+index_passset= بارگيري به..
+index_ok= اعمال تغييرات
+index_themedef= واسط وب‌مين گذشته
+index_desc2= اين ‍‍پيمانه فقط براي حساب وب‌مين، جهت تغيير در $1، کاربرد دارد.
+index_d3= $1، $2 و $3
+index_d2= $1 و $2
+index_d1= $1
+index_dlang= زباني که پيمانه با آن نمايش ‌داده ‌مي‌شود
+index_dtheme= واسطي که ظاهر وب‌مين را کنترل ‌مي‌نمايد 
+index_dpass= اسم‌رمزي که جهت ورود به آن استفاده ‌مي‌شود 
+change_title= بارگيري تغييرات 
+change_user= اعمال تغييرات بر روي وب‌مين
+change_done= انجام شد..
+change_restart= آغاز دوباره وب‌مين
+change_redirect= انتقال به گزينگان اصلي 
+change_ecolon= اسم‌رمز نمي‌تواند شامل کاراکتر : باشد
+acl_lang= تغيير زبان 
+acl_theme= تغيير واسط
+acl_pass= تغيير اسم‌رمز(بارگيري شده در وب‌مين)
+ 
+ 
+
+

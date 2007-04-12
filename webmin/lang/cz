@@ -1,0 +1,206 @@
+index_title=Konfigurace Webminu
+index_return=Konfigurace Webminu
+
+access_title=IP Pøístup 
+access_desc=Webmin server mù¾e být pomocí tohoto formuláøe nakofigurován jako povolený nebo zakázaný pouze z urèitých IP adres. Mù¾ou být pou¾ity jména poèítaèù (napø. foo.bar.com) a sítí (napø 10.254.3.0 nebo 10.254.1.0/255.255.255.128). Takto lze limitovat pøístup na vá¹ server z "pøátelských" adres, zvlá¹tì, je-li pøístupný z Internetu. V opaèném pøípadì ka¾dý, kdo zná heslo má pak kompletní pøístup na vá¹ systém. 
+access_header=Nastavení pøístupu
+access_all=Povolit ze v¹ech adres
+access_allow=Povolit pouze z adres v seznamu
+access_deny=Zakázat adresám v seznamu
+access_err=Chyba pøi nastavování seznamu
+access_enone=Nebyla zadána ¾ádná adresa
+access_enet='$1' není platnou IP adresou
+access_emask='$1' není platnou sí»ovou maskou
+access_eip='$1' není kompletní IP adresou nebo sí»ovou maskou
+access_ehost=Nelze najít IP pro '$1'
+access_eself=Va¹e aktuální IP adresa ($1) bude zakázána
+
+bind_title=Porty a adresy
+bind_desc=Pokud má host s Webminem více IP adres, server zde mù¾e být konfigurován tak, aby vyu¾íval pouze jednu z adres. Zde se také nastavuje TCP port Webminu. Pozor, vá¹ browser mù¾e po zmìnì portu nebo povolených adres po¾adovat nové pøihlá¹ení
+bind_header=IP Adresy a Port
+bind_ip=Pou¾ité IP adresy
+bind_all=V¹echny
+bind_port=Pou¾itý port
+bind_err=Chyba pøi zmìnì adresy
+bind_eip=Chyba IP aresy pro '$1'
+bind_eassign=Adresa '$1' nepatøí tomuto systému
+bind_eport=Port $1 je ji¾ vyu¾íván
+
+log_title=Zapisování událostí
+log_desc=Webmin mù¾e být nastaven tak, aby zapisoval do logu pøístupy, ve standartním CLF log formátu. Pokud je logování zapnuto, mù¾ete nastavit zapisování buï IP adresy a jména poèítaèù a jak èasto se mají logy èistit. Pokud je logování zapnuto, jsou logy zapisovány do souboru $1.
+log_header=Zapisování událostí Webminu
+log_disable=Vypnuto
+log_enable=Zapnuto
+log_resolv=Rozli¹ovat jména poèítaèù
+log_clear=Èistit log v¾dy po $1 hodinách
+log_err=Chyba pøi ukládání nastavení
+log_ehours='$1' není platnou hodinovou èasovou jednotkou
+
+proxy_title=Proxy Servery
+proxy_desc=Pokud je Webmin za firewallem, butete potøebovat nastavit proxy server pro pøístup na web a FTP. Urèité moduly (jako napø. <tt>Software pro správu balíèkù</tt>, pou¾ívají proxy pro downloading souborù nebo programù
+proxy_header=Proxy Servery
+proxy_http=HTTP proxy
+proxy_ftp=FTP proxy
+proxy_none=Nic
+proxy_nofor=Nevyu¾ívat proxy pro
+proxy_err=Chyba pøi ukládání nastavení
+proxy_ehttp=HTTP proxy server musí být zaprán ve formátu URL
+proxy_eftp=FTP proxy server musí být zaprán ve formátu URL
+
+ui_title=U¾ivatelské rozhraní
+ui_desc=Zde mù¾ete nastavit vzhled pro v¹echny moduly. Pøi nastavení barvy musíte specifikovat RGB èíslo v rozmezí hexa èísla od 00 do ff. 
+ui_header=Nastavení u¾ivatelského rozhraní
+ui_default=Výchozí
+cs_page=Pozadí stránky
+cs_text=Normální text
+cs_table=Pozadí tabulky
+cs_header=Hlavièka tabulky
+cs_link=Odkaz
+ui_texttitles=Zobrazovat titulky jako text?
+ui_err=Chyba pøi ukládání barev
+ui_ered=Neplatná hodnota èervené pro '$1'
+ui_egreen=Neplatná hodnota zelené pro '$1'
+ui_eblue=Neplatná hodnota modré pro '$1'
+
+mods_title=Moduly Webminu
+mods_desc1=Moduly Webminu mohou být po instalaci pøidávány pou¾itím formuláøe napravo. Moduly jsou vìt¹inou distribuovány v <tt>.wbm</tt> souborech, obsahujících jeden nebo více modulù. Je-li modul licencován pouze pro pou¾ití na urèitém serveru, nemusí vám jít nainstalovat.
+mods_install=Instalování modulù
+mods_local=Z lokálního souboru
+mods_uploaded=Ze stahovaného souboru
+mods_ftp=Z FTP nebo HTTP
+mods_installok=Instalovat modul ze souboru
+mods_desc2=Chcete-li mít více ne¾ jednu kopii stejného modulu s rozdílnou konfigurací, pomocí formuláøe vpravo mù¾ete naklonovat existující modul. Klon mù¾e mít jiné jméno, jiná pøístupová práva a mù¾e být pøístupný jiným u¾ivatelùm.
+mods_clone=Klonování modulu
+mods_cname=Modul ke klonování
+mods_cnew=Jméno klonu
+mods_cloneok=Klonovat
+mods_desc3=Existující klon modulu mù¾e být vymazán tímto formuláøem. Pokud jsou modul i klony vymazány, budou odstranìny a bude potøeba je reinstalovat pøed novým pou¾itím. Modul nemù¾e být odebrán, jsou-li na nìm závislé jiné moduly.
+mods_delete=Vymazat moduly
+mods_deleteok=Vymazat vybrané moduly
+
+install_err1=Chyba pøi instalaci modulu z $1
+install_efile=Soubor neexistuje
+install_err2=Chyba poøi instalaci stahovaného modulu
+install_ebrowser=Vá¹ browser nepodporuje stahování souborù
+install_err3=Chyba pøi instalaci modulu z $1
+install_eurl=Neplatná URL
+install_etar=Neplatný soubor modulu : $1
+install_einfo=Modulu $1 chybí soubor module.info
+install_enone=File does not appear to contain any modules
+install_eos=Modul $1 nepodporuje tento operaèní sytém ($2 $3)
+install_ever=Modul $1 vy¾aduje Webmin verze $2 nebo vy¹¹í
+install_edep=Modul $1 vy¾aduje modul $2
+install_eextract=Chyba rozbalování : $1
+install_title=Instalovat modul
+install_desc=Následující moduly byly úspì¹nì nainstalovány a pøidány na vá¹ list kontroly pøístupu:
+install_line=$1 v $2 ($3 Kb)
+
+clone_err=Chyba pøi klonování modulu
+clone_elink=chyba symlinku : $1
+clone_ecopy=chyba kopírování konfigurace : $1
+clone_desc=Klon z $1
+
+delete_err=Chyba pøi vymazávání modulu
+delete_edep=Modul $1 nemù¾e být odstranìn, závislost s modulem $2
+delete_desc1=$1 (Klon z $2)
+delete_desc2=$1 v $2 ($3 Kb)
+delete_title=Odstranìné moduly
+delete_msg=Následující moduly byly úspì¹nì odstranìny z va¹í Webmin instalace:
+
+os_title=Operaèní systém
+os_desc=Zde mù¾ete zmìnit jméno typu operaèního systému, který pou¾íváte, to je dùle¾ité pro správný bìh Webminu. Je to nutné napø. po upgradu va¹í distribuce. Note that the configuration of installed modules will not be changed, even if there are differences between the old and new systems.
+os_desc2=Mù¾ete zde také zmìnit vyhledávací cestu pou¾itou Webminem pro bìh programù a ke sdíleným knihovnám.
+os_header=Operaèní systém
+os_curros=Aktuální operaèní systém
+os_currver=Aktuální verze OS
+os_new=Nový operaèní systém
+os_path=Cesta k programùm
+os_ld_path=Cesta ke sdíleným knihovnám
+
+lang_title=Jazyk
+lang_title2=Jazyk Webminu
+lang_lang=Zobrazovat v jazyce
+lang_intro=Zde mù¾ete zvolit, v jakém jazyce k vám má Webmin promlouvat
+lang_ok=Zmìnit jazyk
+
+ssl_title=SSL Kódování
+ssl_desc1=The host on which Webmin is running appears to have the 
+SSLeay Perl module installed. Using this, Webmin supports SSL 
+encrypted communication between your browser and the server. If you 
+are accessing your Webmin server over the Internet, then you should 
+definately consider using SSL to prevent an attacker capturing your 
+Webmin password.
+ssl_desc2=Warning - only turn on SSL support if you have a browser 
+that supports SSL (such as Netscape or IE), and there is no firewall 
+blocking <b>https</b> requests between your browser and the Webmin host
+ssl_header=SSL Support
+ssl_enable=Enable SSL support, if available
+ssl_disable=Disable SSL support, even if available
+
+startpage_title=Nastavení úvodní strany
+startpage_intro=Zde mù¾ete definovat kolik ikon chcete mít na øádku úvodní stránky
+startpage_tabs=Kategorizovat moduly?
+startpage_nocol=Poèet sloupcù
+startpage_alt=Pou¾ít alternativní hlavièku
+startpage_ecols='$1' není platný poèet sloupcù
+startpage_gotoone=Jít pøímo k modulu<br>kdy¾ má u¾ivatel pouze jeden?
+
+upgrade_title=Aktualizace Webminu
+upgrade_desc=Zde mù¾ete provést aktualizaci Webminu na novou verzi. Mù¾et instalovat z lokálního souboru, nebo stáhnout soubor nejnovìj¹í verze z <a href=http://www.webmin.com/>www.webmin.com</a>. Pøi manuální aktualizaci budou v¹echny va¹e nastavení zachovány. 
+upgrade_local=Z lokálního souboru
+upgrade_uploaded=Ze stahovaného souboru
+upgrade_ftp=Poslední verze z www.webmin.com
+upgrade_ok=Aktualizace Webminu
+upgrade_err1=Chyba pøi aktualizaci z $1
+upgrade_err2=Chyba pøi aktualizaci ze stahovaného souboru
+upgrade_err3=Chyba aktualizace z www.webmin.com
+upgrade_efile=Soubor neexistuje
+upgrade_ebrowser=Vá¹ browser nepodporuje stahování souborù
+upgrade_eversion=Nemohu pøejít na verzi $1
+upgrade_egunzip=Vá¹ systém neobsahuje pøíkaz<tt>gunzip</tt>
+upgrade_etar=Neplatný webmin tar soubor
+upgrade_setup=Spou¹tím script setup.sh pro aktualizaci Webminu .. Prosím èekejte
+
+ca_title=Certificate Authority
+ca_old=Existing certificate
+ca_header1=Create new CA certificate
+ca_header2=Edit CA certificate
+ca_newmsg1=Your Webmin server is already setup as a certificate 
+authority. You can use this form to set it up again, but any 
+certificates already issued to uses will no longer work.
+ca_newmsg2=This form should be used to setup your Webmin server as a 
+certificate authority (CA) so that users can request certificates in 
+the Webmin Users to identify themselves to the server without having 
+to login.
+ca_cn=Authority name
+ca_email=Email address
+ca_ou=Department
+ca_o=Organisation
+ca_sp=State
+ca_c=Country code
+ca_create=Setup certificate authority
+ca_oldmsg1=The CA certificate this server is using is displayed below. 
+You may change it by pasting in the certificate from another CA, but 
+any certificates already issued to users will no longer work.
+ca_oldmsg2=If you have already setup a CA on another Webmin server, 
+you can paste its certificate below instead of setting up a new CA. 
+This will allow users from the other server to be recognised by this 
+server as well.
+ca_err=Failed to setup certificate authority
+ca_setupok=Your certificate authority has been setup successfully. 
+Users can now use the Webmin Users module to request certificates for 
+themselves.
+ca_stop=Shutdown certificate authority
+ca_stopmsg=Click this button to stop Webmin from accepting existing 
+certificates or issuing new ones. This will force users to use 
+username and password authentication instead.
+ca_stopok=Your certificate authority has been successfully shut down.
+ca_eminiserv=SSL client certificates are only supported under miniserv.
+ca_eversion=The version of the Perl Net::SSLeay module installed on 
+your system does not support SSL client certificates.
+ca_essleay=The SSL administration command $1 was not found on your 
+system. You may need to change the path in the Webmin Users module 
+configuration.
+ca_essl=SSL certification can only be setup when the webserver is 
+running in SSL mode.
+

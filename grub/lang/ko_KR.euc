@@ -1,0 +1,56 @@
+index_title=GRUB 부트 로더
+index_add=새 부트 옵션 추가
+index_global=글로벌 옵션 편집
+index_globalmsg=모든 부트 메뉴 선택 사항에 적용되는 글로벌 부팅 옵션을 편집하고 GRUB를 설치할 장치를 선택하십시오.
+index_install=GRUB 설치
+index_installmsg=부트할 때 위의 옵션을 표시하려면 $1에 GRUB 부트 로더를 설치하십시오. 이 경우, LILO와 같은 기존 부트 로더가 겹쳐쓰여지므로 시스템이 부팅되지 않을 수도 있습니다!
+index_none=정의된 부트 옵션이 없습니다. GRUB를 설치하기 전에 부트 옵션을 하나 이상 추가해야 합니다.
+index_efile=시스템에 GRUB 메뉴 파일 $1이(가) 없습니다. GRUB가 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
+index_epath=시스템에 GRUB 실행 파일 $1이(가) 없습니다. GRUB가 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
+index_return=옵션 목록
+
+title_add=부트 옵션 추가
+title_edit=부트 옵션 편집
+title_header=부트 메뉴 옵션 정보
+title_title=옵션 제목
+title_root=부트 이미지 파티션
+title_other=그 외
+title_sel=선택한 항목
+title_boot=부트할 운영 체제
+title_kernel=리눅스 커널
+title_kfile=커널 경로
+title_args=커널 옵션
+title_chain=다른 운영 체제
+title_chain_def=파티션의 첫번째 섹터로부터
+title_chain_file=chainloader 파일로부터
+title_makeactive=루트 파티션을 활성화합니까?
+title_none=없음(부팅 메뉴 항목이 아님)
+title_err=부트 옵션을 저장하지 못했습니다
+title_etitle=없는 옵션 제목
+title_eroot=없는 루트 파티션
+title_ekernel=없거나 잘못된 커널 경로
+title_echain=없거나 잘못된 chainloader 파일
+title_edev=지원되지 않는 루트 파티션 장치 $1입니다
+
+global_title=글로벌 옵션
+global_header=글로벌 부트 메뉴 옵션
+global_default=기본 부트 옵션
+global_fallback=대체 부트 옵션
+global_first=목록의 첫번째 항목
+global_timeout=기본값 로드 전 시간 초과
+global_secs=초
+global_install=디스크/파티션에 GRUB 설치
+global_sel=선택한 항목
+global_other=그 외
+global_err=글로벌 옵션을 저장하지 못했습니다
+global_etimeout=없거나 잘못된 시간 초과 값
+global_edev=지원되지 않는 설치 디스크/파티션 $1입니다
+global_eother=없거나 잘못된 디스크/파티션
+
+install_title=GRUB 설치
+install_err=GRUB를 설치하지 못했습니다
+install_efind=메뉴 파일을 찾을 수 없습니다
+install_desc=명령 $2 및 $3을 사용하여 $1에 GRUB 설치 중..
+install_ok=.. 설치가 완료되었습니다
+install_failed=.. 설치하지 못했습니다!
+

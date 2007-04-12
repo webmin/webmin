@@ -1,0 +1,26 @@
+<header>Àlies de</header>
+
+Cada àlies es pot redireccionar a diversos destinataris, i cadascun dels
+destinataris pot ser un dels següents:
+<dl>
+   <dt><b>Adreça de correu</b>
+   <dd>O bé una adreça completa com ara <tt>foo@bar.com</tt>, o el nom
+       d'un altre usuari al sistema, com ara <tt>jcameron</tt>.
+   <dt><b>Adreces del fitxer</b>
+   <dd>Per aquesta mena d'àlies, has d'especificar el camí complet del
+       fitxer que conté la llista de les adreces de correu, una per línia.
+       Cada adreça pot estar completament qualificada, o pot ser el nom 
+       d'un usuari del sistema.
+   <dt><b>Escriu al fitxer</b>
+   <dd>En aquest cas, s'escriurà el correu al fitxer determinat. Per fer
+       que es llenci el correu de qualsevol adreça, dóna <tt>/dev/null</tt>
+       com a nom de fitxer.
+   <dt><b>Lliura-ho al programa</b>
+   <dd>Cada cop que arribi un missatge per a quest àlies, s'executarà el
+       programa especificat i tot el missatge (capçaleres i cos) se li
+       passarà com a entrada estàndard.
+</dl>
+
+<hr>
+
+

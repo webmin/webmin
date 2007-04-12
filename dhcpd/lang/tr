@@ -1,0 +1,187 @@
+index_title=DHCP Sunucusu
+index_dhcpdnotfound=DHCP sunucusu <i>$1</i> sisteminizde bulunamadý.Kurulmamýþ ya da  <a href="$2">DHCP modül ayarlarý </a> yanlýþ olabilir
+index_return=indeks
+index_dhcpdver=DHCP sunucusu <i>$1</i> doðru versiyona sahip deðildir.Webmin sadece ISC DHCPD versiyon 2'yi destekler 
+index_subtitle=Alt ve Paylaþýlmýþ Aðlar
+index_nosubdef=Alt ya da paylaþýlmýþ að tanýmlanmamýþ
+index_addsub=Yeni bir alt að ekle
+index_addnet=Yeni bir paylaþýlmýþ að ekle
+index_nomemb=Üye yok
+index_1memb=1 üye
+index_234memb=$1 üyeler
+index_memb=$1 üyeler
+index_hst=Makineler ve Makine Gruplarý
+index_nohst=Makine ya da gruplar tanýmlanmamýþ
+index_addhst=Yeni bir makine ekle
+index_addhstg=Yeni bir makine grubu ekle
+index_buttego=Genel Seçenekleri deðiþtir
+index_ego=Bütün alt aðlar, paylaþýlmýþ aðlar, makine ve gruplara uygulanan DHCP seçeneklerini deðiþtir
+index_buttlal=Aktif Komþularý Listele
+index_lal=DHCP sunucusu ile dinamik olarak tanýmlanmýþ komþularý listele
+index_buttapply=Deðiþiklikleri Uygula
+index_apply=Bu butonu týklayarak çalýþan DHCP sunucusunu durdurup tekrar baþlatabilirsiniz
+index_buttstart=Sunucuyu Baþlat
+index_start=Bu butonu týklayarak varolan ayarlar ile DHCP sunucusunu çalýþtýrabilirsiniz
+
+butt_save=Kaydet
+butt_eco=Ýstemci Seçeneklerini Deðiþtir
+butt_del=Sil
+butt_create=Oluþtur
+
+esub_crheader=Alt Að Oluþtur
+esub_edheader=Alt Aðý Deðiþtir
+esub_tabhdr=Alt Að Ayrýntýlarý
+esub_naddr=Að Adresleri
+esub_nmask=Netmask
+esub_arange=Adres Alanlarý
+esub_dbooptpq=Dinamik BOOTP ?
+esub_shnet=Paylaþýlmýþ Að ?
+esub_return=alt að listesi
+
+esh_crheader=Paylaþýlmýþ Að Oluþtur
+esh_eheader=Paylaþýlmýþ Aðý Deðiþtir
+esh_tabhdr=Paylaþýlmýþ Að Ayrýntýlarý
+esh_netname=Að Ýsmi
+esh_return=alt að listesi
+
+ehost_crheader=Makine Oluþtur
+ehost_eheader=Makineyi Deðiþtir
+ehost_tabhdr=Makine Ayrýntýlarý
+ehost_hname=Makine ismi
+ehost_fixedip=Sabitlenmiþ IP adresi
+ehost_return=makine listesi
+
+egroup_crheader=Makine Grubu Oluþtur
+egroup_eheader=Makine Grubunu Deðiþtir
+egroup_tblhdr=Grup Ayrýntýlarý
+egroup_hosts=Bu gruptaki makineler
+egroup_nchoice=Ýsimi istemci makine adý olarak kullan?
+egroup_return=makine listesi
+
+yes=Evet
+no=Hayýr
+default=Öntanýmlý
+secs=saniye
+none=Hiçbiri
+
+listl_header=DHCP Gecikmeleri
+listl_lfnotexist=The DHCPd gecikme dosyasý <tt>$1</tt> mevcut deðil
+listl_lfnotcont=The DHCPd gecikme dosyasý <tt>$1</tt> $2 gecikmeleri içermiyor
+listl_active=aktif
+listl_ipaddr=IP Adresi
+listl_ether=Ethernet
+listl_host=Makine Adý
+listl_start=Baþlangýç Zamaný
+listl_end=Bitiþ Zamaný
+listl_return=alt að listesi
+
+restart_errmsg1=Dhcpd'nin Yeniden baþlatýlmasýnda hata oluþtu
+restart_errmsg2=Ýþlem sinyalinde hata oluþtu
+start_failstart=dhcpd'nin baþlatýlmasýnda hata oluþtu
+
+sgroup_faildel=Grubun silinmesinde hata oluþtu
+sgroup_failsave=Grubun kaydedilmesinde hata oluþþtu
+
+shost_faildel=Makinenin silinmesinde hata oluþtu
+shost_failsave=Makinenin kaydedilmesinde hata oluþtu
+shost_invalidhn=geçerli bir makine adý deðil
+shost_invalidhwa='$1' geçerli $2 adresi deðil
+
+sopt_failsave=Ýstemci seçeneklerinin kaydedilmesinde hata oluþtu
+sopt_invalidip=geçerli bir IP adresi deðil
+sopt_invalidint=bir tam sayý deðil
+sopt_invalidipp=geçerli bir IP adres çifti deðil (1.2.3.4,5.6.7.8 gibi)
+
+sshared_faildel=Paylaþýlmýþþ aðýn silinmesinde hata oluþtu
+sshared_failsave=Paylaþýlmýþ aðýn kaydedilmesinde hata oluþtu
+sshared_invalidsname=Kayýp ya da yanlýþ paylaþýlmýþ að adý
+
+ssub_faildel=Alt aðýn silinmesinde hata oluþtu
+ssub_failsave=Alt aðýn kaydedilmesinde hata oluþtu
+ssub_invalidsubaddr=geçerli bir alt að adresi deðil
+ssub_invalidnmask=geçerli bir að maskesi deðil
+ssub_invalidipr=geçerli bir IP adres alaný deðil
+
+plib_deflt=Öntanýmlý gecikme süresi
+plib_bfname=Açýlýþ dosya ismi
+plib_maxlt=En büyük gecikme zamaný
+plib_bfserv=Açýlýþ dosya sunucusu
+plib_thisserv=Bu sunucu
+plib_servname=Sunucu ismi
+plib_llbc=BOOTP istemcileri için gecikme uzunluðu
+plib_forever=Daima
+plib_lebc=BOOTP istemcileri için gecikme sonu 
+plib_never=Asla
+plib_invalidlt=geçerli bir gecikme süresi deðil
+plib_invalidsn=geçerli bir sunucu ismi deðil
+plib_leformat=Gecikme sonu zamaný bu þekilde olmalýdýr W YYYY/MM/DD HH:MM:SS
+plib_copt=Ýstemci Seçenekleri
+plib_chname=Ýstemci Makine Adý
+plib_defrouters=Ön tanýmlý yönlendiriciler
+plib_snmask=Alt að maskesi
+plib_babbr=Yayýn(Broadcast) adresi
+plib_domname=Alan ismi
+plib_dnsserv=DNS sunucusu
+plib_timeserv=Zaman sunucularý
+plib_logserv=Log sunucularý
+plib_swapserv=Takas(swap) sunucusu
+plib_rdpath=Root disk yolu
+plib_nisdom=NIS alaný
+plib_nisserv=NIS sunucularý
+plib_fontserv=Font sunucularý
+plib_xdmserv=XDM sunucularý
+plib_statrouters=Sabit routes
+plib_ntpserv=NTP sunucularý
+plib_nbns=NetBIOS isim sunucularý
+plib_nbscope=NetBIOS sahasý
+plib_nbntype=NetBIOS düðüm tipi
+
+eopt_header=Ýstemci Seçenekleri
+eopt_subtitle=$1 alt aðý için
+eopt_returnsub=alt að listesi
+eopt_snettitle=Paylaþýlmýþ að $1 için
+eopt_hosttitle=Makine $1 için
+eopt_returnhost=makine listesi
+eopt_grouptitle=$1 üye grubu için
+eopt_alltitle=Bütün aðlar, makineler ve gruplar için
+eopt_returnindex=indeks
+eopt_tabhdr=Ýstemci Seçenekleri
+eopt_chost=Ýstemci Makine Adý
+eopt_defrouters=Ön tanýmlý yönlendiriciler
+eopt_smask=Alt að maskesi
+eopt_baddr=Yayýn adresi
+eopt_domname=Alan adý
+eopt_dnsserv=DNS sunucularý
+eopt_timeserv=Zaman sunucularý
+eopt_logserv=Log sunucularý
+eopt_swapserv=Takas(swap) sunucusu
+eopt_rdpath=Root disk yolu
+eopt_nisdom=NIS alaný
+eopt_nisserv=NIS sunucularý
+eopt_fontserv=Font sunucularý
+eopt_xdmserv=XDM sunucularý
+eopt_statrouters=Sabit routes
+eopt_ntpserv=NTP sunucularý
+eopt_nbns=NetBIOS isim sunucularý
+eopt_nbs=NetBIOS sahasý
+eopt_nbntype=NetBIOS düðüm tipi
+
+log_apply=Deðiþiklikler uygulandý
+log_start=DHCP sunucusu baþlatýldý
+log_create_subnet=Alt bölge $1 oluþturuldu
+log_delete_subnet=Alt bölge $1 silindi
+log_modify_subnet=Alt bölge $1 deðiþtirildi
+log_options_subnet=Alt bölge $1 için deçenekler deðiþtirildi
+log_create_shared=Paylaþýlmýþ að $1 oluþturuldu
+log_delete_shared=Paylaþýlmýþ að $1 silindi
+log_modify_shared=Paylaþýlmýþ að $1 deðiþtirildi
+log_options_shared=Paylaþýlmýþ að $1 için seçenekler deðiþtirildi
+log_create_host=$1 makinesi oluþturuldu
+log_delete_host=$1 makinesi silindi
+log_modify_host=$1 makinesi deðiþtirildi
+log_options_host=$1 makinesi için seçenekler deðiþtirildi
+log_create_group=$1 makine grubu oluþturuldu
+log_delete_group=$1 makine grubu silindi
+log_modify_group=$1 makine grubu deðiþtirildi
+log_options_group=$1 makine grubunun seçenekleri deðiþtirildi
+

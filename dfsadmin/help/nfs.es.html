@@ -1,0 +1,25 @@
+<h3>Introducción a NFS</h3>
+
+NFS es el protocolo estándar de compartición de archivos utilizado por los
+sistemas Unix. NFS permite que un sistema exporte un directorio a través
+de la red a una o más máquinas, permitiendo a los usuarios y programas de
+esas máquinas acceder a los archivos exportados como si fueran locales. <p>
+
+Un servidor NFS es un sistema que exporta uno o más directorios, mientras
+que un cliente NFS es un sistema que monta uno o más directorios del
+servidor. Una máquina puede ser a la vez servidora NFS y cliente de otros
+servidores. <p>
+
+Un servidor controla qué clientes pueden montar un directorio exportado
+mediante el chequeo de la dirección IP del cliente contra una lista de
+máquinas autorizadas a realizar requerimientos de ese directorio. El
+servidor puede tambien designar una exportación como de sólo-lectura o
+de sólo-lectura para ciertos clientes. <p>
+
+Al contrario de otros sistemas de archivo de red, un cliente NFS no tiene
+que hacer login en el servidor cuando monta un directorio exportado. El
+servidor confía en la propia autentificación del cliente para los usuarios
+y provee la ID del usuario en curso para acceder a los archivos exportados.
+Por ello, sólo deberías permitir a máquinas cliente de las cuales realmente
+te fíes el montar directorios exportados. <p>
+

@@ -1,0 +1,56 @@
+<header>Gebruikers en Groepen</header>
+
+<h3>Gebruikers</h3>
+
+Een Unix gebruiker is in het algemeen iemand die zich bij het systeem 
+kan aanmelden, hetzij op afstand via telnet of aan de console. Ieder 
+bestand is eigendom van een gebruiker en ieder proces draait onder de 
+rechten van een gebruiker. Toegang tot bestanden en processen wordt 
+bepaald door de gebruiker waaronder u bent aangemeld. <p>
+
+Er zijn feitelijk drie soorten gebruiker op een typisch Unix systeem:
+<ul>
+<li><b>Administratieve Gebruikers</b><br>
+    Gebruikers zoals <tt>bin</tt>, <tt>lp</tt> en <tt>uccp</tt> beheren 
+    bestanden zoals standaard opdrachten in <tt>/bin</tt>, print spool 
+    bestanden en UUCP gegevens. Eigenlijk is het aanmelden met zo'n
+    gebruiker normaal niet toegestaan: ze worden gebruikt door verschillende 
+    systeem processen.
+    Deze gebruikers worden aangemaakt als het besturingssysteem voor de
+    eerste keer wordt geïnstalleerd.<p>
+<li><bEchte Personen</b><br>
+    Deze gebruikers stellen echte personen voor en worden aangemaakt
+    door de system administrator. U kunt deze mensen toestaan zich 
+    op afstand aan te melden of misschien alleen mail de verzenden of 
+    ontvangen via SMTP en POP3. <p>
+<li><b>De <tt>root</tt> Gebruiker</b><br>
+    De <tt>root</tt> gebruiker heeft de macht om elk bestand of map te lezen 
+    en te schrijven en elk proces te besturen. Deze gebruiker wordt 
+    normaliter alleen gebruikt voor het beheren van het systeem en is
+    ook de gebruiker waar Webmin onder werkt. <p>
+</ul>
+
+Aan het begin de hoofdpagina van dit module vindt u een lijst met bestaande 
+gebruikers op uw systeem. Door te klikken op een gebruiker kunt u die wijzigen. 
+Door te klikken op de link onderaan de lijst kan een nieuwe gebruiker worden 
+aangemaakt. <p>
+
+<h3>Groepen</h3>
+Eenvoudig gezegd is een groep een lijst met Unix gebruikers. Iedere gebruiker 
+is lid van tenminste tot één groep (de primaire groep) en mogelijk van andere 
+groepen (de secundaire groepen). Alle bestanden behoren altijd aan een groep 
+en elk proces draait met de rechten van een groep. <p>
+
+Onder de lijst met gebruikers vindt u een lijst met de bestaande groepen. 
+U kunt op een groepsnaam klikken om die te wijzigen. Als u op de link 
+onderaan de lijst klikt kunt u een groep toevoegen. <p>
+
+<h3>Toon aanmeldingen van</h3>
+Elke keer als een gebruiker zich meldt via telnet, FTP of aan het console, 
+legt het systeem dit feit vast en ook het afmelden wordt geregistreerd. 
+Aan het einde van deze pagina is een klein formulier, waarmee u de aan- en 
+afmeldingen van iedereen of van een bepaalde gebruiker zichtbaar kunt 
+maken. <p>
+
+<hr>
+

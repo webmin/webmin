@@ -1,0 +1,23 @@
+<header>Log Filters</header>
+
+A log filter defines a set of conditions that may match a log message,
+based on its facility, priority, contents, sender's hostname and source IP
+address. A filter does nothing on its own - however, when combined with
+a source and destination in a log target, it controls which messages are
+written to the destination. <p>
+
+This page lists all existing filters, and can be used to create new
+ones, or edit and delete those that already exist. You should be careful when
+removing or changing those that were setup by default, as they often select
+critical log messages or are important to the functioning of the system.
+However, it is quite safe to add your own filters. <p>
+
+Syslog-NG allows filters to be extemely complex and make use of boolean logic
+to match messages. When editing a filter, you can select to use
+a simple set of rules for choosing which of the facility, priority, contents,
+hostname and IP the filter matches on. Or you can choose to enter a Syslog-NG
+boolean expression directly, which should only be used if you are familiar
+with its configuration file format. <p>
+
+<footer>
+

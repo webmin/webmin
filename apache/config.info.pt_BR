@@ -1,0 +1,14 @@
+httpd_dir=Diret&#243;rio ra&#237;z do servidor Apache,0
+httpd_path=Caminho do execut&#225;vel httpd,0
+apachectl_path=Caminho do comando apachectl,3,Nenhum
+start_cmd=Comando para iniciar o apache,3,Autom&#225;tico
+stop_cmd=Comando para parar o apache,3,Autom&#225;tico
+show_list=Mostrar servidores virtuais como,1,0-&#205;cones,1-Lista
+show_order=Ordenar servidores virtuais por,1,0-Ordem no arquivo de configura&#231;&#227;o,1-Nome do servidor,2-Endere&#231;o IP
+max_servers=N&#250;mero m&#225;ximo de servidores a mostrar,0,5
+httpd_conf=Caminho do arquivo httpd.conf,3,Autom&#225;tico
+srm_conf=Caminho do arquivo srm.conf,3,Autom&#225;tico
+access_conf=Caminho do arquivo access.conf,3,Autom&#225;tico
+mime_types=Caminho do arquivo mime.types,3,Autom&#225;tico
+virt_file=Arquivo de configura&#231;&#227;o de servidores virtuais,3,httpd.conf
+test_config=Testar arquivo de configura&#231;&#227;o antes de aplicar altera&#231;&#245;es?,1,1-Sim,0-N&#227;o

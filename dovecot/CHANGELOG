@@ -1,0 +1,12 @@
+---- Changes since 1.230 ----
+First version of this module, for configuring the Dovecot IMAP/POP3 server.
+---- Changes since 1.240 ----
+Added support for the new config file format in Dovecot 1.0.
+---- Changes since 1.250 ----
+Added an icon for manually editing the Dovecot configuration file.
+---- Changes since 1.290 ----
+Added support for the new configuration file format in Dovecot 1.0 alpha.
+---- Changes since 1.310 ----
+Fixed a bug that causes config file corruption in the userdb section with the default Ubuntu config.
+---- Changes since 1.330 ----
+Added fields for editing the UIDL format and number of login processes.

@@ -1,0 +1,9 @@
+﻿
+﻿line1=گزينه‌هاي قابل پيکربندي,11
+default_mode=روش فهرست پردازش پيش گزيده,4,last-آخرين انتخاب,tree-درخت پردازش,user-مرتب‌سازي براساس کاربر,size-مرتب‌سازي براساس اندازه,cpu-مرتب‌سازي براساس CPU,search-برگه جستجو,run-برگه اجرا
+cut_length=تعداد حرف تقسيم کردن فرمانات,3,نامحدود
+trace_java=نمايش رديابي فراخواني سيستم با استفاده از,1,1-برنامک جاوا,0-متن
+line2=پيکربندي سيستم,11
+ps_style=روش برونداد فرمان PS,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS,openbsd-OpenBSD
+ 
+

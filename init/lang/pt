@@ -1,0 +1,57 @@
+index_title=Iniciar e Encerrar
+index_add=Criar nova acção de iniciar ou encerrar
+index_reboot=Reiniciar o Sistema
+index_rebootmsg=Clique neste botão para reiniciar imediatamente o sistema. Todos os utilizadores ligados serão desconectados e todos os serviços serão reiniciados.
+index_shutdown=Encerrar Sistema
+index_shutdownmsg=Clique neste botão para encerrar imediatamente o sistema. Todos os serviços serão terminados, todos os utilizadores desconectados e o sistema será desligado (se o seu hardware o suportar).
+index_script=O script $1 abaixo listado será executado ao iniciar do sistema. Poderá adicionar comandos personalizados para que programas daemons ou servidores se iniciem quando reiniciar o sistema.
+index_return=acções de iniciar e encerrar
+
+edit_title=Editar Acção
+create_title=Criar Acção
+edit_ecannot=Você não está autorizado para editar acções de iniciar
+edit_details=Detalhes de Acção
+edit_name=Nome
+edit_desc=Descrição
+edit_startmsg=Mensagem ao iniciar
+edit_stopmsg=Mensagem ao encerrar
+edit_start=Commandos de iniciar
+edit_stop=Comandos de encerrar
+edit_script=Script de Acção
+edit_badS=Devido ao facto desta acção não ter sido criada correctamente, será iniciada apenas no runlevel $1.
+edit_badK=Devido ao facto desta acção não ter sido criada correctamente, será terminada apenas no runlevel $1.
+edit_fix=Clique aqui de modo a fazer com que esta acção esteja disponível para outros runlevels
+edit_levels=Runlevels para iniciar e parar em
+edit_rl=Runlevel $1
+edit_startat=Iniciar em
+edit_stopat=Parar em
+edit_startnow=Iniciar já
+edit_stopnow=Parar já
+edit_return=acção
+
+save_err=Erro ao guardar acção
+save_ecannot=Você não está autorizado para editar acções de iniciar
+save_ealready=Um acção denominada de '$1' já existe
+save_ewrite=Erro ao escrever para $1 : $2
+
+ss_ecannot=Você não está autorizado para começar ou parar acções de iniciar
+ss_start=Iniciar Acção
+ss_stop=Parar Acção
+ss_exec=A executar $1 ..
+
+shutdown_ecannot=Você não está autorizado para encerrar o sistema
+shutdown_title=Encerrar
+shutdown_rusure=Tem a certeza que quer encerrar o sistema com o comando $1 ?
+shutdown_ok=Encerrar Sistema
+shutdown_exec=A encerrar sistema com o comando $1 ..
+
+reboot_ecannot=Você não está autorizado para reiniciar o sistema
+reboot_title=Reiniciar
+reboot_rusure=Tem a certeza que quer reiniciar o sistema com o comando $1 ?
+reboot_ok=Reiniciar Sistema
+reboot_exec=A reiniciar sistema com o comando $1 ..
+
+acl_script=Pode editar o script de iniciação?
+acl_actions=Pode editar, criar e apagar acções?
+acl_reboot=Pode reiniciar o sistema?
+acl_shutdown=Pode encerrar o sistema?

@@ -1,0 +1,55 @@
+<header>Restricciones en la dirección del remitente</header>
+
+<center><tt>smtpd_sender_restrictions</tt></center>
+<hr>
+
+Este parámetro especifica restricciones opcionales en las direcciones de
+los remitentes que los clientes SMTP pueden enviar en los comandos MAIL FROM.
+
+<p>
+
+Por defecto se permite cualquier dirección de remitente. Están disponibles
+las siguientes restricciones:
+
+<ul>
+<li><tt>permit_mynetworks:</tt> permitir si la dirección del cliente 
+        coincide con <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>reject_unknown_client:</tt> rechazar la petición si el nombre de
+        máquina del cliente es desconocido.
+<li><tt>reject_maps_rbl:</tt> rechazar si el cliente está listado en
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject_invalid_hostname:</tt> rechazar el comando HELO con nombre
+        de máquina de sintaxis incorrecta.
+<li><tt>reject_unknown_hostname:</tt> rechazar el comando HELO con nombre
+        de máquina sin registro DNS A o MX.
+<li><tt>reject_unknown_sender_domain:</tt> rechazar el dominio del
+        remitente sin registro DNS A o MX.
+<li><tt>check_sender_access maptype:mapname:</tt> buscar la dirección del
+        remitente, el dominio padre, o @partelocal.
+    	Rechazar si el resultado es REJECT o &quot;[45]xx texto&quot;
+    	Permitir en cualquier otro caso.
+<li><tt>check_client_access maptype:mapname:</tt> vea
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li><tt>check_helo_access maptype:mapname:</tt> vea
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li><tt>reject_non_fqdn_hostname:</tt> rechazar el comando HELO con nombre
+        de máquina no plenamente cualificado (FQDN).
+<li><tt>reject_non_fqdn_sender:</tt> rechazar la dirección del remitente
+        que no esté en forma plenamente cualificada (FQDN).
+<li><tt>reject:</tt> rechazar la petición. Sitúe esto al final de una
+        restricción.
+<li><tt>permit:</tt> permitir la petición. Sitúe esto al final de una
+        restricción.
+</ul>
+
+Las restricciones aplican en el orden que se especifican: la primera
+restricción que coincida es la que aplica.
+
+<p>
+
+Espeficique una lista de restricciones separadas por comas y/o espacios en
+blanco. Continúe las líneas largas comenzando la siguiente línea con
+espacio en blanco.
+
+
+<hr>

@@ -1,0 +1,9 @@
+dhcpd_conf=Configuratie bestand,0
+dhcpd_path=Programma bestand,0
+interfaces=Welke interfaces,3,Automatisch
+pid_file=PID bestand,0
+lease_file=Lease bestand,0
+lease_sort=Sorteer leases per,1,0-Volgorde in bestand,1-IP adres,2-Hostnaam
+hostnet_list=Toon subnetten en hosts als,1,0-Iconen,1-Lijst
+dhcpd_nocols=Iconen per rij,0
+lease_tz=Toon leases tijden in,1,0-GMT,1-Lokale tijd

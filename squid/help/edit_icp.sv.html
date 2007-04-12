@@ -1,0 +1,37 @@
+<header>Övriga cachar</header>
+
+<b>Övriga proxy-cache-servrar</b>: Här listas alla likställda, överordnade och
+multicast-cachar som för närvarande konfigurerats. Klicka på datornamnet
+eller adressen för att ändra eller inspektera alla dess inställningar.
+
+<p><b>Omedelbart hämta URL:er som innehåller</b>: Standardinställningen är
+".cgi" och "?".  Detta kan användas för att tvinga Squid att alltid hämta
+vissa typer direkt från ursprungsservern. Vanligtvis behöver detta inte ändras,
+eftersom det mesta hanteras automatiskt av Squid utan annan inblandning.
+
+<p><b>Tidsgräns för ICP-uppslagning</b>: Standardinställningen är ett
+"optimalt" värde. För att ett annat värde än det som Squid har bestämt ska
+användas, ska denna parameter ges ett värde skilt från noll. Standardvärdet
+i äldre versioner av Squid var 2000.
+
+<p><b>Tidsgräns för multicast-ICP</b>: Standardvärdet är 2000 ms, dvs 2
+sekunder. Squid skickar regelbundet ut ICP-"prober" till multicast-motparter
+för att se hur många motparter som lyssnar på den angivna multicast-adressen.
+Denna parameter anger hur lång tid Squid ska vänta innan den räknar svaren.
+
+<p><b>Tidsgräns för död motpart</b>: Standardvärdet är 10 sekunder.
+Denna parameter anger hur länge Squid ska vänta innan en motpart anses "död".
+Om Squid inte tar emot några ICP-svar inom denna tid anser den att motparten
+är död och förväntar sig inte några fler ICP-svar. Squid fortsätter dock att
+skicka ICP-uppslagningar och kommer att betrakta motparten som levande så fort
+den skickar ett ICP-svar igen.
+
+<p>Denna tidsgräns påverkar också om Squid förväntar sig ICP-svar från sina
+motparter. Om mer än 'dead_peer' sekunder har gått sedan det senaste
+ICP-svaret, kommer Squid inte att förvänta sig något ICP-svar på nästa
+uppslagning. Om tiden mellan två uppslagningar är längre än denna tidsgräns
+kommer alltså många uppslagningar att skickas direkt till ursprungsservern
+istället för till den överordnade.
+
+<hr>
+

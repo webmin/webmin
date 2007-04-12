@@ -1,0 +1,2 @@
+# RBAC authorization		# Webmin ACL
+solaris.device.cdrw		noconfig=1

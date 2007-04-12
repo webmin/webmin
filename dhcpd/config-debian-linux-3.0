@@ -1,0 +1,16 @@
+dhcpd_conf=/etc/dhcpd.conf
+pid_file=/var/run/dhcpd.pid
+dhcpd_path=/usr/sbin/dhcpd
+lease_file=/var/lib/dhcp/dhcpd.leases
+lease_sort=0
+dhcpd_nocols=5
+lease_tz=0
+start_cmd=/etc/init.d/dhcp start
+stop_cmd=/etc/init.d/dhcp stop
+restart_cmd=/etc/init.d/dhcp restart
+show_ip=0
+show_mac=0
+group_name=0
+display_max=100
+desc_name=0
+interfaces_type=debian

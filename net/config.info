@@ -1,0 +1,5 @@
+hosts_file=File listing hosts and addresses,0
+ipnodes_file=File listing IPv6 hosts and addresses,0
+def_netmask=Default netmask,0
+def_broadcast=Default broadcast address,0
+def_mtu=Default MTU,0

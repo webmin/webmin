@@ -1,0 +1,5 @@
+line2=System configuration,11
+dfstab_file=NFS exports file location,0
+fstypes_file=Shared filesystems types file,3,None
+share_all_command=Command to start sharing,0
+unshare_all_command=Command to stop sharing,0

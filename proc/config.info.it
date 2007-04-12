@@ -1,0 +1,6 @@
+line1=Opzioni configurabili,11
+default_mode=Stile predefinito dell'elenco dei processi,4,last-L'ultimo scelto,tree-Albero dei processi,user-Ordina per utente,size-Ordina per dimensione,cpu-Ordina per CPU,search-Scheda di ricerca,run-Scheda di avvio
+cut_length=Numero di caratteri da visualizzare per i comandi,3,Illimitato
+trace_java=Visualizza le chiamate di sistema per il tracciamento come,1,1-Applet Java,0-Testo
+line2=Configurazioni di sistema,11
+ps_style=Stile dell'output dei comandi PS,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS,openbsd-OpenBSD

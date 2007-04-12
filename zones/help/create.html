@@ -1,0 +1,12 @@
+<header>Create Zone</header>
+
+This form allows you to create and optionally install a new zone on this system. You must enter at least the zone name, which has to be unique and composed of only letters and numbers. A zone files directory can be selected, but the default is usually best. <p>
+
+Because each zone usually needs a private network interface for its server, you can enter it's IP address on this form, and select the real interface to which it is bound. All zones automatically have a virtual loopback interface like <tt>lo0:1</tt>, which does not have to be manually configured. <p>
+
+If you choose to install the zone's system software after it is created, the new zone will be immediately ready to use. However, if you want to add or change package directories, you may choose not to install now as this will prevent these changes from being made. <p>
+
+Package directories can also be specified on this form, to be added before the zone is installed. The directories <tt>/lib</tt>, <tt>/platform</tt>, <tt>/sbin</tt> and <tt>/usr</tt> are always automatically included in any new zones. <p>
+
+<footer>
+

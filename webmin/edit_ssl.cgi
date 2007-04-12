@@ -1,0 +1,169 @@
+#!/usr/local/bin/perl
+# edit_ssl.cgi
+# Webserver SSL form
+
+require './webmin-lib.pl';
+&ui_print_header(undef, $text{'ssl_title'}, "");
+&ReadParse();
+&get_miniserv_config(\%miniserv);
+
+# Check if we even *have* SSL support
+eval "use Net::SSLeay";
+if ($@) {
+	print &text('ssl_essl', "http://www.webmin.com/ssl.html"),"<p>\n";
+	if (&foreign_available("cpan")) {
+		print &text('ssl_cpan', "../cpan/download.cgi?source=3&cpan=Net::SSLeay&mode=2&return=/$module_name/&returndesc=".&urlize($text{'index_return'})),"<p>\n";
+		}
+	$err = $@;
+	$err =~ s/\s+at.*line\s+\d+[\000-\377]*$//;
+	print &text('ssl_emessage', "<tt>$err</tt>"),"<p>\n";
+	&ui_print_footer("", $text{'index_return'});
+	exit;
+	}
+
+# Show tabs
+@tabs = map { [ $_, $text{'ssl_tab'.$_}, "edit_upgrade.cgi?mode=$_" ] }
+	    ( "ssl", "ips", "create", "upload" );
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
+
+# Basic SSL settings
+print &ui_tabs_start_tab("mode", "ssl");
+print $text{'ssl_desc1'},"<p>\n";
+print $text{'ssl_desc2'},"<p>\n";
+
+print &ui_form_start("change_ssl.cgi", "post");
+print &ui_table_start($text{'ssl_header'}, undef, 2);
+
+print &ui_table_row($text{'ssl_on'},
+	&ui_yesno_radio("ssl", $miniserv{'ssl'}));
+
+print &ui_table_row($text{'ssl_key'},
+	&ui_textbox("key", $miniserv{'keyfile'}, 40)." ".
+	&file_chooser_button("key"));
+
+print &ui_table_row($text{'ssl_cert'},
+	&ui_opt_textbox("cert", $miniserv{'certfile'}, 40,
+			$text{'ssl_cert_def'}."<br>",$text{'ssl_cert_oth'})." ".
+	&file_chooser_button("cert"));
+
+print &ui_table_row($text{'ssl_redirect'},
+	&ui_yesno_radio("ssl_redirect", $miniserv{'ssl_redirect'}));
+
+print &ui_table_row($text{'ssl_version'},
+	&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
+			$text{'ssl_auto'}));
+
+print &ui_table_row($text{'ssl_extracas'},
+	&ui_textarea("extracas", join("\n",split(/\s+/, $miniserv{'extracas'})),
+		     3, 60));
+
+print &ui_table_end();
+print &ui_form_end([ [ "", $text{'save'} ] ]);
+print &ui_tabs_end_tab();
+
+# Table listing per-IP SSL certs
+print &ui_tabs_start_tab("mode", "ips");
+print "$text{'ssl_ipkeys'}<p>\n";
+@ipkeys = &get_ipkeys(\%miniserv);
+if (@ipkeys) {
+	print &ui_columns_start([ $text{'ssl_ips'}, $text{'ssl_key'},
+				  $text{'ssl_cert'} ]);
+	foreach $k (@ipkeys) {
+		print &ui_columns_row([
+			"<a href='edit_ipkey.cgi?idx=$k->{'index'}'>".
+			join(", ", @{$k->{'ips'}})."</a>",
+			"<tt>$k->{'key'}</tt>",
+			$k->{'cert'} ? "<tt>$k->{'cert'}</tt>" : "<br>"
+			]);
+		}
+	print &ui_columns_end();
+	}
+else {
+	print "<b>$text{'ssl_ipkeynone'}</b><p>\n";
+	}
+print "<a href='edit_ipkey.cgi?new=1'>$text{'ssl_addipkey'}</a><p>\n";
+print &ui_tabs_end_tab();
+
+# SSL key generation form
+print &ui_tabs_start_tab("mode", "create");
+print "$text{'ssl_newkey'}<p>\n";
+local $curkey = `cat $miniserv{'keyfile'} 2>/dev/null`;
+local $origkey = `cat $root_directory/miniserv.pem 2>/dev/null`;
+if ($curkey eq $origkey) {
+	# System is using the original (insecure) Webmin key!
+	print "<b>$text{'ssl_hole'}</b><p>\n";
+	}
+
+print &ui_form_start("newkey.cgi");
+print &ui_table_start($text{'ssl_header1'}, undef, 2);
+
+$host = $ENV{'HTTP_HOST'};
+$host =~ s/:.*//;
+print &ui_table_row($text{'ssl_cn'},
+		    &ui_opt_textbox("commonName", $host, 30,
+				    $text{'ssl_all'}));
+
+print &ui_table_row($text{'ca_email'},
+		    &ui_textbox("emailAddress", $d->{'emailto'}, 30));
+
+print &ui_table_row($text{'ca_ou'},
+		    &ui_textbox("organizationalUnitName", undef, 30));
+
+$o = "Webmin Webserver on ".&get_system_hostname();
+print &ui_table_row($text{'ca_o'},
+		    &ui_textbox("organizationName", $o, 30));
+
+print &ui_table_row($text{'ca_city'},
+		    &ui_textbox("cityName", undef, 30));
+
+print &ui_table_row($text{'ca_sp'},
+		    &ui_textbox("stateOrProvinceName", undef, 15));
+
+print &ui_table_row($text{'ca_c'},
+		    &ui_textbox("countryName", undef, 2));
+
+print &ui_table_row($text{'ssl_size'},
+		    &ui_opt_textbox("size", undef, 6,
+				    "$text{'default'} ($default_key_size)").
+			" ".$text{'ssl_bits'});
+
+print &ui_table_row($text{'ssl_days'},
+		    &ui_textbox("days", 1825, 8));
+
+print &ui_table_row($text{'ssl_newfile'},
+	    &ui_textbox("newfile", "$config_directory/miniserv.pem", 40));
+
+print &ui_table_row($text{'ssl_usenew'},
+		    &ui_yesno_radio("usenew", 1));
+
+print &ui_table_end();
+print &ui_form_end([ [ "", $text{'ssl_create'} ] ]);
+print &ui_tabs_end_tab();
+
+# SSL key upload form
+print &ui_tabs_start_tab("mode", "upload");
+print "$text{'ssl_savekey'}<p>\n";
+print &ui_form_start("savekey.cgi", "form-data");
+print &ui_table_start($text{'ssl_saveheader'}, undef, 2);
+
+print &ui_table_row($text{'ssl_privkey'},
+		    &ui_textarea("key", undef, 7, 60)."<br>\n".
+		    "<b>$text{'ssl_upload'}</b>\n".
+		    &ui_upload("keyfile"));
+
+print &ui_table_row($text{'ssl_privcert'},
+		    &ui_radio("cert_def", 1,
+			[ [ 1, $text{'ssl_same'} ],
+			  [ 0, $text{'ssl_below'} ] ])."<br>\n".
+		    &ui_textarea("cert", undef, 7, 60)."<br>\n".
+		    "<b>$text{'ssl_upload'}</b>\n".
+		    &ui_upload("certfile"));
+
+print &ui_table_end();
+print &ui_form_end([ [ "save", $text{'save'} ] ]);
+print &ui_tabs_end_tab();
+
+print &ui_tabs_end(1);
+
+&ui_print_footer("", $text{'index_return'});
+

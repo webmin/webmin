@@ -1,0 +1,38 @@
+index_title=Alterar Senhas
+index_header=Selecione o usuário para alterar a senha
+index_return=Lista de Usuários
+index_user=Alterar senha para usuário:
+index_euseradmin=Este módulo não pode ser usado porque os módulos Usuário
+e Grupos não estão installado ou não são suportados neste sistema.
+index_toomany=There are too many users to display on your system. Enter the name of the user whose password you want to change below..
+
+passwd_title=Alterar Senha
+passwd_header=Alterando senha do usuário unix
+passwd_for=Alterando senha para
+passwd_old=Senha antiga
+passwd_new=Nova senha
+passwd_repeat=Nova Senha (novamente)
+passwd_change=Alterar
+passwd_reset=Limpar o form
+passwd_err=Falhou para trocar a senha
+passwd_ecannot=Você não tem permissão para alterar a senha deste usuário
+passwd_euser=Usuário não existe
+passwd_eold=Senha antiga incorreta
+passwd_erepeat=As senhas novas não são iguais
+passwd_ecmd=$1 falhou : $2
+passwd_ok=Senha do usuário $1 alterada com sucesso. Se este é o usuário Webmin corrente, você deve logar novamente.
+
+log_passwd=Senha para o usuário $1 alterada.
+
+acl_repeat=Deve entrar com a confirmação de senha?
+acl_old=Deve informar a senha antiga?
+acl_old_this=Somente para outros usuários
+acl_others=Altera senha em outros módulos?
+acl_users=Users whose passwords can be changed
+acl_mode0=Todos usuários
+acl_mode1=Somente usuários
+acl_mode2=Todos usuários exceto
+acl_mode3=Somente este usuário
+acl_mode4=Somente usuário com UID entre
+acl_mode5=Usuários com grupo primário
+acl_mode6=Users matching

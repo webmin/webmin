@@ -1,0 +1,11 @@
+soa_style=0
+show_list=0
+nslookup_pathname=nslookup
+named_pid_file=/var/run/named.pid
+named_pathname=/usr/sbin/named
+ping_pathname=ping
+named_boot_file=/etc/named.boot
+records_order=0
+updserial_def=0
+updserial_on=1
+updserial_man=1

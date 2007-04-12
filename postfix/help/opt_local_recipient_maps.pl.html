@@ -1,0 +1,20 @@
+<header>Odrzucaæ nieznanych u¿ytkowników lokalnych</header>
+
+<center><tt>local_recipient_maps</tt></center>
+<hr>
+
+Ten parametr definiuje fakultatywne tabele do poszukiwania u¿ytkowników
+lokalnych wzglêdem <tt>$mydestination</tt> (&quot;dla jakich domen odbieraæ
+pocztê&quot;) oraz <tt>$inet_interfaces</tt> (&quot; interfejsy sieciowe dla
+poczty przychodz±cej&quot;). Je¶li ten parametr bêdzie zdefiniowany, serwer
+SMTP bêdzie odrzuca³ pocztê do nieznanych u¿ytkowników lokalnych. <p>
+
+Podaj tabele z&nbsp;go³ymi nazwami u¿ytkowników takie jak
+<tt>unix:passwd.byname</tt> i&nbsp;odwzorowania aliasów. Przyk³ad:
+<tt>$alias_maps unix:passwd.byname</tt>. <p>
+
+Uwaga: je¶li serwer SMTP Postfiksa dzia³a w&nbsp;¶rodowisku chroot, mo¿e
+istnieæ konieczno¶æ skopiowania bazy passwd do miejsca jego uwiêzienia.
+Zale¿y to od systemu.
+
+<hr>

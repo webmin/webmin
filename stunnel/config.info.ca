@@ -1,0 +1,3 @@
+line2=Configuració del sistema,11
+stunnel_path=Camí de l'executable stunnel,0
+pem_path=Camí del fitxer PEM per defecte de stunnel,3,Cap

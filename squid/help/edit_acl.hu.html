@@ -1,0 +1,23 @@
+<header>Hozzáférés-vezérlés; fordította: Szakács Gergely</header><p>
+
+<b>Hozzáférés-vezérlési listák</b>: A hozzáférés-vezérlési listák (ACL) pontos kifejezések reguláris kifejezéseivel leírható feltételeket tartalmaznak. Az ACL lehet egy fájl is, mely soronként egy elemet, vagy reguláris kifejezést tartalmaz. Az ezen az oldalon lévõ ACL-doboz több módosítható mezõt tartalmaz. Új ACL létrehozására is lehetõség van.<p>
+
+Alább a következõ mezõk láthatók:<p>
+
+A <em>Név</em> az ACL azonosítására szolgál. Egy <b>Proxy-korlátozás</b> létrehozatalakor ezzel a névvel azonosítjuk magát a korlátozást.<p>
+
+A <em>Típus</em> azokat az információtípusokat tartalmazza, melyeket az ACL segítségével szûrni akarunk.<p>
+
+Az <em>Egyezés</em> az a cím, port, URL, felhasználó, stb., amivel az ACL megegyezik.<p>
+
+<b>Proxy-korlátozások</b>: A Proxy korlátozások olyan szabályok, amelyek elutasítanak, vagy engedélyeznek egy adott kérést, attól függõen, hogy annak ACL-je megegyezik-e a kérés specifikumaival. Ebben a dobozban három mezõ található.<p>
+
+Az <em>Eljárás</em> lehet <em>engedélyezés</em> vagy <em>elutasítás</em>.<p>
+
+Az <em>ACL-ek</em> azon hozzáférés-vezérlési listák, amelyek tartalma meghatározza, hogy egy adott kérés engedélyezésre, avagy elutasításra kerül. Ha a lista felkiáltójellel indul, úgy az ACL érvénytelenítõdik, vagyis az ACL tagjait <em>kivéve</em> minden engedélyezve vagy elutasítva lesz.<p>
+
+A <em>Mozgatás</em> lehetõvé teszi a lista korlátozásainak rangsorolását. A sorrend azért fontos, mert a Squid csak addig olvassa be a listát, míg meg nem találta az elsõ egyezõ kifejezést.<p>
+
+<b>ICP-korlátozások</b>: Ez a doboz az ICP-kérések korlátozására szolgál. Az ICP-kérések más, szomszédos gyorstárak kérései. Ez a funkció ugyanúgy mûködik, mint a <b>Proxy-korlátozások</b>.
+
+<hr>

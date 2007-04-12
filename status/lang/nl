@@ -1,0 +1,96 @@
+index_title=Systeem en Server Status
+index_name=Dienstnaam
+index_host=Op host
+index_desc=Monitoren
+index_up=Status
+index_local=Lokaal
+index_add=Voeg monitor toe van type :
+index_sched=Gepland Monitoren
+index_return=diensten lijst
+
+type_apache=Apache Webserver
+type_inetd=Internet en RPC Server
+type_xinetd=Uitgebreide Internet Server
+type_squid=Squid Proxy Server
+type_bind8=BIND DNS Server
+type_dnsadmin=BIND 4 DNS Server
+type_dhcpd=DHCP Server
+type_tcp=Externe TCP Dienst
+type_http=Externe HTTP Dienst
+type_sendmail=Sendmail Server
+type_postfix=Postfix Server
+type_ping=Externe Ping
+type_proc=Controleer Proces
+type_mysql=MySQL Database Server
+type_postgresql=PostgreSQL Database Server
+type_samba=Samba Servers
+type_nfs=NFS Server
+type_exec=Voer Commando Uit
+
+mon_create=Voeg Monitor Toe
+mon_edit=Bewerk Monitor
+mon_header=Monitor details
+mon_desc=Omschrijving
+mon_remote=Voer uit op host
+mon_local=Lokaal
+mon_none=geen externe servers gedefinieerd
+mon_nosched=Controleren op vaste tijden?
+mon_status=Huidige status
+mon_up=Actief
+mon_down=Inactief
+mon_not=Niet geinstalled
+mon_err=Fout bij het opslaan van monitor
+mon_edesc=Ontbrekende omschrijving
+mon_elogin=Ongeldige login voor RPC op Webmin server $1
+mon_eremote=Webmin server $1 ondersteund geen RPC
+mon_estatus=Webmin server $1 heeft geen System en Server Status module
+
+sched_title=Geplande Monitoring
+sched_header=Plan achtergrond monitoring opties
+sched_mode=Geplande controle ingeschakeld?
+sched_email=Email status rapporteren aan
+sched_from=Van: adres voor email
+sched_int=Controleer iedere
+sched_period_0=minuten
+sched_period_1=uur
+sched_period_2=dagen
+sched_period_3=maanden
+sched_period_4=weken
+sched_offset=met offset
+sched_warn=Stuur email als
+sched_warn1=Een diens van status wijzigd
+sched_warn0=Een dienst inactief wordt
+sched_single=Stuur een email per dienst?
+sched_err=Fout bij het opslaan van gepland monitoren
+sched_eemail=Ontbrekend email adres
+sched_eint=Ontbrekende of ongeldige intervan
+sched_eoffset=Ontbrekende of ongeldige offset
+
+up_since=Actief sinds $1
+depends_mod=De module $1 is niet geinstalleerd op uw systeem
+depends_os=De module $1 wordt niet ondersteund door uw systeem
+depends_remote=De module $1 wordt niet ondersteund op server $2
+
+tcp_host=Host om naar te verbinden
+tcp_port=Poort om naar te verbinden
+tcp_alarm=Verbinding timeout
+tcp_ehost=Ontbrekende of ongeldige hostnaam
+tcp_eport=Ontbrekend of ongeldig poort nummer
+tcp_ealarm=Ontbrekende of ongeldige verbindings timeout
+
+http_url=URL om aan te vragen
+http_alarm=Verbinding timeout
+http_eurl=Ontbrekende of ongeldige URL
+http_ealarm=Ontbrekende of ongeldige verbindings timeout
+
+ping_host=Host om te ping
+ping_ehost=Ontbrekende of ongeldige hostnaam
+ping_econfig=Er is geen ping commando ingesteld in de Module Configuratie
+
+proc_pid=Draaiend met PID $1
+proc_cmd=Commando on te controleren op
+proc_ecmd=Ontbrekend command
+
+exec_cmd=Commando om exit status te controleren van
+exec_ecmd=Ontbrekend command
+

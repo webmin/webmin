@@ -1,0 +1,2 @@
+inittab_file=/etc/inittab
+telinit=telinit

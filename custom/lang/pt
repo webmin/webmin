@@ -1,0 +1,41 @@
+index_title=Comandos Personalizados
+index_edit=Editar comando
+index_none=Não foram definidos comandos personalizados
+index_create=Criar novo comando personalizado
+index_return=comandos
+
+edit_title=Editar Comando
+create_title=Criar Comando
+edit_ecannot=Você não está autorizado para editar comandos
+edit_details=Detalhes do comando
+edit_desc=Descrição
+edit_cmd=Comando
+edit_user=Executar como utilizador
+edit_raw=Resultados do comando em HTML?
+edit_params=Parâmetros do comando
+edit_name=Nome
+edit_type=Tipo
+edit_quote=Citar parâmetro?
+edit_type0=Texto
+edit_type1=Utilizador
+edit_type2=UID
+edit_type3=Grupo
+edit_type4=GID
+edit_type5=Ficheiro
+edit_type6=Directório
+edit_type7=Opção..
+edit_type8=Palavra de Passe
+
+save_err=Erro ao guardar comando
+save_ecannot=Você não está autorizado para editar comandos
+save_ecmd=Não foi introduzido comando algum
+save_edesc=Não foi introduzida uma descrição
+save_euser=Utilizador inválido ou em falta
+
+run_err=Erro ao executar o comando
+run_ecannot=Você não está autorizado para executar o comando
+run_euser=Utilizador inválido ou em falta
+run_egroup=Grupo inválido ou em falta
+run_title=Executar Comando
+run_out=Resultados de $1 ..
+run_noout=Sem resultados gerados

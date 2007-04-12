@@ -1,0 +1,18 @@
+<header>Lokala nätverk</header>
+
+<center><tt>mynetworks</tt></center>
+<hr>
+
+Denna parameter anger en lista över lokala nätverk för denna dator. Listan används
+av anti-UCE-program för att särskilja lokala klienter från andra. Se
+<tt>permit_mynetworks</tt> och 
+<a href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt></a>
+i SMTP-konfigurationen.
+
+<p>Standardvärdet är en lista över alla nätverk som är kopplade till datorn:
+ett komplett klass A-nätverk (X.0.0.0/8), ett klass B-nätverk (X.X.0.0/16) osv.
+Om man vill ha mer kontroll går det att ange en lista med nätverk/mask-mönster,
+där masken anger antalet bitar i nätverksdelen av datoradressen. Det går också att
+ange en absolut sökväg till en mönsterfil istället för att räkna upp mönstren här.
+
+<hr>

@@ -1,0 +1,16 @@
+---- Changes since 1.150 ----
+Added support for the header_access directive in Squid 2.5, which can be used to limit the HTTP headers passed through for different requests.
+---- Changes since 1.160 ----
+Added buttons on main page for stopping, starting and re-starting Squid.
+Added support for editing the refresh_pattern directive.
+---- Changes since 1.170 ----
+Added icon for setting up transparent proxying, by creating needed firewall rules and Squid directives.
+---- Changes since 1.180 ----
+An interface to listen on for transparent proxying can now be selected instead of specifying a network address.
+---- Changes since 1.200 ----
+When creating an ACL, an external filename can be specified for storing the matching values.
+---- Changes since 1.270 ----
+Added a form on the Clear and Rebuild Cache page for removing a single URL. This only appears if the squidclient program is installed.
+Added checkboxes and buttons for deleting multiple delay pools, refresh rules, other caches, proxy restrictions and ICP restrictions at once.
+---- Changes since 1.290 ----
+Added support for Squid 2.6, including the new logformat and access_log directives for specifying multiple custom log files.

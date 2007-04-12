@@ -1,0 +1,15 @@
+show_status=0
+smbclient_path=smbclient
+spool_dir=/var/spool/cups
+driver_style=cups
+print_style=cups
+iface_arg=
+gs_fontpath=
+model_path=/usr/share/cups/model
+hpnp_path=
+gs_lib=
+printcap_file=
+gs_path=
+sort_mode=0
+display_mode=0
+show_jobs=0

@@ -1,0 +1,73 @@
+index_title=Linux RAID
+index_none=RAID デバイスが設定されていません。
+index_add=次のレベルの RAID デバイスを作成
+index_return=RAID デバイス
+index_emdstat=カーネル RAID '$1' はシステムに存在しません。カーネルが RAID をサポートしない可能性があります。
+index_emkraid=RAID ツール パッケージがシステムにインストールされていません。
+
+linear=連結 (線形)
+raid0=ストライプ (RAID0)
+raid1=ミラー (RAID1)
+raid4=パリティ (RAID4)
+raid5=冗長 (RAID5)
+
+create_title=RAID デバイスの作成
+create_header=RAID デバイスのオプション
+create_device=デバイス ファイル
+create_level=RAID レベル
+create_disks=RAID のパーティション
+create_spares=スペア パーティション
+create_pdisk=パリティ パーティション
+create_pauto=自動
+create_nodisks=RAID に使用できる空きパーティションがありません。
+create_super=常設スーパーブロックですか？
+create_parity=パリティ アルゴリズム
+create_chunk=チャンク サイズ
+create_force=RAID の初期化を強制しますか？
+create_rdev=RAID デバイス $1
+create_err=RAID を作成できませんでした
+create_edisks=パーティションが選択されていません
+create_edisks2=ミラーリングには最低 2 つのパーティションを選択する必要があります
+create_espare=スペア パーティション $1 はRAID パーティションにできません
+create_epdisk=パリティ パーティション $1 はRAID パーティションにできません
+
+view_title=RAID デバイス
+view_header=RAID デバイスのオプション
+view_device=デバイス ファイル
+view_level=RAID レベル
+view_status=ステータス
+view_mounted=アクティブで $1 にマウント
+view_active=アクティブ
+view_inactive=非アクティブ
+view_super=常設スーパーブロックですか？
+view_parity=パリティ アルゴリズム
+view_chunk=チャンク サイズ
+view_stop=使用不可
+view_start=アクティブにする
+view_mkfs=ext2 ファイル システムを作成..
+view_disks=RAID のパーティション
+view_spares=スペア パーティション
+view_size=使用できるサイズ
+view_resync=完了した再同期の割合
+view_down=(ダウン)
+view_cannot=この RAID デバイスは現在マウントされているため変更できません。
+
+mkfs_title=ファイル システムの作成
+mkfs_header=この画面では、新規の Linux EXT2 ファイル システムを $1 上に構築できます。<b>すべての</b> 既存のデータは消去されます。
+mkfs_options=新規の Linux ファイル システム オプション
+mkfs_err=ファイル システムを作成できませんでした
+mkfs_exec=コマンド $1 を実行中..
+mkfs_failed=.. コマンドが失敗しました。
+mkfs_ok=.. コマンドを完了しました。
+
+emkraid=<tt>mkraid</tt> が失敗しました: $1
+eraidstop=<tt>raidstop</tt> が失敗しました: $1
+eraidstart=<tt>raidstart</tt> が失敗しました: $1
+eforce=この RAID の初期化を強制する必要があります: $1
+
+log_create=$1 RAID デバイス $2 を作成しました
+log_stop=RAID デバイス $1 を使用不可にしました
+log_start=RAID デバイス $1 をアクティブにしました
+log_delete=RAID デバイス $1 を削除しました
+log_mkfs=$1 ファイル システムを $2 に作成しました
+

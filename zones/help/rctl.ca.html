@@ -1,0 +1,20 @@
+<header>Control de Recurs</header>
+
+Un control de recurs és un conjunt de limitacions sobre l´us d'alguns recursos
+dins de la zona, i accions associades quan aquestes s'excedeixen. Els recursos
+disponibles en aquest moment són:
+<dl>
+<dt><b>zone.max-lwps</b>
+<dd>Limita el nombre de processos que es poden executar simultàniament en
+una zona en un moment donat.
+<dt><b>zone.cpu-shares</b>
+<dd>Estableix un límit sobre el nombre de recursos FSS de CPU per a una zona.
+</dl>
+
+Per a cada recurs, pots introduir un cert nombre de límits. Cada límit té un
+tipus de privilegi (que sempre és <b>Privilegiat</b>), un límit numèric i una
+acció a prendre quan s'excedeix el límit. L'acció típica és <b>Denega</b>,
+per evitar que qualsevol petició excedeixi el límit. <p>
+
+<footer>
+

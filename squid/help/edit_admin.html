@@ -1,0 +1,22 @@
+<header>Administrative Options</header>
+
+<b>Run as Unix user</b>: Default is 'nobody' or 'squid' dependent on system.  If the cache is run as root, it will change its effective/real ID to this value.
+<p>
+<b>Run as Unix group</b>: Default is 'nogroup' or 'squid' dependent on system.  If the cache is run as root, it will change its effective/real group ID to this value.
+<p>
+<b>Proxy authentication realm</b>: Specifies the realm name which is to be reported to the client for proxy authentication (part of the text the user will see when prompted their username and password).
+<p>
+<b>Cache manager email address</b>: Default is 'webmaster' or 'root' dependent on system.  Email-address of local cache manager who will receive mail if the cache dies.
+<p>
+<b>Visible hostname</b>: If you want to present a special hostname in error messages, etc, then define this.  Otherwise, the return value of gethostname() will be used. If you have multiple caches in a cluster and get errors about IP-forwarding you must set them to have individual names with this setting.
+<p>
+<b>Unique hostname</b>: If you want to have multiple machines with the same <b>Visible hostname</b> then you must give each machine a different <b>Unique hostname</b> so that forwarding loops can be detected.
+<p>
+<b>Cache announce host</b>: Hostname where announcement messages will be sent.  Find out more about cache hierarchies from <a href="http://www.squid-cache.org/Doc/FAQ/FAQ-4.html" target="Reference">The Squid FAQ</a>.  Defaults to 'tracker.ircache.net' when announcement is enabled by setting an announce period.
+<p>
+<b>Cache announce port</b>: Host port where announcement messages will be sent.  Defaults to 3131 when announcement is enabled. 
+<p>
+<b>Announcement period</b>: Frequency of announcements.  Enable announcements to a cache heirarchy by setting this to '1 day'.  The default is '0' which turns off announcement.
+
+<hr>
+

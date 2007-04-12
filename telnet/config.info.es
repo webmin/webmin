@@ -1,0 +1,9 @@
+host=M&#225;quina a la que conectar,3,Autom&#225;tica
+port=Puerto al que conectar,0
+mode=Tipo de conexi&#243;n,1,0-Telnet,1-Shell seguro (recomendado)
+sizemode=Medida de applet,1,0-80x24 caracteres,1-Din&#225;mico
+size=Ancho x alto personalizado,0
+fontsize=Medida de Tipo de letra en puntos,3,Por defecto
+detach=Modo Ventana Separada,1,1-S&#237;,0-No
+no_test=&#191;Probar telnet o servidor SSH?,0-S&#237;,1-No
+applet=Applet SSH a usar,1,1-Versi&#243;n Nueva (SSH 1 y 2),0-Versi&#243;n Antigua (S&#243;lo SSH 1)

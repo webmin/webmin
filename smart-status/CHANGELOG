@@ -1,0 +1,4 @@
+---- Changes since 1.170 ----
+First version of this module, which can display the status of IDE hard drives that support SMART.
+---- Changes since 1.270 ----
+Added a Module Config option to force ATA mode for SATA disks that appear as SCSI.

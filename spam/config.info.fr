@@ -1,0 +1,7 @@
+local_cf=Fichier ou r&#233;pertoire de configuration de SpamAssassin,0
+spamassassin=Chemin complet de la commande SpamAssassin,0
+sa_learn=Chemin complet de la commande sa-learn,0
+procmailrc=Fichier de configuration de Procmail,3,&#192; partir du module Procmail
+warn_procmail=Afficher un avertissement si SpamAssassin n'est pas configur&#233; ?,1,1-Oui,0-Non
+processes=Noms de processus du d&#233;mon SpamAssassin,0
+restart_cmd=Commande pour red&#233;marrer des processus,3,Juste envoyer un signal HUP

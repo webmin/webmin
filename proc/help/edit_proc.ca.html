@@ -1,0 +1,41 @@
+<header>Edició de Procés</header>
+
+Aquesta pàgina mostra els detalls d'un procés en execució. A la part de 
+dalt es mostra la següent informació:
+<dl>
+   <dt><b>Ordre</b>
+   <dd>El programa i els arguments de la línia d'ordres d'aquest procés.
+   <dt><b>ID del procés</b>
+   <dd>Identificador únic del procés
+   <dt><b>Procés Pare</b>
+   <dd>El procés que l'ha creat. Fes-hi clic per mostrar els detalls del pare.
+   <dt><b>Usuari</b>
+   <dd>L'usuari amb els permisos del qual s'està executant el procés.
+   <dt><b>Ús de CPU</b>
+   <dd>El percentatge de temps de CPU que aquest procés està utilitzant.
+   <dt><b>Mida</b>
+   <dd>La quantitat de memòria ocupada per aquest procés. Pot ser que part
+       d'aquesta estigui compartida amb altres processos.
+   <dt><b>Temps d'execució</b>
+   <dd>La quantitat total de temps de CPU utilitzada pel procés des del seu
+       inici (en minuts). A menys que el procés sigui molt intensiu en CPU,
+       aquest no serà el nombre de minuts passats des del seu inici.
+   <dt><b>Nivell nice</b>
+   <dd>La prioritat d'execució del procés. Hi ha <a href=nice>més informació</a>
+       disponible sobre els nivells <i>nice</i>.
+</dl>
+
+Depenent de la versió concreta de Unix que estiguis executant, es pot veure
+informació addicional.
+<p>
+Sota la informació del procés hi ha un botó per enviar un senyal al procés.
+Selecciona a la llista el senyal que vols enviar, llavors fes clic sobre
+el botó <tt>Envia el Senyal</tt>. Els senyals més útils són <tt>KILL</tt>
+i <tt>TERM</tt>, per matar el procés.
+<p>
+SI aquest procés té algun fill, llavors es mostrarà al peu de la pàgina,
+Fes clic sobre un ID de la llista per veure informació més detallada.
+
+<hr>
+
+

@@ -1,0 +1,22 @@
+<header>Alias To</header>
+
+Each alias may redirect mail to several recipients, and each recipient
+may be one of the following :
+<dl>
+<dt><b>Email Address</b>
+<dd>Either a full email address like <tt>foo@bar.com</tt>, or the name of
+    another user on your system like <tt>jcameron</tt>.
+<dt><b>Addresses in File</b>
+<dd>For this kind of alias you must specify the full path to a file
+    containing a list of email addresses, one per line. Each address can
+    be either fully qualified, or the name of another user on your system.
+<dt><b>Write to File</b>
+<dd>In this case, email will be written to the specified file. To have all
+    email to some address thrown away, give <tt>/dev/null</tt> as the filename.
+<dt><b>Feed to Program</b>
+<dd>Each time an email message arrives for this alias, the specified program
+    will be executed and the entire email message (headers and body) passed
+    to it on the standard input.
+</dl>
+<hr>
+

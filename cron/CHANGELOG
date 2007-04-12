@@ -1,0 +1,19 @@
+---- Changes since 1.130 ----
+Environment variables can be edited in user Cron files, and jobs and variable settings moved around.
+---- Changes since 1.170 ----
+Added option to move an existing environment variable to the top of a user's list.
+---- Changes since 1.190 ----
+Added a module configuration option to display the schedule for each job on the main page.
+Added another option to display the current running status of each job.
+---- Changes since 1.220 ----
+In addition to the normal method of specifying the times that a cron job runs at, a date range can now also be entered.
+---- Changes since 1.230 ----
+Added a field for entering comments from Cron jobs, and a Module Config option to display comments in the list.
+---- Changes since 1.240 ----
+Multiple Cron jobs can be deleted at once, using checkboxes on the module's main page.
+---- Changes since 1.250 ----
+Multiple Cron jobs can be enabled or disabled at once, in a similar way to many can be deleted.
+---- Changes since 1.290 ----
+Changed the default schedule for new jobs to hourly.
+---- Changes since 1.300 ----
+When a user's home directory is changed in the Users and Groups module, any Cron jobs that use the old path are updated to the new.

@@ -1,0 +1,7 @@
+find_pid_command=ps auxwwww | grep NAME | grep -v grep | awk '{ print $2 }'
+path=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/libexec:/sw/bin
+ld_env=LD_LIBRARY_PATH
+passwd_file=nidump passwd . |
+passwd_uindex=0
+passwd_pindex=1
+by_view=0

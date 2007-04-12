@@ -1,0 +1,23 @@
+<header>Introduction to NFS Shares</header>
+
+<include nfs>
+
+<h3>HPUX NFS</h3>
+This module allows you to configure directories (called <i>exports</i>
+in HPUX) shared via NFS from your system. The first page
+shows a list of directories and the clients they are exported to, allowing
+you to click on the client to edit its options or start exporting
+a new directory. <p>
+
+Below the list of shares on the first page is a button which will
+make the current configuration active. <p>
+
+HPUX does not allow you to re-export a directory NFS mounted from
+another server - only directories on filesystems can be exported. If
+a shared directory contains the mount point of another local filesystem,
+NFS clients of that share will not see files below that mount point.
+The server must re-export each local filesystem separately, to be
+mounted by clients at the correct point in the directory hierarchy. <p>
+
+<hr>
+

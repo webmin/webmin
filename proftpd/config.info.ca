@@ -1,0 +1,11 @@
+line1=Opcions configurables,11
+test_config=Prova el fitxer de configuració abans d'aplicar els canvis,1,1-Sí,0-No
+test_manual=Prova el fitxer de configuració després de fer-hi canvis manuals,1,1-Sí,0-No
+test_always=Prova el fitxer de configuració després d'altres canvis,1,1-Sí,0-No
+line2=Configuració del sistema,11
+proftpd_conf=Camí del fitxer de configuració de ProFTPD,0
+proftpd_path=Camí del fitxer executable de ProFTPD,0
+pid_file=Camí del fitxer de PID de ProFTPD,3,Cap
+start_cmd=Ordre per iniciar ProFTPD,3,Automàtic
+ftpusers=Camí del fitxer ftpusers,0
+stop_cmd=Ordre per aturar ProFTPD,3,Mata el procés

@@ -1,0 +1,72 @@
+index_title=Páginas del Manual
+index_header=Búsqueda de páginas del manual del Sistema
+index_for=Buscar el texto...
+index_where=Buscar en
+index_alldoc=Toda la documentación
+index_man=Páginas del manual
+index_doc=Documentación del paquete
+index_kernel=Documentación del kernel
+index_info=Páginas info
+index_howto=Documentos COMO-HACER (HOWTO)
+index_kde=Documentación de KDE
+index_perl=Documentación del módulo de Perl
+index_help=Ayuda de Webmin
+index_reset=Reiniciar
+index_search=Buscar
+index_return=formulario de búsqueda
+index_type=Que coincida con
+index_name=Sólo el nombre
+index_data=Nombre y contenido
+index_google=Máquina de búsqueda Google
+index_others=Al buscar la documentación de otro módulo, permitir la búsqueda en...
+index_other_man=Páginas del manual
+index_other_help=Ayuda de Webmin
+index_other_doc=Documentación del paquete
+index_other_kernel=Documentación del kernel
+index_other_howto=Documentos COMO-HACER (HOWTO)
+index_other_perl=Documentación del módulo de Perl
+index_other_google=Máquina de búsqueda Google
+index_other_kde=Documentación de KDE
+index_and=Que coincidan todas
+index_or=Que coincidan con cualquiera
+
+search_efor=No se ha digitado página de manual a buscar
+search_title=Resultados de la Búsqueda
+search_desc=Descripción
+search_type=Tipo
+search_file=Página o archivo
+search_man=Página del manual
+search_howto=Documento COMO-HACER (HOWTO)
+search_doc=Documentación del paquete
+search_kernel=Documentación del kernel
+search_kde=Documentación de KDE
+search_perl=Módulo de Perl
+search_help=Ayuda de Webmin
+search_none=No se ha hallado documentación que coincida con $1.
+search_for=Para $1
+search_google=Resultado de búsqueda en Google
+
+howto_title=Documento COMO-HACER (HOWTO)
+howto_header=Archivo $1 de documento de COMO-HACER (HOWTO)
+howto_epath=Trayectoria a documento COMO-HACER (HOWTO) inválida
+
+doc_title=Documentación de Paquete
+doc_header=Archivo de documentación de paquete $1
+doc_epath=Trayectoria a documentatión de paquete inválida
+
+man_title=Página de Manual
+man_header=Página de manual para $1($2)
+man_noentry=¡La página de manual para $1 no existe!
+
+kernel_title=Documento de Kernel
+kernel_header=Archivo $1 de documento de kernel
+kernel_epath=Trayectoria a documento de kernel inválida
+
+kde_title=Documentación de KDE
+kde_header=Archivo $1 de documento de KDE
+kde_epath=Trayectoria a documentación de KDE inválida
+
+perl_title=Módulo de Perl
+perl_header=Documentación para módulo de Perl $1
+perl_emod=Nombre de módulo de Perl inválido
+

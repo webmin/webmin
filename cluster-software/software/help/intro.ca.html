@@ -1,0 +1,50 @@
+<header>Paquets de Programari</header>
+
+<h3>Introducció als Paquets</h3>
+Un paquet de programari és una col·lecció de fitxers que constitueixen
+un programa. Aquest fitxers es poden combinar en un fitxer de paquet
+per a la seva distribució o descàrrega, per extreure'ls i col·locar-los
+on toca quan s'instal·La el paquet.
+<p>
+
+Un sistema gestor de paquets automatitza la major part de la feina
+d'instal·lar i suprimir programes. Com que els paquets normalment venen
+precompilats, no t'has de preocupar de fitxers <tt>Makefile</tt>  scripts
+<tt>configure</tt> per instal·lar-los. Com que el sistema de gestió de
+paquets pren nota de tots els paquets, pot esborrar tota petja d'un
+programa en desinstal·lar-lo.
+
+<h3>Paquets Instal·lats</h3>
+Els paquets s'organitzen en classes i subclasses, com ara <tt>Sistema</tt>
+o <tt>X11/Utilitats</tt>. A la part de dalt de la pàgina principal hi ha
+un arbre de carpetes i paquets, en el qual cada carpeta representa una 
+classe. Per obrir una carpeta, fes.hi simplement clic. Per veure més
+informació sobre un paquet, fes clic sobre el seu nom.
+<p>
+
+Sota l'arbre de paquets hi ha un formulari per buscar a la base de dades
+de paquets. Aquest busca paquets els nom dels quals coincideixi amb 
+aquell text que introdueixis.
+<p>
+
+<h3>Instal·la un Instal·la un Nou Paquet</h3>
+Sota el botó de recreca de paquets, hi ha un formulari per instal·lar
+un paquet nou. Pots instal·lar-lo a partir d'un fitxer del sistema,
+un fitxer de l'ordinador sobre el qual tens obert el teu fullejador,
+o bé des d'un URL FTP o HTTP. En aquest darrer cas, el Webmin contactarà
+el servidor FTP o lloc Web i descarregarà el fitxer del paquet. Si
+el teu sistema està darrere d'un tallafocs, assegura't que tens els
+servidors proxy configurats correctament al mòdul <i>Configuració de Webmin</i>.
+<p>
+
+<h3>Identifica un Fitxer</h3>
+Al peu de la pàgina principal hi ha un formulari per identificar un fitxer
+del sistema. Pots introduir-hi un campí complet com <tt>/etc/inetd.conf</tt>,
+o bé una ordre com <tt>elm</tt>. Webmin povarà de trobar el fitxer al sistema
+gestor de paquets, i mostrarà la informació del fitxer i els paquets que
+el fan servir.
+<p>
+
+<hr>
+
+

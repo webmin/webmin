@@ -1,0 +1,126 @@
+<body bgcolor=#ffffff>
+<title>Internet Services</title>
+<center><img src="images/inetd.gif"></center><br>
+<h2><i>This help page is incomplete</i></h2>
+<hr>
+<h3>Introduction</h3>
+This module allows you to manage and setup internet services such as
+<tt>telnet</tt>, <tt>ftp</tt> and <tt>finger</tt>. Every internet service
+has a name, port number and protocol (such as <tt>telnet</tt> on
+<tt>tcp</tt> port 23). Many services also have a server program to handle
+network connections to that services. <p>
+
+Services with an associated program are controlled by the Unix 
+<tt>inetd</tt> daemon, which listens for network connections on behalf of
+all its services. When a connection is received, the server program is
+started to handle data from the new connection. <p>
+
+Not all internet services are managed by this module. Servers that receive
+many connections such as HTTPD, SMB or NFS are run separately to avoid
+having to start a new process for each request. These services can be
+configured using other Webmin modules, such as <a href=/samba/>Samba</a>
+or <a href=/apache/>Apache</a>. <p>
+
+The main page for this module lists all the internet and RPC services
+on your system. Services with a program assigned are displayed in bold.
+The list of internet services, RPC services and programs are taken from
+the files <tt>/etc/services</tt>, <tt>/etc/rpc</tt> and 
+<tt>/etc/inetd.conf</tt>. <p>
+
+<hr>
+<h3>Creating a New Service</h3>
+To create a new internet service, click on the <tt>Create New Service</tt>
+link below the list of active services. This will take you to a form
+in which the details of the new service can be entered :
+	<ul>
+	<li><b>Service Name</b><br>
+	    Every service must have a unique name and protocol pair.
+	    This means that two services can have the same name only
+	    if they use different protocols. <p>
+	<li><b>Protocol</b><br>
+	    The communications protocol used by this service. Almost all
+	    internet services use the <tt>TCP</tt> protocol, and the rest
+	    use <tt>UDP</tt>. <p>
+	<li><b>Port</b><br>
+	    Every service has a port number which must be unique within
+	    the protocol used by the service. The port number must be between
+	    0 and 65535 for both <tt>TCP</tt> and <tt>UDP</tt>. <p>
+	<li><b>Aliases</b><br>
+	    A list of alternative names used to refer to this service. An
+	    alias cannot be already used as the name or alias of an existing
+	    service with the same protocol. <p>
+	</ul><p>
+Internet service names can be used instead of hostnames in commands
+such as <tt>telnet</tt>. For example, you can type <tt>telnet foo.bar.com smtp</tt> to connect to port 25 on the host <tt>foo.bar.com</tt>, assuming
+the <tt>smtp</tt> internet service is defined correctly. <p>
+
+For services with an associated program, you must choose the <tt>Use the
+program below</tt> option ???
+	<ul>
+	<li><b>Program</b><br>
+	    Some rare services are handled internally by <tt>inetd</tt>.
+	    However, for almost all new services that you create the full
+	    path to the program to execute for the service should be given
+	    here. <p>
+	<li><b>Arguments</b><br>
+	    Command line arguments to pass to the program above. The first
+	    argument should be the program name, and the rest other parameters
+	    to pass. <p>
+	<li><b>Wait mode</b><br>
+	    This determines if <tt>inetd</tt> will wait until the program
+	    is complete before starting any others or not. For most services,
+	    this should be <tt>Don't wait</tt>. <p>
+	<li><b>Execute as</b><br>
+	    The username of the user the server program should be run as.
+	    Most servers will need to be run as <tt>root</tt>. <p>
+	</ul><p>
+When a new service is added, it will not take effect immediately. You must
+click the <tt>Restart Inetd</tt> button on the main page for the addition
+to be applied. <p>
+
+<hr>
+<h3>Editing an Existing Service</h3>
+To edit a service, click on the service name from the list on the main page.
+This will display the same form used for creating a service to allow you
+to edit the service details. You can also click on the <tt>Delete</tt>
+button at the bottom of the page to delete the service. <p>
+
+Be careful when editing or deleting existing system services such as
+<tt>telnet</tt> or <tt>ftp</tt>. Changing these may make it impossible
+to login to your machine (or worse). <p>
+
+When a service is modified, it will not take effect immediately. You must
+click the <tt>Restart Inetd</tt> button on the main page for the changes
+to be applied. <p>
+
+<hr>
+<h3>Creating and Editing RPC Programs</h3>
+In general, you will never need to create or edit RPC programs on your
+system. However, if you do the procedure is similar to creating and
+editing internet services. <p>
+ 
+The form for editing and creating RPC programs will always contain at
+least the following fields :
+	<ul>
+	<li><b>Program Name</b><br>
+	    A unique name for this RPC program (within the same protocol). <p>
+	<li><b>Number</b><br>
+	    Every RPC program has a unique program number, determined when
+	    the program is written. <p>
+	<li><b>Aliases</b><br>
+	    Other names that can be used to refer to this RPC program. <p>
+	</ul><p>
+
+Some operating systems (such as Solaris) allow a server program to be
+associated with an RPC service. This program will be run by <tt>inetd</tt>
+when it receives a request for the program. <p>
+If your system supports RPC server programs started by inetd, the following
+fields will also be visible :
+	<ul>
+	<li>???
+	</ul>
+ 
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Return to module</a><p>
+ 

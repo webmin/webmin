@@ -1,0 +1,7 @@
+fstab_file=在启动时Mount的文件系统列表,0
+auto_file=NFS的automounts文件,3
+autofs_file=内核的automounts文件,3
+long_fstypes=使用长文件系统类型,1,1-是,0-否
+smbclient_path=<tt>smbclient</tt>的完整路径,3
+nmblookup_path=<tt>nmblookup</tt>的完整路径,3
+browse_server=请求浏览列表的服务器来自,3,localhost

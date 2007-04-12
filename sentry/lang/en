@@ -1,0 +1,106 @@
+index_title=Security Sentries
+index_ecommands=None of the security sentry commands ($1, $2 or $3) were found on your system. Maybe none are installed, or your <a href='$4'>module configuration</a> is incorrect.
+index_return=module menu
+
+portsentry_title=Portsentry Configuration
+portsentry_below=(Port scan detection)
+portsentry_ecommand=The Portsentry daemon $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+portsentry_eversion=The program $1 does not appear to be the Portsentry daemon. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+portsentry_eversion2=The version of Portsentry installed on your system is $2, but Webmin only supports version 1 in this release.
+portsentry_version=Portsentry version $1
+portsentry_header=Port scan detection options
+portsentry_tmode=TCP ports to monitor
+portsentry_mode0=For basic mode, listed ports
+portsentry_mode1=For advanced mode, all ports below $1 except $2
+portsentry_umode=UDP ports to monitor
+portsentry_ignore=Hosts to ignore traffic from
+portsentry_tblock=Block TCP probes
+portsentry_ublock=Block UDP probes
+portsentry_trigger=Number of connections before triggering blocking
+portsentry_banner=Message for blocked connections
+portsentry_kill=Run kill command
+portsentry_err=Failed to save portsentry options
+portsentry_etports='$1' is not a valid basic mode TCP port
+portsentry_etadv=Missing or invalid maximum TCP port for advanced mode
+portsentry_etexc='$1' is not a valid excluded TCP port
+portsentry_euports='$1' is not a valid basic mode UDP port
+portsentry_euadv=Missing or invalid maximum UDP port for advanced mode
+portsentry_euexc='$1' is not a valid excluded UDP port
+portsentry_etrigger=Missing or invalid number of connections before triggering
+portsentry_eignore='$1' is not a valid hostname or IP addres to ignore
+portsentry_start=Start Portsentry Daemons
+portsentry_startdesc=Click this button to start the Portsentry daemons with the command $1, using the configuration options above.
+portsentry_stop=Stop Portsentry Daemons
+portsentry_stopdesc=Click this button to stop the running Portsentry daemons. This will immediately cease all port-scan detection.
+portsentry_apply=Apply Configuration
+portsentry_applydesc=Click this button to apply the current configuration by stopping the Portsentry daemons and re-starting them with the command $1.
+portsentry_applyerr=Failed to apply configuration
+portsentry_stoperr=Failed to stop portsentry
+portsentry_ekill=Failed to kill processes $1 : $2
+portsentry_estopped=No longer running
+portsentry_starterr=Failed to start portsentry
+portsentry_save=Save and Apply
+
+hostsentry_title=Hostsentry Configuration
+hostsentry_below=(Suspicious login detection)
+hostsentry_ecommand=The hostsentry python script $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+hostsentry_header=Suspicious login detection options
+hostsentry_wtmp=Logins record file
+hostsentry_ignore=Users to ignore logins by
+hostsentry_mods=Hostsentry modules<br>in processing order
+hostsentry_start=Start Hostsentry Daemon
+hostsentry_startdesc=Click this button to start the Hostsentry daemon with the command $1, using the configuration options above.
+hostsentry_stop=Stop Hostsentry Daemon
+hostsentry_stopdesc=Click this button to stop the running Hostsentry daemon. This will immediately cease all suspicious login detection.
+hostsentry_apply=Apply Configuration
+hostsentry_applydesc=Click this button to apply the current configuration by stopping the Hostsentry daemon and re-starting it with the command $1.
+hostsentry_foreign=Hosts not to consider foreign
+hostsentry_multiple=Hosts to trust multiple logins from
+hostsentry_applyerr=Failed to apply configuration
+hostsentry_stoperr=Failed to stop hostsentry
+hostsentry_ekill=Failed to kill process $1 : $2
+hostsentry_estopped=No longer running
+hostsentry_starterr=Failed to start hostsentry
+hostsentry_save=Save and Apply
+hostsentry_err=Failed to save hostsentry configuration
+hostsentry_eignore='$1' is not a valid user to ignore logins by
+hostsentry_emultiple='$1' is not a valid host to ignore multiple logins from
+
+logcheck_title=Logcheck Configuration
+logcheck_ecommand=The logcheck command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+logcheck_eversion=The logcheck command $1 is not the version expected by Webmin.
+logcheck_below=(Suspicious log analysis)
+logcheck_header=Logfile checking options
+logcheck_to=Email reports to
+logcheck_hacking=Hacking log messages
+logcheck_violations=Violation log messages
+logcheck_violations_ign=Except for
+logcheck_ignore=Ignored log messages
+logcheck_disabled=Scheduled log checking disabled
+logcheck_enabled=Check logs at selected times..
+logcheck_save=Save and Apply
+logcheck_eto=Missing or invalid email address
+logcheck_runparts=Log checking is run from cron by script $1
+logcheck_files=Log files being monitored
+
+mod_moduleLoginLogout=Record logins and logouts
+mod_moduleFirstLogin=Detect first login by user
+mod_moduleForeignDomain=Detect login from foreign domain
+mod_moduleRhostsCheck=Detect unsafe .rhosts file
+mod_moduleHistoryTruncated=Detect history file truncation
+mod_moduleOddDirnames=Detect odd home directory
+mod_moduleMultipleLogins=Detect multiple simultaneous logins
+mod_moduleOddLoginTime=Detect odd login time
+mod_moduleInvalidUtmp=Detect modified utmp entry
+mod_moduleHistorySuspicious=Detect suspicious commands in history
+mod_moduleNetworkDaemon=Detect daemon left running
+mod_moduleFileExists=Detect suspicious files in home directory
+
+log_hostsentry=Saved hostsentry configuration
+log_portsentry=Saved portsentry configuration
+log_logcheck=Saved logcheck configuration
+log_hostsentry_start=Started hostsentry daemon
+log_hostsentry_stop=Stopped hostsentry daemon
+log_portsentry_start=Started portsentry daemon
+log_portsentry_stop=Stopped portsentry daemon
+

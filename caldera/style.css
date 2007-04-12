@@ -1,0 +1,89 @@
+BODY 	{
+	font-family	:	Arial, Helvetica, sans-serif; 
+	margin-top	:	0px;
+	margin-left	:	0px;
+	margin-right	:	0px;
+	margin-bottom	:	0px;
+	padding-top	:	0;
+	padding-left	:	0;
+	padding-right	:	0;
+	padding-bottom	:	0;
+	border-top	:	0;
+	border-left	:	0;
+	border-bottom	:	0;
+	border-right	:	0;
+	width		:	auto;
+	background-color:	#FFFFFF;
+	}
+
+A.navInactive
+	{ 
+	font-size	:	8pt;
+   	text-decoration	:	underline; 
+	color		:	#FFFFFF;
+	background	:	transparent;
+	font-style	:	bold;
+	font-family	:	Arial, Helvetica, sans-serif; 
+	}
+
+A.navInactive2
+	{ 
+	font-size	:	8pt;
+   	text-decoration	:	underline; 
+	color		:	#CCCCCC;
+	background	:	transparent;
+	font-style	:	bold;
+	font-family	:	Arial, Helvetica, sans-serif; 
+	}
+
+.navActive
+	{ 
+	font-size	:	8pt;
+   	text-decoration	:	underline; 
+	color		:	#FFFFFF;
+	background	:	transparent;
+	font-style	:	bold;
+	font-family	:	Arial, Helvetica, sans-serif; 
+	}
+
+.navActive2
+	{ 
+	font-size	:	8pt;
+   	text-decoration	:	underline; 
+	color		:	#000000;
+	background	:	transparent;
+	font-style	:	bold;
+	font-family	:	Arial, Helvetica, sans-serif; 
+	}
+
+P, TR, THEAD, TFOOT, TH, TD, 
+DL, OL, UL, BLOCKQUOTE, SPAN, BR
+	{
+	FONT-FAMILY	:	Arial, Helvetica, sans-serif;
+	}
+
+.EightPoint
+	{ 
+	font-size	:	8pt;
+   	text-decoration	:	none; 
+	color		:	#000000;
+	background	:	transparent;
+	font-style	:	light;
+	font-family	:	Arial, Helvetica, sans-serif; 
+	}
+	
+A.bodyNav
+	{ 
+	font-size	:	8pt;
+   	text-decoration	:	underline; 
+	color		:	#000099;
+	background	:	transparent;
+	font-style	:	light;
+	font-family	:	Arial, Helvetica, sans-serif; 
+	}
+
+.bodyText
+	{
+	font-size	:	8pt;
+	color		:	#000000;
+	}

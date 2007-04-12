@@ -1,0 +1,88 @@
+index_title=Периодични изпълнявани задачи
+index_user=Потребител
+index_active=Активна?
+index_command=Команда
+index_none=Няма зададени cron задачи на тази система
+index_none2=Няма дефинирани cron задачи, до които да имат достъп.
+index_create=Създай нова периодично изпълнявана задача (cron задача)
+index_allow=Контрол на потребителския достъп до cron задачите
+index_return=cron списък
+
+edit_title=Редактиране на cron задача
+create_title=Създаване на cron задача
+edit_ecannot=Нямате права за редактиране на cron задачите
+edit_details=Данни за задачата
+edit_user=Изпълни задачата като
+edit_active=Активна?
+edit_commands=Команди
+edit_command=Команда
+edit_input=Входни данни към командата
+edit_when=Кога да бъде изпълнявана
+edit_mins=Минути
+edit_hours=Час
+edit_days=Ден
+edit_months=Месец
+edit_weekdays=Ден от седмицата
+edit_all=Всички
+edit_selected=Избраните ..
+edit_run=Изпълни сега
+edit_return=cron задача
+edit_ctrl=Note: Ctrl-click (или command-click на Mac) за да изберете или премахнете няколко възможности за минута, дни, час, ден от седмицата или месец.
+edit_special1=Изпълнявай на избрани интервали ..
+edit_special0=Изпълни на посочения по-долу период ..
+edit_special_hourly=Ежечасово
+edit_special_daily=Ежедневно (в полунощ)
+edit_special_weekly=Ежеседмично (в Неделя)
+edit_special_monthly=Ежемесечно (на 1ви)
+edit_special_yearly=ежегодишно (на 1ви Ян)
+edit_special_reboot=При стартиране на системата
+
+save_err=Грешка при запис на cron задачи
+save_ecmd=Не сте въвели команда за изпълнение
+save_euser=Трябва да посочите потребител
+save_euser2=Потребиле '$1' не съществува
+save_eallow=Потребителят '$1' няма права за достъп до cron
+save_ecannot=Нямате права за създавена или редактиране на cron задачи за '$1'
+save_enone=Не сте избрали $1
+
+allow_title=Контрол на Cron достъпа
+allow_desc=Тази страница позволява да контролирате кои потребители могат да създават и изпълняват cron задачи.
+allow_ecannot=Нямата правата да контролирате потребителския достъп до cron
+allow_all1=Забрани на всички
+allow_all2=Забрани на всичко освен root
+allow_all3=Разреши на всички
+allow_allow=Разреши само на избраните
+allow_deny=Забрани само на избраните
+
+env_title=Cron обкръжение
+env_ecannot=Нямате права за редактрине на cron обкръжението
+env_desc=Cron обкръжение на $1
+env_name=Име на промелива
+env_value=Стойност
+env_ename='$1' е невалидно име на променлива
+
+exec_title=Изпълнение на Cron задача
+exec_ecannot=Нямате права за изпълнение на cron задачи
+exec_cmd=Резултат от команда $1 ..
+exec_none=Няма видим резултат
+
+acl_users=Права за редактиране на cron задачи за
+acl_all=Всички потребители
+acl_this=Текущият webmin потребител
+acl_only=Само потребителите
+acl_except=Всички освен потребителите
+acl_control=Права за контол на потребителксия достъп до cron?
+acl_uid=Потребители с UID в интервала
+acl_gid=Потребители в група
+
+log_modify=Промяна на cron задача за $1
+log_modify_l=Промяна на cron задача "$2" за $1
+log_create=Създадена cron задача за $1
+log_create_l=Създадена cron задача "$2" за $1
+log_delete=Изтрита cron задача за $1
+log_exec=Изпълнена cron задача as $1
+log_exec_l=Изпълнена cron задача "$2" as $1
+log_allow=Промяна на потребителски достъп до cron
+
+ecopy=Намерена е грешка в новата Cron конфигурация : $1 $2
+

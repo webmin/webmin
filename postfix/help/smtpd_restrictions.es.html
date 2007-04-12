@@ -1,0 +1,17 @@
+<ul>
+<li><tt>reject_unknown_client:</tt> rechazar la petición si el nombre de la
+    máquina no es conocido.
+<li><tt>permit_mynetworks:</tt> permitir si la dirección del cliente coincide
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>check_client_access maptype:mapname:</tt> buscar el nombre del
+        cliente, los dominios padre, dirección del cliente, o redes
+	obtenidas eliminando octetos. Rechazar si el resultado es REJECT o
+	&quot;[45]xx texto&quot;.
+	Permitir en cualquier otro caso.
+<li><tt>reject_maps_rbl:</tt> rechazar si el cliente está listado en
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject:</tt> rechazar la petición. Sitúe esto al final de una
+    restricción.
+<li><tt>permit:</tt> permitir la petición. Sitúe esto al final de una
+    restricción.
+</ul>

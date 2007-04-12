@@ -1,0 +1,186 @@
+index_title=系统和服务器的状态
+index_name=服务名称
+index_host=在主机上
+index_desc=监视
+index_up=状态
+index_last=最近的检查
+index_local=本地
+index_add=增加监视的类型：
+index_sched=定时监视
+index_return=服务列表
+index_none=目前没有被禁用的监视。
+index_oldtime=$1 中的最近的定时检查状态
+
+type_apache=Apache Web 服务器
+type_inetd=Internet 和 RPC 服务器
+type_xinetd=扩展 Internet 服务器
+type_squid=Squid 代理服务器
+type_bind8=BIND DNS 服务器
+type_dnsadmin=BIND 4 DNS 服务器
+type_dhcpd=DHCP 服务器
+type_tcp=远程 TCP 服务器
+type_http=远程 HTTP 服务
+type_sendmail=Sendmail 服务器
+type_postfix=Postfix 服务器
+type_ping=远程 Ping 
+type_proc=检查进程
+type_mysql=MySQL 数据库服务器
+type_postgresql=PostgreSQL 数据库服务器
+type_samba=Samba 服务器
+type_nfs=NFS 服务器
+type_exec=执行命令
+type_file=检查文件
+type_traffic=网络通信量
+type_space=磁盘空间
+type_load=平均负载
+type_change=文件变更
+type_qmailadmin=Qmail 服务器
+type_mon=MON 服务监视
+type_jabber=Jabber IM 服务器
+type_usermin=Usermin Web 服务器
+type_portsentry=Portsentry 守护进程
+type_hostsentry=Hostsentry 守护进程
+type_webmin=Webmin Web 服务器
+type_cfengine=配置引擎守护进程
+
+mon_create=创建监视
+mon_edit=编辑监视
+mon_header=监视详述
+mon_desc=描述
+mon_remote=在主机上运行
+mon_local=本地
+mon_none=没有已定义的远程服务器
+mon_nosched=定时检查？
+mon_status=当前状态
+mon_up=启动
+mon_down=终止
+mon_webmin=Webmin 处于终止状态
+mon_not=没有安装
+mon_ondown=如果监视关闭，运行命令
+mon_onup=如果监视开启，运行命令
+mon_clone=监视的模块
+mon_err=保存监视失败
+mon_edesc=未输入描述
+mon_elogin=在 Webmin 服务器 $1 上无效的 RPC 登录
+mon_eremote=Webmin 服务器 $1 不支持 RPC
+mon_estatus=Webmin 服务器 $1 没有该系统和服务器状态模块
+mon_ecannot=你没有编辑监视的权限
+mon_ertype=$1 上该监视类型不可用
+
+sched_title=定时的监视
+sched_header=定时后台监视选项
+sched_mode=是否启用定时监视？
+sched_email=将 Email 状态报告至
+sched_pager=标明状态报告的页数
+sched_none=无人
+sched_from=电子邮件的 发件人: 地址
+sched_int=检查每
+sched_period_0=分钟
+sched_period_1=小时
+sched_period_2=天
+sched_period_3=月
+sched_period_4=星期
+sched_offset=带有偏移量
+sched_warn=何时发送电子邮件 
+sched_warn1=当服务改变状态时
+sched_warn0=当服务结束时
+sched_single=每服务一次都发送电子邮件？
+sched_hours=以小时为单位执行监视
+sched_days=以每天为单位执行监视
+sched_err=无法保存定时监视
+sched_eemail=未输入电子邮件地址
+sched_eint=未输入或无效的间隔
+sched_eoffset=未输入或无效的偏移量
+sched_ehours=未选择要运行的时间单位--小时
+sched_edays=未选择要运行的时间单位--天
+sched_ecannot=你没有编辑定时监视的权限
+sched_smtp=发送电子邮件通过
+sched_smtp_prog=本地 sendmail 可执行文件
+sched_smtp_server=SMTP 服务器
+sched_esmtp=未输入或无效的 SMTP 服务器
+sched_esmtpcmd=SMTP 命令 $1 失败 : $2
+
+up_since=自 $1 启动
+depends_mod=您的系统没有安装模块 $1
+depends_os=您的系统不支持模块 $1
+depends_remote=服务器 $2 不支持模块 $1
+
+tcp_host=要连接至的主机
+tcp_port=要连接至的端口
+tcp_alarm=连接超时
+tcp_ehost=未输入或无效的主机名
+tcp_eport=未输入或无效的端口号
+tcp_ealarm=未输入或无效的连接超时
+
+http_url=要求 URL
+http_alarm=连接超时
+http_eurl=未输入或无效的 URL
+http_ealarm=未输入或无效的连接超时
+http_login=登录
+http_none=不需验证
+http_user=用户名
+http_pass=口令
+http_euser=未输入用户名
+
+ping_host=要 ping 的主机
+ping_wait=等待回应的时间
+ping_ehost=未输入或无效的主机名
+ping_ewait=未输入或无效的等待时间
+ping_econfig=在“模块配置”中没有设置 ping 命令
+
+proc_pid=以 PID $1 运行
+proc_cmd=要检查的命令
+proc_ecmd=未输入命令
+
+exec_cmd=检查退出状态的命令
+exec_ecmd=未输入命令
+
+file_file=要检查的文件
+file_test=要执行的测试
+file_test_0=文件必须存在
+file_test_1=文件必须不存在
+file_test_2=文件必须大于
+file_test_3=文件必须小于
+file_bytes=字节
+file_efile=未输入要检查的文件名
+file_esize=无效的文件尺寸
+
+traffic_iface=要监视的界面
+traffic_bytes=每秒最大的字节数
+traffic_dir=监视的方向
+traffic_dir0=接收邮件的与发送邮件
+traffic_dir1=仅用于接收邮件
+traffic_dir2=仅用于发送邮件
+traffic_desc=该监视功能可以将网络通信量的记录保存到选定的界面上，如果通信量超过下面输入的每秒传输的字节数，系统就会显示监视。如果将预定的监视设置为每过很短的时间间隔就启动一次──例如每五分钟，系统才会正常运作。
+traffic_eifaces=你的系统没有 /proc/net/dev 文件
+traffic_ebytes=未输入或失效的字节数/每秒
+
+space_fs=要检查的文件系统
+space_min=最小的未用空间 (kB)
+space_desc=$1 未用
+space_nofs=未挂载文件系统
+space_other=其他..
+space_emin=未输入或无效的未用空间
+space_eother=未输入或无效的文件系统
+
+load_time=要检查的平均负载
+load_1=1分钟
+load_5=5分钟
+load_15=15分钟
+load_max=最大的平均负载
+load_emax=未输入或无效的最大平均负载
+load_ecmd=在你的系统中未找到 <tt>uptime</tt> 命令
+load_efmt=无法解析 <tt>uptime</tt> 输出命令
+
+log_create=创建了监视 $1
+log_modify=修改了监视 $1
+log_delete=删除了监视 $1
+log_sched=已变更定时的监视
+
+acl_edit=可以编辑、创建监视吗？
+acl_sched=可以变更定时的监视吗？
+
+change_file=要监视的文件
+
+jabber_eparser=你的系统没有安装 Perl 模块 $1。
+

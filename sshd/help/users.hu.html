@@ -1,0 +1,17 @@
+<header>Hitelesítés; fordította: Szakács Gergely</header><p>
+
+Ezen az oldalon az SSH-kiszolgáló hitelesítéssel kapcsolatos beállításairól olvashat. Néhány kevésbé nyilvánvaló opció alább látható:
+
+<dl>
+<dt><b>Jelszavas hitelesítés engedélyezése</b>
+<dd>Ha ez az opció le van tiltva, úgy a felhasználóknak rendelkezniük kell egy nyilvános kulccsal ellátott <tt>.ssh</tt> könyvtárral, mielõtt be tudnának jelentkezni. Ha az opció engedélyezve van, a felhasználó beléphet pusztán jelszava beírásával is, ha a hitelesítéshez nem áll rendelkezésre nyilvános kulcs.<p>
+
+<dt><b>RSA hitelesítés engedélyezése</b>
+<dd>Ha ez az opció le van tiltva, a felhasználóknak még akkor is be kell írniuk a jelszavukat, ha rendelkeznek nyilvános kulccsal.<p>
+
+<dt><b>Kulcsfájlok engedélyeinek ellenõrzése</b>
+<dd>Ha ez az opció be van kapcsolva, akkor az SSH-kiszolgáló megvizsgálja minden felhasználó <tt>.ssh</tt> könyvtárát, illetve bármely egyéb szülõkönyvtárat annak ellenõrzésére, hogy azok nem írhatók csoportok által, továbbá megvizsgálja, hogy az <tt>ssh.identity</tt> fájl senki más számára nem hozzáférhetõ. Ha az opció le van tiltva, úgy a rendszer nem ellenõrzi a fájlok engedélyeit.<p>
+
+</dl>
+<hr>
+

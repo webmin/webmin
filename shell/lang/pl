@@ -1,0 +1,9 @@
+index_title=Linia poleceñ
+index_ok=Wykonaj polecenie:
+index_history=Historia poleceñ
+index_clear=Wyczy¶æ historiê
+index_desc=Podaj w&nbsp;polu tekstowym poni¿ej polecenie pow³oki Uniksa, które ma byæ wykonanae. Za pomoc± polecenia <tt>cd</tt> mo¿na zmieniæ katalog dla nastêpnych poleceñ.
+index_pok=Uruchom poprzednie polecenie
+
+acl_user=Wykonaæ polecenie jako u¿ytkownik
+acl_user_def=Aktualny u¿ytkownik Webmina

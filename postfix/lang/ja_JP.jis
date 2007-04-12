@@ -1,0 +1,288 @@
+index_title=Postfix メール エージェント
+index_epath=Postfix 制御コマンド $1 がシステムにインストールされていません。ご使用の<a href='$2'>モジュール設定</a> が不正か、Postfix がインストールされていない可能性があります。
+
+internal_error=内部エラー
+index_econfig=Postfix 設定コマンド $1 は存在しません。ご使用の <a href='$2'>モジュール設定</a> が不正な可能性があります。
+index_stop=Postfix を停止
+index_start=Postfix を開始
+index_stopmsg=実行中のPostfix メール サーバを停止するにはこのボタンをクリックしてください。これは、他のシステムからローカル ユーザにメールが配信されるのを停止し、このシステムをメール サーバとして使用中のクライアントがメールを送信するのを防ぎます。
+index_startmsg=Postfix メール サーバを起動するにはこのボタンをクリックしてください。これを実行するまでは、他のシステムからローカル ユーザにメールは配信されず、クライアントはこのシステムをメール サーバとして使用できません。
+opts_err=オプションを保存できませんでした
+
+check_error=現在の Postfix 設定を検査中にエラーが発生しました。Postfix 設定を手動で修正してください。
+
+address_rewriting_title=アドレスの再書込みとマスカレード
+address_rewriting_ecannot=アドレスの再書込みとマスカレードは編集できません
+aliases_title=メール エイリアス
+aliases_ecannot=エイリアスを編集できません
+aliases_no_alias_file=エイリアス ファイルがありません
+aliases_failed_delete=エイリアスを削除できませんでした: $1
+aliases_cant_write=エイリアス ファイルに書き込めません
+aliases_cant_read=エイリアス ファイルを読み込めません
+aliasopts_title=エイリアス オプション
+aliases_internal_error=エイリアス:内部エラー
+edit_alias_title=エイリアス プロパティ エディション
+alias_save=エイリアスを保存
+alias_save_err=エイリアスを保存できませんでした
+alias_delete_create=現在作成中のエイリアスを削除してもよろしいですか？
+delete_alias=エイリアスを削除
+aliases_click=プロパティを編集するエイリアスをクリックしてください:
+
+general_title=一般オプション
+general_title_sensible=最も便利な一般オプション
+general_title_others=その他の一般オプション
+general_ecannot=一般オプションを編集できません。
+what_is_it=何ですか？
+
+opts_default=デフォルト
+opts_none=なし
+opts_relayhost=ホスト経由でメールを送信
+opts_direct=直接配信
+opts_myorigin=発信メールで使用するドメイン
+opts_myorigin_as_myhostname=ホスト名を使用
+opts_myorigin_as_mydomain=ドメイン名を使用
+opts_mydestination=メールを受信するドメイン
+opts_mydestination_default=ローカル マシン
+opts_mydestination_domainwide=ドメイン全体
+opts_notify_classes=ポストマスターに通知する問題
+opts_queue_directory=メール キュー ディレクトリ
+opts_mail_owner=メールの所有者
+opts_default_privs=配信エージェントのデフォルトの権利
+opts_inet_interfaces=メール受信用のネットワーク インターフェイス
+opts_all_interfaces=すべて
+
+opts_local_recipient_maps=不明なローカル ユーザを拒否
+opts_no=いいえ
+opts_save=保存して適用
+
+
+opts_allow_percent_hack="user%domain" を "user@domain"に再書込み
+opts_append_at_myorigin="user" を "user@$mydomain" に再書込み
+opts_append_dot_mydomain="user@host" を "user@host.$mydomain" に再書込み
+opts_empty_address_recipient=受取人なしのメールを送信...
+opt_empty_recip_default=デフォルト
+opts_swap_bangpath="site!user" を "user@site" に再書込み
+opts_masquerade_domains=アドレス マスカレード
+opts_masquerade_exceptions=除外をマスカレード
+index_return=Postfix 設定
+
+
+opts_alias_maps=ローカル配信エージェントが使用するエイリアス データベース
+opts_alias_database=&quot;newaliases&quot; コマンドで構築されたエイリアス データベース
+aliases_warning=警告<ul><li>最初のフィールドが空でない場合は、デフォルトの Postfix エイリアス生成コマンドは関連するデータベースを構築するために使用され、<li>そうでなければSendmail 互換コマンド &quot;newaliases&quot; が使用され、これはデータベースの2番目のフィールドのデータベースを使用します。</ul>
+
+aliases_name=エイリアス名
+aliases_value=エイリアスの値...
+
+new_alias=新規エイリアスを作成
+new_aliasmsg=新規のエイリアスを作成するにはこのボタンをクリックしてください
+
+
+local_delivery_ecannot=ローカル配信オプションは編集できません
+local_delivery_title=ローカル配信
+opts_local_transport=ローカル配信用のトランスポート名
+opts_local_transport_local=ローカル
+opts_local_command_shell=外部コマンドへの配信に使用するシェル
+opts_local_command_shell_direct=なし (コマンドのダイレクト実行)
+opts_forward_path=転送にリストを検索
+opts_allow_mail_to_commands=外部コマンドに有効なメール配信
+opts_allow_mail_to_files=外部ファイルに有効なメールを配信
+opts_home_mailbox=ユーザ メールボックス ファイルのホーム相対パス名
+opts_home_mailbox_default=なし (標準の<tt>/var/something</tt> を使用)
+opts_luser_relay=不明の受信者用の宛先アドレス
+opts_luser_relay_none=なし (バウンス メール)
+opts_mail_spool_directory=スプール ディレクトリ
+opts_mailbox_command=メールボックス配信の代わりに使用する外部コマンド
+opts_mailbox_command_none=なし
+opts_mailbox_transport=オプションの実際に使用するトランスポート
+opts_mailbox_transport_none=なし
+opts_fallback_transport=不明な受信者用のオプションのトランスポート
+opts_fallback_transport_none=なし
+opts_local_destination_concurrency_limit=同一ローカル受信者へのパラレル配信の最大数
+opts_local_destination_recipient_limit=各ローカル メッセージ配信ごとの受信者の最大数
+opts_local_destination_recipient_limit_default=デフォルト
+opts_prepend_delivered_header=次の場合に<tt>Delivered-To:</tt> を前に付加...
+opts_prepend_delivered_header_default=デフォルト
+
+
+resource_title=一般リソース制御
+resource_ecannot=リソース制御パラメータは編集できません
+opts_bounce_size_limit=バウンスしたメッセージの最大サイズ
+opts_command_time_limit=外部コマンドへの配信の最大時間
+opts_default_process_limit=Postfix 子プロセスの最大数
+opts_deliver_lock_attempts=ファイル ロックを獲得するための最大試行数
+opts_deliver_lock_delay=ファイル ロック試行間の時間 (秒)
+opts_duplicate_filter_limit=重複フィルタが記憶するアドレスの最大数
+opts_fork_attempts=プロセスを fork (分岐) する最大試行数
+opts_fork_delay=fork (分岐) 試行の間隔 (秒)
+opts_header_size_limit=ヘッダの処理に使用される最大メモリ
+opts_line_length_limit=行の入力処理に使用される最大メモリ
+opts_message_size_limit=メッセージの最大サイズ
+opts_qmgr_message_active_limit=アクティブなキューのメッセージの最大数
+opts_qmgr_message_recipient_limit=メモリ内の受信側の最大数
+opts_queue_minfree=キュー ファイル システムの最小空き領域
+opts_stale_lock_time=不整合ロック解除後の最大時間
+opts_transport_retry_time=破損した MDT に接触を試行する間隔 (秒)
+
+
+opts_always_bcc=各メッセージの bcc を受信するアドレス
+opts_always_bcc_none=なし
+opts_daemon_timeout=要請を処理するタイムアウト
+opts_default_database_type=デフォルト データベース タイプ
+opts_default_transport=デフォルト メッセージ 配信トランスポート
+opts_double_bounce_sender=バウンス メールの差出人アドレス
+opts_hash_queue_depth=キュー ディレクトリの下のサブ ディレクトリ レベル数
+opts_hash_queue_names=サブ ディレクトリに渡って分割するキュー ディレクトリ数
+opts_hopcount_limit=最大<tt>Received:</tt> ヘッダ数
+opts_ipc_idle=内部 IPC クライアントが切断後のアイドル時間
+opts_ipc_timeout=内部通信チャネルの入出力タイムアウト
+opts_mail_name=メール システム名
+opts_mail_version=オフィシャル メール システム バージョン
+opts_max_idle=次のサービス要請の待機時間
+opts_max_use=終了前に処理されるサービス要請の最大数
+opts_mydomain=ローカル インターネット ドメイン名
+opts_mydomain_default=デフォルト (システムにより供給)
+opts_myhostname=このメール システムのインターネット ホスト名
+opts_myhostname_default=デフォルト (システムにより供給)
+opts_mynetworks=ローカル ネットワーク
+opts_mynetworks_default=デフォルト (すべてネットワークに接続)
+opts_bounce_notice_recipient=ポストマスターに bounce (バウンス) の通知を送信...
+opts_2bounce_notice_recipient=ポストマスターに 2bounce (倍のバウンス)の通知を送信..
+opts_delay_notice_recipient=ポストマスターに遅延の通知を送信...
+opts_error_notice_recipient=ポストマスターにエラーの通知を送信...
+opts_process_id_directory=ロック ファイル ディレクトリ、キュー ディレクトリに相対
+opts_program_directory=Postfix サポート プログラムとデーモン ディレクトリ
+opts_recipient_delimiter=ユーザ名/アドレス拡張子のセパレータ
+opts_relocated_maps_default=デフォルト (無効)
+opts_sun_mailtool_compatibility=メールボックスでカーネル ファイルのロックを無効
+opts_trigger_timeout=デーモンにトリガーを送信する最大時間
+opts_delay_warning_time=無配信の警告を送信するまでの時間
+opts_delay_warning_time_default=無効
+
+
+smtpd_title=SMTP サーバ オプション
+smtpd_ecannot=SMTP サーバ オプションを編集できません
+opts_disable_vrfy_command=SMTP VRFY コマンドを無効
+opts_smtpd_banner=SMTP グリーティング バナー
+opts_smtpd_etrn_restrictions=ETRN コマンドの制限...
+opts_smtpd_recipient_limit=配信で許容許容される最大宛先数
+opts_smtpd_timeout=SMTP トランザクションのタイムアウト (秒)
+opts_smtpd_error_sleep_time=4xx/5xx エラー応答を送信するまでのタイムアウト
+opts_smtpd_soft_error_limit=クライアントを一時的に無視するエラー数
+opts_smtpd_hard_error_limit=接続を閉じるエラー数
+opts_smtpd_client_restrictions=クライアント ホスト名/アドレスの制限
+opts_smtpd_helo_required=HELO が必要です
+opts_smtpd_helo_restrictions=HELO コマンドの送信制限
+opts_smtpd_sender_restrictions=差出人アドレスの制限
+opts_smtpd_recipient_restrictions=宛先アドレスの制限
+opts_allow_untrusted_routing=信任されないルーティングを許可
+opts_maps_rbl_domains=ブラックリスト検索の DNS ドメイン
+opts_relay_domains=メール リレーを制限
+opts_access_map_reject_code=アクセス マップ違反の SMTP サーバ応答
+opts_invalid_hostname_reject_code=無効なホスト名拒否の SMTP サーバ応答
+opts_maps_rbl_reject_code=RBL ドメイン違反の SMTP サーバ応答
+opts_reject_code=クライアント拒否の SMTP サーバ応答
+opts_relay_domains_reject_code=禁止リレーの SMTP サーバ応答
+opts_unknown_address_reject_code=不明なドメインの拒否のSMTP サーバ応答
+opts_unknown_client_reject_code=不明なクライアント拒否の SMTP サーバ応答
+opts_unknown_hostname_reject_code=不明なホスト名拒否の SMTP サーバ応答
+
+
+smtp_title=SMTP クライアント オプション
+smtp_ecannot=SMTP クライアント オプションは編集できません
+opts_best_mx_transport=最適 MX ホストとしてリストされたときのアクション
+opts_best_mx_transport_default=デフォルト (バウンス メッセージ)
+opts_fallback_relay=無効な宛先のメールを渡すホスト/ドメイン
+opts_ignore_mx_lookup_error=MX 検索エラーを無視
+opts_smtp_skip_4xx_greeting=4xx グリーティングをスキップ
+opts_smtp_skip_quit_response=QUIT コマンドの待機をスキップ
+opts_smtp_destination_concurrency_limit=同一の宛先への並列配送の最大数
+opts_smtp_destination_recipient_limit=配信ごとの受信者の最大数
+opts_smtp_connect_timeout=TCP 接続完了のタイムアウト
+opts_smtp_helo_timeout=グリーティング バナーを待機するタイムアウト
+opts_smtp_mail_timeout=MAIL FROM への応答を待機するタイムアウト
+opts_smtp_rcpt_timeout=RCPT TO への応答を待機するタイムアウト
+opts_smtp_data_init_timeout=DATA への応答を待機するタイムアウト
+opts_smtp_data_xfer_timeout=メッセージ内容の転送への応答を待機するタイムアウト
+opts_smtp_data_done_timeout=&quot;.&quot; の終了への応答を待機するタイムアウト
+opts_smtp_quit_timeout=QUIT への応答を待機するタイムアウト
+
+
+rate_title=配信レート
+rate_ecannot=配信 レートのオプションは編集できません
+opts_default_destination_concurrency_limit=同一の宛先への並列配送の最大数
+opts_default_destination_recipient_limit=配信ごとの受信者の最大数
+opts_initial_destination_concurrency=同一の宛先への配信の初期並行レベル
+opts_maximal_backoff_time=後でのメッセージ配信を試行する間隔の最大数 (秒)
+opts_maximal_queue_lifetime=メッセージが配信不可になるまでのキューの最大時間 (日)
+opts_minimal_backoff_time=後でのメッセージ配信を試行する間隔の最大数 (秒)
+opts_queue_run_delay=後でのキューをスキャンする間隔 (秒)
+opts_defer_transports=配信しないトランスポート
+
+
+debug_title=デバッグ機能
+debug_ecannot=デバッグ機能は編集できません
+opts_debug_peer_list=冗長ログが有効なドメイン/ネットワーク パターンのリスト
+opts_debug_peer_level=上のリストに一致した場合の冗長ロギング レベル
+debug_version=Webmin 用の Postfix モジュール - バージョン $1
+
+ldap_title=LDAP の検索
+ldap_ecannot=LDAP 検索オプションは編集できません
+ldap_non_existent=Postfix システムに LDAP が存在しないと思われます
+opts_ldap_lookup_timeout=LDAP データベース検索のタイムアウト
+opts_ldap_search_base=検索する LDAP データベース
+opts_ldap_server_host=LDAP サーバ ホスト名
+
+canonical_title=正規マッピング
+canonical_ecannot=正規マッピングは編集できません
+opts_canonical_maps=アドレス マッピング検索テーブル
+opts_recipient_canonical_maps=RECIPIENT アドレスのテーブル
+opts_sender_canonical_maps=SENDER アドレスのテーブル
+edit_canonical_maps=正規マップを編集
+edit_recipient_canonical_maps=受信者正規マップを編集
+edit_sender_canonical_maps=送信者正規マップを編集
+edit_canonical_maps_general=正規マップを編集するにはこれらのボタンのいずれかをクリックしてください
+canonical_edit_title=正規マップの編集
+
+mapping_name=マッピング名
+mapping_value=マップ先...
+new_mapping=新規のマッピング
+new_mappingmsg=新規のマッピングを作成するにはこのボタンをクリックしてください
+map_save=マッピングの保存
+delete_map=マッピングの削除
+edit_map_title=マップの編集
+map_save_err=マッピングの保存中にエラーが発生しました
+mapps_no_map_file=定義されたマップ ファイルがありません
+map_delete_failed=マップを削除できませんでした: $1
+map_delete_create=作成中のマップは削除できません
+maps_internal_error=マップ:内部エラー
+maps_cant_write=書込み不可
+help_map_format=形式を指定してください
+
+
+virtual_title=仮想ドメイン
+virtual_ecannot=仮想ドメイン マッピング設定は編集できません
+opts_virtual_maps=ドメイン マッピング検索テーブル
+
+transport_title=マッピングのトランスポート
+transport_ecannot=トランスポート マッピング設定は編集できません
+opts_transport_maps=トランスポート マッピング検索テーブル
+
+relocated_title=再配置済みマッピング
+relocated_ecannot=再配置済みマッピングは編集できません
+opts_relocated_maps=再配置済みマッピング検索テーブル
+
+map_click=プロパティを編集するマッピングをクリックしてください:
+no_map=(現在定義されたマップはありません。まずマップを定義しないと編集できません。)
+no_map2=現在定義されたマップはありません。まずマップを定義しないと編集できません。
+
+stop_efailed=Postfix を停止できませんでした
+stop_ecannot=Postfix を停止できません
+
+query_get_efailed=パラメータ $1 の現在値を取得するための Postfix 設定コマンドをクエリーできませんでした: <tt>$2</tt>
+query_set_efailed=パラメータ $1の現在値を$2に設定するための Postfix 設定コマンドをクエリーできませんでした: <tt>$3</tt>
+reload_ecannot=Postfix を再ロードできません
+reload_efailed=Postfix を再ロードできませんでした。
+regenerate_ecannot=エイリアスを再度生成できません
+regenerate_alias_efailed=エイリアスを再度生成できませんでした: <tt>$1</tt>
+regenerate_table_efailed=テーブル $1 を再度生成できませんでした: <tt>$2</tt>

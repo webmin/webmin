@@ -1,0 +1,198 @@
+# raid-lib.pl
+# Functions for managing RAID
+
+do '../web-lib.pl';
+&init_config();
+
+%container = ( 'raiddev', 1,
+	       'device', 1 );
+
+# get_raidtab()
+# Parse the raid config file into a list of devices
+sub get_raidtab
+{
+local ($raiddev, $device, %mdstat);
+return \@get_raidtab_cache if (defined(@get_raidtab_cache));
+
+# Read the mdstat file
+open(MDSTAT, $config{'mdstat'});
+while(<MDSTAT>) {
+	if (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks.*resync=(\d+)/) {
+		$mdstat{"/dev/$1"} = [ $2, $3, $4, $5, $6 ];
+		}
+	elsif (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)\s+(\d+)\s+blocks/) {
+		$mdstat{"/dev/$1"} = [ $2, $3, $4, $5 ];
+		}
+	elsif (/^(md\d+)\s*:\s+(\S+)\s+(\S+)\s+(.*)/) {
+		$mdstat{"/dev/$1"} = [ $2, $3, $4 ];
+		$_ = <MDSTAT>;
+		if (/\s+(\d+)\s+blocks.*resync=(\d+)/) {
+			$mdstat{"/dev/$1"}->[3] = $1;
+			$mdstat{"/dev/$1"}->[4] = $2;
+			}
+		elsif (/\s+(\d+)\s+blocks/) {
+			$mdstat{"/dev/$1"}->[3] = $1;
+			}
+		}
+	}
+close(MDSTAT);
+
+# Read the raidtab file
+local $lnum = 0;
+open(RAID, $config{'raidtab'});
+while(<RAID>) {
+	s/\r|\n//g;
+	s/#.*$//;
+	if (/^\s*(\S+)\s+(\S+)/) {
+		local $dir = { 'name' => lc($1),
+			       'value' => $2,
+			       'line' => $lnum,
+			       'eline' => $lnum };
+		if ($dir->{'name'} =~ /^(raid|spare|parity|failed)-disk$/) {
+			push(@{$device->{'members'}}, $dir);
+			$device->{'eline'} = $lnum;
+			$raiddev->{'eline'} = $lnum;
+			}
+		elsif ($dir->{'name'} eq 'raiddev') {
+			$dir->{'index'} = scalar(@get_raidtab_cache);
+			push(@get_raidtab_cache, $dir);
+			}
+		else {
+			push(@{$raiddev->{'members'}}, $dir);
+			$raiddev->{'eline'} = $lnum;
+			}
+		if ($dir->{'name'} eq 'device') {
+			$device = $dir;
+			}
+		elsif ($dir->{'name'} eq 'raiddev') {
+			$raiddev = $dir;
+			local $m = $mdstat{$dir->{'value'}};
+			$dir->{'active'} = $m->[0] eq 'active';
+			$dir->{'level'} = $m->[1] =~ /raid(\d+)/ ? $1 : $m->[1];
+			$dir->{'devices'} = [ map { /(\S+)\[\d+\]/; "/dev/$1" }
+						  split(/\s+/, $m->[2]) ];
+			$dir->{'size'} = $m->[3];
+			$dir->{'resync'} = $m->[4];
+			$dir->{'recovery'} = $m->[5];
+			}
+		}
+	$lnum++;
+	}
+close(RAID);
+return \@get_raidtab_cache;
+}
+
+# create_raid(&raid)
+# Create a new raid set
+sub create_raid
+{
+$lref = &read_file_lines($config{'raidtab'});
+$_[0]->{'line'} = @$lref;
+push(@$lref, &directive_lines($_[0]));
+$_[0]->{'eline'} = @$lref - 1;
+&flush_file_lines();
+}
+
+# delete_raid(&raid)
+# Delete a raid set from the config file
+sub delete_raid
+{
+$lref = &read_file_lines($config{'raidtab'});
+splice(@$lref, $_[0]->{'line'}, $_[0]->{'eline'} - $_[0]->{'line'} + 1);
+&flush_file_lines();
+}
+
+# make_raid(&raid, force)
+# Call mkraid to make a raid set
+sub make_raid
+{
+local $f = $_[1] ? "--really-force" : "";
+local $out = &backquote_logged("mkraid $f $_[0]->{'value'} 2>&1 </dev/null");
+return $? ? &text($out =~ /force/i ? 'eforce' : 'emkraid', "<pre>$out</pre>")
+	  : undef;
+}
+
+# activate_raid(&raid)
+# Activate a raid set
+sub activate_raid
+{
+local $out = &backquote_logged("raidstart $_[0]->{'value'} 2>&1");
+&error(&text('eraidstart', "<tt>$out</tt>")) if ($?);
+}
+
+# activate_raid(&raid)
+# Deactivate a raid set
+sub deactivate_raid
+{
+local $out = &backquote_logged("raidstop $_[0]->{'value'} 2>&1");
+&error(&text('eraidstop', "<tt>$out</tt>")) if ($?);
+}
+
+# directive_lines(&directive, indent)
+sub directive_lines
+{
+local @rv = ( "$_[1]$_[0]->{'name'}\t$_[0]->{'value'}" );
+foreach $m (@{$_[0]->{'members'}}) {
+	push(@rv, &directive_lines($m, $_[1]."\t"));
+	}
+return @rv;
+}
+
+# find(name, &array)
+sub find
+{
+local($c, @rv);
+foreach $c (@{$_[1]}) {
+	if ($c->{'name'} eq $_[0]) {
+		push(@rv, $c);
+		}
+	}
+return @rv ? wantarray ? @rv : $rv[0]
+           : wantarray ? () : undef;
+}
+
+# find_value(name, &array)
+sub find_value
+{
+local(@v);
+@v = &find($_[0], $_[1]);
+if (!@v) { return undef; }
+elsif (wantarray) { return map { $_->{'value'} } @v; }
+else { return $v[0]->{'value'}; }
+}
+
+# device_status(device)
+# Returns an array of  directory, type, mounted
+sub device_status
+{
+@mounted = &foreign_call("mount", "list_mounted") if (!@mounted);
+@mounts = &foreign_call("mount", "list_mounts") if (!@mounts);
+local $label = `e2label $_[0] 2>/dev/null`;
+chop($label);
+
+local ($mounted) = grep { &same_file($_->[1], $_[0]) ||
+			  $_->[1] eq "LABEL=$label" } @mounted;
+local ($mount) = grep { &same_file($_->[1], $_[0]) ||
+			$_->[1] eq "LABEL=$label" } @mounts;
+if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
+			&indexof($mount, @mounts),
+			&indexof($mounted, @mounted)); }
+elsif ($mount) { return ($mount->[0], $mount->[2], 0,
+			 &indexof($mount, @mounts)); }
+if (!defined(@physical_volumes)) {
+	@physical_volumes = ();
+	foreach $vg (&foreign_call("lvm", "list_volume_groups")) {
+		push(@physical_volumes,
+			&foreign_call("lvm", "list_physical_volumes",
+					     $vg->{'name'}));
+		}
+	}
+foreach $pv (@physical_volumes) {
+	return ( $pv->{'vg'}, "lvm", 1)
+		if ($pv->{'device'} eq $_[0]);
+	}
+return ();
+}
+
+1;
+

@@ -1,0 +1,15 @@
+print_style=Typ der Druckerkonfiguration,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare,cups-CUPS,irix-IRIX
+driver_style=Typ der Druckertreiber,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SUSE,cups-CUPS,irix-IRIX,printconf-RedhatPrintconf
+printcap_file=Datei mit Druckern,3,Keine
+model_path=Verzeichnis&#044 das Schnittstellen-Programme enth&auml;lt,3,Keines
+smbclient_path=Pfad zu smbclient,3,Keiner
+gs_path=Pfad zu Ghostscript,3,Keiner
+gs_fontpath=Ghostscript-Schriftenverzeichnis,3,Standard
+gs_lib=Ghostscript-Bibliothekverzeichnisse,3,Standard
+hpnp_path=Pfad zum hpnp-Programm,3,Keiner
+show_status=Zeige Aktiv- und Empfangen-Status anstatt Treiber?,1,1-Ja,0-Nein
+queue_refresh=Wartezeit f&uuml;r Auffrischung der Warteschlange,3,Keine Auffrischung
+start_cmd=Befehl zum Start des Zeitplans,3,durch Drucker bestimmt
+stop_cmd=Befehl zum Stopp des Zeitplans,3,durch Drucker bestimmt
+apply_cmd=auszuf&uuml;hrender Befehl nach durchgef&uuml;hrten &Auml;nderungen,3,Keiner
+sort_mode=Sortiere Drucker nach,1,1-Name,0-Reihenfolge im System

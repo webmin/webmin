@@ -1,0 +1,71 @@
+<header>Programy pomocnicze</header>
+
+<b>Szeroko¶æ kolumny FTP</b>: Domy¶lnie 32 znaki. Okre¶la szeroko¶æ
+listowania FTP. To ustawienie powinno odpowiadaæ szeroko¶ci standardowej
+przegl±darki. Ustawienie zbyt ma³ej warto¶ci mo¿e spowodowaæ obciêcie
+d³ugich nazw podczas przegl±dania serwerów ftp. <p> 
+
+<b>Anonimowy login FTP</b>: Domy¶lnie 'Squid@'. Je¶li chcesz, aby has³o przy
+logowaniu siê Squida jako u¿ytkownik 'anonymous' nios³o wiêcej informacji
+(i&nbsp;umo¿liwi³o korzystanie ze szczególnie wybrednych serwerów ftp),
+ustaw tu co¶ odpowiedniego dla twojej domeny, jak wwwuser@somewhere.net. <p>
+
+Powodem, dla którego jest to domy¶lnie pozbawione domeny jest, ¿eby
+zapytania mog³y byæ wykonywane w&nbsp;imieniu u¿ytkownika z&nbsp;dowolnej
+domeny, u¿ytkownik z&nbsp;której korzysta z&nbsp;proxy. Niektóre serwery ftp
+sprawdzaj± równie¿ poprawno¶æ adresu pocztowego (na przyk³ad perl.com). <p>
+
+<b>Program DNS Squida</b>: Domy¶lnie 'dnsserver'. Okre¶la po³o¿enie programu
+odpytuj±cego DNS. Program domy¶lny jest buforuj±cym serwerem DNS
+instalowanym domy¶lnie wraz ze Squidem. <p>
+
+<b>Liczba programów DNS</b>: Domy¶lnie 5. Liczba procesów potomnych
+obs³uguj±cych przeszukiwania DNS. Dla silnie obci±¿onych proxy na du¿ych
+serwerach prawdopodobnie powiniene¶ zwiêkszyæ tê warto¶æ do co najmniej 10.
+Warto¶ci± maksymaln± jest 32. <p>
+
+<b>Dodawaæ domenê do zapytañ</b>: Domy¶lnie nie. Normalnie 'dnsserver'
+wy³±cza opcjê RES_DEFNAMES resolvera (patrz res_init(3)). Zapobiega to
+interpretacji jednosk³adnikowych nazw hostów lokalnie, przez proxy
+w&nbsp;hierarchii. W³±czenie tej opcji umo¿liwia dnsserverowi obs³ugiwaæ
+jednosk³adnikowe nazwy. <p>  
+
+<b>Adresy serwerów DNS</b>: Domy¶lne jest korzystanie z&nbsp;pliku
+resolv.conf. Opcja ta umo¿liwia okre¶lenie listy serwerów DNS (ich adresów
+IP), które bêd± wykorzystywane zamiast wymienionych w&nbsp;pliku
+/etc/resolv.conf. <p>
+
+<b>Program opró¿niaj±cy bufory cache</b>: Domy¶lnie 'unlinkd'. Okre¶la
+po³o¿enie programu kasuj±cego pliki. Opcja ta mo¿e nie byæ potrzebna, je¿eli
+korzystasz z&nbsp;asynchronicznego wej¶cia/wyj¶cia, gdy¿ w&nbsp;niektórych
+wersjach jest to obs³ugiwane przez w±tek Squida. <p>
+
+<b>Program ping Squida</b>: Domy¶lnie 'pinger'. Okre¶la po³o¿enie programu
+pinguj±cego. Jest u¿yteczna jedynie, gdy Squid zosta³ skonfigurowany
+(podczas kompilacji) z&nbsp;opcj± '--enable-icmp'. <p>
+
+<b>Wybrany program przekierowuj±cy</b>: Domy¶lnie ¿aden. Okre¶la po³o¿enie
+programu przekierowuj±cego URL-e. Nie za³±czono ¿adnego, gdy¿ taki program
+mo¿e spe³niaæ prawie dowoln± funkcjê. Po informacje, jak taki program
+napisaæ, zajrzyj do 'Release-Notes'. <p>
+
+<b>Liczba programów przekierowuj±cych</b>: Domy¶lnie 5, je¶li jakis program
+przekierowuj±cy podano. Liczba potomnych programów przekierowuj±cych. Je¶li
+uruchomisz ich zbyt ma³o Squid bêdzie musia³ czekaæ na wstêpne przetworzenie
+przez nie URL-i, co go spowolni. Je¶li uruchomisz ich za du¿o, zu¿yj± zbyt
+du¿o RAM-u i&nbsp;innych zasobów systemowych. <p>
+
+<b>Wybrany program autoryzuj±cy</b>: Domy¶lnie ¿aden. Okre¶la zewnêtrzne
+polecenie autoryzuj±ce. Taki program czyta liniê postaci "nazwa_u¿ytkownika
+has³o" i&nbsp;odpowiada w&nbsp;nieskoñczono¶æ "OK" lub "ERR". Je¶li u¿ywasz
+programu autoryzuj±cego, upewnij siê, ¿e masz jedn± ACL typu proxy_auth. <p>
+
+Jesli chcesz u¿ywaæ tradycyjnej autoryzacji proxy, wpisz w&nbsp;tej linii
+co¶, w&nbsp;rodzaju /usr/bin/ncsa_auth /usr/etc/passwd. Zak³adaj±c, ¿e
+ncsa_auth zosta³ skompilowany i&nbsp;zainstalowany w&nbsp;Twoim systemie.
+<p>
+
+<b>Liczba programów autoryzuj±cych</b>: Domy¶lnie 5, je¶li jakis program,
+autoryzuj±cy podano.
+
+<hr>

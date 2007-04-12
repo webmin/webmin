@@ -1,0 +1,15 @@
+<header>Namn på kökataloger som delas upp på underkataloger</header>
+
+<center><tt>hash_queue_names</tt></center>
+<hr>
+
+Denna parameter anger namnen på de kökataloger som delas upp på flera
+underkatalognivåer. Hashning <b>får inte</b> användas med en e-postkatalog som
+hela världen kan skriva till. Hashning <b>måste</b> användas för
+fördröjningsloggfilskatalogen, annars kommer e-postsystemets prestanda att gå ner.
+
+<p>Tyvärr kan hashning av kön för inkommande meddelanden eller fördröjningskön
+faktiskt slöa ned e-postsystemet (<tt>mailq</tt> på en tom kö kan ta flera
+sekunder), så detta bör endast göras i nödfall.
+
+<hr>

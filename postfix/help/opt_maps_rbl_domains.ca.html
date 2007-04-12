@@ -1,0 +1,21 @@
+<header>Dominis DNS per a consultes de llistes negres</header>
+
+<center><tt>maps_rbl_domains</tt></center>
+<hr>
+
+Aquest paràmetre especifica una llista opcional de dominis DNS que publiquen
+les adreces de xarxa dels hosts a la llista negra.
+
+<p>
+
+Per defecte. les consultes de llistes negres RBL estan desactivades.
+Vegeu el paràmetre 
+<a href=opt_smtpd_client_restrictions><tt>smtpd_client_restrictions</tt></a>
+
+<p>
+
+La llista de forats negres en temps real funciona així: inverteix l'adreça
+de xarxa del client, i rebutja el servei si està llistat sota un dels
+dominis següents.
+
+<hr>

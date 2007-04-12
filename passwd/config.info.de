@@ -1,0 +1,4 @@
+max_users=Maximalanzahl anzuzeigender Benutzer,0
+input_type=Art der Benutzerauswahl,1,1-Auswahlfeld,0-Textfeld
+sort_mode=Sortiere Benutzer nach,1,0-Reihenfolge in der Datei,1-Nach Benutzername
+passwd_cmd=Befehl zur Passwort-&#196;nderung,3,Systemdateien direkt aktualisieren

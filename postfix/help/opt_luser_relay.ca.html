@@ -1,0 +1,37 @@
+<header>Adreça de destí per a destinataris desconeguts</header>
+
+<center><tt>luser_relay</tt></center>
+<hr>
+
+Aquest paràmetre especifica una adreça opcional de destinació per a 
+destinataris desconeguts. Per defecte. el correu per a destinataris 
+desconeguts es rebota.
+
+<p>
+
+Es fan les expansions següents:
+
+<ul>
+<li><tt>$user</tt> (nom d'usuari destinatari), 
+<li><tt>$shell</tt> (shell del destinatari), 
+<li><tt>$home</tt> (directori arrel del destinatari),
+<li><tt>$recipient</tt> (adreça completa del destinatari), 
+<li><tt>$extension</tt> (extensió de l'adreça del destinatari), 
+<li><tt>$domain</tt> (domini del destinatari), 
+<li><tt>$local</tt> (part local completa del destinatari), 
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Especifiqueu <tt>${nom?valor}</tt> o <tt>${nom:valor}</tt> per expandir
+el valor només quan <tt>$nom</tt> (no) existeix.
+
+<p>
+
+Exemples:
+<ul>
+<li><tt>$usuari@unaltre.host</tt>
+<li><tt>$local@unaltre.host</tt>
+<li><tt>admin+$local</tt>
+</ul>
+
+<hr>

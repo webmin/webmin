@@ -1,0 +1,8 @@
+<header>Permissions</header>
+
+La première table sur cette page peut être utilisé pour refuser l'accès a certaine commandes non-vitale.  Pour chaque commande, vous pouvez choisir d'allouer ou refuser l'accès et choisir quel types d'usager et de classes devraient être alloué ou refuser.  Jusqu'a ce qu'elle soit refuser, tout les commandes sont disponiable a tout les usagers par défaut.<p>
+
+La deuxième table vous permet de prévenir l'envoie de fichiers qui contient certain caractères ou qui corresponde a certaine expressions régulières.  Ceci peut être très utile si vous avec un serveur FTP anonyme qui contient un répertoire <tt>incoming</tt> et que vous souhaitez empecher les usagers de créer certain répertoire "caché" pour y garder du "warez".  Le premier champs de la table est une expression régulière comme <tt>^[A-z0-9]$</tt> qui définit les caractères alloués, le second est une série d'expression régulière pour les nom de fichiers qui <b>ne sont pas</b> accepté,  le troisième champs est le types d'usagers que cette restriction s'applique, et la dernière colonne le chemin du fichier de message d'erreur qui sera envoyé au client FTP si un fichier illégal est envoyé.<p>
+
+<hr>
+

@@ -1,0 +1,43 @@
+netcfg_multicastTimeouts=Успішний час чекання широкомовних повідомлень (у мілісекундах)
+snda_useScopes=Статичний список Scope
+netcfg_isBroadcastOnly=Примусово використовувати broadcast замість широкомовних запитів
+index_return=Настроювання OpenSLP
+netcfg_title=Настроювання мережі
+log_traceReg=Печатка реєстраційної і відреєстраційної інформації DA і SA
+netcfg_activeDADetection=Use active DA detection (restrict to DHCP or DAAddresses only)
+error_flock_on=Помилка при створенні блокування файлу
+netcfg_DAActiveDiscoveryInterval=Активне визначення в секундах (0 відключає активне визначення)
+index_start=Запуск OpenSLP
+dacfg_title=Настроювання DA
+netcfg_DADiscoveryTimeouts=Час чекання успішного визначення DA (у мілісекундах)
+netcfg_interfaces=Адреси IP інтерфейсів, що слухаються DA/SA
+netcfg_MTU=Розмір пакета MTU (у байтах)
+index_econf=Файл настроювань OpenSLP не знайдений у вашій системі. Можливо, він не встановлений, чи некоректні <a href='$2'>настроювання модуля</a>.
+log_traceDATraffic=Печатка повідомлень про трафік DA
+index_startmsg=Натисніть цю кнопку для запуску на вашій системі демона OpenSLP
+error_open=Помилка при відкритті файлу
+dacfg_isDA=Функціонувати тільки як DA (прочитайте перед зміною цього керівництво користувача)
+snda_title=Статичні Scope і DA
+netcfg_HintsFile=Шлях до файлу підказок OpenSLP
+start_err=Помилка при запуску OpenSLP
+index_title=Настроювання OpenSLP
+netcfg_multicastTTL=TTL широкомовних повідомлень (0-255)
+log_traceDrop=Печатка скинутої інформації про повідомлення SLP
+netcfg_multicastMaximumWait=Максимальний час чекання широкомовних повідомлень (у мілісекундах)
+stop_err=Помилка при зупинці OpenSLP
+index_eslpd=Демон OpenSLP $1 не знайдений у вашій системі. Можливо, він не встановлений, чи некоректні <a href='$2'>настроювання модуля</a>.
+snda_DAAddresses=Статичний список Агентів Каталогів (DA - Directory Agents)
+netcfg_DADiscoveryMaximumWait=Максимальний час чекання запитів визначення DA (у мілісекундах)
+log_title=Трасування і ведення журналу
+netcfg_passiveDADetection=Використовувати пасивне визначення DA
+index_stopmsg=Натисніть цю кнопку для зупинки на вашій системі демона OpenSLP
+log_traceMsg=Печатка докладних повідомлень SLP
+error_flock_off=Помилка при знятті блокування файлу
+slp_stop=Зупинка OpenSLP
+slp_apply=Застосувати зміни
+error_hup=Помилка при перезапуску OpenSLP з PID
+index_version=OpenSLP версії $1
+netcfg_randomWaitBound=Максимальне значення для усіх випадкових параметрів чекання (у мілісекундах)
+index_stop=Зупинка OpenSLP
+netcfg_unicastMaximumWait=Максимальний час між запитами unicast (у мілісекундах)
+

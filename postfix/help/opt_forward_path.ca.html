@@ -1,0 +1,26 @@
+<header>Llista de recerca per a reenviaments</header>
+
+<center><tt>forward_path</tt></center>
+<hr>
+
+Aquest paràmetre especifica una llista de recerca. S'utilitza el primer
+fitxer que es trobi.
+
+<p>
+
+Es fan les expansions següents:
+<ul>
+<li><tt>$user</tt> (Nom de l'usuari destinatari),
+<li><tt>$shell</tt> (shell destinatària), 
+<li><tt>$home</tt> (directori arrel del destinatari),
+<li><tt>$recipient</tt> (adreça completa del destinatari), 
+<li><tt>$extension</tt> (extensió de l'adreça del destinatari), 
+<li><tt>$domain</tt> (domini del destinatari), 
+<li><tt>$local</tt> (part local del destinatari completa), 
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Especifiqueu <tt>${nom?valor}</tt> o <tt>${nom:valor}</tt> per expandir el
+nom només quan <tt>$nom</tt> (no) existeixi.
+
+<hr>

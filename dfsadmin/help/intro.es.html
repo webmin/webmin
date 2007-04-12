@@ -1,0 +1,27 @@
+<header>Introducción a Comparticiones NFS</header>
+
+<include nfs.es>
+
+<h3>NFS de Solaris</h3>
+Este módulo te permite configurar directorios (llamados <i>comparticiones</i>
+en Solaris) para ser exportados vía NFS desde tu sistema Solaris. La
+primera página muestra un lista de los directorios y de los clientes a los
+que han sido exportados, permitiéndote hacer click en el nombre del
+directorio para editar sus opciones o empezar a compartir un nuevo
+directorio. <p>
+
+Bajo la lista de comparticiones de la primera página hay un botón que
+hará que la configuración en curso quede activa. Esto se realiza parando
+y rearrancando los procesos del servidor NFS en curso. <p>
+
+Solaris no te permite reexportar un directorio NFS montado desde
+otro servidor - sólamente los directorios pertenecientes a sistemas de
+archivos pueden ser exportados. Si un directorio compartido contiene
+el punto de montaje de otro sistema de archivos local, los clientes
+NFS de esta compartición no verán los archivos por debajo del punto de
+montaje. El servidor debe de reexportar cada sistema de archivos local
+por separado para que puedan ser montados por los clientes en el punto
+correcto dentro de la jerarquía del directorio. <p>
+
+<hr>
+

@@ -1,0 +1,16 @@
+line1=Options configurables,11
+dont_convert=Liste des utilisateurs Unix &#224; ne pas ajouter &#224; la liste des mots de passe samba,0
+sort_mode=Trier les utilisateurs et les groupes par nom ?,1,1-Oui,0-Non
+line2=Configuration du syst&#232;me,11
+smb_conf=Emplacement du fichier de configuration de Samba,0
+smb_passwd=Emplacement du fichier de mots de passe de Samba,3,Aucun
+samba_status_program=Chemin d'acc&#232;s complet &#224; smbstatus,0
+samba_password_program=Chemin d'acc&#232;s complet &#224; smbpasswd,0
+samba_server=Chemin d'acc&#232;s complet &#224; smbd,0
+name_server=Chemin d'acc&#232;s complet &#224; nmbd,0
+swat_path=Chemin d'acc&#232;s complet &#224; swat,3,Aucun
+smbgroupedit=Chemin d'acc&#232;s complet &#224; smbgroupedit,3,Aucun
+pdbedit=Chemin d'acc&#232;s complet &#224; pdbedit,3,Aucun
+net=Chemin d'acc&#232;s complet &#224; la commande net,3,Aucun
+start_cmd=Commande pour d&#233;marrer les serveurs Samba,3,Automatique
+stop_cmd=Commande pour arr&#234;ter les serveurs Samba,3,Juste tuer les processus

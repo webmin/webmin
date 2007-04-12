@@ -1,0 +1,24 @@
+<header>Taules de consulta del mapejat de dominis</header>
+
+<center><tt>virtual_maps</tt></center>
+<hr>
+
+Aquest paràmetre especifica les taules opcionals per redireccionar adreces
+específiques o fins i tot dominis complets a una altra adreça. Això 
+s'utilitza típicament. per implementar suport de dominis virtuals.
+
+<p>
+
+Per defecte, no es fa cap redirecció d'adreça.
+
+<p>
+
+Exemples:
+<ul>
+<li><tt>dbm:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, nis:virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, netinfo:/virtual</tt>
+</ul>
+
+<hr>

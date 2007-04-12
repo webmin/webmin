@@ -1,0 +1,151 @@
+index_title=Servidors Webmin
+index_edit=Edita
+index_noservers=No s'ha registrat cap servidor.
+index_add=Registra un servidor nou.
+index_broad=Busca servidors
+index_findmsg=Fes clic al botó per trobar automàticament tots els servidors Webmin a la xarxa local.
+index_scan=Escaneja servidors
+index_scanmsg=Fes clic al botó per comprovar totes les adreces de la xarxa $1 a la recerca de servidors Webmin.
+index_return=als servidors
+index_host=Nom de host i port
+index_desc=Descripció
+index_os=Tipus de servidor
+index_group=Grup
+index_none=&lt;Cap&gt;
+index_logout=sortida
+index_defuser=Usuari per defecte dels servidors
+index_defpass=Contrasenya per defecte
+index_defport=Port de Webmin
+index_delete=Suprimeix els Servidors Seleccionats
+index_auto=Troba els Servidors Automàticament
+index_automsg=Fes clic sobre aquest botó per configurar el descobriment periòdic automàtic de nous servidors Webmin a la teva xarxa.
+
+edit_title=Edició de Servidor
+create_title=Registre de Servidors
+edit_details=Detalls del servidor
+edit_host=Nom del host o adreça IP
+edit_realhost=Nom de host real
+edit_port=Port
+edit_type=Tipus de servidor
+edit_ssl=Servidor SSL
+edit_link=Tipus d'enllaç
+edit_mode0=Enllaç normal al servidor
+edit_mode1=Connexió a través de Webmin amb
+edit_mode2=Entra quan es faci clic sobre la icona
+edit_mode3=Entra amb l'usuari i contrasenya d'aquest servidor
+edit_user=nom d'usuari
+edit_luser=Usuari del servidor remot
+edit_lpass=Contrasenya del servidor remot
+edit_pass=i contrasenya
+edit_ecannot=No tens permís per editar servidors
+edit_desc=Descripció
+edit_desc_def=Del nom de host i el port
+edit_group=Membre dels grups del servidor
+edit_none=Cap
+edit_exists=Grup existent
+edit_new=Grup nou
+edit_fast=Fes crides RPC ràpides
+edit_auto=Decideix automàticament
+edit_status=Estat del servidor
+edit_timeout=Límit de temps en intentar connectar
+edit_failed=No he pogut connectar
+edit_baduser=Entrada rebutjada
+edit_invalid=L'usuari no pot fer RPCs
+edit_version=Executant Webmin $1
+edit_same=Només disponible quan no s'està en mode d'autenticació de sessió, i quan la contrasenya s'ha posat a disposició dels programes de Webmin.
+
+save_err=No he pogut desar el servidor
+save_ehost=Hi falta el nom del host o bé no és correcte
+save_ehost2=El host no existeix
+save_eport=Hi falta el port o bé no és correcte
+save_euser=Hi falta el nom d'usuari
+save_epass=Hi falta la contrasenya
+save_egroup=Hi falta el nom del grup
+save_elogin=Usuari o contrasenya invàlids
+
+find_title=Recerca de Servidors
+find_new=He trobat un servidor nou a $1
+find_but=He trobat un servidor nou a $1, però l'autenticació ha fallat: $2
+find_already=He trobat un servidor ja conegut a $1
+find_skip=Ignorant el servidor a $1
+find_me=He trobat aquest servidor a $1
+find_escan=La xarxa a escanejar ha de ser una adreça de classe C.
+find_eiface=No he pogut trobar la interfície a escanejar
+find_none=Cap servidor ha respost a l'escaneig.
+find_ecannot=No tens permís per buscar servidors
+find_scanning=Rastrejant servidors a la xarxa...
+find_broading=Retransmetent als servidors de les adreces...
+find_eport=Hi falta el número de port o bé és invàlid
+
+log_modify=He modificat el servidor $1
+log_create=He registrat el servidor $1
+log_delete=He suprimit el servidor $1
+log_find=He trobat el servidor $1
+log_deletes=He suprimit $1 servidors
+
+link_elogin=No he pogut connectar a $1 com a $2
+link_ecannot=No tens permís per utilitzar aquest servidor
+link_essl=No tens instal·lada la llibreria Perl Net::SSLeay
+link_eautologin=Usuari o contrasenya errònia per a $1. <a href='$2'>Fes clic aquí</a> per provar-ho altre cop.
+
+lib_other=Altres
+
+acl_edit=Pot editar servidors
+acl_find=Pot buscar servidors
+acl_servers=Pot utilitzar servidors
+acl_sall=Tots els servidors
+acl_ssel=Seleccionats...
+acl_auto=Pot configurar la detecció automàtica de servidors
+acl_add=Pot registrar nous servidors
+acl_forcefast=Força el mode RPC ràpid al valor per defecte
+acl_forcetype=Força el tipus d'OS al valor per defecte
+acl_forcelink=Força el tipus d'entrada al valor per defecte
+acl_links=Es pot connectar als servidors
+
+login_title=Entrada al servidor
+login_desc=Has de donar un nom d'usuari i una contrasenya per entrar al servidor Webmin $1.
+login_header=Autenticació Webmin
+login_user=Usuari
+login_pass=Contrasenya
+login_esame=L'opció d'utilitzar la mateixa entrada que aquest servidor només es pot utilitzar quan no s'està en mode d'autenticació de sessió i quan la contrasenya s'ha posat a disposició dels programes de Webmin.
+login_login=Entra
+
+this_server=aquest servidor
+
+delete_err=No he pogut suprimir els servidors
+delete_enone=No n'has seleccionat cap
+delete_ecannot=No tens permís per suprimir servidors
+
+auto_title=Cerca Automàtica de Servidors
+auto_header=Opcions de registre automàtic de servidor
+auto_sched=Busca nous servidors
+auto_sched1=Sí, cada $1 minuts
+auto_net=Xarxa IP a rastrejar
+auto_auto=Xarxa local
+auto_ip=Xarxes IP $1
+auto_iface=Xarxa a la interfície $1
+auto_user=Usuari dels nous servidors
+auto_pass=Contrasenya dels nous servidors
+auto_type=Tipus de sistema per defecte
+auto_err=No he pogut desar els valors trobats automàticament
+auto_emins=Hi falta  el nombre de minuts o bé és invàlid
+auto_enet=Hi falta l'adreça de la xarxa o bé és invàlida
+auto_eiface=Hi falta la interfície de xarxa o bé és invàlida
+auto_euser=Hi falta l'usuari
+auto_cluster_software=Afegeix als Paquets de Programari de Cluster
+auto_remove=Elimina els servidors registrats que no s'hagin trobat
+auto_email=Envia les notificacions de correu a
+auto_none=No enviïs res
+auto_eemail=Hi falta l'adreça de correu per a les notificacions
+auto_smtp=Envia-ho via servidor SMTP
+auto_self=Aquest sistema
+auto_esmtp=Hi falta el servidor SMTP o bé és invàlid
+auto_findself=Registra també aquest sistema
+
+config_deftype=Tipus de sistema per defecte
+config_typeauto=Automàtic
+
+email_regsubject=Sistema $1 registrat
+email_reg=El sistema $1 ha estat registrat automàticament.
+email_unregsubject=Sistema $1 desregistrat
+email_unreg=El sistema $1 ha estat desregistrat automàticament.

@@ -1,0 +1,6 @@
+index_title=SSH/Telnet登录
+index_warn=警告！这个telnet会话<b>没有</b>被加密。
+index_nojava=这个模块要有java才能运行，但您的浏览器不支持java
+index_credits=这个Applet是在遵照GPL精神下由<a href='$1'>Matthias L. Jugel &amp; Marcus Mei遪er</a>开发的.
+index_sshcredits=包含 Cryptix Development Team (<a href=$1>$1</a>)开发的软件。
+index_esocket=$1 端口 $2 上没有 telnet 服务器在运行。

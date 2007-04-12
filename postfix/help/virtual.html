@@ -1,0 +1,62 @@
+<header>Virtual Domains</header>
+
+The optional virtual table specifies redirections for local and non-local
+recipients or domains. The redirections are used by the cleanup(8) daemon. The
+redirections are recursive.
+
+<p>
+
+The virtual redirection is applied only to the recipient envelope address, and
+does not affect message headers. Think Sendmail rule set <tt>S0</tt>, if you
+like. Use <a href=canonical>canonical mapping</a> to rewrite header and
+envelope addresses in general.
+
+<p>
+
+Typical support for a virtual domain looks like the following:
+
+<ul>
+<li> <b><tt>virtual.domain</tt></b> mapped to... <b><tt>anything</tt></b> (right-hand content does not matter)
+<li> <b><tt>user1@virtual.domain</tt></b> mapped to... <b><tt>address1</tt></b>
+<li> <b><tt>user2@virtual.domain</tt></b> mapped to... <b><tt>address2,
+address3</tt></b>
+</ul>
+
+With this, the SMTP server accepts mail for <tt>virtual.domain</tt> and rejects mail for
+<tt>unknown@virtual.domain</tt> as undeliverable.
+
+<p>
+
+The format of the virtual table is as follows, mappings being tried in the
+order as listed here:
+
+<ul>
+<li> <b><tt>user@domain</tt></b> mapped to... <b><tt>address, address, ...</tt></b>: Mail for
+<tt>user@domain</tt> is redirected to <tt>address</tt>. This form has the
+highest precedence.
+
+<li> <b><tt>user</tt></b> mapped to... <b><tt>address, address, ...</tt></b>: Mail for <tt>user@site</tt>
+is redirected to <tt>address</tt> when site is equal to <tt>$myorigin</tt> when
+site is listed in <tt>$mydestination</tt>, or when it is listed in
+<tt>$inet_interfaces</tt>. This functionality overlaps with functionality of
+the <a href=aliases>local alias</a> database. The difference is that virtual mapping can be
+applied to non-local addresses.
+
+<li> <b><tt>@domain</tt></b> mapped to... <b><tt>address, address, ...</tt></b>: Mail for any user in
+<tt>domain</tt> is redirected to <tt>address</tt>. This form has the lowest
+precedence.
+</ul>
+
+In all the above forms, when address has the form <tt>@otherdomain</tt>, the
+result is the same user in otherdomain. This works for the first address in the
+expansion only.
+
+<p>
+ADDRESS EXTENSION: When the search fails, and the address localpart contains
+the optional recipient delimiter (e.g., <tt>user+foo@domain</tt>), the search
+is repeated for the unextended address (e.g. <tt>user@domain</tt>), and the
+unmatched address extension is propagated to the result of expansion. The
+matching order is: <tt>user+foo@domain</tt>, <tt>user@domain</tt>,
+<tt>user+foo</tt>, <tt>user</tt>, and <tt>@domain</tt>.
+
+<hr>

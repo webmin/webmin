@@ -1,0 +1,74 @@
+index_title=System Documentation
+index_header=System documentation search
+index_for=Search for
+index_where=Search in
+index_alldoc=All documentation
+index_man=Manual pages
+index_doc=Package documentation
+index_kernel=Kernel documentation
+index_info=Info pages
+index_howto=HOWTO documents
+index_kde=KDE documentation
+index_perl=Perl module documentation
+index_custom=Custom documentation
+index_help=Webmin help
+index_reset=Reset
+index_search=Search
+index_return=search form
+index_type=Match
+index_name=Name only
+index_data=Name and contents
+index_google=Google search engine
+index_others=When searching documentation from another module, allow searching in ..
+index_other_man=Manual pages
+index_other_help=Webmin Help
+index_other_doc=Package documentation
+index_other_kernel=Kernel documentation
+index_other_howto=HOWTO documents
+index_other_perl=Perl module documentation
+index_other_google=Google search engine
+index_other_kde=KDE documentation
+index_and=Match all
+index_or=Match any
+
+search_efor=No manual page to search for entered
+search_title=Search Results
+search_desc=Description
+search_type=Type
+search_file=Page or file
+search_man=Manual page
+search_howto=HOWTO document
+search_doc=Package documentation
+search_kernel=Kernel documentation
+search_kde=KDE documentation
+search_perl=Perl module
+search_help=Webmin help
+search_custom=Custom documentation
+search_none=No documentation matching $1 found.
+search_for=For $1
+search_google=Google search result
+
+howto_title=HOWTO Document
+howto_header=HOWTO document file $1
+howto_epath=Invalid HOWTO document path
+
+doc_title=Package Documentation
+doc_header=Package document file $1
+doc_epath=Invalid package documentation path
+
+man_title=Manual Page
+man_header=Manual page for $1($2)
+man_noentry=Manual page for $1 does not exist!
+
+kernel_title=Kernel Document
+kernel_header=Kernel document file $1
+kernel_epath=Invalid kernel document path
+
+kde_title=KDE Documentation
+kde_header=KDE document file $1
+kde_epath=Invalid KDE documentation path
+
+perl_title=Perl Module
+perl_header=Documentation for Perl module $1
+perl_emod=Invalid Perl module name
+

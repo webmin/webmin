@@ -1,0 +1,22 @@
+<header>Permisos</header>
+
+Los controles de la primera tabla de esta página pueden usarse para denegar
+el acceso a ciertos comandos no vitales. Para cada comando puedes escoger
+si permitir o denegar el aceso y seleccionar qué tipos de usuario y clases
+tendrán y no tendrán acceso. A menos que esté denegado, cualquier comando
+está disponible para cualquier usuario, por defecto.<p>
+
+La segunda tabla te permite prevenir la carga de archivos que contengan
+ciertos caracteres o que coincidan con ciertas expresiones regulares. Esto
+puede ser muy útil si tu servidor anónimo FTP tiene un directorio
+<tt>incoming</tt> y quieres prevenir que los usuarios creen directorios
+ocultos para almacenar basura. El primer campo de la tabla es una expresión
+como <tt>^[A-z0-9]$</tt> que define los caracters autorizados, la segunda
+es una serie de expresiones regulares para nombres de archivo que <b>no</b>
+están autorizados, la tercera consiste en los tipos de usuario a los que
+se aplica esta restricción y la columna final es la trayectoria completa
+a un archivo de mensajes de error a ser enviado al cliente FTP si ocurre
+una carga de archivo ilegal. <p>
+
+<hr>
+

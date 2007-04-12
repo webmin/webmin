@@ -1,0 +1,19 @@
+<header>Hitelesítõprogramok; fordította: Szakács Gergely</header>
+
+<p>
+<b>Egyéni hitelesítõprogram</b>: Alapértelmezés szerint nincs. Határozza meg a külsõ hitelesítõ parancsát. Egy ilyen program beolvas egy "felhasználónév jelszó" tartalmú sort, majd "OK" vagy "ERR" visszajelzést ad, végtelen hurokban. Ha hitelesítõprogramot használ, gondoskodjon arról, hogy van egy proxy_auth típusú ACL-je is.<p>
+
+Amennyiben a hagyományos proxy-hitelesítést kívánja használni, úgy írja át ezt a sort a következõképp: /usr/bin/ncsa_auth /usr/etc/passwd. Feltéve, hogy az ncsa_auth telepítve lett a rendszerre.<p>
+
+<b>A hitelesítõprogramok száma</b>: Alapértelmezés szerint 5, feltéve, hogy engedélyezve lett a hitelesítés.<p>
+
+<b>Jelszótárolás ideje</b>: Meghatározza, hogy a Squid mennyi ideig rögzít egy sikeres bejelentkezést a gyorstárban, mielõtt újra meghívná a hitelesítõprogramot.<p>
+
+<b>Felhasználók IP-kötésének ideje</b>: Ha egy adott felhasználó két különbözõ IP-címrõl próbál bejelentkezni ez idõtartam alatt, úgy a kérés elutasításra kerül. Ezzel megelõzhetõ, hogy a felhasználók megosszák egymás között a proxy-jelszavakat.<p>
+
+<hr>
+
+Ha a Squid 2.5-ös, vagy a fölötti verzióját használja, a fenti beállítási lehetõségeket egymástól függetlenül módosíthatja, különbözõ hitelesítési típusok (pl. Digest, NTLM) használatakor. Ha azonban a Webmin-t kívánja használni a proxy-felhasználók listájának szerkesztéséhez, úgy a Basic hitelesítést kell választania.<p>
+
+<hr>
+

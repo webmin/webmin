@@ -1,0 +1,5 @@
+desc=MIME Type Programs
+category=system
+longdesc=Edit the /etc/mailcap file, which maps MIME types to handler programs
+desc_ca=Programes de Tipus Mime
+os_support=!windows

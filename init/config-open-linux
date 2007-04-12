@@ -1,0 +1,16 @@
+soft_links=1
+show_opts=0
+init_base=/etc/rc.d
+init_dir=/etc/rc.d/init.d
+reboot_command=shutdown -r now
+shutdown_command=shutdown -h now
+order_digits=2
+inittab_id=id
+desc=1
+expert=0
+daemons_dir=/etc/sysconfig/daemons
+status_check=0
+order=0
+sort_mode=0
+boot_levels=2 3 5
+no_chkconfig=0

@@ -1,0 +1,14 @@
+<header>Introduction to SSL Tunnels</header>
+
+SSL is a protocol for encrypting data in a TCP connection as it travels over the network. It was originally developed to protect the traffic between web browsers and servers, but can be used to encrypt any kind of data stream that would normally be sent via the TCP protocol. <p>
+The SSL protocol allows clients and servers to authenticate themselves to each other, so that a client can be sure it is really connecting to the host it thinks it is. This is done using certificates which are issued by a certificate authority recognized by the client (so that they can be verified) and associated with a particular hostname. Without certificates, an attacker could re-direct an SSL connection to his own server and capture sensitive information from a client that thinks it is talking to the real server. <p>
+Any data that travels across the Internet un-encrypted can be captured and read by an attacker with access to one of the networks that it passes through. Even data traveling between a client and server system on a LAN can be easily listening in on. When you connect to a telnet, FTP or POP3 server your password is sent over the network and thus can be captured by an attacker. <p>
+SSL can be used to protect data in these kinds of situations, but only if both the client and server support it. Most web browsers and mail clients can make SSL-encrypted HTTP, POP3 and IMAP connections, but not all web and POP3 servers can accept them. POP3 in particular is hard to protect, because the standard server that comes with most Unix systems does not support SSL at all. Fortunately though there is a solution - STunnel. <p>
+STunnel is a simple program that converts an un-encrypted connection into an SSL-encrypted one. It is typically set up to be run from a super-server like inetd or xinetd, and then run some other program like the POP3 server that does not support SSL. This design allows it to protect any server that is normally run from inetd, such as telnet, NNTP and IMAP servers. <p>
+Not all servers can be usefully protected with encryption though, because no client exists to use them in SSL mode. For example, I have never heard of a telnet or FTP client that can use SSL, because the common SSH package already allows encrypted remote logins and files transfers. <p>
+
+This Webmin module makes it easy to set up super-server services that run STunnel to start some server program. Even though this can be done manually using the Internet Services module, this one is specifically designed  for setting up and configuring STunnel. It automatically detects if you have inetd and/or xinetd installed, reads their configurations to check for existing SSL tunnels and adds to them when you create a new tunnel. If both are installed, new SSL tunnels are added to the xinetd configuration as it is the superior of the two in my opinion.
+<p>
+
+<hr>
+

@@ -1,0 +1,8 @@
+host=Baðlanýlacak makine adý,3,Otomatik
+port=Baðlantý portu,0
+mode=Baðlantý tipi,1,0-Telnet,1-Secure Shell (tavsiye edilen)
+sizemode=Applet boyutu,1,0-80x24 karakter (öntanýmlý fontta),1-Maksimum,2-Özel boyut
+size=Özel boy x yükseklik boyutu,0
+fontsize=Nokta ile font boyutu,3,Öntanýmlý
+detach=Ayrý pencere biçimi,1,1-Evet,0-Hayýr
+no_test=SSH ya da telnet sunucu test edilsin mi?1,0-Evet,1-Hayýr

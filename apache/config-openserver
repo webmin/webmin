@@ -1,0 +1,16 @@
+show_list=0
+httpd_path=/usr/local/lib/apache/bin/httpd
+apachectl_path=/usr/local/lib/apache/bin/apachectl
+httpd_conf=/usr/local/lib/apache/conf/httpd.conf
+httpd_dir=/usr/local/lib/apache
+mime_types=/usr/local/lib/apache/conf/mime.types
+srm_conf=
+access_conf=
+start_cmd=/etc/apache start
+stop_cmd=/etc/apache stop
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

@@ -1,0 +1,22 @@
+<header>Tabeller för adressöversättning</header>
+
+<center><tt>canonical_maps</tt></center>
+<hr>
+
+Denna parameter är valfri och anger tabeller för adressöversättning. Översättningen
+används på både avsändar- och mottagaradresserna, både på omslaget och i brevhuvudet.
+Detta används vanligtvis för att städa bort gamla adresser skapade av äldre e-postservrar
+och för att byta ut användarnamn mot <tt>Förnamn.Efternamn</tt>. Se 
+<a href=canonical>Kanonisk översättning</a> för mer information.
+
+<p>Standardinställningen är att ingen kanonisk adressöversättning görs.
+
+<p>Vettiga värden:
+<ul>
+<li> <tt>dbm:/etc/postfix/canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical, nis:canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical, netinfo:/canonical</tt> 
+</ul>
+
+<hr>

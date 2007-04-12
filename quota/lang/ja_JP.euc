@@ -1,0 +1,240 @@
+quota_unlimited=無制限
+
+acl_fss=このユーザが編集できるファイル システム
+acl_fall=すべてのファイル システム
+acl_fsel=選択..
+acl_quotaon=クォータを有効/無効にできるようにしますか？
+acl_quotanew=新規ユーザにクォータを設定可能にしますか？
+acl_ugrace=ユーザの猶予時間を編集可能にしますか？
+acl_vtotal=合計ディスク領域を表示可能にしますか？
+acl_ggrace=グループの猶予時間を編集可能にしますか？
+acl_uquota=このユーザがクォータを編集可能なユーザ
+acl_gquota=このユーザがクォータを編集可能なグループ
+acl_uall= すべてのユーザ
+acl_uonly= 次のユーザのみ
+acl_uexcept= 次のユーザ以外すべて
+acl_ugroup= プライマリ グループのユーザ
+acl_gall= すべてのグループ
+acl_gnone= グループなし
+acl_gonly= グループのみ
+acl_gexcept= グループ以外すべて
+
+activate_eallow=このファイル システムではクォータを有効/無効にできません
+activate_eon=クォータをアクティブにできませんでした
+activate_eoff=クォータを非アクティブにできませんでした
+
+check_title=クォータの検査
+check_return=$1 リスト
+check_ecannot=このファイル システムではクォータを検査できません
+check_running=<tt>quotacheck</tt> コマンドを実行して<tt>$1</tt>のブロックとファイル使用率を調べます。ファイル システムが非常に大きい場合はかなり時間がかかります...
+check_done=... 完了しました。 
+check_rgroup=グループ
+check_ruser=ユーザ
+
+cgroup_efail=クォータをコピーできませんでした
+cgroup_ecannot=クォータをコピーできません
+cgroup_egallow=このグループのクォータはコピーできません
+cgroup_enogroup=コピーするグループがありません
+cgroup_eallowto='$1' にクォータはコピーできません
+
+cgform_title=クォータのコピー
+cgform_return=グループ クォータ
+cgform_ecannot=クォータをコピーできません
+cgform_egroup=このグループのクォータはコピーできません
+cgform_copyto=すべてのファイル システムで<tt>$1</tt> のクォータをコピー...
+cgform_all=システムのすべてのグループ
+cgform_select=選択されたグループ
+cgform_contain=ユーザを含むグループ
+cgform_doit=コピー
+
+cuser_efail=クォータをコピーできませんでした
+cuser_ecannot=クォータをコピーできません
+cuser_euallow=このユーザのクォータをコピーできません
+cuser_enouser=コピーするユーザがありません
+cuser_eallowto='$1' にクォータはコピーできません
+
+cuform_title=クォータのコピー
+cuform_return=ユーザ クォータ
+cuform_ecannot=クォータをコピーできません
+cuform_euallow=このユーザのクォータをコピーできません
+cuform_copyto=すべてのファイル システムで<tt>$1</tt> のクォータをコピー...
+cuform_all=システムのすべてのユーザ
+cuform_select=選択されたユーザ
+cuform_members=選択されたグループのメンバー
+cuform_doit=コピー
+
+egroup_title=クォータの編集
+egroup_freturn=ファイル システムのリスト
+egroup_greturn=グループ リスト
+egroup_eallowgr='$1' のクォータは編集できません
+egroup_eallowfs=このファイル システムではクォータを編集できません
+egroup_quotas=<tt>$1</tt>のクォータ(<tt>$2</tt>)
+egroup_bused=使用されたブロック
+egroup_sblimit=ソフト ブロック制限
+egroup_hblimit=ハード ブロック制限
+egroup_fused=使用されたファイル
+egroup_sflimit=ソフト ファイル制限
+egroup_hflimit=ハード ファイル制限
+egroup_update=更新
+egroup_listall=すべてのクォータをリスト
+
+euser_title=クォータの編集
+euser_freturn=ファイル システムのリスト
+euser_ureturn=ユーザ リスト
+euser_eallowus='$1' のクォータは編集できません
+euser_eallowfs=このファイル システムではクォータを編集できません
+euser_quotas=<tt>$1</tt>のクォータ(<tt>$2</tt>)
+euser_bused=使用されたブロック
+euser_bdisk=ディスクで使用可能なブロック
+euser_sblimit=ソフト ブロック制限
+euser_hblimit=ハード ブロック制限
+euser_fused=使用されたファイル
+euser_fdisk=ディスクで使用可能なファイル
+euser_sflimit=ソフト ファイル制限
+euser_hflimit=ハード ファイル制限
+euser_update=更新
+euser_listall=すべてのクォータをリスト
+
+gfilesys_title=グループ クォータ
+gfilesys_return=ファイル システムのリスト
+gfilesys_ecannot='$1' のクォータは編集できません
+gfilesys_all=すべてのクォータ
+gfilesys_blocks=ブロック
+gfilesys_files=ファイル
+gfilesys_fs=ファイル システム
+gfilesys_used=使用済
+gfilesys_soft=ソフト制限
+gfilesys_hard=ハード制限
+gfilesys_nogquota=グループ<tt>$1</tt> はいずれのファイル システムでもクォータがありません
+gfilesys_edit=クォータの編集:
+gfilesys_copy=クォータのコピー
+
+ggracef_title=猶予時間
+ggracef_return=グループ リスト
+ggracef_ecannot=このファイル システムでは猶予期間を編集できません
+ggracef_info=各ファイル システムにはブロックとファイル クォータの猶予時間があります。猶予時間は、それ以上ファイルを作成できないソフト制限上でグループが存続できる時間を定義します。 
+ggracef_graces=<tt>$1</tt> のグループ猶予時間
+ggracef_block=ブロック クォータ
+ggracef_file=ファイル クォータ
+ggracef_update=更新
+
+ggraces_esave=猶予時間を保存できませんでした
+ggraces_eedit=このファイル システムでは猶予期間を編集できません
+ggraces_enumber='$1' は数ではありません
+
+index_quser=ユーザ クォータ
+index_qgroup=グループ クォータ
+index_qboth=ユーザとグループ クォータ
+index_active=アクティブ
+index_disable=クォータを無効
+index_inactive=非アクティブ
+index_enable=クォータを有効
+index_title=ディスク クォータ
+index_fs=ファイル システム
+index_type=種類
+index_mount=マウント元
+index_status=ステータス
+index_action=アクション
+index_return=インデックス
+index_euser=ユーザ クォータの編集:
+index_egroup=グループ クォータの編集:
+index_nosupport=ローカル ファイル システムはクォータをサポートできません
+
+lgroups_failed=グループをリストできませんでした
+lgroups_eallow=このファイル システムではクォータを編集できません
+lgroups_title=ファイル システム クォータ
+lgroups_return=ファイル システムのリスト
+lgroups_toomany=1 ページで表示するには<tt>$1</tt> でクォータを持つグループが多すぎます
+lgroups_quotas=<tt>$1</tt> のすべてのグループ クォータ
+lgroups_blocks=ブロック
+lgroups_files=ファイル
+lgroups_group=グループ
+lgroups_used=使用済
+lgroups_soft=ソフト制限
+lgroups_hard=ハード制限
+lgroups_noquota=<tt>$1</tt> でクォータを持つグループはありません
+lgroups_equota=クォータの編集:
+lgroups_grace=猶予時間を編集
+lgroups_check=クォータを検査
+
+sgroup_egroup=このグループのクォータは編集できません
+sgroup_efs=このファイル システムではクォータを編集できません
+
+ssync_ecannot=このファイル システムではデフォルト クォータを設定できません
+
+suser_euser=このユーザのクォータは編集できません
+suser_efs=このファイル システムではクォータを編集できません
+
+ufilesys_title=ユーザ クォータ
+ufilesys_return=ファイル システムのリスト
+ufilesys_ecannot='$1' のクォータは編集できません
+ufilesys_all=すべてのクォータ <tt>$1</tt>
+ufilesys_blocks=ブロック
+ufilesys_files=ファイル
+ufilesys_fs=ファイル システム
+ufilesys_used=使用済
+ufilesys_soft=ソフト制限
+ufilesys_hard=ハード制限
+ufilesys_nouquota=ユーザ<tt>$1</tt> はいずれのファイル システムでもクォータがありません
+ufilesys_edit=クォータの編集:
+ufilesys_copy=クォータのコピー
+
+ugracef_title=猶予時間
+ugracef_return=ユーザ リスト
+ugracef_ecannot=このファイル システムでは猶予期間を編集できません
+ugracef_info=各ファイル システムにはブロックとファイル クォータの猶予時間があります。猶予時間は、それ以上ファイルを作成できないソフト制限上でユーザが存続できる時間を定義します。 
+ugracef_graces=<tt>$1</tt> のユーザ猶予時間
+ugracef_block=ブロック クォータ
+ugracef_file=ファイル クォータ
+ugracef_update=更新
+
+ugraces_esave=猶予時間を保存できませんでした
+ugraces_eedit=このファイル システムでは猶予期間を編集できません
+ugraces_enumber='$1' は数ではありません
+
+lusers_failed=ユーザをリストできませんでした
+lusers_eallow=このファイル システムではクォータを編集できません
+lusers_title=ファイル システム クォータ
+lusers_return=ファイル システムのリスト
+lusers_toomany=1 ページで表示するには<tt>$1</tt>でクォータを持つユーザが多すぎます
+lusers_qoutas=<tt>$1</tt> のすべてのユーザ クォータ
+lusers_blocks=ブロック
+lusers_files=ファイル
+lusers_user=ユーザ
+lusers_used=使用済
+lusers_soft=ソフト制限
+lusers_hard=ハード制限
+lusers_noquota=<tt>$1</tt> でクォータを持つユーザはありません
+lusers_equota=クォータの編集:
+lusers_egrace=猶予時間の編集
+lusers_check=クォータの検査
+lusers_info=新規の Unix ユーザが作成されたときにこのファイル システムに自動的にクォータを設定するように Webmin を設定できます。これは、ユーザを追加するために $1 Webmin モジュールが使用されたときにのみ動作します。
+lusers_useradmin=ユーザとグループ
+lusers_newuser=新規のユーザ クォータ
+lusers_sblimit=ソフト ブロック制限
+lusers_hblimit=ハード ブロック制限
+lusers_sflimit=ソフト ファイル制限
+lusers_hflimit=ハード ファイル制限
+lusers_apply=適用
+
+grace_seconds=秒
+grace_minutes=分
+grace_hours=時
+grace_days=日
+grace_weeks=週
+grace_months=月
+
+log_activate_u=$1 でユーザのクォータを有効にしました
+log_activate_g=$1 でグループのクォータを有効にしました
+log_activate_ug=$1 でユーザとグループのクォータを有効にしました
+log_deactivate_u=$1 でユーザのクォータを無効にしました
+log_deactivate_g=$1 でグループのクォータを無効にしました
+log_deactivate_ug=$1 でユーザとグループのクォータを無効にしました
+log_save=$2 上の$1 のクォータを変更しました
+log_sync=$1 で新規のユーザ クォータを変更しました
+log_grace_u=$1 でユーザ猶予時間を変更しました
+log_grace_g=$1 でグループ猶予時間を変更しました
+log_check=$1 でクォータを検査しました
+log_copy_u=ユーザ $1 のクォータをコピーしました
+log_copy_g=グループ $1 のクォータをコピーしました
+

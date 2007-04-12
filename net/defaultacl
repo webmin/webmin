@@ -1,0 +1,13 @@
+ifcs=2
+routes=2
+dns=2
+hosts=2
+apply=1
+bootonly=0
+netmask=1
+broadcast=1
+mtu=1
+up=1
+virt=1
+delete=1
+hide=0

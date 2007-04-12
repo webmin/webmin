@@ -1,0 +1,35 @@
+<header>Podstawianie ekspedycji</header>
+
+Fakultatywny plik ekspedycji okre¶la odwzorowanie z&nbsp;hierarchii domen
+na metody ekspedycji wiadomo¶ci i/lub hosty po¶rednicz±ce. Odwzorowanie to
+jest wykorzystywane przez demona trivial-rewrite(8). <p>
+
+Format tabeli ekspedycji jest nastêpuj±cy:
+
+<ul>
+<li><b><tt>domena</tt></b> podstawiana..
+<b><tt>ekspedycja:nastêpnyskok</tt></b>: Poczta do domeny domena jest
+dorêczana metod± transport poprzez nastêpnyskok.
+<li><b><tt>.domena</tt></b> podstawiana..
+<b><tt>ekspedycja:nastêpnyskok</tt></b>: Poczta do dowolnej poddomeny domeny
+domena jest dorêczana metod± transport poprzez nastêpnyskok.
+</ul>
+
+Uwaga: wpisy w&nbsp;tabeli ekspedycji przejmuj± priorytety dla domen
+okre¶lone przez parametr <tt>mydestination</tt>. Je¶li korzystasz
+z&nbsp;fakultatywnego odwzorowania ekspedycji, bezpieczniejsze mo¿e byæ
+dodanie jawnych wpisów dla wszystkich domen podanych w&nbsp;mydestination,
+na przyk³ad:
+
+<ul>
+<li><tt>nazwahosta.moja.domena</tt> ... <tt>local:</tt>
+<li><tt>localhost.moja.domena</tt> ... <tt>local:</tt>
+</ul>
+
+Interpretacja pola nastêpnyskok zale¿y od rodzaju transportu.
+W&nbsp;przypadku SMTP, podaje siê <tt>host:us³uga</tt> dla niestandardowego
+portu serwera, a&nbsp;<tt>[host]</tt> lub <tt>[host:port]</tt> w&nbsp;celu
+wy³±czenia poszukiwañ rekordów MX (serwer poczty) w&nbsp;DNS-ie. Postaci
+<tt>[]</tt> mo¿na równie¿ u¿ywaæ z&nbsp;adresami IP zamiast nazw hostów.
+
+<hr>

@@ -1,0 +1,6 @@
+line1=Konfigurierbare Optionen,11
+install=Installiere GRUB auf Festplatte/Partition,0
+line2=Systemkonfiguration,11
+menu_file=GRUB&#45;Menu Konfigurationsdatei,0
+grub_path=Pfad zur ausf&#252;hrbaren Datei von GRUB,0
+device_map=Datei f&#252;r die Ger&#228;te&#45;Map&#45;Datei,3,Aus GRUB ermitteln

@@ -1,0 +1,52 @@
+<header>Acción</header>
+
+Describe qué acción debería tomarse.<p>
+
+Las acciones válidas para este campo son:<p>
+
+<b>Reengendrar</b><br>
+El proceso será rearrancado cuando termine (p.ej. getty).<p>
+
+<b>Esperar</b><br>
+El proceso será arrancado una vez cuando se entre en el nivel de ejecución especificado e <i>init</i> esperará hasta que termine.<p>
+
+<b>Una vez por nivel</b><br>
+El proceso será ejecutado una vez cuando se entre en el nivel de ejecución especificado.<p>
+
+<b>En momento de arranque</b><br>
+El proceso será ejecutado durante el arranque de sistema. El campo de niveles de ejecución será ignorado.<p>
+
+<b>En momento de arranque, esperar hasta que termine</b><br>
+El proceso será ejecutado durante el arranque de sistema e <i>init</i> esperará hasta que termine (p.ej. /etc/rc). El campo de niveles de ejecución es ignorado.<p>
+
+<b>No hacer nada</b><br>
+Esto no hace nada.<p>
+
+<b>Siempre que sea A, B, C</b><br>
+Un proceso marcado con un nivel de ejecución <tt>según demanda (ondemand)</tt> será ejecutado cuando el nivel de ejecución <tt>según demanda (ondemand)</tt> sea llamado. Sin embargo, no ocurrirá cambio en nivel de ejecución (los niveles de según demanda son 'a', 'b' y 'c').<p> 
+
+<b>En nivel por defecto</b><br>
+Una entrada <tt>por defecto de init (initdefault)</tt> especifica el nivel de ejecución en que debería de entrarse tras el arranque del sistema.  Si no existe ninguna, init te preguntará por un nivel de ejecución en la consola. El campo de proceso es ignorado.<p>
+
+<b>Durante el arranque de sistema</b><br>
+El proceso será ejecutado durante el arranque del sistema. Será ejecutado antes de cualquier entrada <tt><b>En momento de aranque</b></tt> o <tt><b>En momento de arranque, esperar hasta que termine</b></tt>. El campo de niveles de ejecución será ignorado.<p>
+
+<b>Se va la corriente</b><br>
+El proceso será ejecutado cuando la corriente se vaya. Init es informado normalmente acerca de esto por un proceso que conversa con la UPS conectada al ordenador. <i>Init</i> esperará hasta que el proceso acabe antes de seguir.<p>
+
+<b>Se va la corriente sin espera</b><br>
+Igual que con <tt><b>Se va la corriente</b></tt>, excepto que <i>init</i> no espera hasta que el proceso termine.<p>
+
+<b>Vuelve la corriente</b><br>
+Este proceso es ejecutado tan pronto como <i>init</i> es informado de que la corriente ha sido restaurada.<p>
+
+<b>Fallo de corriente</b><br>
+Este proceso será ejecutado cuando <i>init</i> es informado de que la batería de la UPS externa está casi vacía y la corriente está fallando (suponiendo que la UPS externa y que el proceso de monitorización son capaces de detectar esta condición).<p>
+
+<b>Ctrl-Alt-Supr</b><br>
+El proceso será ejecutado cuando <i>init</i> recibe la señal <i>SIGINT</i>. Esto quiere decir que alguien desde la consola del sistema ha presionado la combinación de teclas CTRL-ALT-SUPR. Normálmente uno siempre quiere ejecutar alguna clase de <tt>apagado</tt> o entrar en nivel de mono-usuario o rearrancar la máquina.<p>
+
+<b>Combinación especial de teclas</b><br>
+El proceso será ejecutado cuando <i>init</i> reciba una señal desde el manejador de teclado de que una combinación especial de teclas ha sido presionada en el teclado de la consola.<p>
+
+<hr>

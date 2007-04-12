@@ -1,0 +1,7 @@
+named_boot_file=Primäre Konfigurationsdatei,0
+show_list=Zeige Domains als,1,0-Symbole,1-Liste
+soa_style=Muster für Folge-Nummer,1,0-Laufende Zahl,1-Datumbasiert (JJJJMMTTnn)
+records_order=Reihenfolge um Einträge anzuzeigen,1,1-Alphabetisch,0-Wie hinzugefügt
+named_pid_file=Prozeß-ID Datei,0
+named_pathname=Absoluter Pfad zu <i>named</i>,0
+updserial_on=Benutze generell serielle Nummern,1,0-Nein,1-Ja

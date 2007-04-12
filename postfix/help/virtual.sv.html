@@ -1,0 +1,57 @@
+<header>Virtuella domäner</header>
+
+Tabellen för virtuella domäner anger omledningar för lokala och icke lokala
+mottagare eller domäner. Omledningarna används av demonen cleanup(8).
+Omledningarna är rekursiva.
+
+<p>Virtuell omledning används endast på omslagets mottagaradress och påverkar
+inte meddelandehuvudet. Jämför med regeluppsättningen <tt>S0</tt> i sendmail.
+Använd <a href=canonical>canonical</a> för att skriva om huvuden och
+omslagsadresser i allmänhet.
+
+<p>Ett typiskt stöd för en virtuell domän ser ut så här:
+
+<ul>
+<li> <b><tt>virtual.domain</tt></b> pekar på ... <b><tt>vad som helst</tt></b> (innehållet till höger har ingen betydelse)
+<li> <b><tt>user1@virtual.domain</tt></b> pekar på ... <b><tt>adress1</tt></b>
+<li> <b><tt>user2@virtual.domain</tt></b> pekar på ... <b><tt>adress2,
+adress3</tt></b>
+</ul>
+
+Med denna konfigurering tar SMTP-servern emot e-post till
+<tt>virtual.domain</tt> och spärrar e-post till
+<tt>unknown@virtual.domain</tt> som om de inte gick att leverera.
+
+<p>Tabellformatet visas nedan och omledningarna testas i den ordning de
+räknas upp här:
+<ul>
+<li> <b><tt>användare@domän</tt></b> mapped to... <b><tt>adress, adress,
+...</tt></b>: E-post till <tt>användare@domän</tt> skickas till
+<tt>adress</tt>. Detta format har högst prioritet.
+
+<li> <b><tt>användare</tt></b> mapped to... <b><tt>adress, adress, ...</tt></b>: E-post till <tt>användare@site</tt>
+skickas till <tt>adress</tt> om site är samma som <tt>$myorigin</tt> eller om
+den finns i <tt>$mydestination</tt> eller <tt>$inet_interfaces</tt>.
+Denna funktion överlappar den <a href=aliases>lokala alias</a>-databasen.
+Skillnaden är att den virtuella omledningen kan användas för adresser som
+inte är lokala.
+
+<li> <b><tt>@domän</tt></b> mapped to... <b><tt>adress, adress, ...</tt></b>:
+E-post till någon användare under <tt>domän</tt> skickas till <tt>adress</tt>.
+Detta format har lägst prioritet.
+</ul>
+
+I alla format ovan gäller att om adressen har formen <tt>@annandomän</tt>
+kommer resultatet att bli samma användare under annandomän. Detta fungerar
+bara för den första adressen i expansionen.
+
+<p>ADRESSEXPANSION: Om adressen inte går att slå upp i tabellen och adressens
+lokala del innehåller en mottagarbegränsare (exempelvis
+<tt>användare+foo@domän</tt>), kommer sökningen att upprepas för den icke
+expanderade adressen (exempelvis <tt>användare@domän</tt>) och den
+omatchade ändelsen bifogas resultatet av tabelluppslagningen.
+Matchningsordningen är <tt>användare+foo@domän</tt>,
+<tt>användare@domän</tt>, <tt>användare+foo</tt>, <tt>användare</tt> och
+<tt>@domän</tt>.
+
+<hr>

@@ -1,0 +1,56 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=EUC-JP">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; Linux 2.2.14-6.1.1 i686) [Netscape]">
+</head>
+<body>
+
+<center>
+<h1>
+DHCPD ACL サブシステム</h1></center>
+
+<h3>
+ターゲット:</h3>
+&nbsp;&nbsp;&nbsp; ACLサブシステムは強力且つ柔軟で拡張可能な
+アクセス制御機構をdhcpdの設定内のさまざまなオブジェクトに提供する目的で作成されています。
+ここでのオブジェクトとは、共有ネットワーク、サブネット、ホストのグループ、そしてホストです。
+<br>&nbsp;&nbsp;&nbsp; ACLサブシステムはユニークなオブジェクト名や設定変更箇所の適用、
+dhcpリースの表示と取消等の機能を制御することもできます。
+<h3>
+コンセプト:</h3>
+&nbsp;&nbsp;&nbsp; Dhcpd設定ファイルは樹型図で表示します。
+このツリーのそれぞれのノードはそれぞれ異なったdhcpオブジェクトを表します。(fig. 0)
+<p>&nbsp;&nbsp;&nbsp; ACLサブシステムは２段階のパーミッションを持っています。
+<ul>
+<li>
+グローバル:読み取り、書き込み、作成;</li>
+
+<li>
+オブジェクト毎:読み取り、書き込み</li>
+</ul>
+&nbsp;&nbsp;&nbsp; グローバルパーミッションは以下の全種類のオブジェクトに影響します。
+(ホスト、グループ、サブネット、共有ネットワーク)及び
+与えられた種類の全てのオブジェクトセットを制御します。
+<br>グローバルな作成
+<br>グローバルな読み取り
+<br>グローバルな書き込み
+<br>&nbsp;&nbsp;&nbsp; オブジェクト毎のパーミッションは更に柔軟なアクセス制御を提供します。
+オブジェクト毎のパーミッション ACL は全ての個々のオブジェクトに存在します。
+現在、ホスト及びサブネットのオブジェクト毎のACLのみ実装されています。
+<br>オブジェクト毎の読み取り
+<br>オブジェクト毎の書き込み
+<br>&nbsp;&nbsp;&nbsp; Aclサブシステムは4つの異なるセキュリティレベル(又はモード)を操作できます。
+<br><img SRC="ctree0.gif" ALT="dhcpd 設定ツリー, セキュリティレベル 0, サブネットXのパーミッションを確認してください" height=229 width=314>
+<br>&nbsp;
+<p><img SRC="ctree1.gif" ALT="dhcpd configuration tree, security level 1, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree2.gif" ALT="dhcpd configuration tree, security level 2, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree3.gif" ALT="dhcpd configuration tree, security level 3, check subnetX permissions" height=229 width=314>
+<h3>
+USER NOTES:</h3>
+&nbsp;
+<h3>
+DEVELOPER NOTES:</h3>
+
+</body>
+</html>

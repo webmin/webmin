@@ -1,0 +1,18 @@
+<header>Nom dels directoris de cua escampats a través dels subdirectoris</header>
+
+<center><tt>hash_queue_names</tt></center>
+<hr>
+
+Aquest parametre especifica els noms dels directoris de cues que estan
+escampats a través de múltiples nivells de subdirectoris . NO s'ha 
+d'utilitzar hashing amb un directori de correu gravable per tothom.
+SÍ que s'ha de fer servir hashing per al directori de registres diferits,
+sinó el rendiment del sistema de correu se'n ressentirà.
+
+<p>
+
+Desgraciadament, fent hash sobre la cua d'entrada o la diferida, pot
+alentir el sistema de correu ((<tt>mailq</tt> amb una cua buida pot
+trigar uns quants segons), així que només s'ha de fer en cas d'emergència.
+
+<hr>

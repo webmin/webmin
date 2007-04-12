@@ -1,0 +1,42 @@
+<header>Logging</header>
+
+<b>Access log file</b>: Default is system dependent, usually somewhere in <tt>/var</tt>.  Logs the client request activity.  Contains an entry for every HTTP and ICP request received. <p>
+
+<b>Debug log file</b>: Default is system dependent.  Cache logging file. This is where general information about your cache's behaviour goes. You can increase the amount of data logged to this file with the <b>Debug options</b>. <p>
+
+<b>Storage log file</b>: Default is system dependent.  Logs the activities of the storage manager.  Shows which objects are ejected from the cache, and which objects are saved and for how long.  To disable, enter "none". There are not really utilities to analyse this data, so you can safely disable it.<p>
+
+<b>Cache metadata file</b>: Default is swap.log in each cache directory.  This log file holds the metadata of objects saved on disk.  It is used to rebuild the cache during startup.  Normally this file resides in each cache directory, but you may specify an alternate pathname here.  Note you must give a full filename, not just a directory. Since this is the index for the whole object list you CANNOT periodically rotate it! <p>
+
+If %s can be used in the file name then it will be replaced with a representation of the cache directory name where each / is replaced with '.'. This is needed to allow adding/removing cache directory lines when an alternate cache swap log is being used. <p>
+
+If have more than one cache directory, and %s is not used in the name then these swap logs will have names such as: <p>
+<ul>
+<li>cache_swap_log.00
+<li>cache_swap_log.01
+<li>cache_swap_log.02
+</ul>
+<p>
+The numbered extension (which is added automatically) corresponds to the order of the cache directory lines in the configuration.  If you change the order of the cache directory lines in this file, then these log files will NOT correspond to the correct cache directory entry (unless you manually rename them).  We recommend that you do NOT use this option.  It is better to keep these log files in each cache directory. <p>
+
+<b>Use HTTPD log format</b>: Defaults to no.  The Cache can emulate the log file format which many 'httpd' programs use.  To disable/enable this emulation, set this value to off or on.  The default is to use the native log format since it includes useful information that Squid-specific log analysers use.
+<p>
+<b>Log MIME headers</b>: Defaults to no.  The Cache can record both the request and the response MIME headers for each HTTP transaction.  The headers are encoded safely and will appear as two bracketed fields at the end of the access log (for either the native or httpd-emulated log formats).  To enable this logging set this to on.
+<p>
+<b>User agent log file</b>: Default is none.  If configured with the "--enable-useragent-log" configure  option, Squid will write the User-Agent field from HTTP requests to the filename specified here.
+<p>
+<b>PID file</b>: Default is system dependent.  A filename to write the process-id to.  To disable, enter "none".
+<p>
+<b>Perform RFC931 ident lookups for ACLs</b>: Default is none.  Perform ident lookups to find the username of clients accessing anything in these ACLs.
+<p>
+<b>RFC931 ident timeout</b>: Default is 30 seconds. Maximum time to wait for IDENT requests.  If this is too high, and you enabled any ident lookups, then you might be susceptible to denial-of-service by having many ident requests going at once.
+<p>
+<b>Log full hostnames</b>: Default is no.  Logs the full hostname of clients. 
+<p>
+<b>Logging netmask</b>: Default is 255.255.255.255.  A netmask for client addresses in logfiles and cachemgr output. Change this to protect the privacy of your cache clients. A netmask of 255.255.255.0 will log all IP's in that range with the last digit set to '0'.
+<p>
+<b>Debug options</b>: Default is "ALL,1".  Logging options are set as section,level where each source file is assigned a unique section.  Lower levels result in less Full debugging (level 9) can result in a very large log file, so be careful.  The magic word "ALL" sets debugging levels for all sections.  We recommend normally running with "ALL,1".
+<p>
+<b>MIME headers table</b>: Pathname to Squid's MIME table. You shouldn't need to change, but the default file contains examples and formatting information if you do.
+
+<hr>

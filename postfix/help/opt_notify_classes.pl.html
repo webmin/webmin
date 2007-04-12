@@ -1,0 +1,36 @@
+<header>O&nbsp;jakich k³opotach informowaæ postmastera</header>
+
+<center><tt>notify_classes</tt></center>
+<hr>
+
+Powiniene¶ ustawic alias <b>postmaster</b>, który wskazuje na jak±¶ osobê.
+Ten alias musi koniecznie istnieæ, aby mo¿na by³o sygnalizowaæ problemy
+z&nbsp;dorêczeniem poczty. <p>
+
+System Postfiksa równie¿ samodzielnie zg³asza problemy na alias postmastera.
+Mo¿esz nie byæ zainteresowany wszystkimi rodzajami b³êdów, wiêc mechanizm
+ich zg³aszania jest konfigurowalny. Domy¶lne jest informowanie postmastera
+jedynie o&nbsp;powa¿nych problemach (resource, software): <p>
+
+<b>Domy¶lne:</b> <tt>resource, software</tt> <p>
+
+Klasy maj± nastêpuj±ce znaczenie:
+
+<ul>
+<li><tt>bounce:</tt> Wysy³aj do postmastera kopie poczty  niedorêczalnej.
+<li><tt>2bounce:</tt> Wysy³aj do postmastera podwójnie odrzucone. 
+<li><tt>delay:</tt> Informuj postmastera o&nbsp;poczcie opó¼nionej.
+W&nbsp;tym przypadku postmaster otrzymuje jedynie nag³ówki.
+<li><tt>policy:</tt> Informuj postmastera o&nbsp;po³±czeniach klientów
+odrzuconych ze wzglêdu na polityczne ograniczenia (UCE). Postmaster
+otrzymuje kopiê ca³ej sesji SMTP.
+<li><tt>protocol:</tt> Informuj postmastera o&nbsp;b³êdach protoko³u (po
+stronie klienta lub serwera) i&nbsp;próbach uruchomienia przez klienta
+niezaimplementowanych poleceñ. Postmaster otrzymuje kopiê ca³ej sesji SMTP.
+<li><tt>resource:</tt> Informuj postmastera o&nbsp;poczcie niedorêczonej ze
+wzglêdu na problemy z&nbsp;zasobami (na przyk³ad, b³êdy zapisu do kolejki).
+<li><tt>software:</tt> Informuj postmastera o&nbsp;poczcie niedorêczonej ze
+wzglêdu na problemy z&nbsp;oprogramowaniem.
+</ul>
+
+<hr>

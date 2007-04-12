@@ -1,0 +1,75 @@
+<header>Tallafocs Linux</header>
+
+<h3>Introducció al mòdul</h3>
+
+Aquest mòdul permet configurar les característiques del tallafocs IPtables 
+que es troba a la sèrie de kernels Linux 2.4. Contràriament a altres
+programes de configuració de tallafocs, en lloc de crear un script shell
+que configura el tallafocs, llegeix i edita un fitxer en el format llegit
+i escrit per <tt>iptables-restore</tt> i <tt>iptables-save</tt>,
+respectivament. <p>
+
+Si ja tens al sistema un tallafocs que s'ha configurat manualment o des d'un
+fitxer de script, el mòdul t'oferirà de convertir-lo per tu a un fitxer
+IPtables, i crearà un script per executar-se en engegar el sistema que
+activarà les regles del fitxer. No obstant, si fas això no has des seguir
+editant el teu script de regles del tallafocs i l'hauries de desactivar
+i també evitar que s'executi en engegar. <p>
+
+<h3>Resum d'IPtables</h3>
+
+Cada paquet de xarxa que entra, surt o és reenviat pel sistema, es comprova
+contra una o més cadenes per determinar què li passarà.
+Cada cadena conté zero o més regles, cadascuna de les quals té una condició
+(per determinar quins paquets la compleixen) i una acció (per controlar
+què passa amb els paquets coincidents). Cada cadena té una acció per defecte
+que controla què passa amb el paquet que no compleix cap regla. <p>
+
+Cada cadena és part d'una taula, de les quals n'hi ha actualment tres:
+<ul>
+<li><b>Filtratge de Paquets (<tt>filter</tt>)</b><br>
+   Les cadenes d'aquesta taula es poden emprar per controlar les dades que
+   entren al sistema des d'altres hosts de la xarxa, les dades que surten del
+   sistema per part dels usuaris i processos, i les dades reenviades per 
+   sistema si està actuant com a router. <p>
+<li><b>Traducció d'Adreces de Xarxa (<tt>nat</tt>)</b><br>
+   Aquesta taula es pot emprar per establir una NAT o una mascarada, cosa
+   útil si vols donar accés a Internet a tota una xarxa de màquines a través
+   d'una sola adreça IP real. <p>
+<li><b>Alteració de Paquets (<tt>mangle</tt>)</b><br>
+   Aquesta cadena és per a modificar paquets enviats o reenviats des del teu
+   sistema. <p>
+</ul>
+
+A més a més de les cadenes estàndard que són part de cada taula, també pots
+crear les teves pròpies cadenes que poden ser executades per regles de les
+cadenes ja integrades. Això pot ser útil per agrupar i compartir regles que
+es poden fer servir a llocs diferents. <p>
+
+<h3>La pàgina principal</h3>
+
+La pàgina principal d'aquest mòdul llista totes les cadenes i regles 
+d'una de les taules disponibles, seleccionades de la llista de la part
+superior esquerra.  A sota hi ha una selecció per a cada cadena de la 
+taula actual, amb totes les regles de cada cadena llistades i les seves
+condicions descrites tant bé com el mòdul n'és capaç. Per a cada cadena,
+pots canviar l'acció per defecte utilitzant la llista desplegable si
+la cadena és una de les ja integrades a la taula, o bé suprimir-la 
+amb el botó Suprimeix la cadena si està definida per l'usuari. <p>
+
+Pots fer clic sobre qualsevol regla d'una cadena per editar-la, fer clic
+sobre les fletxes de l'esquerra per desplaçar-les amunt i avall, o fer 
+clic sobre el botó Afegeix Regla per afegir-ne una de nova. Afegir o
+editar una regla et durà a una pàgina on pots seleccionar l'acció per a
+cada regla, i les condicions per les quals s'executa l'acció. <p>
+
+Al peu de la pàgina, hi ha un botó per fer activa la configuració
+actual del tallafocs, recarregant-la en el kernel amb l'ordre
+<tt>iptables-restore</tt>. A sota, hi ha un botó per fer just el contrari -
+prendre la configuració que hi ha actualment al kernel i posar-la a
+disposició de l'editor. Finalment, si la distribució ho suporta, hi ha
+un botó per canviar si el tallafocs s'activa en engegar el sistema o no. <p>
+
+<hr>
+
+

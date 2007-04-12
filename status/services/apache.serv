@@ -1,0 +1,5 @@
+id=apache
+type=apache
+desc=Apache Webserver
+depends=apache
+nosched=0

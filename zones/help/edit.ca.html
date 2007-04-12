@@ -1,0 +1,38 @@
+<header>Edició de Zona</header>
+
+Aquesta pàgina permet fer canvis ala configuració global d'una zona, portar a 
+terme diverses accions com ara reengegar i suprimir, i gestionar els objectes
+configurables de la zona, com ara les interfícies de xarxa i els sistemes
+de fitxers <p>.
+
+La primera secció mostra l'estat actual de la zona i permet seleccionar si
+s'inicia en engegar el sistema o editar el seu pool de recursos. Aquests valors
+d'apliquen fent clic al botó <b>Desa.</b>. <p>
+
+Depenent de l'estat de la zona, s'hi poden dur a terme diverses accions com ara
+<b>Reengegar</b>, <b>Tancar</b> i <b>Engegar</b> utilitzant els botons a sota
+de la secció de configuració general de la zona. Quan una zona està en l'estat
+<b>Aturada</b>, pots utilitzar el botó <b>Desinstal·la</b> per eliminar tots
+els seus fitxers privats de configuració, de manera que es puguin afegir nous
+directoris de paquets. Quan una zona encara no està instal·lada, el botó 
+<b>Instal·la</b> afegirà el programari necessari per tal que esdevingui
+utilitzable. <p>
+
+Cada zona té diversos tipus d'objectes configurables, llistats a la resta de
+la pàgina. Aquests són:
+<ul>
+<li><b>Interfícies de xarxa</b><br>
+    Adreces IP virtuals que són privades de la zona
+<li><b>Directoris de paquets heretats</b><br>
+    Directoris només lectura compartits pel sistema global i la zona
+<li><b>Sistemes de fitxers addicionals</b><br>
+    Particions dels discs al sistema real muntats per la zona, i accessibles
+    només per aquesta.
+<li><b>Control de recursos</b><br>
+    Restriccions al temps de CPU i altres recursos que s'apliquen a la zona.
+<li><b>Atributs genèrics de zona</b><br>
+    Comentaris i altra informació definida per l'usuari associats a la zona.
+</ul>
+
+<footer>
+

@@ -1,0 +1,5 @@
+---- Changes since 1.130 ----
+If no CVS repository is found in the configured directory, the module can now set one up for you.
+---- Changes since 1.180 ----
+The user that the CVS server runs as can now be selected when setting it up.
+If the CVS directory is changed in the module configuration, the CVS server settings can be updated too.

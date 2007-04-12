@@ -1,0 +1,50 @@
+Ka¿de polecenie posiada opis (wy¶wietlany w&nbsp;przycisku na stronie
+g³ównej) oraz faktycznie uruchamiane polecenie. Linia polecenia mo¿e
+zawieraæ operatory pow³oki takie, jak |, &gt; i&nbsp;; w&nbsp;celu
+uruchomienia wielu poleceñ w&nbsp;potoku. Linia polecenia mo¿e równie¿
+zawieraæ parametry takie, jak <tt>$foo</tt>, które podczas uruchamiania
+polecenia zostan± zast±pione warto¶ciami podanymi przez u¿ytkownika. <p>
+
+Te parametry mo¿na podaæ w&nbsp;tabeli u&nbsp;do³u strony. Dla ka¿dego
+parametru konieczne jest podanie&nbsp;:
+<dl>
+<dt><b>Nazwy</b>
+<dd>Czyli unikalnego kodu tego parametru. Je¶li nazw± jest <tt>foo</tt>, to
+    podczas uruchamiania polecenia <tt>$foo</tt> zostanie zast±pione
+    warto¶ci± paramnetru. <p>
+
+<dt><b>Opisu</b>
+<dd>Opisu nastêpuj±cego po tym parametrze na stronie g³ównej.<p>
+<dt><b>Rodzaju</b>
+
+<dd>Ta opcja okre¶la sposób wprowadzania parametru. Dostêpne s±
+    mo¿liwo¶ci&nbsp;:
+	<ul>
+	<li><b>Tekstowy</b><br>
+	    Ca³kowicie dowolny tekst.
+	<li><b>U¿ytkownik</b><br>
+	    Nazwa u¿ytkownika w&nbsp;systemie.
+	<li><b>UID</b><br>
+	    Numer UID u¿ytkownika w&nbsp;systemie.
+	<li><b>Grupa</b><br>
+	    Nazwa grupy w&nbsp;systemie. 
+	<li><b>GID</b><br>
+	    Numer GID grupy w&nbsp;systemie.
+	<li><b>Plik</b><br>
+	    Pe³na ¶cie¿ka do pliku.
+	<li><b>Katalog</b><br>
+	    Pe³na ¶cie¿ka do katalogu.
+	<li><b>Opcja</b><br>
+	    Wprowadzone Tak/Nie ustawi warto¶æ parametru na to, co znajduje
+	    siê w&nbsp;nastêpnym polu wy³±cznie w&nbsp;przypadku wybrania
+	    Tak.
+	<li><b>Has³o</b><br>
+	    Ca³kowicie dowolny tekst, lecz podczas wprowadzania wy¶wietlany
+	    jako *.
+	</ul><p>
+<dt><b>Czy cytowaæ parametr?</b>
+<dd>Je¶li Tak, parametr zostanie zacytowany poprzez " przed podstawieniem, 
+    pozwalaj±c u¿ytkownikowi na podanie warto¶ci zawieraj±cych spacje. <p>
+</dl>
+
+<hr>

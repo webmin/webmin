@@ -1,0 +1,20 @@
+<header>Configuration Engine Daemon</header>
+
+The configuration engine daemon is a background process that serves several
+purposes. It can execute the main configuration on a regular schedule,
+it can accept requests from other hosts to execute the main configuration
+immediately, and it can transfer files to other hosts that request a copy
+from this server with a Copy Files action. <p>
+
+The daemon has its own separate configuration file, with a similar structure
+of actions and classes to the main configuration. If the configuration is
+empty, you should start by creating a <i>Configuration daemon options</i>
+action that defines commands run on schedule and when requested by other
+hosts. Other action types can also be added to restrict access to copied files
+to certain hosts. <p>
+
+At the bottom of the page is a button to start the daemon (if it is not
+currently running), or stop it (if it is running). <p>
+
+<hr>
+

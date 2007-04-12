@@ -1,0 +1,21 @@
+<header>Asynchroniczny zapis</header>
+
+"Tak" - Operacje zapisu na serwerze bêd± siê odbywa³y asynchronicznie. Gdy
+klient NFS-u wy¶le do serwera ¿±danie zapisu, serwer zwróci klientowi
+odpowied¼ pozytywn± zanim zapisze jakiekolwiek dane na dysku. Klient mo¿e
+wówczas wys³aæ inne ¿±danie zapisu bez oczekiwania na zakoñczenie przez
+serwer poprzedniego zapisu. Przy zapisie asynchronicznym wydajno¶æ zapisu
+jest lepsza ni¿ przy zapisie synchronicznym. Jednak¿e, je¶li serwer ulegnie
+awarii po wys³aniu pozytywnej odpowiedzi do klienta, ale przed zapisaniem
+danych na dysku, dane zostan± stracone a klient nie zostanie o&nbsp;tym
+powiadomiony. <p>
+
+"Nie" - Operacje zapisu bêd± siê odbywa³y synchronicznie. Gdy klient NFS-u
+wy¶le ¿±danie zapisu do serwera, serwer zapisze dane na dysku przed
+zwróceniem klientowi pozytywnej odpowiedzi. Klient musi czekaæ, a¿ serwer
+zapisze dane na dysku, zanim bêdzie móg³ wys³aæ inne ¿±danie zapisu.
+Wydajno¶æ zapisu synchronicznego nie jest tak dobra jak zapisu
+asynchronicznego. <p>
+
+Warto¶ci± domy¶ln± jest "Nie".
+<hr>

@@ -1,0 +1,52 @@
+index_title=カスタム コマンド
+index_edit=編集コマンド
+index_none=定義されたカスタム コマンドはありません
+index_create=新規カスタム コマンドの作成
+index_return=コマンド
+
+edit_title=コマンドの編集
+create_title=コマンドの作成
+edit_ecannot=コマンドを編集できません
+edit_details=コマンドの詳細
+edit_desc=説明
+edit_cmd=コマンド
+edit_user=次のユーザとして実行
+edit_raw=コマンドを HTML に出力しますか？
+edit_su=ユーザの環境を使用しますか？
+edit_params=コマンド パラメータ
+edit_name=名前
+edit_type=種類
+edit_quote=パラメータに引用符を付けますか？
+edit_type0=テキスト
+edit_type1=ユーザ
+edit_type2=UID
+edit_type3=グループ
+edit_type4=GID
+edit_type5=ファイル
+edit_type6=ディレクトリ
+edit_type7=オプション..
+edit_type8=パスワード
+
+save_err=コマンドを保存できませんでした
+save_ecannot=コマンドを編集できません
+save_ecmd=コマンドが入力されていません
+save_edesc=説明が入力されていません
+save_euser=ユーザが存在しないか無効です
+
+run_err=コマンドを実行できませんでした
+run_ecannot=このコマンドは編集できません
+run_euser=ユーザが存在しないか無効です
+run_egroup=グループ名が存在しないか無効です
+run_title=コマンドの実行
+run_out=$1 からの出力..
+run_noout=作成された出力はありません
+
+log_modify=コマンド $1 を変更しました
+log_create=コマンド $1 を作成しました
+log_delete=コマンド $1 を削除しました
+log_exec=コマンド $1 を実行しました
+
+acl_cmds=このユーザが実行できるコマンド
+acl_call=すべてのコマンド
+acl_csel=選択..
+acl_edit=コマンドの作成と編集を可能にしますか？

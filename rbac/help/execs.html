@@ -1,0 +1,19 @@
+<header>Execution Profiles</header>
+
+An execution profile defines a command associated with an existing profile
+that is executed with different Unix user and group rights from the user who
+actually runs it. They allow functionality similar to setuid programs, but
+with different behaviour depending on the user. <p>
+
+Each execution profile has an associated profile, a command that it applies to,
+and a set of user and group rights that the command is run with. These
+additional rights will only be used if the command is run from a profile-aware
+shell, such as <tt>pfcsh</tt> or <tt>pfsh</tt>. <p>
+
+If you have created your own profiles, you can use this page to add commands
+to run to them. However, execution profiles that are included as standard
+with the operating system should not be modified unless you know what you
+are doing. <p>
+
+<footer>
+

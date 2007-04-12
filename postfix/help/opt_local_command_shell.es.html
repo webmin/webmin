@@ -1,0 +1,32 @@
+<header>Shell a usar para entrega a comando externo</header>
+
+<center><tt>local_command_shell</tt></center>
+<hr>
+
+Este parámetro controla qué shell será usado para entrega a comando externo.
+Por defecto, los comandos externos son ejecutados diréctamente; los comandos
+son dados a <tt>/bin/sh</tt> sólo cuando contienen meta-caracteres de shell
+o comandos internos de shell.
+
+<p>
+
+Especifica un shell diferente cuando necesites más control sobre lo que
+los programas pueden ejecutar p.ej. archivos <tt>.forward</tt>.
+
+<p>
+
+&quot;el shell restringido de sendmail&quot; <tt>smrsh</tt> es el que la
+mayoría usará (<tt>smrsh</tt> es parte de recientes distribuciones de sendmail)
+
+<p>
+
+Nota: cuan se especifica un shell, es invocado incluso cuando el comando
+no contiene comandos internos de shell o meta-caracteres.
+
+<p>
+
+Ejemplo: <tt>/alguno/donde/smrsh -c</tt>
+
+<p>
+
+<hr>

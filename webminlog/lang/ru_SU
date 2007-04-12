@@ -1,0 +1,59 @@
+index_title=Журнал действий Webmin
+index_header=Искать в журнале Webmin действия ..
+index_uall=Любого пользователя
+index_user=Указанного пользователя
+index_nuser=Любого пользователя, кроме указанного
+index_mall=В любом модуле
+index_module=В указанном модуле
+index_tall=В любое время
+index_today=Только сегодня
+index_time=Между $1 и $2
+index_search=Искать
+index_return=к поиску
+index_nolog=<b>Примечание</b> - <a href='$1'>Ведение журнала Webmin</a> в данный момент отключено, поэтому вероятнее всего поиск в журнале действий не приведет к какому-либо результату.
+index_nologfiles=<b>Примечание</b> - <a href='$1'>Ведение журнала изменений в файлах</a> в данный момент отключено, поэтому подробности произведенных действий не будут включать в себя измененные файлы и выполненные команды.
+
+search_title=Результаты поиска
+search_date=Дата
+search_time=Время
+search_user=Пользователь
+search_host=Адрес клиента
+search_module=Модуль
+search_action=Действие
+search_none=Не найдено действий, соответствующих вашему запросу.
+search_return=результаты поиска
+search_sid=Действия пользователя $1 за сеанс $2
+search_critall=Все занесенные в журнал действия
+search_crit=Занесенные в журнал действия
+search_critu=пользователем $1
+search_critnu=всеми, кроме пользователя $1
+search_critm=из модуля $1
+search_critt=между $1 и $2
+search_critt2=$1
+search_config=Изменена конфигурация модуля
+search_etime=Неверная начальная или конечная дата
+search_err=Поиск не удался
+
+view_title=Информация о действии
+view_header=Подробная информация о занесенном в журнал действии $1
+view_action=Описание
+view_module=Модуль Webmin
+view_script=Создано сценарием
+view_user=Пользователь Webmin
+view_ip=IP или имя узла клиента
+view_sid=ID сеанса
+view_time=Дата и время
+view_nofiles=При этом действии не были зарегистрированы изменения файлов конфигурации
+view_type_create=Создан файл $1
+view_type_modify=Изменен файл $1
+view_type_delete=Удален файл $1
+view_type_exec=Выполнена команда
+view_type_sql=Выполнен запрос SQL в базе данных $1
+view_type_kill=Послан сигнал $1 процессу с PID $2
+view_type_symlink=Создана символьная ссылка $1 -&gt; $2
+view_type_unsymlink=Удалена символьная ссылка $1 -&gt; $2
+view_type_resymlink=Изменена символьная ссылка $1 -&gt; $2
+view_type_mkdir=Создан каталог $1
+view_type_rmdir=Удален каталог $1
+view_type_rename=$1 переименован в $2
+

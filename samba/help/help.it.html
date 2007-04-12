@@ -1,0 +1,185 @@
+<body bgcolor=#ffffff>
+<title>Samba Manager</title>
+<center><img src="images/samba.gif"></center><br>
+<h2><i>This help page is incomplete</i></h2>
+<hr>
+<h3>Introduction</h3>
+Samba is a freeware program that allows PC's running Windows 95 and NT
+to access files and printers on your Unix system, as though it is a
+Windows file/print server. Some Unix systems such as Redhat Linux include
+Samba as part of the standard installation, while most others require you
+to download and install it separately. <p>
+
+If you don't have Samba installed on your system, the module's main
+page will complain that it cannot find the Samba configuration file and
+you will be unable to share any files or directories. If you do have
+Samba installed but are getting this error message, check the 
+<a href="/config.cgi?samba">module configuration</a> to make sure that
+Webmin is looking in the right place for the configuration file and
+Samba programs. <p>
+
+Assuming Samba is installed properly, the module's main page will
+display a list of all the file and printer shares defined on your system.
+If Webmin determines that the Samba server is not running, you will be
+given the option of attempting to start the server. This may be necessary
+if Samba is not started at bootup time. <p>
+
+<hr>
+<h3>Creating a File Share</h3>
+A Samba file share is a directory that can be mounted by client PC's. Every
+share has a short name such as <tt>docs</tt> or <tt>www</tt>, which maps
+to some directory on your Unix system. A share is typically referred to
+by a client using the <tt>\\server\share</tt> notation. <p>
+
+To create a share, click on the <tt>Create File Share</tt> link below
+the list of existing shares on the main page. This will display a form
+allowing you to enter the details of the new share. Although Samba
+supports a large number of parameters for each share, the most important
+ones are:<p>
+<table border width=100%>
+<tr> <td><b>Share Name</b></td>
+<td>Every share must have a name, used by clients to refer to it. One
+special case is the <tt>All home directories</tt> share, explained later.
+</td> </tr>
+<tr> <td><b>Path</b></td>
+<td>The directory to be shared. Clients using this share can only access
+files in or below this directory.</td> </tr>
+<tr> <td><b>Writable</b></td>
+<td>Determines whether clients can write to files and directories in
+this share.</td> </tr>
+<tr> <td><b>Guest access</b></td>
+<td>If a share allows guest users, clients can access it without needing to
+provide a valid name and password. A share can either disallow guest users,
+allow guests and normal users, or allow guests only.</td></tr>
+</table>
+For information about other share options, see the <b>Advanced Options</b>
+section below. <p>
+
+Once you have entered the details of a new share and clicked the
+<tt>Create</tt> button, it will be immediately available to client PC's.
+Assuming everything is set up correctly on your network, users will be
+able to use the <tt>Network Neighbourhood</tt> function under Windows
+to see your server and all its shares. The newly created share can then
+be mapped to a drive letter on the PC. <p>
+
+<hr>
+<h3>Creating a Printer Share</h3>
+A Samba printer share is a local or remote Unix printer that you want
+to make available to PC clients. Like file shares, every printer share
+has a short name (like <tt>hp5si</tt>), and is referred to using the
+<tt>\\server\share</tt> notation. <p>
+
+To create a new printer share, click on the <tt>Create Printer Share</tt>
+like from the main page. This will display a form similar to the one
+used for creating file shares, in which you can enter the details of the
+new share. The most important options for a new printer share are :<p>
+<table border width=100%>
+<tr> <td><b>Share Name</b></td>
+<td>Every share must have a name, used by clients to refer to it. One
+special case is the <tt>All printers</tt> share, explained later.
+</td> </tr>
+<tr> <td><b>Printer</b></td>
+<td>The Unix printer to be shared. This can be any printer that you would
+print to using the <tt>lpr</tt> command.</td> </tr>
+<tr> <td><b>Path</b></td>
+<td>The directory in which temporary print files </td> </tr>
+<tr> <td><b>Guest access</b></td>
+<td>If a share allows guest users, clients can access it without needing to
+provide a valid name and password. A share can either disallow guest users,
+allow guests and normal users, or allow guests only.</td></tr>
+<tr> <td><b>Printer type</b></td>
+<td>The name of the printer driver that should be used for this printer.
+If you enter a value for this option and it matches a printer drive on
+client PCs, then users will not have to choose a printer driver when adding
+this printer.</td> </tr>
+</table><p>
+
+As with file shares, many more options are available for print shares.
+As soon as a printer share is added, it will be available to clients.
+Under Windows 95 and NT, a printer can be added using the <tt>Add Printer</tt> option in the printers control panel. Once added, the user
+can print to it like any local or network printer. <p>
+
+<hr>
+<h3>Creating a Copy</h3>
+
+
+<hr>
+<h3>Editing a Share</h3>
+To edit an existing share, click on its name from the list of shares on
+the main page. This will display the same form used for creating a share,
+allowing you to modify all options and parameters. To save your changes,
+click on the <tt>Apply</tt> button at the bottom-left of the page. <p>
+
+To delete a share, click on the <tt>Delete</tt> button at the bottom-right
+of the page. Existing users will not be immediately disconnected - however,
+no new users will be able to connect to the share. <p>
+
+
+<hr>
+<h3>Users and Security</h3>
+For shares that do not allow guest access, Samba expects the client
+to provide a username and password. Typically, these are checked against
+the Unix user list which can be updated by the <a href=/useradmin/>User
+Manager</a> module. Samba can also keep its own username and password list -
+see the <b>Encrypted Passwords</b> section for more details. <p>
+
+Some versions of Windows do not allow the user to provide a username when accessing a share - instead, the username provided when 'logging in' to
+Windows is used. If all client users login to Windows using the same
+username that they use for Unix, then this is not a problem. If not, you
+have 2 options:
+<ol>
+<li>Windows 95 and NT can mount a share manually, either by typing
+    <tt>net use <i>drive:</i> <i>share</i></tt> at the command prompt or by
+    clicking the map network drive button in a file window and entering
+    the share path. In both cases, the share can be in the format
+    <tt>\\server\share%user</tt>, where <i>user</i> is the username to
+    login to the server with. <p>
+<li>Samba can be configured to attempt to match the password provided
+    against a list of users, in order to find the correct username. 
+    The <tt>Unix users</tt> share option allows you to specify the users
+    or groups of users to check against. Beware that using this option
+    with a large number of users is not very secure, because 2 people may
+    have the same password. <p>
+</ul>
+
+<hr>
+<h3>Encrypted Passwords</h3>
+Normally, passwords sent over the network between a Samba server and PC
+clients are not encrypted. This is bad for 2 reasons :
+<ol>
+<li>Anyone can listen in on your network and capture other people's
+    passwords. <br>
+<li>The latest versions on Windows 9x and NT refuse to send passwords
+    unencrypted. Users trying to access your Samba server from these
+    systems will get an error message like <tt>???</tt>. This change
+    first appeared in NT service pack 3. <br>
+</ol><p>
+
+Fortunately, Samba can use encrypted passwords. However, it is not
+possible to match passwords sent by clients against the normal Unix
+password file because of the different forms of encryption used. For this
+reason, Samba must maintain its own list of users and passwords. <p>
+
+To switch Samba into encrypted password mode, you must:
+<ol>
+<li>Make sure your version of Samba supports password encryption. In
+    the <tt>Password Options</tt> page, set the <tt>Encrypted
+    passwords</tt> option to yes. If this fails, you will need to download
+    or compile a version with encrypted password support. <p>
+<li>Click on the <tt>Convert Unix users to Samba users</tt> link at the
+    bottom of the main page. This will take you to a page in which you
+    can convert some or all of your existing Unix users to Samba users.
+    Usernames, real names, UIDs and shells will be converted - but
+    passwords will not. <p>
+<li>To assign passwords to users, use the <tt>Edit Samba user list</tt>
+    option on the main page. This will display a list of all Samba users,
+    from which you can choose a user to edit. The password for each user
+    can either be <tt>Locked</tt> (no login allowed), <tt>No Password</tt>
+    (no password needed) or some password that you enter. <p>
+</ul>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Return to module</a><p>
+ 
+

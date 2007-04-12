@@ -1,0 +1,234 @@
+index_title=Configuraci&#243;n de QMail
+index_edir=El directorio base de QMail $1 no existe. Quiz&#225;s no est&#225; instalado o tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
+index_edir2=El directorio $1 no parece ser el directorio base de QMail. Quiz&#225;s no est&#225; instalado o tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
+index_return=Configuraci&#243;n de QMail
+index_stop=Parar los Procesos de QMail
+index_stopmsg=Haz click en este bot&#243;n para parar los procesos en segundo plano de QMail responsables de la entrega de correo en cola. Sin estos procesos, el correo no ser&#225; enviado o entregado a tu sisetma de forma adecuada.
+index_start=Arrancar Procesos de QMail
+index_startmsg=Haz click en este bot&#243;n para arrancar los procesos de segundo plano de QMail responsables de la entrega de correo en cola. Sin estos procesos, el correo no ser&#225; enviado o entregado a tu sistema de forma adecuada.
+
+opts_title=Opciones de QMail
+opts_me=Nombre de m&#225;quina local
+opts_helo=Nombre de m&#225;quina para HELLO SMTP
+opts_toconnect=Tiempo m&#225;ximo para conexi&#243;n SMTP
+opts_secs=segundos
+opts_toremote=Tiempo m&#225;ximo para respuesta saliente SMTP
+opts_bytes=M&#225;xima medida de mensaje
+opts_unlimited=Ilimitada
+opts_timeout=Tiempo m&#225;ximo para datos entrantes SMTP
+opts_localip=Nombre de m&#225;quina para enviar correo a direcciones IP locales
+opts_greet=Mensaje de saludo SMTP
+opts_err=No pude salvar opciones de QMail
+opts_eme=Nombre de m&#225;quina local inv&#225;lido
+opts_etoconnect=Tiempo m&#225;ximo de conexi&#243;n SMTP inv&#225;lido
+opts_etoremote=Tiempo m&#225;ximo de respuesta saliente SMTP inv&#225;lido
+opts_ebytes=Medida m&#225;xima de mensaje inv&#225;lida
+opts_etimeout=Tiempo m&#225;ximo de datos entrantes SMTP inv&#225;lido
+opts_elocalip=Nombre de m&#225;quina de direcci&#243;n local IP inv&#225;lido
+
+aliases_title=Aliases de Correo
+aliases_addr=Direcci&#243;n
+aliases_to=Alias de...
+aliases_type1=Direcci&#243;n $1
+aliases_type2=Directorio de correo $1
+aliases_type3=Archivo de correo $1
+aliases_type4=Programa $1
+aliases_type5=Archivo de autorespuesta $1
+aliases_type6=Aplicar archivo de filtro $1
+aliases_none=Ninguno
+aliases_return=lista de alias
+aliases_toomany=Hay demasiados aliases de correo en tu sistema para que quepan en esta p&#225;gina.
+aliases_go=Hallar aliases que coincidan:
+
+aform_type0=Ninguno
+aform_type1=Direcci&#243;n de Email
+aform_type2=Directorio de correo
+aform_type3=Archivo de correo
+aform_type4=Alimentar a programa
+aform_type5=Autoresponder desde archivo
+aform_type6=Aplicar archivo de filtro
+aform_edit=Editar Alias
+aform_create=Crear Alias
+aform_name=Direcci&#243;n
+aform_val=Alias de
+aform_afile=Editar...
+aform_novirt=&lt;Todos los dominios&gt;
+aform_return=alias
+
+asave_err=No pude salvar alias
+asave_eaddr='$1' no es una direcci&#243;n v&#225;lida
+asave_ealready=Ya existe un alias para '$1'
+asave_etype1='$1' no es una direcci&#243;n de email v&#225;lida
+asave_etype2='$1' no es un directorio v&#225;lido de correo
+asave_etype3='$1' no es un nombre de archivo de correo v&#225;lido
+asave_etype4='$1' no es un programa v&#225;lido o no existe
+asave_etype5=El archivo de autorespuesta $1 no es v&#225;lido
+asave_etype4none=No se ha digitado programa
+asave_etype6=El archivo de filtro '$1' no es v&#225;lido
+
+boxes_title=Buzones de Usuario
+
+locals_title=Dominios Locales
+locals_domains=Dominios locales para este servidor
+locals_desc=Qmail aceptar&#225;, para entrega a usuarios locales, email para los dominios y nombres de m&#225;quina listados en la caja de edici&#243;n de la izquierda. Si deseas que tu servidor de correo maneje m&#250;ltiples dominios de email, los deber&#237;as de poner en este formulario.
+locals_only=S&#243;lo nombre de m&#225;quina local $1
+locals_sel=Los dominios listados debajo...
+
+rcpts_title=Dominios Aceptados
+rcpts_domains=Dominios locales y de retransmisi&#243;n aceptados
+rcpts_all=Cualquier dominio
+rcpts_sel=Los dominios listados debajo...
+rcpts_desc=Qmail aceptar&#225; para entrega local y de retransmisi&#243;n s&#243;lo el correo para dominios y nombres de m&#225;quinas listados en la caja de edici&#243;n de la izquierda. Tambi&#233;n puedes digitar comodines que coincidan con todas las m&#225;quinas de un dominio como <tt>.foo.com</tt>. Si deseas que tu servidor de correo retransmita el correo para los clientes, debes de aceptar correo desde cualquier dominio.
+rcpts_domains2=Dominios locales y de retransmisi&#243;n adicionales
+rcpts_desc2=Si dispones de un gran n&#250;mero de dominios aceptados, los menos utilizados deber&#237;an de ser puestos en esta caja de edici&#243;n. En general, tus primeros 50 dominios autorizados deber&#237;an de digitarse en la caja superior de edici&#243;n y el resto en &#233;sta.
+
+bads_title=Direcciones Rechazadas
+bads_addresses=Direcciones de emal rechazadas
+bads_desc=QMail rechazar&#225; el correo para entregar o retransmitir desde cualquiera de las direcciones listadas en la caja de edici&#243;n de la izquierda, la cual se debe de digitar como <tt>nombre_de_suario@nombre_de_dominio</tt>. Si deseas rechazar el correo de todo el dominio, deber&#237;a de digitarse como <tt>@nombre_de_dominio</tt>.
+
+routes_title=Enrutamiento de Dominio
+routes_toomany=Hay demasiadas rutas de dominio en tu sistema como para que quepan en esta p&#225;gina.
+routes_go=Hallar rutas de dominio que coincidan con:
+routes_from=Correo para dominio
+routes_to=Enviar a trav&#233;s de servidor
+routes_direct=Entregar dir&#233;ctamente
+routes_defroute=Entregar todo el otro correo saliente a traves de:
+routes_return=rutas de dominio
+
+rform_edit=Editar Ruta de Dominio
+rform_create=Crear Ruta de Dominio
+rform_from=Correo para m&#225;quina o dominio
+rform_to=Enviar a trav&#233;s de servidor SMTP
+rform_port=Puerto SMTP
+
+rsave_err=No pude salvar ruta de dominio
+rsave_efrom='$1' no es un nombre v&#225;lido de dominio
+rsave_eto='$1' no es un servidor STMP v&#225;lido
+rsave_eport='$1' no es un n&#250;mero de puerto v&#225;lido
+
+percents_title=Dominios de % de Direcci&#243;n
+percents_domains=Dominios que soportan % de direcciones
+percents_desc=QMail aceptar&#225; email con direcciones en el formato <tt>usuario%primer_dominio@segundo_dominio</tt> si el <tt>segundo_dominio</tt> aparece listado en la caja de edici&#243;n de la izquierda. Los mensajes con este formato ser&#225;n luego reenviados sobre el <tt>usuario@primer_dominio</tt> mediante este servidor de correo.
+
+virts_title=Mapeos Virtuales
+virts_toomany=Hay demasiados mapeos virtuales en tu sistema como para que quepan en est p&#225;gina.
+virts_go=Hallar mapeos virtuales que coincidan con:
+virts_from=Correo para
+virts_prepend=Prefijo a a&#241;adir
+virts_all=Todas las direcciones
+virts_none=No virtual
+virts_desc=Los mapeos virtuales son usados por QMail para manejar email a diferentes dominios en tu servidor, mediante el a&#241;adido de texto a la parte del usuario de la direcci&#243;n de email antes de realizar procesos posteriores. Puedes usarlos para configurar dominios de correo virtual mediante la creaci&#243;n de un nuevo mapeo vitual para un dominio, luego usando la p&#225;gina de <a href='$1'>Aliases de Correo</a> para crear aliases dentro de ese dominio.
+virts_return=mapeos vituales
+
+vform_edit=Editar Mapeo Virtual
+vform_create=Crear Mapeo Vitural
+vform_from=Correo para direcci&#243;n
+vform_all=Cualquier direcci&#243;n que no coincida con otro mapeo virtual
+vform_domain=Direcciones con dominio
+vform_user=Direcci&#243;n
+vform_to=Prea&#241;adir a nombre de usuario
+vform_none=Nada
+vform_prepend=Prefijo especificado
+vform_auto=Prefijo seleccionado autom&#225;ticamente
+
+vsave_err=No pude salvar mapeo virtual
+vsave_edomain='$1' no es un dominio de email v&#225;lido
+vsave_euser='$1' no es un nombre de usuario de email v&#225;lido
+vsave_eprepend='$1' no es un prefijo de mapeo v&#225;lido
+vsave_eboth=No puedes seleccionar ambos '$vform_all' y '$vform_none'
+
+stop_err=el proceso de qmail-send ya no est&#225; en ejecuci&#243;n
+
+log_stop=Parados procesos de QMail
+log_start=Arrancados procesos de QMail
+log_opts=Cambiadas opciones de QMail
+log_alias_create=Creado alias $1
+log_alias_delete=Borrado alias $1
+log_alias_modify=Modificado alias $1
+log_virt_create=Creado mapeo virtual $1
+log_virt_delete=Borrado mapeo virtual $1
+log_virt_modify=Modificado mapeo virtual $1
+log_virtall_create=Creado mapeo virtual para todo
+log_virtall_delete=Borrado mapeo virtual para todo
+log_virtall_modify=Modificado mapeo virtual para todo
+log_locals=Cambiados dominios locales
+log_rcpts=Cambiados dominios aceptados
+log_bads=Cambiadas direcciones rechazadas
+log_percents=Cambiados dominios de % de direcci&#243;n
+log_route_create=Creada ruta para $1
+log_route_delete=Borrada ruta para $1
+log_route_modifed=Modificada ruta para $1
+log_defroute=Modificada ruta por defecto
+log_assign_create=Creado usuario de correo $1
+log_assign_delete=Borrado usuario de correo $1
+log_assign_modifed=Modificado usuario de correo $1
+
+rfile_title=Editar Archivo de Autorespuesta
+rfile_desc=Usa la caja de texto inferior para editar el mensaje de autorespuesta en $1. El mensaje puede contener las macros $SUBJECT, $FROM, $TO, $DATE y $BODY que ser&#225;n expandidas cuando se active la autor&#233;plica.
+rfile_efile=No est&#225;s autorizado a editar $1.
+rfile_undo=Deshacer Cambios
+
+ffile_title=Editar Archivo de Filtro
+ffile_desc=Usa el formulario inferior para configurar las reglas de filtro en el archivo $1.
+ffile_efile=No est&#225;s autorizado a editar $1.
+ffile_line=Si el campo $1 $2 $3 luego remite a $4
+ffile_from=desde
+ffile_to=a
+ffile_subject=asunto
+ffile_cc=CC
+ffile_body=cuerpo
+ffile_what0=no coincide
+ffile_what1=coincide
+ffile_other=En caso contrario, remite a $1
+ffile_err=No pude salvar archivo de filtro
+ffile_ematch=Falta coincidencia
+ffile_eaction=Falta direcci&#243;n de remisi&#243;n
+
+queue_title=Cola de Correo
+queue_none=No hay mensajes de correo en este momento en cola para su entrega
+queue_id=ID de Correo
+queue_date=Enviado
+queue_from=Desde
+queue_to=A
+queue_cc=Cc
+queue_subject=Asunto
+queue_return=cola de correo
+queue_delete=Borrar mensajes seleccionados
+queue_all=Seleccionar todos
+queue_invert=Invertir selecci&#243;n
+
+view_title=Mensaje en Cola
+view_desc=Desde archivo $1
+view_headers=Cabeceras de Correo
+view_attach=Adjuntos
+
+assigns_title=Asignaciones de Usuario de Correo
+assigns_return=asignaciones de usuario de correo
+assigns_toomany=Hay demasiados usuarios de correo en tu sistema como para que quepan en esta p&#225;gina.
+assigns_go=Hallar usuarios de correo que coincidan con:
+assigns_address=Enviar correo a direcci&#243;n
+assigns_user=Usuario de Unix
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Directorio inicial
+assigns_desc=Las asignaciones de usuario de correo te permiten crear buzones para usuarios que no est&#225;n definidos en la lista de usuarios de Unix. Cada asignaci&#243;n entregar&#225; el correo para un nombre de usuario o modelo de nombre de usuario como si fuera entregado a un buz&#243;n real de usuario de Unix.
+
+sform_edit=Editar usuario de correo
+sform_create=Crear usuario de correo
+sform_address=Nombre de usuario de direcci&#243;n
+sform_mode0=Nombre de usuario exacto
+sform_mode1=Nombres de usuario que empiecen por
+sform_user=Usuario de Unix
+sform_uid=UID
+sform_gid=GID
+sform_home=Directorio inicial
+
+ssave_err=No pude salvar usuario de correo
+ssave_eaddress=El nombre de usuario de direcci&#243;n falta o es inv&#225;lido
+ssave_euser=El usuario de Unix falta o es inv&#225;lido
+ssave_euid=La UID falta o es inv&#225;lida
+ssave_egid=La GID falta o es inv&#225;lida
+ssave_ehome=El directorio inicial falta o es inv&#225;lido
+
+delete_egone=Ya no existe el mensaje en cola
+

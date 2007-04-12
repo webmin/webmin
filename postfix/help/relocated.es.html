@@ -1,0 +1,35 @@
+<header>Mapeo Relocalizado</header>
+
+
+El fichero opcional de relocalizaciones proporciona información usada en
+los mensajes rebotados &quot;el usuario se ha mudado a una nueva
+localización&quot;.
+
+<p>
+
+Las búsquedas en la tabla no tienen en cuenta mayúsculas y minúsculas.
+
+<p>
+
+El campo &quot;Mapeado a...&quot; especifica la información de contacto tal
+como dirección de correo electrónico, o quizás la dirección postal o número
+de teléfono. Es una de las siguientes:
+<ul>
+<li><tt>usuario@dominio</tt>: Coincide con <tt>usuario@dominio</tt> . Esta
+    forma tiene precedencia sobre las demás formas.
+
+<li><tt>usuario</tt>: Coincide con <tt>usuario@sitio</tt> cuando el sitio
+    es <tt>$myorigin</tt>, cuando el sitio está listado en 
+    <tt>$mydestination</tt>, o cuando el sitio está listado en 
+    <tt>$inet_interfaces</tt> .
+
+<li><tt>@dominio</tt>: Coincide con cada dirección del dominio. Esta forma
+     tiene la preferencia más baja.
+</ul>
+
+EXTENSION DE DIRECCION: Cuando falla la búsqueda y la parte local de la
+dirección contiene el delimitador opcional de destinatario (por ejemplo
+<tt>usuario+foo@dominio</tt>), se repite la búsqueda para la dirección no
+extendida (en el ejemplo, <tt>usuario@dominio</tt>).
+
+<hr>

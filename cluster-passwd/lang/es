@@ -1,0 +1,6 @@
+index_hosts=Todos los cambios de contrase&#241;a realizados utilizando este m&#243;dulo se realizar&#225;n en todos los $1 hosts controlados por el m&#243;dulo Cluster-Usuarios y Grupos
+index_noservers=No se han definido servidores en los que controlar usuarios en el m&#243;dulo <a href=$1>Cluster-Usuarios y Grupos</a>
+index_title=Cluster-Cambio de Contrase&#241;as
+passwd_err=Fallo al cambiar contrase&#241;a
+passwd_on=Cambiando contrase&#241;a en $1 ..
+passwd_title=Cambiando Contrase&#241;a

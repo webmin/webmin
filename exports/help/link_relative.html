@@ -1,0 +1,10 @@
+<header>Make symbolic links relative?</header>
+
+<i>This is a NFSv2-specific option.</i><br>
+Converts absolute symbolic links seen by the client to relative links.<br>
+For example, if the directory <tt>/usr</tt> was exported, a link from
+<tt>/usr/local/bin</tt> to <tt>/usr/X11R6/bin</tt> would be converted to
+<tt>../X11R6/bin</tt>. This makes a lot more sense if the client is
+mounting the directory somewhere else than <tt>/usr</tt>.<br>
+<br><i>exportfs option: link_relative</i>
+<hr>

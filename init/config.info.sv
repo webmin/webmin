@@ -1,0 +1,13 @@
+expert=Tillåt individuella körnivåer,1,1-Ja,0-Nej
+desc=Visa funktioner med beskrivningar,1,1-Ja,0-Nej
+init_base=Katalog för körnivå-kataloger,0
+init_dir=Katalog för master-init-script,0
+soft_links=Länktyp för körnivå-filer,1,0-Hård,1-Mjuk
+order_digits=Antal siffror i utförandeordning,0
+local_script=Lokalt startkommandoscript,3
+reboot_command=Kommando för att starta om systemet,0
+shutdown_command=Kommando för att stänga av systemet,0
+start_stop_msg=Systemet stödjer omstarts-/avstängningsmeddelanden,1,0-Nej,1-Ja
+inittab_id=inittab-ID för startkörnivå,0
+daemons_dir=Katalog för Caldera-demoner,3,Ingen
+status_check=Visa aktuell funktionsstatus,1,2-På index- och funktionssidor,1-Endast på funktionssidor,0-Nej

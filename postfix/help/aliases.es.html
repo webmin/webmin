@@ -1,0 +1,32 @@
+<header>Aliases de Correo</header>
+
+Los aliases suministran un amplio mecanismo para redirigir correo a
+receptores locales.
+
+<p>
+
+El campo <tt>Alias a...</tt> contiene una o más de las siguientes, separadas
+por coma:
+
+<ul><li><tt>direcciones</tt>: El correo es remitido a <tt>direcciones</tt>,
+lo cual es compatible con el estándar RFC 822.
+
+<li><tt>/archivo/nombre</tt>: El correo es añadido a <tt>/archivo/nombre</tt>. Mira
+en local(8) para detalles sobre la entrega a archivo. La entrega no está limitada a
+archivos regulares. Por ejemplo, para quitarte correo no deseado, envíalo a
+<tt>/dev/null</tt>.
+
+<li><tt>|comando</tt>: El correo es entubado a <tt>comando</tt>. Los comandos que
+cotienen caracteres especiales, como espacios en blanco, deberían de ser encerrados
+entre comillas. Mira en local(8) para detalles sobre la entrega a comando.
+Cuando el comando falla, una cantidad limitada de salida del comando es
+enviada de vuelta al remitente.
+
+<li><tt>:incluir:/archivo/nombre</tt>: El correo es enviado a los destinos listados
+el el nombre de archivo. Las líneas en los archivos <tt>:incluir:</tt> tienen
+la misma sintáxis que la parte derecha de las entradas de alias.
+
+</ul>
+
+<hr>
+

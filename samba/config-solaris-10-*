@@ -1,0 +1,13 @@
+list_printers_command=ls /etc/lp/printers
+smb_passwd=/etc/sfw/private/smbpasswd
+text_lists=0
+dont_convert=-499 root daemon bin sys adm lp smtp uucp nuucp listen nobody noaccess nobody4
+name_server=/usr/sfw/sbin/nmbd
+smb_conf=/etc/sfw/smb.conf
+alt_smb_conf=/etc/sfw/smb.conf-example
+samba_server=/usr/sfw/sbin/smbd
+run_from_inetd=0
+samba_password_program=/usr/sfw/bin/smbpasswd
+samba_status_program=/usr/sfw/bin/smbstatus
+swat_path=/usr/sfw/bin/swat
+sort_mode=0

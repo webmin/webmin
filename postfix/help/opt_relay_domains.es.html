@@ -1,0 +1,31 @@
+<header>Restringir el reenvío de correo</header>
+
+<center><tt>relay_domains</tt></center>
+<hr>
+
+Este parámetro restringe a qué dominios de clientes (y por lo tanto
+subdominios del anterior) permitirá el sistema de correo reenviar correo, y
+limita los dominios de destino (y por lo tanto subdominios del anterior) 
+hacia los cuales permitirá reenviar correo.
+
+<p>
+
+<include relay_rules>
+<p>
+
+Especifique una lista de máquinas o dominios, patrones en
+<tt>/fichero/nombre</tt> o tablas de búsqueda <tt>tipo:nombre</tt>,
+separadas por comas y/o espacios en blanco. Si indica un nombre de fichero
+se sustituirá por los contenidos del mismo, si indica una tabla
+<tt>tipo:nombre</tt> coincidirá cuando un dominio (padre) aparezca como
+clave de búsqueda.
+
+<p>
+
+NOTA: Postfix no reenviará automáticamente el correo de los dominios que
+tengan a este sistema como su servidor MX primario o de respaldo. Vea la
+restricción <tt>permit_mx_backup</tt> en la descripción del parámetro <a
+href=opt_smtpd_recipient_restrictions><tt>smtpd_recipient_restrictions</tt>.
+
+
+<hr>

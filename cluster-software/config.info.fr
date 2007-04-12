@@ -1,0 +1,1 @@
+sort_mode=Trier les hôtes par,1,1-Nom d'hôte,0-Ordre d'ajout,2-Description

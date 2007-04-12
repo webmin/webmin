@@ -1,0 +1,14 @@
+<header>Tidsgräns för svar på meddelandeöverföring</header>
+
+<center><tt>smtp_data_xfer_timeout</tt></center>
+<hr>
+
+Denna parameter anger hur lång tid (i sekunder) som SMTP-klienten har på
+sig att skicka innehållet i SMTP-meddelandet. Om förbindelsen hänger sig
+längre än <tt>$smtp_data_xfer_timeout</tt> avbryter SMTP-klienten
+överföringen.
+
+<p>Om problem uppstår kommer klienten INTE att testa nästa adress i
+mail exchanger-listan.
+
+<hr>

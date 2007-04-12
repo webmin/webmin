@@ -1,0 +1,57 @@
+index_title=Ordres Planificades
+index_header=Nova ordre programada
+index_user=Executa com a usuari
+index_date=Executa el dia
+index_time=Executa a l'hora
+index_cmd=Ordres per executar
+index_id=ID del treball
+index_exec=Executa a
+index_created=Creat el
+index_dir=Executa al directori
+index_return=a la llista d'ordres
+index_cdate=Data actual
+index_ctime=Hora actual
+index_allow=Usuaris d'ordres planificades permesos
+index_amode=Usuaris permesos
+index_amode0=Tos els usuaris Unix
+index_amode1=Només els usuaris llistats...
+index_amode2=Tots excepte els usuaris llistats...
+index_delete=Cancel·la les Ordres Seleccionades
+
+edit_title=Ordre Planificada
+edit_cmd=Script complet per executar
+edit_header=Detalls de l'ordre planificada
+edit_delete=Cancel·la aquesta ordre
+edit_run=Executa-ho Ara
+edit_ejob=L'ordre planificada ja no existeix!
+edit_ecannot=No tens permís per editar aquesta ordre planificada
+
+create_err=No he pogut crear l'ordre planificada
+create_euser=Hi falta el nom d'usuari o bé no és vàlid
+create_edate=Hi falta la data o l'hora, o bé no és vàlida
+create_ecmd=No has introduït cap ordre
+create_efuture=La data i hora són passades
+create_edir=Hi falta el directori o bé no és vàlid
+create_ecannot=No tens permís per crear ordres planificades per a aquest usuari
+create_eallow=L'usuari especificat no té permís per executar ordres planificades
+
+delete_err=No he pogut cancel·lar l'ordre
+delete_egone=Ordre ja executada o suprimida
+
+acl_users=Pot editar les ordres programades de
+acl_all=Tots els usuaris
+acl_this=L'usuari Webmin actual
+acl_only=Només els usuaris
+acl_except=Tots excepte els usuaris
+acl_allow=Pot editar els usuaris At permesos
+
+run_title=Execució de l'Ordre
+run_output=Sortida de l'ordre programada...
+run_none=No s'ha generat cap sortida
+
+allow_err=No he pogut desar els usuaris permesos
+allow_ecannot=No tens permís per gestionar els usuaris permesos
+allow_eusers=No has introduït cap usuari
+
+deletes_err=No he pogut cancel·lar les ordres
+deletes_enone=No has seleccionat cap ordre

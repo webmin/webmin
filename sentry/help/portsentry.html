@@ -1,0 +1,53 @@
+<header>Portsentry Configuration</header>
+
+Portsentry is a program designed to detect and repond to port scans against
+a target host in real time. It can do this in two ways - by listening on
+a set of selected ports (basic mode), or by monitoring all ports below
+a choice number. When a connection on one of the monitored ports is
+detected, Portsentry records the event in the logs and optionally
+takes action to block all further traffic from the connecting host. <p>
+
+The options on this page are :
+<ul>
+<li><b>TCP ports to monitor</b><br>
+    When in basic mode, Portsentry will listen on all the TCP ports listed in
+    the first line for this option. In advanced mode, it will listen on
+    all ports below the number entered on the second line, excluding those
+    listed in the 'except' field. <p>
+    
+<li><b>UDP ports to monitor</b><br>
+    Like the TCP ports option, but controls which UDP ports are monitored. <p>
+
+<li><b>Block TCP probes</b><br>
+    This option controls what action Portsentry takes when it detects a
+    TCP connection to one of the monitored ports. The choices are
+    Yes (block future connections from the host), No (do nothing), or
+    Run kill command (run a command specified in the config file). In all
+    cases, the connection will be recorded in the system logs. <p>
+
+<li><b>Block UDP probes</b><br>
+    Like the Block TCP probes option, but controls what happens when a UDP
+    connection is detected. <p>
+
+<li><b>Message for blocked connections</b><br>
+    When Portsentry is listening on a port, any connection received will
+    have this message send back before the connection is closed. <p>
+
+<li><b>Number of connections before triggering blocking</b><br>
+    The number of 'grace' connections that a host is allowed to make to
+    a monitored port before the host is blocked. If this is set to zero,
+    the first connection will trigger blocking. <p>
+
+<li><b>Hosts to ignore traffic from</b><br>
+    The IP addresses, hostnames or IP address/netmasks of hosts and networks
+    from which traffic is ignored. <p>
+
+</ul>
+
+At the bottom of the page is a button for either starting Portsentry (if it
+is not running), or stopping it (if it is running). Because Portsentry runs
+as a pair of background processes (or daemon), if it is not running no
+monitoring of port scans will be done. <p>
+
+<hr>
+

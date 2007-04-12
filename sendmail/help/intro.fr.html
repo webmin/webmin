@@ -1,0 +1,13 @@
+<header> Configuration de Sendmail</header>
+
+<h3>Introduction à Sendmail</h3>
+Sendmail est l'application standard sous Unix de transport et de livraison de couriel.  Quand un usager sur votre système veut envoyer un couriel à quelqu'un d'un autre hôte, Sendmail est le programme qui fait le processus d'envoyer le couriel.  De la même façon, quand quelqu'un d'un autre système envoie un couriel à un de vos usager, Sendmail le reçoit et le sauvegarde dans le fichier de l'usager.<p>
+
+Sendmail est un MTA (mail transport agent) seulement, ce qui signifie qu'il ne présente aucune interface aux personnes qui veulent envoyer de couriel.  Des applications Eudora, elm ou /bin/mail sont ce qui interagit avec l'utilisateur, ils sont appelés MUA (mail user agents).  Un MUA ne livre pas les couriel en lui-même, il simplifie l'envoie de couriel à Sendmail pour qu'il le livre.<p>
+
+Les MUA des usagers peuvent s'exécuter directement sur votre système (comme pine, elm ou /bin/mail), ou sur un hôte séparé qui peut être un PC d'un simple usager ( comme Eudora, Exchange et Netscape Communicator).  Dans le premier cas, le couriel peut être envoyé directement à Sendmail et reçu dans le fichier usager de file d'attente.  Pour les MUA sur d'autre hôtes, les couriel sont envoyé en se connectant au processus de Sendmail utilisant le protocole SMTP et en les recevants en se connectant sur un serveur à part POP3.<p>
+
+<h3>Le Module Sendmail</h3>
+La page principale de ce module affiche une table avec des icônes, chacun pour configurer une partie différente des fonctionnalités de Sendmail.  Cependant, certaine fonction derrière certains icônes peuvent ne pas être disponibles, s'ils n'ont pas été configuré dans <tt>sendmail.cf</tt>.  Au moment d'installer Sendmail, vous pouvez choisir quel fonctions seront disponible en éditant <tt>.mc</tt>, qui est converti par <tt>m4</tt> en votre <tt>sendmail.cf</tt>.  Plusieurs fonctions (comme les plans d'adresse, le camouflage de domaine et le contrôle de spam) peuvent ne pas être disponible tant que vous ne les activé pas au moment de l'installation.<p>
+
+<hr>

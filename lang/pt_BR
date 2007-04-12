@@ -1,0 +1,210 @@
+main_return=Voltar à $1
+main_homepage=Página Inicial
+main_feedback=Comentários ..
+main_switch=Trocar usuário ..
+main_switch=Trcar usuário ..
+main_version=Versão $1 em $2 ($3)
+main_title=Webmin $1 no servidor $2 ($3)
+main_title2=Webmin
+main_none=Você não tem acesso a nenhum módulo Webmin.
+main_skill=Nível de Habilidade
+
+category_servers=Servidores
+category_hardware=Hardware
+category_system=Sistema
+category_webmin=Webmin
+category_net=Rede
+category_syslet=Syslets
+category_cluster=Cluster
+category_info=Informação
+category_=Outros
+
+header_webmin=Índice do Webmin
+header_module=Índice do Módulo
+header_help=Ajuda ..
+header_config=Configuração do Módulo
+header_servers=Servidores Webmin
+
+index=índice
+yes=Sim
+no=Não
+save=Salvar
+create=Criar
+delete=Remover
+find=Procurar
+error=Erro
+efilewrite=Falha ao gravar em $1 : $2
+default=Padrão
+modify=Mudar
+reset=Zerar
+ok=OK
+cancel=Cancelar
+helpsearch=Procurar nos Documentos ..
+switch_remote_euser=O usuário Unix $1 não existe.
+programname=Webmin
+
+chooser_title1=Escolher Arquivo ..
+chooser_title2=Escolher Diretório ..
+chooser_dir=Diretório de $1
+chooser_ok=Ok
+
+users_title1=Selecionar Usuários ..
+users_title2=Selecionar Usuário ..
+users_sel=Usuários Selecionados
+users_all=Todos os Usuários
+users_ok=Ok
+users_cancel=Cancelar
+users_clear=Limpar
+
+groups_title1=Selecionar Grupos ..
+groups_title2=Selecionar Grupo ..
+groups_all=Todos os Grupos
+groups_sel=Grupos Selecionados
+groups_ok=Ok
+groups_cancel=Cancelar
+groups_clear=Limpar
+
+config_ecannot=Você não permissão para configurar este módulo
+config_title=Configuração
+config_dir=Para o módulo $1
+config_header=Opções configuráveis para $1
+config_none=Nenhum
+config_eaccess=Você não permissão para acessar este módulo
+config_err=Falha ao gravar configuração
+config_nochange=Nãu mudar
+config_setto=Definir para
+
+help_err=Falha ao exibir a ajuda
+help_epath=Caminho de ajuda faltando ou inválido
+help_efile=Falha ao ler arquivo de ajuda $1
+help_eheader=Faltando seção &lt;header&gt;
+help_einclude=Falha ao incluir $1
+help_eif=$1 falhou : $2
+help_eexec=$1 falhou : $2
+
+referer_title=Aviso de Segurança
+referer_warn=<b>Aviso !</b> O Webmin detectou que o programa $2 foi chamado a partir da URL $1, a qual parece estar fora do servidor Webmin. Isto pode ser uma tentativa de fazer com que seu servidor execute um comando perigoso.
+referer_warn_unknown=<b>Aviso !</b> O Webmin detectou que o programa $1 foi chamado a partir de uma URL que parece estar fora do servidor Webmin. Isto pode ser uma tentativa de fazer com que seu servidor execute um comando perigoso.
+referer_ok=Continuar executando o programa Webmin
+referer_again=Não exibir este aviso no futuro.
+
+session_header=Login no Webmin
+session_mesg=Você deve informar um nome de usuário e uma senha para se logar no servidor Webmin em $1.
+session_mesg2=Você deve informar um nome de usuário e uma senha para se logar.
+session_user=Nome de usuário
+session_pass=Senha
+session_login=Login
+session_clear=Limpar
+session_failed=O login falhou. Por favor tente novamente.
+session_logout=O logout foi feito com sucesso. Utilize o formulário abaixo para se logar novamente.
+session_timed_out=A sessão expirou após de $1 minutos de inatividade.
+session_save=Lembrar login permanentemente ?
+
+acl_root=Diretório raíz do selecionador de arquivos
+acl_home=Diretório pessoal do usuário
+acl_uedit=Usuários visíveis no selecionador de usuários
+acl_uedit_all=Todos os usuários
+acl_uedit_none=Nenhum usuário
+acl_uedit_only=Somente os usuários
+acl_uedit_except=Todos os usuários exceto
+acl_uedit_uid=Usuários com UIDs na faixa
+acl_uedit_group=Usuários com grupo
+acl_gedit=Grupos visíveis no selecionador de grupos
+acl_gedit_all=Todos os grupos
+acl_gedit_none=Nenhum grupo
+acl_gedit_only=Somente os grupos
+acl_gedit_except=Todos os grupos exceto
+acl_gedit_gid=Grupos com GIDs na faixa
+acl_feedback=Pode enviar mensagem de comentários (feedback) ?
+acl_feedback2=Sim
+acl_feedback1=Sim, mas não com arquivos de configuração
+acl_feedback0=Não
+acl_rpc=Pode aceitar chamadas RPC ?
+acl_rpc2=Somente para o <tt>root</tt> ou <tt>admin</tt>
+acl_rpc1=Sim
+acl_rpc0=Não
+
+month_1=Janeiro
+month_2=Fevereiro
+month_3=Março
+month_4=Abril
+month_5=Maio
+month_6=Junho
+month_7=Julho
+month_8=Agosto
+month_9=Setembro
+month_10=Outubro
+month_11=Novembro
+month_12=Dezembro
+
+day_0=Domingo
+day_1=Segunda
+day_2=Terça
+day_3=Quarta
+day_4=Quinta
+day_5=Sexta
+day_6=Sábado
+
+smonth_1=Jan
+smonth_2=Fev
+smonth_3=Mar
+smonth_4=Abr
+smonth_5=Mai
+smonth_6=Jun
+smonth_7=Jul
+smonth_8=Ago
+smonth_9=Set
+smonth_10=Out
+smonth_11=Nov
+smonth_12=Dez
+
+sday_0=Dom
+sday_1=Seg
+sday_2=Ter
+sday_3=Qua
+sday_4=Qui
+sday_5=Sex
+sday_6=Sáb
+
+emodule=Acesso negado : Usuário $1 não permissão para usar o módulo $2
+elock_tries=Falha ao travar arquivo $1 após $2 minutos
+
+skill_high=Expert
+skill_medium=Intermediário
+skill_low=Iniciante
+
+feedback_title=Comentários sobre o Webmin
+feedback_desc=Este formulário lhe permite reportar bugs ou fazer sugestões para os desenvolvedores do Webmin sobre quaisquer problemas ou características que você acha que estejam faltando. Quando o botão Enviar for clicado os detalhes informados no formulário serão enviados por e-mail para $1.
+feedback_desc2=Este comentário será enviado para o desenvolvedor do Usermin e não para seu administrador de sistemas, seu provedor de acesso à Internet ou para sua companhia de hospedagem. Por favor escreva seus comentários em inglês, mesmo que você esteja usando o Webmin em outro idioma no momento.
+feedback_header=Detalhes do comentário
+feedback_name=Seu nome
+feedback_email=Seu endereço de e-mail
+feedback_module=Sobre módulos
+feedback_all=Todos os módulos
+feedback_text=Dscrição do problema ou sugestão
+feedback_os=Incluir detalhes do sistema operacional no e-mail ?
+feedback_osdesc=Caso esta opção esteja selecionada, o e-mail automático de comentários incluirá o nome e a versão de seu sistema operacional.
+feedback_config=Incluir a configuração de módulos no e-mail ?
+feedback_configdesc=Caso esta opção esteja selecionada, e e-mail incluirá a configuração dos módulos relacionados e o conteúdo de arquivos de configuração que estes módulos utilizam. Por exemplo, caso o comentário esteja relacionado ao módulo <i>Usuários e Grupos</i>, seus arquivos <tt>/etc/passwd</tt> e <tt>/etc/shadow</tt> serão enviados.
+feedback_attach=Arquivos adicionais a serem enviados
+feedback_send=Enviar comentário
+feedback_mailserver=Enviar através de servidor SMTP
+feedback_mailserver_def=Programa sendmail local
+feedback_err=Falha ao enviar comentário
+feedback_emodule=Você escolheu enviar configuração de módulos no e-mail mas não selecionou um módulo.
+feedback_emodule2=Módulo selecionado não existe
+feedback_econfig=Você não tem acesso total ao módulo selecionado.
+feedback_via=Enviar comentário para $1 através de servidor SMTP $2
+feedback_prog=Enviar comentário para $1 usando programa sendmail $2
+feedback_esend=Falha ao enviar comentário através de programa sendmail ou através de servidor SMTP local.
+feedback_to=Enviar comentário para os endereços
+feedback_enoto=Nenhum endereço para onde o comentário pudesse ser enviado foi informado
+feedback_ecannot=Você não tem permissão de enviar comentários
+feedback_ecannot2=Você não tem permissão de enviar comentários contendo arquivos de configuração
+
+progress_size=Fazendo o download de $1 ($2 bytes) ..
+progress_nosize=Fazendo o download de $1 ..
+progress_data=Recebdidos $1 bytes ($2 %)
+progress_data2=Recebidos $1 bytes
+progress_done=.. Download finalizado.
+

@@ -1,0 +1,17 @@
+<header>Bandera de salutació del SMTP</header>
+
+<center><tt>smtpd_banner</tt></center>
+<hr>
+
+Aquest paràmetre especifica el text que segueix al codi d'estat 220 de la
+bandera de benvinguda SMTP. Alguns volen veure anunciada la versió del correu.
+Per defecte, Postfix no ensenya cap versió.
+
+<p>
+
+CAL que especifiquis el <tt>meunomdehost</tt> al principi del text.
+Quan el client SMTP vegi el seu propi nom de host al principi d'una
+bandera SMTP de benvinguda, informarà d'un cicle de l'enviador. Això és
+millor que un aiguabarreig de màquines.
+
+<hr>

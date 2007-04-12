@@ -1,0 +1,75 @@
+<header>Acció</header>
+
+Descriu quina acció cal emprendre.<p>
+
+Les accions vàlides per aquest camp són:<p>
+
+<b>Activa</b><br>
+El procés es tornarà a iniciar sempre que s'aturi (p. ex., getty).<p>
+
+<b>Espera</b><br>
+El procés s'iniciarà un cop quan s'entri al nivell d'execució especificat
+i <i>init</i> esperarà que acabi.<p>
+
+<b>Un cop pel nivell</b><br>
+El procés s'executarà un cop quan s'entri al nivell d'execució especificat.<p>
+
+<b>En engegar</b><br>
+El procés s'executarà en engegar el sistema. El camp dels nivells
+d'execució s'ignora.<p>
+
+<b>En engegar, espera que acabi</b><br>
+El procés s'executarà en engegar el sistema, mentre que <i>init</i>
+s'esperarà que acabi. El camp dels nivells d'execució s'ignora.<p>
+
+<b>No facis res</b><br>
+Això no fa res.<p>
+
+<b>Quan sigui a A, B, C</b><br>
+Un procés marcat amb un nivell d'execució <tt>sota demanda</tt> s'executarà
+sempre que es cridi el nivell d'execució demanat. No obstant, no hi haurà
+cap canvi de nivell d'execució (els nivells d'execució sota demanda són
+`a', `b', i `c').<p>
+
+<b>Nivell d'execució per defecte</b><br>
+Una entrada <tt>initdefault</tt> especifica el nivell d'execució que cal
+entrar en engegar el sistema. Si no n'hi ha cap, <i>init</i> en demanarà
+un per la consola. El camp del procés s'ignora.<p>
+
+<b>Durant l'engegada del sistema</b><br>
+El procés s'executarà durant l'engegada del sistema. S'executarà abans
+que qualsevol entrada <tt><b>En engegar</b></tt> o <tt><b>En engegar,
+espera que acabi</b></tt>. El camp dels nivells d'execució s'ignora.<p>
+
+<b>La màquina s'apaga</b><br>
+El procés s'executarà quan s'apagui la màquina. Normalment, s'informa 
+<i>init</i> d'això per un procés en contacte amb un SAI connectat a 
+l'ordinador. <i>init</i> esperarà que el procés acabi abans de continuar.<p>
+
+<b>La màquina s'apaga sense esperar</b><br>
+Igual que per a <tt><b>La màquina s'apaga</b></tt>, amb l'excepció que
+<i>init</i> no espera que el procés es completi.<p>
+
+<b>La màquina es torna a encendre</b><br>
+Aquest procés s'executarà tan aviat com s'informi <i>init</i> que 
+s'ha encès la màquina.<p>
+
+<b>Se'n va la llum</b><br>
+Aquest procés s'executarà quan s'informi <i>init</i> que la bateria del
+SAI extern està gairebé buida i que el corrent està fallant (suposant
+que el SAI extern i el procés de monitorització siguin capaços de
+detectar aquesta condició).<p>
+
+<b>Ctrl-Alt-Del</b><br>
+EL procés s'executarà quan <i>init</i> rebi el senyal <i>SIGINT</i>.
+Això vol dir que algú a premut la combinació CTRL-ALT-SUPR a la consola.
+Normalment, es vol executar un tancament per entrar en mode monousuari
+o reengegar la màquina.<p>
+
+<b>Combinació especial de tecles</b><br>
+El procés s'executarà quan <i>init</i> rebi un senyal del gestor de teclat
+que s'ha premut una combinació de tecles especial al teclat de la consola.<p>
+
+<hr>
+
+

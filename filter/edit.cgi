@@ -1,0 +1,172 @@
+#!/usr/local/bin/perl
+# Show details of one filter
+
+require './filter-lib.pl';
+&ReadParse();
+
+# Show page header and get the filter
+if ($in{'new'}) {
+	&ui_print_header(undef, $text{'edit_title1'}, "");
+	$filter = { 'actiondefault' => 1 };
+	}
+else {
+	&ui_print_header(undef, $text{'edit_title2'}, "");
+	@filters = &list_filters();
+	($filter) = grep { $_->{'index'} == $in{'idx'} } @filters;
+	}
+
+@tds = ( "nowrap width=30%", "width=70%" );
+print &ui_form_start("save.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+
+# Start of condition section
+$cmode = $filter->{'condspam'} ? 5 :
+         $filter->{'condheader'} ? 4 :
+	 $filter->{'condtype'} eq '<' ? 3 :
+	 $filter->{'condtype'} eq '>' ? 2 :
+	 $filter->{'cond'} ? 1 : 0;
+print &ui_table_start($text{'edit_header1'}, "width=100%", 2);
+
+# Always do action
+print &ui_table_row(
+	&ui_oneradio("cmode", 0, $text{'edit_cmode0'}, $cmode == 0),
+	"", undef, \@tds);
+
+# Is spam
+print &ui_table_row(
+	&ui_oneradio("cmode", 5, $text{'edit_cmode5'}, $cmode == 5),
+	"", undef, \@tds);
+
+# Check some header
+@headers = ( "From", "To", "Subject", "Cc" );
+$common = &indexoflc($filter->{'condheader'}, @headers) >= 0;
+print &ui_table_row(
+	&ui_oneradio("cmode", 4, $text{'edit_cmode4'}, $cmode == 4),
+	&text('edit_cheader',
+	      &ui_select("condmenu", $cmode != 4 ? "From" :
+				     $common ? $filter->{'condheader'} : "",
+			 [ (map { [ $_ ] } @headers),
+			   [ "", $text{'edit_other'} ] ],
+			 1, 0, 0, 0,
+			 "onChange='form.condheader.disabled = (form.condmenu.value!=\"\")'"),
+	      &ui_textbox("condheader",
+			  $common ? "" : $filter->{'condheader'}, 20,
+			  $cmode != 4 || $common),
+	      &ui_textbox("condvalue",
+			  $filter->{'condvalue'}, 20)),
+	undef, \@tds);
+
+# Smaller
+print &ui_table_row(
+	&ui_oneradio("cmode", 3, $text{'edit_cmode3'}, $cmode == 3),
+	&ui_bytesbox("condsmall", $cmode == 3 ? $filter->{'cond'} : ""),
+	undef, \@tds);
+
+# Larger
+print &ui_table_row(
+	&ui_oneradio("cmode", 2, $text{'edit_cmode2'}, $cmode == 2),
+	&ui_bytesbox("condlarge", $cmode == 2 ? $filter->{'cond'} : ""),
+	undef, \@tds);
+
+# Matches regexp
+print &ui_table_row(
+	&ui_oneradio("cmode", 1, $text{'edit_cmode1'}, $cmode == 1),
+	&ui_textbox("cond", $cmode == 1 ? $filter->{'cond'} : "", 70)."<br>".
+	&ui_checkbox("body", 1, $text{'edit_cbody'}, $filter->{'body'}),
+	undef, \@tds);
+
+print &ui_table_end();
+
+# Start of action section
+$amode = $filter->{'actionreply'} ? 6 :
+	 $filter->{'actionspam'} ? 5 :
+	 $filter->{'actionthrow'} ? 4 :
+	 $filter->{'actiondefault'} ? 3 :
+	 $filter->{'actionreply'} ? 2 :
+	 $filter->{'actiontype'} eq '!' ? 1 : 0;
+print &ui_table_start($text{'edit_header2'}, "width=100%", 2);
+
+# Deliver normally
+print &ui_table_row(
+	&ui_oneradio("amode", 3, $text{'edit_amode3'}, $amode == 3),
+	"", undef, \@tds);
+
+if ($amode == 5 || &has_spamassassin()) {
+	# Run spamassassin
+	print &ui_table_row(
+		&ui_oneradio("amode", 5, $text{'edit_amode5'}, $amode == 5),
+		"", undef, \@tds);
+	}
+
+# Throw away
+print &ui_table_row(
+	&ui_oneradio("amode", 4, $text{'edit_amode4'}, $amode == 4),
+	"", undef, \@tds);
+
+# Forward to some address
+print &ui_table_row(
+	&ui_oneradio("amode", 1, $text{'edit_amode1'}, $amode == 1),
+	&ui_textbox("forward", $amode == 1 ? $filter->{'action'} : "", 70),
+	undef, \@tds);
+
+# Save to a folder or file
+@folders = grep { $_->{'file'} } &mailbox::list_folders();
+if ($amode == 0) {
+	$folder = &file_to_folder($filter->{'action'}, \@folders);
+	}
+else {
+	$folder = $folders[0];
+	}
+print &ui_table_row(
+	&ui_oneradio("amode", 0, $text{'edit_amode0'}, $amode == 0),
+	&ui_select("folder", $folder ? &mailbox::folder_name($folder) : "",
+		   [ (map { [ &mailbox::folder_name($_), $_->{'name'} ] }
+			  @folders),
+		     [ "", $text{'edit_file'} ] ],
+		   1, 0, 0, 0,
+                   "onChange='form.file.disabled = (form.folder.value!=\"\")'").
+		   "\n".
+	&ui_textbox("file", $folder ? "" : $filter->{'action'}, 50,
+		    $folder ? 1 : 0),
+	undef, \@tds);
+
+# Save to a new folder
+print &ui_table_row(
+	&ui_oneradio("amode", 7, $text{'edit_amode7'}, 0),
+	&ui_textbox("newfolder", undef, 20),
+	undef, \@tds);
+
+# Send autoreply
+if ($amode == 6) {
+	$r = $filter->{'reply'};
+	$period = $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
+		  $r->{'replies'} ? 60 : undef;
+	}
+print &ui_table_row(
+	&ui_oneradio("amode", 6, $text{'edit_amode6'}, $amode == 6),
+	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 60)."<br>".
+	"<b>$text{'index_period'}</b> ".
+	  &ui_opt_textbox("period", $period, 3,
+			  $text{'index_noperiod'})." ".$text{'index_mins'},
+	undef, \@tds);
+
+# Continue checkbox
+print &ui_table_row(
+	undef, &ui_checkbox("continue", 1, $text{'edit_continue'},
+			    $filter->{'continue'}), 2);
+
+print &ui_table_end();
+
+# End of the form, with buttons
+if ($in{'new'}) {
+	print &ui_form_end([ [ "create", $text{'create'} ] ]);
+	}
+else {
+	print &ui_form_end([ [ "save", $text{'save'} ],
+			     [ "delete", $text{'delete'} ] ]);
+	}
+
+# Show page footer
+&ui_print_footer("", $text{'index_return'});
+

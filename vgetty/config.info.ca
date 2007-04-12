@@ -1,0 +1,3 @@
+line2=Configuració del sistema,11
+vgetty_cmd=Camí del programa vgetty,0
+vgetty_config=Camí del fitxer de configuració vgetty,0

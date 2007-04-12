@@ -1,0 +1,36 @@
+<header>Accés Només Lectura</header>
+
+Això determina quins hosts tenen accés només lectura a aquest servidor.
+Hi ha tres tries per aquesta opció:
+<ul>
+<li><b>Cap</b><br>
+   No hi ha cap host amb accés només lectura.
+<li><b>Tots els hosts</b><br>
+   Qualsevol host pot muntar aquest recurs només lectura. Si estàs 
+   connectat/da a Internet, això vol dir que qualsevol persona del
+   món pot llegir els fitxers del directori exportat.
+<li><b>Hosts Llistats</b><br>
+<if $gconfig{'os_version'} < 7>
+   Els hosts o adreces IP de la llista de sota poden muntar aquest recurs només lectura.
+<else>
+   Els hosts de la llista de sota poden muntar aquest recurs només lectura.
+   Els hosts es poden especificar de les formes següents: <p>
+      <dl>
+      <dt><b>Nom de host o adreça IP</b> (com ara <i>ftp.foo.com</i> o <i>1.2.3.4</i>)
+      <dd>Coincideix amb el host del mateix nom o adreça
+      <dt><b>Grup de xarxa</b> (com ara <i>enginyers</i>)
+      <dd>Coincideix amb qualsevol host membre del grup de xarxa
+      <dt><b>Domini DNS</b> (com ara <i>.foo.com</i>)
+      <dd>Coincideix amb qualsevol host del domini
+      <dt><b>Xarxa</b> (com ara <i>@10.254.1</i>)
+      <dd>Coincideix amb qualsevol host de la xarxa
+      <dt><b>Xarxa/màscara</b> (com ara <i>@10.254.1/24</i>)
+      <dd>Coincideix amb qualsevol host de la xarxa
+      </dl><p>
+   A més a més, totes les notacions anteriors poden prefixar-se amb <i>-</i>,
+   que vol dir que el host, grup de xarxa, domini o xarxa <b>no</b> té
+   permès de muntar el recurs. Això pot ser útil per permetre l'accés a
+   tot un grup de hosts, però denegant-lo a un dels membres.
+</if>
+</ul>
+<hr>

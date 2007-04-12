@@ -1,0 +1,155 @@
+main_return=$1(으)로 돌아감
+main_homepage=홈 페이지
+main_feedback=피드백..
+main_switch=사용자 전환..
+main_logout=로그아웃
+main_version=$2의 버전 $1($3)
+main_title=$2의 Webmin $1($3)
+main_none=Webmin 모듈에 대한 접근 권한이 없습니다.
+main_skill=기능 수준
+
+category_servers=서버
+category_hardware=하드웨어
+category_system=시스템
+category_webmin=Webmin
+category_net=네트워킹
+category_syslet=Syslets
+category_=그 외
+
+header_webmin=Webmin 인덱스
+header_module=모듈 인덱스
+header_help=도움말..
+header_config=모듈 구성
+header_servers=Webmin 서버
+
+index=인덱스
+yes=예
+no=아니오
+save=저장
+create=작성
+delete=삭제
+find=찾기
+error=오류
+default=기본값
+modify=수정
+reset=재설정
+ok=확인
+cancel=취소
+
+chooser_title1=파일 선택..
+chooser_title2=디렉토리 선택..
+chooser_dir=$1의 디렉토리
+chooser_ok=확인
+
+users_title1=사용자 선택..
+users_title2=사용자 선택..
+users_sel=선택한 사용자
+users_all=모든 사용자
+users_ok=확인
+users_cancel=취소
+users_clear=지우기
+
+groups_title1=그룹 선택..
+groups_title2=그룹 선택..
+groups_all=모든 그룹
+groups_sel=선택한 그룹
+groups_ok=확인
+groups_cancel=취소
+groups_clear=지우기
+
+config_ecannot=이 모듈을 구성할 수 없습니다
+config_title=구성
+config_dir=모듈 $1
+config_header=$1의 구성 가능한 옵션
+config_none=없음
+config_eaccess=이 모듈에 접근할 수 없습니다
+
+help_err=도움말을 표시하지 못했습니다
+help_epath=없거나 잘못된 도움말 경로
+help_efile=도움말 파일 $1을(를) 읽지 못했습니다
+help_eheader=없는 &lt;머리글&gt; 섹션
+help_einclude=$1을(를) 포함시키지 못했습니다
+help_eif=$1 실패: $2
+help_eexec=$1 실패: $2
+
+referer_title=보안 경고
+referer_warn=<b>경고! </b>프로그램 $2가 연결되어있는 URL $1은 Webmin 서버의 외부의 링크 임이 감지되었습니다.이는 서버를 속여 위험한 명령을 실행하려는 시도일 수 있습니다.
+referer_warn_unknown=<b>경고! </b>프로그램 $1이(가) 연결되어있는 URL은 Webmin 서버의 외부의 링크 임이 감지되었습니다.) 이는 서버를 속여서 위험한 명령을 실행하려는 시도일 수 있습니다.
+referer_ok=Webmin 프로그램 실행 계속
+referer_again=앞으로 이 경고를 표시 안함
+
+session_header=Webmin에 로그인
+session_mesg=$1의 Webmin 서버에 로그인할 사용자 이름과 암호를 입력해야 합니다.
+session_user=사용자 이름
+session_pass=암호
+session_login=로그인
+session_clear=지우기
+session_failed=로그인하지 못했습니다. 다시 시도하십시오.
+session_logout=로그아웃되었습니다. 아래의 양식을 사용하여 다시 로그인하십시오.
+session_timed_out=세션이 $1분 동안 비활성화된 후 시간 초과되었습니다.
+session_save=로그인을 영구적으로 기억합니까?
+
+acl_root=파일 선택자의 루트 디렉토리
+acl_uedit=사용자 선택자에 나타나는 사용자
+acl_uedit_all=모든 사용자
+acl_uedit_none=사용자 없음
+acl_uedit_only=사용자만
+acl_uedit_except=사용자를 제외한 모두
+acl_uedit_uid=범위 내의 UID가 있는 사용자
+acl_uedit_group=그룹에 속한 사용자
+acl_gedit=그룹 선택자에 표시된 그룹
+acl_gedit_all=모든 그룹
+acl_gedit_none=그룹 없음
+acl_gedit_only=그룹만
+acl_gedit_except=그룹을 제외한 모두
+acl_gedit_gid=범위 내의 GID가 있는 그룹
+
+month_1=1월
+month_2=2월
+month_3=3월
+month_4=4월
+month_5=5월
+month_6=6월
+month_7=7월
+month_8=8월
+month_9=9월
+month_10=10월
+month_11=11월
+month_12=12월
+
+day_0=일요일
+day_1=월요일
+day_2=화요일
+day_3=수요일
+day_4=목요일
+day_5=금요일
+day_6=토요일
+
+smonth_1=1월
+smonth_2=2월
+smonth_3=3월
+smonth_4=4월
+smonth_5=5월
+smonth_6=6월
+smonth_7=7월
+smonth_8=8월
+smonth_9=9월
+smonth_10=10월
+smonth_11=11월
+smonth_12=12월
+
+sday_0=일
+sday_1=월
+sday_2=화
+sday_3=수
+sday_4=목
+sday_5=금
+sday_6=토
+
+emodule=접근 거부됨: 사용자 $1은(는) 모듈 $2을(를) 사용할 수 없습니다
+elock_tries=$2분이 경과한 후 파일 $1을(를) 잠그지 못했습니다
+
+skill_high=전문가
+skill_medium=중급
+skill_low=초급
+

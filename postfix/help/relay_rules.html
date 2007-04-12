@@ -1,0 +1,26 @@
+By default, Postfix relays mail:
+
+<ul>
+<li> from trusted clients whose IP address matches
+     <a href=opt_mynetworks><tt>$mynetworks</tt></a>,
+<li> from trusted clients matching <tt>$relay_domains</tt> or subdomains thereof,
+<li> from untrusted clients to destinations that match <tt>$relay_domains</tt>
+     or subdomains thereof, except addresses with sender-specified routing.
+</ul>
+
+The default <tt>relay_domains</tt> value is
+<a href=opt_mydestination><tt>$mydestination</tt></a>.
+
+<p>
+
+In addition to the above, the Postfix SMTP server by default accepts mail
+that Postfix is final destination for:
+
+<ul>
+<li> destinations that match
+     <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+<li> destinations that match
+     <a href=opt_mydestination><tt>$mydestination</tt></a>,
+<li> destinations that match
+     <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>.
+</ul>

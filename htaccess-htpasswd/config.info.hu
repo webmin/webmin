@@ -1,0 +1,8 @@
+htaccess=Apache opció file neve,0
+htpasswd=Felhasználói file neve,0
+htgroups=Csoport file neve,0
+sort=Felhasználók rendezése,1,1-Felhasználói név szerint,0-Fileban lévõ sorrend szerint
+md5=Az MD5 kódolás engedélyezve legye?,1,1-Igen,0-Nem
+sha1=Az SHA1 kódolás engedélyezve legye?,1,1-Igen,0-Nem
+digest=Kivonatoló kódolás engedélyezve legyen?,1,1-Igen,0-Nem
+htdigest=A htdigest parancs teljes útvonala,0

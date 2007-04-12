@@ -1,0 +1,24 @@
+Standard är att Postfix skickar e-post vidare:
+
+<ul>
+<li>från betrodda klienter vars IP-adress matchar
+    <a href=opt_mynetworks><tt>$mynetworks</tt></a>,
+<li>från betrodda klienter som matchar <tt>$relay_domains</tt> med underdomäner,
+<li>från ej betrodda klienter till destinationer som matchar <tt>$relay_domains</tt>
+     med subdomäner, utom adresser med avsändarangiven routing.
+</ul>
+
+Standardvärdet för <tt>relay_domains</tt> är
+<a href=opt_mydestination><tt>$mydestination</tt></a>.
+
+<p>Förutom ovanstående tar Postfix SMTP-server som standard emot e-post
+där Postfix är slutlig destination:
+
+<ul>
+<li> destinationer som matchar
+     <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+<li> destinationer som matchar
+     <a href=opt_mydestination><tt>$mydestination</tt></a>,
+<li> destinationer som matchar
+     <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>.
+</ul>

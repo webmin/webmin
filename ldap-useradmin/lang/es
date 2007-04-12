@@ -1,0 +1,72 @@
+batch_samba=&#191;Crear cuenta Samba para los nuevos usuarios?
+conn_econn=Fallo al conectar al servidor LDAP $1 puerto $2
+conn_elogin=Fallo al enlazar al servidor LDAP $1 como $2 : $3
+gdel_group=Borrando entrada de grupo LDAP ..
+gedit_cap=Capacidades de grupo
+gedit_dn=LDAP DN de Grupo
+gedit_return=detalles de grupo
+gedit_samba=&#191;Grupo Samba?
+gsave_eadd=Fallo al a&#241;adir grupo a la BBDD de LDAP : $1
+gsave_edelete=Fallo al borrar grupo de la BBDD de LDAP : $1
+gsave_egone=&#161;El grupo ya no existe!
+gsave_emod=Fallo al modificar grupo en la BBDD de LDAP : $1
+gsave_emoddn=Fallo al renombrar grupo en la BBDD de LDAP : $1
+imap_econn=Fallo al conectar a servidor IMAP $1
+imap_elogin=Fallo en login a servidor IMAP $1 como $2 : $3
+index_cyrus=&#191;IMAP?
+index_econfig=El archivo de configuraci&#243;n NSS de LDAP $1 no se encuentra en su sistema. Puede que necesite ajustar la <a href='$2'>configuraci&#243;n de m&#243;dulo</a> y poner la ruta correcta.
+index_econfig2=El archivo de configuraci&#243;n NSS de LDAP $1 parece ser el archivo de configuraci&#243;n del <i>servidor</i> LDAP. Puede que necesite ajustar la <a href='$2'>configuraci&#243;n de m&#243;dulo</a> y poner la ruta correcta al archivo de configuraci&#243;n del <i>cliente</i> NSS.
+index_egsearch=Fallo en la b&#250;squeda de grupos bajo $1 : $2
+index_ehost=Si no se introduce ning&#250;n archivo de configuraci&#243;n NSS de LDAP en la <a href='$1'>configuraci&#243;n de m&#243;dulo</a>, se ha de introducir un servidor LDAP, un usuario, una contrase&#241;a, un usuario base DN y un grupo base DN.
+index_eimap=$1. Puede que su <a href='$2'>configuraci&#243;n de m&#243;dulo</a> sea incorrecta.
+index_eldap=$1. Puede que su <a href='$2'>configuraci&#243;n de m&#243;dulo</a> sea incorrecta.
+index_emd5=Esta m&#243;dulo se ha <a href='$1'>configurado</a> para usar encriptaci&#243;n MD5 para las contrase&#241;as, pero el m&#243;dulo de Perl $2 no est&#225; instalado. <a href='$3'>Pulse aqu&#237;</a> para descargar e instalar el m&#243;dulo $2.
+index_eperl=El m&#243;dulo de Perl $1 que es necesario para este m&#243;dulo no est&#225; instalado o bien no funciona bien. <a href='$2'>Pulse aqu&#237;</a> para descargarlo e instalarlo.
+index_eperl2=El error que muestra Perl al intentar cargar el m&#243;dulo es :
+index_eslappasswd=Este m&#243;dulo se ha <a href='$1'>configurado</a> para utilizar encriptaci&#243;n LDAP MD5 para las contrase&#241;as, pero el programa <tt>$2</tt> utilizado para encriptar una contrase&#241;a no est&#225; intalado
+index_eusearch=Fallo en la b&#250;squeda de usuarios bajo $1 : $2
+index_gadd=A&#241;adir un grupo LDAP nuevo.
+index_gnone=No se encontraron grupos LDAP bajo $1.
+index_return=lista usuarios
+index_samba=&#191;Samba?
+index_title=Usuarios y Grupos LDAP
+index_uadd=A&#241;adir un nuevo usuario LDAP.
+index_unone=No se encontraron usuarios LDAP bajo $1.
+raw_for=Para $1
+raw_name=Nombre de atributo
+raw_title=Atributos LDAP
+raw_value=Valores
+search_err=La b&#250;squeda de $1 en $2 fall&#243; : $3
+udel_book=Borrando de la libreta de direcciones ..
+udel_imap=Borrando carpeta IMAP ..
+udel_pass=Borrando entrada de usuario LDAP ..
+udel_warnimap=&#161;El buz&#243;n de correo existente ser&#225; borrado cuando se borre el directorio home!
+uedit_alias=Alias de Correo
+uedit_cap=Capacidades de Usuario
+uedit_classes=Clases de objeto LDAP
+uedit_cyrus=&#191;Login servidor IMAP?
+uedit_dn=DN LDAP de usuario
+uedit_fields=Campos LDAP adicionales
+uedit_firstname=Nombre
+uedit_lastname=Apellidos
+uedit_raw=Atributos LDAP
+uedit_return=detalles de usuario
+uedit_samba=&#191;Login Samba?
+usave_eadd=Fallo al a&#241;adir usuario a BBDD de LDAP : $1
+usave_ebook=Fallo al crear entrada en libreta de direcciones : $1
+usave_ecyruspass=Ha de introducirse la contrase&#241;a normal del usuario, o bien seleccionar la opci&#243;n No se necesita contrase&#241;a cuando se habilita IMAP.
+usave_edelete=Fallo al borrar usuario de BBDD de LDAP : $1
+usave_egone=&#161;El usuario ya no existe!
+usave_egroupmod=Fallo al modificar grupo $1 en BBDD de LDAP : $2
+usave_eiacl=Fallo al dar permisos de administraci&#243;n
+usave_eicreate=Fallo al crear usuario
+usave_eifolder=Fallo al crear carpeta $1
+usave_eimap=El usuario se salv&#243; correctamente en la BBDD de LDAP, pero ocurri&#243; un error IMAP : $1 : $2
+usave_eiquota=Fallo al configurar cuota IMAP
+usave_eisub=Fallo al subscribir usuario a carpeta $1
+usave_emod=Fallo al modificar usuario en BBDD de LDAP : $1
+usave_emodbook=Fallo al modificar entrada en libreta de direcciones : $1
+usave_emodbookdn=Fallo al renombrar entrada en libreta de direcciones : $1
+usave_emoddn=Fallo al renombrar usuario en BBDD de LDAP : $1
+usave_esamba=Este m&#243;dulo no se puede utilizar para configurar un usuario Samba, ya que el m&#243;dulo de Compartici&#243;n de Archivos Windows Samba no est&#225; instalado
+usave_ex86=Este m&#243;dulo no se puede utilizar para configurar la contrase&#241;a de un usuario Samba de un sistema no Intel, dado que depende de un programa compilado para x86.

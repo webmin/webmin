@@ -1,0 +1,2 @@
+restart_command=ps aux | grep -e nfsd -e mountd | grep -v grep | awk '{ print $2 }' | xargs kill -9 ; sleep 2 ; nfsd ; mountd /etc/exports
+exports_file=/etc/exports

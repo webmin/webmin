@@ -1,0 +1,33 @@
+<header>What domain to receive mail for</header>
+
+<center><tt>mydestination</tt></center>
+<hr>
+
+You specify what domains this machine will deliver locally, instead of
+forwarding to another machine. The default is to receive mail for the machine
+itself.
+
+<p>
+
+<b>Local machine</b>: <tt>$myhostname, localhost.$mydomain</tt>
+<br>
+<b>Whole Domain</b>: <tt>$myhostname, localhost.$mydomain,
+$mydomain</tt>
+
+<p>
+
+You can also specify the full path of a file, which will contain the names of
+domains that this machine will deliver mail locally for.
+
+<p>
+
+Example: <tt>/etc/postfix/mydestination</tt>
+
+<hr>
+<br>
+
+<b><u>Caution:</u></b> in order to avoid mail delivery loops, you must list all
+hostnames of the machine, including <tt>$myhostname</tt>, and
+<tt>localhost.$mydomain</tt>. DO NOT LIST VIRTUAL DOMAINS HERE. LIST THEM IN
+THE VIRTUAL FILE INSTEAD.
+

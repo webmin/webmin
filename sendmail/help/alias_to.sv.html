@@ -1,0 +1,23 @@
+<header>Alias för</header>
+
+Ett alias kan representera flera mottagare och varje mottagare kan vara
+något av nedanstående:
+<dl>
+<dt><b>E-postadress</b>
+<dd>Antingen en fullständig e-postadress (t ex <tt>foo@bar.com</tt>) eller
+    något användarnamn i systemet (t ex <tt>jcameron</tt>).
+<dt><b>Adresser i en fil</b>
+<dd>Här måste en fullständig sökväg till en fil anges. Filen ska innehålla
+    e-postadresser, en per rad. E-postadresserna kan anges som fullständiga
+    adresser eller som användarnamn i systemet.
+<dt><b>Skriv till fil</b>
+<dd>Med detta val skrivs e-post ut till den angivna filen. Om man vill kasta
+    all e-post till en viss adress kan man ange filen <tt>/dev/null</tt> som
+    mottagare.
+<dt><b>Skicka till program</b>
+<dd>Då e-post kommer till detta alias kommer det angivna programmet att utföras
+    och hela e-postmeddelandet (huvud och kropp) kommer att skickas till
+    programmet via standard input.
+</dl>
+<hr>
+

@@ -1,0 +1,21 @@
+<header>Authentication Programs</header>
+
+<p>
+<b>Custom Authentication program</b>: Defaults to none.  Specify the command for the external authenticator.  Such a program reads a line containing "username password" and replies "OK" or "ERR" in an endless loop.  If you use an authenticator, make sure you have 1 acl of type proxy_auth.<p>
+If you want to use the traditional proxy authentication, set this line to something like /usr/bin/ncsa_auth /usr/etc/passwd.  Assuming ncsa_auth has been compiled and installed on your system.
+<p>
+<b>Number of authentication programs</b>: Defaults to 5 if an authenticator has been enabled.
+<p>
+<b>Time to cache passwords for</b>: How long Squid will cache a successful login for before querying the authentication program again.
+<p>
+<b>Time to bind user to an IP address for</b>: If the same user tries to login twice from two different IP addresses during this period, he will benied. This can be used to prevent the sharing of proxy passwords between multiple users.
+<p>
+<hr>
+
+If you are running Squid versions 2.5 and above, additional the above options
+and others can be set separately for different authentication types such as
+Digest and NTLM. However, if you want to use Webmin to edit the proxy users
+list you must set up Basic authentication. <p>
+
+<hr>
+

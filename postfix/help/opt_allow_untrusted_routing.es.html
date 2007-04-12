@@ -1,0 +1,20 @@
+<header>Permitir enrutamiento no fiable</header>
+
+<center><tt>allow_untrusted_routing</tt></center>
+<hr>
+
+Este parámetro controla si Postfix remitirá correo con enrutamiento específico
+de remitente (usuario[@%!]remoto[@%!]sitio) desde cliente no fiables hacia destinos
+que contienen el parámetro <a href=opt_relay_domains><tt>relay_domains (dominios de
+retransmisión)</tt></a>.
+
+<p>
+
+Por defecto, los clientes no fiables no está autorizados a especificar
+enrutamiento. Esto cierra un fastidioso agujero de bucle de retransmisión
+abierta dondde una máquina de respaldo MX puede ser llevada a retransmitir
+correo basura a la máquina primaria MX, la cual luego lo envía al resto del
+mundo.
+
+
+<hr>

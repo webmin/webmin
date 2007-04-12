@@ -1,0 +1,44 @@
+index_enopfile=PPP パスワード ファイル '$1' はシステムに存在しませんPPP がインストールされていない可能性があります
+index_table=PPP ダイアルインとダイアルアウト アカウント
+index_user=ユーザ名
+index_server=サーバ
+index_uany=任意
+index_sany=任意
+index_create=新規 PPP アカウントを作成
+index_info=Unix ユーザ リストへの変更が自動的に PPP アカウントのリストに適用されるように Webmin を設定できます。これはユーザの追加、削除、または変更が<tt>ユーザとグループ</tt> Webmin モジュールが使用されたときのみ動作します。
+index_onadd=Unix ユーザが追加されたときにサーバに PPP アカウントを追加
+index_onchange=Unix ユーザが変更されたときにサーバに PPP アカウントを変更
+index_ondelete=Unix ユーザが削除されたときにPPP アカウントを削除
+index_apply=適用
+
+secrets_title=PPP アカウント
+secrets_return=インデックス
+
+edit_secret_etitle=PPP アカウントの編集
+edit_secret_ctitle=PPP アカウントの作成
+edit_secret_acc=PPP アカウント
+edit_secret_user=ユーザ名
+edit_secret_serv=サーバ
+edit_secret_sany=任意
+edit_secret_uany=任意
+edit_secret_pass=パスワード
+edit_secret_none=なし
+edit_secret_ffile=ファイルから
+edit_secret_leave=未変更のものを残す
+edit_secret_setto=設定先
+edit_secret_vaddr=有効なアドレス
+edit_secret_aany=任意のアドレスを許可
+edit_secret_anone=すべてのアドレスを拒否
+edit_secret_alist=リストされたアドレスを許可..
+edit_secret_save=保存
+edit_secret_del=削除
+edit_secret_return=アカウント リスト
+
+save_secret_esave=アカウントを保存できませんでした
+save_secret_enoip='$1' は無効なアドレスです
+
+log_create=PPP ユーザ $1 を作成しました
+log_modify=PPP ユーザ $1 を変更しました
+log_delete=PPP ユーザ $1 を削除しました
+log_sync=Unix ユーザ同期を変更しました
+

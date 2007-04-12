@@ -1,0 +1,57 @@
+index_title=NFS Sunumlarý
+index_dir=Dizin
+index_inactive=Aktif deðil
+index_to=Aktif Baðlantý Durumu..
+index_none=Herhangi bir dizinde henüz baðlantý yapýlmadý
+index_add=Yeni bir baðlantý ekle
+index_apply=Deðiþiklikleri Uygula
+index_applymsg=Bu düðmeyi týklayarak mevcut dosya baðlantý ayarlarýný uygulayabilirsiniz.
+index_return=baðlantýlar listesi
+index_eprog=NFS sunucusu çalýþtrýlabilir dosyasý bulunamadý. NFS paketi yüklenmemiþ olabilir
+
+edit_title=Baðlantýyý Deðiþtir
+create_title=Baðlantý Oluþtur
+edit_details=Baðlantý Ayarlarý
+edit_dir=Baðlantý Dizini
+edit_active=Aktif?
+edit_to=Baðlantý yap ...
+edit_all=Tamamý
+edit_host=Makine(ler)
+edit_webnfs=WebNFS istemcileri
+edit_netgroup=Að grubu
+edit_network=Að
+edit_netmask=Að maskesi
+edit_relative=Sembolik bað yapýlsýn mý?
+edit_insecure=Ýstemciler güvenli portta olsun mu?
+edit_mode=Giriþ modu
+edit_ro=Salt okunur
+edit_rw=Oku/Yaz
+edit_noaccess=Dizine giriþler engellensin mi?
+edit_squash=Uzak kullanýcýlarý onayla
+edit_everyone=Herbiri
+edit_except=Root dýþýnda herkes
+edit_nobody=Hiçkimse
+edit_uids=UID onayla
+edit_none=Hiçbiri
+edit_gids=GID onayla
+edit_anonuid=Onaylanmamýþ kullanýcýlarý araþtýr
+edit_default=Öntanýmlý
+edit_anongid=Onaylanmamýþ gruplarý araþtýr
+
+save_err=Baðlantýnýn kaydedilmesinde hata oluþtu
+save_edir='$1' dizini mevcut deðil
+save_enetgroup=Yanlýþ ya da kayýp netgroup
+save_enetwork='$1' geçerli bir að adý deðil
+save_enetmask='$1' geçerli bir að maskesi deðil
+save_ehost='$1' geçerli bir makþne adý deðil
+save_euids=Sayý ya da alan listesinin virgülle ayrýlmýþ olan UID'leri onaylanmaz
+save_egids=Sayy ya da alan listesinin virgülle ayrylmyþ olan GID'leri onaylanmaz
+
+log_modify=NFS sunumu $1 deðiþtirildi
+log_modify_l=$2'de NFS sunumu $1 deðiþtirildi
+log_delete=NFS sunumu $1 silindi
+log_delete_l=$2'de NFS sunumu $1 silindi
+log_create=NFS sunumu $1 oluþturuldu
+log_create_l=$2'de NFS sunumu $1 oluþturuldu
+log_apply=Yapýlandýrma uygulandý
+ 

@@ -1,0 +1,8 @@
+<header>Timeout</header>
+
+The value in tenths of a second before sending the first retransmission after an RPC timeout.<br>
+After the first timeout, the timeout is doubled after each successive timeout until a maximum timeout of 60 seconds is reached.<br>
+Better overall performance may be achieved by increasing the timeout when mounting on a busy network, to a slow server or through several routers or gateways.<br>
+<br><i>mount option: timeo<br>
+default: 0.7s</i>
+<hr>

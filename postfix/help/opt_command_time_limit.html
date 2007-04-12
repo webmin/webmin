@@ -1,0 +1,16 @@
+<header>Max time for delivery to external commands</header>
+
+<center><tt>command_time_limit</tt></center>
+<hr>
+
+This parameter limits the amount of time for delivery to external commands.
+This limit is used by the local delivery agent, and is the default time limit
+for delivery by the pipe mailer.
+
+<p>
+
+Note: if you set this time limit to a large value you must update the global
+<a href=opt_ipc_timeout><tt>ipc_timeout</tt></a> parameter as well. See
+<b>Postfix Miscellaneous Options</b> for details.
+
+<hr>

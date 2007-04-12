@@ -1,0 +1,43 @@
+index_title=Systemtid
+index_timeserver=Tidsserver
+index_address=Dator/adress
+index_zone=Tidszon
+index_tz=Plats
+
+action_save=Spara
+action_apply=Ta i drift
+action_sync=Synkronisera systemtiden med hårdvarutid
+action_sync_s=Synkronisera hårdvarutiden med systemtid
+action_timeserver_sys=Synkronisera systemtiden
+action_timeserver_hw=Synkronisera hårdvarutiden
+action_savezone=Ändra tidszon
+
+acl_sys=Användaren får ändra systemtiden
+acl_hw=Användaren får ändra hårdvarutiden
+acl_yes=Ja
+acl_no=Nej
+acl_error=Du får komma åt systemtidmodulen, men du får varken ändra systemtiden eller hårdvarutiden
+acl_nosys=Du får inte ändra systemtiden
+acl_nohw=Du får inte ändra hårdvarutiden
+
+sys_title=Systemtid
+hw_title=Hårdvarutid
+
+day=Dag
+month=Månad
+date=Datum
+hour=Timme
+year=År
+
+error_cnf=Fel: kommando $1 finns inte
+error_hw=Det går inte att ställa hårdvarutiden: $1
+error_sync=Det går inte att synkronisera med systemtiden: $1
+
+log_set_date=Satte systemtiden till $1
+log_set_hwclock=Satte hårdvarutiden till $1
+log_remote_date=Hämtade systemtiden från $2
+log_remote_hwclock=Hämtade hårdvarutiden från $2
+log_remote_date_l=Hämtade systemtiden $1 från $2
+log_remote_hwclock_l=Hämtade hårdvarutiden $1 från $2
+log_sync=Synkroniserade systemtiden med hårdvarutiden
+log_sync_s=Synkroniserade hårdvarutiden med systemtiden

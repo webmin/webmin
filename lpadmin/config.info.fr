@@ -1,0 +1,8 @@
+print_style=Style de configuration d'imprimante,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare
+driver_style=Style de pilote d'imprimante,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SuSE
+model_path=Répertoire qui contient les applications d'interface,3,Aucun
+smbclient_path=Chemin pour smbclient,3,Aucun
+gs_path=Chemin pour ghostscript,3,Aucun
+gs_fontpath=Répertoire de polices Ghostscript,3,Défaut
+gs_lib=Répertoire de librairie Ghostscript,3,Défaut
+hpnp_path=Chemin du programme hpnp,3,Aucun

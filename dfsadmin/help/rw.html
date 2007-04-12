@@ -1,0 +1,36 @@
+<header>Read-Write Access</header>
+
+This determines which hosts have read-write access to this share.
+There are three choices for this option :
+<ul>
+<li><b>None</b><br>
+    No hosts have read-write access.
+<li><b>All hosts</b><br>
+    Any host can mount this share read-write. If you are connected to the
+    Internet, this means that anyone in the world can read, write and
+    delete files in the exported directory. Use this option with caution.
+<li><b>Listed hosts</b><br>
+<if $gconfig{'os_version'} < 7>
+    The hosts or IP addresses listed below can mount this share read-write.
+<else>
+    Matching hosts listed below can mount this share read-write. Hosts can
+    be specified in the following ways :<p>
+	<dl>
+	<dt><b>Hostname or IP address</b> (like <i>ftp.foo.com</i> or <i>1.2.3.4</i>)
+	<dd>Matches the host with the given name or address
+	<dt><b>Netgroup</b> (like <i>engineering</i>)
+	<dd>Matches any host that is a member of the netgroup
+	<dt><b>DNS domain</b> (like <i>.foo.com</i>)
+	<dd>Matches any host in the domain
+	<dt><b>Network</b> (like <i>@10.254.1</i>)
+	<dd>Matches any host in the network
+	<dt><b>Network/netmask</b> (like <i>@10.254.1/24</i>)
+	<dd>Matches any host in the network
+	</dl><p>
+    In addition, any of the above notations can be prefixed by a <i>-</i>,
+    meaning that the host, netgroup, domain or network is <b>not</b> allowed
+    to mount this share. This can be useful for allowing access by a set
+    of hosts, but denying one member.
+</if>
+</ul>
+<hr>

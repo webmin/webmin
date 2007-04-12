@@ -1,0 +1,3 @@
+line2=System configuration,11
+stunnel_path=Path to stunnel executable,0
+pem_path=Path to default stunnel PEM file,3,None

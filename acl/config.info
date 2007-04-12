@@ -1,0 +1,6 @@
+line1=Configurable options,11
+display=User and group display mode,1,1-Names only,0-Names and modules
+select=Display user modules in,1,0-Table,1-Pulldown menu
+order=Sort users and groups by,1,0-Order in file,1-Name
+line2=System configuration,11
+ssleay=Path to openssl or ssleay program,3,Automatic

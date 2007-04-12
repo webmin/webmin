@@ -1,0 +1,16 @@
+display_max=顯示的最大使用者或群組數目,0
+user_repquota_command=列出檔案系統上使用者的指令,0
+group_repquota_command=列出檔案系統上群組的指令,0
+user_edquota_command=編輯使用者配額的指令,0
+group_edquota_command=編輯群組配額的指令,0
+user_quota_command=檢查使用者配額的指令,0
+group_quota_command=檢查群組配額的指令,0
+user_copy_command=拷貝使用者配額的指令,0
+group_copy_command=拷貝群組配額的指令,0
+user_quotaon_command=啟動使用者配額的指令,0
+group_quotaon_command啟動群組配額的指令,0
+user_quotaoff_command=關閉使用者配額的指令,0
+group_quotaoff_command=關閉群組配額的指令,0
+quotacheck_command=檢查配額的指令,0
+user_grace_command=編輯使用者寬限時間的指令,0
+group_grace_command=編輯群組寬限時間的指令,0

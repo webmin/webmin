@@ -1,0 +1,16 @@
+<header>Initial concurrency level for delivery to the same destination</header>
+
+<center><tt>initial_destination_concurrency</tt></center>
+<hr>
+
+This parameter specifies the initial per-destination concurrency level for
+parallel delivery to the same destination. This limit applies to delivery via
+SMTP, via the local delivery agent and via the pipe mailer.
+
+<p>
+
+With concurrency of 1, one bad message is enough to block all mail
+to a site. A concurrency of 2 seems a reasonable choice.
+
+
+<hr>

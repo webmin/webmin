@@ -1,0 +1,31 @@
+index_title=Modification de la langue et du thème
+index_lang=Langue de l'interface utilisateur Webmin
+index_langglobal=Langue globale ($1)
+index_langset=Choix personnel...
+index_theme=Thème de l'interface utilisateur Webmin...
+index_themeglobal=Thème global ($1)
+index_themeset=Choix personnel...
+index_pass=Mot de passe de connexion Webmin
+index_passleave=Laisser inchangé
+index_passset=Définir à...
+index_ok=Appliquer les changements
+index_themedef=Ancien thème Webmin
+index_desc2=Ce module peut être utilisé pour modifier $1, pour votre compte Webmin uniquement.
+index_d3=$1, $2 et $3
+index_d2=$1 et $2
+index_d1=$1
+index_dlang=la langue dans laquelle les modules sont affichés
+index_dtheme=le thème qui détermine l'apparence
+index_dpass=le mot de passe utilisé pour se connecter
+
+change_title=Modification des paramètres
+change_user=Modification du nom de connexion Webmin en cours...
+change_done=... Effectué
+change_restart=Redémarrage de Webmin en cours...
+change_redirect=Redirection vers le menu principal en cours...
+change_ecolon=Votre mot de passe ne doit pas contenir le caractère « : »
+
+acl_lang=Peut changer la langue ?
+acl_theme=Peut changer le thème ?
+acl_pass=Peut changer le mot de passe (quand il est paramétré dans Webmin) ?
+

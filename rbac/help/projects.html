@@ -1,0 +1,39 @@
+<header>Projects</header>
+
+Projects provide a way to enforce limits on resource use for different users
+and groups. They can be used to restrict the number of files a process can open,it's maximum file size, CPU use, memory allocation and more. <p>
+
+Every process and user belongs to one or more projects. A user's initial projectis determined at login time, and will either be <tt>default</tt> or the project
+set in the <b>User Attributes</b> section of this module. Users can switch to
+different projects using the <tt>newtask</tt> command. <p>
+
+Each project has a list of users and groups that are allowed to access it, for
+example by switching to it with the <tt>newtask</tt> command. Just because a
+user is a member of a project does not necessarily mean he will automatically
+belong to it at login time though - this must be set in the <b>User
+Attributes</b> section. <p>
+
+The most important attributes of a project are the resource limits that apply
+to its member users. Each has the following attributes :<br>
+<dl>
+<dt><b>Resource</b><br>
+<dd>The resource that it controls, such as <tt>process.max-file-descriptor</tt> for the maximum creatable file size, or <tt>process.max-cpu-time</tt> for the amount of CPU time that a process can consume.
+
+<dt><b>Resource type</b><br>
+<dd>Determines who can modify this resource limit, and is almost always set to <b>Privileged</b>. This attribute is optional - if <b>&lt;None&gt;</b> is selected, the system global limit for the resource will apply instead. The meanings of the other options are:
+	<ul>
+	<li><b>Privileged</b> - Can be modified only by privileged (superuser) callers.
+	<li><b>System</b> - Fixed for the duration of the operating system instance.
+	<li><b>Basic</b> - Can be modified by the owner of the calling process.
+	</ul>
+
+<dt><b>Upper limit</b><br>
+<dd>The upper limit on usage that a process is allowed to consume before the action is triggered. This is entered in bytes, seconds or number of threads, depending on the resource type.
+
+<dt><b>Action when exceeded</b><br>
+<dd>Determines what happens to a process that exceeds the limit. Typically this is set to <b>Deny</b>, which simply causes the system call that attempted to exceed the limit to fail. However, the options to send a signal to the offending process may also be usedful.
+
+</dl>
+
+<footer>
+

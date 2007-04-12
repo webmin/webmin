@@ -1,0 +1,16 @@
+<header>SMTP greeting banner</header>
+
+<center><tt>smtpd_banner</tt></center>
+<hr>
+
+This parameter specifies the text that follows the 220 status code in the SMTP
+greeting banner. Some people like to see the mail version advertised. By
+default, Postfix shows no version.
+
+<p>
+
+You MUST specify the <tt>$myhostname</tt> at the start of the text. When the
+SMTP client sees its own hostname at the start of an SMTP greeting banner it
+will report a mailer loop. That's better than having a machine meltdown.
+
+<hr>

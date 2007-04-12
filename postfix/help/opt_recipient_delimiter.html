@@ -1,0 +1,15 @@
+<header>Separator between user names and address extensions</header>
+
+<center><tt>recipient_delimiter</tt></center>
+<hr>
+
+This parameter specifies the separator between user names and address
+extensions (<tt>user+foo</tt>). See <a href=canonical>Canonical Mapping</a>,
+<a href=relocated>Relocated Mapping</a>, <a href=virtual>Virtual Domains</a>
+and local(8) for the effects this has on aliases, canonical, virtual,
+relocated and <tt>.forward</tt> file lookups. Basically, the software tries
+<tt>user+foo</tt> and <tt>.forward+foo</tt> before trying <tt>user</tt> and
+<tt>.forward</tt>.
+
+
+<hr>

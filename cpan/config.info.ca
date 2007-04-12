@@ -1,0 +1,8 @@
+line1=Opcions configurables,11
+refresh_days=Dies abans de refrescar la llista de mòduls CPAN,0,5
+save_partial=Conserva el mòdul descarregat si la instal·lació falla,1,1-Sí,0-No
+def_args=Arguments per defecte de Makefile.PL,0
+incpackages=Inclou els mòduls Perl dels paquets de programari,1,1-Sí,0-No
+line2=Configuració del sistema,11
+packages=Llista dels mòduls perl de CPAN,0
+cpan=URL de base dels mòduls de CPAN,0

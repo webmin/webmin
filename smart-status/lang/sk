@@ -1,0 +1,35 @@
+data_doing=Zaèínam offline zber údajov na $1 ..
+data_failed=.. zlyhalo!
+data_ok=.. zber úspe¹ne spustený. Na úvodnej stránke modulu si mô¾ete pozrie» stav disku ako aj výsledky testu.
+data_title=Zber údajov
+ext_doing=Spú¹»am podrobný test na $1 ..
+ext_failed=$short_failed
+ext_ok=$short_ok
+ext_title=Podrobný test
+index_check=Kontrola uspe¹ná?
+index_data=Zber údajov
+index_desc=Umiestnenie
+index_drive=Stav disku $1
+index_ecmd=Príkaz $1 nebol nájdený na Va¹om systéme, alebo je nesprávne zadaný v <a href='$2'>konfigurácii modulu</a>. Musí by» nain¹talovaný skôr ne¾ zaènete pou¾íva» tento modul.
+index_ecmd2=Príkaz $1 nie je príkazom SMART. Musí by» správne nastavený v <a href='$2'>konfigurácii modulu</a>.
+index_ecount=bolo zistených $1 chýb
+index_eide=Neboli nájdené ¾iadne IDE disky vo Va¹om systéme.
+index_enabled=SMART povolený?
+index_errors=Zaznamenané chyby
+index_ext=Podrobný test
+index_model=Vytvor a modeluj
+index_ok=Ukáza»
+index_return=index modulu
+index_short=Krátky test
+index_show=Zobrazi» stav disku:
+index_size=Veµkos» disku
+index_support=Podporuje SMART?
+index_title=SMART stav disku
+index_version=SMARTsuite verzia $1
+monitor_drive=Disk na kontrolu
+monitor_errors=Kontrolova» aj chybové záznamy?
+monitor_type=SMART kontrola disku
+short_doing=Spú¹»am krátky test na $1 ..
+short_failed=.. zlyhalo!
+short_ok=.. test úspe¹ne spustený. Pozrite si na úvodnej stránke modulu stav disku ako aj výsledky testu.
+short_title=Krátky test

@@ -1,0 +1,4 @@
+lib_dirs=/lib/security
+ignore=README .*\.rpmsave
+pam_dir=/etc/pam.d
+mod_equiv=pam_unix_acct.so=pam_unix.so pam_unix_auth.so=pam_unix.so pam_unix_passwd.so=pam_unix.so pam_unix_session.so=pam_unix.so pam_unix_sess.so=pam_unix.so pam_unix.so=pam_unix.so

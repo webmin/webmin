@@ -1,0 +1,7 @@
+---- Changes since 1.140 ----
+Added support for using the MDADM tools to manage RAID devices, instead of the standard Linux RAID programs. This also allows partitions to be added to or removed from a RAID device after creation. Thanks to Thomas Stalder for sponsoring this feature.
+Added a button for mounting a RAID device.
+---- Changes since 1.200 ----
+RAID devices can now be easily mounted as virtual memory.
+---- Changes since 1.280 ----
+Added support for RAID 6 arrays when using MDADM.

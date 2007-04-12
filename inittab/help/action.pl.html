@@ -1,0 +1,77 @@
+<header>Akcja</header>
+
+Okre¶la, jaka akcja powinna byæ podjêta. <p>
+
+Dopuszczalnymi warto¶ciami tego pola s±&nbsp;: <p>
+
+<b>Odtwórz po zakoñczeniu</b><br>
+Proces zostanie uruchomiony ponownie, gdy tylko siê zakoñczy (np. getty). <p>
+
+<b>Czekaj</b><br>
+Proces zostanie uruchomiony raz podczas wchodzenia na okre¶lony poziom
+i&nbsp;<i>init</i> bêdzie czeka³ na jego zakoñczenie. <p>
+
+<b><p>Jednorazowo na poziomie</b><br>
+Proces zostanie uruchomiony raz podczas wchodzenia na okre¶lony poziom. <p>
+
+<b>Podczas startu</b><br>
+Proces zostanie uruchomiony raz podczas startu systemu. Pole poziomu
+uruchamiania jest ignorowane. <p>
+
+<b>Podczas startu, czekaj na zakoñczenie</b><br>
+Proces zostanie uruchomiony raz podczas startu systemu, a&nbsp;<i>init</i>
+bêdzie czeka³ na jego zakoñczenie (np. /etc/rc). Pole poziomu uruchamiania
+jest ignorowane. <p>
+
+<b>Nic nie rób</b><br>
+Nic siê nie stanie. <p>
+
+<b>Kiedykolwiek na poziomie A, B, C</b><br>
+Proces oznaczony przez poziom uruchamiania <tt>na ¿±danie</tt> zostanie
+uruchomiony podczas wywo³ania okre¶lonego poziomu <tt>na ¿±danie</tt>.
+Jednak¿e, nie nast±pi zmaina bie¿±cego poziomu uruchamiania (poziomami na
+¿±danie s± `a', `b', i&nbsp;`c'). <p>
+
+<b>Domy¶lny poziom</b><br>
+Wpis <tt>domy¶lny poziom</tt> (<tt>initdefault</tt>) okre¶la, na jaki poziom
+uruchamiania system powinien wej¶æ po starcie. Je¶li go nie podano, init
+zapyta o&nbsp;ten poziom na konsoli. Pole procesu jest ignorowane. <p>
+
+<b>Podczas startu systemu</b><br>
+Ten proces bêdzie uruchomiony podczas startu systemu przed jakimkolwiek
+z&nbsp;procesów <tt><b>Podczas startu</b></tt> czy <tt><b>Podczas startu,
+czekaj na zakoñczenie</b></tt>. Pole poziomów uruchamiania jest ignorowane.
+<p>
+
+<b>Zanik zasilania</b><br>
+Proces bêdzie uruchomiony gdy wyst±pi zanik zasilania. Init jest zazwyczaj
+o&nbsp;tym informowany przez proces monitoruj±cy po³±czenie UPS-a
+z&nbsp;komputerem. <i>Init</i> bêdzie czeka³ na zakoñczenie dzia³ania tego
+procesu przed kontynuacj±. <p>
+
+<b>Zanik zasilania, nie czekaæ</b><br>
+Tak jak dla <tt><b>Zanik zasilania</b></tt>, lecz <i>init</i> nie czeka na
+zakoñczenie procesu. <p>
+
+<b>Powrót zasilania</b><br>
+Ten proces zostanie uruchomiony natychmiast po powiadomieniu <i>init</i>-a
+o&nbsp;przywróceniu zasilania. <p>
+
+<b>Brak zasilania</b><br>
+Ten proces zostanie uruchomiony, gdy <i>init</i> zostanie powiadomiony, ¿e
+akumulatory zewnêtrznego UPS-a s± niemal ca³kowicie roz³adowane
+a&nbsp;zasilania nadal nie ma (pod warunkiem, ¿e zewnêtrzny UPS oraz proces
+monitoruj±cy jego stan s± w&nbsp;stanie wykryæ tê sytuacjê). <p>
+
+<b>Ctrl-Alt-Del</b><br>
+Proces zostanie uruchomiony, gdy <i>init</i> otrzyma sygna³ <i>SIGINT</i>.
+Oznacza to, ¿e kto¶ nacisn±³ kombinacjê klawiszy CTRL-ALT-DEL przy konsoli.
+Najprawdopodobniej kto¶ chce uruchomiæ pewien rodzaj <tt>shutdown</tt>-a,
+aby uzyskaæ poziom jednou¿ytkownikowy lub wykonaæ restart maszyny. <p>
+
+<b>Specjalna kombinacja klawiszy</b><br>
+Proces zostanie uruchomiony, gdy <i>init</i> otrzyma sygna³ od procedur
+obs³ugi klawiatury, ¿e na klawiaturze konsoli zosta³a naci¶niêta specjalna
+kombinacja klawiszy. <p>
+
+<hr>

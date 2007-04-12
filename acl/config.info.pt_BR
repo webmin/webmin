@@ -1,0 +1,5 @@
+line1=Opções configuráveis,11
+select=Exibir módulos de usuários em,1,0-Tabela,1-Menus
+order=Ordenar usuários e grupos por,1,0-Ordem no arquivo,1-Nome
+line2=Configuração do sistema,11
+ssleay=Caminho para o programa openssl ou ssleay,0

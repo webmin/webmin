@@ -1,0 +1,31 @@
+index_title=Change Language and Theme
+index_lang=Webmin UI language
+index_langglobal=Global language ($1)
+index_langset=Personal choice ..
+index_theme=Webmin UI theme
+index_themeglobal=Global theme ($1)
+index_themeset=Personal choice ..
+index_pass=Webmin login password
+index_passleave=Leave unchanged
+index_passset=Set to ..
+index_ok=Make Changes
+index_themedef=Old Webmin Theme
+index_desc2=This module can be used to change $1, for your Webmin account only.
+index_d3=$1, $2 and $3
+index_d2=$1 and $2
+index_d1=$1
+index_dlang=the language that modules are displayed in
+index_dtheme=the theme that controls Webmin's appearance
+index_dpass=the password used to login with
+
+change_title=Changing Settings
+change_user=Modifying Webmin login ..
+change_done=.. done
+change_restart=Re-starting Webmin ..
+change_redirect=Re-directing to main menu ..
+change_ecolon=Your password cannot contain the : character
+
+acl_lang=Can change language?
+acl_theme=Can change theme?
+acl_pass=Can change password (when set in Webmin) ?
+

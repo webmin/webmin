@@ -1,0 +1,29 @@
+<header>Has³o</header>
+
+Gdy u¿ytkownik loguje siê przez telnet lub na konsoli, zazwyczaj musi podaæ
+has³o. S± cztery ró¿ne mo¿liwo¶ci ustawienia has³a&nbsp;:
+<ul>
+<if $config{'empty_mode'} == 1>
+<li><b>Zapytaj przy pierwszym logowaniu</b><br>
+    Gdy u¿ytkownik bêdzie siê logowa³ po raz pierwszy przez telnet lub przy
+    konsoli w&nbsp;trybie tekstowym, system poprosi go o&nbsp;jego has³o. <p>
+</if>
+<if $config{'empty_mode'} == 0>
+<li><b>Has³o nie wymagane</b><br>
+    U¿ytkownik mo¿e siê zalogowaæ do systemu bez podawanie has³a. Mo¿liwo¶æ
+    ta powinna byc u¿ywana ze szczególn± ostro¿no¶ci±. <p>
+</if>
+<li><b>Nie mo¿na siê zalogowaæ</b><br>
+    Wybranie tej mo¿liwo¶ci spowoduje, ¿e u¿ytkownik nie bêdzie siê móg³ 
+    w&nbsp;ogóle zalogowaæ do systemu, nawet aby przeczytaæ poczte u¿ywaj±c
+    serwera POP3. <p>
+<li><b>Has³o zaszyfrowane</b><br>
+    Has³a uniksowe s± przechowywane w&nbsp;postaci zaszyfrowanej
+    jednokierunkowo. Ta opcja pozwala na wprowadzenie zaszyfrowanej postaci
+    has³a (byæ mo¿e pobranej z&nbsp;pliku hase³ innego systemu). <p>
+<li><b>Has³o otwartym tekstem</b><br>
+    Aby ustawiæ has³o dla u¿ytkownika, wybierz tê opcjê i&nbsp;wprowad¼ je
+    w&nbsp;polu tekstowym. Webmin we¼mie to has³o, zaszyfruje je
+    i&nbsp;zapisze do pliku hase³. <p>
+</ul>
+<hr>

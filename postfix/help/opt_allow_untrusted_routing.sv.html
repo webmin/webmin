@@ -1,0 +1,14 @@
+<header>Tillåt icke auktoriserad routing</header>
+
+<center><tt>allow_untrusted_routing</tt></center>
+<hr>
+
+Denna parameter anger om Postfix kommer att skicka e-post med avsändarbestämd
+routing (user[@%!]remote[@%!]site) från icke betrodda klienter till destinationer
+som välsignats med parametern <a href=opt_relay_domains><tt>relay_domains</tt></a>.
+
+<p>Standardinställningen är att icke betrodda klienter inte får ange routing.
+Detta spärrar ett stort relähål, där en backup-MX-dator kan luras att vidarebefordra
+e-post till en primär MX-dator som sedan sprider spam-post över världen.
+
+<hr>

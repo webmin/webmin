@@ -1,0 +1,206 @@
+<body bgcolor=#ffffff>
+<title>Gestor de Samba</title>
+<center><img src="images/samba.gif"></center><br>
+<h2><i>Esta página de ayuda está incompleta</i></h2>
+<hr>
+<h3>Introducción</h3>
+Samba es un programa de uso libre que permite que PCs ejecutando Windows
+95 y NT accedan a archivos e impresoras de tu sistema Unix como su éste
+fuera un servidor de archivos/impresoras de Windows. Algunos sistemas Unix
+como Redhat Linux incluyen Samba como parte de la instalación estándar,
+mientras que otros requieren que lo descargues e instales de forma separada. <p>
+
+Si no tienes Samba instalado en tu sistema, la página principal de módulo
+se quejará de que no puede encontrar el archivo de configuración de Samba y
+te será imposible el compartir tus archivos o directorios. Si realmente
+tienes instalado Samba pero te da este mensaje de error, revisa la
+<a href="/config.cgi?samba">configuración del módulo</a> para asegurarte de
+que Webmin está mirando en el lugar correcto para buscar el archivo de
+configuración y los programas de Samba. <p>
+
+Asumiendo que Samba está instalado de forma correcta, la página principal
+del módulo mostrará una lista de todas las comparticiones de archivo e
+impresora definidas en tu sistema. Si Webmin determina que el ervidor
+Samba no está ejecutando, tendrás la posibilidad de intentar arrancar el
+servidor. Esto puede ser necesario si Samba no se arrancó con el Sistema. <p>
+
+<hr>
+<h3>Creando una Compartición Samba</h3>
+Una compartición de Samba es un directorio que los PC clientes pueden
+montar. Cada compartición tiene un nombre corto como <tt>docs</tt> o
+<tt>www</tt>, asociados a determinado directorio en su sistema Unix. A
+menudo un cliente hace referencia a una compartición usando la notación
+<tt>\\servidor\comparticion</tt>. <p>
+
+Para crear una compartición pulse el enlace <tt>Crear Compartición de
+Archivo</tt> a continuación de la lista de comparticiones existentes, en la
+página principal. Esto mostrará un formulario que le permitirá introducir
+los detalles de la nueva compartición. Aunque Samba soporta un gran número
+de parámetros para cada compartición, los más importantes son:<p>
+<table border width=100%>
+<tr> <td><b>Nombre de la Compartición</b></td>
+<td>Cada compartición debe tener un nombre, que usarán los clientes para
+referirse a ella. Un caso especial es la compartición <tt>Todos los
+directorios de inicio</tt>, que se explica a continuación.
+</td> </tr>
+<tr> <td><b>Ruta</b></td>
+<td>El directorio que compartir. Los clientes que usen esta compartición
+sólo podrán acceder a los ficheros en o bajo este directorio.</td> </tr>
+<tr> <td><b>Escribible</b></td>
+<td>Determina si los clientes pueden escribir ficheros y directorios en
+esta compartición.</td> </tr>
+<tr> <td><b>Acceso invitado</b></td>
+<td>Si una compartición permite usuarios invitados, los clientes pueden
+acceder a ella sin proporcionar un nombre de usuario y contraseña válido.
+Una compartición puede, bien denegar el acceso a usuarios invitados, bien
+permitir el acceso a invitados y usuarios normales, bien sólo a
+invitados.</td></tr>
+</table>
+Para información acerca de otras opciones de compartición, vea la sección
+siguiente <b>Opciones Avanzadas</b>. <p>
+
+Cuando haya introducido los detalles de una nueva compartición y pulsado el
+botón <tt>Crear</tt>, quedará inmediatamente disponible para los PC
+cliente. Asumiendo que todo en su red está correctamente configurado, los
+usuarios serán capaces de usar la función de <tt>Entorno de Red</tt> de
+Windows para ver su servidor y todas sus comparticiones. Entonces la 
+compartición recién creada se podrá mapear a una letra de unidad en los PC. <p>
+
+<hr>
+<h3>Creando una Compartición de Impresora</h3>
+Una compartición de impresora Samba es una impresora Unix local o remota
+que desea poner disponible a los PC cliente. Al igual que las
+comparticiones de archivos, cada impresora compartida tiene un nombre corto
+(como <tt>hp5si</tt>), y se referencia usando la notación
+<tt>\\servidor\comparticion</tt>. <p>
+
+Para crear una nueva compartición de impresora, pulse el enlace <tt>Crear
+Compartición de Impresora</tt> en la página principal. Esto mostrará un
+formulario similar al de creación de comparticiones de archivo, en el cual
+puede introducir los detalles de la nueva compartición. Las opciones más
+importantes para una nueva compartición de impresora son: <p>
+<table border width=100%>
+<tr> <td><b>Nombre de la compartición</b></td>
+<td>Cada compartición debe tener un nombre, que usarán los clientes para
+referirse a ella. Un caso especial es la compartición <tt>Todas las
+impresoras</tt>, que se explica a continuación.
+</td> </tr>
+<tr> <td><b>Impresora</b></td>
+<td>La impresora Unix que compartir. Puede ser cualquier impresora en la
+que pudiera imprimir usando el comando <tt>lpr</tt>.</td> </tr>
+<tr> <td><b>Ruta</b></td>
+<td>El directorio donde crear los ficheros temporales de impresión.</td> </tr>
+<tr> <td><b>Acceso invitado</b></td>
+<td>Si una compartición permite acceso invitado, los clientes pueden
+acceder a ella sin necesidad de proporcionar nombre de usuario y
+contraseña válidos. Una compartición puede bien denegar el acceso a
+usuarios invitados, bien permitir usuarios normales e invitados, bien sólo
+invitados.</td></tr>
+<tr> <td><b>Tipo de impresora</b></td>
+<td>El nombre del controlador de la impresora que se debe usar para esta
+impresora. Si introduce un valor para esta opción que coincida con un
+controlador de impresora en los PC cliente, los usuarios no tendrán que
+elegir un controlador de impresora cuando la añadan a su sistema.</td> </tr>
+</table><p>
+
+Como en las comparticiones de ficheros, hay muchas más opciones disponibles
+para las impresoras compartidas. Tan pronto como se añada una impresora
+quedará disponible para los clientes. En Windows 95 y NT se puede añadir la
+impresora usando la opción <tt>Añadir Impresora</tt> en la opción
+"Impresoras" del panel de control. Una vez añadida el usuario podrá
+imprimir sobre dicha impresora como sobre cualquier otra impresora local o
+de red. <p>
+<hr>
+<h3>Creando una Copia</h3>
+
+
+<hr>
+<h3>Editando una Compartición</h3>
+Para editar una compartición existente pulse en su nombre en la lista de
+comparticiones de la página principal. Esto mostrará el mismo formulario
+que se usó para crear la compartición, permitiéndole modificar todas las
+opciones y parámetros. Para guardar sus cambios pulse el botón
+<tt>Aplicar</tt> en la parte inferior izquierda la la página. <p>
+
+Para borrar una compartición pulse el botón <tt>Borrar</tt> en la parte
+inferior derecha de la página. Los usuarios actuales no serán desconectados
+inmediatamente, pero ningún usuario nuevo podrá conectar a la unidad
+compartida. <p>
+
+
+<hr>
+<h3>Usuarios y Seguridad</h3>
+Para comparticiones que no permiten acceso invitado Samba espera que el
+cliente proporcione un nombre de usuario y contraseña. Habitualmente se
+contrastan contra la lista de usuarios Unix, que se puede actualizar
+mediante el módulo <a href=/useradmin/>Usuarios y Grupos</a>. Samba también
+puede mantener su propia lista de nombres de usuario y contraseñas - vea la
+sección <b>Contraseñas Cifradas</b> para más detalles. <p>
+
+Algunas versiones de Windows no permiten que el usuario proporcione un
+nombre de usuario cuando se accede a una compartición - en su lugar se usa
+el nombre de usuario proporcionado durante el ingreso en la propia máquina
+Windows. Si todos los usuarios ingresan en Windows usando el mismo nombre
+de usuario que usan en Unix, esto no supone un problema. De lo contrario,
+tiene dos opciones:
+<ol>
+<li>Windows 95 y NT pueden montar manualmente una compartición, bien
+    tecleando manualmente <tt>net use <i>unidad:</i> <i>comparticion</i></tt>
+    en la línea de comandos o pulsando el botón de mapear unidad de red en
+    una ventana del explorador de archivos e introduciendo la ruta a la
+    compartición. En ambos casos la compartición se puede expresar en el
+    formato <tt>\\servidor\comparticion%ususario</tt>, donde <i>usuario</i>
+    es el nombre de usuario como el que ingresar en el servidor. <p>
+<li>Se puede configurar Samba para intentar hacer coincidir la contraseña
+    proporcionada contra una lista de usuarios, para encontrar el nombre de
+    usuario correcto. La opción de la compartición <tt>Usuarios Unix</tt>
+    le permite indicar los usuarios o grupos contra los que verificar.
+    Tenga en cuenta que usar esta opción con un número grande de usuarios
+    no es muy seguro, puesto que dos o más personas podrían tener la misma
+    contraseña. <p>
+</ul>
+
+<hr>
+<h3>Contraseñas Cifradas</h3>
+Lo normal es que las contraseñas enviadas por la red entre un servidor
+Samba y los PC no vayan cifradas. Esto es malo por dos motivos:
+<ol>
+<li>Cualquiera puede escuchar en la red y capturar las contraseñas de otras
+    personas. <br>
+<li>Las últimas versiones de Windows 9x y NT ya no envían las contraseñas
+    sin cifrar. Los usuarios que intenten acceder a Samba desde estos
+    sistemas obtendrán mensajes de error como <tt>???</tt>. Este cambio
+    apareció por primera vez en NT SP3. <br>
+</ol><p>
+
+Afortunadamente Samba puede usar contraseñas cifradas. Sin embargo no es
+posible contrastar las contraseñas enviadas por los clientes contra el
+fichero de contraseñas habitual de Unix porque ambos usan diferenes
+algoritmos de cifrado para las contraseñas. Por dicha razón Samba debe
+mantener su propia lista de usuarios y contraseñas. <p>
+
+Para hacer que Samba comience a usar contraseñas cifradas, deberá:
+<ol>
+<li>Asegurarse de que su versión de Samba soporta cifrado. En la página
+    <tt>Opciones de Contraseña</tt>, ponga a "Sí" la opción de
+    <tt>Contraseñas Cifradas</tt>. Si este paso falla, deberá descargar o
+    compilar una versión con soporte de contraseñas cifradas. <p>
+<li>Pulse en el enlace <tt>Convertir los usuarios Unix en usuarios
+    Samba</tt> en la parte inferior de la página principal. Esto le llevará
+    a una página en la que convertir algunos o todos sus usuarios Unix
+    actuales a usuarios de Samba. Se convertirán los nombres de usuario, 
+    nombres reales, UID e intérpretes de comandos - pero no las
+    contraseñas. <p>
+<li>Para asignar contraseñas a los usuarios use la opción <tt>Editar la
+    lista de usuarios Samba</tt> en la página principal. Esto mostrará una
+    lista de todos los usuarios Samba de la que podrá seleccionar el que
+    editar. La contraseña para cada usuarios puede estar, bien
+    <tt>bloqueada</tt> (no se permite el ingreso), <tt>Sin contraseña</tt>
+    (no se necesita contraseña), o cualquier contraseña que introduzca. <p>
+</ul>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Volver a módulo</a><p>
+ 
+

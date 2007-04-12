@@ -1,0 +1,42 @@
+Safe No special handling
+AssumeSafeChown Assume that the chown system call is restricted to root
+ClassFileInUnsafeDirPath When reading class files, allow files that are in unsafe directories
+DontWarnForwardFileInUnsafeDirPath Prevent logging of unsafe directory path warnings for non-existent forward files
+ErrorHeaderInUnsafeDirPath Allow the file named in the ErrorHeader option to be in an unsafe directory
+FileDeliveryToHardLink Allow delivery to files that are hard links
+FileDeliveryToSymLink Allow delivery to files that are symbolic links
+ForwardFileInGroupWritableDirPath Allow .forward files in group writable directories
+ForwardFileInUnsafeDirPath Allow .forward files in unsafe directories
+ForwardFileInUnsafeDirPathSafe Allow a .forward file that is in an unsafe directory to include references to program and files
+GroupReadableKeyFile Accept a group-readable key file for STARTTLS
+GroupReadableSASLDBFile Accept a group-readable Cyrus SASL password file
+GroupWritableAliasFile Allow group-writable alias files
+GroupWritableDirPathSafe Change the definition of "unsafe directory" to consider group-writable directories to be safe
+GroupWritableForwardFile Allow group writable .forward files
+GroupWritableForwardFileSafe Accept group-writable .forward files
+GroupWritableIncludeFile Allow group wriable :include: files
+GroupWritableIncludeFileSafe Accept group-writable :include: files
+GroupWritableSASLDBFile Accept a group-writable Cyrus SASL password file
+HelpFileInUnsafeDirPath Allow the file named in the HelpFile option to be in an unsafe directory
+IncludeFileInGroupWritableDirPath Allow :include: files in group writable directories
+IncludeFileInUnsafeDirPath Allow :include: files in unsafe directories
+IncludeFileInUnsafeDirPathSafe Allow a :include: file that is in an unsafe directory to include references to program and files
+InsufficientEntropy Try to use STARTTLS even if the PRNG for OpenSSL is not properly seeded despite the security problems
+LinkedAliasFileInWritableDir Allow an alias file that is a link in a writable directory
+LinkedClassFileInWritableDir Allow class files that are links in writable directories
+LinkedForwardFileInWritableDir Allow .forward files that are links in writable directories
+LinkedIncludeFileInWritableDir Allow :include: files that are links in writable directories
+LinkedMapInWritableDir Allow map files that are links in writable directories
+LinkedServiceSwitchFileInWritableDir Allow the service switch file to be a link even if the directory is writable
+MapInUnsafeDirPath Allow maps (e.g., hash, btree, and dbm files) in unsafe directories
+NonRootSafeAddr Do not mark file and program deliveries as unsafe if sendmail is not running with root privileges
+RunProgramInUnsafeDirPath Go ahead and run programs that are in writable directories
+RunWritableProgram Go ahead and run programs that are group- or world-writable
+TrustStickyBit Allow group or world writable directories if the sticky bit is set on the directory
+WorldWritableAliasFile Accept world-writable alias files
+WorldWritableForwardfile Allow world writable .forward files
+WorldWritableIncludefile Allow world wriable :include: files
+WriteMapToHardLink Allow writes to maps that are hard links
+WriteMapToSymLink Allow writes to maps that are symbolic links
+WriteStatsToHardLink Allow the status file to be a hard link
+WriteStatsToSymLink Allow the status file to be a symbolic link

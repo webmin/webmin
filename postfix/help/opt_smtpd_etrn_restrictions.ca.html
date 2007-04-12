@@ -1,0 +1,18 @@
+<header>Restringeix l'ordre ETRN sobre...</header>
+
+<center><tt>smtpd_etrn_restrictions</tt></center>
+<hr>
+
+Aquest paràmetre restringeix quins clients tenen permès d'executar l'ordre
+<tt>ETRN</tt>. L'ordre <tt>ETRN</tt> de Postfix difereix de les altres
+implementacions d'<tt>ETRN</tt> en que volca el correu per a totes les
+destinacions. Això pot canviar en el futur.
+
+<p>
+
+El valor per defecte és permetre <tt>ETRN</tt> des de qualsevol host.
+Hi ha disponibles les següents restriccions:
+
+<include smtpd_restrictions>
+
+<hr>

@@ -1,0 +1,3 @@
+mode=Anzeigemodus,1,1-Ein Laufwerk,0-Alle Laufwerke
+attribs=Zeige alle Attribute,1,1-Ja,0-Nein
+smartctl=Voller Pfad zum <tt>smartctl</tt>&#45;Befehl,0

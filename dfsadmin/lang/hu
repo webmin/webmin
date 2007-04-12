@@ -1,0 +1,8 @@
+# webmin-0.90dfsadmin/lang/hu
+# translated by Gabor Keve <gabor.keve@it-worx.hu>
+#
+log_modify=$1 NFS megosztás módosítása
+log_rename=$1 NFS megosztás cseréje $2 -re
+log_create=NFS megosztás létrehozása $1 -re
+log_delete=$1 NFS megosztás törlése
+log_apply=Változások elfogadása

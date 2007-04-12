@@ -1,0 +1,41 @@
+index_title=Saját parancsok
+index_edit=Parancs szerkesztése
+index_none=Nincs saját parancs definiálva
+index_create=Új saját parancs készítése
+index_return=parancsok
+
+edit_title=Parancs szerkesztése
+create_title=Parancs létrehozása
+edit_ecannot=Önnek nincs jogosultsága a parancsok szerkesztéséhez
+edit_details=Parancs részletei
+edit_desc=Leírás
+edit_cmd=Parancs
+edit_user=Futtatás felhasználóként
+edit_raw=Parancs megjelenjen HTML-ként?
+edit_params=Parancs paraméterek
+edit_name=Név
+edit_type=Típus
+edit_quote=Hivatkozzon a paraméterre?
+edit_type0=Szöveg
+edit_type1=Felhasználó
+edit_type2=UID
+edit_type3=Csoport
+edit_type4=GID
+edit_type5=File
+edit_type6=Könyvtár 
+edit_type7=Opció...
+edit_type8=Jelszó
+
+save_err=A parancs mentése sikertelen
+save_ecannot=Önnek nincs jogosultsága a parancsok szerkesztéséhez
+save_ecmd=Nincs parancs megadva
+save_edesc=Nincs leírás megadva
+save_euser=Üres vagy hibás felhasználói név
+
+run_err=A parancs végrehajtása nem sikerült
+run_ecannot=Ennek a parancsnak a futtatásához Önnek nincs jogosultsága
+run_euser=Üres vagy hibás felhasználói név
+run_egroup=Üres vagy hibás csoportnév
+run_title=Parancs végrehajtása
+run_out=$1 kimenete...
+run_noout=Nincs kimenet

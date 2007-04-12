@@ -1,0 +1,13 @@
+<header>Åtgärd när man blivit bästa MX-val</header>
+
+<center><tt>best_mx_transport</tt></center>
+<hr>
+
+Denna parameter anger vad som händer när det lokala systemet anges som bästa
+MX-val för en destination. Standardinställningen är att Postfix rapporterar
+felet &quot;mail loops back to myself&quot; och studsar tillbaka meddelandet.
+
+<p>Ange <tt>local</tt> för att skicka e-post till den lokala e-posthanteraren.
+Det går att ange valfri väg som definierats i Postfix-filen <tt>master.cf</tt>.
+
+<hr>

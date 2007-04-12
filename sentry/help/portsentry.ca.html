@@ -1,0 +1,56 @@
+<header>Configuració de Portsentry</header>
+
+Portsentry és un programa dissenyat per detectar i respondre a l'escaneig 
+de ports contra un host objectiu en temps real. Pot fer-ho de dues maneres 
+- escoltant un conjunt de ports seleccionats (mode bàsic), o bé monitoritzant
+tots els ports per sota d'un número triat. Quan es detecta una connexió en
+un dels ports monitoritzats, Portsentry enregistra l'esdeveniment als
+fitxers de registre i, opcionalment, pren una acció per bloquejar tot
+tràfic futur des del host remot. <p>
+
+Les opcions d'aquesta pàgina són:
+<ul>
+<li><b>Ports TCP a monitoritzar</b><br>
+   En mode bàsic, Portsentry escoltarà tots els ports TCP llistats a la
+   primera línia d'aquesta opció. En mode avançat, escoltarà tots els
+   ports per sota del número introduït a la segona línia, excloent-ne
+   els llistats al camp 'execepte'. <p>
+  
+<li><b>Ports UDP a monitoritzar</b><br>
+   Com l'opció de ports TCP, però controla quins ports UDP es monitoritzen. <p>
+
+<li><b>Bloqueja sondes TCP</b><br>
+   Aquesta opció controla quina acció ha de prendre Portsentry quan detecta
+   una connexió TCP a un dels ports monitoritzats. Les tries són Sí
+   (bloqueja les connexions futures des del host), No (no fa res) o bé
+   executa l'ordre 'kill' (executa una ordre especificada al fitxer de
+   configuració). En tots els casos, la connexió s'enregistra als registres
+   del sistema. <p>
+
+<li><b>Bloqueja sondes UDP</b><br>
+   Igual que l'opció de sondes TCP, però controla el que passa quan es
+   detecta una connexió UDP. <p>
+
+<li><b>Missatge per a les connexions bloquejades</b><br>
+   Quan Portsentry està escoltant un port, totes les connexions rebudes
+   rebran aquest missatge de tornada abans de tancar la connexió. <p>
+
+<li><b>Nombre de connexions abans d'activar el bloqueig</b><br>
+   El nombre de connexions 'de gràcia' que un host té permès de fer a un
+   port monitoritzat abans que sigui bloquejat. Si es posa a zero, la
+   primera connexió activarà el bloqueig. <p>
+
+<li><b>Hosts el trànsit dels quals cal ignorar</b><br>
+   Les adreces IP, noms de host o adreces IP/màscares dels hosts i xarxes
+   el trànsit dels quals s'ignora. <p>
+
+</ul>
+
+Al peu de la pàgina, hi ha un botó per iniciar Portsentry (si no s'està
+executant) o bé aturar-lo (si s'està executant). Com que Portsentry
+s'executa com un parell de processos en segon pla (o dimonis), si no està
+en execució no es farà cap monitorització d'escaneig de ports. <p>
+
+<hr>
+
+

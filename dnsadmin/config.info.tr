@@ -1,0 +1,6 @@
+named_boot_file=Birincil yapýlandýrma dosyasý,0
+show_list=Alanlarý görüntüleme þekli,1,0-Ýkonlar,1-Liste
+soa_style=Seri numarasý tipi,1,0-Çalýþma numarasý,1-Tarihe göre (YYYYAAGGss)
+records_order=Kayýtlarý görüntüleme þekli,1,1-Alfabetik olarak,0-Eklenme sýrasýna göre
+named_pid_file=PID dosyasý,0
+named_pathname=<i>named</i>'in tam yolu,0

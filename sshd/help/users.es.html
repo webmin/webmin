@@ -1,0 +1,29 @@
+<header>Identificación</header>
+
+En esta página se pueden configurar las opciones relacionadas con la
+identificación de su servidor SSH. Algunas de las opciones menos evidentes
+son:
+
+<dl>
+<dt><b>Permitir la identificación mediante contraseña</b>
+<dd>Si se configura a No, los usuarios necesitarán tener configurado su
+    directorio <tt>.ssh</tt> con una clave pública antes de ser capaces de
+    entrar. Si puesto a Sí, el usuario podrá introducir una contraseña para
+    identificarse si la validación mediante clave pública no puede llevarse
+    a cabo. <p>
+
+<dt><b>¿ Permitir identificación RSA ?</b>
+<dd>Si puesto a No, los usuarios siempre necesitarán introducir su
+    contraseña incluso si han configurado su clave pública. <p>
+
+<dt><b>¿ Comprobar los permisos de los ficheros importantes ?</b>
+<dd>Si se configura a Sí, el servidor SSH comprobará el directorio
+    <tt>.ssh</tt> (cualquiera de sus padres) de cada usuario para
+    asegurarse de que no tienen permiso de escritura para el grupo, y el
+    fichero <tt>.ssh/identity</tt> para asegurarse de que nadie más tiene
+    permiso de lectura. Si puesto a No, no se llevará a cabo comprobación
+    alguna de los permisos de los ficheros. <p>
+
+</dl>
+<hr>
+

@@ -1,0 +1,5 @@
+inittab_file=Chemin du fichier inittab,0
+
+line2=Configuration du systeme,11
+
+telinit=Chemin vers la commande " telinit ",0

@@ -1,0 +1,15 @@
+<header>SMTP-välkomstbanner</header>
+
+<center><tt>smtpd_banner</tt></center>
+<hr>
+
+Denna parameter anger den text som följer statuskod 220 i STMP-välkomstbannern.
+En del tycker om att få se e-postversionen. Standardbeteendet hos Postfix
+är att inte skriva ut någon version.
+
+<p><tt>$myhostname</tt> i början av texten <b>måste</b> anges.
+Då SMTP-klienten ser sitt eget datornamn i början av en SMTP-välkomstbanner
+kommer den att rapportera en e-postloop. Det är mycket bättre än att
+maskinen dör av överhettning.
+
+<hr>

@@ -1,0 +1,118 @@
+main_return=Gå tillbaka till $1
+main_homepage=Hemsida
+main_feedback=Tyck till ...
+main_switch=Ny användare ...
+main_version=Version $1 på $2 ($3)
+main_title=Webmin $1 på $2 ($3)
+main_none=Du har inte åtkomsträttighet till några Webmin-moduler
+
+category_servers=Servrar
+category_hardware=Hårdvara
+category_system=System
+category_webmin=Webmin
+category_net=Nätverk
+category_=Övrigt
+
+header_webmin=Webmin Index
+header_module=Modulindex
+header_help=Hjälp ...
+header_config=Modulkonfigurering
+header_servers=Webminservrar
+
+index=index
+yes=Ja
+no=Nej
+save=Spara
+create=Skapa
+delete=Radera
+find=Sök
+error=Fel
+default=Standard
+modify=Ändra
+reset=Återställ
+ok=OK
+cancel=Avbryt
+
+chooser_title1=Välj fil ...
+chooser_title2=Välj katalog ...
+chooser_dir=Katalog för $1
+chooser_ok=OK
+
+users_title1=Välj användare ...
+users_title2=Välj användare ...
+users_sel=Valda användare
+users_all=Alla användare
+users_ok=OK
+users_cancel=Avbryt
+users_clear=Nollställ
+
+groups_title1=Välj grupper ...
+groups_title2=Välj grupp ...
+groups_all=Alla grupper
+groups_sel=Valda grupper
+groups_ok=OK
+groups_cancel=Avbryt
+groups_clear=Nollställ
+
+config_ecannot=Du får inte konfigurera denna modul
+config_title=Konfigurering
+config_dir=För modul $1
+config_header=Konfigurerbara inställningar för $1
+config_none=Inga
+config_eaccess=Du får inte komma åt denna modul
+
+help_err=Hjälp kunde inte visas
+help_epath=Ingen sökväg till hjälp
+help_efile=Kunde inte läsa hjälpfilen för $1
+help_eheader=Sektion &lt;header&gt; saknas
+help_einclude=Det gick inte att ta med $1
+help_eif=$1 misslyckades : $2
+help_eexec=$1 misslyckades : $2
+
+referer_title=Säkerhetsvarning
+referer_warn=<b>Varning!</b> Webmin har upptäckt att URL $1 länkar till programmet $2, som verkar vara utanför Webminservern. Detta kan vara ett försök att lura din server att utföra ett farligt kommando. 
+referer_ok=Fortsätt att köra Webminprogrammet
+referer_again=Visa inte denna varning igen
+
+month_1=januari
+month_2=februari
+month_3=mars
+month_4=april
+month_5=maj
+month_6=juni
+month_7=juli
+month_8=augusti
+month_9=september
+month_10=oktober
+month_11=november
+month_12=december
+
+day_0=söndag
+day_1=måndag
+day_2=tisdag
+day_3=onsdag
+day_4=torsdag
+day_5=fredag
+day_6=lördag
+
+smonth_1=jan
+smonth_2=feb
+smonth_3=mar
+smonth_4=apr
+smonth_5=maj
+smonth_6=jun
+smonth_7=jul
+smonth_8=aug
+smonth_9=sep
+smonth_10=okt
+smonth_11=nov
+smonth_12=dec
+
+sday_0=sö
+sday_1=må
+sday_2=ti
+sday_3=on
+sday_4=to
+sday_5=fr
+sday_6=lö
+

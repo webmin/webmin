@@ -1,0 +1,130 @@
+<body bgcolor=#ffffff>
+<title>Internettjänster</title>
+<center><img src="images/inetd.gif"></center><br>
+<h2><i>Denna hjälpsida är inte färdig</i></h2>
+<hr>
+<h3>Introduktion</h3>
+Med denna modul kan du sätta upp och administrera internettjänster som
+<tt>telnet</tt>, <tt>ftp</tt> och <tt>finger</tt>. Varje internettjänst
+har ett namn, ett portnummer och ett protokoll (t ex <tt>telnet</tt> över
+<tt>tcp</tt>, port 23). Flera tjänster har också serverprogram som
+hanterar uppkopplingar till tjänsten.
+
+<p>Tjänster som har ett sådant program kontrolleras av Unix-demonen
+<tt>inetd</tt>, som lyssnar efter uppkopplingar för alla sina tjänster.
+När en uppkoppling sker startas serverprogrammet för att hantera data från
+den nya uppkopplingen.
+
+<p>Alla internettjänster hanteras inte av denna modul. Servrar som tar
+emot många uppkopplingar, t ex HTTPD, SMB och NFS, körs separat för att
+inetd inte ska behöva starta en ny process för varje uppkoppling till dem.
+För dessa tjänster görs inställningar i respektive Webmin-modul, t ex
+<a href=/samba/>Samba</a> och <a href=/apache/>Apache</a>.
+
+<p>På startsidan för denna modul listas alla internet- och RPC-tjänster
+på ditt system. Tjänster som har tillhörande program visas med fetstil.
+Listan genereras från filerna <tt>/etc/services</tt>, <tt>/etc/rpc</tt>
+och <tt>/etc/inetd.conf</tt>.
+
+<hr>
+<h3>Lägga till tjänst</h3>
+För att lägga till en tjänst klickar du på länken <tt>Lägga till tjänst</tt>
+nedanför listan över tjänster. Då kommer du till ett formulär där du kan
+skriva in uppgifter om den nya tjänsten.
+
+	<ul>
+	<li><b>Namn på tjänsten</b>
+	    <br>Varje tjänst måste ha ett unikt par av namn och protokoll.
+	    Detta betyder att två tjänster kan heta samma sak om de använder
+	    olika protokoll.
+	<li><b>Protokoll</b>
+	    <br>Kommunikationsprotokollen som tjänsten använder sig av.
+	    De flesta internettjänster använder <tt>TCP</tt>-protokollet
+	    och resten använder <tt>UDP</tt>.
+	<li><b>Port</b>
+	    <br>Varje tjänst har ett portnummer som måste vara unikt inom
+	    protokollet som används. Portnumret måste ligga i intervallet
+	    0-65535 både för <tt>TCP</tt> och <tt>UDP</tt>.
+	<li><b>Alias</b>
+	    <br>Här kan du skriva in fler namn som tjänsten kan anropas med.
+	    Du får inte använda namn eller alias som redan är upptagna inom
+	    protokollet.
+	</ul>
+
+<p>Du kan använda tjänstenamnet istället för datornamnet i t ex
+<tt>telnet</tt>-kommandon. Du kan exempelvis skriva <tt>telnet
+foo.bar.com smtp</tt> för att koppla upp dig mot port 25 på datorn
+<tt>foo.bar.com</tt>, under förutsättning att tjänsten <tt>smtp</tt>
+har definierats på rätt sätt.
+
+<p>För tjänster med tillhörande program måste du välja <tt>Använd programmet
+nedan</tt> när du skriver in uppgifterna.
+	<ul>
+	<li><b>Program</b>
+	    <br>Vissa tjänster hanteras internt av <tt>inetd</tt>.
+	    Du bör dock här ange fullständig sökväg till det program som ska
+	    utföras när du lägger till en tjänst.
+	<li><b>Argument</b>
+	    <br>Kommandoradsargument som ska skickas till det program du
+	    angivit ovan. Det första argumentet bör vara programnamnet och
+	    övriga argument parametrar till programmet.
+	<li><b>Vänteläge</b>
+	    <br>Här bestämmer du om <tt>inetd</tt> ska vänta tills
+	    programmet är klart innan det ska köra igång något annat.
+	    För de flesta tjänster bör du välja <tt>Vänta inte</tt>.
+	<li><b>Kör som</b>
+	    <br>Användarnamnet för den användare som serverprogrammet ska
+	    köras som. De flesta servrar måste köras som <tt>root</tt>.
+	</ul>
+
+<p>När du har lagt till en tjänst kommer den inte att vara tillgänglig
+direkt. Du måste trycka på knappen <tt>Starta om inetd</tt> på startsidan
+för att tjänsten ska gå att använda.
+
+<hr>
+<h3>Ändra en tjänst</h3>
+För att ändra i en tjänst klickar du på tjänstenamnet i listan på
+startsidan. Du får då upp samma formulär som när du lägger till en
+tjänst, och kan ändra de uppgifter du vill. Du kan också trycka på
+<tt>Ta bort</tt>-knappen längst ned på sidan för att ta bort tjänsten.
+
+<p>Var försiktig när du ändrar i eller tar bort systemtjänster som
+<tt>telnet</tt> och <tt>ftp</tt>. Om du ändrar i dem kan du få problem
+med inloggning (eller värre).
+
+<p>När du har ändrat i en tjänst kommer detta inte att tas i drift på
+en gång, utan du måste trycka på <tt>Starta om inetd</tt>-knappen för
+att ändringarna ska gå igenom.
+
+<hr>
+<h3>Skapa och ändra RPC-program</h3>
+Normalt kommer du inte att behöva skapa eller ändra RPC-program på
+ditt system. Om du skulle vilja göra det ändå går det till på ungefär
+samma sätt som för internettjänster.
+
+<p>Formuläret för RPC-program innehåller alltid åtminstone dessa fält:
+	<ul>
+	<li><b>Programnamn</b>
+	    <br>Ett unikt namn (inom protokollet) på RPC-programmet.
+	<li><b>Nummer</b>
+	    <br>Varje RPC-program har ett unikt programnummer som bestäms
+	    när programmet skrivs.
+	<li><b>Alias</b>
+	    <br>Här kan du skriva in fler namn som RPC-programmet kan
+	    anropas med.
+	</ul>
+
+<p>En del operativsystem (t ex Solaris) stödjer att RPC-tjänster kan
+ha tillhörande serverprogram. Dessa program kommer att köras av <tt>inetd</tt>
+när programmet anropas.
+
+<p>Om ditt system stödjer RPC-serverprogram via inetd, kommer följande
+fält också att finnas:
+	<ul>
+	<li>???
+	</ul>
+ 
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Tillbaka till modul</a>
+ 

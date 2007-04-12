@@ -1,0 +1,37 @@
+index_title=Cambio parole d'ordine
+index_header=Seleziona un utente per cambiare la sua parola d'ordine
+index_return=Lista degli utenti
+index_user=Change password for user:
+index_euseradmin=This module cannot be used because the Users and Groups module is not installed or not supported on your system.
+index_toomany=There are too many users to display on your system. Enter the name of the user whose password you want to change below..
+
+passwd_title=Cambio parola d'ordine
+passwd_header=Cambio parola d'ordine utenti
+passwd_for=Cambio parola d'ordine per
+passwd_old=Vecchia parola d'ordine
+passwd_new=Nuova parola d'ordine
+passwd_repeat=Nuova parola d'ordine (ripeti)
+passwd_change=Cambia
+passwd_reset=Cancella
+passwd_err=Impossibile cambiare la parola d'ordine
+passwd_ecannot=Non sei autorizzato a cambiare la parola d'ordine di questo utente
+passwd_euser=L'utente non esiste
+passwd_eold=Vecchia parola d'ordine incorretta
+passwd_erepeat=Le nuove parole d'ordine non corrispondono
+passwd_ecmd=$1 failed : $2
+passwd_ok=La parola d'ordine di $1 &egrave; stata cambiata con successo. Se l'utente sei tu, dovrai accedere nuovamente a Webmin.
+
+log_passwd=Changed password for user $1
+
+acl_repeat=Must enter new password again?
+acl_old=Must enter old password?
+acl_old_this=Only for other users
+acl_others=Change password in other modules?
+acl_users=Users whose passwords can be changed
+acl_mode0=All users
+acl_mode1=Only users
+acl_mode2=All except users
+acl_mode3=Only this user
+acl_mode4=Users with UID in range
+acl_mode5=Users with primary group
+acl_mode6=Users matching

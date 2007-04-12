@@ -1,0 +1,28 @@
+<header>Allowed Hosts</header>
+
+On this page you can control which hosts are allowed to access your
+database server and what kind of authentication they will need to provide.
+Each access control rule can apply to a single host, to an entire network, to
+all network hosts or only to users connecting from this machine. In addition,
+each rule can apply to either a single selected database or to all databases
+on the server. <p>
+
+When choosing the authentication mode for allowed hosts, the following
+options are available :
+<dl>
+<dt><b>Plaintext password</b>
+<dd>The user must supply a password that matches the one set in the
+    <tt>PostgreSQL Users</tt> page. <p>
+<dt><b>Encrypted password</b>
+<dd>The user must supply a password that when encrypted matches the one set
+    in <tt>PostgreSQL Users</tt>. <p>
+<dt><b>No authentication required</b>
+<dd>No password needs to be supplied at all. <p>
+<dt><b>Reject connection</b>
+<dd>Don't allow connections from this host at all. This is useful for denying
+    access from specific hosts if you have granted access to a whole network.
+    <p>
+</dl>
+
+<hr>
+

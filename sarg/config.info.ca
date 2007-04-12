@@ -1,0 +1,3 @@
+sarg=Camí complet de l'executable sarg,0
+sarg_conf=Camí complet del fitxer de configuració de SARG,0
+naked=Afegeix la capçalera i el peu de Webmin a l¡informe de SARG,1,0-Sí,1-No

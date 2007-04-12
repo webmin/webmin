@@ -1,0 +1,32 @@
+<header>Destinationsadress för okända mottagare</header>
+
+<center><tt>luser_relay</tt></center>
+<hr>
+
+Denna parameter anger en alternativ mottagaradress för okända mottagare.
+Standard är att e-post till okända lokala mottagare studsar.
+
+<p>Följande expansioner görs:
+
+<ul>
+<li><tt>$user</tt> (mottagaranvändarnamn), 
+<li><tt>$shell</tt> (mottagarskal),
+<li><tt>$home</tt> (mottagarhemkatalog),
+<li><tt>$recipient</tt> (fullständig mottagaradress),
+<li><tt>$extension</tt> (mottagaradressändelse), 
+<li><tt>$domain</tt> (mottagardomän),
+<li><tt>$local</tt> (mottagarens fullständiga lokala del), 
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Ange <tt>${namn?värde}</tt> eller <tt>${namn:värde}</tt> för att endast expandera
+värdet då <tt>$namn</tt> (inte) finns.
+
+<p>Exempel:
+<ul>
+<li><tt>$user@other.host</tt>
+<li><tt>$local@other.host</tt>
+<li><tt>admin+$local</tt>
+</ul>
+
+<hr>

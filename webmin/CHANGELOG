@@ -1,0 +1,59 @@
+---- Changes since 1.140 ----
+Module update emails are now sent using the Read User Mail module.
+Added a new option to the Webmin Modules page for installing a third-party module from thirdpartymodules.webmin.com.
+Added a field to the Index Page Options page for specifying a module to redirect users to immediately after logging in.
+---- Changes since 1.150 ----
+Added an option to the Authentication page for enabling the use of MD5 encrypted passwords for Webmin users. These are more secure, and allow longer usable passwords.
+Added an option to the Proxy Servers page for specifying a source IP address for all network connections.
+---- Changes since 1.170 ----
+Create the File Locking page, which can be used to limit Webmin's .lock file creation to certain directories or disable it altogether.
+---- Changes since 1.180 ----
+Added a new option on the logging page for recording the full contents of changed files.
+Scheduled updates can now be downloaded at any time configurable using Cron, by enabling a new option on the Module Config page.
+---- Changes since 1.190 ----
+Added an option to the Authentication page for enabling full PAM conversations at login, which may be necessary on systems that request more than just a username and password.
+---- Changes since 1.200 ----
+Additional SSL certificates can now be defined for different local IP addresses. This can be useful for sites doing SSL virtual hosting that want to share the same certificate between Apache and Webmin for the same address.
+Added a checkbox to the upgrade form to terminate other Webmin sessions, to prevent mismatches between forms and programs in the old and new versions.
+---- Changes since 1.210 ----
+Added a new field to the proxy page, for selecting a preferred OSDN mirror site. This is used when updating Webmin and Usermin, and so should be set to whichever mirror is closest to you.
+---- Changes since 1.220 ----
+Added an option to enable Utmp logging where users login to or logout from Webmin. Requires the User::Utmp Perl module.
+Added a form on the Modules page for exporting one or more installed modules as a .wbm.gz file.
+Put a button on the main page for submitting information about the OS on this Webmin system to the developers, for tracking how many people use each OS.
+Fixed up the proxy servers and downloads page, to prevent problems when the OSDN servers cannot be reached.
+---- Changes since 1.230 ----
+CIDR-format network addresses can now be used on the IP Access Control page.
+Added the Advanced Options icon, for managing some rarely-used internal Webmin settings.
+The size of the popup help window used by Webmin can now be configured on the User Interface page.
+---- Changes since 1.240 ----
+When adjusting the operating system manually, the internal version code can and must be changed too.
+Added an option when cloning a module to use the default configuration instead of copying from the original.
+---- Changes since 1.250 ----
+The Export Modules form can now write to a file on the server.
+---- Changes since 1.260 ----
+The sizes of user, file, date and module chooser windows opened by Webmin can be configured on the User Interface page.
+Added an option on the SSL Encryption page to prevent the use of SSL version 2.
+Added an option on the User Interface page to have the current username prepended to all page titles.
+Added a section to the Advanced Options page for setting the Webmin temporary files directory on a per-module basis.
+Added options on the Proxy Servers and Downloads page to enable caching of HTTP and FTP downloads by Webmin. This is useful if your network does not have a proxy (like Squid), and you often download the same files multiple times.
+Added a form to the Webmin Themes page for exporting a theme to a file.
+---- Changes since 1.270 ----
+Custom category names can be defined on a per-language basis.
+Added a button on the Proxy Servers and Downloads page for clearing the cache.
+---- Changes since 1.290 ----
+Added support for installing and upgrading the Debian package version of Webmin.
+Updates to a module that has already been updated and are not needed are not displayed.
+Added an setting to the Advanced Options page for showing full stack traces when Webmin's common error function is displayed. This is useful for tracking down bugs.
+Added a field on the Advanced Options page for setting the Umask, which determines default permissions for new files created by Webmin.
+---- Changes since 1.300 ----
+Added a section to the SSL Encryption page for uploading an existing PEM format SSL key and certificate.
+Added buttons on the Proxy Servers and Downloads page for viewing and deleting cached files, and clearing the entire cache.
+Fixed a bug that prevents module installs from RPMs from working.
+---- Changes since 1.320 ----
+Added an option to the Advanced page for supressing the display of Perl errors.
+Added a new Mobile Device Options page for defining a custom theme and login process for mobile browsers.
+---- Changes since 1.330 ----
+Added an option to the Logging page to write Webmin actions to syslog.
+Converted many pages to use new ui-lib.pl functions, and broke down long forms using tabs.
+When Webmin's detected OS is automatically updated, Usermin's will be too (if it is an equivalent version).

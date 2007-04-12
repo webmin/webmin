@@ -1,0 +1,13 @@
+name=Pserver
+desc=CVS Server
+category=servers
+desc_ca=Servidor CVS
+desc_es=Servidor CVS
+desc_de=CVS-Server
+desc_ru_SU=óÅÒ×ÅÒ CVS
+desc_ru_RU=Ñåğâåğ CVS
+longdesc=Setup a remotely-accessible CVS server, manage users and browse the repository.
+desc_zh_TW.Big5=CVS¦øªA¾¹
+desc_fr=Serveur CVS
+os_support=!windows
+desc_zh_TW.UTF-8=CVSä¼ºæœå™¨

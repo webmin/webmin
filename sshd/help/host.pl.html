@@ -1,0 +1,34 @@
+Ta strona opisuje opcje zarówno dla pojedynczego hosta, dla hostów
+o&nbsp;nazwach pasuj±cych do pewnego wzorca, jak i dla wszystkich hostów.
+Pewnymi mniej oczywistymi opcjami s±&nbsp;:
+
+<dl>
+<dt><b>Logowaæ jako u¿ytkownik</b>
+<dd>Normalnie, gdy w linii polecenia <tt>ssh</tt> nie poda siê nazwy
+    u¿ytkownika, do logowania na zdalnym serwerze SSH wykorzystywana jest
+    nazwa aktualnego u¿ytkownika. Jednak¿e, za pomoc± tej opcji mo¿na podaæ
+    inn± domy¶ln± nazwê u¿ytkownika dla wybranego hosta lub hostów. <p> 
+
+<dt><b>Znak ucieczki</b>
+<dd>Znak ucieczki s³u¿y do przerwania interaktywnego po³±czenia SSH
+    w&nbsp;celu jego zamkniecia lub wstrzymania. <p>
+
+<dt><b>Kompresja ruchu SSH?</b>
+<dd>Je¶li ta opcja zostanie w³±czona, klient SSH bêdzie kompresowa³ wszelkie
+    dane przesy³ane do danego hosta za pomoc± algorytmu <tt>gzip</tt>. Mo¿e to
+    byæ przydatne, gdy siê kopiuje du¿e pliki za pomoc± <tt>scp</tt> poprzez
+    wolne ³±cze. <p>
+
+<dt><b>Przekazywane do serwera porty lokalne</b>
+<dd>Do tej tablicy mo¿na wprowadziæ numery portów lokalnych, które bêd±
+    przekazywane do pewnego hosta i&nbsp;port obs³uguj±cego je serwera SSH.
+    Mo¿e to byæ przydatne, gdy masz jedynie dostêp do pewnej sieci loguj±c
+    siê przez SSH, a&nbsp;chcesz uzyskaæ dostêp do innych us³ug, jak serwery
+    WWW czy POP. <p>
+
+<dt><b>Porty serwera przekazywane lokalnie</b>
+<dd>Do tej tablicy mo¿na wprowadziæ numery portów na serwerze, które bêd±
+    przekazywane do pewnego hosta oraz port sieci maszyny klienckiej. <p>
+
+</dl>
+

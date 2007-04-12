@@ -1,0 +1,35 @@
+Esta página muestra opciones tanto para una sola máquina, máquinas cuyos
+nombres cumplan un determinado patrón, o todas las máquinas. Algunas de las
+opciones menos evidentes son:
+
+<dl>
+<dt><b>Ingresar como usuario</b>
+<dd>Lo normal es que si no se indica un usuario en la línea de comandos de
+    <tt>tt</tt>, se use el usuario actual para ingresar en el servidor SSH
+    remoto. Sin embargo, se puede usar esta opción para especificar un
+    usuario por defecto distinto para una determinada máquina o máquinas. <p>
+
+<dt><b>Carácter de escape</b>
+<dd>Durante una sesión SSH interactiva, se puede usar el carácter de escape
+    para salirse de la conexión y cerrar o suspender ésta. <p>
+
+<dt><b>¿ Comprimir el tráfico SSH ?</b>
+<dd>Si se activa esta opción el cliente SSH comprimirá mediante el
+    algoritmo <tt>gzip</tt> todos los datos que envíe a esta máquina. Esto
+    puede ser útil si está copiando grandes ficheros mediante <tt>scp</tt>
+    en un enlace lento. <p>
+
+<dt><b>Puertos locales que reenviar al servidor</b>
+<dd>En esta tabla puede introducir los números de puerto locales que serán
+    reenviados por el servidor SSH a cierta máquina y puerto. Esto puede
+    ser útil si su único acceso a cierta red es mediante una sesión SSH a
+    una máquina en dicha red, y desea acceder a otros servicios tales como
+    servidores web o POP. <p>
+
+<dt><b>Puertos del servidor que reenviar al cliente</b>
+<dd>En esta tabla puede introducir los números de puerto en el servidor que
+    serán reenviados a cierta máquina y puerto en la red de la máquina
+    cliente. <p>
+
+</dl>
+

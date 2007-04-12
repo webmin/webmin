@@ -1,0 +1,28 @@
+---- Changes since 1.140 ----
+Fixed a bug that prevented the editing of quotas on loopback filesystems under Linux.
+---- Changes since 1.150 ----
+Quotas and usage are now displayed in bytes, kB, MB or GB where appropriate, instead of always kilobytes.
+The quotaon -p command is now used to determine if quotas are active or not for some filesystem, which is faster and more reliable.
+---- Changes since 1.160 ----
+Email notification can be set up for users that are close to or have reached their soft or hard limit, on a per-filesystem basis.
+---- Changes since 1.170 ----
+Added Module Config option to display quota percentages, and mark those that are over some limit (thanks to Christophe Chisogne).
+---- Changes since 1.210 ----
+When editing user and group quotas, you can now select the units they are in, rather than always entering in kB.
+The email message sent to users who are over quota can now be modified on the Module Config page.
+---- Changes since 1.240 ----
+Added the $GRACE parameter to the over-quota email template.
+---- Changes since 1.260 ----
+Added checkboxes and a button to the user and group quota lists, for updating the block and file limits of multiple users and groups at once.
+---- Changes since 1.270 ----
+Added a Module Config option for sorting users and groups by hard and soft quotas.
+---- Changes since 1.280 ----
+Added the ability to send email to managers of groups that are approaching or have exceeded their disk quotas.
+---- Changes since 1.290 ----
+On Linux systems, edquota is called with UIDs and GIDs instead of user and group names. This allows users with numeric usernames to be edited.
+---- Changes since 1.310 ----
+Added a Module Config option for sorting user and group quotas by the percentage of their hard limit in use.
+---- Changes since 1.330 ----
+On Linux systems with the setquota command, it is called instead of edquota to change user and group quotas.
+---- Changes since 1.340 ----
+Added a Module Config option to sort user lists by the percentage of soft quota used.

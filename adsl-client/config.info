@@ -1,0 +1,8 @@
+line2=System configuration,11
+pppoe_conf=PPPOE ADSL configuration file,0
+conf_style=Configuration file format,1,0-Standard RP-PPPoE config,1-Redhat networking file
+pap_file=PPP accounts file,0
+pppoe_cmd=Full path to pppoe command,0
+start_cmd=Command to bring up ADSL connection,0
+stop_cmd=Command to shut down ADSL connection,0
+status_cmd=Command to get status of ADSL connection,0

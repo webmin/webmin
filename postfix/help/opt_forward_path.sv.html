@@ -1,0 +1,23 @@
+<header>Sökväg för eftersändning</header>
+
+<center><tt>forward_path</tt></center>
+<hr>
+
+Denna parameter anger en lista med sökvägar. Den fil som först hittas används.
+
+<p>Följande expansioner görs:
+<ul>
+<li><tt>$user</tt> (mottagaranvändarnamn),
+<li><tt>$shell</tt> (mottagarskal),
+<li><tt>$home</tt> (mottagarhemkatalog),
+<li><tt>$recipient</tt> (fullständig mottagaradress),
+<li><tt>$extension</tt> (mottagaradressändelse),
+<li><tt>$domain</tt> (mottagardomän),
+<li><tt>$local</tt> (mottagarens hela lokala del), 
+<li><tt>$recipient_delimiter</tt>.
+</ul>
+
+Ange <tt>${namn?värde}</tt> eller <tt>${namn:värde}</tt> för att bara expandera
+värdet när <tt>$namn</tt> (inte) finns.
+
+<hr>

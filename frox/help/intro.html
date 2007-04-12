@@ -1,0 +1,20 @@
+<header>Frox FTP Proxy</header>
+
+Frox is a server that can intercept and forward FTP connections made by
+clients that are routed through your server. This allows you to cache
+commonly downloaded FTP content, enforce access control over which clients
+are allow to use FTP, and limit the amount of bandwidth that can be consumed.
+This of it as the equivalent of Squid, but for the FTP protocol instead of
+HTTP. <p>
+
+It is not particularly useful unless your system is gateway between an
+internal network and the internet - if you are just looking for a way to
+cache FTP content on a single system, it is better to use Squid instead. <p>
+
+For Frox to work properly, a firewall rule must be created to redirect all
+routed traffic on port 21 to the port Frox listens on. If you are running
+Linux and using the Linux Firewall module to manage your firewall, this module
+can setup this rule for you easily. <p>
+
+<hr>
+

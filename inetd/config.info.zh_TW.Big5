@@ -1,0 +1,12 @@
+inetd_conf_file=Inetd 組態檔,0
+extended_inetd=延伸的 inetd 支援,1,0-無,1-基本的,2-加強的
+show_empty=是否顯示沒有對應程式的服務?,1,1-是,0-否
+rpc_inetd=Inetd 是否支援 RPC 程式?,1,1-是,0-否
+services_file=網路服務檔案,0
+rpc_file=RPC 服務檔案,0
+protocols_file=網路協定檔案,0
+rpc_protocols=RPC 子協定,0
+restart_command=重新啟動 inetd 的命令,0
+tcpd_path=到 tcpd (TCP wrapper) 的完整路徑,3
+allow_file=到 tcpd (TCP wrapper) 允許檔案的完整路徑,3
+deny_file=到 tcpd (TCP wrapper) 拒絕檔案的完整路徑,3

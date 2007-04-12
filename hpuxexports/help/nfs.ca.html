@@ -1,0 +1,25 @@
+<h3>Introducció a NFS</h3>
+
+NFS és el protocol d'exportació de fitxers estàndard dels sistemes Unix.
+NFS permet que un sistema exporti un directori a través de la xarxa
+a un o més hosts, permetent així que els usuaris i programes d'altres
+hosts puguin accedir als fitxers exportats com si fossin locals.
+<p>
+Un servidor NFS és un sistema que exporta un o més directoris, mentre
+que un client NFS és un sistema que munta un o més directoris des d'un
+servidor. Un host pot un servidor NFS i un client d'altres servidors
+al mateix temps.
+<p>
+Un servidor controla quins clients poden muntar un directori exportat
+acarant l'adreça IP del client contra una llista de hosts permesos
+pel directori en qüestió. El servidor també pot designar una exportació
+com a només lectura per a certs clients.
+<p>
+Contràriament a altres sistemes de fitxers en xarxa, un client NFS
+no s'ha d'identificar en muntar un directori exportat. El servidor
+confia que el client està identificant els seus propis usuaris i
+està subministrant l'ID de l'usuari en accedir als fitxers exportats.
+Així doncs, és convenient que permetis l'accés només des de hosts
+clients en els quals pot confiar.
+<p>
+

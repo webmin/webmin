@@ -1,0 +1,6 @@
+line1=Opcions configurables,11
+cvsroot=Directori arrel de CVS,7
+view_header=Fitxer capçalera del fullejador del repositori,0
+cvsenc=Joc de caràcters del fitxer del repositori,3,De l'idioma de Webmin
+line2=Configuració del sistema,11
+cvs=Camí del l'executable cvs,0

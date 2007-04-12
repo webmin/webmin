@@ -1,0 +1,4 @@
+max_users=Gösterilecek maksimum kullanýcý sayýsý,0
+input_type=Kullanýcý seçim tipi,1,1-Liste kutusu,0-Metin alaný
+sort_mode=Kullanýcýlarý sýralama biçimi,1,0-Dosyadaki sýraya göre,1-Kullanýcýya göre
+passwd_cmd=Parola deðiþtirme komutu,1,Sistem dosyalarýný doðrudan güncelle

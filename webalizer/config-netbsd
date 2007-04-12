@@ -1,0 +1,4 @@
+webalizer=/usr/pkg/bin/webalizer
+webalizer_conf=/etc/webalizer.conf
+auto=apache,squid,proftpd,wuftpd
+naked=0

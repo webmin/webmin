@@ -1,0 +1,8 @@
+<dependent
+	name='DEP_NAME'
+	type='DEP_TYPE'
+	grouping='DEP_GROUPING'
+	restart_on='DEP_RESTART_ON'>
+	DEP_FMRI
+	DEP_STABILITY
+</dependent>

@@ -1,0 +1,9 @@
+line2=Configuració del sistema,11
+ftpd_path=Camí complet de wuftpd,0
+ftpaccess=Camí complet del fitxer ftpaccess,0
+ftpconversions=Camí complet del fitxer ftpconversions,0
+ftpgroups=Camí complet del fitxer ftpgroups,0
+ftphosts=Camí complet del fitxer ftphosts,0
+ftpusers=Camí complet del fitxer ftpusers,0
+pid_file=Fitxer de PID del servidor FTP,0
+log_file=Fitxer de registre del servidor FTP,0

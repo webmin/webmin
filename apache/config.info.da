@@ -1,0 +1,7 @@
+apache_docbase=Basemappe for Apache dokumentation,3,Apache website
+apachectl_path=Sti til apachectl kommandoen,3,Ingen
+apply_cmd=Kommando til at anvende konfiguration,10,-Brug spachectl eller HUP signal,genstart-K&#248;r stop og start kommandoer
+access_conf=Sti til access.conf,3,Automatisk
+defines_file=Omgivelsesfil der definere Apache variabler,3,Ingen
+defines_name=Omgivelsesvariablenavn i filen ovenfor,0
+defines_mods=Mapper der indeholder moduler for HAVE_ variabler,9,40,3,\t

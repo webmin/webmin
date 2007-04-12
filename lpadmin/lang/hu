@@ -1,0 +1,210 @@
+# webmin-0.82/acl/lang/hu
+# Translated by <kissg@sztaki.hu>
+# Some Caldera/RedHat/SuSe/HPUX related strings remained untranslated due to
+# their specific nature. Further volunteers wanted.
+
+index_title=Nyomtatók
+index_name=Nyomtató
+index_desc=Megnevezés
+index_to=Kimenet
+index_driver=Meghajtó
+index_enabled=Engedé-<br>lyezve?
+index_accepting=Fogadó-<br>képes?
+index_jobs=Feladatok
+index_none=Egyetlen nyomtató sincs a rendszerben
+index_list=lista...
+index_add=Új nyomtató rendszerbe állítása
+index_stop=Ütemezõ leállítása
+index_stopmsg=Ha megnyomod ezt a gombot, megáll a nyomtatás ütemezésést végzõ processz, és se a helyi, se a távoli felhasználók nem tudnak nyomtatni a rendszereden.
+index_start=Ütemezõ indítása
+index_startmsg=Ha megnyomod ezt a gombot, elindul a nyomtatás ütemezésést végzõ processz, és a helyi illetve távoli felhasználók elküldhetik a nyomtatnivalójukat.
+index_return=a nyomtatók listájához
+
+edit_eedit=Nem módosíthatod ennek a nyomtatónak a beállításait
+edit_eadd=Nem vehetsz fel új nyomtatót a rendszerbe
+edit_add=Új nyomtató felvétele
+edit_edit=Nyomtató módosítása
+edit_conf=Nyomtatósor konfigurációja
+edit_name=Azonosító
+edit_acc=Elfogadjon új feladatokat?
+edit_why=Nem, mert
+edit_desc=Megnevezés
+edit_ena=Nyomtatás engedélyezve?
+edit_acl=Ki nyomtathat ide?
+edit_allow=Bárki
+edit_deny=Senki
+edit_allowu=Csak a felsoroltak
+edit_denyu=Bárki,&nbsp;kivéve&nbsp;a&nbsp;felsoroltakat
+edit_banner=Címlap nyomtatása?
+edit_opt=Választható
+edit_default=Ez az alap-<br>nyomtató?
+edit_already=Igen, korábban már annak jelölted ki
+edit_max=A nyomtatnivaló maximális&nbsp;mérete (kB)
+edit_dacc=Elfogadható nyomtatnivaló
+edit_dtext=Szöveg (text)
+edit_dpost=Postscrip&#116;
+edit_dother=Egyéb
+edit_alt=Alternatív azonosítók
+edit_dest=Kimenet
+edit_dev=Helyi interfész
+edit_file=Helyi file
+edit_remote=Távoli Unixos gép
+edit_rqueue=Nyomtató
+edit_type=típusa:
+edit_smb=Távoli Windows-os gép
+edit_share=Nyomtató
+edit_user=Felhasználó
+edit_pass=Jelszó
+edit_wgroup=Munkacsoport
+edit_hpnp=Távoli HPNP szerver
+edit_port=Por&#116;
+edit_direct=Közvetlen TCP kapcsolat
+edit_dport=Por&#116;
+edit_driver=Meghajtó
+
+save_err=Nem sikerült elmenteni a konfigurációt
+save_eadd=Nincs jogod új printer felvételéhez
+save_eedit=Nincs jogod változtatni ezen a nyomtatón
+save_ename=A(z) '$1' név hibás
+save_edup=Már van egy '$1' nevû nyomtató
+save_eallow=Nem adtad meg, kik nyomtathatnak ide
+save_edeny=Nem adtad meg, kik nem nyomtathatnak ide
+save_euser=Nincs '$1' nevû felhasználó
+save_etype=Nem adtad meg, hogy milyen fajta nyomtatnivaló jöhet ide
+save_emax=A nyomtatandó anyag maximális mérete egész szám kell legyen
+save_efile=Nincs '$1' nevû file
+save_erhost=Nincs '$1' nevû távoli gép
+save_erqueue='$1' is not a valid remote queue name
+save_eremote=Távoli unixos gépre csak driver nélkül nyomtathatsz
+save_edhost='$1' nevû gép nincs
+save_edport=Nem adtad meg a portot
+
+jobs_title=Nyomtatósor
+jobs_header=Nyomtatásra váró anyagok a(z) $1 nyomtatón
+jobs_id=Azonosító
+jobs_size=Méret
+jobs_by=Feladó
+jobs_when=Dátum
+jobs_file=Filenév
+jobs_cancel=Az azonosítóra kattintva törölheted az anyagot a sorból.
+jobs_cancelview=Az azonosítóra kattintva törölheted az anyagot a sorból, a méretre kattintva pedig megnézheted a tartalmát.
+jobs_none=Nincs várakozó nyomtatnivaló a(z) $1 sorában
+jobs_all=Minden várakozó anyag törlése
+jobs_bytes=byte
+
+cancel_ecannot=Nincs jogod törölni a nyomtatósorból
+cancel_err=Nem sikerült törölni az anyagot
+cancel_egone=A $1 jelû nyomtatnivaló már nem létezik
+
+view_ecannot=Nem nézheted meg a nyomtatandó file-t
+view_egone=Ez a nyomtatnivaló már nem létezik
+
+start_ecannot=Nincs jogod az ütemezõ indításához
+start_err=Nem sikerült elindítani az ütemezõt
+
+stop_ecannot=Nincs jogod az ütemezõ leállításához
+stop_err=Nem sikerült leállítani az ütemezõt
+
+webmin_none=Nem kell
+webmin_nonemsg=Postscript vagy karakteres nyomtató
+webmin_remotemsg=Távoli nyomtató
+webmin_model=Model
+webmin_prog=Progra&#109;
+webmin_driver=Webmin meghajtó
+webmin_uniprint=Uniprint meghajtó
+webmin_edrivers=Nem derült ki, hogy a $1 milyen nyomtatókat támogat. A <tt>ghostscript</tt>et használó meghajtókat nélkülöznöd kell.
+webmin_egs=Hiányzik a $1 program. A <tt>ghostscript</tt>et használó meghajtókat nélkülöznöd kell.
+webmin_edriver='$1' nem létezik
+
+caldera_none=None
+caldera_nonemsg=Remote or raw printer
+caldera_prog=Program
+caldera_coas=COAS driver
+caldera_printer=Printer and resolution
+caldera_eof=Send EOF?
+caldera_paper=Papírméret
+caldera_double=Kétoldalas nyomtatás?
+caldera_gsopts=Additional GS options
+caldera_uniprint=Uniprint driver
+caldera_eprog='$1' does not exist
+caldera_edriver=No printer driver selected
+caldera_eres=No resolution selected
+
+redhat_none=None
+redhat_nonemsg=Postscript or text printer
+redhat_prog=Program
+redhat_driver=Redhat driver
+redhat_printer=Printer and resolution
+redhat_eof=Send EOF?
+redhat_paper=Papírméret
+redhat_pages=Pages per output page
+redhat_gsopts=Additional GS options
+redhat_hmargin=Jobb/bal margó
+redhat_vmargin=Felsõ/alsó margó
+redhat_crlf=Fix stair-stepping text?
+redhat_eprog='$1' does not exist
+redhat_edriver=No printer driver selected
+redhat_ehmargin=Missing or invalid right/left margin
+redhat_evmargin=Missing or invalid top/bottom margin
+redhat_eres=No resolution selected
+
+suse_none=None
+suse_nonemsg=Postscript or text printer
+suse_prog=Program
+suse_driver=APSfilter driver
+suse_printer=Printer type
+suse_res=Resolution in DPI
+suse_colour=Colour printer?
+suse_paper=Papírméret
+suse_method=Filter method
+suse_auto=Automatic
+suse_ascii=ASCII
+
+estop=Nem sikerült leállítani az <tt>lpd<tt>-t: $1
+
+acl_printers=Mely nyomtatókat konfigurálhatja?
+acl_add=Felvehet új nyomtatókat?
+acl_cancel=Megnézheti és törölheti a nyomtatandó anyagokat?
+acl_stop=Leállíthatja/elindíthatja az ütemezõt?
+acl_listed=Csak a megjelölt nyomtatókon:
+acl_pall=Mindegyiket
+acl_psel=A megjelölteket:
+
+log_stop=Nyomtatódémon leállítása
+log_start=Nyomtatódémon elindítása
+log_cancel_job=A(z) $2 jelû anyag törlése a(z) $1 nyomtatósorból
+log_cancel_all=Minden anyag törlése a(z) $1 nyomtatósorból
+log_create=A(z) $1 nyomtató létrehozása
+log_modify=A(z) $1 nyomtató módosítása
+log_delete=A(z) $1 nyomtató törlése
+log_create_l=A(z) $1 jelû "$3" nyomtató létrehozása
+log_modify_l=A(z) $1 jelû "$3" nyomtató módosítása
+log_delete_l=A(z) $1 jelû "$3" nyomtató törlése
+
+linux_paralel=$1. párhuzamos csatoló
+linux_serial=$1. soros csatoló (COM$1)
+linux_null="Null" eszköz
+linux_usb=USB nyomtató $1
+
+freebsd_paralel=Párhuzamos csatoló
+freebsd_serial=$1. soros csatoló (COM$1)
+
+openbsd_paralel=Párhuzamos csatoló
+openbsd_serial=$1. soros csatoló (COM$1)
+
+unixware_paralel=$1. párhuzamos csatoló
+unixware_serial="$1" soros csatoló (COM$1)
+unixware_null="Null" eszköz
+
+hpux_paralel="$1" párhuzamos csatoló
+hpux_serial="$1" soros csatoló
+hpux_null="Null" eszköz
+
+lprng_paralel=$1. párhuzamos csatoló
+lprng_serial=$1. soros csatoló (COM$1)
+lprng_null="Null" eszköz
+
+solaris_paralel=Párhuzamos csatoló
+solaris_uparalel=Ultra 5/10 párhuzamos csatoló
+solaris_serial="$1" soros csatoló
+solaris_null="Null" eszköz

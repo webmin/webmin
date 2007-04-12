@@ -1,0 +1,17 @@
+show_list=0
+httpd_dir=/etc/httpd
+httpd_path=/usr/sbin/httpd
+mime_types=/etc/mime.types
+stop_cmd=/etc/rc.d/init.d/httpd stop
+start_cmd=/etc/rc.d/init.d/httpd start
+show_order=0
+httpd_conf=/etc/httpd/httpd.conf
+srm_conf=/etc/httpd/srm.conf
+access_conf=/etc/httpd/access.conf
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1
+defines_file=/etc/sysconfig/daemons/httpd
+defines_name=OPTIONS

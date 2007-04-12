@@ -1,0 +1,16 @@
+---- Changes since 1.130 ----
+Packages can now be installed directly from yum, if installed.
+The entire system can also be upgraded from yum.
+---- Changes since 1.150 ----
+The package update system (YUM, APT or Redhat Network) can now be selected on the Module Config page, rather than being always detected automatically.
+---- Changes since 1.170 ----
+Added support for the Blastwave contributed Solaris package management installed, pkg-get.
+---- Changes since 1.180 ----
+On Solaris systems, packages can now be installed from a directory or local filesystem wildcard.
+---- Changes since 1.220 ----
+Added support for the Mandrake URPMI package system.
+Cleaned up package system support code, to allow searching for packages in a consistent way on all operating systems.
+---- Changes since 1.230 ----
+Added an option to enable disabled repositories when installing a package from YUM.
+---- Changes since 1.290 ----
+Added basic support for MSI packages on Windows systems.

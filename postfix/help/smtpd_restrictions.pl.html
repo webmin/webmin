@@ -1,0 +1,17 @@
+<ul>
+<li><tt>reject_unknown_client:</tt> odrzucaæ ¿±danie, gdy nazwa hosta
+        klienta jest nieznana.
+<li><tt>permit_mynetworks:</tt> zezwalaæ, gdy adres klienta pasuje do
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>check_client_access maptype:mapname:</tt> poszukiwaæ nazwy klienta,
+        domeny nadrzêdnej, adresu klienta lub sieci otrzymanych poprzez
+        obcinanie poszczególnych bajtów. Odrzucaæ, gdy wynikiem jest
+        REJECT lub &quot;[45]xx tekst&quot;. Zezwalaæ w&nbsp;pozosta³ych
+        przypadkach.
+<li><tt>reject_maps_rbl:</tt> odrzucaæ, gdy klient jest wymieniony w¶ród
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject:</tt> odrzucaæ po³±czenie. Umieszczaj to na koñcu
+        ograniczenia.
+<li><tt>permit:</tt> zezwalaæ na po³±czenie. Umieszczaj to na koñcu
+        ograniczenia.
+</ul>

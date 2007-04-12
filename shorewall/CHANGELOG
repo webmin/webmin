@@ -1,0 +1,22 @@
+---- Changes since 1.140 ----
+Added buttons for adding rules or other table entries above or below an existing entry.
+Added support for OpenVPN and generic tunnels.
+---- Changes since 1.150 ----
+Added the ability to edit the blacklist table.
+---- Changes since 1.160 ----
+Added a button for manually editing a table file.
+Added simple access control, written by Stephen Carville.
+---- Changes since 1.170 ----
+Improved access control, to limit which Shorewall tables a user can edit.
+---- Changes since 1.180 ----
+Added Module Config page options for commands to run before and after starting, applying and refreshing Shorewall.
+---- Changes since 1.200 ----
+Added support for standard Shorewall actions on the rules page.
+---- Changes since 1.240 ----
+Added support for the providers Shorewall table.
+---- Changes since 1.250 ----
+Updated the module to support new options and columns in Shorewall version 3, such as macros, the new zones table and so on.
+Several records can be deleted at once from any table using checkboxes next to them.
+---- Changes since 1.320 ----
+Comments can now be created and edited in the rules table (and a few others), when running Shorewall 3.3.3 or higher.
+Added logging so that changes made using the module show up in the Webmin Actions Log module.

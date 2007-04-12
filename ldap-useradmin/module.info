@@ -1,0 +1,9 @@
+desc=LDAP Users and Groups
+category=system
+depends=useradmin
+longdesc=Manage users and groups stored in an LDAP database, used for Unix, Samba and Cyrus IMAP authentication.
+desc_ca=Usuaris i Grups LDAP
+desc_de=LDAP Nutzer und Gruppen
+os_support=!windows
+desc_es=Usuarios y Grupos LDAP
+cpan=1

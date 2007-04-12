@@ -1,0 +1,17 @@
+<header>Extra LDAP user properties to allow editing of</header>
+
+If your LDAP database uses attributes that are not supported directly
+by Webmin, this config option can be used to add extra fields to the user
+editing page for managing them. It can be useful for editing Qmail+LDAP
+properties such as mailForwardingAddress and mailMessageStore.<p>
+
+Attributes to edit must be entered in the format:<p>
+
+name1 description1<br>
+name2 description2<br>
+<p>
+The name is the LDAP name of the attribute, and description is the text
+to display in Webmin. The name may be optionally followed by a +, indicating
+that this attribute can allow multiple values. <p>
+<footer>
+

@@ -1,0 +1,11 @@
+smb_conf=Samba配置文件所在位置,0
+smb_passwd=Samba password文件所在位置,3
+samba_status_program=smbstatus的完整路径,0
+samba_password_program=smbpasswd的完整路径,0
+samba_server=smbd的完整路径,0
+name_server=nmbd的完整路径,0
+swat_path=swat的完整路径,3,无
+dont_convert=不需加到sambe password列表的Unix用户的列表,0
+sort_mode=按名字对用户和组排序,1,1-是,0-否
+start_cmd=启动 Samba servers 的目录,3,None
+stop_cmd=停止 Samba servers 的目录,3,None

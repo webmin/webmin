@@ -1,0 +1,11 @@
+man_cmd=Polecenie wy¶wietlaj±ce stronê podrêcznika,0
+man_cmd_sect=Polecenie wy¶wietlaj±ce stronê podrêcznika z&nbsp;rozdzia³u,0
+search_cmd=Polecenie przeszukuj±ce strony,0
+man_dir=Katalogi zawieraj±ce strony podrêcznika (MANPATH),0
+list_cmd=Polecenie zwracaj±ce scie¿kê do pliku strony podrêcznika,0
+list_cmd_sect=Polecenie zwracaj±ce scie¿kê do pliku strony podrêcznika z&nbsp;rozdzia³u,0
+man2html_path=¦cie¿ka do <tt>man2html</tt>,3,Nie korzystaj z&nbsp;<tt>man2html</tt>
+doc_dir=Katalog dokumentacji pakietów,3,Brak
+howto_dir=Katalog dokumentów &quot;HOWTO&quot;,3,Brak
+kernel_dir=Katalog dokumentacji kernela,3,Brak
+kde_dir=Katalog dokumentacji KDE,3,Brak

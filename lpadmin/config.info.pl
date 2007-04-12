@@ -1,0 +1,13 @@
+print_style=Styl konfiguracji drukarek,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare,irix-IRIX
+driver_style=Typ sterowników drukarek,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SuSE,irix-IRIX
+printcap_file=Plik opisu drukarek,3,Brak
+model_path=Katalog zawieraj±cy filtry programowe,3,Brak
+smbclient_path=¦cie¿ka do programu smbclient,3,Brak
+gs_path=¦cie¿ka do programu ghostscript,3,Brak
+gs_fontpath=Katalogi czcionek ghostscripta,3,Domy¶lne
+gs_lib=Katalogi bibliotek Ghostscripta,3,Domy¶lne
+hpnp_path=¦cie¿ka do programu hpnp,3,Brak
+show_status=Pokazywaæ stan w³±czenia i&nbsp;przyjmowania po³±czeñ zamiast sterownika?,1,1-Tak,0-Nie
+queue_refresh=Liczba sekund oczekiwania na od¶wie¿enie kolejki drukowania,3,Nie od¶wie¿aj
+start_cmd=Polecenie uruchamiaj±ce zarz±dcê kolejek,3,Okre¶lone przez wzorzec drukarki
+stop_cmd=Polecenie zatrzymuj±ce zarz±dcê kolejek,3,Okre¶lone przez wzorzec drukarki

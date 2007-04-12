@@ -1,0 +1,31 @@
+<header>Restriccions dels noms de hosts/adreces client</header>
+
+<center><tt>smtpd_client_restrictions</tt></center>
+<hr>
+Aquest paràmetre especifica restriccions opcionals sobre noms de hosts i
+adreces clients SMTP.
+
+<p>
+
+EL valor per defecte és permetre les connexions des de qualsevol host.
+Hi ha disponibles les restriccions següents:
+
+<include smtpd_restrictions>
+
+Les restriccions s'apliquen en l'ordre especificat; la primera restricció 
+que coincideixi guanya.
+
+<p>
+
+Especifiqueu una llista de restriccions, separades per comes o espais.
+Continueu les línies llargues començant la línia següent amb un espai.
+
+<p>
+
+Exemples sensibles:
+<ul>
+<li><tt>permit_mynetworks, reject_unknown_client</tt>
+<li><tt>reject_maps_rbl, reject_unknown_client</tt>
+</ul>
+
+<hr>

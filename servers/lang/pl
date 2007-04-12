@@ -1,0 +1,67 @@
+index_title=Serwery Webmina
+index_edit=zmieñ
+index_noservers=Nie zarejestrowano ¿adnych serwerów.
+index_add=Zarejestruj nowy serwer
+index_broad=Rozg³o¶ zapytanie o serwery
+index_findmsg=Naci¶nij ten przycisk, aby automatycznie znale¼æ wszystkie serwery Webmina w&nbsp;wersji 0.75 lub wy¿szej w&nbsp;sieci lokalnej.
+index_scan=Szukaj serwerów skanuj±c
+index_scanmsg=Naci¶nij ten przycisk, aby sprawdziæ wszystkie adresy w&nbsp;sieci $1 pod k±tem wystêpowania serwerów Webmina w&nbsp;wersji 0.75 lub wy¿szej.
+index_return=serwerów
+index_host=Nazwa hosta i&nbsp;port
+index_desc=Opis
+index_os=Rodzaj serwera
+index_group=Grupa
+index_none=&lt;Brak&gt;
+
+edit_title=Zmieñ serwer
+create_title=Zarejestruj serwer
+edit_details=Dane serwera
+edit_host=Nazwa hosta
+edit_port=Port
+edit_type=Rodzaj serwera
+edit_ssl=Po³±czenie SSL?
+edit_link=Rodzaj po³±czenia
+edit_mode0=Zwyk³e po³±cznie z serwerem
+edit_mode1=Logowanie poprzez Webmina jako
+edit_user=u¿ytkownik
+edit_pass=has³o
+edit_ecannot=Nie masz uprawnieñ do zmian serwerów
+edit_desc=Opis
+edit_desc_def=Z&nbsp;hosta i&nbsp;portu
+edit_group=Nale¿y do grupy serwerów
+edit_none=¯adnej
+edit_exists=Istniej±cej grupy
+edit_new=Nowej grupy
+edit_fast=Wykonywaæ szybkie wywo³ania RPC?
+
+save_err=Nie uda³o siê zachowaæ serwera
+save_ehost=Nie podana lub niepoprawna nazwa hosta.
+save_eport=Nie podany lub niepoprawny port.
+save_euser=Nie podano nazwy u¿ytkownika.
+save_epass=Nie podano has³a.
+save_egroup=Nie podano nazwy grupy
+
+find_title=Szukaj serwerów
+find_new=Znaleziono nowy serwer na $1
+find_already=Znaleziono wcze¶niej znany serwer na $1
+find_me=Znaleziono niniejszy serwer na $1
+find_escan=Skanowana sieæ musi byæ sieci± o&nbsp;adresie klasy C.
+find_none=¯aden serwer nie odpowiedzia³ na skanowanie.
+find_ecannot=Nie masz uprawnieñ do poszukiwania serwerów
+
+log_modify=Zmieniono serwer $1
+log_create=Zarejestrowano serwer $1
+log_delete=Usuniêto serwer $1
+log_find=Znaleziono serwer $1
+
+link_elogin=Nie uda³o siê zalogowaæ do $1 jako $2
+link_ecannot=Nie masz uprawnieñ do korzystania z tego serwera
+link_essl=Nie masz zainstalowanej biblioteki perla Net::SSLeay
+
+lib_other=Inny
+
+acl_edit=Mo¿e zmieniaæ serwery
+acl_find=Mo¿e poszukiwaæ serwerów
+acl_servers=Mo¿e korzystaæ z&nbsp;serwerów
+acl_sall=Wszystkich
+acl_ssel=Wybranych..

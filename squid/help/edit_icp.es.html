@@ -1,0 +1,16 @@
+<header>Otras Cachés</header>
+
+<b>Otros servidores proxy de caché</b>: Esto lista todas las cachés hermanas, padres y multidifusión configuradas. Haz click en el nombre de máquina o en la dirección para editar o ver la configuración completa. <p>
+
+<b>Diréctamente recoger URLs conteniendo</b>: Por defecto ".cgi" y "?". Permite forzar a Squid a siempre recoger ciertos tipos de contenido diréctamente desde el servidor origen. Normálmente esto no necesita modificación alguna ya que la mayoría de las cosas se manejan automáticamente desde Squid sin tocar nada. <p>
+
+<b>Tiempo de espera de consulta ICP</b>: Por defecto un valor 'óptimo'. Si deseas pasar por alto el valor determinado por Squid, pon esto a no cero. El valor por defecto en versiones antiguas de Squid era 2000. <p>
+
+<b>Tiempo de espera de multienlace ICP</b>: Por defecto 2000 mseg o 2 segundos. Para pares multidifusión, Squid envía regulármente "indagaciones" ICP para contar cuántos otros pares están escuchando en las direcciones multidifusión dadas. Este valor especifica por cuánto tiempo debería de esperar Squid para contar todas las respuestas.<p>
+
+<b>Tiempo de espera de par muerto</b>: Por defecto 10 segundos. Controla por cuánto tiempo Squid espera para declarar una caché de par como "muerta". Si no hay respuestas ICP recibidas en esta cantidad de tiempo, Squid declarará el par como muerto y no esperará recibir respuestas ICP posteriores. Sin embargo, continúa enviando consultas ICP y marcará el par como vivo al recibir la primera respuesta ICP. <p>
+
+Este tiempo de espera también afecta si Squid espera recibir respuestas ICP desde los pares. Si transcurren más de 'par_muerto' segundos desde que la última respuesta ICP fue recibida, Squid no esperará recibir una respuesta ICP en la siguiente consulta. Así, si tu tiempo entre requerimientos es mayor que este tiempo de espera, verás un montón de requerimientos enviados DIRÉCTAMENTE a los servidores origen en vez de a tus padres. <p>
+
+<hr>
+

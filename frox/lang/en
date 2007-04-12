@@ -1,0 +1,147 @@
+index_title=Frox FTP Proxy
+index_econf=The Frox configuration file $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_ecmd=The Frox server program $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+#index_version=Frox version $1
+index_apply=Apply Configuration
+index_applydesc=Click this button to activate the current Frox configuration by sending a HUP signal to its process.
+index_stop=Stop Frox Server
+index_stopdesc=Click this button to shut down the Frox proxy server process. FTP connections routed through this server will stop working until the server is re-started.
+index_start=Start Frox Server
+index_startdesc=Click this button to start up the Frox proxy server process. If the firewall has been set up correctly, FTP connections routed via this server will not work until Frox is running.
+index_inetd=Frox is configured to run from Inetd, and so cannot be started or stopped using this module.
+index_return=module index
+
+net_title=Network Options
+net_header=Networking related options
+edit_Listen=Listen on addresses
+net_all=All
+edit_Port=Listen on port
+edit_BindToDevice=Listen on interface
+edit_FromInetd=Run from inetd?
+edit_NoDetach=Server run mode
+net_bg=Background
+net_fg=Foreground
+net_none=None
+edit_ResolvLoadHack=Test address to resolve
+edit_FTPProxy=FTP proxy server (name:port)
+edit_TcpOutgoingAddr=Source address for outgoing connections
+edit_PASVAddress=Source address for PASV connections
+net_err=Failed to save network options
+net_ehost=Missing or invalid IP address or hostname
+net_eport=Missing or invalid port number
+net_eproxy=Missing or invalid proxy server address:port
+net_eip=Missing or invalid IP address
+net_eresolv=Missing or invalid DNS name
+net_eiface=Missing or invalid interface name
+
+general_title=General Options
+general_header=General Frox user, group and file options
+edit_User=Run as Unix user
+edit_Group=Run as Unix group
+edit_WorkingDir=Temporary files directory
+edit_DontChroot=Chroot to directory?
+edit_LogLevel=Logging level
+edit_PidFile=Write PID to file
+general_nowhere=Nowhere
+general_err=Failed to save general options
+general_edir=Missing or non-existant directory
+general_elevel=Missing or not a number
+general_epidfile=Missing or non-absolute path
+edit_euser=Missing or invalid Unix username
+edit_egroup=Missing or invalid Unix group name
+edit_efrom=Missing or invalid starting port number
+edit_eto=Missing or invalid ending port number
+edit_erange=Starting port must be less than ending port
+
+ftp_title=FTP Protocol Options
+ftp_header=FTP protocol proxying options
+edit_APConv=Convert active connections to passive?
+edit_PAConv=Convert passive connections to active?
+edit_BounceDefend=Block data requests to low ports?
+edit_SameAddress=Only allow data connections from client address?
+edit_AllowNonASCII=Allow non-ascii filenames?
+edit_TransparentData=Proxy data connections too?
+edit_ControlPorts=Outgoing control ports range
+edit_PassivePorts=Outgoing passive ports range
+edit_ActivePorts=Outgoing active ports range
+edit_from=From
+edit_to=to
+ftp_err=Failed to save FTP protocol options
+ftp_econv=Both active to passive and passive to active conversion cannot be enabled at once!
+
+cache_title=Caching Options
+cache_header=Caching and virus scanning options
+cache_module=Caching mode
+cache_none=Disabled
+cache_local=Use local temp files directory
+cache_http=Use HTTP proxy server ..
+edit_CacheSize=Local cache size
+edit_HTTPProxy=Proxy server hostname:port
+edit_MinCacheSize=Minimum size to cache
+edit_StrictCaching=Strict cache filename mapping?
+edit_CacheOnFQDN=Lookup full server hostnames for caching?
+edit_CacheAll=Cache non-anonymous downloads too?
+edit_VirusScanner=Virus scanner program
+edit_VSOK=Virus scanner OK exit status
+edit_VSProgressMsgs=Seconds between progress messages
+cache_vnone=None (scanning disabled)
+cache_err=Failed to save caching options
+cache_esize=Missing or invalid size
+cache_eproxy=Missing or invalid hostname:port
+cache_escanner=Missing or non-existant scanner program
+cache_eint=Missing or non-numeric
+
+acl_title=Access Control
+acl_header=Access control and resource limit options
+edit_DoNTP=Accept non-transparent proxy connections too?
+edit_NTPAddress=Local host:port for non-transparent connections
+acl_same=Same as main port
+edit_Timeout=Timeout before closing connection
+edit_MaxForks=Maximum number of processes
+edit_MaxForksPerHost=Maximum number of processes per client
+edit_MaxTransferRate=Maximum transfer rate
+acl_bps=bytes/sec
+acl_acl=Access control list
+acl_action=Action
+acl_src=Client address/network
+acl_dest=Server address/network
+acl_ports=Destination ports
+acl_any=Any
+acl_err=Failed to save access control options
+acl_etimeout=Missing or invalid number of seconds
+acl_eforks=Missing or invalid number of processes
+acl_erate=Missing or invalid bytes per second
+acl_entp=Missing or invalid proxy address:port
+acl_esrc=Missing or invalid client address, network/size or network/netmask in ACL $1
+acl_edest=Missing or invalid server address, network/size or network/netmask in ACL $1
+acl_eports=Invalid comma-separate list of ports or port ranges in ACL $1
+acl_enone=No access control list entries were entered
+
+iptables_title=Port Redirection Setup
+iptables_inst0=The IPtables firewall commands needed to setup port redirection do not appear to be installed on your system. See the <a href='$1'>Linux Firewall</a> module for more details.
+iptables_inst1=The <a href='$1'>Linux Firewall</a> module does not appear to have been fully setup on your system. This module makes use of that one to setup Frox port redirection.
+iptables_desc=For Frox to work properly, traffic routed through your system on port $1 must be forwarded to port $2, which Frox listens on. This can be done by adding an IPtables rule to your firewall, assuming that it is managed by the <a href='$3'>Linux Firewall</a> module.
+iptables_disabled=Port redirection is disabled
+iptables_enabled=Port redirection is enabled, for clients on network $1
+iptables_enabled2=Port redirection is enabled, for clients on interface $1
+iptables_save=Save and Apply
+iptables_err=Failed to save port forwarding
+iptables_enet=Missing or invalid network address (should be like 192.168.1.0/24)
+iptables_eapply=Apply failed : $1
+iptables_eiface=Missing or invalid network interface
+
+start_err=Failed to start Frox
+stop_err=Failed to stop Frox
+stop_egone=No longer running!
+
+log_net=Changed networking options
+log_general=Changed general options
+log_ftp=Changed FTP protocol options
+log_cache=Changed caching options
+log_acl=Changed access control options
+log_iptables_1=Enabled port redirection
+log_iptables_2=Disabled port redirection
+log_stop=Stopped Frox server
+log_start=Started Frox server
+log_apply=Applied configuration
+

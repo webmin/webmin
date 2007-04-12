@@ -1,0 +1,8 @@
+find_pid_command=ps -A | grep NAME | grep -v grep | awk '{print $1}'
+path=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:/usr/lib
+ld_env=LD_LIBRARY_PATH
+passwd_file=/etc/shadow
+passwd_uindex=0
+passwd_pindex=1
+
+by_view=0

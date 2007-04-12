@@ -1,0 +1,156 @@
+index_title=Gestor de Procesos
+index_display=Mostrar
+index_tree=PID
+index_user=Usuario
+index_size=Memoria
+index_cpu=UCP
+index_search=Buscar
+index_run=Ejecutar...
+index_return=lista de procesos
+index_mem=<b>Memoria real:</b> $1 KB total / $2 KB libres
+index_swap=<b>Espacio de intercambio:</b> $1 KB total / $2 KB libres
+index_load=<b>Promedios de carga de UCP:</b> $1 (5 mins), $2 (10 mins), $3 (15 mins)
+
+pid=ID de Proceso
+owner=Propietario
+command=Comando
+cpu=UCP
+size=Medida
+parent=Proceso padre
+runtime=Tiempo de Ejecución
+nice=Nivel de prioridad (Nice)
+
+search_user=Propiedad de
+search_match=Coincidiendo con
+search_cpupc=Usando más de $1% de UCP
+search_fs=Usando sistema de archivos
+search_files=Usando archivo
+search_submit=Buscar
+search_none=No se han encontrado procesos que coincidan.
+search_kill=Enviar Señal
+search_ignore=Ignorar procesos de búsqueda
+search_return=formulario de búsqueda
+search_sigterm=Terminar Procesos
+search_sigkill=Matar Procesos
+search_port=Usando puerto
+search_protocol=protocolo
+
+run_command=Comando a ejecutar
+run_submit=Ejecutar
+run_mode=Modo de Ejecución
+run_bg=Ejecutar en segundo plano
+run_fg=Esperar hasta que termine
+run_input=Entrada del comando
+run_title=Salida del comando
+run_output=Salida de $1 ...
+run_none=No se ha generado salida
+run_ecannot=No estás autorizado a ejecutar comandos
+
+edit_title=Información de Proceso
+edit_gone=Este proceso ya no se está ejecutando
+edit_sub=Subprocesos
+edit_kill=Enviar Señal
+edit_change=Cambiar
+edit_prilow=Prioridad baja
+edit_prihigh=Prioridad alta
+edit_pridef=Por defecto
+edit_none=Ninguna
+edit_ecannot=No estás autorizado a editar procesos
+edit_sigterm=Terminar Proceso
+edit_sigkill=Matar Proceso
+edit_open=Archivos y Conexiones
+
+kill_err=Error al enviar señal $1 al proceso $2
+kill_title=Enviar Señal
+kill_sent=enviada
+kill_ecannot=No estás autorizado a matar procesos
+
+renice_err=Error en cambio de prioridad de $1
+renice_ecannot=No estás autorizado a cambiar procesos de prioridad
+
+linux_pri=Prioridad
+linux_tty=TTY
+linux_status=Estado
+linux_wchan=Esperando En
+linux_mem=Memoria
+linux_group=Grupo
+linux_ruser=Usuario Real
+linux_rgroup=Grupo Real
+linux_pgid=ID de grupo de Proceso
+
+linuxstat_R=Ejecutando
+linuxstat_S=Durmiendo
+linuxstat_D=Sueño profundo
+linuxstat_T=Parado
+linuxstat_Z=Zombi
+
+freebsd_ruser=Usuario Real
+freebsd_rgroup=Grupo Real
+freebsd_tty=TTY
+freebsd_pgid=Grupo del Proceso
+freebsd_lstart=Hora de Inicio
+freebsd_lim=Límite de Memoria
+
+hpux_pri=Prioridad
+hpux_tty=TTY
+hpux_status=Status
+hpux_wchan=Esperando por
+
+hpuxstat_0=No existe
+hpuxstat_S=Durmiendo
+hpuxstat_W=Esperando
+hpuxstat_R=En ejecución
+hpuxstat_I=Intermedio
+hpuxstat_Z=Zombi
+hpuxstat_T=Parado
+hpuxstat_G=Creciendo
+
+macos_tty=TTY
+
+sysv_group=Grupo
+sysv_ruser=Usuario Real
+sysv_rgroup=Grupo Real
+sysv_pgid=ID de grupo del Proceso
+sysv_tty=TTY
+
+log_run=Ejecutado comando "$1"
+log_kill=Enviada señal $1 a proceso $2
+log_kills=Envía señal $1 a $2 procesos
+log_kill_l=Enviada señal $1 a proceso $2
+log_kills_l=Enviada señal $1 a procesos<br>$2
+
+acl_manage=Gestionar procesos como usuario
+acl_manage_def=Usuario de Webmin en curso
+acl_edit=¿Puede matar y cambiar procesos de prioridad?
+acl_run=¿Puede ejecutar comandos?
+
+kill_kill=Matar Proceso
+kill_term=&nbsp;Terminar&nbsp;&nbsp;
+kill_hup=&nbsp;&nbsp;Rearrancar&nbsp;&nbsp;&nbsp;
+kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;Parar&nbsp;&nbsp;&nbsp;&nbsp;
+kill_cont=&nbsp;&nbsp;Continuar&nbsp;&nbsp;
+
+open_title=Archivos Abiertos y Conexiones
+open_proc=Para proceso $1 (PID $2)
+open_header1=Archivos abiertos
+open_header2=Conexiones de red abiertas
+open_type=Tipo
+open_proto=Protocolo
+open_desc=Detalles
+open_fd=Descriptor de Archivo
+open_listen1=Escuchando en puerto $1
+open_listen2=Escuchando en dirección $1 puerto $2
+open_recv=Recibiendo en $1:$2
+open_conn=Conectado desde $1 a $2 en estado $3
+open_cwd=Directorio actual
+open_rtd=Directorio raíz
+open_txt=Código de programa
+open_mem=Biblioteca compartida
+open_dir=Directorio
+open_reg=Archivo regular
+open_chr=Carácter especial
+open_blk=Bloque especial
+open_size=Medida de archivo
+open_inode=Inodo
+open_file=Trayectoria
+

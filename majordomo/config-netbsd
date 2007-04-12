@@ -1,0 +1,5 @@
+majordomo_cf=/usr/pkg/libexec/majordomo/majordomo.cf
+program_dir=/usr/pkg/libexec/majordomo
+dynamic=0
+sort_mode=0
+perms=0

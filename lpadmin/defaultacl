@@ -1,0 +1,9 @@
+printers=*
+add=1
+cancel=1
+stop=1
+view=1
+test=1
+user=*
+delete=1
+cluster=1

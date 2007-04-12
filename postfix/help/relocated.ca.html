@@ -1,0 +1,31 @@
+<header>Mapejat de Reubicació</header>
+
+El fitxer reubicat opcional subministra la informació que s'utilitza en
+els missatges rebotats &quot;user has moved to new_location&quot;
+
+<p>
+
+Les recerques en taules son insensibles a caixa.
+
+<p>
+
+El camp &quot;Mapeja a...&quot; especifica la informació de contacte, com ara
+una adreça de correu electrònic, una adreça postal o un número de telèfon.
+És un dels següents:
+<ul>
+<li><tt>usuari@domini</tt>: Coincideix amb <tt>usuari@domini</tt>. Aquesta 
+forma té precedència sobre totes les altres.
+
+<li><tt>usuari</tt>: Coincideix amb <tt>usuari@lloc</tt> quan el lloc és
+<tt>$myorigin</tt>, quan el lloc està llistat a <tt>$mydestination</tt>, o
+quan el lloc està llistat a <tt>$inet_interfaces</tt>.
+
+<li><tt>@domini</tt>: Coincideix amb totes les adreces del domini. Aquesta
+forma és la que té la precedència més baixa.
+</ul>
+
+EXTENSIÓ D'ADREÇA: Quan la recerca falla i la part local de l'adreça conté
+el delimitador opcional del destinatari (p. ex., <tt>usuari+foo@domini</tt>),
+la recerca es repeteix per a l'adreça no extesa (p. ex., <tt>usuari@domini</tt>).
+
+<hr>

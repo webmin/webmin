@@ -1,0 +1,26 @@
+init_base=Répertoire dans lequel les répertoires des niveaux d'exécution sont situés,0
+init_dir=Répertoire qui contient les scripts de démarrage,0
+soft_links=Type de liens utilisés pour les niveaux d'exécution,1,0-Dur,1-Symboliques
+order_digits=Nombre de chiffre dans l'ordre d'action,0
+local_script=Script local de démarrage,3
+reboot_command=Commande pour redémarrer le système,0
+shutdown_command=Commande pour arrêter le système,0
+start_stop_msg=Le système supporte les messages de démarrage et d'arrêt,1,0-Non,1-Oui
+inittab_id=Numéro du niveau d'exécution du démarrage,0
+
+
+line1=Options Configurables,11
+expert=Permetrre la selection de niveau de demarrage individuels ?,1,1-Oui,0-Non
+desc=Afficher actions avec description,1,2-Oui&#44; et montrer tous les niveaux de demarrage,1-Oui,0-Non
+order=Montrer ordre de boot des actions ?,1,1-Oui,0-Non
+status_check=Montrer le satut courant des actions,1,2-Sur les pages Index et Action,1-Sur la page Action uniquement,0-Non
+sort_mode=Trier les actions par,1,1-Ordre de boot,0-Nom
+line2=Configuration du systeme,11
+
+boot_levels=Niveaux de demarrage creent nouvelles actions dans,3,/etc/inittab
+
+daemons_dir=Repertoire des demons Caldera,3,Aucun
+startup_dirs=Repertoires des StartupItems Darwin,0
+darwin_setup=Repertoire pour personnaliser StartupItems,0
+hostconfig=Fichier de configuration du poste Darwin,0
+plist=Nom de plist dans un repertoire de StartupItems,0

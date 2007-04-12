@@ -1,0 +1,37 @@
+<header>Configuración de Logcheck</header>
+
+Logcheck es un programa que monitoriza automáticamente los ficheros de
+historial de su sistema de manera regular y le remite un correo con las
+violaciones de la política de seguridad. Busca mensajes generados por
+diversos programas (incluyendo Portsentry y Hostsentry) que indiquen
+intentos de intrusión, y genera un informe que envía por correo electrónico
+a la dirección elegida. <p>
+
+Las opciones de esta página son :
+<ul>
+<li><b>Enviar los informes a</b><br>
+    La dirección de correo electrónico a la que remitir los informes con
+    las violaciones de seguridad. <p>
+
+<li><b>Mensajes de los historiales que indican intentos de intrusión</b><br>
+    Una lista de los mensajes que, de encontrarlos en alguno de los
+    historiales del sistema, indicarían un intento de intrusión. <p>
+
+<li><b>Mensajes de los historiales que indican violaciones de seguridad</b><br>
+    Una lista de mensajes que indican una potencial violación de la
+    política de seguridad. Cualquier mensaje en esta lista que también esté
+    en la siguiente lista 'Excepto para' será ignorado. <p>
+
+<li><b>Mensajes de los historiales que ignorar</b><br>
+    Cualquier mensaje en los historiales que esté listado en este campo
+    siempre será ignorado, incluso si coincide con una de las cadenas de
+    intentos de intrusión o violaciones de la política de seguridad. <p>
+</ul>
+
+Al final de esta página hay un formulario para elegir exactamente cuándo
+debería ejecutar Logcheck. Sin embargo, si su instalación de Logcheck usa
+un guión de 'cron' que fuerza a su ejecución horaria o diaria, este
+formulario no se mostrará. <p>
+
+<p>
+

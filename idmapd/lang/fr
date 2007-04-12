@@ -1,0 +1,11 @@
+domain=Nom de domaine
+error_dir=Le r&#233;pertoire $1 n'existe pas
+general=Configuration g&#233;n&#233;rale
+index_eidmapd=Le d&#233;mon idmapd ne peut pas &#234;tre trouv&#233;. Il n'est peut-&#234;tre pas install&#233;, ou alors la <a href='$2'>configuration du module</a> est incorrecte.
+index_title=Configuration de idmapd
+mapping=Configuration du mapping
+nobody_group=Groupe nobody
+nobody_user=Utilisateur Nobody
+pipefs_dir=R&#233;pertoire pipefs
+save=Sauver la config et red&#233;marrer le d&#233;mon
+save_err=Impossible de sauver le fichier de configuration $1

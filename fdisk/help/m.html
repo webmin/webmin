@@ -1,0 +1,14 @@
+<header>Sector count for multiple sector I/O</header>
+Set sector count for multiple sector I/O on the drive.<p>
+
+Multiple sector mode (aka IDE Block Mode), is a feature of most modern IDE hard drives, permitting the transfer of multiple sectors per I/O interrupt, rather than the usual one sector per interrupt.<p>
+
+When this feature is enabled, it typically reduces operating system overhead for disk I/O by 30-50%.  On many systems, it also provides increased data throughput of anywhere from 5% to 50%.  Some drives, however (most notably the WD Caviar series), seem to run slower with multiple mode enabled.  Your mileage may vary.<p>
+
+Most drives support the minimum settings of 2, 4, 8, or 16 (sectors).  Larger settings may also be possible, depending on the drive.  A setting of 16 or 32 seems optimal on many systems.<p>
+
+Western Digital recommends lower settings of 4 to 8 on many of their drives, due tiny (32kB) drive buffers and non-optimized buffering algorithms.<p>
+
+Some drives claim to support multiple mode, but lose data at some settings.<br>
+Under rare circumstances, such failures can result in massive filesystem corruption.
+<hr>

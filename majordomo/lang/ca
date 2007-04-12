@@ -1,0 +1,239 @@
+index_title=Administrador de Llistes Majordomo
+index_econfig=El fitxer de configuració $1 del majordomo no existeix. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta, o bé que el majordomo no estigui instal·lat.
+index_eprograms=El directori $1 del majordomo no existeix. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta, o bé que el majordomo no estigui instal·lat.
+index_eversion=Aquesta versió del majordomo no està suportada per Webmin. Només estan suportades les versions 1.94 i posteriors.
+index_eversion2=No s'ha trobat el fitxer $1 de versió de Majordomo al directori de programes $2. Pot ser que la <a href='$3'>configuració del mòdul</a> sigui incorrecta, o bé que majordomo no estigui instal·lat.
+index_ehomedir=La variable <tt>$homedir</tt> del fitxer de configuració del majordomo està establerta a $1, que no existeix.
+index_elistdir=La variable <tt>$listdir</tt> del fitxer de configuració del majordomo està establerta a $1, que no existeix.
+index_esendmail2=Sendmail no està instal·lat al sistema o bé no està configurat adequadament. Comprova la configuració del <a href=$2>mòdul Sendmail</a>.
+index_epostfix=O bé Postfix no està instal·lat al sistema, o bé no està adequadament configurat. Comprova la configuració del <a href='$1'>mòdul Postfix</a>.
+index_esendmail3=El mòdul Sendmail de Webmin necessari per gestionar àlies no està instal·lat.
+index_setupdesc=El majordomo està instal·lat al sistema, però no està degudament configurat al fitxer d'àlies del sendmail.
+index_owner=Adreça de correu del propietari
+index_setup=Configura els Àlies
+index_none=No tens cap llista de correu definida
+index_add=Afegeix una nova llista de correu
+index_digest=Afegeix una nova llista de resums
+index_global=Edita les Opcions del Majordomo
+index_globaldesc=Edita les opcions globals del majordomo que s'apliquen a totes les llistes de correu
+index_return=a les llistes de correu
+index_version=Versió majordomo $1
+
+global_title=Opcions Globals
+global_ecannot=No tens permís per editar les opcions globals
+global_header=Opcions Globals del Majordomo
+global_whereami=Nom de host del servidor de correu (<tt>$whereami</tt>)
+global_whoami=Adreça mestra del majordomo
+global_owner=Adreça del propietari del majordomo
+global_sendmail=Camí de l'ordre sendmail
+global_err=No he pogut desar les opcions globals
+global_ewhereami=Hi falta el nom de host del servidor o bé no és vàlid
+global_ewhoami=Hi falta l'adreça del majordomo o bé no és vàlida
+global_eowner=Hi falta l'adreça del propietari o bé no és vàlida
+global_esendmail=No existeix l'ordre '$1' del sendmail
+
+create_title=Creació de Llista de Correu
+create_ecannot=No tens permís per crear noves llistes de correu
+create_header=Detalls de la nova llista
+create_name=Nom de la llista
+create_owner=Adreça del mantenidor de la llista
+create_password=Contrasenya de manteniment
+create_desc=Descripció
+create_info=Missatge introductori
+create_footer=Peu de missatge reenviat
+create_moderate=Llista moderada
+create_moderator=Adreça del moderador
+create_same=La mateixa que el mantenidor
+create_err=No he pogut crear la llista de correu
+create_ename=Hi falta el nom de la llista o bé no és vàlid
+create_eexists=Ja existeix una llista anomenada '$1'
+create_ealias=Ja existeix un àlies de correu de '$1'
+create_eowner=Hi falta l'adreça del propietari o bé no és vàlida
+create_epassword=Hi la contrasenya d'administració o bé no és vàlida
+create_emoderator=Hi falta l'adreça del moderador o bé no és vàlida
+create_archive=Arxiva la llista de correu
+create_archiveyear=En un fitxer anual
+create_archivemonth=En un fitxer mensual
+create_archiveday=En un fitxer diari
+
+cdigest_title=Creació de Llista de Resums
+cdigest_ecannot=No tens permís per crear noves llistes de resums
+cdigest_header=Detalls de la nova llista de resums
+cdigest_name=Nom de la llista
+cdigest_list=Resumeix la llista
+cdigest_owner=Llista l'adreça del mantenidor
+cdigest_password=Contrasenya de manteniment
+cdigest_desc=Descripció
+cdigest_info=Missatge introductori
+cdigest_footer=Peu del correu resum
+cdigest_when=Envia un resum quan
+cdigest_old=El missatge més vell sigui de fa $1 dies
+cdigest_lines=El total de missatges faci $1 línies
+cdigest_err=No he pogut crear la llista de resums
+cdigest_edays=Hi falta el nombre de dies o bé no és vàlid
+cdigest_elines=Hi falta el nombre de línies o bé no és vàlid
+
+edit_title=Edició de Llista de Correu
+edit_ecannot=No tens permís per editar aquesta llista de correu
+edit_delete=Suprimeix la Llista
+edit_deletemsg=Suprimeix aquesta llista, incloent-hi tots els fitxers associats i àlies de correu
+edit_retorn=a la llista de correu
+edit_for=$1
+
+delete_title=Supressió de Llista
+delete_ecannot=No tens permís per suprimir aquesta llista de correu
+delete_edigest=Aquesta llista no es pot suprimir, ja que sembla que té una llista de resums associada
+delete_rusure=Segur que vols suprimir la llista de correu $1? S'esborraran els següents fitxers:
+delete_aliases=S'esborraran també els següents àlies:
+delete_ok=Suprimeix la Llista
+
+members_title=Membres de la Llista
+members_desc=Fes servir la caixa de text de sota per editar la llista de les adreces de correu que rebran el correu enviat a aquesta llista.
+members_rodesc=La caixa de text de sota llista totes les adreces de correu que rebran el correu enviat a aquesta llista.
+members_sub=Subscriu l'adreça a la llista
+members_add=Afegeix
+members_unsub=Treu l'adreça de la llista
+members_rem=Treu
+members_sync=Sincronitza els usuaris Unix amb la llista
+members_dom=Nom del domini per afegir als noms d'usuari
+members_eedit=No tens permís per editar els membres d'aquesta llista
+members_esub=Has de triar una contrasenya de manteniment abans de subscriure adreces a aquesta llista
+members_esubaddr=L'adreça subscrita ha de tenir un nom de domini complet, com ara <tt>foo@bar.com</tt>
+members_eunsub=Has de triar una contrasenya de manteniment abans de treure adreces d'aquesta llista
+members_eunsubaddr=L'adreça donada de baixa ha de tenir un nom de domini complet, com ara <tt>foo@bar.com</tt>
+
+info_title=Missatges i Descripció
+info_header=Missatges i descripció
+info_desc=Descripció de la llista per incloure en la resposta a l'ordre <tt>lists</tt>
+info_info=Missatge informatiu per retornar en resposta a l'ordre <tt>info $1</tt>
+info_intro=Missatge introductori per enviar quan algú se subscriu a la llista
+info_same=El mateix que el missatge informatiu
+info_below=Introduït a sota...
+
+subs_title=Subscripció i Moderació
+subs_header=Opcions de subscripció i moderació
+subs_sub=Política de subscripcions
+subs_sopen=Tothom es pot subscriure ell/a mateix/a
+subs_sauto=Tothom pot subscriure tothom
+subs_closed=Cal l'aprovació del mantenidor
+subs_unsub=Política de baixes
+subs_uopen=Tothom es pot donar de baixa ell/a mateix/a
+subs_uauto=Tothom pot donar de baixa tothom
+subs_confirm=Demana confirmació de la subscripció
+subs_welcome=Envia el missatge introductori
+subs_strip=Afegeix a la llista només l'adreça pelada
+subs_announcements=Notifica les altes i les baixes al mantenidor
+subs_administrivia=Reenvia les peticions d'alta/baixa al mantenidor
+subs_passwd=Contrasenya de manteniment
+subs_moderate=Llista moderada
+subs_moderator=Adreça del moderador
+subs_maint=Mantenidor
+subs_mpasswd=Contrasenya de moderació
+subs_owner=Adreça de correu del propietari
+subs_approval=Adreça de correu d'aprovació
+subs_eowner=Hi falta l'adreça del propietari
+subs_eapproval=Hi falta l'adreça d'aprovació
+subs_emoderator=Hi falta l'adreça del moderador o bé no és vàlida
+subs_epasswd=Hi falta la contrasenya o bé no és vàlida
+
+mesg_title=Opcions de Correu
+mesg_header=Opcions del correu de sortida
+mesg_reply=Adreça Reply-To: del missatge reenviat
+mesg_none=Cap
+mesg_sender=Adreça Sender: del correu
+mesg_host=Nom de host del correu reenviat
+mesg_subject=Prefix Subject: del correu reenviat
+mesg_precedence=Prioritat del correu reenviat
+mesg_first=Primera classe
+mesg_special=Lliurament especial
+mesg_list=Llista
+mesg_bulk=Normal
+mesg_junk=Ronya
+mesg_purge=Treu les capçaleres Received: del correu reenviat
+mesg_maxlength=Mida màxima permesa de missatge
+mesg_ereply=Hi falta l'adreça Reply-To: o bé no és vàlida
+mesg_esender=Hi falta Sender: o bé no és vàlida
+mesg_esender2=L'adreça Sender: no pot incloure un nom de host
+mesg_ehost=Hi falta el nom de host o bé no és vàlid
+mesg_emaxlength=Hi falta la mida màxima de missatge o bé no és vàlida
+
+access_title=Control Accés
+access_header=Control d'accés a les ordres del majordomo
+access_open=Tothom
+access_list=Membres de la llista
+access_closed=Ningú
+access_get=Accés a l'ordre <tt>get</tt>
+access_index=Accés a l'ordre <tt>index</tt>
+access_info=Accés a l'ordre <tt>info</tt>
+access_intro=Accés a l'ordre <tt>intro</tt>
+access_which=Accés a l'ordre <tt>which</tt>
+access_who=Accés a l'ordre <tt>who</tt>
+access_adv=Inclou aquesta llista en la resposta de l'ordre <tt>lists</tt> per a...
+access_adv0=Tothom
+access_adv1=Les adreces que coincideixin amb les expressions...
+access_adv2=Les adreces que no coincideixin amb les expressions...
+access_res=Qui pot penjar missatges en aquesta llista?
+access_res0=Tothom
+access_res1=Els membres de la llista
+access_res2=Les adreces del fitxer
+access_tbody=Expressions regulars tabú del cos
+access_theader=Expressions regulars tabú de les capçaleres
+access_taboo=Nota: totes les expressions regulars de tabú i d'adreces han de començar i acabar amb <tt>/</tt>, com ara <tt>/foobar.com/</tt> o <tt>/obscene/</tt>.
+
+head_title=Capçaleres i Peus
+head_header=Capçaleres i peus reenviats
+head_fronter=Reenvia les capçaleres de correu
+head_footer=Reenvia els peus de correu
+head_headers=Capçaleres SMTP extres del correu reenviat
+
+misc_title=Opcions Miscel.lànies
+misc_header=Opcions miscel·lànies de la llista
+misc_munge=Fes servir el domini només quan comparis adreces
+misc_debug=Mode depuració
+misc_info=Inclou la data de darrera modificació al missatge informatiu
+misc_intro=Inclou la data de darrera modificació al missatge introductori
+
+digest_title=Opcions de Resum
+digest_header=Opcions de generació del resum
+digest_name=Títol del resum
+digest_maxdays=Edat del missatge més vell abans d'enviar
+digest_days=dies
+digest_lines=línies
+digest_maxlines=Mida màxima del resum abans d'enviar
+digest_volume=Número de volum actual
+digest_issue=Número de publicació actual
+digest_unlimited=Il·limitada
+digest_edays=Hi falta el nombre de dies o bé no és vàlid
+digest_elines=Hi falta el nombre de línies o bé no és vàlid
+digest_evolume=Hi falta el número de volum o bé no és vàlid
+digest_eissue=Hi falta el número de publicació o bé no és vàlid
+
+log_global=He canviat les opcions globals
+log_create_list=He creat la llista de correu $1
+log_create_digest=He creat la llista de resums $1
+log_delete_list=He suprimit la llista de correu $1
+log_delete_digest=He suprimit la llista de resums $1
+log_subscribe=He subscrit $2 a la llista $1
+log_unsubscribe=He donat de baixa $2 de la llista $1
+log_members=He actualitzat els membres de la llista $1
+log_auto=He actualitzat la sincronització de la llista $1
+log_info=He actualitzat els missatges i la descripció de la llista $1
+log_subs=He actualitzat la subscripció i la moderació de la llista $1
+log_mesg=He actualitzat les opcions de correu de la llista $1
+log_access=He actualitzat el control d'accés de la llista $1
+log_head=He actualitzat les capçaleres i els peus de la llista $1
+log_misc=He actualitzat les opcions miscel·lànies de la llista $1
+log_digest=He actualitzat les opcions de resum de la llista $1
+
+acl_lists=Llistes de correu que aquest usuari pot gestionar
+acl_lall=Totes les llistes
+acl_lsel=Seleccionades...
+acl_global=Pot editar les opcions globals
+acl_create=Pot crear noves llistes de correu
+acl_edit=Pot editar els membres de les llistes
+
+alias_err=No he pogut configurar els àlies
+alias_eowner=Hi falta l'adreça de correu del propietari
+
+
+

@@ -1,0 +1,7 @@
+man_cmd=显示 manual page 的命令,0
+man_cmd_sect=从某段显示 manual page 的命令,0
+search_cmd=搜索 pages 的命令,0
+man_dir=Manual pages 目录,0
+list_cmd=显示 manual page 文件路径的命令,0
+list_cmd_sect=显示某段 manual page 文件路径的命令,0
+man2html_path=man2html 的路径,3,不使 man2html

@@ -1,0 +1,220 @@
+main_return=回到 $1
+main_homepage=首頁
+main_feedback=回饋...
+main_switch=切換使用者...
+main_logout=登出
+main_version=版本 $1 在 $2 ($3)
+main_title=Webmin $1 在 $2 ($3)
+main_title2=Webmin
+main_none=您沒有任何可使用的Webmin模組
+main_skill=Skill level
+
+category_servers=伺服器
+category_hardware=硬體
+category_system=系統
+category_webmin=Webmin
+category_net=網路
+category_syslet=網管
+category_cluster=電腦叢集
+category_info=資訊
+category_=其他
+
+header_webmin=Webmin 索引
+header_module=模組索引
+header_help=說明...
+header_config=模組組態
+header_servers=Webmin 伺服器
+
+index=索引
+yes=是
+no=否
+save=儲存
+create=建立
+delete=刪除
+find=找尋
+error=錯誤
+efilewrite=寫入$1失敗 : $2
+default=預設
+modify=修改
+reset=重設
+ok=確定
+cancel=取消
+helpsearch=搜尋文件
+switch_remote_euser=Unix使用者 $1 並不存在
+programname=Webmin
+
+chooser_title1=選擇檔案...
+chooser_title2=選擇目錄...
+chooser_dir=$1 的目錄
+chooser_ok=確定
+
+users_title1=選擇使用者...
+users_title2=選擇使用者...
+users_sel=選擇的使用者
+users_all=全部的使用者
+users_ok=確定
+users_cancel=取消
+users_clear=清除
+
+groups_title1=選擇群組...
+groups_title2=選擇群組...
+groups_all=全部的群組
+groups_sel=選擇的群組
+groups_ok=確定
+groups_cancel=取消
+groups_clear=清除
+
+config_ecannot=您不被允許組態這個模組
+config_title=組態設定
+config_dir=給模組 $1
+config_header=給 $1 的可組態選項
+config_none=無
+config_eaccess=您不被允許存取這個模組
+config_err=儲存組態錯誤
+config_nochange=不改變
+config_setto=Set to
+
+help_err=無法顯示說明
+help_epath=遺失說明檔路徑
+help_efile=無法讀取說明檔 $1
+help_eheader=遺失 &lt;標頭&gt; 區段
+help_einclude=無法引入 $1
+help_eif=$1 失敗 : $2
+help_eexec=$1 失敗 : $2
+
+referer_title=安全警告
+referer_warn=<b>警告!</b> Webmin發現程式 $2從 URL $1連結來的，出現在 Webmin以外。並企圖嘗試在您的伺服器執行危險的指令。
+referer_warn_unknown=<b>警告!</b> Webmin發現程式 $2從不知名的位置連結來的，出現在 Webmin以外。並企圖嘗試在您的伺服器執行危險的指令。
+referer_ok=繼續執行Webmin程式
+referer_again=以後不再顯示這個訊息
+
+session_header=登入Webmin
+session_mesg=您必須輸入使用者名稱和密碼來登入Webmin 伺服器在 $1上。
+session_mesg2=您必須輸入使用者名稱和密碼來登入
+session_user=使用者名稱
+session_pass=密碼
+session_login=登入
+session_clear=清除
+session_failed=登入失敗，請再試一次
+session_logout=登出成功，使用下面的欄位重新登入
+session_timed_out=連線逾時於$1分鐘
+session_save=記得上次登入帳號?
+
+acl_root=檔案選取時的根目錄
+acl_home=使用者家目錄
+acl_uedit=選擇可以看到的使用者
+acl_uedit_all=所有使用者
+acl_uedit_none=沒有使用者
+acl_uedit_only=只有使用者
+acl_uedit_except=全部使用者除了
+acl_uedit_uid=使用者 UID 範圍是
+acl_uedit_group=使用者群組
+acl_gedit=選擇可以看到的群組
+acl_gedit_all=所有群組
+acl_gedit_none=沒有群組
+acl_gedit_only=只有群組
+acl_gedit_except=所有群組除了
+acl_gedit_gid=群組GID範圍是
+acl_feedback=可以寄送回饋信件?
+acl_feedback2=是
+acl_feedback1=是,但不能包含組態檔案
+acl_feedback0=否
+acl_rpc=可以使用RPC ?
+acl_rpc2=只有 <tt>root</tt> 或 <tt>admin</tt>
+acl_rpc1=是
+acl_rpc0=否
+
+month_1=一月
+month_2=二月
+month_3=三月
+month_4=四月
+month_5=五月
+month_6=六月
+month_7=七月
+month_8=八月
+month_9=九月
+month_10=十月
+month_11=十一月
+month_12=十二月
+
+day_0=星期日
+day_1=星期一
+day_2=星期二
+day_3=星期三
+day_4=星期四
+day_5=星期五
+day_6=星期六
+
+smonth_1=一月
+smonth_2=二月
+smonth_3=三月
+smonth_4=四月
+smonth_5=五月
+smonth_6=六月
+smonth_7=七月
+smonth_8=八月
+smonth_9=九月
+smonth_10=十月
+smonth_11=十一月
+smonth_12=十二月
+
+sday_0=星期日
+sday_1=星期一
+sday_2=星期二
+sday_3=星期三
+sday_4=星期四
+sday_5=星期五
+sday_6=星期六
+
+emodule=存取拒絕 : 使用者 $1 不允許使用 $2 模組
+elock_tries=無法鎖檔案 $1在 $2 分鐘後
+
+skill_high=專家 
+skill_medium=中等
+skill_low=新手
+
+feedback_title=回饋Webmin
+feedback_desc=這表單可以讓你回報錯誤(bugs)和建議Webmin發展群關於任何問題或所忽略的特色，當按下傳送按鈕後，這頁的內容將會寄到 $1。
+feedback_desc2=此報告將會傳送給Usermin發展群，而非您的系統管理者,網路提供者,或主機公司，回饋內容請以英文撰寫。
+feedback_header=回饋內容
+feedback_name=您的姓名
+feedback_email=您的電子郵件
+feedback_module=關於模組
+feedback_all=所有模組
+feedback_text=描述問題或建議
+feedback_os=在寄送郵件中包含作業系統資訊?
+feedback_osdesc=如果選取此項目,會自動在回饋信件中加上您的作業系統名稱和版本。
+feedback_config=在寄送郵件中包含模組組態設定?
+feedback_configdesc=如果選取此項目,在回饋郵件中會附上相關的模組和模組會用到相關的所有設定檔案。例如 ,如果回饋是關於 <b><i>使用者和群組</i></b> 模組,你的 <tt>/etc/passwd</tt>和 <tt>/etc/shadow</tt>檔案會被附加上去。
+feedback_attach=加入要附上的檔案
+feedback_send=傳送回饋
+feedback_mailserver=傳送經由SMTP伺服器
+feedback_mailserver_def=本地sendmail程式
+feedback_err=寄送回饋時發生錯誤
+feedback_emodule=在信件中您選擇了包含模組組態設定,但卻沒有選取模組。
+feedback_emodule2=選取的模組不存在
+feedback_econfig=您沒有完整的權限來選取模組
+feedback_via=傳送回饋信件到 $1經由 SMTP伺服器 $2
+feedback_prog=傳送回饋信件到 $1 使用sendmail程式 $2
+feedback_esend=使用sendmail或本地SMTP伺服器傳送回饋郵件錯誤
+feedback_to=傳送回饋到位址
+feedback_enoto=沒有填寫傳送回饋位址位置
+feedback_ecannot=您不被允許寄送回饋信件
+feedback_ecannot2=您不被允許寄送包含設定組態檔案的回饋信件
+
+progress_size=下載中 $1 ($2 位元組) ..
+progress_nosize=正在下載 $1 ..
+progress_data=下載 $1 位元組 ($2 %)
+progress_data2=下載 $1 位元組
+progress_done=.. 下載完成
+
+link_essl=您的系統尚未安裝 Net::SSLeay Perl模組所需要使用的HTTPS連線。
+longcategory_servers=web, email, FTP和其他服務的組態模組
+longcategory_hardware=列表機,磁碟和其他硬體組態模組
+longcategory_system=使用者,檔案系統,工作排程和其他系統設定
+longcategory_webmin=組態Webmin自己的模組
+longcategory_net=網路和網路服務組態模組
+longcategory_cluster=從單一介面管理多重服務
+longcategory_info=顯示您的系統資訊的模組
+longcategory_=無法分類的其他模組
+

@@ -1,0 +1,28 @@
+<header>Filesystem Groups</header>
+
+The Unix quota system counts all files owned by a group towards
+the quota for that group. The actual groups in which the user who owns
+the file is in does not matter. <p>
+
+This page lists all groups who have quotas on some filesystem. You can
+click on a group name to edit their quota, or select a group from the menu
+below the list and click on <tt>Edit Quota</tt>. If a group is not on
+the list there is no limit on the number of files or the amount of disk
+space it may use. <p>
+
+Beneath the list of groups is the <tt>Edit Grace Times</tt> button. This
+takes you to a form for editing the amount of time a group is allowed to
+exceed his soft limit before being prevented from using any more disk space. <p>
+
+Clicking the <tt>Check Quotas</tt> button performs a scan of the entire
+filesystem to bring the block and file usage by each group up to date. This
+may be necessary is quotas have been disabled for some time, or if they
+have just been enabled for some group. <p>
+
+At the bottom of the page is a form for setting the initial block and
+file quotas for new groups. These will only be applied for groups created
+with the Webmin Users and Groups module. <p>
+
+<hr>
+
+

@@ -1,0 +1,2 @@
+pap_file=PAP 密碼檔,0
+encrypt_pass=密碼檔中是否使用編碼的密碼,1,1-是,0-否

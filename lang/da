@@ -1,0 +1,220 @@
+main_return=Tilbage til $1
+main_homepage=Hjem
+main_feedback=Feedback..
+main_switch=Skift bruger..
+main_logout=Logud
+main_version=Version $1 på $2 ($3)
+main_title=Webmin $1 på $2 ($3)
+main_title2=Webmin
+main_none=Du har ikke adgang til nogen Webmin moduler.
+main_skill=Bruger niveau
+link_essl=The Net::SSLeay Perl module mangler for at lave HTTPS connections.
+
+category_servers=Servere
+category_hardware=Hardware
+category_system=System
+category_webmin=Webmin
+category_net=Netværk
+category_syslet=Syslets
+category_cluster=Cluster
+category_info=Information
+category_=Andre
+
+longcategory_servers=Moduler for konfiguration af web, email, FTP og andre services.
+longcategory_hardware=Moduler for printer, disk og andet hardware konfiguration
+longcategory_system=Moduler for brugere, filsystemer, Cron jobs og andre system instillinger.
+longcategory_webmin=Moduler for konfiguration af Webmin selv.
+longcategory_net=Modul for konfiguration af netværk og netværks services.
+longcategory_cluster=Moduler der kan styre flere servere fra et enkelt interface.
+longcategory_info=Moduler der viser information omkring dit system.
+longcategory_=Moduler der ikke falder ind i de andre kategorier.
+
+header_webmin=Webmin Indeks
+header_module=Module Indeks
+header_help=Hjælp..
+header_config=Modul konfiguration
+header_servers=Webmin Servere
+
+index=indeks
+yes=Ja
+no=Nej
+save=Gem
+create=Opret
+delete=Slet
+find=Find
+error=Fejl
+efilewrite=Fejl under skrivning til $1 : $2
+default=Standart
+modify=Rediger
+reset=Nulstil
+ok=OK
+cancel=Anuller
+helpsearch=Søg Dokumenter..
+switch_remote_euser=Unix brugeren $1 eksisterer ikke.
+programname=Webmin
+
+chooser_title1=Vælg fil..
+chooser_title2=Vælg mappe..
+chooser_dir=Mappe for $1
+chooser_ok=Ok
+
+users_title1=Vælg Brugere..
+users_title2=Vælg Bruger..
+users_sel=Valgte Brugere
+users_all=Alle Brugere
+users_ok=Ok
+users_cancel=Anuller
+users_clear=Nulstil
+
+groups_title1=Vælg Grupper..
+groups_title2=Vælg Gruppe..
+groups_all=Alle Grupper
+groups_sel=Valgte Grupper
+groups_ok=Ok
+groups_cancel=Cancel
+groups_clear=Nulstil
+
+config_ecannot=Du har ikke tilladelse til at konfigurere modulet
+config_title=Konfiguration
+config_dir=For modul $1
+config_header=Konfigurerbare instillinger for $1
+config_none=Ingen
+config_eaccess=Du har ikke adgang til modulet
+config_err=Kunne ikke gemme konfiguration
+config_nochange=Må ikke ændres
+config_setto=Sæt til
+
+help_err=Kunne ikke vise hjælp
+help_epath=Manglende eller forkert hjælp sti
+help_efile=Kunne ikke læse hjælpe fil $1
+help_eheader=Manglende &lt;header&gt; sektion
+help_einclude=Kunne ikke inkludere $1
+help_eif=$1 fejlede : $2
+help_eexec=$1 fejlede : $2
+
+referer_title=Sikkerheds Advarsel
+referer_warn=<b>Advarsel!</b> Webmin har fundet ud af at programmet $2 er linket til fra URL $1, som er uden for Webmin serveren. Dette kan være et forsøg på at snyde dig til at udføre en farlig kommando.
+referer_warn_unknown=<b>Advarsel!</b> Webmin har fundet ud af at programmet $1 var linket til en ukendt URL som ser ud til at være uden for Webmin serveren, dette kan være for at snyde dig til at udføre en farlig kommando
+referer_ok=Fortsæt kørsel af Webmin programmet
+referer_again=Vis ikke denne advarsel fremover.
+
+session_header=Login på Webmin
+session_mesg=Du skal skrive et brugernavn og et kodeord for at logge ind på Webmin serveren $1.
+session_mesg2=Du skal skrive et brugernavn og et kodeord for at logge ind.
+session_user=Brugernavn
+session_pass=Kodeord
+session_login=Login
+session_clear=Nulstil
+session_failed=Kunne ikke logge ind, prøv venligst igen.
+session_logout=Du er nu logget ud, brug formen herunder for at logge ind igen.
+session_timed_out=Sessionen tidsudkoblede efter $1 minutters inaktivitet.
+session_save=Husk login permanent?
+
+acl_root=Root mappe for fil vælgeren
+acl_home=Brugerens hjemme mappe
+acl_uedit=Synlige brugere i bruger vælgeren
+acl_uedit_all=Alle brugere
+acl_uedit_none=Ingen brugere
+acl_uedit_only=Kun brugere
+acl_uedit_except=Alle undtagen brugere
+acl_uedit_uid=Brugere med UIDs i området
+acl_uedit_group=Brugere med gruppe
+acl_gedit=Grupper synlige i gruppe vælgeren
+acl_gedit_all=Alle grupper
+acl_gedit_none=Ingen grupper
+acl_gedit_only=Kun grupper
+acl_gedit_except=Alle undtagen grupper
+acl_gedit_gid=Grupper med GIDs i området
+acl_feedback=Kan sende tilbagemelding via email?
+acl_feedback2=Ja
+acl_feedback1=Ja, men ikke med konfigurations filer
+acl_feedback0=Nej
+acl_rpc=Kan acceptere RPC kald?
+acl_rpc2=Kun for <tt>root</tt> eller <tt>admin</tt>
+acl_rpc1=Ja
+acl_rpc0=Nej
+
+month_1=Januar
+month_2=Februar
+month_3=Marts
+month_4=April
+month_5=Maj
+month_6=Juni
+month_7=Juli
+month_8=August
+month_9=September
+month_10=Oktober
+month_11=November
+month_12=December
+
+day_0=Søndag
+day_1=Mandag
+day_2=Tirsdag
+day_3=Onsdag
+day_4=Torsdag
+day_5=Fredag
+day_6=Lørdag
+
+smonth_1=Jan
+smonth_2=Feb
+smonth_3=Mar
+smonth_4=Apr
+smonth_5=Maj
+smonth_6=Jun
+smonth_7=Jul
+smonth_8=Aug
+smonth_9=Sep
+smonth_10=Okt
+smonth_11=Nov
+smonth_12=Dec
+
+sday_0=Sø
+sday_1=Ma
+sday_2=Ti
+sday_3=On
+sday_4=To
+sday_5=Fr
+sday_6=Lø
+
+emodule=Adgang nægtet : Brugeren $1 har ikke lov til at bruge modulet $2
+elock_tries=Kunne ikke låse fil $1 efter $2 minutter
+
+skill_high=Ekspert
+skill_medium=Mellem
+skill_low=Begynder
+
+feedback_title=Webmin Tilbagemelding
+feedback_desc=Denne formular giver dig mulighed for at rapportere fejl eller komme med forslag til Webmin programmørerne angående problemer eller manglende muligheder du har fundet. Når du klikker på send vil de indtastede oplysninger blive emailet til $1.
+feedback_desc2=Denne tilbagemelding vil blive sendt til udvikleren af Usermin, ikke din system administrator, ISP eller hosting firma. Skriv venligst din tilbagemelding på engelsk, også selvom du pt. kører Webmin med et andet sprog.
+feedback_header=Tilbagemeldings detaljer
+feedback_name=Dit navn
+feedback_email=Din email adresse
+feedback_module=Angående modul
+feedback_all=Alle moduler
+feedback_text=Forklaring af problem eller forslag
+feedback_os=Inkluder operativ systemets detaljer i emailen?
+feedback_osdesc=Hvis denne valgmulighed er valgt vil den automatiske tilbagemelding indeholde dit oprativ systems navn og version.
+feedback_config=Inkluder modul konfiguration i emailen?
+feedback_configdesc=Hvis denne er valgt vil emailen indeholde konfiguration for det relaterede modul og indhold af alle konfigurations filerne modulet benytter. For eksempel, hvis tilbagemeldingen er relateret til <i>Brugere og Grupper</i> modulet, din <tt>/etc/passwd</tt> og <tt>/etc/shadow</tt> filer ville blive sendt.
+feedback_attach=Supplerende vedhæftede filer.
+feedback_send=Send Tilbagemelding
+feedback_mailserver=Send via SMTP server
+feedback_mailserver_def=Lokal sendmail program
+feedback_err=Kunne ikke sende tilbagemeldingen
+feedback_emodule=Du har valgt at inkludere modul konfigurationerne i din email, men har ikke valgt noget modul.
+feedback_emodule2=Valgte modul eksisterer ikke.
+feedback_econfig=Du har ikke fuld adgang til det valgte modul.
+feedback_via=Sendt tilbagemelding til $1 via SMTP serveren $2
+feedback_prog=Sendt tilbagemelding til $1 via sendmail programmet $2
+feedback_esend=Kunne ikke sende tilbagemelding via sendmail programmet eller den lokale SMTP server.
+feedback_to=Send tilbagemelding til adresser
+feedback_enoto=Der er ikke indtastet nogen adresser tilbagemeldingen skal sendes til
+feedback_ecannot=Du har ikke adgang til at sende en tilbagemelding
+feedback_ecannot2=Du har ikke adgang til at sende tilbagemeldinger med vedhæftede filer
+
+progress_size=Henter $1 ($2 bytes) ..
+progress_nosize=Henter $1 ..
+progress_data=Modtaget $1 bytes ($2 %)
+progress_data2=Modtaget $1 bytes
+progress_done=.. Hentning fuldført.
+

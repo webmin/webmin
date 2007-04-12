@@ -1,0 +1,42 @@
+inittab_title=SysV Init 設定
+inittab_new=新規の init プロセスを作成
+inittab_id=名前
+inittab_runlevels=実行レベル
+inittab_action=アクション
+inittab_process=プロセス
+inittab_none=なし
+inittab_respawn=Respawn
+inittab_wait=待機
+inittab_once=レベルで一度
+inittab_boot=起動時
+inittab_bootwait=起動時、終了するまで待機
+inittab_off=オフ
+inittab_ondemand=A、B、 C で要求時
+inittab_initdefault=システムを起動後
+inittab_sysinit=システムを起動中
+inittab_powerwait=電源をオフ
+inittab_powerfail=待機なしで電源をオフ
+inittab_powerokwait=電源を復元
+inittab_powerfailnow=電源障害
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=特殊キーの組み合わせ
+inittab_return=inittab インデックス
+
+edit_inittab_err=プロセスを編集できません
+edit_inittab_title=プロセス $1 を編集
+edit_inittab_details=プロセスの詳細
+edit_inittab_del=削除
+edit_inittab_save=保存
+
+new_inittab_err=新規のプロセスを作成できません
+new_inittab_title=新規のプロセス
+
+save_inittab_err=プロセスを保存できません
+save_inittab_noid=エラー:名前プロセスが入力されていません
+save_inittab_already=エラー:その名前のプロセスはすでに存在しています
+
+log_modify=init プロセス $1 を変更しました
+log_rename=init プロセス $1 を $2 に名称変更しました
+log_create=init プロセス $1 を作成しました
+log_delete=init プロセス $1 を削除しました
+

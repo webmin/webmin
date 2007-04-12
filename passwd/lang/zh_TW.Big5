@@ -1,0 +1,37 @@
+index_title=變更密碼
+index_header=選擇一位要變更他/她密碼的使用者
+index_return=使用者清單
+index_user=變更使用者密碼：
+index_euseradmin=無法使用這個模組， 因為「使用者和群組」模組沒有安裝或不支援您的系統。
+index_toomany=您的系統上有很多使用者，無法全部同時顯示。請在下方輸入要變更密碼的使用者名稱...
+
+passwd_title=變更密碼
+passwd_header=變更 Unix 使用者密碼
+passwd_for=正要變更密碼的使用者
+passwd_old=原先密碼
+passwd_new=新的密碼
+passwd_repeat=確認新密碼 (再輸入一次)
+passwd_change=變更
+passwd_reset=清除表單
+passwd_err=變更密碼失敗
+passwd_ecannot=您沒有權限修改這位使用者的密碼
+passwd_euser=使用者不存在
+passwd_eold=原先的密碼錯誤
+passwd_erepeat=確認密碼不符合
+passwd_ecmd=$1 失敗: $2
+passwd_ok=使用者 $1 的密碼已經變更，如果這是您的 Webmin 使用者，您將會無法用原密碼重新登入
+
+log_passwd=變更使用者 $1 的密碼
+
+acl_repeat=一定要再輸入密碼一次？
+acl_old=一定要輸入原先密碼？
+acl_old_this=只允許其他使用者
+acl_others=在其他模組變更密碼？
+acl_users=使用者的密碼可被變更
+acl_mode0=所有使用者
+acl_mode1=只有使用者本身
+acl_mode2=所有使用者，除了
+acl_mode3=只有使用者
+acl_mode4=使用者 UID 在範圍
+acl_mode5=使用者的主要群組
+acl_mode6=使用者符合

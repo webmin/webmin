@@ -1,0 +1,12 @@
+httpd_dir=Apache kiszolgáló gyökérkönyvtár,0
+httpd_path=Útvonal a futtatható httpd-hez,0
+apachectl_path=Útvonal az apachectl parancshoz,3,Nincs
+start_cmd=Parancs az apache elindításához,3,Automatikus
+stop_cmd=Parancs az apache megállításához,3,Automatikus
+show_list=Virtuális kiszolgák megjelenítése mint,1,0-Ikon,1-Lista
+show_order=Virtuális kiszolgálók rendszerezése,1,0-A konfigurációs fájlok sorrendje szerint,1-Kiszolgáló neve alapján,2-IP-cím alapján
+httpd_conf=Útvonal a httpd.conf-hoz,3,Automatikus
+srm_conf=Útvonal az srm.conf-hoz,3,Automatikus
+access_conf=Útvonal az access.conf-hoz,3,Automatikus
+mime_types=Útvonal az mime.types-hoz,3,Automatikus
+virt_file=Virtuális kiszolgálók hozzáadása az alábbi fájlhoz,3,httpd.conf

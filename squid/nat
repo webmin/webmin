@@ -1,0 +1,717 @@
+
+
+
+IPTABLES(8)                                           IPTABLES(8)
+
+
+NNAAMMEE
+       iptables - IP packet filter administration
+
+SSYYNNOOPPSSIISS
+       iippttaabblleess --[[AADDCC]] chain rule-specification [options]
+       iippttaabblleess --[[RRII]] chain rulenum rule-specification [options]
+       iippttaabblleess --DD chain rulenum [options]
+       iippttaabblleess --[[LLFFZZ]] [chain] [options]
+       iippttaabblleess --[[NNXX]] chain
+       iippttaabblleess --PP chain target [options]
+       iippttaabblleess --EE old-chain-name new-chain-name
+
+DDEESSCCRRIIPPTTIIOONN
+       IIppttaabblleess  is  used  to  set  up, maintain, and inspect the
+       tables of IP packet filter  rules  in  the  Linux  kernel.
+       There  are  several different tables which may be defined,
+       and each table contains a number of built-in  chains,  and
+       may contain user-defined chains.
+
+       Each  chain  is  a  list of rules which can match a set of
+       packets: each rule specifies what  to  do  with  a  packet
+       which  matches.  This is called a `target', which may be a
+       jump to a user-defined chain in the same table.
+
+
+TTAARRGGEETTSS
+       A firewall rule specifies criteria for  a  packet,  and  a
+       target.   If  the  packet does not match, the next rule in
+       the chain is the examined; if it does match, then the next
+       rule is specified by the value of the target, which can be
+       the name of a user-defined chain, or one  of  the  special
+       values _A_C_C_E_P_T, _D_R_O_P, _Q_U_E_U_E, or _R_E_T_U_R_N.
+
+       _A_C_C_E_P_T  means  to  let  the packet through.  _D_R_O_P means to
+       drop the packet on the floor.  _Q_U_E_U_E  means  to  pass  the
+       packet  to userspace (if supported by the kernel).  _R_E_T_U_R_N
+       means stop traversing this chain, and resume at  the  next
+       rule  in  the  previous  (calling) chain.  If the end of a
+       built-in chain is reached, or a rule in a  built-in  chain
+       with target _R_E_T_U_R_N is matched, the target specified by the
+       chain policy determines the fate of the packet.
+
+TTAABBLLEESS
+       There are current three independent tables  (which  tables
+       are  present  at any time depends on the kernel configura­
+       tion options and which modules are present).
+
+       --tt,, ----ttaabbllee
+              This option specifies  the  packet  matching  table
+              which the command should operate on.  If the kernel
+              is configured with  automatic  module  loading,  an
+              attempt will be made to load the appropriate module
+              for that table if it is not already there.
+
+              The tables are  as  follows:  ffiilltteerr  This  is  the
+              default  table,  and  contains  the built-in chains
+              INPUT (for packets coming  into  the  box  itself),
+              FORWARD (for packets being routed through the box),
+              and OUTPUT (for  locally-generated  packets).   nnaatt
+              This table is consulted when a packet which is cre­
+              ates a new connection is encountered.  It  consists
+              of  three built-ins: PREROUTING (for altering pack­
+              ets as soon as they come in), OUTPUT (for  altering
+              locally-generated   packets  before  routing),  and
+              POSTROUTING (for altering packets as they are about
+              to go out).  mmaannggllee This table is used for special­
+              ized  packet  alteration.   It  has  two   built-in
+              chains:  PREROUTING  (for altering incoming packets
+              before routing) and OUTPUT (for  altering  locally-
+              generated packets before routing).
+
+OOPPTTIIOONNSS
+       The options that are recognized by iippttaabblleess can be divided
+       into several different groups.
+
+   CCOOMMMMAANNDDSS
+       These options specify the specific action to perform; only
+       one  of  them can be specified on the command line, unless
+       otherwise specified below.  For all the long  versions  of
+       the  command and option names, you only need to use enough
+       letters to ensure that iippttaabblleess can differentiate it  from
+       all other options.
+
+       --AA,, ----aappppeenndd
+              Append one or more rules to the end of the selected
+              chain.  When the source  and/or  destination  names
+              resolve  to  more  than one address, a rule will be
+              added for each possible address combination.
+
+       --DD,, ----ddeelleettee
+              Delete one or more rules from the  selected  chain.
+              There  are  two  versions of this command: the rule
+              can be specified as a number in the chain (starting
+              at 1 for the first rule) or a rule to match.
+
+       --RR,, ----rreeppllaaccee
+              Replace  a  rule  in  the  selected  chain.  If the
+              source and/or destination names resolve to multiple
+              addresses,  the  command will fail.  Rules are num­
+              bered starting at 1.
+
+       --II,, ----iinnsseerrtt
+              Insert one or more rules in the selected  chain  as
+              the  given  rule number.  So, if the rule number is
+              1, the rule or rules are inserted at  the  head  of
+              the  chain.   This  is  also the default if no rule
+              number is specified.
+
+       --LL,, ----lliisstt
+              List all rules in the selected chain.  If no  chain
+              is selected, all chains are listed.  It is legal to
+              specify the --ZZ (zero) option as well, in which case
+              the  chain(s) will be atomically listed and zeroed.
+              The exact output is effected by the other arguments
+              given.
+
+       --FF,, ----fflluusshh
+              Flush  the  selected  chain.  This is equivalent to
+              deleting all the rules one by one.
+
+       --ZZ,, ----zzeerroo
+              Zero the packet and byte counters  in  all  chains.
+              It is legal to specify the --LL,, ----lliisstt (list) option
+              as well, to see  the  counters  immediately  before
+              they are cleared; see above.
+
+       --NN,, ----nneeww--cchhaaiinn
+              Create  a new user-defined chain of the given name.
+              There must be no target of that name already.
+
+       --XX,, ----ddeelleettee--cchhaaiinn
+              Delete the  specified  user-defined  chain.   There
+              must  be  no  references to the chain (if there are
+              you must delete  or  replace  the  referring  rules
+              before  the  chain can be deleted).  If no argument
+              is given, it will  attempt  to  delete  every  non-
+              builtin chain in the table.
+
+       --PP,, ----ppoolliiccyy
+              Set  the  policy for the chain to the given target.
+              See the section  TTAARRGGEETTSS  for  the  legal  targets.
+              Only non-user-defined chains can have policies, and
+              neither built-in nor  user-defined  chains  can  be
+              policy targets.
+
+       --EE,, ----rreennaammee--cchhaaiinn
+              Rename  the  user  specified chain to the user sup­
+              plied name; this is cosmetic, and has no effect  on
+              the structure of the table.
+
+       --hh     Help.  Give a (currently very brief) description of
+              the command syntax.
+
+   PPAARRAAMMEETTEERRSS
+       The following parameters make up a rule specification  (as
+       used  in  the  add, delete, replace, append and check com­
+       mands).
+
+       --pp,, ----pprroottooccooll [!] _p_r_o_t_o_c_o_l
+              The protocol of the rule or of the packet to check.
+              The  specified  protocol  can  be  one of _t_c_p, _u_d_p,
+              _i_c_m_p, or _a_l_l, or it can be a numeric value,  repre­
+              senting  one of these protocols or a different one.
+              A  protocol  name  from  /etc/protocols   is   also
+              allowed.    A  "!"  argument  before  the  protocol
+              inverts the test.  The number zero is equivalent to
+              _a_l_l.   Protocol  _a_l_l  will match with all protocols
+              and is taken as default when this option  is  omit­
+              ted.
+
+       --ss,, ----ssoouurrccee [!] _a_d_d_r_e_s_s[/_m_a_s_k]
+              Source  specification.   _A_d_d_r_e_s_s  can  be  either a
+              hostname, a network name, or a  plain  IP  address.
+              The  _m_a_s_k  can  be either a network mask or a plain
+              number, specifying the number of 1's  at  the  left
+              side  of  the  network mask.  Thus, a mask of _2_4 is
+              equivalent to _2_5_5_._2_5_5_._2_5_5_._0.  A "!" argument before
+              the  address specification inverts the sense of the
+              address. The flag ----ssrrcc is a convenient  alias  for
+              this option.
+
+       --dd,, ----ddeessttiinnaattiioonn [!] _a_d_d_r_e_s_s[/_m_a_s_k]
+              Destination  specification.  See the description of
+              the --ss (source) flag for a detailed description  of
+              the  syntax.   The  flag ----ddsstt is an alias for this
+              option.
+
+       --jj,, ----jjuummpp _t_a_r_g_e_t
+              This specifies the target of the rule; ie. what  to
+              do  if  the packet matches it.  The target can be a
+              user-defined chain (not the one this rule  is  in),
+              one of the special builtin targets which decide the
+              fate of the packet  immediately,  or  an  extension
+              (see  EEXXTTEENNSSIIOONNSS below).  If this option is omitted
+              in a rule, then matching  the  rule  will  have  no
+              effect  on  the  packet's fate, but the counters on
+              the rule will be incremented.
+
+       --ii,, ----iinn--iinntteerrffaaccee [!] [_n_a_m_e]
+              Optional name of an interface via which a packet is
+              received  (for  packets entering the IINNPPUUTT, FFOORRWWAARRDD
+              and PPRREERROOUUTTIINNGG chains).  When the "!"  argument  is
+              used  before  the  interface  name,  the  sense  is
+              inverted.  If the interface name  ends  in  a  "+",
+              then any interface which begins with this name will
+              match.  If this option is omitted, the  string  "+"
+              is  assumed,  which  will  match with any interface
+              name.
+
+       --oo,, ----oouutt--iinntteerrffaaccee [!] [_n_a_m_e]
+              Optional name of an interface via which a packet is
+              going to be sent (for packets entering the FFOORRWWAARRDD,
+              OOUUTTPPUUTT and PPOOSSTTRROOUUTTIINNGG chains).  When the "!" argu­
+              ment  is  used before the interface name, the sense
+              is inverted.  If the interface name ends in a  "+",
+              then any interface which begins with this name will
+              match.  If this option is omitted, the  string  "+"
+              is  assumed,  which  will  match with any interface
+              name.
+
+       [[!!]]  --ff,, ----ffrraaggmmeenntt
+              This means that the rule only refers to second  and
+              further  fragments  of  fragmented  packets.  Since
+              there is no way to tell the source  or  destination
+              ports  of  such  a  packet  (or  ICMP type), such a
+              packet will not match any rules which specify them.
+              When  the  "!" argument precedes the "-f" flag, the
+              rule will only match  head  fragments,  or  unfrag­
+              mented packets.
+
+   OOTTHHEERR OOPPTTIIOONNSS
+       The following additional options can be specified:
+
+       --vv,, ----vveerrbboossee
+              Verbose output.  This option makes the list command
+              show the interface address, the  rule  options  (if
+              any), and the TOS masks.  The packet and byte coun­
+              ters are also listed, with the suffix 'K',  'M'  or
+              'G' for 1000, 1,000,000 and 1,000,000,000 multipli­
+              ers respectively (but see the  --xx  flag  to  change
+              this).   For  appending,  insertion,  deletion  and
+              replacement, this causes  detailed  information  on
+              the rule or rules to be printed.
+
+       --nn,, ----nnuummeerriicc
+              Numeric output.  IP addresses and port numbers will
+              be printed in numeric format.  By default, the pro­
+              gram  will  try to display them as host names, net­
+              work names, or services (whenever applicable).
+
+       --xx,, ----eexxaacctt
+              Expand numbers.  Display the  exact  value  of  the
+              packet  and  byte  counters,  instead  of  only the
+              rounded number in K's (multiples of 1000) M's (mul­
+              tiples of 1000K) or G's (multiples of 1000M).  This
+              option is only relevant for the --LL command.
+
+       ----lliinnee--nnuummbbeerrss
+              When listing rules, add line numbers to the  begin­
+              ning  of  each  rule,  corresponding to that rule's
+              position in the chain.
+
+MMAATTCCHH EEXXTTEENNSSIIOONNSS
+       iptables can use extended packet matching modules.   These
+       are  loaded in two ways: implicitly, when --pp or ----pprroottooccooll
+       is specified, or with the --mm or ----mmaattcchh options,  followed
+       by  the  matching  module name; after these, various extra
+       command line options become available,  depending  on  the
+       specific  module.  You can specify multiple extended match
+       modules in one line, and you can  use  the  --hh  or  ----hheellpp
+       options  after  the  module  has been specified to receive
+       help specific to that module.
+
+       The following are included in the base package,  and  most
+       of  these  can  be preceded by a !!  to invert the sense of
+       the match.
+
+   ttccpp
+       These extensions are loaded if `--protocol tcp' is  speci­
+       fied. It provides the following options:
+
+       ----ssoouurrccee--ppoorrtt [!] [_p_o_r_t_[_:_p_o_r_t_]]
+              Source  port  or port range specification. This can
+              either be a service  name  or  a  port  number.  An
+              inclusive  range  can  also be specified, using the
+              format _p_o_r_t:_p_o_r_t.  If the first  port  is  omitted,
+              "0"  is assumed; if the last is omitted, "65535" is
+              assumed.  If the second port greater then the first
+              they will be swapped.  The flag ----ssppoorrtt is an alias
+              for this option.
+
+       ----ddeessttiinnaattiioonn--ppoorrtt [!] [_p_o_r_t_[_:_p_o_r_t_]]
+              Destination port or port range  specification.  The
+              flag ----ddppoorrtt is an alias for this option.
+
+       ----ttccpp--ffllaaggss [!] _m_a_s_k _c_o_m_p
+              Match  when  the  TCP  flags are as specified.  The
+              first argument is the flags which we  should  exam­
+              ine,  written  as  a  comma-separated list, and the
+              second argument is a comma-separated list of  flags
+              which  must be set.  Flags are: SSYYNN AACCKK FFIINN RRSSTT UURRGG
+              PPSSHH AALLLL NNOONNEE.  Hence the command
+               iptables   -A   FORWARD   -p    tcp    --tcp-flags
+              SYN,ACK,FIN,RST SYN
+              will  only match packets with the SYN flag set, and
+              the ACK, FIN and RST flags unset.
+
+       [[!!]] ----ssyynn
+              Only match TCP packets with the SYN bit set and the
+              ACK and FIN bits cleared.  Such packets are used to
+              request TCP  connection  initiation;  for  example,
+              blocking  such  packets coming in an interface will
+              prevent incoming TCP connections, but outgoing  TCP
+              connections  will  be unaffected.  It is equivalent
+              to ----ttccpp--ffllaaggss SSYYNN,,RRSSTT,,AACCKK SSYYNN.  If  the  "!"  flag
+              precedes  the  "--syn",  the sense of the option is
+              inverted.
+
+       ----ttccpp--ooppttiioonn [!] _n_u_m_b_e_r
+              Match if TCP option set.
+
+   uuddpp
+       These extensions are loaded if `--protocol udp' is  speci­
+       fied.  It provides the following options:
+
+       ----ssoouurrccee--ppoorrtt [!] [_p_o_r_t_[_:_p_o_r_t_]]
+              Source  port  or port range specification.  See the
+              description of the ----ssoouurrccee--ppoorrtt option of the  TCP
+              extension for details.
+
+       ----ddeessttiinnaattiioonn--ppoorrtt [!] [_p_o_r_t_[_:_p_o_r_t_]]
+              Destination  port or port range specification.  See
+              the description of the ----ddeessttiinnaattiioonn--ppoorrtt option of
+              the TCP extension for details.
+
+   iiccmmpp
+       This  extension  is  loaded if `--protocol icmp' is speci­
+       fied.  It provides the following option:
+
+       ----iiccmmpp--ttyyppee [!] _t_y_p_e_n_a_m_e
+              This allows specification of the ICMP  type,  which
+              can be a numeric ICMP type, or one of the ICMP type
+              names shown by the command
+               iptables -p icmp -h
+
+   mmaacc
+       ----mmaacc--ssoouurrccee [!] _a_d_d_r_e_s_s
+              Match source MAC address.  It must be of  the  form
+              XX:XX:XX:XX:XX:XX.  Note that this only makes sense
+              for packets entering  the  PPRREERROOUUTTIINNGG,  FFOORRWWAARRDD  or
+              IINNPPUUTT  chains  for  packets coming from an ethernet
+              device.
+
+   lliimmiitt
+       This module matches at a limited rate using a token bucket
+       filter:  it can be used in combination with the LLOOGG target
+       to give limited logging.  A rule using this extension will
+       match  until this limit is reached (unless the `!' flag is
+       used).
+
+       ----lliimmiitt _r_a_t_e
+              Maximum average matching rate: specified as a  num­
+              ber,   with   an   optional  `/second',  `/minute',
+              `/hour', or `/day' suffix; the default is 3/hour.
+
+       ----lliimmiitt--bbuurrsstt _n_u_m_b_e_r
+              The maximum initial number  of  packets  to  match:
+              this  number  gets  recharged by one every time the
+              limit specified above is not reached,  up  to  this
+              number; the default is 5.
+
+   mmuullttiippoorrtt
+       This  module matches a set of source or destination ports.
+       Up to 15 ports can be specified. It can only  be  used  in
+       conjunction with --pp ttccpp or --pp uuddpp.
+
+       ----ssoouurrccee--ppoorrtt [_p_o_r_t_[_,_p_o_r_t_]]
+              Match if the source port is one of the given ports.
+
+       ----ddeessttiinnaattiioonn--ppoorrtt [_p_o_r_t_[_,_p_o_r_t_]]
+              Match if the destination port is one of  the  given
+              ports.
+
+       ----ppoorrtt [_p_o_r_t_[_,_p_o_r_t_]]
+              Match  if the both the source and destination ports
+              are equal to each other and to  one  of  the  given
+              ports.
+
+   mmaarrkk
+       This  module  matches  the netfilter mark field associated
+       with a packet (which can be  set  using  the  MMAARRKK  target
+       below).
+
+       ----mmaarrkk _v_a_l_u_e_[_/_m_a_s_k_]
+              Matches  packets with the given unsigned mark value
+              (if a mask is specified, this  is  logically  ANDed
+              with the mark before the comparison).
+
+   oowwnneerr
+       This  module  attempts to match various characteristics of
+       the packet creator, for locally-generated packets.  It  is
+       only valid in the OOUUTTPPUUTT chain, and even this some packets
+       (such as ICMP ping responses) may have no owner, and hence
+       never match.
+
+       ----uuiidd--oowwnneerr _u_s_e_r_i_d
+              Matches if the packet was created by a process with
+              the given effective user id.
+
+       ----ggiidd--oowwnneerr _g_r_o_u_p_i_d
+              Matches if the packet was created by a process with
+              the given effective group id.
+
+       ----ppiidd--oowwnneerr _p_r_o_c_e_s_s_i_d
+              Matches if the packet was created by a process with
+              the given process id.
+
+       ----ssiidd--oowwnneerr _s_e_s_s_i_o_n_i_d
+              Matches if the packet was created by a  process  in
+              the given session group.
+
+   ssttaattee
+       This  module,  when  combined  with  connection  tracking,
+       allows access to the connection tracking  state  for  this
+       packet.
+
+       ----ssttaattee _s_t_a_t_e
+              Where  state  is a comma separated list of the con­
+              nection  states  to  match.   Possible  states  are
+              IINNVVAALLIIDD  meaning that the packet is associated with
+              no known connection, EESSTTAABBLLIISSHHEEDD meaning  that  the
+              packet  is  associated  with a connection which has
+              seen packets in both directions, NNEEWW  meaning  that
+              the  packet has started a new connection, or other­
+              wise associated with a  connection  which  has  not
+              seen  packets in both directions, and RREELLAATTEEDD mean­
+              ing that the packet is starting a  new  connection,
+              but is associated with an existing connection, such
+              as an FTP data transfer, or an ICMP error.
+
+   uunncclleeaann
+       This module takes no options, but attempts to match  pack­
+       ets  which seem malformed or unusual.  This is regarded as
+       experimental.
+
+   ttooss
+       This module matches the 8 bits of Type of Service field in
+       the IP header (ie. including the precedence bits).
+
+       ----ttooss _t_o_s
+              The argument is either a standard name, (use
+               iptables -m tos -h
+              to see the list), or a numeric value to match.
+
+TTAARRGGEETT EEXXTTEENNSSIIOONNSS
+       iptables  can  use  extended target modules: the following
+       are included in the standard distribution.
+
+   LLOOGG
+       Turn on kernel logging of  matching  packets.   When  this
+       option is set for a rule, the Linux kernel will print some
+       information on all matching packets (like most  IP  header
+       fields)  via  the  kernel  log  (where it can be read with
+       _d_m_e_s_g or _s_y_s_l_o_g_d(8)).
+
+       ----lloogg--lleevveell _l_e_v_e_l
+              Level of logging (numeric or see _s_y_s_l_o_g_._c_o_n_f(5)).
+
+       ----lloogg--pprreeffiixx _p_r_e_f_i_x
+              Prefix log messages with the specified  prefix;  up
+              to  29  letters long, and useful for distinguishing
+              messages in the logs.
+
+       ----lloogg--ttccpp--sseeqquueennccee
+              Log TCP sequence numbers. This is a  security  risk
+              if the log is readable by users.
+
+       ----lloogg--ttccpp--ooppttiioonnss
+              Log options from the TCP packet header.
+
+       ----lloogg--iipp--ooppttiioonnss
+              Log options from the IP packet header.
+
+   MMAARRKK
+       This  is  used  to set the netfilter mark value associated
+       with the packet.  It is only valid in the mmaannggllee table.
+
+       ----sseett--mmaarrkk _m_a_r_k
+
+   RREEJJEECCTT
+       This is used to send back an error packet in  response  to
+       the  matched  packet:  otherwise it is equivalent to DDRROOPP.
+       This target is only valid in the IINNPPUUTT, FFOORRWWAARRDD and OOUUTTPPUUTT
+       chains, and user-defined chains which are only called from
+       those chains.  Several options control the nature  of  the
+       error packet returned:
+
+       ----rreejjeecctt--wwiitthh _t_y_p_e
+              The  type  given can be iiccmmpp--nneett--uunnrreeaacchhaabbllee, iiccmmpp--
+              hhoosstt--uunnrreeaacchhaabbllee,   iiccmmpp--ppoorrtt--uunnrreeaacchhaabbllee,    iiccmmpp--
+              pprroottoo--uunnrreeaacchhaabbllee, iiccmmpp--nneett--pprroohhiibbiitteeddor iiccmmpp--hhoosstt--
+              pprroohhiibbiitteedd, which return the appropriate ICMP error
+              message  (port-unreachable  is  the  default).  The
+              option eecchhoo--rreeppllyy is also allowed; it can  only  be
+              used  for  rules which specify an ICMP ping packet,
+              and generates a ping reply.   Finally,  the  option
+              ttccpp--rreesseett can be used on rules which only match the
+              TCP protocol: this causes a TCP RST  packet  to  be
+              sent  back.   This  is  mainly  useful for blocking
+              _i_d_e_n_t probes which frequently  occur  when  sending
+              mail  to broken mail hosts (which won't accept your
+              mail otherwise).
+
+   TTOOSS
+       This is used to set the 8-bit Type of Service field in the
+       IP header.  It is only valid in the mmaannggllee table.
+
+       ----sseett--ttooss _t_o_s
+              You can use a numeric TOS values, or use
+               iptables -j TOS -h
+              to see the list of valid TOS names.
+
+   MMIIRRRROORR
+       This is an experimental demonstration target which inverts
+       the source and destination fields in  the  IP  header  and
+       retransmits  the  packet.   It is only valid in the IINNPPUUTT,
+       FFOORRWWAARRDD and PPRREERROOUUTTIINNGG  chains,  and  user-defined  chains
+       which  are  only  called from those chains.  Note that the
+       outgoing packets are NNOOTT  seen  by  any  packet  filtering
+       chains,  connection  tracking  or  NAT, to avoid loops and
+       other problems.
+
+   SSNNAATT
+       This target is  only  valid  in  the  nnaatt  table,  in  the
+       PPOOSSTTRROOUUTTIINNGG  chain.   It specifies that the source address
+       of the packet should be modified (and all  future  packets
+       in this connection will also be mangled), and rules should
+       cease being examined.  It takes one option:
+
+       ----ttoo--ssoouurrccee  _<_i_p_a_d_d_r_>_[_-_<_i_p_a_d_d_r_>_]_[_:_p_o_r_t_-_p_o_r_t_]
+              which can specify a single new source  IP  address,
+              an inclusive range of IP addresses, and optionally,
+              a port range (which is only valid if the rule  also
+              specifies  --pp  ttccpp or --pp uuddpp).  If no port range is
+              specified, then source  ports  below  512  will  be
+              mapped to other ports below 512: those between 1024
+              will be mapped to ports below 1024, and other ports
+              will  be  mapped to 1024 or above.  Where possible,
+              no port alteration will occur.
+
+   DDNNAATT
+       This target is only valid in the nnaatt table,  in  the  PPRREE­­
+       RROOUUTTIINNGG  and  OOUUTTPPUUTT chains, and user-defined chains which
+       are only called from those chains.  It specifies that  the
+       destination  address of the packet should be modified (and
+       all future packets in this connection will  also  be  man­
+       gled),  and  rules  should cease being examined.  It takes
+       one option:
+
+       ----ttoo--ddeessttiinnaattiioonn _<_i_p_a_d_d_r_>_[_-_<_i_p_a_d_d_r_>_]_[_:_p_o_r_t_-_p_o_r_t_]
+              which can  specify  a  single  new  destination  IP
+              address,  an  inclusive  range of IP addresses, and
+              optionally, a port range (which is  only  valid  if
+              the  rule  also specifies --pp ttccpp or --pp uuddpp).  If no
+              port range is specified, then the destination  port
+              will never be modified.
+
+   MMAASSQQUUEERRAADDEE
+       This  target  is  only  valid  in  the  nnaatt  table, in the
+       PPOOSSTTRROOUUTTIINNGG chain.  It should only be  used  with  dynami­
+       cally  assigned  IP  (dialup)  connections:  if you have a
+       static IP address, you should use the SNAT  target.   Mas­
+       querading  is equivalent to specifying a mapping to the IP
+       address of the interface the packet is going out, but also
+       has  the  effect  that  connections are _f_o_r_g_o_t_t_e_n when the
+       interface goes down.  This is the  correct  behavior  when
+       the  next  dialup  is  unlikely to have the same interface
+       address (and hence any established  connections  are  lost
+       anyway).  It takes one option:
+
+       ----ttoo--ppoorrttss _<_p_o_r_t_>_[_-_<_p_o_r_t_>_]
+              This  specifies  a  range  of  source ports to use,
+              overriding the default SSNNAATT  source  port-selection
+              heuristics (see above).  This is only valid with if
+              the rule also specifies --pp ttccpp or --pp uuddpp).
+
+   RREEDDIIRREECCTT
+       This target is only valid in the nnaatt table,  in  the  PPRREE­­
+       RROOUUTTIINNGG  and  OOUUTTPPUUTT chains, and user-defined chains which
+       are only called from those chains.  It alters the destina­
+       tion  IP  address to send the packet to the machine itself
+       (locally-generated packets are  mapped  to  the  127.0.0.1
+       address).  It takes one option:
+
+       ----ttoo--ppoorrttss _<_p_o_r_t_>_[_-_<_p_o_r_t_>_]
+              This specifies a destination port or range or ports
+              to use: without this, the destination port is never
+              altered.   This is only valid with if the rule also
+              specifies --pp ttccpp or --pp uuddpp).
+
+EEXXTTRRAA EEXXTTEENNSSIIOONNSS
+       The following extensions are not included  by  default  in
+       the standard distribution.
+
+   ttttll
+       This  module  matches  the  time  to  live field in the IP
+       header.
+
+       ----ttttll _t_t_l
+              Matches the given TTL value.
+
+   TTTTLL
+       This target is used to modify the time to  live  field  in
+       the IP header.  It is only valid in the mmaannggllee table.
+
+       ----ttttll--sseett _t_t_l
+              Set the TTL to the given value.
+
+       ----ttttll--ddeecc _t_t_l
+              Decrement the TTL by the given value.
+
+       ----ttttll--iinncc _t_t_l
+              Increment the TTL by the given value.
+
+   UULLOOGG
+       This  target  provides userspace logging of matching pack­
+       ets.  When this target is set for a rule, the Linux kernel
+       will  multicast  this packet through a _n_e_t_l_i_n_k socket. One
+       or more userspace processes may then subscribe to  various
+       multicast groups and receive the packets.
+
+       ----uulloogg--nnllggrroouupp_<_n_l_g_r_o_u_p_>
+              This  specifies  the  netlink group (1-32) to which
+              the packet is sent.
+
+       ----uulloogg--pprreeffiixx_<_p_r_e_f_i_x_>
+              Prefix log messages with the specified  prefix;  up
+              to  32 characters long, and useful fro distinguish­
+              ing messages in the logs.
+
+       ----uulloogg--ccpprraannggee_<_s_i_z_e_>
+              Number of bytes to be copied to userspace. A  value
+              of 0 always copies the entire packet, regardless of
+              its size.
+
+DDIIAAGGNNOOSSTTIICCSS
+       Various error messages are printed to standard error.  The
+       exit  code  is  0  for  correct functioning.  Errors which
+       appear to be caused by  invalid  or  abused  command  line
+       parameters cause an exit code of 2, and other errors cause
+       an exit code of 1.
+
+BBUUGGSS
+       Check is not implemented (yet).
+
+CCOOMMPPAATTIIBBIILLIITTYY WWIITTHH IIPPCCHHAAIINNSS
+       This iippttaabblleess is very similar to ipchains  by  Rusty  Rus­
+       sell.   The  main  difference is that the chains IINNPPUUTT and
+       OOUUTTPPUUTT are only traversed  for  packets  coming  into  the
+       local  host  and  originating  from the local host respec­
+       tively.  Hence every packet only passes through one of the
+       three  chains;  previously  a  forwarded packet would pass
+       through all three.
+
+       The other main difference is that --ii refers to  the  input
+       interface; --oo refers to the output interface, and both are
+       available for packets entering the FFOORRWWAARRDD chain.
+
+       iippttaabblleess is a pure packet filter when  using  the  default
+       `filter'  table,  with  optional  extension modules.  This
+       should simplify much of the previous  confusion  over  the
+       combination  of  IP masquerading and packet filtering seen
+       previously.  So the following options are handled  differ­
+       ently:
+        -j MASQ
+        -M -S
+        -M -L
+       There are several other changes in iptables.
+
+SSEEEE AALLSSOO
+       The iptables-HOWTO, which details more iptables usage, the
+       NAT-HOWTO, which details NAT, and  the  netfilter-hacking-
+       HOWTO which details the internals.
+
+AAUUTTHHOORRSS
+       Rusty  Russell  wrote iptables, in early consultation with
+       Michael Neuling.
+
+       Marc Boucher made Rusty abandon ipnatctl by lobbying for a
+       generic packet selection framework in iptables, then wrote
+       the mangle table, the owner match, the mark stuff, and ran
+       around doing cool stuff everywhere.
+
+       James Morris wrote the TOS target, and tos match.
+
+       Jozsef Kadlecsik wrote the REJECT target.
+
+       Harald  Welte  wrote the ULOG target, TTL match+target and
+       libipulog.
+
+       The Netfilter Core Team is: Marc Boucher, James Morris and
+       Rusty Russell.
+
+
+
+
+
+
+                           Aug 11, 2000                         1
+
+

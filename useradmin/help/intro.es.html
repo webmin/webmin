@@ -1,0 +1,52 @@
+<header>Usuarios y Grupos</header>
+
+<h3>Introducción a Usuarios</h3>
+Un usuario Unix es típicamentes alguien que puede hacer login en el sistema
+ya sea remótamente vía telnet o desde la consola. Cada archivo pertenece
+al algún usuario y cada proceso se ejecuta con los derechos de algún usuario.
+El acceso a los archivos y procesos es determinado por el usuario con el que
+realizas el login. <p>
+
+Hay realmente tres tipos de usuario en un sistema Unix típico:
+<ul>
+<li><b>Usuarios Administrativos</b><br>
+    Cuentas como <tt>bin</tt>, <tt>lp</tt> y <tt>uccp</tt> son propietarias
+    de archivos como los comandos estándar de <tt>/bin</tt>, archivos de spool
+    de impresora y datos UUCP. Actualmente hacer login con una de estas cuentas
+    no está normalmente permitido - sólo son utilizadas por varios procesos
+    de sistema. Estos usuarios serán creados cuando el sistema operativo
+    se instale por primera vez.<p>
+<li><b>Gente Real</b><br>
+    Estas son cuentas propiedad de usuarios reales, creados por el 
+    administrador del sistema. Puedes hacer que estos usuarios hagan login
+    remoto o quizá sólo dejarles enviar y recibir correo vía SMTP y POP3. <p>
+<li><b>El Usuario <tt>root</tt></b><br>
+    El usuario <tt>root</tt> tiene la potestad de leer y escribir en cualquier
+    archivo o directorio y de controlar cualquier proceso. Esta cuenta es
+    típicamente utilizada con propósitos de administración del sistema y es
+    la cuenta bajo la que se ejecuta Webmin. <p>
+</ul>
+
+En la parte superior de la página principal de este módulo hay una tabla de
+usuarios ya existentes en tu sistema. Puedes hacer click en uno de ellos para
+editarlo o hacer click en el enlace bajo la tabla para crear un nuevo
+usuario. <p>
+
+<h3>Introducción a los Grupos</h3>
+Un grupo es símplemente una lista de usuarios de Unix. Cada usuario pertenece
+por lo menos a un grupo (su grupo primario) y opcionalmente a varios otros.
+Todos los archivos son propiedad de algún grupo y cada proceso se ejecuta
+con los permisos de un grupo. <p>
+
+Bajo la lista de usuarios hay una tabla de grupos que ya existen. Puedes
+hacer click en un nombre de grupo para editarlo o hacer click en el enlace
+bajo la tabla para crear un nuevo grupo. <p>
+
+<h3>Logins Registrados</h3>
+Cada vez que un usuario hace login ya sea por medio de telnet, FTP o desde
+la consola, el sistema registra ese login y la consecuente salida del mismo.
+En la parte inferior de la página principal hay un pequeño formulario que
+te permite mostrar los logins de cada uno o de un usuario concreto. <p>
+
+<hr>
+

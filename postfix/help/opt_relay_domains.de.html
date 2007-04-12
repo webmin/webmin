@@ -1,0 +1,27 @@
+<header>Post-Weiterleiten beschränken</header>
+
+<center><tt>relay_domains</tt></center>
+<hr>
+
+
+Dieser Parameter beschränkt, sowohl von welchen Domains/Subdomains der Clienten-Hostnamen dieses System die Post weiterleitet, als auch an welche Domains/Subdomains der Destinationen die Post weitergeleitet wird.
+ 
+
+<p>
+
+<include relay_rules>
+<p>
+
+Bestimmen Sie eine Liste mit Hosts oder Domains, <tt>/file/name</tt> Muster- oder
+<tt>type:name</tt> Nachschlage-Tabellen, durch Komma und/oder Leerschlag getrennt. Ein Dateiname
+wird durch dessen Inhalte ersetzt; eine <tt>type:name</tt> Tabelle wird angepasst, falls ein
+(Parent) Domain als ein Suchbegriff erscheint.
+
+<p>
+
+Bitte beachten: Postfix leitet die Post für Domains, welche dieses System als ihren primären oder Backup MX Host auflisten, nicht automatisch weiter. Siehe auch die <tt>permit_mx_backup</tt>
+Beschränkungen in der Beschreibung des <a href=opt_smtpd_recipient_restrictions>
+<tt>smtpd_recipient_restrictions</tt></a> Parameters.
+
+
+<hr>

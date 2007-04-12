@@ -1,0 +1,4 @@
+dfstab_file=/etc/dfs/dfstab
+unshare_all_command=/etc/init.d/nfs.server stop
+share_all_command=/etc/init.d/nfs.server start
+fstypes_file=/etc/dfs/fstypes

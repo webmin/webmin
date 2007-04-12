@@ -1,0 +1,3 @@
+cvs=cvs
+cvsroot=/var/cvs
+view_header=header.html

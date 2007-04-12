@@ -1,0 +1,41 @@
+<header>Comando externo a usar en lugar de la entrega a buzón</header>
+
+<center><tt>mailbox_command</tt></center>
+<hr>
+
+Este parámetro especifica el comando externo opcional a usar en lugar de la
+entrega a buzón. El comando es ejecutado como el destinatario con los valores
+de entorno <tt>HOME</tt>, <tt>SHELL</tt> y <tt>LOGNAME</tt> adecuádamente puestos.
+Excepción: la entrega a <tt>root</tt> es hecha como el <tt>$default_user</tt>.
+
+<p>
+
+Otras variables de entorno de interés: <tt>USER</tt> (nombre de usuario destinatario),
+<tt>EXTENSION</tt> (extensión de dirección), <tt>DOMAIN</tt> (parte de dominio de la
+dirección) y <tt>LOCAL</tt> (la parte local de la dirección).
+
+<p>
+
+Al contrario que otros parámetros de configuración de Postfix, este parámetro
+no está sujeto a sustitución de parámetro. Esto es para hacer más fácil el
+especificar sintáxis de shell (mira el ejemplo debajo).
+
+<p>
+
+Evita meta-caracteres de shell ya que fuerzan a Postfix a ejecutar un caro
+proceso de shell. <tt>Procmail</tt> en sí mismo es ya bastante caro.
+
+<p>
+
+SI USAS ESTO PARA ENTREGAR CORREO A LO LARGO DEL SISTEMA, DEBES CONFIGURAR UN
+ALIAS QUE ENVÍE CORREO PARA ROOT A UN USUARIO REAL.
+
+<p>
+
+Ejemplos:
+<ul>
+<li><tt>/alguno/donde/procmail</tt> 
+<li><tt>/alguno/donde/procmail -a "$EXTENSION"</tt>
+</ul>
+
+<hr>

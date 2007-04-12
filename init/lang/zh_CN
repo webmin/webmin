@@ -1,0 +1,118 @@
+index_title=开机和关机
+index_add=创建一个新的开机或关机动作
+index_reboot=重新启动系统
+index_rebootmsg=点击该按钮将立即重新启动系统。当前所有登录用户将被中断连接，所有服务将被重新启动。
+index_shutdown=关闭系统
+index_shutdownmsg=点击该按钮将立即关闭该系统。所有服务将被停止，所有用户将被中断连接，电源关掉也会关闭(如果您的硬件支持的话)。
+index_script=启动时间执行下面列出的脚本 $1。您可以加入自己的命令使系统重启时也重新启动监控程序或服务器。
+index_return=开机或关机动作
+index_action=动作
+index_desc=描述
+index_boot=开始启动？
+index_levels=开始运行级别
+index_status=现在开始？
+index_add_mac=新增开机动作脚本
+index_provides=提供
+index_setting=设置
+index_script_mac=将会在开机时运行下面列出的脚本$1。但是，建议您将自己的用于系统启动时重新启动监控程序或服务器的命令增加至启动目录下。 
+index_editconfig=手工编辑$1文件
+index_stop=停止选中的
+index_start=开始选中的
+index_rlchange=改变运行级别：
+index_rlchangedesc=点击此按钮将您的系统从现在的运行级别切换至已选择的模式下。这样做将会停止现在的等级中的所有操作，然后就会启动新的运行级别的所有操作。
+index_rlt=启动运行级别的所有操作：
+index_rlstartdesc=点击此按钮，将会使现在的已选择的运行级别立即停止，所有的操作被停用。注意：这样做将导致您的系统关闭。 
+index_rlstop=停止运行级别中的所有操作
+index_rlstartdesc=点击此按钮，将会使现在的已选择的运行级别立即停止，所有的操作被停用。注意：这样做将导致您的系统关闭。
+
+
+edit_title=编辑操作
+create_title=创建操作
+edit_ecannot=您没有编辑启动操作的权限
+edit_details=操作细节
+edit_name=名字
+edit_desc=描述
+edit_startmsg=启动信息
+edit_stopmsg=关机信息
+edit_start=启动命令
+edit_stop=关机命令
+edit_script=操作脚本
+edit_boot=在启动时启动？
+edit_badS=因为这个操作未能正确创建，只能以运行级别$1启动。
+edit_badK=因为这个操作未能正确创建，只能以运行级别$1停止。
+edit_fix=点击这里使这个操作也能为其它运行级别所用。
+edit_levels=开始和停止的运行级别
+edit_rl=运行级别 $1
+edit_startat=开始顺序
+edit_stopat=停止顺序
+edit_startnow=现在开始
+edit_stopnow=现在停止
+edit_restartnow=现在重新启动
+edit_condrestartnow=如有需要则重新启动
+edit_reloadnow=现在重新加载
+edit_statusnow=显示状态
+edit_return=操作
+edit_status=现在开始？
+edit_unknown=未知
+
+save_err=保存操作失败
+save_ecannot=您没有编辑启动操作的权限
+save_ealready=名为'$1'的操作已存在
+save_ewrite=无法写入到$1 : $2
+
+ss_ecannot=您没有开始或停止启动操作的权限
+ss_start=开始操作
+ss_stop=停止操作
+ss_restart=重新启动操作
+ss_reload=重新加载操作
+ss_status=动作状态
+ss_exec=执行 $1 ..
+
+shutdown_ecannot=您没有关闭系统的权限
+shutdown_title=关机
+shutdown_rusure=您确定要用这个命令$1来关闭系统吗？
+shutdown_ok=关闭系统
+shutdown_exec=用命令 $1 ..关闭系统
+
+reboot_ecannot=您没有重新启动系统的权限
+reboot_title=重新启动
+reboot_rusure=您确定要用这个命令$1重新启动系统吗？
+reboot_ok=重新启动系统
+reboot_exec=用命令 $1 .. 重新启动系统
+
+acl_script=可以编辑启动脚本吗？
+acl_actions=可以编辑、创建和删除操作吗？
+acl_reboot=可以重新启动系统吗？
+acl_shutdown=可以关闭系统吗？
+
+log_rename=将操作 $1 重命名为$2
+log_modify=已修改操作 $1
+log_create=已创建操作 $1
+log_delete=已删除操作 $1
+log_start=已开始启动操作$1
+log_stop=已停止关闭操作 $1
+log_reboot=重新启动系统
+log_shutdown=关闭系统
+log_local=已修改启动脚本
+log_bootup=已为 $1 改变了启动操作
+
+edit_hostconfig_startup=如果已启动本操作的话，系统启动时就会执行该脚本$1。您可以在下面编辑。
+edit_hostconfig_plist=文件集包含带有相关的启动脚本的某些参数。您可以在下面编辑
+edit_hostconfig_new=创建新的操作
+edit_hostconfig_noquotes=除了$1字段之外，其他的字段都不能使用引号。
+edit_hostconfig_startitems=$1 字段不应以数字或下划线开始，根据习惯，所有的字母都应该是大写的。$2字段应是合法的文件名，并且文件名中不能包含'.'.
+edit_hostconfig_actionname=操作名称
+edit_hostconfig_scriptname=脚本名称
+edit_hostconfig_array=字段$1、$2及 $3是数组字段，并且可以包含一个以上的值。每个值之间以';'分隔。
+edit_hostconfig_further=在创建新的启动操作之后，系统将会转发一页面，如需要的话，您在此可以编辑的启动脚本和参数列表。
+edit_hostconfig_hostconfig=文件 $1 会在系统开始时启动控制系统服务和后台程序。您可以在下面编辑此文件
+edit_hostconfig_title=编辑Hostconfig
+
+mass_enone=未选择操作
+mass_start=开始操作
+mass_stop=停止操作
+
+change_err=您没有切换执行等级的权限
+change_title=切换执行等级
+change_cmd=用命令$2切换至执行等级$1。这将需要些时间，而且切换之后Webmin可能会无法使用。
+

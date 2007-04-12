@@ -1,0 +1,17 @@
+man_cmd=Commande pour afficher la page du manuel,0
+man_cmd_sect=Commande pour afficher la page du manuel d'une section,0
+search_cmd=Commande pour chercher dans les pages,0
+man_dir=Répertoire des pages manuel,0
+
+
+line2=Configuration du systeme,11
+list_cmd=Commande pour afficher le chemin d'une page du manuel,0
+list_cmd_sect=Commande pour afficher le chemin d'une page du manuel depuis une section,0
+man2html_path=Chemin vers man2html,3,Ne pas utiliser man2html
+doc_dir=Repertoire de documentation du packetage,3,Aucun
+howto_dir=Repertoire des documents HOWTO,3,Aucun
+kernel_dir=Repertoire de documentation du noyau,3,Aucun
+kde_dir=Repertoire de la documentation KDE,3,Aucun
+custom_dir=Repertoire de la documentation Custom,3,Aucun
+custom_desc=Nom de la documentation Custom,3,Defaut
+

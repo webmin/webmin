@@ -1,0 +1,22 @@
+<header>Rechazar usuarios locales desconocidos</header>
+
+<center><tt>local_recipient_maps</tt></center>
+<hr>
+
+Este parámetro especifica tablas opcionales de búsqueda con todos los usuarios
+que son locales con respecto a <tt>$mydestination</tt> (&quot;para qué dominios
+recibir correo&quot;) y <tt>$inet_interfaces</tt> (&quot;interfaces de red para
+recibir correo&quot;). Si se define este parémtro, entonces el servidor SMTP
+rechazará el correo de los usuarios locales desonocidos.
+
+<p>
+
+Pon tablas con nombres de usuario tal cual como <tt>unix:passwd.pornombre</tt> y
+mapas de alias. Ejemplo: <tt>$alias_maps unix:passwd.pornombre</tt>.
+
+<p>
+
+Ten cuidado: si el servidor SMTP Postfix es ejecutado con chroot, puede que tengas
+que copiar la base de datos de passwd a la celda. Esto depende del sistema.
+
+<hr>

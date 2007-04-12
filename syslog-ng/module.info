@@ -1,0 +1,6 @@
+desc=System Logs NG
+category=system
+depends=proc
+os_support={&has_command("syslog-ng") || -x "/usr/local/sbin/syslog-ng"}
+longdesc=Configure the Syslog-NG server on your system and view its log files.
+desc_ca=Registres del Sistema NG

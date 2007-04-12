@@ -1,0 +1,37 @@
+Solaris
+-------
+The quota or rq options in /etc/vfstab are only used by quotaon -a at boot
+time, to determine whether to turn on quotas for the filesystem.
+When quotas are activated, the quota option is added to /etc/mnttab. Actually
+mounting with this option is pointless - only the quotaon command can really
+turn on quotas.
+
+When quotas are newly enabled for a filesystem and a user assigned block
+limits (but not file), these limits seem to take effect immediately. 
+When the file limits are turned on, they also take effect immediately
+(but the number of existing files does not seem to be computed).
+
+On the other hand, blocks used are always recorded even if the quotas
+are set to 'unlimited'.
+
+Linux
+-----
+The usrquota and grpquota options in /etc/fstab are used by quotaon
+whenever it is run. Unlike solaris, the filesystem must exist in the fstab
+file (and have quota options) for quotaon to do anything. Also, quotaon does
+not update the mtab file when quotas are turned on (but does complain if 
+quotas are activated twice). Similarly, quotaoff does nothing unless the
+quota options are given in /etc/fstab
+The quota option documented in the man pages seems to be totally ignored - 
+only usrquota and grpquota are used by quotaon.
+
+Quotas seem to have some problems under redhat linux using kernel 2.0.21
+(redhat 5.1). quotacheck and repquota will often hang when both user and
+group quotas are active at the same time. Each can be used separately
+with no problems though (as long as a quotacheck is done after creating
+the quotas file!)
+
+When quotas are enable for some filesystem, they take effect immediately for
+both files and blocks. Even if a user creates files and then has quotas
+set, the counts will be up to date.
+

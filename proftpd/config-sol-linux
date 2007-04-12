@@ -1,0 +1,7 @@
+proftpd_path=/server/proftpd/sbin/proftpd
+proftpd_conf=/server/proftpd/etc/proftpd.conf
+pid_file=/server/proftpd/var/proftpd.pid
+#ftpusers=/etc/ftpusers
+test_config=1
+test_always=0
+test_manual=0

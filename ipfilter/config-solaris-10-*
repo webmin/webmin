@@ -1,0 +1,10 @@
+ipf_conf=/etc/ipf/ipf.conf
+ipnat_conf=/etc/ipf/ipnat.conf
+view_condition=1
+view_comment=0
+ipf=ipf
+ipfstat=ipfstat
+cluster_mode=0
+ipnat=ipnat
+cluster_nat=1
+smf=/network/ipfilter

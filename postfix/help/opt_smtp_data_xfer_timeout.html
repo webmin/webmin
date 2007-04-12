@@ -1,0 +1,15 @@
+<header>Timeout on waiting for answer to transmit of message content</header>
+
+<center><tt>smtp_data_xfer_timeout</tt></center>
+<hr>
+
+This parameter specifies the SMTP client timeout in seconds for sending the
+SMTP message content. When the connection stalls for more than
+<tt>$smtp_data_xfer_timeout</tt> the SMTP client terminates the transfer.
+
+<p>
+
+In case of problems the client does NOT try the next address on the mail
+exchanger list.
+
+<hr>

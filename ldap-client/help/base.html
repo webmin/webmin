@@ -1,0 +1,17 @@
+<header>LDAP Search Bases</header>
+
+An LDAP server's databsae is organized heirarchially, typically with
+different branches in the tree for users, groups and other services. This
+page allows you to select where in the LDAP database to search for
+different types of information, and how deep to search for each. <p>
+
+By default, all searches will be done under the <b>Global search base</b>.
+However, because most servers put users and groups under different sub-trees,
+you will probably need to set the <b>Base for Unix users</b> and
+<b>Base for Unix groups</b> to the distinguished names for those sub-trees.
+The <b>Base for Unix passwords</b> should be set to the same DN as
+<b>Base for Unix users</b>, as password information is almost always
+stored with other user attributes. <p>
+
+<footer>
+

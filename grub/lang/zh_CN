@@ -1,0 +1,62 @@
+index_title=GRUB开机加载程序
+index_add=添加开机选项
+index_global=编辑全局选项
+index_globalmsg=编辑将会应用到全部开机菜单选项的开机全局选项, 并选择安装 GRUB的装置
+index_install=安装 GRUB 
+index_installmsg=在$1安装GRUB开机装载程序，在时开机显示以上的选项。这样做将覆盖象是LILO这种现有的开机装载程序，甚至会无法重新启动系统。 
+index_none=没有定义任何开机选项。请确定少新增了至一个grub的开机选项。
+index_efile=在您的系统上未找到 GRUB菜单文件。可能没有安装GRUB，或者 <a href='$2'>模块设置</a>  有误。
+index_epath=在您的系统上未找到可执行的GRUB $1。可能没有安装GRUB, 或者 <a href='$2'>模组设置</a> 有误。
+index_return=选项列表
+
+title_add=添加开机选项
+title_edit=编辑开机选项
+title_header=开机菜单选项细节
+title_title=选项标题
+title_root=开机磁碟分区
+title_other=其他
+title_sel=选择
+title_boot=启动操作系统
+title_kernel=Linux核心
+title_kfile=核心路径
+title_args=核心选项
+title_chain=其他操作系统
+title_chain_def=从第一个分区的扇区
+title_chain_file=从chainloader文件
+title_makeactive=启动开机分区？
+title_none=无（non-booting menu entry）
+title_err=保存开机选项失败
+title_etitle=没有输入选项标题
+title_eroot=没有输入开机分区
+title_ekernel=没有输入或错误的核心路径
+title_echain=没有输入或错误的chainloader 文件
+title_edev=不支持开机分区装置 $1
+
+global_title=全局选项
+global_header=全局开机菜单选项
+global_default=默认的开机选项
+global_fallback=Fallback 开机选项
+global_first=列表中第一个
+global_timeout=默认装载之前的超时时间
+global_secs=秒
+global_install=在磁盘/分区安装 GRUB 
+global_sel=选中
+global_other=其他
+global_password=开机口令
+global_none=无
+global_password_file=输入了口令便可使用的开机文件：
+global_pass
+global_err=保存全局选项失败
+global_etimeout=没有输入或错误的超时
+global_edev=不支持安装盘/分区$1
+global_eother=没有输入或无效的磁盘/分区
+global_epassword=没有输入或无效的开机口令
+global_epasswordfile=未输入其他菜单文件名
+
+install_title=安装GRUB 
+install_err=安装GRUB失败
+install_efind=未找到菜单文件
+install_desc=使用命令 $2 和 $3将GRUB 安装到 $1 ..
+install_ok=..安装成功.
+install_failed=..安装失败!
+

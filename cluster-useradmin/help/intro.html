@@ -1,0 +1,31 @@
+<header>Cluster Software Packages</header>
+
+This Webmin module allows you to manage the users and groups setup
+on multiple servers in a cluster from the one interface. It is similar to
+the Users and Groups module, but with the ability to perform most
+functions (like creation, updating and deletion) of users on many
+Webmin servers in one operation. <p>
+
+The top part of the main page under the Managed Servers heading lists
+other Webmin servers whose users and groups are being managed by this module. To
+add a server to this list, you must first add it to the Webmin Servers
+module, with a username and password specified to login to Webmin on
+that server. You can then select the server from the list next to the
+Add Server button. <p>
+
+When a server is added, the module will check to make sure it is using
+the same user file format as this server, and then download a list of
+all users and groups for caching locally.
+One server that will always appear on the list of those available to
+add is 'this server', so that you can manage users locally and on
+multiple remote servers from the one interface. <p>
+
+Once there is at least one icon under Managed Servers, you can use the
+Find users and Find groups forms to search for users and groups across all
+servers, and the Add User and Add Group buttons to add to all servers.
+The Synchronize button can be used to automatically
+create any users that exist on some servers in the cluster but not on
+others. <p>
+
+<hr>
+

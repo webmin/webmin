@@ -1,0 +1,49 @@
+<header>Egyéb opciók; fordította: Szakács Gergely</header><p>
+
+<b>Indulási DNS tesztcímek</b>: Azok a DNS kiszolgálók, amelyeknek a Squid induláskor kéréseket küld, hogy megvizsgálja, mûködnek-e a DNS-keresések.<p>
+
+<b>SIGUSR1 naplófájl-rotáció</b>: A rendszertõl függõen az alapértelmezés 10 vagy 0. Meghatározza a naplófájl rotációinak számát a 'squid -k rotate' parancs után. Az alapértelmezés 10, amely a 0-9-ig terjedõ kiterjesztéseket fogja rotálni. A logfile_rotate 0-ra állításával kikapcsolhatja a rotációt, ám a naplófájlokat ettõl függetlenül szabadon nyithatja és zárhatja a rendszer. Így saját maga nevezheti át a naplófájlokat a rotációs jel elküldése elõtt.<p>
+
+A 'squid -k rotate' parancs normális esetben egy USR1 jelet küld a futó Squid folyamatnak. Egyes esetekben (pl. Aszinkron I/O-s Linuxon), az USR1-et más célokra alkalmazzák, így a -k rotáció is már jelet használ. Ezért célravezetõbb a 'squid -k rotate' használata a 'kill -USR1 <pid>' helyett.<p>
+
+<b>Hibaüzenetek szövege</b>: A hibaüzenetekben kiírandó HTML-szöveg. Ez lehet egy "mailto" URL a rendszergazda címére, vagy egy, a cég honlapjára mutató link.<p>
+
+Ahhoz, hogy a fenti információk megjelenjenek a hibaüzenetekben, át kell írnia (a "hibák" könyvtárban található) sablonfájlokat. Ahol szeretné megjeleníteni a 'err_html_text' sort, szúrjon be egy %L elõtagot a hibaüzenet sablonfájljába.<p>
+
+<b>Kliensenkénti statisztikák</b>: Ha le akarja tiltani a kliensenkénti statisztikát, kapcsolja ki a client_db opciót.<p>
+
+<b>X-Továbbítva-Ide fejléc</b>: Alapértelmezés szerint bekapcsolva. Ha ez az opció be van kapcsolva, akkor a Squid belefoglalja a rendszer IP-címét vagy nevét a továbbított HTTP-kérésekbe. Alapértelmezés szerint ez így néz ki:<p>
+
+<center>X-Továbbítva-Ide: 192.1.2.3</center>
+<p>
+Ha kikapcsolja ezt a funkciót, akkor a következõt kapja:<p>
+
+<center>X-Továbbítva-Ide: ismeretlen</center><p>
+
+<b>ICP-kérések naplózása</b>: Alapértelmezés szerint bekapcsolva. Ha ez az opció be van kapcsolva, úgy az ICP-kérések az access.log naplófájlban tárolódnak. Abban az esetben, ha az ICP-terhelés NAGYON magas, vagy ha a naplókezelés túl bonyolult, kikapcsolhatja ezt az opciót.<p>
+
+<b>Minimális közvetlen ugrás</b>: Alapértelmezés szerint 4. Ha ICMP pingelõt használ, irányítsa a lekérdezéseket olyan oldalakra, amelyek nincsenek távolabb az itt meghatározott ugrásoknál.<p>
+
+<b>Memória megõrzése a késõbbiekre</b>: Alapértelmezés szerint bekapcsolva. Ha ez az opció be van kapcsolva, úgy a Squid megõriz hozzárendelt (de nem használt) memóriaterületeket késõbbi felhasználásra. Ha a memória kulcsfontosságú a rendszeren, és úgy véli, hogy a memória-hozzárendelési könyvtár túlteljesíti a Squid rutinokat, kapcsolja ki ezt a funkciót.<p>
+
+<b>Megõrzendõ memória nagysága</b>: Alapértelmezés szerint korlátlan. Ha ezt az opciót bármely, nullától eltérõ értékre állítja, a Squid legfeljebb a megadott értékû hozzárendelt (de nem használt) memóriát fogja megõrizni. Minden free() kérés, ami meghaladja ezt a szintet, a memória-hozzárendelési könyvtár hatáskörébe kerül. A Squid elõzetesen nem különít el semennyi memóriát, csak biztonságban tartja azon objektumokat, amelyeket amúgy felszabadítana. Így érdemes a memory_pools_limit szintjét meglehetõsen magasra venni, még akkor is, ha a konfigurációja egyébként kevesebb memóriát használ.<p>
+
+Ha ez az opció nincs beállítva (alapértelmezés) vagy értéke nulla, úgy a Squid az összes elérhetõ memóriát meg fogja õrizni. Másképp szólva, a biztonsági megõrzésre használható memória felsõ határa nem lesz korlátozva.<p>
+
+<b>Átengedhetõ fejlécek</b>: Alapértelmezés szerint minden fejléc. Ez a jól konfigurálható opció a korábbi 'http_anonymizer' opciót váltja fel. Mostantól meghatározhatja, hogy pontosan mely fejlécek engedélyezhetõk, és melyek eltávolítandók a kimenõ kérésekbõl.<p>
+
+Ez az opció kétféleképp használható. Vagy engedélyez egyes fejléceket (ezzel kizárva másokat), vagy letiltja õket (ezzel engedélyezve minden mást).<p>
+
+<b>Hamis felhasználói ágens</b>: Alapértelmezés szerint nincs. Ha a felhasználói ágens fejlécet az <b>átengedhetõ fejlécek</b> opcióval szûri, úgy elõfordulhat, hogy egyes  webkiszolgálók elutasítják a kérést. Használja ezt egy hamis ágens létrehozatalához.<p>
+
+<b>HTTP Accel Host</b>: Alapértelmezés szerint nincs. Ha a Squid-et httpd-gyorsítóként akarja használni, úgy ezt a címet állítsa át a valódi HTTP-kiszolgáló címére.<p>
+
+<b>HTTP Accel Port</b>: Alapértelmezés szerint nincs. Az <b>HTTP Accel Host</b> beállításán felül itt meg kell adnia a valódi kiszolgáló portját is, ha gyorsítóként használja a Squid-et.<p>
+
+<b>HTTP Accel With Proxy</b>: Alapértelmezés szerint kikapcsolva. Engedélyezze ezt az opciót, ha azt szeretné, hogy a Squid hagyományos proxy-ként üzemeljen, miközben HTTP-gyorsítóként is mûködik. Ezt az opciót transzparens proxy-k esetében is be kell kapcsolni.<p>
+
+<b>HTTP Accel Uses Host Header</b>: Alapértelmezés szerint kikapcsolva. A HTTP/1.1 kérések tartalmaznak gazdát: egy fejlécet, amely lényegében az URL-bõl vett gazdanév. A Squid lehet több HTTP-kiszolgáló gyorsítója is, e fejléc használatával. Mindazonáltal a Squid NEM ellenõrzi a gazdafejléc tartalmát, így ez egy nagy biztonsági lyukat nyit a rendszeren. Azt javasoljuk, hogy ezt az opciót hagyja kikapcsolva, hacsak nem teljesen biztos a dolgában.<p>
+
+Engedélyeznie kell azonban ezt az opciót abban az esetben, ha a Squid-et transzparens proxy-ként használja. Máskülönben a virtuális kiszolgálók részérõl a gazda fejléce nem lesz megfelelõen gyorstárazva.
+
+<hr>

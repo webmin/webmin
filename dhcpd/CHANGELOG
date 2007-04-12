@@ -1,0 +1,17 @@
+---- Changes since 1.130 ----
+Group and subnet descriptions are now shown in the list of groups and networks that a host or other element can be assigned to.
+---- Changes since 1.150 ----
+Custom option definitions can now be edited, and will be preserved in the configuration file if manually defined.
+---- Changes since 1.160 ----
+Added support for SLP-related client options (thanks to Alexandre Racine).
+---- Changes since 1.200 ----
+Improved support for DDNS (thanks to Johannes Franken <jfranken@jfranken.de>, including editors for the zone- and key-directives (new with dhcpd3), new scope-option "client-updates" (new with dhcpd3), and a text editor for dhcpd.conf
+---- Changes since 1.230 ----
+Added a button for stopping the running DHCP server.
+---- Changes since 1.290 ----
+The page listing leases now displays the number of IPs available for dynamic allocation, and the number assigned to clients.
+Hosts with multiple fixed addresses have them all listed on the module's main page.
+---- Changes since 1.300 ----
+Added checboxes and buttons for deleting multiple subnets, shared networks, hosts and groups at once.
+Fixed a bug that caused the display of large numbers of hosts and subnets to be slow.
+Changed the Module Config PID file setting to allow None to be selected, which tells the module to look at the dhcpd process instead (as on OpenBSD).

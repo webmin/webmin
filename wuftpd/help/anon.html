@@ -1,0 +1,35 @@
+<header>Anonymous FTP</header>
+
+The first table on this page allows you to specify the directory that
+the server will switch to with <tt>chroot</tt> when an anonymous FTP
+user logs in. A different directory can be chosen for different user
+classes, or the one directory can be used for all classes. If no directory
+is specified, the FTP server will <tt>chroot</tt> to the home directory
+of the <tt>ftp</tt> user. <p>
+
+Because the server calls external programs like <tt>ls</tt> and <tt>tar</tt>,
+the anonymous root directory must contain a <tt>bin</tt> directory with
+those programs, a <tt>lib</tt> directory containing any shared libraries
+needed, an an <tt>etc</tt> directory containing <tt>passwd</tt> and
+<tt>group</tt> files. When the server uses <tt>chroot</tt> to limit
+access to the anonymous root directory, it cannot access any programs
+outside that directory. <p>
+
+The second table controls which directory the server will <tt>chroot</tt>
+to for guest users. For each directory, you can specify which users this
+directory will apply to by entering usernames, UIDs (like <tt>%3000</tt>)
+or UID ranges (like <tt>%3000-3006</tt>). If no users are entered, the
+directory is used for all guest users. <p>
+
+The third table allows you to control which Unix group anonymous FTP
+users will be switched to, instead of the primary group for the <tt>ftp</tt>
+user. For each group entered you can choose one or more user classes,
+for example to grant access to certain files to anonymous users from
+certain IP addresses. <p>
+
+Finally, the bottom section of the page has inputs to control what
+passwords are acceptable for anonymous FTP logins. Traditionally, FTP
+users should send a valid email address as their anonymous login password. <p>
+
+<hr>
+

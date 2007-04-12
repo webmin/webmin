@@ -1,0 +1,12 @@
+portsentry=/usr/local/psionic/portsentry
+portsentry_config=/usr/local/psionic/portsentry/portsentry.conf
+portsentry_umode=udp
+portsentry_start=
+portsentry_stop=
+portsentry_pid=
+portsentry_tmode=tcp
+hostsentry=/usr/local/abacus/hostsentry/hostsentry.py
+hostsentry_config=/usr/local/abacus/hostsentry/hostsentry.conf
+hostsentry_start=
+hostsentry_stop=
+logcheck=/usr/local/etc/logcheck.sh

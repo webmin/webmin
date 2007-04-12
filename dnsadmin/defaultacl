@@ -1,0 +1,8 @@
+zones=*
+master=1
+slave=1
+defaults=1
+reverse=1
+multiple=1
+dir=/
+ro=0

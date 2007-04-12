@@ -1,0 +1,1 @@
+clear_envs=Passer les variables d'environnement de Webmin &#224; la commande shell ?,1,0-Oui,1-Non

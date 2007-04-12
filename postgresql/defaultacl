@@ -1,0 +1,12 @@
+dbs=*
+create=1
+delete=1
+stop=1
+users=1
+backup=1
+restore=1
+tables=1
+cmds=1
+views=1
+indexes=1
+seqs=1

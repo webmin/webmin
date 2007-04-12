@@ -1,0 +1,11 @@
+line1=Options configurables,11
+index_status=&#201;tat &#224; afficher sous forme de liste,1,1-&#201;tat actuel,0-Depuis la derni&#232;re v&#233;rification programm&#233;e
+pager_cmd=Commande pour envoyer un message &#224; un lecteur de messagerie,3,Aucune
+refresh=Nombre de secondes entre deux rafra&#238;chissements des pages,3,Ne pas rafra&#238;chir
+sort_mode=Afficher les moniteurs tri&#233;s par,1,0-Ordre de cr&#233;ation,1-Description,2-Poste
+output=Sortie de la capture &#224; partir des programmes ex&#233;cut&#233;s lorsqu'ils sont arr&#234;t&#233;s ?,1,1-Oui,0-Non
+subject_mode=Mode de sujet de courrier &#233;lectronique,1,0-Nouveau style,1-Ancien style
+snmp_server=Envoyer des interruptions SNMP au serveur,3,Aucun
+snmp_version=Version du protocole SNMP,1,3-v3,2-v2,1-v1
+snmp_community=Cha&#238;ne de communaut&#233; SNMP,0
+snmp_trap=OID SNMP des interruptions,0

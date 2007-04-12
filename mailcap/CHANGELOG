@@ -1,0 +1,5 @@
+---- Changes since 1.270 ----
+Added support for extra options in the mailcap file, like test= and needsterminal.
+Fixed handling of lines that use the \ continuation character.
+---- Changes since 1.290 ----
+Added support for the description= attribute.

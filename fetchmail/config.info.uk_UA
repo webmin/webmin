@@ -1,0 +1,8 @@
+daemon_user=Користувач для запуску демона fetchmail,0
+mda_command=Команда доставки пошти,3,Використання SMTP
+pid_file=Шлях до файлу PID демона fetchmail,0
+line1= параметри, ЩоНалаштовуються,11
+line2=Системні параметри,11
+config_file=Файли настроювання Fetchmail для редагування,3,Файли всіх користувачів .fetchmailrc
+fetchmail_path=Шлях до програми fetchmail,0
+

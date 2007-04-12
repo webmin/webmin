@@ -1,0 +1,6 @@
+line1=Configurable options,11
+default_mode=Default process list style,4,last-Last chosen,tree-Process tree,user-Order by user,size-Order by size,cpu-Order by CPU,search-Search form,run-Run form
+cut_length=Characters to truncate commands to,3,Unlimited
+trace_java=Show system call trace using,1,1-Java applet,0-Text
+line2=System configuration,11
+ps_style=PS command output style,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS,openbsd-OpenBSD

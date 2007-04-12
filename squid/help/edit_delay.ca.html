@@ -1,0 +1,23 @@
+<header>Pools de Retard</header>
+<p>
+Els pools de retard ofereixen un mitjà de restringir l'ús de l'amplada de
+banda per part dels clients. Amb els pools de retard, els clients es poden
+restringir a nivell individual, o per grups. Per aplicar els límits d'amplada 
+de banda als usuaris, s'utilitzen ACLs.
+<p>
+Aquesta pàgina mostra tots els pools existents i els seus límits. També hi ha
+una secció per a opcions globals, que de moment només en té una.
+<p>
+<b>Nivell inicial de la galleda</b>
+<br>
+A causa de la forma de treballar dels pools de retard, podria ser que es
+permetés un client nou d'utilitzar més de la seva part corresponent 
+d'amplada de banda, ja que la seva nova galleda estaria buida.
+En una xarxa congestionada, això voldria dir que les altres connexions
+dels clients amb les galledes gairebé plenes es quedarien sense amplada de
+banda durant un cert temps. Aquesta opció és, per defecte, un 50%, i es pot
+deixar així, si no és que els valors <b>max</b> són molt grans (actualment,
+el valor màxim en configurar els límits s'aplica a la mida de la galleda
+per al pool).
+
+

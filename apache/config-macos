@@ -1,0 +1,17 @@
+httpd_path=/usr/sbin/apache
+apachectl_path=/usr/sbin/apachectl
+start_cmd=
+httpd_dir=/Local/Library/WebServer
+virt_file=
+access_conf=/Local/Library/WebServer/Configuration/access.conf
+srm_conf=/Local/Library/WebServer/Configuration/srm.conf
+stop_cmd=
+httpd_conf=/Local/Library/WebServer/Configuration/apache.conf
+show_list=0
+mime_types=/Local/Library/WebServer/Configuration/mime.types
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

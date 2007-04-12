@@ -1,0 +1,44 @@
+<header>Paquetes de Software</header>
+
+<h3>Introducción a Paquetes</h3>
+Un paquete de software es una colección de archivos que conforman un programa.
+Estos archivos pueden ser combinados en un archivo de paquete para su
+distribución o descarga, para ser extraídos y colocados en sus correctas
+localizaciones cuando el paquete es instalado. <p>
+
+Un sistema de gestión de paquetes automatiza la mayoría del trabajo durante
+la instalación y anulación de programas. A causa de que los paquetes están
+normalmente pre-compilados, no te has de preocupar acerca de guiones de
+<tt>Makefile</tt> y <tt>configure</tt> durante la instalación. A causa de
+que el sistema de gestión de paquetes hace un seguimiento de todos los
+paquetes, puede anular todo rastro de un programa en la desinstalación.<p>
+
+<h3>Paquetes Instalados</h3>
+Los paquetes se organizan dentro de clases y subclases, como <tt>Sistema</tt>
+o <tt>X11/Utilities</tt>. Al principio de la página principal hay un árbol
+de carpetas y paquetes en los cuales cada carpeta representa una clase.
+Para abrir una carpeta, símplemente haz click en ella. Para ver más
+información acerca de un paquete, haz click en su nombre. <p>
+
+Bajo el árbol de paquetes hay un formulario para poder buscar en la base
+de datos del paquete. Esto buscará aquellos paquetes cuyos nombres o
+descripciones coincidan con cualquier texto que digites. <p>
+
+<h3>Instalar un Nuevo Paquete</h3>
+Bajo el botón de búsqueda de paquetes hay un formulario para instalar un
+nuevo paquete. Puedes instalar desde un archivo de tu sistema, desde un
+archivo del ordenador donde estás ejecutando tu navegador web o desde una
+dirección URL FTP o HTTP. En este último caso, Webmin contactará con el
+servidor FTP o sitio web y descargará el archivo de paquete. Si tu sistema
+está tras un cortafuegos, asegúrate de tener configurados los servidores
+proxy corréctamente en el módulo de <i>Configuración de Webmin</i>.<p>
+
+<h3>Identificar un Archivo</h3>
+En la parte inferior de la página principal hay un formulario para
+identificar algún archivo de tu sistema. Puedes digitar una trayectoria
+absoluta como <tt>/etc/inetd.conf</tt> o un comando como <tt>elm</tt>.
+Webmin intentará encontrar el archivo en el sistema de gestión de paquetes
+y mostrará información acerca del archivo y paquetes que lo utilizan.<p>
+
+<hr>
+

@@ -1,0 +1,28 @@
+Por defecto Postfix reenvía correo:
+
+<ul>
+<li> desde clientes fiables cuyas direcciones IP coinciden con
+     <a href=opt_mynetworks><tt>$mynetworks</tt></a>,
+<li> desde clientes fiables que coinciden con <tt>$relay_domains</tt> o los
+     subdominios correspondientes,
+<li> desde clientes no fiables a destinos que coincidan con <tt>$relay_domains</tt>
+     o los subdominios correspondientes, excepto direcciones cno
+     encaminamiento específico de remitente.
+</ul>
+
+El valor por defecto de <tt>relay_domains</tt> es
+<a href=opt_mydestination><tt>$mydestination</tt></a>.
+
+<p>
+
+Además de lo anterior el servidor SMTP Postfix acepta por defecto correo
+para el cual Postfix es el destinatario final:
+
+<ul>
+<li> destinos que coinciden con
+     <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+<li> destinos que coinciden con
+     <a href=opt_mydestination><tt>$mydestination</tt></a>,
+<li> destinos que coinciden con
+     <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>.
+</ul>

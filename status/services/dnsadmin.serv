@@ -1,0 +1,4 @@
+id=dnsadmin
+type=dnsadmin
+desc=BIND 4 DNS Server
+depends=dnsadmin

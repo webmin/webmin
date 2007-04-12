@@ -1,0 +1,8 @@
+line2=Sistem yapýlandýrmasý,11
+pppoe_conf=PPPOE ADSL yapýlandýrma dosyasý,0
+conf_style=Yapýlandýrma dosyasý biçimi,1,0-Standart RP-PPPoE yapýlandýrmasý,1-Redhat að dosyasý
+pap_file=PPP hesap dosyasý,0
+pppoe_cmd=pppoe komutunun tam yolu,0
+start_cmd=ADSL baðlantýsý açma komutu,0
+stop_cmd=ADSL baðlantýsýný kapatma komutu,0
+status_cmd=ADSL baðlantýsýnýn durumunu gösterme komutu,0

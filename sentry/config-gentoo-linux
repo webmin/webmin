@@ -1,0 +1,12 @@
+portsentry=/usr/bin/portsentry
+portsentry_config=/etc/portsentry/portsentry.conf
+portsentry_umode=udp
+portsentry_start=/etc/init.d/portsentry start
+portsentry_stop=/etc/init.d/portsentry stop
+portsentry_pid=
+portsentry_tmode=tcp
+hostsentry=/usr/local/abacus/hostsentry/hostsentry.py
+hostsentry_config=/usr/local/abacus/hostsentry/hostsentry.conf
+hostsentry_start=
+hostsentry_stop=
+logcheck=/usr/local/etc/logcheck.sh

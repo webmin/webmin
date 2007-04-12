@@ -1,0 +1,66 @@
+# webmin-0.90cpan/lang/hu
+# translated by Gabor Keve <gabor.keve@it-worx.hu>
+#
+index_title=Perl Modulok
+index_name=Modulok
+index_version=Verzió
+index_desc=Meghatározás
+index_date=Telepítve a következõ idõpontban
+index_installmsg=Válasszon ki egy új Perl modult, amit szeretne lefordítani és telepíteni a rendszerbe.
+index_cpan=A CPAN -ról, névszerint
+index_refresh=Modul lista frissítése CPAN-ról
+index_local=Helyi file -ból
+index_uploaded=Feltöltött file -ból
+index_ftp=Ftp vagy http URL-bõl
+index_installok=Telepítése
+index_return=modul lista
+
+download_err=Nem lehet telepíteni a modult
+download_elocal=Nem lett helyi file megadva
+download_elocal2=A(z) '$1' nem létezik
+download_eupload=Az Ön böngészõje nem támogatja a feltöltést
+download_eurl=Elérhetettlen URL '$1'
+download_edir=A(z) $1 nem valós könyvtár
+download_etar=Nem lehet a(z) tar file kitömöríteni
+download_emod=Nem valós Perl modul
+download_title=Modul telepítése
+download_header=Perl modul telepítési beállítások
+download_mod=Modul neve
+download_ver=Verziója
+download_act=Telepítési tevékenység
+download_src=Forrás
+download_m=Csak elõállítás
+download_mt=Elõállítás és tesztelés
+download_mi=Elõállítás  és telepítés
+download_mti=Elõállítás , tesztelés és telepítés
+download_cont=A telepítés folytatása
+download_epackages=Érvénytelen CPAN modul URL
+download_ecpan=A $1 modult nem találom a CPAN modulok listájában
+download_args=<tt>Makefile.PL</tt> paraméterei
+
+install_title=Modul telepítése
+install_untar=Untar futtatása a  modul file-on
+install_make=A modul lefordítésa
+install_test=A modul tesztelése
+install_install=A modul TELEPÍTÉSE
+install_loop=Talán végtelen ciklust észleltem a kimeneten!
+install_done_0=A(z) $1 elõállítás sikeres.
+install_done_1=A(z) $1 elõállítása és tesztelése sikeres.
+install_done_2=A(z) $1 elõállítása és telepítése sikeres.
+install_done_3=A(z) $1 elõállítása, tesztelése és telepítése sikeres.
+install_err=A(z) $1 telepítése sikertelen. Ellenõrizze a kimenetet, és próbálja kézileg felinstallálni.
+install_exec=Futtatom a(z) $1 ..
+install_efile=A(z) $1 module file már nem létezik
+
+cpan_sel=Modulok a(z) $1 alatt..
+cpan_title=Válassza ki a Perl modult
+
+edit_title=Modul részletezése
+edit_header=Modul információk
+edit_mod=Modul neve
+edit_version=Modul verziója
+edit_desc=Meghatározás
+edit_date=Telepítve
+edit_header2=Modul dokumentáció
+edit_file=Modul file
+edit_files=Programok

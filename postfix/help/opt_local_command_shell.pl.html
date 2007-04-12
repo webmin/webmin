@@ -1,0 +1,23 @@
+<header>Pow³oka u¿ywana przy przekierowywaniu do programów zewnêtrznych</header>
+
+<center><tt>local_command_shell</tt></center>
+<hr>
+
+Ten parametr okre¶la, za pomoc± jakiej pow³oki bêdzie siê odbywaæ
+przekierowywanie poczty do zewnêtrznych poleceñ. Domy¶lnie, zewnêtrzne
+polecenia s± uruchamiane bezpo¶rednio; s± one interpretowane przez
+<tt>/bin/sh</tt> tylko wtedy, gdy zawieraj± metaznaki lub wbudowane
+polecenia pow³oki. <p>
+
+Podaj inn± pow³okê, je¶li potrzebna Ci mo¿liwo¶æ kontroli nad tym, jakie
+programy mog± byc uruchamiane np. z&nbsp;plików <tt>.forward</tt>. <p>
+
+Wiêkszo¶æ bêdzie korzystaæ tu z&nbsp; &quot;ograniczonej pow³oki
+Sendmaila&quot; (<tt>smrsh</tt> jest czê¶ci± dystrybucji Sendmaila). <p>
+
+Uwaga: je¶li jest podana pow³oka, jest ona uruchamiana nawet wtedy, gdy
+polecenie nie zawiera ¿adnego wbudowanego polecenia ani metaznaku. <p>
+
+Przyk³ad: <tt>/gdzies/tam/smrsh -c</tt> <p>
+
+<hr>

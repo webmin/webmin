@@ -1,0 +1,5 @@
+log_modify=NFS paylaþýmý $1 deðiþtirildi
+log_rename=NFS paylaþýmý $1, $2'ye deðiþtirildi
+log_create=NFS paylaþýmý $1 oluþturuldu
+log_delete=NFS paylaþýmý $1 silindi
+log_apply=Deðiþiklikler uygulandý

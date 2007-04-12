@@ -1,0 +1,49 @@
+<header>Användare och grupper</header>
+
+<h3>Introduktion till användare</h3>
+En Unix-användare är oftast någon som kan logga in på systemet via
+telnet eller från konsolen. Varje fil ägs av någon användare och varje
+process körs med någon användares rättigheter. Åtkomst av filer och
+processer regleras av vilken användare man är inloggad som.
+
+<p>Det finns tre typer av användare på ett typiskt Unix-system:
+<ul>
+<li><b>Administrativa användare</b>
+    <br>Konton som <tt>bin</tt>, <tt>lp</tt> och <tt>uccp</tt> äger filer,
+    t ex standardkommandona i <tt>/bin</tt>, skrivar-spoolfiler och
+    UUCP-data. Vanligtvis går det inte att logga in som någon av dessa
+    användare, utan de används endast av olika systemprocesser. Dessa
+    användare skapas när operativsystemet installeras.
+
+<li><b>Vanligt folk</b>
+    <br>Dessa konton ägs av riktiga användare och skapas av
+    systemadministratören. De kan tillåtas att logga in från andra system
+    eller begränsas till att endast skicka och ta emot e-post via SMTP och
+    POP3.
+<li><b>Användaren <tt>root</tt></b>
+    <br>Användaren <tt>root</tt> får läsa och skriva i alla filer och kataloger
+    och styra alla processer. Detta konto används vanligen till
+    systemadministration och är det konto som Webmin körs under.
+</ul>
+
+Högst upp på modulens startsidan finns en tabell över befintliga användare
+i systemet. Klicka på en användare för att ändra uppgifter om den eller
+klicka på länken nedanför tabellen för att lägga till en användare.
+
+<h3>Introduktion till grupper</h3>
+En grupp är helt enkelt en lista över Unix-användare. Varje användare hör
+till minst en grupp (dess primära grupp) och möjligen flera andra. Alla filer
+ägs av någon grupp och alla processer körs med någon grupps rättigheter.
+
+<p>Nedanför användarlistan finns en tabell över befintliga grupper. Klicka
+på ett gruppnamn för att ändra uppgifter om den eller klicka på länken
+nedanför tabellen för att lägga till en grupp.
+
+<h3>Registrerade inloggningar</h3>
+Varje gång en användare loggar in via nätverk eller konsolen registrerar
+systemet inloggningen och den påföljande utloggningen. Längst ned på
+startsidan finns ett litet formulär där man kan studera inloggningar för
+alla eller för någon användare.
+
+<hr>
+

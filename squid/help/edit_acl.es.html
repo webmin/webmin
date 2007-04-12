@@ -1,0 +1,23 @@
+<header>Control de Acceso</header>
+
+<b>Listas de control de acceso</b>: ACLs son listas de términos con los que hay que coincidir mediante el uso de expresiones regulares o literales. Un ACL puede también ser un archivo que contenga un elemento o expresión regular por línea. La rejilla ACL de esta página tiene varios campos que pueden ser editados. También se pueden crear nuevas ACLs.
+<p>
+Los campos presentes son:
+<p>
+<em>Nombre</em> es el nombre por el cual se puede identificar a la ACL. Al crear una <b>Restricción Proxy</b> este es el nombre usado para definir lo que se está restringiendo.
+<p>
+<em>Tipo</em> es el tipo de información que debe de coincidir con la ACL.
+<p>
+<em>Que coincida con...</em> es la dirección, puerto, dirección (URL), usuario, etc... que debe de coincidir con la ACL.
+<p>
+<b>Restricciones Proxy</b>: Son las reglas que permiten o deniegan un requerimiento dado basándose en si su ACL coincide con el requerimiento específico. Hay tres campos en esta rejilla.
+<p>
+<em>Acción</em> puede ser o <em>permitir</em> o <em>denegar</em>.
+<p>
+<em>ACLs</em> son las ACLs que han de coincidir para decidir si el requerimiento se permite o se deniega. Si van precedidas de un signo de cierre de exclamación la ACL será negada, en otras palabras todo <em>excepto</em> los miembros de esa ACL serán autorizados o denegados.
+<p>
+<em>Mover</em> permite mover el orden de restricciones de la lista. El orden en que aparecen es importante porque Squid sólo lee la lista hasta que encuentra la primera coincidencia.
+<p>
+<b>Restricciones ICP</b>: Esta rejilla es para restricciones de requerimientos ICP.  Los requerminentos ICP son requeridos desde otras cachés vecinas. Esta sección funciona igual que las <b>Restricciones Proxy</b>.
+
+<hr>

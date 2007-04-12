@@ -1,0 +1,26 @@
+<header>Introducció a les Exportacions NFS</header>
+
+<include nfs>
+
+<h3>NFS de HPUX</h3>
+Aquest mòdul permet configurar directoris (anomenats <i>exportacions</i>
+en HPUX) per tal que siguin compartits des del teu sistema a través de
+NFS. La primera pàgina mostra una llista de directoris i els clients
+als quals s'exporten, i permet que facis clic sobre un client per tal de
+canviar-ne les opcions o començar l'exportació d'un nou directori.
+<p>
+Sota la llista d'exportacions de la primera pàgina hi ha un botó que
+farà activa la configuració actual.
+<p>
+HPUX no permet reeexportar un directori NFS muntat des d'un altre servidor.
+Només es poden exportar els directoris dels sistemes de fitxers locals.
+Si un directori compartit conté el punt de muntatge d'un altre sistema
+de fitxers local, els clients NFS no veuran els fitxers per sota d'aquest
+punt de muntatge. El servidor ha de reexportar cada sistema de fitxers 
+per separat, i els clients els han de muntar en els punts correctes
+de la jerarquia de directoris.
+<p>
+
+<hr>
+
+

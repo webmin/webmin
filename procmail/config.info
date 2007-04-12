@@ -1,0 +1,5 @@
+line1=Configurable options,11
+includes=Show contents of include files?<br>(If no variables are used in filenames),1,1-Yes,0-No
+line2=System configuration,11
+procmailrc=Path to system procmailrc file,0
+procmail=Path to procmail program,0

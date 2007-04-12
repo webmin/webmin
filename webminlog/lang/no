@@ -1,0 +1,59 @@
+index_title=Webmin handlings logg
+index_header=Søk i Webmin loggen for handlinger ..
+index_uall=Av alle brukere
+index_user=Av bruker
+index_nuser=Av alle brukere unntagen
+index_mall=I alle moduler
+index_module=I modul
+index_tall=Til alle tider
+index_today=Bare for i dag
+index_time=Mellom $1 og $2
+index_search=Søk
+index_return=Søke skjema
+index_nolog=<b>NB</b> - <a href='$1'>Logging i Webmin</a> er ikke satt opp, så det er sannsynelig at søket i Handlings loggen ikke finner noen resultater.
+index_nologfiles=<b>NB</b> - <a href='$1'>Logging av fil endringer</a> er ikke satt opp, så detaljene for handlings loggen vil ikke inneholde fil endringer eller kommandoer som er utført.
+
+search_title=Søke resultat
+search_date=Dato
+search_time=Tid
+search_user=Bruker
+search_host=Klient adresse
+search_module=Modul
+search_action=Handling
+search_none=Ingen handling matcher ditt søk.
+search_return=Søke resultat
+search_sid=Handlinger av bruker $1 i sesjon $2
+search_critall=Alle loggede handlinger
+search_crit=Loggede handlinger
+search_critu=av bruker $1
+search_critnu=av alle unntagen bruker $1
+search_critm=fra modul $1
+search_critt=mellom $1 og $2
+search_critt2=på $1
+search_config=Forandret modul konfigurasjon
+search_etime=Ugyldig start eller slutt tid
+search_err=Søket feilet
+
+view_title=Handlings detaljer
+view_header=Detaljer av loggede handlinger $1
+view_action=Beskrivelse
+view_module=Webmin modul
+view_script=Laget av skript
+view_user=Webmin bruker
+view_ip=Klient IP eller vertsnavn
+view_sid=Sesjons ID
+view_time=Dato og tid
+view_nofiles=Ingen konfig fil endringer ble logget for denne handlingen
+view_type_create=Opprettet fil $1
+view_type_modify=Forandret fil $1
+view_type_delete=Slettet fil $1
+view_type_exec=Utført kommando
+view_type_sql=Utført SQL erklæring i database $1
+view_type_kill=Sendt signal $1 til PID $2
+view_type_symlink=Laget symlink $1 -&gt; $2
+view_type_unsymlink=Slettet symlink $1 -&gt; $2
+view_type_resymlink=Modifisert symlink $1 -&gt; $2
+view_type_mkdir=Opprettet katalog $1
+view_type_rmdir=Fjernet katalog $1
+view_type_rename=Forandret navn fra $1 til $2
+

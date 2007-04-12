@@ -1,0 +1,42 @@
+<header>Diario</header>
+
+<b>Archivo de acceso de diario</b>: Por defecto depende del sistema, normálmente en algún sitio de <tt>/var</tt>. Lleva diario de la actividad de requerimientos de cliente. Contiene una entrada por cada requerimiento HTTP e ICP recibidos. <p>
+
+<b>Depurar archivo de diario</b>: Por defecto depende del sistema. Archivo de diario de caché. Es donde va la información general sobre el comportamiento de tu caché. Puedes incrementar la cantidad de datos almacenados en este archivo mediante <b>Opciones de depuración</b>. <p>
+
+<b>Archivo de almacenamiento de diario</b>: Por defecto depende del sistema. Lleva diario de las actividades del gestor de almacenaje. Muestra qué objectos son rechazados de la caché y qué objetos son salvados y por cuánto tiempo. Para desactivarlo, digita "ninguno (none)". No hay utilidades para analizar estos datos, por ello lo puedes desactivar tranquílamente. <p>
+
+<b>Archivo de metadatos de caché</b>: Por defecto es 'swap.log' en cada directorio de caché. Este archivo de diario mantiene los metadatos de los objetos salvados en disco. Es usado para reconstruir la caché durante el arranque. Normálmente este archivo reside en cada directorio de caché, pero puedes especificar aquí un nombre alternativo de trayectoria. Date cuenta de que tienes que poner el nombre completo de archivo, no sólo su directorio. Ya que esto es el índice para toda la lista del objeto ¡NO PUEDES rotarlo periódicamente!. <p>
+
+Si se usa %s en el nombre del archivo, será reemplazado con una representación del nombre de directorio de caché donde cada / se reemplaza por '.'. Esto es necesario para permitir añadir/quitar líneas de directorio de caché si se usa un diario de intercambio alternativo. <p>
+
+Si tiene más de un directorio de caché y %s no se usa en el nombre, entonces estos diarios de intercambio tendrán nombres como: <p>
+<ul>
+<li>cache_swap_log.00
+<li>cache_swap_log.01
+<li>cache_swap_log.02
+</ul>
+<p>
+La extensión numerada (que es añadida automáticamente) se corresponde con el orden de las líneas del directorio de caché en la configuración. Si cambias el orden de las líneas de la entrada del directorio de caché en este archivo, entonces estos archivos de diario NO se corresponderán con la entrada correcta de directorio de caché (a menos que manuálmente los renombres). Recomendamos que NO uses esta opción. Es mejor mantener estos archivos de diario en cada directorio de caché. <p>
+
+<b>Usar formato de diario HTTPD</b>: Por defecto es no. La caché puede emular el formato de archivo de historia que muchos programas 'httpd' utilizan. Para desactivar/activar esta emulación, activa o desactiva este valor. Por defecto se utiliza el formato de diario nativo ya que incluye información útil que utiliza el analizador de diario específico de Squid.
+<p>
+<b>Llevar diario de cabeceras MIME</b>: Por defecto es no. La caché puede grabar ambas cabeceras MIME de requerimiento y de respuesta para cada transacción HTTP. Las cabeceras son codificadas de forma segura y aparecerán como dos campos encerrados entre corchetes al final del diario de acceso (para ambos formatos httpd emulado y nativo). Para activar este diario, activa este valor.
+<p>
+<b>Archivo de diario de agente de usuario</b>: Por defecto ninguno. Si configurado con la opción de configuración de "--enable-useragent-log", Squid escribirá el campo de Agente-de-Usuario de requerimientos HTTP en el nombre de archivo especificado aquí.
+<p>
+<b>Archivo de PID</b>: Por defecto depende del sistema. Un nombre de archivo donde escribir la id de proceso. Para desactivarlo, pon ninguno 'none'.
+<p>
+<b>Realizar búsquedas de indentidad para ACLs</b>: Por defecto ninguna. Realiza búsqueda de identidad para hallar el nombre de usuario de clientes que acceden a cualquiera de estas ACLs.
+<p>
+<b>Tiempo de espera de identificación RFC931</b>: Por defecto es 30 segundos. Tiempo máximo a esperar por requermientos IDENT. Si este valor es demasiado grande y activaste cualquier búsqueda de identidad, entonces podías ser susceptible de ser denegado el servicio al tener muchos requerimientos de identidad de forma inmediata.
+<p>
+<b>Llevar diario de nombres completos de máquina</b>: Por defecto es no. Llevar el nombre completo de máquina de los clientes.
+<p>
+<b>Máscara de red de diario</b>: Por defecto es 255.255.255.255.  Una máscara de red para direcciones de cliente en archivos de diario y salida de cachemgr. Cambia esto para proteger la privacidad de tus clientes de caché. Una máscara de red de 255.255.255.0 hará que se lleve diario de todas las IPs en ese rango con el último dígito a cero.
+<p>
+<b>Opciones de depuración</b>: Por defecto es "ALL,1 (TODO,1)". Las opciones de diario son puestas como sección, nivel donde cada archivo emisor es asignado una única sección. Niveles inferiores dan como resultado una menor depuración completa. El nivel 9 puede resultar en un archivo de diario enorme, por ello ten cuidado. La palabra mágica "ALL (TODOS)" pone niveles de depuración para todas las secciones. Recomendamos ejecutar normálmente con "ALL,1 (TODO)"
+<p>
+<b>Tabla de cabeceras MIME</b>: Trayectoria a tabla MIME de Squid. No deberías necesitar cambiar esto, pero el archivo por defecto contiene ejemplos e información de formato por si deseas cambiarlo.
+
+<hr>

@@ -1,0 +1,122 @@
+index_title=Jabber 即时消息服务器
+index_econfig=Jabber配置文件 $1 不存在. 可能没有安装Jabber, 或者 <a href='$2'>模块配置</a>是错误的.
+index_edir=Jabber默认目录 $1 不存在. 可能没有安装Jabber, 或者 <a href='$2'>模块配置</a> 是错误的.
+index_emodules=Perl 模块 $1 和 $2 没有安装，这些模块在webmin处理Jabber的XML配置文件时需要使用. <a href='$3'>点这里</a> 从CPAN站点下载安装.
+index_emodule=Perl 模块 $1 没有安装，这些模块在webmin处理Jabber的XML配置文件时需要使用. <a href='$2'>点这里</a> 从CPAN站点下载安装.
+index_expat=在安装Perl模块前确定你已经移动了C 库和安装了头文件，否则会安装失败.
+index_eparse=当前 $1 perl 模块不能处理您的Jabber配置文件: $2
+index_ejabberd=Jabber 服务器程序 $1 找不到. 可能没有安装Jabber, 或者 <a href='$2'>模块配置</a> 是错误的.
+index_eversion=Webmin只能支持Jabber版本 $2, 但是命令 $3 报告版本信息为: $1
+index_eversion2=Webmin只能支持低于$2 的, 但是命令 $3 报告版本信息为: $1
+index_start=启动Jabber服务器
+index_startmsg=点这个按钮启动Jabber服务器. 
+index_stop=停止Jabber服务器
+index_stopmsg=点这个按钮停止Jabber服务器.
+index_restart=应用改变
+index_restartmsg=点这个按钮应用当前的配置，Jabber服务器将被重新启动.
+index_comments=警告 - 你的Jabber配置文件 $1 包含注释, 在使用当前模块修改配置后这些注释将被移除.
+index_return=Jabber菜单
+index_version=Jabber 版本QL $1
+
+general_title=常规选项
+general_header=Jabber服务器全局选项
+general_host=服务器的主机名
+general_elog=错误日志文件
+general_elogfmt=错误日志格式
+general_rlog=成功日志文件
+general_rlogfmt=成功日志格式
+general_pidfile=进程ID文件
+general_err=保存常规选项失败
+general_ehost=丢失或错误的主机名
+general_eelog=丢失或错误的错误日志文件
+general_eelogfmt=丢失错误日志格式
+general_erlog=丢失或错误的通信日志文件
+general_erlogfmt=丢失或错误的通信日志格式
+general_epidfile=丢失或错误的进程ID文件
+
+messages_title=消息
+messages_header=Jabber服务器消息
+messages_wsubject=欢迎消息主题
+messages_wbody=欢迎消息内容
+messages_vcard=服务器vCard
+messages_rinstr=注册说明
+messages_rnotify=注册后通知管理员?
+messages_rfields=必须的注册字段
+messages_vcard2jud=发送vCard到用户目录?
+messages_err=保存消息失败
+messages_evcard=错误的 vCard XML : $1
+messages_etag=服务器 vCard XML 不能使用 &lt;vCard&gt 启动;
+
+modules_title=Jabber 模块
+modules_desc=显示的模块列表被Jabber消息管理器用来处理消息. 只有在你确实知道自己在做什么的情况下才能改动它们.
+modules_header=Jabber服务器消息管理器模块
+modules_mod=模块名称
+modules_so=共享库
+modules_err=保存Jabber模块失败
+modules_emod='$1' 不是一个有效的模块名称
+modules_eso=共享库'$1' 不存在
+
+karma_title=Karma 通信控制
+karma_header=通信速率控制选项
+karma_rate=额外连接处理
+karma_rate_def=关闭
+karma_rate_sel=在 $1连接后阻塞用户 $2 秒
+karma_mode=Karma 模式
+karma_none=不限制
+karma_low=低通信限制
+karma_medium=中等通信限制
+karma_high=高通信限制
+karma_sel=选择使用下面的设置 ..
+karma_heartbeat=周期长度 秒 (<tt>心跳</tt>)
+karma_init=初始化周期 (<tt>init</tt>)
+karma_max=Karma 最大 (<tt>max</tt>)
+karma_inc=Karma 增大 (<tt>inc</tt>)
+karma_dec=Karma 减少 (<tt>dec</tt>)
+karma_penalty=处罚周期 (<tt>penalty</tt>)
+karma_restore=爆发恢复周期 (<tt>restore</tt>)
+karma_err=保存 karma 选项失败
+karma_eheartbeat=丢失或错误的周期长度
+karma_einit=丢失或错误的初始化周期
+karma_emax=丢失或错误的Karma 最大
+karma_einc=丢失或错误的Karma 增大
+karma_edec=丢失或错误的Karma 减少
+karma_epenalty=丢失或错误的处罚周期
+karma_erestore=丢失或错误的爆发恢复周期
+karma_epoints=丢失或错误的连接数值
+karma_etime=丢失或错误的阻塞时间
+
+ips_title=IP 权限控制
+ips_header=Jabber服务器 IP 权限控制
+ips_allow=允许客户 IPs
+ips_all=所有地址
+ips_deny=拒绝客户 IPs
+ips_none=没有
+ips_sel=列表 地址/子网掩码 ..
+ips_err=保存IP 权限控制失败
+ips_eaddr='$1' 不是一个有效的IP地址或IP地址/子网掩码
+
+file_title=编辑配置文件
+file_desc=使用这个页面直接编辑Jabber配置文件. 只有在理解XML配置文件格式的情况下才可以这样做，否则注定完蛋.
+file_header=编辑Jabber配置文件
+file_err=保存配置文件失败
+
+admin_title=管理员用户
+admin_header=服务器管理员用户
+admin_read=只读权限管理员
+admin_write=可写权限管理员
+admin_reply=自动转发到管理员消息?
+admin_rsubject=自动转发主题
+admin_rbody=自动转发内容
+
+filter_title=用户过滤
+filter_header=用户过滤许可
+filter_max=最大过滤规则
+filter_conds=允许过滤条件
+filter_acts=允许过滤动作
+
+restart_err=应用改变失败
+stop_err=停止Jabber失败
+stop_epid=查找Jabber进程失败
+start_err=启动Jabber失败
+
+#Powerd by Quick Linux AS4 (http://www.quicklinux.org)

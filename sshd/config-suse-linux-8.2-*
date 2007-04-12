@@ -1,0 +1,11 @@
+sshd_path=/usr/sbin/sshd
+sshd_config=/etc/ssh/sshd_config
+client_config=/etc/ssh/ssh_config
+pid_file=/var/run/sshd.init.pid
+start_cmd=/etc/init.d/sshd start
+stop_cmd=/etc/init.d/sshd stop
+keygen_path=/usr/bin/ssh-keygen
+sync_create=0
+sync_auth=1
+sync_pass=0
+sync_gnupg=0

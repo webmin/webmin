@@ -1,0 +1,21 @@
+<header>Accès 'Root'</header>
+
+Permet de définir quels hôtes le serveur va respecter l'usager root.  Si le client n'est pas dans la liste, il sera considéré comme un 
+<a href=anon>Usager Anonyme</a>.
+<if $gconfig{'os_version'} == 7>
+    <br>Les hôtes peuvent être spécifiés des façons suivantes :<p>
+	<dl>
+	<dt><b>Nom d'hôte ou adresse IP</b> (comme <i>ftp.foo.com</i> ou <i>1.2.3.4</i>)
+	<dd>Correspond aux hôtes avec le nom ou l'adresse
+	<dt><b>Groupe réseau</b> (comme <i>enginering</i>)
+	<dd>Correspond à tout hôte qui sont membre de ce groupe réseau
+	<dt><b>Nom de domaine</b> (comme <i>.foo.com</i>)
+	<dd>Correspond à tout hôte dans ce domaine
+	<dt><b>Réseau</b> (comme <i>@10.254.1</i>)
+	<dd>Correspond de tout hôte dans ce réseau
+	<dt><b>Réseau/masque de sous-réseau</b> (comme <i>@10.254.1/24</i>)
+	<dd>Correspond à tous hôtes dans ce réseau
+	</dl><p>
+    De plus, toutes les notations ci-dessus peuvent commencer par un <i>-</i>, ce qui signifie que l'hôte, domaine ou réseau n'est pas autorisé à monter ce partage.  Ceci peut être utile pour accepter l'accès à une série d'hôte tout en le refusant à un membre.
+</if>
+<hr>

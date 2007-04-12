@@ -1,0 +1,1544 @@
+# apache-lib.pl
+# Common functions for apache configuration
+
+$directive_type_count = 20;
+
+if ($module_name ne 'htaccess') {
+	do '../web-lib.pl';
+	&init_config();
+	do '../ui-lib.pl';
+	%access = &get_module_acl();
+	@access_types = $access{'types'} eq '*' ? (0 .. $directive_type_count)
+					: split(/\s+/, $access{'types'});
+	}
+else {
+	@access_types = (0 .. $directive_type_count);
+	}
+map { $access_types{$_}++ } @access_types;
+$site_file = ($config{'webmin_apache'} || $module_config_directory)."/site";
+
+# Check if a list of supported modules needs to be built
+if ($module_name ne 'htaccess') {
+	local %oldsite;
+	local $httpd = &find_httpd();
+	local @st = stat($httpd);
+	&read_file($site_file, \%oldsite);
+	if ($oldsite{'path'} ne $httpd ||
+	    $oldsite{'size'} != $st[7] ||
+	    $oldsite{'webmin'} != &get_webmin_version()) {
+		# Need to build list of supported modules
+		local ($ver, $mods) = &httpd_info($httpd);
+		if ($ver) {
+			local @mods = map { "$_/$ver" } &configurable_modules();
+			local %site = ( 'size' => $st[7],
+					'path' => $httpd,
+					'modules' => join(' ', @mods),
+					'webmin' => &get_webmin_version() );
+			&lock_file($site_file);
+			&write_file($site_file, \%site);
+			chmod(0644, $site_file);
+			&unlock_file($site_file);
+			}
+		}
+	}
+
+# Read the site-specific setup file, then require in all the module-specific
+# .pl files
+if (&read_file($site_file, \%site)) {
+	local($m, $f, $d);
+	$httpd_size = $site{'size'};
+	foreach $m (split(/\s+/, $site{'modules'})) {
+		if ($m =~ /(\S+)\/(\S+)/) { $httpd_modules{$1} = $2; }
+		}
+	foreach $m (keys %httpd_modules) {
+		if (!-r "$module_root_directory/$m.pl") {
+			delete($httpd_modules{$m});
+			}
+		}
+	foreach $f (split(/\s+/, $site{'htaccess'})) {
+		if (-r $f) { push(@htaccess_files, $f); }
+		}
+	foreach $m (keys %httpd_modules) {
+		do "$m.pl";
+		}
+	foreach $d (split(/\s+/, $site{'defines'})) {
+		$httpd_defines{$d}++;
+		}
+	}
+
+$apache_docbase = $config{'apache_docbase'} ? $config{'apache_docbase'} :
+		  $httpd_modules{'core'} >= 2.0 ?
+			"http://httpd.apache.org/docs-2.0/mod/" :
+			"http://httpd.apache.org/docs/mod/";
+
+# parse_config_file(handle, lines, file, [recursive])
+# Parses lines of text from some config file into a data structure. The
+# return value is an array of references, one for each directive in the file.
+# Each reference points to an associative array containing
+#  line -	The line number this directive is at
+#  eline -	The line number this directive ends at
+#  file -	The file this directive is from
+#  type -	0 for a normal directive, 1 for a container directive
+#  name -	The name of this directive
+#  value -	Value (possibly with spaces)
+#  members -	For type 1, a reference to the array of members
+sub parse_config_file
+{
+local($fh, @rv, $line, %dummy);
+$fh = $_[0];
+$dummy{'line'} = $dummy{'eline'} = $_[1]-1;
+$dummy{'file'} = $_[2];
+$dummy{'type'} = 0;
+$dummy{'name'} = "dummy";
+@rv = (\%dummy);
+local %defs = map { $_, 1 } &get_httpd_defines();
+while($line = <$fh>) {
+	chop;
+	$line =~ s/^\s*#.*$//g;
+	if ($line =~ /^\s*<\/(\S+)\s*(.*)>/) {
+		# end of a container directive. This can only happen in a
+		# recursive call to this function
+		$_[1]++;
+		last if ($_[3]);
+		}
+	elsif ($line =~ /^\s*<IfModule\s+(\!?)(\S+)\.c>/i ||
+	       $line =~ /^\s*<IfModule\s+(\!?)(\S+)>/i) {
+		# start of an IfModule block. Read it, and if the module
+		# exists put the directives in this section.
+		local ($not, $mod) = ($1, $2);
+		local $oldline = $_[1];
+		$_[1]++;
+		local @dirs = &parse_config_file($fh, $_[1], $_[2], 1);
+		local $altmod = $mod;
+		$altmod =~ s/^(\S+)_module$/mod_$1/g;
+		if (!$not && $httpd_modules{$mod} ||
+		    $not && !$httpd_modules{$mod} ||
+		    !$not && $httpd_modules{$altmod} ||
+		    $not && !$httpd_modules{$altmod}) {
+			# use the directives..
+			push(@rv, { 'line', $oldline,
+				    'eline', $oldline,
+				    'file', $_[2],
+				    'name', "<IfModule $not$mod>" });
+			push(@rv, @dirs);
+			push(@rv, { 'line', $_[1]-1,
+				    'eline', $_[1]-1,
+				    'file', $_[2],
+				    'name', "</IfModule>" });
+			}
+		}
+	elsif ($line =~ /^\s*<IfDefine\s+(\!?)(\S+)>/i) {
+		# start of an IfDefine block. Read it, and if the define
+		# exists put the directives in this section
+		local ($not, $def) = ($1, $2);
+		local $oldline = $_[1];
+		$_[1]++;
+		local @dirs = &parse_config_file($fh, $_[1], $_[2], 1);
+		if (!$not && $defs{$def} ||
+		    $not && !$defs{$def}) {
+			# use the directives..
+			push(@rv, { 'line', $oldline,
+				    'eline', $oldline,
+				    'file', $_[2],
+				    'name', "<IfDefine $not$def>" });
+			push(@rv, @dirs);
+			push(@rv, { 'line', $_[1]-1,
+				    'eline', $_[1]-1,
+				    'file', $_[2],
+				    'name', "</IfDefine>" });
+			}
+		}
+	elsif ($line =~ /^\s*<IfVersion\s+(\!?)(\S*)\s*(\S+)>/i) {
+		# Start of an IfVersion block. Read it, and if the version
+		# matches put the directives in this section
+		local ($not, $op, $ver) = ($1, $2, $3);
+		local $oldline = $_[1];
+		$_[1]++;
+		local @dirs = &parse_config_file($fh, $_[1], $_[2], 1);
+		$op ||= "=";
+		local $match = 0;
+		local $myver = $httpd_modules{'core'};
+		$myver =~ s/^(\d+)\.(\d)(\d+)$/$1.$2.$3/;
+		if ($op eq "=" || $op eq "==") {
+			if ($ver =~ /^\/(.*)\/$/) {
+				$match = 1 if ($myver =~ /$1/);
+				}
+			else {
+				$match = 1 if ($myver eq $ver);
+				}
+			}
+		elsif ($op eq ">") {
+			$match = 1 if ($myver > $ver);
+			}
+		elsif ($op eq ">=") {
+			$match = 1 if ($myver >= $ver);
+			}
+		elsif ($op eq "<") {
+			$match = 1 if ($myver < $ver);
+			}
+		elsif ($op eq "<=") {
+			$match = 1 if ($myver <= $ver);
+			}
+		elsif ($op eq "~") {
+			$match = 1 if ($myver =~ /$ver/);
+			}
+		$match = !$match if ($not);
+		if ($match) {
+			# use the directives..
+			push(@rv, { 'line', $oldline,
+				    'eline', $oldline,
+				    'file', $_[2],
+				    'name', "<IfVersion $not$op $ver>" });
+			push(@rv, @dirs);
+			push(@rv, { 'line', $_[1]-1,
+				    'eline', $_[1]-1,
+				    'file', $_[2],
+				    'name', "</IfVersion>" });
+			}
+		}
+	elsif ($line =~ /^\s*<(\S+)\s*(.*)>/) {
+		# start of a container directive. The first member is a dummy
+		# directive at the same line as the container
+		local(%dir, @members);
+		%dir = ('line', $_[1],
+			'file', $_[2],
+			'type', 1,
+			'name', $1,
+			'value', $2);
+		$dir{'value'} =~ s/\s+$//g;
+		$dir{'words'} = &wsplit($dir{'value'});
+		$_[1]++;
+		@members = &parse_config_file($fh, $_[1], $_[2], 1);
+		$dir{'members'} = \@members;
+		$dir{'eline'} = $_[1]-1;
+		push(@rv, \%dir);
+		}
+	elsif ($line =~ /^\s*(\S+)\s*(.*)$/) {
+		# normal directive
+		local(%dir);
+		%dir = ('line', $_[1],
+			'eline', $_[1],
+			'file', $_[2],
+			'type', 0,
+			'name', $1,
+			'value', $2);
+		if ($dir{'value'} =~ s/\\$//g) {
+			# multi-line directive!
+			while($line = <$fh>) {
+				chop($line);
+				$cont = ($line =~ s/\\$//g);
+				$dir{'value'} .= $line;
+				$dir{'eline'} = ++$_[1];
+				if (!$cont) { last; }
+				}
+			}
+		$dir{'value'} =~ s/\s+$//g;
+		$dir{'words'} = &wsplit($dir{'value'});
+		push(@rv, \%dir);
+		$_[1]++;
+		}
+	else {
+		# blank or comment line
+		$_[1]++;
+		}
+	}
+return @rv;
+}
+
+# wsplit(string)
+# Splits a string like  foo "foo \"bar\"" bazzz  into an array of words
+sub wsplit
+{
+local($s, @rv); $s = $_[0];
+$s =~ s/\\\"/\0/g;
+while($s =~ /^"([^"]*)"\s*(.*)$/ || $s =~ /^(\S+)\s*(.*)$/) {
+	$w = $1; $s = $2;
+	$w =~ s/\0/"/g; push(@rv, $w);
+	}
+return \@rv;
+}
+
+# wjoin(word, word, ...)
+sub wjoin
+{
+local(@rv, $w);
+foreach $w (@_) {
+	if ($w =~ /^\S+$/) { push(@rv, $w); }
+	else { push(@rv, "\"$w\""); }
+	}
+return join(' ', @rv);
+}
+
+# find_directive(name, &directives, [1stword])
+# Returns the values of directives matching some name
+sub find_directive
+{
+local (@vals, $ref);
+foreach $ref (@{$_[1]}) {
+	if (lc($ref->{'name'}) eq lc($_[0])) {
+		push(@vals, $_[2] ? $ref->{'words'}->[0] : $ref->{'value'});
+		}
+	}
+return wantarray ? @vals : !@vals ? undef : $vals[$#vals];
+}
+
+# find_directive_struct(name, &directives)
+# Returns references to directives maching some name
+sub find_directive_struct
+{
+local (@vals, $ref);
+foreach $ref (@{$_[1]}) {
+	if (lc($ref->{'name'}) eq lc($_[0])) {
+		push(@vals, $ref);
+		}
+	}
+return wantarray ? @vals : !@vals ? undef : $vals[$#vals];
+}
+
+# find_vdirective(name, &virtualdirectives, &directives, [1stword])
+# Looks for some directive in a <VirtualHost> section, and then in the 
+# main section
+sub find_vdirective
+{
+if ($_[1]) {
+	$rv = &find_directive($_[0], $_[1], $_[3]);
+	if ($rv) { return $rv; }
+	}
+return &find_directive($_[0], $_[2], $_[3]);
+}
+
+# get_config()
+# Returns the entire config structure
+sub get_config
+{
+local($acc, $res, $lnum, $conf, @virt, $v, $mref, $inc);
+if (@get_config_cache) {
+	return \@get_config_cache;
+	}
+
+# read primary config file
+($conf) = &find_httpd_conf();
+return undef if (!$conf);
+@get_config_cache = &get_config_file($conf);
+
+# Read main resource and access config files
+$lnum = 0;
+$res = &find_directive("ResourceConfig", \@get_config_cache);
+if (!$res) { $res = $config{'srm_conf'}; }
+if (!$res) { $res = "$config{'httpd_dir'}/conf/srm.conf"; }
+if (!-r &translate_filename($res)) {
+	$res = "$config{'httpd_dir'}/etc/srm.conf";
+	}
+push(@get_config_cache, &get_config_file($res));
+
+$lnum = 0;
+$acc = &find_directive("AccessConfig", \@get_config_cache);
+if (!$acc) { $acc = $config{'access_conf'}; }
+if (!$acc) { $acc = "$config{'httpd_dir'}/conf/access.conf"; }
+if (!-r &translate_filename($acc)) {
+	$acc = "$config{'httpd_dir'}/etc/access.conf";
+	}
+push(@get_config_cache, &get_config_file($acc));
+
+# Read extra config files in VirtualHost sections
+@virt = &find_directive_struct("VirtualHost", \@get_config_cache);
+foreach $v (@virt) {
+	$mref = $v->{'members'};
+	foreach $idn ("ResourceConfig", "AccessConfig", "Include") {
+		local $inc = &find_directive_struct($idn, $mref);
+		next if (!$inc);
+		local @incs = &expand_apache_include($inc->{'words'}->[0]);
+		foreach my $ginc (@incs) {
+			push(@$mref, &get_config_file($ginc));
+			}
+		}
+	}
+
+return \@get_config_cache;
+}
+
+# get_config_file(filename)
+sub get_config_file
+{
+local ($file) = @_;
+$file = &resolve_links($file);		# Convert sites-enabled to real path
+					# in sites-available
+local @rv;
+if (opendir(DIR, $file)) {
+	# Is a directory .. parse all files!
+	local $f;
+	local @files = readdir(DIR);
+	closedir(DIR);
+	foreach $f (@files) {
+		next if ($f =~ /^\./);
+		push(@rv, &get_config_file("$file/$f"));
+		}
+	}
+else {
+	# Just a normal config file
+	local $lnum = 0;
+	&open_readfile(CONF, $file);
+	@rv = &parse_config_file(CONF, $lnum, $file);
+	close(CONF);
+	}
+
+# Expand Include directives
+foreach $inc (&find_directive_struct("Include", \@rv)) {
+	local @incs = &expand_apache_include($inc->{'words'}->[0]);
+	foreach my $ginc (@incs) {
+		push(@rv, &get_config_file($ginc));
+		}
+	}
+
+return @rv;
+}
+
+# expand_apache_include(dir)
+# Given an include directive value, returns a list of matching files
+sub expand_apache_include
+{
+local ($incdir) = @_;
+if ($incdir !~ /^\//) { $incdir = "$config{'httpd_dir'}/$incdir"; }
+if ($incdir =~ /^(.*)\[\^([^\]]+)\](.*)$/) {
+	# A glob like /etc/[^.#]*.conf , which cannot be handled
+	# by Perl's glob function!
+	local $before = $1;
+	local $after = $3;
+	local %reject = map { $_, 1 } split(//, $2);
+	$reject{'*'} = $reject{'?'} = $reject{'['} = $reject{']'} =
+	  $reject{'/'} = $reject{'$'} = $reject{'('} = $reject{')'} =
+	  $reject{'!'} = 1;
+	local $accept = join("", grep { !$reject{$_} } map { chr($_) } (32 .. 126));
+	$incdir = $before."[".$accept."]".$after;
+	}
+return glob($incdir);
+}
+
+# get_virtual_config(index)
+sub get_virtual_config
+{
+local($conf, $c, $v);
+$conf = &get_config();
+if (!$_[0]) { $c = $conf; $v = undef; }
+else {
+	$c = $conf->[$_[0]]->{'members'};
+	$v = $conf->[$_[0]];
+	}
+return wantarray ? ($c, $v) : $c;
+}
+
+# get_htaccess_config(file)
+sub get_htaccess_config
+{
+local($lnum, @conf);
+&open_readfile(HTACCESS, $_[0]);
+@conf = &parse_config_file(HTACCESS, $lnum, $_[0]);
+close(HTACCESS);
+return \@conf;
+}
+
+# save_directive(name, &values, &directives, &config)
+# Updates the config file(s) and the directives structure with new values
+# for the given directives.
+# If a directive's value is merely being changed, then its value only needs
+# to be updated in the directives array and in the file.
+sub save_directive
+{
+local($i, @old, $lref, $change, $len, $v);
+@old = &find_directive_struct($_[0], $_[2]);
+for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
+	$v = ${$_[1]}[$i];
+	if ($i >= @old) {
+		# a new directive is being added. If other directives of this
+		# type exist, add it after them. Otherwise, put it at the end of
+		# the first file in the section
+		if ($change) {
+			# Have changed some old directive.. add this new one
+			# after it, and update change
+			local(%v, $j);
+			%v = (	"line", $change->{'line'}+1,
+				"eline", $change->{'line'}+1,
+				"file", $change->{'file'},
+				"type", 0,
+				"name", $_[0],
+				"value", $v);
+			$j = &indexof($change, @{$_[2]})+1;
+			&renumber($_[3], $v{'line'}, $v{'file'}, 1);
+			splice(@{$_[2]}, $j, 0, \%v);
+			$lref = &read_file_lines($v{'file'});
+			splice(@$lref, $v{'line'}, 0, "$_[0] $v");
+			$change = \%v;
+			}
+		else {
+			# Adding a new directive to the end of the list
+			# in this section
+			local($f, %v, $j);
+			$f = $_[2]->[0]->{'file'};
+			for($j=0; $_[2]->[$j]->{'file'} eq $f; $j++) { }
+			$l = $_[2]->[$j-1]->{'eline'}+1;
+			%v = (	"line", $l,
+				"eline", $l,
+				"file", $f,
+				"type", 0,
+				"name", $_[0],
+				"value", $v);
+			&renumber($_[3], $l, $f, 1);
+			splice(@{$_[2]}, $j, 0, \%v);
+			$lref = &read_file_lines($f);
+			splice(@$lref, $l, 0, "$_[0] $v");
+			}
+		}
+	elsif ($i >= @{$_[1]}) {
+		# a directive was deleted
+		$lref = &read_file_lines($old[$i]->{'file'});
+		$idx = &indexof($old[$i], @{$_[2]});
+		splice(@{$_[2]}, $idx, 1);
+		$len = $old[$i]->{'eline'} - $old[$i]->{'line'} + 1;
+		splice(@$lref, $old[$i]->{'line'}, $len);
+		&renumber($_[3], $old[$i]->{'line'}, $old[$i]->{'file'}, -$len);
+		}
+	else {
+		# just changing the value
+		$lref = &read_file_lines($old[$i]->{'file'});
+		$len = $old[$i]->{'eline'} - $old[$i]->{'line'} + 1;
+		&renumber($_[3], $old[$i]->{'eline'}+1,
+			  $old[$i]->{'file'},1-$len);
+		$old[$i]->{'value'} = $v;
+		$old[$i]->{'eline'} = $old[$i]->{'line'};
+		splice(@$lref, $old[$i]->{'line'}, $len, "$_[0] $v");
+		$change = $old[$i];
+		}
+	}
+}
+
+# renumber(&config, line, file, offset)
+# Recursively changes the line number of all directives from some file 
+# beyond the given line.
+sub renumber
+{
+local($d);
+if (!$_[3]) { return; }
+foreach $d (@{$_[0]}) {
+	if ($d->{'file'} eq $_[2] && $d->{'line'} >= $_[1]) {
+		$d->{'line'} += $_[3];
+		}
+	if ($d->{'file'} eq $_[2] && $d->{'eline'} >= $_[1]) {
+		$d->{'eline'} += $_[3];
+		}
+	if ($d->{'type'}) {
+		&renumber($d->{'members'}, $_[1], $_[2], $_[3]);
+		}
+	}
+}
+
+# server_root(path, &directives)
+sub server_root
+{
+if (!$_[0]) { return undef; }
+elsif ($_[0] =~ /^\//) { return $_[0]; }
+else { return "$config{'httpd_dir'}/$_[0]"; }
+}
+
+sub dump_config
+{
+local($c, $mref);
+print "<table border>\n";
+print "<tr> <td>Name</td> <td>Value</td> <td>File</td> <td>Line</td> </tr>\n";
+foreach $c (@_) {
+	printf "<tr> <td>%s</td> <td>%s</td><td>%s</td><td>%s</td> </tr>\n",
+		$c->{'name'}, $c->{'value'}, $c->{'file'}, $c->{'line'};
+	if ($c->{'type'}) {
+		print "<tr> <td colspan=4>\n";
+		$mref = $c->{'members'};
+		&dump_config(@$mref);
+		print "</td> </tr>\n";
+		}
+	}
+print "</table>\n";
+}
+
+sub def
+{
+return $_[0] ? $_[0] : $_[1];
+}
+
+# make_directives(ref, version, module)
+sub make_directives
+{
+local(@rv, $aref);
+$aref = $_[0];
+local $ver = $_[1];
+if ($ver =~ /^(1)\.(3)(\d+)$/) {
+	$ver = sprintf "%d.%d%2.2d", $1, $2, $3;
+	}
+foreach $d (@$aref) {
+	local(%dir);
+	$dir{'name'} = $d->[0];
+	$dir{'multiple'} = $d->[1];
+	$dir{'type'} = int($d->[2]);
+	$dir{'subtype'} = $d->[2] - $dir{'type'};
+	$dir{'module'} = $_[2];
+	$dir{'version'} = $ver;
+	$dir{'priority'} = $d->[5];
+	foreach $c (split(/\s+/, $d->[3])) { $dir{$c}++; }
+	if (!$d->[4]) { push(@rv, \%dir); }
+	elsif ($d->[4] =~ /^-([\d\.]+)$/ && $ver < $1) { push(@rv, \%dir); }
+	elsif ($d->[4] =~ /^([\d\.]+)$/ && $ver >= $1) { push(@rv, \%dir); }
+	elsif ($d->[4] =~ /^([\d\.]+)-([\d\.]+)$/ && $ver >= $1 && $ver < $2)
+		{ push(@rv, \%dir); }
+	}
+return @rv;
+}
+
+
+# editable_directives(type, context)
+# Returns an array of references to associative arrays, one for each 
+# directive of the given type that can be used in the given context
+sub editable_directives
+{
+local($m, $func, @rv, %done);
+foreach $m (keys %httpd_modules) {
+	$func = $m."_directives";
+	push(@rv, &$func($httpd_modules{$m}));
+	}
+@rv = grep { $_->{'type'} == $_[0] && $_->{$_[1]} &&
+	     !$done{$_->{'name'}}++ } @rv;
+@rv = grep { &can_edit_directive($_->{'name'}) } @rv;
+@rv = sort { local $td = $a->{'subtype'} <=> $b->{'subtype'};
+	     local $pd = $b->{'priority'} <=> $a->{'priority'};
+	     local $md = $a->{'module'} cmp $b->{'module'};
+	     $td ? $td : $pd ? $pd : $md ? $md : $a->{'name'} cmp $b->{'name'} }
+		@rv;
+return @rv;
+}
+
+# can_edit_directive(name)
+# Returns 1 if the Apache directive named can be edited by the current user
+sub can_edit_directive
+{
+local ($name) = @_;
+if ($access{'dirsmode'} == 0) {
+	return 1;
+	}
+else {
+	local %dirs = map { lc($_), 1 } split(/\s+/, $access{'dirs'});
+	if ($access{'dirsmode'} == 1) {
+		return $dirs{lc($name)};
+		}
+	else {
+		return !$dirs{lc($name)};
+		}
+	}
+}
+
+# generate_inputs(&editors, &directives)
+# Displays a 2-column list of options, for use inside a table
+sub generate_inputs
+{
+local($e, $sw, @args, @rv, $func, $lastsub);
+foreach $e (@{$_[0]}) {
+	if (defined($lastsub) && $lastsub != $e->{'subtype'}) {
+		print &ui_table_hr();
+		}
+	$lastsub = $e->{'subtype'};
+
+	# Build arg list for the editing function. Each arg can be a single
+	# directive struct, or a reference to an array of structures.
+	$func = "edit";
+	undef(@args);
+	foreach $ed (split(/\s+/, $e->{'name'})) {
+		local(@vals);
+		$func .= "_$ed";
+		@vals = &find_directive_struct($ed, $_[1]);
+		if ($e->{'multiple'}) { push(@args, \@vals); }
+		elsif (!@vals) { push(@args, undef); }
+		else { push(@args, $vals[$#vals]); }
+		}
+	push(@args, $e);
+
+	# call the function
+	@rv = &$func(@args);
+	local $names;
+	if ($config{'show_names'} || $userconfig{'show_names'}) {
+		$names = " (";
+		foreach $ed (split(/\s+/, $e->{'name'})) {
+			# nodo50 v0.1 - Change 000004 - Open new window for Help in Apache module and mod_apachessl Help from http://www.apache-ssl.org and
+			# nodo50 v0.1 - Change 000004 - Abre nueva ventana para Ayuda del módulo Apache y para mod_apachessl busca la Ayuda en http://www.apache-ssl.org and
+			$names .= "<tt><a href='".($e->{'module'} eq 'mod_apachessl' ? 'http://www.apache-ssl.org/docs.html#'.$ed : $apache_docbase."/".$e->{'module'}.".html#".lc($ed))."'>".$ed."</a></tt> ";
+			#$names .= "<tt><a href='".$apache_docbase."/".$e->{'module'}.".html#".lc($ed)."'>".$ed."</a></tt> ";
+			# nodo50 v0.1 - Change 000004 - End
+			}
+		$names .= ")";
+		}
+	if ($rv[0] >= 2) {
+		# spans 2 columns..
+		if ($rv[0] == 3) {
+			# Takes up whole row
+			print &ui_table_row(undef, $rv[2], 4);
+			}
+		else {
+			# Has title on left
+			print &ui_table_row($rv[1], $rv[2], 3);
+			}
+		}
+	else {
+		# only spans one column
+		print &ui_table_row($rv[1], $rv[2]);
+		}
+	}
+}
+
+# parse_inputs(&editors, &directives, &config)
+# Reads user choices from a form and update the directives and config files.
+sub parse_inputs
+{
+# First call editor functions to get new values. Each function returns
+# an array of references to arrays containing the new values for the directive.
+&before_changing();
+&lock_apache_files();
+foreach $e (@{$_[0]}) {
+	@dirs = split(/\s+/, $e->{'name'});
+	$func = "save_".join('_', @dirs);
+	@rv = &$func($e);
+	for($i=0; $i<@dirs; $i++) {
+		push(@chname, $dirs[$i]);
+		push(@chval, $rv[$i]);
+		}
+	}
+
+# Assuming everything went OK, update the configuration
+for($i=0; $i<@chname; $i++) {
+	&save_directive($chname[$i], $chval[$i], $_[1], $_[2]);
+	}
+&flush_file_lines();
+&unlock_apache_files();
+&after_changing();
+}
+
+# opt_input(value, name, default, size)
+sub opt_input
+{
+return &ui_opt_textbox($_[1], $_[0], $_[3], $_[2]);
+}
+
+# parse_opt(name, regexp, error, [noquotes])
+sub parse_opt
+{
+local($i, $re);
+local $v = $in{$_[0]};
+if ($in{"$_[0]_def"}) { return ( [ ] ); }
+for($i=1; $i<@_; $i+=2) {
+	$re = $_[$i];
+	if ($v !~ /$re/) { &error($_[$i+1]); }
+	}
+return ( [ $v =~ /\s/ && !$_[3] ? "\"$v\"" : $v ] );
+}
+
+# choice_input(value, name, default, [choice]+)
+# Each choice is a display,value pair
+sub choice_input
+{
+local($i, $rv);
+for($i=3; $i<@_; $i++) {
+	$_[$i] =~ /^([^,]*),(.*)$/;
+	$rv .= &ui_oneradio($_[0], $2, $1, lc($2) eq lc($_[0]) ||
+				!defined($_[0]) && lc($2) eq lc($_[2]))."\n";
+	}
+return $rv;
+}
+
+# choice_input_vert(value, name, default, [choice]+)
+# Each choice is a display,value pair
+sub choice_input_vert
+{
+local($i, $rv);
+for($i=3; $i<@_; $i++) {
+	$_[$i] =~ /^([^,]*),(.*)$/;
+	$rv .= sprintf "<input type=radio name=$_[1] value=\"$2\" %s> $1<br>\n",
+		lc($2) eq lc($_[0]) || !defined($_[0]) &&
+				       lc($2) eq lc($_[2]) ? "checked" : "";
+	}
+return $rv;
+}
+
+# parse_choice(name, default)
+sub parse_choice
+{
+if (lc($in{$_[0]}) eq lc($_[1])) { return ( [ ] ); }
+else { return ( [ $in{$_[0]} ] ); }
+}
+
+# select_input(value, name, default, [choice]+)
+sub select_input
+{
+local($i, $rv);
+$rv = "<select name=\"$_[1]\">\n";
+for($i=3; $i<@_; $i++) {
+	$_[$i] =~ /^([^,]*),(.*)$/;
+	$rv .= sprintf "<option value=\"$2\" %s> $1\n",
+		lc($2) eq lc($_[0]) || !defined($_[0]) && lc($2) eq lc($_[2]) ? "selected" : "";
+	}
+$rv .= "</select>\n";
+return $rv;
+}
+
+# parse_choice(name, default)
+sub parse_select
+{
+return &parse_choice(@_);
+}
+
+# handler_input(value, name)
+sub handler_input
+{
+local($m, $func, @hl, $rv, $h);
+local $conf = &get_config();
+push(@hl, "");
+foreach $m (keys %httpd_modules) {
+	$func = $m."_handlers";
+	if (defined(&$func)) {
+		push(@hl, &$func($conf, $httpd_modules{$m}));
+		}
+	}
+if (&indexof($_[0], @hl) < 0) { push(@hl, $_[0]); }
+$rv = "<select name=$_[1]>\n";
+foreach $h (&unique(@hl)) {
+	$rv .= sprintf "<option value=\"$h\" %s>$h\n",
+		$h eq $_[0] ? "selected" : "";
+	}
+$rv .= sprintf "<option value=\"None\" %s>&lt;$text{'core_none'}&gt;\n",
+	$_[0] eq "None" ? "selected" : "";
+$rv .= "</select>\n";
+return $rv;
+}
+
+# parse_handler(name)
+sub parse_handler
+{
+if ($in{$_[0]} eq "") { return ( [ ] ); }
+else { return ( [ $in{$_[0]} ] ); }
+}
+
+# filters_input(&values, name)
+sub filters_input
+{
+local($m, $func, @fl, $rv, $f);
+local $conf = &get_config();
+foreach $m (keys %httpd_modules) {
+	$func = $m."_filters";
+	if (defined(&$func)) {
+		push(@fl, &$func($conf, $httpd_modules{$m}));
+		}
+	}
+foreach $f (@{$_[0]}) {
+	push(@fl, $f) if (&indexof($f, @fl) < 0);
+	}
+foreach $f (&unique(@fl)) {
+	$rv .= sprintf "<input type=checkbox name=$_[1] value='%s' %s> %s\n",
+			$f, &indexof($f, @{$_[0]}) < 0 ? "" : "checked", $f;
+	}
+return $rv;
+}
+
+# parse_filters(name)
+sub parse_filters
+{
+local @f = split(/\0/, $in{$_[0]});
+return @f ? ( [ join(";", @f) ] ) : ( [ ] );
+}
+
+
+
+# virtual_name(struct, [forlog])
+sub virtual_name
+{
+if ($_[0]) {
+	local $n = &find_directive("ServerName", $_[0]->{'members'});
+	if ($n) {
+		return &html_escape($_[0]->{'value'} =~ /:(\d+)$/ ? "$n:$1"
+								  : $n);
+		}
+	else {
+		return &html_escape($_[0]->{'value'});
+		}
+	}
+else { return $_[1] ? "*" : $text{'default_serv'}; }
+}
+
+# dir_name(struct)
+sub dir_name
+{
+local($dfm, $mat);
+$_[0]->{'name'} =~ /^(Directory|Files|Location)(Match)?$/;
+$dfm = $1; $mat = $2;
+if ($mat) {
+	return "$dfm regexp <tt>".&html_escape($_[0]->{'words'}->[0])."</tt>";
+	}
+elsif ($_[0]->{'words'}->[0] eq "~") {
+	return "$dfm regexp <tt>".&html_escape($_[0]->{'words'}->[1])."</tt>";
+	}
+else { return "$dfm <tt>".&html_escape($_[0]->{'words'}->[0])."</tt>"; }
+}
+
+# list_user_file(file, &user,  &pass)
+sub list_user_file
+{
+local($_);
+&open_readfile(USERS, $_[0]);
+while(<USERS>) {
+	/^(\S+):(\S+)/;
+	push(@{$_[1]}, $1); $_[2]->{$1} = $2;
+	}
+close(USERS);
+}
+
+
+# config_icons(context, program)
+# Displays up to 18 icons, one for each type of configuration directive, for
+# some context (global, virtual, directory or htaccess)
+sub config_icons
+{
+local($m, $func, $e, %etype, $i, $c);
+foreach $m (sort { $a cmp $b } (keys %httpd_modules)) {
+        $func = $m."_directives";
+	foreach $e (&$func($httpd_modules{$m})) {
+		if ($e->{$_[0]}) { $etype{$e->{'type'}}++; }
+		}
+        }
+local (@titles, @links, @icons);
+for($i=0; $text{"type_$i"}; $i++) {
+	if ($etype{$i} && $access_types{$i}) {
+		push(@links, $_[1]."type=$i");
+		push(@titles, $text{"type_$i"});
+		push(@icons, "images/type_icon_$i.gif");
+		}
+	}
+for($i=2; $i<@_; $i++) {
+	push(@links, $_[$i]->{'link'});
+	push(@titles, $_[$i]->{'name'});
+	push(@icons, $_[$i]->{'icon'});
+	}
+&icons_table(\@links, \@titles, \@icons, 5);
+print "<p>\n";
+}
+
+# restart_button()
+# Returns HTML for a link to put in the top-right corner of every page
+sub restart_button
+{
+local $rv;
+$args = "redir=".&urlize(&this_url());
+local @rv;
+if (&is_apache_running()) {
+	if ($access{'apply'}) {
+		push(@rv, "<a href=\"restart.cgi?$args\">$text{'apache_apply'}</a>\n");
+		}
+	if ($access{'stop'}) {
+		push(@rv, "<a href=\"stop.cgi?$args\">$text{'apache_stop'}</a>\n");
+		}
+	}
+elsif ($access{'stop'}) {
+	push(@rv, "<a href=\"start.cgi?$args\">$text{'apache_start'}</a>\n");
+	}
+return join("<br>\n", @rv);
+}
+
+# this_url()
+# Returns the URL in the apache directory of the current script
+sub this_url
+{
+local($url);
+$url = $ENV{'SCRIPT_NAME'};
+if ($ENV{'QUERY_STRING'} ne "") { $url .= "?$ENV{'QUERY_STRING'}"; }
+return $url;
+}
+
+# find_all_directives(config, name)
+# Recursively finds all directives of some type
+sub find_all_directives
+{
+local(@rv, $d);
+foreach $d (@{$_[0]}) {
+	if ($d->{'name'} eq $_[1]) { push(@rv, $d); }
+	if ($d->{'type'} == 1) {
+		push(@rv, &find_all_directives($d->{'members'}, $_[1]));
+		}
+	}
+return @rv;
+}
+
+# httpd_info(executable)
+# Returns the httpd version and modules array
+sub httpd_info
+{
+local(@mods, $verstr, $ver, $minor);
+$verstr = &backquote_command("\"$_[0]\" -v 2>&1");
+if ($config{'httpd_version'}) {
+	$config{'httpd_version'} =~ /(\d+)\.([\d\.]+)/;
+	$ver = $1; $minor = $2; $minor =~ s/\.//g; $ver .= ".$minor";
+	}
+elsif ($verstr =~ /Apache(\S*)\/(\d+)\.([\d\.]+)/) {
+	# standard apache
+	$ver = $2; $minor = $3; $minor =~ s/\.//g; $ver .= ".$minor";
+	}
+elsif ($verstr =~ /HP\s*Apache-based\s*Web\s*Server(\S*)\/(\d+)\.([\d\.]+)/) {
+	# HP's apache
+	$ver = $2; $minor = $3; $minor =~ s/\.//g; $ver .= ".$minor";
+	}
+elsif ($verstr =~ /Red\s*Hat\s+Secure\/2\.0/i) {
+	# redhat secure server 2.0
+	$ver = 1.31;
+	}
+elsif ($verstr =~ /Red\s*Hat\s+Secure\/3\.0/i) {
+	# redhat secure server 3.0
+	$ver = 1.39;
+	}
+elsif (&has_command("rpm") &&
+       &backquote_command("rpm -q apache 2>&1") =~ /^apache-(\d+)\.([\d\.]+)/) {
+	# got version from the RPM
+	$ver = $1; $minor = $2; $minor =~ s/\.//g; $ver .= ".$minor";
+	}
+else {
+	# couldn't get version
+	return (0, undef);
+	}
+if ($ver < 1.2) {
+	# apache 1.1 has no -l option! Use the standard list
+	@mods = ("core", "mod_mime", "mod_access", "mod_auth", "mod_include",
+		 "mod_negotiation", "mod_dir", "mod_cgi", "mod_userdir",
+		 "mod_alias", "mod_env", "mod_log_common");
+	}
+else {
+	# ask apache for the module list
+	@mods = ("core");
+	&open_execute_command(APACHE, "\"$_[0]\" -l", 1);
+	while(<APACHE>) {
+		if (/(\S+)\.c/) { push(@mods, $1); }
+		}
+	close(APACHE);
+	@mods = &unique(@mods);
+	}
+return ($ver, \@mods);
+}
+
+# print_line(directive, text, indent, link)
+sub print_line
+{
+local $line = $_[0]->{'line'} + 1;
+local $lstr = "$_[0]->{'file'} ($line)";
+local $txt = join("", @{$_[1]});
+local $left = 85 - length($lstr) - $_[2];
+if (length($txt) > $left) {
+	$txt = substr($txt, 0, $left)." ..";
+	}
+local $txtlen = length($txt);
+$txt = &html_escape($txt);
+print " " x $_[2];
+if ($_[3]) {
+	print "<a href=\"$_[3]\">",$txt,"</a>";
+	}
+else { print $txt; }
+print " " x (90 - $txtlen - $_[2] - length($lstr));
+print $lstr,"\n";
+}
+
+# can_edit_virt(struct)
+sub can_edit_virt
+{
+return 1 if ($access{'virts'} eq '*');
+local %vcan = map { $_, 1 } split(/\s+/, $access{'virts'});
+local ($can) = grep { $vcan{$_} } &virt_acl_name($_[0]);
+return $can ? 1 : 0;
+}
+
+# virt_acl_name(struct)
+# Give a virtual host, returns a list of names that could be used in the ACL
+# to refer to it
+sub virt_acl_name
+{
+return ( "__default__" ) if (!$_[0]);
+local $n = &find_directive("ServerName", $_[0]->{'members'});
+local @rv;
+local $p;
+if ($_[0]->{'value'} =~ /(:\d+)/) { $p = $1; }
+if ($n) {
+	push(@rv, $n.$p);
+	}
+else {
+	push(@rv, $_[0]->{'value'});
+	}
+foreach $n (&find_directive_struct("ServerAlias", $_[0]->{'members'})) {
+	local $a;
+	foreach $a (@{$n->{'words'}}) {
+		push(@rv, $a.$p);
+		}
+	}
+return @rv;
+}
+
+# allowed_auth_file(file)
+sub allowed_auth_file
+{
+local $_;
+return 1 if ($access{'dir'} eq '/');
+return 0 if ($_[0] =~ /\.\./);
+local $f = &server_root($_[0], &get_config());
+return 0 if (-l $f && !&allowed_auth_file(readlink($f)));
+local $l = length($access{'dir'});
+return length($f) >= $l && substr($f, 0, $l) eq $access{'dir'};
+}
+
+# directory_exists(file)
+# Returns 1 if the directory in some path exists
+sub directory_exists
+{
+local $path = &server_root($_[0], &get_config());
+if ($path =~ /^(\S*\/)([^\/]+)$/) {
+	return -d $1;
+	}
+else {
+	return 0;
+	}
+}
+
+# allowed_doc_dir(dir)
+# Returns 1 if some directory is under the allowed root for alias targets
+sub allowed_doc_dir
+{
+return $access{'aliasdir'} eq '/' ||
+       &is_under_directory($access{'aliasdir'}, $_[0]);
+}
+
+sub lock_apache_files
+{
+local $conf = &get_config();
+local $f;
+foreach $f (&unique(map { $_->{'file'} } @$conf)) {
+	&lock_file($f);
+	}
+}
+
+sub unlock_apache_files
+{
+local $conf = &get_config();
+local $f;
+foreach $f (&unique(map { $_->{'file'} } @$conf)) {
+	&unlock_file($f);
+	}
+}
+
+# directive_lines(directive, ...)
+sub directive_lines
+{
+local @rv;
+foreach $d (@_) {
+	next if ($d->{'name'} eq 'dummy');
+	if ($d->{'type'}) {
+		push(@rv, "<$d->{'name'} $d->{'value'}>");
+		push(@rv, &directive_lines(@{$d->{'members'}}));
+		push(@rv, "</$d->{'name'}>");
+		}
+	else {
+		push(@rv, "$d->{'name'} $d->{'value'}");
+		}
+	}
+return @rv;
+}
+
+# test_config()
+# If possible, test the current configuration and return an error message,
+# or undef.
+sub test_config
+{
+if ($httpd_modules{'core'} >= 1.301) {
+	# Test the configuration with the available command
+	local $cmd;
+	if ($config{'test_apachectl'} &&
+	    -x &translate_filename($config{'apachectl_path'})) {
+		# Test with apachectl
+		$cmd = "\"$config{'apachectl_path'}\" configtest";
+		}
+	else {
+		# Test with httpd
+		local $httpd = &find_httpd();
+		$cmd = "\"$httpd\" -d \"$config{'httpd_dir'}\" -t";
+		if ($config{'httpd_conf'}) {
+			$cmd .= " -f \"$config{'httpd_conf'}\"";
+			}
+		foreach $d (&get_httpd_defines()) {
+			$cmd .= " -D$d";
+			}
+		}
+	local $out = &backquote_command("$cmd 2>&1");
+	if ($out && $out !~ /syntax\s+ok/i) {
+		return $out;
+		}
+	}
+return undef;
+}
+
+# before_changing()
+# If testing all changes, backup the config files so they can be reverted
+# if necessary.
+sub before_changing
+{
+if ($config{'test_always'} || $access{'test_always'}) {
+	local $conf = &get_config();
+	local @files = &unique(map { $_->{'file'} } @$conf);
+	local $/ = undef;
+	local $f;
+	foreach $f (@files) {
+		if (&open_readfile(BEFORE, $f)) {
+			$before_changing{$f} = <BEFORE>;
+			close(BEFORE);
+			}
+		}
+	}
+}
+
+# after_changing()
+# If testing all changes, test now and revert the configs and show an error
+# message if a problem was found.
+sub after_changing
+{
+if ($config{'test_always'} || $access{'test_always'}) {
+	local $err = &test_config();
+	if ($err) {
+		# Something failed .. revert all files
+		&rollback_apache_config();
+		&error(&text('eafter', "<pre>$err</pre>"));
+		}
+	}
+}
+
+# rollback_apache_config()
+# Copy back all config files from their originals
+sub rollback_apache_config
+{
+local $f;
+foreach $f (keys %before_changing) {
+	&open_tempfile(AFTER, ">$f");
+	&print_tempfile(AFTER, $before_changing{$f});
+	&close_tempfile(AFTER);
+	}
+}
+
+# find_httpd_conf()
+# Returns the path to the http.conf file, and the last place looked
+# (without any translation).
+sub find_httpd_conf
+{
+local $conf = $config{'httpd_conf'};
+return ( -f &translate_filename($conf) ? $conf : undef, $conf ) if ($conf);
+$conf = "$config{'httpd_dir'}/conf/httpd.conf";
+$conf = "$config{'httpd_dir'}/conf/httpd2.conf"
+	if (!-f &translate_filename($conf));
+$conf = "$config{'httpd_dir'}/etc/httpd.conf"
+	if (!-f &translate_filename($conf));
+$conf = "$config{'httpd_dir'}/etc/httpd2.conf"
+	if (!-f &translate_filename($conf));
+$conf = undef if (!-f &translate_filename($conf));
+return ( $conf, "$config{'httpd_dir'}/conf/httpd.conf" );
+}
+
+# find_httpd()
+# Returns the path to the httpd executable, by appending '2' if necessary
+sub find_httpd
+{
+return $config{'httpd_path'}
+	if (-x &translate_filename($config{'httpd_path'}) &&
+	    !-d &translate_filename($config{'httpd_path'}));
+return $config{'httpd_path'}.'2'
+	if (-x &translate_filename($config{'httpd_path'}.'2') &&
+	    !-d &translate_filename($config{'httpd_path'}.'2'));
+return undef;
+}
+
+# get_pid_file()
+# Returns the path to the PID file (without any translation)
+sub get_pid_file
+{
+return $config{'pid_file'} if ($config{'pid_file'});
+local $conf = &get_config();
+local $pidfilestr = &find_directive_struct("PidFile", $conf);
+local $pidfile = $pidfilestr ? $pidfilestr->{'words'}->[0]
+		       	     : "logs/httpd.pid";
+return &server_root($pidfile, $conf);
+}
+
+# restart_apache()
+# Re-starts Apache, and returns undef on success or an error message on failure
+sub restart_apache
+{
+local $pidfile = &get_pid_file();
+if ($config{'apply_cmd'} eq 'restart') {
+	# Call stop and start functions
+	local $err = &stop_apache();
+	return $err if ($err);
+	local $err = &start_apache();
+	return $err if ($err);
+	}
+elsif ($config{'apply_cmd'}) {
+	# Use the configured start command
+	&clean_environment();
+	local $out = &backquote_logged("$config{'apply_cmd'} 2>&1");
+	&reset_environment();
+	if ($?) {
+		return "<pre>$out</pre>";
+		}
+	}
+elsif (-x &translate_filename($config{'apachectl_path'})) {
+	# Use apachectl to restart
+	if ($httpd_modules{'core'} >= 2) {
+		# Do a graceful restart
+		&clean_environment();
+		local $out = &backquote_logged("$config{'apachectl_path'} graceful 2>&1");
+		&reset_environment();
+		if ($?) {
+			return "<pre>$out</pre>";
+			}
+		}
+	else {
+		&clean_environment();
+		local $out = &backquote_logged("$config{'apachectl_path'} restart 2>&1");
+		&reset_environment();
+		if ($out !~ /httpd restarted/) {
+			return "<pre>$out</pre>";
+			}
+		}
+	}
+else {
+	# send SIGHUP directly
+	&open_readfile(PID, $pidfile) || return &text('restart_epid', $pidfile);
+	<PID> =~ /(\d+)/ || return &text('restart_epid2', $pidfile);
+	close(PID);
+	&kill_logged('HUP', $1) || return &text('restart_esig', $1);
+	}
+return undef;
+}
+
+# stop_apache()
+# Attempts to stop the running Apache process, and returns undef on success or
+# an error message on failure
+sub stop_apache
+{
+local $out;
+if ($config{'stop_cmd'}) {
+	# use the configured stop command
+	$out = &backquote_logged("($config{'stop_cmd'}) 2>&1");
+	if ($?) {
+		return "<pre>$out</pre>";
+		}
+	}
+elsif (-x $config{'apachectl_path'}) {
+	# use the apachectl program
+	$out = &backquote_logged("($config{'apachectl_path'} stop) 2>&1");
+	if ($httpd_modules{'core'} >= 2 ? $? : $out !~ /httpd stopped/) {
+		return "<pre>$out</pre>";
+		}
+	}
+else {
+	# kill the process
+	$pidfile = &get_pid_file();
+	open(PID, $pidfile) || return &text('stop_epid', $pidfile);
+	<PID> =~ /(\d+)/ || return &text('stop_epid2', $pidfile);
+	close(PID);
+	&kill_logged('TERM', $1) || return &text('stop_esig', $1);
+	}
+return undef;
+}
+
+# start_apache()
+# Attempts to start Apache, and returns undef on success or an error message
+# upon failure.
+sub start_apache
+{
+local $out;
+&clean_environment();
+if ($config{'start_cmd'}) {
+	# use the configured start command
+	if ($config{'stop_cmd'}) {
+		# execute the stop command to clear lock files
+		&system_logged("($config{'stop_cmd'}) >/dev/null 2>&1");
+		}
+	$out = &backquote_logged("($config{'start_cmd'}) 2>&1");
+	&reset_environment();
+	if ($?) {
+		return "<pre>$out</pre>";
+		}
+	}
+elsif (-x $config{'apachectl_path'}) {
+	# use the apachectl program
+	$out = &backquote_logged("($config{'apachectl_path'} start) 2>&1");
+	&reset_environment();
+	if ($out =~ /\S/ && $out !~ /httpd started/) {
+		return "<pre>$out</pre>";
+		}
+	}
+else {
+	# start manually
+	local $httpd = &find_httpd();
+	local $cmd = "$httpd -d $config{'httpd_dir'}";
+	if ($config{'httpd_conf'}) {
+		$cmd .= " -f $config{'httpd_conf'}";
+		}
+	foreach $d (&get_httpd_defines()) {
+		$cmd .= " -D$d";
+		}
+	local $temp = &transname();
+	local $rv = &system_logged("( $cmd ) >$temp 2>&1 </dev/null");
+	$out = `cat $temp`;
+	unlink($temp);
+	&reset_environment();
+	if ($out =~ /\S/ && $out !~ /httpd started/) {
+		return "<pre>$cmd :\n$out</pre>";
+		}
+	}
+
+# check if startup was successful. Later apache version return no
+# error code, but instead fail to start and write the reason to
+# the error log file!
+sleep(3);
+local $conf = &get_config();
+if (!&is_apache_running()) {
+	# Not running..  find out why
+	local $errorlogstr = &find_directive_struct("ErrorLog", $conf);
+	local $errorlog = $errorlogstr ? $errorlogstr->{'words'}->[0]
+				       : "logs/error_log";
+	if ($out =~ /\S/) {
+		return "$text{'start_eafter'} : <pre>$out</pre>";
+		}
+	elsif ($errorlog eq 'syslog' || $errorlog =~ /^\|/) {
+		return $text{'start_eunknown'};
+		}
+	else {
+		$errorlog = &server_root($errorlog, $conf);
+		$out = `tail -5 $errorlog`;
+		return "$text{'start_eafter'} : <pre>$out</pre>";
+		}
+	}
+return undef;
+}
+
+sub is_apache_running
+{
+if ($gconfig{'os_type'} eq 'windows') {
+	# No such thing as a PID file on Windows
+	local ($pid) = &find_byname("Apache.exe");
+	return $pid;
+	}
+else {
+	# Check PID file
+	local $pidfile = &get_pid_file();
+	return &check_pid_file($pidfile);
+	}
+}
+
+# configurable_modules()
+# Returns a list of Apaches that are compiled in or dynamically loaded, and
+# supported by Webmin.
+sub configurable_modules
+{
+local ($ver, $mods) = &httpd_info(&find_httpd());
+local @rv;
+local $m;
+
+# add compiled-in modules
+foreach $m (@$mods) {
+	if (-r "$module_root_directory/$m.pl") {
+		push(@rv, $m);
+		}
+	}
+
+# add dynamically loaded modules
+local $conf = &get_config();
+foreach $l (&find_directive_struct("LoadModule", $conf)) {
+	if ($l->{'words'}->[1] =~ /(mod_\S+)\.(so|dll)/ &&
+	    -r "$module_root_directory/$1.pl") {
+		push(@rv, $1);
+		}
+	elsif ($l->{'words'}->[1] =~ /libssl\.so/ &&
+	       -r "$module_root_directory/mod_apachessl.pl") {
+		push(@rv, "mod_apachessl");
+		}
+	elsif ($l->{'words'}->[1] =~ /lib([^\/\s]+)\.(so|dll)/ &&
+	       -r "$module_root_directory/mod_$1.pl") {
+		push(@rv, "mod_$1");
+		}
+	}
+
+return &unique(@rv);
+}
+
+# get_httpd_defines(automatic-only)
+# Returns a list of defines that need to be passed to Apache
+sub get_httpd_defines
+{
+local ($auto) = @_;
+local @rv;
+if (!$auto) {
+	push(@rv, keys %httpd_defines);
+	}
+if ($config{'defines_file'}) {
+	# Add defines from an environment file
+	local %def;
+	&read_env_file($config{'defines_file'}, \%def);
+	local $var = $def{$config{'defines_name'}};
+	foreach my $v (split(/\s+/, $var)) {
+		if ($v =~ /^-[Dd](\S+)$/) {
+			push(@rv, $1);
+			}
+		else {
+			push(@rv, $v);
+			}
+		}
+	}
+foreach my $md (split(/\t+/, $config{'defines_mods'})) {
+	# Add HAVE_ defines from modules
+	opendir(DIR, $md);
+	while(my $m = readdir(DIR)) {
+		if ($m =~ /^(mod_|lib)(.*).so$/i) {
+			push(@rv, "HAVE_".uc($2));
+			}
+		}
+	closedir(DIR);
+	}
+foreach my $d (split(/\s+/, $config{'defines'})) {
+	push(@rv, $d);
+	}
+return @rv;
+}
+
+# create_webfile_link(file)
+# Creates a link in the debian-style link directory for a new website's file
+sub create_webfile_link
+{
+local ($file) = @_;
+if ($config{'link_dir'}) {
+	local $short = $file;
+	$short =~ s/^.*\///;
+	local $linksrc = "$config{'link_dir'}/$short";
+	&lock_file($linksrc);
+	symlink($file, $linksrc);
+	&unlock_file($linksrc);
+	}
+}
+
+# delete_webfile_link(file)
+# If the given path is in a directory like /etc/apache2/sites-available, delete
+# the link to it from /etc/apache2/enabled-available
+sub delete_webfile_link
+{
+local ($file) = @_;
+if ($config{'link_dir'}) {
+	local $short = $file;
+	$short =~ s/^.*\///;
+	local $linksrc = "$config{'link_dir'}/$short";
+	&lock_file($linksrc);
+	unlink($linksrc);
+	&unlock_file($linksrc);
+	}
+}
+
+1;
+

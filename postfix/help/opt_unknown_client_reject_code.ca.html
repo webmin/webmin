@@ -1,0 +1,21 @@
+<header>Resposta del servidor SMTP en cas de rebuig per client desconegut</header>
+
+<center><tt>unknown_client_reject_code</tt></center>
+<hr>
+
+Aquest paràmetre especifica el codi de resposta del servidor SMTP quan un
+client sense mapejat adreça-a-nom viola la restricció
+<tt>reject_unknown_clients</tt>, això és:
+
+<i>Accés denegat: Nom de host client SMTP desconegut (sense registre DNS A o MX).</i><br>
+<br>
+Tingues en compte que el valor per defecte utilitzat per postfix per a
+<tt>unknown_client_reject_code</tt> és el codi 450, i aquest codi en
+l'estàndard RFC 822 voldria dir 'Acció de correu demanada no executada:
+bústia ocupada o accés denegat' i demanaria el remitent de provar-ho un
+altre cop més tard (amb l'esperança que el DNS respondrà correctament
+més tard).<br>
+No ho canviïs si no tens un coneixement complet de RFC 822.
+</p>
+
+<hr>

@@ -1,0 +1,23 @@
+<header>Transport mapping lookup tables</header>
+
+<center><tt>transport_maps</tt></center>
+<hr>
+
+The parameter specifies optional tables with domain to (transport, nexthop)
+mappings. See <a href=transport>Transport mapping</a> for syntax details.
+
+<p>
+
+By default, this feature is disabled. Specify the types of databases to use.
+
+<p>
+
+Sensible possible values:
+<ul>
+<li> <tt>dbm:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, nis:transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, netinfo:/transport</tt> 
+</ul>
+
+<hr>

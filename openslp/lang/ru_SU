@@ -1,0 +1,50 @@
+index_title=Настройки OpenSLP
+index_return=Настройки OpenSLP
+index_eslpd=Демон OpenSLP $1 не найден в вашей системе. Возможно, он не установлен, или некорректны <a href='$2'>настройки модуля</a>.
+index_econf=Файл настроек OpenSLP не найден в вашей системе. Возможно, он не установлен, или некорректны <a href='$2'>настройки модуля</a>.
+index_version=OpenSLP версии $1
+
+slp_apply=Применить изменения
+slp_stop=Остановка OpenSLP
+
+snda_title=Статические Scope и DA
+snda_useScopes=Статический список Scope
+snda_DAAddresses=Статический список Агентов Каталогов (DA - Directory Agents)
+
+netcfg_title=Настройки сети
+netcfg_isBroadcastOnly=Принудительно использовать broadcast вместо широковещательных запросов
+netcfg_passiveDADetection=Использовать пассивное определение DA
+netcfg_activeDADetection=Use active DA detection (restrict to DHCP or DAAddresses only)
+netcfg_DAActiveDiscoveryInterval=Активное определение в секундах (0 отключает активное определение)
+netcfg_multicastTTL=TTL широковещательных сообщений (0-255)
+netcfg_DADiscoveryMaximumWait=Максимальное время ожидания запросов определения DA (в миллисекундах)
+netcfg_DADiscoveryTimeouts=Время ожидания успешного определения DA (в миллисекундах)
+netcfg_HintsFile=Путь к файлу подсказок OpenSLP
+netcfg_multicastMaximumWait=Максимальное время ожидания широковещательных сообщений (в миллисекундах)
+netcfg_multicastTimeouts=Успешное время ожидания широковещательных сообщений (в миллисекундах)
+netcfg_unicastMaximumWait=Максимальное время между запросами unicast (в миллисекундах)
+netcfg_randomWaitBound=Максимальное значение для всех случайных параметров ожидания (в миллисекундах)
+netcfg_MTU=Размер пакета MTU (в байтах)
+netcfg_interfaces=Адреса IP интерфейсов, слушаемых DA/SA
+
+dacfg_title=Настройки DA
+dacfg_isDA=Функционировать только как DA (прочитайте перед изменением этого руководство пользователя)
+
+log_title=Трассировка и ведение журнала
+log_traceDATraffic=Печать сообщений о трафике DA
+log_traceMsg=Печать подробных сообщений SLP
+log_traceDrop=Печать сброшенной информации о сообщениях SLP
+log_traceReg=Печать регистрационной и разрегистрационной информации DA и SA
+
+error_open=Ошибка при открытии файла
+error_flock_on=Ошибка при создании блокировки файла
+error_flock_off=Ошибка при снятии блокировки файла
+error_hup=Ошибка при перезапуске OpenSLP с PID
+
+index_start=Запуск OpenSLP
+index_startmsg=Нажмите эту кнопку для запуска на вашей системе демона OpenSLP
+index_stop=Остановка OpenSLP
+index_stopmsg=Нажмите эту кнопку для остановки на вашей системе демона OpenSLP
+
+stop_err=Ошибка при остановке OpenSLP
+start_err=Ошибка при запуске OpenSLP

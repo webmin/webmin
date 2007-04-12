@@ -1,0 +1,243 @@
+index_title=프린터 관리
+index_name=프린터
+index_desc=설명
+index_to=인쇄 보낼 곳
+index_driver=드라이버
+index_enabled=사용 가능으로 설정합니까?
+index_accepting=수락합니까?
+index_jobs=작업
+index_none=시스템에 프린터가 설치되어 있지 않습니다
+index_list=목록..
+index_add=새 프린터 추가
+index_stop=스케줄러 중지
+index_stopmsg=실행 중인 인쇄 스케줄러를 중지하려면 이 버튼을 누르십시오. 그러면 로컬 또는 원격 사용자는 시스템에서 인쇄할 수 없게 됩니다.
+index_start=스케줄러 시작
+index_startmsg=인쇄 스케줄러를 시작하려면 이 버튼을 누르십시오. 그러면 로컬 및 원격 사용자가 시스템에서 인쇄할 수 있게 됩니다.
+index_restart=스케줄러 다시 시작
+index_restartmsg=인쇄 스케줄러를 다시 시작하려면 이 버튼을 누르십시오. 그러면 현재의 인쇄 구성이 적용됩니다.
+index_return=프린터 목록
+
+edit_eedit=이 프린터를 편집할 수 없습니다
+edit_eadd=프린터를 추가할 수 없습니다
+edit_add=프린터 작성
+edit_edit=프린터 편집
+edit_conf=프린터 구성
+edit_name=이름
+edit_acc=요청을 수락합니까?
+edit_why=아니오 - 이유는?
+edit_desc=설명
+edit_ena=인쇄 기능이 설정되어 있습니까?
+edit_acl=접근 제어
+edit_allow=모든 사용자 허용
+edit_deny=모든 사용자 거부
+edit_allowu=나열된 사용자 허용..
+edit_denyu=나열된 사용자 거부..
+edit_banner=배너를 인쇄합니까?
+edit_opt=선택 사항
+edit_default=기본 프린터입니까?
+edit_already=이미 기본 프린터임
+edit_max=최대 인쇄 작업 크기
+edit_unlimited=제한 없음
+edit_dacc=드라이버 수락
+edit_dtext=텍스트
+edit_dpost=포스트스크립트
+edit_dother=그 외
+edit_alt=대체 프린터 이름
+edit_dest=인쇄 목적지
+edit_dev=로컬 장치
+edit_file=로컬 파일
+edit_remote=원격 유닉스 서버
+edit_rqueue=프린터
+edit_type=유형
+edit_smb=원격 윈도우 서버
+edit_share=프린터
+edit_user=사용자
+edit_pass=암호
+edit_wgroup=작업 그룹
+edit_hpnp=원격 HPNP 서버
+edit_port=포트
+edit_direct=직접 TCP 연결
+edit_dport=포트
+edit_driver=프린터 드라이버
+edit_check=원격 서버가 작동하는지 검사합니까?
+
+blocks=블록
+
+save_err=프린터를 저장하지 못했습니다
+save_eadd=프린터를 추가할 수 없습니다
+save_eedit=이 프린터를 편집할 수 없습니다
+save_ename='$1'은(는) 유효한 프린터 이름이 아닙니다
+save_edup='$1'(이)라는 프린터가 이미 있습니다
+save_eallow=입력이 허용된 사용자 없음
+save_edeny=입력이 거부된 사용자 없음
+save_euser=사용자 '$1'이(가) 존재하지 않습니다
+save_etype=이 드라이버를 수락하려면 하나 이상의 유형을 선택해야 합니다
+save_emax=최대 인쇄 작업 크기는 정수여야 합니다
+save_efile='$1'이(가) 존재하지 않습니다
+save_erhost=원격 호스트 '$1'이(가) 존재하지 않습니다
+save_erqueue='$1'은(는) 유효한 원격 대기열 이름이 아닙니다
+save_eremote=원격 유닉스 프린터에 사용할 수 없는 드라이버입니다
+save_edhost=직접 호스트 '$1'이(가) 존재하지 않습니다
+save_edport=없거나 잘못된 직접 포트
+
+jobs_title=인쇄 작업
+jobs_header=$1의 인쇄 작업
+jobs_id=작업 ID
+jobs_size=크기
+jobs_by=제출자
+jobs_when=제출 시간
+jobs_file=파일 이름
+jobs_cancel=취소하려면 위의 목록에서 작업 ID를 누르십시오.
+jobs_cancelview=취소하려면 위의 목록에서 작업 ID를 누르고, 보려면 작업 크기를 누르십시오.
+jobs_none=$1에 인쇄 작업이 없습니다
+jobs_all=모든 인쇄 작업 취소
+jobs_bytes=바이트
+jobs_test=테스트 페이지 인쇄
+
+cancel_ecannot=인쇄 작업을 취소할 수 없습니다
+cancel_err=인쇄 작업을 취소하지 못했습니다
+cancel_egone=인쇄 작업 $1이(가) 존재하지 않습니다
+
+view_ecannot=이 인쇄 작업을 볼 수 없습니다
+view_egone=이 인쇄 작업이 존재하지 않습니다
+
+start_ecannot=스케줄러를 시작할 수 없습니다
+start_err=스케줄러를 시작하지 못했습니다
+
+stop_ecannot=스케줄러를 중지할 수 없습니다
+stop_err=스케줄러를 중지하지 못했습니다
+
+restart_ecannot=스케줄러를 다시 시작할 수 없습니다
+restart_err=스케줄러를 다시 시작하지 못했습니다
+
+webmin_none=없음
+webmin_nonemsg=포스트스크립트 또는 텍스트 프린터
+webmin_remotemsg=원격 프린터
+webmin_model=모델
+webmin_prog=프로그램
+webmin_driver=Webmin 드라이버
+webmin_uniprint=Uniprint 드라이버
+webmin_edrivers=$1에서 드라이버를 가져오지 못했습니다. ghostscript를 사용하는 Webmin 프린터 드라이버는 사용할 수 없습니다
+webmin_egs=명령 $1이(가) 없습니다. ghostscript를 사용하는 Webmin 프린터 드라이버는 사용할 수 없습니다
+webmin_edriver='$1'이(가) 존재하지 않습니다
+
+caldera_none=없음
+caldera_nonemsg=원격 또는 원시 프린터
+caldera_prog=프로그램
+caldera_coas=COAS 드라이버
+caldera_printer=프린터 및 해상도
+caldera_eof=EOF를 보냅니까?
+caldera_paper=용지 크기
+caldera_double=양면에 인쇄합니까?
+caldera_gsopts=추가 GS 옵션
+caldera_uniprint=Uniprint 드라이버
+caldera_eprog='$1'이(가) 존재하지 않습니다
+caldera_edriver=선택한 프린터 드라이버가 없습니다
+caldera_eres=해상도를 선택하지 않았습니다
+
+redhat_none=없음
+redhat_nonemsg=포스트스크립트 또는 텍스트 프린터
+redhat_prog=프로그램
+redhat_driver=Redhat 드라이버
+redhat_printer=프린터 및 해상도
+redhat_eof=EOF를 보냅니까?
+redhat_paper=용지 크기
+redhat_pages=출력 페이지 당 페이지 수
+redhat_gsopts=추가 GS 옵션
+redhat_hmargin=오른쪽/왼쪽 여백
+redhat_vmargin=위쪽/아래쪽 여백
+redhat_crlf=계단식 텍스트를 고정합니까?
+redhat_eprog='$1'이(가) 존재하지 않습니다
+redhat_edriver=선택한 프린터 드라이버가 없습니다
+redhat_ehmargin=없거나 잘못된 오른쪽/왼쪽 여백
+redhat_evmargin=없거나 잘못된 위쪽/아래쪽 여백
+redhat_eres=해상도를 선택하지 않았습니다
+redhat_printer2=프린터 모델 및 드라이버
+
+suse_none=없음
+suse_nonemsg=포스트스크립트 또는 텍스트 프린터
+suse_prog=프로그램
+suse_driver=APSfilter 드라이버
+suse_printer=프린터 유형
+suse_res=해상도(DPI)
+suse_colour=컬러 프린터입니까?
+suse_paper=용지 크기
+suse_method=필터 방법
+suse_auto=자동
+suse_ascii=아스키
+suse_raw=원시
+suse_extra=추가 ghostscript 옵션
+suse_yast2=YAST2 드라이버
+suse_edriver=프린터 유형을 선택하지 않았습니다
+suse_eres=없거나 잘못된 해상도
+
+estop=lpd를 중지하지 못했습니다: $1
+
+acl_printers=이 사용자가 구성할 수 있는 프린터
+acl_add=새 프린터를 추가할 수 있습니까?
+acl_cancel=인쇄 작업을 취소할 수 있습니까?
+acl_stop=스케줄러를 중지하거나 시작할 수 있습니까?
+acl_restart=재시작만
+acl_listed=선택한 프린터에서만..
+acl_pall=모든 프린터
+acl_psel=선택한 프린터..
+acl_view=구성할 수 없는 프린터를 표시합니까?
+acl_test=테스트 페이지를 인쇄할 수 있습니까?
+
+log_stop=인쇄 스케줄러 중지됨
+log_start=인쇄 스케줄러 시작됨
+log_restart=인쇄 스케줄러 다시 시작됨
+log_cancel_job=$1의 인쇄 작업 $2 취소됨
+log_cancel_all=$1의 모든 인쇄 작업 취소됨
+log_create=$2의 프린터 $1 작성됨
+log_modify=$2의 프린터 $1 수정됨
+log_delete=$2의 프린터 $1 삭제됨
+log_create_l=$2의 $3 프린터 $1 작성됨
+log_modify_l=$2의 $3 프린터 $1 수정됨
+log_delete_l=$2의 $3 프린터 $1 삭제됨
+
+linux_paralel=병렬 포트 $1
+linux_serial=직렬 포트 $1(COM$1)
+linux_null=Null 장치
+linux_usb=USB 프린터 $1
+
+freebsd_paralel=병렬 포트
+freebsd_serial=직렬 포트 $1(COM$1)
+
+openbsd_paralel=병렬 포트
+openbsd_serial=직렬 포트 $1(COM$1)
+
+unixware_paralel=병렬 포트 $1
+unixware_serial=직렬 포트 $1
+unixware_null=Null 장치
+
+hpux_paralel=병렬 $1
+hpux_serial=직렬 $1
+hpux_null=Null 장치
+
+lprng_paralel=병렬 포트 $1
+lprng_serial=직렬 포트 $1(COM$1)
+lprng_null=Null 장치
+
+solaris_paralel=병렬 포트
+solaris_uparalel=Ultra 5/10 병렬 포트
+solaris_serial=직렬 포트 $1
+solaris_null=Null 장치
+
+test_title=테스트 페이지 인쇄
+test_ecannot=테스트 페이지를 인쇄할 수 없습니다
+test_desc=이 양식에서는 프린터 $1의 테스트 페이지를 인쇄할 수 있습니다. 인쇄할 페이지 유형을 선택하십시오:
+test_0=흑백 포스트스크립트 페이지
+test_1=컬러 포스트스크립트 페이지
+test_2=일반 아스키 텍스트
+test_3=업로드된 파일
+test_print=페이지 인쇄
+test_exec=$1 명령을 사용하여 테스트 페이지 인쇄 중..
+test_failed=.. 명령을 실행하지 못했습니다!
+test_ok=.. 명령을 완료했습니다
+
+cups_none=없음
+cups_nonemsg=원격 또는 원시 프린터
+cups_prog=프로그램
+cups_driver=CUPS 드라이버
+

@@ -1,0 +1,7 @@
+ftpd_path=/usr/sbin/in.ftpd
+ftpgroups=/etc/ftpd/ftpgroups
+ftpconversions=/etc/ftpd/ftpconversions
+ftphosts=/etc/ftpd/ftphosts
+pid_file=/var/run/ftpd.pid
+ftpaccess=/etc/ftpd/ftpaccess
+ftpusers=/etc/ftpd/ftpusers

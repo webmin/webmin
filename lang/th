@@ -1,0 +1,157 @@
+main_return=กลับไป... $1
+main_homepage=หน้าแรก
+main_feedback=เสนอแนะ..
+main_switch=เปลี่ยน ผู้ใช้..
+main_logout=Logout
+main_version=Version $1 on $2 ($3)
+main_title=Webmin $1 on $2 ($3)
+main_none=ท่านไม่มีสิทธิในการใช้งาน Webmin modules ใดๆ
+main_skill=ระดับ ทักษะ
+
+category_servers=บริการ
+category_hardware=อุปกรณ์
+category_system=ระบบ
+category_webmin=Webmin
+category_net=เครือข่าย
+category_syslet=Syslets
+category_=อื่นๆ
+
+header_webmin=Webmin Index
+header_module=Module Index
+header_help=คำแนะนำ..
+header_config=Module Config
+header_servers=Webmin Servers
+
+index=ดัชนี
+yes=ใช่
+no=ไม่ใช่
+save=บันทึก
+create=สร้าง
+delete=ลบ
+find=ค้นหา
+error=ผิดพลาด
+default=ค่าเริ่มต้น
+modify=แก้ไข
+reset=เริ่มใหม่
+ok=ตกลง
+cancel=ยกเลิก
+helpsearch=ค้นหา เอกสาร..
+
+chooser_title1=เลือก แฟ้ม..
+chooser_title2=เลือก Directory..
+chooser_dir=Directory of $1
+chooser_ok=ตกลง
+
+users_title1=เลือก ผู้ใช้..
+users_title2=เลือก ผู้ใช้..
+users_sel=ผู้ใช้ ที่เลือก
+users_all=ผู้ใช้ทุกคน
+users_ok=ตกลง
+users_cancel=ยกเลิก
+users_clear=ล้าง
+
+groups_title1=เลือก กลุ่ม..
+groups_title2=เลือก กลุ่ม..
+groups_all=ทุกกลุ่ม
+groups_sel=กลุ่ม ที่เลือก
+groups_ok=ตกลง
+groups_cancel=ยกเลิก
+groups_clear=ล้าง
+
+config_ecannot=ท่านไม่ได้รับอนุญาตให้แก้ไข module นี้
+config_title=ปรับแต่ง
+config_dir=สำหรับ module $1
+config_header=ปรับแต่ง ตัวเลือก สำหรับ $1
+config_none=None
+config_eaccess=ที่าไม่รับอนุญาตให้ใช้ module นี้
+
+help_err=ไม่สามารถแสดง คำแนะนำ
+help_epath=path คำแนะนำ ไม่ถูกต้อง หรือ ใช้ไม่ได้
+help_efile=ไม่สามารถอ่านแฟ้ม  คำแนะนำ $1
+help_eheader=Missing &lt;header&gt; section
+help_einclude=Failed to include $1
+help_eif=$1 failed : $2
+help_eexec=$1 failed : $2
+
+referer_title=ระบบเตือนภัย
+referer_warn=<b>ระวัง!</b> Webmin has detected that the program $2 was linked to from the URL $1, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_warn_unknown=<b>ระวัง!</b> Webmin has detected that the program $1 was linked to from an unknown URL, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_ok=Continue executing Webmin program
+referer_again=Don't show this warning in future.
+
+session_header=Login to Webmin
+session_mesg=You must enter a username and password to login to the Webmin server on $1.
+session_user=Username
+session_pass=Password
+session_login=Login
+session_clear=Clear
+session_failed=Login failed. Please try again.
+session_logout=Logout successful. Use the form below to login again.
+session_timed_out=Session timed out after $1 minutes of inactivity.
+session_save=Remember login permanently?
+
+acl_root=Root directory for file chooser
+acl_uedit=Users visible in user chooser
+acl_uedit_all=All users
+acl_uedit_none=No users
+acl_uedit_only=Only users
+acl_uedit_except=All except users
+acl_uedit_uid=Users with UIDs in range
+acl_uedit_group=Users with group
+acl_gedit=Groups visible in group chooser
+acl_gedit_all=All groups
+acl_gedit_none=No groups
+acl_gedit_only=Only groups
+acl_gedit_except=All except groups
+acl_gedit_gid=Groups with GIDs in range
+
+month_1=มกราคม
+month_2=กุมภาพันธ์
+month_3=มีนาคม
+month_4=เมษายน
+month_5=พฤษภาคม
+month_6=มิถุนายน
+month_7=กรกฎาคม
+month_8=สิงหาคม
+month_9=กันยายน
+month_10=ตุลาคม
+month_11=พฤศจิกายน
+month_12=ธันวาคม
+
+day_0=อาทิตย์
+day_1=จันทร์
+day_2=อังคาร
+day_3=พุธ
+day_4=พฤหัส
+day_5=ศุกร์
+day_6=เสาร์
+
+smonth_1=ม.ค.
+smonth_2=ก.พ.
+smonth_3=มี.ค.
+smonth_4=เม.ย.
+smonth_5=พ.ค.
+smonth_6=มิ.ย.
+smonth_7=ก.ค.
+smonth_8=ส.ค.
+smonth_9=ก.ย.
+smonth_10=ต.ค.
+smonth_11=พ.ย.
+smonth_12=ธ.ค.
+
+sday_0=อา.
+sday_1=จ.
+sday_2=อ.
+sday_3=พ.
+sday_4=พฤ.
+sday_5=ศ.
+sday_6=ส.
+
+emodule=Access denied : User $1 is not allowed to use the $2 module
+elock_tries=Failed to lock file $1 after $2 minutes
+
+skill_high=เชี่ยวชาญ
+skill_medium=พอเป็น
+skill_low=มือใหม่
+
+

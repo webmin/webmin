@@ -1,0 +1,251 @@
+index_title=Autenticació PAM
+index_name=Servei
+index_desc=Descripció
+index_add=Afegeix un nou servei PAM
+index_return=a la llista de serveis
+index_none=No s'han trobat els fitxers de configuració PAM al directori $1. O bé PAM no està suportat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
+
+desc_su=Canvia l'usuari
+desc_login=Connexió local o remota
+desc_samba=Servidor de fitxers Windows Samba
+desc_imap=Servidor de correu IMAP
+desc_pop=Servidor de correu POP
+desc_kde=Connexió KDE
+desc_rexec=Servidor remot d'execució
+desc_rlogin=Servidor de connexions remotes
+desc_rsh=Servidor de shell remota
+desc_passwd=Canvi de contrasenya
+desc_chfn=Canvia la informació de <i>finger</i>
+desc_chsh=Canvia la <i>shell</i>
+desc_ftp=Servidor de transferències de fitxers
+desc_ftpd=Servidor de transferències de fitxers
+desc_wu-ftpd=Servidor de transferències de fitxers WuFTPd
+desc_xscreensaver=Salvapantalles
+desc_other=Altres serveis
+desc_netatalk.pamd=$desc_netatalk
+desc_netatalk=Servidor de fitxers Apple Netatalk
+desc_webmin=Servidor Web Webmin
+desc_usermin=Servidor Web Usermin
+desc_xdm=Connexió X local o remota
+desc_gdm=Connexió X de Gnome
+desc_linuxconf=Connexió LinuxConf
+desc_linuxconf-pair=Connexió LinuxConf addicional
+desc_linuxconf-auth=Autenticació LinuxConf
+desc_xlock=Bloqueig de pantalla
+desc_vlock=Bloqueig de consola virtual
+desc_kbdrate=Control de repetició del teclat
+desc_halt=Aturada del sistema
+desc_poweroff=Apagat del sistema
+desc_reboot=Reengegada del sistema
+desc_shutdown=Tancament del sistema
+desc_mcserv=Midnight Commander
+desc_kppp=Eina client PPP de KDE
+desc_xserver=Servidor X11
+desc_gnorpm-auth=Eina RPM de Gnome
+desc_kpackage=Eina RPM de KDE
+desc_ppp=Connexió al dimoni PPP
+desc_rp3-config=Eina client PPP de Redhat
+desc_up2date=Agent d'actualització Linux de Redhat
+desc_up2date-config=Configuració de l'actualització Linux de Redhat
+desc_sudo=Execució d'ordres <i>root</i> limitada
+desc_httpd=Servidor Web
+desc_qpop=Servidor de correu POP
+desc_sshd=Connexió SSH
+desc_squid=Servidor Proxy Squid
+desc_bindconf=Eina de configuració BIND de Redhat
+desc_apacheconf=Eina de configuració Apache de Redhat
+desc_adsl-config=Eina de configuració ADSL de Redhat
+desc_internet-config=Eina de configuració Internet de Redhat
+desc_isdn-config=Eina de configuració XDSI de Redhat
+desc_kontrol-panel=Plafó de control KDE de Redhat
+desc_kscreensaver=Salvapantalles KDE
+desc_printconf-gui=Eina de configuració d'impressores de Redhat
+desc_rhn_register=Registre en Xarxa Redhat
+desc_system-auth=Autenticació corrent
+desc_cups=Impressió CUPS
+desc_cupsys=$desc_cups
+desc_ssh=$desc_sshd
+desc_proftpd=Servidor de transferències de fitxers ProFTPd
+desc_qpopper=$desc_qpop
+desc_dovecot=Servidor de correu POP / IMAP
+desc_cron=Dimoni d'ordes planificades
+
+edit_title=Edició de Servei PAM
+edit_header=Detalls del servei PAM
+edit_name=Nom del servei
+edit_header_auth=Passos d'autenticació
+edit_header_account=Passos de verificació del compte
+edit_header_session=Passos de configuració de la sessió
+edit_header_password=Passos del canvi de contrasenya
+edit_mod=Mòdul PAM
+edit_desc=Descripció
+edit_args=Paràmetres
+edit_addmod=Afegeix pas per a:
+edit_control=Nivell d'error
+edit_none=No has especificat cap mòdul PAM per aquest pas
+edit_delete=Suprimeix servei PAM
+edit_move=Desplaça
+edit_return=al servei PAM
+
+pam_pwdb.so=Autenticació de contrasenyes Unix
+pam_securetty.so=Comprova TTY segura per a root
+pam_nologin.so=Comprova el fitxer <tt>/etc/nologin</tt>
+pam_mail.so=Notifica correu nou
+pam_lastlog.so=Notifica la darrera connexió
+pam_rootok.so=Comprova l'usuari només <tt>root</tt>
+pam_cracklib.so=Comprovació estricta de contrasenya
+pam_access.so=Comprova el fitxer de control d'accés
+pam_deny.so=Denega sempre l'accés
+pam_env.so=Estableix variables d'entorn
+pam_ftp.so=Comprova l'autenticació FTP
+pam_time.so=Comprova l'hora de connexió
+pam_group.so=Estableix la pertinença al grup
+pam_listfile.so=Comprova el contingut dels fitxers
+pam_limits.so=Estableix els límits del recurs
+pam_mkhomedir.so=Crea el directori arrel
+pam_motd.so=Mostra el fitxer de missatge del dia
+pam_permit.so=Permet l'accés sempre
+pam_radius.so=Autenticació de servidor RADIUS
+pam_rhosts.so=Comprova els fitxers <tt>.rhosts</tt>
+pam_rhosts_auth.so=Comprova els fitxers <tt>.rhosts</tt>
+pam_shells.so=Comprova validesa de la shell
+pam_unix.so=Autenticació de contrasenya Unix antiga
+pam_userdb.so=Autenticació de fitxer DBM de contrasenyes
+pam_warn.so=Registra els avisos
+pam_wheel.so=Comprovació del grup <tt>wheel</tt>
+pam_issue.so=Mostra el fitxer <tt>/etc/issue</tt>
+pam_ldap.so=Autenticació de servidor LDAP
+pam_unix_auth.so=Autenticació de contrasenya Unix
+pam_unix_sess.so=Configuració de sessió Unix
+pam_unix_session.so=Configuració de sessió Unix
+pam_unix_acct.so=Verificació de comptes Unix
+pam_unix_passwd.so=Canvi de contrasenya Unix
+pam_stress.so=Prova de stress d'aplicacions
+pam_tally.so=Pren nota els intents fallits de connexió
+pam_passwd+.so=Comprova la validesa de la contrasenya
+pam_filter.so=Filtre d'entrada/sortida
+pam_desgold.so=Autenticació DESGold smartcard
+pam_console.so=Comprova només la consola
+pam_xauth.so=Autenticació X
+pam_stack.so=Crida un altre servei PAM
+
+control_requisite=Requisit
+control_required=Exigit
+control_sufficient=Suficient
+control_optional=Opcional
+control_desc_requisite=Cancel·la l'autenticació immediatament en cas d'error
+control_desc_required=Cancel·la l'autenticació al final en cas d'error
+control_desc_sufficient=Aprova l'autenticació immediatament en cas d'èxit
+control_desc_optional=Ignora l'èxit o l'error
+
+create_title=Creació de Servei PAM
+create_header=Opcions del nou servei PAM
+create_name=Nom del servei
+create_desc=Descripció
+create_mods=Mòduls PAM inicials
+create_0=Cap
+create_1=Autenticació Unix
+create_2=Denega tots els accessos
+
+mod_edit=Edició de Mòdul PAM
+mod_create=Afegeix mòdul PAM
+mod_header=Opcions del mòdul PAM
+mod_name=Nom del servei
+mod_mod=Mòdul PAM
+mod_type=Fes-lo servir al servei
+mod_type_auth=Autenticació
+mod_type_account=Verificació de comptes
+mod_type_session=Configuració de sessió
+mod_type_password=Canvi de contrasenya
+mod_control=Nivell d'error
+mod_args=Arguments del mòdul
+mod_err=No he pogut desar el mòdul
+
+pwdb_shadow=Fes servir el fitxer de contrasenyes ocultes
+pwdb_nullok=Accepta contrasenyes nul·les
+pwdb_md5=Fes servir contrasenyes amb xifrat MD5
+pwdb_nodelay=Interval entre connexions fallides
+
+listfile_item=Busca al fitxer
+listfile_item_user=Usuari
+listfile_item_tty=TTY
+listfile_item_rhost=Nom de host remot
+listfile_item_ruser=Nom d'usuari remot
+listfile_item_group=Grup
+listfile_item_shell=Shell
+listfile_sense=Si es troba al fitxer
+listfile_file=File a buscar
+listfile_onerr=En cas d'error de fitxer
+listfile_fail=Cancel·la
+listfile_succeed=Aprova
+listfile_apply=Limita la comprovació a
+listfile_all=Tots els usuaris
+listfile_user=Només l'usuari
+listfile_group=Només el grup
+
+cracklib_type=Tipus de contrasenya
+cracklib_retry=Nombre màxim d'intents abans de cancel·lar
+cracklib_eretry=Hi falta el nombre de reintents o bé no és correcte
+cracklib_etype=Hi falta el tipus de contrasenya o bé no és vàlid
+
+rhosts_equiv=Llegeix el fitxer <tt>/etc/hosts.equiv</tt>
+rhosts_rhosts=Llegeix els fitxers <tt>.rhosts</tt> dels usuaris
+rhosts_promiscuous=L'entrada <tt>+</tt> permet tots els hosts
+rhosts_suppress=Registra les autenticacions fallides
+
+env_var=Nom de variable
+env_def=Valor per defecte
+env_over=Omet el valor
+env_evar=El noms de variables no poden contenir espais
+
+securetty_ttys=TTYs Segures
+
+shells_shells=Shells d'usuari vàlides
+
+tally_deny=Intents fallits abans de denegar l'accés
+tally_reset=Reinicia el recompte d'intents fallits en reeixir
+tally_edeny=Hi falta el nombre d'intents fallits o bé no és correcte
+tally_magic=El nombre d'intents fallits s'aplica a <tt>root</tt>?
+tally_root=El compte de <tt>root</tt> pot ser denegat
+
+time_services=Serveis
+time_ttys=TTYs
+time_users=Usuaris
+time_times=Hores d'accés
+time_info=Tots els camps poden contenir valors múltiples separats per |, i els valor poden fer servir * com a escarràs o ! com a negació.
+
+group_services=Serveis
+group_ttys=TTYs
+group_users=Usuaris
+group_times=Hores d'accés
+group_groups=Afegeix grups
+group_info=Tots els camps poden contenir valors múltiples separats per |, i els valor poden fer servir * com a escarràs o ! com a negació.
+
+wheel_group=Comprova la pertinença del grup
+wheel_group_def=Defecte (<tt>wheel</tt> o GID 0)
+wheel_trust=Els membres del grup ometen autenticacions posteriors
+wheel_deny=Denega membres del grup en lloc d'autoritzar-los
+wheel_egroup=Hi falta el nom del grup o bé no és vàlid
+
+motd_file=Fitxer a mostrar
+motd_file_def=(<tt>/etc/motd</tt>) per defecte
+motd_efile=Hi falta el nom del fitxer o bé no és vàlid
+
+mail_nopen=Mostra la notificació de correu en connectar
+mail_close=Mostra la notificació de correu en desconnectar
+mail_empty=Notifica si el fitxer de correu està buit
+mail_noenv=Estableix la variable d'entorn MAIL
+mail_dir=Directori de spool de correu
+mail_edir=Hi falta el directori de spool de correu  o bé no és vàlid
+
+stack_service=Passa la comprovació al servei PAM
+
+log_pam_create=He creat el servei PAM $1
+log_pam_delete=He suprimit el servei PAM $1
+log_mod_create=He afegit el mòdul PAM $1 al servei $2
+log_mod_modify=He modificat el mòdul PAM $1 al servei $2
+log_mod_delete=He suprimit el mòdul PAM $1 al servei $2
+log_mod_move=He substituït els mòduls PAM al servei $3
+log_mod_move_l=He canviat el mòdul PAM $1 pel $2 al servei $3
+
+

@@ -1,0 +1,22 @@
+<header>Reject unknown local users</header>
+
+<center><tt>local_recipient_maps</tt></center>
+<hr>
+
+This parameter specifies optional lookup tables with all users that are local
+with respect to <tt>$mydestination</tt> (&quot;what domains to receive mail
+for&quot;)and <tt>$inet_interfaces</tt> (&quot;network interfaces for receiving
+mail&quot;) . If this parameter is defined, then the SMTP server will reject
+mail for unknown local users.
+
+<p>
+
+Put tables with bare usernames such as <tt>unix:passwd.byname</tt> and alias
+maps. Example: <tt>$alias_maps unix:passwd.byname</tt>.
+
+<p>
+
+Beware: if the Postfix SMTP server runs chrooted, you may have to
+copy the passwd database into the jail. This is system dependent.
+
+<hr>

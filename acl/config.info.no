@@ -1,0 +1,14 @@
+#########################################
+#line1=Configurable options,11
+#select=Display user modules in,1,0-Table,1-Pulldown menu
+#order=Sort users and groups by,1,0-Order in file,1-Name
+#line2=System configuration,11
+#ssleay=Path to openssl or ssleay program,0
+#####################################################
+
+
+line1=Konfigurerbare opsjoner,11
+select=Vis bruker modulen i,1,0-Tabell,1-Pulldown meny
+order=Sorter brukere og grupper etter,1,0-Rekefølge i filen,1-Navn
+line2=System konfigurasjon,11
+ssleay=Stien til openssl eller ssleay program,0

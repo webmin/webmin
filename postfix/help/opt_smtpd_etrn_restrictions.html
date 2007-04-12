@@ -1,0 +1,18 @@
+<header>Restrict ETRN command upon...</header>
+
+<center><tt>smtpd_etrn_restrictions</tt></center>
+<hr>
+
+This parameter restricts what clients are allowed to issue the <tt>ETRN</tt>
+command. The present Postfix <tt>ETRN</tt> differs from other <tt>ETRN</tt>
+implementations in that it flushes mail for all destinations. This will change
+in the future.
+
+<p>
+
+The default is to allow <tt>ETRN</tt> from any host. The following restrictions
+are available:
+
+<include smtpd_restrictions>
+
+<hr>

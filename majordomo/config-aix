@@ -1,0 +1,5 @@
+majordomo_cf=/etc/majordomo.cf
+program_dir=/usr/local/bin
+dynamic=0
+sort_mode=0
+perms=0

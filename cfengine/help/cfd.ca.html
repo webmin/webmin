@@ -1,0 +1,22 @@
+<header>Dimoni del Motor de Configuració</header>
+
+El dimoni del motor de configuració és un procés en segon pla que serveix
+a diversos propòsits. Pot executar la configuració principal en base a una 
+planificació regular, pot acceptar peticions  d'altres hosts per a executar
+immediatament la configuració principal, i pot transferir fitxers a altres
+hosts que demanin una còpia d'aquest servidor amb una acció Copia Fitxers. <p>
+
+El dimoni té la seva pròpia separada, amb una estructura similar d'accions
+i classes, separada de la configuració principal. Si la configuració està
+buida, hauries de començar creant una acció <i>Opcions del dimoni de
+configuració</i> que defineixi les ordres que s'executen de forma planificada
+i les que s'executen quan altres hosts ho demanen. També s'hi poden afegir
+altres tipus d'accions per restringir l'accés als fitxers copiats a certs
+hosts. <p>
+
+Al peu de la pàgina hi ha un botó per iniciar el dimoni (si no està actualment
+en execució), o aturar-lo (si està en execució). <p>
+
+<hr>
+
+

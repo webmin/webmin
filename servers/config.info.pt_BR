@@ -1,0 +1,8 @@
+line1=Opções configuráveis,11
+resolve=Resolver endereços de servidores encontrados,1,1-Sim,0-Não
+scan_time=Tempo a aguardar por respostas de procuras,0
+display_mode=Exibir servidor como,1,1-Tabela,0-Ícones
+sort_mode=Ordenar servidor por,1,4-Endereço IP,1-Hostname,2-Descrição,3-OS,5-Grupo,0-Ordem de criação
+show_status=Exibir status para servidores,1,1-Sim,0-Não
+line2=Configuração do sistema,11
+groups_dir=Diretório de grupos de cluster MSC,0

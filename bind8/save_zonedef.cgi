@@ -1,0 +1,68 @@
+#!/usr/local/bin/perl
+# save_zonedef.cgi
+# Save zone defaults
+
+require './bind8-lib.pl';
+&ReadParse();
+&error_setup($text{'zonedef_err'});
+$access{'defaults'} || &error($text{'zonedef_ecannot'});
+
+&lock_file(&make_chroot($config{'named_conf'}));
+&lock_file("$module_config_directory/zonedef");
+$conf = &get_config();
+$options = &find("options", $conf);
+foreach $c ("master", "slave", "response") {
+	push(@check, { 'name' => 'check-names',
+		       'values' => [ $c, $in{$c} ] }) if ($in{$c});
+	}
+&save_directive($options, 'check-names', \@check, 1);
+&save_addr_match("allow-transfer", $options, 1);
+&save_addr_match("allow-query", $options, 1);
+&save_choice("notify", $options, 1);
+
+$in{'refresh'} =~ /^\d+$/ || &error(&text('master_erefresh', $in{'refresh'}));
+$in{'retry'} =~ /^\d+$/ || &error(&text('master_eretry', $in{'retry'}));
+$in{'expiry'} =~ /^\d+$/ || &error(&text('master_eexpiry', $in{'expiry'}));
+$in{'minimum'} =~ /^\d+$/ || &error(&text('master_eminimum', $in{'minimum'}));
+%zonedef = ( 'refresh', $in{'refresh'},
+	     'retry', $in{'retry'},
+	     'expiry', $in{'expiry'},
+	     'minimum', $in{'minimum'},
+	     'refunit', $in{'refunit'},
+	     'retunit', $in{'retunit'},
+	     'expunit', $in{'expunit'},
+	     'minunit', $in{'minunit'} );
+
+&lock_file("$module_config_directory/config");
+foreach $k (keys %config) {
+	delete($config{$k}) if ($k =~ /^tmpl_/);
+	}
+$j=0;
+for($i=0; defined($in{"name_$i"}); $i++) {
+	next if (!$in{"name_$i"});
+	$in{"type_$i"} eq 'A' || !$in{"def_$i"} ||
+		&error($text{'master_eiptmpl'});
+	$config{"tmpl_$j"} = join(' ', $in{"name_$i"}, $in{"type_$i"},
+				  $in{"def_$i"} ? () : ( $in{"value_$i"} ) );
+	$j++;
+	}
+$config{'tmpl_email'} = $in{'email'};
+$config{'tmpl_include'} = $in{'include'};
+if ($in{'prins_def'}) {
+	delete($config{'default_prins'});
+	}
+else {
+	$in{'prins'} =~ /^[a-z0-9\.\-\_]+$/i ||
+		&error($text{'zonedef_eprins'});
+	$config{'default_prins'} = $in{'prins'};
+	}
+&write_file("$module_config_directory/config", \%config);
+&unlock_file("$module_config_directory/config");
+
+&save_zone_defaults(\%zonedef);
+&flush_file_lines();
+&unlock_file(&make_chroot($config{'named_conf'}));
+&unlock_file("$module_config_directory/zonedef");
+&webmin_log("zonedef", undef, undef, \%in);
+&redirect("");
+

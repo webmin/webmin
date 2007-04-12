@@ -1,0 +1,16 @@
+<header>Késleltetési verem szerkesztése; fordította: Szakács Gergely</header>
+
+<p>
+<b>A vermek számozása</b><br>
+
+Ezt az egytõl kezdõdõ számot a Webmin választja ki. A szám egyszerûen a verem azonosítására szolgál, hogy a Squid többet is tudjon kezelni belõlük.<p>
+
+<b>A vermek osztályozása</b><br>
+
+Ez a verem típusát határozza meg. A késleltetési vermek lehetnek 1-es, 2-es, vagy 3-ass osztályúak, ami az alábbiakat jelenti: "1-Összesített", "2-Összesített és Egyedi", "3-Összesített, Egyedi és Hálózati". A legegyszerûbb az 1-es osztály, amely az adott veremhez tartozó felhasználók számára meghatároz egy maximális sávszélességet. A 2-es osztály egyidejûleg meghatároz egy összesített és egy felhasználókra bontott sávszélességet, miáltal az összes felhasználó sávszélessége nem haladhatja meg az összesített sávszélességet, miközben mindannyiukat egyedi korlátozás is köti. Végül a 3-as osztály a fentiek mellett egy hálózati sávszélességet is meghatároz, amely a teljes alhálózatra vonatkozik. A 3-as osztály rendszerint nagyon kiterjedt hálózatok estében hasznos, amelyek egynél több alhálózattal rendelkeznek.<p>
+
+A korlátozást tetszõleges egységben megadhatjuk, jóllehet ez a Squid konfigurációs fájljában byteokban fog megjelenni. Az elsõ mezõben veremnek kiosztott átlagos átvitel jelenik meg, míg a második a tároló méretét definiálja, mely nagyjából megegyezik a kihasználható maximális sávszélességgel.<p>
+
+A verem létrehozatalát követõen egy új rész fog megjelenni a lap alján, ahol beállíthatja, hogy a verem mely ACL-eknek feleljen meg. Az ACL-eket a <b>Hozzáférés-vezérlés</b> oldalon hozhatja létre, és bármely ACL felhasználható arra, hogy kiválassza, mely kapcsolatokra legyen érvényes az adott késleltetési verem. Egy ACL <b>engedélyezése</b> a megegyezõ kapcsolatoknak fogja megfeleltetni a vermet, míg egy ACL <b>elutasítása</b> következtében a megfelelõ kapcsolatok megkerülhetik a vermet. Így, hacsak nem egyetlen vermet rendelt az összes kapcsolathoz, két ACL-t kell létrehoznia. Az elsõ ACL-re fogja alkalmazni a késleltetési vermet, míg a második az <tt>összes</tt> ACL lesz, melynek eredményeként csak a kiválasztott kliensek lesznek korlátozva.<p>
+
+Egy új verem létrehozatala után ne felejtse el alkalmazni a változtatásokat és hozzáadni a megfelelõ ACL-eket.

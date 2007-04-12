@@ -1,0 +1,44 @@
+index_enopfile=시스템에 PPP 암호 파일 '$1'이(가) 존재하지 않습니다. PPP가 설치되어 있지 않은 것일 수 있습니다
+index_table=PPP 전화 접속 및 전화 걸기 계정
+index_user=사용자 이름
+index_server=서버
+index_uany=임의
+index_sany=임의
+index_create=새 PPP 계정 작성
+index_info=유닉스 사용자 목록의 변경 내용을 PPP 계정 목록에 자동으로 적용하도록 Webmin을 구성할 수 있습니다. 이러한 구성은 <tt>사용자 및 그룹</tt> Webmin 모듈이 사용자를 추가, 삭제 또는 변경하는 데 사용될 때만 가능합니다.
+index_onadd=서버에 유닉스 사용자 추가 시 서버의 PPP 계정 추가
+index_onchange=유닉스 사용자 변경 시 PPP 계정 변경
+index_ondelete=유닉스 사용자 삭제 시 PPP 계정 삭제
+index_apply=적용
+
+secrets_title=PPP 계정
+secrets_return=인덱스
+
+edit_secret_etitle=PPP 계정 편집
+edit_secret_ctitle=PPP 계정 작성
+edit_secret_acc=PPP 계정
+edit_secret_user=사용자 이름
+edit_secret_serv=서버
+edit_secret_sany=임의
+edit_secret_uany=임의
+edit_secret_pass=암호
+edit_secret_none=없음
+edit_secret_ffile=소스파일:
+edit_secret_leave=변경되지 않은 상태로 유지
+edit_secret_setto=설정 대상
+edit_secret_vaddr=유효한 주소
+edit_secret_aany=임의 계정 허용
+edit_secret_anone=허용 안함
+edit_secret_alist=나열된 계정 허용..
+edit_secret_save=저장
+edit_secret_del=삭제
+edit_secret_return=계정 목록
+
+save_secret_esave=계정을 저장하지 못했습니다
+save_secret_enoip='$1'은(는) 유효한 주소가 아닙니다
+
+log_create=PPP 사용자 $1 작성됨
+log_modify=PPP 사용자 $1 수정됨
+log_delete=PPP 사용자 $1 삭제됨
+log_sync=유닉스 사용자 동기화 변경됨
+

@@ -1,0 +1,16 @@
+<header>Body Checks</header>
+
+The optional header checks table allows email to be redirected based on the contents of the mesage body. Each entry in the table has a POSIX regular expression on the left-hand side, and an action on the right. <p>
+
+The regular expression can be something like :<br>
+<tt>/make.money.fast/</tt><br>
+to match messages containing the text 'make money fast'. <p>
+
+The action can be like :<br>
+<tt>REJECT</tt><br>
+to simply reject mail matching the expression, or :<br>
+<tt>REDIRECT spam@yourdomain.com</tt><br>
+To forward mail to another address. <p>
+
+<footer>
+

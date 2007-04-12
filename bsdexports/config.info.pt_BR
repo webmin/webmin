@@ -1,0 +1,3 @@
+line2=Configuração do Sistema,11
+exports_file=Arquivo de exportação,0
+restart_command=Comando para reiniciar mountd e nfsd,0

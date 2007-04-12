@@ -1,0 +1,7 @@
+search_cmd=man -k PAGE
+man_dir=/usr/man
+man_cmd_sect=man - SECTION PAGE
+man_cmd=man PAGE
+list_cmd=
+man2html_path=
+list_cmd_sect=

@@ -1,0 +1,17 @@
+name=Burner
+desc=CD Burner
+category=hardware
+depends=proc fdisk
+desc_ca=Gravadora de CDs
+desc_zh_TW.Big5=CD¿N¿ı
+desc_es=Grabadora de CD
+desc_de=CD-Brenner
+desc_pt_BR=Gravador de CD
+desc_ru_SU=úÁĞÉÓØ ÎÁ ËÏÍĞÁËÔ-ÄÉÓËÉ
+desc_ru_RU=Çàïèñü íà êîìïàêò-äèñêè
+longdesc=Burn data CDs from ISO images or selected directories.
+desc_fr=Gravure de CD
+os_support=!windows
+desc_zh_TW.UTF-8=CDç‡’éŒ„
+desc_sk=Napaµovanie CD
+desc_sv=CD Br&#228;nnare

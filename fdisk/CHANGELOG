@@ -1,0 +1,16 @@
+---- Changes since 1.140 ----
+Disk and partition sizes are now shown in GB, where possible.
+Added a button for mounting a partition.
+---- Changes since 1.170 ----
+Changed the way information about SCSI disks is retrieved, to make it more reliable. Instead of reading /proc/scsi/scsi, files under /proc/scsi/sg are used instead.
+---- Changes since 1.200 ----
+Linux swap partitions can now be easily mounted as virtual memory.
+---- Changes since 1.260 ----
+The FAT size option for Windows filesystems now uses a menu, which makes it easier to see what sizes are valid.
+---- Changes since 1.270 ----
+Added links to the SMART module, if available.
+---- Changes since 1.280 ----
+Added support for systems with more than 26 IDE or SCSI drives.
+---- Changes since 1.300 ----
+Added support for formatting FATX filesystems.
+Added a display of each partitions UUID, and added code to support their detection.

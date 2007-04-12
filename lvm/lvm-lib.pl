@@ -1,0 +1,641 @@
+# lvm-lib.pl
+# Common functions for managing VGs, PVs and LVs
+
+do '../web-lib.pl';
+&init_config();
+do '../ui-lib.pl';
+&foreign_require("mount", "mount-lib.pl");
+if (&foreign_check("raid")) {
+	&foreign_require("raid", "raid-lib.pl");
+	$has_raid++;
+	}
+
+$lvm_proc = "/proc/lvm";
+$lvm_tab = "/etc/lvmtab";
+
+# list_physical_volumes(vg)
+# Returns a list of all physical volumes for some volume group
+sub list_physical_volumes
+{
+local @rv;
+if (-d $lvm_proc) {
+	# Get list from /proc/lvm
+	opendir(DIR, "$lvm_proc/VGs/$_[0]/PVs");
+	foreach $f (readdir(DIR)) {
+		next if ($f eq '.' || $f eq '..');
+		local $pv = { 'name' => $f,
+			      'vg' => $_[0] };
+		local %p = &parse_colon_file("$lvm_proc/VGs/$_[0]/PVs/$f");
+		$pv->{'device'} = $p{'name'};
+		$pv->{'number'} = $p{'number'};
+		$pv->{'size'} = $p{'size'}/2;
+		$pv->{'status'} = $p{'status'};
+		$pv->{'number'} = $p{'number'};
+		$pv->{'pe_size'} = $p{'PE size'};
+		$pv->{'pe_total'} = $p{'PE total'};
+		$pv->{'pe_alloc'} = $p{'PE allocated'};
+		$pv->{'alloc'} = $p{'allocatable'} == 2 ? 'y' : 'n';
+		push(@rv, $pv);
+		}
+	closedir(DIR);
+	}
+else {
+	# Use pvdisplay command
+	local $pv;
+	open(DISPLAY, "pvdisplay |");
+	while(<DISPLAY>) {
+		s/\r|\n//g;
+		if (/PV\s+Name\s+(.*)/i) {
+			$pv = { 'name' => $1,
+				'device' => $1,
+				'number' => scalar(@rv) };
+			$pv->{'name'} =~ s/^\/dev\///;
+			push(@rv, $pv);
+			}
+		elsif (/VG\s+Name\s+(.*)/i) {
+			$pv->{'vg'} = $1;
+			$pv->{'vg'} =~ s/\s+\(.*\)//;
+			}
+		elsif (/PV\s+Size\s+(\S+)\s+(\S+)/i) {
+			$pv->{'size'} = &mult_units($1, $2);
+			}
+		elsif (/PE\s+Size\s+\(\S+\)\s+(\S+)/i) {
+			$pv->{'pe_size'} = $1;
+			}
+		elsif (/Total\s+PE\s+(\S+)/i) {
+			$pv->{'pe_total'} = $1;
+			}
+		elsif (/Allocated\s+PE\s+(\S+)/i) {
+			$pv->{'pe_alloc'} = $1;
+			}
+		elsif (/Allocatable\s+(\S+)/i) {
+			$pv->{'alloc'} = lc($1) eq 'yes' ? 'y' : 'n';
+			}
+		}
+	close(DISPLAY);
+	@rv = grep { $_->{'vg'} eq $_[0] } @rv;
+	}
+return @rv;
+}
+
+# get_physical_volume_usage(&lv)
+# Returns a list of LVs and blocks used on this physical volume
+sub get_physical_volume_usage
+{
+local @rv;
+open(DISPLAY, "pvdisplay -v $_[0]->{'device'} |");
+local $started;
+while(<DISPLAY>) {
+	if (/^\s*LV\s+Name/i) {
+		$started = 1;
+		}
+	elsif ($started && /^\s*\/dev\/\S+\/(\S+)\s+(\d+)\s+(\d+)/) {
+		push(@rv, [ $1, $2, $3 ]);
+		}
+	elsif ($started) {
+		last;
+		}
+	}
+close(DISPLAY);
+return @rv;
+}
+
+# create_physical_volume(&pv)
+sub create_physical_volume
+{
+local $cmd = "pvcreate -f -y '$_[0]->{'device'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $out if ($?);
+$cmd = "vgextend '$_[0]->{'vg'}' '$_[0]->{'device'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# change_physical_volume(&pv)
+sub change_physical_volume
+{
+local $cmd = "pvchange -x $_[0]->{'alloc'} '$_[0]->{'device'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# delete_physical_volume(&pv)
+sub delete_physical_volume
+{
+if ($_[0]->{'pe_alloc'}) {
+	local $cmd = "pvmove -f '$_[0]->{'device'}'";
+	local $out = &backquote_logged("$cmd 2>&1");
+	return $out if ($?);
+	}
+local $cmd = "vgreduce '$_[0]->{'vg'}' '$_[0]->{'device'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+
+# list_volume_groups()
+# Returns a list of all volume groups
+sub list_volume_groups
+{
+local (@rv, $f);
+if (-d $lvm_proc) {
+	# Can scan /proc/lvm
+	opendir(DIR, "$lvm_proc/VGs");
+	foreach $f (readdir(DIR)) {
+		next if ($f eq '.' || $f eq '..');
+		local $vg = { 'name' => $f };
+		local %g = &parse_colon_file("$lvm_proc/VGs/$f/group");
+		$vg->{'number'} = $g{'number'};
+		$vg->{'size'} = $g{'size'};
+		$vg->{'pe_size'} = $g{'PE size'};
+		$vg->{'pe_total'} = $g{'PE total'};
+		$vg->{'pe_alloc'} = $g{'PE allocated'};
+		push(@rv, $vg);
+		}
+	closedir(DIR);
+	}
+else {
+	# Parse output of vgdisplay
+	local $vg;
+	open(DISPLAY, "vgdisplay |");
+	while(<DISPLAY>) {
+		s/\r|\n//g;
+		if (/VG\s+Name\s+(.*)/i) {
+			$vg = { 'name' => $1 };
+			push(@rv, $vg);
+			}
+		elsif (/VG\s+Size\s+(\S+)\s+(\S+)/i) {
+			$vg->{'size'} = &mult_units($1, $2);
+			}
+		elsif (/PE\s+Size\s+(\S+)\s+(\S+)/i) {
+			$vg->{'pe_size'} = &mult_units($1, $2);
+			}
+		elsif (/Total\s+PE\s+(\d+)/i) {
+			$vg->{'pe_total'} = $1;
+			}
+		elsif (/Alloc\s+PE\s+\/\s+Size\s+(\d+)/i) {
+			$vg->{'pe_alloc'} = $1;
+			}
+		}
+	close(DISPLAY);
+	}
+return @rv;
+}
+
+sub mult_units
+{
+local ($n, $u) = @_;
+return $n*(uc($u) eq "KB" ? 1 :
+	   uc($u) eq "MB" ? 1024 :
+	   uc($u) eq "GB" ? 1024*1024 :
+	   uc($u) eq "TB" ? 1024*1024*1024 : 1);
+}
+
+# delete_volume_group(&vg)
+sub delete_volume_group
+{
+local $cmd = "vgchange -a n '$_[0]->{'name'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $out if ($?);
+$cmd = "vgremove '$_[0]->{'name'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# create_volume_group(&vg, device)
+sub create_volume_group
+{
+&system_logged("vgscan >/dev/null 2>&1 </dev/null");
+local $cmd = "pvcreate -f -y '$_[1]'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $out if ($?);
+$cmd = "vgcreate";
+$cmd .= " -s $_[0]->{'pe_size'}k" if ($_[0]->{'pe_size'});
+$cmd .= " '$_[0]->{'name'}' '$_[1]'";
+$out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# rename_volume_group(&vg, name)
+sub rename_volume_group
+{
+local $cmd = "vgrename '$_[0]->{'name'}' '$_[1]'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $out if ($?);
+$cmd = "vgchange -a n '$_[1]'";
+$out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $out if ($?);
+$cmd = "vgchange -a y '$_[1]'";
+$out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+
+# list_logical_volumes(vg)
+sub list_logical_volumes
+{
+local @rv;
+if (-d $lvm_proc) {
+	# Get LVs from /proc/lvm
+	opendir(DIR, "$lvm_proc/VGs/$_[0]/LVs");
+	foreach $f (readdir(DIR)) {
+		next if ($f eq '.' || $f eq '..');
+		local $lv = { 'name' => $f,
+			      'vg' => $_[0] };
+		local %p = &parse_colon_file("$lvm_proc/VGs/$_[0]/LVs/$f");
+		$lv->{'device'} = $p{'name'};
+		$lv->{'number'} = $p{'number'};
+		$lv->{'size'} = $p{'size'}/2;
+		$lv->{'perm'} = $p{'access'} == 3 ? 'rw' : 'r';
+		$lv->{'alloc'} = $p{'allocation'} == 2 ? 'y' : 'n';
+		$lv->{'has_snap'} = $p{'access'} == 11;
+		$lv->{'is_snap'} = $p{'access'} == 5;
+		$lv->{'stripes'} = $p{'stripes'};
+		push(@rv, $lv);
+		}
+	closedir(DIR);
+	}
+else {
+	# Use the lvdisplay command
+	local $lv;
+	open(DISPLAY, "lvdisplay |");
+	while(<DISPLAY>) {
+		s/\r|\n//g;
+		if (/LV\s+Name\s+(.*\/(\S+))/i) {
+			$lv = { 'name' => $2,
+				'device' => $1,
+				'number' => scalar(@rv) };
+			push(@rv, $lv);
+			}
+		elsif (/VG\s+Name\s+(.*)/) {
+			$lv->{'vg'} = $1;
+			}
+		elsif (/LV\s+Size\s+(\S+)\s+(\S+)/i) {
+			$lv->{'size'} = &mult_units($1, $2);
+			}
+		elsif (/LV\s+Write\s+Access\s+(\S+)/i) {
+			$lv->{'perm'} = $1 eq 'read/write' ? 'rw' : 'r';
+			}
+		elsif (/Allocation\s+(.*)/i) {
+			$lv->{'alloc'} = $1 eq 'contiguous' ? 'y' : 'n';
+			}
+		elsif (/LV\s+snapshot\s+status\s+(.*)/i) {
+			if ($1 =~ /source/) {
+				$lv->{'has_snap'} = 1;
+				}
+			else {
+				$lv->{'is_snap'} = 1;
+				}
+			}
+		elsif (/Stripes\s+(\d+)/) {
+			$lv->{'stripes'} = $1;
+			}
+		}
+	close(DISPLAY);
+	@rv = grep { $_->{'vg'} eq $_[0] } @rv;
+	}
+return @rv;
+}
+
+# get_logical_volume_usage(&lv)
+# Returns a list of PVs and blocks used by this logical volume. Each is an
+# array ref of : device physical-blocks reads writes
+sub get_logical_volume_usage
+{
+local @rv;
+if (&get_lvm_version() >= 2) {
+	# LVdisplay has new format in version 2
+	open(DISPLAY, "lvdisplay -m $_[0]->{'device'} |");
+	while(<DISPLAY>) {
+		if (/\s+Physical\s+volume\s+\/dev\/(\S+)/) {
+			push(@rv, [ $1, undef ]);
+			}
+		elsif (/\s+Physical\s+extents\s+(\d+)\s+to\s+(\d+)/ && @rv) {
+			$rv[$#rv]->[1] = $2-$1+1;
+			}
+		}
+	close(DISPLAY);
+	}
+else {
+	# Old version 1 format
+	open(DISPLAY, "lvdisplay -v $_[0]->{'device'} |");
+	local $started;
+	while(<DISPLAY>) {
+		if (/^\s*PV\s+Name/i) {
+			$started = 1;
+			}
+		elsif ($started && /^\s*\/dev\/(\S+)\s+(\d+)\s+(\d+)\s+(\d+)/) {
+			push(@rv, [ $1, $2, $3, $4 ]);
+			}
+		elsif ($started) {
+			last;
+			}
+		}
+	close(DISPLAY);
+	}
+return @rv;
+}
+
+# create_logical_volume(&lv)
+sub create_logical_volume
+{
+local $cmd = "lvcreate -n$_[0]->{'name'} -L$_[0]->{'size'}k";
+if ($_[0]->{'is_snap'}) {
+	$cmd .= " -s '/dev/$_[0]->{'vg'}/$_[0]->{'snapof'}'";
+	}
+else {
+	$cmd .= " -p $_[0]->{'perm'}";
+	$cmd .= " -C $_[0]->{'alloc'}";
+	$cmd .= " -i $_[0]->{'stripe'}" if ($_[0]->{'stripe'});
+	$cmd .= " $_[0]->{'vg'}";
+	}
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# delete_logical_volume(&lv)
+sub delete_logical_volume
+{
+local $cmd = "lvremove -f '$_[0]->{'device'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# resize_logical_volume(&lv, size)
+sub resize_logical_volume
+{
+local $cmd = $_[1] > $_[0]->{'size'} ? "lvextend" : "lvreduce -f";
+$cmd .= " -L$_[1]k";
+$cmd .= " '$_[0]->{'device'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# change_logical_volume(&lv)
+sub change_logical_volume
+{
+local $cmd = "lvchange ";
+$cmd .= " -p $_[0]->{'perm'}";
+$cmd .= " -C $_[0]->{'alloc'}";
+$cmd .= " '$_[0]->{'device'}'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# rename_logical_volume(&lv, name)
+sub rename_logical_volume
+{
+local $cmd = "lvrename '$_[0]->{'device'}' '/dev/$_[0]->{'vg'}/$_[1]'";
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
+# can_resize_filesystem(type)
+# 0 = no, 1 = enlarge only, 2 = enlarge or shrink
+sub can_resize_filesystem
+{
+if ($_[0] eq "ext2" || $_[0] eq "ext3") {
+	return &has_command("e2fsadm") ? 2 :
+	       &has_command("resize2fs") ? 1 : 0;
+	}
+# This is supposed to work, but doesn't for me!
+#elsif ($_[0] eq "xfs") {
+#	return &has_command("xfs_growfs") ? 1 : 0;
+#	}
+elsif ($_[0] eq "reiserfs") {
+	return &has_command("resize_reiserfs") ? 2 : 0;
+	}
+elsif ($_[0] eq "jfs") {
+	return 1;
+	}
+else {
+	return 0;
+	}
+}
+
+# resize_filesystem(&lv, type, size)
+sub resize_filesystem
+{
+if ($_[1] eq "ext2" || $_[1] eq "ext3") {
+	&foreign_require("proc", "proc-lib.pl");
+	if (&has_command("e2fsadm")) {
+		# The e2fsadm command can re-size an LVM and filesystem together
+		local $cmd = "e2fsadm -v -L $_[2]k '$_[0]->{'device'}'";
+		local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+		print $fh "yes\n";
+		local $out;
+		while(<$fh>) {
+			$out .= $_;
+			}
+		close($fh);
+		waitpid($fpid, 0);
+		&additional_log("exec", undef, $cmd);
+		return $? ? $out : undef;
+		}
+	else {
+		# Need to resize LVM first, then filesystem
+		local $err = &resize_logical_volume($_[0], $_[2]);
+		return $err if ($err);
+
+		local $cmd = "resize2fs -f '$_[0]->{'device'}'";
+		local $out = &backquote_logged("$cmd 2>&1");
+		return $? ? $out : undef;
+		}
+	}
+elsif ($_[1] eq "xfs") {
+	# Resize the logical volume first
+	local $err = &resize_logical_volume($_[0], $_[2]);
+	return $err if ($err);
+
+	# Resize the filesystem .. which must be mounted!
+	# XXX doesn't work on LVMs!
+	local ($m, $mount);
+	foreach $m (&mount::list_mounts()) {
+		if ($m->[1] eq $_[0]->{'device'}) {
+			$mount = $m;
+			}
+		}
+	$mount || return "Mount not found";
+	&mount::mount_dir(@$mount);
+	local $cmd = "xfs_growfs '$mount->[0]'";
+	local $out = &backquote_logged("$cmd 2>&1");
+	local $q = $?;
+	&mount::unmount_dir(@$mount);
+	return $q ? $out : undef;
+	}
+elsif ($_[1] eq "reiserfs") {
+	if ($_[2] > $_[0]->{'size'}) {
+		# Enlarge the logical volume first
+		local $err = &resize_logical_volume($_[0], $_[2]);
+		return $err if ($err);
+
+		# Now enlarge the reiserfs filesystem
+		local $cmd = "resize_reiserfs '$_[0]->{'device'}'";
+		local $out = &backquote_logged("$cmd 2>&1");
+		return $? ? $out : undef;
+		}
+	else {
+		# Try to shrink the filesystem
+		local $cmd = "yes | resize_reiserfs -s $_[2]K '$_[0]->{'device'}'";
+		local $out = &backquote_logged("$cmd 2>&1");
+		return $out if ($?);
+
+		# Now shrink the logical volume
+		local $err = &resize_logical_volume($_[0], $_[2]);
+		return $err ? $err : undef;
+		}
+	}
+elsif ($_[1] eq "jfs") {
+	# Enlarge the logical volume first
+	local $err = &resize_logical_volume($_[0], $_[2]);
+	return $err if ($err);
+
+	# Now enlarge the jfs filesystem with a remount
+	local ($m, $mount);
+	foreach $m (&mount::list_mounts()) {
+		if ($m->[1] eq $_[0]->{'device'}) {
+			$mount = $m;
+			}
+		}
+	$mount || return "Mount not found";
+	&mount::mount_dir(@$mount);
+	local $ropts = $mount->[3];
+	$ropts = $ropts eq "-" ? "resize,remount" : "$ropts,resize,remount";
+	local $err = &mount::mount_dir($mount->[0], $mount->[1],
+				       $mount->[2], $ropts);
+	&mount::unmount_dir(@$mount);
+	return $err ? $err : undef;
+	}
+else {
+	return "???";
+	}
+}
+
+
+# parse_colon_file(file)
+sub parse_colon_file
+{
+local %rv;
+open(FILE, $_[0]);
+while(<FILE>) {
+	if (/^([^:]+):\s*(.*)/) {
+		$rv{$1} = $2;
+		}
+	}
+close(FILE);
+return %rv;
+}
+
+# device_status(device)
+# Returns an array of  directory, type, mounted
+sub device_status
+{
+@mounted = &foreign_call("mount", "list_mounted") if (!@mounted);
+@mounts = &foreign_call("mount", "list_mounts") if (!@mounts);
+local $label = &fdisk::get_label($_[0]);
+
+local ($mounted) = grep { &same_file($_->[1], $_[0]) ||
+			  $_->[1] eq "LABEL=$label" } @mounted;
+local ($mount) = grep { &same_file($_->[1], $_[0]) ||
+			$_->[1] eq "LABEL=$label" } @mounts;
+if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
+			&indexof($mount, @mounts),
+			&indexof($mounted, @mounted)); }
+elsif ($mount) { return ($mount->[0], $mount->[2], 0,
+			 &indexof($mount, @mounts)); }
+elsif ($has_raid) {
+	$raidconf = &foreign_call("raid", "get_raidtab") if (!$raidconf);
+	foreach $c (@$raidconf) {
+		foreach $d (raid::find_value('device', $c->{'members'})) {
+			return ( $c->{'value'}, "raid", 1 ) if ($d eq $_[0]);
+			}
+		}
+	}
+return ();
+}
+
+# device_message(stat)
+# Returns a text string about the status of an LV
+sub device_message
+{
+$msg = $_[2] ? 'lv_mount' : 'lv_umount';
+$msg .= 'vm' if ($_[1] eq 'swap');
+$msg .= 'raid' if ($_[1] eq 'raid');
+return &text($msg, "<tt>$_[0]</tt>", "<tt>$_[1]</tt>");
+}
+
+# list_lvmtab()
+sub list_lvmtab
+{
+local @rv;
+open(TAB, $lvm_tab);
+local $/ = "\0";
+while(<TAB>) {
+	chop;
+	push(@rv, $_) if ($_);
+	}
+close(TAB);
+return @rv;
+}
+
+# device_input()
+sub device_input
+{
+local (%used, $vg, $pv, $d, $p);
+
+# Find partitions that are part of an LVM
+foreach $vg (&list_volume_groups()) {
+	foreach $pv (&list_physical_volumes($vg->{'name'})) {
+		$used{$pv->{'device'}}++;
+		}
+	}
+
+# Show available partitions
+print "<select name=device>\n";
+foreach $d (&foreign_call("fdisk", "list_disks_partitions")) {
+	foreach $p (@{$d->{'parts'}}) {
+		next if ($used{$p->{'device'}} || $p->{'extended'});
+		local @ds = &device_status($p->{'device'});
+		next if (@ds);
+		if ($p->{'type'} eq '83') {
+			local $label = &fdisk::get_label($p->{'device'});
+			next if ($used{"LABEL=$label"});
+			}
+		local $tag = &foreign_call("fdisk", "tag_name", $p->{'type'});
+		printf "<option value='%s'>%s%s%s\n",
+			$p->{'device'}, $p->{'desc'},
+			$tag ? " ($tag)" : "",
+			$d->{'cylsize'} ? " (".&nice_size($d->{'cylsize'}*($p->{'end'} - $p->{'start'} + 1)).")" :
+			" ($p->{'blocks'} $text{'blocks'})";
+		}
+	}
+
+# Show available RAID devices
+local $conf = &foreign_call("raid", "get_raidtab");
+foreach $c (@$conf) {
+	next if ($used{$c->{'value'}});
+	local @ds = &device_status($c->{'value'});
+	next if (@ds);
+	printf "<option value='%s'>%s\n",
+		$c->{'value'}, &text('pv_raid', $c->{'value'} =~ /md(\d+)$/ ? "$1" : $c->{'value'});
+	}
+
+print "<option value=''>$text{'pv_other'}\n";
+print "</select>\n";
+print "<input name=other size=30> ",
+	&file_chooser_button("other"),"<br>\n";
+print "<b>$text{'pv_warn'}</b>\n";
+}
+
+# get_lvm_version()
+# Returns the lvm version number and optionally output from the vgdisplay
+# command used to get it.
+sub get_lvm_version
+{
+local $out = `vgdisplay --version 2>&1`;
+local $ver = $out =~ /\s+([0-9\.]+)/ ? $1 : undef;
+return wantarray ? ( $ver, $out ) : $ver;
+}
+
+1;
+

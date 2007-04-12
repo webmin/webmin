@@ -1,0 +1,288 @@
+index_title=Postfix 메일 에이전트
+index_epath=Postfix 제어 명령 $1이(가) 시스템에 설치되어 있지 않습니다. <a href='$2'>모듈 구성</a>이 정확하지 않거나 Postfix가 설치되어 있지 않을 수 있습니다.
+
+internal_error=내부 오류
+index_econfig=Postfix 구성 명령 $1이(가) 없습니다. <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
+index_stop=Postfix 중지
+index_start=Postfix 시작
+index_stopmsg=Postfix 메일 서버 실행을 중지하려면 이 버튼을 누르십시오. 그러면 다른 시스템에서 로컬 사용자로의 메일 전달이 중지되며, 클라이언트가 이 시스템을 메일 서버로 사용하여 메일을 전송하지 못하게 됩니다.
+index_startmsg=Postfix 메일 서버를 시작하려면 이 버튼을 누르십시오. 이 버튼을 누르기 전에는 메일이 다른 시스템의 로컬 사용자에게 배달되지 않으며 클라이언트가 이 시스템을 메일 서버로 사용할 수 없습니다.
+opts_err=옵션을 저장하지 못했습니다
+
+check_error=현재 Postfix 구성을 검사하는 동안 오류가 발생했습니다. Postfix 구성을 수동으로 수정하십시오.
+
+address_rewriting_title=주소 고쳐쓰기 및 가상화
+address_rewriting_ecannot=주소 고쳐쓰기 및 가상화를 편집할 수 없습니다
+aliases_title=메일 별칭
+aliases_ecannot=별칭을 편집할 수 없습니다
+aliases_no_alias_file=별칭 파일이 없습니다
+aliases_failed_delete=별칭을 삭제하지 못했습니다: $1
+aliases_cant_write=별칭 파일에 쓸 수 없습니다
+aliases_cant_read=별칭 파일을 읽을 수 없습니다
+aliasopts_title=별칭 옵션
+aliases_internal_error=별칭: 내부 오류
+edit_alias_title=별칭 등록 정보 편집
+alias_save=별칭 저장
+alias_save_err=별칭을 저장하지 못했습니다
+alias_delete_create=현재 작성 중인 별칭을 삭제하시겠습니까?
+delete_alias=별칭 삭제
+aliases_click=등록 정보를 편집할 별칭을 누르십시오:
+
+general_title=일반 옵션
+general_title_sensible=가장 유용한 일반 옵션
+general_title_others=기타 일반 옵션
+general_ecannot=일반 옵션을 편집할 수 없습니다
+what_is_it=무엇입니까?
+
+opts_default=기본값
+opts_none=없음
+opts_relayhost=호스트를 통해 발신 메일 전송
+opts_direct=직접 배달
+opts_myorigin=아웃바운드 메일에 사용할 도메인
+opts_myorigin_as_myhostname=호스트 이름 사용
+opts_myorigin_as_mydomain=도메인 이름 사용
+opts_mydestination=메일을 받을 도메인
+opts_mydestination_default=로컬 시스템
+opts_mydestination_domainwide=전체 도메인
+opts_notify_classes=포스트마스터에게 보고할 문제
+opts_queue_directory=메일 대기열 디렉토리
+opts_mail_owner=메일 소유자
+opts_default_privs=배달 에이전트의 기본 권한
+opts_inet_interfaces=메일 수신용 네트워크 인터페이스
+opts_all_interfaces=모두
+
+opts_local_recipient_maps=알 수 없는 로컬 사용자 거부
+opts_no=아니오
+opts_save=저장 및 적용
+
+
+opts_allow_percent_hack="user%domain"을 "user@domain"으로 고쳐쓰기
+opts_append_at_myorigin="user"를 "user@$mydomain"으로 고쳐쓰기
+opts_append_dot_mydomain="user@host"를 "user@host.$mydomain"으로 고쳐쓰기
+opts_empty_address_recipient=수신자 없이 메일 전송...
+opt_empty_recip_default=기본값
+opts_swap_bangpath="site!user"를 "user@site"로 고쳐쓰기
+opts_masquerade_domains=주소 가상화
+opts_masquerade_exceptions=가상화 예외
+index_return=Postfix 구성
+
+
+opts_alias_maps=로컬 배달 에이전트에 사용되는 별칭 데이터베이스
+opts_alias_database=&quot;newaliases&quot; 명령으로 작성되는 별칭 데이터베이스
+aliases_warning=경고: <ul><li>첫번째 필드가 채워져 있으면 해당 데이터베이스를 구축하는 데 기본 Postfix 별칭 생성 명령이 사용됩니다. <li>sendmail 호환 명령 &quot;newaliases&quot;가 사용되는 경우에는 두번째 필드의 데이터베이스가 사용됩니다.</ul>
+
+aliases_name=이름
+aliases_value=별칭...
+
+new_alias=새 별칭 작성
+new_aliasmsg=새 별칭을 작성하려면 이 버튼을 누르십시오
+
+
+local_delivery_ecannot=로컬 배달 옵션을 편집할 수 없습니다
+local_delivery_title=로컬 배달
+opts_local_transport=로컬 배달에 사용할 전송 이름
+opts_local_transport_local=로컬
+opts_local_command_shell=외부 명령으로 배달하는 데 사용할 쉘
+opts_local_command_shell_direct=없음(명령 직접 실행)
+opts_forward_path=목록에서 전달 검색
+opts_allow_mail_to_commands=외부 명령으로의 유효한 메일 배달
+opts_allow_mail_to_files=외부 파일로의 유효한 메일 배달
+opts_home_mailbox=사용자 메일박스 파일의 홈 상대 경로 이름
+opts_home_mailbox_default=없음(표준 <tt>/var/something</tt> 사용)
+opts_luser_relay=알 수 없는 수신자의 목적지 주소
+opts_luser_relay_none=없음(바운스 메일)
+opts_mail_spool_directory=스풀 디렉토리
+opts_mailbox_command=메일박스 배달 대신에 사용할 외부 명령
+opts_mailbox_command_none=없음
+opts_mailbox_transport=사용할 실제 전송(선택적)
+opts_mailbox_transport_none=없음
+opts_fallback_transport=알 수 없는 수신자를 위한 전송(선택적)
+opts_fallback_transport_none=없음
+opts_local_destination_concurrency_limit=같은 로컬 수신자에게 동시에 보낼 수 있는 최대 배달 수
+opts_local_destination_recipient_limit=로컬 메시지 배달 당 최대 수신자 수
+opts_local_destination_recipient_limit_default=기본값
+opts_prepend_delivered_header=다음 경우 <tt>배달지:</tt> 지연...
+opts_prepend_delivered_header_default=기본값
+
+
+resource_title=일반 리소스 제어
+resource_ecannot=리소스 제어 매개 변수를 편집할 수 없습니다
+opts_bounce_size_limit=바운스된 메시지의 최대 크기
+opts_command_time_limit=외부 명령으로의 최대 배달 시간
+opts_default_process_limit=Postfix 하위 프로세스의 최대 수
+opts_deliver_lock_attempts=최대 파일 잠금 시도 횟수
+opts_deliver_lock_delay=파일 잠금 시도 간격(초)
+opts_duplicate_filter_limit=복제 필터에서 저장할 최대 주소 수
+opts_fork_attempts=최대 프로세스 포크 시도 횟수
+opts_fork_delay=포크 시도 간격(초)
+opts_header_size_limit=header 처리에 사용되는 최대 메모리 크기
+opts_line_length_limit=입력 행 처리에 사용되는 최대 메모리 크기
+opts_message_size_limit=최대 메시지 크기
+opts_qmgr_message_active_limit=활성 대기열의 최대 메시지 수
+opts_qmgr_message_recipient_limit=메모리 내 수신자의 최대 수
+opts_queue_minfree=대기열 파일 시스템의 최소 여유 공간
+opts_stale_lock_time=스톨 잠금이 해제된 후 최대 대기 시간
+opts_transport_retry_time=끊어진 MDT에 대한 연결 시도 간격(초)
+
+
+opts_always_bcc=각 메시지의 숨은 참조를 받는 주소
+opts_always_bcc_none=없음
+opts_daemon_timeout=요청 처리 시간 초과
+opts_default_database_type=기본 데이터베이스 유형
+opts_default_transport=기본 메시지 배달 전송
+opts_double_bounce_sender=바운스 메일의 발신자 주소
+opts_hash_queue_depth=대기열 디렉토리 아래의 하위 디렉토리 수준 수
+opts_hash_queue_names=여러 하위 디렉토리에 걸쳐 분할된 대기열 디렉토리의 이름
+opts_hopcount_limit=최대 <tt>수신자:</tt> header 수
+opts_ipc_idle=내부 IPC 클라이언트 연결이 끊긴 후 유휴 시간
+opts_ipc_timeout=내부 통신 채널의 입/출력 시간 초과
+opts_mail_name=메일 시스템 이름
+opts_mail_version=공식적인 메일 시스템 버전
+opts_max_idle=다음번 서비스 요청 대기 시간
+opts_max_use=끝내기 전에 처리하는 최대 서비스 요청 수
+opts_mydomain=로컬 인터넷 도메인 이름
+opts_mydomain_default=기본값(시스템에서 제공)
+opts_myhostname=이 메일 시스템의 인터넷 호스트 이름
+opts_myhostname_default=기본값(시스템에서 제공)
+opts_mynetworks=로컬 네트워크
+opts_mynetworks_default=기본값(모든 연결된 네트워크)
+opts_bounce_notice_recipient=바운스 시 포스트마스터 알림 메시지 전송 대상...
+opts_2bounce_notice_recipient=2회 바운스 시 포스터마스터 알림 메시지 전송 대상...
+opts_delay_notice_recipient=지연 시 포스트마스터 알림 메시지 전송 대상...
+opts_error_notice_recipient=오류 시 포스트마스터 알림 메시지 전송 대상...
+opts_process_id_directory=잠금 파일 디렉토리(대기열 디렉토리에 상대적)
+opts_program_directory=Postfix 지원 프로그램 및 데몬 디렉토리
+opts_recipient_delimiter=구분자의 사용자 이름/주소 확장자
+opts_relocated_maps_default=기본값(사용 불능)
+opts_sun_mailtool_compatibility=메일박스의 커널 파일 잠금 사용 불능
+opts_trigger_timeout=데몬에 트리거를 전송하는 최대 시간
+opts_delay_warning_time=배달 안됨 경고를 보내기 전에 대기하는 시간(시)
+opts_delay_warning_time_default=사용 불능
+
+
+smtpd_title=SMTP 서버 옵션
+smtpd_ecannot=SMTP 서버 옵션을 편집할 수 없습니다
+opts_disable_vrfy_command=SMTP VRFY 명령 사용 불능
+opts_smtpd_banner=SMTP 인사말 배너
+opts_smtpd_etrn_restrictions=ETRN 명령 제한 기준...
+opts_smtpd_recipient_limit=배달이 허용되는 최대 수신자 수
+opts_smtpd_timeout=SMTP 트랜잭션 시간 초과(초)
+opts_smtpd_error_sleep_time=4xx/5xx 오류 응답을 보내기 전에 시간 초과
+opts_smtpd_soft_error_limit=일시적인 클라이언트 무시를 위한 오류 카운트
+opts_smtpd_hard_error_limit=연결을 닫기 위한 오류 카운트
+opts_smtpd_client_restrictions=클라이언트 호스트 이름/주소에 대한 제한
+opts_smtpd_helo_required=HELO 필요
+opts_smtpd_helo_restrictions=HELO 명령의 전송에 대한 제한
+opts_smtpd_sender_restrictions=발신자 주소에 대한 제한
+opts_smtpd_recipient_restrictions=수신자 주소에 대한 제한
+opts_allow_untrusted_routing=신뢰할 수 없는 라우팅 허용
+opts_maps_rbl_domains=블랙리스트 조회용 DNS 도메인
+opts_relay_domains=메일 릴레이 제한
+opts_access_map_reject_code=맵 위반 접근에 대한 SMTP 서버 응답
+opts_invalid_hostname_reject_code=잘못된 호스트 이름 거부에 대한 SMTP 서버 응답
+opts_maps_rbl_reject_code=RBL 도메인 위반에 대한 SMTP 서버 응답
+opts_reject_code=클라이언트 거부에 대한 SMTP 서버 응답
+opts_relay_domains_reject_code=금지된 릴레이에 대한 SMTP 서버 응답
+opts_unknown_address_reject_code=알 수 없는 도메인 거부에 대한 SMTP 서버 응답
+opts_unknown_client_reject_code=알 수 없는 클라이언트 거부에 대한 SMTP 서버 응답
+opts_unknown_hostname_reject_code=알 수 없는 호스트 이름 거부에 대한 SMTP 서버 응답
+
+
+smtp_title=SMTP 클라이언트 옵션
+smtp_ecannot=SMTP 클라이언트 옵션을 편집할 수 없습니다
+opts_best_mx_transport=최상의 MX 호스트로 나열될 때의 동작
+opts_best_mx_transport_default=기본값(바운스 메시지)
+opts_fallback_relay=잘못된 목적지에 메일을 보낼 호스트/도메인
+opts_ignore_mx_lookup_error=MX 조회 오류 무시
+opts_smtp_skip_4xx_greeting=4xx 인사말 생략
+opts_smtp_skip_quit_response=QUIT 명령 대기 생략
+opts_smtp_destination_concurrency_limit=같은 목적지으로 동시에 보낼 수 있는 최대 배달 수
+opts_smtp_destination_recipient_limit=배달 당 최대 수신자 수
+opts_smtp_connect_timeout=TCP 연결 완료 시간 초과
+opts_smtp_helo_timeout=인사말 배너 대기 시간 초과
+opts_smtp_mail_timeout=MAIL FROM에 대한 응답 대기 시간 초과
+opts_smtp_rcpt_timeout=RCPT TO에 대한 응답 대기 시간 초과
+opts_smtp_data_init_timeout=DATA에 대한 응답 대기 시간 초과
+opts_smtp_data_xfer_timeout=메시지 내용 전송에 대한 응답 대기 시간 초과
+opts_smtp_data_done_timeout=&quot;.&quot; 끝내기에 대한 응답 대기 시간 초과
+opts_smtp_quit_timeout=QUIT에 대한 응답 대기 시간 초과
+
+
+rate_title=배달 속도
+rate_ecannot=배달 속도 옵션을 편집할 수 없습니다
+opts_default_destination_concurrency_limit=같은 목적지으로 동시에 보낼 수 있는 최대 배달 수
+opts_default_destination_recipient_limit=메시지 배달 당 최대 수신자 수
+opts_initial_destination_concurrency=동일한 목적지로 배달할 때 초기 동시성 수준
+opts_maximal_backoff_time=지연된 메시지의 최대 배달 시도 간격(초)
+opts_maximal_queue_lifetime=메시지가 배달 불능 상태로 바뀌기 전에 대기열에 보관되는 최대 시간(일)
+opts_minimal_backoff_time=지연된 메시지의 최소 배달 시도 간격(초)
+opts_queue_run_delay=지연된 대기열의 스캔 간격(초)
+opts_defer_transports=배달하면 안되는 전송
+
+
+debug_title=디버깅 기능
+debug_ecannot=디버깅 기능을 편집할 수 없습니다
+opts_debug_peer_list=자세한 정보 로그 기능이 설정된 도메인/네트워크 패턴 목록
+opts_debug_peer_level=위 목록과 일치할 때의 자세한 정보 로그 기록 수준
+debug_version=Webmin의 Postfix 모듈 - 버전 $1
+
+ldap_title=LDAP 조회
+ldap_ecannot=LDAP 조회 옵션을 편집할 수 없습니다
+ldap_non_existent=LDAP가 Postfix 시스템에 없을 수 있습니다
+opts_ldap_lookup_timeout=LDAP 데이터베이스 조회 시간 초과
+opts_ldap_search_base=검색할 LDAP 데이터베이스
+opts_ldap_server_host=LDAP 서버 호스트 이름
+
+canonical_title=정식 매핑
+canonical_ecannot=정식 매핑 구성을 편집할 수 없습니다
+opts_canonical_maps=주소 매핑 조회 테이블
+opts_recipient_canonical_maps=RECIPIENT 주소 테이블
+opts_sender_canonical_maps=SENDER 주소 테이블
+edit_canonical_maps=정식 맵 편집
+edit_recipient_canonical_maps=수신자 정식 맵 편집
+edit_sender_canonical_maps=발신자 정식 맵 편집
+edit_canonical_maps_general=정식 맵을 편집하려면 이 버튼들 중 하나를 누르십시오
+canonical_edit_title=정식 맵 편집
+
+mapping_name=이름
+mapping_value=매핑 대상...
+new_mapping=새 매핑
+new_mappingmsg=새 매핑을 작성하려면 이 버튼을 누르십시오
+map_save=매핑 저장
+delete_map=매핑 삭제
+edit_map_title=맵 편집
+map_save_err=매핑을 저장하는 동안 오류가 발생했습니다
+mapps_no_map_file=정의된 맵 파일이 없습니다
+map_delete_failed=맵을 삭제하지 못했습니다: $1
+map_delete_create=현재 작성 중인 맵을 삭제할 수 없습니다
+maps_internal_error=맵: 내부 오류
+maps_cant_write=쓰기를 할 수 없습니다
+help_map_format=무슨 포맷을 사용할까요?
+
+
+virtual_title=가상 도메인
+virtual_ecannot=가상 도메인 매핑 구성을 편집할 수 없습니다
+opts_virtual_maps=도메인 매핑 조회 테이블
+
+transport_title=전송 매핑
+transport_ecannot=전송 매핑 구성을 편집할 수 없습니다
+opts_transport_maps=전송 매핑 조회 테이블
+
+relocated_title=위치 변경된 매핑
+relocated_ecannot=위치 변경된 매핑 구성을 편집할 수 없습니다
+opts_relocated_maps=매핑 조회 테이블 위치 변경됨
+
+map_click=등록 정보를 편집할 매핑을 누르십시오:
+no_map=(정의된 맵이 없습니다. 먼저 맵을 정의해야 편집이 가능합니다.)
+no_map2=정의된 맵이 없습니다. 먼저 맵을 정의해야 편집이 가능합니다.
+
+stop_efailed=Postfix를 중지하지 못했습니다
+stop_ecannot=Postfix를 중지할 수 없습니다
+
+query_get_efailed=Postfix 구성 명령을 쿼리하여 매개 변수 $1의 현재 값을 가져오지 못했습니다: <tt>$2</tt>
+query_set_efailed=Postfix 구성 명령을 쿼리하여 매개 변수 $1의 현재 값을 $2(으)로 설정하지 못했습니다: <tt>$3</tt>
+reload_ecannot=Postfix를 다시 로드할 수 없습니다
+reload_efailed=Postfix를 다시 로드하지 못했습니다.
+regenerate_ecannot=별칭을 다시 생성할 수 없습니다
+regenerate_alias_efailed=별칭을 다시 생성하지 못했습니다: <tt>$1</tt>
+regenerate_table_efailed=테이블 $1을(를) 다시 생성하지 못했습니다: <tt>$2</tt>

@@ -1,0 +1,247 @@
+quota_unlimited=不限
+
+acl_fss=这个用户可编辑的文件系统
+acl_fall=所有文件系统
+acl_fsel=已选的..
+acl_quotaon=是否可启用和禁用磁盘配额？
+acl_quotanew=是否为新用户配置磁盘配额？
+acl_ugrace=是否可编辑用户宽限次数？
+acl_vtotal=是否可查看磁盘总空间？
+acl_ggrace=是否可编辑组宽限次数？
+acl_uquota=这个用户可以编辑其磁盘配额的用户中
+acl_gquota=这个用户可以编辑其磁盘配额的组
+acl_uall=所有用户
+acl_uonly=唯一用户
+acl_uexcept=所有用户除了
+acl_ugroup=主组中的用户
+acl_gall=所有组
+acl_gnone=没有组
+acl_gonly=唯一组
+acl_gexcept=所有组除了
+acl_uuid=带有UID的用户范围
+acl_maxblocks=最大的可授权块配置
+acl_maxfiles=最大可授权的文件配额
+acl_unlimited=不限
+
+activate_eallow=您没有在本文件系统上启用和禁用磁盘配额的权限
+activate_eon=打开配额失败
+activate_eoff=关闭配额失败
+
+check_title=检查配额
+check_return=$1 列表
+check_ecannot=您没有检查本文件系统的配额的权限
+check_running=现在正在运行<tt>quotacheck</tt>命令以检查<tt>$1</tt>上的磁盘块和文件的利用情况。对于大型文件系统，这需要很长时间..
+check_done=... 完成。
+check_rgroup=组
+check_ruser=用户
+
+cgroup_efail=拷贝配额失败
+cgroup_ecannot=您没有拷贝配额的权限
+cgroup_egallow=您没有拷贝这个组的配额的权限
+cgroup_enogroup=没有可拷贝的组到
+cgroup_eallowto=您没有拷贝配额到 '$1'的权限
+
+cgform_title=拷贝配额
+cgform_return=组配额
+cgform_ecannot=您无法拷贝配额
+cgform_egroup=您没有拷贝这个组的配额的权限
+cgform_copyto=拷贝所有文件系统上<tt>$1</tt>的配额
+cgform_all=系统上的所有组
+cgform_select=选定组
+cgform_contain=包含用户的组
+cgform_doit=拷贝
+
+cuser_efail=拷贝配额失败
+cuser_ecannot=您没有拷贝配额的权限
+cuser_euallow=您没有拷贝这个用户的配额的权限
+cuser_enouser=没有用户拷贝到
+cuser_eallowto=您没有拷贝配额到'$1'的权限
+
+cuform_title=拷贝配额
+cuform_return=用户配额
+cuform_ecannot=您无法拷贝配额
+cuform_euallow=您没有拷贝这个用户配额的权限
+cuform_copyto=拷贝<tt>$1</tt>在所有文件系统的配额到 ...
+cuform_all=系统上的所用用户
+cuform_select=选定的用户
+cuform_members=选定组的成员
+cuform_doit=拷贝
+
+egroup_title=编辑配额
+egroup_freturn=文件系统列表
+egroup_greturn=组列表
+egroup_eallowgr=您没有编辑 '$1'的配额的权限
+egroup_eallowfs=您没有编辑此文件系统上的配额的权限
+egroup_quotas=<tt>$1</tt>在<tt>$2</tt>上的配额
+egroup_bused=已用块
+egroup_sblimit=软性块限制
+egroup_hblimit=硬性块限制
+egroup_fused=使用的文件
+egroup_sflimit=软文件限制
+egroup_hflimit=硬文件限制
+egroup_update=更新
+egroup_listall=列出所有配额
+
+euser_title=编辑配额
+euser_freturn=文件系统列表
+euser_ureturn=用户列表
+euser_eallowus=您没有编辑'$1'的配额的权限
+euser_eallowfs=您没有编辑本文件系统的配额的权限
+euser_quotas=<tt>$1</tt>在<tt>$2</tt>上的配额
+euser_bused=已用块
+euser_bdisk=磁盘上可用的块
+euser_sblimit=软性块限制
+euser_hblimit=硬性块限制
+euser_fused=已用文件
+euser_fdisk=磁盘上可用的文件
+euser_sflimit=软性文件限制
+euser_hflimit=硬性文件限制
+euser_update=更新
+euser_listall=列表所用配额
+
+gfilesys_title=组配额
+gfilesys_return=文件列表
+gfilesys_ecannot=您没有编辑'$1'的文件配额的权限
+gfilesys_all=$1的所有配额
+gfilesys_blocks=块
+gfilesys_files=文件
+gfilesys_fs=文件系统
+gfilesys_used=已用
+gfilesys_soft=软性限制
+gfilesys_hard=硬性限制
+gfilesys_nogquota=组 <tt>$1</tt> 在任何文件系统上都没有配额
+gfilesys_edit=编辑限额于：
+gfilesys_copy=拷贝配额
+
+ggracef_title=宽限时间
+ggracef_return=组列表
+ggracef_ecannot=您没有编辑此文件系统宽限时间的权限
+ggracef_info=每个文件系统都有对块和文件配额的宽限时间。宽限时间决定一个组被禁止创建更多文件之前处于软性限制状态的时间长短。
+ggracef_graces=<tt>$1</tt>的组宽限时间
+ggracef_block=对块配额
+ggracef_file=对文件配额
+ggracef_update=更新
+
+ggraces_esave=保存宽限时间失败
+ggraces_eedit=您没有编辑此文件系统的宽限时间的权限
+ggraces_enumber='$1' 不是数字
+
+index_quser=用户配额
+index_qgroup=组配额
+index_qboth=用户和组配额
+index_active=活动的
+index_disable=禁用配额
+index_inactive=不活动的
+index_enable=启用配额
+index_mountonly=仅能在加载时启动
+index_title=磁盘配额
+index_fs=文件系统
+index_type=类型
+index_mount=加载自
+index_status=状态
+index_action=动作
+index_return=索引
+index_euser=编辑用户配额：
+index_egroup=编辑组配额：
+index_nosupport=本地文件系统不支持配额
+
+lgroups_failed=列出组失败
+lgroups_eallow=您没有编辑这个文件系统上的配额的权限
+lgroups_title=文件系统配额
+lgroups_return=文件系统列表
+lgroups_toomany=在<tt>$1</tt>上有配额的组太多，一页无法全面显示。
+lgroups_quotas=所有组在<tt>$1</tt>上的配额
+lgroups_blocks=块
+lgroups_files=文件
+lgroups_group=组
+lgroups_used=已用
+lgroups_soft=软性限制
+lgroups_hard=硬性限制
+lgroups_noquota=没有组在<tt>$1</tt>上有配额
+lgroups_equota=编辑配额为：
+lgroups_grace=编辑宽限时间
+lgroups_check=检查配额
+
+sgroup_egroup=您没有编辑这个组的配额的权限
+sgroup_efs=您没有编辑这个文件系统的配额的权限
+
+ssync_ecannot=您没有设置这个文件系统的默认配额的权限
+
+suser_euser=您没有编辑这个用户的配额的权限
+suser_efs=您没有编辑这个文件系统的配额的权限
+suser_emaxblocks=您没有授权给$1区块限制的权限
+suser_emaxfiles=您没有授权给$1文件限制的权限
+
+ufilesys_title=用户配额
+ufilesys_return=文件系统列表
+ufilesys_ecannot=您没有编辑'$1'的配额的权限
+ufilesys_all=<tt>$1</tt>的所有配额
+ufilesys_blocks=块
+ufilesys_files=文件
+ufilesys_fs=文件系统
+ufilesys_used=已用
+ufilesys_soft=软性限制
+ufilesys_hard=硬性限制
+ufilesys_nouquota=用户<tt>$1</tt> 在任何文件系统都没有配额
+ufilesys_edit=编辑配额在：
+ufilesys_copy=拷贝配额
+
+ugracef_title=宽限时间
+ugracef_return=用户列表
+ugracef_ecannot=您没有编辑本文件系统的的宽限时间的权限
+ugracef_info=每个文件系统都有对块和文件配额的宽限时间。宽限时间决定一个用户被禁止创建更多文件之前处于软限制状态的时间长短。
+ugracef_graces=<tt>$1</tt>的用户宽限时间
+ugracef_block=为块的配额
+ugracef_file=对文件配额
+ugracef_update=更新
+
+ugraces_esave=保存宽限时间失败
+ugraces_eedit=您没有编辑本文件系统上的宽限时间的权限
+ugraces_enumber='$1' 不是数字
+
+lusers_failed=列出用户失败
+lusers_eallow=您没有编辑本文件系统上的配额的权限
+lusers_title=文件系统配额
+lusers_return=文件系统列表
+lusers_toomany=<tt>$1</tt>上有配额的用户太多，一页无法全部显示。
+lusers_qoutas=<tt>$1</tt>上的所有用户配额
+lusers_blocks=块
+lusers_files=文件
+lusers_user=用户
+lusers_used=已用
+lusers_soft=软性限制
+lusers_hard=硬性限制
+lusers_noquota=没有用户在<tt>$1</tt> 上有配额
+lusers_equota=编辑配额针对：
+lusers_egrace=编辑宽限时间
+lusers_check=检查配额
+lusers_info=创建新 Unix 用户后，Webmin 可以被配置自动在本文件系统上设置配额。只有在使用 $1 Webmin 模块添加用户时此功能才生效。
+lusers_useradmin=用户和组
+lusers_newuser=新用户配额
+lusers_sblimit=软性块限制
+lusers_hblimit=硬性块限制
+lusers_sflimit=软性文件限制
+lusers_hflimit=硬性文件限制
+lusers_apply=应用
+
+grace_seconds=秒
+grace_minutes=分钟
+grace_hours=小时
+grace_days=天
+grace_weeks=星期
+grace_months=月
+
+log_activate_u=已在 $1 上启用用户配额
+log_activate_g=已在 $1 上启用组配额
+log_activate_ug=已在 $1 上启用用户和组配额
+log_deactivate_u=已在 $1 上禁用用户配额
+log_deactivate_g=已在 $1 上禁用组配额
+log_deactivate_ug=已在 $1 上禁用用户和组配额
+log_save=在 $2 上改变 $1 的配额
+log_sync=在 $1 上改变新用户的配额
+log_grace_u=在 $1 上改变用户宽限时间
+log_grace_g=在 $1 上改变组宽限时间
+log_check=在 $1 上检查配额
+log_copy_u=拷贝用户 $1 的配额
+log_copy_g=拷贝组 $1 的配额
+

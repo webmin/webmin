@@ -1,0 +1,17 @@
+<header>Max number of recipients per local message delivery</header>
+
+<center><tt>local_destination_recipient_limit</tt></center>
+<hr>
+
+This parameter limits the number of recipients per local message delivery. The
+default limit is taken from the
+<a href=opt_default_destination_recipient_limit>
+<tt>default_destination_recipient_limit</tt></a> parameter.
+
+<p>
+
+However, the queue manager by design limits the number of recipients
+per local delivery request to exactly 1, so this parameter has no
+effect.
+
+<hr>

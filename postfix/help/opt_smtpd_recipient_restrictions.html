@@ -1,0 +1,100 @@
+<header>Restrictions on recipient addresses</header>
+
+<center><tt>smtpd_recipient_restrictions</tt></center>
+<hr>
+
+This parameter specifies restrictions on recipient addresses that SMTP clients
+can send in RCPT TO commands.
+
+<p>
+
+<include relay_rules>
+
+These destinations do not need to be listed in
+<a href=opt_relay_domains><tt>$relay_domains</tt></a>.
+
+<p>
+
+The following restrictions are available (* is part of default setting):
+
+<ul>
+<li> <tt>*permit_mynetworks:</tt> permit if the client address matches
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li>  <tt>reject_unknown_client:</tt> reject the request if the client hostname is unknown.
+<li>  <tt>reject_maps_rbl:</tt> reject if the client is listed under
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li>  <tt>reject_invalid_hostname:</tt> reject HELO hostname with bad syntax.
+<li>  <tt>reject_unknown_hostname:</tt> reject HELO hostname without DNS A or MX record.
+<li>  <tt>reject_unknown_sender_domain:</tt> reject sender domain without A or MX record.
+<li> <tt>*check_relay_domains:</tt> permit only mail:
+<ul>
+<li> to destinations matching
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> from trusted clients matching
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> or subdomain
+	  thereof,
+<li> from untrusted clients to destinations matching
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> or
+	  subdomain thereof (except addresses with sender-specified routing).
+</ul>
+	Reject anything else.
+<li> <tt>permit_auth_destination:</tt> permit mail:
+<ul>
+<li> to destinations matching
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> to destinations matching
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> or subdomain
+	  thereof, except for addresses with sender-specified routing.
+</ul>
+<li> <tt>reject_unauth_destination:</tt> reject mail unless it is sent
+<ul>
+<li> to destinations matching
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> to destinations matching
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> or subdomain
+	  thereof, except for addresses with sender-specified routing.
+</ul>
+<li>  <tt>reject_unauth_pipelining:</tt> reject mail from improperly pipelining spamware
+<li>  <tt>permit_mx_backup:</tt> accept mail for sites that list me as MX host.
+<li>  <tt>reject_unknown_recipient_domain:</tt> reject domains without A or MX record.
+<li>  <tt>check_recipient_access maptype:mapname:</tt> look up recipient address, parent domain, or localpart@.
+	Reject if result is REJECT or &quot;[45]xx text&quot;.
+	Permit otherwise.
+
+<li>  <tt>check_client_access maptype:mapname:</tt> see
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li>  <tt>check_helo_access maptype:mapname:</tt> see
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li>  <tt>check_sender_access maptype:mapname:</tt> see
+        <a href=opt_smtpd_sender_restrictions>smtpd_sender_restrictions</a>.
+<li>  <tt>reject_non_fqdn_hostname:</tt> reject HELO hostname that is not in FQDN form.
+<li>  <tt>reject_non_fqdn_sender:</tt> reject sender address that is not in FQDN form.
+<li>  <tt>reject_non_fqdn_recipient:</tt> reject recipient address that is not in FQDN form.
+<li>  <tt>reject:</tt> reject the request. Place this at the end of a restriction.
+<li>  <tt>permit:</tt> permit the request. Place this at the end of a restriction.
+</ul>
+
+Restrictions are applied in the order as specified; the first
+restriction that matches wins.
+
+<p>
+
+Specify a list of restrictions, separated by commas and/or whitespace.
+Continue long lines by starting the next line with whitespace.
+
+<p>
+
+NOTE: YOU MUST SPECIFY AT LEAST ONE OF THE FOLLOWING RESTRICTIONS
+OTHERWISE POSTFIX REFUSES TO RECEIVE MAIL:
+<br>
+	<tt>reject, check_relay_domains, reject_unauth_destination</tt>
+
+
+
+<hr>

@@ -1,0 +1,207 @@
+index_title=社覗闘裾嬢 鳶徹走
+index_installed=竺帖吉 鳶徹走
+index_close=乞砧 丸奄
+index_open=乞砧 伸奄
+index_search=鳶徹走 伊事:
+index_install=歯 鳶徹走 竺帖
+index_installmsg=歯 $1 鳶徹走研 竺帖拝 是帖 識澱..
+index_local=稽鎮 督析稽採斗
+index_uploaded=穣稽球吉 督析稽採斗
+index_ftp=ftp 暁澗 http URL稽採斗
+index_installok=竺帖
+index_ident=督析 溌昔
+index_identmsg=$1 汽戚斗今戚什研 伊事拝 誤敬戚蟹 督析税 井稽 戚硯聖 脊径馬淑獣神.
+index_identok=伊事 企雌:
+index_all=乞窮 鳶徹走
+index_return=鳶徹走 鯉系
+
+search_title=鳶徹走 伊事
+search_nomatch=$1引(人) 析帖馬澗 鳶徹走亜 蒸柔艦陥
+search_none=蒸製
+search_desc=竺誤
+search_class=適掘什
+search_pack=鳶徹走
+search_match=$1引(人) 析帖馬澗 鳶徹走
+search_return=伊事 衣引
+
+edit_title=鳶徹走 畷増
+edit_details=鳶徹走 室採 舛左
+edit_desc=竺誤
+edit_pack=鳶徹走
+edit_class=適掘什
+edit_none=蒸製
+edit_ver=獄穿
+edit_vend=因厭穣端
+edit_arch=焼徹努坦
+edit_inst=竺帖廃 劾促
+edit_list=督析 蟹伸
+edit_uninst=竺帖 薦暗
+edit_return=鳶徹走 室採 舛左
+
+list_title=鳶徹走 督析
+list_files=鳶徹走 $1税 督析
+list_path=井稽
+list_owner=社政切
+list_group=益血
+list_type=政莫
+list_size=滴奄
+list_status=雌殿
+list_ok=溌昔
+
+delete_err=鳶徹走 $1聖(研) 肢薦馬走 公梅柔艦陥
+delete_epack=鳶徹走 $1戚(亜) 糎仙馬走 省柔艦陥
+delete_title=鳶徹走 肢薦
+delete_rusure=鳶徹走 $1聖(研) 肢薦馬獣畏柔艦猿? 置企 $2鯵税 督析($3郊戚闘)戚 慎姥旋生稽 肢薦桔艦陥.
+delete_ok=肢薦
+
+file_title=督析 舛左
+file_notfound=$1拭 企廃 舛左亜 蒸柔艦陥
+file_path=井稽
+file_type=政莫
+file_perms=紫遂 映廃
+file_owner=社政切
+file_group=益血
+file_size=滴奄
+file_link=元滴 企雌:
+file_pack=鳶徹走
+file_class=適掘什
+file_desc=竺誤
+file_none=蒸製
+
+install_err=鳶徹走研 竺帖馬走 公梅柔艦陥
+install_elocal=稽鎮 督析聖 走舛馬走 省紹柔艦陥
+install_elocal2='$1'戚(亜) 糎仙馬走 省柔艦陥
+install_eupload=崎虞酔煽拭辞 督析 穣稽球 奄管聖 走据馬走 省柔艦陥
+install_eurl=昔縦拝 呪 蒸澗 URL '$1'
+install_edir=政反廃 $1 巨刑塘軒亜 焼鑑艦陥
+install_ezip=政反廃 $1 笑逐 督析 暁澗 gzip 莫縦税 督析戚 焼鑑艦陥
+install_efile=政反廃 $1 督析戚 焼鑑艦陥
+install_title=鳶徹走 竺帖
+install_header=鳶徹走 竺帖
+install_packs=竺帖拝 鳶徹走
+install_ok=竺帖
+
+do_err=鳶徹走 $1聖(研) 竺帖馬走 公梅柔艦陥
+do_title=鳶徹走 竺帖
+do_efailed=竺帖 叔鳶: $1
+do_efailedmsg1=戚穿 凪戚走稽 宜焼亜辞 陥献 竺帖 辛芝聖 識澱馬食 竺帖研 陥獣 獣亀拝 呪 赤柔艦陥.
+do_efailedmsg2=益係走 省生檎 <a href='$1'>食奄</a>研 喚君 績獣 鳶徹走 督析聖 肢薦馬食 巨什滴 食政 因娃聖 潅軒淑獣神.
+do_success=鳶徹走 $1戚(亜) 失因旋生稽 竺帖鞠醸柔艦陥
+do_details=鳶徹走 舛左
+do_desc=竺誤
+do_class=適掘什
+do_pack=鳶徹走
+do_ver=獄穿
+do_vend=因厭穣端
+do_arch=焼徹努坦
+do_inst=竺帖廃 劾促
+do_none=蒸製
+do_files=鳶徹走 督析
+
+pkgadd_root=欠闘 巨刑塘軒
+pkgadd_eroot=欠闘 巨刑塘軒 '$1'戚(亜) 糎仙馬走 省柔艦陥
+pkgadd_unknown=硝 呪 蒸製
+pkgadd_manager=獣什奴 V 鳶徹走 淫軒切
+
+rpm_upgrade=鳶徹走研 穣益傾戚球杯艦猿?
+rpm_replacepkgs=鳶徹走研 気嬢捷艦猿?
+rpm_nodeps=曽紗失聖 巷獣杯艦猿?
+rpm_oldpackage=奄糎 獄穿聖 歯 獄穿生稽 嘘端杯艦猿?
+rpm_noscripts=竺帖 什滴験闘研 叔楳杯艦猿?
+rpm_excludedocs=庚辞研 竺帖杯艦猿?
+rpm_replacefiles=督析聖 気嬢捷艦猿?
+rpm_root=欠闘 巨刑塘軒
+rpm_eroot=欠闘 巨刑塘軒 '$1'戚(亜) 糎仙馬走 省柔艦陥
+
+bsd_unknown=硝 呪 蒸製
+bsd_scripts=紫穿 貢 紫板 竺帖 什滴験闘研 叔楳杯艦猿?
+bsd_force=穿薦 繕闇戚 蒸聖 井酔 悪薦稽 竺帖杯艦猿?
+bsd_manager=$1 鳶徹走 淫軒切
+
+slack_unclass=益 須
+slack_unknown=硝 呪 蒸製
+slack_missing=蒸製
+slack_root=欠闘 巨刑塘軒
+slack_eroot=蒸暗蟹 設公吉 欠闘 巨刑塘軒
+slack_manager=Slackware 鳶徹走 淫軒切
+
+debian_unknown=硝 呪 蒸製
+debian_depends=曽紗失 庚薦研 巷獣杯艦猿?
+debian_conflicts=鳶徹走 中宜聖 巷獣杯艦猿?
+debian_overwrite=陥献 鳶徹走税 督析聖 気嬢捷艦猿?
+debian_downgrade=奄糎 鳶徹走研 歯 鳶徹走稽 嘘端杯艦猿?
+debian_manager=Debian DPKG
+
+log_install_package=鳶徹走 $1 竺帖喫
+log_install_apt_l=APT稽採斗 鳶徹走 $1 竺帖喫
+log_install_apt=APT稽採斗 鳶徹走 $2 竺帖喫
+log_check_apt_l=APT稽採斗 鳶徹走 $1 穣益傾戚球喫
+log_check_apt=APT稽採斗 鳶徹走 $2 穣益傾戚球喫
+log_delete=鳶徹走 $1 薦暗喫
+
+rhn_input=Redhat 革闘趨滴税 鳶徹走
+rhn_install=$1 誤敬聖 紫遂馬食 鳶徹走 竺帖 掻..
+rhn_ok=.. 竺帖亜 刃戟鞠醸柔艦陥.
+rhn_failed=.. 竺帖馬走 公梅柔艦陥!
+rhn_title=RHN 鳶徹走 識澱
+rhn_pack=鳶徹走
+rhn_version=獄穿
+rhn_form=Redhat 革闘趨滴 辛芝
+rhn_auto=穣汽戚闘 伊紫研 切疑生稽 呪楳杯艦猿?
+rhn_interval=伊紫 娃維
+rhn_secs=段
+rhn_apply=煽舌 貢 旋遂
+rhn_now=走榎 煽舌 貢 伊紫
+rhn_err=RHN 辛芝聖 煽舌馬走 公梅柔艦陥
+rhn_einterval=蒸暗蟹 設公吉 娃維
+rhn_einterval2=伊紫 娃維精 120段 戚雌戚嬢醤 杯艦陥
+rhn_check=穣汽戚闘 伊紫
+rhn_checkdesc=$1 誤敬聖 紫遂馬食 Redhat 革闘趨滴稽採斗 穣汽戚闘吉 鳶徹走亜 赤澗走 伊紫 掻..
+rhn_nocheck=.. 穣汽戚闘吉 鳶徹走亜 蒸柔艦陥.
+rhn_proxy=陥錘稽球遂 覗系獣 辞獄 URL
+rhn_none=紫遂 災管
+rhn_eproxy=蒸暗蟹 設公吉 覗系獣 辞獄
+rhn_skip=析帖馬澗 鳶徹走 闇格芹
+
+apt_input=APT税 鳶徹走
+apt_install=$1 誤敬聖 紫遂馬食 鳶徹走 竺帖 掻..
+apt_ok=.. 竺帖亜 刃戟鞠醸柔艦陥.
+apt_failed=.. 竺帖馬走 公梅柔艦陥!
+apt_form=乞窮 鳶徹走 穣益傾戚球
+apt_update=鳶徹走 鯉系 陥獣 疑奄鉢(<tt>穣汽戚闘</tt>)
+apt_dist=壕匂 穣益傾戚球 呪楳(<tt>穣益掘戚球 壕匂</tt>)
+apt_sim=穣益傾戚球拝 鳶徹走幻 妊獣
+apt_apply=走榎 穣益傾戚球
+apt_upgrade=乞窮 鳶徹走 穣益傾戚球
+apt_updatedesc=$1 誤敬聖 紫遂馬食 鳶徹走 鯉系 陥獣 疑奄鉢 掻..
+apt_updatefailed=.. 仙疑奄鉢馬走 公梅柔艦陥!
+apt_updateok=.. 仙疑奄鉢亜 刃戟鞠醸柔艦陥.
+apt_upgradedesc=$1 誤敬聖 紫遂馬食 乞窮 鳶徹走 穣益傾戚球 掻..
+apt_upgradedescsim=$1 誤敬聖 紫遂馬食 乞窮 鳶徹走 鯉系税 穣益傾戚球 獣皇傾戚芝 掻..
+apt_upgradefailed=.. 穣益傾戚球馬走 公梅柔艦陥!
+apt_upgradeok=.. 穣益傾戚球亜 刃戟鞠醸柔艦陥.
+
+rpm_missing=蒸製
+rpm_checkfail=$1聖(研) 伊紫馬走 公梅柔艦陥
+rpm_md5=MD5
+rpm_fsize=督析 滴奄
+rpm_sym=宿瑳遣 元滴
+rpm_mtime=呪舛 獣娃
+rpm_dev=舌帖
+rpm_user=紫遂切 社政映
+rpm_perm=紫遂 映廃
+rpm_group=益血 社政映
+rpm_erpm=RPM $1戚(亜) 蒸柔艦陥: $2
+
+soft_reg=析鋼 督析
+soft_dir=巨刑塘軒
+soft_spec=働呪 督析
+soft_sym=宿瑳遣 元滴
+soft_hard=馬球 LinkHard 元滴
+soft_edit=畷増 亜管廃 督析
+soft_efunc=$1 鳶徹走 獣什奴税 奄管聖 稽球馬走 公梅柔艦陥.
+soft_euncompress=督析戚 笑逐鞠醸走幻 獣什奴拭 <tt>uncompress</tt> 誤敬戚 蒸柔艦陥.
+soft_euncmsg=督析税 笑逐聖 熱走 公梅柔艦陥: $1
+soft_egzip=督析戚 gzip 莫縦生稽 笑逐鞠醸走幻 獣什奴拭 gzip 誤敬戚 蒸柔艦陥.
+soft_egzmsg=gzip 督析税 笑逐聖 熱走 公梅柔艦陥: $
+

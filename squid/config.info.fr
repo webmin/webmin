@@ -1,0 +1,11 @@
+squid_conf=Chemin du fichier de configuration de squid,0
+squid_path=Exécutable de squid,0
+pid_file=Chemin du fichier de numéro de processus,0
+cache_dir=Répertoire cache de squid,0
+cachemgr_path=Chemin de l'exécutable 'cachemgr.cgi',0
+log_dir=Répertoire d'audit de squid,0
+squid_start=Commande de démarrage de squid,3,Automatique
+squid_stop=Commande d'arrêt de squid,3,Automatique
+calamaris=Chemin vers le programme d'analyse de log calamaris,3,Non installé
+cal_args=Arguments de la commande calamaris,0
+cal_max=Nb maximum de lignes de log à passer à calamaris,3,Non limité

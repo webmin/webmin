@@ -1,0 +1,3 @@
+dfstab_file=Chemin du fichier de partage NFS,0
+share_all_command=Commande pour démarrer le partage,0
+unshare_all_command=Commande pour arrêter le partage,0

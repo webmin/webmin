@@ -1,0 +1,16 @@
+line1=Pilihan boleh konfigurasi,11 
+max_len=Panjang arahan maksima untuk dipapar,3-Tiada had
+line2=Konfigurasi sistem,11
+cron_dir=Direktori tugas Cron,0
+cron_get_command=Arahan untuk baca tugas cron pengguna,0
+cron_edit_command=Arahan untuk edit tugas cron pengguna,0
+cron_copy_command=Arahan untuk menerima tugas cron pengguna pada stdin,0
+cron_delete_command=Arahan untuk memadam tugas cron pengguna,0
+cron_input=Boleh menyokong masukan Cron kepada tugas cron?,1,1-Yes,0-Tidak
+cron_allow_file=Fail senarai pengguna dibenarkan,0
+cron_deny_file=Fail menyenaraikan pengguna dinafi,0
+cron_deny_all=Kebenaran tanpa fail benar atau nafi,1,0-Nafi semua kecuali root,2-Benarkan semua
+vixie_cron=Menyokong sambungan Vixie-Cron?,1,1-Yes,0-No
+system_crontab=Laluan kepada fail sistem crontab Vixie-Cron,0
+cronfiles_dir=Laluan ke direktori fail cron tambahan,3,Tiada
+run_parts=arahan run-part,0

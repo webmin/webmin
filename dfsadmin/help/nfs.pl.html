@@ -1,0 +1,25 @@
+<h3>Wprowadzenie do NFS-u</h3>
+
+NFS jest standardowym protoko³em wspó³dzielenia plików wykorzystywanym przez
+systemy uniksowe. Dowolny system mo¿e za po¶rednictwem NFS-u udostêpniæ poprzez
+sieæ pewien katalog dla jednego lub wiêcej hostów, pozwalaj±c u¿ytkownikom
+oraz programom dzia³aj±cym na tych hostach na dostêp do udostêpnionych plików
+tak, jakby by³y to pliki lokalne. <p>
+
+Serwerem NFS-u jest system udostêpniaj±cy jeden lub wiêcej katalogów, za¶
+klientem NFS-u jest system, który montuje jeden lub wiêcej katalogów
+z&nbsp;serwera. Ka¿dy host mo¿e byæ jednocze¶nie serwerem NFS-u i&nbsp;klientem
+innych serwerów.
+<p>
+
+Serwer okre¶la, które stacje klienckie mog± zamontowaæ udostêpniony katalog
+poprzez porównanie ich adresów IP z&nbsp;listê hostów dopuszczonych do ¿±danego
+katalogu. Serwer mo¿e równie¿ okre¶liæ zasób jako tylko do odczytu lub tylko do
+odczytu dla pewnych stacji klienckich. <p>
+
+W odró¿nieniu od innych sieciowych systemów plików, klienci NFS-u nie musz±
+logowaæ siê do serwera podczas montowania udostêpnionego katalogu. Serwer ufa,
+¿e stacje klienckie same autoryzuj± u¿ytkowników dostarczaj±c numer ID
+bie¿±cego u¿ytkownika podczas dostêpu do plików. Wobec tego powiniene¶
+pozwalaæ na montowanie udostêpnianych zasobów jedynie zaufanym stacjom
+klienckim. <p>

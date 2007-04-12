@@ -1,0 +1,36 @@
+<header>Program zewnêtrzny u¿ywany zamiast dorêczania do skrzynki pocztowej</header>
+
+<center><tt>mailbox_command</tt></center>
+<hr>
+
+Ten parametr okre¶la fakultatywne zewnêtrzne polecenie wykorzystywane
+zamiast dorêczania do skrzynki pocztowej. Polecenie bêdzie uruchamiane
+z&nbsp;prawami odbiorcy i&nbsp;z&nbsp;prawid³owymi ustawieniami
+<tt>HOME</tt>, <tt>SHELL</tt> i&nbsp;<tt>LOGNAME</tt> w&nbsp;¶rodowisku.
+Wyj±tek: dorêczanie dla <tt>root</tt>-a odbywa siê jako
+<tt>$default_user</tt>. <p>
+
+Inne interesuj±ce zmienne ¶rodowiska: <tt>USER</tt> (nazwa u¿ytkownika
+bêd±cego odbiorc±), <tt>EXTENSION</tt> (rozszerzenie adresu),
+<tt>DOMAIN</tt> (domenowa czê¶æ adresu), i&nbsp;<tt>LOCAL</tt> (lokalna
+czê¶æ adresu). <p>
+
+W&nbsp;odró¿nieniu od innych parametrów konfiguracyjnych Postfiksa, ta opcja
+nie jest poddana podstawianiu parametrów. Ma to na celu u³atwienie podawania
+sk³adni pow³oki (patrz poni¿szy przyk³ad). <p>
+
+Unikaj metaznaków pow³oki, gdy¿ zmusz± one Postfiksa do uruchomienia
+kosztownego procesu pow³oki. Sam <tt>procmail</tt> jest dostatecznie
+kosztowny. <p>
+
+JE¦LI KORZYSTASZ Z&nbsp;TEJ OPCJI DLA DORÊCZANIA POCZTY W&nbsp;CA£YM
+SYSTEMIE, MUSISZ USTAWIÆ ALIAS PRZEKIEROWUJ¡CY POCZTÊ DO ROOT-A DO ZWYK£EGO
+U¯YTKOWNIKA. <p>
+
+Przyk³ady:
+<ul>
+<li><tt>/gdzies/tam/procmail</tt> 
+<li><tt>/gdzies/tam/procmail -a "$EXTENSION"</tt>
+</ul>
+
+<hr>

@@ -1,0 +1,22 @@
+<h3>Introduktion till NFS</h3>
+
+NFS är standardprotokollet för fildelning i Unix-system. Med NFS kan
+ett system exportera en katalog över nätverket till en eller flera datorer,
+så att användare och program på dessa datorer kan komma åt filer som om
+de fanns på de lokala datorerna.
+
+<p>En NFS-server är ett system som exporterar en eller flera kataloger
+och en NFS-klient är ett system som monterar en eller flera kataloger
+från en server. Samma dator kan vara både NFS-server och klient.
+
+<p>Servern bestämmer om en klient får montera en exporterad katalog
+genom att kontrollera IP-adressen för klienten mot en lista över
+datorer som tillåts montera katalogen i fråga. Servern kan också göra
+så att en katalog exporteras med enbart läsrättigheter, för alla klienter
+eller vissa, namngivna.
+
+<p>NFS-klienter behöver, till skillnad från andra filsystem över nätverk,
+inte logga in på servern då en exporterad katalog ska monteras. Servern
+litar på att klienten har kontrollerat användarens identitet och att denna
+identitet bifogas förfrågningar. Därför kan det vara dumt att tillåta
+montering från klienter som du inte fullständigt litar på.

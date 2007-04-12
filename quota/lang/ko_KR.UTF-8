@@ -1,0 +1,240 @@
+quota_unlimited=薦廃 蒸製
+
+acl_fss=戚 紫遂切亜 畷増拝 呪 赤澗 督析 獣什奴
+acl_fall=乞窮 督析 獣什奴
+acl_fsel=識澱廃 督析 獣什奴..
+acl_quotaon=拝雁勲聖 紫遂 亜管/紫遂 災管生稽 竺舛拝 呪 赤柔艦猿?
+acl_quotanew=歯 紫遂切税 拝雁勲聖 姥失拝 呪 赤柔艦猿?
+acl_ugrace=紫遂切 政森 奄娃聖 畷増拝 呪 赤柔艦猿?
+acl_vtotal=恥 巨什滴 因娃聖 瑳 呪 赤柔艦猿?
+acl_ggrace=益血 政森 奄娃聖 畷増拝 呪 赤柔艦猿?
+acl_uquota=戚 紫遂切拭 税廃 拝雁勲 畷増戚 亜管廃 紫遂切
+acl_gquota=戚 紫遂切拭 税廃 拝雁勲 畷増戚 亜管廃 益血
+acl_uall= 乞窮 紫遂切
+acl_uonly= 紫遂切幻
+acl_uexcept= 紫遂切研 薦須廃 乞砧
+acl_ugroup= 爽 益血戚 赤澗 紫遂切
+acl_gall= 乞窮 益血
+acl_gnone= 益血 蒸製
+acl_gonly= 益血幻
+acl_gexcept= 益血聖 薦須廃 乞砧
+
+activate_eallow=戚 督析 獣什奴拭辞澗 拝雁勲聖 紫遂 亜管/紫遂 災管生稽 竺舛拝 呪 蒸柔艦陥
+activate_eon=拝雁勲聖 醗失鉢 公梅柔艦陥
+activate_eoff=拝雁勲聖 搾 醗失鉢馬走 公梅柔艦陥
+
+check_title=拝雁勲 伊紫
+check_return=$1 鯉系
+check_ecannot=戚 督析 獣什奴拭辞澗 拝雁勲聖 伊紫拝 呪 蒸柔艦陥
+check_running=<tt>$1</tt>税 鷺系 貢 督析 紫遂聖 伊紫馬澗 <tt>quotacheck</tt> 誤敬戚 叔楳鞠壱 赤柔艦陥. 企莫 督析 獣什奴拭辞澗 弦精 獣娃戚 杏険 呪 赤柔艦陥...
+check_done=... 刃戟鞠醸柔艦陥. 
+check_rgroup=益血
+check_ruser=紫遂切
+
+cgroup_efail=拝雁勲聖 差紫馬走 公梅柔艦陥
+cgroup_ecannot=拝雁勲聖 差紫拝 呪 蒸柔艦陥
+cgroup_egallow=戚 益血税 拝雁勲聖 差紫拝 呪 蒸柔艦陥
+cgroup_enogroup=差紫拝 益血戚 蒸柔艦陥
+cgroup_eallowto='$1'拭 拝雁勲聖 差紫拝 呪 蒸柔艦陥
+
+cgform_title=拝雁勲 差紫
+cgform_return=益血 拝雁勲
+cgform_ecannot=拝雁勲聖 差紫拝 呪 蒸柔艦陥
+cgform_egroup=戚 益血税 拝雁勲聖 差紫拝 呪 蒸柔艦陥
+cgform_copyto=乞窮 督析 獣什奴税 <tt>$1</tt>拭 企背 拝雁勲聖 差紫拝 企雌...
+cgform_all=獣什奴税 乞窮 益血
+cgform_select=識澱廃 益血
+cgform_contain=紫遂切亜 匂敗吉 益血
+cgform_doit=差紫
+
+cuser_efail=拝雁勲聖 差紫馬走 公梅柔艦陥
+cuser_ecannot=拝雁勲聖 差紫拝 呪 蒸柔艦陥
+cuser_euallow=戚 紫遂切税 拝雁勲聖 差紫拝 呪 蒸柔艦陥
+cuser_enouser=差紫拝 紫遂切亜 蒸柔艦陥
+cuser_eallowto='$1'拭 拝雁勲聖 差紫拝 呪 蒸柔艦陥
+
+cuform_title=拝雁勲 差紫
+cuform_return=紫遂切 拝雁勲
+cuform_ecannot=拝雁勲聖 差紫拝 呪 蒸柔艦陥
+cuform_euallow=戚 紫遂切税 拝雁勲聖 差紫拝 呪 蒸柔艦陥
+cuform_copyto=乞窮 督析 獣什奴税 <tt>$1</tt>拭 企背 拝雁勲聖 差紫拝 企雌...
+cuform_all=獣什奴税 乞窮 紫遂切
+cuform_select=識澱廃 紫遂切
+cuform_members=識澱廃 益血税 姥失据
+cuform_doit=差紫
+
+egroup_title=拝雁勲 畷増
+egroup_freturn=督析 獣什奴 鯉系
+egroup_greturn=益血 鯉系
+egroup_eallowgr='$1'税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+egroup_eallowfs=戚 督析 獣什奴拭辞澗 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+egroup_quotas=<tt>$1</tt>税 <tt>$2</tt>拭 企廃 拝雁勲
+egroup_bused=紫遂吉 鷺系
+egroup_sblimit=社覗闘 鷺系 薦廃
+egroup_hblimit=馬球 鷺系 薦廃
+egroup_fused=紫遂吉 督析
+egroup_sflimit=社覗闘 督析 薦廃
+egroup_hflimit=馬球 督析 薦廃
+egroup_update=穣汽戚闘
+egroup_listall=乞窮 拝雁勲 蟹伸
+
+euser_title=拝雁勲 畷増
+euser_freturn=督析 獣什奴 鯉系
+euser_ureturn=紫遂切 鯉系
+euser_eallowus='$1'税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+euser_eallowfs=戚 督析 獣什奴拭辞澗 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+euser_quotas=<tt>$1</tt>税 <tt>$2</tt>拭 企廃 拝雁勲
+euser_bused=紫遂吉 鷺系
+euser_bdisk=紫遂 亜管廃 巨什滴 鷺系
+euser_sblimit=社覗闘 鷺系 薦廃
+euser_hblimit=馬球 鷺系 薦廃
+euser_fused=紫遂吉 督析
+euser_fdisk=紫遂 亜管廃 巨什滴 督析
+euser_sflimit=社覗闘 督析 薦廃
+euser_hflimit=馬球 督析 薦廃
+euser_update=穣汽戚闘
+euser_listall=乞窮 拝雁勲 蟹伸
+
+gfilesys_title=益血 拝雁勲
+gfilesys_return=督析 獣什奴 鯉系
+gfilesys_ecannot='$1'税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+gfilesys_all=陥製拭 企廃 乞窮 拝雁勲
+gfilesys_blocks=鷺系
+gfilesys_files=督析
+gfilesys_fs=督析 獣什奴
+gfilesys_used=紫遂喫
+gfilesys_soft=社覗闘 薦廃
+gfilesys_hard=馬球 薦廃
+gfilesys_nogquota=益血 <tt>$1</tt>精(澗) 焼巷 督析 獣什奴拭亀 拝雁勲聖 亜走走 省柔艦陥
+gfilesys_edit=拝雁勲 畷増 企雌:
+gfilesys_copy=拝雁勲 差紫
+
+ggracef_title=政森 奄娃
+ggracef_return=益血 鯉系
+ggracef_ecannot=戚 督析 獣什奴税 政森 奄娃聖 畷増拝 呪 蒸柔艦陥
+ggracef_info=唖 督析 獣什奴原陥 鷺系 貢 督析 拝雁勲拭 企廃 政森 奄娃戚 赤柔艦陥. 政森 奄娃精 督析聖 希 拙失拝 呪 蒸聖 凶猿走 益血戚 社覗闘 薦廃 雌殿稽 政走鞠澗 奄娃脊艦陥. 
+ggracef_graces=<tt>$1</tt>税 益血 政森 奄娃
+ggracef_block=鷺系 拝雁勲税 井酔
+ggracef_file=督析 拝雁勲税 井酔
+ggracef_update=穣汽戚闘
+
+ggraces_esave=政森 奄娃聖 煽舌馬走 公梅柔艦陥
+ggraces_eedit=戚 督析 獣什奴税 政森 奄娃聖 畷増拝 呪 蒸柔艦陥
+ggraces_enumber='$1'精(澗) 収切亜 焼鑑艦陥
+
+index_quser=紫遂切 拝雁勲
+index_qgroup=益血 拝雁勲
+index_qboth=紫遂切 貢 益血 拝雁勲
+index_active=醗失 雌殿脊艦猿?
+index_disable=拝雁勲 紫遂 災管
+index_inactive=搾醗失
+index_enable=拝雁勲 紫遂 亜管
+index_title=巨什滴 拝雁勲
+index_fs=督析 獣什奴
+index_type=政莫
+index_mount=原錘闘 社什
+index_status=雌殿
+index_action=疑拙
+index_return=昔畿什
+index_euser=紫遂切 拝雁勲 畷増:
+index_egroup=益血 拝雁勲 畷増:
+index_nosupport=拝雁勲聖 走据拝 呪 赤澗 稽鎮 督析 獣什奴戚 蒸柔艦陥
+
+lgroups_failed=益血聖 蟹伸馬走 公梅柔艦陥
+lgroups_eallow=戚 督析 獣什奴拭辞澗 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+lgroups_title=督析 獣什奴 拝雁勲
+lgroups_return=督析 獣什奴 鯉系
+lgroups_toomany=<tt>$1</tt>拭 拝雁勲戚 赤澗 益血戚 格巷 弦焼 廃 凪戚走拭 妊獣拝 呪 蒸柔艦陥
+lgroups_quotas=<tt>$1</tt>税 乞窮 益血 拝雁勲
+lgroups_blocks=鷺系
+lgroups_files=督析
+lgroups_group=益血
+lgroups_used=紫遂喫
+lgroups_soft=社覗闘 薦廃
+lgroups_hard=馬球 薦廃
+lgroups_noquota=<tt>$1</tt>拭 拝雁勲戚 赤澗 益血戚 蒸柔艦陥
+lgroups_equota=拝雁勲 畷増 企雌:
+lgroups_grace=政森 奄娃 畷増
+lgroups_check=拝雁勲 伊紫
+
+sgroup_egroup=戚 益血税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+sgroup_efs=戚 督析 獣什奴税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+
+ssync_ecannot=戚 督析 獣什奴税 奄沙 拝雁勲聖 竺舛拝 呪 蒸柔艦陥
+
+suser_euser=戚 紫遂切税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+suser_efs=戚 督析 獣什奴税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+
+ufilesys_title=紫遂切 拝雁勲
+ufilesys_return=督析 獣什奴 鯉系
+ufilesys_ecannot='$1'税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+ufilesys_all=<tt>$1</tt>税 乞窮 拝雁勲
+ufilesys_blocks=鷺系
+ufilesys_files=督析
+ufilesys_fs=督析 獣什奴
+ufilesys_used=紫遂喫
+ufilesys_soft=社覗闘 薦廃
+ufilesys_hard=馬球 薦廃
+ufilesys_nouquota=紫遂切 <tt>$1</tt>精(澗) 焼巷 督析 獣什奴拭辞亀 拝雁勲聖 亜走走 省柔艦陥
+ufilesys_edit=拝雁勲 畷増 企雌:
+ufilesys_copy=拝雁勲 差紫
+
+ugracef_title=政森 奄娃
+ugracef_return=紫遂切 鯉系
+ugracef_ecannot=戚 督析 獣什奴税 政森 奄娃聖 畷増拝 呪 蒸柔艦陥
+ugracef_info=唖 督析 獣什奴原陥 鷺系 貢 督析 拝雁勲拭 企廃 政森 奄娃戚 赤柔艦陥. 政森 奄娃精 督析聖 希 拙失拝 呪 蒸聖 凶猿走 紫遂切亜 社覗闘 薦廃 雌殿稽 政走鞠澗 奄娃脊艦陥. 
+ugracef_graces=<tt>$1</tt>税 紫遂切 政森 奄娃
+ugracef_block=鷺系 拝雁勲税 井酔
+ugracef_file=督析 拝雁勲税 井酔
+ugracef_update=穣汽戚闘
+
+ugraces_esave=政森 奄娃聖 煽舌馬走 公梅柔艦陥
+ugraces_eedit=戚 督析 獣什奴税 政森 奄娃聖 畷増拝 呪 蒸柔艦陥
+ugraces_enumber='$1'精(澗) 収切亜 焼鑑艦陥 
+
+lusers_failed=紫遂切研 蟹伸馬走 公梅柔艦陥
+lusers_eallow=戚 督析 獣什奴税 拝雁勲聖 畷増拝 呪 蒸柔艦陥
+lusers_title=督析 獣什奴 拝雁勲
+lusers_return=督析 獣什奴 鯉系
+lusers_toomany=<tt>$1</tt>拭 拝雁勲戚 赤澗 益血戚 格巷 弦焼辞 廃 凪戚走拭 妊獣拝 呪 蒸柔艦陥
+lusers_qoutas=<tt>$1</tt>税 乞窮 紫遂切 拝雁勲
+lusers_blocks=鷺系
+lusers_files=督析
+lusers_user=紫遂切
+lusers_used=紫遂喫
+lusers_soft=社覗闘 薦廃
+lusers_hard=馬球 薦廃
+lusers_noquota=<tt>$1</tt>拭 拝雁勲戚 赤澗 紫遂切亜 蒸柔艦陥
+lusers_equota=拝雁勲 畷増 企雌:
+lusers_egrace=政森 奄娃 畷増
+lusers_check=拝雁勲 伊紫
+lusers_info=歯 政莞什 紫遂切 拙失獣 戚 督析 獣什奴拭辞 拝雁勲戚 切疑生稽 竺舛鞠亀系 Webmin聖 姥失拝 呪 赤柔艦陥. 戚君廃 姥失精 $1 Webmin 乞汲戚 紫遂切研 蓄亜馬澗 汽 紫遂吃 凶幻 亜管杯艦陥.
+lusers_useradmin=紫遂切 貢 益血
+lusers_newuser=歯 紫遂切 拝雁勲
+lusers_sblimit=社覗闘 鷺系 薦廃
+lusers_hblimit=馬球 鷺系 薦廃
+lusers_sflimit=社覗闘 督析 薦廃
+lusers_hflimit=馬球 督析 薦廃
+lusers_apply=旋遂
+
+grace_seconds=段
+grace_minutes=歳
+grace_hours=獣
+grace_days=析
+grace_weeks=爽
+grace_months=杉
+
+log_activate_u=$1税 紫遂切 拝雁勲戚 紫遂 亜管生稽 竺舛喫
+log_activate_g=$1税 益血 拝雁勲戚 紫遂 亜管生稽 竺舛喫
+log_activate_ug=$1税 紫遂切 貢 益血 拝雁勲戚 紫遂 亜管生稽 竺舛喫
+log_deactivate_u=$1税 紫遂切 拝雁勲戚 紫遂 災管生稽 竺舛喫
+log_deactivate_g=$1税 益血 拝雁勲戚 紫遂 災管生稽 竺舛喫
+log_deactivate_ug=$1税 紫遂切 貢 益血 拝雁勲戚 紫遂 災管生稽 竺舛喫
+log_save=$2税 $1拭 企廃 拝雁勲 痕井喫
+log_sync=$1税 歯 紫遂切 拝雁勲 痕井喫
+log_grace_u=$1税 紫遂切 政森 奄娃 痕井喫
+log_grace_g=$1税 益血 政森 奄娃 痕井喫
+log_check=$1税 拝雁勲 伊紫喫
+log_copy_u=紫遂切 $1税 拝雁勲 差紫喫
+log_copy_g=益血 $1税 拝雁勲 差紫喫
+

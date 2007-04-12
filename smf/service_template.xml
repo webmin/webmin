@@ -1,0 +1,6 @@
+<?xml version='1.0'?>
+<!DOCTYPE service_bundle SYSTEM '/usr/share/lib/xml/dtd/service_bundle.dtd.1'>
+<service_bundle type='manifest' name='smf_webmin'>
+<service name='SERVICE_NAME'
+	type='service'
+	version='SERVICE_VERSION'>

@@ -1,0 +1,10 @@
+<header>Introduction à NFS</header>
+
+NFS est un protocole de partage de fichier standard utilisé sur les systèmes Unix.  NFS permet à un système de partager un répertoire sur un réseau à un autre hôte, permettant aux usagers et applications de l'hôte d'avoir accès aux fichiers partagé.<p>
+
+Un serveur NFS est un système qui partage un ou plusieurs répertoire, tandis qu'un client NFS est un système qui monte un ou plusieurs répertoire d'un serveur.  Un hôte peut autant être client que serveur NFS d'un autre hôte.<p>
+
+Un serveur contrôle quels clients peut monter un répertoire partagé en vérifiant l'adresse IP du client avec la liste des hôtes autorisé pour le répertoire demandé.  Le serveur peu aussi partagé en lecture seule ou désigner certains clients en lecture seulement.<p>
+
+Contrairement aux autres systèmes de fichiers, un client NFS ne nécessite pas d'ouverture de session au serveur pour monter un répertoire partagé.  Le serveur fait confiant au client et authentifie les usagers en leurs donnant un numéro lors de l'accès au fichier partagé.  Ainsi, vous pouvez allouer seulement certain hôte client que vous faites confiance pour monter un répertoire partagé.<p>
+<hr>

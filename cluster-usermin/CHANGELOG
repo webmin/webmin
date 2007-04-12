@@ -1,0 +1,4 @@
+---- Changes since 1.200 ----
+First version of this module, which can manage multiple Usermin servers from a single interface.
+---- Changes since 1.290 ----
+Added support for cluster upgrading the Debian package of Usermin.

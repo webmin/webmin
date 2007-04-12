@@ -1,0 +1,29 @@
+<header>Transportuppslagning</header>
+
+Transportfilen anger samband mellan domänhierarkier och meddelandetransporter
+och/eller vidaresändningsdatorer. Sambanden används av demonen
+trivial-rewrite(8).
+
+<p>Detta är transporttabellens format:
+<ul>
+<li><b><tt>domain</tt></b> hänvisar till ... <b><tt>transport:nexthop</tt></b>
+: E-post till domänen sänds via transport till nexthop.
+for domain is delivered through transport to nexthop.
+<li><b><tt>.domain</tt></b> hänvisar till ... <b><tt>transport:nexthop</tt></b>
+: E-post till subdomäner till denna domän sänds via transport till nexthop.
+</ul>
+
+Obs: transportposter har högre prioritet än domäner som angivits i parametern
+<tt>mydestination</tt>. Om du använder transportuppslagning kan det vara bättre
+att explicit ange poster för alla domäner i mydestination, till exempel:
+<ul>
+<li><tt>hostname.my.domain</tt> ... <tt>local:</tt>
+<li><tt>localhost.my.domain</tt> ... <tt>local:</tt>
+</ul>
+
+Tolkningen av fältet nexthop är transportberoende. Om SMTP används anges
+<tt>host:service</tt> för serverportar som inte är standard, och 
+<tt>[host]</tt> eller <tt>[host:port]</tt> för att förhindra MX-uppslagningar.
+Formen <tt>[]</tt> kan också användas med IP-adresser istället för datornamn.
+
+<hr>

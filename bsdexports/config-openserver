@@ -1,0 +1,2 @@
+restart_command=/etc/rc2.d/S[0-9][0-9]nfs stop ; /etc/rc2.d/S[0-9][0-9]nfs start
+exports_file=/etc/exports

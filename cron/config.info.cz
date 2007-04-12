@@ -1,0 +1,13 @@
+cron_dir=Crontab Adresáø,0
+cron_get_command=Pøíkaz pro ètení u¾ivatelských úloh,0
+cron_edit_command=Pøíkaz pro editaci u¾ivatelských úloh,0
+cron_copy_command=Pøíkaz pro akceptování u¾ivatelských úloh na stand. vstupu,0
+cron_delete_command=Program pro vymazání u¾ivatelských úloh,0
+cron_input=Podporovat Cronem vstupy plánovaných úloh,1,1-Ano,0-Ne
+cron_allow_file=Seznam povolených u¾ivatelù,0
+cron_deny_file=Seznam zakázaných u¾ivatelù,0
+cron_deny_all=Pøístup bez povolených nebo zakázaných souborù,1,0-Zakázat v¹e,1-Zakázat v¹e mimo roota,2-Povolit v¹e
+vixie_cron=Podpora Vixie-Cron extensions,1,1-Ano,0-Ne
+system_crontab=Cesta k Vixie-Cron system crontab souboru,0
+cronfiles_dir=Cesta k extra cron adresáøi,3,Nic
+run_parts=spustitelná èást pøíkazu,0

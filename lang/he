@@ -1,0 +1,102 @@
+main_return=חזור אל  ה$1
+main_homepage=דף ראשי
+main_feedback=משוב..
+main_switch=החלפץ משתמש..
+main_version=גירסא $1 על $2 ($3)
+main_title=Webmin $1 על $2 ($3)
+main_none=אין לך גישה למודולים של webmin.
+
+category_servers=שרתים
+category_hardware=חומרה
+category_system=מערכת
+category_webmin=Webmin
+category_net=רשת
+category_=שונות
+
+header_webmin=Webmin Index
+header_module=אינדקס מודולים
+header_help=עזרה..
+header_config=הגדרות מודולים
+header_servers=Webmin שרתי
+
+index=אינדקס
+yes=כן
+no=לא
+save=שמור
+create=צור
+delete=מחק
+find=חפש
+error=בעיה
+default=ברירת מחדל
+modify=שנה
+reset=Reset
+ok=OK
+cancel=ביטול
+
+chooser_title1=בחר קובץ..
+chooser_title2=בחר תיקיה..
+chooser_dir=רשימת הקבצים ב  $1
+chooser_ok=אישור
+
+users_title1=בחר משתמשים..
+users_title2=בחר משתמש..
+users_sel=משתמשים נבחרים
+users_all=כל המשתמשים
+users_ok=יאללה
+users_cancel=ביטול
+users_clear=נקה
+
+groups_title1=בחר קבוצות..
+groups_title2=בחר קבוצה..
+groups_all=כל הקבוצות
+groups_sel=Selected Groups
+groups_ok=יאללה
+groups_cancel=Cancel
+groups_clear=Clear
+
+config_ecannot=אין לך הרשאה לשנות את התצורה של המודולים
+config_title=תצורה
+config_dir=למודול  $1
+config_header=אפשרויות תצורה למודול  $1
+config_none=ללא
+config_eaccess=אסור לך לגשת למודול 
+
+help_err=Failed to display help
+help_epath=Missing help path
+help_efile=Failed to read help file $1
+help_eheader=Missing &lt;header&gt; section
+help_einclude=Failed to include $1
+help_eif=$1 failed : $2
+help_eexec=$1 failed : $2
+
+referer_title=אזהרת בטיחות
+referer_warn=<b>זהירות!</b> Webmin has detected that the program $2 was linked to from the URL $1, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_ok=Continue executing Webmin program
+referer_again=אל תבלבל לי את המוח שוב.
+
+month_1=ינואר
+month_2=פברואר
+month_3=מרץ
+month_4=אפריל
+month_5=מאי
+month_6=יוני
+month_7=יולי
+month_8=אוגוסט
+month_9=אלול
+month_10=אוקטובר
+month_11=נובמבר
+month_12=חורף
+
+smonth_1=ינואר
+smonth_2=פברואר
+smonth_3=מרץ
+smonth_4=אפריל
+smonth_5=מאי
+smonth_6=יוני
+smonth_7=יולי
+smonth_8=אוגוסט
+smonth_9=אלול
+smonth_10=אוקטובר
+smonth_11=נובמבר
+smonth_12=חורף
+

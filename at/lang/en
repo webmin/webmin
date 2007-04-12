@@ -1,0 +1,57 @@
+index_title=Scheduled Commands
+index_header=New scheduled command
+index_user=Run as user
+index_date=Run on date
+index_time=Run at time
+index_cmd=Commands to execute
+index_id=Job ID
+index_exec=Run at
+index_created=Created on
+index_dir=Run in directory
+index_return=commands list
+index_cdate=Current date
+index_ctime=Current time
+index_allow=Allowed scheduled command users
+index_amode=Users to allow
+index_amode0=All Unix users
+index_amode1=Only listed users ..
+index_amode2=All except listed users ..
+index_delete=Cancel Selected Commands
+
+edit_title=Scheduled Command
+edit_cmd=Full script to execute
+edit_header=Scheduled command details
+edit_delete=Cancel this command
+edit_run=Run Now
+edit_ejob=Scheduled command no longer exists!
+edit_ecannot=You are not allowed to edit this scheduled command
+
+create_err=Failed to created schedule command
+create_euser=Missing or invalid username
+create_edate=Missing or invalid date or time
+create_ecmd=No commands entered
+create_efuture=Date and time is in the past
+create_edir=Missing or invalid directory
+create_ecannot=You are not allowed to create scheduled commands for this user
+create_eallow=The specified user is not allowed to run scheduled commands
+
+delete_err=Failed to cancel command
+delete_egone=Command already run or deleted
+
+acl_users=Can edit scheduled commands for
+acl_all=All users
+acl_this=Current Webmin user
+acl_only=Only users
+acl_except=All except users
+acl_allow=Can edit allowed At users?
+
+run_title=Running Command
+run_output=Output from scheduled command ..
+run_none=No output generated
+
+allow_err=Failed to save allowed users
+allow_ecannot=You are not allowed to manage allowed users
+allow_eusers=No users entered
+
+deletes_err=Failed to cancel commands
+deletes_enone=None selected

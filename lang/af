@@ -1,0 +1,207 @@
+main_return=Terug na $1
+main_homepage=Tuisblad
+main_feedback=Terugvoering..
+main_switch=Skakel na gebruiker..
+main_logout=Teken af
+main_version=Weergawe $1 op $2 ($3)
+main_title=Webmin $1 op $2 ($3)
+main_title2=Webmin
+main_none=U het nie toegang tot enige Webmin modules nie.
+main_skill=Ervarenheid
+
+category_servers=Bedieners
+category_hardware=Hardeware
+category_system=Stelsel
+category_webmin=Webmin
+category_net=Netwerk
+category_syslet=Syslets
+category_cluster=Groepe
+category_info=Inligting
+category_=Ander
+
+header_webmin=Webmin Indeks
+header_module=Module Indeks
+header_help=Hulp..
+header_config=Module Konfigurasie
+header_servers=Webmin Bedieners
+
+index=indeks
+yes=Ja
+no=Nee
+save=Stoor
+create=Skep
+delete=Vee uit
+find=Vind
+error=fout
+efilewrite=Skrywe onsuksesvol na $1 : $2
+default=Verstek
+modify=Verander
+reset=Herset
+ok=Reg
+cancel=Kanselleer
+helpsearch=Soek dokumente..
+switch_remote_euser=Die Unixgebruiker $1 bestaan nie.
+programname=Webmin
+
+chooser_title1=Kies l&ecirc;er..
+chooser_title2=Kies gids (directory)..
+chooser_dir=Gids vir $1
+chooser_ok=Reg
+
+users_title1=Kies Gebruikers..
+users_title2=Kies Gebruiker..
+users_sel=Gekose gebruikers
+users_all=Alle Gebruikers
+users_ok=Reg
+users_cancel=Kanselleer
+users_clear=Clear
+
+groups_title1=Kies Groepe..
+groups_title2=Kies Groep..
+groups_all=Alle Groepe
+groups_sel=Gekose Groepe
+groups_ok=Reg
+groups_cancel=Kanselleer
+groups_clear=Clear
+
+config_ecannot=U het nie die outoriteit om die module te verstel nie
+config_title=Verstellings
+config_dir=Vir module $1
+config_header=Verstelbare opsies vir $1
+config_none=Geen
+config_eaccess=U het nie toegang tot hierdie module nie
+config_err=Stoor van verstellings het gefaal
+
+help_err=Kan nie hulp vertoon nie
+help_epath=Ontbrekende of ongeldige hulpgids
+help_efile=Kon hulpl&ecirc;er $1 nie lees nie
+help_eheader=Ontbrekende &lt;header&gt; gedeelte
+help_einclude=Kon $1 nie insluit nie
+help_eif=$1 het gefaal : $2
+help_eexec=$1 het gefaal : $2
+
+referer_title=Sekuriteitswaarskuwing
+referer_warn=<b>Warning!</b> Webmin het bevind dat die program $2 vanaf die URL $1 geroep is, wat buite die Webminbediener is. Dit kan 'n aanduiding wees dat 'n poging aangewend is om u bediener te flous om 'n skadelike opdrag uit te voer.
+referer_warn_unknown=<b>Waarskuwing!</b> Webmin het bevind Webmin dat die program $1 vanaf 'n onbekende URL geroep is, wat buite die Webminbediener is. Dit kan 'n aanduiding wees dat 'n poging aangewend word om u bediener te flous om 'n skadelike opdrag uit te voer.
+referer_ok=Gaan voort om die Webminprogram uit te voer.
+referer_again=Moet nie weer die waarskuwing vertoon nie.
+
+session_header=Webmin aanteken
+session_mesg=U moet a gebruikersnaam en wagwoord invul om aan te teken by die Webminbediener op $1.
+session_mesg2=U moet 'n gebruikersnaam en wagwoord invul om aan te teken.
+session_user=Gebruikersnaam
+session_pass=Geheime kode
+session_login=Teken aan
+session_clear=Clear
+session_failed=Aantekening het gefaal. Probeer asseblief weer.
+session_logout=Aftekening suksesvol. Gebruik asb die onderstaande vorm om weer aan te teken.
+session_timed_out=Die sessie word outomaties afgeteken na $1 minute van geen aktiwiteit.
+session_save=Stoor aantekeninligting permanent?
+
+acl_root=Root-gids vir l&ecirc;erselekteerder
+acl_home=Gebruiker se tuisgids (home directory)
+acl_uedit=Gebruikers sigbaar in gebruikerslys
+acl_uedit_all=Alle gebruikers
+acl_uedit_none=Geen gebruikers
+acl_uedit_only=Slegs gebruikers
+acl_uedit_except=Alle gebruikers behalwe
+acl_uedit_uid=Gebruikers met UIDs in die reeks
+acl_uedit_group=Gebruiker in groep
+acl_gedit=Groepe sigbaar in groeplys
+acl_gedit_all=Alle groepe
+acl_gedit_none=Geen groepe
+acl_gedit_only=Slegs groepe
+acl_gedit_except=Alle groepe behalwe
+acl_gedit_gid=Groepe met GIDs in die reeks
+acl_feedback=Kan terugvoeringepos stuur?
+acl_feedback2=Ja
+acl_feedback1=Ja, maar nie met konfigurasiel&ecirc;ers nie
+acl_feedback0=Nee
+acl_rpc=Kan RPC-oproepe aanvaar?
+acl_rpc2=Slegs vir <tt>root</tt> of <tt>admin</tt>
+acl_rpc1=Ja
+acl_rpc0=Nee
+
+month_1=January
+month_2=Februarie
+month_3=Maart
+month_4=April
+month_5=Mei
+month_6=Junie
+month_7=Julie
+month_8=Augustus
+month_9=September
+month_10=Oktober
+month_11=November
+month_12=Desember
+
+day_0=Sondag
+day_1=Maandag
+day_2=Dinsdag
+day_3=Woensdag
+day_4=Donderdag
+day_5=Vrydag
+day_6=Saterdag
+
+smonth_1=Jan
+smonth_2=Feb
+smonth_3=Mar
+smonth_4=Apr
+smonth_5=Mei
+smonth_6=Jun
+smonth_7=Jul
+smonth_8=Aug
+smonth_9=Sep
+smonth_10=Okt
+smonth_11=Nov
+smonth_12=Des
+
+sday_0=So
+sday_1=Mo
+sday_2=Di
+sday_3=Wo
+sday_4=Do
+sday_5=Vr
+sday_6=Sa
+
+emodule=Toegang geweier: Gebruiker $1 het nie toestemming om module $2 te gebruik nie.
+elock_tries=Kon l&ecirc;er $1 nie sluit na $2 minute nie.
+
+skill_high=Ekspert
+skill_medium=Intermedi&ecirc;r
+skill_low=Beginner
+
+feedback_title=Webmin Terugvoering
+feedback_desc=Hierdie vorm laat u toe om foute aan te meld of voorstelle aan die Webminontwikkellaars te stuur. Wanneer u die Stuurknoppie kliek sal die inligting wat u ingevul het aan $1 ge-epos word.
+feedback_desc2=Hierdie terugvoering sal aan die onwikkellaar van Usermin gestuur word en nie aan u stelseladministrateur, ISP of gaheerbediener nie. Stuur asseblief u terugvoering in Engels, self al vertoon Webmin tans in 'n ander taal.
+feedback_header=Terugvoeringsbesonderhede
+feedback_name=U naam
+feedback_email=U eposadres
+feedback_module=Met betrekking tot module
+feedback_all=Alle modules
+feedback_text=Beskrywing, probleem of voorstel
+feedback_os=Sluit beheerstelselbesonderhede in by epos?
+feedback_osdesc=As die opsie gekies is, sal die outomatiese terugvoering u beheerstelsel se naam en weergawe insluit.
+feedback_config=Sluit modulekonfigurasie in?
+feedback_configdesc=As hierdie opsie gekies is, sal die epos die konfigurasie van die verwante module en die inhoud van die konfigurasiel&ecirc;ers van die module insluit. Bv, as die terugvoering ivm die <i>Gebruiker en Groepe</i> module was, sal u <tt>/etc/passwd</tt> en <tt>/etc/shadow</tt> l&ecirc;ers gestuur word.
+feedback_attach=Addisionele l&ecirc;ers om by te voeg
+feedback_send=Stuur Terugvoering
+feedback_mailserver=Stuur via SMTP bediener
+feedback_mailserver_def=Plaaslike sendmail program
+feedback_err=Die terugvoeringsboodskap het gefaal
+feedback_emodule=U het aangedui dat die modulekonfigurasie by die boodskap ingesluit moet word, maar u het nie 'n module gekies nie.
+feedback_emodule2=Die gekose module bestaan nie
+feedback_econfig=U het nie volle toegang tot die module nie
+feedback_via=Stuur terugvoering aan $1 via SMTP bediener $2
+feedback_prog=Terugvoering is gestuur aan $1 mbv sendmail program $2
+feedback_esend=Die terugvoering via die sendmail program of plaaslike SMTP bediener het gefaal
+feedback_to=Stuur terugvoering aan adres
+feedback_enoto=Geen adresse was aangedui die terugvoering aan te stuur nie
+feedback_ecannot=U is nie toegelaat om terugvoering te stuur nie
+feedback_ecannot2=U is nie toegelaat om terugvoering te stuur wat konfigurasiel&ecirc;ers bevat nie
+progress_size=Laai $1 ($2 bytes) af..
+progress_nosize=Laai $1 af..
+progress_data=Ontvang $1 grepe ($2 %)
+progress_data2=Ontvang $1 grepe
+progress_done=.. Aflaai voltooi.
+

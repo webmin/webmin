@@ -1,0 +1,39 @@
+index_title=Comandos Agendados
+index_header=Novo comando a ser agendado
+index_user=Executar como usuário
+index_date=Executar no dia
+index_time=Executar na hora
+index_cmd=Comandos a executar
+index_id=ID da tarefa
+index_exec=Executar a
+index_created=Criado em
+index_dir=Executar no diretório
+index_return=lista de comandos
+index_cdate=Data atual
+index_ctime=Hora atual
+
+edit_title=Comandos Agendados
+edit_cmd=Script completo a executar
+edit_header=Detalhes do comando agendado
+edit_delete=Cancelar este comando
+edit_ejob=Este comando agendado não existe mais!
+edit_ecannot=Você não está autorizado a editar este comando agendado
+
+create_err=Falha ao criar um comando agendado
+create_euser=Nome do usuário faltando ou inválido
+create_edate=Data ou hora faltando ou inválida
+create_ecmd=Não foi digitado nenhum comando
+create_efuture=A data e a hora estão no passado
+create_edir=Diretório faltando ou inválido
+create_ecannot=Você não está autorizado a criar comandos agendados para este usuário
+
+delete_err=Falha ao cancelar o comando
+delete_egone=O comando já foi executado ou apagado
+
+acl_users=Pode editar comandos agendados para
+acl_all=Todos usuários
+acl_this=Usuário Webmin atual
+acl_only=Somente usuários
+acl_except=Todos exceto usuários
+
+

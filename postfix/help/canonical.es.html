@@ -1,0 +1,68 @@
+<header>Mapeo Canónigo</header>
+
+El archivo canónigo opcional especifica un mapeo de direcciñón para direcciones
+locales y no locales. El mapeo es usado por el demonio cleanup(8). El mapeo de
+dirección es recursivo.
+
+<p>
+
+El archivo sirve como entrada del comando postmap(1). El resultado, un archivo
+en formato dbm o db, es usado para búsqueda rápida por el sistema de correo.
+
+<p>
+
+El mapeo canónigo afecta a ambas: direcciones de cabecera de mensaje (p.ej.
+direcciones que aparecen dentro de los mensajes) y direcciones de sobre de
+mensaje (por ejemplo, las direcciones que son usadas en los comandos del
+protocolo SMTP). Piensa en la regla S3 de Sendmail, si lo deseas.
+
+<p>
+
+Típicamente, uno debería usar tabla canóniga para reemplazar nombes de login
+por <tt>Nombre.Apellido</tt>, o para limpiar las direcciones producidas por
+sistemas de correo antiguos.
+
+<p>
+
+El mapeo canónigo no se confunde con soporte de dominio virtual. Usa el mapeo
+virtual(5) para ese propósito.
+
+<p>
+
+El mapeo canónigo no ha de ser confundido con aliases locales. Usa el mapeo
+de aliases(5) para eses propósito.
+
+<p>
+
+El formato de los mapeos canónigos es como sigue (los mapeos han sido intentados
+en el orden listado):
+
+<ul>
+<li><b><tt>usuario@dominio</tt></b> mapeado a... <b><tt>dirección</tt></b>:<br><tt>usuario@dominio</tt> is
+reemplazado por <tt>dirección</tt>. Este formualrio tiene la mayor precedencia.
+Este formulario es útil para limpiar las direcciones producidas por sistemas de
+correo antiguos. También se puede usar para producir direcciones del estilo
+<tt>Nombre.Apellidos</tt>, pero mira debajo para una solución más simple.
+
+<li><b><tt>usuario</tt></b> mapeado a...<b><tt>dirección</tt></b>:<br><tt>usuario@sitio</tt> es reemplazado
+por la dirección cuando el sitio es igual a <tt>$myorigin</tt>, cuando el sitio está listado en
+<tt>$mydestination</tt>, o cuando está listado en <tt>$inet_interfaces</tt>.
+Este formulario es útil para reemplazar nombres de login por <tt>Nombre.Apellidos</tt>.
+
+<li><b><tt>@dominio</tt></b> mapeado a...<b><tt>dirección</tt></b>:<br>Cada dirección en el dominio es
+reemplazada por la dirección. Este formulario tiene la precedencia menor.
+</ul>
+
+En todos los formularios superiores, cuando la dirección tiene la forma <tt>@otrodominio</tt>,
+el resultado es el mismo usuario en otrodominio.
+
+<p>
+
+EXTENSIÓN DE DIRECCIÓN: Cuando la búsqueda en tabla falla y la parte local de la
+dirección contiene el delimitador opcional de destinatario (p.ej. <tt>usuario+foo@dominio</tt>),
+la búsqueda es tepetida para dirección inesperada (p.ej. <tt>usuario@dominio</tt>), y la
+extensión que no coincide es propagada al resultado de la búsqueda en tabla. El orden de
+coincidencia es: <tt>usuario+foo@dominio</tt>, <tt>usuario@dominio</tt>, <tt>usuario+foo</tt>,
+<tt>usuario</tt>, y <tt>@dominio</tt>.
+
+<hr>

@@ -1,0 +1,49 @@
+<header>Opciones Varias</header>
+
+<b>Iniciar direcciones de prueba de DNS</b>: Servidores de DNS consultados por Squid para probar si las búsquedas DNS funcionan corréctamente.
+<p>
+<b>Rotaciones de archivo de diario SIGUSR1</b>: Por defecto es 10 o 0, dependiendo del sistema. Especifica el número de rotaciones de archivo de diario a realizar al digitar 'squid -k rotate'.  Por defecto es 10, lo cual rotará con extensiones 0 a 9. Ponerlo a 0 desactivará la rotación, pero los archivos de diario aún se reabren y cierran. Esto te permitirá renombrar los archivos de diario por tí mismo justo antes de enviar la señal de rotación.
+<p>
+Nota: el comando 'squid -k rotate' normálmente envía la señal USR1 al proceso Squid en ejecución. Bajo ciertas situaciones (p.ej. en Linux con E/S Asíncrona), USR1 se usa para otros propósitos, por ello '-k rotate' usa otra señal.  Es mejor acostumbrarse a usar 'squid -k rotate' en vez de 'kill -USR1 <pid>'.
+<p>
+<b>Texto de mensajes de error</b>: Texto HTML a incluir en mensajes de error. Haz que esto sea una URL donde "mailto (enviar correo a)" a tu dirección de admin o quizás sólo un enlace a la página Web de tu organización.
+<p>
+Para incluir esto en tus mensajes de error, debes de reescribir tus archivos de plantilla de error (hallados en el directorio "errors"). Donde desees que la línea 'err_html_text' aparezca, inserta un marca %L en el archivo de plantillas de error.
+<p>
+<b>Estadísticas por cliente</b>: Si deseas desactivar la recolección de estadísticas por cliente, desactiva la client_db aquí.
+<p>
+<b>Cabecera de X-Reenviado-Para</b>: Por defecto está activa. Si se pone, Squid inlcuirá tu dirección IP de sistema o tu nombre de sistema en los requerimientos IP que envíe. Por defecto, se asemeja a los requerimientos HTTP que envía. Por defecto se asemeja a:
+<p>
+<center>X-Forwarded-For: 192.1.2.3</center>
+<p>
+Si desactivas esto, aparecerá como:
+<p>
+<center>X-Forwarded-For: desconocido</center>
+<p>
+<b>Llevar diario de consultas ICP</b>: Por defecto activo. Si se pone, las consultas ICP son puestas en 'access.log'. Puedes querer desactivar esto si tu carga ICP es MUY alta par así acelerar las cosas o para simplificar el análisis del diario.
+<p>
+<b>Saltos directos mínimos</b>: Por defecto son 4. Si utilizas el ping de ICMP, haz recogidas directas para los sitios que no estén más lejos de estos saltos.
+<p>
+<b>Mantén la memoria para uso futuro</b>: Por defecto es 'sí'. Si se pone, Squid mantendrá bloques de memoria reservada (pero no usada) para uso futuro. Si la memoria es primordial en tu sistema y crees que la biblioteca malloc es mejor que las rutinas de Squid, deasactiva esto.
+<p>
+<b>Cantidad de memoria a mantener</b>: Por defecto es 'Ilimitada'. Si se pone a un valor que no sea cero, Squid mantendrá como mucho el límite especificado de memoria reservada (pero no usada) en bloques de memoria. Todos los requerimientos de liberación [free()] que excedan este límite serán manejados por tu biblioteca  malloc. Squid no prereserva ninguna memoria, sólo mantiene de forma segura objetos que de otra forma serían liberados. Por ello, es más seguro poner límites a bloques de memoria (memory_pools_limit) a un valor razonáblemente alto incluso si tu configuración usará así menos memoria.
+<p>
+Si no se pone (por defecto) o se pone a cero, Squid mantendrá toda la memoria que pueda. Es decir que no habrá límite en la cantidad total de memoria usada para mantener-segura.
+<p>
+<b>Cabeceras a pasar diréctamente</b>: Por defecto es 'Todas las cabeceras'. Esta opción reemplaza la vieja 'http_anonymizer' por algo que es mucho más configurable. Ahora puedes especificar exáctamente qué cabeceras están autorizadas o cual van a ser quitadas de los requerimientos de salida.
+<p>
+Hay dos maneras de usar esta opción. Puedes permitir cabeceras específicas (denegando así las otras) o puedes denegar cabeceras específicas (autorizando así las otras).
+<p>
+<b>Usuario-Agente Falso</b>: Por defecto es 'ninguno'. Si filtras la cabecera de Usuario-Agente con la opción <b>Cabeceras a pasar diréctamente</b> puede causar que algunos servidores Web rechacen tu requerimiento. Usa esto para falsearlo.
+<p>
+<b>Máquina Aceleradora HTTP</b>: Por defecto es 'ninguna'. Si deseas ejecutar Squid como un acelerador httpd, pon esta dirección del servidor HTTP real.
+<p>
+<b>Puerto Acelerador HTTP</b>: Por defecto es 'ninguno'. Además de poner la <b>Máquina Aceleradora HTTP</b> debes de poner el puerto real de servidores, aquí, si estás usando Squid como un acelerador.
+<p>
+<b>Acelerador HTTP Con Proxy</b>: Por defecto está desactivado. Actívalo si deseas que tu Squid actue como un proxy tradicional mientras suministra también aceleración HTTP. Esta opción debería de activarse si se usa un proxy transparente.
+<p>
+<b>Acelerador HTTP Usa Cabecera de Máquina</b>: Por defecto está desactivado. Los requerimientos HTTP/1.1 incluyen una cabecera de 'Máquina:' que es básicamente el nombre de máquina del URL. Squid puede ser un acelerador para diferentes servidores HTTP sólo con mirar a esta cabecera. Sin embargo, Squid NO revisa el valor de la cabecera de Máquina, por ello esto abre un gran agujero de seguridad. Recomendamos que esta opción permanezca desactivada a menos que estés seguro de lo que estás haciendo.
+<p>
+Sin embargo, necesitará activar esta opción si ejecutas Squid como un proxy transparente, De otra manera, los servidores virtuales que requieran la cabecera 'Máquina:' no será puestos en caché de forma adecuada.
+
+<hr>

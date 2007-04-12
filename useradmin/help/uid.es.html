@@ -1,0 +1,16 @@
+<header>ID de Usuario</header>
+
+La ID de usuario o UID es lo que utiliza realmente el sistema para llevar
+a cabo los permisos de los archivos y procesos. Si dos usuarios tienen la
+misma UID podrán acceder a los archivos de cada uno - por ello cada usuario
+debería de tener una UID única. Al crear un nuevo usuario, Webmin rellena
+este campo con una UID que no esté en uso por ningún otro usuario. <p>
+
+El usuario <tt>root</tt> siempre tiene una UID de 0. Si creas otro usuario con
+UID 0, ese usuario tendrá el mismo poder que <tt>root</tt>. <p>
+
+Si estás editando un usuario ya existente y cambias su UID, la opción
+<a href=chuid.es>¿Cambio ID de usuario en los archivos?</a> determina qué
+archivos (si hay alguno) han de cambiar su pertenencia. <p>
+<hr>
+

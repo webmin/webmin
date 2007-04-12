@@ -1,0 +1,37 @@
+<header>Sendmail Configuration</header>
+
+<h3>Introduction to Sendmail</h3>
+Sendmail is the standard Unix program for mail transport and delivery.
+When a user on your system wants to send email to someone on another host,
+sendmail is the program that does the actual process of delivering the
+mail. Similarly, when someone on another system sends mail to one of your
+users, sendmail will receive the email and store it in the user's mail
+file. <p>
+
+Sendmail is an MTA (mail transport agent) only, meaning that it does not
+present any user interface to people wishing to send email. Programs like
+Eudora, elm or /bin/mail that users actually interact with a called MUAs
+(mail user agents). An MUA does not deliver email itself, instead it simply
+passes the email on to sendmail to do the delivery. <p>
+
+User MUAs can be run either directly on your system (MUAs like pine, elm
+or /bin/mail), or on a separate host which may be a single-user PC (for MUAs
+like Eudora, Exchange and Netscape Communicator). In the first case,
+mail is sent be directly invoking sendmail and passing the message to it,
+and received by reading the user's mail spool file. For MUAs run on other
+hosts, mail is sent by connecting to the sendmail process on your system
+using the SMTP protocol, and received by connecting to a separate POP3
+server. <p>
+
+<h3>The Sendmail Module</h3>
+The main page of this module shows a table of icons, each for configuring
+a different part of sendmail's functionality. However, the features behind
+some icons may not be available, if they have not been setup in your
+<tt>sendmail.cf</tt>. When installing sendmail, you can choose which features
+are available by editing an <tt>.mc</tt>, which is converted by <tt>m4</tt>
+into your <tt>sendmail.cf</tt>. Many features (such as Address Mapping,
+Domain Masquerading and Spam Control) may not be available unless you have
+enabled them at install time. <p>
+
+<hr>
+

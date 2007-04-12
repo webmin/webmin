@@ -1,0 +1,21 @@
+<header>Resposta del servidor SMTP en cas de violació de dominis RBL</header>
+
+<center><tt>maps_rbl_reject_code</tt></center>
+<hr>
+
+Aquest paràmetres especifica el codi de resposta del servidor SMTP quan un
+client viola la restricció
+<a href=opt_maps_rbl_domains><tt>maps_rbl_domains</tt></a> que és:<br>
+<i>Accés denegat: client SMTP llistat a RBL</i><br>
+<br>
+TIngues en compte que el valor per defecte de postfix utilitzat per a
+<tt>maps_rbl_reject_code</tt> és el codi 554, i aquest codi en l'estàndard 
+RFC 822 voldria dir 'Acció de correu rebutjada: accés denegat'.
+Així, amb postfix, una violació de la regla <tt>maps_rbl_domains</tt>
+no reflecteix exactament l'explicació RFC822 del codi informat.<br>
+<p>
+Per evitar la confusió, pots canviar-ho, per exemple, per 571 (una altra raó
+és que iés també el valor per defecte de postfix per altres menes d'errors),
+altrament, no ho canviïs si no tens un coneixement complet de RFC 822.
+</p>
+

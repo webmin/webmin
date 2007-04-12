@@ -1,0 +1,14 @@
+line2=Sistem yapýlandýrmasý,11
+man_cmd=Yardým sayfasýný görüntüleme komutu,0
+man_cmd_sect=Bir bölümdeki yardým sayfasýný görüntüleme komutu,0
+search_cmd=Sayfa aramak için kullanýlacak komut,0
+man_dir=Yardým sayfalarý dizini (MANPATH),0
+list_cmd=Kýlavuz sayfalarýn yolunu gösterecek komut,0
+list_cmd_sect=Bir bölümdeki kýlavuz sayfalarýn yolunu gösterecek komut,0
+man2html_path=man2html komutu yolu,3,man2html'yi kullanma
+doc_dir=Paket belgesi dizini,3,Yok
+howto_dir=NASIL belgesi dizinleri,3,Yok
+kernel_dir=Çekirdek belgesi yolu,3,Yok
+kde_dir=KDE belgesi yolu,3,Yok
+custom_dir=Özel belge dizini,3,Yok
+custom_desc=Özel belge adý,3,Öntanýmlý

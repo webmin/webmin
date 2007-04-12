@@ -1,0 +1,36 @@
+<header>Begränsningar av HELO-kommandon</header>
+
+<center><tt>smtpd_helo_restrictions</tt></center>
+<hr>
+
+Denna parameter anger valbara begränsningar på vilka SMTP-klienter som får
+skicka SMTP-kommandona HELO och EHLO.
+
+<p>Standardinställningen är att tillåta alla. Följande begränsningar
+är möjliga:
+
+<ul>
+<li><tt>permit_mynetworks:</tt> tillåt om klientens adress matchar
+      <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>reject_unknown_client:</tt> tillåt ej om klientens datornamn är okänt.
+<li><tt>reject_maps_rbl:</tt> tillåt ej om klienten finns uppräknad under
+      <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject_invalid_hostname:</tt> tillåt ej HELO-datornamn med felaktig syntax.
+<li><tt>reject_unknown_hostname:</tt> tillåt ej HELO-datornamn utan DNS A- eller MX-post.
+<li><tt>reject_non_fqdn_hostname:</tt> tillåt ej HELO-datornamn som inte är på FQDN-form.
+<li><tt>check_helo_access maptype:mapname:</tt> slå upp HELO-datornamn eller föräldradomäner.
+	Tillåt ej om resultatet blir REJECT eller &quot;[45]xx text&quot;.
+	Tillåt annars.
+<li><tt>check_client_access maptype:mapname:</tt> se
+      <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li><tt>reject:</tt> tillåt ej. Sätt detta alternativ sist i begränsningslistan.
+<li><tt>permit:</tt> tillåt. Sätt detta alternativ sist i begränsningslistan.
+</ul>
+
+Begränsningar görs i angiven ordning; den första begränsning som passar in
+används.
+
+<p>Ange en lista med begränsningar, separerade med kommatecken och/eller
+blanksteg. Långa rader görs genom att nästa rad börjas med ett blanksteg.
+
+<hr>

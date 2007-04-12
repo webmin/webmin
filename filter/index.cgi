@@ -1,0 +1,125 @@
+#!/usr/local/bin/perl
+# Show a table of simple actions
+
+require './filter-lib.pl';
+&ui_print_header(undef, $text{'index_title'}, "", undef, 0, 1);
+
+# Warn if procmail is not installed
+if ($config{'warn_procmail'} && !&has_command("procmail")) {
+	print "$text{'index_warn'}<p>\n";
+	}
+
+# Check for an override alias
+$alias = &get_override_alias();
+if ($alias) {
+	# Got one .. but does it deliver locally
+	$noat = $remote_user;
+	$noat =~ s/\@/-/g;
+	@values = @{$alias->{'values'}};
+	($tome) = grep { $_ eq "\\$remote_user" ||
+			 $_ eq "\\$noat" } @values;
+	if ($tome) {
+		@values = grep { $_ ne $tome } @values;
+		$msg = 'index_aliasme';
+		}
+	else {
+		$msg = 'index_alias';
+		}
+	print $text{$msg},"<br>\n";
+	print "<ul>\n";
+	foreach $dest (&describe_alias_dest(\@values)) {
+		print "<li>$dest\n";
+		}
+	print "</ul>\n";
+	}
+
+@filters = &list_filters();
+@links = ( &select_all_link("d"), &select_invert_link("d"),
+	   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );
+
+@folders = &mailbox::list_folders();
+if (@filters) {
+	# Show table of filters
+	print &ui_form_start("delete.cgi", "post");
+	@tds = ( "width=5", "width=50%", "width=50%", "width=32" );
+	print &ui_links_row(\@links);
+	print &ui_columns_start([ "",
+				  $text{'index_condition'},
+				  $text{'index_action'},
+				  @filters > 1 ? ( $text{'index_move'} ) : ( ),
+				], 100, 0, \@tds);
+
+	# Add a magic non-editable row for global spamassassin run
+	if (&get_global_spamassassin()) {
+		print &ui_columns_row(
+			[ "", $text{'index_calways'}, $text{'index_aspam'},
+			  @filters > 1 ? ( "" ) : ( ) ],
+			\@tds);
+		}
+
+	# Show editable rows
+	foreach $f (@filters) {
+		# Work out nice condition and action descriptions
+		local $cond;
+		($cond, $lastalways) = &describe_condition($f);
+		$cond = "<a href='edit.cgi?idx=$f->{'index'}'>$cond</a>";
+		local $action = &describe_action($f, \@folders);
+
+		# Create mover links
+		local $mover;
+		if ($f eq $filters[0]) {
+			$mover .= "<img src=images/gap.gif>";
+			}
+		else {
+			$mover .= "<a href='up.cgi?idx=$f->{'index'}'>".
+			      "<img src=images/up.gif border=0></a>";
+			}
+		if ($f eq $filters[$#filters]) {
+			$mover .= "<img src=images/gap.gif>";
+			}
+		else {
+			$mover .= "<a href='down.cgi?idx=$f->{'index'}'>".
+			      "<img src=images/down.gif border=0></a>";
+			}
+
+		# Show the row
+		print &ui_checked_columns_row(
+			[ $cond,
+			  $action,
+			  @filters > 1 ? ( $mover ) : ( ) ],
+			\@tds, "d", $f->{'index'}
+			);
+
+		}
+
+	# Add a magic non-editable row for default delivery
+	if (!$lastalways) {
+		print &ui_columns_row(
+			[ "", $text{'index_calways'}, $text{'index_adefault'},
+			  @filters > 1 ? ( "" ) : ( ) ],
+			\@tds);
+		}
+
+	print &ui_columns_end();
+	print &ui_links_row(\@links);
+	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+	}
+else {
+	# Tell the user there are none
+	@pmrc = &procmail::get_procmailrc();
+	if (@pmrc) {
+		print "<b>$text{'index_none2'}</b><p>\n";
+		}
+	elsif (&get_global_spamassassin()) {
+		print "<b>$text{'index_none3'}</b><p>\n";
+		}
+	else {
+		print "<b>$text{'index_none'}</b><p>\n";
+		}
+	shift(@links);
+	shift(@links);
+	print &ui_links_row(\@links);
+	}
+
+&ui_print_footer("/", $text{'index'});
+

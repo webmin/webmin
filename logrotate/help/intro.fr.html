@@ -1,0 +1,41 @@
+<header>Rotation de fichier journal</header>
+
+la rotation de fichier journal fait référence au processus automatique
+par le quel des fichiers journaux sont tronqués, compressés et supprimés
+de manière à réduire l'espace disque qu'ils utilisent. La plupart des serveurs
+unix (comme Apache, Squid et Sendmail) génèrent des fichiers journaux
+de même que les divers démons qui utilisent le système de journalisation
+syslog. Ce module peut être utilisé pour configurer le programme <tt>logrotate</tt>
+qui gère tous ces journaux. <p>
+
+Habituellement, la rotation d'un fichier journal est effectuée chaque jour, semaine
+ou mois. Le journal est ordinairement renommé et compressé et un nouveau fichier
+vide est créé à sa place. On peut garder plusieurs générations de ces vieux
+journaux, de sorte que vous pouvez y faire des recherche ou générer des rapports
+en les utilisant après la rotation. Dès que le nombre d'ancien journaux dépasse une
+limite configurable, le plus vieux est supprimé. <p>
+
+Chaque fichier journal dont on doit effectuer la rotation est listé sur la page
+principale. chaque journal a son propre ensemble de paramètres définis, qui contrôlent
+la fréquence de rotation, le nombre de vielles copies à garder, etc. Vous pouvez
+modifier ces options pour un journal en particulier en cliquant sur sont nom de fichier
+ou ajouter la rotation d'un nouveau fichier journal en utilisant le lien au-dessus ou
+au-dessous de la table. <p>
+
+Plusieurs distributions linux incluent <tt>logrotate</tt> en standard et s'installent
+avec une configuration de base pour des serveurs inclus comme Apache et Squid, de sorte
+que même si vous n'avez jamais utilisé ce module auparavant, plusieurs fichiers log
+seront probablement déjà listés sur la page principale.
+
+Au bas de la page, il y a un bouton pour modifier les options globales de configuration,
+lesquelles s'appliquent à tous les fichiers journaux, à moins d'être suplantées.
+
+Near the bottom of the page is a button for editing the global configuration,
+which applies to all log files unless overridden. Below it is a button for
+setting the schedule on which <tt>logrotate</tt> is run by Cron, which is
+necessary for it to actually rotate logs. On most
+operating systems that include the program as standard, a Cron job will
+have been already created as part of the installation process. <p>
+
+<hr>
+

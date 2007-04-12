@@ -1,0 +1,9 @@
+sshd_path=/usr/lib/ssh/sshd
+sshd_config=/etc/ssh/sshd_config
+client_config=/etc/ssh/ssh_config
+pid_file=/var/run/sshd.pid
+keygen_path=/usr/bin/ssh-keygen
+sync_create=0
+sync_auth=1
+sync_pass=0
+sync_gnupg=0

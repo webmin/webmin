@@ -1,0 +1,5 @@
+---- Changes since 1.280 ----
+Improved the Client Services page to allow editing of all nsswitch.conf options, including fallback modes.
+---- Changes since 1.290 ----
+Updated the Server Security page to support the new ypserv.conf format.
+Updated the Makefile parsing to support a new format used by Debian.

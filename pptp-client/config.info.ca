@@ -1,0 +1,7 @@
+line1=Opcions configurables,11
+timeout=Temps d'espera del túnel per a connectar,0,5
+line2=Configuració del sistema,11
+pptp=Camí complet del programa client PPTP,0
+peers_dir=Directori que conté els fitxers de connexió PPP,0
+pap_file=Fitxer de comptes PPP,0
+pptp_options=Fitxer d'opcions globals PPP PPTP,0

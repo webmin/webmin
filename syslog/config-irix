@@ -1,0 +1,15 @@
+pri_all=0
+syslogd=/usr/etc/syslogd
+syslog_conf=/etc/syslog.conf
+m4_conf=0
+pri_dir=0
+lines=20
+pid_file=
+m4_path=
+sync=0
+facilities=user kern mail daemon auth lpr news uucp cron mark local0 local1 local2 local3 local4 local5 local6 local7
+pipe=2
+tags=0
+socket=1
+compressed=1
+others=1

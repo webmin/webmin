@@ -1,0 +1,11 @@
+line1=Configurable options,11
+config_file=Fetchmail config file to edit,3,All users' .fetchmailrc files
+view_mode=Display user list as,1,1-Usernames only,0-Usernames and fetchmail configuration
+max_users=Maximum number of users to display,3,Unlimited
+daemon_user=User to run the fetchmail daemon as,0
+mda_command=Mail delivery command,3,Use SMTP
+line2=System configuration,11
+fetchmail_path=Path to the fetchmail program,0
+pid_file=Path to the fetchmail daemon PID file,0
+start_cmd=Command to start fetchmail daemon,3,Just run fetchmail
+stop_cmd=Command to stop fetchmail daemon,3,Just run fetchmail -q

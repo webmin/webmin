@@ -1,0 +1,157 @@
+main_return=Powrót do $1
+main_homepage=Strona g³ówna
+main_feedback=Poczta do serwisu..
+main_switch=Prze³±cz u¿ytkownika..
+main_logout=Wyloguj siê
+main_version=Wersja $1 na $2 ($3)
+main_title=Webmin $1 na $2 ($3)
+main_none=Nie masz prawa dostêpu do ¿adnego z modu³ów Webmina.
+main_skill=Poziom umiejêtno¶ci
+
+category_servers=Serwery
+category_hardware=Sprzêt
+category_system=System
+category_webmin=Webmin
+category_net=Sieæ
+category_syslet=Syslet
+category_cluster=Klaster
+category_=Inne
+
+header_webmin=Indeks Webmina
+header_module=Indeks modu³u
+header_help=Pomoc..
+header_config=Konfiguracja modu³u
+header_servers=Serwery Webmina
+
+index=indeksu
+yes=Tak
+no=Nie
+save=Zachowaj
+create=Utwórz
+delete=Usuñ
+find=Znajd¼
+error=B³±d
+default=Domy¶lnie
+modify=Modyfikuj
+reset=Kasuj
+ok=OK
+cancel=Rezygnuj
+helpsearch=Szukaj dokumentacji
+
+chooser_title1=Wybierz zbiór..
+chooser_title2=Wybierz kartotekê..
+chooser_dir=Zawarto¶æ $1
+chooser_ok=OK
+
+users_title1=Wybierz u¿tkowników..
+users_title2=Wybierz u¿ytkownika..
+users_sel=Wybrani u¿ytkownicy
+users_all=Wszyscy u¿ytkownicy
+users_ok=OK
+users_cancel=Rezygnuj
+users_clear=Czy¶æ
+
+groups_title1=Wybierz grupy..
+groups_title2=Wybierz grupê..
+groups_all=Wszystkie grupy
+groups_sel=Wybrane grupy
+groups_ok=OK
+groups_cancel=Rezygnuj
+groups_clear=Czy¶æ
+
+config_ecannot=Nie masz uprawnieñ do konfiguracji tego modu³u
+config_title=Konfiguracja
+config_dir=modu³u $1
+config_header=Konfigurowalne opcje modu³u $1
+config_none=Brak
+config_eaccess=Nie masz uprawnieñ dostêpu do tego modu³u
+
+help_err=Nie mogê wy¶wietliæ pomocy
+help_epath=Nie podano lub podano niopoprawn± ¶cie¿kê dostêpu do pomocy
+help_efile=Nie mogê przeczytaæ zbioru pomocy $1
+help_eheader=Brak sekcji &lt;header&gt;
+help_einclude=Nie moge w³±czyæ $1
+help_eif=$1 b³±d : $2
+help_eexec=$1 b³±d : $2
+
+referer_title=Uwaga niebezpieczeñstwo!
+referer_warn=<b>Uwaga!</b> Webmin wykry³, ¿e program $2 jest dowi±zany do URL-a $1 znajduj±cego siê poza serwerem Webmina. Mo¿e to byæ próba podstêpnego zmuszenia twojego serwera do wykonania niebezpiecznego polecenia.
+referer_warn_unknown=<b>Uwaga!</b> Webmin wykry³, ¿e program $1 jest dowi±zany do nieznanego URL-a znajduj±cego siê poza serwerem Webmina. Mo¿e to byæ próba podstêpnego zmuszenia twojego serwera do wykonania niebezpiecznego polecenia.
+referer_ok=Kontynuuj wykonywanie programu Webmin
+referer_again=Nie pokazuj tego ostrze¿enia w&nbsp;przysz³o¶ci.
+
+session_header=Logowanie do Webmina
+session_mesg=Musisz podaæ nazwê u¿ytkownika i&nbsp;has³o, aby zalogowaæ siê do serwera Webmina na $1.
+session_user=Nazwa u¿ytkownika
+session_pass=Has³o
+session_login=Zaloguj siê
+session_clear=Wyczy¶æ
+session_failed=Nie uda³o siê zalogowaæ. Spróbuj ponownie.
+session_logout=Logowanie zakoñczone pomy¶lnie. U¿yj poni¿szego formularza, aby zalogowaæ siê ponownie.
+session_timed_out=Sesja przeterminowana po $1 minutach braku aktywno¶ci.
+session_save=Pamiêtaæ logowanie ca³y czas?
+
+acl_root=Katalog g³ówny dla wyboru pliku
+acl_uedit=U¿ytkownicy widoczni przy wyborze u¿ytkownika
+acl_uedit_all=Wszyscy
+acl_uedit_none=¯aden
+acl_uedit_only=Wybrani
+acl_uedit_except=Wszyscy oprócz
+acl_uedit_uid=U¿ytkownicy o&nbsp;UID-ach z&nbsp;zakresu
+acl_uedit_group=U¿ytkownicy o&nbsp;grupie
+acl_gedit=Grupy widoczne przy wyborze grupy
+acl_gedit_all=Wszystkie
+acl_gedit_none=¯adna
+acl_gedit_only=Wybrane
+acl_gedit_except=Wszystkie oprócz
+acl_gedit_gid=Grupy o&nbsp;GID-ach z&nbsp;zakresu
+
+month_1=Styczeñ
+month_2=Luty
+month_3=Marzec
+month_4=Kwiecieñ
+month_5=Maj
+month_6=Czerwiec
+month_7=Lipiec
+month_8=Sierpieñ
+month_9=Wrzesieñ
+month_10=Pa¼dziernik
+month_11=Listopad
+month_12=Grudzieñ
+
+day_0=Niedziela
+day_1=Poniedzia³ek
+day_2=Wtorek
+day_3=¦roda
+day_4=Czwartek
+day_5=Pi±tek
+day_6=Sobota
+
+smonth_1=Sty
+smonth_2=Lut
+smonth_3=Mar
+smonth_4=Kwi
+smonth_5=Maj
+smonth_6=Cze
+smonth_7=Lip
+smonth_8=Sie
+smonth_9=Wrz
+smonth_10=Pa¼
+smonth_11=Lis
+smonth_12=Gru
+
+sday_0=Ni
+sday_1=Po
+sday_2=Wt
+sday_3=¦r
+sday_4=Cz
+sday_5=Pi
+sday_6=So
+
+emodule=Dostêp zabroniony&nbsp;: U¿ytkownik $1 nie ma praw do korzystania z&nbsp;modu³u $2
+elock_tries=Przez $2 minut nie uda³o siê zablokowaæ pliku $1
+
+skill_high=Ekspert
+skill_medium=Przeciêtny
+skill_low=Nowicjusz
+

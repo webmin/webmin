@@ -1,0 +1,3 @@
+line2=系統組態,11
+at_style=系統類型,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+at_dir=工作目錄,0

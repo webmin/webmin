@@ -1,0 +1,25 @@
+<header>Configuration Engine</header>
+
+CFengine is a powerful tool that allows you to define a series of
+system administration actions to be carried out when necessary, in order
+to perform tasks like creating links and directories, setting file permisions
+managing running processes and tidying up old files. Its class system
+allows you to use the same configuration on multiple systems, with different
+actions being carried out depending on the system type, hostname or other
+criteria. <p>
+
+The main page of this module lists all the actions setup on your system,
+the classes that they apply to, and a summary of what the action will do
+for each class. You can add a new action type by using the button below
+the table, add a new class for an existing action by clicking on the
+<i>Add class..</i> link, or edit an existing class for an action by
+clicking on the class name in the <i>Apply to classes</i> column. <p>
+
+If your configuration is currently empty, you should start by creating
+a <i>Master control</i> action that determines which other actions get run. When
+adding new actions, you must also make sure that they are listed in the
+master control action. If not, <i>No</i> will appear next to the action
+in the <i>Active?</i> column, and it will never be run. <p>
+
+<hr>
+

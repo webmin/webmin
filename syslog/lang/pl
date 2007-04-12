@@ -1,0 +1,80 @@
+index_title=Logi Systemowe
+index_m4msg=Twój plik konfiguracyjny systemu logowania $1 wygl±da jakby zawiera³ dyrektywy <tt>m4</tt>. Webmin, zanim bêdzie móg³ go modyfikowaæ, wymaga, aby przetworzyæ ten plik przez <tt>m4</tt> w&nbsp;celu bezpiecznego usuniêcia tych dyrektyw.
+index_m4=Usuñ dyrektywy m4 z pliku konfiguracyjnego
+index_active=Aktywny?
+index_tag=Program
+index_to=Miejsce logowania
+index_rule=Wybrane komunikaty
+index_file=Plik $1
+index_pipe=Nazwanego FIFO $1
+index_pipe2=Przekierowanie do programu $1
+index_host=Serwer syslog na $1
+index_all=Wszystkich u¿ytkowników
+index_users=U¿ytkownicy $1
+index_add=Dodaj nowy log systemowy
+index_return=logów systemowych
+index_restart=Zastosuj Zmiany
+index_restartmsg=Naci¶nij ten przycisk, aby zastosowac aktualn± konfiguracjê poprzez zabicie dzia³aj±cego procesu <tt>sysloga</tt> i&nbsp;zrestartowanie go.
+index_start=Uruchom Serwer Syslog
+index_startmsg=Naci¶nij ten przycisk, aby uruchomiæ serwer syslog $1. Do czasu jego startu logowanie nie bêdzie mo¿liwe.
+all=Wszystkie
+index_view=Obejrzyj..
+
+restart_ekill=Nie uda³o siê zawiadomic procesu sysloga $1 : $2
+
+edit_title=Zmieñ Log Systemowy
+create_title=Dodaj Log Systemowy
+edit_header1=Miejsce logowania
+edit_logto=Logowanie do
+edit_file=Pliku
+edit_sync=Zrzucaæ bufory?
+edit_pipe=Nazwane FIFO
+edit_pipe2=Przekierowanie do programu
+edit_host=Serwera syslog na
+edit_users=Lokalnych u¿ytkowników
+edit_allusers=Wszystkich zalogowanych u¿ytkowników
+edit_active=Logowanie aktywne?
+edit_header2=Rodzaje logowanych wiadomo¶ci
+edit_facil=Kana³y
+edit_pri=Priorytety
+edit_all=Wszystkie
+edit_one=Jeden
+edit_many=Wiele
+edit_pdir0=Ten lub wy¿szy..
+edit_pdir1=Dok³adnie..
+edit_pdir2=Poni¿ej..
+edit_pdir3=Wszystkie oprócz..
+edit_none=¯aden
+edit_view=Obejrzyj plik logu
+edit_tag=Tylko dla programu
+
+view_title=Obejrzyj Plik Logu
+view_header=Ostatnie $1 linii $2
+view_empty=Plik logu jest pusty
+view_refresh=Od¶wie¿
+
+save_err=Nie ud³o sie zapisaæ logu
+save_efile='$1' nie jest poprawn± nazw± pliku$nbsp;: $2
+save_epipe='$1' nie jest poprawn± nazw± FIFO
+save_epipe2=Brak polecenia, do którego przekierowywaæ
+save_ehost=Komputer z syslogiem '$1' nie istnieje
+save_enousers=Nie podano lokalnych u¿ytkowników
+save_euser=U¿ytkownik '$1' nie istnieje
+save_efacils=Nie podano kana³ów logowania
+save_esel=Nie podano rodzajów wiadomo¶ci
+save_epri=Nie wybrano priorytetu
+
+log_modify=Zmieniono logowanie do $1
+log_create=Dodano logowanie do $1
+log_delete=Usuniêto logowanie do $1
+log_apply=Zastosowano zmiany
+
+desc_sysmesg=Komunikaty systemu
+desc_mail=Log poczty
+desc_auth=Log autoryzacji
+desc_boot=Komunikaty startowe
+desc_news=Log NNTP
+desc_uucp=Log UUCP
+desc_debug=Komunikaty uruchamiania
+desc_cron=Log zadañ crona
+

@@ -1,0 +1,5 @@
+noconfig=0
+sysdate=0
+hwdate=0
+timezone=1
+ntp=1

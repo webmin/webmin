@@ -1,0 +1,119 @@
+index_title=PPPoEクライアント
+index_eadsl=RP-PPPoE コマンド $1 があなたのシステムに見付からなかったか又は有効ではありません。インストールされていないか又は <a href='$2'>モジュール設定</a>が正しくありません。
+index_econfig=RP-PPPoE設定ファイル $1 がシステム上に見付かりません。インストールされていないか又は <a href='$2'>モジュール設定</a>が正しくありません。
+
+index_emodem=現在の設定ファイルはRedhat Linux上のモデム用の物でADSL接続用ではありません。 $1内にある他の<tt>ifcfg-ppp*</tt>ファイルを明記するのに<a href='$2'>モジュール設定</a>ページを使用するか、無ければモジュールにより作成することができます。
+
+index_stop=切断する
+
+
+index_stopdesc=IPアドレス $1 で接続がアクティブです。このボタンをクリックすると $2 コマンドで切断します。
+
+index_start=接続開始
+
+index_startdesc=切断されています。このボタンをクリックすると $1 コマンドで接続を開始します。
+
+index_boot=起動時に開始する。
+
+index_bootdesc=このオプションを設定すると起動時に接続するか否かを選択できます。
+
+
+index_return=モジュールインデックス
+
+
+index_version=RP-PPPoEのバージョン $1
+
+index_esetup=Redhat ADSL設定ファイル $1 がありません。下のボタンをクリックする事で、このモジュールは基本的なデフォルト設定を作成できます。
+
+index_setup=設定ファイルのセットアップ
+
+index_cancel=接続キャンセル
+
+index_canceldesc=現在、PPPoEクライアントは接続の確立を試みています。このボタンをクリックするとコマンド $1 によりキャンセルできます。
+
+index_header=PPPoEクライアント設定オプション
+ADSL client configuration options
+
+index_desc=設定は全ての今後開始される新しい接続に適用されます。設定を変更しても再度接続するまで変更は適用されません。
+
+index_eth=イーサネットインターフェイス
+
+index_other=その他
+
+index_demand=オンデマンドに接続しますか？
+
+index_timeout=はい タイムアウト
+
+index_secs=秒
+
+index_user=接続ユーザ名
+
+index_sec=接続パスワード
+
+index_dns=DNS設定を自動取得しますか？
+
+index_save=設定を保存する
+
+index_mss=パケットの最大サイズ(MSS値)を制限しますか？
+
+index_psize=はい MSS値
+
+index_bytes=バイト
+
+index_fw=接続時にファイヤウォールを有効にする
+
+index_fw_none=無し
+
+index_fw_standalone=スタンドアロン向け
+
+index_fw_masquerade=NATゲートウェイ向け
+
+index_connect=接続を試みる時間
+
+index_forever=永続的
+
+start_err=接続を開始できませんでした。
+
+start_title=接続をする。
+
+start_ip=PPPoE接続はIPアドレス $1 で開始しました。
+
+start_demand=オンデマンド接続が有効なので必要時にのみ接続します。
+
+start_bg=20秒の間接続を試みましたが接続を確立できません。接続が確立するまで続けます。
+
+save_err=PPPoE設定を保存できませんでした。
+
+save_eeth=イーサネットインターフェースが見付からないか制限されています。
+
+save_etimeout=オンデマンド接続のタイムアウト時間が空欄か不正です
+
+save_euser=接続ユーザ名が空欄か不正です。
+
+save_econnect=接続タイムアウトが空欄か不正です。
+
+save_emss=MSS値が空欄か不正です。
+
+save_title=設定を保存する。
+
+save_desc=PPPoE設定の保存に成功しました。設定の変更は再接続後に有効になります。
+
+stop_err=切断に失敗しました。
+
+stop_title=切断する。
+
+stop_ok=切断に成功しました。
+
+stop_failed=原因不明ですが。接続は依然有効です。
+
+log_save=設定を保存しました。
+
+log_stop=切断する。
+
+log_start=PPPoE接続を開始しました。
+
+log_bootup=起動時接続を有効にしました。
+
+log_bootdown=起動時接続を無効にしました。
+
+log_setup=デフォルト設定

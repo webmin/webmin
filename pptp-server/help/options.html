@@ -1,0 +1,18 @@
+<header>PPP Options</header>
+
+Because the PPTP protocol uses PPP internally to actually transport data,
+the PPP daemon's configuration effects how it behaves. The options on this page
+determine if authentication is required or not, and if so what forms of
+authentication are accepted. CHAP is recommended, as it is the defacto
+standard for PPTP. However, once authentication is activated you must set
+up logins for clients on the PPP Accounts page. <p>
+
+The options at the bottom of the page can be used to enable the MPPE encryption
+and MS-CHAP authentication protocols used by default by Windows clients. MPPE
+adds security to PPTP connections, but requires that both the PPP daemon and
+the operating system kernel support it. PPPd versions 2.4.2 and above have
+native MPPE support, while a patch exists for older versions. However, the
+actual configuration file options differ between these two PPPd versions. This
+module will always use the correct options though. <p>
+<hr>
+

@@ -1,0 +1,6 @@
+local_cf=SpamAssassin Konfigurationsdatei oder &#45;Verzeichnis,0
+spamassassin=Voller Pfad zu SpamAssassin,0
+procmailrc=Procmail Konfigurationsdatei,3,Aus dem Procmail&#45;Modul
+warn_procmail=Zeige Warnung an&#44; wenn SpamAssassin nicht eingerichtet ist?,1,1-Ja,0-Nein
+processes=SpamAssassin Daemonprozessnamen,0
+restart_cmd=Befehl<code>&#44;</code> um Prozesse neu zu starten,3,Sende einfach ein HUP&#45;Signal

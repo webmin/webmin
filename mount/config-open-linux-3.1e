@@ -1,0 +1,5 @@
+auto_file=/etc/am.d/conf /etc/am.d/net.conf
+long_fstypes=1
+fstab_file=/etc/fstab
+smbclient_path=smbclient
+nmblookup_path=nmblookup

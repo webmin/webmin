@@ -1,0 +1,10 @@
+user_attr=User attributes file,0
+prof_attr=Profile description file,0
+auth_attr=Authorizations file,0
+exec_attr=Execution profiles file,0
+policy_conf=Policy configuration file,0
+project=Projects file,0
+base_id=Base ID for projects,0,6
+crypt_conf=Encryption algorithms file,0
+auth_help_dir=Authorizations help files directory,0
+prof_help_dir=Profiles help files directory,0

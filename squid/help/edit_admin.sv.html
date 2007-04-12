@@ -1,0 +1,47 @@
+<header>Administrativa inställningar</header>
+
+<b>Kör som Unix-användare</b>: Standardinställningen är 'nobody' eller
+'squid', beroende på systemet. Om cache körs som root, kommer det att
+byta ID till det du anger här.
+
+<p><b>Kör som Unix-grupp</b>: Standardinställningen är 'nogroup' eller
+'squid', beroende på systemet. Om cache körs som root, kommer det att
+byta grupp-ID till det du anger här.
+
+<p><b>Proxy-autentiseringsområde</b>: Anger det områdesnamn som ska
+skickas till klienten för proxy-autentisering (en del av den text som
+användaren får se när han tillfrågas om användarnamn och lösenord).
+
+<p><b>Cache-administratörens e-postadress</b>: Standardinställningen
+är 'webmaster' eller 'root', beroende på systemet. E-postadressen för
+den lokala cache-administratören som ska få ett meddelande om cachen
+dör.
+
+<p><b>Synligt datornamn</b>: Om du vill att ett särskilt datornamn ska
+visas i felmeddelanden och liknande, kan du ange detta namn här. Om
+inget namn anges här kommer resultatet av gethostname() att
+användas. Om du har satt upp flera cacher i ett kluster och får
+felmeddelanden om IP-sändningar måste du ge cacherna individuella namn
+här.
+
+<p><b>Unikt datornamn</b>: Om du vill att flera maskiner ska ha samma
+<b>synliga datornamn</b> måste du också ange olika <b>unika
+datornamn</b> för dem här, så att rundgångar kan upptäckas.
+
+<p><b>Dator för cache-meddelanden</b>: Dator som ska ta emot
+annonseringsmeddelanden. Du kan läsa mer om cache-hierarkier på <a
+href="http://www.squid-cache.org/Doc/FAQ/FAQ-4.html"
+target="Reference">The Squid FAQ</a>. Standardrouten går till
+'tracker.ircache.net' när Annonsering aktiverats genom att ett
+annonseringsintervall satts.
+
+<p><b>Port för cache-meddelanden</b>: Datorport som ska ta emot
+annonseringsmeddelanden. Standardinställningen är 3131 när Annonsering
+aktiverats.
+
+<p><b>Annonseringsintervall</b>: Frekvens för
+annonseringsmeddelanden. Aktivera annonsering till en cache-hierarki
+genom att sätta detta värde till '1 dag'. Standardvärdet är '0',
+vilket deaktiverar annonseringen.
+
+<hr>

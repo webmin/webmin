@@ -1,0 +1,13 @@
+cron_dir=Crontab目录,0
+cron_get_command=读用户调度任务命令,0
+cron_edit_command=编辑用户调度任务命令,0
+cron_copy_command=从标准输入接收调度任务的命令,0
+cron_delete_command=删除调度任务的命令,0
+cron_input=Cron支持输入调度任务,1,1-是,0-不
+cron_allow_file=文件中列出的被允许的用户,0
+cron_deny_file=文件中列出的被禁止的用户,0
+cron_deny_all=没有允许或禁止文件的限制,1,0-禁止所有,1-除根外禁止所有,2-允许所有
+vixie_cron=支持Vixie-Cron扩展,1,1-是,0-不
+system_crontab=Vixie-Cron的crontab系统文件路径,0
+cronfiles_dir=其它cron文件目录,3,没有
+run_parts=运行部分命令,0

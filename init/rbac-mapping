@@ -1,0 +1,2 @@
+# RBAC authorization		# Webmin ACL
+solaris.system.shutdown		noconfig=1,bootup=0

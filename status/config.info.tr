@@ -1,0 +1,10 @@
+line1=Yapýlandýrýlabilir seçenekler,11
+index_status=Listede gösterilecek durum,1,1-Mevcut durum,0-Son zamanlandýrýlmýþ kontroldeki
+pager_cmd=Çaðrý cihazýna mesaj gönderme komutu,3,Yok
+refresh=Sayfa yenilemeleri arasý süre,3,Yenileme
+sort_mode=Ýzleyicilerin gösterilme sýrasý,1,0-Oluþturulduðu sýra,1-Açýklama,2-Makine adý
+output=Program kapandýðýnda çýktýsý yakalansýn mý?,1,1-Evet,0-Hayýr
+snmp_server=SNMP paketlerini bu sunucuya gönder,3,Yok
+snmp_version=SNMP protokol sürümü,1,2-v3,2-v2,1-v1
+snmp_community=SNMP community string,0
+snmp_trap=Paketler için SNMP OID,0

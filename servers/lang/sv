@@ -1,0 +1,54 @@
+index_title=Webmin-servrar
+index_edit=ändra
+index_none=Ingen server har registrerats.
+index_add=Registrera en ny server
+index_broad=Sök servrar via broadcast
+index_findmsg=Tryck på denna knapp för att automatiskt söka efter Webmin-servrar av version 0.75 eller högre på ditt lokala nätverk.
+index_scan=Sök servrar
+index_scanmsg=Tryck på denna knapp för att söka på varje adress på nätverket $1 efter Webmin-servrar med version 0.75 eller högre. 
+index_return=servrar
+
+edit_title=Ändra server
+create_title=Registrera server
+edit_details=Uppgifter om server
+edit_host=Datornamn
+edit_port=Port
+edit_type=Servertyp
+edit_ssl=SSL-server?
+edit_link=Länktyp
+edit_mode0=Normal länkning till server
+edit_mode1=Logga in via Webmin med
+edit_user=användarnamn
+edit_pass=lösenord
+edit_ecannot=Du får inte ändra servrar
+
+save_err=Det gick inte att spara servern
+save_ehost=Datornamn saknas eller är felaktigt angivet
+save_eport=Port saknas eller är felaktigt angiven
+save_euser=Användarnamn saknas
+save_epass=Lösenord saknas
+
+find_title=Sök server
+find_new=Ny server hittades på $1
+find_already=Känd server hittades på $1
+find_me=Denna server hittades på $1
+find_escan=Nätverket som ska avsökas måste vara av klass C
+find_none=Inga servrar svarade på sökningen.
+find_ecannot=Du får inte söka efter servrar
+
+log_modify=Modifierade server $1
+log_create=Registrerade server $1
+log_delete=Tog bort server $1
+log_find=Hittade server $1
+
+link_elogin=Det gick inte att logga in på $1 som $2
+link_ecannot=Du får inte använda denna server
+link_essl=Du har inte installerat Perl-biblioteket Net::SSLeay
+
+lib_other=Övrigt
+
+acl_edit=Kunna ändra servrar
+acl_find=Kunna söka efter servrar
+acl_servers=Kunna använda servrar
+acl_sall=Alla servrar
+acl_ssel=Angivna ...

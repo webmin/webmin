@@ -1,0 +1,23 @@
+notes about apache
+------------------
+Apache has a large number of directives which are valid in different 
+parts of the config file (and maybe in other files such as .htaccess). The
+available directives and their possible locations varies from release to
+release of apache. Apache version from 1.1 to 1.3 will be supported.
+
+Each type of directive is defined in some module, which may be compiled
+into the server or not. Each module version supports some list of directives,
+and the server version is basically a list of the modules/versions supported.
+
+To implement this, each apache module will have one .pl file that has
+functions for each directive, plus a master function that lists all the 
+supported directives for this module version and their possible contexts.
+
+The main apache config file is httpd.conf in the conf directory. This
+file can refer to other files by some directives, or other config files
+can be read as well.Directives can be in any config file (unlike NCSA).
+This means that the config file must be read, parsed, and the other config
+files read and parsed as well. Only then can the other directives be searched
+for.
+
+

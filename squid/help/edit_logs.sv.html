@@ -1,0 +1,93 @@
+<header>Loggning</header>
+
+<b>Loggfil för åtkomst</b>: Standardinställningen är systemberoende, men
+vanligen någonstans i <tt>/var</tt>. Loggar klientförfrågningar. Innehåller
+en post för varje HTTP- och ICP-uppslagning som mottagits.
+
+<p><b>Loggfil för debuggning</b>: Standardinställningen är systemberoende.
+Cache-loggfil. Det är här som allmän information om cachens uppförande hamnar.
+Det går att öka den datamängd som loggas till denna fil i
+<b>Debuggningsinställningarna</b>.
+
+<p><b>Loggfil för lagring</b>: Standardinställningen är systemberoende.
+Loggar lagringshanterarens aktivitet. Visar de objekt som kastas ut från
+cachen och de som sparas, samt hur länge de sparas. Välj "ingen" för att slå
+av detta. Det finns egentligen inga verktyg för att analysera denna logg, så
+det gör inget om man slår av den.
+
+<p><b>Fil för cache-metadata</b>: Standardinställningen är swap.log i varje
+cache-katalog. Denna loggfil innehåller metadata om de objekt som sparats på
+disk och används för att bygga upp cachen igen vid start. Vanligtvis ligger
+denna fil i varje cache-katalog, men det går också att ange en annan sökväg
+här. Observera att ett fullständigt filnamn måste anges, inte bara en
+katalog. Eftersom detta är index för hela objektlistan går det INTE att
+rotera den regelbundet!
+
+<p>Om det går att använda % i filnamnet kommer det att ersättas med en
+representation av cache-katalogens namn, där alla '/' ersätts med '.'. Detta
+behövs för att tillåta att cache-kataloger läggs till och tas bort när en
+annan cache-swap-logg används.
+
+<p>Om det finns mer än en cache-katalog och det inte går att använda % i
+filnamnen, kommer dessa swap-loggar ha namn i stil med:
+<ul>
+<li>cache_swap_log.00
+<li>cache_swap_log.01
+<li>cache_swap_log.02
+</ul>
+
+<p>Numren på slutet (som läggs till automatiskt) motsvarar ordningen på
+cache-katalogernas rader i inställningarna. Om man ändrar ordning på
+raderna kommmer loggfilerna INTE att motsvara rätt cache-katalog, om man inte
+döper om dem för hand. Vi rekommenderar att denna inställning INTE används.
+Det är bättre att hålla dessa loggfiler i varsin cache-katalog.
+
+<p><b>Använda HTTPD-loggformat</b>: Standardinställningen är nej. Cachen kan
+generera det loggfilformat som många 'httpd'-program använder. Sätt denna
+parameters värde till av eller på för att slå av eller på genereringen.
+Standardformatet är att använda det inbyggda loggformatet, eftersom det
+innehåller användbar information som Squid-specifika analysprogram använder.
+
+<p><b>Logga MIME-huvuden</b>: Standardinställningen är nej. Cachen kan läsa
+både uppslagnings- och svars-MIME-huvudena för varje HTTP-transaktion.
+Huvudena är säkert kodade och kommer att lagras som två fält inom
+hakparenteser i slutet på åtkomstloggen (för inbyggt eller httpd-genererande
+loggformat). Välj på för att slå på denna loggning.
+
+<p><b>Loggfil för användarprogram</b>: Standardinställnignen är ingen.
+Om Squid konfigureras med inställningen "--enable-useragent-log", kommer den
+att logga User-Agent-fältet i HTTP-förfrågningen till den fil som anges här.
+
+<p><b>PID-fil</b>: Standardinställningen är systemberoende. Ange ett filnamn
+dit process-id ska skrivas. Ange "ingen" för att slå av detta.
+
+<p><b>Utföra RFC931-identitetsuppslagningar för åtkomstlistor</b>:
+Standardinställningen är ingen. Slår upp identiteterna för att hitta
+datornamnen på de klienter som försöker komma åt något i dessa åtkomstlistor.
+
+<p><b>Tidsgräns för RFC931-identitet</b>: Standardvärdet är 30 sekunder. Detta
+är den längsta tid som Squid ska vänta på IDENT-uppslagningar. Om detta värde
+är för högt och alla identitetsuppslagningar ska utföras, kan man råka ut för
+en denial-of-service genom att man har för många uppslagningar på gång
+samtidigt.
+
+<p><b>Logga fullständiga datornamn</b>: Standardinställningen är nej. Loggar
+fullständigt datornamn för klienterna.
+
+<p><b>Loggningsnätmask</b>: Standardvärdet är 255.255.255.255. Nätmask för
+klientadresser i loggfiler och cachemgr-utmatningar. Ändra denna för att
+skydda cache-klienternas integritet. Nätmasken 255.255.255.0 gör att alla
+IP-adresser x.x.x.0-255 loggas.
+
+<p><b>Debuggningsinställningar</b>: Standardinställningen är "ALL,1".
+Loggningsinställningarna sätts som sektion,nivå där varje källfil får en
+egen sektion. Lägre nivåer gör att färre saker loggas. Fullständig debuggning
+(nivå 9) kan ge en väldigt stor loggfil, så var försiktig med detta. Det
+magiska ordet "ALL" sätter debuggningsnivån för samtliga sektioner. Vi
+rekommenderar att man vanligtvis kör med "ALL,1".
+
+<p><b>Tabell över MIME-huvuden</b>: Sökväg till Squids MIME-tabell. Denna ska
+inte behöva ändras, men om du gör det innehåller standardfilen exempel och
+formateringsupplysningar.
+
+<hr>

@@ -1,0 +1,8 @@
+<header>Affichage par occupation de mémoire</header>
+
+Cette page affiche tous les processus par ordre d'occupation de mémoire. Pour chaque processus le numéro, le propriétaire, la taille en Ko et la commande sont affichés. Cliquer sur le numéro affichera plus d'information sur le processus.<p>
+
+Cet affichage peut être utilisé pour trouver quelle commande consomme une quantité excessive de mémoire sur votre système. Mais l'utilisation de la mémoire peut être mal interprétée pour des processus comme les serveurs X qui peuvent inclure la mémoire 'mapped frame buffer' dans leurs utilisation ou les instances multiples comme <tt>httpd</tt> ou <tt>bash</tt> qui partagent la majeur partie de leur mémoire, laissant croire à une utilisation plus grande que la réalité.<p>
+
+<include overview>
+<hr>

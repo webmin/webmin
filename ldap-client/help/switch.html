@@ -1,0 +1,17 @@
+<header>Services Using LDAP</header>
+
+On a Unix system, various types of system information (such as users, groups
+and hostnames) can be looked up from different sources. In the simplest
+case these are all taken from local files in the <tt>/etc</tt> directory, such
+as <tt>/etc/passwd</tt> for users, <tt>/etc/group</tt> for groups and
+<tt>/etc/hosts</tt> for hostnames. <p>
+
+However, it is possible to select additional sources for this data. If your
+system is an LDAP client, you will need to use this page to enable the querying
+of the configured LDAP server for user and group information. You should be
+careful to not turn off the <b>Files</b> data source for users or groups,
+as this would hide important system users such as <tt>root</tt>. Instead, all
+you should need to do is select <b>LDAP</b> as the second source. <p>
+
+<footer>
+

@@ -1,0 +1,126 @@
+index_title=Pacotes de Software
+index_installed=Pacotes Instalados
+index_close=Fechar Todos
+index_open=Abrir Todos
+index_search=Procurar Pacote:
+index_install=Instalar Novo Pacote
+index_installmsg=Seleccione a localização de onde quer instalar o novo pacote $1 ..
+index_local=De ficheiro local
+index_uploaded=De um ficheiro carregado
+index_ftp=De um URL ftp ou http
+index_installok=Instalar
+index_ident=Identificar um Ficheiro
+index_identmsg=Introduza um comando ou um caminho do ficheiro para procurar na base de dados $1.
+index_identok=Procurar Por:
+index_return=lista de pacotes
+
+search_title=Procura de Pacotes
+search_nomatch=Não há pacotes que coincidam com $1
+search_none=Nenhum
+search_desc=Descrição
+search_class=Classe
+search_pack=Pacote
+search_match=Pacotes que coincidem com $1
+
+edit_title=Editar Pacote
+edit_details=Detalhes do Pacote
+edit_desc=Descrição
+edit_pack=Pacote
+edit_class=Classe
+edit_none=Nenhum
+edit_ver=Versão
+edit_vend=Vendedor
+edit_arch=Arquitectura
+edit_inst=Instalado
+edit_list=Listar Ficheiros
+edit_uninst=Desinstalar
+edit_return=detalhes do pacote
+
+list_title=Ficheiros do Pacote
+list_files=Ficheiros para o Pacote $1
+list_path=Caminho
+list_owner=Proprietário
+list_group=Grupo
+list_type=Tipo
+list_size=Tamanho
+list_status=Estado
+
+delete_err=Erro ao apagar o pacote $1
+delete_epack=O pacote $1 não existe
+delete_title=Apagar Pacote
+delete_rusure=Tem a certeza que quer apagar o pacote $1 ? Todos os $2 ficheiros ($3 bytes) serão apagados para sempre.
+delete_ok=Apagar
+
+file_title=Informação do Ficheiro
+file_notfound=Não está disponível a informação acerca de $1
+file_path=Caminho
+file_type=Tipo
+file_perms=Permissões
+file_owner=Proprietário
+file_group=Grupo
+file_size=Tamanho
+file_link=Enlaçar Com
+file_pack=Pacote
+file_class=Classe
+file_desc=Descrição
+file_none=Nenhum
+
+install_err=Erro ao instalar pacote
+install_elocal=Não foi dado nenhum ficheiro local
+install_elocal2='$1' não existe
+install_eupload=O seu navegador não suporta carregamento de ficheiros
+install_eurl=O URL '$1' é imcompreensível
+install_edir=Não é um directório $1 válido
+install_ezip=Não é um ficheiro comprimido ou do gzip $1 válido
+install_efile=Não é um ficheiro $1 válido
+install_title=Instalar Pacote
+install_header=Instalar Pacote
+install_packs=Pacote(s) a instalar
+install_ok=Instalar
+
+do_err=Erro ao instalar pacote $1
+do_title=Instalar Pacote
+do_efailed=Erro na instalação : $1
+do_efailedmsg1=Vovê pode tentar instalar de novo voltando atrás à página anterior seleccionando diferentes opções de instalação.
+do_efailedmsg2=Caso contrário, <a href='$1'>clique aqui para apagar o pacote temporário</a> com o fim de ganhar espaço em disco.
+do_success=O pacote $1 foi instalado com sucesso
+do_details=Detalhes do Pacote
+do_desc=Descrição
+do_class=Classe
+do_pack=Pacote
+do_ver=Versão
+do_vend=Vendedor
+do_arch=Arquitectura
+do_inst=Instalado
+do_none=Nenhum
+do_files=Ficheiros do Pacote
+
+pkgadd_root=Directório raíz
+pkgadd_eroot=o directório raíz '$1' não existe
+pkgadd_unknown=Desconhecido
+
+rpm_upgrade=Actualizar pacote?
+rpm_replacepkgs=Sobreposicionar pacote?
+rpm_nodeps=Ignorar dependências?
+rpm_oldpackage=Substituir a nova versão pela a antiga?
+rpm_noscripts=Executar guiões de instalação?
+rpm_excludedocs=Instalar documentação?
+rpm_replacefiles=Sobreposicionar ficheiros?
+rpm_root=Directório raíz
+rpm_eroot=O directório raíz '$1' não existe
+
+bsd_unknown=Desconhecido
+bsd_scripts=Executar guiões de pré e pós instalação?
+bsd_force=Forçar a instalação se faltarem os pré-requesitos?
+
+slack_unclass=Outro
+slack_unknown=Desconhecido
+slack_missing=Em falta
+slack_root=Directório raíz
+slack_eroot=Directório raíz inválido ou em falta
+
+debian_unknown=Desconhecido
+debian_depends=Ignorar problemas de dependência?
+debian_conflicts=Ignorar conflito de pacotes?
+debian_overwrite=Sobrepôr ficheiros de outros pacotes?
+debian_downgrade=Substituir a nova versão pela a antiga?

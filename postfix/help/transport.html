@@ -1,0 +1,32 @@
+<header>Transport mapping</header>
+
+The optional transport file specifies a mapping from domain hierarchies to
+message delivery transports and/or relay hosts. The mapping is used by the
+trivial-rewrite(8) daemon.
+
+<p>
+
+The format of the transport table is as follows:
+<ul>
+<li><b><tt>domain</tt></b> mapped to.. <b><tt>transport:nexthop</tt></b>: Mail
+for domain is delivered through transport to nexthop.
+<li><b><tt>.domain</tt></b> mapped to.. <b><tt>transport:nexthop</tt></b>: Mail
+for any subdomain of domain is delivered through transport to nexthop.
+</ul>
+
+Note: transport map entries take precedence over domains specified in the
+<tt>mydestination</tt> parameter. If you use the optional transport map, it may
+be safer to specify explicit entries for all domains specified in
+mydestination, for example:
+<ul>
+<li><tt>hostname.my.domain</tt> ... <tt>local:</tt>
+<li><tt>localhost.my.domain</tt> ... <tt>local:</tt>
+</ul>
+
+The interpretation of the nexthop field is transport dependent. In the case of
+SMTP, specify <tt>host:service</tt> for a non-default server port, and use
+<tt>[host]</tt> or <tt>[host:port]</tt> in order to disable MX (mail exchanger)
+DNS lookups. The <tt>[]</tt> form can also be used with IP addresses instead of
+hostnames.
+
+<hr>

@@ -1,0 +1,22 @@
+<header>Alias-databas byggd av Postfix</header>
+
+<center><tt>alias_database</tt></center>
+<hr>
+
+Denna parameter anger databasen/databaserna som byggts upp med
+&quot;newaliases&quot; eller &quot;sendmail -bi&quot;. Det är en egen
+konfigurationsparameter eftersom
+<a href=opt_alias_maps><tt>alias_maps</tt></a> kan göra tabeller som
+kanske inte fullständigt kan kontrolleras av Postfix.
+
+<p>Typiska inställningar är:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>dbm:/etc/mail/aliases</tt>
+<li> <tt>hash:/etc/aliases</tt>
+<li> <tt>hash:/etc/aliases, hash:/opt/majordomo/aliases</tt>
+</ul>
+
+<hr>
+

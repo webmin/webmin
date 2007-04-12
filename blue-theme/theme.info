@@ -1,0 +1,6 @@
+depends=1.336
+longdesc=A simple theme with minimal graphics, which uses a categorized layout.
+desc=Blue Framed Theme
+version=1.336
+usermin=1
+webmin=1

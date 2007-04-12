@@ -1,0 +1,4 @@
+---- Changes since 1.170 ----
+Added pages for viewing and editing secret keys, both RSA and private shared key.
+---- Changes since 1.180 ----
+Added support for some new ipsec.conf directives, like nat_traversal, keyingtries, esp and auth.

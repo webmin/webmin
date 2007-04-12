@@ -1,0 +1,2 @@
+opts=smbfs rumba msdos fat vfat
+simple=1

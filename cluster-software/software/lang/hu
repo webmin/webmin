@@ -1,0 +1,127 @@
+index_title=Szoftver csomagok
+index_installed=Telepített csomagok
+index_close=Összes bezárása
+index_open=Összes megnyitása
+index_search=Csomag keresése:
+index_install=Új csomag telepítése
+index_installmsg=Válassza ki a helyet, ahonnan az új $1 csomagot telepíti...
+index_local=Helyi fájlból
+index_uploaded=Feltöltött fájlból
+index_ftp=Ftp vagy http URL-rõl
+index_installok=Telepít
+index_ident=Fájl azonosítása
+index_identmsg=Adja meg a parancs nevét vagy a fájl elérési útvonalát a(z) $1 adatbázisban való kereséshez.
+index_identok=Keresés:
+index_return=a csomagok listájához
+
+search_title=Csomag keresése
+search_nomatch=Nincs $1 karakterláncot tartalmazó csomag
+search_none=Nincs
+search_desc=Leírás
+search_class=Osztály
+search_pack=Csomag
+search_match=A(z) $1 karakterláncot tartalmazó csomagok
+
+edit_title=Csomag szerkesztése
+edit_details=Csomag részletei
+edit_desc=Leírás
+edit_pack=Csomag
+edit_class=Oszály
+edit_none=Nincs
+edit_ver=Verzió
+edit_vend=Terjesztõ
+edit_arch=Architektúra
+edit_inst=Telepített
+edit_list=Fájlok listázása
+edit_uninst=Törlés
+edit_return=a csomag részleteihez
+
+list_title=Csomag fájljai
+list_files=A(z) $1 csomag fájljai
+list_path=Útvonal
+list_owner=Tulajdonos
+list_group=Csoport
+list_type=Típus
+list_size=Méret
+list_status=Állapot
+
+delete_err=A(z) $1 csomag törlése nem sikerült
+delete_epack=A(z) $1 csomag nem létezik
+delete_title=Csomag törlése
+delete_rusure=Biztosan törölni akarja a(z) $1 csomagot? $2 darab fájl ($3 bájt) örökre le lesz törölve.
+delete_ok=Töröl
+
+file_title=Fájl információk
+file_notfound=A(z) $1 fájlról információ nem érhetõ el
+file_path=Útvonal
+file_type=Típus
+file_perms=Jogosultságok
+file_owner=Tulajdonos
+file_group=Csoport
+file_size=Méret
+file_link=Link
+file_pack=Csomag
+file_class=Osztály
+file_desc=Leírás
+file_none=Nincs
+
+install_err=A csomag telepítése nem sikerült
+install_elocal=Helyi fájl megadása nem történt meg
+install_elocal2=A(z) '$1' nem létezik
+install_eupload=Az Ön böngészõje nem támogatja a fájlok feltöltését
+install_eurl=A(z) '$1' URL értelmezhetetlen
+install_edir=A(z) $1 könyvtár érvénytelen
+install_ezip=A(z) $1 érvénytelen tömörített vagy gzipelt fájl.
+install_efile=A(z) $1 érvénytelen fájl
+install_title=Csomag telepítése
+install_header=Csomag telepítése
+install_packs=A csomag(ok) telepítése megtörtént
+install_ok=Telepít
+
+do_err=A(z) $1 csomag telepítése nem sikerült
+do_title=Csomag telepítése
+do_efailed=A telepítés nem sikerült : $1
+do_efailedmsg1=Ön az elõzõ oldalra visszamenve különbözõ telepítési módozatokat választhat ki, majd újra megkísérelheti a telepítést
+do_efailedmsg2=Máskülönben <a href='$1'>kattintson ide az ideiglenes csomagfájlok törléséhez</a>, mellyel lemezterületet szabadíthat fel.
+do_success=A(z) $1 csomag telepítése sikerült
+do_details=Csomag részletei
+do_desc=Leírás
+do_class=Osztály
+do_pack=Csomag
+do_ver=Verzió
+do_vend=Terjesztõ
+do_arch=Architektúra
+do_inst=Telepített
+do_none=Nincs
+do_files=Csomag fájljai
+
+pkgadd_root=Gyökérkönyvtár
+pkgadd_eroot=A(z) '$1' gyökérkönyvtár nem létezik
+pkgadd_unknown=Ismeretlen
+
+rpm_upgrade=Csomag frissítése?
+rpm_replacepkgs=Csomag felülírása?
+rpm_nodeps=Depedenciák mellõzése?
+rpm_oldpackage=Az új változat kicserélése a régire?
+rpm_noscripts=A telepítõszkriptek végrehajtása?
+rpm_excludedocs=Dokumentáció telepítése?
+rpm_replacefiles=Fájlok felülírása?
+rpm_root=Gyökérkönyvtár
+rpm_eroot=A(z) '$1' gyökérkönyvtár nem létezik
+
+bsd_unknown=Ismeretlen
+bsd_scripts=Az 'elõ' és 'utó' telepítõszkriptek végrehajtása?
+bsd_force=Telepítés hiányzó elõfeltételek esetén is?
+
+slack_unclass=Egyéb
+slack_unknown=Ismeretlen
+slack_missing=Hiányzó
+slack_root=Gyökérkönyvtár
+slack_eroot=Hiányzó vagy érvénytelen gyökérkönyvtár
+
+debian_unknown=Hiányzó
+debian_depends=A függõségi problémák mellõzése?
+debian_conflicts=A csomagütközések mellõzése?
+debian_overwrite=Más csomagok fájljainak felülírása?
+debian_downgrade=Az újabb csomag kicserélése a régire?
+

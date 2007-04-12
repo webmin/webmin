@@ -1,0 +1,2 @@
+metastat_path=Chemin complet pour <tt>metastat</tt>,0
+metadb_path=Chemin complet pour <tt>metadb</tt>,0

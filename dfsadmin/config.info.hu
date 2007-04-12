@@ -1,0 +1,4 @@
+dfstab_file=NFS export file-ok helye,0
+fstypes_file=Megosztott file rendszerek típus file-ai,3,Nincs
+share_all_command=A megosztást indító parancs,0
+unshare_all_command=A megosztást leállító parancs,0

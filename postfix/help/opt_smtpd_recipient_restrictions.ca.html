@@ -1,0 +1,102 @@
+<header>Restriccions en les adreces de destí</header>
+
+<center><tt>smtpd_recipient_restrictions</tt></center>
+<hr>
+
+Aquest paràmetre especifica les restriccions sobre les adreces destinatàries
+que els clients SMTP poden enviar en ordres RCPT TO.
+
+<p>
+
+<include relay_rules>
+
+No cal llistar aquestes destinacions a
+<a href=opt_relay_domains><tt>$relay_domains</tt></a>.
+
+<p>
+
+Hi ha disponibles les restriccions següents (* és part d'un valor per defecte):
+
+<ul>
+<li> <tt>*permit_mynetworks:</tt> permet si l'adreça del client coincideix amb
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>reject_unknown_client:</tt> rebutja la petició si el nom de host client és desconegut.
+<li><tt>reject_maps_rbl:</tt> rebutja si el client està llistat a
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject_invalid_hostname:</tt> rebutja nom de host HELO amb sintaxi incorrecte.
+<li><tt>reject_unknown_hostname:</tt> rebutja nom de host HELO sense registre DNS A o MX.
+<li><tt>reject_unknown_sender_domain:</tt> rebutja el domini remitent sense registre DNS A o MX.
+<li><tt>*check_relay_domains:</tt> permet només el correu:
+<ul>
+<li> a les destinacions que coincideixen amb
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  o <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> des dels clients fiables que coincideixen amb
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> o un subdomini
+          del mateix,
+<li> des de clients no fiables amb destinacions que coincideixen amb
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> o
+          un subdomini del mateix (excepte les adreces amb enrutament 
+          especificat pel remitent).
+</ul>
+          Rebutja qualsevol altra cosa.
+<li> <tt>permit_auth_destination:</tt> permet el correu:
+<ul>
+<li> a les destinacions que coincideixen amb
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  o <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> a les destinacions que coincideixen amb
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> o un
+          subdomini del mateix, excepte les adreces amb enrutament
+          especificat pel remitent.
+</ul>
+<li> <tt>reject_unauth_destination:</tt> rebutja el correu a menys que sigui enviat
+<ul>
+<li> a les destinacions que coincideixen amb
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  o <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> a les destinacions que coincideixin amb
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> o un
+          subdomini del mateix, excepte les adreces amb enrutament
+          especificat pel remitent.
+</ul>
+<li><tt>reject_unauth_pipelining:</tt> rebutja el correu de spam pipejat impròpiament.
+<li><tt>permit_mx_backup:</tt> accepta correu dels llocs que em tenen llistat com a host MX.
+<li><tt>reject_unknown_recipient_domain:</tt> rebutja els dominis sense cap registre A o MX.
+<li><tt>check_recipient_access maptype:mapname:</tt> consulta l'adreça del destinatari, domini pare o partlocal@.
+        Rebutja si el resultat és REJECT o &quot;[45]xx text&quot;.
+        Permet altrament.
+
+<li>  <tt>check_client_access maptype:mapname:</tt> vegeu
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li>  <tt>check_helo_access maptype:mapname:</tt> vegeu
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li>  <tt>check_sender_access maptype:mapname:</tt> vegeu
+        <a href=opt_smtpd_sender_restrictions>smtpd_sender_restrictions</a>.
+<li>  <tt>reject_non_fqdn_hostname:</tt>i rebutja nom de host HELO que no està en format FQDN.
+<li>  <tt>reject_non_fqdn_sender:</tt> rebutja l'adreça del remitent que no està en format.
+<li>  <tt>reject_non_fqdn_recipient:</tt> rebutja l'adreça del destinatari que no està en format FQDN.
+<li>  <tt>reject:</tt> rebutja la petició. Posa-ho al final d'una restricció.
+<li>  <tt>permit:</tt> permet the petició. Posa-ho al final d'una restricció.
+</ul>
+
+Les restrixccions s'apliquen en l'ordre especificat: la primera restricció
+que coincideix guanya.
+
+<p>
+
+Especifica una llista de restriccions, separades per comes i/o espais.
+Continua les línies llargues començant la línia següent amb un espai.
+
+<p>
+
+NOTA: HAS D'ESPECIFICAR ALMENYS UNA DE LES RESTRICCIONS SEGÜENTS,
+ALTRAMENT POSTFIX ES NEGA A REBRE CORREU:
+
+<br>
+	<tt>reject, check_relay_domains, reject_unauth_destination</tt>
+
+<hr>

@@ -1,0 +1,4 @@
+xinetd_conf=/etc/xinetd.conf
+protocols_file=/etc/protocols
+start_cmd=/etc/init.d/xinetd start
+lookup_servs=1

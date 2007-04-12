@@ -1,0 +1,266 @@
+﻿
+main_return= بازگشت به $1 
+
+main_homepage= آغازه 
+main_feedback= بازخورد… 
+main_switch=تغيير کاربر… 
+main_logout=خروج از سيستم
+main_version= نسخه $1 برروي $2 ($3)
+main_title=وب‌مين $1 برروي $2 ($3) 
+main_title2=وب‌مين
+main_none=شما به هيچ يک از پيمانه‌هاي وب‌مين دستيابي نداريد.
+main_skill=سطح کنترلت 
+link_essl= پيمانه Net::SSLeay از مجموعه پيمانه‌هاي پرل نياز به ايجاد يک ارتباط HTTPS دارد که برروي سيستم شما نصب نشده است.
+
+category_servers= ‌کارساز‌ها
+category_hardware=سخت‌افزار 
+
+category_system=سيستم 
+category_webmin= وب‌مين 
+category_net=استفاده از شبکه 
+
+category_syslet=Syslets 
+
+category_cluster=خوشه 
+
+category_info=اطلاعات 
+
+category_=سايرين 
+
+longcategory_servers=پيمانه‌هاي مورد نياز براي پيکربندي وب، نامه الکترونيکي، قاپ کردن و ساير کارسازها
+longcategory_hardware=پيمانه‌هاي مورد نياز براي پيکربندي چاپگر، ديسک و ساير سخت افزارها
+longcategory_system=پيمانه‌هاي مورد نياز براي تنظيمات کاربران، سيستمهاي پرونده، کارهاي کرون و ساير تنظيمات سيستم.
+longcategory_webmin=پيمانه‌هاي مورد نياز براي پيکربندي وب‌مين توسط خودش
+longcategory_net=پيمانه‌هاي مورد نياز براي پيکربندي استفاده از شبکه و خدمات شبکه
+longcategory_cluster=پيمانه‌هايي که توانايي مديريت چندين کارساز را از طريق يک رابط گرافيکي دارا مي‌باشند.
+longcategory_info=پيمانه‌هايي که اطلاعات مربوط به سيستم شما را نمايش مي‌دهند.
+longcategory_=پيمانه‌هايي که در هيچ دسته ديگري جاي نمي گيرند.
+header_webmin=نمايه وب‌مين
+header_module=نمايه پيمانه
+header_help=کمک…
+header_config=پيکربندي پيمانه
+header_servers=کارسازهاي وب‌مين
+index=نمايه
+yes=بله
+no=خير
+save=حفظ کردن
+create=ايجاد کردن
+delete=حذف کردن
+find=يافتن
+error=خطا
+efilewrite=عدم موفقيت در نوشتن $1:$2 
+efileclose=عدم موفقيت در نوشتن $1 به هنگام بسته شدن: $2
+efileopen=عدم موفقيت در بازکردن $1 براي نوشتن: $2
+default=پيش‌گزيده
+modify=تغييردادن
+reset=بازگرداندن به مقدار قبل
+ok=تاييد
+cancel=لغو
+helpsearch=جستجوي مستندات…
+switch_remote_euser=کاربر يونيکس $1 وجود ندارد.
+programname=وب‌مين
+
+chooser_title1=انتخاب فايل…
+chooser_title2=انتخاب فهرست راهنما…
+chooser_dir=فهرست راهنما $1
+chooser_ok=تاييد
+users_title1=…انتخاب کاربران
+users_title2=…انتخاب کاربر
+users_sel=کاربران انتخاب شده
+users_all=تمام کاربران
+users_ok=تاييد
+users_cancel=لغو
+users_clear=پاک کردن
+groups_title1=انتخاب گروه‌ها…
+groups_title2=انتخاب گروه…
+groups_all=تمام گروه‌ها
+groups_sel=گروه‌هاي انتخاب شده
+groups_ok=تاييد
+groups_cancel=لغو
+groups_clear=پاک کردن
+config_ecannot=شما اجازه پيکربندي اين پيمانه را نداريد.
+config_title=پيکربندي
+config_dir=براي پيمانه $1
+config_header=پيکربنديهاي قابل انتخاب براي $1
+config_none=هيچ کدام
+config_eaccess=شما اجازه دستيابي به اين پيمانه را نداريد.
+config_err=عدم موفقيت در حفظ کردن پيکربندي
+config_nochange=تغيير ندهيد
+config_setto=قراردادن با
+config_ewebmin=پارامتر نوع 14 تنها در وب‌مين عمل مينمايد.
+help_err=عدم موفقيت در نمايش کمک
+help_epath=نيافتن و يا غيرمعتبر بودن مسير پرونده کمک
+help_efile=عدم موفقيت در خواندن پرونده $1
+help_eheader=Missing &lt;header&gt; section
+help_einclude=عدم موفقيت در گنجاندن $1
+help_eif=عدم موفقيت $1: $2
+help_eexec= عدم موفقيت $1: $2
+referer_title=هشدار امنيتي
+referer_warn=<b>هشدار!</b> وب‌مين تشخيص داده است که از آدرس اينترنتي $1 که در خارج از کارساز وب‌مين است به برنامه $2 پيوند داده شده است. اين عمل ممکن است تلاشي براي اجراي يک دستور خطرناک توسط کارساز شما باشد.
+referer_warn_unknown=<b>هشدار!</b> وب‌مين تشخيص داده است که از آدرس اينترنتي ناشناسي که در خارج از کارساز وب‌مين است به برنامه $1 پيوند داده شده است. اين عمل ممکن است تلاشي براي اجراي يک دستور خطرناک توسط کارساز شما باشد.
+referer_ok=ادامه اجراي برنامه وب‌مين
+referer_again=اين هشدار در آينده نمايش داده نشود.
+session_header=ورود به وب‌مين
+session_mesg=شما بايد براي ورود به کارساز وب‌مين برروي $1 يک اسم‌کاربر و کلمه رمز وارد نماييد.
+session_mesg2= شما بايد براي ورود يک اسم‌کاربر و کلمه رمز وارد نماييد.
+session_user=اسم‌کاربر
+session_pass=کلمه رمز
+session_login=ورود به سيستم
+session_clear=پاک کردن
+session_failed=عدم موفقيت در ورود به سيستم. لطفا دوباره سعي نماييد.
+session_logout=خروج از سيستم با موفقيت انجام گرفت. براي ورود مجدد به سيستم از فرم زير استفاده نماييد.
+session_timed_out=زمان نشست پس از $1 دقيقه عدم فعاليت به پايان رسيد.
+session_save=اطلاعات ورود به سيستم براي هميشه نگهداري شود؟ 
+pam_header=ورود به وب‌مين
+pam_mesg=جهت ورود به کارساز وب‌مين برروي $1 بايد به سوال زير پاسخ دهيد.
+pam_mesg2= جهت ورود به کارساز وب‌مين برروي $1 بايد به سوال زير پاسخ دهيد.
+pam_login=ادامه دادن
+pam_restart=آغاز دوباره
+acl_root=ريشه فهرست راهنما براي انتخاب کننده پرونده 
+Root directory for file chooser
+acl_home= فهرست راهنماي کاربر
+acl_uedit=کاربران قابل مشاهده در انتخابکننده کاربر
+acl_uedit_all=تمام کاربران
+acl_uedit_none=هيچکدام از کاربران
+acl_uedit_only=فقط کاربران
+acl_uedit_except=همه بجز کاربران
+acl_uedit_UID=کاربران به ترتيب شماره مشخصه کاربر
+acl_uedit_group=کاربران به همراه گروه
+acl_gedit=گروه‌هاي قابل مشاهده در انتخابکننده گروه
+acl_gedit_all=تمام گروه‌ها
+acl_gedit_none=هيچيک از گروه‌ها
+acl_gedit_only=فقط گروه‌ها
+acl_gedit_except=همه بجز گروه‌ها
+acl_gedit_gid=گروه‌ها به ترتيب شماره مشخصه گروه
+acl_feedback=آيا نامه الکترونيکي بازخورد ارسال ميشود؟
+acl_feedback2=بله
+acl_feedback1=بله، اما بدون پرونده پيکربندي
+acl_feedback0=خير
+acl_feedback3=بله، به همراه پرونده پيکربندي
+acl_rpc=آيا صدا زدن RPC را ميپذيريد؟
+acl_rpc2=تنها براي کاربر <tt> root </tt> يا <tt> مدير سيستم</tt>
+acl_rpc1=بله
+acl_rpc0=خير
+ 
+month_1=ژانويه
+month_2=فوريه
+month_3=مارس
+month_4=آوريل
+month_5=مي
+month_6=ژوئن
+month_7=جولاي
+month_8=آگوست
+month_9=سپتامبر
+month_10=اکتبر
+month_11=نوامبر
+
+month_12=دسامبر
+ 
+day_0=يکشنبه
+day_1=دوشنبه
+day_2=سه شنبه
+day_3=چهارشنبه
+day_4=پنجشنبه
+day_5=جمعه
+day_6=شنبه
+ 
+smonth_1=Jan
+smonth_2=Feb
+smonth_3=Mar
+smonth_4=Apr
+smonth_5=May
+smonth_6=Jun
+smonth_7=Jul
+smonth_8=Aug
+smonth_9=Sep
+smonth_10=Oct
+smonth_11=Nov
+smonth_12=Dec
+ 
+sday_0=Su
+sday_1=Mo
+sday_2=Tu
+sday_3=We
+sday_4=Th
+sday_5=Fr
+sday_6=Sa
+ 
+emodule=دستيابي ممکن نيست: کاربر $1 اجازه استفاده از پيمانه $2 را ندارد.
+elock_tries=عدم موفقيت در قفل کردن پرونده $1 پس از $2 دقيقه
+
+skill_high=متخصص
+skill_medium=متوسط
+skill_low=تازه کار
+ 
+feedback_title=بازخورد وب‌مين
+feedback_desc=اين برگه به شما اجازه مي‌دهد گزارشات خطا و پيشنهادات خود را در زمينه هر مشکل و يا کاستي در تواناييهاي وب‌مين که شما يافته ايد به توسعه دهندگان وب‌مين ارسال نماييد. هنگامي که دگمه ارسال فشار داده شود تمامي جزييات وارد شده در اين برگه براي $1 پست الکترونيکي خواهد شد. 
+feedback_desc2=اين بازخورد براي توسعه دهندگان وب‌مين ارسال خواهد شد و نه براي مدير سيستم شما يا ISP يا شرکت ارائه دهنده خدمات ميزبان. لطفا بازخورد خود را حتي اگر در حال حاضر از زبانهاي ديگر وب‌مين استفاده مي‌نماييد، به زبان انگليسي بنويسيد.
+feedback_header=جزييات بازخورد
+feedback_name=نام
+feedback_email=آدرس پست الکترونيکي
+feedback_module=پيمانه مورد نظر
+feedback_all=تمام پيمانه‌ها
+feedback_text=توضيح مشکلات يا پيشنهادات
+feedback_os=آيا جزييات سيستم عامل در نامه الکترونيکي وجود دارد؟
+feedback_osdesc=چنانچه اين گزينه را انتخاب نماييد، بهصورت خودکار نام و نسخه سيستم عامل مورد استفاده شما در نامه الکترونيکي بازخورد قرار داده خواهد شد.
+feedback_config=آيا پيکربندي پيمانه در نامه الکترونيکي وجود دارد؟
+feedback_configdesc=چنانچه اين گزينه انتخاب شود پيکربنديهاي مربوط به پيمانه و محتويات تمامي پرونده‌هاي پيکربندي مورد استفاده در پيمانه به نامه الکترونيکي اضافه خواهد شد. براي مثال چنانچه بازخورد مربوط به پيمانه <i> کاربران و گروه‌ها</i> باشد، پرونده‌هاي <tt> /etc/passwd </tt> و <tt> /etc/shadow </tt> ارسال خواهند شد. 
+feedback_attach=ساير پرونده‌هاي پيوست
+feedback_send=ارسال بازخورد
+feedback_mailserver=ارسال از طريق خدمتدهنده SMTP
+feedback_mailserver_def=برنامه محلي Sendmail
+feedback_err=عدم موفقيت در ارسال بازخورد
+feedback_emodule=شما اضافه کردن پيکربندي پيمانه را انتخاب کردهايد اما پيمانهاي را انتخاب ننمودهايد.
+feedback_emodule2=پيمانه انتخاب شده وجود ندارد
+feedback_econfig=شما دستيابي کامل به پيمانه انتخاب شده نداريد.
+feedback_via=ارسال بازخورد به $1 از طريق خدمتدهنده SMTP $2
+feedback_prog=ارسال بازخورد به $1 با استفاده از برنامه Snadamil $2
+feedback_esend=عدم موفقيت در ارسال بازخورد از طريق برنامه Sendamil يا خدمتدهنده محلي SMTP.
+feedback_to=ارسال بازخورد براي آدرسهاي
+feedback_enoto=آدرسهايي براي ارسال بازخورد به آنها، وارد نشده است.
+feedback_ecannot=شما اجازه ارسال بازخورد را نداريد.
+feedback_ecannot2=شما اجازه ارسال بازخورد شامل پرونده‌هاي پيکربندي را نداريد.
+
+progress_size=درحال بارکردن $1… ($2 بايت)
+progress_nosize=در حال بارکردن $1…
+progress_data=$1 بايت دريافت شده ($2%)
+progress_data2=$1 بايت دريافت شده
+progress_done=…بارکردن تکميل شد
+
+readparse_cdheader=سرآيند نوع محتوا يافت نشد.
+readparse_enc=چشم انتظار رمز گذاري داده-برگه است اما رمزگذاري معمولي را گرفته است.
+readparse_max=داده از بيشينه اندازه $1 بايت تجاوز کرده است.
+
+password_expired= اسم‌رمز شما منقضي شده است و يک اسم‌رمز جديد بايد انتخاب شود.
+password_header= انتخاب اسم‌رمز جديد
+password_user=اسم‌کاربر
+password_old=اسم‌رمز فعلي
+password_new1=اسم‌رمز جديد
+password_new2=تکرار اسم‌رمز جديد
+password_ok=تغييردادن
+password_clear=پاک کردن
+password_done=ايم رمز شما با موفقيت تغيير يافت. شما اکنون بايد با اسم‌رمز جديد <a href='$1'>وارد سيستم</a>شويد.
+password_err=عدم موفقيت در تغييردادن اسم‌رمز
+password_euser=نام ورود به سيستم شما در پرونده اسم‌رمز يافت نشد
+password_eold=اسم‌رمز فعلي نادرست است
+password_enew1=اسم‌رمز جديد وارد نشده است
+password_enew2=اسم‌رمزهاي جديد وارد شده يکسان نيست
+password_epam=خطاي PAM: $1
+password_emodpam=پيمانه پرل Authen::PAM که براي تغيير اسم‌رمز لازم است، نصب نشده است!
+
+ui_mandatory=اين فيلد اجباري است
+ui_checkmandatory=هيچ چيز انتخاب نشده است
+ui_errors=چندين خطا يافت شد:
+ui_nothing=هيچ چيز وارد نشد
+ui_searchcol=ستونهايي را پيدا کن با شرط 
+ui_searchfor=شامل متن
+ui_searchok=جستجو
+ui_selall=انتخاب همه.
+ui_selinv=معکوس کردن انتخابها.
+ui_edate=تاريخ نامعتبر است
+ui_etime=ساعت نامعتبر است
+ui_paging=در حال نمايش ستونهاي $1 تا $2 از $3
+ui_rowlabel=$2 در ستون $1:
+
+header_statusmsg=$1 وارد $2 $3 برروي $4 ($5) شده است
+

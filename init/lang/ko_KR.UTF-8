@@ -1,0 +1,82 @@
+index_title=採特 貢 曽戟
+index_add=歯 採特 暁澗 曽戟 疑拙 拙失
+index_reboot=獣什奴 仙採特
+index_rebootmsg=獣什奴聖 聡獣 仙採特馬形檎 戚 獄動聖 刊牽淑獣神. 益君檎 薄仙 稽益昔廃 乞窮 紫遂切税 尻衣戚 快延 板 乞窮 辞搾什亜 陥獣 獣拙桔艦陥.
+index_shutdown=獣什奴 曽戟
+index_shutdownmsg=獣什奴聖 聡獣 曽戟馬形檎 戚 獄動聖 刊牽淑獣神. 益君檎 乞窮 辞搾什亜 掻走鞠壱 乞窮 紫遂切税 尻衣戚 快延 板 獣什奴 穿据戚 襖増艦陥(馬球裾嬢拭辞 走据馬澗 井酔).
+index_script=焼掘税 什滴験闘 $1戚(亜) 採特 獣拭 叔楳桔艦陥. 獣什奴戚 仙採特吃 凶 汽沙戚蟹 辞獄研 陥獣 獣拙馬澗 働舛 誤敬聖 蓄亜拝 呪 赤柔艦陥.
+index_return=採特 貢 曽戟 疑拙
+index_action=疑拙
+index_desc=竺誤
+index_boot=採特 凶 獣拙杯艦猿?
+index_status=走榎 獣拙杯艦猿?
+
+edit_title=疑拙 畷増
+create_title=疑拙 拙失
+edit_ecannot=採特 疑拙聖 畷増拝 呪 蒸柔艦陥
+edit_details=疑拙 室採 舛左
+edit_name=戚硯
+edit_desc=竺誤
+edit_startmsg=採特 五獣走
+edit_stopmsg=曽戟 五獣走
+edit_start=採特 誤敬
+edit_stop=曽戟 誤敬
+edit_script=疑拙 什滴験闘
+edit_boot=採特 獣 獣拙杯艦猿?
+edit_badS=戚 疑拙戚 臣郊牽惟 拙失鞠走 省紹生糠稽 叔楳 呪層 $1拭辞幻 獣拙桔艦陥.
+edit_badK=戚 疑拙戚 臣郊牽惟 拙失鞠走 省紹生糠稽 叔楳 呪層 $1拭辞幻 掻走桔艦陥.
+edit_fix=陥献 叔楳 呪層拭辞亀 戚 疑拙聖 紫遂拝 呪 赤惟 馬形檎 食奄研 刊牽淑獣神
+edit_levels=獣拙 貢 掻走拝 叔楳 呪層
+edit_rl=叔楳 呪層 $1
+edit_startat=獣拙
+edit_stopat=掻走
+edit_startnow=走榎 獣拙
+edit_stopnow=走榎 掻走
+edit_restartnow=走榎 陥獣 獣拙
+edit_condrestartnow=琶推拝 凶 陥獣 獣拙
+edit_reloadnow=走榎 陥獣 稽球
+edit_statusnow=雌殿 妊獣
+edit_return=疑拙
+edit_status=走榎 獣拙杯艦猿?
+edit_unknown=硝 呪 蒸製
+
+save_err=疑拙聖 煽舌馬走 公梅柔艦陥
+save_ecannot=採特 疑拙聖 畷増拝 呪 蒸柔艦陥
+save_ealready=疑拙 '$1'戚 戚耕 赤柔艦陥
+save_ewrite=$1拭 床走 公梅柔艦陥: $2
+
+ss_ecannot=採特 疑拙聖 獣拙馬暗蟹 掻走拝 呪 蒸柔艦陥
+ss_start=疑拙 獣拙
+ss_stop=疑拙 掻走
+ss_restart=疑拙 陥獣 獣拙
+ss_reload=疑拙 陥獣 稽球
+ss_status=疑拙 雌殿
+ss_exec=$1 叔楳 掻..
+
+shutdown_ecannot=獣什奴聖 曽戟拝 呪 蒸柔艦陥
+shutdown_title=曽戟
+shutdown_rusure=誤敬 $1聖(研) 紫遂馬食 獣什奴聖 曽戟馬獣畏柔艦猿?
+shutdown_ok=獣什奴 曽戟
+shutdown_exec=誤敬 $1聖(研) 紫遂馬食 曽戟 掻..
+
+reboot_ecannot=獣什奴聖 仙採特拝 呪 蒸柔艦陥
+reboot_title=仙採特
+reboot_rusure=誤敬 $1聖(研) 紫遂馬食 獣什奴聖 仙採特馬獣畏柔艦猿?
+reboot_ok=獣什奴 仙採特
+reboot_exec=誤敬 $1聖(研) 紫遂馬食 仙採特 掻..
+
+acl_script=採特 什滴験闘研 畷増拝 呪 赤柔艦猿?
+acl_actions=疑拙聖 畷増, 拙失 貢 肢薦拝 呪 赤柔艦猿?
+acl_reboot=獣什奴聖 仙採特拝 呪 赤柔艦猿?
+acl_shutdown=獣什奴聖 曽戟拝 呪 赤柔艦猿?
+
+log_rename=疑拙 戚硯戚 $1拭辞 $2(生)稽 郊会
+log_modify=疑拙 $1 呪舛喫
+log_create=疑拙 $1 拙失喫
+log_delete=疑拙 $1 肢薦喫
+log_start=採特 疑拙 $1 獣拙喫
+log_stop=曽戟 疑拙 $1 掻走喫
+log_reboot=獣什奴 仙採特喫
+log_shutdown=獣什奴 曽戟喫
+log_local=採特 什滴験闘 呪舛喫
+log_bootup=$1税 採特 疑拙 痕井喫

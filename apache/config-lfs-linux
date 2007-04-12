@@ -1,0 +1,17 @@
+httpd_path=/usr/apache/bin/httpd
+stop_cmd=/usr/apache/bin/apachectl stop
+httpd_conf=/usr/apache/conf/httpd.conf
+start_cmd=/usr/apache/bin/apachectl start
+apachectl_path=/usr/apache/bin/apachectl
+httpd_dir=/usr/apache
+show_order=0
+mime_types=/usr/apache/conf/mime.types
+show_list=0
+virt_file=
+srm_conf=/usr/apache/conf/srm.conf
+access_conf=/usr/apache/conf/access.conf
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

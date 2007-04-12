@@ -1,0 +1,31 @@
+<header>Aliasy pocztowe</header>
+
+Aliasy zapewniaj± ogólnosystemowy mechanizm przekierowywania poczty do
+lokalnych odbiorców. <p>
+
+Pole <tt>Alias dla...</tt> zawiera jeden lub wiêcej rozdzielonych
+przecinkami spo¶ród:
+
+<ul><li><tt>adres</tt>: Poczta jest przekierowywana na <tt>adres</tt>, który
+jest zgodny ze standardem RFC 822.
+
+<li><tt>/nazwa/pliku</tt>: Poczta jest dopisywana do <tt>/nazwa/pliku</tt>.
+Zajrzyj do local(8) po szczegó³owe informacje o&nbsp;dorêczaniu do pliku.
+Dorêczanie nie jest ograniczone do zwyk³ych plików. Na przyk³ad, mo¿na
+rozporz±dziæ niechcian± poczt± poprzez jej przekierowanie do
+<tt>/dev/null</tt>.
+
+<li><tt>|polecenie</tt>: Poczta jest przekazywana w&nbsp;potoku do programu
+<tt>polecenie</tt>. Polecenia zawieraj±ce znaki specjalne, takie jak spacje,
+powinny byæ zawarte w podwójnych apostrofach. Zajrzyj do local(8) po szczegó³owe
+informacje o&nbsp;dorêczaniu do polecenia. Gdy wykonanie polecenia zakoñczy
+siê niepowodzeniem, ograniczona czê¶æ wyniku polecenia jest odsy³ana do
+nadawcy.
+
+<li><tt>:include:/nazwa/pliku</tt>: Poczta jest wysy³ana do miejsc
+przeznaczenia wymienionych w&nbsp;podanym pliku. Linie w&nbsp;plikach
+<tt>:include:</tt> maj± tak± sam± sk³adniê, jak prawa strona wpisu aliasu.
+
+</ul>
+
+<hr>

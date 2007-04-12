@@ -1,0 +1,20 @@
+<header>SMTP server response on unknown hostname reject</header>
+
+<center><tt>unknown_hostname_reject_code</tt></center>
+<hr>
+
+This parameter specifies the SMTP server response code when a client violates the
+<tt>reject_unknown_hostname</tt> restriction rule that is:<br>
+<i>Access denied: Unknown client HELO hostname (without DNS A or MX record)</i><br>
+<br>
+Note that the postfix default value used for <tt>unknown_hostname_reject_code</tt> is
+code 501, and this code in 'standard RFC 822' should means 'Syntax error in parameters
+or arguments'.
+So with Postfix, a 501 status code does not reflect exactly the RFC822 explanation.<br>
+<p>
+To avoid confusion, you can change this to 577 for example (another reason is that code 501 is
+also the postfix default value for other kind of errors), otherwise, do not change this unless
+you have a complete understanding of RFC 822.
+</p>
+
+<hr>

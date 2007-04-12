@@ -1,0 +1,29 @@
+<header>Password</header>
+
+When a user logs in via telnet or at the console, he must normally provide a
+password. There are four different options for the password :
+<ul>
+<if $config{'empty_mode'} == 1>
+<li><b>Ask at first login</b><br>
+    When the user logs in for the first time via telnet or at the console in
+    text mode, the system will prompt the user for his password. <p>
+</if>
+<if $config{'empty_mode'} == 0>
+<li><b>No password required</b><br>
+    The user can login to the system without providing a password. This option
+    should be used with care. <p>
+</if>
+<li><b>No login allowed</b><br>
+    If this option is chosen the user will not be able to login to the system
+    at all, even to read mail using POP3 server. <p>
+<li><b>Encrypted password</b><br>
+    Unix passwords are stored in a one-way encrypted form. This option allows
+    you to enter the password for a user as an encrypted string (maybe taken
+    from the password file on another system). <p>
+<li><b>Clear text password</b><br>
+    To set the password for a user, select this option and enter it into the
+    text field. Webmin will take the password you enter, encrypt it and store
+    it in the password file. <p>
+</ul>
+<hr>
+

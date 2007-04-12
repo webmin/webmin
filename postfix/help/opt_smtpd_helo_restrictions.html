@@ -1,0 +1,41 @@
+<header>Restrictions on sends in HELO commands</header>
+
+<center><tt>smtpd_helo_restrictions</tt></center>
+<hr>
+
+This parameter specifies optional restrictions on what SMTP clients can send in
+SMTP HELO and EHLO commands.
+
+<p>
+
+The default is to permit everything.  The following restrictions
+are available:
+
+<ul>
+<li>  <tt>permit_mynetworks:</tt> permit if the client address matches
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li>  <tt>reject_unknown_client:</tt> reject the request if the client hostname is unknown.
+<li>  <tt>reject_maps_rbl:</tt> reject if the client is listed under
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li>  <tt>reject_invalid_hostname:</tt> reject HELO hostname with bad syntax.
+<li>  <tt>reject_unknown_hostname:</tt> reject HELO hostname without DNS A or MX record.
+<li>  <tt>reject_non_fqdn_hostname:</tt> reject HELO hostname that is not in FQDN form
+<li>  <tt>check_helo_access maptype:mapname:</tt> look up HELO hostname or parent domains.
+	Reject if result is REJECT or &quot;[45]xx text&quot;.
+	Permit otherwise.
+<li>  <tt>check_client_access maptype:mapname:</tt> see
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li>  <tt>reject:</tt> reject the request. Place this at the end of a restriction.
+<li>  <tt>permit:</tt> permit the request. Place this at the end of a restriction.
+</ul>
+
+Restrictions are applied in the order as specified; the first
+restriction that matches wins.
+
+<p>
+
+Specify a list of restrictions, separated by commas and/or whitespace.
+Continue long lines by starting the next line with whitespace.
+
+
+<hr>

@@ -1,0 +1,52 @@
+#! /bin/sh
+#
+# rc.inet1	This shell script boots up the base INET system.
+#
+# Version:	@(#)/etc/rc.d/rc.inet1	1.01	05/27/93
+#
+
+HOSTNAME=`cat /etc/HOSTNAME`
+
+# Attach the loopback device.
+/sbin/ifconfig lo 127.0.0.1
+/sbin/route add -net 127.0.0.0 netmask 255.0.0.0 lo
+
+# IF YOU HAVE AN ETHERNET CONNECTION, use these lines below to configure the 
+# eth0 interface. If you're only using loopback or SLIP, don't include the
+# rest of the lines in this file.
+
+# Edit for your setup.
+IPADDR="10.2.6.2"	# REPLACE with YOUR IP address!
+NETMASK="255.255.0.0"	# REPLACE with YOUR netmask!
+NETWORK="10.2.0.0"	# REPLACE with YOUR network address!
+BROADCAST="10.2.255.255"	# REPLACE with YOUR broadcast address, if you
+			# have one. If not, leave blank and edit below.
+GATEWAY="10.2.5.111"	# REPLACE with YOUR gateway address!
+
+# Uncomment the line below to configure your ethernet card.
+/sbin/ifconfig eth0 ${IPADDR} broadcast ${BROADCAST} netmask ${NETMASK}
+
+# If the line above is uncommented, the code below can also be uncommented.
+# It sees if the ethernet was properly initialized, and gives the admin some
+# hints about what to do if it wasn't.
+if [ ! $? = 0 ]; then
+  cat << END
+Your ethernet card was not initialized properly.  Here are some reasons why this
+may have happened, and the solutions:
+1. Your kernel does not contain support for your card.  Including all the 
+   network drivers in a Linux kernel can make it too large to even boot, and
+   sometimes including extra drivers can cause system hangs.  To support your
+   ethernet, either edit /etc/rc.d/rc.modules to load the support at boottime,
+   or compile and install a kernel that contains support.
+2. You don't have an ethernet card, in which case you should comment out this
+   section of /etc/rc.d/rc.inet1.  (Unless you don't mind seeing this error...)
+END
+
+fi
+
+# Uncomment this to set up your gateway route:
+if [ ! "$GATEWAY" = "" ]; then
+ /sbin/route add default gw ${GATEWAY} netmask 0.0.0.0 metric 1
+fi
+
+# End of rc.inet1

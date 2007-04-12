@@ -1,0 +1,27 @@
+<header>Procesy uniksowe</header>
+
+Proces jest to po prostu dzia³aj±cy w&nbsp;Twoim systemie program. Twoja
+przegl±darka, zarz±dca okienek, okienko terminala czy X serwer - wszystkie
+s± procesami, z&nbsp;którymi siê bezpo¶rednio komunikujesz. Wiele innych
+procesów, jak serwery WWW czy inne zadania systemowe, dzia³a w&nbsp;tle.
+Za ka¿dym razem, gdy wydasz polecenie takie, jak <tt>ls</tt> czy
+<tt>pwd</tt> tworzony jest nowy proces, jednak¿e takie procesy s± zazwyczaj
+krótko¿yj±ce. <p>
+
+Ka¿dy proces posiada swój unikalny numer ID, zwany numerem ID procesu lub
+PID-em. Ka¿dy dzia³aj±cy w&nbsp;danej chwili proces ma inny numer ID, lecz
+PID-u procesów, które zakoñczy³y dzia³anie mog± byæ pó¼niej u¿yte ponownie.
+<p>
+
+Oprócz procesu inicjuj±cego (zazwyczaj zwanego <tt>init</tt>), ka¿dy ma
+swojego rodzica, który go utworzy³. Na przyk³ad, je¿eli uruchomisz
+<tt>vi</tt> z&nbsp;linii poleceñ, rodzicem <tt>vi</tt> bêdzie twoja pow³oka.
+Proces mo¿e mieæ dowolna liczbê potomków, ale tylko jednego rodzica. <p>
+
+Ka¿dy proces dzia³a z&nbsp;prawami pewnego u¿ytkownika i&nbsp;pewnej grupy,
+które maj± zastosowanie przy dostêpie przez niego do plików. U¿ytkownicy
+i&nbsp;procesy mog± zabijaæ jedynie inne procesy, których s± w³a¶cicielami,
+za wyj±tkiem <tt>root</tt>a, który mo¿e zabiæ wszystko. <p>
+
+<hr>
+

@@ -1,0 +1,48 @@
+<header>Opciones de Caché</header>
+
+<b>Directorios de Caché</b>: Puedes especificar múltiples líneas de directorios de caché para ampliar la caché entre diferentes particiones de disco.<p>
+
+<em>Directorio</em> es un directorio de nivel superior donde se almacenan los archivos de intercambio de caché. Si deseas utilizar todo un disco para hacer caché, entonces aquí puedes poner el directorio de anclaje. El directorio debe de existir y ser escribible por el proceso de Squid. Squid NO creará el directorio si no existe.
+<p>
+<em>Medida</em> es la cantidad de espacio en disco (MB) a usar bajo este directorio. Por defecto son 100MB. Cambia esto para adaptarlo a tu configuración.
+<p>
+<em>Directorios de primer nivel</em> es el número de subdirectorios de primer nivel que se crearán bajo <em>Directorio</em>.  Por defecto son 16.
+<p>
+<em>Directorios de segundo nivel</em> es el número de subdirectorios de segundo nivel que se crearán bajo cada directorio de primer nivel. Por defecto son 256.
+<P>
+<b>Media de la Medida del Objeto</b>: Por defecto son 13 KB. Se usa para estimar el número de objectos que tu caché puede mantener.
+<p>
+<b>Objectos por cubo</b>: Por defecto son 50. Número de objetivos de objetos por cubo en la tabla hash de almacenamiento. Bajar este valor incrementa el número total de cubos y también el porcentaje de mantenimiento de almacenamiento.
+<p>
+<b>No hacer Caché de URLs para las ACLs</b>: Por defecto ninguna. Selecciona cualquier ACL para las que no deseas que Squid lleve caché de sus datos. Es útil para definir un servidor web interno del que no se debe de llevar caché.
+<p>
+<b>Tiempo máximo de caché</b>: Por defecto 1 año. Este parámetro define la edad máxima de LRU (Unidad menos leída). Por ejemplo, poner '1 semana' hará que los objetos sean quitados si no han sido accedidos durante una semana o más.
+<p>
+<b>Tiempo para fallo de requerimiento de caché</b> Por defecto 5 minutos. Tiempo-a-Vivir (TTL) para requerimientos fallidos. Ciertos tipos de fallos (como "conexión rechazada y "404 No Hallado") son negatívamente puestos en caché por una cantidad de tiempo configurable. Ten en cuenta que esto es diferente del caché negativo de las búsquedas DNS.
+<p>
+<b>Tiempo de caché de búsqueda DNS</b>: Por defecto 6 horas (360 minutos).  Timempo-a-Vivir (TTL) para caché positivo de búsquedas exitosas en DNS. Si quieres minimizar el uso de ipcaché de Squid, pon esto a 1 y no a 0.
+<p>
+<b>Tiempo fallido de caché de DNS</b>: Por defecto 5 minutos.  Tiempo-a-Vivir (TTL) para caché negativo de búsquedas fallidas de DNS.
+<p>
+<b>Tiempo de espera para Conectar</b>: Por defecto 120 segundos. Algunos sistemas (notáblemente Linux) no pueden realizar adecuádamente el agotamiento de requerimientos de tiempo de conexión. Por ello, el proceso Squid fuerza su propio control de tiempo en las conexiones de servidores. Este parámetro especifica cuánto tiempo esperar para que la conexión se complete.
+<p>
+<b>Tiempo de espera para Leer</b>: Por defecto 15 minutos. El tiempo máximo de lectura que se aplica en conexiones del lado servidor. Tras cada lectura [read()] con éxito, el tiempo será extendido en esta cantidad. Si no se lee dato alguno de nuevo tras esta cantidad de tiempo, el requerimiento es abortado y puesto en el diario con ERR_READ_TIMEOUT.
+<p>
+<b>Tiempo de espera para selección de Sitio</b>: Por defecto 4 segundos. Para URN a múltiples URLs.
+<p>
+<b>Tiempo de espera para requerimiento de Cliente</b>: Por defecto 15 minutos. El tiempo de espera de lectura se aplica a conexiones del lado del servidor. Tras cada lectura [read()] con éxito, el tiempo de espera se extiende en esta cantidad. Si no se lee dato alguno tras esta cantidad de tiempo, el requerimiento es abortado y puesto en el diario con ERR_READ_TIMEOUT.
+<p>
+<b>Tiempo máximo para conexión de cliente</b>: Por defecto 1 día. La máxima cantidad de tiempo que un cliente (navegador) está autorizado a permanecer conectado al proceso de caché. Esto protege la Caché de tener un montón de sockets (y por ello descriptores de archivo) arrancados en estado CLOSE_WAIT desde clientes remotos que se marchan sin cerrar adecuádamente (o por fallo de red o debido a una pobre implementación).
+<p>
+<b>Tiempo máximo de apagado</b>: Por defecto 30 segundos. Al recibir SIGTERM o SIGHUP, la caché es puesta en modo "apagado pendiente" hasta que todos los sockets activos son cerrados. Este valor es el tiempo de vida a poner para todos los descriptores abiertos durante el modo de apagado. Cualquier cliente activo tras esta cantidad de segundos recibirá un mensaje de 'tiempo agotado'.
+<p>
+<b>Clientes medio-cerrados</b>:  Por defecto 'activado'.  Algunos clientes pueden cerrar la parte que envía de sus conexiones TCP mientras dejan sus partes receptoras abiertas. Algunas veces, Squid no puede saber la diferencia entre una conexión TCP medio cerrada y otra complétamente cerrada. Por defecto, las conexiones medio cerradas de clientes se mantienen abiertas hasta que una lectura [read()] o escritura [write()] en el socket devuelva un error. Cambia esta opción a 'desactivada' y Squid cerrará inmediátamente las conexiones de cliente cuando una lectura [read()] devuelva "no hay más datos que leer".
+<p>
+<b>Tiempo máximo persitente</b>: Por defecto es 120 segundos. Tiempo máximo para conexiones ociosas persistentes a clientes, servidores y otros proxys. Las conexiones persistentes son desactivadas si este valor es inferior a 10 segundos.
+<p>
+<b>Máquina relé de WAIS</b>: Por defecto ninguna. Nombre de máquina o dirección donde enviar requerimientos de WAIS.
+<p>
+<b>Puerto relé de WAIS</b>: Por defecto ninguno. Puerto donde dirigir los requerimientos de WAIS.
+
+<hr>
+ 

@@ -1,0 +1,47 @@
+---- Changes since 1.130 ----
+Status emails are now send using the Read User Mail module, removing any dependency on the Sendmail module.
+---- Changes since 1.150 ----
+Added a new monitor type for checking on RAID devices.
+---- Changes since 1.170 ----
+Added support for sending SNMP traps when scheduled monitoring detects that a service has gone down. This requires the Net::SNMP Perl module be installed.
+Other Webmin modules can now defined custom monitor types, by including a status_monitor.pl script. This must contain the functions documented in status_monitor_api.pl in this module's directory.
+Added a field for specifying the number of times a service must be detected as down before an email message is sent or other action taken.
+---- Changes since 1.180 ----
+Status email messages now include the failed service in the subject line.
+Added new monitor type for lm_sensors variables, such as fan speed and CPU temperature.
+---- Changes since 1.190 ----
+Improved support for remote monitoring for SMART and RAID.
+Remote monitors now use the remote hostname instead of the local hostname in the email message.
+---- Changes since 1.200 ----
+Added monitors for NUT UPS values and mail queue length.
+---- Changes since 1.210 ----
+The notification methods (email, pager, snmp) for each monitor can now be selected individually.
+Added a field on the Edit Monitor page for notifying a custom email address when a particular service is down.
+Added a new monitor type for DNS lookups, to ensure that some server is up and returning the correct address for some hostname.
+---- Changes since 1.220 ----
+Added a monitor option to have it skipped if some other monitor is down.
+Internationalized the status emails, so they can be translated into other languages.
+The list of monitors on the main page now has checkboxes next to them, to allow several to be deleted at once.
+The disk space monitor can now check for free inodes too, on Linux systems.
+---- Changes since 1.250 ----
+Added support for the SNMP_Session Perl module for sending SNMP traps, as an alternative to Net::SNMP.
+---- Changes since 1.270 ----
+Added a new monitor type for FTP servers.
+For each monitor, multiple remote hosts can be selected, which makes checking a service like Apache across a range of servers easier.
+Updated the network traffic monitor to support FreeBSD as well as Linux.
+Added a new monitor type for performing a test SQL query on a MySQL, PostgreSQL or Oracle database.
+---- Changes since 1.290 ----
+Added an option to the HTTP monitor type to check the page contents too.
+The Check File monitor can now perform size checks on the total contents of a directory.
+---- Changes since 1.300 ----
+Added a monitor type for the rate of disk space consumption.
+---- Changes since 1.310 ----
+Added the ability to create monitors that apply to Webmin server groups, rather than selecting individual machines one at a time.
+Added a new Alive System monitor type, which is useful when used remotely to just determine if a machine is up.
+---- Changes since 1.320 ----
+Fixed the Refresh Status button to work regardless of the selected execution hours or days.
+Added a new monitor type for testing a remote SSH server.
+---- Changes since 1.330 ----
+Added an option to the Remote SSH monitor type to not actually login, just check if we can get to the login prompt.
+Converted the UI for all monitors to use ui-lib.pl, for easier theming.
+Added support for sending status messages via SMS, for common US mobile carriers.

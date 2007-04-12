@@ -1,0 +1,61 @@
+Cada ordre té una descripció (mostrada en el botó de la pàgina principal),
+i una ordre a executar. Aquesta cadena d'ordre pot contenir operadors
+shell com ara |, &gt; i &lt; per executar múltiples ordres i <i>pipes</i>.
+La cadena també pot contenir paràmetres com <tt>$foo</tt>, que són reemplaçats
+per les entrades de l'usuari quan s'executa el programa. <p>
+
+Aquests paràmetres es poden introduir dins la taula al peu de la pàgina.
+Per cada paràmetre, cal d'introduir:
+<dl>
+<dt><b>Nom</b>
+<dd>Un codi únic del paràmetre. Si el nom és <tt>foo</tt>, llavors
+    <tt>$foo</tt> se substituirà pel valor del paràmetre quan s'executi 
+    l'ordre.<p>
+<dt><b>Descripció</b>
+<dd>La descripció d'aquest paràmetre a la pàgina principal.<p>
+<dt><b>Tipus</b>
+<dd>Aquesta opció controla com s'introdueix el paràmetre.
+Les opcions disponibles són:
+	<ul>
+	<li><b>Text</b><br>
+            Una entrada de text totalment lliure.
+	<li><b>Usuari</b><br>
+            Un usuari del sistema.
+	<li><b>UID</b><br>
+            El UID d'un usuari del sistema.
+	<li><b>Grup</b><br>
+            Un grup del sistema.
+	<li><b>GID</b><br>
+	    El GID d'un grup del sistema.
+	<li><b>Fitxer</b><br>
+            El camí complet d'un fitxer.
+	<li><b>Directori</b><br>
+            El camí complet d'un directori.
+	<li><b>Opció</b><br>
+            Una entrada Sí/No que establirà el paràmetre a allò contingut
+            en el camp només si es tria Sí.
+	<li><b>Contrasenya</b><br>
+            Una entrada de text totalment lliure, però canviant la
+            contarsenya per '*'.
+        <li><b>Menú</b><br>
+            Un menú d'opcions desplegable, pres del nom de fitxer
+            introduït al camp de text adjacent. O, en lloc d'un nom de fitxer,
+            pots introduir una ordre amb un | al final, la sortida de la qual
+            s'utilitzarà per determinar les opcions disponibles.
+        <li><b>Càrrega</b><br>
+            Una caixa d'entrada per triar un fitxer del cantó del client
+            que es carregarà al servidor quan s'executi l'ordre.
+            Aquest es desarà en un fitxer temporal, i el camí d'aquest
+            fitxer serà el valor d'aquest paràmetre quan s'executi l'ordre.
+        <li><b>Caixa de text</b><br>
+            Un camp de text multilínia lliure. Quan s'executa l'ordre,
+            tots els caràcters de salt de línia del text introduït
+            es converteixen a espais.
+	</ul><p>
+<dt><b>Paràmetre entre cometes</b>
+<dd>Si és Sí, el paràmetre es posarà entre cometes dobles (") abans de la
+substitució, cosa que permet que l'usuari introdueixi valors amb espais. <p>
+</dl>
+
+<hr>
+

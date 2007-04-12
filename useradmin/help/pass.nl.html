@@ -1,0 +1,33 @@
+<header>Wachtwoord</header>
+
+Wanneer een gebruiker zich aanmeldt via telnet of aan het console, moet 
+normaliter een wachtwoord worden opgegeven. Er zijn vier mogelijkheden voor 
+het wachtwoord:
+<ul>
+<if $config{'empty_mode'} == 1>
+<li><b>Vragen bij eerste aanmelding</b><br>
+    Wanneer de gebruiker zich voor de eerste maal aanmeldt via telnet of aan 
+    het console in tekst modus, zal het systeem vragen om een wachtwoord. <p>
+</if>
+<if $config{'empty_mode'} == 0>
+<li><b>Geen wachtwoord nodig</b><br>
+    De gebruiker kan zich aanmelden aan het systeem zonder een wachtwoord op 
+    te geven. Deze optie biedt geen bescherming en dient zoveel mogelijk te 
+    worden vermeden. <p>
+</if>
+<li><b>Aanmelden niet toegestaan</b><br>
+    Als deze optie wordt gekozen kan de gebruiker zich helemaal niet 
+    aanmelden, ook niet om mail te lezen via de POP3 server. <p>
+<li><b>Voorversleuteld wachtwoord</b><br>
+    Unix wachtwoorden worden door een onomkeerbaar algoritme versleuteld en 
+    in die vorm opgeslagen. Deze optie maakt het mogelijk om het wachtwoord voor de 
+    gebruiker in dit versleutelde formaat in te brengen (wellicht overgenomen 
+    uit een bestaand wachtwoordbestand van een ander systeem). <p>
+<li><b>Normaal wachtwoord</b><br>
+    Om het wachtwoord van een gebruiker in te stellen, kunt u het beste deze 
+    optie gebruiken. U tikt dan het wachtwoord in klare tekst in het veld. 
+    Webmin zal dit wachtwoord dan versleutelen en opslaan in het 
+    wachtwoordbestand. <p>
+</ul>
+<hr>
+

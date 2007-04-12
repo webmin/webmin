@@ -1,0 +1,64 @@
+index_title=ADSL客户端
+index_eadsl=在您的系统上没有找到或RP-PPPoE $1命令错误，大概还没有安装或您的 <a href='$2'>模块配置</a>不正确。
+index_econfig=在您的系统上找不到RP-PPPoE ADSL 配置文件 $1 ，大概还没有安装或您的 <a href='$2'>模块配置</a>不正确。
+index_emodem=目前的调制解调器配置文件是适用于Redhat Linux系统上的，用<a href='$2'>模块配置</a>页来选择在 $1 其它的 <tt>ifcfg-ppp*</tt> 文件，或是模块可以为您生成原先不存在的文件。
+index_stop=断开ADSL
+index_stopdesc=您的ADSL连接目前已经启动，IP地址是 $1，按此按钮使用命令 $2 来断开。
+index_start=启动ADSL
+index_startdesc=您的ADSL连接目前已断开，按此按钮使用命令 $1 来启动。
+index_boot=开机时自动启动
+index_bootdesc=变更此选项来选择是ADSL连接否在开机时自动启动。
+index_return=模块索引
+index_version=RP-PPPoE 的版本是 $1
+index_esetup=在您的系统上不存在 Redhat ADSL 配置文件 $1，不过，按下方按钮，模块可以以默认的方式建立这个文件。
+index_setup=设定配置文件
+index_cancel=取消连接
+index_canceldesc=ADSL客户端目前正在尝试连接，按此按钮可以使用 $1 命令来取消。
+index_header=ADSL客户端配置选项
+index_desc=下面的设定是用于在您系统上启动所有新的ADSL连接，如果您更改这里，连接必须先断开，然后再重新连接，修改内容才会生效。
+index_eth=以太网接口
+index_other=其它..
+index_demand=需要连接?
+index_timeout=是, 当超时时
+index_secs=秒
+index_user=登陆用户名
+index_sec=登陆密码
+index_dns=从ISP取得DNS配置?
+index_save=保存设置
+index_mss=限制封包大小?
+index_psize=是,大小为
+index_bytes=字节
+index_fw=连接时起用防火墙
+index_fw_none=无
+index_fw_standalone=用于单一主机
+index_fw_masquerade=用于NAT gateway
+index_connect=尝试连接时间
+index_forever=永久连接
+
+start_err=启动ADSL连接失败
+start_title=启动ADSL
+start_ip=ADSL已经连接，IP地址是 $1。
+start_demand=因为连接请求模式已打开, 您的ADSL连接会在需要时自动进行连接。
+start_bg=ADSL在20内没有连接成功，ADSL客户端会在后台持续尝试连接直到成功为止。
+
+save_err=保存ADSL配置文件失败
+save_eeth=错误或无效的以太网络接口
+save_etimeout=错误或无效的连接超时
+save_euser=错误或无效的用户名名称
+save_econnect=错误或无效的连接超时时间
+save_emss=错误或无效的最大封包大小
+save_title=保存配置
+save_desc=ADSL客户端配置已经成功保存，不过此配置会在下次重新连接时启用。
+
+stop_err=断开ADSL连接失败
+stop_title=断开ADSL
+stop_ok=你的ADSL连接已成功断开
+stop_failed=因为一些原因你的ADSL连接一直在连接状态!
+
+log_save=已保存客户端配置
+log_stop=断开ADSL
+log_start=启动ADSL
+log_bootup=开机时自动启动ADSL
+log_bootdown=关闭开机时自动启动ADSL
+log_setup=设置为默认配置
+

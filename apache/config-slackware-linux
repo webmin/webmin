@@ -1,0 +1,9 @@
+show_list=0
+httpd_dir=/var/lib/httpd
+httpd_path=/usr/sbin/httpd
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

@@ -1,0 +1,240 @@
+main_return=返回到 $1
+main_homepage=首页
+main_feedback=反馈..
+main_switch=更改用户..
+main_logout=退出
+main_version=构建于 $2 ($3), 版本 $1 
+main_title=Webmin $1 在 $2 ($3)
+main_title2=Webmin
+main_none=你没有权限使用这个 Webmin 模块.
+main_skill=熟练度
+link_essl=网络::SSLeay Perl 模块需要使用的 HTTPS 没有安装.
+
+category_servers=服务器
+category_hardware=硬件
+category_system=系统
+category_webmin=Webmin
+category_net=网络
+category_syslet=Syslets
+category_cluster=群集
+category_info=信息
+category_=其它
+
+longcategory_servers=此模块可配置 web, email, FTP 等服务器
+longcategory_hardware=此模块可以配置 打印机, 磁盘 等硬件的设置
+longcategory_system=此模块可以配置 用户, 文件系统, 守护程序 等系统设置
+longcategory_webmin=此模块可以配置 Webmin 自身
+longcategory_net=此模块可以配置 网络和网络服务
+longcategory_cluster=此模块可以 在一个界面中管理多个服务器
+longcategory_info=此模块可以 显示关于你的系统的信息
+longcategory_=此模块可以配置 其它类别的设置
+
+header_webmin=Webmin 索引
+header_module=Module 索引
+header_help=帮助..
+header_config=模块配置
+header_servers=Webmin 服务器
+
+index=索引
+yes=是
+no=否
+save=保存
+create=新建
+delete=删除
+find=查找
+error=错误
+efilewrite=写失败 $1 : $2
+default=默认
+modify=修改
+reset=重置
+ok=确定
+cancel=取消
+helpsearch=搜索文档..
+switch_remote_euser=Unix 用户 $1 不存在.
+programname=Webmin
+
+chooser_title1=选择文件..
+chooser_title2=选择目录..
+chooser_dir=$1 的目录
+chooser_ok=OK
+
+users_title1=选择多个用户..
+users_title2=选择用户..
+users_sel=已选择的用户
+users_all=所有用户
+users_ok=确定
+users_cancel=取消
+users_clear=清除
+
+groups_title1=选择多个用户组..
+groups_title2=选择用户组..
+groups_all=所有用户组
+groups_sel=已选择的用户组
+groups_ok=确定
+groups_cancel=取消
+groups_clear=清除
+
+config_ecannot=你没有权限配置这个模块
+config_title=配置
+config_dir=为模块 $1
+config_header=$1的可配置的选项
+config_none=无
+config_eaccess=你没有权限访问这个模块
+config_err=保存设置失败
+config_nochange=不能修改
+config_setto=设置为
+config_ewebmin=参数类型 14 为仅仅工作在 Webmin
+
+help_err=显示帮助失败
+help_epath=缺少或无效的帮助路径
+help_efile=读取帮助文件 $1 失败
+help_eheader=缺少 &lt;header&gt; 章节
+help_einclude=导入 $1 失败
+help_eif=$1 失败 : $2
+help_eexec=$1 失败 : $2
+
+referer_title=安全警告
+referer_warn=<b>警告!</b> Webmin 发现来自链接 $1 的程序 $2 , 这个程序看起来是 Webmin 服务器之外的程序. 这可能导致欺骗你的服务器执行一个危险的命令.
+referer_warn_unknown=<b>警告!</b> 发现来自未知链接的程序 $1, 这个程序看起来是 Webmin 服务器之外的程序. 这可能导致欺骗你的服务器执行一个危险的命令.
+referer_ok=继续执行 Webmin 程序
+referer_again=以后不在显示这个警告.
+
+session_header=登陆到 Webmin
+session_mesg=你必需输入一个用户名和密码才能登陆到 $1 的 Webmin 服务器.
+session_mesg2=为了登陆，你必需输入一个用户名和密码.
+session_user=用户名
+session_pass=密码
+session_login=登陆
+session_clear=清除
+session_failed=登陆失败，请重试
+session_logout=退出成功. 使用下面的表单可以再次登陆
+session_timed_out=Session 超时, 超过 $1 分钟没有活动.
+session_save=下次不输入登陆信息, 直接登陆?
+
+acl_root=根目录 文件选择器
+acl_home=用户根目录
+acl_uedit=在用户选择器中可见的
+acl_uedit_all=所有用户
+acl_uedit_none=无用户
+acl_uedit_only=仅用户
+acl_uedit_except=所有用户, 除了用户
+acl_uedit_uid=在 UIDs 范围内的用户
+acl_uedit_group=用户组内用户
+acl_gedit=在用户组选择器中可见的
+acl_gedit_all=所有用户组
+acl_gedit_none=无用户组
+acl_gedit_only=仅用户组
+acl_gedit_except=所有存在的用户组
+acl_gedit_gid=GIDs 范围内的用户组
+acl_feedback=可以发送反馈邮件?
+acl_feedback2=是
+acl_feedback1=是, 但不能发送设置文件
+acl_feedback0=否
+acl_feedback3=是, 同时可以发送设置文件
+acl_rpc=可以接受 RPC 调用?
+acl_rpc2=仅允许 <tt>root</tt> 或 <tt>admin</tt>
+acl_rpc1=是
+acl_rpc0=否
+
+month_1=一月
+month_2=二月
+month_3=三月
+month_4=四月
+month_5=五月
+month_6=六月
+month_7=七月
+month_8=八月
+month_9=九月
+month_10=十月
+month_11=十一月
+month_12=十二月
+
+day_0=星期日
+day_1=星期一
+day_2=星期二
+day_3=星期三
+day_4=星期四
+day_5=星期五
+day_6=星期六
+
+smonth_1=一
+smonth_2=二
+smonth_3=三
+smonth_4=四
+smonth_5=五
+smonth_6=六
+smonth_7=七
+smonth_8=八
+smonth_9=九
+smonth_10=十
+smonth_11=十一
+smonth_12=十二
+
+sday_0=日
+sday_1=一
+sday_2=二
+sday_3=三
+sday_4=四
+sday_5=五
+sday_6=六
+
+emodule=访问被拒绝 : 用户 $1 没有权限使用 $2 这个模块
+elock_tries=锁定文件 $1 失败, 在 $2 分钟之后.
+
+skill_high=专家
+skill_medium=中级
+skill_low=新手
+
+feedback_title=Webmin 反馈
+feedback_desc=这个表单允许你发送错误报告或者你的建议给 Webmin 的开发者, 任何问题或者缺少功能你都可以发送将这些信息发送给我们. 当点击了发送按钮后, 你输入在表单中的所有内容都将发送到 $1.
+feedback_desc2=这个反馈将发送给 Webmin 的开发者, 不是你的系统管理员, ISP 或者托管主机的公司. 即使你使用的不是英文版的 Webmin, 也请使用 英文 书写你的反馈内容.
+feedback_header=反馈 详细内容
+feedback_name=你的名字
+feedback_email=你的邮箱
+feedback_module=关于模块
+feedback_all=所有模块
+feedback_text=问题或建议的描述
+feedback_os=在邮件中包含操作系统信息?
+feedback_osdesc=如果你选择这个选项, 在反馈邮件中将自动插入你的操作系统名称和版本.
+feedback_config=在邮件中包含模块的配置信息?
+feedback_configdesc=如果选择这个, 将在反馈邮件中插入相关模块的配置信息和所有的设置文件内容. 例如, 假如反馈的是模块 <i>Users and Groups</i>, 那么你的 <tt>/etc/passwd</tt> 和 <tt>/etc/shadow</tt> 将随邮件同时发送.
+feedback_attach=附件
+feedback_send=发送反馈
+feedback_mailserver=通过 SMTP 服务器发送
+feedback_mailserver_def=本地 sendmail 程序
+feedback_err=发送反馈失败
+feedback_emodule=你选择插入模块的配置信息, 但是没有选择模块.
+feedback_emodule2=你所选择的模块不存在
+feedback_econfig=你没有足够的权限访问所选择的模块
+feedback_via=通过 SMTP 服务器 $2 发送反馈邮件到 $1
+feedback_prog=使用 sendmail 程序 $2 发送反馈邮件到 $1
+feedback_esend=通过 sendmail 程序或本地SMTP服务器发送反馈邮件失败
+feedback_to=发送反馈的地址
+feedback_enoto=没有输入 发送反馈到 的地址
+feedback_ecannot=你没有权限发送反馈内容
+feedback_ecannot2=你没有权限发送设置文件
+
+progress_size=正在下载 $1 ($2 字节) ..
+progress_nosize=正在下载 $1 ..
+progress_data=收到 $1 字节 ($2 %)
+progress_data2=收到 $1 字节
+progress_done=.. 下载完成.
+
+readparse_cdheader=缺少 Content-Disposition header
+readparse_enc=得到普通编码，没有获得 form-data 编码
+readparse_max=数据超过最大尺寸 $1 字节
+
+password_expired=你的密码已经过期，你需要设置一个新的密码.
+password_header=设置新密码
+password_user=用户名
+password_old=当前密码
+password_new1=新密码
+password_new2=再输一次新密码
+password_ok=修改
+password_clear=清除
+password_done=你的密码已经成功修改, 你现在可以使用新密码 <a href='$1'>重新登陆</a>.
+password_err=修改密码失败
+password_euser=在密码文件中, 没有你输入的这个用户名!
+password_eold=当前密码不正确
+password_enew1=没有输入新密码
+password_enew2=两次输入的新密码不相同

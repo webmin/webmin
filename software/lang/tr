@@ -1,0 +1,131 @@
+index_title=Yazýlým Paketleri
+index_installed=Kurulu Paketler
+index_close=Hepsini Kapa
+index_open=Hepsini Aç
+index_search=Paketleri Ara:
+index_install=Yeni bir paket kur
+index_installmsg=Yeni bir $1 paketi kurmak için bir yer seçiniz..
+index_local=Yerel dosyadan
+index_uploaded=Yüklenen dosyadan
+index_ftp=Ftp ya da http adresinden..
+index_installok=Kur
+index_ident=Bir dosyayý tanýmla
+index_identmsg=$1 veritabaný arama için bir dosya ya da komut yolu giriniz..
+index_identok=Ara:
+index_return=paket listesi
+
+search_title=Paket Ara
+search_nomatch=Eþlenilen paket yok $1
+search_none=Hiçbiri
+search_desc=Açýklama
+search_class=Sýnýf
+search_pack=Paket
+search_match=Paketler karþýlaþtýrýlýyor $1
+search_return=arama sonuçlarý
+
+edit_title=Paketi Deðiþtir
+edit_details=Paket Ayrýntýlarý
+edit_desc=Açýklama
+edit_pack=Paket
+edit_class=Sýnýf
+edit_none=Hiçbiri
+edit_ver=Sürüm
+edit_vend=Kurum
+edit_arch=Mimari
+edit_inst=Tarih
+edit_list=Paketteki dosyalarý listele
+edit_uninst=Kaldýr
+edit_return=paket ayrýntýlarý
+
+list_title=Paket Dosyalarý
+list_files=$1 Paketi için Dosyalar
+list_path=Yol
+list_owner=Sahibi
+list_group=Grup
+list_type=Tip
+list_size=Boyut
+list_status=Durum
+
+delete_err=$1 paketinin silinmesinde hata oluþtu
+delete_epack=$1 paketi mevcut deðil
+delete_title=Paketi Sil
+delete_rusure=$1 paketini silmek istediðinizden eminmisiniz? $2 dosyalarý($3 byte) silinecektir.
+delete_ok=Sil
+
+file_title=Dosya Bilgisi
+file_notfound=$1 hakkýnda ulaþýlabilir bilgi mevcut deðil
+file_path=Yol
+file_type=Tip
+file_perms=Ýzinler
+file_owner=Sahibi
+file_group=Grubu
+file_size=Boyut
+file_link=Link 
+file_pack=Paket
+file_class=Sýnýf
+file_desc=Açýklama
+file_none=Hiçbiri
+
+install_err=Paket kurulumunda hata oluþtu
+install_elocal=Alýnan yerel dosya yok
+install_elocal2='$1' mevcut deðil
+install_eupload=Tarayýcýnýz dosya yüklemeleri kabul etmemektedir
+install_eurl=Anlaþýlmayan URL '$1'
+install_edir=Geçerli bir $1 dizini deðil
+install_ezip=Geçerli bir sýkýþtýrýlmýþ ya da gziplenmiþ dosya deðil
+install_efile=Geçerli bir $1 dosyasý deðil
+install_title=Paketi Kur
+install_header=Paketi kur
+install_packs=Paket(ler) kurulumuþ olmalýdýr
+install_ok=Kur
+
+do_err=$1 paketinin kurulmasýnda hata oluþtu
+do_title=Paketi Kur
+do_efailed=Kurulum hatasý: $1
+do_efailedmsg1=Tekrar kurulum için bir önceki sayfaya geri dönüp farkl kurulum seçenekleri seçmelisiniz.
+do_efailedmsg2=Olmazsa, disk alaný açmak için <a href='$1'>geçici paket dosyalarýný silmek için burayý týklayýnýz</a>
+do_success=$1 paketi baþarýyla kuruldu
+do_details=Pakey Ayrýntýlarý
+do_desc=Açýklama
+do_class=Sýnýf
+do_pack=Paket
+do_ver=Sürüm
+do_vend=Kurum
+do_arch=Mimari
+do_inst=Kuruldu
+do_none=Hiçbiri
+do_files=Paket dosyalarý
+
+pkgadd_root=Kök dizini
+pkgadd_eroot=Root dizini '$1' mevcut deðil
+pkgadd_unknown=Bilinmeyen
+
+rpm_upgrade=Paketleri güncelle?
+rpm_replacepkgs=Paketleri üstüne yaz?
+rpm_nodeps=Gereklileri yoksay?
+rpm_oldpackage=Yni sürümünü eskisiyle deðiþtir?
+rpm_noscripts=Kurulum programcýklarýný çalýþtýr?
+rpm_excludedocs=Dökümantasyon kurulsun?
+rpm_replacefiles=Dosyalarý üzerine yaz?
+rpm_root=Root dizini
+rpm_eroot=Root dizini $1 mevcut deðil
+
+bsd_unknown=Bilinmeyen
+bsd_scripts=Ön ve arka kurulum programcýklarýný çalýþtýr?
+bsd_force=Önceden gerekli olan dosyalar yok ise yine de kurulsun?
+
+slack_unclass=Diðeri
+slack_unknown=Bilinmeyen
+slack_missing=Kayýp
+slack_root=Root dizini
+slack_eroot=Kayýp ya da yanlýþ root dizini
+
+debian_unknown=Bilinmeyen
+debian_depends=Baðýmlýlýk sorunlarýný yoksay?
+debian_conflicts=Paket çakýþmalarýný yoksay?
+debian_overwrite=Diðer paketlerin dosyalarýný üzerine yaz?
+debian_downgrade=Eskisini daha yenisiyle deðiþtir?
+
+log_install_package=$1 paketi kuruldu
+log_delete=$1 paketi kaldýrýldý
+

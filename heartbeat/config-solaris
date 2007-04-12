@@ -1,0 +1,7 @@
+ha_dir=/opt/etc/ha.d
+pid_file=/opt/run/heartbeat.pid
+start_cmd=/etc/init.d/heartbeat start
+apply_cmd=/etc/init.d/heartbeat reload
+serials=tty[a-z]
+req_resource_cmd=/usr/lib/heartbeat/req_resource
+heartbeat=/usr/lib/heartbeat/heartbeat

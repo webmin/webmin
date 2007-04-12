@@ -1,0 +1,16 @@
+<header>Running Processes - Memory View</header>
+
+This page shows all running processes, ranked by memory used. For each process
+the PID, owner, size in kB and command are displayed. Click on the PID to
+display more information about a running process. <p>
+
+This view can be useful for finding which commands are using excessive amounts
+of memory on your system. However, memory use can be misleadingly high for
+processes like the X server which may include mapped frame buffers in
+their memory utilization. Multiple instances of the same process (such as
+<tt>httpd</tt> or <tt>bash</tt>) share much of their memory, making their
+total utilization appear higher than it really is. <p>
+
+<include overview>
+<hr>
+

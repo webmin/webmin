@@ -1,0 +1,242 @@
+index_title=PAM 昔装
+index_name=辞搾什
+index_desc=竺誤
+index_add=歯 PAM 辞搾什 蓄亜
+index_return=辞搾什 鯉系
+index_none=獣什奴 巨刑塘軒 $1拭 PAM 姥失 督析戚 蒸柔艦陥. PAM戚 走据鞠走 省暗蟹 <a href='$2'>乞汲 姥失</a>戚 舛溌馬走 省聖 呪 赤柔艦陥.
+
+desc_su=紫遂切 穿発
+desc_login=稽鎮 暁澗 据維 稽益昔
+desc_samba=誌郊 据亀酔 督析 辞獄
+desc_imap=IMAP 五析 辞獄
+desc_pop=POP 五析 辞獄
+desc_kde=KDE 稽益昔
+desc_rexec=据維 叔楳 辞獄
+desc_rlogin=据維 稽益昔 辞獄
+desc_rsh=据維 秋 辞獄
+desc_passwd=鳶什趨球 痕井
+desc_chfn=finger 舛左 痕井
+desc_chsh=秋 痕井
+desc_ftp=督析 穿勺 辞獄
+desc_ftpd=督析 穿勺 辞獄
+desc_wu-ftpd=WuFTPd 督析 穿勺 辞獄
+desc_xscreensaver=鉢檎 左硲奄
+desc_other=奄展 辞搾什
+desc_netatalk.pamd=$desc_netatalk
+desc_netatalk=Netatalk Apple 督析 辞獄
+desc_webmin=Webmin 瀬 辞獄
+desc_xdm=稽鎮 暁澗 据維 X 稽益昔
+desc_gdm=Gnome X 稽益昔
+desc_linuxconf=LinuxConf 稽益昔
+desc_linuxconf-pair=LinuxConf 蓄亜 稽益昔
+desc_linuxconf-auth=LinuxConf 昔装
+desc_xlock=鉢檎 節榎
+desc_vlock=亜雌 嬬車 節榎
+desc_kbdrate=徹左球 紗亀 薦嬢
+desc_halt=獣什奴 誇茶
+desc_poweroff=獣什奴 穿据 塊奄
+desc_reboot=獣什奴 仙採特
+desc_shutdown=獣什奴 曽戟
+desc_mcserv=Midnight commander
+desc_kppp=KDE PPP 適虞戚情闘 亀姥
+desc_xserver=X11 辞獄
+desc_gnorpm-auth=Gnome RPM 亀姥
+desc_kpackage=KDE RPM 亀姥
+desc_ppp=PPP 巨胡 稽益昔
+desc_rp3-config=Redhat PPP 適虞戚情闘 亀姥
+desc_up2date=Redhat 軒勘什 穣汽戚闘 拭戚穿闘
+desc_up2date-config=Redhat 軒勘什 穣汽戚闘 姥失
+desc_sudo=薦廃吉 root 誤敬 叔楳
+desc_httpd=瀬 辞獄
+desc_qpop=POP 五析 辞獄
+desc_sshd=SSH 稽益昔
+desc_squid=Squid 覗系獣 辞獄
+desc_bindconf=Redhat BIND 姥失 亀姥
+desc_apacheconf=Redhat Apache 姥失 亀姥
+desc_adsl-config=Redhat ADSL 姥失 亀姥
+desc_internet-config=Redhat 昔斗掛 姥失 亀姥
+desc_isdn-config=Redhat ISDN 姥失 亀姥
+desc_kontrol-panel=Redhat KDE 薦嬢毒
+desc_kscreensaver=KDE 鉢檎 左硲奄
+desc_printconf-gui=Redhat 覗鍵斗 姥失 亀姥
+desc_rhn_register=Redhat 革闘趨滴 去系
+desc_system-auth=因搭 昔装
+
+edit_title=PAM 辞搾什 畷増
+edit_header=PAM 辞搾什 舛左
+edit_name=辞搾什 戚硯
+edit_header_auth=昔装 舘域
+edit_header_account=域舛 溌昔 舘域
+edit_header_session=室芝 竺舛 舘域
+edit_header_password=鳶什趨球 痕井 舘域
+edit_mod=PAM 乞汲
+edit_desc=竺誤
+edit_args=古鯵 痕呪
+edit_addmod=陥製拭 企廃 舘域 蓄亜:
+edit_control=叔鳶 呪層
+edit_none=戚 舘域拭 走舛吉 PAM 乞汲 蒸製
+edit_delete=PAM 辞搾什 肢薦
+edit_move=戚疑
+edit_return=PAM 辞搾什
+
+pam_pwdb.so=政莞什 鳶什趨球 昔装
+pam_securetty.so=root税 左照 TTY 伊紫
+pam_nologin.so=<tt>/etc/nologin</tt> 督析 伊紫
+pam_mail.so=歯 五析 硝顕
+pam_lastlog.so=置曽 稽益昔 硝顕
+pam_rootok.so=<tt>root</tt> 紫遂切幻 伊紫
+pam_cracklib.so=悪径廃 鳶什趨球 伊紫
+pam_access.so=羨悦 薦嬢 督析 伊紫
+pam_deny.so=牌雌 羨悦 暗採
+pam_env.so=発井 痕呪 竺舛
+pam_ftp.so=FTP 昔装 伊紫
+pam_time.so=稽益昔 獣娃 伊紫
+pam_group.so=益血 姥失据 竺舛
+pam_listfile.so=督析 鎧遂 伊紫
+pam_limits.so=軒社什 薦廃 竺舛
+pam_mkhomedir.so=幡 巨刑塘軒 拙失
+pam_motd.so=神潅税 五獣走 督析 妊獣
+pam_permit.so=牌雌 羨悦 買遂
+pam_radius.so=RADIUS 辞獄 昔装
+pam_rhosts.so=<tt>.rhosts</tt> 督析 伊紫
+pam_rhosts_auth.so=<tt>.rhosts</tt> 督析 伊紫
+pam_shells.so=政反廃 秋 伊紫
+pam_unix.so=奄糎 政莞什 鳶什趨球 昔装
+pam_userdb.so=DBM 督析 鳶什趨球 昔装
+pam_warn.so=井壱 稽益
+pam_wheel.so=<tt>wheel</tt> 益血 伊紫
+pam_issue.so=<tt>/etc/issue</tt> 督析 妊獣
+pam_ldap.so=LDAP 辞獄 昔装
+pam_unix_auth.so=政莞什 鳶什趨球 昔装
+pam_unix_sess.so=政莞什 室芝 竺舛
+pam_unix_session.so=政莞什 室芝 竺舛
+pam_unix_acct.so=政莞什 域舛 溌昔
+pam_unix_passwd.so=政莞什 鳶什趨球 痕井
+pam_stress.so=誓遂 覗稽益轡 什闘傾什 砺什闘
+pam_tally.so=叔鳶廃 稽益昔 獣亀 蓄旋
+pam_passwd+.so=鳶什趨球 悪亀 伊紫
+pam_filter.so=脊/窒径 琶斗
+pam_desgold.so=DESGold 什原闘朝球 昔装
+pam_console.so=嬬車幻 伊紫
+pam_xauth.so=X 昔装
+pam_stack.so=陥献 PAM 辞搾什 硲窒
+
+control_requisite=琶推
+control_required=琶呪
+control_sufficient=中歳
+control_optional=識澱旋
+control_desc_requisite=叔鳶 獣 聡獣 昔装 叔鳶
+control_desc_required=叔鳶 獣 原走厳 舘域拭辞 昔装 叔鳶
+control_desc_sufficient=失因 獣 聡獣 昔装 失因
+control_desc_optional=失因 暁澗 叔鳶 巷獣
+
+create_title=PAM 辞搾什 拙失
+create_header=歯 PAM 辞搾什 辛芝
+create_name=辞搾什 戚硯
+create_desc=竺誤
+create_mods=段奄 PAM 乞汲
+create_0=蒸製
+create_1=政莞什 昔装
+create_2=乞窮 羨悦 暗採
+
+mod_edit=PAM 乞汲 畷増
+mod_create=PAM 乞汲 蓄亜
+mod_header=PAM 乞汲 辛芝
+mod_name=辞搾什 戚硯
+mod_mod=PAM 乞汲
+mod_type=辞搾什拭辞 紫遂
+mod_type_auth=昔装
+mod_type_account=域舛 溌昔
+mod_type_session=室芝 竺舛
+mod_type_password=鳶什趨球 痕井
+mod_control=叔鳶 呪層
+mod_args=乞汲 昔呪
+mod_err=乞汲聖 煽舌馬走 公梅柔艦陥
+
+pwdb_shadow=拾亀酔 鳶什趨球 督析聖 紫遂杯艦猿?
+pwdb_nullok=確 鳶什趨球研 呪喰杯艦猿?
+pwdb_md5=MD5 章硲鉢吉 鳶什趨球研 紫遂杯艦猿?
+pwdb_nodelay=稽益昔 叔鳶 板 走尻杯艦猿?
+
+listfile_item=督析 伊事 奄層
+listfile_item_user=紫遂切 戚硯
+listfile_item_tty=TTY
+listfile_item_rhost=据維 硲什闘 戚硯
+listfile_item_ruser=据維 紫遂切 戚硯
+listfile_item_group=益血
+listfile_item_shell=秋
+listfile_sense=督析拭辞 達精 井酔
+listfile_file=伊事拝 督析
+listfile_onerr=督析 神嫌 獣
+listfile_fail=叔鳶
+listfile_succeed=失因
+listfile_apply=伊紫 企雌
+listfile_all=乞窮 紫遂切
+listfile_user=紫遂切幻
+listfile_group=益血幻
+
+cracklib_type=覗繋覗闘税 鳶什趨球 政莫
+cracklib_retry=叔鳶 穿 置企 仙獣亀 判呪
+cracklib_eretry=蒸暗蟹 設公吉 仙獣亀 判呪
+cracklib_etype=蒸暗蟹 設公吉 鳶什趨球 政莫
+
+rhosts_equiv=<tt>/etc/hosts.equiv</tt> 督析聖 石柔艦猿?
+rhosts_rhosts=紫遂切税 <tt>.rhosts</tt> 督析聖 石柔艦猿?
+rhosts_promiscuous=乞窮 硲什闘税 <tt>+</tt> 脊径聖 買遂杯艦猿?
+rhosts_suppress=昔装 叔鳶研 稽益杯艦猿?
+
+env_var=痕呪 戚硯
+env_def=奄沙葵
+env_over=企端葵
+env_evar=痕呪 戚硯拭澗 因拷聖 隔聖 呪 蒸柔艦陥
+
+securetty_ttys=左照 TTY
+
+shells_shells=政反廃 紫遂切 秋
+
+tally_deny=羨悦 暗採 穿 叔鳶 獣亀 判呪
+tally_reset=失因 獣 叔鳶 朝錘闘 仙竺舛
+tally_edeny=蒸暗蟹 設公吉 叔鳶 獣亀 判呪
+tally_magic=<tt>root</tt>拭 叔鳶 朝錘闘研 旋遂杯艦猿?
+tally_root=<tt>root</tt> 域舛戚 暗採吃 呪 赤柔艦猿?
+
+time_services=辞搾什
+time_ttys=TTY
+time_users=紫遂切
+time_times=羨悦 獣娃
+time_info=乞窮 琶球拭 食君 鯵税 葵(唖 葵精 |稽 姥歳)戚 匂敗吃 呪 赤生悟, 葵精 人析球朝球 *蟹 negagor !研 紫遂拝 呪 赤柔艦陥.
+
+group_services=辞搾什
+group_ttys=TTY
+group_users=紫遂切
+group_times=羨悦 獣娃
+group_groups=益血 蓄亜
+group_info=乞窮 琶球拭 食君 鯵税 葵(唖 葵精 |稽 姥歳)戚 匂敗吃 呪 赤生悟, 葵精 人析球朝球 *蟹 negagor !研 紫遂拝 呪 赤柔艦陥.
+
+wheel_group=益血 姥失据 伊紫
+wheel_group_def=奄沙葵(<tt>wheel</tt> 暁澗 GID 0)
+wheel_trust=益血 姥失据拭 企廃 蓄亜 昔装聖 持繰杯艦猿?
+wheel_deny=益血 姥失据聖 買遂馬走 省壱 暗採杯艦猿?
+wheel_egroup=蒸暗蟹 設公吉 益血 戚硯
+
+motd_file=妊獣拝 督析
+motd_file_def=奄沙葵(<tt>/etc/motd</tt>)
+motd_efile=蒸暗蟹 設公吉 督析 戚硯
+
+mail_nopen=稽益昔拝 凶 五析 硝顕聖 妊獣杯艦猿?
+mail_close=稽益焼数拝 凶 五析 硝顕聖 妊獣杯艦猿?
+mail_empty=五析 督析戚 搾檎 硝験艦猿?
+mail_noenv=$MAIL 発井 痕呪研 竺舛杯艦猿?
+mail_dir=五析 什熱 巨刑塘軒
+mail_edir=蒸暗蟹 設公吉 五析 什熱 巨刑塘軒
+
+stack_service=PAM 辞搾什拭 端滴紳 穿含
+
+log_pam_create=PAM 辞搾什 $1 拙失喫
+log_pam_delete=PAM 辞搾什 $1 肢薦喫
+log_mod_create=辞搾什 $2拭 PAM 乞汲 $1 蓄亜喫
+log_mod_modify=辞搾什 $2税 PAM 乞汲 $1 呪舛喫
+log_mod_delete=辞搾什 $2拭辞 PAM 乞汲 $1 肢薦喫
+log_mod_move=辞搾什 $3拭 PAM 乞汲 什尋喫
+log_mod_move_l=辞搾什 $3税 PAM 乞汲 $1 貢 $2 什尋喫
+

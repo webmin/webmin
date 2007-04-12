@@ -1,0 +1,33 @@
+---- Changes since 1.130 ----
+Improved the code for finding the openssl program for generating certificates.
+Added the ability to restrict allowed Unix users who can login as Webmin users.
+---- Changes since 1.150 ----
+Added a Module Config option for an alternate user and group list display, which takes up less space on systems with a large number of Webmin users.
+---- Changes since 1.160 ----
+When editing a Webmin user or group, modules are now displayed under category headings.
+---- Changes since 1.170 ----
+Added a button to the user editing page for switching the current Webmin login to that user, without needing to know his password.
+---- Changes since 1.180 ----
+Added module hiding button to the group page, as in the user page.
+---- Changes since 1.190 ----
+Users and groups can now be backed up using the Backup Configuration Files module.
+---- Changes since 1.200 ----
+Users and groups with the same name can now be created. Internally, Webmin now uses .gacl files instead of .acl to store group ACL settings.
+---- Changes since 1.210 ----
+Enhanced the  Unix User Authentication page to allow different access to be granted to different users and group members.
+---- Changes since 1.220 ----
+Users can now be temporarily locked without their passwords being lost.
+---- Changes since 1.230 ----
+CIDR-format network addresses can now be used in the IP access control field.
+The inactivity logout time can now be set on a per-Webmin user basis, rather than the global setting in the Webmin Configuration module applying to all users.
+---- Changes since 1.250 ----
+Added checkboxes and buttons on the module's main page for deleting several users and groups at once.
+Webmin users created and managed by other modules can be marked as non-editable, to prevent them from being edited when any changes would be over-written.
+The IP addresses of connected users are displayed on the sessions page.
+---- Changes since 1.260 ----
+Added the ability to control which hours of the day and days of the week a Webmin user can login.
+---- Changes since 1.290 ----
+Added an option on the Unix User Authentication page to allow Unix users who can sudo to root to login to Webmin with root privileges.
+Added an option to the Unix User Authentication that lets users who pass PAM validation but have no Unix or Webmin account login as a selected Webmin user.
+---- Changes since 1.330 ----
+When a group is deleted, sub-groups are also removed, and the group is removed from any parents.

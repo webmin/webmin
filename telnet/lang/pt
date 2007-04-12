@@ -1,0 +1,4 @@
+index_title=Login via SSH/Telnet
+index_warn=Aviso! Esta sessão de telnet <b>não</b> está encriptada.
+index_nojava=Este módulo necessita de java para funcionar, mas o seu navegador não o suporta
+index_credits=Applet desenvolvido sobre GPL por <a href='$1'>Matthias L. Jugel &amp; Marcus Meißner</a>.

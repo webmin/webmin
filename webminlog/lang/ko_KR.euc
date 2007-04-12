@@ -1,0 +1,55 @@
+index_title=Webmin 동작 로그
+index_header=Webmin 로그에서 동작 검색..
+index_uall=임의 사용자별
+index_user=사용자별
+index_mall=임의 모듈에서
+index_module=모듈에서
+index_tall=언제든지
+index_today=오늘만
+index_time=$1 및 $2 사이
+index_search=검색
+index_return=검색 양식
+index_nolog=<b>참고</b> - <a href='$1'>Webmin에 로깅</a>이 현재 사용 불능으로 설정되어 있으므로 동작 로그를 검색해도 결과가 생성되지 않습니다.
+index_nologfiles=<b>참고</b> - <a href='$1'>파일 변경 내용 로그</a>가 현재 사용 불능으로 설정되어 있으므로 로그된 동작의 정보에는 변경된 파일이나 실행된 명령이 포함되지 않습니다.
+
+search_title=검색 결과
+search_date=날짜
+search_time=시간
+search_user=사용자
+search_host=클라이언트 주소
+search_module=모듈
+search_action=동작
+search_none=검색 조건에 맞는 동작이 없습니다.
+search_return=검색 결과
+search_sid=세션 $2에서 사용자 $1에 의한 동작
+search_critall=로그된 모든 동작
+search_crit=로그된 동작
+search_critu=사용자 $1에 의한
+search_critm=모듈 $1에서
+search_critt=$1 및 $2 사이
+search_critt2=$1에서
+search_config=모듈 구성 변경됨
+
+view_title=동작 정보
+view_header=로깅된 동작 $1의 정보
+view_action=설명
+view_module=Webmin 모듈
+view_script=스크립트로 생성됨
+view_user=Webmin 사용자
+view_ip=클라이언트 IP 또는 호스트 이름
+view_sid=세션 ID
+view_time=날짜 및 시간
+view_nofiles=이 동작에 대해 로그된 구성 파일 변경 내용이 없습니다
+view_type_create=파일 $1 작성됨
+view_type_modify=파일 $1 변경됨
+view_type_delete=파일 $1 삭제됨
+view_type_exec=명령 실행됨
+view_type_sql=데이터베이스 $1에서 SQL 문 실행됨
+view_type_kill=PID $2에 신호 $1 전송됨
+view_type_symlink=심볼릭 링크 $1 -&gt; $2 작성됨
+view_type_unsymlink=심볼릭 링크 $1 -&gt; $2 삭제됨
+view_type_resymlink=심볼릭 링크 $1 -&gt; $2 수정됨
+view_type_mkdir=디렉토리 $1 작성됨
+view_type_rmdir=디렉토리 $1 제거됨
+view_type_rename=이름이 $1에서 $1(으)로 바뀜
+

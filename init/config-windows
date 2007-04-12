@@ -1,0 +1,6 @@
+reboot_command=shutdown.exe -r -t 1 -f
+shutdown_command=shutdown.exe -s -t 1 -f
+status_check=0
+order=0
+sort_mode=0
+no_chkconfig=0

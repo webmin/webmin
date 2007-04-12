@@ -1,0 +1,6 @@
+line1=Konfigurerbare indstillinger,11
+display=Bruger og gruppe visnings mode,1,1-Kun navne,0-Navne og moduler
+select=Vis brugermoduler i,1.0-Tabel,1-Pulldown menu
+order=Sorter brugere og grupper ved,1.0-Sortering i fil,1-Navn
+line2=Systemkonfiguration,11
+ssleay=Sti til openssl eller ssleay progarm,3,Automatisk

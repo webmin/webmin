@@ -1,0 +1,22 @@
+<header>SMTP server response on fqdn violation</header>
+
+<center><tt>non_fqdn_reject_code</tt></center>
+<hr>
+
+This parameter specifies the SMTP server response code when a mail violates the
+<tt>reject_non_fqdn_hostname</tt> or <tt>reject_non_fqdn_sender</tt>
+or <tt>reject_non_fqdn_recipient</tt> rule that are:<br>
+<i>Access denied: Invalid domain for client HELO hostname, sender or recipient email address (not FQDN)</i><br>
+<br>
+Note that the postfix default value used for <tt>non_fqdn_reject_code</tt> is
+code 504, and this code in 'standard RFC 822' should means
+'Command parameter not implemented'.
+So with Postfix, a <tt>non_fqdn_reject_code</tt> rule violation does not reflect exactly
+the RFC822 explanation of reported code.<br>
+<p>
+To avoid confusion, you can change this to 578 for example, otherwise, do not change
+this unless you have a complete understanding of RFC 822.
+</p>
+
+
+<hr>

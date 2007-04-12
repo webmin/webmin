@@ -1,0 +1,28 @@
+<header>Portar och nätverk</header>
+
+<b>Proxy-port</b>: Standardvärdet är 3128. Här anges den port som Squid-servern
+ska lyssna efter http-förfrågningar på. Klientbrowsers måste ställas in att
+koppla upp sig mot en proxy på denna port, och/eller så måste Squid köras
+transparent.
+
+<p><b>ICP-port</b>: Det portnummer som Squid skickar och tar emot
+ICP-uppslagningar från närliggande cacher på. Standardport är 3130. För att
+slå av detta anges "0". Variabeln kan också slås ut av -u på kommandoraden.
+
+<p><b>Utgående TCP-adress</b>: Standardinställningen är ingen. Anger den
+HTTP-socket som gör uppkopplingar mot andra servrar och cacher.
+
+<p><b>Inkommande TCP-adress</b>: Standardinställningen är ingen. Anger den
+HTTP-socket som tar emot uppkopplingar från klienter och andra cacher.
+
+<p><b>Utgående UDP-adress</b>: Standardinställningen är ingen. Anger den
+ICP-socket som tar emot paket från andra cacher.
+
+<p><b>Inkommande UDP-adress</b>: Standardinställningen är ingen. Anger den
+socket som skickar ICP-paket till andra cacher.
+
+<p><b>TCP-mottagningsbuffer</b>: Storleken på TCP-buffern. Standardvärdet är
+operativsystemets mottagningsbuffer.
+
+<hr>
+

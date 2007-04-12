@@ -1,0 +1,10 @@
+squid_conf=squid 配置文件的全路径,0
+squid_start=启动 squid的命令,3,自动
+squid_stop=停止 stop squid 的命令,3,自动
+squid_path=Squid 可执行,0
+pid_file=PID 文件的全路径,0
+cache_dir=squid缓冲目录的全路径,0
+cachemgr_path=Squid cachemgr.cgi 可执行,0
+log_dir=日志目录的全路径,0
+calamaris=到达 calamaris 日志分析程序的路径,3,没有安装
+cal_max=传递给  calamaris 的最大日志行数,3,无限

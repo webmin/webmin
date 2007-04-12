@@ -1,0 +1,40 @@
+<header>Begränsningar för avsändaradresser</header>
+
+<center><tt>smtpd_sender_restrictions</tt></center>
+<hr>
+
+Denna parameter anger valbara begränsningar för de avsändaradresser
+SMTP-klienter kan skicka i MAIL FROM-kommandon.
+
+<p>Standard är att släppa fram alla avsändaradresser. Följande begränsningar
+är möjliga:
+
+<ul>
+<li><tt>permit_mynetworks:</tt> släpp fram om klientens adress matchar
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>reject_unknown_client:</tt> spärra om klientens datornamn är okänt.
+<li><tt>reject_maps_rbl:</tt> spärra om klienten finns uppräknad under
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject_invalid_hostname:</tt> spärra HELO-datornamn med felaktig syntax.
+<li><tt>reject_unknown_hostname:</tt> spärra HELO-datornamn utan någon DNS A- eller MX-post.
+<li><tt>reject_unknown_sender_domain:</tt> spärra avsändardomäner utan A- eller MX-post.
+<li><tt>check_sender_access maptype:mapname:</tt> slå upp avsändaradress, föräldradomän eller lokal del@.
+    	Spärra om resultatet blir REJECT eller &quot;[45]xx text&quot;
+    	Släpp fram annars.
+<li><tt>check_client_access maptype:mapname:</tt> se
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li><tt>check_helo_access maptype:mapname:</tt> se
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li><tt>reject_non_fqdn_hostname:</tt> spärra HELO-datornamn som inte är på FQDN-form.
+<li><tt>reject_non_fqdn_sender:</tt> spärra avsändaradresser som inte är på FQDN-form.
+<li><tt>reject:</tt> spärra. Sätt denna begränsning sist i begränsningslistan.
+<li><tt>permit:</tt> släpp fram. Sätt denna begränsning sist i begränsningslistan.
+</ul>
+
+Begränsningar görs i angiven ordning; den första begränsning som passar in
+används.
+
+<p>Ange en lista med begränsningar, separerade med kommatecken och/eller
+blanksteg. Långa rader görs genom att nästa rad börjas med ett blanksteg.
+
+<hr>

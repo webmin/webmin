@@ -1,0 +1,118 @@
+index_title=Voicemail Server
+index_ecmd=The Vgetty command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_econfig=The Vgetty config file $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+index_return=voicemail index
+
+vgetty_title=Serial Port Configuration
+vgetty_desc=For your server to answer voice calls with a modem connected to a serial port, it must be listed below. When you add a port to this list, the $1 program will be configured to answer calls and play a message.
+vgetty_add=Add a new serial port
+vgetty_tty=Serial device
+vgetty_type=Type
+vgetty_vgetty=Voice
+vgetty_mgetty=Data/fax
+vgetty_none=No serial ports have been configured for voicemail yet.
+vgetty_apply=Apply Configuration
+vgetty_applydesc=Click this button to apply the current voicemail server configuration by running the command $1 and killing all Vgetty processes.
+vgetty_applyerr=Failed to apply configuration
+vgetty_return=serial port list
+vgetty_create=Add Serial Port
+vgetty_edit=Edit Serial Port
+vgetty_header=Serial port configuration options
+vgetty_ts=Serial port $1
+vgetty_other=Other device..
+vgetty_rings=Rings before answering
+vgetty_default=Global default
+vgetty_ans=Answer mode
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Voice
+vgetty_ans_fax=Fax
+vgetty_ans_data=Data
+vgetty_err=Failed to save serial port
+vgetty_etty=Missing or non-existant serial device
+vgetty_erings=Missing or invalid number of rings
+vgetty_erings2=Number of rings must be at least 2
+vgetty_eans=No answer modes selected
+vgetty_eclash=The serial port $1 is already in use
+
+options_title=Voicemail Server Options
+options_header=Options for all serial ports
+options_maxlen=Maximum message length
+options_secs=seconds
+options_minlen=Minimum message length
+options_silence=Remove silence from end of messages?
+options_thresh=Silence threshold level
+options_rgain=Recording volume level
+options_tgain=Playback volume level
+options_rings=Rings before answering
+options_perport=Can be set for each serial port
+options_ans=Answer mode
+options_keep=Keep messages containing data or DTMF codes?
+options_light=Enable auto-answer light after receiving?
+options_owner=Unix owner for message files
+options_group=Unix group for message files
+options_mode=Permissions for message files
+options_prog=After recording message
+options_prog0=Do nothing
+options_prog1=Email in WAV format to
+options_prog2=Run command on message file
+options_err=Failed to save voicemail options
+options_erings=Missing or invalid number of rings
+options_erings2=Number of rings must be at least 2
+options_emaxlen=Missing or invalid maximum message length
+options_eminlen=Missing or invalid minimum message length
+options_ethresh=Missing or invalid silence threshold
+options_ergain=Missing or invalid recording volume level
+options_ergain2=Recording volume level must be between 0 and 100
+options_etgain=Missing or invalid playback volume level
+options_etgain2=Playback volume level must be between 0 and 100
+options_eemail=Missing or invalid email address
+options_eprog=Missing or non-existant program to run
+options_eowner=Missing or invalid Unix user for message files
+options_egroup=Missing or invalid Unix group for message files
+options_emode=Missing or invalid octal permissions for message files
+
+received_title=Received Messages
+recieved_desc=Voicemail messages that have been received by your server are listed below. To listen to a message, click on the date/time in the first column.
+received_none=No received voicemail messages were found.
+received_date=Received at
+received_size=File size
+received_speed=Sample rate
+received_type=Audio format
+received_delete=Delete selected messages
+received_move=Convert selected to greetings
+received_all=Select all
+received_invert=Invert selection
+
+listen_efile=Invalid message filename!
+listen_epath=Voicemail message no longer exists
+
+delete_efile=Invalid message filename! 
+
+messages_title=Greeting Messages
+messages_desc=This page lists greeting messages that will be played when a caller connects to your voicemail server. If you have more that one, a single randomly chosen message will be used.
+messages_file=Filename
+messages_none=No greeting messages are available.
+messages_updesc=This form allows you to upload an additional greeting message WAV file, which will be converted to the chosen format for use by your modem. The sample rate of the uploaded WAV should be the same as the sample rate of received messages, as should the selected format.
+messages_upload=Upload message
+messages_fmt=convert to
+
+pvfdesc=$1, $2 bits
+
+upload_err=Failed to add message
+upload_emessage=No WAV file selected
+upload_ewav=Failed to convert WAV file : $1
+upload_epvf=Failed to create RMD file : $1
+upload_esame=The message file $1 already exists
+
+log_apply=Applied configuration
+log_upload=Uploaded greeting message $1
+log_move=Converted $1 received messages
+log_delete0=Deleted $1 received messages
+log_delete1=Deleted $1 greeting messages
+log_options=Changed voicemail options
+log_vgetty_create=Added serial port $1
+log_vgetty_modify=Modified serial port $1
+log_vgetty_delete=Deleted serial port $1
+
+email_subject=Voicemail message
+email_body=Voicemail message received at $1 by $2.

@@ -1,0 +1,26 @@
+left_login=Login: $1
+left_home=System Information
+left_oc=Sponsored by OpenCountry
+left_feedback=Send Feedback
+
+right_header0=System Information
+right_host=System hostname
+right_os=Operating system
+right_login=Logged in as
+right_from=Logged in from
+right_webmin=Webmin version
+right_usermin=Usermin Version
+right_cpu=CPU load averages
+right_load=$1 (1 min) $2 (5 mins) $3 (15 mins)
+right_real=Real memory
+right_virt=Virtual memory
+right_procs=Running processes
+right_disk=Local disk space
+right_used=$1 total, $2 used
+right_out=$1&nbsp;of&nbsp;$2
+right_quota=Disk usage and quota
+right_header5=Account Information
+right_uquota=Disk quota and usage
+right_time=Time on server
+
+

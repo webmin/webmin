@@ -1,0 +1,51 @@
+<header>Subsistema ACL DHCPd</header>
+
+<h3>OBJECTIUS:</h3>
+El principal objectiu del sistema ACL és el de subministrar un mecanisme
+de control d'accés potent, flexible i extensible per a diferents objectes
+de la configuració DHCPd. Aquests objectes són xarxes compartides, subxarxes,
+grups de hosts i hosts. <p>
+
+El subsistema ACL també permet controlar algunes altres característiques,
+tals com: noms únics d'objectes, aplicació de la configuració modificada,
+i visualització i edició de <i>leases</i> DHCP. <p>
+
+<hr>CONCEPTES:</h3>
+Podem veure el fitxer de configuració DHCPd com una estructura d'arbre.
+Cada node d'aquest arbre representa la configuració d'un objecte DHCP
+diferent (fig. 0).<p>
+
+El subsistema ACL suporta dos nivells de permisos:
+
+<ul>
+<li>global: lectura, escriptura, creació.</li>
+<li>per objecte: lectura, escriptura.</li>
+</ul>
+
+Existeixen permisos globals per a cada tipus d'objecte
+(hosts, grups, subxarxes, xarxes compartides) i controlen les
+operacions d'un conjunt sencer d'un tipus donat.
+<ul type=circle>
+<li>Creació global</li>
+<li>Lectura global</li>
+<li>Escriptura global</li>
+</ul>
+Els permisos per objecte donen una forma més flexible de control d'accés.
+Existeixen permisos acl per objecte per cada objecte individual.
+Per ara, només estan implementades les acls per objecte de hosts i subxarxes.
+<ul type=circle>
+<li>Lectura per objecte</li>
+<li>Escriptura per objecte</li>
+</ul>
+
+El subsistema acl pot operar en 4 nivells diferents de seguretat (o modes).
+<p>
+
+<img SRC="images/ctree0.gif" ALT="arbre de configuració DHCPd, nivell de seguretat 0, comprovació de permisos subnetX" height=229 width=314>
+
+<img SRC="images/ctree1.gif" ALT="arbre de configuració DHCPd, nivell de seguretat 1, comprovació de permisos subnetX" height=229 width=314>
+
+<img SRC="images/ctree2.gif" ALT="arbre de configuració DHCPd, nivell de seguretat 2, comprovació de permisos subnetX" height=229 width=314>
+
+<img SRC="images/ctree3.gif" ALT="arbre de configuració DHCPd, nivell de seguretat 3, comprovació de permisos subnetX" height=229 width=314>
+

@@ -1,0 +1,20 @@
+Para cada usuario están disponibles los siguientes parámetros:
+<dl>
+<dt><b>Nombre de usuario</b>
+<dd>Para este campo, debes de digitar o un nombre específico de usuario o
+    seleccionar la opción de <tt>Usuario anónimo</tt>, del cual se
+    aplicarán los permisos a cualquier usuario que no esté en la lista de
+    <tt>Permisos de Usuario</tt>.<p>
+<dt><b>Clave de Acceso</b>
+<dd>La clave de acceso necesaria para este usuario cuando haga login. Si
+    <tt>Ninguna</tt>, no hace falta clave de acceso.<p>
+<dt><b>Máquinas</b>
+<dd>La dirección IP o nombre de máquina de la máquina desde la que este
+    usuario está autorizado a hacer login.
+    Este campo puede contener también una expresión SQL regular que coincida
+    con mútiples máquinas, como <tt>192.168.1.%</tt> o <tt>%.foo.com</tt>. <p>
+<dt><b>Permisos</b>
+<dd>Las operaciones MySQL que este usuario está autorizado a realizar en una
+    base de datos. <p>
+</ul>
+

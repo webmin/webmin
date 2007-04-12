@@ -1,0 +1,12 @@
+iface_perms=711
+gs_lib=/usr/X/lib/X11/fonts/Type1:/usr/X/lib/X11/fonts/Type3
+gs_fontpath=/usr/X/lib/X11/fonts/Type1/outline
+print_style=unixware
+gs_path=/usr/local/bin/gs
+smbclient_path=/usr/local/samba/bin/smbclient
+iface_arg=6
+driver_style=webmin
+show_status=0
+sort_mode=0
+display_mode=0
+show_jobs=0

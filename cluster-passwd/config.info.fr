@@ -1,0 +1,3 @@
+max_users=Nombre maximal d'utilisateurs à afficher,0
+input_type=Type de sélection des utilisateurs,1,1-Zone de liste,0-Champ texte
+sort_mode=Trier les utilisateurs par,1,0-Ordre dans le fichier,1-Par nom d'utilisateur

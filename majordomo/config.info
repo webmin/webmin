@@ -1,0 +1,10 @@
+line1=Configurable options,11
+dynamic=Use random number for list alias?,1,1-Yes,0-No
+sort_mode=Sort mailing lists by,1,1-Name,0-Order created
+perms=Permissions for majordomo files,1,1-User writable,0-User and group writable
+line2=System configuration,11
+majordomo_cf=Full path to majordomo config file,0
+program_dir=Directory containing majordomo programs,0
+wrapper_path=Path to majordomo wrapper,3,In programs directory
+aliases_file=Path to aliases file,10,postfix-Get from Postfix,-Get from Sendmail,Other file
+smrsh_program_dir=Directory containing sendmail safe programs,3,Anywhere

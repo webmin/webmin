@@ -1,0 +1,25 @@
+<header>Ograniczyæ przekazywanie poczty</header>
+
+<center><tt>relay_domains</tt></center>
+<hr>
+
+Ten parametr okre¶la od klientów z&nbsp;hostów z&nbsp;jakich domen (lub ich
+poddomen), a tak¿e do jakich domen docelowych (i&nbsp;ich poddomen)
+niniejszy system poczty bêdzie przekazywa³ pocztê. <p>
+
+<include relay_rules>
+<p>
+
+Podaj rozdzielon± przecinkami lub bia³ymi znakami listê hostów lub domen,
+wzorców <tt>/nazwa/pliku</tt> lub tabel przeszukiwañ <tt>rodzaj:nazwa</tt>.
+Nazwa pliku zostanie zast±piona jego zawarto¶ci±; dopasowanie do tabeli
+<tt>rodzaj:nazwa</tt> nastêpuje, gdy (nadrzêdna) domena wystêpuje jako kluch
+przeszukiwania. <p>
+
+UWAGA: Postfix postfiks nie bêdzie automatycznie przekazywaæ poczty dla
+domen, dla których ten system jest wymieniony jako ich podstawowy lub
+zapasowy host MX. Patrz te¿ ograniczenie <tt>permit_mx_backup</tt>
+w&nbsp;opisie parametru <a href=opt_smtpd_recipient_restrictions>
+<tt>smtpd_recipient_restrictions</tt></a>.
+
+<hr>

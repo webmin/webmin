@@ -1,0 +1,65 @@
+<header>Domeny wirtualne</header>
+
+Fakultatywna tabela domen wirtualnych okre¶la przekierowania lokalnych
+i&nbsp;zdalnych u¿ytkowników oraz domen. Przekierowania s± wykorzystywane
+przez demona cleanup(8). Przekierowania s± rekurencyjne. <p>
+
+Przekierowanie wirtualne dotyczy jedynie adresu nadawcy na "kopercie",
+i&nbsp;nie wp³ywa na nag³ówki. Traktuj je jak zbiór regu³ <tt>S0</tt>
+Sendmaila, je¶li chcesz. W&nbsp;ogólno¶ci, do przepisywania adresów
+w&nsbsp;nag³ówkach i&nbsp;na "kopercie" korzystaj
+z&nbsp;<a href=canonical>podstawieñ kanonicznych</a>.
+
+Typowa obs³uga domeny wirtualnej wygl±da nastêpuj±co:
+
+<ul>
+<li> <b><tt>domena.wirtualna</tt></b> podstawiane...
+<b><tt>cokolwiek</tt></b> (zawarto¶æ prawej strony nie ma znaczenia)
+<li> <b><tt>uzytkownik1@domena.wirtualna</tt></b> podstawiany...
+<b><tt>adres1</tt></b>
+<li> <b><tt>uzytkownik2@domena.wirtualna</tt></b> podstawiany...
+<b><tt>adres2, adres3</tt></b>
+</ul>
+
+Wówczas serwer SMTP przyjmuje pocztê skierowan± do <tt>domena.wirtualna</tt>
+a&nbsp;odrzuca skierowan± do <tt>nieznany@domena.wirtualna</tt> jako
+niedorêczaln±. <p>
+
+Format tabeli wirtualnej jest nastêpuj±cy (podstawienia s± wykonywane
+w&nbsp;poni¿szej kolejno¶ci):
+
+<ul>
+<li> <b><tt>uzytkownik@domena</tt></b> podstawiany... <b><tt>adres, adres,
+...</tt></b>: <br>
+Poczta skierowana do <tt>uzytkownik@domena</tt> jest kierowana do
+<tt>adres</tt>. Ta postaæ ma najwy¿szy priorytet.
+
+<li> <b><tt>uzytkownik</tt></b> podstawiany... <b><tt>adres, adres,
+...</tt></b>: <br>
+Poczta skierowana do <tt>uzytkownik@miejsce</tt> jest kierowana na
+<tt>adres</tt>, gdy <tt>miejsce</tt> jest to¿same z&nbsp;<tt>$myorigin</tt>,
+jest wymienione w¶ród <tt>$mydestination</tt> lub jest wymienione w¶ród
+<tt>$inet_interfaces</tt>. Ta funkcjonalno¶æ pokrywa siê z funkcjonalno¶ci±
+bazy <a href=aliases>aliasów lokalnych</a>. Ró¿nica polega na tym, ¿e
+podstawienia wirtualne mo¿na stosowaæ do adresów zdalnych.
+
+<li> <b><tt>@domena</tt></b> podstawiany... <b><tt>adres, adres,
+...</tt></b>: <br>
+Poczta skierowana do dowolnego u¿ytkownika w&nbsp;<tt>domena</tt> jest
+kierowana na <tt>adres</tt>. Ta postaæ ma najni¿szy priorytet.
+</ul>
+
+W&nbsp;powy¿szych podstawieniach, gdy adres ma postaæ <tt>@innadomena</tt>,
+wynikiem jest ten sam u¿ytkownik w&nbsp;<tt>innadomena</tt>. Dzia³a to
+jedynie dla pierwszego adresu w&nbsp;rozwiniêciu.<p>
+
+ROZSZERZENIA ADRESÓW: Gdy przeszukiwanie zakoñczy siê niepowodzeniem
+a&nbsp;lokalna czê¶æ adresu zawiera fakultatywny ogranicznik odbiorcy (np.
+<tt>uzytkownik+cos@domena</tt>), przeszukiwanie jest powtarzane dla
+nierozszerzonego adresu (np. <tt>uzytkownik@domena</tt>) i&nbsp;niepasuj±ce
+rozszerzenie jest przenoszone na wynik rozwiniêcia. Kolejno¶æ dopasowywania
+jest nastêpuj±ca: <tt>uzytkownik+cos@domena</tt>,
+<tt>uzytkownik@domena</tt>, <tt>uzytkownik+cos</tt>, <tt>uzytkownik</tt>
+oraz <tt>@domena</tt>.
+
+<hr>

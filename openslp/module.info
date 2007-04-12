@@ -1,0 +1,10 @@
+category=servers
+desc=OpenSLP Server
+name=OpenSLP
+desc_ru_SU=уЕТЧЕТ OpenSLP
+desc_ru_RU=Сервер OpenSLP
+desc_ca=Servidor OpenSLP
+longdesc=Configure the service location protocol server.
+desc_ms=Pelayan OpenSLP
+os_support=!windows
+library=slp-lib.pl

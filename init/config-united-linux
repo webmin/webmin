@@ -1,0 +1,16 @@
+soft_links=1
+show_opts=0
+init_base=/etc/init.d
+init_dir=/etc/init.d
+reboot_command=reboot
+shutdown_command=halt
+order_digits=2
+inittab_id=id
+expert=0
+desc=1
+status_check=0
+init_info=1
+order=0
+sort_mode=0
+boot_levels=2 3 5
+no_chkconfig=0

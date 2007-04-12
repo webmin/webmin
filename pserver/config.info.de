@@ -1,0 +1,4 @@
+cvs=Pfad zur ausf&uuml;hrbaren Datei cvs,0
+cvsroot=CVS Wurzel-Verzeichnis,7
+view_header=Header-Datei f&uuml;r Beh&auml;lteranzeige,0
+cvsenc=Zeichensatz f&uuml;r Beh&auml;lter-Datei,3,von Webmin Spracheinstellung

@@ -1,0 +1,10 @@
+dbs=*
+create=1
+delete=1
+stop=1
+perms=1
+bpath=/
+buser=root
+edonly=0
+indexes=1
+views=1

@@ -1,0 +1,75 @@
+index_title=Documentació del Sistema
+index_header=Recerca a la documentació del sistema
+index_for=Busca
+index_where=Busca a
+index_alldoc=Tota la documentació
+index_man=Pàgines del manual
+index_doc=Documentació dels paquets
+index_kernel=Documentació del kernel
+index_info=Pàgines info
+index_howto=Documents HOWTO
+index_kde=Documentació KDE
+index_perl=Documentació de mòduls Perl
+index_custom=Documentació personalitzada
+index_help=Ajuda de Webmin
+index_reset=Neteja
+index_search=Busca
+index_return=al formulari de recerca
+index_type=Busca coincidències a
+index_name=Només el nom
+index_data=Nom i continguts
+index_google=Motor de recerca Google
+index_others=En buscar documentació des d'un altre mòdul, permet buscar...
+index_other_man=Pàgines del manual
+index_other_help=Ajuda de Webmin
+index_other_doc=Documentació dels paquets
+index_other_kernel=Documentació del kernel
+index_other_howto=Documents HOWTO
+index_other_perl=Documentació de mòduls Perl
+index_other_google=Motor de recerca Google
+index_other_kde=Documentació KDE
+index_and=Busca-ho tot
+index_or=Busca'n qualsevol
+
+search_efor=No hi ha cap pàgina del manual
+search_title=Resultats de la Recerca
+search_desc=Descripció
+search_type=Tipus
+search_file=Pàgina o fitxer
+search_man=Pàgina del manual
+search_howto=Document HOWTO
+search_doc=Documentació de paquet
+search_kernel=Documentació del kernel
+search_kde=Documentació KDE
+search_perl=Mòdul Perl
+search_help=Ajuda de Webmin
+search_custom=Documentació personalitzada
+search_none=No s'ha trobat cap document que coincideixi amb $1.
+search_for=per a $1
+search_google=Resultats de la recerca Google
+
+howto_title=Document HOWTO
+howto_header=Fitxer $1 del document HOWTO
+howto_epath=Camí del document HOWTO invàlid
+
+doc_title=Documentació de Paquet
+doc_header=Fitxer $1 de documentació de paquet
+doc_epath=Camí de la documentació del paquet invàlid
+
+man_title=Pàgina del Manual
+man_header=Pàgina del manual de $1($2)
+man_noentry=La pàgina del manual de $1 no existeix!
+
+kernel_title=Documentació del Kernel
+kernel_header=Fitxer $i de la documentació del kernel
+kernel_epath=Camí de la documentació del kernel invàlid
+
+kde_title=Documentació KDE
+kde_header=Fitxer $1 de documentació KDE
+kde_epath=Camí de la documentació KDE invàlid
+
+perl_title=Mòdul Perl
+perl_header=Documentació del mòdul Perl $1
+perl_emod=Nom de mòdul Perl invàlid
+
+

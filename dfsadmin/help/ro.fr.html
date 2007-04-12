@@ -1,0 +1,27 @@
+<header>Accès Lecture Seule</header>
+
+Ceci détermine quels hôtes à l'accès en lecture seule sur ce partage.  Trois choix vous sont offert :
+<ul>
+<li><b>Aucun</b><br>
+    Aucun hôte ne peut avoir l'accès en lecture.
+<li><b>Tous les hôtes</b><br>
+    Tous les hôtes peuvent monter ce partage en lecture.  Si vous êtes connecté à Internet, ceci veut dire que n'importe qui dans le monde peut lire les fichiers du répertoire exporté.
+<li><b>Hôtes Listés</b><br>
+<if $gconfig{'os_version'} < 7>
+    Les hôtes listés ci-dessous peuvent monter ce partage en lecture seulement, les hôtes peuvent être spécifier de cette façon :<p>
+	<dl>
+	<dt><b>Nom d'hôte ou adresse IP</b> (comme <i>ftp.foo.com</i> ou <i>1.2.3.4</i>)
+	<dd>Correspond aux hôtes avec le nom ou l'adresse
+	<dt><b>Groupe réseau</b> (comme <i>enginering</i>)
+	<dd>Correspond à tout hôte qui sont membre de ce groupe réseau
+	<dt><b>Nom de domaine</b> (comme <i>.foo.com</i>)
+	<dd>Correspond à tout hôte dans ce domaine
+	<dt><b>Réseau</b> (comme <i>@10.254.1</i>)
+	<dd>Correspond de tout hôte dans ce réseau
+	<dt><b>Réseau/masque de sous-réseau</b> (comme <i>@10.254.1/24</i>)
+	<dd>Correspond à tous hôtes dans ce réseau
+	</dl><p>
+    De plus, toutes les notations ci-dessus peuvent commencer par un <i>-</i>, ce qui signifie que l'hôte, domaine ou réseau n'est pas autorisé à monter ce partage.  Ceci peut être utile pour accepter l'accès à une série d'hôte tout en le refusant à un membre.
+</if>
+</ul>
+<hr>

@@ -1,0 +1,16 @@
+<header>Timeout in seconds for SMTP transactions</header>
+
+<center><tt>opts_smtpd_timeout</tt></center>
+<hr>
+
+This parameter limits the time in seconds to send an SMTP server response and
+to receive an SMTP client request.
+
+<p>
+
+Note: if you set SMTP timeouts to large values you must update the
+<a href=opt_ipc_timeout><tt>ipc_timeout</tt></a> parameter as well, reachable
+from the <b>General Options</b> section.
+
+
+<hr>

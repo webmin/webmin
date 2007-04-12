@@ -1,0 +1,167 @@
+index_title=Servidor DHCP
+index_dhcpdnotfound=O servidor DHCP <i>$1</i> não foi encontrado no seu sistema. Poderá não estar instalado, ou a <a href="$2">configuração do módulo DHCP</a> está incorrecta.
+index_return=índex
+index_dhcpdver=O servidor DHCP <i>$1</i> não aparenta ser a versão correcta. O Webmin apenas suporta a versão 2 do ISC DHCPD.
+index_subtitle=Sub-redes e Redes Partilhadas
+index_nosubdef=Não foram definidas sub-redes ou redes partilhadas.
+index_addsub=Adicionar nova sub-rede
+index_addnet=Adicionar nova rede partilhada
+index_nomemb=Sem membros
+index_1memb=Membro 1
+index_234memb=$1 membros
+index_memb=$1 membros
+index_hst=Anfitriões e Grupos de Anfitrião
+index_nohst=Não foram definidos anfitriões ou grupos.
+index_addhst=Adicionar novo anfitrião
+index_addhstg=Adicionar novo grupo de anfitrião
+index_buttego=Editar Opções Gerais
+index_ego=Editar opções de DHCP que se apliquem a todas as sub-redes, redes partilhadas, anfitriões e grupos
+index_buttlal=Listar Concessões Activas
+index_lal=Listar concessões correntes deste servidor DHCP para atribuir endereços IP dinâmicamente.
+index_buttapply=Aplicar Alterações
+index_apply=Clique neste botão para aplicar a configuração actual ao servidor DHCP em execução através da sua paragem e reiniciar.
+index_buttstart=Iniciar Servidor
+index_start=Clique neste botão para iniciar o servidor DHCP no seu sistema, usando a configuração actual.
+
+butt_save=Guardar
+butt_eco=Editar Opções de Cliente
+butt_del=Apagar
+butt_create=Criar
+
+esub_crheader=Criar Sub-rede
+esub_edheader=Editar Sub-rede
+esub_tabhdr=Detalhes da Sub-rede
+esub_naddr=Endereço da rede
+esub_nmask=Máscara de rede
+esub_arange=Alcance dos endereços
+esub_dbooptpq=BOOTP dinâmico ?
+esub_shnet=Rede partilhada
+esub_return=lista de sub-redes
+
+esh_crheader=Criar Rede Partilhada
+esh_eheader=Editar Rede Partilhada
+esh_tabhdr=Detalhes da Rede Partilhada
+esh_netname=Nome da rede
+esh_return=lista de sub-redes
+
+ehost_crheader=Criar Anfitrião
+ehost_eheader=Editar Anfitrião
+ehost_tabhdr=Detalhes do Anfitrião
+ehost_hname=Nome do anfitrião
+ehost_fixedip=Endereço IP fixo
+ehost_return=lista de anfitriões
+
+egroup_crheader=Criar Grupo de Anfitriões
+egroup_eheader=Editar Grupo de Anfitriões
+egroup_tblhdr=Detalhes do Grupo
+egroup_hosts=Anfitriões neste grupo
+egroup_nchoice=Use name as client hostname? Usar o nome como anfitrião do cliente?
+egroup_return=lista de anfitriões
+
+yes=Sim
+no=Não
+default=Predefinido
+secs=segundos
+none=Nenhum
+
+listl_header=Concessões DHCP
+listl_lfnotexist=O ficheiro da concessão DHCPd <tt>$1</tt> não existe.
+listl_lfnotcont=O ficheiro da concessão DHCPd <tt>$1</tt> não contém nehuma concessão$2.
+listl_active= activa
+listl_ipaddr=Endereço IP
+listl_ether=Ethernet
+listl_host=Nome do Anfitrião
+listl_start=Começar Data
+listl_end=Terminar Data
+listl_return=lista de sub-redes
+
+restart_errmsg1=Erro ao reiniciar o servidor dhcpd
+restart_errmsg2=Erro ao sinalizar processo
+start_failstart=Erro ao iniciar o servidor dhcpd
+
+sgroup_faildel=Erro ao apagar grupo
+sgroup_failsave=Erro ao guardar grupo
+
+shost_faildel=Erro ao apagar anfitrião
+shost_failsave=Erro ao guardar anfitrião
+shost_invalidhn=não é um nome de anfitrião válido
+shost_invalidhwa='$1' não é um endereço válido $2
+
+sopt_failsave=Erro ao guardar opções de cliente
+sopt_invalidip=não é um endereço IP válido
+sopt_invalidint=não é um número inteiro
+sopt_invalidipp=não é um par de endereço IP válido (como 1.2.3.4,5.6.7.8)
+
+sshared_faildel=Erro ao apagar rede partilhada
+sshared_failsave=Erro ao guardar rede partilhada
+sshared_invalidsname=Nome de rede partilhada inválido ou em falta
+
+ssub_faildel=Erro ao apagar sub-rede
+ssub_failsave=Erro ao guardar sub-rede
+ssub_invalidsubaddr=não é um endereço de sub-rede válido
+ssub_invalidnmask=não é uma máscara de rede válida
+ssub_invalidipr=não é um alcance de endereço IP válido
+
+plib_deflt=Tempo de concessão predefinido
+plib_bfname=Carregar nome de ficheiro
+plib_maxlt=Tempo máximo de concessão
+plib_bfserv=Carregar servidor de ficheiros
+plib_thisserv=Este servidor
+plib_servname=Nome do servidor
+plib_llbc=Tempo de concessão para clientes BOOTP
+plib_forever=Para sempre
+plib_lebc=Final da concessão para clientes BOOTP
+plib_never=Nunca
+plib_invalidlt=não é um tempo válido de concessão
+plib_invalidsn=não é um nome de servidor válido
+plib_leformat=A data final da concessão necessita estar no formato W YYYY/MM/DD HH:MM:SS
+plib_copt=Opções de Cliente
+plib_chname=Nome do anfitrião do cliente
+plib_defrouters=Reencaminhadores predefinidos
+plib_snmask=Mácara de sub-rede
+plib_babbr=Endereço de emissão
+plib_domname=Nome do domínio
+plib_dnsserv=Servidores DNS
+plib_timeserv=Servidores de tempo
+plib_logserv=Servidores de historial
+plib_swapserv=Servidor Swap
+plib_rdpath=Caminho do disco raíz
+plib_nisdom=Domínio NIS
+plib_nisserv=Servidores NIS
+plib_fontserv=Servidores de fontes
+plib_xdmserv=Servidores XDM
+plib_statrouters=Caminhos estáticos
+plib_ntpserv=Servidores NTP
+plib_nbns=Servidores de nome NetBIOS
+plib_nbscope=Alcance do NetBIOS
+plib_nbntype=Tipo de nodo do NetBIOS
+
+eopt_header=Opções de Cliente
+eopt_subtitle=Para a sub-rede $1
+eopt_returnsub=lista de sub-redes
+eopt_snettitle=Paa a rede partilhada $1
+eopt_hosttitle=Para o anfitrião $1
+eopt_returnhost=lista de anfitriões
+eopt_grouptitle=Para o grupo de membros $1
+eopt_alltitle=Para todas as redes, anfitriões e grupos
+eopt_returnindex=índex
+eopt_tabhdr=Opções de Cliente
+eopt_chost=Nome do anfitrião do cliente
+eopt_defrouters=Reencaminhadores predefinidos
+eopt_smask=Mácara de sub-rede
+eopt_baddr=Endereço de emissão
+eopt_domname=Nome do domínio
+eopt_dnsserv=Servidores DNS
+eopt_timeserv=Servidores de tempo
+eopt_logserv=Servidores de historial
+eopt_swapserv=Servidor swap
+eopt_rdpath=Caminho do disco raíz
+eopt_nisdom=Domínio NIS
+eopt_nisserv=Servidores NIS
+eopt_fontserv=Servidores de fontes
+eopt_xdmserv=Servidores XDM
+eopt_statrouters=Caminhos estáticos
+eopt_ntpserv=Servidores NTP
+eopt_nbns=Servidores de nome NetBIOS
+eopt_nbs=Alcance do NetBIOS
+eopt_nbntype=Tipo de nodo do NetBIOS

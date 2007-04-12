@@ -1,0 +1,13 @@
+---- Changes since 1.160 ----
+Added access control to limit which modules and users actions are visible for.
+---- Changes since 1.180 ----
+Added button for rolling back all files changed by some action, where the information is available.
+---- Changes since 1.210 ----
+Added an index on the Webmin log file, to speed up searching and viewing of log entries.
+---- Changes since 1.290 ----
+Added an option to show events that happened yesterday.
+---- Changes since 1.320 ----
+Updated the action details page to use ui-lib.pl functions for the form.
+When rolling back changed files, you can now select which ones to revert rather than always doing all of them.
+---- Changes since 1.330 ----
+A description of the search is now shown for searches that didn't match anything.

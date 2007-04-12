@@ -1,0 +1,20 @@
+<header>Tabele przeszukiwania podstawiania domen</header>
+
+<center><tt>virtual_maps</tt></center>
+<hr>
+
+Ten parametr okre¶la fakultatywne tabele przeszukiwane, aby przekierowaæ
+okre¶lone adresy lub nawet ca³e domeny na inny adres. Jest to zazwyczaj
+wykorzystywane do implementacji obs³ugi domen wirtualnych. <p>
+
+Domy¶lnie, nie jest wykonywane ¿adne przekierowanie adresów. <p>
+
+Przyk³ady:
+<ul>
+<li><tt>dbm:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, nis:virtual</tt>
+<li><tt>hash:/etc/postfix/virtual, netinfo:/virtual</tt>
+</ul>
+
+<hr>

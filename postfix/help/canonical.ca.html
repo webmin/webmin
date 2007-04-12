@@ -1,0 +1,76 @@
+<header>Mapejat Canònic</header>
+
+El fitxer canònic opcional especifica un mapejat d'adreça per a adreces
+locals i no locals. El dimoni cleanup(8) utilitza aquest mapejat.
+El mapejat de l'adreça és recursiu.
+
+<p>
+
+El fitxer fa d'entrada de l'ordre postmap(1). El resultat, un fitxer
+indexat en format dbm o db, s'utilitza com a recerca ràpida per part
+del sistema de correu.
+
+<p>
+
+El mapejat canònic afecta tan les adreces de la capçalera del missatge
+(això és, les adreces que apareixen dins dels missatges) com adreces 
+d'embolcall de missatges (per exemples, les adreces que es fan servir 
+en les ordres del protocol SMTP). Ho podeu veure, si voleu, com el conjunt
+d'ordres <tt>S3</tt> de Sendmail.
+
+<p>
+
+La taula canònica es fa servir típicament per reemplaçar noms d'usuari
+per<tt>Primercognom.Segoncognom</tt>, o per netejar les adreces produïdes
+per sistemes de correu propietaris.
+
+<p>
+
+No s'ha de confondre el mapejat canònic amb el suport de domini virtual.
+Per a aquest propòsit, utilitzeu el mapa de <a href=virtual>domini virtual</a>.
+
+<p>
+
+No s'ha de confondre el mapejat canònic amb els àlies locals..
+Per a aquest propòsit, utilitzeu el mapa de <a href=virtual>àlies de correu</a>.
+
+<p>
+
+El format dels mapejats canònics és el que segueix; els mapejats es proven
+en l'ordre llistat:
+
+<ul>
+
+<li><b><tt>usuari@domini</tt></b> mapejat a... <b><tt>adreça</tt></b>:<br>
+<tt>usuari@domini</tt> es canvia per <tt>adreça</tt>. Aquesta forma té la
+precedència més alta. Aquesta forma és útil per netejar adreces produïdes
+per sistemes de correu propietaris. També són útils per a produir adreces
+de l'estil <tt>Primercognom.Segoncognom</tt>, però mireu més avall una
+solució més senzilla.
+
+<li><b><tt>usuari</tt></b> mapejat a... <b><tt>adreça</tt></b>:<br>
+<tt>usuari@lloc</tt> es canvia per <tt>adreça</tt> quan el lloc és igual
+a <tt>$myorigin</tt>, quan el lloc està llistat a <tt>$mydestination</tt>, 
+o quan està llistat a <tt>$inet_interfaces</tt>. Aquesta forma és útil
+per reemplaçar noms d'usuari per <tt>Primercognom.Segoncognom</tt>.
+
+<li><b><tt>@domini</tt></b> mapped to... <b><tt>address</tt></b>:<br>
+Totes les adreces del domini es canvien per <tt>address</tt>. Aquesta 
+forma té la precedència més baixa.
+
+</ul>
+
+En totes les formes anteriors, quan l'adreça té la forma
+<tt>@unaltredomini</tt>, el resultat és el mateix usuari a
+<tt>@otherdomain</tt>.
+
+<p>
+EXTENSIÓ D'ADRECES: Quan falla la consulta a la taula, i la part local de 
+l'adreça conté el delimitador opcional de destinatari (p. ex.,
+<tt>usuari+foo@domini</tt>), la cerca es repeteix per a l'adreça no extesa
+(p. ex., <tt>usuari@domini</tt>), i l'extensió no coincident es propaga al
+resultat de la consulta de la taula. L'ordre de recerca és:
+<tt>usuari+foo@domini</tt>, <tt>usuari@domini</tt>, <tt>usuari+foo</tt>,
+<tt>usuari</tt>, i <tt>@domini</tt>.
+
+<hr>

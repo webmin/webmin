@@ -1,0 +1,6 @@
+---- Changes since 1.130 ----
+Added the ability to run a scheduled command.
+---- Changes since 1.220 ----
+Allowed and denied At users can now be managed, on Linux systems.
+---- Changes since 1.300 ----
+Added checkboxes and a button for deleting multiple scheduled commands at once.

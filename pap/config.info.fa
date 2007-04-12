@@ -1,0 +1,11 @@
+﻿
+﻿line2=پيکربندي سيستم,11
+pppd=مسير کارساز pppd,0
+pap_file=پرونده حسابهاي ppp,0
+encrypt_pass=آيا اسم‌رمز در پرونده‌هاي محرمانه پنهان شود؟,1,1-بله,0-خير
+ppp_options=پرونده اختيارات ppp,0
+mgetty=مسير برنامهmgetty,0
+login_config=پرونده پيکربندي ورود به سيستم mgetty,0
+dialin_config=پرونده پيکربندي تماس تلفني mgetty,0
+serials=نقاب درگاه سري,0
+

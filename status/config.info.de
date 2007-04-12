@@ -1,0 +1,5 @@
+index_status=In der Liste anzuzeigender Status,1,1-Aktueller Status,0-Vom letzten &Uuml;berwachungszeitpunkt
+pager_cmd=Befehl&#044 um Nachrichten an einen Pager zu senden,3,Keiner
+ping_cmd=Befehl zum ping an einen Host,3,Keiner
+refresh=Sekunden zwischen Seiten-Auffrischungen,3,nicht auffrischen
+sort_mode=zeige Monitore sortiert nach,1,0-erzeugter Reihenfolge,1-Beschreibung,2-Host

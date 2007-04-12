@@ -1,0 +1,22 @@
+<header>Uprawnienia</header>
+
+Pierwsza tabela umo¿liwia ograniczenie stosowania pewnych poleceñ. Dla
+ka¿dego polecenia mo¿na zabroniæ lub zezwoliæ na jego wykonanie okre¶lonemu
+typowi lub klasie u¿ytkowników. Domy¶lnie wszyscy u¿ytkownicy maj± prawo
+wykonywaæ wszystkie polecenia. 
+<p>
+
+Druga tabela umo¿liwia wprowadzenie zakazu przesy³ania do serwera zbiorów,
+których nazwa zawiera okre¶lone znaki lub pasuje do wyra¿enia regularnego.
+Taki zakaz mo¿e byæ u¿yteczny na anonimowych serwerach FTP zawieraj±cych
+kartotekê dla zbiorów przychodz±cych (na przyk³ad <tt>incoming</tt>),
+w&nbsp;celu zapobie¿enia tworzeniu "ukrytych" kartotek z&nbsp;niepo¿±dan±
+zawarto¶ci±. Pierwsze pole w&nbsp;tabeli jest wyra¿eniem regularnym (jak
+na przyk³ad <tt>^[A-z0-9]$</tt>), które definiuje dozwolone znaki.
+Drugie pola zawiera wyra¿enia regularne opisuj±ce niedozwolone nazwy,
+trzecie - typy u¿ytkowników, których dotyczy ograniczenie, a&nbsp;ostatnia
+kolumna zawiera pe³n± ¶cie¿kê do pliku z&nbsp;komunikatem b³êdu wysy³anym
+do klienta FTP usi³uj±cego przys³aæ nielegalny zbiór.
+<p>
+
+<hr>

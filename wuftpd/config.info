@@ -1,0 +1,9 @@
+line2=System configuration,11
+ftpd_path=Full path to wuftpd,0
+ftpaccess=Full path to ftpaccess file,0
+ftpconversions=Full path to ftpconversions file,0
+ftpgroups=Full path to ftpgroups file,0
+ftphosts=Full path to ftphosts file,0
+ftpusers=Full path to ftpusers file,0
+pid_file=FTP server PID file,0
+log_file=FTP server log file,0

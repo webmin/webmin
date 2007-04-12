@@ -1,0 +1,27 @@
+<header>Sektorantal för I/O med flera sektorer</header>
+Här ställer du in sektorantalet för multipelsektors-I/O på disken.
+
+<p>Multipelsektorsmod (även kallat IDE-blockmod) är en egenskap som de flesta
+moderna IDE-diskar har och som gör det möjligt att föra över flera sektorer
+varje I/O-avbrott, till skillnad från standardmoden, där man för över en
+sektor per avbrott.
+
+<p>När denna inställning aktiverats minskas vanligen operativsystemsoverheaden
+för läsning och skrivning till disk med 30-50 %. På många system ökas också
+dataflödet med 5-50 %. En del diskar (särskilt WD Caviar-serien) verkar dock
+gå långsammare då multipelsektorsmoden aktiverats. Det varierar från fall till
+fall.
+
+<p>De flesta diskar stödjer minimiinställningar på 2, 4, 8 eller 16 (sektorer).
+Det kan även gå att ställa in större antal beroende på vilken disk man har.
+För många system är 16 eller 32 sektorer optimalt.
+
+<p>Western Digital rekommenderar en lägre inställning, 4-8 sektorer, för
+många av sina diskar, beroende på små (32 kB) buffrar och icke-optimerade
+buffringsalgoritmer.
+
+<p>En del diskar stödjer till viss del multipelmod, men tappar data vid
+vissa inställningskombinationer.
+<br>Vid vissa omständigheter kan detta orsaka ett totalt söndertrasat
+filsystem.
+<hr>

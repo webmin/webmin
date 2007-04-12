@@ -1,0 +1,103 @@
+<header>Registres</header>
+
+<b>Fitxer de registre d'accessos</b>: El valor per defecte depèn del sistema,
+normalment és algun lloc de <tt>/var</tt>. Registra l'activitat de la 
+petició del client. Conté una entrada per cada petició HTTP I ICP rebuda.
+<p>
+
+<b>Fitxer de registre de depuració</b>: El valor per defecte depèn del sistema.
+Fitxer de registre del cau. Aquest és on va a parar la informació general
+sobre el comportament del cau. Pots incrementar la quantitat de dades
+registrades amb les opcions <b>Opcions de depuració</b>.
+<p>
+
+<b>Fitxer de registre d'emmagatzematge</b>: El valor per defecte depèn del
+sistema. Mostra quins objectes s'expulsen del cau i quins objectes s'hi desen
+(i per quant temps). Per desactivar-lo, introdueix "cap". De fet, no hi ha
+cap utilitat per analitzar les dades, així que si el desactives no passa res.
+<p>
+
+<b>Fitxer de metadades del cau</b>: Per defecte, <tt>swap.log</tt> a cada
+directori del cau. Aquest fitxer de registre guarda les metadades dels
+objectes desats al disc. És útil per reconstruir el cau en engegar.
+Normalment, aquest fitxer resideix a cada directori del cau, però pots
+especificar-hi un camí alternatiu. Tingues en compte que has de donar un
+nom complet, no només un directori. Donat que aquest és l'índex de tota 
+la llista d'objectes, NO el pots rotar periòdicament!
+<p>
+Si es pot fer servir %s en el nom del fitxer, llavors, se substituirà amb una
+representació del nom del directori cau, on cada '/' se substitueix amb
+'.'. Això és necessari per permetre l'addició/supressió de línies de 
+directori cau quan es fa servir un intercanvi de cau alternatiu.
+<p>
+Si hi ha més d'un directori cau i no es fa servir %s en el nom, llavors 
+aquests registres d'intercanvi tindran noms com ara:
+<p>
+<ul>
+<li>cache_swap_log.00
+<li>cache_swap_log.01
+<li>cache_swap_log.02
+</ul>
+<p>
+L'extensió numerada (que s'afegeix automàticament) correspon a l'ordre de
+les línies del directori cau a la configuració. Si canvies l'ordre del
+les línies del directori cau d'aquest fitxer, llavors aquests fitxers de
+registre NO correspondran a l'entrada correcta del directori cau (si no és
+que en canvies el nom manualment). Recomanem que NO facis servir aquesta
+opció. És millor mantenir aquests fitxers de registre a cada directori cau.
+<p>
+
+<b>Fes servir el format de registre HTTPD</b>: Per defecte, no. El cau pot
+emular el format de fitxer de registres que molts programes 'http' fan 
+servir. Per des/activar aquesta emulació, posa aquest valor a 'sí' o 'no'.
+Per defecte, es fa servir el format natiu de registre,ja que inclou 
+informació útil utilitzada pels analitzadors de registres específics de Squid.
+<p>
+
+<b>Registra les capçaleres MIME</b>: Per defecte, no. El cau pot registrar
+tant les capçaleres MIME de petició com de resposta per a cada transacció
+HTTP. Les capçaleres es codifiquen de forma segura i apareixeran com dos
+camps tancats entre claus al final del registre d'accés (tant com pel format
+natiu com pel format HTTP emulat). Per activar aquest registre, posa-ho a 
+activat.
+<p>
+
+<b>Fitxer de registre d'agents d'usuari</b>: Per defecte, cap. Si es
+configura amb l'opció "--enable-useragent-log", Squid escriurà el camp
+User-Agent de les peticions HTTP al nom de fitxer especificat.
+<p>
+
+<b>Fitxer de PID</b>: El valor per defecte depèn del sistema. Un nom de fitxer
+per escriure-hi l'id del procés. Per desactivar-lo, posa-hi "cap".
+<p>
+<b>Executa consultes d'identificació RFC931 per les ACLs</b>: Per defecte, cap.
+Executa consultes d'identificació per trobar el nom d'usuari dels clients
+qualsevol cosa d'aquestes ACLS.
+<p>
+<b>Temps límit d'identificació RFC931</b>: Per defecte, 30 segons. Temps màxim
+d'espera de les peticions IDENT. Si és massa alt i has activat consultes
+d'identificació, pots patir una denegació de servei per culpa de tenir 
+moltes consultes d'identificació entrant a la vegada.
+<p>
+<b>Registra noms de host complets</b>: Per defecte, no. Registra el nom de
+host complet dels clients. 
+<p>
+<b>Màscara de subxarxa de registre</b>: Per defecte, 255.255.255.255. Una
+màscara de subxarxa per les adreces client dels fitxers de registre i la
+sortida del gestor del cau. Canvia-ho per protegir la privacitat dels
+clients del cau. Una màscara 255.255.255.0 registrarà totes les IPs 
+d'aquest rang amb el darrer dígit posat a '0'.
+<p>
+<b>Opcions de depuració</b>: Per defecte "ALL,1".
+Les opcions de registre s'estableixen com secció,nivell on s'assigna una
+secció única a cada fitxer font. El resultat de la depuració Completa (nivell 9)en els nivells inferiors pot produir un fitxer de registre molt gran, així
+que ves amb compte. la paraula màgica "ALL" estableix els nivells de 
+depuració per a tots els nivells. Normalment, recomanem posar-hi "ALL,1".
+<p>
+<b>Taula de capçaleres MIME</b>: Camí de la taula MIME de Squid. Normalment,
+no hi ha necessitat de canviar-ho, però si ho fas, el fitxer per defecte conté
+exemples i informació de formatat.
+
+<hr>
+
+

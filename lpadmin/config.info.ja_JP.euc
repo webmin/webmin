@@ -1,0 +1,10 @@
+print_style=プリンタ設定ファイルの書式,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare,cups-CUPS
+driver_style=プリンタドライバの書式,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX,suse-SuSE,cups-CUPS
+printcap_file=プリンタファイル,3,なし
+model_path=インタフェイスプログラムのあるディレクトリ,3,なし
+smbclient_path=smbclinentへのパス,3,なし
+gs_path=ghostscriptへのパス,3,なし
+gs_fontpath=Ghostscriptフォントディレクトリ,3,デフォルト
+gs_lib=Ghostscriptライブラリ ディレクトリ,3,デフォルト
+hpnp_path=hpnpプログラムへのパス,3,なし
+show_status=ドライバにかかわらず、印刷可能かどうかや、印刷受け付け状態を表示する,1,1-する,0-しない

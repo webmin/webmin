@@ -1,0 +1,44 @@
+inittab_title=SysV 初始化配置
+inittab_new=创建一个新的初始化进程
+inittab_id=名字
+inittab_runlevels=执行等级
+inittab_action=动作
+inittab_process=进程
+inittab_none=无
+inittab_respawn=重新产生
+inittab_wait=等待
+inittab_once=一次计时，在等级
+inittab_boot=引导时间
+inittab_bootwait=引导时间，等待到结束
+inittab_off=无行动
+inittab_ondemand=每当在A、B、C中
+inittab_initdefault=系统引导后
+inittab_sysinit=系统引导期间
+inittab_powerwait=关闭电源
+inittab_powerfail=无等待地关闭电源
+inittab_powerokwait=电源恢复
+inittab_powerfailnow=电源失败
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=特殊键组合
+inittab_return=inittab 索引
+inittab_apply=应用Init配置
+inittab_applymsg=点击该按钮，通过运行命令<tt>telinit -q</tt>以应用当前的SysV Init配置。注意：您的配置中的任何错误可能都会导致系统在执行该命令时当机。
+
+edit_inittab_err=您没有编辑进程的权限
+edit_inittab_title=编辑进程 $1
+edit_inittab_details=进程细节
+edit_inittab_del=删除
+edit_inittab_save=保存
+
+new_inittab_err=您没有创建新进程的权限
+new_inittab_title=新进程
+
+save_inittab_err=您没有保存进程的权限
+save_inittab_noid=错误，未输入进程名
+save_inittab_already=错误，该进程名已存在
+
+log_modify=已修改初始化进程 $1
+log_rename=进程 $1 已改名为 $2
+log_create=已创建初始化进程 $1
+log_delete=已删除初始化进程 $1
+

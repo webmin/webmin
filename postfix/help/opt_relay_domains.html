@@ -1,0 +1,28 @@
+<header>Restrict mail relaying</header>
+
+<center><tt>relay_domains</tt></center>
+<hr>
+
+This parameter restricts what client hostname domains (and subdomains thereof)
+this mail system will relay mail from, and restricts what destination domains
+(and subdomains thereof) this system will relay mail to.
+
+<p>
+
+<include relay_rules>
+<p>
+
+Specify a list of hosts or domains, <tt>/file/name</tt> patterns or
+<tt>type:name</tt> lookup tables, separated by commas and/or whitespace. A file
+name is replaced by its contents; a <tt>type:name</tt> table is matched when a
+(parent) domain appears as lookup key.
+
+<p>
+
+NOTE: Postfix will not automatically forward mail for domains that list this
+system as their primary or backup MX host. See the <tt>permit_mx_backup</tt>
+restriction, in the description of the <a href=opt_smtpd_recipient_restrictions>
+<tt>smtpd_recipient_restrictions</tt></a> parameter.
+
+
+<hr>

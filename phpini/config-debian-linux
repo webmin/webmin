@@ -1,0 +1,1 @@
+php_ini=/etc/php4/apache/php.ini=Configuration for mod_php	/etc/php4/cgi/php.ini=Configuration for scripts run via CGI	/etc/php4/cli/php.ini=Configuration for command-line scripts

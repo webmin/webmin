@@ -1,0 +1,1 @@
+package_system=Système de gestion des composants,1,rpm-RPM,pkgadd-Solaris,hpux-HPUX,freebsd-FreeBSD,slackware-Slackware,debian-Debian

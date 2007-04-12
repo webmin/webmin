@@ -1,0 +1,26 @@
+<header>Authentication</header>
+
+This page is for configuring authentication-related options for your
+SSH server. Some of the less obvious options are :
+
+<dl>
+<dt><b>Allow authentication by password</b>
+<dd>If this is set to No, users will need to have their <tt>.ssh</tt> directory
+    setup with a public key before being able to login. If set to Yes, the
+    user will be allowed to enter a password for authentication if validation
+    cannot be done using a public key. <p>
+
+<dt><b>Allow RSA authentication?</b>
+<dd>If this is set to No, users will always need to enter their password
+    even if their public key has been set up. <p>
+
+<dt><b>Check permissions on key files?</b>
+<dd>If set to Yes, the SSH server will check each user's <tt>.ssh</tt>
+    directory and any parent directories to make sure they are not group
+    writable, and the <tt>.ssh/identity</tt> file to make sure it is not
+    readable by anyone else. If set to No, no checking of file permissions
+    will be done. <p>
+
+</dl>
+<hr>
+

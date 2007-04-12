@@ -1,0 +1,493 @@
+index_title=Sendmail Yapýlandýrmasý
+index_econfig=Sendmail yapýlandýrma dosyasý $1 mevcuut deðil.Sizin <a href='$2'>modül yapýlandýrmanýz</a> doðru olmayabilir
+index_eversion=Sendmail yapýlandýrma dosyanýzýn versiyonu belirlenenden küçük.Webmin sadece Sendmail 8.8 ve üstünü destekler
+index_epath=Sendmail çalýþtýrýlabilir dosyasý sisteminize kurulu deðil.Sizin<a href='$2'>modül yapýlandýrma</a> dosyanýz doðru olmayabilir ya da sisteminizde sendmail kurulu olmayabilir
+index_return=sendmail yapýlandýrmasý
+index_stop=Sendmail'i Durdur
+index_stopmsg=Bu butonu týklayarak çalýþan sendmail iþlemini durdurabilirsiniz. Durduðunda diðer sistemlerden yerel kullanýcýlara gönderilen postalar duracak ve posta göndermek için posta sunucusu kullanan istemcilerin iþlemleri engellenecektir
+index_start=Sendmail'i Çalýþtýr
+index_startmsg=Bu butonu týklayarak sendmail'in çalýþmasýný saðlayabilirsiniz. Bu iþlem bitene kadar diðer sistemlerden yerel kullanýcýlara posta gelmeyecek ve posta göndermek için posta sunucusu olarak kullanan istemciler kullanamayacaktýr
+
+opts_title=Sendmail Seçenekleri
+opts_ecannot=Sendmail seçeneklerini deðiþtirmeye izininiz yoktur
+opts_ds=Dýþ postalarý makineye gönder
+opts_direct=Doðrudan gönder
+opts_dr=Mutlak kullanýcý isimlerini makineye gönder
+opts_dh=Yerel kullanýcýlar için postayý makineye döndür
+opts_local=Yerel olarak daðýt
+opts_queuela=Gönderme için en çok yükleme sýnýrý
+opts_refusela=Almak için en çok yükleme sýnýrý
+opts_maxch=En çok çocuk iþlem sayýsý
+opts_throttle=En çok / saniye
+opts_minqueueage=Göndermeden önceki en kýsa zaman
+opts_runsize=En büyük kuyruk boyutu
+opts_queuereturn=Vazgeçilmeden önceki süre
+opts_queuewarn=Gönderme uyarýsýndan önceki süre
+opts_queue=Posta kuyruk dizini
+opts_postmaster=Hata mesajlarý gönder
+opts_forward=Kullanýcý döndürme dosyalarý
+opts_minfree=En az boþ disk alaný
+opts_maxmessage=En büyük mesaj boyutu
+opts_loglevel=Log seviyesi
+opts_mimebounce=Sýçrama mesajlarýný MIME þifrele?
+opts_default=Öntanýmlý
+opts_save=Kaydet ve Uygula
+opts_err=Seçeneklerin kaydedilmesinde hata oluþtu
+opts_ehost='$1' geçerli bir makine ya da alan ismi deðil
+opts_einvalid='$1', '$2' için geçerli bir deðer deðil
+opts_blame=Dosya güvenlik seçenekleri
+opts_selected=Seçili..
+opts_blocks=blok
+opts_bytes=byte
+opts_dmode=Daðýtýcý modu
+opts_background=Arka plan
+opts_queue-only=Sadece kuyruk
+opts_interactive=Etkileþimli
+opts_deferred=Ertelendi
+
+aliases_title=Posta Takma Adlarý
+aliases_ecannot=Takma adlarý deðiþtirmenize izin verilmedi
+aliases_addr=Adresler
+aliases_to=Takma isim ..
+aliases_type1=Adres $1
+aliases_type2=$1 dosyasýndaki adresler
+aliases_type3=$1 dosyasý
+aliases_type4=$1 programý
+aliases_type5=$1 dosyasýný geri gönder
+aliases_none=Hiçbiri
+aliases_return=takma isim listesi
+
+aform_type0=Hiçbiri
+aform_type1=E-posta adresi
+aform_type2=Dosyadaki adresler
+aform_type3=Dosyaya yaz
+aform_type4=Programý besle 
+aform_type5=Dosyadan geri gönder
+aform_edit=Takma isimleri deðiþtir
+aform_create=Takma isim oluþtur
+aform_name=Adres
+aform_enabled=Geçerli mi?
+aform_val=Takma isim
+aform_afile= Deðiþtir...
+aform_return=takma isim
+
+afile_title=Adres Dosyasýný Deðiþtir
+afile_desc=$1 dosyasýndaki adresleri deðiþtirmek için düz metin yazýsý kutusunu kullanýnýz.
+afile_efile=$1'i deðiþtirmek için izininiz yoktur.
+afile_undo=Deðiþiklikleri Geri Al
+
+rfile_title=Otomatik Geri Gönderilem Mesajý Deðiþtir
+rfile_desc=$1'deki otomatik geri gönderilem mesajý deðiþtirmek için düz metin yazýsý alanýný kullanýnýz.Geri gönderme aktif hale getirildiðinde mesaj $SUBJECT, $FROM, $TO, $DATE ve $BODY makrolarý eklenerek geniþletilebilir.
+rfile_efile=$1'i deðiþtirmek için izininiz yoktur
+efile_undo=Deðiþiklikleri Geri Al
+
+asave_err=Takma isimlerinin kaydedilmesinde hata oluþtu
+asave_ecannot2=Takma isimleri deðiþtirmenize izin verilmedi
+asave_ecannot=Bu takma isimi deðiþtirmenize izin verilmedi
+asave_emax=$1'den daha çok takma isim deðiþtirmenize izin verilmedi
+asave_eaddr='$1' geçerli bir adres deðil
+asave_ealready=$1 için bir takma isim her zaman mevcut
+asave_ematch=Sadece takma isimleri oluþtururken karþýlaþtýrmalarý yapmanýza izin verildi
+asave_etype=Bu tipin takma isimlerini oluþturamazsýnýz
+asave_etype1='$1' geçerli bir e-posta adresi deðil
+asave_etype2=$1 adres dosyasý geçerli deðil ya da mevcut deðil
+asave_etype3='$1' geçerli bir dosya ismi deðil
+asave_etype4='$1' geçerli bir program deðil ya da mevcut deðil
+asave_etype5=Geri döndürme dosyasý $1 geçerli deðil ya da mevcut deðil
+asave_etype4none=Program girilmedi
+
+cws_title=Yerel Alanlar
+cws_ecannot=Yerel alanlarý deðiþtirmenize izin verilmedi
+cws_domains=Alanlar bu sunucu tarafýndan tutulmaktadýr
+cws_desc1=$1'e gelen posta hariç, sendmail sadece sol taraftaki yazý kutusundaki alan ve makine adlarý için yerel posta daðýtýcýlýðýný yapacaktýr. Eðer çoklu e-posta alanlarýný tutmak istiyorsanýz bu formda listelemelisiniz. 
+cws_desc2=Listedeki bir alan genellikle tek baþýna yeterli deðildir.
+cws_err=Yerel alanlanlarýn kaydedilmesinde hata oluþtu
+cws_ehost='$1' geçerli bir alan ya da makine ismi deðil
+cws_eip='$1' bir IP adresidir, alan adý deðildir
+
+masq_title=Alan Maskeleme
+masq_ecannot=Maskelemeyi yapýlandýrmanýza izininiz yoktur
+masq_domain=Alaný maskele
+masq_domains=Maskelenmiþ olan alanlar
+masq_desc1=Eðer bir alan yukarý gidiyorsa, sendmail bu alandan gelen görünen bütün dýþ mesajlarýn <tt>From</tt> adres kýsmýný deðiþtirecektir.Ayrýca sisteminizden geçen soldaki listedeki alan ya da makine isimlerinden gelen postalarda da <tt>From</tt> kýsmý da ayný yolla deðiþtirilecektir.Tanýnlanan bu alan maskelemeleri önemli kullanýcýlarýn kullandýðý <a href='$1'>Dýþ Adresler</a> sayfasýndan önemli olmalýdýr
+masq_desc2=Bu mesajý makine adýnýzdan göndermektense alanýnýzdaki sisteminizden  göndermek isterseniz, ya da sisteminizi diðer makinelerin çalýþan posta sunucularýnýn merkezi yapmak için  oldukça kullanýþlýdýr  
+masq_err=Alan maskelemesinin kaydedilmesinde hata oluþtu
+masq_edomain='$1' maskelenecek geçerli bir alan adý deðil
+masq_ehost='$1' geçerli bir alan ya da makine adý deðil
+masq_eip='$1' bir IP adresidir, alan adý deðildir
+
+trusts_title=Doðrulanmýþ Kullanýcýlar
+trusts_ecannot=Doðrulanmýþ kullanýcýlarý deðiþtirmek için izininiz yoktur
+trusts_users=Sendmail ile doðrulanmýþ yerel kullanýcýlar
+trusts_desc=Yerel kullanýcýlar e-posta göndermeyi denediðinde, eðer kullanýcý soldaki listede ise sendmail farklý bir <tt>From:</tt> kullanýcýsýna posta gönderilmesine izin verir.
+trusts_err=Doðrulanmýþ kullanýcýlarýn kaydedilmesinde hata oluþtu
+trusts_euser='$1' geçerli bir kullanýcý edý deðil
+
+virtusers_title=Adres Haritalandýrma
+virtusers_ecannot=Adres haritalandýrmasýný deðiþtirmek için izininiz yoktur
+virtusers_edirective=Sendmail yapýlandýrma dosyanýz adres haritalandýrmasý için gerekli komutlarý içermiyor
+virtusers_efile=Adres haritalandýrma veritabaný $2'nin inþasýnda kullanýlan $1 yazý dosyasý mevcut deðil.Belki doðru yolu bulmak için <a href='$3'>modül yapýlandýrmasý</a>yý deðiþtirmeye ihtiyacýnýz vardýr
+virtusers_desc1=Adres haritalandýrmalarý <a href='$1'>takma adlar</a>a benzer. Fakat daha çok çoklu e-posta alanlarýný tutmak için kullanýlan bir sistemdir.Bir adresin bütün alanlarýna doðrudan posta göndermek için, farklý alanlardaki ayný kullanýcýlarýn hesaplarýný kontrol etmek için ya da bir alandan diðer birine gönderilen postalarý haritalandýrmak için kullanýlýr
+virtusers_desc2=Adres haritalandýrma için kullanýlan herhangi alanlarý <a href='$1'>yerel alanlar</a> tablosuna girmelisiniz ve sisteminizdeki alanýn tanýmlanmasý için DNS MX kayýtlarýný girmelisiniz
+virtusers_for=Posta..
+virtusers_to=Gönder..
+virtusers_error=$1 Hatasý
+virtusers_domain=$1 Alaný
+virtusers_address=$1 Adresi
+virtusers_return=adres haritalandýrma listesi
+
+vform_edit=Haritalandýrmayý Deðiþtir
+vform_create=Haritalandýrma Oluþtur
+vform_for=Posta
+vform_address=Adres
+vform_domain=Alan
+vform_to=gönder
+vform_msg=mesaj
+vform_error=Oluþan hata
+vform_err_nouser=kullanýcý yok
+vform_err_nohost=makine yok
+vform_err_unav=ulaþýlamaz
+vform_err_temp=geçici hata
+vform_err_proto=protokol
+vform_end=Sona taþý
+vform_ecannot=Bu adres haritalandýrmasýný deðiþtirmek için izininiz yoktur
+
+vsave_ecannot=Adres haritalandýrmasýný deðiþtirmek için izininiz yoktur
+vsave_ecannot2=Bu adres haritalandýrmasýný deðiþtirmek için izininiz yoktur
+vsave_emax=$1'den fazla adres haritalandýrmasý oluþturmak için izininiz yoktur
+vsave_err=Adres haritalandýrmasýnýn kaydedilmesinde hata oluþtu
+vsave_efrom='$1' geçerli bir adres deðil
+vsave_efromdup=$1 için adres haritasý her zaman tanýmlý
+vsave_edom='$1' geçerli bir alan deðil
+vsave_edomdup=$1 için adres haritasý her zaman tanýmlý
+vsave_ematch=Kaynak adresi '$1'e benzemiyor
+vsave_ecannot3=Adres haritalarýný oluþturmak için izininiz yoktur
+vsave_eaddr='$1' geçerli bir adres deðil
+vsave_ecannot4=Alan haritalarýný oluþturmak için izininiz yoktur
+vsave_edomdom=Diðer alan için sadece bir alan haritalandýrýlabilir
+vsave_ecannot5=Hata haritalarýný oluþturmak için izininiz yoktur
+
+mailers_title=Alan Yönlendirme
+mailers_cannot=Alan yönlendirmeleri deðiþtirmenize izin verilmemiþtir
+mailers_edirective=Sendmail yapýlandýrma dosyanýz alan yöneldirme için gerekli komutlarý içermiyor
+mailers_efile=Alan yönlendirme veri tabaný $2'nin inþasýnda kullanýlan $1 dosyasý mevcut deðil 
+mailers_desc1=Alan yönlendirmeyi saðlamanýn bir yolu da belirli alanlara posta göndermek için özel transfer yöntemi tanýmlamaktýr. Sisteminiz posta sunucularý için bir að geçidi ise aðýnýza dýþarýdan ulaþýlamaz ya da isterseniz diðer sunucudan yönlendirilmiþ olan parçalý alan için  sistminizi güçlendirebilirsiniz.
+mailers_desc2=Herhangi yönlendirilmiþ alanlar için <a href='$1'>yerel alanlar</a> listesine birþey girmemelisiniz.Bununla birlikte, herhangi alanda að geçidi olan sisteminiz için DNS MX kaydýna sahip olmalýsýnýz
+mailers_for=Posta..
+mailers_delivery=Daðýtýcý
+mailers_to=Gönder..
+mailers_return=alan yönlendirme listesi
+
+mform_edit=Yönlendirmeyi Deðiþtir
+mform_create=Yönlendirme Oluþtur
+mform_for=Posta
+mform_host=Makine Adý
+mform_domain=Alan
+mform_delivery=Daðýtýcý
+mform_to=Gönder
+mform_ignore=SMTP daðýtýcýlarý için MX'leri geç
+mform_smtp=SMTP
+mform_esmtp=Uzatýlmýþ SMTP
+mform_smtp8=8-bit SMTP
+mform_relay=SMTP iletimi
+mform_local=Yerel kullanýcý
+mform_prog=Programý besle
+mform_uucp=UUCp
+mform_usenet=USENET'e  gönder
+mform_fax=HylaFAX
+mform_pop=POP3
+mform_procmail=Procmail
+mform_mail11=DECnet mail11
+mform_error=Hata
+mform_ecannot=Alan yönlendirmeyi deðiþtirmeye izininiz yoktur
+
+msave_ecannot=Alan yönlendirmeyi deðiþtirmeye izininiz yoktur
+msave_err=Alan yönlendirmenin kaydedilmesinde sorun oluþtu
+msave_edomain='$1' geçerli bir makine ya da alan adý deðildir
+msave_edup='$1' için alan yönlendirme her zaman mevcut
+
+generics_title=Dýþa Giden Adresler
+generics_cannot=Dýþa giden adresleri deðiþtirmeye hakkýnýz yoktur
+generics_econfig=Sendmail yapýlandýrma dosyanýz dýþ adres haritalandýrmasý için gerekli komutlarý içermiyor
+generics_efile=Dýþ adres veritabaný $2'nin inþasýnda kullanýlan $1 yazý
+dosyasý mevcut deðildir.Doðru yolu bulmak için <a href='$3'>modül
+yapýlandýrmasý</a>ný deðiþtirmeniz gerekmektedir 
+generics_desc1=Dýþ adres haritalarý sisteminizden ya da yerel aðýnýzdaki diðer makinelerden gönderilen postalarýn <tt>From:</tt> adres kýsýmlarýnýn deðiþtirilmesine izin verir.
+generics_desc2=<a href='$1'>Dýþa alanlar</a> tablosunda olmasýný istediðiniz dýþ haritalandýrma için her alaný girmeniz gerekmektedir.Bu dýþa adresleme haritalandýrmasý yerel kullanýcýlara gönderilmiþ olan postalar için çalýþmaz
+generics_from=Posta..
+generics_to=Deðiþtir...
+generics_return=adres haritalandýrma listesi
+
+gform_edit=Haritalandýrmayý Deðiþtir
+gform_create=Haritalandýrma Oluþtur
+gform_from=Posta
+gform_to=Deðiþtir
+gform_ecannot=Bu dýþ adresi deðiþtirmenize izin verilmemiþtir
+
+gsave_ecannot=Dýþ adresleri deðiþtirmenize izin verilmemiþtir
+gsave_ecannot2=Bu dýþ adresi deðiþtirmenize izin verilmemiþtir
+gsave_err=Dýþ adresin kaydedilmesinde hata oluþtu
+gsave_efrom='$1' geçerli bir gelen adresi deðil
+gsave_ematch=From adresi '$1'e uymuyor
+gsave_eto='$1' geçerli bir yeni adres deðil
+
+cgs_title=Dýþa Giden Alanlar
+cgs_ecannot=Dýþa giden alanlarý deðiþtirmeye hakkýnýz yoktur
+cgs_header=Dýþ adres alanlarý
+cgs_desc=Yerel kullanýcýlara gönderilen mesajlar haricinde, sendmail sadece saðdaki yazý kutusunda listelenmiþ makine ya da alanlardan gelen postalar için <a href='$1'>dýþ adres</a> haritalandýrmasýný yapar.Bu þekilde dýþ adres giriþleri listede bulunan adreslerdeki alanlarda çalýþýr
+cgs_err=Dýþ alanýn kaydedilmesinde hata oluþtu
+cgs_ehost='$1' geçerli bir alan ya da makine deðil
+cgs_eip='$1' bir IP adresidir, alan deðildir.
+
+domains_title=Alan Haritalandýrmasý
+domains_ecannot=Alan haritalandýrmasýný deðiþtirmeye izininiz yoktur.
+domains_econfig=Sendmail yapýlandýrma dosyanýz alan haritalandýrmasý için gerekli komutlarý içermiyor.
+domains_efile=Adres haritalandýrma veritabaný $2'nin inþasýnda kullanýlan $1 yaz dosyasý mevcut deðil.Doðru yolu kullanabilmek için belki de <a href='$3'>modül yapýlandýrma</a>yý deðiþtirmeniz gerekmektedir.
+domains_desc=Alan haritalandýrmasý sisteminizdeki kullanýcýlara iletilenden ya da gönderilen postalardaki <tt>To:</tt> adres kýsmýný deðiþtirir.
+domains_from=Alandan..
+domains_to=Alana..
+domains_return=alan haritalandýrma listesi
+
+dform_edit=Haritalandýrmayý deðiþtir
+dform_create=Haritalandýrma Oluþtur
+dform_from=Alandan
+dform_to=Alana
+dform_ecannot=Haritalandýrmayý deðiþtirmeye izininiz yoktur
+
+dsave_ecannot=Alan haritalandýrmasýný deðiþtirmeye izininiz yoktur.
+dsave_err=Alan haritalandýrmasýnýn kaydedilmesinde hata oluþtu
+dsave_edomain='$1' geçerli bir alan adý deðildir
+
+access_title=Spam Kontrolü
+access_ecannot=Spam kontrol yapýlandýrmasýný deðiþtirmeye izininiz yoktur.
+access_econfig=Sendmail yapýlandýrma dosyanýzda spam kontrol için gerekli komutlarý içermemektedir.
+access_efile=Adres haritalandýrma veritabaný $2'nin inþasýnda kullanýlan $1 yazý dosyasý mevcut deðildir.Doðru yol tanýmlamalarýný bulmak için belki de  <a href='$3'>modül yapýlandýrmasý</a>ný deðiþtirmelisiniz.
+access_desc1=Sendmail'in spam kontrol özelliði, belirli adreslerden  reddedilen postalar ile eriþilen kullanýcýlarýnýzdan yapýlan spam'i ve posta göndermek için sisteminizi kullanan reddedilen spammer'ý engellemenize izin verir. Öntanýmlý sendmail yapýlandýrmasý yerel kullanýcýya herhangi bir adresten gelen postalarý kabul eder, ama sisteminizden gönderilenler herhangi bir posta sunucusu ya da istemcisi tarafýndan reddedilir.
+access_desc2=Sendmail sisteminizde posta istemcilerinin herhangi bir hedefe SMTP yoluyla göndermesine izin verir. Böylece gönderme izini listesine yerel <tt>127.0.0</tt> aðýný eklemenize ihtiyaç kalmayacaktýr
+access_source=Kaynak..
+access_action=Servis..
+access_return=spam kontrol listesi
+
+sform_edit=Spam Kontrol Kurallarýný Deðiþtir
+sform_create=Spam Kontrol Kuralý Oluþtur
+sform_source=Posta Kaynaðý
+sform_type0=E-posta adresi
+sform_type1=Að
+sform_type2=Kullanýcý
+sform_type3=Alan
+sform_action=Servis
+sform_ok=Kabul
+sform_relay=Ýletime Ýzin Ver
+sform_reject=Reddet
+sform_discard=Sil
+sform_err=Hata kodu
+sform_msg=Mesaj
+sform_ecannot=Spam kontrol yapýlandýrmasýný deðiþtirmeye izininiz yoktur.
+
+ssave_ecannot=Spam kontrol yapýlandýrmasýný deðiþtirmeye izininiz yoktur.
+ssave_err=Spam kontrol kurallarýnýn kaydedilmesinde hata oluþtu
+ssave_etype0='$1' geçerli bir adres deðildir
+ssave_etype1='$1' geçerli bir að maskesi deðildir
+ssave_etype2='$1' geçerli bir kullanýcý adý deðildir
+ssave_etype3='$1' geçerli bir alan deðildir
+ssave_ecode='$1' geçerli bir SMTP hata kodu deðildir
+
+relay_title=Ýletilen Alanlar
+relay_ecannot=Ýletilen alanlarý deðiþtirmeye izininiz yoktur.
+relay_eversion=Sendmail'in sadece 8.9 ve üzeri sürümleri iletilen alanlar özelliðini destekler
+relay_domains=Alanlarýn iletilmesi kabul edildi
+relay_desc1=<a href='$1'>Spam kontrol</a> kurallarý kabul edilmezse, sendmail sadece soldaki yazý kutusunda listelenmiþ alanlara gönderilmesine izin verir. Eðer gelen mesajlar yerel kullanýcý ya da listedeki kullanýcýlardan birine ait deðilse reddedilir.
+relay_desc2=Eðer sisteminiz çeþitli alanlar için að geçidi hizmeti sunuyorsa aðýnýza listelenmiþ alanlar hariç dýþarýdan doðrudan eriþilemez (<a href='$1'>alan yönlendirme</a> özelliði kullanýlýr).
+relay_err=Alan iletiliminin kaydedilmesinde hata oluþtu
+relay_edomain='$1' geçerli bir lan adý deðildir
+
+mailq_title=Posta Kuyruðu
+mailq_ecannot=Posta kuyruðunu görmek için izininiz yoktur.
+mailq_id=Posta ID
+mailq_sent=Gönder
+mailq_from=Nereden
+mailq_to=Nereye
+mailq_size=Boyut
+mailq_status=Durum
+mailq_unknown=Bilinmeyen
+mailq_sending=Gönderilen
+mailq_dmsg=E-posta kuyruðundaki mesajlarý görmek için listedeki numarasýný týklayýnýz
+mailq_force=E-postanýn daðýtýcý komutu için <a href='$1'>burayý týklayýnýz</a>.
+mailq_none=Daðýtým için kuyruða konulmuþ mesaj yok
+mailq_return=posta kuyruðu
+
+flushq_title=Kuyruðu Boþalt
+flushq_desc=$1 komutu ile postanýn daðýtýmý deneniyor ..
+
+delq_err=Mesajýn silinmesinde hata oluþtu
+delq_ecannot=Mesajlarý kuyruktan çýkarmak için izininiz yoktur
+delq_locked=Göndeme iþlemi kilitlendi
+
+boxes_title=Kullanýcý Posta Kutularý
+boxes_user=Kullanýcý
+boxes_size=Posta kutusu boyutu
+boxes_none=Postasý yok
+boxes_return=posta kutularý
+boxes_ecannot=E-posta'nýn okunmasýnda hata oluþtu
+
+mail_title=Kullanýcý E-Posta
+mail_from=Nereden
+mail_date=Tarih
+mail_subject=Konu
+mail_to=Nereye
+mail_cc=Cc
+mail_bcc=Bcc
+mail_pri=Öncelik
+mail_highest=En yüksek
+mail_high=Yüksek
+mail_normal=Normal
+mail_low=Düþük
+mail_lowest=en düþük
+mail_for=$1'de
+mail_size=Boyut
+mail_delete=Seçilen mesajlarý sil
+mail_compose=Yeni posta oluþtur
+mail_return=Kullanýcý e-posta
+mail_pos=Mesaj $1 to $2 of $3
+mail_none=Bu posta kutusu mesaj içermiyor
+mail_ecannot=Bu kullanýcýnýn e-postasýný okumak için izininiz yoktur
+mail_all=Hepsini seç
+mail_invert=Seçimi ters çevir
+mail_search=Mesajlarýn aranýlacaðý yer
+mail_body=Mesaj içeriði
+mail_match=matches
+mail_ok=Ara
+
+view_title=E-posta oku
+view_desc=Mesaj $1, $2'de
+view_qdesc=Kuyruða konulmuþ mesaj $1
+view_headers=Posta baþlýklarý
+view_attach=Ekler
+view_reply=Geri gönder
+view_reply2=Hepsine geri gönder
+view_forward=Döndür
+view_delete=Sil
+view_ecannot=Bu kullanýcýnýn e-postasýný okumak için izininiz yoktur
+
+compose_title=E-posta Gönder
+reply_title=E-postayý Geri Gönder
+forward_title=E-postayý Döndür
+reply_headers=Posta baþlýklarý
+reply_attach=Döndürülmüþ ekler
+reply_attach2=Ekler
+reply_send=Gönder
+reply_ecannot=Bu kullanýcý olarak e-posta göndermek için izininiz yoktur
+
+send_err=Postanýn gönderilmesinde hata oluþtu
+send_eto=Nereye adresini girmelisiniz
+send_efrom=Nereden adresini girmelisiniz
+send_title=Posta Gönder
+send_ok=Posta $1'e baþarýyla gönderildi
+send_ecannot=Bu kullanýcý olarak e-posta göndermek için izininiz yoktur
+send_esmtp=SMTP komutu $1'de hata oluþtu : $2
+send_efile=Eklenen dosya $1 mevcut deðil
+send_eattach=Ek dosyalarýn boyutu $1 KB'den daha büyük olmamalýdýrlar.
+send_eperms=$1 kullanýcýsý $2'yi okuyamaz
+
+delete_ecannot=Bu kullanýcý olarak e-posta silmek için izininiz yoktur
+delete_enone=Silmek için posta silinmedi
+
+search_title=Arama sonuçlarý
+search_ecannot=Bu kullanýcý e-postalarýný aramak için izininiz yoktur
+search_ematch=Takip eden kutuya bir yazý girmelisiniz
+search_none=Mesaj bulunamadý.
+search_results=Posta mesajlarý bakýlýyor $1 ..
+
+file_title=Sendmail Dosyasýný Deðiþtir
+file_desc=Sendmail dosyasý $1'u elle deðiþtirmek için düz metin yazýsý kutusunu kullanýnýz.
+file_undo=Deðiþiklikleri Geri Al
+file_edit=$1'i elle deðiþtir
+file_ealiases=Eðer bütün takma isimler için izininiz varsa takma isim dosyasýný deðiþtirebilirsiniz.
+file_evirtusers=Bütün adres haritalandýrmalarý için izininiz varsa adres haritalandýrma dosyasýný deðiþtirebilirsiniz
+file_emailers=Alan yönlendirme dosyasýný deðiþtirmek için izininiz yoktur.
+file_egenerics=Bütün dýþa giden adresle için izininiz varsa dýþa giden adres dosyasýný deðiþtiebilirsiniz.
+file_edomins=Alan haritalandýrma dosyasýný deðiþtirmeye izininiz yoktur
+file_eaccess=Spam kontrol dosyasýný deðiþtirmek için izininiz yoktur.
+file_emode=Bilinmeyen mod!
+file_err=Dosyanýn deðiþtirilmesinde hata oluþtu
+
+acl_opts=Sendmail seçeneklerini deðiþtirebilsin?
+acl_cws=Yerel alanlarý deðiþtirebilirsin?
+acl_masq=Alan maskelemeyi yapýlandýrabilsin?
+acl_trusts=Doðrulanmýþ kullanýcýlarý deðiþtirebilsin?
+acl_cgs=Dýþa giden mesaj alanlarý deðiþtirebilsin?
+acl_relay=Gönderilen alanlarý deðiþtirebilsin?
+acl_mailers=Alan yönlendirmeyi deðiþtirebilsin?
+acl_access=Spam kontrolünü deðiþtirebilsin?
+acl_domains=Alan haritalandýrmayý yapýlandýrabilsin?
+acl_stop=Sendmail'i durdurup baþlatabilsin?
+acl_mailq=Posta kuyruðunu yönetebilsin?
+acl_viewdel=Göster ve Sil
+acl_view=Sadece Göster
+acl_virtusers=Adres haritalandýrmayý bu kullanýcý deðiþtirebilir
+acl_none=Hiçbiri
+acl_all=Hepsi
+acl_matching=Arama
+acl_vtypes=Adres haritalandýrma tiplerini bu kullanýcý deðiþtirebilir
+acl_vtype0=Hata döndü
+acl_vtype1=Alana
+acl_vtype2=Adrese
+acl_vmax=Adres haritalandýrmanýn en çok sayýsý
+acl_unlimited=Limitsiz
+acl_aliases=Takma adlar bu kullanýcý tarafýndan deðiþtirilebilir
+acl_atypes=Takma ad tipleri bu kullanýcý tarafýndan deðiþtirilebilir
+acl_atype1=E-post adresi
+acl_atype2=Dosyadaki adresler
+acl_atype3=Dosyaya yaz
+acl_atype4=Programý besle
+acl_atype5=Otomatik geri döndür
+acl_amax=En çok takma ad sayýsý
+acl_outgoing=Dýþa giden mesajlar bu kullanýcý tarafýndan deðiþtirilebilir
+acl_read=Kullanýcýlarýn okuyabilecekleri postalar
+acl_users=Sadece kullanýcýlar
+acl_userse=Kullanýcýlardan baþka herkes
+acl_from=Ýzin verilebilir From: adresleri
+acl_any=Herhangi bir adres
+acl_fdoms=Posta kutusu @ alanlar
+acl_faddrs=Listelenmiþ alanlar
+acl_fdom=Herhangi adres @ alan
+acl_apath=Dizin için program ve dosya limitleri
+acl_attach=En çok toplam posta ek dosyalarý boyutu
+
+log_opts=Sendmail seçenekleri deðiþtirildi
+log_alias_create=Takma isim $1 oluþturuldu
+log_alias_modify=Takma isim $1 deðiþtirildi
+log_alias_delete=Takma isim $1 silindi
+log_alias_manual=Takma isim dosyasý $1 elle deðiþtirildi
+log_cws=Yerel alanlar deðiþtirildi
+log_masq=Alan maskeleme deðiþtirildi
+log_trusts=Doðrulanmýþ kullanýcýlar deðiþtirildi
+log_virtuser_create=Adres haritalandýrmasý $1 oluþturuldu
+log_virtuser_modify=Adres haritalandýrmasý $1 deðiþtirildi
+log_virtuser_delete=Adres haritalandýrmasý $1 silindi
+log_virtuser_manual=Adres haritalandýrmasý dosyasý $1 elle deðiþtirildi
+log_mailer_create=Alan yönlendirme $1 oluþturuldu
+log_mailer_modify=Alan yönlendirme $1 deðiþtirildi
+log_mailer_delete=Alan yönlendirme $1 silindi
+log_mailer_manual=Alan yönlendirme dosyasý $1 elle deðiþtirildi
+log_generic_create=Dýþa giden adres $1 oluþturuldu
+log_generic_modify=Dýþa giden adres $1 deðiþtirildi
+log_generic_delete=Dýþa giden adres $1 silindi
+log_generic_manual=Dýþa giden adres dosyasý $1 elle deðiþtirildi
+log_cgs=Dýþa giden alanlar deðiþtirilid
+log_domain_create=Alan haritalandýrmasý $1 oluþturuldu
+log_domain_modify=Alan haritalandýrmasý $1 deðiþtirildi
+log_domain_delete=Alan haritalandýrmasý $1 silindi
+log_domain_manual=Alan haritalandýrma dosyasý $1 elle deðiþtirildi
+log_access_create=$1 için spam kontrolü oluþturuldu
+log_access_modify=$1 için spam kontrolü deðiþtirildi
+log_access_delete=$1 için spam kontrolü silindi
+log_access_manual=Spam kontrol dosyasý $1 elle deðiþtirildi
+log_relay=Ýletilen alanlar deðiþtirildi
+log_flushq=Posta kuyruðu boþaltýldý
+log_delmailq=Kuyrukta $1'den posta silindi
+log_stop=Sendmail durduruldu
+log_start=Sendmail baþlatýldý
+log_delmail=$2'den $1 mesajý silindi
+log_send=$1'e posta gönderildi
+

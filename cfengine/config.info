@@ -1,0 +1,11 @@
+line2=System configuration,11
+cfengine_dir=Path to configuration files directory,0
+cfengine=Path to cfengine program,0
+cfengine_conf=Path to cfengine.conf file,3,Automatic
+cfrun=Path to cfrun program,0
+cfrun_hosts=Path to server options file,3,Automatic
+cfd=Path to cfd program,0
+cfd_conf=Path to cfd.conf file,3,Automatic
+start_cmd=Command to start cfd,3,Just run daemon
+stop_cmd=Command to stop cfd,3,Just kill process
+

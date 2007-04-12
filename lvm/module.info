@@ -1,0 +1,13 @@
+name=LVM
+desc=Logical Volume Management
+category=hardware
+os_support=*-linux
+depends=mount fdisk
+desc_zh_TW.Big5=ÅŞ¿èºŞ²z¨t²Î
+desc_ca=Gestió de Volums Lògics
+desc_es=Gestor de Volumenes Lógicos
+desc_de=Volume-Management (LVM)
+desc_ru_SU=õĞÒÁ×ÌÅÎÉÅ ÌÏÇÉŞÅÓËÉÍÉ ÔÏÍÁÍÉ
+desc_ru_RU=Óïğàâëåíèå ëîãè÷åñêèìè òîìàìè
+longdesc=Configure volume groups, physical volumes and logical volumes for Linux LVM.
+desc_zh_TW.UTF-8=é‚è¼¯ç®¡ç†ç³»çµ±

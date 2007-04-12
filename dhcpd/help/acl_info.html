@@ -1,0 +1,50 @@
+<header>DHCPd ACL subsystem</header>
+
+<h3>TARGETS:</h3>
+The main goal of the ACL subsystem is providing a powerfull, flexible and
+extendable access control mechanism for different objects in the DHCPd
+configuration. These objects are shared networks, subnets, groups of hosts
+and hosts. <p>
+
+Also the ACL subsystem allows you to control some other features, such as:
+unique object names, applying of changed configuration, viewing and deletion
+of DHCP leases. <p>
+
+<h3>CONCEPTS:</h3>
+We can show the DHCPd configuration file as a tree structure. Each node of
+this tree represents configuration of a different DHCP object (fig. 0). <p>
+
+The ACL subsystem supports two permission levels:
+<ul>
+<li>global: read, write, create;</li>
+<li>per-object: read, write.</li>
+</ul>
+
+Global permissions exist for each type of object (hosts, groups, subnets,
+shared networks) and control operations with a whole object set of given
+type:
+<ul type=circle>
+<li>Global create</li>
+<li>Global read</li>
+<li>Global write</li>
+</ul>
+
+Per-object permissions give you a more flexible way of access control.
+Per-object permissions ACL exist for every individual object. Today
+per-object ACLs are impemented only for hosts and subnets:
+<ul type=circle>
+<li>Per-object read</li>
+<li>Per-object write</li>
+</ul>
+
+The ACL subsystem can operate in four different security levels (or modes).
+<p>
+
+<img SRC="images/ctree0.gif" ALT="DHCPd configuration tree, security level 0, check subnetX permissions" height=229 width=314>
+
+<img SRC="images/ctree1.gif" ALT="DHCPd configuration tree, security level 1, check subnetX permissions" height=229 width=314>
+
+<img SRC="images/ctree2.gif" ALT="DHCPd configuration tree, security level 2, check subnetX permissions" height=229 width=314>
+
+<img SRC="images/ctree3.gif" ALT="DHCPd configuration tree, security level 3, check subnetX permissions" height=229 width=314>
+

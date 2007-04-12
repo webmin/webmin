@@ -1,0 +1,17 @@
+<header>Numéro d'utilisateur</header>
+Le numéro d'utilisateur (UID) est ce que le système utilise vraiment pour
+attribuer les permissions aux fichiers et processus. Si deux utilisateurs
+ont le même numéro ils seront considérés comme équivalents lors d'une
+vérification de permissions. Quand un nouvel utilisateur est créé, Webmin
+remplira ce champ avec un numéro qui n'est pas utilisé par un autre
+utilisateur. <p>
+
+L'utilisateur <tt>root</tt> a toujours l'UID 0. Si vous créez un autre
+utilisateur avec le numéro 0, il aura les mêmes pouvoirs que le
+<tt>root</tt>. <p>
+
+Si vous éditez un utilisateur existant et que vous changez son numéro,
+l'option <a href=chuid>Changer de propriétaire sur les fichiers?</a>
+déterminera quels fichiers devront avoir leur propriétaire changé. <p>
+<hr>
+

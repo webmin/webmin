@@ -1,0 +1,11 @@
+desc=Cluster Change Passwords
+category=cluster
+depends=cluster-useradmin passwd useradmin
+longdesc=Change passwords on multiple systems in a Webmin cluster at once.
+desc_de=Cluster - Passwort &#228;ndern
+desc_ms=Cluster - Menukar Katalaluan
+desc_ca=Canvi de Contrasenyes en Clusters
+desc_fr=Changement des mots de passe des clusters
+desc_es=Cluster - Cambio de Contrase&#241;as
+desc_nl=Cluster - Wachtwoord Wijzigen
+os_support=!windows

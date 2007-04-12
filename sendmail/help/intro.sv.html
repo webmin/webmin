@@ -1,0 +1,37 @@
+<header>Sendmail-inställningar</header>
+
+<h3>Introduktion till Sendmail</h3>
+Sendmail är standard-Unix-programmet för e-postbefordran. Om en användare i
+systemet vill skicka e-post till någon som sitter vid en annan dator är det
+sendmail som skickar e-postmeddelandet. På liknande sätt är det sendmail
+som tar emot e-postmeddelanden från andra system och lagrar dem i
+användarens e-postfil.
+
+<p>Sendmail är bara en MTA (mail transport agent), vilket betyder att den
+inte har något användargränssnitt för den som vill skicka ett
+e-postmeddelande. Program som användarna kör för att skicka och ta emot
+e-post, som Eudora, elm och /bin/mail, kallas MUA (mail user agent). En MUA
+skickar inte e-post, utan vidarebefordrar den endast till sendmail, som
+får ta hand om själva skickandet.
+
+<p>En MUA kan köras på systemet (t ex pine, elm och /bin/mail) eller på en
+separat dator (t ex Eudora, Exchange och Netscape Communicator). I det
+första fallet skickas e-post genom att sendmail direkt kontaktas och
+meddelandet överförs, och e-post tas emot genom att meddelandet lagras i
+användarens e-post-spool-fil, där MUAn läser det. Om en MUA körs på en ensam
+dator skickas
+e-post genom att datorn kopplar upp sig till sendmail-processen på systemet
+med SMTP-protokollet, och e-post tas emot genom att datorn kopplar upp sig
+till en särskild POP3-server.
+
+<h3>Sendmail-modulen</h3>
+Startsidan för denna modul innehåller en tabell med ikoner, där varje ikon
+representerar en del av sendmails funktionalitet. En del funktioner bakom
+ikonerna kan saknas om de inte har satts upp i <tt>sendmail.cf</tt>. När
+man installerar sendmail kan man välja de funktioner som ska finnas genom att
+ändra en <tt>.mc</tt> som konverteras av <tt>m4</tt> till <tt>sendmail.cf</tt>.
+Många funktioner, t ex domänmaskering och spamskydd, måste aktiveras vid
+installationen för att finnas tillgängliga.
+
+<hr>
+

@@ -1,0 +1,23 @@
+<header>Bases de dades d'àlies utilitzades per l'agent de lliurament local</header>
+
+<center><tt>alias_maps</tt></center>
+<hr>
+
+Aquest paràmetre especifica la llista de bases de dades d'àlies utilitzades
+per l'agent de lliurament local. La llista per defecte depèn del sistema.
+EN sistemes amb NIS, el valor per defecte és buscar a la base de dades 
+d'àlies local i llavors a la base de dades d'àlies del NIS. Vegeu 
+<a href=aliases>aliases</a> pels detalls de la sintaxi.
+
+<p>
+
+En són configuracions típiques:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>hash:/etc/postfix/aliases</tt>
+<li> <tt>hash:/etc/aliases, nis:mail.aliases</tt>
+</ul>
+
+<hr>
+

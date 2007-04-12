@@ -1,0 +1,20 @@
+<header>Bazy aliasów tworzone przez Postfiksa</header>
+
+<center><tt>alias_database</tt></center>
+<hr>
+
+Ten parametr okre¶la bazy aliasów tworzone poleceniem &quot;newaliases&quot;
+lub &quot;sendmail -bi&quot;. Jest to osobny parametr konfiguracyjny, gdzy¿
+niekoniecznie wszystkie tabele okre¶lone przez <a href=opt_alias_maps>
+<tt>alias_maps</tt></a> musz± byæ kontrolowane przez Postfiksa. <p>
+
+Typowe konfiguracje to:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>dbm:/etc/mail/aliases</tt>
+<li> <tt>hash:/etc/aliases</tt>
+<li> <tt>hash:/etc/aliases, hash:/opt/majordomo/aliases</tt>
+</ul>
+
+<hr>

@@ -1,0 +1,15 @@
+mysqlshow=¦cie¿ka do polecenia <tt>mysqlshow</tt>,0
+mysqladmin=¦cie¿ka do polecenia <tt>mysqladmin</tt>,0
+mysql=¦cie¿ka do polecenia <tt>mysql</tt>,0
+mysqldump=¦cie¿ka do polecenia <tt>mysqldump</tt>,0
+mysqlimport=¦cie¿ka do polecenia <tt>mysqlimport</tt>,0
+start_cmd=Polecenie uruchamiaj±ce serwer MySQL,0
+stop_cmd=Polecenie zatrzymuj±ce serwer MySQL,3,Automatycznie
+mysql_libs=¦cie¿ka do katalogu bibliotek wspó³dzielonych MySQL,3,Brak
+login=Login administracyjny,0
+pass=Has³o administracyjne,0
+perpage=Ilo¶æ wy¶wietlanych linii na stronie,0
+style=Pokazywaæ bazy danych i&nbsp;tabele jako,1,1-Listê,0-Ikony
+add_mode=Korzystaæ z&nbsp;interfejsu pionowej edycji wierszy,1,1-Tak,0-Nie
+host=Host MySQL-a&#44; z&nbsp;którym siê ³±czyæ,3,Localhost
+sock=Plik gniazd MySQLa,3,Domy¶lny

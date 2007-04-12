@@ -1,0 +1,40 @@
+<header>Editar Proceso</header>
+
+Esta página muestra detalles de un proceso en ejecución. En la parte superior
+se muestra la siguiente información:
+<dl>
+<dt><b>Comando</b>
+<dd>El programa y argumento de línea de comandos de este proceso
+<dt><b>ID de Proceso</b>
+<dd>La ID única de proceso
+<dt><b>Proceso Padre</b>
+<dd>El proceso que creó a éste. Haz click en él para ver los detalles del
+    padre.
+<dt><b>Usuario</b>
+<dd>El usuario propietario de este proceso y bajo cuyos permisos se ejecuta
+<dt><b>Uso de UCP</b>
+<dd>El porcentaje de tiempo de UCP que este proceso usa en este momento
+<dt><b>Medida</b>
+<dd>La cantidad de memoria ocupada por este proceso. Alguna de ella puede
+    que esté compartida por otros procesos.
+<dt><b>Tiempo de Ejecución</b>
+<dd>La cantidad total de tiempo de UCP usado por este proceso desde que fue
+    iniciado, en minutos. A menos que el proceso sea de uso muy intenso de UCP,
+    no debe de ser el mismo que el número de minutos transcurridos desde que
+    empezó.
+<dt><b>Nivel de Nice</b>
+<dd>La prioridad con que este proceso se ejecuta. Hay
+    <a href=nice.es>más información</a> disponible a cerca del nivel de nice.
+</dl>
+Se puede mostrar información adicional, dependiendo de la versión exacta de
+Unix que estés ejecutando. <p>
+
+Bajo la información de procesos hay un botón para enviar una señal al
+proceso. Selecciona la señal que quieres enviar de la lista disponible, luego
+haz click en el botón de <tt>Enviar Señal</tt>. Las señales más útiles son
+<tt>KILL</tt> y <tt>TERM</tt>, para matar procesos. <p>
+
+Si este proceso tiene algunos hijos, serán mostrados en la parte inferior de
+la página. Haz click en una ID de la lista para ver información detallada.
+<hr>
+

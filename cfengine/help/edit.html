@@ -1,0 +1,31 @@
+<header>Edit Class</header>
+
+This page allows you to set the details of an action for some class.
+The first field on the page is always the 'Apply to class' input, which
+allows you to choose which class or classes the settings below it apply
+to. By default the class is Any, which means that the action will be
+carried out every time the configuration engine is run. However if you
+choose to enter something into the class field, the action may or may
+not be run depending on the operating system type, hostname, current time
+or other factors. <p>
+
+The actual classes in effect are determined dynamically by CFengine at run
+time. Useful ones are the system hostname with dots replace with underscores
+(like <tt>foo_bar_com</tt>), the short hostname (like <tt>foo</tt>), the 
+OS type (like <tt>linux</tt> or <tt>solaris</tt>), the current day of 
+the week (like <tt>Monday</tt>), day of the month (like <tt>Day16</tt>), or
+the month (like <tt>May</tt>). You can see the complete list of classes
+available on your system by running CFengine in verbose mode. <p>
+
+Multiple classes can be specified by separating them with | characters. So
+to have your action run on both the hosts <tt>foo</tt> and <tt>bar</tt>, you
+could enter <tt>foo|bar</tt> into the class field. <p>
+
+The input fields below the class are dependant on the type of action being
+edited. If the action type is not supported by Webmin, the actual configuration
+file lines will be shown instead for manual editing. You can also switch to
+manual mode by clicking on the <i>Edit Manually</i> button at the bottom
+of the page. <p>
+
+<hr>
+

@@ -1,0 +1,5 @@
+log_modify=Zmieniono zasób NFS $1
+log_rename=Zmieniono zasób NFS $1 na $2
+log_create=Utworzono zasób NFS $1
+log_delete=Skasowano zasób NFS $1
+log_apply=Zastosowano zmiany

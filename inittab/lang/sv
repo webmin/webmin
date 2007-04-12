@@ -1,0 +1,41 @@
+inittab_title=Startinställningar för SysV
+inittab_new=Skapa en ny init-process
+inittab_id=Processnamn
+inittab_runlevels=Nivå för utförande
+inittab_action=Agera
+inittab_process=Process
+inittab_none=Ingen
+inittab_respawn=Fortsätt
+inittab_wait=Vänta
+inittab_once=En gång på nivå
+inittab_boot=Vid start
+inittab_bootwait=Vid start, vänta på avslutning
+inittab_off=Gör ingenting
+inittab_ondemand=Alltid vid A, B, C
+inittab_initdefault=På standardnivå
+inittab_sysinit=Under systemstart
+inittab_powerwait=Vid strömavbrott
+inittab_powerfail=Vid strömavbrott, utan dröjsmål
+inittab_powerokwait=Då strömmen kommer tillbaka
+inittab_powerfailnow=Vid UPS-svikt
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Speciell tangentkombination
+inittab_return=inittab-index
+
+edit_inittab_err=Du får inte ändra processer
+edit_inittab_title=Ändra process $1
+edit_inittab_details=Uppgifter om process
+edit_inittab_del=Ta bort
+edit_inittab_save=Spara
+
+new_inittab_err=Du får inte skapa en ny process
+new_inittab_title=Ny process
+
+save_inittab_err=Du får inte spara processer
+save_inittab_noid=Fel! Du har inte angivit något namn för processen
+save_inittab_already=Fel! Det finns redan en process med detta namn
+
+log_modify=Modifierade init-process $1
+log_rename=Bytte namn på init-process $1 till $2
+log_create=Skapadeinit-process $1
+log_delete=Tog bort init-process $1

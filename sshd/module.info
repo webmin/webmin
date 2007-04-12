@@ -1,0 +1,12 @@
+name=SSHD
+desc=SSH Server
+category=servers
+desc_pl=Serwer SSH
+desc_ca=Servidor SSH
+desc_es=Servidor SSH
+desc_de=SSH-Server
+desc_ru_SU=уЕТЧЕТ SSH
+desc_ru_RU=Сервер SSH
+longdesc=Setup the SSH server for remote secure logins.
+desc_fr=Serveur SSH
+desc_sk=SSH Server

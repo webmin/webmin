@@ -1,0 +1,18 @@
+<header>Permet l'encaminament no fiable</header>
+
+<center><tt>allow_untrusted_routing</tt></center>
+<hr>
+
+Aquest paràmetre controla si Postfix reenviarà el correu amb encaminament
+específic delremitent (usuari[@%!]remot[@%!]lloc) des de clients no fiables
+a les destinacions que es beneficien del paràmetre 
+<a href=opt_relay_domains><tt>relay_domains</tt></a>.
+
+<p>
+
+Per defecte, els clients no fiables no tenen permès d'especificar
+l'encaminament. Això tanca un forat empipador de reenviament a través del
+qual un host MX secundari pot ser induït a reenviar correu-brossa a un
+host MX primari que llavors l'escamparà per tot el món.
+
+<hr>

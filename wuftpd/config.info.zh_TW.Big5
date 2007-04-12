@@ -1,0 +1,7 @@
+ftpd_path=到 weftpd 的完整路徑,0
+ftpaccess=到 ftpaccess 的完整路徑,0
+ftpconversions=到 ftpconversions 的完整路徑,0
+ftpgroups=到 ftpgroups 的完整路徑,0
+ftphosts=到 ftphosts 的完整路徑,0
+ftpusers=到 ftpusers 的完整路徑,0
+pid_file=FTP 伺服器 PID 檔案,0

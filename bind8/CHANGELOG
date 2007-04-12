@@ -1,0 +1,58 @@
+---- Changes since 1.130 ----
+A new Module Config option is available to define extra DNS record types for the module to support in a generic way. This allows user who want to create obscure types like NAPTR, KEY and so on to do so.
+---- Changes since 1.140 ----
+Added an ACL option to limit allowed record types.
+Views are now added to the file specified in the Module Config, rather than to named.conf.
+The file in Module Config for new views and zones is only used if it is included into named.conf.
+---- Changes since 1.150 ----
+Added a button for selecting a free IP address when adding Address records, and a Module Config page option for entering IP allocation ranges.
+Added basic support for delegation-only zones.
+Created two new bind8-lib.pl functions for creating and deleting slave zones, for use by remote callers to avoid transferring large amounts of data via RPC calls.
+If the rndc command is installed but does not re-load a zone properly, the ndc command will be attempted as well if possible.
+---- Changes since 1.160 ----
+Added a Module Config option to control whether or not the PID file is under the chroot directory.
+---- Changes since 1.180 ----
+Added a new display mode for the zones list - an expandable tree categorized by parent domain.
+---- Changes since 1.190 ----
+Slave zones now display the last date on which they were transferred.
+When using date-based SOAs, the starting number for the serial can be specified in the module configuration.
+Added button for re-downloading the root zone nameservers, which may occasionally change.
+---- Changes since 1.200 ----
+Basic information about all domains is now kept in a separate cache file, which can be read faster than the primary named.conf file. This speeds up the zone list and editing of records on systems that have a large number of domains.
+More than one slave server to add new master zones to can now be defined, and zones will be added, deleted and applied on all at once. When a slave is added, existing master zones can also be converted to new slave zones on it.
+Multiple master, slave or forward zones can now be created at once from a batch file, using a new link on the module's index page.
+When a list view is used for zones, several can now be selected at once and deleted using a single button.
+---- Changes since 1.210 ----
+Added a new page for setting up RNDC on BIND version 9, so that individual zones can be reloaded.
+Updated the Control Interface Options to be more consistent with the rest of the module.
+Added support for easily creating SPF records. Even though these are really TXT records, they now appear as a separate type in this module.
+---- Changes since 1.220 ----
+Moved the option for the default nameserver for new master domains to the Zone Defaults page, where it is more obvious.
+---- Changes since 1.240 ----
+Added a Module Config option for Unix time serial numbers.
+Multiple records in a zone can be deleted at once using checkboxes in the records list.
+---- Changes since 1.250 ----
+When deleting a zone, the .log or .jnl file created by BIND for dynamic DNS updates is also removed.
+Added an icon for manually editing the BIND master configuration file.
+Reverse IPs are updated even when the forward record names are not fully canonicalized.
+Added an ACL option to allow a Webmin user to apply the BIND configuration, but not stop or start the server.
+---- Changes since 1.260 ----
+When adding a cluster slave DNS server, you can specify that slave zones created locally should also be created on the slave too, with the same settings.
+Added a Module Config option to not read or display records in a zone by default, which speeds up the process of adding records to very large zones. Thanks to Walgreens for sponsoring this feature.
+When deleting multiple Address records, their corresponding reverse records can be deleted as well.
+Cluster slave DNS servers can have an alternative hostname specified, for use in the NS records on the master when a new zone is added.
+Added a field on the Addresses and Topology page for controlling which clients can make recursive queries.
+When an automatic filename is chosen for a zone added to a view, the view name is included in order to avoid clashes.
+---- Changes since 1.270 ----
+Added support for the TLS protocol in SRV records.
+Added select all / invert links to slave servers list.
+---- Changes since 1.300 ----
+In the template records file, $IP and $DOM will be substituted with the IP address and domain name when creating a new master zone.
+---- Changes since 1.310 ----
+Added an option to the master zone creation page to create PTR records for for template A records.
+---- Changes since 1.320 ----
+Added a button on the main page for updating the values of records in multiple domains at once. Useful for mass IP address changes.
+---- Changes since 1.330 ----
+Allowed views are now enforced when adding multiple zones from a batch file.
+---- Changes since 1.340 ----
+Updated the Edit Record form to use ui-lib.pl, for easier theming.

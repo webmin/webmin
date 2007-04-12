@@ -1,0 +1,20 @@
+<header>Transport-uppslagningstabeller</header>
+
+<center><tt>transport_maps</tt></center>
+<hr>
+
+Denna parameter anger tabeller för (transport, nexthop)-översättningar.
+Se <a href=transport>Transportuppslagning</a> för information om syntax.
+
+<p>Standard är att denna inställning är avslagen. Ange de typer av
+databaser som ska användas.
+
+<p>Vettiga värden:
+<ul>
+<li> <tt>dbm:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, nis:transport</tt> 
+<li> <tt>hash:/etc/postfix/transport, netinfo:/transport</tt> 
+</ul>
+
+<hr>

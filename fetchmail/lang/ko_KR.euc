@@ -1,0 +1,33 @@
+index_title=Fetchmail 메일 검색
+index_poll=폴링할 서버
+index_proto=프로토콜
+index_users=원격 및 로컬 사용자
+index_add=새 서버 추가
+index_run=나열된 서버 검사
+index_user=Unix 사용자
+index_conf=Fetchmail 구성
+index_ok=사용자의 Fetchmail 구성 편집:
+index_file=$1의 Fetchmail 구성
+index_return=서버 목록
+
+poll_create=서버 추가
+poll_edit=서버 편집
+poll_header=메일 서버 옵션
+poll_poll=서버 이름
+poll_skip=폴링 기능을 설정합니까?
+poll_via=연락할 메일 서버
+poll_via_def=서버 이름과 동일
+poll_proto=프로토콜
+poll_port=서버 포트
+poll_uheader=메일 서버 사용자 세부 정보
+poll_user=원격 사용자
+poll_pass=원격 사용자 암호
+poll_is=로컬 사용자
+poll_keep=서버에 메시지를 저장합니까?
+poll_fetchall=항상 모든 메시지를 항상 가져옵니까?
+poll_err=서버를 저장하지 못했습니다
+poll_epoll=없거나 잘못된 서버 이름
+poll_evia=잘못된 메일 서버 이름
+poll_eport=없거나 잘못된 포트 번호
+poll_euser=없거나 잘못된 원격 사용자 이름
+

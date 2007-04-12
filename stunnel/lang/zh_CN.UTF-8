@@ -1,0 +1,66 @@
+index_title=SSL通道
+index_name=服务名称
+index_port=TCP端口
+index_active=启动？
+index_command=Stunnel 命令
+index_add=新增 SSL 通道。
+index_none=当前没有安装 SSL 通道以运行 <tt>inetd</tt> 或者 <tt>xinetd</tt>。
+index_estunnel=在你的系统中没有找到 STunnel 命令 $1。可能没有安装 STunnel，或者你的<a href='$2'>模块配置</a>有误。
+index_apply=应用变更
+index_applymsg1=单击此按钮可以通过给正在运行的 <tt>inetd</tt> 和 <tt>xinetd</tt> 发送 HUP 信号来启动你当前的 SSL 通道配置。
+index_applymsg2=单击此按钮可以通过给正在运行的<tt>inetd</tt>发送HUP信号来启动你当前的 SSL 通道配置。
+index_applymsg3=单击此按钮可以通过给正在运行的 <tt>xinetd</tt> 发送HUP信号来启动你当前的 SSL 通道配置。
+index_return=SSL 通道列表
+index_action=通道目标文件
+index_cmd=运行命令 $1
+index_remote=连接到主机 $1
+index_rport=连接到端口 $1
+index_version=STunnel 版本 $1 
+
+edit_title=编辑 SSL 通道
+create_title=创建 SSL 通道
+edit_header1=通道源选项
+edit_name=服务名称
+edit_port=TCP 端口
+edit_active=启动？
+edit_header2=通道目标文件选项
+edit_mode0=运行 <tt>inetd</tt> 程序 
+edit_mode1=在 PTY 中运行程序
+edit_mode2=连接到远程主机
+edit_cmd=程序的路径
+edit_args=带有自变量
+edit_rhost=远程主机名称
+edit_rport=远程端口
+edit_header3=其他选项
+edit_pem=SSL 证书和密钥文件
+edit_pem0=编译默认值
+edit_pem1=使用 Webmin 证书
+edit_pem2=使用文件中的证书
+edit_cmode=通道模式
+edit_cmode0=接受 SSL 而且正常连接
+edit_cmode1=接受正常并且以 SSL 连接
+edit_tcpw=TCP-wrappers 名称
+edit_auto=自动
+edit_iface=送出源地址
+edit_type=运行
+
+save_err=无法保存 SSL 通道
+save_enclash=服务名称 $2 已用于端口 $1。
+save_einetd=已经有一个名为 $1 的 inetd 服务了。
+save_ename=未输入或无效的服务名称
+save_eport=无效的远程端口
+save_ecmd=未输入或无效的程序
+save_erhost=无效的远程主机名
+save_eport=无效的远程端口
+save_epclash=端口 $1 已用于服务 $2。
+save_epem=SSL 证书文件 $1 不存在
+save_etcpw=未输入或无效的 TCP-wrappers 名称
+save_eiface=未输入或无效的送出源地址
+save_exinetd=已有一个名为 $1 的 xinetd 服务
+save_export=端口 $1 已用于 xinetd 服务 $2
+
+log_apply=应用变更
+log_create=已创建 SSL 通道 $1
+log_delete=已删除 SSL 通道 $1
+log_modify=已修改 SSL 通道 $1
+

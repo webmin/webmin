@@ -1,0 +1,12 @@
+name=Logrotate
+desc=Log File Rotation
+category=system
+depends=cron
+desc_de=Logdatei-Rotation
+longdesc=Set up the automatic rotation of Apache, Squid, Syslog and other log files.
+desc_ca=Rotació de Fitxers de Registre
+readonly=1
+os_support=!windows
+desc_es=Rotaci&#243;n de Hist&#243;ricos (Logs)
+desc_sk=Archivácia systémových záznamov
+desc_fr=Rotation de fichier journal

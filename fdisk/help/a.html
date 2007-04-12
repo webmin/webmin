@@ -1,0 +1,5 @@
+<header>Sector Count</header>
+Set sector count for filesystem read-ahead.<p>
+
+This is used to improve performance in sequential reads of large files, by prefetching additional blocks in anticipation of them being needed by the running task.  In the current kernel version (2.0.10) this has a default setting of 8 sectors (4 kB).  This value seems good for most purposes, but in a system where most file accesses are random seeks, a smaller setting might provide better performance.  Also, many IDE drives also have a separate built-in read-ahead function, which alleviates the need for a filesystem read-ahead in many situations.
+<hr>

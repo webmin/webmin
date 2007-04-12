@@ -1,0 +1,8 @@
+<header>Interrupt unmask</header>
+Set interrupt-unmask flag for the drive.<p>
+
+Enabled the driver to unmask other interrupts during processing of a disk interrupt, which greatly improves Linux's responsiveness and eliminates "serial port overrun" errors.<p>
+
+<u>Use this feature with caution</u>: some drive/controller combinations do not tolerate the increased I/O latencies possible when this feature is enabled, resulting in <i>massive filesystem corruption</i>.<br>
+In particular CMD-640B and RZ1000 (E)IDE interfaces can be unreliable (due to a hardware flaw) when this option is used with kernel versions earlier than 2.0.13.<br>
+<hr>

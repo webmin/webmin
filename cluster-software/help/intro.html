@@ -1,0 +1,38 @@
+<header>Cluster Software Packages</header>
+
+This Webmin module allows you to manage the software installed on
+multiple servers in a cluster from the one interface. It is similar to
+the Software Packages module, but with the ability to perform most
+functions (like installation, querying and deletion of packages) on
+many Webmin servers in one operation. <p>
+
+The top part of the main page under the Managed Servers heading lists
+other Webmin servers whose software is being managed by this module. To
+add a server to this list, you must first add it to the Webmin Servers
+module, with a username and password specified to login to Webmin on
+that server. You can then select the server from the list next to the
+Add Server button. <p>
+
+When a server is added, the module will check to make sure it is using
+the same package management system as this server (such as RPM or Debian),
+and then download a list of all installed packages for caching locally. <p>
+One server that will always appear on the list of those available to
+add is 'this server', so that you can manage packages locally and on
+multiple remote servers from the one interface. <p>
+
+Once there is at least one icon under Managed Servers, you can use the
+Installed Packages form to search for packages on all servers, or click
+the Refresh package lists button to re-fetch the package list from all
+servers if packages have been added or deleted via some other module
+or method. <p>
+
+At the bottom of the page is a form for installing new packages on
+all the managed servers. You can select to install from a file on this
+server, from an uploaded file or from a file downloaded via HTTP or FTP
+from some other site. When installing from a downloaded file, you can
+choose whether each managed server should re-download the package from
+the original site, or receive a copy from this server. The former option
+will be faster if the site the package is on is within your local network. <p>
+
+<hr>
+

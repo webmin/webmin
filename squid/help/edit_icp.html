@@ -1,0 +1,16 @@
+<header>Other Caches</header>
+
+<b>Other proxy cache servers</b>: This lists all currently configured sibling, parent, and multicast, caches.  Click on the hostname or address to edit or see it complete configuration. <p>
+
+<b>Directly fetch URLs containing</b>: Defaults to ".cgi" and "?".  Allows you to force Squid to always fetch certain content types directly from the origin server.  Ordinarily this needs no modification, as most things are handled automatically by Squid without help. <p>
+
+<b>ICP query timeout</b>: Defaults to an 'optimal' value.  If you want to override the value determined by Squid, set this to a non-zero value.  The default in old versions of Squid was 2000. <p>
+
+<b>Multicast ICP timeout</b>: Defaults to 2000msec or 2 seconds.  For Multicast peers, Squid regularly sends out ICP "probes" to count how many other peers are listening on the given multicast address.  This value specifies how long Squid should wait to count all the replies.<p>
+
+<b>Dead peer timeout</b>: Defaults to 10 seconds.  This controls how long Squid waits to declare a peer cache as "dead."  If there are no ICP replies received in this amount of time, Squid will declare the peer dead and not expect to receive any further ICP replies.  However, it continues to send ICP queries, and will mark the peer as alive upon receipt of the first subsequent ICP reply. <p>
+
+This timeout also affects when Squid expects to receive ICP replies from peers.  If more than 'dead_peer' seconds have passed since the last ICP reply was received, Squid will not expect to receive an ICP reply on the next query.  Thus, if your time between requests is greater than this timeout, you will see a lot of requests sent DIRECT to origin servers instead of to your parents. <p>
+
+<hr>
+

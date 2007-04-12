@@ -1,0 +1,69 @@
+<body bgcolor=#ffffff>
+<title>Comandi e Lavori Pianificati</title>
+<center><img src="images/cron.gif"></center><br>
+<h2><i>This help page is incomplete</i></h2>
+<hr>
+<h3>Introduzione</h3>
+Questo modulo pu&ograve; essere usato per impostare i comandi da eseguire
+automaticamente in momenti schedulati. Usa il demone standard Unix <tt>cron</tt>,
+che pu&ograve; eseguire comandi in nome di vari utenti al minuto,ora, giorno del
+mese, giorno della settimana e mese selezionati. Ogni job (lavoro) appartiene ad un
+utente, e quando viene eseguito possiede i permessi di quell'utente. <p>
+
+La pagina principale del modulo elenca tutti i job schedulati, raggruppati per
+utente proprietario. Qualche sistema ha dei job che sono parte del sistema 
+operativo, di propriet&agrave; di utenti come <tt>root</tt> o <tt>sys</tt>.
+Ci possono anche essere job creati da utenti sul tuo sistema usando il comando
+<tt>crontab</tt>, appartenenti all'utente che li ha creati. <p>
+
+<hr>
+<h3>Creare un Nuovo Job Pianificato</h3>
+Per creare un nuovo job, clicca <tt>Crea un nuovo cron job pianificato</tt> sotto
+la lista dei job esistenti. Questo mostrer&agrave; un form per l'inserimento dei
+seguenti parametri:
+	<ul>
+	<li><b>Esegui il cron job come</b><br>
+        Il nome di login dell'utente Unix che il job impersoner&agrave;. <p>
+	<li><b>Attivo?</b><br>
+	    Se un job non &egrave; attivo, verr&agrave; visualizzato nella lista dei
+        job conosciuti, ma non verr&agrave; eseguito. <p>
+	<li><b>Comando</b><br>
+	    Il comando Unix da eseguire nei momenti pianificati. Pu&ograve; essere
+        qualsiasi comando che puoi avviare alla linea di comando. <p>
+	<li><b>Input al comando</b><br>
+	    Se questo campo non &egrave; vuoto, quello che ci scrivi verr&agrave;
+        fornito come input al comando quando &egrave; in esecuzione. Per esempio,
+        se il comando fosse <tt>mail pippo@pluto.com</tt> e l'input
+        <tt>ciao mondo</tt>, allora la scritta in input verrebbe spedito in email a
+        <tt>pippo@pluto.com</tt>. <p>
+	<li><b>Quando eseguire</b><br>
+        I {momenti} in cui eseguire un comando sono scelti specificando i
+        minuti, ore, giorni del mese, mesi dell'anno e giorni della settimana.
+	    Per ognuno di questi puoi scegliere <tt>Tutti</tt>, o selezionare i 
+        {momenti} in cui il comando deve essere eseguito. <p>
+        Per esempio, se scegliessi 5 per l'ora e marted&igrave; per il giorno allora
+        il comando verrebbe eseguito ogni minuto dalle 5:00am alle 5:59pm di ogni 
+        marted&igrave;. <br>
+        Invece, se scegliessi 30 per il minuto e 14 per l'ora, il comando verrebbe
+        eseguito tutti i giorni alle 14:30. <p>
+
+	</ul><p>
+
+Una volta che hai riempito il form, clicca sul pulsante <tt>Crea</tt> alla
+vine della pagina. Il nuovo job sar&agrave; attivo immediatamente. <p>
+
+<hr>
+<h3>Modificare un Job Pianificato Esistente</h3>
+Per modificare un job esistente, clicca sul comando nella lista dei job nella
+pagina principale. Il form per modificare un job esistente &egrave; lo stesso
+del form per creare un nuovo job, sopra descritto. Una volta che hai fatto la
+modifica, clicca sul pulsnte <tt>Salva</tt> alla fine della pagina. <p>
+
+Per eliminare un job, clicca sul pulsante <tt>Elimina</tt> alla fine della pagina
+di modifica del job. Ci&ograve; causer&agrave; l'eliminazione immediata del job 
+senza chiedere conferma. <p>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Ritorna al modulo</a><p>
+

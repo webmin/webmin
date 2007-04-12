@@ -1,0 +1,50 @@
+<header>SMF Module Service Listing</header>
+<h2><i>This help page is incomplete</i></h2>
+<hr>
+<h3>Service Listing</h3>
+The listing displayed on this page is the result of running
+the svcs command using wildcard matching to display the required service 
+category, e.g. svcs network/*. Different categories (including all services)
+can be selected by selecting the category from the dropdown menu, and
+clicking "Update View". By default, only enabled services are shown,
+but this can be changed by checking the "Include Disabled Services" box
+and again clicking "Update View". Extra fields can be added to the view
+also (NextState and StartTime). <p>
+
+State changes/deletions can be applied to the services checked in the main
+window listing. Sorting can be carried out by any of the columns, and
+by default, services are sorted such that the "unusual" states appear
+at the top of the listing. <p>
+
+By clicking the FMRI field for a service, we can examine all associated
+details, from the basic (on the main instance viewer page) such as
+name/description, to all the properties. <p>
+ 
+Clicking the "Create New Serivce" button brings up the SMF service creation
+wizard, which collects the required information to create a new SMF service,
+formats it into a manifest and imports it into the SMF repository. Successful
+import will result in the service appearing in the main services listing.<p>
+
+Clicking the "Search for Services" button brings up a search form. Entering
+a part of service FMRI is sufficient to find all matching FMRIs, e.g.
+"nfs" retrieves all nfs services. A "browse" facility is also supplied. <p>
+
+<h3>For more information</h3>
+Please consult the following manual pages which will help you get to know
+SMF:
+
+<ul>
+<li><a href="/man/view_man.cgi?page=smf&sec=5">smf(5)</a>
+<li><a href="/man/view_man.cgi?page=service_bundle&sec=4">service_bundle(4)</a>
+<li><a href="/man/view_man.cgi?page=svccfg&sec=1M">svccfg(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcadm&sec=1M">svcadm(1M)</a>
+<li><a href="/man/view_man.cgi?page=svc.startd&sec=1M">svc.startd(1M)</a>
+<li><a href="/man/view_man.cgi?page=svc.configd&sec=1M">svc.configd(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcprop&sec=1M">svcprop(1M)</a>
+<li><a href="/man/view_man.cgi?page=svcs&sec=1M">svcs(1M)</a> <p>
+</ul><p>
+
+<hr>
+<form>
+<input type="button" onClick='window.close()' value="Close Window">
+</form>

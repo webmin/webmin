@@ -1,0 +1,40 @@
+<header>Acceso de Lectura-Escritura</header>
+
+Esto determina qué máquinas tienen acceso de lectura-escritura a esta
+compartición.
+Hay tres elecciones para esta opción:
+<ul>
+<li><b>Ninguna</b><br>
+    Ninguna máquina tiene acceso de sólo-lectura.
+<li><b>Todas las máquinas</b><br>
+    Cualquier máquina puede montar esta compartición como de sólo-lectura.
+    Si estás conectado a Internet, esto quiere decir que cualquiera a nivel
+    mundial puede leer archivos de este directorio exportado.
+<li><b>Máquinas listadas</b><br>
+<if $gconfig{'os_version'} < 7>
+    Las máquinas o direcciones IP listadas debajo pueden montar esta
+    compartición como de sólo-lectura.
+<else>
+    Las máquinas que coincidan con las listadas debajo pueden montar esta
+    compartición como de sólo-lectura. Las máquinas pueden ser especificadas
+    de la siguiente manera:<p>
+	<dl>
+	<dt><b>Nombre de máquina o dirección IP</b> (como <i>ftp.foo.com</i> o <i>1.2.3.4</i>)
+	<dd>Que coincida la máquina del mismo nombre o dirección
+	<dt><b>Grupo de Red</b> (como <i>ingeniería</i>)
+	<dd>Que coincida cualquier máquina que sea miembro del grupo de red
+	<dt><b>Dominio DNS</b> (como <i>.foo.com</i>)
+	<dd>Que coincida cualquier máquina del dominio
+	<dt><b>Red</b> (como <i>@10.254.1</i>)
+	<dd>Que coincida cualquier máquina de la red
+	<dt><b>Red/máscara de red</b> (como <i>@10.254.1/24</i>)
+	<dd>Que coincida cualquier máquina de la red
+	</dl><p>
+    Además, cualquiera de las anotaciones de arriba puede llevar el
+    prefijo <i>-</i>, queriendo esto decir que la máquina, grupo de red,
+    dominio o red <b>no</b> tiene permisos para montar esta compartición.
+    Esto puede ser útil si desea permitir el acceso a un conjunto de máquinas
+    pero denegárselo a un miembro.
+</if>
+</ul>
+<hr>

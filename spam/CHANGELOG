@@ -1,0 +1,10 @@
+---- Changes since 1.200 ----
+Added a new icon for re-configuring where Procmail delivers mail classifies as Spam.
+---- Changes since 1.210 ----
+Simplified the Header and Body Tests page, to more easily allow the definition of rules using the header, score and describe directives.
+---- Changes since 1.250 ----
+Updated the setup and procmail delivery pages to allow forwarding of spam to an email address.
+---- Changes since 1.270 ----
+Added a Module Config option for specifying a command other than spamassassin (such as spamc) to use in the procmailrc file. This defaults to an automatic mode, where spamc is used if spamd is running.
+---- Changes since 1.300 ----
+Added Module Config options for commands to run before and after saving SpamAssassin config changes.

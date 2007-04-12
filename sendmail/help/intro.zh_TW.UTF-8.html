@@ -1,0 +1,14 @@
+<header>Sendmail 組態</header>
+
+<h3>Sendmail 簡介</h3>
+Sendmail 是一個標準的 Unix 郵件傳輸與遞送程式. 當一個在您系統上的使用者想要寄出一個電子郵件給在其他主機上的使用者時, Sendmail 是執行實際遞送程序的程式. 相似的, 對於其他系統使用者寄送郵件給您系統上的使用者時, Sendmail 會接收這些郵件並儲存在使用者的信箱檔案之中. <p>
+
+Sendmail 只是一個 MTA (郵件傳輸代理), 這表示他並不包含任何的使用者介面給要遞送郵件的人. 其他例如 Eudora, elm 或 /bin/mail 才是與使用者互動的 MUA (郵件使用者代理). 然而 MUA 不會自己遞送郵件, 而指使處理要求並由 Sendmail 負責遞送. <p>
+
+使用者的 MUA 可以直接在您的系統上執行 (例如 pine, elm 或 /bin/mail) 或者在其他的個人 PC 上面執行 (例如 Eudora, Exchange 或 Netscape 通訊家). 在第一個狀況下, 郵件是直接呼叫 Sendmail, 並將郵件本體送給 Sendmail; 或者直接讀取使用者的信件佇列檔案. 對於在其他系統上執行的 MUA 而言, 遞送郵件是經由 SMTP 與您系統上的 Sendmail 程序連接, 並使用額外的 POP3 伺服器接收信件. <p>
+
+<h3>Sendmail 模組</h3>
+這個模組的主頁顯示出一系列的圖示, 每一個都可以組態不同部分的 Sendmail 功能. 然而, 某些圖示所對應的功能可能不能使用. 這是因為在您的 <tt>sendmail.cf</tt> 中設定沒有相關的功能. 當安裝 Sendmail 時, 您可以編輯 <tt>.mc</tt> 檔案以選擇要使用的功能, 並且以 <tt>m4</tt> 轉換成您的 <tt>semdmail.cf</tt>. 許多的功能 (例如郵件位址對應, 網域偽裝與垃圾郵件控制等) 必須要您在安裝時以手動啟動之. <p>
+
+<hr>
+

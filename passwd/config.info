@@ -1,0 +1,4 @@
+max_users=Maximum number of users to display,0
+input_type=User selection type,1,1-List box,0-Text field
+sort_mode=Sort users by,1,0-Order in file,1-By username
+passwd_cmd=Command to change password,3,Update system files directly

@@ -1,0 +1,65 @@
+index_title=獣什奴 庚辞
+index_header=獣什奴 竺誤辞 凪戚走 伊事
+index_for=伊事 企雌
+index_where=伊事 是帖
+index_alldoc=乞窮 庚辞
+index_man=竺誤辞 凪戚走
+index_doc=鳶徹走 庚辞
+index_kernel=朕確 庚辞
+index_info=舛左 凪戚走
+index_howto=HOWTO 庚辞
+index_kde=KDE 庚辞
+index_perl=Perl 乞汲 庚辞
+index_help=Webmin 亀崇源
+index_reset=仙竺舛
+index_search=伊事
+index_return=伊事 丞縦
+index_type=析帖
+index_name=戚硯幻
+index_data=戚硯引 鎧遂
+index_other_man=竺誤辞 凪戚走
+index_other_help=Webmin 亀崇源
+index_other_doc=鳶徹走 庚辞
+index_other_kernel=朕確 庚辞
+index_other_howto=HOWTO 庚辞
+index_other_perl=Perl 乞汲 庚辞
+
+search_efor=伊事拝 竺誤辞 凪戚走研 脊径馬走 省紹柔艦陥
+search_title=伊事 衣引
+search_desc=竺誤
+search_type=政莫
+search_file=凪戚走 暁澗 督析
+search_man=竺誤辞 凪戚走
+search_howto=HOWTO 庚辞
+search_doc=鳶徹走 庚辞
+search_kernel=朕確 庚辞
+search_kde=KDE 庚辞
+search_perl=Perl 乞汲
+search_help=Webmin 亀崇源
+search_none=$1引(人) 析帖馬澗 庚辞亜 蒸柔艦陥.
+search_for=$1 伊事
+
+howto_title=HOWTO 庚辞
+howto_header=HOWTO 庚辞 督析 $1
+howto_epath=設公吉 HOWTO 庚辞 井稽
+
+doc_title=鳶徹走 庚辞
+doc_header=鳶徹走 庚辞 督析 $1
+doc_epath=設公吉 鳶徹走 庚辞 井稽
+
+man_title=竺誤辞 凪戚走
+man_header=$1税 竺誤辞 凪戚走($2)
+man_noentry=$1税 竺誤辞 凪戚走亜 糎仙馬走 省柔艦陥!
+
+kernel_title=朕確 庚辞
+kernel_header=朕確 庚辞 督析 $1
+kernel_epath=設公吉 朕確 庚辞 井稽
+
+kde_title=KDE 庚辞
+kde_header=KDE 庚辞 督析 $1
+kde_epath=設公吉 KDE 庚辞 井稽
+
+perl_title=Perl 乞汲
+perl_header=Perl 乞汲 $1 庚辞
+perl_emod=設公吉 Perl 乞汲 戚硯
+

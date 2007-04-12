@@ -1,0 +1,7 @@
+line2=System configuration,11
+xinetd_conf=Xinetd configuration file,0
+protocols_file=Network protocols file,0
+pid_file=Path to Xinetd PID file,3,None (look for process instead)
+start_cmd=Command to start xinetd,0
+add_dir=Add new services to,15,add_dir
+lookup_servs=Lookup port numbers on main page?,1,1-Yes,0-No

@@ -1,0 +1,1 @@
+../mysql/view_table.cgi

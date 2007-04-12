@@ -1,0 +1,60 @@
+index_title=Hora del Sistema
+index_timeserver=Servidor Horari
+index_addresses=Nom de host o adreça del servidor horari
+index_zone=Zona horària
+index_eformat=Format de sortida de <tt>hwclock</tt> no reconegut
+index_sched=Sincronitza de forma planificada
+index_schedyes=Sí, a les hores de sota...
+index_sync=Sincronitza i Aplica
+index_hardware2=Estableix també el rellotge del maquinari
+index_tzheader=Zona Horària
+index_tz=Canvia la zona horària a
+
+action_save=Desa
+action_apply=Aplica
+action_sync=Sincronitza l'hora del sistema amb l'hora del maquinari
+action_sync_s=Sincronitza l'hora del maquinari amb l'hora del sistema
+action_timeserver_sys=Sincronitza l'hora del sistema
+action_timeserver_hw=Sincronitza l'hora del maquinari
+action_savezone=Canvia la zona horària
+
+acl_sys=L'usuari pot editar l'hora del sistema
+acl_hw=L'usuari pot editar l'hora del maquinari
+acl_timezone=L'usuari pot establir la zona horària
+acl_ntp=Pot sincronitzar amb el servidor horari
+acl_yes=Sí
+acl_no=No
+acl_error=Tens accés al mòdul de l'hora del sistema, però no pots editar no l'hora del sistema no l'hora del maquinari
+acl_nosys=No tens permís per editar l'hora del sistema
+acl_nohw=No tens permís per editar l'hora del maquinari
+acl_nontp=No tens permís per sincronitzar amb un servidor horari
+
+sys_title=Hora del Sistema
+hw_title=Hora del Maquinari
+
+day=Dia
+month=Mes
+date=Data
+hour=Hora
+year=Any
+
+error_cnf=Error: no s'ha trobat l'ordre $1
+error_hw=No puc establir l'hora del maquinari: $1
+error_sync=No puc sincronitzar amb l'hora del sistema: $1
+error_ediff=La diferència del servidor horari amb l'hora local és massa gran: $1 dies
+error_entp=La sincronització horària NTP ha fallat: $1
+
+log_set_date=Estableix l'hora del sistema a $1
+log_set_hwclock=Estableix l'hora del maquinari a $1
+log_remote_date=He obtingut l'hora del sistema de $2
+log_remote_hwclock=He obtingut l'hora del maquinari de $2
+log_remote_date_l=He obtingut l'hora del sistema $1 de $2
+log_remote_hwclock_l=He obtingut l'hora del maquinari $1 de $2
+log_sync=He sincronitzat l'hora del sistema amb l'hora del maquinari
+log_sync_s=He sincronitzat l'hora del maquinari amb l'hora del sistema
+log_timezone=He canviat la zona horària a $1
+
+timezone_err=No he pogut desar la zona horària
+timezone_ecannot=No tens permís per canviar la zona horària
+timezone_enone=No has seleccionat cap zona
+

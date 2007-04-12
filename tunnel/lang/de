@@ -1,0 +1,12 @@
+index_elink=Es wurde bisher noch keine URL zum tunneln angelegt.
+link_eautologin=Ung&#252;ltiges Login oder Passwort f&#252;r $1. <a href='$2'>Hier klicken</a> f&#252;r die Anmeldung.
+link_elogin=Konnte nicht nach $1 als $2 einloggen
+link_enouser=Ein Benutzername und Passwort ist f&#252;r das Einloggen auf $1 erfolrderlich. Bisher wurde noch keines konfiguriert.
+link_eurl=Ung&#252;ltige Tunnel-URL : $1
+login_clear=L&#246;schen
+login_desc=Sie m&#252;ssen einen Benutzernamen und ein Passwort zum Einloggen auf $1 angeben.
+login_header=Webseiten-Authentifizierung
+login_login=Login
+login_pass=Passwort
+login_title=Einloggen auf Webseite
+login_user=Benutzername

@@ -1,0 +1,201 @@
+TITLES:
+index_title=Монитор служб MON
+index_return=меню MON
+index_edir=Каталог MON $1 не существует. Возможно MON не установлен или неверна <a href='$2'>конфигурация модуля</a>.
+mon_global_title=Настройка глобальных переменных
+mon_conf_title=Общая настройка
+mon_status_title=Состояние
+hostgroups_title=Настройка MON - группы узлов
+services_title=Группы слежения - определения служб
+
+HEADERS:
+head_hostgroups=Группы узлов и службы
+head_groups=Название группы узлов
+head_members=Члены группы узлов
+head_services=Отслеживаемые службы группы узлов
+head_service=Отслеживаемая служба
+head_param=Настройка службы
+head_watch=Следить за группой?
+head_monauth=Предоставлять аутентификацию для MONCMD
+head_usr=Имя пользователя
+head_pass=Пароль
+head_mand=( Параметры, выделенные "КРАСНЫМ ЦВЕТОМ", являются обязательными )
+
+ERRORS:
+err_nomon=Пакет 'mon' в вашей системе не установлен
+err_nomonconf=Файл конфигурации MON $1 в вашей системе не обнаружен. Возможно MON не установлен, или неверна <a href='$2'>конфигурация модуля</a>.
+err_nowatch=Не выбраны группы слежения. Выберите хотя бы одну группу.
+err_noserv=Для группы слежения не выбрано ни одной службы
+err_nomemb=Для группы слежения не выбрано узлов/членов
+err_monrun=MON не запущен на узловой машине. Пожалуйста, запустите его.
+stop_err=Не удалось остановить MON
+stop_epid=Не запущен
+start_err=Не удалось запустить MON
+restart_err=Не удалось перезапустить MON
+restart_epid=Не удалось получить PID
+
+LABLES:
+other=Прочее (через пробел)
+next=Далее
+mon_stat=Состояние MON
+mon_off=Служба MON не запущена
+mon_start=Запустить службу MON
+mon_stop=Остановить службу MON
+mon_restart=Перезапустить службу MON
+mon_startdesc=Нажатие на эту кнопку приведет к запуску сервера MON. Пока сервер не запущен, слежение не производится.
+mon_stopdesc=Нажатие на эту кнопку остановит сервер MON. После останова сервера слежение не будет производится.
+mon_restartdesc=Нажатие на эту кнопку приведет к вступлению в действие текущей конфигурации MON. При этом процесс сервера будет перезапущен.
+line=(по одному в строке)
+save_apply=Сохранить и применить
+watch=Группа слежения
+members=Члены
+def_perargs=wd {Суб-Вск}
+
+SERVICES DEFINITIONS:
+def_desc=description
+def_inter=interval
+def_mon=monitor
+def_dep=dpend
+def_per=period
+def_alert=alert
+def_alertevr=alertevery
+def_alertaft=alertafter
+def_alertstr=startupalert
+def_allow=allow_empty_group
+def_traptime=traptimeout
+def_trapdur=trapduration
+def_rand=randskew
+def_exclhost=exclude_hosts
+def_exclper=exclude_period
+
+groups_title=Группы узлов
+groups_group=Название группы
+groups_members=Узлы-члены
+
+watches_title=Список слежения
+watches_group=Группа слежения
+watches_services=Отслеживаемые службы
+watches_sadd=Добавить службу..
+watches_add=Добавить список слежения в группу :
+watches_return=списка слежения
+
+global_title=Общая настройка
+global_header=Общая настройка MON
+global_maxprocs=Максимальное количество процессов MON
+global_histlength=Длина журнала событий
+global_alertdir=Каталог предупреждающих программ
+global_mondir=Каталог следящих программ
+global_authtype=Тип аутентификации
+global_authtype_=По умолчанию
+global_authtype_getpwnam=Системные вызовы
+global_authtype_userfile=Файл пользователей MON
+global_authtype_shadow=Теневой файл
+global_userfile=Файл пользователя MON
+global_emaxprocs=Количество процессов MON не указано или указано неверно
+global_ehistlength=Длина журнала событий не указана или указана неверно
+global_ealertdir=Каталог предупреждающих программ не указан или указан неверно
+global_emondir=Каталог следящих программ не указан или указан неверно
+global_euserfile=Файл пользователей MON отсутствует
+
+watch_title=Изменение списка слежения
+watch_header=Настройка слежения для группы узлов
+watch_group=Отслеживаемая группа узлов
+watch_services=Отслеживаемые службы
+watch_service=Название службы
+watch_monitor=Используемый монитор
+watch_interval=Проверять каждые
+watch_periods=Периоды слежения
+
+service_title=Добавление службы
+service_title2=Изменение службы
+service_header=Настройка отслеживаемой службы
+service_name=Название службы
+service_interval=Проверять каждые
+service_desc=Описание
+service_units_s=секунд
+service_units_m=минут
+service_units_h=часов
+service_units_d=дней
+service_units_w=недель
+service_monitor=Используемый монитор
+service_mon1=Стандартный
+service_mon0=Другой ..
+service_args=Параметры монитора
+service_period=Период слежения $1
+service_days=Дни слежения
+service_hours=Часы слежения
+service_all=Все
+service_pstr=Настройка периода
+service_new=Новый период слежения
+service_alerts=Предупреждения для периода
+service_alert=Предупреждение
+service_atype=Запускать при
+service_atype_alert=Останове службы
+service_atype_upalert=Запуске службы
+service_atype_startupalert=Запуске MON
+service_aargs=Дополнительная настройка
+service_every=Послать предупреждение
+service_every_def=Каждый раз при запуске монитора
+service_every_time=Каждые
+service_num=Максимальное количество предупреждений
+service_unlimited=Не ограничено
+service_after=Посылать предупреждение
+service_immediate=Немедленно
+service_after_num=После $1 срабатываний
+service_aftertime=В течение
+service_newperiod=Добавить новый период
+service_delperiod=Удалить этот период
+service_err=Не удалось сохранить службу
+service_ename=Название службы не указано или указано неверно
+service_einterval=Интервал проверки указан или указан неверно
+service_eother=Монитор указан или указан неверно
+service_ehour=Час для периода $1 не указан или указан неверно (должен быть, например, 9am или 5pm)
+service_eperiod=Для периода $1 не указаны дни или часы
+service_eevery=Интервал предупреждения не указан или указан неверно
+service_eafter=Количество срабатываний не указано или указано неверно
+service_enum=Максимальное количество посылаемых предупреждений не указано или указано неверно
+service_epstr=Не указан период
+service_known0=Строка <tt>Time::Period</tt>
+service_known1=Указанные дни и часы
+service_known2=Определенный период
+
+status_title=Состояние MON
+status_ecgi=Программа CGI состояния MON $1 не существует. Возможно, она не установлена, или неверна <a href='$2'>конфигурация модуля</a>.
+status_eperl=Программа CGI состояния MON требует наличия модуля $1 perl. <a href='$2'>Щелкните здесь</a> чтобы установить его через CPAN.
+
+users_title=Пользователи MON
+users_etype=Список пользователей MON не может быть изменен, так как MON в данный момент не настроен для аутентификации. См. <a href='$1'>Общая настройка</a>.
+users_header=Разрешенные в $1 пользователи MON
+users_nousers=В $1 не определено ни одного пользователя MON.
+users_add=Добавить нового пользователя
+users_return=Список пользователей MON
+
+user_create=Добавление пользователя MON
+user_edit=Изменение пользователя MON
+user_header=Настройка пользователя MON
+user_user=Имя пользователя
+user_pass=Пароль
+user_leave=Оставить без изменений
+user_err=Не удалось сохранить пользователя
+user_euser=Имя пользователя не указано или указано неверно
+user_esame=Пользователь с этим именем уже существует
+
+auth_title=Команды клиента
+auth_desc=Вы можете настроить какими пользователями какие команды MON могут быть запущены при использовании программ клиента.
+auth_cmd=Команда MON
+auth_users=Разрешенные пользователи
+auth_none=Никто
+auth_all=Все
+auth_sel=Только пользователи
+auth_err=Не удалось сохранить команды клиента
+auth_eusers=Для команды $1 не указано ни одного клиента
+
+periods_title=Предопределенные периоды
+periods_period=Название периода
+periods_times=Дни и часы
+periods_alldays=Все дни
+periods_allhours=Все часы
+periods_err=Не удалось сохранить периоды
+periods_ename='$1' не является корректным названием периода
+periods_ehour=Час для периода $1 не указан или указан неверно (должен быть, например, 9am или 5pm)
+

@@ -1,0 +1,9 @@
+print_style=印表機組態樣式,1,solaris-Solaris,linux-Linux,freebsd-FreeBSD,hpux-HPUX,lprng-LPRng,unixware-UnixWare
+driver_style=印表機驅動程式樣式,1,webmin-Webmin,caldera-Caldera,redhat-Redhat,hpux-HPUX
+printcap_file=印表機檔案,3,None
+model_path=包含介面程式的目錄,3,None
+smbclient_path=到 smbclient 的完整路徑,3,None
+gs_path=到 ghostscript 的完整路徑,3,None
+gs_fontpath=Ghostscript 字型目錄,3,Default
+gs_lib=Ghostscript 函數庫目錄,3,Default
+hpnp_path=到 hpnp 程式的完整路徑,3,None

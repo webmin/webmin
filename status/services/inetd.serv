@@ -1,0 +1,4 @@
+id=inetd
+type=inetd
+desc=Internet and RPC Server
+depends=inetd proc

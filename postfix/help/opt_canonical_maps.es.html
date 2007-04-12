@@ -1,0 +1,26 @@
+<header>Tablas de búsqueda de mapeo de dirección</header>
+
+<center><tt>canonical_maps</tt></center>
+<hr>
+
+Este parámetro especifica tablas opcionales de búsqueda de mapeo de dirección.
+El mapeo es aplicado a ambas: direcciones de remitente y destinatario en ambos
+sobres y en cabeceras. Esto es usado típicamente para limpiar direcciones
+sucias de sistemas antiguos de correo o reemplazar nombres de login por 
+<tt>Nombre.Apellidos</tt>. Mira canonical(5) para más detalles.
+
+<p>
+
+Por defecto, no se hace mapeo canónigo de dirección.
+
+<p>
+
+Valores sensíblemente posibles:
+<ul>
+<li> <tt>dbm:/etc/postfix/canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical, nis:canonical</tt> 
+<li> <tt>hash:/etc/postfix/canonical, netinfo:/canonical</tt> 
+</ul>
+
+<hr>

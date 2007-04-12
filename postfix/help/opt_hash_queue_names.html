@@ -1,0 +1,17 @@
+<header>Name of queue dirs split accross subdirs</header>
+
+<center><tt>hash_queue_names</tt></center>
+<hr>
+
+This parameter specifies the names of queue directories that are split across
+multiple subdirectory levels. Hashing MUST NOT be used with a world-writable
+maildrop directory. Hashing MUST be used for the defer logfile directory, or
+mail system performance will suffer.
+
+<p>
+
+Unfortunately, hashing the incoming or deferred queue can actually
+slow the mail system down (<tt>mailq</tt> with an empty queue can take
+several seconds) so it should be done only in case of emergency.
+
+<hr>

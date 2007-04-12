@@ -1,0 +1,6 @@
+line1=Configurable options,11
+refresh=Seconds between RAID status refreshes,3,Never
+line2=System configuration,11
+raidtab=RAIDTools configuration file,0
+mdadm=MDADM configuration file,0
+mdstat=Kernel RAID status file,0

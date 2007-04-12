@@ -1,0 +1,15 @@
+<header>Maximalt antal parallella sändningar till samma lokala mottagare</header>
+
+<center><tt>local_destination_concurrency_limit</tt></center>
+<hr>
+
+Denna parameter begränsar antalet parallella sändningar till samma lokala mottagare.
+
+<p>Standardgränsen har hämtats från parametern
+<a href=opt_default_destination_concurrency_limit>
+<tt>default_destination_concurrency_limit</tt></a>.
+Postfix-dokumentationen rekommenderar den låga gränsen 2 för den händelse att någon har
+ett omfattande skalkommando i en <tt>.forward</tt>-fil eller i ett alias (exempelvis en
+mailinglisthanterare). Du vill inte köra en massa sådana samtidigt.
+
+<hr>

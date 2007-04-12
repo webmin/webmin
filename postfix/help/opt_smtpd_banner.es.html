@@ -1,0 +1,17 @@
+<header>Mensaje del saludo SMTP</header>
+
+<center><tt>smtpd_banner</tt></center>
+<hr>
+
+Este parámetro especifica el texto que sigue al código de estado 220 en un
+mensaje de saludo SMTP. A algunas personas les gusta ver la versión del
+servidor de correo. Por defecto Postfix no muestra la versión.
+
+<p>
+
+es OBLIGATORIO especificar el <tt>$myhostname</tt> al comienzo del texto.
+Cuando el cliente SMTP veo su propio nombre de máquina como comienzo del
+mensaje de saludo SMTP informará de un bucle de correo. Es mejor que sufrir
+un colapso de la máquina.
+
+<hr>

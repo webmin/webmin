@@ -1,0 +1,5 @@
+webalizer_conf=Шлях до файлу конфігурації webalizer,0
+webalizer=Шлях до команди webalizer,0
+alt_conf=Зразок файлу конфігурації webalizer,3,Немає
+auto=Автоматично включати файли журналів,2,apache-Apache,squid-Squid
+

@@ -1,0 +1,12 @@
+roles=1
+users=1
+roleassign=*
+auths=1
+profs=1
+execs=1
+policy=1
+profassign=*
+auths=1
+authassign=1
+projects=1
+prctl=1

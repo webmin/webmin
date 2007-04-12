@@ -1,0 +1,23 @@
+<header>Networking</header>
+
+This page is for configuring networking options for the SSH server. Some
+of the less obvious options are :
+
+<dl>
+<dt><b>Idle timeout</b>
+<dd>If this is set and there has been nothing sent by the client or server
+    during the period set, the client will be disconnected. <p>
+
+<dt><b>Disconnect if client has crashed?</b>
+<dd>If set to Yes, the SSH server will periodically check to see if the
+    client is still alive. If not (because of a network error or client machine
+    crash) it will be disconnected. <p>
+
+<dt><b>Allow TCP forwarding?</b>
+<dd>If this option is set, users can tunnel TCP connections from client
+    machines to machines on the server's network, and also allow connections
+    back from the server to machines on the client network. <p>
+
+<dl>
+<hr>
+

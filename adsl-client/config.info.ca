@@ -1,0 +1,8 @@
+line2=Configuració del sistema,11
+pppoe_conf=Fitxer de configuració ADSL PPPOE,0
+conf_style=Format del fitxer de configuració,1,0-Configuració estàndard RP-PPPoE,1-Fitxer de xarxa Redhat
+pap_file=Fitxer de comptes PPP,0
+pppoe_cmd=Camí complet de l'ordre pppoe,0
+start_cmd=Ordre per activar la connexió ADSL,0
+stop_cmd=Ordre per desactivar la connexió ADSL,0
+status_cmd=Ordre per obtenir l'estat de la connexió ADSL,0

@@ -1,0 +1,2 @@
+# RBAC authorization		# Webmin ACL
+solaris.admin.usermgr.pswd	noconfig=1

@@ -1,0 +1,53 @@
+<header>Kanonisk översättning</header>
+
+Den valbara kanoniska filen anger en adressöversättning för lokala och icke-lokala
+adresser. Denna översättning används av demonen cleanup(8). Adressöversättningen
+är rekursiv.
+
+<p>Filen utgör indata till kommandot postmap(1). Resultatet från kommandokörningen,
+en indexerad fil i dbm- eller db-format, används av e-postsystemet för snabbsökning.
+
+<p>Den kanoniska översättningen påverkar adresser både i meddelandehuvudet (dvs adresser
+som syns i meddelandet) och på omslaget (till exempel adresser som används i SMTP-kommandon).
+Sendmails regeluppsättning <tt>S3</tt> är en bra jämförelse.
+
+<p>Vanligtvis vill man använda den kanoniska tabellen för att byta ut användarnamn mot
+<tt>Förnamn.Efternamn</tt> eller för att städa bort adresser som skapats av äldre e-postservrar.
+
+<p>Kanonisk översättning ska inte blandas ihop med stöd för virtuella domäner. ANvänd
+<a href=virtual>virtuella domäner</a> för detta ändamål.
+
+<p>Kanonisk översättning ska inte heller blandas ihop med lokala alias.
+Använd <a href=alaises>e-postalias</a> för detta ändamål.
+
+<p>Formatet för kanoniska översättningar visas nedan. Postfix försöker översätta i nedanstående
+ordning:
+
+<ul>
+<li><b><tt>användare@domän</tt></b> översätts till ... <b><tt>adress</tt></b>:
+<br><tt>användare@domän</tt> byts ut mot <tt>adress</tt>. Denna form har högst prioritet
+och är främst användbar för att städa undan adresser som skapats av äldre e-postservrar.
+Den kan också användas för att skapa adresser på formen <tt>Förnamn.Efternamn</tt>, men
+för det finns en enklare lösning längre ner.
+
+<li><b><tt>användare</tt></b> översätts till ...<b><tt>adress</tt></b>:
+<br><tt>användare@site</tt> byts ut mot <tt>adress</tt> då <tt>site</tt> har samma
+värde som <tt>$myorigin</tt>, finns uppräknad i <tt>$mydestination</tt> eller 
+finns uppräknad i <tt>$inet_interfaces</tt>.
+Denna form är användbar för att byta ut användarnamn mot <tt>Förnamn.Efternamn</tt>.
+
+<li><b><tt>@domän</tt></b> översätts till ...<b><tt>adress</tt></b>:<br>Varje adress inom
+<tt>domän</tt> byts ut mot <tt>adress</tt>. Denna form har lägst prioritet.
+</ul>
+
+För alla ovanstående former gäller att då adressen har formen <tt>@annandomän</tt> blir resultatet
+samma användare i annandomän.
+
+<p>ADRESSEXPANSION: Om adressen inte går att slå upp i tabellen och adressens lokala del
+innehåller en mottagarbegränsare (exempelvis <tt>användare+foo@domän</tt>), kommer sökningen
+att upprepas för den icke expanderade adressen (exempelvis <tt>användare@domän</tt>) och den
+omatchade ändelsen bifogas resultatet av tabelluppslagningen. Matchningsordningen är
+<tt>användare+foo@domän</tt>, <tt>användare@domän</tt>, <tt>användare+foo</tt>,
+<tt>användare</tt> och <tt>@domän</tt>.
+
+<hr>

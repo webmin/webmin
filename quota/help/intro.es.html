@@ -1,0 +1,60 @@
+<header>Cuotas de Disco</header>
+
+<h3>Introducción</h3>
+Las cuotas son un método de controlar cuánto espacio en disco pueden usar
+los usuarios y los grupos. Para cada sistema de archivos puedes colocar
+límites de cuánto espacio en disco y cuántos archivos puede utilizar cada
+usuario. Algunos sistemas Unix pueden tambien permitirte limitar el espacio
+y los archivos utilizados por todos los miembros de algún grupo. <p>
+
+Las cuotas pueden configurarse sólamente para sistemas de archivo Unix
+locales. Los sistemas de archivo NFS montados desde otros sistemas utilizan
+las cuotas de su servidor, si tienen. Los sistemas de archivo no Unix como
+MS-DOS o ISO9660 no pueden soportar ningún tipo de cuotas. <p>
+
+Para cada usuario se imponen cuatro límites:
+<dl>
+<dt><b>Límite de bloque por soft</b>
+<dd>El número de bloques de disco permitidos antes de que se muestre un
+    mensaje de aviso.
+<dt><b>Límite de bloque por hard</b>
+<dd>El máximo número de bloques que un archivo de usuario puede ocupar.
+<dt><b>Límite de archivo por soft</b>
+<dd>El número de archivos permitidos antes de que se muestre un mensaje
+    de aviso.
+<dt><b>Límite de archivo por Hard</b>
+<dd>El máximo número de archivos que un usuario puede tener.
+</dl>
+Los bloques de disco son típicamente de 512 o 1024 bytes de tamaño, dependiendo
+del sistema operativo. Cuando se calculan las cuotas, todas las medidas
+de los archivos son redondeadas al siguiente bloque por encima. Por ello,
+incluso los archivos vacíos usan al menos un bloque. <p>
+
+Para propósito de cuotas de archivo, cada directorio, dispositivo, enlace
+simbólico o archivo normal es tenido en cuenta para el máximo número de
+archivos que puede tener un usuario. Técnicamente, la cuota de archivos es
+actualmente una cuenta de <i>i-nodos</i>. <p>
+
+<h3>El Módulo de Cuotas de Disco</h3>
+La página principal de este modulo muestra una lista de sistemas de archivo
+locales que pueden soportar cuotas. Si las cuotas están activadas en este
+momento en tu sistema, puedes hacer click en su trayectoria para mostrar
+las cuotas de cada usuario. Si no, haciendo click en <tt>Activar Cuotas</tt>
+activará las cuotas de ese sistema de archivos. <p>
+
+<if $gconfig{'os_type'} =~ /linux/>
+El sistema operativo Linux no permite activar las cuotas a menos que el
+sistema de archivos tenga la opción <tt>Usar Cuotas</tt> puesta en el
+módulo de los Discos y en el de los Sistemas de archivo. Si ninguno de
+tus sistemas de archivo tiene esta opción puesta, no se lista a nadie en la
+página principal. <p>
+</if>
+
+Bajo la lista de sistemas de archivo hay un botón para mostrar todas las
+cuotas de un usuario seleccionado. Esto será sólamente mostrado si al menos
+un sistema de archivos tiene activadas las cuotas de usuario. De forma
+similar, si al menos un sistema de archivos tiene grupos de cuotas activadas
+habrá un botón para mostrar todas las cuotas del grupo seleccionado. <p>
+
+<hr>
+

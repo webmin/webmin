@@ -1,0 +1,42 @@
+<header>Ograniczenia i&nbsp;kontrola dostêpu</header>
+
+Strona zawiera tabale umo¿liwiaj±ce ustalenie limitów i&nbsp;kontroli
+dostêpu do serwera FTP. 
+<p>
+
+Pierwsza tabela umo¿liwia wyspecyfikowanie adresów IP, które nie maj± prawa
+dostêpu do serwera FTP, oraz zbioru zawieraj±cego komunikat b³êdu
+wy¶wietlany klientowi w&nbsp;takiej sytuacji. Adresy mog± byæ podane
+w&nbsp;postaci pe³nego lub czê¶ciowego adresu IP, kombibacji podsieæ
+IP/maska, nazw komputerów (z&nbsp;rozwijanymi znakami * i&nbsp;?, jak na
+przyk³ad<tt>*.foo.com</tt>), oraz absolutnych ¶cie¿ek do plików
+zawieraj±cych adresy. W&nbsp;celu zanegowania ka¿dy adres mo¿e byæ poprzedzony
+wykrzyknikiem !.
+<p>
+
+Druga tabela umo¿liwia ograniczenie liczby jednoczesnych u¿ytkowników
+w&nbsp;ka¿dej z&nbsp;klas. Dla ka¿dej klasy mo¿na wporowadziæ maksymalna
+liczbê wlogowanych u¿ytkowników, czas w&nbsp;którym ograniczenie jest
+obowi±zuj±ce (w&nbsp;stylu UUCP: jak na przyk³ad <tt>MoTuTh0800-1700</tt>),
+oraz zbiór z&nbsp;komunikatem b³êdu wy¶wietlanym klientowi gdy limit zostanie
+osi±gniêty.
+<p>
+
+Trzecia tabela umo¿liwia wprowadzenie ograniczenia liczby plików oraz bajtów
+przesy³anych podczas jednej sesji. Dla ka¿dego limitu nale¿y okre¶liæ czy
+dotyczy liczby plików, czy bajtów, jakiego dotyczy kierunku, czy braæ pod
+uwagê tylko pliki, czy wszystkie dane, oraz klasê u¿ytkowników, której
+dany limit dotyczy.
+<p>
+ 
+Czwarta tabela pozwala na zakaz dostêpu do okre¶lonych zbiorów. Dla ka¿dego
+zbioru nale¿y wprowadziæ absolutn± ¶cie¿kê, okre¶liæ czy jest ona podana
+wzglêdem "chroot" (dla u¿ytkowników anonimowych i&nbsp;go¶ci) oraz klasy
+u¿ytkowników, których dotyczy ograniczenie. Je¿eli zbiór koñczy siê znakiem
+/, serwer FTP nie zezwoli na dostêp do ¿adnego pliku z&nbsp;kartoteki
+o&nbsp;tej nazwie. Podobna pi±ta tabela umo¿liwia zezwoliæ na dostêp do
+plików, który w&nbsp;przeciwnym wypadku by³by zakazany przez dotychczasowe
+regu³y. 
+<p>
+
+<hr>

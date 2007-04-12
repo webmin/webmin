@@ -1,0 +1,7 @@
+<header>Niveaux d'Exécution</header>
+
+Le champ du niveau d'exécution peut contenir les caractères des différents niveaux.  Par exemple <tt>123</tt> spécifie que le processus doit être démarré au niveau d'exécution 1, 2 et 3.<p>
+
+Quand le système change de niveau, tout les processus qui ne sont pas spécifié dans le nouveau niveau sont tué, pour commencer avec le signal <tt>SIGTERM</tt> et ensuite avec le signal <tt>SIGKILL</tt>.<p>
+
+<hr>

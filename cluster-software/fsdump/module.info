@@ -1,0 +1,14 @@
+name=Dump
+desc=Filesystem Backup
+category=system
+depends=mount cron proc mailboxes
+os_support=redhat-linux mandrake-linux slackware-linux debian-linux suse-linux united-linux open-linux turbo-linux corel-linux cobalt-linux msc-linux generic-linux solaris freebsd macos gentoo-linux irix trustix-linux coherent-linux
+desc_zh_TW.Big5=ÀÉ®×¨t²Î³Æ¥÷
+desc_ca=Còpia de Sistemes de Fitxers
+desc_es=Copia de Seguridad de Sistema de Archivos
+desc_de=Dateisystem-Backup
+desc_ru_SU=òÅÚÅÒ×ÎÏÅ ËÏĞÉÒÏ×ÁÎÉÅ
+desc_ru_RU=Ğåçåğâíîå êîïèğîâàíèå
+longdesc=Backup and restore filesystems using the dump and restore family of commands.
+readonly=1
+desc_zh_TW.UTF-8=æª”æ¡ˆç³»çµ±å‚™ä»½

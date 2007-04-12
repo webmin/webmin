@@ -1,0 +1,50 @@
+<header>Users and Groups</header>
+
+<h3>Introduction to Users</h3>
+A Unix user is typically someone who can login to the system, either
+remotely via telnet or at the console. Every file is owned by some user,
+and every process runs with the rights of some user. Access to files and
+processes is determined by the user you are logged in as. <p>
+
+There are really three types of users on a typical Unix system :
+<ul>
+<li><b>Administrative Users</b><br>
+    Accounts like <tt>bin</tt>, <tt>lp</tt> and <tt>uccp</tt> own files
+    such as the standard commands in <tt>/bin</tt>, print spool files and
+    UUCP data. Actually logging in with one of these accounts is not
+    normally allowed - they are used only by various system processes.
+    These users will be created when the operating system is first installed.<p>
+<li><b>Real People</b><br>
+    These are accounts owned by real users, created by the system
+    administrator. You may allow these users to login remotely, or maybe
+    let them only to send and receive mail via SMTP and POP3. <p>
+<li><b>The <tt>root</tt> User</b><br>
+    The <tt>root</tt> user has the power to read and write any file
+    or directory and control any process. This account is typically used
+    for system administration purposes, and is the account under which
+    Webmin runs. <p>
+</ul>
+
+At the top of the main page of this module is a table of existing users
+on your system. You may click on a user to edit it, or click on the link
+below the table to create a new user. Users whose login names are shown in
+italics are those whose passwords are temporarily disabled. <p>
+
+<h3>Introduction to Groups</h3>
+A group is simply a list of Unix users. Every user has belongs to at least
+one group (their primary group), and optionally several others. All files
+are owned by some group, and every process runs with the permissions of
+a group. <p>
+
+Below the list of users is a table of existing groups. You may click on
+a group name to edit it, or click on the link below the table to create
+a new group. <p>
+
+<h3>Recorded Logins</h3>
+Every time a user logs in by telnet, FTP or at the console the system records
+that login and the subsequent logout. At the bottom of the main page is
+a small form that allows you to display logins either by everyone, or by
+a selected user. <p>
+
+<hr>
+

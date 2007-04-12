@@ -1,0 +1,6 @@
+line1=Options configurables,11
+sort_mode=Trier les fichiers journaux,1,1-Par nom de fichier journal,0-Selon l'ordre du fichier de configuration
+add_file=Ajouter une nouvelle section logrotate au,3,Fichier de configuration principal
+line2=Configuration du syst&#232;me,11
+logrotate_conf=Chemin d'acc&#232;s au fichier de configuration de logrotate,0
+logrotate=Chemin d'acc&#232;s au programme logrotate

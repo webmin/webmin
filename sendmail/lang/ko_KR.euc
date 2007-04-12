@@ -1,0 +1,516 @@
+index_title=sendmail 구성
+index_econfig=sendmail 구성 파일 $1이(가) 없습니다. <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
+index_eversion=sendmail 구성 파일이 최신 sendmail 버전용이 아닙니다. Webmin에서는 8.8 버전 이상만 지원합니다.
+index_epath=시스템에 sendmail 실행 파일 $1이(가) 설치되어 있지 않습니다. sendmail이 설치되어 있지 않거나 <a href='$2'>모듈 구성</a>이 정확하지 않을 수 있습니다.
+index_return=sendmail 구성
+index_stop=sendmail 중지
+index_stopmsg=실행 중인 sendmail 프로세스를 중지하려면 이 버튼을 누르십시오. 그러면 다른 시스템에서 로컬 사용자로의 메일 전달이 중지되며, 클라이언트가 이 시스템을 메일 서버로 사용하여 메일을 전송하지 못하게 됩니다.
+index_start=sendmail 시작
+index_startmsg=명령 $1을(를) 사용하여 sendmail을 시작하려면 이 버튼을 누르십시오. 다른 시스템의 로컬 사용자에게 메일을 배달하고 클라이언트가 이 시스템을 메일 서버로 사용할 수 있게 하려면 먼저 이 버튼을 눌러야 합니다.
+
+opts_title=sendmail 옵션
+opts_ecannot=sendmail 옵션을 편집할 수 없습니다
+opts_ds=호스트를 통해 발신 메일 전송
+opts_direct=직접 배달
+opts_dr=호스트에 비정식 사용자 이름 전달
+opts_dh=호스트에 로컬 사용자의 메일 전달
+opts_local=로컬로 배달
+opts_queuela=최대 전송 부하 평균
+opts_refusela=최대 수신 부하 평균
+opts_maxch=최대 하위 프로세스 수
+opts_throttle=최대 초 당 연결 수
+opts_minqueueage=다시 전송하기 전 최소 대기 시간
+opts_runsize=최대 대기열 크기
+opts_queuereturn=포기 전 대기 시간
+opts_queuewarn=경고 전송 전 대기 시간
+opts_queue=메일 대기열 디렉토리
+opts_postmaster=오류 메시지 전송 대상
+opts_forward=사용자 전달 파일
+opts_minfree=사용 가능한 최소 디스크 공간
+opts_maxmessage=최대 메시지 크기
+opts_loglevel=로그 수준
+opts_mimebounce=MIME 인코드 바운스 메시지입니까?
+opts_default=기본값
+opts_save=저장 및 적용
+opts_err=옵션을 저장하지 못했습니다
+opts_ehost='$1'은(는) 유효한 호스트 또는 도메인 이름이 아닙니다
+opts_einvalid='$1'은(는) 유효한 $2 값이 아닙니다
+opts_blame=파일 보안 옵션
+opts_selected=선택한 항목..
+opts_blocks=블록
+opts_bytes=바이트
+opts_dmode=배달 모드
+opts_background=배경
+opts_queue-only=대기열만
+opts_interactive=대화식
+opts_deferred=지연됨
+
+aliases_title=메일 별칭
+aliases_ecannot=별칭을 편집할 수 없습니다
+aliases_addr=주소
+aliases_to=별칭 지정 대상..
+aliases_type1=주소 $1
+aliases_type2=파일 $1에 있는 주소
+aliases_type3=파일 $1
+aliases_type4=프로그램 $1
+aliases_type5=자동응답 파일 $1
+aliases_none=없음
+aliases_return=별칭 목록
+
+aform_type0=없음
+aform_type1=전자 메일 주소
+aform_type2=파일에 있는 주소
+aform_type3=파일에 쓰기
+aform_type4=프로그램에 공급
+aform_type5=파일로부터 자동응답
+aform_edit=별칭 편집
+aform_create=별칭 작성
+aform_name=주소
+aform_enabled=사용 가능합니까?
+aform_val=별칭 지정 대상
+aform_afile=편집..
+aform_return=별칭
+
+afile_title=주소 파일 편집
+afile_desc=아래의 텍스트 영역에서 파일 $1에 있는 주소를 편집하십시오.
+afile_efile=$1을(를) 편집할 수 없습니다.
+afile_undo=변경 취소
+
+rfile_title=자동응답 파일 편집
+rfile_desc=아래의 텍스트 영역에서 $1에 있는 자동응답 메시지를 편집하십시오. 자동응답 메시지에는 자동응답 기능이 활성화될 때 확장되는 매크로 $SUBJECT, $FROM, $TO, $DATE 및 $BODY가 포함될 수 있습니다.
+rfile_efile=$1을(를) 편집할 수 없습니다.
+rfile_undo=변경 취소
+
+asave_err=별칭을 저장하지 못했습니다
+asave_ecannot2=별칭을 편집할 수 없습니다
+asave_ecannot=이 별칭을 편집할 수 없습니다
+asave_emax=$1개 이하의 별칭만 작성할 수 있습니다
+asave_eaddr='$1'은(는) 유효한 주소가 아닙니다
+asave_ealready='$1'의 별칭이 이미 있습니다
+asave_ematch='$1'과(와) 일치하는 별칭만 작성할 수 있습니다
+asave_etype=이러한 유형의 별칭은 작성할 수 없습니다
+asave_etype1='$1'은(는) 유효한 전자 메일 주소가 아닙니다
+asave_etype2=주소 파일 '$1'이(가) 유효하지 않거나 없습니다
+asave_etype3='$1'은(는) 유효한 파일 이름이 아닙니다
+asave_etype4=프로그램 '$1'이(가) 유효하지 않거나 없습니다
+asave_etype5=자동응답 파일 '$1'이(가) 유효하지 않거나 없습니다
+asave_etype4none=지정된 프로그램이 없습니다
+
+cws_title=로컬 도메인
+cws_ecannot=로컬 도메인을 편집할 수 없습니다
+cws_domains=이 서버에서 처리하는 도메인
+cws_desc1=sendmail은 $1에 대한 메일을 제외한, 왼쪽 입력란에 나열된 도메인과 호스트 이름에 대한 로컬 배달 메일만 허용합니다. 메일 서버에서 여러 개의 전자 메일 도메인을 처리하려면 해당 도메인을 모두 이 양식에 나열해야 합니다.
+cws_desc2=목록에 도메인을 넣는 것만으로는 충분치 않습니다. 해당 도메인의 DNS 레코드가 존재하는 동시에 현재 시스템을 가리키고 있는지 확인해야 합니다.
+cws_err=로컬 도메인을 저장하지 못했습니다
+cws_ehost='$1'은(는) 유효한 호스트 또는 도메인 이름이 아닙니다
+cws_eip='$1'은(는) 도메인이 아닌, IP 주소입니다
+
+masq_title=도메인 가상화
+masq_ecannot=가상화를 구성할 수 없습니다
+masq_domain=도메인으로서 가상화
+masq_domains=가상화할 도메인
+masq_desc1=위에서 도메인을 지정한 경우, sendmail은 보내는 모든 메시지의 <tt>발신자</tt> 주소를 위에 지정된 도메인으로 변경합니다. 또한 왼쪽에 나열된 호스트나 도메인에서 보내는 전자 메일 메시지 중 현재 시스템을 통과하는 전자 메일 메시지의 <tt>발신자</tt> 주소도 이와 동일하게 변경합니다. <a href='$1'>발신 주소</a> 페이지를 사용하면 특정 사용자에 대해 여기에 정의된 도메인 가상화가 무시될 수 있습니다.
+masq_desc2=이 기능은 현재 시스템에서 보내는 전자 메일의 발신자 주소에 호스트 이름이 아닌 도메인 이름을 표시하고자 할 때 또는 현재 시스템이 자체 메일 서버를 실행하는 다른 호스트의 메일 허브 역할을 할 때 유용합니다.
+masq_err=도메인 가상화를 저장하지 못했습니다
+masq_edomain='$1'은(는) 유효한 가상화 도메인이 아닙니다
+masq_ehost='$1'은(는) 유효한 호스트 또는 도메인 이름이 아닙니다
+masq_eip='$1'은(는) 도메인이 아닌, IP 주소입니다
+
+trusts_title=신뢰할 수 있는 사용자
+trusts_ecannot=신뢰할 수 있는 사용자를 편집할 수 없습니다
+trusts_users=sendmail에서 신뢰할 수 있는 로컬 사용자
+trusts_desc=로컬 사용자가 전자 메일을 보내려고 할 경우, sendmail은 왼쪽 목록에 있는 사용자에 대해서만 다른 <tt>발신자:</tt> 주소를 지정할 수 있게 허용합니다. 이는 위조된 <tt>발신자:</tt> 주소를 사용하여 메일을 보내지 못하도록 막기 위한 제한입니다.
+trusts_err=신뢰할 수 있는 사용자를 저장하지 못했습니다
+trusts_euser='$1'은(는) 유효한 사용자가 아닙니다
+
+virtusers_title=주소 매핑
+virtusers_ecannot=주소 매핑을 편집할 수 없습니다
+virtusers_edirective=sendmail 구성 파일에 주소 매핑에 필요한 지시어가 없습니다.
+virtusers_efile=주소 매핑 데이터베이스 $2을(를) 구축하는 데 사용한 텍스트 파일 $1이(가) 없습니다. 올바른 경로를 사용할 수 있도록 <a href='$3'>모듈 구성</a>을 수정해야 합니다.
+virtusers_desc1=주소 매핑은 <a href='$1'>별칭</a>과 비슷하지만, 여러 개의 전자 메일 도메인을 처리하는 시스템에서는 별칭보다 주소 매핑을 사용하는 것이 좋습니다. 주소 매핑은 전체 도메인의 메일을 한 개의 주소로 리디렉션하거나, 여러 도메인에서 한 개의 이름을 사용하는 사용자를 처리하거나, 한 개의 도메인에서 보내는 모든 메일을 다른 도메인에 매핑하는 데 사용할 수 있습니다.
+virtusers_desc2=주소 매핑에 사용할 도메인의 한 항목이 <a href='$1'>로컬 도메인</a> 테이블에 있어야 하고, 해당 시스템을 가리키는 각 도메인마다 DNS MX 레코드가 한 개씩 있어야 합니다.
+virtusers_for=메일 대상..
+virtusers_to=수신자..
+virtusers_error=오류 $1
+virtusers_domain=도메인 $1
+virtusers_address=주소 $1
+virtusers_return=주소 매핑 목록
+
+vform_edit=매핑 편집
+vform_create=매핑 작성
+vform_for=메일 대상
+vform_address=주소
+vform_domain=도메인
+vform_to=수신자
+vform_msg=메시지
+vform_error=반환 오류
+vform_err_nouser=사용자 없음
+vform_err_nohost=호스트 없음
+vform_err_unav=사용할 수 없음
+vform_err_temp=tempfail
+vform_err_proto=프로토콜
+vform_end=끝으로 이동
+vform_ecannot=이 주소 매핑을 편집할 수 없습니다
+
+vsave_ecannot=주소 매핑을 편집할 수 없습니다
+vsave_ecannot2=이 주소 매핑을 편집할 수 없습니다
+vsave_emax=$1개 이하의 주소 매핑만 작성할 수 있습니다
+vsave_err=주소 매핑을 저장하지 못했습니다
+vsave_efrom='$1'은(는) 유효한 주소가 아닙니다
+vsave_efromdup='$1'에 대한 주소 매핑이 이미 정의되어 있습니다
+vsave_edom='$1'은(는) 유효한 도메인이 아닙니다
+vsave_edomdup='$1'에 대한 주소 매핑이 이미 정의되어 있습니다
+vsave_ematch=원본 주소가 '$1'과(와) 일치하지 않습니다
+vsave_ecannot3=주소에 대한 매핑을 작성할 수 없습니다
+vsave_eaddr='$1'은(는) 유효한 주소가 아닙니다
+vsave_ecannot4=도메인에 대한 매핑을 작성할 수 없습니다
+vsave_edomdom=한 개의 도메인만 다른 도메인에 매핑할 수 있습니다
+vsave_ecannot5=오류를 반환하는 매핑을 작성할 수 없습니다
+
+mailers_title=도메인 라우팅
+mailers_cannot=도메인 라우팅을 편집할 수 없습니다
+mailers_edirective=sendmail 구성 파일에 도메인 라우팅에 필요한 지시어가 없습니다.
+mailers_efile=도메인 라우팅 데이터베이스 $2을(를) 구축하는 데 사용한 텍스트 파일 $1이(가) 없습니다. 올바른 경로를 사용할 수 있도록 <a href='$3'>모듈 구성</a>을 수정해야 합니다.
+mailers_desc1=도메인 라우팅 기능을 사용하면 특정 도메인의 메일 전송 방법을 별도로 정의할 수 있습니다. 도메인 라우팅은 현재 시스템이 현재 네트워크 외부에서 접속할 수 없는 메일 서버의 게이트웨이 역할을 할 때 또는 특정 도메인의 모든 메일이 몇몇 다른 서버를 통과하도록 강제로 라우팅하고자 할 때 유용합니다.
+mailers_desc2=<a href='$1'>로컬 도메인</a> 목록에는 라우트되는 도메인의 항목이 <b>없어야 합니다</b>. 그러나 다른 도메인의 게이트웨이 역할을 하는 도메인인 경우에는 현재 시스템을 가리키는 DNS MX 레코드가 있어야 합니다.
+mailers_for=메일 대상..
+mailers_delivery=배달
+mailers_to=수신자..
+mailers_return=도메인 라우팅 목록
+
+mform_edit=라우팅 편집
+mform_create=라우팅 작성
+mform_for=메일 대상
+mform_host=호스트
+mform_domain=도메인
+mform_delivery=배달
+mform_to=수신자
+mform_ignore=SMTP 배달에서 MX 무시
+mform_smtp=SMTP
+mform_esmtp=확장 SMTP
+mform_smtp8=8비트 SMTP
+mform_relay=SMTP 릴레이
+mform_local=로컬 사용자
+mform_prog=프로그램에 공급
+mform_uucp=UUCP
+mform_usenet=USENET에 게시
+mform_fax=HylaFAX
+mform_pop=POP3
+mform_procmail=Procmail
+mform_mail11=DECnet mail11
+mform_error=오류
+mform_ecannot=도메인 라우팅을 편집할 수 없습니다
+
+msave_ecannot=도메인 라우팅을 편집할 수 없습니다
+msave_err=도메인 라우팅을 저장하지 못했습니다
+msave_edomain='$1'은(는) 유효한 호스트 또는 도메인이 아닙니다
+msave_edup='$1'에 대한 도메인 라우팅이 이미 정의되어 있습니다
+
+generics_title=발신 주소
+generics_cannot=발신 주소를 편집할 수 없습니다
+generics_econfig=sendmail 구성 파일에 발신 주소 매핑에 필요한 지시어가 없습니다.
+generics_efile=발신 주소 데이터베이스 $2을(를) 구축하는 데 사용한 텍스트 파일 $1(이)가 없습니다. 올바른 경로를 사용할 수 있도록 <a href='$3'>모듈 구성</a>을 수정해야 합니다.
+generics_desc1=발신 주소 매핑 기능을 사용하면 현재 시스템에서 보내는 메일이나 로컬 네트워크 상의 다른 호스트에서 사용자 시스템을 통과하여 보내는 메일의 <tt>발신자:</tt> 주소를 수정할 수 있습니다. 발신 주소 매핑은 한 개의 시스템에서 여러 개의 도메인을 호스팅할 경우 일부 사용자의 메일을 다른 도메인에서 보내는 것처럼 표시하고자 할 때 유용합니다. 
+generics_desc2=발신 매핑을 필요로 하는 주소가 있는 각 도메인의 항목이 <a href='$1'>발신 도메인</a> 테이블에 있어야 합니다. 로컬 사용자에게 배달할 메일에는 발신 주소 매핑을 사용할 수 없습니다.
+generics_from=메일 발신자..
+generics_to=변경할 주소..
+generics_return=주소 매핑 목록
+
+gform_edit=매핑 편집
+gform_create=매핑 작성
+gform_from=메일 발신자
+gform_to=변경할 주소
+gform_ecannot=이 발신 주소를 편집할 수 없습니다
+
+gsave_ecannot=발신 주소를 편집할 수 없습니다
+gsave_ecannot2=이 발신 주소를 편집할 수 없습니다
+gsave_err=발신 주소를 저장하지 못했습니다
+gsave_efrom='$1'은(는) 유효한 발신자 주소가 아닙니다
+gsave_ematch=발신자 주소가 '$1'과(와) 일치하지 않습니다
+gsave_eto='$1'은(는) 유효한 새 주소가 아닙니다
+
+cgs_title=발신 도메인
+cgs_ecannot=발신 도메인을 편집할 수 없습니다
+cgs_header=발신 주소 도메인
+cgs_desc=sendmail은 로컬 사용자가 보내는 메일을 제외한, 오른쪽 입력란에 나열된 호스트나 도메인에서 보내는 메일에 대해서만 <a href='$1'>발신 주소</a> 매핑을 수행합니다. 따라서 이 목록에는 발신자 주소에 있는 도메인에 필요한 발신 주소 항목만 넣어야 합니다.
+cgs_err=발신 도메인을 저장하지 못했습니다
+cgs_ehost='$1'은(는) 유효한 호스트 또는 도메인 이름이 아닙니다
+cgs_eip='$1'은(는) 도메인이 아닌, IP 주소입니다
+
+domains_title=도메인 매핑
+domains_ecannot=도메인 매핑을 편집할 수 없습니다
+domains_econfig=sendmail 구성 파일에 도메인 매핑에 필요한 지시어가 없습니다.
+domains_efile=도메인 매핑 데이터베이스 $2을(를) 구축하는 데 사용한 텍스트 파일 $1이(가) 없습니다. 올바른 경로를 사용할 수 있도록 <a href='$3'>모듈 구성</a>을 수정해야 합니다.
+domains_desc=도메인 매핑은 현재 시스템의 사용자가 보내는 메시지, 현재 시스템의 사용자를 통해 릴레이되는 메시지 또는 현재 시스템의 사용자에게 배달되는 메시지의 <tt>수신자:</tt> 주소를 수정합니다. 로컬 사용자에게 릴레이되는 메시지의 <tt>발신자:</tt> 주소도 수정됩니다. 도메인 매핑은 도메인 이름을 변경한 후 기존 도메인에서 발생한 모든 사항을 새 도메인으로 변경하고자 할 때 유용합니다.
+domains_from=발신자 도메인..
+domains_to=수신자 도메인..
+domains_return=도메인 매핑 목록
+
+dform_edit=매핑 편집
+dform_create=매핑 작성
+dform_from=발신자 도메인
+dform_to=수신자 도메인
+dform_ecannot=도메인 매핑을 편집할 수 없습니다
+
+dsave_ecannot=도메인 매핑을 편집할 수 없습니다
+dsave_err=도메인 매핑을 저장하지 못했습니다
+dsave_edomain='$1'은(는) 유효한 도메인 이름이 아닙니다
+
+access_title=스팸 제어
+access_ecannot=스팸 제어를 구성할 수 없습니다
+access_econfig=sendmail 구성 파일에 스팸 제어에 필요한 지시어가 없습니다. 
+access_efile=스팸 제어 데이터베이스 $2을(를) 구축하는 데 사용한 텍스트 파일 $1이(가) 없습니다. 올바른 경로를 사용할 수 있도록 <a href='$3'>모듈 구성</a>을 수정해야 합니다.
+access_desc1=sendmail의 스팸 제어 기능을 사용하면 특정 주소에서 보낸 스팸 메일이 사용자에게 배달되거나 스팸 메일 발송자의 메일이 현재 시스템을 통해 릴레이되는 것을 막을 수 있습니다. 기본적으로 sendmail은 로컬 사용자 주소로부터 전송된 메일은 받아들이지만, 클라이언트나 메일 서버에서 시스템을 통해 릴레이하는 메일은 거부합니다. 일반적으로는 스팸 메일 발송자의 메일을 거부하는 스팸 제어 규칙과 네트워크 상의 다른 컴퓨터에서 현재 시스템을 통해 릴레이하는 메일을 허용하는 규칙을 추가하는 것이 보통입니다.
+access_desc2=sendmail은 기본적으로 현재 시스템에서 실행 중인 메일 클라이언트를 사용하면 SMTP를 통해 모든 목적지로 메일을 릴레이할 수 있습니다. 따라서 릴레이 허용 메일 목록에 로컬 <tt>127.0.0</tt> 네트워크를 추가할 필요는 없습니다.
+access_source=소스..
+access_action=동작
+access_return=스팸 제어 목록
+
+sform_edit=스팸 제어 규칙 편집
+sform_create=스팸 제어 규칙 작성
+sform_source=메일 소스
+sform_type0=전자 메일 주소
+sform_type1=네트워크
+sform_type2=사용자
+sform_type3=도메인
+sform_action=동작
+sform_ok=수락
+sform_relay=릴레이 허용
+sform_reject=거부
+sform_discard=자동 삭제
+sform_err=오류 코드
+sform_msg=메시지
+sform_ecannot=스팸 제어를 구성할 수 없습니다
+
+ssave_ecannot=스팸 제어를 구성할 수 없습니다
+ssave_err=스팸 제어 규칙을 저장하지 못했습니다
+ssave_etype0='$1'은(는) 유효한 주소가 아닙니다
+ssave_etype1='$1'은(는) 유효한 네트워크 주소가 아닙니다
+ssave_etype2='$1'은(는) 유효한 사용자 이름이 아닙니다
+ssave_etype3='$1'은(는) 유효한 도메인이 아닙니다
+ssave_ecode='$1'은(는) 유효한 SMTP 오류 코드가 아닙니다
+0000000000000000000000000000000000000000 ㄹㄴ
+relay_title=릴레이 도메인
+relay_ecannot=릴레이 도메인을 편집할 수 없습니다
+relay_eversion=릴레이 도메인 기능은 sendmail 버전 8.9 이상에서만 지원됩니다.
+relay_domains=릴레이 허용 도메인
+relay_desc1=<a href='$1'>스팸 제어</a> 규칙에 따라 허용되지 않는 한, sendmail은 왼쪽 입력란에 있는 도메인에 대한 릴레이만 허용합니다. 로컬 사용자에게 보내는 것이 아닌 메일 메시지나 목록에 없는 도메인으로 보내는 메일 메시지는 수신이 거부됩니다.
+relay_desc2=<a href='$1'>도메인 라우팅</a> 기능을 사용하여 네트워크 외부에서 직접 액세스할 수 없는 여러 도메인에 대한 게이트웨이 역할을 하는 시스템인 경우에는 모든 도메인을 여기에 나열해야 합니다.
+relay_err=릴레이 도메인을 저장하지 못했습니다
+relay_edomain='$1'은(는) 유효한 도메인 이름이 아닙니다
+
+mailq_title=메일 대기열
+mailq_ecannot=메일 대기열을 볼 수 없습니다
+mailq_id=메일 ID
+mailq_sent=전송 완료
+mailq_from=발신자
+mailq_to=수신자
+mailq_size=크기
+mailq_status=상태
+mailq_unknown=알 수 없음
+mailq_sending=전송 중
+mailq_dmsg=메일 대기열의 메시지를 보려면 위의 목록에서 해당 ID를 누르십시오.
+mailq_force=대기열에 있는 메일을 즉시 배달하려면 <a href='$1'>여기</a>를 누르십시오.
+mailq_none=현재 배달 대기 중인 메시지가 없습니다
+mailq_delete=선택한 메시지 삭제
+mailq_return=메일 대기열
+
+flushq_title=대기열 플러시
+flushq_desc=명령 $1을(를) 사용하여 대기 중인 메일을 강제로 배달하는 중..
+
+delq_err=메시지를 삭제하지 못했습니다
+delq_ecannot=대기열에서 메시지를 삭제할 수 없습니다
+delq_locked=파일이 잠겨 있어서 전송할 수 없습니다
+delq_enone=삭제할 메시지를 선택하지 않았습니다
+delq_title=메시지 삭제 중
+delq_file=메일 파일 $1 삭제 중..
+delq_efile=잘못된 파일 이름!
+delq_egone=이미 삭제/배달됨
+delq_elocked=잠겨 있어서 전송 못함
+delq_ok=삭제 완료
+
+boxes_title=사용자 사서함
+boxes_user=사용자
+boxes_size=사서함 크기
+boxes_none=메일 없음
+boxes_return=사서함
+boxes_sent=발신 메일
+boxes_ecannot=전자 메일을 읽을 수 없습니다
+
+mail_title=사용자 전자 메일
+mail_from=발신자
+mail_date=날짜
+mail_subject=제목
+mail_to=수신자
+mail_cc=참조
+mail_bcc=숨은 참조
+mail_pri=우선 순위
+mail_highest=가장 높음
+mail_high=높음
+mail_normal=보통
+mail_low=낮음
+mail_lowest=가장 낮음
+mail_for=$1
+mail_sent=발신 메일 목록
+mail_size=크기
+mail_delete=선택한 메시지 삭제
+mail_compose=새 메일 작성
+mail_return=사용자 전자 메일
+mail_pos=$3의 $2에 대한 메시지 $1
+mail_none=이 사서함에 메시지가 없습니다
+mail_ecannot=이 사용자의 전자 메일을 읽을 수 없습니다
+mail_all=모두 선택
+mail_invert=반대로 선택
+mail_search=메시지 검색 위치
+mail_body=본문
+mail_match=일치
+mail_ok=검색
+mail_nonefrom=없음
+
+view_title=전자 메일 읽기
+view_desc=$2에 있는 메시지 $1
+view_sent=발신 메일 목록에 있는 메시지 $1
+view_qdesc=대기열에 있는 메시지 $1
+view_headers=메일 헤더
+view_attach=첨부 파일
+view_reply=회신
+view_reply2=전체 회신
+view_enew=새 메일로 편집
+view_forward=전달
+view_delete=삭제
+view_ecannot=이 사용자의 전자 메일을 읽을 수 없습니다
+
+compose_title=전자 메일 작성
+reply_title=전자 메일에 회신
+forward_title=전자 메일 전달
+reply_headers=메일 헤더
+reply_attach=전달된 첨부 파일
+reply_attach2=첨부 파일
+reply_send=전송
+reply_ecannot=이 사용자로 메일을 전송할 수 없습니다
+
+send_err=메일을 전송하지 못했습니다
+send_eto=없는 수신자 주소
+send_efrom=없는 발신자 주소
+send_title=메일 전송 완료
+send_ok=$1에 메일을 전송했습니다.
+send_ecannot=이 사용자로 메일을 전송할 수 없습니다
+send_esmtp=SMTP 명령 $1 실패: $2
+send_efile=첨부 파일 $1이(가) 없습니다
+send_eattach=첨부 파일의 총 크기는 $1KB를 초과할 수 없습니다.
+send_eperms=사용자 $1은(는) $2을(를) 읽을 수 없습니다
+send_eperms2=파일 $1을(를) 보낼 수 없습니다
+
+delete_ecannot=이 사용자로부터 받은 메일을 삭제할 수 없습니다
+delete_enone=삭제할 메일을 선택하지 않았습니다
+
+search_title=검색 결과
+search_ecannot=이 사용자의 전자 메일을 검색할 수 없습니다 
+search_ematch=검색할 텍스트를 입력해야 합니다.
+search_none=메시지가 없습니다.
+search_results=$1과(와) 일치하는 메일 메시지..
+
+file_title=sendmail 파일 편집
+file_desc=아래의 입력란에서 sendmail 파일 $1을(를) 수동으로 편집하십시오.
+file_undo=변경 취소
+file_edit=$1 수동 편집
+file_ealiases=모든 별칭에 대한 액세스 권한이 있는 경우에만 별칭 파일을 편집할 수 있습니다.
+file_evirtusers=모든 주소 매핑에 대한 액세스 권한이 있는 경우에만 주소 매핑 파일을 편집할 수 있습니다.
+file_emailers=도메인 라우팅 파일을 편집할 수 없습니다
+file_egenerics=모든 발신 주소에 대한 액세스 권한이 있는 경우에만 발신 주소 파일을 편집할 수 있습니다.
+file_edomains=도메인 매핑 파일을 편집할 수 없습니다
+file_eaccess=스팸 제어 파일을 편집할 수 없습니다
+file_emode=알 수 없는 모드!
+file_err=파일을 편집하지 못했습니다.
+
+acl_opts=sendmail 옵션을 편집할 수 있습니까?
+acl_cws=로컬 도메인을 편집할 수 있습니까?
+acl_masq=도메인 가상화를 구성할 수 있습니까?
+acl_trusts=신뢰할 수 있는 사용자를 편집할 수 있습니까?
+acl_cgs=발신 도메인을 편집할 수 있습니까?
+acl_relay=릴레이 도메인을 편집할 수 있습니까?
+acl_mailers=도메인 라우팅을 구성할 수 있습니까?
+acl_access=스팸 제어를 구성할 수 있습니까?
+acl_domains=도메인 매핑을 구성할 수 있습니까?
+acl_stop=sendmail을 시작 및 중지할 수 있습니까?
+acl_mailq=메일 대기열을 관리할 수 있습니까?
+acl_viewdel=보기 및 삭제
+acl_view=보기만
+acl_virtusers=이 사용자가 편집할 수 있는 주소 매핑
+acl_none=없음
+acl_same=이름이 동일한 사용자
+acl_all=모두
+acl_matching=일치
+acl_vtypes=이 사용자가 편집할 수 있는 주소 매핑 유형
+acl_vtype0=반환 오류
+acl_vtype1=수신자 도메인
+acl_vtype2=수신자 주소
+acl_vmax=최대 주소 매핑 수
+acl_unlimited=제한 없음
+acl_aliases=이 사용자가 편집할 수 있는 별칭 수
+acl_atypes=이 사용자가 편집할 수 있는 별칭 유형
+acl_atype1=전자 메일 주소
+acl_atype2=파일에 있는 주소
+acl_atype3=파일에 쓰기
+acl_atype4=프로그램에 공급
+acl_atype5=자동응답
+acl_amax=최대 별칭 수
+acl_outgoing=이 사용자가 편집할 수 있는 발신 주소
+acl_read=읽을 수 있는 메일을 보내는 사용자
+acl_users=사용자만
+acl_userse=사용자를 제외한 모두
+acl_usersg=그룹 구성원
+acl_from=허용 가능한 발신자 주소
+acl_any=임의의 주소
+acl_fdoms=사서함@도메인
+acl_faddrs=나열된 주소
+acl_fdom=임의의 주소@도메인
+acl_apath=디렉토리에 대한 파일 및 프로그램 제한
+acl_attach=전체 첨부 파일의 최대 크기
+acl_sent=사서함에 발신 메일 저장
+
+log_opts=sendmail 옵션 변경됨
+log_alias_create=별칭 $1 작성됨
+log_alias_modify=별칭 $1 수정됨
+log_alias_delete=별칭 $1 삭제됨
+log_alias_manual=별칭 파일 $1 수동 편집됨
+log_cws=로컬 도메인 변경됨
+log_masq=도메인 가상화 변경됨
+log_trusts=신뢰할 수 있는 사용자 변경됨
+log_virtuser_create=주소 매핑 $1 작성됨
+log_virtuser_modify=주소 매핑 $1 수정됨
+log_virtuser_delete=주소 매핑 $1 삭제됨
+log_virtuser_manual=주소 매핑 파일 $1 수동 편집됨
+log_mailer_create=도메인 라우팅 $1 작성됨
+log_mailer_modify=도메인 라우팅 $1 수정됨
+log_mailer_delete=도메인 라우팅 $1 삭제됨
+log_mailer_manual=도메인 라우팅 파일 $1 수동 편집됨
+log_generic_create=발신 주소 $1 작성됨
+log_generic_modify=발신 주소 $1 수정됨
+log_generic_delete=발신 주소 $1 삭제됨
+log_generic_manual=발신 주소 파일 $1 수동 편집됨
+log_cgs=발신 도메인 변경됨
+log_domain_create=도메인 매핑 $1 작성됨
+log_domain_modify=도메인 매핑 $1 수정됨
+log_domain_delete=도메인 매핑 $1 삭제됨
+log_domain_manual=도메인 매핑 파일 $1 수동 편집됨
+log_access_create=$1의 스팸 제어 작성됨
+log_access_modify=$1의 스팸 제어 수정됨
+log_access_delete=$1의 스팸 제어 삭제됨
+log_access_manual=스팸 제어 파일 $1 수동 편집됨
+log_relay=릴레이 도메인 변경됨
+log_flushq=메일 대기열 플러시됨
+log_delmailq=대기열의 $1에서 메일 삭제됨
+log_delmailqs=대기열에서 $1개의 메일 삭제됨
+log_stop=sendmail 디먼 중지됨
+log_start=sendmail 디먼 시작됨
+log_delmail=$2에서 $1개 메시지 삭제됨
+log_send=$1에게 메일 전송 완료
+
+match_from=발신자: 일치
+match_subject=제목: 일치
+match_to=수신자: 일치
+match_cc=참조: 일치
+match_date=날짜: 일치
+match_body=본문 일치
+match_size=하한 크기

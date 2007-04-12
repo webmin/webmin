@@ -1,0 +1,6 @@
+line1=Options Configurables,11
+refresh=Secondes entre chaque rafraichissement du statut du RAID,3,Jamais
+line2=Configuration du systeme,11
+raidtab=Fichier de configuration des RAIDTools,0
+mdadm=fichier de configuration de MDADM,0
+mdstat=Fichier de statut du noyau RAID,0

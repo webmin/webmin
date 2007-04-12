@@ -1,0 +1,6 @@
+index_hosts=Semua perubahan katalalu yang dibuat pada modul ini akan dibuat pada semua hos $1 diuruskan oleh modul Pengguna dan Kumpulan Kelompok.
+index_noservers=Tiada pelayan untuk menguruskan pengguna ditakrifkan pada modul <a href=$1>Pengguna dan Kumpulan Kelompok</a>.
+index_title=Menukar Katalalu Kelomppok
+passwd_err=Gagal menukar katalalu
+passwd_on=Menukar katalalu pada $1 ..
+passwd_title=Menukar Katalalu

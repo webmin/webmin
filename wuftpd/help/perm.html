@@ -1,0 +1,20 @@
+<header>Permissions</header>
+
+The first table on this page controls can be used to deny access to certain
+non-vital commands. For each command, you can choose whether to allow or
+deny access and choose which user types and classes it should be allowed or
+denied to. Unless denied, all commands are available to all users by
+default. <p>
+
+The second table allow you to prevent the upload of files that contain
+certain characters or matching certain regular expressions. This can be
+very useful if your anonymous FTP server has an <tt>incoming</tt> directory
+and you want to prevent users creating 'hidden' directories to store warez
+in. The first field in the table is a regexp like <tt>^[A-z0-9]$</tt> that
+defines allowable characters, the second is a series of regexps for filenames
+that are <b>not</b> allowed, the third is the user types that this restriction
+applies to, and the final column the full path to an error message file
+to be sent to the FTP client if an illegal file is uploaded. <p>
+
+<hr>
+

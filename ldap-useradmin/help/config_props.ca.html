@@ -1,0 +1,23 @@
+<header>Propietats LDAP per a tots els nous usuaris</header>
+
+Aquesta opció es pot utilitzar per a especificar propietats que s'assignaran
+als usuaris LDAP quan aquests es creïn, a més amés d'aquelles creades per
+Webmin. S'han d'introduir amb el següent format: <p>
+
+nom1: valor<br>
+nom2: valor<br>
+<p>
+
+Es poden utilitzar les substitucions següents, que es reemplacen quan es desa
+l'usuari: <p>
+
+${USER} El nom d'usuari<br>
+${PLAINPASS} La contrasenya no xifrada de l'usuari, si n'hi ha<br>
+${REAL} El nom real de l'usuari<br>
+${UID} El número UID Unix de l'usuari<br>
+${GID} El número GID Unix del grup de l'usuari<br>
+${HOME} EL directori arrel de l'usuari<br>
+${SHELL} La shell d'entrada de l'usuari<br>
+<p>
+<footer>
+

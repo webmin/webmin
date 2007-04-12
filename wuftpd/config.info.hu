@@ -1,0 +1,7 @@
+ftpd_path=A wuftpd teljes útvonala,0
+ftpaccess=Az ftpaccess file teljes útvonala,0
+ftpconversions=Az ftpconversions file teljes útvonala,0
+ftpgroups=Az ftpgroups file teljes útvonala,0
+ftphosts=Az ftphosts file teljes útvonala,0
+ftpusers=Az ftpusers file teljes útvonala,0
+pid_file=FTP szerver PID file-ja,0

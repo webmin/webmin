@@ -1,0 +1,32 @@
+<header>De quins dominis es rep correu</header>
+
+<center><tt>mydestination</tt></center>
+<hr>
+
+Especifiques per quins dominis aquesta màquina fa lliuraments locals
+en lloc de reenviar-los a una altra màquina. Per defecte, es rep el correu
+per a la pròpia màquina.
+
+<p>
+
+<b>Màquina local</b>: <tt>$myhostname, localhost.$mydomain</tt>
+<br>
+<b>Tot el Domini</b>: <tt>$myhostname, localhost.$mydomain, $mydomain</tt>
+
+<p>
+
+També pots especificar el camí complet d'un fitxer que contingui els
+noms dels dominis per als quals aquesta màquina lliurarà el correu localment.
+
+<p>
+
+Exemple: <tt>/etc/postfix/lamevadestinacio</tt>
+
+<hr>
+<br>
+
+<b><u>Atenció:</u></b> per tal d'evitar cicles en el llirament del correu,
+has de llistar tots els noms de host de la màquina, incloent-hi
+<tt>$myhostname</tt> i <tt>localhost.$mydomain</tt>. NO HI LLISTIS AQUÍ
+ELS DOMINIS VIRTUALS. LLISTA'LS AL FITXER VIRTUAL EN LLOC SEU.
+

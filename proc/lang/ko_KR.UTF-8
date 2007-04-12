@@ -1,0 +1,118 @@
+index_title=覗稽室什 淫軒切
+index_display=妊獣
+index_tree=PID
+index_user=紫遂切
+index_size=五乞軒
+index_cpu=CPU
+index_search=伊事
+index_run=叔楳..
+index_return=覗稽室什 鯉系
+index_mem=<b>叔薦 五乞軒:</b> 恥 五乞軒 $1KB/紫遂 亜管廃 五乞軒 $2KB
+index_swap=<b>什尋 因娃:</b> 恥 因娃 $1KB/紫遂 亜管廃 因娃 $2KB
+index_load=<b>CPU 汝液 採馬:</b> $1(5歳), $2(10歳), $3(15歳)
+
+pid=覗稽室什 ID
+owner=社政切
+command=誤敬
+cpu=CPU
+size=滴奄
+parent=雌是 覗稽室什
+runtime=叔楳 獣娃
+nice=丞硲廃 呪層
+
+search_user=社政切
+search_match=析帖
+search_cpupc=$1% 戚雌 CPU 紫遂
+search_fs=督析 獣什奴 紫遂
+search_files=督析 紫遂
+search_submit=伊事
+search_none=析帖馬澗 覗稽室什亜 蒸柔艦陥.
+search_kill=重硲 左蛙
+search_ignore=伊事 覗稽室什 巷獣
+search_return=伊事 丞縦
+
+run_command=叔楳拝 誤敬
+run_submit=叔楳
+run_mode=叔楳 乞球
+run_bg=拷益虞錘球拭辞 叔楳
+run_fg=刃戟拝 凶猿走 企奄
+run_input=誤敬 脊径
+run_title=誤敬 衣引
+run_output=$1税 衣引..
+run_none=持失吉 衣引亜 蒸柔艦陥
+
+edit_title=覗稽室什 舛左
+edit_gone=戚 覗稽室什澗 希 戚雌 叔楳鞠壱 赤走 省柔艦陥
+edit_sub=馬是 覗稽室什
+edit_kill=重硲 左蛙
+edit_change=痕井
+edit_prilow=碍精 授是
+edit_prihigh=株精 授是
+edit_pridef=奄沙 授是
+edit_none=蒸製
+
+kill_err=覗稽室什 $2拭 重硲 $1聖(研) 左鎧走 公梅柔艦陥
+kill_title=重硲 左蛙
+kill_sent=穿勺 刃戟
+
+renice_err=覗稽室什 $1聖(研) renice馬走 公梅柔艦陥
+
+linux_pri=酔識 授是
+linux_tty=TTY
+linux_status=雌殿
+linux_wchan=企奄 是帖
+linux_mem=五乞軒
+linux_group=益血
+linux_ruser=叔薦 紫遂切
+linux_rgroup=叔薦 益血
+linux_pgid=覗稽室什 益血 ID
+
+linuxstat_R=叔楳 掻
+linuxstat_S=析獣 掻走
+linuxstat_D=舌獣娃 掻走
+linuxstat_T=掻走喫
+linuxstat_Z=岨搾
+
+freebsd_ruser=叔薦 紫遂切
+freebsd_rgroup=叔薦 益血
+freebsd_tty=TTY
+freebsd_pgid=覗稽室什 益血
+freebsd_lstart=獣拙 獣娃
+freebsd_lim=五乞軒 廃域
+
+hpux_pri=酔識 授是
+hpux_tty=TTY
+hpux_status=雌殿
+hpux_wchan=企奄
+
+hpuxstat_0=糎仙馬走 省製
+hpuxstat_S=析獣 掻走
+hpuxstat_W=企奄 掻
+hpuxstat_R=叔楳 掻
+hpuxstat_I=掻娃
+hpuxstat_Z=岨搾
+hpuxstat_T=掻走喫
+hpuxstat_G=装亜 掻
+
+macos_tty=TTY
+
+sysv_group=益血
+sysv_ruser=叔薦 紫遂切
+sysv_rgroup=叔薦 益血
+sysv_pgid=覗稽室什 益血 ID
+sysv_tty=TTY
+
+log_run=誤敬 "$1" 叔楳喫
+log_kill=覗稽室什 $2拭 重硲 $1 左蛙 刃戟
+log_kills=覗稽室什 $2拭 重硲 $1 左蛙 刃戟
+log_kill_l=覗稽室什 $2拭 重硲 $1 左蛙 刃戟
+log_kills_l=覗稽室什 $2拭 重硲 $1 左蛙 刃戟<br>
+
+acl_manage=紫遂切稽辞 覗稽室什 淫軒
+
+kill_kill=覗稽室什 掻舘
+kill_term=&nbsp;曽戟&nbsp;&nbsp;
+kill_hup=&nbsp;&nbsp;陥獣 獣拙&nbsp;&nbsp;&nbsp;
+kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;掻走&nbsp;&nbsp;&nbsp;&nbsp;
+kill_cont=&nbsp;&nbsp;域紗&nbsp;&nbsp;
+

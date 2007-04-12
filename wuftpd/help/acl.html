@@ -1,0 +1,32 @@
+<header>Limits and Access Control</header>
+
+This page contains several tables for setting limits and access control
+options. The first table allows you to specify client IP address to be denied
+access to the FTP server, an an error message file to display to the denied
+client. Addresses may be given as full or partial
+IP addresses, IP networks/netmasks, hostnames, host wildcards
+(like <tt>*.foo.com</tt>) or the absolute paths to files containing additional
+addresses. Any type of address can be preceded with a ! to negate it. <p>
+
+The second table allows you to limit the number of concurrent logins by
+clients of each class. For each class you can enter the maximum simultaneous
+logins, the days and times at which the maximum is enforced (in UUCP style,
+like <tt>MoTuTh0800-1700</tt>), and an error message file to display to
+clients when the limit is reached. <p>
+
+The third table allows you to set per-session file and data transfer limits.
+For each limit, you must choose whether it applied to files or bytes
+transferred, the transfer direction the limit applies to, whether the limit
+applies to just file transfers or all data, and the class of users the
+limit is for. <p>
+
+The fourth table allows you to deny access to certain files. For each file
+you need to enter an absolute path, choose whether the path is relative
+to the <tt>chroot</tt> directory (for anonymous and guest users) and select
+the user classes this restriction applies to. If a file to deny ends with
+a /, the FTP server will deny access to all files in that directory. <br>
+Similarly, the fifth table allows you to grant access to files that would
+be otherwise denied by the table above. <p>
+
+<hr>
+

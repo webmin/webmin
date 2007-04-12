@@ -1,0 +1,25 @@
+<header>Configuració del Servidor LDAP</header>
+
+Aquesta pàgina permet seleccionar el servidor LDAP que aquest sistema client
+contactarà per tal d'obtenir la informació d'usuaris i grups. El camp més
+important és <b>Noms de host dels servidors LDAP</b>, en el qual has d'introduir
+el nom de host o adreça IP del servidor LDAP de la teva xarxa. Si tens més
+d'un servidor replicat, aquí s'hi poden posar tots. <p>
+
+Els camps <b>Entrada d'usuaris no-root</b> i <b>Contrasenya dels usuaris
+no root</b> s'han d'emplenar amb un nom d'usuari i una contrasenya acceptats
+pel servidor LDAP, respectivament. l'entrada serà típicament un nom LDAP
+especial, com ara <i>cn=Manager,dc=el-meu-domini,dc=com</i>.<p>
+
+Com que aquest usuari i contrasenya és visible per a tots els usuaris
+Unix del sistema, aquest s'estableix típicament a un usuari LDAP amb 
+privilegis limitats (com ara accés només lectura i sense possibilitat de
+veure contrasenyes). Com que les contrasenyes s'han de comprovar sota certes
+situacions, els camps <b>Entrada de l'usuari root</b> i <b>Contrasenya de 
+l'usuari root/<b> s'han d'establir a un usuari i contrasenya LDAP que tingui
+accés a tot el servidor LDAP. Aquesta segona contrasenya s'emmagatzema en un
+fitxer que només és visible per a l'usuari <tt>root</tt>, així que està
+protegit dels usuaris Unix normals. <p>
+
+<footer>
+

@@ -1,0 +1,24 @@
+named_conf=Caminho completo do arquivo named.conf,0
+named_path=Caminho completo do executável named,0
+whois_cmd=Caminho completo do comando whois,0
+pid_file=Localização padrão do arquivo de PID,3,/var/run/named.pid
+show_list=Mostrar domínios como,1,0-Ícones,1-Lista
+soa_style=Estilo do número serial,1,0-Número sequencial,1-Baseado na data (AAAAMMDDnn)
+records_order=Ordenar registros,1,1-Por nome,2-Por valor,3-Por IP,0-Como adicionados
+chroot=Diretório chroot sob o qual rodar o BIND,3,Padrão
+start_cmd=Comando para iniciar o BIND,3,Padrão
+max_zones=Número máximo de zonas a mostrar,0
+rev_def=Atualizar o reverso,1,0-É ligado normalmente,1-É desligado normalmente,2-Normalmente sobrescreve
+master_ttl=Adicionar $ttl ao início de novos arquivos de zona,1,1-Sim,0-Não
+named_user=Usuário que inicia o BIND,3,Padrão
+named_group=Grupo que inicia o BIND,3,Padrão
+master_dir=Diretório de arquivos de zona master,3,Padrão
+slave_dir=Diretório de arquivos de zona slave/stub,3,Padrão
+file_owner=Proprietário dos arquivos de zona (usuário:grupo),3,Padrão
+file_perms=Permissões dos arquivos de zona (em octal),3,Padrão
+support_aaaa=Suporte para endereços IPv6,1,0-Não,1-Sim
+allow_comments=Permitir comentários nos registros,1,0-Não,1-Sim
+allow_wild=Permitir wildcards (não recomendado),1,0-Não,1-Sim
+allow_long=permitir nomes longos,1,0-Não,1-Sim
+zones_file=Adicionar novas zonas ao arquivo,3,named.conf
+

@@ -1,0 +1,246 @@
+quota_unlimited=Onbeperkt
+
+acl_fss=Bestandsystemen die deze gebruiker kan wijzigen
+acl_fall=Alle bestandsystemen
+acl_fsel=Geselecteerd..
+acl_quotaon=Kan quota aan- en uitzetten?
+acl_quotanew=Kan quotum configureren voor nieuwe gebruikers?
+acl_ugrace=Kan waarschuwingstijd van gebruiker wijzigen?
+acl_vtotal=Kan totale schijfcapaciteit zien?
+acl_ggrace=Kan waarschuwingstijd van groepen wijzigen?
+acl_uquota=Gebruikers, waarvan deze gebruiker het quotum kan wijzigen
+acl_gquota=Groepen, waarvan deze gebruiker het quotum kan wijzigen
+acl_uall= Alle gebruikers
+acl_uonly= Alleen gebruikers
+acl_uexcept= Alle gebruikers behalve
+acl_ugroup= Gebruikers met primaire groep
+acl_gall= Alle groepen
+acl_gnone= Geen groepen
+acl_gonly= Alleen groepen
+acl_gexcept= Alle groepen behalve
+acl_uuid=Gebruikers met UID binnen bereik
+acl_maxblocks=Maximum toe te wijzen blokquotum
+acl_maxfiles=Maximum toe te wijzen bestandsquotum
+acl_unlimited=Onbeperkt
+
+activate_eallow=U bent niet gerechtigd quota voor dit bestandssyteem aan- of uit te zetten
+activate_eon=Het aanzetten van quota is mislukt
+activate_eoff=Het uitzetten van quota is mislukt
+
+check_title=Controleer Quotum
+check_return=$1 lijst
+check_ecannot=U mag de quota voor dit bestandssyteem niet controleren
+check_running=Het <tt>quotacheck</tt> commando wordt nu uitgevoerd om het verbruik aan blokken en bestanden te controleren op <tt>$1</tt>. Dit kan een geruime tijd duren voor een groot bestandssyteem...
+check_done=... Klaar. 
+check_rgroup=groep
+check_ruser=gebruiker
+
+cgroup_efail=Kopieëren van quotum mislukt
+cgroup_ecannot=U kunt geen quotum kopieëren
+cgroup_egallow=U mag het quotum van deze groep niet kopieëren
+cgroup_enogroup=Geen groepen om naar te kopieëren
+cgroup_eallowto=U mag geen quotum kopieëren naar '$1'
+
+cgform_title=Kopieër Quotum
+cgform_return=groep quotum
+cgform_ecannot=U kunt geen quotum kopieëren
+cgform_egroup=U mag het quotum van deze groep niet kopieëren
+cgform_copyto=Kopieëren van quotum voor <tt>$1</tt> op ALLE bestandsystemen naar ...
+cgform_all=Alle groepen op uw systeem
+cgform_select=Geselecteerde groepen
+cgform_contain=Groepen met gebruikers
+cgform_doit=Kopieër
+
+cuser_efail=Kopieëren van quotum mislukt
+cuser_ecannot=U kunt geen quotum kopieëren
+cuser_euallow=U mag het quotum van deze gebruiker niet kopieëren 
+cuser_enouser=Geen gebruikers om naar te kopieëren
+cuser_eallowto=U mag geen quotum kopieëren naar '$1'
+
+cuform_title=Kopieër Quotum
+cuform_return=gebruiker quotum
+cuform_ecannot=U kunt geen quotum kopieëren
+cuform_euallow=U mag het quotum van deze gebruiker niet kopieëren
+cuform_copyto=Kopieëren van quotum voor <tt>$1</tt> op ALLE bestandsystemen naar ...
+cuform_all=Alle gebruikers op uw systeem
+cuform_select=Geselecteerde gebruikers
+cuform_members=Leden van geselecteerde groepen
+cuform_doit=Kopieër
+
+egroup_title=Wijzig Quotum
+egroup_freturn=lijst van bestandsysteem
+egroup_greturn=groep lijst
+egroup_eallowgr=U mag geen quotum wijzigen voor '$1'
+egroup_eallowfs=U mag geen quotum wijzigen op dit bestandsysteem
+egroup_quotas=Quotum voor <tt>$1</tt> op <tt>$2</tt>
+egroup_bused=Gebruikte blokken
+egroup_sblimit=Zachte Bloklimiet
+egroup_hblimit=Harde Bloklimiet
+egroup_fused=Gebruikte Bestanden
+egroup_sflimit=Zachte Bestandslimiet
+egroup_hflimit=Harde Bestandslimiet
+egroup_update=Wijzig
+egroup_listall=Lijst Alle Quota
+
+euser_title=Wijzig Quotum
+euser_freturn=bestandsysteem lijst
+euser_ureturn=gebruikers lijst
+euser_eallowus=U mag geen quotum wijzigen voor '$1'
+euser_eallowfs=U mag geen quotum wijzigen op dit bestandsysteem
+euser_quotas=Quotum voor <tt>$1</tt> op <tt>$2</tt>
+euser_bused=Gebruikte blokken
+euser_bdisk=Beschikbare Blokken op Disk
+euser_sblimit=Zachte Bloklimiet
+euser_hblimit=Harde Bloklimiet
+euser_fused=Gebruikte Bestanden
+euser_fdisk=Beschikbare Bestanden op Disk
+euser_sflimit=Zachte Bestandslimiet
+euser_hflimit=Harde Bestandslimiet
+euser_update=Wijzig
+euser_listall=Lijst Alle Quota
+
+gfilesys_title=Groep Quota
+gfilesys_return=bestandsystemen lijst
+gfilesys_ecannot=U kan geen quotum wijzigen voor '$1'
+gfilesys_all=Alle Quota voor 
+gfilesys_blocks=Blokken
+gfilesys_files=Bestanden
+gfilesys_fs=Bestandsysteem
+gfilesys_used=Gebruikt
+gfilesys_soft=Zachte Limiet
+gfilesys_hard=Harde Limiet
+gfilesys_nogquota=Groep <tt>$1</tt> quota op geen enkel bestandsysteem
+gfilesys_edit=Wijzig Quotum Op:
+gfilesys_copy=Kopieër Quota
+
+ggracef_title=Waarschuwingstijd
+ggracef_return=groepslijst
+ggracef_ecannot=U mag de waarschuwingstijd niet wijzigen op dit bestandsysteem
+ggracef_info=Elk bestandsysteem heeft een waarschuwingstijd voor blok- and bestandsquota. De waarschuwingstijd bepaalt hoe lang een groep boven de zachte limiet kan zijn voordat er geen bestanden meer kunnen worden aangemaakt. 
+ggracef_graces=Groeps waarschuwingstijd voor <tt>$1</tt>
+ggracef_block=Voor Blokquotum
+ggracef_file=Voor Bestandsquotum
+ggracef_update=Wijzigen
+
+ggraces_esave=Opslaan waarschuwingstijd mislukt
+ggraces_eedit=U kunt de waarschuwingstijd niet wijzigen op dit bestandsysteem
+ggraces_enumber='$1' is geen getal
+
+index_quser=Gebruikers Quota
+index_qgroup=Groeps Quota
+index_qboth=Gebruikers- and Groeps Quota
+index_active=Aktief
+index_disable=Quota Uitzetten
+index_inactive=Inaktief
+index_enable=Quota Aanzetten
+index_title=Disk Quota
+index_fs=Bestandsysteem
+index_type=Type
+index_mount=gemount vanaf
+index_status=Status
+index_action=Aktie
+index_return=index
+index_euser=Wijzig Gebruikers Quota:
+index_egroup=Wijzig Groeps Quota:
+index_nosupport=Geen enkel lokaal bestandsysteem ondersteunt quota
+
+lgroups_failed=Lijst van groepen mislukt
+lgroups_eallow=U mag geen quotum wijzigen op dit bestandsysteem
+lgroups_title=Bestandsysteem Quota
+lgroups_return=bestandsystemen lijst
+lgroups_toomany=Te veel groepen hebben quota op <tt>$1</tt> om op één pagina te tonen
+lgroups_quotas=Alle Groeps Quota op <tt>$1</tt>
+lgroups_blocks=Blokken
+lgroups_files=bestanden
+lgroups_group=Groep
+lgroups_used=gebruikt
+lgroups_soft=Zachte Limiet
+lgroups_hard=Harde Limiet
+lgroups_noquota=Er zijn geen groepen met quota op <tt>$1</tt>
+lgroups_equota=Wijzig Quotum For:
+lgroups_grace=Wijzig Waarschuwingstijd
+lgroups_check=Controleer Quota
+
+sgroup_egroup=U mag geen quotum wijzigen voor deze groep
+sgroup_efs=U mag geen quotum wijzigen op dit bestandsysteem
+
+ssync_ecannot=U mag het 'default' quotum voor dit bestandsysteem niet wijzigen
+
+suser_euser=U mag geen quotum wijzigen voor deze gebruiker
+suser_efs=U mag het quotum voor dit bestandsysteem niet wijzigen
+suser_emaxblocks=U mag geen bloklimiet boven $1 instellen
+suser_emaxfiles=U mag geen bestandenlimiet boven $1 instellen
+
+ufilesys_title=Gebruikers Quota
+ufilesys_return=bestandsystemen lijst
+ufilesys_ecannot=U kan geen quotum wijzigen voor '$1'
+ufilesys_all=All Quota voor <tt>$1</tt>
+ufilesys_blocks=Blokken
+ufilesys_files=Bestanden
+ufilesys_fs=Bestandssysteem
+ufilesys_used=Gebruikt
+ufilesys_soft=Zachte Limiet
+ufilesys_hard=Harde Limiet
+ufilesys_nouquota=Gebruiker <tt>$1</tt> heeft quota op geen enkel bestandssysteem
+ufilesys_edit=Wijzig Quotum Op:
+ufilesys_copy=Kopieër Quota
+
+ugracef_title=Waarschuwingstijd
+ugracef_return=gebruiker lijst
+ugracef_ecannot=U kunt de waarschuwingstijd op dit bestandssysteem niet wijzigen
+ugracef_info=Elk bestandsysteem heeft een waarschuwingstijd voor blok- and bestandsquota. De waarschuwingstijd bepaalt hoe lang een groep boven de zachte limiet kan zijn voordat er geen bestanden meer kunnen worden aangemaakt. 
+ugracef_graces=Gebruiker Waarschuwingstijd voor <tt>$1</tt>
+ugracef_block=Voor blokquotum
+ugracef_file=Voor bestandsquotum
+ugracef_update=Wijzigen
+
+ugraces_esave=Opslaan waarschuwingstijd mislukt
+ugraces_eedit=U kunt de waarschuwingstijd op dit bestandssysteem niet wijzigen
+ugraces_enumber='$1' is geen getal
+
+lusers_failed=Gebruikerslijst mislukt
+lusers_eallow=U mag geen quotum wijzigen op dit bestandsysteem
+lusers_title=Quota Bestandssysteem
+lusers_return=bestandsystemen lijst
+lusers_toomany=Te veel gebruikers hebben quotum op <tt>$1</tt> om op één pagina te tonen
+lusers_qoutas=Quota alle gebruikers op <tt>$1</tt>
+lusers_blocks=Blokken
+lusers_files=Bestanden
+lusers_user=Gebruiker
+lusers_used=Gebruikt
+lusers_soft=Zachte Limiet
+lusers_hard=Harde Limiet
+lusers_noquota=Er zijn geen gebruikers met quota op <tt>$1</tt>
+lusers_equota=Wijzig Quotum voor:
+lusers_egrace=Wijzig Waarschuwingstijd
+lusers_check=Controleer Quota
+lusers_info=Webmin kan worden geconfigureerd om automatisch de quota te zetten op dit bestandssysteem als een nieuwe Unix gebruiker wordt aangemaakt. Dit werkt alleen als het $1 Webmin module wordt gebruikt om gebruikers aan te maken.
+lusers_useradmin=Gebruikers and Groepen
+lusers_newuser=Nieuw Gebruikers Quotum
+lusers_sblimit=Zachte Blok Limiet
+lusers_hblimit=Harde Blok Limiet
+lusers_sflimit=Zachte Bestands Limiet
+lusers_hflimit=Harde Bestands Limiet
+lusers_apply=Toepassen
+
+grace_seconds=Seconden
+grace_minutes=Minuten
+grace_hours=Uren
+grace_days=Dagen
+grace_weeks=Weken
+grace_months=Maanden
+
+log_activate_u=Gebruikersquota op $1 aangezet
+log_activate_g=Groepsquota op $1 aangezet
+log_activate_ug=Gebruikers- en groepsquota op $1 aangezet
+log_deactivate_u==Gebruikersquota op $1 uitgezet
+log_deactivate_g=Groepsquota op $1 uitgezet
+log_deactivate_ug=Gebruikers- en groepsquota op $1 uitgezet
+log_save=Quota voor $1 op $2 gewijzigd
+log_sync=Nieuw gebruikersquotum op $1 gewijzigd
+log_grace_u=Gebruikers waarschuwingstijd op $1 gewijzigd
+log_grace_g=Groeps waarschuwingstijd op $1 gewijzigd
+log_check=Quota op $1 gecontroleerd
+log_copy_u=Quota van gebruiker $1 gekopieërd
+log_copy_g=Quota van groep $1 gekopieërd
+

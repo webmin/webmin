@@ -1,0 +1,18 @@
+#        webmin-1.00     dfsadmin/lang/de
+#
+#        created: ??-??-????                by: ???
+#        last modified: 24-aug-2002          Rev.: 24-08-2002
+#        modified/translated by: Dieter Huerten
+#        for changes, completions, ...  mailto:dieter.huerten@telebel.de
+#
+# erzeugt: ??-??-????                durch: ???
+# letzte &Auml;nderung: 24.08.2002        Rev.: 24.08.2002
+# modifiziert/&uuml;bersetzt durch: Dieter H&uuml;rten
+# f&uuml;r &Auml;nderungen, Erg&auml;nzungen, etc. mailto:dieter.huerten@telebel.de
+#
+
+log_modify=NFS-Freigabe $1 ge&auml;ndert
+log_rename=NFS-Freigabe $1 zu $2 umbenannt
+log_create=NFS-Freigabe $1 erstellt
+log_delete=NFS-Freigabe $1 gel&ouml;scht
+log_apply=&Auml;nderungen angewandt

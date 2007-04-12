@@ -1,0 +1,33 @@
+<header>Dominio para el que recibir correo</header>
+
+<center><tt>mydestination</tt></center>
+<hr>
+
+Indique los dominios que esta máquina considerará locales, y a los que
+entregará el correo localmente, en lugar de reenviarlo a otra máquina. La
+opción por defecto es recibir correo para la propia máquina.
+
+<p>
+
+<b>Máquina Local</b>: <tt>$myhostname, localhost.$mydomain</tt>
+<br>
+<b>Todo el Dominio</b>: <tt>$myhostname, localhost.$mydomain,
+$mydomain</tt>
+
+<p>
+
+También puede indicar la ruta completa a un fichrero que contiene los
+nombres de los dominios cuyo correo esta máquina repartirá de manera local.
+
+<p>
+
+Ejemplo: <tt>/etc/postfix/midestino</tt>
+
+<hr>
+<br>
+
+<b><u>Precauciónn:</u></b> para evitar bucles de entrega de coreo debe
+listar todos los nombres de la máquina, incluyendo <tt>$myhostname</tt>,
+y <tt>localhost.$mydomain</tt>. NO LISTE AQUI LOS DOMINIOS VIRTUALES.
+ENUMERELOS EN EL FICHERO DE DOMINIOS VIRTUALES.
+

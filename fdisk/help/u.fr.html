@@ -1,0 +1,8 @@
+<header>Démasquage d'interruption</header>
+Configure le démasquage d'interruption de ce disque.<p>
+
+Permet au pilote de démasquer les autres interruptions durant le processus d'interruption, ce qui améliore beaucoup le temps de réponse de Linux et élimine l'erreur "serial port overrun".<p>
+
+<u>Utiliser avec prudence</u>: certaine combinaison de disque et contrôleur ne tolère pas d'augmenter les entrées/sorties ce qui pourrait amener à <i>une corruption massive du système de fichier</i>.<br>
+En particulier les contrôleurs CMD-640B et RZ1000 (E)IDE (dû à un défaut matériel) quand cette option est utilisé avec des kernel plus vieux que le 2.0.13.<br>
+<hr>

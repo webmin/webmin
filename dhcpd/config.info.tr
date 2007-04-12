@@ -1,0 +1,5 @@
+dhcpd_conf=DHCP sunucusu yapýlandýrma dosyasý,0
+dhcpd_path=DHCP sunucusu çalýþtýrma dosyasý,0
+interfaces=DHCP'nin çalýþacaðý arayüzler,3,Otomatik
+pid_file=DHCP sunucusu pid dosyasý yolu,0
+lease_file=DHCP sunucusu istemci kayýtlarý dosyasý,0

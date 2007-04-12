@@ -1,0 +1,28 @@
+
+log_servers=He canviat els altres servidors DNS
+log_logging=He canviat el registre i els errors
+log_acls=He canviat les llistes de control d'accés
+log_files=He canviat els fitxers i els directoris
+log_forwarding=He canviat el reeenviament i les transferències
+log_net=He canviat les adreces i la topologia
+log_misc=He canviat les opcions miscel·lànies
+log_zonedef=He canviat els valors per defecte de la zona
+log_apply=He aplicat els canvis
+log_start=He iniciat el servidor DNS
+log_master=He creat la zona mestra $1
+log_slave=He creat la zona esclava $1
+log_stub=He creat la zona de stub $1
+log_forward=He creat la zona de reemissió $1
+log_delete_master=He suprimit la zona mestra $1
+log_delete_slave=He suprimit la zona esclava $1
+log_delete_stub=He suprimit la zona de stub $1
+log_delete_forward=He suprimit la zona de reemissió $1
+log_text=Registres editats a mà de $1
+log_soa=He canviat els paràmetres de zona de $1
+log_opts=He canviat les opcions de zona de $1
+log_delete_record=He suprimit $1 registre(s) $2 de la zona $3
+log_create_record=He creat $1 registre(s) $2 a la zona $3
+log_modify_record=He modificat $1 registre(s) $2 de la zona $3
+log_boot=He creat el fitxer de configuració primari
+
+

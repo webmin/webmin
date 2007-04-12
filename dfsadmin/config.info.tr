@@ -1,0 +1,3 @@
+dfstab_file=NFS exports dosyasý yeri,0
+share_all_command=Paylaþýmý baþlatma komutu,0
+unshare_all_command=Paylaþýmý durdurma komutu,0

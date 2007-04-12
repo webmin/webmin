@@ -1,0 +1,33 @@
+<header>Restricciones en los nombres y direcciones de los clientes</header>
+
+<center><tt>smtpd_client_restrictions</tt></center>
+<hr>
+
+Este parámetro especifica restricciones adicionales en los nombres de
+máquina y direcciones IP de los clientes SMTP.
+
+<p>
+
+Por defecto se permiten conexiones desde cualquier máquina. Están
+disponibles las siguientes restricciones:
+
+<include smtpd_restrictions>
+
+Las restricciones se aplican en el orden que se especifican; la primera
+restricción que coincida será la que aplicará.
+
+<p>
+
+Especifique la lista de restricciones, separadas por comas y/o espacios en
+blanco. Continúe las líneas largas comenzando la siguiente línea con un
+espacio.
+
+<p>
+
+Ejemplos sensatos:
+<ul>
+<li><tt>permit_mynetworks, reject_unknown_client</tt>
+<li><tt>reject_maps_rbl, reject_unknown_client</tt>
+</ul>
+
+<hr>

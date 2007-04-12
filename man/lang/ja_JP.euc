@@ -1,0 +1,65 @@
+index_title=システムのマニュアル
+index_header=システム マニュアル ページ検索
+index_for=検索対象
+index_where=検索場所
+index_alldoc=すべてのマニュアル
+index_man=マニュアルのページ
+index_doc=パッケージ マニュアル
+index_kernel=カーネル マニュアル
+index_info=情報ページ
+index_howto=HOWTO ドキュメント
+index_kde=KDE マニュアル
+index_perl=Perl モジュール マニュアル
+index_help=Webmin ヘルプ
+index_reset=リセット
+index_search=検索
+index_return=検索形式
+index_type=一致
+index_name=名前のみ
+index_data=名前とコンテンツ
+index_other_man=マニュアルのページ
+index_other_help=Webmin ヘルプ
+index_other_doc=パッケージ マニュアル
+index_other_kernel=カーネル マニュアル
+index_other_howto=HOWTO ドキュメント
+index_other_perl=Perl モジュール マニュアル
+
+search_efor=検索するマニュアルのページが入力されていません
+search_title=検索結果
+search_desc=説明
+search_type=種類
+search_file=ページまたはファイル
+search_man=マニュアルのページ
+search_howto=HOWTO ドキュメント
+search_doc=パッケージ マニュアル
+search_kernel=カーネル マニュアル
+search_kde=KDE マニュアル
+search_perl=Perl モジュール
+search_help=Webmin ヘルプ
+search_none=$1 と一致したドキュメンテーションが見つかりませんでした。
+search_for=$1 を検索
+
+howto_title=HOWTO ドキュメント
+howto_header=HOWTO ドキュメント ファイル $1
+howto_epath=HOWTO ドキュメントのパスが無効です
+
+doc_title=パッケージ マニュアル
+doc_header=HOWTO ドキュメント ファイル $1
+doc_epath=パッケージ マニュアルのパスが無効です
+
+man_title=マニュアルのページ
+man_header=$1($2) のマニュアルのページ
+man_noentry=$1 のマニュアルのページは存在しません。
+
+kernel_title=カーネル ドキュメント
+kernel_header=カーネル ドキュメント ファイル $1
+kernel_epath=カーネル ドキュメントのパスが無効です
+
+kde_title=KDE マニュアル
+kde_header=KDE ドキュメント ファイル $1
+kde_epath=KDE マニュアルのパスが無効です
+
+perl_title=Perl モジュール
+perl_header=Perl モジュール $1 のマニュアル
+perl_emod=Perl モジュール名が無効です
+

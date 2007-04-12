@@ -1,0 +1,2 @@
+date_subs=Csináljak <tt>strftime</tt> cserét a másolat célkönyvtárában?,1,1-Igen,0-Nem
+from_addr=Indító: az email üzenetek indító címe,3,webmin@hostname

@@ -1,0 +1,18 @@
+sec1=Opcions de portsentry,11
+portsentry=Camí del dimoni portsentry,0
+portsentry_config=Camí del fitxer de configuració de portsentry,0
+portsentry_pid=Fitxer de PID de portsentry,3,None
+portsentry_ignore=Fitxer de hosts ignorats per portsentry,3,Treu-lo de la configuració
+portsentry_start=Ordre per iniciar portsentry,3,Executa els dimonis amb els modes de sota
+portsentry_stop=Ordre per aturar portsentry,3,Mata els processeo
+portsentry_tmode=Mode TCP de portsentry,1,tcp-Mode bàsic,stcp-Mode silenciós,atcp-Mode silenciós avançat
+portsentry_umode=Mode UDP de portsentry,1,udp-Mode bàsic,sudp-Mode silenciós,audp-Mode silenciós avançat
+
+sec2=Opcions de hostsentry,11
+hostsentry=Camí del script python hostsentry.py,0
+hostsentry_config=Camí del fitxer de configuració de hostsentry,0
+hostsentry_start=Ordre per iniciar hostsentry,3,Executa el script python
+hostsentry_stop=Ordre per aturar hostsentry,3,Mata els processos
+
+sec3=Opcions dels registres de verificació,11
+logcheck=Camí del script logcheck.sh,0

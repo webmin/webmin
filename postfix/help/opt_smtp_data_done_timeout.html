@@ -1,0 +1,20 @@
+<header>Timeout on waiting for answer to ending &quot;.&quot;</header>
+
+<center><tt>smtp_data_done_timeout</tt></center>
+<hr>
+
+This parameter specifies the SMTP client timeout in seconds for sending the
+SMTP &quot;.&quot;, and for receiving the server response.
+
+<p>
+
+When no response is received within the deadline, a warning is logged that the
+mail may be delivered multiple times.
+
+<p>
+
+In case of problems the client does NOT try the next address on the mail
+exchanger list.
+
+
+<hr>

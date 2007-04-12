@@ -1,0 +1,4 @@
+xinetd_conf=Xinetd 配置文件,0
+protocols_file=网络协议文件,0
+pid_file=指向 Xinetd PID 的文件,0
+start_cmd=启动 Xinetd 的命令,0

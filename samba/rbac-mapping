@@ -1,0 +1,4 @@
+# RBAC authorization		# Webmin ACL
+solaris.admin.fsmgr.write	noconfig=1
+solaris.admin.fsmgr.read	r_fs=1,noconfig=1,maint_users=0,conf_print=0,conf_pass=0,view_users=0,swat=0,conf_misc=0,copy=0,apply=0,c_ps=,per_ps_acls=0,r_ps=1,maint_gsync=0,winbind=0,maint_sync=0,per_fs_acls=0,conf_smb=0,conf_net=0,kill_con=0,view_all_con=0,c_fs=,maint_groups=0,w_ps=,hide=0,maint_makepass=0,w_fs=,winbind=0,conf_bind=0,ACLfs_global=0,ACLps_global=0
+

@@ -1,0 +1,60 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.72 [en] (X11; U; Linux 2.2.14-6.1.1 i686) [Netscape]">
+</head>
+<body>
+
+<center>
+<h1>
+DHCPD ACL subsystem</h1></center>
+
+<h3>
+TARGETS:</h3>
+&nbsp;&nbsp;&nbsp; The main goals of acl subsystem is providing a powerfull,
+flexible and extendable mechanism for access control of different objects
+in dhcpd configuration. This objects are shared networks, subnets, groups
+of hosts and hosts.
+<br>&nbsp;&nbsp;&nbsp; Also acl subsystem allows you to control some other
+features, such as: unique object names, applying of changed configuration,
+viewing and deletion of dhcp leasures.
+<h3>
+CONCEPTS:</h3>
+&nbsp;&nbsp;&nbsp; Dhcpd configuration file we can show as a tree structure.
+Each node of this tree represents a configuration of different dhcp objects
+(fig. 0).
+<p>&nbsp;&nbsp;&nbsp; Acl subsystem have 2 levels of permissions:
+<ul>
+<li>
+global: read, write, create;</li>
+
+<li>
+per-object: read, write.</li>
+</ul>
+&nbsp;&nbsp;&nbsp; Global permissions exists for every type of objects
+(hosts, groups, subnets, shared networks) and controls operations with
+a whole object set of given type.
+<br>Global create
+<br>Global read
+<br>Global write
+<br>&nbsp;&nbsp;&nbsp; Per-object permissions give you a more flexible
+way of access control. Per-object permissions acl exists for every object
+individual object. Today only hosts and subnets per-object acls are impemented.
+<br>Per-object read
+<br>Per-object write
+<br>&nbsp;&nbsp;&nbsp; Acl subsystem can operate in 4 different security
+levels (or modes).
+<br><img SRC="ctree0.gif" ALT="dhcpd configuration tree, security level 0, check subnetX permissions" height=229 width=314>
+<br>&nbsp;
+<p><img SRC="ctree1.gif" ALT="dhcpd configuration tree, security level 1, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree2.gif" ALT="dhcpd configuration tree, security level 2, check subnetX permissions" height=229 width=314>
+<p><img SRC="ctree3.gif" ALT="dhcpd configuration tree, security level 3, check subnetX permissions" height=229 width=314>
+<h3>
+USER NOTES:</h3>
+&nbsp;
+<h3>
+DEVELOPER NOTES:</h3>
+
+</body>
+</html>

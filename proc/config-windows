@@ -1,0 +1,5 @@
+default_mode=last
+ps_style=windows
+base_ppid=1
+cut_length=80
+trace_java=1

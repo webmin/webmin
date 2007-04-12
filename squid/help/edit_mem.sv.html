@@ -1,0 +1,68 @@
+<header>Minnesutnyttjande</header>
+
+<b>Minnesbegränsning</b>: Standardvärdet är 8 MB.
+
+<p>OBS: Denna parameter sätter ingen begränsning för processtorleken, utan
+begränsar endast Squids minnesutnyttjande i ett avseende. Squid använder
+minnet även till andra saker. Processen kommer antagligen att bli två eller
+tre gånger så stor som det värde du anger här.
+
+<p>Parametern anger den ideala minnesåtgången för:
+<ul>
+<li>Objekt som håller på att överföras
+<li>Nyligen använda objekt
+<li>Objekt som cachats negativt
+</ul>
+
+<p>Data för dessa objekt lagras i 4 kB-block. Denna parameter anger den
+ideala övre begränsningen på det totala antalet allokerade 4 kB-block.
+Objekt som håller på att överföras har högst prioritet.
+
+<p>Objekt som håller på att överföras har högre prioritet än övriga. Om
+ytterligare utrymme krävs för inkommande data kastas objekt som cachats
+negativt och som nyligen använts. De negativt cachade objekten samt de
+nyligen använda objekten tar alltså upp allt utrymme som inte behövs till
+objekt som håller på att överföras.
+
+<p>Om omständigheterna kräver detta kommer denna begränsning att överskridas.
+Särskilt om takten för inkommande förfrågningar kräver mer än detta
+minnesutrymme för att hantera objekt som ska överföras, kommer Squid att
+överskrida gränsen, för att kunna ta hand om nya förfrågningar. När
+belastningen minskar kommer block att frigöras tills högvattenmärket nåtts
+och därefter kommer blocken att användas för nyligen använda objekt.
+
+<p><b>FD(FQDN)-cachestorlek</b>: Standardvärdet är 1024. Det maximala antalet
+cacheposter med Fullständiga Domännamn.
+
+<p><b>"Högvattenmärke" för minne</b>: Standardvärdet är 95 %. När denna gräns
+nås kommer nyligen använda objekt och objekt som håller på att överföras att
+kastas bort för att frigöra minne.
+
+<p><b>"Lågvattenmärke" för minne</b>: Standardvärdet är 90 %. När
+högvattenmärket nåtts kommer Squid att fortsätta att frigöra minne tills
+minnesutnyttjande gått nedanför denna gräns.
+
+<p><b>"Högvattenmärke" för disk</b>: Standardvärdet är 95 %. När denna gräns
+nås kommer Squid att börja rensa disk-cachen från de äldsta objekten.
+
+<p><b>"Lågvattenmärke" för disk</b>: Standardvärdet är 90 %. När
+högvattenmärket nåtts kommer Squid att fortsätta att rensa disk-cachen tills
+det upptagna utrymmet gått nedanför denna gräns.
+
+<p><b>Maximal storlek för cachade objekt</b>: Standardvärdet är 4096 kB. Denna
+variabel begränsar storleken på de objekt som lagras i cachen. Större objekt
+kommer aldrig att cachas utan måste hämtas från ursprungsservern varje gång.
+
+<p><b>Storlek för IP-adress-cache</b>: Standardvärdet är 1024. Antalet poster
+som får lagras i IP-cachen.
+
+<p><b>"Högvattenmärke" för IP-cache</b>: Standardvärdet är 95 %. När denna
+gräns nås kommer Squid att börja rensa ut IP-poster ur cachen.
+
+<p><b>"Lågvattenmärke" för IP-cache</b>: Standardvärdet är 90 %. När Squid har
+börjat att rensa i IP-cachen kommer den att fortsätta tills posternas antal
+går under denna andel.
+
+<hr>
+
+

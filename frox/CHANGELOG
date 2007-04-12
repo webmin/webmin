@@ -1,0 +1,4 @@
+---- Changes since 1.140 ----
+First version of this module, which can setup and configure the Frox FTP proxy server. Supports almost all the configurable options in frox.conf, and can create an IPtables firewall rule to perform port redirection. Thanks to Joe Cooper for sponsoring the development of this module.
+---- Changes since 1.180 ----
+An interface to listen on for transparent FTP proxying can now be selected instead of specifying a network address.

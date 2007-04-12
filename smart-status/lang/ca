@@ -1,0 +1,44 @@
+index_title=Estat de les Unitats SMART
+index_ecmd=No s'ha trobat al sistema l'ordre de control SMART $1, o bé no està correctament configurada a la <a href='$2'>configuració del mòdul</a>. S'ha d'instal·lar abans de poder utilitzar aquest mòdul.
+index_ecmd2=No sembla que l'ordre $1 sigui l'ordre de control SMART. S'ha de configurar correctament a la <a href='$2'>configuració del mòdul</a> abans de poder utilitzar aquest mòdul.
+index_version=SMARTsuite versió $1
+index_show=Mostra l'estat de la unitat:
+index_ok=Mostra
+index_eide=No s'ha trobat cap unitat IDE ni SCSI al sistema.
+index_drive=Estat de la unitat $1
+index_desc=Ubicació
+index_size=Mida de la unitat
+index_model=Marca i model
+index_support=Suporta SMART
+index_enabled=SMART activat
+index_check=Ha passat la comprovació de la unitat
+index_short=Auto test Breu
+index_ext=Auto test Extès
+index_data=Test de Recopilació de Dades
+index_errors=Errors registrats
+index_ecount=$1 errors detectats
+index_return=a l'índex de mòduls
+
+monitor_type=Comprovació d'Unitat SMART Drive Check
+monitor_drive=Unitat a comprovar
+monitor_errors=Comprova també el registre d'errors
+monitor_other=Altres...
+monitor_edrive=Hi falta la unitat a comprovar o bé és invàlida
+monitor_nosuch=Aquesta unitat no existeix
+monitor_nosmart=No hi ha suport SMART
+
+short_title=Auto Test Breu
+short_doing=Iniciant l'auto test breu del $1...
+short_failed=...ha fallat!
+short_ok=...el test s'ha executat bé. Mira l'estat de la unitat a la pàgina principal del mòdul per veure'n els resultats.
+
+ext_title=Auto Test Extès
+ext_doing=Iniciant l'auto test extès del $1...
+ext_failed=$short_failed
+ext_ok=$short_ok
+
+data_title=Test de Recopilació de Dades
+data_doing=Iniciant la recopilació de dades fora de línia a $1...
+data_failed=...ha fallat!
+data_ok=...la recopilació s'ha executat bé. Mira l'estat de la unitat a la pàgina principal del mòdul per veure'n els resultats.
+

@@ -1,0 +1,16 @@
+<header>Zezwoliæ na niewiarygodny routing</header>
+
+<center><tt>allow_untrusted_routing</tt></center>
+<hr>
+
+Ten parametr okre¶la, czy Postfix bêdzie kierowa³ pocztê od niewiarygodnych
+klientów do miejsc przeznaczenia b³ogos³awionych przez parametr
+<a href=opt_relay_domains><tt>relay_domains</tt></a> drog± okre¶lon± przez nadawcê
+(uzytkownik[@%!]zdalne[@%!]miejsce). <p>
+
+Domy¶lnie, niewiarygodnym klientom nie wolno okre¶laæ routingu. Zamyka to
+wstrêtn± lukê "open relay", gdy zapasowy host MX mo¿e zostaæ oszukany
+w&nbsp;celu przekazania niechcianej poczty podstawowemu hostowi MX, który
+nastêpnie rozsy³a j± jako spam po ¶wiecie.
+
+<hr>

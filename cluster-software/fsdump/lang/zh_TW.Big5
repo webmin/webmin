@@ -1,0 +1,105 @@
+index_title=檔案系統備份
+index_add=新增目錄備份:
+index_none=尚未組態檔案系統備份
+index_restore=回存備份的檔案系統類型:
+index_restoremsg=選取檔案系統類型和按下此鈕開始執行程序來回存選取的檔案系統備份。
+index_ecommands=模組在您的系統上找不到所需要的檔案系統備份指令 (像是 $1)，也許現在還沒有安裝。
+index_return=備份清單
+
+dump_dir=備份目錄
+dump_fs=檔案系統
+dump_sched=排程?
+dump_when=排定時間來備份
+dump_dest=備份到
+dump_file=檔案或磁帶機裝置
+dump_host=主機位置 $1 用使用者 $2 備份到檔案或裝置 $3
+dump_level=備份層級
+dump_level_0=(全部備份)
+dump_label=備份標簽
+dump_multi=分成多個連續檔案?
+dump_update=更新<tt>/etc/dumpdates</tt>檔案?
+dump_edir=沒有輸入或錯誤的備份目錄
+dump_efile=沒有輸入備份的檔案或裝置
+dump_ehost=沒有輸入或錯誤的備份主機
+dump_ehuser=在主機上無效的備份使用者名稱
+dump_ehfile=在主機上沒有輸入或錯誤的備份檔案或裝置
+dump_elabel=無效的備份標簽 (最多15個字元)
+dump_elabel2=無效的備份標簽 (最多255個字元)
+dump_max=所包含的最大檔案大小
+dump_unlimited=不限制
+dump_attribs=包含檔案屬性?
+dump_over=在覆蓋到磁帶前先詢問?
+dump_overwrite=每次在備份都前先詢問?
+dump_invent=備份時紀錄詳細目錄?
+dump_emax=沒有輸入或錯誤的最大檔案大小
+dump_emp=備份目錄必須是一個檔案系統掛載點
+dump_erase=在備份前先刪除檔案/抹除磁帶?
+dump_verify=在備份後檢驗資料?
+dump_offline=在備份後退出磁帶?
+
+edit_err=新增備份失敗
+edit_edir=沒有輸入備份目錄
+edit_efs=這個模組無法備份 $1 類型的檔案系統
+edit_title=新增備份
+edit_title2=編輯備份
+edit_header=$1 檔案系統備份內容
+edit_enabled=啟用排程備份?
+edit_enabled_no=停用
+edit_enabled_yes=啟用,在下方選取的時間..
+edit_savenow=儲存並開始備份
+edit_createnow=新增並開始備份
+edit_now=現在備份
+edit_return=dump
+edit_email=傳送排程輸出到電子郵件
+
+save_err=儲存備份失敗
+save_edir=沒有輸入或錯誤的備份目錄
+save_efs=備份目錄無法變更成不同的檔案系統
+
+backup_title=現在備份
+backup_desc=備份 $1 到 $2 ..
+
+when_min=每分
+when_hour=每小時的 $1 past the hour
+when_day=每天的 $2:$1
+when_month=每個月第$3天的$2:$1
+when_weekday=每星期 $3 的 $2:$1
+when_cron=排程時間(cron) $1
+
+restore_title=回存備份
+restore_ecommand=指令 $1在您的系統上找不到所需要的$2檔案系統回存備份指令，也許現在還沒有安裝。
+restore_header=回存備份 $1 檔案系統
+restore_src=從檔案或裝置回存
+restore_dir=回存目錄
+restore_ok=現在回存備份!
+restore_over=複寫原有檔案?
+restore_over0=全部都是
+restore_over1=除非比備份的新
+restore_over2=一個也不
+restore_noattribs=回存檔案屬性?
+restore_label=只回存有標簽的備份
+restore_files=檔案回存
+restore_all=所有備份的東西
+restore_sel=檔案清單中的..
+restore_multi=備份是多個連續檔案?
+restore_efile=找不到檔案或裝置回存的東西
+restore_ehost=沒有輸入或錯誤的回存主機位置
+restore_ehuser=錯誤的回存使用者在主機位置上
+restore_ehfile=錯誤的檔案或裝置在回存主機位置上
+restore_now=目前用指令 $1 回存備份中 ..
+restore_desc=這頁面是用來回存先前的檔案系統備份，請注意！當開始回存時,檔案會被修改成備份裡面的內容!
+restore_efiles=找不到回存檔案
+restore_evolume=不支援多磁碟組合(Multi-volume)回存.
+restore_equestion=回存時未知的問題 : $1
+restore_edir=沒有輸入或錯誤的回存目錄
+restore_failed=回存失敗 : $1
+restore_complete=回存成功！
+restore_test=只顯示備份的檔案?
+
+log_create=新增$1的備份設定
+log_modify=修改$1的備份設定
+log_delete=刪除$1的備份設定
+log_backup=備份 $1 到 $2
+log_restore=從$1回存備份
+
+

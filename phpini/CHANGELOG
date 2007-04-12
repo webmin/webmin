@@ -1,0 +1,2 @@
+---- Changes since 1.310 ----
+First version of this module, which can edit the global PHP configuration file and other per-domain files.

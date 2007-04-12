@@ -1,0 +1,3 @@
+webalizer=Path to webalizer command,0
+webalizer_conf=Path to webalizer configuration file,0
+auto=Automatically include logfiles from,2,apache-Apache,squid-Squid

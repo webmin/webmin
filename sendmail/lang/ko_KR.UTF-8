@@ -1,0 +1,516 @@
+index_title=sendmail 姥失
+index_econfig=sendmail 姥失 督析 $1戚(亜) 蒸柔艦陥. <a href='$2'>乞汲 姥失</a>戚 舛溌馬走 省聖 呪 赤柔艦陥.
+index_eversion=sendmail 姥失 督析戚 置重 sendmail 獄穿遂戚 焼鑑艦陥. Webmin拭辞澗 8.8 獄穿 戚雌幻 走据杯艦陥.
+index_epath=獣什奴拭 sendmail 叔楳 督析 $1戚(亜) 竺帖鞠嬢 赤走 省柔艦陥. sendmail戚 竺帖鞠嬢 赤走 省暗蟹 <a href='$2'>乞汲 姥失</a>戚 舛溌馬走 省聖 呪 赤柔艦陥.
+index_return=sendmail 姥失
+index_stop=sendmail 掻走
+index_stopmsg=叔楳 掻昔 sendmail 覗稽室什研 掻走馬形檎 戚 獄動聖 刊牽淑獣神. 益君檎 陥献 獣什奴拭辞 稽鎮 紫遂切稽税 五析 穿含戚 掻走鞠悟, 適虞戚情闘亜 戚 獣什奴聖 五析 辞獄稽 紫遂馬食 五析聖 穿勺馬走 公馬惟 桔艦陥.
+index_start=sendmail 獣拙
+index_startmsg=誤敬 $1聖(研) 紫遂馬食 sendmail聖 獣拙馬形檎 戚 獄動聖 刊牽淑獣神. 陥献 獣什奴税 稽鎮 紫遂切拭惟 五析聖 壕含馬壱 適虞戚情闘亜 戚 獣什奴聖 五析 辞獄稽 紫遂拝 呪 赤惟 馬形檎 胡煽 戚 獄動聖 喚君醤 杯艦陥.
+
+opts_title=sendmail 辛芝
+opts_ecannot=sendmail 辛芝聖 畷増拝 呪 蒸柔艦陥
+opts_ds=硲什闘研 搭背 降重 五析 穿勺
+opts_direct=送羨 壕含
+opts_dr=硲什闘拭 搾舛縦 紫遂切 戚硯 穿含
+opts_dh=硲什闘拭 稽鎮 紫遂切税 五析 穿含
+opts_local=稽鎮稽 壕含
+opts_queuela=置企 穿勺 採馬 汝液
+opts_refusela=置企 呪重 採馬 汝液
+opts_maxch=置企 馬是 覗稽室什 呪
+opts_throttle=置企 段 雁 尻衣 呪
+opts_minqueueage=陥獣 穿勺馬奄 穿 置社 企奄 獣娃
+opts_runsize=置企 企奄伸 滴奄
+opts_queuereturn=匂奄 穿 企奄 獣娃
+opts_queuewarn=井壱 穿勺 穿 企奄 獣娃
+opts_queue=五析 企奄伸 巨刑塘軒
+opts_postmaster=神嫌 五獣走 穿勺 企雌
+opts_forward=紫遂切 穿含 督析
+opts_minfree=紫遂 亜管廃 置社 巨什滴 因娃
+opts_maxmessage=置企 五獣走 滴奄
+opts_loglevel=稽益 呪層
+opts_mimebounce=MIME 昔坪球 郊錘什 五獣走脊艦猿?
+opts_default=奄沙葵
+opts_save=煽舌 貢 旋遂
+opts_err=辛芝聖 煽舌馬走 公梅柔艦陥
+opts_ehost='$1'精(澗) 政反廃 硲什闘 暁澗 亀五昔 戚硯戚 焼鑑艦陥
+opts_einvalid='$1'精(澗) 政反廃 $2 葵戚 焼鑑艦陥
+opts_blame=督析 左照 辛芝
+opts_selected=識澱廃 牌鯉..
+opts_blocks=鷺系
+opts_bytes=郊戚闘
+opts_dmode=壕含 乞球
+opts_background=壕井
+opts_queue-only=企奄伸幻
+opts_interactive=企鉢縦
+opts_deferred=走尻喫
+
+aliases_title=五析 紺暢
+aliases_ecannot=紺暢聖 畷増拝 呪 蒸柔艦陥
+aliases_addr=爽社
+aliases_to=紺暢 走舛 企雌..
+aliases_type1=爽社 $1
+aliases_type2=督析 $1拭 赤澗 爽社
+aliases_type3=督析 $1
+aliases_type4=覗稽益轡 $1
+aliases_type5=切疑誓岩 督析 $1
+aliases_none=蒸製
+aliases_return=紺暢 鯉系
+
+aform_type0=蒸製
+aform_type1=穿切 五析 爽社
+aform_type2=督析拭 赤澗 爽社
+aform_type3=督析拭 床奄
+aform_type4=覗稽益轡拭 因厭
+aform_type5=督析稽採斗 切疑誓岩
+aform_edit=紺暢 畷増
+aform_create=紺暢 拙失
+aform_name=爽社
+aform_enabled=紫遂 亜管杯艦猿?
+aform_val=紺暢 走舛 企雌
+aform_afile=畷増..
+aform_return=紺暢
+
+afile_title=爽社 督析 畷増
+afile_desc=焼掘税 努什闘 慎蝕拭辞 督析 $1拭 赤澗 爽社研 畷増馬淑獣神.
+afile_efile=$1聖(研) 畷増拝 呪 蒸柔艦陥.
+afile_undo=痕井 昼社
+
+rfile_title=切疑誓岩 督析 畷増
+rfile_desc=焼掘税 努什闘 慎蝕拭辞 $1拭 赤澗 切疑誓岩 五獣走研 畷増馬淑獣神. 切疑誓岩 五獣走拭澗 切疑誓岩 奄管戚 醗失鉢吃 凶 溌舌鞠澗 古滴稽 $SUBJECT, $FROM, $TO, $DATE 貢 $BODY亜 匂敗吃 呪 赤柔艦陥.
+rfile_efile=$1聖(研) 畷増拝 呪 蒸柔艦陥.
+rfile_undo=痕井 昼社
+
+asave_err=紺暢聖 煽舌馬走 公梅柔艦陥
+asave_ecannot2=紺暢聖 畷増拝 呪 蒸柔艦陥
+asave_ecannot=戚 紺暢聖 畷増拝 呪 蒸柔艦陥
+asave_emax=$1鯵 戚馬税 紺暢幻 拙失拝 呪 赤柔艦陥
+asave_eaddr='$1'精(澗) 政反廃 爽社亜 焼鑑艦陥
+asave_ealready='$1'税 紺暢戚 戚耕 赤柔艦陥
+asave_ematch='$1'引(人) 析帖馬澗 紺暢幻 拙失拝 呪 赤柔艦陥
+asave_etype=戚君廃 政莫税 紺暢精 拙失拝 呪 蒸柔艦陥
+asave_etype1='$1'精(澗) 政反廃 穿切 五析 爽社亜 焼鑑艦陥
+asave_etype2=爽社 督析 '$1'戚(亜) 政反馬走 省暗蟹 蒸柔艦陥
+asave_etype3='$1'精(澗) 政反廃 督析 戚硯戚 焼鑑艦陥
+asave_etype4=覗稽益轡 '$1'戚(亜) 政反馬走 省暗蟹 蒸柔艦陥
+asave_etype5=切疑誓岩 督析 '$1'戚(亜) 政反馬走 省暗蟹 蒸柔艦陥
+asave_etype4none=走舛吉 覗稽益轡戚 蒸柔艦陥
+
+cws_title=稽鎮 亀五昔
+cws_ecannot=稽鎮 亀五昔聖 畷増拝 呪 蒸柔艦陥
+cws_domains=戚 辞獄拭辞 坦軒馬澗 亀五昔
+cws_desc1=sendmail精 $1拭 企廃 五析聖 薦須廃, 図楕 脊径空拭 蟹伸吉 亀五昔引 硲什闘 戚硯拭 企廃 稽鎮 壕含 五析幻 買遂杯艦陥. 五析 辞獄拭辞 食君 鯵税 穿切 五析 亀五昔聖 坦軒馬形檎 背雁 亀五昔聖 乞砧 戚 丞縦拭 蟹伸背醤 杯艦陥.
+cws_desc2=鯉系拭 亀五昔聖 隔澗 依幻生稽澗 中歳帖 省柔艦陥. 背雁 亀五昔税 DNS 傾坪球亜 糎仙馬澗 疑獣拭 薄仙 獣什奴聖 亜軒徹壱 赤澗走 溌昔背醤 杯艦陥.
+cws_err=稽鎮 亀五昔聖 煽舌馬走 公梅柔艦陥
+cws_ehost='$1'精(澗) 政反廃 硲什闘 暁澗 亀五昔 戚硯戚 焼鑑艦陥
+cws_eip='$1'精(澗) 亀五昔戚 焼観, IP 爽社脊艦陥
+
+masq_title=亀五昔 亜雌鉢
+masq_ecannot=亜雌鉢研 姥失拝 呪 蒸柔艦陥
+masq_domain=亀五昔生稽辞 亜雌鉢
+masq_domains=亜雌鉢拝 亀五昔
+masq_desc1=是拭辞 亀五昔聖 走舛廃 井酔, sendmail精 左鎧澗 乞窮 五獣走税 <tt>降重切</tt> 爽社研 是拭 走舛吉 亀五昔生稽 痕井杯艦陥. 暁廃 図楕拭 蟹伸吉 硲什闘蟹 亀五昔拭辞 左鎧澗 穿切 五析 五獣走 掻 薄仙 獣什奴聖 搭引馬澗 穿切 五析 五獣走税 <tt>降重切</tt> 爽社亀 戚人 疑析馬惟 痕井杯艦陥. <a href='$1'>降重 爽社</a> 凪戚走研 紫遂馬檎 働舛 紫遂切拭 企背 食奄拭 舛税吉 亀五昔 亜雌鉢亜 巷獣吃 呪 赤柔艦陥.
+masq_desc2=戚 奄管精 薄仙 獣什奴拭辞 左鎧澗 穿切 五析税 降重切 爽社拭 硲什闘 戚硯戚 焼観 亀五昔 戚硯聖 妊獣馬壱切 拝 凶 暁澗 薄仙 獣什奴戚 切端 五析 辞獄研 叔楳馬澗 陥献 硲什闘税 五析 買崎 蝕拝聖 拝 凶 政遂杯艦陥.
+masq_err=亀五昔 亜雌鉢研 煽舌馬走 公梅柔艦陥
+masq_edomain='$1'精(澗) 政反廃 亜雌鉢 亀五昔戚 焼鑑艦陥
+masq_ehost='$1'精(澗) 政反廃 硲什闘 暁澗 亀五昔 戚硯戚 焼鑑艦陥
+masq_eip='$1'精(澗) 亀五昔戚 焼観, IP 爽社脊艦陥
+
+trusts_title=重軽拝 呪 赤澗 紫遂切
+trusts_ecannot=重軽拝 呪 赤澗 紫遂切研 畷増拝 呪 蒸柔艦陥
+trusts_users=sendmail拭辞 重軽拝 呪 赤澗 稽鎮 紫遂切
+trusts_desc=稽鎮 紫遂切亜 穿切 五析聖 左鎧形壱 拝 井酔, sendmail精 図楕 鯉系拭 赤澗 紫遂切拭 企背辞幻 陥献 <tt>降重切:</tt> 爽社研 走舛拝 呪 赤惟 買遂杯艦陥. 戚澗 是繕吉 <tt>降重切:</tt> 爽社研 紫遂馬食 五析聖 左鎧走 公馬亀系 厳奄 是廃 薦廃脊艦陥.
+trusts_err=重軽拝 呪 赤澗 紫遂切研 煽舌馬走 公梅柔艦陥
+trusts_euser='$1'精(澗) 政反廃 紫遂切亜 焼鑑艦陥
+
+virtusers_title=爽社 古芭
+virtusers_ecannot=爽社 古芭聖 畷増拝 呪 蒸柔艦陥
+virtusers_edirective=sendmail 姥失 督析拭 爽社 古芭拭 琶推廃 走獣嬢亜 蒸柔艦陥.
+virtusers_efile=爽社 古芭 汽戚斗今戚什 $2聖(研) 姥逐馬澗 汽 紫遂廃 努什闘 督析 $1戚(亜) 蒸柔艦陥. 臣郊献 井稽研 紫遂拝 呪 赤亀系 <a href='$3'>乞汲 姥失</a>聖 呪舛背醤 杯艦陥.
+virtusers_desc1=爽社 古芭精 <a href='$1'>紺暢</a>引 搾汁馬走幻, 食君 鯵税 穿切 五析 亀五昔聖 坦軒馬澗 獣什奴拭辞澗 紺暢左陥 爽社 古芭聖 紫遂馬澗 依戚 疏柔艦陥. 爽社 古芭精 穿端 亀五昔税 五析聖 廃 鯵税 爽社稽 軒巨刑芝馬暗蟹, 食君 亀五昔拭辞 廃 鯵税 戚硯聖 紫遂馬澗 紫遂切研 坦軒馬暗蟹, 廃 鯵税 亀五昔拭辞 左鎧澗 乞窮 五析聖 陥献 亀五昔拭 古芭馬澗 汽 紫遂拝 呪 赤柔艦陥.
+virtusers_desc2=爽社 古芭拭 紫遂拝 亀五昔税 廃 牌鯉戚 <a href='$1'>稽鎮 亀五昔</a> 砺戚鷺拭 赤嬢醤 馬壱, 背雁 獣什奴聖 亜軒徹澗 唖 亀五昔原陥 DNS MX 傾坪球亜 廃 鯵梢 赤嬢醤 杯艦陥.
+virtusers_for=五析 企雌..
+virtusers_to=呪重切..
+virtusers_error=神嫌 $1
+virtusers_domain=亀五昔 $1
+virtusers_address=爽社 $1
+virtusers_return=爽社 古芭 鯉系
+
+vform_edit=古芭 畷増
+vform_create=古芭 拙失
+vform_for=五析 企雌
+vform_address=爽社
+vform_domain=亀五昔
+vform_to=呪重切
+vform_msg=五獣走
+vform_error=鋼発 神嫌
+vform_err_nouser=紫遂切 蒸製
+vform_err_nohost=硲什闘 蒸製
+vform_err_unav=紫遂拝 呪 蒸製
+vform_err_temp=tempfail
+vform_err_proto=覗稽塘紬
+vform_end=魁生稽 戚疑
+vform_ecannot=戚 爽社 古芭聖 畷増拝 呪 蒸柔艦陥
+
+vsave_ecannot=爽社 古芭聖 畷増拝 呪 蒸柔艦陥
+vsave_ecannot2=戚 爽社 古芭聖 畷増拝 呪 蒸柔艦陥
+vsave_emax=$1鯵 戚馬税 爽社 古芭幻 拙失拝 呪 赤柔艦陥
+vsave_err=爽社 古芭聖 煽舌馬走 公梅柔艦陥
+vsave_efrom='$1'精(澗) 政反廃 爽社亜 焼鑑艦陥
+vsave_efromdup='$1'拭 企廃 爽社 古芭戚 戚耕 舛税鞠嬢 赤柔艦陥
+vsave_edom='$1'精(澗) 政反廃 亀五昔戚 焼鑑艦陥
+vsave_edomdup='$1'拭 企廃 爽社 古芭戚 戚耕 舛税鞠嬢 赤柔艦陥
+vsave_ematch=据沙 爽社亜 '$1'引(人) 析帖馬走 省柔艦陥
+vsave_ecannot3=爽社拭 企廃 古芭聖 拙失拝 呪 蒸柔艦陥
+vsave_eaddr='$1'精(澗) 政反廃 爽社亜 焼鑑艦陥
+vsave_ecannot4=亀五昔拭 企廃 古芭聖 拙失拝 呪 蒸柔艦陥
+vsave_edomdom=廃 鯵税 亀五昔幻 陥献 亀五昔拭 古芭拝 呪 赤柔艦陥
+vsave_ecannot5=神嫌研 鋼発馬澗 古芭聖 拙失拝 呪 蒸柔艦陥
+
+mailers_title=亀五昔 虞酔特
+mailers_cannot=亀五昔 虞酔特聖 畷増拝 呪 蒸柔艦陥
+mailers_edirective=sendmail 姥失 督析拭 亀五昔 虞酔特拭 琶推廃 走獣嬢亜 蒸柔艦陥.
+mailers_efile=亀五昔 虞酔特 汽戚斗今戚什 $2聖(研) 姥逐馬澗 汽 紫遂廃 努什闘 督析 $1戚(亜) 蒸柔艦陥. 臣郊献 井稽研 紫遂拝 呪 赤亀系 <a href='$3'>乞汲 姥失</a>聖 呪舛背醤 杯艦陥.
+mailers_desc1=亀五昔 虞酔特 奄管聖 紫遂馬檎 働舛 亀五昔税 五析 穿勺 号狛聖 紺亀稽 舛税拝 呪 赤柔艦陥. 亀五昔 虞酔特精 薄仙 獣什奴戚 薄仙 革闘趨滴 須採拭辞 羨紗拝 呪 蒸澗 五析 辞獄税 惟戚闘裾戚 蝕拝聖 拝 凶 暁澗 働舛 亀五昔税 乞窮 五析戚 護護 陥献 辞獄研 搭引馬亀系 悪薦稽 虞酔特馬壱切 拝 凶 政遂杯艦陥.
+mailers_desc2=<a href='$1'>稽鎮 亀五昔</a> 鯉系拭澗 虞酔闘鞠澗 亀五昔税 牌鯉戚 <b>蒸嬢醤 杯艦陥</b>. 益君蟹 陥献 亀五昔税 惟戚闘裾戚 蝕拝聖 馬澗 亀五昔昔 井酔拭澗 薄仙 獣什奴聖 亜軒徹澗 DNS MX 傾坪球亜 赤嬢醤 杯艦陥.
+mailers_for=五析 企雌..
+mailers_delivery=壕含
+mailers_to=呪重切..
+mailers_return=亀五昔 虞酔特 鯉系
+
+mform_edit=虞酔特 畷増
+mform_create=虞酔特 拙失
+mform_for=五析 企雌
+mform_host=硲什闘
+mform_domain=亀五昔
+mform_delivery=壕含
+mform_to=呪重切
+mform_ignore=SMTP 壕含拭辞 MX 巷獣
+mform_smtp=SMTP
+mform_esmtp=溌舌 SMTP
+mform_smtp8=8搾闘 SMTP
+mform_relay=SMTP 険傾戚
+mform_local=稽鎮 紫遂切
+mform_prog=覗稽益轡拭 因厭
+mform_uucp=UUCP
+mform_usenet=USENET拭 惟獣
+mform_fax=HylaFAX
+mform_pop=POP3
+mform_procmail=Procmail
+mform_mail11=DECnet mail11
+mform_error=神嫌
+mform_ecannot=亀五昔 虞酔特聖 畷増拝 呪 蒸柔艦陥
+
+msave_ecannot=亀五昔 虞酔特聖 畷増拝 呪 蒸柔艦陥
+msave_err=亀五昔 虞酔特聖 煽舌馬走 公梅柔艦陥
+msave_edomain='$1'精(澗) 政反廃 硲什闘 暁澗 亀五昔戚 焼鑑艦陥
+msave_edup='$1'拭 企廃 亀五昔 虞酔特戚 戚耕 舛税鞠嬢 赤柔艦陥
+
+generics_title=降重 爽社
+generics_cannot=降重 爽社研 畷増拝 呪 蒸柔艦陥
+generics_econfig=sendmail 姥失 督析拭 降重 爽社 古芭拭 琶推廃 走獣嬢亜 蒸柔艦陥.
+generics_efile=降重 爽社 汽戚斗今戚什 $2聖(研) 姥逐馬澗 汽 紫遂廃 努什闘 督析 $1(戚)亜 蒸柔艦陥. 臣郊献 井稽研 紫遂拝 呪 赤亀系 <a href='$3'>乞汲 姥失</a>聖 呪舛背醤 杯艦陥.
+generics_desc1=降重 爽社 古芭 奄管聖 紫遂馬檎 薄仙 獣什奴拭辞 左鎧澗 五析戚蟹 稽鎮 革闘趨滴 雌税 陥献 硲什闘拭辞 紫遂切 獣什奴聖 搭引馬食 左鎧澗 五析税 <tt>降重切:</tt> 爽社研 呪舛拝 呪 赤柔艦陥. 降重 爽社 古芭精 廃 鯵税 獣什奴拭辞 食君 鯵税 亀五昔聖 硲什特拝 井酔 析採 紫遂切税 五析聖 陥献 亀五昔拭辞 左鎧澗 依坦軍 妊獣馬壱切 拝 凶 政遂杯艦陥. 
+generics_desc2=降重 古芭聖 琶推稽 馬澗 爽社亜 赤澗 唖 亀五昔税 牌鯉戚 <a href='$1'>降重 亀五昔</a> 砺戚鷺拭 赤嬢醤 杯艦陥. 稽鎮 紫遂切拭惟 壕含拝 五析拭澗 降重 爽社 古芭聖 紫遂拝 呪 蒸柔艦陥.
+generics_from=五析 降重切..
+generics_to=痕井拝 爽社..
+generics_return=爽社 古芭 鯉系
+
+gform_edit=古芭 畷増
+gform_create=古芭 拙失
+gform_from=五析 降重切
+gform_to=痕井拝 爽社
+gform_ecannot=戚 降重 爽社研 畷増拝 呪 蒸柔艦陥
+
+gsave_ecannot=降重 爽社研 畷増拝 呪 蒸柔艦陥
+gsave_ecannot2=戚 降重 爽社研 畷増拝 呪 蒸柔艦陥
+gsave_err=降重 爽社研 煽舌馬走 公梅柔艦陥
+gsave_efrom='$1'精(澗) 政反廃 降重切 爽社亜 焼鑑艦陥
+gsave_ematch=降重切 爽社亜 '$1'引(人) 析帖馬走 省柔艦陥
+gsave_eto='$1'精(澗) 政反廃 歯 爽社亜 焼鑑艦陥
+
+cgs_title=降重 亀五昔
+cgs_ecannot=降重 亀五昔聖 畷増拝 呪 蒸柔艦陥
+cgs_header=降重 爽社 亀五昔
+cgs_desc=sendmail精 稽鎮 紫遂切亜 左鎧澗 五析聖 薦須廃, 神献楕 脊径空拭 蟹伸吉 硲什闘蟹 亀五昔拭辞 左鎧澗 五析拭 企背辞幻 <a href='$1'>降重 爽社</a> 古芭聖 呪楳杯艦陥. 魚虞辞 戚 鯉系拭澗 降重切 爽社拭 赤澗 亀五昔拭 琶推廃 降重 爽社 牌鯉幻 隔嬢醤 杯艦陥.
+cgs_err=降重 亀五昔聖 煽舌馬走 公梅柔艦陥
+cgs_ehost='$1'精(澗) 政反廃 硲什闘 暁澗 亀五昔 戚硯戚 焼鑑艦陥
+cgs_eip='$1'精(澗) 亀五昔戚 焼観, IP 爽社脊艦陥
+
+domains_title=亀五昔 古芭
+domains_ecannot=亀五昔 古芭聖 畷増拝 呪 蒸柔艦陥
+domains_econfig=sendmail 姥失 督析拭 亀五昔 古芭拭 琶推廃 走獣嬢亜 蒸柔艦陥.
+domains_efile=亀五昔 古芭 汽戚斗今戚什 $2聖(研) 姥逐馬澗 汽 紫遂廃 努什闘 督析 $1戚(亜) 蒸柔艦陥. 臣郊献 井稽研 紫遂拝 呪 赤亀系 <a href='$3'>乞汲 姥失</a>聖 呪舛背醤 杯艦陥.
+domains_desc=亀五昔 古芭精 薄仙 獣什奴税 紫遂切亜 左鎧澗 五獣走, 薄仙 獣什奴税 紫遂切研 搭背 険傾戚鞠澗 五獣走 暁澗 薄仙 獣什奴税 紫遂切拭惟 壕含鞠澗 五獣走税 <tt>呪重切:</tt> 爽社研 呪舛杯艦陥. 稽鎮 紫遂切拭惟 険傾戚鞠澗 五獣走税 <tt>降重切:</tt> 爽社亀 呪舛桔艦陥. 亀五昔 古芭精 亀五昔 戚硯聖 痕井廃 板 奄糎 亀五昔拭辞 降持廃 乞窮 紫牌聖 歯 亀五昔生稽 痕井馬壱切 拝 凶 政遂杯艦陥.
+domains_from=降重切 亀五昔..
+domains_to=呪重切 亀五昔..
+domains_return=亀五昔 古芭 鯉系
+
+dform_edit=古芭 畷増
+dform_create=古芭 拙失
+dform_from=降重切 亀五昔
+dform_to=呪重切 亀五昔
+dform_ecannot=亀五昔 古芭聖 畷増拝 呪 蒸柔艦陥
+
+dsave_ecannot=亀五昔 古芭聖 畷増拝 呪 蒸柔艦陥
+dsave_err=亀五昔 古芭聖 煽舌馬走 公梅柔艦陥
+dsave_edomain='$1'精(澗) 政反廃 亀五昔 戚硯戚 焼鑑艦陥
+
+access_title=什瀞 薦嬢
+access_ecannot=什瀞 薦嬢研 姥失拝 呪 蒸柔艦陥
+access_econfig=sendmail 姥失 督析拭 什瀞 薦嬢拭 琶推廃 走獣嬢亜 蒸柔艦陥. 
+access_efile=什瀞 薦嬢 汽戚斗今戚什 $2聖(研) 姥逐馬澗 汽 紫遂廃 努什闘 督析 $1戚(亜) 蒸柔艦陥. 臣郊献 井稽研 紫遂拝 呪 赤亀系 <a href='$3'>乞汲 姥失</a>聖 呪舛背醤 杯艦陥.
+access_desc1=sendmail税 什瀞 薦嬢 奄管聖 紫遂馬檎 働舛 爽社拭辞 左浬 什瀞 五析戚 紫遂切拭惟 壕含鞠暗蟹 什瀞 五析 降勺切税 五析戚 薄仙 獣什奴聖 搭背 険傾戚鞠澗 依聖 厳聖 呪 赤柔艦陥. 奄沙旋生稽 sendmail精 稽鎮 紫遂切 爽社稽採斗 穿勺吉 五析精 閤焼級戚走幻, 適虞戚情闘蟹 五析 辞獄拭辞 獣什奴聖 搭背 険傾戚馬澗 五析精 暗採杯艦陥. 析鋼旋生稽澗 什瀞 五析 降勺切税 五析聖 暗採馬澗 什瀞 薦嬢 鋭帳引 革闘趨滴 雌税 陥献 陳濃斗拭辞 薄仙 獣什奴聖 搭背 険傾戚馬澗 五析聖 買遂馬澗 鋭帳聖 蓄亜馬澗 依戚 左搭脊艦陥.
+access_desc2=sendmail精 奄沙旋生稽 薄仙 獣什奴拭辞 叔楳 掻昔 五析 適虞戚情闘研 紫遂馬檎 SMTP研 搭背 乞窮 鯉旋走稽 五析聖 険傾戚拝 呪 赤柔艦陥. 魚虞辞 険傾戚 買遂 五析 鯉系拭 稽鎮 <tt>127.0.0</tt> 革闘趨滴研 蓄亜拝 琶推澗 蒸柔艦陥.
+access_source=社什..
+access_action=疑拙
+access_return=什瀞 薦嬢 鯉系
+
+sform_edit=什瀞 薦嬢 鋭帳 畷増
+sform_create=什瀞 薦嬢 鋭帳 拙失
+sform_source=五析 社什
+sform_type0=穿切 五析 爽社
+sform_type1=革闘趨滴
+sform_type2=紫遂切
+sform_type3=亀五昔
+sform_action=疑拙
+sform_ok=呪喰
+sform_relay=険傾戚 買遂
+sform_reject=暗採
+sform_discard=切疑 肢薦
+sform_err=神嫌 坪球
+sform_msg=五獣走
+sform_ecannot=什瀞 薦嬢研 姥失拝 呪 蒸柔艦陥
+
+ssave_ecannot=什瀞 薦嬢研 姥失拝 呪 蒸柔艦陥
+ssave_err=什瀞 薦嬢 鋭帳聖 煽舌馬走 公梅柔艦陥
+ssave_etype0='$1'精(澗) 政反廃 爽社亜 焼鑑艦陥
+ssave_etype1='$1'精(澗) 政反廃 革闘趨滴 爽社亜 焼鑑艦陥
+ssave_etype2='$1'精(澗) 政反廃 紫遂切 戚硯戚 焼鑑艦陥
+ssave_etype3='$1'精(澗) 政反廃 亀五昔戚 焼鑑艦陥
+ssave_ecode='$1'精(澗) 政反廃 SMTP 神嫌 坪球亜 焼鑑艦陥
+0000000000000000000000000000000000000000 ぉい
+relay_title=険傾戚 亀五昔
+relay_ecannot=険傾戚 亀五昔聖 畷増拝 呪 蒸柔艦陥
+relay_eversion=険傾戚 亀五昔 奄管精 sendmail 獄穿 8.9 戚雌拭辞幻 走据桔艦陥.
+relay_domains=険傾戚 買遂 亀五昔
+relay_desc1=<a href='$1'>什瀞 薦嬢</a> 鋭帳拭 魚虞 買遂鞠走 省澗 廃, sendmail精 図楕 脊径空拭 赤澗 亀五昔拭 企廃 険傾戚幻 買遂杯艦陥. 稽鎮 紫遂切拭惟 左鎧澗 依戚 焼観 五析 五獣走蟹 鯉系拭 蒸澗 亀五昔生稽 左鎧澗 五析 五獣走澗 呪重戚 暗採桔艦陥.
+relay_desc2=<a href='$1'>亀五昔 虞酔特</a> 奄管聖 紫遂馬食 革闘趨滴 須採拭辞 送羨 衝室什拝 呪 蒸澗 食君 亀五昔拭 企廃 惟戚闘裾戚 蝕拝聖 馬澗 獣什奴昔 井酔拭澗 乞窮 亀五昔聖 食奄拭 蟹伸背醤 杯艦陥.
+relay_err=険傾戚 亀五昔聖 煽舌馬走 公梅柔艦陥
+relay_edomain='$1'精(澗) 政反廃 亀五昔 戚硯戚 焼鑑艦陥
+
+mailq_title=五析 企奄伸
+mailq_ecannot=五析 企奄伸聖 瑳 呪 蒸柔艦陥
+mailq_id=五析 ID
+mailq_sent=穿勺 刃戟
+mailq_from=降重切
+mailq_to=呪重切
+mailq_size=滴奄
+mailq_status=雌殿
+mailq_unknown=硝 呪 蒸製
+mailq_sending=穿勺 掻
+mailq_dmsg=五析 企奄伸税 五獣走研 左形檎 是税 鯉系拭辞 背雁 ID研 刊牽淑獣神.
+mailq_force=企奄伸拭 赤澗 五析聖 聡獣 壕含馬形檎 <a href='$1'>食奄</a>研 刊牽淑獣神.
+mailq_none=薄仙 壕含 企奄 掻昔 五獣走亜 蒸柔艦陥
+mailq_delete=識澱廃 五獣走 肢薦
+mailq_return=五析 企奄伸
+
+flushq_title=企奄伸 巴君獣
+flushq_desc=誤敬 $1聖(研) 紫遂馬食 企奄 掻昔 五析聖 悪薦稽 壕含馬澗 掻..
+
+delq_err=五獣走研 肢薦馬走 公梅柔艦陥
+delq_ecannot=企奄伸拭辞 五獣走研 肢薦拝 呪 蒸柔艦陥
+delq_locked=督析戚 節移 赤嬢辞 穿勺拝 呪 蒸柔艦陥
+delq_enone=肢薦拝 五獣走研 識澱馬走 省紹柔艦陥
+delq_title=五獣走 肢薦 掻
+delq_file=五析 督析 $1 肢薦 掻..
+delq_efile=設公吉 督析 戚硯!
+delq_egone=戚耕 肢薦/壕含喫
+delq_elocked=節移 赤嬢辞 穿勺 公敗
+delq_ok=肢薦 刃戟
+
+boxes_title=紫遂切 紫辞敗
+boxes_user=紫遂切
+boxes_size=紫辞敗 滴奄
+boxes_none=五析 蒸製
+boxes_return=紫辞敗
+boxes_sent=降重 五析
+boxes_ecannot=穿切 五析聖 石聖 呪 蒸柔艦陥
+
+mail_title=紫遂切 穿切 五析
+mail_from=降重切
+mail_date=劾促
+mail_subject=薦鯉
+mail_to=呪重切
+mail_cc=凧繕
+mail_bcc=需精 凧繕
+mail_pri=酔識 授是
+mail_highest=亜舌 株製
+mail_high=株製
+mail_normal=左搭
+mail_low=碍製
+mail_lowest=亜舌 碍製
+mail_for=$1
+mail_sent=降重 五析 鯉系
+mail_size=滴奄
+mail_delete=識澱廃 五獣走 肢薦
+mail_compose=歯 五析 拙失
+mail_return=紫遂切 穿切 五析
+mail_pos=$3税 $2拭 企廃 五獣走 $1
+mail_none=戚 紫辞敗拭 五獣走亜 蒸柔艦陥
+mail_ecannot=戚 紫遂切税 穿切 五析聖 石聖 呪 蒸柔艦陥
+mail_all=乞砧 識澱
+mail_invert=鋼企稽 識澱
+mail_search=五獣走 伊事 是帖
+mail_body=沙庚
+mail_match=析帖
+mail_ok=伊事
+mail_nonefrom=蒸製
+
+view_title=穿切 五析 石奄
+view_desc=$2拭 赤澗 五獣走 $1
+view_sent=降重 五析 鯉系拭 赤澗 五獣走 $1
+view_qdesc=企奄伸拭 赤澗 五獣走 $1
+view_headers=五析 伯希
+view_attach=歎採 督析
+view_reply=噺重
+view_reply2=穿端 噺重
+view_enew=歯 五析稽 畷増
+view_forward=穿含
+view_delete=肢薦
+view_ecannot=戚 紫遂切税 穿切 五析聖 石聖 呪 蒸柔艦陥
+
+compose_title=穿切 五析 拙失
+reply_title=穿切 五析拭 噺重
+forward_title=穿切 五析 穿含
+reply_headers=五析 伯希
+reply_attach=穿含吉 歎採 督析
+reply_attach2=歎採 督析
+reply_send=穿勺
+reply_ecannot=戚 紫遂切稽 五析聖 穿勺拝 呪 蒸柔艦陥
+
+send_err=五析聖 穿勺馬走 公梅柔艦陥
+send_eto=蒸澗 呪重切 爽社
+send_efrom=蒸澗 降重切 爽社
+send_title=五析 穿勺 刃戟
+send_ok=$1拭 五析聖 穿勺梅柔艦陥.
+send_ecannot=戚 紫遂切稽 五析聖 穿勺拝 呪 蒸柔艦陥
+send_esmtp=SMTP 誤敬 $1 叔鳶: $2
+send_efile=歎採 督析 $1戚(亜) 蒸柔艦陥
+send_eattach=歎採 督析税 恥 滴奄澗 $1KB研 段引拝 呪 蒸柔艦陥.
+send_eperms=紫遂切 $1精(澗) $2聖(研) 石聖 呪 蒸柔艦陥
+send_eperms2=督析 $1聖(研) 左馨 呪 蒸柔艦陥
+
+delete_ecannot=戚 紫遂切稽採斗 閤精 五析聖 肢薦拝 呪 蒸柔艦陥
+delete_enone=肢薦拝 五析聖 識澱馬走 省紹柔艦陥
+
+search_title=伊事 衣引
+search_ecannot=戚 紫遂切税 穿切 五析聖 伊事拝 呪 蒸柔艦陥 
+search_ematch=伊事拝 努什闘研 脊径背醤 杯艦陥.
+search_none=五獣走亜 蒸柔艦陥.
+search_results=$1引(人) 析帖馬澗 五析 五獣走..
+
+file_title=sendmail 督析 畷増
+file_desc=焼掘税 脊径空拭辞 sendmail 督析 $1聖(研) 呪疑生稽 畷増馬淑獣神.
+file_undo=痕井 昼社
+file_edit=$1 呪疑 畷増
+file_ealiases=乞窮 紺暢拭 企廃 衝室什 映廃戚 赤澗 井酔拭幻 紺暢 督析聖 畷増拝 呪 赤柔艦陥.
+file_evirtusers=乞窮 爽社 古芭拭 企廃 衝室什 映廃戚 赤澗 井酔拭幻 爽社 古芭 督析聖 畷増拝 呪 赤柔艦陥.
+file_emailers=亀五昔 虞酔特 督析聖 畷増拝 呪 蒸柔艦陥
+file_egenerics=乞窮 降重 爽社拭 企廃 衝室什 映廃戚 赤澗 井酔拭幻 降重 爽社 督析聖 畷増拝 呪 赤柔艦陥.
+file_edomains=亀五昔 古芭 督析聖 畷増拝 呪 蒸柔艦陥
+file_eaccess=什瀞 薦嬢 督析聖 畷増拝 呪 蒸柔艦陥
+file_emode=硝 呪 蒸澗 乞球!
+file_err=督析聖 畷増馬走 公梅柔艦陥.
+
+acl_opts=sendmail 辛芝聖 畷増拝 呪 赤柔艦猿?
+acl_cws=稽鎮 亀五昔聖 畷増拝 呪 赤柔艦猿?
+acl_masq=亀五昔 亜雌鉢研 姥失拝 呪 赤柔艦猿?
+acl_trusts=重軽拝 呪 赤澗 紫遂切研 畷増拝 呪 赤柔艦猿?
+acl_cgs=降重 亀五昔聖 畷増拝 呪 赤柔艦猿?
+acl_relay=険傾戚 亀五昔聖 畷増拝 呪 赤柔艦猿?
+acl_mailers=亀五昔 虞酔特聖 姥失拝 呪 赤柔艦猿?
+acl_access=什瀞 薦嬢研 姥失拝 呪 赤柔艦猿?
+acl_domains=亀五昔 古芭聖 姥失拝 呪 赤柔艦猿?
+acl_stop=sendmail聖 獣拙 貢 掻走拝 呪 赤柔艦猿?
+acl_mailq=五析 企奄伸聖 淫軒拝 呪 赤柔艦猿?
+acl_viewdel=左奄 貢 肢薦
+acl_view=左奄幻
+acl_virtusers=戚 紫遂切亜 畷増拝 呪 赤澗 爽社 古芭
+acl_none=蒸製
+acl_same=戚硯戚 疑析廃 紫遂切
+acl_all=乞砧
+acl_matching=析帖
+acl_vtypes=戚 紫遂切亜 畷増拝 呪 赤澗 爽社 古芭 政莫
+acl_vtype0=鋼発 神嫌
+acl_vtype1=呪重切 亀五昔
+acl_vtype2=呪重切 爽社
+acl_vmax=置企 爽社 古芭 呪
+acl_unlimited=薦廃 蒸製
+acl_aliases=戚 紫遂切亜 畷増拝 呪 赤澗 紺暢 呪
+acl_atypes=戚 紫遂切亜 畷増拝 呪 赤澗 紺暢 政莫
+acl_atype1=穿切 五析 爽社
+acl_atype2=督析拭 赤澗 爽社
+acl_atype3=督析拭 床奄
+acl_atype4=覗稽益轡拭 因厭
+acl_atype5=切疑誓岩
+acl_amax=置企 紺暢 呪
+acl_outgoing=戚 紫遂切亜 畷増拝 呪 赤澗 降重 爽社
+acl_read=石聖 呪 赤澗 五析聖 左鎧澗 紫遂切
+acl_users=紫遂切幻
+acl_userse=紫遂切研 薦須廃 乞砧
+acl_usersg=益血 姥失据
+acl_from=買遂 亜管廃 降重切 爽社
+acl_any=績税税 爽社
+acl_fdoms=紫辞敗@亀五昔
+acl_faddrs=蟹伸吉 爽社
+acl_fdom=績税税 爽社@亀五昔
+acl_apath=巨刑塘軒拭 企廃 督析 貢 覗稽益轡 薦廃
+acl_attach=穿端 歎採 督析税 置企 滴奄
+acl_sent=紫辞敗拭 降重 五析 煽舌
+
+log_opts=sendmail 辛芝 痕井喫
+log_alias_create=紺暢 $1 拙失喫
+log_alias_modify=紺暢 $1 呪舛喫
+log_alias_delete=紺暢 $1 肢薦喫
+log_alias_manual=紺暢 督析 $1 呪疑 畷増喫
+log_cws=稽鎮 亀五昔 痕井喫
+log_masq=亀五昔 亜雌鉢 痕井喫
+log_trusts=重軽拝 呪 赤澗 紫遂切 痕井喫
+log_virtuser_create=爽社 古芭 $1 拙失喫
+log_virtuser_modify=爽社 古芭 $1 呪舛喫
+log_virtuser_delete=爽社 古芭 $1 肢薦喫
+log_virtuser_manual=爽社 古芭 督析 $1 呪疑 畷増喫
+log_mailer_create=亀五昔 虞酔特 $1 拙失喫
+log_mailer_modify=亀五昔 虞酔特 $1 呪舛喫
+log_mailer_delete=亀五昔 虞酔特 $1 肢薦喫
+log_mailer_manual=亀五昔 虞酔特 督析 $1 呪疑 畷増喫
+log_generic_create=降重 爽社 $1 拙失喫
+log_generic_modify=降重 爽社 $1 呪舛喫
+log_generic_delete=降重 爽社 $1 肢薦喫
+log_generic_manual=降重 爽社 督析 $1 呪疑 畷増喫
+log_cgs=降重 亀五昔 痕井喫
+log_domain_create=亀五昔 古芭 $1 拙失喫
+log_domain_modify=亀五昔 古芭 $1 呪舛喫
+log_domain_delete=亀五昔 古芭 $1 肢薦喫
+log_domain_manual=亀五昔 古芭 督析 $1 呪疑 畷増喫
+log_access_create=$1税 什瀞 薦嬢 拙失喫
+log_access_modify=$1税 什瀞 薦嬢 呪舛喫
+log_access_delete=$1税 什瀞 薦嬢 肢薦喫
+log_access_manual=什瀞 薦嬢 督析 $1 呪疑 畷増喫
+log_relay=険傾戚 亀五昔 痕井喫
+log_flushq=五析 企奄伸 巴君獣喫
+log_delmailq=企奄伸税 $1拭辞 五析 肢薦喫
+log_delmailqs=企奄伸拭辞 $1鯵税 五析 肢薦喫
+log_stop=sendmail 巨胡 掻走喫
+log_start=sendmail 巨胡 獣拙喫
+log_delmail=$2拭辞 $1鯵 五獣走 肢薦喫
+log_send=$1拭惟 五析 穿勺 刃戟
+
+match_from=降重切: 析帖
+match_subject=薦鯉: 析帖
+match_to=呪重切: 析帖
+match_cc=凧繕: 析帖
+match_date=劾促: 析帖
+match_body=沙庚 析帖
+match_size=馬廃 滴奄

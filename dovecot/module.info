@@ -1,0 +1,7 @@
+desc=Dovecot IMAP/POP3 Server
+category=servers
+depends=init
+longdesc=Configure the Dovecot IMAP and POP3 mail retrieval server.
+desc_es=Dovecot: Servidor de IMAP/POP3
+desc_ca=Servidor IMAP/POP3 Dovecot
+os_support=!windows

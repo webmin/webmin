@@ -1,0 +1,26 @@
+<header>E-postalias</header>
+
+Alias ger dig möjlighet att över hela systemet skicka vidare e-post till lokala mottagare.
+
+<p>Fältet <tt>Alias för ...</tt> innehåller en eller flera av nedanstående, separerade med komma:
+
+<ul><li><tt>adress</tt>: E-post skickas vidare till en <tt>adress</tt> som är kompatibel
+med standarden i RFC 822.
+
+<li><tt>/fil/namn</tt>: E-postmeddelandet skrivs sist i <tt>/fil/namn</tt>. Se
+local(8) för mer information om att skicka saker till filer. Skrivningen är inte begränsad
+till normala filer; exempelvis kan oönskad e-post skrivas till <tt>/dev/null</tt>.
+
+<li><tt>|command</tt>: E-postmeddelandet pipas till <tt>kommando</tt>. Kommandon som
+innehåller specialtecken, som blanksteg, bör omges av dubbla citattionstecken. Se
+local(8) för mer information om att skicka saker till kommandon. Om kommandot på något
+sätt går fel kommer en begränsad del av utmatningen att e-postas tillbaka till avsändaren.
+
+<li><tt>:include:/fil/namn</tt>: E-postmeddelandet skickas till de mottagare som räknas upp
+i filen. Rader i <tt>:include:</tt>-filer har samma syntax som den högra sidan av en
+alias-post.
+
+</ul>
+
+<hr>
+

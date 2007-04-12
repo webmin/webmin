@@ -1,0 +1,22 @@
+<header>Alias databases used by the local delivery agent </header>
+
+<center><tt>alias_maps</tt></center>
+<hr>
+
+This parameter specifies the list of alias databases used by the local delivery
+agent. The default list is system dependent. On systems with NIS, the default
+is to search the local alias database, then the NIS alias database. See
+<a href=aliases>aliases</a> for syntax details.
+
+<p>
+
+Typical configurations are:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>hash:/etc/postfix/aliases</tt>
+<li> <tt>hash:/etc/aliases, nis:mail.aliases</tt>
+</ul>
+
+<hr>
+

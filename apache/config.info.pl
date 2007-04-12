@@ -1,0 +1,14 @@
+httpd_dir=Katalog g³ówny serwera Apache,0
+httpd_path=¦cie¿ka do pliku programu httpd,0
+apachectl_path=¦cie¿ka do polecenia apachectl,3,Brak
+start_cmd=Polecenie uruchamiaj±ce apache'a,3,Automatycznie
+stop_cmd=Polecenie zatrzymuj±ce apache'a,3,Automatycznie
+show_list=Wy¶wietlanie serwerów wirtualnych jako,1,0-Ikony,1-Listê
+show_order=Kolejno¶æ serwerów wirtualnych wg,1,0-Porz±dku w&nbsp;plikach konfiguracyjnych,1-Nazwy servera,2-Adresu IP
+max_servers=Maksymalna liczba wy¶wietlanych serwerów,0,5
+httpd_conf=¦cie¿ka do httpd.conf,3,Automatycznie
+srm_conf=¦cie¿ka do srm.conf,3,Automatycznie
+access_conf=¦cie¿ka do access.conf,3,Automatycznie
+mime_types=¦cie¿ka do mime.types,3,Automatycznie
+virt_file=Serwery wirtualne dodawane w&nbsp;pliku,3,httpd.conf
+test_config=Sprawdzaæ plik konfiguracyjny przed zastosowaniem zmian?,1,1-Tak,0-Nie

@@ -1,0 +1,74 @@
+index_title=Plánované úlohy CRONu
+index_user=U¾ivatel
+index_active=Aktivní?
+index_command=Pøíkaz
+index_none=Na tomto systému nejsou ¾ádné plánované úlohy
+index_create=Vytvoøit novou plánovanou úlohu
+index_allow=Nastavit u¾ivatelský pøístup k plánovaným úlohám
+index_return=cron výpis
+
+edit_title=Editovat plánovanou úlohu
+create_title=Vytvoøit novou úlohu
+edit_ecannot=Nemáte oprávnìní editovat plánované úlohy pro tohoto u¾ivatele
+edit_details=Detaily úlohy
+edit_user=Spustit pøíkaz jako
+edit_active=Aktivní?
+edit_commands=Pøíkazy
+edit_command=Pøíkaz
+edit_input=Vstup pøíkazu???
+edit_when=Èas spou¹tìní
+edit_minutes=Minuty
+edit_hours=Hodiny
+edit_days=Dny
+edit_months=Mìsíce
+edit_weekdays=Dny v týdnu
+edit_all=V¹echny
+edit_selected=Vybrané ..
+edit_run=Spustit teï
+
+month_1=Leden
+month_2=Únor
+month_3=Bøezen
+month_4=Duben
+month_5=Kvìten
+month_6=Èerven
+month_7=Èervenec
+month_8=Srpen
+month_9=Záøí
+month_10=Øíjen
+month_11=Listopad
+month_12=Prosinec
+
+save_err=Chyba pøi ukládání úlohy
+save_ecmd=Nezadal jste pøíkaz ke spou¹tìní
+save_euser=Musíte vybrat u¾ivatele
+save_eallow=U¾ivatel '$1' nemá povolen pøístup ke cronu
+save_ecannot=Nemáte oprávnìní vytvoøit úlohu pro '$1'
+save_enone=Nevybral jste ¾ádné $1 ke spu¹tìní
+
+allow_title=Nastavení pøístupu ke Cronu
+allow_desc=Tento formuláø umo¾òuje nastavit který u¾ivat mù¾e vytváøet a spou¹tìt plánované úlohy
+allow_ecannot=Vy nemù¾ete nastavit pøístupová práva
+allow_all1=Zakázat v¹echny u¾ivatele
+allow_all2=Zakázat v¹echny u¾ivatele mimo roota
+allow_all3=Povolit v¹echny u¾ivatele
+allow_allow=Povolit pouze nalistované u¾ivatele
+allow_deny=Zakázat pouze nalistované u¾ivatele
+
+env_title=Cron prostøedí
+env_ecannot=Nemù¾ete editovat prostøedí pto tohoto u¾ivatele
+env_desc=Cron prostøedí pro $1
+env_name=Promìnlivé jméno
+env_value=Hodnota
+env_ename='$1' není platné promìnlivé jméno
+
+exec_title=Spustit úlohu
+exec_ecannot=Nemáte oprávnìní spou¹tìt úlohu tohoto u¾ivatele
+exec_cmd=Výstup pøíkazu $1 ..
+exec_none=Nebyl generován ¾ádný výstup
+
+acl_users=Mù¾e editovat úlohy pro
+acl_all=V¹echny u¾ivatele
+acl_only=Pouze u¾ivatele
+acl_except=V¹echny mimo u¾ivatelù
+acl_control=Mù¾e nastavit u¾ivatelský pøístup ke Cronu?

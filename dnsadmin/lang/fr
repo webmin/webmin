@@ -1,0 +1,27 @@
+
+log_servers=Autres serveurs DNS modifiés
+log_logging=Journalisation et erreurs modifiées
+log_acls=Liste de contrôle d'accès modifiées
+log_files=Fichiers et répertoires modifiés
+log_forwarding=Redirection et transfert modifiés
+log_net=Adresses et topologie modifiées
+log_misc=Options diverses modifiées
+log_zonedef=Réglage par défauts de zone modifiés
+log_apply=Changement appliqués
+log_start=Serveur DNS démarré
+log_master=Zone primaire $1 créée
+log_slave=Zone secondaire $1 créée
+log_stub=Zone stub $1 créée
+log_forward=Zone de redirection $1 créée
+log_delete_master=Zone primaire $1 supprimée
+log_delete_slave=Zone secondaire $1 supprimée
+log_delete_stub=Zone stub $1 supprimée
+log_delete_forward=Zone de redirection $1 supprimée
+log_text=Enregistrements édités à la main pour $1
+log_soa=Paramètres de zone modifiés pour $1
+log_opts=Options de zone modifiées pour $1
+log_delete_record=$1 enregistrements $2 dans la zone $3 supprimés
+log_create_record=$1 enregistrements $2 dans la zone $3 créés
+log_modify_record=$1 enregistrements $2 dans la zone $3 modifiés
+log_boot=Fichier de configuration primaire créé
+

@@ -1,0 +1,30 @@
+<header>LDAP Users and Groups</header>
+
+If your system is configured to use an LDAP server for storing Unix users and
+groups, this module can be used to manage users in an LDAP database. LDAP is
+often used as an alternative to NIS for synchronizing user information across
+multiple systems in a network, as a database can store additional attributes
+for each user in addition to the standard Unix username, shell and so on. <p>
+
+Naturally, an LDAP server must be running on your system or on some host
+on your network for this module to be used. In addition, one or most hosts
+must be configured to use LDAP for user and/or group authentication. Neither
+of these tasks can be done from within the module - they must be done manually,
+or with other Webmin modules for the purpose. <p>
+
+If you have Samba configured to use an LDAP server as well, this module can
+also create and manage the necessary password attributes for each LDAP user
+to be able to login to the Samba server as well. For this feature to work,
+your LDAP server must be configured to support the additional Samba attributes
+and object class for each user in its schema. Only when the <b>Samba login?</b>
+option is set to <b>Yes</b> will the Samba attributes be created. <p>
+
+The module can also create users on a Cyrus IMAP server, if it is set up to
+authenticate against the same LDAP database. It will create mailboxes for
+each new user, subscribe the user to his mailboxes and grant admin access
+to them. If an LDAP user is deleted, his IMAP mailbox will be as well. Currently
+this feature only works with the Cyrus IMAP server - it has not been tested
+and is probably not even necessary for other servers, which use users' home
+directories for mail storage. <p>
+<hr>
+

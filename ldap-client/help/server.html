@@ -1,0 +1,24 @@
+<header>LDAP Server Configuration</header>
+
+This page allows you to select the LDAP server that this client system will
+contact to in order to fetch user and group information. The most important
+field is the <b>LDAP server hostnames</b>, into which you must enter the
+hostname or IP address of the LDAP server on your network. If you have more
+than one replicated server, they can all be entered here. <p>
+
+The <b>Login for non-root users</b> and <b>Password for non-root users</b>
+fields must be filled in with a username and password accepted by the LDAP
+server, respectively. The login will typically be an LDAP distinguished
+name, like <i>cn=Manager,dc=my-domain,dc=com</i>.<p>
+
+Because this login and password is visible to all Unix users on your system,
+it is typically set to that of a LDAP user with limited privileges (such as
+read-only access, and no ability to view passwords). Because passwords do
+need to be checked in some situations, the <b>Login for root user</b> and
+<b>Password for root user</b> fields should be set to an LDAP username and
+password who has read access to the entire LDAP server. This second password
+is stored in a file that is only readable by the <tt>root</tt> user, and 
+thus is secure from regular un-trusted Unix users. <p>
+
+<footer>
+

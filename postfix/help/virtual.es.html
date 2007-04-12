@@ -1,0 +1,68 @@
+<header>Dominios Virtuales</header>
+
+La tabla opcional de dominios virtuales especifica redirecciones para
+destinatarios y dominios locales y no locales. Las redirecciones las usa el
+demonio cleanup(8). Las redirecciones son recursivas.
+
+<p>
+
+La redirección virtual se aplica sólo a la dirección destinatario del
+sobre, y no afecta a las cabeceras del mensaje. Podría ser similar al
+conjunto de reglas <tt>S0</tt> de Sendmail. Use los <a
+href=canonical>Mapeos Canónigos</a> para rescribir las direcciones de sobre
+y cabecera en general.
+
+<p>
+
+El soporte típico de un dominio virtual es de la siguiente forma:
+
+<ul>
+<li> <b><tt>dominio.virtual</tt></b> mapeado a... <b><tt>algo</tt></b>
+(el contenido de la parte derecha no importa)
+<li> <b><tt>usuario1@dominio.virtual</tt></b> mapeado a... <b><tt>direccion1</tt></b>
+<li> <b><tt>usuario2@dominio.virtual</tt></b> mapeado a... <b><tt>direccion2,
+direccion3</tt></b>
+</ul>
+
+Con esto, el servidor SMTP aceptará correo dirigido a
+<tt>dominio.virtual</tt> y rechazará los mensajes dirigidos a
+<tt>desconocido@dominio.virtual</tt> como no entregables.
+
+<p>
+
+El formato de la tabla virtual es como se describe a continuación, y los
+mapeos se intentan en el orden en que aparezcan listados:
+
+<ul>
+<li> <b><tt>usuario@dominio</tt></b> mapeado o... <b><tt>direccion,
+direccion, ...</tt></b>: El correo dirigido a <tt>usuario@dominio</tt> se
+redirige a <tt>direccion</tt>. Esta forma tiene la mayor precedencia.
+
+<li> <b><tt>usuario</tt></b> mapeado a... <b><tt>direccion, direccion,
+...</tt></b>: El correo dirigido a <tt>usuario@sitio</tt> se redirige a
+<tt>direccion</tt> cuando el "sitio" es igual a <tt>$myorigin</tt>, cuando
+está listado en <tt>$mydestination</tt>, o cuando está listado en 
+<tt>$inet_interfaces</tt>. Esta funcionalidad se solapa con la de la base
+de datos <a href=aliases>alias local</a>. La diferencia es que los mapeos
+virtuales se pueden aplicar a direcciones no locales.
+
+<li> <b><tt>@domnio</tt></b> mapeado a... <b><tt>direccion, direccion,
+...</tt></b>: El correo dirigido a cualquier usuario en el <tt>dominio</tt>
+se redirige a <tt>direccion</tt>. Esta forma tiene la menor precedencia.
+</ul>
+
+En todas las formas anteriores, cuando la dirección tiene la forma
+<tt>@otrodominio</tt> el resultado es el mismo usuario en "otrodominio".
+Este funciona sólo en la primera dirección de la expansión.
+
+<p>
+EXTENSION DE DIRECCION: cuando la búsqueda falla y la parte local de la
+dirección contiene el delimitador opcional de destinatario (por ejemplo,
+<tt>usuario+foo@dominio</tt>), la búsqueda se repite para la dirección no
+extendida (en el ejemplo, <tt>usuario@dominio</tt>), y la dirección
+extendida que no coincidió se propaga al resultado de la expansión. El
+orden de coincidencia es: <tt>usuario+foo@dominio</tt>,
+<tt>usuario@dominio</tt>, <tt>usuario+foo</tt>, <tt>usuario</tt>, y
+<tt>@dominio</tt>.
+
+<hr>

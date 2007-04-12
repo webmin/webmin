@@ -1,0 +1,16 @@
+display_max=Maksymalna liczba wy¶wietlanych u¿ytkowników lub grup,0
+user_repquota_command=Polecenie wy¶wietlaj±ce u¿ytkowników w&nbsp;systemie plików,0
+group_repquota_command=Polecenie wy¶wietlaj±ce grupy w&nbsp;systemie plików,0
+user_edquota_command=Polecenie do zmiany quota u¿ytkownika,0
+group_edquota_command=Polecenie do zmiany quota grupy,0
+user_quota_command=Polecenie do sprawdzenia quota u¿ytkownika,0
+group_quota_command=Polecenie do sprawdzenia quota grupy,0
+user_copy_command=Polecenie do skopiowania quota u¿ytkownika,0
+group_copy_command=Polecenie do skopiowania quota grupy,0
+user_quotaon_command=Polecenie do w³±czenia quota u¿ytkowników,0
+group_quotaon_command=Polecenie do w³±czenia quota grup,0
+user_quotaoff_command=Polecenie do wy³±czenia quota u¿ytkowników,0
+group_quotaoff_command=Polecenie do wy³±czenia quota grup,0
+quotacheck_command=Polecenie do naliczenia quota,0
+user_grace_command=Polecenie do zmiany czasu ulgi dla u¿ytkowników,0
+group_grace_command=Polecenie do zmiany czasu ulgi dla grup,0

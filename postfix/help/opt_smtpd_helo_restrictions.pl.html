@@ -1,0 +1,41 @@
+<header>Ograniczenia w&nbsp;poleceniu HELO przy wysy³aniu</header>
+
+<center><tt>smtpd_helo_restrictions</tt></center>
+<hr>
+
+Ten parametr okre¶la fakultatywne ograniczenia na to, co klienci SMTP mog±
+wysy³aæ w&nbsp;poleceniach SMTP HELO i&nbsp;EHLO. <p>
+
+Domy¶lne jest zezwalanie na wszystko. Mo¿liwe s± nastêpuj±ce ograniczenia:
+
+<ul>
+<li><tt>permit_mynetworks:</tt> zezwalaæ, gdy adres klienta pasuje do
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>reject_unknown_client:</tt> odrzucaæ ¿±danie, gdy nazwa hosta
+        klienta jest nieznana.
+<li><tt>reject_maps_rbl:</tt> odrzucaæ, gdy klient jest wymieniony w¶ród
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject_invalid_hostname:</tt> odrzucaæ nazwê hosta HELO
+        o&nbsp;nieprawid³owej sk³adni.
+<li><tt>reject_unknown_hostname:</tt> odrzucaæ nazwê hosta HELO nie
+        posiadaj±c± rekordu A ani MX w DNS-ie.
+<li><tt>reject_non_fqdn_hostname:</tt> odrzucaæ nazwê hosta HELO, która
+        nie jest postaci FQDN.
+<li><tt>check_helo_access maptype:mapname:</tt> poszukiwaæ nazwy hosta
+        HELO lub domen nadrzêdnych. Odrzucaæ, gdy wynikiem jest REJECT lub
+        &quot;[45]xx tekst&quot;. Zezwalaæ w&nbsp;pozosta³ych przypadkach.
+<li><tt>check_client_access maptype:mapname:</tt> patrz
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li><tt>reject:</tt> odrzucaæ po³±czenie. Umieszczaj to na koñcu
+        ograniczenia.
+<li><tt>permit:</tt> zezwalaæ na po³±czenie. Umieszczaj to na koñcu
+        ograniczenia.
+</ul>
+
+Ograniczenia s± stosowane w&nbsp;takiej kolejno¶ci, w&nbsp;jakiej je podano;
+wygrywa pierwsze pasuj±ce ograniczenie. <p>
+
+Podaj liste ograniczeñ rozdzielon± przecinakami i/lub bia³ymi znakami.
+Kontynuuj d³ugie linie rozpoczynaj±c nastêpn± od bia³ego znaku. <p>
+
+<hr>

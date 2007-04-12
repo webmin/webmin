@@ -1,0 +1,4 @@
+max_users=Nombre maximum d'utilisateurs a afficher,0
+input_type=Selection du type d'utilisateur,1,1-Menu deroulant,0-Champ texte
+sort_mode=Trier les utilisateurs par,1,0-Ordre dans le fichier,1-Par nom d'utilisateur
+passwd_cmd=Commande pour modifier mot de passe,3,Mettre a jour les fichiers systeme directement

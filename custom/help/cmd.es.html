@@ -1,0 +1,47 @@
+Cada comando tiene una descripción (mostrada en la parte inferior de la página
+principal), y un comando a ejecutar. Esta cadena de comando puede contener
+operadores de shell como |, &gt; y ; para ejecutar comandos múltiples y líneas
+de tubería. La cadena también puede contener parámetros como <tt>$foo</tt>,
+los cuales son reemplazados por entradas de usuario cuando el comando se
+ejecuta. <p>
+
+Estos parámetros pueden ser digitados en la tabla de la parte inferior de la
+página.
+Para cada parámetro debes de digitar:
+<dl>
+<dt><b>Nombre</b>
+<dd>Un código único para este parámetro. Si el nombre es <tt>foo</tt>, entonces
+    <tt>$foo</tt> será reemplazado por el valor de parámetro cuando se ejecuta
+    el comando.<p>
+<dt><b>Descripción</b>
+<dd>La descripción al lado del parámetro en la página principal.<p>
+<dt><b>Tipo</b>
+<dd>Esta opción controla cómo se introduce el parámetro. Las opciones posibles son:
+	<ul>
+	<li><b>Texto</b><br>
+	    Una entrada de texto totálmente libre.
+	<li><b>Usuario</b><br>
+	    Un nombre de usuario de tu sistema.
+	<li><b>UID</b><br>
+	    La UID de un usuario de tu sistema.
+	<li><b>Grupo</b><br>
+	    Un nombre de grupo de tu sistema.
+	<li><b>GID</b><br>
+	    La GID de un grupo de tu sistema.
+	<li><b>Archivo</b><br>
+	    La trayectoria completa a un archivo.
+	<li><b>Directorio</b><br>
+	    La trayectoria completa a un directorio.
+	<li><b>Opción</b><br>
+	    Una entrada de Sí/No que pondrá el parámetro a lo que esté en el campo
+	    al lado de la entrada de tipo, sólo si se selecciona Sí.
+	<li><b>Clave de acceso</b><br>
+	    Una entrada de texto totalmente libre pero con la entrada reemplazada por *.
+	</ul><p>
+<dt><b>¿Entrecomillo parámetro?</b>
+<dd>En caso de que sí, el parámetro será entrecomillado antes de ser sustituído, permitiendo
+    al usuario entrar valores que contengan espacios.<p>
+</dl>
+
+<hr>
+

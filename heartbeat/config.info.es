@@ -1,0 +1,9 @@
+ha_dir=Directorio de configuración de Heartbeat,0
+ha_cf=Trayectoria a archivo de configuración de heartbeat,3,Automática
+haresources=Trayectoria a archivos de recursos,3,Automática
+authkeys=Trayectoria a archivo de claves de autenticación,3,Automática
+resource_d=Directorio de guiones de servicio de Heartbeat,3,Automático
+pid_file=Trayectoria a archivo PID de heartbeat,0
+start_cmd=Comando para arrancar heartbeat,0
+apply_cmd=Comando para aplicar cambios,3,Automático
+serials=Modelo para archivos de puerto serie,0

@@ -1,0 +1,119 @@
+<header>Restricciones en las direcciones de los destinatarios</header>
+
+<center><tt>smtpd_recipient_restrictions</tt></center>
+<hr>
+
+Este parámetro especifica restricciones en las direcciones de los
+destinatarios que los clientes SMTP puenden enviar en los comandos RCPT TO.
+
+<p>
+
+<include relay_rules>
+
+Estos destinatarios no necesitan estar listado en
+<a href=opt_relay_domains><tt>$relay_domains</tt></a>.
+
+<p>
+
+Están disponibles las siguientes restricciones (* is parte de una
+configuración por defecto):
+
+<ul>
+<li> <tt>*permit_mynetworks:</tt> permitir si la dirección del cliente 
+         coincide con <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li>  <tt>reject_unknown_client:</tt> rechazar la petición si el nombre de
+          máquina del cliente es desconocido.
+<li>  <tt>reject_maps_rbl:</tt> rechazar si el cliente está listado en
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li>  <tt>reject_invalid_hostname:</tt> rechazar los nombres de máquina con
+          sintaxis incorrecta en el HELO.
+<li>  <tt>reject_unknown_hostname:</tt> rechazar los nombres de máquina sin
+          registro DNS A o MX en el HELO.
+<li>  <tt>reject_unknown_sender_domain:</tt> rechazar el dominio del
+          remitente sn registro DNS A o MX.
+<li> <tt>*check_relay_domains:</tt> permitir sólo el correo:
+<ul>
+<li> a destinos que coincidan con
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> desde clientes de confianza que coincidan con
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> o los
+	  subdominios correspondientes,
+<li> desde clientes no fiables a destinatarios que coincidan con
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> o los
+	  subdominios correspondientes (salvo direcciones con
+	  encaminamiento específico de remitente.
+</ul>
+	Rechazar todo lo demás.
+<li> <tt>permit_auth_destination:</tt> permitir correo:
+<ul>
+<li> a destinos que coincidan con
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> a destinos que coincidan con 
+        <a href=opt_relay_domains><tt>$relay_domains</tt></a> o los
+	subdominios correspondientes (salvo direcciones con encaminamiento
+	específico de remitente).
+</ul>
+<li> <tt>reject_unauth_destination:</tt> rechazar el correo a menos que se
+         envíe
+<ul>
+<li> a destinos que coincidan con
+	  <a href=opt_inet_interfaces><tt>$inet_interfaces</tt></a>,
+	  <a href=opt_mydestination><tt>$mydestination</tt></a>,
+	  or <a href=opt_virtual_maps><tt>$virtual_maps</tt></a>,
+<li> a destinos que coincidan con
+	  <a href=opt_relay_domains><tt>$relay_domains</tt></a> o los 
+	  subdominios correspondientes (salvo direcciones con encaminamiento
+	  específico de remitente)..
+</ul>
+<li>  <tt>reject_unauth_pipelining:</tt> rechazar correo desde programas de
+      spam inadecuadamente encadenados
+<li>  <tt>permit_mx_backup:</tt> aceptar correo para sitios que me tengan
+      como intercambiador de correo MX.
+<li>  <tt>reject_unknown_recipient_domain:</tt> rechazar dominios sin
+      registro DNS A o MX.
+<li>  <tt>check_recipient_access maptype:mapname:</tt> buscar el
+      destinatario, dominio padre y partelocal@.
+	Rechazar si el resultado es REJECT o &quot;[45]xx texto&quot;.
+	Permitir en caso contrario.
+
+<li>  <tt>check_client_access maptype:mapname:</tt> vea
+        <a href=opt_smtpd_client_restrictions>smtpd_client_restrictions</a>.
+<li>  <tt>check_helo_access maptype:mapname:</tt> vea
+        <a href=opt_smtpd_helo_restrictions>smtpd_helo_restrictions</a>.
+<li>  <tt>check_sender_access maptype:mapname:</tt> vea
+        <a href=opt_smtpd_sender_restrictions>smtpd_sender_restrictions</a>.
+<li>  <tt>reject_non_fqdn_hostname:</tt> rechazar el nombre de máquina del
+      HELO que no esté en forma plenamente cualificada (FQDN).
+<li>  <tt>reject_non_fqdn_sender:</tt> rechazar la dirección del remitente
+      que no esté en forma plenamente cualificada (FQDN).
+<li>  <tt>reject_non_fqdn_recipient:</tt> rechazar las direcciones de
+      destinatario que no estén en forma plenamente cualificada (FQDN).
+<li>  <tt>reject:</tt> rechazar la petición. Sitúe esto al final de una
+      restricción.
+<li>  <tt>permit:</tt> permitir la petición. Sitúe esto al final de una
+      restricción.
+</ul>
+
+Las restricciones aplican en el orden en que se especifiquen: la primera
+restricción que coincida será la que aplique.
+
+<p>
+
+Especifique una lista de restricciones, separadas por comas y/o espacios en
+blanco. Continúe las líneas largas comenzando la siguiente línea con
+espacio en blanco.
+
+<p>
+
+NOTA: TIENE QUE ESPECIFICAR AL MENOS UNA DE LAS SIGUIENTES RESTRICCIONES,
+DE LO CONTRARIO POSTFIX SE NEGARA A RECIBIR CORREO:
+<br>
+	<tt>reject, check_relay_domains, reject_unauth_destination</tt>
+
+
+
+<hr>

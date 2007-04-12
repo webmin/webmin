@@ -1,0 +1,38 @@
+<header>Altres Caus</header>
+
+<b>Altres servidors de cau proxy</b>: Això llista els caus sibling, pare i
+multicast actualment configurats. Fes clic sobre el nom de host o l'adreça
+per editar-ne o veure la configuració sencera.
+<p>
+<b>Ves a buscar directament les URLs que contenen</b>: Per defecte, ".cgi"
+i "?". Et permet forçar Squid a anar a buscar certs tipus de continguts
+directament al servidor origen. Normalment, això no necessita cap modificació,
+ja que la majoria de coses les gestiona Squid sense ajuda.
+<p>
+<b>Temps límit de petició ICP</b>: Per defecte, un valor 'òptim'.
+Si vols ignorar el valor determinat per Squid, posa-ho a un valor no nul.
+El valor per defecte en versions anteriors de Squid era 2000.
+<p>
+<b>Temps límit d'ICP multicast</b>: Per defecte, 2000mseg o 2 segons.
+Per a <i>peers</i> multicast, Squid envia regularment "sondes" ICP per comptar
+quants altres <i>peers</i> estan escoltant l'adreça multicast donada.
+Aquest valor especifica quant de temps Squid ha d'esperar per comptar totes
+les respostes.
+<p>
+<b>Temps límit de <i>peer</i> mort</b>: Per defecte, 10 segons. Això controla 
+quan t de temps espera Squid per declarar un cau <i>peer</i> com a "mort". 
+SI no es reben respostes ICP en aquest interval de temps, Squid declararà
+el <i>peer</i> mort i no esperarà rebre'n més respostes ICP. De tota manera,
+continua enviant peticions ICP, i marcarà el <i>peer</i> com a viuen el moment 
+que en rebi la primera resposta ICP. <p>
+
+Aquest temps límit també afecta quan Squid espera rebre respostes ICP dels
+<i>peers</i>. Si han passat més de '<i>peer_mort</i>' segons des que s'ha
+rebut la darrera resposta ICP, Squid no esperarà rebre cap resposta ICP
+en la pròxima petició. Així, si el temps entre peticions és més gran que
+aquest temps límit, veuràs una pila de peticions enviades directament a
+l'origen en lloc dels pares. 
+<p>
+
+<hr>
+

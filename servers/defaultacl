@@ -1,0 +1,10 @@
+servers=*
+edit=1
+find=1
+pass=1
+auto=1
+forcefast=0
+forcetype=0
+forcelink=0
+add=1
+links=1

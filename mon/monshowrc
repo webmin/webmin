@@ -1,0 +1,9 @@
+set host localhost 
+set show-disabled
+set full
+set bg #FFFFFF
+set bg-ok #7FFFD4 
+set bg-untested FFCC33
+set bg-disabled FAEBD7
+set table-color cccccc
+set refresh 300

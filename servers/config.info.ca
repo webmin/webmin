@@ -1,0 +1,15 @@
+line1=Opcions configurables,11
+resolve=Resol les adreces de servidors trobades,1,1-Sí,0-No
+scan_time=Temps d'espera per les respostes d'escaneig,0,5
+listen=Rastreja els servidors al port UDP,3,Igual que aquest sistema
+display_mode=Mostra els servidors com a,1,1-Taula,0-Icones
+sort_mode=Ordena els servidors per,4,4-Adreça IP,1-Nom de Host,2-Descripció,3-SO,5-Grup,0-Ordre de creació
+show_status=Mostra l'estat dels servidors,1,1-Sí,0-No
+show_ip=Mostra sempre l'adreça i el port a la pàgina principal,1,1-Sí,0-No
+deflink=Mode d'identificació per defecte,4,0-Enllaç normal al servidor,1-Identificació via Webmin,2-Identificació quan es fa clic a la icona,3-Identificació amb el mateix usuari i contrasenya
+deffast=Mode RPC per defecte,1,1-Ràpid,2-Automàtic,0-Lent
+auto_type=Tipus de sistema per defecte,14,show_deftype
+skipips=IPs o noms de host dels sistemes que no s'an de detectar,9,50,5,\t
+skipifaces=Interfícies de xarxa que no s'han de detectar,0
+line2=Configuració del sistema,11
+groups_dir=Directori de grups de <i>cluster</i> MSC,0

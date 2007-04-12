@@ -1,0 +1,7 @@
+browse_server=
+auto_file=
+autofs_file=/etc/auto_master
+nmblookup_path=/usr/local/samba/bin/nmblookup
+long_fstypes=1
+smbclient_path=/usr/local/samba/bin/smbclient
+fstab_file=/etc/fstab

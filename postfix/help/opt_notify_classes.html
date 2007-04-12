@@ -1,0 +1,39 @@
+<header>What trouble to report to the postmaster</header>
+
+<center><tt>notify_classes</tt></center>
+<hr>
+
+You should set up a <b>postmaster</b> alias that points to a human person. This
+alias is required to exist, so that people can report mail delivery problems.
+
+<p>
+
+The Postfix system itself also reports problems to the postmaster alias. You
+may not be interested in all types of trouble reports, so this reporting
+mechanism is configurable. The default is to report only serious problems
+(resource, software) to postmaster:
+
+<p>
+
+<b>Default:</b> <tt>resource, software</tt>
+
+<p>
+
+The meaning of the classes is as follows: 
+
+<ul>
+<li><tt>bounce:</tt> Send postmaster copies of undeliverable mail.
+<li><tt>2bounce:</tt> Send double bounces to the postmaster. 
+<li><tt>delay:</tt> Inform the postmaster of delayed mail. In this case, the postmaster
+receives message headers only.
+<li><tt>policy:</tt> Inform the postmaster of client requests that were rejected because of (UCE) policy restrictions. The postmaster receives a transcript of the entire SMTP session. 
+<li><tt>protocol:</tt> Inform the postmaster of protocol errors (client or server side)
+or attempts by a client to execute unimplemented commands. The postmaster
+receives a transcript of the entire SMTP session.
+<li><tt>resource:</tt> Inform the postmaster of mail not delivered due to resource
+problems (for example, queue file write errors). 
+<li><tt>software:</tt> Inform the postmaster of mail not delivered due to software
+problems. 
+</ul>
+
+<hr>

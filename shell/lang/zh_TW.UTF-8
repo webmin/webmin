@@ -1,0 +1,12 @@
+acl_user=執行命令的使用者
+acl_user_def=目前Webmin使用者
+index_clear=清除歷史
+index_clearcmds=清除指令
+index_desc=輸入Unix指令，執行結果會顯示在下方文字區。 例如 <tt>cd</tt> 指令會改變目前的目錄。
+index_edit=編輯前一頁
+index_history=指令歷史
+index_ok=執行指令:
+index_pok=執行上一個指令
+index_title=指令shell
+log_clear=清除指令紀錄
+log_run=執行指令$1

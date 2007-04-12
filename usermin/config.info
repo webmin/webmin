@@ -1,0 +1,4 @@
+usermin_dir=Usermin configuration directory,0
+cron_mode=Show update times as,1,0-Simple interface,1-Cron time selector
+host=Usermin hostname for switching users,3,Same as Webmin
+port=Usermin port for switching users,3,Determine automatically

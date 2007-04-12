@@ -1,0 +1,114 @@
+index_title=獣什奴 貢 辞獄 雌殿
+index_name=辞搾什 戚硯
+index_host=硲什闘拭辞
+index_desc=乞艦斗元
+index_up=雌殿
+index_local=稽鎮
+index_add=蓄亜拝 乞艦斗 政莫:
+index_sched=森鉦吉 乞艦斗元
+index_return=辞搾什 鯉系
+
+type_apache=Apache 瀬 辞獄
+type_inetd=昔斗掛 貢 RPC 辞獄
+type_xinetd=溌舌 昔斗掛 辞獄
+type_squid=Squid 覗系獣 辞獄
+type_bind8=BIND DNS 辞獄
+type_dnsadmin=BIND 4 DNS 辞獄
+type_dhcpd=DHCP 辞獄
+type_tcp=据維 TCP 辞搾什
+type_http=据維 HTTP 辞搾什
+type_sendmail=Sendmail 辞獄
+type_postfix=Postfix 辞獄
+type_ping=据維 Ping
+type_proc=伊紫 覗稽室什
+type_mysql=MySQL 汽戚斗今戚什 辞獄
+type_postgresql=PostgreSQL 汽戚斗今戚什 辞獄
+type_samba=Samba 辞獄
+type_nfs=NFS 辞獄
+type_exec=誤敬 叔楳
+type_file=督析 伊紫
+
+mon_create=乞艦斗 拙失
+mon_edit=乞艦斗 畷増
+mon_header=乞艦斗 室採 舛左
+mon_desc=竺誤
+mon_remote=硲什闘拭辞 叔楳
+mon_local=稽鎮
+mon_none=舛税吉 据維 辞獄亜 蒸柔艦陥
+mon_nosched=森鉦廃 企稽 伊紫杯艦猿?
+mon_status=薄仙 雌殿
+mon_up=拙疑
+mon_down=陥錘
+mon_not=竺帖 照喫
+mon_ondown=乞艦斗亜 陥錘鞠檎 誤敬聖 叔楳馬淑獣神
+mon_onup=乞艦斗亜 拙疑馬檎 誤敬聖 叔楳馬淑獣神
+mon_clone=乞艦斗拝 乞汲
+mon_err=乞艦斗研 煽舌馬走 公梅柔艦陥
+mon_edesc=竺誤 蒸製
+mon_elogin=Webmin 辞獄 $1税 RPC拭 企廃 稽益昔戚 設公鞠醸柔艦陥
+mon_eremote=Webmin 辞獄 $1戚(亜) RPC研 走据馬走 省柔艦陥
+mon_estatus=Webmin 辞獄 $1拭 獣什奴 貢 辞獄 雌殿 乞汲戚 蒸柔艦陥
+
+sched_title=森鉦吉 乞艦斗元
+sched_header=森鉦吉 拷益虞錘球 乞艦斗元 辛芝
+sched_mode=森鉦吉 伊紫研 紫遂 亜管馬惟 杯艦猿?
+sched_email=雌殿 左壱辞研 穿切 五析稽 閤聖 企雌
+sched_none=蒸製
+sched_from=降重切: 穿切 五析 爽社
+sched_int=乞砧 識澱
+sched_period_0=歳
+sched_period_1=獣
+sched_period_2=析
+sched_period_3=杉
+sched_period_4=爽
+sched_offset=神覗実 赤製
+sched_warn=穿切 五析聖 左馨 獣奄
+sched_warn1=辞搾什 雌殿 痕井 獣
+sched_warn0=辞搾什 陥錘 獣
+sched_single=唖 辞搾什原陥 馬蟹税 穿切 五析聖 左垣艦猿?
+sched_hours=乞艦斗 叔楳 奄娃(獣)
+sched_days=乞艦斗 叔楳 奄娃(析)
+sched_err=森鉦吉 乞艦斗元聖 煽舌馬走 公梅柔艦陥
+sched_eemail=蒸澗 穿切 五析 爽社
+sched_eint=蒸暗蟹 設公吉 娃維
+sched_eoffset=蒸暗蟹 設公吉 神覗実
+sched_ehours=識澱廃 叔楳 奄娃(獣)戚 蒸柔艦陥
+sched_edays=叔楳 奄娃(析)聖 識澱馬走 省紹柔艦陥
+
+up_since=$1 戚板 拙疑
+depends_mod=獣什奴拭 乞汲 $1戚(亜) 竺帖鞠嬢 赤走 省柔艦陥
+depends_os=獣什奴拭辞 乞汲 $1戚(亜) 走据鞠走 省柔艦陥
+depends_remote=辞獄 $2拭辞 乞汲 $1戚(亜) 走据鞠走 省柔艦陥
+
+tcp_host=尻衣拝 硲什闘
+tcp_port=尻衣拝 匂闘
+tcp_alarm=尻衣 獣娃 段引
+tcp_ehost=蒸暗蟹 設公吉 硲什闘 戚硯
+tcp_eport=蒸暗蟹 設公吉 匂闘 腰硲
+tcp_ealarm=蒸暗蟹 設公吉 尻衣 獣娃 段引
+
+http_url=推短拝 URL
+http_alarm=尻衣 獣娃 段引
+http_eurl=蒸暗蟹 設公吉 URL
+http_ealarm=蒸暗蟹 設公吉 尻衣 獣娃 段引
+
+ping_host=Ping拝 硲什闘
+ping_ehost=蒸暗蟹 設公吉 硲什闘 戚硯
+ping_econfig=乞汲 姥失拭 竺舛吉 Ping 誤敬戚 蒸柔艦陥
+
+proc_pid=PID $1聖(研) 紫遂馬食 叔楳 掻
+proc_cmd=伊紫拝 誤敬
+proc_ecmd=蒸澗 誤敬
+
+exec_cmd=曽戟 雌殿研 伊紫拝 誤敬
+exec_ecmd=蒸澗 誤敬
+
+file_file=伊紫拝 督析
+file_test=呪楳拝 砺什闘
+file_test_0=督析戚 赤柔艦陥
+file_test_1=督析戚 蒸柔艦陥
+file_test_2=督析戚 陥製左陥 溺艦陥
+file_test_3=督析戚 陥製左陥 拙柔艦陥
+file_bytes=郊戚闘
+file_efile=伊紫拝 督析 戚硯戚 蒸柔艦陥
+file_esize=督析 滴奄亜 設公鞠醸柔艦陥

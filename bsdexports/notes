@@ -1,0 +1,13 @@
+ - Cannot have different options for the same host on the same *local*
+   filesystem. Ie
+
+/usr -maproot=daemon florissa
+/tmp -ro -mapall=jcameron:staff daemon florissa
+
+Would not be allowed if /usr and /tmp are on the same local. But
+
+/usr -maproot=daemon florissa
+/tmp -ro -mapall=jcameron:staff daemon
+
+Would be allowed because there is no local-filesystem/host overlap
+

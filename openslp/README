@@ -1,0 +1,31 @@
+This is the README file for the  OpenSLP webmin
+module by Monty Charlton <monty@caldera.com>.
+
+Installation is easy.
+
+Just use the 'Webmin Modules' applet under 'Webmin Configuration'.
+Use the '...' box to find openslp.tar.wbm and it should install fine.
+
+Worst case, just copy the tar file to your webmin directory
+(usually /usr/libexec/webmin) and extract it:
+tar xvf openslp.tar.wbm
+
+You may notice there are a number of config-some-system files in
+the openslp directory.  You may have to edit the file that pertains
+to your particular system.  If you do, please send me (monty@caldera.com)
+the change you had to make to get things to work.
+
+To make your module appear in the main list, you may have to edit
+/etc/webmin/webmin.acl.  Just add openslp to the list somewhere and it
+should magically appear.  But you probably won't have to do this.
+
+
+
+This OpenSLP module is Copyright (c) 2000 Caldera Systems
+
+Permission to use, copy, modify, and distribute this software and its
+documentation under the terms of the GNU General Public License is hereby 
+granted. No representations are made about the suitability of this software 
+for any purpose. It is provided "as is" without express or implied warranty.
+See the GNU General Public License for more details.
+

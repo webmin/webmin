@@ -1,0 +1,13 @@
+<ul>
+<li><tt>reject_unknown_client:</tt> reject the request if the client hostname is unknown.
+<li><tt>permit_mynetworks:</tt> permit if the client address matches
+        <a href=opt_mynetworks><tt>$mynetworks</tt></a>.
+<li><tt>check_client_access maptype:mapname:</tt> look up client name,
+	parent domains, client address, or networks obtained by stripping
+	octets.  Reject if result is REJECT or &quot;[45]xx text&quot;. 
+	Permit otherwise.
+<li><tt>reject_maps_rbl:</tt> reject if the client is listed under
+        <a href=opt_maps_rbl_domains><tt>$maps_rbl_domains</tt></a>.
+<li><tt>reject:</tt> reject the request. Place this at the end of a restriction.
+<li><tt>permit:</tt> permit the request. Place this at the end of a restriction.
+</ul>

@@ -1,0 +1,8 @@
+htaccess=.htaccess
+htpasswd=.htpasswd
+htgroups=.htgroups
+sort=0
+md5=1
+sha1=0
+digest=1
+extra_directives=

@@ -1,0 +1,68 @@
+<header>Canonical Mapping</header>
+
+The optional canonical file specifies an address mapping for local and
+non-local addresses. The mapping is used by the cleanup(8) daemon. The address
+mapping is recursive.
+
+<p>
+
+The file serves as input to the postmap(1) command. The result, an indexed file
+in dbm or db format, is used for fast searching by the mail system.
+
+<p>
+
+The canonical mapping affects both message header addresses (i.e. addresses
+that appear inside messages) and message envelope addresses (for example, the
+addresses that are used in SMTP protocol commands). Think Sendmail rule set
+<tt>S3</tt>, if you like.
+
+<p>
+
+Typically, one would use the canonical table to replace login names by
+<tt>Firstname.Lastname</tt>, or to clean up addresses produced by legacy mail
+systems.
+
+<p>
+
+The canonical mapping is not to be confused with virtual domain support. Use
+the <a href=virtual>virtual domain</a> map for that purpose.
+
+<p>
+
+The canonical mapping is not to be confused with local aliasing. Use the
+<a href=aliases>mail aliases</a> map for that purpose.
+
+<p>
+
+The format of the canonical mappings is as follows, mappings being tried in the
+order as listed:
+
+<ul>
+<li><b><tt>user@domain</tt></b> mapped to... <b><tt>address</tt></b>:<br><tt>user@domain</tt> is
+replaced by <tt>address</tt> This form has the highest precedence. This form
+useful to clean up addresses produced by legacy mail systems. It can also be
+used to produce <tt>Firstname.Lastname</tt> style addresses, but see below for a
+simpler solution.
+
+<li><b><tt>user</tt></b> mapped to...<b><tt>address</tt></b>:<br><tt>user@site</tt> is replaced
+by address when site is equal to <tt>$myorigin</tt>, when site is listed in
+<tt>$mydestination</tt>, or when it is listed in <tt>$inet_interfaces</tt>.
+This form is useful for replacing login names by <tt>Firstname.Lastname</tt>.
+
+<li><b><tt>@domain</tt></b> mapped to...<b><tt>address</tt></b>:<br>Every address in domain is
+replaced by address. This form has the lowest precedence.
+</ul>
+
+In all the above forms, when address has the form <tt>@otherdomain</tt>, the result is
+the same user in otherdomain.
+
+<p>
+
+ADDRESS EXTENSION: When table lookup fails, and the address localpart contains
+the optional recipient delimiter (e.g., <tt>user+foo@domain</tt>), the search
+is repeated for the unextended address (e.g. <tt>user@domain</tt>), and the
+unmatched extension is propagated to the result of table lookup. The matching
+order is: <tt>user+foo@domain</tt>, <tt>user@domain</tt>, <tt>user+foo</tt>,
+<tt>user</tt>, and <tt>@domain</tt>.
+
+<hr>

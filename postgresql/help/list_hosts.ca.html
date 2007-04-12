@@ -1,0 +1,31 @@
+<header>Hosts permesos</header>
+
+En aquesta pàgina, pots controlar quins hosts tenen permès accedir el
+teu servidor de bases de dades i quina mena d'autenticació hauran de
+subministrar. Totes les regles de control d'accés es poden aplicar a un
+sol host, a tota una xarxa, a tots els hosts d'una xarxa a només a 
+usuaris connectant-se des de la màquina local. A més a més, totes
+les regles es poden aplicar a una sola base de dades o a totes les
+bases de dades del servidor.  <p>
+
+En triar el mode d'autenticació dels hosts permesos, hi ha disponibles
+les opcions següents:
+
+<dl>
+<dt><b>Contrasenya sense xifrar</b>
+<dd>L'usuari ha de subministrar una contrasenya que coincideixi amb
+    l'establerta la la pàgina d'<tt>Usuaris PostgreSQL</tt>. <p>
+<dt><b>Contrasenya xifrada</b>
+<dd>L'usuari ha de subministrar una contrasenya que, un cop xifrada.
+    coincideixi amb l'establerta la la pàgina d'<tt>Usuaris PostgreSQL</tt>. <p>
+<dt><b>No cal autenticació</b>
+<dd>No cal subministrar cap contrasenya. <p>
+<dt><b>Rebutja la connexió</b>
+<dd>No permet cap connexió des d'aquest host. Això és útil per denegar
+    l'accés des de hosts específics si has concedit accés a tota una xarxa.
+    <p>
+</dl>
+
+<hr>
+
+

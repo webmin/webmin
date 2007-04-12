@@ -1,0 +1,243 @@
+index_title=Autenticaci&#243;n PAM
+index_name=Servicio
+index_desc=Descripci&#243;n
+index_add=A&#241;adir un nuevo servicio PAM
+index_return=lista de servicio
+index_none=No se han hallado archivos de configuraci&#243;n de PAM en tu sistema en el directorio $1. Quiz&#225;s PAM no est&#225; soportado o tu <a href='$2'>configuraci&#243;n del m&#243;dulo</a> es incorrecta.
+
+desc_su=Conmutar usuario
+desc_login=Login local o remoto
+desc_samba=Servidor Samba de archivos Windows
+desc_imap=Servidor de correo IMAP
+desc_pop=Servidor de correo POP
+desc_kde=Login de KDE
+desc_rexec=Servidor de ejecuci&#243;n remota
+desc_rlogin=Servidor de login remoto
+desc_rsh=Servidor de shell remoto
+desc_passwd=Cambio de clave de acceso
+desc_chfn=Informaci&#243;n de cambio de finger
+desc_chsh=Cambiar shell
+desc_ftp=Servidor de transferencia de archivo
+desc_ftpd=Servidor de transferencia de archivo
+desc_wu-ftpd=Servidor WuFTPd de transferencia de archivo
+desc_xscreensaver=Salvapantallas
+desc_other=Otros servicios
+desc_netatalk.pamd=$desc_netatalk
+desc_netatalk=Servidor de archivos Netatalk de Apple
+desc_webmin=Servidor web de Webmin
+desc_xdm=X login local o remoto
+desc_gdm=X login de Gnome
+desc_linuxconf=Login de LinuxConf
+desc_linuxconf-pair=Login adicional de LinuxConf
+desc_linuxconf-auth=Autenticaci&#243;n LinuxConf
+desc_xlock=Bloqueo de pantalla
+desc_vlock=Bloqueo de consola virtual
+desc_kbdrate=Control de velocidad de teclado
+desc_halt=Parar sistema
+desc_poweroff=Apagar sistema
+desc_reboot=Rearrancar sistema
+desc_shutdown=Cerrar sistema
+desc_mcserv=Midnight commander
+desc_kppp=Herramienta de cliente PPP de KDE
+desc_xserver=Servidor X11
+desc_gnorpm-auth=Herramienta RPM de Gnome
+desc_kpackage=Herramienta RPM de KDE
+desc_ppp=Demonio de login de PPP
+desc_rp3-config=Herramienta de cliente PPP de Redhat
+desc_up2date=Agente de actualizaci&#243;n de Linux de Redhat
+desc_up2date-config=Configuraci&#243;n de actualizaci&#243;n de Linux de Redhat
+desc_sudo=Ejecuci&#243;n limitada de comando de root
+desc_httpd=Servidor Web
+desc_qpop=Servidor de Correo POP
+desc_sshd=Login mediante SSH
+desc_squid=Servidor Proxy Squid
+desc_bindconf=Herramienta de configuracu&#243;n BIND de Redhat
+desc_apacheconf=Herramienta de configuraci&#243;n Apache de Redhat
+desc_adsl-config=Herramienta de configuraci&#243;n ADSL de Redhat
+desc_internet-config=Herramienta de configuraci&#243;n de internet de Redhat
+desc_isdn-config=Herramienta de configuraci&#243;n ISDN de Redhat
+desc_kontrol-panel=Panel de control de KDE de Redhat
+desc_kscreensaver=Salvapantallas de KDE
+desc_printconf-gui=Herramienta de configuraci&#243;n de impresoras de Redhat
+desc_rhn_register=Registro de Red de Redhat
+desc_system-auth=Autenticaci&#243;n com&#250;n
+desc_cups=Impresi&#243;n CUPS
+
+edit_title=Editar Servicio PAM
+edit_header=Detalles de servicio PAM
+edit_name=Nombre de servicio
+edit_header_auth=Pasos de autenticaci&#243;n
+edit_header_account=Pasos de verificaci&#243;n de cuenta
+edit_header_session=Pasos de configuraci&#243;n de sesi&#243;n
+edit_header_password=Pasos de cambio de clave de acceso
+edit_mod=M&#243;dulo PAM
+edit_desc=Descripci&#243;n
+edit_args=Par&#225;metros
+edit_addmod=A&#241;adir paso para:
+edit_control=Nivel de fallo
+edit_none=No se han especificado m&#243;dulos de PAM para este paso
+edit_delete=Borrar servicio de PAM
+edit_move=Mover
+edit_return=Servicio de PAM
+
+pam_pwdb.so=Autenticaci&#243;n de clave de acceso de Unix
+pam_securetty.so=Revisi&#243;n de TTY segura para root
+pam_nologin.so=Revisar archivo <tt>/etc/nologin</tt>
+pam_mail.so=Notificaci&#243;n de nuevo correo
+pam_lastlog.so=Notificaci&#243;n de &#250;ltimo login
+pam_rootok.so=Revisar s&#243;lo usuario <tt>root</tt>
+pam_cracklib.so=Revisi&#243;n exhaustiva de clave de acceso
+pam_access.so=Revisar archivo de control de acceso
+pam_deny.so=Siempre denegar acceso
+pam_env.so=Poner variables de entorno
+pam_ftp.so=Revisar autenticaci&#243;n FTP
+pam_time.so=Revisar horario de login
+pam_group.so=Poner pertenencia a grupo
+pam_listfile.so=Revisar contenido de archivo
+pam_limits.so=Poner l&#237;mite de recursos
+pam_mkhomedir.so=Crear directorio inicial
+pam_motd.so=Mostrar el archivo de mensaje-del-d&#237;a
+pam_permit.so=Siempre permitir acceso
+pam_radius.so=Autenticaci&#243;n de servidor RADIUS
+pam_rhosts.so=Revisar archivos <tt>.rhosts</tt>
+pam_rhosts_auth.so=Revisar archivos <tt>.rhosts</tt>
+pam_shells.so=Revisar shell v&#225;lido
+pam_unix.so=Autenticaci&#243;n de clave de acceso de Unix viejo
+pam_userdb.so=Autenticaci&#243;n de clave de acceso de archivo DBM
+pam_warn.so=Aviso de diario
+pam_wheel.so=Revisar grupo <tt>wheel</tt>
+pam_issue.so=Mostrar archivo <tt>/etc/issue</tt>
+pam_ldap.so=Autenticaci&#243;n de servidor LDAP
+pam_unix_auth.so=Autenticaci&#243;n de clave de acceso de Unix
+pam_unix_sess.so=Configuraci&#243;n de sesi&#243;n Unix
+pam_unix_session.so=Configuraci&#243;n de sesi&#243;n Unix
+pam_unix_acct.so=Verificaci&#243;n de cuenta Unix
+pam_unix_passwd.so=Cambio de clave de acceso de Unix
+pam_stress.so=Prueba de tensi&#243;n de la Aplicaci&#243;n
+pam_tally.so=Seguir los intentos de login fallidos
+pam_passwd+.so=Revisar fuerza de la clave de acceso
+pam_filter.so=Filtro de Entrada/salida
+pam_desgold.so=Autenticaci&#243;n de tarjeta inteligente DESGold
+pam_console.so=Revisar s&#243;lo consola
+pam_xauth.so=Autenticaci&#243;n X
+pam_stack.so=Llamar a otro servicio PAM
+
+control_requisite=Requisito
+control_required=Requerido
+control_sufficient=Suficiente
+control_optional=Opcional
+control_desc_requisite=Fallo de autenticaci&#243;n inmedi&#225;tamente tras fallo
+control_desc_required=Fallo de autenticaci&#243;n al final del fallo
+control_desc_sufficient=Pasar autenticaci&#243;n inmedi&#225;tamente tras &#233;xito
+control_desc_optional=Se ignora &#233;xito o fallo
+
+create_title=Crear Servicio de PAM
+create_header=Nuevas opciones de servicio PAM
+create_name=Nombre de servicio
+create_desc=Descripci&#243;n
+create_mods=M&#243;dulos iniciales de PAM
+create_0=Ninguno
+create_1=Autenticaci&#243;n Unix
+create_2=Denegar todos los accesos
+
+mod_edit=Editar M&#243;dulo de PAM
+mod_create=A&#241;adir M&#243;dulo de PAM
+mod_header=Opciones de m&#243;dulo de PAM
+mod_name=Nombre de servicio
+mod_mod=M&#243;dulo PAM
+mod_type=Usar en servicio
+mod_type_auth=Autenticaci&#243;n
+mod_type_account=Verficaci&#243;n de cuenta
+mod_type_session=Configuraci&#243;n de sesi&#243;n
+mod_type_password=Cambiar clave de acceso
+mod_control=Nivel de fallo
+mod_args=Argumentos de m&#243;dulo
+mod_err=No pude salvar el m&#243;dulo
+
+pwdb_shadow=&#191;Uso archivo de claves de acceso en la sombra?
+pwdb_nullok=&#191;Acepto claves de acceso nulas?
+pwdb_md5=&#191;Uso claves de acceso con encriptaci&#243;n MD5?
+pwdb_nodelay=&#191;Retardo tras login fallido?
+
+listfile_item=Buscar en archivo por
+listfile_item_user=Nombre de usuario
+listfile_item_tty=TTY
+listfile_item_rhost=Nombre de m&#225;quina remota
+listfile_item_ruser=Nombre de usuario remoto
+listfile_item_group=Grupo
+listfile_item_shell=Shell
+listfile_sense=Si hallado en archivo
+listfile_file=Archivo a buscar
+listfile_onerr=Sobre error de archivo
+listfile_fail=Fallo
+listfile_succeed=&#201;xito
+listfile_apply=Limitar revisi&#243;n a
+listfile_all=Todos los usuarios
+listfile_user=S&#243;lo el usuario
+listfile_group=S&#243;lo el grupo
+
+cracklib_type=Tipo de clave de acceso en la petici&#243;n
+cracklib_retry=M&#225;ximos reintentos antes de fallar
+cracklib_eretry=N&#250;mero de reintentos sin poner o inv&#225;lidos
+cracklib_etype=Tipo de clave de acceso sin poner o inv&#225;lido
+
+rhosts_equiv=&#191;Leo el archivo <tt>/etc/hosts.equiv</tt>?
+rhosts_rhosts=&#191;Leo los archivos <tt>.rhosts</tt> de usuario?
+rhosts_promiscuous=&#191;La entrada <tt>+</tt> da permiso a todas las m&#225;quinas?
+rhosts_suppress=&#191;Llevo diario de fallos de autenticaci&#243;n?
+
+env_var=Nombre de variable
+env_def=Valor por defecto
+env_over=Pasar por alto valor
+env_evar=Los nombres de variable no pueden contener espacios
+
+securetty_ttys=TTYs seguras
+
+shells_shells=Shells de usuario v&#225;lido
+
+tally_deny=Intentos fallidos antes de denegar el acceso
+tally_reset=Restablecer contador de fallos tras &#233;xito
+tally_edeny=N&#250;mero de intentos de fallo sin poner o inv&#225;lido
+tally_magic=&#191;El contador de fallo se aplica a <tt>root</tt>?
+tally_root=&#191;La cuenta <tt>root</tt> puede ser denegada?
+
+time_services=Servicios
+time_ttys=TTYs
+time_users=Usuarios
+time_times=Tiempos de acceso
+time_info=Todos los campos pueden contener m&#250;ltiples valores serparados por | y los valores pueden utilizar * como comod&#237;n o ! para negar.
+
+group_services=Servicios
+group_ttys=TTYs
+group_users=Usuarios
+group_times=Tiempos de acceso
+group_groups=A&#241;adir grupos
+group_info=Todos los campos pueden contener m&#250;ltiples valores separados por | y los valores pueden utilizar * como comod&#237;n o ! para negar.
+
+wheel_group=Revisar pertenencia a grupo
+wheel_group_def=Por defecto (<tt>wheel</tt> o GID 0)
+wheel_trust=&#191;Los miembros del grupo pasan por alto autenticaciones posteriores?
+wheel_deny=&#191;Deniego en vez de permitir a miembros de grupo?
+wheel_egroup=Nombre de grupo inv&#225;lido o sin poner
+
+motd_file=Archivo a mostrar
+motd_file_def=Por defecto (<tt>/etc/motd</tt>)
+motd_efile=Nombre de archivo inv&#225;lido o sin poner
+
+mail_nopen=&#191;Muestro notificaci&#243;n de correo al hacer login?
+mail_close=&#191;Muestro notificaci&#243;n de correo al salir a login?
+mail_empty=&#191;Notifico si el archivo de correo est&#225; vac&#237;o?
+mail_noenv=&#191;Pongo la variable de entorno $MAIL?
+mail_dir=Directorio de spool de correo
+mail_edir=Directorio de spool de correo inv&#225;lido o sin poner
+
+stack_service=Pasar comprobaci&#243;n a servicio PAM
+
+log_pam_create=Creado servicio PAM $1
+log_pam_delete=Borrado servicio PAM $1
+log_mod_create=A&#241;adido m&#243;dulo de PAM $1 a servicio $2
+log_mod_modify=Modificado m&#243;dulo PAM $1 en servicio $2
+log_mod_delete=Borrado m&#243;dulo de PAM $1 en servicio $2
+log_mod_move=Intercambiados m&#243;dulos de PAM en servicio $3
+log_mod_move_l=Intercambiados m&#243;dulos de PAM $1 y $2 en servicio $3
+

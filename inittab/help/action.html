@@ -1,0 +1,52 @@
+<header>Action</header>
+
+Describes which action should be taken.<p>
+
+Valid actions for this field are :<p>
+
+<b>Respawn</b><br>
+The process will be restarted whenever it terminates (e.g. getty).<p>
+
+<b>Wait</b><br>
+The process will be started once when the specified runlevel is entered and <i>init</i> will wait for its termination.<p>
+
+<b>Once time at level</b><br>
+The process will be executed once when the specified runlevel is entered.<p>
+
+<b>Boot time</b><br>
+The process will be executed during system boot.  The runlevels field is ignored.<p>
+
+<b>Boot time, wait until termination</b><br>
+The process will be executed during system boot, while <i>init</i> waits for its termination (e.g./etc/rc).  The runlevels field is ignored.<p>
+
+<b>Do nothing</b><br>
+This does nothing.<p>
+
+<b>Whenever in A, B, C</b><br>
+A process marked with an <tt>ondemand</tt> runlevel will be executed whenever the specified <tt>ondemand</tt> runlevel is called.  However, no runlevel change will occur (ondemand runlevels are `a', `b', and `c').<p>
+
+<b>At default level</b><br>
+An <tt>initdefault</tt> entry specifies the runlevel which should be entered after system boot.  If none exists, init will ask for a runlevel on the console. The process field is ignored.<p>
+
+<b>During system boot</b><br>
+The process will be executed during system boot. It will be executed before any <tt><b>Boot time</b></tt> or <tt><b>Boot time, wait until termination</b></tt> entries. The runlevels field is ignored.<p>
+
+<b>Power goes down</b><br>
+The process will be executed when the power goes down. Init is usually informed about this by a process talking to a UPS connected to the computer.  <i>Init</i> will wait for the process to finish before continuing.<p>
+
+<b>Power goes down without waiting</b><br>
+As for <tt><b>Power goes down</b></tt>, except that <i>init</i> does not wait for the process's completion.<p>
+
+<b>Power is restored</b><br>
+This process will be executed as soon as <i>init</i> is informormed that the power has been restored.<p>
+
+<b>Power fail</b><br>
+This process will be executed when <i>init</i> is told that the battery of the external UPS is almost empty and the power is failing (provided that the external UPS and the monitoring process are able to detect this condition).<p>
+
+<b>Ctrl-Alt-Del</b><br>
+The process will be executed when <i>init</i> receives the <i>SIGINT</i> signal.  This means that someone on the system console has pressed the CTRL-ALT-DEL key combination. Typically one wants to execute some sort of <tt>shutdown</tt> either to get into single-user level or to reboot the machine.<p>
+
+<b>Special key combination</b><br>
+The process will be executed when <i>init</i> receives a signal from the keyboard handler that a special key combination was pressed on the console keyboard.<p>
+
+<hr>

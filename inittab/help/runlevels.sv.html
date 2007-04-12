@@ -1,0 +1,10 @@
+<header>Körnivåer</header>
+
+Fältet får innehålla flera tecken, som motsvarar olika körnivåer. Exempelvis
+betyder <tt>123</tt> att processen ska köras igång vid körnivåerna 1, 2 och 3.
+
+<p>När körnivån för systemet ändras kommer alla processer som inte har
+definierats för den nya körnivån att slås ihjäl, först med <tt>SIGTERM</tt>
+och därefter med <tt>SIGKILL</tt>.
+
+<hr>

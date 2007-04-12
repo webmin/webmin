@@ -1,0 +1,711 @@
+md2k		Alps MD-1000
+md2k		Alps MD-1300
+md1xMono	Alps MD-1300 (black and white)
+md2k		Alps MD-1500
+md1xMono	Alps MD-1500 (black and white)
+md2k		Alps MD-2000
+md2k		Alps MD-4000
+md5k		Alps MD-5000
+md50Eco		Alps MD-5000
+md50Mono	Alps MD-5000 (black and white)
+epson	Anitech M24
+pxlmono		Any PCL6 black and white printer
+pxlcolor	Any PCL6 color printer
+AP21xx	Apollo 2100
+AP21xx	Apollo 2150
+AP2560	Apollo 2500
+AP2560	Apollo 2600
+AP2xxx	Apollo 656
+AP21xx	Apollo P-2000U
+cdj550	Apollo P-2200
+cdj550	Apollo P-2250
+AP2xxx	Apollo P2200
+AP2xxx	Apollo P2250
+appledmp  Apple Dot Matrix Printer
+appledmp  Apple Imagewriter
+iwlq    Apple Imagewriter LQ in 320 x 216 dpi mode
+iwhi    Apple Imagewriter in high-resolution mode
+iwlo    Apple Imagewriter in low-resolution mode
+bjc600   Apple StyleWriter 2x00
+hl1250	Brother DCP-1200
+lq850	Brother HJ-400
+hl7x0  Brother HL-1020
+hl1250	Brother HL-1030
+hl7x0  Brother HL-1040
+ljet4   Brother HL-1050
+hl1250	Brother HL-1050
+ljet4   Brother HL-1060
+hl1250	Brother HL-1060
+hl1250	Brother HL-1070
+ljet4   Brother HL-1070
+ljet3	Brother HL-10V
+ljet4	Brother HL-10h
+hl1250	Brother HL-1240
+laserjet  Brother HL-1240
+ljet4   Brother HL-1250
+hl1250	Brother HL-1250
+ljet4   Brother HL-1260
+hl1250	Brother HL-1270N
+ljet4   Brother HL-1270N
+hl1250	Brother HL-1440
+hl1250	Brother HL-1450
+hl1250	Brother HL-1470N
+hl1250	Brother HL-1650
+ljet4   Brother HL-1660e
+hl1250	Brother HL-1660e
+hl1250	Brother HL-1670N
+ljet4   Brother HL-2060
+hl1250	Brother HL-2060
+hl1250	Brother HL-2400CeN
+hl1250	Brother HL-2460
+hl1250	Brother HL-2460N
+hl1250	Brother HL-3400CN
+laserjet  Brother HL-4Ve
+ljet4   Brother HL-660
+ljet4   Brother HL-670
+hl7x0  Brother HL-720
+hl7x0  Brother HL-730
+ljet4   Brother HL-760
+ljetplus  Brother HL-8
+hl7x0  Brother HL-820
+ljet4   Brother HL-960
+epson	Brother MC-3000
+epsonc	Brother MFC 7150C
+epsonc	Brother MFC 9100C
+hl7x0  Brother MFC-8300
+ljet3	Brother MFC-8300
+laserjet  Brother MFC-8300
+m8510   C.Itoh M8510
+bj200	Canon BubbleJet BJ100
+bj10e   Canon BubbleJet BJ10e
+bj10v	Canon BubbleJet BJ10v
+bj10v	Canon BubbleJet BJ15v
+bj10e   Canon BubbleJet BJ20
+bj200   Canon BubbleJet BJ200
+bj200	Canon BubbleJet BJ30
+bj200	Canon BubbleJet BJ330
+bj10v	Canon BubbleJet BJ35v
+bj10e   Canon BubbleJet BJ5
+bj200   Canon BubbleJet BJC-1000 (black and white)
+bj200   Canon BubbleJet BJC-210 (black and white)
+bj200   Canon BubbleJet BJC-210SP (black and white)
+bj200   Canon BubbleJet BJC-240 (black and white)
+bj200   Canon BubbleJet BJC-250 (black and white)
+bj200   Canon BubbleJet BJC-4550 (black and white)
+bj200   Canon BubbleJet BJC-70 (black and white)
+bjc600	Canon Color BubbleJet BJC-1000
+bjc600	Canon Color BubbleJet BJC-2000
+bjc600	Canon Color BubbleJet BJC-2010
+bjc600   Canon Color BubbleJet BJC-210
+bjc600	Canon Color BubbleJet BJC-2100
+bjc600	Canon Color BubbleJet BJC-2110
+bjc600   Canon Color BubbleJet BJC-240
+bjc600	Canon Color BubbleJet BJC-250
+bjc600	Canon Color BubbleJet BJC-3000
+bjc600   Canon Color BubbleJet BJC-4000
+bjc600   Canon Color BubbleJet BJC-4100
+bjc600   Canon Color BubbleJet BJC-4200
+bjc600   Canon Color BubbleJet BJC-4300
+bjc600	Canon Color BubbleJet BJC-4310SP
+bjc600	Canon Color BubbleJet BJC-4400
+bjc600   Canon Color BubbleJet BJC-4550
+bjc800	Canon Color BubbleJet BJC-4550
+bjc600	Canon Color BubbleJet BJC-50
+bjc600	Canon Color BubbleJet BJC-55
+bjc600   Canon Color BubbleJet BJC-600
+bjc600   Canon Color BubbleJet BJC-610
+bjc600	Canon Color BubbleJet BJC-620
+bjc600   Canon Color BubbleJet BJC-70
+bjc800   Canon Color BubbleJet BJC-7000
+bjc800	Canon Color BubbleJet BJC-7004
+bjc800	Canon Color BubbleJet BJC-7100
+bjc600	Canon Color BubbleJet BJC-80
+bjc800   Canon Color BubbleJet BJC-800
+bjc600	Canon Color BubbleJet BJC-85
+bjc880j	Canon Color BubbleJet BJC-880J
+ljet4	Canon ImageRunner 330s
+ljet4	Canon LBP-1000
+lbp310	Canon LBP-310
+lbp320	Canon LBP-320 Pro
+lbp8	Canon LBP-4+
+ljet3	Canon LBP-430
+bjc600	Canon MultiPASS C2500
+bjc600	Canon MultiPASS C3000
+bjc600	Canon MultiPASS C3500
+bjc600	Canon MultiPASS C5000
+bjc600	Canon MultiPASS C5500
+bjc600 Canon S100
+bjc600 Canon S400
+lxm3200	Compaq IJ750
+lex5700	Compaq IJ900
+stp	Configurable Canon/Epson/HP/Lexmark Driver
+la50    DEC LA50
+ln03    DEC LN03
+alc2000	Epson ALC2000
+ap3250  Epson AP3250 printer
+alc8500	Epson AcuLaser C8500
+lp2000	Epson LP-7000
+lp8000  Epson LP-8000
+mj700v2c	Epson MachJet
+stcolor	Epson SQ 1170
+stcolor	Epson Stylus 800
+stcolor Epson Stylus Color
+mj6000c	Epson Stylus Color 1520
+mj500c	Epson Stylus Color 200
+mj6000c	Epson Stylus Color 800
+fmpr	Fujitsu	FMPR
+DJ9xxVIP	HP Business Inkjet 2000
+DJ9xxVIP	HP Business Inkjet 2230
+DJ9xxVIP	HP Business Inkjet 2250
+DJ9xxVIP	HP Business Inkjet 2280
+ljet4	HP Color 3P w/PCL5
+cdj850  HP DeskJet 1100C
+cdj850  HP DeskJet 1120
+DJ8xx	HP DeskJet 1120
+DJ8xx	HP DeskJet 1125
+DJ9xx	HP DeskJet 1220
+cdj850  HP DeskJet 1220
+cdj1600	HP DeskJet 1600
+cdj1600	HP DeskJet 1600CM
+cdj550	HP DeskJet 310
+cdj550	HP DeskJet 320
+cdeskjet  HP DeskJet 400 with 3 bit/pixel color
+cdeskjet  HP DeskJet 500C with 3 bit/pixel color
+cdeskjet  HP DeskJet 540C with 3 bit/pixel color
+cdj550  HP DeskJet 550C
+cdj550  HP DeskJet 560C
+cdeskjet  HP DeskJet 590C with 3 bit/pixel color
+DJ6xx	HP DeskJet 600
+cdj670	HP DeskJet 610
+DJ6xxP	HP DeskJet 610 Photo
+cdj550	HP DeskJet 610CL
+cdj550	HP DeskJet 612
+DJ6xxP	HP DeskJet 612 Photo
+DJ630	HP DeskJet 630
+DJ630	HP DeskJet 632
+DJ6xxP	HP DeskJet 640 Photo
+cdj550	HP DeskJet 648
+DJ6xxP	HP DeskJet 648 Photo
+DJ6xx	HP DeskJet 660
+cdj550  HP DeskJet 660C
+cdj550  HP DeskJet 660Cse
+DJ6xx	HP DeskJet 670
+cdj670	HP DeskJet 670
+DJ6xx	HP DeskJet 670TV
+cdj670	HP DeskJet 672
+DJ6xx	HP DeskJet 672
+DJ6xx	HP DeskJet 680
+cdj670	HP DeskJet 680
+cdj550  HP DeskJet 682
+DJ6xx	HP DeskJet 682
+cdj670	HP DeskJet 682
+cdj550  HP DeskJet 683
+cdj670	HP DeskJet 690
+DJ6xxP	HP DeskJet 690 Photo
+cdeskjet  HP DeskJet 690C with 3 bit/pixel color
+cdj550	HP DeskJet 692
+cdj670	HP DeskJet 692
+DJ6xxP	HP DeskJet 692 Photo
+DJ6xxP	HP DeskJet 693 Photo
+cdeskjet  HP DeskJet 693C with 3 bit/pixel color
+cdj550  HP DeskJet 694
+cdj670	HP DeskJet 694
+DJ6xxP	HP DeskJet 694 Photo
+cdj550  HP DeskJet 695
+DJ6xxP	HP DeskJet 695 Photo
+cdj670	HP DeskJet 697
+DJ6xxP	HP DeskJet 697 Photo
+DJ8xx	HP DeskJet 810
+cdj880	HP DeskJet 810
+cdj670	HP DeskJet 810
+DJ8xx	HP DeskJet 812
+cdj550	HP DeskJet 812
+cdj880	HP DeskJet 812
+cdj880	HP DeskJet 815
+DJ8xx	HP DeskJet 815
+DJ8xx	HP DeskJet 816
+DJ8x5	HP DeskJet 825
+DJ8xx	HP DeskJet 830
+DJ8xx	HP DeskJet 832
+DJ8xx	HP DeskJet 840
+cdj550	HP DeskJet 840
+cdj670	HP DeskJet 840
+cdj670	HP DeskJet 842
+cdj550	HP DeskJet 842
+DJ8xx	HP DeskJet 842
+DJ8xx	HP DeskJet 843
+DJ8x5	HP DeskJet 845
+cdj670	HP DeskJet 845
+cdj550  HP DeskJet 850
+cdj850  HP DeskJet 850
+cdj550  HP DeskJet 870Cse
+DJ8xx	HP DeskJet 880
+DJ8xx	HP DeskJet 882
+DJ8xx	HP DeskJet 895
+DJ9xx	HP DeskJet 916
+DJ9xx	HP DeskJet 920
+DJ9xx	HP DeskJet 930
+cdj670	HP DeskJet 930
+cdj550	HP DeskJet 930
+cdj550	HP DeskJet 932
+DJ9xx	HP DeskJet 932
+DJ9xx	HP DeskJet 940
+DJ9xx	HP DeskJet 948
+cdj550	HP DeskJet 950
+DJ9xx	HP DeskJet 950
+DJ9xx	HP DeskJet 952
+DJ9xx	HP DeskJet 955
+DJ9xxVIP	HP DeskJet 960
+cdj550	HP DeskJet 970
+DJ9xx	HP DeskJet 970
+DJ9xxVIP	HP DeskJet 980
+cdj550	HP DeskJet 990
+DJ9xxVIP	HP DeskJet 990
+DJ9xxVIP	HP DeskJet 995
+DJ9xxVIP	HP DeskJet cp 1160
+DJ9xxVIP	HP DeskJet cp 1700
+ljet4	HP LaserJet 1100
+lj4dithp	HP LaserJet 4LJ Pro
+lj5mono  HP LaserJet 5 (black and white)
+ljet3   HP LaserJet III* with Delta Row compression
+ljet3d  HP LaserJet IIID with duplex capability
+ljetplus  HP LaserJet Plus
+cdj550	HP OfficeJet 500
+cdj550	HP OfficeJet 600
+DJ9xx	HP OfficeJet G
+cdj550	HP OfficeJet G55
+cdj550	HP OfficeJet G85
+cdj550	HP OfficeJet G95
+DJ9xx	HP OfficeJet K
+DJ6xx	HP OfficeJet PSC300
+DJ6xx	HP OfficeJet PSC500
+DJ8xx	HP OfficeJet PSC500
+DJ6xx	HP OfficeJet PSC600
+DJ9xx	HP OfficeJet PSC700
+DJ6xx	HP OfficeJet PSC700
+DJ9xx	HP OfficeJet PSC900
+cdj550	HP OfficeJet Pro 1150
+cdj550	HP OfficeJet Pro 1170
+DJ8xx	HP OfficeJet Pro 1170
+DJ8xx	HP OfficeJet Pro 1175
+DJ8xx	HP OfficeJet R
+cdj1600	HP OfficeJet R45
+cdj550	HP OfficeJet R45
+cdj1600	HP OfficeJet R60
+cdj1600	HP OfficeJet R65
+cdj1600	HP OfficeJet R80
+DJ8xx	HP OfficeJet T
+cdj550	HP OfficeJet T45
+cdj550	HP OfficeJet T65
+DJ9xx	HP OfficeJet V
+cdj1600	HP PSC 500
+paintjet	HP PaintJet
+pj      HP PaintJet
+pjxl300  HP PaintJet 1200C color
+PS100	HP PhotoSmart 100
+DJ9xx	HP PhotoSmart 1000
+DJ9xx	HP PhotoSmart 1100
+DJ9xxVIP	HP PhotoSmart 1115
+DJ9xxVIP	HP PhotoSmart 1215
+DJ9xxVIP	HP PhotoSmart 1218
+DJ9xxVIP	HP PhotoSmart 1315
+cdj1600	HP PhotoSmart P100
+cdj1600	HP PhotoSmart P1000
+cdj550	HP PhotoSmart P1000
+cdj550	HP PhotoSmart P1100
+DJ6xx	HP e-printer e-20
+bj200	IBM Execjet 4072
+imagen  Imagen ImPress
+ljetplus  Kyocera F-3300
+ljet4	Kyocera FS-1000
+cdj550	Lexmark 3000
+lxm5700m	Lexmark 5700
+lex7000	Lexmark 7000
+lxm3200	Lexmark Z22
+ljet4	Minolta PagePro 1100
+necp6	NEC P20
+necp6   NEC P6
+npdl	NEC PC-PR2000
+ljet4	NEC SuperScript 1800
+oce9050  OCE 9050
+ml600	Okidata MicroLine 600CL
+okiibm  Okidata MicroLine IBM-compatible printers
+oki4w	Okidata OkiPage 4w
+cdj550	Okidata Okijet 2500
+ljet4	Okidata Okipage 10e
+atx23	Practical Automation ATX-23
+atx24	Practical Automation ATX-24
+atx38	Practical Automation ATX-38
+sparc   SPARCprinter
+cdj550	Xerox DocuPrint C6
+cdj550	Xerox DocuPrint C8
+ljet4	Xerox DocuPrint P1202
+cdj550  Xerox DocuPrint XJ6C
+cdj550	Xerox Document Homecentre
+cdj550  HP DeskJet 693
+cdj550	Xerox WorkCentre 450cp
+cdj670	HP PSC 500
+cdj850  HP DeskJet 672C
+cdj850  HP DeskJet 680
+cdj850  HP DeskJet 870
+cdj850  HP DeskJet 855
+cdj880	HP DeskJet 832
+ljet4	Samsung ML-4600
+ljet4	Epson EPL-5800
+hl1250	Brother MFC-9000
+hl7x0  Brother MFC-9050
+hl1250	Brother MFC-P2500
+lq850   Canon BJ300
+ljet4	Canon GP 335
+ljet4	Canon LBP-1260
+ljet4	Canon LBP-1760
+lbp320	Canon LBP-350
+ljet4	Canon LBP-430
+lbp8	Canon LBP-4U
+ljet3	Canon LBP-4sx
+lbp8	Canon LBP-8A1
+lbp8    Canon LBP-8II
+lips2p	Canon LIPS II+
+lips3   Canon LIPS III in English (CaPSL) mode
+lips4	Canon LIPS IV
+lips4v	Canon LIPS IVv
+laserjet  Citizen ProJet II
+cdjcolor  Citizen Projet IIc 
+lxm5700m	Compaq IJ900
+ljet3	DEC 1800
+djet500	DEC DECWriter 110i
+djet500	DEC DECWriter 500i
+dl2100	DEC DEClaser 2100
+la70    DEC LA70
+la70t   DEC LA70 with low-resolution text enhancement
+la75    DEC LA75
+la75plus DEC LA75plus
+declj250  DEC LJ250
+lj250   DEC LJ250 Companion
+ljet4	DEC LN17
+ljet3	Epson ActionLaser 1100
+ljet4	Epson ActionLaser C2000
+ljet4	Epson ActionLaser C2000PS
+ljet4	Epson ActionLaser C8500
+ljet4	Epson ActionLaser C8500PS
+laserjet  Epson ActionLaser II
+ljet3	Epson EPL-5200
+ljet3	Epson EPL-5200+
+ljet4	Epson EPL-5700
+epl5800	Epson EPL-5800
+ljet4	Epson EPL-5900
+laserjet  Epson EPL-7100
+epl2050	Epson EPL-N2050
+epl2050p	Epson EPL-N2050+
+epl2050	Epson EPL-N2050PS
+epl2050p	Epson EPL-N2050PS+
+epson	Epson L-1000
+lp2000	Epson LP-2000
+lp2000	Epson LP-3000
+lp2000	Epson LP-7000G
+epsonc	Epson LQ-24
+epsonc  Epson LQ-2550
+epsonc	Epson LQ-2550
+epson	Epson LQ-500
+epson	Epson LQ-570+
+lq850   Epson LQ850
+epson	Epson LX-1050
+mj700v2c	Epson Stylus
+st800   Epson Stylus 800
+st800   Epson Stylus Color
+mj500c	Epson Stylus Color 1500
+stcolor	Epson Stylus Color 1520
+stcolor	Epson Stylus Color 300
+mj8000c	Epson Stylus Color 3000
+stcolor	Epson Stylus Color 3000
+mj6000c	Epson Stylus Color 400
+stcolor Epson Stylus Color 400
+stcolor	Epson Stylus Color 440
+stcolor Epson Stylus Color 500
+stcolor Epson Stylus Color 600
+stcolor	Epson Stylus Color 640
+stcolor	Epson Stylus Color 670
+stcolor	Epson Stylus Color 740
+stcolor Epson Stylus Color 800
+stcolor	Epson Stylus Color I
+stcolor Epson Stylus Color II
+stcolor	Epson Stylus Color IIs
+mj500c	Epson Stylus Color IIs
+stcolor	Epson Stylus Color PRO
+stcolor	Epson Stylus Photo 750
+photoex	Epson Stylus PhotoEX
+stcolor	Epson Stylus Pro XL
+stcolor	Epson Stylus Scan 2500
+eps9mid  Epson-compatible 9-pin (intermediate resolution)
+eps9high  Epson-compatible 9-pin (triple resolution)
+epson   Epson-compatible dot matrix printers (9- or 24-pin)
+dl2100	Fujitsu	DL2100
+epsonc  Fujitsu 1200
+epsonc  Fujitsu 2400
+epsonc  Fujitsu 3400
+fmlbp	Fujitsu FMLBP2xx Page Printer
+laserjet  Fujitsu PrintPartner 10V
+ljet4	Fujitsu PrintPartner 10V
+ljet4	Fujitsu PrintPartner 16DV
+ljet4	Fujitsu PrintPartner 20W
+ljet3	Fujitsu PrintPartner 8000
+lp2563  HP 2563B
+chp2200		HP Business Inkjet 2200
+ljet4	HP Color LaserJet 4550
+cljet5	HP Color LaserJet 5
+ljet4	HP Color LaserJet 5000
+cljet5	HP Color LaserJet 5000
+cljet5	HP Color LaserJet 5M
+dnj650c  HP DesignJet 230
+dnj650c  HP DesignJet 350C
+dnj650c  HP DesignJet 650C
+dnj650c  HP DesignJet 750C Plus
+deskjet  HP DeskJet
+deskjet  HP DeskJet 200
+djet500	HP DeskJet 320
+deskjet  HP DeskJet 340C
+cdjmono  HP DeskJet 400 (black and white)
+cdjcolor  HP DeskJet 400 with 24 bit/pixel color
+djet500  HP DeskJet 500
+djet500  HP DeskJet 500 Portable
+cdjmono  HP DeskJet 500C (black and white)
+cdjcolor  HP DeskJet 500C with 24 bit/pixel color
+dj505j	HP DeskJet 505J Plus
+djet500	HP DeskJet 510
+cdjmono  HP DeskJet 510 (black and white)
+djet500	HP DeskJet 520
+cdjmono  HP DeskJet 520 (black and white)
+djet500	HP DeskJet 540C
+cdjmono  HP DeskJet 540C (black and white)
+cdjcolor  HP DeskJet 540C with 24 bit/pixel color
+djet500	HP DeskJet 550C
+djet500	HP DeskJet 600
+cdjmono  HP DeskJet 690C (black and white)
+cdjcolor  HP DeskJet 690C with 24 bit/pixel color
+cdjmono  HP DeskJet 693C (black and white)
+cdjcolor  HP DeskJet 693C with 24 bit/pixel color
+djet820c	HP DeskJet 820C
+cdj880	HP DeskJet 840
+cdj970	HP DeskJet 840
+cdj970	HP DeskJet 841
+cdj880	HP DeskJet 841
+cdj880	HP DeskJet 842
+cdj970	HP DeskJet 842
+cdj970	HP DeskJet 845
+cdj880	HP DeskJet 845
+cdj850  HP DeskJet 870Cxi
+cdj880	HP DeskJet 880
+cdj850  HP DeskJet 880
+cdj850  HP DeskJet 882
+cdj880	HP DeskJet 882
+cdj890	HP DeskJet 890
+cdj850  HP DeskJet 890C
+cdj890	HP DeskJet 895
+cdj880	HP DeskJet 895
+cdj880	HP DeskJet 932
+cdj970	HP DeskJet 940
+cdj970	HP DeskJet 950
+cdj970	HP DeskJet 952
+cdj880	HP DeskJet 955
+chp2200	HP DeskJet 960
+cdj970	HP DeskJet 960
+cdj970	HP DeskJet 970Cxi
+cdj970	HP DeskJet 980
+chp2200	HP DeskJet 990
+cdj970	HP DeskJet 990
+deskjet  HP DeskJet Plus
+laserjet  HP LaserJet
+ljet4	HP LaserJet 1100A
+ljet4	HP LaserJet 1200
+ljet4	HP LaserJet 1220
+laserjet  HP LaserJet 2
+ljet4	HP LaserJet 2100
+ljet4	HP LaserJet 2200
+lj3100sw	HP LaserJet 3100
+ljet4	HP LaserJet 3200
+ljet4	HP LaserJet 3200m
+ljet4	HP LaserJet 3200se
+ljet4	HP LaserJet 4
+ljet4	HP LaserJet 4 Plus
+lj4dith  HP LaserJet 4 with Floyd-Steinberg dithering
+ljet4	HP LaserJet 4050
+ljet4	HP LaserJet 4100
+ljet4	HP LaserJet 4L
+ljet4	HP LaserJet 4M
+ljet4	HP LaserJet 4ML
+ljet4	HP LaserJet 4P
+ljet4	HP LaserJet 4Si
+lj4dithp	HP LaserJet 4V
+ljet4	HP LaserJet 4V
+ljet4	HP LaserJet 5
+lj5gray  HP LaserJet 5 (gray-scale)
+ljet4	HP LaserJet 5L
+ljet4	HP LaserJet 5P
+ljet4	HP LaserJet 5Si
+ljet4	HP LaserJet 6
+lj5mono  HP LaserJet 6 (black and white)
+lj5gray  HP LaserJet 6 (gray-scale)
+ljet4	HP LaserJet 6L
+ljet4	HP LaserJet 6P
+ljet4	HP LaserJet 8150
+ljet4	HP LaserJet 9000
+ljet3d	HP LaserJet IIIP w/PS
+ljet2p  HP LaserJet IId/IIp/III* with TIFF compression
+djet500	HP OfficeJet
+djet500	HP OfficeJet 300
+djet500	HP OfficeJet 330
+djet500	HP OfficeJet 350
+djet500  HP OfficeJet 590
+cdj970	HP OfficeJet G95
+djet500	HP OfficeJet LX
+cdj850	HP OfficeJet Pro 1150
+deskjet  HP OfficeJet R45
+pjxl300  HP PaintJet 1600C color
+pjetxl	HP PaintJet XL
+pjxl    HP PaintJet XL color
+pjxl300  HP PaintJet XL300 color
+pjxl300	 HP PhotoSmart P100
+cdj970	HP PhtoSmart P1000
+cdj970	HP PhtoSmart P1100
+cdj970	HP PhtoSmart P1115
+cdj970	HP PhtoSmart P1215
+cdj970	HP PhtoSmart P1218
+cdj970	HP PhtoSmart P1315
+laserjet  IBM 4019
+ljet3	IBM 4029
+laserjet  IBM 4029
+ibmpro  IBM 9-pin Proprinter
+ljet4	IBM Infoprint 12
+jetp3852  IBM Jetprinter ink-jet (Model #3852)
+ljet4	IBM Page Printer 3112
+ibmpro	IBM Proprinter II
+ljet4	Infotec 4651 MF
+laserjet  Kyocera F-1010
+ljetplus  Kyocera F-800T
+fs600	Kyocera FS 600
+ljet4	Kyocera FS-1000+
+ljet4	Kyocera FS-1010
+ljet4	Kyocera FS-1800
+ljet4	Kyocera FS-1900
+ljet3	Kyocera FS-3500
+laserjet  Kyocera FS-3500
+ljet4	Kyocera FS-3750
+ljet4	Kyocera FS-3800
+ljet4	Kyocera FS-600
+ljet4	Kyocera FS-680
+ljet4	Kyocera FS-9100DN
+ljet4	Kyocera FS-9500DN
+ljetplus  Kyocera P-2000
+lex2050	Lexmark 2050
+lxm3200	Lexmark 3200
+lex3200	Lexmark 3200
+lx5000	Lexmark 5000
+lex5700	Lexmark 5700
+ljet4	Lexmark Optra E
+ljet4	Lexmark Optra E+
+ljetplus  Lexmark Winwriter 400
+lxm3200	Lexmark Z31
+lxm3200	Lexmark Z32
+lx5000	Lexmark Z51
+lx5000	Lexmark Z82
+ljet4	Minolta PagePro 6
+ljet4	Minolta PagePro 6e
+ljet4	Minolta PagePro 6ex
+ljet4	Minolta PagePro 8
+cp50    Mitsubishi CP50 color printer
+npdl	NEC MultiWriter
+necp6   NEC P6+
+necp6   NEC P60
+necp6	NEC P7
+necp6	NEC P7+
+necp6	NEC P70
+npdl	NEC PC-PR1000
+pr150	NEC PC-PR150
+pr201	NEC PC-PR201
+picty180	NEC PICTY180
+epsonc	NEC PinWriter P6
+epsonc	NEC PinWriter P6 plus
+ljet4	NEC SuperScript 660i
+ljetplus  NEC SuperScript 860
+md5k		Okidata DP 5000
+md50Eco		Okidata DP 5000
+md50Mono	Okidata DP 5000 (black and white)
+okiibm	Okidata ML 320
+okiibm	Okidata ML 321
+epson	Okidata ML 380
+oki182  Okidata MicroLine 182
+oki182  Okidata MicroLine 192+
+ml600	Okidata MicroLine 620CL
+ibmpro	Okidata Microline 192+
+laserjet  Okidata OL400
+ljet4	Okidata OL410e
+laserjet  Okidata OL610e/S
+laserjet  Okidata OL800
+ljet4	Okidata OL810ex
+oki4w	Okidata OkiPage 4w+ LED
+oki4w	Okidata OkiPage 6w
+oki4w	Okidata OkiPage 8w
+oki4w	Okidata OkiPage 8w Lite
+oki4w	Okidata OkiPage 8z
+oki4w	Okidata OkiPage OL400w
+ljet4	Okidata Okipage 10ex
+ljet4	Okidata Okipage 14ex
+ljet4	Okidata Okipage 6e
+ljet4	Okidata Okipage 6ex
+ljet4	Okidata Okipage 8p
+ljet4	Okidata Super 6e
+laserjet  Olivetti JP350S
+djet500	Olivetti JP450
+laserjet  Olivetti PG306
+laserjet  PCPI 1030
+epson	Panasonic KX-P1123
+epson	Panasonic KX-P1124
+epson	Panasonic KX-P1624
+epson	Panasonic KX-P2023
+epson	Panasonic KX-P2123
+epsonc	Panasonic KX-P2135
+ibmpro	Panasonic KX-P2150
+ljet3	Panasonic KX-P4450
+laserjet  Panasonic KX-P6150
+r4081   Ricoh 4081
+r4081   Ricoh 4801
+r4081   Ricoh 6000
+ljet4	Ricoh Aficio 220
+ljet4	Ricoh Aficio 401
+ljet4	Ricoh Aficio 700
+ljet4	Samsung ML-5000a
+ljet4	Samsung ML-6000/6100
+ljet4	Samsung ML-7000/7000P/7000N
+ljet4	Samsung ML-7050
+ljet4	Samsung ML-85
+ljet4	Samsung QL-5100A
+ljet4	Samsung QL-6050
+laserjet  Seiko SpeedJET 200
+ljet4	Sharp AR-161
+nwp533  Sony Microsystems NWP533
+jj100	Star JJ-100
+necp6	Star LC24-100
+epsonc	Star LC24-200
+epson	Star LC24-200
+epson	Star LC90
+laserjet  Star LaserPrinter 8
+epson	Star NL10
+sj48    StarJet 48
+ljet3	Tally MT908
+t4693d2  Tektronix 4693d (2 bits per color)
+t4693d4  Tektronix 4693d (4 bits per color)
+t4693d8  Tektronix 4693d (8 bits per color)
+tek4696  Tektronix 4695/4696 plotter
+ljet4	Xerox Able 1406
+ljet4	Xerox DocuPrint 4508
+cljet5	Xerox DocuPrint C20
+ljet4	Xerox DocuPrint N4512
+ljet4	Xerox DocuPrint N4512 PS
+ljet4	Xerox DocuPrint P8e
+lxm5700m	Xerox DocuPrint XJ8C
+ljet4	Xerox Document Centre 400
+lex5700	Xerox WorkCenter XK35c
+lxm5700m	Xerox WorkCentre 470cx
+xes     Xerox XES 2700
+xes     Xerox XES 3700
+xes     Xerox XES 4505

@@ -1,0 +1,20 @@
+<header>Plazo de espera de una respuesta tras enviar el &quot;.&quot; final</header>
+
+<center><tt>smtp_data_done_timeout</tt></center>
+<hr>
+
+Este parámetro especifica el tiempo en segundos que Postfix (como cliente
+SMTP) espera desde enviar el &quot;.&quot; final de un mensaje y recibir la
+respuesta del servidor.
+
+<p>
+
+Cuando no se recibe una respuesta dentro de plazo se registra un aviso
+advirtiendo que podrían entregarse varias copias del mensaje.
+
+<p>
+
+En caso de problemas el cliente NO prueba la siguiente dirección en la
+lista de intercambiadores de correo.
+
+<hr>

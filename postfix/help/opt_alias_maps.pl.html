@@ -1,0 +1,21 @@
+<header>Bazy aliasów wykorzystywane przez lokalny program dorêczaj±cy</header>
+
+<center><tt>alias_maps</tt></center>
+<hr>
+
+Ten parametr okre¶la listê baz aliasów wykorzystywanych przez lokalny
+program dorêczaj±cy. Domy¶lna lista zale¿y od systemu. W&nbsp;systemach
+z&nbsp;obs³ug± NIS domy¶lne jest przeszukiwanie najpierw lokalnej bazy
+aliasów, a nastêpnie bazy aliasów z&nbsp;NIS. Szczegó³y sk³adni znajdziesz
+w&nbsp;<a href=aliases>aliasach</a>. <p>
+
+Typowe konfiguracje to:
+
+<ul>
+<li> <tt>dbm:/etc/aliases</tt>
+<li> <tt>hash:/etc/postfix/aliases</tt>
+<li> <tt>hash:/etc/aliases, nis:mail.aliases</tt>
+</ul>
+
+<hr>
+

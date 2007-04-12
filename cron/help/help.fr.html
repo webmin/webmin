@@ -1,0 +1,73 @@
+<body bgcolor=#ffffff>
+<title>Commandes et tâches programmées</title>
+<center><img src="images/cron.gif"></center><br>
+<h2><i>Cette page d'aide est incomplète</i></h2>
+<hr>
+<h3>Introduction</h3>
+Ce module peut être utilisé pour configurer des commandes à exécuter
+automatiquement à des moments planifiés. Il utilise le daemon standard
+Unix <tt>cron</tt>, qui peut exécuter des commandes en tant que divers
+utilisateurs et à des minutes, heures, jours du mois, jours de la
+semaine et mois précis. Chaque tâche appartient à un utilisateur, et
+possède ses droits une fois lancée. <p>
+
+La page principale du module liste toutes les tâches connues, regroupées
+par utilisateur. Certains systèmes auront des tâches qui font partie du
+système, dont le propriétaire est <tt>root</tt> ou <tt>sys</tt>.
+Il peut aussi y avoir des tâches crées par des utilisateurs avec la
+commande <tt>crontab</tt>, et appartenant aux utilisateurs qui les ont
+crées. <p>
+
+<hr>
+<h3>Créer une nouvelle tâche</h3>
+Pour créer une nouvelle tâche, cliquez sur <tt>Créer une nouvelle
+tâche</tt> sous la liste des tâches existantes. Ceci affichera un
+formulaire pour saisir les paramètres suivants :
+	<ul>
+	<li><b>L'utilisateur propriétaire</b><br>
+	    Le login de l'utilisateur Unix propriétaire de la tâche. <p>
+	<li><b>Actif?</b><br>
+	    Si une tâche n'est pas active, elle apparaitra toujours dans
+	    la liste des tâches mais elle ne s'exécutera jamais. <p>
+	<li><b>Commande</b><br>
+	    La commande Unix à exécuter aux moments choisis. Ce peut être
+	    n'importe quelle commande que vous taperiez en ligne de
+	    commande. <p>
+	<li><b>Entrée de la commande</b><br>
+	    Si ce champ n'est pas vide, tout ce que vous aurez mis sera
+	    donné en entrée de la commande lors de son exécution. Par
+	    exemple, si la commande était <tt>mail foo@bar.com</tt> et
+	    l'entrée <tt>hello world</tt>, alors le texte en entrée serait
+	    envoyé à <tt>foo@bar.com</tt>. <p>
+	<li><b>Quand exécuter</b><br>
+	    Les moments où la commande est exécutée sont choisis en
+	    spécifiant les minutes, heures, jours du mois, jours de la
+	    semaine et mois de l'année pour lesquels s'exécuter. Pour
+	    chaque choix, vous pouvez choisir <tt>Tous</tt>, ou séléctionner
+	    les moments précis des exécutions. <p>
+
+	    Par exemple, si vous choisissez 5 pour l'heure et tuesday pour le
+	    jour de la semaine la commande serait exécutée chaque minute de
+	    5:00 à 5:59 les mardis. <br>
+	    Autre exemple, si vous mettez juste 30 pour les minutes et 14 pour
+	    les heures, la commande serait exécutée chaque jour à 14:30. <p>
+	</ul><p>
+Une fois le formulaire rempli, cliquez sur <tt>Créer</tt> en bas de la page.
+La nouvelle tâche prendra effet instantanément. <p>
+
+<hr>
+<h3>Edition d'une tâche existante</h3>
+Pour éditer une tâche existante, cliquez sur la commande dans la liste
+des tâches de la page principale. Le formulaire de modification est le
+même que celui pour la création, décrit plus haut. Une fois les
+modifications souhaitées faites, cliquez sur le bouton <tt>Sauvegarder</tt>
+en bas de page. <p>
+
+Pour effacer une tâche, cliquez sur <tt>Effacer</tt> en bas de page
+dans le formulaire d'édition. Cela effacera instantanément la tâche
+sans demander confirmation. <p>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Retourner au module</a><p>
+

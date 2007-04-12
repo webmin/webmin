@@ -1,0 +1,49 @@
+<header>Miscellaneous Options</header>
+
+<b>Startup DNS test addresses</b>: DNS servers that Squid will query to test whether DNS lookups are working correctly.
+<p>
+<b>SIGUSR1 logfile rotations</b>: Defaults to 10 or 0, dependent on system.  Specifies the number of logfile rotations to make when you type 'squid -k rotate'.  The default is 10, which will rotate with extensions 0 through 9.  Setting logfile_rotate to 0 will disable the rotation, but the logfiles are still closed and re-opened.  This will enable you to rename the logfiles yourself just before sending the rotate signal.
+<p>
+Note, the 'squid -k rotate' command normally sends a USR1 signal to the running squid process.  In certain situations (e.g. on Linux with Async I/O), USR1 is used for other purposes, so -k rotate uses another signal.  It is best to get in the habit of using 'squid -k rotate' instead of 'kill -USR1 <pid>'.
+<p>
+<b>Error messages text</b>: HTML text to include in error messages.  Make this a "mailto" URL to your admin address, or maybe just a link to your organizations Web page.
+<p>
+To include this in your error messages, you must rewrite the error template files (found in the "errors" directory).  Wherever you want the 'err_html_text' line to appear, insert a %L tag in the error template file.
+<p>
+<b>Per-client statistics</b>: If you want to disable collecting per-client statistics, then turn off client_db here.
+<p>
+<b>X-Forwarded-For header</b>: Default is 'on'.  If set, Squid will include your system's IP address or name in the HTTP requests it forwards.  By default it looks like in the HTTP requests it forwards.  By default it looks like this:
+<p>
+<center>X-Forwarded-For: 192.1.2.3</center>
+<p>
+If you disable this, it will appear as:
+<p>
+<center>X-Forwarded-For: unknown</center>
+<p>
+<b>Log ICP queries</b>: Default is 'on'. If set, ICP queries are logged to access.log. You may wish do disable this if your ICP load is VERY high to speed things up or to simplify log analysis.
+<p>
+<b>Minimum direct hops</b>: Default is 4.  If using the ICMP pinging stuff, do direct fetches for sites which are no more than this many hops away.
+<p>
+<b>Keep memory for future use</b>: Default is 'yes'.  If set, Squid will keep pools of allocated (but unused) memory available for future use.  If memory is a premium on your system and you believe your malloc library outperforms Squid routines, disable this.
+<p>
+<b>Amount of memory to keep</b>: Default is 'Unlimited'.  If set to a non-zero value, Squid will keep at most the specified limit of allocated (but unused) memory in memory pools. All free() requests that exceed this limit will be handled by your malloc library. Squid does not pre-allocate any memory, just safe-keeps objects that otherwise would be free()d. Thus, it is safe to set memory_pools_limit to a reasonably high value even if your configuration will use less memory.
+<p>
+If not set (default) or set to zero, Squid will keep all memory it can. That is, there will be no limit on the total amount of memory used for safe-keeping.
+<p>
+<b>Headers to pass through</b>: Default is 'All headers'.  This option replaces the old 'http_anonymizer' option with something that is much more configurable.  You may now specify exactly which headers are to be allowed, or which are to be removed from outgoing requests.
+<p>
+There are two methods of using this option.  You may either allow specific headers (thus denying all others), or you may deny specific headers (thus allowing all others). 
+<p>
+<b>Fake User-Agent</b>: Default is 'none'.  If you filter the User-Agent header with the <b>Headers to pass through</b> option it may cause some Web servers to refuse your request.  Use this to fake one up.
+<p>
+<b>HTTP Accel Host</b>: Default is 'none'.  If you want to run Squid as an httpd accelerator, set this to the address of the real HTTP server.
+<p>
+<b>HTTP Accel Port</b>: Default is 'none'.  In addition to setting the <b>HTTP Accel Host</b> you must set the real servers port, here, if you are using Squid as an accelerator.
+<p>
+<b>HTTP Accel With Proxy</b>: Default is 'off'.  Enable this if you would like for your Squid to act as a traditional proxy while also providing HTTP acceleration.  This option should also be enabled when using transparent proxying.
+<p>
+<b>HTTP Accel Uses Host Header</b>: Default is off.  HTTP/1.1 requests include a Host: header which is basically the hostname from the URL.  Squid can be an accelerator for different HTTP servers by looking at this header.  However, Squid does NOT check the value of the Host header, so it opens a big security hole.  We recommend that this option remain disabled unless you are sure of what you are doing.
+<p>
+However, you will need to enable this option if you run Squid as a transparent proxy.  Otherwise, virtual servers which require the Host: header will not be properly cached.
+
+<hr>

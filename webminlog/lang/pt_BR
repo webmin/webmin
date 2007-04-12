@@ -1,0 +1,59 @@
+index_title=Log de Ações do Webmin
+index_header=Procurar no log do Webmin por ações ..
+index_uall=Por qualquer usuário
+index_user=Por usuário
+index_nuser=Por qualquer usuário exceto
+index_mall=Em qualquer módulo
+index_module=No módulo
+index_tall=A qualquer hora
+index_today=Por hoje somente
+index_time=Entre $1 e $2
+index_search=Procurar
+index_return=formulário de procura
+index_nolog=<b>Nota</b> - <a href='$1'>Log no Webmin</a> não está habilitado no momento, portanto é provável que as buscas no log de ações não produzam resultado algum.
+index_nologfiles=<b>Nota</b> - <a href='$1'>Log de mudanças em arquivos</a> não está habilitado no momento, portanto é provável que os detalhes de ações logadas não incluam arquivos modificados ou comandos executados.
+
+search_title=Resultados da Busca
+search_date=Data
+search_time=Hora
+search_user=Usuário
+search_host=Endereço do cliente
+search_module=Módulo
+search_action=Ação
+search_none=Nenhuma ação que atenda a seus critérios de busca foiencontrada.
+search_return=resultados de busca
+search_sid=Ações por usuário $1 em sessão $2
+search_critall=Todas as ações logadas
+search_crit=Ações logadas
+search_critu=por usuário $1
+search_critnu=por qualquer um menos o usuário $1
+search_critm=a partir do módulo $1
+search_critt=entre $1 e $2
+search_critt2=em $1
+search_config=Configuração de módulo modificada
+search_etime=Hora de início ou final inválida
+search_err=Busca falhou
+
+view_title=Detalhes de Ações
+view_header=Detalhes de ações logadas $1
+view_action=Descrição
+view_module=Módulo Webmin
+view_script=Gerado por script
+view_user=Usuário Webmin
+view_ip=IP ou hostname do cliente
+view_sid=ID de Sessão
+view_time=Data e hora
+view_nofiles=Nenhuma mudança em arquivos de configurações foram logadas para esta ação
+view_type_create=Arquivo $1 criado
+view_type_modify=Arquivo $1 modificado
+view_type_delete=Arquivo $1 removido
+view_type_exec=Comando executado
+view_type_sql=Procedimento SQL executado na base de dados $1
+view_type_kill=Enviado sinal $1 para o PID $2
+view_type_symlink=Criado link simbólico $1 -&gt; $2
+view_type_unsymlink=Removido link simbólico $1 -&gt; $2
+view_type_resymlink=Modificado link simbólico $1 -&gt; $2
+view_type_mkdir=Diretório $1 criado
+view_type_rmdir=Diretório $1 removido
+view_type_rename=Renomeado $1 para $2
+

@@ -1,0 +1,6 @@
+line1=組態選項,11
+install=安裝GRUB在磁碟/分割區,0
+line2=系統組態,11
+menu_file=GRUB目錄組態檔,0
+grub_path=grub執行路徑,0
+device_map=裝置映射檔,3,從GRUB取得

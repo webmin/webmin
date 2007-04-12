@@ -1,0 +1,4 @@
+id=samba
+type=samba
+desc=Samba Servers
+depends=samba

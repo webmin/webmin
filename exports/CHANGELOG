@@ -1,0 +1,5 @@
+---- Changes since 1.150 ----
+Added an option to determine if NFS writes to an export are immediately written to disk or not.
+Added support for NFS version 4, thanks to code contributed by Frederic Jolly.
+---- Changes since 1.270 ----
+Added checkboxes and a button for deleting, disabling and enabling multiple exports at once.

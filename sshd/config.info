@@ -1,0 +1,10 @@
+line2=System configuration,11
+sshd_path=Full path to sshd program,0
+sshd_config=Full path to sshd config file,0
+client_config=Full path to ssh client config file,0
+pid_file=Full path to sshd PID file,3,None
+start_cmd=Command to start sshd,3,Just run server
+restart_cmd=Command to apply sshd configuration,3,Just send HUP signal
+stop_cmd=Command to stop sshd,3,Just kill process
+keygen_path=Full path to ssh-keygen program,0
+sshd_version=SSH server version,3,Detect automatically

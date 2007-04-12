@@ -1,0 +1,82 @@
+index_title=부팅 및 종료
+index_add=새 부팅 또는 종료 동작 작성
+index_reboot=시스템 재부팅
+index_rebootmsg=시스템을 즉시 재부팅하려면 이 버튼을 누르십시오. 그러면 현재 로그인한 모든 사용자의 연결이 끊긴 후 모든 서비스가 다시 시작됩니다.
+index_shutdown=시스템 종료
+index_shutdownmsg=시스템을 즉시 종료하려면 이 버튼을 누르십시오. 그러면 모든 서비스가 중지되고 모든 사용자의 연결이 끊긴 후 시스템 전원이 꺼집니다(하드웨어에서 지원하는 경우).
+index_script=아래의 스크립트 $1이(가) 부팅 시에 실행됩니다. 시스템이 재부팅될 때 데본이나 서버를 다시 시작하는 특정 명령을 추가할 수 있습니다.
+index_return=부팅 및 종료 동작
+index_action=동작
+index_desc=설명
+index_boot=부팅 때 시작합니까?
+index_status=지금 시작합니까?
+
+edit_title=동작 편집
+create_title=동작 작성
+edit_ecannot=부팅 동작을 편집할 수 없습니다
+edit_details=동작 세부 정보
+edit_name=이름
+edit_desc=설명
+edit_startmsg=부팅 메시지
+edit_stopmsg=종료 메시지
+edit_start=부팅 명령
+edit_stop=종료 명령
+edit_script=동작 스크립트
+edit_boot=부팅 시 시작합니까?
+edit_badS=이 동작이 올바르게 작성되지 않았으므로 실행 수준 $1에서만 시작됩니다.
+edit_badK=이 동작이 올바르게 작성되지 않았으므로 실행 수준 $1에서만 중지됩니다.
+edit_fix=다른 실행 수준에서도 이 동작을 사용할 수 있게 하려면 여기를 누르십시오
+edit_levels=시작 및 중지할 실행 수준
+edit_rl=실행 수준 $1
+edit_startat=시작
+edit_stopat=중지
+edit_startnow=지금 시작
+edit_stopnow=지금 중지
+edit_restartnow=지금 다시 시작
+edit_condrestartnow=필요할 때 다시 시작
+edit_reloadnow=지금 다시 로드
+edit_statusnow=상태 표시
+edit_return=동작
+edit_status=지금 시작합니까?
+edit_unknown=알 수 없음
+
+save_err=동작을 저장하지 못했습니다
+save_ecannot=부팅 동작을 편집할 수 없습니다
+save_ealready=동작 '$1'이 이미 있습니다
+save_ewrite=$1에 쓰지 못했습니다: $2
+
+ss_ecannot=부팅 동작을 시작하거나 중지할 수 없습니다
+ss_start=동작 시작
+ss_stop=동작 중지
+ss_restart=동작 다시 시작
+ss_reload=동작 다시 로드
+ss_status=동작 상태
+ss_exec=$1 실행 중..
+
+shutdown_ecannot=시스템을 종료할 수 없습니다
+shutdown_title=종료
+shutdown_rusure=명령 $1을(를) 사용하여 시스템을 종료하시겠습니까?
+shutdown_ok=시스템 종료
+shutdown_exec=명령 $1을(를) 사용하여 종료 중..
+
+reboot_ecannot=시스템을 재부팅할 수 없습니다
+reboot_title=재부팅
+reboot_rusure=명령 $1을(를) 사용하여 시스템을 재부팅하시겠습니까?
+reboot_ok=시스템 재부팅
+reboot_exec=명령 $1을(를) 사용하여 재부팅 중..
+
+acl_script=부팅 스크립트를 편집할 수 있습니까?
+acl_actions=동작을 편집, 작성 및 삭제할 수 있습니까?
+acl_reboot=시스템을 재부팅할 수 있습니까?
+acl_shutdown=시스템을 종료할 수 있습니까?
+
+log_rename=동작 이름이 $1에서 $2(으)로 바뀜
+log_modify=동작 $1 수정됨
+log_create=동작 $1 작성됨
+log_delete=동작 $1 삭제됨
+log_start=부팅 동작 $1 시작됨
+log_stop=종료 동작 $1 중지됨
+log_reboot=시스템 재부팅됨
+log_shutdown=시스템 종료됨
+log_local=부팅 스크립트 수정됨
+log_bootup=$1의 부팅 동작 변경됨

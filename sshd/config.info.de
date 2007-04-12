@@ -1,0 +1,6 @@
+sshd_path=Vollst&auml;ndiger Pfad zum sshd-Programm,0
+sshd_config=Vollst&auml;ndiger Pfad zur sshd-Konfigurationsdatei,0
+client_config=Vollst&auml;ndiger Pfad zur ssh-Client Konfigurationsdatei,0
+pid_file=Vollst&auml;ndiger Pfad zur sshd PID-Datei,0
+start_cmd=Befehl zum Starten des sshd,3,Nur Server starten
+keygen_path=Vollst&auml;ndiger Pfad zum ssh-keygen Programm,0

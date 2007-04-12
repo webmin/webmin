@@ -1,0 +1,410 @@
+index_title=Sendmail 組態
+index_econfig=Sendmail 組態檔案 $1 不存在. 可能是您的<a href='$2'>模組組態</a>有錯誤.
+index_eversion=您的 Sendmail 組態檔似乎不是最新版 Sendmail 所使用的. Webmin 只支援第 8.8 板與以上的 Sendmail.
+index_epath=Sendmail 執行檔 $1 沒有安裝在您的系統上. 可能是您的<a href='$2'>模組組態</a>有錯誤, 或者是 Sendmail 尚未被安裝.
+index_return=Sendmail 組態
+index_stop=停止 Sendmail
+index_stopmsg=按下這個按鈕以停止 Sendmail 的程序. 這將會停止遞送所有給本地端使用者的郵件, 並且防止客戶端利用這個郵件伺服器遞送郵件.
+index_start=啟動 Sendmail
+index_startmsg=按下這個按鈕以經由指令 $1 啟動 Sendmail 的程序. 除非完成這個動作, 郵件將無法遞送給本地端的使用者, 而且客戶端也不能經由這個郵件伺服器遞送郵件.
+
+opts_title=Sendmail 選項
+opts_ecannot=您不被允許編輯 Sendmail 選項
+opts_ds=經由主機送出外送的郵件
+opts_direct=直接遞送
+opts_dr=轉送不合格的使用者名稱到主機
+opts_dh=為本地端使用者轉送郵件到主機
+opts_local=本地端遞送
+opts_queuela=送出郵件時最大的平均負載限制
+opts_refusela=接收郵件時最大的平均負載限制
+opts_maxch=最大子程序數目
+opts_throttle=每秒中最大連結數
+opts_minqueueage=重試遞送的最小間隔時間
+opts_runsize=最大佇列大小
+opts_queuereturn=放棄前等待時間
+opts_queuewarn=送出警告前等待時間
+opts_queue=郵件佇列目錄
+opts_postmaster=送出錯誤訊息給
+opts_forward=使用者自動轉寄設定檔
+opts_minfree=最小保留磁碟空間
+opts_maxmessage=最大郵件大小
+opts_loglevel=紀錄等級
+opts_mimebounce=是否彈回 MIME 編碼郵件?
+opts_default=預設值
+opts_save=儲存並套用
+opts_err=無法儲存選項
+opts_ehost='$1' 不是一個有效的主機或網域名稱
+opts_einvalid='$1' 不是一個有效的數值給 '$2'
+opts_blame=檔案安全選項
+opts_selected=選擇的...
+
+aliases_title=郵件別名
+aliases_ecannot=您不被允許編輯別名
+aliases_addr=郵件位址
+aliases_to=別名為...
+aliases_type1=郵件位址 $1
+aliases_type2=郵件位址在檔案 $1
+aliases_type3=檔案 $1
+aliases_type4=程式 $1
+aliases_type5=自動回覆檔案 $1
+aliases_none=無
+aliases_return=別名列表
+
+aform_type0=無
+aform_type1=電子郵件位址
+aform_type2=郵件位址在檔案
+aform_type3=寫入檔案
+aform_type4=送給程式
+aform_type5=自動從檔案回覆
+aform_edit=編輯別名
+aform_create=建立別名
+aform_name=郵件位址
+aform_enabled=是否使用?
+aform_val=別名為
+
+asave_err=無法儲存別名
+asave_ecannot2=您不被允許編輯別名
+asave_ecannot=您不被允許編輯這個別名
+asave_emax=您不被允許建立超過 $1 個別名
+asave_eaddr='$1' 不是一個有效的郵件位址
+asave_ealready=別名 '$1' 已經存在
+asave_ematch=您只被允許建立別名符合 '$1'
+asave_etype=您不能建立這種類別的別名
+asave_etype1='$1' 不是一個有效的電子郵件位址
+asave_etype2=郵件位址 '$1' 不存在
+asave_etype3='$1' 不是一個有效的檔案名稱
+asave_etype4='$1' 不是一個程式或不存在
+asave_etype5=自動回覆檔案 '$1' 不存在
+asave_etype4none=沒有提供程式
+
+cws_title=本地端網域
+cws_ecannot=您不被允許編輯本地端網域
+cws_domains=由這個伺服器處理的網域
+cws_desc1=除了遞送給 $1 的郵件之外, Sendmail 只接受來自本地端的或是左邊文字方塊中列出的主機與網域之郵件遞送. 如果您希望您的郵件伺服器能處理多個電子郵件網域, 您必須將之列入這個表單之中.
+cws_desc2=注意: 僅在這個列表中列出網域通常不足以正確處理郵件. 您必須確定該網域有 DNS 紀錄存在, 且指向這個系統.
+cws_err=無法儲存本地端網域
+cws_ehost='$1' 不是一個有效的主機或網域名稱
+cws_eip='$1' 是一個 IP 位址, 不是網域名稱
+
+masq_title=網域偽裝
+masq_ecannot=您不被允許組態網域偽裝
+masq_domain=偽裝成網域
+masq_domains=要被偽裝的網域
+masq_desc1=如果上面有給定網域, Sendmail 將會變更所有外送郵件的 <tt>來源 (From)</tt> 欄位, 郵件將被視為從該網域送出. 而且任何來自左邊列表網域並經過您的系統的郵件也會被相同的處理. 注意: 網域偽裝的定義可以被任何特定使用者使用<a href='$1'>外送郵件位址</a>功能而壓制.
+masq_desc2=當您希望您的電子郵件看來是從您的網域發出而不是從這個主機發出時, 或者您的系統是作為多個郵件主機的集散器使用時, 這個功能將非常有用.
+masq_err=無法儲存網域偽裝
+masq_edomain='$1' 不是一個有效的要被偽裝網域名稱
+masq_ehost='$1' 不是一個有效的主機或網域名稱
+masq_eip='$1' 是一個 IP 位址, 不是網域名稱
+
+trusts_title=信任的使用者
+trusts_ecannot=您不被允許編輯信任的使用者
+trusts_users=Sendmail 信任的本地端使用者
+trusts_desc=當使用者嘗試要送出電子郵件時, Sendmail 只允許這個列表中的使用者使用一個不同的 <tt>來源 (From)</tt> 欄位. 這將可以避免使用者利用您的系統發出含有偽造 <tt>來源 (From)</tt> 欄位的偽造電子郵件.
+trusts_err=無法儲存信任的使用者
+trusts_euser='$1' 不是一個有效的使用者
+
+virtusers_title=郵件位址對應
+virtusers_ecannot=您不被允許編輯郵件位址對應
+virtusers_edirective=您的 Sendmail 組態檔沒有包含必要的郵件位址對應命令.
+virtusers_efile=文字檔案 $1 來自郵件位址對應資料庫 $2 不存在. 您可能需要變更<a href='$3'>模組組態</a>並使用正確的路徑.
+virtusers_desc1=郵件位址對應相似於<a href='$1'>郵件別名</a>, 但更能配合多重電子郵件網域的處理. 它們可以用在從連續的網域重導向郵件到一個郵件位址, 處理在不同網域上的相同使用者名稱, 或是將全部的郵件由一個網域對應其他的.
+virtusers_desc2=注意: 您至少必須輸入一個<a href='$1'>本地端網域</a>表格給任何使用這個網域對應的網域, 而且必須要將每一個網域的 DNS MX 紀錄指向您的系統.
+virtusers_for=郵遞給...
+virtusers_to=送到...
+virtusers_error=錯誤 $1
+virtusers_domain=網域 $1
+virtusers_address=郵件位址 $1
+virtusers_return=郵件位址對應列表
+
+vform_edit=編輯郵件位址對應
+vform_create=建立郵件位址對應
+vform_for=郵遞給
+vform_address=位址
+vform_domain=網域名稱
+vform_to=送到
+vform_msg=訊息
+vform_error=回應錯誤
+vform_end=移到結尾
+vform_ecannot=您不被允許編輯這個郵件位址對應
+
+vsave_ecannot=您不被允序編輯郵件位址對應
+vsave_ecannot2=您不被允許編輯這個郵件位址對應
+vsave_emax=您不被允許建立超過 $1 個郵件位址對應
+vsave_err=無法儲存郵件位址對應
+vsave_efrom='$1' 不是一個有效的郵件位址
+vsave_efromdup=給 '$1' 的郵件位址對應已經被定義
+vsave_edom='$1' 不是一個有效的網域名稱
+vsave_edomdup=給 '$1' 的郵件位址對應已經被定義
+vsave_ematch=來源郵件位址不符合 '$1'
+vsave_ecannot3=您不被允許建立對應到郵件位址
+vsave_eaddr='$1' 不是一個有效的位址
+vsave_ecannot4=您不被允許建立對應到網域
+vsave_edomdom=只有網域可以被對應到另一個網域
+vsave_ecannot5=您不被允許建立回應錯誤的對應
+
+mailers_title=網域路由
+mailers_cannot=您不被允許編輯網域路由
+mailers_edirective=您的 Sendmail 組態檔沒有包含必要的網域路由命令.
+mailers_efile=文字檔案 $1 來自網域路由資料庫 $2 不存在. 您可能需要變更<a href='$3'>模組組態</a>並使用正確的路徑.
+mailers_desc1=網域路由提供一個方式以定義郵寄到某些網域時所用的特殊傳輸方式. 如果您的系統是其他不能存取外部網路的伺服器的閘道器, 或是您要強制所有給特定網域的郵件必須要經過某些伺服器時, 這個功能將非常有用.
+mailers_desc2=您<b>不</b>應該在<a href='$1'>本地端網域</a>中定義要設定路由的網域. 然而您應該要將把您的系統當作閘道器的系統的 DNS MX 紀錄指向您的系統.
+mailers_for=郵遞給...
+mailers_delivery=寄送
+mailers_to=送給...
+mailers_return=網域路由列表
+
+mform_edit=編輯路由
+mform_create=建立路由
+mform_for=郵遞給
+mform_host=主機
+mform_domain=網域名稱
+mform_delivery=寄送
+mform_to=送給
+mform_ignore=對於 SMTP 寄送忽略 MX 紀錄
+mform_smtp=SMTP
+mform_esmtp=延伸的 SMTP
+mform_smtp8=8 位元 SMTP
+mform_relay=SMTP 中繼
+mform_local=本地端使用者
+mform_prog=送給程式
+mform_uucp=UUCp
+mform_usenet=張貼到 USENET
+mform_fax=HylaFAX
+mform_pop=POP3
+mform_procmail=Procmail
+mform_mail11=DECnet mail11
+mform_error=錯誤
+mform_ecannot=您不被允許編輯網域路由
+
+msave_ecannot=您不被允許編輯網域路由
+msave_err=無法儲存網域路由
+msave_edomain='$1' 不是一個有效的主機或網域名稱
+msave_edup=給 '$1' 的網域路由已經被定義
+
+generics_title=外送郵件位址
+generics_cannot=您不被允許編輯外送郵件位址
+generics_econfig=您的 Sendmail 組態檔沒有包含必要的外送郵件位址命令.
+generics_efile=文字檔案 $1 來自外送郵件位址資料庫 $2 不存在. 您可能需要變更<a href='$3'>模組組態</a>並使用正確的路徑.
+generics_desc1=外送郵件位址對應允許您變更由您的系統外送的郵件, 或經由您系統的郵件的的 <tt>來源 (From)</tt> 欄位. 當您在一個系統上使用多個網域或希望某些使用者看起來像是使用不同網域時, 這個功能將非常有用.
+generics_desc2=注意: 您至少必須輸入一個<a href='$1'>外送郵件網域</a>表格給任何使用這個外送郵件位址的網域. 此外, 外送郵件位址將不會影響遞送到本地端使用者的郵件.
+generics_from=郵遞自...
+generics_to=改變成...
+generics_return=郵件位址對應列表
+
+gform_edit=編輯郵件位址對應
+gform_create=建立郵件位址對應
+gform_from=郵遞自
+gform_to=改變成
+gform_ecannot=您不被允許編輯這個外送郵件位址
+
+gsave_ecannot=您不被允許編輯外送郵件位址
+gsave_ecannot2=您不被允許編輯這個外送郵件位址
+gsave_err=無法儲存外送郵件位址
+gsave_efrom='$1' 不是一個有效的來源郵件位址
+gsave_ematch=來源郵件位址不符合 '$1'
+gsave_eto='$1' 不是一個有效的新郵件位址
+
+cgs_title=外送郵件網域
+cgs_ecannot=您不被允許編輯外送郵件網域
+cgs_header=外送郵件網域
+cgs_desc=除了由本地端使用者所遞送的郵件外, Sendmail 只會處理左邊文字方塊中列出的主機與網域之<a href='$1'>外送郵件位址</a>. 所以要使外送郵件位址能正常運作, 該網域必須列在這個表單之中.
+cgs_err=無法儲存外送郵件網域
+cgs_ehost='$1' 不是一個有效的主機或網域名稱
+cgs_eip='$1' 是一個 IP 位址, 不是一個網域名稱
+
+domains_title=網域對應
+domains_ecannot=您不被允許編輯網域對應
+domains_econfig=您的 Sendmail 組態檔沒有包含必要的網域對應命令.
+domains_efile=文字檔案 $1 來自網域對應資料庫 $2 不存在. 您可能需要變更<a href='$3'>模組組態</a>並使用正確的路徑.
+domains_desc=網頁對應將變更由您的系統所送出的郵件, 經由您的系統中繼的郵件, 或送到您系懂上使用者的郵件之 <tt>目標 (To)</tt> 欄位. 對於中繼郵件或給本地端使用者的郵件之 <tt>來源 (From)</tt> 欄為也會被變更. 如果您要變更網域, 而且是將所有舊的網域名稱變更成新的網域名稱時, 這個功能將非常有用.
+domains_from=來源網域...
+domains_to=目標網域...
+domains_return=網域對應列表
+
+dform_edit=編輯郵件位址對應
+dform_create=建立郵件位址對應
+dform_from=來源網域
+dform_to=目標網域
+dform_ecannot=您不被允許編輯郵件位址對應
+
+dsave_ecannot=您不被允許編輯郵件位址對應
+dsave_err=無法儲存郵件位址對應
+dsave_edomain='$1' 不是一個有效的網域名稱
+
+access_title=垃圾郵件控制
+access_ecannot=您不被允許組態垃圾郵件控制
+access_econfig=您的 Sendmail 組態檔沒有包含必要的垃圾郵件控制命令.
+access_efile=文字檔案 $1 來自垃圾郵件控制資料庫 $2 不存在. 您可能需要變更<a href='$3'>模組組態</a>並使用正確的路徑.
+access_desc1=Sendmail 的垃圾郵件控制功能允許您保護您的使用者拒收特定來源的郵件, 並且防止其他人利用您的系統中繼寄發垃圾郵件. 預設的狀況是允許任何郵件來源, 但是防止任何使用端或提它郵件伺服器中繼寄送郵件. 一般而言, 您可以藉由增加垃圾郵件控制規則以拒絕特定的郵件來源, 並且設定可以使用您的系統以中繼寄送郵件的其他機器之規則.
+access_desc2=注意: Sendmaill 預設允許在您系統上執行的客戶端程式經由 SMTP 中繼寄出郵件到任何目標. 所以沒有必要增加 <tt>127.0.0</tt> 這個網路位址到接受中繼郵件寄送的列表中.
+access_source=來源...
+access_action=動作...
+access_return=垃圾郵件控制列表
+
+sform_edit=編輯垃圾郵件控制規則
+sform_create=建立垃圾郵件控制規則
+sform_source=郵件來源
+sform_type0=電子郵件位址
+sform_type1=網路位址
+sform_type2=使用者名稱
+sform_type3=網域名稱
+sform_action=動作
+sform_ok=接受
+sform_relay=允許中繼郵件
+sform_reject=拒絕
+sform_discard=安靜地丟棄
+sform_err=錯誤碼
+sform_msg=訊息
+sform_ecannot=您不被允許組態垃圾郵件控制
+
+ssave_ecannot=您不被允許組態垃圾郵件控制
+ssave_err=無法儲存垃圾郵件控制規則
+ssave_etype0='$1' 不是一個有效的郵件位址
+ssave_etype1='$1' 不是一個有效的網路位址
+ssave_etype2='$1' 不是一個有效的使用者名稱
+ssave_etype3='$1' 不是一個有效的網域名稱
+ssave_ecode='$1' 不是一個有效的 SMTP 錯誤碼
+
+relay_title=中繼網域
+relay_ecannot=您不被允許編輯中繼網域
+relay_eversion=只有 Sendmail 版本 8.9 與以上支援中繼網域功能.
+relay_domains=允許中繼寄送的網域
+relay_desc1=除非是由<a href='$1'>垃圾郵件控制</a>規則所允許的狀況, Sendmail 只允許列在左邊文字方塊中的網域可以使用中繼郵件. 所有不是給本地端使用者或是不在列表中網域的郵件都會被拒絕.
+relay_desc2=如果您的系統是當作多個不直接與外界網路連接的網域之閘道器使用 (使用了<a href='$1'>網域路由</a>功能), 則所有那些網域都應該要被列在這兒.
+relay_err=無法儲存中繼網域
+relay_edomain='$1' 不是一個有效的網域名稱
+
+mailq_title=郵件佇列
+mailq_ecannot=您不被允許檢視郵件佇列
+mailq_id=郵件編號
+mailq_sent=郵件時間
+mailq_from=來源
+mailq_to=目標
+mailq_status=狀態
+mailq_unknown=未知的
+mailq_sending=遞送中
+mailq_dmsg=要從郵件佇列中檢視郵件訊息, 請在上面的列表中按下郵件的編號.
+mailq_force=要強制立即送出佇列中的郵件, 請<a href='$1'>按下這兒</a>.
+mailq_none=沒有在佇列中等待寄送的郵件
+mailq_return=郵件佇列
+
+flushq_title=清理佇列
+flushq_desc=以命令 $1 強制嘗試遞送郵件中...
+
+delq_err=無法移除訊息
+delq_ecannot=您不被允許清理郵件佇列
+delq_locked=目前正在送出因而被鎖定
+
+boxes_title=使用者信箱
+boxes_user=使用者名稱
+boxes_size=信箱大小
+boxes_none=沒有郵件
+boxes_return=信箱
+boxes_ecannot=您不被允許讀取電子郵件
+
+mail_title=使用者電子郵件
+mail_from=寄件人
+mail_date=日期
+mail_subject=主題
+mail_to=收件人
+mail_cc=副本抄送
+mail_bcc=隱藏副本
+mail_pri=優先值
+mail_highest=最高
+mail_high=高
+mail_normal=一般
+mail_low=低
+mail_lowest=最低
+mail_for=在 $1
+mail_size=大小
+mail_delete=刪除選擇的郵件
+mail_compose=寫作新郵件
+mail_return=使用者電子郵件
+mail_pos=郵件 $1 到 $2 共 $3
+mail_none=信箱中沒有郵件
+mail_ecannot=您不被允許讀取這個使用者的郵件
+mail_all=選擇全部
+mail_invert=反向選取
+mail_search=找尋郵件, 其中
+mail_body=本體
+mail_match=符合
+mail_ok=搜尋
+
+view_title=讀取電子郵件
+view_desc=郵件 $1 在 $2
+view_qdesc=佇列中的郵件 $1
+view_headers=郵件標頭
+view_attach=附件夾帶
+view_reply=回覆
+view_reply2=回覆給全部
+view_forward=轉寄
+view_delete=刪除
+view_ecannot=您不被允許讀取這個使用者的郵件
+
+compose_title=寫作電子郵件
+reply_title=回覆到電子郵件
+forward_title=轉寄到電子郵件
+reply_headers=郵件標頭
+reply_attach=轉寄附件夾帶
+reply_attach2=附件夾帶
+reply_send=送出
+reply_ecannot=您不被允許以這個使用者名稱送出郵件
+
+send_err=郵件送出失敗
+send_eto=遺失收件人郵件位址
+send_efrom=遺失寄件人郵件位址
+send_title=送出郵件
+send_ok=郵件成功的送給 $1
+send_ecannot=您不被允許以這個使用者名稱送出郵件
+send_esmtp=SMTP 命令 $1 失敗: $2
+
+delete_ecannot=您不被允許刪除這個使用者的郵件
+delete_enone=沒有選擇要刪除的郵件
+
+search_title=搜尋結果
+search_ecannot=您不被允許搜尋這個使用者的郵件
+search_ematch=您必須輸入搜尋的條件
+search_none=找不到符合的郵件.
+search_results=符合條件 '$1' 的郵件...
+
+acl_opts=是否可以編輯 Sendmail 選項?
+acl_cws=是否可以編輯本地端網域?
+acl_masq=是否可以組態網域偽裝?
+acl_trusts=是否可以編輯信任的使用者?
+acl_cgs=是否可以編輯外送郵件網域?
+acl_relay=是否可以編輯中繼網域?
+acl_mailers=是否可以組態網域路由?
+acl_access=是否可以組態垃圾郵件控制?
+acl_domains=是否可以組態網域對應?
+acl_stop=是否可以啟動與停止 Sendmail?
+acl_mailq=是否可以管理郵件佇列?
+acl_viewdel=檢視與刪除
+acl_view=只有檢視
+acl_virtusers=這個使用者可以編輯的郵件位址對應
+acl_none=無
+acl_all=全部
+acl_matching=符合敘述
+acl_vtypes=這個使用者可以編輯的郵件位址對應種類
+acl_vtype0=回應錯誤
+acl_vtype1=到網域
+acl_vtype2=到郵件位址
+acl_vmax=郵件位址對應的最大數目
+acl_unlimited=無限制
+acl_aliases=這個使用者可以編輯的別名
+acl_atypes=這個使用者可以編輯的別名種類
+acl_atype1=電子郵件位址
+acl_atype2=郵件位址在檔案中
+acl_atype3=寫入到檔案
+acl_atype4=送給程式
+acl_atype5=自動回覆
+acl_amax=別名的最大數目
+acl_outgoing=這個使用者可以編輯的外送郵件位址
+acl_read=可以讀取哪些使用者的郵件
+acl_users=只有使用者
+acl_userse=全部, 除了使用者
+acl_from=依據郵件位址允許
+acl_any=任何郵件位址
+acl_fdoms=信箱在網域
+acl_faddrs=列出的郵件位址
+acl_fdom=任何郵件位址在網域

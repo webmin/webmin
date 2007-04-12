@@ -1,0 +1,29 @@
+---- Changes since 1.130 ----
+Added support for Slackware Linux.
+---- Changes since 1.140 ----
+Fixed support for Slackware Linu 9.1, which uses a different configuration file.
+Added an option to update /etc/hosts when changing the system's hostname.
+Fixed virtual interface numbering on Solaris.
+Added links from ppp* interfaces to the actual modules that handle them, like PPPP Dialin Client or ADSL Client.
+Added support for boot-time address range interfaces on Redhat and similar Linux distributions.
+---- Changes since 1.150 ----
+Added checks on Linux to prevent interfaces with IPs that are already in use from being added, as this is not allowed by the OS.
+---- Changes since 1.160 ----
+Added the ability to configure static routes on Debian systems.
+Fixed bugs that prevented the module from working on SuSE 9.0+, and made it visible on those distributions again.
+---- Changes since 1.170 ----
+Added display of currently active routes on routing page.
+---- Changes since 1.190 ----
+Added some access control options to limit what features of an interface can be edited, and to force both boot-time and active interfaces to be edited at once.
+Improved support for virtual interfaces on FreeBSD, where the interface ordering is inconsistent.
+---- Changes since 1.200 ----
+Interfaces used by Solaris zones are now recognized, and cannot be editing using this module (the Zones module must be used instead).
+On Solaris systems, interfaces configured using DHCP can now be properly activated.
+---- Changes since 1.250 ----
+Added support for the new config file format in SuSE 10.0.
+Added support for editing the IPv6 host addresses file on Solaris (/etc/inet/ipnodes).
+---- Changes since 1.270 ----
+Added checkboxes and buttons for deleting multiple interfaces and host addresses at once.
+Active routes can be added and deleted on Linux and Solaris systems.
+---- Changes since 1.290 ----
+Added a button for activating several boot-time interfaces at once.

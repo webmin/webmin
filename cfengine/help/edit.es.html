@@ -1,0 +1,34 @@
+<header>Editar Clase</header>
+
+Esta página le permite configurar los detalles de una acción para cierta
+clase. El primer campo de la página siempre es la entrada 'Aplicar a la
+clase', que le permite elegir a qué clase o clases aplicarán las opciones 
+siguientes. Por defecto la clase es Any, que significa que la acción se
+llevará a cabo cada vez que se ejecute el administrador de configuraciones.
+Sin embargo si opta por introducir algo en el campo de clase, la acción
+podría o no ejecutarse dependiendo del tipo de sistema operativo, nombre de
+la máquina, hora actual u otros factores. <p>
+
+Las clases que actualmente tienen efecto los determina CFengine dinámicamente
+en el momento de ejecutar. Algunas útlies son el nombre de la máquina con
+los puntos sustituídos por caracteres de subrayado (como
+<tt>foo_bar_com</tt>), el nombre corto de la máquina (como <tt>foo</tt>),
+el tipo de sistema operativo (como <tt>linux</tt> o <tt>solaris</tt>), el
+día de la semana (como <tt>Lunes</tt>), día del mes (como <tt>Día16</tt>),
+o el mes (como <tt>Mayo</tt>). Puede ver la lista completa de clases
+disponibles en su sistema ejecutando CFengine en modo prolijo. <p>
+
+Se pueden especificar múltiples clases separándolas entre sí con caracteres
+|. De esta manera, para que su acción se ejecute tanto en la máquina
+<tt>foo</tt> como <tt>bar</tt>, debería introducir <tt>foo|bar</tt> en el
+campo clase. <p>
+
+Los campos de entrada a continuación de la clase dependen del tipo de
+acción que esté siendo editada. Si el tipo de acción no está soportada por
+Webmin se mostrarán las líneas correspondientes del fichero de
+configuración para editarlas manualmente. También puede cambiar a modo
+manual pulsando el botón <i>Editar Manualmente</i> al final de la página.
+<p>
+
+<hr>
+

@@ -1,0 +1,6 @@
+line1=Options configurables,11
+auto=Automatiquement include les fichiers de logs depuis,2,apache-Apache,squid-Squid
+line2=Configuration du syst&#232;me,11
+webalizer=Chemin de la commande Webalizer,0
+webalizer_conf=Chemin du fichier de configuration Webmin,0
+alt_conf=Fichier d'exemple de configuration Webalizer,3,None

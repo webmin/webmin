@@ -1,0 +1,94 @@
+<body bgcolor=#ffffff>
+<center><img src=images/dnsadmin.gif></center>
+<h2><i>This help page is incomplete</i></h2>
+
+<hr>
+<h3>Introduction</h3>
+This module allows you to configure the BIND (Berkeley Internet Name Daemon)
+DNS server installed on this machine. The DNS server is responsible for
+converting hostnames like <i>www.foo.com</i> into IP addresses like
+<i>10.1.2.3</i>, and IP addresses into hostnames.
+
+<hr>
+<h3>DNS Basics</h3>
+Each DNS server manages a number of forward and reverse domains. A forward
+domain is something like <i>foo.com</i>, and a reverse domain like
+<i>204.165.66</i>. For each domain, the DNS server can either be the
+primary server (the original source of data for the domain), or a secondary
+server (a backup source for the domain). <p>
+
+<dl>
+<dt><b>Forward Domains</b>
+<dd>If your DNS server manages a forward domain like <i>foo.com</i>, then
+    it will be able to answer requests for hostnames within this domain.
+    For domains for which this server is the primary, you can use this
+    module to add hosts (and other records) to the domain. For secondary
+    domains, you can specify the primary server(s) to download host
+    information from. <p>
+
+<dt><b>Reverse Domains</b>
+<dd>Reverse domains map IP addresses (like <i>203.165.66.77</i>) into
+    hostnames (like <i>www.foo.com</i>). A reverse domain provides hostnames
+    for all the IP addresses in a network (like <i>203.165.66</i>). For
+    domains for which this server is the primary, this module allows you to
+    add IP to hostname records to the domain. For secondary domains, you can
+    specify the DNS server(s) to download IP address mappings from. <p>
+</dl>
+
+<hr>
+<h3>Setting up the DNS Server</h3>
+If your system already has a running BIND DNS server, then you can ignore
+this section. However, if the Webmin detects that the primary DNS server
+configuration file (usually <tt>/etc/named.boot</tt>) is missing from your
+system, it assumes that the server has not yet been setup. <p>
+
+For normal internet use, a DNS server has to have a list of the root nameservers
+so that it can answer DNS queries that are outside its domains. If your server
+is not setup, Webmin can:
+<ol>
+<li>Download this list from the internic FTP server at <tt>rs.internic.net</tt>.
+    Assuming the host Webmin in being run on is connected to the internet
+    and is not blocked by any firewall, this is the best option. <p>
+<li>Use a copy of the list that is distributed with Webmin. Because the
+    root nameservers do not change very often, this should work fine. <p>
+<li>Setup the nameserver for 'internal' use only. If you are on network that
+    is not connected to the internet, then this is the option you want.<p>
+</ol>
+
+<hr>
+<h3>Creating a Primary Domain</h3>
+To create a new primary domain, fill in the form under <b>Add a new primary
+domain</b> on the <a href=/dnsadmin/>DNS Server</a> page. The meaning of
+the fields are:
+<ul>
+<li><b>Mapping</b><br>
+    Determines if this is a forward or reverse domain<p>
+<li><b>Domain/Net</b><br>
+    For forward domains, the domain to be added (like <tt>foo.com</tt>). For
+    reverse domains, the IP network to be added (like <tt>203.123.221</tt>). <p>
+<li><b>Filename</b><br>
+    The name of the file in which to store the domain information. If you
+    leave this field blank, a suitable filename is automatically generated. <p>
+<li><b>Contact email</b><br>
+    Each DNS domain must have an associated email address, which should be
+    the person responsible for the domain. <p>
+<li><b>Nameserver</b><br>
+    This must contain the fully qualified name of the nameserver responsible
+    for this domain. This will almost always be the name of the host you
+    are running Webmin on. <p>
+</ul>
+
+<hr>
+<h3>Creating a Secondary Domain</h3>
+
+<hr>
+<h3>Editing a Primary Domain</h3>
+
+<hr>
+<h3>Editing Domain Records</h3>
+
+<hr>
+<a href="/"><img alt="<-" align=middle border=0 src=/images/left.gif></a>
+&nbsp;&nbsp;<a href="">Return to module</a><p>
+ 
+

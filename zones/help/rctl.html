@@ -1,0 +1,19 @@
+<header>Resource Control</header>
+
+A resource control is a set of limits on the use of some resource within the zone,
+and associated actions when they are exceeded. The available resources at the time
+of writing are :
+<dl>
+<dt><b>zone.max-lwps</b>
+<dd>Limits the number of processes that can be running within the zone at any one time.
+<dt><b>zone.cpu-shares</b>
+<dd>Sets a limit on the number of fair share scheduler (FSS) CPU shares for a zone.
+</dl>
+
+For each resource, you can enter a number of limits. Each limit has a privilege type
+(which is always <b>Privileged</b>), a numeric limit, and an action to take when
+the limit is exceeded. The typical action is <b>Deny</b>, to prevent any request
+that would exceed the limit. <p>
+
+<footer>
+

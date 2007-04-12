@@ -1,0 +1,75 @@
+main_return=Gå tilbake til $1
+main_homepage=Hjemmeside
+main_feedback=Bytte bruker ...
+main_switch=Bytt bruker ...
+main_version=Versjon $1 på $2 ($3)
+main_title=Webmin $1 på $2 ($3)
+main_none=Du har ikke tilgang til noen Webmin moduler.
+
+category_servers=Servere
+category_hardware=Maskinvare
+category_system=System
+category_webmin=Webmin
+category_net=Nettverk
+category_=Andre
+
+header_webmin=Webmin Index
+header_module=Modulindex
+header_help=Hjelp ...
+header_config=Modulkonfigurering
+header_servers=Webminservere
+
+index=index
+yes=Ja
+no=Nei
+save=Lagre
+create=Opprett
+delete=Slett
+find=Søk
+error=Feil
+default=Default
+modify=Endre
+reset=Nullstill
+ok=OK
+cancel=Avbryt
+
+chooser_title1=Velg fil ...
+chooser_title2=Velg katalog ...
+chooser_dir=Katalog for $1
+chooser_ok=OK
+
+users_title1=Velg brukere ...
+users_title2=Velg bruker ...
+users_sel=Valgte brukere
+users_all=Alle brukere
+users_ok=OK
+users_cancel=Avbryt
+users_clear=Nullstill
+
+groups_title1=Velg grupper ...
+groups_title2=Velg gruppe ...
+groups_all=Alle grupper
+groups_sel=Valgte grupper
+groups_ok=OK
+groups_cancel=Avbryt
+groups_clear=Nullstill
+
+config_ecannot=Du får ikke lov til å konfigurere dette modul
+config_title=Konfigurering
+config_dir=For modul $1
+config_header=Konfigurerbar innstillinger for $1
+config_none=Ingen
+config_eaccess=Du får ingen tilgang til denne modul
+
+help_err=Hjelp kunne ikke vises
+help_epath=Manglende eller ugyldige hjelpbane
+help_efile=Kunne ikke lese hjelpfilen for $1
+help_eheader=Seksjon &lt;header&gt; mangler
+help_einclude=Det gick ikke å ta med $1
+help_eif=$1 misslykket : $2
+help_eexec=$1 misslykket : $2
+
+referer_title=Sikkerhetsadvarsel
+referer_warn=<b>Advarsel!</b> Webmin har oppdaget at URL $1 linken til programmet $2, ser ut til å vare utenfor Webmin serveren. Dette kan vare ett forsøk på å lure din server til å utføre ett farligt kommando.
+referer_ok=Fortsetter å kjøre Webmin programmet
+referer_again=Ikke vise dette advarsel igjen.

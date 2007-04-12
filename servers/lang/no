@@ -1,0 +1,74 @@
+index_title=Webmin Servere
+index_edit=editer
+index_noservers=Ingen servere har blitt registrert.
+index_add=Registrer en ny server
+index_broad=Broadcast for servere
+index_findmsg=Klikk på denne knappen for å automatisk finne alle Webmin versjoner 0.75 eller nyere i ditt lokale nettverk.
+index_scan=Søk etter servere
+index_scanmsg=Klikk på denne knappen for å sjekke alle adresser på nettverk $1 for Webmin servere av versjon 0.75 eller nyere.
+index_return=servere
+index_host=Vertsnavn og port
+index_desc=Beskrivelse
+index_os=Server type
+index_group=Gruppe
+index_none=&lt;Ingen&gt;
+
+edit_title=Editer Server
+create_title=Registrer Server
+edit_details=Server detaljer
+edit_host=Vertsnavn
+edit_port=Port
+edit_type=Server type
+edit_ssl=SSL server?
+edit_link=Link type
+edit_mode0=Normal link til server
+edit_mode1=Login via Webmin med
+edit_user=brukernavn
+edit_pass=passord
+edit_ecannot=Du har ikke adgang til å editere servere
+edit_desc=Beskrivelse
+edit_desc_def=Fra vertsnavn og port
+edit_group=Medlem av server gruppe
+edit_none=Ingen
+edit_exists=Eksisterende gruppe
+edit_new=Ny gruppe
+edit_fast=Gjøre raske RPC anrop?
+edit_auto=Avgjøre automatisk
+edit_failed=Kunne ikke koble til
+edit_status=Server status
+edit_timeout=Tilkobling Timet ut
+edit_version=Kjører Webmin $1
+
+save_err=Feilet under lagring av server
+save_ehost=Mangler eller ugyldig vertsnavn
+save_eport=Mangler eller ugyldig port
+save_euser=Mangler brukernavn
+save_epass=Mangler passord
+save_egroup=Mangler gruppe navn
+save_elogin=Ugyldig login eller passord til vert
+
+find_title=Finne Servere
+find_new=Funnet ny server på $1
+find_already=Funnet kjent server på $1
+find_me=Funnet denne serveren på $1
+find_escan=Nettverket som det skal søkes i må være en klasse C nettverks adresse.
+find_none=Ingen servere svarte på søket.
+find_ecannot=Du har ikke adgang til å finne servere
+
+log_modify=Modifiser server $1
+log_create=Registrert server $1
+log_delete=Slettet server $1
+log_find=Opprettet server $1
+
+link_elogin=Feilet ved login til $1 som $2
+link_ecannot=Du har ikke adgang til å bruker denne serveren
+link_essl=Du har ikke perl Net::SSLeay biblioteket installert
+
+lib_other=Andre
+
+acl_edit=Kan editere servere
+acl_find=Kan finne servere
+acl_servers=Kan bruke servere
+acl_sall=Alle Servere
+acl_ssel=Utvalgt..
+

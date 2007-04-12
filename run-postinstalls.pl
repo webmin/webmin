@@ -1,0 +1,43 @@
+#!/usr/local/bin/perl
+# run-postinstalls.pl
+# Run all the postinstall.pl scripts in module and theme directories
+
+$no_acl_check++;
+do './web-lib.pl';
+&init_config();
+&foreign_require("webmin", "webmin-lib.pl");
+@themes = &webmin::list_themes();
+
+if (@ARGV > 0) {
+	# Running for specified modules
+	foreach $a (@ARGV) {
+		local %minfo = &get_module_info($a);
+		if (!%minfo) {
+			# Try for a theme
+			($tinfo) = grep { $_->{'dir'} eq $a } @themes;
+			if ($tinfo) {
+				push(@mods, $tinfo);
+				}
+			}
+		else {
+			push(@mods, \%minfo);
+			}
+		}
+	}
+else {
+	# Running on all modules and themes
+	@mods = ( &get_all_module_infos(), @themes );
+	}
+
+foreach $m (@mods) {
+	$mdir = &module_root_directory($m->{'dir'});
+	if (&check_os_support($m) &&
+	    -r "$mdir/postinstall.pl") {
+		# Call this module's postinstall function
+		eval {
+			&foreign_require($m->{'dir'}, "postinstall.pl");
+			&foreign_call($m->{'dir'}, "module_install");
+			};
+		}
+	}
+

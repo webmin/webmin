@@ -1,0 +1,15 @@
+show_list=0
+httpd_dir=/srv/www
+httpd_conf=/etc/httpd/httpd.conf
+srm_conf=/etc/httpd/srm.conf
+access_conf=/etc/httpd/access.conf
+mime_types=/etc/httpd/mime.types
+httpd_path=/usr/sbin/httpd
+start_cmd=/etc/init.d/apache start
+stop_cmd=/etc/init.d/apache stop
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1

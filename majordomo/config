@@ -1,0 +1,5 @@
+majordomo_cf=/usr/local/majordomo/majordomo.cf
+program_dir=/usr/local/majordomo
+dynamic=0
+sort_mode=0
+perms=0

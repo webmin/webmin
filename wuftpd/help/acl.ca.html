@@ -1,0 +1,39 @@
+<header>Límits i Control d'Accés</header>
+
+Aquesta pàgina conté diverses taules per establir les opcions de límits
+i control d'accés. La primera taula permet especificar els adreces IP
+client que tenen l'accés denegat al servidor FTP, i un missatge d'error
+per mostrar al client denegat. Les adreces es poden donar com adreces IP
+completes o parcials, xarxes/màscares IP, noms de host o escarrassos 
+(com <tt>*.foo.com</tt>), o bé els camins absoluts als fitxers que
+contenen adreces addicionals. Totes les adreces es poden precedir amb
+un ! per negar-les.
+<p>
+
+La segona taula permet limitar el nombre d'entrades concurrents pels clients
+de cada classe. Per cada classe, pots introduir el nombre màxim d'entrades
+simultànies, els dies i hores en què es força aquest màxim (a l'estil UUCP,
+com <tt>MoTuTh0800-1700</tt>), i el missatge d'error que es mostra als
+clients quan s'ateny el límit.
+<p>
+
+La tercera taula permet establir límits de transferència de fitxers i dades
+per sessió. Per cada límit, has de triar si el vols aplicar als fitxers o
+bytes transferits, la direcció de transferència a què s'aplica, si el
+límit s'aplica només a les transferències de fitxers o a totes les dades,
+i la classe d'usuaris per a la qual es posa el límit.
+<p>
+
+La quarta taula permet denegar l'accés a certs fitxers. Per cada fitxer,
+cal que introdueixis un camí absolut, triar si el camí es relatiu
+respecte el directori <tt>chroot</tt> (per usuaris anònims i convidats)
+i seleccionar la classe d'usuaris per a la qual es posa el límit.
+Si una denegació de fitxer acaba amb /, els servidor FTP denegarà l'accés
+a tots els fitxers del directori.<br>
+De forma similar, la cinquena taula permet concedir accés als fitxers
+que altrament estarien denegats per la taula anterior.
+<p>
+
+<hr>
+
+

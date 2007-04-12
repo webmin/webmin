@@ -1,0 +1,6 @@
+line1=Opcions configurables,11
+sort_mode=Ordena els fitxers de registre per,1,1-Nom del registre,0-Ordre del fitxer de configuració
+add_file=Afegeix les noves seccions de logrotate a,3,Fitxer de configuració primari
+line2=Configuració del sistema,11
+logrotate_conf=Camí del fitxer de configuració de logrotate,0
+logrotate=Camí del programa logrotate,0

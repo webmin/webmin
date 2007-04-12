@@ -1,0 +1,9 @@
+line2=Configuració del sistema,11
+sshd_path=Camí complet del programa sshd,0
+sshd_config=Camí complet del fitxer de configuració de sshd,0
+client_config=Camí complet del fitxer de confifuració del client ssh,0
+pid_file=Camí complet del fitxer de PID de sshd,3,Cap
+start_cmd=Ordre per iniciar sshd,3,Executa només el servidor
+restart_cmd=Ordre per aplicar la configuració de sshd,3,Envia simplement el senyal HUP
+stop_cmd=Ordre per aturar sshd,3,Mata el procés
+keygen_path=Camí complet del programa ssh-keygen,0

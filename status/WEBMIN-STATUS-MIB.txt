@@ -1,0 +1,53 @@
+WEBMIN-STATUS-MIB DEFINITIONS ::= BEGIN
+
+--
+-- MIB objects for Webmin's status module
+--
+
+IMPORTS
+    MODULE-IDENTITY, enterprises, OBJECT-TYPE, Integer32 FROM SNMPv2-SMI
+    SnmpAdminString                         FROM SNMP-FRAMEWORK-MIB
+    RowStatus, StorageType                  FROM SNMPv2-TC
+    InetAddressType, InetAddress            FROM INET-ADDRESS-MIB
+;
+
+Webmin MODULE-IDENTITY
+    LAST-UPDATED "200412220000Z"
+    ORGANIZATION "www.webmin.com"
+    CONTACT-INFO    
+	 "postal:   Wes Hardaker
+                    P.O. Box 382
+                    Davis CA  95617
+
+          email:    jcameron@webmin.com"
+    DESCRIPTION
+	"MIB objects for Webmin status module traps"
+    ::= { enterprises 10000 }
+
+--
+-- top level structure
+--
+WebminStatus       OBJECT IDENTIFIER ::= { Webmin 1 }
+
+WebminStatusMessage OBJECT-TYPE
+    SYNTAX      SnmpAdminString
+    MAX-ACCESS  accessible-for-notify
+    STATUS      current
+    DESCRIPTION
+	"A message from Webmin's System and Server status module indicating
+	 that some event has occurred."
+::= { WebminStatus 1 }
+
+WebminStatusNotification NOTIFICATION-TYPE
+    STATUS      current
+    DESCRIPTION
+        "An example notification, used to illustrate the
+         definition and generation of trap and inform PDUs
+         (including the use of both standard and additional
+         varbinds in the notification payload).
+         This notification will typically be sent every
+	 30 seconds, using the code found in the example module
+             agent/mibgroup/examples/notification.c"
+::= { WebminStatus 2 }
+    
+END

@@ -1,0 +1,21 @@
+<header>SMTP server response on forbidden relaying</header>
+
+<center><tt>relay_domains_reject_code</tt></center>
+<hr>
+
+This parameter specifies the SMTP server response code when a mail violates the
+<tt>relay_domains_reject</tt> rule that is:<br>
+<i>Access denied: Relay not authorized or not local host not a gateway</i><br>
+<br>
+Note that the postfix default value used for <tt>relay_domains_reject_code</tt> is
+code 554, and this code in 'standard RFC 822' should means
+'Requested mail action rejected: access denied'.
+So with Postfix, a <tt>relay_domains_reject</tt> rule violation does not reflect exactly
+the RFC822 explanation of reported code.<br>
+<p>
+To avoid confusion, you can change this to 572 for example (another reason is that code 554
+is also the postfix default value for other kind of errors), otherwise, do not change
+this unless you have a complete understanding of RFC 822.
+</p>
+
+<hr>
