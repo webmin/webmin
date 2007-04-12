@@ -1,6 +1,5 @@
 cs_header=4EBF37 class='maintitle'
 cs_table=EFEFEF class='mainbody'
-headinclude=include.html
 functions=theme.pl
 texttitles=1
 noindex=1
