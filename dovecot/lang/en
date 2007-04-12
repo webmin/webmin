@@ -150,6 +150,7 @@ mail_uidl_courier1=Courier verion 1, old Cyrus
 mail_uidl_courier2=Courier verion 2
 mail_uidl_tpop3d=tpop3d
 mail_euidl=Missing or invalid UIDL format
+mail_last=Allow use of POP3 LAST command?
 
 log_net=Changed Networking and Protocols
 log_login=Changed User and Login Options

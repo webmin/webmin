@@ -89,6 +89,16 @@ if (&find("pop3_uidl_format", $conf, 2)) {
 		3);
 	}
 
+# Allow POP3 last command
+if (&find("pop3_enable_last", $conf, 2)) {
+	$last = &find_value("pop3_enable_last", $conf);
+	@opts = ( [ 'yes', $text{'yes'} ], [ 'no', $text{'no'} ] );
+	print &ui_table_row($text{'mail_last'},
+		&ui_radio("pop3_enable_last", $last,
+		  [ @opts,
+		    [ '', &getdef("pop3_enable_last", \@opts) ] ]), 3);
+	}
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

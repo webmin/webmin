@@ -52,6 +52,10 @@ if (&find("pop3_uidl_format", $conf, 2)) {
 	&save_directive($conf, "pop3_uidl_format", $uidl);
 	}
 
+# LAST command
+&save_directive($conf, "pop3_enable_last",
+		$in{'last'} ? $in{'last'} : undef);
+
 &flush_file_lines();
 &unlock_file($config{'dovecot_config'});
 &webmin_log("mail");
