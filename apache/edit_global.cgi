@@ -14,7 +14,7 @@ $access_types{$in{'type'}} ||
 
 print &ui_form_start("save_global.cgi", "post");
 print &ui_hidden("type", $in{'type'});
-print &ui_table_start($text{"type_$in{'type'}"}, undef, 4);
+print &ui_table_start($text{"type_$in{'type'}"}, "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);

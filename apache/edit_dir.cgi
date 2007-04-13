@@ -19,7 +19,7 @@ print &ui_hidden("virt", $in{'virt'});
 print &ui_hidden("idx", $in{'idx'});
 print &ui_hidden("type", $in{'type'});
 print &ui_table_start(&text('dir_header2', $text{"type_$in{'type'}"},
-                               &dir_name($d)), undef, 4);
+                               &dir_name($d)), "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);

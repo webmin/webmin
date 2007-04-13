@@ -27,7 +27,7 @@ print &ui_form_start("save_virt.cgi", "post");
 print &ui_hidden("virt", $in{'virt'});
 print &ui_hidden("type", $in{'type'});
 print &ui_table_start(&text('virt_header2', $text{"type_$in{'type'}"},
-                               &virtual_name($v)), undef, 4);
+                               &virtual_name($v)), "width=100%", 4);
 &generate_inputs(\@dirs, $conf);
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
