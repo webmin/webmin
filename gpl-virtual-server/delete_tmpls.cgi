@@ -1,0 +1,1 @@
+../virtual-server/delete_tmpls.cgi

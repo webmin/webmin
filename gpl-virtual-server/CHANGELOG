@@ -1,0 +1,302 @@
+---- Changes since 1.81 ----
+A Sendmail genericstable or Postfix canonical mapping file can be automatically updated with login name to email address mappings. This is useful for programs like Usermin, which can read such a file to work out From: addresses.
+The directory for Webalizer statistics can be set on the Apache Website Template page.
+Domain owners can be granted access to the Read User Mail module, for reading mailboxe's mail.
+The port to use for normal and SSL virtual websites can now be set on the Apache Website Template page.
+Virtual servers can now be backed up to one or many tar.gz files, either locally or on a remote FTP server.
+Backups can also be restored from these tar.gz files, again locally or from an FTP server.
+The MySQL feature now properly supports usernames longer that 16 characters.
+A new configuration option has been added for sites that use multiple IP addresses, but always use name-based Apache virtual hosts.
+Username length and other restrictions are now checked by the create-domain.pl script.
+Virtualmin now participates in Webmin action logging, so you can see what actions were taken and which files they changed.
+IP address clash checking for new servers now actually works.
+Webalizer configuration files and schedule can now be included in backups.
+---- Changes since 1.91 ----
+Catchall mail aliases can now forward mail for any mailbox at their domain to the same mailbox at another domain.
+Added module configuration options to prevent domain owners from being given access to feature-related modules like Apache Webserver, BIND DNS Server and so on.
+Added checks to prevent an alias or mailbox being created which clashes with an existing Sendmail or Postfix alias.
+Added a Module Config option to set the subdirectory used for mailbox user home directories, instead of always using ~/homes.
+Added Module Config option to specify an different IP address to use in the DNS domain, versus the one used for the webserver.
+Added the ability to backup and restore to via SSH, as well as FTP.
+Added a new feature for Virtualmin domains - virtual FTP hosting with ProFTPd. Like Apache virtual hosts, these will be created when the feature is enabled for domain, using directives taken from an editable template. Due to limitations in the FTP protocol, a domain can only have a virtual FTP server if it has its own private IP.
+---- Changes since 2.00 ----
+Added an option to the BIND DNS Template page for selecting a view to add new zones to.
+Added automatic IP address allocation for virtual servers, out of ranges defined on the Module Config page.
+A Virtualmin server owner can now create and own multiple domains, if allowed by the master administrator. All such servers are owned by the same Unix user and share the same quota, and any sub-servers are stored in the domains subdirectory of the parent server's home directory. Each server can have its own independent set of features. When a limit on the number of mailboxes has been set, it will apply to the master server and all sub-servers.
+Added an option to the Apache Website Template page for entering an Apache user to be added to the group for all new servers. This can be useful for getting suexec to work.
+Added Module Config options to have features disabled by default for new servers.
+Added Manage SSL Certificate page for creating a CSR and installing a signed SSL certificate using simple forms.
+Added Change Domain Name page for modifying the name of an existing virtual server. This can also update the server's Unix login and home directory at the same time, if needed. All sub-servers of the modified server are also updated, where appropriate.
+When restoring a virtual server, if it no longer exists it will be automatically re-created with all the original features before the restore is done.
+---- Changes since 2.10 ----
+Aliases for an existing virtual server can now be created. An alias is a server that simply forwards all web, mail and DNS requests to another server. Alias websites can be created as a virtual server that simply redirects requests or by adding additional ServerAlias directives to the target website.
+Added a new Bandwidth Monitoring page for setting up regular checking of virtual server web bandwidth usage, and inputs on the server creation and editing forms to specify the amount of bandwidth each can use. When the limit is exceeded, a configurable email is sent to the domain owner and other optional addresses. The monitoring page also displays usage and limits by all servers as a bar graph.
+Added a new feature - the ability to setup Logrotate to automatically truncate and compress a virtual server's log files, so that they don't consume too much disk space.
+The subject lines for emails sent when a new virtual server, sub-server and mailbox are created can now be edited, and can include template variables.
+Email messages send when a virtual server or mailbox is created can now be also Cc'd to additional configurable addresses.
+Added the ability to use new functions in the BIND module to speed up the process of creating slave zones on a remote DNS server.
+Added a new format for mailbox usernames - mailbox@domain, the same as the email address. This only works when using Sendmail as the mail server though.
+The Qmail mail server is now fully supported, with all the same capabilities as Postfix and Sendmail. Only a stock install of Qmail is required by Virtualmin - vpopmail or other similar patches are not needed.
+When a mailbox is created, its empty mail file or directory is automatically created, in a location determined by the configuration of the mail server in use.
+A virtual server can now be created without a Unix user, as long as it only has a DNS domain or MySQL or PostgreSQL databases. For other features, the Unix user is required.
+Added an additional way to proxy a virtual server to another URL - frame forwarding.
+Added the ability to easily edit the forwarding destination for proxy-only or frame forwarding websites, along with the forwarding frame page title or HTML.
+Moved all template-related settings into the 'Server Templates' section, including directives for Apache websites, FTP virtual servers and DNS domains. Multiple templates can now be defined, and a template can be selected when creating a virtual server.
+The home directory for a virtual server can now be enabled separate from its Unix user.
+On systems like FreeBSD in which the username length is limited, the prefix for mailbox usernames is now selectable when creating a server.
+Added an option to automatically disable a server when it reaches its bandwidth limit.
+Added an option to send an email message when a server is approaching (within some percentage) its bandwidth limit.
+Added support for third-party plugin feature modules.
+Added support for mailbox user plugins, which can add additional inputs and capabilities to a mail user.
+Added a restore.pl script to restore domains and features from the command line.
+Fixed a bug when attempting to rename a PostgreSQL user on older versions that don't allow it.
+Added a Module Config option for a jailed FTP shell.
+---- Changes since 2.30 ----
+Fixed several bugs related to creating and restoring backups.
+Moved bandwidth graphs to separate page, and added mode to show sub-domain usage.
+Added the command-line backup-domain.pl script.
+Added button to domain editing page for viewing latest Webalizer report.
+Implemented support for using LDAP to store domain and mailbox users and groups, by calling functions in Webmin's LDAP user management module. Requires that the system be set up to use LDAP for NSS and PAM.
+Clash checking is now done when enabling new features for an existing server.
+When creating a server, if a feature fails for some reason the rest will still be processed. This avoids the problem of a server being partially created and unknown to Virtualmin.
+Similarly, when deleting a server any failure will be ignored, to avoid the problem of features being left around when the server has been removed from Virtualmin.
+A database name can be specified when creating a server, rather than the default which is computed from the domain name.
+Added form on plugins page for editing the configuration of plugins that have a config.info file.
+Added the enable-feature.pl and disable-feature.pl script, for activating and turning off features for a virtual server from the command line.
+Added the enable-limit.pl and disable-limit.pl scripts, for updating server owner limits from the command line.
+Created the Custom Fields page, for defining your own fields that can be edited for each virtual server.
+Added a button to the Edit Server page for displaying just the usage for that server. This is available to server owners as well as the master administrator.
+Added a new limit for domain owners to prevent them from choosing the name for new domain databases.
+---- Changes since 2.40 ----
+Fixed bug related to multiple IF- blocks for the same variable in templates.
+Added support for Qmail+LDAP as a new mail system. If selected, all mail users and aliases will be stored in LDAP automatically. Thanks to Omar Amas for sponsoring this feature.
+Added extra domain owner limits to force sub-domains to be under parent domains, and to prevent renaming.
+Added support for Qmail+VPOPMail as a new mail system. When enabled, all mailboxes and aliases are created in VPOPMail instead of using Unix users. Thanks to Linulex for sponsoring this one.
+When editing the forwarding destinations for email to a user, the user's mailbox can be explicitly selected as a destination.
+On the server template page, default aliases for new users in domains using that template can be specified.
+Added an option to exclude the logs directory from backups.
+The default MySQL database name, wildcard and allowed hosts can now be set on the server templates page.
+A virtual server can now have more than one MySQL or PostgreSQL database, which can be managed using the Edit Databases button on the Edit Server page. Thanks to Olimont for sponsoring this feature, and the backup changes.
+The create-domain.pl script can now create sub-servers and alias servers too.
+Added a Module Config option to have domain and mailbox users created in other modules.
+Added options on the restore page to fix up the DNS and Apache IP addresses when restoring. Useful when transferring a domain from another server.
+---- Changes since 2.50 ----
+When using VPOPMail as the mail server and a domain uses an existing Unix group, no extra group for mailboxes is created.
+Default quotas and other limits for a new domain can now be specified in templates, instead of globally.
+Added support for the VPOPMail autoresponder program.
+FTP server logs can now be used for bandwidth accounting as well, so that anonymous downloads and files downloaded by domain owners count towards bandwidth usage totals.
+Mail server logs (in Sendmail, Postfix or Qmail formats) can now be checked to include mail sent to mailboxes and aliases in a domain in bandwidth totals.
+Usage graphs now show bandwidth used by each feature in a different colour, and can show usage by day or month as well as by domain.
+Creation of an initial MySQL or PostgreSQL database for a server is now optional. Instead, you can choose to just have a login created instead.
+Add file writes now use the new Webmin API to prevent truncation if a disk space shortage or other error occurs.
+Added an option to the domain creation form to generate a password randomly.
+Domain names and usernames can now start with a number.
+The permissions on the public_html directory can now be edited on the server template page.
+Added an option on the template page for doing web logging via a program, which silently ignores problems writing to the logs. This prevents Apache from failing to re-start if a user deletes his ~/logs directory.
+The Webalizer statistics directory can now be password protected, via an option on the Server Templates page.
+Added an option to the Bandwidth Monitoring page to disable it for selected servers, such as those that have extremely large logs.
+When Webmin 1.201 or later is installed, there is an additional option on the Server Templates page to have Webmin and Usermin per-IP SSL certificates added to match those used for the Apache SSL virtual server.
+Made available an option on the template page for turning off the automatic synchronization between a server's password and that of its MySQL login.
+Added an option on the template page for defining default mail aliases for new servers.
+---- Changes since 2.60 ----
+Added a Module Config option for entering secondary groups to which mailbox users can be assigned.
+Network interfaces are now identified by address rather than name, to avoid problems with interface numbers changing on operating systems like Gentoo and FreeBSD.
+Improved support for users with home directories outside the server root.
+When disabling a virtual server, the accounts for any mail users are locked too.
+Added support for plugins that define new database types.
+---- Changes since 2.608 ----
+Extra Webmin modules can be specified for server owners on the Edit Owner Limits page.
+---- Changes since 2.609 ----
+When using Qmail+LDAP, the maximum mail files quota can now be edited for mailbox users.
+Fixed a bug that stopped the SuexecUserGroup directive being updated with the new correct UID and GID when restoring.
+---- Changes since 2.610 ----
+When renaming a domain that has users in user@domain format, the users will be renamed too.
+If the Apache module has been configured to create a symlink for a new virtual host's file in a separate directory (sites-enabled on Debian), Virtualmin will too.
+Added a Module Config option to control the sorting of virtual servers on the main page.
+Webmin users created by Virtualmin are marked as non-editable, and so cannot be manually modified in the Webmin Users module (when using Webmin 1.257 or above).
+Virtual server owners are no longer allowed to change the Apache server name or aliases for their websites, as this can confuse Virtualmin.
+The Running Processes extra modules config option now allows you to choose if a domain admin can see other users' processes.
+MySQL database names containing the _ or % characters are now properly escaped in the db table, to prevent their owners from accessing or creating other databases.
+---- Changes since 2.611 ----
+Fixed a bug that prevented domain owners without access to virtual IPs from creating new domains.
+---- Changes since 3.180 ----
+Merged entire codebase with Virtualmin Pro, which substantially cleans things up, removes a bunch of bugs and adds new features.
+Ranges for automatic IP allocation can now be defined in a more user-friendly way on the Server Templates page.
+Added built-in support for granting mail/FTP users access to MySQL databases.
+All quota fields now have an option for selecting the units, rather than always being entered in kB.
+On the Server Template page, added an option to create an SPF DNS record in new domains.
+Virtual servers without mail enabled can now create and manage users, for database and FTP access purposes.
+Server owners can backup their own virtual servers, but only to a remote FTP or SSH server.
+A virtual server with a private IP address can now have it removed on the Edit Server page (assuming that it doesn't have an SSL website or virtual FTP server).Database names can now be restricted to start with the server's domain name, using a new option on the server template page.
+On Sendmail systems, you can specify the bounce message for aliases whose destination is set to Bounce mail.
+The template for an existing virtual server can now be changed. However, this does not immediately effect any of its settings.
+Space used by databases is now included in the disk quota displays, although it is not actually enforced.
+Proxying and frame forwarding can be enabled, disabled and configured more easily for existing web virtual servers using the Edit Proxy Website and Edit Forwarding Frame buttons on the Edit Server page.
+The import feature now supports SSL Apache virtual servers too.
+Added buttons to the user and alias lists for deleting several of each at once.
+Network interfaces are now identified by address rather than name, to avoid problems with interface numbers changing on operating systems like Gentoo and FreeBSD.
+Added a new backup format that doesn't create files in /tmp when not needed, instead using only each server's home directory.
+The default mail user quota is now settable on a per-template basis.
+Moved the option for hard or soft quotas to the server templates page, so that different types of quotas can be used for different domains.
+When importing a virtual server, a parent server can be specified to control the new domain in Virtualmin.
+When disabling a virtual server, the accounts for any mail users are locked too.
+The 'Home directory' and 'Unix users' are now always enabled, unless you select to make them optional on the Module Config page. These are needed for almost all virtual servers, so it makes little sense to show the option.
+Mail users can have their logins temporarily enabled or disabled.
+Limits can now be placed on the number of aliases a virtual server can have, at the server owner and reseller levels. In addition, plugins can specify that certain aliases should not count towards this limit (or be displayed to the user).
+The method by which the domain name is appended or prepended to a mail user's name can now be set on a per-template basis.
+Plugins can now define their own limits to be configured on the Edit Owner Limits form, such as a restriction on the number of mailing lists a server can have.
+Added support for plugins that define new database types.
+Added an option to email a mailbox user with his new account details upon saving, and a template page for editing the message sent.
+Extra Webmin modules can be specified for server owners on the Edit Owner Limits page.
+Virtual server functions that a server own can access (like databases, scripts, users and aliases) can now be individually controlled on the Edit Owner Limits page, rather than being automatically determined based on his ability to create servers.
+When restoring a single virtual server, you can select to restore just one mail/FTP user instead of all of them. You can also choose to just re-import a server whose /etc/webmin/virtual-server/domains file is missing.
+Feature selection when adding or editing a virtual server is now done using checkboxes rather than Yes/No radio buttons.
+Server owners can be prevented from editing the schedule and directory for their Webalizer reports, using a new option on the Server Template page.
+By default, settings that used to be on the Create Server page with are set in the template (such as the quota, bandwidth limit and mailbox/alias/database limits) are no longer displayed. Instead, the settings from the selected template are used. The old behaviour can be restored using a setting on the Module Config page.
+When backing up virtual servers, you can also include core Virtualmin configuration settings, such as templates, and the module configuration.
+The restore page also has options to extract these from a backup. This new feature allows all data relevant to Virtualmin to be backed up from a single place.
+The FTP server can be stopped and started, like the mail, DNS and web servers.
+Multiple databases can be deleted at once from a virtual server.
+When adding or removing Sendmail domains to accept email for, comments in the local domains file in /etc/mail are now preserved.
+Plugins can now define additional inputs to display on the Server Template page, such as defaults for limits on the number of mailing lists, repositories and so on.
+Limits can be set at the server owner level on the number of alias and non-alias servers, which are imposed in addition to the overall limit on servers. This allows users to be given separate higher limits on alias servers.
+When renaming a domain that has users in user@domain format, the users will be renamed too.
+When restoring a backup, the home directory of any virtual servers created is re-allocated to use the directory and rules defined on the destination system.
+Long domain names are now shortened when displayed in lists and menus, to a length settable on the Module Config page.
+Plain text passwords are stored for all new and modified mailbox/FTP users, which allows MySQL, DAV and SVN access to be enabled for users without their passwords needing to be reset.
+The displayed mailbox size for users with Maildir format inboxes includes all sub-folders and other files within the directory.
+The size of mailboxes is calculated from the number of blocks used rather than the byte file sizes, which is more accurate as it reflects the true quota usage.
+Webmin ACL files for Virtual server owners and extra admins can now be included in backups.
+Plugin modules data can now be included in Virtualmin backups, such as Mailman mailing lists, AWstats config files and SVN repositories.
+Bandwidth stats are now included in backups.
+The Command Shell module is now available to server owners - but can be disabled on the Module Config page.
+Proxying to SSL websites now works when using Apache 2 or later.
+When email is enabled or disabled for an existing virtual server, MX records are added to or removed from the DNS domain.
+Virtual server owners are no longer allowed to change the Apache server name or aliases for their websites, as this can confuse Virtualmin.
+The Running Processes extra modules config option now allows you to choose if a domain admin can see other users' processes.
+A custom prefix can be specified when importing a virtual server.
+Added support for finding the mail log from syslog-ng, if using Webmin 1.270.
+When making a backup to a remote server, the connection is tested before the backup is actually started.
+When deleting a virtual server, its webalizer config files are removed too.
+Added an option when creating a virtual server with a private IP address to enter an IP that is already active on the system.
+MySQL database names containing the _ or % characters are now properly escaped in the db table, to prevent their owners from accessing or creating other databases.
+New and modified mailbox messages can use blocks like $IF-VIRTUALMIN-DAV to display different messages depending on whether or not plugin features like DAV are enabled.
+When importing a virtual server, users can be found by a regular expression as well as just matching by primary group.
+The rarely-used 'Group for Unix user' option on the server creation page is now hidden by default.
+Added highlighting to all tables, when using the latest theme.
+When backing up a virtual server, the cron jobs for the Unix user are included too.
+Optimized the bandwidth accounting code for email to only scan the maillog once for all domains, which should speed up the bw.pl process on systems with large mail logs.
+Added a checkbox on the backup page to have the destination directory automatically created.
+When adding a virtual server with a website, a root-owned file is created in ~/logs to prevent deletion of that directory.
+Non-standard ports for SCP and FTP backups can be specified by putting :port after the hostname on the backup form.
+Added an option on the New Mailbox Email page to have the message sent to the domain owner as well.
+Optimized the writelogs.pl program to use less memory.
+---- Changes since 3.19 ----
+When email is set to a new or modified mailbox, the From: address is that of the domain owner.
+Fixed a bug that prevented DNS zones from being added to a file other than named.conf, even if specified in the BIND module.
+Sub-domains with DNS enabled are now added by default as records in the parent DNS zone, rather than as a completely new zone.
+The server template editing page is now broken down into sections, selectable using a menu. This reduces the size of the form, and makes it easier to find settings that you are interested in.
+Removed un-needed code to support versions of Webmin below 1.290.
+Added missing view_domain.cgi script.
+Improved support for running within a Solaris zone (thanks to Textdrive).
+Fixed a bug that could cause users in the wrong domain to be deleted when removing a virtual server.
+Added an option on the Backup Virtual Servers page to have each server's backup file transfered by SCP or FTP after it is created, rather than doing them all at the end of the backup. This saves on temporary local disk space on the server running Virtualmin.
+Added the delete-domain.pl script (ported from the Pro version).
+Virtusers associated with mailboxes are not un-necessarily removed and re-added when no email related changes are made.
+---- Changes since 3.20 ----
+Quota in email messages to domain owners and mailboxes (using the $QUOTA variable) now use nicer units, like 300 MB.
+Domain owners can now perform backups to the virtualmin-backup directory under their home (which does not get included in future backups).
+When adding a DNS zone inside a view that uses an include statement, the included file will be used if specified in the BIND module configuration.
+Added a Module Config option to compress backups using the bzip2 format, which is more efficient.
+---- Changes since 3.21 ----
+Added a Save and Next button to the server template page, for easily moving to the next section.
+Added the --limits-from-template option to create-domain.pl, to inherit default limits from template settings.
+Added a checkbox to the email section of the server templates to bounce email to new domains that does not match a specific alias or user.
+---- Changes since 3.22 ----
+Outgoing address mapping (generics) entries are added for new domain owners.
+User mail directory sizes are now displayed correctly.
+Displayed disk usage for virtual servers is now taken from the group quota (when enabled), to ensure consistency.
+---- Changes since 3.23 ----
+Added upload fields on the SSL certificate form, for using an existing certificate in a file.
+---- Changes since 3.24 ----
+Added a Module Config option to control categorization for domain owner's Webmin modules.
+The creation date and creator (if available) is shown when editing a virtual server.
+MySQL backups are now compressed with gzip, to save on disk space from the original SQL format.
+When log rotation is set to always enabled, it will follow the virtual website setting.
+Changed default Apache log format to combined.
+---- Changes since 3.25 ----
+Added a text field to the domain disable forms for entering a reason why the disable was done.
+Fixed a bug that caused server templates to disappear.
+---- Changes since 3.26 ----
+Creating virtual servers on existing private IPs that are already used by another domain is no longer allowed.
+Added an option in the server templates in the Webmin login section to specify a Webmin group to which the domain owner is added. This can add new modules and override ACLs on existing ones.
+Domain owners can now view their apache access and error logs, via links on the left menu (if using Webmin 1.306 or newer).
+Added a new page for checking user and group disk quotas.
+Password quality restrictions set in the Users and Groups module now apply to mailboxes.
+Database name restrictions now apply when creating virtual servers too.
+---- Changes since 3.28 ----
+When adding a MySQL database, the default character set can be selected.
+In the virtual server list, servers that are using proxy or frame web forwarding have (P) or (F) next to their names.
+An SPF record can be added to and configured in an existing virtual server using the DNS Options button on the domain editing page.
+The DNS IP address for an existing virtual server can also be set using the DNS Options page.
+---- Changes since 3.29 ----
+When renaming a virtual server, an option is available to rename any mailboxes in the domain that contain the old server name.
+Added checkboxes and a button on the Server Templates page to delete several at once.
+---- Changes since 3.30 ----
+Password quality restrictions set in the Users and Groups module are not properly enforced.
+Re-designed the Edit User page to use a cleared sectional layout.
+Backups of mail / FTP users now include their Cron jobs, such as scheduled emails and automatic mail folder clearing.
+Added install-time checks to ensure that the Apache mod_suexec and mod_actions modules are enabled.
+Database backups and restores are done by calling functions in the Webmin 1.310 MySQL and PostgreSQL modules, rather than using duplicate built-in code. This prevents the PostgreSQL login prompt from appearing when doing a command-line restore.
+Email is now also sent when a new alias virtual server is created.
+Added a field to the DNS section of server templates for specifying BIND directives to be added to the named.conf entry for new domains.
+---- Changes since 3.31 ----
+When changing the home directory of a virtual server, all references to the old home in its Webalizer configuration files are updated to the new location. Similarly, when restoring a backup from a server that uses a different home base, the Weblizer configuration is updated to use the new home.
+Updated the Default domain owner limits section of the Server Templates page to add defaults for the 'Can choose database names' and 'Can rename domains' options.
+Fixed a bug that prevents backups from a system using /var/mail for email storage being fully restored on a system that uses ~/Maildir.
+Owners of domains that have virtual FTP enabled are now able to view their FTP server logs.
+Fixed bug that prevents custom ports from being entered for FTP and SSH backups.
+Changed most instances of the word 'Unix' to 'Administrator' in user interface.
+Changed the 'Add Apache user to Unix group for new servers?' option in the server template to add a working No option.
+Virtual server owners using the Apache module are now limited to their home directory for alias targets and other Apache directives that specifiy directories.
+---- Changes since 3.32 ----
+Ported the remote API from Virtualmin Pro to the GPL version, which allows command-line scripts to be run via HTTP.
+Ported all domain creation, management and deletion scripts .pl from the Pro version.
+Added an option to the Edit Owner Limits page for controlling if a domain owner can login via FTP, SSH or neither. Also added a corresponding option to the mass server change form, and the modify-limits.pl command-line script.
+After saving a virtual server, a page showing a confirmation message and common links is displayed, rather than the (slow) Edit Virtual Server screen.
+Changed the mail / FTP user page to hide infrequently used options in collapsed sections.
+Changed all rows of links to put a | between them, increasing readability.
+Cleaned up Edit Virtual Server and Virtual Server Details pages to use collapsible sections and more consitent layout.
+Fixed bug that prevented the email for new sub-servers from being disabled, and added an option to inherit it from the parent template.
+---- Changes since 3.33 ----
+When a mailbox or domain owner is deleted, all of his Cron jobs will be removed too. Similarly, the owner of any Cron jobs will be correctly updated when a useris renamed.
+Added a link from the Edit Virtual Server page to show a server's current password.
+When a mailbox user's password is changed in other modules, it is also updated in Virtualmin's plain-text password file.
+---- Changes since 3.35 ----
+Added the --primary-ip option to create-domain.pl, to create an SSL domain on the primary IP.
+Added the Shared IP Addresses page under System Configuration for defining additional shared addresses that can be selected when creating servers without a private IP. Also updated the server creation page to allow selection of one of these shared IPs, and the create-domain.pl program to use one with the --shared-ip parameter.
+Fixed bug that broke renaming of virtual servers when using debian-style sites-enabled directory for the Apache config.
+---- Changes since 3.36 ----
+Change the Module Config option for the Upload and Download module to limit to uploads only.
+Broke the Bandwidth Monitoring page down into collapsible sections.
+Added a new page for regularly updating a dynamic IP address, for systems where the primary IP is not static.
+Updated the 'Show system information on main page?' Module Config option to allow display for resellers too.
+Plugin modules can now have help links on the virtual server creation and editing pages.
+Added caching to make lookups of domains by parent and user faster.
+---- Changes since 3.37 ----
+When configuring email notification for new mailboxes and domains, you can now enter a Bcc address as well as a Cc address.
+Moved options for sending email to new and updated mailboxes from the Module Config page to the form for editing the actual messages.
+Domain owners who cannot login via SSH are automatically added to the deniedssh group, which the SSH server is configured to deny even before checking their shell.
+---- Changes since 3.38 ----
+Added the --template option to modify-domain.pl.
+Fixed the Change Password link.
+Added the Upgrade to Virtualmin Pro link on the left menu under System Settings for easily upgrading to the Pro version.
+Re-factored all code for displaying quota fields, so that the text box is greyed out when 'Unlimited' is selected.
+Added Prev/Next buttons to template form, for easily navigating through sections.
+Added the ability to migrate cPanel and Ensim backups as Virtualmin domains. This feature was originally in the Pro version only, but has now been backported to the GPL release.
+Change the Module Config option for new domain passwords to add an option to require the password to be entered twice.
+Added a Module Config option for a Unix group to add all domain owners to.
+---- Changes since 3.39 ----
+If a domain with the same TLD already exists as one you are creating, the automatically generated group name will be the new full domain name, to avoid clashes.
+The stats web directory is now password-protected by default.
+Backported the server template setting for disabled website HTML from the Pro version of Virtualmin.

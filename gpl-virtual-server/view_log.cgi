@@ -1,0 +1,1 @@
+../virtual-server/view_log.cgi

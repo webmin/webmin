@@ -1,0 +1,1 @@
+../virtual-server/enable_domain.cgi

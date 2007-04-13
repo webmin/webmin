@@ -1,0 +1,1 @@
+../virtual-server/edit_alias.cgi
