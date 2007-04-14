@@ -422,8 +422,13 @@ if ($r->{$f.'-port-comp'}) {
 		$r->{$f.'-port-comp'},
 		"<b>".$r->{$f.'-port-num'}."</b>"));
 	}
-elsif ($r->{$f.'-port-range'}) {
+elsif ($r->{$f.'-port-range'} eq '><') {
 	push(@rv, &text('desc_portrange_'.$f,
+		"<b>".$r->{$f.'-port-start'}."</b>",
+		"<b>".$r->{$f.'-port-end'}."</b>"));
+	}
+elsif ($r->{$f.'-port-range'} eq '<>') {
+	push(@rv, &text('desc_portrangenot_'.$f,
 		"<b>".$r->{$f.'-port-start'}."</b>",
 		"<b>".$r->{$f.'-port-end'}."</b>"));
 	}
@@ -1400,7 +1405,52 @@ $pt .= &ui_oneradio($f."_port", "range",
     &text('edit_portrange',
 	  &ui_textbox($f."_portstart", $rule->{$f."-port-start"}, 6),
 	  &ui_textbox($f."_portend", $rule->{$f."-port-end"}, 6)),
-    $rule->{$f."-port-range"})."<br>\n";
+    $rule->{$f."-port-range"} eq '><')."<br>\n";
+$pt .= &ui_oneradio($f."_port", "rangenot",
+    &text('edit_portrangenot',
+	  &ui_textbox($f."_portstartnot", $rule->{$f."-port-start"}, 6),
+	  &ui_textbox($f."_portendnot", $rule->{$f."-port-end"}, 6)),
+    $rule->{$f."-port-range"} eq '<>')."<br>\n";
+
+return ($ft, $pt);
+}
+
+# parse_object_input(rule, prefix)
+sub parse_object_input
+{
+local ($rule, $f) = @_;
+delete($rule->{$f."-any"});
+delete($rule->{$f."-thishost"});
+delete($rule->{$f."-host"});
+delete($rule->{$f."-numhost"});
+if ($in{$f} eq "any") {
+	$rule->{$f."-any"} = 1;
+	}
+elsif ($in{$f} eq "thishost") {
+	$rule->{$f."-thishost"} = 1;
+	}
+elsif ($in{$f} eq "host") {
+	gethostbyname($in{$f."_host"}) ||
+		&error($text{'save_ehost'.$f});
+	$rule->{$f."-host"} = $in{$f."_host"};
+	&check_ipaddress($in{$f."_mask"}) ||
+		&error($text{'save_emask'.$f});
+	$rule->{$f."-mask"} = $in{$f."_mask"};
+	}
+elsif ($in{$f} eq "numhost") {
+	gethostbyname($in{$f."_numhost"}) ||
+		&error($text{'save_ehost'.$f});
+	$rule->{$f."-numhost"} = $in{$f."_numhost"};
+	$in{$f."_nummask"} = "32" if ($in{$f."_nummask"} eq "");
+	$in{$f."_nummask"} =~ /^\d+$/ &&
+	    $in{$f."_nummask"} <= 32 ||
+		&error($text{'save_enummask'.$f});
+	$rule->{$f."-nummask"} = $in{$f."_nummask"};
+	}
+
+# Parse port section
+delete($rule->{$f."-port-comp"});
+delete($rule->{$f."-port-range"});
 
 return ($ft, $pt);
 }
@@ -1452,9 +1502,18 @@ elsif ($in{$f."_port"} eq "range") {
 		&error($text{'save_eportstart'.$f});
 	&valid_port($in{$f."_portend"}) ||
 		&error($text{'save_eportend'.$f});
-	$rule->{$f."-port-range"} ||= "<>";
+	$rule->{$f."-port-range"} = "><";
 	$rule->{$f."-port-start"} = $in{$f."_portstart"};
 	$rule->{$f."-port-end"} = $in{$f."_portend"};
+	}
+elsif ($in{$f."_port"} eq "rangenot") {
+	&valid_port($in{$f."_portstartnot"}) ||
+		&error($text{'save_eportstart'.$f});
+	&valid_port($in{$f."_portendnot"}) ||
+		&error($text{'save_eportend'.$f});
+	$rule->{$f."-port-range"} = "<>";
+	$rule->{$f."-port-start"} = $in{$f."_portstartnot"};
+	$rule->{$f."-port-end"} = $in{$f."_portendnot"};
 	}
 }
 

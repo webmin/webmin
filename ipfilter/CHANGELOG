@@ -5,3 +5,5 @@ The firewall configuration can now be copied automatically to multiple hosts in 
 Added the ability to view and edit NAT rules, so that you can setup masquerading and port redirection.
 ---- Changes since 1.240 ----
 On Solaris 10 systems IPfilter is now enabled at boot time using SMF, rather than an init script.
+---- Changes since 1.340 ----
+Added an option to match ports NOT within some range (and fixed the old option to match ports within a range).
