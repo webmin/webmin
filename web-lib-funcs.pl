@@ -879,6 +879,7 @@ elsif ($ENV{'SCRIPT_NAME'} =~ /^(.*)\/[^\/]*$/) {
 else {
 	$url = "$prot://$ENV{'SERVER_NAME'}$port/$wp$_[0]";
 	}
+&load_theme_library();
 if (defined(&theme_redirect)) {
 	&theme_redirect($_[0], $url);
 	}
@@ -3773,7 +3774,9 @@ return wantarray ? ($ok, $err) : $ok;
 # remote_session_name(host|&server)
 sub remote_session_name
 {
-return ref($_[0]) && $_[0]->{'host'} ? "$_[0]->{'host'}:$_[0]->{'port'}" : $_[0];
+return ref($_[0]) && $_[0]->{'host'} && $_[0]->{'port'} ?
+		"$_[0]->{'host'}:$_[0]->{'port'}" :
+       ref($_[0]) ? "" : $_[0];
 }
 
 # remote_foreign_require(server, module, file)
@@ -3952,8 +3955,8 @@ local $sn = &remote_session_name($_[0]);
 if (ref($_[0])) {
 	# Server structure was given
 	$serv = $_[0];
-	$serv->{'user'} || return &$remote_error_handler(
-				"No login set for server");
+	$serv->{'user'} || !$sn || return &$remote_error_handler(
+					"No login set for server");
 	}
 elsif ($_[0]) {
 	# lookup the server in the webmin servers module if needed
