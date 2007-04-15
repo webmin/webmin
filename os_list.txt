@@ -65,6 +65,7 @@ Ubuntu Linux			$1	debian-linux	3.1	$etc_issue =~ /Ubuntu.*\s([0-9\.]+)\s/i
 # Debian Linux versions with numbers
 Debian Linux			$1	debian-linux	$1	$etc_issue =~ /Debian.*\s([0-9\.]+)\s/i
 Debian Linux			3.2	debian-linux	3.2	$etc_issue =~ /Debian.*\stesting\/unstable\s/i
+Debian Linux			4.0	debian-linux	4.0	$etc_issue =~ /Debian.*lenny\/sid\s/i
 
 # SuSE enterprise versions
 SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =~ /VERSION\s+=\s+(\S+)/i
@@ -92,6 +93,7 @@ Mandrake Linux Corporate Server	1.0	redhat-linux	6.2	$etc_issue =~ /Mandrake\s+C
 # Mandrake derivatives
 pclinuxos Linux			2005	mandrake-linux	10.0	`cat /etc/mandrake-release 2>/dev/null` =~ /pclinuxos\s+Linux\s+release\s+2005/i
 pclinuxos Linux			2006	mandrake-linux	10.0	`cat /etc/mandrake-release 2>/dev/null` =~ /pclinuxos\s+Linux\s+release\s+2006/i
+pclinuxos Linux			2007	mandrake-linux	10.0	`cat /etc/mandrake-release 2>/dev/null` =~ /PCLinuxOS\s+release\s+2007/i
 
 # Mandrake Linux
 Mandrake Linux			5.3	redhat-linux	5.0	$etc_issue =~ /Mandrake\s+release\s+5\.3/i
