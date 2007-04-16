@@ -36,3 +36,5 @@ Added an access control option to limit the directory for maps files.
 Added a Module Config option for the path to postsuper, which is used instead of assuming that it is in the PATH.
 ---- Changes since 1.330 ----
 Postfix configuration parameters are read from main.cf directly, instead of calling the postconf command (which is slow).
+---- Changes since 1.340 ----
+Added Module Config options for stop, start and reload commands.

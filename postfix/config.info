@@ -9,6 +9,7 @@ mailq_sort=Sort mail queue by,1,0-Queue ID,1-From address,2-To address,4-Status,
 mailq_count=Show size of mail queue on main page?,1,0-Yes,1-No
 check_config=Test config file after change?,1,1-Yes,0-No
 index_check=Check Postfix configuration on main page?,1,1-Yes,0-No
+
 line2=System configuration,11
 postfix_control_command=Full path to Postfix control command,0
 postfix_config_command=Full path to Postfix config command,0
@@ -22,3 +23,6 @@ postfix_super_command=Full path to Postfix supervisor command,0
 mailq_dir=Mail queue base directory,0
 mailq_cmd=Mail queue display command,0
 postcat_cmd=Mail queue decoding command,0
+start_cmd=Command to start Postfix,3,Use control command
+stop_cmd=Command to stop Postfix,3,Use control command
+reload_cmd=Command to apply Postfix configuration,3,Use control command

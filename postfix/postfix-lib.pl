@@ -126,8 +126,12 @@ foreach my $l (@$lref) {
 	}
 if (!defined($out)) {
 	# Fall back to asking Postfix
-	$out = &backquote_command("$config{'postfix_config_command'} -c $config_dir -h $name 2>&1", 1);  # -h tells postconf not to output the name of the parameter
-	if ($?) { &error(&text('query_get_efailed', $name, $out)); }
+	# -h tells postconf not to output the name of the parameter
+	$out = &backquote_command(
+	  "$config{'postfix_config_command'} -c $config_dir -h $name 2>&1", 1);
+	if ($?) {
+		&error(&text('query_get_efailed', $name, $out));
+		}
 	elsif ($out =~ /warning:.*unknown\s+parameter/) {
 		return undef;
 		}
@@ -225,8 +229,14 @@ sub reload_postfix
     if (is_postfix_running())
     {
 	if (check_postfix()) { &error("$text{'check_error'}"); }
-	my $out = &system_logged("$config{'postfix_control_command'} -c $config_dir reload >/dev/null 2>&1");
-	if ($out) { &error($text{'reload_efailed'}); }
+	my $ex;
+	if ($config{'reload_cmd'}) {
+		$ex = &system_logged("$config{'postfix_control_command'} -c $config_dir reload >/dev/null 2>&1");
+		}
+	else {
+		$ex = &system_logged("$config{'reload_cmd'} >/dev/null 2>&1");
+		}
+	if ($ex) { &error($text{'reload_efailed'}); }
     }
 }
 
@@ -234,7 +244,13 @@ sub reload_postfix
 # Attempts to stop postfix, returning undef on success or an error message
 sub stop_postfix
 {
-local $out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir stop 2>&1");
+local $out;
+if ($config{'stop_cmd'}) {
+	$out = &backquote_logged("$config{'stop_cmd'} 2>&1");
+	}
+else {
+	$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir stop 2>&1");
+	}
 return $? ? "<tt>$out</tt>" : undef;
 }
 
@@ -242,7 +258,13 @@ return $? ? "<tt>$out</tt>" : undef;
 # Attempts to start postfix, returning undef on success or an error message
 sub start_postfix
 {
-local $out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir start 2>&1");
+local $out;
+if ($config{'start_cmd'}) {
+	$out = &backquote_logged("$config{'start_cmd'} 2>&1");
+	}
+else {
+	$out = &backquote_logged("$config{'postfix_control_command'} -c $config_dir start 2>&1");
+	}
 return $? ? "<tt>$out</tt>" : undef;
 }
 
