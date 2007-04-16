@@ -35,7 +35,7 @@ printf "<input type=radio name=uedit_mode value=5 %s> $text{'acl_uedit_group'}\n
 	$o->{'uedit_mode'} == 5 ? "checked" : "";
 printf "<input name=uedit_group size=40 value='%s'> %s<br>\n",
 	$o->{'uedit_mode'} == 5 ?
-	 join(" ", map { "".&my_getgrgid($_) } split(/\s+/, $o->{'uedit'})) :"",
+	 join(" ", map { "".getgrgid($_) } split(/\s+/, $o->{'uedit'})) :"",
 	&group_chooser_button("uedit_group", 1);
 printf "%s <input type=checkbox name=uedit_sec value=1 %s> %s<br>\n",
 	"&nbsp;" x 5, $o->{'uedit_sec'} ? 'checked' : '',$text{'acl_uedit_sec'};
@@ -116,7 +116,7 @@ $_[0]->{'uedit'} = $in{'uedit_mode'} == 2 ? $in{'uedit_can'} :
 		   $in{'uedit_mode'} == 3 ? $in{'uedit_cannot'} :
 		   $in{'uedit_mode'} == 4 ? $in{'uedit_uid'} :
 		   $in{'uedit_mode'} == 5 ?
-			join(" ", map { "".&my_getgrnam($_) }
+			join(" ", map { "".getgrnam($_) }
 			     split(/\s+/, $in{'uedit_group'})) : "";
 $_[0]->{'uedit2'} = $in{'uedit_mode'} == 4 ? $in{'uedit_uid2'} : undef;
 $_[0]->{'uedit_sec'} = $in{'uedit_mode'} == 5 ? $in{'uedit_sec'} : undef;
