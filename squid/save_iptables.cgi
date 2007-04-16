@@ -65,12 +65,29 @@ else {
 if ($in{'enabled'}) {
 	# Add appropriate httpd_accel directives
 	&lock_file($config{'squid_conf'});
-	&save_directive($conf, "httpd_accel_port",
-			[ { 'name' => 'httpd_accel_port',
-			    'values' => [ 80 ] } ]);
-	&save_directive($conf, "httpd_accel_host",
-			[ { 'name' => 'httpd_accel_host',
-			    'values' => [ 'virtual' ] } ]);
+	if ($squid_version < 2.6) {
+		# Old directives
+		&save_directive($conf, "httpd_accel_port",
+				[ { 'name' => 'httpd_accel_port',
+				    'values' => [ 80 ] } ]);
+		&save_directive($conf, "httpd_accel_host",
+				[ { 'name' => 'httpd_accel_host',
+				    'values' => [ 'virtual' ] } ]);
+		}
+	else {
+		# In Squid 2.6, acceleration is a port option
+		@ports = &find_config("http_port", $conf);
+		foreach my $p (@ports) {
+			local $trans = 0;
+			foreach $v (@{$p->{'values'}}) {
+				$trans++ if ($v eq "transparent");
+				}
+			if (!$trans) {
+				push(@{$p->{'values'}}, "transparent");
+				}
+			}
+		&save_directive($conf, "http_port", \@ports);
+		}
 	&flush_file_lines();
 	&unlock_file($config{'squid_conf'});
 	}
