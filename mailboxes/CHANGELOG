@@ -35,3 +35,5 @@ The number of folders each user has is displayed in the user list.
 Use ~username instead of the full home directory path in the folders list.
 ---- Changes since 1.330 ----
 Replaced the HTMLarea widget for composing email with Xinha.
+---- Changes since 1.340 ----
+Removed huge un-necessary plugins and styles for Xinha.
