@@ -37,6 +37,7 @@ else {
 	&ui_print_header(undef, $text{'uninstalls_title'}, "");
 
 	print &ui_form_start("uninstall_mods.cgi", "post");
+	print "<center>\n";
 	foreach $d (@d) {
 		print &ui_hidden("d", $d),"\n";
 		}
@@ -46,8 +47,9 @@ else {
 		$mcount += scalar(@{$mod->{'mods'}})-1;
 		$fcount += scalar(@{$mod->{'packlist'}})+1;
 		}
-	print &text('uninstalls_rusure', scalar(@mods), $mcount, $fcount),"\n";
-	print "<center><input type=submit name=confirm ",
+	print &text('uninstalls_rusure', scalar(@mods), $mcount, $fcount),
+	      "<p>\n";
+	print "<input type=submit name=confirm ",
 	      "value='$text{'uninstall_ok'}'></center></form>\n";
 
 	&ui_print_footer("", $text{'index_return'});
