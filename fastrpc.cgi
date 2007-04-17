@@ -232,7 +232,9 @@ while(1) {
 		print STDERR "fastrpc: eval $arg->{'module'} $arg->{'code'}\n" if ($gconfig{'rpcdebug'});
 		local $rv;
 		if ($arg->{'module'}) {
-			$rv = eval "package $arg->{'module'};\n".
+			local $pkg = $arg->{'module'};
+			$pkg =~ s/[^A-Za-z0-9]/_/g;
+			$rv = eval "package $pkg;\n".
 				   $arg->{'code'}."\n";
 			}
 		else {
