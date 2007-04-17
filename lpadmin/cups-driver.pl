@@ -131,9 +131,8 @@ printf "<td><input name=program size=40 value='%s'></td> </tr>\n",
 # Display all the CUPS drivers
 printf "<tr> <td valign=top><input type=radio name=mode value=1 %s> %s</td>\n",
 	$_[1]->{'mode'} == 1 ? 'checked' : '', $text{'cups_driver'};
-print "<td><select name=ppd size=10>\n";
 local (@ppds, $d, $f, $ppd, %cache, $outofdate, @files, %donefile);
-open(FIND, "find '$config{'model_path'}' -type f -print |");
+open(FIND, "find -L ".quotemeta($config{'model_path'})." -type f -print |");
 while(<FIND>) {
 	chop;
 	/([^\/]+)$/;
@@ -161,6 +160,7 @@ if ($outofdate || scalar(keys %cache) != scalar(@files)) {
 	&write_file("$module_config_directory/ppd-cache", \%cache);
 	}
 local %done;
+print "<td><select name=ppd size=10>\n";
 foreach $f (sort { $cache{$a} cmp $cache{$b} } keys %cache) {
 	if ($cache{$f} && $cache{$f} ne "duplicate" &&
 	    !$done{$cache{$f}}++) {
