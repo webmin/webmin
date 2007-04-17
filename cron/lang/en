@@ -16,7 +16,7 @@ index_move=Move
 index_run=Running?
 index_ecmd=The command $1 for managing user Cron configurations was not found. Maybe Cron is not installed on this system?
 index_esingle=The file $1 listing Cron jobs does not exist. Maybe Cron is not installed on this system?
-index_delete=Deleted Selected Jobs
+index_delete=Delete Selected Jobs
 index_disable=Disable Selected Jobs
 index_enable=Enable Selected Jobs
 
