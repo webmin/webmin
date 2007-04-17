@@ -197,7 +197,7 @@ else {
 sub this_server
 {
 local $type = 'unknown';
-foreach $s (@server_types) {
+foreach my $s (@server_types) {
 	if ($s->[2] && $gconfig{'os_type'} =~ /^$s->[2]$/ ||
 	    $s->[3] && $gconfig{'real_os_type'} =~ /$s->[3]/) {
 		$type = $s->[0];
