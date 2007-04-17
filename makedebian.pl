@@ -1,7 +1,5 @@
 #!/usr/local/bin/perl
 # Build a Debian package of Webmin
-# XXX send to apt
-# XXX test upgrading from old webmin package
 
 use POSIX;
 
@@ -394,6 +392,10 @@ unlink("deb/${product}_$ver.dsc");
 system("gpg --output deb/${product}_$ver.dsc --clearsign deb/${product}_$ver.plain");
 unlink("deb/${product}_$ver.plain");
 print "Wrote source deb/${product}_$ver.dsc\n";
+
+# Add to our repository
+chdir("/usr/local/webadmin/deb/repository");
+system("reprepro -Vb . includedeb sarge ../${product}_${ver}_all.deb");
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file
