@@ -1874,7 +1874,7 @@ else { splice(@lines, $_[1], 1); }
 &close_tempfile(FILE);
 }
 
-# read_file_lines(file)
+# read_file_lines(file, [readonly])
 # Returns a reference to an array containing the lines from some file. This
 # array can be modified, and will be written out when flush_file_lines()
 # is called.
@@ -1894,12 +1894,14 @@ if (!$main::file_cache{$realfile}) {
                 }
         close(READFILE);
         $main::file_cache{$realfile} = \@lines;
+	$main::file_cache_noflush{$realfile} = $_[1];
         }
 return $main::file_cache{$realfile};
 }
 
 # flush_file_lines([file], [eol])
-# Write out to a file previously read by read_file_lines to disk
+# Write out to a file previously read by read_file_lines to disk (except
+# for those marked readonly).
 sub flush_file_lines
 {
 local $f;
@@ -1915,14 +1917,17 @@ else {
 	}
 local $eol = $_[1] || "\n";
 foreach $f (@files) {
-        &open_tempfile(FLUSHFILE, ">$f");
-	local $line;
-        foreach $line (@{$main::file_cache{$f}}) {
-                (print FLUSHFILE $line,$eol) ||
-			&error(&text("efilewrite", $f, $!));
-                }
-        &close_tempfile(FLUSHFILE);
+	if (!$main::file_cache_noflush{$f}) {
+		&open_tempfile(FLUSHFILE, ">$f");
+		local $line;
+		foreach $line (@{$main::file_cache{$f}}) {
+			(print FLUSHFILE $line,$eol) ||
+				&error(&text("efilewrite", $f, $!));
+			}
+		&close_tempfile(FLUSHFILE);
+		}
 	delete($main::file_cache{$f});
+	delete($main::file_cache_noflush{$f});
         }
 }
 

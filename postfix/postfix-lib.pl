@@ -114,7 +114,7 @@ sub get_current_value
 {
 # First try to get the value from main.cf directly
 my ($name,$key)=split /:/,$_[0];
-my $lref = &read_file_lines($config{'postfix_config_file'});
+my $lref = &read_file_lines($config{'postfix_config_file'}, 1);
 my $out;
 foreach my $l (@$lref) {
 	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/ &&
