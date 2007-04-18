@@ -9,3 +9,5 @@ Command-line options for the hwclock command can now be specified on the Module 
 Added an API for getting and setting the system and hardware times, for calling by other modules.
 ---- Changes since 1.210 ----
 When the hardware or system time is not editable due to module access control restrictions, the times are now displayed (but cannot be changed).
+---- Changes since 1.340 ----
+Added check for empty timeservers field.

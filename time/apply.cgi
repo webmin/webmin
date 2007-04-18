@@ -50,6 +50,7 @@ if( $in{ 'action' } eq $text{ 'action_apply' } )
 } elsif( $in{ 'action' } eq $text{ 'index_sync' }) {
   # Sync with a time server
   $access{'ntp'} || &error($text{'acl_nontp'});
+  $in{'timeserver'} =~ /\S/ || &error($text{'error_etimeserver'});
   $err = &sync_time($in{'timeserver'}, $in{'hardware'});
   &error($err) if ($err);
 

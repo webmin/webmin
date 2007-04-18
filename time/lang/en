@@ -43,6 +43,7 @@ error_hw=Can't set the hardware time : $1
 error_sync=Can't sync with system time : $1
 error_ediff=Time server different with local time is too large : $1 days
 error_entp=NTP time synchronization failed : $1
+error_etimeserver=No time servers to sync with entered
 
 log_set_date=Set system time to $1
 log_set_hwclock=Set hardware clock to $1
