@@ -300,3 +300,5 @@ Added a Module Config option for a Unix group to add all domain owners to.
 If a domain with the same TLD already exists as one you are creating, the automatically generated group name will be the new full domain name, to avoid clashes.
 The stats web directory is now password-protected by default.
 Backported the server template setting for disabled website HTML from the Pro version of Virtualmin.
+The number of days to keep old bandwidth data can now be configured on the Bandwidth Monitoring page.
+Added the list-features.pl script, for finding available features for new virtual servers.
