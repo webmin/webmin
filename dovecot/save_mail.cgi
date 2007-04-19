@@ -48,7 +48,7 @@ $in{'umask_def'} || $in{'umask'} =~ /^[0-7]{4}$/ ||&error($text{'mail_eumask'});
 if (&find("pop3_uidl_format", $conf, 2)) {
 	$uidl = $in{'pop3_uidl_format'} eq '*' ?
 			$in{'pop3_uidl_format_other'} : $in{'pop3_uidl_format'};
-	$uidl =~ /^\S+$/ || &error($text{'mail_euid'});
+	$uidl =~ /^\S+$/ || &error($text{'mail_euidl'});
 	&save_directive($conf, "pop3_uidl_format", $uidl);
 	}
 
