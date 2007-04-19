@@ -38,8 +38,10 @@ if ($search) {
 	@avail = sort { lc($a->{'name'}) cmp lc($b->{'name'}) } @avail;
 
 	if (@avail) {
-		$hasdesc = $avail[0]->{'desc'};
-		$hasver = $avail[0]->{'version'};
+		foreach $a (@avail) {
+			$hasdesc++ if ($a->{'desc'});
+			$hasver++ if ($a->{'version'});
+			}
 		print &ui_columns_start(
 			[ $text{'find_name'},
 			  $hasver ? ($text{'find_version'}) : ( ),

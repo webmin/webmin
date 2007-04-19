@@ -1937,6 +1937,7 @@ sub unflush_file_lines
 {
 local $realfile = &translate_filename($_[0]);
 delete($main::file_cache{$realfile});
+delete($main::file_cache_noflush{$realfile});
 }
 
 # unix_user_input(fieldname, user, [form])
