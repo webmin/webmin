@@ -111,10 +111,15 @@ while($line = <$fh>) {
 		local @dirs = &parse_config_file($fh, $_[1], $_[2], 1);
 		local $altmod = $mod;
 		$altmod =~ s/^(\S+)_module$/mod_$1/g;
+		local $mpmmod = $mod;
+		$mpmmod =~ s/^mpm_//; $mpmmod =~ s/_module$//;
 		if (!$not && $httpd_modules{$mod} ||
 		    $not && !$httpd_modules{$mod} ||
 		    !$not && $httpd_modules{$altmod} ||
-		    $not && !$httpd_modules{$altmod}) {
+		    $not && !$httpd_modules{$altmod} ||
+		    !$not && $httpd_modules{$mpmmod} ||
+		    $not && !$httpd_modules{$mpmmod}
+		    ) {
 			# use the directives..
 			push(@rv, { 'line', $oldline,
 				    'eline', $oldline,
