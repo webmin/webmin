@@ -27,3 +27,5 @@ Added checkboxes and buttons for deleting multiple interfaces and host addresses
 Active routes can be added and deleted on Linux and Solaris systems.
 ---- Changes since 1.290 ----
 Added a button for activating several boot-time interfaces at once.
+---- Changes since 1.340 ----
+Fixed broken SuSE 10.2+ support.
