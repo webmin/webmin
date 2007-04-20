@@ -4626,11 +4626,13 @@ if ($_[0] == 2) {
 	else {
 		print &text('progress_nosize', $progress_callback_url),"<br>\n";
 		}
+	$last_progress_time = $last_progress_size = undef;
 	}
 elsif ($_[0] == 3) {
 	# Got data update
 	local $sp = $progress_callback_prefix.("&nbsp;" x 5);
 	if ($progress_size) {
+		# And we have a size to compare against
 		local $st = int(($_[1] * 10) / $progress_size);
 		local $time_now = time();
 		if ($st != $progress_step ||
@@ -4642,7 +4644,11 @@ elsif ($_[0] == 3) {
 		$progress_step = $st;
 		}
 	else {
-		print $sp,&text('progress_data2', $_[1]),"<br>\n";
+		# No total size .. so only show in 100k jumps
+		if ($_[1] > $last_progress_size+100*1024) {
+			print $sp,&text('progress_data2', $_[1]),"<br>\n";
+			$last_progress_size = $_[1];
+			}
 		}
 	}
 elsif ($_[0] == 4) {
