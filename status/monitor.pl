@@ -261,7 +261,6 @@ system("$config{'pager_cmd'} ".quotemeta($config{'sched_pager'})." ".
 sub send_status_sms
 {
 local ($text) = @_;
-print STDERR "carrier=$config{'sched_carrier'} sms=$config{'sched_sms'}\n";
 return if (!$text || !$config{'sched_carrier'} || !$config{'sched_sms'});
 &foreign_require("mailboxes", "mailboxes-lib.pl");
 
