@@ -11,7 +11,7 @@ print "<p>\n";
 $ttcmd = "<tt>$config{'reboot_command'}</tt>";
 if ($in{'confirm'}) {
 	print "<font size=+1>",&text('reboot_exec', $ttcmd),"</font><p>\n";
-	&system_logged("$config{'reboot_command'} >$null_file 2>$null_file");
+	&reboot_system();
 	&webmin_log("reboot");
 	}
 else {

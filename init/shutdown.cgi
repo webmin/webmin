@@ -11,7 +11,7 @@ print "<p>\n";
 $ttcmd = "<tt>$config{'shutdown_command'}</tt>";
 if ($in{'confirm'}) {
 	print "<font size=+1>",&text('shutdown_exec', $ttcmd),"</font><p>\n";
-	&system_logged("$config{'shutdown_command'} >$null_file 2>$null_file");
+	&shutdown_system();
 	&webmin_log("shutdown");
 	}
 else {

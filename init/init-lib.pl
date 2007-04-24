@@ -1116,5 +1116,15 @@ foreach my $f (split(/\s+/, $config{'rc_conf'})) {
 	}
 }
 
+sub reboot_system
+{
+&system_logged("$config{'reboot_command'} >$null_file 2>$null_file");
+}
+
+sub shutdown_system
+{
+&system_logged("$config{'shutdown_command'} >$null_file 2>$null_file");
+}
+
 1;
 
