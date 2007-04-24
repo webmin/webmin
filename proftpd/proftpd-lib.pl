@@ -702,7 +702,7 @@ if ($config{'test_always'}) {
 sub restart_button
 {
 local $r = &is_proftpd_running();
-return undef if ($r < 0);p
+return undef if ($r < 0);
 local $args = "redir=".&urlize(&this_url());
 if ($r) {
 	$rv .= "<a href=\"apply.cgi?$args&pid=$1\">$text{'proftpd_apply'}</a><br>\n";
