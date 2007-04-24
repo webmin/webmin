@@ -8,7 +8,11 @@ return { 'up' => -1 } if (!&foreign_check($_[1]));
 local %pconfig = &foreign_config($_[1]);
 -r $pconfig{'proftpd_path'} || return { 'up' => -1 };
 &foreign_require($_[1], "proftpd-lib.pl");
-if (&foreign_call($_[1], "get_proftpd_pid")) {
+local $r = &foreign_call($_[1], "is_proftpd_running");
+if ($r < 0) {
+	return { 'up' => -1 };
+	}
+elsif ($r > 0) {
 	return { 'up' => 1 };
 	}
 else {

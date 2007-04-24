@@ -701,21 +701,27 @@ if ($config{'test_always'}) {
 # Returns HTML for a link to put in the top-right corner of every page
 sub restart_button
 {
-local $conf = &get_config();
-local $st = &find_directive("ServerType", $conf);
-return undef if (lc($st) eq "inetd");
-local $rv;
-local $pidfile = $config{'pid_file'};
-$args = "redir=".&urlize(&this_url());
-if (open(PID, $pidfile) && <PID> =~ /(\d+)/ && kill(0, $1)) {
+local $r = &is_proftpd_running();
+return undef if ($r < 0);p
+local $args = "redir=".&urlize(&this_url());
+if ($r) {
 	$rv .= "<a href=\"apply.cgi?$args&pid=$1\">$text{'proftpd_apply'}</a><br>\n";
 	$rv .= "<a href=\"stop.cgi?$args&pid=$1\">$text{'proftpd_stop'}</a>\n";
 	}
 else {
 	$rv = "<a href=\"start.cgi?$args\">$text{'proftpd_start'}</a><br>\n";
 	}
-close(PID);
 return $rv;
+}
+
+# is_proftpd_running()
+# Returns the PID if ProFTPd is running, 0 if down, -1 if running under inetd
+sub is_proftpd_running
+{
+local $conf = &get_config();
+local $st = &find_directive("ServerType", $conf);
+return -1 if (lc($st) eq "inetd");
+return &check_pid_file($config{'pid_file'});
 }
 
 # this_url()
