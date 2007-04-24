@@ -202,7 +202,7 @@ foreach $c (@info_order) {
 			}
 		push(@opts, [ "free", $p[$#p] !~ /^(\S*)\-(.*)$/ ? $p[$#p]
 								 : " " ]);
-		$field = &ui_radio($c, $fv ? "" : $config{$c}, \@opts)." ".
+		$field = &ui_radio($c, $fv ? "free" : $config{$c}, \@opts)." ".
 			 &ui_textbox($c."_free", $fv, 20);
 		}
 	elsif ($p[1] == 12) {
