@@ -86,45 +86,48 @@ if (!$in{'clear'}) {
 
 # Show the history and command input
 if ($history) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'index_history'}</b></td> </tr>\n";
-	print "<tr $cb> <td><pre>";
-	print $history;
-	print "</pre></td></tr> </table><p>\n";
+	print &ui_table_start($text{'shell_history'}, "width=100%", 2);
+	print &ui_table_row(undef, "<pre>$history</pre>", 2);
+	print &ui_table_end();
 	print "<hr>\n";
 	}
 
 print "$text{'index_desc'}<br>\n";
-print "<form action=index.cgi method=post enctype=multipart/form-data>\n";
+print &ui_form_start("index.cgi", "form-data");
+
 print "<table width=100%><tr>\n";
-print "<td><input type=submit value='$text{'index_ok'}'></td>\n";
-print "<td><input name=cmd size=50></td>\n";
-print "<td align=right><input type=submit name=clear ",
-      "value='$text{'index_clear'}'></td>\n";
+
+# Command to run
+print "<td width=10%>",&ui_submit($text{'index_ok'}),"</td>\n";
+print "<td>",&ui_textbox("cmd", undef, 50, 0, undef,
+			 "style='width:100%'"),"</td>\n";
+print "<td align=right width=10%>",&ui_submit($text{'index_clear'}, "clear"),
+      "</td>\n";
 print "</tr>\n";
-print "<input type=hidden name=pwd value='$pwd'>\n";
-print "<input type=hidden name=history value='",&urlize($history),"'>\n";
+
+print &ui_hidden("pwd", $pwd);
+print &ui_hidden("history", &urlize($history));
 foreach $p (@previous) {
-	print "<input type=hidden name=previous value='",
-	      &html_escape($p, 1),"'>\n";
+	print &ui_hidden("previous", $p);
 	}
 
+# Previous command menu
 if (@previous) {
-	print "<tr> <td><input name=doprev type=submit value='$text{'index_pok'}'></td>\n";
-	print "<td><select name=pcmd>\n";
-	foreach $p (reverse(@previous)) {
-		printf "<option value='%s'>%s\n",
-			&html_escape($p, 1),
-			&html_escape($p, 1);
-		}
-	print "</select>\n";
+	print "<tr>\n";
+	print "<td width=10%>",&ui_submit($text{'index_pok'}, "doprev"),
+	      "</td>\n";
+	print "<td>",&ui_select("pcmd", undef,
+			[ reverse(@previous) ]);
 	print "<input type=button name=movecmd ",
-	      "value='$text{'index_edit'}' onClick='cmd.value = pcmd.options[pcmd.selectedIndex].value'>\n";
-	print "</td> <td align=right><input type=submit name=clearcmds ",
-	      "value='$text{'index_clearcmds'}'></td> </tr>\n";
+	      "value='$text{'index_edit'}' ",
+	      "onClick='cmd.value = pcmd.options[pcmd.selectedIndex].value'>\n";
+	print "</td>\n";
+	print "<td align=right width=10%>",
+	      &ui_submit($text{'index_clearcmds'}, "clearcmds"),"</td>\n";
+	print "</tr>\n";
 	}
 print "</table>\n";
-print "</form>\n";
+print &ui_form_end();
 
 &ui_print_footer("/", $text{'index'});
 
