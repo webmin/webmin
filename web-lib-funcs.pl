@@ -5868,6 +5868,7 @@ $hash{'webmin_var'} = $var_directory;
 local $rv = $_[0];
 local $s;
 foreach $s (keys %hash) {
+	next if ($s eq '');	# Prevent just $ from being subbed
 	local $us = uc($s);
 	local $sv = $hash{$s};
 	$rv =~ s/\$\{\Q$us\E\}/$sv/g;

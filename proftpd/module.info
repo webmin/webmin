@@ -11,3 +11,4 @@ longdesc=Configure the powerful ProFTPD FTP server. Supports all options in most
 desc_zh_TW.Big5=ProFTP¦øªA¾¹
 desc_zh_TW.UTF-8=ProFTPä¼ºæœå™¨
 os_support=!windows
+desc_fr=Serveur ProFTP

@@ -37,8 +37,8 @@ local $n = $_[1] ? "$_[0]-$_[1]" : $_[0];
 &open_execute_command(RPM, "rpm -q $n --queryformat \"%{NAME}\\n%{GROUP}\\n%{ARCH}\\n%{VERSION}-%{RELEASE}\\n%{VENDOR}\\n%{INSTALLTIME}\\n\" 2>/dev/null", 1, 1);
 @tmp = <RPM>;
 chop(@tmp);
-if (!@tmp) { return (); }
-close(RPM);
+local $ex = close(RPM);
+if (!@tmp || $tmp[0] =~ /not\s+installed/) { return (); }
 &open_execute_command(RPM, "rpm -q $n --queryformat \"%{DESCRIPTION}\"", 1, 1);
 while(<RPM>) { $d .= $_; }
 close(RPM);

@@ -1,0 +1,54 @@
+<header>Surveillance de bande passante</header>
+
+Ce module permet de créer des rapports sur l'utilisation de la bande passante réseau par port, hôte, protocole en fonction du temps, pour tout le trafic émis depuis votre système ou routé à travers celui-ci. Ceci est utile pour les machines autonomes comme pour celles qui servent de passerelle ou de routeur sur un réseau. <p>
+
+Pour pouvoir être utilisé, ce module doit mettre en place plusieurs règles de 
+pare-feu et une entrée dans le journal système (démon syslog) pour capturer le 
+trafic transitant par le système. Lors de la configuration vous devez sélectionner 
+l'interface réseau externe sur laquelle le trafic sera surveillé. Celle-ci 
+peut être l'interface PPP utilisé par votre connexion modem ou ADSL, ou bien
+une interface ethernet. <p>
+
+Après qu'au moins une heure d'activité ait été enregistrée, le module peut générer des
+rapports récapitulant le trafic selon l'une des catégories suivantes :
+<ul>
+<li><b>Heure</b><br>
+    La date et l'heure de réception des données.
+<li><b>Jour</b><br>
+     La date de réception des données.
+<li><b>Hôte</b><br>
+    L'hôte de votre réseau, ou l'hôte pare-feu qui a émis ou reçu les données.
+<li><b>Port interne</b><br>
+    Le port de votre hôte interne ou pare-feu qui a reçu les données. 
+	Ce mode est utile pour déterminer quel trafic est généré par les connexions 
+	vers lesquels de vos serveurs.
+<li><b>Port Externe</b><br>
+    Le port sur un serveur hors de votre réseau
+	The port on some server outside your network to which data was sent. This
+    can be used to determine which services users of your network are accessing.
+<li><b>Port</b><br>
+    Both internal and external ports. Useful for comparing all network usage
+    by service type.
+</ul>
+
+You can also choose to limit the report to a selecting host, port or protocol.
+The host can be entered by IP address, hostname or network address like
+192.168.1.0. The port can be entered by name or number, and will match both
+TCP and UDP. <p>
+
+The report can also be limited to traffic collected between selected hours,
+using the <b>For traffic after</b> and <b>For traffic before</b> fields. Because
+traffic is summarized by hour, you cannot limit the report with any greater
+precision than hourly. <p>
+
+The option <b>Server ports only?</b> is useful when reporting by incoming,
+outgoing or all ports. It restricts the display to ports commonly used by
+servers (those below 1024 or with names), to avoid cluttering the display with
+counts for client-side ports that are not commonly useful. <p>
+
+The option <b>Resolve hostnames?</b> can be selected when reporting by host.
+It will cause all IP addresses to be reverse-resolved to hostnames, where
+possible. <p>
+
+<hr>
+

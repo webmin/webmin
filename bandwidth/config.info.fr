@@ -1,0 +1,3 @@
+firewall_system=Type de Pare-feu,4,firewall-IPtables,ipfw-IPFW,ipfilter-IPFilter,shorewall-Shorewall,-Détection automatique
+bandwidth_log=Fichier journal des messages,0
+bandwidth_dir=Dossier des données de bande passante,3,Par défaut (/etc/webmin/bandwidth/hours)
