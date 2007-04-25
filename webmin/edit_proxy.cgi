@@ -40,6 +40,10 @@ print &ui_table_row($text{'proxy_pass'},
 print &ui_table_row($text{'proxy_bind'},
 	&ui_opt_textbox("bind", $gconfig{'bind_proxy'}, 35, $text{'default'}));
 
+# Fallback to direct
+print &ui_table_row($text{'proxy_fallback'},
+	&ui_yesno_radio("fallback", int($gconfig{'proxy_fallback'})));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 print &ui_tabs_end_tab();

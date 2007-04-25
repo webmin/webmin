@@ -117,6 +117,7 @@ proxy_cleardesc=Click this button to delete all $1 cached URLs downloaded by Web
 proxy_return=proxy servers and downloads
 proxy_tabproxy=Proxying
 proxy_tabdown=Downloading
+proxy_fallback=Try direct request if proxy is down?
 
 ui_title=User Interface
 ui_desc=This form allows you to edit user interface options used by all modules. When entering colours, each must be specified using the standard RGB system, where each value is a hex number from 00 to ff. 

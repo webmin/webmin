@@ -4433,7 +4433,6 @@ if (&is_readonly_mode()) {
 	return "HTTP connections not allowed in readonly mode";
 	}
 local $rv = { 'fh' => time().$$ };
-local $error;
 if ($_[2]) {
 	# Connect using SSL
 	eval "use Net::SSLeay";
@@ -4444,29 +4443,42 @@ if ($_[2]) {
 		return "Failed to create SSL context";
 	$rv->{'ssl_con'} = Net::SSLeay::new($rv->{'ssl_ctx'}) ||
 		return "Failed to create SSL connection";
+	local $connected;
 	if ($gconfig{'http_proxy'} =~ /^http:\/\/(\S+):(\d+)/ &&
 	    !&no_proxy($_[0])) {
+		# Via proxy
+		local $error;
 		&open_socket($1, $2, $rv->{'fh'}, \$error);
-		return $error if ($error);
-		local $fh = $rv->{'fh'};
-		print $fh "CONNECT $_[0]:$_[1] HTTP/1.0\r\n";
-		if ($gconfig{'proxy_user'}) {
-			local $auth = &encode_base64(
-			   "$gconfig{'proxy_user'}:$gconfig{'proxy_pass'}");
-			$auth =~ tr/\r\n//d;
-			print $fh "Proxy-Authorization: Basic $auth\r\n";
+		if (!$error) {
+			# Connected OK
+			local $fh = $rv->{'fh'};
+			print $fh "CONNECT $_[0]:$_[1] HTTP/1.0\r\n";
+			if ($gconfig{'proxy_user'}) {
+				local $auth = &encode_base64(
+				   "$gconfig{'proxy_user'}:".
+				   "$gconfig{'proxy_pass'}");
+				$auth =~ tr/\r\n//d;
+				print $fh "Proxy-Authorization: Basic $auth\r\n";
+				}
+			print $fh "\r\n";
+			local $line = <$fh>;
+			if ($line =~ /^HTTP(\S+)\s+(\d+)\s+(.*)/) {
+				return "Proxy error : $3" if ($2 != 200);
+				}
+			else {
+				return "Proxy error : $line";
+				}
+			$line = <$fh>;
+			$connected = 1;
 			}
-		print $fh "\r\n";
-		local $line = <$fh>;
-		if ($line =~ /^HTTP(\S+)\s+(\d+)\s+(.*)/) {
-			return "Proxy error : $3" if ($2 != 200);
+		elsif (!$gconfig{'proxy_fallback'}) {
+			# Connection to proxy failed - give up
+			return $error;
 			}
-		else {
-			return "Proxy error : $line";
-			}
-		$line = <$fh>;
 		}
-	else {
+	if (!$connected) {
+		# Direct connection
+		local $error;
 		&open_socket($_[0], $_[1], $rv->{'fh'}, \$error);
 		return $error if ($error);
 		}
@@ -4477,23 +4489,32 @@ if ($_[2]) {
 	}
 else {
 	# Plain HTTP request
-	local $error;
+	local $connected;
 	if ($gconfig{'http_proxy'} =~ /^http:\/\/(\S+):(\d+)/ &&
 	    !&no_proxy($_[0])) {
 		# Via a proxy
+		local $error;
 		&open_socket($1, $2, $rv->{'fh'}, \$error);
-		return $error if ($error);
-		local $fh = $rv->{'fh'};
-		print $fh "$_[3] http://$_[0]:$_[1]$_[4] HTTP/1.0\r\n";
-		if ($gconfig{'proxy_user'}) {
-			local $auth = &encode_base64(
-			   "$gconfig{'proxy_user'}:$gconfig{'proxy_pass'}");
-			$auth =~ tr/\r\n//d;
-			print $fh "Proxy-Authorization: Basic $auth\r\n";
+		if (!$error) {
+			# Connected OK
+			$connected = 1;
+			local $fh = $rv->{'fh'};
+			print $fh "$_[3] http://$_[0]:$_[1]$_[4] HTTP/1.0\r\n";
+			if ($gconfig{'proxy_user'}) {
+				local $auth = &encode_base64(
+				   "$gconfig{'proxy_user'}:".
+				   "$gconfig{'proxy_pass'}");
+				$auth =~ tr/\r\n//d;
+				print $fh "Proxy-Authorization: Basic $auth\r\n";
+				}
+			}
+		elsif (!$gconfig{'proxy_fallback'}) {
+			return $error;
 			}
 		}
-	else {
+	if (!$connected) {
 		# Connecting directly
+		local $error;
 		&open_socket($_[0], $_[1], $rv->{'fh'}, \$error);
 		return $error if ($error);
 		local $fh = $rv->{'fh'};

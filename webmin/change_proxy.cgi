@@ -26,6 +26,7 @@ else {
 	&check_ipaddress($in{'bind'}) || &error($text{'proxy_ebind'});
 	$gconfig{'bind_proxy'} = $in{'bind'};
 	}
+$gconfig{'proxy_fallback'} = $in{'fallback'};
 
 $gconfig{'proxy_user'} = $in{'puser'};
 $gconfig{'proxy_pass'} = $in{'ppass'};
