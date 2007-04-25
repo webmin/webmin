@@ -1549,29 +1549,39 @@ if ($cfile) {
 $download_timed_out = undef;
 local $SIG{ALRM} = "download_timeout";
 alarm(60);
+local $connected;
 if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 	# download through http-style proxy
-	&open_socket($1, $2, "SOCK", $_[3]) || return 0;
-	if ($download_timed_out) {
-		if ($_[3]) { ${$_[3]} = $download_timed_out; return 0; }
+	local $error;
+	if (&open_socket($1, $2, "SOCK", \$error)) {
+		# Connected OK
+		if ($download_timed_out) {
+			if ($_[3]) { ${$_[3]} = $download_timed_out; return 0; }
+			else { &error($download_timed_out); }
+			}
+		local $esc = $_[1]; $esc =~ s/ /%20/g;
+		local $up = "$_[5]:$_[6]\@" if ($_[5]);
+		local $portstr = $port == 21 ? "" : ":$port";
+		print SOCK "GET ftp://$up$_[0]$portstr$esc HTTP/1.0\r\n";
+		print SOCK "User-agent: Webmin\r\n";
+		if ($gconfig{'proxy_user'}) {
+			local $auth = &encode_base64(
+			   "$gconfig{'proxy_user'}:$gconfig{'proxy_pass'}");
+			$auth =~ tr/\r\n//d;
+			print SOCK "Proxy-Authorization: Basic $auth\r\n";
+			}
+		print SOCK "\r\n";
+		&complete_http_download({ 'fh' => "SOCK" }, $_[2], $_[3], $_[4]);
+		$connected = 1;
+		}
+	elsif (!$gconfig{'proxy_fallback'}) {
+		if ($error) { $$error = $download_timed_out; return 0; }
 		else { &error($download_timed_out); }
 		}
-	local $esc = $_[1]; $esc =~ s/ /%20/g;
-	local $up = "$_[5]:$_[6]\@" if ($_[5]);
-	local $portstr = $port == 21 ? "" : ":$port";
-	print SOCK "GET ftp://$up$_[0]$portstr$esc HTTP/1.0\r\n";
-	print SOCK "User-agent: Webmin\r\n";
-	if ($gconfig{'proxy_user'}) {
-		local $auth = &encode_base64(
-		   "$gconfig{'proxy_user'}:$gconfig{'proxy_pass'}");
-		$auth =~ tr/\r\n//d;
-		print SOCK "Proxy-Authorization: Basic $auth\r\n";
-		}
-	print SOCK "\r\n";
-	&complete_http_download({ 'fh' => "SOCK" }, $_[2], $_[3], $_[4]);
 	}
-else {
-	# connect to host and login
+
+if (!$connected) {
+	# connect to host and login with real FTP protocol
 	&open_socket($_[0], $port, "SOCK", $_[3]) || return 0;
 	alarm(0);
 	if ($download_timed_out) {
