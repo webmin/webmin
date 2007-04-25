@@ -10,10 +10,10 @@ require './webmin-lib.pl';
 for($i=0; $i<@cs_names; $i++) {
 	$cd = $cs_codes[$i];
 	if ($in{"${cd}_def"}) { delete($gconfig{$cd}); }
-	elsif ($in{"${cd}_rgb"} !~ /^[0-9a-fA-F]{6}$/) {
+	elsif ($in{$cd} !~ /^[0-9a-fA-F]{6}$/) {
 		&error(&text('ui_ergb', $cs_names[$i]));
 		}
-	else { $gconfig{$cd} = $in{"${cd}_rgb"}; }
+	else { $gconfig{$cd} = $in{$cd}; }
 	}
 
 $gconfig{'texttitles'} = $in{'texttitles'};
