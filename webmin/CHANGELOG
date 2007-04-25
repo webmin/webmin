@@ -57,3 +57,5 @@ Added a new Mobile Device Options page for defining a custom theme and login pro
 Added an option to the Logging page to write Webmin actions to syslog.
 Converted many pages to use new ui-lib.pl functions, and broke down long forms using tabs.
 When Webmin's detected OS is automatically updated, Usermin's will be too (if it is an equivalent version).
+---- Changes since 1.340 ----
+Added an option to the Proxy Servers form to fallback to a direct connection if the proxy is down.
