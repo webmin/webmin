@@ -23,6 +23,9 @@ elsif ($in{'to'} == 3) {
 	$in{'mhdir'} =~ /^\S+$/ || &error($text{'setup_emhdir'});
 	$file = "$in{'mhdir'}/.";
 	}
+elsif ($in{'to'} == 4) {
+	$file = "\$DEFAULT";
+	}
 elsif ($in{'to'} == 5) {
 	$in{'email'} =~ /^\S+$/ || &error($text{'setup_eemail'});
 	$file = $in{'email'};

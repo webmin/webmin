@@ -17,6 +17,9 @@ $spamrec = &find_file_recipe(\@recipes);
 if (!$spamrec) {
 	$mode = 4;
 	}
+elsif ($spamrec->{'action'} eq "\$DEFAULT") {
+	$mode = 4;
+	}
 elsif ($spamrec->{'action'} eq "/dev/null") {
 	$mode = 0;
 	}
