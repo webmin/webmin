@@ -1359,6 +1359,8 @@ if (%users) {
 	    $use_pam && $config{'pam_conv'} && $page eq $config{'pam_login'} &&
 	    !$in{'restart'}) {
 		# A question has been entered .. submit it to the main process
+		print DEBUG "handle_request: Got call to $page ($in{'cid'})\n";
+		print DEBUG "handle_request: For PAM, authuser=$authuser\n";
 		if ($in{'answer'} =~ /\r|\n|\s/ || $in{'cid'} =~ /\r|\n|\s/) {
 			&http_error(500, "Invalid response",
 			    "Response contains invalid characters");
@@ -1833,7 +1835,9 @@ if (&get_type($full) eq "internal/cgi") {
 	$envpath = $ENV{"PATH"};
 	$envlang = $ENV{"LANG"};
 	$envroot = $ENV{"SystemRoot"};
-	foreach (keys %ENV) { delete($ENV{$_}); }
+	foreach my $k (keys %ENV) {
+		delete($ENV{$k});
+		}
 	$ENV{"PATH"} = $envpath if ($envpath);
 	$ENV{"TZ"} = $envtz if ($envtz);
 	$ENV{"USER"} = $envuser if ($envuser);
@@ -1848,8 +1852,9 @@ if (&get_type($full) eq "internal/cgi") {
 	$ENV{"SERVER_PORT"} = $port;
 	$ENV{"REMOTE_HOST"} = $acpthost;
 	$ENV{"REMOTE_ADDR"} = $acptip;
-	$ENV{"REMOTE_USER"} = $authuser if (defined($authuser));
-	$ENV{"BASE_REMOTE_USER"} =$baseauthuser if ($authuser ne $baseauthuser);
+	$ENV{"REMOTE_USER"} = $authuser;
+	$ENV{"BASE_REMOTE_USER"} = $authuser ne $baseauthuser ?
+					$baseauthuser : undef;
 	$ENV{"REMOTE_PASS"} = $authpass if (defined($authpass) &&
 					    $config{'pass_password'});
 	$ENV{"SSL_USER"} = $peername if ($validated == 2);
@@ -1943,6 +1948,7 @@ if (&get_type($full) eq "internal/cgi") {
 				}
 			}
 		eval "
+			\%pkg::ENV = \%ENV;
 			package $pkg;
 			tie(*STDOUT, 'miniserv');
 			tie(*STDIN, 'miniserv');
