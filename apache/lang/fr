@@ -1,10 +1,15 @@
 index_title=Serveur web Apache
 index_eroot=Le répertoire racine d'Apache '$1' n'existe pas. Si Apache est installé, ajustez la <a href='$2'>configuration du module</a> pour utiliser les chemins d'accès corrects.
 index_eserver=L'exécutable $1 du serveur Apache n'existe pas. Si Apache est installé, ajustez la <a href='$2'>configuration du module</a> pour utiliser le chemin d'accès correct.
+index_apache=Serveur Web Apache
 index_econf=Le fichier de configuration $1 d'Apache n'existe pas. Si Apache est installé, ajustez la <a href='$2'>configuration du module</a> pour utiliser le chemin d'accès correct.
 index_eports=Votre configuration d'Apache contient plusieurs directives $1. La version actuelle de Webmin ne peut pas gérer correctement cette configuration.
-index_global=Configuration globale
-index_virts=Serveurs virtuels
+index_tabglobal=Configuration globale
+index_tablist=Hôtes virtuels existants
+index_tabcreate=Créer un hôte virtuel
+index_descglobal=Les options accédées en cliquant ces icônes s'appliquent au serveur Apache entier, y compris tous les hôtes virtuels.
+index_desclist=La liste ci-dessous montre les hôtes virtuels Apache déjà définis auxquels vous avez accès. L'entrée <b>Serveur par défaut</b> définit les paramètres qui s'appliquent à tous les hôtes virtuels, sauf paramétrage contraire.
+index_desccreate=Ce formulaire peut être utilisé pour ajouter un nouvel hôte virtuel, qui servira le contenu d'un dossier spécifié en réponse aux requètes pour une adresse ou un nom d'hôte particulier.
 index_defserv=Serveur par défaut
 index_defdesc1=Définit les paramètres par défaut de tous les autres serveurs virtuels et traite toute requête non prise en charge.
 index_any=Quelconque
@@ -50,6 +55,7 @@ index_fmode0=Fichier $1 standard
 index_fmode1=Fichier $1 des serveurs virtuels
 index_fmode1d=Nouveau fichier dans le répertoire du serveur virtuel $1
 index_fmode2=Fichier sélectionné...
+index_delete=Supprimer les serveurs sélectionnés
 
 cvirt_ecannot=Vous n'êtes pas autorisé à créer un serveur virtuel
 cvirt_err=Impossible de créer un serveur virtuel
@@ -95,6 +101,7 @@ virt_ecannot=Vous n'êtes pas autorisé à modifier ce serveur virtuel
 virt_title=Options du serveur virtuel
 virt_header=du $1
 virt_opts=Détails du serveur virtuel
+virt_opts2=Options du serveur virtuel
 virt_conf=Configuration du serveur
 virt_show=Affichage des directives
 virt_edit=Édition des directives
@@ -104,6 +111,10 @@ virt_Directory=Répertoire
 virt_Files=Fichiers
 virt_Location=Emplacement
 virt_Proxy=Serveur mandataire
+virt_DirectoryMatch=Regexp sur le répertoire
+virt_FilesMatch=Regexp sur les fichiers
+virt_LocationMatch=Regexp sur l'emplacement
+virt_ProxyMatch=Regexp sur le mandataire  (proxy)
 virt_exact=Correspondance exacte
 virt_re=Correspondance avec une expression régulière
 virt_regexp=Expression régulière ?
@@ -143,6 +154,8 @@ manual_ecannot=Vous n'êtes pas autorisé à modifier manuellement des directives
 manual_file=Modifier les directives dans le fichier 
 manual_efile=Fichier de configuration d'Apache invalide
 manual_etest=Erreur détectée dans le fichier de configuration : $1
+manual_editfile=Modifier le fichier de configuration:
+manual_switch=Modification
 
 dir_title=Options par répertoire
 dir_header=pour le répertoire $1 du $2
@@ -184,6 +197,7 @@ type_20=Imagemaps
 
 htaccess_title=Fichiers d'options par répertoire
 htaccess_ecannot=Vous ne pouvez pas modifier les fichiers htaccess
+htaccess_file=Fichier d'options existant
 htaccess_desc=Vous pouvez spécifier des options par répertoire additionnelles dans un fichier (habituellement appelé <tt>.htaccess</tt>) dans chaque répertoire.  Les options s'appliquent à tous les fichiers de ce répertoire et à tout sous-répertoire, à moins qu'elles ne soient supplantées par un autre fichier d'options.
 htaccess_create=Créer un fichier d'options
 htaccess_find=Chercher les fichiers d'options
@@ -229,6 +243,7 @@ defines_title=Édition des paramètres définis
 defines_ecannot=Vous n'êtes pas autorisé à modifier une définition httpd
 defines_desc=Lorsqu'Apache est démarré, il est possible de lui passer des paramètres avec l'option en ligne de commande <tt>-D</tt>. Du fait que ces paramètres peuvent affecter les directives qui sont utilisées dans vos fichiers de configuration, Webmin a besoin de savoir quels sont les arguments passés à Apache quand il est démarré. Saississez les paramètres utilisés sur votre système dans le champ de texte à droite.
 defines_config=Notez que les paramêtres définis suivants sont déjà connus : $1
+defines_list=Paramètres définis
 
 authu_ecannot='$1' n'est pas un fichier texte d'utilisateurs autorisés
 authu_title=Liste des utilisateurs
@@ -302,9 +317,15 @@ acl_pipe=Peut rediriger les journaux vers des programmes ?
 acl_stop=Peut arrêter et démarrer Apache ?
 acl_apply=Peut appliquer les changements ?
 acl_dir=Limiter les fichiers au répertoire
+acl_aliasdir=Limites les alias au répertoire
 acl_types=Types de directives disponibles
 acl_all=Tous
 acl_sel=Sélectionnés...
+acl_names=Peut modifier les noms de serveurs?
+acl_dirs=Directives Apache disponibles<br><font size=-1>(assujetties aux limites ci-dessus)</font>
+acl_dirs0=Toutes
+acl_dirs1=Seulement les suivantes ..
+acl_dirs2=Toutes sauf les suivantes ..
 
 core_maxconc=Nombre maximal de requêtes simultanées
 core_maxkeep=Nombre maximal de keepalives par connexion
@@ -384,6 +405,7 @@ core_docroot=Répertoire racine des documents
 core_eoptfile=Un seul fichier d'options est autorisé
 core_enoopt=Aucun fichier d'options saisi
 core_enodoc=La racine '$1' du document n'existe pas
+core_ecandoc=Vous n'êtes pas autorisé à utiliser le répertoire racine '$1'
 core_sigemail=Adresse électronique
 core_signame=Nom du serveur
 core_signone=Aucun
@@ -462,6 +484,8 @@ core_merge=Fusionner avec le parent
 core_users=Seulement ces utilisateurs
 core_groups=Seulement ces groupes
 core_allusers=Tous les utilisateurs valides
+core_fileowner=Le propriétaire du fichier correspond
+core_filegroup=Le groupe propriétaire du fichier correspond
 core_none=Aucune
 core_all=Toutes
 core_product=Produit seulement
@@ -505,6 +529,7 @@ mod_alias_to=Vers
 mod_alias_status=État
 mod_alias_efrom='$1' n'est pas une origine $2 valide
 mod_alias_edest='$1' n'est pas une destination $2 valide 
+mod_alias_edest2=Vous n'êtes pas autorisé à utiliser $2 comme destination '$1'
 mod_alias_alias=Alias des répertoires des documents 
 mod_alias_alias2=alias des documents 
 mod_alias_regexp= Expressions régulières d'alias du répertoire des documents 
@@ -591,6 +616,7 @@ mod_proxy_preserve=Préserver l'en-tête Host: originel
 mod_proxy_timeout=Temps imparti à une requête du serveur mandataire en secondes 
 mod_proxy_etimeout=Le temps imparti à une requête de serveur mandataire doit être un nombre de secondes
 mod_proxy_via=Définir les en-têtes Via:
+mod_proxy_not=Aucun
 
 mod_log_agent_default=Par défaut
 mod_log_agent_file=Fichier...
@@ -674,6 +700,7 @@ mod_userdir_default=Par défaut
 mod_userdir_all=Tous les utilisateurs accessibles
 mod_userdir_except=Tous les utilisateurs sauf
 mod_userdir_dir=Répertoire WWW des utilisateurs
+mod_userdir_edir=Vous n'êtes pas autorisé à utiliser le répertoire WWW spécifié
 
 mod_imap_action=Action sur l'utilisation incorrecte des imagemaps
 mod_imap_default=Par défaut
@@ -837,10 +864,12 @@ mod_auth_egfile=Nom de fichier texte de groupes invalide
 mod_auth_dbm_ufile=Fichier DBM des utilisateurs
 mod_auth_dbm_gfile=Fichier DBM des groupes
 mod_auth_dbm_pass=Transmettre les échecs au module suivant ?
+mod_auth_dbm_gpass=Transmettre les échecs de groupe au module suivant?
 mod_auth_dbm_auth=Authentification par fichier DBM
 mod_auth_dbm_eufile=Nom de fichier DBM d'utilisateurs invalide
 mod_auth_dbm_egfile=Nom de fichier DBM de groupes invalide
 mod_auth_dbm_type=Type de fichiers DBM
+mod_auth_dbm_gtype=Type de fichiers DBM de groupe
 mod_auth_dbm_default=Format DBM par défaut
 
 mod_cern_meta_process=Traiter les méta-fichiers d'en-tête
@@ -868,9 +897,15 @@ mod_ssl_ecdepth=La profondeur des certificats doit être un entier
 mod_ssl_log=Fichier journal SSL
 mod_ssl_elog=Fichier journal SSL manquant
 mod_ssl_onlyssl=Autoriser un accès SSL seulement
+mod_ssl_pass=Mot de passe de clef SSL
+mod_ssl_passph=Mot de passe $1 défini
+mod_ssl_builtin=Demander au démarrage
+mod_ssl_passsc=Éxécuter le script $1
+mod_ssl_epassph=Aucun mot de passe SSL entré
+mod_ssl_epasssc=Script de mot de passe SSL manquant ou invalide
 
-# nodo50 v0.1 - Change 000003 - New Script. Define Editors for mod_apachessl directives (Apache-ssl not use mod_ssl)=
-# nodo50 v0.1 - Change 000003 - Nuevo Script. Define edición de directivas de mod_apachessl (Apache-ssl no usa mod_ssl)=
+
+
 mod_apachessl_notssl=Interdire l'accès SSL 
 mod_apachessl_forcessl=Forcer l'accès SSL / non SSL ?
 mod_apachessl_capath=Chemin d'accès au répertoire avec des certificats des Autorités de Certification dans
@@ -903,7 +938,7 @@ mod_apachessl_nov2=Désactiver SSL version 2
 mod_apachessl_fake=Simule les ouvertures de session d'authentification de base des utilisateurs, à l'aide du nom de certificat
 mod_apachessl_cdnfile=Fichier par rapport auquel le ND client est vérifié
 mod_apachessl_ecdnfile=Fichier par rapport auquel le ND client est vérifié manquant
-# nodo50 v0.1 - Change 000003 - End=
+
 
 log_global=Changé les options globales $1 
 log_virtc=Créé le serveur $1 
@@ -943,6 +978,7 @@ log_start=Démarré le serveur web
 log_stop=Arrêté le serveur web 
 log_apply=Appliqué les changements
 log_manual=Modifié manuellement le fichier de configuration $1
+log_virts_delete=Serveurs virtuels $1 supprimés
 
 search_title=Recherche des serveurs
 search_notfound=Aucun serveur virtuel correspondant n'a été trouvé
@@ -961,6 +997,7 @@ mod_vhost_alias_ip=Utiliser l'adresse IP au lieu du nom d'hôte ?
 mod_vhost_alias_none=Aucune
 mod_vhost_alias_script=cgi-bin automatique de l'hôte virtuel
 mod_vhost_alias_eroot=Racine de l'hôte virtuel manquante ou invalide
+mod_vhost_alias_eroot2=Racine de l'hôte virtuel non autorisé
 mod_vhost_alias_escript=cgi-bin de l'hôte virtuel manquant ou invalide
 
 worker_minspare=Nombre minimal de threads de rechange
@@ -1028,6 +1065,7 @@ cdir_err=Impossible de créer les options par répertoire
 cdir_err2=Impossible d'enregistrer les options par répertoire
 cdir_epath=Chemin d'accès manquant
 cdir_eproxy=Les options du serveur mandataire ne peuvent pas être créées avec l'option de l'expression régulière correspondante cochée
+cdir_ecannot=Vous n'êtes pas autorisé à créer des options de répertoire pour le chemin donné
 
 mod_band_enable=Limitation de la bande passante activée ?
 mod_band_bw=Limite (octets/sec)
@@ -1053,3 +1091,20 @@ mod_dav_inf=Autoriser des requêtes DAV PROPFIND de profondeur infinie ?
 mod_dav_timeout=Temps imparti à DAV en secondes
 mod_dav_etimeout=Temps imparti à DAV manquant ou invalide
 
+delete_err=Échec de la suppression des serveurs virtuels
+delete_enone=Aucun sélectionné
+delete_ecannot=Vous n'êtes pas autorisé à supprimer des serveurs
+delete_ecannot2=Vous n'êtes pas autorisé à modifier le serveur $1
+
+syslog_desc=Journal d'erreur Apache
+
+mod_auth_basic_pass=Passer les échecs d'authentification de base au module suivant?
+mod_auth_basic_prov=Type de base des fichier de connexion utilisateur
+mod_auth_basic_file= Fichier texte
+mod_auth_basic_dbm=Base de données DBM
+
+mod_auth_digest_pass=Passer les échecs de connexion par digest au module suivant?
+mod_auth_digest_prov=Type des fichier de connexion utilisateur par digest
+mod_auth_digest_al=Algorithme de hachage
+mod_auth_digest_domain=URLs et chemins dans le même domaine
+mod_auth_digest_edomain=URLs et chemins dans le même domaine manquants
