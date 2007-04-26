@@ -3,5 +3,3 @@ display_mode=La pagina principale visualizza,1,0-Tutti i comandi e parametri,1-C
 width=Larghezza della finestra del file editor,3,Predefinita (80 caratteri)
 height=Altezza della finestra del file editor,3,Predefinita (20 caratteri)
 wrap=Modalit&#224; di ritorno a capo del file editor,1,-Predefinita (Soft),hard-Hard,off-Disabilita
-line2=Configurazione di sistema
-su_shell=Il comando <tt>su</tt> supporta l'opzione della shell -s ?,1,1-Si,0-No

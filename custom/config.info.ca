@@ -4,6 +4,4 @@ width=Amplada de la finestra de l'editor,3,Defecte (80 caràcters)
 height=Alçada de la finestra de l'editor,3,Defecte (20 caràcters)
 wrap=Mode wrap de l'editor,1,-Defecte (Soft),hard-Hard,off-Desactivat
 columns=Columnes per mostrar-hi les ordres,1,2-2,1-1
-line2=Configuració del sistema,11
-su_shell=L'ordre <tt>su</tt> suporta l'opció de shell -s,1,1-Sí,0-No
 

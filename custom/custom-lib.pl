@@ -467,9 +467,8 @@ if ($cmd->{'su'}) {
 	&print_tempfile(TEMP, "$str\n");
 	&close_tempfile(TEMP);
 	chmod(0755, $temp);
-	local $shell = $config{'su_shell'} ? "-s /bin/sh" : "";
 	$got = &foreign_call("proc", "safe_process_exec",
-	   		     "su - $user $shell -c $temp", 0, 0,
+			     &command_as_user($user, 1, $temp), 0, 0,
 			     $fh, undef, !$cmd->{'raw'}, 0,
 			     $cmd->{'timeout'});
 	unlink($temp);

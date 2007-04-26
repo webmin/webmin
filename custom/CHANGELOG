@@ -13,3 +13,5 @@ The output from a command is now shown as it is generated, for commands run loca
 Added a Module Config parameter to change the number of columns used to display command buttons in.
 ---- Changes since 1.270 ----
 The contents of uploaded files are no longer logged.
+---- Changes since 1.340 ----
+Removed the Module Config option to control if a shell is used when executing a command as a user, since we can now work this out automatically.

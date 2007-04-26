@@ -3,5 +3,3 @@ display_mode=La page principale montre,1,0-Toutes les commandes et parametres,1-
 width=Largeur de la fenetre d'edition du fichier,3,Defaut (80 caracteres)
 height=Hauteur de la fenetre d'edition du fichier,3,Defaut (20 caracteres)
 wrap=wrap mode de l'editeur de fichiers,1,-Defaut (Soft),hard-Hard,off-Off
-line2=Configuration du systeme,11
-su_shell=La commande " <tt>su</tt> " supporte l'otpion " -s " ?,1,1-Oui,0-Non

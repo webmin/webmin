@@ -5,4 +5,3 @@ height=Height of file editor window,3,Default (20 chars)
 wrap=File editor wrap mode,1,-Default (Soft),hard-Hard,off-Off
 columns=Columns to display commands in,1,2-2,1-1
 line2=System configuration,11
-su_shell=<tt>su</tt> command supports -s shell option?,1,1-Yes,0-No
