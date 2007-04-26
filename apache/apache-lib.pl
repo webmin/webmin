@@ -746,7 +746,7 @@ sub choice_input
 local($i, $rv);
 for($i=3; $i<@_; $i++) {
 	$_[$i] =~ /^([^,]*),(.*)$/;
-	$rv .= &ui_oneradio($_[0], $2, $1, lc($2) eq lc($_[0]) ||
+	$rv .= &ui_oneradio($_[1], $2, $1, lc($2) eq lc($_[0]) ||
 				!defined($_[0]) && lc($2) eq lc($_[2]))."\n";
 	}
 return $rv;
