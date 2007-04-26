@@ -17,6 +17,8 @@ if ($config{'mail_system'} == 3) {
 	&save_module_config() if ($config{'mail_system'} != 3);
 	}
 
+@ignore_users_list = &split_quoted_string($config{'ignore_users'});
+
 # send_mail_program(from, to)
 # Returns the command for injecting email, based on the mail system in use
 sub send_mail_program
@@ -400,7 +402,7 @@ if ($config{'sort_mode'} == 2 || $config{'show_size'} > 0 || $_[1] ||
 	# Need to check folders
 	foreach $u (@users) {
     		next if ($config{'ignore_users_enabled'} == 1 &&
-			 $config{'ignore_users'} =~ /$u->[0]/);
+			 &indexof($u->[0], @ignore_users_list) >= 0);
 		local @folders = &list_user_folders(@$u);
 		$foldercount{$u->[0]} = scalar(@folders);
 		if ($config{'sort_mode'} == 2 ||
@@ -457,7 +459,7 @@ elsif ($config{'show_size'} == 2) {
 	foreach $u (@users) {
 		local $g = getgrgid($u->[3]);
 	        next if ($config{'ignore_users_enabled'} == 1 &&
-			 $config{'ignore_users'} =~ /$u->[0]/);
+			 &indexof($u->[0], @ignore_users_list) >= 0);
 		$u->[6] =~ s/,.*$// if ($uconfig{'extra_real'});
 		local $home = $u->[7];
 		if (length($home) > 30) {
@@ -489,7 +491,7 @@ else {
 	local $i = 0;
 	foreach $u (@users) {
 	        next if ($config{'ignore_users_enabled'} == 1 &&
-			 $config{'ignore_users'} =~ /$u->[0]/);
+			 &indexof($u->[0], @ignore_users_list) >= 0);
 		print "<tr>\n" if ($i % $config{'column_count'} == 0);
 		print "<td width=", int(100/$config{'column_count'}), "%><a href='list_mail.cgi?user=$u->[0]'>";
 		print $u->[0];
