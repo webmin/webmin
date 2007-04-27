@@ -14,3 +14,5 @@ Perl modules that try to auto-install depencies from CPAN no longer hang during 
 Fixed a bug that prevented a custom temp files directory from being used when installing Perl modules.
 ---- Changes since 1.330 ----
 When installing a Perl module from CPAN and it already exists in an operating system package (such as from APT or YUM), use that instead.
+---- Changes since 1.340 ----
+Added Module Config option to not install modules from APT or YUM.

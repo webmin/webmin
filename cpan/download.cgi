@@ -68,10 +68,12 @@ elsif ($in{'source'} == 3) {
 	@cpan = split(/\s+|\0/, $in{'cpan'});
 
 	# First check if YUM or APT can install this module for us
-	@yum = &list_packaged_modules();
-	foreach $c (@cpan) {
-		($yum) = grep { lc($_->{'mod'}) eq lc($c) } @yum;
-		push(@cpanyum, $yum) if ($yum);
+	if ($config{'incyum'}) {
+		@yum = &list_packaged_modules();
+		foreach $c (@cpan) {
+			($yum) = grep { lc($_->{'mod'}) eq lc($c) } @yum;
+			push(@cpanyum, $yum) if ($yum);
+			}
 		}
 	if (scalar(@cpan) == scalar(@cpanyum)) {
 		# Can install from YUM or APT .. do it!
