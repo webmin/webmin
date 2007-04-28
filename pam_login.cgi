@@ -4,6 +4,7 @@
 $pragma_no_cache = 1;
 #$ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
 require './web-lib.pl';
+require './ui-lib.pl';
 &init_config();
 &ReadParse();
 if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
@@ -24,9 +25,8 @@ $sec = uc($ENV{'HTTPS'}) eq 'ON' ? "; secure" : "";
 &get_miniserv_config(\%miniserv);
 print "Set-Cookie: banner=0; path=/$sec\r\n" if ($gconfig{'loginbanner'});
 print "Set-Cookie: testing=1; path=/$sec\r\n";
-&header(undef, undef, undef, undef, 1, 1, undef, undef,
-	"document.forms[0].answer.focus()'");
-print "<hr>\n";
+&ui_print_unbuffered_header(undef, undef, undef, undef, undef, 1, 1, undef,
+			    undef, "onLoad='document.forms[0].answer.focus()'");
 
 print "<center>\n";
 if (defined($in{'failed'})) {
@@ -82,7 +82,6 @@ print "<br>\n";
 
 print "</td> </tr>\n";
 print "</table></td></tr></table><p>\n";
-print "<hr>\n";
 print "</form></center>\n";
 print "$text{'pam_postfix'}\n";
 
@@ -97,5 +96,5 @@ if (window != window.top) {
 EOF
 	}
 
-&footer();
+&ui_print_footer();
 

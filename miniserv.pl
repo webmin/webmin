@@ -927,6 +927,8 @@ $ok_code = 200;
 $ok_message = "Document follows";
 $logged_code = undef;
 $reqline = $request_uri = $page = undef;
+$authuser = undef;
+$validated = undef;
 
 # check address against access list
 if (@deny && &ip_match($acptip, $localip, @deny) ||
@@ -1857,6 +1859,8 @@ if (&get_type($full) eq "internal/cgi") {
 					$baseauthuser : undef;
 	$ENV{"REMOTE_PASS"} = $authpass if (defined($authpass) &&
 					    $config{'pass_password'});
+	print DEBUG "REMOTE_USER = ",$ENV{"REMOTE_USER"},"\n";
+	print DEBUG "BASE_REMOTE_USER = ",$ENV{"BASE_REMOTE_USER"},"\n";
 	$ENV{"SSL_USER"} = $peername if ($validated == 2);
 	$ENV{"ANONYMOUS_USER"} = "1" if ($validated == 3);
 	$ENV{"DOCUMENT_ROOT"} = $roots[0];
@@ -3941,12 +3945,12 @@ return $logout_time_cache{$user,$sid};
 
 sub unix_crypt
 {
-local ($user, $pass) = @_;
+local ($pass, $salt) = @_;
 if ($use_perl_crypt) {
-	return Crypt::UnixCrypt::crypt($user, $pass);
+	return Crypt::UnixCrypt::crypt($pass, $salt);
 	}
 else {
-	return crypt($user, $pass);
+	return crypt($pass, $salt);
 	}
 }
 
