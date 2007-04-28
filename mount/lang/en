@@ -350,6 +350,7 @@ linux_usrquotas=Enable user quotas?
 linux_grpquotas=Enable groups quotas?
 linux_noenforce=Yes, but don't enforce
 linux_df=Include reserved blocks in filesystem size?
+linux_noatime=Avoid updating last access times?
 linux_ecname=Missing or invalid client netbios name
 linux_emname=Missing or invalid server hostname or IP address
 linux_bind=Original Directory

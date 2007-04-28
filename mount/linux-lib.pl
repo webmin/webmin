@@ -1207,6 +1207,12 @@ if ($_[0] eq "ext2" || $_[0] eq "ext3") {
 	printf "<td><input name=ext2_resgid size=8 value=\"%s\">\n",
 		defined($options{"resgid"}) ? getgrgid($options{"resgid"}) : "";
 	print &group_chooser_button("ext2_resgid", 0),"</td> </tr>\n";
+
+	print "<tr> <td><b>$text{'linux_noatime'}</b></td>\n";
+	printf "<td><input type=radio name=ext2_noatime value=1 %s> %s\n",
+	    defined($options{"noatime"}) ? "checked" : "", $text{'yes'};
+	printf "<input type=radio name=ext2_noatime value=0 %s> %s</td>\n",
+	    defined($options{"noatime"}) ? "" : "checked", $text{'no'};
 	}
 elsif (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	# Linux nfs has some more options...
@@ -1945,6 +1951,9 @@ elsif ($_[0] eq "ext2" || $_[0] eq "ext3") {
 	elsif ($in{'ext2_quota'} == 2) { $options{'grpquota'} = ""; }
 	elsif ($in{'ext2_quota'} == 3)
 		{ $options{'usrquota'} = $options{'grpquota'} = ""; }
+
+	delete($options{"noatime"});
+	$options{"noatime"} = "" if ($in{'ext2_noatime'});
 	}
 elsif ($_[0] eq "fat" || $_[0] eq "vfat" ||
        $_[0] eq "msdos" || $_[0] eq "umsdos" || $_[0] eq "fatx") {
