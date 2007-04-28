@@ -99,6 +99,13 @@ vpopmail_user=VPOPMail user,5
 vpopmail_group=VPOPMail group,6
 vpopmail_auto=Path to autorespond program,3,Not installed
 
+line4.8=Quota commands,11
+quota_commands=Use external commands to get and set quotas?,1,1-Yes,0-No
+quota_set_user_command=Command to set a user's quota,3,Use standard programs
+quota_set_group_command=Command to set a group's quota,3,Use standard programs
+quota_list_users_command=Command to list user quotas,3,Use standard programs
+quota_list_groups_command=Command to list group quotas,3,Use standard programs
+
 line5=Webmin modules available to server administrators,11
 avail_dns=BIND DNS Server (for DNS domain),1,1-Yes,0-No
 avail_mail=Virtual Email (for mailboxes and aliases),1,1-Yes,0-No

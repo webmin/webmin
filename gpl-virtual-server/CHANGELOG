@@ -302,3 +302,4 @@ The stats web directory is now password-protected by default.
 Backported the server template setting for disabled website HTML from the Pro version of Virtualmin.
 The number of days to keep old bandwidth data can now be configured on the Bandwidth Monitoring page.
 Added the list-features.pl script, for finding available features for new virtual servers.
+Added Module Config options for external quota commands to use, instead of the standard Unix commands. This allows a different quota system (such as ZFS or on an NFS server) to be used instead.
