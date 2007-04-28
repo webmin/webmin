@@ -304,3 +304,5 @@ The number of days to keep old bandwidth data can now be configured on the Bandw
 Added the list-features.pl script, for finding available features for new virtual servers.
 Added Module Config options for external quota commands to use, instead of the standard Unix commands. This allows a different quota system (such as ZFS or on an NFS server) to be used instead.
 When creating a virtual server inside a Solaris zone, existing virtual IPs in the zone can be selected for domains that need a private IP.
+When editing server templates, fields that are not used because they are inheriting from the Default Settings are now greyed out.
+Added a link for copying the default settings template, rather than creating an empty template which inherits from it.
