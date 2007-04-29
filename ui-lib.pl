@@ -62,7 +62,7 @@ $rv .= "<tr $cb class='ui_columns_row'>\n";
 local $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i].">".
-	       ($cols->[$i] eq "" ? "<br>" : $cols->[$i])."</td>\n";
+	       ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i])."</td>\n";
 	}
 $rv .= "</tr>\n";
 return $rv;
@@ -103,7 +103,7 @@ for($i=0; $i<@$cols; $i++) {
 		$rv .= "<label for=\"".
 			&quote_escape("${checkname}_${checkvalue}")."\">";
 		}
-	$rv .= ($cols->[$i] eq "" ? "<br>" : $cols->[$i]);
+	$rv .= ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i]);
 	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
 		$rv .= "</label>";
 		}
@@ -185,7 +185,7 @@ if ($buttons && @$buttons) {
 				      $b eq $buttons->[0] ? " align=left" :
 				      $b eq $buttons->[@$buttons-1] ?
 					" align=right" : " align=center").">".
-			       &ui_submit($b->[1], $b->[0], $b->[3]).
+			       &ui_submit($b->[1], $b->[0], $b->[3], $b->[4]).
 			       ($b->[2] ? " ".$b->[2] : "")."</td>\n";
 			}
 		elsif ($b) {
@@ -326,7 +326,7 @@ foreach $o (@$opts) {
 	local $id = &quote_escape($name."_".$o->[0]);
 	local $label = $o->[1] || $o->[0];
 	local $after;
-	if ($label =~ /^([^<]*)(<[\000-\377]*)$/) {
+	if ($label =~ /^(.*?)((<a\s+href|<input|<select|<textarea)[\000-\377]*)$/i) {
 		$label = $1;
 		$after = $2;
 		}
@@ -479,16 +479,17 @@ $rv .= "<input name=\"".&quote_escape($name)."\" ".
 return $rv;
 }
 
-# ui_submit(label, [name], [disabled?])
+# ui_submit(label, [name], [disabled?], [tags])
 # Returns HTML for a form submit button
 sub ui_submit
 {
 return &theme_ui_submit(@_) if (defined(&theme_ui_submit));
-local ($label, $name, $dis) = @_;
+local ($label, $name, $dis, $tags) = @_;
 return "<input type=submit".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
-       ($dis ? " disabled=true" : "").">\n";
+       ($dis ? " disabled=true" : "").
+       ($tags ? " ".$tags : "").">\n";
 			
 }
 
@@ -1114,10 +1115,20 @@ sub js_disable_inputs
 local $rv;
 local $f;
 foreach $f (@{$_[0]}) {
-	$rv .= "form.elements[\"$f\"].disabled = true; ";
+	$rv .= "e = form.elements[\"$f\"]; e.disabled = true; ";
+	$rv .= "for(i=0; i<e.length; i++) { e[i].disabled = true; } ";
 	}
 foreach $f (@{$_[1]}) {
-	$rv .= "form.elements[\"$f\"].disabled = false; ";
+	$rv .= "e = form.elements[\"$f\"]; e.disabled = false; ";
+	$rv .= "for(i=0; i<e.length; i++) { e[i].disabled = false; } ";
+	}
+foreach $f (@{$_[1]}) {
+	if ($f =~ /^(.*)_def$/ && &indexof($1, @{$_[1]}) >= 0) {
+		# When enabling both a _def field and its associated text field,
+		# disable the text if the _def is set to 1
+		local $tf = $1;
+		$rv .= "e = form.elements[\"$f\"]; for(i=0; i<e.length; i++) { if (e[i].checked && e[i].value == \"1\") { form.elements[\"$tf\"].disabled = true } } ";
+		}
 	}
 return $_[2] ? "$_[2]='$rv'" : $rv;
 }
