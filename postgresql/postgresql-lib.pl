@@ -373,7 +373,7 @@ else {
 	# Call the psql program
 	local $host = $config{'host'} ? "-h $config{'host'}" : "";
 	$host .= " -p $config{'port'}" if ($config{'port'});
-	local $cmd = &quote_path($config{'psql'}).
+	local $cmd = &quote_path($config{'psql'})." --html".
 		     (!&supports_pgpass() ? " -u" : " -U $postgres_login").
 		     " -c ".&quote_path($sql)." $host $_[0]";
 	if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
@@ -411,44 +411,26 @@ else {
 				     "<tt>$config{'psql'} failed</tt>"));
 			}
 		else {
-			local $dash = <OUT>;
-			if ($dash =~ /^\s*\+\-/) {
-				# mysql-style output
-				$line = <OUT>;
-				$line =~ s/^[\s\|]+//; $line =~ s/[\s\|]+$//;
-				local @titles = split(/\|/, $line);
-				map { s/^\s+//; s/\s+$// } @titles;
-				$line = <OUT>;	# skip useless dashes
-				while(1) {
-					$line = <OUT>;
-					last if (!$line || $line =~ /^\s*\+/);
-					$line =~ s/^[\s\|]+//;
-					$line =~ s/[\s\|]+$//;
-					local @row = split(/\|/, $line);
-					map { s/^\s+//; s/\s+$// } @row;
-					push(@data, \@row);
+			# Read HTML-format output
+			local $row;
+			local @data;
+			while($line = <OUT>) {
+				if ($line =~ /^\s*<tr>/) {
+					# Start of a row
+					$row = [ ];
 					}
-				$rv = { 'titles' => \@titles, 'data' => \@data };
-				}
-			elsif ($dash !~ /^-/) {
-				# no output, such as from an insert
-				$rv = undef;
-				}
-			else {
-				# psql-style output
-				local @titles = split(/\|/, $line);
-				map { s/^\s+//; s/\s+$// } @titles;
-				while(1) {
-					$line = <OUT>;
-					last if (!$line ||
-						 $line =~ /^\(\d+\s+\S+\)/);
-					local @row = split(/\|/, $line);
-					map { s/^\s+//; s/\s+$// } @row;
-					push(@data, \@row);
+				elsif ($line =~ /^\s*<\/tr>/) {
+					# End of a row
+					push(@data, $row);
+					$row = undef;
 					}
-				$rv = { 'titles' => \@titles,
-					'data' => \@data };
+				elsif ($line =~ /^\s*<(td|th)[^>]*>([^<]*)<\/(td|th)>/) {
+					# Value in a row
+					push(@$row, &entities_to_ascii("$2"));
+					}
 				}
+			$rv = { 'titles' => shift(@data),
+				'data' => \@data };
 			}
 		close(OUT);
 		return $rv;

@@ -52,3 +52,5 @@ Added access control options to prevent the viewing and management of views, seq
 Updated the module to run on Windows, and created a default configuration that will sort with the PostgreSQL 8.2 Windows install.
 ---- Changes since 1.320 ----
 When there are too many databases or tables to display, a menu for editing a specific one is displayed in addition to the search field.
+---- Changes since 1.340 ----
+Use HTML format output from the pgsql command, to handle queries for rows containing newlines and special characters.
