@@ -424,9 +424,11 @@ else {
 					push(@data, $row);
 					$row = undef;
 					}
-				elsif ($line =~ /^\s*<(td|th)[^>]*>([^<]*)<\/(td|th)>/) {
+				elsif ($line =~ /^\s*<(td|th)[^>]*>(.*)<\/(td|th)>/) {
 					# Value in a row
-					push(@$row, &entities_to_ascii("$2"));
+					local $v = $2;
+					$v =~ s/<br>/\n/g;
+					push(@$row, &entities_to_ascii($v));
 					}
 				}
 			$rv = { 'titles' => shift(@data),
