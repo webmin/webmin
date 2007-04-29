@@ -36,7 +36,8 @@ else {
 	$upfile = "$ENV{'WEBMIN_VAR'}/upload.$id";
 	}
 
-# Read the tracker file in a loop until done
+# Read the tracker file in a loop until done, or until 1 minute has passed
+# with no progress
 print "<script>\n";
 print "window.doneupload = 1;\n";
 print "</script>\n";
@@ -55,6 +56,23 @@ while(1) {
 		print "</script>\n";
 		last;
 		}
+
+	# Check if there has been no activity for 60 seconds
+	$now = time();
+	if ($size == $last_size) {
+		if ($last_time && $last_time < $now-60) {
+			# Too slow! Give up
+			print "<script>\n";
+			print "document.forms[0].pc.value = \"Timeout\";\n";
+			print "</script>\n";
+			last;
+			}
+		}
+	else {
+		$last_size = $size;
+		$last_time = $now;
+		}
+
 	$pc = int(100 * $size / $totalsize) / 2;
 	next if (defined($lastpc) && $pc == $lastpc);
 	print "<script>\n";
