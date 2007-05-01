@@ -4231,6 +4231,8 @@ $ptyfh->close_slave();
 local $oldfh = select(SUDOw);
 $| = 1;
 select($oldfh);
+print DEBUG "check_sudo_permissions: about to send pass\n";
+local $SIG{'PIPE'} = 'ignore';	# Sometimes sudo doesn't ask for a password
 print SUDOw $pass,"\n";
 print DEBUG "check_sudo_permissions: sent pass=$pass\n";
 close(SUDOw);
