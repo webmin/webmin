@@ -90,7 +90,7 @@ elsif ($mail) {
 			$fr = $froms->[0];
 			}
 		else {
-			$fr = &foreign_require($mm, "get_from_address");
+			$fr = &foreign_call($mm, "get_from_address");
 			}
 		&foreign_call($mm, "send_text_mail", $fr, $mail, undef,
 			      $?/256 <= 1 ? $text{'email_ok'}
