@@ -167,22 +167,26 @@ else {
 }
 
 @server_types = (
+		  # Linux sub-types, which have to come first
 		  [ 'asianux', 'Asianux', undef, 'Asianux' ],
 		  [ 'centos', 'CentOS Linux', undef, 'CentOS' ],
+		  [ 'ubuntu', 'Ubuntu Linux', undef, 'Ubuntu' ],
+		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],
+		  [ 'redflag', 'Red Flag Linux', undef, 'RedFlag' ],
+
+		  # Linux variants with a type code
 		  [ 'cobalt', 'Cobalt Linux', 'cobalt-linux' ],
 		  [ 'debian', 'Debian Linux', 'debian-linux' ],
-		  [ 'fedora', 'Fedora Linux', undef, 'Fedora' ],
 		  [ 'caldera', 'OpenLinux', 'open-linux' ],
 		  [ 'mandrake', 'Mandrake Linux', 'mandrake-linux' ],
 		  [ 'msc', 'MSC.Linux', 'msc-linux' ],
 		  [ 'redhat', 'Redhat Linux', 'redhat-linux' ],
-		  [ 'redflag', 'Red Flag Linux', undef, 'RedFlag' ],
 		  [ 'slackware', 'Slackware Linux', 'slackware-linux' ],
 		  [ 'suse', 'SuSE Linux', 'suse-linux' ],
 		  [ 'turbo', 'TurboLinux', 'turbo-linux' ],
-		  [ 'ubuntu', 'Ubuntu Linux', undef, 'Ubuntu' ],
 		  [ 'linux', 'Linux', '.*-linux' ],
 
+		  # Other operating systems
 		  [ 'freebsd', 'FreeBSD', 'freebsd' ],
 		  [ 'solaris', 'Solaris', 'solaris' ],
 		  [ 'hpux', 'HP/UX', 'hpux' ],
@@ -190,7 +194,8 @@ else {
 		  [ 'mac', 'Macintosh', 'macos' ],
 		  [ 'irix', 'IRIX', 'irix' ],
 		  [ 'windows', 'Windows', 'windows' ],
-		  [ 'unknown', $text{'lib_other'} ] );
+		  [ 'unknown', $text{'lib_other'} ],
+		);
 
 # this_server()
 # Returns a fake servers-list entry for this server

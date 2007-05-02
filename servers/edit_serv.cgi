@@ -25,7 +25,7 @@ print &ui_hidden("id", $in{'id'});
 print &ui_table_start($text{'edit_details'}, undef, 2);
 
 print &ui_table_row($text{'edit_host'},
-		    &ui_textbox("host", $s->{'host'}, 30));
+		    &ui_textbox("host", $s->{'host'}, 60));
 
 print &ui_table_row($text{'edit_port'},
 		    &ui_textbox("port", $s->{'port'}, 5));
@@ -40,7 +40,9 @@ if ($access{'forcetype'}) {
 	}
 else {
 	print &ui_table_row($text{'edit_type'},
-			    &ui_select("type", $s->{'type'}, \@server_types));
+	    &ui_select("type", $s->{'type'},
+		[ map { [ $_->[0], $_->[1] ] }
+		      sort { $a->[1] cmp $b->[1] } @server_types ]));
 	}
 
 print &ui_table_row($text{'edit_ssl'},
