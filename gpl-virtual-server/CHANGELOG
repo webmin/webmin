@@ -306,3 +306,4 @@ Added Module Config options for external quota commands to use, instead of the s
 When creating a virtual server inside a Solaris zone, existing virtual IPs in the zone can be selected for domains that need a private IP.
 When editing server templates, fields that are not used because they are inheriting from the Default Settings are now greyed out.
 Added a link for copying the default settings template, rather than creating an empty template which inherits from it.
+The old one file per directory backup format is no longer available, unless already selected.
