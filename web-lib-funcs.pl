@@ -946,7 +946,9 @@ return @pids;
 # to the name of the operation that failed.
 sub error
 {
-print STDERR "Error: ",@_,"\n";
+if (!$main::error_must_die) {
+	print STDERR "Error: ",@_,"\n";
+	}
 &load_theme_library();
 if ($main::error_must_die) {
 	die @_;
@@ -3502,7 +3504,8 @@ while(1) {
 		last;
 		}
 	}
-if (kill('TERM', $pid)) {
+close(OUT);
+if (kill('TERM', $pid) && time() - $start >= $_[1]) {
 	$timed_out = 1;
 	}
 close(OUT);
@@ -3570,7 +3573,7 @@ if (&is_readonly_mode()) {
 	}
 local $ok = rename(&translate_filename($_[0]),
 	      	   &translate_filename($_[1]));
-if (!$ok) {
+if (!$ok && $! !~ /permission/i) {
 	# Try the mv command, in case this is a cross-filesystem rename
 	if ($gconfig{'os_type'} eq 'windows') {
 		# Need to use rename
