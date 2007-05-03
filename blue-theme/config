@@ -12,4 +12,4 @@ applet_light_edge_hi=dadaf8
 applet_dark_edge_hi=333350
 applet_dark_bg=8888aa
 applet_light_bg=ffffff
-
+framed=1
