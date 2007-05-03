@@ -19,10 +19,6 @@ if (!&has_command($config{'logrotate'})) {
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
-if (!-r $config{'logrotate_conf'} && -r $config{'sample_conf'}) {
-	# No .. but a sample does. Use it
-	system("cp $config{'sample_conf'} $config{'logrotate_conf'}");
-	}
 if (!-r $config{'logrotate_conf'}) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 	&ui_print_endpage(

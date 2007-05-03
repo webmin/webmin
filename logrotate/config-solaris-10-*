@@ -1,0 +1,4 @@
+sort_mode=0
+logrotate_conf=/opt/csw/etc/logrotate.conf
+sample_conf=/opt/csw/etc/logrotate.conf.CSW
+logrotate=/opt/csw/bin/logrotate

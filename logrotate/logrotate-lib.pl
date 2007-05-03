@@ -11,6 +11,11 @@ if (open(VERSION, "$module_config_directory/version")) {
 	close(VERSION);
 	}
 
+# Use sample config if it exists but real config doesn't yet
+if (!-r $config{'logrotate_conf'} && -r $config{'sample_conf'}) {
+	&copy_source_dest($config{'sample_conf'}, $config{'logrotate_conf'});
+	}
+
 sub get_config_parent
 {
 if (!$get_config_parent_cache) {
