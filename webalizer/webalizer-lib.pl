@@ -9,6 +9,11 @@ $cron_cmd = "$module_config_directory/webalizer.pl";
 $custom_logs_file = "$module_config_directory/custom-logs";
 %access = &get_module_acl();
 
+# Use sample config if needed
+if (!-r $config{'webalizer_conf'} && -r $config{'alt_conf'}) {
+	&copy_source_dest($config{'alt_conf'}, $config{'webalizer_conf'});
+	}
+
 # get_config([logfile])
 # Parse the webalizer config file for a single logfile or global
 sub get_config

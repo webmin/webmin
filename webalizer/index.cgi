@@ -43,10 +43,6 @@ if ($webalizer_version < 2) {
 	}
 
 # Check if the config file exists
-if (!-r $config{'webalizer_conf'} && -r $config{'alt_conf'}) {
-	# No, but the sample one does
-	system("cp '$config{'alt_conf'}' '$config{'webalizer_conf'}' >/dev/null 2>&1");
-	}
 if (!-r $config{'webalizer_conf'}) {
 	&main_header();
 	print &text('index_econf', "<tt>$config{'webalizer_conf'}</tt>",
