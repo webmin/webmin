@@ -21,6 +21,7 @@ while(<FSTAB>) {
 	if (!/\S/) { next; }
 	@p = split(/\s+/, $_);
 	if ($p[3] eq "swap") { $p[2] = "swap"; }
+	if ($p[3] eq "proc") { $p[0] = "proc"; }
 	$rv[$i++] = [ $p[2], $p[0], $p[3], $p[6], $p[4], $p[5] ];
 	}
 close(FSTAB);
