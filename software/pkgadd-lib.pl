@@ -201,7 +201,7 @@ else {
 			     '\n\/.*\n');
 		if ($wf == 0) {
 			# some question which should not have appeared before
-			if ($seen{$matches[1]}++) {
+			if ($seen{$matches[1]}++ > 3) {
 				$rv = "<pre>$old_input$wait_for_input</pre>";
 				last;
 				}

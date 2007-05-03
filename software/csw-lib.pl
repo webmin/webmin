@@ -27,7 +27,7 @@ while(1) {
 		}
 	if ($wf == 0) {
 		# some question which should not have appeared before
-		if ($seen{$matches[1]}++) {
+		if ($seen{$matches[1]}++ > 3) {
 			$failed++;
 			last;
 			}
