@@ -487,8 +487,25 @@ return $? ? "<pre>$out</pre>" : undef;
 
 sub is_sendmail_running
 {
-local @pidfiles = split(/\t+/, $config{'sendmail_pid'});
-return &check_pid_file($pidfiles[0]);
+if ($config{'sendmail_smf'}) {
+	# Ask SMF, as on Solaris there is no PID file
+	local $out = &backquote_command("svcs -H -o STATE ".
+			quotemeta($config{'sendmail_smf'})." 2>&1");
+	if ($?) {
+		&error("Failed to get Sendmail status from SMF : $out");
+		}
+	return $out =~ /online/i ? 1 : 0;
+	}
+else {
+	# Use PID files, or check for process
+	local @pidfiles = split(/\t+/, $config{'sendmail_pid'});
+	if (@pidfiles) {
+		return &check_pid_file($pidfiles[0]);
+		}
+	else {
+		return &find_byname("sendmail");
+		}
+	}
 }
 
 # mailq_table(&qfiles)

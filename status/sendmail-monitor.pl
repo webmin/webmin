@@ -12,7 +12,8 @@ if (&sendmail::is_sendmail_running()) {
 	local @pidfiles = split(/\t+/, $sconfig{'sendmail_pid'});
 	local @st = stat($pidfiles[0]);
 	return { 'up' => 1,
-		 'desc' => &text('up_since', scalar(localtime($st[9]))) };
+		 'desc' => @pidfiles ? 
+			&text('up_since', scalar(localtime($st[9]))) : undef };
 	}
 else {
 	return { 'up' => 0 };

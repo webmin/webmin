@@ -17,6 +17,7 @@ sendmail_cf=Full path to sendmail.cf,8
 sendmail_features=Sendmail M4 base directory,7
 sendmail_mc=Full path to M4 config file,8
 sendmail_pid=Full path to sendmail pid files,9,40,2,\t
+sendmail_smf=Solaris SMF service name,3,None (use PID files instead)
 sendmail_command=Command to start sendmail in server mode,0
 sendmail_stop_command=Command to stop sendmail,3,Kill process
 sendmail_restart_command=Command to restart sendmail,3,Stop and start
