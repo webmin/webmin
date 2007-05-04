@@ -33,3 +33,4 @@ Added a button for creating a new HTML file.
 Replaced the HTMLarea widget for editing .html files with Xinha.
 ---- Changes since 1.340 ----
 When editing an HTML file, the <head> section is preserved.
+Added a link in the HTML editor window to swich to plain text mode.

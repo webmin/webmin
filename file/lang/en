@@ -52,6 +52,7 @@ edit_efollow=You are not allowed to write to the symbolic link '$1'
 edit_notfound=The text $1 was not found
 edit_saveclose=Save & Close
 edit_elength=File was truncated!
+edit_textmode=Switch to plain text mode
 
 info_file=File
 info_path=Path:

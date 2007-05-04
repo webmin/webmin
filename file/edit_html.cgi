@@ -5,8 +5,14 @@ require './file-lib.pl';
 do '../ui-lib.pl';
 $disallowed_buttons{'edit'} && &error($text{'ebutton'});
 &ReadParse();
+
+# Work out editing mode
+if ($in{'text'} || $in{'file'} && $in{'file'} !~ /\.(htm|html|shtml)$/i) {
+	$text_mode = 1;
+	}
+
 &popup_header($in{'file'} ? $text{'html_title'} : $text{'html_title2'},
-	      undef, "onload='initEditor()'");
+	      undef, $text_mode ? undef : "onload='initEditor()'");
 
 # Output HTMLarea init code
 print <<EOF;
@@ -32,9 +38,10 @@ $data = &read_file_contents($in{'file'});
 
 # Output text area
 print &ui_form_start("save_html.cgi", "form-data");
+print &ui_hidden("text", $text_mode);
 if ($in{'file'}) {
 	# Editing existing file
-	print &ui_hidden("file", $in{'file'}),"\n";
+	print &ui_hidden("file", $in{'file'});
 	$pc = 95;
 	}
 else {
@@ -43,10 +50,24 @@ else {
 	      &ui_textbox("file", $in{'dir'}, 70),"<br>\n";
 	$pc = 90;
 	}
-print "<textarea rows=20 cols=80 style='width:100%;height:$pc%' name=body id=body>";
-print &html_escape($data);
-print "</textarea>\n";
-print &ui_submit($text{'html_save'});
+if ($text_mode) {
+	# Show plain textarea
+	print "<textarea rows=20 cols=80 style='width:100%;height:$pc%' name=body>";
+	print &html_escape($data);
+	print "</textarea>\n";
+	print &ui_submit($text{'html_save'});
+	}
+else {
+	# Show HTML editor
+	print "<textarea rows=20 cols=80 style='width:100%;height:$pc%' name=body id=body>";
+	print &html_escape($data);
+	print "</textarea>\n";
+	print "<table width=100%><tr>\n";
+	print "<td>",&ui_submit($text{'html_save'}),"</td>\n";
+	print "<td align=right><a href='edit_html.cgi?file=".
+	     &urlize($in{'file'})."&text=1'>$text{'edit_textmode'}</a></td>\n";
+	print "</tr> </table>\n";
+	}
 print &ui_form_end();
 
 &popup_footer();
