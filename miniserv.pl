@@ -715,7 +715,14 @@ while(1) {
 			# this sub-process is asking about a password
 			local $infd = $passin[$i];
 			local $outfd = $passout[$i];
-			local $inline = <$infd>;
+			#local $inline = <$infd>;
+			local $inline = &sysread_line($infd);
+			if ($inline) {
+				print DEBUG "main: inline $inline";
+				}
+			else {
+				print DEBUG "main: inline EOF\n";
+				}
 			if ($inline =~ /^delay\s+(\S+)\s+(\S+)\s+(\d+)/) {
 				# Got a delay request from a subprocess.. for
 				# valid logins, there is no delay (to prevent
@@ -896,6 +903,11 @@ while(1) {
 					# Tell client OK or not
 					print $outfd "$ok\n";
 					}
+				}
+			elsif ($inline =~ /\S/) {
+				# Unknown line from pipe?
+				print DEBUG "main: Unknown line from pipe $inline\n";
+				print STDERR "Unknown line from pipe $inline\n";
 				}
 			else {
 				# close pipe
@@ -1308,9 +1320,11 @@ if (%users) {
 
 		if ($config{'passdelay'} && !$config{'inetd'}) {
 			# check with main process for delay
+			print DEBUG "handle_request: about to ask for password delay\n";
 			print $PASSINw "delay $authuser $acptip $validated\n";
 			<$PASSOUTr> =~ /(\d+) (\d+)/;
 			$blocked = $2;
+			print DEBUG "handle_request: password delay $1 $2\n";
 			sleep($1);
 			}
 		}
@@ -2423,6 +2437,22 @@ else {
 	sysread(SOCK, $buf, $_[0]) || return undef;
 	return $buf;
 	}
+}
+
+# sysread_line(fh)
+# Read a line from a file handle, using sysread to get a byte at a time
+sub sysread_line
+{
+local ($fh) = @_;
+local $line;
+while(1) {
+	local ($buf, $got);
+	$got = sysread($fh, $buf, 1);
+	last if ($got <= 0);
+	$line .= $buf;
+	last if ($buf eq "\n");
+	}
+return $line;
 }
 
 # wait_for_data(secs)
@@ -4168,7 +4198,7 @@ local ($user, $pass) = @_;
 
 # First try the pipes
 if ($PASSINw) {
-	print DEBUG "check_sudo_permissions: querying cache\n";
+	print DEBUG "check_sudo_permissions: querying cache for $user\n";
 	print $PASSINw "readsudo $user\n";
 	local $can = <$PASSOUTr>;
 	chop($can);
@@ -4209,6 +4239,7 @@ if (!$pid) {
 	$ptyfh->make_slave_controlling_terminal();
 	close(STDIN); close(STDOUT); close(STDERR);
 	untie(*STDIN); untie(*STDOUT); untie(*STDERR);
+	close($PASSINw); close($PASSOUTr);
 	$( = $uinfo[3]; $) = "$uinfo[3] $uinfo[3]";
 	($>, $<) = ($uinfo[2], $uinfo[2]);
 
