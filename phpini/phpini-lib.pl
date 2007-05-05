@@ -21,9 +21,10 @@ if (!defined($get_config_cache{$file})) {
 	while(<CONFIG>) {
 		s/\r|\n//g;
 		s/\s+$//;
+		local $uq;
 		if (/^(;?)\s*(\S+)\s*=\s*"(.*)"/ ||
 		    /^(;?)\s*(\S+)\s*=\s*'(.*)'/ ||
-		    /^(;?)\s*(\S+)\s*=\s*(.*)/) {
+		    ($uq = ($_ =~ /^(;?)\s*(\S+)\s*=\s*(.*)/))) {
 			# Found a variable
 			push(@rv, { 'name' => $2,
 				    'value' => $3,
@@ -32,6 +33,10 @@ if (!defined($get_config_cache{$file})) {
 				    'file' => $file,
 				    'section' => $section,
 				  });
+			if ($uq) {
+				# Remove any comments
+				$rv[$#rv]->{'value'} =~ s/\s+;.*$//;
+				}
 			}
 		elsif (/^\[(.*)\]/) {
 			# A new section
