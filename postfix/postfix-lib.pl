@@ -646,6 +646,11 @@ sub generate_map_edit
 	exit;
     }
 
+    # Make sure the user is allowed to edit them
+    foreach my $f (&get_maps_files(&get_current_value($_[0]))) {
+      &is_under_directory($access{'dir'}, $f) ||
+	&error(&text('mapping_ecannot', $access{'dir'}));
+    }
 
     my $mappings = &get_maps($_[0]);
     my $nt = $_[3] || $text{'mapping_name'};

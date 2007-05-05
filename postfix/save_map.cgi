@@ -36,6 +36,10 @@ foreach $trans (@{$maps})
 }
 
 my @maps_files = &get_maps_files(&get_current_value($in{'map_name'}));
+foreach my $f (@maps_files) {
+      &is_under_directory($access{'dir'}, $f) ||
+	&error(&text('mapping_ecannot', $access{'dir'}));
+}
 
 defined($maps_files[0]) || &error($text{'mapps_no_map_file'});
 &lock_alias_files(\@maps_files);

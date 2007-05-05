@@ -350,6 +350,7 @@ mapping_name=Name
 mapping_value=Maps to...
 mapping_delete=Delete Selected
 mapping_cmt=Description
+mapping_ecannot=You are only allowed to edit maps under $1
 new_mapping=New Mapping
 new_mappingmsg=Click this button to create a new mapping
 new_manual=Edit Map Manually
