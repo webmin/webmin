@@ -430,6 +430,8 @@ if ($access{'create'}) {
 	print &ui_tabs_end_tab();
 	}
 
+print &ui_tabs_end(1);
+
 &ui_print_footer("/", $text{'index'});
 
 sub server_name_sort

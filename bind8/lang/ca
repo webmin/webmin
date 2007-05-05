@@ -846,6 +846,7 @@ mass_done=...fet.
 mass_emips=Hi falten les adreces IP mestres
 mass_addedslaves=He afegit $1 als servidors esclaus correctament.
 mass_eonslave=S'han produït errors en crear les zones als servidors esclaus: $1
+mass_eviewcannot=No tens permís per afegir zones a aquesta vista
 
 massdelete_title=Supressió de Zones
 massdelete_rusure=Segur que vols suprimir les $1 zones seleccionades? ($2)

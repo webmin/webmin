@@ -4,10 +4,18 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$zone = &get_zone_name($in{'index'}, $in{'view'});
+if ($in{'zone'}) {
+	$zone = &get_zone_name($in{'zone'}, 'any');
+	$in{'index'} = $zone->{'index'};
+	$in{'view'} = $zone->{'viewindex'};
+	}
+else {
+	$zone = &get_zone_name($in{'index'}, $in{'view'});
+	}
 $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'slave_ecannot'});
+
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 if ($zone->{'file'}) {
 	@st = stat(&make_chroot($zone->{'file'}));

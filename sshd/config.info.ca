@@ -7,3 +7,4 @@ start_cmd=Ordre per iniciar sshd,3,Executa només el servidor
 restart_cmd=Ordre per aplicar la configuració de sshd,3,Envia simplement el senyal HUP
 stop_cmd=Ordre per aturar sshd,3,Mata el procés
 keygen_path=Camí complet del programa ssh-keygen,0
+sshd_version=Versió del sevidor SSH,3,Detecta-la automàticament

@@ -16,6 +16,9 @@ index_now2=Restaura-ho Ara
 index_apply=Aplica les configuracions
 index_jobs=Còpies Planificades
 index_nostrftime=Atenció - alguns treballs de còpia utilitzen % en els noms de fitxer, però la substitució strftime no es troba activada a la pàgina de Configuració del Mòdul.
+index_tabsched=Còpies planificades
+index_tabbackup=Copia-ho ara
+index_tabrestore=Restaura-ho ara
 
 edit_title1=Creació de Còpia Planificada
 edit_title2=Edició de Còpia Planificada

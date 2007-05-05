@@ -1,0 +1,3 @@
+virtualmin_spam=Camí complet del programa de consulta d'usuaris de spam de Virtualmin,3,No instal·lat,40
+warn_procmail=Mostra un avís si Procmail no està instal·lat,1,1-Sí,0-No
+alias_files=Camí complet dels fitxers d'àlies globals,9,40,3,\t

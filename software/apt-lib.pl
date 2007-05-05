@@ -75,6 +75,7 @@ return $name eq "dhcpd" ? "dhcp3-server" :
        $name eq "mysql" ? "mysql-client mysql-server mysql-admin" :
        $name eq "apache" ? "apache2" :
        $name eq "postgresql" ? "postgresql postgresql-client" :
+       $name eq "openssh" ? "ssh" :
 			       $name;
 }
 

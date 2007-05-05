@@ -251,6 +251,7 @@ sync_ecannot=No tens permís per configurar la sincronització.
 sync_unix=Estableix la contrasenya dels usuaris nous a l'autenticació Unix.
 
 unix_title=Autenticació d'Usuaris Unix
+unix_err=No he pogut desar l'autenticació Unix
 unix_desc=Aquesta pàgina permet configurar Webmin per validar els intents de connexió contra la llista d'usuaris del sistema i PAM. Això pot ser útil si tens un gran nombre d'usuaris Unix als quals vols donar accés a Webmin.
 unix_def=Permet la connexió només als usuaris de Webmin
 unix_sel=Permet que entrin els usuaris Unix llistats a sota...
@@ -277,6 +278,8 @@ unix_enone=No has introduït cap usuari ni grup Unix permès
 unix_same=&lt;El mateix usuari o grup&gt;
 unix_sudo=Permet que els usuaris que poden executar totes les ordres via <tt>sudo</tt> entrin com a <tt>root</tt>
 unix_pamany=Tracta les entrades que només passen la validació PAM com a $1
+unix_esudo=L'ordre $1 no està instal·lada
+unix_esudomod=El mòdul Perl $1 necessari per a l'autenticació <tt>sudo</tt> no està instal·lat
 
 sessions_title=Sessions d'Entrada Actuals
 sessions_desc=Les sessions d'entrada actuals de Webmin es llisten a sota. Per cancel·lar una sessió existent i forçar l'usuari a tornar a entrar, fes clic sobre l'ID de la sessió.

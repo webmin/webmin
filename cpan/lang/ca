@@ -54,6 +54,7 @@ download_need=Anant a buscar els Prerequisits que Falten
 download_missing=Hi falten $1 mòduls
 download_nomissing=Tot instal·lat
 download_ebuild=Un o més dels mòduls de Perl necessiten $1 per compilar-se, però aquest mòdul no està instal·lat.
+download_yum=Instal·lant el mòdul Perl $1 del paquet $2...
 
 install_title=Instal·lació de Mòdul
 install_untar=Desempaquetant el fitxer del mòdul

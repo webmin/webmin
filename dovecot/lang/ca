@@ -114,6 +114,10 @@ login_bsdauth=Autenticació BSD<br>&nbsp;&nbsp;Utilitza la clau de cau $1
 login_checkpassword=Programa extern $1
 login_eckey=Hi falta la clau de cau o bé és invàlida
 login_echeckpassword=Hi falta el programa extern de comprovació de contrasenyes o bé és invàlid
+login_procs=Nombre màxim de processos d'entrada
+login_count=Nombre inicial de processos d'entrada
+login_eprocs=Hi falta el nombre màxim de processos d'entrada o bé és invàlid
+login_ecount=Hi falta el nombre inicial de processos d'entrada o bé és invàlid
 
 mail_title=Fitxers de Correu
 mail_header=Ubicació del correu i opcions de lectura
@@ -136,6 +140,16 @@ mail_eenv=Hi falta la ubicació del correu o bé sembla invàlida
 mail_echeck=Hi falta el nombre de segons entre comprovacions o bé no és numèric
 mail_eidle=Hi falta el nombre de segons entre comprovacions quan està inactiu o bé no és numèric
 mail_eumask=Hi falta la màscara octal de quatre dígits o bé és invàlida
+mail_uidl=Format UIDL
+mail_uidl_other=Un altre...
+mail_uidl_none=No establert (ATENCIÓ - Pot ser que dove no arrenqui)
+mail_uidl_dovecot=Dovecot antic, Cyrus nou
+mail_uidl_uw=ipop3d UW
+mail_uidl_courier0=Courier verió 0 
+mail_uidl_courier1=Courier verió 1, Cyrus antic
+mail_uidl_courier2=Courier verió 2
+mail_uidl_tpop3d=tpop3d
+mail_euidl=Hi falta el format UIDL o bé és invàlid
 
 log_net=He canviat la Xarxa i els Protocols
 log_login=He canviat les Opcions d'Usuaris i Entrades

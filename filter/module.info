@@ -6,3 +6,4 @@ longdesc=Create rules to filter and forward incoming email.
 usermin=1
 webmin=1
 webmin_hidden=1
+desc_ca=Filtres de Correu

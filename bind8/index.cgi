@@ -5,7 +5,8 @@
 require './bind8-lib.pl';
 &ReadParse();
 
-$need_create = !-r &make_chroot($config{'named_conf'});
+$need_create = !-r &make_chroot($config{'named_conf'}) ||
+	       $in{'create'};
 
 # Check if bind is installed
 if (!-x $config{'named_path'}) {

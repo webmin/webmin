@@ -37,7 +37,6 @@ else {
 		$fs->{'special'} = &mount::check_location($fs->{'type'});
 		&mount::check_options($fs->{'type'});
 		$fs->{'options'} = &mount::join_options($fs->{'type'});
-		print STDERR "options = $fs->{'options'}\n";
 		}
 	else {
 		# Just use user-entered device and options

@@ -313,7 +313,7 @@ local @ip = split(/\./, $_[0]);
 return ($ip[0]<<24) + ($ip[1]<<16) + ($ip[2]<<8) + ($ip[3]<<0);
 }
 
-# ip_to_integer(integer)
+# integer_to_ip(integer)
 # Given a 32-bit number, converts it to an IP
 sub integer_to_ip
 {
