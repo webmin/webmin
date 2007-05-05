@@ -466,8 +466,8 @@ sub save_options
 	    (my $param = $key) =~ s/_def//;
 	    my $value = $options{$key} eq "__USE_FREE_FIELD__" ?
 			$options{$param} : $options{$key};
-            if ($value =~ /^(\S+):/ && $access{'dir'} ne '/') {
-		foreach my $f (&get_maps_files($value)) {
+            if ($value =~ /(\S+):(\/\S+)/ && $access{'dir'} ne '/') {
+		foreach my $f (&get_maps_files("$1:$2")) {
 		   if (!&is_under_directory($access{'dir'}, $f)) {
 			&error(&text('opts_edir', $access{'dir'}));
 		   }
