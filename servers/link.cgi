@@ -151,6 +151,9 @@ if ($header{'content-type'} =~ /text\/html/ && !$header{'x-no-links'}) {
 		s/\.location\s*=\s*"(\/[^']*)"/.location="$url$1"/gi;
 		s/window.open\("(\/[^"]*)"/window.open\("$url$1"/gi;
 		s/name=return\s+value="(\/[^"]*)"/name=return value="$url$1"/gi;
+		s/param\s+name=config\s+value='(\/[^']*)'/param name=config value='$url$1'/gi;
+		s/param\s+name=config\s+value="(\/[^']*)"/param name=config value="$url$1"/gi;
+		s/param\s+name=config\s+value=(\/[^']*)/param name=config value=$url$1/gi;
 		print;
 		}
 	}
