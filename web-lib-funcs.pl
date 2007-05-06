@@ -5672,19 +5672,17 @@ if (&is_readonly_mode() && !$safe) {
 	}
 local $cmd = &translate_command($cmd);
 
-if ($gconfig{'os_type'} eq 'windows') {
-	# Use ` operator where possible
-	if (!$stdin && ref($stdout) && !$stderr) {
-		$$stdout = `$cmd >$null_file`;
-		return $?;
-		}
-	elsif (!$stdin && ref($stdout) && $stdout eq $stderr) {
-		$$stdout = `$cmd 2>&1`;
-		return $?;
-		}
-	elsif (!$stdin && !$stdout && !$stderr) {
-		return system("$cmd >$null_file 2>$null_file <$null_file");
-		}
+# Use ` operator where possible
+if (!$stdin && ref($stdout) && !$stderr) {
+	$$stdout = `$cmd >$null_file`;
+	return $?;
+	}
+elsif (!$stdin && ref($stdout) && $stdout eq $stderr) {
+	$$stdout = `$cmd 2>&1`;
+	return $?;
+	}
+elsif (!$stdin && !$stdout && !$stderr) {
+	return system("$cmd >$null_file 2>$null_file <$null_file");
 	}
 
 # Setup pipes
