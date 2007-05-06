@@ -1319,6 +1319,10 @@ if ($_[0]->{'nozone'} && &running_in_zone()) {
 	# Not supported in a Solaris Zone
 	return 0;
 	}
+if ($_[0]->{'novserver'} && &running_in_vserver()) {
+	# Not supported in a Linux vserver
+	return 0;
+	}
 return 1 if (!$oss || $oss eq '*');
 local $osver = $_[2] || $gconfig{'os_version'};
 local $ostype = $_[1] || $gconfig{'os_type'};
@@ -5935,6 +5939,25 @@ return 0 if ($gconfig{'os_type'} ne 'solaris' ||
 local $zn = `zonename 2>$null_file`;
 chop($zn);
 return $zn && $zn ne "global";
+}
+
+# running_in_vserver()
+# Returns 1 if the current Webmin instance is running in a Linux VServer.
+# Used to disable modules and features that are not appropriate
+sub running_in_vserver
+{
+return 0 if ($gconfig{'os_type'} !~ /^\*-linux$/);
+local $vserver;
+open(MTAB, "/etc/mtab");
+while(<MTAB>) {
+	local ($dev, $mp) = split(/\s+/, $_);
+	if ($mp eq "/" && $dev =~ /^\/dev\/hdv/) {
+		$vserver = 1;
+		last;
+		}
+	}
+close(MTAB);
+return $vserver;
 }
 
 # list_categories(&modules)

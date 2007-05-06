@@ -6,10 +6,11 @@ require './net-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("ifconfig hosts resolve.conf nsswitch.conf", "man"));
 
+$zone = &running_in_zone() || &running_in_vserver();
 foreach $i ('ifcs', 'routes', 'dns', 'hosts',
 	    ($config{'ipnodes_file'} ? ('ipnodes') : ( ))) {
 	next if (!$access{$i});
-	next if ($i eq "ifcs" && &running_in_zone());
+	next if ($i eq "ifcs" && $zone);
 
 	push(@links, "list_${i}.cgi");
 	push(@titles, $text{"${i}_title"});
@@ -17,7 +18,7 @@ foreach $i ('ifcs', 'routes', 'dns', 'hosts',
 	}
 &icons_table(\@links, \@titles, \@icons, @icons > 4 ? scalar(@icons) : 4);
 
-if (defined(&apply_network) && $access{'apply'} && !&running_in_zone()) {
+if (defined(&apply_network) && $access{'apply'} && !$zone) {
 	# Allow the user to apply the network config
 	print "<hr>\n";
 	print "<form action=apply.cgi>\n";

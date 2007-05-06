@@ -24,3 +24,4 @@ depends=mount 1.276
 version=1.276
 desc_ru_RU=Каталоги NFS
 desc_ca=Exportacions NFS
+novserver=1
