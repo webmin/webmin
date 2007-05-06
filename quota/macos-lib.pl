@@ -332,6 +332,12 @@ return ($text{'grace_seconds'}, $text{'grace_minutes'}, $text{'grace_hours'},
 	$text{'grace_days'});
 }
 
+# Always returns 1024 on MacOS
+sub fs_block_size
+{
+return 1024;
+}
+
 %name_to_unit = ( "second", 0, "seconds", 0,
 		  "minute", 1, "minutes", 1,
 		  "hour", 2, "hours", 2,
