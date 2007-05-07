@@ -5674,14 +5674,17 @@ local $cmd = &translate_command($cmd);
 
 # Use ` operator where possible
 if (!$stdin && ref($stdout) && !$stderr) {
+	$cmd = "($cmd)" if ($gconfig{'os_type'} ne 'windows');
 	$$stdout = `$cmd >$null_file`;
 	return $?;
 	}
 elsif (!$stdin && ref($stdout) && $stdout eq $stderr) {
+	$cmd = "($cmd)" if ($gconfig{'os_type'} ne 'windows');
 	$$stdout = `$cmd 2>&1`;
 	return $?;
 	}
 elsif (!$stdin && !$stdout && !$stderr) {
+	$cmd = "($cmd)" if ($gconfig{'os_type'} ne 'windows');
 	return system("$cmd >$null_file 2>$null_file <$null_file");
 	}
 
