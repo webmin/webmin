@@ -307,3 +307,7 @@ When creating a virtual server inside a Solaris zone, existing virtual IPs in th
 When editing server templates, fields that are not used because they are inheriting from the Default Settings are now greyed out.
 Added a link for copying the default settings template, rather than creating an empty template which inherits from it.
 The old one file per directory backup format is no longer available, unless already selected.
+---- Changes since 3.40 ----
+When a virtual server with a website and private IP address is deleted, any Listen directives added for its IP are removed from the Apache configuration.
+Added a Module Config option to change the default SSL key size, and increased the default to 1024 bits.
+Added Module Config options for choosing different locations for servers' SSL certificate and key files.
