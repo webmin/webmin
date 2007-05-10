@@ -56,3 +56,4 @@ Added a button on the main page for updating the values of records in multiple d
 Allowed views are now enforced when adding multiple zones from a batch file.
 ---- Changes since 1.340 ----
 Updated the Edit Record form to use ui-lib.pl, for easier theming.
+Fixed a bug that can occur when deleting multiple DNS records at once, causing the wrong ones to be removed.
