@@ -37,7 +37,7 @@ else {
 	# Delete them
 	@recs = &read_zone_file($zone->{'file'}, $dom);
 
-	foreach $d (sort { $b cmp $a } @d) {
+	foreach $d (sort { $b <=> $a } @d) {
 		$r = $recs[$d];
 		if ($in{'rev'}) {
 			# Find the reverse
@@ -67,10 +67,10 @@ else {
 		# Delete the actual record
 		&lock_file(&make_chroot($r->{'file'}));
 		&delete_record($r->{'file'}, $r);
-		splice(@$recs, $d, 1);
+		splice(@recs, $d, 1);
 		}
-	&unlock_all_files();
 	&bump_soa_record($zone->{'file'}, \@recs);
+	&unlock_all_files();
 
 	&webmin_log("delete", "recs", scalar(@d));
 	&redirect("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}");
