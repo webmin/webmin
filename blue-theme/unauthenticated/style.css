@@ -83,6 +83,9 @@ table.formsection, table.ui_table, table.sortable, .main {
   margin: 4px;
   background-color: #EFEFEF;
 }
+table.loginform {
+  width:40%;
+}
 tr.mainsel {
   background-color: #ddffbb;
 }
