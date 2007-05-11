@@ -116,13 +116,15 @@ sub get_current_value
 my ($name,$key)=split /:/,$_[0];
 my $lref = &read_file_lines($config{'postfix_config_file'}, 1);
 my $out;
+my $i = 0;
 foreach my $l (@$lref) {
 	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/ &&
-	    $1 eq $name) {
+	    $1 eq $name && $lref->[$i+1] !~ /^\s+\S/) {
 		# Found it! Return ..
 		$out = $2;
 		last;
 		}
+	$i++;
 	}
 if (!defined($out)) {
 	# Fall back to asking Postfix
