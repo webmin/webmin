@@ -246,6 +246,27 @@ else {
 	}
 }
 
+# get_memory_info()
+# Returns a list containing the real mem, free real mem, swap and free swap
+# (In kilobytes).
+sub get_memory_info
+{
+if (!&has_command("kstat")) {
+	return ( );
+	}
+local %stat;
+foreach my $s ("physmem", "freemem", "swap_alloc", "swap_avail") {
+	local $out = &backquote_command("kstat -p -m unix -s $s");
+	if ($out =~ /\s+(\d+)/) {
+		$stat{$s} = $1;
+		}
+	}
+return ($stat{'physmem'}*8, $stat{'freemem'}*8,
+	$stat{'swap_alloc'}/1024, $stat{'swap_avail'}/1024);
+}
+
+
+
 foreach $ia (keys %text) {
 	if ($ia =~ /^sysv(_\S+)/) {
 		$info_arg_map{$1} = $text{$ia};

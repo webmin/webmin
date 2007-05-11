@@ -10,3 +10,5 @@ When running a command, you can now select which Unix user it will be run as.
 The CPU type and speed is displayed on the processed by CPU usage page, on Linux systems.
 ---- Changes since 1.330 ----
 On Virtuozzo systems, the free and used memory shown is determined by the VMs limits.
+---- Changes since 1.340 ----
+Free and used real and virtual memory is now displayed on Solaris.
