@@ -500,7 +500,11 @@ else {
 	# Use PID files, or check for process
 	local @pidfiles = split(/\t+/, $config{'sendmail_pid'});
 	if (@pidfiles) {
-		return &check_pid_file($pidfiles[0]);
+		foreach my $p (@pidfiles) {
+			local $c = &check_pid_file($p);
+			return $c if ($c);
+			}
+		return undef;
 		}
 	else {
 		return &find_byname("sendmail");
