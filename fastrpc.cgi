@@ -207,17 +207,35 @@ while(1) {
 	elsif ($arg->{'action'} eq 'require') {
 		# require a library
 		print STDERR "fastrpc: require $arg->{'module'}/$arg->{'file'}\n" if ($gconfig{'rpcdebug'});
-		&foreign_require($arg->{'module'},
-				 $arg->{'file'});
-		$rawrv = &serialise_variable( { 'status' => 1 });
+		eval {
+			&foreign_require($arg->{'module'},
+					 $arg->{'file'});
+			};
+		if ($@) {
+			print STDERR "fastrpc: require error $@\n" if ($gconfig{'rpcdebug'});
+			$rawrv = &serialise_variable( { 'status' => 0,
+							'rv' => $@ });
+			}
+		else {
+			print STDERR "fastrpc: require done\n" if ($gconfig{'rpcdebug'});
+			$rawrv = &serialise_variable( { 'status' => 1 });
+			}
 		}
 	elsif ($arg->{'action'} eq 'call') {
 		# execute a function
 		print STDERR "fastrpc: call $arg->{'module'}::$arg->{'func'}(",join(",", @{$arg->{'args'}}),")\n" if ($gconfig{'rpcdebug'});
-		local @rv = &foreign_call($arg->{'module'},
-				    $arg->{'func'},
-				    @{$arg->{'args'}});
-		if (@rv == 1) {
+		local @rv;
+		eval {
+			@rv = &foreign_call($arg->{'module'},
+					    $arg->{'func'},
+					    @{$arg->{'args'}});
+			};
+		if ($@) {
+			print STDERR "fastrpc: call error $@\n" if ($gconfig{'rpcdebug'});
+			$rawrv = &serialise_variable(
+				{ 'status' => 0, 'rv' => $@ } );
+			}
+		elsif (@rv == 1) {
 			$rawrv = &serialise_variable(
 				{ 'status' => 1, 'rv' => $rv[0] } );
 			}

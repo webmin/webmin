@@ -1912,6 +1912,12 @@ if (!$main::file_cache{$realfile}) {
         $main::file_cache{$realfile} = \@lines;
 	$main::file_cache_noflush{$realfile} = $_[1];
         }
+else {
+	# Make read-write if currently readonly
+	if (!$_[1]) {
+		$main::file_cache_noflush{$realfile} = 0;
+		}
+	}
 return $main::file_cache{$realfile};
 }
 
@@ -3795,11 +3801,12 @@ return wantarray ? ($ok, $err) : $ok;
 }
 
 # remote_session_name(host|&server)
+# Generates a unix session ID for some server
 sub remote_session_name
 {
 return ref($_[0]) && $_[0]->{'host'} && $_[0]->{'port'} ?
-		"$_[0]->{'host'}:$_[0]->{'port'}" :
-       ref($_[0]) ? "" : $_[0];
+		"$_[0]->{'host'}:$_[0]->{'port'}.$$" :
+       ref($_[0]) ? "" : "$_[0].$$";
 }
 
 # remote_foreign_require(server, module, file)
