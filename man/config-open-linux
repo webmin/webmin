@@ -1,5 +1,5 @@
 search_cmd=man -k PAGE
-man_dir=/usr/man
+man_dir=/usr/man:/usr/share/man:/usr/local/man:/usr/local/share/man
 man_cmd_sect=man SECTION PAGE
 man_cmd=man PAGE
 list_cmd_sect=man -w SECTION PAGE
