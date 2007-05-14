@@ -790,7 +790,9 @@ if ($cache) {
 	local %cache;
 	local $uptime = &get_system_uptime();
 	local $lastreboot = $uptime ? time()-$uptime : undef;
-	if (&read_file($detect_operating_system_cache, \%cache)) {
+	if (&read_file($detect_operating_system_cache, \%cache) &&
+	    $cache{'os_type'} && $cache{'os_version'} &&
+	    $cache{'real_os_type'} && $cache{'real_os_version'}) {
 		if ($cache{'time'} > time()-24*60*60 &&
 		    $cache{'time'} > $lastreboot) {
 			return %cache;
