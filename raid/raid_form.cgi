@@ -89,7 +89,7 @@ if ($lvl >= 4) {
 	print "</select></td> </tr>\n";
 	}
 
-if ($lvl == 4) {
+if ($lvl == 4 && $raid_mode ne 'mdadm') {
 	print "<tr> <td valign=top><b>$text{'create_pdisk'}</b></td>\n";
 	print "<td><select name=pdisk>\n";
 	print "<option value='' selected>$text{'create_auto'}\n";

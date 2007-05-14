@@ -5,3 +5,5 @@ Added a button for mounting a RAID device.
 RAID devices can now be easily mounted as virtual memory.
 ---- Changes since 1.280 ----
 Added support for RAID 6 arrays when using MDADM.
+---- Changes since 1.340 ----
+Removed need to explicitly select a parity disk for RAID 4 when using MDADM.
