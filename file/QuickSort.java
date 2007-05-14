@@ -25,7 +25,7 @@ public class QuickSort
     protected static int compare(RemoteFile a, RemoteFile b) {
 	long rv = 0;
 	if (col == 1)
-		rv = a.name.compareTo(b.name);
+		rv = a.name.toLowerCase().compareTo(b.name.toLowerCase());
 	else if (col == 2)
 		rv = a.size - b.size;
 	else if (col == 3)
