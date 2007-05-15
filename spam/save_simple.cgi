@@ -82,6 +82,7 @@ for($i=0; defined($name = $in{"name_$i"}); $i++) {
 &save_directives($conf, "full", \@fulls, 0);
 &save_directives($conf, "score", \@scores, 0);
 &save_directives($conf, "describe", \@describes, 0);
+&save_directives($conf, "uri", \@uris, 0);
 
 &flush_file_lines();
 &unlock_spam_files();
