@@ -120,20 +120,21 @@ close(DBS);
 return map { $_->[0] } @{$t->{'data'}};
 }
 
-# list_tables(database, [empty-if-denied])
+# list_tables(database, [empty-if-denied], [no-filter-views])
 # Returns a list of tables in some database
 sub list_tables
 {
-if ($_[0] =~ /_/) {
-	open(DBS, "\"$config{'mysqlshow'}\" $authstr ".quotemeta($_[0])." % 2>&1 |");
+local ($db, $empty_denied, $include_views) = @_;
+if ($db =~ /_/) {
+	open(DBS, "\"$config{'mysqlshow'}\" $authstr ".quotemeta($db)." % 2>&1 |");
 	}
 else {
-	open(DBS, "\"$config{'mysqlshow'}\" $authstr ".quotemeta($_[0])." 2>&1 |");
+	open(DBS, "\"$config{'mysqlshow'}\" $authstr ".quotemeta($db)." 2>&1 |");
 	}
 local $t = &parse_mysql_table(DBS);
 close(DBS);
 if ($t =~ /access denied/i) {
-	if ($_[1]) {
+	if ($empty_denied) {
 		return ( );
 		}
 	else {
@@ -143,10 +144,12 @@ if ($t =~ /access denied/i) {
 elsif (!ref($t)) {
 	&error("<tt>$t</tt>");
 	}
-# Filter out views
 local %views;
-if (&supports_views()) {
-	%views = map { $_, 1 } &list_views($_[0]);
+if (!$include_views) {
+	# Filter out views
+	if (&supports_views()) {
+		%views = map { $_, 1 } &list_views($_[0]);
+		}
 	}
 return grep { !$views{$_} } map { $_->[0] } @{$t->{'data'}};
 }
@@ -493,8 +496,19 @@ if (!defined($supports_views_cache)) {
 		}
 	else {
 		local @dbs = &list_databases();
-		$supports_views_cache =
-			&indexof("information_schema", @dbs) >= 0 ? 1 : 0;
+		if (&indexof("information_schema", @dbs) >= 0) {
+			# Has information_schema DB .. but does it have views?
+			local @ist = &list_tables("information_schema", 1, 1);
+			if (&indexoflc("views", @ist) >= 0) {
+				$supports_views_cache = 1;
+				}
+			else {
+				$supports_views_cache = 0;
+				}
+			}
+		else {
+			$supports_views_cache = 0;
+			}
 		}
 	}
 return $supports_views_cache;

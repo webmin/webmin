@@ -51,3 +51,5 @@ Added access control options to prevent the viewing and management of views and 
 When there are too many databases or tables to display, a menu for editing a specific one is displayed in addition to the search field.
 ---- Changes since 1.330 ----
 Fixed a bug that prevents compression from being done when backing up all databases.
+---- Changes since 1.340 ----
+Improved detection of support for views, which avoids errors with information_schema.views.
