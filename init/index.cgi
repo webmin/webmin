@@ -94,9 +94,9 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 		push(@links,
 			"<a href='edit_action.cgi?2'>$text{'index_add'}</a>");
 		}
-	print &ui_links_row(\@links);
 	if (!$config{'desc'}) {
 		# Display actions by name only
+		print &ui_links_row(\@links);
 		print "<table width=100% border>\n";
 		print "<tr $tb> <td><b>$text{'index_title'}</b></td> </tr>\n";
 		print "<tr $cb> <td><table width=100%>\n";
@@ -112,10 +112,12 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 			if ($i%4 == 3) { print "</tr>\n"; }
 			}
 		print "</table></td></tr></table>\n";
+		print &ui_links_row(\@links);
 		}
 	else {
 		# Display actions and descriptions
 		print &ui_form_start("mass_start_stop.cgi", "post");
+		print &ui_links_row(\@links);
 		print &ui_columns_start([
 			"",
 			$text{'index_action'},
@@ -185,6 +187,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				}
 			}
 		print &ui_columns_end();
+		print &ui_links_row(\@links);
 		print "<input type=submit name=start value='$text{'index_start'}'>\n";
 		print "<input type=submit name=stop value='$text{'index_stop'}'>\n";
 		print "<input type=submit name=restart value='$text{'index_restart'}'>\n";
@@ -199,7 +202,6 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 			}
 		}
 	print "</form>\n";
-	print &ui_links_row(\@links);
 	print "<hr>\n";
 
 	if ($access{'bootup'} == 1) {
