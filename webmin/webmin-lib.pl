@@ -1138,4 +1138,53 @@ print "<p>$text{'restart_done'}<p>\n";
 &restart_miniserv(1);
 }
 
+# cert_info(file)
+# Returns a hash of details of a cert in some file
+sub cert_info
+{
+local %rv;
+local $_;
+open(OUT, "openssl x509 -in ".quotemeta($_[0])." -issuer -subject -enddate |");
+while(<OUT>) {
+	s/\r|\n//g;
+	if (/subject=.*CN=([^\/]+)/) {
+		$rv{'cn'} = $1;
+		}
+	if (/subject=.*O=([^\/]+)/) {
+		$rv{'o'} = $1;
+		}
+	if (/subject=.*Email=([^\/]+)/) {
+		$rv{'email'} = $1;
+		}
+	if (/issuer=.*CN=([^\/]+)/) {
+		$rv{'issuer_cn'} = $1;
+		}
+	if (/issuer=.*O=([^\/]+)/) {
+		$rv{'issuer_o'} = $1;
+		}
+	if (/issuer=.*Email=([^\/]+)/) {
+		$rv{'issuer_email'} = $1;
+		}
+	if (/notAfter=(.*)/) {
+		$rv{'notafter'} = $1;
+		}
+	}
+close(OUT);
+$rv{'type'} = $rv{'o'} eq $rv{'issuer_o'} ? $text{'ssl_typeself'}
+					  : $text{'ssl_typereal'};
+return \%rv;
+}
+
+# cert_pem_data(file)
+# Returns a cert in PEM format
+sub cert_pem_data
+{
+local ($d) = @_;
+local $data = &read_file_contents($_[0]);
+if ($data =~ /(-----BEGIN\s+CERTIFICATE-----\n([A-Za-z0-9\+\/=\n\r]+)-----END\s+CERTIFICATE-----)/) {
+	return $1;
+	}
+return undef;
+}
+
 1;

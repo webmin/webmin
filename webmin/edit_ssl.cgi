@@ -23,7 +23,7 @@ if ($@) {
 
 # Show tabs
 @tabs = map { [ $_, $text{'ssl_tab'.$_}, "edit_upgrade.cgi?mode=$_" ] }
-	    ( "ssl", "ips", "create", "upload" );
+	    ( "ssl", "current", "ips", "create", "upload" );
 print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
 
 # Basic SSL settings
@@ -59,6 +59,23 @@ print &ui_table_row($text{'ssl_extracas'},
 
 print &ui_table_end();
 print &ui_form_end([ [ "", $text{'save'} ] ]);
+print &ui_tabs_end_tab();
+
+# Page showing current cert
+print &ui_tabs_start_tab("mode", "current");
+print "$text{'ssl_current'}<p>\n";
+print &ui_table_start($text{'ssl_cheader'}, undef, 4);
+$info = &cert_info($miniserv{'certfile'} || $miniserv{'keyfile'});
+foreach $i ('cn', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
+	    'notafter', 'type') {
+	if ($info->{$i}) {
+		print &ui_table_row($text{'ca_'.$i}, $info->{$i});
+		}
+	}
+print &ui_table_row($text{'ssl_download'},
+	"<a href='download_cert.cgi/cert.pem'>".
+	"$text{'ssl_pem'}</a>");
+print &ui_table_end();
 print &ui_tabs_end_tab();
 
 # Table listing per-IP SSL certs
