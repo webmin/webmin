@@ -31,9 +31,6 @@ function toggleview (id1,id2) {
 		(obj1.className=="itemshown") ? obj2.innerHTML="<img border='0' src='images/open.gif' alt='[&ndash;]'>" : obj2.innerHTML="<img border='0' src='images/closed.gif' alt='[+]'>"; 
 	}
 </script>
-<!--[if gte IE 5.5000]>
-  <script type='text/javascript' src='pngfix.js'></script>
-<![endif]-->
 </head>
 <body>
 <div class='menubody'>
