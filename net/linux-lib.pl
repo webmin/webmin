@@ -99,6 +99,7 @@ return "ISDN syncPPP" if ($_[0] =~ /^ippp/);
 return "CIPE" if ($_[0] =~ /^cip/);
 return "VmWare" if ($_[0] =~ /^vmnet/);
 return "Wireless" if ($_[0] =~ /^wlan/);
+return "Bonded" if ($_[0] =~ /^bond/);
 return $text{'ifcs_unknown'};
 }
 
