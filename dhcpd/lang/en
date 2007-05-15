@@ -228,6 +228,7 @@ plib_nbns=NetBIOS name servers
 plib_nbscope=NetBIOS scope
 plib_nbntype=NetBIOS node type
 plib_toffset=Time offset
+plib_serverid=DHCP server identifier
 plib_ddnsdom=Dynamic DNS domain name
 plib_ddnsrevdom=Dynamic DNS reverse domain
 plib_ddnsup=Dynamic DNS enabled?

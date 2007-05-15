@@ -115,6 +115,7 @@ print "</tr>\n";
 
 print "<tr>\n";
 print &option_input($text{'eopt_toffset'}, "time-offset", \@opts, 1);
+print &option_input($text{'plib_serverid'}, "dhcp-server-identifier", \@opts, 3);
 print "</tr>\n";
 
 print "<tr>\n";

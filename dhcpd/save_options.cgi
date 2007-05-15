@@ -61,6 +61,7 @@ else {
 &save_option("netbios-scope", 3, $client, $indent);
 &save_option("netbios-node-type", 1, $client, $indent);
 &save_option("time-offset", 1, $client, $indent);
+&save_option("dhcp-server-identifier", 3, $client, $indent);
 &save_option("slp-directory-agent", 2, $client, $indent, 1);
 &save_option("slp-service-scope", 3, $client, $indent, 1);
 if ($in{'level'} eq "global") {
