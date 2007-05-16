@@ -1520,7 +1520,7 @@ if (%users) {
 			}
 		if (!$bogus && $unauth) {
 			# Unauthenticated directory or file request - approve it
-			$validated = 3;
+			$validated = 4;
 			$baseauthuser = $authuser = undef;
 			}
 		}
@@ -1843,7 +1843,7 @@ if (-d _) {
 
 # CGI or normal file
 local $rv;
-if (&get_type($full) eq "internal/cgi") {
+if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	# A CGI program to execute
 	print DEBUG "handle_request: executing CGI\n";
 	$envtz = $ENV{"TZ"};
@@ -1876,7 +1876,7 @@ if (&get_type($full) eq "internal/cgi") {
 	print DEBUG "REMOTE_USER = ",$ENV{"REMOTE_USER"},"\n";
 	print DEBUG "BASE_REMOTE_USER = ",$ENV{"BASE_REMOTE_USER"},"\n";
 	$ENV{"SSL_USER"} = $peername if ($validated == 2);
-	$ENV{"ANONYMOUS_USER"} = "1" if ($validated == 3);
+	$ENV{"ANONYMOUS_USER"} = "1" if ($validated == 3 || $validated == 4);
 	$ENV{"DOCUMENT_ROOT"} = $roots[0];
 	$ENV{"DOCUMENT_REALROOT"} = $realroot;
 	$ENV{"GATEWAY_INTERFACE"} = "CGI/1.1";
