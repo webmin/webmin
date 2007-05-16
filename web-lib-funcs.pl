@@ -3801,11 +3801,14 @@ return wantarray ? ($ok, $err) : $ok;
 }
 
 # remote_session_name(host|&server)
-# Generates a unix session ID for some server
+# Generates a session ID for some server. For this server, this will always
+# be an empty string. For a server object it will include the hostname and
+# port and PID. For a server name, it will include the hostname and PID.
 sub remote_session_name
 {
 return ref($_[0]) && $_[0]->{'host'} && $_[0]->{'port'} ?
 		"$_[0]->{'host'}:$_[0]->{'port'}.$$" :
+       $_[0] eq "" || $_[0]->{'id'} == 0 ? "" :
        ref($_[0]) ? "" : "$_[0].$$";
 }
 
