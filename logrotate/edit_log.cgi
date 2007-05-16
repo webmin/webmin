@@ -109,10 +109,12 @@ print &ui_table_hr();
 
 $mail = &find_value("mail", $lconf);
 $nomail = &find("nomail", $lconf);
+$mmode = $mail ? 2 : $nomail ? 1 : 0;
 print &ui_table_row($text{'edit_mail'},
-	    &ui_radio("mail", $mail ? 2 : $nomail ? 1 : 0,
+	    &ui_radio("mail", $mmode,
 		      [ [ 2, $text{'edit_mailto'}." ".
-			     &ui_textbox("mailto", $mail, 30, $mail != 2)."<br>",
+			     &ui_textbox("mailto", $mail, 30, $mmode != 2).
+			     "<br>",
 			     &js_disable_inputs([ ], [ "mailto" ], "onClick") ],
 			[ 1, $text{'edit_mailno'}."<br>",
 			  &js_disable_inputs([ "mailto" ], [ ], "onClick") ],
