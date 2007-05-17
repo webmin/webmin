@@ -41,7 +41,7 @@ elsif ($in{'timed_out'}) {
 
 print "$text{'pam_prefix'}\n";
 print "<form action=$gconfig{'webprefix'}/pam_login.cgi method=post>\n";
-print "<input type=hidden name=cid value='$in{'cid'}'>\n";
+print "<input type=hidden name=cid value='",&quote_escape($in{'cid'}),"'>\n";
 
 print "<table border width=40%>\n";
 print "<tr $tb> <td><b>$text{'pam_header'}</b></td> </tr>\n";
@@ -58,7 +58,7 @@ else {
 if ($in{'message'}) {
 	# Showing a message
 	print "<tr> <td colspan=2 align=center>",
-	      $in{'message'},"</td> </tr>\n";
+	      &html_escape($in{'message'}),"</td> </tr>\n";
 	print "<input type=hidden name=message value=1>\n";
 	}
 else {
@@ -68,7 +68,7 @@ else {
 		    "<tt>$host</tt>"),"</td> </tr>\n";
 
 	$pass = "type=password" if ($in{'password'});
-	print "<tr> <td><b>$in{'question'}</b></td>\n";
+	print "<tr> <td><b>",&html_escape($in{'question'}),"</b></td>\n";
 	print "<td><input name=answer $pass size=20></td> </tr>\n";
 	}
 

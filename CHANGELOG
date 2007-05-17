@@ -72,3 +72,4 @@ Added support for Slam64 Linux.
 ---- Changes since 1.340 ----
 Added Redhat Enterprise release 5 support.
 Requests to the /unauthenticated URL can never execute CGI programs, to provide an extra layer of security against URL escaping attacks.
+Fixed XSS bugs in pam_login.cgi.
