@@ -18,17 +18,18 @@ $in{'ServerName_def'} || $in{'ServerName'} =~ /\S/ ||
 
 # Add the virtual host
 $l = $conf->[@$conf - 1];
-&lock_file($l->{'file'});
+$addfile = $config{'add_file'} || $l->{'file'};
+&lock_file($addfile);
 &before_changing();
-$lref = &read_file_lines($l->{'file'});
+$lref = &read_file_lines($addfile);
 @lines = ( "<VirtualHost $in{'addr'}>" );
 push(@lines, "Port $in{'Port'}") if (!$in{'Port_def'});
 push(@lines, "ServerName \"$in{'ServerName'}\"") if (!$in{'ServerName_def'});
 push(@lines, "</VirtualHost>");
 push(@$lref, @lines);
-&flush_file_lines();
+&flush_file_lines($addfile);
 &after_changing();
-&unlock_file($l->{'file'});
+&unlock_file($addfile);
 &webmin_log("virt", "create", $in{'addr'}, \%in);
 
 &redirect("virt_index.cgi?virt=".scalar(@$conf));

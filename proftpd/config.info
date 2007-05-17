@@ -4,6 +4,7 @@ test_manual=Test config file after manual changes?,1,1-Yes,0-No
 test_always=Test config file after other change?,1,1-Yes,0-No
 line2=System configuration,11
 proftpd_conf=Path to ProFTPD config file,0
+add_file=File to add new virtual hosts to,3,Primary config file
 proftpd_path=Path to ProFTPD executable,0
 pid_file=Path to ProFTPD PID file,3,None
 ftpusers=Path to ftpusers file,0
