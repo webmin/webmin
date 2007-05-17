@@ -15,6 +15,7 @@ $access{'noconfig'} && &error($text{'config_ecannot'});
 mkdir("$config_directory/$m", 0700);
 &lock_file("$config_directory/$m/config");
 &read_file("$config_directory/$m/config", \%config);
+%oldconfig = %config;
 
 $mdir = &module_root_directory($m);
 if (-r "$mdir/config_info.pl") {
@@ -35,6 +36,13 @@ if (!$func) {
 	}
 &write_file("$config_directory/$m/config", \%config);
 &unlock_file("$config_directory/$m/config");
+
+# Call any post-config save function
+local $pfn = "${m}::config_post_save";
+if (defined(&$pfn)) {
+	&foreign_call($m, "config_post_save", \%config, \%oldconfig);
+	}
+
 &webmin_log("_config_", undef, undef, \%in, $m);
 &redirect("/$m/");
 
