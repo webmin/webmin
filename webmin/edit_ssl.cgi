@@ -72,9 +72,13 @@ foreach $i ('cn', 'o', 'email', 'issuer_cn', 'issuer_o', 'issuer_email',
 		print &ui_table_row($text{'ca_'.$i}, $info->{$i});
 		}
 	}
-print &ui_table_row($text{'ssl_download'},
+@clinks = (
 	"<a href='download_cert.cgi/cert.pem'>".
-	"$text{'ssl_pem'}</a>");
+	"$text{'ssl_pem'}</a>",
+	"<a href='download_cert.cgi/cert.p12'>".
+	"$text{'ssl_pkcs12'}</a>"
+	);
+print &ui_table_row($text{'ssl_download'}, &ui_links_row(\@clinks));
 print &ui_table_end();
 print &ui_tabs_end_tab();
 

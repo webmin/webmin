@@ -1187,4 +1187,27 @@ if ($data =~ /(-----BEGIN\s+CERTIFICATE-----\n([A-Za-z0-9\+\/=\n\r]+)-----END\s+
 return undef;
 }
 
+# cert_pkcs12_data(keyfile, [certfile])
+# Returns a cert in PKCS12 format
+sub cert_pkcs12_data
+{
+local ($keyfile, $certfile) = @_;
+if ($certfile) {
+	open(OUT, "openssl pkcs12 -in ".quotemeta($certfile).
+		  " -inkey ".quotemeta($keyfile).
+		  " -export -passout pass: -nokeys |");
+	}
+else {
+	open(OUT, "openssl pkcs12 -in ".quotemeta($keyfile).
+		  " -export -passout pass: -nokeys |");
+	}
+while(<OUT>) {
+	$data .= $_;
+	}
+close(OUT);
+return $data;
+}
+
+
+
 1;

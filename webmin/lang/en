@@ -342,7 +342,8 @@ ssl_cheader=Details of current certificate
 ssl_typeself=Self-signed
 ssl_typereal=Signed by CA
 ssl_download=Download certificate
-ssl_pem=PEM format..
+ssl_pem=PEM format
+ssl_pkcs12=PKCS12 format
 ssl_current=This section shows the details of the current Webmin SSL certificate, and allows it to be downloaded so that it can be accepted by your browser.
 ssl_edownload=Failed to extract PEM data from certificate
 

@@ -59,4 +59,4 @@ Converted many pages to use new ui-lib.pl functions, and broke down long forms u
 When Webmin's detected OS is automatically updated, Usermin's will be too (if it is an equivalent version).
 ---- Changes since 1.340 ----
 Added an option to the Proxy Servers form to fallback to a direct connection if the proxy is down.
-Added a tab showing details of the current cert, with a link to download in PEM format.
+Added a tab showing details of the current cert, with a link to download in PEM or PKCS12 format.
