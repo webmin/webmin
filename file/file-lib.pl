@@ -62,6 +62,7 @@ if ($module_info{'usermin'}) {
 	$canperms = 1;
 	$canusers = 1;
 	$contents = 1;
+	$running_as_root = 0;
 	}
 else {
 	# Webmin gets the list of allowed directories from the ACL
@@ -98,6 +99,7 @@ else {
 	$canperms = $access{'noperms'} ? 0 : 1;
 	$canusers = $access{'nousers'} ? 0 : 1;
 	$contents = $access{'contents'};
+	$running_as_root = !$access{'uid'};
 	}
 %disallowed_buttons = map { $_, 1 } @disallowed_buttons;
 
@@ -157,12 +159,15 @@ return join("\t", $dp, $type,
 		  $st[9], $f ? "" : $islink && !$rl ? "???" : $rl);
 }
 
-# switch_acl_uid()
+# switch_acl_uid([user])
 sub switch_acl_uid
 {
-if (!$module_info{'usermin'} && $access{'uid'}) {
-	local @u = $access{'uid'} < 0 ? getpwnam($remote_user)
-				      : getpwuid($access{'uid'});
+local ($user) = @_;
+return if ($module_info{'usermin'});	# Always already switched
+local @u = $user ? getpwnam($user) :
+	   $access{'uid'} < 0 ? getpwnam($remote_user) :
+				getpwuid($access{'uid'});
+if ($u[2]) {
 	@u || &error($text{'switch_euser'});
 	$( = $u[3]; $) = "$u[3] ".join(" ", $u[3], &other_groups($u[0]));
 	($>, $<) = ($u[2], $u[2]);

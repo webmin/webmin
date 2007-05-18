@@ -10,7 +10,7 @@ $disallowed_buttons{'upload'} && &error($text{'ebutton'});
 if ($in{'yes'}) {
 	# Put it in place, overwriting any other file
 	&webmin_log("upload", undef, $in{'path'});
-	&switch_acl_uid();
+	&switch_acl_uid($running_as_root ? $in{'user'} : undef);
 	if ($access{'ro'} || !&can_access($in{'path'})) {
 		print "<p><b>",&text('upload_eperm', $in{'path'}),"</b><p>\n";
 		}

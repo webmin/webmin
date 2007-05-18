@@ -21,16 +21,24 @@ print &ui_table_row($text{'upload_dir'},
 		    &ui_submit($text{'upload_ok'}));
 
 if ($dostounix == 1) {
+	# Do DOS conversion?
 	print &ui_table_row($text{'upload_conv'},
 			    &ui_yesno_radio("dos", 0));
 	}
 
 if ($unarchive == 1) {
+	# Unzip file?
 	print &ui_table_row($text{'upload_zip'},
 			    &ui_radio("zip", 0,
 				[ [ 2, $text{'upload_yes'} ],
 				  [ 1, $text{'yes'} ],
 				  [ 0, $text{'no'} ] ]));
+	}
+
+if ($running_as_root) {
+	# Upload as user
+	print &ui_table_row($text{'upload_user'},
+			    &ui_user_textbox("user", "root"));
 	}
 
 print &ui_table_end();

@@ -16,13 +16,16 @@ if (!$in{'file_filename'}) {
 elsif (!-d $realdir) {
 	print "<p><b>$text{'upload_edir'}</b><p>\n";
 	}
+elsif ($running_as_root && !defined(getpwnam($in{'user'}))) {
+	print "<p><b>$text{'upload_euser'}</b><p>\n";
+	}
 else {
 	$in{'file_filename'} =~ /([^\\\/]+)$/;
 	$path = "$in{'dir'}/$1";
 	$realpath = "$realdir/$1";
 	if (-e $realpath) {
 		# File exists .. ask the user if he is sure
-		&switch_acl_uid();
+		&switch_acl_uid($running_as_root ? $in{'user'} : undef);
 		$temp = &tempname();
 		&open_tempfile(TEMP, ">$temp");
 		if ($dostounix == 1 && $in{'dos'}) {
@@ -35,14 +38,11 @@ else {
 			print "<input type=hidden name=$i value='",
 				&html_escape($prein{$i}),"'>\n";
 			}
-		print "<input type=hidden name=dir value='",
-			&html_escape($in{'dir'}),"'>\n";
-		print "<input type=hidden name=path value='",
-			&html_escape($path),"'>\n";
-		print "<input type=hidden name=temp value='",
-			&html_escape($temp),"'>\n";
-		print "<input type=hidden name=zip value='",
-			&html_escape($in{'zip'}),"'>\n";
+		print &ui_hidden("dir", $in{'dir'});
+		print &ui_hidden("path", $path);
+		print &ui_hidden("temp", $temp);
+		print &ui_hidden("zip", $in{'zip'});
+		print &ui_hidden("user", $in{'user'});
 		print "<center>\n";
 		print &text('upload_already', "<tt>$path</tt>"),"<p>\n";
 		print "<input type=submit name=yes value='$text{'yes'}'>\n";
@@ -52,7 +52,7 @@ else {
 	else {
 		# Go ahread and do it!
 		&webmin_log("upload", undef, $path);
-		&switch_acl_uid();
+		&switch_acl_uid($running_as_root ? $in{'user'} : undef);
 		if ($access{'ro'} || !&can_access($path)) {
 			print "<p><b>",&text('upload_eperm', $path),"</b><p>\n";
 			}

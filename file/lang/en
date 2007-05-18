@@ -189,12 +189,14 @@ upload_ok=Upload
 upload_conv=Convert DOS newlines?
 upload_efile=No file selected to upload.
 upload_edir=Upload directory does not exist.
+upload_euser=Selected user does not exist.
 upload_eperm=You are not allowed to create $1
 upload_ewrite=Failed to write to $1 : $2.
 upload_already=The file $1 already exists. Are you sure that you want to overwrite it?
 upload_elink=Cannot upload to a symbolic link
 upload_zip=Uncompress ZIP or TAR file?
 upload_yes=Yes, then delete
+upload_user=Upload as user
 
 find_eaccess=You are not allowed to access $1
 find_eexist=$1 does not exist in $2

@@ -84,7 +84,7 @@ print <<EOF;
 <script>
 function upload(dir)
 {
-open("upform.cgi?dir="+escape(dir)+"&trust=$trust", "upload", "toolbar=no,menubar=no,scrollbar=no,width=450,height=200");
+open("upform.cgi?dir="+escape(dir)+"&trust=$trust", "upload", "toolbar=no,menubar=no,scrollbar=no,width=550,height=230");
 }
 function htmledit(file, dir)
 {
