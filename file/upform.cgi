@@ -29,7 +29,7 @@ if ($dostounix == 1) {
 if ($unarchive == 1) {
 	# Unzip file?
 	print &ui_table_row($text{'upload_zip'},
-			    &ui_radio("zip", 0,
+			    &ui_radio("zip", int($config{'defzip'}),
 				[ [ 2, $text{'upload_yes'} ],
 				  [ 1, $text{'yes'} ],
 				  [ 0, $text{'no'} ] ]));
@@ -37,8 +37,14 @@ if ($unarchive == 1) {
 
 if ($running_as_root) {
 	# Upload as user
+	$user = $config{'defuser'} || "root";
+	if ($user eq "*") {
+		# Get from parent directory
+		local @st = stat(&unmake_chroot($in{'dir'}));
+		$user = getpwuid($st[4]);
+		}
 	print &ui_table_row($text{'upload_user'},
-			    &ui_user_textbox("user", "root"));
+			    &ui_user_textbox("user", $user));
 	}
 
 print &ui_table_end();

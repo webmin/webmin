@@ -36,3 +36,4 @@ When editing an HTML file, the <head> section is preserved.
 Added a link in the HTML editor window to swich to plain text mode.
 Files in the right-hand list are now sorted case-insensitively.
 When uploading a file, you can now select which Unix user it gets uploaded as.
+Added Module Config options for the default unzip mode and default user to upload as.
