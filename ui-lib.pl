@@ -113,17 +113,17 @@ $rv .= "</tr>\n";
 return $rv;
 }
 
-# ui_radio_columns_row(&columns, &tdtags, checkname, checkvalue)
+# ui_radio_columns_row(&columns, &tdtags, checkname, checkvalue, [checked])
 # Returns HTML for a row in a multi-column table, in which the first
 # column is a radio button
 sub ui_radio_columns_row
 {
 return &theme_ui_radio_columns_row(@_) if (defined(&theme_ui_radio_columns_row));
-local ($cols, $tdtags, $checkname, $checkvalue) = @_;
+local ($cols, $tdtags, $checkname, $checkvalue, $checked) = @_;
 local $rv;
 $rv .= "<tr $cb class='ui_radio_columns'>\n";
 $rv .= "<td class='ui_radio_radio' ".$tdtags->[0].">".
-       &ui_oneradio($checkname, $checkvalue, "", 0)."</td>\n";
+       &ui_oneradio($checkname, $checkvalue, "", $checked)."</td>\n";
 local $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i+1].">";
