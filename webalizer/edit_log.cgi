@@ -21,7 +21,7 @@ print "<form action=save_log.cgi>\n";
 print "<input type=hidden name=new value='$in{'new'}'>\n";
 print "<input type=hidden name=oldfile value='$in{'file'}'>\n";
 
-print "<table border width=100%>\n";
+print "<table border width=100% class='ui_table'>\n";
 print "<tr $tb> <td><b>$text{'edit_header'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
