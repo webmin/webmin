@@ -43,9 +43,11 @@ print "</tr>\n";
 if ($midx == $mod->{'master'} && @m > 1) {
 	print "<tr> <td valign=top><b>$text{'edit_subs'}</b></td>\n";
 	print "<td colspan=3>";
+	@links = ( );
 	for($i=0; $i<@m; $i++) {
-		print "<a href='edit_mod.cgi?idx=$in{'idx'}&midx=$i&name=$in{'name'}'>$m[$i]</a>&nbsp;&nbsp;\n" if ($i != $mod->{'master'});
+		push(@links, "<a href='edit_mod.cgi?idx=$in{'idx'}&midx=$i&name=$in{'name'}'>$m[$i]</a>") if ($i != $mod->{'master'});
 		}
+	print &ui_links_row(\@links);
 	print "</td> </tr>\n";
 	}
 
