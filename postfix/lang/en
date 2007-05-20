@@ -13,6 +13,7 @@ index_version=Postfix version $1
 opts_err=Failed to save options
 
 check_error=Error while checking current Postfix configuration. Please manually fix Postfix configuration.
+check_manual=Manually edit the Postfix configuration file.
 
 address_rewriting_title=Address Rewriting and Masquerading
 address_rewriting_ecannot=You are not allowed to edit address rewriting and masquerading

@@ -83,10 +83,13 @@ if (!-x $config{'postfix_super_command'}) {
 	exit;
 	}
 
-# Verify that current configuration is valid
+# Verify that current configuration is valid. If not, only allow manual editing
 if ($config{'index_check'} && ($err = &check_postfix())) {
 	print &text('check_error'),"<p>\n";
 	print "<pre>$err</pre>\n";
+	if ($access{'manual'}) {
+		print "<a href=edit_manual.cgi>$text{'check_manual'}</a><p>\n";
+		}
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
