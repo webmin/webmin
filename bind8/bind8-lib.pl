@@ -1044,14 +1044,15 @@ if ($type ne "WKS") {
 # Update reverse/forward option
 if ($type eq "A" || $type eq "AAAA") {
 	print &ui_table_row($text{'edit_uprev'},
-		&ui_radio("rev", int($config{'rev_def'}),
+		&ui_radio("rev", $config{'rev_def'} == 0 ? 1 :
+				 $config{'rev_def'} == 2 ? 2 : 0,
 		   [ [ 1, $text{'yes'} ],
 		     @_ < 6 ? ( [ 2, $text{'edit_over'} ] ) : ( ),
 		     [ 0, $text{'no'} ] ]));
 	}
 elsif ($type eq "PTR") {
 	print &ui_table_row($text{'edit_upfwd'},
-		&ui_radio("fwd", int($config{'rev_def'}),
+		&ui_radio("fwd", $config{'rev_def'} ? 0 : 1,
 		   [ [ 1, $text{'yes'} ],
 		     [ 0, $text{'no'} ] ]));
 	}
