@@ -92,7 +92,8 @@ if ($config{'user_setquota_command'} &&
     &has_command((split(/\s+/, $config{'user_setquota_command'}))[0])) {
 	# Use quota setting command
 	local $cmd = $config{'user_setquota_command'}." ".quotemeta($_[0])." ".
-		     $_[2]." ".$_[3]." ".$_[4]." ".$_[5]." ".quotemeta($_[1]);
+		     int($_[2])." ".int($_[3])." ".int($_[4])." ".int($_[5]).
+		     " ".quotemeta($_[1]);
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 	&error("<tt>".&html_escape($out)."</tt>") if ($?);
 	}
@@ -129,7 +130,8 @@ if ($config{'group_setquota_command'} &&
     &has_command((split(/\s+/, $config{'group_setquota_command'}))[0])) {
 	# Use quota setting command
 	local $cmd = $config{'group_setquota_command'}." ".quotemeta($_[0])." ".
-		     $_[2]." ".$_[3]." ".$_[4]." ".$_[5]." ".quotemeta($_[1]);
+		     int($_[2])." ".int($_[3])." ".int($_[4])." ".int($_[5]).
+		     " ".quotemeta($_[1]);
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 	&error("<tt>".&html_escape($out)."</tt>") if ($?);
 	}
@@ -222,7 +224,7 @@ if ($_[2]) {
 	}
 else {
 	# Just show blocks
-	return &ui_textbox($_[0], $_[1], 8);
+	return &ui_textbox($_[0], $_[1] == 0 ? "" : $_[1], 8);
 	}
 }
 
