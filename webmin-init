@@ -32,6 +32,11 @@ case "$1" in
 	if [ "$RETVAL" = "0" ]; then
 		rm -f $lockfile
 	fi
+	pidfile=`grep "^pidfile=" $confFile | sed -e 's/pidfile=//g'`
+	if [ "$pidfile" = "" ]; then
+		pidfile=$pidFile
+	fi
+	rm -f $pidfile
 	;;
 'status')
 	pidfile=`grep "^pidfile=" $confFile | sed -e 's/pidfile=//g'`
