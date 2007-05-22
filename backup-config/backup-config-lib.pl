@@ -156,10 +156,12 @@ sub parse_backup_destination
 local %in = %{$_[1]};
 local $mode = $in{"$_[0]_mode"};
 if ($mode == 0) {
+	# Local file
 	$in{"$_[0]_file"} =~ /^\/\S/ || &error($text{'backup_edest'});
 	return $in{"$_[0]_file"};
 	}
 elsif ($mode == 1) {
+	# FTP server
 	gethostbyname($in{"$_[0]_server"}) || &error($text{'backup_eserver1'});
 	$in{"$_[0]_path"} =~ /^\/\S/ || &error($text{'backup_epath'});
 	$in{"$_[0]_user"} =~ /^[^:]*$/ || &error($text{'backup_euser'});
@@ -168,8 +170,9 @@ elsif ($mode == 1) {
 	       $in{"$_[0]_server"}.$in{"$_[0]_path"};
 	}
 elsif ($mode == 2) {
+	# SSH server
 	gethostbyname($in{"$_[0]_sserver"}) || &error($text{'backup_eserver2'});
-	$in{"$_[0]_spath"} =~ /^\/\S/ || &error($text{'backup_epath'});
+	$in{"$_[0]_spath"} =~ /^\/\S/ || &error($text{'backup_epath2'});
 	$in{"$_[0]_suser"} =~ /^[^:]*$/ || &error($text{'backup_euser'});
 	$in{"$_[0]_spass"} =~ /^[^\@]*$/ || &error($text{'backup_epass'});
 	return "ssh://".$in{"$_[0]_suser"}.":".$in{"$_[0]_spass"}."\@".

@@ -65,6 +65,7 @@ backup_edest=Missing or invalid absolute local file
 backup_eserver1=Missing or invalid FTP server
 backup_eserver2=Missing or invalid SSH server
 backup_epath=Missing or invalid absolute path on FTP server
+backup_epath2=Missing or invalid absolute path on SSH server
 backup_euser=Invalid characters in FTP server login
 backup_epass=Invalid characters in FTP server password
 backup_emods=No modules selected
