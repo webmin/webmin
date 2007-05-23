@@ -168,7 +168,7 @@ else {
 		}
 
 	if (&parse_mode("sport", $rule, "sport")) {
-		$proto eq "tcp" || $proto eq "udp" ||
+		$proto eq "tcp" || $proto eq "udp" || $proto eq "sctp" ||
 			&error($text{'save_etcpudp'});
 		if ($in{"sport_type"} == 0) {
 			$in{"sport"} =~ /^\S+$/ ||
@@ -199,7 +199,7 @@ else {
 		delete($rule->{'sports'});
 		}
 	if (&parse_mode("dport", $rule, "dport")) {
-		$proto eq "tcp" || $proto eq "udp" ||
+		$proto eq "tcp" || $proto eq "udp" || $proto eq "sctp" ||
 			&error($text{'save_etcpudp'});
 		if ($in{"dport_type"} == 0) {
 			$in{"dport"} =~ /^\S+$/ ||
@@ -230,7 +230,7 @@ else {
 		delete($rule->{'dports'});
 		}
 	if (&parse_mode("ports", $rule, "ports")) {
-		$proto eq "tcp" || $proto eq "udp" ||
+		$proto eq "tcp" || $proto eq "udp" || $proto eq "sctp" ||
 			&error($text{'save_etcpudp'});
 		$in{"ports"} =~ /^\S+$/ || &error($text{'save_eports'});
 		$rule->{'ports'}->[1] = $in{'ports'};
