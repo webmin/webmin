@@ -311,3 +311,8 @@ The old one file per directory backup format is no longer available, unless alre
 When a virtual server with a website and private IP address is deleted, any Listen directives added for its IP are removed from the Apache configuration.
 Added a Module Config option to change the default SSL key size, and increased the default to 1024 bits.
 Added Module Config options for choosing different locations for servers' SSL certificate and key files.
+Added an option to the Edit Virtual Server page to turn off disabling when the bandwidth limit is reached, or a per-domain basis. Also added corresponding --bw-disable and --bw-no-disable options to the modify-domain.pl command-line script.
+If the system has a bonded interface but no ethernet, it will be detected as the primary interface.
+The configuration check process now ensures that the system is setup to use itself as a DNS server, so that newly created domains will resolve.
+Added an option to the scheduled backup page to only send an email report when the backup fails, and an option to send email to domain owners as well.
+When a virtual server with anonymous FTP is created, the ProFTPd user (typically ftp) is added to the domain's Unix group. This allows anonymous FTP to work even when the domain's home directory is not world-readable.
