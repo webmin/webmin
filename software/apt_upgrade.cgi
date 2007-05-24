@@ -15,7 +15,7 @@ if ($in{'update'}) {
 	&clean_environment();
 	open(CMD, "$apt_get_command update 2>&1 </dev/null |");
 	while(<CMD>) {
-		print;
+		print &html_escape($_);
 		}
 	close(CMD);
 	&reset_environment();
@@ -42,7 +42,7 @@ if ($in{'mode'}) {
 			}
 		elsif (/packages\s+will\s+be\s+upgraded/i ||
 		       /new\s+packages\s+will\s+be\s+installed/i) {
-			print;
+			print &html_escape($_);
 			$line = $_ = <CMD>;
 			$line =~ s/^\s+//; $line =~ s/\s+$//;
 			push(@newpacks, split(/\s+/, $line));

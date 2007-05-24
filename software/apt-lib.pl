@@ -10,11 +10,14 @@ sub update_system_install
 {
 local (@rv, @newpacks);
 local $update = $_[0] || $in{'update'};
-print "<b>",&text('apt_install', "<tt>$apt_get_command -y --force-yes -f install $update</tt>"),"</b><p>\n";
+local $cmd = $apt_get_command eq "apt-get" ?
+	"$apt_get_command -y --force-yes -f install $update" :
+	"$apt_get_command -y -f install $update";
+print "<b>",&text('apt_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
-&additional_log('exec', undef, "$apt_get_command -y --force-yes -f install $update");
-&open_execute_command(CMD, "$apt_get_command -y --force-yes -f install $update 2>&1 </dev/null", 1);
+&additional_log('exec', undef, $cmd);
+&open_execute_command(CMD, "$cmd 2>&1 </dev/null", 1);
 while(<CMD>) {
 	if (/setting\s+up\s+(\S+)/i && !/as\s+MDA/i) {
 		push(@rv, $1);
