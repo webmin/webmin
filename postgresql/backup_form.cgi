@@ -50,7 +50,8 @@ if ($in{'all'}) {
 else {
 	print "<tr> <td><b>$text{'backup_path'}</b></td>\n" ;
 	}
-print "<td><input type=text name=path value='$p' size=64></td></tr>\n" ;
+print "<td><input type=text name=path value='$p' size=64>",
+      &file_chooser_button("path"),"</td></tr>\n" ;
 
 # Show backup format input
 $f = $c{'backup_format_'.$in{'db'}};

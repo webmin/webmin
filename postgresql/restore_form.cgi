@@ -22,7 +22,8 @@ print &ui_table_start($text{'restore_header'}, undef, 2);
 print &ui_table_row($text{'restore_src'},
 	&ui_radio("src", 0,
 		[ [ 0, &text('restore_src0',
-			     &ui_textbox("path", $config{'repository'}, 50)).
+			     &ui_textbox("path", $config{'repository'}, 50).
+			     &file_chooser_button("path")).
 		       "<br>" ],
 		  [ 1, &text('restore_src1',
 			     &ui_upload("data")) ] ]));
