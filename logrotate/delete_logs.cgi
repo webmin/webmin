@@ -12,7 +12,7 @@ require './logrotate-lib.pl';
 # Delete the sections
 $parent = &get_config_parent();
 $conf = $parent->{'members'};
-foreach $d (@d) {
+foreach $d (sort { $b <=> $a } @d) {
 	$log = $conf->[$d];
 	&lock_file($log->{'file'});
 	&save_directive($parent, $log, undef);
