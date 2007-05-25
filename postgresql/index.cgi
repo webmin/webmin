@@ -46,7 +46,7 @@ if (!-r $config{'hba_conf'}) {
 ($r, $rout) = &is_postgresql_running();
 if ($r == 0) {
 	# Not running .. need to start it
-	&main_header();
+	&main_header(1);
 	print "<b>$text{'index_notrun'}</b> <p>\n";
 
 	if (&is_postgresql_local()) {
@@ -70,14 +70,14 @@ if ($r == 0) {
 	}
 elsif ($r == -1 && $access{'user'} && 0) {
 	# Running, but the user's password is wrong
-	&main_header();
+	&main_header(1);
 	print "<b>",&text('index_nouser', "<tt>$access{'user'}</tt>"),
 	      "</b><p>\n";
 	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
 	}
 elsif ($r == -1) {
 	# Running, but webmin doesn't know the login/password
-	&main_header();
+	&main_header(1);
 	print "<p> <b>$text{'index_nopass'}</b> <p>\n";
 	print "<form action=login.cgi method=post>\n";
 	print "<center><table border>\n";
@@ -106,7 +106,7 @@ elsif ($r == -1) {
 	}
 elsif ($r == -2) {
 	# Looks like a shared library problem
-	&main_header();
+	&main_header(1);
 	print &text('index_elibrary', "<tt>$config{'psql'}</tt>",
 		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
 	print &text('index_ldpath', "<tt>$ENV{$gconfig{'ld_env'}}</tt>",
@@ -118,13 +118,13 @@ else {
 	# Running .. check version
 	$postgresql_version = &get_postgresql_version();
 	if (!$postgresql_version) {
-		&main_header();
+		&main_header(1);
 	        print &text('index_superuser',"$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;
 		}
 	if ($postgresql_version < 6.5) {
-		&main_header();
+		&main_header(1);
 		print &text('index_eversion', $postgresql_version, 6.5),
 		      "<p>\n";
 		&ui_print_footer("/", $text{'index'});
@@ -276,11 +276,13 @@ else {
 
 sub main_header
 {
+local ($noschemas) = @_;
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 	&help_search_link("postgresql", "man", "doc", "google"),
 	undef, undef, $postgresql_version ?
 	   &text('index_version', $postgresql_version).
-	   (&supports_schemas($config{'basedb'}) ? " $text{'index_sch'}" : "") :
+	   ($noschemas ? "" :
+	    &supports_schemas($config{'basedb'}) ? " $text{'index_sch'}" : "") :
 	   undef);
 }
 
