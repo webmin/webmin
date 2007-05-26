@@ -1,5 +1,5 @@
 find_pid_command=ps -ef | grep NAME | grep -v grep | awk '{ print $2 }'
-path=/bin:/usr/bin:/sbin:/usr/sbin:/usr/sfw/bin:/usr/local/bin:/usr/ccs/bin:/usr/ucb
+path=/bin:/usr/bin:/sbin:/usr/sbin:/usr/sfw/bin:/usr/local/bin:/usr/ccs/bin:/usr/ucb:/opt/csw/bin:/usr/apache/bin
 ld_path=/lib:/usr/lib:/usr/openwin/lib:/usr/dt/lib:/usr/sfw/lib:/usr/local/lib:/opt/csw/bin
 ld_env=LD_LIBRARY_PATH
 passwd_file=/etc/shadow
