@@ -12,3 +12,5 @@ Added the ability to specify extra directives to be added to .htaccess files, th
 On Windows systems, the htpasswd.exe program is used to generate encrypted passwords.
 ---- Changes since 1.310 ----
 Added checkboxes and a button for deleting multiple directories accounts at once.
+---- Changes since 1.340 ----
+Removes the need for the htdigest command to be installed if the Digest::MD5 perl module is available.

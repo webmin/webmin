@@ -28,11 +28,15 @@ if ($missing) {
 	exit;
 	}
 
-# Check for htdigest command
+# Check for htdigest command, if we need it
 if ($config{'digest'} && !$htdigest_command) {
-	print &text('index_digest', "<tt>htdigest</tt>"),"<p>\n";
-	&ui_print_footer("/", $text{'index'});
-	exit;
+	eval "use Digest::MD5";
+	if ($@) {
+		print &text('index_digest2', "<tt>htdigest</tt>",
+					     "<tt>Digest::MD5</tt>"),"<p>\n";
+		&ui_print_footer("/", $text{'index'});
+		exit;
+		}
 	}
 
 @accessdirs || &error($text{'index_eaccess'});

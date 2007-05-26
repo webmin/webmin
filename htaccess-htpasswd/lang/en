@@ -12,7 +12,7 @@ index_eaccess=You do not have access to any directories!
 index_search=Find existing protected directories under:
 index_md5=MD5 encryption is enabled in the module configuration, but the $1 Perl module needed for it is not installed.
 index_sha1=SHA1 encryption is enabled in the module configuration, but the $1 Perl module needed for it is not installed.
-index_digest=Digest encryption is enabled in the module configuration, but the $1 command needed for it is not installed.
+index_digest2=Digest encryption is enabled in the module configuration, but the $1 command or $2 Perl module needed for it is not installed.
 index_cpan=<a href='$1'>Click here</a> to download and install it now.
 index_delete=Un-Protect Selected Directories
 
