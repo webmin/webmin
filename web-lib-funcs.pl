@@ -746,6 +746,9 @@ if (defined(&theme_popup_header)) {
 print "<!doctype html public \"-//W3C//DTD HTML 3.2 Final//EN\">\n";
 print "<html>\n";
 print "<head>\n";
+if (defined(&theme_popup_prehead)) {
+	&theme_popup_prehead(@_);
+	}
 print "<title>$_[0]</title>\n";
 print $_[1];
 print "$tconfig{'headhtml'}\n" if ($tconfig{'headhtml'});
@@ -766,8 +769,11 @@ local $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 local $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}"
 					      : "";
-print "<body id='popup' bgcolor=#$bgcolor link=#$link vlink=#$link text=#$text ",
-      "$bgimage $tconfig{'inbody'} $_[2]>\n";
+print "<body id='popup' bgcolor=#$bgcolor link=#$link vlink=#$link ",
+      "text=#$text $bgimage $tconfig{'inbody'} $_[2]>\n";
+if (defined(&theme_popup_prebody)) {
+	&theme_popup_prebody(@_);
+	}
 }
 
 # footer([page, name]+, [noendbody])
@@ -4647,7 +4653,9 @@ foreach $e ('WEBMIN_CONFIG', 'SERVER_NAME', 'CONTENT_TYPE', 'REQUEST_URI',
 sub reset_environment
 {
 if (defined(%UNCLEAN_ENV)) {
-	%ENV = %UNCLEAN_ENV;
+	foreach my $k (keys %UNCLEAN_ENV) {
+		$ENV{$k} = $UNCLEAN_ENV{$k};
+		}
 	undef(%UNCLEAN_ENV);
 	}
 }
