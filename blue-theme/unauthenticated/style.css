@@ -16,11 +16,11 @@ table {
 /* links */
 a, a:visited {
   text-decoration: none;
-  color: #4F82CB; 
+  color: 333399;
   background: inherit;
 }
 a:hover {
-  color: #4EBF37;
+  color: 6666EE;
   background: inherit;
 }
 
@@ -34,7 +34,7 @@ title { color: #000000;
 
 /* headers */
 h1, h2, h3, p {
-  padding: 10px;    
+  //padding: 10px;    
   margin: 0;
 }
 h1, h2, h3, h4 {
