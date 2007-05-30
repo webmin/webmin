@@ -41,6 +41,7 @@ $dir = { 'name' => 'zone',
 	};
 
 # Add a new hint zone
+$conf = &get_config();
 &create_zone($dir, $conf, $in{'view'});
 &webmin_log("create", "hint", ".", \%in);
 &redirect("");
