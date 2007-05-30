@@ -77,7 +77,7 @@ printf "<input name=period size=5 value='%s'> %s</td> </tr>\n",
 
 # Show people to not autoreply to
 print "<tr> <td>$text{'rfile_no_autoreply'}</td>\n";
-printf "<td><input name=no_autoreply size=40 value='%s'></td> </tr>\n";
+printf "<td><input name=no_autoreply size=40 value='%s'></td> </tr>\n",
 	$no_autoreply;
 
 # Show regexps to not autoreply to
