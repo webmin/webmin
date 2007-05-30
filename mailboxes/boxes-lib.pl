@@ -1565,18 +1565,19 @@ while(1) {
 		$str = $4;
 		}
 	elsif ($str =~ /^[\s,]*("([^"]+)"\s*<([^\s<>,]+)>)(.*)$/ ||
-	       $str =~ /^[\s,]*(([^<>]+)\s+<([^\s<>,]+)>)(.*)$/ ||
-	       $str =~ /^[\s,]*(([^<>]+)<([^\s<>,]+)>)(.*)$/ ||
+	       $str =~ /^[\s,]*(([^<>\@]+)\s+<([^\s<>,]+)>)(.*)$/ ||
+	       $str =~ /^[\s,]*(([^<>\@]+)<([^\s<>,]+)>)(.*)$/ ||
 	       $str =~ /^[\s,]*(([^<>\[\]]+)\s+\[mailto:([^\s\[\]]+)\])(.*)$/||
 	       $str =~ /^[\s,]*(()<([^<>,]+)>)(.*)/ ||
 	       $str =~ /^[\s,]*(()([^\s<>,]+))(.*)/) {
 		# Addresses like  "Fooey Bar" <foo@bar.com>
 		#                 Fooey Bar <foo@bar.com>
+		#                 Fooey Bar<foo@bar.com>
 		#		  Fooey Bar [mailto:foo@bar.com]
 		#		  <foo@bar.com>
 		#		  <group name>
 		#		  foo@bar.com
-		push(@rv, [ $3, $2, $1 ]);
+		push(@rv, [ $3, $2 eq "," ? "" : $2, $1 ]);
 		$str = $4;
 		}
 	else {
