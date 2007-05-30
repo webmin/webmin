@@ -1245,6 +1245,7 @@ if (%users) {
 	    $header{'user-agent'} =~ /$config{'agents_nosession'}/i ||
 	    $sessiononly{$simple} || $davpath ||
 	    $simple eq "/xmlrpc.cgi" ||
+            $acptip eq $config{'host_nosession'} ||
 	    $mobile_device && $config{'mobile_nosession'}) {
 		print DEBUG "handle_request: Forcing HTTP authentication\n";
 		$config{'session'} = 0;
@@ -3071,9 +3072,11 @@ if (!$users{$_[0]}) {
 	# Check if the user entered a domain at the end of his username when
 	# he really shouldn't have, and if so try without it
 	if (!@uinfo && $config{'domainstrip'} &&
-	    $_[0] =~ /^(\S+)\@/ && ($_[1]&2) == 0) {
-		local $stripped = $1;
+	    $_[0] =~ /^(\S+)\@(\S+)$/ && ($_[1]&2) == 0) {
+		local ($stripped, $dom) = ($1, $2);
 		local @vu = &can_user_login($stripped, $_[1] + 2, $_[2]);
+		return @vu if ($vu[1]);
+		local @vu = &can_user_login($stripped, $_[1] + 2, $dom);
 		return @vu if ($vu[1]);
 		}
 
