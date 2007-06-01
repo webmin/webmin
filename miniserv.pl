@@ -1400,8 +1400,9 @@ if (%users) {
 		local ($rv, $question) = split(/\s+/, $line, 2);
 		if ($rv == 0) {
 			# Cannot login!
-			&http_error(403, "Login failed",
-				    "Login failed : $question");
+			local $hrv = &handle_login(
+				$in{'answer'} || "unknown", 0, 0, 1, undef);
+			return $hrv if (defined($hrv));
 			}
 		elsif ($rv == 1 || $rv == 3) {
 			# Another question .. force use of PAM CGI
