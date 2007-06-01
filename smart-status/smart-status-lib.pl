@@ -4,7 +4,10 @@ do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
 &foreign_require("fdisk", "fdisk-lib.pl");
-$ata_switch = $config{'ata'} ? "-d ata" : "";
+$extra_args = $config{'extra'};
+if ($config{'ata'}) {
+	$extra_args .= " -d ata";
+	}
 
 # get_smart_version()
 sub get_smart_version
@@ -28,7 +31,7 @@ if (&get_smart_version() > 5.0) {
 	# Use new command format
 
 	# Check support
-	local $out = `$config{'smartctl'} $ata_switch -i $qd 2>&1`;
+	local $out = `$config{'smartctl'} $extra_args  -i $qd 2>&1`;
 	if ($out =~ /SMART\s+support\s+is:\s+Available/i) {
 		$rv{'support'} = 1;
 		}
@@ -54,7 +57,7 @@ if (&get_smart_version() > 5.0) {
 		}
 
 	# Check status
-	$out = `$config{'smartctl'} $ata_switch -H $qd 2>&1`;
+	$out = `$config{'smartctl'} $extra_args -H $qd 2>&1`;
 	if ($out =~ /test result: FAILED/i) {
 		$rv{'check'} = 0;
 		}
@@ -66,7 +69,7 @@ else {
 	# Use old command format
 
 	# Check status
-	local $out = `$config{'smartctl'} $ata_switch -c $qd 2>&1`;
+	local $out = `$config{'smartctl'} $extra_args -c $qd 2>&1`;
 	if ($out =~ /supports S.M.A.R.T./i) {
 		$rv{'support'} = 1;
 		}
@@ -96,7 +99,7 @@ if ($config{'attribs'}) {
 	# Fetch other attributes
 	local ($lastline, @attribs);
 	local $doneknown = 0;
-	open(OUT, "$config{'smartctl'} $ata_switch -a $qd |");
+	open(OUT, "$config{'smartctl'} $extra_args -a $qd |");
 	while(<OUT>) {
 		s/\r|\n//g;
 		if (/^\((\s*\d+)\)(.*)\s(0x\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)/) {
@@ -140,7 +143,7 @@ return \%rv;
 sub short_test
 {
 if (&get_smart_version() > 5.0) {
-	local $out = &backquote_logged("$config{'smartctl'} $ata_switch -t short $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t short $_[0] 2>&1");
 	if ($? || $out !~ /testing has begun/i) {
 		return (0, $out);
 		}
@@ -149,7 +152,7 @@ if (&get_smart_version() > 5.0) {
 		}
 	}
 else {
-	local $out = &backquote_logged("$config{'smartctl'} $ata_switch -S $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -S $_[0] 2>&1");
 	if ($? || $out !~ /test has begun/i) {
 		return (0, $out);
 		}
@@ -165,7 +168,7 @@ else {
 sub ext_test
 {
 if (&get_smart_version() > 5.0) {
-	local $out = &backquote_logged("$config{'smartctl'} $ata_switch -t long $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t long $_[0] 2>&1");
 	if ($? || $out !~ /testing has begun/i) {
 		return (0, $out);
 		}
@@ -174,7 +177,7 @@ if (&get_smart_version() > 5.0) {
 		}
 	}
 else {
-	local $out = &backquote_logged("$config{'smartctl'} $ata_switch -X $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -X $_[0] 2>&1");
 	if ($? || $out !~ /test has begun/i) {
 		return (0, $out);
 		}
@@ -190,7 +193,7 @@ else {
 sub data_test
 {
 if (&get_smart_version() > 5.0) {
-	local $out = &backquote_logged("$config{'smartctl'} $ata_switch -t offline $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t offline $_[0] 2>&1");
 	if ($? || $out !~ /testing has begun/i) {
 		return (0, $out);
 		}
@@ -199,7 +202,7 @@ if (&get_smart_version() > 5.0) {
 		}
 	}
 else {
-	local $out = &backquote_logged("$config{'smartctl'} $ata_switch -O $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -O $_[0] 2>&1");
 	if ($? || $out !~ /test has begun/i) {
 		return (0, $out);
 		}

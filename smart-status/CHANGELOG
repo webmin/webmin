@@ -2,3 +2,5 @@
 First version of this module, which can display the status of IDE hard drives that support SMART.
 ---- Changes since 1.270 ----
 Added a Module Config option to force ATA mode for SATA disks that appear as SCSI.
+---- Changes since 1.350 ----
+Added a Module Config option for extra smartctl command-line args, like -d 3ware,0
