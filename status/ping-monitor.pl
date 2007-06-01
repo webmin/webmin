@@ -12,7 +12,7 @@ return { 'up' => 0 } if (!$ip);
 if ($config{'pinger'}) {
 	# Call a ping command
 	local $cmd = $config{'pinger'} eq "linux" ?
-			"ping -c 1 -t 1" : $config{'pinger'};
+			"ping -c 1 -w $wait" : $config{'pinger'};
 	local $rv = system("$cmd ".quotemeta($_[0]->{'host'}).
 			   " >/dev/null 2>&1 </dev/null");
 	return { 'up' => $rv ? 0 : 1 };

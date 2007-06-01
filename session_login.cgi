@@ -49,7 +49,7 @@ elsif ($in{'timed_out'}) {
 print "$text{'session_prefix'}\n";
 print "<form action=$gconfig{'webprefix'}/session_login.cgi method=post>\n";
 print "<input type=hidden name=page value='".&html_escape($in{'page'})."'>\n";
-print "<table border width=40% class='loginform formsection'>\n";
+print "<table border width=40% class='loginform'>\n";
 print "<tr $tb> <td><b>$text{'session_header'}</b></td> </tr>\n";
 print "<tr $cb> <td align=center><table cellpadding=3>\n";
 if ($gconfig{'realname'}) {

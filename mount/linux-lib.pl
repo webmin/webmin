@@ -865,8 +865,8 @@ return @sup;
 sub fstype_name
 {
 local(%fsmap);
-%fsmap = ("ext2","Linux Native Filesystem",
-	  "ext3","New Linux Native Filesystem",
+%fsmap = ("ext2","Old Linux Native Filesystem",
+	  "ext3","Linux Native Filesystem",
 	  "minix","Minix Filesystem",
 	  "msdos","MS-DOS Filesystem",
 	  "nfs","Network Filesystem",

@@ -2,6 +2,7 @@
 # Shows a form for adding a new zone
 
 require './zones-lib.pl';
+do 'forms-lib.pl';
 use Socket;
 &ReadParse();
 $p = new Webmin::Page(undef, $text{'create_title'}, "create");

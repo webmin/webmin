@@ -112,8 +112,6 @@ foreach $m (@mods) {
 		}
 	}
 
-print join(" ", @newmods),"\n";
-
 # read_file(file, array)
 # Fill an associative array with name=value pairs from a file
 sub read_file

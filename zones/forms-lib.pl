@@ -1,3 +1,5 @@
+use Webmin::All;
+
 # get_zone_form(&in, &zinfo)
 # Returns a form for editing a zone
 sub get_zone_form

@@ -2,6 +2,7 @@
 # Actually creates a new zone
 
 require './zones-lib.pl';
+do 'forms-lib.pl';
 &ReadParse();
 &error_setup($text{'create_err'});
 &foreign_require("time", "time-lib.pl");

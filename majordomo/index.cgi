@@ -118,24 +118,20 @@ foreach $l (grep { $lcan{$_} || $lcan{"*"} } @lists) {
 	push(@icons, "images/list.gif");
 	}
 if (@links) {
-	print "<a href='create_form.cgi'>$text{'index_add'}</a>\n";
+	@crlinks = ( "<a href='create_form.cgi'>$text{'index_add'}</a>" );
 	if (@links) {
-		print "&nbsp;&nbsp;\n";
-		print "<a href='digest_form.cgi'>$text{'index_digest'}</a>\n";
+		push(@crlinks, "<a href='digest_form.cgi'>$text{'index_digest'}</a>");
 		}
-	print "<br>\n";
+	if ($access{'create'}) {
+		print &ui_links_row(\@crlinks);
+		}
 	&icons_table(\@links, \@titles, \@icons, 5);
 	}
 else {
 	print "<b>$text{'index_none'}</b>.<p>\n";
 	}
 if ($access{'create'}) {
-	print "<a href='create_form.cgi'>$text{'index_add'}</a>\n";
-	if (@links) {
-		print "&nbsp;&nbsp;\n";
-		print "<a href='digest_form.cgi'>$text{'index_digest'}</a>\n";
-		}
-	print "<p>\n";
+	print &ui_links_row(\@crlinks);
 	}
 
 if ($access{'global'}) {

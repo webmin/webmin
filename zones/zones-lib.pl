@@ -4,8 +4,6 @@
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
-do 'forms-lib.pl';
-use Webmin::All;
 &foreign_require("net", "net-lib.pl");
 &foreign_require("mount", "mount-lib.pl");
 

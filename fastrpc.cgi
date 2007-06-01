@@ -61,7 +61,11 @@ while(1) {
 	local $rmask;
 	vec($rmask, fileno(SOCK), 1) = 1;
 	local $sel = select($rmask, undef, undef, 60);
-	last if ($sel <= 0);
+	if ($sel <= 0) {
+		print STDERR "fastrpc: session timed out\n"
+			if ($gconfig{'rpcdebug'});
+		last;
+		}
 
 	local $line = <SOCK>;
 	last if (!$line);
@@ -225,6 +229,7 @@ while(1) {
 		# execute a function
 		print STDERR "fastrpc: call $arg->{'module'}::$arg->{'func'}(",join(",", @{$arg->{'args'}}),")\n" if ($gconfig{'rpcdebug'});
 		local @rv;
+		local $main::error_must_die = 1;
 		eval {
 			@rv = &foreign_call($arg->{'module'},
 					    $arg->{'func'},

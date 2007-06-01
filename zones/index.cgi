@@ -2,6 +2,7 @@
 # Shows all zones, with links to add more
 
 require './zones-lib.pl';
+do 'forms-lib.pl';
 
 $p = new Webmin::Page(undef, $module_info{'desc'}, "intro", 1, 1);
 $zn = &get_current_zone();

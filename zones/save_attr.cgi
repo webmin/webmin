@@ -2,6 +2,7 @@
 # Update, add or delete a generic attribute
 
 require './zones-lib.pl';
+do 'forms-lib.pl';
 &ReadParse();
 $zinfo = &get_zone($in{'zone'});
 $zinfo || &error($text{'edit_egone'});

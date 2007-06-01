@@ -229,13 +229,14 @@ if ($prn{'default'}) {
 	}
 
 # enable or disable
-local $enable = &has_command("enable");
+local $enable = &has_command("cupsenable") || &has_command("enable");
+local $disable = &has_command("cupsdisable") || &has_command("disable");
 if ($prn{'enabled'}) { $cmd = "$enable $esc"; }
 elsif ($prn{'enabled_why'}) {
 	local $wesc = quotemeta($prn{'enabled_why'});
-	$cmd = "$enable $esc ; disable -r $wesc $esc";
+	$cmd = "$enable $esc ; $disable -r $wesc $esc";
 	}
-else { $cmd = "$enable $esc ; disable $esc"; }
+else { $cmd = "$enable $esc ; $disable $esc"; }
 $out = &backquote_logged("$cmd 2>&1");
 
 # accepting or rejecting requests

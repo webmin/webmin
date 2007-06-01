@@ -2,6 +2,7 @@
 # Shows the details of one zone, with links to make changes
 
 require './zones-lib.pl';
+do 'forms-lib.pl';
 &ReadParse();
 $zinfo = &get_zone($in{'zone'});
 $zinfo || &error($text{'edit_egone'});

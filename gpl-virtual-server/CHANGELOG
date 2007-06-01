@@ -316,3 +316,5 @@ If the system has a bonded interface but no ethernet, it will be detected as the
 The configuration check process now ensures that the system is setup to use itself as a DNS server, so that newly created domains will resolve.
 Added an option to the scheduled backup page to only send an email report when the backup fails, and an option to send email to domain owners as well.
 When a virtual server with anonymous FTP is created, the ProFTPd user (typically ftp) is added to the domain's Unix group. This allows anonymous FTP to work even when the domain's home directory is not world-readable.
+---- Changes since 3.41 ----
+In the server templates pages under Default domain owner limits, added a section for specifying the features that can be used by the server owner. Previously, these were always automatically determined based on the features initially enabled when the domain was created.

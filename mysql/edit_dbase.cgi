@@ -19,7 +19,7 @@ else {
 if ($access{'indexes'}) {
 	@indexes = &list_indexes($in{'db'});
 	}
-if ($mysql_version >= 5 && $access{'views'}) {
+if (&supports_views() && $access{'views'}) {
 	@views = &list_views($in{'db'});
 	}
 
