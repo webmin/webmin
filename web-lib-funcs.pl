@@ -2234,6 +2234,13 @@ if (!$main::get_system_hostname[$m]) {
 				return $hn;
 				}
 			}
+		elsif ($gconfig{'os_type'} eq 'solaris') {
+			local $hn = &read_file_contents("/etc/nodename");
+			if ($hn) {
+				$hn =~ s/\r|\n//g;
+				return $hn;
+				}
+			}
 
 		# Can use hostname command on Unix
 		&execute_command("hostname", undef,
