@@ -404,7 +404,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 
 		# Update supplied fields
 		if ($line[2] ne '') {
-			if (!$access{'rename'}) {
+			if (!$access{'urename'}) {
 				print &text('batch_erename', $lnum, $line[1]),"\n";
 				}
 			$user{'user'} = $line[2];
