@@ -223,9 +223,6 @@ print "</form>\n";
 if (!$inet) {
 	# Get the FTP server pid
 	$pid = &get_proftpd_pid();
-	}
-
-if (!$inet) {
 	print "<hr>\n";
 	print &ui_buttons_start();
 	}

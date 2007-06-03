@@ -738,6 +738,11 @@ return $url;
 # Returns the inetd/xinetd object and program if ProFTPd is running under one
 sub running_under_inetd
 {
+# Never under inetd if not set so in config
+local $conf = &get_config();
+local $st = &find_directive("ServerType", $conf);
+return ( ) if (lc($st) eq "inetd");
+
 local ($inet, $inet_mod);
 if (&foreign_check('inetd')) {
         # Check if proftpd is in inetd
