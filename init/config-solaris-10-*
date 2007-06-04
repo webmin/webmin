@@ -14,3 +14,4 @@ order=0
 sort_mode=0
 no_chkconfig=0
 boot_levels=2
+inittab_extra=2
