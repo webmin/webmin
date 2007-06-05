@@ -325,6 +325,5 @@ print "//--></style>";
 #print "<body><div class='center'>";
 print "<table border='0' cellpadding='3' width='600' align='center'>";
 print "<tr class='h'><td>";
-print "<a href='http://www.postfix.com/'><img border='0' src='images/postfix_logo.gif' alt='Postfix Logo'  align='right'/></a>";
 return;
 }
