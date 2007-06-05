@@ -90,6 +90,7 @@ local ($name) = @_;
 return $name eq "apache" ? "httpd" :
        $name eq "dhcpd" ? "dhcp" :
        $name eq "mysql" ? "mysql mysql-server mysql-devel" :
+       $name eq "openssh" ? "openssh openssh-server" :
        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
        			  $name;
 }

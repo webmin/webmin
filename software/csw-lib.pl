@@ -9,7 +9,7 @@ $pkg_get = -x "/opt/csw/bin/pkg-get" ? "/opt/csw/bin/pkg-get"
 sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
-local (@rv, @newpacks);
+local (@rv, @newpacks, %seen, $failed);
 print "<b>",&text('csw_install', "<tt>$pkg_get -i $update</tt>"),"</b><p>\n";
 $| = 1;
 print "<pre>";
@@ -54,7 +54,7 @@ while(1) {
 	}
 print "</pre>";
 close($ph);
-if ($? || $failed) {
+if ($failed) {
 	print "<b>$text{'csw_failed'}</b><p>\n";
 	return ( );
 	}
