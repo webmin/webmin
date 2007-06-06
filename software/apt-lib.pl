@@ -17,7 +17,7 @@ print "<b>",&text('apt_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 &additional_log('exec', undef, $cmd);
-&open_execute_command(CMD, "$cmd 2>&1 </dev/null", 1);
+&open_execute_command(CMD, "yes Yes | $cmd 2>&1", 1);
 while(<CMD>) {
 	if (/setting\s+up\s+(\S+)/i && !/as\s+MDA/i) {
 		push(@rv, $1);
