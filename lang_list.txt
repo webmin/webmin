@@ -33,7 +33,7 @@ lang=bg,charset=windows-1251,titles=1	Bulgarian
 lang=el,titles=0,charset=iso-8859-7	Greek
 lang=da,titles=1	Danish
 lang=uk_UA,titles=0,charset=windows-1251		Ukranian
-lang=ar,titles=0,charset=iso-8859-6-I	Arabic
+lang=ar,titles=0,charset=iso-8859-6-I,rtl=1	Arabic
 lang=tl,titles=1	Klingon
 lang=ms,titles=1	Malay
 lang=fa,titles=0,dir=rtl,charset=UTF-8	Persian
