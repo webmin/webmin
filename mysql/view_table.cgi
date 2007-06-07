@@ -28,7 +28,7 @@ if (!$keyed && $module_name eq "postgresql") {
 	# Can use oid as key
 	eval { $main::error_must_die = 1;
 	       $d = &execute_sql($in{'db'}, "select oid from ".
-					    &quotestr($in{'table'}).
+					    &quote_table($in{'table'}).
 					    " where 0 = 1"); };
 	if (!$@) {
 		# Has an OID, so use it
@@ -44,7 +44,7 @@ $limitsql = &get_search_limit(\%in);
 
 # Work out where clause for rows we are operating on
 $where_select = "select ".($use_oids ? "oid" : "*").
-		" from ".&quotestr($in{'table'})." $search $sortsql $limitsql";
+		" from ".&quote_table($in{'table'})." $search $sortsql $limitsql";
 
 if ($in{'delete'}) {
 	# Deleting selected rows
@@ -75,7 +75,7 @@ if ($in{'delete'}) {
 				}
 			}
 		&execute_sql_logged($in{'db'},
-				    "delete from ".&quotestr($in{'table'}).
+				    "delete from ".&quote_table($in{'table'}).
 				    " where ".join(" and ", @where));
 		$count++;
 		}
@@ -123,7 +123,7 @@ elsif ($in{'save'}) {
 			push(@params, $ij eq '' ? undef : $ij);
 			}
 		&execute_sql_logged($in{'db'},
-				    "update ".&quotestr($in{'table'})." set ".
+				    "update ".&quote_table($in{'table'})." set ".
 				    join(" , ", @set)." where ".
 				    join(" and ", @where), @params);
 		$count++;
@@ -141,7 +141,7 @@ elsif ($in{'savenew'}) {
 			}
 		push(@set, $in{$j} eq '' ? undef : $in{$j});
 		}
-	&execute_sql_logged($in{'db'}, "insert into ".&quotestr($in{'table'}).
+	&execute_sql_logged($in{'db'}, "insert into ".&quote_table($in{'table'}).
 		    " values (".join(" , ", map { "?" } @set).")", @set);
 	&redirect("view_table.cgi?db=$in{'db'}&".
 		  "table=".&urlize($in{'table'})."&start=$in{'start'}".
@@ -156,7 +156,7 @@ $desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
 &ui_print_header($desc, $text{'view_title'}, "");
 
 $d = &execute_sql_safe($in{'db'},
-	"select count(*) from ".&quotestr($in{'table'})." ".$search);
+	"select count(*) from ".&quote_table($in{'table'})." ".$search);
 $total = int($d->{'data'}->[0]->[0]);
 if ($in{'jump'} > 0) {
 	$in{'start'} = int($in{'jump'} / $config{'perpage'}) *
@@ -238,7 +238,7 @@ $check = !defined($in{'row'}) && !$in{'new'} && $keyed;
 if ($total || $in{'new'}) {
 	# Get the rows of data, and show the table header
 	$d = &execute_sql_safe($in{'db'},
-		"select * from ".&quotestr($in{'table'})." $search $sortsql $limitsql");
+		"select * from ".&quote_table($in{'table'})." $search $sortsql $limitsql");
 	@data = @{$d->{'data'}};
 	@tds = $check ? ( "width=5" ) : ( );
 	($has_blob) = grep { &is_blob($_) } @str;

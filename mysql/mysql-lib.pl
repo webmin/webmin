@@ -449,6 +449,11 @@ else {
 return $rv;
 }
 
+sub quote_table
+{
+return &quotestr($_[0]);
+}
+
 # quotestr(string)
 sub quotestr
 {
