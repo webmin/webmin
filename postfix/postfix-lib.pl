@@ -114,17 +114,30 @@ sub get_current_value
 {
 # First try to get the value from main.cf directly
 my ($name,$key)=split /:/,$_[0];
-my $lref = &read_file_lines($config{'postfix_config_file'}, 1);
+my $lref = &read_file_lines($config{'postfix_config_file'});
 my $out;
-my $i = 0;
+my ($begin_flag, $end_flag);
 foreach my $l (@$lref) {
-	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/ &&
-	    $1 eq $name && $lref->[$i+1] !~ /^\s+\S/) {
-		# Found it! Return ..
+	# changes made to this loop by Dan Hartman of Rae Internet /
+	# Message Partners for multi-line parsing 2007-06-04
+	if ($begin_flag == 1 && $l =~ /^([^#].+)/) {
+		# only non-comment lines, and replace tabs with spaces
+		$out .= $1;
+		$out =~ s/\t/ /;
+		}
+ 	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)|^\s*([a-z0-9\_]+)\s*=\s*$/ &&
+ 	    $1 . $3 eq $name) {
+		# Found the one we're looking for, set a flag
 		$out = $2;
+		$begin_flag = 1;
+		}
+ 	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)|^\s*([a-z0-9\_]+)\s*=\s*$/ &&
+ 	    $1 . $3 ne $name && $begin_flag == 1) {
+		# after the beginning, another configuration variable
+		# found!  Stop!
+		$end_flag = 1;
 		last;
 		}
-	$i++;
 	}
 if (!defined($out)) {
 	# Fall back to asking Postfix
