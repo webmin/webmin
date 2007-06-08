@@ -202,7 +202,7 @@ $month++;
 $year += 1900;
 local $format = "--set --date=\"".quotemeta("$month/$date/$year $hour:$minute:$second")."\"";
 local $flags = &get_hwclock_flags();
-local $out = &backquote_logged("hwclock $flags $format");
+local $out = &backquote_logged("hwclock $flags $format 2>&1");
 return $? ? $out : undef;
 }
 
@@ -226,7 +226,7 @@ elsif ($config{'seconds'} == 1) {
 else {
 	$format = $month.$date.$hour.$minute.substr($year, -2);
 	}
-local $out = &backquote_logged("echo yes | date ".quotemeta($format));
+local $out = &backquote_logged("echo yes | date ".quotemeta($format)." 2>&1");
 if ($gconfig{'os_type'} eq 'freebsd' || $gconfig{'os_type'} eq 'netbsd') {
 	return int($?/256) == 1 ? $out : undef;
 	}
