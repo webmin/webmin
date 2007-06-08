@@ -18,6 +18,7 @@ if (&foreign_check("lvm")) {
 $has_e2label = &has_command("e2label");
 $has_xfs_db = &has_command("xfs_db");
 $has_volid = &has_command("vol_id");
+$has_reiserfstune = &has_command("reiserfstune");
 $| = 1;
 
 # list_disks_partitions([include-cds])
@@ -1186,6 +1187,13 @@ if (($? || $label !~ /\S/) && $has_xfs_db) {
 	local $out = &backquote_with_timeout("xfs_db -x -p xfs_admin -c label -r $_[0] 2>&1", 5);
 	$label = $1 if ($out =~ /label\s*=\s*"(.*)"/ &&
 			$1 ne '(null)');
+	}
+if (($? || $label !~ /\S/) && $has_reiserfstune) {
+	$label = undef;
+	local $out = &backquote_command("reiserfstune $_[0]");
+	if ($out =~ /LABEL:\s*(\S+)/) {
+		$label = $1;
+		}
 	}
 return $? || $label !~ /\S/ ? undef : $label;
 }

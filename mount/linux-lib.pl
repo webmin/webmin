@@ -47,6 +47,9 @@ if (&has_command("xfs_db")) {
 if (&has_command("vol_id")) {
 	$has_volid = 1;
 	}
+if (&has_command("reiserfstune")) {
+	$has_reiserfstune = 1;
+	}
 
 # Return information about a filesystem, in the form:
 #  directory, device, type, options, fsck_order, mount_at_boot
@@ -451,7 +454,8 @@ while(<MTAB>) {
 		$p[0] = "proc";
 		}
 	if (!$_[0] && ($p[2] =~ /^ext[23]$/ && $has_e2label ||
-	    	       $p[2] eq "xfs" && $has_xfs_db)) {
+	    	       $p[2] eq "xfs" && $has_xfs_db ||
+		       $p[2] eq "reiserfs" && $has_reiserfstune)) {
 		# Check for a label on this partition, and there is one
 		# and this filesystem is in fstab with the label, change
 		# the device.
@@ -460,6 +464,12 @@ while(<MTAB>) {
 			local $out = &backquote_command("xfs_db -x -p xfs_admin -c label -r $p[0] 2>&1", 1);
 			$label = $1 if ($out =~ /label\s*=\s*"(.*)"/ &&
 					$1 ne '(null)');
+			}
+		elsif ($p[2] eq "reiserfs") {
+			local $out = &backquote_command("reiserfstune $p[0]");
+			if ($out =~ /LABEL:\s*(\S+)/) {
+				$label = $1;
+				}
 			}
 		else {
 			$label = &backquote_command("e2label $p[0] 2>&1", 1);
@@ -1052,7 +1062,7 @@ else {
 		}
 
 	# Show label input
-	if ($has_e2label || $has_xfs_db) {
+	if ($has_e2label || $has_xfs_db || $has_reiserfstune) {
 		local $l = $_[1] =~ /LABEL=(.*)/ ? $1 : undef;
 		local $esel = &fdisk::label_select("lnx_label", $l, \$lfound);
 		if ($esel) {
