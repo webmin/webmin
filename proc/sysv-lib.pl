@@ -197,42 +197,6 @@ while(1) {
 	}
 }
 
-# get_memory_info()
-# Returns a list containing the real mem, free real mem, swap and free swap
-sub get_memory_info
-{
-return ( ) if (!&has_command("top"));
-local @rv;
-open(TOP, "top 2>&1 |");
-while(<TOP>) {
-	if (/Memory:\s+(\S+)\s+real,\s+(\S+)\s+free,\s+(\S+)\s+swap\s+in\s+use,\s+(\S+)\s+swap\s+free/) {
-		local ($real, $free, $swapused, $swapfree) = ($1, $2, $3, $4);
-		@rv = ( &fix_suffix($real),
-			&fix_suffix($free),
-			&fix_suffix($swapused) + &fix_suffix($swapfree),
-			&fix_suffix($swapfree) );
-		}
-	}
-close(TOP);
-return @rv;
-}
-
-sub fix_suffix
-{
-if ($_[0] =~ /^(\d+)K/i) {
-	return $1;
-	}
-elsif ($_[0] =~ /^(\d+)M/i) {
-	return $1*1024;
-	}
-elsif ($_[0] =~ /^(\d+)G/i) {
-	return $1*1024*1024;
-	}
-else {
-	return int($1);
-	}
-}
-
 # os_get_cpu_info()
 # Returns a list containing the 5, 10 and 15 minute load averages
 sub os_get_cpu_info
@@ -262,9 +226,9 @@ foreach my $s ("physmem", "freemem", "swap_alloc", "swap_avail") {
 		}
 	}
 return ($stat{'physmem'}*8, $stat{'freemem'}*8,
-	$stat{'swap_alloc'}/1024, $stat{'swap_avail'}/1024);
+	$stat{'swap_avail'}/1048576,
+	($stat{'swap_avail'}-$stat{'swap_alloc'})/1048576);
 }
-
 
 
 foreach $ia (keys %text) {
