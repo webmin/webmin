@@ -1140,6 +1140,7 @@ if ($method eq 'POST' &&
 		$posted_data =~ s/\015$//mg;
 		$posted_data .= $buf;
 		}
+	print DEBUG "clen_read=$clen_read clen=$clen posted_data=",length($posted_data),"\n";
 	if ($clen_read != $clen && length($posted_data) > $clen) {
 		# If the client sent more data than we asked for, chop the
 		# rest off
@@ -2490,6 +2491,9 @@ if ($use_ssl) {
 else {
 	syswrite(SOCK, $str, length($str));
 	}
+# Intentionally introduce a small delay to avoid problems where IE reports
+# the page as empty / DNS failed when it get a large response too quickly!
+select(undef, undef, undef, .01) if ($write_data_count%10 == 0);
 $write_data_count += length($str);
 }
 
