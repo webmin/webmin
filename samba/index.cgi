@@ -181,7 +181,7 @@ if ($donefirst) {
 	}
 
 @gc_acl = qw(conf_net conf_smb conf_pass conf_print conf_misc conf_bind
-			  ACLfs_global ACLps_global manual swat);
+			  ACLfs_global ACLps_global manual swat winbind);
 @gc_progs = ("conf_net.cgi", "conf_smb.cgi", "conf_pass.cgi",
 	     "conf_print.cgi", "conf_misc.cgi", "conf_bind.cgi",
 	     "edit_fshare.cgi?share=global", "edit_pshare.cgi?share=global",
