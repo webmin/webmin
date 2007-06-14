@@ -105,7 +105,8 @@ return @rv;
 sub save_interface
 {
 local(%conf);
-local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".$_[0]->{'range'} :
+local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".
+				       $_[0]->{'range'} :
 	      $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
 				       : $_[0]->{'name'};
 &lock_file("$net_scripts_dir/ifcfg-$name");
@@ -142,7 +143,8 @@ else {
 		}
 	$conf{'MTU'} = $_[0]->{'mtu'};
 	$conf{'ONBOOT'} = $_[0]->{'up'} ? "yes" : "no";
-	$conf{'ONPARENT'} = $_[0]->{'up'} ? "yes" : "no" if ($_[0]->{'virtual'} ne '');
+	$conf{'ONPARENT'} = $_[0]->{'up'} ? "yes" : "no"
+		if ($_[0]->{'virtual'} ne '');
 	$conf{'BOOTPROTO'} = $_[0]->{'bootp'} ? "bootp" :
 			     $_[0]->{'dhcp'} ? "dhcp" : "none";
 	}
@@ -158,7 +160,8 @@ if (-d &translate_filename($devices_dir)) {
 # Delete a boot-time interface
 sub delete_interface
 {
-local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".$_[0]->{'range'} :
+local $name = $_[0]->{'range'} ne "" ? $_[0]->{'name'}."-range".
+				       $_[0]->{'range'} :
 	      $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
 				       : $_[0]->{'name'};
 &lock_file("$net_scripts_dir/ifcfg-$name");

@@ -29,3 +29,5 @@ Active routes can be added and deleted on Linux and Solaris systems.
 Added a button for activating several boot-time interfaces at once.
 ---- Changes since 1.340 ----
 Fixed broken SuSE 10.2+ support.
+---- Changes since 1.350 ----
+Re-wrote Gentoo networking support code to work with 2006 and later versions.

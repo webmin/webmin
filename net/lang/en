@@ -135,6 +135,7 @@ routes_ecgw=Missing or invalid gateway address
 routes_derr=Failed to delete routes
 routes_denone=None selected
 routes_ecnetmask2=A netmask cannot be specified for the default route
+routes_ggw=Use router $1 via interface $2
 
 dns_title=Hostname and DNS Client
 dns_options=DNS Client Options
