@@ -111,8 +111,11 @@ if ($init) {
 			    [ 0, $text{'no'} ] ]));
 	}
 
-print &ui_buttons_row("restart.cgi",
-	$text{'index_restart'}, $text{'index_restartmsg'});
+&get_usermin_miniserv_config(\%miniserv);
+if (&check_pid_file($miniserv{'pidfile'})) {
+	print &ui_buttons_row("restart.cgi",
+		$text{'index_restart'}, $text{'index_restartmsg'});
+	}
 
 print &ui_buttons_end();
 
