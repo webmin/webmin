@@ -120,8 +120,8 @@ my ($begin_flag, $end_flag);
 foreach my $l (@$lref) {
 	# changes made to this loop by Dan Hartman of Rae Internet /
 	# Message Partners for multi-line parsing 2007-06-04
-	if ($begin_flag == 1 && $l =~ /^([^#].+)/) {
-		# only non-comment lines, and replace tabs with spaces
+	if ($begin_flag == 1 && $l =~ /^(\t+[^#].+)/) {
+		# non-comment continuation line, and replace tabs with spaces
 		$out .= $1;
 		$out =~ s/\t/ /;
 		}
