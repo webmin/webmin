@@ -802,9 +802,9 @@ while(1) {
 				print $outfd $sdb[0],"\n";
 				delete($sessiondb{$sid});
 				}
-			elsif ($inline =~ /^pamstart\s+(\S+)\s+(\S+)\s+(\S+)/) {
+			elsif ($inline =~ /^pamstart\s+(\S+)\s+(\S+)\s+(.*)/) {
 				# Starting a new PAM conversation
-				local ($cid, $user, $host) = ($1, $2, $3);
+				local ($cid, $host, $user) = ($1, $2, $3);
 
 				# Does this user even need PAM?
 				local ($realuser, $canlogin) =
@@ -1379,7 +1379,7 @@ if (%users) {
 		# A question has been entered .. submit it to the main process
 		print DEBUG "handle_request: Got call to $page ($in{'cid'})\n";
 		print DEBUG "handle_request: For PAM, authuser=$authuser\n";
-		if ($in{'answer'} =~ /\r|\n|\s/ || $in{'cid'} =~ /\r|\n|\s/) {
+		if ($in{'answer'} =~ /\r|\n/ || $in{'cid'} =~ /\r|\n|\s/) {
 			&http_error(500, "Invalid response",
 			    "Response contains invalid characters");
 			}
@@ -1387,7 +1387,7 @@ if (%users) {
 		if (!$in{'cid'}) {
 			# Start of a new conversation - answer must be username
 			$cid = &generate_random_id($in{'answer'});
-			print $PASSINw "pamstart $cid $in{'answer'} $host\n";
+			print $PASSINw "pamstart $cid $host $in{'answer'}\n";
 			}
 		else {
 			# A response to a previous question
