@@ -245,7 +245,7 @@ sub reload_postfix
     {
 	if (check_postfix()) { &error("$text{'check_error'}"); }
 	my $ex;
-	if ($config{'reload_cmd'}) {
+	if (!$config{'reload_cmd'}) {
 		$ex = &system_logged("$config{'postfix_control_command'} -c $config_dir reload >/dev/null 2>&1");
 		}
 	else {
