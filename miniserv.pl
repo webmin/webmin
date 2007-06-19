@@ -135,6 +135,15 @@ if ($@) {
 		}
 	}
 
+# Check if /dev/urandom really generates random IDs, by calling it twice
+local $rand1 = &generate_random_id("foo", 1);
+local $rand2 = &generate_random_id("foo", 2);
+local $rand_msg;
+if ($rand1 eq $rand2) {
+	$bad_urandom = 1;
+	$rand_msg = "Random number generator file /dev/urandom is not reliable";
+	}
+
 # Check if we can call sudo
 if ($config{'sudo'} && &has_command("sudo")) {
 	eval "use IO::Pty";
@@ -426,6 +435,7 @@ open(STDOUT, ">/dev/null");
 &log_error($utmp_msg) if ($utmp_msg);
 &log_error($crypt_msg) if ($crypt_msg);
 &log_error($sudo_msg) if ($sudo_msg);
+&log_error($rand_msg) if ($rand_msg);
 
 # write out the PID file
 open(PIDFILE, ">$config{'pidfile'}");
@@ -3258,25 +3268,29 @@ if ($allowhours{$_[0]}) {
 return 1;
 }
 
-# generate_random_id(password)
+# generate_random_id(password, [force-urandom])
 # Returns a random session ID number
 sub generate_random_id
 {
+local ($pass, $force_urandom) = @_;
 local $sid;
-$SIG{ALRM} = "miniserv::urandom_timeout";
-alarm(5);
-if (open(RANDOM, "/dev/urandom")) {
-	my $tmpsid;
-	if (read(RANDOM, $tmpsid, 16) == 16) {
-		$sid = lc(unpack('h*',$tmpsid));
+if (!$bad_urandom) {
+	# First try /dev/urandom, unless we have marked it as bad
+	$SIG{ALRM} = "miniserv::urandom_timeout";
+	alarm(5);
+	if (open(RANDOM, "/dev/urandom")) {
+		my $tmpsid;
+		if (read(RANDOM, $tmpsid, 16) == 16) {
+			$sid = lc(unpack('h*',$tmpsid));
+			}
+		close(RANDOM);
 		}
-	close(RANDOM);
+	alarm(0);
 	}
-alarm(0);
-if (!$sid) {
+if (!$sid && !$force_urandom) {
 	$sid = time();
 	local $mul = 1;
-	foreach $c (split(//, &unix_crypt($_[0], substr($$, -2)))) {
+	foreach $c (split(//, &unix_crypt($pass, substr($$, -2)))) {
 		$sid += ord($c) * $mul;
 		$mul *= 3;
 		}
