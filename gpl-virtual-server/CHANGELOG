@@ -318,3 +318,7 @@ Added an option to the scheduled backup page to only send an email report when t
 When a virtual server with anonymous FTP is created, the ProFTPd user (typically ftp) is added to the domain's Unix group. This allows anonymous FTP to work even when the domain's home directory is not world-readable.
 ---- Changes since 3.41 ----
 In the server templates pages under Default domain owner limits, added a section for specifying the features that can be used by the server owner. Previously, these were always automatically determined based on the features initially enabled when the domain was created.
+Changed the layout of the Plugin Modules page to make it easier to see what is selected, and added a checkbox to have plugins available but not active by default.
+---- Changes since 3.42 ----
+The Change Domain Name page can be used to modify the administrative username and home directory for a virtual server, without changing the domain name.
+Added an option to the DNS section of server templates for specifying the hostname to use in the primary NS record for new DNS domains, rather than the system's hostname.
