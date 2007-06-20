@@ -24,7 +24,7 @@ $conf = &get_config();
 if (@views) {
 	print &ui_table_row($text{'mcreate_view'},
 		&ui_select("view", undef,
-			[ map { [ $_->{'index'}, $_->{'values'}->[1] ] }
+			[ map { [ $_->{'index'}, $_->{'values'}->[0] ] }
 			      grep { &can_edit_view($_) } @views ]), 3);
 	}
 
