@@ -283,6 +283,9 @@ if ($config{'debuglog'}) {
 	print DEBUG "miniserv.pl starting ..\n";
 	}
 
+# Write out (empty) blocked hosts file
+&write_blocked_file();
+
 # Re-direct STDERR to a log file
 if ($config{'errorlog'} ne '-') {
 	open(STDERR, ">>$config{'errorlog'}") || die "failed to open $config{'errorlog'} : $!";
@@ -547,17 +550,41 @@ while(1) {
 
 	# run the unblocking procedure to check if enough time has passed to
 	# unblock hosts that heve been blocked because of password failures
+	$unblocked = 0;
 	if ($config{'blockhost_failures'}) {
 		$i = 0;
 		while ($i <= $#deny) {
-			if ($blockhosttime{$deny[$i]} && $config{'blockhost_time'} != 0 &&
-			    ($time_now - $blockhosttime{$deny[$i]}) >= $config{'blockhost_time'}) {
+			if ($blockhosttime{$deny[$i]} &&
+			    $config{'blockhost_time'} != 0 &&
+			    ($time_now - $blockhosttime{$deny[$i]}) >=
+			     $config{'blockhost_time'}) {
 				# the host can be unblocked now
 				$hostfail{$deny[$i]} = 0;
 				splice(@deny, $i, 1);
+				$unblocked = 1;
 				}
 			$i++;
 			}
+		}
+
+	# Do the same for blocked users
+	if ($config{'blockuser_failures'}) {
+		$i = 0;
+		while ($i <= $#deny) {
+			if ($blockusertime{$deny[$i]} &&
+			    $config{'blockuser_time'} != 0 &&
+			    ($time_now - $blockusertime{$deny[$i]}) >=
+			     $config{'blockuser_time'}) {
+				# the user can be unblocked now
+				$userfail{$deny[$i]} = 0;
+				splice(@denyusers, $i, 1);
+				$unblocked = 1;
+				}
+			$i++;
+			}
+		}
+	if ($unblocked) {
+		&write_blocked_file();
 		}
 
 	if ($config{'session'} && (++$remove_session_count%50) == 0) {
@@ -742,32 +769,61 @@ while(1) {
 				if ($3) {
 					# login OK.. no delay
 					print $outfd "0 0\n";
+					$wasblocked = $hostfail{$2} ||
+						      $userfail{$1};
 					$hostfail{$2} = 0;
+					$userfail{$1} = 0;
+					if ($wasblocked) {
+						&write_blocked_file();
+						}
 					}
 				else {
 					# login failed..
 					$hostfail{$2}++;
-					# add the host to the block list if necessary
+					$userfail{$1}++;
+					$blocked = 0;
+
+					# add the host to the block list,
+					# if configured
  					if ($config{'blockhost_failures'} &&
-					    $hostfail{$2} >= $config{'blockhost_failures'}) {
-						push(@deny, $2);					
+					    $hostfail{$2} >=
+					      $config{'blockhost_failures'}) {
+						push(@deny, $2);
 						$blockhosttime{$2} = $time_now;
 						$blocked = 1;
 						if ($use_syslog) {
-							local $logtext = "Security alert: Host $2 ".
-							  "blocked after $config{'blockhost_failures'} ".
-							  "failed logins for user $1";
-							syslog("crit", "%s", $logtext);
+							local $logtext = "Security alert: Host $2 blocked after $config{'blockhost_failures'} failed logins for user $1";
+							syslog("crit", "%s",
+								$logtext);
 							}
 						}
-					else {
-						$blocked = 0;
+
+					# add the user to the user block list,
+					# if configured
+ 					if ($config{'blockuser_failures'} &&
+					    $userfail{$1} >=
+					      $config{'blockuser_failures'}) {
+						push(@denyusers, $1);
+						$blockusertime{$1} = $time_now;
+						$blocked = 2;
+						if ($use_syslog) {
+							local $logtext = "Security alert: User $1 blocked after $config{'blockuser_failures'} failed logins";
+							syslog("crit", "%s",
+								$logtext);
+							}
 						}
+
+					# Send back a delay
 					$dl = $userdlay{$1} -
-					      int(($time_now - $userlast{$1})/50);
+				           int(($time_now - $userlast{$1})/50);
 					$dl = $dl < 0 ? 0 : $dl+1;
 					print $outfd "$dl $blocked\n";
 					$userdlay{$1} = $dl;
+
+					# Write out blocked status file
+					if ($blocked) {
+						&write_blocked_file();
+						}
 					}
 				$userlast{$1} = $time_now;
 				}
@@ -1599,9 +1655,15 @@ if (%users) {
 				return 0;
 				}
 			}
-		else {
+		elsif ($blocked == 1) {
 			# when the host has been blocked, give it an error
 			&http_error(403, "Access denied for $acptip. The host ".
+					 "has been blocked because of too ".
+					 "many authentication failures.");
+			}
+		elsif ($blocked == 2) {
+			# when the user has been blocked, give it an error
+			&http_error(403, "Access denied. The user ".
 					 "has been blocked because of too ".
 					 "many authentication failures.");
 			}
@@ -3759,6 +3821,10 @@ if (!$config{'tempbase'}) {
 	$config{'pidfile'} =~ /^(.*)\/[^\/]+$/;
 	$config{'tempbase'} = "$1/cgitemp";
 	}
+if (!$config{'blockedfile'}) {
+	$config{'pidfile'} =~ /^(.*)\/[^\/]+$/;
+	$config{'blockedfile'} = "$1/blocked";
+	}
 }
 
 # read_users_file()
@@ -4351,5 +4417,20 @@ foreach my $s (@substrings, @mobile_agents) {
 	return 1 if ($agent =~ /\Q$s\E/);
 	}
 return 0;
+}
+
+# write_blocked_file()
+# Writes out a text file of blocked hosts and users
+sub write_blocked_file
+{
+open(BLOCKED, ">$config{'blockedfile'}");
+foreach my $d (grep { $hostfail{$_} } @deny) {
+	print BLOCKED "host $d $hostfail{$d} $blockhosttime{$d}\n";
+	}
+foreach my $d (grep { $userfail{$_} } @denyusers) {
+	print BLOCKED "user $d $userfail{$d} $blockusertime{$d}\n";
+	}
+close(BLOCKED);
+chmod(0700, $config{'blockedfile'});
 }
 

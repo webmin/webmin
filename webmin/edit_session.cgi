@@ -15,15 +15,27 @@ print "<table border>\n";
 print "<tr $tb> <td><b>$text{'session_header'}</b></td> </tr>\n";
 print "<tr $cb> <td nowrap>\n";
 
+# Bad password delay
 printf "<input type=radio name=passdelay value=0 %s> %s<br>\n",
 	$miniserv{'passdelay'} ? '' : 'checked', $text{'session_pdisable'};
 printf "<input type=radio name=passdelay value=1 %s> %s<br>\n",
 	$miniserv{'passdelay'} ? 'checked' : '', $text{'session_penable'};
+
+# Block bad hosts
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=blockhost_on value=1 %s>\n",
 	$miniserv{'blockhost_failures'} ? "checked" : "";
 print &text('session_blockhost',
-	    "<input name=blockhost_failures size=4 value='$miniserv{'blockhost_failures'}'>",
-	    "<input name=blockhost_time size=4 value='$miniserv{'blockhost_time'}'>"),"<br>\n";
+    &ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
+    &ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),"<br>\n";
+
+# Block bad users
+printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=blockuser_on value=1 %s>\n",
+	$miniserv{'blockuser_failures'} ? "checked" : "";
+print &text('session_blockuser',
+    &ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
+    &ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),"<br>\n";
+
+# Log to syslog
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
 	printf "<input type=checkbox name=syslog value=1 %s> %s\n",

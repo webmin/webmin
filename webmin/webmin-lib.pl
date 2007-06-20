@@ -1128,11 +1128,15 @@ closedir(DIR);
 return @rv;
 }
 
+# show_restart_page([title, msg])
 sub show_restart_page
 {
-&ui_print_header(undef, $text{'restart_title'}, "");
+local ($title, $msg) = @_;
+$title ||= $text{'restart_title'};
+$msg ||= $text{'restart_done'};
+&ui_print_header(undef, $title, "");
 
-print "<p>$text{'restart_done'}<p>\n";
+print "<p>$msg<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
 &restart_miniserv(1);
@@ -1208,6 +1212,28 @@ close(OUT);
 return $data;
 }
 
-
+# get_blocked_users_hosts(&miniserv)
+# Returns a list of blocked users and hosts from the file written by Webmin
+sub get_blocked_users_hosts
+{
+local ($miniserv) = @_;
+local $bf = $miniserv->{'blockedfile'};
+if (!$bf) {
+	$miniserv->{'pidfile'} =~ /^(.*)\/[^\/]+$/;
+	$bf = "$1/blocked";
+	}
+local @rv;
+&open_readfile(BLOCKED, $bf);
+while(<BLOCKED>) {
+	s/\r|\n//g;
+	local ($type, $who, $fails, $when) = split(/\s+/, $_);
+	push(@rv, { 'type' => $type,
+		    $type => $who,
+		    'fails' => $fails,
+		    'when' => $when });
+	}
+close(BLOCKED);
+return @rv;
+}
 
 1;

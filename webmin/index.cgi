@@ -14,7 +14,7 @@ $ver = &get_webmin_version();
 	    "edit_upgrade.cgi", "edit_session.cgi", "edit_assignment.cgi",
 	    "edit_categories.cgi", "edit_descs.cgi", "edit_themes.cgi",
 	    "edit_referers.cgi", "edit_anon.cgi", "edit_lock.cgi",
-	    "edit_mobile.cgi", "edit_advanced.cgi" );
+	    "edit_mobile.cgi", "edit_blocked.cgi", "edit_advanced.cgi" );
 @wtitles = ( $text{'access_title'}, $text{'bind_title'},
 	     $text{'log_title'}, $text{'proxy_title'},
 	     $text{'ui_title'}, $text{'mods_title'},
@@ -24,7 +24,8 @@ $ver = &get_webmin_version();
 	     $text{'categories_title'}, $text{'descs_title'},
 	     $text{'themes_title'}, $text{'referers_title'},
 	     $text{'anon_title'}, $text{'lock_title'},
-	     $text{'mobile_title'}, $text{'advanced_title'} );
+	     $text{'mobile_title'}, $text{'blocked_title'},
+	     $text{'advanced_title'} );
 @wicons = ( "images/access.gif", "images/bind.gif", "images/log.gif",
 	    "images/proxy.gif", "images/ui.gif", "images/mods.gif",
 	    "images/os.gif", "images/lang.gif", "images/startpage.gif",
@@ -32,7 +33,7 @@ $ver = &get_webmin_version();
 	    "images/assignment.gif", "images/categories.gif",
 	    "images/descs.gif", "images/themes.gif", "images/referers.gif",
 	    "images/anon.gif", "images/lock.gif", "images/mobile.gif",
-	    "images/advanced.gif" );
+	    "images/blocked.gif", "images/advanced.gif" );
 if ($gconfig{'eazel'}) {
 	push(@wlinks, "edit_syslet.cgi");
 	push(@wtitles, $text{'syslet_title'});
