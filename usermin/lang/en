@@ -474,3 +474,8 @@ descs_info=This page allows you to specify alternate titles for Usermin modules,
 
 advanced_title=Advanced Options
 advanced_pass=Make password available to Usermin programs?<br><font size=-1>(Does not work when session authentication is enabled)</font>
+
+blocked_title=Blocked Hosts and Users
+blocked_none=No hosts or users are currently blocked by Usermin.
+blocked_user=Usermin user
+blocked_cleardesc=Click this button to clear all current host and user blocks, by restarting the Usermin server process.

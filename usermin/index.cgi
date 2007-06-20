@@ -66,6 +66,7 @@ $ver = &get_usermin_version();
 	   $ver < 1.164 ? ( ) : ( "edit_logout.cgi" ),
 	   $ver < 1.181 ? ( ) : ( "edit_dav.cgi" ),
 	   "list_sessions.cgi",
+	   "edit_blocked.cgi",
 	   "edit_advanced.cgi" );
 @titles = map { /_(\S+).cgi/; $text{"${1}_title"} } @links;
 @icons = map { /_(\S+).cgi/; "images/$1.gif" } @links;

@@ -11,6 +11,8 @@ $ver = &get_usermin_version();
 &lock_file($usermin_miniserv_config);
 &get_usermin_miniserv_config(\%miniserv);
 $miniserv{'passdelay'} = $in{'passdelay'};
+
+# Save blocked hosts
 if ($in{'blockhost_on'}) {
 	$in{'blockhost_time'} =~ /^\d+$/ && $in{'blockhost_time'} > 0 ||
 		&error($webmin::text{'session_eblockhost_time'});
@@ -22,6 +24,20 @@ if ($in{'blockhost_on'}) {
 else {
 	$miniserv{'blockhost_time'} = $miniserv{'blockhost_failures'} = undef;
 	}
+
+# Save blocked users
+if ($in{'blockuser_on'}) {
+	$in{'blockuser_time'} =~ /^\d+$/ && $in{'blockuser_time'} > 0 ||
+		&error($webmin::text{'session_eblockuser_time'});
+	$in{'blockuser_failures'} =~ /^\d+$/ && $in{'blockuser_failures'} > 0 ||
+		&error($webmin::text{'session_eblockuser_failures'});
+	$miniserv{'blockuser_time'} = $in{'blockuser_time'};
+	$miniserv{'blockuser_failures'} = $in{'blockuser_failures'};
+	}
+else {
+	$miniserv{'blockuser_time'} = $miniserv{'blockuser_failures'} = undef;
+	}
+
 $miniserv{'syslog'} = $in{'syslog'};
 if ($in{'session'} && $ENV{'HTTP_COOKIE'} !~ /sessiontest=1/i) {
 	&error($webmin::text{'session_ecookie'});

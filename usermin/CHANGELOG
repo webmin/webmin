@@ -29,3 +29,6 @@ Added a form to the Usermin Themes page for exporting a theme to a file.
 Added support for installing and upgrading the Debian package version of Usermin.
 Added a page for overriding module titles.
 Added the Advanced Options page, which can be used to change the temporary files directory, Umask and stack trace display.
+---- Changes since 1.350 ----
+Added an option to the Authentication page to block users with too many failed logins, as well as hosts.
+Created the new Blocked Hosts and Users page to show blocks currently in force, and allow them to be cleared.
