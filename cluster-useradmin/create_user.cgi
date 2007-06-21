@@ -51,7 +51,13 @@ $in{'uid'} =~ /^[0-9]+$/ || &error(&text('usave_euid', $in{'uid'}));
 $in{'real'} =~ /^[^:]*$/ || &error(&text('usave_ereal', $in{'real'}));
 if ($in{'shell'} eq "*") { $in{'shell'} = $in{'othersh'}; }
 $user{'uid'} = $in{'uid'};
-$user{'gid'} = getgrnam($in{'gid'});
+($group) = grep { $_->{'group'} eq $in{'gid'} } @{$hosts[0]->{'groups'}};
+if ($group) {
+	$user{'gid'} = $group->{'gid'};
+	}
+else {
+	$user{'gid'} = getgrnam($in{'gid'});
+	}
 if ($user{'gid'} eq "") { &error(&text('usave_egid', $in{'gid'})); }
 if ($uconfig{'extra_real'}) {
 	$in{'office'} =~ /^[^:]*$/ || &error($text{'usave_eoffice'});
