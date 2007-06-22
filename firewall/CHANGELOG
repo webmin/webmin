@@ -15,3 +15,5 @@ Added a Module Config option to have rule comments stored used the --comment IPt
 The ICMP rejection type is now settable in all valid chains.
 ---- Changes since 1.290 ----
 On Debian 3.1 systems, IPtables rules are saved in /etc/iptables.up.rules and activated through /etc/network/interfaces, rather than using an init.d script.
+---- Changes since 1.350 ----
+Added a setup option to configure a firewall for a typical hosting server.

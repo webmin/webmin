@@ -126,15 +126,19 @@ if ($in{'auto'}) {
 			       'cmt' => 'Allow connections to our IDENT server'}
 				);
 			}
-		if ($in{'auto'} == 4) {
-			# Allow pings and most high ports
+		if ($in{'auto'} >= 4) {
+			# Allow pings
 			push(@{$table->{'rules'}},
 			     { 'chain' => 'INPUT',
 			       'm' => [ [ "", "icmp" ] ],
 			       'p' => [ [ "", "icmp" ] ],
 			       'icmp-type' => [ "", "echo-request" ],
 			       'j' => [ "", 'ACCEPT' ],
-			       'cmt' => 'Respond to pings' },
+			       'cmt' => 'Respond to pings' }, );
+			}
+		if ($in{'auto'} == 4) {
+			# Allow pings and most high ports
+			push(@{$table->{'rules'}},
 			     { 'chain' => 'INPUT',
 			       'm' => [ [ "", "tcp" ] ],
 			       'p' => [ "", "tcp" ],
@@ -159,6 +163,59 @@ if ($in{'auto'}) {
 			       'dport' => [ "", "1024:65535" ],
 			       'j' => [ "", 'ACCEPT' ],
 			       'cmt' => 'Allow connections to unprivileged ports' },
+				);
+			}
+		if ($in{'auto'} == 5) {
+			# Allow typical hosting server ports
+			push(@{$table->{'rules'}},
+			     { 'chain' => 'INPUT',
+			       'm' => [ [ "", "tcp" ] ],
+			       'p' => [ "", "tcp" ],
+			       'dport' => [ "", "80" ],
+			       'j' => [ "", 'ACCEPT' ],
+			       'cmt' => 'Allow connections to webserver' },
+			     { 'chain' => 'INPUT',
+			       'm' => [ [ "", "tcp" ] ],
+			       'p' => [ "", "tcp" ],
+			       'dport' => [ "", "443" ],
+			       'j' => [ "", 'ACCEPT' ],
+			       'cmt' => 'Allow SSL connections to webserver' },
+			     { 'chain' => 'INPUT',
+			       'm' => [ [ "", "tcp" ] ],
+			       'p' => [ "", "tcp" ],
+			       'dport' => [ "", "25" ],
+			       'j' => [ "", 'ACCEPT' ],
+			       'cmt' => 'Allow connections to mail server' },
+			     { 'chain' => 'INPUT',
+			       'm' => [ [ "", "tcp" ] ],
+			       'p' => [ "", "tcp" ],
+			       'dport' => [ "", "20:21" ],
+			       'j' => [ "", 'ACCEPT' ],
+			       'cmt' => 'Allow connections to FTP server' },
+			     { 'chain' => 'INPUT',
+			       'm' => [ [ "", "tcp" ] ],
+			       'p' => [ "", "tcp" ],
+			       'dport' => [ "", "110" ],
+			       'j' => [ "", 'ACCEPT' ],
+			       'cmt' => 'Allow connections to POP3 server' },
+			     { 'chain' => 'INPUT',
+			       'm' => [ [ "", "tcp" ] ],
+			       'p' => [ "", "tcp" ],
+			       'dport' => [ "", "143" ],
+			       'j' => [ "", 'ACCEPT' ],
+			       'cmt' => 'Allow connections to IMAP server' },
+			     { 'chain' => 'INPUT',
+			       'm' => [ [ "", "tcp" ] ],
+			       'p' => [ "", "tcp" ],
+			       'dport' => [ "", "10000:10010" ],
+			       'j' => [ "", 'ACCEPT' ],
+			       'cmt' => 'Allow connections to Webmin' },
+			     { 'chain' => 'INPUT',
+			       'm' => [ [ "", "tcp" ] ],
+			       'p' => [ "", "tcp" ],
+			       'dport' => [ "", "20000" ],
+			       'j' => [ "", 'ACCEPT' ],
+			       'cmt' => 'Allow connections to Usermin' },
 				);
 			}
 		}

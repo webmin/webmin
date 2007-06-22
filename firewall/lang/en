@@ -59,6 +59,7 @@ index_auto1=Do network address translation on external interface:
 index_auto2=Block all incoming connections on external interface:
 index_auto3=Block all except SSH and IDENT on external interface:
 index_auto4=Block all except SSH, IDENT, ping and high ports on interface:
+index_auto5=Block all except ports used for virtual hosting, on interface:
 index_auto=Setup Firewall
 index_add=Add
 index_shorewall=Warning! It appears that Shorewall is being used to generate your system's firewall. Maybe you should use the <a href='$1'>Shorewall Firewall module</a> instead.

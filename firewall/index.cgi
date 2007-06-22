@@ -91,7 +91,7 @@ if (!$config{'direct'} &&
 		print "<center><table><tr><td>\n";
 		print "<input type=radio name=auto value=0 checked> ",
 		      "$text{'index_auto0'}<p>\n";
-		foreach $a (1 .. 4) {
+		foreach $a (1 .. 5) {
 			print "<input type=radio name=auto value=$a> ",
 			      "$text{'index_auto'.$a} ",
 			      &interface_choice("iface".$a),"<p>\n";
