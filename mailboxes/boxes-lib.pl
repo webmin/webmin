@@ -1837,6 +1837,11 @@ do {
 	} while(-r $mf);
 &send_mail($_[0], $mf, $_[2], 1);
 
+# Create tmp and new sub-dirs, if missing
+foreach my $sd ("tmp", "new") {
+	mkdir("$_[1]/$sd", 0755);
+	}
+
 if ($up2date && $cachefile) {
 	# Bring cache up to date
 	$now--;
@@ -2154,7 +2159,17 @@ foreach $f (@{$_[0]}) {
 		    if (!$neg && $headers =~ /\Q$what\E/i ||
 			 $neg && $headers !~ /\Q$what\E/i);
 		}
-	elsif ($field eq "status") {
+	elsif ($field eq 'all') {
+		local $headers = $_[2]->{'rawheaders'} ||
+			join("", map { $_->[0].": ".$_->[1]."\n" }
+				     @{$_[2]->{'headers'}});
+		$count++
+		    if (!$neg && ($_[2]->{'body'} =~ /\Q$what\E/i ||
+				  $headers =~ /\Q$what\E/i) ||
+		         $neg && ($_[2]->{'body'} !~ /\Q$what\E/i &&
+				  $headers !~ /\Q$what\E/i));
+		}
+	elsif ($field eq 'status') {
 		$count++
 		    if (!$neg && $_[2]->{$field} =~ /\Q$what\E/i||
 		         $neg && $_[2]->{$field} !~ /\Q$what\E/i);

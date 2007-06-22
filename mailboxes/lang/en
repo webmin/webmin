@@ -299,6 +299,7 @@ sform_bcc=Bcc: header
 sform_date=Date: header
 sform_body=message body
 sform_headers=any header
+sform_all=entire message
 sform_size=message size
 sform_return=advanced search form
 
