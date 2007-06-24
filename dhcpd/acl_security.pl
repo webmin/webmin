@@ -241,6 +241,9 @@ if (!$name && $node->{'name'} eq 'group') {
 	if ($dn) {
 		$name = $dn->{'values'}->[1];
 		}
+	else {
+		$name = $node->{'index'};
+		}
 	}
 local $nodetype=$onames{$node->{'name'}};
 local $aclname='ACL'.$nodetype.'_'.$name;

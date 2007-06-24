@@ -698,7 +698,12 @@ if ($acc->{'per_' . $otype . '_acls'}) {
 		local @opts = &find("option", $node->{'members'});
 		local ($dn) = grep { $_->{'values'}->[0] eq 'domain-name' }
 				   @opts;
-		$name = $dn->{'values'}->[1] if ($dn);
+		if ($dn) {
+			$name = $dn->{'values'}->[1];
+			}
+		else {
+			$name = $node->{'index'};
+			}
 		}
 	local $acl = $acc->{'ACL' . $otype . '_' . $name};
 	foreach (@{$rperm}) {
