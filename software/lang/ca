@@ -339,6 +339,9 @@ csw_package=Paquet
 csw_version=Versió
 csw_title=Exploració de CSW
 csw_name=CSW
+csw_form=Actualitza els Paquets
+csw_upgrade=Actualitza tots els Paquets Instal·lats
+csw_updatedesc=Actualitzant tots els paquets instal·lats amb l'ordre $1...
 
 missing_link=Webmin pot instal·lar automàticament el paquet $1. Fes clic <a href='$2'>aquí</a> per descarregar-lo i instal·lar-lo utilitzant $3.
 

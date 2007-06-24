@@ -150,6 +150,7 @@ mail_uidl_courier1=Courier verió 1, Cyrus antic
 mail_uidl_courier2=Courier verió 2
 mail_uidl_tpop3d=tpop3d
 mail_euidl=Hi falta el format UIDL o bé és invàlid
+mail_last=Permet l'ús de l'ordre LAST de POP3
 
 log_net=He canviat la Xarxa i els Protocols
 log_login=He canviat les Opcions d'Usuaris i Entrades

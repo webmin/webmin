@@ -9,6 +9,7 @@ mailq_sort=Ordena la cua de correu per,1,0-ID de la cua,1-Adreça 'From',2-Adreça
 mailq_count=Mostra la mida de la cua de correu a la pàgina principal,1,0-Sí,1-No
 check_config=Prova el fitxer de configuració després dels canvis,1,1-Sí,0-No
 index_check=Comprova la configuració de Postfix a la pàgina principal,1,1-Sí,0-No
+
 line2=Configuració del sistema,11
 postfix_control_command=Camí complet de l'ordre de control de Postfix,0
 postfix_config_command=Camí complet de l'ordre de configuració de Postfix,0
@@ -22,3 +23,6 @@ postfix_super_command=Camí complet de l'ordre de supervisor Postfix,0
 mailq_dir=Directori base de la cua de correu,0
 mailq_cmd=Ordre de mostra de la cua de correu,0
 postcat_cmd=Ordre de decodificació de la cua de correu,0
+start_cmd=Ordre per iniciar Postfix,3,Utilitza l'ordre de control
+stop_cmd=Ordre per aturar Postfix,3,Utilitza l'ordre de control
+reload_cmd=Ordre per aplicar la configuració de Postfix,3,Utilitza l'ordre de control

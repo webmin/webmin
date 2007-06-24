@@ -17,6 +17,7 @@ sendmail_cf=Camí complet de sendmail.cf,8
 sendmail_features=Directori base del M4 de sendmail,7
 sendmail_mc=Camí complet del fitxer de configuració M4,8
 sendmail_pid=Camí complet dels fitxers de PID de sendmail,9,40,2,\t
+sendmail_smf=Nom del servei SMF de Solaris,3,Cap (utilitza fitxers PID en lloc d'això)
 sendmail_command=Ordre per iniciar sendmail en mode servidor,0
 sendmail_stop_command=Ordre per aturar sendmail,3,Mata el procés
 sendmail_restart_command=Ordre per reiniciar sendmail,3,Atura'l i inicia'l

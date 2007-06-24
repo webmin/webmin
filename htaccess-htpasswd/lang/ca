@@ -12,7 +12,7 @@ index_eaccess=No tens accés a cap directori!
 index_search=He trobat directoris protegits sota:
 index_md5=El xifratge MD5 està activat a la configuració del mòdul, però el mòdul Perl $1 necessari no està instal·lat.
 index_sha1=El xifratge SHA1 està activat a la configuració del mòdul, però el mòdul Perl $1 necessari no està instal·lat.
-index_digest=El xifratge de resums està activat a la configuració del mòdul, però l'ordre $1 necessària no està instal·lada.
+index_digest2=El xifratge de resums està activat a la configuració del mòdul, però l'ordre $1 o el mòdul Perl $2 necessaris no estan instal·lats.
 index_cpan=Fes clic <a href='$1'>aquí</a> per descarregar-lo i instal·lar-lo ara.
 index_delete=Desprotegeix els Directoris Seleccionats
 

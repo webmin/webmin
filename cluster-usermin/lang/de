@@ -235,6 +235,7 @@ upgrade_header3=R&#252;ste Usermin auf Servern auf, die eine Version &#228;lter 
 upgrade_header4=R&#252;ste Usermin auf Mitgliedern von $1 auf ..
 upgrade_mode_=tar.gz
 upgrade_mode_caldera=Caldera RPM
+upgrade_mode_deb=Debian Paket
 upgrade_mode_debian=Debian Paket
 upgrade_mode_gentoo=Gentoo Paket
 upgrade_mode_rpm=RPM

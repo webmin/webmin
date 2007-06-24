@@ -65,6 +65,7 @@ backup_edest=Hi falta un fitxer local absolut o bé és invàlid
 backup_eserver1=Hi falta el servidor FTP o bé és invàlid
 backup_eserver2=Hi falta el servidor SSH o bé és invàlid
 backup_epath=Hi falta el camí absolut del servidor FTP o bé és invàlid
+backup_epath2=Hi falta el camí absolut del servidor SSH o bé és invàlid
 backup_euser=Caràcters invàlids en l'usuari del servidor FTP
 backup_epass=Caràcters invàlids en la contrasenya del servidor FTP
 backup_emods=No has seleccionat cap mòdul

@@ -1,4 +1,5 @@
 create_title=Erzeuge einen Cluster-Cron-Auftrag
+delete_enone=Keine ausgew&#228;hlt
 edit_all=&lt;Alle Hosts&gt;
 edit_group=Mitglieder von  $1
 edit_servers=Laufe auf den Servern

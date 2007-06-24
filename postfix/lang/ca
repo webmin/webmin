@@ -13,6 +13,7 @@ index_version=Postfix versió $1
 opts_err=No he pogut desar les opcions
 
 check_error=Error en comprovar la configuració actual del Postfix. Arregla manualment la configuració del Postfix, si et plau.
+check_manual=Edita manualment el fitxer de configuració de Postfix.
 
 address_rewriting_title=Reescriptura i Emmascarament d'Adreces
 address_rewriting_ecannot=No tens permís per editar la reescriptura i emmascarament d'adreces
@@ -350,6 +351,7 @@ mapping_name=Nom
 mapping_value=Mapeja a...
 mapping_delete=Suprimeix els seleccionats
 mapping_cmt=Descripció
+mapping_ecannot=Només tens permís per editar mapes sota $1
 new_mapping=Nou Mapejat
 new_mappingmsg=Fes clic sobre aquest botó per crear un nou mapejat
 new_manual=Edita el Mapa Manualment

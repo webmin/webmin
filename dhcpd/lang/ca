@@ -228,6 +228,7 @@ plib_nbns=Servidors de noms NetBIOS
 plib_nbscope=Abast de NetBIOS
 plib_nbntype=Tipus de node NetBIOS
 plib_toffset=Interval de temps
+plib_serverid=Identificador del servidor DHCP
 plib_ddnsdom=Nom de domini DNS dinàmic
 plib_ddnsrevdom=Domini invers DNS dinàmic
 plib_ddnsup=DNS dinàmic activat

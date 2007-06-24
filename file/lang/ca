@@ -52,6 +52,7 @@ edit_efollow=No tens permís per gravar l'enllaç simbòlic '$1'
 edit_notfound=El text $1 no s'ha trobat
 edit_saveclose=Desa & Tanca
 edit_elength=S'ha escapçat el fitxer!
+edit_textmode=Canvia a mode de text planer
 
 info_file=Fitxer
 info_path=Camí:
@@ -188,12 +189,14 @@ upload_ok=Puja
 upload_conv=Converteix salts de línia DOS
 upload_efile=No s'ha seleccionat cap fitxer per pujar.
 upload_edir=El directori de destinació no existeix.
+upload_euser=L'usuari seleccionat no existeix.
 upload_eperm=No tens permís per crear $1
 upload_ewrite=No he pogut escriure a $1: $2.
 upload_already=El fitxer $1 ja existeix. Segur que el vols reescriure?
 upload_elink=No puc fer la puja sobre un enllaç simbòlic
 upload_zip=Descomprimeixo el fitxer ZIP o TAR?
 upload_yes=Sí, llavors suprimeix-lo
+upload_user=Puja-ho com a usuari
 
 find_eaccess=No tens permís per accedir $1
 find_eexist=$1 no existeix a $2
