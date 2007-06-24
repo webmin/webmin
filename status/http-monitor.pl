@@ -131,7 +131,7 @@ if ($in{'user_def'}) {
 	delete($_[0]->{'pass'});
 	}
 else {
-	$in{'user'} || &error($text{'http_euser'});
+	$in{'huser'} || &error($text{'http_euser'});
 	$_[0]->{'user'} = $in{'huser'};
 	$_[0]->{'pass'} = $in{'hpass'};
 	}
