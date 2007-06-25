@@ -22,7 +22,7 @@ eval {
 	if ($_[0]->{'user'}) {
 		local $auth = &encode_base64("$_[0]->{'user'}:$_[0]->{'pass'}");
 		$auth =~ s/\n//g;
-		&write_http_connection($con, "Authorization: basic $auth\r\n");
+		&write_http_connection($con, "Authorization: Basic $auth\r\n");
 		}
 	&write_http_connection($con, "\r\n");
 	local $line = &read_http_connection($con);
