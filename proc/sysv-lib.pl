@@ -225,9 +225,17 @@ foreach my $s ("physmem", "freemem", "swap_alloc", "swap_avail") {
 		$stat{$s} = $1;
 		}
 	}
+local ($swaptotal, $swapfree);
+&open_execute_command(SWAP, "swap -l", 1);
+while(<SWAP>) {
+	if (/^\S+\s+\d+,\d+\s+\d+\s+(\d+)\s+(\d+)/) {
+		$swaptotal += $1;
+		$swapfree += $2;
+		}
+	}
+close(SWAP);
 return ($stat{'physmem'}*8, $stat{'freemem'}*8,
-	$stat{'swap_avail'}/1048576,
-	($stat{'swap_avail'}-$stat{'swap_alloc'})/1048576);
+	$swaptotal/2, $swapfree/2);
 }
 
 
