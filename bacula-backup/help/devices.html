@@ -1,0 +1,19 @@
+<header>Storage Devices</header>
+
+Unlike all of the other pages in this module, this one configures the Bacula
+storage daemon rather than the director. It allows you to control which tape
+devices and directories are used for backups. Each entry on the list defines
+a storage device, each of which must have a unique name, a device file or 
+directory (like <i>/dev/st0</i> or <i>/backup</i>), and a media type name. <p>
+
+Devices defined here can be referenced on the <b>Storage Daemons</b> page,
+which can in turn be used in backup jobs. This if you want to create a new
+directory to backup to, it must be added both here and to the daemons list.
+In addition, any new directory must be labelled first (using the <b>Label
+Volume</b> page) before Bacula will write to it. <p>
+
+Be aware that changes made to this page will only be activated when the
+<b>Restart Bacula</b> button is clicked on the module's main page. <p>
+
+<footer>
+

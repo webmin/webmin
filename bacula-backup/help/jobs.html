@@ -1,0 +1,31 @@
+<header>Backup Jobs</header>
+
+A job is the most important configurable object in Bacula, as it brings togethera client, fileset and other settings to control exactly what is backed up. For this reason, it is generally best to define your file sets and clients first
+before creating a job. <p>
+
+Each job has the following important attributes :<br>
+
+<dl>
+<dt>Job name
+<dd>A unique name for this job.
+<dt>Job type
+<dd>This determines what kind of action the job will perform. In almost all cases this should be set to <b>Backup</b>.
+<dt>Backup level
+<dd>Determines if the job will do a complete or partial backup of the selected files.
+<dt>Client to backup
+<dd>If your Bacula system has multiple clients, this option determines which one the files are read from by this backup job.
+<dt>File set to backup
+<dd>The selected file set determines which actual files and directories are included in the backup.
+<dt>Backup on schedule
+<dd>This optional option determines if the job is automatically run on schedule, and if so when.
+<dt>Destination storage device
+<dd>If your Bacula configuration is set up with more than one storage daemon, this option determines which one the backup is written to.
+</dl><p>
+
+To simplify the job-creation process, Bacula lets you create <b>Default definition</b> jobs that do not actually run themselves, but rather specify settings to
+be inherited by real jobs. When editing a job, the <b>Default type</b> field
+determines if it is a default definition, if it inherits settings from some
+default, or neither. <p>
+
+<footer>
+

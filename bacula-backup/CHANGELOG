@@ -1,0 +1,2 @@
+---- Changes since 1.350 ----
+First version of this module, which allows Bacula to be configured and both backups and restores to be executed.

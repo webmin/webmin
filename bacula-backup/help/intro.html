@@ -1,0 +1,29 @@
+<header>Bacula Backup</header>
+
+Bacula is a set of computer programs that permits you (or the system administrator) to manage backup, recovery, and verification of computer data across a network of computers of different kinds. Bacula can also run entirely upon a single computer, and can backup to various types of media, including tape and disk.<p>
+
+In technical terms, it is a network Client/Server based backup program. Bacula is relatively easy to use and efficient, while offering many advanced storage management features that make it easy to find and recover lost or damaged files. Due to its modular design, Bacula is scalable from small single computer systems to systems consisting of hundreds of computers located over a large network.<p>
+
+The Bacula system is divided into three separate daemons, which can theoretically run on different hosts. These are:<br>
+<dl>
+<dt>Director
+<dd>The director stores jobs, clients and most other configuration setttings,
+    and is responsible for initiating backup jobs. This Webmin module must be
+    run on the system that has the director installed. 
+<dt>File Daemon
+<dd>This daemon is responsible for reading the actual files to be backed up.
+    A Bacula configuration can have more that one file daemon, each run on
+    a system to be backed up.
+<dt>Storage Daemon
+<dd>The storage daemon is responsible for writing data to the final backup
+    media, such as a tape drive or file. Typically you will only need one
+    such daemon (usually run on the same host as the director), but a more
+    complex Bacula setup may have multiple systems with different tape drives,
+    to spread the backup load.
+</dl>
+
+This Webmin module can manage a system that has one or more of the Bacula
+daemons installed. <p>
+
+<footer>
+

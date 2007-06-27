@@ -1,0 +1,32 @@
+<header>Storage Daemons</header>
+
+Each entry on this page defines a connection to a particular device on a 
+Bacula storage daemon. Typically the daemon runs on the same system, but it
+is possible to define more than one daemon, some of which are on remote hosts
+with different tape drive types or more disk space. <p>
+
+The important attributes for each daemon are :<br>
+<dl>
+<dt>Storage name
+<dd>A unique name used on this system to identify the daemon.
+<dt>Bacula SD password
+<dd>This field must contain the password used by the storage daemon on the remote system, which can be found in the <tt>/etc/bacula/bacula-sd.conf</tt> file.
+<dt>Hostname or IP address
+<dd>The fully qualified hostname or IP of the system running the storage daemon.
+<dt>Storage device name
+<dd>Each storage daemon can define one or more devices, each of which corresponds to a different directory or tape drive. This field determines which device this particular daemon connection uses.
+<dt>Media type name
+<dd>This field must contain a short name for the type of media used by the storage device, such as <i>File</i> or <i>DDS-2</i>. It must be the same as the media type in the <b>Storage Devices</b> section on the storage server.
+</dl>
+
+Often it is useful to have more than one entry for the same host on this page,
+each of which has a different storage device. This allows you to create backups
+that write to different directories or tape drives. <p>
+
+If the TLS options are shown on the storage daemon form, they can be used
+to enable secure communication between the director and the remote storage
+server. This is typically not necessary in a simple Bacula configuration, as
+the storage and director daemons usually run on the same system. <p>
+
+<footer>
+

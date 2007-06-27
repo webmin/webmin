@@ -1,0 +1,18 @@
+<header>Backup Clients</header>
+
+A Bacula client is a system whose files can be backed up. All the clients
+that you wish to backup files on must be listed on this page, and each must
+have the Bacula file daemon running on it. In a typical single-system setup,
+on this server needs to be listed. <p>
+
+When adding remote clients, in addition to the hostname you also need to know
+the name of it's Bacula file daemon, and the daemon's password. These are set
+in the <tt>/etc/bacula/bacula-fd.conf</tt> file on the client system. <p>
+
+If shown, the TLS options on the client page determine if encryption is used
+when this director communicates with the client. Before TLS can be enabled,
+you must generate an SSL certificate and key, and enter their paths into the
+appropriate fields on this form. <p>
+
+<footer>
+
