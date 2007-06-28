@@ -73,7 +73,10 @@ else {
 
 	# save the server
 	@groups = split(/\0/, $in{'group'});
-	push(@groups, $in{'newgroup'}) if ($in{'newgroup'});
+	if ($in{'newgroup'}) {
+		$in{'newgroup'} =~ /^\S+$/ || &error($text{'save_egroup2'});
+		push(@groups, $in{'newgroup'});
+		}
 	$serv->{'host'} = $in{'host'};
 	$serv->{'port'} = $in{'port'};
 	$serv->{'type'} = $in{'type'};

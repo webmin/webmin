@@ -62,6 +62,7 @@ save_euser=Missing username
 save_epass=Missing password
 save_egroup=Missing group name
 save_elogin=Invalid login or password to host
+save_egroup2=Invalid new group name
 
 find_title=Find Servers
 find_new=Found new server at $1
