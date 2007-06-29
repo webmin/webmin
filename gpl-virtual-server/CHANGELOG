@@ -323,3 +323,6 @@ Changed the layout of the Plugin Modules page to make it easier to see what is s
 The Change Domain Name page can be used to modify the administrative username and home directory for a virtual server, without changing the domain name.
 Added an option to the DNS section of server templates for specifying the hostname to use in the primary NS record for new DNS domains, rather than the system's hostname.
 Password changes to mail / FTP users from the Users and Groups modules now correctly update all the various passwords maintained by Virtualmin, such as MySQL and SVN - if the option to update in other modules is checked.
+Added the status of the Dovecot IMAP/POP3 server to the server status section of the right frame.
+---- Changes since 3.43 ----
+Added a Module Config option to have MySQL users and permissions added to multiple servers, for use with replication or NDBCluster.
