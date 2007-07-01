@@ -8,14 +8,21 @@ $access{'noconfig'} && &error($text{'iface_ecannot'});
 
 # Get the interface
 if ($config{'interfaces_type'} eq 'mandrake') {
-	# Mandrake's init script uses a linuxconf setting
-	open(FILE, "/etc/conf.linuxconf");
-	while(<FILE>) {
-		if (/DHCP.interface\s+(.*)/) {
-			$iface = $1;
+	if (-r "/etc/conf.linuxconf") {
+		# Older mandrake's init script uses a linuxconf setting
+		open(FILE, "/etc/conf.linuxconf");
+		while(<FILE>) {
+			if (/DHCP.interface\s+(.*)/) {
+				$iface = $1;
+				}
 			}
+		close(FILE);
 		}
-	close(FILE);
+	else {
+		# Newer use Redhat-style sysconfig file
+		&read_env_file("/etc/sysconfig/dhcpd", \%dhcpd);
+		$iface = $dhcpd{'INTERFACES'};
+		}
 	}
 elsif ($config{'interfaces_type'} eq 'redhat') {
 	# Redhat's init script uses an environment file

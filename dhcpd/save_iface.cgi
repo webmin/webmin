@@ -15,23 +15,31 @@ $config{'interfaces'} = join(" ", @iface);
 &write_file("$module_config_directory/config", \%config);
 
 if ($config{'interfaces_type'} eq 'mandrake') {
-	# Write to Mandrake linuxconf file
-	local $lref = &read_file_lines("/etc/conf.linuxconf");
-	for($i=0; $i<@$lref; $i++) {
-		$secline = $i if ($lref->[$i] =~ /\[dhcpd\]/);
-		$ifaceline = $i if ($lref->[$i] =~ /DHCP.interface/);
-		}
-	$line = "DHCP.interface $iface";
-	if (defined($ifaceline)) {
-		$lref->[$ifaceline] = $line;
-		}
-	elsif (defined($secline)) {
-		splice(@$lref, $secline+1, 0, $line);
+	if (-r "/etc/conf.linuxconf") {
+		# Write to Mandrake linuxconf file
+		local $lref = &read_file_lines("/etc/conf.linuxconf");
+		for($i=0; $i<@$lref; $i++) {
+			$secline = $i if ($lref->[$i] =~ /\[dhcpd\]/);
+			$ifaceline = $i if ($lref->[$i] =~ /DHCP.interface/);
+			}
+		$line = "DHCP.interface $iface";
+		if (defined($ifaceline)) {
+			$lref->[$ifaceline] = $line;
+			}
+		elsif (defined($secline)) {
+			splice(@$lref, $secline+1, 0, $line);
+			}
+		else {
+			push(@$lref, "[dhcpd]", $line);
+			}
+		&flush_file_lines();
 		}
 	else {
-		push(@$lref, "[dhcpd]", $line);
+		# Write to sysconfig file
+		&read_env_file("/etc/sysconfig/dhcpd", \%dhcpd);
+		$dhcpd{'INTERFACES'} = $iface;
+		&write_env_file("/etc/sysconfig/dhcpd", \%dhcpd);
 		}
-	&flush_file_lines();
 	}
 elsif ($config{'interfaces_type'} eq 'redhat') {
 	# Write to the Redhat environment file
