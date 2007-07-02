@@ -1,0 +1,4 @@
+sarg=sarg
+sarg_conf=/etc/squid/sarg/sarg.conf
+clear=1
+naked=0

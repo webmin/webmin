@@ -1,0 +1,4 @@
+max_users=200
+input_type=0
+sort_mode=0
+passwd_cmd=passwd

@@ -1,0 +1,4 @@
+menu_file=/boot/grub/grub.conf
+grub_path=/usr/sbin/grub
+install=(hd0)
+device_map=/boot/grub/device.map

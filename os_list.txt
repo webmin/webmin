@@ -227,6 +227,9 @@ Yoper Linux			2.2	redhat-linux	12.0	`cat /etc/yoper-release 2>/dev/null` =~ /Yop
 Caixa Magica			8.1	suse-linux	8.0	`cat /etc/CxM-release 2>/dev/null` =~ /8\.1/ || $etc_issue =~ /Caixa\s+8\.1\s/i
 Caixa Magica			10.0	suse-linux	9.2	`cat /etc/CxM-release 2>/dev/null` =~ /10\.0/ || $etc_issue =~ /Caixa\s+10\.0\s/i
 
+# openmamba Linux
+openmamba Linux			$1	openmamba-linux	$1	`cat /etc/openmamba-release 2>/dev/null` =~ /openmamba\s+release\s+(\S+)/i
+
 # All FreeBSD versions
 FreeBSD				$1	freebsd		$1	$uname =~ /FreeBSD.*?\s([0-9\.]+)/i
 

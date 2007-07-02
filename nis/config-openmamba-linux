@@ -1,0 +1,5 @@
+client_conf=/etc/yp.conf
+nsswitch_conf=/etc/nsswitch.conf
+securenets=/var/yp/securenets
+max_size=100
+manual_build=0

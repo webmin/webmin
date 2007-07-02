@@ -1,0 +1,3 @@
+package_system=rpm
+update_system=apt
+apt_mode=0
