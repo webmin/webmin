@@ -4,9 +4,9 @@
 
 require './cron-lib.pl';
 &ReadParse();
+@jobs = &list_cron_jobs();
 
 if (!$in{'new'}) {
-	@jobs = &list_cron_jobs();
 	$job = $jobs[$in{'idx'}];
 	&can_edit_user(\%access, $job->{'user'}) ||
 		&error($text{'edit_ecannot'});
@@ -14,7 +14,12 @@ if (!$in{'new'}) {
 	}
 else {
 	&ui_print_header(undef, $text{'create_title'}, "");
-	if ($config{'vixie_cron'}) {
+	if (defined($in{'clone'})) {
+		# Default to clone source
+		$clone = $jobs[$in{'clone'}];
+		$job = { %$clone };
+		}
+	elsif ($config{'vixie_cron'}) {
 		# Default to hourly, using @ format
 		$job = { 'special' => 'hourly',
 			 'active' => 1 };
@@ -123,20 +128,32 @@ if ($rangeable) {
 
 if (!$in{'new'}) {
 	print "<table width=100%>\n";
-	print "<tr> <td align=left width=33%><input type=submit value=\"$text{'save'}\"></td>\n";
+
+	# Save button
+	print "<tr> <td align=left width=25%><input type=submit value=\"$text{'save'}\"></td>\n";
+
+	# Run button
 	if (!$rpd) {
 		print "</form><form action=\"exec_cron.cgi\">\n";
 		print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-		print "<td align=center width=33%>",
+		print "<td align=center width=25%>",
 		      "<input type=submit value=\"$text{'edit_run'}\"></td>\n";
 		}
+
+	# Clone button
+	print "</form><form action=\"edit_cron.cgi\">\n";
+	print "<input type=hidden name=clone value=\"$in{'idx'}\">\n";
+	print "<input type=hidden name=new value=\"1\">\n";
+	print "<td align=right width=25%><input type=submit value=\"$text{'edit_clone'}\"></td>\n";
+
+	# Delete button
 	if ($access{'delete'}) {
 		print "</form><form action=\"delete_cron.cgi\">\n";
 		print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-		print "<td align=right width=33%><input type=submit value=\"$text{'delete'}\"></td> </tr>\n";
+		print "<td align=right width=25%><input type=submit value=\"$text{'delete'}\"></td> </tr>\n";
 		}
 	else {
-		print "<td align=right width=33%></td>\n";
+		print "<td align=right width=25%></td>\n";
 		}
 	print "</form></table><p>\n";
 	}

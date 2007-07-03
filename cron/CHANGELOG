@@ -17,3 +17,5 @@ Multiple Cron jobs can be enabled or disabled at once, in a similar way to many 
 Changed the default schedule for new jobs to hourly.
 ---- Changes since 1.300 ----
 When a user's home directory is changed in the Users and Groups module, any Cron jobs that use the old path are updated to the new.
+---- Changes since 1.350 ----
+Added a button on the Edit Job page for cloning an existing job.
