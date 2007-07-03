@@ -1,6 +1,6 @@
 category=net
 desc_ko_KR.euc=NIS 클라이언트 및 서버
-os_support=redhat-linux mandrake-linux open-linux debian-linux suse-linux united-linux solaris msc-linux trustix-linux coherent-linux aix
+os_support=redhat-linux mandrake-linux open-linux debian-linux suse-linux united-linux solaris msc-linux trustix-linux coherent-linux openmamba-linux aix
 desc_pl=Klient i&nbsp;serwer NIS
 desc=NIS Client and Server
 desc_sv=NIS-klient och -server
