@@ -1755,7 +1755,10 @@ local $g;
 foreach $g (@$groups) {
 	local $members = join(" ", split(/,/, $g->{'members'}));
 	local @cols;
-	push(@cols, "") if ($anyedit && $g->{'noedit'});
+	if ($anyedit && ($g->{'noedit'} || !$access{'gdelete'})) {
+		# Need an explicity blank first column
+		push(@cols, "");
+		}
 	push(@cols, &group_link($g));
 	push(@cols, $g->{'gid'});
 	push(@cols, &ifblank($members));
