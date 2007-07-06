@@ -872,7 +872,8 @@ else {
 		"$config{'net'} groupmap modify".
 		" ntgroup=".quotemeta($_[0]->{'name'}).
 		($_[0]->{'desc'} ? " comment=".quotemeta($_[0]->{'desc'})
-				 : " 'comment= '")." 2>&1");
+				 : " 'comment= '").
+		" type=".quotemeta($_[0]->{'type'})." 2>&1");
 	$? && &error("$config{'net'} failed : <pre>$out</pre>");
 	}
 }
