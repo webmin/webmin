@@ -29,7 +29,7 @@ foreach $z (@zones) {
 	push(@rv, map { $_->{'file'} } @recs);
 	}
 
-return &unique(@rv);
+return map { &make_chroot($_) } &unique(@rv);
 }
 
 # pre_backup(&files)
