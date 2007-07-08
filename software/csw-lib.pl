@@ -10,51 +10,56 @@ sub update_system_install
 {
 local $update = $_[0] || $in{'update'};
 local (@rv, @newpacks, %seen, $failed);
-print "<b>",&text('csw_install', "<tt>$pkg_get -i $update</tt>"),"</b><p>\n";
+
+# Setup for non-interactive mode
+&copy_source_dest("/var/pkg-get/admin", "/var/pkg-get/admin-old");
+&copy_source_dest("/var/pkg-get/admin-fullauto", "/var/pkg-get/admin");
+
+# Run pkg-get
 $| = 1;
-print "<pre>";
-local ($ph, $ppid) = &foreign_call("proc", "pty_process_exec_logged",
-				   "$pkg_get -i ".quotemeta($update));
-while(1) {
-	local $wf = &wait_for($ph, '(.*) \[\S+\]',
-			     'Installation of <(.*)> failed',
-			     'Installation of <(.*)> was successful',
-			     'No changes were made to the system',
-			     '.*\n', '.*\r');
-	if ($wait_for_input !~ /^\s*\d+\%\s+\[/) {
-		# Print everything except download line
-		print &html_escape($wait_for_input);
+local ($failed, $retry, %already);
+do {
+	if ($already{$update}++) {
+		# Don't try the same update twice
+		last;
 		}
-	if ($wf == 0) {
-		# some question which should not have appeared before
-		if ($seen{$matches[1]}++ > 3) {
-			$failed++;
-			last;
+	print "<b>",&text('csw_install',
+			"<tt>$pkg_get -i -f $update</tt>"),"</b><p>\n";
+	$failed = 0;
+	$retry = 0;
+	print "<pre>";
+	&open_execute_command(PKGGET, "$pkg_get -i -f ".quotemeta($update), 1);
+	while(<PKGGET>) {
+		if (!/^\s*\d+\%\s+\[/) {
+			# Output everything except download lines
+			print &html_escape($_);
 			}
-		&sysprint($ph, "y\n");
+		if (/Installation of <(.*)> was successful/i) {
+			push(@rv, $1);
+			}
+		elsif (/Installation of <(.*)> failed/i) {
+			$failed = 1;
+			}
+		elsif (/dependancy\s+(\S+)\s+.*not up to date/i) {
+			# Needs a dependecy .. so we will need to re-run!
+			local $dep = $1;
+			$update = join(" ", &unique(
+					$dep, split(/\s+/, $update)));
+			$retry = 1;
+			}
 		}
-	elsif ($wf == 1) {
-		# This package contains scripts
-		$failed++;
-		last;
+	close(PKGGET);
+	print "</pre>";
+
+	if ($retry) {
+		print "<b>$text{'csw_retry'}</b><p>\n";
 		}
-	elsif ($wf == 1 || $wf == 3) {
-		# failed for some reason.. give up
-		$failed++;
-		last;
-		}
-	elsif ($wf == 2) {
-		# done ok!
-		push(@rv, $matches[1]);
-		}
-	elsif ($wf == -1) {
-		# No more output
-		last;
-		}
-	}
-print "</pre>";
-close($ph);
-if ($failed) {
+	} while ($retry);
+
+# Cleanup fullout file
+&copy_source_dest("/var/pkg-get/admin-old", "/var/pkg-get/admin");
+
+if ($? || $failed) {
 	print "<b>$text{'csw_failed'}</b><p>\n";
 	return ( );
 	}
