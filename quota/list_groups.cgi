@@ -46,7 +46,12 @@ elsif ($n) {
 	push(@hcols, "");
 	push(@tds, "");
 	($binfo, $finfo) = &filesystem_info($f, \%group, $n, $fsbsize);
-	$cols1 = 3 + ($threshold_pc != 101 ? 1 : 0) +
+	$show_pc_hblocks = $threshold_pc != 101 &&
+			   $config{'pc_show'} >= 1;
+	$show_pc_sblocks = $threshold_pc != 101 &&
+			   $config{'pc_show'}%2 == 0;
+	$cols1 = 3 + ($show_pc_hblocks ? 1 : 0) +
+		     ($show_pc_sblocks ? 1 : 0) +
 		     ($config{'show_grace'} ? 1 : 0);
 	$cols2 = 3 + ($config{'show_grace'} ? 1 : 0);
 	push(@hcols, ($bsize ? $text{'lusers_space'} :
@@ -66,8 +71,11 @@ elsif ($n) {
 		push(@tds, "width=5");
 		}
 	push(@hcols, $text{'lgroups_group'});
-	if ($threshold_pc != 101) {
+	if ($show_pc_hblocks) {
 		push(@hcols, $text{'lusers_pc_hblocks'});
+		}
+	if ($show_pc_sblocks) {
+		push(@hcols, $text{'lusers_pc_sblocks'});
 		}
 	push(@hcols, $text{'lusers_used'}, $text{'lusers_soft'},
 		    $text{'lusers_hard'},
@@ -122,12 +130,18 @@ elsif ($n) {
 				"</a>");
 			}
                 my $pc_hblocks=0;
+                my $pc_sblocks=0;
                 if($group{$i,'hblocks'}) {
                         $pc_hblocks = 100 * $group{$i,'ublocks'};
                         $pc_hblocks/= $group{$i,'hblocks'};
                         $pc_hblocks = int($pc_hblocks);
 			}
-		if ($threshold_pc != 101) {
+                if($group{$i,'sblocks'}) {
+                        $pc_sblocks = 100 * $group{$i,'ublocks'};
+                        $pc_sblocks/= $group{$i,'sblocks'};
+                        $pc_sblocks = int($pc_sblocks);
+			}
+		if ($show_pc_hblocks) {
 			if ($pc_hblocks > $threshold_pc) {
 				push(@cols, "<font color=#ff0000>".
 					&html_escape($pc_hblocks)."%</font>");
@@ -136,7 +150,15 @@ elsif ($n) {
 				push(@cols, &html_escape($pc_hblocks)."%");
 				}
 			}
-		local $ublocks = $group{$i,'ublocks'}; 
+		if ($show_pc_sblocks) {
+			if ($pc_sblocks > $threshold_pc) {
+				push(@cols, "<font color=#ff0000>".
+					&html_escape($pc_sblocks)."%</font>");
+				}
+			else {
+				push(@cols, &html_escape($pc_sblocks)."%");
+				}
+			}local $ublocks = $group{$i,'ublocks'}; 
 		if ($bsize) {
 			$ublocks = &nice_size($ublocks*$bsize);
 			}
