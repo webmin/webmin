@@ -82,7 +82,20 @@ if ($rv) {
 if ($miniserv{'musthost'}) { $miniserv{'musthost'}; }
 elsif ($miniserv{'bind'}) { $url = $miniserv{'bind'}; }
 else { $url = $ENV{'SERVER_NAME'}; }
-$url .= ":$miniserv{'port'}/webmin/";
-if ($ENV{'HTTPS'} eq "ON") { &redirect("https://$url"); }
-else { &redirect("http://$url"); }
+if ($ENV{'HTTPS'} eq "ON") { $url = "https://$url"; }
+else { $url = "http://$url"; }
+
+if ($tconfig{'inframe'}) {
+	# Theme uses frames, so we need to redirect the whole frameset
+	$url .= ":$miniserv{'port'}";
+	&ui_print_header(undef, $text{'bind_title'}, "");
+	print "<script>\n";
+	print "top.location = '$url';\n";
+	print "</script>\n";
+	&ui_print_footer("", $text{'index_return'});
+	}
+else {
+	$url .= ":$miniserv{'port'}/webmin/";
+	&redirect($url);
+	}
 
