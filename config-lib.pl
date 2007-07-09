@@ -92,7 +92,6 @@ foreach $c (@info_order) {
 		$label = $checkhtml." ".$p[0];
 		}
 	local $field;
-	print "<td nowrap>\n";
 	if ($p[1] == 0) {
 		# Text value
 		$field = &ui_textbox($c, $config{$c}, $p[2] || 40, 0, $p[3]).
