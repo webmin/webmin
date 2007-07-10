@@ -309,7 +309,7 @@ if ($raid_mode eq "raidtools") {
 	&deactivate_raid($_[0]) if ($_[0]->{'active'});
 	}
 else {
-	local $out = &backquote_logged("mdadm --stop $_[0]->{'value'}");
+	local $out = &backquote_logged("mdadm --stop $_[0]->{'value'} 2>&1");
 	&error(&text('emdadmstop', "<tt>$out</tt>")) if ($?);
 	}
 }
@@ -341,7 +341,8 @@ sub add_partition
 {
 if ($raid_mode eq "mdadm") {
 	# Call mdadm command to add
-	local $out = &backquote_logged("mdadm --manage $_[0]->{'value'} --add $_[1]");
+	local $out = &backquote_logged(
+		"mdadm --manage $_[0]->{'value'} --add $_[1] 2>&1");
 	&error(&text('emdadmadd', "<tt>$out</tt>")) if ($?);
 
 	# Add device to mdadm.conf
@@ -367,9 +368,11 @@ sub remove_partition
 {
 if ($raid_mode eq "mdadm") {
 	# Call mdadm commands to fail and remove
-	local $out = &backquote_logged("mdadm --manage $_[0]->{'value'} --fail $_[1]");
+	local $out = &backquote_logged(
+		"mdadm --manage $_[0]->{'value'} --fail $_[1] 2>&1");
 	&error(&text('emdadfail', "<tt>$out</tt>")) if ($?);
-	local $out = &backquote_logged("mdadm --manage $_[0]->{'value'} --remove $_[1]");
+	local $out = &backquote_logged(
+		"mdadm --manage $_[0]->{'value'} --remove $_[1] 2>&1");
 	&error(&text('emdadremove', "<tt>$out</tt>")) if ($?);
 
 	# Remove device from mdadm.conf
