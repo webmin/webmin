@@ -97,7 +97,10 @@ return $tmp;
 sub quote_escape
 {
 local $tmp = $_[0];
-$tmp =~ s/&([^#])/&amp;$1/g;	# convert &, unless it is part of &#nnn;
+if ($tmp !~ /\&[a-zA-Z]+;/ && $tmpl !~ /\&#/) {
+	# convert &, unless it is part of &#nnn; or &foo;
+	$tmp =~ s/&([^#])/&amp;$1/g;
+	}
 $tmp =~ s/&$/&amp;/g;
 $tmp =~ s/\"/&quot;/g;
 $tmp =~ s/\'/&#39;/g;
