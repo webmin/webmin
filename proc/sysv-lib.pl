@@ -234,7 +234,10 @@ while(<SWAP>) {
 		}
 	}
 close(SWAP);
-return ($stat{'physmem'}*8, $stat{'freemem'}*8,
+local $pagesize = `pagesize 2>/dev/null`;
+$pagesize = int($pagesize)/1024;
+$pagesize ||= 8;	# Fallback
+return ($stat{'physmem'}*$pagesize, $stat{'freemem'}*$pagesize,
 	$swaptotal/2, $swapfree/2);
 }
 
