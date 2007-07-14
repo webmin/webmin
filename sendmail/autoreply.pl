@@ -60,6 +60,13 @@ if ($header{'from'} =~ /postmaster|mailer-daemon/i) {
 	exit 0;
 	}
 
+# Check if we are within the requested time range
+if ($header{'Autoreply-Start'} && time() < $header{'Autoreply-Start'} ||
+    $header{'Autoreply-End'} && time() > $header{'Autoreply-End'}) {
+	# Nope .. so do nothing
+	exit 0;
+	}
+
 # work out the correct to address
 @to = ( &split_addresses($header{'to'}),
 	&split_addresses($header{'cc'}),
