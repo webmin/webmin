@@ -2,6 +2,7 @@
 # Create, update or delete a filter
 
 require './filter-lib.pl';
+use Time::Local;
 &ReadParse();
 
 # Find existing filter object
@@ -128,6 +129,20 @@ else {
 			$filter->{'reply'}->{'period'} = $in{'period'}*60;
 			$filter->{'reply'}->{'replies'} ||=
 				"$user_module_config_directory/replies";
+			}
+		# Save autoreply start and end
+		foreach $p ('start', 'end') {
+			local ($s, $m, $h) = $p eq 'start' ? (0, 0, 0) :
+						(59, 59, 23);
+			if ($in{'d'.$p}) {
+				$tm = timelocal($s, $m, $h, $in{'d'.$p},
+					$in{'m'.$p}-1, $in{'y'.$p}-1900);
+				$tm || &error($text{'save_e'.$p});
+				$filter->{'reply'}->{'autoreply_'.$p} = $tm;
+				}
+			else {
+				delete($filter->{'reply'}->{'autoreply_'.$p});
+				}
 			}
 		}
 	elsif ($in{'amode'} == 7) {

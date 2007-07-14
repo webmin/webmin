@@ -29,6 +29,8 @@ index_aliasme=Note - The system is also configured forward all email to :
 index_period=Minimum time between autoreplies
 index_noperiod=No minimum
 index_mins=minutes
+index_astart=Don't send autoreply before
+index_aend=Don't send autoreply after
 
 edit_title1=Create Filter
 edit_title2=Edit Filter
@@ -65,6 +67,8 @@ save_eperiod=Missing or invalid automatic reply interval
 save_enewfolder=Missing new folder name
 save_enewfolder2=Invalid new folder name
 save_enewfolder3=A folder with the same name already exists
+save_estart=Invalid autoreply start date
+save_eend=Invalid autoreply end date
 
 delete_err=Failed to delete filters
 delete_enone=None selected

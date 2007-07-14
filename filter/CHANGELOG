@@ -2,3 +2,5 @@
 First version of this module, which allows simple Procmail configuration.
 ---- Changes since 1.260 ----
 Added a message to the module's main page to detect system-level mail aliases (in /etc/aliases) that would forward email to the user to a different destination.
+---- Changes since 1.280 ----
+Added an option to set the date range for which autoreplies are sent.

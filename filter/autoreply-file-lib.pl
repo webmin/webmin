@@ -23,6 +23,12 @@ while(<FILE>) {
 	elsif (/^Autoreply-File:\s*(.*)/) {
 		push(@{$simple->{'autoreply_file'}}, $1);
 		}
+	elsif (/^Autoreply-Start:\s*(\d+)/) {
+		$simple->{'autoreply_start'} = $1;
+		}
+	elsif (/^Autoreply-End:\s*(\d+)/) {
+		$simple->{'autoreply_end'} = $1;
+		}
 	elsif (/^From:\s*(.*)/) {
 		$simple->{'from'} = $1;
 		}
@@ -57,6 +63,14 @@ foreach my $r (@{$simple->{'no_autoreply_regexp'}}) {
 	}
 foreach my $f (@{$simple->{'autoreply_file'}}) {
 	&print_tempfile(AUTO, "Autoreply-File: $f\n");
+	}
+if ($simple->{'autoreply_start'}) {
+	&print_tempfile(AUTO,
+		"Autoreply-Start: $simple->{'autoreply_start'}\n");
+	}
+if ($simple->{'autoreply_end'}) {
+	&print_tempfile(AUTO,
+		"Autoreply-End: $simple->{'autoreply_end'}\n");
 	}
 if ($simple->{'from'}) {
 	&print_tempfile(AUTO, "From: $simple->{'from'}\n");

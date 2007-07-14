@@ -142,13 +142,31 @@ if ($amode == 6) {
 	$r = $filter->{'reply'};
 	$period = $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
 		  $r->{'replies'} ? 60 : undef;
+	if ($r->{'autoreply_start'}) {
+		@stm = localtime($r->{'autoreply_start'});
+		$stm[4]++; $stm[5] += 1900;
+		}
+	if ($r->{'autoreply_end'}) {
+		@etm = localtime($r->{'autoreply_end'});
+		$etm[4]++; $etm[5] += 1900;
+		}
 	}
 print &ui_table_row(
 	&ui_oneradio("amode", 6, $text{'edit_amode6'}, $amode == 6),
 	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 60)."<br>".
-	"<b>$text{'index_period'}</b> ".
-	  &ui_opt_textbox("period", $period, 3,
-			  $text{'index_noperiod'})." ".$text{'index_mins'},
+	"<table>\n".
+	"<tr> <td><b>$text{'index_period'}</b></td> ".
+	"<td>".&ui_opt_textbox("period", $period, 3,
+	  $text{'index_noperiod'})." ".$text{'index_mins'}."</td> </tr>\n".
+	"<tr> <td><b>$text{'index_astart'}</b></td> ".
+	"<td>".&ui_date_input($stm[3], $stm[4], $stm[5],
+			       "dstart", "mstart", "ystart")." ".
+            &date_chooser_button("dstart", "mstart", "ystart")."</td> </tr>\n".
+	"<tr> <td><b>$text{'index_aend'}</b></td> ".
+	"<td>".&ui_date_input($etm[3], $etm[4], $etm[5],
+			       "dend", "mend", "yend")." ".
+            &date_chooser_button("dend", "mend", "yend")."</td> </tr>\n".
+	"</table>",
 	undef, \@tds);
 
 # Continue checkbox
