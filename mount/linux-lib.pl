@@ -489,7 +489,8 @@ while(<MTAB>) {
 		# Check for a UUID on this partition, and if there is one
 		# and the filesystem is in fstab with the label, change
 		# the device.
-		local $out = &backquote_command("vol_id $p[0] 2>&1", 1);
+		local $out = &backquote_command(
+				"vol_id ".quotemeta($p[0])." 2>&1", 1);
 		if ($out =~ /ID_FS_UUID=(\S+)/) {
 			local $uuid = $1;
 			foreach $m (@mounts) {
@@ -537,7 +538,8 @@ while(<SWAPS>) {
 			}
 		if (!$_[0] && $has_volid && $sf =~ /^\/dev\//) {
 			# Similarly, fix up UUID= entrys for swap in /etc/fstab
-			local $out = &backquote_command("vol_id $sf 2>&1", 1);
+			local $out = &backquote_command(
+					"vol_id ".quotemeta($sf)." 2>&1", 1);
 			if ($out =~ /ID_FS_UUID=(\S+)/) {
 				local $uuid = $1;
 				foreach $m (@mounts) {
