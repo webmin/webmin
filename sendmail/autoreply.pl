@@ -60,13 +60,6 @@ if ($header{'from'} =~ /postmaster|mailer-daemon/i) {
 	exit 0;
 	}
 
-# Check if we are within the requested time range
-if ($header{'Autoreply-Start'} && time() < $header{'Autoreply-Start'} ||
-    $header{'Autoreply-End'} && time() > $header{'Autoreply-End'}) {
-	# Nope .. so do nothing
-	exit 0;
-	}
-
 # work out the correct to address
 @to = ( &split_addresses($header{'to'}),
 	&split_addresses($header{'cc'}),
@@ -141,6 +134,15 @@ if ($track_replies) {
 	}
 delete($rheader{'Reply-Tracking'});
 delete($rheader{'Reply-Period'});
+
+# Check if we are within the requested time range
+if ($rheader{'Autoreply-Start'} && time() < $rheader{'Autoreply-Start'} ||
+    $rheader{'Autoreply-End'} && time() > $rheader{'Autoreply-End'}) {
+	# Nope .. so do nothing
+	exit 0;
+	}
+delete($rheader{'Autoreply-Start'});
+delete($rheader{'Autoreply-End'});
 
 # Check if there is a deny list, and if so don't send a reply
 @fromsplit = &split_addresses($header{'from'});
