@@ -30,7 +30,7 @@ elsif (!opendir(DIR, $in{'dir'})) {
 else {
 	# Can list the directory
 	print "\n";
-	@files = sort { $a cmp $b } readdir(DIR);
+	@files = sort { lc($a) cmp lc($b) } readdir(DIR);
 	if ($hide_dot_files) {
 		@files = grep { $_ !~ /^\./ } @files;
 		}
