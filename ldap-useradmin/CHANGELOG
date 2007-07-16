@@ -47,3 +47,5 @@ In a user batch file, # is only treated as a comment at the start of a line.
 For Samba users, the primary group SID is taken from the actual SID of the selected primary group, where available.
 ---- Changes since 1.320 ----
 Limit the result size to the configured display maximum when requesting users and groups from the LDAP server.
+---- Changes since 1.350 ----
+Added Module Config options to specify the next UID and GID to assign to new users and groups. This avoids the need to scan all existing users to find a free UID, which can be slow on large DBs.

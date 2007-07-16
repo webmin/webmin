@@ -48,7 +48,14 @@ print "<tr> <td valign=top><b>$text{'gedit_group'}</b></td>\n";
 print "<td valign=top><input name=group size=10 value='$group'></td>\n";
 
 print "<td valign=top><b>$text{'gedit_gid'}</b></td>\n";
-if ($in{'new'}) {
+if ($in{'new'} && $config{'next_gid'}) {
+	# Next GID comes from module config
+	print "<td valign=top><input name=gid size=10 ",
+	      "value='$config{'next_gid'}'></td>\n";
+	$config{'next_uid'}++;
+	&save_module_config();
+	}
+elsif ($in{'new'}) {
 	# Find the first free GID above the base by checking all existing groups
 	&build_group_used(\%gused);
 	$newgid = &allocate_gid(\%gused);
