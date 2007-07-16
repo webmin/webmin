@@ -254,21 +254,31 @@ else {
 close(MAIL);
 
 # split_addresses(string)
-# Splits a comma-separated list of addresses into [ email, real-name ] pairs
+# Splits a comma-separated list of addresses into [ email, real-name, original ]
+# triplets
 sub split_addresses
 {
 local (@rv, $str = $_[0]);
 while(1) {
 	if ($str =~ /^[\s,]*(([^<>\(\)\s]+)\s+\(([^\(\)]+)\))(.*)$/) {
+		# An address like  foo@bar.com (Fooey Bar)
 		push(@rv, [ $2, $3, $1 ]);
 		$str = $4;
 		}
-	elsif ($str =~ /^[\s,]*("([^"]+)"\s+<([^\s<>]+)>)(.*)$/ ||
-	       $str =~ /^[\s,]*(([^<>]+)\s+<([^\s<>]+)>)(.*)$/ ||
+	elsif ($str =~ /^[\s,]*("([^"]+)"\s*<([^\s<>,]+)>)(.*)$/ ||
+	       $str =~ /^[\s,]*(([^<>\@]+)\s+<([^\s<>,]+)>)(.*)$/ ||
+	       $str =~ /^[\s,]*(([^<>\@]+)<([^\s<>,]+)>)(.*)$/ ||
 	       $str =~ /^[\s,]*(([^<>\[\]]+)\s+\[mailto:([^\s\[\]]+)\])(.*)$/||
-	       $str =~ /^[\s,]*(()<([^\s<>]+)>)(.*)/ ||
+	       $str =~ /^[\s,]*(()<([^<>,]+)>)(.*)/ ||
 	       $str =~ /^[\s,]*(()([^\s<>,]+))(.*)/) {
-		push(@rv, [ $3, $2, $1 ]);
+		# Addresses like  "Fooey Bar" <foo@bar.com>
+		#                 Fooey Bar <foo@bar.com>
+		#                 Fooey Bar<foo@bar.com>
+		#		  Fooey Bar [mailto:foo@bar.com]
+		#		  <foo@bar.com>
+		#		  <group name>
+		#		  foo@bar.com
+		push(@rv, [ $3, $2 eq "," ? "" : $2, $1 ]);
 		$str = $4;
 		}
 	else {
