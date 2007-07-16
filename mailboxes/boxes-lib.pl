@@ -2231,8 +2231,9 @@ my $rv = eval {
 			}
 		return $tm;
 		}
-	elsif ($_[0] =~ /^\s*(\S+),\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+):\s?(\d+):\s?(\d+)/) {
-		# Format like Mon, 13 Dec 2004 14:40:41
+	elsif ($_[0] =~ /^\s*(\S+),\s+(\d+),?\s+(\S+)\s+(\d+)\s+(\d+):\s?(\d+):\s?(\d+)/) {
+		# Format like Mon, 13 Dec 2004 14:40:41 or
+		#	      Mon, 13, Dec 2004 14:40:41
 		# No timezone, so assume local
 		local $tm = timegm($7, $6, $5, $2, &month_to_number($3),
 				   $4 < 50 ? $4+100 : $4 < 1000 ? $4 : $4-1900);
