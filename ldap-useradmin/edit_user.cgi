@@ -116,8 +116,12 @@ print "<td><b>$text{'uid'}</b></td>\n";
 if ($in{'new'}) {
 	# Find the first free UID above the base
 	if ($config{'next_uid'}) {
-		$newuid = $config{'next_uid'};
-		$config{'next_uid'}++;
+		while(1) {
+			$newuid = $config{'next_uid'};
+			$config{'next_uid'}++;
+			last if (!&check_uid_used($ldap, &get_user_base(),
+						  "uidNumber", $newuid));
+			}
 		&save_module_config();
 		}
 	else {

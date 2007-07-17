@@ -1137,5 +1137,15 @@ $string =~ s/æÆ/ae/go;
 return $string;
 }
 
+# check_uid_used(&ldap, base, name, id)_
+# Returns 1 if a user or group can be found with the given uid or gid
+sub check_uid_used
+{
+local ($ldap, $base, $name, $id) = @_;
+local $rv = $ldap->search('base' => $base,
+			  'filter' => "($name=$id)");
+return $rv->count ? 1 : 0;
+}
+
 1;
 
