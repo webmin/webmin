@@ -48,23 +48,14 @@ print "<tr> <td valign=top><b>$text{'gedit_group'}</b></td>\n";
 print "<td valign=top><input name=group size=10 value='$group'></td>\n";
 
 print "<td valign=top><b>$text{'gedit_gid'}</b></td>\n";
-if ($in{'new'} && $config{'next_gid'}) {
-	# Next GID comes from module config
-	while(1) {
-		$newgid = $config{'next_gid'};
-		$config{'next_gid'}++;
-		last if (!&check_uid_used($ldap, &get_group_base(),
-					  "gidNumber", $newgid));
+if ($in{'new'}) {
+	# Next GID comes from LDAP only
+	$newgid = $mconfig{'base_gid'};
+	while(&check_gid_used($ldap, $newgid)) {
+		$newgid++;
 		}
 	print "<td valign=top><input name=gid size=10 ",
 	      "value='$newgid'></td>\n";
-	&save_module_config();
-	}
-elsif ($in{'new'}) {
-	# Find the first free GID above the base by checking all existing groups
-	&build_group_used(\%gused);
-	$newgid = &allocate_gid(\%gused);
-	print "<td valign=top><input name=gid size=10 value='$newgid'></td>\n";
 	}
 else {
 	print "<td valign=top><input name=gid size=10 ",

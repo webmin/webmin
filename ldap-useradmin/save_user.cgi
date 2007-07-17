@@ -185,7 +185,7 @@ else {
 	$in{'user'} =~ /^[^:\t]+$/ ||
 		&error(&text('usave_ebadname', $in{'user'}));
 	$in{'user'} =~ s/\r//g;
-	$in{'real'} || &error($text{'usave_ereal2'});
+	$in{'real'} || &error($text{'usave_ereal'});
 	@users = split(/\n/, $in{'user'});
 	$user = $users[0];
 	$in{'uid'} =~ /^\-?[0-9]+$/ || &error(&text('usave_euid', $in{'uid'}));
@@ -195,6 +195,10 @@ else {
 	$lastname = $in{'lastname'};
 	$real = $in{'real'};
 	$shell = $in{'shell'} eq '*' ? $in{'othersh'} : $in{'shell'};
+	if ($in{'new'}) {
+		&check_user_used($ldap, $user) &&
+			&error(&text('usave_einuse', $user));
+		}
 
 	# Validate IMAP quota
 	$quota = undef;

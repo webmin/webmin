@@ -115,6 +115,8 @@ if ($in{'new'}) {
 	$in{'group'} =~ /^[^:\t]+$/ ||
 		&error(&text('gsave_ebadname', $in{'group'}));
 	$group = $in{'group'};
+	&check_group_used($ldap, $group) &&
+		&error(&text('gsave_einuse', $group));
 	}
 else {
 	$group = $in{'group'};

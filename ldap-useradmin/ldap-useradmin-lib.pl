@@ -549,7 +549,7 @@ return @rv;
 }
 
 # build_user_used([&uid-hash], [&shell-list], [&username-hash])
-# Fills in a hash with used UIDs and shells
+# Fills in a hash with used UIDs, shells and usernames
 sub build_user_used
 {
 setpwent();
@@ -603,6 +603,56 @@ while($_[0]->{$rv}) {
 	$rv++;
 	}
 return $rv;
+}
+
+# check_uid_used(&ldap, uid)
+# Returns 1 if some UID has been already used, either by LDAP or a local user
+sub check_uid_used
+{
+local ($ldap, $uid) = @_;
+local $localuser = getpwuid($uid);
+return 1 if ($localuser);
+local $rv = $ldap->search('base' => &get_user_base(),
+			  'filter' => "(uidNumber=$uid)");
+return $rv->count ? 1 : 0;
+}
+
+# check_user_used(&ldap, user)
+# Returns 1 if some username has been already used, either by LDAP or a
+# local user
+sub check_user_used
+{
+local ($ldap, $user) = @_;
+local @localuser = getpwnam($user);
+return 1 if (@localuser);
+local $rv = $ldap->search('base' => &get_user_base(),
+			  'filter' => "(uid=$user)");
+return $rv->count ? 1 : 0;
+}
+
+# check_gid_used(&ldap, gid)
+# Returns 1 if some GID has been already used, either by LDAP or a local group
+sub check_gid_used
+{
+local ($ldap, $gid) = @_;
+local $localgroup = getgrgid($gid);
+return 1 if ($localgroup);
+local $rv = $ldap->search('base' => &get_group_base(),
+			  'filter' => "(gidNumber=$gid)");
+return $rv->count ? 1 : 0;
+}
+
+# check_group_used(&ldap, group)
+# Returns 1 if some groupname has been already used, either by LDAP or a
+# local group
+sub check_group_used
+{
+local ($ldap, $group) = @_;
+local @localgroup = getgrnam($group);
+return 1 if (@localgroup);
+local $rv = $ldap->search('base' => &get_group_base(),
+			  'filter' => "(cn=$group)");
+return $rv->count ? 1 : 0;
 }
 
 # same_dn(dn1, dn2)
@@ -1135,16 +1185,6 @@ $string =~ tr/İıÿ/y/;
 $string =~ tr/ß/b/;
 $string =~ s/æÆ/ae/go;
 return $string;
-}
-
-# check_uid_used(&ldap, base, name, id)_
-# Returns 1 if a user or group can be found with the given uid or gid
-sub check_uid_used
-{
-local ($ldap, $base, $name, $id) = @_;
-local $rv = $ldap->search('base' => $base,
-			  'filter' => "($name=$id)");
-return $rv->count ? 1 : 0;
 }
 
 1;

@@ -48,4 +48,4 @@ For Samba users, the primary group SID is taken from the actual SID of the selec
 ---- Changes since 1.320 ----
 Limit the result size to the configured display maximum when requesting users and groups from the LDAP server.
 ---- Changes since 1.350 ----
-Added Module Config options to specify the next UID and GID to assign to new users and groups. This avoids the need to scan all existing users to find a free UID, which can be slow on large DBs.
+UID and GID allocation is now done by querying the LDAP server for specific IDs, rather than fetching a list of all users to find which ones are used. This should be faster on large LDAP servers.

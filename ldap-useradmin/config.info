@@ -34,8 +34,6 @@ base_uid=Lowest UID for new users,3,From Users and Groups module
 base_gid=Lowest GID for new groups,3,From Users and Groups module
 md5=Encryption method for passwords,1,3-LDAP MD5,1-Unix MD5,0-crypt,2-Plain text
 shells=Build list of shells from,2,fixed-Builtin list,passwd-System users,shells-/etc/shells
-next_uid=UID for next new user,3,Allocate automatically
-next_gid=UID for next new group,3,Allocate automatically
 
 line7=New user defaults,11
 default_group=Default primary group for new users,3,From Users and Groups module

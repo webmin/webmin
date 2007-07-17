@@ -33,14 +33,7 @@ $schema = $ldap->schema();
 $pft = $schema->attribute("shadowLastChange") ? 2 : 0;
 
 # Work out a good base UID for new users
-&build_user_used(\%used, undef, \%taken);
 $newuid = $mconfig{'base_uid'};
-
-# Work out a good base GID for new groups
-&build_group_used(\%gused, \%gtaken);
-if ($mconfig{'new_user_gid'}) {
-	%used = ( %used, %gused );
-	}
 $newgid = $mconfig{'base_gid'};
 @glist = &list_groups();
 
@@ -91,27 +84,28 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 			print &text('batch_echeck', $lnum, $err),"\n";
 			next;
 			}
-		if ($taken{$user{'user'}}) {
+		if (&check_user_used($user{'user'})) {
 			print &text('batch_euser', $lnum, $user{'user'}),"\n";
 			next;
 			}
 		if ($line[3] !~ /^\d+$/) {
 			# make up a UID
-			while($used{$newuid}) {
+			while(&check_uid_used($ldap, $newuid) ||
+			      $mconfig{'new_user_gid'} &&
+			      &check_gid_used($ldap, $newuid)) {
 				$newuid++;
 				}
 			$user{'uid'} = $newuid;
 			}
 		else {
 			# use the given UID
-			if ($used{$line[3]}) {
+			if (&check_uid_used($ldap, $line[3])) {
 				print &text('batch_ecaccess', $lnum,
 					    $text{'usave_euidused2'}),"\n";
 				next;
 				}
 			$user{'uid'} = $line[3];
 			}
-		$used{$user{'uid'}}++;
 		if (!-r $line[7]) {
 			print &text('batch_eshell', $lnum, $line[7]),"\n";
 			next;
@@ -199,7 +193,7 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 
 		if ($user{'gid'} !~ /^\d+$/) {
 			# Need to create a new group for the user
-			if ($gtaken{$user{'user'}}) {
+			if (&check_group_used($ldap, $user{'user'})) {
 				print &text('batch_egtaken', $lnum,
 					    $user{'user'}),"\n";
 				next;
@@ -209,7 +203,7 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 				$newgid = $user{'uid'};
 				}
 			else {
-				while($gused{$newgid}) {
+				while(&check_gid_used($ldap, $newgid)) {
 					$newgid++;
 					}
 				}
@@ -217,7 +211,6 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 			$group{'group'} = $user{'user'};
 			$user{'gid'} = $group{'gid'} = $newgid;
 			&create_group(\%group);
-			$gused{$group{'gid'}}++;
 			}
 
 		# Create home directory

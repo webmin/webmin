@@ -67,9 +67,9 @@ else {
 @shlist = ($mconfig{'default_shell'} ? ( $mconfig{'default_shell'} ) : ( ));
 %shells = map { $_, 1 } split(/,/, $config{'shells'});
 push(@shlist, "/bin/sh", "/bin/csh", "/bin/false") if ($shells{'fixed'});
-if ($shells{'passwd'} || $in{'new'} && !$config{'next_uid'}) {
-	# Don't do this unless we need to, as scanning all user is slow
-	&build_user_used(\%used, $shells{'passwd'} ? \@shlist : undef);
+if ($shells{'passwd'}) {
+	# Don't do this unless we need to, as scanning all users is slow
+	&build_user_used(undef, \@shlist);
 	}
 if ($shells{'shells'}) {
 	open(SHELLS, "/etc/shells");
@@ -115,17 +115,9 @@ else {
 print "<td><b>$text{'uid'}</b></td>\n";
 if ($in{'new'}) {
 	# Find the first free UID above the base
-	if ($config{'next_uid'}) {
-		while(1) {
-			$newuid = $config{'next_uid'};
-			$config{'next_uid'}++;
-			last if (!&check_uid_used($ldap, &get_user_base(),
-						  "uidNumber", $newuid));
-			}
-		&save_module_config();
-		}
-	else {
-		$newuid = &allocate_uid(\%used);
+	$newuid = $mconfig{'base_uid'};
+	while(&check_uid_used($ldap, $newuid)) {
+		$newuid++;
 		}
 	print "<td><input name=uid size=10 value='$newuid'></td> </tr>\n";
 	}
