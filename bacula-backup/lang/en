@@ -27,7 +27,7 @@ index_sd=Storage Daemon Configuration
 index_fd=File Daemon Configuration
 index_groups=Bacula Group Configuration
 index_actions=Backup and Restore Actions
-index_opencountry=Contributed by Laurent Gharda
+index_ocmin=Contributed by <a href=$2 target=_new>Oceans Mind Corp <img align=middle border=0 src='$1'></a>
 
 connect_emysql=Failed to load the database DBI driver.
 connect_elogin=Failed to login to the database $1 : $2.
