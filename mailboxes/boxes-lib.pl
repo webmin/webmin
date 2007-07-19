@@ -4,32 +4,25 @@
 use POSIX;
 if ($userconfig{'date_tz'} || $config{'date_tz'}) {
         # Set the timezone for all date calculations, and force a conversion
-        # now as in some cases the first on fails!
+        # now as in some cases the first one fails!
         $ENV{'TZ'} = $userconfig{'date_tz'} ||
                      $config{'date_tz'};
         strftime('%H:%M', localtime(time()));
         }
 use Time::Local;
 
-# Always use DBM indexing
-$config{'index_dbm'} = 2;
-$config{'index_min'} = 1000000;
+$dbm_index_min = 1000000;
+$dbm_index_version = 3;
 
 # list_mails(user|file, [start], [end])
 # Returns a subset of mail from a mbox format file
 sub list_mails
 {
 local (@rv, $h, $done);
-my (@index, %index, $itype);
-$itype = &index_type($_[0]);
-if ($itype == 0) {
-	@index = &build_index($_[0]);
-	}
-else {
-	&build_dbm_index($_[0], \%index);
-	}
+my %index;
+&build_dbm_index($_[0], \%index);
 local ($start, $end);
-local $isize = $itype == 0 ? scalar(@index) : $index{'mailcount'};
+local $isize = $index{'mailcount'};
 if (@_ == 1 || !defined($_[1]) && !defined($_[2])) {
 	$start = 0; $end = $isize-1;
 	}
@@ -47,61 +40,82 @@ open(MAIL, &user_mail_file($_[0]));
 $start = 0 if ($start < 0);
 for($i=$start; $i<=$end; $i++) {
 	# Seek to mail position
-	local $startline;
-	if ($itype == 0) {
-		seek(MAIL, $index[$i]->[0], 0);
-		$startline = $index[$i]->[1];
-		}
-	else {
-		local @idx = split(/\0/, $index{$i});
-		seek(MAIL, $idx[0], 0);
-		$startline = $idx[1];
-		}
+	local @idx = split(/\0/, $index{$i});
+	local $pos = $idx[0];
+	local $startline = $idx[1];
+	seek(MAIL, $pos, 0);
 
 	# Read the mail
 	local $mail = &read_mail_fh(MAIL, $dash ? 2 : 1, 0);
 	$mail->{'line'} = $startline;
 	$mail->{'eline'} = $startline + $mail->{'lines'} - 1;
 	$mail->{'idx'} = $i;
+	# ID is position in file and message ID
+	$mail->{'id'} = $pos." ".$i." ".$startline." ".
+		substr($mail->{'header'}->{'message-id'}, 0, 255);
 	$rv[$i] = $mail;
 	}
 return @rv;
 }
 
-# select_mails(user|file, &indexes, headersonly)
-# Returns a list of messages with the given indexes
+# select_mails(user|file, &ids, headersonly)
+# Returns a list of messages from an mbox with the given IDs. The ID contains
+# the file offset and message number, and the former is used if valid.
 sub select_mails
 {
+local ($file, $ids, $headersonly) = @_;
+local @rv;
+
 local (@rv);
-my (@index, %index, $itype);
-$itype = &index_type($_[0]);
-if ($itype == 0) {
-	@index = &build_index($_[0]);
-	}
-else {
-	&build_dbm_index($_[0], \%index);
-	}
-local $isize = $itype == 0 ? scalar(@index) : $index{'mailcount'};
-open(MAIL, &user_mail_file($_[0]));
-foreach my $i (@{$_[1]}) {
-	# Seek to mail position
-	local $startline;
-	if ($itype == 0) {
-		seek(MAIL, $index[$i]->[0], 0);
-		$startline = $index[$i]->[1];
-		}
-	else {
-		local @idx = split(/\0/, $index{$i});
-		seek(MAIL, $idx[0], 0);
-		$startline = $idx[1];
+my %index;
+local $gotindex;
+
+local $umf = &user_mail_file($file);
+local $dash = &dash_mode($umf);
+open(MAIL, $umf);
+foreach my $i (@$ids) {
+	local ($pos, $idx, $startline, $wantmid) = split(/ /, $i);
+
+	# Go to where the mail is supposed to be, and check if any starts there
+	seek(MAIL, $pos, 0);
+	local $ll = <MAIL>;
+	local $fromok = $ll !~ /^From\s+(\S+).*\d+\r?\n/ ||
+			($1 eq '-' && !$dash) ? 0 : 1;
+	print STDERR "seeking to $pos in $umf, got $ll";
+	if (!$fromok) {
+		# Oh noes! Need to find it
+		if (!$gotindex++) {
+			&build_dbm_index($file, \%index);
+			}
+		$pos = undef;
+		while(my ($k, $v) = each %index) {
+			if (int($k) eq $k) {
+				my ($p, $line, $subject, $from, $mid)=
+					split(/\0/, $v);
+				if ($mid eq $wantmid) {
+					# Found it!
+					$pos = $p;
+					$idx = $k;
+					$startline = $line;
+					last;
+					}
+				}
+			}
 		}
 
-	# Read the mail
-	local $mail = &read_mail_fh(MAIL, $dash ? 2 : 1, $_[2]);
-	$mail->{'line'} = $startline;
-	$mail->{'eline'} = $startline + $mail->{'lines'} - 1;
-	$mail->{'idx'} = $i;
-	push(@rv, $mail);
+	if (defined($pos)) {
+		# Now we can read
+		seek(MAIL, $pos, 0);
+		local $mail = &read_mail_fh(MAIL, $dash ? 2 : 1, $headersonly);
+		$mail->{'line'} = $startline;
+		$mail->{'eline'} = $startline + $mail->{'lines'} - 1;
+		$mail->{'idx'} = $idx;
+		$mail->{'id'} = "$pos $idx $startline $wantmid";
+		push(@rv, $mail);
+		}
+	else {
+		push(@rv, undef);	# Mail is gone?
+		}
 	}
 close(MAIL);
 return @rv;
@@ -118,149 +132,64 @@ return &advanced_search_mail($_[0], [ [ $_[1], $_[2] ] ], 1);
 # Returns an array of messages matching some search
 sub advanced_search_mail
 {
-local $itype = &index_type($_[0]);
-local (@index, %index, @rv, $i);
+local (%index, @rv, $i);
 local $dash = &dash_mode($_[0]);
 local @possible;		# index positions of possible mails
 local $possible_certain = 0;	# is possible list authoratative?
 local ($min, $max);
-if ($itype == 0) {
-	# We have only a plain index ..
-	@index = &build_index($_[0]);
-	$min = 0;
-	$max = scalar(@index)-1;
-	if ($_[3] && $_[3]->{'latest'}) {
-		$min = $max - $_[3]->{'latest'};
+
+# We have a DBM index .. if the search includes the from and subject
+# fields, scan it first to cut down on the total time
+&build_dbm_index($_[0], \%index);
+
+# Check which fields are used in search
+local @dbmfields = grep { $_->[0] eq 'from' ||
+			  $_->[0] eq 'subject' } @{$_[1]};
+local $alldbm = (scalar(@dbmfields) == scalar(@{$_[1]}));
+
+$min = 0;
+$max = $index{'mailcount'}-1;
+if ($_[3] && $_[3]->{'latest'}) {
+	$min = $max - $_[3]->{'latest'};
+	}
+
+# Only check DBM if it contains some fields, and if it contains all
+# fields when in 'or' mode.
+if (@dbmfields && ($alldbm || $_[2])) {
+	# Scan the DBM to build up a list of 'possibles'
+	for($i=$min; $i<=$max; $i++) {
+		local @idx = split(/\0/, $index{$i});
+		local $fake = { 'header' => { 'from', $idx[2],
+					      'subject', $idx[3] } };
+		local $m = &mail_matches(\@dbmfields, $_[2], $fake);
+		push(@possible, $i) if ($m);
 		}
-	@possible = ($min .. $max);
+	$possible_certain = $alldbm;
 	}
 else {
-	# We have a DBM index .. if the search includes the from and subject
-	# fields, scan it first to cut down on the total time
-	&build_dbm_index($_[0], \%index);
-
-	# Check which fields are used in search
-	local @dbmfields = grep { $_->[0] eq 'from' ||
-				  $_->[0] eq 'subject' } @{$_[1]};
-	local $alldbm = (scalar(@dbmfields) == scalar(@{$_[1]}));
-
-	$min = 0;
-	$max = $index{'mailcount'}-1;
-	if ($_[3] && $_[3]->{'latest'}) {
-		$min = $max - $_[3]->{'latest'};
-		}
-
-	# Only check DBM if it contains some fields, and if it contains all
-	# fields when in 'or' mode.
-	if (@dbmfields && ($alldbm || $_[2])) {
-		# Scan the DBM to build up a list of 'possibles'
-		for($i=$min; $i<=$max; $i++) {
-			local @idx = split(/\0/, $index{$i});
-			local $fake = { 'header' => { 'from', $idx[2],
-						      'subject', $idx[3] } };
-			local $m = &mail_matches(\@dbmfields, $_[2], $fake);
-			push(@possible, $i) if ($m);
-			}
-		$possible_certain = $alldbm;
-		}
-	else {
-		# None of the DBM fields are in the search .. have to scan all
-		@possible = ($min .. $max);
-		}
+	# None of the DBM fields are in the search .. have to scan all
+	@possible = ($min .. $max);
 	}
 
 # Need to scan through possible messages to find those that match
 open(MAIL, &user_mail_file($_[0]));
 foreach $i (@possible) {
 	# Seek to mail position
-	local $startline;
-	if ($itype == 0) {
-		seek(MAIL, $index[$i]->[0], 0);
-		$startline = $index[$i]->[1];
-		}
-	else {
-		local @idx = split(/\0/, $index{$i});
-		seek(MAIL, $idx[0], 0);
-		$startline = $idx[1];
-		}
+	local @idx = split(/\0/, $index{$i});
+	local $pos = $idx[0];
+	local $startline = $idx[1];
+	seek(MAIL, $pos, 0);
 
 	# Read the mail
 	local $mail = &read_mail_fh(MAIL, $dash ? 2 : 1, 0);
 	$mail->{'line'} = $startline;
 	$mail->{'eline'} = $startline + $mail->{'lines'} - 1;
 	$mail->{'idx'} = $i;
+	$mail->{'id'} = "$pos $i";
 	push(@rv, $mail) if ($possible_certain ||
 			     &mail_matches($_[1], $_[2], $mail));
 	}
 return @rv;
-}
-
-# build_index(user|file)
-sub build_index
-{
-local @index;
-local $ifile = &user_index_file($_[0]);
-local $umf = &user_mail_file($_[0]);
-local @ist = stat($ifile);
-local @st = stat($umf);
-
-if (open(INDEX, $ifile)) {
-	@index = map { /(\d+)\s+(\d+)/; [ $1, $2 ] } <INDEX>;
-	close(INDEX);
-	}
-
-if (!@ist || !@st || $ist[9] < $st[9] || $st[7] < $config{'index_min'}) {
-	# The mail file is newer than the index, or we are always re-indexing
-	local $fromok = 1;
-	local ($l, $ll);
-	local $dash = &dash_mode($umf);
-	if ($st[7] < $config{'index_min'}) {
-		$fromok = 0;	# Always re-index
-		open(MAIL, $umf);
-		}
-	else {
-		if (open(MAIL, $umf)) {
-			local $il = $#index;
-			local $i;
-			for($i=($il>100 ? 100 : $il); $i>=0; $i--) {
-				$l = $index[$il-$i];
-				seek(MAIL, $index[$il-$i]->[0], 0);
-				$ll = <MAIL>;
-				$fromok = 0 if ($ll !~ /^From\s+(\S+).*\d+\r?\n/ ||
-						($1 eq '-' && !$dash));
-				}
-			}
-		else {
-			$fromok = 0;	# No mail file yet
-			}
-		}
-	local ($pos, $lnum);
-	if (scalar(@index) && $fromok && $st[7] > $l->[0]) {
-		# Mail file seems to have gotten bigger, most likely
-		# because new mail has arrived ... only reindex the new mails
-		$pos = $l->[0] + length($ll);
-		$lnum = $l->[1] + 1;
-		}
-	else {
-		# Mail file has changed in some other way ... do a rebuild
-		$pos = 0;
-		$lnum = 0;
-		undef(@index);
-		seek(MAIL, 0, 0);
-		}
-	while(<MAIL>) {
-		if (/^From\s+(\S+).*\d+\r?\n/ && ($1 ne '-' || $dash)) {
-			push(@index, [ $pos, $lnum ]);
-			}
-		$pos += length($_);
-		$lnum++;
-		}
-	close(MAIL);
-	open(INDEX, ">$ifile");
-	print INDEX map { $_->[0]." ".$_->[1]."\n" } @index;
-	close(INDEX);
-	}
-return @index;
 }
 
 # build_dbm_index(user|file, &index)
@@ -269,6 +198,7 @@ return @index;
 # position of the mail in the file, line number, subject and sender.
 # Special key lastchange = time index was last updated
 #	      mailcount = number of messages in index
+#	      version = index format version
 sub build_dbm_index
 {
 local $ifile = &user_index_file($_[0]);
@@ -277,18 +207,24 @@ local @st = stat($umf);
 local $index = $_[1];
 
 dbmopen(%$index, $ifile, 0600);
-if (!@st || $index->{'lastchange'} < $st[9] || $st[7] < $config{'index_min'}) {
+if (!@st ||
+    $index->{'lastchange'} < $st[9] ||
+    $st[7] < $dbm_index_min ||
+    $index->{'version'} != $dbm_index_version) {
 	# The mail file is newer than the index, or we are always re-indexing
 	local $fromok = 1;
 	local ($ll, @idx);
 	local $dash = &dash_mode($umf);
-	if ($st[7] < $config{'index_min'}) {
+	if ($st[7] < $dbm_index_min ||
+	    $index->{'version'} != $dbm_index_version) {
 		$fromok = 0;	# Always re-index
 		open(MAIL, $umf);
 		}
 	else {
 		if (open(MAIL, $umf)) {
-			# Check the last 100 messages (at most)
+			# Check the last 100 messages (at most), to see if
+			# the mail file has been truncated, had mails deleted,
+			# or re-written.
 			local $il = $index->{'mailcount'}-1;
 			local $i;
 			for($i=($il>100 ? 100 : $il); $i>=0; $i--) {
@@ -336,24 +272,18 @@ if (!@st || $index->{'lastchange'} < $st[9] || $st[7] < $config{'index_min'}) {
 			$nidx[3] = $1;
 			$index->{$istart-1} = join("\0", @nidx);
 			}
+		elsif ($doingheaders && /^Message-ID\s*(.{0,255})/i) {
+			$nidx[4] = $1;
+			$index->{$istart-1} = join("\0", @nidx);
+			}
 		$pos += length($_);
 		$lnum++;
 		}
 	close(MAIL);
 	$index->{'lastchange'} = time();
 	$index->{'mailcount'} = $istart;
+	$index->{'version'} = $dbm_index_version;
 	}
-}
-
-# index_type(user|file)
-# Returns 0 if an old-style index exists for some mailbox, 1 if not (indicating
-# that DBM indexing should be used)
-sub index_type
-{
-return 0 if (!$config{'index_dbm'});
-return 1 if ($config{'index_dbm'} == 2);
-local $ifile = &user_index_file($_[0]);
-return -r $ifile ? 0 : 1;
 }
 
 # empty_mail(user|file)
@@ -361,39 +291,25 @@ return -r $ifile ? 0 : 1;
 sub empty_mail
 {
 local $umf = &user_mail_file($_[0]);
-local $itype = &index_type($_[0]);
 local $ifile = &user_index_file($_[0]);
 open(TRUNC, ">$umf");
 close(TRUNC);
-if ($itype == 0) {
-	# Truncate index too
-	open(TRUNC, ">$ifile");
-	close(TRUNC);
-	}
-else {
-	# Set index size to 0
-	local %index;
-	dbmopen(%index, $ifile, 0600);
-	$index{'mailcount'} = 0;
-	$index{'lastchange'} = time();
-	dbmclose(%index);
-	}
+
+# Set index size to 0
+local %index;
+dbmopen(%index, $ifile, 0600);
+$index{'mailcount'} = 0;
+$index{'lastchange'} = time();
+dbmclose(%index);
 }
 
 # count_mail(user|file)
 # Returns the number of messages in some mail file
 sub count_mail
 {
-my (@index, %index, $itype);
-$itype = &index_type($_[0]);
-if ($itype == 0) {
-	@index = &build_index($_[0]);
-	return scalar(@index);
-	}
-else {
-	&build_dbm_index($_[0], \%index);
-	return $index{'mailcount'};
-	}
+my %index;
+&build_dbm_index($_[0], \%index);
+return $index{'mailcount'};
 }
 
 # parse_mail(&mail, [&parent], [savebody])
@@ -663,14 +579,11 @@ local @m = sort { $a->{'line'} <=> $b->{'line'} } @_[1..@_-1];
 local $i = 0;
 local $f = &user_mail_file($_[0]);
 local $ifile = &user_index_file($_[0]);
-local $itype = &index_type($_[0]);
 local $lnum = 0;
 local %dline;
 local ($dpos = 0, $dlnum = 0);
 local (@index, %index);
-if ($itype == 1) {
-	&build_dbm_index($_[0], \%index);
-	}
+&build_dbm_index($_[0], \%index);
 
 local $tmpf = $< == 0 ? "$f.del" :
 	      $_[0] =~ /^\/.*\/([^\/]+)$/ ?
@@ -680,10 +593,6 @@ open(SOURCE, $f) || &error("Read failed : $!");
 open(DEST, ">$tmpf") || &error("Open of $tmpf failed : $!");
 while(<SOURCE>) {
 	if ($i >= @m || $lnum < $m[$i]->{'line'}) {
-		if ($itype == 0 && /^From\s+(\S+).*\d+\r?\n/ &&
-				   ($1 ne '-' || $dash)) {
-			push(@index, [ $dpos, $dlnum ]);
-			}
 		$dpos += length($_);
 		$dlnum++;
 		local $w = (print DEST $_);
@@ -705,15 +614,10 @@ close(SOURCE);
 close(DEST) || &error("Write to $tmpf failed : $?");
 local @st = stat($f);
 unlink($f) if ($< == 0);
-if ($itype == 0) {
-	open(INDEX, ">$ifile");
-	print INDEX map { $_->[0]." ".$_->[1]."\n" } @index;
-	close(INDEX);
-	}
-else {
-	# Just force a total index re-build (XXX lazy!)
-	$index{'mailcount'} = $in{'lastchange'} = 0;
-	}
+
+# Force a total index re-build (XXX lazy!)
+$index{'mailcount'} = $in{'lastchange'} = 0;
+
 if ($< == 0) {
 	rename($tmpf, $f);
 	}
@@ -732,16 +636,10 @@ sub modify_mail
 {
 local $f = &user_mail_file($_[0]);
 local $ifile = &user_index_file($_[0]);
-local $itype = &index_type($_[0]);
 local $lnum = 0;
 local ($sizediff, $linesdiff);
-local (@index, %index);
-if ($itype == 0) {
-	@index = &build_index($_[0]);
-	}
-else {
-	&build_dbm_index($_[0], \%index);
-	}
+local %index;
+&build_dbm_index($_[0], \%index);
 
 # Replace the email that gets modified
 local $tmpf = $< == 0 ? "$f.del" :
@@ -779,35 +677,17 @@ close(SOURCE);
 close(DEST) || &error("Write failed : $!");
 
 # Now update the index and delete the temp file
-if ($itype == 0) {
-	# Update old-style index
-	foreach $i (@index) {
-		if ($i->[1] > $_[1]->{'line'}) {
-			# Shift mails after the modified
-			$i->[0] += $sizediff;
-			$i->[1] += $linesdiff;
-			}
+for($i=0; $i<$index{'mailcount'}; $i++) {
+	local @idx = split(/\0/, $index{$i});
+	if ($idx[1] > $_[1]->{'line'}) {
+		$idx[0] += $sizediff;
+		$idx[1] += $linesdiff;
+		$index{$i} = join("\0", @idx);
 		}
 	}
-else {
-	# Update DBM index
-	for($i=0; $i<$index{'mailcount'}; $i++) {
-		local @idx = split(/\0/, $index{$i});
-		if ($idx[1] > $_[1]->{'line'}) {
-			$idx[0] += $sizediff;
-			$idx[1] += $linesdiff;
-			$index{$i} = join("\0", @idx);
-			}
-		}
-	$index{'lastchange'} = time();
-	}
+$index{'lastchange'} = time();
 local @st = stat($f);
 unlink($f);
-if ($itype == 0) {
-	open(INDEX, ">$ifile");
-	print INDEX map { $_->[0]." ".$_->[1]."\n" } @index;
-	close(INDEX);
-	}
 if ($< == 0) {
 	rename($tmpf, $f);
 	}
@@ -1641,20 +1521,35 @@ foreach $f (@files) {
 		}
 	local $mail = &read_mail_file($f);
 	$mail->{'idx'} = $i++;
+	$mail->{'id'} = $f;	# ID is relative path, like cur/4535534
+	$mail->{'id'} = substr($mail->{'id'}, length($_[0])+1);
 	push(@rv, $mail);
 	}
 return @rv;
 }
 
-# select_maildir(file, &indexes, headersonly)
-# Returns a list of messages with the given indexes, from a maildir directory
+# select_maildir(file, &ids, headersonly)
+# Returns a list of messages with the given IDs, from a maildir directory
 sub select_maildir
 {
-local @files = &get_maildir_files($_[0]);
+local ($file, $ids, $headersonly) = @_;
+local @files = &get_maildir_files($file);
 local @rv;
-foreach my $i (@{$_[1]}) {
-	local $mail = &read_mail_file($files[$i], $_[2]);
-	$mail->{'idx'} = $i;
+foreach my $i (@$ids) {
+	local $path = "$file/$i";
+	local $mail = &read_mail_file($path, $headersonly);
+	if (!$mail && $path =~ /\/cur\//) {
+		# May have moved - update path
+		$path =~ s/\/cur\//\/new\//g;
+		$mail = &read_mail_file($path, $headersonly);
+		}
+	if ($mail) {
+		# Set ID from corrected path
+		$mail->{'id'} = $path;
+		$mail->{'id'} = substr($mail->{'id'}, length($file)+1);
+		# Get index in directory
+		$mail->{'idx'} = &indexof($path, @files);
+		}
 	push(@rv, $mail);
 	}
 return @rv;
@@ -1833,6 +1728,7 @@ mkdir($_[1], 0755);
 mkdir("$_[1]/cur", 0755);
 do {
 	$mf = "$_[1]/cur/$now.$$.$hn";
+	$_[0]->{'id'} = "cur/$now.$$.$hn";
 	$now++;
 	} while(-r $mf);
 &send_mail($_[0], $mf, $_[2], 1);
@@ -1933,6 +1829,8 @@ foreach $f (@files) {
 		}
 	local $mail = &read_mail_file($f);
 	$mail->{'idx'} = $i++;
+	$mail->{'id'} = $f;	# ID is message number
+	$mail->{'id'} = substr($mail->{'id'}, length($_[0])+1);
 	push(@rv, $mail);
 	}
 return @rv;
@@ -1951,6 +1849,8 @@ closedir(DIR);
 foreach my $i (@{$_[1]}) {
 	local $mail = &read_mail_file($files[$i], $_[2]);
 	$mail->{'idx'} = $i;
+	$mail->{'id'} = $files[$i];
+	$mail->{'id'} = substr($mail->{'id'}, length($_[0])+1);
 	push(@rv, $mail);
 	}
 return @rv;
@@ -2235,7 +2135,7 @@ my $rv = eval {
 		# Format like Mon, 13 Dec 2004 14:40:41 or
 		#	      Mon, 13, Dec 2004 14:40:41
 		# No timezone, so assume local
-		local $tm = timegm($7, $6, $5, $2, &month_to_number($3),
+		local $tm = timelocal($7, $6, $5, $2, &month_to_number($3),
 				   $4 < 50 ? $4+100 : $4 < 1000 ? $4 : $4-1900);
 		return $tm;
 		}
