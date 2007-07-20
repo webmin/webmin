@@ -60,7 +60,8 @@ return @rv;
 
 # select_mails(user|file, &ids, headersonly)
 # Returns a list of messages from an mbox with the given IDs. The ID contains
-# the file offset and message number, and the former is used if valid.
+# the file offset, message number, line and message ID, and the former is used
+# if valid.
 sub select_mails
 {
 local ($file, $ids, $headersonly) = @_;
@@ -126,12 +127,13 @@ return @rv;
 sub idlist_mails
 {
 my %index;
-&build_dbm_index($_[0], \%index);
+local $idlist = &build_dbm_index($_[0], \%index);
+return @$idlist;
 local @rv;
 while(my ($k, $v) = each %index) {
 	if ($k eq int($k)) {
 		local ($pos, $line, $subject, $sender, $mid) = split(/\0/, $v);
-		push(@rv, $pos." ".$k." ".$line." ".$mid);
+		$rv[$k] = $pos." ".$k." ".$line." ".$mid;
 		}
 	}
 return @rv;
@@ -144,7 +146,7 @@ sub search_mail
 return &advanced_search_mail($_[0], [ [ $_[1], $_[2] ] ], 1);
 }
 
-# advanced_search_mail(user|file, &fields, andmode, [&limits])
+# advanced_search_mail(user|file, &fields, andmode, [&limits], [headersonly])
 # Returns an array of messages matching some search
 sub advanced_search_mail
 {
@@ -210,20 +212,50 @@ return @rv;
 }
 
 # build_dbm_index(user|file, &index)
-# Returns a reference to a DBM hash that indexes the given mail file.
+# Updates a reference to a DBM hash that indexes the given mail file.
 # Hash contains keys 0, 1, 2 .. each of which has a value containing the
 # position of the mail in the file, line number, subject, sender and message ID.
 # Special key lastchange = time index was last updated
 #	      mailcount = number of messages in index
 #	      version = index format version
+# Returns a list of all IDs
 sub build_dbm_index
 {
 local $ifile = &user_index_file($_[0]);
 local $umf = &user_mail_file($_[0]);
 local @st = stat($umf);
 local $index = $_[1];
-
 dbmopen(%$index, $ifile, 0600);
+
+# Read file of IDs
+local $idsfile = $ifile.".ids";
+local @ids;
+local $idschanged;
+if (open(IDSFILE, $idsfile)) {
+	@ids = <IDSFILE>;
+	chop(@ids);
+	close(IDSFILE);
+	}
+
+if (scalar(@ids) != $index->{'mailcount'}) {
+	# Build for first time
+	print STDERR "need meta-index rebuild for $_[0] ",scalar(@ids)," != ",$index->{'mailcount'},"\n";
+	@ids = ( );
+	while(my ($k, $v) = each %$index) {
+		if ($k eq int($k) && $k < $index->{'mailcount'}) {
+			local ($pos, $line, $subject, $sender, $mid) =
+				split(/\0/, $v);
+			$ids[$k] = $pos." ".$k." ".$line." ".$mid;
+			}
+		elsif ($k >= $index->{'mailcount'}) {
+			# Old crap that is off the end
+			delete($index->{$k});
+			}
+		}
+	$index->{'mailcount'} = scalar(@ids);	# Now known for sure
+	$idschanged = 1;
+	}
+
 if (!@st ||
     $index->{'lastchange'} < $st[9] ||
     $st[7] < $dbm_index_min ||
@@ -266,15 +298,20 @@ if (!@st ||
 		}
 	else {
 		# Mail file has changed in some other way ... do a rebuild
+		# of the whole index
 		$istart = 0;
 		$pos = 0;
 		$lnum = 0;
 		seek(MAIL, 0, 0);
+		@ids = ( );
+		$idschanged = 1;
 		}
 	local ($doingheaders, @nidx);
 	while(<MAIL>) {
 		if (/^From\s+(\S+).*\d+\r?\n/ && ($1 ne '-' || $dash)) {
 			@nidx = ( $pos, $lnum );
+			$idschanged = 1;
+			push(@ids, $pos." ".$istart." ".$lnum);
 			$index->{$istart++} = join("\0", @nidx);
 			$doingheaders = 1;
 			}
@@ -292,6 +329,7 @@ if (!@st ||
 		elsif ($doingheaders && /^Message-ID:\s*(.{0,255})/i) {
 			$nidx[4] = $1;
 			$index->{$istart-1} = join("\0", @nidx);
+			$ids[$#ids] .= " ".$1;
 			}
 		$pos += length($_);
 		$lnum++;
@@ -301,6 +339,28 @@ if (!@st ||
 	$index->{'mailcount'} = $istart;
 	$index->{'version'} = $dbm_index_version;
 	}
+
+# Write out IDs file, if needed
+if ($idschanged) {
+	open(IDSFILE, ">$idsfile");
+	foreach my $id (@ids) {
+		print IDSFILE $id,"\n";
+		}
+	close(IDSFILE);
+	}
+
+return \@ids;
+}
+
+# has_dbm_index(user|file)
+# Returns 1 if a DBM index exists for some user or file
+sub has_dbm_index
+{
+local $ifile = &user_index_file($_[0]);
+foreach my $ext (".dir", ".pag", ".db") {
+	return 1 if (-r $ifile.$ext);
+	}
+return 0;
 }
 
 # empty_mail(user|file)
@@ -1507,7 +1567,7 @@ sub eucconv_and_escape {
 	return &html_escape(&eucconv($_[0]));
 }
 
-# list_maildir(file, [start], [end])
+# list_maildir(file, [start], [end], [headersonly])
 # Returns a subset of mail from a maildir format directory
 sub list_maildir
 {
@@ -1536,7 +1596,7 @@ foreach $f (@files) {
 		$i++;
 		next;
 		}
-	local $mail = &read_mail_file($f);
+	local $mail = &read_mail_file($f, $_[3]);
 	$mail->{'idx'} = $i++;
 	$mail->{'id'} = $f;	# ID is relative path, like cur/4535534
 	$mail->{'id'} = substr($mail->{'id'}, length($_[0])+1);
@@ -1655,7 +1715,7 @@ sub search_maildir
 return &advanced_search_maildir($_[0], [ [ $_[1], $_[2] ] ], 1);
 }
 
-# advanced_search_maildir(user|file, &fields, andmode, [&limit])
+# advanced_search_maildir(user|file, &fields, andmode, [&limit], [headersonly])
 # Search for messages in a maildir directory, and return the results
 sub advanced_search_maildir
 {
@@ -1665,7 +1725,7 @@ if ($_[3] && $_[3]->{'latest'}) {
 	$min = -1;
 	$max = -$_[3]->{'latest'};
 	}
-foreach $mail (&list_maildir($_[0], $min, $max)) {
+foreach $mail (&list_maildir($_[0], $min, $max, $_[4])) {
 	push(@rv, $mail) if ($mail &&
 			     &mail_matches($_[1], $_[2], $mail));
 	}
@@ -1821,7 +1881,7 @@ foreach $d ("$_[0]/cur", "$_[0]/new") {
 return $count;
 }
 
-# list_mhdir(file, [start], [end])
+# list_mhdir(file, [start], [end], [headersonly])
 # Returns a subset of mail from an MH format directory
 sub list_mhdir
 {
@@ -1852,7 +1912,7 @@ foreach $f (@files) {
 		$i++;
 		next;
 		}
-	local $mail = &read_mail_file($f);
+	local $mail = &read_mail_file($f, $_[3]);
 	$mail->{'idx'} = $i++;
 	$mail->{'id'} = $f;	# ID is message number
 	$mail->{'id'} = substr($mail->{'id'}, length($_[0])+1);
@@ -1900,7 +1960,7 @@ sub search_mhdir
 return &advanced_search_mhdir($_[0], [ [ $_[1], $_[2] ] ], 1);
 }
 
-# advanced_search_mhdir(file|user, &fields, andmode, &limit)
+# advanced_search_mhdir(file|user, &fields, andmode, &limit, [headersonly])
 # Search for messages in an MH directory, and return the results
 sub advanced_search_mhdir
 {
@@ -1910,7 +1970,7 @@ if ($_[3] && $_[3]->{'latest'}) {
 	$min = -1;
 	$max = -$_[3]->{'latest'};
 	}
-foreach $mail (&list_mhdir($_[0], $min, $max)) {
+foreach $mail (&list_mhdir($_[0], $min, $max, $_[4])) {
 	push(@rv, $mail) if ($mail && &mail_matches($_[1], $_[2], $mail));
 	}
 return @rv;
@@ -2028,6 +2088,8 @@ if (!$headersonly) {
 		while(read($fh, $buf, 1024) > 0) {
 			$mail->{'size'} += length($buf);
 			$mail->{'body'} .= $buf;
+			$lc = ($buf =~ tr/\n/\n/);
+			$lnum += $lc;
 			}
 		close(MAIL);
 		}
@@ -2041,8 +2103,8 @@ if (!$headersonly) {
 			$mail->{'size'} += length($line);
 			$mail->{'body'} .= $line;
 			}
-		$mail->{'lines'} = $lnum;
 		}
+	$mail->{'lines'} = $lnum;
 	}
 elsif ($endmode) {
 	# Not reading the body, but we still need to search till the next
@@ -2051,8 +2113,10 @@ elsif ($endmode) {
 		$line = <$fh>;
 		last if (!$line || $line =~ /^From\s+(\S+).*\d+\r?\n/ &&
 			 ($1 ne '-' || $endmode == 2));
+		$lnum++;
 		$mail->{'size'} += length($line);
 		}
+	$mail->{'lines'} = $lnum;
 	}
 return $mail;
 }

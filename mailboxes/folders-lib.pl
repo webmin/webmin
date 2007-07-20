@@ -101,7 +101,6 @@ elsif ($_[2]->{'type'} == 2) {
 				$sizeneed{$i} = 1;
 				}
 			}
-		$mail->{'uidl'} = $uidl[$i];
 		$mail->{'idx'} = $i;
 		$mail->{'id'} = $uidl[$i];
 		$rv[$i] = $mail;
@@ -157,6 +156,7 @@ elsif ($_[2]->{'type'} == 4) {
 	local $h = $rv[1];
 	local $count = $rv[2];
 	return () if (!$count);
+	$_[2]->{'lastchange'} = $rv[3] if ($rv[3]);
 
 	# Work out what range we want
 	local ($start, $end) = &compute_start_end($_[0], $_[1], $count);
@@ -196,6 +196,7 @@ elsif ($_[2]->{'type'} == 5) {
 	# Work out exactly how big the total is
 	local ($sf, %len, $count);
 	foreach $sf (@{$_[2]->{'subfolders'}}) {
+		print STDERR "working out size of ",&folder_name($sf),"\n";
 		$len{$sf} = &mailbox_folder_size($sf);
 		$count += $len{$sf};
 		}
@@ -214,6 +215,7 @@ elsif ($_[2]->{'type'} == 5) {
 			   $sfstart >= $len{$sf} ? $len{$sf}-1 : $sfstart;
 		$sfend = $sfend < 0 ? 0 :
 			 $sfend >= $len{$sf} ? $len{$sf}-1 : $sfend;
+		print STDERR "getting mail from $sfstart to $sfend in $sfn\n";
 		local @submail =
 			&mailbox_list_mails($sfstart, $sfend, $sf, $_[3]);
 		local $sm;
@@ -300,7 +302,7 @@ elsif ($folder->{'type'} == 2) {
 	local @uidl = &pop3_uidl($h);
 	local %uidlmap;		# Map from UIDLs to POP3 indexes
 	for(my $i=0; $i<@uidl; $i++) {
-		$uidlmap{$uidl} = $i+1;
+		$uidlmap{$uidl[$i]} = $i+1;
 		}
 
 	# Work out what we have cached
@@ -325,6 +327,7 @@ elsif ($folder->{'type'} == 2) {
 	# For each requested uidl, get the headers or body
 	foreach my $i (@$ids) {
 		local $u = &safe_uidl($i);
+		print STDERR "need uidl $i -> $uidlmap{$i}\n";
 		if ($cached{$u} == 2 || $cached{$u} == 1 && $headersonly) {
 			# We already have everything that we need
 			}
@@ -363,7 +366,6 @@ elsif ($folder->{'type'} == 2) {
 				$sizeneed{$uidlmap{$i}} = $mail;
 				}
 			}
-		$mail->{'uidl'} = $i;
 		$mail->{'idx'} = $uidlmap{$i}-1;
 		$mail->{'id'} = $i;
 		push(@rv, $mail);
@@ -407,6 +409,7 @@ elsif ($folder->{'type'} == 4) {
 	local $h = $irv[1];
 	local $count = $irv[2];
 	return () if (!$count);
+        $folder->{'lastchange'} = $irv[3] if ($irv[3]);
 
 	# Build map from IDs to original order, as UID FETCH doesn't return
 	# mail in the order we asked for!
@@ -419,13 +422,15 @@ elsif ($folder->{'type'} == 4) {
 	local @rv = map { undef } @$ids;
 	local $wanted = $headersonly ? "(RFC822.SIZE UID RFC822.HEADER)"
 				     : "(UID RFC822)";
-	local @idxrv = &imap_command($h,
-		"UID FETCH ".join(",", @$ids)." $wanted");
-	foreach my $idxrv (@{idxrv->[1]}) {
-		local $mail = &parse_imap_mail($idxrv);
-		if ($mail) {
-			$mail->{'idx'} = $mail->{'imapidx'};
-			$rv[$wantpos{$mail->{'id'}}] = $mail;
+	if (@$ids) {
+		local @idxrv = &imap_command($h,
+			"UID FETCH ".join(",", @$ids)." $wanted");
+		foreach my $idxrv (@{idxrv->[1]}) {
+			local $mail = &parse_imap_mail($idxrv);
+			if ($mail) {
+				$mail->{'idx'} = $mail->{'imapidx'};
+				$rv[$wantpos{$mail->{'id'}}] = $mail;
+				}
 			}
 		}
 
@@ -480,9 +485,7 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 					$sfn."\t".$sfmail[$i]->{'id'};
 				$sfmail[$i]->{'idx'} = &indexof(
 					$sfmail[$i]->{'id'}, @allids);
-				if ($sfmail[$i]->{'idx'} < 0) {
-					print STDERR "looking for ",$sfmail[$i]->{'id'}," in ",join(" ", @allids),"\n";
-					}
+				print STDERR "looking for ",$sfmail[$i]->{'id'}," found at ",$sfmail[$i]->{'idx'},"\n";
 				}
 			}
 		}
@@ -503,6 +506,7 @@ if ($mail) {
 		# No sorting, so sort index is the opposite of real
 		$mail->{'sortidx'} = &mailbox_folder_size($folder, 1) -
 				     $mail->{'idx'} - 1;
+		print STDERR "idx=$mail->{'idx'} sortidx=$mail->{'sortidx'} size=",&mailbox_folder_size($folder, 1),"\n";
 		}
 	else {
 		# Need to extract from sort index
@@ -520,7 +524,10 @@ sub mailbox_idlist
 local ($folder) = @_;
 if ($folder->{'type'} == 0) {
 	# mbox, for which IDs are mail positions
-	return &idlist_mails($folder->{'file'});
+	print STDERR "starting to get IDs from $folder->{'file'}\n";
+	local @idlist = &idlist_mails($folder->{'file'});
+	print STDERR "got ",scalar(@idlist)," ids\n";
+	return @idlist;
 	}
 elsif ($folder->{'type'} == 1) {
 	# maildir, for which IDs are filenames
@@ -554,6 +561,7 @@ elsif ($folder->{'type'} == 4) {
 	local $h = $rv[1];
 	local $count = $rv[2];
 	return () if (!$count);
+        $folder->{'lastchange'} = $irv[3] if ($irv[3]);
 
 	@rv = &imap_command($h, "FETCH 1:$count UID");
 	local @uids;
@@ -625,7 +633,7 @@ else {
 # given field and condition.
 sub mailbox_list_mails_sorted
 {
-local ($start, $end, $folder, $headers, $error, $field, $dir) = @_;
+local ($start, $end, $folder, $headersonly, $error, $field, $dir) = @_;
 if (!$field) {
 	# Default to current ordering
 	($field, $dir) = &get_sort_field($folder);
@@ -633,7 +641,7 @@ if (!$field) {
 if (!$field || !$folder->{'sortable'}) {
 	# No sorting .. just return newest first
 	local @rv = reverse(&mailbox_list_mails(
-		-$start, -$end-1, $folder, $headers, $error));
+		-$start, -$end-1, $folder, $headersonly, $error));
 	local $i = 0;
 	foreach my $m (@rv) {
 		$m->{'sortidx'} = $i++;
@@ -641,21 +649,26 @@ if (!$field || !$folder->{'sortable'}) {
 	return @rv;
 	}
 
+# For IMAP, login first so that the lastchange can be found
+if ($folder->{'type'} == 4 && !$folder->{'lastchange'}) {
+	&mailbox_select_mails($folder, [ ], 1);
+	}
+
 # Get a sorted list of IDs, and then find the real emails within the range
 local @sorter = &build_sorted_ids($folder, $field, $dir);
 ($start, $end) = &compute_start_end($start, $end, scalar(@sorter));
-print STDERR "for ",&folder_name($folder)," sorter = ",scalar(@sorter)," = ",join(" ", @sorter),"\n";
+print STDERR "for ",&folder_name($folder)," sorter = ",scalar(@sorter),"\n";
 print STDERR "start = $start end = $end\n";
 local @rv = map { undef } (0 .. scalar(@sorter)-1);
 local @wantids = map { $sorter[$_] } ($start .. $end);
-print STDERR "wantids = ",join(" ", @wantids),"\n";
-local @mails = &mailbox_select_mails($folder, \@wantids, $headers);
+print STDERR "wantids = ",scalar(@wantids),"\n";
+local @mails = &mailbox_select_mails($folder, \@wantids, $headersonly);
 for(my $i=0; $i<@mails; $i++) {
 	$rv[$start+$i] = $mails[$i];
 	print STDERR "setting $start+$i to ",$mails[$i],"\n";
 	$mails[$i]->{'sortidx'} = $start+$i;
 	}
-print STDERR "rv = ",join(" ", map { $_ || "undef" } @rv),"\n";
+print STDERR "rv = ",scalar(@rv),"\n";
 return @rv;
 }
 
@@ -769,7 +782,8 @@ return 0 if (!$folder->{'sortable'});
 local $ifile = &folder_new_sort_index_file($folder);
 
 &open_dbm_db($index, $ifile, 0600);
-if ($index->{'lastchange'} < $folder->{'lastchange'} ||
+print STDERR "indexchange=$index->{'lastchange'} folderchange=$folder->{'lastchange'}\n";
+if ($index->{'lastchange'} != $folder->{'lastchange'} ||
     !$folder->{'lastchange'}) {
 	# The mail file has changed .. get IDs and update the index with any
 	# that are missing
@@ -833,6 +847,7 @@ if ($index->{'lastchange'} < $folder->{'lastchange'} ||
 	# Record index update time
 	$index->{'lastchange'} = $folder->{'lastchange'} || time();
 	$index->{'mailcount'} = scalar(@ids);
+	print STDERR "new indexchange=$index->{'lastchange'}\n";
 	}
 return 1;
 }
@@ -865,22 +880,28 @@ local ($folder) = @_;
 return &user_index_file(($folder->{'file'} || $folder->{'id'}).".byid");
 }
 
-# mailbox_search_mail(&fields, andmode, &folder, [&limit])
+# mailbox_search_mail(&fields, andmode, &folder, [&limit], [headersonly])
 # Search a mailbox for multiple matching fields
 sub mailbox_search_mail
 {
-# For folders other than mbox and IMAP, build a sort index and use that for
+local ($fields, $andmode, $folder, $limit, $headersonly) = @_;
+
+# For folders other than IMAP and composite and mbox where we already have
+# an index, build a sort index and use that for
 # the search, if it is simple enough (Subject, From and To only)
 local @idxfields = grep { $_->[0] eq 'from' || $_->[0] eq 'to' ||
                           $_->[0] eq 'subject' } @{$_[0]};
-if ($_[2]->{'type'} != 0 && $_[2]->{'type'} != 4 && $_[2]->{'type'} != 5 &&
-    scalar(@idxfields) == scalar(@{$_[0]}) && @idxfields &&
+if ($folder->{'type'} != 4 &&
+    $folder->{'type'} != 5 &&
+    $folder->{'type'} != 6 &&
+    ($folder->{'type'} != 0 || !&has_dbm_index($folder->{'file'})) &&
+    scalar(@idxfields) == scalar(@$fields) && @idxfields &&
     &get_product_name() eq 'usermin') {
 	local %index;
-	&build_sort_index($_[2], undef, \%index);
+	&build_new_sort_index($folder, undef, \%index);
 	local @rv;
 
-	# Work out which mail indexes match the requested headers
+	# Work out which mail IDs match the requested headers
 	local %idxmatches = map { ("$_->[0]/$_->[1]", [ ]) } @idxfields;
 	while(my ($k, $v) = each %index) {
 		local ($ki, $kf) = split(/_/, $k, 2);
@@ -920,44 +941,48 @@ if ($_[2]->{'type'} != 0 && $_[2]->{'type'} != 4 && $_[2]->{'type'} != 5 &&
 		@matches = &unique(@matches);
 		}
 	@matches = sort { $a <=> $b } @matches;
+	print STDERR "matches = ",join(" ", @matches),"\n";
 
 	# Select the actual mails
-	return &mailbox_select_mails($_[2], \@matches, 0);
+	return &mailbox_select_mails($_[2], \@matches, $headersonly);
 	}
 
-if ($_[2]->{'type'} == 0) {
+if ($folder->{'type'} == 0) {
 	# Just search an mbox format file (which will use its own special
 	# field-level index)
-	return &advanced_search_mail($_[2]->{'file'}, $_[0], $_[1], $_[3]);
+	return &advanced_search_mail($folder->{'file'}, $fields,
+				     $andmode, $limit, $headersonly);
 	}
-elsif ($_[2]->{'type'} == 1) {
+elsif ($folder->{'type'} == 1) {
 	# Search a maildir directory
-	local $md = $_[2]->{'file'};
-	return &advanced_search_maildir($md, $_[0], $_[1], $_[3]);
+	return &advanced_search_maildir($folder->{'file'}, $fields,
+				        $andmode, $limit, $headersonly);
 	}
-elsif ($_[2]->{'type'} == 2) {
+elsif ($folder->{'type'} == 2) {
 	# Get all of the mail from the POP3 server and search it
 	local ($min, $max);
-	if ($_[3] && $_[3]->{'latest'}) {
+	if ($limit && $limit->{'latest'}) {
 		$min = -1;
-		$max = -$_[3]->{'latest'};
+		$max = -$limit->{'latest'};
 		}
-	local @mails = &mailbox_list_mails($min, $max, $_[2],
-		   &indexof('body', &search_fields($_[0])) >= 0 ? 0 : 1);
-	local @rv = grep { $_ && &mail_matches($_[0], $_[1], $_) } @mails;
+	local @mails = &mailbox_list_mails($min, $max, $folder,
+			&indexof('body', &search_fields($fields)) < 0 &&
+			$headersonly);
+	local @rv = grep { $_ && &mail_matches($fields, $andmode, $_) } @mails;
 	}
-elsif ($_[2]->{'type'} == 3) {
+elsif ($folder->{'type'} == 3) {
 	# Search an MH directory
-	local $md = $_[2]->{'file'};
-	return &advanced_search_mhdir($md, $_[0], $_[1], $_[3]);
+	return &advanced_search_mhdir($folder->{'file'}, $fields,
+				      $andmode, $limit, $headersonly);
 	}
-elsif ($_[2]->{'type'} == 4) {
+elsif ($folder->{'type'} == 4) {
 	# Use IMAP's remote search feature
 	local @rv = &imap_login($_[2]);
 	if ($rv[0] == 0) { &error($rv[1]); }
 	elsif ($rv[0] == 3) { &error(&text('save_emailbox', $rv[1])); }
 	elsif ($rv[0] == 2) { &error(&text('save_elogin2', $rv[1])); }
 	local $h = $rv[1];
+        $_[2]->{'lastchange'} = $rv[3] if ($rv[3]);
 
 	# Do the search to get back a list of matching numbers
 	local @search;
@@ -984,48 +1009,39 @@ elsif ($_[2]->{'type'} == 4) {
 			$searches = "or $searches[$i] ($searches)";
 			}
 		}
-	@rv = &imap_command($h, "SEARCH $searches");
+	@rv = &imap_command($h, "UID SEARCH $searches");
 	&error(&text('save_esearch', $rv[3])) if (!$rv[0]); 
 
-	# Get and parse those specific messages
+	# Get back the IDs we want
 	local ($srch) = grep { $_ =~ /^\*\s+SEARCH/i } @{$rv[1]};
 	local @ids = split(/\s+/, $srch);
 	shift(@ids); shift(@ids);	# lose * SEARCH
-	local (@mail, $idx);
-	foreach $idx (@ids) {
-		local $realidx = $idx-1;
-		if ($_[3] && $_[3]->{'latest'}) {
-			# Don't get message if outside search range
-			next if ($realidx < $rv[3]-$_[3]->{'latest'});
-			}
-		local @rv = &imap_command($h,
-			"FETCH $idx (RFC822.SIZE UID RFC822.HEADER)");
-		&error(&text('save_esearch', $rv[3])) if (!$rv[0]); 
-		local $mail = &parse_imap_mail($rv[1]->[0]);
-		if ($mail) {
-			$mail->{'idx'} = $realidx;
-			push(@mail, $mail);
-			}
-		}
-	return reverse(@mail);
+
+	# Call the select function to get the mails
+	return &mailbox_select_mails($folder, \@ids, $headersonly);
 	}
-elsif ($_[2]->{'type'} == 5) {
+elsif ($folder->{'type'} == 5) {
 	# Search each sub-folder and combine the results - taking any count
 	# limits into effect
 	local $sf;
 	local $pos = 0;
 	local @mail;
 	local (%start, %len);
-	foreach $sf (@{$_[2]->{'subfolders'}}) {
+	foreach $sf (@{$folder->{'subfolders'}}) {
 		$len{$sf} = &mailbox_folder_size($sf);
 		$start{$sf} = $pos;
 		$pos += $len{$sf};
 		}
-	local $limit = $_[3] ? { %{$_[3]} } : undef;
-	foreach $sf (reverse(@{$_[2]->{'subfolders'}})) {
-		local @submail = &mailbox_search_mail($_[0], $_[1], $sf, $limit);
-		foreach $sm (@submail) {
-			&push_index($sm, $sf, $sm->{'idx'}+$start{$sf});
+	local $limit = $limit ? { %$limit } : undef;
+	$limit = undef;
+	foreach $sf (reverse(@{$folder->{'subfolders'}})) {
+		local $sfn = &folder_name($sf);
+		print STDERR "searching on sub-folder ",&folder_name($sf),"\n";
+		local @submail = &mailbox_search_mail($fields, $andmode, $sf,
+					$limit, $headersonly);
+		print STDERR "found ",scalar(@submail),"\n";
+		foreach my $sm (@submail) {
+			$sm->{'id'} = $sfn."\t".$sm->{'id'};
 			}
 		push(@mail, reverse(@submail));
 		if ($limit && $limit->{'latest'}) {
@@ -1036,17 +1052,21 @@ elsif ($_[2]->{'type'} == 5) {
 		}
 	return reverse(@mail);
 	}
-elsif ($_[2]->{'type'} == 6) {
+elsif ($folder->{'type'} == 6) {
 	# Just run a search on the sub-mails
 	local @rv;
 	local ($min, $max);
-	if ($_[3] && $_[3]->{'latest'}) {
+	if ($limit && $limit->{'latest'}) {
 		$min = -1;
-		$max = -$_[3]->{'latest'};
+		$max = -$limit->{'latest'};
 		}
 	local $mail;
-	foreach $mail (&mailbox_list_mails($min, $max, $_[2])) {
-		push(@rv, $mail) if ($mail && &mail_matches($_[0],$_[1],$mail));
+	local $sfn = &folder_name($sf);
+	print STDERR "searching virtual folder ",&folder_name($folder),"\n";
+	foreach $mail (&mailbox_list_mails($min, $max, $folder)) {
+		if ($mail && &mail_matches($fields, $andmode, $mail)) {
+			push(@rv, $mail);
+			}
 		}
 	return @rv;
 	}
@@ -1085,12 +1105,11 @@ elsif ($f->{'type'} == 2) {
 	local $m;
 	local $cd = "$cache_directory/$f->{'id'}.cache";
 	foreach $m (@_) {
-		local $idx = &indexof($m->{'uidl'}, @uidl);
+		local $idx = &indexof($m->{'id'}, @uidl);
 		if ($idx >= 0) {
 			&pop3_command($h, "dele ".($idx+1));
-			local $u = &safe_uidl($m->{'uidl'});
-			unlink("$cd/$u.headers",
-			       "$cd/$u.body");
+			local $u = &safe_uidl($m->{'id'});
+			unlink("$cd/$u.headers", "$cd/$u.body");
 			}
 		}
 	}
@@ -1115,51 +1134,27 @@ elsif ($f->{'type'} == 4) {
 	@rv = &imap_command($h, "EXPUNGE");
 	&error(&text('save_edelete', $rv[3])) if (!$rv[0]); 
 	}
-elsif ($f->{'type'} == 5) {
-	# Delete from underlying folder(s)
-	local $sm;
-	foreach $sm (@_) {
-		local ($subfolder, $idx) = &pop_index($sm);
-		&mailbox_delete_mail($subfolder, $sm);
-		&push_index($sm, $subfolder, $idx);
-		}
-	}
-elsif ($f->{'type'} == 6) {
-	# Delete from virtual folder
-	local $sm;
-	if ($f->{'delete'}) {
-		# Delete the underlying messages, and remove from index
-		local %folderdel;
-		foreach $sm (sort { $b->{'subs'}->[0]->[1] <=>
-				    $a->{'subs'}->[0]->[1] } @_) {
-			local ($subfolder, $idx) = &pop_index($sm);
-			&mailbox_delete_mail($subfolder, $sm);
-			&push_index($sm, $subfolder, $idx);
-
-			# Adjust indexes in virtual list that refer to same
-			# sub-folder, and have higher numbers
-			for(my $i=0; $i<@{$f->{'members'}}; $i++) {
-				my $m = $f->{'members'}->[$i];
-				my $subidx = $sm->{'subs'}->[0]->[1];
-				if ($m->[0] eq $sm->{'subfolder'}) {
-					if ($m->[1] == $subidx) {
-						splice(@{$f->{'members'}},
-						       $i--, 1);
-						}
-					elsif ($m->[1] > $subidx) {
-						$m->[1]--;
-						}
-					}
-				}
+elsif ($f->{'type'} == 5 || $f->{'type'} == 6) {
+	# Delete from underlying folder(s), and from virtual index
+	foreach my $sm (@_) {
+		local ($sfn, $sid) = split(/\t+/, $sm->{'id'}, 2);
+		local $sf = &find_subfolder($f, $sfn);
+		$sf || &error("Failed to find sub-folder named $sfn");
+		if ($f->{'type'} == 5 || $f->{'type'} == 6 && $f->{'delete'}) {
+			$sm->{'id'} = $sid;
+			&mailbox_delete_mail($sf, $sm);
+			$sm->{'id'} = $sfn."\t".$sm->{'id'};
+			}
+		if ($f->{'type'} == 6) {
+			$f->{'members'} = [
+				grep { $_->[0] ne $sf ||
+				       $_->[1] ne $sid } @{$f->{'members'}} ];
 			}
 		}
-	else {
-		# Just take out of the virtual index
-		foreach $sm (sort { $b->{'idx'} <=> $a->{'idx'} } @_) {
-			splice(@{$f->{'members'}}, $sm->{'idx'}, 1);
-			}
+	if ($f->{'type'} == 6) {
+		# Save new ID list
+		&save_folder($f, $f);
 		}
-	&save_folder($f, $f);
 	}
 
 # Update folder index to remove indexes for deleted messages
@@ -1181,7 +1176,7 @@ foreach my $m (@$mails) {
 		}
 	}
 $index{'mailcount'} -= scalar(@_);
-$index{'lastchange'} = time();
+$index{'lastchange'} = $f->{'lastchange'};
 dbmclose(%index);
 }
 
@@ -1479,34 +1474,39 @@ elsif ($_[1]->{'type'} == 6) {
 # Replaces some mail message with a new one
 sub mailbox_modify_mail
 {
+local ($oldmail, $mail, $folder, $textonly) = @_;
+
 return undef if (&is_readonly_mode());
-if ($_[2]->{'type'} == 1) {
+if ($folder->{'type'} == 1) {
 	# Just replace the existing file
-	&modify_maildir($_[0], $_[1], $_[3]);
+	&modify_maildir($oldmail, $mail, $textonly);
 	}
-elsif ($_[2]->{'type'} == 3) {
+elsif ($folder->{'type'} == 3) {
 	# Just replace the existing file
-	&modify_mhdir($_[0], $_[1], $_[3]);
+	&modify_mhdir($oldmail, $mail, $textonly);
 	}
-elsif ($_[2]->{'type'} == 0) {
+elsif ($folder->{'type'} == 0) {
 	# Modify the mail file
-	&modify_mail($_[2]->{'file'}, $_[0], $_[1], $_[3]);
+	&modify_mail($folder->{'file'}, $oldmail, $mail, $textonly);
 	}
-elsif ($_[2]->{'type'} == 5 || $_[2]->{'type'} == 6) {
-	# Modify in the appropriate folder
-	local ($oldsubfolder, $oldidx) = &pop_index($_[0]);
-	local ($newsubfolder, $newidx) = &pop_index($_[1]);
-	&mailbox_modify_mail($_[0], $_[1], $oldsubfolder, $_[3]);
-	&push_index($_[0], $oldsubfolder, $oldidx);
-	&push_index($_[1], $newsubfolder, $newidx);
+elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
+	# Modify in the underlying folder
+	local ($oldsfn, $oldsid) = split(/\t+/, $oldmail->{'id'}, 2);
+	local ($sfn, $sid) = split(/\t+/, $mail->{'id'}, 2);
+	local $sf = &find_subfolder($folder, $sfn);
+	$oldmail->{'id'} = $oldsid;
+	$mail->{'id'} = $sid;
+	&mailbox_modify_mail($oldmail, $mail, $sf, $textonly);
+	$oldmail->{'id'} = $oldsfn."\t".$oldsid;
+	$mail->{'id'} = $sfn."\t".$sid;
 	}
 else {
 	&error("Cannot modify mail in this type of folder!");
 	}
 
 # Force re-generation of folder index
-if ($_[2]->{'sortable'}) {
-	&delete_new_sort_index($_[2]);
+if ($folder->{'sortable'}) {
+	&delete_new_sort_index($folder);
 	# XXX could be faster
 	}
 }
@@ -1551,6 +1551,7 @@ elsif ($_[0]->{'type'} == 4) {
 		elsif ($rv[0] == 3) { &error(&text('save_emailbox', $rv[1])); }
 		elsif ($rv[0] == 2) { &error(&text('save_elogin2', $rv[1])); }
 		}
+        $_[0]->{'lastchange'} = $rv[3];
 	return $rv[2];
 	}
 elsif ($_[0]->{'type'} == 5) {
@@ -1607,6 +1608,7 @@ local ($h, $c) = @_;
 print $h "$c\r\n" if ($c);
 local $rv = <$h>;
 $rv =~ s/\r|\n//g;
+print STDERR "pop3 $c -> $rv\n";
 return !$rv ? ( 0, "Connection closed" ) :
        $rv =~ /^\+OK\s*(.*)/ ? ( 1, $1 ) :
        $rv =~ /^\-ERR\s*(.*)/ ? ( 0, $1 ) : ( 0, $rv );
@@ -1674,7 +1676,7 @@ foreach $f (keys %imap_login_handle) {
 # imap_login(&folder)
 # Logs into a POP3 server, selects a mailbox and returns a status
 # (1=ok, 0=connect failed, 2=login failed, 3=mailbox error), a handle or error
-# message, and the number of messages in the mailbox.
+# message, the number of messages in the mailbox, and the next UID
 sub imap_login
 {
 local $h = $imap_login_handle{$_[0]->{'id'}};
@@ -1701,7 +1703,8 @@ if (!$h) {
 @rv = &imap_command($h, "select ".($_[0]->{'mailbox'} || "INBOX"));
 return (3, $rv[3]) if (!$rv[0]);
 local $count = $rv[2] =~ /\*\s+(\d+)\s+EXISTS/i ? $1 : undef;
-return (1, $h, $count);
+local $uidnext = $rv[2] =~ /UIDNEXT\s+(\d+)/ ? $1 : undef;
+return (1, $h, $count, $uidnext);
 }
 
 # imap_command(handle, command)
@@ -2086,9 +2089,10 @@ foreach $f (@_) {
 		}
 	elsif ($f->{'type'} == 4) {
 		# Get size of IMAP folder
-		local ($ok, $h, $count) = &imap_login($f);
+		local ($ok, $h, $count, $uidnext) = &imap_login($f);
 		if ($ok) {
 			$f->{'size'} = 0;
+			$f->{'lastchange'} = $uidnext;
 			local @rv = &imap_command($h,
 				"FETCH 1:$count (RFC822.SIZE)");
 			foreach my $r (@{$rv[1]}) {
@@ -2380,6 +2384,26 @@ eval { local $main::errors_must_die = 1; &send_mail($dmail); };
 return $to;
 }
 
+# find_subfolder(&folder, name)
+# Returns the sub-folder with some name
+sub find_subfolder
+{
+local ($folder, $sfn) = @_;
+if ($folder->{'type'} == 5) {
+	# Composite
+	foreach my $sf (@{$folder->{'subfolders'}}) {
+		return $sf if (&folder_name($sf) eq $sfn);
+		}
+	}
+elsif ($folder->{'type'} == 6) {
+	# Virtual
+	foreach my $m (@{$folder->{'members'}}) {
+		return $m->[0] if (&folder_name($m->[0]) eq $sfn);
+		}
+	}
+return undef;
+}
+
 # find_named_folder(name, &folders, [&cache])
 # Finds a folder by ID, filename, server name or displayed name
 sub find_named_folder
@@ -2478,32 +2502,6 @@ foreach my $folder (@$folders) {
 		$folder->{'sortable'} = 1;
 		}
 	}
-}
-
-# push_index(&mail, &folder, new-index)
-# Adjusts the index of some email to the new one, and stores the old
-# index and folder
-sub push_index
-{
-local ($mail, $folder, $newidx) = @_;
-unshift(@{$mail->{'subs'}}, [ $mail->{'subfolder'}, $mail->{'idx'} ]);
-$mail->{'subidx'} = $mail->{'subs'}->[0]->[1];
-$mail->{'subfolder'} = $folder;
-$mail->{'idx'} = $newidx;
-}
-
-# pop_index(&mail)
-# Removes the stored sub-folder and index, and restores the original index.
-# Returns the original sub-folder and index.
-sub pop_index
-{
-local ($mail) = @_;
-local $old = shift(@{$mail->{'subs'}});
-$mail->{'subidx'} = $mail->{'subs'}->[0]->[1];
-local @rv = ( $mail->{'subfolder'}, $mail->{'idx'} );
-$mail->{'subfolder'} = $old->[0];
-$mail->{'idx'} = $old->[1];
-return @rv;
 }
 
 # mail_preview(&mail)
