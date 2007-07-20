@@ -121,6 +121,22 @@ close(MAIL);
 return @rv;
 }
 
+# idlist_mails(user|file)
+# Returns a list of IDs in some mbox
+sub idlist_mails
+{
+my %index;
+&build_dbm_index($_[0], \%index);
+local @rv;
+while(my ($k, $v) = each %index) {
+	if ($k eq int($k)) {
+		local ($pos, $line, $subject, $sender, $mid) = split(/\0/, $v);
+		push(@rv, $pos." ".$k." ".$line." ".$mid);
+		}
+	}
+return @rv;
+}
+
 # search_mail(user, field, match)
 # Returns an array of messages matching some search
 sub search_mail
@@ -185,7 +201,8 @@ foreach $i (@possible) {
 	$mail->{'line'} = $startline;
 	$mail->{'eline'} = $startline + $mail->{'lines'} - 1;
 	$mail->{'idx'} = $i;
-	$mail->{'id'} = "$pos $i";
+	$mail->{'id'} = $pos." ".$i." ".$startline." ".
+			substr($mail->{'header'}->{'message-id'}, 0, 255);
 	push(@rv, $mail) if ($possible_certain ||
 			     &mail_matches($_[1], $_[2], $mail));
 	}
@@ -195,7 +212,7 @@ return @rv;
 # build_dbm_index(user|file, &index)
 # Returns a reference to a DBM hash that indexes the given mail file.
 # Hash contains keys 0, 1, 2 .. each of which has a value containing the
-# position of the mail in the file, line number, subject and sender.
+# position of the mail in the file, line number, subject, sender and message ID.
 # Special key lastchange = time index was last updated
 #	      mailcount = number of messages in index
 #	      version = index format version
@@ -272,7 +289,7 @@ if (!@st ||
 			$nidx[3] = $1;
 			$index->{$istart-1} = join("\0", @nidx);
 			}
-		elsif ($doingheaders && /^Message-ID\s*(.{0,255})/i) {
+		elsif ($doingheaders && /^Message-ID:\s*(.{0,255})/i) {
 			$nidx[4] = $1;
 			$index->{$istart-1} = join("\0", @nidx);
 			}
@@ -1528,6 +1545,14 @@ foreach $f (@files) {
 return @rv;
 }
 
+# idlist_maildir(file)
+# Returns a list of files in a maildir, which form the IDs
+sub idlist_maildir
+{
+local ($file) = @_;
+return map { substr($_, length($file)+1) } &get_maildir_files($file);
+}
+
 # select_maildir(file, &ids, headersonly)
 # Returns a list of messages with the given IDs, from a maildir directory
 sub select_maildir
@@ -1836,21 +1861,33 @@ foreach $f (@files) {
 return @rv;
 }
 
-# select_mhdir(file, &indexes, headersonly)
+# idlist_mhdir(file)
+# Returns a list of files in an MH directory, which are the IDs
+sub idlist_mhdir
+{
+opendir(DIR, $file);
+local @files = grep { /^\d+$/ } readdir(DIR);
+closedir(DIR);
+return @files;
+}
+
+# select_mhdir(file, &ids, headersonly)
 # Returns a list of messages with the given indexes, from an mhdir directory
 sub select_mhdir
 {
+local ($file, $ids, $headersonly) = @_;
 local @rv;
-opendir(DIR, $_[0]);
-local @files = map { "$_[0]/$_" }
+opendir(DIR, $file);
+local @files = map { "$file/$_" }
 		sort { $a <=> $b }
 		 grep { /^\d+$/ } readdir(DIR);
 closedir(DIR);
-foreach my $i (@{$_[1]}) {
-	local $mail = &read_mail_file($files[$i], $_[2]);
-	$mail->{'idx'} = $i;
-	$mail->{'id'} = $files[$i];
-	$mail->{'id'} = substr($mail->{'id'}, length($_[0])+1);
+foreach my $i (@$ids) {
+	local $mail = &read_mail_file("$file/$i", $headersonly);
+	if ($mail) {
+		$mail->{'idx'} = &indexof("$file/$i", @files);
+		$mail->{'id'} = $i;
+		}
 	push(@rv, $mail);
 	}
 return @rv;
