@@ -82,7 +82,7 @@ foreach my $i (@$ids) {
 	local $ll = <MAIL>;
 	local $fromok = $ll !~ /^From\s+(\S+).*\d+\r?\n/ ||
 			($1 eq '-' && !$dash) ? 0 : 1;
-	print STDERR "seeking to $pos in $umf, got $ll";
+	print DEBUG "seeking to $pos in $umf, got $ll";
 	if (!$fromok) {
 		# Oh noes! Need to find it
 		if (!$gotindex++) {
@@ -239,7 +239,7 @@ if (open(IDSFILE, $idsfile)) {
 
 if (scalar(@ids) != $index->{'mailcount'}) {
 	# Build for first time
-	print STDERR "need meta-index rebuild for $_[0] ",scalar(@ids)," != ",$index->{'mailcount'},"\n";
+	print DEBUG "need meta-index rebuild for $_[0] ",scalar(@ids)," != ",$index->{'mailcount'},"\n";
 	@ids = ( );
 	while(my ($k, $v) = each %$index) {
 		if ($k eq int($k) && $k < $index->{'mailcount'}) {

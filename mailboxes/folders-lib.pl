@@ -196,7 +196,7 @@ elsif ($_[2]->{'type'} == 5) {
 	# Work out exactly how big the total is
 	local ($sf, %len, $count);
 	foreach $sf (@{$_[2]->{'subfolders'}}) {
-		print STDERR "working out size of ",&folder_name($sf),"\n";
+		print DEBUG "working out size of ",&folder_name($sf),"\n";
 		$len{$sf} = &mailbox_folder_size($sf);
 		$count += $len{$sf};
 		}
@@ -215,7 +215,7 @@ elsif ($_[2]->{'type'} == 5) {
 			   $sfstart >= $len{$sf} ? $len{$sf}-1 : $sfstart;
 		$sfend = $sfend < 0 ? 0 :
 			 $sfend >= $len{$sf} ? $len{$sf}-1 : $sfend;
-		print STDERR "getting mail from $sfstart to $sfend in $sfn\n";
+		print DEBUG "getting mail from $sfstart to $sfend in $sfn\n";
 		local @submail =
 			&mailbox_list_mails($sfstart, $sfend, $sf, $_[3]);
 		local $sm;
@@ -327,7 +327,7 @@ elsif ($folder->{'type'} == 2) {
 	# For each requested uidl, get the headers or body
 	foreach my $i (@$ids) {
 		local $u = &safe_uidl($i);
-		print STDERR "need uidl $i -> $uidlmap{$i}\n";
+		print DEBUG "need uidl $i -> $uidlmap{$i}\n";
 		if ($cached{$u} == 2 || $cached{$u} == 1 && $headersonly) {
 			# We already have everything that we need
 			}
@@ -418,28 +418,35 @@ elsif ($folder->{'type'} == 4) {
 		$wantpos{$ids->[$i]} = $i;
 		}
 
-	# Fetch each mail by ID
+	# Fetch each mail by ID. This is done in blocks of 1000, to avoid
+	# hitting a the IMAP server's max request limit
 	local @rv = map { undef } @$ids;
 	local $wanted = $headersonly ? "(RFC822.SIZE UID RFC822.HEADER)"
 				     : "(UID RFC822)";
 	if (@$ids) {
-		local @idxrv = &imap_command($h,
-			"UID FETCH ".join(",", @$ids)." $wanted");
-		foreach my $idxrv (@{idxrv->[1]}) {
-			local $mail = &parse_imap_mail($idxrv);
-			if ($mail) {
-				$mail->{'idx'} = $mail->{'imapidx'};
-				$rv[$wantpos{$mail->{'id'}}] = $mail;
+		for(my $chunk=0; $chunk<@$ids; $chunk+=1000) {
+			local $chunkend = $chunk+999;
+			if ($chunkend >= @$ids) { $chunkend = @$ids-1; }
+			local @cids = @$ids[$chunk .. $chunkend];
+			local @idxrv = &imap_command($h,
+				"UID FETCH ".join(",", @cids)." $wanted");
+			foreach my $idxrv (@{idxrv->[1]}) {
+				local $mail = &parse_imap_mail($idxrv);
+				if ($mail) {
+					$mail->{'idx'} = $mail->{'imapidx'}-1;
+					$rv[$wantpos{$mail->{'id'}}] = $mail;
+					}
 				}
 			}
 		}
+	print DEBUG "imap rv = ",scalar(@rv),"\n";
 
 	return @rv;
 	}
 elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 	# Virtual or composite folder .. for each ID, work out the folder and
 	# build a map from folders to ID lists
-	print STDERR "selecting ",scalar(@$ids)," ids\n";
+	print DEBUG "selecting ",scalar(@$ids)," ids\n";
 
 	# Build a map from sub-folder names to IDs in them
 	my $i = 0;
@@ -485,7 +492,7 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 					$sfn."\t".$sfmail[$i]->{'id'};
 				$sfmail[$i]->{'idx'} = &indexof(
 					$sfmail[$i]->{'id'}, @allids);
-				print STDERR "looking for ",$sfmail[$i]->{'id'}," found at ",$sfmail[$i]->{'idx'},"\n";
+				print DEBUG "looking for ",$sfmail[$i]->{'id'}," found at ",$sfmail[$i]->{'idx'},"\n";
 				}
 			}
 		}
@@ -506,7 +513,7 @@ if ($mail) {
 		# No sorting, so sort index is the opposite of real
 		$mail->{'sortidx'} = &mailbox_folder_size($folder, 1) -
 				     $mail->{'idx'} - 1;
-		print STDERR "idx=$mail->{'idx'} sortidx=$mail->{'sortidx'} size=",&mailbox_folder_size($folder, 1),"\n";
+		print DEBUG "idx=$mail->{'idx'} sortidx=$mail->{'sortidx'} size=",&mailbox_folder_size($folder, 1),"\n";
 		}
 	else {
 		# Need to extract from sort index
@@ -524,9 +531,9 @@ sub mailbox_idlist
 local ($folder) = @_;
 if ($folder->{'type'} == 0) {
 	# mbox, for which IDs are mail positions
-	print STDERR "starting to get IDs from $folder->{'file'}\n";
+	print DEBUG "starting to get IDs from $folder->{'file'}\n";
 	local @idlist = &idlist_mails($folder->{'file'});
-	print STDERR "got ",scalar(@idlist)," ids\n";
+	print DEBUG "got ",scalar(@idlist)," ids\n";
 	return @idlist;
 	}
 elsif ($folder->{'type'} == 1) {
@@ -657,18 +664,18 @@ if ($folder->{'type'} == 4 && !$folder->{'lastchange'}) {
 # Get a sorted list of IDs, and then find the real emails within the range
 local @sorter = &build_sorted_ids($folder, $field, $dir);
 ($start, $end) = &compute_start_end($start, $end, scalar(@sorter));
-print STDERR "for ",&folder_name($folder)," sorter = ",scalar(@sorter),"\n";
-print STDERR "start = $start end = $end\n";
+print DEBUG "for ",&folder_name($folder)," sorter = ",scalar(@sorter),"\n";
+print DEBUG "start = $start end = $end\n";
 local @rv = map { undef } (0 .. scalar(@sorter)-1);
 local @wantids = map { $sorter[$_] } ($start .. $end);
-print STDERR "wantids = ",scalar(@wantids),"\n";
+print DEBUG "wantids = ",scalar(@wantids),"\n";
 local @mails = &mailbox_select_mails($folder, \@wantids, $headersonly);
 for(my $i=0; $i<@mails; $i++) {
 	$rv[$start+$i] = $mails[$i];
-	print STDERR "setting $start+$i to ",$mails[$i],"\n";
+	print DEBUG "setting $start+$i to ",$mails[$i],"\n";
 	$mails[$i]->{'sortidx'} = $start+$i;
 	}
-print STDERR "rv = ",scalar(@rv),"\n";
+print DEBUG "rv = ",scalar(@rv),"\n";
 return @rv;
 }
 
@@ -782,7 +789,7 @@ return 0 if (!$folder->{'sortable'});
 local $ifile = &folder_new_sort_index_file($folder);
 
 &open_dbm_db($index, $ifile, 0600);
-print STDERR "indexchange=$index->{'lastchange'} folderchange=$folder->{'lastchange'}\n";
+print DEBUG "indexchange=$index->{'lastchange'} folderchange=$folder->{'lastchange'}\n";
 if ($index->{'lastchange'} != $folder->{'lastchange'} ||
     !$folder->{'lastchange'}) {
 	# The mail file has changed .. get IDs and update the index with any
@@ -790,6 +797,7 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 	local @ids = &mailbox_idlist($folder);
 
 	# Find IDs that are new
+	local @newids;
 	foreach my $id (@ids) {
 		if (!defined($index->{$id."_size"})) {
 			push(@newids, $id);
@@ -831,10 +839,10 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 				}
 			}
 		}
-	print STDERR "added ",scalar(@mail)," messages to index\n";
+	print DEBUG "added ",scalar(@mails)," messages to index\n";
 
 	# Remove IDs that no longer exist
-	local %ids = map { $_, 1 } @ids;
+	local %ids = map { $_, 1 } (@ids, @wantids);
 	local $dc = 0;
 	while(my ($k, $v) = each %$index) {
 		if ($k =~ /^(.*)_([^_]+)$/ && !$ids{$1}) {
@@ -842,12 +850,12 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 			$dc++ if ($2 eq "size");
 			}
 		}
-	print STDERR "deleted $dc mesages from index\n";
+	print DEBUG "deleted $dc mesages from index\n";
 
 	# Record index update time
 	$index->{'lastchange'} = $folder->{'lastchange'} || time();
 	$index->{'mailcount'} = scalar(@ids);
-	print STDERR "new indexchange=$index->{'lastchange'}\n";
+	print DEBUG "new indexchange=$index->{'lastchange'}\n";
 	}
 return 1;
 }
@@ -941,7 +949,7 @@ if ($folder->{'type'} != 4 &&
 		@matches = &unique(@matches);
 		}
 	@matches = sort { $a <=> $b } @matches;
-	print STDERR "matches = ",join(" ", @matches),"\n";
+	print DEBUG "matches = ",join(" ", @matches),"\n";
 
 	# Select the actual mails
 	return &mailbox_select_mails($_[2], \@matches, $headersonly);
@@ -1036,10 +1044,10 @@ elsif ($folder->{'type'} == 5) {
 	$limit = undef;
 	foreach $sf (reverse(@{$folder->{'subfolders'}})) {
 		local $sfn = &folder_name($sf);
-		print STDERR "searching on sub-folder ",&folder_name($sf),"\n";
+		print DEBUG "searching on sub-folder ",&folder_name($sf),"\n";
 		local @submail = &mailbox_search_mail($fields, $andmode, $sf,
 					$limit, $headersonly);
-		print STDERR "found ",scalar(@submail),"\n";
+		print DEBUG "found ",scalar(@submail),"\n";
 		foreach my $sm (@submail) {
 			$sm->{'id'} = $sfn."\t".$sm->{'id'};
 			}
@@ -1062,7 +1070,7 @@ elsif ($folder->{'type'} == 6) {
 		}
 	local $mail;
 	local $sfn = &folder_name($sf);
-	print STDERR "searching virtual folder ",&folder_name($folder),"\n";
+	print DEBUG "searching virtual folder ",&folder_name($folder),"\n";
 	foreach $mail (&mailbox_list_mails($min, $max, $folder)) {
 		if ($mail && &mail_matches($fields, $andmode, $mail)) {
 			push(@rv, $mail);
@@ -1608,7 +1616,7 @@ local ($h, $c) = @_;
 print $h "$c\r\n" if ($c);
 local $rv = <$h>;
 $rv =~ s/\r|\n//g;
-print STDERR "pop3 $c -> $rv\n";
+print DEBUG "pop3 $c -> $rv\n";
 return !$rv ? ( 0, "Connection closed" ) :
        $rv =~ /^\+OK\s*(.*)/ ? ( 1, $1 ) :
        $rv =~ /^\-ERR\s*(.*)/ ? ( 0, $1 ) : ( 0, $rv );
@@ -1720,7 +1728,7 @@ local @rv;
 local $id = $$."-".$imap_command_count++;
 if ($c) {
 	print $h "$id $c\r\n";
-	print STDERR "imap command $id $c\n";
+	print DEBUG "imap command $id $c\n";
 	}
 while(1) {
 	local $l = <$h>;
@@ -2042,21 +2050,20 @@ else {
 	}
 }
 
-# folder_select(&folders, selected-folder, name, [extra-options], [by-id])
+# folder_select(&folders, selected-folder, name, [extra-options], [by-id],
+#		[auto-submit])
 # Returns HTML for selecting a folder
 sub folder_select
 {
-local $sel = "<select name=$_[2]>\n";
-$sel .= $_[3];
-local $f;
-foreach $f (@{$_[0]}) {
+local ($folders, $folder, $name, $extra, $byid, $auto) = @_;
+local @opts;
+push(@opts, @$extra) if ($extra);
+foreach my $f (@$folders) {
 	next if ($f->{'hide'} && $f ne $_[1]);
-	$sel .= sprintf "<option value=%s %s>%s\n",
-		$_[4] ? &folder_name($f) : $f->{'index'},
-		$f eq $_[1] ? "selected" : "",
-		$f->{'name'};
+	push(@opts, [ $byid ? &folder_name($f) : $f->{'index'}, $f->{'name'} ]);
 	}
-$sel .= "</select>\n";
+return &ui_select($name, $byid ? &folder_name($folder) : $folder->{'index'},
+		  \@opts, 1, 0, 0, 0, $auto ? "onChange='form.submit()'" : "");
 return $sel;
 }
 
