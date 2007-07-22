@@ -1572,6 +1572,7 @@ sub eucconv_and_escape {
 sub list_maildir
 {
 local (@rv, $i, $f);
+&mark_read_maildir($_[0]);
 local @files = &get_maildir_files($_[0]);
 
 local ($start, $end);
@@ -1610,6 +1611,7 @@ return @rv;
 sub idlist_maildir
 {
 local ($file) = @_;
+&mark_read_maildir($file);
 return map { substr($_, length($file)+1) } &get_maildir_files($file);
 }
 
@@ -1618,6 +1620,7 @@ return map { substr($_, length($file)+1) } &get_maildir_files($file);
 sub select_maildir
 {
 local ($file, $ids, $headersonly) = @_;
+&mark_read_maildir($file);
 local @files = &get_maildir_files($file);
 local @rv;
 foreach my $i (@$ids) {
@@ -1719,6 +1722,7 @@ return &advanced_search_maildir($_[0], [ [ $_[1], $_[2] ] ], 1);
 # Search for messages in a maildir directory, and return the results
 sub advanced_search_maildir
 {
+&mark_read_maildir($_[0]);
 local @rv;
 local ($min, $max);
 if ($_[3] && $_[3]->{'latest'}) {
@@ -1730,6 +1734,44 @@ foreach $mail (&list_maildir($_[0], $min, $max, $_[4])) {
 			     &mail_matches($_[1], $_[2], $mail));
 	}
 return @rv;
+}
+
+# mark_read_maildir(dir)
+# Move any messages in the 'new' directory of this maildir to 'cur'
+sub mark_read_maildir
+{
+local ($dir) = @_;
+local @files = &get_maildir_files($dir);
+local $i = 0;
+foreach my $nf (@files) {
+	if (substr($nf, length($dir)+1, 3) eq "new") {
+		local $cf = $nf;
+		$cf =~ s/\/new\//\/cur\//g;
+		if (rename($nf, $cf)) {
+			$files[$i] = $cf;
+			$changed = 1;
+			}
+		}
+	$i++;
+	}
+if ($changed) {
+	# Update the cache
+	$main::list_maildir_cache{$dir} = \@files;
+	local $cachefile = &get_maildir_cachefile($dir);
+	if ($cachefile) {
+		&open_tempfile(CACHE, ">$cachefile", 1);
+		foreach my $f (@files) {
+			local $short = substr($f, length($dir)+1);
+			&print_tempfile(CACHE, $f,"\n");
+			}
+		&close_tempfile(CACHE);
+		local @st = stat($_[0]);
+		if ($< == 0) {
+			&set_ownership_permissions($st[4], $st[5],
+						   undef, $cachefile);
+			}
+		}
+	}
 }
 
 # delete_maildir(&mail, ...)

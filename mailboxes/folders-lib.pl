@@ -711,57 +711,6 @@ else {
 return map { $_->[0] } @sorter;
 }
 
-# set_sort_indexes(&folder, &mails, [sort-field, sort-dir])
-# Given a list of messages, sets the sortidx field based on their indexes
-# that would be used if the folder was sorted
-sub set_sort_indexes
-{
-local ($folder, $mails, $field, $dir) = @_;
-if (!$field) {
-	# Default to current ordering
-	($field, $dir) = &get_sort_field($folder);
-	}
-if (!$field || !$folder->{'sortable'}) {
-	# Sort index is the same as the normal index reversed
-	my $count = &mailbox_folder_size($folder);
-	foreach my $m (@$mails) {
-		$m->{'sortidx'} = $count-$m->{'idx'}-1;
-		}
-	return;
-	}
-
-# Build the appropriate sort index, if missing
-local %index;
-&build_sort_index($folder, $field, \%index);
-
-# Get message indexes, sorted by the field
-my @sorter;
-while(my ($k, $v) = each %index) {
-	if ($k =~ /^(\d+)_\Q$field\E$/) {
-		push(@sorter, [ $1, lc($v) ]);
-		}
-	}
-if ($field eq "size" || $field eq "date") {
-	# Numeric sort
-	@sorter = sort { my $s = $a->[1] <=> $b->[1]; $dir ? $s : -$s } @sorter;
-	}
-else {
-	# Alpha sort
-	@sorter = sort { my $s = $a->[1] cmp $b->[1]; $dir ? $s : -$s } @sorter;
-	}
-
-# Update sort indexes for mails in list
-my $i = 0;
-my %idxmap = map { $_->{'idx'}, $_ } @$mails;
-foreach my $s (@sorter) {
-	my $m = $idxmap{$s->[0]};
-	if ($m) {
-		$m->{'sortidx'} = $i;
-		}
-	$i++;
-	}
-}
-
 # delete_old_sort_index(&folder)
 # Delete old index DBM files
 sub delete_old_sort_index
@@ -860,6 +809,27 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 return 1;
 }
 
+# delete_new_sort_index_message(&folder, id)
+# Removes a message ID from a sort index
+sub delete_new_sort_index_message
+{
+local ($folder, $id) = @_;
+local %index;
+&build_new_sort_index($folder, undef, \%index);
+foreach my $field (@index_fields) {
+	delete($index{$id."_".$field});
+	}
+dbmclose(%index);
+if ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
+	# Remove from underlying folder's index too
+	local ($sfn, $sid) = split(/\t+/, $id, 2);
+	local $sf = &find_subfolder($folder, $sfn);
+	if ($sf) {
+		&delete_new_sort_index_message($sf, $sid);
+		}
+	}
+}
+
 # delete_new_sort_index(&folder)
 # Trashes the sort index for a folder, to force a rebuild
 sub delete_new_sort_index
@@ -912,8 +882,9 @@ if ($folder->{'type'} != 4 &&
 	# Work out which mail IDs match the requested headers
 	local %idxmatches = map { ("$_->[0]/$_->[1]", [ ]) } @idxfields;
 	while(my ($k, $v) = each %index) {
-		local ($ki, $kf) = split(/_/, $k, 2);
-		next if (!$kf || $ki eq '');
+		$k =~ /^(.+)_(\S+)$/ || next;
+                local ($ki, $kf) = ($1, $2);
+                next if (!$kf || $ki eq '');
 
 		# Check all of the fields to see which ones match
 		foreach my $if (@idxfields) {
@@ -948,7 +919,7 @@ if ($folder->{'type'} != 4 &&
 			}
 		@matches = &unique(@matches);
 		}
-	@matches = sort { $a <=> $b } @matches;
+	@matches = sort { $a cmp $b } @matches;
 	print DEBUG "matches = ",join(" ", @matches),"\n";
 
 	# Select the actual mails
@@ -1164,28 +1135,6 @@ elsif ($f->{'type'} == 5 || $f->{'type'} == 6) {
 		&save_folder($f, $f);
 		}
 	}
-
-# Update folder index to remove indexes for deleted messages
-if ($f->{'sortable'}) {
-	&remove_new_sort_index($f, \@_);
-	}
-}
-
-# remove_new_sort_index(&folder, &mails)
-# Remove entries for some email from a folder's sort index
-sub remove_new_sort_index
-{
-local ($f, $mails) = @_;
-local %index;
-&build_new_sort_index($f, undef, \%index);
-foreach my $m (@$mails) {
-	foreach my $if (@index_fields) {
-		delete($index{$m->{'id'}."_".$if});
-		}
-	}
-$index{'mailcount'} -= scalar(@_);
-$index{'lastchange'} = $f->{'lastchange'};
-dbmclose(%index);
 }
 
 # mailbox_empty_folder(&folder)
@@ -1345,11 +1294,6 @@ else {
 		&write_mail_folder($m, $dst);
 		}
 	&mailbox_delete_mail($src, @_);
-	}
-
-# Update folder index to remove indexes for deleted messages
-if ($src->{'sortable'} && $fix_index) {
-	&remove_new_sort_index($src, \@_);
 	}
 }
 
@@ -1512,10 +1456,10 @@ else {
 	&error("Cannot modify mail in this type of folder!");
 	}
 
-# Force re-generation of folder index
+# Delete the message being modified from its index, to force re-generation
+# with new details
 if ($folder->{'sortable'}) {
-	&delete_new_sort_index($folder);
-	# XXX could be faster
+	&delete_new_sort_index_message($folder, $mail->{'id'});
 	}
 }
 
