@@ -50,6 +50,11 @@ print &ui_table_row($text{'bind_hostname'},
 	[ [ 1, $text{'bind_auto'} ],
 	  [ 0, &ui_textbox("hostname", $miniserv{"host"}, 25) ] ]));
 
+# Reverse-lookup hostname
+print &ui_table_row($text{'bind_resolv_myname'},
+    &ui_radio("no_resolv_myname", int($miniserv{'no_resolv_myname'}),
+	[ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

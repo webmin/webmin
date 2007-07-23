@@ -3236,7 +3236,7 @@ close(RANDOM);
 }
 
 # get_socket_name(handle)
-# Returns the local IP address of some connection
+# Returns the local hostname or IP address of some connection
 sub get_socket_name
 {
 return $config{'host'} if ($config{'host'});
@@ -3244,7 +3244,10 @@ local $sn = getsockname($_[0]);
 return undef if (!$sn);
 local $myaddr = (unpack_sockaddr_in($sn))[1];
 if (!$get_socket_name_cache{$myaddr}) {
-	local $myname = gethostbyaddr($myaddr, AF_INET);
+	local $myname;
+	if (!$config{'no_resolv_myname'}) {
+		$myname = gethostbyaddr($myaddr, AF_INET);
+		}
 	if ($myname eq "") {
 		$myname = inet_ntoa($myaddr);
 		}

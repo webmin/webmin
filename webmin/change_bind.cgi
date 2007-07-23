@@ -57,6 +57,7 @@ if ($in{'hostname_def'}) {
 else {
 	$miniserv{'host'} = $in{'hostname'};
 	}
+$miniserv{'no_resolv_myname'} = $in{'no_resolv_myname'};
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 
