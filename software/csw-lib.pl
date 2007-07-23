@@ -47,6 +47,9 @@ do {
 					$dep, split(/\s+/, $update)));
 			$retry = 1;
 			}
+		elsif (/you already have version/i) {
+			$failed = 2;
+			}
 		}
 	close(PKGGET);
 	print "</pre>";
@@ -59,12 +62,20 @@ do {
 # Cleanup fullout file
 &copy_source_dest("/var/pkg-get/admin-old", "/var/pkg-get/admin");
 
-if ($? || $failed) {
+if ($failed == 1) {
 	print "<b>$text{'csw_failed'}</b><p>\n";
+	return ( );
+	}
+elsif ($failed == 2) {
+	print "<b>$text{'csw_already'}</b><p>\n";
 	return ( );
 	}
 else {
 	print "<b>$text{'csw_ok'}</b><p>\n";
+	if (!@rv) {
+		# If nothing failed, assume that everything worked
+		@rv = split(/\s+/, $update);
+		}
 	return @rv;
 	}
 }

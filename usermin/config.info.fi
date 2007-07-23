@@ -1,0 +1,4 @@
+usermin_dir=Usermin asetushakemisto,0
+cron_mode=N&#228;yt&#228; p&#228;ivitysajat,1,0-Helpotettu k&#228;ytt&#246;liittym&#228;,1-Cron aika valitsin
+host=Usermin koneen nimi k&#228;ytt&#228;jien vaihtoa varten,3,Sama kuin Webmin
+port=Usermin portti k&#228;ytt&#228;jien vaihtoa varten,3,M&#228;&#228;rit&#228; automaattisesti

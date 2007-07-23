@@ -326,3 +326,5 @@ Password changes to mail / FTP users from the Users and Groups modules now corre
 Added the status of the Dovecot IMAP/POP3 server to the server status section of the right frame.
 Added a Module Config option to have MySQL users and permissions added to multiple servers, for use with replication or NDBCluster.
 ---- Changes since 3.43 ----
+Webalizer statistics are now included in cPanel migrations.
+Added a restriction to the Edit Owner Limits page to prevent the creation of catchall email aliases.

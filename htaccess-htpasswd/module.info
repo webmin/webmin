@@ -12,3 +12,4 @@ desc_es=Directorios Web Protegidos
 desc_hu=V�dett Web k�nyvt�rak
 desc_zh_TW.UTF-8=網站目錄保護
 library=htaccess-lib.pl
+desc_fi=Web Hakemistojen Suojaus

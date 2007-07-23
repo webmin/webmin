@@ -122,6 +122,9 @@ elsif ($action eq 'defines') {
 elsif ($action eq 'reconfig') {
 	return $text{'log_reconfig'};
 	}
+elsif ($action eq 'mods') {
+	return $text{'log_mods'};
+	}
 elsif ($action eq 'stop') {
 	return $text{'log_stop'};
 	}

@@ -37,7 +37,8 @@ sub core_directives
 local($rv);
 $rv = [	[ 'AccessFileName', 0, 5, 'virtual', undef, 5 ],
 	[ 'AddDefaultCharset', 0, 19, 'virtual directory htaccess', 2.0 ],
-	[ 'ClearModuleList AddModule', 1, 2, 'global', -2.0 ],
+	&can_configure_apache_modules() ? ( ) :
+		( [ 'ClearModuleList AddModule', 1, 2, 'global', -2.0 ] ),
 	[ 'AllowOverride', 0, 5, 'directory' ],
 	[ 'AuthName', 0, 4, 'directory htaccess', undef, 10 ],
 	[ 'AuthType', 0, 4, 'directory htaccess', undef, 8 ],
@@ -1251,6 +1252,8 @@ return &parse_select("LogLevel", "");
 
 #########################################################################
 # Module directives
+# This isn't shown if the distro has a way of managing these, such as Debian's
+# /etc/apache/mods-enabled
 sub edit_ClearModuleList_AddModule
 {
 local($mods, @allmods, $d, %mods, $m, $i, $rv);

@@ -334,6 +334,7 @@ csw_input=Package from CSW
 csw_install=Installing package(s) with command $1 ..
 csw_ok=.. install complete.
 csw_failed=.. install failed!
+csw_already=.. already installed.
 csw_retry=.. trying again with new dependencies.
 csw_find=Browse CSW ..
 csw_package=Package

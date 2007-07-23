@@ -235,10 +235,17 @@ if ($access{'global'}) {
 		$ht_icon = { "icon" => "images/dir.gif",
 			     "name" => $text{'htaccess_title'},
 			     "link" => "htaccess.cgi" };
-		$rc_icon = { "icon" => "images/recon.gif",
-			     "name" => $text{'reconfig_title'},
-			     "link" =>
+		if (!&can_configure_apache_modules()) {
+			$rc_icon = { "icon" => "images/recon.gif",
+				     "name" => $text{'reconfig_title'},
+				     "link" =>
 				"reconfig_form.cgi?size=$httpd_size&vol=1" };
+			}
+		else {
+			$rc_icon = { "icon" => "images/mods.gif",
+				     "name" => $text{'mods_title'},
+				     "link" => "edit_mods.cgi" };
+			}
 		$df_icon = { "icon" => "images/defines.gif",
 			     "name" => $text{'defines_title'},
 			     "link" => "edit_defines.cgi" };
@@ -251,7 +258,7 @@ if ($access{'global'}) {
 		&config_icons("global", "edit_global.cgi?",
 			      $ht_icon, $rc_icon, $df_icon,
 			      $access{'types'} eq '*' &&
-			      $access{'virts'} eq "*" ? ( $ed_icon ) : ( ),
+			      $access{'virts'} eq '*' ? ( $ed_icon ) : ( ),
 			      $showing_default &&
 			      @vname > $config{'max_servers'} &&
 			      $config{'max_servers'} ? ( $ds_icon ) : ( ) );

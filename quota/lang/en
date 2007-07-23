@@ -254,6 +254,7 @@ lusers_hblimit=Hard limit
 lusers_sflimit=Soft file limit
 lusers_hflimit=Hard file limit
 lusers_pc_hblocks=Hard %
+lusers_pc_sblocks=Soft %
 lusers_apply=Apply
 lusers_emailheader=Email to users approaching quota
 lusers_email=Send email to users?

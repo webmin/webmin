@@ -1545,5 +1545,125 @@ if ($config{'link_dir'}) {
 	}
 }
 
+# can_configure_apache_modules()
+# Returns 1 if the distro has a way of selecting enabled Apache modules
+sub can_configure_apache_modules
+{
+if ($gconfig{'os_type'} eq 'debian-linux') {
+	# Debian and Ubuntu use an /etc/apacheN/mods-enabled dir
+	return -d "$config{'httpd_dir'}/mods-enabled" &&
+	       -d "$config{'httpd_dir'}/mods-available";
+	}
+else {
+	return 0;
+	}
+}
+
+# list_configured_apache_modules()
+# Returns a list of all Apache modules. Each is a hash containing a mod and
+# enabled, disabled and available flags.
+sub list_configured_apache_modules
+{
+if ($gconfig{'os_type'} eq 'debian-linux') {
+	# Find enabled modules
+	local @rv;
+	local $edir = "$config{'httpd_dir'}/mods-enabled";
+	opendir(EDIR, $edir);
+	foreach my $f (readdir(EDIR)) {
+		if ($f =~ /^(\S+)\.load$/) {
+			push(@rv, { 'mod' => $1, 'enabled' => 1 });
+			}
+		}
+	closedir(EDIR);
+
+	# Add available modules
+	local $adir = "$config{'httpd_dir'}/mods-available";
+	opendir(ADIR, $adir);
+	foreach my $f (readdir(ADIR)) {
+		if ($f =~ /^(\S+)\.load$/) {
+			local ($got) = grep { $_->{'mod'} eq $1 } @rv;
+			if (!$got) {
+				push(@rv, { 'mod' => $1, 'disabled' => 1 });
+				}
+			}
+		}
+	closedir(ADIR);
+
+	# XXX modules from apt-get
+
+	return sort { $a->{'mod'} cmp $b->{'mod'} } @rv;
+	}
+else {
+	# Not supported
+	return ( );
+	}
+}
+
+# add_configured_apache_module(module)
+# Updates the Apache configuration to use some module. Returns undef on success,
+# or an error message on failure.
+sub add_configured_apache_module
+{
+local ($mod) = @_;
+if ($gconfig{'os_type'} eq 'debian-linux') {
+	# XXX download from apt-get ?
+
+	# Enable with a2enmod if installed
+	if (&has_command("a2enmod")) {
+		local $out = &backquote_logged(
+				"a2enmod ".quotemeta($mod)." 2>&1");
+		return $? ? $out : undef;
+		}
+	else {
+		# Fall back to creating links
+		local $adir = "$config{'httpd_dir'}/mods-available";
+		local $edir = "$config{'httpd_dir'}/mods-enabled";
+		opendir(ADIR, $adir);
+		foreach my $f (readdir(ADIR)) {
+			if ($f =~ /^\Q$mod->{'mod'}\E\./) {
+				&symlink_logged("$adir/$f", "$edir/$f") ||
+					return $!;
+				}
+			}
+		closedir(ADIR);
+		return undef;
+		}
+	}
+else {
+	return "Operating system does not support Apache modules";
+	}
+}
+
+# remove_configured_apache_module(module)
+# Updates the Apache configuration to stop using some module. Returns undef
+# on success, or an error message on failure.
+sub remove_configured_apache_module
+{
+local ($mod) = @_;
+if ($gconfig{'os_type'} eq 'debian-linux') {
+	# Disable with a2dismod if installed
+	if (&has_command("a2dismod")) {
+		local $out = &backquote_logged(
+				"a2dismod ".quotemeta($mod)." 2>&1");
+		return $? ? $out : undef;
+		}
+	else {
+		# Fall back to removing links
+		local $edir = "$config{'httpd_dir'}/mods-enabled";
+		opendir(EDIR, $edir);
+		foreach my $f (readdir(EDIR)) {
+			if ($f =~ /^\Q$mod->{'mod'}\E\./) {
+				&unlink_logged("$edir/$f");
+				}
+			}
+		closedir(EDIR);
+		return undef;
+		}
+	}
+else {
+	return "Operating system does not support Apache modules";
+	}
+}
+
 1;
 

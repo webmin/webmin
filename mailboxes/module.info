@@ -9,3 +9,4 @@ readonly=1
 os_support=!windows
 desc_es=Lectura de Correo de Usuarios
 desc_zh_TW.UTF-8=讀取使用者郵件
+desc_fi=Lue S&#228;hk&#246;posteja

@@ -26,3 +26,5 @@ Added a Module Config option for sorting user and group quotas by the percentage
 On Linux systems with the setquota command, it is called instead of edquota to change user and group quotas.
 ---- Changes since 1.340 ----
 Added a Module Config option to sort user lists by the percentage of soft quota used.
+---- Changes since 1.350 ----
+Added a Module Config option to show both hard and/or soft quota percentages.
