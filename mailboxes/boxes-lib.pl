@@ -1762,7 +1762,7 @@ if ($changed) {
 		&open_tempfile(CACHE, ">$cachefile", 1);
 		foreach my $f (@files) {
 			local $short = substr($f, length($dir)+1);
-			&print_tempfile(CACHE, $f,"\n");
+			&print_tempfile(CACHE, $short,"\n");
 			}
 		&close_tempfile(CACHE);
 		local @st = stat($_[0]);
