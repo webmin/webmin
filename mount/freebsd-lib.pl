@@ -168,7 +168,7 @@ sub list_mounted
 {
 # get the list of mounted filesystems
 local(@rv, $_);
-local $cmd = $uname_release =~ /^5\.[0-9]/ ? "freebsd-mounts-5" :
+local $cmd = $uname_release =~ /^[56]\.[0-9]/ ? "freebsd-mounts-5" :
 	     $uname_release =~ /^4\.[0-9]/ ? "freebsd-mounts-4" :
 	     $uname_release =~ /^3\.[1-9]/ ? "freebsd-mounts-3" :
 				             "freebsd-mounts-2";
@@ -348,14 +348,14 @@ sub fstype_name
 {
 local(%fsmap);
 %fsmap = ("ufs", "FreeBSD Unix Filesystem",
-	  "nfs","Network Filesystem",
-	  "cd9660","ISO9660 CD-ROM",
-	  "msdos","MS-DOS Filesystem",
-	  "ext2fs","Linux Filesystem",
-	  "ntfs","Windows NT Filesystem",
-	  "swap","Virtual Memory",
-	  "proc","Process Image Filesystem",
-	  "smbfs","Windows Networking Filesystem");
+	  "nfs", "Network Filesystem",
+	  "cd9660", "ISO9660 CD-ROM",
+	  "msdos", "MS-DOS Filesystem",
+	  "ext2fs", "Linux Filesystem",
+	  "ntfs", "Windows NT Filesystem",
+	  "swap", "Virtual Memory",
+	  "proc", "Process Image Filesystem",
+	  "smbfs", "Windows Networking Filesystem");
 return $config{long_fstypes} && $fsmap{$_[0]} ? $fsmap{$_[0]} : uc($_[0]);
 }
 
