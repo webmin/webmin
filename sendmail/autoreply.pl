@@ -29,9 +29,14 @@ if (!$config{'sendmail_path'}) {
 	}
 
 # read headers and body
+$lnum = 0;
 while(<STDIN>) {
 	s/\r|\n//g;
-	if (/^(\S+):\s+(.*)/) {
+	if (/^From\s+(\S+)/ && $lnum == 0) {
+		# Magic From line
+		$fromline = $1;
+		}
+	elsif (/^(\S+):\s+(.*)/) {
 		$header{lc($1)} = $2;
 		$lastheader = lc($1);
 		}
@@ -39,6 +44,7 @@ while(<STDIN>) {
 		$header{$lastheader} .= $_;
 		}
 	elsif (!$_) { last; }
+	$lnum++;
 	}
 while(<STDIN>) {
 	$body .= $_;
@@ -55,7 +61,8 @@ if ($header{'x-mailing-list'} ||
 	# Do nothing if post is from a mailing list
 	exit 0;
 	}
-if ($header{'from'} =~ /postmaster|mailer-daemon/i) {
+if ($header{'from'} =~ /postmaster|mailer-daemon/i ||
+    $fromline =~ /postmaster|mailer-daemon|<>/ ) {
 	# Do nothing if post is a bounce
 	exit 0;
 	}
