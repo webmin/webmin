@@ -60,13 +60,13 @@ printf "<input type=radio name=other value=0 %s> $text{'no'}</td> </tr>\n",
 	$user[4] =~ /t|1/ ? '' : 'checked';
 
 print "<tr> <td><b>$text{'user_until'}</b></td> <td colspan=3>\n";
-if (!$user[7]) {
+if (!$user[6]) {
 	printf "<input type=radio name=until_def value=1 %s> %s\n",
-		$user[7] ? '' : 'checked', $text{'user_forever'};
+		$user[6] ? '' : 'checked', $text{'user_forever'};
 	printf "<input type=radio name=until_def value=0 %s>\n",
-		$user[7] ? 'checked' : '';
+		$user[6] ? 'checked' : '';
 	}
-print "<input name=until size=30 value='$user[7]'></td> </tr>\n";
+print "<input name=until size=30 value='$user[6]'></td> </tr>\n";
 
 print "</table></td></tr></table>\n";
 print "<table width=100%><tr>\n";

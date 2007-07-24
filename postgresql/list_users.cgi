@@ -24,7 +24,7 @@ foreach $u (sort { $a->[0] cmp $b->[0] } @{$s->{'data'}}) {
 	push(@cols, $u->[5] ? $text{'yes'} : $text{'no'});
 	push(@cols, $u->[2] =~ /t|1/ ? $text{'yes'} : $text{'no'});
 	push(@cols, $u->[4] =~ /t|1/ ? $text{'yes'} : $text{'no'});
-	push(@cols, $u->[7] ? &html_escape($u->[7])
+	push(@cols, $u->[6] ? &html_escape($u->[6])
 			     : $text{'user_forever'});
 	print &ui_checked_columns_row(\@cols, undef, "d", $u->[0]);
 	}
