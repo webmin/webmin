@@ -1,4 +1,4 @@
-desc=Filter Mail
+desc=Filter and Forward Mail
 usermin_depends=mailbox procmail forward spam
 webmin_depends=mailboxes procmail
 category=mail
