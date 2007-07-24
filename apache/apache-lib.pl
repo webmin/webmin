@@ -366,8 +366,8 @@ return \@get_config_cache;
 sub get_config_file
 {
 local ($file) = @_;
-$file = &resolve_links($file);		# Convert sites-enabled to real path
-					# in sites-available
+# Convert sites-enabled to real path in sites-available
+$file = &simplify_path(&resolve_links($file));
 local @rv;
 if (opendir(DIR, $file)) {
 	# Is a directory .. parse all files!
