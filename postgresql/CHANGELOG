@@ -54,3 +54,5 @@ Updated the module to run on Windows, and created a default configuration that w
 When there are too many databases or tables to display, a menu for editing a specific one is displayed in addition to the search field.
 ---- Changes since 1.340 ----
 Use HTML format output from the pgsql command, to handle queries for rows containing newlines and special characters.
+---- Changes since 1.350 ----
+Fixed a bug that prevented the 'valid until' date from being displayed for existing users.
