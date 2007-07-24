@@ -328,3 +328,4 @@ Added a Module Config option to have MySQL users and permissions added to multip
 ---- Changes since 3.43 ----
 Webalizer statistics are now included in cPanel migrations.
 Added a restriction to the Edit Owner Limits page to prevent the creation of catchall email aliases.
+Added a Module Config option to delete aliases when email is disabled for a domain.
