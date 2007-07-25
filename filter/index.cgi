@@ -36,6 +36,10 @@ if ($alias) {
 @filters = &list_filters();
 @links = ( &select_all_link("d"), &select_invert_link("d"),
 	   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );
+($auto) = grep { $_->{'actionreply'} } @filters;
+if (&can_simple_autoreply() && !$auto) {
+	push(@links, "<a href='edit_auto.cgi'>$text{'index_addauto'}</a>");
+	}
 
 @folders = &mailbox::list_folders();
 if (@filters) {

@@ -167,6 +167,23 @@ local ($filter) = @_;
 &procmail::modify_recipe($filter->{'recipe'});
 }
 
+# insert_filter(&filter)
+# Like create_filter, but adds to the top of the .procmailrc
+sub insert_filter
+{
+local ($filter) = @_;
+local $recipe = { };
+&update_filter_recipe($filter, $recipe);
+local @pmrc = &procmail::parse_procmail_file(
+	$filter->{'file'} || $procmail::procmailrc);
+if (@pmrc) {
+	&procmail::create_recipe_before($recipe, $pmrc[0]);
+	}
+else {
+	&procmail::create_recipe($recipe);
+	}
+}
+
 # update_filter_recipe(&filter, &recipe)
 # Update a procmail recipe based on some filter
 sub update_filter_recipe
@@ -431,6 +448,14 @@ if ($f->{'continue'}) {
 	$action = &text('index_acontinue', $action);
 	}
 return $action;
+}
+
+# can_simple_autoreply()
+# Returns 1 if the current filter rules are simple enough to allow an autoreply
+# to be added or removed. 
+sub can_simple_autoreply
+{
+return 1;	# Always true for now
 }
 
 1;

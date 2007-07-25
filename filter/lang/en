@@ -6,6 +6,7 @@ index_none=You do not have any mail filters defined yet. All email will be deliv
 index_none2=None of your existing Procmail rules are simple enough to display here.
 index_none3=You do not have any mail filters defined yet. All email will be delivered to your Inbox, after spam filtering.
 index_add=Add a new email filter.
+index_addauto=Quick automatic reply setup.
 index_cspam=Email is spam
 index_cheader=Header $1 matches $2
 index_cre=Headers match $1
@@ -83,3 +84,9 @@ aliases_your=Your mailbox
 aliases_delete=Delete mail
 aliases_other=Mailbox of user $1
 aliases_auto=Autoresponder with message $1
+
+auto_title=Email Automatic Reply
+auto_header=Automatic email reply options
+auto_enabled=Automatic response enabled?
+auto_reply=Reply message
+auto_period=Minimum interval between replies
