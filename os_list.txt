@@ -23,6 +23,7 @@ Scientific Linux		$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ 
 Scientific Linux		$1	redhat-linux	12.0	`cat /etc/redhat-release 2>/dev/null` =~ /Scientific\s+Linux.*\s+release\s+(\S+)/i && $1 >= 4
 Gralinux			$1	redhat-linux	$2+8.0	`cat /etc/redhtat-release 2>/dev/null` =~ /Gralinux\s+(ES|AS|WS)\s+release\s+(\d+)/i
 NeoShine Linux			$1	redhat-linux	$1+10	`cat /etc/neoshine-release 2>/dev/null` =~ /NeoShine\s+Linux.*release\s+(\d+)/i
+Endian Firewall Linux		$1	redhat-linux	$1+10.0	`cat /etc/endian-release 2>/dev/null` =~ /release\s+(\S+)/
 
 # Redhat enterprise versions
 Redhat Enterprise Linux			2.1AS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /(Advanced\s+Server.*2\.1)|(AS.*2\.1)/i
