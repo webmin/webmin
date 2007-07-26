@@ -36,8 +36,8 @@ else {
 			}
 		}
 
-	print "<center><b>",&text('ddrops_rusure', scalar(@dbs),
-				  $tables, $rows),"\n";
+	print "<center><b>",&text($tables ? 'ddrops_rusure' : 'ddrops_rusure2',
+				  scalar(@dbs), $tables, $rows),"\n";
 	if (&indexof($master_db, @dbs) >= 0) {
 		print $text{'ddrop_mysql'},"\n";
 		}

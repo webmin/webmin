@@ -182,7 +182,8 @@ else {
 			}
 		}
 	print &ui_links_row(\@rowlinks);
-	if (@icons && $access{'delete'} && @icons <= $max_dbs) {
+	if (@icons && $access{'delete'} &&
+	    (@icons <= $max_dbs || $in{'search'})) {
 		print &ui_form_end([ [ "delete", $text{'index_drops'} ] ]);
 		}
 

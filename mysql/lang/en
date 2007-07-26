@@ -79,6 +79,7 @@ ddrop_empty=Just Delete All Tables
 ddrops_err=Failed to drop databases
 ddrops_title=Drop Databases
 ddrops_rusure=Are you sure you want to drop the $1 selected databases? $2 tables containing $3 rows of data will be deleted.
+ddrops_rusure2=Are you sure you want to drop the $1 selected databases?
 ddrops_mysql=Because the master database is selected, dropping it will probably make your MySQL server unusable!
 ddrops_ok=Drop Databases
 ddrops_enone=No databases selected
