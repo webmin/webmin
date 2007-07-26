@@ -1,0 +1,6 @@
+gencert=1
+gencsr=1
+signcsr=1
+import=1
+view=1
+manual=1

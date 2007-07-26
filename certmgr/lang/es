@@ -1,0 +1,116 @@
+certificate=Certificado
+key=Llave
+csr=CSR (Requisito de firmar certificado)
+
+e_file=Un error ocurrio mientras se trataba de obtener informacion de este archivo
+e_notcert=Quiza este archive no esta encoded en forma PEM o no es un certificado o llave valido
+e_genfailed=Generacion no fue exitoso
+
+cn=Nombre Común (por ejemplo, nombre de este host)
+o=Nombre de Organización (por ejemplo, nombre de empresa)
+ou=Nombre de Unidad de Organización (por ejemplo, división)
+l=Localidad (eg. ciudad)
+st=Estado o Provincia (name completo)
+c=País (codigo de 2 letras)
+emailAddress=dirección de email (por ejemplo, webmaster@company.com)
+password=Seña
+confirm_password=Confirmar seña
+keysize=Temaño de llave (bits)
+keytype=Tipo de llave
+issued_on=Fecha de certificación
+expires_on=Fecha de vencimiento
+md5fingerprint=Huella dactilar MD5
+
+modulus=Modulus (del llave publico)
+publicExponent=Exponente Publico
+privateExponent=Exponente Privado
+prime1=Número Primo (uno)
+prime2=Número Primo (dos)
+exponent1=Exponente (uno)
+exponent2=Exponente (dos)
+coefficient=Coeficiente
+
+keyfile=Nombre del archivo de la llave
+keycertfile=Nombre del archivo del par de la llave y el certificado
+continue=Continuar
+
+certmgrlib_issuer=Emisor
+certmgrlib_subject=Sujecto
+certmgrlib_e_file_open=Unable to open file
+certmgrlib_e_exec=Unable to determine file type: couldn't execute openssl
+certmgrlib_e_cert=Unable to determine file type: invalid certificate
+certmgrlib_e_cert=Unable to determine file type: invalid key
+
+index_title=Certificate Manager
+index_header=Certificate Manager Main Index
+index_gencert=Generate Self Signed Certificate and Key
+index_gencsr=Generate Key and Certificate Signing Request (CSR)
+index_import=Import Key or Signed Certificate
+index_view=Manage/View Installed Certificates and Keys
+
+index_index=index
+
+gencert_title=Generate Certificate & Key
+gencert_header=Certificate Manager: Generate Self Signed Certificate and Key
+gencert_generate=Generate Key
+gencert_password_notice=Note:  If this key will be used as a server SSL key, any password entered here must be entered each time that an SSL service which uses this key is started.  If you don't want to be required to provide the password each time, you may leave the password blank.  However, anyone with root access to this machine can potentially take the key and decrypt any SSL traffic which uses this key.
+gencert_certfile=Certificate file name
+gencert_days=Certificate valid for (days)
+gencert_overwrite=The above certificate(s) and/or key(s) will be replaced if you continue.  Are you sure you wish to continue?
+gencert_moreinfo=To download or view more information about a certificate or key, follow the link from its filename.
+gencert_error=Your submission had the following error(s):
+gencert_pleasefix=Please correct any issues and resubmit.
+gencert_e_nocn=No common name (CN) given
+gencert_e_badpw=Passwords do not match
+gencert_e_nodays=No certificate validity length specified
+gencert_e_nofilename=At least one certificate and one key must be generated
+gencert_e_genfailed=Error, certificate and key not generated
+gencert_genworked=Certificate and key generated
+gencert_saved_key=The key was saved as
+gencert_saved_cert=The certificate was saved as
+gencert_saved_keycert=The certificate+key file was saved as
+
+gencsr_title=Generate CSR
+gencsr_csrfile=CSR filename
+gencsr_generate=Generate CSR
+gencsr_overwrite=The above CSR and/or key will be replaced if you continue.  Are you sure you wish to continue?
+gencsr_moreinfo=To download or view more information about a CSR or key, follow the link from its filename.
+gencsr_error=Your submission had the following error(s):
+gencsr_e_genfailed=Error, CSR and key not generated
+gencsr_e_nofilename=One CSR and one key filename must be specified
+gencsr_genworked=CSR and key generated
+gencsr_saved_csr=The CSR was saved as
+
+manage_encrypt=Encrypt Private Key
+manage_decrypt=Decrypt Private Key
+manage_changepw=Change Password of Private Key
+manage_delete=Delete Certificate
+
+view_title=View Certificate/CSR/Key
+view_view=View
+view_update=Update
+view_download=Download
+view_delete=Delete
+view_select=Please select a file to view
+view_choose=Choose
+view_deleted=File deleted sucessfully
+view_e_not_deleted=Error: Problem deleting file
+view_e_nofile=File not found or not a regular file
+view_wildcard=File Wildcard
+
+import_title=Import Key or Signed Certificate
+import_e_nodir=No directory selected
+import_e_nofilename=Filename not received with file
+import_e_nofile=File not received
+import_e_fileexists=File exists
+import_error=Your upload had the following errors
+import_pleasefix=Please fix any problems and re-upload your file
+import_header=Choose a certificate or key to upload
+import_choose=Choose a directory
+import_reset=Reset
+import_cert_file=Certificate file to upload
+import_cert_destination=Destination directory of certificate
+import_upload_cert=Upload Certificate
+import_key_file=Key file to upload
+import_key_destination=Destination directory of key
+import_upload_key=Upload Key

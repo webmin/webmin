@@ -1,0 +1,9 @@
+---- Changes since 1.501 ----
+Added config-redhat-linux
+Modified config-* to include: ssl_cnf_file=/usr/share/ssl/openssl.cnf ssl_sign_ca_private_key= ssl_sign_ca_certificate= (JBB8)
+---- Changes since 1.502 ----
+Added edit capablity to ssl_cnf_file in config.info. Scripts edit_file.cgi and edit_cmd.cgi added to module (JBB8)
+---- Changes since 1.503 ----
+Added defaults for email and other cert attributes
+---- Changes since 1.504 ----
+Added a page for manually editing the OpenSSL config file

@@ -1,0 +1,16 @@
+openssl_cmd=/usr/bin/openssl
+ssl_dir=/usr/share/ssl
+ssl_cert_dir=/usr/share/ssl/certs
+ssl_key_dir=/usr/share/ssl/private
+ssl_csr_dir=/usr/share/ssl/csr
+ssl_cnf_file=/usr/share/ssl/openssl.cnf
+ssl_sign_ca_private_key=
+ssl_sign_ca_certificate=
+key_filename=hostkey.pem
+cert_filename=hostcert.pem
+key_cert_filename=hostkey+cert.pem
+csr_filename=hostcsr.pem
+default_days=730
+default_wildcard=*.pem
+sign_filename=signedcsr.pem
+incsr_filename=csr.pem

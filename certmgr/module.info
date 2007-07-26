@@ -1,0 +1,5 @@
+category=system
+os_support=*-linux freebsd macos solaris openbsd
+desc=PKI Certificate and Key Management
+name=certmgr
+version=1.505
