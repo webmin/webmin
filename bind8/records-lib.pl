@@ -369,7 +369,8 @@ for($i=0; $i<@{$_[1]}; $i++) {
 	$r = $_[1]->[$i];
 	if ($r->{'type'} eq "SOA") {
 		$v = $r->{'values'};
-		# already set serial if no acl allow it to update or update is disabled
+		# already set serial if no acl allow it to update or update
+		# is disabled
 		$serial = $v->[2];
 		if ($config{'updserial_on'}) {
 			# automatically handle serial numbers ?
@@ -687,10 +688,18 @@ sub compute_serial
 {
 local ($old) = @_;
 if ($config{'soa_style'} == 1 && $old =~ /^(\d{8})(\d\d)$/) {
-	if ($1 eq &date_serial()) {
-		return sprintf "%d%2.2d", $1, $2+1;
+	if ($1 >= &date_serial()) {
+		if ($2 >= 99) {
+			# Have to roll over to next day
+			return sprintf "%d%2.2d", $1+1, $config{'soa_start'};
+			}
+		else {
+			# Just increment within this day
+			return sprintf "%d%2.2d", $1, $2+1;
+			}
 		}
 	else {
+		# A new day has come
 		return &date_serial().sprintf("%2.2d", $config{'soa_start'});
 		}
 	}
