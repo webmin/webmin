@@ -58,12 +58,30 @@ if (@filters) {
 				  @filters > 1 ? ( $text{'index_move'} ) : ( ),
 				], 100, 0, \@tds);
 
-	# Add a magic non-editable row for global spamassassin run
+	# Add a magic non-editable row(s) for global spamassassin run
 	if (&get_global_spamassassin()) {
 		print &ui_columns_row(
 			[ "", $text{'index_calways'}, $text{'index_aspam'},
 			  @filters > 1 ? ( "" ) : ( ) ],
 			\@tds);
+		$spamfile = &get_global_spam_path();
+		if ($spamfile) {
+			$folder = &file_to_folder($spamfile, \@folders, 0, 1);
+			$id = &mailbox::folder_name($folder);
+			if ($folder->{'fake'}) {
+				$sflink = "<u>$folder->{'name'}</u>";
+				}
+			else {
+				$sflink =
+				    "<a href='../mailbox/index.cgi?id=$id'>".
+				    "$folder->{'name'}</a>";
+				}
+			print &ui_columns_row(
+				[ "", $text{'index_cspam'},
+				      &text('index_afolder', $sflink),
+				  @filters > 1 ? ( "" ) : ( ) ],
+				\@tds);
+			}
 		}
 
 	# Show editable rows
@@ -120,7 +138,25 @@ else {
 		print "<b>$text{'index_none2'}</b><p>\n";
 		}
 	elsif (&get_global_spamassassin()) {
-		print "<b>$text{'index_none3'}</b><p>\n";
+		$spamfile = &get_global_spam_path();
+		if ($spamfile) {
+			$folder = &file_to_folder($spamfile, \@folders, 0, 1);
+			print "<b>";
+			$id = &mailbox::folder_name($folder);
+			if ($folder->{'fake'}) {
+				print &text('index_none4',
+					    "<u>$folder->{'name'}</u>");
+				}
+			else {
+				print &text('index_none4',
+				    "<a href='../mailbox/index.cgi?id=$id'>".
+				    "$folder->{'name'}</a>");
+				}
+			print "</b><p>\n";
+			}
+		else {
+			print "<b>$text{'index_none3'}</b><p>\n";
+			}
 		}
 	else {
 		print "<b>$text{'index_none'}</b><p>\n";

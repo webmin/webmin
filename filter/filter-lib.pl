@@ -12,9 +12,11 @@ if (&get_product_name() eq 'usermin') {
 	# enabled before switching away from root
 	if ($config{'virtualmin_spam'} && -x $config{'virtualmin_spam'}) {
 		local $out = `$config{'virtualmin_spam'} $remote_user </dev/null 2>/dev/null`;
+		$out =~ s/\r|\n//g;
 		if ($out =~ /\d/) {
 			# Yes - we can show the user this
 			$global_spamassassin = 2;
+			$virtualmin_domain_id = $out;
 			}
 		}
 
@@ -256,12 +258,12 @@ local ($filter1, $filter2) = @_;
 &procmail::swap_recipes($filter1->{'recipe'}, $filter2->{'recipe'});
 }
 
-# file_to_folder(file, &folders, [homedir])
+# file_to_folder(file, &folders, [homedir], [fake-if-missing])
 # Given a path like mail/foo or ~/mail/foo or $HOME/mail/foo or
 # /home/bob/mail/foo, returns the folder object for it.
 sub file_to_folder
 {
-local ($file, $folders, $home) = @_;
+local ($file, $folders, $home, $fake) = @_;
 $home ||= $remote_user_info[7];
 $file =~ s/^\~/$home/;
 $file =~ s/^\$HOME/$home/;
@@ -270,6 +272,21 @@ if ($file !~ /^\//) {
 	}
 local ($folder) = grep { $_->{'file'} eq $file ||
 			 $_->{'file'}.'/' eq $file } @$folders;
+if (!$folder && $fake) {
+	# Create a fake folder object to match
+	$folder = { 'file' => $file,
+		    'type' => 1,
+		    'fake' => 1 };
+	if ($folder->{'file'} =~ s/\/$//) {
+		$folder->{'type'} = 2;
+		}
+	$folder->{'file'} =~ /\/\.?([^\/]+)$/;
+	$folder->{'name'} = $1;
+	if (lc($folder->{'name'}) eq 'spam') {
+		$folder->{'spam'} = 1;
+		$folder->{'name'} = "Spam";
+		}
+	}
 return $folder;
 }
 
@@ -281,6 +298,33 @@ return $global_spamassassin if ($global_spamassassin);
 local @recipes = &procmail::parse_procmail_file(
 	$spam::config{'global_procmailrc'});
 return &spam::find_spam_recipe(\@recipes) ? 1 : 0;
+}
+
+# get_global_spam_path()
+# Returns the global path to which spam is delivered, typically by a 
+# Virtualmin per-domain procmail file
+sub get_global_spam_path
+{
+if ($virtualmin_domain_id) {
+	# Read the Virtualmin procmailrc for the domain
+	local $vmpmrc = "$config{'virtualmin_config'}/procmail/".
+		        $virtualmin_domain_id;
+	local @vmrecipes = &procmail::parse_procmail_file($vmpmrc);
+	local $spamrec = &spam::find_file_recipe(\@vmrecipes);
+	if ($spamrec) {
+		return $spamrec->{'action'};
+		}
+	}
+# Also check the global /etc/procmailrc
+local @recipes = &procmail::parse_procmail_file(
+	$spam::config{'global_procmailrc'});
+local $spamrec = &spam::find_file_recipe(\@recipes);
+if ($spamrec) {
+	return $spamrec->{'action'};
+	}
+else {
+	return undef;
+	}
 }
 
 sub has_spamassassin
