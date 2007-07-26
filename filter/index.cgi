@@ -33,6 +33,11 @@ if ($alias) {
 	print "</ul>\n";
 	}
 
+# Check if /etc/procmailrc forces local delivery
+if (&no_user_procmailrc()) {
+	print $text{'index_force'},"<p>\n";
+	}
+
 @filters = &list_filters();
 @links = ( &select_all_link("d"), &select_invert_link("d"),
 	   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );

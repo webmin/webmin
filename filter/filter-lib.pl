@@ -458,5 +458,17 @@ sub can_simple_autoreply
 return 1;	# Always true for now
 }
 
+# no_user_procmailrc()
+# Returns 1 if /etc/procmailrc has a recipe to always deliver to the user's
+# mailbox, which prevents this module from configuring anything useful
+sub no_user_procmailrc
+{
+local @recipes = &procmail::parse_procmail_file(
+	$spam::config{'global_procmailrc'});
+local ($force) = grep { $_->{'action'} eq '$DEFAULT' &&
+			!@{$_->{'conds'}} } @recipes;
+return $force;
+}
+
 1;
 

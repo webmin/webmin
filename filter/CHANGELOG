@@ -6,3 +6,4 @@ Added a message to the module's main page to detect system-level mail aliases (i
 Added an option to set the date range for which autoreplies are sent.
 ---- Changes since 1.290 ----
 Added a simple page for setting up an email autoresponder.
+Display a warning if /etc/procmailrc is setup to always deliver to the inbox, which would prevent user-defined filters from working.
