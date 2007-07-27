@@ -9,3 +9,4 @@ Added a simple page for setting up an email autoresponder.
 Display a warning if /etc/procmailrc is setup to always deliver to the inbox, which would prevent user-defined filters from working.
 If email classified as spam is delivered to some folder by a global Procmail configuration (either in /etc/procmailrc or a Virtualmin per-domain setting), display this on the list of filters.
 Changed the module name to Filter and Forward Mail.
+Added a simple page for setting up forwarding.

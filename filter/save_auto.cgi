@@ -3,6 +3,7 @@
 
 require './filter-lib.pl';
 &ReadParse();
+&error_setup($text{'auto_err'});
 
 # Find existing autoreply filter object
 &lock_file($procmail::procmailrc);

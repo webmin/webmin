@@ -502,6 +502,14 @@ sub can_simple_autoreply
 return 1;	# Always true for now
 }
 
+# can_simple_forward()
+# Returns 1 if the current filter rules are simple enough to allow a mail
+# forwarder to be added or removed
+sub can_simple_forward
+{
+return 1;	# Always can for now
+}
+
 # no_user_procmailrc()
 # Returns 1 if /etc/procmailrc has a recipe to always deliver to the user's
 # mailbox, which prevents this module from configuring anything useful

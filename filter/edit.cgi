@@ -104,10 +104,11 @@ print &ui_table_row(
 	&ui_oneradio("amode", 4, $text{'edit_amode4'}, $amode == 4),
 	"", undef, \@tds);
 
-# Forward to some address
+# Forward to some addresses
 print &ui_table_row(
 	&ui_oneradio("amode", 1, $text{'edit_amode1'}, $amode == 1),
-	&ui_textbox("forward", $amode == 1 ? $filter->{'action'} : "", 70),
+	&ui_textarea("forward", $amode == 1 ?
+		join("\n", split(/,/, $filter->{'action'})) : "", 3, 70),
 	undef, \@tds);
 
 # Save to a folder or file

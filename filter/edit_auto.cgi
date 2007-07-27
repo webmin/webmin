@@ -9,17 +9,24 @@ require './filter-lib.pl';
 # Get the autoreply filter, if any
 @filters = &list_filters();
 ($filter) = grep { $_->{'actionreply'} } @filters;
+$dis = !$filter;
 
 print &ui_form_start("save_auto.cgi", "post");
 print &ui_table_start($text{'auto_header'}, "width=100%", 2);
 
 # Autoreply enabled?
+@names = ( "reply" );
+$dis1 = &js_disable_inputs(\@names, [ ]);
+$dis2 = &js_disable_inputs([ ], \@names);
 print &ui_table_row($text{'auto_enabled'},
-	&ui_yesno_radio("enabled", $filter ? 1 : 0));
+	&ui_radio("enabled", $filter ? 1 : 0,
+		  [ [ 1, $text{'yes'}, "onClick='$dis2'" ],
+		    [ 0, $text{'no'}, "onClick='$dis1'" ] ]));
 
 # Message
 print &ui_table_row($text{'auto_reply'},
-	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 80));
+	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 80,
+		     undef, $dis));
 
 # Period
 $r = $filter->{'reply'};

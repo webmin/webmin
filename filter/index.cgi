@@ -45,6 +45,10 @@ if (&no_user_procmailrc()) {
 if (&can_simple_autoreply() && !$auto) {
 	push(@links, "<a href='edit_auto.cgi'>$text{'index_addauto'}</a>");
 	}
+($fwd) = grep { $_->{'actiontype'} eq '!' } @filters;
+if (&can_simple_forward() && !$fwd) {
+	push(@links, "<a href='edit_forward.cgi'>$text{'index_addfwd'}</a>");
+	}
 
 @folders = &mailbox::list_folders();
 if (@filters) {

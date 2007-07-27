@@ -84,7 +84,10 @@ else {
 		}
 	elsif ($in{'amode'} == 1) {
 		# Forward to an address
-		$in{'forward'} =~ /^\S+$/ || &error($text{'save_eforward'});
+		$in{'forward'} =~ /\S/ || &error($text{'save_eforward'});
+		$in{'forward'} =~ s/^\s+//;
+		$in{'forward'} =~ s/\s+$//;
+		$in{'forward'} =~ s/\s+/,/g;
 		$filter->{'action'} = $in{'forward'};
 		$filter->{'actiontype'} = '!';
 		}
