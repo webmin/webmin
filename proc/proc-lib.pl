@@ -96,12 +96,12 @@ return if ($module_info{'usermin'});	# already switched!
 if ($access{'uid'} < 0) {
 	local @u = getpwnam($remote_user);
 	@u || &error("Failed to find user $remote_user");
-	$( = $u[3]; $) = "$u[3] $u[3]";
+	($(, $)) = ($u[3], "$u[3] $u[3]");
 	($>, $<) = ($u[2], $u[2]);
 	}
 elsif ($access{'uid'}) {
 	local @u = getpwuid($access{'uid'});
-	$( = $u[3]; $) = "$u[3] $u[3]";
+	($(, $)) = ($u[3], "$u[3] $u[3]");
 	($>, $<) = ($u[2], $u[2]);
 	}
 }
