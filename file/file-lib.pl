@@ -169,7 +169,7 @@ local @u = $user ? getpwnam($user) :
 				getpwuid($access{'uid'});
 if ($u[2]) {
 	@u || &error($text{'switch_euser'});
-	$( = $u[3]; $) = "$u[3] ".join(" ", $u[3], &other_groups($u[0]));
+	($(, $)) = ($u[3], "$u[3] ".join(" ", $u[3], &other_groups($u[0])));
 	($>, $<) = ($u[2], $u[2]);
 	umask(oct($access{'umask'}));
 	}
@@ -185,7 +185,7 @@ if (!$module_info{'usermin'} && $access{'uid'}) {
 	@u || &error($text{'switch_euser'});
 	local @other = &other_groups($u[0]);
 	&go_chroot();
-	$( = $u[3]; $) = "$u[3] ".join(" ", $u[3], @other);
+	($(, $)) = ($u[3], "$u[3] ".join(" ", $u[3], @other));
 	($>, $<) = ($u[2], $u[2]);
 	umask(oct($access{'umask'}));
 	}
