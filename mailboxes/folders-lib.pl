@@ -2484,5 +2484,21 @@ if ($@) {
 	}
 }
 
+# generate_message_id(from-address)
+# Returns a unique ID for a new message
+sub generate_message_id
+{
+local ($fromaddr) = @_;
+local ($finfo) = &split_addresses($fromaddr);
+local $dom;
+if ($finfo && $finfo->[0] =~ /\@(\S+)$/) {
+	$dom = $1;
+	}
+else {
+	$dom = &get_system_hostname();
+	}
+return "<".time().".".$$."\@".$dom.">";
+}
+
 1;
 

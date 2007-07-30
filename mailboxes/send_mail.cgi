@@ -45,13 +45,15 @@ $subs = join("", map { "&sub=$_" } @sub);
 
 # Construct the email
 $in{'from'} || &error($text{'send_efrom'});
+$newmid = &generate_message_id($in{'from'});
 $mail->{'headers'} = [ [ 'From', $in{'from'} ],
 		       [ 'Subject', $in{'subject'} ],
 		       [ 'To', $in{'to'} ],
 		       [ 'Cc', $in{'cc'} ],
 		       [ 'Bcc', $in{'bcc'} ],
 		       [ 'X-Originating-IP', $ENV{'REMOTE_ADDR'} ],
-		       [ 'X-Mailer', "Webmin ".&get_webmin_version() ] ];
+		       [ 'X-Mailer', "Webmin ".&get_webmin_version() ],
+		       [ 'Message-Id', $newmid ] ];
 push(@{$mail->{'headers'}}, [ 'X-Priority', $in{'pri'} ]) if ($in{'pri'});
 $in{'body'} =~ s/\r//g;
 if ($in{'body'} =~ /\S/) {
