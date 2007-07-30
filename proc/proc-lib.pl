@@ -158,14 +158,13 @@ else {
 		if ($_[1]) {
 			if (defined($_[2])) {
 				# switch to given UID and GID
-				$( = $_[2]; $) = "$_[2] $_[2]";
+				($(, $)) = ($_[2], "$_[2] $_[2]");
 				($>, $<) = ($_[1], $_[1]);
 				}
 			else {
 				# switch to UID and all GIDs
 				local @u = getpwuid($_[1]);
-				$( = $u[3];
-				$) = "$u[3] ".join(" ", $u[3], &other_groups($u[0]));
+				($(, $)) = ($u[3], "$u[3] ".join(" ", $u[3], &other_groups($u[0])));
 				($>, $<) = ($u[2], $u[2]);
 				}
 			}
