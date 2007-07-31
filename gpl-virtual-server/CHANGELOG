@@ -329,3 +329,8 @@ Added a Module Config option to have MySQL users and permissions added to multip
 Webalizer statistics are now included in cPanel migrations.
 Added a restriction to the Edit Owner Limits page to prevent the creation of catchall email aliases.
 Added a Module Config option to delete aliases when email is disabled for a domain.
+---- Changes since 3.44 ----
+AWstats statistics are now included in cPanel migrations.
+The real name of a virtual server's Unix user is updated when the server's description is changed.
+Backported the simpler alias editing form from Virtualmin Pro, which makes it quicker to setup autoreponders and forwarders. Also includes easier to use fields for advanced autoresponder options, like the reply period and date ranges.
+Added a link from the Mail Aliases page to manually edit aliases in a domain using a text box. This makes bulk changes and copies simpler.
