@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # index.cgi
 # Display icons for the various shorewall configuration files
 
@@ -18,7 +18,7 @@ else {
 
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("shorewall", "doc", "google"),
-		undef, undef, &text('index_version', $shorewall_version));
+		undef, undef, &text('index_version', &get_printable_version($shorewall_version)));
 
 	if (!-d $config{'config_dir'}) {
 		# Config dir not found!
@@ -29,7 +29,7 @@ else {
 	else {
 		# Just show the file icons
 		@files = grep { &can_access($_) } @shorewall_files;
-		@titles = map { $text{$_."_title"}."<br>($_)" } @files;
+		@titles = map { $text{&clean_name($_)."_title"}."<br>($_)" } @files;
 		@links = map { "list.cgi?table=".$_ } @files;
 		@icons = map { "images/".$_.".gif" } @files;
 		&icons_table(\@links, \@titles, \@icons, 4);

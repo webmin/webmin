@@ -1,3 +1,10 @@
+---- Changes since 1.351 ----
+Corrected name to "Shoreline Firewall".
+Correctly determine Shorewall version for beta releases.
+Corrected zones file support on version 3 or greater when IPSECFILE=ipsec.
+Added bug compatibility with IPSECFILE on Shorewall 3.4.0-3.4.4.
+Added support for renaming firewall zone.
+Added support for editing of params & shorewall.conf.
 ---- Changes since 1.140 ----
 Added buttons for adding rules or other table entries above or below an existing entry.
 Added support for OpenVPN and generic tunnels.

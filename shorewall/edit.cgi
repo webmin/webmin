@@ -1,12 +1,13 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # edit.cgi
 # Display a form for editing or creating a table entry
 
 require './shorewall-lib.pl';
 &ReadParse();
+&get_clean_table_name(\%in);
 &can_access($in{'table'}) || &error($text{'list_ecannot'});
 if ($in{'new'}) {
-	&ui_print_header(undef, $text{$in{'table'}."_create"}, "");
+	&ui_print_header(undef, $text{$in{'tableclean'}."_create"}, "");
 	if ($in{'before'} ne '') {
 		$msg = &text('edit_before', $in{'before'}+1);
 		}
@@ -16,9 +17,8 @@ if ($in{'new'}) {
 	print "<center><font size=+1>$msg</font></center>\n" if ($msg);
 	}
 else {
-	&ui_print_header(undef, $text{$in{'table'}."_edit"}, "");
-	$pfunc = $in{'table'}."_parser";
-	$pfunc = "standard_parser" if (!defined(&$pfunc));
+	&ui_print_header(undef, $text{$in{'tableclean'}."_edit"}, "");
+	$pfunc = &get_parser_func(\%in);
 	@table = &read_table_file($in{'table'}, $pfunc);
 	$row = $table[$in{'idx'}];
 	}
@@ -31,10 +31,10 @@ print "<input type=hidden name=before value='$in{'before'}'>\n";
 print "<input type=hidden name=after value='$in{'after'}'>\n";
 
 print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",$text{$in{'table'}."_header"},"</b></td> </tr>\n";
+print "<tr $tb> <td><b>",$text{$in{'tableclean'}."_header"},"</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
-$ffunc = $in{'table'}."_form";
+$ffunc = $in{'tableclean'}."_form";
 &$ffunc(@$row);
 
 print "</table></td></tr></table>\n";
@@ -51,5 +51,5 @@ print "</table>\n";
 
 print "</form>\n";
 
-&ui_print_footer("list.cgi?table=$in{'table'}", $text{$in{'table'}."_return"});
+&ui_print_footer("list.cgi?table=$in{'table'}", $text{$in{'tableclean'}."_return"});
 

@@ -1,16 +1,16 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Display a form for editing or creating a comment
 
 require './shorewall-lib.pl';
 &ReadParse();
+&get_clean_table_name(\%in);
 &can_access($in{'table'}) || &error($text{'list_ecannot'});
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{"comment_create"}, "");
 	}
 else {
 	&ui_print_header(undef, $text{"comment_edit"}, "");
-	$pfunc = $in{'table'}."_parser";
-	$pfunc = "standard_parser" if (!defined(&$pfunc));
+	$pfunc = &get_parser_func(\%in);
 	@table = &read_table_file($in{'table'}, $pfunc);
 	$row = $table[$in{'idx'}];
 	}
@@ -33,5 +33,5 @@ else {
 			     [ "delete", $text{'delete'} ] ]);
 	}
 
-&ui_print_footer("list.cgi?table=$in{'table'}", $text{$in{'table'}."_return"});
+&ui_print_footer("list.cgi?table=$in{'table'}", $text{$in{'tableclean'}."_return"});
 

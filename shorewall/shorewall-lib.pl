@@ -1,6 +1,8 @@
 # shorewall-lib.pl
 # Common functions for the shorewall configuration files
-# XXX rule sections
+# FIXME:
+# - rule sections
+# - read_shorewall_config & standard_parser do not allow quoted comment characters
 
 do '../web-lib.pl';
 &init_config();
@@ -8,6 +10,8 @@ do '../ui-lib.pl';
 
 # Get the version
 $shorewall_version = &get_shorewall_version(0);
+%shorewall_config = &read_shorewall_config();
+#&dump_shorewall_config();
 
 # get access permissions
 %access = &get_module_acl();
@@ -15,10 +19,18 @@ $shorewall_version = &get_shorewall_version(0);
 @shorewall_files = ( 'zones', 'interfaces', 'policy', 'rules', 'tos',
 	   	     'masq', 'nat', 'proxyarp', 'routestopped',
 	   	     'tunnels', 'hosts', 'blacklist',
-		     ( &version_atleast(2, 3) ? ( 'providers' ) : ( ) ) );
+		     ( &version_atleast(2, 3) ? ( 'providers' ) : ( ) ),
+	   	     'params', 'shorewall.conf',
+);
 @comment_tables = ( 'masq', 'nat', 'rules', 'tcrules' );
 
-# version_atleast(v1, v2, v3)
+sub debug_message
+{
+	print STDERR scalar(localtime).": shorewall-lib: @_\n";
+}
+
+# version_atleast(v1, v2, v3, ...)
+# - Check if the Shorewall version is greater than or equal to the one supplied.
 sub version_atleast
 {
 local @vsp = split(/\./, $shorewall_version);
@@ -28,6 +40,54 @@ for($i=0; $i<@vsp || $i<@_; $i++) {
 	return 1 if ($vsp[$i] > $_[$i]);
 	}
 return 1;	# same!
+}
+
+sub read_shorewall_config
+{
+	local @ret;
+	open(SHOREWALL_CONF, "$config{'config_dir'}/shorewall.conf");
+	while (<SHOREWALL_CONF>) {
+		chomp;
+		s/\r//;
+		s/#.*$//;
+		@F = split( /=/, $_, 2 );
+		next if $#F != 1;
+		push @ret, ( $F[0], $F[1] );
+	}
+	close(SHOREWALL_CONF);
+	return @ret;
+}
+
+# dump_shorewall_config()
+# - Debugging code
+sub dump_shorewall_config
+{
+	for (sort keys %shorewall_config) {
+		print STDERR "$_=$shorewall_config{$_}\n";
+	}
+}
+
+# shorewall_config(var)
+sub shorewall_config
+{
+	if (exists $shorewall_config{$_[0]}  &&  defined $shorewall_config{$_[0]}) {
+		return $shorewall_config{$_[0]};
+	}
+	return '';
+}
+
+# return true if new zones format is in use
+sub new_zones_format
+{
+	# Shorewall 3.4.0 - 3.4.4 have a bug that prevents the old format from being used.
+	if (&version_atleast(3, 4)  &&  !&version_atleast(3, 4, 5)) {
+		return 1;
+	}
+	# Zones table is in new format in Shorewall 3, unless shorewall.conf has IPSECFILE=ipsec
+	if (!&version_atleast(3)  ||  &shorewall_config('IPSECFILE') eq 'ipsec') {
+		return 0;
+	}
+	return 1;
 }
 
 # read_table_file(table, &parserfunc)
@@ -244,6 +304,7 @@ sub unlock_table
 &unlock_file("$config{'config_dir'}/$_[0]");
 }
 
+# parser for whitespace-separated config files
 sub standard_parser
 {
 local $l = $_[0];
@@ -251,6 +312,52 @@ $l =~ s/#.*$//;
 local @sp = split(/\s+/, $l);
 return undef if ($sp[0] eq "SECTION");
 return @sp ? \@sp : undef;
+}
+
+# parser for shell-style config files
+sub config_parser
+{
+    local $l = $_[0];
+    $l =~ s/#.*$//;
+    local @sp = split(/=/, $l, 2);
+    return @sp ? \@sp : undef;
+}
+
+# determine which parser function to use
+sub get_parser_func
+{
+    local $hashref = $_[0];
+    &get_clean_table_name($hashref);
+    &debug_message("table = $hashref->{'table'}, pfunc = $pfunc");
+    local $pfunc = $hashref->{'tableclean'}."_parser";
+    if (!defined(&$pfunc)) {
+	if ($hashref->{'tableclean'} =~ /^(params|shorewall_conf)$/) {
+	    $pfunc = "config_parser";
+	}
+	else {
+	    $pfunc = "standard_parser";
+	}
+    }
+    &debug_message("table = $hashref->{'table'}, pfunc = $pfunc");
+    return $pfunc;
+}
+
+# ensure that the passed string contains only characters valid in shell variable identifiers
+sub clean_name
+{
+    local $str = $_[0];
+    $str =~ s/\W/_/g;
+    return $str;
+}
+
+# get a table name that is clean enough to use as a function prefix
+sub get_clean_table_name
+{
+    local $hashref = $_[0];
+    if (!exists hashref->{'tableclean'}) {
+	$hashref->{'tableclean'} = &clean_name($in{'table'});
+	&debug_message("table = " . $hashref->{'table'} . ", tableclean = " . $hashref->{'tableclean'});
+    }
 }
 
 # zone_field(name, value, othermode, simplemode)
@@ -276,7 +383,7 @@ elsif ($_[3] == 0) {
 	$found = !$_[1] || $_[1] eq 'all' || &is_fw($_[1]);
 	}
 foreach $z (@ztable) {
-	if (&version_atleast(3)) {
+	if (&new_zones_format()) {
 		printf "<option value=%s %s>%s\n",
 			$z->[0], $_[1] eq $z->[0] ? "selected" : "", $z->[0];
 		}
@@ -317,7 +424,7 @@ print "</select>\n";
 # Given a zone name, returns a description
 sub convert_zone
 {
-if (&version_atleast(3)) {
+if (&new_zones_format()) {
 	# No descriptions in shorewall 3
 	return $_[0];
 	}
@@ -347,17 +454,21 @@ else {
 }
 
 # is_fw(zone)
+# - Checks if the supplied zone is the firewall zone.
+#   Now handles renaming of firewall zone in shorewall.conf.
 sub is_fw
 {
-return $_[0] eq '$FW' || $_[0] eq 'fw';
+	local $fw = &shorewall_config('FW');
+	$fw = 'fw' if ($fw eq '');
+	return $_[0] eq '$FW' || $_[0] eq $fw;
 }
 
 ################################# zones #######################################
 
 sub zones_parser
 {
-if (&version_atleast(3)) {
-	# Zones table is in new format in Shorewall 3
+if (&new_zones_format()) {
+	# New format
 	local $l = $_[0];
 	$l =~ s/#.*$//;
 	local @r = split(/\s+/, $l);
@@ -378,12 +489,12 @@ else {
 
 sub zones_columns
 {
-return &version_atleast(3) ? 2 : 3;
+return &new_zones_format() ? 2 : 3;
 }
 
 sub zones_row
 {
-if (&version_atleast(3)) {
+if (&new_zones_format()) {
 	return ( $_[0], $text{'zones_'.$_[1]} || $_[1] );
 	}
 else {
@@ -393,7 +504,7 @@ else {
 
 sub zones_colnames
 {
-if (&version_atleast(3)) {
+if (&new_zones_format()) {
 	return ( $text{'zones_0'}, $text{'zones_1new'} );
 	}
 else {
@@ -403,7 +514,7 @@ else {
 
 sub zones_form
 {
-if (&version_atleast(3)) {
+if (&new_zones_format()) {
 	# Shorewall 3 zones format
 	print "<tr> <td><b>$text{'zones_0'}</b></td>\n";
 	print "<td>",&ui_textbox("id", $_[0], 8),"</td>\n";
@@ -440,7 +551,7 @@ sub zones_validate
 {
 $in{'id'} =~ /^\S+$/ || &error($text{'zones_eid'});
 &is_fw($in{'id'}) && &error($text{'zones_efwid'});
-if (&version_atleast(3)) {
+if (&new_zones_format()) {
 	# Parse new format
 	$in{'opts'} =~ /^\S*$/ || &error($text{'zones_eopts'});
 	$in{'opts_in'} =~ /^\S*$/ || &error($text{'zones_eopts_in'});
@@ -1506,6 +1617,64 @@ return ( $in{'name'}, $in{'number'}, $in{'mark'},
 	 $in{'copy'} || "-" );
 }
 
+################################ shorewall.conf ##################################
+
+sub conf_form
+{
+    local $msg1 = shift;
+    local $msg2 = shift;
+    local ($var, $val, $dummy) = @_;
+
+    &debug_message( "var = $var, val = $val");
+
+    $var =~ s/"/&#34;/g;
+    print "<tr><td><b>$msg1</b></td>\n";
+    print "<td><input name=var size=50 value=\"$var\"></td></tr>\n";
+
+    $val =~ s/"/&#34;/g;
+    print "<tr><td><b>$msg2</b></td>\n";
+    print "<td><input name=val size=50 value=\"$val\"></td></tr>\n";
+
+    print "</td></tr>\n";
+}
+
+sub shorewall_conf_columns
+{
+    return 2;
+}
+
+sub shorewall_conf_form
+{
+    &conf_form($text{'shorewall_conf_0'}, $text{'shorewall_conf_1'}, @_);
+}
+
+sub shorewall_conf_validate
+{
+    &debug_message("invar = $in{'var'}");
+    &error($text{'shorewall_conf_varname'}) unless $in{'var'} =~ /^\w+$/;
+    return ($in{'var'}.'='.$in{'val'});
+}
+
+################################ params ##################################
+
+sub params_columns
+{
+    return 2;
+}
+
+sub params_form
+{
+    &conf_form($text{'params_0'}, $text{'params_1'}, @_);
+}
+
+sub params_validate
+{
+    &debug_message("invar = $in{'var'}");
+    &error($text{'params_varname'}) unless $in{'var'} =~ /^\w+$/;
+    return ($in{'var'}.'='.$in{'val'});
+}
+
+
 #############################################################################
 
 # can_access(file)
@@ -1582,6 +1751,9 @@ foreach my $a ($config{'config_dir'}, $config{'macros'}) {
 return &unique(@rv);
 }
 
+$BETA_STR = "-Beta";
+$BETA_NUM = "\.0000\.";
+
 # get_shorewall_version(nocache)
 sub get_shorewall_version
 {
@@ -1591,14 +1763,22 @@ if (!$nocache && open(VERSION, "$module_config_directory/version")) {
 	chop($version = <VERSION>);
 	close(VERSION);
 	}
-else {
+if (!$version) {
 	local $out = `$config{'shorewall'} version 2>&1`;
 	$out =~ s/\r//g;
+	$out =~ s/$BETA_STR/$BETA_NUM/i;		# Convert beta string to version number.
 	if ($out =~ /(\n|^)([0-9\.]+)\n/) {
 		$version = $2;
 		}
 	}
 return $version;
+}
+
+sub get_printable_version($)
+{
+	local $out = $_[0];
+	$out =~ s/$BETA_NUM/$BETA_STR/i;		# Convert version number back to string.
+	return $out;
 }
 
 sub list_protocols
@@ -1636,6 +1816,8 @@ foreach $o (keys %opts) {
 	}
 print "</table>\n";
 }
+
+&debug_message("shorewall-lib.pl loaded");
 
 1;
 

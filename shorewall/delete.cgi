@@ -1,11 +1,10 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Delete a bunch of table rows
 
 require './shorewall-lib.pl';
 &ReadParse();
 &can_access($in{'table'}) || &error($text{'list_ecannot'});
-$pfunc = $in{'table'}."_parser";
-$pfunc = "standard_parser" if (!defined(&$pfunc));
+$pfunc = &get_parser_func(\%in);
 &error_setup($text{'delete_err'});
 @d = split(/\0/, $in{'d'});
 scalar(@d) || &error($text{'delete_enone'});

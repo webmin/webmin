@@ -1,13 +1,13 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # save.cgi
 # Updated, modify or delete a table entry
 
 require './shorewall-lib.pl';
 &ReadParse();
+&get_clean_table_name(\%in);
 &can_access($in{'table'}) || &error($text{'list_ecannot'});
-$pfunc = $in{'table'}."_parser";
-$pfunc = "standard_parser" if (!defined(&$pfunc));
-&error_setup($text{$in{'table'}."_err"});
+$pfunc = &get_parser_func(\%in);
+&error_setup($text{$in{'tableclean'}."_err"});
 
 &lock_table($in{'table'});
 if ($in{'delete'}) {
@@ -16,9 +16,9 @@ if ($in{'delete'}) {
 	}
 else {
 	# Validate inputs
-	$vfunc = $in{'table'}."_validate";
+	$vfunc = $in{'tableclean'}."_validate";
 	@row = &$vfunc();
-	$jfunc = $in{'table'}."_join";
+	$jfunc = $in{'tableclean'}."_join";
 	if (defined(&$jfunc)) {
 		$line = &$jfunc(@row);
 		}

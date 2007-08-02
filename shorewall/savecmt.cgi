@@ -1,11 +1,10 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # Updated, modify or delete a comment
 
 require './shorewall-lib.pl';
 &ReadParse();
 &can_access($in{'table'}) || &error($text{'list_ecannot'});
-$pfunc = $in{'table'}."_parser";
-$pfunc = "standard_parser" if (!defined(&$pfunc));
+$pfunc = &get_parser_func(\%in);
 &error_setup($text{"comment_err"});
 
 &lock_table($in{'table'});
