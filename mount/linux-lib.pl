@@ -466,7 +466,7 @@ while(<MTAB>) {
 					$1 ne '(null)');
 			}
 		elsif ($p[2] eq "reiserfs") {
-			local $out = &backquote_command("reiserfstune $p[0]");
+			local $out = &backquote_command("reiserfstune $p[0] 2>&1");
 			if ($out =~ /LABEL:\s*(\S+)/) {
 				$label = $1;
 				}
