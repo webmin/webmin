@@ -83,6 +83,9 @@ public class FileManager extends Applet
 	// Use text editor for HTML
 	boolean force_text;
 
+	// File extensions to consider as HTML
+	String htmlexts[];
+
 	public void init()
 	{
 	setLayout(new BorderLayout());
@@ -126,6 +129,10 @@ public class FileManager extends Applet
 	String force_text_str = getParameter("force_text");
 	if (force_text_str != null && force_text_str.equals("1"))
 		force_text = true;
+	String htmlexts_str = getParameter("htmlexts");
+	if (htmlexts_str == null || htmlexts_str.equals(""))
+		htmlexts_str = ".htm .html";
+	htmlexts = DFSAdminExport.split(htmlexts_str);
 
 	// download language strings
 	String l[] = get_text("lang.cgi");
@@ -625,9 +632,7 @@ public class FileManager extends Applet
 			new ErrorWindow(text("top_efile"));
 		else if (f.type == 0 || f.type > 4)
 			new ErrorWindow(text("edit_enormal"));
-		else if ((f.path.toLowerCase().endsWith(".htm") ||
-			  f.path.toLowerCase().endsWith(".html")) &&
-			 !force_text) {
+		else if (is_html_filename(f.path) && !force_text) {
 			// Open HTML editor
 			try {
 				JSObject win = JSObject.getWindow(this);
@@ -823,6 +828,14 @@ public class FileManager extends Applet
 			new HistoryWindow(this);
 			}
 		}
+	}
+
+	boolean is_html_filename(String path)
+	{
+	for(int i=0; i<htmlexts.length; i++)
+		if (path.toLowerCase().endsWith(htmlexts[i]))
+			return true;
+	return false;
 	}
 
 	boolean under_root_dir(String p, String roots[])
@@ -2654,7 +2667,7 @@ class DFSAdminExport
 	this.root = root;
 	}
 
-	String[] split(String s)
+	static String[] split(String s)
 	{
 	StringTokenizer stok = new StringTokenizer(s, " ");
 	String rv[] = new String[stok.countTokens()];

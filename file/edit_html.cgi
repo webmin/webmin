@@ -7,7 +7,7 @@ $disallowed_buttons{'edit'} && &error($text{'ebutton'});
 &ReadParse();
 
 # Work out editing mode
-if ($in{'text'} || $in{'file'} && $in{'file'} !~ /\.(htm|html|shtml)$/i) {
+if ($in{'text'} || $in{'file'} && !&is_html_file($in{'file'})) {
 	$text_mode = 1;
 	}
 
@@ -72,4 +72,13 @@ print &ui_form_end();
 
 &popup_footer();
 
-
+sub is_html_file
+{
+local ($file) = @_;
+local @exts = split(/\s+/, $userconfig{'htmlexts'} || $config{'htmlexts'});
+@exts = ( ".htm", ".html", ".shtml" ) if (!@exts);
+foreach my $e (@exts) {
+	return 1 if ($file =~ /\Q$e\E$/i);
+	}
+return 0;
+}

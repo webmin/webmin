@@ -111,6 +111,7 @@ open("edit_html.cgi?file="+escape(file)+"&dir="+escape(dir)+"&trust=$trust", "ht
 <param name=canusers value="$canusers">
 <param name=contents value="$contents">
 <param name=force_text value="$config{'force_text'}">
+<param name=htmlexts value="$config{'htmlexts'}">
 $config
 $session
 $open
