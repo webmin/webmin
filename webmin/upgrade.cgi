@@ -78,7 +78,7 @@ elsif ($in{'source'} == 2) {
 	elsif ($in{'mode'} eq 'deb') {
 		# Downloading Debian package
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$osdn_host/webadmin/webmin_$version.deb");
+		    "http://$osdn_host/webadmin/webmin_${version}_all.deb");
 		}
 	elsif ($in{'mode'} eq 'solaris-pkg') {
 		# Downloading my Solaris package

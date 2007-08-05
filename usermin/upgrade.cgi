@@ -57,7 +57,7 @@ elsif ($in{'source'} == 2) {
 		}
 	elsif ($in{'mode'} eq 'deb') {
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/usermin_$version.deb");
+		    "http://$webmin::osdn_host/webadmin/usermin_${version}_all.deb");
 		}
 	else {
 		$progress_callback_url = &convert_osdn_url(
