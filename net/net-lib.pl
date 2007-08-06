@@ -15,6 +15,11 @@ elsif ($gconfig{'os_type'} eq 'suse-linux' &&
 	# Special case for SuSE 9.2+
 	do "$gconfig{'os_type'}-9.2-ALL-lib.pl";
 	}
+elsif ($gconfig{'os_type'} eq 'slackware-linux' &&
+       $gconfig{'os_version'} >= 9.1) {
+	# Special case for Slackware 9.1+
+	do "$gconfig{'os_type'}-9.1-ALL-lib.pl";
+	}
 else {
 	do "$gconfig{'os_type'}-lib.pl";
 	}

@@ -1,1 +1,0 @@
-slackware-linux-9.1-lib.pl
