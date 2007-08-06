@@ -253,7 +253,6 @@ if ($access{'r_sub'} || $access{'c_sub'} ||
 			&net_table(\@subn, 0, scalar(@subn), \@links, \@titles,
 				   \@checkboxids);
 			}
-		print &ui_form_end();
 		}
 	elsif (!@ulinks && !@slinks) {
 		# No subnets or shared nets
@@ -401,7 +400,6 @@ if ($access{'r_hst'} || $access{'c_hst'} ||
 			&host_table(\@host, 0, scalar(@host), \@links, \@titles,
 				    \@hgcheckboxids);
 			}
-		print &ui_form_end();
 		}
 	elsif (!@hlinks && !@glinks) {
 		# None to show at all
@@ -425,7 +423,7 @@ if ($access{'r_hst'} || $access{'c_hst'} ||
 		print "<td>$matches</td>\n";
 		print "<td><input name=group size=30></td></tr> </form>\n";
 		}
-	print "</tr></table><p>\n";
+	print "</tr></table>\n";
 	}
 &host_add_links();
 if ($show_host_delete) {
@@ -715,8 +713,8 @@ sub host_add_links
 {
 local @links;
 if ($show_host_delete) {
-	push(@links, &select_all_link("d"),
-		     &select_invert_link("d"));
+	push(@links, &select_all_link("d", 1),
+		     &select_invert_link("d", 1));
 	}
 push(@links, "<a href='edit_host.cgi?new=1'>$text{'index_addhst'}</a>")
 	if $access{'c_hst'};
