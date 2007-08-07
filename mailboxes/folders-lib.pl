@@ -830,6 +830,17 @@ if ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 	}
 }
 
+# force_new_index_recheck(&folder)
+# Resets the last-updated time on a folder's index, to force a re-check
+sub force_new_index_recheck
+{
+local ($folder) = @_;
+local %index;
+&build_new_sort_index($folder, undef, \%index);
+$index{'lastchange'} = 0;
+dbmclose(%index);
+}
+
 # delete_new_sort_index(&folder)
 # Trashes the sort index for a folder, to force a rebuild
 sub delete_new_sort_index
@@ -1135,6 +1146,10 @@ elsif ($f->{'type'} == 5 || $f->{'type'} == 6) {
 		&save_folder($f, $f);
 		}
 	}
+
+# Always force a re-check of the index when deleting, as we may not detect
+# the change (especially for IMAP, where UIDNEXT may not change)
+&force_new_index_recheck($f);
 }
 
 # mailbox_empty_folder(&folder)
