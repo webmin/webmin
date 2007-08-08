@@ -121,6 +121,7 @@ if ($in{'mode'} eq 'rpm') {
 	# Check if it is an RPM package
 	$out = `rpm -qp $qfile`;
 	$out =~ /^usermin-(\d+\.\d+)/ ||
+	    $out =~ /^usermin-webmail-(\d+\.\d+)/ ||
 		&inst_error($text{'upgrade_erpm'});
 	$version = $1;
 	if ($version <= &get_usermin_version() && !$in{'force'}) {
@@ -143,9 +144,9 @@ if ($in{'mode'} eq 'rpm') {
 	}
 elsif ($in{'mode'} eq 'deb') {
 	# Check if it is a Debian package
-	$debname = "usermin";
 	$out = `dpkg --info $qfile`;
-	$out =~ /Package:\s+(\S+)/ && $1 eq $debname ||
+	$out =~ /Package:\s+(\S+)/ &&
+	    ($1 eq "usermin" || $1 eq "usermin-webmail") ||
 		&inst_error($text{'upgrade_edeb'});
 	$out =~ /Version:\s+(\S+)/ ||
 		&inst_error($text{'upgrade_edeb'});
