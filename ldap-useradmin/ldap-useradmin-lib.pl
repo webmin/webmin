@@ -241,7 +241,7 @@ sub create_user
 {
 local $ldap = &ldap_connect();
 local $base = &get_user_base();
-local $_[0]->{'dn'} = "uid=$_[0]->{'user'},$base";
+$_[0]->{'dn'} = "uid=$_[0]->{'user'},$base";
 local @classes = ( "posixAccount", "shadowAccount",
 		   split(/\s+/, $config{'other_class'}),
 		   @{$_[0]->{'ldap_class'}} );
@@ -333,7 +333,7 @@ sub create_group
 {
 local $ldap = &ldap_connect();
 local $base = &get_group_base();
-local $_[0]->{'dn'} = "cn=$_[0]->{'group'},$base";
+$_[0]->{'dn'} = "cn=$_[0]->{'group'},$base";
 local @classes = ( "posixGroup" );
 push(@classes, split(/\s+/, $config{'gother_class'}));
 @classes = &unique(@classes);
