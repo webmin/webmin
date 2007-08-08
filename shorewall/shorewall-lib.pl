@@ -318,8 +318,11 @@ return @sp ? \@sp : undef;
 sub config_parser
 {
     local $l = $_[0];
-    $l =~ s/#.*$//;
+    $l =~ s/#\s*(.*?)\s*$//;		# save the comment we strip
     local @sp = split(/=/, $l, 2);
+    if ($#sp > -1 && defined $1) {
+	push @sp, $1;			# add back the saved comment, if present
+	}
     return @sp ? \@sp : undef;
 }
 
@@ -328,7 +331,6 @@ sub get_parser_func
 {
     local $hashref = $_[0];
     &get_clean_table_name($hashref);
-    &debug_message("table = $hashref->{'table'}, pfunc = $pfunc");
     local $pfunc = $hashref->{'tableclean'}."_parser";
     if (!defined(&$pfunc)) {
 	if ($hashref->{'tableclean'} =~ /^(params|shorewall_conf)$/) {
@@ -338,7 +340,6 @@ sub get_parser_func
 	    $pfunc = "standard_parser";
 	}
     }
-    &debug_message("table = $hashref->{'table'}, pfunc = $pfunc");
     return $pfunc;
 }
 
@@ -356,7 +357,6 @@ sub get_clean_table_name
     local $hashref = $_[0];
     if (!exists hashref->{'tableclean'}) {
 	$hashref->{'tableclean'} = &clean_name($in{'table'});
-	&debug_message("table = " . $hashref->{'table'} . ", tableclean = " . $hashref->{'tableclean'});
     }
 }
 
@@ -383,15 +383,8 @@ elsif ($_[3] == 0) {
 	$found = !$_[1] || $_[1] eq 'all' || &is_fw($_[1]);
 	}
 foreach $z (@ztable) {
-	if (&new_zones_format()) {
-		printf "<option value=%s %s>%s\n",
-			$z->[0], $_[1] eq $z->[0] ? "selected" : "", $z->[0];
-		}
-	else {
-		# Old zone type has a human-readable name
-		printf "<option value=%s %s>%s\n",
-			$z->[0], $_[1] eq $z->[0] ? "selected" : "", $z->[1];
-		}
+	printf "<option value=%s %s>%s\n",
+		$z->[0], $_[1] eq $z->[0] ? "selected" : "", &convert_zone($z->[0]);
 	$found++ if ($_[1] eq $z->[0]);
 	}
 if ($_[2]) {
@@ -422,17 +415,25 @@ print "</select>\n";
 
 # convert_zone(name)
 # Given a zone name, returns a description
+# FIXME: inefficient - should be able to pass ztable into this function
 sub convert_zone
 {
-if (&new_zones_format()) {
-	# No descriptions in shorewall 3
-	return $_[0];
-	}
 local @ztable = &read_table_file("zones", \&zones_parser);
 foreach $z (@ztable) {
 	if ($_[0] eq $z->[0]) {
-	     $ret = $z->[1];
-	     }
+		if (&new_zones_format()) {
+			# No descriptions in new format - use comment field if present
+			if (defined $z->[6]  &&  $z->[6] ne "") {
+				$ret = $_[0]." - ".$z->[6];
+				}
+			else {
+				$ret = $_[0];
+				}
+			}
+		else {
+			$ret = $z->[1];
+			}
+		}
 	}
 if (&is_fw($_[0])) {
 	$ret = $text{'list_fw'};
@@ -470,8 +471,35 @@ sub zones_parser
 if (&new_zones_format()) {
 	# New format
 	local $l = $_[0];
-	$l =~ s/#.*$//;
-	local @r = split(/\s+/, $l);
+	$l =~ s/#\s*(.*?)\s*$//;	# save the stripped comment
+	local $comment = $1 if defined $1;
+	local @r = split(/\s+/, $l, 6);
+	if ($#r > -1) {
+	    local $zone = shift @r;
+
+	    # split out parent if it is present in the zone field
+	    local $parent;
+	    $zone =~ m/(.*?):(.*)/;
+	    if (defined $2) {
+		$zone = $1;
+		$parent = $2;
+		}
+	    else {
+		$parent = "";
+		}
+	    unshift @r, $zone, $parent;
+
+	    # put the saved comment back
+	    if (defined $comment) {
+		# ensure option fields are present
+		while ($#r < 5) {
+		    push @r, "";
+		}
+
+		# add the comment field
+		push @r, $comment;
+		}
+	    }
 	return scalar(@r) ? \@r : undef;
 	}
 else {
@@ -489,13 +517,14 @@ else {
 
 sub zones_columns
 {
-return &new_zones_format() ? 2 : 3;
+return &new_zones_format() ? 4 : 3;
 }
 
+# format a parsed row for display in list form
 sub zones_row
 {
 if (&new_zones_format()) {
-	return ( $_[0], $text{'zones_'.$_[1]} || $_[1] );
+	return ( $_[0], $_[1], $text{'zones_'.$_[2]} || $_[2], $_[6] );
 	}
 else {
 	return @_;
@@ -505,7 +534,10 @@ else {
 sub zones_colnames
 {
 if (&new_zones_format()) {
-	return ( $text{'zones_0'}, $text{'zones_1new'} );
+	return ( $text{'zones_0'}, $text{'zones_1new'}, $text{'zones_2new'},
+# The option fields are not displayed in the main list.
+#		$text{'zones_3new'}, $text{'zones_4new'}, $text{'zones_5new'},
+		$text{'zones_6new'} );
 	}
 else {
 	return ( $text{'zones_0'}, $text{'zones_1'}, $text{'zones_2'} );
@@ -520,19 +552,28 @@ if (&new_zones_format()) {
 	print "<td>",&ui_textbox("id", $_[0], 8),"</td>\n";
 
 	print "<td><b>$text{'zones_1new'}</b></td>\n";
-	print "<td>",&ui_select("type", $_[1],
+	print "<td>\n";
+	&zone_field("parent", $_[1], 0, 1);
+	print "</td> </tr>\n";
+
+	print "<td><b>$text{'zones_2new'}</b></td>\n";
+	print "<td>",&ui_select("type", $_[2],
 		[ [ "ipv4", $text{'zones_ipv4'} ],
 		  [ "ipsec", $text{'zones_ipsec'} ],
 		  [ "firewall", $text{'zones_firewall'} ] ]),"</td> </tr>\n";
 
-	print "<tr> <td><b>$text{'zones_2new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts", $_[2], 50),"</td> </tr>\n";
-
 	print "<tr> <td><b>$text{'zones_3new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts_in", $_[3], 50),"</td> </tr>\n";
+	print "<td>",&ui_textbox("opts", $_[3], 50),"</td> </tr>\n";
 
 	print "<tr> <td><b>$text{'zones_4new'}</b></td>\n";
-	print "<td>",&ui_textbox("opts_out", $_[4], 50),"</td> </tr>\n";
+	print "<td>",&ui_textbox("opts_in", $_[4], 50),"</td> </tr>\n";
+
+	print "<tr> <td><b>$text{'zones_5new'}</b></td>\n";
+	print "<td>",&ui_textbox("opts_out", $_[5], 50),"</td> </tr>\n";
+
+	print "<tr> <td><b>$text{'zones_6new'}</b></td>\n";
+	print "<td>",&ui_textbox("comment", $_[6], 50),"</td> </tr>\n";
+
 	}
 else {
 	# Shorewall 2 zones format
@@ -556,8 +597,14 @@ if (&new_zones_format()) {
 	$in{'opts'} =~ /^\S*$/ || &error($text{'zones_eopts'});
 	$in{'opts_in'} =~ /^\S*$/ || &error($text{'zones_eopts_in'});
 	$in{'opts_out'} =~ /^\S*$/ || &error($text{'zones_eopts_out'});
-	return ( $in{'id'}, $in{'type'}, $in{'opts'},
-		 $in{'opts_in'}, $in{'opts_out'} );
+	if (!defined $in{'parent'} || $in{'parent'} eq "-") {
+	    return ( $in{'id'}, $in{'type'}, $in{'opts'},
+		     $in{'opts_in'}, $in{'opts_out'}, "# $in{'comment'}" );
+	    }
+	else {
+	    return ( $in{'id'}.":".$in{'parent'}, $in{'type'}, $in{'opts'},
+		     $in{'opts_in'}, $in{'opts_out'}, "# $in{'comment'}" );
+	    }
 	}
 else {
 	# Parse old format
@@ -713,12 +760,14 @@ sub rules_row
 return ( $_[0] =~ /^(\S+):/ ? "$1" : $_[0],
 	 &is_fw($_[1]) ? $text{'list_fw'} :
 	  $_[1] eq 'all' ? $text{'list_any'} :
+	  $config{'display_zone_descriptions'} == 0 ? $_[1] :
 	  $_[1] =~ /^([^:]+):(\S+)$/ ?
 	  &text('rules_hosts', &convert_zone("$1"), &nice_host_list("$2")) :
 	  &text('rules_zone', &convert_zone($_[1])),
 	 &is_fw($_[2]) ? $text{'list_fw'} :
 	  $_[2] eq 'all' ? $text{'list_any'} :
 	  $_[2] =~ /^\d+$/ ? &text('rules_rport', $_[2]) :
+	  $config{'display_zone_descriptions'} == 0 ? $_[2] :
 	  $_[2] =~ /^([^:]+):(\S+)$/ ?
 	  &text('rules_hosts', &convert_zone("$1"), &nice_host_list("$2")) :
 	  &text('rules_zone', &convert_zone($_[2])),
@@ -1621,57 +1670,61 @@ return ( $in{'name'}, $in{'number'}, $in{'mark'},
 
 sub conf_form
 {
-    local $msg1 = shift;
-    local $msg2 = shift;
-    local ($var, $val, $dummy) = @_;
+    local ($msg1, $msg2, $msg3, $field1, $field2, $field3, $dummy) = @_;
 
-    &debug_message( "var = $var, val = $val");
-
-    $var =~ s/"/&#34;/g;
+    $field1 =~ s/"/&#34;/g;
     print "<tr><td><b>$msg1</b></td>\n";
-    print "<td><input name=var size=50 value=\"$var\"></td></tr>\n";
+    print "<td><input name=var size=50 value=\"$field1\"></td></tr>\n";
 
-    $val =~ s/"/&#34;/g;
+    $field2 =~ s/"/&#34;/g;
     print "<tr><td><b>$msg2</b></td>\n";
-    print "<td><input name=val size=50 value=\"$val\"></td></tr>\n";
+    print "<td><input name=val size=50 value=\"$field2\"></td></tr>\n";
+
+    $field3 =~ s/"/&#34;/g;
+    print "<tr><td><b>$msg3</b></td>\n";
+    print "<td><input name=comment size=50 value=\"$field3\"></td></tr>\n";
 
     print "</td></tr>\n";
 }
 
+################################ shorewall.conf ##################################
+
 sub shorewall_conf_columns
 {
-    return 2;
+    return 3;
 }
 
 sub shorewall_conf_form
 {
-    &conf_form($text{'shorewall_conf_0'}, $text{'shorewall_conf_1'}, @_);
+    &conf_form($text{'shorewall_conf_0'}, $text{'shorewall_conf_1'}, $text{'shorewall_conf_2'}, @_);
 }
 
 sub shorewall_conf_validate
 {
-    &debug_message("invar = $in{'var'}");
     &error($text{'shorewall_conf_varname'}) unless $in{'var'} =~ /^\w+$/;
-    return ($in{'var'}.'='.$in{'val'});
+    local $comment = "";
+    $comment = "\t# ".$in{'comment'} if (exists $in{'comment'} and $in{'comment'} ne "");
+    return ($in{'var'}.'='.$in{'val'}.$comment);
 }
 
 ################################ params ##################################
 
 sub params_columns
 {
-    return 2;
+    return 3;
 }
 
 sub params_form
 {
-    &conf_form($text{'params_0'}, $text{'params_1'}, @_);
+    &conf_form($text{'params_0'}, $text{'params_1'}, $text{'params_2'}, @_);
 }
 
 sub params_validate
 {
-    &debug_message("invar = $in{'var'}");
     &error($text{'params_varname'}) unless $in{'var'} =~ /^\w+$/;
-    return ($in{'var'}.'='.$in{'val'});
+    local $comment = "";
+    $comment = "\t# ".$in{'comment'} if (exists $in{'comment'} and $in{'comment'} ne "");
+    return ($in{'var'}.'='.$in{'val'}.$comment);
 }
 
 
@@ -1816,8 +1869,6 @@ foreach $o (keys %opts) {
 	}
 print "</table>\n";
 }
-
-&debug_message("shorewall-lib.pl loaded");
 
 1;
 

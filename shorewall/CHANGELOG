@@ -1,4 +1,12 @@
----- Changes since 1.351 ----
+---- Changes since 1.360 ----
+(Updates by Paul Gear <paul@gear.dyndns.org>.)
+BUG: Corrected mis-handling of nested zones introduced in 1.350.
+Removed debugging cruft added in 1.350.
+Added support for end-of-line comments in zones, params, and shorewall.conf.
+Added support for display of long zone names under the new zones format.
+Added module option to disable display of long zone names in the rules file.
+---- Changes since 1.350 ----
+(Updates by Paul Gear <paul@gear.dyndns.org>.)
 Corrected name to "Shoreline Firewall".
 Correctly determine Shorewall version for beta releases.
 Corrected zones file support on version 3 or greater when IPSECFILE=ipsec.
