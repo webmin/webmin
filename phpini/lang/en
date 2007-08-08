@@ -44,7 +44,7 @@ dirs_eext=Missing extensions directory
 
 db_title=Database Settings
 db_header1=MySQL database connection settings
-db_persist=Allow persistent datatabase connections?
+db_persist=Allow persistent database connections?
 db_maxpersist=Maximum persistent connections?
 db_maxlinks=Maximum total connections?
 db_timeout=MySQL connection timeout?
