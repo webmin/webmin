@@ -334,3 +334,6 @@ AWstats statistics are now included in cPanel migrations.
 The real name of a virtual server's Unix user is updated when the server's description is changed.
 Backported the simpler alias editing form from Virtualmin Pro, which makes it quicker to setup autoreponders and forwarders. Also includes easier to use fields for advanced autoresponder options, like the reply period and date ranges.
 Added a link from the Mail Aliases page to manually edit aliases in a domain using a text box. This makes bulk changes and copies simpler.
+Migrated cPanel users with forwarding have email also delivered to their inbox, to maintain consistency with cPanel.
+Added the Excluded Directories page for entering directories not to include in backups for a virtual server.
+Updated the modify-domain.pl script to allow excluded directories to be managed with the --add-exclude and --remove-exclude parameters. Also updated list-domains.pl to show exclusions.
