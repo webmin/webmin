@@ -14,6 +14,10 @@ $srpms_dir = "$base_dir/SRPMS";
 
 $< && die "makerpm.pl must be run as root";
 
+if ($ARGV[0] eq "--nosign" || $ARGV[0] eq "-nosign") {
+	$nosign = 1;
+	shift(@ARGV);
+	}
 $ver = $ARGV[0] || die "usage: makerpm.pl <version> [release]";
 $rel = $ARGV[1] || "1";
 
@@ -64,12 +68,12 @@ Provides: %{name}-%{version}
 PreReq: /bin/sh /usr/bin/perl /bin/rm
 Requires: /bin/sh /usr/bin/perl /bin/rm
 AutoReq: 0
-Copyright: Freeware
+License: Freeware
 Group: System/Tools
 Source: http://www.webmin.com/download/%{name}-%{version}.tar.gz
 Vendor: Jamie Cameron
 BuildRoot: /tmp/%{name}-%{version}
-BuildArchitectures: noarch
+BuildArch: noarch
 %description
 A web-based administration interface for Unix systems. Using Webmin you can
 configure DNS, Samba, NFS, local/remote filesystems and more using your
@@ -289,7 +293,9 @@ if (-d "rpm") {
 	system("mv $srpms_dir/webmin-$ver-$rel.src.rpm rpm/webmin-$ver-$rel.src.rpm");
 	print "Moved to rpm/webmin-$ver-$rel.src.rpm\n";
 	system("chown jcameron: rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
-	system("rpm --resign rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
+	if (!$nosign) {
+		system("rpm --resign rpm/webmin-$ver-$rel.noarch.rpm rpm/webmin-$ver-$rel.src.rpm");
+		}
 	}
 
 
