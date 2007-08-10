@@ -439,9 +439,9 @@ if (!-d $config{'bacula_dir'}) {
 	}
 local $got = 0;
 if (-r $dir_conf_file) {
-	if (!-x $bacula_cmd) {
-		return &text('check_ebacula', "<tt>$bacula_cmd</tt>");
-		}
+	#if (!-x $bacula_cmd) {
+	#	return &text('check_ebacula', "<tt>$bacula_cmd</tt>");
+	#	}
 	if (!-x $console_cmd) {
 		return &text('check_econsole', "<tt>$console_cmd</tt>");
 		}

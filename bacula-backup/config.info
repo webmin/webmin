@@ -7,6 +7,7 @@ line1=Bacula database settings,11
 driver=Database type,1,Pg-PostgreSQL,mysql-MySQL,SQLite-SQLite
 user=User to login to database as,0
 pass=Password to login with,0
+host=Bacula database server,3,This system
 db=Database or file containing Bacula information,0
 line2=File settings,11
 bacula_dir=Bacula configuration directory,0

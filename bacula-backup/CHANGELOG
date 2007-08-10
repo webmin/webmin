@@ -1,2 +1,4 @@
 ---- Changes since 1.350 ----
 First version of this module, which allows Bacula to be configured and both backups and restores to be executed.
+---- Changes since 1.360 ----
+Removed the requirement for the /etc/bacula/bacula command to be installed, if /etc/init.d/bacula-* scripts exist.

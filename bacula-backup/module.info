@@ -1,5 +1,4 @@
 desc=Bacula Backup System
 category=system
-version=0.4
 depends=proc cron 1.250
 longdesc=Configure Bacula to perform backups and restores manually or on schedule, for one or many systems.
