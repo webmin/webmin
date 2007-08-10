@@ -16,9 +16,13 @@ $sd_conf_file = "$config{'bacula_dir'}/bacula-sd.conf";
 $bconsole_conf_file = "$config{'bacula_dir'}/bconsole.conf";
 $console_conf_file = "$config{'bacula_dir'}/console.conf";
 $console_cmd = -r "$config{'bacula_dir'}/bconsole" ?
-		"$config{'bacula_dir'}/bconsole" :
-		"$config{'bacula_dir'}/console";
-$bacula_cmd = "$config{'bacula_dir'}/bacula";
+		"$config{'bacula_dir'}/bconsole" 
+	       -r "$config{'bacula_dir'}/console" ?
+		"$config{'bacula_dir'}/console" :
+	       &has_command("bconsole");
+$bacula_cmd = -r "$config{'bacula_dir'}/bacula" ?
+		"$config{'bacula_dir'}/bacula" :
+	      &has_command("bacula");
 
 @backup_levels = ( "Full", "Incremental", "Differential",
 	   "InitCatalog", "Catalog", "VolumeToCatalog", "DiskToCatalog" );
