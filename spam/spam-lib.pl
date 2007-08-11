@@ -98,6 +98,13 @@ return wantarray ? @rv : $rv[0];
 # Update the config file with some directives
 sub save_directives
 {
+if ($module_info{'usermin'} && $local_cf =~ /^(.*)\/([^\/]+)$/) {
+	# Under Usermin, make sure .spamassassin exists
+	local $spamdir = $1;
+	if (!-d $spamdir) {
+		&make_dir($spamdir, 0755);
+		}
+	}
 local @old = ref($_[1]) ? @{$_[1]} : &find($_[1], $_[0]);
 local @new = $_[3] ? &make_directives($_[1], $_[2]) : @{$_[2]};
 local $i;
