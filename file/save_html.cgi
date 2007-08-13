@@ -29,7 +29,7 @@ else {
 	$in{'body'} =~ s/\r//g;
 	$in{'body'} =~ s/^\s+//g;
 	$in{'body'} =~ s/\s+$//g;
-	if ($oldhead && $in{'body'} !~ /<body.*>/i) {
+	if ($oldhead && $in{'body'} !~ /<body[\000-\377]*>/i) {
 		&print_tempfile(FILE, $oldhead.$in{'body'}.$oldfoot);
 		}
 	else {
