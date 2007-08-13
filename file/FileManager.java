@@ -1536,7 +1536,7 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 	edit.setFont(filemgr.fixed);
 	Panel bot = new Panel();
 	bot.setLayout(new FlowLayout(FlowLayout.RIGHT));
-	bot.add(dosmode = new Checkbox("DOS mode"));
+	bot.add(dosmode = new Checkbox("Windows newlines"));
 	bot.add(goto_b = new CbButton(filemgr.get_image("goto.gif"),
 				      filemgr.text("edit_goto"),
 				      CbButton.LEFT, this));
