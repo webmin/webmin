@@ -54,6 +54,7 @@ dbase_drop=Drop Database
 dbase_exec=Execute SQL
 dbase_backup=Backup Database
 dbase_none=This database has no tables.
+dbase_none2=No tables matched your search.
 dbase_fields=Fields:
 dbase_return=table list
 dbase_ecannot=You are not allowed to edit this database

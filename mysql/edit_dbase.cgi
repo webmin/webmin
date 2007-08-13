@@ -113,7 +113,12 @@ elsif (@titles || @indexes) {
 		}
 	}
 else {
-	print "<b>$text{'dbase_none'}</b> <p>\n";
+	if ($in{'search'}) {
+		print "<b>$text{'dbase_none2'}</b> <p>\n";
+		}
+	else {
+		print "<b>$text{'dbase_none'}</b> <p>\n";
+		}
 	}
 &show_buttons();
 
