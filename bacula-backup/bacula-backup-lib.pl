@@ -16,7 +16,7 @@ $sd_conf_file = "$config{'bacula_dir'}/bacula-sd.conf";
 $bconsole_conf_file = "$config{'bacula_dir'}/bconsole.conf";
 $console_conf_file = "$config{'bacula_dir'}/console.conf";
 $console_cmd = -r "$config{'bacula_dir'}/bconsole" ?
-		"$config{'bacula_dir'}/bconsole" 
+		"$config{'bacula_dir'}/bconsole" :
 	       -r "$config{'bacula_dir'}/console" ?
 		"$config{'bacula_dir'}/console" :
 	       &has_command("bconsole");

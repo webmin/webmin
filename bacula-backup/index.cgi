@@ -18,9 +18,10 @@ if (&has_bacula_dir()) {
 	# Test DB connection
 	eval { $dbh = &connect_to_database(); };
 	if ($@) {
-		&ui_print_header(undef, $module_info{'desc'}, "", "intro", 1, 1, 0,
-				 $hsl);
-		print &ui_config_link('index_edb', [ $@, undef ]),"<p>\n";
+		$err = $@;
+		&ui_print_header(undef, $module_info{'desc'}, "", "intro",
+				 1, 1, 0, $hsl);
+		print &ui_config_link('index_edb', [ $err, undef ]),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;
 		}
