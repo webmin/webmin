@@ -4,9 +4,10 @@ First version of this module, which allows simple Procmail configuration.
 Added a message to the module's main page to detect system-level mail aliases (in /etc/aliases) that would forward email to the user to a different destination.
 ---- Changes since 1.280 ----
 Added an option to set the date range for which autoreplies are sent.
----- Changes since 1.290 ----
 Added a simple page for setting up an email autoresponder.
 Display a warning if /etc/procmailrc is setup to always deliver to the inbox, which would prevent user-defined filters from working.
 If email classified as spam is delivered to some folder by a global Procmail configuration (either in /etc/procmailrc or a Virtualmin per-domain setting), display this on the list of filters.
 Changed the module name to Filter and Forward Mail.
 Added a simple page for setting up forwarding.
+---- Changes since 1.290 ----
+Added a Module Config option to create a .forward file automatically that runs procmail, for systems that don't have procmail delivery globally enabled.

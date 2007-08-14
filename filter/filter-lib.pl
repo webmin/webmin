@@ -158,6 +158,7 @@ local ($filter) = @_;
 local $recipe = { };
 &update_filter_recipe($filter, $recipe);
 &procmail::create_recipe($recipe);
+&setup_forward_procmail();
 }
 
 # modify_filter(&filter)
@@ -167,6 +168,7 @@ sub modify_filter
 local ($filter) = @_;
 &update_filter_recipe($filter, $filter->{'recipe'});
 &procmail::modify_recipe($filter->{'recipe'});
+&setup_forward_procmail();
 }
 
 # insert_filter(&filter)
@@ -184,6 +186,7 @@ if (@pmrc) {
 else {
 	&procmail::create_recipe($recipe);
 	}
+&setup_forward_procmail();
 }
 
 # update_filter_recipe(&filter, &recipe)
@@ -248,6 +251,7 @@ sub delete_filter
 {
 local ($filter) = @_;
 &procmail::delete_recipe($filter->{'recipe'});
+&setup_forward_procmail();
 }
 
 # swap_filters(&filter1, &filter2)
@@ -256,6 +260,7 @@ sub swap_filters
 {
 local ($filter1, $filter2) = @_;
 &procmail::swap_recipes($filter1->{'recipe'}, $filter2->{'recipe'});
+&setup_forward_procmail();
 }
 
 # file_to_folder(file, &folders, [homedir], [fake-if-missing])
@@ -520,6 +525,32 @@ local @recipes = &procmail::parse_procmail_file(
 local ($force) = grep { $_->{'action'} eq '$DEFAULT' &&
 			!@{$_->{'conds'}} } @recipes;
 return $force;
+}
+
+# setup_forward_procmail()
+# If configured, create a .forward file that runs procmail (if not setup yet)
+sub setup_forward_procmail
+{
+return 0 if (!$config{'forward_procmail'});
+return 0 if (!$module_info{'usermin'});
+local $fwdfile = "$remote_user_info[7]/.forward";
+local $procmail = &has_command("procmail");
+return 0 if (!$procmail);
+local $lref = &read_file_lines($fwdfile);
+local $found;
+foreach my $l (@$lref) {
+	if ($l =~ /\Q$procmail\E/) {
+		$found++;
+		}
+	}
+if ($found) {
+	&unflush_file_lines($fwdfile);
+	}
+else {
+	# Add procmail call
+	push(@$lref, "|$procmail");
+	&flush_file_lines($fwdfile);
+	}
 }
 
 1;
