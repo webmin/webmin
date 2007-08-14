@@ -3,6 +3,6 @@ require 'apache-lib.pl';
 
 sub module_install
 {
-chmod(0644, "$module_config_directory/site");
+unlink("$module_config_directory/site");
 }
 
