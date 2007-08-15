@@ -7,6 +7,13 @@ $ver = join(".", map { ord($_) } split(//, $^V));
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		 undef, undef, undef, &text('index_pversion', $ver));
 
+# Check if Perl is installed from a global zone
+if (&shared_perl_root()) {
+	print "<b>$text{'index_ezone'}</b><p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
 # Display perl modules
 @mods = &list_perl_modules();
 if (@mods) {

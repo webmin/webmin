@@ -347,5 +347,30 @@ foreach my $a (@avail) {
 return @rv;
 }
 
+# shared_perl_root()
+# Returns 1 if Perl is shared with the root zone, indicating that Perl modules
+# cannot be installed.
+sub shared_perl_root
+{
+return 0 if (!&running_in_zone());
+local $pp = &get_perl_path();
+if (&foreign_exists("mount")) {
+	&foreign_require("mount", "mount-lib.pl");
+	local @rst = stat($pp);
+	local $m;
+	foreach $m (&mount::list_mounted()) {
+		local @mst = stat($m->[0]);
+		if ($mst[0] == $rst[0] &&
+		    &is_under_directory($m->[0], $pp)) {
+			# Found the mount!
+			if ($m->[2] eq "lofs" || $m->[2] eq "nfs") {
+				return 1;
+				}
+			}
+		}
+	}
+return 0;
+}
+
 1;
 

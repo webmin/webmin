@@ -16,3 +16,5 @@ Fixed a bug that prevented a custom temp files directory from being used when in
 When installing a Perl module from CPAN and it already exists in an operating system package (such as from APT or YUM), use that instead.
 ---- Changes since 1.340 ----
 Added Module Config option to not install modules from APT or YUM.
+---- Changes since 1.360 ----
+The module is now available when running Webmin inside a Solaris zone, but only if Perl is not shared with the global zone.
