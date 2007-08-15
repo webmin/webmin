@@ -56,10 +56,11 @@ $rep = `$config{'user_repquota_command'} $_[0] 2>&1`;
 if ($?) { return -1; }
 setpwent();
 while(@uinfo = getpwent()) {
-	$hasu{$uinfo[0]}++;
+	$hasu{$uinfo[0]} = $uinfo[2];
 	push(@hasu, $uinfo[0]);
 	}
-endpwent() if ($gconfig{'os_type'} ne 'hpux');
+endpwent();
+@hasu = sort { $hasu{$a} <=> $hasu{$b} } @hasu;
 @rep = split(/\n/, $rep); @rep = @rep[3..$#rep];
 for($n=0; $n<@rep; $n++) {
 	if ($rep[$n] =~ /(\S+)\s+[\-\+]{2}\s+(\d+)\s+(\d+)\s+(\d+)\s+(.{0,15})\s+(\d+)\s+(\d+)\s+(\d+)(.*)/ || $rep[$n] =~ /(\S+)\s+[\-\+]{2}(.{7})(.{7})(.{7})(.{13})(.{7})(.{7})(.{7})(.*)/) {
@@ -73,12 +74,12 @@ for($n=0; $n<@rep; $n++) {
 		$user{$n,'hfiles'} = int($8);
 		$user{$n,'gfiles'} = $9;
 		$user{$n,'user'} =~ s/^#//g;
-		if ($user{$n,'user'} !~ /^\d+$/ && !$hasu{$user{$n,'user'}}) {
+		if ($user{$n,'user'} !~ /^\d+$/ &&
+		    !defined($hasu{$user{$n,'user'}})) {
 			# Username was truncated! Try to find him..
 			foreach $u (@hasu) {
 				if (substr($u, 0, length($user{$n,'user'})) eq
-				    $user{$n,'user'} &&
-				    !$doneu{$user{$n,'user'}}) {
+				    $user{$n,'user'}) {
 					# found him..
 					$user{$n,'user'} = $u;
 					@hasu = grep { $_ ne $u } @hasu;
