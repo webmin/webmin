@@ -84,7 +84,7 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 			print &text('batch_echeck', $lnum, $err),"\n";
 			next;
 			}
-		if (&check_user_used($user{'user'})) {
+		if (&check_user_used($ldap, $user{'user'})) {
 			print &text('batch_euser', $lnum, $user{'user'}),"\n";
 			next;
 			}
