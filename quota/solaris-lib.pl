@@ -51,12 +51,13 @@ return $_[0]->[3] =~ /,quota/ || $_[0]->[3] =~ /^quota/ ? 1 : 0;
 # on this filesystem. This may not be all users on the system..
 sub filesystem_users
 {
-local($rep, @rep, $n, %hasu, $u);
+local($rep, @rep, $n, %hasu, @hasu, $u);
 $rep = `$config{'user_repquota_command'} $_[0] 2>&1`;
 if ($?) { return -1; }
 setpwent();
 while(@uinfo = getpwent()) {
 	$hasu{$uinfo[0]}++;
+	push(@hasu, $uinfo[0]);
 	}
 endpwent() if ($gconfig{'os_type'} ne 'hpux');
 @rep = split(/\n/, $rep); @rep = @rep[3..$#rep];
@@ -74,11 +75,13 @@ for($n=0; $n<@rep; $n++) {
 		$user{$n,'user'} =~ s/^#//g;
 		if ($user{$n,'user'} !~ /^\d+$/ && !$hasu{$user{$n,'user'}}) {
 			# Username was truncated! Try to find him..
-			foreach $u (keys %hasu) {
+			foreach $u (@hasu) {
 				if (substr($u, 0, length($user{$n,'user'})) eq
-				    $user{$n,'user'}) {
+				    $user{$n,'user'} &&
+				    !$doneu{$user{$n,'user'}}) {
 					# found him..
 					$user{$n,'user'} = $u;
+					@hasu = grep { $_ ne $u } @hasu;
 					last;
 					}
 				}
