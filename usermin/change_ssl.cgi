@@ -32,7 +32,6 @@ else {
 	$in{'version'} =~ /^\d+$/ || &error($text{'ssl_eversion'});
 	$miniserv{'ssl_version'} = $in{'version'};
 	}
-$miniserv{'no_ssl2'} = $in{'no_ssl2'};
 foreach $ec (split(/[\r\n]+/, $in{'extracas'})) {
 	-r $ec && !-d $ec || &error(&webmin::text('ssl_eextraca', $ec));
 	push(@extracas, $ec);

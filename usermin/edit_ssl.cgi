@@ -50,10 +50,6 @@ else {
 	print "<td>",&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
 				     $webmin::text{'ssl_auto'}),"</td> </tr>\n";
 
-	print "<tr> <td><b>$webmin::text{'ssl_no2'}</b></td>\n";	
-	print "<td>",&ui_radio("no_ssl2", int($miniserv{'no_ssl2'}),
-		[ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]),"</td> </tr>\n";
-
 	print "<tr> <td valign=top><b>$webmin::text{'ssl_extracas'}</b></td>\n";
 	print "<td><textarea name=extracas rows=3 cols=40>";
 	foreach $e (split(/\s+/, $miniserv{'extracas'})) {
