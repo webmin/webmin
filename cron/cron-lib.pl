@@ -804,15 +804,15 @@ if ($in->{'range_def'}) {
 else {
 	# Validate and store range
 	foreach my $r ("start", "end") {
-		eval { timelocal(0, 0, 0, $in{'range_'.$r.'_day'},
-					  $in{'range_'.$r.'_month'}-1,
-					  $in{'range_'.$r.'_year'}-1900) };
+		eval { timelocal(0, 0, 0, $in->{'range_'.$r.'_day'},
+					  $in->{'range_'.$r.'_month'}-1,
+					  $in->{'range_'.$r.'_year'}-1900) };
 		if ($@) {
 			&error($text{'range_e'.$r}." ".$@);
 			}
-		$job->{$r} = [ $in{'range_'.$r.'_day'},
-			       $in{'range_'.$r.'_month'},
-			       $in{'range_'.$r.'_year'} ];
+		$job->{$r} = [ $in->{'range_'.$r.'_day'},
+			       $in->{'range_'.$r.'_month'},
+			       $in->{'range_'.$r.'_year'} ];
 		}
 	}
 }
@@ -1031,6 +1031,7 @@ return 0;
 # unconvert_range(&job)
 sub unconvert_range
 {
+local ($job) = @_;
 if ($job->{'start'}) {
 	# Need to add range command
 	local ($cmd, $input) = &extract_input($job->{'command'});
@@ -1053,6 +1054,7 @@ return 0;
 # Given a cron job with a # command after the command, sets the comment field
 sub convert_comment
 {
+local ($job) = @_;
 if ($job->{'command'} =~ /^(.*)\s*#([^#]*)$/) {
 	$job->{'command'} = $1;
 	$job->{'comment'} = $2;
@@ -1065,6 +1067,7 @@ return 0;
 # Adds an comment back to the command in a cron job
 sub unconvert_comment
 {
+local ($job) = @_;
 if ($job->{'comment'} =~ /\S/) {
 	$job->{'command'} .= " #".$job->{'comment'};
 	return 1;
