@@ -18,7 +18,7 @@ index_down=Cada servidor ha de redescarregar el mòdul
 index_version=Usermin $1
 index_nodeps=Ignora les dependències del mòdul en instal·lar-lo
 index_grant2=Concedeix accés només als usuaris i grups:
-index_grant1=Concedeix accés a tots els usuaris de Usermin
+index_grant1=Concedeix accés a tots els usuaris d'Usermin
 index_euser=Edita l'usuari:
 index_cuser=Afegeix Usuari
 index_egroup=Edita el grup:
@@ -34,7 +34,7 @@ index_installon=Instal·la a
 index_upgradeon=Servidors a actualitzar
 index_update=Actualitza Mòduls
 index_updateon=Servidors a actualitzar
-index_updatedesc=Aquest formulari permet actualitzar els mòduls de Usermin que tenen errors o forats de seguretat a partir de la pàgina d'<a href=http://www.webmin.com/updates.html>Actualitzacions de Usermin</a> o des d'una altra font.
+index_updatedesc=Aquest formulari permet actualitzar els mòduls d'Usermin que tenen errors o forats de seguretat a partir de la pàgina d'<a href=http://www.webmin.com/updates.html>Actualitzacions d'Usermin</a> o des d'una altra font.
 
 this_server=aquest servidor
 
@@ -43,9 +43,9 @@ add_msg=Afegint $1...
 add_gmsg=Afegint servidors al grup $1...
 add_err=No he pogut afegir el servidor
 add_gerr=No he pogut afegir el grup
-add_echeck=El servidor $1 no té el mòdul de configuració de Usermin
-add_echeck2=El servidor $1 no té el mòdul d'Usuaris de Usermin
-add_eversion=El servidor $1 no està executant la versió $2 de Usermin o superior.
+add_echeck=El servidor $1 no té el mòdul de configuració d'Usermin
+add_echeck2=El servidor $1 no té el mòdul d'Usuaris d'Usermin
+add_eversion=El servidor $1 no està executant la versió $2 d'Usermin o superior.
 add_ok=He afegit $1 amb $2 mòduls i $3 temes.
 
 refresh_title=Refresc de les Llistes de Mòduls i Temes
@@ -72,7 +72,7 @@ host_delete=Treu de la Llista de Gestionats
 host_refresh=Refresca els Usuaris i Temes
 host_installed=Paquets Instal·lats
 host_os=SO i versió
-host_version=Versió de Usermin
+host_version=Versió d'Usermin
 host_count=Mòduls instal·lats
 host_tcount=Temes instal·lats
 host_header_m=Mòduls Usermin Instal·lats
@@ -156,7 +156,7 @@ user_lock=No s'accepta cap contrasenya
 user_lang=Idioma
 user_theme=Tema personal
 user_default=Valor per defecte del servidor
-user_themedef=Tema per defecte de Usermin
+user_themedef=Tema per defecte d'Usermin
 user_ips=Control d'accés IP
 user_allips=Permet des de totes les adreces
 user_allow=Permet només des de les adreces llistades
@@ -266,7 +266,7 @@ acl_failed=No he pogut configurar el control d'accés a $1: $2
 acl_done=...fet
 
 sync_title=Sincronització de Servidors
-sync_desc=Aquest formulari permet crear usuaris i grups de Usermin als servidors que actualment no els tenen, per tal de sincronitzar els comptes a través de tots els servidors del cluster.
+sync_desc=Aquest formulari permet crear usuaris i grups d'Usermin als servidors que actualment no els tenen, per tal de sincronitzar els comptes a través de tots els servidors del cluster.
 sync_hosts=Servidors a sincronitzar
 sync_hall=Tots els servidors
 sync_hsel=Els seleccionats...
@@ -289,7 +289,7 @@ sync_acl=Copiant els fitxers ACL de $1...
 sync_test=Mostra només el que es faria
 sync_restart=Reiniciant Usermin...
 
-upgrade_title=Actualització de Usermin
+upgrade_title=Actualització d'Usermin
 upgrade_header=Actualitzant Usermin a tots els hosts ..
 upgrade_header2=Actualitzant Usermin a $1 ..
 upgrade_header3=Actualitzant Usermin als hosts que executen una versió més antiga de la $1...
@@ -302,7 +302,7 @@ upgrade_mode_solaris-pkg=Paquet Solaris
 upgrade_mode_gentoo=Paquet Gentoo
 upgrade_mode_debian=Paquet Debian
 upgrade_mode_caldera=RPM de Caldera
-upgrade_ok=He actualitzat el paquet $1 de Usermin a $2
+upgrade_ok=He actualitzat el paquet $1 d'Usermin a $2
 upgrade_failed=No ho he pogut instal·lar a $1: $2
 upgrade_done=...fet
 upgrade_efast=Només es poden actualitzar els servidors que utilitzen mode RPC ràpid

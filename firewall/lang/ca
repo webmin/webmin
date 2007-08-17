@@ -59,6 +59,7 @@ index_auto1=Executa traducció d'adreces de xarxa sobre la interfície externa:
 index_auto2=Bloqueja totes les connexions d'entrada sobre la interfície externa:
 index_auto3=Bloqueja-les totes excepte SSH i IDENT a la interfície externa:
 index_auto4=Bloqueja-les totes excepte SSH, IDENT, ping i ports alts a la interfície:
+index_auto5=Bloqueja-les totes excepte els ports utilitzats per a hostalatge virtual a la interfície:
 index_auto=Configura el Tallafocs
 index_add=Afegeix
 index_shorewall=Atenció! Sembla que s'està utilitzant Shorewall per generar el tallafocs del sistema. Pot ser que hagis d'utilitzar el <a href='$1'>mòdul de Tallafocs Shorewall</a> en lloc d'aquest.

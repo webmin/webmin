@@ -57,7 +57,7 @@ save_edesc=No s'ha introduït cap descripció
 save_euser=No hi ha l'usuari o bé és incorrecte
 save_eorder=L'ordenació a la pàgina principal ha de ser un número
 save_etimeout=Hi falta el temps màxim d'espera o bé és invàlid
-save_eusermin=Les ordres que s'executen en altres servidors no es poden executar des de Usermin
+save_eusermin=Les ordres que s'executen en altres servidors no es poden executar des d'Usermin
 
 run_err=No he pogut executar l'ordre
 run_ecannot=No tens permís per executar aquesta ordre

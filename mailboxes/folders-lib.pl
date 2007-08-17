@@ -249,6 +249,7 @@ elsif ($_[2]->{'type'} == 6) {
 	# For each sub-folder, get the IDs we need, and put them into the
 	# return array at the right place
 	local @mail = map { undef } (0 .. @$mems-1);
+	local $changed = 0;
 	foreach my $sfn (keys %wantmap) {
 		local $sf = $namemap{$sfn};
 		local @wantids = map { $_->[0] } @{$wantmap{$sfn}};
@@ -257,11 +258,24 @@ elsif ($_[2]->{'type'} == 6) {
 		for(my $i=0; $i<@sfmail; $i++) {
 			$mail[$wantidxs[$i]] = $sfmail[$i];
 			if ($sfmail[$i]) {
+				# Original mail exists .. add to results
 				$sfmail[$i]->{'idx'} = $wantidxs[$i];
 				$sfmail[$i]->{'id'} =
 					$sfn."\t".$sfmail[$i]->{'id'};
 				}
+			else {
+				# Take out of virtual folder index
+				print DEBUG "underlying email $sfn $wantids[$i] is gone!\n";
+				$mems = [ grep { $_->[0] ne $sf ||
+					 $_->[1] ne $wantids[$i] } @$mems ];
+				$changed = 1;
+				}
 			}
+		}
+	if ($changed) {
+		# Need to save virtual folder
+		$folder->{'members'} = $mems;
+		&save_folder($folder, $folder);
 		}
 	return @mail;
 	}
@@ -458,10 +472,11 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 		}
 
 	# Build map from sub-folder names to IDs
-	my (%namemap, @allids);
+	my (%namemap, @allids, $mems);
 	if ($folder->{'type'} == 6) {
 		# For a virtual folder, we need to find all sub-folders
-		foreach my $m (@{$folder->{'members'}}) {
+		$mems = $folder->{'members'};
+		foreach my $m (@$mems) {
 			local $sfn = &folder_name($m->[0]);
 			$namemap{$sfn} = $m->[0];
 			push(@allids, $sfn."\t".$m->[1]);
@@ -488,13 +503,26 @@ elsif ($folder->{'type'} == 5 || $folder->{'type'} == 6) {
 		for(my $i=0; $i<@sfmail; $i++) {
 			$mail[$wantidxs[$i]] = $sfmail[$i];
 			if ($sfmail[$i]) {
+				# Original mail exists .. add to results
 				$sfmail[$i]->{'id'} =
 					$sfn."\t".$sfmail[$i]->{'id'};
 				$sfmail[$i]->{'idx'} = &indexof(
 					$sfmail[$i]->{'id'}, @allids);
 				print DEBUG "looking for ",$sfmail[$i]->{'id'}," found at ",$sfmail[$i]->{'idx'},"\n";
 				}
+			else {
+				# Take out of virtual folder index
+				print DEBUG "underlying email $sfn $wantids[$i] is gone!\n";
+				$mems = [ grep { $_->[0] ne $sf ||
+					 $_->[1] ne $wantids[$i] } @$mems ];
+				$changed = 1;
+				}
 			}
+		}
+	if ($changed && $folder->{'type'} == 6) {
+		# Need to save virtual folder
+		$folder->{'members'} = $mems;
+		&save_folder($folder, $folder);
 		}
 	return @mail;
 	}

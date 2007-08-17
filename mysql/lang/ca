@@ -79,6 +79,7 @@ ddrop_empty=Suprimeix Totes les Taules
 ddrops_err=No he pogut destruir les bases de dades
 ddrops_title=Destrucció de Bases de dades
 ddrops_rusure=Segur que vols destruir les $1 bases de dades seleccionades? Se suprimiran $2 taules que contenen $3 files de dades.
+ddrops_rusure2=Segur que vols destruir la base de dades $1 seleccionada?
 ddrops_mysql=Com que has seleccionat la base de dades mestra, eliminant-la segurament inutilitzaràs el teu servidor MySQL!
 ddrops_ok=Destrueix la Base de dades
 ddrops_enone=No has seleccionat cap base de dades

@@ -1,6 +1,6 @@
-index_title=Configuració de Usermin
-index_econfig=O bé el directori $1 no existeix al sistema, o bé no és el directori de configuració de Usermin. Pot ser que Usermin no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_return=a la configuració de Usermin
+index_title=Configuració d'Usermin
+index_econfig=O bé el directori $1 no existeix al sistema, o bé no és el directori de configuració d'Usermin. Pot ser que Usermin no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.a.
+index_return=a la configuració d'Usermin
 index_stop=Atura Usermin
 index_stopmsg=Fes clic sobre aquest botó per aturar el servidor Usermin en execució al sistema. Un cop aturat, no s'hi podrà connectar cap usuari.
 index_start=Inicia Usermin
@@ -8,13 +8,13 @@ index_startmsg=Fes clic sobre aquest botó per iniciar el servidor Usermin al sis
 index_version=Usermin $1
 index_boot=Inicia en engegar el sistema
 index_bootmsg=Canvia aquesta opció per controlar si Usermin s'inicia en engegar el sistema o no. Si actualment no s'inicia en engegar el sistema i tries Sí, es crearà un nou script init
-index_install=Webmin pot descarregar i instal·lar automàticament per tu la darrera versió de Usermin.No obstant, això no s'ha de fer si el programa ja està instal·lat i està fent servir un directori de configuració diferent.
-index_rpm=Instal·la el paquet RPM de Usermin
-index_tgz=Instal·la el paquet tar.gz de Usermin
-index_deb=Instal·la el paquet Debian de Usermin
-index_esame=El directori $1 de configuració de Usermin establert a la pàgina de <a href='$2'>configuració del mòdul</a> és el mateix que el directori de Webmin, cosa que no és correcta.
+index_install=Webmin pot descarregar i instal·lar automàticament per tu la darrera versió d'Usermin. No obstant, això no s'ha de fer si el programa ja està instal·lat i està fent servir un directori de configuració diferent.
+index_rpm=Instal·la el paquet RPM d'Usermin
+index_tgz=Instal·la el paquet tar.gz d'Usermin
+index_deb=Instal·la el paquet Debian d'Usermin
+index_esame=El directori $1 de configuració d'Usermin establert a la pàgina de <a href='$2'>configuració del mòdul</a> és el mateix que el directori de Webmin, cosa que no és correcta.
 index_restart=Reinicia Usermin
-index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor de Usermin. Això pot ser necessari si has actualitzat Perl fa poc. 
+index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor d'Usermin. Això pot ser necessari si has actualitzat Perl fa poc. 
 
 access_title=Control d'Accés IP
 access_desc=Amb aquest formulari, el servidor Usermin pot configurar-se per a permetre o denegar l'accés només des de certes adreces IP. Es poden introduir també noms de host (com ara foo.bar.com) i xarxes IP (com 10.254.3.0 o 10.254.1.0/255.255.255.128). Hauries de limitar l'accés al servidor a les adreces fiables, sobretot si és accessible des d'Internet. Altrament, algú que endevini la teva contrasenya tindrà el control complet del sistema.
@@ -32,7 +32,7 @@ mods_uploaded=Des d'un fitxer pujat
 mods_ftp=Des d'un URL FTP o HTTP
 mods_nodeps=Ignora les dependències del mòdul en instal·lar-lo
 mods_installok=Instal·la el Mòdul des de Fitxer
-mods_desc2=SI vols tenir més d'una còpia del mateix mòdul amb configuracions diferents, el formulari de la dreta permet clonar qualsevol mòdul existent. El clon tindrà un nom nou, una nova configuració i es pot posar a disposició d'usuaris diferents. 
+mods_desc2=Si vols tenir més d'una còpia del mateix mòdul amb configuracions diferents, el formulari de la dreta permet clonar qualsevol mòdul existent. El clon tindrà un nom nou, una nova configuració i es pot posar a disposició d'usuaris diferents. 
 mods_clone=Clonació de Mòdul
 mods_cname=Mòdul a clonar
 mods_cnew=Nom del mòdul clonat
@@ -45,14 +45,14 @@ mods_deleteok=Suprimeix els Mòduls Seleccionats
 mods_desc4=Els mòduls instal·lats es poden exportar com un fitxer wbm.gz utilitzant el formulari de sota. Llavors, es pot instal·lar el fitxer de mòdul en un altre sistema que utilitzi Usermin.
 
 os_title=Sistema Operatiu i Entorn
-os_desc3=Aquesta pàgina mostra el sistema operatiu detectat per Usermin a l'hora d'instal·lar-lo, i el sistema detectat actualment. SI són diferents, pots triar d'actualitzar la informació del SO de Usermin, cosa que pot ser necessària si has fet una actualització recentment.
+os_desc3=Aquesta pàgina mostra el sistema operatiu detectat per Usermin a l'hora d'instal·lar-lo, i el sistema detectat actualment. Si són diferents, pots triar d'actualitzar la informació del SO d'Usermin, cosa que pot ser necessària si has fet una actualització recentment.
 os_desc2=També pots canviar el camí de recerca que fa servir Webmin quan executa programes, i la llibreria compartida que es passa a tots els programes.
 os_usermin=Sistema operatiu d'acord amb Usermin
 os_iusermin=Codi intern d'OS utilitzat per Usermin
 os_update=Actualitza l'Usermin per utilitzar el SO detectat
 
 lang_title=Idioma
-lang_title2=Idioma de Usermin
+lang_title2=Idioma d'Usermin
 lang_intro=Aquesta pàgina permet canviar amb quin idioma Usermin mostrarà els títols, prompts i missatges
 
 session_title=Autenticació
@@ -78,12 +78,12 @@ session_blank=Demana als usuaris amb contrasenya buida que en triïn una a la pri
 session_homedir_perms=Permisos del nou directori
 session_ehomedir_perms=Hi falten els permisos del directori o el valor octal és incorrecte
 
-themes_title=Temes de Usermin
-themes_desc=Els temes controlen l'aparença de la interfície d'usuari de Usermin, incloent-hi les icones, colors, fons, i possiblement la disposició de les pàgines. Es pot fer servir la caixa de selecció de sota per triar un dels temes instal·lats al sistema que sigui el tema per defecte dels usuaris de Usermin.
+themes_title=Temes d'Usermin
+themes_desc=Els temes controlen l'aparença de la interfície d'usuari d'Usermin, incloent-hi les icones, colors, fons, i possiblement la disposició de les pàgines. Es pot fer servir la caixa de selecció de sota per triar un dels temes instal·lats al sistema que sigui el tema per defecte dels usuaris d'Usermin.
 themes_sel=Tema actual:
-themes_default=Tema antic de Usermin
+themes_default=Tema antic d'Usermin
 themes_change=Canvia'l
-themes_installdesc=Fes servir el formulari de sota per instal·lar un nou tema de Usermin al sistema. Els temes es distribueixen típicament amb fitxers <tt>.wbt</tt>, però també es poden instal·lar des de fitxers RPM si estan suportats pel sistema.
+themes_installdesc=Fes servir el formulari de sota per instal·lar un nou tema d'Usermin al sistema. Els temes es distribueixen típicament amb fitxers <tt>.wbt</tt>, però també es poden instal·lar des de fitxers RPM si estan suportats pel sistema.
 themes_installok=Instal·la un Tema
 themes_err1=No he pogut instal·lar el tema de $1
 themes_efile=El fitxer no existeix
@@ -110,23 +110,23 @@ themes_delok=Tema a suprimir:
 themes_desc4=Els temes instal·lats es poden exportar com un fitxer wbt.gz utilitzant el formulari de sota. Llavors, el fitxer de tema es pot instal·lar en un altre sistema que executi Usermin.
 
 configs_ecannot=No tens permís per configurar aquest mòdul
-configs_title=Configuració del Mòdul Usermin
+configs_title=Configuració dels Mòduls d'Usermin
 configs_header=Mòduls configurables
 configs_title2=Configuració de Mòdul
 configs_desc=Selecciona de la llista de sota el mòdul que vols configurar...
 configs_uheader=Preferències d'usuari per defecte de $1
-configs_return=a la configuració de mòduls Usermin
+configs_return=a la configuració de mòduls d'Usermin
 configs_prefs=Els usuaris poden editar les preferències
 configs_sels=Només els seleccionats...
 
 acl_title=Mòduls Disponibles
-acl_desc=Fes servir aquesta pàgina per seleccionar quins mòduls instal·lats de Usermin poden veure els usuaris.
+acl_desc=Fes servir aquesta pàgina per seleccionar quins mòduls instal·lats d'Usermin poden veure els usuaris.
 
 ssl_title=Xifratge SSL
 ssl_desc1=No sembla que el host on s'està executant Usermin tingui instal·lat el mòdul perl SSLeay. Amb això, Usermin suporta comunicació xifrada SSL entre el navegador i el servidor. Si els usuaris accedeixen al servidor Usermin a través d'Internet, llavors has de considerar seriosament fer servir SSL per evitar que un atacant els prengui les contrasenyes.
 ssl_desc2=Atenció - activa el suport SSL nomes si tens un navegador que suporti SSL (com ara Netscape o IE), i no hi ha cap tallafocs bloquejant les peticions https entre el navegador i el host Usermin.
 ssl_newkey=Aquest formulari es pot fer servir per crear una nova clau SSL per al servidor Usermin.
-ssl_hole=Com que actualment estàs utilitzant la clau SSL per defecte de Usermin a la qual tothom té accés, hauries de generar immediatament una clau nova. Altrament, la teva connexió SSL no serà segura!
+ssl_hole=Com que actualment estàs utilitzant la clau SSL per defecte d'Usermin a la qual tothom té accés, hauries de generar immediatament una clau nova. Altrament, la teva connexió SSL no serà segura!
 
 ca_email=Adreça de correu
 ca_ou=Departament
@@ -134,7 +134,7 @@ ca_o=Organització
 ca_sp=Estat
 ca_c=Codi de país
 
-newkey_ok=La següent clau SSL de Usermin s'ha generat amb èxit.
+newkey_ok=La següent clau SSL d'Usermin s'ha generat amb èxit.
 
 stop_err=No he pogut aturar Usermin
 stop_ekill=No he pogut matar el procés: $1
@@ -146,7 +146,7 @@ start_ecannot=No tens permís per iniciar Usermin
 
 users_title=Usuaris i Grups Permesos
 users_desc=Amb aquest formulari es pot configurar Usermin per limitar quins usuaris i grups Unix tenen l'entrada permesa. Per especificar tots els membres primaris d'un grup Unix, introdueix <tt>@nomdelgrup</tt> a la llista.
-users_desc2=Per fer copincidir un rand d'UIDs, introdueix <tt>start-end</tt>, <tt>start-</tt> o <tt>-end</tt> dins de la llista.
+users_desc2=Per fer coincidir un rang d'UIDs, introdueix <tt>start-end</tt>, <tt>start-</tt> o <tt>-end</tt> dins de la llista.
 users_header=Control d'accés Usermin
 users_all=Permet tots els usuaris
 users_allow=Permet només els usuaris llistats
@@ -155,14 +155,14 @@ users_err=No he pogut actualitzar la llista d'usuaris
 users_none=No has introduït cap usuari
 users_euser='$1' no és un nom d'usuari vàlid
 users_egroup='$1' no és un nom de grup vàlid
-users_eversion=El control d'accés d'usuaris i grups només està suportat per les versions 0.76 de Usermin i superiors.
+users_eversion=El control d'accés d'usuaris i grups només està suportat per les versions 0.76 d'Usermin i superiors.
 users_shells=Denega els usuaris la shell dels quals no sigui al fitxer
 users_eshells=Hi falta el fitxer de shells o bé no existeix
 
 defacl_title=Opcions de Control d'Accés
-defacl_desc=Aquesta pàgina permet configurar diverses opcions de control d'accés que s'apliquen als mòduls i usuaris de Usermin. Aquestes opcions són semblants a les de'ACL globals per a cada usuari del mòdul d'usuaris de Webmin.
+defacl_desc=Aquesta pàgina permet configurar diverses opcions de control d'accés que s'apliquen als mòduls i usuaris d'Usermin. Aquestes opcions són semblants a les d'ACLs globals per a cada usuari del mòdul d'usuaris de Webmin.
 defacl_header=Opcions de control d'accés del usuaris Usermin
-defacl_eversion=L'edició d'opcions de control d'accés només està suportada per les version 0.76 de Usermin i superiors.
+defacl_eversion=L'edició d'opcions de control d'accés només està suportada per les version 0.76 d'Usermin i superiors.
 defacl_err=No he pogut desar les opcions de control d'accés
  
 install_err1=No he pogut instal·lar el mòdul de $1
@@ -175,8 +175,8 @@ install_etar=No és un fitxer de mòdul vàlid: $1
 install_einfo=Al mòdul $1 li falta un fitxer a module.info
 install_enone=No sembla que el fitxer contingui cap mòdul
 install_eos=El mòdul $1 no suporta aquest sistema operatiu ($2 $3)
-install_eusermin=El mòdul $1 és de Webmin, no de Usermin
-install_ever=El mòdul $1 requereix la versió $2 de Usermin o superior
+install_eusermin=El mòdul $1 és de Webmin, no d'Usermin
+install_ever=El mòdul $1 requereix la versió $2 d'Usermin o superior
 install_edep=El mòdul $1 requereix el mòdul $2
 install_eperldep=El mòdul $1 requereix el mòdul Perl $2.<br>No obstant, pots fer que Webmin <a href='$3'>el descarregui i l'instal·li</a> per tu.
 install_eextract=L'extracció ha fallat: $1
@@ -203,7 +203,7 @@ delete_rusure2=Segur que vols suprimir el tema $2? S'esborraran per sempre $1 Kb
 delete_enone=No has seleccionat cap mòdul
 
 ui_title=Interfície d'Usuari
-ui_desc=Aquest formulari permet editar les opcions de la interfície d'usuari utilitzades per tots els mòduls de Usermin.
+ui_desc=Aquest formulari permet editar les opcions de la interfície d'usuari utilitzades per tots els mòduls d'Usermin.
 ui_header=Opcions d'interfície d'usuari
 ui_default=Defecte
 cs_page=Fons de la pàgina
@@ -240,8 +240,8 @@ ui_feedbackthis=Nom de host del sistema
 ui_hostnamemode=Nom de host a mostrar a Usermin
 ui_tabs=Categoritza els mòduls de la pàgina índex
 
-upgrade_title=Actualització de Usermin
-upgrade_title2=Instal·lació de Usermin
+upgrade_title=Actualització d'Usermin
+upgrade_title2=Instal·lació d'Usermin
 upgrade_desc=Aquest formulari permet actualitzar tota la instal·lació Usermin a una versió nova. Pots instal·lar-la des d'un fitxer local, un fitxer pujat o des de la versió més actual a <a href=http://www.usermin.com/>www.usermin.com</a>. Igual que amb una actualització manual, es conservaran totes les configuracions i mòduls de tercers.
 upgrade_descrpm=Aquest formulari permet actualitzar tota la instal·lació Usermin a una versió nova utilitzant l'opció d'actualització RPM. Pots instal·lar-la des d'un fitxer local, un fitxer pujat o des de la versió més actual a <a href=http://www.usermin.com/>www.usermin.com</a>. Igual que amb una actualització manual, es conservaran totes les configuracions i mòduls de tercers.
 upgrade_descdeb=Aquest formulari permet actualitzar tota la instal·lació Usermin a una versió nova actualitzant el paquet Debian. Pots instal·lar-lo des d'un fitxer local, un fitxer pujat o des de la versió més actual a <a href=http://www.usermin.com/>www.usermin.com</a>. Igual que amb una actualització manual, es conservaran totes les configuracions i mòduls de tercers.
@@ -259,22 +259,22 @@ upgrade_eurl=Hi falta l'URL o bé és invàlid
 upgrade_efile=El fitxer no existeix
 upgrade_ebrowser=El teu navegador no suporta puges de fitxers
 upgrade_eversion=No puc desactualitzar a la versió $1
-upgrade_elatest=Ja estàs executant la versió més actual de Usermin
-upgrade_erpm=No és un fitxer RPM de Usermin vàlid
+upgrade_elatest=Ja estàs executant la versió més actual d'Usermin
+upgrade_erpm=No és un fitxer RPM d'Usermin vàlid
 upgrade_egunzip=El sistema no té l'ordre <tt>gunzip</tt>
 upgrade_egzip=No he pogut descomprimir el fitxer amb <tt>gunzip</tt>: $1
-upgrade_etar=No és un fitxer tar de Usermin vàlid
+upgrade_etar=No és un fitxer tar d'Usermin vàlid
 upgrade_euntar=No he pogut desempaquetar el fitxer amb <tt>tar</tt>: $1
-upgrade_emod=El fitxer és un mòdul de Usermin, no una actualització completa de Usermin. Per instal·lar-lo, convé que facis servir la pàgina <a href='$1'>Mòduls de Usermin</a>.
-upgrade_ewebmin=El fitxer és la versió $1 de Webmin, no una actualització de Usermin.
+upgrade_emod=El fitxer és un mòdul d'Usermin, no una actualització completa d'Usermin. Per instal·lar-lo, convé que facis servir la pàgina <a href='$1'>Mòduls d'Usermin</a>.
+upgrade_ewebmin=El fitxer és la versió $1 de Webmin, no una actualització d'Usermin.
 upgrade_setup=Actualitzant Usermin amb l'ordre $1...
 upgrade_setup2=Instal·lant Usermin amb l'ordre $1...
 upgrade_done=...actualització completa.
 upgrade_failed=...l'actualització ha fallat!
-upgrade_updates=Hi ha $1 actualitzacions per a aquesta nova versió de Usermin. Fes clic <a href='$2'>aquí</a> per descarregar-les i instal·lar-les automàticament ara.
+upgrade_updates=Hi ha $1 actualitzacions per a aquesta nova versió d'Usermin. Fes clic <a href='$2'>aquí</a> per descarregar-les i instal·lar-les automàticament ara.
 upgrade_eupdates=NO he pogut descarregar la llista d'actualitzacions: $1
  
-update_desc1=Aquest formulari et permet d'actualitzar mòduls Usermin que tenen errors o forats de seguretat des de la pàgina d'<a href=http://www.usermin.com/uupdates.html>Actualitzacions de Usermin</a> o des d'una altra font. Això compararà els mòduls instal·lats actualment amb aquells disponibles per actualitzar, i opcionalment descarregarà i instal·larà qualsevol mòdul desfasat.
+update_desc1=Aquest formulari et permet d'actualitzar mòduls Usermin que tenen errors o forats de seguretat des de la pàgina d'<a href=http://www.usermin.com/uupdates.html>Actualitzacions d'Usermin</a> o des d'una altra font. Això compararà els mòduls instal·lats actualment amb aquells disponibles per actualitzar, i opcionalment descarregarà i instal·larà qualsevol mòdul desfasat.
 update_header1=Actualitza els mòduls ara
 update_header2=Actualitza els mòduls de forma planificada
 update_webmin=Actualitza des de www.usermin.com
@@ -287,14 +287,14 @@ update_email=Envia l'informe de l'actualització a
 update_enabled=Actualment està activada l'actualització planificada
 update_apply=Desa i Aplica
 update_sched=Actualitza els mòduls a les $1:00 cada $2 dies
-update_none=No hi ha cap actualització de Usermin per aquesta versió.
+update_none=No hi ha cap actualització d'Usermin per aquesta versió.
 update_failed=NO he pogut instal·lar el mòdul: $1
-update_desc2=Aquest formulari és per planificar l'actualització automàtica dels mòduls de Usermin que continguin errors o forats de seguretat des de la pàgina d'<a href=http://www.usermin.com/updates.html>Actualitzacions de Usermin</a>  des d'una altra font. Tot i que aquest servei és útil, cal anar amb compte, ja que això pot permetre els atacants de prendre el teu sistema si el servidor queda compromès.
+update_desc2=Aquest formulari és per planificar l'actualització automàtica dels mòduls d'Usermin que continguin errors o forats de seguretat des de la pàgina d'<a href=http://www.usermin.com/updates.html>Actualitzacions d'Usermin</a>  des d'una altra font. Tot i que aquest servei és útil, cal anar amb compte, ja que això pot permetre els atacants de prendre el teu sistema si el servidor queda compromès.
 
 assignment_title=Reassignació de Mòduls
 assignment_header=Assignacions de categories de mòduls
 assignment_ok=Canvia les Categories
-assignment_desc=Aquest formulari permet configurar sota quina categoria es mostra cada mòdul a la pàgina d'índex de Usermin.
+assignment_desc=Aquest formulari permet configurar sota quina categoria es mostra cada mòdul a la pàgina d'índex d'Usermin.
  
 categories_title=Edició de Categories
 categories_header=ID de Categoria i descripcions
@@ -319,7 +319,7 @@ log_os=He canviat el sistema operatiu
 log_lang=He canviat l'idioma global
 log_startpage=He canviat les opcions de la pàgina índex
 log_upgrade=He actualitzat Usermin a la versió $1
-log_uinstall=He instal·lat la versió $1 de Usermin
+log_uinstall=He instal·lat la versió $1 d'Usermin
 log_session=He canviat les opcions d'autenticació
 log_ssl=He canviat el mode de xifratge SSL
 log_newkey=He creat la nova clau SSL
@@ -329,7 +329,7 @@ log_stopca=He tancat l'autoritat certificadora
 log_assignment=He canviat els categories dels mòduls
 log_categories=He canviat els noms de les categories
 log_theme=He canviat el tema a $1
-log_theme_def=He canviat al tema al tema per defecte de Usermin
+log_theme_def=He canviat al tema al tema per defecte d'Usermin
 log_referers=He canviat els referenciadors fiables
 log_config=He canviat la configuració de $1
 log_uconfig=He canviat la configuració d'usuari de $1
@@ -350,7 +350,7 @@ log_advanced=He canviat les opcions avançades
 update_err=No he pogut actualitzar els mòduls
 update_eurl=Hi falta l'URL d'actualització o bé és invàlid
 update_title=Actualització de Mòduls
-update_info=Actualitzant els mòduls de Usermin...
+update_info=Actualitzant els mòduls d'Usermin...
 update_mmissing=El mòdul $1 no està instal·lat en aquest sistema.
 update_malready=El mòdul $1 ja està actualitzat.
 update_mshow=Cal actualitzar el mòdul $1 a la versió $2.
@@ -361,13 +361,13 @@ update_mos=L'actualització del mòdul $1 no té relació amb aquest SO.
 update_efile=Fitxer font d'actualització de mòdul invàlid
 update_ehour=Hi falta l'hora d'actualització o bé és invàlida
 update_edays=Hi falten els dies d'actualització o bé són invàlids
-update_rv=Comprovant els mòduls actualitzats de Usermin des de $1
+update_rv=Comprovant els mòduls actualitzats d'Usermin des de $1
 update_eemail=Has d'introduir la teva adreça de correu electrònic només si vols que et mostri el que s'actualitzaria.
 update_subject=Informe d'actualització de mòduls Usermin
-update_version=Hi ha una nova versió de Usermin (versió $1) disponible per a descarregar. Les pròximes actualitzacions només estaran disponibles per a la darrera versió.
+update_version=Hi ha una nova versió d'Usermin (versió $1) disponible per a descarregar. Les pròximes actualitzacions només estaran disponibles per a la darrera versió.
 
 restrict_title=Restriccions dels Mòduls
-restrict_desc=Aquesta pàgina permet controlar quins mòduls de Usermin estan disponibles per a diferents usuaris i grups. S'apliquen totes les addicions i substraccions de la llista, no simplement la primera que coincideixi amb cada usuari.<br>Els mòduls que no estiguin seleccionats a la pàgina de <a href='$1'>mòduls disponibles</a> no estaran mai disponibles pels usuaris, encara que aquí estiguin seleccionats.
+restrict_desc=Aquesta pàgina permet controlar quins mòduls d'Usermin estan disponibles per a diferents usuaris i grups. S'apliquen totes les addicions i substraccions de la llista, no simplement la primera que coincideixi amb cada usuari.<br>Els mòduls que no estiguin seleccionats a la pàgina de <a href='$1'>mòduls disponibles</a> no estaran mai disponibles pels usuaris, encara que aquí estiguin seleccionats.
 restrict_who=Usuari Usermin
 restrict_what=Mòduls disponibles
 restrict_all=Tots els usuaris
@@ -424,10 +424,10 @@ sessions_switch=Canvia a l'usuari Usermin:
 sessions_ok=Canvia
 
 referers_title=Referenciadors Fiables
-referers_desc=Aquesta pàgina permet configurar el suport de comprovació de referenciadors de Usermin, que s'utilitza per evitar enllaços malintencionats des d'altres llocs web que intenten induir els navegadors dels teus usuaris a cometre coses perilloses amb Usermin. No obstant, si tens enllaços a Usermin des dels teus propis llocs web per als quals no vols que se t'avisi, has d'afegir aquests llocs a la llista de sota.
+referers_desc=Aquesta pàgina permet configurar el suport de comprovació de referenciadors d'Usermin, que s'utilitza per evitar enllaços malintencionats des d'altres llocs web que intenten induir els navegadors dels teus usuaris a cometre coses perilloses amb Usermin. No obstant, si tens enllaços a Usermin des dels teus propis llocs web per als quals no vols que se t'avisi, has d'afegir aquests llocs a la llista de sota.
 
 anon_title=Accés Anònim a Mòduls
-anon_desc=Aquesta pàgina permet concedir accés a mòduls i camins seleccionats de Usermin sense que els clients s'identifiquin. Per a cada camí de mòdul que introdueixis aquí sota (com ara /commands o /changepass) també has d'introduir el nom d'un Usuari Unix els permisos del qual s'utilitzaran en l'accés al mòdul.
+anon_desc=Aquesta pàgina permet concedir accés a mòduls i camins seleccionats d'Usermin sense que els clients s'identifiquin. Per a cada camí de mòdul que introdueixis aquí sota (com ara /commands o /changepass) també has d'introduir el nom d'un Usuari Unix els permisos del qual s'utilitzaran en l'accés al mòdul.
 anon_user=Usuari Unix
 anon_euser=Hi falta l'usuari Unix per al camí de l'URL '$1' o bé és invàlid
 
@@ -470,7 +470,12 @@ dav_eusers=No has introduït cap usuari
 syslog_errorlog=Registres d'error d'Usermin
 
 descs_title=Títols dels Mòduls
-descs_info=Aquesta pàgina permet especificar títols alternatius per als mòduls de Usermin, obviant les seves descripcions estàndard.
+descs_info=Aquesta pàgina permet especificar títols alternatius per als mòduls d'Usermin, obviant les seves descripcions estàndard.
 
 advanced_title=Opcions Avançades
-advanced_pass=Posa la contrasenya a disposició dels programes de Usermin<br><font size=-1>(No funciona quan l'autenticació de sessió està activada)</font>
+advanced_pass=Posa la contrasenya a disposició dels programes d'Usermin<br><font size=-1>(No funciona quan l'autenticació de sessió està activada)</font>
+
+blocked_title=Hosts i Usuaris Bloquejats
+blocked_none=Actualment, no hi ha cap host ni usuari bloquejat per Usermin.
+blocked_user=Usuari Usermin
+blocked_cleardesc=Fes clic sobre aquest botó per esborrar tot els blocatges actuals de hosts i usuaris  reiniciant el procés servidor d'Usermin.

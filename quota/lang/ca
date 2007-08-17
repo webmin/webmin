@@ -254,6 +254,7 @@ lusers_hblimit=Límit estricte
 lusers_sflimit=Límit lax de fitxers
 lusers_hflimit=Límit estricte de fitxers
 lusers_pc_hblocks=% estricte
+lusers_pc_sblocks=% lax
 lusers_apply=Aplica
 lusers_emailheader=Envia correu als usuaris que s'acostin a la quota
 lusers_email=Envia correu a tots els usuaris

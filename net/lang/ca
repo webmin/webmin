@@ -135,6 +135,7 @@ routes_ecgw=Hi falta l'adreça del portal o bé és invàlida
 routes_derr=No he pogut suprimir les rutes
 routes_denone=No has seleccionat cap ruta
 routes_ecnetmask2=No es pot especificar una màscara de xarxa com a ruta per defecte
+routes_ggw=Utilitza l'encaminador $1 a través de la interfície $2
 
 dns_title=Nom de Host i Client DNS
 dns_options=Opcions de Client DNS

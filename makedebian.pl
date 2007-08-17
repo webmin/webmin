@@ -3,23 +3,34 @@
 
 use POSIX;
 
+if ($ARGV[0] eq "--webmail" || $ARGV[0] eq "-webmail") {
+	$webmail = 1;
+	shift(@ARGV);
+	}
 if ($0 =~ /useradmin|usermin/ || `pwd` =~ /useradmin|usermin/) {
-	$product = "usermin";
+	if ($webmail) {
+		$product = "usermin-webmail";
+		}
+	else {
+		$product = "usermin";
+		}
+	$baseproduct = "usermin";
 	$port = 20000;
 	}
 else {
 	$product = "webmin";
+	$baseproduct = "webmin";
 	$port = 10000;
 	}
-$ucproduct = ucfirst($product);
+$ucproduct = ucfirst($baseproduct);
 $tmp_dir = "/tmp/debian";
 $debian_dir = "$tmp_dir/DEBIAN";
 $control_file = "$debian_dir/control";
-$usr_dir = "$tmp_dir/usr/share/$product";
+$usr_dir = "$tmp_dir/usr/share/$baseproduct";
 $pam_dir = "$tmp_dir/etc/pam.d";
 $init_dir = "$tmp_dir/etc/init.d";
 @rc_dirs = ( "$tmp_dir/etc/rc2.d", "$tmp_dir/etc/rc3.d", "$tmp_dir/etc/rc5.d" );
-$pam_file = "$pam_dir/$product";
+$pam_file = "$pam_dir/$baseproduct";
 $preinstall_file = "$debian_dir/preinst";
 $postinstall_file = "$debian_dir/postinst";
 $preuninstall_file = "$debian_dir/prerm";
@@ -31,7 +42,7 @@ $changelog_file = "$debian_dir/changelog";
 -r "/etc/debian_version" || die "makedebian.pl must be run on Debian";
 chop($webmin_dir = `pwd`);
 
-@ARGV == 1 || die "usage: makedebian.pl <version>";
+@ARGV == 1 || die "usage: makedebian.pl [--webmail] <version>";
 $ver = $ARGV[0];
 -r "tarballs/$product-$ver.tar.gz" || die "tarballs/$product-$ver.tar.gz not found";
 
@@ -41,7 +52,7 @@ system("rm -rf $tmp_dir");
 mkdir($tmp_dir, 0755);
 mkdir($debian_dir, 0755);
 system("mkdir -p $pam_dir");
-if ($product eq "usermin") {
+if ($baseproduct eq "usermin") {
 	system("mkdir -p $init_dir");
 	foreach $d (@rc_dirs) {
 		system("mkdir -p $d");
@@ -54,7 +65,7 @@ system("gunzip -c tarballs/$product-$ver.tar.gz | (cd $tmp_dir ; tar xf -)") &&
 	die "un-tar failed!";
 system("mv $tmp_dir/$product-$ver/* $usr_dir");
 rmdir("$tmp_dir/$product-$ver");
-system("mv $usr_dir/$product-pam $pam_file");
+system("mv $usr_dir/$baseproduct-pam $pam_file");
 system("cd $usr_dir && (find . -name '*.cgi' ; find . -name '*.pl') | perl perlpath.pl /usr/bin/perl -");
 system("cd $usr_dir && rm -f mount/freebsd-mounts*");
 system("cd $usr_dir && rm -f mount/openbsd-mounts*");
@@ -65,13 +76,13 @@ if ($product eq "webmin") {
 	}
 else {
 	# Need to create init script
-	system("mv $usr_dir/$product-init $init_dir/$product");
+	system("mv $usr_dir/$baseproduct-init $init_dir/$baseproduct");
 	foreach $d (@rc_dirs) {
-		system("ln -s ../init.d/$product $d/S99$product");
+		system("ln -s ../init.d/$baseproduct $d/S99$baseproduct");
 		}
 	}
-system("echo blue-theme >$usr_dir/defaulttheme");
 system("echo deb >$usr_dir/install-type");
+system("echo $product >$usr_dir/deb-name");
 system("cd $usr_dir && chmod -R og-w .");
 if ($< == 0) {
 	system("cd $usr_dir && chown -R root:bin .");
@@ -91,7 +102,7 @@ Depends: bash, perl, libnet-ssleay-perl, openssl, libauthen-pam-perl, libpam-run
 Pre-Depends: bash, perl
 Installed-Size: $size
 Maintainer: Jamie Cameron <jcameron\@webmin.com>
-Provides: $product
+Provides: $baseproduct
 EOF
 if ($product eq "webmin") {
 	print CONTROL <<EOF;
@@ -177,7 +188,7 @@ foreach $v (sort { $a <=> $b } (keys %$changes)) {
 		}
 	@st = stat("tarballs/webmin-$forv.tar.gz");
 	$vtimestr = strftime("%a, %d %b %Y %H:%M:%S %z", localtime($st[9]));
-	print CHANGELOG "$product ($forv) stable; urgency=low\n";
+	print CHANGELOG "$baseproduct ($forv) stable; urgency=low\n";
 	print CHANGELOG "\n";
 	foreach $desc (keys %{$changes->{$v}}) {
 		foreach $c (@{$changes->{$v}->{$desc}}) {
@@ -232,16 +243,16 @@ system("chmod 755 $preinstall_file");
 open(SCRIPT, ">$postinstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
-inetd=`grep "^inetd=" /etc/$product/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
+inetd=`grep "^inetd=" /etc/$baseproduct/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
 if [ "\$1" = "upgrade" ]; then
 	# Upgrading the package, so stop the old webmin properly
 	if [ "\$inetd" != "1" ]; then
-		/etc/init.d/$product stop >/dev/null 2>&1 </dev/null
+		/etc/init.d/$baseproduct stop >/dev/null 2>&1 </dev/null
 	fi
 fi
-cd /usr/share/$product
-config_dir=/etc/$product
-var_dir=/var/$product
+cd /usr/share/$baseproduct
+config_dir=/etc/$baseproduct
+var_dir=/var/$baseproduct
 perl=/usr/bin/perl
 autoos=3
 if [ "\$WEBMIN_PORT\" != \"\" ]; then
@@ -272,11 +283,11 @@ if [ "$product" = "webmin" ]; then
 		echo sudo=1 >>/etc/$product/miniserv.conf
 	fi
 fi
-rm -f /var/lock/subsys/$product
+rm -f /var/lock/subsys/$baseproduct
 if [ "$inetd" != "1" ]; then
-	/etc/init.d/$product start >/dev/null 2>&1 </dev/null
+	/etc/init.d/$baseproduct start >/dev/null 2>&1 </dev/null
 fi
-cat >/etc/$product/uninstall.sh <<EOFF
+cat >/etc/$baseproduct/uninstall.sh <<EOFF
 #!/bin/sh
 printf "Are you sure you want to uninstall $ucproduct? (y/n) : "
 read answer
@@ -287,12 +298,12 @@ if [ "\\\$answer" = "y" ]; then
 	echo "Done!"
 fi
 EOFF
-chmod +x /etc/$product/uninstall.sh
-port=`grep "^port=" /etc/$product/miniserv.conf | sed -e 's/port=//g'`
+chmod +x /etc/$baseproduct/uninstall.sh
+port=`grep "^port=" /etc/$baseproduct/miniserv.conf | sed -e 's/port=//g'`
 perl -e 'use Net::SSLeay' >/dev/null 2>/dev/null
 sslmode=0
 if [ "\$?" = "0" ]; then
-	grep ssl=1 /etc/$product/miniserv.conf >/dev/null 2>/dev/null
+	grep ssl=1 /etc/$baseproduct/miniserv.conf >/dev/null 2>/dev/null
 	if [ "\$?" = "0" ]; then
 		sslmode=1
 	fi
@@ -317,16 +328,16 @@ open(SCRIPT, ">$preuninstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
 if [ "\$1" != "upgrade" ]; then
-	grep root=/usr/share/$product /etc/$product/miniserv.conf >/dev/null 2>&1
+	grep root=/usr/share/$baseproduct /etc/$baseproduct/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 0 ]; then
 		# Package is being removed, and no new version of webmin
 		# has taken it's place. Run uninstalls and stop the server
 		if [ "$product" = "webmin" ]; then
 			echo "Running uninstall scripts .."
-			(cd /usr/share/$product ; WEBMIN_CONFIG=/etc/$product WEBMIN_VAR=/var/$product LANG= /usr/share/$product/run-uninstalls.pl)
+			(cd /usr/share/$baseproduct ; WEBMIN_CONFIG=/etc/$baseproduct WEBMIN_VAR=/var/$baseproduct LANG= /usr/share/$baseproduct/run-uninstalls.pl)
 		fi
-		/etc/init.d/$product stop >/dev/null 2>&1 </dev/null
-		/etc/$product/stop >/dev/null 2>&1 </dev/null
+		/etc/init.d/$baseproduct stop >/dev/null 2>&1 </dev/null
+		/etc/$baseproduct/stop >/dev/null 2>&1 </dev/null
 		/bin/true
 	fi
 fi
@@ -339,11 +350,11 @@ open(SCRIPT, ">$postuninstall_file");
 print SCRIPT <<EOF;
 #!/bin/sh
 if [ "\$1" != "upgrade" ]; then
-	grep root=/usr/share/$product /etc/$product/miniserv.conf >/dev/null 2>&1
+	grep root=/usr/share/$baseproduct /etc/$baseproduct/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 0 ]; then
 		# Package is being removed, and no new version of webmin
 		# has taken it's place. Delete the config files
-		rm -rf /etc/$product /var/$product
+		rm -rf /etc/$baseproduct /var/$baseproduct
 	fi
 fi
 EOF
@@ -393,9 +404,11 @@ system("gpg --output deb/${product}_$ver.dsc --clearsign deb/${product}_$ver.pla
 unlink("deb/${product}_$ver.plain");
 print "Wrote source deb/${product}_$ver.dsc\n";
 
-# Add to our repository
-chdir("/usr/local/webadmin/deb/repository");
-system("reprepro -Vb . includedeb sarge ../${product}_${ver}_all.deb");
+if (!$webmail) {
+	# Add to our repository
+	chdir("/usr/local/webadmin/deb/repository");
+	system("reprepro -Vb . includedeb sarge ../${product}_${ver}_all.deb");
+	}
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file

@@ -19,7 +19,7 @@ if ($in{'source'} == 0) {
 	# from local file
 	&error_setup(&text('upgrade_err1', $in{'file'}));
 	$file = $in{'file'};
-	if (!(-r $file)) { &inst_error($text{'upgrade_efile'}); }
+	if (!-r $file) { &inst_error($text{'upgrade_efile'}); }
 	if ($file =~ /webmin-(\d+\.\d+)/) {
 		$version = $1;
 		}

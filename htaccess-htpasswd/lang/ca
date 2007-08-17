@@ -9,7 +9,7 @@ index_return=a la llista d'usuaris i directoris
 index_nousers=Encara no s'ha definit cap usuari.
 index_nogroups=Encara no s'ha definit cap grup.
 index_eaccess=No tens accés a cap directori!
-index_search=He trobat directoris protegits sota:
+index_search=Busca directoris protegits sota:
 index_md5=El xifratge MD5 està activat a la configuració del mòdul, però el mòdul Perl $1 necessari no està instal·lat.
 index_sha1=El xifratge SHA1 està activat a la configuració del mòdul, però el mòdul Perl $1 necessari no està instal·lat.
 index_digest2=El xifratge de resums està activat a la configuració del mòdul, però l'ordre $1 o el mòdul Perl $2 necessaris no estan instal·lats.
@@ -102,6 +102,7 @@ log_create_group=He creat el grup $1
 log_modify_group=He modificat el grup $1
 log_delete_group=He suprimit el grup $1
 log_delete_dirs=He suprimit $1 directoris
+
 search_title=Resultats de la Recerca
 search_err=La recerca no ha reeixit
 search_edir=Hi falta el directori absolut per buscar o bé és invàlid

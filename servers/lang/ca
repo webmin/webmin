@@ -62,6 +62,7 @@ save_euser=Hi falta el nom d'usuari
 save_epass=Hi falta la contrasenya
 save_egroup=Hi falta el nom del grup
 save_elogin=Usuari o contrasenya invàlids
+save_egroup2=Nom del nou grup invàlid
 
 find_title=Recerca de Servidors
 find_new=He trobat un servidor nou a $1

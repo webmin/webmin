@@ -505,6 +505,11 @@ else
 		echo "pam=$pam" >> $cfile
 	fi
 
+	# Append package-specific info to config file
+	if [ -r "$wadir/miniserv-conf" ]; then
+		cat "$wadir/miniserv-conf" >>$cfile
+	fi
+
 	md5pass=`$perl -e 'print crypt("test", "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/") eq "\\$1\\$A9wB3O18\\$zaZgqrEmb9VNltWTL454R/" ? "1\n" : "0\n"'`
 
 	ufile=$config_dir/miniserv.users
