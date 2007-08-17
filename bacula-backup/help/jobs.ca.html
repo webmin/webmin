@@ -1,0 +1,41 @@
+<header>Treballs de Còpia</header>
+
+Un treball és l'objecte configurable més important de Bacula, ja que reuneix
+un client, un conjunt de fitxers i altres valors per controlar exactament què
+es copia. Per aquest motiu, en general és millor definir primer els conjunts
+de fitxers i els clients abans de crear un treball. <p>
+
+Cada treball té els atributs importants següents:<br>
+
+<dl>
+<dt>Nom del treball
+<dd>Un nom únic per a aquest treball.
+<dt>Tipus de treball
+<dd>Això determina quina mena d'acció portarà a terme el treball. En gairebé
+    tots els casos ha de ser <b>Còpia</b>.
+<dt>Nivell de còpia
+<dd>Determina si el treball ha de fer una còpia parcial o completa dels fitxers
+    seleccionats.
+<dt>Client a copiar
+<dd>Si el sistema Bacula té múltiples clients, aquesta opció determina de quin
+    es llegeixen els fitxers d'aquest treball de còpia.
+<dt>Conjunt de fitxers a copiar
+<dd>El conjunt de fitxers seleccionat determina quins fitxers i directoris 
+    s'inclouran a la còpia.
+<dt>Planificació de la còpia
+<dd>Aquesta opció opcional determina si el treball s'executa automàticament de
+    forma planificada, i quan.
+<dt>Dispositiu d'emmagatzematge destí
+<dd>Si el sistema Bacula està configurat amb més d'un dimoni d'emmagatzematge,
+    aquest opció determina a quin es fa la còpia.
+</dl>
+<p>
+
+Per simplificar el procés de creació de treballs, Bacula et deixa crear treballs
+amb <b>definicions per defecte</b> que en realitat no s'executen, sinó que
+especifiquen valors heretables pels treball reals. Quan edites un treball,
+el camp <b>Tipus per defecte</b> determina si és una definició per defecte,
+i hereta els valors d'algun treball per defecte, o cap. <p>
+
+<footer>
+

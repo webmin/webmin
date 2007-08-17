@@ -1,0 +1,40 @@
+<header>Dimonis d'Emmagatzematge</header>
+
+Cada entrada d'aquesta pàgina defineix una connexió a un dispositiu particular
+d'un dimoni d'emmagatzematge de Bacula. Típicament, el dimoni s'executa en el
+mateix sistema, però és possible definir més d'un dimoni, algun dels quals
+en hosts remots amb diverses unitats de cinta o bé més espai de disc. <p>
+
+Els atributs més importants de cada dimoni són:<br>
+<dl>
+<dt>Nom de l'emmagatzematge
+<dd>Un nom únic utilitzat en aquest sistema per identificar el dimoni.
+<dt>Contrasenya SD de Bacula
+<dd>Aquest camp ha de contenir la contrasenya utilitzada pel dimoni
+    d'emmagatzematge al sistema remot, que es pot trobar al fitxer
+    <tt>/etc/bacula/bacula-sd.conf</tt>.
+<dt>Nom de host o adreça IP
+<dd>El nom de host completament qualificat o la IP del sistema que executa
+    el dimoni d'emmagatzematge.
+<dt>Nom del dispositiu d'emmagatzematge
+<dd>Cada dimoni d'emmagatzematge pot definir un o més dispositius, cadascun
+    dels quals correspon a un directori o unitat de cinta diferent. Aquest
+    camp determina quin dispositiu utilitza aquest dimoni en particular.
+<dt>Nom del tipus de mitjà
+<dd>Aquest camp ha de contenir un nom curt per al tipus de mitjà utilitzat,
+    com ara <i>Fitxer</> o <i>DDS-2</i>. Ha de ser el mateix que el tipus de
+    mitjà que hi ha a la secció <b>Dispositius d'Emmagatzematge</b> del
+    servidor d'emmagatzematge.
+</dl>
+
+Sovint és útil de tenir més d'una entrada per al mateix host en aquesta pàgina,
+cadascuna de les quals té un dispositiu d'emmagatzematge diferent. Això permet
+crear còpies que es graven a directoris o unitats de cinta diferents. <p>
+
+Si al formulari del dimoni d'emmagatzematge es mostren les opcions de TLS,
+aquestes es poden utilitzar per activar la comunicació segura entre el director
+i el servidor d'emmagatzematge remot. Com que aquests s'executen normalment en
+el mateix sistema, no cal activar TLS. <p>
+
+<footer>
+
