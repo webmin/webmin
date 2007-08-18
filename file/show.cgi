@@ -38,8 +38,8 @@ else {
 	}
 
 # Dump the file
-$temp = &transname();
 &switch_acl_uid();
+$temp = &transname();
 $p = &unmake_chroot($p);
 if (!&can_access($p)) {
 	# ACL rules prevent access to file
