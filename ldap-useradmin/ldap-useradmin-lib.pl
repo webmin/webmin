@@ -286,18 +286,24 @@ push(@attrs, @{$_[1]->{'ldap_attrs'}});
 if (defined($_[1]->{'ldap_class'})) {
 	push(@attrs, "objectClass" => $_[1]->{'ldap_class'});
 	}
-local $rv = $ldap->modify($_[0]->{'dn'}, replace => { @attrs });
-if ($rv->code) {
-	&error(&text('usave_emod', $rv->error));
+local %replace;
+for(my $i=0; $i<@attrs; $i+=2) {
+	$replace{$attrs[$i]} ||= [ ];
+	local $v = $attrs[$i+1];
+	push(@{$replace{$attrs[$i]}}, ref($v) ? @$v : $v);
 	}
 local $newdn = "uid=$_[1]->{'user'},$base";
 if (!&same_dn($newdn, $_[0]->{'dn'})) {
-	# Re-named too!
+	# Re-named, so use new DN first
 	$rv = $ldap->moddn($_[0]->{'dn'}, newrdn => "uid=$_[1]->{'user'}");
 	if ($rv->code) {
 		&error(&text('usave_emoddn', $rv->error));
 		}
 	$_[1]->{'dn'} = $newdn;
+	}
+local $rv = $ldap->modify($_[1]->{'dn'}, replace => \%replace);
+if ($rv->code) {
+	&error(&text('usave_emod', $rv->error));
 	}
 if ($_[0] ne $_[1] && &indexof($_[0], @list_users_cache) != -1) {
 	# Update old object in cache
