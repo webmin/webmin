@@ -1186,23 +1186,34 @@ else {
 sleep(1);	# Give ncsd time to react
 }
 
-# set_user_envs(&user, action, [plainpass], [secondaries])
+# set_user_envs(&user, action, [plainpass], [secondaries],
+#	        [&olduser], [oldplainpass])
 # Sets up the USERADMIN_ environment variables for a user update of some kind,
 # prior to calling making_changes or made_changes. action must be one of
 # CREATE_USER, MODIFY_USER or DELETE_USER
 sub set_user_envs
 {
+local ($user, $action, $plainpass, $secs, $olduser, $oldpass) = @_;
 &clear_envs();
-$ENV{'USERADMIN_USER'} = $_[0]->{'user'};
-$ENV{'USERADMIN_UID'} = $_[0]->{'uid'};
-$ENV{'USERADMIN_REAL'} = $_[0]->{'real'};
-$ENV{'USERADMIN_SHELL'} = $_[0]->{'shell'};
-$ENV{'USERADMIN_HOME'} = $_[0]->{'home'};
-$ENV{'USERADMIN_GID'} = $_[0]->{'gid'};
-$ENV{'USERADMIN_PASS'} = $_[2] if (defined($_[2]));
-$ENV{'USERADMIN_SECONDARY'} = join(",", @{$_[3]}) if (defined($_[3]));
-$ENV{'USERADMIN_ACTION'} = $_[1];
+$ENV{'USERADMIN_USER'} = $user->{'user'};
+$ENV{'USERADMIN_UID'} = $user->{'uid'};
+$ENV{'USERADMIN_REAL'} = $user->{'real'};
+$ENV{'USERADMIN_SHELL'} = $user->{'shell'};
+$ENV{'USERADMIN_HOME'} = $user->{'home'};
+$ENV{'USERADMIN_GID'} = $user->{'gid'};
+$ENV{'USERADMIN_PASS'} = $plainpass if (defined($plainpass));
+$ENV{'USERADMIN_SECONDARY'} = join(",", @{$secs}) if (defined($secs));
+$ENV{'USERADMIN_ACTION'} = $action;
 $ENV{'USERADMIN_SOURCE'} = $main::module_name;
+if ($olduser) {
+	$ENV{'USERADMIN_OLD_USER'} = $user->{'user'};
+	$ENV{'USERADMIN_OLD_UID'} = $user->{'uid'};
+	$ENV{'USERADMIN_OLD_REAL'} = $user->{'real'};
+	$ENV{'USERADMIN_OLD_SHELL'} = $user->{'shell'};
+	$ENV{'USERADMIN_OLD_HOME'} = $user->{'home'};
+	$ENV{'USERADMIN_OLD_GID'} = $user->{'gid'};
+	$ENV{'USERADMIN_OLD_PASS'} = $oldpass if (defined($oldpass));
+	}
 }
 
 # set_group_envs(&group, action)
