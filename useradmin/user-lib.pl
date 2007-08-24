@@ -1216,18 +1216,24 @@ if ($olduser) {
 	}
 }
 
-# set_group_envs(&group, action)
+# set_group_envs(&group, action, [&oldgroup])
 # Sets up the USERADMIN_ environment variables for a group update of some kind,
 # prior to calling making_changes or made_changes. action must be one of
 # CREATE_GROUP, MODIFY_GROUP or DELETE_GROUP
 sub set_group_envs
 {
+local ($group, $action, $oldgroup) = @_;
 &clear_envs();
-$ENV{'USERADMIN_GROUP'} = $_[0]->{'group'};
-$ENV{'USERADMIN_GID'} = $_[0]->{'gid'};
-$ENV{'USERADMIN_MEMBERS'} = $_[0]->{'members'};
-$ENV{'USERADMIN_ACTION'} = $_[1];
+$ENV{'USERADMIN_GROUP'} = $group->{'group'};
+$ENV{'USERADMIN_GID'} = $group->{'gid'};
+$ENV{'USERADMIN_MEMBERS'} = $group->{'members'};
+$ENV{'USERADMIN_ACTION'} = $action;
 $ENV{'USERADMIN_SOURCE'} = $main::module_name;
+if ($oldgroup) {
+	$ENV{'USERADMIN_OLD_GROUP'} = $oldgroup->{'group'};
+	$ENV{'USERADMIN_OLD_GID'} = $oldgroup->{'gid'};
+	$ENV{'USERADMIN_OLD_MEMBERS'} = $oldgroup->{'members'};
+	}
 }
 
 # clear_envs()
