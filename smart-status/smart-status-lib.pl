@@ -47,6 +47,10 @@ if (&get_smart_version() > 5.0) {
 	elsif ($out =~ /Device.*is\+Enabled/i) {
 		$rv{'enabled'} = 1;
 		}
+	elsif ($out =~ /Device\s+supports\s+SMART\s+and\s+is\s+Enabled/i) {
+		# Added to match output from RHEL5
+		$rv{'enabled'} = 1;
+		}
 	else {
 		# Not enabled!
 		$rv{'enabled'} = 0;
