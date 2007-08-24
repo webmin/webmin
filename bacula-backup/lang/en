@@ -638,3 +638,6 @@ restore_eclients=No members of Bacula group backup found!
 restore_eall1=The <b>All Clients in Backup</b> option must be selected for <b>Restore to client or group</b> when doing a Bacula group job restore
 restore_eall2=The <b>All Clients in Backup</b> option can only be selected for <b>Restore to client or group</b> when doing a Bacula group job restore
 restore_enofiles=None of the selected files are in the backup
+restore_level_F=Full
+restore_level_D=Differential
+restore_level_I=Incremental

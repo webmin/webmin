@@ -13,18 +13,19 @@ print &ui_table_start($text{'restore_header'}, undef, 2);
 
 # Old job to restore
 $dbh = &connect_to_database();
-$cmd = $dbh->prepare("select JobId,Name,SchedTime from Job where Name not like 'Restore%' order by SchedTime desc") ||
+$cmd = $dbh->prepare("select JobId,Name,SchedTime,Level from Job where Name not like 'Restore%' order by SchedTime desc") ||
                 &error("prepare failed : ",$dbh->errstr);
 $cmd->execute();
-while(my ($id, $name, $when) = $cmd->fetchrow()) {
+while(my ($id, $name, $when, $level) = $cmd->fetchrow()) {
+	$level = $text{'restore_level_'.$level} || $level;
 	($j, $c) = &is_oc_object($name);
 	if (!$j) {
 		# Normal backup
-		push(@opts, [ $id, "$name ($when)" ]);
+		push(@opts, [ $id, "$id - $name ($when) - $level" ]);
 		}
 	elsif ($j && $c) {
 		# Backup of one node
-		push(@opts, [ $id, "$j on $c ($when)" ]);
+		push(@opts, [ $id, "$id - $j on $c ($when) - $level" ]);
 
 		# Save the job ID to a list of those for this particular node
 		# group backup
