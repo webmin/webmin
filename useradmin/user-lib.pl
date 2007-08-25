@@ -390,6 +390,7 @@ $_[0] || &error("Missing parameter to delete_user");
 local $pft = &passfiles_type();
 if ($pft == 1) {
 	# Delete from BSD master.passwd file
+	$_[0]->{'line'} =~ /^\d+$/ || &error("Missing user line to delete");
 	$lref = &read_file_lines($config{'master_file'});
 	splice(@$lref, $_[0]->{'line'}, 1);
 	map { $_->{'line'}-- if ($_->{'line'} > $_[0]->{'line'}) }
@@ -409,6 +410,7 @@ elsif ($pft == 6) {
 	}
 else {
 	# XXX doesn't delete from AIX file!
+	$_[0]->{'line'} =~ /^\d+$/ || &error("Missing user line to delete");
 	$lref = &read_file_lines($config{'passwd_file'});
 	splice(@$lref, $_[0]->{'line'}, 1);
 	map { $_->{'line'}-- if ($_->{'line'} > $_[0]->{'line'}) }
