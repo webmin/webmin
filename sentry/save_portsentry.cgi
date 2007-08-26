@@ -43,31 +43,33 @@ $in{'trigger'} =~ /^\d+$/ || &error($text{'portsentry_etrigger'});
 &save_config($conf, "SCAN_TRIGGER", $in{'trigger'});
 
 # Save list of ignored hosts
-if ($config{'portsentry_ignore'}) {
-	$ign = $config{'portsentry_ignore'};
+if (defined($in{'ignore'})) {
+	if ($config{'portsentry_ignore'}) {
+		$ign = $config{'portsentry_ignore'};
+		}
+	else {
+		$ign = &find_value("IGNORE_FILE", $conf);
+		}
+	&lock_file($ign);
+	$in{'ignore'} =~ s/\r//g;
+	$in{'ignore'} =~ s/\n*$/\n/;
+	foreach $h (split(/\s+/, $in{'ignore'})) {
+		gethostbyname($h) || &check_ipaddress($h) ||
+		  ($h =~ /^([0-9\.]+)\/(\d+)/ && &check_ipaddress($1)) ||
+			&error(&text('portsentry_eignore', $h));
+		}
+	if (defined($in{'editbelow'})) {
+		open(IGNORE, $ign);
+		@below = <IGNORE>;
+		close(IGNORE);
+		@below = @below[$in{'editbelow'} .. $#below];
+		}
+	&open_tempfile(IGNORE, ">$ign");
+	&print_tempfile(IGNORE, $in{'ignore'});
+	&print_tempfile(IGNORE, @below);
+	&close_tempfile(IGNORE);
+	&unlock_file($ign);
 	}
-else {
-	$ign = &find_value("IGNORE_FILE", $conf);
-	}
-&lock_file($ign);
-$in{'ignore'} =~ s/\r//g;
-$in{'ignore'} =~ s/\n*$/\n/;
-foreach $h (split(/\s+/, $in{'ignore'})) {
-	gethostbyname($h) || &check_ipaddress($h) ||
-	  ($h =~ /^([0-9\.]+)\/(\d+)/ && &check_ipaddress($1)) ||
-		&error(&text('portsentry_eignore', $h));
-	}
-if (defined($in{'editbelow'})) {
-	open(IGNORE, $ign);
-	@below = <IGNORE>;
-	close(IGNORE);
-	@below = @below[$in{'editbelow'} .. $#below];
-	}
-&open_tempfile(IGNORE, ">$ign");
-&print_tempfile(IGNORE, $in{'ignore'});
-&print_tempfile(IGNORE, @below);
-&close_tempfile(IGNORE);
-&unlock_file($ign);
 &flush_file_lines();
 &unlock_config_files($conf);
 

@@ -110,29 +110,31 @@ print "<tr> <td><b>$text{'portsentry_trigger'}</b></td>\n";
 printf "<td><input name=trigger size=6 value='%s'></td> </tr>\n",
 	&find_value("SCAN_TRIGGER", $conf);
 
-print "<tr> <td valign=top><b>$text{'portsentry_ignore'}</b></td>\n";
-print "<td><textarea name=ignore rows=5 cols=50>\n";
 if ($config{'portsentry_ignore'}) {
 	$ign = $config{'portsentry_ignore'};
 	}
 else {
 	$ign = &find_value("IGNORE_FILE", $conf);
 	}
-$lnum = 0;
-open(IGN, $ign);
-while(<IGN>) {
-	if (/Do NOT edit below this/i) {
-		$editbelow = $lnum-1;
-		last;
+if ($ign) {
+	print "<tr> <td valign=top><b>$text{'portsentry_ignore'}</b></td>\n";
+	print "<td><textarea name=ignore rows=5 cols=50>\n";
+	$lnum = 0;
+	open(IGN, $ign);
+	while(<IGN>) {
+		if (/Do NOT edit below this/i) {
+			$editbelow = $lnum-1;
+			last;
+			}
+		s/#.*$//;
+		print &html_escape($_) if (/\S/);
+		$lnum++;
 		}
-	s/#.*$//;
-	print &html_escape($_) if (/\S/);
-	$lnum++;
+	close(IGN);
+	print "</textarea></td> </tr></table>\n";
+	print "<input type=hidden name=editbelow value='$editbelow'>\n"
+		if (defined($editbelow));
 	}
-close(IGN);
-print "</textarea></td> </tr></table>\n";
-print "<input type=hidden name=editbelow value='$editbelow'>\n"
-	if (defined($editbelow));
 print "</td></tr></table>\n";
 
 @pids = &get_portsentry_pids();
