@@ -16,6 +16,11 @@ print &ui_table_row($text{'mount_storage'},
 		   &text('clientstatus_on', $_->{'name'}, $_->{'address'}) ] }
 	   @storages ]));
 
+# Autoloader slot
+print &ui_table_row($text{'mount_slot'},
+	&ui_opt_textbox("slot", undef, 5, $text{'mount_noslot'},
+			$text{'mount_slotno'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ 'mount', $text{'mount_mount'} ],
 		     [ 'unmount', $text{'mount_unmount'} ] ]);
