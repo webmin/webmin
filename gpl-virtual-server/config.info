@@ -41,6 +41,7 @@ edit_afiles=Can edit alias include and reply files?,1,1-Yes,0-No
 edit_homes=Can select home directories for users?,1,1-Yes,0-No
 edit_ftp=Can create FTP users?,1,1-Yes,0-No
 edit_quota=Can set mailbox quotas?,1,1-Yes,0-No
+show_pass=Can see mailbox and virtual server passwords?,1,1-Yes,0-No
 alias_types=Allowed alias types,13,1-Address,2-Addresses in file,3-File,4-Program,5-Autoreply,6-Filter,7-Other user mailbox,8-Same mailbox in domain,9-Bounce,10-User's mailbox,11-Delete,12-Autoresponder file
 post_check=Update all Webmin users after configuration changes?,1,1-Yes,0-No
 leave_acl=Always re-update Webmin module ACLs?,1,0-Yes,1-No

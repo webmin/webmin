@@ -339,3 +339,6 @@ Added the Excluded Directories page for entering directories not to include in b
 Updated the modify-domain.pl script to allow excluded directories to be managed with the --add-exclude and --remove-exclude parameters. Also updated list-domains.pl to show exclusions.
 When enabling or disabling proxying for a domain, existing Apache directives are no longer re-generated from the template.
 Added an option to the form for backing up a single virtual server to download the resulting file in the browser, rather than saving it to a file or sending to an SSH or FTP server.
+The button to stop or restart ProFTPd is always displayed in the right frame, even if private IP-based FTP is not enabled.
+---- Changes since 3.45 ----
+Added a setting to control if virtual server owners can see mailboxes, on the Module Config page under Server administrator permissions.
