@@ -505,15 +505,22 @@ if ($config{'post_command'} =~ /\S/) {
 return undef;
 }
 
-# set_user_envs(&hash, action, [plainpass], [secondary])
+# set_user_envs(&hash, action, [plainpass], [secondary],
+#		[&olduser], [oldplainpass])
 # Just call the useradmin function of the same name
 sub set_user_envs
 {
-local $rv = &useradmin::set_user_envs(@_[0..3]);
+local $rv = &useradmin::set_user_envs(@_);
 if ($_[0]->{'all_ldap_attrs'}) {
 	foreach my $a (keys %{$_[0]->{'all_ldap_attrs'}}) {
 		my $v = $_[0]->{'all_ldap_attrs'}->{$a};
 		$ENV{'USERADMIN_LDAP_'.uc($a)} = $v;
+		}
+	}
+if ($_[5]->{'all_ldap_attrs'}) {
+	foreach my $a (keys %{$_[5]->{'all_ldap_attrs'}}) {
+		my $v = $_[5]->{'all_ldap_attrs'}->{$a};
+		$ENV{'USERADMIN_OLD_LDAP_'.uc($a)} = $v;
 		}
 	}
 return $rv;
