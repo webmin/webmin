@@ -15,7 +15,12 @@ if ($in{'envmode'} == 4) {
 else {
 	$env = $mail_envs[$in{'envmode'}];
 	}
-&save_directive($conf, "default_mail_env", $env eq "" ? undef : $env);
+if (&find("mail_location", $conf, 2)) {
+	&save_directive($conf, "mail_location", $env eq "" ? undef : $env);
+	}
+else {
+	&save_directive($conf, "default_mail_env", $env eq "" ? undef : $env);
+	}
 
 # Check and idle intervals
 $in{'check'} != 2 || $in{'checki'} =~ /^\d+$/ || &error($text{'mail_echeck'});

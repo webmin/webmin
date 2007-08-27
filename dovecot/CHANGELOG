@@ -10,3 +10,5 @@ Added support for the new configuration file format in Dovecot 1.0 alpha.
 Fixed a bug that causes config file corruption in the userdb section with the default Ubuntu config.
 ---- Changes since 1.330 ----
 Added fields for editing the UIDL format and number of login processes.
+---- Changes since 1.360 ----
+Supported newer versions of Dovecot which use mail_location instead of default_mail_env.

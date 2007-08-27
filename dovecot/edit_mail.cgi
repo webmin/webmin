@@ -8,9 +8,14 @@ $conf = &get_config();
 print &ui_form_start("save_mail.cgi", "post");
 print &ui_table_start($text{'mail_header'}, "width=100%", 4);
 
-# Mail file location
+# Mail file location. Old versions used default_mail_env, new uses mail_location
 $envmode = 4;
-$env = &find_value("default_mail_env", $conf);
+if (&find("mail_location", $conf, 2)) {
+	$env = &find_value("mail_location", $conf);
+	}
+else {
+	$env = &find_value("default_mail_env", $conf);
+	}
 for($i=0; $i<@mail_envs; $i++) {
 	$envmode = $i if ($mail_envs[$i] eq $env);
 	}
