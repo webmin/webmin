@@ -15,6 +15,17 @@ else {
 	$gconfig{'tempdir'} = $in{'tempdir'};
 	}
 
+# Save temp clearing options
+$gconfig{'tempdirdelete'} = $in{'tempdirdelete'};
+if ($in{'tempdelete_def'}) {
+	$gconfig{'tempdelete_days'} = '';
+	}
+else {
+	$in{'tempdelete'} =~ /^[0-9\.]+$/ ||
+		&error($text{'advanced_etempdelete'});
+	$gconfig{'tempdelete_days'} = $in{'tempdelete'};
+	}
+
 # Save per-module temp dirs
 for($i=0; defined($tmod = $in{'tmod_'.$i}); $i++) {
 	next if (!$tmod);

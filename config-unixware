@@ -6,3 +6,4 @@ passwd_file=/etc/shadow
 passwd_uindex=0
 passwd_pindex=1
 by_view=0
+tempdelete_days=7

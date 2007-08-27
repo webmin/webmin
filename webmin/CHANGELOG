@@ -64,3 +64,5 @@ Added a tab showing details of the current cert, with a link to download in PEM 
 Added an option to the Authentication page to block users with too many failed logins, as well as hosts.
 Created the new Blocked Hosts and Users page to show blocks currently in force, and allow them to be cleared.
 Added an option to the Ports and Addresses page to control if Webmin attempts to to reverse-resolve the connected-to IP address when issuing redirects, such as from non-SSL to SSL mode.
+---- Changes since 1.360 ----
+Added a field to the Advanced Options page to control the number of days that files in /tmp/.webmin are kept before automatic deletion.

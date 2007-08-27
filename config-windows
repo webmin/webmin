@@ -1,2 +1,3 @@
 path=c:/perl/bin;c:/windows/system32;c:/windows
 tempdir=c:/webmintemp
+tempdelete_days=7

@@ -720,6 +720,10 @@ advanced_title=Advanced Options
 advanced_header=Advanced and experimental options
 advanced_temp=Temporary files directory
 advanced_tempdef=Default (<tt>/tmp/.webmin</tt>)
+advanced_tdd=Clear temp files in non-standard directory?
+advanced_tempdelete=Maximum age of temporary files
+advanced_nodelete=Unlimited
+advanced_days=days
 advanced_preload=Pre-load Webmin functions library?
 advanced_err=Failed to save advanced options
 advanced_etemp=Missing or non-existant temporary files directory
@@ -732,6 +736,7 @@ advanced_stack=Show stack trace for error messages?
 advanced_showstderr=Show Perl errors in browser?
 advanced_umask=Umask (unset permission bits) for created files
 advanced_eumask=Umask must be a 3-digit octal number
+advanced_etempdelete=Missing or invalid maximum age of temporary files
 
 syslog_errorlog=Webmin error log
 

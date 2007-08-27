@@ -16,6 +16,7 @@ if ($module_info{'usermin'}) {
 else {
 	$range_cmd = "$module_config_directory/range.pl";
 	}
+$temp_delete_cmd = "$module_config_directory/tempdelete.pl";
 $cron_temp_file = &transname();
 use Time::Local;
 

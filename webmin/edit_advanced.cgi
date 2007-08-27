@@ -11,7 +11,15 @@ print &ui_table_start($text{'advanced_header'}, undef, 2);
 # Global temp directory
 print &ui_table_row($text{'advanced_temp'},
 		    &ui_opt_textbox("tempdir", $gconfig{'tempdir'},
-				    30, $text{'advanced_tempdef'}));
+				    30, $text{'advanced_tempdef'})."<br>".
+		    &ui_checkbox("tempdirdelete", 1, $text{'advanced_tdd'},
+				 $gconfig{'tempdirdelete'}));
+
+# Temp files clearing period
+print &ui_table_row($text{'advanced_tempdelete'},
+		    &ui_opt_textbox("tempdelete", $gconfig{'tempdelete_days'},
+				    5, $text{'advanced_nodelete'})." ".
+		    $text{'advanced_days'});
 
 # Per-module temp directories
 @mods = sort { $a->{'desc'} cmp $b->{'desc'} } &get_all_module_infos();
