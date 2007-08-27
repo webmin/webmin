@@ -462,7 +462,7 @@ else {
 				$passmode = 4;
 				}
 			&samba_properties(!$wassamba, \%uhash, $passmode,
-					  $in{'pass'}, $schema, \@props);
+					  $in{'pass'}, $schema, \@props, $ldap);
 			}
 		elsif ($wassamba) {
 			# Is no longer a samba user .. take away standard
