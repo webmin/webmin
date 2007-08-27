@@ -2293,7 +2293,7 @@ else {
 		}
 	if ($quote && $qu) {
 		$quote = join("", map { "> $_\n" }
-			&wrap_lines($quote, 70));
+			&wrap_lines($quote, 78));
 		}
 	$quote = $writer."\n".$quote if ($quote && $qu);
 	$quote .= "$sig\n" if ($sig);
