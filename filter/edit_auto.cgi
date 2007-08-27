@@ -29,12 +29,24 @@ print &ui_table_row($text{'auto_reply'},
 		     undef, $dis));
 
 # Period
-$r = $filter->{'reply'};
-$period = $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
-	  $r->{'replies'} ? 60 : undef;
-print &ui_table_row($text{'auto_period'},
-	&ui_opt_textbox("period", $period, 3, $text{'index_noperiod'}).
-	" ".$text{'index_mins'});
+if (!$config{'reply_force'}) {
+	$r = $filter->{'reply'};
+	$period = $r->{'replies'} && $r->{'period'} ? int($r->{'period'}/60) :
+		  $r->{'replies'} ? 60 : undef;
+	if ($config{'reply_min'}) {
+		# Forced on, with a minimum
+		print &ui_table_row($text{'auto_period'},
+			&ui_textbox("period", $period, 3).
+			" ".$text{'index_mins'});
+		}
+	else {
+		# Can turn off reply tracking
+		print &ui_table_row($text{'auto_period'},
+			&ui_opt_textbox("period", $period, 3,
+					$text{'index_noperiod'}).
+			" ".$text{'index_mins'});
+		}
+	}
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

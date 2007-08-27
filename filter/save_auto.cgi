@@ -31,11 +31,20 @@ elsif ($in{'enabled'}) {
 	$filter->{'reply'}->{'from'} = $froms->[0];
 
 	# File
+	$idx = defined($filter->{'index'}) ? $filter->{'index'}
+					   : scalar(@filters);
 	$filter->{'reply'}->{'autoreply'} ||=
-		"$remote_user_info[7]/autoreply.$filter->{'index'}.txt";
+		"$remote_user_info[7]/autoreply.$idx.txt";
 
 	# Reply period
-	if ($in{'period_def'}) {
+	if ($config{'reply_force'}) {
+		# Forced to minimum
+		$min = $config{'reply_min'} || 60;
+		$filter->{'reply'}->{'period'} = $min*60;
+		$filter->{'reply'}->{'replies'} ||=
+			"$user_module_config_directory/replies";
+		}
+	elsif ($in{'period_def'}) {
 		# No autoreply period
 		delete($filter->{'reply'}->{'replies'});
 		delete($filter->{'reply'}->{'period'});
@@ -44,6 +53,10 @@ elsif ($in{'enabled'}) {
 		# Set reply period and tracking file
 		$in{'period'} =~ /^\d+$/ ||
 			&error($text{'save_eperiod'});
+		if ($config{'reply_min'} &&
+		    $in{'period'} < $config{'reply_min'}) {
+			&error(&text('save_eperiodmin', $config{'reply_min'}));
+			}
 		$filter->{'reply'}->{'period'} = $in{'period'}*60;
 		$filter->{'reply'}->{'replies'} ||=
 			"$user_module_config_directory/replies";

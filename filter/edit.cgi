@@ -152,13 +152,25 @@ if ($amode == 6) {
 		$etm[4]++; $etm[5] += 1900;
 		}
 	}
+if ($config{'reply_force'}) {
+	$replyblock = "";
+	}
+elsif ($config{'reply_min'}) {
+	$replyblock = "<tr> <td><b>$text{'index_period'}</b></td> ".
+		      "<td>".&ui_textbox("period", $period, 3)." ".
+			     $text{'index_mins'}."</td> </tr>\n";
+	}
+else {
+	$replyblock = "<tr> <td><b>$text{'index_period'}</b></td> ".
+		      "<td>".&ui_opt_textbox("period", $period, 3,
+			  $text{'index_noperiod'})." ".$text{'index_mins'}.
+		      "</td> </tr>\n";
+	}
 print &ui_table_row(
 	&ui_oneradio("amode", 6, $text{'edit_amode6'}, $amode == 6),
 	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 60)."<br>".
 	"<table>\n".
-	"<tr> <td><b>$text{'index_period'}</b></td> ".
-	"<td>".&ui_opt_textbox("period", $period, 3,
-	  $text{'index_noperiod'})." ".$text{'index_mins'}."</td> </tr>\n".
+	$replyblock.
 	"<tr> <td><b>$text{'index_astart'}</b></td> ".
 	"<td>".&ui_date_input($stm[3], $stm[4], $stm[5],
 			       "dstart", "mstart", "ystart")." ".

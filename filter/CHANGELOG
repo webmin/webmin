@@ -11,3 +11,4 @@ Changed the module name to Filter and Forward Mail.
 Added a simple page for setting up forwarding.
 ---- Changes since 1.290 ----
 Added a Module Config option to create a .forward file automatically that runs procmail, for systems that don't have procmail delivery globally enabled.
+Added Module Config options to set the minimum allowed time between autoreplies, and to force use of that minimum.

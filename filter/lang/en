@@ -69,6 +69,7 @@ save_eforward=Missing forwarding address
 save_efile=Missing mail file for delivery
 save_ereply=No autoreply text entered
 save_eperiod=Missing or invalid automatic reply interval
+save_eperiodmin=Automatic reply interval must be at least $1 minutes
 save_enewfolder=Missing new folder name
 save_enewfolder2=Invalid new folder name
 save_enewfolder3=A folder with the same name already exists
