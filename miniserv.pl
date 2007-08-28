@@ -2128,12 +2128,14 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		if ($on_windows) {
 			# Run the CGI program, and feed it input
 			chdir($ENV{"PWD"});
+			local $qqueryargs = join(" ", map { "\"$_\"" }
+						 split(/\s+/, $queryargs));
 			if ($first =~ /(perl|perl.exe)$/i) {
 				# On Windows, run with Perl
-				open(CGIOUTr, "$perl_path \"$full\" $queryargs <$infile |");
+				open(CGIOUTr, "$perl_path \"$full\" $qqueryargs <$infile |");
 				}
 			else {
-				open(CGIOUTr, "\"$full\" $queryargs <$infile |");
+				open(CGIOUTr, "\"$full\" $qqueryargs <$infile |");
 				}
 			binmode(CGIOUTr);
 			}
