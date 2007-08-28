@@ -29,7 +29,10 @@ while($line = <EXP>) {
 		local $active = !$1;
 		local $dir = $2;
 		local $rest = $3;
-		next if ($dir =~ /^$config{'exports_file'}/);
+                if ($dir =~ /^$config{'exports_file'}/) {
+			$lnum++;
+			next;
+               		}
 		$pos = 0;
 		while($rest =~ /^([^\s+\(\)]*)\(([^\)]*)\)\s*(.*)$/ ||
 		      $rest =~ /^([^\s+\(\)]+)\s*()(.*)$/) {
