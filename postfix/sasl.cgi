@@ -53,7 +53,24 @@ print "<tr>\n";
 &option_yesno("smtpd_delay_reject");
 print "</tr>\n";
 
-#smtpd_recipient_restrictions
+print "<tr> <td colspan=4><hr></td> </tr>\n";
+
+# SMTP TLS options
+print "<tr>\n";
+&option_yesno("smtpd_use_tls");
+print "</tr>\n";
+
+print "<tr>\n";
+&option_radios_freefield("smtpd_tls_cert_file", 60, $none);
+print "</tr>\n";
+
+print "<tr>\n";
+&option_radios_freefield("smtpd_tls_key_file", 60, $none);
+print "</tr>\n";
+
+print "<tr>\n";
+&option_radios_freefield("smtpd_tls_CAfile", 60, $none);
+print "</tr>\n";
 
 print "</table></td></tr></table><p>\n";
 print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";

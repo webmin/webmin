@@ -9,6 +9,17 @@ $access{'sasl'} || &error($text{'opts_ecannot'});
 
 &error_setup($text{'sasl_err'});
 
+# Validate SASL options
+if ($in{'smtpd_tls_key_file_def'} eq "__USE_FREE_FIELD__") {
+	-r $in{'smtpd_tls_key_file'} || &error($text{'sasl_ekey'});
+	}
+if ($in{'smtpd_tls_cert_file_def'} eq "__USE_FREE_FIELD__") {
+	-r $in{'smtpd_tls_cert_file'} || &error($text{'sasl_ecert'});
+	}
+if ($in{'smtpd_tls_CAfile_def'} eq "__USE_FREE_FIELD__") {
+	-r $in{'smtpd_tls_CAfile'} || &error($text{'sasl_eca'});
+	}
+
 &lock_postfix_files();
 &save_options(\%in);
 

@@ -295,8 +295,11 @@ sub option_radios_freefield
 
     my $check_free_field = 1;
     
-    printf "<td>".&hlink("<b>$text{$key}</b>", "opt_".$name)."</td> <td %s nowrap>\n",
-    $length > 20 ? "colspan=3" : "";
+    my $help = -r &help_file($module_name, "opt_".$name) ?
+		&hlink("<b>$text{$key}</b>", "opt_".$name) :
+		"<b>$text{$key}</b>";
+    printf "<td>$help</td> <td %s nowrap>\n",
+	    $length > 20 ? "colspan=3" : "";
 
     # first radio button (must be default value!!)
     
