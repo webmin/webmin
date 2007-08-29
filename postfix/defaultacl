@@ -27,3 +27,4 @@ body=1
 master=1
 manual=1
 dir=/
+sasl=1

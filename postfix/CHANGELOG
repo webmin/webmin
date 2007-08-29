@@ -39,3 +39,5 @@ Postfix configuration parameters are read from main.cf directly, instead of call
 ---- Changes since 1.340 ----
 Added Module Config options for stop, start and reload commands.
 Allow map files are now checked when listing and editing virtusers and other map types.
+---- Changes since 1.350 ----
+Added the new SMTP Authentication page for setting SASL-related options.

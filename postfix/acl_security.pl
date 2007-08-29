@@ -2,7 +2,7 @@
 require 'postfix-lib.pl';
 @acl_pages = ("resource", "address_rewriting", "aliases", "general",
 	      "canonical", "virtual", "transport", "relocated", "header","body",
-	      "local_delivery", "smtpd", "smtp", "rate", "debug", "ldap",
+	      "local_delivery", "smtpd", "sasl","smtp", "rate", "debug", "ldap",
 	      "master", "startstop", "mailq", "postfinger", "manual");
 
 # Print the form for security options of postfix module
