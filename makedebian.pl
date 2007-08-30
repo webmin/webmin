@@ -87,7 +87,7 @@ system("cd $usr_dir && chmod -R og-w .");
 if ($< == 0) {
 	system("cd $usr_dir && chown -R root:bin .");
 	}
-$size = int(`du -sk $tmp_dir`) * 1024;
+$size = int(`du -sk $tmp_dir`);
 
 # Create the control file
 open(CONTROL, ">$control_file");
