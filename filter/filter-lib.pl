@@ -20,12 +20,20 @@ if (&get_product_name() eq 'usermin') {
 			}
 		}
 
+	# Copy autoreply.pl to /etc/usermin/forward, while we are still root
+	local $autoreply_src = "$root_directory/forward/autoreply.pl";
+	$autoreply_cmd = "$config_directory/forward/autoreply.pl";
+	local @rst = stat($autoreply_src);
+	local @cst = stat($autoreply_cmd);
+	if (!@cst || $cst[7] != $rst[7]) {
+		&copy_source_dest($autoreply_src, $autoreply_cmd);
+		}
+
 	&switch_to_remote_user();
 	&create_user_config_dirs();
 	&foreign_require("procmail", "procmail-lib.pl");
 	&foreign_require("mailbox", "mailbox-lib.pl");
 	&foreign_require("spam", "spam-lib.pl");
-	$autoreply_cmd = "$config_directory/forward/autoreply.pl";
 	}
 else {
 	# Running under Webmin, so different modules are used
