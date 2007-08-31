@@ -282,7 +282,7 @@ if (&foreign_installed("apache") && $auto{'apache'}) {
 		open(FILE, $lf);
 		local $line = <FILE>;
 		close(FILE);
-		if (!$line || $line =~ /^([a-zA-Z0-9\.\-]+)\s+\S+\s+\S+\s+\[\d+\/[a-zA-z]+\/\d+:\d+:\d+:\d+\s+[0-9\+\-]+\]/) {
+		if (!$line || $line =~ /^([a-zA-Z0-9\.\-\:]+)\s+\S+\s+\S+\s+\[\d+\/[a-zA-z]+\/\d+:\d+:\d+:\d+\s+[0-9\+\-]+\]/) {
 			push(@logs, { 'file' => $lf,
 				      'type' => 1 });
 			}
