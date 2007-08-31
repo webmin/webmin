@@ -700,7 +700,7 @@ print DEBUG "wantids = ",scalar(@wantids),"\n";
 local @mails = &mailbox_select_mails($folder, \@wantids, $headersonly);
 for(my $i=0; $i<@mails; $i++) {
 	$rv[$start+$i] = $mails[$i];
-	print DEBUG "setting $start+$i to ",$mails[$i],"\n";
+	print DEBUG "setting $start+$i to ",$mails[$i]," id ",$wantids[$i],"\n";
 	$mails[$i]->{'sortidx'} = $start+$i;
 	}
 print DEBUG "rv = ",scalar(@rv),"\n";
@@ -821,11 +821,15 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 	# Remove IDs that no longer exist
 	local %ids = map { $_, 1 } (@ids, @wantids);
 	local $dc = 0;
+	local @todelete;
 	while(my ($k, $v) = each %$index) {
 		if ($k =~ /^(.*)_([^_]+)$/ && !$ids{$1}) {
-			delete($index->{$k});
+			push(@todelete, $k);
 			$dc++ if ($2 eq "size");
 			}
+		}
+	foreach my $k (@todelete) {
+		delete($index->{$k});
 		}
 	print DEBUG "deleted $dc mesages from index\n";
 

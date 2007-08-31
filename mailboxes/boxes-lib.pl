@@ -129,14 +129,6 @@ sub idlist_mails
 my %index;
 local $idlist = &build_dbm_index($_[0], \%index);
 return @$idlist;
-local @rv;
-while(my ($k, $v) = each %index) {
-	if ($k eq int($k)) {
-		local ($pos, $line, $subject, $sender, $mid) = split(/\0/, $v);
-		$rv[$k] = $pos." ".$k." ".$line." ".$mid;
-		}
-	}
-return @rv;
 }
 
 # search_mail(user, field, match)
@@ -292,6 +284,7 @@ if (!@st ||
 	if ($index->{'mailcount'} && $fromok && $st[7] > $idx[0]) {
 		# Mail file seems to have gotten bigger, most likely
 		# because new mail has arrived ... only reindex the new mails
+		print DEBUG "re-indexing from $idx[0]\n";
 		$pos = $idx[0] + length($ll);
 		$lnum = $idx[1] + 1;
 		$istart = $index->{'mailcount'};
@@ -299,12 +292,14 @@ if (!@st ||
 	else {
 		# Mail file has changed in some other way ... do a rebuild
 		# of the whole index
+		print DEBUG "totally re-indexing\n";
 		$istart = 0;
 		$pos = 0;
 		$lnum = 0;
 		seek(MAIL, 0, 0);
 		@ids = ( );
 		$idschanged = 1;
+		%$index = ( );
 		}
 	local ($doingheaders, @nidx);
 	while(<MAIL>) {
@@ -694,6 +689,7 @@ unlink($f) if ($< == 0);
 
 # Force a total index re-build (XXX lazy!)
 $index{'mailcount'} = $in{'lastchange'} = 0;
+dbmclose(%index);
 
 if ($< == 0) {
 	rename($tmpf, $f);
