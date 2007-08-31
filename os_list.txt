@@ -49,7 +49,7 @@ Redhat Linux			"Fedora $1"	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redha
 
 # Slackware clones
 White Dwarf Linux		2.1.0	slackware-linux	8.1	`cat /tmp/wd/version 2>/dev/null` =~ /2\.1\.0/
-Slamd64 Linux			$1	slackware-linux	11.1	`cat /etc/slamd64-version 2>/dev/null` =~ /([0-9\.]+)/
+Slamd64 Linux			$1	slackware-linux	11.1	`cat /etc/slamd64-version 2>/dev/null` =~ /\s([0-9\.]+)/
 
 # Slackware Linux
 Slackware Linux			$1	slackware-linux	$1	`cat /etc/slackware-version 2>/dev/null` =~ /([0-9\.]+)/
