@@ -1,0 +1,2 @@
+date_subs=백업 결과물의 <tt>strftime</tt> 을 변경 하겠습니까?,1,1-예,0-아니오
+from_addr=메일 메세지를 위한 From: 주소,3,webmin@hostname
