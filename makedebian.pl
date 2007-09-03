@@ -285,7 +285,11 @@ if [ "$product" = "webmin" ]; then
 fi
 rm -f /var/lock/subsys/$baseproduct
 if [ "$inetd" != "1" ]; then
-	/etc/init.d/$baseproduct start >/dev/null 2>&1 </dev/null
+	if [ -x "`which invoke-rc.d 2>/dev/null`" ]; then
+		invoke-rc.d $baseproduct start >/dev/null 2>&1 </dev/null
+	else
+		/etc/init.d/$baseproduct start >/dev/null 2>&1 </dev/null
+	fi
 fi
 cat >/etc/$baseproduct/uninstall.sh <<EOFF
 #!/bin/sh
