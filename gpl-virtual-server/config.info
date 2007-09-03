@@ -111,6 +111,8 @@ quota_set_user_command=Command to set a user's quota,3,Use standard programs
 quota_set_group_command=Command to set a group's quota,3,Use standard programs
 quota_list_users_command=Command to list user quotas,3,Use standard programs
 quota_list_groups_command=Command to list group quotas,3,Use standard programs
+quota_get_user_command=Command to get a user's quota,3,Use standard programs
+quota_get_group_command=Command to get a group's quota,3,Use standard programs
 
 line5=Webmin modules available to server administrators,11
 avail_dns=BIND DNS Server (for DNS domain),1,1-Yes,0-No
