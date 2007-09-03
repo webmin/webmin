@@ -104,7 +104,7 @@ if ($in{'virt'} && $access{'vaddr'}) {
 
 	if ($addrs) {
 		print &ui_table_row($text{'vserv_addrs'},
-			&ui_textbox("addrs", join("\n", split(/\s+/, $addrs)),
+			&ui_textarea("addrs", join("\n", split(/\s+/, $addrs)),
 				    4, 30));
 		}
 	else {
