@@ -343,3 +343,4 @@ The button to stop or restart ProFTPd is always displayed in the right frame, ev
 ---- Changes since 3.45 ----
 Added a setting to control if virtual server owners can see mailboxes, on the Module Config page under Server administrator permissions.
 In the Quota commands section of the Module Config page, added two new commands to get the quotas for a single user and group respectively. If defined, Virtualmin will use these when listing users in a domain or editing a single user, on the assumption that they are faster than the command which outputs quotas for all users.
+Enhanced the Virtualmin GPL -> Pro upgrader to support systems installed using the GPL install script.

@@ -4,6 +4,11 @@ if [ "$1" = "" -o "$2" = "" ]; then
 	echo "usage: createvirtualminmodule.sh <version> <file>"
 	exit 1
 fi
+echo $1 | grep gpl >/dev/null
+if [ "$?" != "0" ]; then
+	echo Version is missing .gpl suffix
+	exit 2
+fi
 cd /usr/local/webadmin
 /usr/local/webadmin/create-module.pl --dir virtual-server $2 gpl-virtual-server/$1
 /usr/local/webadmin/showchangelog.pl --html latest gpl-virtual-server >/home/jcameron/webmin.com/vchanges-$1.html
