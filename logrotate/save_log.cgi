@@ -19,7 +19,7 @@ elsif ($in{'new'}) {
 else {
 	# Editing a section
 	$oldlog = $log = $conf->[$in{'idx'}];
-	$logfile = $oldlog->{'name'};
+	$logfile = join(" ", @{$oldlog->{'name'}});
 	}
 
 if ($in{'delete'}) {
