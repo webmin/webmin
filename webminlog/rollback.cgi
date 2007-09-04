@@ -26,8 +26,10 @@ if ($in{'confirm'}) {
 		       !-e $f->{'file'} && $f->{'type'} == 2 ||
 		       !-l $f->{'file'} && $f->{'type'} == 2) {
 			# Modify or create link
+			&lock_file($f->{'file'});
 			&unlink_file($f->{'file'});
 			&symlink_file($f->{'data'}, $f->{'file'});
+			&unlock_file($f->{'file'});
 			print &text('rollback_madelink',
 				    "<tt>$f->{'file'}</tt>",
 				    "<tt>$f->{'data'}</tt>");
@@ -35,17 +37,19 @@ if ($in{'confirm'}) {
 		elsif (-e $f->{'file'} && -l $f->{'file'} &&
 		       $f->{'type'} == 0) {
 			# Remove link and create file
+			&lock_file($f->{'file'});
 			&unlink_file($f->{'file'});
 			&open_tempfile(FILE, ">$f->{'file'}");
 			&print_tempfile(FILE, $f->{'data'});
 			&close_tempfile(FILE);
+			&unlock_file($f->{'file'});
 			print &text('rollback_madefile',
 				    "<tt>$f->{'file'}</tt>");
 			}
 		elsif ($f->{'type'} == -1) {
 			if (-e $f->{'file'}) {
 				# Remove file
-				unlink($f->{'file'});
+				&unlink_logged($f->{'file'});
 				print &text('rollback_deleted',
 					    "<tt>$f->{'file'}</tt>");
 				}
@@ -56,7 +60,7 @@ if ($in{'confirm'}) {
 			}
 		else {
 			# Replace file with old contents
-			&open_tempfile(FILE, ">$f->{'file'}");
+			&open_lock_tempfile(FILE, ">$f->{'file'}");
 			&print_tempfile(FILE, $f->{'data'});
 			&close_tempfile(FILE);
 			print &text('rollback_modfile',
@@ -65,6 +69,10 @@ if ($in{'confirm'}) {
 		print "<br>\n";
 		$done{$f->{'file'}}++;
 		}
+	%minfo = &get_module_info($act->{'module'});
+	&webmin_log("rollback", undef, $in{'id'},
+		    { 'desc' => &get_action_description($act),
+		      'mdesc' => $minfo{'desc'} });
 	}
 else {
 	# Show the user what will be done

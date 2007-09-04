@@ -7,10 +7,6 @@ require './webminlog-lib.pl';
 
 # find the log record to view
 $act = &get_action($in{'id'});
-if (-r "../$act->{'module'}/log_parser.pl") {
-	&foreign_require($act->{'module'}, "log_parser.pl");
-	$parser++;
-	}
 &can_user($act->{'user'}) || &error($text{'view_ecannot'});
 &can_mod($act->{'module'}) || &error($text{'view_ecannot'});
 
@@ -26,15 +22,9 @@ if (@files) {
 print &ui_table_start(&text('view_header', $act->{'id'}),
 		      "width=100%", 4);
 
-$d = &foreign_call($act->{'module'}, "parse_webmin_log",
-		   $act->{'user'}, $act->{'script'},
-		   $act->{'action'}, $act->{'type'},
-		   $act->{'object'}, $act->{'param'}, 1) if ($parser);
-print &ui_table_row($text{'view_action'},
-	$d ? $d :
-	$act->{'action'} eq '_config_' ? $text{'search_config'} :
-		join(" ", $act->{'action'}, $act->{'type'}, $act->{'object'}),
-	3);
+# This "" is needed to make the label show properly!
+print &ui_table_row($text{'view_action'}."",
+		    &get_action_description($act, 1), 3);
 
 %minfo = &get_module_info($act->{'module'});
 print &ui_table_row($text{'view_module'},

@@ -1,7 +1,4 @@
 # webminlog-lib.pl
-# XXX file rollback
-#	XXX should we capture all files, or just those changed?
-#	XXX what about commands?
 
 do '../web-lib.pl';
 &init_config();
@@ -202,6 +199,33 @@ if ($st[9] > $index->{'lastchange'}) {
 	$index->{'lastsize'} = $st[7];
 	$index->{'lastchange'} = $st[9];
 	}
+}
+
+# get_action_description(&action, long)
+# Returns a human-readable description of some action
+sub get_action_description
+{
+local ($act, $long) = @_;
+if (!defined($parser_cache{$act->{'module'}})) {
+	# Bring in module parser library for the first time
+	if (-r "$root_directory/$act->{'module'}/log_parser.pl") {
+		&foreign_require($act->{'module'}, "log_parser.pl");
+		$parser_cache{$act->{'module'}} = 1;
+		}
+	else {
+		$parser_cache{$act->{'module'}} = 0;
+		}
+	}
+local $d;
+if ($parser_cache{$act->{'module'}}) {
+	$d = &foreign_call($act->{'module'}, "parse_webmin_log",
+			   $act->{'user'}, $act->{'script'},
+			   $act->{'action'}, $act->{'type'},
+			   $act->{'object'}, $act->{'param'}, $long);
+	}
+return $d ? $d :
+       $act->{'action'} eq '_config_' ? $text{'search_config'} :
+		join(" ", $act->{'action'}, $act->{'type'}, $act->{'object'});
 }
 
 1;

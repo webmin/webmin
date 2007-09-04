@@ -11,3 +11,5 @@ Updated the action details page to use ui-lib.pl functions for the form.
 When rolling back changed files, you can now select which ones to revert rather than always doing all of them.
 ---- Changes since 1.330 ----
 A description of the search is now shown for searches that didn't match anything.
+---- Changes since 1.350 ----
+Rollback actions can themselves now be rolled back.

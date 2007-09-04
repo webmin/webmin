@@ -122,31 +122,10 @@ if (@match) {
 			# first time seeing module ..
 			local %minfo = &get_module_info($m);
 			$minfo = $minfo_cache{$m} = \%minfo;
-			if (-r "../$m/log_parser.pl") {
-				&foreign_require($m, "log_parser.pl");
-				$parser{$m}++;
-				}
 			}
 
 		local @cols;
-		$d = &foreign_call($m, "parse_webmin_log",
-				  $act->{'user'}, $act->{'script'},
-				  $act->{'action'}, $act->{'type'},
-				  $act->{'object'}, $act->{'param'})
-					if ($parser{$m});
-		local $desc;
-		if ($d) {
-			$desc = $d;
-			}
-		elsif ($act->{'action'} eq '_config_') {
-			$desc = $text{'search_config'};
-			}
-		else {
-			$desc = sprintf "%s %s %s\n",
-				$act->{'action'},
-				$act->{'type'} ? $act->{'type'} : '',
-				$act->{'object'} ? $act->{'object'} : '';
-			}
+		local $desc = &get_action_description($act, 0);
 		push(@cols, "<a href='view.cgi?id=$act->{'id'}".
 		      "&return=".&urlize($in{'return'}).
 		      "&returndesc=".&urlize($in{'returndesc'}).
