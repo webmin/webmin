@@ -118,7 +118,8 @@ else {
 
 if ($_[1]) {
 	# Set hardware clock time to match system time (which is now correct)
-	local $out = &backquote_logged("hwclock --systohc");
+	local $flags = &get_hwclock_flags();
+	local $out = &backquote_logged("hwclock $flags --systohc");
 	return $? ? $out : undef;
 	}
 
