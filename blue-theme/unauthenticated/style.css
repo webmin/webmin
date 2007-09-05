@@ -76,7 +76,7 @@ pre { font-size: 8pt;
 
 tt { font-size: 8pt; 
     }
-table.formsection, table.ui_table, table.sortable, .main {
+table.formsection, table.ui_table, table.sortable, .main, table.loginform {
   border-collapse: collapse;
   border: 2px solid #b3b6b0;
   width:98%;
