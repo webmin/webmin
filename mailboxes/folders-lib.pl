@@ -1426,20 +1426,24 @@ sub write_mail_folder
 {
 return undef if (&is_readonly_mode());
 &create_folder_maildir($_[1]);
+local $needid;
 if ($_[1]->{'type'} == 1) {
-	# Add to a maildir directory
+	# Add to a maildir directory. ID is set by write_maildir to the new
+	# relative filename
 	local $md = $_[1]->{'file'};
 	&write_maildir($_[0], $md, $_[2]);
 	}
 elsif ($_[1]->{'type'} == 3) {
-	# Create a new MH file
+	# Create a new MH file. ID is just the new message number
 	local $num = &max_mhdir($_[1]->{'file'}) + 1;
 	local $md = $_[1]->{'file'};
 	&send_mail($_[0], "$md/$num", $_[2], 1);
+	$_[0]->{'id'} = $num;
 	}
 elsif ($_[1]->{'type'} == 0) {
-	# Just append to the folder file
+	# Just append to the folder file.
 	&send_mail($_[0], $_[1]->{'file'}, $_[2], 1);
+	$needid = 1;
 	}
 elsif ($_[1]->{'type'} == 4) {
 	# Upload to the IMAP server
@@ -1457,15 +1461,21 @@ elsif ($_[1]->{'type'} == 4) {
 	@rv = &imap_command($h, sprintf "APPEND %s {%d}\r\n%s",
 			$_[1]->{'mailbox'} || "INBOX", length($text), $text);
 	&error(&text('save_eappend', $rv[3])) if (!$rv[0]); 
+	$needid = 1;
 	}
 elsif ($_[1]->{'type'} == 5) {
 	# Just append to the last subfolder
 	local @sf = @{$_[1]->{'subfolders'}};
 	&write_mail_folder($_[0], $sf[$#sf], $_[2]);
+	$needid = 1;
 	}
 elsif ($_[1]->{'type'} == 6) {
 	# Add mail to first sub-folder, and to virtual index
 	&error("Cannot add mail to virtual folders");
+	}
+if ($needid) {
+	local @idlist = &mailbox_idlist($_[1]);
+	$_[0]->{'id'} = $idlist[$#idlist];
 	}
 }
 
@@ -1505,6 +1515,7 @@ else {
 
 # Delete the message being modified from its index, to force re-generation
 # with new details
+$mail->{'id'} = $oldmail->{'id'};	# Assume that it will replace the old
 if ($folder->{'sortable'}) {
 	&delete_new_sort_index_message($folder, $mail->{'id'});
 	}

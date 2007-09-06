@@ -1315,7 +1315,7 @@ sub simplify_subject
 {
 local $rv = &eucconv(&decode_mimewords($_[0]));
 $rv = substr($rv, 0, 80)." .." if (length($rv) > 80);
-return $rv =~ /\S/ ? &html_escape($rv) : "<br>";
+return &html_escape($rv);
 }
 
 # quoted_decode(text)

@@ -184,12 +184,14 @@ reply_efwdnone=None of the forwarded messages exist
 
 reply_spell=Check for spelling errors?
 reply_draft=Save as Draft
+reply_save=Save and Edit
 
 send_err=Failed to send mail
 send_eto=Missing To address
 send_efrom=Missing From address
 send_esubject=Missing email subject
 send_title=Mail Sent
+send_title2=Mail Saved
 send_ok=Mail sent successfully to $1
 send_sending=Sending mail to $1 ..
 send_ecannot=You are not allowed to send mail as this user
