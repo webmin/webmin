@@ -13,6 +13,18 @@ close(MODE);
 %container = ( 'raiddev', 1,
 	       'device', 1 );
 
+# get_raid_levels()
+# Returns a list of allowed RAID levels
+sub get_raid_levels
+{
+if ($raid_mode eq "mdadm") {
+	return ( 0, 1, 4, 5, 6, 10 );
+	}
+else {
+	return ( 0, 1, 4, 5 );
+	}
+}
+
 # get_mdstat()
 # Read information about active RAID devices. Returns a hash indexed by
 # device name (like /dev/md0), with each value being an array reference
@@ -535,6 +547,103 @@ if ($dev =~ /ide\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/part(\d+)/) {
 else {
 	return $dev;
 	}
+}
+
+%mdadm_notification_opts = map { $_, 1 } ( 'MAILADDR', 'MAILFROM', 'PROGRAM' );
+
+# get_mdadm_notifications()
+# Returns a hash from mdadm.conf notification-related settings to values
+sub get_mdadm_notifications
+{
+local $lref = &read_file_lines($config{'mdadm'});
+local %rv;
+foreach my $l (@$lref) {
+	$l =~ s/#.*$//;
+	if ($l =~ /^(\S+)\s+(\S.*)/ && $mdadm_notification_opts{$1}) {
+		$rv{$1} = $2;
+		}
+	}
+return \%rv;
+}
+
+# save_mdadm_notifications(&notifications)
+# Updates mdadm.conf with settings from the given hash. Those set to undef
+# are removed from the file.
+sub save_mdadm_notifications
+{
+local ($notif) = @_;
+local $lref = &read_file_lines($config{'mdadm'});
+local %done;
+for(my $i=0; $i<@$lref; $i++) {
+	my $l = $lref->[$i];
+	$l =~ s/#.*$//;
+	local ($k, $v) = split(/\s+/, $l, 2);
+	if (exists($notif->{$k})) {
+		if (defined($notif->{$k})) {
+			$lref->[$i] = "$k $notif->{$k}";
+			}
+		else {
+			splice(@$lref, $i--, 1);
+			}
+		$done{$k}++;
+		}
+	}
+foreach my $k (grep { !$done{$_} && defined($notif->{$_}) } keys %$notif) {
+	push(@$lref, "$k $notif->{$k}");
+	}
+&flush_file_lines($config{'mdadm'});
+}
+
+# get_mdadm_action()
+# Returns the name of an init module action for mdadm monitoring, or undef if
+# not supported.
+sub get_mdadm_action
+{
+if (&foreign_installed("init")) {
+	&foreign_require("init", "init-lib.pl");
+	foreach my $a ("mdmonitor", "mdadm", "mdadmd") {
+		local $st = &init::action_status($a);
+		return $a if ($st);
+		}
+	}
+return undef;
+}
+
+# get_mdadm_monitoring()
+# Returns 1 if mdadm monitoring is enabled, 0 if not
+sub get_mdadm_monitoring
+{
+local $act = &get_mdadm_action();
+if ($act) {
+	&foreign_require("init", "init-lib.pl");
+	local $st = &init::action_status($act);
+	return $st == 2;
+	}
+return 0;
+}
+
+# save_mdadm_monitoring(enabled)
+# Tries to enable or disable mdadm monitoring. Returns an error mesage
+# if something goes wrong, undef on success
+sub save_mdadm_monitoring
+{
+local ($enabled) = @_;
+local $act = &get_mdadm_action();
+if ($act) {
+	&foreign_require("init", "init-lib.pl");
+	if ($enabled) {
+		&init::enable_at_boot($act);
+		&init::stop_action($act);
+		sleep(2);
+		local ($ok, $err) = &init::start_action($act);
+		return $err if (!$ok);
+		}
+	else {
+		&init::disable_at_boot($act);
+		&init::stop_action($act);
+		}
+	}
+return undef;
 }
 
 1;

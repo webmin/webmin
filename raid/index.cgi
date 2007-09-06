@@ -30,20 +30,67 @@ else {
 # Display configured raid devices
 $conf = &get_raidtab();
 if (@$conf) {
-	&show_button();
+	print &ui_columns_start([ $text{'index_name'},
+				$text{'index_active'},
+				$text{'index_level'},
+				$text{'index_members'} ]);
 	foreach $c (@$conf) {
 		$lvl = &find_value('raid-level', $c->{'members'});
-		push(@titles, &html_escape($c->{'value'}));
-		push(@images, $c->{'active'} ? "images/$lvl.gif"
-					     : "images/$lvl.ia.gif");
-		push(@links, "view_raid.cgi?idx=$c->{'index'}");
+		@mems = ( );
+		foreach $d (&find('device', $c->{'members'})) {
+			if (&find('raid-disk', $d->{'members'}) ||
+			    &find('parity-disk', $d->{'members'})) {
+				push(@mems, $d->{'value'});
+				}
+			}
+		print &ui_columns_row([
+			"<a href='view_raid.cgi?idx=$c->{'index'}'>".
+			&html_escape($c->{'value'})."</a>",
+			$c->{'active'} ?
+				"<font color=#00aa00>$text{'yes'}</font>" :
+				"<font color=#ff0000>$text{'no'}</font>",
+			$lvl eq 'linear' ? $text{'linear'} : $text{'raid'.$lvl},
+			join(" ", @mems),
+			]);
 		}
-	&icons_table(\@links, \@titles, \@images);
+	print &ui_columns_end();
 	}
 else {
 	print "<p><b>$text{'index_none'}</b><p>\n";
 	}
 &show_button();
+
+# Form for mdadm monitoring options
+if ($raid_mode eq "mdadm") {
+	$notif = &get_mdadm_notifications();
+	print "<hr>\n";
+	print &ui_form_start("save_mdadm.cgi", "post");
+	print &ui_table_start($text{'index_header'}, undef, 2, [ "width=30%" ]);
+
+	# Is monitoring enabled?
+	if (&get_mdadm_action()) {
+		print &ui_table_row($text{'index_monitor'},
+		   &ui_yesno_radio("monitor", &get_mdadm_monitoring() ? 1 : 0));
+		}
+
+	# Notification address
+	print &ui_table_row($text{'index_mailaddr'},
+		&ui_opt_textbox("mailaddr", $notif->{'MAILADDR'}, 40,
+				$text{'index_mailaddrnone'}));
+
+	# Notification sender
+	print &ui_table_row($text{'index_mailfrom'},
+		&ui_opt_textbox("mailfrom", $notif->{'MAILFROM'}, 40,
+				$text{'index_mailfromnone'}));
+
+	# Program to call for problems
+	print &ui_table_row($text{'index_program'},
+		&ui_opt_textbox("program", $notif->{'PROGRAM'}, 40,
+				$text{'index_programnone'}));
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+	}
 
 &ui_print_footer("/", $text{'index'});
 
@@ -51,8 +98,7 @@ sub show_button
 {
 print &ui_form_start("raid_form.cgi");
 print &ui_submit($text{'index_add'});
-local @levels = ( 0, 1, 4, 5 );
-push(@levels, 6) if ($raid_mode eq "mdadm");
+local @levels = &get_raid_levels();
 print &ui_select("level", "linear",
 		 [ [ "linear", $text{'linear'} ],
 		   map { [ $_, $text{'raid'.$_} ] } @levels ]),"\n";

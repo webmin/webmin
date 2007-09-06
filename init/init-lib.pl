@@ -750,7 +750,7 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 	local $temp = &transname();
 	&foreign_require("proc", "proc-lib.pl");
 	open(TEMP, ">$temp");
-	&proc::safe_process_exec_logged("$fh start", 0, 0, TEMP);
+	&proc::safe_process_exec_logged("$fn start", 0, 0, TEMP);
 	close(TEMP);
 	local $ex = $?;
 	local $out = &read_file_contents($temp);
@@ -786,7 +786,7 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 	local $temp = &transname();
 	&foreign_require("proc", "proc-lib.pl");
 	open(TEMP, ">$temp");
-	&proc::safe_process_exec_logged("$fh stop", 0, 0, TEMP);
+	&proc::safe_process_exec_logged("$fn stop", 0, 0, TEMP);
 	close(TEMP);
 	local $ex = $?;
 	local $out = &read_file_contents($temp);

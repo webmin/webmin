@@ -154,12 +154,13 @@ if ($raid_mode eq "mdadm") {
 
 if ($raid->{'active'} && !$st[2]) {
 	# Show buttons for creating filesystems
+	$fstype = $st[1] || "ext3";
 	print "<tr> <td nowrap><input type=submit name=mkfs ",
 	      "value='$text{'view_mkfs2'}'>\n";
 	print "<select name=fs>\n";
 	foreach $f (&fdisk::supported_filesystems()) {
 		printf "<option value=%s %s>%s (%s)\n",
-			$f, $stat[1] eq $f ? "selected" : "",
+			$f, $fstype eq $f ? "selected" : "",
 			$fdisk::text{"fs_$f"}, $f;
 		}
 	print "</select></td>\n";

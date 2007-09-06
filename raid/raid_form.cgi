@@ -82,7 +82,7 @@ print "<td><select name=disks multiple size=4>\n";
 print $disks;
 print "</select></td> </tr>\n";
 
-if ($lvl >= 4) {
+if ($lvl >= 4 && $lvl != 10) {
 	print "<tr> <td valign=top><b>$text{'create_spares'}</b></td>\n";
 	print "<td><select name=spares multiple size=4>\n";
 	print $disks;
