@@ -82,19 +82,22 @@ print "</script>\n";
 sub theme_ui_columns_start
 {
 local ($heads, $width, $noborder, $tdtags, $heading) = @_;
+local ($href) = grep { $_ =~ /<a\s+href/i } @$heads;
 local $rv;
-$rv .= "<table".($noborder ? "" : " border").
-    (defined($width) ? " width=$width%" : "").">\n";
+$theme_ui_columns_row_toggle = 0;
+$rv .= "<table".($noborder ? "" : " class='ui_table'").
+		(defined($width) ? " width=$width%" : "").
+		($href ? "" : " class='sortable'").">\n";
 if ($heading) {
-  $rv .= "<thead> <tr $tb><td colspan=".scalar(@$heads).
-         "><b>$heading</b></td></tr> </thead> <tbody>\n";
-  }
+	$rv .= "<thead> <tr $tb><td colspan=".scalar(@$heads).
+			"><b>$heading</b></td></tr> </thead> <tbody>\n";
+	}
 $rv .= "<thead> <tr $tb>\n";
 local $i;
 for($i=0; $i<@$heads; $i++) {
-  $rv .= "<td ".$tdtags->[$i]."><b>".
-         ($heads->[$i] eq "" ? "<br>" : $heads->[$i])."</b></td>\n";
-  }
+	$rv .= "<td ".$tdtags->[$i]."><b>".
+			($heads->[$i] eq "" ? "<br>" : $heads->[$i])."</b></td>\n";
+	}
 $rv .= "</tr></thead> <tbody>\n";
 $theme_ui_columns_count++;
 return $rv;
@@ -104,13 +107,14 @@ return $rv;
 # Returns HTML for a row in a multi-column table
 sub theme_ui_columns_row
 {
+$theme_ui_columns_row_toggle = $theme_ui_columns_row_toggle ? '0' : '1';
 local ($cols, $tdtags) = @_;
 local $rv;
-$rv .= "<tr $cb onMouseOver=\"this.className='mainhigh'\" onMouseOut=\"this.className='mainbody'\">\n";
+$rv .= "<tr class='ui_columns row$theme_ui_columns_row_toggle' onMouseOver=\"this.className='mainhigh'\" onMouseOut=\"this.className='mainbody row$theme_ui_columns_row_toggle'\">\n";
 local $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i].">".
-	       ($cols->[$i] eq "" ? "<br>" : $cols->[$i])."</td>\n";
+			($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i])."</td>\n";
 	}
 $rv .= "</tr>\n";
 return $rv;
@@ -145,6 +149,7 @@ return "<a href='#' onClick='f = document.forms[$form]; ff = f.$field; ff.checke
 
 sub theme_ui_checked_columns_row
 {
+$theme_ui_columns_row_toggle = $theme_ui_columns_row_toggle ? '0' : '1';
 local ($cols, $tdtags, $checkname, $checkvalue, $checked) = @_;
 local $rv;
 local $cbid = &quote_escape(quotemeta("${checkname}_${checkvalue}"));
@@ -154,18 +159,18 @@ local $mycb = $cb;
 if ($checked) {
 	$mycb =~ s/mainbody/mainsel/g;
 	}
-$rv .= "<tr $mycb id=\"$ridtr\" class=\"$cclass\" onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody'\">\n";
+$rv .= "<tr id=\"$ridtr\" class=\"$cclass row$theme_ui_columns_row_toggle\" onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody row$theme_ui_columns_row_toggle'\">\n";
 $rv .= "<td ".$tdtags->[0].">".
-       &ui_checkbox($checkname, $checkvalue, undef, $checked, "onClick=\"document.getElementById('$rid').className = this.checked ? 'mainhighsel' : 'mainhigh';\"").
-       "</td>\n";
+		&ui_checkbox($checkname, $checkvalue, undef, $checked, "onClick=\"document.getElementById('$rid').className = this.checked ? 'mainhighsel' : 'mainhigh';\"").
+		"</td>\n";
 local $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i+1].">";
 	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
 		$rv .= "<label for=\"".
-			&quote_escape("${checkname}_${checkvalue}")."\">";
+				&quote_escape("${checkname}_${checkvalue}")."\">";
 		}
-	$rv .= ($cols->[$i] eq "" ? "<br>" : $cols->[$i]);
+	$rv .= ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i]);
 	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
 		$rv .= "</label>";
 		}
@@ -184,8 +189,8 @@ local $rid = &quote_escape(quotemeta("row_${checkname}_${checkvalue}"));
 local $ridtr = &quote_escape("row_${checkname}_${checkvalue}");
 local $mycb = $cb;
 if ($checked) {
-	$mycb =~ s/mainbody/mainsel/g;
-	}
+  $mycb =~ s/mainbody/mainsel/g;
+  }
 
 $rv .= "<tr $mycb id=\"$ridtr\" onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody'\">\n";
 $rv .= "<td ".$tdtags->[0].">".
@@ -193,17 +198,17 @@ $rv .= "<td ".$tdtags->[0].">".
        "</td>\n";
 local $i;
 for($i=0; $i<@$cols; $i++) {
-	$rv .= "<td ".$tdtags->[$i+1].">";
-	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
-		$rv .= "<label for=\"".
-			&quote_escape("${checkname}_${checkvalue}")."\">";
-		}
-	$rv .= ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i]);
-	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
-		$rv .= "</label>";
-		}
-	$rv .= "</td>\n";
-	}
+  $rv .= "<td ".$tdtags->[$i+1].">";
+  if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
+    $rv .= "<label for=\"".
+      &quote_escape("${checkname}_${checkvalue}")."\">";
+    }
+  $rv .= ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i]);
+  if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
+    $rv .= "</label>";
+    }
+  $rv .= "</td>\n";
+  }
 $rv .= "</tr>\n";
 return $rv;
 }

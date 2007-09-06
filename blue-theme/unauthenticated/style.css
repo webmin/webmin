@@ -13,6 +13,9 @@ table {
 				empty-cells: hide;
 }
 
+tr.row0 {background-color:#e8e8ea;}
+tr.row1 {background-color:#f8f8fa;}
+
 /* links */
 a, a:visited {
   text-decoration: none;

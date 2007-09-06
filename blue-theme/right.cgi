@@ -5,6 +5,7 @@ do './web-lib.pl';
 &init_config();
 do './ui-lib.pl';
 &ReadParse();
+&load_theme_library();
 if (&get_product_name() eq "usermin") {
 	$level = 3;
 	}
@@ -18,7 +19,7 @@ foreach $o (split(/\0/, $in{'open'})) {
 	$open{$o} = 1;
 	}
 
-&popup_header();
+&popup_header(undef, &capture_function_output(\&theme_prehead));
 print "<center>\n";
 
 if ($level == 0) {
