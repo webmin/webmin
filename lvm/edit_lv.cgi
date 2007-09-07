@@ -186,9 +186,10 @@ if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'}) {
 	print "<input type=hidden name=dev value='$lv->{'device'}'>\n";
 	print "<td nowrap><input type=submit value='$text{'lv_mkfs'}'>\n";
 	print "<select name=fs>\n";
+	$fstype = $stat[1] || "ext3";
 	foreach $f (&fdisk::supported_filesystems()) {
 		printf "<option value=%s %s>%s (%s)\n",
-			$f, $stat[1] eq $f ? "selected" : "",
+			$f, $fstype eq $f ? "selected" : "",
 			$fdisk::text{"fs_$f"}, $f;
 		}
 	print "</select></td>\n";
