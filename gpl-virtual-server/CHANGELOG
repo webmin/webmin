@@ -345,4 +345,7 @@ Added a setting to control if virtual server owners can see mailboxes, on the Mo
 In the Quota commands section of the Module Config page, added two new commands to get the quotas for a single user and group respectively. If defined, Virtualmin will use these when listing users in a domain or editing a single user, on the assumption that they are faster than the command which outputs quotas for all users.
 Enhanced the Virtualmin GPL -> Pro upgrader to support systems installed using the GPL install script.
 Creation of domains that match certain regular expressions can be denied using a new Module Config option in the Defaults for new domains section.
+Added the --only-features parameter to restore-domain.pl, which tells Virtualmin to only enable features selected for restore when creating a new domain as part of the process.
+Added a similar option to the restore form in the Virtualmin web interface.
 Usage for previous months can be shown on the Bandwidth Monitoring page, using a month selector menu at the bottom of the table of domains or dates.
+Added options on the Edit Server Template page to make some non-default template the one that is initially selected when adding new virtual servers, migrating them or creating from a batch file.
