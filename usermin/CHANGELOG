@@ -32,3 +32,5 @@ Added the Advanced Options page, which can be used to change the temporary files
 ---- Changes since 1.350 ----
 Added an option to the Authentication page to block users with too many failed logins, as well as hosts.
 Created the new Blocked Hosts and Users page to show blocks currently in force, and allow them to be cleared.
+---- Changes since 1.360 ----
+Separated the Configure Module page into tabs, to make it clearer which options are global and which are default user preferences.

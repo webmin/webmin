@@ -10,9 +10,21 @@ $access{'configs'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'configs_title2'}, "");
 &get_usermin_miniserv_config(\%miniserv);
 
+# Show start of tabs
+$prog = "edit_configs.cgi?mod=$in{'mod'}&mode=";
+if (-r "$miniserv{'root'}/$in{'mod'}/config.info") {
+	push(@tabs, [ "global", $text{'configs_global'}, $prog."global" ]);
+	}
+if (-r "$miniserv{'root'}/$in{'mod'}/uconfig.info") {
+	push(@tabs, [ "user", $text{'configs_user'}, $prog."user" ]);
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
+
 &read_file("$config{'usermin_dir'}/$in{'mod'}/config", \%mconfig);
 if (-r "$miniserv{'root'}/$in{'mod'}/config.info") {
 	# Display config form for the module
+	print &ui_tabs_start_tab("mode", "global");
+	print $text{'configs_globaldesc'},"<p>\n";
 	%minfo = &get_usermin_module_info($in{'mod'});
 	print &ui_form_start("save_configs.cgi", "post");
 	print &ui_hidden("mod", $in{'mod'}),"\n";
@@ -23,15 +35,13 @@ if (-r "$miniserv{'root'}/$in{'mod'}/config.info") {
 	&generate_config(\%mconfig, "$miniserv{'root'}/$in{'mod'}/config.info");
 	print &ui_table_end();
 	print &ui_form_end([ [ "save", $text{'save'} ] ]);
-	}
-
-if (-r "$miniserv{'root'}/$in{'mod'}/config.info" &&
-    -r "$miniserv{'root'}/$in{'mod'}/uconfig.info") {
-	print "<hr>\n";
+	print &ui_tabs_end_tab();
 	}
 
 if (-r "$miniserv{'root'}/$in{'mod'}/uconfig.info") {
 	# Display default user config form for the module
+	print &ui_tabs_start_tab("mode", "user");
+	print $text{'configs_userdesc'},"<p>\n";
 	%minfo = &get_usermin_module_info($in{'mod'});
 	print &ui_form_start("save_uconfigs.cgi", "post");
 	print &ui_hidden("mod", $in{'mod'}),"\n";
@@ -58,7 +68,10 @@ if (-r "$miniserv{'root'}/$in{'mod'}/uconfig.info") {
 			 undef, $noprefs == 2 ? \%canconfig : undef, "_can");
 	print &ui_table_end();
 	print &ui_form_end([ [ "save", $text{'save'} ] ]);
+	print &ui_tabs_end_tab();
 	}
+
+print &ui_tabs_end(1);
 
 &ui_print_footer("list_configs.cgi", $text{'configs_return'});
 
