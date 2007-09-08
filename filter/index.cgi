@@ -4,6 +4,10 @@
 require './filter-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "", undef, 0, 1);
 
+if (&get_product_name() eq 'webmin') {
+	&ui_print_endpage($text{'index_nowebmin'});
+	}
+
 # Warn if procmail is not installed
 if ($config{'warn_procmail'} && !&has_command("procmail")) {
 	print "$text{'index_warn'}<p>\n";
