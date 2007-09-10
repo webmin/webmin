@@ -3844,7 +3844,10 @@ else {
 	$call->{'newsession'} = 1;
 	}
 local $rv = &remote_rpc_call($_[0], $call);
-$remote_session{$sn} = $rv->{'session'} if ($rv->{'session'});
+if ($rv->{'session'}) {
+	$remote_session{$sn} = $rv->{'session'};
+	$remote_session_server{$sn} = $_[0];
+	}
 }
 
 # remote_foreign_call(server, module, function, [arg]*)
@@ -3976,10 +3979,12 @@ else {
 # anyway, but this function should be called to clean things up faster.
 sub remote_finished
 {
-foreach $h (keys %remote_session) {
-	&remote_rpc_call($h, { 'action' => 'quit',
-			       'session' => $remote_session{$h} } );
-	delete($remote_session{$h});
+foreach $sn (keys %remote_session) {
+	local $server = $remote_session_server{$sn};
+	&remote_rpc_call($server, { 'action' => 'quit',
+			            'session' => $remote_session{$sn} } );
+	delete($remote_session{$sn});
+	delete($remote_session_server{$sn});
 	}
 foreach $fh (keys %fast_fh_cache) {
 	close($fh);
