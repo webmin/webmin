@@ -1,0 +1,3 @@
+line2=시스템 설정,11
+inittab_file=Inittab 파일 경로,0
+telinit=telinit 명령 경로,0

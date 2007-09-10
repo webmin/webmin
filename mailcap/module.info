@@ -3,3 +3,4 @@ category=system
 longdesc=Edit the /etc/mailcap file, which maps MIME types to handler programs
 desc_ca=Programes de Tipus Mime
 os_support=!windows
+desc_ko_KR.euc=MIME 타입 프로그램
