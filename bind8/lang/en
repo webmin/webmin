@@ -817,6 +817,7 @@ add_createerr=Setup $1 with $2 new slave zones, but encountered $3 errors :
 add_createok=Setup $1 with $2 new slave zones.
 add_ename=Missing or invalid NS record name
 add_egname=An NS record name cannot be specified when adding a group
+add_emyip=Could not work out this system's IP address. You should set the <b>Default master server IP for remote slave zones</b> on the Module Config page.
 
 mass_title=Create Zones From Batch File
 mass_desc=This page allows you to create multiple zones at once from an uploaded or server-side text file. Each line in the file must have the following format:<p><tt><i>domainname</i>:<i>type</i>:<i>filename</i>:<i>master IPs</i></tt><p>The <i>type</i> must be one of <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> or <tt>forward</tt>. The <i>filename</i> is optional, and will be computed automatically if missing. The <i>master IPs</i> only need to be given for slave zones.

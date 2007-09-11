@@ -27,6 +27,9 @@ else {
 	$in{'name_def'} || &error($text{'add_egname'});
 	}
 $in{'view_def'} || $in{'view'} =~ /^\S+$/ || &error($text{'add_eview'});
+$myip = $config{'this_ip'} || &to_ipaddress(&get_system_hostname());
+$myip && $myip ne "127.0.0.1" ||
+	&error($text{'add_emyip'});
 
 &ui_print_header(undef, $text{'add_title'}, "");
 print "<b>$msg</b><p>\n";
@@ -40,7 +43,6 @@ $add_error_msg = join("", @_);
 
 # Make sure each host is set up for BIND
 @zones = grep { $_->{'type'} eq 'master' } &list_zone_names();
-$myip = $config{'this_ip'} || &to_ipaddress(&get_system_hostname());
 foreach $s (@add) {
 	$s->{'bind8_view'} = $in{'view_def'} ? undef : $in{'view'};
 	$add_error_msg = undef;
