@@ -11,6 +11,12 @@ if ($in{'update'}) {
 		  join("&", map { "d=".&urlize($_) } split(/\0/, $in{'d'})));
 	exit;
 	}
+elsif ($in{'create'}) {
+	# Redirect to mass create form
+	&redirect("mass_rcreate_form.cgi?".
+		  join("&", map { "d=".&urlize($_) } split(/\0/, $in{'d'})));
+	exit;
+	}
 
 # Get the zones
 foreach $d (split(/\0/, $in{'d'})) {

@@ -7,7 +7,7 @@ require './bind8-lib.pl';
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'umass_enone'});
 
-&ui_print_header(undef, $text{'umass_title'}, "");
+&ui_print_header(undef, $text{'umass_title'}, "", [ "width=30%" ]);
 
 print &ui_form_start("mass_update.cgi", "post");
 foreach $d (@d) {
@@ -28,11 +28,11 @@ print &ui_table_row($text{'umass_type'},
 
 # Value to change
 print &ui_table_row($text{'umass_old'},
-		    &ui_textbox("old", undef, 15));
+		    &ui_textbox("old", undef, 30));
 
 # New value
 print &ui_table_row($text{'umass_new'},
-		    &ui_textbox("new", undef, 15));
+		    &ui_textbox("new", undef, 30));
 
 print &ui_table_end();
 print &ui_form_end([ [ "update", $text{'umass_ok'} ] ]);

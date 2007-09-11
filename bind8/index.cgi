@@ -204,7 +204,8 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 		print "</td></tr></table>\n";
 		print &ui_links_row(\@links);
 		print &ui_form_end([ [ "delete", $text{'index_massdelete'} ],
-				     [ "update", $text{'index_massupdate'} ] ]);
+				     [ "update", $text{'index_massupdate'} ],
+				     [ "create", $text{'index_masscreate'} ] ]);
 		}
 	elsif ($config{'show_list'} == 2) {
 		# Show as collapsible tree, broken down by domain parts

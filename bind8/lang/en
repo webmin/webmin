@@ -48,6 +48,7 @@ index_sapplymsg=Click this button to restart the running BIND server on the sele
 index_all=All zones
 index_massdelete=Delete Selected
 index_massupdate=Update Records in Selected
+index_masscreate=Add Record to Selected
 index_bind=BIND
 
 master_title=Edit Master Zone
@@ -901,3 +902,19 @@ umass_done=.. updated $1 matching records out of $2.
 umass_none=.. no matching records out of $1 to update found.
 umass_egone=Zone does not exist
 emass_emx='$1' is not a mail server priority number followed by a valid hostname
+
+rmass_err=Failed to add records
+rmass_enone=None selected
+rmass_title=Add Record to Zones
+rmass_header=Mass record addition details
+rmass_type=Record type to add
+rmass_name=New record name
+rmass_value=New record value
+rmass_ok=Add Record
+rmass_ttl=New record time-to-live
+rmass_ename=Missing or invalid record name
+rmass_ename2=The record name cannot end with a .
+rmass_ettl=Missing or invalid time-to-live
+rmass_doing=Adding record to zone $1 ..
+rmass_done=.. done
+rmass_eclash=.. a record with the same name and value $1 already exists.

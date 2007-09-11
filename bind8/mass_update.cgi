@@ -4,6 +4,7 @@
 require './bind8-lib.pl';
 &ReadParse();
 $conf = &get_config();
+&error_setup($text{'umass_err'});
 
 # Get the zones
 foreach $d (split(/\0/, $in{'d'})) {
@@ -72,6 +73,7 @@ foreach $zi (@zones) {
 			}
 		}
 	if ($rcount) {
+		&bump_soa_record($zi->{'file'}, \@recs);
 		print &text('umass_done', $rcount, scalar(@recs)),"<p>\n";
 		}
 	else {
