@@ -84,7 +84,7 @@ foreach $host (@{$_[0]}) {
 	&remote_foreign_require($serv->{'host'}, "useradmin", "user-lib.pl");
 	if ($passwd_error_msg) {
 		# Host is down ..
-		&$pfunc(1, &cluster_useradmin::&text(
+		&$pfunc(1, &cluster_useradmin::text(
 				'usave_failed', $passwd_error_msg));
 		next;
 		}
