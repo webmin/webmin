@@ -3,22 +3,29 @@
 # Simple autoreply script. Command line arguments are :
 # autoreply-file username alternate-file
 
-# read sendmail module config
+# Read sendmail module config
 $ENV{'PATH'} = "/bin:/usr/bin:/sbin:/usr/sbin";
 $p = -l $0 ? readlink($0) : $0;
 $p =~ /^(.*)\/[^\/]+$/;
-if (open(CONF, "$1/config")) {
-	while(<CONF>) {
-		if (/^(\S+)=(.*)/) {
-			$config{$1} = $2;
-			}
-		}
-	close(CONF);
+$moddir = $1;
+%config = &read_config_file("$moddir/config");
+
+# If this isn't the sendmail module, try it
+if (!$config{'sendmail_path'} || !-x $config{'sendmail_path'}) {
+	$moddir =~ s/([^\/]+)$/sendmail/;
+	%config = &read_config_file("$moddir/config");
 	}
-if (!$config{'sendmail_path'}) {
+
+if (!$config{'sendmail_path'} || !-x $config{'sendmail_path'}) {
 	# Make some guesses about sendmail
 	if (-x "/usr/sbin/sendmail") {
 		%config = ( 'sendmail_path' => '/usr/sbin/sendmail' );
+		}
+	elsif (-x "/usr/local/sbin/sendmail") {
+		%config = ( 'sendmail_path' => '/usr/local/sbin/sendmail' );
+		}
+	elsif (-x "/opt/csw/lib/sendmail") {
+		%config = ( 'sendmail_path' => '/opt/csw/lib/sendmail' );
 		}
 	elsif (-x "/usr/lib/sendmail") {
 		%config = ( 'sendmail_path' => '/usr/lib/sendmail' );
@@ -327,5 +334,19 @@ return $file =~ /\.gif/i ? "image/gif" :
        $file =~ /\.(mp2|mp3)/i ? "audio/mpeg" :
        $file =~ /\.wav/i ? "audio/x-wav" :
 			   "application/octet-stream";
+}
+
+sub read_config_file
+{
+local %config;
+if (open(CONF, $_[0])) {
+	while(<CONF>) {
+		if (/^(\S+)=(.*)/) {
+			$config{$1} = $2;
+			}
+		}
+	close(CONF);
+	}
+return %config;
 }
 
