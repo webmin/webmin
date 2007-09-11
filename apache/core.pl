@@ -873,7 +873,9 @@ else { return ( [ ] ); }
 sub edit_require
 {
 local($rv, $mode, $list);
-$_[0]->{'value'} =~ /^(\S+)\s*(.*)$/; $mode = $1; $list = $2;
+local @w = @{$_[0]->{'words'}};
+$mode = shift(@w);
+$list = join(" ", map { $_ =~ /\s/ ? "\"$_\"" : $_ } @w);
 
 # All users
 $rv = sprintf
@@ -886,7 +888,7 @@ $rv .= sprintf
       $mode eq "user" ? "checked" : "";
 $rv .= sprintf
       "<input name=require_user size=20 value=\"%s\"><br>\n",
-      $mode eq "user" ? $list : "";
+      $mode eq "user" ? &html_escape($list) : "";
 
 # Only members of groups
 $rv .= sprintf
@@ -894,7 +896,7 @@ $rv .= sprintf
       $mode eq "group" ? "checked" : "";
 $rv .= sprintf
       "<input name=require_group size=20 value=\"%s\"><br>\n",
-      $mode eq "group" ? $list : "";
+      $mode eq "group" ? &html_escape($list) : "";
 
 # All users
 $rv .= sprintf
