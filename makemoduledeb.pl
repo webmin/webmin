@@ -165,7 +165,7 @@ system("find $usr_dir -name '*.rej' | xargs rm -rf");
 system("find $usr_dir -name core | xargs rm -rf");
 
 # Fix up Perl paths
-system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | $par/perlpath.pl /usr/bin/perl -");
+system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | perl -ne 'chop; open(F,\$_); \@l=<F>; close(F); \$l[0] = \"#\!/usr/bin/perl\$1\n\" if (\$l[0] =~ /#\!\\S*perl\\S*(.*)/); open(F,\">\$_\"); print F \@l; close(F)'");
 system("(find $usr_dir -name '*.cgi' ; find $usr_dir -name '*.pl') | xargs chmod +x");
 
 # Build list of dependencies on other Debian packages, for inclusion as a
