@@ -1352,8 +1352,21 @@ return undef if (&is_readonly_mode());
 local ($src, $dst) = @_;
 if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 	# Can just move the file or dir
+	local @st = stat($dst->{'file'});
 	system("rm -rf ".quotemeta($dst->{'file'}));
 	system("mv ".quotemeta($src->{'file'})." ".quotemeta($dst->{'file'}));
+	if ($< == 0 && @st) {
+		if ($src->{'type'} == 0) {
+			# Fix mbox perms
+			&set_ownership_permissions($st[4], $st[5], $st[2],
+						   $dst->{'file'});
+			}
+		else {
+			# Fix maildir/MH perms
+			system("chown -R $st[4]:$st[5] ".
+			       quotemeta($dst->{'file'}));
+			}
+		}
 	}
 else {
 	# Need to copy one by one :(

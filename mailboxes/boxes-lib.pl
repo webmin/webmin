@@ -384,7 +384,7 @@ my %index;
 return $index{'mailcount'};
 }
 
-# parse_mail(&mail, [&parent], [savebody])
+# parse_mail(&mail, [&parent], [savebody], [keep-cr])
 # Extracts the attachments from the mail body
 sub parse_mail
 {
@@ -395,7 +395,8 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 				   $ct =~ /boundary=([^;\s]+)/i)) {
 	# Multipart MIME message
 	local $bound = "--".$1;
-	local @lines = split(/\r?\n/, $_[0]->{'body'});
+	local @lines = $_[3] ? split(/\n/, $_[0]->{'body'})
+			     : split(/\r?\n/, $_[0]->{'body'});
 	local $l;
 	local $max = @lines;
 	while($l < $max && $lines[$l++] ne $bound) {
