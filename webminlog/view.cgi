@@ -71,30 +71,27 @@ foreach $d (&list_diffs($act)) {
 	$rbcount++ if ($rb);
 	if ($t =~ /\$2/ || !$d->{'diff'}) {
 		# Diff is just a single line message
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>",$cbox,
+		print &ui_table_start($cbox.
 		      &text("view_type_".$d->{'type'},
 			    "<tt>$d->{'object'}</tt>",
-			    "<tt>".&html_escape($d->{'diff'})."</tt>"),"</b></td> </tr>\n";
-		print "</table><p>\n";
+			    "<tt>".&html_escape($d->{'diff'})."</tt>"),
+		      "width=100%", 2);
+		print &ui_table_end();
 		}
 	else {
 		# Show multi-line diff
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>",$cbox,&text("view_type_".$d->{'type'},
-		      "<tt>$d->{'object'}</tt>"),"</b></td> </tr>\n";
-		print "<tr $cb> <td><pre>";
-		print &html_escape($d->{'diff'});
-		print "</pre></td> </tr>\n";
+		print &ui_table_start($cbox.&text("view_type_".$d->{'type'},
+					          "<tt>$d->{'object'}</tt>"),
+				      "width=100%", 2);
+		print &ui_table_row(undef,
+			"<pre>".&html_escape($d->{'diff'})."</pre>", 2);
 		if ($d->{'input'}) {
 			# And input too
-			print "<tr $tb> <td><b>",&text('view_input'),
-			      "</b></td> </tr>\n";
-			print "<tr $cb> <td><pre>";
-			print &html_escape($d->{'input'});
-			print "</pre></td> </tr>\n";
+			print &ui_table_row(undef,
+				"<b>".&text('view_input')."</b><br>".
+				"<pre>".&html_escape($d->{'input'})."</pre>",2);
 			}
-		print "</table><p>\n";
+		print &ui_table_end();
 		}
 	$anydiffs++;
 	}
