@@ -34,3 +34,4 @@ When a group is deleted, sub-groups are also removed, and the group is removed f
 ---- Changes since 1.350 ----
 Added the Password Restrictions page, for configuring password quality and change time settings.
 Re-designed the Edit User page to use the new Webmin UI library, and move lesser-used fields into collapsible sections.
+Webmin users can have a real name, which can be any text you like.
