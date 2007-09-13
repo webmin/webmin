@@ -14,6 +14,14 @@ if (!defined($oldtheme)) {
 	$oldtheme = $gconfig{'theme'};
 	}
 
+# Validate the password
+if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
+	$in{'pass'} =~ /:/ && &error($text{'change_ecolon'});
+	$perr = &acl::check_password_restrictions(
+		$user->{'name'}, $in{'pass'});
+	&error(&text('change_epass', $perr)) if ($perr);
+	}
+
 print "$text{'change_user'}<br>\n";
 if ($access{'lang'}) {
 	if ($in{'lang_def'}) {
@@ -35,11 +43,8 @@ if ($access{'theme'}) {
 		$newtheme = $gconfig{'theme'};
 		}
 	}
-if ($access{'pass'} && &can_change_pass($user)) {
-	if (!$in{'pass_def'}) {
-		$in{'pass'} =~ /:/ && &error($text{'change_ecolon'});
-		$user->{'pass'} = &acl::encrypt_password($in{'pass'});
-		}
+if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
+	$user->{'pass'} = &acl::encrypt_password($in{'pass'});
 	}
 &acl::modify_user($user->{'name'}, $user);
 print "$text{'change_done'}<p>\n";

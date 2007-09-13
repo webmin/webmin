@@ -24,6 +24,7 @@ change_done=.. done
 change_restart=Re-starting Webmin ..
 change_redirect=Re-directing to main menu ..
 change_ecolon=Your password cannot contain the : character
+change_epass=New password is not valid : $1
 
 acl_lang=Can change language?
 acl_theme=Can change theme?
