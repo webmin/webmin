@@ -4,6 +4,21 @@
 
 require './acl-lib.pl';
 &ReadParse();
+
+# Check for special button clicks, and redirect
+if ($in{'but_hide'}) {
+	&redirect("hide_form.cgi?group=".&urlize($in{'old'}));
+	exit;
+	}
+elsif ($in{'but_clone'}) {
+	&redirect("edit_group.cgi?clone=".&urlize($in{'old'}));
+	exit;
+	}
+elsif ($in{'but_delete'}) {
+	&redirect("delete_group.cgi?group=".&urlize($in{'old'}));
+	exit;
+	}
+
 @glist = &list_groups();
 @ulist = &list_users();
 if ($in{'old'}) {

@@ -102,11 +102,31 @@ if ($miniserv{'extauth'}) {
 	push(@opts, [ 5, $text{'edit_extauth'} ]);
 	}
 push(@opts, [ 4, $text{'edit_lock'} ]);
+if ($passmode == 1) {
+	$lockbox = &ui_checkbox("lock", 1, $text{'edit_templock'},
+			               $user{'pass'} =~ /^\!/ ? 1 : 0);
+	}
+if ($user{'lastchange'} && $miniserv{'pass_maxdays'}) {
+	$daysold = int((time() - $user{'lastchange'})/(24*60*60));
+	if ($miniserv{'pass_lockdays'} &&
+	    $daysold > $miniserv{'pass_lockdays'}) {
+		$expmsg = "<br>"."<font color=#ff0000>".
+			  &text('edit_passlocked', $daysold)."</font>";
+		}
+	elsif ($daysold > $miniserv{'pass_maxdays'}) {
+		$expmsg = "<br>"."<font color=#ffaa00>".
+			  &text('edit_passmax', $daysold)."</font>";
+		}
+	elsif ($daysold) {
+		$expmsg = "<br>".&text('edit_passold', $daysold);
+		}
+	else {
+		$expmsg = "<br>".$text{'edit_passtoday'};
+		}
+	}
 print &ui_table_row($text{'edit_pass'},
 	&ui_select("pass_def", $passmode, \@opts)." ".
-	&ui_password("pass", undef, 25)." ".
-	($passmode == 1 ? &ui_checkbox("lock", 1, $text{'edit_templock'},
-				       $user{'pass'} =~ /^\!/ ? 1 : 0) : ""));
+	&ui_password("pass", undef, 25).$lockbox.$expmsg);
 
 # Real name
 print &ui_table_row($text{'edit_real'},
@@ -249,9 +269,9 @@ map { $has{$_} = 0 } $group ? @{$group->{'modules'}} : ();
 
 # Start of modules section
 print &ui_hidden_table_start(@groups ? $text{'edit_modsg'} : $text{'edit_mods'},
-			     "width=100%", 2, "mods", 1, [ "width=30%" ]);
+			     "width=100%", 2, "mods", 1);
 
-# Show all modules, under categories
+# Show available modules, under categories
 @mlist = grep { $access{'others'} || $has{$_->{'dir'}} || $mcan{$_->{'dir'}} }
 	      &list_module_infos();
 @links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
@@ -282,8 +302,8 @@ foreach $c (sort { $b cmp $a } @cats) {
 			push(@grid, &ui_checkbox("mod", $md, $label,$has{$md}));
 			}
 		else {
-			push(@grids, sprintf "<img src=images/%s.gif> %s\n",
-				$has{$md} ? 'tick' : 'empty', $m->{'desc'});
+			push(@grid, (sprintf "<img src=images/%s.gif> %s\n",
+				$has{$md} ? 'tick' : 'empty', $m->{'desc'}));
 			}
 		}
 	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);

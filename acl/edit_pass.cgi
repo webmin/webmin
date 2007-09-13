@@ -1,7 +1,5 @@
 #!/usr/local/bin/perl
 # Show password quality and change restrictions
-# XXX enforcement in miniserv.pl
-# XXX do edit_group.cgi
 
 require './acl-lib.pl';
 &ui_print_header(undef, $text{'pass_title'}, "");

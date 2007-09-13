@@ -24,18 +24,17 @@ else {
 		}
 	}
 
-print "<form action=save_group.cgi method=post>\n";
-print "<input type=hidden name=old value=\"$in{'group'}\">\n";
+print &ui_form_start("save_group.cgi", "post");
+print &ui_hidden("old", $in{'group'});
 if ($in{'clone'}) {
-	print "<input type=hidden name=clone value=\"$in{'clone'}\">\n";
+	print &ui_hidden("clone", $in{'clone'});
 	}
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'gedit_rights'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_hidden_table_start($text{'gedit_rights'}, "width=100%", 2, "rights",
+			     1, [ "width=30%" ]);
 
 # Show the group name
-print "<tr> <td><b>$text{'gedit_group'}</b></td>\n";
-print "<td><input name=name size=25 value=\"$group{'name'}\"></td>\n";
+print &ui_table_row($text{'gedit_group'},
+	&ui_textbox("name", $group{'name'}, 30));
 
 # Find and show the parent group
 @glist = grep { $_->{'name'} ne $group{'name'} } &list_groups();
@@ -44,101 +43,82 @@ print "<td><input name=name size=25 value=\"$group{'name'}\"></td>\n";
 		split(/\s+/, $access{'gassign'});
 map { $gcan{$_}++ } @mcan;
 if (@glist && %gcan) {
-	print "<td><b>$text{'edit_group'}</b></td>\n";
-	print "<td><select name=group>\n";
-	foreach $g (@glist) {
-		local $mem = &indexof('@'.$group{'name'},
-				      @{$g->{'members'}}) >= 0;
-		next if (!$gcan{$g->{'name'}} && !$mem);
-		printf "<option %s>%s\n",
-			$mem ?  'selected' : '', $g->{'name'};
-		$group = $g if ($mem);
+	@opts = ( );
+	if ($gcan{'_none'}) {
+		push(@opts, [ undef, "&lt;$text{'edit_none'}&gt;" ]);
 		}
-	printf "<option value='' %s>&lt;%s&gt;\n",
-		$group ? '' : 'selected', $text{'edit_none'}
-			if ($gcan{'_none'});
-	print "</select></td>\n";
+	$memg = undef;
+	foreach $g (@glist) {
+		if (&indexof('@'.$group{'name'}, @{$g->{'members'}}) >= 0) {
+			$memg = $g->{'name'};
+			}
+		next if (!$gcan{$g->{'name'}} && $memg ne $g->{'name'});
+		push(@opts, [ $g->{'name'} ]);
+		}
+	print &ui_table_row($text{'edit_group'},
+		&ui_select("group", $memg, \@opts));
 	}
-print "</tr>\n";
 
 if ($in{'group'}) {
 	# Show all current members
-	print "<tr> <td valign=top><b>$text{'gedit_members'}</b></td>\n";
-	print "<td colspan=3><table width=100%>\n";
-	$i = 0;
-	foreach $m (@{$group{'members'}}) {
-		print "<tr>\n" if ($i%4 == 0);
-		print "<td width=25%>",($m =~ /^\@(.*)$/ ? "<i>$1</i>" : $m),
-		      "</td>\n";
-		print "<tr>\n" if ($i%4 == 3);
-		$i++;
+	@grid = map { $_ =~ /^\@(.*)$/ ? "<a href='edit_group.cgi?group=$1'><i>$1</i></a>" : "<a href='edit_user.cgi?user=$_'>$_</a>" }
+		    @{$group{'members'}};
+	if (@grid) {
+		print &ui_table_row($text{'gedit_members'},
+				    &ui_links_row(\@grid));
 		}
-	print "</table></td> </tr>\n";
 	}
+print &ui_hidden_table_end("basic");
 
+# Start of modules section
+print &ui_hidden_table_start(@groups ? $text{'edit_modsg'} : $text{'edit_mods'},
+			     "width=100%", 2, "mods", 1);
+
+# Show available modules, under categories
 @mlist = &list_module_infos();
 map { $has{$_}++ } @{$group{'modules'}};
-print "<tr> <td valign=top><b>$text{'gedit_modules'}</b></td>\n";
-print "<td colspan=3>\n";
-print &select_all_link("mod", 0, $text{'edit_selall'}),"&nbsp;\n";
-print &select_invert_link("mod", 0, $text{'edit_invert'}),"<br>\n";
+@links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
+	   &select_invert_link("mod", 0, $text{'edit_invert'}) );
 @cats = &unique(map { $_->{'category'} } @mlist);
 &read_file("$config_directory/webmin.catnames", \%catnames);
-print "<table width=100% cellpadding=0 cellspacing=0>\n";
+$grids = "";
 foreach $c (sort { $b cmp $a } @cats) {
 	@cmlist = grep { $_->{'category'} eq $c } @mlist;
-	print "<tr> <td colspan=2 $tb><b>",
-		$catnames{$c} || $text{'category_'.$c},
-		"</b></td> </tr>\n";
+	$grids .= "<b>".($catnames{$c} || $text{'category_'.$c})."</b><br>\n";
+	@grid = ( );
 	$sw = 0;
 	foreach $m (@cmlist) {
 		local $md = $m->{'dir'};
-		if (!$sw) { print "<tr>\n"; }
-		print "<td width=50%>";
-		printf"<input type=checkbox name=mod value=$md %s>\n",
-		      $has{$md} ? "checked" : "";
+		$label = "";
 		if ($access{'acl'} && $in{'group'}) {
 			# Show link for editing ACL
-			printf "<a href='edit_acl.cgi?mod=%s&%s=%s'>".
-			       "%s</a>\n",
+			$label = sprintf "<a href='edit_acl.cgi?".
+					 "mod=%s&%s=%s'>%s</a>\n",
 				&urlize($m->{'dir'}),
 				"group", &urlize($in{'group'}),
 				$m->{'desc'};
 			}
 		else {
-			print "$m->{'desc'}\n";
+			$label = $m->{'desc'};
 			}
-		print "</td>";
-		if ($sw) { print "<tr>\n"; }
-		$sw = !$sw;
+		push(@grid, &ui_checkbox("mod", $md, $label,$has{$md}));
 		}
+	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
 	}
-print "</table>\n";
-print &select_all_link("mod", 0, $text{'edit_selall'}),"&nbsp;\n";
-print &select_invert_link("mod", 0, $text{'edit_invert'}),"\n";
-print "</td> </tr>\n";
-print "</table></td> </tr></table>\n";
+print &ui_table_row(undef, &ui_links_row(\@links).
+			   $grids.
+			   &ui_links_row(\@links), 2);
+print &ui_hidden_table_end("mods");
 
-print "<table width=100%> <tr>\n";
-print "<td><input type=submit value='$text{'save'}'></td></form>\n";
+# Generate form end buttons
+@buts = ( );
+push(@buts, [ undef, $in{'group'} ? $text{'save'} : $text{'create'} ]);
 if ($in{'group'}) {
-	print "<form action=hide_form.cgi>\n";
-	print "<input type=hidden name=group value=\"$in{'group'}\">\n";
-	print "<td align=center>",
-	      "<input type=submit value=\"$text{'edit_hide'}\"></td></form>\n";
-
-	print "<form action=edit_group.cgi>\n";
-	print "<input type=hidden name=clone value=\"$in{'group'}\">\n";
-	print "<td align=center>",
-	      "<input type=submit value=\"$text{'edit_clone'}\">",
-	      "</td></form>\n";
-
-	print "<form action=delete_group.cgi>\n";
-	print "<input type=hidden name=group value=\"$in{'group'}\">\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td></form>\n";
+	push(@buts, [ "but_hide", $text{'edit_hide'} ]);
+	push(@buts, [ "but_clone", $text{'edit_clone'} ]);
+	push(@buts, [ "but_delete", $text{'delete'} ]);
 	}
-print "</tr></table>\n";
+print &ui_form_end(\@buts);
 
 &ui_print_footer("", $text{'index_return'});
 
