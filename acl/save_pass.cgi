@@ -22,6 +22,13 @@ else {
 	$in{'maxdays'} =~ /^\d+$/ || &error($text{'pass_emaxdays'});
 	$miniserv{'pass_maxdays'} = $in{'maxdays'};
 	}
+if ($in{'lockdays_def'}) {
+	delete($miniserv{'pass_lockdays'});
+	}
+else {
+	$in{'lockdays'} =~ /^\d+$/ || &error($text{'pass_elockdays'});
+	$miniserv{'pass_lockdays'} = $in{'lockdays'};
+	}
 $miniserv{'pass_nouser'} = $in{'nouser'};
 $miniserv{'pass_nodict'} = $in{'nodict'};
 if ($in{'oldblock_def'}) {

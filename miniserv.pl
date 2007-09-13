@@ -2899,8 +2899,27 @@ elsif ($canmode == 0) {
 	}
 elsif ($canmode == 1) {
 	# Attempt Webmin authentication
-	return $users{$webminuser} eq &unix_crypt($pass, $users{$webminuser}) ?
-		( $user, 0, 0 ) : ( undef, 0, 0 );
+	if ($users{$webminuser} eq &unix_crypt($pass, $users{$webminuser})) {
+		# Password is valid .. but check for expiry
+		local $lc = $lastchanges{$user};
+		if ($config{'pass_maxdays'} && $lc) {
+			local $daysold = (time() - $lc)/(24*60*60);
+			print DEBUG "maxdays=$config{'pass_maxdays'} daysold=$daysold\n";
+			if ($config{'pass_lockdays'} &&
+			    $daysold > $config{'pass_lockdays'}) {
+				# So old that the account is locked
+				return ( undef, 0, 0 );
+				}
+			elsif ($daysold > $config{'pass_maxdays'}) {
+				# Password has expired
+				return ( $user, 1, 0 );
+				}
+			}
+		return ( $user, 0, 0 );
+		}
+	else {
+		return ( undef, 0, 0 );
+		}
 	}
 elsif ($canmode == 2 || $canmode == 3) {
 	# Attempt PAM or passwd file authentication
@@ -3842,6 +3861,7 @@ undef(%allow);
 undef(%deny);
 undef(%allowdays);
 undef(%allowhours);
+undef(%lastchanges);
 if ($config{'userfile'}) {
 	open(USERS, $config{'userfile'});
 	while(<USERS>) {
@@ -3865,6 +3885,7 @@ if ($config{'userfile'}) {
 		if ($user[5] =~ /hours\s+(\d+)\.(\d+)-(\d+).(\d+)/) {
 			$allowhours{$user[0]} = [ $1*60+$2, $3*60+$4 ];
 			}
+		$lastchanges{$user[0]} = $user[6];
 		}
 	close(USERS);
 	}

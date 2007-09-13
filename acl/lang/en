@@ -338,6 +338,7 @@ pass_minsize=Minimum password length
 pass_nominsize=No minimum
 pass_regexps=Regular expressions passwords must match
 pass_maxdays=Days before password must be changed
+pass_lockdays=Days before un-changed password locks account
 pass_nomaxdays=Change never required
 pass_nouser=Disallow passwords containing username?
 pass_nodict=Disallow dictionary word passwords?
@@ -348,6 +349,7 @@ pass_pass=passwords
 pass_err=Failed to save password restrictions
 pass_eminsize=Missing or non-numeric minimum password length
 pass_emaxdays=Missing or non-numeric number of days before changing
+pass_elockdays=Missing or non-numeric number of days before account is locked
 pass_eoldblock=Missing or non-numeric number of old passwords to reject
 
 cpass_minsize=Must be at least $1 letters long

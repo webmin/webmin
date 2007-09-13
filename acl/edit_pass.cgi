@@ -25,6 +25,11 @@ print &ui_table_row($text{'pass_maxdays'},
 	&ui_opt_textbox("maxdays", $miniserv{'pass_maxdays'}, 5,
 			$text{'pass_nomaxdays'})." ".$text{'pass_days'});
 
+# Days before lockout
+print &ui_table_row($text{'pass_lockdays'},
+	&ui_opt_textbox("lockdays", $miniserv{'pass_lockdays'}, 5,
+			$text{'pass_nolockdays'})." ".$text{'pass_days'});
+
 # Disallow use of username
 print &ui_table_row($text{'pass_nouser'},
 	&ui_yesno_radio("nouser", $miniserv{'pass_nouser'}));

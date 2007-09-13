@@ -8,16 +8,41 @@ require './web-lib.pl';
 &ReadParse();
 &get_miniserv_config(\%miniserv);
 $miniserv{'passwd_mode'} == 2 || die "Password changing is not enabled!";
-if (!$in{'pam'}) {
-	$miniserv{'passwd_cindex'} ne '' && $miniserv{'passwd_mindex'} ne '' || 
-		die "Missing password file configuration";
-	}
 
 # Validate inputs
 $in{'new1'} ne '' || &pass_error($text{'password_enew1'});
 $in{'new1'} eq $in{'new2'} || &pass_error($text{'password_enew2'});
 
-if ($in{'pam'}) {
+# Is this a Webmin user?
+if (&foreign_check("acl")) {
+	&foreign_require("acl", "acl-lib.pl");
+	($wuser) = grep { $_->{'name'} eq $in{'user'} } &acl::list_users();
+	if ($wuser->{'pass'} eq 'x') {
+		# A Webmin user, but using Unix authentication
+		$wuser = undef;
+		}
+	elsif ($wuser->{'pass'} eq '*LK*' ||
+	       $wuser->{'pass'} =~ /^\!/) {
+		&pass_error("Webmin users with locked accounts cannot change ".
+		       	    "their passwords!");
+		}
+	}
+if (!$in{'pam'} && !$wuser) {
+	$miniserv{'passwd_cindex'} ne '' && $miniserv{'passwd_mindex'} ne '' || 
+		die "Missing password file configuration";
+	}
+
+if ($wuser) {
+	# Update Webmin user's password
+	$enc = &acl::encrypt_password($in{'old'}, $wuser->{'pass'});
+	$enc eq $wuser->{'pass'} || &pass_error($text{'password_eold'});
+	$perr = &acl::check_password_restrictions($in{'user'}, $in{'new1'});
+	$perr && &pass_error(&text('password_enewpass', $perr));
+	$wuser->{'pass'} = &acl::encrypt_password($in{'new1'});
+	&acl::modify_user($wuser->{'name'}, $wuser);
+	&reload_miniserv();
+	}
+elsif ($in{'pam'}) {
 	# Use PAM to make the change..
 	eval "use Authen::PAM;";
 	if ($@) {
