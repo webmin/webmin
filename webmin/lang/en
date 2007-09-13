@@ -530,7 +530,7 @@ session_banner0=Show pre-login file
 session_ebanner=Missing or invalid pre-login file
 session_extauth=External squid-style authentication program
 session_eextauth=Missing or invalid external authentication program
-session_pmodedesc2=When using Unix authentication ..
+session_pmodedesc3=Password expiry policy ..
 session_pmode0=Always deny users with expired passwords
 session_pmode1=Always allow users with expired passwords
 session_pmode2=Prompt users with expired passwords to enter a new one
@@ -788,3 +788,5 @@ blocked_host=Client host
 blocked_clear=Clear All Blocks
 blocked_cleardesc=Click this button to clear all current host and user blocks, by restarting the Webmin server process.
 blocked_restarting=The Webmin server process is now restarting to clear blocked hosts and users - please wait for a few seconds before continuing.
+
+

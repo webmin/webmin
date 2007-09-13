@@ -97,7 +97,7 @@ print "&nbsp;&nbsp;&nbsp;",
 	&ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
 		     $miniserv{'pam_conv'}),"<p>\n";
 
-print "$text{'session_pmodedesc2'}<br>\n";
+print "$text{'session_pmodedesc3'}<br>\n";
 foreach $m (0 .. 2) {
 	printf "<input type=radio name=passwd_mode value=%d %s> %s\n",
 		$m, $miniserv{'passwd_mode'} == $m ? "checked" : "",
