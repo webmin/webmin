@@ -2,10 +2,34 @@
 # save_user.cgi
 # Modify or create a webmin user
 
-$| = 1;
 require './acl-lib.pl';
 &foreign_require("webmin", "webmin-lib.pl");
 &ReadParse();
+
+# Check for special button clicks, and redirect
+if ($in{'but_hide'}) {
+	&redirect("hide_form.cgi?user=".&urlize($in{'old'}));
+	exit;
+	}
+elsif ($in{'but_clone'}) {
+	&redirect("edit_user.cgi?clone=".&urlize($in{'old'}));
+	exit;
+	}
+elsif ($in{'but_log'}) {
+	&redirect("../webminlog/search.cgi?uall=0&mall=1&tall=1&user=".
+		  &urlize($in{'old'}));
+	exit;
+	}
+elsif ($in{'but_switch'}) {
+	&redirect("switch.cgi?user=".&urlize($in{'old'}));
+	exit;
+	}
+elsif ($in{'but_delete'}) {
+	&redirect("delete_user.cgi?user=".&urlize($in{'old'}));
+	exit;
+	}
+
+# Get the user object
 @ulist = &list_users();
 if ($in{'old'}) {
 	$in{'name'} = $in{'old'} if (!$access{'rename'});
@@ -32,6 +56,8 @@ if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
 	}
 !$access{'logouttime'} || $in{'logouttime_def'} ||
 	$in{'logouttime'} =~ /^\d+$/ || &error($text{'save_elogouttime'});
+!$access{'minsize'} || $in{'minsize_def'} ||
+	$in{'minsize'} =~ /^\d+$/ || &error($text{'save_eminsize'});
 
 # Find logged-in webmin user
 foreach $u (@ulist) {
@@ -166,6 +192,7 @@ $user{'logouttime'} = !$access{'logouttime'} ? $old->{'logouttime'} :
 			$in{'logouttime_def'} ? undef : $in{'logouttime'};
 $user{'lastchange'} = $old->{'lastchange'};
 $user{'olds'} = $old->{'olds'};
+$user{'real'} = $in{'real'} =~ /\S/ ? $in{'real'} : undef;
 $raddr = $ENV{'REMOTE_ADDR'};
 if ($access{'ips'}) {
 	if ($in{'ipmode'}) {
@@ -201,6 +228,8 @@ if ($in{'pass_def'} == 0) {
 	$in{'pass'} =~ /:/ && &error($text{'save_ecolon'});
 	$user{'pass'} = &encrypt_password($in{'pass'});
 	$user{'sync'} = 0;
+	$perr = &check_password_restrictions($in{'name'}, $in{'pass'});
+	$perr && &error(&text('save_epass', $perr));
 	}
 elsif ($in{'pass_def'} == 1) {
 	# No change in password

@@ -1,8 +1,7 @@
 #!/usr/local/bin/perl
 # Show password quality and change restrictions
-# XXX webmin user real name
 # XXX enforcement in miniserv.pl
-# XXX can override password length per-user
+# XXX do edit_group.cgi
 
 require './acl-lib.pl';
 &ui_print_header(undef, $text{'pass_title'}, "");
@@ -14,7 +13,7 @@ print &ui_table_start($text{'pass_header'}, undef, 2);
 # Minimum password size
 print &ui_table_row($text{'pass_minsize'},
 	&ui_opt_textbox("minsize", $miniserv{'pass_minsize'}, 5,
-			$text{'pass_nominsize'}));
+			$text{'pass_nominsize'})." ".$text{'edit_chars'});
 
 # Regexps password must match
 print &ui_table_row($text{'pass_regexps'},

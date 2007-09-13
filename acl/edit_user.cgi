@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 # edit_user.cgi
 # Edit a new or existing webmin user
-# XXX break down into sections, ui-lib-ify
 
 require './acl-lib.pl';
 &foreign_require("webmin", "webmin-lib.pl");
@@ -104,10 +103,14 @@ if ($miniserv{'extauth'}) {
 	}
 push(@opts, [ 4, $text{'edit_lock'} ]);
 print &ui_table_row($text{'edit_pass'},
-	&ui_select("passmode", $passmode, \@opts)." ".
+	&ui_select("pass_def", $passmode, \@opts)." ".
 	&ui_password("pass", undef, 25)." ".
 	($passmode == 1 ? &ui_checkbox("lock", 1, $text{'edit_templock'},
 				       $user{'pass'} =~ /^\!/ ? 1 : 0) : ""));
+
+# Real name
+print &ui_table_row($text{'edit_real'},
+	&ui_textbox("real", $user{'real'}, 60));
 
 print &ui_hidden_table_end("rights");
 
@@ -164,7 +167,7 @@ if ($showui) {
 	}
 
 # Start of security options section
-$showsecurity = $access{'logouttime'} || $access{'ips'} ||
+$showsecurity = $access{'logouttime'} || $access{'ips'} || $access{'minsize'} ||
 		&supports_rbac() && $access{'mode'} == 0 || $access{'times'};
 if ($showsecurity) {
 	print &ui_hidden_table_start($text{'edit_security'}, "width=100%", 2,
@@ -176,6 +179,13 @@ if ($access{'logouttime'}) {
 	print &ui_table_row($text{'edit_logout'},
 		&ui_opt_textbox("logouttime", $user{'logouttime'}, 5,
 		      		$text{'default'})." ".$text{'edit_mins'});
+	}
+
+if ($access{'minsize'}) {
+	# Show minimum password length, for just this user
+	print &ui_table_row($text{'edit_minsize'},
+		&ui_opt_textbox("minsize", $user{'minsize'}, 5,
+		      		$text{'default'})." ".$text{'edit_chars'});
 	}
 
 if ($access{'ips'}) {
@@ -290,59 +300,27 @@ print &ui_table_row(undef, &ui_links_row(\@links).
 			   &ui_links_row(\@links), 2);
 print &ui_hidden_table_end("mods");
 
-# XXX proper form end
-print "<table width=100%> <tr>\n";
-print "<td align=left width=16%><input type=submit value=\"$text{'save'}\"></td></form>\n";
+# Generate form end buttons
+@buts = ( );
+push(@buts, [ undef, $in{'user'} ? $text{'save'} : $text{'create'} ]);
 if ($in{'user'}) {
 	if (!$group) {
-		print "<form action=hide_form.cgi>\n";
-		print "<input type=hidden name=user value=\"$in{'user'}\">\n";
-		print "<td align=center width=16%>",
-		      "<input type=submit value=\"$text{'edit_hide'}\"></td></form>\n";
+		push(@buts, [ "but_hide", $text{'edit_hide'} ]);
 		}
-	else { print "<td width=16%></td>\n"; }
-
 	if ($access{'create'} && !$group) {
-		print "<form action=edit_user.cgi>\n";
-		print "<input type=hidden name=clone value=\"$in{'user'}\">\n";
-		print "<td align=center width=16%>",
-		      "<input type=submit value=\"$text{'edit_clone'}\">",
-		      "</td></form>\n";
+		push(@buts, [ "but_clone", $text{'edit_clone'} ]);
 		}
-	else { print "<td width=16%></td>\n"; }
-
-	&read_acl(\%acl);
-	if (&foreign_check("webminlog") &&
-	    $acl{$base_remote_user,'webminlog'}) {
-		print "<form action=/webminlog/search.cgi>\n";
-		print "<input type=hidden name=uall value=0>\n";
-		print "<input type=hidden name=user value='$in{'user'}'>\n";
-		print "<input type=hidden name=mall value=1>\n";
-		print "<input type=hidden name=tall value=0>\n";
-		print "<td align=center width=16%>",
-		      "<input type=submit value=\"$text{'edit_log'}\">",
-		      "</td></form>\n";
+	if (&foreign_available("webminlog")) {
+		push(@buts, [ "but_log", $text{'edit_log'} ]);
 		}
-	else { print "<td width=16%></td>\n"; }
-
 	if ($access{'switch'} && $main::session_id) {
-		print "<form action=switch.cgi>\n";
-		print "<input type=hidden name=user value=\"$in{'user'}\">\n";
-		print "<td align=center width=16%>",
-		      "<input type=submit value=\"$text{'edit_switch'}\">",
-		      "</td></form>\n";
+		push(@buts, [ "but_switch", $text{'edit_switch'} ]);
 		}
-	else { print "<td width=16%></td>\n"; }
-
 	if ($access{'delete'}) {
-		print "<form action=delete_user.cgi>\n";
-		print "<input type=hidden name=user value=\"$in{'user'}\">\n";
-		print "<td align=right width=16%>",
-		      "<input type=submit value=\"$text{'delete'}\"></td></form>\n";
+		push(@buts, [ "but_delete", $text{'delete'} ]);
 		}
-	else { print "<td width=16%></td>\n"; }
 	}
-print "</tr> </table>\n";
+print &ui_form_end(\@buts);
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -41,6 +41,7 @@ while(<PWFILE>) {
 			}
 		$user{'lastchange'} = $user[6];
 		$user{'olds'} = [ split(/\s+/, $user[7]) ];
+		$user{'minsize'} = $user[8];
 		$user{'modules'} = $acl{$user[0]};
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
@@ -52,6 +53,7 @@ while(<PWFILE>) {
 		$user{'ownmods'} = [ split(/\s+/,
 					   $gconfig{"ownmods_$user[0]"}) ];
 		$user{'logouttime'} = $logout{$user[0]};
+		$user{'real'} = $gconfig{"realname_$user[0]"};
 		push(@rv, \%user);
 		}
 	}
@@ -130,7 +132,8 @@ push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
 	 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
 	join(" ", @times),":",
 	$user{'lastchange'},":",
-	join(" ", @{$user{'olds'}}),
+	join(" ", @{$user{'olds'}}),":",
+	$user{'minsize'},
 	"\n");
 &close_tempfile(PWFILE);
 &unlock_file($miniserv{'userfile'});
@@ -159,6 +162,8 @@ delete($gconfig{"theme_".$user{'name'}});
 $gconfig{"theme_".$user{'name'}} = $user{'theme'} if (defined($user{'theme'}));
 $gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
 	if (defined($user{'readonly'}));
+$gconfig{"realname_".$user{'name'}} = $user{'real'}
+	if (defined($user{'real'}));
 &write_file("$config_directory/config", \%gconfig);
 
 if ($_[1]) {
@@ -208,15 +213,29 @@ open(PWFILE, $miniserv{'userfile'});
 close(PWFILE);
 &open_tempfile(PWFILE, ">$miniserv{'userfile'}");
 foreach (@pwfile) {
-	if (/^([^:]+):/ && $1 eq $_[0]) {
+	if (/^([^:]+):([^:]*):/ && $1 eq $_[0]) {
+		if ($2 ne $user{'pass'} && $user{'pass'} ne 'x' &&
+		    $user{'pass'} ne 'e' && $user{'pass'} ne '*LK*') {
+			# Password change detected .. update change time, and
+			# save the old one
+			unshift(@{$user{'olds'}}, $2);
+			if ($miniserv{'pass_oldblock'}) {
+				while(scalar(@{$user{'olds'}}) >
+				      $miniserv{'pass_oldblock'}) {
+					pop(@{$user{'olds'}});
+					}
+				}
+			$user{'lastchange'} = time();
+			}
 		&print_tempfile(PWFILE,
 			"$user{'name'}:$user{'pass'}:",
 			"$user{'sync'}:$user{'cert'}:",
 			($user{'allow'} ? "allow $user{'allow'}" :
 			 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
-			join(" ", @times),
+			join(" ", @times),":",
 			$user{'lastchange'},":",
-			join(" ", @{$user{'olds'}}),
+			join(" ", @{$user{'olds'}}),":",
+			$user{'minsize'},
 			"\n");
 		}
 	else {
@@ -261,6 +280,9 @@ $gconfig{"theme_".$user{'name'}} = $user{'theme'} if (defined($user{'theme'}));
 delete($gconfig{"readonly_".$_[0]});
 $gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
 	if (defined($user{'readonly'}));
+delete($gconfig{"realname_".$_[0]});
+$gconfig{"realname_".$user{'name'}} = $user{'real'}
+	if (defined($user{'real'}));
 &write_file("$config_directory/config", \%gconfig);
 
 if ($_[0] ne $user{'name'}) {
@@ -634,8 +656,8 @@ sub encrypt_password
 {
 local ($pass, $salt) = @_;
 if ($gconfig{'md5pass'}) {
-	$salt ||= substr(time(), -8);
-	return crypt($pass, '$1$'.$salt);
+	$salt ||= '$1$'.substr(time(), -8);
+	return crypt($pass, $salt);
 	}
 else {
 	&seed_random();
@@ -692,6 +714,70 @@ foreach my $g (&list_groups()) {
 		&modify_group($g->{'name'}, $g);
 		}
 	}
+}
+
+# check_password_restrictions(username, password)
+# Checks if some new password is valid for a user, and if not returns
+# an error message.
+sub check_password_restrictions
+{
+local ($name, $pass) = @_;
+local %miniserv;
+&get_miniserv_config(\%miniserv);
+local ($user) = grep { $_->{'name'} eq $name } &list_users();
+local $minsize = $user ? $user->{'minsize'} : undef;
+$minsize ||= $miniserv{'pass_minsize'};
+if (length($pass) < $minsize) {
+	return &text('cpass_minsize', $minsize);
+	}
+foreach my $re (split(/\t+/, $miniserv{'pass_regexps'})) {
+	if ($re =~ /^\!(.*)$/) {
+		$re = $1;
+		$pass !~ /$re/ || return $text{'cpass_notre'};
+		}
+	else {
+		$pass =~ /$re/ || return $text{'cpass_re'};
+		}
+	}
+if ($miniserv{'pass_nouser'}) {
+	$pass =~ /\Q$name\E/i && return $text{'cpass_name'};
+	}
+if ($miniserv{'pass_nodict'}) {
+	local $temp = &transname();
+	&open_tempfile(TEMP, ">$temp", 0, 1);
+	&print_tempfile(TEMP, $pass,"\n");
+	&close_tempfile(TEMP);
+	local $unknown;
+	if (&has_command("ispell")) {
+		open(SPELL, "ispell -a <$temp |");
+		while(<SPELL>) {
+			if (/^(#|\&|\?)/) {
+				$unknown++;
+				}
+			}
+		close(SPELL);
+		}
+	elsif (&has_command("spell")) {
+		open(SPELL, "spell <$temp |");
+		local $line = <SPELL>;
+		$unknown++ if ($line);
+		close(SPELL);
+		}
+	else {
+		return &text('cpass_spellcmd', "<tt>ispell</tt>",
+					       "<tt>spell</tt>");
+		}
+	$unknown || return $text{'cpass_dict'};
+	}
+if ($miniserv{'pass_oldblock'} && $user) {
+	local $c = 0;
+	foreach my $o (@{$user->{'olds'}}) {
+		local $enc = &encrypt_password($pass, $o);
+		$enc eq $o && return $text{'cpass_old'};
+		last if ($c++ > $miniserv{'pass_oldblock'});
+		}
+	}
+return undef;
 }
 
 1;
