@@ -39,6 +39,8 @@ while(<PWFILE>) {
 			$user{'hoursfrom'} = $1;
 			$user{'hoursto'} = $2;
 			}
+		$user{'lastchange'} = $user[6];
+		$user{'olds'} = [ split(/\s+/, $user[7]) ];
 		$user{'modules'} = $acl{$user[0]};
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
@@ -126,7 +128,9 @@ push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
 	"$user{'name'}:$user{'pass'}:$user{'sync'}:$user{'cert'}:",
 	($user{'allow'} ? "allow $user{'allow'}" :
 	 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
-	join(" ", @times),
+	join(" ", @times),":",
+	$user{'lastchange'},":",
+	join(" ", @{$user{'olds'}}),
 	"\n");
 &close_tempfile(PWFILE);
 &unlock_file($miniserv{'userfile'});
@@ -210,7 +214,10 @@ foreach (@pwfile) {
 			"$user{'sync'}:$user{'cert'}:",
 			($user{'allow'} ? "allow $user{'allow'}" :
 			 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
-			join(" ", @times),"\n");
+			join(" ", @times),
+			$user{'lastchange'},":",
+			join(" ", @{$user{'olds'}}),
+			"\n");
 		}
 	else {
 		&print_tempfile(PWFILE, $_);

@@ -185,6 +185,9 @@ if ($access{'rbacenable'}) {
 	push(@links, "edit_rbac.cgi");
 	push(@titles, $text{'index_rbac'});
 	}
+push(@icons, "images/pass.gif");
+push(@links, "edit_pass.cgi");
+push(@titles, $text{'pass_title'});
 
 if (@icons) {
 	print "<hr>\n";

@@ -164,6 +164,8 @@ $user{'cert'} = !$access{'chcert'} ? $old->{'cert'} :
 $user{'notabs'} = !$access{'cats'} ? $old->{'notabs'} : $in{'notabs'};
 $user{'logouttime'} = !$access{'logouttime'} ? $old->{'logouttime'} :
 			$in{'logouttime_def'} ? undef : $in{'logouttime'};
+$user{'lastchange'} = $old->{'lastchange'};
+$user{'olds'} = $old->{'olds'};
 $raddr = $ENV{'REMOTE_ADDR'};
 if ($access{'ips'}) {
 	if ($in{'ipmode'}) {

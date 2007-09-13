@@ -13,5 +13,6 @@ $config{'sync_unix'} = $in{'unix'};
 $config{'sync_group'} = $in{'group'};
 &write_file("$module_config_directory/config", \%config);
 &unlock_file("$module_config_directory/config");
+&webmin_log("sync");
 &redirect("");
 

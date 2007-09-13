@@ -52,7 +52,7 @@ elsif ($action eq 'switch') {
 	return &text('log_switch', "<tt>".&html_escape($object)."</tt>");
 	}
 else {
-	return undef;
+	return $text{'log_'.$action};
 	}
 }
 

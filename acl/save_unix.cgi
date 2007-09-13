@@ -75,5 +75,6 @@ if ($oldsudo != $in{'sudo'}) {
 else {
 	&reload_miniserv();
 	}
+&webmin_log("unix");
 &redirect("");
 

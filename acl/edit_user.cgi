@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # edit_user.cgi
 # Edit a new or existing webmin user
+# XXX break down into sections, ui-lib-ify
 
 require './acl-lib.pl';
 &foreign_require("webmin", "webmin-lib.pl");
@@ -44,26 +45,21 @@ if ($user{'readonly'} && !$in{'readwrite'}) {
 	exit;
 	}
 
-print "<form action=save_user.cgi method=post>\n";
+print &ui_form_start("save_user.cgi", "post");
 if ($in{'user'}) {
-	print "<input type=hidden name=old value=\"$user{'name'}\">\n";
-	print "<input type=hidden name=oldpass value=\"$user{'pass'}\">\n";
+	print &ui_hidden("old", $user{'name'});
+	print &ui_hidden("oldpass", $user{'pass'});
 	}
 if ($in{'clone'}) {
-	print "<input type=hidden name=clone value=\"$in{'clone'}\">\n";
+	print &ui_hidden("clone", $user{'clone'});
 	}
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_rights'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_hidden_table_start($text{'edit_rights'}, "width=100%", 2, "rights",
+			     1, [ "width=30%" ]);
 
-print "<tr> <td><b>$text{'edit_user'}</b></td>\n";
-if ($access{'rename'} || !$in{'user'}) {
-	print "<td><input name=name size=25 ",
-	      "value=\"$user{'name'}\"></td>\n";
-	}
-else {
-	print "<td>$user{'name'}</td>\n";
-	}
+# Username
+print &ui_table_row($text{'edit_user'},
+	$access{'rename'} || !$in{'user'} ?
+		&ui_textbox("name", $user{'name'}, 30) : $user{'name'});
 
 # Find and show parent group
 @glist = &list_groups();
@@ -72,21 +68,21 @@ else {
 		split(/\s+/, $access{'gassign'});
 map { $gcan{$_}++ } @mcan;
 if (@glist && %gcan && !$in{'risk'} && !$user{'risk'}) {
-	print "<td><b>$text{'edit_group'}</b></td>\n";
-	print "<td><select name=group>\n";
-	foreach $g (@glist) {
-		local $mem = &indexof($user{'name'}, @{$g->{'members'}}) >= 0;
-		next if (!$gcan{$g->{'name'}} && !$mem);
-		printf "<option %s>%s\n",
-			$mem ?  'selected' : '', $g->{'name'};
-		$group = $g if ($mem);
+	@opts = ( );
+	if ($gcan{'_none'}) {
+		push(@opts, [ undef, "&lt;$text{'edit_none'}&gt;" ]);
 		}
-	printf "<option value='' %s>&lt;%s&gt;\n",
-		$group ? '' : 'selected', $text{'edit_none'}
-			if ($gcan{'_none'});
-	print "</select></td>\n";
+	$memg = undef;
+	foreach $g (@glist) {
+		if (&indexof($user{'name'}, @{$g->{'members'}}) >= 0) {
+			$memg = $g->{'name'};
+			}
+		next if (!$gcan{$g->{'name'}} && $memg ne $g->{'name'});
+		push(@opts, [ $g->{'name'} ]);
+		}
+	print &ui_table_row($text{'edit_group'},
+		&ui_select("group", $memg, \@opts));
 	}
-print "</tr>\n";
 
 # Show password type menu and current password
 $passmode = !$in{'user'} ? 0 :
@@ -94,235 +90,207 @@ $passmode = !$in{'user'} ? 0 :
 	    $user{'sync'} ? 2 :
 	    $user{'pass'} eq 'e' ? 5 :
 	    $user{'pass'} eq '*LK*' ? 4 : 1;
-print "<tr> <td><b>$text{'edit_pass'}</b></td> <td colspan=3>\n";
-print "<select name=pass_def>\n";
-printf "<option value=0 %s> $text{'edit_set'} ..\n",
-	$passmode == 0 ? "selected" : "";
-if ($in{'user'}) {
-	printf "<option value=1 %s> %s\n",
-		$passmode == 1 ? "selected" : "", $text{'edit_dont'};
-	}
-printf "<option value=3 %s> $text{'edit_unix'}\n",
-	$passmode == 3 ? "selected" : "";
-if ($user{'sync'}) {
-	printf "<option value=2 %s> $text{'edit_same'}\n",
-		$passmode == 2 ? "selected" : "";
-	}
 &get_miniserv_config(\%miniserv);
+@opts = ( [ 0, "$text{'edit_set'} .." ] );
+if ($in{'user'}) {
+	push(@opts, [ 1, $text{'edit_dont'} ]);
+	}
+push(@opts, [ 3, $text{'edit_unix'} ]);
+if ($user{'sync'}) {
+	push(@opts, [ 2, $text{'edit_same'} ]);
+	}
 if ($miniserv{'extauth'}) {
-	printf "<option value=5 %s> $text{'edit_extauth'}\n",
-		$passmode == 5 ? "selected" : "";
+	push(@opts, [ 5, $text{'edit_extauth'} ]);
 	}
-printf "<option value=4 %s> $text{'edit_lock'}\n",
-	$passmode == 4 ? "selected" : "";
-print "</select><input type=password name=pass size=25>\n";
-if ($passmode == 1) {
-	# Show temporary lock option
-	print &ui_checkbox("lock", 1, $text{'edit_templock'},
-			   $user{'pass'} =~ /^\!/ ? 1 : 0);
+push(@opts, [ 4, $text{'edit_lock'} ]);
+print &ui_table_row($text{'edit_pass'},
+	&ui_select("passmode", $passmode, \@opts)." ".
+	&ui_password("pass", undef, 25)." ".
+	($passmode == 1 ? &ui_checkbox("lock", 1, $text{'edit_templock'},
+				       $user{'pass'} =~ /^\!/ ? 1 : 0) : ""));
+
+print &ui_hidden_table_end("rights");
+
+# Start of UI options section
+$showui = $access{'chcert'} || $access{'lang'} ||
+	  $access{'cats'} || $access{'theme'};
+if ($showui) {
+	print &ui_hidden_table_start($text{'edit_ui'}, "width=100%", 2, "ui",
+				     0, [ "width=30%" ]);
 	}
-print "</td> </tr>\n";
 
 if ($access{'chcert'}) {
 	# SSL certificate name
-	print "<tr> <td><b>$text{'edit_cert'}</b></td> <td colspan=3>\n";
-	print &ui_opt_textbox("cert", $user{'cert'}, 50, $text{'edit_none'}),
-	      "</td></tr>\n";
+	print &ui_table_row($text{'edit_cert'},
+		&ui_opt_textbox("cert", $user{'cert'}, 50, $text{'edit_none'}));
 	}
 
 if ($access{'lang'}) {
 	# Current language
-	print "<tr> <td><b>$text{'edit_lang'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=lang_def value=1 %s> %s\n",
-		$user{'lang'} ? '' : 'checked', $text{'default'};
-	printf "<input type=radio name=lang_def value=0 %s>\n",
-		$user{'lang'} ? 'checked' : '';
-	print "<select name=lang>\n";
-	foreach $l (&list_languages()) {
-		printf "<option value=%s %s>%s (%s)\n",
-			$l->{'lang'},
-			$user{'lang'} eq $l->{'lang'} ? 'selected' : '',
-			$l->{'desc'}, uc($l->{'lang'});
-		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'edit_lang'},
+		&ui_radio("lang_def", $user{'lang'} ? 0 : 1,
+		  [ [ 1, $text{'default'} ],
+		    [ 0, &ui_select("lang", $user->{'lang'},
+			    [ map { [ $_->{'lang'}, $_->{'desc'}." (".
+					uc($_->{'lang'}).")" ] }
+				  &list_languages() ]) ]
+		  ]));
 	}
 
 if ($access{'cats'}) {
 	# Show categorized modules?
-	print "<tr> <td><b>$text{'edit_notabs'}</b></td> <td colspan=2>\n";
-	printf "<input type=radio name=notabs value=1 %s> %s\n",
-		$user{'notabs'} == 1 ? 'checked' : '', $text{'yes'};
-	printf "<input type=radio name=notabs value=2 %s> %s\n",
-		$user{'notabs'} == 2 ? 'checked' : '', $text{'no'};
-	printf "<input type=radio name=notabs value=0 %s> %s</td> </tr>\n",
-		$user{'notabs'} == 0 ? 'checked' : '', $text{'default'};
-	}
-
-if ($access{'logouttime'}) {
-	# Show logout time
-	print "<tr> <td><b>$text{'edit_logout'}</b></td> <td colspan=2>\n";
-	print &ui_opt_textbox("logouttime", $user{'logouttime'}, 5,
-		      $text{'default'})," $text{'edit_mins'}</td> </tr>\n";
+	print &ui_table_row($text{'edit_notabs'},
+		&ui_radio("notabs", int($user{'notabs'}),
+			  [ [ 1, $text{'yes'} ],
+			    [ 2, $text{'no'} ],
+			    [ 0, $text{'default'} ] ]));
 	}
 
 if ($access{'theme'}) {
 	# Current theme
-	print "<tr> <td><b>$text{'edit_theme'}</b></td> <td colspan=2>\n";
-	printf "<input type=radio name=theme_def value=1 %s> %s\n",
-		defined($user{'theme'}) ? "" : "checked", $text{'edit_themeglobal'};
-	printf "<input type=radio name=theme_def value=0 %s>\n",
-		defined($user{'theme'}) ? "checked" : "";
-	print "<select name=theme>\n";
-	foreach $t ( { 'desc' => $text{'edit_themedef'} },
-		     &foreign_call("webmin", "list_themes")) {
-		printf "<option value='%s' %s>%s\n",
-		  $t->{'dir'}, $user{'theme'} eq $t->{'dir'} ? 'selected' : '',
-		  $t->{'desc'};
+	@topts = ( );
+	push(@topts, [ "", $text{'edit_themedef'} ]);
+	foreach $t (&webmin::list_themes()) {
+		push(@topts, [ $t->{'dir'}, $t->{'desc'} ]);
 		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'edit_theme'},
+		&ui_radio("theme_def", defined($user{'theme'}) ? 0 : 1,
+		  [ [ 1, $text{'edit_themeglobal'} ],
+		    [ 0, &ui_select("theme", $user{'theme'}, \@topts) ] ]));
+	}
+
+if ($showui) {
+	print &ui_hidden_table_end("ui");
+	}
+
+# Start of security options section
+$showsecurity = $access{'logouttime'} || $access{'ips'} ||
+		&supports_rbac() && $access{'mode'} == 0 || $access{'times'};
+if ($showsecurity) {
+	print &ui_hidden_table_start($text{'edit_security'}, "width=100%", 2,
+				     "security", 0, [ "width=30%" ]);
+	}
+
+if ($access{'logouttime'}) {
+	# Show logout time
+	print &ui_table_row($text{'edit_logout'},
+		&ui_opt_textbox("logouttime", $user{'logouttime'}, 5,
+		      		$text{'default'})." ".$text{'edit_mins'});
 	}
 
 if ($access{'ips'}) {
 	# Allowed IP addresses
-	print "<tr> <td>",&hlink("<b>$text{'edit_ips'}</b>", "ips"),"</td>\n";
-	print "<td colspan=3><table><tr>\n";
-	printf "<td nowrap><input name=ipmode type=radio value=0 %s> %s<br>\n",
-		$user{'allow'} || $user{'deny'} ? '' : 'checked',
-		$text{'edit_all'};
-	printf "<input name=ipmode type=radio value=1 %s> %s<br>\n",
-		$user{'allow'} ? 'checked' : '', $text{'edit_allow'};
-	printf "<input name=ipmode type=radio value=2 %s> %s</td> <td>\n",
-		$user{'deny'} ? 'checked' : '', $text{'edit_deny'};
-	print "<textarea name=ips rows=4 cols=30>",
-	      join("\n", split(/\s+/, $user{'allow'} ? $user{'allow'}
-						     : $user{'deny'})),
-	      "</textarea></td>\n";
-	print "</td></tr></table> </tr>\n";
+	print &ui_table_row(&hlink("<b>$text{'edit_ips'}</b>", "ips"),
+		&ui_radio("ipmode", $user{'allow'} ? 1 :
+				    $user{'deny'} ? 2 : 0,
+			  [ [ 0, $text{'edit_all'}."<br>" ],
+			    [ 1, $text{'edit_allow'}."<br>" ],
+			    [ 1, $text{'edit_deny'}."<br>" ] ]).
+		&ui_textarea("ips",
+		    join("\n", split(/\s+/, $user{'allow'} ? $user{'allow'}
+						           : $user{'deny'})),
+		    4, 30));
 	}
 
 if (&supports_rbac() && $access{'mode'} == 0) {
 	# Deny access to modules not managed by RBAC?
-	print "<tr> <td><b>$text{'edit_rbacdeny'}</b></td> <td colspan=3>\n";
-	print &ui_radio("rbacdeny", $user{'rbacdeny'} ? 1 : 0,
-			[ [ 0, $text{'edit_rbacdeny0'} ],
-			  [ 1, $text{'edit_rbacdeny1'} ] ]); 
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'edit_rbacdeny'},
+		&ui_radio("rbacdeny", $user{'rbacdeny'} ? 1 : 0,
+			  [ [ 0, $text{'edit_rbacdeny0'} ],
+			    [ 1, $text{'edit_rbacdeny1'} ] ]));
 	}
 
 if ($access{'times'}) {
 	# Show allowed days of the week
 	%days = map { $_, 1 } split(/,/, $user{'days'});
-	print "<tr> <td valign=top><b>$text{'edit_days'}</b></td>\n";
-	print "<td colspan=3>\n";
-	print &ui_radio("days_def", $user{'days'} eq '' ? 1 : 0,
-			[ [ 1, $text{'edit_alldays'} ],
-			  [ 0, $text{'edit_seldays'} ] ]),"<br>\n";
+	$daysels = "";
 	for(my $i=0; $i<7; $i++) {
-		print &ui_checkbox("days", $i, $text{'day_'.$i}, $days{$i});
+		$daysels .= &ui_checkbox("days", $i, $text{'day_'.$i},
+					 $days{$i});
 		}
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'edit_days'},
+		&ui_radio("days_def", $user{'days'} eq '' ? 1 : 0,
+			  [ [ 1, $text{'edit_alldays'} ],
+			    [ 0, $text{'edit_seldays'} ] ])."<br>".
+		$daysels);
 
 	# Show allow hour/minute range
 	($hf, $mf) = split(/\./, $user{'hoursfrom'});
 	($ht, $mt) = split(/\./, $user{'hoursto'});
-	print "<tr> <td valign=top><b>$text{'edit_hours'}</b></td>\n";
-	print "<td colspan=3>\n";
-	print &ui_radio("hours_def", $user{'hoursfrom'} eq '' ? 1 : 0,
-		[ [ 1, $text{'edit_allhours'} ],
-		  [ 0, &text('edit_selhours',
-			&ui_textbox("hours_hfrom", $hf, 2),
-			&ui_textbox("hours_mfrom", $mf, 2),
-			&ui_textbox("hours_hto", $ht, 2),
-			&ui_textbox("hours_mto", $mt, 2)) ] ]);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'edit_hours'},
+		&ui_radio("hours_def", $user{'hoursfrom'} eq '' ? 1 : 0,
+			[ [ 1, $text{'edit_allhours'} ],
+		  	  [ 0, &text('edit_selhours',
+				&ui_textbox("hours_hfrom", $hf, 2),
+				&ui_textbox("hours_mfrom", $mf, 2),
+				&ui_textbox("hours_hto", $ht, 2),
+				&ui_textbox("hours_mto", $mt, 2)) ] ]));
 	}
 
-if ($user{'risk'} || $in{'risk'}) {
-	# Creating or editing a risk-level user
-	print "<tr> <td><b>$text{'edit_risk'}</b></td> <td colspan=3>\n";
-	foreach $s ('high', 'medium', 'low') {
-		printf "<input type=radio name=risk value='%s' %s> %s\n",
-		    $s, $user{'risk'} eq $s ? 'checked' : '',
-		    $text{"edit_risk_$s"};
-		}
-	print "</td> </tr>\n";
+print &ui_hidden_table_end("security");
 
-	print "<tr> <td><b>$text{'edit_skill'}</b></td> <td colspan=3>\n";
-	foreach $s ('high', 'medium', 'low') {
-		printf "<input type=radio name=skill value='%s' %s> %s\n",
-		    $s, $user{'skill'} eq $s ? 'checked' : '',
-		    $text{"skill_$s"};
-		}
-	print "</td> </tr>\n";
-	}
-else {
-	# Creating or editing a normal user
-	@mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
-		$access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
-				       &list_modules();
-	map { $mcan{$_}++ } @mcan;
-	map { $has{$_}++ } @{$user{'modules'}};
-	map { $has{$_} = 0 } $group ? @{$group->{'modules'}} : ();
+# Work out which modules can be selected
+@mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
+	$access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
+			       &list_modules();
+map { $mcan{$_}++ } @mcan;
+map { $has{$_}++ } @{$user{'modules'}};
+map { $has{$_} = 0 } $group ? @{$group->{'modules'}} : ();
 
-	# Show all modules, under categories
-	@mlist = grep { $access{'others'} || $has{$_->{'dir'}} || $mcan{$_->{'dir'}} } &list_module_infos();
-	print "<tr> <td valign=top><b>$text{'edit_modules'}</b><br>",
-	      "$text{'edit_groupmods'}</td>\n";
-	print "<td colspan=3>\n";
-	print &select_all_link("mod", 0, $text{'edit_selall'}),"&nbsp;\n";
-	print &select_invert_link("mod", 0, $text{'edit_invert'}),"<br>\n";
-	@cats = &unique(map { $_->{'category'} } @mlist);
-	&read_file("$config_directory/webmin.catnames", \%catnames);
-	print "<table width=100% cellpadding=0 cellspacing=0>\n";
-	foreach $c (sort { $b cmp $a } @cats) {
-		@cmlist = grep { $_->{'category'} eq $c } @mlist;
-		print "<tr> <td colspan=2 $tb><b>",
-			$catnames{$c} || $text{'category_'.$c},
-			"</b></td> </tr>\n";
-		$sw = 0;
-		foreach $m (@cmlist) {
-			local $md = $m->{'dir'};
-			if (!$sw) { print "<tr>\n"; }
-			print "<td width=50%>";
-			if ($mcan{$md}) {
-				printf"<input type=checkbox name=mod value=$md %s>\n",
-				      $has{$md} ? "checked" : "";
-				if ($access{'acl'} && $in{'user'}) {
-					# Show link for editing ACL
-					printf "<a href='edit_acl.cgi?mod=%s&%s=%s'>".
-					       "%s</a>\n",
-						&urlize($m->{'dir'}),
-						"user", &urlize($in{'user'}),
-						$m->{'desc'};
-					}
-				else {
-					print "$m->{'desc'}\n";
-					}
+# Start of modules section
+print &ui_hidden_table_start(@groups ? $text{'edit_modsg'} : $text{'edit_mods'},
+			     "width=100%", 2, "mods", 1, [ "width=30%" ]);
+
+# Show all modules, under categories
+@mlist = grep { $access{'others'} || $has{$_->{'dir'}} || $mcan{$_->{'dir'}} }
+	      &list_module_infos();
+@links = ( &select_all_link("mod", 0, $text{'edit_selall'}),
+	   &select_invert_link("mod", 0, $text{'edit_invert'}) );
+@cats = &unique(map { $_->{'category'} } @mlist);
+&read_file("$config_directory/webmin.catnames", \%catnames);
+$grids = "";
+foreach $c (sort { $b cmp $a } @cats) {
+	@cmlist = grep { $_->{'category'} eq $c } @mlist;
+	$grids .= "<b>".($catnames{$c} || $text{'category_'.$c})."</b><br>\n";
+	@grid = ( );
+	$sw = 0;
+	foreach $m (@cmlist) {
+		local $md = $m->{'dir'};
+		if ($mcan{$md}) {
+			$label = "";
+			if ($access{'acl'} && $in{'user'}) {
+				# Show link for editing ACL
+				$label = sprintf "<a href='edit_acl.cgi?".
+						 "mod=%s&%s=%s'>%s</a>\n",
+					&urlize($m->{'dir'}),
+					"user", &urlize($in{'user'}),
+					$m->{'desc'};
 				}
 			else {
-				printf "<img src=images/%s.gif> %s\n",
-				    $has{$md} ? 'tick' : 'empty', $m->{'desc'};
+				$label = $m->{'desc'};
 				}
-			print "</td>";
-			if ($sw) { print "<tr>\n"; }
-			$sw = !$sw;
+			push(@grid, &ui_checkbox("mod", $md, $label,$has{$md}));
+			}
+		else {
+			push(@grids, sprintf "<img src=images/%s.gif> %s\n",
+				$has{$md} ? 'tick' : 'empty', $m->{'desc'});
 			}
 		}
-	if ($access{'acl'}) {
-		print "<tr> <td colspan=2 $tb><b>",
-		      $text{'edit_special'},"</b></td> </tr>\n";
-		print "<tr>\n";
-		print "<td><a href='edit_acl.cgi?mod=&user=",&urlize($in{'user'}),
-		      "'>",$text{'index_global'},"</a></td>\n";
-		print "</tr>\n";
-		}
-	print "</table>\n";
-	print &select_all_link("mod", 0, $text{'edit_selall'}),"&nbsp;\n";
-	print &select_invert_link("mod", 0, $text{'edit_invert'}),"\n";
-	print "</td> </tr>\n";
+	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
 	}
-print "</table></td> </tr></table>\n";
+if ($access{'acl'}) {
+	$grids .= "<b>$text{'edit_special'}</b><br>\n";
+	@grid = ( "<img src=images/empty.gif> ".
+		  "<a href='edit_acl.cgi?mod=&user=".&urlize($in{'user'}).
+		  "'>".$text{'index_global'}."</a>" );
+	$grids .= &ui_grid_table(\@grid, 2, 100);
+	}
+print &ui_table_row(undef, &ui_links_row(\@links).
+			   $grids.
+			   &ui_links_row(\@links), 2);
+print &ui_hidden_table_end("mods");
 
+# XXX proper form end
 print "<table width=100%> <tr>\n";
 print "<td align=left width=16%><input type=submit value=\"$text{'save'}\"></td></form>\n";
 if ($in{'user'}) {
