@@ -354,3 +354,4 @@ Added support for migrating domains from Plesk 8 backups.
 The migration function will use the username and password from the original domain where possible, removing the need to specify them manually when on the migration form or as parameters to migrate-domain.pl. For Plesk backups the original username and password can be retrieved, while for Ensim and cPanel only the username can be found automatically.
 When editing mail and FTP users, the simple alias editing for from Virtualmin Pro is now available.
 Added an option to the Create alias websites by setting in server templates to use RedirectMatch instead of Redirect, which is more Google-friendly for parked domains.
+Ported the feature to change a domain's MySQL password separately from the administration password from Virtualmin GPL.
