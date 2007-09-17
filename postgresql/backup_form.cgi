@@ -93,7 +93,7 @@ if ($cron) {
 
 		if ($in{'all'}) {
 			# Command mode option
-			$a = $c{'backup_cmode_'.$in{'db'}};
+			$cmode = $c{'backup_cmode_'.$in{'db'}};
 			print "<tr> <td><b>$text{'backup_cmode'}</b></td>\n";
 			print "<td>",&ui_radio("cmode", int($cmode),
 				[ [ 0, $text{'backup_cmode0'} ],
