@@ -1,0 +1,12 @@
+line1=설정 옵션,11
+test_config=변경 적용전에 설정 파일 테스트를 하겠습니까?,1,1-예,0-아니오
+test_manual=수동 변경 후에 설정 파일 테스트를 하겠습니까?,1,1-예,0-아니오
+test_always=변경 사항이 있을 경우 설정 파일 테스트를 하겠습니까?,1,1-예,0-아니오
+line2=시스템 설정,11
+proftpd_conf=ProFTPD 설정 파일 경로,0
+add_file=파일에 신규 가상 호스트 추가,3,설정파일 마지막
+proftpd_path=ProFTPD 실행파일 경로,0
+pid_file=ProFTPD PID 파일 경로,3,없음
+ftpusers=ftpusers 파일 경로,0
+start_cmd=ProFTPD 시작 명령,3,자동
+stop_cmd=ProFTPD 정지 명령,3,프로세스 죽임만

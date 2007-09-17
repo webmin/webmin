@@ -10,3 +10,4 @@ longdesc=Edit recipes in the global /etc/procmailrc file, which apply to all inc
 desc_fr=Filtre de courrier Procmail
 os_support=!windows
 desc_it=Filtro Procmail per la posta
+desc_ko_KR.euc=Procmail 메일 필터
