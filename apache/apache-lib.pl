@@ -17,15 +17,19 @@ else {
 map { $access_types{$_}++ } @access_types;
 $site_file = ($config{'webmin_apache'} || $module_config_directory)."/site";
 
-# Check if a list of supported modules needs to be built
+# Check if a list of supported modules needs to be built. This is done
+# if the Apache binary changes, when Webmin is upgraded, or once every five
+# minutes if automatic rebuilding is enabled.
 if ($module_name ne 'htaccess') {
 	local %oldsite;
 	local $httpd = &find_httpd();
 	local @st = stat($httpd);
 	&read_file($site_file, \%oldsite);
+	local @sst = stat($site_file);
 	if ($oldsite{'path'} ne $httpd ||
 	    $oldsite{'size'} != $st[7] ||
-	    $oldsite{'webmin'} != &get_webmin_version()) {
+	    $oldsite{'webmin'} != &get_webmin_version() ||
+	    $config{'auto_mods'} && $sst[9] < time()-5*60) {
 		# Need to build list of supported modules
 		local ($ver, $mods) = &httpd_info($httpd);
 		if ($ver) {
@@ -919,9 +923,11 @@ for($i=0; $text{"type_$i"}; $i++) {
 		}
 	}
 for($i=2; $i<@_; $i++) {
-	push(@links, $_[$i]->{'link'});
-	push(@titles, $_[$i]->{'name'});
-	push(@icons, $_[$i]->{'icon'});
+	if ($_[$i]) {
+		push(@links, $_[$i]->{'link'});
+		push(@titles, $_[$i]->{'name'});
+		push(@icons, $_[$i]->{'icon'});
+		}
 	}
 &icons_table(\@links, \@titles, \@icons, 5);
 print "<p>\n";

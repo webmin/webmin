@@ -235,16 +235,16 @@ if ($access{'global'}) {
 		$ht_icon = { "icon" => "images/dir.gif",
 			     "name" => $text{'htaccess_title'},
 			     "link" => "htaccess.cgi" };
-		if (!&can_configure_apache_modules()) {
+		if (&can_configure_apache_modules()) {
+			$rc_icon = { "icon" => "images/mods.gif",
+				     "name" => $text{'mods_title'},
+				     "link" => "edit_mods.cgi" };
+			}
+		elsif (!$config{'auto_mods'}) {
 			$rc_icon = { "icon" => "images/recon.gif",
 				     "name" => $text{'reconfig_title'},
 				     "link" =>
 				"reconfig_form.cgi?size=$httpd_size&vol=1" };
-			}
-		else {
-			$rc_icon = { "icon" => "images/mods.gif",
-				     "name" => $text{'mods_title'},
-				     "link" => "edit_mods.cgi" };
 			}
 		$df_icon = { "icon" => "images/defines.gif",
 			     "name" => $text{'defines_title'},

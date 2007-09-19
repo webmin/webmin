@@ -15,3 +15,4 @@ test_always=0
 test_apachectl=1
 defines_file=/etc/sysconfig/daemons/httpd
 defines_name=OPTIONS
+auto_mods=1

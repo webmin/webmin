@@ -17,3 +17,4 @@ virt_file=/etc/apache2/vhosts.d
 pid_file=/var/run/httpd2.pid
 defines_file=/etc/sysconfig/apache2
 defines_name=APACHE_SERVER_FLAGS
+auto_mods=1

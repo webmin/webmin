@@ -15,3 +15,4 @@ test_always=0
 test_apachectl=1
 apachectl_path=/usr/sbin/apachectl
 virt_file=/etc/apache2/vhosts.d
+auto_mods=1

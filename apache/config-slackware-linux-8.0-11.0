@@ -15,3 +15,4 @@ apachectl_path=/usr/sbin/apachectl
 test_manual=0
 test_always=0
 test_apachectl=1
+auto_mods=1

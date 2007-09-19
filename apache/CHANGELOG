@@ -33,3 +33,5 @@ Added tabs to break the module's main page down into more readable sections.
 Changed all code to use ui-lib.pl functions, for better themeing.
 ---- Changes since 1.350 ----
 On Debian and Ubuntu systems, replaced the existing pages for selecting Apache modules with one that that configures the /etc/apache2/mods-enabled directory, for much simpler and more workable control over modules.
+---- Changes since 1.360 ----
+Available Apache modules are now fully automatically detected on all operating systems, which does away with the Re-Configure Known Modules page.
