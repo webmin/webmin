@@ -23,9 +23,7 @@ foreach $m (@mods) {
 	}
 
 # Force re-detection of modules
-if ($changed) {
-	unlink($site_file);
-	}
+unlink($site_file);
 
 # Force restart Apache
 if ($changed && &is_apache_running()) {
