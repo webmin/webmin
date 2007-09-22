@@ -40,6 +40,7 @@ if ($in{'enable'}) {
 			$count++;
 			}
 		}
+	&webmin_log("enable", "logs", $count);
 	}
 else {
 	# Cancel cron jobs for selected
