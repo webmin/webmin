@@ -44,7 +44,11 @@ print "<hr>\n";
 
 sub process{
 	&foreign_require("webmin", "webmin-lib.pl");
-	&webmin::setup_ca();
+	local %miniserv;
+	&get_miniserv_config(\%miniserv);
+	if (!$miniserv{'ca'}) {
+		&webmin::setup_ca();
+		}
 	if ((-e $in{'signfile'})&&($in{'overwrite'} ne "yes")) {
 		&overwriteprompt();
 		print "<hr>\n";
