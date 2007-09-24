@@ -1857,9 +1857,22 @@ do {
 	} while(-r $mf);
 &send_mail($_[0], $mf, $_[2], 1);
 
+# Set ownership of the new message file to match the directory
+local @st = stat($_[1]);
+if ($< == 0) {
+	&set_ownership_permissions($st[4], $st[5], undef, $mf);
+	}
+
 # Create tmp and new sub-dirs, if missing
 foreach my $sd ("tmp", "new") {
-	mkdir("$_[1]/$sd", 0755);
+	local $sdpath = "$_[1]/$sd";
+	if (!-d $sdpath) {
+		mkdir($sdpath, 0755);
+		if ($< == 0) {
+			&set_ownership_permissions($st[4], $st[5],
+						   undef, $sdpath);
+			}
+		}
 	}
 
 if ($up2date && $cachefile) {

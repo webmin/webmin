@@ -1450,7 +1450,11 @@ elsif ($_[1]->{'type'} == 3) {
 	# Create a new MH file. ID is just the new message number
 	local $num = &max_mhdir($_[1]->{'file'}) + 1;
 	local $md = $_[1]->{'file'};
+	local @st = stat($_[1]->{'file'});
 	&send_mail($_[0], "$md/$num", $_[2], 1);
+	if ($< == 0) {
+		&set_ownership_permissions($st[4], $st[5], undef, "$md/$num");
+		}
 	$_[0]->{'id'} = $num;
 	}
 elsif ($_[1]->{'type'} == 0) {
