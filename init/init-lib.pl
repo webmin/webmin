@@ -643,8 +643,12 @@ elsif ($init_mode eq "rc") {
 		&print_tempfile(SCRIPT, "name=$name\n");
 		&print_tempfile(SCRIPT, "rcvar=`set_rcvar`\n");
 		&print_tempfile(SCRIPT, "start_cmd=\"$_[2]\"\n");
-		&print_tempfile(SCRIPT, "stop_cmd=\"$_[3]\"\n") if ($_[3]);
-		&print_tempfile(SCRIPT, "status_cmd=\"$_[4]\"\n") if ($_[4]);
+		if ($_[3]) {
+			&print_tempfile(SCRIPT, "stop_cmd=\"$_[3]\"\n")
+			}
+		if ($_[4] && $_[4] !~ /\n/) {
+			&print_tempfile(SCRIPT, "status_cmd=\"$_[4]\"\n")
+			}
 		&print_tempfile(SCRIPT, "\n");
 		&print_tempfile(SCRIPT, "load_rc_config \${name}\n");
 		&print_tempfile(SCRIPT, "run_rc_command \"\$1\"\n");
