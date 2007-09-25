@@ -194,19 +194,25 @@ sub set_current_value
 	# postfix will handle it correctly if I remove the line in `main.cf'
 	my $all_lines = &read_file_lines($config{'postfix_config_file'});
 	my $line_of_parameter = -1;
+	my $end_line_of_parameter = -1;
 	my $i = 0;
 
 	foreach (@{$all_lines})
 	{
-	    if (/^\s*$_[0]\s*=/)
-	    {
+	    if (/^\s*$_[0]\s*=/) {
 		$line_of_parameter = $i;
+		$end_line_of_parameter = $i;
+	    } elsif ($line_of_parameter >= 0 &&
+		     /^\t+\S/) {
+		# Multi-line continuation
+		$end_line_of_parameter = $i;
 	    }
 	    $i++;
 	}
 
 	if ($line_of_parameter != -1) {
-	    splice(@{$all_lines}, $line_of_parameter, 1);
+	    splice(@{$all_lines}, $line_of_parameter,
+		   $end_line_of_parameter - $line_of_parameter + 1);
 	    &flush_file_lines($config{'postfix_config_file'});
 	} else {
 	    &unflush_file_lines($config{'postfix_config_file'});
