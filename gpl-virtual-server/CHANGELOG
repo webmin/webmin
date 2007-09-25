@@ -355,3 +355,5 @@ The migration function will use the username and password from the original doma
 When editing mail and FTP users, the simple alias editing for from Virtualmin Pro is now available.
 Added an option to the Create alias websites by setting in server templates to use RedirectMatch instead of Redirect, which is more Google-friendly for parked domains.
 Ported the feature to change a domain's MySQL password separately from the administration password from Virtualmin GPL.
+Plugin modules can now define additional sections to appear on the right-hand side of the framed theme, and new global options to appear in the System Settings categories on the left.
+The default number of alias servers that new virtual server owners can create can now be set on the Server Templates page.
