@@ -44,7 +44,7 @@ if (!$config{'direct'} && &foreign_check("init")) {
 
 # Check if the save file exists. If not, check for any existing firewall
 # rules, and offer to create a save file from them
-@livetables = &get_iptables_save("iptables-save |");
+@livetables = &get_iptables_save("iptables-save 2>/dev/null |");
 &shorewall_message(\@livetables);
 if (!$config{'direct'} &&
     (!-s $iptables_save_file || $in{'reset'}) && $access{'setup'}) {
@@ -75,7 +75,7 @@ if (!$config{'direct'} &&
 		print "<table border width=100%>\n";
 		print "<tr $tb><td><b>$text{'index_headerex'}</b></td></tr>\n";
 		print "<tr $cb> <td><pre>";
-		open(OUT, "iptables-save |");
+		open(OUT, "iptables-save 2>/dev/null |");
 		while(<OUT>) {
 			print &html_escape($_);
 			}
@@ -117,7 +117,7 @@ else {
 		foreach $t (@known_tables) {
 			if (!$hastable{$t}) {
 				local ($missing) = &get_iptables_save(
-						"iptables-save --table $t |");
+				    "iptables-save --table $t 2>/dev/null |");
 				if ($missing) {
 					delete($missing->{'line'});
 					&save_table($missing);
