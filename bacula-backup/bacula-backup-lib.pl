@@ -1532,5 +1532,22 @@ if ($str =~ /^(\d{4})\-(\d\d)\-(\d\d)\s+(\d\d):(\d\d):(\d\d)$/) {
 return undef;
 }
 
+# extract_schedule(run)
+# Given a schedule Run string like Level=Full Pool=Monthly 1st sat at 03:05, 
+# returns a hash ref of the tags and the schedule.
+sub extract_schedule
+{
+local ($run) = @_;
+local $tags;
+while($run =~ s/^(\S+)=(\S+)\s+//) {
+	$tags{$1} = $2;
+	}
+if (!$tags{'Level'}) {
+	$run =~ s/^(\S+)\s+//;
+	$tags{'Level'} = $1;
+	}
+return ( \%tags, $run );
+}
+
 1;
 

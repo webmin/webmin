@@ -40,7 +40,9 @@ else {
 		next if (!$level);
 		$times = $in{"times_$i"};
 		$times =~ /\S/ || &error(&text('schedule_etimes', $i+1));
-		push(@runs, "$level $times");
+		push(@runs, "Level=$level ".
+			    ($in{"pool_$i"} ? "Pool=".$in{"pool_$i"}." " : "").
+			    $times);
 		}
 	&save_directives($conf, $schedule, "Run", \@runs, 1);
 

@@ -172,6 +172,7 @@ schedule_header=Backup schedule details
 schedule_name=Backup schedule name
 schedule_runs=Run levels and times
 schedule_level=Backup level
+schedule_pool=Volume
 schedule_times=Run at times
 schedule_err=Failed to save backup schedule
 schedule_ename=Missing or invalid schedule name

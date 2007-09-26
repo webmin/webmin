@@ -29,20 +29,31 @@ print &ui_table_row($text{'schedule_name'},
 
 # Run files
 @runs = &find_value("Run", $schedule->{'members'});
+@pools = &find("Pool", $conf);
+&sort_by_name(\@pools);
 $rtable = &ui_columns_start([ $text{'schedule_level'},
+			      $text{'schedule_pool'},
 			      $text{'schedule_times'} ], "width=100%");
 $i = 0;
 foreach $r (@runs, undef, undef, undef) {
-	($level, $times) = split(/\s+/, $r, 2);
-	$level =~ s/^Level\s*=\s*//;
-	$sched = &parse_schedule($times);
+	# Parse out the level and pool
+	$tags = { };
+	if ($r) {
+		($tags, $r) = &extract_schedule($r);
+		}
+	$sched = &parse_schedule($r);
 	$rtable .= &ui_columns_row([
-		&ui_select("level_$i", $level,
+		&ui_select("level_$i", $tags->{'Level'},
 			   [ [ "", "&nbsp;" ], [ "Full" ],
 			     [ "Incremental" ], [ "Differential" ] ],
 			   1, 0, 1),
-		&ui_textbox("times_$i", $times,
-			    $sched || !$r ? "40 readonly" : 40)." ".
+		&ui_select("pool_$i", $tags->{'Pool'},
+			   [ [ "", "&lt;$text{'default'}&gt;" ],
+			     map { my $pn = &find_value("Name",
+					$_->{'members'}); [ $pn ] } @pools ],
+			   1, 0, 1),
+		&ui_textbox("times_$i", $r, 50, 0, undef,
+			    $sched || !$r ? "readonly" : "")." ".
 		&schedule_chooser_button("times_$i") ]);
 	$i++;
 	}
