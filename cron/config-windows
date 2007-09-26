@@ -9,3 +9,4 @@ match_user=1
 kill_subs=0
 single_file=c:/cronw/crontab.txt
 show_comment=0
+hourly_only=0

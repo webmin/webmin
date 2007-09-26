@@ -688,17 +688,19 @@ foreach $arr ("mins", "hours", "days", "months", "weekdays") {
 
 	# Output selection list
 	print "<td valign=top>\n";
-	printf "<input type=radio name=all_$arr value=1 %s> $text{'edit_all'}<br>\n",
+        printf "<input type=radio name=all_$arr value=1 %s %s> $text{'edit_all'}<br>\n",
+                $arr eq "mins" && $config{'hourly_only'} ? "disabled" : "",
 		$job->{$arr} eq "*" ? "checked" : "";
 	printf "<input type=radio name=all_$arr value=0 %s> $text{'edit_selected'}<br>\n",
 		$job->{$arr} ne "*" ? "checked" : "";
 	print "<table> <tr>\n";
-	for($j=0; $j<@$arr; $j+=12) {
-		$jj = $j+11;
+        for($j=0; $j<@$arr; $j+=($arr eq "mins" && $config{'hourly_only'} ? 60 : 12)) {
+                $jj = $j+($arr eq "mins" && $config{'hourly_only'} ? 59 : 11);
 		if ($jj >= @$arr) { $jj = @$arr - 1; }
 		@sec = @$arr[$j .. $jj];
-		printf "<td valign=top><select multiple size=%d name=$arr>\n",
-			@sec > 12 ? 12 : scalar(@sec);
+                printf "<td valign=top><select %s size=%d name=$arr>\n",
+                        $arr eq "mins" && $config{'hourly_only'} ? "" : "multiple",
+                        @sec > 12 ? ($arr eq "mins" && $config{'hourly_only'} ? 1 : 12) : scalar(@sec);
 		foreach $v (@sec) {
 			if ($v =~ /^(.*)=(.*)$/) { $disp = $1; $code = $2; }
 			else { $disp = $code = $v; }

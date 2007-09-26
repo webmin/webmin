@@ -19,3 +19,4 @@ match_mode=0
 match_user=1
 kill_subs=0
 show_comment=0
+hourly_only=0
