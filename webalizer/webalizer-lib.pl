@@ -179,6 +179,7 @@ if ($lconf->{'over'} && !&is_readonly_mode()) {
 	unlink("$lconf->{'dir'}/webalizer.current");
 	unlink("$lconf->{'dir'}/webalizer.hist");
 	}
+unlink("$lconfig->{'dir'}/__db.dns_cache.db");
 local $user = $lconf->{'user'} || "root";
 if ($user ne "root" && -r $cfile) {
 	chmod(0644, $cfile);
