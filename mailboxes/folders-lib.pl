@@ -167,13 +167,13 @@ elsif ($_[2]->{'type'} == 4) {
 	if ($_[3]) {
 		# Just the headers
 		@rv = &imap_command($h,
-			sprintf "FETCH %d:%d (RFC822.SIZE UID RFC822.HEADER)",
+			sprintf "FETCH %d:%d (RFC822.SIZE UID FLAGS RFC822.HEADER)",
 				$start+1, $end+1);
 		}
 	else {
 		# Whole messages
 		@rv = &imap_command($h,
-			sprintf "FETCH %d:%d (UID RFC822)", $start+1, $end+1);
+			sprintf "FETCH %d:%d (UID FLAGS RFC822)", $start+1, $end+1);
 		}
 
 	# Parse the headers or whole messages that came back
@@ -435,8 +435,8 @@ elsif ($folder->{'type'} == 4) {
 	# Fetch each mail by ID. This is done in blocks of 1000, to avoid
 	# hitting a the IMAP server's max request limit
 	local @rv = map { undef } @$ids;
-	local $wanted = $headersonly ? "(RFC822.SIZE UID RFC822.HEADER)"
-				     : "(UID RFC822)";
+	local $wanted = $headersonly ? "(RFC822.SIZE UID FLAGS RFC822.HEADER)"
+				     : "(UID FLAGS RFC822)";
 	if (@$ids) {
 		for(my $chunk=0; $chunk<@$ids; $chunk+=1000) {
 			local $chunkend = $chunk+999;
@@ -1606,6 +1606,38 @@ elsif ($_[0]->{'type'} == 6 && $_[1]) {
 	}
 }
 
+# mailbox_set_read_flags(&folder, &mail, read, special, replied)
+# Updates the status flags on some message
+sub mailbox_set_read_flag
+{
+local ($folder, $mail, $read, $special, $replied) = @_;
+if ($folder->{'type'} == 4) {
+	# Set flags on IMAP server
+	local @rv = &imap_login($folder);
+	if ($rv[0] == 0) { &error($rv[1]); }
+	elsif ($rv[0] == 3) { &error(&text('save_emailbox', $rv[1])); }
+	elsif ($rv[0] == 2) { &error(&text('save_elogin2', $rv[1])); }
+	local $h = $rv[1];
+	foreach my $f ([ $read, "\\Seen" ],
+		       [ $special, "\\Flagged" ],
+		       [ $replied, "\\Answered" ]) {
+		next if (!defined($f->[0]));
+		local $pm = $f->[0] ? "+" : "-";
+		@rv = &imap_command($h, "UID STORE ".$mail->{'id'}.
+					" ".$pm."FLAGS (".$f->[1].")");
+		&error(&text('save_eflag', $rv[3])) if (!$rv[0]); 
+		}
+	
+	# Update the mail object too
+	$mail->{'read'} = $read if (defined($read));
+	$mail->{'special'} = $special if (defined($special));
+	$mail->{'replied'} = $replied if (defined($replied));
+	}
+else {
+	&error("Read flags cannot be set on folders of type $folder->{'type'}");
+	}
+}
+
 # pop3_login(&folder)
 # Logs into a POP3 server and returns a status (1=ok, 0=connect failed,
 # 2=login failed) and handle or error message
@@ -1871,6 +1903,14 @@ if ($imap =~ /RFC822.SIZE\s+(\d+)/) {
 	}
 if ($imap =~ /UID\s+(\d+)/) {
 	$mail->{'id'} = $1;
+	}
+if ($imap =~ /FLAGS\s+\(([^\)]+)\)/ ||
+    $imap =~ /FLAGS\s+(\S+)/) {
+	# Got read flags .. use them
+	local @flags = split(/\s+/, $1);
+	$mail->{'read'} = &indexoflc("\\Seen", @flags) >= 0 ? 1 : 0;
+	$mail->{'special'} = &indexoflc("\\Flagged", @flags) >= 0 ? 1 : 0;
+	$mail->{'replied'} = &indexoflc("\\Answered", @flags) >= 0 ? 1 : 0;
 	}
 $imap =~ s/^\*\s+(\d+)\s+FETCH.*\{(\d+)\}\r?\n// || return undef;
 $mail->{'imapidx'} = $1;
