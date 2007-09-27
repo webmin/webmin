@@ -83,8 +83,9 @@ elsif ($in{'new'}) {
 	# Need to redirect to compose form
 	&redirect("reply_mail.cgi?new=1&folder=$in{'folder'}&user=$in{'user'}");
 	}
-elsif ($in{'black'}) {
-	# Deny all senders
+elsif ($in{'black'} || $in{'white'}) {
+	# Deny or allow all senders
+	$dir = $in{'black'} ? "blacklist_from" : "whitelist_from";
 	@delete || &error($text{'delete_ebnone'});
 	@mail = &mailbox_list_mails($delete[0], $delete[@delete-1], $folder);
 	foreach $d (@delete) {
@@ -93,27 +94,33 @@ elsif ($in{'black'}) {
 	&foreign_require("spam", "spam-lib.pl");
 	local $conf = &spam::get_config();
 	local @from = map { @{$_->{'words'}} }
-			  &spam::find("blacklist_from", $conf);
+			  &spam::find($dir, $conf);
 	local %already = map { $_, 1 } @from;
 	@newaddrs = grep { !$already{$_} } &unique(@addrs);
 	push(@from, @newaddrs);
-	&spam::save_directives($conf, 'blacklist_from',
-			       \@from, 1);
+	&spam::save_directives($conf, $dir, \@from, 1);
 	&flush_file_lines();
 	&redirect("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}");
 	}
-elsif ($in{'razor'}) {
-	# Report all messages, and show output to the user
-	@delete || &error($text{'delete_ebnone'});
+elsif ($in{'razor'} || $in{'ham'}) {
+	# Report as ham or spam all messages, and show output to the user
+	@delete || &error($in{'razor'} ? $text{'delete_ebnone'}
+                                       : $text{'delete_ehnone'});
 
-	&ui_print_header(undef, $text{'razor_title'}, "");
-	print "<b>$text{'razor_report2'}</b>\n";
+	&ui_print_header(undef, $in{'razor'} ? $text{'razor_title'}
+                                             : $text{'razor_title2'}, "");
+	if ($in{'razor'}) {
+		print "<b>$text{'razor_report2'}</b>\n";
+		}
+	else {
+		print "<b>$text{'razor_report3'}</b>\n";
+		}
 	print "<pre>";
 
 	# Write all messages to a temp file
 	@mail = &mailbox_list_mails($delete[0], $delete[@delete-1], $folder);
 	$temp = &transname();
-	$cmd = &spam_report_cmd($in{'user'});
+	$cmd = $in{'razor'} ? &spam_report_cmd() : &ham_report_cmd();
 	foreach $d (@delete) {
 		$mail[$d] || &error($text{'mail_eexists'});
 		&send_mail($mail[$d], $temp);
@@ -134,7 +141,7 @@ elsif ($in{'razor'}) {
 		print "<b>$text{'razor_err'}</b><p>\n";
 		}
 	else {
-		if ($config{'spam_del'}) {
+		if ($config{'spam_del'} && $in{'razor'}) {
 			# Delete spam too
 			&lock_folder($folder);
 			&mailbox_delete_mail($folder, @delmail);

@@ -132,6 +132,9 @@ else {
 				    'mode' => 0,
 				    'sent' => $f eq "sentmail",
 				    'index' => scalar(@rv) } );
+			if (lc($f) eq "spam" || lc($f) eq ".spam") {
+				$rv[$#rv]->{'spam'} = 1;
+				}
 			}
 		}
 
@@ -643,6 +646,14 @@ return $user eq "root" ? $cmd :
        $cmd ? &command_as_user($user, 0, $cmd) : undef;
 }
 
+# ham_report_cmd()
+# Returns a command for reporting ham, or undef if none
+sub ham_report_cmd
+{
+local %sconfig = &foreign_config("spam");
+return &has_command($sconfig{'sa_learn'}) ? "$sconfig{'sa_learn'} --ham --mbox" : undef;
+}
+
 # allowed_directory()
 # Returns base directory for mail files, or undef if not allowed
 sub allowed_directory
@@ -928,12 +939,11 @@ if (@$mail) {
 	print $spacer;
 
 	# Show spam report buttons
-	local @modules = &get_available_module_infos(1);
-	local ($hasspam) = grep { $_->{'dir'} eq "spam" } @modules;
-	if (&foreign_installed("spam") &&
+	if (!$folder->{'spam'} &&
+	    &foreign_installed("spam") &&
 	    $config{'spam_buttons'} =~ /list/ &&
 	    &spam_report_cmd($user)) {
-		if ($hasspam) {
+		if (&foreign_available("spam")) {
 			print "<input type=submit value=\"$text{'mail_black'}\" name=black>";
 			}
 		if ($config{'spam_del'}) {
@@ -942,6 +952,16 @@ if (@$mail) {
 		else {
 			print "<input type=submit value=\"$text{'view_razor'}\" name=razor>";
 			}
+		print $spacer;
+		}
+	elsif ($folder->{'spam'} &&
+	       &foreign_installed("spam") &&
+	       $config{'spam_buttons'} =~ /list/ &&
+	       &ham_report_cmd($user)) {
+		if (&foreign_available("spam")) {
+			print "<input type=submit value=\"$text{'mail_white'}\" name=white>";
+			}
+		print "<input type=submit value=\"$text{'view_ham'}\" name=ham>";
 		print $spacer;
 		}
 	}

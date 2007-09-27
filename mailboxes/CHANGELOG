@@ -38,3 +38,5 @@ Replaced the HTMLarea widget for composing email with Xinha.
 ---- Changes since 1.340 ----
 Removed huge un-necessary plugins and styles for Xinha.
 The list of users to ignore is no longer checked with an un-necessary regular expression.
+---- Changes since 1.370 ----
+When viewing a user's spam folder, buttons to globally whitelist spam or report as non-spam are displayed.
