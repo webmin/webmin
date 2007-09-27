@@ -1,19 +1,5 @@
-line0=Enabled features for servers,11
-dir=Home directory creation enabled?,1,3-Always,1-Optionally
-unix=Unix user creation enabled?,1,3-Always,1-Optionally
-dns=BIND setup and configuration enabled?,1,1-Yes,2-Yes&#44; but not by default,0-No
-mail=Mailbox and alias configuration enabled?,1,1-Yes,2-Yes&#44; but not by default,0-No
-web=Apache setup and configuration enabled?,1,1-Yes,2-Yes&#44; but not by default,0-No
-webalizer=Webalizer report generation enabled?,1,1-Yes,2-Yes&#44; but not by default,0-No
-ssl=SSL website setup enabled?,1,1-Yes,2-Yes&#44; but not by default,0-No
-mysql=MySQL setup and configuration enabled?,1,1-Yes,2-Yes&#44; but not by default,0-No
-postgres=PostgreSQL setup and configuration enabled?,1,1-Yes,2-Yes&#44; but not by default,0-No
-ftp=ProFTPd setup and configuration enabled?,1,1-Yes,2-Yes&#44; but not by default,0-No
-logrotate=Logrotate log file truncation enabled?,1,1-Optionally,2-Optionally&#44; but not by default,0-No,3-Always
-webmin=Webmin login enabled by default?,1,1-Yes,2-No
-mail_system=Mail server to configure,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPOPMail,3-Detect automatically
-
 line1=Other server settings,11
+mail_system=Mail server to configure,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPOPMail,3-Detect automatically
 generics=Also update outgoing addresses for mailboxes?,1,1-Yes,0-No
 quotas=Quota setup for domain and mail users?,1,1-Yes (if enabled),0-No
 iface=Network interface for virtual addresses,3,Detect automatically
