@@ -73,3 +73,5 @@ Added support for Slam64 Linux.
 Added Redhat Enterprise release 5 support.
 Requests to the /unauthenticated URL can never execute CGI programs, to provide an extra layer of security against URL escaping attacks.
 Fixed XSS bugs in pam_login.cgi.
+---- Changes since 1.370 ----
+Hid the Jabber and Security Sentries modules by default, as the underlying software is no longer supported.
