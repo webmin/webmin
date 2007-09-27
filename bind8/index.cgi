@@ -170,6 +170,7 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 		$ztitlehash{$zn} = $ztitles[$#ztitles];
 		$zlinkhash{$zn} = $zlinks[$#zlinks];
 		$ztypeshash{$zn} = $ztypes[$#ztypes];
+		$zdelhash{$zn} = $zdels[$#ztypes];
 		$len++;
 		}
 
@@ -181,14 +182,15 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 	@ztypes = map { $ztypes[$_] } @zorder;
 	@zdels = map { $zdels[$_] } @zorder;
 
+	print &ui_form_start("mass_delete.cgi", "post");
+	@links = ( &select_all_link("d", 0),
+		   &select_invert_link("d", 0),
+		   @crlinks );
+	print &ui_links_row(\@links);
+
 	if ($config{'show_list'} == 1) {
 		# display as list
 		$mid = int((@zlinks+1)/2);
-		print &ui_form_start("mass_delete.cgi", "post");
-		@links = ( &select_all_link("d", 0),
-			   &select_invert_link("d", 0),
-			   @crlinks );
-		print &ui_links_row(\@links);
 		print "<table width=100%><tr><td width=50% valign=top>\n";
 		&zones_table([ @zlinks[0 .. $mid-1] ],
 			     [ @ztitles[0 .. $mid-1] ],
@@ -202,10 +204,6 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 				     [ @zdels[$mid .. $#zdels] ]);
 			}
 		print "</td></tr></table>\n";
-		print &ui_links_row(\@links);
-		print &ui_form_end([ [ "delete", $text{'index_massdelete'} ],
-				     [ "update", $text{'index_massupdate'} ],
-				     [ "create", $text{'index_masscreate'} ] ]);
 		}
 	elsif ($config{'show_list'} == 2) {
 		# Show as collapsible tree, broken down by domain parts
@@ -221,18 +219,21 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 				@{$ztree{$par}} = &unique(@{$ztree{$par}}, $ch);
 				}
 			}
-		print &ui_links_row(\@crlinks);
 		print "<table>\n";
 		&recursive_tree("");
 		print "</table>\n";
-		print &ui_links_row(\@crlinks);
 		}
 	else {
 		# display as icons
-		print &ui_links_row(\@crlinks);
-		&icons_table(\@zlinks, \@ztitles, \@zicons, 5);
-		print &ui_links_row(\@crlinks);
+		@befores = map { $_ ? &ui_checkbox("d", $_, "", 0) : "" }
+			       @zdels;
+		&icons_table(\@zlinks, \@ztitles, \@zicons, 5, undef, 
+			     undef, undef, \@befores);
 		}
+	print &ui_links_row(\@links);
+	print &ui_form_end([ [ "delete", $text{'index_massdelete'} ],
+			     [ "update", $text{'index_massupdate'} ],
+			     [ "create", $text{'index_masscreate'} ] ]);
 	}
 elsif (@zones) {
 	# Show zones under views
@@ -267,11 +268,11 @@ elsif (@zones) {
 		@ztypes = map { $ztypes[$_] } @zorder;
 		@zdels = map { $zdels[$_] } @zorder;
 
+		print &ui_form_start("mass_delete.cgi", "post");
 		print &ui_links_row(\@crlinks);
 		if ($config{'show_list'}) {
 			# display as list
 			$mid = int((@zlinks+1)/2);
-			print &ui_form_start("mass_delete.cgi", "post");
 			print "<table width=100%><tr><td width=50% valign=top>\n";
 			&zones_table([ @zlinks[0 .. $mid-1] ],
 				     [ @ztitles[0 .. $mid-1] ],
@@ -285,15 +286,19 @@ elsif (@zones) {
 					     [ @zdels[$mid .. $#zdels] ]);
 				}
 			print "</td></tr></table>\n";
-			print &ui_form_end([
-				[ "delete", $text{'index_massdelete'} ],
-				[ "update", $text{'index_massupdate'} ] ]);
 			}
 		else {
 			# display as icons
-			&icons_table(\@zlinks, \@ztitles, \@zicons, 5);
+			@befores = map { $_ ? &ui_checkbox("d", $_, "", 0) : "" }
+				       @zdels;
+			&icons_table(\@zlinks, \@ztitles, \@zicons, 5, undef,
+				     undef, undef, \@befores);
 			}
 		print &ui_links_row(\@crlinks);
+		print &ui_form_end([
+			[ "delete", $text{'index_massdelete'} ],
+			[ "update", $text{'index_massupdate'} ],
+			[ "create", $text{'index_masscreate'} ] ]);
 		}
 	}
 else {
@@ -406,7 +411,9 @@ else {
 	print "<img src=images/close.gif> <i>$text{'index_all'}</i></td>\n";
 	}
 if ($zhash{$name}) {
-	print "<td><a href='$zlinkhash{$name}'>$ztitlehash{$name} ($ztypeshash{$name})</a></td> </tr>\n";
+	local $cb = $zdelhash{$name} ?
+		&ui_checkbox("d", $zdelhash{$name}, "", 0)." " : "";
+	print "<td>$cb<a href='$zlinkhash{$name}'>$ztitlehash{$name} ($ztypeshash{$name})</a></td> </tr>\n";
 	}
 else {
 	print "<td><br></td> </tr>\n";
