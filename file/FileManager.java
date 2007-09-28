@@ -1459,7 +1459,7 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 	// Editing an existing file
 	EditorWindow(RemoteFile f, FileManager p)
 	{
-	super(500, 300);
+	super(800, 600);
 	file = f; filemgr = p;
 	makeUI(false);
 	setTitle(filemgr.text("edit_title", file.path));
