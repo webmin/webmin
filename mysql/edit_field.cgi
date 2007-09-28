@@ -69,7 +69,7 @@ elsif ($type eq 'float' || $type eq 'double' || $type eq 'decimal') {
 		$size =~ /(\d+)$/ ? $1 : '';
 	}
 elsif ($type eq 'date' || $type eq 'datetime' || $type eq 'time' ||
-       $type =~ /(blob|text)$/) {
+       $type eq 'timestamp' || $type =~ /(blob|text)$/) {
 	# No width!
 	}
 elsif ($type ne 'varchar' && $type ne 'char' && $in{'type'}) {
