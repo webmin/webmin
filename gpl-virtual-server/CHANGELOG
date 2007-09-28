@@ -358,3 +358,4 @@ Ported the feature to change a domain's MySQL password separately from the admin
 Plugin modules can now define additional sections to appear on the right-hand side of the framed theme, and new global options to appear in the System Settings categories on the left.
 The default number of alias servers that new virtual server owners can create can now be set on the Server Templates page.
 Removed the Plugin Modules page and the section for enabled features from the Module Config page, and merged them into a single Features and Plugins page where you can select which are enabled.
+Backported the virtual server validation feature from Virtualmin Pro to GPL.
