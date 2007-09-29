@@ -14,12 +14,13 @@ else {
 	}
 $access{'edonly'} && &error($text{'dbase_ecannot'});
 $access{'buser'} || &error($text{'dbase_ecannot'});
-&ui_print_header(undef, $in{'all'} ? $text{'backup_title2'} : $text{'backup_title'}, "",
+&ui_print_header(undef, $in{'all'} ? $text{'backup_title2'}
+				   : $text{'backup_title'}, "",
 	"backup_form");
 
 if (!-x $config{'mysqldump'}) {
 	print &text('backup_edump', "<tt>$config{'mysqldump'}</tt>",
-			  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+			  "../config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'});
 	exit;
 	}
@@ -38,78 +39,75 @@ if ($cron) {
 print "<p>\n";
 %c = $module_info{'usermin'} ? %userconfig : %config;
 
-print "<form action=backup_db.cgi>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<input type=hidden name=all value='$in{'all'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'backup_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("backup_db.cgi", "post");
+print &ui_hidden("db", $in{'db'});
+print &ui_hidden("all", $in{'all'});
+print &ui_hidden_table_start($text{'backup_header1'}, undef, 2, "main", 1,
+			     [ "width=30%" ]);
 
+# Destination file or directory
+print &ui_table_row($in{'all'} ? $text{'backup_file2'}
+			       : $text{'backup_file'},
+	&ui_textbox("file", $c{'backup_'.$in{'db'}}, 60)." ".
+	&file_chooser_button("file"));
+
+# Create destination dir
 if ($in{'all'}) {
-	print "<tr> <td><b>$text{'backup_file2'}</td>\n";
+	print &ui_table_row($text{'backup_mkdir'},
+		&ui_yesno_radio("mkdir", int($c{'backup_mkdir_'.$in{'db'}})));
 	}
-else {
-	print "<tr> <td><b>$text{'backup_file'}</td>\n";
-	}
-printf "<td><input name=file size=40 value='%s'> %s</td> </tr>\n",
-	$c{'backup_'.$in{'db'}}, &file_chooser_button("file");
 
 if (!$in{'all'}) {
 	# Show input to select tables
 	$t = $c{'backup_tables_'.$in{'db'}};
-	print "<tr> <td valign=top><b>$text{'backup_tables'}</b></td> <td>\n";
-	printf "<input type=radio name=tables_def value=1 %s> %s\n",
-		$t ? "" : "checked", $text{'backup_alltables'};
-	printf "<input type=radio name=tables_def value=0 %s> %s<br>\n",
-		$t ? "checked" : "", $text{'backup_seltables'};
 	@tables = &list_tables($in{'db'});
-	%got = map { $_, 1 } split(/\s+/, $t);
-	print "<select name=tables multiple size=5>\n";
-	foreach $t (sort @tables) {
-		printf "<option %s>%s\n",
-			$got{$t} ? "selected" : "", $t;
-		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'backup_tables'},
+		&ui_radio("tables_def", $t ? 0 : 1,
+			  [ [ 1, $text{'backup_alltables'} ],
+			    [ 0, $text{'backup_seltables'} ] ])."<br>".
+		&ui_select("tables", [ split(/\s+/, $t) ],
+			   [ sort @tables ], 5, 1));
 	}
+
+print &ui_hidden_table_end("main");
+print &ui_hidden_table_start($text{'backup_header2'}, undef, 2, "opts", 0,
+			     [ "width=30%" ]);
 
 # Show input for where clause
 $w = $c{'backup_where_'.$in{'db'}};
-print "<tr> <td><b>$text{'backup_where'}</b></td>\n";
-print "<td>",&ui_opt_textbox("where", $w, 30, $text{'backup_none'}),
-      "</td> </tr>\n";
+print &ui_table_row($text{'backup_where'},
+	&ui_opt_textbox("where", $w, 30, $text{'backup_none'}));
 
 # Show option to include drop statements in SQL
 $d = $c{'backup_drop_'.$in{'db'}};
-print "<tr> <td><b>$text{'backup_drop'}</b></td>\n";
-print "<td>",&ui_yesno_radio("drop", $d ? 1 : 0),"</td> </tr>\n";
+print &ui_table_row($text{'backup_drop'},
+	&ui_yesno_radio("drop", $d ? 1 : 0));
 
 # Show input for character set
 $s = $c{'backup_charset_'.$in{'db'}};
-print "<tr> <td><b>$text{'backup_charset'}</b></td>\n";
-print "<td>",&ui_radio("charset_def", $s ? 0 : 1,
+print &ui_table_row($text{'backup_charset'},
+	&ui_radio("charset_def", $s ? 0 : 1,
 	       [ [ 1, $text{'default'} ],
 		 [ 0, &ui_select("charset", $s,
-			[ &list_character_sets($in{'db'}) ]) ] ]),
-      "</td> </tr>\n";
+			[ &list_character_sets($in{'db'}) ]) ] ]));
 
 if ($mysql_version >= 5.0) {
 	# Show compatability format option
 	$cf = $c{'backup_compatible_'.$in{'db'}};
-	print "<tr> <td><b>$text{'backup_compatible'}</b></td>\n";
-	print "<td>",&ui_radio("compatible_def", $cf ? 0 : 1,
+	print &ui_table_row($text{'backup_compatible'},
+		&ui_radio("compatible_def", $cf ? 0 : 1,
 		       [ [ 1, $text{'default'} ],
 			 [ 0, &text('backup_compwith',
 				&ui_select("compatible", $cf,
-				   [ &list_compatible_formats() ])) ] ]),
-	      "</td> </tr>\n";
+				   [ &list_compatible_formats() ])) ] ]));
 
 	%co = map { $_, 1 } split(/\s+/, $c{'backup_options_'.$in{'db'}});
-	print "<tr> <td valign=top><b>$text{'backup_options'}</b></td> <td>\n";
+	$opts = "";
 	foreach $o (&list_compatible_options()) {
-		print &ui_checkbox("options", $o->[0], $o->[1] || $o->[0],
-				   $co{$o->[0]}),"<br>\n";
+		$opts .= &ui_checkbox("options", $o->[0], $o->[1] || $o->[0],
+				   $co{$o->[0]})."<br>\n";
 		}
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'backup_options'}, $opts);
 	}
 else {
 	print &ui_hidden("compatible_def", 1),"\n";
@@ -117,30 +115,34 @@ else {
 
 # Show compression option
 $cp = int($c{'backup_compress_'.$in{'db'}});
-print "<tr> <td><b>$text{'backup_compress'}</b></td>\n";
-print "<td>",&ui_radio("compress", $cp,
+print &ui_table_row($text{'backup_compress'},
+	&ui_radio("compress", $cp,
 		[ [ 0, $text{'backup_cnone'} ],
 		  [ 1, $text{'backup_gzip'} ],
-		  [ 2, $text{'backup_bzip2'} ] ]),"</td> </tr>\n";
+		  [ 2, $text{'backup_bzip2'} ] ]));
 
 if ($cron) {
 	# Show before/after commands
 	$b = $c{'backup_before_'.$in{'db'}};
-	print "<tr> <td><b>$text{'backup_before'}</b></td>\n";
-	printf "<td><input name=before size=50 value='%s'></td> </tr>\n", $b;
+	print &ui_table_row($text{'backup_before'},
+		&ui_textbox("before", $b, 60));
 
 	$a = $c{'backup_after_'.$in{'db'}};
-	print "<tr> <td><b>$text{'backup_after'}</b></td>\n";
-	printf "<td><input name=after size=50 value='%s'></td> </tr>\n", $a;
+	print &ui_table_row($text{'backup_after'},
+		&ui_textbox("after", $a, 60));
 
 	if ($in{'all'}) {
 		# Command mode option
 		$cmode = $c{'backup_cmode_'.$in{'db'}};
-		print "<tr> <td><b>$text{'backup_cmode'}</b></td>\n";
-		print "<td>",&ui_radio("cmode", int($cmode),
-			[ [ 0, $text{'backup_cmode0'} ],
-			  [ 1, $text{'backup_cmode1'} ] ]),"</td> </tr>\n";
+		print &ui_table_row($text{'backup_cmode'},
+			&ui_radio("cmode", int($cmode),
+				[ [ 0, $text{'backup_cmode0'} ],
+				  [ 1, $text{'backup_cmode1'} ] ]));
 		}
+
+	print &ui_hidden_table_end("main");
+	print &ui_hidden_table_start($text{'backup_header3'}, undef, 2, "sched",
+				     1, [ "width=30%" ]);
 
 	# Show cron time
 	&foreign_require("cron", "cron-lib.pl");
@@ -148,32 +150,33 @@ if ($cron) {
 	$cmd = $in{'all'} ? "$cron_cmd --all" : "$cron_cmd $in{'db'}";
 	($job) = grep { $_->{'command'} eq $cmd } @jobs;
 
-	print "<tr> <td><b>$text{'backup_sched'}</b></td>\n";
-	printf "<td><input type=radio name=sched value=0 %s> %s\n",
-		$job ? "" : "checked", $text{'no'};
-	printf "<input type=radio name=sched value=1 %s> %s</td> </tr>\n",
-		$job ? "checked" : "", $text{'backup_sched1'};
+	print &ui_table_row($text{'backup_sched'},
+		&ui_radio("sched", $job ? 1 : 0,
+		  [ [ 0, $text{'no'} ], [ 1, $text{'backup_sched1'} ] ]));
 
-	print "<tr> <td colspan=2><table border width=100%>\n";
 	$job ||= { 'mins' => 0,
 		   'hours' => 0,
 		   'days' => '*',
 		   'months' => '*',
 		   'weekdays' => '*' };
-	&cron::show_times_input($job);
-	print "</table></td> </tr>\n";
-	}
-print "</table></td></tr></table>\n";
+	print &ui_table_row(undef,
+		"<table border=2 width=100%>".
+		&capture_function_output(\&cron::show_times_input, $job).
+		"</table>", 2);
 
-if ($cron) {
-	print "<input type=submit name=backup value='$text{'backup_ok1'}'>\n";
-	print "<input type=submit name=save value='$text{'backup_ok2'}'>\n";
+	print &ui_hidden_table_end("sched");
 	}
 else {
-	print "<input type=submit name=backup value='$text{'backup_ok'}'>\n";
+	print &ui_hidden_table_end("main");
 	}
-print "<br>\n";
-print "</form>\n";
+
+if ($cron) {
+	print &ui_form_end([ [ "backup", $text{'backup_ok'} ],
+			     [ "save", $text{'backup_ok2'} ] ]);
+	}
+else {
+	print &ui_form_end([ [ "backup", $text{'backup_ok'} ] ]);
+	}
 
 if ($in{'all'}) {
 	&ui_print_footer("", $text{'index_return'});

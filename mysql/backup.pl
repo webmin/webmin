@@ -28,7 +28,9 @@ $ex = 0;
 foreach $db (@dbs) {
 	$sf = $all ? "" : $db;
 	if ($all) {
-		$file = &date_subs("$config{'backup_'}/$db.sql").
+		$dir = &date_subs($config{'backup_'});
+		&make_dir($dir, 0755) if ($config{'backup_mkdir_'});
+		$file = $dir."/".$db.".sql".
 			($config{'backup_compress_'.$sf} == 1 ? ".gz" :
 			 $config{'backup_compress_'.$sf} == 2 ? ".bz2" : "");
 		}

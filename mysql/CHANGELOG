@@ -53,3 +53,6 @@ When there are too many databases or tables to display, a menu for editing a spe
 Fixed a bug that prevents compression from being done when backing up all databases.
 ---- Changes since 1.340 ----
 Improved detection of support for views, which avoids errors with information_schema.views.
+---- Changes since 1.370 ----
+Added an option on the backup form to create the destination directory if missing.
+Re-wrote the backup form to use the new Webmin UI library.

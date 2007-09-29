@@ -18,7 +18,7 @@ $access{'buser'} || &error($text{'dbase_ecannot'});
 
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
-		-d $in{'file'} || -d &date_subs($in{'file'}) ||
+		-d $in{'file'} || -d &date_subs($in{'file'}) || $in{'mkdir'} ||
 			&error($text{'backup_efile2'});
 		}
 	else {
@@ -82,6 +82,7 @@ if ($module_info{'usermin'}) {
 	}
 else {
 	$config{'backup_'.$in{'db'}} = $in{'file'};
+	$config{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$config{'backup_where_'.$in{'db'}} =
 		$in{'where_def'} ? undef : $in{'where'};
 	$config{'backup_charset_'.$in{'db'}} =
@@ -110,7 +111,9 @@ if (!$in{'save'}) {
 		}
 	foreach $db (@dbs) {
 		if ($in{'all'}) {
-			$file = &date_subs("$in{'file'}/$db.sql").
+			$dir = &date_subs($in{'file'});
+			&make_dir($dir, 0755) if ($in{'mkdir'});
+			$file = $dir."/".$db.".sql".
 				($in{'compress'} == 1 ? ".gz" :
 				 $in{'compress'} == 2 ? ".bz2" : "");
 			}
