@@ -441,13 +441,16 @@ restore_failed=Restore failed : $1
 
 backup_title=Backup Database
 backup_title2=Backup All Databases
-backup_header=Backup database options
+backup_header1=Backup destination
+backup_header2=Other backup options
+backup_header3=Backup schedule
 backup_db=Database name
 backup_desc=This form allows you to backup the database $1 as either a file of SQL statements or an archive.
 backup_desc2=The backup can be performed immediately, or automatically on a selected schedule.
 backup_desc3=This form allows you to backup all databases as either files of SQL statements or archive.
 backup_path=Backup file path
 backup_path2=Backup files directory
+backup_mkdir=Create destination directory?
 backup_err=Failed to backup database
 backup_eacl=You must be allowed to create and drop database
 backup_edb=Missing or invalid database name

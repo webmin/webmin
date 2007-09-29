@@ -20,7 +20,7 @@ else {
 $access{'backup'} || &error($text{'backup_ecannot'});
 if (!$in{'save'} || $in{'sched'}) {
 	if ($in{'all'}) {
-		-d $in{'path'} || -d &date_subs($in{'path'}) ||
+		-d $in{'path'} || -d &date_subs($in{'path'}) || $in{'mkdir'} ||
 			&error(&text('backup_pe4', $in{'path'})) ;
 		}
 	else {
@@ -77,6 +77,7 @@ if ($module_info{'usermin'}) {
 	}
 else {
 	$config{'backup_'.$in{'db'}} = $in{'path'};
+	$config{'backup_mkdir_'.$in{'db'}} = $in{'mkdir'};
 	$config{'backup_format_'.$in{'db'}} = $in{'format'};
 	$config{'backup_tables_'.$in{'db'}} = join(" ", @tables);
 	&write_file("$module_config_directory/config", \%config);
@@ -103,7 +104,9 @@ if (!$in{'save'}) {
 			next;
 			}
 		if ($in{'all'}) {
-			$path = &date_subs("$in{'path'}/$db.$suf");
+			$dir = &date_subs($in{'path'});
+			&make_dir($dir, 0755) if ($in{'mkdir'});
+			$path = $dir."/".$db.".".$suf;
 			}
 		else {
 			$path = &date_subs($in{'path'});

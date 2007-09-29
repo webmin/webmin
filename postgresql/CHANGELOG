@@ -56,3 +56,6 @@ When there are too many databases or tables to display, a menu for editing a spe
 Use HTML format output from the pgsql command, to handle queries for rows containing newlines and special characters.
 ---- Changes since 1.350 ----
 Fixed a bug that prevented the 'valid until' date from being displayed for existing users.
+---- Changes since 1.370 ----
+Added an option on the backup form to create the destination directory if missing.
+Re-wrote the backup form to use the new Webmin UI library.
