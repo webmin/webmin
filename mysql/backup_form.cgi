@@ -140,7 +140,7 @@ if ($cron) {
 				  [ 1, $text{'backup_cmode1'} ] ]));
 		}
 
-	print &ui_hidden_table_end("main");
+	print &ui_hidden_table_end("opts");
 	print &ui_hidden_table_start($text{'backup_header3'}, undef, 2, "sched",
 				     1, [ "width=30%" ]);
 
@@ -167,7 +167,7 @@ if ($cron) {
 	print &ui_hidden_table_end("sched");
 	}
 else {
-	print &ui_hidden_table_end("main");
+	print &ui_hidden_table_end("opts");
 	}
 
 if ($cron) {
