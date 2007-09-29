@@ -31,7 +31,7 @@ Added an option on the Unix User Authentication page to allow Unix users who can
 Added an option to the Unix User Authentication that lets users who pass PAM validation but have no Unix or Webmin account login as a selected Webmin user.
 ---- Changes since 1.330 ----
 When a group is deleted, sub-groups are also removed, and the group is removed from any parents.
----- Changes since 1.350 ----
+---- Changes since 1.360 ----
 Added the Password Restrictions page, for configuring password quality and change time settings.
 Re-designed the Edit User page to use the new Webmin UI library, and move lesser-used fields into collapsible sections.
 Webmin users can have a real name, which can be any text you like.

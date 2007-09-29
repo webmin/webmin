@@ -215,7 +215,7 @@ if ($access{'ips'}) {
 				    $user{'deny'} ? 2 : 0,
 			  [ [ 0, $text{'edit_all'}."<br>" ],
 			    [ 1, $text{'edit_allow'}."<br>" ],
-			    [ 1, $text{'edit_deny'}."<br>" ] ]).
+			    [ 2, $text{'edit_deny'}."<br>" ] ]).
 		&ui_textarea("ips",
 		    join("\n", split(/\s+/, $user{'allow'} ? $user{'allow'}
 						           : $user{'deny'})),
