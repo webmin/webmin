@@ -1,0 +1,20 @@
+index_title=Webmin Yardým
+index_terms=Yardým için arama
+index_mods=Arama Modülleri
+index_all=Hepsi
+index_sel=Seçilen Modüller ..
+index_search=Ara
+index_reset=Temizle
+index_header=Genel Webmin yardým aramasý
+index_return=Ara formu
+
+search_err=Arama iþleminde hata oluþtu
+search_eterms=Kayýp arama terimleri
+search_emods=Modül seçilmedi
+search_title=Arama sonuçlarý
+search_einclude=$1'in içeriðinde hata oluþtu
+search_none=Armanýzda istenilen yardým dosyasý bulunamadý
+search_mod=Modül
+search_page=Yardým sayfasý
+search_line=Karþýlaþtýr
+search_results=Webmin yardým sayfalarý karþýlaþtýrýlýyor $1

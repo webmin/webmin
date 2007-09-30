@@ -1,0 +1,20 @@
+index_title=Webmin Help
+index_terms=Search help for
+index_mods=Modules to search
+index_all=All
+index_sel=Selected modules ..
+index_search=Search
+index_reset=Reset
+index_header=Global Webmin help search
+index_return=search form
+
+search_err=Search failed
+search_eterms=Missing search terms
+search_emods=No modules chosen
+search_title=Search Results
+search_einclude=Failed to include $1
+search_none=No help files matched your search
+search_mod=Module
+search_page=Help page
+search_line=Match on
+search_results=Webmin help pages matching $1

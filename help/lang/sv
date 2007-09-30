@@ -1,0 +1,20 @@
+index_title=Hjälp om Webmin
+index_terms=Hjälp om
+index_mods=Moduler att söka i
+index_all=Alla
+index_sel=Valda moduler ...
+index_search=Sök
+index_reset=Återställ
+index_header=Sök globalt i Hjälp till Webmin
+index_return=sökformulär
+
+search_err=Sökningen misslyckades
+search_eterms=Någon sökterm saknades
+search_emods=Du har inte valt någon modul
+search_title=Sökresultat
+search_einclude=Det gick inte att lägga till $1
+search_none=Det fanns ingen hjälpfil som passade
+search_mod=Modul
+search_page=Hjälpsida
+search_line=Träff för
+search_results=Webmin-hjälpsidor för $1

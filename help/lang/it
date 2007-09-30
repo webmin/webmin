@@ -1,0 +1,20 @@
+index_title=Webmin Help
+index_terms=Cerca nell'help
+index_mods=Moduli da cercare
+index_all=Tutti
+index_sel=Moduli selezionati
+index_search=Trova
+index_reset=Azzera
+index_header=Ricerca globale nel Webmin Help
+index_return=pagina di ricerca
+
+search_err=Ricerca fallita
+search_eterms=Termini di ricerca mancanti
+search_emods=Non hai scelto i moduli
+search_title=Risultato della ricerca
+search_einclude=Errore nell'inclusione di $1
+search_none=Il valore da te cercato non e' stato trovato
+search_mod=Modulo
+search_page=Pagina di help
+search_line=Trovato in
+search_results=Pagine di Webmin help contenenti $1
