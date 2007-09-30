@@ -1,44 +1,53 @@
-index_title=獣什奴 獣娃
-index_timeserver=獣娃 辞獄
-index_address=硲什闘/爽社
-index_zone=妊層 獣娃企
-index_tz=薄仙 是帖
-
-action_save=煽舌
+acl_error=獣什奴 獣娃 乞汲拭 企廃 衝室什 映廃戚 赤走幻 獣什奴 獣娃戚蟹 馬球裾嬢 獣娃聖 畷増拝 呪 蒸柔艦陥
+acl_hw=紫遂切亜 馬球裾嬢 獣娃聖 畷増拝 呪 赤柔艦陥
+acl_no=焼艦神
+acl_nohw=馬球裾嬢 獣娃聖 畷増拝 呪 蒸柔艦陥
+acl_nontp=展績 辞獄人 疑奄鉢研 拝 呪 蒸柔艦陥.
+acl_nosys=獣什奴 獣娃聖 畷増拝 呪 蒸柔艦陥
+acl_ntp=展績 辞獄人 疑奄鉢研 拝 呪 赤柔艦猿?
+acl_sys=紫遂切亜 獣什奴 獣娃聖 畷増拝 呪 赤柔艦陥
+acl_timezone=獣娃企研 竺舛 馬心柔艦猿?
+acl_yes=森
 action_apply=旋遂
+action_save=煽舌
+action_savezone=妊層 獣娃企 痕井
 action_sync=馬球裾嬢 獣娃拭 限仲 獣什奴 獣娃 疑奄鉢
 action_sync_s=獣什奴 獣娃拭 限仲 馬球裾嬢 獣娃 疑奄鉢
-action_timeserver_sys=獣什奴 獣娃 疑奄鉢
 action_timeserver_hw=馬球裾嬢 獣娃 疑奄鉢
-action_savezone=妊層 獣娃企 痕井
-
-acl_sys=紫遂切亜 獣什奴 獣娃聖 畷増拝 呪 赤柔艦陥
-acl_hw=紫遂切亜 馬球裾嬢 獣娃聖 畷増拝 呪 赤柔艦陥
-acl_yes=森
-acl_no=焼艦神
-acl_error=獣什奴 獣娃 乞汲拭 企廃 衝室什 映廃戚 赤走幻 獣什奴 獣娃戚蟹 馬球裾嬢 獣娃聖 畷増拝 呪 蒸柔艦陥
-acl_nosys=獣什奴 獣娃聖 畷増拝 呪 蒸柔艦陥
-acl_nohw=馬球裾嬢 獣娃聖 畷増拝 呪 蒸柔艦陥
-
-sys_title=獣什奴 獣娃
-hw_title=馬球裾嬢 獣娃
-
-day=析
-month=杉
+action_timeserver_sys=獣什奴 獣娃 疑奄鉢
 date=劾促
-hour=獣
-year=鰍
-
+day=析
 error_cnf=神嫌: $1 誤敬戚 蒸柔艦陥
+error_ediff=展績辞獄人 稽鎮 獣娃税 託戚亜 格巷 溺艦陥: $1 析
+error_entp=NTP 展績 疑奄鉢 叔鳶: $1
+error_etimeserver=疑奄鉢研 是廃 展績辞獄亜 走舛鞠走 省製
 error_hw=馬球裾嬢 獣娃聖 竺舛拝 呪 蒸柔艦陥: $1
 error_sync=獣什奴 獣娃拭 疑奄鉢拝 呪 蒸柔艦陥: $1
-
+hour=獣
+hw_title=馬球裾嬢 獣娃
+index_addresses=展績辞獄 硲什闘戚硯 暁澗 IP爽社
+index_eformat=<tt>hwclock</tt> 窒径 莫縦聖 昔縦拝 呪 蒸柔艦陥.
+index_hardware2=馬球裾嬢 獣娃亀 竺舛 杯艦陥.
+index_sched=陥製 什追匝拭 魚虞 疑奄鉢研 馬畏柔艦猿?
+index_schedyes=森, 焼掘税 獣娃拭..
+index_sync=疑奄鉢人 旋遂
+index_timeserver=獣娃 辞獄
+index_title=獣什奴 獣娃
+index_tz=薄仙 是帖
+index_tzheader=獣娃企
+index_zone=妊層 獣娃企
+log_remote_date=$2拭辞 獣什奴 獣娃 鋼脊喫
+log_remote_date_l=$2拭辞 獣什奴 獣娃 $1 鋼脊喫
+log_remote_hwclock=$2拭辞 馬球裾嬢 獣娃 鋼脊喫
+log_remote_hwclock_l=$2拭辞 馬球裾嬢 獣娃 $1 鋼脊喫
 log_set_date=$1(生)稽 獣什奴 獣娃 竺舛喫
 log_set_hwclock=$1(生)稽 馬球裾嬢 獣域 竺舛喫
-log_remote_date=$2拭辞 獣什奴 獣娃 鋼脊喫
-log_remote_hwclock=$2拭辞 馬球裾嬢 獣娃 鋼脊喫
-log_remote_date_l=$2拭辞 獣什奴 獣娃 $1 鋼脊喫
-log_remote_hwclock_l=$2拭辞 馬球裾嬢 獣娃 $1 鋼脊喫
 log_sync=獣什奴 獣娃戚 馬球裾嬢 獣娃拭 限仲 疑奄鉢喫
 log_sync_s=馬球裾嬢 獣娃戚 獣什奴 獣娃拭 限仲 疑奄鉢喫
-
+log_timezone=$1 稽 獣娃企 痕井
+month=杉
+sys_title=獣什奴 獣娃
+timezone_ecannot=獣娃企研 痕井拝 呪 蒸柔艦陥.
+timezone_enone=識澱吉 走蝕戚 蒸製
+timezone_err=獣娃企 煽舌 叔鳶
+year=鰍
