@@ -1,0 +1,5 @@
+port=Port to connect to,0
+host=Host to connect to,3,Webmin server
+width=Applet width,0
+height=Applet height,0
+program=X application to connect to,3,Normal VNC server
