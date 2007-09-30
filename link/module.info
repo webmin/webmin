@@ -1,0 +1,6 @@
+name=Link
+desc=Custom Link
+category=others
+version=1.3
+depends=1.170
+readonly=1
