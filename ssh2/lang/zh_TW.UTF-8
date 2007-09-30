@@ -1,0 +1,4 @@
+index_title=Telnet 登入
+index_warn=警告! 這個 telnet 工作階段<b>沒有</b>經過編碼.
+index_nojava=這個模組需要 Java 才能運作, 但是您的瀏覽器不支援 Java
+index_credits=Applet developed under GPL by <a href='$1'>Matthias L. Jugel &amp; Marcus Mei羧er</a>.

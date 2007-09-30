@@ -1,0 +1,7 @@
+index_title=Login via SSH/Telnet
+index_warn=Atenção! Esta sessão telnet <b>não</b> está encriptada.
+index_nojava=Este módulo requer java para funcionar, mas seu navegador não suporta java
+index_credits=Aplicativo desenvolvido sob licença GPL por <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Meißner</a>.
+index_sshcredits=Inclui software desenvolvido por Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=Não há nenhum servidor telnet rodando em $1 porta $2.
+index_esocket2=Não há nenhum servidor SSH rodando em $1 porta $2.

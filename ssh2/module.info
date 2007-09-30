@@ -1,0 +1,5 @@
+name=SSH2
+desc=SSH2 Login
+version=1.2
+webmin=1
+usermin=1

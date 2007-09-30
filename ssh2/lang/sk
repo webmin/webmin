@@ -1,0 +1,8 @@
+index_credits=Applet vyvinutý pod GPL <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Meißner</a>.
+index_elookup=Zlyhalo nájdenie IP adresy pre $1 pre test telnet alebo SSH servra.
+index_esocket=Na $1 a porte $2 sa nenachádza ¾iadny be¾iaci telnet server.
+index_esocket2=Na $1 a porte $2 sa nenachádza ¾iadny be¾iaci SSH server.
+index_nojava=Tento modul potrebuje pre svoje fungovanie Javu, ale Vá¹ prehliadaè nepodporuje Javu.
+index_sshcredits=Obsahuje softvér vyvinutý tímom Cryptix (<a href=$1 target=_top>$1</a>).
+index_title=SSH/Telnet prihlásenie
+index_warn=Upozornenie! Toto telnet spojenie <b>nie je</b> ¹ifrované.

@@ -1,0 +1,7 @@
+index_title=SSH/Telnet-inloggning
+index_warn=Varning! Denna telnet-session krypteras <b>inte</b>.
+index_nojava=Denna modul fungerar inte utan java, men din browser stödjer inte java
+index_credits=Applet utvecklad under GPL av <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Meißner</a>.
+index_sshcredits=Innehåller programvara som utvecklats av Cryptix Development Team (<a href=$1 target=_top>$1</a>).
+index_esocket=Det körs ingen telnet-server på $1 port $2.
+
