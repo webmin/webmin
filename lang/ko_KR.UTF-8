@@ -5,8 +5,12 @@ main_switch=紫遂切 穿発..
 main_logout=稽益焼数
 main_version=$2税 獄穿 $1($3)
 main_title=$2税 Webmin $1($3)
+main_title2=Webmin
 main_none=Webmin 乞汲拭 企廃 羨悦 映廃戚 蒸柔艦陥.
 main_skill=奄管 呪層
+main_readonly=(石奄 穿遂)
+
+link_essl=HTTPS 尻衣聖 是背 Net::SSLeay 曇 乞汲戚 琶推馬走幻, 辞獄拭 竺帖 鞠嬢 赤走 省柔艦陥.
 
 category_servers=辞獄
 category_hardware=馬球裾嬢
@@ -14,7 +18,18 @@ category_system=獣什奴
 category_webmin=Webmin
 category_net=革闘趨天
 category_syslet=Syslets
+category_cluster=適君什斗
+category_info=舛左
 category_=益 須
+
+longcategory_servers=瀬, 戚五析, FTP 貢 陥献 辞獄級税 竺舛聖 是廃 乞汲
+longcategory_hardware=覗鍵斗, 巨什滴去税 馬球裾嬢 竺舛聖 是廃 乞汲
+longcategory_system=政煽, 督析 獣什奴, cron 説 去 獣什奴 室特聖 是廃 乞汲
+longcategory_webmin=Webmin 切端 竺舛聖 是廃 乞汲
+longcategory_net=革闘趨天引 革闘趨滴 辞搾什 竺舛聖 是廃 乞汲
+longcategory_cluster=馬蟹税 昔斗凪戚什稽 採斗 食君 辞獄級聖 淫軒馬奄 是廃 乞汲
+longcategory_info=獣什奴拭 企廃 舛左研 窒径馬澗 乞汲
+longcategory_=陥献 朝砺壱軒 照拭 匂敗鞠走 省澗 乞汲
 
 header_webmin=Webmin 昔畿什
 header_module=乞汲 昔畿什
@@ -30,16 +45,30 @@ create=拙失
 delete=肢薦
 find=達奄
 error=神嫌
+error_previous=戚穿 凪戚走
+error_stack=什澱 闘傾戚什 硲窒
+error_file=督析
+error_line=虞昔
+error_sub=敗呪
+error_stackline=$1 督析税 $2 虞昔拭辞 $3聖 硲窒
+efilewrite=$1 拭 拙失 叔鳶 : $2
+efileclose=$1 拭 拙失 掻 督析 丸奄 叔鳶 : $2
+efileopen=拙失聖 是背 $1 聖 伸走 公敗 : $2
 default=奄沙葵
 modify=呪舛
 reset=仙竺舛
 ok=溌昔
 cancel=昼社
+helpsearch=庚辞 伊事..
+switch_remote_euser=政莞什 政煽 $1 戚 糎仙 馬走省柔艦陥.
+programname=Webmin
 
 chooser_title1=督析 識澱..
 chooser_title2=巨刑塘軒 識澱..
 chooser_dir=$1税 巨刑塘軒
 chooser_ok=溌昔
+chooser_date=劾切 識澱
+chooser_eopen=軒什特 叔鳶 : $1
 
 users_title1=紫遂切 識澱..
 users_title2=紫遂切 識澱..
@@ -47,7 +76,7 @@ users_sel=識澱廃 紫遂切
 users_all=乞窮 紫遂切
 users_ok=溌昔
 users_cancel=昼社
-users_clear=走酔奄
+users_clear=段奄鉢
 
 groups_title1=益血 識澱..
 groups_title2=益血 識澱..
@@ -55,7 +84,15 @@ groups_all=乞窮 益血
 groups_sel=識澱廃 益血
 groups_ok=溌昔
 groups_cancel=昼社
-groups_clear=走酔奄
+groups_clear=段奄鉢
+
+modules_title1=乞汲 識澱..
+modules_title2=乞汲 識澱..
+modules_sel=識澱吉 乞汲
+modules_all=乞窮 乞汲
+modules_ok=溌昔
+modules_cancel=昼社
+modules_clear=段奄鉢
 
 config_ecannot=戚 乞汲聖 姥失拝 呪 蒸柔艦陥
 config_title=姥失
@@ -63,6 +100,10 @@ config_dir=乞汲 $1
 config_header=$1税 姥失 亜管廃 辛芝
 config_none=蒸製
 config_eaccess=戚 乞汲拭 羨悦拝 呪 蒸柔艦陥
+config_err=竺舛 煽舌 叔鳶
+config_nochange=痕井 馬走 省製
+config_setto=Set to
+config_ewebmin=Parameter type 14 only works in Webmin
 
 help_err=亀崇源聖 妊獣馬走 公梅柔艦陥
 help_epath=蒸暗蟹 設公吉 亀崇源 井稽
@@ -77,19 +118,31 @@ referer_warn=<b>井壱! </b>覗稽益轡 $2亜 尻衣鞠嬢赤澗 URL $1精 Webm
 referer_warn_unknown=<b>井壱! </b>覗稽益轡 $1戚(亜) 尻衣鞠嬢赤澗 URL精 Webmin 辞獄税 須採税 元滴 績戚 姶走鞠醸柔艦陥.) 戚澗 辞獄研 紗食辞 是蝿廃 誤敬聖 叔楳馬形澗 獣亀析 呪 赤柔艦陥.
 referer_ok=Webmin 覗稽益轡 叔楳 域紗
 referer_again=蒋生稽 戚 井壱研 妊獣 照敗
+referer_eurl=据 URL 戚 政反馬走 省製!
+referer_eself=referer_save.cgi 研 送羨 元滴拝 呪 蒸製!
 
 session_header=Webmin拭 稽益昔
 session_mesg=$1税 Webmin 辞獄拭 稽益昔拝 紫遂切 戚硯引 章硲研 脊径背醤 杯艦陥.
+session_mesg2=稽益昔聖 是背 鋼球獣 政煽 戚硯引 章硲研 脊径背醤 杯艦陥.
 session_user=紫遂切 戚硯
 session_pass=章硲
 session_login=稽益昔
-session_clear=走酔奄
+session_clear=段奄鉢
 session_failed=稽益昔馬走 公梅柔艦陥. 陥獣 獣亀馬淑獣神.
 session_logout=稽益焼数鞠醸柔艦陥. 焼掘税 丞縦聖 紫遂馬食 陥獣 稽益昔馬淑獣神.
 session_timed_out=室芝戚 $1歳 疑照 搾醗失鉢吉 板 獣娃 段引鞠醸柔艦陥.
 session_save=稽益昔聖 慎姥旋生稽 奄常杯艦猿?
 
-acl_root=督析 識澱切税 欠闘 巨刑塘軒
+pam_header=Webmin 稽益昔
+pam_mesg=$1税 Webmin 辞獄拭 稽益昔 馬奄 是背辞澗 馬舘税 霜庚拭 誓岩 馬偲醤 杯艦陥.
+pam_mesg2=稽益昔聖 馬奄 是背辞澗 焼掘税 霜庚拭 誓岩 馬偲醤 杯艦陥.
+pam_login=域紗
+pam_restart=仙獣拙
+
+acl_root=督析 識澱獣 欠闘 巨刑塘軒
+acl_otherdirs=督析 識澱獣 陥献 巨刑塘軒 左奄
+acl_nodot=督析 識澱獣拭 . 生稽 獣拙馬澗 督析聖 需奄畏柔艦猿?
+acl_home=紫遂切 幡 巨刑塘軒
 acl_uedit=紫遂切 識澱切拭 蟹展蟹澗 紫遂切
 acl_uedit_all=乞窮 紫遂切
 acl_uedit_none=紫遂切 蒸製
@@ -103,6 +156,18 @@ acl_gedit_none=益血 蒸製
 acl_gedit_only=益血幻
 acl_gedit_except=益血聖 薦須廃 乞砧
 acl_gedit_gid=骨是 鎧税 GID亜 赤澗 益血
+acl_feedback=杷球拷 五析 降勺
+acl_feedback2=森
+acl_feedback1=森, 馬走幻 竺舛 督析精 左鎧走 省柔艦陥.
+acl_feedback0=焼艦神
+acl_feedback3=森, 竺舛 督析引 敗臆 左鎧畏柔艦陥.
+acl_rpc=RPC call 買亜
+acl_rpc2=<tt>root</tt> 暁澗 <tt>admin</tt> 幻
+acl_rpc1=森
+acl_rpc0=焼艦神
+acl_readonly=汽乞 乞球研 紫遂 食採<br>(析採 乞汲 紫遂 災亜管)
+acl_fileunix=Browse files as Unix user
+acl_sameunix=Same as Webmin login
 
 month_1=1杉
 month_2=2杉
@@ -147,9 +212,90 @@ sday_5=榎
 sday_6=塘
 
 emodule=羨悦 暗採喫: 紫遂切 $1精(澗) 乞汲 $2聖(研) 紫遂拝 呪 蒸柔艦陥
+emodulecheck=獣什奴拭辞 $1 乞汲聖 紫遂拝 呪 蒸柔艦陥.
 elock_tries=$2歳戚 井引廃 板 督析 $1聖(研) 節益走 公梅柔艦陥
 
 skill_high=穿庚亜
 skill_medium=掻厭
 skill_low=段厭
 
+feedback_title=Webmin 杷球拷
+feedback_desc=戚 廿聖 戚遂馬食 降胃吉 庚薦蟹 刊喰吉 推社研 Webmin 鯵降切級拭惟 軒匂特聖 拝 呪 赤柔艦陥. 左鎧奄 獄動聖 適遣馬檎, $1 拭惟 廿税 雌室 鎧遂級戚 左鎧走惟 桔艦陥.
+feedback_desc2=戚 杷球拷精 獣什奴 淫軒切蟹 ISP, 硲什特 噺紫稽 左鎧走走 省生悟, Webmin 鯵降切拭惟 左鎧走惟 桔艦陥. 雁重拭 陥献 情嬢研 紫遂馬澗 Webmin 鯵降切虞壱 馬希虞亀, 杷球拷精 慎嬢稽 拙失聖 背 爽偲醤 杯艦陥.
+feedback_header=杷球拷 雌室 鎧遂
+feedback_name=戚硯
+feedback_email=五析 爽社
+feedback_module=淫恵 乞汲
+feedback_all=乞窮 乞汲
+feedback_text=庚薦蟹 薦照税 竺誤
+feedback_os=五析拭 錘慎端薦税 切室廃 紫牌聖 匂敗馬畏柔艦猿?
+feedback_osdesc=戚 辛芝戚 識澱鞠檎, 切疑生稽 杷球拷 五析精 錘慎端薦税 戚硯引 獄穿聖 匂敗 杯艦陥.
+feedback_config=五析拭 乞汲 竺舛聖 匂敗 馬畏柔艦猿?
+feedback_configdesc=戚 辛芝聖 識澱馬檎, 五析精 乞汲戚 紫遂馬澗 嬢恐 竺舛 督析税 鎧遂引 淫恵吉 乞汲税 竺舛聖 匂敗馬惟 桔艦陥. 森研 級嬢 杷球拷戚 <i>紫遂切人 益血</i> 拭 淫恵戚 鞠嬢 赤陥檎, <tt>/etc/passwd</tt> 人 <tt>/etc/shadow</tt> 督析聖 歎採背辞 左鎧惟 桔艦陥.
+feedback_attach=蓄亜 督析 歎採
+feedback_send=杷球拷 左鎧奄
+feedback_mailserver=SMTP 辞獄研 搭背 降勺
+feedback_mailserver_def=稽鎮 sendmail 戚遂
+feedback_err=杷球拷 左鎧奄 叔鳶
+feedback_emodule=五析拭 乞汲 竺舛聖 匂敗聖 識澱 梅生蟹, 乞汲戚 識澱 鞠走 省紹柔艦陥.
+feedback_emodule2=識澱吉 乞汲戚 蒸柔艦陥.
+feedback_econfig=識澱吉 乞汲拭 羨悦 映廃戚 蒸柔艦陥.
+feedback_via=SMTP 辞獄 $2 研 戚遂馬食 $1 拭惟 杷球拷聖 左蛙
+feedback_prog=sendmail $2 研 戚遂馬食 $1 拭惟 杷球拷聖 左蛙
+feedback_esend=sendmail 戚蟹 稽鎮 SMTP 辞獄研 搭背 鳶球拷 降勺 叔鳶
+feedback_to=爽社稽 杷球拷聖 左蛙
+feedback_enoto=杷球拷聖 降勺馬奄 是廃 爽社亜 脊径鞠走 省紹柔艦陥.
+feedback_ecannot=杷球拷 降勺 映廃戚 蒸柔艦陥.
+feedback_ecannot2=竺舛 督析聖 匂敗背辞 杷球拷聖 降勺拝 呪 蒸柔艦陥.
+
+progress_size=$1 陥錘稽球 掻 ($2 byte) ..
+progress_nosize=$1 陥錘稽球 掻..
+progress_data=$1 byte 閤製 ($2 %)
+progress_data2=$1 byte 閤製
+progress_done=.. 陥錘稽球 刃戟.
+progress_incache=蝶習拭辞 $1聖 達製 ..
+
+readparse_cdheader=Content-Disposition 伯希亜 刊喰喫
+readparse_enc=廿-汽戚斗亜 昔坪漁 鞠走 省紹柔艦陥.
+readparse_max=汽戚斗亜 置企 $1 byte 研 角嬢 執柔艦陥.
+
+password_expired=章硲亜 幻戟 鞠醸柔艦陥. 歯稽錘 依聖 馬蟹 識澱 馬淑獣神.
+password_header=歯 章硲 識澱
+password_user=政煽 戚硯
+password_old=薄仙 章硲
+password_new1=歯 章硲
+password_new2=歯 章硲 陥獣
+password_ok=痕井
+password_clear=段奄鉢
+password_done=章硲亜 痕井 鞠醸柔艦陥. 走榎 歯稽錘 章硲稽  <a href='$1'>陥獣 稽益昔</a> 馬淑獣神.
+password_err=章硲 痕井 叔鳶
+password_euser=password 督析拭辞 稽益昔 戚硯聖 達聖 呪 蒸柔艦陥!
+password_eold=薄仙 章硲亜 限走 省柔艦陥.
+password_enew1=歯 章硲亜 脊径鞠走 省紹柔艦陥.
+password_enew2=歯 章硲亜 限走 省柔艦陥.
+password_epam=PAM 拭君 : $1
+password_emodpam=章硲 痕井聖 是背辞澗 Authen::PAM 乞汲戚 琶推馬走幻 竺帖 鞠嬢 赤走 省柔艦陥.
+
+ui_mandatory=戚 琶球澗 琶呪 脊径 紫牌脊艦陥.
+ui_checkmandatory=焼巷依亀 識澱 鞠走 省製
+ui_errors=食君鯵税 拭君亜 降胃喫 :
+ui_nothing=焼巷依亀 脊径 鞠走 省製
+ui_searchcol=楳 達奄
+ui_searchfor=努什闘 匂敗
+ui_searchok=伊事
+ui_selall=乞砧 識澱.
+ui_selinv=識澱 鋼穿.
+ui_edate=政反馬奄 省精 劾切
+ui_etime=政反馬走 省精 獣娃
+ui_paging=$3 税 $1 楳拭辞 $2 楳猿走 左奄
+ui_rowlabel=$1 楳税 $2 :
+
+header_statusmsg=$1 精 $4 ($5)拭 $2 $3 生稽 稽益昔 敗
+
+uptracker_title=穣稽球 督析
+uptracker_file=督析 戚硯
+uptracker_size=滴奄
+uptracker_pc=遭楳
+uptracker_eid=走舛吉 穣稽球 ID 亜 蒸製
+uptracker_eid2=穣稽球 ID 亜 政反馬走 省製!
+uptracker_of=$2 税 $1
