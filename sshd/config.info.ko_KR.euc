@@ -1,0 +1,10 @@
+line2=시스템 설정,11
+sshd_path=sshd 프로그램 전체 경로,0
+sshd_config=sshd 설정 전체 경로,0
+client_config=ssh 클라이언트 설정 파일 전체 경로,0
+pid_file=sshd PID 파일 전체 경로,3,없음
+start_cmd=sshd 시작 명령,3,그냥 서버 실행
+restart_cmd=sshd 설정을 적용하기 위한 명령,3,HUP 신호만 보냄
+stop_cmd=sshd 정지 명령,3,프로세스 KILL
+keygen_path=ssh-keygen 프로그램 전체 경로,0
+sshd_version=SSH 서버 버전,3,자동 감지
