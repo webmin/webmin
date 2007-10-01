@@ -1,7 +1,7 @@
-index_title=誤敬 秋
-index_ok=誤敬 叔楳:
-index_history=誤敬 鎧蝕
-index_clear=鎧蝕 走酔奄
-index_desc=焼掘税 努什闘 琶球拭 叔楳拝 政莞什 秋 誤敬聖 脊径馬淑獣神. <tt>cd</tt> 誤敬精 板紗 誤敬税 巨刑塘軒研 痕井馬澗 汽 紫遂拝 呪 赤柔艦陥.
+index_title=명령 쉘
+index_ok=명령 실행:
+index_history=명령 내역
+index_clear=내역 지우기
+index_desc=아래의 텍스트 필드에 실행할 유닉스 쉘 명령을 입력하십시오. <tt>cd</tt> 명령은 후속 명령의 디렉토리를 변경하는 데 사용할 수 있습니다.
 
-acl_user=紫遂切稽辞 誤敬 叔楳
+acl_user=사용자로서 명령 실행
