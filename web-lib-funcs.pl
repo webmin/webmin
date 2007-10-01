@@ -1117,7 +1117,9 @@ if ($_[0] =~ /^\// || $_[0] =~ /^[a-z]:[\\\/]/i) {
 	$rv = (-x &translate_filename($_[0])) ? $_[0] : undef;
 	}
 else {
-	foreach $d (split($path_separator, $ENV{PATH})) {
+	local %donedir;
+	foreach $d (split($path_separator, $ENV{'PATH'})) {
+		next if ($donedir{$d}++);
 		$d =~ s/$slash$// if ($d ne $slash);
 		if (-x &translate_filename("$d/$_[0]")) {
 			$rv = $d.$slash.$_[0];
@@ -1415,28 +1417,30 @@ if ($cfile && !$nocache) {
 	return;
 	}
 
+# Build headers
+local @headers;
+push(@headers, [ "Host", $host ]);
+push(@headers, [ "User-agent", "Webmin" ]);
+if ($user) {
+	local $auth = &encode_base64("$user:$pass");
+	$auth =~ tr/\r\n//d;
+	push(@headers, [ "Authorization", "Basic $auth" ]);
+	}
+foreach my $hname (keys %$headers) {
+	push(@headers, [ $hname, $headers->{$hname} ]);
+	}
+
 # Actually download it
 $download_timed_out = undef;
 local $SIG{ALRM} = "download_timeout";
 alarm($timeout || 60);
-local $h = &make_http_connection($host, $port, $ssl, "GET", $page);
+local $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
 alarm(0);
 $h = $download_timed_out if ($download_timed_out);
 if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
 	else { &error($h); }
 	}
-&write_http_connection($h, "Host: $host\r\n");
-&write_http_connection($h, "User-agent: Webmin\r\n");
-if ($user) {
-	local $auth = &encode_base64("$user:$pass");
-	$auth =~ tr/\r\n//d;
-	&write_http_connection($h, "Authorization: Basic $auth\r\n");
-	}
-foreach my $hname (keys %$headers) {
-	&write_http_connection($h, $hname.": ".$headers->{$hname}."\r\n");
-	}
-&write_http_connection($h, "\r\n");
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
@@ -4471,17 +4475,25 @@ else {
 	}
 }
 
-# make_http_connection(host, port, ssl, method, page)
+# make_http_connection(host, port, ssl, method, page, [&headers])
 # Opens a connection to some HTTP server, maybe through a proxy, and returns
 # a handle object. The handle can then be used to send additional headers
 # and read back a response. If anything goes wrong, returns an error string.
 sub make_http_connection
 {
+local ($host, $port, $ssl, $method, $page, $headers) = @_;
+local $htxt;
+if ($headers) {
+	foreach my $h (@$headers) {
+		$htxt .= $h->[0].": ".$h->[1]."\r\n";
+		}
+	$htxt .= "\r\n";
+	}
 if (&is_readonly_mode()) {
 	return "HTTP connections not allowed in readonly mode";
 	}
 local $rv = { 'fh' => time().$$ };
-if ($_[2]) {
+if ($ssl) {
 	# Connect using SSL
 	eval "use Net::SSLeay";
 	$@ && return $text{'link_essl'};
@@ -4493,14 +4505,14 @@ if ($_[2]) {
 		return "Failed to create SSL connection";
 	local $connected;
 	if ($gconfig{'http_proxy'} =~ /^http:\/\/(\S+):(\d+)/ &&
-	    !&no_proxy($_[0])) {
+	    !&no_proxy($host)) {
 		# Via proxy
 		local $error;
 		&open_socket($1, $2, $rv->{'fh'}, \$error);
 		if (!$error) {
 			# Connected OK
 			local $fh = $rv->{'fh'};
-			print $fh "CONNECT $_[0]:$_[1] HTTP/1.0\r\n";
+			print $fh "CONNECT $host:$port HTTP/1.0\r\n";
 			if ($gconfig{'proxy_user'}) {
 				local $auth = &encode_base64(
 				   "$gconfig{'proxy_user'}:".
@@ -4527,19 +4539,20 @@ if ($_[2]) {
 	if (!$connected) {
 		# Direct connection
 		local $error;
-		&open_socket($_[0], $_[1], $rv->{'fh'}, \$error);
+		&open_socket($host, $port, $rv->{'fh'}, \$error);
 		return $error if ($error);
 		}
 	Net::SSLeay::set_fd($rv->{'ssl_con'}, fileno($rv->{'fh'}));
 	Net::SSLeay::connect($rv->{'ssl_con'}) ||
 		return "SSL connect() failed";
-	Net::SSLeay::write($rv->{'ssl_con'}, "$_[3] $_[4] HTTP/1.0\r\n");
+	local $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
+	Net::SSLeay::write($rv->{'ssl_con'}, $rtxt);
 	}
 else {
 	# Plain HTTP request
 	local $connected;
 	if ($gconfig{'http_proxy'} =~ /^http:\/\/(\S+):(\d+)/ &&
-	    !&no_proxy($_[0])) {
+	    !&no_proxy($host)) {
 		# Via a proxy
 		local $error;
 		&open_socket($1, $2, $rv->{'fh'}, \$error);
@@ -4547,14 +4560,16 @@ else {
 			# Connected OK
 			$connected = 1;
 			local $fh = $rv->{'fh'};
-			print $fh "$_[3] http://$_[0]:$_[1]$_[4] HTTP/1.0\r\n";
+			local $rtxt = "$method http://$host:$port$page HTTP/1.0\r\n";
 			if ($gconfig{'proxy_user'}) {
 				local $auth = &encode_base64(
 				   "$gconfig{'proxy_user'}:".
 				   "$gconfig{'proxy_pass'}");
 				$auth =~ tr/\r\n//d;
-				print $fh "Proxy-Authorization: Basic $auth\r\n";
+				$rtxt .= "Proxy-Authorization: Basic $auth\r\n";
 				}
+			$rtxt .= $htxt;
+			print $fh $rtxt;
 			}
 		elsif (!$gconfig{'proxy_fallback'}) {
 			return $error;
@@ -4563,10 +4578,11 @@ else {
 	if (!$connected) {
 		# Connecting directly
 		local $error;
-		&open_socket($_[0], $_[1], $rv->{'fh'}, \$error);
+		&open_socket($host, $port, $rv->{'fh'}, \$error);
 		return $error if ($error);
 		local $fh = $rv->{'fh'};
-		print $fh "$_[3] $_[4] HTTP/1.0\r\n";
+		local $rtxt = "$method $page HTTP/1.0\r\n".$htxt;
+		print $fh $rtxt;
 		}
 	}
 return $rv;
