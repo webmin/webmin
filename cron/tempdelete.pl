@@ -14,7 +14,7 @@ if (!$gconfig{'tempdelete_days'}) {
 	print "Temp file clearing is disabled\n";
 	exit(0);
 	}
-if ($gconfig{'tempdir'}) {
+if ($gconfig{'tempdir'} && !$gconfig{'tempdirdelete'}) {
 	print "Temp file clearing is not done for the custom directory $gconfig{'tempdir'}\n";
 	exit(0);
 	}
