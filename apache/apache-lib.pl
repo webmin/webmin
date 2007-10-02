@@ -420,7 +420,7 @@ if ($incdir =~ /^(.*)\[\^([^\]]+)\](.*)$/) {
 	local $accept = join("", grep { !$reject{$_} } map { chr($_) } (32 .. 126));
 	$incdir = $before."[".$accept."]".$after;
 	}
-return glob($incdir);
+return sort { $a cmp $b } glob($incdir);
 }
 
 # get_virtual_config(index)
