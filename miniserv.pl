@@ -441,9 +441,7 @@ open(STDOUT, ">/dev/null");
 &log_error($rand_msg) if ($rand_msg);
 
 # write out the PID file
-open(PIDFILE, ">$config{'pidfile'}");
-printf PIDFILE "%d\n", getpid();
-close(PIDFILE);
+&write_pid_file();
 
 # Start the log-clearing process, if needed. This checks every minute
 # to see if the log has passed its reset time, and if so clears it
@@ -496,6 +494,7 @@ $SIG{'USR1'} = 'miniserv::trigger_reload';
 $SIG{'PIPE'} = 'IGNORE';
 local $remove_session_count = 0;
 $need_pipes = $config{'passdelay'} || $config{'session'};
+$last_pid_time = time();
 while(1) {
 	# wait for a new connection, or a message from a child process
 	local ($i, $rmask);
@@ -541,6 +540,12 @@ while(1) {
 		&reload_config_file();
 		}
 	local $time_now = time();
+
+	# Write the PID every 10 seconds
+	if ($time_now - $last_pid_time > 10) {
+		&write_pid_file();
+		$last_pid_time = $time_now;
+		}
 
 	# Clean up finished processes
 	local $pid;
@@ -4458,5 +4463,12 @@ foreach my $d (grep { $userfail{$_} } @denyusers) {
 	}
 close(BLOCKED);
 chmod(0700, $config{'blockedfile'});
+}
+
+sub write_pid_file
+{
+open(PIDFILE, ">$config{'pidfile'}");
+printf PIDFILE "%d\n", getpid();
+close(PIDFILE);
 }
 
