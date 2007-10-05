@@ -89,11 +89,13 @@ local $pass = defined($_[1]) ? $_[1] : $mysql_pass;
 local $host = defined($_[2]) ? $_[2] : $config{'host'};
 local $port = defined($_[3]) ? $_[3] : $config{'port'};
 local $sock = defined($_[4]) ? $_[4] : $config{'sock'};
+$ENV{'MYSQL_PWD'} = $pass;
 return ($sock ? " -S $sock" : "").
        ($host ? " -h $host" : "").
        ($port ? " -P $port" : "").
        ($login ? " -u ".quotemeta($login) : "").
-       ($pass && $mysql_version >= 4.1 ? " --password=".quotemeta($pass) :
+       ($mysql_version >= 5.0 ? "" :	# Password comes from environment
+        $pass && $mysql_version >= 4.1 ? " --password=".quotemeta($pass) :
         $pass ? " -p".quotemeta($pass) : "");
 }
 

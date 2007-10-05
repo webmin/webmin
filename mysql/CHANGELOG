@@ -56,3 +56,4 @@ Improved detection of support for views, which avoids errors with information_sc
 ---- Changes since 1.370 ----
 Added an option on the backup form to create the destination directory if missing.
 Re-wrote the backup form to use the new Webmin UI library.
+The MySQL password is no longer passed on the command line.
