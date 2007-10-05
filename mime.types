@@ -33,30 +33,30 @@ application/index.response
 application/index.vnd
 application/iotp
 application/ipp
-application/mac-binhex40	hqx
-application/mac-compactpro	cpt
+application/mac-binhex40	hqx # BinHex archive
+application/mac-compactpro	cpt # CompactPro archive
 application/macwriteii
 application/marc
 application/mathematica
 application/mathematica-old
-application/msword		doc
+application/msword		doc # Microsoft Word document
 application/news-message-id
 application/news-transmission
 application/ocsp-request
 application/ocsp-response
-application/octet-stream	bin dms lha lzh exe class
+application/octet-stream	bin dms lha lzh exe class # Binary data
 application/oda			oda
-application/pdf			pdf
-application/pgp-encrypted
-application/pgp-keys
-application/pgp-signature
+application/pdf			pdf # Adobe PDF
+application/pgp-encrypted	    # PGP encrypted
+application/pgp-keys		    # PGP keys
+application/pgp-signature	    # PGP signature
 application/pkcs10
 application/pkcs7-mime
 application/pkcs7-signature
 application/pkix-cert
 application/pkix-crl
 application/pkixcmp
-application/postscript		ai eps ps
+application/postscript		ai eps ps # Postscript
 application/prs.alvestrand.titrax-sheet
 application/prs.cww
 application/prs.nprend
@@ -67,7 +67,7 @@ application/set-payment
 application/set-payment-initiation
 application/set-registration
 application/set-registration-initiation
-application/sgml
+application/sgml # SGML
 application/sgml-open-catalog
 application/slate
 application/smil		smi smil
@@ -185,12 +185,12 @@ application/vnd.motorola.flexsuite.wem
 application/vnd.mozilla.xul+xml
 application/vnd.ms-artgalry
 application/vnd.ms-asf
-application/vnd.ms-excel	xls
+application/vnd.ms-excel	xls # Microsoft Excel spreadsheet
 application/vnd.ms-lrm
-application/vnd.ms-powerpoint	ppt
-application/vnd.ms-project
+application/vnd.ms-powerpoint	ppt # Microsoft Powerpoint presentation
+application/vnd.ms-project # Microsoft Project
 application/vnd.ms-tnef
-application/vnd.ms-works
+application/vnd.ms-works  # Microsoft Works
 application/vnd.msign
 application/vnd.music-niff
 application/vnd.musician
@@ -264,24 +264,24 @@ application/x-compress
 application/x-cpio		cpio
 application/x-csh		csh
 application/x-director		dcr dir dxr
-application/x-dvi		dvi
+application/x-dvi		dvi # DVI
 application/x-futuresplash	spl
 application/x-gtar		gtar
-application/x-gzip
+application/x-gzip # Gzipped data
 application/x-hdf		hdf
-application/x-javascript	js
+application/x-javascript	js # Javascript source
 application/x-koan		skp skd skt skm
-application/x-latex		latex
+application/x-latex		latex # LaTeX source
 application/x-netcdf		nc cdf
 application/x-sh		sh
 application/x-shar		shar
-application/x-shockwave-flash	swf
-application/x-stuffit		sit
+application/x-shockwave-flash	swf # Shockware Flash
+application/x-stuffit		sit # StuffIT archive
 application/x-sv4cpio		sv4cpio
 application/x-sv4crc		sv4crc
-application/x-tar		tar
-application/x-tcl		tcl
-application/x-tex		tex
+application/x-tar		tar # Unix TAR
+application/x-tcl		tcl # TCL
+application/x-tex		tex # TEX
 application/x-texinfo		texinfo texi
 application/x-troff		t tr roff
 application/x-troff-man		man
@@ -291,13 +291,13 @@ application/x-ustar		ustar
 application/x-wais-source	src
 application/x400-bp
 application/xml
-application/zip			zip
-application/vnd.palm		prc
+application/zip			zip # ZIP archive
+application/vnd.palm		prc # Palm database
 audio/32kadpcm
-audio/basic			au snd
+audio/basic			au snd # AU format audio
 audio/l16
-audio/midi			mid midi kar
-audio/mpeg			mpga mp2 mp3
+audio/midi			mid midi kar # MIDI audio
+audio/mpeg			mpga mp2 mp3 # MP3 audio
 audio/prs.sid
 audio/telephone-event
 audio/tone
@@ -313,24 +313,24 @@ audio/vnd.octel.sbc
 audio/vnd.qcelp
 audio/vnd.rhetorex.32kadpcm
 audio/vnd.vmx.cvsd
-audio/x-aiff			aif aiff aifc
-audio/x-pn-realaudio		ram rm
-audio/x-pn-realaudio-plugin	rpm
-audio/x-realaudio		ra
-audio/x-wav			wav
+audio/x-aiff			aif aiff aifc # AIFF audio
+audio/x-pn-realaudio		ram rm # RealAudio
+audio/x-pn-realaudio-plugin	rpm # RealAudio
+audio/x-realaudio		ra # RealAudio
+audio/x-wav			wav # WAV audio
 chemical/x-pdb			pdb
 chemical/x-xyz			xyz
-image/bmp			bmp
+image/bmp			bmp # BMP image
 image/cgm
-image/g3fax
-image/gif			gif
+image/g3fax # G3 fax image
+image/gif			gif # GIF image
 image/ief			ief
-image/jpeg			jpeg jpg jpe
+image/jpeg			jpeg jpg jpe # JPEG Image
 image/naplps
-image/png			png
+image/png			png # PNG image
 image/prs.btif
 image/prs.pti
-image/tiff			tiff tif
+image/tiff			tiff tif # TIFF image
 image/vnd.cns.inf2
 image/vnd.dwg
 image/vnd.dxf
@@ -345,21 +345,21 @@ image/vnd.svf
 image/vnd.wap.wbmp		wbmp
 image/vnd.xiff
 image/x-cmu-raster		ras
-image/x-portable-anymap		pnm
-image/x-portable-bitmap		pbm
-image/x-portable-graymap	pgm
-image/x-portable-pixmap		ppm
-image/x-rgb			rgb
-image/x-xbitmap			xbm
-image/x-xpixmap			xpm
-image/x-xwindowdump		xwd
-message/delivery-status
-message/disposition-notification
+image/x-portable-anymap		pnm # PNM image
+image/x-portable-bitmap		pbm # PBM image
+image/x-portable-graymap	pgm # PGM image
+image/x-portable-pixmap		ppm # PPM image
+image/x-rgb			rgb # RGB image
+image/x-xbitmap			xbm # X bitmap image
+image/x-xpixmap			xpm # X pixmap image
+image/x-xwindowdump		xwd # X Window system image
+message/delivery-status # Delivery status
+message/disposition-notification # Delivery notification
 message/external-body
 message/http
 message/news
 message/partial
-message/rfc822
+message/rfc822 # Email message
 message/s-http
 model/iges			igs iges
 model/mesh			msh mesh silo
@@ -370,7 +370,7 @@ model/vnd.gs-gdl
 model/vnd.gtw
 model/vnd.mts
 model/vnd.vtu
-model/vrml			wrl vrml
+model/vrml			wrl vrml # VRML model
 multipart/alternative
 multipart/appledouble
 multipart/byteranges
@@ -385,17 +385,17 @@ multipart/report
 multipart/signed
 multipart/voice-message
 text/calendar
-text/css			css
+text/css			css # Cascading style sheel
 text/directory
 text/enriched
-text/html			html htm
-text/plain			asc txt
+text/html			html htm # HTML document
+text/plain			asc txt # Text document
 text/prs.lines.tag
-text/rfc822-headers
-text/richtext			rtx
-text/rtf			rtf
-text/sgml			sgml sgm
-text/tab-separated-values	tsv
+text/rfc822-headers # Email headers
+text/richtext			rtx # Rich text document
+text/rtf			rtf # RTF document
+text/sgml			sgml sgm # SGML document
+text/tab-separated-values	tsv # Tab separated values
 text/t140
 text/uri-list
 text/vnd.DMClientScript
@@ -413,17 +413,17 @@ text/vnd.motorola.reflex
 text/vnd.ms-mediapackage
 text/vnd.wap.si
 text/vnd.wap.sl
-text/vnd.wap.wml		wml
+text/vnd.wap.wml		wml # WML document
 text/vnd.wap.wmlscript		wmls
 text/x-setext			etx
-text/xml			xml
-video/mpeg			mpeg mpg mpe
+text/xml			xml # XML document
+video/mpeg			mpeg mpg mpe # MPEG video
 video/pointer
-video/quicktime			qt mov
+video/quicktime			qt mov # Quicktime video
 video/vnd.fvt
 video/vnd.motorola.video
 video/vnd.motorola.videop
 video/vnd.vivo
-video/x-msvideo			avi
-video/x-sgi-movie		movie
+video/x-msvideo			avi # AVI video
+video/x-sgi-movie		movie # SGI video
 x-conference/x-cooltalk		ice
