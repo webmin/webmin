@@ -5390,11 +5390,17 @@ if (!@list_mime_types_cache) {
 	local $_;
 	open(MIME, "$root_directory/mime.types");
 	while(<MIME>) {
+		local $cmt;
 		s/\r|\n//g;
-		s/#.*$//g;
+		if (s/#\s*(.*)$//g) {
+			$cmt = $1;
+			}
 		local ($type, @exts) = split(/\s+/);
-		push(@list_mime_types_cache, { 'type' => $type,
-					       'exts' => \@exts });
+		if ($type) {
+			push(@list_mime_types_cache, { 'type' => $type,
+						       'exts' => \@exts,
+						       'desc' => $cmt });
+			}
 		}
 	close(MIME);
 	}
