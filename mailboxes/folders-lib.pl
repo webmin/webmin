@@ -2265,20 +2265,73 @@ return $_[0]->{'header'}->{'subject'} !~ /DON'T DELETE THIS MESSAGE.*FOLDER INTE
 sub fix_cids
 {
 local $rv = $_[0];
-$rv =~ s/(src="|href=")cid:([^"]+)(")/$1.&fix_cid($2,$_[1],$_[2],$_[3]).$3/gei;
-$rv =~ s/(src='|href=')cid:([^']+)(')/$1.&fix_cid($2,$_[1],$_[2],$_[3]).$3/gei;
-$rv =~ s/(src=|href=)cid:([^\s>]+)()/$1.&fix_cid($2,$_[1],$_[2],$_[3]).$3/gei;
+$rv =~ s/(src="|href="|background=")cid:([^"]+)(")/$1.&fix_cid($2,$_[1],$_[2]).$3/gei;
+$rv =~ s/(src='|href='|background=')cid:([^']+)(')/$1.&fix_cid($2,$_[1],$_[2]).$3/gei;
+$rv =~ s/(src=|href=|background=)cid:([^\s>]+)()/$1.&fix_cid($2,$_[1],$_[2]).$3/gei;
 return $rv;
 }
 
-# fix_cid(cid, &attachments, url-prefix, &cid-list)
+# fix_cid(cid, &attachments, url-prefix)
 sub fix_cid
 {
 local ($cont) = grep { $_->{'header'}->{'content-id'} eq $_[0] ||
 		       $_->{'header'}->{'content-id'} eq "<$_[0]>" } @{$_[1]};
 return "cid:$_[0]" if (!$cont);
-push(@{$_[3]}, $cont) if ($_[3]);
 return "$_[2]&attach=$cont->{'idx'}";
+}
+
+# create_cids(html, &results-map)
+# Replaces all image references in the body like <img src=detach.cgi?...> with
+# cid: tags, stores in the results map pointers from the index to the CID.
+sub create_cids
+{
+local ($html, $cidmap) = @_;
+$html =~ s/(src="|href="|background=")detach.cgi\?([^"]+)(")/$1.&create_cid($2,$cidmap).$3/gei;
+$html =~ s/(src='|href='|background=')detach.cgi\?([^']+)(')/$1.&create_cid($2,$cidmap).$3/gei;
+$html =~ s/(src=|href=|background=)detach.cgi\?([^\s>]+)()/$1.&create_cid($2,$cidmap).$3/gei;
+return $html;
+}
+
+sub create_cid
+{
+local ($args, $cidmap) = @_;
+if ($args =~ /attach=(\d+)/) {
+	$cidmap->{$1} = time().$$;
+	return "cid:".$cidmap->{$1};
+	}
+else {
+	# No attachment ID!
+	return "";
+	}
+}
+
+# remove_body_attachments(&mail, &attach)
+# Returns attachments except for those that make up the message body, and those
+# that have sub-attachments.
+sub remove_body_attachments
+{
+local ($mail, $attach) = @_;
+local ($textbody, $htmlbody) = &find_body($mail);
+return grep { $_ ne $htmlbody && $_ ne $textbody && !$_->{'attach'} &&
+	      $_->{'type'} ne 'message/delivery-status' } @$attach;
+}
+
+# remove_cid_attachments(&mail, &attach)
+# Returns attachments except for those that are used for inline images in the
+# HTML body.
+sub remove_cid_attachments
+{
+local ($mail, $attach) = @_;
+local ($textbody, $htmlbody) = &find_body($mail);
+local @rv;
+foreach my $a (@$attach) {
+	my $cid = $a->{'header'}->{'content-id'};
+	$cid =~ s/^<(.*)>$/$1/g;
+	if (!$cid || $htmlbody->{'data'} !~ /cid:\Q$cid\E|cid:"\Q$cid\E"|cid:'\Q$cid\E'/) {
+		push(@rv, $a);
+		}
+	}
+return @rv;
 }
 
 # quoted_message(&mail, quote-mode, sig, 0=any,1=text,2=html)
