@@ -1180,8 +1180,11 @@ elsif ($f->{'type'} == 5 || $f->{'type'} == 6) {
 	}
 
 # Always force a re-check of the index when deleting, as we may not detect
-# the change (especially for IMAP, where UIDNEXT may not change)
-&force_new_index_recheck($f);
+# the change (especially for IMAP, where UIDNEXT may not change). This isn't
+# needed for Maildir or MH, as indexing is reliable enough
+if ($f->{'type'} != 1 && $f->{'type'} != 3) {
+	&force_new_index_recheck($f);
+	}
 }
 
 # mailbox_empty_folder(&folder)
