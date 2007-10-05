@@ -14,6 +14,7 @@ $licence = "Freeware";
 $release = 1;
 $< = $>;		# If running setuid
 $ENV{'PATH'} = "/bin:/usr/bin:/usr/local/bin:/sbin:/usr/sbin";
+$allow_overwrite = 0;
 
 # Parse command-line args
 while(@ARGV) {
@@ -59,6 +60,9 @@ while(@ARGV) {
 		}
 	elsif ($a eq "--allow-overwrite") {
 		$allow_overwrite = 1;
+		}
+	elsif ($a eq "--sign") {
+		$sign = 1;
 		}
 	elsif ($a =~ /^\-\-/) {
 		print STDERR "Unknown option $a\n";
@@ -107,6 +111,7 @@ if ($mod eq "." || $mod eq "..") {
 $spec_dir = "$basedir/SPECS";
 $rpm_source_dir = "$basedir/SOURCES";
 $rpm_dir = "$basedir/RPMS/noarch";
+$source_rpm_dir = "$basedir/SRPMS";
 if (!-d $spec_dir || !-d $rpm_source_dir || !-d $rpm_dir) {
 	die "RPM directory $basedir is not valid";
 	}
@@ -264,7 +269,7 @@ if [ "$depends" != "" -a "$rpmdepends" != 1 ]; then
 	done
 fi
 # Check if this module is already installed
-if [ -d /usr/libexec/$prog/$mod -a "\$1" = "1" -a "\$allow_overwrite" != "1" ]; then
+if [ -d /usr/libexec/$prog/$mod -a "\$1" = "1" -a "$allow_overwrite" != "1" ]; then
 	echo "This $ucprog module is already installed on your system."
 	exit 1
 fi
@@ -345,6 +350,12 @@ close(SPEC);
 $cmd = -x "/usr/bin/rpmbuild" ? "/usr/bin/rpmbuild" : "/bin/rpm";
 system("$cmd -ba $spec_dir/$prefix$mod.spec") && exit;
 unlink("$rpm_source_dir/$mod.tar.gz");
+
+# Sign if requested
+if ($sign) {
+	system("rpm --resign $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $source_rpm_dir/$prefix$mod-$ver-$release.src.rpm");
+	}
+
 if ($target_dir =~ /:/) {
 	# scp to dest
 	system("scp $rpm_dir/$prefix$mod-$ver-$release.noarch.rpm $target_dir/$prefix$mod-$ver-$release.noarch.rpm");
