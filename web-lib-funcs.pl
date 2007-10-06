@@ -924,6 +924,23 @@ else { return 0; }
 # Finds a process by name, and returns a list of matching PIDs
 sub find_byname
 {
+if ($gconfig{'os_type'} =~ /-linux$/ && -r "/proc/$$/cmdline") {
+	# Linux with /proc filesystem .. use cmdline files, as this is
+	# faster than forking
+	local @pids;
+	opendir(PROCDIR, "/proc");
+	foreach my $f (readdir(PROCDIR)) {
+		if ($f eq int($f)) {
+			local $line = &read_file_contents("/proc/$f/cmdline");
+			if ($line =~ /$_[0]/) {
+				push(@pids, $f);
+				}
+			}
+		}
+	closedir(PROCDIR);
+	return @pids;
+	}
+
 if (&foreign_check("proc")) {
 	# Call the proc module
 	&foreign_require("proc", "proc-lib.pl");

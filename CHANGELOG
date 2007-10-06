@@ -75,3 +75,4 @@ Requests to the /unauthenticated URL can never execute CGI programs, to provide 
 Fixed XSS bugs in pam_login.cgi.
 ---- Changes since 1.370 ----
 Hid the Jabber and Security Sentries modules by default, as the underlying software is no longer supported.
+On Linux systems, sped up the function for finding processes so that it no longer has to launch 'ps' - instead, it reads /proc directly.
