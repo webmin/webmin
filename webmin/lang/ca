@@ -530,7 +530,7 @@ session_banner0=Mostra el fitxer de preentrada
 session_ebanner=Hi falta el fitxer de preentrada o bé és invàlid
 session_extauth=Programa d'autenticació extern d'estil squid
 session_eextauth=Hi falta el programa extern d'autenticació o bé és invàlid
-session_pmodedesc2=Quan s'utilitzi autenticació Unix...
+session_pmodedesc2=Política de caducitat de contrasenyes...
 session_pmode0=Denega sempre els usuaris amb contrasenyes caducades
 session_pmode1=Permet sempre els usuaris amb contrasenyes caducades
 session_pmode2=Força els usuaris amb contrasenyes caducades a introduir-ne una de nova
@@ -720,6 +720,10 @@ advanced_title=Opcions Avançades
 advanced_header=Opcions avançades i experimentals
 advanced_temp=Directori de fitxers temporals
 advanced_tempdef=Per defecte (<tt>/tmp/.webmin</tt>) 
+advanced_tdd=Neteja els fitxers temporals del directori no estàndard
+advanced_tempdelete=Edat màxima dels fitxers temporal
+advanced_nodelete=Il·limitada
+advanced_days=dies
 advanced_preload=Precarrega la llibreria de funcions de Webmin
 advanced_err=No he pogut desar les opcions avançades
 advanced_etemp=Hi falta el directori de fitxers temporals o bé no existeix
@@ -732,6 +736,7 @@ advanced_stack=Mostra el rastreig de pila per als missatges d'error
 advanced_showstderr=Mostra els errors de Perl al navegador
 advanced_umask=Umask (bits de permisos) dels fitxers creats
 advanced_eumask=L'umask ha de ser un número octal de 3 dígits
+advanced_etempdelete=Hi falta l'edat màxima dels fitxers temporals o bé és invàñida
 
 syslog_errorlog=Registre d'errors de Webmin
 
@@ -783,3 +788,5 @@ blocked_host=Host client
 blocked_clear=Esborra Tots els Blocatges
 blocked_cleardesc=Fes clic sobre aquest botó per esborrar tots els blocatges actuals de hosts i usuaris, reiniciant el procés servidor de Webmin.
 blocked_restarting=El procés servidor de Webmin s'està reiniciant per esborrar els blocatges de hosts i usuaris - espera uns segons abans de continuar, si et plau.
+
+
