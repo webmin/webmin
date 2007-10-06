@@ -36,6 +36,7 @@ index_noperiod=No hi ha mínim
 index_mins=minuts
 index_astart=No enviïs autorespostes abans de
 index_aend=No enviïs autorespostes després de
+index_nowebmin=Aquest mòdul és per utilitzar només a Usermin. Si està visible a Webmin, el tema que estàs utilitzant és incomplet.
 
 edit_title1=Creació de Filtre
 edit_title2=Edició de Filtre
@@ -69,6 +70,7 @@ save_eforward=Hi falta l'adreça de reenviament
 save_efile=Hi falta el fitxer de correu per al lliurament
 save_ereply=No has introduït cap text d'autoresposta
 save_eperiod=Hi falta l'interval de resposta automàtica o bé és invàlid
+save_eperiodmin=L'interval de resposta automàtica ha de ser almenys de $1 minuts
 save_enewfolder=Hi falta el nom de la nova carpeta
 save_enewfolder2=Nom de carpeta invàlid
 save_enewfolder3=Ja existeix una carpeta amb aquest nom
