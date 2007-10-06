@@ -6,6 +6,18 @@ index_emdstat=El fitxer d'estat RAID del kernel $1 no existeix. Probablement, el
 index_eprogs=Ni les eines RAID ni els paquets de MDADM es troben instal·lats al sistema.
 index_mdadm=Fent servir MDADM
 index_raidtools=Fent servir RaidTools
+index_name=Nom de dispositiu
+index_active=Actiu
+index_level=Nivell RAID
+index_members=Dispositius de disc del member
+index_header=Opcions de notificació de problemes RAID
+index_mailaddr=Envia les notificacions a
+index_mailaddrnone=No enviïs
+index_mailfrom=Adreça From: de les notificacions
+index_mailfromnone=Per defecte (<tt>root</tt>)
+index_program=Ordre a executar quen es detecta un problema
+index_programnone=No n'executis cap
+index_monitor=Monitorització activada
 
 linear=Concatenat (Lineal)
 raid0=A tires (RAID0)
@@ -13,6 +25,7 @@ raid1=Replicat (RAID1)
 raid4=Amb paritat (RAID4)
 raid5=Redundant (RAID5)
 raid6=Redundant dual (RAID6)
+raid10=A tires i Replicat (RAID10)
 blocks=blocs
 
 create_title=Creació de Dispositiu RAID
@@ -100,6 +113,11 @@ log_stop=He desactivat el dispositiu RAID $1
 log_start=He activat el dispositiu RAID $1
 log_delete=He suprimit el dispositiu RAID $1
 log_mkfs=He creat el sistema de fitxers $1 a $2
-
 log_add=He afegit la partició $2 al dispositiu RAID $1
 log_remove=He eliminat la partició $2 del dispositiu RAID $1
+log_notif=He actualitzat les opcions de notificació de problemes RAID
+
+notif_err=No he pogut desar les opcions de notificació de problemes RAID
+notif_emailaddr=Hi falta l'adreça de notificació o bé és invàlida
+notif_emailfrom=Hi falta l'adreça From: o bé és invàlida
+notif_eprogram=Hi falta el programa a executar o bé no existeix
