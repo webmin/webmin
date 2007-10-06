@@ -96,3 +96,5 @@ rollback_modfile=He revertit el contingut del fitxer $1.
 rollback_deleted=He suprimit el fitxer $1.
 rollback_nodeleted=He omès el fitxer inexistent $1.
 rollback_enone=No has seleccionat cap fitxer
+
+log_rollback=He revertit l'acció $1 al mòdul $2
