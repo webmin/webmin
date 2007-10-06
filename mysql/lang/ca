@@ -54,6 +54,7 @@ dbase_drop=Destrueix BD
 dbase_exec=Executa SQL
 dbase_backup=Aboca la BD
 dbase_none=Aquesta base de dades no té taules.
+dbase_none2=No hi ha cap taula que coincideixi amb la teva cerca.
 dbase_fields=Columnes:
 dbase_return=a la llista de taules
 dbase_ecannot=No tens permís per editar aquesta base de dades
