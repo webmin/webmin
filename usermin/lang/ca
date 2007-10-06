@@ -118,6 +118,10 @@ configs_uheader=Preferències d'usuari per defecte de $1
 configs_return=a la configuració de mòduls d'Usermin
 configs_prefs=Els usuaris poden editar les preferències
 configs_sels=Només els seleccionats...
+configs_global=Configuració global del mòdul
+configs_globaldesc=Els valors d'aquest formulari s'apliquen a tots els usuaris del mòdul , en general, a totes aquelles opcions relatives als programes i fitxers que utilitza.
+configs_user=Preferències per defecte dels usuaris
+configs_userdesc=Els valors d'aquest formulari defineixen els valors per defecte de les preferències editables per l'usuari en aquest mòdul. A menys que especifiquis el contrari, aquests poden ser obviats perls usuaris individuals.
 
 acl_title=Mòduls Disponibles
 acl_desc=Fes servir aquesta pàgina per seleccionar quins mòduls instal·lats d'Usermin poden veure els usuaris.
