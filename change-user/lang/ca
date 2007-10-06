@@ -23,7 +23,8 @@ change_user=Modificant l'entrada de Webmin...
 change_done=...fet
 change_restart=Reiniciant Webmin...
 change_redirect=Redireccionant al menú principal...
-change_ecolon=La contrasenya no pot contenir el caràcter :
+change_ecolon=La contrasenya no pot contenir el caràcter:
+change_epass=La nova contrasenya no és vàlida: $1
 
 acl_lang=Pot canviar l'idioma
 acl_theme=Pot canviar el tema
