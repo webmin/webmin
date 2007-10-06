@@ -54,7 +54,7 @@ charset=Joc de caràcters per editar els usuaris i els grups,3,De l'idioma de Web
 secmode=Mostra els grups secundaris al formulari de l'usuari,1,0-Sí,1-No,2-Com una finestra de text
 
 line2=Opcions de compte Samba,11
-samba_class=Classe d'objecte LDAP per a usuaris de Samba,0
+samba_class=Classe d'objecte LDAP per a usuaris de Samba,10,sambaAccount-sambaAccount (Samba 2),sambaSamAccount-sambaSamAccount (Samba 3),Altres
 samba_def=Activa el compte Samba per defecte,1,1-Sí,0-No
 samba_domain=Domini SID de Samba3,0
 samba_props=Propietats LDAP per als nous usuaris de Samba,9,40,3,\t
