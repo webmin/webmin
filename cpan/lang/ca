@@ -19,6 +19,7 @@ index_upgrade=Actualitza Mòduls
 index_recs=Es recomana que Webmin instal·li els següents mòduls Perl:
 index_recsok=Instal·la els Mòduls Seleccionats
 index_recsgot=Webmin ha instal·lat tots els mòduls Perl recomanats següents: $1
+index_ezone=Sembla que Perl està compartit amb la zona global. així que els mòduls no es poden instal·lar aquí. S'han d'instal·lar a la zona global.
 
 download_err=No he pogut instal·lar el mòdul
 download_elocal=No s'ha donat cap fitxer local
