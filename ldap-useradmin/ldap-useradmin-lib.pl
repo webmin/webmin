@@ -1063,12 +1063,10 @@ if (defined($nt)) {
 if ($new) {
 	# Set other samba-related options
 	push(@$props, "ntuid", $user->{'user'})
-		if (&in_schema($schema, "ntuid") &&
-		    $config{'samba_class'} eq 'sambaAccount');
+		if (&in_schema($schema, "ntuid") && $samba_schema == 2);
 
 	push(@$props, "rid", $user->{'uid'}*2+1000)
-		if (&in_schema($schema, "rid") &&
-		    $config{'samba_class'} eq 'sambaAccount');
+		if (&in_schema($schema, "rid") && $samba_schema == 2);
 	push(@$props, "sambaSID",
 		     $config{'samba_domain'}.'-'.($user->{'uid'}*2+1000))
 		if (&in_schema($schema, "sambaSID") &&
@@ -1104,8 +1102,7 @@ if ($new) {
 
 if (defined($opts)) {
 	push(@$props, "acctFlags", sprintf("[%-11s]", $opts))
-		if (&in_schema($schema, "acctFlags") &&
-		    $config{'samba_class'} eq 'sambaAccount');
+		if (&in_schema($schema, "acctFlags") && $samba_schema == 2);
 
 	push(@$props, "sambaAcctFlags", sprintf("[%-11s]",$opts))
 		if (&in_schema($schema, "sambaAcctFlags") &&
@@ -1120,12 +1117,15 @@ push(@$props, &split_props($config{'samba_props'}, $user));
 sub samba_removes
 {
 local ($user, $schema, $rprops) = @_;
-push(@$rprops, "ntPassword", "lmPassword",
-	      "ntuid", "rid", "acctFlags")
-	if ($samba_schema == 2);
-push(@$rprops, "sambaNTPassword", "sambaLMPassword",
-	      "sambaSID","sambaAcctFlags")
-	if ($samba_schema == 3);
+if ($samba_schema == 2) {
+	push(@$rprops, "ntPassword", "lmPassword",
+		       "ntuid", "rid", "acctFlags")
+	}
+if ($samba_schema == 3) {
+	push(@$rprops, "sambaNTPassword", "sambaLMPassword",
+		       "sambaSID", "sambaAcctFlags", "sambaPrimaryGroupSID",
+		       "sambaPwdLastSet", "sambaPwdCanChange");
+	}
 
 push(@$rprops, &split_first($config{'samba_props'}));
 }
