@@ -48,6 +48,7 @@ index_sapplymsg=Fes clic sobre aquest botó per reiniciar el servidor BIND en exe
 index_all=Totes les zones
 index_massdelete=Suprimeix les Seleccionades
 index_massupdate=Actualitza els Registres a les Seleccionades
+index_masscreate=Afegeix el Registre a les Seleccionades
 index_bind=BIND
 
 master_title=Edició de Zona Mestra
@@ -817,6 +818,7 @@ add_createerr=He configurat $1 amb $2 noves zones esclaves, però he trobat $3 er
 add_createok=He configurat $1 amb $2 noves zones esclaves.
 add_ename=Hi falta el nom de registre NS o bé és invàlid
 add_egname=No es pot especificar un registre NS quan s'afegeix un grup
+> add_emyip=No he pogut trobar l'adreça IP d'aquest sistema. Hauries d'establir la IP del <b>Srvidor mestre per defecte de les zones esclaves</b> remotes a la pàgina de Configuració del mòdul.
 
 mass_title=Creació de Zones a Partir de Fitxer Batch
 mass_desc=Aquesta pàgina permet crear múltiples zones de cop a partir d'un fitxer de text pujat o en el servidor. Cada línia del fitxer ha de tenir el format següent:<p><tt><i>nom_domini</i>:<i>tipus</i>:<i>nom_fitxer</i>:<i>IPs_mestres</i></tt><p>El <i>tipus</i> ha de ser un de <tt>master</tt>, <tt>slave</tt>, <tt>stub</tt> o <tt>forward</tt>. El <i>nom_fitxer</i> és opcional, i es determinarà automàticament si no hi és. Les <i>IPs_mestres</i> només són necessàries per a les zones esclaves.
@@ -900,3 +902,19 @@ umass_done=...he actualitzat $1 registres que coincideixen d'entre $2.
 umass_none=...no s'ha trobat cap registre coincident per actualitzar d'entre $1.
 umass_egone=La zona no existeix
 emass_emx='$1' no és un número de prioritat del servidor de correu seguit per un nom de host vàlid
+
+rmass_err=No he pogut afegir els registres
+rmass_enone=No n'has seleccionat cap
+rmass_title=Afegeix el Registre a les Zones
+rmass_header=Detalls de l'addició massiva de registres
+rmass_type=Tipus de registre a afegir
+rmass_name=Nom del nou regitre
+rmass_value=Valor del nou registre
+rmass_ok=Afegeix el Registre
+rmass_ttl=Temps de vida del nou registre
+rmass_ename=Hi falta el nom del registre o bé és invàlid
+rmass_ename2=El nom del registre no pot acabar amb un .
+rmass_ettl=Hi falta el temps de vida o bé és invàlid
+rmass_doing=Afegint el registre a la zona $1...
+rmass_done=...fet
+rmass_eclash=...ja existeix un registre amb el mateix nom i valor $1.
