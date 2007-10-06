@@ -113,6 +113,10 @@ view_body=Text del missatge
 view_allheaders=Mostra totes les capçaleres
 view_noheaders=Mostra les capçaleres bàsiques
 view_attach=Adjuncions
+view_afile=Nom de l'adjunció
+view_atype=TIpus MIME
+view_anofile=Sense nom de fitxer
+view_asize=Mida del fitxer
 view_reply=Respon
 view_reply2=Respon a tots
 view_enew=Edita coma nou
@@ -146,6 +150,7 @@ view_crypt_3=El correu s'ha desxifrat correctament.
 view_crypt_4=La part xifrada del missatge s'ha desxifrat correctament.
 view_recv=<a href='$2'>Obtingues l'ID de clau $1 del servidor de claus</a>.
 view_folder=Torna a la bústia
+view_dheader=Desadjunta l'adjunció al servidor
 view_detach=Separa el fitxer:
 view_dall=&lt;Tots els fitxers&gt;
 view_dir=al fitxer o directori del servidor:
@@ -184,12 +189,14 @@ reply_efwdnone=No existeix cap dels missatges reenviats
 
 reply_spell=Comprova l'ortografia
 reply_draft=Desa com a Esborrany
+reply_save=Desa i Edita
 
 send_err=No he pogut enviar el correu
 send_eto=Hi falta l'adreça To
 send_efrom=Hi falta l'adreça From
 send_esubject=Hi falta l'asssumpte del correu
 send_title=Correu Enviat
+send_title2=Correu Desat
 send_ok=Correu enviat correctament a to $1
 send_sending=Enviant el correu a $1...
 send_ecannot=No tens permís per enviar correu amb aquest usuari
