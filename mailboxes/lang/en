@@ -176,6 +176,8 @@ view_reporting-mta=Reporting mail server
 view_astext=View as text
 view_ashtml=View as HTML
 view_raw=View raw message
+view_aall=Save all attachments as ZIP.
+view_aslideshow=Show all images.
 
 compose_title=Compose Email
 
@@ -405,3 +407,6 @@ delall_title=Delete All Mail
 delall_rusure=Are you sure you want to delete all email from $1? $2 messages totalling $3 will be deleted forever.
 delall_ok=Delete Now
 
+slide_title=Attached Images
+slide_prev=Previous
+slide_next=Next

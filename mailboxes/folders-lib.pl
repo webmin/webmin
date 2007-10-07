@@ -2706,5 +2706,24 @@ else {
 return "<".time().".".$$."\@".$dom.">";
 }
 
+# type_to_extension(type)
+# Returns a good extension for a MIME type
+sub type_to_extension
+{
+local ($type) = @_;
+$type =~ s/;.*$//;
+local ($mt) = grep { lc($_->{'type'}) eq lc($type) } &list_mime_types();
+if ($mt && $m->{'exts'}->[0]) {
+	return $m->{'exts'}->[0];
+	}
+elsif ($type =~ /^text\//) {
+	return ".txt";
+	}
+else {
+	my @p = split(/\//, $type);
+	return $p[1];
+	}
+}
+
 1;
 
