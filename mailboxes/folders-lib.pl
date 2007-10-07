@@ -2265,9 +2265,16 @@ return $_[0]->{'header'}->{'subject'} !~ /DON'T DELETE THIS MESSAGE.*FOLDER INTE
 sub fix_cids
 {
 local $rv = $_[0];
+
+# Fix images referring to CIDs
 $rv =~ s/(src="|href="|background=")cid:([^"]+)(")/$1.&fix_cid($2,$_[1],$_[2]).$3/gei;
 $rv =~ s/(src='|href='|background=')cid:([^']+)(')/$1.&fix_cid($2,$_[1],$_[2]).$3/gei;
 $rv =~ s/(src=|href=|background=)cid:([^\s>]+)()/$1.&fix_cid($2,$_[1],$_[2]).$3/gei;
+
+# Fix images whose URL is actually in an attachment
+$rv =~ s/(src="|href="|background=")((http|https)[^"]+)(")/$1.&fix_contentlocation($2,$_[1],$_[2]).$4/gei;
+$rv =~ s/(src='|href='|background=')((http|https)[^']+)(')/$1.&fix_contentlocation($2,$_[1],$_[2]).$4/gei;
+$rv =~ s/(src=|href=|background=)((http|https)[^\s>]+)()/$1.&fix_contentlocation($2,$_[1],$_[2]).$4/gei;
 return $rv;
 }
 
@@ -2276,8 +2283,25 @@ sub fix_cid
 {
 local ($cont) = grep { $_->{'header'}->{'content-id'} eq $_[0] ||
 		       $_->{'header'}->{'content-id'} eq "<$_[0]>" } @{$_[1]};
-return "cid:$_[0]" if (!$cont);
-return "$_[2]&attach=$cont->{'idx'}";
+if ($cont) {
+	return "$_[2]&attach=$cont->{'idx'}";
+	}
+else {
+	return "cid:$_[0]";
+	}
+}
+
+# fix_contentlocation(url, &attachments, url-prefix)
+sub fix_contentlocation
+{
+local ($cont) = grep { $_->{'header'}->{'content-location'} eq $_[0] ||
+	       $_->{'header'}->{'content-location'} eq "<$_[0]>" } @{$_[1]};
+if ($cont) {
+	return "$_[2]&attach=$cont->{'idx'}";
+	}
+else {
+	return $_[0];
+	}
 }
 
 # create_cids(html, &results-map)
@@ -2327,7 +2351,18 @@ local @rv;
 foreach my $a (@$attach) {
 	my $cid = $a->{'header'}->{'content-id'};
 	$cid =~ s/^<(.*)>$/$1/g;
-	if (!$cid || $htmlbody->{'data'} !~ /cid:\Q$cid\E|cid:"\Q$cid\E"|cid:'\Q$cid\E'/) {
+	my $cl = $a->{'header'}->{'content-location'};
+	$cl =~ s/^<(.*)>$/$1/g;
+	local $inline;
+	if ($cid && $htmlbody->{'data'} =~ /cid:\Q$cid\E|cid:"\Q$cid\E"|cid:'\Q$cid\E'/) {
+		# CID-based attachment
+		$inline = 1;
+		}
+	elsif ($cl && $htmlbody->{'data'} =~ /\Q$cl\E/) {
+		# Content-location based attachment
+		$inline = 1;
+		}
+	if (!$inline) {
 		push(@rv, $a);
 		}
 	}
