@@ -629,6 +629,8 @@ referers_desc=This page allows you to configure Webmin's referrer checking suppo
 referers_list=Trusted websites
 referers_none=Trust links from unknown referrers
 referers_referer=Referrer checking enabled?
+referers_err=Failed to save referers
+referers_ehost='$1' is not a valid trusted hostname
 
 syslet_title=Syslet Auto-Download
 syslet_desc=This page is for configuring the automatic download and install of missing Eazel Syslets to your Webmin server.
