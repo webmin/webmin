@@ -326,6 +326,7 @@ image/g3fax # G3 fax image
 image/gif			gif # GIF image
 image/ief			ief
 image/jpeg			jpeg jpg jpe # JPEG Image
+image/pjpeg	# JPEG Image
 image/naplps
 image/png			png # PNG image
 image/prs.btif
