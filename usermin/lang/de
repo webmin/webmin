@@ -69,7 +69,7 @@ delete_rusure2=Sind Sie sicher, dass Sie das Theme $2 l&#246;schen wollen? $1 kB
 delete_title=Module l&#246;schen
 index_boot=Starte Usermin beim Booten
 index_bootmsg=&#196;ndern Sie diese Option, um Usermin bereits beim Booten zu starten. Wenn Usermin derzeit nicht f&#252;r den Start beim Booten eingerichtet ist und Sie diese Option aktivieren, wird ein neues Init-Script erstellt.
-index_econfig=Das Verzeichnis $1 scheint auf Ihrem System zu existieren oder ist nicht das Usermin-Konfigurationsverzeichnis. Event&#252;ll ist Usermin nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> is nicht korrekt.
+index_econfig=Das Verzeichnis $1 scheint auf Ihrem System zu existieren oder ist nicht das Usermin-Konfigurationsverzeichnis. Eventuell ist Usermin nicht installiert, oder Ihre <a href='$2'>Modulkonfiguration</a> is nicht korrekt.
 index_esame=Das Usermin-Konfigurationsverzeichnis $1, welches in der <a href='$2'>Modulkonfiguration</a> einstellbar ist, ist das gleiche, wie das Webmin-Konfigurationsverzeichnis. Das ist falsch.
 index_install=Webmin kann automatisch die neueste Version von Usermin f&#252;r Sie downloaden und installieren. Dies sollte jedoch nicht getan werden, wenn das Programm bereits installiert ist und ein anderes Konfigurationsverzeichnis verwendet.
 index_restart=Starte Usermin neu
