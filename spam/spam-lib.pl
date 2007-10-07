@@ -19,6 +19,9 @@ if ($module_info{'usermin'}) {
 			mkdir($1, 0700);
 			}
 		}
+	$database_userpref_name = $remote_user;
+	$include_config_files = 1;	# XXX
+	$add_to_db = 1;
 	}
 else {
 	# Running under Webmin, typically editing global config file
@@ -29,6 +32,9 @@ else {
 	if ($access{'nocheck'}) {
 		$warn_procmail = 0;
 		}
+	$database_userpref_name = $config{'dbglobal'} || '@GLOBAL';
+	$include_config_files = 1;
+	$add_to_db = $config{'addto'};
 	}
 $add_cf = !-d $local_cf ? $local_cf :
 	  $module_info{'usermin'} ? "$local_cf/user_prefs" :
@@ -39,41 +45,68 @@ $add_cf = !-d $local_cf ? $local_cf :
 sub get_config
 {
 local @rv;
-local $lnum = 0;
-local $file = $_[0] || $local_cf;
-if (-d $file) {
-	# A directory of files - read them all
-	opendir(DIR, $file);
-	local @files = sort { $a cmp $b } readdir(DIR);
-	closedir(DIR);
-	local $f;
-	foreach $f (@files) {
-		if ($f =~ /\.cf$/) {
-			local $add = &get_config("$file/$f");
-			map { $_->{'index'} += scalar(@rv) } @$add;
-			push(@rv, @$add);
+if ($include_config_files) {
+	# Reading from file(s)
+	local $lnum = 0;
+	local $file = $_[0] || $local_cf;
+	if (-d $file) {
+		# A directory of files - read them all
+		opendir(DIR, $file);
+		local @files = sort { $a cmp $b } readdir(DIR);
+		closedir(DIR);
+		local $f;
+		foreach $f (@files) {
+			if ($f =~ /\.cf$/) {
+				local $add = &get_config("$file/$f");
+				map { $_->{'index'} += scalar(@rv) } @$add;
+				push(@rv, @$add);
+				}
 			}
 		}
-	}
-else {
-	# A single file that can be read right here
-	open(FILE, $file);
-	while(<FILE>) {
-		s/\r|\n//g;
-		s/^#.*$//;
-		if (/^(\S+)\s*(.*)$/) {
-			local $dir = { 'name' => $1,
-				       'value' => $2,
-				       'index' => scalar(@rv),
-				       'file' => $file,
-				       'line' => $lnum };
-			$dir->{'words'} = [ split(/\s+/, $dir->{'value'}) ];
-			push(@rv, $dir);
+	else {
+		# A single file that can be read right here
+		open(FILE, $file);
+		while(<FILE>) {
+			s/\r|\n//g;
+			s/^#.*$//;
+			if (/^(\S+)\s*(.*)$/) {
+				local $dir = { 'name' => $1,
+					       'value' => $2,
+					       'index' => scalar(@rv),
+					       'file' => $file,
+					       'mode' => 0,
+					       'line' => $lnum };
+				$dir->{'words'} =
+					[ split(/\s+/, $dir->{'value'}) ];
+				push(@rv, $dir);
+				}
+			$lnum++;
 			}
-		$lnum++;
+		close(FILE);
 		}
-	close(FILE);
 	}
+
+if ($config{'mode'} == 1 || $config{'mode'} == 2) {
+	# Add from SQL database
+	local $dbh = &connect_spamassasin_db();
+	&error($dbh) if (!ref($dbh));
+	local $cmd = $dbh->prepare("select preference,value from userpref where username = ?");
+	$cmd->execute($database_userpref_name);
+	while(my ($name, $value) = $cmd->fetchrow()) {
+		local $dir = { 'name' => $name,
+			       'value' => $value,
+			       'mode' => $config{'mode'} };
+		$dir->{'words'} =
+			[ split(/\s+/, $dir->{'value'}) ];
+		push(@rv, $dir);
+		}
+	$cmd->finish();
+	}
+elsif ($config{'mode'} == 3) {
+	# From LDAP
+	# XXX
+	}
+
 return \@rv;
 }
 
@@ -116,27 +149,89 @@ for($i=0; $i<@old || $i<@new; $i++) {
 		}
 	if ($old[$i] && $new[$i]) {
 		# Replacing a directive
-		local $lref = &read_file_lines($old[$i]->{'file'});
-		$lref->[$old[$i]->{'line'}] = $line;
+		if ($old[$i]->{'mode'} == 0) {
+			# In a file
+			local $lref = &read_file_lines($old[$i]->{'file'});
+			$lref->[$old[$i]->{'line'}] = $line;
+			}
+		elsif ($old[$i]->{'mode'} == 1 || $old[$i]->{'mode'} == 2) {
+			# In an SQL DB
+			local $dbh = &connect_spamassasin_db();
+			&error($dbh) if (!ref($dbh));
+			local $cmd = $dbh->prepare("update userpref set value = ? where username = ? and preference = ? and value = ?");
+			$cmd->execute($new[$i]->{'value'},
+				      $database_userpref_name,
+				      $old[$i]->{'name'},
+				      $old[$i]->{'value'});
+			$cmd->finish();
+			}
+		elsif ($old[$i]->{'mode'} == 3) {
+			# In LDAP
+			# XXX
+			}
 		$_[0]->[$old[$i]->{'index'}] = $new[$i];
 		}
 	elsif ($old[$i]) {
 		# Deleting a directive
-		local $lref = &read_file_lines($old[$i]->{'file'});
-		splice(@$lref, $old[$i]->{'line'}, 1);
+		if ($old[$i]->{'mode'} == 0) {
+			# From a file
+			local $lref = &read_file_lines($old[$i]->{'file'});
+			splice(@$lref, $old[$i]->{'line'}, 1);
+			foreach $c (@{$_[0]}) {
+				if ($c->{'line'} > $old[$i]->{'line'} &&
+				    $c->{'file'} eq $old[$i]->{'file'}) {
+					$c->{'line'}--;
+					}
+				}
+			}
+		elsif ($old[$i]->{'mode'} == 1 || $old[$i]->{'mode'} == 2) {
+			# From an SQL DB
+			local $dbh = &connect_spamassasin_db();
+			&error($dbh) if (!ref($dbh));
+			local $cmd = $dbh->prepare("delete from userpref where username = ? and preference = ? and value = ?");
+			$cmd->execute($database_userpref_name,
+				      $old[$i]->{'name'},
+				      $old[$i]->{'value'});
+			$cmd->finish();
+			}
+		elsif ($old[$i]->{'mode'} == 3) {
+			# From LDAP
+			# XXX
+			}
+
+		# Fix up indexes
 		splice(@{$_[0]}, $old[$i]->{'index'}, 1);
 		foreach $c (@{$_[0]}) {
-			$c->{'line'}-- if ($c->{'line'} > $old[$i]->{'line'} &&
-					   $c->{'file'} eq $old[$i]->{'file'});
-			$c->{'index'}-- if ($c->{'index'} > $old[$i]->{'index'});
+			if ($c->{'index'} > $old[$i]->{'index'}) {
+				$c->{'index'}--;
+				}
 			}
 		}
 	elsif ($new[$i]) {
 		# Adding a directive
-		local $lref = &read_file_lines($add_cf);
-		$new[$i]->{'line'} = @$lref;
+		local $addmode = scalar(@old) ? $old[0]->{'mode'} :
+				 $add_to_db ? $config{'mode'} : 0;
+		if ($addmode == 0) {
+			# To a file
+			local $lref = &read_file_lines($add_cf);
+			$new[$i]->{'line'} = @$lref;
+			push(@$lref, $line);
+			}
+		elsif ($addmode == 1 || $addmode == 2) {
+			# To an SQL DB
+			local $dbh = &connect_spamassasin_db();
+			&error($dbh) if (!ref($dbh));
+			local $cmd = $dbh->prepare("insert into userpref (username, preference, value) values (?, ?, ?)");
+			$cmd->execute($database_userpref_name,
+				      $new[$i]->{'name'},
+				      $new[$i]->{'value'});
+			$cmd->finish();
+			}
+		elsif ($addmode == 3) {
+			# To LDAP
+			# XXX
+			}
 		$new[$i]->{'index'} = @{$_[0]};
-		push(@$lref, $line);
 		push(@{$_[0]}, $new[$i]);
 		}
 	}
@@ -613,6 +708,85 @@ if ($config{'after_cmd'}) {
 			    "<pre>".&html_escape($out)."</pre>"));
 	}
 }
+
+# check_spamassassin_db()
+# Checks if the LDAP or MySQL backend can be contacted, and if not returns
+# an error message.
+sub check_spamassassin_db
+{
+if ($config{'mode'} == 0) {
+	return undef;	# Local files always work
+	}
+elsif ($config{'mode'} == 1 || $config{'mode'} == 2) {
+	# Connect to a database
+	local $dbh = &connect_spamassasin_db();
+	return $dbh if (!ref($dbh));
+	local $testcmd = $dbh->prepare("select * from userpref limit 1");
+	if (!$testcmd || !$testcmd->execute()) {
+		undef($connect_spamassasin_db_cache);
+		$dbh->disconnect();
+		return &text('connect_equery', "<tt>$config{'db'}</tt>",
+					       "<tt>userpref</tt>");
+		}
+	$testcmd->finish();
+	undef($connect_spamassasin_db_cache);
+	$dbh->disconnect();
+	return undef;
+	}
+elsif ($config{'mode'} == 3) {
+	# Connect to LDAP
+	# XXX
+	}
+else {
+	return "Unknown config mode $config{'mode'} !";
+	}
+}
+
+# connect_spamassasin_db()
+# Attempts to connect to the SpamAssasin MySQL or PostgreSQL database. Returns
+# a driver handle on success, or an error message string on failure.
+sub connect_spamassasin_db
+{
+if (defined($connect_spamassasin_db_cache)) {
+	return $connect_spamassasin_db_cache;
+	}
+local $driver = $config{'mode'} == 1 ? "mysql" : "Pg";
+local $drh;
+eval <<EOF;
+use DBI;
+\$drh = DBI->install_driver(\$driver);
+EOF
+if ($@) {
+	return &text('connect_edriver', "DBD::$driver");
+        }
+local $dbistr = &make_dbistr($driver, $config{'db'}, $config{'host'});
+local $dbh = $drh->connect($dbistr,
+                           $config{'user'}, $config{'pass'}, { });
+$dbh || return &text('connect_elogin', "<tt>$config{'db'}</tt>",$drh->errstr)."\n";
+$connect_spamassasin_db_cache = $dbh;
+return $dbh;
+}
+
+sub make_dbistr
+{
+local ($driver, $db, $host) = @_;
+local $rv;
+if ($driver eq "mysql") {
+	$rv = "database=$db";
+	}
+elsif ($driver eq "Pg") {
+	$rv = "dbname=$db";
+	}
+else {
+	$rv = $db;
+	}
+if ($host) {
+	$rv .= ";host=$host";
+	}
+return $rv;
+}
+
+
 
 1;
 

@@ -6,3 +6,5 @@ warn_procmail=1
 call_spam=1
 processes=spamd amavisd
 procmail_cmd=*
+mode=0
+addto=0

@@ -44,10 +44,14 @@ else {
 
 	if (!-r $local_cf && !-d $local_cf && !$module_info{'usermin'}) {
 		# Config not found
-		print "<p>",&text('index_econfig',
+		print &text('index_econfig',
 			"<tt>$local_cf</tt>",
-			"$gconfig{'webprefix'}/config.cgi?$module_name"),
-			"<p>\n";
+			"../config.cgi?$module_name"),"<p>\n";
+		}
+	elsif ($dberr = &check_spamassassin_db()) {
+		# Cannot contact the DB
+		print &text('index_edb', $dberr,
+			    "../config.cgi?$module_name"),"<p>\n";
 		}
 	else {
 		# Work out of SpamAssassin is enabled in procmail
