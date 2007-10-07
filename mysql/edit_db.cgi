@@ -38,7 +38,7 @@ printf "<input type=radio name=user_def value=1 %s> %s\n",
 	$u->[2] ? '' : 'checked', $text{'db_anon'};
 printf "<input type=radio name=user_def value=0 %s>\n",
 	$u->[2] ? 'checked' : '';
-print "<input name=user size=10 value='$u->[2]'></td> </tr>\n";
+print "<input name=user size=20 value='$u->[2]'></td> </tr>\n";
 
 print "<tr> <td><b>$text{'db_host'}</b></td> <td>\n";
 printf "<input type=radio name=host_mode value=0 %s> %s\n",
@@ -47,7 +47,7 @@ printf "<input type=radio name=host_mode value=1 %s> %s\n",
 	$u->[0] eq '%' ? 'checked' : '', $text{'db_any'};
 printf "<input type=radio name=host_mode value=2 %s>\n",
 	$u->[0] eq '%' || $u->[0] eq '' ? '' : 'checked';
-printf "<input name=host size=20 value='%s'></td> </tr>\n",
+printf "<input name=host size=40 value='%s'></td> </tr>\n",
 	$u->[0] eq '%' ? '' : $u->[0];
 
 print "<tr> <td valign=top><b>$text{'db_perms'}</b></td>\n";

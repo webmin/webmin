@@ -41,7 +41,7 @@ printf "<input type=radio name=mysqluser_def value=1 %s> %s\n",
 	$u->[1] ? '' : 'checked', $text{'user_all'};
 printf "<input type=radio name=mysqluser_def value=0 %s>\n",
 	$u->[1] ? 'checked' : '';
-print "<input name=mysqluser size=10 value='$u->[1]'></td> </tr>\n";
+print "<input name=mysqluser size=20 value='$u->[1]'></td> </tr>\n";
 
 print "<tr> <td><b>$text{'user_pass'}</b></td> <td>\n";
 printf "<input type=radio name=mysqlpass_mode value=2 %s> %s\n",
@@ -52,14 +52,14 @@ if (!$in{'new'}) {
 	}
 printf "<input type=radio name=mysqlpass_mode value=0 %s> %s\n",
 	$in{'new'} ? 'checked' : '', $text{'user_set'};
-print "<input name=mysqlpass type=password size=10></td> </tr>\n";
+print "<input name=mysqlpass type=password size=20></td> </tr>\n";
 
 print "<tr> <td><b>$text{'user_host'}</b></td> <td>\n";
 printf "<input type=radio name=host_def value=1 %s> %s\n",
 	$u->[0] eq '%' || $u->[0] eq '' ? 'checked' : '', $text{'user_any'};
 printf "<input type=radio name=host_def value=0 %s>\n",
 	$u->[0] eq '%' || $u->[0] eq '' ? '' : 'checked';
-printf "<input name=host size=20 value='%s'></td> </tr>\n",
+printf "<input name=host size=40 value='%s'></td> </tr>\n",
 	$u->[0] eq '%' ? '' : $u->[0];
 
 print "<tr> <td valign=top><b>$text{'user_perms'}</b></td>\n";

@@ -37,7 +37,7 @@ printf "<input type=radio name=host_def value=1 %s> %s\n",
 	$u->[0] eq '%' || $u->[0] eq '' ? 'checked' : '', $text{'host_any'};
 printf "<input type=radio name=host_def value=0 %s>\n",
 	$u->[0] eq '%' || $u->[0] eq '' ? '' : 'checked';
-printf "<input name=host size=20 value='%s'></td> </tr>\n",
+printf "<input name=host size=40 value='%s'></td> </tr>\n",
 	$u->[0] eq '%' ? '' : $u->[0];
 
 print "<tr> <td valign=top><b>$text{'host_perms'}</b></td>\n";

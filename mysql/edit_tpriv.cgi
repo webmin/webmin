@@ -47,14 +47,14 @@ printf "<input type=radio name=user_def value=1 %s> %s\n",
 	$u->[2] ? '' : 'checked', $text{'tpriv_anon'};
 printf "<input type=radio name=user_def value=0 %s>\n",
 	$u->[2] ? 'checked' : '';
-print "<input name=user size=10 value='$u->[2]'></td> </tr>\n";
+print "<input name=user size=20 value='$u->[2]'></td> </tr>\n";
 
 print "<tr> <td><b>$text{'tpriv_host'}</b></td> <td>\n";
 printf "<input type=radio name=host_def value=1 %s> %s\n",
 	$u->[0] eq '%' || $u->[0] eq '' ? 'checked' : '', $text{'tpriv_any'};
 printf "<input type=radio name=host_def value=0 %s>\n",
 	$u->[0] eq '%' || $u->[0] eq '' ? '' : 'checked';
-printf "<input name=host size=20 value='%s'></td> </tr>\n",
+printf "<input name=host size=40 value='%s'></td> </tr>\n",
 	$u->[0] eq '%' ? '' : $u->[0];
 
 print "<tr> <td valign=top><b>$text{'tpriv_perms1'}</b></td>\n";
