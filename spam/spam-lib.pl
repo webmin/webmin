@@ -20,7 +20,7 @@ if ($module_info{'usermin'}) {
 			}
 		}
 	$database_userpref_name = $remote_user;
-	$include_config_files = 1;	# XXX
+	$include_config_files = $config{'readfiles'};
 	$add_to_db = 1;
 	}
 else {
@@ -40,12 +40,13 @@ $add_cf = !-d $local_cf ? $local_cf :
 	  $module_info{'usermin'} ? "$local_cf/user_prefs" :
 				    "$local_cf/local.cf";
 
-# get_config([file])
+# get_config([file], [for-global])
 # Return a structure containing the contents of the spamassassin config file
 sub get_config
 {
+local $forglobal = $_[1];
 local @rv;
-if ($include_config_files) {
+if ($include_config_files || $forglobal) {
 	# Reading from file(s)
 	local $lnum = 0;
 	local $file = $_[0] || $local_cf;
@@ -91,10 +92,12 @@ if ($config{'mode'} == 1 || $config{'mode'} == 2) {
 	local $dbh = &connect_spamassasin_db();
 	&error($dbh) if (!ref($dbh));
 	local $cmd = $dbh->prepare("select preference,value from userpref where username = ?");
-	$cmd->execute($database_userpref_name);
+	$cmd->execute(!$forglobal ? $database_userpref_name :
+		      $config{'dbglobal'} ? $config{'dbglobal'} : '@GLOBAL');
 	while(my ($name, $value) = $cmd->fetchrow()) {
 		local $dir = { 'name' => $name,
 			       'value' => $value,
+			       'index' => scalar(@rv),
 			       'mode' => $config{'mode'} };
 		$dir->{'words'} =
 			[ split(/\s+/, $dir->{'value'}) ];
@@ -210,6 +213,7 @@ for($i=0; $i<@old || $i<@new; $i++) {
 	elsif ($new[$i]) {
 		# Adding a directive
 		local $addmode = scalar(@old) ? $old[0]->{'mode'} :
+				 $new[$i]->{'name'} =~ /^user_scores_/ ? 0 :
 				 $add_to_db ? $config{'mode'} : 0;
 		if ($addmode == 0) {
 			# To a file
@@ -231,6 +235,7 @@ for($i=0; $i<@old || $i<@new; $i++) {
 			# To LDAP
 			# XXX
 			}
+		$new[$i]->{'mode'} = $addmode;
 		$new[$i]->{'index'} = @{$_[0]};
 		push(@{$_[0]}, $new[$i]);
 		}
@@ -430,8 +435,10 @@ else {
 sub find_default
 {
 if ($config{'global_cf'}) {
-	local $gconf = &get_config($config{'global_cf'});
-	local $v = &find_value($_[0], $gconf);
+	if (!defined($global_config_cache)) {
+		$global_config_cache = &get_config($config{'global_cf'}, 1);
+		}
+	local $v = &find_value($_[0], $global_config_cache);
 	return $v if (defined($v));
 	}
 return $_[1];

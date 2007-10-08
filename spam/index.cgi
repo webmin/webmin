@@ -129,6 +129,7 @@ else {
 		push(@pages, 'razor') if (!$razor && $module_info{'usermin'});
 		push(@pages, 'setup') if ($spam_enabled == 0);
 		push(@pages, 'procmail') if ($delivery_enabled == 1);
+		push(@pages, 'db') if (!$module_info{'usermin'});
 		@pages = grep { &can_use_page($_) } @pages;
 		$sfolder = $module_info{'usermin'} ? &spam_file_folder()
 						   : undef;

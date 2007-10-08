@@ -8,3 +8,5 @@ Updated the setup and procmail delivery pages to allow forwarding of spam to an 
 Added a Module Config option for specifying a command other than spamassassin (such as spamc) to use in the procmailrc file. This defaults to an automatic mode, where spamc is used if spamd is running.
 ---- Changes since 1.300 ----
 Added Module Config options for commands to run before and after saving SpamAssassin config changes.
+---- Changes since 1.360 ----
+Added the SQL and LDAP Databases page for configuring SpamAssassin to use a MySQL, PostgreSQL or LDAP database for user preferences.
