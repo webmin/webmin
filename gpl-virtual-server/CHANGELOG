@@ -359,3 +359,6 @@ Plugin modules can now define additional sections to appear on the right-hand si
 The default number of alias servers that new virtual server owners can create can now be set on the Server Templates page.
 Removed the Plugin Modules page and the section for enabled features from the Module Config page, and merged them into a single Features and Plugins page where you can select which are enabled.
 Backported the virtual server validation feature from Virtualmin Pro to GPL.
+---- Changes since 3.47 ----
+When re-creating a domain as part of a restore, the external DNS IP address is set to match the target system, rather than being copied from the source.
+Added the CA Certificate tab to the Manage SSL Certificate page, for uploading a chained cert from your CA.
