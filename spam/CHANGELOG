@@ -10,3 +10,4 @@ Added a Module Config option for specifying a command other than spamassassin (s
 Added Module Config options for commands to run before and after saving SpamAssassin config changes.
 ---- Changes since 1.360 ----
 Added the SQL and LDAP Databases page for configuring SpamAssassin to use a MySQL, PostgreSQL or LDAP database for user preferences.
+Added global configuration settings to use MySQL, PostgreSQL or LDAP backends for storing preferences.
