@@ -18,4 +18,6 @@ pass=LDAP or SQL server password,0
 db=SQL database name,3,Not needed
 base=LDAP base DN,3,Not needed
 dbglobal=Tag for global settings in SQL database,3,Default (<tt>@GLOBAL</tt>)
+attr=LDAP attribute for SpamAssassin preferences,3,Default (<tt>spamassassin</tt>)
+uid=LDAP attribute for usernames,3,Default (<tt>uid</tt>)
 addto=Add new directives to,1,1-SQL or LDAP database,0-Configuration file

@@ -1,7 +1,5 @@
 # spam-lib.pl
 # Common functions for parsing and editing the spamassassin config file
-# XXX online help
-# XXX whitelist editing?
 
 do '../web-lib.pl';
 &init_config();
@@ -36,6 +34,8 @@ else {
 	$include_config_files = 1;
 	$add_to_db = $config{'addto'};
 	}
+$ldap_spamassassin_attr = $config{'attr'} || 'spamassassin';
+$ldap_username_attr = $config{'uid'} || 'uid';
 $add_cf = !-d $local_cf ? $local_cf :
 	  $module_info{'usermin'} ? "$local_cf/user_prefs" :
 				    "$local_cf/local.cf";
@@ -107,7 +107,15 @@ if ($config{'mode'} == 1 || $config{'mode'} == 2) {
 	}
 elsif ($config{'mode'} == 3) {
 	# From LDAP
-	# XXX
+	local $ldap = &connect_spamassassin_ldap();
+	&error($ldap) if (!ref($ldap));
+	local $rv = $ldap->search(base => $config{'base'},
+		  filter => "($ldap_username_attr=$database_userpref_name)",
+		  );
+	if (!$rv || $rv->code) {
+		&error(&text('eldap', $rv ? $rv->error : "Search failed"));
+		}
+	# XXX get attributes
 	}
 
 return \@rv;
@@ -742,7 +750,16 @@ elsif ($config{'mode'} == 1 || $config{'mode'} == 2) {
 	}
 elsif ($config{'mode'} == 3) {
 	# Connect to LDAP
-	# XXX
+	local $ldap = &connect_spamassassin_ldap();
+	return $ldap if (!ref($ldap));
+	local $rv = $ldap->search(base => $config{'base'},
+				  filter => "(uid=$remote_user)",
+				  sizelimit => 1);
+	if (!$rv || $rv->code) {
+		return &text('connect_ebase', "<tt>$config{'base'}</tt>",
+			     $rv ? $rv->error : "Unknown search error");
+		}
+	return undef;
 	}
 else {
 	return "Unknown config mode $config{'mode'} !";
@@ -764,14 +781,42 @@ use DBI;
 \$drh = DBI->install_driver(\$driver);
 EOF
 if ($@) {
-	return &text('connect_edriver', "DBD::$driver");
+	return &text('connect_edriver', "<tt>DBD::$driver</tt>");
         }
-local $dbistr = &make_dbistr($driver, $config{'db'}, $config{'host'});
+local $dbistr = &make_dbistr($driver, $config{'db'}, $config{'server'});
 local $dbh = $drh->connect($dbistr,
                            $config{'user'}, $config{'pass'}, { });
-$dbh || return &text('connect_elogin', "<tt>$config{'db'}</tt>",$drh->errstr)."\n";
+$dbh || return &text('connect_elogin',
+		     "<tt>$config{'db'}</tt>", $drh->errstr)."\n";
 $connect_spamassasin_db_cache = $dbh;
 return $dbh;
+}
+
+# connect_spamassassin_ldap()
+# Attempts to connect to the configured LDAP DB, and returns the handle on
+# success, or an error message on failure.
+sub connect_spamassassin_ldap
+{
+if (defined($connect_spamassasin_ldap_cache)) {
+	return $connect_spamassasin_ldap_cache;
+	}
+eval "use Net::LDAP";
+if ($@) {
+	return &text('connect_eldapmod', "<tt>Net::LDAP</tt>");
+	}
+local $port = $config{'port'} || 389;
+local $ldap = Net::LDAP->new($config{'server'}, port => $port);
+if (!$ldap) {
+	return &text('connect_eldap', "<tt>$config{'server'}</tt>", $port);
+	}
+local $mesg = $ldap->bind(dn => $config{'user'}, password => $config{'pass'});
+if (!$mesg || $mesg->code) {
+	return &text('connect_eldaplogin', "<tt>$config{'server'}</tt>",
+		     "<tt>$config{'user'}</tt>",
+		     $mesg ? $mesg->error : "Unknown error");
+	}
+$connect_spamassasin_ldap_cache = $ldap;
+return $ldap;
 }
 
 sub make_dbistr
@@ -792,8 +837,6 @@ if ($host) {
 	}
 return $rv;
 }
-
-
 
 1;
 
