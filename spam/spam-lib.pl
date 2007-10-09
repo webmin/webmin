@@ -18,7 +18,6 @@ if ($module_info{'usermin'}) {
 			}
 		}
 	$database_userpref_name = $remote_user;
-	$database_userpref_name = "fotego";	# XXX remove!
 	$include_config_files = $config{'readfiles'};
 	$add_to_db = 1;
 	}
@@ -112,11 +111,13 @@ elsif ($config{'mode'} == 3 && !$forglobal) {
 	&error($ldap) if (!ref($ldap));
 	local $uinfo = &get_ldap_user($ldap);
 	if ($uinfo) {
+		local $aindex = 0;
 		foreach my $a ($uinfo->get_value($ldap_spamassassin_attr)) {
 			local ($name, $value) = split(/\s+/, $a, 2);
 			local $dir = { 'name' => $name,
 				       'value' => $value,
 				       'index' => scalar(@rv),
+				       'aindex' => $aindex++,
 				       'oldattr' => $a,
 				       'mode' => $config{'mode'} };
 			$dir->{'words'} =
@@ -191,7 +192,6 @@ for($i=0; $i<@old || $i<@new; $i++) {
 			}
 		elsif ($old[$i]->{'mode'} == 3) {
 			# In LDAP - modify the attribute
-			print STDERR "changing $old[$i]->{'value'} to $new[$i]->{'value'}\n";
 			local $ldap = &connect_spamassassin_ldap();
 			&error($ldap) if (!ref($ldap));
 			local $uinfo = &get_ldap_user($ldap);
@@ -199,17 +199,8 @@ for($i=0; $i<@old || $i<@new; $i++) {
 					       $database_userpref_name));
 			local @values = $uinfo->get_value(
 						$ldap_spamassassin_attr);
-			print STDERR "modify old values = ",join(" ", @values),"\n";
-			@values = grep { $_ ne $new[$i]->{'name'}." ".
-					       $new[$i]->{'value'} } @values;
-			foreach my $v (@values) {
-				if ($v eq $old[$i]->{'name'}." ".
-                                          $old[$i]->{'value'}) {
-					$v = $new[$i]->{'name'}." ".
-                                             $new[$i]->{'value'};
-					}
-				}
-			print STDERR "modify new values = ",join(" ", @values),"\n";
+			$values[$old[$i]->{'aindex'}] = $new[$i]->{'name'}." ".
+						        $new[$i]->{'value'};
 			local $rv = $ldap->modify(
 			    $uinfo->dn(),
 			    replace => { $ldap_spamassassin_attr =>
@@ -246,10 +237,6 @@ for($i=0; $i<@old || $i<@new; $i++) {
 			}
 		elsif ($old[$i]->{'mode'} == 3) {
 			# From LDAP .. get current values, and remove this one
-			# XXX not working when doing a list, ie.
-			# XXX jcameron, fcchan, lara -> jcameron, lara
-			# XXX removes lara !
-			print STDERR "removing $old[$i]->{'name'} with $old[$i]->{'value'}\n";
 			local $ldap = &connect_spamassassin_ldap();
 			&error($ldap) if (!ref($ldap));
 			local $uinfo = &get_ldap_user($ldap);
@@ -257,10 +244,7 @@ for($i=0; $i<@old || $i<@new; $i++) {
 					       $database_userpref_name));
 			local @values = $uinfo->get_value(
 						$ldap_spamassassin_attr);
-			print STDERR "delete old values = ",join(" ", @values),"\n";
-			@values = grep { $_ ne $old[$i]->{'name'}." ".
-					       $old[$i]->{'value'} } @values;
-			print STDERR "delete new values = ",join(" ", @values),"\n";
+			splice(@values, $old[$i]->{'aindex'}, 1);
 			local $rv = $ldap->modify(
 			    $uinfo->dn(),
 			    replace => { $ldap_spamassassin_attr =>
