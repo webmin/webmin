@@ -301,6 +301,7 @@ connect_ebase=LDAP base DN $1 is not valid : $2
 
 eldap=LDAP operation failed : $1
 esql=SQL failed : $1
+ldap_euser=Could not find LDAP user object for $1
 
 db_title=SQL and LDAP Databases
 db_header=Configuration storage database options

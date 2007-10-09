@@ -18,6 +18,7 @@ if ($module_info{'usermin'}) {
 			}
 		}
 	$database_userpref_name = $remote_user;
+	$database_userpref_name = "fotego";	# XXX remove!
 	$include_config_files = $config{'readfiles'};
 	$add_to_db = 1;
 	}
@@ -105,17 +106,24 @@ if ($config{'mode'} == 1 || $config{'mode'} == 2) {
 		}
 	$cmd->finish();
 	}
-elsif ($config{'mode'} == 3) {
+elsif ($config{'mode'} == 3 && !$forglobal) {
 	# From LDAP
 	local $ldap = &connect_spamassassin_ldap();
 	&error($ldap) if (!ref($ldap));
-	local $rv = $ldap->search(base => $config{'base'},
-		  filter => "($ldap_username_attr=$database_userpref_name)",
-		  );
-	if (!$rv || $rv->code) {
-		&error(&text('eldap', $rv ? $rv->error : "Search failed"));
+	local $uinfo = &get_ldap_user($ldap);
+	if ($uinfo) {
+		foreach my $a ($uinfo->get_value($ldap_spamassassin_attr)) {
+			local ($name, $value) = split(/\s+/, $a, 2);
+			local $dir = { 'name' => $name,
+				       'value' => $value,
+				       'index' => scalar(@rv),
+				       'oldattr' => $a,
+				       'mode' => $config{'mode'} };
+			$dir->{'words'} =
+				[ split(/\s+/, $dir->{'value'}) ];
+			push(@rv, $dir);
+			}
 		}
-	# XXX get attributes
 	}
 
 return \@rv;
@@ -160,6 +168,11 @@ for($i=0; $i<@old || $i<@new; $i++) {
 		}
 	if ($old[$i] && $new[$i]) {
 		# Replacing a directive
+		if ($old[$i]->{'name'} eq $new[$i]->{'name'} &&
+		    $old[$i]->{'value'} eq $new[$i]->{'value'}) {
+			# Nothing to do!
+			next;
+			}
 		if ($old[$i]->{'mode'} == 0) {
 			# In a file
 			local $lref = &read_file_lines($old[$i]->{'file'});
@@ -177,8 +190,34 @@ for($i=0; $i<@old || $i<@new; $i++) {
 			$cmd->finish();
 			}
 		elsif ($old[$i]->{'mode'} == 3) {
-			# In LDAP
-			# XXX
+			# In LDAP - modify the attribute
+			print STDERR "changing $old[$i]->{'value'} to $new[$i]->{'value'}\n";
+			local $ldap = &connect_spamassassin_ldap();
+			&error($ldap) if (!ref($ldap));
+			local $uinfo = &get_ldap_user($ldap);
+			$uinfo || &error(&text('ldap_euser',
+					       $database_userpref_name));
+			local @values = $uinfo->get_value(
+						$ldap_spamassassin_attr);
+			print STDERR "modify old values = ",join(" ", @values),"\n";
+			@values = grep { $_ ne $new[$i]->{'name'}." ".
+					       $new[$i]->{'value'} } @values;
+			foreach my $v (@values) {
+				if ($v eq $old[$i]->{'name'}." ".
+                                          $old[$i]->{'value'}) {
+					$v = $new[$i]->{'name'}." ".
+                                             $new[$i]->{'value'};
+					}
+				}
+			print STDERR "modify new values = ",join(" ", @values),"\n";
+			local $rv = $ldap->modify(
+			    $uinfo->dn(),
+			    replace => { $ldap_spamassassin_attr =>
+					 \@values });
+			if (!$rv || $rv->code) {
+				&error(&text('eldap',
+				    $rv ? $rv->error : "Unknown modify error"));
+				}
 			}
 		$_[0]->[$old[$i]->{'index'}] = $new[$i];
 		}
@@ -206,8 +245,30 @@ for($i=0; $i<@old || $i<@new; $i++) {
 			$cmd->finish();
 			}
 		elsif ($old[$i]->{'mode'} == 3) {
-			# From LDAP
-			# XXX
+			# From LDAP .. get current values, and remove this one
+			# XXX not working when doing a list, ie.
+			# XXX jcameron, fcchan, lara -> jcameron, lara
+			# XXX removes lara !
+			print STDERR "removing $old[$i]->{'name'} with $old[$i]->{'value'}\n";
+			local $ldap = &connect_spamassassin_ldap();
+			&error($ldap) if (!ref($ldap));
+			local $uinfo = &get_ldap_user($ldap);
+			$uinfo || &error(&text('ldap_euser',
+					       $database_userpref_name));
+			local @values = $uinfo->get_value(
+						$ldap_spamassassin_attr);
+			print STDERR "delete old values = ",join(" ", @values),"\n";
+			@values = grep { $_ ne $old[$i]->{'name'}." ".
+					       $old[$i]->{'value'} } @values;
+			print STDERR "delete new values = ",join(" ", @values),"\n";
+			local $rv = $ldap->modify(
+			    $uinfo->dn(),
+			    replace => { $ldap_spamassassin_attr =>
+					 \@values });
+			if (!$rv || $rv->code) {
+				&error(&text('eldap',
+				    $rv ? $rv->error : "Unknown delete error"));
+				}
 			}
 
 		# Fix up indexes
@@ -241,7 +302,19 @@ for($i=0; $i<@old || $i<@new; $i++) {
 			}
 		elsif ($addmode == 3) {
 			# To LDAP
-			# XXX
+			local $ldap = &connect_spamassassin_ldap();
+			&error($ldap) if (!ref($ldap));
+			local $uinfo = &get_ldap_user($ldap);
+			$uinfo || &error(&text('ldap_euser',
+					       $database_userpref_name));
+			local $rv = $ldap->modify(
+			    $uinfo->dn(),
+			    add => { $ldap_spamassassin_attr =>
+				$new[$i]->{'name'}." ".$new[$i]->{'value'} });
+			if (!$rv || $rv->code) {
+				&error(&text('eldap',
+				     $rv ? $rv->error : "Unknown add error"));
+				}
 			}
 		$new[$i]->{'mode'} = $addmode;
 		$new[$i]->{'index'} = @{$_[0]};
@@ -836,6 +909,26 @@ if ($host) {
 	$rv .= ";host=$host";
 	}
 return $rv;
+}
+
+# get_ldap_user(&ldap, [username])
+# Returns the LDAP object for a user, or undef if not found
+sub get_ldap_user
+{
+local ($ldap, $user) = @_;
+$user ||= $database_userpref_name;
+#if (exists($get_ldap_user_cache{$user})) {
+#	return $get_ldap_user_cache{$user};
+#	}
+local $rv = $ldap->search(base => $config{'base'},
+			  filter => "($ldap_username_attr=$user)",
+			 );
+if (!$rv || $rv->code) {
+	&error(&text('eldap', $rv ? $rv->error : "Search failed"));
+	}
+local ($uinfo) = $rv->all_entries;
+$get_ldap_user_cache{$user} = $uinfo;
+return $uinfo;
 }
 
 1;

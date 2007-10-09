@@ -23,7 +23,7 @@ print "</td> </tr>\n";
 if ($config{'show_global'}) {
 	print "<tr> <td width=50%><b>$text{'white_gfrom'}</b></td> ",
 	      "<td width=50%><b>$text{'white_gunfrom'}</b></td> </tr>\n";
-	$gconf = &get_config($config{'global_cf'});
+	$gconf = &get_config($config{'global_cf'}, 1);
 	print "<tr> <td width=50%>\n";
 	@gfrom = &find("whitelist_from", $gconf);
 	&edit_textbox("gwhitelist_from", [ map { @{$_->{'words'}} } @gfrom ], 40, 5);
