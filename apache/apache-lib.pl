@@ -1477,6 +1477,7 @@ foreach $l (&find_directive_struct("LoadModule", $conf)) {
 		push(@rv, "mod_$1");
 		}
 	}
+undef(@get_config_cache);	# Cache is no longer valid
 
 return &unique(@rv);
 }
