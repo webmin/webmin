@@ -10,37 +10,30 @@ $conf = &get_config();
 @servers = ( &find("server", $conf), { } );
 @keys = &find("key", $conf);
 
-print "<form action=save_servers.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'servers_ip'}</b></td> ",
-      "<td><b>$text{'servers_bogus'}</b></td> ",
-      "<td><b>$text{'servers_format'}</b></td> ",
-      "<td><b>$text{'servers_trans'}</b></td> ",
-      (@keys ? "<td><b>$text{'servers_keys'}</b></td> " : ""), "</tr>\n";
+print &ui_form_start("save_servers.cgi", "post");
+print &ui_columns_start([ $text{'servers_ip'},
+			  $text{'servers_bogus'},
+			  $text{'servers_format'},
+			  $text{'servers_trans'},
+			  @keys ? ( $text{'servers_keys'} ) : ( ) ], 100);
 for($i=0; $i<@servers; $i++) {
 	$s = $servers[$i];
-	print "<tr $cb>\n";
-	printf "<td><input name=ip_$i size=15 value='%s'></td>\n",
-		$s->{'value'};
+	@cols = ( );
+	push(@cols, &ui_textbox("ip_$i", $s->{'value'}, 15));
 
 	$bogus = &find_value("bogus", $s->{'members'});
-	printf "<td><input type=radio name=bogus_$i value=yes %s> %s\n",
-		lc($bogus) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=bogus_$i value='' %s> %s</td>\n",
-		lc($bogus) eq 'yes' ? "" : "checked", $text{'no'};
+	push(@cols, &ui_radio("bogus_$i", lc($bogus) eq 'yes' ? 1 : 0,
+			      [ [ 1, $text{'yes'} ],
+				[ 0, $text{'no'} ] ]));
 
 	$format = &find_value("transfer-format", $s->{'members'});
-	printf "<td><input type=radio name=format_$i value=one-answer %s> %s\n",
-		lc($format) eq 'one-answer' ? "checked" : "",
-		$text{'servers_one'};
-	printf "<input type=radio name=format_$i value=many-answers %s> %s\n",
-		lc($format) eq 'many-answers' ? "checked" : "",
-		$text{'servers_many'};
-	printf "<input type=radio name=format_$i value='' %s> %s</td>\n",
-		$format ? "" : "checked", $text{'default'};
+	push(@cols, &ui_radio("format_$i", lc($format),
+			      [ [ 'one-answer', $text{'servers_one'} ],
+				[ 'many-answers', $text{'servers_many'} ],
+				[ '', $text{'default'} ] ]));
 
-	printf "<td><input name=trans_$i size=8 value='%s'></td>\n",
-		&find_value("transfers", $s->{'members'});
+	$trans = &find_value("transfers", $s->{'members'});
+	push(@cols, &ui_textbox("trans_$i", $trans, 8));
 
 	if (@keys) {
 		local %haskey;
@@ -48,19 +41,18 @@ for($i=0; $i<@servers; $i++) {
 		foreach $k (@{$keys->{'members'}}) {
 			$haskey{$k->{'name'}}++;
 			}
-		print "<td>\n";
+		$cbs = "";
 		foreach $k (@keys) {
 			local $v = $k->{'value'};
-			printf
-			"<input type=checkbox name=keys_$i value='%s' %s> %s\n",
-				$v, $haskey{$v} ? "checked" : "", $v;
+			$cbs .= &ui_checkbox("keys_$i", $v, $v, $haskey{$v}).
+				"\n";
 			}
-		print "</td>\n";
+		push(@cols, $cbs);
 		}
-	print "</tr>\n";
+	print &ui_columns_row(\@cols);
 	}
-print "</table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_columns_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
