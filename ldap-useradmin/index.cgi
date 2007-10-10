@@ -4,6 +4,7 @@
 
 require './ldap-useradmin-lib.pl';
 &ui_print_header(undef, $module_info{'desc'}, "", "intro", 1, 1);
+&useradmin::load_theme_library();	# So that ui functions work
 
 # Make sure the LDAP NSS client config file exists, or the needed information
 # has been provided
