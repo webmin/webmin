@@ -44,12 +44,13 @@ foreach $d (&list_disks_partitions()) {
 
 	# Show links to other modules
 	@links = ( );
-	if ($d->{'type'} eq 'ide' && $ed) {
+	if (($d->{'type'} eq 'ide' ||
+	    $d->{'type'} eq 'scsi' && $d->{'model'} =~ /ATA/) && $ed) {
 		# Display link to IDE params form
 		push(@links, "<a href='edit_hdparm.cgi?".
 			     "disk=$d->{'index'}'>$text{'index_hdparm'}</a>");
 		}
-	if ($smart && $d->{'type'} eq 'ide') {
+	if ($smart) {
 		# Display link to smart module
 		push(@links, "<a href='../smart-status/index.cgi?".
 			     "drive=$d->{'device'}'>$text{'index_smart'}</a>");
