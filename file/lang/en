@@ -219,6 +219,7 @@ copy_eto=You are not allowed to copy to '$1'
 copy_elink=symlink failed : $1
 
 delete_eaccess=You are not allowed to delete '$1'
+delete_eroot=The directory '$1' is one of those that you are limited to, and so cannot be deleted
 
 list_eaccess=You are not allowed to access this directory
 list_edir=Failed to list $1 : $2

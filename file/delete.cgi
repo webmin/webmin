@@ -11,6 +11,10 @@ if ($access{'ro'} || !&can_access($in{'file'})) {
 	print &text('delete_eaccess', $in{'file'}),"\n";
 	exit;
 	}
+if (&indexof($in{'file'}, @allowed_roots) >= 0) {
+	print &text('delete_eroot', $in{'file'}),"\n";
+	exit;
+	}
 if (-r &unmake_chroot($in{'file'}) && !-d &unmake_chroot($in{'file'})) {
 	&switch_acl_uid_and_chroot();
 	$rv = unlink($in{'file'});
