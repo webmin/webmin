@@ -8,6 +8,7 @@ index_esyslog=Neither of the System Logs modules are installed on this system an
 index_firesys=Using $1 firewall and $2
 index_setupcannot=However, you do not have permissions to set it up!
 index_setupdesc=Before this module can report on network usage on your system, it must be set up to monitor traffic on the selected external network interface.
+index_setupdesc2=<b>Warning - this module will log ALL network traffic sent on received on the selected interface. This will consume a large amount of disk space and CPU time on a fast network connection.</b>
 index_missing3=Several firewall rules must be added, and a syslog configuration entry created.
 index_missing2=Several firewall rules must be added.
 index_missing1=A syslog configuration entry must be created.

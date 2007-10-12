@@ -95,6 +95,7 @@ if (($missingrule || !$sysconf) && $access{'setup'}) {
 		print $text{'index_missing1'};
 		}
 	print "<p>\n";
+	print "$text{'index_setupdesc2'}<p>\n";
 	if ($iptableserr) {
 		print $iptableserr,"<p>\n";
 		}
