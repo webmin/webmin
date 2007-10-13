@@ -33,7 +33,7 @@ foreach $argument ( 'a', 'd', 'r', 'k', 'u', 'm', 'c' )
 print(
 "<form action=apply_hdparm.cgi><table border cols=1 width=\"100%\"><input type=hidden name=drive value=", $d -> { 'device' }, ">",
     "<tr ", $tb, ">",
-    	"<td><b>", $text{ 'hdparm_label' }, "</b></td>",
+    	"<td><b>", $d->{'desc'}," (",$d->{'device'}.") : ",$text{ 'hdparm_label' }, "</b></td>",
     "</tr><tr ", $cb, "><td>",
 	"<table width=\"100%\">",
 	    "<tr>",
