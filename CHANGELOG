@@ -76,3 +76,4 @@ Fixed XSS bugs in pam_login.cgi.
 ---- Changes since 1.370 ----
 Hid the Jabber and Security Sentries modules by default, as the underlying software is no longer supported.
 On Linux systems, sped up the function for finding processes so that it no longer has to launch 'ps' - instead, it reads /proc directly.
+When read_file_lines is used to read a file, the Unix or Windows newlines will be preserved when it is written out.

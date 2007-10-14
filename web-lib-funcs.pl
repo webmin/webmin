@@ -1932,15 +1932,19 @@ if (!$_[0]) {
 	}
 local $realfile = &translate_filename($_[0]);
 if (!$main::file_cache{$realfile}) {
-        local(@lines, $_);
+        local(@lines, $_, $eol);
         open(READFILE, $realfile);
         while(<READFILE>) {
+		if (!$eol) {
+			$eol = /\r\n$/ ? "\r\n" : "\n";
+			}
                 tr/\r\n//d;
                 push(@lines, $_);
                 }
         close(READFILE);
         $main::file_cache{$realfile} = \@lines;
 	$main::file_cache_noflush{$realfile} = $_[1];
+	$main::file_cache_eol{$realfile} = $eol || "\n";
         }
 else {
 	# Make read-write if currently readonly
@@ -1967,8 +1971,8 @@ if ($_[0]) {
 else {
 	@files = ( keys %main::file_cache );
 	}
-local $eol = $_[1] || "\n";
 foreach $f (@files) {
+	local $eol = $_[1] || $main::file_cache_eol{$f} || "\n";
 	if (!$main::file_cache_noflush{$f}) {
 		&open_tempfile(FLUSHFILE, ">$f");
 		local $line;
