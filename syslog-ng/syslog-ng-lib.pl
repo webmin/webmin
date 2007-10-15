@@ -133,6 +133,9 @@ if ($_[0]->[$i] eq "(") {
 			}
 		elsif ($_[0]->[$i] eq "." && $_[0]->[$i+1] eq ".") {
 			push(@vals, "..");
+			if ($_[0]->[$i+2] eq ".") {
+				$i++;	# Three dots!
+				}
 			$i += 2;
 			$cont = 1;
 			}
@@ -600,7 +603,7 @@ foreach my $m (@{$filter->{'members'}}) {
 	  if (ref($m)) {
 		  # A condition like level, facility or match
 		  local @v = @{$m->{'values'}};
-		  if ($m->{'name'} eq 'priority') {
+		  if ($m->{'name'} eq 'level') {
 			  if ($v[1] eq "..") {
 				  push(@rv, &text('filters_priorities',
 						  $v[0], $v[2]));
