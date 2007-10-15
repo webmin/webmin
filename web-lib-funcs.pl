@@ -5989,18 +5989,40 @@ foreach $s (keys %hash) {
 	$rv =~ s/\$\{\Q$us\E\}/$sv/g;
 	$rv =~ s/\$\Q$us\E/$sv/g;
 	if ($sv) {
+		# Replace ${IF}..${ELSE}..${ENDIF} block with first value,
+		# and ${IF}..${ENDIF} with value
 		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ELSE-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/\2/g;
 		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/\2/g;
 
+		# Replace $IF..$ELSE..$ENDIF block with first value,
+		# and $IF..$ENDIF with value
 		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ELSE-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/\2/g;
 		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/\2/g;
+
+		# Replace ${IFEQ}..${ENDIFEQ} block with first value if
+		# matching, nothing if not
+		$rv =~ s/\$\{IFEQ-\Q$us\E-\Q$sv\E\}(\n?)([\000-\377]*?)\$\{ENDIFEQ-\Q$us\E-\Q$sv\E\}(\n?)/\2/g;
+		$rv =~ s/\$\{IFEQ-\Q$us\E-[^\}]+}(\n?)([\000-\377]*?)\$\{ENDIFEQ-\Q$us\E-[^\}]+\}(\n?)//g;
+
+		# Replace $IFEQ..$ENDIFEQ block with first value if
+		# matching, nothing if not
+		$rv =~ s/\$IFEQ-\Q$us\E-\Q$sv\E(\n?)([\000-\377]*?)\$ENDIFEQ-\Q$us\E-\Q$sv\E(\n?)/\2/g;
+		$rv =~ s/\$IFEQ-\Q$us\E-\S+(\n?)([\000-\377]*?)\$ENDIFEQ-\Q$us\E-\S+(\n?)//g;
 		}
 	else {
+		# Replace ${IF}..${ELSE}..${ENDIF} block with second value,
+		# and ${IF}..${ENDIF} with nothing
 		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ELSE-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/\4/g;
 		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)//g;
 
+		# Replace $IF..$ELSE..$ENDIF block with second value,
+		# and $IF..$ENDIF with nothing
 		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ELSE-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/\4/g;
 		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)//g;
+
+		# Replace ${IFEQ}..${ENDIFEQ} block with nothing
+		$rv =~ s/\$\{IFEQ-\Q$us\E-[^\}]+}(\n?)([\000-\377]*?)\$\{ENDIFEQ-\Q$us\E-[^\}]+\}(\n?)//g;
+		$rv =~ s/\$IFEQ-\Q$us\E-\S+(\n?)([\000-\377]*?)\$ENDIFEQ-\Q$us\E-\S+(\n?)//g;
 		}
 	}
 return $rv;
