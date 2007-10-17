@@ -59,7 +59,7 @@ elsif ($in{'view'}) {
 		}
 	print "Refresh: $config{'refresh'}\r\n"
 		if ($config{'refresh'});
-	&ui_print_header("<tt>".($file || $cmd)."</tt>",
+	&ui_print_header("<tt>".&html_escape($file || $cmd)."</tt>",
 			 $text{'view_title'}, "");
 
 	$lines = $in{'lines'} ? int($in{'lines'}) : $config{'lines'};
