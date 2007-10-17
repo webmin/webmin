@@ -62,8 +62,7 @@ APLINUX				1.3	debian-linux	3.1	$etc_issue =~ /APLINUX.*1\.3/i
 BigBlock			$1	suse-linux	8.2	`cat /etc/bigblock-revision 2>/dev/null` =~ /Version:\s(1[0-9\.-]+)\s/i
 BigBlock			$1	debian-linux	3.0	`cat /etc/bigblock-revision 2>/dev/null` =~ /Version:\s(2[0-9\.-]+)\s/i
 Ubuntu Linux			$1	debian-linux	4.0	$etc_issue =~ /Ubuntu.*\sgutsy/i
-Ubuntu Linux			$1	debian-linux	4.0	$etc_issue =~
-/Ubuntu.*\s(7\.[0-9\.]+)\s/i
+Ubuntu Linux			$1	debian-linux	4.0	$etc_issue =~ /Ubuntu.*\s(7\.[0-9\.]+)\s/i
 Ubuntu Linux			$1	debian-linux	3.1	$etc_issue =~ /Ubuntu.*\s([0-9\.]+)\s/i
 Mepis Linux			$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
 Mepis Linux			$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
@@ -110,6 +109,7 @@ Mandrake Linux			7.1	redhat-linux	6.2	$etc_issue =~ /Mandrake\s+release\s+7\.1/i
 Mandrake Linux			$1	mandrake-linux	$1	`cat /etc/mandrake-release 2>/dev/null` =~ /Mandrake.*?([0-9\.]+)/i || $etc_issue =~ /Mandrake\s+release\s+([0-9\.]+)/i || $etc_issue =~ /Mandrakelinux\s+release\s+([0-9\.]+)/i
 Mandriva Linux			$2	mandrake-linux	10.2	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2006\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i
 Mandriva Linux			$2	mandrake-linux	10.3	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i
+Mandriva Linux			$2	mandrake-linux	10.4	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2008\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2008\.\d+)/i
 
 # Conectiva Linux (now subsumed into Mandrake?)
 Conectiva Linux			3.0	redhat-linux	5.2	$etc_issue =~ /Conectiva.*Linux.*3\.0/i
