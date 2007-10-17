@@ -43,7 +43,7 @@ foreach $l (@lines) {
 	$ifc{'edit'} = &iface_type($ifc{'name'}) =~ /ethernet|loopback/i;
 	$ifc{'index'} = scalar(@rv);
 	if ($ifc{'ether'}) {
-		$ifc{'ether'} = join(":", map { sprintf "%2.2d", $_ }
+		$ifc{'ether'} = join(":", map { length($_) == 1 ? "0".$_ : $_ }
 					      split(/:/, $ifc{'ether'}));
 		}
 	push(@rv, \%ifc);
