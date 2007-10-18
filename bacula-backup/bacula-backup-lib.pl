@@ -11,6 +11,7 @@ if (&foreign_check("node-groups")) {
 	}
 
 $dir_conf_file = "$config{'bacula_dir'}/bacula-dir.conf";
+$dir_conf_file = "/tmp/wasek.conf";
 $fd_conf_file = "$config{'bacula_dir'}/bacula-fd.conf";
 $sd_conf_file = "$config{'bacula_dir'}/bacula-sd.conf";
 $bconsole_conf_file = "$config{'bacula_dir'}/bconsole.conf";
@@ -152,6 +153,24 @@ if (!defined($config_file_cache{$file})) {
 				       'members' => [ ] };
 			push(@{$parent->{'members'}}, $dir);
 			$parent = $dir;
+			}
+		elsif (/^\s*(\S+)\s*$/) {
+			# Just a word by itself .. perhaps start of a section,
+			# if there is a { on the next line.
+			local $name = $1;
+			local $nextline = <CONF>;
+			if ($nextline =~ /^\s*{\s*$/) {
+				local $dir = { 'name' => $name,
+					       'parent' => $parent,
+					       'line' => $lnum,
+					       'eline' => $lnum,
+					       'file' => $file,
+					       'type' => 1,
+					       'members' => [ ] };
+				push(@{$parent->{'members'}}, $dir);
+				$parent = $dir;
+				$lnum++;
+				}
 			}
 		$lnum++;
 		}
