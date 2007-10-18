@@ -557,6 +557,7 @@ net_topol=Nameserver choice topology
 net_recur=Allow recursive queries from
 net_err=Failed to save address and topology options
 net_eport='$1' is not a valid port number
+net_eusedport=Only one line of addresses is allowed for port $1
 net_etopology=No topology addresses entered
 net_erecur=No addresses to allow recursion from entered
 

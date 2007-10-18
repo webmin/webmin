@@ -20,6 +20,8 @@ if (!$in{'listen_def'}) {
 				&error(&text('net_eport', $in{"port_$i"}));
 			$l->{'values'} = [ 'port', $in{"port_$i"} ];
 			}
+		$port = $in{"pdef_$i"} ? 53 : $in{"port_$i"};
+		$used{$port}++ && &error(&text('net_eusedport', $port));
 		$l->{'members'} =
 			[ map { { 'name' => $_ } } split(/\s+/, $addr) ];
 		push(@listen, $l);
