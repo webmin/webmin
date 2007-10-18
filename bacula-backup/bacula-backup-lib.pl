@@ -11,7 +11,6 @@ if (&foreign_check("node-groups")) {
 	}
 
 $dir_conf_file = "$config{'bacula_dir'}/bacula-dir.conf";
-$dir_conf_file = "/tmp/wasek.conf";
 $fd_conf_file = "$config{'bacula_dir'}/bacula-fd.conf";
 $sd_conf_file = "$config{'bacula_dir'}/bacula-sd.conf";
 $bconsole_conf_file = "$config{'bacula_dir'}/bconsole.conf";
