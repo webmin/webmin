@@ -38,3 +38,4 @@ lang=tl,titles=1	Klingon
 lang=ms,titles=1	Malay
 lang=fa,titles=0,dir=rtl,charset=UTF-8	Persian
 lang=ro,titles=1	Romanian
+lang=fi,titles=1	Finnish
