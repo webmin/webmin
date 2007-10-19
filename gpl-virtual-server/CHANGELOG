@@ -364,3 +364,4 @@ When re-creating a domain as part of a restore, the external DNS IP address is s
 Added the CA Certificate tab to the Manage SSL Certificate page, for uploading a chained cert from your CA.
 If the create of the Unix user or group for a virtual server fails, both are rolled back to avoid leaving half-created users in /etc/passwd or LDAP.
 ---- Changes since 3.48 ----
+Added a warning about NSCD to the configuration check page.
