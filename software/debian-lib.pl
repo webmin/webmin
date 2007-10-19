@@ -15,6 +15,10 @@ while(<PKGINFO>) {
 		$packages{$i,'class'} = &alphabet_name($1);
 		$packages{$i,'version'} = $2;
 		$packages{$i,'desc'} = $3;
+		if ($packages{$i,'version'} =~ /^(\d+):(.*)$/) {
+			$packages{$i,'epoch'} = $1;
+			$packages{$i,'version'} = $2;
+			}
 		$i++;
 		}
 	}

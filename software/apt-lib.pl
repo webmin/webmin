@@ -96,7 +96,10 @@ while(<DUMP>) {
 		}
 	elsif (/^\s*Version:\s*(\S+)/ && $pkg && !$pkg->{'version'}) {
 		$pkg->{'version'} = $1;
-		$pkg->{'version'} =~ s/^\d://;
+		if ($pkg->{'version'} =~ /^(\d+):(.*)$/) {
+			$pkg->{'epoch'} = $1;
+			$pkg->{'version'} = $2;
+			}
 		}
 	}
 close(DUMP);
