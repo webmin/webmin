@@ -33,7 +33,7 @@ print "<tr $cb> <td><table width=100%>\n";
 $none = $text{'opts_none'};
 
 print "<tr>\n";
-&option_radios_freefield($virtual_maps, 60, $none);
+&option_mapfield($virtual_maps, 60, $none);
 print "</tr>\n";
 
 if ($postfix_version >= 2) {

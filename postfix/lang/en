@@ -1,4 +1,4 @@
-index_title=Postfix Configuration
+index_title=Postfix Mail Server
 index_epath=The Postfix control command $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or Postfix is not installed.
 index_postfix=Postfix
 
@@ -775,3 +775,12 @@ sasl_err=Failed to save SMTP authentication and encryption
 sasl_ecert=Missing or invalid TLS certificate file
 sasl_ekey=Missing or invalid TLS key file
 sasl_eca=Missing or invalid TLS certificate authority file
+
+chooser_title=Select Map Source
+chooser_header=Map source $1
+chooser_none=None
+chooser_hash=Mapping file
+chooser_regexp=Regexps file
+chooser_other=Other source
+chooser_mysql=MySQL database
+chooser_mysqlsrc=MySQL source

@@ -331,6 +331,38 @@ sub option_radios_freefield
     print "</td>\n";
 }
 
+# option_mapfield(name_of_option, length_of_free_field, defaulttext)
+# Prints a field for selecting a map, or none
+sub option_mapfield
+{
+    my ($name, $length) = ($_[0], $_[1]);
+
+    my $v = &get_current_value($name);
+    my $key = 'opts_'.$name;
+
+    my $check_free_field = 1;
+    
+    my $help = -r &help_file($module_name, "opt_".$name) ?
+		&hlink("<b>$text{$key}</b>", "opt_".$name) :
+		"<b>$text{$key}</b>";
+    printf "<td>$help</td> <td %s nowrap>\n",
+	    $length > 20 ? "colspan=3" : "";
+
+    print &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
+		       $_[2], &if_default_value($name));
+
+    $check_free_field = 0 if &if_default_value($name);
+    shift;
+    
+    # the free field
+    print &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
+		       $check_free_field == 1);
+    print &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
+    print &map_chooser_button($name);
+    print "</td>\n";
+}
+
+
 
 # option_freefield(name_of_option, length_of_free_field)
 # builds an option with free field
@@ -1306,6 +1338,41 @@ sub unlock_postfix_files
 {
 &unlock_file($config{'postfix_config_file'});
 &unlock_file($config{'postfix_master'});
+}
+
+# map_chooser_button(field, [form])
+# Returns HTML for a button for popping up a map file chooser
+sub map_chooser_button
+{
+local ($name, $form) = @_;
+$form ||= 0;
+return "<input type=button onClick='ifield = form.$name; map = window.open(\"map_chooser.cgi?map=\"+escape(ifield.value), \"map\", \"toolbar=no,menubar=no,scrollbars=no,width=600,height=600\"); map.ifield = ifield; window.ifield = ifield;' value=\"...\">\n";
+}
+
+# get_maps_types_files(value)
+# Converts a parameter like hash:/foo/bar,hash:/tmp/xxx to a list of types
+# and file paths.
+sub get_maps_types_files
+{
+    $_[0] =~ /^([^:]+):(\/[^,\s]*)(.*)/ || return ( );
+    (my $returntype, $returnvalue, my $recurse) = ( $1, $2, $3 );
+
+    return ( [ $returntype, $returnvalue ],
+	     ($recurse =~ /:\/[^,\s]*/) ?  &get_maps_files($recurse) : () );
+}
+
+# list_mysql_sources()
+# Returns a list of global MySQL source names in main.cf
+sub list_mysql_sources
+{
+local @rv;
+my $lref = &read_file_lines($config{'postfix_config_file'});
+foreach my $l (@$lref) {
+	if ($l =~ /^\s*(\S+)_hosts\s*=/) {
+		push(@rv, $1);
+		}
+	}
+return @rv;
 }
 
 1;
