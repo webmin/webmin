@@ -358,7 +358,7 @@ sub option_mapfield
     print &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
 		       $check_free_field == 1);
     print &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
-    print &map_chooser_button($name);
+    print &map_chooser_button($name, $name);
     print "</td>\n";
 }
 
@@ -1340,13 +1340,13 @@ sub unlock_postfix_files
 &unlock_file($config{'postfix_master'});
 }
 
-# map_chooser_button(field, [form])
+# map_chooser_button(field, mapname, [form])
 # Returns HTML for a button for popping up a map file chooser
 sub map_chooser_button
 {
-local ($name, $form) = @_;
+local ($name, $mapname, $form) = @_;
 $form ||= 0;
-return "<input type=button onClick='ifield = form.$name; map = window.open(\"map_chooser.cgi?map=\"+escape(ifield.value), \"map\", \"toolbar=no,menubar=no,scrollbars=no,width=600,height=600\"); map.ifield = ifield; window.ifield = ifield;' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$name; map = window.open(\"map_chooser.cgi?map=\"+escape(ifield.value)+\"&mapname=$mapname\", \"map\", \"toolbar=no,menubar=no,scrollbars=yes,width=800,height=600\"); map.ifield = ifield; window.ifield = ifield;' value=\"...\">\n";
 }
 
 # get_maps_types_files(value)
@@ -1354,11 +1354,11 @@ return "<input type=button onClick='ifield = form.$name; map = window.open(\"map
 # and file paths.
 sub get_maps_types_files
 {
-    $_[0] =~ /^([^:]+):(\/[^,\s]*)(.*)/ || return ( );
+    $_[0] =~ /^([^:]+):(\/[^,\s]*),?(.*)/ || return ( );
     (my $returntype, $returnvalue, my $recurse) = ( $1, $2, $3 );
 
     return ( [ $returntype, $returnvalue ],
-	     ($recurse =~ /:\/[^,\s]*/) ?  &get_maps_files($recurse) : () );
+	     &get_maps_types_files($recurse) );
 }
 
 # list_mysql_sources()
@@ -1373,6 +1373,48 @@ foreach my $l (@$lref) {
 		}
 	}
 return @rv;
+}
+
+# get_backend_config(file)
+# Returns a hash ref from names to values in some backend (ie. mysql or ldap)
+# config file.
+sub get_backend_config
+{
+local ($file) = @_;
+local %rv;
+local $lref = &read_file_lines($file);
+foreach my $l (@$lref) {
+	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/i) {
+		$rv{$1} = $2;
+		}
+	}
+return \%rv;
+}
+
+# save_backend_config(file, name, [value])
+# Updates one setting in a backend config file
+sub save_backend_config
+{
+local ($file, $name, $value) = @_;
+local $lref = &read_file_lines($file);
+local $found = 0;
+for(my $i=0; $i<@$lref; $i++) {
+	if ($lref->[$i] =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/i &&
+	    $1 eq $name) {
+		# Found the line to fix
+		if (defined($value)) {
+			$lref->[$i] = "$name = $value";
+			}
+		else {
+			splice(@$lref, $i, 1);
+			}
+		$found = 1;
+		last;
+		}
+	}
+if (!$found && defined($value)) {
+	push(@$lref, "$name = $value");
+	}
 }
 
 1;
