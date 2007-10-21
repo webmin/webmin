@@ -58,7 +58,7 @@ elsif ($has_new_debian_iptables) {
 	local ($debpri) = grep { $_->[0] eq $pri->{'fullname'} }
 			       &net::get_interface_defs();
 	foreach my $o (@{$debpri->[3]}) {
-		if ($o->[0] eq "pre-up" &&
+		if (($o->[0] eq "pre-up" || $o->[0] eq "post-up") &&
 		    $o->[1] =~ /\S*iptables-restore\s+<\s+(\S+)/ &&
 		    $1 eq $iptables_save_file) {
 			return 1;
@@ -83,7 +83,7 @@ elsif ($has_new_debian_iptables) {
 	local ($debpri) = grep { $_->[0] eq $pri->{'fullname'} }
 			       &net::get_interface_defs();
 	push(@{$debpri->[3]},
-	     [ "pre-up", "iptables-restore < $iptables_save_file" ]);
+	     [ "post-up", "iptables-restore < $iptables_save_file" ]);
 	&net::modify_interface_def(@$debpri);
 	}
 else {
@@ -102,8 +102,9 @@ elsif ($has_new_debian_iptables) {
 	local $pri = &get_primary_network_interface();
 	local ($debpri) = grep { $_->[0] eq $pri->{'fullname'} }
 			       &net::get_interface_defs();
-	@{$debpri->[3]} = grep { $_->[0] ne "pre-up" ||
-				 $_->[1] !~ /^\S*iptables/ } @{$debpri->[3]};
+	@{$debpri->[3]} = grep {
+			($_->[0] ne "pre-up" && $_->[0] ne "post-up") ||
+			 $_->[1] !~ /^\S*iptables/ } @{$debpri->[3]};
 	&net::modify_interface_def(@$debpri);
 	}
 else {
