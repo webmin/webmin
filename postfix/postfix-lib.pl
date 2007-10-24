@@ -1,5 +1,4 @@
 # postfix-lib.pl
-# XXX ldap support and multiple servers (mentioned by Joe)
 # XXX virtual mail boxes and read mail
 
 #
@@ -649,42 +648,81 @@ sub get_maps
 {
     if (!defined($maps_cache{$_[0]}))
     {
-	my @maps_files = $_[1] ? @{$_[1]} : &get_maps_files(&get_real_value($_[0]));
+	my @maps_files = $_[1] ? (map { [ "hash", $_ ] } @{$_[1]})
+			       : &get_maps_types_files(&get_real_value($_[0]));
 	my $number = 0;
-	foreach $maps_file (@maps_files)
+	foreach my $maps_type_file (@maps_files)
 	{
-	    &open_readfile(MAPS, $maps_file);
-	    my $i = 0;
-	    my $cmt;
-	    while (<MAPS>)
-	    {
-		s/\r|\n//g;	# remove newlines
-		if (/^\s*#+\s*(.*)/) {
-		    # A comment line
-		    $cmt = &is_table_comment($_);
+	    my ($maps_type, $maps_file) = @$maps_type_file;
+
+	    if ($maps_type eq "hash" || $maps_type eq "regexp") {
+		    # Read a file on disk
+		    &open_readfile(MAPS, $maps_file);
+		    my $i = 0;
+		    my $cmt;
+		    while (<MAPS>)
+		    {
+			s/\r|\n//g;	# remove newlines
+			if (/^\s*#+\s*(.*)/) {
+			    # A comment line
+			    $cmt = &is_table_comment($_);
+			    }
+			elsif (/^\s*(\/[^\/]*\/[a-z]*)\s+([^#]*)/ ||
+			       /^\s*([^\s]+)\s+([^#]*)/) {
+			    # An actual map
+			    $number++;
+			    my %map;
+			    $map{'name'} = $1;
+			    $map{'value'} = $2;
+			    $map{'line'} = $cmt ? $i-1 : $i;
+			    $map{'eline'} = $i;
+			    $map{'map_file'} = $maps_file;
+			    $map{'map_type'} = $maps_type;
+			    $map{'file'} = $maps_file;
+			    $map{'number'} = $number;
+			    $map{'cmt'} = $cmt;
+			    push(@{$maps_cache{$_[0]}}, \%map);
+			    $cmt = undef;
+			    }
+			else {
+			    $cmt = undef;
+			    }
+			$i++;
 		    }
-		elsif (/^\s*(\/[^\/]*\/[a-z]*)\s+([^#]*)/ ||
-		       /^\s*([^\s]+)\s+([^#]*)/) {
-		    # An actual map
-		    $number++;
-		    my %map;
-		    $map{'name'} = $1;
-		    $map{'value'} = $2;
-		    $map{'line'} = $cmt ? $i-1 : $i;
-		    $map{'eline'} = $i;
-		    $map{'map_file'} = $maps_file;
-		    $map{'file'} = $maps_file;
-		    $map{'number'} = $number;
-		    $map{'cmt'} = $cmt;
-		    push(@{$maps_cache{$_[0]}}, \%map);
-		    $cmt = undef;
+		    close(MAPS);
+
+	     } elsif ($maps_type eq "mysql") {
+		    # Get from a MySQL database
+		    local $conf = &mysql_value_to_conf($maps_file);
+		    local $dbh = &connect_mysql_db($conf);
+		    ref($dbh) || &error($dbh);
+		    local $cmd = $dbh->prepare(
+				       "select ".$conf->{'where_field'}.
+				       ",".$conf->{'select_field'}.
+				       " from ".$conf->{'table'}.
+				       " ".$conf->{'additional_conditions'});
+		    if (!$cmd || !$cmd->execute()) {
+			&error(&text('mysql_elist',
+			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
+			}
+		    while(my ($k, $v) = $cmd->fetchrow()) {
+			$number++;
+			my %map;
+			$map{'name'} = $k;
+			$map{'value'} = $v;
+			$map{'key'} = $k;
+			$map{'map_file'} = $maps_file;
+			$map{'map_type'} = $maps_type;
+			$map{'number'} = $number;
+			push(@{$maps_cache{$_[0]}}, \%map);
 		    }
-		else {
-		    $cmt = undef;
-		    }
-		$i++;
-	    }
-	    close(MAPS);
+		    $cmd->finish();
+		    $dbh->disconnect();
+
+	     } elsif ($maps_type eq "ldap") {
+		    # Get from an LDAP database
+	     	    # XXX
+	     }
 	}
     }
     return $maps_cache{$_[0]};
@@ -694,18 +732,28 @@ sub get_maps
 # generate_map_edit(name, desc, [wide], [nametitle], [valuetitle])
 sub generate_map_edit
 {
+    # Check if map is set
     if (&get_current_value($_[0]) eq "")
     {
-	print ("<h2>$text{'no_map2'}</h2><br>");
-	print "<hr>\n";
-	&footer("", $text{'index_return'});
-	exit;
+	print "<b>$text{'no_map2'}</b><p>\n";
+        return;
     }
 
     # Make sure the user is allowed to edit them
-    foreach my $f (&get_maps_files(&get_current_value($_[0]))) {
-      &is_under_directory($access{'dir'}, $f) ||
-	&error(&text('mapping_ecannot', $access{'dir'}));
+    foreach my $f (&get_maps_types_files(&get_current_value($_[0]))) {
+      if ($f->[0] eq "hash" || $f->[0] eq "regexp") {
+	  &is_under_directory($access{'dir'}, $f) ||
+		&error(&text('mapping_ecannot', $access{'dir'}));
+      }
+    }
+
+    # Make sure we *can* edit them
+    foreach my $f (&get_maps_types_files(&get_current_value($_[0]))) {
+       my $err = &can_access_map(@$f);
+       if ($err) {
+	  print "<b>",&text('map_cannot', $err),"</b><p>\n";
+	  return;
+       }
     }
 
     my $mappings = &get_maps($_[0]);
@@ -774,7 +822,7 @@ sub generate_map_edit
     print &ui_buttons_row("edit_mapping.cgi", $text{'new_mapping'},
 			  $text{'new_mappingmsg'},
 			  &ui_hidden("map_name", $_[0]));
-    if ($access{'manual'}) {
+    if ($access{'manual'} && &can_map_manual($_[0])) {
 	    print &ui_buttons_row("edit_manual.cgi", $text{'new_manual'},
 				  $text{'new_manualmsg'},
 				  &ui_hidden("map_name", $_[0]));
@@ -788,16 +836,42 @@ sub generate_map_edit
 sub create_mapping
 {
 &get_maps($_[0], $_[2]);	# force cache init
-my @maps_files = $_[2] ? @{$_[2]} : &get_maps_files(&get_real_value($_[0]));
-local $lref = &read_file_lines($maps_files[0]);
-$_[1]->{'line'} = scalar(@$lref);
-push(@$lref, &make_table_comment($_[1]->{'cmt'}));
-push(@$lref, "$_[1]->{'name'}\t$_[1]->{'value'}");
-$_[1]->{'eline'} = scalar(@$lref)-1;
-&flush_file_lines();
+my @maps_files = $_[2] ? (map { [ "hash", $_ ] } @{$_[2]})
+		       : &get_maps_types_files(&get_real_value($_[0]));
+my ($maps_type, $maps_file) = @{$maps_files[0]};
+if ($maps_type eq "hash" || $maps_type eq "regexp") {
+	# Adding to a regular file
+	local $lref = &read_file_lines($maps_file);
+	$_[1]->{'line'} = scalar(@$lref);
+	push(@$lref, &make_table_comment($_[1]->{'cmt'}));
+	push(@$lref, "$_[1]->{'name'}\t$_[1]->{'value'}");
+	$_[1]->{'eline'} = scalar(@$lref)-1;
+	&flush_file_lines($maps_file);
+	}
+elsif ($maps_type eq "mysql") {
+	# Adding to a MySQL table
+	local $conf = &mysql_value_to_conf($maps_file);
+	local $dbh = &connect_mysql_db($conf);
+	ref($dbh) || &error($dbh);
+	local $cmd = $dbh->prepare("insert into ".$conf->{'table'}." ".
+				   "(".$conf->{'where_field'}.",".
+					$conf->{'select_field'}.") values (".
+				   "?, ?)");
+	if (!$cmd || !$cmd->execute($_[1]->{'name'}, $_[1]->{'value'})) {
+		&error(&text('mysql_eadd',
+			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
+		}
+	$cmd->finish();
+	$dbh->disconnect();
+	}
+elsif ($maps_type eq "ldap") {
+	# Adding to an LDAP database
+	}
 
-$_[1]->{'map_file'} = $maps_files[0];
-$_[1]->{'file'} = $maps_files[0];
+# Update the in-memory cache
+$_[1]->{'map_type'} = $maps_type;
+$_[1]->{'map_file'} = $maps_file;
+$_[1]->{'file'} = $maps_file;
 $_[1]->{'number'} = scalar(@{$maps_cache{$_[0]}});
 push(@{$maps_cache{$_[0]}}, $_[1]);
 }
@@ -806,35 +880,87 @@ push(@{$maps_cache{$_[0]}}, $_[1]);
 # delete_mapping(map, &mapping)
 sub delete_mapping
 {
-local $lref = &read_file_lines($_[1]->{'map_file'});
-local $len = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
-splice(@$lref, $_[1]->{'line'}, $len);
-&flush_file_lines();
+if ($_[1]->{'map_type'} eq 'hash' || $_[1]->{'map_type'} eq 'regexp' ||
+    !$_[1]->{'map_type'}) {
+	# Deleting from a file
+	local $lref = &read_file_lines($_[1]->{'map_file'});
+	local $len = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
+	splice(@$lref, $_[1]->{'line'}, $len);
+	&flush_file_lines($_[1]->{'map_file'});
+	&renumber_list($maps_cache{$_[0]}, $_[1], -$len);
+	}
+elsif ($_[1]->{'map_type'} eq 'mysql') {
+	# Deleting from MySQL
+	local $conf = &mysql_value_to_conf($maps_file);
+	local $dbh = &connect_mysql_db($conf);
+	ref($dbh) || &error($dbh);
+	local $cmd = $dbh->prepare("delete from ".$conf->{'table'}.
+				   " where ".$conf->{'where_field'}." = ?".
+				   " ".$conf->{'additional_conditions'});
+	if (!$cmd || !$cmd->execute($_[1]->{'key'})) {
+		&error(&text('mysql_edelete',
+			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
+		}
+	$cmd->finish();
+	$dbh->disconnect();
+	}
+elsif ($_[1]->{'map_type'} eq 'ldap') {
+	# Deleting from LDAP
+	# XXX
+	}
 
+# Delete from in-memory cache
 local $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
 splice(@{$maps_cache{$_[0]}}, $idx, 1) if ($idx != -1);
-&renumber_list($maps_cache{$_[0]}, $_[1], -$len);
 }
 
 
 # modify_mapping(map, &oldmapping, &newmapping)
 sub modify_mapping
 {
-local $lref = &read_file_lines($_[1]->{'map_file'});
-local $oldlen = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
-local @newlines;
-push(@newlines, &make_table_comment($_[2]->{'cmt'}));
-push(@newlines, "$_[2]->{'name'}\t$_[2]->{'value'}");
-splice(@$lref, $_[1]->{'line'}, $oldlen, @newlines);
-&flush_file_lines();
+if ($_[1]->{'map_type'} eq 'hash' || $_[1]->{'map_type'} eq 'regexp' ||
+    !$_[1]->{'map_type'}) {
+	# Modifying in a file
+	local $lref = &read_file_lines($_[1]->{'map_file'});
+	local $oldlen = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
+	local @newlines;
+	push(@newlines, &make_table_comment($_[2]->{'cmt'}));
+	push(@newlines, "$_[2]->{'name'}\t$_[2]->{'value'}");
+	splice(@$lref, $_[1]->{'line'}, $oldlen, @newlines);
+	&flush_file_lines($_[1]->{'map_file'});
+	&renumber_list($maps_cache{$_[0]}, $_[1], scalar(@newlines)-$oldlen);
+	}
+elsif ($_[1]->{'map_type'} eq 'mysql') {
+	# Updating in MySQL
+	local $conf = &mysql_value_to_conf($maps_file);
+	local $dbh = &connect_mysql_db($conf);
+	ref($dbh) || &error($dbh);
+	local $cmd = $dbh->prepare("update ".$conf->{'table'}.
+				   " set ".$conf->{'where_field'}." = ?,".
+				   " ".$conf->{'select_field'}." = ?".
+				   " where ".$conf->{'where_field'}." = ?".
+				   " ".$conf->{'additional_conditions'});
+	if (!$cmd || !$cmd->execute($_[2]->{'name'}, $_[2]->{'value'},
+				    $_[1]->{'key'})) {
+		&error(&text('mysql_eupdate',
+			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
+		}
+	$cmd->finish();
+	$dbh->disconnect();
+	}
+elsif ($_[1]->{'map_type'} eq 'ldap') {
+	# Updating in LDAP
+	# XXX
+	}
 
+# Update in-memory cache
 local $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
 $_[2]->{'map_file'} = $_[1]->{'map_file'};
+$_[2]->{'map_type'} = $_[1]->{'map_type'};
 $_[2]->{'file'} = $_[1]->{'file'};
 $_[2]->{'line'} = $_[1]->{'line'};
 $_[2]->{'eline'} = $_[2]->{'cmt'} ? $_[1]->{'line'}+1 : $_[1]->{'line'};
 $maps_cache{$_[0]}->[$idx] = $_[2] if ($idx != -1);
-&renumber_list($maps_cache{$_[0]}, $_[1], scalar(@newlines)-$oldlen);
 }
 
 
@@ -1368,7 +1494,7 @@ sub list_mysql_sources
 local @rv;
 my $lref = &read_file_lines($config{'postfix_config_file'});
 foreach my $l (@$lref) {
-	if ($l =~ /^\s*(\S+)_hosts\s*=/) {
+	if ($l =~ /^\s*(\S+)_dbname\s*=/) {
 		push(@rv, $1);
 		}
 	}
@@ -1415,6 +1541,139 @@ for(my $i=0; $i<@$lref; $i++) {
 if (!$found && defined($value)) {
 	push(@$lref, "$name = $value");
 	}
+}
+
+# can_access_map(type, value)
+# Checks if some map (such as a database) can be accessed
+sub can_access_map
+{
+local ($type, $value) = @_;
+if ($type eq "hash" || $type eq "regexp") {
+	return undef;	# Always can
+	}
+elsif ($type eq "mysql") {
+	# Parse config, connect to DB
+	local $conf;
+	if ($value =~ /^[\/\.]/) {
+		# Config file
+		local $cfile = $value;
+		if ($cfile !~ /^\//) {
+			$cfile = &guess_config_dir()."/".$cfile;
+			}
+		-r $cfile || return &text('mysql_ecfile', "<tt>$cfile</tt>");
+		$conf = &get_backend_config($cfile);
+		}
+	else {
+		# Backend name
+		$conf = &mysql_value_to_conf($value);
+		$conf->{'dbname'} || return &text('mysql_esource', $value);
+		}
+
+	# Do we have the field and table info?
+	foreach my $need ('table', 'select_field', 'where_field') {
+		$conf->{$need} || return &text('mysql_eneed', $need);
+		}
+
+	# Try a connect, and a query
+	local $dbh = &connect_mysql_db($conf);
+	if (!ref($dbh)) {
+		return $dbh;
+		}
+	local $cmd = $dbh->prepare("select ".$conf->{'select_field'}." ".
+				   "from ".$conf->{'table'}." ".
+				   "where ".$conf->{'where_field'}." = ".
+					    $conf->{'where_field'}." ".
+				   "limit 1");
+	if (!$cmd || !$cmd->execute()) {
+		return &text('mysql_equery',
+			     "<tt>".$conf->{'table'}."</tt>",
+			     "<tt>".&html_escape($dbh->errstr)."</tt>");
+		}
+	$cmd->finish();
+	$dbh->disconnect();
+	return undef;
+	}
+elsif ($type eq "ldap") {
+	# XXX
+	}
+else {
+	return &text('map_unknown', "<tt>$type</tt>");
+	}
+}
+
+# connect_mysql_db(&config)
+# Attempts to connect to the Postfix MySQL database. Returns
+# a driver handle on success, or an error message string on failure.
+sub connect_mysql_db
+{
+local ($conf) = @_;
+local $driver = "mysql";
+local $drh;
+eval <<EOF;
+use DBI;
+\$drh = DBI->install_driver(\$driver);
+EOF
+if ($@) {
+	return &text('mysql_edriver', "<tt>DBD::$driver</tt>");
+        }
+local @hosts = split(/\s+/, $conf->{'hosts'});
+local $dbistr = "database=$conf->{'dbname'}";
+$dbistr .= ";host=$hosts[0]" if (@hosts);
+local $dbh = $drh->connect($dbistr,
+                           $conf->{'user'}, $conf->{'password'}, { });
+$dbh || return &text('mysql_elogin',
+		     "<tt>$conf->{'dbname'}</tt>", $drh->errstr)."\n";
+return $dbh;
+}
+
+# mysql_value_to_conf(value)
+# Converts a MySQL config file or source name to a config hash ref
+sub mysql_value_to_conf
+{
+local ($value) = @_;
+local $conf;
+if ($value =~ /^[\/\.]/) {
+	# Config file
+	local $cfile = $value;
+	if ($cfile !~ /^\//) {
+		$cfile = &guess_config_dir()."/".$cfile;
+		}
+	-r $cfile || &error(&text('mysql_ecfile', "<tt>$cfile</tt>"));
+	$conf = &get_backend_config($cfile);
+	}
+else {
+	# Backend name
+	$conf = { };
+	foreach my $k ("hosts", "dbname", "user", "password", "query",
+		       "table", "where_field", "select_field",
+		       "additional_conditions") {
+		local $v = &get_real_value($value."_".$k);
+		$conf->{$k} = $v;
+		}
+	}
+return $conf;
+}
+
+# can_map_comments(name)
+# Returns 1 if some map can have comments. Not allowed for MySQL and LDAP.
+sub can_map_comments
+{
+local ($name) = @_;
+foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
+	return 0 if ($tv->[0] ne 'file' && $tv->[0] ne 'regexp');
+	}
+return 1;
+}
+
+# can_map_manual(name)
+# Returns 1 if osme map has a file that can be manually edited
+sub can_map_manual
+{
+local ($name) = @_;
+foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
+	return 0 if ($tv->[0] ne 'file' && $tv->[0] ne 'regexp');
+	}
+return 1;
 }
 
 1;

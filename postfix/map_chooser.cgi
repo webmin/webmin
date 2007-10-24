@@ -47,14 +47,16 @@ foreach $tv (@maps) {
 		&ui_textbox("mdbname_$i", $myconf->{'dbname'}, 30));
 	if ($postfix_version >= 2.2) {
 		# Can use custom query
-		# XXX
+		$mtable .= &ui_table_row($text{'chooser_mquery'},
+			&ui_opt_textbox("mquery_$i", $myconf->{'query'}, 40,
+					$text{'chooser_none'}));
 		}
 	$mtable .= &ui_table_row($text{'chooser_mtable'},
 		&ui_textbox("mtable_$i", $myconf->{'table'}, 30));
-	$mtable .= &ui_table_row($text{'chooser_mselect_field'},
-		&ui_textbox("mselect_field_$i", $myconf->{'select_field'}, 30));
 	$mtable .= &ui_table_row($text{'chooser_mwhere_field'},
 		&ui_textbox("mwhere_field_$i", $myconf->{'where_field'}, 30));
+	$mtable .= &ui_table_row($text{'chooser_mselect_field'},
+		&ui_textbox("mselect_field_$i", $myconf->{'select_field'}, 30));
 	$mtable .= &ui_table_row($text{'chooser_madditional_conditions'},
 		&ui_opt_textbox("madditional_conditions_$i",
 			$myconf->{'additional_conditions'}, 30,

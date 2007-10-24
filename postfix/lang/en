@@ -1,3 +1,5 @@
+connect_emysql=Failed to load the database driver $1
+connect_elogin=Failed to login to the database $1 : $2.
 index_title=Postfix Mail Server
 index_epath=The Postfix control command $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or Postfix is not installed.
 index_postfix=Postfix
@@ -367,7 +369,8 @@ maps_internal_error=Map: internal error
 maps_cant_write=Can not write
 help_map_format=What format should I use?
 map_noname=Missing or invalid mapping name
-
+map_cannot=This map cannot be edited : $1
+map_unknown=Webmin does not support the map type $1
 
 virtual_title=Virtual Domains
 virtual_ecannot=You are not allowed to edit the virtual domains mapping configuration
@@ -805,4 +808,14 @@ chooser_emdbname=Missing or invalid table name for map $1
 chooser_emselect_field=Missing or invalid value field for map $1
 chooser_emwhere_field=Missing or invalid key field for map $1
 chooser_emadditional=Missing additional SQL conditions for map $1
+chooser_mquery=Custom query for map
+chooser_emquery=Missing custom query for map
 
+mysql_ecfile=MySQL configuration file $1 was not found
+mysql_emysql=Failed to load the database driver $1
+mysql_elogin=Failed to login to the database $1 : $2.
+mysql_equery=Failed to query table $1 : $2
+mysql_eadd=SQL insert failed : $1
+mysql_edelete=SQL delete failed : $1
+mysql_esource=No MySQL source named $1 was found
+mysql_eneed=The MySQL configuration parameter $1 was not found. Virtualmin needs this to figure out which table and fields to query.

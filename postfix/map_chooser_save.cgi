@@ -58,6 +58,19 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 			&error(&text('chooser_empassword', $i+1));
 		&save_backend_config($file, "password", $in{"mpassword_$i"});
 
+		# Custom query
+		if ($postfix_version >= 2.2) {
+			if ($in{"mquery_${i}_def"}) {
+				&save_backend_config($file, "query", undef);
+				}
+			else {
+				$in{"mdbname_$i"} =~ /\S/ ||
+					&error(&text('chooser_emquery', $i+1));
+				&save_backend_config($file, "query",
+						     $in{"mquery_$i"});
+				}
+			}
+
 		# Database name 
 		$in{"mdbname_$i"} =~ /^\S+$/ ||
 			&error(&text('chooser_emdbname', $i+1));

@@ -48,8 +48,10 @@ print &ui_hidden("map_name", $in{'map_name'}),"\n";
 print &ui_table_start($text{'edit_map_title'}, "width=100%", 2);
 
 # Show map comment
-print &ui_table_row($text{'mapping_cmt'},
-		    &ui_textbox("cmt", $map{'cmt'}, 50));
+if (&can_map_comments($in{'map_name'})) {
+	print &ui_table_row($text{'mapping_cmt'},
+			    &ui_textbox("cmt", $map{'cmt'}, 50));
+	}
 
 ##$nfunc = "edit_name_".$in{'map_name'};
 ## modified to capture subparameters
