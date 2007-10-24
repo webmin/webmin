@@ -16,7 +16,8 @@ if (defined($cats{''})) {
 	}
 @cats = sort { ($b eq "others" ? "" : $b) cmp ($a eq "others" ? "" : $a) } keys %cats;
 
-&PrintHeader();
+$charset = defined($force_charset) ? $force_charset : &get_charset();
+&PrintHeader($charset);
 print <<EOF;
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
