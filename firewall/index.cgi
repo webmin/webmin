@@ -4,8 +4,11 @@
 
 require './firewall-lib.pl';
 &ReadParse();
+if ($iptables_save_file) {
+	$desc = &text('index_editing', "<tt>$iptables_save_file</tt>");
+	}
 &ui_print_header(undef, $text{'index_title'}, undef, "intro", 1, 1, 0,
-	&help_search_link("iptables", "man", "doc"));
+	&help_search_link("iptables", "man", "doc"), undef, undef, $desc);
 
 # Check for iptables and iptables-restore commands
 if ($c = &missing_firewall_commands()) {
