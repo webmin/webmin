@@ -37,7 +37,7 @@ while(<DFS>) {
 			$lnum++;
 			}
 		$share->{'eline'} = $lnum;
-		if ($line =~ /(\/\S+)/) {
+		if ($line =~ /\s(\/\S+)/) {
 			$share->{'dir'} = $1;
 			}
 		if ($line =~ /-d\s+"([^"]+)"/) { $share->{'desc'} = $1; }
