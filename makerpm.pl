@@ -73,7 +73,7 @@ Group: System/Tools
 Source: http://www.webmin.com/download/%{name}-%{version}.tar.gz
 Vendor: Jamie Cameron
 BuildRoot: /tmp/%{name}-%{version}
-BuildArch: noarch
+BuildArchitectures: noarch
 %description
 A web-based administration interface for Unix systems. Using Webmin you can
 configure DNS, Samba, NFS, local/remote filesystems and more using your

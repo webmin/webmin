@@ -32,11 +32,11 @@ print "<tr $tb> <td><b>$text{'aliasopts_title'}</b></td></tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
 print "<tr>\n";
-&option_freefield("alias_maps", 60);
+&option_mapfield("alias_maps", 60);
 print "</tr>\n";
 
 print "<tr>\n";
-&option_freefield("alias_database", 60);
+&option_mapfield("alias_database", 60);
 print "</tr>\n";
 
 print "</table></td></tr></table><p>\n";

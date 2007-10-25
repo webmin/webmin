@@ -27,5 +27,5 @@ readonly=1
 desc_zh_TW.UTF-8=Webmin 使用者
 desc_zh_CN.UTF-8=Webmin 用户管理
 desc_ja_JP.UTF-8=Webmin ユーザ
-desc_ko_KR.UTF-8= Webmin 사용자
+desc_ko_KR.UTF-8=Webmin 사용자
 desc_da=Webmin brugere

@@ -13,3 +13,4 @@ longdesc=Backup and restore filesystems using the dump and restore family of com
 readonly=1
 desc_zh_TW.UTF-8=æª”æ¡ˆç³»çµ±å‚™ä»½
 desc_ko_KR.euc=ÆÄÀÏ ½Ã½ºÅÛ ¹é¾÷
+desc_ko_KR.UTF-8=íŒŒì¼ ì‹œìŠ¤í…œ ë°±ì—…

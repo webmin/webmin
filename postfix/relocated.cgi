@@ -32,7 +32,7 @@ print "<tr $cb> <td><table width=100%>\n";
 $none = $text{'opts_none'};
 
 print "<tr>\n";
-&option_radios_freefield("relocated_maps", 60, $none);
+&option_mapfield("relocated_maps", 60, $none);
 print "</tr>\n";
 
 print "</table></td></tr></table><p>\n";

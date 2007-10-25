@@ -1468,7 +1468,7 @@ if ((!$error || !$$error) && !$nocache) {
 # Do a HTTP download, after the headers have been sent
 sub complete_http_download
 {
-local($line, %header, $s);
+local($line, %header, @headers, $s);
 local $cbfunc = $_[3];
 
 # read headers
@@ -1485,6 +1485,7 @@ while(1) {
 	$line =~ tr/\r\n//d;
 	$line =~ /^(\S+):\s+(.*)$/ || last;
 	$header{lc($1)} = $2;
+	push(@headers, [ lc($1), $2 ]);
 	}
 alarm(0);
 if ($download_timed_out) {
@@ -3694,13 +3695,11 @@ if (!$rv && $recur) {
 	# Failed .. try mkdir -p
 	local $param = $gconfig{'os_type'} eq 'windows' ? "" : "-p";
 	local $ex = &execute_command("mkdir $param ".&quote_path($dir));
-	if (!$ex) {
-		chmod($perms, $dir);
-		}
-	else {
+	if ($ex) {
 		return 0;
 		}
 	}
+chmod($perms, $dir);
 return 1;
 }
 

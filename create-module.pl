@@ -59,8 +59,8 @@ foreach $m (@ARGV) {
 	unlink("/tmp/create-module/$subdir/IDEAS");
 	system("cd /tmp/create-module && find . -name \\*.svn-work | xargs rm -rf");
 	system("cd /tmp/create-module && find . -name \\*.svn-base | xargs rm -rf");
-	system("cd /tmp/create-module && find . -name \\*.cgi | xargs chmod +x");
-	system("cd /tmp/create-module && find . -name \\*.pl | xargs chmod +x");
+	system("cd /tmp/create-module && find . -name \\*.cgi | xargs -r chmod +x");
+	system("cd /tmp/create-module && find . -name \\*.pl | xargs -r chmod +x");
 	system("cd /tmp/create-module && tar $flags $file $subdir") && die "Failed to create tar file";
 	}
 if ($file =~ /^(.*)\.gz$/i) {

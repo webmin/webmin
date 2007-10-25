@@ -118,6 +118,7 @@ view_afile=Attachment name
 view_atype=Attachment type
 view_aactions=Actions
 view_aview=View
+view_aopen=Open
 view_asave=Save
 view_aplain=Raw
 view_anofile=No filename

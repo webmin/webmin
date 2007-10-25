@@ -275,6 +275,7 @@ password_enew1=No new password was entered
 password_enew2=Your new passwords do not match
 password_epam=PAM error : $1
 password_emodpam=The Authen::PAM perl module needed to do password changes is not installed!
+password_enewpass=New password is not allowed : $1
 
 ui_mandatory=This field is mandatory
 ui_checkmandatory=Nothing was selected

@@ -275,6 +275,7 @@ password_enew1=No has introduït la contrasenya nova
 password_enew2=Les contrasenyes noves no coincideixen
 password_epam=Error PAM: $1
 password_emodpam=El mòdul perl Authen::PAM necessari per al canvi de contrasenya no està instal·lat!
+password_enewpass=No es permet la nova contrasenya: $1
 
 ui_mandatory=Aquest camp és obligatori
 ui_checkmandatory=No has seleccionat res

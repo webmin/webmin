@@ -34,15 +34,15 @@ print "<tr $cb> <td><table width=100%>\n";
 $none = $text{'opts_none'};
 
 print "<tr>\n";
-&option_radios_freefield("canonical_maps", 60, $none);
+&option_mapfield("canonical_maps", 60, $none);
 print "</tr>\n";
 
 print "<tr>\n";
-&option_radios_freefield("recipient_canonical_maps", 60, $none);
+&option_mapfield("recipient_canonical_maps", 60, $none);
 print "</tr>\n";
 
 print "<tr>\n";
-&option_radios_freefield("sender_canonical_maps", 60, $none);
+&option_mapfield("sender_canonical_maps", 60, $none);
 print "</tr>\n";
 
 
