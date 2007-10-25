@@ -341,37 +341,6 @@ foreach $o (@$opts) {
 return $rv;
 }
 
-# ui_radio_table(name, value, &options, [disabled?])
-# Returns HTML for a series of radio buttons, one per line in a table
-sub ui_radio_table
-{
-return &theme_ui_radio_table(@_) if (defined(&theme_ui_radio_table));
-local ($name, $value, $opts, $dis) = @_;
-local $rv = "<table>";
-local $o;
-foreach $o (@$opts) {
-	local $id = &quote_escape($name."_".$o->[0]);
-	local $label = $o->[1] || $o->[0];
-	local $after;
-	if ($label =~ /^([^<]*)(<[\000-\377]*)$/) {
-		$label = $1;
-		$after = $2;
-		}
-	$rv .= "<tr> <td>";
-	$rv .= "<input type=radio name=\"".&quote_escape($name)."\" ".
-               "value=\"".&quote_escape($o->[0])."\"".
-	       ($o->[0] eq $value ? " checked" : "").
-	       ($dis ? " disabled=true" : "").
-	       " id=\"$id\"".
-	       " $o->[3]> <label for=\"$id\">".
-	       $label."</label>".$after."</td>\n";
-	$rv .= "<td>$o->[2]</td>\n";
-	$rv .= "</tr>\n";
-	}
-$rv .= "</table>\n";
-return $rv;
-}
-
 # ui_yesno_radio(name, value, [yes], [no], [disabled?])
 # Like ui_yesno, but always displays just two inputs (yes and no)
 sub ui_yesno_radio
@@ -499,8 +468,8 @@ sub ui_reset
 {
 return &theme_ui_reset(@_) if (defined(&theme_ui_reset));
 local ($label, $dis) = @_;
-return "<input type=submit value=\"".&quote_escape($label).
-       ($dis ? " disabled=true" : "")."\">\n";
+return "<input type=reset value=\"".&quote_escape($label)."\"".
+       ($dis ? " disabled=true" : "").">\n";
 			
 }
 
@@ -1100,9 +1069,9 @@ return "" if (!@$rows);
 local $rv = "<table>\n";
 foreach my $r (@$rows) {
 	$rv .= "<tr>\n";
-	$rv .= "<td>".&ui_oneradio($name, $r->[0], "<b>$r->[1]</b>",
+	$rv .= "<td valign=top>".&ui_oneradio($name, $r->[0], "<b>$r->[1]</b>",
 				   $r->[0] eq $sel)."</td>\n";
-	$rv .= "<td>".$r->[2]."</td>\n";
+	$rv .= "<td valign=top>".$r->[2]."</td>\n";
 	$rv .= "</tr>\n";
 	}
 $rv .= "</table>\n";
