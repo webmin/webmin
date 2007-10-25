@@ -73,11 +73,13 @@ if (@plist) {
 		}
 	else {
 		# Show full printer details .. table heading first
-		print &ui_form_start("delete_printers.cgi", "post");
-		@tds = ( "width=5" );
-		print &ui_links_row(\@links);
+		if ($access{'delete'}) {
+			print &ui_form_start("delete_printers.cgi", "post");
+			@tds = ( "width=5" );
+			print &ui_links_row(\@links);
+			}
 		print &ui_columns_start([
-			"",
+			$access{'delete'} ? ( "" ) : ( ),
 			$text{'index_name'},
 			$text{'index_desc'},
 			$text{'index_to'},
@@ -155,17 +157,25 @@ if (@plist) {
 				}
 			$jlink .= "</a>";
 			push(@cols, $jlink);
-			if ($ed) {
+			if (!$access{'delete'}) {
+				# Cannot delete
+				print &ui_columns_row(\@cols, \@tds);
+				}
+			elsif ($ed) {
+				# Can delete
 				print &ui_checked_columns_row(\@cols, \@tds,
 							      "d",$p->{'name'});
 				}
 			else {
+				# Cannot delete this one
 				print &ui_columns_row([ "", @cols ], \@tds);
 				}
 			}
 		print &ui_columns_end();
-		print &ui_links_row(\@links);
-		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		if ($access{'delete'}) {
+			print &ui_links_row(\@links);
+			print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+			}
 		}
 	}
 else {
