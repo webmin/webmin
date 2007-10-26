@@ -23,16 +23,17 @@ foreach $tv (@maps) {
 	$t = $tv->[0] eq "" ? "" :
 	     $tv->[0] eq "hash" ? "hash" :
 	     $tv->[0] eq "regexp" ? "regexp" :
-	     $tv->[0] eq "mysql" && $tv->[1] =~ /^[\/\.]/ ? "mysql" :
-	     $tv->[0] eq "mysql" && $tv->[1] !~ /^[\/\.]/ ? "mysqlsrc" :
+	     $tv->[0] eq "mysql" && &supports_map_type("mysql") &&
+	      $tv->[1] =~ /^[\/\.]/ ? "mysql" :
+	     $tv->[0] eq "mysql" && &supports_map_type("mysql") &&
+	      $tv->[1] !~ /^[\/\.]/ ? "mysqlsrc" :
+	     $tv->[0] eq "ldap" && &supports_map_type("ldap") ? "ldap" :
 				    "other";
 
 	# For MySQL, read config file and generate inputs
+	$myconf = { };
 	if ($t eq "mysql") {
 		$myconf = &get_backend_config($tv->[1]);
-		}
-	else {
-		$myconf = { };
 		}
 	$mtable = &ui_table_start(undef, "width=100%", 2,
 				  [ "nowrap", "nowrap" ]);
@@ -64,7 +65,49 @@ foreach $tv (@maps) {
 	$mtable .= &ui_table_end();
 
 	# For LDAP, read config and generate inputs too
-	# XXX
+	$lconf = { };
+	if ($t eq "ldap") {
+		$lconf = &get_backend_config($tv->[1]);
+		}
+	$ltable = &ui_table_start(undef, "width=100%", 2,
+				  [ "nowrap", "nowrap" ]);
+	$ltable .= &ui_table_row($text{'chooser_lserver_host'},
+		&ui_opt_textbox("lserver_host_$i", $lconf->{'server_host'}, 30,
+				"<tt>localhost</tt>"));
+	$ltable .= &ui_table_row($text{'chooser_lserver_port'},
+		&ui_opt_textbox("lserver_port_$i", $lconf->{'server_port'}, 5,
+				"$text{'default'} (389)"));
+	$ltable .= &ui_table_row($text{'chooser_lstart_tls'},
+		&ui_radio("lstart_tls_$i", $lconf->{'start_tls'} || 'no',
+			  [ [ 'yes', $text{'yes'} ],
+			    [ 'no', $text{'no'} ] ]));
+	$ltable .= &ui_table_row($text{'chooser_lsearch_base'},
+		&ui_textbox("lsearch_base_$i", $lconf->{'search_base'}, 50));
+	$ltable .= &ui_table_row($text{'chooser_lquery_filter'},
+		&ui_opt_textbox("lquery_filter_$i", $lconf->{'query_filter'},50,
+		    "$text{'default'} (<tt>mailacceptinggeneralid=%s</tt>)<br>",
+		    $text{'chooser_lfilter'}));
+	$ltable .= &ui_table_row($text{'chooser_lresult_attribute'},
+		&ui_opt_textbox("lresult_attribute_$i",
+				$lconf->{'result_attribute'}, 20,
+				"$text{'default'} (<tt>maildrop</tt>)<br>",
+				$text{'chooser_lattribute'}));
+	$ltable .= &ui_table_row($text{'chooser_lscope'},
+		&ui_select("lscope_$i", $lconf->{'scope'},
+			   [ [ "", "$text{'default'} ($text{'chooser_lsub'})" ],
+			     map { [ $_, $text{'chooser_l'.$_} ] }
+				 ('sub', 'base', 'one') ]));
+	$ltable .= &ui_table_row($text{'chooser_lbind'},
+		&ui_radio("lbind_$i", $lconf->{'bind'} || 'yes',
+			  [ [ 'yes', $text{'yes'} ],
+			    [ 'no', $text{'no'} ] ]));
+	$ltable .= &ui_table_row($text{'chooser_lbind_dn'},
+		&ui_opt_textbox("lbind_dn_$i", $lconf->{'bind_dn'}, 40,
+				$text{'chooser_none'}));
+	$ltable .= &ui_table_row($text{'chooser_lbind_pw'},
+		&ui_opt_textbox("lbind_pw_$i", $lconf->{'bind_pw'}, 20,
+				$text{'chooser_none'}));
+	$ltable .= &ui_table_end();
 
 	# Generate possible modes
 	@opts = ( );
@@ -73,12 +116,17 @@ foreach $tv (@maps) {
 	    &ui_textbox("hash_$i", $t eq "hash" ? $tv->[1] : undef, 50) ]);
 	push(@opts, [ "regexp", $text{'chooser_regexp'},
 	    &ui_textbox("regexp_$i", $t eq "regexp" ? $tv->[1] : undef, 50) ]);
-	push(@opts, [ "mysql", $text{'chooser_mysql'}, $mtable ]);
-	if (@sources || $t eq "mysqlsrc") {
-		push(@opts, [ "mysqlsrc", $text{'chooser_mysqlsrc'},
-			      &ui_select("mysqlsrc_$i",
+	if (&supports_map_type("mysql")) {
+		push(@opts, [ "mysql", $text{'chooser_mysql'}, $mtable ]);
+		if (@sources || $t eq "mysqlsrc") {
+			push(@opts, [ "mysqlsrc", $text{'chooser_mysqlsrc'},
+				      &ui_select("mysqlsrc_$i",
 					 $t eq "mysqlsrc" ? $tv->[1] : undef,
 					 \@sources) ]);
+			}
+		}
+	if (&supports_map_type("ldap")) {
+		push(@opts, [ "ldap", $text{'chooser_ldap'}, $ltable ]);
 		}
 	push(@opts, [ "other", $text{'chooser_other'},
 	    &ui_textbox("other_$i", $t eq "other" ? $tv->[1] : undef, 60) ]);

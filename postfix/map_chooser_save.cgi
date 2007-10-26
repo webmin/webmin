@@ -109,7 +109,100 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 		}
 	elsif ($t eq "ldap") {
 		# LDAP database
-		# XXX
+		if ($oldmaps[$i]->[0] eq "ldap" &&
+		    $oldmaps[$i]->[1] =~ /^[\/\.]/) {
+			# Same file as before
+			$file = $oldmaps[$i]->[1];
+			}
+		else {
+			# Pick a filename based on the field
+			$file = &guess_config_dir()."/".$in{'mapname'}.
+				($i ? ".$i" : "").".ldap.conf";
+			}
+
+		# Save LDAP server hostname
+		if ($in{"lserver_host_${i}_def"}) {
+			&save_backend_config($file, "server_host", undef);
+			}
+		else {
+			$in{"lserver_host_$i"} =~ /\S/ ||
+				&error(&text('chooser_elserver_host', $i+1));
+			&save_backend_config($file, "server_host",
+					     $in{"lserver_host_$i"});
+			}
+
+		# LDAP port number
+		if ($in{"lserver_port_${i}_def"}) {
+			&save_backend_config($file, "server_port", undef);
+			}
+		else {
+			$in{"lserver_port_$i"} =~ /^\d+$/ ||
+				&error(&text('chooser_elserver_port', $i+1));
+			&save_backend_config($file, "server_port",
+					     $in{"lserver_port_$i"});
+			}
+
+		# Start TLS?
+		&save_backend_config($file, "start_tls", $in{"lstart_tls_$i"});
+
+		# Search base
+		$in{"lsearch_base_$i"} =~ /\S/ ||
+			&error(&text('chooser_elsearch_base', $i+1));
+		&save_backend_config($file, "search_base",
+				     $in{"lsearch_base_$i"});
+
+		# Query filter
+		if ($in{"lquery_filter_${i}_def"}) {
+			&save_backend_config($file, "query_filter", undef);
+			}
+		else {
+			$in{"lquery_filter_$i"} =~ /^\S+$/ ||
+				&error(&text('chooser_elquery_filter', $i+1));
+			&save_backend_config($file, "query_filter",
+					     $in{"lquery_filter_$i"});
+			}
+
+		# Resulting attribute
+		if ($in{"lresult_attribute_${i}_def"}) {
+			&save_backend_config($file, "result_attribute", undef);
+			}
+		else {
+			$in{"lresult_attribute_$i"} =~ /^\S+$/ ||
+			    &error(&text('chooser_elresult_attribute', $i+1));
+			&save_backend_config($file, "result_attribute",
+					     $in{"lresult_attribute_$i"});
+			}
+
+		# Search scope
+		&save_backend_config($file, "scope", $in{"lscope_$i"} || undef);
+
+		# Login to server?
+		&save_backend_config($file, "bind", $in{"lbind_$i"});
+
+		# Username
+		if ($in{"lbind_dn_${i}_def"}) {
+			&save_backend_config($file, "bind_dn", undef);
+			}
+		else {
+			$in{"lbind_dn_$i"} =~ /\S/ ||
+				&error(&text('chooser_elbind_dn', $i+1));
+			&save_backend_config($file, "bind_dn",
+					     $in{"lbind_dn_$i"});
+			}
+
+		# Password
+		if ($in{"lbind_pw_${i}_def"}) {
+			&save_backend_config($file, "bind_pw", undef);
+			}
+		else {
+			$in{"lbind_pw_$i"} =~ /\S/ ||
+				&error(&text('chooser_elbind_pw', $i+1));
+			&save_backend_config($file, "bind_pw",
+					     $in{"lbind_pw_$i"});
+			}
+
+		push(@maps, "ldap:$file");
+		push(@files, $file);
 		}
 	elsif ($t eq "other") {
 		# Some other map

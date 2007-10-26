@@ -1738,5 +1738,22 @@ foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
 return 1;
 }
 
+# supports_map_type(type)
+# Returns 1 if a map of some type is supported by Postfix
+sub supports_map_type
+{
+local ($type) = @_;
+if (!defined(@supports_map_type_cache)) {
+	@supports_map_type = ( );
+	open(POSTCONF, "$config{'postfix_config_command'} -m |");
+	while(<POSTCONF>) {
+		s/\r|\n//g;
+		push(@supports_map_type_cache, $_);
+		}
+	close(POSTCONF);
+	}
+return &indexoflc($type, @supports_map_type_cache) >= 0;
+}
+
 1;
 
