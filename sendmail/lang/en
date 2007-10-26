@@ -1,4 +1,4 @@
-index_title=Sendmail Mailserver
+index_title=Sendmail Mail Server
 index_econfig=The sendmail config file $1 does not exist. Maybe Sendmail is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_eversion=Your sendmail config file does not appear to be for the latest sendmail version. Webmin only supports versions 8.8 and above.
 index_epath=The sendmail executable $1 is not installed on your system. Maybe your <a href='$2'>module configuration</a> is incorrect, or sendmail is not installed.

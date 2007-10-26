@@ -91,13 +91,13 @@ if (!defined($c)) {
 return @$c;
 }
 
-# alias_form([alias])
+# alias_form([alias], [no-comment])
 # Display a form for editing or creating an alias. Each alias can map to
 # 1 or more programs, files, lists or users
 sub alias_form
 {
-local($a, @values, $v, $type, $val, @typenames);
-$a = $_[0];
+local ($a, $nocmt) = @_;
+local (@values, $v, $type, $val, @typenames);
 if ($a) { @values = @{$a->{'values'}}; }
 @typenames = map { $text{"aform_type$_"} } (0 .. 6);
 $typenames[0] = "&lt;$typenames[0]&gt;";
@@ -114,8 +114,10 @@ print &ui_table_start($a ? $text{'aform_edit'}
 			 : $text{'aform_create'}, undef, 2);
 
 # Description
-print &ui_table_row(&hlink($text{'aform_cmt'},"alias_cmt"),
-	&ui_textbox("cmt", $a ? $a->{'cmt'} : undef, 50));
+if (!$nocmt) {
+	print &ui_table_row(&hlink($text{'aform_cmt'},"alias_cmt"),
+		&ui_textbox("cmt", $a ? $a->{'cmt'} : undef, 50));
+	}
 
 
 # Alias name
@@ -172,7 +174,7 @@ sub create_alias
 {
 &list_aliases($_[1]);	# force cache init
 
-# Update the config fi;e
+# Update the config file
 local(%aliases);
 local $lref = &read_file_lines($_[1]->[0]);
 $_[0]->{'line'} = scalar(@$lref);
