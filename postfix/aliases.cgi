@@ -31,12 +31,14 @@ print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'aliasopts_title'}</b></td></tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
+$none = $text{'opts_none'};
+
 print "<tr>\n";
-&option_mapfield("alias_maps", 60);
+&option_mapfield("alias_maps", 60, $none);
 print "</tr>\n";
 
 print "<tr>\n";
-&option_mapfield("alias_database", 60);
+&option_mapfield("alias_database", 60, $none);
 print "</tr>\n";
 
 print "</table></td></tr></table><p>\n";
@@ -50,14 +52,11 @@ print "<br>\n";
 
 # double-table displaying all aliases
 
-my @afiles = &get_aliases_files(&get_current_value("alias_maps"));
-my @aliases = &list_aliases(\@afiles);
+my @aliases = &list_postfix_aliases();
 if ($config{'sort_mode'} == 1) {
 	@aliases = sort { lc($a->{'name'}) cmp lc($b->{'name'}) }
 			@aliases;
 	}
-
-print $text{'aliases_click'}, "\n<br>\n";
 
 # find a good place to split
 $lines = 0;
@@ -79,7 +78,7 @@ if ($config{'columns'} == 2) {
 	&aliases_table(@aliases[0..$mid-1]);
 	print "</td><td width=50% valign=top>\n";
 	if ($mid < @aliases) { &aliases_table(@aliases[$mid..$#aliases]); }
-	print "</td></tr> </table><br>\n";
+	print "</td></tr> </table>\n";
 	}
 else {
 	&aliases_table(@aliases);

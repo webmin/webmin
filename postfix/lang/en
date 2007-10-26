@@ -817,5 +817,6 @@ mysql_elogin=Failed to login to the database $1 : $2.
 mysql_equery=Failed to query table $1 : $2
 mysql_eadd=SQL insert failed : $1
 mysql_edelete=SQL delete failed : $1
+mysql_eupdate=SQL update failed : $1
 mysql_esource=No MySQL source named $1 was found
 mysql_eneed=The MySQL configuration parameter $1 was not found. Virtualmin needs this to figure out which table and fields to query.

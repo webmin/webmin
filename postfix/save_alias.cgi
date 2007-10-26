@@ -23,7 +23,7 @@ $access{'aliases'} || &error($text{'aliases_ecannot'});
 
 # Get the alias (if editing or deleting)
 @afiles = &get_aliases_files(&get_current_value("alias_maps"));
-@aliases = &list_aliases(\@afiles);
+@aliases = &list_postfix_aliases();
 if (!$in{'new'}) {
 	$a = $aliases[$in{'num'}];
 	}
@@ -31,7 +31,7 @@ if (!$in{'new'}) {
 
 if ($in{'delete'}) {
 	# delete some alias
-	&delete_alias($a, \@afiles);
+	&delete_postfix_alias($a);
 	$loga = $a;
 	}
 else {
@@ -87,10 +87,16 @@ else {
 
 	$newa{'name'} = $in{'name'};
 	$newa{'values'} = \@values;
-	$newa{'cmt'} = $in{'cmt'};
+	if (defined($in{'cmt'})) {
+		$newa{'cmt'} = $in{'cmt'};
+		}
 	$newa{'enabled'} = $in{'enabled'};
-	if ($in{'new'}) { &create_alias(\%newa, \@afiles, 1); }
-	else { &modify_alias($a, \%newa, 1); }
+	if ($in{'new'}) {
+		&create_postfix_alias(\%newa);
+		}
+	else {
+		&modify_postfix_alias($a, \%newa);
+		}
 	$loga = \%newa;
 	}
 &unlock_alias_files(\@afiles);

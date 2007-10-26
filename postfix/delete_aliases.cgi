@@ -12,7 +12,7 @@ $access{'aliases'} || &error($text{'aliases_ecannot'});
 # Find and validate
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'adelete_enone'});
-@aliases = &list_aliases(\@afiles);
+@aliases = &list_postfix_aliases();
 foreach $d (@d) {
 	($alias) = grep { $_->{'name'} eq $d } @aliases;
 	if ($alias) {
@@ -22,7 +22,7 @@ foreach $d (@d) {
 
 # Delete the aliases
 foreach $alias (@delaliases) {
-	&delete_alias($alias, 1);
+	&delete_postfix_alias($alias);
 	}
 &unlock_alias_files(\@afiles);
 

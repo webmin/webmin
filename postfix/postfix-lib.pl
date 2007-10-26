@@ -424,55 +424,10 @@ sub option_select
 # supports multiple alias-files
 sub get_aliases_files
 {
-    $_[0] =~ /:(\/[^,\s]*)(.*)/;
-    (my $returnvalue, my $recurse) = ( $1, $2 );
-
-    # Yes, Perl is also a functional language -> I construct a list, and no problem, lists are flattened in Perl
-    return ( $returnvalue,
-	     ($recurse =~ /:\/[^,\s]*/) ?
-	         &get_aliases_files($recurse)
-	     :
-	         ()
-           )
+    return map { $_->[1] }
+	       grep { $_->[0] eq 'hash' || $_->[0] eq 'regexp' }
+		    &get_maps_types_files($_[0]);
 }
-
- 
-# get_aliases() : \@aliases
-# construct the aliases database taken from the aliases files given in the "alias_maps" parameter
-sub get_aliases
-{
-    if (!@aliases_cache)
-    {
-	my @aliases_files = &get_aliases_files(&get_current_value("alias_maps"));
-	my $number = 0;
-	foreach $aliases_file (@aliases_files)
-	{
-	    &open_readfile(ALIASES, $aliases_file);
-	    my $i = 0;
-	    while (<ALIASES>)
-	    {
-		s/^#.*$//g;	# remove comments
-		s/\r|\n//g;	# remove newlines
-		if ((/^\s*\"([^\"]*)[^:]*:\s*([^#]*)/) ||      # names with double quotes (") are special, as seen in `man aliases(5)`
-		    (/^\s*([^\s:]*)[^:]*:\s*([^#]*)/))         # other names
-		{
-		    $number++;
-		    my %alias;
-		    $alias{'name'} = $1;
-		    $alias{'value'} = $2;
-		    $alias{'line'} = $i;
-		    $alias{'alias_file'} = $aliases_file;
-		    $alias{'number'} = $number;
-		    push(@aliases_cache, \%alias);
-		}
-		$i++;
-	    }
-	    close(ALIASES);
-	}
-    }
-    return \@aliases_cache;
-}
-
 
 # init_new_alias() : $number
 # gives a new number of alias
@@ -488,6 +443,107 @@ sub init_new_alias
     }
     
     return $max_number+1;
+}
+
+# list_postfix_aliases()
+# Returns a list of all aliases. These typically come from a file, but may also
+# be taken from a MySQL or LDAP backend
+sub list_postfix_aliases
+{
+local @rv;
+foreach my $f (&get_maps_types_files(&get_current_value("alias_maps"))) {
+	if ($f->[0] eq "hash" || $f->[0] eq "regexp") {
+		# We can read this file directly
+		push(@rv, &list_aliases([ $f->[1] ]));
+		}
+	else {
+		# Treat as a map
+		push(@maps, "$f->[0]:$f->[1]");
+		}
+	}
+if (@maps) {
+	# Convert values from MySQL and LDAP maps into alias structures
+	local $maps = &get_maps("alias_maps", undef, join(",", @maps));
+	foreach my $m (@$maps) {
+		local $v = $m->{'value'};
+		local @values;
+		while($v =~ /^\s*,?\s*()"([^"]+)"(.*)$/ ||
+		      $v =~ /^\s*,?\s*(\|)"([^"]+)"(.*)$/ ||
+		      $v =~ /^\s*,?\s*()([^,\s]+)(.*)$/) {
+			push(@values, $1.$2);
+			$v = $3;
+			}
+		if ($m->{'name'} =~ /^#(.*)$/) {
+			$m->{'enabled'} = 0;
+			$m->{'name'} = $1;
+			}
+		else {
+			$m->{'enabled'} = 1;
+			}
+		$m->{'values'} = \@values;
+		$m->{'num'} = scalar(@rv);
+		push(@rv, $m);
+		}
+	}
+return @rv;
+}
+
+# create_postfix_alias(&alias)
+# Adds a new alias, either to the local file or another backend
+sub create_postfix_alias
+{
+local ($alias) = @_;
+local @afiles = &get_maps_types_files(&get_current_value("alias_maps"));
+local $last_type = $afiles[$#afiles]->[0];
+local $last_file = $afiles[$#afiles]->[1];
+if ($last_type eq "hash" || $last_type eq "regexp") {
+	# Just adding to a file
+	&create_alias($alias, [ $last_file ], 1);
+	}
+else {
+	# Add to appropriate backend map
+	if (!$alias->{'enabled'}) {
+		$alias->{'name'} = '#'.$alias->{'name'};
+		}
+	$alias->{'value'} = join(',', map { /\s/ ? "\"$_\"" : $_ }
+					  @{$alias->{'values'}});
+	&create_mapping("alias_maps", $alias, undef, "$last_type:$last_file");
+	}
+}
+
+# delete_postfix_alias(&alias)
+# Delete an alias, either from the files or from a MySQL or LDAP map
+sub delete_postfix_alias
+{
+local ($alias) = @_;
+if ($alias->{'map_type'}) {
+	# This was from a map
+	&delete_mapping("alias_maps", $alias);
+	}
+else {
+	# Regular alias
+	&delete_alias($alias, 1);
+	}
+}
+
+# modify_postfix_alias(&oldalias, &alias)
+# Update an alias, either in a file or in a map
+sub modify_postfix_alias
+{
+local ($oldalias, $alias) = @_;
+if ($oldalias->{'map_type'}) {
+	# In the map
+	if (!$alias->{'enabled'}) {
+		$alias->{'name'} = '#'.$alias->{'name'};
+		}
+	$alias->{'value'} = join(',', map { /\s/ ? "\"$_\"" : $_ }
+					  @{$alias->{'values'}});
+	&modify_mapping("alias_maps", $oldalias, $alias);
+	}
+else {
+	# Regular alias in a file
+	&modify_alias($oldalias, $alias);
+	}
 }
 
 # renumber_list(&list, &position-object, lines-offset)
@@ -548,10 +604,12 @@ sub regenerate_aliases
     else
     {
 	local $map;
-	foreach $map (get_maps_files(get_real_value("alias_maps")))
+	foreach $map (get_maps_types_files(get_real_value("alias_maps")))
 	{
-	    $out = &backquote_logged("$config{'postfix_aliases_table_command'} -c $config_dir $map 2>&1");
-	    if ($?) { &error(&text('regenerate_table_efailed', $map, $out)); }
+	    if ($map->[0] eq 'hash' || $map->[0] eq 'regexp') {
+		    $out = &backquote_logged("$config{'postfix_aliases_table_command'} -c $config_dir $map->[1] 2>&1");
+		    if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
+	    }
 	}
     }
 }
@@ -607,15 +665,17 @@ sub regenerate_any_table
 {
     local @files;
     if ($_[1]) {
-	@files = @{$_[1]};
+	@files = map { [ "hash", $_ ] } @{$_[1]};
     } elsif (&get_current_value($_[0]) ne "") {
-	@files = &get_maps_files(&get_real_value($_[0]));
+	@files = &get_maps_types_files(&get_real_value($_[0]));
     }
     foreach $map (@files)
     {
         next unless $map;
-        local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map 2>&1");
-        if ($?) { &error(&text('regenerate_table_efailed', $map, $out)); }
+	if ($map->[0] eq "hash" || $map->[0] eq "regexp") {
+		local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map 2>&1");
+		if ($?) { &error(&text('regenerate_table_efailed', $map, $out)); }
+	}
     }
 }
 
@@ -641,15 +701,16 @@ sub get_maps_files
 }
 
  
-# get_maps($maps_name, [&force-files]) : \@maps
+# get_maps($maps_name, [&force-files], [force-map]) : \@maps
 # Construct the mappings database taken from the map files given from the
 # parameters.
 sub get_maps
 {
     if (!defined($maps_cache{$_[0]}))
     {
-	my @maps_files = $_[1] ? (map { [ "hash", $_ ] } @{$_[1]})
-			       : &get_maps_types_files(&get_real_value($_[0]));
+	my @maps_files = $_[1] ? (map { [ "hash", $_ ] } @{$_[1]}) :
+			 $_[2] ? &get_maps_types_files($_[2]) :
+			         &get_maps_types_files(&get_real_value($_[0]));
 	my $number = 0;
 	foreach my $maps_type_file (@maps_files)
 	{
@@ -832,12 +893,13 @@ sub generate_map_edit
 }
 
 
-# create_mapping(map, &mapping, [&force-files])
+# create_mapping(map, &mapping, [&force-files], [force-map])
 sub create_mapping
 {
-&get_maps($_[0], $_[2]);	# force cache init
-my @maps_files = $_[2] ? (map { [ "hash", $_ ] } @{$_[2]})
-		       : &get_maps_types_files(&get_real_value($_[0]));
+&get_maps($_[0], $_[2], $_[3]);	# force cache init
+my @maps_files = $_[2] ? (map { [ "hash", $_ ] } @{$_[2]}) :
+		 $_[3] ? &get_maps_types_files($_[3]) :
+		         &get_maps_types_files(&get_real_value($_[0]));
 my ($maps_type, $maps_file) = @{$maps_files[0]};
 if ($maps_type eq "hash" || $maps_type eq "regexp") {
 	# Adding to a regular file
@@ -891,7 +953,7 @@ if ($_[1]->{'map_type'} eq 'hash' || $_[1]->{'map_type'} eq 'regexp' ||
 	}
 elsif ($_[1]->{'map_type'} eq 'mysql') {
 	# Deleting from MySQL
-	local $conf = &mysql_value_to_conf($maps_file);
+	local $conf = &mysql_value_to_conf($_[1]->{'map_file'});
 	local $dbh = &connect_mysql_db($conf);
 	ref($dbh) || &error($dbh);
 	local $cmd = $dbh->prepare("delete from ".$conf->{'table'}.
@@ -932,7 +994,7 @@ if ($_[1]->{'map_type'} eq 'hash' || $_[1]->{'map_type'} eq 'regexp' ||
 	}
 elsif ($_[1]->{'map_type'} eq 'mysql') {
 	# Updating in MySQL
-	local $conf = &mysql_value_to_conf($maps_file);
+	local $conf = &mysql_value_to_conf($_[1]->{'map_file'});
 	local $dbh = &connect_mysql_db($conf);
 	ref($dbh) || &error($dbh);
 	local $cmd = $dbh->prepare("update ".$conf->{'table'}.
