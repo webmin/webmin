@@ -45,3 +45,5 @@ Added a new monitor type for testing a remote SSH server.
 Added an option to the Remote SSH monitor type to not actually login, just check if we can get to the login prompt.
 Converted the UI for all monitors to use ui-lib.pl, for easier theming.
 Added support for sending status messages via SMS, for common US mobile carriers.
+---- Changes since 1.370 ----
+Failure to run a command on a remote system is now properly detected.

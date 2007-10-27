@@ -374,20 +374,23 @@ return undef if (!$_[1]);
 local $out;
 if ($_[0]->{'runon'} && $_[0]->{'remote'}) {
 	# Run on the remote host
-	local $cmd = $_[1];
-	$cmd =~ s/\\/\\\\/g;
-	$cmd =~ s/'/\\'/g;
+	local $cmd = quotemeta($_[1]);
+	$remote_error_msg = undef;
+	&remote_error_setup(\&remote_error_callback);
 	if ($config{'output'}) {
 		$out = &remote_eval($_[0]->{'remote'}, "status",
 			     "`($cmd) 2>&1 </dev/null`");
-		return &text('monitor_run1', $_[1], $_[0]->{'remote'})."\n".
-		       $out;
 		}
 	else {
 		&remote_eval($_[0]->{'remote'}, "status",
 			     "system('($cmd) >/dev/null 2>&1 </dev/null')");
-		return &text('monitor_run1', $_[1], $_[0]->{'remote'})."\n";
 		}
+	&remote_error_setup(undef);
+	if ($remote_error_msg) {
+		return &text('monitor_runerr', $_[1], $_[0]->{'remote'},
+			     $remote_error_msg);
+		}
+	return &text('monitor_run1', $_[1], $_[0]->{'remote'})."\n";
 	}
 else {
 	# Just run locally
@@ -401,6 +404,11 @@ else {
 		return &text('monitor_run2', $_[1])."\n";
 		}
 	}
+}
+
+sub remote_error_callback
+{
+$remote_error_msg = $_[0];
 }
 
 # Returns 1 if b should be first, -1 if a should be first, 0 if same
