@@ -107,6 +107,10 @@ master_eslave=Le serveur primaire '$1' ne semble pas contenir de module BIND con
 master_eserial=Le numéro de série doit être une chaîne de nombres
 master_apply=Appliquer les changements
 master_applymsg=Cliquez sur ce bouton pour appliquer les changements pour cette zone uniquement, à l'aide de la commande $1. Ce comportement ne fonctionnera que si les changements ont été appliqués pour le serveur entier au moins une fois depuis que la zone a été créée.
+master_freeze=Geler la zone
+master_freezemsg=Si la zone fait partie d'un DNS dynamique, cela permet de la geler avant de la mettre à jour.
+master_unfreeze=Dégeler la zone
+master_unfreezemsg=Si la zone fait partie d'un DNS dynamique, cela permet de la dégeler une fois les mises à jour appliquées.
 master_defttl=Durée de vie par défaut des enregistrements
 master_edefttl="$1' n'est pas une durée de vie par défaut valide pour les enregistrements
 

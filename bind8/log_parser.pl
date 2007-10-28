@@ -65,6 +65,9 @@ elsif ($action eq 'move') {
 elsif ($action eq 'apply' && $type && $type ne '-') {
 	return &text("log_apply2", "<tt>$type</tt>");
 	}
+elsif ($action eq 'freeze' || $action eq 'thaw') {
+	return &text("log_".$action, "<tt>$type</tt>");
+	}
 elsif ($action eq 'mass') {
 	return &text("log_mass", $object);
 	}

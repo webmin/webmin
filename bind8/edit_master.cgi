@@ -137,6 +137,26 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 		print "</td> <td>",&text('master_applymsg',
 			"<tt>$cmd reload $args</tt>");
 		print "</td> </tr></form>\n";
+
+		# Show button to freeze
+		print "<form action=freeze_zone.cgi>\n";
+		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
+		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
+		print "<tr><td>\n";
+		print "<input type=submit value=\"$text{'master_freeze'}\">\n";
+		print "</td> <td>",&text('master_freezemsg',
+			"<tt>$cmd freeze $args</tt>");
+		print "</td> </tr></form>\n";
+
+		# Show button to un-freeze
+		print "<form action=unfreeze_zone.cgi>\n";
+		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
+		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
+		print "<tr><td>\n";
+		print "<input type=submit value=\"$text{'master_unfreeze'}\">\n";
+		print "</td> <td>",&text('master_unfreezemsg',
+			"<tt>$cmd thaw $args</tt>");
+		print "</td> </tr></form>\n";
 		}
 
 	print "</table>\n";

@@ -2282,5 +2282,25 @@ sub get_reverse_record_types
 return ("PTR", "NS", "CNAME", @extra_reverse);
 }
 
+# try_cmd(args, [rndc-args])
+# Try calling rndc and ndc with the same args, to see which one works
+sub try_cmd
+{
+local $args = $_[0];
+local $rndc_args = $_[1] || $_[0];
+local $out;
+if (&has_ndc() == 2) {
+	# Try with rndc
+	$out = &backquote_logged("$config{'rndc_cmd'} $rndc_args 2>&1 </dev/null");
+	}
+if (&has_ndc() != 2 || $out =~ /connect\s+failed/i) {
+	if (&has_ndc(2)) {
+		# Try with rndc if rndc is not install or failed
+		$out = &backquote_logged("$config{'ndc_cmd'} $args 2>&1 </dev/null");
+		}
+	}
+return $out;
+}
+
 1;
 
