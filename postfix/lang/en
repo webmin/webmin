@@ -756,6 +756,7 @@ log_stop=Stopped Postfix server
 log_start=Started Postfix server
 log_delqs=Deleted $1 messages from mail queue
 log_flushq=Flushed mail queue
+log_backend=Updated configuration file for map $1
 
 sasl_title=SMTP Authentication And Encryption
 opts_smtpd_sasl_auth_enable=Enable SASL SMTP authentication?

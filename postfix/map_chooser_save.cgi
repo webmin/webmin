@@ -217,7 +217,18 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 @maps || &error($text{'chooser_enone'});
 
 # Write out mysql and LDAP files
-&flush_file_lines(&unique(@files));
+@files = &unique(@files);
+@newfiles = map { !-r $_ } @files;
+foreach $f (@files) {
+	&lock_file($f);
+	}
+&flush_file_lines(@files);
+foreach $f (@newfiles) {
+	&set_ownership_permissions(undef, undef, 0700, $f);
+	}
+foreach $f (@files) {
+	&unlock_file($f);
+	}
 
 # Create final string for map
 $str = join(",", @maps);
@@ -230,5 +241,8 @@ window.close();
 </script>
 EOF
 
+if (@files) {
+	&webmin_log("backend", undef, $in{'map_name'});
+	}
 &popup_footer();
 

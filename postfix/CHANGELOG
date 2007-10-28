@@ -41,3 +41,6 @@ Added Module Config options for stop, start and reload commands.
 Allow map files are now checked when listing and editing virtusers and other map types.
 ---- Changes since 1.360 ----
 Added the new SMTP Authentication And Encryption page for setting SASL and TLS related options.
+---- Changes since 1.370 ----
+Added a popup window for selecting a map source, rather than having to type in something like hash:/etc/postfix/virtual . This source can be an LDAP or MySQL database on Postfix systems that support it, which will trigger the automatic creation of a configuration file if needed.
+Maps in MySQL and LDAP databases can be viewed and edited in the same way that those in regular files are, if the appropriate Perl modules are installed (DBI and DBD::mysql for MySQL, or Net::LDAP for LDAP). This also applies to email aliases.

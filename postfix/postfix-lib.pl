@@ -673,8 +673,8 @@ sub regenerate_any_table
     {
         next unless $map;
 	if ($map->[0] eq "hash" || $map->[0] eq "regexp") {
-		local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map 2>&1");
-		if ($?) { &error(&text('regenerate_table_efailed', $map, $out)); }
+		local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map->[1] 2>&1");
+		if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
 	}
     }
 }
@@ -925,7 +925,8 @@ sub create_mapping
 my @maps_files = $_[2] ? (map { [ "hash", $_ ] } @{$_[2]}) :
 		 $_[3] ? &get_maps_types_files($_[3]) :
 		         &get_maps_types_files(&get_real_value($_[0]));
-my ($maps_type, $maps_file) = @{$maps_files[0]};
+my $last_map = $maps_files[$#maps_files];
+my ($maps_type, $maps_file) = @$last_map;
 if ($maps_type eq "hash" || $maps_type eq "regexp") {
 	# Adding to a regular file
 	local $lref = &read_file_lines($maps_file);
@@ -1860,11 +1861,18 @@ EOF
 if ($@) {
 	return &text('mysql_edriver', "<tt>DBD::$driver</tt>");
         }
-local @hosts = split(/\s+/, $conf->{'hosts'});
-local $dbistr = "database=$conf->{'dbname'}";
-$dbistr .= ";host=$hosts[0]" if (@hosts);
-local $dbh = $drh->connect($dbistr,
-                           $conf->{'user'}, $conf->{'password'}, { });
+local @hosts = split(/\s+/, $config{'mysql_hosts'} || $conf->{'hosts'});
+@hosts = ( undef ) if (!@hosts);	# Localhost only
+local $dbh;
+foreach my $host (@hosts) {
+	local $dbistr = "database=$conf->{'dbname'}";
+	$dbistr .= ";host=$host" if ($host);
+	$dbh = $drh->connect($dbistr,
+			     $config{'mysql_user'} || $conf->{'user'},
+			     $config{'mysql_pass'} || $conf->{'password'},
+			     { });
+	last if ($dbh);
+	}
 $dbh || return &text('mysql_elogin',
 		     "<tt>$conf->{'dbname'}</tt>", $drh->errstr)."\n";
 return $dbh;
@@ -1885,26 +1893,60 @@ eval "use Net::LDAP";
 if ($@) {
 	return &text('ldap_eldapmod', "<tt>Net::LDAP</tt>");
 	}
-local $port = $conf->{'server_port'} || 389;
-local @servers = split(/\s+/, $conf->{'server_host'} || "localhost");
-local $ldap = Net::LDAP->new($servers[0], port => $port);
-if (!$ldap) {
-	return &text('ldap_eldap', "<tt>$servers[0]</tt>", $port);
-	}
-if ($conf->{'start_tls'} eq 'yes') {
-	$ldap->start_tls;
-	}
-if ($conf->{'bind'} eq 'yes') {
-	local $mesg = $ldap->bind(dn => $conf->{'bind_dn'},
-				  password => $conf->{'bind_pw'});
-	if (!$mesg || $mesg->code) {
-		return &text('ldap_eldaplogin', "<tt>$servers[0]</tt>",
-			     "<tt>$conf->{'bind_dn'}</tt>",
-			     $mesg ? $mesg->error : "Unknown error");
+local @servers = split(/\s+/, $config{'ldap_host'} ||
+			      $conf->{'server_host'} || "localhost");
+local ($ldap, $lasterr);
+foreach my $server (@servers) {
+	local ($host, $port, $tls);
+	if ($server =~ /^(\S+):(\d+)$/) {
+		# Host and port
+		($host, $port) = ($1, $2);
+		$tls = $conf->{'start_tls'} eq 'yes';
 		}
+	elsif ($server =~ /^(ldap|ldaps):\/\/(\S+)(:(\d+))?/) {
+		# LDAP URL
+		$host = $2;
+		$port = $4 || $conf->{'server_port'} || 389;
+		$tls = $1 eq "ldaps";
+		}
+	else {
+		# Host only
+		$host = $server;
+		$port = $conf->{'server_port'} || 389;
+		$tls = $conf->{'start_tls'} eq 'yes';
+		}
+	$ldap = Net::LDAP->new($server, port => $port);
+	if (!$ldap) {
+		$lasterr = &text('ldap_eldap', "<tt>$server</tt>", $port);
+		next;
+		}
+	if ($tls) {
+		$ldap->start_tls;
+		}
+	if ($conf->{'bind'} eq 'yes' || $config{'ldap_user'}) {
+		local $mesg = $ldap->bind(
+			dn => $config{'ldap_user'} || $conf->{'bind_dn'},
+			password => $config{'ldap_pass'} || $conf->{'bind_pw'});
+		if (!$mesg || $mesg->code) {
+			$lasterr = &text('ldap_eldaplogin',
+				     "<tt>$server</tt>",
+				     "<tt>".($config{'ldap_user'} ||
+					     $conf->{'bind_dn'})."</tt>",
+				     $mesg ? $mesg->error : "Unknown error");
+			$ldap = undef;
+			next;
+			}
+		}
+	last if ($ldap);
 	}
-$connect_ldap_db_cache = $ldap;
-return $ldap;
+if ($ldap) {
+	# Connected OK
+	$connect_ldap_db_cache = $ldap;
+	return $ldap;
+	}
+else {
+	return $lasterr;
+	}
 }
 
 # mysql_value_to_conf(value)

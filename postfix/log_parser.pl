@@ -19,6 +19,9 @@ elsif ($action eq 'manual') {
 elsif ($action eq 'delqs') {
 	return &text('log_delqs', $object);
 	}
+elsif ($action eq 'backend') {
+	return &text('log_backend', $object);
+	}
 else {
 	return $text{'log_'.$action};
 	}

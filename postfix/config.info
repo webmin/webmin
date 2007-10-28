@@ -27,8 +27,17 @@ start_cmd=Command to start Postfix,3,Use control command
 stop_cmd=Command to stop Postfix,3,Use control command
 reload_cmd=Command to apply Postfix configuration,3,Use control command
 
-line3=LDAP options,11
+line3=MySQL options,11
+mysql_host=MySQL server for editing maps,3,Same as Postfix configuration
+mysql_user=MySQL login for editing maps,3,Same as Postfix configuration
+mysql_pass=MySQL password for editing maps,3,Same as Postfix configuration
+
+line4=LDAP options,11
+ldap_host=LDAP server for editing maps,3,Same as Postfix configuration
+ldap_user=LDAP login for editing maps,3,Same as Postfix configuration
+ldap_pass=LDAP password for editing maps,3,Same as Postfix configuration
 ldap_class=Object classes for maps,3,Default (<tt>top</tt>)
 ldap_attrs=Other LDAP attributes for maps<br>(In <i>fieldname</i>: <i>value</i> format),9,40,3,\t
 ldap_id=Key attribute for map objects,3,Default (<tt>cn</tt>)
 ldap_doms=Create separate DN for each domain?,1,1-Yes,0-No
+
