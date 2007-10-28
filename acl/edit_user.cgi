@@ -74,13 +74,13 @@ if (@glist && %gcan && !$in{'risk'} && !$user{'risk'}) {
 	$memg = undef;
 	foreach $g (@glist) {
 		if (&indexof($user{'name'}, @{$g->{'members'}}) >= 0) {
-			$memg = $g->{'name'};
+			$memg = $g;
 			}
-		next if (!$gcan{$g->{'name'}} && $memg ne $g->{'name'});
+		next if (!$gcan{$g->{'name'}} && $memg ne $g);
 		push(@opts, [ $g->{'name'} ]);
 		}
 	print &ui_table_row($text{'edit_group'},
-		&ui_select("group", $memg, \@opts));
+		&ui_select("group", $memg->{'name'}, \@opts));
 	}
 
 # Show password type menu and current password
@@ -286,7 +286,14 @@ foreach $c (sort { $b cmp $a } @cats) {
 	$sw = 0;
 	foreach $m (@cmlist) {
 		local $md = $m->{'dir'};
-		if ($mcan{$md}) {
+		$fromgroup = $memg && &indexof($md, @{$memg->{'modules'}}) >= 0;
+		if ($mcan{$md} && $fromgroup) {
+			# Module comes from group
+			push(@grid, (sprintf "<img src=images/%s.gif> %s\n",
+                                $has{$md} ? 'tick' : 'empty', $m->{'desc'}).
+				($has{$md} ? &ui_hidden("mod", $md) : ""));
+			}
+		elsif ($mcan{$md}) {
 			$label = "";
 			if ($access{'acl'} && $in{'user'}) {
 				# Show link for editing ACL
@@ -297,6 +304,7 @@ foreach $c (sort { $b cmp $a } @cats) {
 					$m->{'desc'};
 				}
 			else {
+				# No privileges to edit ACL
 				$label = $m->{'desc'};
 				}
 			push(@grid, &ui_checkbox("mod", $md, $label,$has{$md}));
@@ -308,7 +316,10 @@ foreach $c (sort { $b cmp $a } @cats) {
 		}
 	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
 	}
-if ($access{'acl'}) {
+
+# Add global ACL link, but only if not set from the group
+$groupglobal = $memg && -r "$config_directory/$memg->{'name'}.acl";
+if ($access{'acl'} && !$groupglobal) {
 	$grids .= "<b>$text{'edit_special'}</b><br>\n";
 	@grid = ( "<img src=images/empty.gif> ".
 		  "<a href='edit_acl.cgi?mod=&user=".&urlize($in{'user'}).

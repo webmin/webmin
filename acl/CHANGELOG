@@ -35,3 +35,5 @@ When a group is deleted, sub-groups are also removed, and the group is removed f
 Added the Password Restrictions page, for configuring password quality and change time settings.
 Re-designed the Edit User page to use the new Webmin UI library, and move lesser-used fields into collapsible sections.
 Webmin users can have a real name, which can be any text you like.
+---- Changes since 1.370 ----
+When editing a user who inherits some modules and ACL settings from a group, they can no longer be de-selected or edited.
