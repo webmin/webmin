@@ -782,7 +782,32 @@ sub get_maps
 
 	     } elsif ($maps_type eq "ldap") {
 		    # Get from an LDAP database
-	     	    # XXX
+	     	    local $conf = &ldap_value_to_conf($maps_file);
+		    local $ldap = &connect_ldap_db($conf);
+		    ref($ldap) || &error($ldap);
+		    local ($name_attr, $filter) = &get_ldap_key($conf);
+		    local $scope = $conf->{'scope'} || 'sub';
+		    local $rv = $ldap->search(base => $conf->{'search_base'},
+					      scope => $scope,
+					      filter => $filter);
+		    if (!$rv || $rv->code) {
+			# Search failed!
+			&error(&text('ldap_equery',
+				     "<tt>$conf->{'search_base'}</tt>",
+				     "<tt>".&html_escape($rv->error)."</tt>"));
+		    }
+		    foreach my $o ($rv->all_entries) {
+			$number++;
+			my %map;
+			$map{'name'} = $o->get_value($name_attr);
+			$map{'value'} = $o->get_value(
+				$conf->{'result_attribute'} || "maildrop");
+			$map{'dn'} = $o->dn();
+			$map{'map_file'} = $maps_file;
+			$map{'map_type'} = $maps_type;
+			$map{'number'} = $number;
+			push(@{$maps_cache{$_[0]}}, \%map);
+		    }
 	     }
 	}
     }
@@ -925,9 +950,35 @@ elsif ($maps_type eq "mysql") {
 		}
 	$cmd->finish();
 	$dbh->disconnect();
+	$_[1]->{'key'} = $_[1]->{'name'};
 	}
 elsif ($maps_type eq "ldap") {
 	# Adding to an LDAP database
+	local $conf = &ldap_value_to_conf($maps_file);
+	local $ldap = &connect_ldap_db($conf);
+	ref($ldap) || &error($ldap);
+	local @classes = split(/\s+/, $config{'ldap_class'} || "top");
+	local @attrs = ( "objectClass", \@classes );
+	local $name_attr = &get_ldap_key($conf);
+	push(@attrs, $name_attr, $_[1]->{'name'});
+	push(@attrs, $conf->{'result_attribute'} || "maildrop",
+		     $_[1]->{'value'});
+	push(@attrs, &split_props($config{'ldap_attrs'}));
+	local $dn = &make_map_ldap_dn($_[1], $conf);
+	if ($dn =~ /^([^=]+)=([^, ]+)/) {
+		push(@attrs, $1, $2);
+		}
+
+	# Make sure the parent DN exists - for example, when adding a domain
+	&ensure_ldap_parent($ldap, $dn);
+
+	# Actually add
+	local $rv = $ldap->add($dn, attr => \@attrs);
+	if ($rv->code) {
+		&error(&text('ldap_eadd', "<tt>$dn</tt>",
+			     "<tt>".&html_escape($rv->error)."</tt>"));
+		}
+	$_[1]->{'dn'} = $dn;
 	}
 
 # Update the in-memory cache
@@ -968,7 +1019,14 @@ elsif ($_[1]->{'map_type'} eq 'mysql') {
 	}
 elsif ($_[1]->{'map_type'} eq 'ldap') {
 	# Deleting from LDAP
-	# XXX
+	local $conf = &ldap_value_to_conf($maps_file);
+	local $ldap = &connect_ldap_db($conf);
+	ref($ldap) || &error($ldap);
+	local $rv = $ldap->delete($_[1]->{'dn'});
+	if ($rv->code) {
+		&error(&text('ldap_edelete', "<tt>$_[1]->{'dn'}</tt>",
+			     "<tt>".&html_escape($rv->error)."</tt>"));
+		}
 	}
 
 # Delete from in-memory cache
@@ -1012,7 +1070,50 @@ elsif ($_[1]->{'map_type'} eq 'mysql') {
 	}
 elsif ($_[1]->{'map_type'} eq 'ldap') {
 	# Updating in LDAP
-	# XXX
+	local $conf = &ldap_value_to_conf($_[1]->{'map_file'});
+	local $ldap = &connect_ldap_db($conf);
+	ref($ldap) || &error($ldap);
+
+	# Work out attribute changes
+	local %replace;
+	local $name_attr = &get_ldap_key($conf);
+	$replace{$name_attr} = [ $_[2]->{'name'} ];
+	$replace{$conf->{'result_attribute'} || "maildrop"} =
+		[ $_[2]->{'value'} ];
+
+	# Work out new DN, if needed
+	# XXX fails and messes up DN!!!
+	local $newdn = &make_map_ldap_dn($_[2], $conf);
+	if ($_[1]->{'name'} ne $_[2]->{'name'} &&
+	    $_[1]->{'dn'} ne $newdn) {
+		# Changed .. update the object in LDAP
+		&ensure_ldap_parent($ldap, $newdn);
+		local ($newprefix, $newrest) = split(/,/, $newdn, 2);
+		local $rv = $ldap->moddn($_[1]->{'dn'},
+					 newrdn => $newprefix,
+					 newsuperior => $newrest);
+		if ($rv->code) {
+			&error(&text('ldap_erename',
+				     "<tt>$_[1]->{'dn'}</tt>",
+				     "<tt>$newdn</tt>",
+				     "<tt>".&html_escape($rv->error)."</tt>"));
+			}
+		$_[2]->{'dn'} = $newdn;
+		if ($newdn =~ /^([^=]+)=([^, ]+)/) {
+			$replace{$1} = [ $2 ];
+			}
+		}
+	else {
+		$_[2]->{'dn'} = $_[1]->{'dn'};
+		}
+
+	# Modify attributes
+	local $rv = $ldap->modify($_[2]->{'dn'}, replace => \%replace);
+	if ($rv->code) {
+		&error(&text('ldap_emodify',
+			     "<tt>$_[2]->{'dn'}</tt>",
+			     "<tt>".&html_escape($rv->error)."</tt>"));
+		}
 	}
 
 # Update in-memory cache
@@ -1025,21 +1126,84 @@ $_[2]->{'eline'} = $_[2]->{'cmt'} ? $_[1]->{'line'}+1 : $_[1]->{'line'};
 $maps_cache{$_[0]}->[$idx] = $_[2] if ($idx != -1);
 }
 
+# make_map_ldap_dn(&map, &conf)
+# Work out an LDAP DN for a map
+sub make_map_ldap_dn
+{
+local ($map, $conf) = @_;
+local $dn;
+local $scope = $conf->{'scope'} || 'sub';
+$scope = 'base' if (!$config{'ldap_doms'});	# Never create sub-domains
+local $id = $config{'ldap_id'} || 'cn';
+if ($map->{'name'} =~ /^(\S+)\@(\S+)$/ && $scope ne 'base') {
+	# Within a domain
+	$dn = "$id=$1,cn=$2,$conf->{'search_base'}";
+	}
+elsif ($map->{'name'} =~ /^\@(\S+)$/ && $scope ne 'base') {
+	# Domain catchall
+	$dn = "$id=default,cn=$1,$conf->{'search_base'}";
+	}
+else {
+	# Some other string
+	$dn = "$id=$map->{'name'},$conf->{'search_base'}";
+	}
+return $dn;
+}
+
+# get_ldap_key(&config)
+# Returns the attribute name for the LDAP key. May call &error
+sub get_ldap_key
+{
+local ($conf) = @_;
+local ($filter, $name_attr) = @_;
+if ($conf->{'query_filter'}) {
+	$filter = $conf->{'query_filter'};
+	$conf->{'query_filter'} =~ /([a-z0-9]+)=\%s/i ||
+		&error("Could not get attribute from ".
+		       $conf->{'query_filter'});
+	$name_attr = $1;
+	$filter = "($filter)" if ($filter !~ /^\(/);
+	$filter =~ s/\%s/\*/g;
+	}
+else {
+	$filter = "(mailacceptinggeneralid=*)";
+	$name_attr = "mailacceptinggeneralid";
+	}
+return wantarray ? ( $name_attr, $filter ) : $name_attr;
+}
+
+# ensure_ldap_parent(&ldap, dn)
+# Create the parent of some DN if needed
+sub ensure_ldap_parent
+{
+local ($ldap, $dn) = @_;
+local $pdn = $dn;
+$pdn =~ s/^([^,]+),//;
+local $rv = $ldap->search(base => $pdn, scope => 'base',
+			  filter => "(objectClass=top)",
+			  sizelimit => 1);
+if (!$rv || $rv->code || !$rv->all_entries) {
+	# Does not .. so add it
+	local @pclasses = ( "top" );
+	local @pattrs = ( "objectClass", \@pclasses );
+	local $rv = $ldap->add($pdn, attr => \@pattrs);
+	}
+}
 
 # init_new_mapping($maps_parameter) : $number
 # gives a new number of mapping
 sub init_new_mapping
 {
-    $maps = &get_maps($_[0]);
+$maps = &get_maps($_[0]);
 
-    my $max_number = 0;
+my $max_number = 0;
 
-    foreach $trans (@{$maps})
-    {
-	if ($trans->{'number'} > $max_number) { $max_number = $trans->{'number'}; }
-    }
-    
-    return $max_number+1;
+foreach $trans (@{$maps})
+{
+if ($trans->{'number'} > $max_number) { $max_number = $trans->{'number'}; }
+}
+
+return $max_number+1;
 }
 
 # postfix_mail_file(user)
@@ -1047,15 +1211,15 @@ sub postfix_mail_file
 {
 local @s = &postfix_mail_system();
 if ($s[0] == 0) {
-	return "$s[1]/$_[0]";
-	}
+return "$s[1]/$_[0]";
+}
 elsif (@_ > 1) {
-	return "$_[7]/$s[1]";
-	}
+return "$_[7]/$s[1]";
+}
 else {
-	local @u = getpwnam($_[0]);
-	return "$u[7]/$s[1]";
-	}
+local @u = getpwnam($_[0]);
+return "$u[7]/$s[1]";
+}
 }
 
 # postfix_mail_system()
@@ -1065,17 +1229,17 @@ else {
 sub postfix_mail_system
 {
 if (!defined(@mail_system_cache)) {
-	local $home_mailbox = &get_current_value("home_mailbox");
-	if ($home_mailbox) {
-		@mail_system_cache = $home_mailbox =~ /^(.*)\/$/ ?
-			(2, $1) : (1, $home_mailbox);
-		}
-	else {
-		local $mail_spool_directory =
-			&get_current_value("mail_spool_directory");
-		@mail_system_cache = (0, $mail_spool_directory);
-		}
-	}
+local $home_mailbox = &get_current_value("home_mailbox");
+if ($home_mailbox) {
+@mail_system_cache = $home_mailbox =~ /^(.*)\/$/ ?
+	(2, $1) : (1, $home_mailbox);
+}
+else {
+local $mail_spool_directory =
+	&get_current_value("mail_spool_directory");
+@mail_system_cache = (0, $mail_spool_directory);
+}
+}
 return wantarray ? @mail_system_cache : $mail_system_cache[0];
 }
 
@@ -1086,20 +1250,20 @@ sub list_queue
 local @qfiles;
 &open_execute_command(MAILQ, $config{'mailq_cmd'}, 1, 1);
 while(<MAILQ>) {
-	next if (/^(\S+)\s+is\s+empty/i || /^\s+Total\s+requests:/i);
-	if (/^([^\s\*\!]+)[\*\!]?\s*(\d+)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+)\s+(.*)/) {
-		push(@qfiles, { 'id' => $1,
-			        'size' => $2,
-				'date' => $3,
-				'from' => $4 });
-		}
-	elsif (/\((.*)\)/ && @qfiles) {
-		$qfiles[$#qfiles]->{'status'} = $1;
-		}
-	elsif (/^\s+(\S+)/ && @qfiles) {
-		$qfiles[$#qfiles]->{'to'} .= "$1 ";
-		}
-	}
+next if (/^(\S+)\s+is\s+empty/i || /^\s+Total\s+requests:/i);
+if (/^([^\s\*\!]+)[\*\!]?\s*(\d+)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+)\s+(.*)/) {
+push(@qfiles, { 'id' => $1,
+		'size' => $2,
+		'date' => $3,
+		'from' => $4 });
+}
+elsif (/\((.*)\)/ && @qfiles) {
+$qfiles[$#qfiles]->{'status'} = $1;
+}
+elsif (/^\s+(\S+)/ && @qfiles) {
+$qfiles[$#qfiles]->{'to'} .= "$1 ";
+}
+}
 close(MAILQ);
 return @qfiles;
 }
@@ -1109,11 +1273,11 @@ return @qfiles;
 sub parse_queue_file
 {
 local @qfiles = ( &recurse_files("$config{'mailq_dir'}/active"),
-		  &recurse_files("$config{'mailq_dir'}/incoming"),
-		  &recurse_files("$config{'mailq_dir'}/deferred"),
-		  &recurse_files("$config{'mailq_dir'}/corrupt"),
-		  &recurse_files("$config{'mailq_dir'}/hold"),
-		);
+  &recurse_files("$config{'mailq_dir'}/incoming"),
+  &recurse_files("$config{'mailq_dir'}/deferred"),
+  &recurse_files("$config{'mailq_dir'}/corrupt"),
+  &recurse_files("$config{'mailq_dir'}/hold"),
+);
 local $f = $_[0];
 local ($file) = grep { $_ =~ /\/$f$/ } @qfiles;
 return undef if (!$file);
@@ -1121,31 +1285,31 @@ local $mode = 0;
 local ($mail, @headers);
 &open_execute_command(QUEUE, "$config{'postcat_cmd'} ".quotemeta($file), 1, 1);
 while(<QUEUE>) {
-	if (/^\*\*\*\s+MESSAGE\s+CONTENTS/ && !$mode) {	   # Start of headers
-		$mode = 1;
-		}
-	elsif (/^\*\*\*\s+HEADER\s+EXTRACTED/ && $mode) {  # End of email
-		last;
-		}
-	elsif ($mode == 1 && /^\s*$/) {			   # End of headers
-		$mode = 2;
-		}
-	elsif ($mode == 1 && /^(\S+):\s*(.*)/) {	   # Found a header
-		push(@headers, [ $1, $2 ]);
-		}
-	elsif ($mode == 1 && /^(\s+.*)/) {		   # Header continuation
-		$headers[$#headers]->[1] .= $1 unless($#headers < 0);
-		}
-	elsif ($mode == 2) {				   # Part of body
-		$mail->{'size'} += length($_);
-		$mail->{'body'} .= $_;
-		}
+if (/^\*\*\*\s+MESSAGE\s+CONTENTS/ && !$mode) {	   # Start of headers
+$mode = 1;
+}
+elsif (/^\*\*\*\s+HEADER\s+EXTRACTED/ && $mode) {  # End of email
+	last;
 	}
+elsif ($mode == 1 && /^\s*$/) {			   # End of headers
+	$mode = 2;
+	}
+elsif ($mode == 1 && /^(\S+):\s*(.*)/) {	   # Found a header
+	push(@headers, [ $1, $2 ]);
+	}
+elsif ($mode == 1 && /^(\s+.*)/) {		   # Header continuation
+	$headers[$#headers]->[1] .= $1 unless($#headers < 0);
+	}
+elsif ($mode == 2) {				   # Part of body
+	$mail->{'size'} += length($_);
+	$mail->{'body'} .= $_;
+	}
+}
 close(QUEUE);
 $mail->{'headers'} = \@headers;
 foreach $h (@headers) {
-	$mail->{'header'}->{lc($h->[0])} = $h->[1];
-	}
+$mail->{'header'}->{lc($h->[0])} = $h->[1];
+}
 return $mail;
 }
 
@@ -1656,7 +1820,25 @@ elsif ($type eq "mysql") {
 	return undef;
 	}
 elsif ($type eq "ldap") {
-	# XXX
+	# Parse config, connect to LDAP server
+	local $conf = &ldap_value_to_conf($value);
+	$conf->{'search_base'} || return &text('ldap_esource', $value);
+
+	# Try a connect and a search
+	local $ldap = &connect_ldap_db($conf);
+	if (!ref($ldap)) {
+		return $ldap;
+		}
+	local @classes = split(/\s+/, $config{'ldap_class'} || "top");
+	local $rv = $ldap->search(base => $conf->{'search_base'},
+				  filter => "(objectClass=$classes[0])",
+				  sizelimit => 1);
+	if (!$rv || $rv->code && !$rv->all_entries) {
+		return &text('ldap_ebase', "<tt>$conf->{'search_base'}</tt>",
+			     $rv ? $rv->error : "Unknown search error");
+		}
+
+	return undef;
 	}
 else {
 	return &text('map_unknown', "<tt>$type</tt>");
@@ -1688,6 +1870,43 @@ $dbh || return &text('mysql_elogin',
 return $dbh;
 }
 
+# connect_ldap_db(&config)
+# Attempts to connect to an LDAP server with Postfix maps. Returns
+# a driver handle on success, or an error message string on failure.
+# XXX try all hosts
+# XXX handle :port syntax and ldap: syntax
+sub connect_ldap_db
+{
+local ($conf) = @_;
+if (defined($connect_ldap_db_cache)) {
+	return $connect_ldap_db_cache;
+	}
+eval "use Net::LDAP";
+if ($@) {
+	return &text('ldap_eldapmod', "<tt>Net::LDAP</tt>");
+	}
+local $port = $conf->{'server_port'} || 389;
+local @servers = split(/\s+/, $conf->{'server_host'} || "localhost");
+local $ldap = Net::LDAP->new($servers[0], port => $port);
+if (!$ldap) {
+	return &text('ldap_eldap', "<tt>$servers[0]</tt>", $port);
+	}
+if ($conf->{'start_tls'} eq 'yes') {
+	$ldap->start_tls;
+	}
+if ($conf->{'bind'} eq 'yes') {
+	local $mesg = $ldap->bind(dn => $conf->{'bind_dn'},
+				  password => $conf->{'bind_pw'});
+	if (!$mesg || $mesg->code) {
+		return &text('ldap_eldaplogin', "<tt>$servers[0]</tt>",
+			     "<tt>$conf->{'bind_dn'}</tt>",
+			     $mesg ? $mesg->error : "Unknown error");
+		}
+	}
+$connect_ldap_db_cache = $ldap;
+return $ldap;
+}
+
 # mysql_value_to_conf(value)
 # Converts a MySQL config file or source name to a config hash ref
 sub mysql_value_to_conf
@@ -1714,6 +1933,20 @@ else {
 		}
 	}
 return $conf;
+}
+
+# ldap_value_to_conf(value)
+# Converts an LDAP config file name to a config hash ref
+sub ldap_value_to_conf
+{
+local ($value) = @_;
+local $conf;
+local $cfile = $value;
+if ($cfile !~ /^\//) {
+	$cfile = &guess_config_dir()."/".$cfile;
+	}
+-r $cfile || &error(&text('ldap_ecfile', "<tt>$cfile</tt>"));
+return &get_backend_config($cfile);
 }
 
 # can_map_comments(name)
@@ -1743,6 +1976,7 @@ return 1;
 sub supports_map_type
 {
 local ($type) = @_;
+return 1 if ($type eq 'hash');	# Assume always supported
 if (!defined(@supports_map_type_cache)) {
 	@supports_map_type = ( );
 	open(POSTCONF, "$config{'postfix_config_command'} -m |");
@@ -1753,6 +1987,31 @@ if (!defined(@supports_map_type_cache)) {
 	close(POSTCONF);
 	}
 return &indexoflc($type, @supports_map_type_cache) >= 0;
+}
+
+# split_props(text)
+# Converts multiple lines of text into LDAP attributes
+sub split_props
+{
+local ($text) = @_;
+local %pmap;
+foreach $p (split(/\t+/, $text)) {
+        if ($p =~ /^(\S+):\s*(.*)/) {
+                push(@{$pmap{$1}}, $2);
+                }
+        }
+local @rv;
+local $k;
+foreach $k (keys %pmap) {
+        local $v = $pmap{$k};
+        if (@$v == 1) {
+                push(@rv, $k, $v->[0]);
+                }
+        else {
+                push(@rv, $k, $v);
+                }
+        }
+return @rv;
 }
 
 1;

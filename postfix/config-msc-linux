@@ -25,3 +25,4 @@ postfix_master=/etc/postfix/master.cf
 columns=2
 show_cmts=0
 prefix_cmts=0
+ldap_doms=1

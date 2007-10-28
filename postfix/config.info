@@ -26,3 +26,9 @@ postcat_cmd=Mail queue decoding command,0
 start_cmd=Command to start Postfix,3,Use control command
 stop_cmd=Command to stop Postfix,3,Use control command
 reload_cmd=Command to apply Postfix configuration,3,Use control command
+
+line3=LDAP options,11
+ldap_class=Object classes for maps,3,Default (<tt>top</tt>)
+ldap_attrs=Other LDAP attributes for maps<br>(In <i>fieldname</i>: <i>value</i> format),9,40,3,\t
+ldap_id=Key attribute for map objects,3,Default (<tt>cn</tt>)
+ldap_doms=Create separate DN for each domain?,1,1-Yes,0-No

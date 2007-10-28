@@ -843,3 +843,14 @@ mysql_edelete=SQL delete failed : $1
 mysql_eupdate=SQL update failed : $1
 mysql_esource=No MySQL source named $1 was found
 mysql_eneed=The MySQL configuration parameter $1 was not found. Virtualmin needs this to figure out which table and fields to query.
+
+ldap_ecfile=LDAP configuration file $1 was not found
+ldap_eldapmod=Perl module $1 needed to communicate with LDAP is not installed or not loadable
+ldap_eldap=Failed to connect to LDAP server $1 on port $2
+ldap_eldaplogin=Failed to login to LDAP server $1 as $2 : $3
+ldap_ebase=LDAP base DN $1 is not valid : $2
+ldap_eadd=LDAP add of $1 failed : $2
+ldap_edelete=LDAP delete of $1 failed : $2
+ldap_equery=LDAP search of $1 failed : $2
+ldap_erename=LDAP rename of $1 to $2 failed : $3
+ldap_emodify=LDAP modify of $1 failed : $2
