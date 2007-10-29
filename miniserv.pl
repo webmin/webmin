@@ -1166,8 +1166,12 @@ while(1) {
 		}
 	}
 if (defined($header{'host'})) {
-	if ($header{'host'} =~ /^([^:]+):([0-9]+)$/) { $host = $1; $port = $2; }
-	else { $host = $header{'host'}; }
+	if ($header{'host'} =~ /^([^:]+):([0-9]+)$/) {
+		($host, $port) = ($1, $2);
+		}
+	else {
+		$host = $header{'host'};
+		}
 	if ($config{'musthost'} && $host ne $config{'musthost'}) {
 		# Disallowed hostname used
 		&http_error(400, "Invalid HTTP hostname");
