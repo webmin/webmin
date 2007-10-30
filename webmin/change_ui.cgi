@@ -23,6 +23,7 @@ $gconfig{'hostnamemode'} = $in{'hostnamemode'};
 $gconfig{'hostnamedisplay'} = $in{'hostnamedisplay'};
 $gconfig{'feedback_to'} = $in{'feedback_def'} ? undef : $in{'feedback'};
 $gconfig{'nofeedbackcc'} = $in{'nofeedbackcc'};
+$gconfig{'dateformat'} = $in{'dateformat'};
 
 $in{'width_def'} || $in{'width'} =~ /^\d+$/ || &error($text{'ui_ewidth'});
 $gconfig{'help_width'} = $in{'width'};

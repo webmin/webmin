@@ -66,3 +66,5 @@ Created the new Blocked Hosts and Users page to show blocks currently in force, 
 Added an option to the Ports and Addresses page to control if Webmin attempts to to reverse-resolve the connected-to IP address when issuing redirects, such as from non-SSL to SSL mode.
 ---- Changes since 1.360 ----
 Added a field to the Advanced Options page to control the number of days that files in /tmp/.webmin are kept before automatic deletion.
+---- Changes since 1.370 ----
+The format for dates displayed by Webmin can be changed by a new option on the User Interface page.

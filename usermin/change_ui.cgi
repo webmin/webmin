@@ -34,6 +34,7 @@ $uconfig{'showlogin'} = $in{'showlogin'};
 $uconfig{'hostnamemode'} = $in{'hostnamemode'};
 $uconfig{'hostnamedisplay'} = $in{'hostnamedisplay'};
 $uconfig{'notabs'} = $in{'notabs'};
+$uconfig{'dateformat'} = $in{'dateformat'};
 &write_file($usermin_config, \%uconfig);
 &unlock_file($usermin_config);
 &webmin_log('ui', undef, undef, \%in);

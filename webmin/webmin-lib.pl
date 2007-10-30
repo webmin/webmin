@@ -38,6 +38,9 @@ $os_info_address = "os\@webmin.com";
 
 $detect_operating_system_cache = "$module_config_directory/oscache";
 
+@webmin_date_formats = ( "dd/mon/yyyy", "dd/mm/yyyy",
+			 "mm/dd/yyyy", "yyyy/mm/dd" );
+
 sub setup_ca
 {
 local $adir = &module_root_directory("acl");

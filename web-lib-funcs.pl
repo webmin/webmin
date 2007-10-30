@@ -1160,16 +1160,27 @@ return $rv;
 # Converts a Unix date/time in seconds to a human-readable form
 sub make_date
 {
-local @tm = localtime($_[0]);
-if ($_[1]) {
-	return sprintf "%d/%s/%d",
+local ($secs, $only) = @_;
+local @tm = localtime($secs);
+local $date;
+local $fmt = $gconfig{'dateformat'} || 'dd/mon/yyyy';
+if ($fmt eq 'dd/mon/yyyy') {
+	$date = sprintf "%2.2d/%s/%4.4d",
 			$tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900;
 	}
-else {
-	return sprintf "%d/%s/%d %2.2d:%2.2d",
-			$tm[3], $text{"smonth_".($tm[4]+1)},
-			$tm[5]+1900, $tm[2], $tm[1];
+elsif ($fmt eq 'dd/mm/yyyy') {
+	$date = sprintf "%2.2d/%2.2d/%4.4d", $tm[3], $tm[4]+1, $tm[5]+1900;
 	}
+elsif ($fmt eq 'mm/dd/yyyy') {
+	$date = sprintf "%2.2d/%2.2d/%4.4d", $tm[4]+1, $tm[3], $tm[5]+1900;
+	}
+elsif ($fmt eq 'yyyy/mm/dd') {
+	$date = sprintf "%4.4d/%2.2d/%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
+	}
+if (!$only) {
+	$date .= sprintf " %2.2d:%2.2d", $tm[2], $tm[1];
+	}
+return $date;
 }
 
 # file_chooser_button(input, type, [form], [chroot], [addmode])

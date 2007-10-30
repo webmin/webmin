@@ -116,6 +116,12 @@ printf "<input name=notabs type=radio value=0 %s> %s\n",
 printf "<input name=notabs type=radio value=1 %s> %s</td> </tr>\n",
 	$uconfig{'notabs'} ? 'checked' : '', $text{'no'};
 
+print "<tr> <td><b>$webmin::text{'ui_dateformat'}</b></td> <td>\n";
+print &ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
+		   [ map { [ $_, $webmin::text{'ui_dateformat_'.$_} ] }
+			 @webmin_date_formats ]));
+print "</td> </tr>\n";
+
 print "</table></td></tr></table>\n";
 print "<input type=submit value=\"$text{'save'}\"></form>\n";
 
