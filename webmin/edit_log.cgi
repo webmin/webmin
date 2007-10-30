@@ -11,7 +11,7 @@ print &text('log_desc', "<tt>$miniserv{'logfile'}</tt>"),"<p>\n";
 print &text('log_desc2', "<tt>$webmin_logfile</tt>"),"<p>\n";
 
 print &ui_form_start("change_log.cgi", "post");
-print &ui_table_start($text{'log_header'}, undef, 2);
+print &ui_table_start($text{'log_header'}, undef, 2, [ "width=30%" ]);
 
 # Is logging enabled?
 print &ui_table_row($text{'log_status'},
