@@ -14,7 +14,7 @@ print &ui_tabs_start(\@tabs, "pd", $in{'mode'} || "proxy", 1);
 print &ui_tabs_start_tab("pd", "proxy");
 print $text{'proxy_desc'},"<p>\n";
 print &ui_form_start("change_proxy.cgi", "post");
-print &ui_table_start($text{'proxy_header'}, undef, 2);
+print &ui_table_start($text{'proxy_header'}, undef, 2, [ "width=30%" ]);
 
 # HTTP proxy
 print &ui_table_row($text{'proxy_http'},
@@ -52,7 +52,7 @@ print &ui_tabs_end_tab();
 print &ui_tabs_start_tab("pd", "down");
 print $text{'proxy_desc2'},"<p>\n";
 print &ui_form_start("change_osdn.cgi");
-print &ui_table_start($text{'proxy_header2'}, undef, 2);
+print &ui_table_start($text{'proxy_header2'}, undef, 2, [ "width=30%" ]);
 
 if ($config{'osdn'}) {
 	# Show list of mirrors to choose from

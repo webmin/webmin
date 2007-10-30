@@ -9,7 +9,7 @@ require './webmin-lib.pl';
 print $text{'bind_desc'},"<p>\n";
 
 print &ui_form_start("change_bind.cgi", "post");
-print &ui_table_start($text{'bind_header'}, undef, 2);
+print &ui_table_start($text{'bind_header'}, undef, 2, [ "width=30%" ]);
 
 # Build list of sockets
 @sockets = &get_miniserv_sockets(\%miniserv);

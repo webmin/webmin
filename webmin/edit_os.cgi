@@ -9,7 +9,7 @@ print $text{'os_desc3'},"<br>\n";
 print $text{'os_desc2'},"<p>\n";
 
 print &ui_form_start("change_os.cgi", "post");
-print &ui_table_start($text{'os_header'}, undef, 2);
+print &ui_table_start($text{'os_header'}, undef, 2, [ "width=30%" ]);
 
 # OS according to Webmin
 print &ui_table_row($text{'os_webmin'},

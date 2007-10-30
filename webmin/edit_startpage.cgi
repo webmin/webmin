@@ -8,7 +8,7 @@ require './webmin-lib.pl';
 print $text{'startpage_intro2'},"<p>\n";
 
 print &ui_form_start("change_startpage.cgi", "post");
-print &ui_table_start($text{'startpage_title'}, undef, 2);
+print &ui_table_start($text{'startpage_title'}, undef, 2, [ "width=30%" ]);
 
 print &ui_table_row($text{'startpage_nocol'},
 	&ui_opt_textbox("nocols", $gconfig{'nocols'}, 5, $text{'default'}));

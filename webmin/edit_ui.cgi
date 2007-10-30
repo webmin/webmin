@@ -8,7 +8,7 @@ require './webmin-lib.pl';
 print $text{'ui_desc'},"<p>\n";
 
 print &ui_form_start("change_ui.cgi", "post");
-print &ui_table_start($text{'ui_header'}, undef, 2);
+print &ui_table_start($text{'ui_header'}, undef, 2, [ "width=30%" ]);
 
 for($i=0; $i<@cs_names; $i++) {
 	$cd = $cs_codes[$i];
@@ -40,6 +40,8 @@ print &ui_table_row($text{'ui_feedbackmode'},
 	&ui_radio("nofeedbackcc", int($gconfig{'nofeedbackcc'}),
 		  [ [ 0, $text{'yes'} ], [ 1, $text{'ui_feednocc'} ],
 		    [ 2, $text{'no'} ] ]));
+
+# XXX date display format
 
 print &ui_table_row($text{'ui_width'},
 	&ui_opt_textbox("width", $gconfig{'help_width'}, 5,

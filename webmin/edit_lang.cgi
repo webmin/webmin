@@ -8,7 +8,7 @@ require './webmin-lib.pl';
 print $text{'lang_intro'},"<p>\n";
 
 print &ui_form_start("change_lang.cgi", "post");
-print &ui_table_start($text{'lang_title2'}, undef, 2);
+print &ui_table_start($text{'lang_title2'}, undef, 2, [ "width=30%" ]);
 
 # Language
 $clang = $gconfig{'lang'} ? $gconfig{'lang'} : $default_lang;

@@ -9,7 +9,7 @@ require './webmin-lib.pl';
 print $text{'access_desc'},"<p>\n";
 
 print &ui_form_start("change_access.cgi", "post");
-print &ui_table_start($text{'access_header'}, undef, 2);
+print &ui_table_start($text{'access_header'}, undef, 2, [ "width=30%" ]);
 
 $access = $miniserv{"allow"} ? 1 : $miniserv{"deny"} ? 2 : 0;
 print &ui_table_row($text{'access_ip'},
