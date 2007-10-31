@@ -32,6 +32,6 @@ zones_file=/etc/bind/named.conf.local
 master_dir=/etc/bind
 no_pid_chroot=0
 soa_start=0
-rndc_conf=/etc/rndc.conf
+rndc_conf=/etc/bind/rndc.conf
 rndcconf_cmd=rndc-confgen
 largezones=0
