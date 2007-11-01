@@ -431,7 +431,7 @@ zone_faildel=Failed to delete zone
 zone_failsave=Failed to save zone
 zone_tsigkey=TSIG key
 
-plib_clientupdates=client-updates: Can clients update their own records?
+plib_clientupdates=Can clients update their own records?
 
 text_title=dhcpd.conf
 text_editor=Text editor
