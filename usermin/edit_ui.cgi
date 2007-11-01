@@ -119,7 +119,7 @@ printf "<input name=notabs type=radio value=1 %s> %s</td> </tr>\n",
 print "<tr> <td><b>$webmin::text{'ui_dateformat'}</b></td> <td>\n";
 print &ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
 		   [ map { [ $_, $webmin::text{'ui_dateformat_'.$_} ] }
-			 @webmin_date_formats ]));
+			 @webmin::webmin_date_formats ]);
 print "</td> </tr>\n";
 
 print "</table></td></tr></table>\n";
