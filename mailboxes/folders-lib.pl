@@ -2057,9 +2057,13 @@ elsif ($url =~ /^mailto:([a-z0-9\.\-\_\@]+)/i) {
 	# A mailto link, which we can convert
 	return $before."reply_mail.cgi?new=1&to=".&urlize($1).$after;
 	}
-else {
+elsif ($url =~ /\.cgi/) {
 	# Relative URL like foo.cgi or /foo.cgi or ../foo.cgi - unsafe!
 	return $before."_unsafe_link_".$after;
+	}
+else {
+	# Non-CGI URL .. assume safe
+	return $before.$url.$after;
 	}
 }
 
@@ -2272,9 +2276,9 @@ $rv =~ s/(src='|href='|background=')cid:([^']+)(')/$1.&fix_cid($2,$_[1],$_[2]).$
 $rv =~ s/(src=|href=|background=)cid:([^\s>]+)()/$1.&fix_cid($2,$_[1],$_[2]).$3/gei;
 
 # Fix images whose URL is actually in an attachment
-$rv =~ s/(src="|href="|background=")((http|https)[^"]+)(")/$1.&fix_contentlocation($2,$_[1],$_[2]).$4/gei;
-$rv =~ s/(src='|href='|background=')((http|https)[^']+)(')/$1.&fix_contentlocation($2,$_[1],$_[2]).$4/gei;
-$rv =~ s/(src=|href=|background=)((http|https)[^\s>]+)()/$1.&fix_contentlocation($2,$_[1],$_[2]).$4/gei;
+$rv =~ s/(src="|href="|background=")([^"]+)(")/$1.&fix_contentlocation($2,$_[1],$_[2]).$3/gei;
+$rv =~ s/(src='|href='|background=')([^']+)(')/$1.&fix_contentlocation($2,$_[1],$_[2]).$3/gei;
+$rv =~ s/(src=|href=|background=)([^\s>]+)()/$1.&fix_contentlocation($2,$_[1],$_[2]).$3/gei;
 return $rv;
 }
 
@@ -2296,6 +2300,7 @@ sub fix_contentlocation
 {
 local ($cont) = grep { $_->{'header'}->{'content-location'} eq $_[0] ||
 	       $_->{'header'}->{'content-location'} eq "<$_[0]>" } @{$_[1]};
+print STDERR "looking for content-location $_[0] = $cont\n";
 if ($cont) {
 	return "$_[2]&attach=$cont->{'idx'}";
 	}
