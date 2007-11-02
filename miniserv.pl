@@ -1075,6 +1075,8 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 				"https://$host:$port/";
 		if ($config{'ssl_redirect'}) {
 			# Just re-direct to the correct URL
+			sleep(1);	# Give browser a change to finish
+					# sending its request
 			&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 			&write_data("Date: $datestr\r\n");
 			&write_data("Server: $config{'server'}\r\n");
@@ -1126,6 +1128,8 @@ elsif ($reqline !~ /^(\S+)\s+(.*)\s+HTTP\/1\..$/) {
 					"https://$host:$port/";
 			if ($config{'ssl_redirect'}) {
 				# Just re-direct to the correct URL
+				sleep(1);	# Give browser a change to
+						# finish sending its request
 				&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
 				&write_data("Date: $datestr\r\n");
 				&write_data("Server: $config{'server'}\r\n");
