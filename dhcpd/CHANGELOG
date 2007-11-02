@@ -17,3 +17,5 @@ Fixed a bug that caused the display of large numbers of hosts and subnets to be 
 Changed the Module Config PID file setting to allow None to be selected, which tells the module to look at the dhcpd process instead (as on OpenBSD).
 ---- Changes since 1.320 ----
 Added a field on the Client Options page for the DHCP server identifier.
+---- Changes since 1.370 ----
+Fixed a bug that causes hosts to be deleted when searching for them!

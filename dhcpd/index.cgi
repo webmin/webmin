@@ -258,7 +258,15 @@ if ($access{'r_sub'} || $access{'c_sub'} ||
 		# No subnets or shared nets
 		print "$text{'index_nosubdef'} <p>\n";
 		}
+	$show_subnet_shared = 1;
+	}
+&subnet_add_links();
+if ($show_subnet_delete) {
+	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+	}
 
+# Show too-many forms
+if ($show_subnet_shared) {
 	print "<table>\n";
 	if (@ulinks >= $display_max) {
 		# Could not show all subnets, so show lookup form
@@ -278,10 +286,7 @@ if ($access{'r_sub'} || $access{'c_sub'} ||
 		}
 	print "</tr></table>\n";
 	}
-&subnet_add_links();
-if ($show_subnet_delete) {
-	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
-	}
+
 print "<hr>\n";
 
 foreach $g (@group) {
@@ -405,7 +410,15 @@ if ($access{'r_hst'} || $access{'c_hst'} ||
 		# None to show at all
 		print "$text{'index_nohst'} <p>\n";
 		}
+	$show_host_group = 1;
+	}
+&host_add_links();
+if ($show_host_delete) {
+	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+	}
 
+# Show too-many forms
+if ($show_host_group) {
 	print "<table>\n";
 	if (@hlinks >= $display_max) {
 		# Could not show all hosts, so show lookup form
@@ -425,10 +438,7 @@ if ($access{'r_hst'} || $access{'c_hst'} ||
 		}
 	print "</tr></table>\n";
 	}
-&host_add_links();
-if ($show_host_delete) {
-	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
-	}
+
 print "<hr>\n";
 
 ############ START ZONES #####
