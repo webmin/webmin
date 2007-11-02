@@ -206,7 +206,8 @@ if (&supports_schemas($_[0])) {
 
 	# Work out which fields are the primary key
 	if (&supports_indexes()) {
-		local ($keyidx) = grep { $_ eq $_[1]."_pkey" }
+		local ($keyidx) = grep { $_ eq $_[1]."_pkey" ||
+					 $_ eq "pk_".$_[1] }
 				       &list_indexes($_[0]);
 		if ($keyidx) {
 			local $istr = &index_structure($_[0], $keyidx);
