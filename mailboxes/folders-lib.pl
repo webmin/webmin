@@ -2264,7 +2264,7 @@ sub editable_mail
 return $_[0]->{'header'}->{'subject'} !~ /DON'T DELETE THIS MESSAGE.*FOLDER INTERNAL DATA/;
 }
 
-# fix_cids(html, &attachments, url-prefix, &cid-list)
+# fix_cids(html, &attachments, url-prefix)
 # Replaces HTML like img src=cid:XXX with img src=detach.cgi?whatever
 sub fix_cids
 {
@@ -2300,7 +2300,6 @@ sub fix_contentlocation
 {
 local ($cont) = grep { $_->{'header'}->{'content-location'} eq $_[0] ||
 	       $_->{'header'}->{'content-location'} eq "<$_[0]>" } @{$_[1]};
-print STDERR "looking for content-location $_[0] = $cont\n";
 if ($cont) {
 	return "$_[2]&attach=$cont->{'idx'}";
 	}
