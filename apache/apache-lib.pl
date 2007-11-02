@@ -446,7 +446,7 @@ close(HTACCESS);
 return \@conf;
 }
 
-# save_directive(name, &values, &directives, &config)
+# save_directive(name, &values, &parent-directives, &config)
 # Updates the config file(s) and the directives structure with new values
 # for the given directives.
 # If a directive's value is merely being changed, then its value only needs
@@ -517,6 +517,56 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		splice(@$lref, $old[$i]->{'line'}, $len, "$_[0] $v");
 		$change = $old[$i];
 		}
+	}
+}
+
+# save_directive_struct(&old-directive, &directive, &parent-directives,
+#			&config, firstline-only)
+# Updates, creates or removes only multi-line directive like a <virtualhost>
+sub save_directive_struct
+{
+local ($olddir, $newdir, $pconf, $conf, $first) = @_;
+return if (!$olddir && !$newdir);	# Nothing to do
+local $file = $olddir ? $olddir->{'file'} :
+	      $newdir->{'file'} ? $newdir->{'file'} : $pconf->[0]->{'file'};
+local $lref = &read_file_lines($file);
+local $oldlen = $olddir ? $olddir->{'eline'}-$olddir->{'line'}+1 : undef;
+local @newlines = $newdir ? &directive_lines($newdir) : ( );
+if ($oldir && $newdir) {
+	# Update in place
+	&renumber($conf, $olddir->{'eline'}+1, $file,
+		  scalar(@newlines)-$oldlen);
+	local $idx = &indexof($olddir, @$pconf);
+	$pconf->[$idx] = $newdir if ($idx >= 0);
+	$newdir->{'line'} = $oldir->{'line'};
+	$newdir->{'eline'} = $oldir->{'line'}+scalar(@newlines)-1;
+	splice(@$lref, $olddir->{'line'}, $oldlen, @newlines);
+	}
+elsif ($olddir && !$newdir) {
+	# Remove
+	splice(@$lref, $olddir->{'line'}, $oldlen);
+	local $idx = &indexof($olddir, @$pconf);
+	splice(@$pconf, $idx, 1) if ($idx >= 0);
+	&renumber($conf, $olddir->{'line'}, $olddir->{'file'}, -$oldlen);
+	}
+elsif (!$olddir && $newdir) {
+	# Add to file, at end of specific file or parent section
+	local ($addline, $addpos);
+	if ($newdir->{'file'}) {
+		$addline = scalar(@$lref);
+		$addpos = scalar(@$pconf);
+		}
+	else {
+		for($addpos=0; $pconf->[$addpos]->{'file'} eq $file;$addpos++) {
+			# Find last parent directive in same file
+			}
+		$addline = $pconf->[$addpos]->{'eline'}+1;
+		}
+	$newdir->{'line'} = $addline;
+	$newdir->{'eline'} = $addline + scalar(@newlines) - 1;
+	&renumber($conf, $addline, $file, scalar(@newlines));
+	splice(@$pconf, $addpos, 0, $newdir);
+	splice(@$lref, $addline, 0, @newlines);
 	}
 }
 

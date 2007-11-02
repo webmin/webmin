@@ -15,7 +15,6 @@ if ($in{'clone'} ne '') {
 		        $_->{'name'} ne 'Port' &&
 		        $_->{'name'} ne 'DocumentRoot' &&
 		        $_->{'name'} ne 'ServerAlias' } @{$clone->{'members'}};
-	@clines = &directive_lines(@cmems);
 	}
 
 # Parse and find the specified address to listen on
@@ -189,33 +188,47 @@ foreach $a (@addrs) {
 		}
 	}
 
-# Write out the file
-$lref = &read_file_lines($f);
-push(@$lref, "");
+# Create the structure
 if (@addrs) {
 	$ap = join(" ", map { $_.$port } @addrs);
 	}
 else {
 	$ap = $addr.$port;
 	}
-push(@$lref, "<VirtualHost $ap>");
-push(@$lref, "DocumentRoot \"$in{'root'}\"") if ($in{'root'});
+@mems = ( );
+$virt = { 'name' => 'VirtualHost',
+	  'value' => $ap,
+	  'file' => $f,
+	  'type' => 1,
+	  'members' => \@mems };
+push(@mems, { 'name' => 'DocumentRoot',
+	      'value' => "\"$in{'root'}\"" }) if ($in{'root'});
 if (@names) {
-	push(@$lref, "ServerName $names[0]");
+	push(@mems, { 'name' => 'ServerName',
+		      'value' => $names[0] });
 	shift(@names);
 	foreach $sa (@names) {
-		push(@$lref, "ServerAlias $sa");
+		push(@mems, { 'name' => 'ServerAlias',
+			      'value' => $sa });
 		}
 	}
-push(@$lref, @clines);
+push(@mems, @cmems);
+
 if ($in{'adddir'} && $in{'root'}) {
 	# Add a <Directory> section for the root
-	push(@$lref, "<Directory \"$in{'root'}\">");
-	push(@$lref, "allow from all");
-	push(@$lref, "Options +Indexes");
-	push(@$lref, "</Directory>");
+	push(@mems, { 'name' => 'Directory',
+		      'value' => "\"$in{'root'}\"",
+		      'type' => 1,
+		      'members' => [
+			{ 'name' => 'allow',
+			  'value' => 'from all' },
+			{ 'name' => 'Options',
+			  'value' => '+Indexes' },
+			] });
 	}
-push(@$lref, "</VirtualHost>");
+
+# Save to the file
+&save_directive_struct(undef, $virt, $conf, $conf);
 &flush_file_lines();
 &unlock_file($f);
 &unlock_apache_files();
