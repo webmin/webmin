@@ -65,7 +65,7 @@ else {
 	else {
 		@args = ( $gconfig{'nohostname'} ? $text{'main_title2'} :
 			    &text('main_title', $ver, $hostname, $ostr),
-			  "images/newlogo.gif" );
+			  "images/webmin-blue.png" );
 		if ($gconfig{'showlogin'}) {
 			$args[0] = $remote_user." : ".$args[0];
 			}
