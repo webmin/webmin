@@ -521,7 +521,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 }
 
 # save_directive_struct(&old-directive, &directive, &parent-directives,
-#			&config, firstline-only)
+#			&config, [firstline-only])
 # Updates, creates or removes only multi-line directive like a <virtualhost>
 sub save_directive_struct
 {
@@ -532,15 +532,31 @@ local $file = $olddir ? $olddir->{'file'} :
 local $lref = &read_file_lines($file);
 local $oldlen = $olddir ? $olddir->{'eline'}-$olddir->{'line'}+1 : undef;
 local @newlines = $newdir ? &directive_lines($newdir) : ( );
-if ($oldir && $newdir) {
+if ($olddir && $newdir) {
 	# Update in place
-	&renumber($conf, $olddir->{'eline'}+1, $file,
-		  scalar(@newlines)-$oldlen);
-	local $idx = &indexof($olddir, @$pconf);
-	$pconf->[$idx] = $newdir if ($idx >= 0);
-	$newdir->{'line'} = $oldir->{'line'};
-	$newdir->{'eline'} = $oldir->{'line'}+scalar(@newlines)-1;
-	splice(@$lref, $olddir->{'line'}, $oldlen, @newlines);
+	if ($first) {
+		# Just changing first line, like virtualhost IP
+		$lref->[$olddir->{'line'}] = $newlines[0];
+		$olddir->{'value'} = $newdir->{'value'};
+		}
+	else {
+		# Re-writing whole block
+		&renumber($conf, $olddir->{'eline'}+1, $file,
+			  scalar(@newlines)-$oldlen);
+		local $idx = &indexof($olddir, @$pconf);
+		$pconf->[$idx] = $newdir if ($idx >= 0);
+		$newdir->{'file'} = $olddir->{'file'};
+		$newdir->{'line'} = $olddir->{'line'};
+		$newdir->{'eline'} = $olddir->{'line'}+scalar(@newlines)-1;
+		splice(@$lref, $olddir->{'line'}, $oldlen, @newlines);
+
+		# Update sub-directive lines and files too
+		if ($newdir->{'type'}) {
+			&recursive_set_lines_files($newdir->{'members'},
+						   $newdir->{'line'}+1,
+						   $newdir->{'file'});
+			}
+		}
 	}
 elsif ($olddir && !$newdir) {
 	# Remove
@@ -562,12 +578,55 @@ elsif (!$olddir && $newdir) {
 			}
 		$addline = $pconf->[$addpos]->{'eline'}+1;
 		}
+	$newdir->{'file'} = $file;
 	$newdir->{'line'} = $addline;
 	$newdir->{'eline'} = $addline + scalar(@newlines) - 1;
 	&renumber($conf, $addline, $file, scalar(@newlines));
 	splice(@$pconf, $addpos, 0, $newdir);
 	splice(@$lref, $addline, 0, @newlines);
+
+	# Update sub-directive lines and files too
+	if ($newdir->{'type'}) {
+		&recursive_set_lines_files($newdir->{'members'},
+					   $newdir->{'line'}+1,
+					   $newdir->{'file'});
+		}
 	}
+}
+
+# recursive_set_lines_files(&directives, first-line, file)
+# Update the line numbers and filenames in a list of directives
+sub recursive_set_lines_files
+{
+local ($dirs, $line, $file) = @_;
+foreach my $d (@$dirs) {
+	$dir->{'line'} = $line;
+	$dir->{'file'} = $file;
+	if ($dir->{'type'}) {
+		# Do sub-members too
+		&recursive_set_lines_files($dir->{'members'}, $line+1, $file);
+		$line += scalar(@{$dir->{'members'}})+1;
+		$dir->{'eline'} = $line;
+		}
+	else {
+		$dir->{'eline'} = $line;
+		}
+	$line++;
+	}
+return $line;
+}
+
+# delete_file_if_empty(file)
+# If a virtual host file is now empty, delete it (and any link to it)
+sub delete_file_if_empty
+{
+local ($file) = @_;
+local $lref = &read_file_lines($file);
+foreach my $l (@$lref) {
+	return 0 if ($l =~ /\S/);
+	}
+unlink($file);
+&delete_webfile_link($file);
 }
 
 # renumber(&config, line, file, offset)

@@ -14,24 +14,8 @@ if ($in{'delete'}) {
 	%vnames = map { $_, 1 } &virt_acl_name($vconf);
 	&lock_file($vconf->{'file'});
 	&before_changing();
-	$lref = &read_file_lines($vconf->{'file'});
-	if ($vconf->{'line'} && $lref->[$vconf->{'line'}-1] !~ /\S/) {
-		# Remove one blank line before vserv
-		$vconf->{'line'}--;
-		}
-	splice(@$lref, $vconf->{'line'},
-	       $vconf->{'eline'} - $vconf->{'line'} + 1);
-	foreach $l (@$lref) {
-		$nonblank++ if ($l =~ /\S/);
-		}
-	&flush_file_lines();
-	if (!$nonblank) {
-		# Can lose the entire file
-		unlink($vconf->{'file'});
-
-		# Delete the link too
-		&delete_webfile_link($vconf->{'file'});
-		}
+	&save_directive_struct($vconf, undef, $conf, $conf);
+	&delete_file_if_empty($virt->{'file'});
 	&unlock_file($vconf->{'file'});
 
 	&after_changing();
@@ -112,8 +96,8 @@ else {
 	# Update <VirtualHost> directive
 	&lock_file($vconf->{'file'});
 	&before_changing();
-	$lref = &read_file_lines($vconf->{'file'});
-	$lref->[$vconf->{'line'}] = "<VirtualHost $addr$port>";
+	$vconf->{'value'} = "$addr$port";
+	&save_directive_struct($vconf, $vconf, $conf, $conf, 1);
 
 	# Update DocumentRoot and ServerName
 	&save_directive("DocumentRoot", $root ? [ $root ] : [ ],
