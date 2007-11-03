@@ -332,6 +332,7 @@ image/png			png # PNG image
 image/prs.btif
 image/prs.pti
 image/tiff			tiff tif # TIFF image
+image/svg+xml			svg	# SVG image
 image/vnd.cns.inf2
 image/vnd.dwg
 image/vnd.dxf
