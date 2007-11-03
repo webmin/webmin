@@ -535,8 +535,10 @@ local @newlines = $newdir ? &directive_lines($newdir) : ( );
 if ($olddir && $newdir) {
 	# Update in place
 	if ($first) {
-		# Just changing first line, like virtualhost IP
+		# Just changing first and last line, like virtualhost IP
 		$lref->[$olddir->{'line'}] = $newlines[0];
+		$lref->[$olddir->{'eline'}] = $newlines[$#newlines];
+		$olddir->{'name'} = $newdir->{'name'};
 		$olddir->{'value'} = $newdir->{'value'};
 		}
 	else {
@@ -573,9 +575,12 @@ elsif (!$olddir && $newdir) {
 		$addpos = scalar(@$pconf);
 		}
 	else {
-		for($addpos=0; $pconf->[$addpos]->{'file'} eq $file;$addpos++) {
+		for($addpos=0; $addpos < scalar(@$pconf) &&
+			       $pconf->[$addpos]->{'file'} eq $file;
+		    $addpos++) {
 			# Find last parent directive in same file
 			}
+		$addpos--;
 		$addline = $pconf->[$addpos]->{'eline'}+1;
 		}
 	$newdir->{'file'} = $file;

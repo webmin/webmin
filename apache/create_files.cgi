@@ -7,27 +7,32 @@ $access{'global'} || &error($text{'htaccess_ecannot'});
 &allowed_auth_file($in{'file'}) ||
 	&error($text{'htindex_ecannot'});
 &ReadParse();
+$hconf = &get_htaccess_config($in{'file'});
 &lock_file($in{'file'});
 &before_changing();
-$lref = &read_file_lines($in{'file'});
+
+# Create the directive
+$dir = { 'type' => 1 };
 if ($in{'regexp'}) {
 	if ($httpd_modules{'core'} >= 1.3) {
-		$newdir = "<FilesMatch \"$in{'path'}\">";
-		$enddir = "</FilesMatch>";
+		$dir->{'name'} = 'FilesMatch';
+		$dir->{'value'} = "\"$in{'path'}\"";
 		}
 	else {
-		$newdir = "<Files ~ \"$in{'path'}\">";
-		$enddir = "</Files>";
+		$dir->{'name'} = 'Files';
+		$dir->{'value'} = "~ \"$in{'path'}\"";
 		}
 	}
 else {
-	$newdir = "<Files \"$in{'path'}\">";
-	$enddir = "</Files>";
+	$dir->{'name'} = 'Files';
+	$dir->{'value'} = "\"$in{'path'}\"";
 	}
-push(@$lref, $newdir);
-push(@$lref, $enddir);
+
+# Add to file
+&save_directive_struct(undef, $dir, $hconf, $hconf);
 &flush_file_lines();
 &unlock_file($in{'file'});
+
 &after_changing();
 &webmin_log("files", "create", "$in{'file'}:$in{'path'}", \%in);
 &redirect("htaccess_index.cgi?file=".&urlize($in{'file'}));

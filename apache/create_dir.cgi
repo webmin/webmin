@@ -7,34 +7,38 @@ require './apache-lib.pl';
 &error_setup($text{'cdir_err'});
 ($vconf, $v) = &get_virtual_config($in{'virt'});
 &can_edit_virt($v) || &error($text{'virt_ecannot'});
-$f = $vconf->[0]->{'file'};
-for($j=0; $vconf->[$j]->{'file'} eq $f; $j++) { }
-$l = $vconf->[$j-1]->{'eline'}+1;
-&lock_file($f);
-&before_changing();
-$lref = &read_file_lines($f);
-$in{'path'} || &error($text{'cdir_epath'});
 
+&lock_file($vconf->[0]->{'file'});
+&before_changing();
+
+# Validate inputs
+$in{'path'} || &error($text{'cdir_epath'});
 $in{'type'} eq 'Proxy' || &allowed_doc_dir($in{'path'}) ||
 	&error($text{'cdir_ecannot'});
+
+# Create the file structure
+$dir = { 'type' => 1 };
 if ($in{'regexp'}) {
 	$in{'type'} eq 'Proxy' && &error($text{'cdir_eproxy'});
 	if ($httpd_modules{'core'} >= 1.3) {
-		$newdir = "<$in{'type'}Match \"$in{'path'}\">";
-		$enddir = "</$in{'type'}Match>";
+		$dir->{'name'} = $in{'type'}."Match";
+		$dir->{'value'} = "\"$in{'path'}\"";
 		}
 	else {
-		$newdir = "<$in{'type'} ~ \"$in{'path'}\">";
-		$enddir = "</$in{'type'}>";
+		$dir->{'name'} = $in{'type'};
+		$dir->{'value'} = "~ \"$in{'path'}\"";
 		}
 	}
 else {
-	$newdir = "<$in{'type'} \"$in{'path'}\">";
-	$enddir = "</$in{'type'}>";
+	$dir->{'name'} = $in{'type'};
+	$dir->{'value'} = "\"$in{'path'}\"";
 	}
-splice(@$lref, $l, 0, ($newdir, $enddir));
+
+# Add to file
+&save_directive_struct(undef, $dir, $vconf, $conf);
 &flush_file_lines();
-&unlock_file($f);
+&unlock_file($vconf->[0]->{'file'});
+
 &after_changing();
 &webmin_log("dir", "create", &virtual_name($v, 1).":$in{'path'}", \%in);
 &redirect("virt_index.cgi?virt=$in{'virt'}");

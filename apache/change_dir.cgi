@@ -9,15 +9,11 @@ require './apache-lib.pl';
 $d = $vconf->[$in{'idx'}];
 &lock_file($d->{'file'});
 &before_changing();
-$lref = &read_file_lines($d->{'file'});
+$conf = &get_config();
 
 if ($in{'delete'}) {
 	# deleting a directive
-	$conf = &get_config();
-	$gap = $d->{'eline'} - $d->{'line'} + 1;
-	splice(@$lref, $d->{'line'}, $d->{'eline'} - $d->{'line'} + 1);
-	splice(@$vconf, $in{'idx'}, 1);
-	&renumber($conf, $d->{'line'}, $d->{'file'}, -$gap);
+	&save_directive_struct($d, undef, $vconf, $conf);
 	}
 else {
 	# changing a directive
@@ -28,24 +24,24 @@ else {
 	if ($in{'regexp'}) {
 		$in{'type'} eq 'Proxy' && &error($text{'cdir_eproxy'});
 		if ($httpd_modules{'core'} >= 1.3) {
-			$newdir = "<$in{'type'}Match \"$in{'path'}\">";
-			$enddir = "</$in{'type'}Match>";
+			$d->{'name'} = $in{'type'}."Match";
+			$d->{'value'} = "\"$in{'path'}\"";
 			}
 		else {
-			$newdir = "<$in{'type'} ~ \"$in{'path'}\">";
-			$enddir = "</$in{'type'}>";
+			$d->{'name'} = $in{'type'};
+			$d->{'value'} = "~ \"$in{'path'}\"";
 			}
 		}
 	else {
-		$newdir = "<$in{'type'} \"$in{'path'}\">";
-		$enddir = "</$in{'type'}>";
+		$d->{'name'} = $in{'type'};
+		$d->{'value'} = "\"$in{'path'}\"";
 		}
-	$lref->[$d->{'line'}] = $newdir;
-	$lref->[$d->{'eline'}] = $enddir;
+	&save_directive_struct($d, $d, $vconf, $conf, 1);
 	}
 &flush_file_lines();
 &unlock_file($d->{'file'});
 &after_changing();
+
 &webmin_log("dir", $in{'delete'} ? 'delete' : 'save',
 	    &virtual_name($v, 1).":".$d->{'words'}->[0], \%in);
 &redirect("virt_index.cgi?virt=$in{'virt'}");

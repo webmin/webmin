@@ -18,9 +18,7 @@ foreach $v (@virts) {
 	local $sn = &find_directive("ServerName", $v->{'members'});
 	if ($sn eq $ARGV[0]) {
 		# Found the one to delete ..
-		$lref = &read_file_lines($v->{'file'});
-		splice(@$lref, $v->{'line'},
-		       $v->{'eline'} - $v->{'line'} + 1);
+		&save_directive_struct($v, undef, $conf, $conf);
 		&flush_file_lines();
 		print "Delete virtual server from $v->{'file'} at line ",
 		      ($v->{'line'}+1),"\n";

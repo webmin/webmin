@@ -11,37 +11,33 @@ $hconf = &get_htaccess_config($in{'file'});
 $d = $hconf->[$in{'idx'}];
 &lock_file($d->{'file'});
 &before_changing();
-$lref = &read_file_lines($d->{'file'});
 
 if ($in{'delete'}) {
 	# deleting a directive
-	$gap = $d->{'eline'} - $d->{'line'} + 1;
-	splice(@$lref, $d->{'line'}, $d->{'eline'} - $d->{'line'} + 1);
-	splice(@$hconf, $in{'idx'}, 1);
-	&renumber($hconf, $d->{'line'}, $d->{'file'}, -$gap);
+	&save_directive_struct($d, undef, $hconf, $hconf);
 	}
 else {
 	# changing a directive
 	if ($in{'regexp'}) {
 		if ($httpd_modules{'core'} >= 1.3) {
-			$newdir = "<FilesMatch \"$in{'path'}\">";
-			$enddir = "</FilesMatch>";
+			$d->{'name'} = 'FilesMatch';
+			$d->{'value'} = "\"$in{'path'}\"";
 			}
 		else {
-			$newdir = "<Files ~ \"$in{'path'}\">";
-			$enddir = "</Files>";
+			$d->{'name'} = 'Files';
+			$d->{'value'} = "~ \"$in{'path'}\"";
 			}
 		}
 	else {
-		$newdir = "<Files \"$in{'path'}\">";
-		$enddir = "</Files>";
+		$d->{'name'} = 'Files';
+		$d->{'value'} = "\"$in{'path'}\"";
 		}
-	$lref->[$d->{'line'}] = $newdir;
-	$lref->[$d->{'eline'}] = $enddir;
+	&save_directive_struct($d, $d, $hconf, $hconf, 1);
 	}
 &flush_file_lines();
 &unlock_file($d->{'file'});
 &after_changing();
+
 &webmin_log("files", $in{'delete'} ? 'delete' : 'save',
 	    "$in{'file'}:$d->{'words'}->[0]", \%in);
 &redirect("htaccess_index.cgi?file=".&urlize($in{'file'}));
