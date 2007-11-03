@@ -22,6 +22,9 @@ foreach $o (split(/\0/, $in{'open'})) {
 &popup_header(undef, &capture_function_output(\&theme_prehead));
 print "<center>\n";
 
+# Webmin logo
+print "<a href=http://www.webmin.com/ target=_new><img src=images/webmin-blue.png border=0></a><p>\n";
+
 if ($level == 0) {
 	# Show general system information
 	print "<table width=70%>\n";
