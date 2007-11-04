@@ -102,6 +102,9 @@ mail_search3=Find with score above:
 mail_advanced=Advanced Search
 mail_return2=User Email
 mail_esystem=An error occurred contacting the mail system : $1. This must be fixied by the system administrator.
+mail_selread=Select read.
+mail_selunread=Select unread.
+mail_selspecial=Select special.
 
 view_title=Read Email
 view_desc=Message $1 in $2

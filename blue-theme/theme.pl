@@ -147,6 +147,24 @@ $text ||= $text{'ui_selinv'};
 return "<a href='#' onClick='f = document.forms[$form]; ff = f.$field; ff.checked = !f.$field.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody\" }; for(i=0; i<f.$field.length; i++) { ff = f.${field}[i]; ff.checked = !ff.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody\" } } return false'>$text</a>";
 }
 
+# theme_select_status_link(name, form, &folder, &mails, start, end, status, label)
+# Adds support for row highlighting to read mail module selector
+sub theme_select_status_link
+{
+local ($name, $formno, $folder, $mail, $start, $end, $status, $label) = @_;
+$formno = int($formno);
+local @sel;
+for(my $i=$start; $i<=$end; $i++) {
+	local $m = $mail->[$i];
+	push(@sel, &get_mail_read($folder, $m) == $status ? 1 : 0);
+	}
+local $js = "var sel = [ ".join(",", @sel)." ]; ";
+$js .= "var f = document.forms[$formno]; ";
+$js .= "for(var i=0; i<sel.length; i++) { document.forms[$formno].${name}[i].checked = sel[i]; var ff = f.${name}[i]; var r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody\" } }";
+$js .= "return false;";
+return "<a href='#' onClick='$js'>$label</a>";
+}
+
 sub theme_ui_checked_columns_row
 {
 $theme_ui_columns_row_toggle = $theme_ui_columns_row_toggle ? '0' : '1';
