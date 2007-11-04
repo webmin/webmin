@@ -4,6 +4,7 @@ port=LDAP server port,3,Detect automatically
 user=Login for LDAP server,3,Detect automatically
 pass=Password for LDAP server,3,Detect automatically
 ssl=Use TLS encryption with LDAP server?,1,-Detect automatically,1-Yes,0-No
+slapd=Full path to OpenLDAP server program,8
 config_file=OpenLDAP server configuration file,8
 schema_dir=OpenLDAP schema directory,7
 
