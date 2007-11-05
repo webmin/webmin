@@ -14,6 +14,11 @@ if ($in{'to'}) {
 	&is_under_directory($access{'home'}, $in{'file'}) ||
 		&error($text{'export_efile2'});
 	}
+if ($in{'mode'} == 5) {
+	foreach $g (split(/\s+/, $in{'group'})) {
+		&my_getgrnam($g) || &error(&text('export_egroup', $g));
+		}
+	}
 
 # Open the output file
 if ($in{'to'}) {

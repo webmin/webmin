@@ -405,6 +405,7 @@ export_ok=Export Now
 export_err=Failed to export batch file
 export_efile=Missing file to write to
 export_efile2=File to write to is not in a valid directory
+export_egroup=Group $1 does not exist
 export_eopen=Failed to open output file : $!
 export_done=Successfully exported $1 users to the file $2 ($3).
 export_pft=Batch file format
