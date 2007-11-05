@@ -1,4 +1,4 @@
-index_title=QMail Configuration
+index_title=QMail Mail Server
 index_edir=The QMail base directory $1 does not exist. Maybe QMail is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_edir2=The directory $1 does not appear to be the QMail base directory. Maybe QMail is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_return=QMail configuration
