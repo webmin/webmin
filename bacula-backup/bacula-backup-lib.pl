@@ -66,7 +66,9 @@ if (!defined($config_file_cache{$file})) {
 	local $parent = { 'members' => \@rv };
 	local $lnum = 0;
 	open(CONF, $_[0]) || return undef;
-	while(<CONF>) {
+	local @lines = <CONF>;
+	close(CONF);
+	foreach (@lines) {
 		s/\r|\n//g;
 		s/#.*$//;
 		if (/^\s*\@(.*\S)/) {
