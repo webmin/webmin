@@ -14,10 +14,18 @@ if ($in{'to'}) {
 	&is_under_directory($access{'home'}, $in{'file'}) ||
 		&error($text{'export_efile2'});
 	}
-if ($in{'mode'} == 5) {
+if ($in{'mode'} == 4) {
+	$in{'uid'} =~ /^\d*$/ || &error($text{'export_euid'});
+	$in{'uid2'} =~ /^\d*$/ || &error($text{'export_euid2'});
+	}
+elsif ($in{'mode'} == 5) {
 	foreach $g (split(/\s+/, $in{'group'})) {
 		&my_getgrnam($g) || &error(&text('export_egroup', $g));
 		}
+	}
+elsif ($in{'mode'} == 8) {
+	$in{'gid'} =~ /^\d*$/ || &error($text{'export_egid'});
+	$in{'gid2'} =~ /^\d*$/ || &error($text{'export_egid2'});
 	}
 
 # Open the output file
