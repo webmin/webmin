@@ -47,40 +47,81 @@ if ($rv->code) {
 	print &text('browser_esearch', $rv->error),"<p>\n";
 	}
 else {
-	# Table for layout
-	print "<table width=100%><tr>\n";
-	print "<td width=50%><b>$text{'browser_subs'}</b></td>\n";
-	print "<td width=50%><b>$text{'browser_attrs'}</b></td>\n";
-	print "</tr> <tr><td width=50% valign=top>\n";
+	# Find sub-objects
+	@subs = sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries;
 
-	# Show sub-objects
-	@tds = ( undef, "width=10%" );
-	if ($in{'rename'}) {
-		print &ui_form_start("rename_browser.cgi", "post");
+	# Start tabs for layout
+	$in{'mode'} ||= @subs ? "subs" : "attrs";
+	@tabs = ( [ 'subs', $text{'browser_subs'} ],
+		  [ 'attrs', $text{'browser_attrs'} ] );
+	print &ui_tabs_start(\@tabs, "browser", $in{'mode'}, 1);
+
+	# Show sub-objects, if any
+	print &ui_tabs_start_tab("browser", "subs");
+	if (@subs) {
+		@tds = ( "width=90%", "width=10%" );
+		if ($in{'rename'}) {
+			# Rename form
+			print &ui_form_start("rename_browser.cgi", "post");
+			}
+		else {
+			# Delete sub-objects form
+			print &ui_form_start("sdelete_browser.cgi", "post");
+			@tds = ( "width=5", @tds );
+			@links = ( &select_all_link("d", 1),
+				   &select_invert_link("d", 1),
+			           "<a href='add_form.cgi?base=".
+				   &urlize($base)."'>".
+				   "$text{'browser_sadd'}</a>" );
+			}
+		print &ui_hidden("base", $base);
+		print &ui_links_row(\@links);
+		print &ui_columns_start([ $in{'rename'} ? ( ) : ( "" ),
+					  $text{'browser_sub'},
+					  $text{'browser_acts'},
+					], 100, 0, \@tds);
+		foreach $dn (@subs) {
+			$link = "<a href='edit_browser.cgi?base=".
+				&urlize($dn->dn())."'>".
+				&html_escape($dn->dn())."</a>";
+			@alinks = ( "<a href='edit_browser.cgi?base=".
+				    &urlize($base)."&mode=subs".
+				    "&rename=".&urlize($dn->dn()).
+				    "'>$text{'browser_rename'}</a>" );
+			if ($in{'rename'} eq $dn->dn()) {
+				# Renaming this one
+				@alinks = ( "<a href='edit_browser.cgi?base=".
+					    &urlize($base)."&mode=subs".
+					    "'>$text{'browser_cancel'}</a>" );
+				print &ui_columns_row([
+					&ui_textbox("rename", $dn->dn(), 70),
+					&ui_links_row(\@alinks) ], \@tds);
+				}
+			elsif ($in{'rename'}) {
+				# Display, no delete
+				print &ui_columns_row([
+					$link,&ui_links_row(\@alinks) ], \@tds);
+				}
+			else {
+				# Rename or select for delete
+				print &ui_checked_columns_row([
+					$link, &ui_links_row(\@alinks) ],
+					\@tds, "d", $dn->dn());
+				}
+			}
+		print &ui_columns_end();
+		print &ui_links_row(\@links);
+		print &ui_form_end([ [ undef,
+			$in{'rename'} ? $text{'browser_rsave'}
+				      : $text{'browser_delete'} ] ]);
 		}
 	else {
-		print &ui_form_start("sdelete_browser.cgi", "post");
-		@tds = ( "width=5", @tds );
+		print "<i>$text{'browser_subnone'}</i><br>\n";
 		}
-	print &ui_hidden("base", $base);
-	print &ui_links_row(\@links);
-	print &ui_columns_start([ "",
-				  $text{'browser_sub'},
-				  $text{'browser_acts'},
-				], 100, 0, \@tds);
-	foreach $dn (sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries) {
-		print "<a href='edit_browser.cgi?base=".&urlize($dn->dn())."'>".
-		      &html_escape($dn->dn())."</a><br>\n";
-		}
-	print &ui_columns_end();
-	if (!$rv->all_entries) {
-		print "<i>$text{'browser_none'}</i><br>\n";
-		}
+	print &ui_tabs_end_tab();
 	
-	print "</td><td width=50% valign=top>\n";
-	print "<table>\n";
-
 	# Show attributes
+	print &ui_tabs_start_tab("browser", "attrs");
 	$rv2 = $ldap->search(base => $base,
 			     filter => '(objectClass=*)',
 			     score => 'base');
@@ -88,31 +129,39 @@ else {
 	@attrs = sort { lc($a) cmp lc($b) } $bo->attributes();
 	if (@attrs) {
 		# Show all attributes
-		@tds = ( "valign=top", "valign=top", "width=5% valign=top" );
+		@tds = ( "valign=top width=45%", "valign=top width=45%",
+			 "width=5% valign=top" );
 		if ($in{'edit'}) {
+			# Editing form
 			print &ui_form_start("save_browser.cgi", "post");
-			@links = ( );
+			print &ui_hidden("edit", $in{'edit'});
+			}
+		elsif ($in{'add'}) {
+			# Add form
+			print &ui_form_start("add_browser.cgi", "post");
 			}
 		else {
+			# Deleting form
 			print &ui_form_start("delete_browser.cgi", "post");
 			@links = ( &select_all_link("d", 1),
 				   &select_invert_link("d", 1),
-				   "<a href='edit_browser.cgi?base=".
-                                   &urlize($bo->dn())."&add=1'>".
+			           "<a href='edit_browser.cgi?base=".
+				   &urlize($bo->dn())."&add=1&mode=attrs'>".
 				   "$text{'browser_add'}</a>" );
 			@tds = ( "width=5", @tds );
 			}
 		print &ui_hidden("base", $bo->dn());
+		print &ui_hidden("mode", "attrs");
 		print &ui_links_row(\@links);
-		print &ui_columns_start([ $in{'edit'} ? ( ) : ( "" ),
-					  $text{'browser_name'},
-					  $text{'browser_value'},
-					  $text{'browser_acts'} ],
-					100, 0, \@tds);
+		print &ui_columns_start([
+			$in{'edit'} || $in{'add'} ? ( ) : ( "" ),
+			$text{'browser_name'},
+			$text{'browser_value'},
+			$text{'browser_acts'} ], 100, 0, \@tds);
 		foreach $a (@attrs) {
 			@v = $bo->get_value($a);
 			@alinks = ( "<a href='edit_browser.cgi?base=".
-				    &urlize($bo->dn()).
+				    &urlize($bo->dn())."&mode=attrs".
 				    "&edit=$a'>$text{'browser_edit'}</a>" );
 			@cols = ( $a, join(", ", @v),
 				  &ui_links_row(\@alinks),
@@ -120,15 +169,15 @@ else {
 			if ($in{'edit'} eq $a) {
 				# Edit this one
 				@alinks = ( "<a href='edit_browser.cgi?base=".
-					    &urlize($bo->dn()).
+					    &urlize($bo->dn())."&mode=attrs".
 					    "'>$text{'browser_cancel'}</a>" );
 				print &ui_columns_row([
-				  $a, &ui_textarea($a, join("\n", @v),
-						   scalar(@v)+1, 40),
+				  $a, &ui_textarea("value", join("\n", @v),
+						   scalar(@v)+1, 60),
 				  &ui_links_row(\@alinks),
 				  ], \@tds);
 				}
-			elsif ($in{'edit'}) {
+			elsif ($in{'edit'} || $in{'add'}) {
 				# Display, no delete
 				print &ui_columns_row(\@cols, \@tds);
 				}
@@ -138,17 +187,30 @@ else {
 					\@cols, \@tds, "d", $a);
 				}
 			}
+		if ($in{'add'}) {
+			# Show row to add an attribute
+			@alinks = ( "<a href='edit_browser.cgi?base=".
+				    &urlize($bo->dn())."&mode=attrs".
+				    "'>$text{'browser_cancel'}</a>" );
+			print &ui_columns_row([
+				&ui_textbox("add", undef, 20),
+				&ui_textbox("value", undef, 60),
+				&ui_links_row(\@alinks),
+				], \@tds);
+			}
 		print &ui_columns_end();
 		print &ui_links_row(\@links);
 		print &ui_form_end([ [ undef, $in{'edit'} ? $text{'save'} :
+					      $in{'add'} ? $text{'create'} :
 						$text{'browser_delete'} ] ]);
 		}
 	else {
-		print "<tr> <td><i>$text{'browser_none'}</i></td> </tr>\n";
+		print "<tr> <td><i>$text{'browser_attrnone'}</i></td> </tr>\n";
+		print &ui_links_row(\@links);
 		}
-	print "</table>\n";
+	print &ui_tabs_end_tab();
 
-	print "</td></tr></table><br>\n";
+	print &ui_tabs_end(1);
 	}
 
 $ldap->disconnect();

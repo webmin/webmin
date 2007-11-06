@@ -183,5 +183,13 @@ if ($pidfile) {
 return undef;
 }
 
+# ldap_error(rv)
+# Converts a bad LDAP response into an error message
+sub ldap_error
+{
+local ($rv) = @_;
+# XXX
+}
+
 1;
 
