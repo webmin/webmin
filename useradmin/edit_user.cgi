@@ -242,7 +242,7 @@ if ($access{'nocrypt'}) {
 	printf
 	  "<input type=radio name=passmode value=2 %s> $text{'nochange'}\n",
 	  $pass && $pass ne $config{'lock_string'} && $random_password eq "" ? "checked" : "";
-	print "<input type=hidden name=encpass size=13 value=\"$pass\">\n";
+	print "<input type=hidden name=encpass size=30 value=\"$pass\">\n";
 	}
 else {
 	printf
