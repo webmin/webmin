@@ -10,3 +10,4 @@ desc_ru_RU=Система безопасности
 longdesc=Configure the portsentry, hostsentry and logcheck system security monitoring programs.
 readonly=1
 os_support=!windows
+nondefault=1
