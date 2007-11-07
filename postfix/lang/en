@@ -796,7 +796,6 @@ chooser_mtable=Table containing map
 chooser_mselect_field=Value field
 chooser_mwhere_field=Key field
 chooser_madditional_conditions=SQL for <tt>where</tt> clause
-chooser_none=None
 chooser_err=Failed to save map source
 chooser_ehash=Missing or invalid mapping filename for map $1
 chooser_eregexp=Missing or invalid regular expressions filename for map $1
