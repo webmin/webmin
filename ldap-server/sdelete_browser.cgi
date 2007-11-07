@@ -1,0 +1,30 @@
+#!/usr/local/bin/perl
+# Delete an entire LDAP object
+
+require './ldap-server-lib.pl';
+&error_setup($text{'sdelete_err'});
+&ReadParse();
+$ldap = &connect_ldap_db();
+ref($ldap) || &error($ldap);
+@d = split(/\0/, $in{'d'});
+@d || &error($text{'delete_enone'});
+
+# Get and remove each object
+foreach $d (@d) {
+	$rv = $ldap->search(base => $d,
+			    filter => '(objectClass=*)',
+			    score => 'base');
+	if (!$rv || $rv->code) {
+		&error(&ldap_error($rv));
+		}
+	($bo) = $rv->all_entries;
+	$bo || &error(&text('sdelete_edn', "<tt>$d</tt>"));
+
+	$rv = $ldap->delete($d);
+	if (!$rv || $rv->code) {
+		&error(&text('sdelete_edel', "<tt>$d</tt>", &ldap_error($rv)));
+		}
+	}
+
+# Return to object
+&redirect("edit_browser.cgi?base=".&urlize($in{'base'})."&mode=subs");

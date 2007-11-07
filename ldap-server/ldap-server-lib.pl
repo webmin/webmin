@@ -188,7 +188,15 @@ return undef;
 sub ldap_error
 {
 local ($rv) = @_;
-# XXX
+if (!$rv) {
+	return $text{'euknown'};
+	}
+elsif ($rv->code) {
+	return "".$rv->code;
+	}
+else {
+	return undef;
+	}
 }
 
 1;

@@ -63,6 +63,7 @@ else {
 		if ($in{'rename'}) {
 			# Rename form
 			print &ui_form_start("rename_browser.cgi", "post");
+			print &ui_hidden("old", $in{'rename'});
 			}
 		else {
 			# Delete sub-objects form
@@ -71,8 +72,8 @@ else {
 			@links = ( &select_all_link("d", 1),
 				   &select_invert_link("d", 1),
 			           "<a href='add_form.cgi?base=".
-				   &urlize($base)."'>".
-				   "$text{'browser_sadd'}</a>" );
+				   &urlize($base)."'>$text{'browser_sadd'}</a>",
+				 );
 			}
 		print &ui_hidden("base", $base);
 		print &ui_links_row(\@links);
@@ -113,7 +114,7 @@ else {
 		print &ui_links_row(\@links);
 		print &ui_form_end([ [ undef,
 			$in{'rename'} ? $text{'browser_rsave'}
-				      : $text{'browser_delete'} ] ]);
+				      : $text{'browser_sdelete'} ] ]);
 		}
 	else {
 		print "<i>$text{'browser_subnone'}</i><br>\n";
@@ -147,7 +148,10 @@ else {
 				   &select_invert_link("d", 1),
 			           "<a href='edit_browser.cgi?base=".
 				   &urlize($bo->dn())."&add=1&mode=attrs'>".
-				   "$text{'browser_add'}</a>" );
+				   "$text{'browser_add'}</a>",
+			           "<a href='add_form.cgi?base=".
+				   &urlize($base)."&clone=1'>".
+				   "$text{'browser_clone'}</a>" );
 			@tds = ( "width=5", @tds );
 			}
 		print &ui_hidden("base", $bo->dn());
