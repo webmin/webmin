@@ -1,0 +1,17 @@
+show_list=0
+httpd_dir=/usr/apache2/2.2
+httpd_conf=/etc/apache2/2.2/httpd.conf
+httpd_path=/usr/apache2/2.2/bin/httpd
+apachectl_path=/usr/apache2/2.2/bin/apachectl
+pid_file=/var/run/apache2/2.2/httpd.pid
+start_cmd=svcadm enable svc:/network/http:apache22
+stop_cmd=svcadm disable svc:/network/http:apache22
+mime_types=
+srm_conf=
+access_conf=
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1
