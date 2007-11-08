@@ -252,6 +252,10 @@ return 0;
 sub get_webalizer_version
 {
 local $out = `$config{'webalizer'} -v 2>&1`;
+if ($? || $out !~ /\sV(\S+)/) {
+	# Try -V
+	$out = `$config{'webalizer'} -V 2>&1`;
+	}
 ${$_[0]} = $out;
 return $out =~ /\sV(\S+)/ ? $1 : undef;
 }
