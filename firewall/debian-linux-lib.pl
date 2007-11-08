@@ -82,9 +82,11 @@ elsif ($has_new_debian_iptables) {
 	local $pri = &get_primary_network_interface();
 	local ($debpri) = grep { $_->[0] eq $pri->{'fullname'} }
 			       &net::get_interface_defs();
-	push(@{$debpri->[3]},
-	     [ "post-up", "iptables-restore < $iptables_save_file" ]);
-	&net::modify_interface_def(@$debpri);
+	if ($debpri && !&started_at_boot()) {
+		push(@{$debpri->[3]},
+		     [ "post-up", "iptables-restore < $iptables_save_file" ]);
+		&net::modify_interface_def(@$debpri);
+		}
 	}
 else {
 	&create_webmin_init();
