@@ -43,7 +43,7 @@ sub create_mail_dir
 {
 local $d;
 foreach $d ($_[1], "$_[0]/cur", "$_[1]/tmp", "$_[1]/new") {
-	mkdir($d, 0700);
+	&make_dir($d, 0700);
 	if ($config{'sync_perms'}) {
 		system("chmod ".
 		       quotemeta($config{'sync_perms'})." ".
