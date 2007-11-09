@@ -1513,7 +1513,7 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 	// Creating a new file
 	EditorWindow(String f, FileManager p)
 	{
-	super(500, 300);
+	super(800, 600);
 	filemgr = p;
 	makeUI(true);
 	setTitle(filemgr.text("edit_title2"));
