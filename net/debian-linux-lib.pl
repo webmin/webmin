@@ -8,6 +8,8 @@
 use File::Copy;
 
 $network_interfaces_config = '/etc/network/interfaces';
+$modules_config = '/etc/modprobe.d/arch/i386';
+$network_interfaces = '/proc/net/dev';
 
 do 'linux-lib.pl';
 
@@ -39,6 +41,15 @@ foreach $iface (@ifaces) {
 		foreach $option (@$options) {
 			($param, $value) = @$option;
 			if ($param eq 'noauto') { $cfg->{'up'} = 0; }
+			elsif($param eq 'up') { 
+				$cfg->{"partner"} = &get_teaming_partner($cfg->{'name'}, $value);
+				%options = &get_module_defs($name);
+				
+				$cfg->{'mode'} = $options{'mode'};
+				$cfg->{'miimon'} = $options{'miimon'};
+				$cfg->{'downdelay'} = $options{'downdelay'};
+				$cfg->{'updelay'} = $options{'updelay'};
+			}
 			else { $cfg->{$param} = $value; }
 			}
 		$cfg->{'dhcp'} = ($method eq 'dhcp');
@@ -61,6 +72,7 @@ my $name = $cfg->{'virtual'} ne "" ? $cfg->{'name'}.":".$cfg->{'virtual'}
 				       : $cfg->{'name'};
 my @options;
 my $method;
+my @modules_var;
 if ($cfg->{'dhcp'} == 1) { $method = 'dhcp'; }
 elsif ($cfg->{'bootp'} == 1) { $method = 'bootp'; }
 else {
@@ -83,6 +95,18 @@ my @autos = get_auto_defs();
 my $amode = $gconfig{'os_version'} > 3 || scalar(@autos);
 if (!$cfg->{'up'} && !$amode) { push(@options, ['noauto', '']); }
 
+# Set bonding parameters
+if($cfg->{'bond'} == 1) {
+	push(@options, ['up', '/sbin/ifenslave ' . $cfg->{'name'} . " " . $cfg->{'partner'}]);
+	push(@options, ['down', '/sbin/ifenslave -d ' . $cfg->{'name'} . " " . $cfg->{'partner'}]);
+}
+
+# Set specific lines for vlan tagging
+if($cfg->{'vlan'} == 1){
+	push(@options, ['pre-up', 'vconfig add ' . $cfg->{'physical'} . ' ' . $cfg->{'vlanid'}]);
+	push(@options, ['post-down', 'vconfig rem ' . $cfg->{'physical'} . ' ' . $cfg->{'vlanid'}]);
+}
+
 my @ifaces = get_interface_defs();
 my $changeit = 0;
 foreach $iface (@ifaces) {
@@ -96,20 +120,167 @@ foreach $iface (@ifaces) {
 		}
 	}
 if ($changeit == 0) {
-	new_interface_def($cfg->{'fullname'}, 'inet', $method, \@options);
+	if($in{'vlan'} == 1) {
+		new_interface_def($cfg->{'physical'} . '.' . $cfg->{'vlanid'}, 'inet', $method, \@options);
+	} else {
+		new_interface_def($cfg->{'fullname'}, 'inet', $method, \@options);
+ 	}
+	if($cfg->{'bond'} == 1) {
+		new_module_def($cfg->{'fullname'}, $cfg->{'mode'}, $cfg->{'miimon'}, $cfg->{'downdelay'}, $cfg->{'updelay'});
 	}
+} 
 else {
-	modify_interface_def($cfg->{'fullname'}, 'inet', $method, \@options, 0);
+	if($in{'vlan'} == 1) {
+		modify_interface_def($cfg->{'physical'} . '.' . $cfg->{'vlanid'}, 'inet', $method, \@options, 0);
+	} else {
+		modify_interface_def($cfg->{'fullname'}, 'inet', $method, \@options, 0);
+ 	}
+	if($cfg->{'bond'} == 1) {
+		modify_module_def($cfg->{'fullname'}, 0, $cfg->{'mode'}, $cfg->{'miimon'}, $cfg->{'downdelay'}, $cfg->{'updelay'});
 	}
+}
+
 if ($amode) {
 	if ($cfg->{'up'}) {
-		@autos = &unique(@autos, $cfg->{'fullname'});
-		}
+		if($in{'vlan'} == 1) {
+			@autos = &unique(@autos, $cfg->{'physical'} . '.' . $cfg->{'vlanid'});
+		} else {
+			@autos = &unique(@autos, $cfg->{'fullname'});
+ 		}
+	}
 	else {
 		@autos = grep { $_ ne $cfg->{'fullname'} } @autos;
 		}
 	&modify_auto_defs(@autos);
 	}
+}
+
+# Modifies a entry in /etc/modprobe.d/arch/i386 that concerns
+# to the interface mentioned
+# modify_module_def(name, delete, mode, miimon, downdelay, updelay)
+sub modify_module_def
+{
+	my ($name, $delete, $mode, $miimon, $downdelay, $updelay) = @_;
+	my $modify_block = 0;
+	
+	# make a backup copy
+	copy("$modules_config", "$modules_config~");
+	local *OLDCFGFILE, *NEWCFGFILE;
+	&open_readfile(OLDCFGFILE, "$modules_config~") ||
+		error("Unable to open $modules_config");
+	&lock_file($network_interfaces_config);
+	&open_tempfile(NEWCFGFILE, "> $modules_config", 1) ||
+		error("Unable to open $modules_config");
+
+		
+	while (defined ($line=<OLDCFGFILE>)) {
+		chomp($line);
+		@splitted_line = split(" ", $line);
+		if($splitted_line[0] eq 'alias' && $splitted_line[1] eq $name) {
+			$modify_block = 1;		
+		} elsif ($splitted_line[0] eq 'alias' && !($splitted_line[1] eq $name)){
+			$modify_block = 0;
+		}
+		
+		# if $delete == 1; write nothing
+		if($modify_block == 1 && $splitted_line[0] eq "options" && $delete != 1) {
+			$options_line = "options bonding ";
+			for($i = 2; $i < scalar(@splitted_line); $i++){
+					($key, $value) = split("=", $splitted_line[$i]);
+					if($key eq "mode") {
+						$options_line .= "mode=" . $mode . " ";
+					} elsif($key eq "miimon") {
+						$options_line .= "miimon=" . $miimon . " ";
+					} elsif($key eq "downdelay") {
+						$options_line .= "downdelay=" . $downdelay . " ";
+					} elsif($key eq "updelay") {
+						$options_line .= "updelay=" . $updelay . " ";
+					} else {
+						$options_line .= $key . "=" . $value . " ";
+					}			
+			}
+			
+			chop($options_line);
+			&print_tempfile(NEWCFGFILE, $options_line . "\n");
+			$modify_block == 0;
+		} elsif($modify_block == 0) {
+			&print_tempfile(NEWCFGFILE, $line . "\n");
+		}
+	}
+	&close_tempfile(NEWCFGFILE);
+	&unlock_file($modules_config);
+}
+
+# Deletes an the module concerning entry
+# delete_module_def(name) 1 for deleting operation
+sub delete_module_def
+{
+	my ($name) = @_;
+	modify_interface_def($name, 1);
+}
+
+# get_module_defs(device)
+# Returns the modul options form /etc/modprobe.d/arch/i386
+# for a special device
+# Return hash: ($mode, $miimon, $downdelay, $updelay)
+sub get_module_defs
+{
+	local *CFGFILE;
+	my($device) = @_;
+	my %ret;
+	&open_readfile(CFGFILE, $modules_config) ||
+		error("Unable to open $modules_config");
+	
+	$line = <CFGFILE>;
+	while(defined($line)){
+		chomp($line);
+		@params = split(" ", $line);
+		
+		# Search for an entry concerning to the device
+		if($params[0] eq "alias" && $params[1] eq $device){
+			$line = <CFGFILE>;
+			chomp $line;
+			@params = split(" ", $line);		
+			# Check if it is an options line
+			if($params[0] eq "options" && $params[1] eq "bonding") {
+				for($i = 2; $i < scalar(@params); $i++){
+					($key, $value) = split("=", $params[$i]);
+					$ret{$key} = $value;	
+				}
+			}		
+		}
+		$line = <CFGFILE>;		
+	}
+	return %ret;
+}
+
+# creates a new entry for in the modules file
+# Parameters should be (name, mode, miimon, downdelay, updelay)
+sub new_module_def
+{
+	copy("$modules_config", "$modules_config~");
+	local *CFGFILE;
+	&open_lock_tempfile(CFGFILE, ">> $modules_config") ||
+		error("Unable to open $modules_config");
+	local ($name, $mode, $miimon, $downdelay, $updelay) = @_;
+	&print_tempfile(CFGFILE, "\nalias " . $name . " bonding");
+	&print_tempfile(CFGFILE, "\noptions bonding");
+	
+	if($mode) {
+		&print_tempfile(CFGFILE, " mode=" . $mode);
+	}
+	if($miimon) {
+		&print_tempfile(CFGFILE, " miimon=" . $miimon);
+	}
+	if($downdelay) {
+		&print_tempfile(CFGFILE, " downdelay=" . $downdelay);
+	}
+	if($updelay) {
+		&print_tempfile(CFGFILE, " updelay=" . $updelay);
+	}
+	# Add Newline
+	&print_tempfile(CFGFILE, "\n");
+	&close_tempfile(CFGFILE);
 }
 
 # delete_interface(&details)
@@ -525,6 +696,7 @@ sub delete_interface_def
 {
 	local ($name, $addrfam, $method) = @_;
 	modify_interface_def($name, $addrfam, '', [], 1);
+	modify_module_def($name, 1);
 }
 
 sub os_feedback_files
@@ -574,6 +746,27 @@ foreach $iface (@ifaces) {
 		}
 	&modify_interface_def(@$iface);
 	}
+}
+
+# get_teaming_partner(devicename, line)
+# Gets the teamingpartner of a configuration line
+# Example configuration line: "/sbin/ifenslave bond0 eth0 eth1"
+sub get_teaming_partner
+{
+	my($deviceName, $line) = @_;
+	@params = split(/ /, $line);
+	my $return;
+		
+	
+	for($i = scalar(@params); $i > 0; $i--){
+		if($deviceName eq $params[$i]){
+			break;
+		} else {
+			$return = $params[$i] . " " . $return;
+		}
+	}
+	chop $return;
+	return $return;
 }
 
 1;

@@ -30,13 +30,19 @@ foreach $d (reverse(@d)) {
 					$err && &error("<pre>$err</pre>");
 					}
 				else {
-					&deactivate_interface($act);
+					&deactivate_interface($act);					
+					if(&iface_type($b->{'name'}) eq 'Bonded'){
+						&unload_module($b->{'name'});
+ 					}
 					}
 				}
 			}
 
 		# Delete config
 		&delete_interface($b);
+		if(&iface_type($b->{'name'}) eq 'Bonded'){
+			&delete_module_def($b->{'name'});	
+ 		}
 		}
 	}
 

@@ -39,7 +39,18 @@ return @rv;
 sub activate_interface
 {
 local $a = $_[0];
-local $cmd = "ifconfig $a->{'name'}";
+if($a->{'vlan'} == 1) {
+	local $vconfigCMD = "vconfig add " . $a->{'physical'} . " " . $a->{'vlanid'};
+	local $vconfigout = &backquote_logged("$vconfigCMD 2>&1");
+if ($?) { &error($vonconfigout); }
+}
+
+local $cmd;
+if($a->{'vlan'} == 1) {
+	$cmd .= "ifconfig $a->{'physical'}.$a->{'vlanid'}";
+} else {
+	$cmd .= "ifconfig $a->{'name'}";
+}
 if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
 $cmd .= " $a->{'address'}";
 if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
@@ -69,7 +80,10 @@ if ($_[0]->{'virtual'} ne "") {
 local ($still) = grep { $_->{'fullname'} eq $name } &active_interfaces();
 if ($still) {
 	# Old version of ifconfig or non-virtual interface.. down it
-	local $out = &backquote_logged("ifconfig $name down 2>&1");
+	local $out = &backquote_logged("ifconfig $name down 2>&1");	
+	if(&iface_type($name) =~ /^(.*) (VLAN)$/) {
+		$out = &backquote_logged("vconfig rem $name 2>&1");
+	}
 	local ($still) = grep { $_->{'fullname'} eq $name }
 			      &active_interfaces();
 	if ($still) {
@@ -120,6 +134,51 @@ while(<ROUTES>) {
 	}
 close(ROUTES);
 return @rv;
+}
+
+# load_module(&details)
+# Load or modify a loaded module
+sub load_module
+{
+local $a = $_[0];
+local $cmd = "modprobe bonding";
+
+if($a->{'mode'}) {$cmd .= " mode=" . $a->{'mode'};}
+if($a->{'miimon'}) {$cmd .= " miimon=" . $a->{'miimon'};}
+if($a->{'downdelay'}) {$cmd .= " downdelay=" . $a->{'downdelay'};}
+if($a->{'updelay'}) {$cmd .= " updelay=" . $a->{'updelay'};}
+
+local $out = &backquote_logged("$cmd 2>&1");
+if ($?) { &error($out); }
+}
+
+# Tries to unload the module
+# unload_module(name)
+sub unload_module
+{
+	my ($name) = @_;
+	my $cmd = "modprobe -r bonding";
+	local $out = &backquote_logged("$cmd 2>&1");
+	if($?) { &error($out);}
+}
+
+# list_interfaces()
+# return a list of interfaces
+sub list_interfaces
+{
+	my @ret;
+	$cmd = "ifconfig -a";
+	local $out = &backquote_logged("$cmd 2>&1");
+	if ($?) { &error($out); }
+	
+	@lines = split("\n", $out);
+	foreach $line(@lines) {
+		$line =~ /^([\w|.]*)/m;
+		if(($1)) {
+			push(@ret, $1);
+		}
+	}
+	return @ret;
 }
 
 # create_route(&route)

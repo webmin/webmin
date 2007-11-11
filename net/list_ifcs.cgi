@@ -89,6 +89,12 @@ print &ui_form_start("delete_bifcs.cgi", "post");
 	   &select_invert_link("b", 1) );
 if ($allow_add) {
 	push(@links, "<a href='edit_bifc.cgi?new=1'>$text{'ifcs_add'}</a>");
+	if (($gconfig{'os_type'} eq 'debian-linux') && (&has_command("ifenslave")))  {
+		push(@links, "<a href='edit_bifc.cgi?new=1&bond=1'>$text{'bonding_add'}</a>");
+	}
+	if (($gconfig{'os_type'} eq 'debian-linux') && (&has_command("vconfig")))  {
+		push(@links, "<a href='edit_bifc.cgi?new=1&vlan=1'>$text{'vlan_add'}</a>");
+	}
 	}
 if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
 	push(@links, "<a href='edit_range.cgi?new=1'>$text{'ifcs_radd'}</a>");
@@ -113,9 +119,19 @@ foreach $a (@boot) {
 	if ($a->{'range'} ne "") {
 		# A range of addresses
 		local $rng = &text('ifcs_range', $a->{'range'});
-		if ($can) {
-			push(@cols, "<a href=\"edit_range.cgi?idx=$a->{'index'}\">".&html_escape($rng)."</a>");
+		if ($can && ($gconfig{'os_type'} eq 'debian-linux') && &has_command("")) {
+			$link = "edit_bifc.cgi?idx=$a->{'index'}";
+			if(&iface_type($a->{'name'}) eq 'Bonded'){
+				$link = $link . "&bond=1";
+			} elsif (&iface_type($a->{'name'}) =~ /^(.*) (VLAN)$/) {
+				$link = $link . "&vlan=1";
 			}
+			push(@cols, "<a href='$link'" . &html_escape($a->{'fullname'})."</a>");
+			}
+		elsif($can) {
+			$link = "edit_bifc.cgi?idx=$a->{'index'}";
+			push(@cols, "<a href='$link'" . &html_escape($a->{'fullname'})."</a>");
+		}
 		else {
 			push(@cols, &html_escape($rng));
 			}
@@ -128,7 +144,13 @@ foreach $a (@boot) {
 		local $mod = &module_for_interface($a);
 		local %minfo = $mod ? &get_module_info($mod->{'module'}) : ( );
 		if ($can) {
-			push(@cols, "<a href='edit_bifc.cgi?idx=$a->{'index'}'>"
+			$link = "edit_bifc.cgi?idx=$a->{'index'}";
+			if(&iface_type($a->{'name'}) eq 'Bonded'){
+				$link = $link . "&bond=1";
+			} elsif (&iface_type($a->{'name'}) =~ /^(.*) (VLAN)$/) {
+				$link = $link . "&vlan=1";
+			}
+			push(@cols, "<a href='$link'>"
 				    .&html_escape($a->{'fullname'})."</a>");
 			}
 		else {

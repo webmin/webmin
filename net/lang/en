@@ -79,6 +79,18 @@ bifc_capply=Create and Apply
 bifc_eapply=You cannot activate an interface that uses DHCP or BOOTP
 bifc_edhcpmain=DHCP can only be enabled on the primary network interface
 
+bonding_add=Add a new bonding Interface.
+bonding_create=Create Bootup Bonding Interface
+bonding_teamparts=Teaming Partner
+bonding_teammode=Teaming Mode
+bonding_miimon=Mii-Monitoring Interval
+bonding_updelay=Updelay
+bonding_downdelay=Downdelay
+
+vlan_add=Add Vlan Tagged Interface
+vlan_physical=Physical Device
+vlan_create=Create a VLAN tagged interface
+
 routes_title=Routing and Gateways
 routes_boot=Routing configuration activated at <i>boot time</i>
 routes_now=Routing configuration activated now

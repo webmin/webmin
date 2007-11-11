@@ -89,6 +89,17 @@ else {
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
+	elsif ($in{'name'} eq 'auto') {
+		# creating a vlan interface
+		foreach $eb (@boot) {
+			if ($eb->{'fullname'} eq $in{'name'}) {
+				&error(&text('bifc_edup', $in{'name'}));
+				}
+			}
+		$b->{'name'} = $in{'name'};
+		&can_create_iface() || &error($text{'ifcs_ecannot'});
+		&can_iface($b) || &error($text{'ifcs_ecannot'});
+		}
 	else {
 		&error($text{'bifc_ename'});
 		}
@@ -165,6 +176,38 @@ else {
 		$b->{'up'} = $oldb->{'up'};
 		}
 
+	if ($in{'bond'}) {
+		$b->{'bond'} = 1;
+		if ($in{'partner'}) {
+			$b->{'partner'} = $in{'partner'};
+		}
+		if ($in{'bondmode'}){
+			$mode = $in{'bondmode'};
+			$b->{'mode'} = $mode;
+		}
+		if ($in{'miimon'}){
+			$b->{'miimon'} = $in{'miimon'};
+		}
+		if ($in{'updelay'}){
+			$b->{'updelay'} = $in{'updelay'};
+		}
+		if ($in{'downdelay'}){
+			$b->{'downdelay'} = $in{'downdelay'};
+		}
+	}
+	
+	if($in{'vlan'} == 1) {
+		$b->{'vlan'} = 1;
+		
+		if($in{'physical'}) {
+			$b->{'physical'} = $in{'physical'};
+		}
+		if($in{'vlanid'}) {
+			$b->{'vlanid'} = $in{'vlanid'};
+		}
+		
+	}
+	
 	$b->{'fullname'} = $b->{'name'}.
 			   ($b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
 	&save_interface($b);
@@ -179,6 +222,7 @@ else {
 			$err && &error("<pre>$err</pre>");
 			}
 		else {
+			if($in{'bond'}) {&load_module($b);}
 			&activate_interface($b);
 			}
 		}
