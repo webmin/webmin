@@ -69,6 +69,12 @@ else {
 		print "</div>\n";
 		}
 	}
+
+# Show module/help search form
+print "<form action=blue_search.cgi target=right>\n";
+print $text{'left_search'},"&nbsp;";
+print &ui_textbox("search", undef, 15);
+
 print "<div class='leftlink'><hr></div>\n";
 
 # Show info link
@@ -111,6 +117,7 @@ if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
 	}
 
 print <<EOF;
+</form>
 </div>
 </body>
 EOF

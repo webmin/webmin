@@ -2,6 +2,9 @@ left_login=Login: $1
 left_home=System Information
 left_oc=Sponsored by OpenCountry
 left_feedback=Send Feedback
+left_search_webmin=Search Webmin:
+left_search_usermin=Search Usermin:
+left_search=Search:
 
 right_header0=System Information
 right_host=System hostname
@@ -23,4 +26,10 @@ right_header5=Account Information
 right_uquota=Disk quota and usage
 right_time=Time on server
 
-
+search_title=Search $1
+search_what=Matching page
+search_type=Match type
+search_text=Matching text
+search_mod=$1 module
+search_config_webmin=Webmin module config
+search_config_usermin=Usermin preferences
