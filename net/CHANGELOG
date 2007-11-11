@@ -31,3 +31,5 @@ Added a button for activating several boot-time interfaces at once.
 Fixed broken SuSE 10.2+ support.
 ---- Changes since 1.350 ----
 Re-wrote Gentoo networking support code to work with 2006 and later versions.
+---- Changes since 1.380 ----
+Added support for VLANs and channel bonding on Debian, thanks to Tim Oberfoell.
