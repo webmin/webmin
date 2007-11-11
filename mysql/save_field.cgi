@@ -121,7 +121,8 @@ elsif ($in{'type'} eq 'float' || $in{'type'} eq 'double' ||
 	return "($in{'size1'},$in{'size2'}) $in{'opts'}";
 	}
 elsif ($in{'type'} eq 'date' || $in{'type'} eq 'datetime' ||
-       $in{'type'} eq 'time' || $in{'type'} =~ /(blob|text)$/) {
+       $in{'type'} eq 'time' || $in{'type'} eq 'timestamp' ||
+       $in{'type'} =~ /(blob|text)$/) {
 	return "";
 	}
 elsif ($in{'size_def'}) {
