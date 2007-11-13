@@ -71,9 +71,11 @@ else {
 	}
 
 # Show module/help search form
-print "<form action=blue_search.cgi target=right>\n";
-print $text{'left_search'},"&nbsp;";
-print &ui_textbox("search", undef, 15);
+if (-r "$root_directory/webmin_search.cgi") {
+	print "<form action=webmin_search.cgi target=right>\n";
+	print $text{'left_search'},"&nbsp;";
+	print &ui_textbox("search", undef, 15);
+	}
 
 print "<div class='leftlink'><hr></div>\n";
 
