@@ -114,7 +114,7 @@ foreach $m (@mods) {
 	}
 
 # Then do text strings
-foreach $m (@mods) {
+MODULE: foreach $m (@mods) {
 	%mtext = &load_language($m->{'dir'});
 	foreach $k (keys %mtext) {
 		if ($mtext{$k} =~ /\Q$re\E/i) {
@@ -125,6 +125,7 @@ foreach $m (@mods) {
 			    $mtext{$k},
 			    0,
 			    );
+			next MODULE;
 			}
 		}
 	}
