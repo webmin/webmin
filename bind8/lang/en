@@ -457,6 +457,7 @@ acl_vlist=Views this user can edit and add zones to
 acl_vall=All views
 acl_vsel=Selected views..
 acl_vnsel=All except selected..
+acl_vnone=No views
 acl_inview=Zones in view &lt;$1&gt;
 acl_types=Allowed record types
 acl_types1=All

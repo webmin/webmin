@@ -160,15 +160,18 @@ printf "<input type=radio name=views value=0 %s> $text{'no'}</td> </tr>\n",
 
 if (@views) {
 	local $m = $_[0]->{'vlist'} eq '*' ? 1 :
-		   $_[0]->{'vlist'} =~ /^\!/ ? 2 : 0;
+		   $_[0]->{'vlist'} =~ /^\!/ ? 2 :
+		   $_[0]->{'vlist'} eq '' ? 3 : 0;
 	print "<tr> <td valign=top><b>$text{'acl_vlist'}</b></td>\n";
 	print "<td colspan=3><table cellpadding=0 cellspacing=0> <tr><td valign=top>\n";
 	printf "<input type=radio name=vlist_def value=1 %s> %s<br>\n",
 		$m == 1 ? 'checked' : '', $text{'acl_vall'};
 	printf "<input type=radio name=vlist_def value=0 %s> %s<br>\n",
 		$m == 0 ? 'checked' : '', $text{'acl_vsel'};
-	printf "<input type=radio name=vlist_def value=2 %s> %s</td>\n",
+	printf "<input type=radio name=vlist_def value=2 %s> %s<br>\n",
 		$m == 2 ? 'checked' : '', $text{'acl_vnsel'};
+	printf "<input type=radio name=vlist_def value=3 %s> %s</td>\n",
+		$m == 3 ? 'checked' : '', $text{'acl_vnone'};
 
 	print "<td><select name=vlist multiple size=4 width=150>\n";
 	local ($v, %vcan);
@@ -218,6 +221,7 @@ $_[0]->{'remote'} = $in{'remote'};
 $_[0]->{'gen'} = $in{'gen'};
 $_[0]->{'whois'} = $in{'whois'};
 $_[0]->{'vlist'} = $in{'vlist_def'} == 1 ? "*" :
+		   $in{'vlist_def'} == 3 ? "" :
 		   $in{'vlist_def'} == 2 ? join(" ", "!",split(/\0/, $in{'vlist'}))
 					 : join(" ", split(/\0/, $in{'vlist'}));
 }
