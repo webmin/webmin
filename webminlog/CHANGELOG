@@ -13,3 +13,6 @@ When rolling back changed files, you can now select which ones to revert rather 
 A description of the search is now shown for searches that didn't match anything.
 ---- Changes since 1.350 ----
 Rollback actions can themselves now be rolled back.
+---- Changes since 1.380 ----
+Re-designed the UI to use Webmin standard layout and functions.
+Added a field for searching based on the contents of commands run or file changes made.

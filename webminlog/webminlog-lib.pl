@@ -114,6 +114,32 @@ foreach my $file (@files) {
 return @rv;
 }
 
+# get_annotation(&action)
+# Returns the text of the log annotation for this action
+sub get_annotation
+{
+local ($act) = @_;
+return &read_file_contents("$ENV{'WEBMIN_VAR'}/annotations/$act->{'id'}");
+}
+
+# save_annotation(&action, text)
+# Updates the annotation for some action
+sub save_annotation
+{
+local ($act, $text) = @_;
+local $dir = "$ENV{'WEBMIN_VAR'}/annotations";
+local $file = "$dir/$act->{'id'}";
+if ($text eq '') {
+	unlink($file);
+	}
+else {
+	&make_dir($dir, 0700) if (!-d $dir);
+	&open_tempfile(ANNO, ">$file");
+	&print_tempfile(ANNO, $text);
+	&close_tempfile(ANNO);
+	}
+}
+
 # expand_base_dir(base)
 # Finds files either under some dir, or starting with some path
 sub expand_base_dir

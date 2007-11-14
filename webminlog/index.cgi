@@ -61,13 +61,19 @@ print &ui_table_row($text{'index_stimes'},
 			  [ 0, &text('index_time', &time_input('from'),
 						   &time_input('to')) ] ]));
 
-# Search modified files
+# Search modified files and diff contents
 if ($gconfig{'logfiles'}) {
 	print &ui_table_row($text{'index_sfile'},
 		&ui_radio("fall", 1,
 			  [ [ 1, $text{'index_fall'}."<br>" ],
 			    [ 0, $text{'index_file'}." ".
 				 &ui_textbox("file", undef, 40) ] ]));
+
+	print &ui_table_row($text{'index_sdiff'},
+		&ui_radio("dall", 1,
+			  [ [ 1, $text{'index_dall'}."<br>" ],
+			    [ 0, $text{'index_diff'}." ".
+				 &ui_textbox("diff", undef, 40) ] ]));
 	}
 
 # Remote host

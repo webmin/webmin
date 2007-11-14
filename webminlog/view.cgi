@@ -14,13 +14,11 @@ $act = &get_action($in{'id'});
 &ui_print_header(undef, $text{'view_title'}, "");
 
 @files = &list_files($act);
-if (@files) {
-	print &ui_form_start("rollback.cgi");
-	print &ui_hidden("id", $in{'id'});
-	}
+print &ui_form_start("rollback.cgi");
+print &ui_hidden("id", $in{'id'});
 
-print &ui_table_start(&text('view_header', $act->{'id'}),
-		      "width=100%", 4);
+print &ui_hidden_table_start(&text('view_header', $act->{'id'}),
+		      	     "width=100%", 4, "main", 1);
 
 # This "" is needed to make the label show properly!
 print &ui_table_row($text{'view_action'}."",
@@ -54,11 +52,21 @@ if ($act->{'webmin'}) {
 	print &ui_table_row($text{'view_host'},
 			    $act->{'webmin'});
 	}
+print &ui_hidden_table_end("main"),"<p>\n";
 
-print &ui_table_end(),"<p>\n";
+# Annotations for this log entry
+$text = &get_annotation($act);
+print &ui_hidden_table_start($text{'view_anno'}, "width=100%", 1, "anno",
+			     $text ? 1 : 0);
+print &ui_table_row(undef,
+	&ui_textarea("anno", $text, 10, 80, "auto", 0,
+		     "style='width:100%'")."<br>".
+	&ui_submit($text{'save'}, "annosave"));
+print &ui_hidden_table_end("anno"),"<p>\n";
 
 # display modified files
 $rbcount = 0;
+$i = 0;
 foreach $d (&list_diffs($act)) {
 	local $t = $text{"view_type_".$d->{'type'}};
 	local $rb;
@@ -71,18 +79,18 @@ foreach $d (&list_diffs($act)) {
 	$rbcount++ if ($rb);
 	if ($t =~ /\$2/ || !$d->{'diff'}) {
 		# Diff is just a single line message
-		print &ui_table_start($cbox.
+		print &ui_hidden_table_start($cbox.
 		      &text("view_type_".$d->{'type'},
 			    "<tt>$d->{'object'}</tt>",
 			    "<tt>".&html_escape($d->{'diff'})."</tt>"),
-		      "width=100%", 2);
-		print &ui_table_end();
+		      "width=100%", 2, "diff$i", 1);
 		}
 	else {
 		# Show multi-line diff
-		print &ui_table_start($cbox.&text("view_type_".$d->{'type'},
-					          "<tt>$d->{'object'}</tt>"),
-				      "width=100%", 2);
+		print &ui_hidden_table_start(
+			$cbox.&text("view_type_".$d->{'type'},
+			            "<tt>$d->{'object'}</tt>"),
+			"width=100%", 2, "diff$i", 1);
 		print &ui_table_row(undef,
 			"<pre>".&html_escape($d->{'diff'})."</pre>", 2);
 		if ($d->{'input'}) {
@@ -91,8 +99,9 @@ foreach $d (&list_diffs($act)) {
 				"<b>".&text('view_input')."</b><br>".
 				"<pre>".&html_escape($d->{'input'})."</pre>",2);
 			}
-		print &ui_table_end();
 		}
+	print &ui_hidden_table_end("diff$i");
+	$i++;
 	$anydiffs++;
 	}
 if ($rbcount) {
@@ -105,6 +114,9 @@ print "<b>$text{'view_nofiles'}</b><p>\n" if (!$anydiffs);
 # Show rollback button
 if (@files && $rbcount) {
 	print &ui_form_end([ [ "rollback", $text{'view_rollback2'} ] ]);
+	}
+else {
+	print &ui_form_end();
 	}
 
 &ui_print_footer($ENV{'HTTP_REFERER'}, $text{'search_return'},

@@ -49,7 +49,7 @@ function show_logs() {
     }
   }
 if (mod) {
-  window.parent.frames[1].location = 'webminlog/search.cgi?tall=4&uall=1&fall=1&module='+mod;
+  window.parent.frames[1].location = 'webminlog/search.cgi?tall=4&uall=1&fall=1&mall=0&module='+mod;
   }
 else {
   alert('No Webmin module is selected to show logs for');

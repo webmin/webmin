@@ -4,8 +4,15 @@
 
 require './webminlog-lib.pl';
 &ReadParse();
-
 $act = &get_action($in{'id'});
+
+if ($in{'annosave'}) {
+	# Just saving an annotation
+	$in{'anno'} =~ s/\r//g;
+	&save_annotation($act, $in{'anno'});
+	&redirect($ENV{'HTTP_REFERER'} || "view.cgi?id=$in{'id'}");
+	}
+
 $access{'rollback'} ||  &error($text{'rollback_ecannot'});
 &can_user($act->{'user'}) || &error($text{'view_ecannot'});
 &can_mod($act->{'module'}) || &error($text{'view_ecannot'});

@@ -21,6 +21,9 @@ index_whost=From server
 index_susers=Actions by Webmin users
 index_smods=Actions in module
 index_sfile=Actions that modified file
+index_sdiff=File change or command run
+index_dall=Any change
+index_diff=Changes containing
 index_stimes=Actions on dates
 index_shost=Source Webmin server
 
@@ -73,6 +76,7 @@ view_ecannot=You are not allowed to view this log entry
 view_rollback2=Roll Back Selected Files
 view_return=action details
 view_input=Input to command
+view_anno=Log entry annotation
 
 acl_mods=Can view logs in modules
 acl_all=All

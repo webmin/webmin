@@ -7,6 +7,13 @@ require 'timelocal.pl';
 &ReadParse();
 &error_setup($text{'search_err'});
 
+# Use sensible defaults
+$in{'tall'} = 2 if (!defined($in{'tall'}));
+$in{'uall'} = 1 if (!defined($in{'uall'}));
+$in{'mall'} = 1 if (!defined($in{'mall'}));
+$in{'fall'} = 1 if (!defined($in{'fall'}));
+$in{'dall'} = 1 if (!defined($in{'dall'}));
+
 # Parse entered time ranges
 if ($in{'tall'} == 2) {
 	# Today
@@ -58,12 +65,16 @@ while(($id, $idx) = each %index) {
 		next if (!$in{'wall'} && $in{'webmin'} ne $act->{'webmin'});
 
 		# Check modified files
-		if ($gconfig{'logfiles'} && !$in{'fall'}) {
+		if ($gconfig{'logfiles'} && (!$in{'fall'} || !$in{'dall'})) {
 			# Make sure the specified file was modified
 			local $found = 0;
 			foreach $d (&list_diffs($act)) {
-				if ($d->{'object'} &&
-				    $d->{'object'} eq $in{'file'}) {
+				local $filematch = $in{'fall'} ||
+					$d->{'object'} &&
+					$d->{'object'} eq $in{'file'};
+				local $diffmatch = $in{'dall'} ||
+					$d->{'diff'} =~ /\Q$in{'diff'}\E/i;
+				if ($filematch && $diffmatch) {
 					$found++;
 					last;
 					}
@@ -136,10 +147,14 @@ if (@match) {
 
 		local @cols;
 		local $desc = &get_action_description($act, 0);
+		local $anno = &get_annotation($act);
 		push(@cols, "<a href='view.cgi?id=$act->{'id'}".
 		      "&return=".&urlize($in{'return'}).
 		      "&returndesc=".&urlize($in{'returndesc'}).
 		      "'>$desc</a>");
+		if ($anno) {
+			$cols[$#cols] .= "&nbsp;<img src=images/star.gif>";
+			}
 		push(@cols, $minfo->{'desc'}, $act->{'user'}, $act->{'ip'});
 		if ($config{'host_search'}) {
 			push(@cols, $act->{'webmin'});
