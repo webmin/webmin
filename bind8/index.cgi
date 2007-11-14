@@ -58,7 +58,9 @@ if (@zones == 1 && $access{'zones'} ne '*' && !$access{'defaults'} &&
     !$access{'views'} && $access{'apply'} != 1 && !$access{'master'} &&
     !$access{'slave'} && !$access{'forward'} && $access{'noconfig'}) {
 	# Only one zone, so go direct to it
-	&redirect("edit_master.cgi?index=$zones[0]->{'index'}");
+	$z = $zones[0];
+	&redirect("edit_master.cgi?index=$z->{'index'}".
+		  ($z->{'viewindex'} eq '' ? '' : '&view='.$z->{'viewindex'}));
 	exit;
 	}
 
