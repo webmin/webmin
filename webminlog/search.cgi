@@ -9,18 +9,28 @@ require 'timelocal.pl';
 
 # Parse entered time ranges
 if ($in{'tall'} == 2) {
+	# Today
 	@now = localtime(time());
 	$from = timelocal(0, 0, 0, $now[3], $now[4], $now[5]);
 	$to = timelocal(59, 59, 23, $now[3], $now[4], $now[5]);
 	$in{'tall'} = 0;
 	}
 elsif ($in{'tall'} == 3) {
+	# Yesterday
 	@now = localtime(time()-24*60*60);
 	$from = timelocal(0, 0, 0, $now[3], $now[4], $now[5]);
 	$to = timelocal(59, 59, 23, $now[3], $now[4], $now[5]);
 	$in{'tall'} = 0;
 	}
+elsif ($in{'tall'} == 4) {
+	# Over the last week
+	@week = localtime(time()-7*24*60*60);
+	$from = timelocal(0, 0, 0, $week[3], $week[4], $week[5]);
+	$to = time();
+	$in{'tall'} = 0;
+	}
 elsif ($in{'tall'} == 0) {
+	# Some time range
 	$from = &parse_time('from');
 	$to = &parse_time('to');
 	$to = $to ? $to + 24*60*60 - 1 : time();

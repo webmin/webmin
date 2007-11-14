@@ -31,6 +31,30 @@ function toggleview (id1,id2) {
 		(obj1.className=="itemshown") ? obj1.className="itemhidden" : obj1.className="itemshown"; 
 		(obj1.className=="itemshown") ? obj2.innerHTML="<img border='0' src='images/open.gif' alt='[&ndash;]'>" : obj2.innerHTML="<img border='0' src='images/closed.gif' alt='[+]'>"; 
 	}
+
+// Show the logs for the current module in the right
+function show_logs() {
+  var url = ''+window.parent.frames[1].location;
+  var sl1 = url.indexOf('//');
+  var mod = '';
+  if (sl1 > 0) {
+    var sl2 = url.indexOf('/', sl1+2);
+    if (sl2 > 0) {
+      var sl3 = url.indexOf('/', sl2+1);
+      if (sl3 > 0) {
+        mod = url.substring(sl2+1, sl3);
+      } else {
+        mod = url.substring(sl2+1);
+      }
+    }
+  }
+if (mod) {
+  window.parent.frames[1].location = 'webminlog/search.cgi?tall=4&uall=1&fall=1&module='+mod;
+  }
+else {
+  alert('No Webmin module is selected to show logs for');
+  }
+}
 </script>
 </head>
 <body>
@@ -78,6 +102,12 @@ if (-r "$root_directory/webmin_search.cgi") {
 	}
 
 print "<div class='leftlink'><hr></div>\n";
+
+# Show current module's log search, if logging
+if ($gconfig{'log'} && &foreign_available("webminlog")) {
+	print "<div class='linkwithicon'><img src=images/logs.gif>\n";
+	print "<div class='aftericon'><a target=right href='webminlog/' onClick='show_logs(); return false;'>$text{'left_logs'}</a></div></div>\n";
+	}
 
 # Show info link
 print "<div class='linkwithicon'><img src=images/gohome.gif>\n";
