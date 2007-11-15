@@ -11,3 +11,5 @@ Added clustering support, so that printers can be created, modified and deleted 
 Added checkboxes and a button for deleting multiple printers at once.
 ---- Changes since 1.300 ----
 Fixed a bug that stopped SMB printer usernames and passwords from being displayed when editing a printer under CUPS.
+---- Changes since 1.380 ----
+Re-designed the print jobs page to allow several to be cancelled at once, using the standard Webmin table with checkboxes.

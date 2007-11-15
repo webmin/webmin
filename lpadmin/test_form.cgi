@@ -5,7 +5,8 @@
 require './lpadmin-lib.pl';
 &ReadParse();
 $access{'test'} || &error($text{'test_ecannot'});
-&ui_print_header(undef, $text{'test_title'}, "");
+&ui_print_header(&text('jobs_on', "<tt>$in{'name'}</tt>"),
+		 $text{'test_title'}, "");
 
 print "<form action=test_print.cgi method=post enctype=multipart/form-data>\n";
 print "<input type=hidden name=name value='$in{'name'}'>\n";

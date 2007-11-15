@@ -13,6 +13,10 @@ if ($action eq 'cancel') {
 		     "<tt>".&html_escape($object)."</tt>",
 		     "<tt>".&html_escape($p->{'id'})."</tt>");
 	}
+elsif ($action eq 'cancelsel') {
+	return &text("log_cancel_sel", "<tt>".&html_escape($object)."</tt>",
+		     $p->{'d'});
+	}
 elsif ($action eq 'stop') {
 	return $text{'log_stop'};
 	}
