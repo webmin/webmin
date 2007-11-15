@@ -119,7 +119,7 @@ else {
 	print &ui_form_end();
 	}
 
-&ui_print_footer($ENV{'HTTP_REFERER'}, $text{'search_return'},
-	"", $text{'index_return'});
+&ui_print_footer("search.cgi?$in", $text{'search_return'},
+		 "", $text{'index_return'});
 
 

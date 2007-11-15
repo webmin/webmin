@@ -151,6 +151,7 @@ if (@match) {
 		push(@cols, "<a href='view.cgi?id=$act->{'id'}".
 		      "&return=".&urlize($in{'return'}).
 		      "&returndesc=".&urlize($in{'returndesc'}).
+		      "&search=".&urlize($in).
 		      "'>$desc</a>");
 		if ($anno) {
 			$cols[$#cols] .= "&nbsp;<img src=images/star.gif>";
