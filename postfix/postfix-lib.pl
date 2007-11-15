@@ -1997,7 +1997,7 @@ sub can_map_comments
 {
 local ($name) = @_;
 foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
-	return 0 if ($tv->[0] ne 'file' && $tv->[0] ne 'regexp');
+	return 0 if ($tv->[0] ne 'hash' && $tv->[0] ne 'regexp');
 	}
 return 1;
 }
@@ -2008,7 +2008,7 @@ sub can_map_manual
 {
 local ($name) = @_;
 foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
-	return 0 if ($tv->[0] ne 'file' && $tv->[0] ne 'regexp');
+	return 0 if ($tv->[0] ne 'hash' && $tv->[0] ne 'regexp');
 	}
 return 1;
 }
