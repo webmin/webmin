@@ -425,8 +425,8 @@ sub option_select
 sub get_aliases_files
 {
     return map { $_->[1] }
-	       grep { $_->[0] eq 'hash' || $_->[0] eq 'regexp' }
-		    &get_maps_types_files($_[0]);
+	       grep { $_->[0] eq 'hash' || $_->[0] eq 'regexp' ||
+		      $_->[0] eq 'pcre' } &get_maps_types_files($_[0]);
 }
 
 # init_new_alias() : $number
@@ -452,7 +452,7 @@ sub list_postfix_aliases
 {
 local @rv;
 foreach my $f (&get_maps_types_files(&get_current_value("alias_maps"))) {
-	if ($f->[0] eq "hash" || $f->[0] eq "regexp") {
+	if ($f->[0] eq "hash" || $f->[0] eq "regexp" || $f->[0] eq "pcre") {
 		# We can read this file directly
 		push(@rv, &list_aliases([ $f->[1] ]));
 		}
@@ -496,7 +496,7 @@ local ($alias) = @_;
 local @afiles = &get_maps_types_files(&get_current_value("alias_maps"));
 local $last_type = $afiles[$#afiles]->[0];
 local $last_file = $afiles[$#afiles]->[1];
-if ($last_type eq "hash" || $last_type eq "regexp") {
+if ($last_type eq "hash" || $last_type eq "regexp" || $last_type eq "pcre") {
 	# Just adding to a file
 	&create_alias($alias, [ $last_file ], 1);
 	}
@@ -606,7 +606,8 @@ sub regenerate_aliases
 	local $map;
 	foreach $map (get_maps_types_files(get_real_value("alias_maps")))
 	{
-	    if ($map->[0] eq 'hash' || $map->[0] eq 'regexp') {
+	    if ($map->[0] eq 'hash' || $map->[0] eq 'regexp' ||
+		$map->[0] eq 'pcre') {
 		    $out = &backquote_logged("$config{'postfix_aliases_table_command'} -c $config_dir $map->[1] 2>&1");
 		    if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
 	    }
@@ -672,7 +673,8 @@ sub regenerate_any_table
     foreach $map (@files)
     {
         next unless $map;
-	if ($map->[0] eq "hash" || $map->[0] eq "regexp") {
+	if ($map->[0] eq "hash" || $map->[0] eq "regexp" ||
+	    $map->[0] eq "pcre") {
 		local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map->[1] 2>&1");
 		if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
 	}
@@ -716,7 +718,8 @@ sub get_maps
 	{
 	    my ($maps_type, $maps_file) = @$maps_type_file;
 
-	    if ($maps_type eq "hash" || $maps_type eq "regexp") {
+	    if ($maps_type eq "hash" || $maps_type eq "regexp" ||
+		$maps_type eq "pcre") {
 		    # Read a file on disk
 		    &open_readfile(MAPS, $maps_file);
 		    my $i = 0;
@@ -827,7 +830,7 @@ sub generate_map_edit
 
     # Make sure the user is allowed to edit them
     foreach my $f (&get_maps_types_files(&get_current_value($_[0]))) {
-      if ($f->[0] eq "hash" || $f->[0] eq "regexp") {
+      if ($f->[0] eq "hash" || $f->[0] eq "regexp" || $f->[0] eq "pcre") {
 	  &is_under_directory($access{'dir'}, $f) ||
 		&error(&text('mapping_ecannot', $access{'dir'}));
       }
@@ -927,7 +930,7 @@ my @maps_files = $_[2] ? (map { [ "hash", $_ ] } @{$_[2]}) :
 		         &get_maps_types_files(&get_real_value($_[0]));
 my $last_map = $maps_files[$#maps_files];
 my ($maps_type, $maps_file) = @$last_map;
-if ($maps_type eq "hash" || $maps_type eq "regexp") {
+if ($maps_type eq "hash" || $maps_type eq "regexp" || $maps_type eq "pcre") {
 	# Adding to a regular file
 	local $lref = &read_file_lines($maps_file);
 	$_[1]->{'line'} = scalar(@$lref);
@@ -995,7 +998,7 @@ push(@{$maps_cache{$_[0]}}, $_[1]);
 sub delete_mapping
 {
 if ($_[1]->{'map_type'} eq 'hash' || $_[1]->{'map_type'} eq 'regexp' ||
-    !$_[1]->{'map_type'}) {
+    $_[1]->{'map_type'} eq 'pcre' || !$_[1]->{'map_type'}) {
 	# Deleting from a file
 	local $lref = &read_file_lines($_[1]->{'map_file'});
 	local $len = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
@@ -1040,7 +1043,7 @@ splice(@{$maps_cache{$_[0]}}, $idx, 1) if ($idx != -1);
 sub modify_mapping
 {
 if ($_[1]->{'map_type'} eq 'hash' || $_[1]->{'map_type'} eq 'regexp' ||
-    !$_[1]->{'map_type'}) {
+    $_[1]->{'map_type'} eq 'pcre' || !$_[1]->{'map_type'}) {
 	# Modifying in a file
 	local $lref = &read_file_lines($_[1]->{'map_file'});
 	local $oldlen = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
@@ -1699,7 +1702,7 @@ sub map_chooser_button
 {
 local ($name, $mapname, $form) = @_;
 $form ||= 0;
-return "<input type=button onClick='ifield = form.$name; map = window.open(\"map_chooser.cgi?map=\"+escape(ifield.value)+\"&mapname=$mapname\", \"map\", \"toolbar=no,menubar=no,scrollbars=yes,width=800,height=600\"); map.ifield = ifield; window.ifield = ifield;' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$name; map = window.open(\"map_chooser.cgi?map=\"+escape(ifield.value)+\"&mapname=$mapname\", \"map\", \"toolbar=no,menubar=no,scrollbars=yes,width=1024,height=600\"); map.ifield = ifield; window.ifield = ifield;' value=\"...\">\n";
 }
 
 # get_maps_types_files(value)
@@ -1775,7 +1778,7 @@ if (!$found && defined($value)) {
 sub can_access_map
 {
 local ($type, $value) = @_;
-if ($type eq "hash" || $type eq "regexp") {
+if ($type eq "hash" || $type eq "regexp" || $type eq "pcre") {
 	return undef;	# Always can
 	}
 elsif ($type eq "mysql") {
@@ -1997,7 +2000,8 @@ sub can_map_comments
 {
 local ($name) = @_;
 foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
-	return 0 if ($tv->[0] ne 'hash' && $tv->[0] ne 'regexp');
+	return 0 if ($tv->[0] ne 'hash' && $tv->[0] ne 'regexp' &&
+		     $tv->[0] ne 'pcre');
 	}
 return 1;
 }
@@ -2008,7 +2012,8 @@ sub can_map_manual
 {
 local ($name) = @_;
 foreach my $tv (&get_maps_types_files(&get_real_value($name))) {
-	return 0 if ($tv->[0] ne 'hash' && $tv->[0] ne 'regexp');
+	return 0 if ($tv->[0] ne 'hash' && $tv->[0] ne 'regexp' &&
+		     $tv->[0] ne 'pcre');
 	}
 return 1;
 }

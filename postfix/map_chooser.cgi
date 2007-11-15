@@ -23,6 +23,7 @@ foreach $tv (@maps) {
 	$t = $tv->[0] eq "" ? "" :
 	     $tv->[0] eq "hash" ? "hash" :
 	     $tv->[0] eq "regexp" ? "regexp" :
+	     $tv->[0] eq "pcre" && &supports_map_type("pcre") ? "pcre" :
 	     $tv->[0] eq "mysql" && &supports_map_type("mysql") &&
 	      $tv->[1] =~ /^[\/\.]/ ? "mysql" :
 	     $tv->[0] eq "mysql" && &supports_map_type("mysql") &&
@@ -116,6 +117,11 @@ foreach $tv (@maps) {
 	    &ui_textbox("hash_$i", $t eq "hash" ? $tv->[1] : undef, 50) ]);
 	push(@opts, [ "regexp", $text{'chooser_regexp'},
 	    &ui_textbox("regexp_$i", $t eq "regexp" ? $tv->[1] : undef, 50) ]);
+	if (&supports_map_type("pcre")) {
+		push(@opts, [ "pcre", $text{'chooser_pcre'},
+		    &ui_textbox("pcre_$i",
+				$t eq "pcre" ? $tv->[1] : undef, 50) ]);
+		}
 	if (&supports_map_type("mysql")) {
 		push(@opts, [ "mysql", $text{'chooser_mysql'}, $mtable ]);
 		if (@sources || $t eq "mysqlsrc") {

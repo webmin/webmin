@@ -22,6 +22,12 @@ for($i=0; defined($t = $in{"type_".$i}); $i++) {
 			&error(&text('chooser_eregexp', $i+1));
 		push(@maps, "regexp:".$in{"regexp_$i"});
 		}
+	elsif ($t eq "pcre") {
+		# Perl-style regular expressions file
+		$in{"pcre_$i"} =~ /^[\/\.]\S+$/ ||
+			&error(&text('chooser_epcre', $i+1));
+		push(@maps, "pcre:".$in{"pcre_$i"});
+		}
 	elsif ($t eq "mysqlsrc") {
 		# Common MySQL source
 		push(@maps, "mysql:".$in{"mysqlsrc_$i"});
