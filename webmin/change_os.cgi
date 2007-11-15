@@ -29,6 +29,7 @@ elsif ($in{'type'} ne $gconfig{'real_os_type'} ||
 	$gconfig{'os_version'} = $in{'iversion'};
 	}
 $gconfig{'path'} = join($path_separator, split(/[\r\n]+/, $in{'path'}));
+$gconfig{'syspath'} = !$in{'syspath'};
 if ($gconfig{'ld_env'}) {
 	$gconfig{'ld_path'} = join($path_separator,
 				   split(/[\r\n]+/, $in{'ld_path'}));

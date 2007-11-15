@@ -46,7 +46,8 @@ print &ui_table_hr();
 print &ui_table_row($text{'os_path'},
 	&ui_textarea("path",
 		     join("\n", split($path_separator, $gconfig{'path'})),
-		     5, 30));
+		     5, 30)."<br>".
+	&ui_checkbox("syspath", 1, $text{'os_syspath'}, !$gconfig{'syspath'}));
 
 # Shared library path
 if ($gconfig{'ld_env'}) {

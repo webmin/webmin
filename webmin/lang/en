@@ -272,6 +272,7 @@ os_cannot=Cannot detect OS and version
 os_update=Update Webmin to use detected OS
 os_new=New operating system
 os_path=Program search path
+os_syspath=Include system's own search path?
 os_ld_path=Library search path
 os_envs=Additional environment variables
 os_name=Variable name

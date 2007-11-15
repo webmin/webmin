@@ -2491,7 +2491,16 @@ $null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 $path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 
 # Set PATH and LD_LIBRARY_PATH
-$ENV{'PATH'} .= $path_separator.$gconfig{'path'} if ($gconfig{'path'});
+if ($gconfig{'path'}) {
+	if ($gconfig{'syspath'}) {
+		# Webmin only
+		$ENV{'PATH'} = $gconfig{'path'};
+		}
+	else {
+		# Include OS too
+		$ENV{'PATH'} = $gconfig{'path'}.$path_separator.$ENV{'PATH'};
+		}
+	}
 $ENV{$gconfig{'ld_env'}} = $gconfig{'ld_path'} if ($gconfig{'ld_env'});
 
 # Set http_proxy and ftp_proxy environment variables, based on Webmin settings
@@ -3309,6 +3318,7 @@ if ($gconfig{'logclear'}) {
 			# clear logfile and all diff files
 			&unlink_file("$ENV{'WEBMIN_VAR'}/diffs");
 			&unlink_file("$ENV{'WEBMIN_VAR'}/files");
+			&unlink_file("$ENV{'WEBMIN_VAR'}/annotations");
 			unlink($webmin_logfile);
 			$write_logtime = 1;
 			}
