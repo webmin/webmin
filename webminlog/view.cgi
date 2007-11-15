@@ -53,7 +53,7 @@ if ($act->{'webmin'}) {
 	print &ui_table_row($text{'view_host'},
 			    $act->{'webmin'});
 	}
-print &ui_hidden_table_end("main"),"<p>\n";
+print &ui_hidden_table_end("main");
 
 # Annotations for this log entry
 $text = &get_annotation($act);
@@ -63,7 +63,7 @@ print &ui_table_row(undef,
 	&ui_textarea("anno", $text, 10, 80, "auto", 0,
 		     "style='width:100%'")."<br>".
 	&ui_submit($text{'save'}, "annosave"));
-print &ui_hidden_table_end("anno"),"<p>\n";
+print &ui_hidden_table_end("anno");
 
 # display modified files
 $rbcount = 0;
