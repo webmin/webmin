@@ -600,6 +600,7 @@ log_execupload=Executed SQL commands from uploaded file
 log_execfile=Executed SQL commands from file $1
 log_importupload=Imported data from uploaded file
 log_importfile=Imported data from file $1
+log_set=Changed $1 MySQL variables
 
 backup_title=Backup Database
 backup_title2=Backup All Databases

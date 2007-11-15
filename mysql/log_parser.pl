@@ -84,6 +84,9 @@ elsif ($action eq 'import') {
 	return &text($p->{'mode'} ? 'log_importupload' : 'log_importfile',
 		     "<tt>".&html_escape($p->{'file'})."</tt>");
 	}
+elsif ($action eq 'set') {
+	return &text('log_set', $object);
+	}
 else {
 	return undef;
 	}

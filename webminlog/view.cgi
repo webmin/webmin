@@ -16,6 +16,7 @@ $act = &get_action($in{'id'});
 @files = &list_files($act);
 print &ui_form_start("rollback.cgi");
 print &ui_hidden("id", $in{'id'});
+print &ui_hidden("search", $in{'search'});
 
 print &ui_hidden_table_start(&text('view_header', $act->{'id'}),
 		      	     "width=100%", 4, "main", 1);
@@ -119,7 +120,7 @@ else {
 	print &ui_form_end();
 	}
 
-&ui_print_footer("search.cgi?$in", $text{'search_return'},
+&ui_print_footer("search.cgi?$in{'search'}", $text{'search_return'},
 		 "", $text{'index_return'});
 
 

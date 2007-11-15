@@ -10,7 +10,7 @@ if ($in{'annosave'}) {
 	# Just saving an annotation
 	$in{'anno'} =~ s/\r//g;
 	&save_annotation($act, $in{'anno'});
-	&redirect($ENV{'HTTP_REFERER'} || "view.cgi?id=$in{'id'}");
+	&redirect("view.cgi?id=$in{'id'}&search=".&urlize($in{'search'}));
 	}
 
 $access{'rollback'} ||  &error($text{'rollback_ecannot'});
@@ -84,7 +84,8 @@ if ($in{'confirm'}) {
 else {
 	# Show the user what will be done
 	print &ui_form_start("rollback.cgi");
-	print &ui_hidden("id", $in{'id'}),"\n";
+	print &ui_hidden("id", $in{'id'});
+	print &ui_hidden("search", $in{'search'});
 	foreach $r (keys %r) {
 		print &ui_hidden("r", $r);
 		}
@@ -174,7 +175,8 @@ else {
 		print &ui_form_end();
 		}
 	}
-&ui_print_footer("view.cgi?id=$in{'id'}", $text{'view_return'},
+&ui_print_footer("view.cgi?id=$in{'id'}&search=".&urlize($in{'search'}),
+		  $text{'view_return'},
 		 "", $text{'index_return'});
 
 
