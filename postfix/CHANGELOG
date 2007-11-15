@@ -46,3 +46,4 @@ Added a popup window for selecting a map source, rather than having to type in s
 Maps in MySQL and LDAP databases can be viewed and edited in the same way that those in regular files are, if the appropriate Perl modules are installed (DBI and DBD::mysql for MySQL, or Net::LDAP for LDAP). This also applies to email aliases.
 ---- Changes since 1.380 ----
 Fixed a bug that prevented comments and manual map editing, and added back support for PCRE maps.
+Added a button for manually editing the aliases file.

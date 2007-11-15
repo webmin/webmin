@@ -86,13 +86,20 @@ else {
 print &ui_links_row(\@links);
 print &ui_form_end([ [ "delete", $text{'aliases_delete'} ] ]);
 
-# new alias form
-print "<table cellpadding=5 width=100%><tr><td>\n";
-print "<form action=edit_alias.cgi>\n";
-print "<input type=hidden name=new value=1>\n";
-print "<input type=submit value=\"$text{'new_alias'}\">\n";
-print "</td> <td width=\"99%\">$text{'new_aliasmsg'}\n";
-print "</td></tr></table></form>\n";
+# new alias button
+print &ui_buttons_start();
+print &ui_buttons_row("edit_alias.cgi", $text{'new_alias'},
+		      $text{'new_aliasmsg'},
+		      &ui_hidden("new", 1));
+
+# manual edit button
+if ($access{'manual'} && &can_map_manual($_[0])) {
+    print &ui_buttons_row("edit_manual.cgi", $text{'new_manual'},
+			  $text{'new_manualmsg'},
+			  &ui_hidden("map_name", "alias_maps"));
+    }
+
+print &ui_buttons_end();
 
 &ui_print_footer("", $text{'index_return'});
 
