@@ -2570,9 +2570,20 @@ else {
 	}
 
 # Set the umask based on config
-if ($gconfig{'umask'}) {
+if ($gconfig{'umask'} && !$main::umask_already++) {
 	umask(oct($gconfig{'umask'}));
 	}
+
+# If this is a cron job or other background task, set the nice level
+if (!$main::nice_already && !$ENV{'SCRIPT_NAME'} && $gconfig{'nice'} &&
+    $gconfig{'os_type'} ne 'windows') {
+	# Cron jobs have no tty
+	if (!open(TTY, ">/dev/tty")) {
+		eval 'use POSIX; POSIX::nice($gconfig{\'nice\'});';
+		}
+	close(TTY);
+	}
+$main::nice_already++;
 
 # Get the username
 local $u = $ENV{'BASE_REMOTE_USER'} ? $ENV{'BASE_REMOTE_USER'}

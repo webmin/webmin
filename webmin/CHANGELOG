@@ -70,3 +70,4 @@ Added a field to the Advanced Options page to control the number of days that fi
 The format for dates displayed by Webmin can be changed by a new option on the User Interface page.
 ---- Changes since 1.380 ----
 Inheritance of the system path into Webmin's search path can be set on the Operating System and Environment page.
+The nice level (CPU priority) of all cron and other background jobs run by Webmin can now be set on the Advanced Options page.

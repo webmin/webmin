@@ -745,6 +745,8 @@ advanced_showstderr=Show Perl errors in browser?
 advanced_umask=Umask (unset permission bits) for created files
 advanced_eumask=Umask must be a 3-digit octal number
 advanced_etempdelete=Missing or invalid maximum age of temporary files
+advanced_nice=CPU priority for scheduled jobs
+advanced_pri=Priority level
 
 syslog_errorlog=Webmin error log
 

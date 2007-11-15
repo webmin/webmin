@@ -62,6 +62,16 @@ print &ui_table_row($text{'advanced_pass'},
 print &ui_table_row($text{'advanced_umask'},
 	    &ui_opt_textbox("umask", $gconfig{'umask'}, 5, $text{'default'}));
 
+# Nice level for cron jobs
+if (&foreign_check("proc")) {
+	&foreign_require("proc", "proc-lib.pl");
+	print &ui_table_row($text{'advanced_nice'},
+	    &ui_radio("nice_def", $gconfig{'nice'} eq '' ? 1 : 0,
+	      [ [ 1, $text{'default'} ],
+		[ 0, $text{'advanced_pri'}." ".
+		     &proc::nice_selector("nice", $gconfig{'nice'} || 0) ] ]));
+	}
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

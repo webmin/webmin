@@ -51,6 +51,14 @@ else {
 	$gconfig{'umask'} = $in{'umask'};
 	}
 
+# Save nice level
+if ($in{'nice_def'}) {
+	delete($gconfig{'nice'});
+	}
+else {
+	$gconfig{'nice'} = $in{'nice'};
+	}
+
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
