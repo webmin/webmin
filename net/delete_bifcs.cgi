@@ -47,5 +47,5 @@ foreach $d (reverse(@d)) {
 	}
 
 &webmin_log($in{'apply'} ? "apply" : "delete", "bifcs", scalar(@d));
-&redirect("list_ifcs.cgi");
+&redirect("list_ifcs.cgi?mode=boot");
 

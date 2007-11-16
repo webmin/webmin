@@ -141,5 +141,5 @@ else {
 	}
 print "</tr></table></form>\n";
 
-&ui_print_footer("list_ifcs.cgi", $text{'ifcs_return'});
+&ui_print_footer("list_ifcs.cgi?mode=active", $text{'ifcs_return'});
 

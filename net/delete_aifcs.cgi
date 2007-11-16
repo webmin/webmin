@@ -17,5 +17,5 @@ foreach $d (@d) {
 	}
 
 &webmin_log("delete", "aifcs", scalar(@d));
-&redirect("list_ifcs.cgi");
+&redirect("list_ifcs.cgi?mode=active");
 

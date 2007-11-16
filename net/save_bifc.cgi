@@ -127,6 +127,11 @@ else {
 		$b->{'address'} = $in{'address'};
 		}
 
+	# Set description if possible
+	if (defined($in{'desc'})) {
+		$b->{'desc'} = $in{'desc'};
+		}
+
 	if ($virtual_netmask && $b->{'virtual'} ne "") {
 		# Always use this netmask for virtuals
 		$b->{'netmask'} = $virtual_netmask;
@@ -229,5 +234,5 @@ else {
 	&webmin_log($in{'new'} ? 'create' : 'modify',
 		    "bifc", $b->{'fullname'}, $b);
 	}
-&redirect("list_ifcs.cgi");
+&redirect("list_ifcs.cgi?mode=boot");
 

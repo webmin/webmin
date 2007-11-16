@@ -9,9 +9,12 @@ index_apply2=Apply Selected Interfaces
 
 ifcs_title=Network Interfaces
 ifcs_now=Interfaces Active Now
+ifcs_activedesc=Interfaces listed in this table are currently active on the system. In most cases, you should edit them under the <b>Boot Time</b> tab.
+ifcs_bootdesc=Interfaces listed in this table will be activated when the system boots up, and will generally be active now too.
 ifcs_name=Name
 ifcs_type=Type
 ifcs_ip=IP Address
+ifcs_desc=Interface description
 ifcs_mask=Netmask
 ifcs_status=Status
 ifcs_virtual=Virtual

@@ -67,6 +67,7 @@ while($f = readdir(CONF)) {
 		$b->{'num'} = $conf{'CLONENUM_START'};
 		$b->{'up'} = 1;
 		$b->{'edit'} = 1;
+		$b->{'desc'} = $conf{'NAME'};
 		$b->{'index'} = scalar(@rv);
 		$b->{'file'} = "$net_scripts_dir/$f";
 		push(@rv, $b);
@@ -91,6 +92,7 @@ while($f = readdir(CONF)) {
 		$b->{'dhcp'} = ($conf{'BOOTPROTO'} eq 'dhcp');
 		$b->{'bootp'} = ($conf{'BOOTPROTO'} eq 'bootp');
 		$b->{'edit'} = ($b->{'name'} !~ /^ppp|irlan/);
+		$b->{'desc'} = $conf{'NAME'};
 		$b->{'index'} = scalar(@rv);
 		$b->{'file'} = "$net_scripts_dir/$f";
 		push(@rv, $b);
@@ -148,6 +150,7 @@ else {
 	$conf{'BOOTPROTO'} = $_[0]->{'bootp'} ? "bootp" :
 			     $_[0]->{'dhcp'} ? "dhcp" : "none";
 	}
+$conf{'NAME'} = $_[0]->{'desc'};
 &write_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
 if (-d &translate_filename($devices_dir)) {
 	&link_file("$net_scripts_dir/ifcfg-$name",
@@ -680,6 +683,11 @@ sub range_input
 {
 local $new = !$_[0];
 
+# Range description
+print "<tr> <td><b>$text{'ifcs_desc'}</b></td>\n";
+print "<td colspan=3>",&ui_textbox("desc", $_[0] ? $_[0]->{'desc'} : undef, 60),
+      "</td> </tr>\n";
+
 # Base interface
 print "<tr> <td><b>$text{'range_iface'}</b></td>\n";
 if ($new) {
@@ -733,6 +741,7 @@ if ($in{'new'}) {
 	$_[0]->{'range'} = $in{'range'};
 	$_[0]->{'fullname'} = $in{'iface'}."-range".$in{'range'};
 	}
+$_[0]->{'desc'} = $in{'desc'};
 
 &check_ipaddress($in{'start'}) || &error($text{'range_estart'});
 $_[0]->{'start'} = $in{'start'};

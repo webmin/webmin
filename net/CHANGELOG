@@ -33,3 +33,5 @@ Fixed broken SuSE 10.2+ support.
 Re-wrote Gentoo networking support code to work with 2006 and later versions.
 ---- Changes since 1.380 ----
 Added support for VLANs and channel bonding on Debian, thanks to Tim Oberfoell.
+Boot-time network interfaces can have comments on Redhat-based systems.
+The list of interfaces is now separated into active and boot time using tabs.

@@ -21,11 +21,10 @@ foreach $i ('ifcs', 'routes', 'dns', 'hosts',
 if (defined(&apply_network) && $access{'apply'} && !$zone) {
 	# Allow the user to apply the network config
 	print "<hr>\n";
-	print "<form action=apply.cgi>\n";
-	print "<table width=100%><tr>\n";
-	print "<td><input type=submit value='$text{'index_apply'}'></td>\n";
-	print "<td>$text{'index_applydesc'}</td>\n";
-	print "</tr></table></form>\n";
+	print &ui_buttons_start();
+	print &ui_buttons_row("apply.cgi", $text{'index_apply'},
+			      $text{'index_applydesc'});
+	print &ui_buttons_end();
 	}
 &ui_print_footer("/", $text{'index'});
 

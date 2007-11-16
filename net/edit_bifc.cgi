@@ -36,6 +36,15 @@ print "<tr $tb> <td><b>",
       "</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
+# Comment, if allowed
+if (defined(&can_iface_desc) && &can_iface_desc($b)) {
+	print "<tr> <td><b>$text{'ifcs_desc'}</b></td>\n";
+	print "<td colspan=3>",
+	      &ui_textbox("desc", $b ? $b->{'desc'} : undef, 60),
+	      "</td> </tr>\n";
+	}
+
+# Interface name
 print "<tr> <td><b>$text{'ifcs_name'}</b></td> <td>\n";
 if ($in{'new'} && $in{'virtual'}) {
 	print "<input type=hidden name=name value=$in{'virtual'}>\n";
@@ -55,6 +64,7 @@ else {
 	}
 print "</td>\n";
 
+# IP address
 print "<td><b>$text{'ifcs_ip'}</b></td> <td>\n";
 $virtual = (!$b && $in{'virtual'}) || ($b && $b->{'virtual'} ne "");
 $dhcp = &can_edit("dhcp") && !$virtual;
@@ -78,6 +88,7 @@ else {
 printf "<input name=address size=15 value=\"%s\"></td> </tr>\n",
 	$b && !$b->{'bootp'} && !$b->{'dhcp'} ? $b->{'address'} : "";
 
+# Netmask
 print "<tr> <td><b>$text{'ifcs_mask'}</b></td>\n";
 if ($in{'virtual'} && $in{'new'} && $virtual_netmask) {
 	# Virtual netmask cannot be edited
@@ -282,5 +293,5 @@ else {
 	}
 print "</tr></table></form>\n";
 
-&ui_print_footer("list_ifcs.cgi", $text{'ifcs_return'});
+&ui_print_footer("list_ifcs.cgi?mode=boot", $text{'ifcs_return'});
 

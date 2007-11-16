@@ -8,11 +8,21 @@ $access{'ifcs'} || &error($text{'ifcs_ecannot'});
 $allow_add = &can_create_iface() && !$noos_support_add_ifcs;
 &ui_print_header(undef, $text{'ifcs_title'}, "");
 
+# Start tabs for active/boot time interfaces
+@tabs = ( [ "active", $text{'ifcs_now'}, "list_ifcs.cgi?mode=active" ] );
+$defmode = "active";
+if (!$access{'bootonly'}) {
+	push(@tabs, [ "boot", $text{'ifcs_boot'}, "list_ifcs.cgi?mode=boot" ] );
+	$defmode = "boot";
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $defmode, 1);
+
 # Show interfaces that are currently active
 @act = &active_interfaces();
 if (!$access{'bootonly'}) {
 	# Table heading and links
-	print &ui_subheading($text{'ifcs_now'});
+	print &ui_tabs_start_tab("mode", "active");
+	print $text{'ifcs_activedesc'},"<p>\n";
 	local @tds;
 	@links = ( );
 	if ($access{'ifcs'} >= 2) {
@@ -79,11 +89,12 @@ if (!$access{'bootonly'}) {
 	if ($access{'ifcs'} >= 2) {
 		print &ui_form_end([ [ "delete", $text{'index_delete1'} ] ]);
 		}
-	print "<hr>\n";
+	print &ui_tabs_end_tab();
 	}
 
 # Show interfaces that get activated at boot
-print &ui_subheading($text{'ifcs_boot'});
+print &ui_tabs_start_tab("mode", "boot");
+print $text{'ifcs_bootdesc'},"<p>\n";
 print &ui_form_start("delete_bifcs.cgi", "post");
 @links = ( &select_all_link("b", 1),
 	   &select_invert_link("b", 1) );
@@ -185,6 +196,9 @@ print &ui_form_end([ [ "delete", $text{'index_delete2'} ],
 		     [ "deleteapply", $text{'index_delete3'} ],
 		     undef,
 		     [ "apply", $text{'index_apply2'} ] ]);
+print &ui_tabs_end_tab();
+
+print &ui_tabs_end(1);
 
 &ui_print_footer("", $text{'index_return'});
 

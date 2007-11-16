@@ -53,5 +53,5 @@ else {
 	&webmin_log($in{'new'} ? 'create' : 'modify',
 		    "range", $b->{'fullname'}, $b);
 	}
-&redirect("list_ifcs.cgi");
+&redirect("list_ifcs.cgi?mode=boot");
 

@@ -147,5 +147,5 @@ else {
 	&webmin_log($in{'new'} ? 'create' : 'modify',
 		    "aifc", $a->{'fullname'}, $a);
 	}
-&redirect("list_ifcs.cgi");
+&redirect("list_ifcs.cgi?mode=active");
 

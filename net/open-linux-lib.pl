@@ -32,6 +32,7 @@ while($f = readdir(CONF)) {
 					       : "Automatic";
 	$b->{'dhcp'} = $conf{'DYNAMIC'} eq 'dhcp';
 	$b->{'edit'} = ($b->{'name'} !~ /^ppp|plip/);
+	$b->{'desc'} = $conf{'NAME'};
 	$b->{'index'} = scalar(@rv);
 	$b->{'file'} = "$net_scripts_dir/$f";
 	push(@rv, $b);
@@ -67,6 +68,7 @@ $conf{'NETWORK'} = sprintf "%d.%d.%d.%d",
 			($ip4 & int($nm4))&0xff;
 $conf{'BROADCAST'} = $_[0]->{'broadcast'};
 $conf{'ONBOOT'} = $_[0]->{'up'} ? "yes" : "no";
+$conf{'NAME'} = $_[0]->{'desc'};
 &write_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
 &unlock_file("$net_scripts_dir/ifcfg-$name");
 }
@@ -85,6 +87,13 @@ local $name = $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
 sub can_edit
 {
 return $_[0] ne "bootp" && $_[0] ne "mtu";
+}
+
+# can_iface_desc([&iface])
+# Returns 1 if boot-interfaces can have comments
+sub can_iface_desc
+{
+return 1;
 }
 
 # valid_boot_address(address)

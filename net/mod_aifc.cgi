@@ -21,5 +21,5 @@ if ($acl{$base_remote_user,$mod->{'module'}}) {
 	}
 print "<p>\n";
 
-&ui_print_footer("list_ifcs.cgi", $text{'ifcs_return'});
+&ui_print_footer("list_ifcs.cgi?mode=active", $text{'ifcs_return'});
 
