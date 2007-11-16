@@ -158,17 +158,29 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		$user{'gid'} = $gids[0];
 		local $grp = &my_getgrgid($gids[0]);
 
+		$real_home = undef;
 		if ($access{'autohome'}) {
-			# Assign home dir automatically
+			# Assign home dir automatically based on ACL
 			$user{'home'} = &auto_home_dir($access{'home'},
 						       $user{'user'},
 						       $grp);
+			if ($config{'real_base'}) {
+				$real_home = &auto_home_dir(
+				    $config{'real_base'}, $user{'user'}, $grp);
+				}
 			}
 		else {
 			if ($line[6] eq '' && $config{'home_base'}) {
-				# Choose home dir automatically
+				# Choose home dir automatically based on
+				# module config
 				$user{'home'} = &auto_home_dir(
-					$config{'home_base'}, $user{'user'}, $user{'gid'});
+					$config{'home_base'}, $user{'user'},
+					$user{'gid'});
+				if ($config{'real_base'}) {
+					$real_home = &auto_home_dir(
+					    $config{'real_base'},
+					    $user{'user'}, $grp);
+					}
 				}
 			elsif ($line[6] !~ /^\//) {
 				print &text('batch_ehome', $lnum,$line[6]),"\n";
@@ -179,6 +191,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 				$user{'home'} = $line[6];
 				}
 			}
+		$real_home ||= $user{'home'};
 
 		# Check access control restrictions
 		if (!$access{'ucreate'}) {
@@ -240,7 +253,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 
 		# Create the user!
 		if ($in{'makehome'} && !-d $user{'home'}) {
-			&create_home_directory(\%user);
+			&create_home_directory(\%user, $real_home);
 			}
 		if ($in{'crypt'}) {
 			$user{'pass'} = $line[2];

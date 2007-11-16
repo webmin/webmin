@@ -33,3 +33,5 @@ Cleaned up user and group creation links on main page, add links to jump to user
 Use the nscd -i command to refresh its cache after adding a user or group.
 ---- Changes since 1.310 ----
 In a user batch file, # is only treated as a comment at the start of a line.
+---- Changes since 1.380 ----
+The real base directory for homes is now respected when batch creating users.
