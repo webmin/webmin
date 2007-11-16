@@ -7,3 +7,5 @@ When viewing a log file, the contents of the newest rotated version will be show
 Error logs from Webmin and Usermin, and kernel messages are now viewable in this module.
 ---- Changes since 1.300 ----
 Added a Module Config option to specifying other log files that should be searchable, and a similar ACL option to add logs on a per-user basis.
+---- Changes since 1.380 ----
+On Debian systems, use a syslog restart to tell it to re-open log files, as a HUP signal is not reliable.

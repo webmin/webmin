@@ -19,4 +19,5 @@ syslogd=Path to syslog server,0
 facilities=Supported facilities,0
 start_cmd=Command to start syslog,3,Just run server
 restart_cmd=Command to apply changes,3,Kill and re-start server
+signal_cmd=Command to re-open log files,3,Send HUP signal
 tail_cmd=Tail command and arguments,3,Default (tail -n LINES)

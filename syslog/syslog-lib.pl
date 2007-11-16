@@ -234,9 +234,15 @@ return undef;
 # Tell the syslog server to re-open it's log files
 sub signal_syslog
 {
-local $pid = &get_syslog_pid();
-if ($pid) {
-	&kill_logged('HUP', $pid);
+if ($config{'signal_cmd'}) {
+	&system_logged("$config{'signal_cmd'} >/dev/null 2>/dev/null </dev/null");
+	}
+else {
+	# Use HUP signal
+	local $pid = &get_syslog_pid();
+	if ($pid) {
+		&kill_logged('HUP', $pid);
+		}
 	}
 }
 
