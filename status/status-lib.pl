@@ -412,6 +412,9 @@ return ( { 'id' => 'tmobile',
 	 { 'id' => 'virgin',
 	   'desc' => 'Virgin Mobile',
 	   'domain' => 'vmobl.com' },
+	 { 'id' => 'cbell',
+	   'desc' => 'Cincinnati Bell',
+	   'domain' => 'gocbw.com' },
         );
 }
 
