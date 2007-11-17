@@ -222,8 +222,13 @@ while($i < @tok) {
 		$l = $lnum[$i];
 		while($lnum[$i] == $l && $i < @tok) {
 			if ($tok[$i] eq "(") {
+				my $olnum = $lnum[$i];
 				while($tok[++$i] ne ")") {
 					push(@values, $tok[$i]);
+					if ($i >= @tok) {
+						&error("No ending ) found for ".
+						       "( starting at $olnum");
+						}
 					}
 				$i++; # skip )
 				last;
