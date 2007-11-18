@@ -48,11 +48,13 @@ function show_logs() {
       }
     }
   }
-if (mod) {
+if (mod && mod.indexOf('.cgi') <= 0) {
+  // Show one module's logs
   window.parent.frames[1].location = 'webminlog/search.cgi?tall=4&uall=1&fall=1&mall=0&module='+mod;
   }
 else {
-  alert('No Webmin module is selected to show logs for');
+  // Show all logs
+  window.parent.frames[1].location = 'webminlog/search.cgi?tall=4&uall=1&fall=1&mall=0&mall=1'
   }
 }
 </script>
