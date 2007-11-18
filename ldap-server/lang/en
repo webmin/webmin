@@ -1,0 +1,130 @@
+index_version=OpenLDAP $1
+index_eslapd=The OpenLDAP server program $1 was not found on your system. Perhaps the path on the <a href='$2'>module configuration</a> page is incorrect?
+index_econfig=The OpenLDAP server configuration file $1 was not found on your system. Perhaps the path on the <a href='$2'>module configuration</a> page is incorrect?
+index_econnect=An error occurred connection to the LDAP server : $1. You may need to adjust settings on the <a href='$2'>module configuration</a> page.
+index_apply=Apply Configuration
+index_applydesc=Click this button to activate the current OpenLDAP server configuration.
+index_stop=Stop Server
+index_stopdesc=Click this button to shut down the running OpenLDAP server. Beware that this may prevent user accounts or mail aliases stored in the LDAP database from working.
+index_start=Start Server
+index_startdesc=Click this button to start up the OpenLDAP server with the current configuration. User accounts and mail aliases stored in its database will not be accessible until it is started.
+index_return=module index
+
+connect_eserver=The LDAP server $1 does not exist
+connect_euser=No user to login as has been configured
+connect_epass=No password to login with has been configured
+connect_efile=The OpenLDAP configuration file $1 was not found - maybe no LDAP server is installed on this system
+connect_euser2=No user to login as was found in the LDAP server configuration
+connect_epass2=No password to login with was found in the LDAP server configuration
+connect_epass3=The password in the LDAP server configuration is encrypted and cannot be used by Webmin
+connect_emod=The Perl module $1 needed to connect to the LDAP server is not installed. The full Perl error message is : $2
+connect_eldap=Failed to connect to LDAP server $1 on port $2
+connect_essl=Failed to start TLS encryption with LDAP server $1 : $2
+connect_elogin=Failed to login to LDAP server $1 as $2 : $3
+
+slapd_title=OpenLDAP Server Configuration
+slapd_header=Global LDAP server options
+slapd_suffix=Root DN for LDAP database
+slapd_rootdn=Administration login DN
+slapd_rootpw=Administration password
+slapd_root1=Unix encrypted <tt>$1</tt>
+slapd_root2=SHA1 encrypted <tt>$1</tt>
+slapd_root3=Encrypted <tt>$1</tt>
+slapd_rootchange=New administration password
+slapd_leave=Don't change
+slapd_set=Set to
+slapd_cachesize=Indexes to cache
+slapd_dbcachesize=Database entries to cache
+slapd_err=Failed to save LDAP server configuration
+slapd_elocal=No LDAP server is installed on this system
+slapd_esuffix=Missing or invalid-looking root DN - should be like <tt>dc=your-domain,dc=com</tt>
+slapd_erootdn=Missing or invalid-looking Administration login - should be like <tt>cn=Manager,dc=your-domain,dc=com</tt>
+slapd_erootpw=Missing new administration password
+slapd_ecachesize=Missing or non-numeric index cache size
+slapd_edbcachesize=Missing or non-numeric database entries cache size
+slapd_allow=Access control options
+slapd_bind_v2=Allow LDAP v2 clients
+slapd_bind_anon_cred=Allow anonymous login with credentials
+slapd_bind_anon_dn=Allow anonymous login with DN
+slapd_update_anon=Allow updates by anonymous logins
+
+schema_title=Manage Schema
+
+acl_title=LDAP Access Control
+
+browser_title=Browse Database
+browser_econn=The LDAP browser cannot be used : $1
+browser_base=Browsing:
+browser_ok=Show
+browser_esearch=LDAP search failed : $1
+browser_subs=Child objects
+browser_attrs=Object attributes
+browser_parent=Browse Parent
+browser_subnone=This object has no child objects.
+browser_attrnone=This object has no attributes!
+browser_sel=OK
+browser_edit=Edit..
+browser_add=Add attribute to object.
+browser_name=Attribute
+browser_value=Values
+browser_acts=Actions
+browser_delete=Remove Selected Attributes
+browser_sdelete=Remove Selected Children
+browser_cancel=Cancel
+browser_save=Save
+browser_sub=Sub-object
+browser_sadd=Add new sub-object.
+browser_clone=Clone this object.
+browser_rename=Rename..
+browser_rsave=Rename
+browser_return=database browser
+
+save_err=Failed to change attribute
+save_ebase=Could not fetch object $1 from database
+save_emodify=LDAP modification of $2 in $1 failed : $3
+save_enone=No values entered
+
+add_err=Failed to add attribute
+add_eadd=Missing or invalid attribute name
+add_evalue=Missing value
+add_emodify=LDAP add of $2 to $1 failed : $3
+
+delete_err=Failed to remove attributes
+delete_enone=None selected
+delete_emodify=LDAP delete of $2 from $1 failed : $3
+
+sdelete_err=Failed to delete objects
+sdelete_edn=Object $1 was not found
+sdelete_edel=LDAP delete of $1 failed : $2
+
+rename_err=Failed to rename object
+rename_eget=Could not fine object with DN $1
+rename_enew=New name does not appear to be valid
+rename_erename=LDAP newdn to $2 from $1 failed : $3
+
+oadd_title=Create Object
+oadd_header=New LDAP object details
+oadd_base=Parent object DN
+oadd_dn=New object DN
+oadd_classes=Object classes
+oadd_attrs=Other attributes
+oadd_edn1=Missing or invalid name for DN
+oadd_edn2=Missing or invalid value for DN
+oadd_eclasses=No object classes entered
+oadd_eclass='$1' does not look like a valid object class
+oadd_ename=Invalid-looking name for attribute $1
+oadd_eget=Failed to get object $1 : $2
+oadd_eget2=Failed to check for clash with $1 : $2
+oadd_eclash=An object with the DN $1 already exists
+oadd_eadd=LDAP add of $1 failed : $2
+
+create_title=Create Tree
+
+eunknown=Unknown error
+
+apply_err=Failed to apply configuration
+
+stop_err=Failed to stop LDAP server
+
+start_err=Failed to start LDAP server
+
