@@ -9,3 +9,8 @@ config_file=OpenLDAP server configuration file,8
 schema_dir=OpenLDAP schema directory,7
 
 line2=User interface settings,11
+
+line3=LDAP server commands,11
+start_cmd=Command to start LDAP server,3,Just run <tt>slapd</tt>
+stop_cmd=Command to stop LDAP server,3,Just kill process
+apply_cmd=Command to apply configuration,3,Just stop and re-start

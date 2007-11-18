@@ -68,6 +68,16 @@ print &ui_table_row($text{'slapd_allow'},
 		     ( 'bind_v2', 'bind_anon_cred',
 		       'bind_anon_dn', 'update_anon' ) ], 4, 1, 1));
 
+# Size and time limits
+$sizelimit = &find_value('sizelimit', $conf);
+print &ui_table_row($text{'slapd_sizelimit'},
+    &ui_opt_textbox('sizelimit', $sizelimit, 10, $text{'default'}." (500)"));
+$timelimit = &find_value('timelimit', $conf);
+print &ui_table_row($text{'slapd_timelimit'},
+    &ui_opt_textbox('timelimit', $timelimit, 10,
+		    $text{'default'}." (3600 $text{'slapd_secs'})").
+    " ".$text{'slapd_secs'});
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 

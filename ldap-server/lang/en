@@ -47,6 +47,11 @@ slapd_bind_v2=Allow LDAP v2 clients
 slapd_bind_anon_cred=Allow anonymous login with credentials
 slapd_bind_anon_dn=Allow anonymous login with DN
 slapd_update_anon=Allow updates by anonymous logins
+slapd_sizelimit=Maximum number of search results to return
+slapd_timelimit=Maximum time for searches
+slapd_secs=seconds
+slapd_esizelimit=Missing or non-numeric maximum number of search results to return
+slapd_etimelimit=Missing or non-numeric maximum time for searches
 
 schema_title=Manage Schema
 
@@ -123,8 +128,13 @@ create_title=Create Tree
 eunknown=Unknown error
 
 apply_err=Failed to apply configuration
+apply_ecmd=$1 failed : $2
 
 stop_err=Failed to stop LDAP server
+stop_ecmd=$1 failed : $2
+stop_egone=No longer running!
+stop_ekill=Kill process failed : $1
 
 start_err=Failed to start LDAP server
+start_ecmd=$1 failed : $2
 

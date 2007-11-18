@@ -38,6 +38,22 @@ $in{'dbcachesize'} =~ /^\d+$/ || &error($text{'slapd_edbcachesize'});
 @allow = split(/\0/, $in{'allow'});
 &save_directive($conf, 'allow', @allow ? \@allow : undef);
 
+# Size and time limits
+if ($in{'sizelimit_def'}) {
+	&save_directive($conf, 'sizelimit', undef);
+	}
+else {
+	$in{'sizelimit'} =~ /^[1-9]\d*$/ || &error($text{'slapd_esizelimit'});
+	&save_directive($conf, 'sizelimit', $in{'sizelimit'});
+	}
+if ($in{'timelimit_def'}) {
+	&save_directive($conf, 'timelimit', undef);
+	}
+else {
+	$in{'timelimit'} =~ /^[1-9]\d*$/ || &error($text{'slapd_etimelimit'});
+	&save_directive($conf, 'timelimit', $in{'timelimit'});
+	}
+
 # Write out the files
 &flush_file_lines($config{'config_file'});
 &unlock_file($config{'config_file'});

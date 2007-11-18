@@ -6,7 +6,6 @@
 # XXX install ldap server
 # XXX more slapd.conf options
 #	XXX SSL certs
-#	XXX sizelimit / timelimit
 #	XXX schemacheck / gentlehup
 
 do '../web-lib.pl';
@@ -231,16 +230,48 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 	}
 }
 
+# start_ldap_server()
+# Attempts to start the LDAP server process. Returns undef on success or an
+# error message on failure.
 sub start_ldap_server
 {
+local $cmd = $config{'start_cmd'} || $config{'slapd'};
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? &text('start_ecmd', "<tt>$cmd</tt>",
+		  "<pre>".&html_escape($out)."</pre>") : undef;
 }
 
+# stop_ldap_server()
+# Attempts to stop the running LDAP server. Returns undef on success or an
+# error message on failure.
 sub stop_ldap_server
 {
+if ($config{'stop_cmd'}) {
+	local $out = &backquote_logged("$config{'stop_cmd'} 2>&1 </dev/null");
+	return $? ? &text('stop_ecmd', "<tt>$cmd</tt>",
+			  "<pre>".&html_escape($out)."</pre>") : undef;
+	}
+else {
+	local $pid = &is_ldap_server_running();
+	$pid || return $text{'stop_egone'};
+	return kill('TERM', $pid) ? undef : &text('stop_ekill', $!);
+	}
 }
 
+# apply_configuration()
+# Apply the current LDAP server configuration with a HUP signal
 sub apply_configuration
 {
+if ($config{'apply_cmd'}) {
+	local $out = &backquote_logged("$config{'apply_cmd'} 2>&1 </dev/null");
+	return $? ? &text('apply_ecmd', "<tt>$cmd</tt>",
+			  "<pre>".&html_escape($out)."</pre>") : undef;
+	}
+else {
+	local $err = &stop_ldap_server();
+	return $err if ($err);
+	return &start_ldap_server();
+	}
 }
 
 # is_ldap_server_running()
