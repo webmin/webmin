@@ -1,5 +1,13 @@
 # Functions for configuring and talking to an LDAP server
 # XXX ldap browser should allow searching / limit list size
+# XXX help pages
+# XXX initial setup
+# XXX locking and logging
+# XXX install ldap server
+# XXX more slapd.conf options
+#	XXX SSL certs
+#	XXX sizelimit / timelimit
+#	XXX schemacheck / gentlehup
 
 do '../web-lib.pl';
 &init_config();
@@ -145,6 +153,8 @@ $get_config_cache{$file} = \@rv;
 return \@rv;
 }
 
+# find(name, &config)
+# Returns the structure(s) with some name
 sub find
 {
 local ($name, $conf) = @_;
@@ -152,11 +162,73 @@ local @rv = grep { lc($_->{'name'}) eq lc($name) } @$conf;
 return wantarray ? @rv : $rv[0];
 }
 
+# find(name, &config)
+# Returns the directive values with some name
 sub find_value
 {
 local ($name, $conf) = @_;
 local @rv = map { $_->{'values'}->[0] } &find(@_);
 return wantarray ? @rv : $rv[0];
+}
+
+# save_directive(&config, name, value, ...)
+# Update the value(s) of some entry in the config file
+sub save_directive
+{
+local ($conf, $name, @values) = @_;
+local @old = &find($name, $conf);
+local $lref = &read_file_lines(@old ? $old[0]->{'file'}
+				    : $config{'config_file'});
+local $changed;
+for(my $i=0; $i<@old || $i<@values; $i++) {
+	local ($line, @unqvalues, @qvalues);
+	if (defined($values[$i])) {
+		@unqvalues = ref($values[$i]) ? @{$values[$i]}
+					      : ( $values[$i] );
+		@qvalues = map { /^[^'" ]+$/ ? $_ :
+				 /"/ ? "'$_'" : "\"$_\"" } @unqvalues;
+		$line = join(" ", $name, @qvalues);
+		}
+	if (defined($old[$i]) && defined($values[$i])) {
+		# Update some directive
+		$lref->[$old[$i]->{'line'}] = $line;
+		$old[$i]->{'values'} = \@unqvalues;
+		$changed = $old[$i];
+		}
+	elsif (defined($old[$i]) && !defined($values[$i])) {
+		# Remove some directive (from cache too)
+		splice(@$lref, $old[$i]->{'line'}, 1);
+		local $idx = &indexof($old[$i], @$conf);
+		splice(@$conf, $idx, 1) if ($idx >= 0);
+		foreach my $c (@$conf) {
+			$c->{'line'}-- if ($c->{'line'} > $old[$i]->{'line'});
+			}
+		}
+	elsif (!defined($old[$i]) && defined($values[$i])) {
+		# Add some directive
+		if ($changed) {
+			# After last one of the same name
+			local $newdir = { 'name' => $name,
+					  'line' => $changed->{'line'}+1,
+					  'values' => \@unqvalues };
+			foreach my $c (@$conf) {
+				$c->{'line'}++ if ($c->{'line'} > 
+						   $changed->{'line'});
+				}
+			$changed = $newdir;
+			splice(@$lref, $newdir->{'line'}, 0, $line);
+			push(@$conf, $newdir);
+			}
+		else {
+			# At end of file
+			local $newdir = { 'name' => $name,
+					  'line' => scalar(@$lref),
+					  'values' => \@unqvalues };
+			push(@$lref, $line);
+			push(@$conf, $newdir);
+			}
+		}
+	}
 }
 
 sub start_ldap_server
