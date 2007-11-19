@@ -4976,16 +4976,19 @@ unlink("$config_directory/module.infos.cache");
 # usermin only.
 sub list_usermods
 {
-local @rv;
-local $_;
-open(USERMODS, "$config_directory/usermin.mods");
-while(<USERMODS>) {
-	if (/^([^:]+):(\+|-|):(.*)/) {
-		push(@rv, [ $1, $2, [ split(/\s+/, $3) ] ]);
+if (!defined(@main::list_usermods_cache)) {
+	@main::list_usermods_cache = ( );
+	local $_;
+	open(USERMODS, "$config_directory/usermin.mods");
+	while(<USERMODS>) {
+		if (/^([^:]+):(\+|-|):(.*)/) {
+			push(@main::list_usermods_cache,
+			     [ $1, $2, [ split(/\s+/, $3) ] ]);
+			}
 		}
+	close(USERMODS);
 	}
-close(USERMODS);
-return @rv;
+return @main::list_usermods_cache;
 }
 
 # available_usermods(&allmods, &usermods)
