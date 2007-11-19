@@ -38,7 +38,7 @@ print "</td> </tr>\n";
 	    split(/[\s,]+/, &get_current_value("smtpd_recipient_restrictions"));
 print "<td valign=top>","<b>$text{'sasl_recip'}</b>",
       "</td> <td colspan=3 nowrap>\n";
-foreach $o (@smtpd_restrictions) {
+foreach $o (&list_smtpd_restrictions()) {
 	print &ui_checkbox("sasl_recip", $o, $text{'sasl_'.$o}, $recip{$o}),
 	      "<br>\n";
 	}

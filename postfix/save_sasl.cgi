@@ -30,7 +30,7 @@ if ($in{'smtpd_tls_CAfile_def'} eq "__USE_FREE_FIELD__") {
 # Save relay options that we care about
 @recip = split(/[\s,]+/, &get_current_value("smtpd_recipient_restrictions"));
 %newrecip = map { $_, 1 } split(/\0/, $in{'sasl_recip'});
-foreach $o (@smtpd_restrictions) {
+foreach $o (&list_smtpd_restrictions()) {
 	if ($newrecip{$o}) {
 		push(@recip, $o);
 		}

@@ -64,11 +64,6 @@ else {
 	$ldap_timeout = "ldap_lookup_timeout";
 	}
 
-@smtpd_restrictions = ( "permit_mynetworks",
-			"permit_inet_interfaces",
-			"reject_unknown_reverse_client_hostname",
-			"permit_sasl_authenticated",
-			"reject_unauth_destination" );
 
 sub guess_config_dir
 {
@@ -2065,6 +2060,18 @@ foreach $k (keys %pmap) {
                 }
         }
 return @rv;
+}
+
+# list_smtpd_restrictions()
+# Returns a list of SMTP server restrictions known to Webmin
+sub list_smtpd_restrictions
+{
+return ( "permit_mynetworks",
+	 "permit_inet_interfaces",
+	 $postfix_version < 2.3 ? "reject_unknown_client"
+				: "reject_unknown_reverse_client_hostname",
+	 "permit_sasl_authenticated",
+	 "reject_unauth_destination" );
 }
 
 1;

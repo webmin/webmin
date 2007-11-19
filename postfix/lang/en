@@ -771,6 +771,7 @@ sasl_permit_sasl_authenticated=Allow authenticated clients
 sasl_reject_unauth_destination=Reject email to other domains
 sasl_permit_inet_interfaces=Allow connections from this system
 sasl_reject_unknown_reverse_client_hostname=Reject clients with no reverse hostname
+sasl_reject_unknown_client=$sasl_reject_unknown_reverse_client_hostname
 opts_smtpd_tls_cert_file=TLS certificate file
 opts_smtpd_tls_key_file=TLS private key file
 opts_smtpd_tls_CAfile=TLS certificate authority file
