@@ -64,6 +64,12 @@ else {
 	$ldap_timeout = "ldap_lookup_timeout";
 	}
 
+@smtpd_restrictions = ( "permit_mynetworks",
+			"permit_inet_interfaces",
+			"reject_unknown_reverse_client_hostname",
+			"permit_sasl_authenticated",
+			"reject_unauth_destination" );
+
 sub guess_config_dir
 {
     my $answ = $config{'postfix_config_file'};

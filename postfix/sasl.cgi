@@ -38,11 +38,7 @@ print "</td> </tr>\n";
 	    split(/[\s,]+/, &get_current_value("smtpd_recipient_restrictions"));
 print "<td valign=top>","<b>$text{'sasl_recip'}</b>",
       "</td> <td colspan=3 nowrap>\n";
-foreach $o ("permit_mynetworks",
-	    "permit_inet_interfaces",
-	    "reject_unknown_reverse_client_hostname",
-	    "permit_sasl_authenticated",
-	    "reject_unauth_destination") {
+foreach $o (@smtpd_restrictions) {
 	print &ui_checkbox("sasl_recip", $o, $text{'sasl_'.$o}, $recip{$o}),
 	      "<br>\n";
 	}
