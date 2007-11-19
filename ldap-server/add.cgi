@@ -40,5 +40,6 @@ if (!$rv || $rv->code) {
 				  &ldap_error($rv)));
 	}
 
+&webmin_log('create', 'dn', $dn);
 &redirect("edit_browser.cgi?base=".&urlize($dn));
 

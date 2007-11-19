@@ -1,7 +1,6 @@
 # Functions for configuring and talking to an LDAP server
 # XXX help pages
 # XXX initial setup
-# XXX locking and logging
 # XXX install ldap server
 # XXX default configs for various systems (include search max of 100)
 # XXX more slapd.conf options

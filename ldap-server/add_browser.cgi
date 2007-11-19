@@ -24,9 +24,11 @@ $rv = $ldap->modify($bo->dn(),
 		    add => { $in{'add'} => $in{'value'} });
 if (!$rv || $rv->code) {
 	&error(&text('add_emodify', "<tt>".$bo->dn()."</tt>",
-				    "<tt>$in{'edit'}</tt>",
+				    "<tt>$in{'add'}</tt>",
 				    $rv ? $rv->code : "Unknown error"));
 	}
 
 # Return to object
+&webmin_log('create', 'attr', $in{'add'}, { 'dn' => $in{'base'},
+					    'value' => $in{'value'} });
 &redirect("edit_browser.cgi?base=".&urlize($in{'base'})."&mode=attrs");

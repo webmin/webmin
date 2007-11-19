@@ -32,5 +32,6 @@ if (!$rv || $rv->code) {
 	}
 
 # Return to object
+&webmin_log('rename', 'dn', $in{'old'}, { 'new' => $in{'rename'} });
 &redirect("edit_browser.cgi?base=".&urlize($in{'base'})."&mode=subs");
 

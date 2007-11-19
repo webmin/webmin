@@ -30,4 +30,6 @@ if (!$rv || $rv->code) {
 	}
 
 # Return to object
+&webmin_log('modify', 'attr', $in{'edit'}, { 'dn' => $in{'base'},
+					     'value' => join(" ", @values) });
 &redirect("edit_browser.cgi?base=".&urlize($in{'base'})."&mode=attrs");

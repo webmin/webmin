@@ -144,3 +144,19 @@ stop_ekill=Kill process failed : $1
 start_err=Failed to start LDAP server
 start_ecmd=$1 failed : $2
 
+log_create_dn=Created object $1
+log_delete_dn=Deleted object $1
+log_rename_dn=Renamed object $1
+log_delete_dns=Deleted $1 objects
+log_create_attr=Added attribute to object $2
+log_create_attr_l=Added attribute $1 with value $3 to object $2
+log_modify_attr=Updated attribute in object $2
+log_modify_attr_l=Updated attribute $1 with value $3 in object $2
+log_delete_attr=Deleted from object $2
+log_delete_attr_l=Deleted attribute $1 from object $2
+log_delete_attrs=Deleted $1 attributes from object $2
+log_stop=Stopped LDAP server
+log_start=Started LDAP Server
+log_apply=Applied configuration
+log_slapd=Changed LDAP server configuration
+

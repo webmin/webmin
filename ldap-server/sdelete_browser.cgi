@@ -27,4 +27,11 @@ foreach $d (@d) {
 	}
 
 # Return to object
+if (@d == 1) {
+	&webmin_log('delete', 'dn', $d[0]);
+	}
+else {
+	&webmin_log('delete', 'dns', scalar(@d),
+		    { 'dn' => \@d });
+	}
 &redirect("edit_browser.cgi?base=".&urlize($in{'base'})."&mode=subs");

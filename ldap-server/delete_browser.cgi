@@ -28,4 +28,10 @@ if (!$rv || $rv->code) {
 	}
 
 # Return to object
+if (@d == 1) {
+	&webmin_log('delete', 'attr', $d[0], { 'dn' => $in{'base'} });
+	}
+else {
+	&webmin_log('delete', 'attrs', scalar(@d), { 'dn' => $in{'base'} });
+	}
 &redirect("edit_browser.cgi?base=".&urlize($in{'base'})."&mode=attrs");
