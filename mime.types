@@ -418,6 +418,7 @@ text/vnd.wap.sl
 text/vnd.wap.wml		wml # WML document
 text/vnd.wap.wmlscript		wmls
 text/x-setext			etx
+text/x-vcard			vcf # Vcard
 text/xml			xml # XML document
 video/mpeg			mpeg mpg mpe # MPEG video
 video/pointer
