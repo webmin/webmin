@@ -2258,12 +2258,16 @@ if (!$main::get_system_hostname[$m]) {
 		if ($gconfig{'os_type'} eq 'redhat-linux') {
 			local %nc;
 			&read_env_file("/etc/sysconfig/network", \%nc);
-			return $nc{'HOSTNAME'} if ($nc{'HOSTNAME'});
+			if ($nc{'HOSTNAME'}) {
+				$main::get_system_hostname[$m] =$nc{'HOSTNAME'};
+				return $nc{'HOSTNAME'};
+				}
 			}
 		elsif ($gconfig{'os_type'} eq 'debian-linux') {
 			local $hn = &read_file_contents("/etc/hostname");
 			if ($hn) {
 				$hn =~ s/\r|\n//g;
+				$main::get_system_hostname[$m] = $hn;
 				return $hn;
 				}
 			}
@@ -2271,6 +2275,7 @@ if (!$main::get_system_hostname[$m]) {
 			local $hn = &read_file_contents("/etc/HOSTNAME");
 			if ($hn) {
 				$hn =~ s/\r|\n//g;
+				$main::get_system_hostname[$m] = $hn;
 				return $hn;
 				}
 			}
@@ -2278,6 +2283,7 @@ if (!$main::get_system_hostname[$m]) {
 			local $hn = &read_file_contents("/etc/nodename");
 			if ($hn) {
 				$hn =~ s/\r|\n//g;
+				$main::get_system_hostname[$m] = $hn;
 				return $hn;
 				}
 			}
