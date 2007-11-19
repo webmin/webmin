@@ -83,6 +83,12 @@ browser_clone=Clone this object.
 browser_rename=Rename..
 browser_rsave=Rename
 browser_return=database browser
+browser_toomany=The number of sub-objects is higher than Webmin's limit of $1.
+browser_toomany2=The number of sub-objects matching $1 is higher than Webmin's limit of $2.
+browser_nomatch=No objects matched your search for $1.
+browser_search=Find objects matching :
+browser_search2=Showing objects matching :
+browser_sok=Search
 
 save_err=Failed to change attribute
 save_ebase=Could not fetch object $1 from database

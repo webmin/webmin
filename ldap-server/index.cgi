@@ -46,7 +46,7 @@ else {
 @links = map { "edit_".$_.".cgi" } @pages;
 @titles = map { $text{$_."_title"} } @pages;
 @icons = map { "images/$_.gif" } @pages;
-&icons_table(\@links, \@titles, \@icons);
+&icons_table(\@links, \@titles, \@icons, 5);
 
 if ($local == 1) {
 	# Show stop/restart buttons

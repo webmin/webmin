@@ -26,6 +26,7 @@ else {
 	}
 
 # Show current base (with option to change), and parent button
+$formno = 0;
 print &ui_form_start("edit_browser.cgi"),"\n";
 print "<b>$text{'browser_base'}</b>\n";
 print &ui_textbox("base", $base, 60)," ",&ui_submit($text{'browser_ok'}),"\n";
@@ -37,28 +38,64 @@ if ($parent =~ /\S/) {
 	print &ui_submit($text{'browser_parent'}, "goparent"),"\n";
 	}
 print &ui_form_end();
+$formno++;
 
 # Show list of objects under the base, and its attributes
+if ($in{'search'}) {
+	$filter = '(|'.join('', map { '('.$_.'=*'.$in{'search'}.'*)' }
+				    @search_attrs).')';
+	}
+else {
+	$filter = '(objectClass=*)';
+	}
 $rv = $ldap->search(base => $base,
-		    filter => '(objectClass=*)',
-		    scope => 'one');
-if ($rv->code) {
+		    filter => $filter,
+		    scope => 'one',
+		    sizelimit => int($config{'browse_max'}),
+		   );
+@subs = sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries;
+if ($rv->code && !@subs) {
 	# Search failed
 	print &text('browser_esearch', $rv->error),"<p>\n";
 	}
 else {
-	# Find sub-objects
-	@subs = sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries;
-
 	# Start tabs for layout
-	$in{'mode'} ||= @subs ? "subs" : "attrs";
+	$in{'mode'} ||= @subs || $in{'search'} ? "subs" : "attrs";
 	@tabs = ( [ 'subs', $text{'browser_subs'} ],
 		  [ 'attrs', $text{'browser_attrs'} ] );
 	print &ui_tabs_start(\@tabs, "browser", $in{'mode'}, 1);
 
 	# Show sub-objects, if any
 	print &ui_tabs_start_tab("browser", "subs");
-	if (@subs) {
+	@crlinks = ( "<a href='add_form.cgi?base=".
+		     &urlize($base)."'>$text{'browser_sadd'}</a>" );
+	if ($rv->code || ($in{'search'} && !@subs)) {
+		# Too many to show
+		if (@subs && $in{'search'}) {
+			# Too many results
+			print &text('browser_toomany2', "<i>$in{'search'}</i>",
+				    $config{'browse_max'}),"<p>\n";
+			}
+		elsif (@subs) {
+			# No search, many sub-objects
+			print &text('browser_toomany',
+				    $config{'browse_max'}),"<p>\n";
+			}
+		else {
+			# No matches
+			print &text('browser_nomatch',
+				    "<i>$in{'search'}</i>"),"<p>\n";
+			}
+		&show_search_form($text{'browser_search'});
+		print &ui_links_row(\@crlinks);
+		}
+	elsif (@subs) {
+		# Search result, so show form
+		if ($in{'search'}) {
+			&show_search_form($text{'browser_search2'});
+			}
+
+		# Can show some
 		@tds = ( "width=90%", "width=10%" );
 		if ($in{'rename'}) {
 			# Rename form
@@ -69,10 +106,9 @@ else {
 			# Delete sub-objects form
 			print &ui_form_start("sdelete_browser.cgi", "post");
 			@tds = ( "width=5", @tds );
-			@links = ( &select_all_link("d", 1),
-				   &select_invert_link("d", 1),
-			           "<a href='add_form.cgi?base=".
-				   &urlize($base)."'>$text{'browser_sadd'}</a>",
+			@links = ( &select_all_link("d", $formno),
+				   &select_invert_link("d", $formno),
+				   @crlinks,
 				 );
 			}
 		print &ui_hidden("base", $base);
@@ -115,9 +151,12 @@ else {
 		print &ui_form_end([ [ undef,
 			$in{'rename'} ? $text{'browser_rsave'}
 				      : $text{'browser_sdelete'} ] ]);
+		$formno++;
 		}
 	else {
-		print "<i>$text{'browser_subnone'}</i><br>\n";
+		# Nothing to show
+		print "<i>$text{'browser_subnone'}</i><p>\n";
+		print &ui_links_row(\@crlinks);
 		}
 	print &ui_tabs_end_tab();
 	
@@ -144,8 +183,8 @@ else {
 		else {
 			# Deleting form
 			print &ui_form_start("delete_browser.cgi", "post");
-			@links = ( &select_all_link("d", 1),
-				   &select_invert_link("d", 1),
+			@links = ( &select_all_link("d", $formno),
+				   &select_invert_link("d", $formno),
 			           "<a href='edit_browser.cgi?base=".
 				   &urlize($bo->dn())."&add=1&mode=attrs'>".
 				   "$text{'browser_add'}</a>",
@@ -207,9 +246,10 @@ else {
 		print &ui_form_end([ [ undef, $in{'edit'} ? $text{'save'} :
 					      $in{'add'} ? $text{'create'} :
 						$text{'browser_delete'} ] ]);
+		$formno++;
 		}
 	else {
-		print "<tr> <td><i>$text{'browser_attrnone'}</i></td> </tr>\n";
+		print "<i>$text{'browser_attrnone'}</i><p>\n";
 		print &ui_links_row(\@links);
 		}
 	print &ui_tabs_end_tab();
@@ -219,4 +259,16 @@ else {
 
 $ldap->disconnect();
 &ui_print_footer("", $text{'index_return'});
+
+sub show_search_form
+{
+local ($msg) = @_;
+print &ui_form_start("edit_browser.cgi");
+print &ui_hidden("base", $base);
+print "<b>$msg</b>\n";
+print &ui_textbox("search", $in{'search'}, 40),"\n";
+print &ui_submit($text{'browser_sok'}),"<p>\n";
+print &ui_form_end();
+$formno++;
+}
 

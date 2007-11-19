@@ -1,9 +1,9 @@
 # Functions for configuring and talking to an LDAP server
-# XXX ldap browser should allow searching / limit list size
 # XXX help pages
 # XXX initial setup
 # XXX locking and logging
 # XXX install ldap server
+# XXX default configs for various systems (include search max of 100)
 # XXX more slapd.conf options
 #	XXX SSL certs
 #	XXX schemacheck / gentlehup
@@ -14,6 +14,8 @@ do '../ui-lib.pl';
 
 eval "use Net::LDAP";
 if ($@) { $net_ldap_error = $@; }
+
+@search_attrs = ( 'objectClass', 'cn', 'dn', 'uid' );
 
 # connect_ldap_db()
 # Attempts to connect to an LDAP server. Returns a handle on success or an
