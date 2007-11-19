@@ -6,7 +6,6 @@ package miniserv;
 use Socket;
 use POSIX;
 use Time::Local;
-use File::Glob;
 
 # Find and read config file
 if (@ARGV != 1) {
