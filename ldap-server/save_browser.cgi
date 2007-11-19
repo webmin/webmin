@@ -10,9 +10,9 @@ ref($ldap) || &error($ldap);
 # Get the base object
 $rv = $ldap->search(base => $in{'base'},
 		     filter => '(objectClass=*)',
-		     score => 'base');
+		     scope => 'base');
 if (!$rv || $rv->code) {
-	&error($rv ? $rv->code : "Unknown error");
+	&error(&ldap_error($rv));
 	}
 ($bo) = $rv->all_entries;
 $bo || &error(&text('save_ebase', "<tt>$in{'base'}</tt>"));
@@ -26,7 +26,7 @@ $rv = $ldap->modify($bo->dn(),
 if (!$rv || $rv->code) {
 	&error(&text('save_emodify', "<tt>".$bo->dn()."</tt>",
 				     "<tt>$in{'edit'}</tt>",
-				     $rv ? $rv->code : "Unknown error"));
+				     &ldap_error($rv)));
 	}
 
 # Return to object

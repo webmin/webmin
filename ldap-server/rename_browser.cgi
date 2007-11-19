@@ -10,7 +10,7 @@ ref($ldap) || &error($ldap);
 # Get the object
 $rv = $ldap->search(base => $in{'old'},
 		     filter => '(objectClass=*)',
-		     score => 'base');
+		     scope => 'base');
 if (!$rv || $rv->code) {
 	&error(&ldap_error($rv));
 	}

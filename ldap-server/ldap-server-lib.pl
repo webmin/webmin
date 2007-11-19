@@ -74,7 +74,7 @@ foreach $ssl (@ssls) {
 			}
 		else {
 			return &text('connect_essl', "<tt>$server</tt>",
-			     $@ ? %@ : $mesg ? $mesg->code : "Unknown error");
+				     $@ ? %@ : &ldap_error($mesg));
 			}
 		}
 	}
@@ -84,7 +84,7 @@ $ldap || return "This can't happen!";
 local $mesg = $ldap->bind(dn => $user, password => $pass);
 if (!$mesg || $mesg->code) {
 	return &text('connect_elogin', "<tt>$server</tt>", "<tt>$user</tt>",
-		     $mesg ? $mesg->error : "Unknown error");
+		     &ldap_error($mesg));
 	}
 
 $connect_ldap_db = $ldap;
@@ -296,7 +296,7 @@ if (!$rv) {
 	return $text{'euknown'};
 	}
 elsif ($rv->code) {
-	return "".$rv->code;
+	return $rv->error || "Code ".$rv->code;
 	}
 else {
 	return undef;

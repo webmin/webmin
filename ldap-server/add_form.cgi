@@ -10,7 +10,7 @@ if ($in{'clone'}) {
 	# Get original object
 	$rv = $ldap->search(base => $in{'base'},
 			    filter => '(objectClass=*)',
-			    score => 'base');
+			    scope => 'base');
 	if (!$rv || $rv->code) {
 		&error(&text('oadd_eget', "<tt>$in{'base'}</tt>",
 					  &ldap_error($rv)));

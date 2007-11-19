@@ -164,7 +164,7 @@ else {
 	print &ui_tabs_start_tab("browser", "attrs");
 	$rv2 = $ldap->search(base => $base,
 			     filter => '(objectClass=*)',
-			     score => 'base');
+			     scope => 'base');
 	($bo) = $rv2->all_entries;
 	@attrs = sort { lc($a) cmp lc($b) } $bo->attributes();
 	if (@attrs) {

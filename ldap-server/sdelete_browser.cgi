@@ -13,7 +13,7 @@ ref($ldap) || &error($ldap);
 foreach $d (@d) {
 	$rv = $ldap->search(base => $d,
 			    filter => '(objectClass=*)',
-			    score => 'base');
+			    scope => 'base');
 	if (!$rv || $rv->code) {
 		&error(&ldap_error($rv));
 		}

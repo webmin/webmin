@@ -27,7 +27,7 @@ $dn .= ", $in{'base'}" if ($in{'base'});
 # Check for a clash
 $rv = $ldap->search(base => $dn,
 		    filter => '(objectClass=*)',
-		    score => 'base');
+		    scope => 'base');
 if ($rv && !$rv->code) {
 	($clash) = $rv->all_entries;
 	$clash && &error(&text('oadd_eclash', "<tt>$dn</tt>"));
