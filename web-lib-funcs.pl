@@ -930,7 +930,7 @@ if ($gconfig{'os_type'} =~ /-linux$/ && -r "/proc/$$/cmdline") {
 	local @pids;
 	opendir(PROCDIR, "/proc");
 	foreach my $f (readdir(PROCDIR)) {
-		if ($f eq int($f)) {
+		if ($f eq int($f) && $f != $$) {
 			local $line = &read_file_contents("/proc/$f/cmdline");
 			if ($line =~ /$_[0]/) {
 				push(@pids, $f);
