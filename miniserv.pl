@@ -1898,10 +1898,11 @@ if (-d _) {
 if (-d _) {
 	# This is definately a directory.. list it
 	print DEBUG "handle_request: listing directory\n";
-	&write_data("HTTP/1.0 $ok_code $ok_message\r\n");
-	&write_data("Date: $datestr\r\n");
-	&write_data("Server: $config{server}\r\n");
-	&write_data("Content-type: text/html\r\n");
+	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
+		      "Date: $datestr\r\n".
+		      "Server: $config{server}\r\n".
+		      "Content-type: text/html\r\n";
+	&write_data($resp);
 	&write_keep_alive(0);
 	&write_data("\r\n");
 	&reset_byte_count();
@@ -2217,12 +2218,14 @@ else {
 	print DEBUG "handle_request: outputting file\n";
 	open(FILE, $full) || &http_error(404, "Failed to open file");
 	binmode(FILE);
-	&write_data("HTTP/1.0 $ok_code $ok_message\r\n");
-	&write_data("Date: $datestr\r\n");
-	&write_data("Server: $config{server}\r\n");
-	&write_data("Content-type: ".&get_type($full)."\r\n");
-	&write_data("Content-length: $stfull[7]\r\n");
-	&write_data("Last-Modified: ".&http_date($stfull[9])."\r\n");
+	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
+		      "Date: $datestr\r\n".
+		      "Server: $config{server}\r\n".
+		      "Content-type: ".&get_type($full)."\r\n".
+		      "Content-length: $stfull[7]\r\n".
+		      "Last-Modified: ".&http_date($stfull[9])."\r\n".
+		      "Expires: ".&http_date(time()+$config{'expires'})."\r\n";
+	&write_data($resp);
 	$rv = &write_keep_alive();
 	&write_data("\r\n");
 	&reset_byte_count();
@@ -3838,6 +3841,7 @@ my %vital = ("port", 80,
 	  "sidname", "sid",
 	  "unauth", "^/unauthenticated/ ^[A-Za-z0-9\\-/]+\\.jar\$ ^[A-Za-z0-9\\-/]+\\.class\$ ^[A-Za-z0-9\\-/]+\\.gif\$ ^[A-Za-z0-9\\-/]+\\.conf\$ ^[A-Za-z0-9\\-/]+\\.ico\$",
 	  "max_post", 10000,
+	  "expires", 7*24*60*60,
 	 );
 foreach my $v (keys %vital) {
 	if (!$config{$v}) {
