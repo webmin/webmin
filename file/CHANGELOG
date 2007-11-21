@@ -39,3 +39,5 @@ When uploading a file, you can now select which Unix user it gets uploaded as.
 Added Module Config options for the default unzip mode and default user to upload as.
 ---- Changes since 1.360 ----
 Added a Module Config option to specify file extensions to treat as HTML, rather than always using only .html and .htm.
+---- Changes since 1.380 ----
+Use of the Preview button can now be controlled on the access control page.
