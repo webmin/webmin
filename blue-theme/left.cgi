@@ -22,8 +22,8 @@ print <<EOF;
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="unauthenticated/style.css" />
-<link rel="stylesheet" type="text/css" href="left.css" />
+<link rel="stylesheet" type="text/css" href="unauthenticated/blue-style.css" />
+<link rel="stylesheet" type="text/css" href="blue-left.css" />
 <script>
 function toggleview (id1,id2) {
 		var obj1 = document.getElementById(id1);

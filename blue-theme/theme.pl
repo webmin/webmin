@@ -54,7 +54,7 @@ sub theme_prebody
 {
 if ($script_name =~ /session_login.cgi/) {
 	# Generate CSS link
-	print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/style.css'>\n";
+	print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/blue-style.css'>\n";
 	}
 }
 
@@ -71,7 +71,7 @@ if ($module_name eq "mailbox" && $ENV{'HTTP_REFERER'} =~ /(edit|save)_(folder|co
 
 sub theme_prehead
 {
-print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/style.css' />\n";
+print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/blue-style.css' />\n";
 print "<script>\n";
 print "var rowsel = new Array();\n";
 print "</script>\n";
