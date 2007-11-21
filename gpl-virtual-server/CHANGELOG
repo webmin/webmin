@@ -365,3 +365,9 @@ Added the CA Certificate tab to the Manage SSL Certificate page, for uploading a
 If the create of the Unix user or group for a virtual server fails, both are rolled back to avoid leaving half-created users in /etc/passwd or LDAP.
 ---- Changes since 3.48 ----
 Added a warning about NSCD to the configuration check page.
+When a domain is renamed, generics or sender canonical maps are properly updated too.
+MySQL and LDAP sources for aliases and virtual addresses for Postfix can now be used by Virtualmin, when Webmin 1.390 or newer is installed and when they are setup properly in the Postfix module. This allows Virtualmin to effectively configure a remote mail server, assuming that domain Unix users and groups are also stored in LDAP.
+Errors when extracting cPanel, Plesk and Ensim backup files are reported in more detail.
+Sub-domains in cPanel backups can now be properly imported.
+Added a checkbox to the backup form to include sub-servers of those selected too. A similar option is also available to virtual server owners when backing up a single domain, to include all sub-servers with the same owner.
+Added the --user option to disable-feature.pl and enable-feature.pl to turn features off and on in all domains owned by some user, and the list-domains.pl to fnd domains by user.
