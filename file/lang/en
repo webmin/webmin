@@ -260,6 +260,7 @@ acl_button_makelink=New (create symbolic link)
 acl_button_rename=Rename (rename file)
 acl_button_sharing=Sharing (setup Samba and NFS file sharing)
 acl_button_mount=Mount (mount or un-mount filesystem)
+acl_button_preview=Preview (show scaled-down image)
 acl_button_copy=Copy, Cut and Paste
 acl_unarchive=Can extract uploaded archive files?
 acl_unarchive2=Always attempt to

@@ -14,8 +14,8 @@ if ($prein{'trust'}) {
 &init_config();
 do '../ui-lib.pl';
 
-@file_buttons = ( "save", "preview", "edit", "info", "acl", "attr", "ext", "search",
-		  "delete", "new", "upload", "mkdir", "makelink",
+@file_buttons = ( "save", "preview", "edit", "info", "acl", "attr", "ext",
+		  "search", "delete", "new", "upload", "mkdir", "makelink",
 		  "rename", "sharing", "mount", "copy" );
 
 if ($module_info{'usermin'}) {
