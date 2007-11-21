@@ -1711,7 +1711,7 @@ return "<input type=button onClick='ifield = form.$name; map = window.open(\"map
 # and file paths.
 sub get_maps_types_files
 {
-    $_[0] =~ /^([^:]+):(\/[^,\s]*),?(.*)/ || return ( );
+    $_[0] =~ /^\s*([^:]+):(\/[^,\s]*),?(.*)/ || return ( );
     (my $returntype, $returnvalue, my $recurse) = ( $1, $2, $3 );
 
     return ( [ $returntype, $returnvalue ],
