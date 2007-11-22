@@ -163,6 +163,12 @@ eacl_acls1=ACLs
 eacl_move=Move
 eacl_nopr=No proxy restrictions defined
 eacl_addpr=Add proxy restriction.
+eacl_noprr=No proxy reply restrictions defined
+eacl_addprr=Add proxy reply restriction.
+
+eacl_replypr=Reply proxy restrictions
+eacl_replynopr=No reply proxy restrictions defined
+
 eacl_icpr=ICP restrictions
 eacl_noicpr=No ICP restrictions defined
 eacl_addicpr=Add ICP restriction.
@@ -524,6 +530,13 @@ ahttp_dma=Don't match ACLs
 ahttp_return=ACL list
 
 sahttp_ftspr=Failed to save proxy restriction
+
+
+ahttp_replyheader=Create Proxy Reply Restriction
+ahttp_replyheader1=Edit Proxy Reply Restriction
+ahttp_replypr=Proxy Reply Restriction
+
+sahttp_ftspr=Failed to save proxy reply restriction
 
 aicp_header=Create ICP Restriction
 aicp_header1=Edit ICP Restriction

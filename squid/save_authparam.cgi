@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # save_authparam.cgi
 # Save authentication program options
 

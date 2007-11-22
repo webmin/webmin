@@ -16,3 +16,5 @@ Added checkboxes and buttons for deleting multiple delay pools, refresh rules, o
 Added support for Squid 2.6, including the new logformat and access_log directives for specifying multiple custom log files.
 ---- Changes since 1.340 ----
 Fixed transparent proxy setup in Squid 2.6.
+---- Changes since 1.380 ----
+Added support for editing proxy reply restrictions, thanks to Steve Williams.
