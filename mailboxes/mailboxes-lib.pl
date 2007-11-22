@@ -132,8 +132,28 @@ else {
 				    'mode' => 0,
 				    'sent' => $f eq "sentmail",
 				    'index' => scalar(@rv) } );
-			if (lc($f) eq "spam" || lc($f) eq ".spam") {
+
+			# Work out if this is a spam folder
+			if (lc($f) eq "xxxspam" || lc($f) eq ".spam") {
+				# Has spam in the name
 				$rv[$#rv]->{'spam'} = 1;
+				}
+			elsif (&foreign_check("virtual-server")) {
+				# Check if Virtualmin is defaulting to it
+				local %vconfig = &foreign_config(
+					"virtual-server");
+				local $sf = $vconfig{'spam_delivery'};
+				if ($sf) {
+					$sf =~ s/\$HOME/$uinfo[7]/g;
+					$sf =~ s/\~/$uinfo[7]/g;
+					if ($sf !~ /^\//) {
+						$sf = $uinfo[7]."/".$sf;
+						}
+					$sf =~ s/\/$//;
+					if ($p eq $sf) {
+						$rv[$#rv]->{'spam'} = 1;
+						}
+					}
 				}
 			}
 		}
