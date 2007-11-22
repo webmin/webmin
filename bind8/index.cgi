@@ -241,7 +241,7 @@ elsif (@zones) {
 	# Show zones under views
 	print &ui_subheading($text{'index_zones'});
 	foreach $vw (@views) {
-		local (@zorder, @zlinks, @ztitles, @zicons, @ztypes, @zsort, $len);
+		local (@zorder, @zlinks, @ztitles, @zicons, @ztypes, @zsort, @zdels, $len);
 		local @zv = grep { $_->{'view'} eq $vw->{'name'} } @zones;
 		next if (!@zv);
 		print "<b>",&text('index_inview',
