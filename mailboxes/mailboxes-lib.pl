@@ -134,7 +134,7 @@ else {
 				    'index' => scalar(@rv) } );
 
 			# Work out if this is a spam folder
-			if (lc($f) eq "xxxspam" || lc($f) eq ".spam") {
+			if (lc($f) eq "spam" || lc($f) eq ".spam") {
 				# Has spam in the name
 				$rv[$#rv]->{'spam'} = 1;
 				}
