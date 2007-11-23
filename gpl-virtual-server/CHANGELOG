@@ -371,3 +371,5 @@ Errors when extracting cPanel, Plesk and Ensim backup files are reported in more
 Sub-domains in cPanel backups can now be properly imported.
 Added a checkbox to the backup form to include sub-servers of those selected too. A similar option is also available to virtual server owners when backing up a single domain, to include all sub-servers with the same owner.
 Added the --user option to disable-feature.pl and enable-feature.pl to turn features off and on in all domains owned by some user, and the list-domains.pl to fnd domains by user.
+---- Changes since 3.49 ----
+Advanced autoreply options are hidden by default, to make the alias form less confusing.
