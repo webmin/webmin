@@ -29,6 +29,7 @@ edit_title2=Create Webmin User
 edit_readonly=This Webmin user should not be edited as it is managed by the $1 module. <a href='$2'>Click here</a> to bypass this warning and edit the user anyway - but beware that any manual changes may be over-written!
 edit_rights=Webmin user access rights
 edit_user=Username
+edit_cloneof=Cloning Webmin user
 edit_real=Real name
 edit_group=Member of group
 edit_pass=Password

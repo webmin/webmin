@@ -25,8 +25,9 @@ else {
 	&ui_print_header(undef, $text{'edit_title2'}, "");
 	foreach $u (&list_users()) {
 		if ($u->{'name'} eq $in{'clone'}) {
-			$user{'modules'} = $u->{'modules'};
-			$user{'lang'} = $u->{'lang'};
+			# Initial settings come from clone
+			%user = %$u;
+			delete($user{'name'});
 			}
 		if ($u->{'name'} eq $base_remote_user) {
 			$me = $u;
@@ -50,7 +51,7 @@ if ($in{'user'}) {
 	print &ui_hidden("oldpass", $user{'pass'});
 	}
 if ($in{'clone'}) {
-	print &ui_hidden("clone", $user{'clone'});
+	print &ui_hidden("clone", $in{'clone'});
 	}
 print &ui_hidden_table_start($text{'edit_rights'}, "width=100%", 2, "rights",
 			     1, [ "width=30%" ]);
@@ -59,6 +60,11 @@ print &ui_hidden_table_start($text{'edit_rights'}, "width=100%", 2, "rights",
 print &ui_table_row($text{'edit_user'},
 	$access{'rename'} || !$in{'user'} ?
 		&ui_textbox("name", $user{'name'}, 30) : $user{'name'});
+
+# Source user for clone
+if ($in{'clone'}) {
+	print &ui_table_row($text{'edit_cloneof'}, "<tt>$in{'clone'}</tt>");
+	}
 
 # Find and show parent group
 @glist = &list_groups();
@@ -73,7 +79,9 @@ if (@glist && %gcan && !$in{'risk'} && !$user{'risk'}) {
 		}
 	$memg = undef;
 	foreach $g (@glist) {
-		if (&indexof($user{'name'}, @{$g->{'members'}}) >= 0) {
+		if (&indexof($user{'name'}, @{$g->{'members'}}) >= 0 ||
+		    $in{'clone'} &&
+		     &indexof($in{'clone'}, @{$g->{'members'}}) >= 0) {
 			$memg = $g;
 			}
 		next if (!$gcan{$g->{'name'}} && $memg ne $g);
