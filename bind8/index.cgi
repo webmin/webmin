@@ -157,7 +157,7 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 			push(@ztitles, $zn." ".
 			       &text('index_view', "<tt>$z->{'view'}</tt>"));
 			push(@zdels, &can_edit_zone($z, $vw) ?
-				$z->{'index'}." ".$z->{'view'} : undef);
+				$z->{'index'}." ".$z->{'viewindex'} : undef);
 			}
 		else {
 			push(@zlinks, "edit_$t.cgi?index=$z->{'index'}");
