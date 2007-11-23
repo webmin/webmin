@@ -60,6 +60,6 @@ if (@http) {
 	}
 print "</form>\n";
 
-&ui_print_footer("edit_acl.cgi", $text{'ahttp_return'},
-	"", $text{'index_return'});
+&ui_print_footer("edit_acl.cgi?mode=http", $text{'ahttp_return'},
+		 "", $text{'index_return'});
 

@@ -246,5 +246,5 @@ else {
 &unlock_file($config{'squid_conf'});
 &webmin_log($in{'delete'} ? 'delete' : $acl ? 'modify' : 'create',
 	    'acl', $logacl->{'values'}->[0], \%in);
-&redirect("edit_acl.cgi");
+&redirect("edit_acl.cgi?mode=acls");
 

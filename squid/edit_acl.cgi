@@ -3,17 +3,26 @@
 # Display a list of all ACLs and restrictions using them
 
 require './squid-lib.pl';
+&ReadParse();
 $access{'actrl'} || &error($text{'eacl_ecannot'});
 &ui_print_header(undef, $text{'eacl_header'}, "", "edit_acl", 0, 0, 0, &restart_button());
-
 $conf = &get_config();
-print "<table border cellpadding=5 width=100%><tr>\n";
-print "<td rowspan=2 valign=top width=50%>\n";
+
+# Start tabs for various ACL settings
+$prog = "edit_acl.cgi";
+@tabs = ( [ "acls", $text{'eacl_acls'}, $prog."?mode=acls" ],
+	  [ "http", $text{'eacl_pr'}, $prog."?mode=http" ],
+	  [ "icp", $text{'eacl_icpr'}, $prog."?mode=icp" ] );
+if ($squid_version >= 2.5) {
+	push(@tabs, [ "external", $text{'eacl_ext'}, $prog."?mode=external" ],
+		    [ "reply", $text{'eacl_replypr'}, $prog."?mode=reply" ] );
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || "acls", 1);
 
 # List all defined access control directives
+print &ui_tabs_start_tab("mode", "acls");
 @acl = &find_config("acl", $conf);
 if (@acl) {
-	print &ui_subheading($text{'eacl_acls'});
 	print &ui_columns_start([ $text{'eacl_name'},
 				  $text{'eacl_type'},
 				  $text{'eacl_match'} ], 100);
@@ -43,13 +52,12 @@ foreach $t (sort { $acl_types{$a} cmp $acl_types{$b} } keys %acl_types) {
 	print "<option value=$t>$acl_types{$t}\n";
 	}
 print "</select></form>\n";
-
-print "</td><td valign=top width=50%>\n";
+print &ui_tabs_end_tab();
 
 # List all HTTP restrictions, based on ACLs
+print &ui_tabs_start_tab("mode", "http");
 @http = &find_config("http_access", $conf);
 if (@http) {
-	print &ui_subheading($text{'eacl_pr'});
 	@tds = ( "width=5", "width=10%", undef, "width=32" );
 	print &ui_form_start("delete_http_accesses.cgi", "post");
 	print "<a href=http_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
@@ -97,69 +105,12 @@ else {
 	print "<b>$text{'eacl_nopr'}</b><p>\n";
 	print "<a href=http_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
 	}
-
-print "</td></tr><tr><td valign=top width=50%>\n";
-
-# List all HTTP REPLY restrictions, based on ACLs
-if ($squid_version >= 2.5) {
-	@http_reply = &find_config("http_reply_access", $conf);
-	if (@http_reply) {
-		print &ui_subheading($text{'eacl_replypr'});
-		@tds = ( "width=5", "width=10%", undef, "width=32" );
-		print &ui_form_start("delete_http_reply_accesses.cgi", "post");
-		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
-		print &ui_columns_start([ "",
-					  $text{'eacl_act'},
-					  $text{'eacl_acls1'},
-					  $text{'eacl_move'} ], 100, 0, \@tds);
-		$hc = 0;
-		foreach $h (@http_reply) {
-			@v = @{$h->{'values'}};
-			if ($v[0] eq "allow") {
-				$v[0] = $text{'eacl_allow'};
-				}
-			else {
-				$v[0] = $text{'eacl_deny'};
-				}
-			local @cols;
-			push(@cols, "<a href=\"http_reply_access.cgi?index=$h->{'index'}\">".
-				    "$v[0]</a>");
-			push(@cols, &html_escape(join(' ', @v[1..$#v])));
-			local $mover;
-			if ($hc != @http_reply-1) {
-				$mover .= "<a href=\"move_http_reply.cgi?$hc+1\">".
-					  "<img src=images/down.gif border=0></a>";
-				}
-			else {
-				$mover .= "<img src=images/gap.gif>";
-				}
-			if ($hc != 0) {
-				$mover .= "<a href=\"move_http_reply.cgi?$hc+-1\">".
-					  "<img src=images/up.gif border=0></a>";
-				}
-			else {
-				$mover .= "<img src=images/gap.gif>";
-				}
-			push(@cols, $mover);
-			print &ui_checked_columns_row(\@cols, \@tds, "d",$h->{'index'});
-			$hc++;
-			}
-		print &ui_columns_end();
-		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
-		print &ui_form_end([ [ "delete", $text{'eacl_hdelete'} ] ]);
-		}
-	else {
-		print "<b>$text{'eacl_noprr'}</b><p>\n";
-		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addprr'}</a><br>\n";
-		}
-	}
-
-print "</td></tr><tr><td valign=top width=50%>\n";
+print &ui_tabs_end_tab();
 
 # List all ICP restrictions, based on ACLs
+print &ui_tabs_start_tab("mode", "icp");
 @icp = &find_config("icp_access", $conf);
 if (@icp) {
-	print &ui_subheading($text{'eacl_icpr'});
 	print &ui_form_start("delete_icp_accesses.cgi", "post");
 	@tds = ( "width=5", "width=10%", undef, "width=32" );
 	print "<a href=icp_access.cgi?new=1>$text{'eacl_addicpr'}</a><br>\n";
@@ -207,13 +158,66 @@ else {
 	print "<b>$text{'eacl_noicpr'}</b><p>\n";
 	print "<a href=icp_access.cgi?new=1>$text{'eacl_addicpr'}</a><br>\n";
 	}
+print &ui_tabs_end_tab();
 
-print "</td></tr>\n";
+# List all HTTP REPLY restrictions, based on ACLs
+if ($squid_version >= 2.5) {
+	print &ui_tabs_start_tab("mode", "reply");
+	@http_reply = &find_config("http_reply_access", $conf);
+	if (@http_reply) {
+		@tds = ( "width=5", "width=10%", undef, "width=32" );
+		print &ui_form_start("delete_http_reply_accesses.cgi", "post");
+		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
+		print &ui_columns_start([ "",
+					  $text{'eacl_act'},
+					  $text{'eacl_acls1'},
+					  $text{'eacl_move'} ], 100, 0, \@tds);
+		$hc = 0;
+		foreach $h (@http_reply) {
+			@v = @{$h->{'values'}};
+			if ($v[0] eq "allow") {
+				$v[0] = $text{'eacl_allow'};
+				}
+			else {
+				$v[0] = $text{'eacl_deny'};
+				}
+			local @cols;
+			push(@cols, "<a href=\"http_reply_access.cgi?index=$h->{'index'}\">".
+				    "$v[0]</a>");
+			push(@cols, &html_escape(join(' ', @v[1..$#v])));
+			local $mover;
+			if ($hc != @http_reply-1) {
+				$mover .= "<a href=\"move_http_reply.cgi?$hc+1\">".
+					  "<img src=images/down.gif border=0></a>";
+				}
+			else {
+				$mover .= "<img src=images/gap.gif>";
+				}
+			if ($hc != 0) {
+				$mover .= "<a href=\"move_http_reply.cgi?$hc+-1\">".
+					  "<img src=images/up.gif border=0></a>";
+				}
+			else {
+				$mover .= "<img src=images/gap.gif>";
+				}
+			push(@cols, $mover);
+			print &ui_checked_columns_row(\@cols, \@tds, "d",$h->{'index'});
+			$hc++;
+			}
+		print &ui_columns_end();
+		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
+		print &ui_form_end([ [ "delete", $text{'eacl_hdelete'} ] ]);
+		}
+	else {
+		print "<b>$text{'eacl_noprr'}</b><p>\n";
+		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addprr'}</a><br>\n";
+		}
+	print &ui_tabs_end_tab();
+	}
 
 if ($squid_version >= 2.5) {
 	# Show table of external ACL types
-	print "<tr> <td colspan=2>\n";
-	print &ui_subheading($text{'eacl_ext'});
+	print &ui_tabs_start_tab("mode", "external");
 	@ext = &find_config("external_acl_type", $conf);
 	if (@ext) {
 		print &ui_columns_start([ $text{'eacl_cname'},
@@ -234,10 +238,10 @@ if ($squid_version >= 2.5) {
 		print "<b>$text{'eacl_noext'}</b><p>\n";
 		}
 	print "<a href=edit_ext.cgi?new=1>$text{'eacl_addext'}</a>\n";
-	print "</td> </tr>\n";
+	print &ui_tabs_end_tab();
 	}
 
-print "</table><p>\n";
+print &ui_tabs_end(1);
 
 &ui_print_footer("", $text{'eacl_return'});
 

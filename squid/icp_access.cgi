@@ -60,6 +60,6 @@ if (@icp) {
 	}
 print "</form>\n";
 
-&ui_print_footer("edit_acl.cgi", $text{'aicp_return'},
-	"", $text{'index_return'});
+&ui_print_footer("edit_acl.cgi?mode=icp", $text{'aicp_return'},
+		 "", $text{'index_return'});
 

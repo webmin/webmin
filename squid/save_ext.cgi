@@ -65,5 +65,5 @@ else {
 &unlock_file($config{'squid_conf'});
 &webmin_log($in{'delete'} ? 'delete' : $ext ? 'modify' : 'create',
 	    'ext', $logext->{'values'}->[0]);
-&redirect("edit_acl.cgi");
+&redirect("edit_acl.cgi?mode=external");
 

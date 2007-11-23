@@ -350,6 +350,6 @@ print "<input type=submit value=$text{'acl_buttsave'}>\n";
 if (!$in{'type'}) { print "<input type=submit value=$text{'acl_buttdel'} name=delete>\n"; }
 print "</form>\n";
 
-&ui_print_footer("edit_acl.cgi", $text{'acl_return'},
-	"", $text{'index_return'});
+&ui_print_footer("edit_acl.cgi?mode=acls", $text{'acl_return'},
+		 "", $text{'index_return'});
 

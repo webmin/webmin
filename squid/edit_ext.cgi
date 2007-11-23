@@ -53,5 +53,5 @@ print "<input type=submit name=delete value='$text{'delete'}'>\n"
 	if (!$in{'new'});
 print "</form>\n";
 
-&ui_print_footer("edit_acl.cgi", $text{'acl_return'});
+&ui_print_footer("edit_acl.cgi?mode=external", $text{'acl_return'});
 

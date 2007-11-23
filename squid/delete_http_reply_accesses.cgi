@@ -24,4 +24,4 @@ foreach $d (sort { $b <=> $c } @d) {
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
 &webmin_log("delete", "http_replies", scalar(@d));
-&redirect("edit_acl.cgi");
+&redirect("edit_acl.cgi?mode=reply");

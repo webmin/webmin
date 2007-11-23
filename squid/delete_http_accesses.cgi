@@ -24,5 +24,5 @@ foreach $d (sort { $b <=> $c } @d) {
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
 &webmin_log("delete", "https", scalar(@d));
-&redirect("edit_acl.cgi");
+&redirect("edit_acl.cgi?mode=http");
 

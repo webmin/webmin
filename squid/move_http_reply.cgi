@@ -17,4 +17,4 @@ $http_relies[$newpos]->{'values'} = $oldv;
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
 &webmin_log("move", "http");
-&redirect("edit_acl.cgi");
+&redirect("edit_acl.cgi?mode=reply");

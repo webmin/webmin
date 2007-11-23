@@ -18,3 +18,4 @@ Added support for Squid 2.6, including the new logformat and access_log directiv
 Fixed transparent proxy setup in Squid 2.6.
 ---- Changes since 1.380 ----
 Added support for editing proxy reply restrictions, thanks to Steve Williams.
+Re-design the Access Control page to use tabs, to better split up the lists of ACLs, HTTP and ICP restrictions.
