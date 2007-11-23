@@ -1340,10 +1340,13 @@ elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
 else {
 	# Append to new folder file, or create in folder directory
 	local $m;
+	local @mdel;
 	foreach $m (@_) {
+		local $mcopy = { %$m };
 		&write_mail_folder($m, $dst);
+		push(@mdel, $mcopy);
 		}
-	&mailbox_delete_mail($src, @_);
+	&mailbox_delete_mail($src, @mdel);
 	}
 }
 
