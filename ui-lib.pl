@@ -499,7 +499,8 @@ local ($label, $value, $cols, $tds) = @_;
 $cols ||= 1;
 $tds ||= $main::ui_table_default_tds;
 local $rv;
-if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols) {
+if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
+    $main::ui_table_pos != 0) {
 	# If the requested number of cols won't fit in the number
 	# remaining, start a new row
 	$rv .= "</tr>\n";
@@ -798,6 +799,40 @@ sub ui_hidden_end
 return &theme_ui_hidden_end(@_) if (defined(&theme_ui_hidden_end));
 local ($name) = @_;
 return "</div>\n";
+}
+
+# ui_hidden_table_row_start(title, name, status, thisurl)
+# Similar to ui_hidden_start, but for use within a table started with
+# ui_table_start
+sub ui_hidden_table_row_start
+{
+return &theme_ui_hidden_table_row_start(@_)
+	if (defined(&theme_ui_hidden_table_row_start));
+local ($title, $name, $status, $url) = @_;
+local ($rv, $rrv);
+if (!$main::ui_hidden_start_donejs++) {
+	$rv .= &ui_hidden_javascript();
+	}
+local $divid = "hiddendiv_$name";
+local $openerid = "hiddenopener_$name";
+local $defimg = $status ? "open.gif" : "closed.gif";
+local $defclass = $status ? 'opener_shown' : 'opener_hidden';
+$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a>\n";
+$rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
+$rv .= &ui_table_row(undef, $rrv, $main::ui_table_cols);
+$rv .= "</table>\n";
+$rv .= "<div class='$defclass' id='$divid'>\n";
+$rv .= "<table width=100%>\n";
+return $rv;
+}
+
+# ui_hidden_table_row_end(name)
+sub ui_hidden_table_row_end
+{
+return &theme_ui_hidden_table_row_end(@_)
+	if (defined(&theme_ui_hidden_table_row_end));
+local ($name) = @_;
+return "</table></div><table width=100%>\n";
 }
 
 # ui_hidden_table_start(heading, [tabletags], [cols], name, status,
