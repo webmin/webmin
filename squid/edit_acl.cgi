@@ -101,55 +101,57 @@ else {
 print "</td></tr><tr><td valign=top width=50%>\n";
 
 # List all HTTP REPLY restrictions, based on ACLs
-@http_reply = &find_config("http_reply_access", $conf);
-if (@http_reply) {
-	print &ui_subheading($text{'eacl_replypr'});
-	@tds = ( "width=5", "width=10%", undef, "width=32" );
-	print &ui_form_start("delete_http_reply_accesses.cgi", "post");
-	print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
-	print &ui_columns_start([ "",
-				  $text{'eacl_act'},
-				  $text{'eacl_acls1'},
-				  $text{'eacl_move'} ], 100, 0, \@tds);
-	$hc = 0;
-	foreach $h (@http_reply) {
-		@v = @{$h->{'values'}};
-		if ($v[0] eq "allow") {
-			$v[0] = $text{'eacl_allow'};
+if ($squid_version >= 2.5) {
+	@http_reply = &find_config("http_reply_access", $conf);
+	if (@http_reply) {
+		print &ui_subheading($text{'eacl_replypr'});
+		@tds = ( "width=5", "width=10%", undef, "width=32" );
+		print &ui_form_start("delete_http_reply_accesses.cgi", "post");
+		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
+		print &ui_columns_start([ "",
+					  $text{'eacl_act'},
+					  $text{'eacl_acls1'},
+					  $text{'eacl_move'} ], 100, 0, \@tds);
+		$hc = 0;
+		foreach $h (@http_reply) {
+			@v = @{$h->{'values'}};
+			if ($v[0] eq "allow") {
+				$v[0] = $text{'eacl_allow'};
+				}
+			else {
+				$v[0] = $text{'eacl_deny'};
+				}
+			local @cols;
+			push(@cols, "<a href=\"http_reply_access.cgi?index=$h->{'index'}\">".
+				    "$v[0]</a>");
+			push(@cols, &html_escape(join(' ', @v[1..$#v])));
+			local $mover;
+			if ($hc != @http_reply-1) {
+				$mover .= "<a href=\"move_http_reply.cgi?$hc+1\">".
+					  "<img src=images/down.gif border=0></a>";
+				}
+			else {
+				$mover .= "<img src=images/gap.gif>";
+				}
+			if ($hc != 0) {
+				$mover .= "<a href=\"move_http_reply.cgi?$hc+-1\">".
+					  "<img src=images/up.gif border=0></a>";
+				}
+			else {
+				$mover .= "<img src=images/gap.gif>";
+				}
+			push(@cols, $mover);
+			print &ui_checked_columns_row(\@cols, \@tds, "d",$h->{'index'});
+			$hc++;
 			}
-		else {
-			$v[0] = $text{'eacl_deny'};
-			}
-		local @cols;
-		push(@cols, "<a href=\"http_reply_access.cgi?index=$h->{'index'}\">".
-			    "$v[0]</a>");
-		push(@cols, &html_escape(join(' ', @v[1..$#v])));
-		local $mover;
-		if ($hc != @http_reply-1) {
-			$mover .= "<a href=\"move_http_reply.cgi?$hc+1\">".
-			          "<img src=images/down.gif border=0></a>";
-			}
-		else {
-			$mover .= "<img src=images/gap.gif>";
-			}
-		if ($hc != 0) {
-			$mover .= "<a href=\"move_http_reply.cgi?$hc+-1\">".
-			          "<img src=images/up.gif border=0></a>";
-			}
-		else {
-			$mover .= "<img src=images/gap.gif>";
-			}
-		push(@cols, $mover);
-		print &ui_checked_columns_row(\@cols, \@tds, "d",$h->{'index'});
-		$hc++;
+		print &ui_columns_end();
+		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
+		print &ui_form_end([ [ "delete", $text{'eacl_hdelete'} ] ]);
 		}
-	print &ui_columns_end();
-	print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addpr'}</a><br>\n";
-	print &ui_form_end([ [ "delete", $text{'eacl_hdelete'} ] ]);
-	}
-else {
-	print "<b>$text{'eacl_noprr'}</b><p>\n";
-	print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addprr'}</a><br>\n";
+	else {
+		print "<b>$text{'eacl_noprr'}</b><p>\n";
+		print "<a href=http_reply_access.cgi?new=1>$text{'eacl_addprr'}</a><br>\n";
+		}
 	}
 
 print "</td></tr><tr><td valign=top width=50%>\n";
