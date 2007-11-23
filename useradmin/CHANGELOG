@@ -35,3 +35,4 @@ Use the nscd -i command to refresh its cache after adding a user or group.
 In a user batch file, # is only treated as a comment at the start of a line.
 ---- Changes since 1.380 ----
 The real base directory for homes is now respected when batch creating users.
+Improved MD5 encryption auto-detection with newer PAM config files.
