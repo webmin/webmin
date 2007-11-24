@@ -6,6 +6,7 @@ index_return=service list
 index_none=No PAM configuration files were found on your system in the directory $1. Maybe PAM is not supported, or your <a href='$2'>module configuration</a> is incorrect.
 
 desc_su=Switch user
+desc_su-l=Switch user (with login)
 desc_login=Local or remote login
 desc_samba=Samba Windows file server
 desc_imap=IMAP mail server
@@ -69,6 +70,17 @@ desc_proftpd=ProFTPd file transfer server
 desc_qpopper=$desc_qpop
 desc_dovecot=POP / IMAP mail server
 desc_cron=Scheduled commands daemon
+desc_runuser=Run command as user
+desc_runuser-l=Run command as user (with login)
+desc_postgresql=PostgreSQL database
+desc_crond=Cron daemon
+desc_smtp=SMTP authentication
+desc_smtp.postfix=Postfix SMTP authentication
+desc_smtp.sendmail=Sendmail SMTP authentication
+desc_config-util=Configuration utilities
+desc_newrole=SELinux new role
+desc_radius=RADIUS dialup login
+desc_pptpconfig=Point-to-point tunneling protocol
 
 edit_title=Edit PAM Service
 edit_header=PAM service details
@@ -81,11 +93,13 @@ edit_mod=PAM module
 edit_desc=Description
 edit_args=Parameters
 edit_addmod=Add step for:
+edit_addinc=Add included service
 edit_control=Failure level
-edit_none=No PAM modules specified for this step
+edit_none=No PAM modules specified for this step.
 edit_delete=Delete PAM service
 edit_move=Move
 edit_return=PAM service
+edit_inc=Include service $1
 
 pam_pwdb.so=Unix password authentication
 pam_securetty.so=Secure TTY check for root
@@ -247,4 +261,9 @@ log_mod_modify=Modified PAM module $1 in service $2
 log_mod_delete=Deleted PAM module $1 in service $2
 log_mod_move=Swapped PAM modules in service $3
 log_mod_move_l=Swapped PAM modules $1 and $2 in service $3
+
+inc_edit=Edit Included Service
+inc_create=Create Included Service
+inc_header=Included PAM service details
+inc_inc=Included PAM service
 

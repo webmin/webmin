@@ -4,6 +4,12 @@
 
 require './pam-lib.pl';
 &ReadParse();
+if ($in{'inc'}) {
+	# Redirect to include form
+	&redirect("edit_inc.cgi?idx=$in{'idx'}&type=$in{'type'}");
+	return;
+	}
+
 @pam = &get_pam_config();
 $pam = $pam[$in{'idx'}];
 if ($in{'midx'} ne '') {
@@ -20,42 +26,39 @@ else {
 	}
 
 
-print "<form action=save_mod.cgi>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=midx value='$in{'midx'}'>\n";
-print "<input type=hidden name=_module value='$in{'module'}'>\n";
-print "<input type=hidden name=_type value='$in{'type'}'>\n";
+print &ui_form_start("save_mod.cgi");
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("midx", $in{'midx'});
+print &ui_hidden("_module", $in{'module'});
+print &ui_hidden("_type", $in{'type'});
+print &ui_table_start($text{'mod_header'}, undef, 4);
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'mod_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-
-print "<tr> <td><b>$text{'mod_name'}</b></td>\n";
+# PAM service name
 $t = $text{'desc_'.$pam->{'name'}};
-print "<td><tt>",&html_escape($pam->{'name'}),"</tt> ",
-		$pam->{'desc'} ? "($pam->{'desc'})" :
-		$t ? "($t)" : "","</td>\n";
+print &ui_table_row($text{'mod_name'},
+		    "<tt>".&html_escape($pam->{'name'})."</tt> ".
+		    ($pam->{'desc'} ? "($pam->{'desc'})" : $t ? "($t)" : ""));
 
-print "<td><b>$text{'mod_mod'}</b></td>\n";
+# PAM module name
 $t = $text{$module};
-print "<td><tt>$module</tt> ",$t ? "($t)" : "","</td> </tr>\n";
+print &ui_table_row($text{'mod_mod'},
+		    "<tt>$module</tt> ".($t ? "($t)" : ""));
 
-print "<tr> <td><b>$text{'mod_type'}</b></td>\n";
-print "<td>",$text{'mod_type_'.$type},"</td>\n";
+print &ui_table_row($text{'mod_type'},
+		    $text{'mod_type_'.$type});
 
-print "<td><b>$text{'mod_control'}</b></td>\n";
-print "<td><select name=control>\n";
-foreach $c ('required', 'requisite', 'sufficient', 'optional') {
-	printf "<option value=%s %s>%s (%s)\n",
-		$c, $mod->{'control'} eq $c ? 'selected' : '',
-		$text{'control_'.$c}, $text{'control_desc_'.$c};
-	}
-print "</select></td> </tr>\n";
+# Control mode
+print &ui_table_row($text{'mod_control'},
+	    &ui_select("control", $mod->{'control'},
+		[ map { [ $_, $text{'control_'.$_}." (".
+			      $text{'control_desc_'.$_}.")" ] }
+		      ('required', 'requisite', 'sufficient', 'optional') ],
+		1, 0, $in{'midx'} eq '' ? 0 : 1));
 
 if (-r "./$module.pl") {
 	do "./$module.pl";
 	if (!$module_has_no_args) {
-		print "<tr> <td colspan=4><hr></td> </tr>\n";
+		print &ui_table_hr();
 		foreach $a (split(/\s+/, $mod->{'args'})) {
 			if ($a =~ /^([^\s=]+)=(\S*)$/) {
 				$args{$1} = $2;
@@ -68,22 +71,22 @@ if (-r "./$module.pl") {
 		}
 	}
 else {
-	print "<tr> <td colspan=4><hr></td> </tr>\n";
-	print "<tr> <td><b>$text{'mod_args'}</b></td>\n";
-	print "<td colspan=3><input name=args size=50 ",
-	      "value='$mod->{'args'}'></td> </tr>\n";
+	# Text-only args
+	print &ui_table_hr();
+	print &ui_table_row($text{'mod_args'},
+			    &ui_textbox("args", $mod->{'args'}, 60), 3);
 	}
 
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
-print "<td><input type=submit value='$text{'save'}'></td>\n";
+print &ui_table_end();
+
 if ($in{'midx'} ne '') {
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</tr></table>\n";
-print "</form>\n";
+else {
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
+	}
 
 &ui_print_footer("edit_pam.cgi?idx=$in{'idx'}", $text{'edit_return'},
-	"", $text{'index_return'});
+		 "", $text{'index_return'});
 
