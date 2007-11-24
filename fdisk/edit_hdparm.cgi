@@ -31,6 +31,13 @@ foreach $argument ( 'a', 'd', 'r', 'k', 'u', 'm', 'c' )
 }
 
 print(
+"<script type=\"text/javascript\" src=\"range.js\"></script>
+<script type=\"text/javascript\" src=\"timer.js\"></script>
+<script type=\"text/javascript\" src=\"slider.js\"></script>
+<link type=\"text/css\" rel=\"StyleSheet\" href=\"winclassic.css\" />");
+
+
+print(
 "<form action=apply_hdparm.cgi><table border cols=1 width=\"100%\"><input type=hidden name=drive value=", $d -> { 'device' }, ">",
     "<tr ", $tb, ">",
     	"<td><b>", $d->{'desc'}," (",$d->{'device'}.") : ",$text{ 'hdparm_label' }, "</b></td>",
@@ -52,7 +59,51 @@ print(
 		"<td>", &l_radio( $text{ 'hdparm_conf_r' }, 'r', @yesno ), "</td>",
 		"<td>", &l_radio( $text{ 'hdparm_conf_P' }, 'P', @yesno ), "</td>",
 	    "</tr><tr>",
-		"<td>", &hlink( "<b>". $text{ 'hdparm_conf_S' }. "</b>", "S" ), " ", &p_entry( "S", 6, $hdparm{ 'S' } ), "</td>",
+		"<td>", &hlink( "<b>". $text{ 'hdparm_conf_S' }. "</b>", "S" ), "</td>", "<td>", &p_slider( "S", 0, 251, 0), 
+"<script type=\"text/javascript\">
+
+var sliderEl = document.getElementById ?
+                  document.getElementById(\"S-slider\") : null;
+var inputEl = document.forms[0][\"S\"];
+
+var s = new Slider(sliderEl, inputEl);
+
+function format_time(t_sec) {
+	
+	if ( t_sec >= 3600 ) {
+		var t_hour = (t_sec - (t_sec % 3600))/3600;
+		return t_hour + \" hours \" + format_time(t_sec % 3600);
+	} else if ( t_sec >= 60 ){
+		var t_min = (t_sec - (t_sec % 60))/60;
+		return t_min + \" minutes \" + format_time(t_sec % 60);;
+	} else if ( t_sec > 0 ){
+		return t_sec + \" seconds \";
+	} else {
+		return \" \";
+	}
+};
+
+s.onchange = function () {
+	var flag = s.getValue();
+	var t_sec = 0;
+	if (flag < 241) {
+		t_sec = flag * 5;
+	} else {
+		t_sec = (flag -240) * 30 * 60;
+	}
+
+	if (t_sec == 0) {
+		document.getElementById(\"S-text-id\").value = \"always on\";
+	} else {
+		document.getElementById(\"S-text-id\").value = format_time(t_sec);
+	}
+};
+
+s.setValue(0);
+s.setMinimum(0);
+s.setMaximum(251);
+
+</script></td>",
 	    "</tr>",
 	"</table><table>",
 	    "<tr><td>", &l_radio( $text{ 'hdparm_conf_c' }, 'c', ( "0", $text{ 'hdparm_disable' }, "1", $text{ 'hdparm_enable' }, "3", $text{ 'hdparm_enable_special' } ) ), "</td></tr>",
@@ -90,11 +141,24 @@ sub p_radio
     return $out;
 }
 
+sub p_slider
+{
+   my ( $name, $min, $max, $default ) = @_;
+   local $out;
+
+   $out .= "<div class=\"slider\" id=\"". $name ."-slider\" tabIndex=\"1\">";
+   $out .= "<input class=\"slider-input\" id=\"".$name."-slider-input\"";
+   $out .= " name=\"".$name."\"/></div></td><td>";
+   $out .= "<input type=text name=\"".$name."-text\" id=\"".$name."-text-id\" readonly value=\"This field is not used\" >";
+
+   return $out;
+}
+
 sub p_entry
 {
     my ( $name, $size, $value ) = @_;
 
-    $size ? return "</td> <td><input name=". $name. " size=". $size." value=\"". $value."\">" : return "</td> <td><input name=". $name. " value=\"". $value."\">";
+    $size ? return "</td> <td><input name=\"". $name. "\" id=\"". $name. "-id\" size=". $size." value=\"". $value."\">" : return "</td> <td><input name=\"". $name. "\" id=\"". $name. "-id\" value=\"". $value."\">";
 }
 
 sub p_select_wdl

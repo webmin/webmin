@@ -16,3 +16,5 @@ Added support for formatting FATX filesystems.
 Added a display of each partitions UUID, and added code to support their detection.
 ---- Changes since 1.360 ----
 Link to SMART module for SCSI disks too, and IDE params page for SATA disks pretending to the SCSI.
+---- Changes since 1.380 ----
+Changed the IDE standby timeout to use a slider, thanks to Jean-Christophe Dubois.
