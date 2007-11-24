@@ -339,7 +339,7 @@ printf "<td><input name=iface value=\"%s\" size=35></td> </tr>\n",
 	$drv->{'mode'} == 2 ? $drv->{'prog'} : "";
 
 if (&has_ghostscript()) {
-	local $out = `$config{'gs_path'} -help 2>&1`;
+	local $out = &backquote_command("$config{'gs_path'} -help 2>&1", 1);
 	if ($out =~ /Available devices:\n((\s+.*\n)+)/i) {
 		print "<tr> <td valign=top>\n";
 		printf "<input type=radio name=drv value=1 %s>\n",
@@ -475,7 +475,7 @@ return 0;
 sub list_uniprint
 {
 local (@rv, $f, $d);
-local $out = `$config{'gs_path'} -help 2>&1`;
+local $out = &backquote_command("$config{'gs_path'} -help 2>&1", 1);
 if ($out =~ /Search path:\n((\s+.*\n)+)/i) {
 	foreach $d (split(/\s+/, $1)) {
 		next if ($d !~ /^\//);
@@ -582,6 +582,7 @@ return $_[0]->{'desc'} ? $_[0]->{'desc'} : $_[0]->{'host'};
 sub save_on_cluster
 {
 return ( ) if (!$config{'servers'});
+return ( ) if (&is_readonly_mode());
 local ($new, $prn, $drv, $conn, $webmin, $mode) = @_;
 &remote_error_setup(\&slave_error_handler);
 local $slave;
@@ -621,6 +622,7 @@ return @slaveerrs;
 sub delete_on_cluster
 {
 return ( ) if (!$config{'servers'});
+return ( ) if (&is_readonly_mode());
 local ($prn) = @_;
 &remote_error_setup(\&slave_error_handler);
 local $slave;

@@ -197,7 +197,7 @@ else {
 	# copy the standard filter into place
 	&lock_file("$sd/filter");
 	unlink("$sd/filter");
-	system("cp $base_driver $sd/filter");
+	&copy_source_dest("$base_driver", "$sd/filter");
 	&unlock_file("$sd/filter");
 	return "$sd/filter";
 	}

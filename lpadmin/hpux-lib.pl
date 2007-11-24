@@ -15,7 +15,7 @@ while(<STAT>) {
 close(STAT);
 
 # make models executable
-`chmod 755 $config{'model_path'}/*`;
+&system_logged("chmod 755 $config{'model_path'}/* >/dev/null 2>&1");
 
 return &unique(@rv);
 }
@@ -26,7 +26,7 @@ sub get_printer
 {
 local($stat, @rv, $body1, $body2, $avl, $con, $sys, %prn, $_, $out);
 local $esc = quotemeta($_[0]);
-$out = `lpstat -p$esc`;
+$out = &backquote_command("lpstat -p$esc", 1);
 if ($out =~ /^printer\s+(\S+)\s+(.*)\n(.*)\n(.*)$/) {
 	# printer exists
 	$prn{'name'} = $1;
@@ -56,7 +56,7 @@ if (!$prn{'enabled'} && $body1 =~ /^\s+(.*)/) {
 
 if (!$_[1]) {
 	# request availability
-	$avl = `lpstat -a$esc 2>&1`;
+	$avl = &backquote_command("lpstat -a$esc 2>&1", 1);
 	if ($avl =~ /^\S+\s+not accepting.*\n\s+(.*)/) {
 		$prn{'accepting'} = 0;
 		$prn{'accepting_why'} = $1;
@@ -68,7 +68,7 @@ if (!$_[1]) {
 	}
 
 # request connection
-$con = `lpstat -v$esc 2>&1`;
+$con = &backquote_command("lpstat -v$esc 2>&1", 1);
 if ($con =~ /^device for \S+:\s+(\S+)\n\s+(remote to:)\s+(\S+)\s+(on)\s+(\S+)/) {
 	$prn{'rhost'} = $5;
 	$prn{'rqueue'} = $3;
@@ -76,8 +76,10 @@ if ($con =~ /^device for \S+:\s+(\S+)\n\s+(remote to:)\s+(\S+)\s+(on)\s+(\S+)/) 
 elsif ($con =~ /^device for \S+:\s+(\S+)/) { $prn{'dev'} = $1; }
 
 # Check if this is the default printer
-`lpstat -d 2>&1` =~ /destination: (\S+)/;
-if ($1 eq $prn{'name'}) { $prn{'default'} = 1; }
+if (&backquote_command("$lpstat -d 2>&1", 1) =~ /destination:\s+(\S+)/ &&
+    $1 eq $prn{'name'}) {
+	$prn{'default'} = 1;
+	}
 
 return \%prn;
 }
@@ -130,7 +132,7 @@ if ($drv->{'mode'} == 1) {
 	$desc = $drv->{'desc'};
 	}
 elsif ($drv->{'mode'} == 2) {
-	$out = `head $drv->{'prog'} | grep -e interface  -e Printer -e /model/`;
+	$out = &backquote_command("head $drv->{'prog'} | grep -e interface -e Printer -e /model/", 1);
 	if ($out =~ /interface for\s+(.*)/) { $desc = $1; }
 	elsif ($out =~ /\s+(\S.*)interface/) { $desc = $1; }
 	elsif ($out =~ /Printer Command Language level\s+(\S+)/) { $desc = "PCL$1"; }
@@ -155,7 +157,7 @@ return $_[0] !~ /^(allow|alias|ctype|banner|desc|editdest|msize|direct|rnoqueue|
 sub list_classes
 {
 local($stat, %rv);
-$stat = `lpstat -c 2>&1`;
+$stat = &backquote_command("lpstat -c 2>&1", 1);
 while($stat =~ /^members of class (\S+):\n((\s+\S+\n)+)([\000-\377]*)$/) {
 	$stat = $4;
 	$rv{$1} = [ grep { $_ ne "" } split(/\s+/, $2) ];
@@ -172,7 +174,8 @@ local(%prn, $cmd, $out, $model, $dummy, $scheduler);
 local $wdrv = &is_windows_driver($prn{'iface'});
 local $hdrv = &is_hpnp_driver($prn{'iface'});
 $scheduler = &sched_running();
-$dummy = "webmin.tmp"; `touch $config{'model_path'}/$dummy`;
+$dummy = "webmin.tmp";
+&system_logged("touch $config{'model_path'}/$dummy");
 
 # create lpadmin command
 local $esc = quotemeta($prn{'name'});
@@ -237,24 +240,28 @@ if ($?) { &error("lpsched failed : <pre>$out</pre>"); }
 ## Link to windows webmin driver
 &lock_file("$hpux_iface_path/$prn{'name'}");
 if ($wdrv) {
-	`rm $hpux_iface_path/$esc`;
-	`ln -s $drivers_directory/$esc.smb $hpux_iface_path/$esc`;
+	&unlink_file("$hpux_iface_path/$prn{'name'}");
+	&symlink_file("$drivers_directory/$prn{'name'}.smb",
+			"$hpux_iface_path/$prn{'name'}");
 	}
 
 ## Link to webmin hpnp driver
 if ($hdrv) {
-	`rm $hpux_iface_path/$esc`;
-	`ln -s $drivers_directory/$esc.hpnp $hpux_iface_path/$esc`;
+	&unlink_file("$hpux_iface_path/$prn{'name'}");
+	&symlink_file("$drivers_directory/$prn{'name'}.hpnp",
+			"$hpux_iface_path/$prn{'name'}");
 	}
 
 ## Link to webmin driver
 if ($prn{'iface'} eq "$drivers_directory/$prn{'name'}" && !$wdrv) {
-	`rm $hpux_iface_path/$esc`;
-	`ln -s $drivers_directory/$esc $hpux_iface_path/$esc`;
+	&unlink_file("$hpux_iface_path/$prn{'name'}");
+	&symlink_file("$drivers_directory/$prn{'name'}",
+			"$hpux_iface_path/$prn{'name'}");
 	}
 &unlock_file("$hpux_iface_path/$prn{'name'}");
+
 &lock_file("$config{'model_path'}/$dummy");
-`rm $config{'model_path'}/$dummy`;
+&unlink_file("$config{'model_path'}/$dummy");
 &unlock_file("$config{'model_path'}/$dummy");
 
 # start scheduler
@@ -340,7 +347,7 @@ sleep(1);
 # Returns 1 if running and 0 if not running
 sub sched_running
 {
-local $out = `lpstat -r 2>&1`;
+local $out = &backquote_command("lpstat -r 2>&1", 1);
 if ($out =~ /not/) { return 0; }
 else { return 1; }
 }

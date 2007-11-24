@@ -14,7 +14,7 @@ foreach $j (@jobs) {
 if ($job) {
 	# print job exists.. dump it
 	@pf = @{$job->{'printfile'}};
-	$type = `file $pf[0]`;
+	$type = &backquote_command("file ".quotemeta($pf[0]), 1);
 	if ($type =~ /postscript/i) {
 		print "Content-type: application/postscript\n";
 		}

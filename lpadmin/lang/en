@@ -118,6 +118,7 @@ jobs_bytes=bytes
 jobs_test=Print Test Page
 jobs_cancelsel=Cancel Selected Jobs
 jobs_on=On printer $1
+jobs_return=list of print jobs
 
 cancel_ecannot=You are not allowed to cancel print jobs
 cancel_err=Failed to cancel print job

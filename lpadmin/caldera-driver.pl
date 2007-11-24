@@ -174,7 +174,7 @@ else {
 	&lock_file($drv);
 	if ($gconfig{'os_version'} >= 2.4) {
 		# Create the 2.4 driver program
-		system("cp $base_driver $drv");
+		&copy_source_dest($base_driver, $drv);
 		}
 	else {
 		# Create the 2.3 driver program

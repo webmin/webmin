@@ -63,7 +63,7 @@ closedir(DIR);
 print "</select></td> </tr>\n";
 
 if (&has_ghostscript()) {
-	local $out = `$config{'gs_path'} -help 2>&1`;
+	local $out = &backquote_command("$config{'gs_path'} -help 2>&1", 1);
 	if ($out =~ /Available devices:\n((\s+.*\n)+)/) {
 		print "<tr> <td valign=top>\n";
 		printf "<input type=radio name=drv value=1 %s>\n",

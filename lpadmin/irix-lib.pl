@@ -22,7 +22,7 @@ sub get_printer
 {
 local($stat, @rv, $body, $body, $avl, $con, $sys, %prn, $_, $out);
 local $esc = quotemeta($_[0]);
-$out = `/usr/bin/lpstat -p$esc`;
+$out = &backquote_command("/usr/bin/lpstat -p$esc", 1);
 if ($out =~ /^printer\s+(\S+)\s*(.*)\s+(enabled|disabled)\s+since\s+(.+?)\n?(.*)?$/) {
 	# printer exists
 	$prn{'name'} = $1;
@@ -51,7 +51,7 @@ if (!$prn{'enabled'} && $body =~ /^\s+(.*)/) {
 
 if (!$_[1]) {
 	# request availability
-	$avl = `/usr/bin/lpstat -a$esc 2>&1`;
+	$avl = &backquote_command("/usr/bin/lpstat -a$esc 2>&1", 1);
 	if ($avl =~ /^\S+\s+not accepting.*\n\s+(.*)/) {
 		$prn{'accepting'} = 0;
 		$prn{'accepting_why'} = $1;
@@ -63,7 +63,7 @@ if (!$_[1]) {
 	}
 
 # request connection
-$con = `/usr/bin/lpstat -v$esc 2>&1`;
+$con = &backquote_command("/usr/bin/lpstat -v$esc 2>&1", 1);
 if ($con =~ /^device for \S+:\s+(\S+)\n\s+(remote to:)\s+(\S+)\s+(on)\s+(\S+)/) {
 	$prn{'rhost'} = $5;
 	$prn{'rqueue'} = $3;
@@ -71,8 +71,10 @@ if ($con =~ /^device for \S+:\s+(\S+)\n\s+(remote to:)\s+(\S+)\s+(on)\s+(\S+)/) 
 elsif ($con =~ /^device for \S+:\s+(\S+)/) { $prn{'dev'} = $1; }
 
 # Check if this is the default printer
-`/usr/bin/lpstat -d 2>&1` =~ /destination: (\S+)/;
-if ($1 eq $prn{'name'}) { $prn{'default'} = 1; }
+if (&backquote_command("$lpstat -d 2>&1", 1) =~ /destination:\s+(\S+)/ &&
+    $1 eq $prn{'name'}) {
+	$prn{'default'} = 1;
+	}
 
 return \%prn;
 }
@@ -120,7 +122,7 @@ if ($drv->{'mode'} == 1) {
 	$desc = $drv->{'desc'};
 	}
 elsif ($drv->{'mode'} == 2) {
-	$out = `head $drv->{'prog'} | grep -e interface  -e Printer -e /model/`;
+	$out = &backquote_command("head $drv->{'prog'} | grep -e interface -e Printer -e /model/", 1);
 	if ($out =~ /interface for\s+(.*)/) { $desc = $1; }
 	elsif ($out =~ /\s+(\S.*)interface/) { $desc = $1; }
 	elsif ($out =~ /Printer Command Language level\s+(\S+)/) { $desc = "PCL$1"; }
@@ -145,7 +147,7 @@ return $_[0] !~ /^(allow|alias|ctype|banner|desc|editdest|msize|direct|rnoqueue|
 sub list_classes
 {
 local($stat, %rv);
-$stat = `/usr/bin/lpstat -c 2>&1`;
+$stat = &backquote_command("/usr/bin/lpstat -c 2>&1", 1);
 while($stat =~ /^members of class (\S+):\n((\s+\S+\n)+)([\000-\377]*)$/) {
 	$stat = $4;
 	$rv{$1} = [ grep { $_ ne "" } split(/\s+/, $2) ];
@@ -214,7 +216,7 @@ $out = &backquote_logged("$cmd 2>&1");
 if ($?) { &error("lpadmin failed : <pre>$out</pre>"); }
 
 if ($prn{'rhost'}) {
-  `rm $irix_iface_path/$esc.tmp`;
+  &unlink_file("$irix_iface_path/$prn{'name'}.tmp");
 }
 
 ## Link to windows webmin driver
@@ -358,7 +360,7 @@ sleep(1);
 # Returns 1 if running and 0 if not running
 sub sched_running
 {
-local $out = `lpstat -r 2>&1`;
+local $out = &backquote_command("lpstat -r 2>&1", 1);
 if ($out =~ /not/) { return 0; }
 else { return 1; }
 }

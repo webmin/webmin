@@ -35,7 +35,7 @@ foreach $l (&list_printcap()) {
 		if (!$_[1]) {
 			# call lpc to get status
 			local $esc = quotemeta($prn{'name'});
-			$out = `lpc status $esc 2>&1`;
+			$out = &backquote_command("lpc status $esc 2>&1", 1);
 			$prn{'accepting'} = ($out =~ /queuing is enabled/);
 			$prn{'enabled'} = ($out =~ /printing is enabled/);
 			}
@@ -227,7 +227,7 @@ sub apply_status
 {
 local($out);
 local $esc = quotemeta($_[0]->{'name'});
-$out = `lpc status $esc 2>&1`;
+$out = &backquote_command("lpc status $esc 2>&1", 1);
 if ($_[0]->{'enabled'} && $out !~ /printing is enabled/)
 	{ &backquote_logged("lpc up $esc"); }
 elsif (!$_[0]->{'enabled'} && $out =~ /printing is enabled/)

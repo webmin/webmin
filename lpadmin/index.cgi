@@ -212,7 +212,7 @@ if (&foreign_check("servers")) {
 	}
 if ($access{'cluster'} && @allservers) {
 	print &ui_buttons_row("cluster.cgi",
-			      $text{'index_cluster'}, $text{'index_clusterdesc'});
+		      $text{'index_cluster'}, $text{'index_clusterdesc'});
 	}
 
 print &ui_buttons_end();

@@ -34,7 +34,7 @@ $add_error_msg = join("", @_);
 }
 &remote_error_setup(\&add_error);
 
-# Make sure each host is set up for firewalling
+# Make sure each host is set up for printer administration
 foreach $s (@add) {
 	$add_error_msg = undef;
 	local $host = { 'id' => $s->{'id'} };
@@ -60,7 +60,8 @@ foreach $s (@add) {
 		next;
 		}
 
-	@printers = &remote_foreign_call($s->{'host'}, "lpadmin", "list_printers");
+	@printers = &remote_foreign_call($s->{'host'}, "lpadmin",
+					 "list_printers");
 	print &text('add_ok', $s->{'host'}, scalar(@printers)),"<p>\n";
 	&add_cluster_server($s);
 	}

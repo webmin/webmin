@@ -46,7 +46,7 @@ foreach $l (&list_printcap()) {
 		if (!$_[1]) {
 			# call lpc to get status
 			local $esc = quotemeta($prn{'name'});
-			$out = `lpc -P$esc status 2>&1`;
+			$out = &backquote_command("lpc -P$esc status 2>&1", 1);
 			if ($out =~ /\n(\S+)\s+(\S+)\s+(\S+)/) {
 				$prn{'accepting'} = $3 eq 'enabled';
 				$prn{'enabled'} = $2 eq 'enabled';
@@ -338,7 +338,7 @@ else {
 # Returns the pid if lpsched is running, 0 if not, -1 if cannot be stopped
 sub sched_running
 {
-local $out = `lpc lpd all 2>&1`;
+local $out = &backquote_command("lpc lpd all 2>&1", 1);
 return $out =~ /pid\s+(\d+)/ ? $1 : 0;
 }
 

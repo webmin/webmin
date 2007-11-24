@@ -154,7 +154,7 @@ else {
 	&unlock_file($aps);
 	if (!-r "$apsfilter_base.$device") {
 		&lock_file("$apsfilter_base.$device");
-		local $conf = `cat $apsfilter_config`;
+		local $conf = &read_file_contents($apsfilter_config);
 		$conf =~ s/<gs_device_name>/$device/g;
 		&open_tempfile(CONF, ">$apsfilter_base.$device");
 		&print_tempfile(CONF, $conf);
@@ -202,7 +202,7 @@ if ($drv->{'mode'} == 2 || 1) {
 			$u, $drv->{'device'} eq $u ? 'selected' : '', $d->[1];
 		$found++ if ($drv->{'device'} eq $u);
 		}
-	local $out = `$config{'gs_path'} -help 2>&1`;
+	local $out = &backquote_command("$config{'gs_path'} -help 2>&1", 1);
 	$out =~ /Available devices:\n((\s+.*\n)+)/i;
 	foreach $d (split(/\s+/, $1)) {
 		if ($driver{$d}) {
@@ -255,7 +255,7 @@ else {
 	printf "<option value=ps %s>Postscript\n",
 		$drv->{'device'} eq 'PS' ? 'selected' : '';
 	$found++ if ($drv->{'device'} eq 'PS');
-	local $out = `$config{'gs_path'} -help 2>&1`;
+	local $out = &backquote_command("$config{'gs_path'} -help 2>&1", 1);
 	$out =~ /Available devices:\n((\s+.*\n)+)/i;
 	foreach $d (split(/\s+/, $1)) {
 		if ($d ne 'stp' && $driver{$d}) {

@@ -27,7 +27,7 @@ sub get_printer
 {
 local($stat, @rv, $body, $avl, $con, $sys, %prn, $_, $out);
 local $esc = quotemeta($_[0]);
-$out = `$lpstat -l -p $esc`;
+$out = &backquote_command("$lpstat -l -p $esc", 1);
 return undef if ($out =~ /non-existent\s+printer/);
 if ($out =~ /^printer\s+(\S+)\s+(\S+).*\n([\000-\377]*)$/) {
 	# printer exists..
@@ -51,7 +51,7 @@ else { $prn{'banner'} = 1; }
 
 if (!$_[1]) {
 	# request availability
-	$avl = `$lpstat -a $prn{'name'} 2>&1`;
+	$avl = &backquote_command("$lpstat -a $prn{'name'} 2>&1", 1);
 	if ($avl =~ /^\S+\s+not accepting.*\n\s*(.*)/) {
 		$prn{'accepting'} = 0;
 		$prn{'accepting_why'} = lc($1) eq "reason unknown" ? "" : $1;
@@ -77,7 +77,7 @@ foreach my $file ("/etc/printers.conf", "/etc/cups/printers.conf") {
 		}
 	}
 if (!$uri) {
-	$con = `$lpstat -v $prn{'name'} 2>&1`;
+	$con = &backquote_command("$lpstat -v $prn{'name'} 2>&1", 1);
 	if ($con =~ /^device for \S+:\s+(\S+)/) {
 		$uri = $1;
 		}
@@ -107,8 +107,10 @@ else {
 	}
 
 # Check if this is the default printer
-`$lpstat -d 2>&1` =~ /destination: (\S+)/;
-if ($1 eq $prn{'name'}) { $prn{'default'} = 1; }
+if (&backquote_command("$lpstat -d 2>&1", 1) =~ /destination:\s+(\S+)/ &&
+    $1 eq $prn{'name'}) {
+	$prn{'default'} = 1;
+	}
 
 return \%prn;
 }
@@ -158,7 +160,7 @@ return $_[0] !~ /^(msize|alias|rnoqueue|ctype|sysv|allow)$/;
 sub list_classes
 {
 local($stat, %rv);
-$stat = `$lpstat -c 2>&1`;
+$stat = &backquote_command("$lpstat -c 2>&1", 1);
 while($stat =~ /^members of class (\S+):\n((\s+\S+\n)+)([\000-\377]*)$/) {
 	$stat = $4;
 	$rv{$1} = [ grep { $_ ne "" } split(/\s+/, $2) ];

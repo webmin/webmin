@@ -46,7 +46,7 @@ sub get_printer
 {
 local($stat, @rv, $body, $avl, $con, $sys, %prn, $_, $out);
 local $esc = quotemeta($_[0]);
-$out = `lpstat -l -p $esc`;
+$out = &backquote_command("lpstat -l -p $esc", 1);
 if ($out =~ /^printer\s+(\S+)\s*(.*)\s+(enabled|disabled)\s+since\s+([^\.]*)\.\s+(.*)\.\n([\000-\377]*)$/) {
 	# printer exists
 	$prn{'name'} = $1;
@@ -97,7 +97,7 @@ if ($body =~ /PPD:\s+(\S+)/ && $1 ne "none" && $1 ne "/dev/null") {
 
 if (!$_[1]) {
 	# request availability
-	$avl = `lpstat -a $esc 2>&1`;
+	$avl = &backquote_command("lpstat -a $esc 2>&1", 1);
 	if ($avl =~ /^\S+\s+not accepting.*\n\s+(.*)/) {
 		$prn{'accepting'} = 0;
 		$prn{'accepting_why'} = $1;
@@ -109,7 +109,7 @@ if (!$_[1]) {
 	}
 
 # request connection
-$con = `lpstat -v $esc 2>&1`;
+$con = &backquote_command("lpstat -v $esc 2>&1", 1);
 if ($con =~ /^device for \S+:\s+(\S+)/) {
 	# Prints to a local file
 	$prn{'dev'} = $1;
@@ -131,14 +131,15 @@ elsif ($con =~ /^system for \S+:\s+(\S+)\s+\(as printer (\S+)\)/ ||
 	# Prints to a remote server
 	$prn{'rhost'} = $1;
 	$prn{'rqueue'} = $2 || $prn{'name'};
-	$sys = `lpsystem -l $prn{'rhost'} 2>&1`;
+	$sys = &backquote_command("lpsystem -l $prn{'rhost'} 2>&1", 1);
 	$sys =~ /Type:\s+(\S+)/; $prn{'rtype'} = $1;
 	}
 
 # Check if this is the default printer
 if (!defined($default_printer)) {
-	`lpstat -d 2>&1` =~ /destination: (\S+)/;
-	$default_printer = $1;
+	if (&backquote_command("lpstat -d 2>&1", 1) =~ /destination:\s+(\S+)/) {
+		$default_printer = $1;
+		}
 	}
 if ($default_printer eq $prn{'name'}) { $prn{'default'} = 1; }
 
@@ -212,7 +213,7 @@ return $_[0] !~ /^(msize|alias|riface|rnoqueue|ipp)$/;
 sub list_classes
 {
 local($stat, %rv);
-$stat = `lpstat -c 2>&1`;
+$stat = &backquote_command("lpstat -c 2>&1", 1);
 while($stat =~ /^members of class (\S+):\n((\s+\S+\n)+)([\000-\377]*)$/) {
 	$stat = $4;
 	$rv{$1} = [ grep { $_ ne "" } split(/\s+/, $2) ];
@@ -322,10 +323,10 @@ if ($prn{'default'}) {
 	}
 
 # Build filter table 
-open(STAT, "/usr/bin/ls -1 /etc/lp/fd/*.fd |");
+&open_execute_command(STAT, "/usr/bin/ls -1 /etc/lp/fd/*.fd", 1, 1);
 while(<STAT>) {
 	$file = substr($_, rindex($_, "/") +1, -4 );
-	`/usr/sbin/lpfilter -f $file -F /etc/lp/fd/$file.fd`;
+	&system_logged("/usr/sbin/lpfilter -f $file -F /etc/lp/fd/$file.fd");
         }
 close(STAT);
 

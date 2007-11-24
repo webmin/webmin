@@ -132,9 +132,11 @@ printf "<td><input name=program size=40 value='%s'></td> </tr>\n",
 printf "<tr> <td valign=top><input type=radio name=mode value=1 %s> %s</td>\n",
 	$_[1]->{'mode'} == 1 ? 'checked' : '', $text{'cups_driver'};
 local (@ppds, $d, $f, $ppd, %cache, $outofdate, @files, %donefile);
-local $findver = `find --version 2>&1`;
-local $flag = $findver =~ /GNU\s+find\s+version\s+4\.2/i ? "-L" : "";
-open(FIND, "find $flag ".quotemeta($config{'model_path'})." -type f -print |");
+local $findver = &backquote_command("find --version 2>&1", 1);
+local $flag = $findver =~ /GNU\s+find\s+version\s+([0-9\.]+)/i && $1 >= 4.2 ?
+		"-L" : "";
+&open_execute_command(FIND, "find $flag ".quotemeta($config{'model_path'}).
+			    " -type f -print", 1, 1);
 while(<FIND>) {
 	chop;
 	/([^\/]+)$/;

@@ -192,11 +192,11 @@ $cmd = "lpadmin -p $esc -D $desc";
 if ($prn{'allow_all'}) { $cmd .= " -u allow:all"; }
 elsif ($prn{'deny_all'}) { $cmd .= " -u deny:all"; }
 elsif ($prn{'allow'}) {
-	system("lpadmin -p $esc -u deny:all >/dev/null 2>&1");
+	&system_logged("lpadmin -p $esc -u deny:all >/dev/null 2>&1");
 	$cmd .= " -u allow:".join(',', map { quotemeta($_) } @{$prn{'allow'}});
 	}
 elsif ($prn{'deny'}) {
-	system("lpadmin -p $esc -u allow:all >/dev/null 2>&1");
+	&system_logged("lpadmin -p $esc -u allow:all >/dev/null 2>&1");
 	$cmd .= " -u deny:".join(',', map { quotemeta($_) } @{$prn{'deny'}});
 	}
 if ($prn{'dev'}) {
