@@ -1,0 +1,4 @@
+line2=Configurazione di sistema,11
+exports_file=File dei filesystem condivisi,0
+apply_cmd=Comando per applicare la configurazione,3,Nessuno
+restart_command=Comando per riavviare il server NFS,0

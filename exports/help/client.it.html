@@ -1,0 +1,21 @@
+<header>Condividi a</header>
+
+Permette di specificare le macchine della rete che possono avere accesso alla direcoty condivisa.
+<b>Attenzione:</b> quando la condivisione avviene con krb5, la scelta dei client viene fatta nella configurazione di Kerberos5.<br><br>
+Sono possibili sei modalità per specificare quali host possono montare la directory condivisa:
+<dl>
+<dt><b>Tutti</b>
+<dd>Tutti gli host in grado di contattare il sistema hanno il permesso di accedere alla condivisione. Questa opzione va usava con cura, specialmente se il tuo sistema è direttamente connesso ad internet.<br>
+<dt><b>Host(s)</b>
+<dd>L'opzione accetta un singolo indirizzo IP, un singolo nome host o un'espressione regolare come <tt>*.foo.com</tt>. In quest'ultimo caso qualunque host il cui nome corrisponde all'espressione avrà il permesso per accedere alla condivisione.
+<dt><b>Client WebNFS</b>
+<dd>Permette ai client che usano il protocollo WebNFS di Sun di accedere alla condivisione.
+<dt><b>Netgroup NIS</b>
+<dd>Permette a tutti i membri del NIS netgroup specificato di accedere alla condivisione.
+<dt>IPv4 <b>Rete</b> e <b>Maschera di sottorete</b>
+<dd>Qualunque host nella sottorete specificata ha il permesso di accedere alla condivisione. Ad esempio nel caso in cui la rete sia <tt>192.168.1.0</tt> e la maschera di sottorete sia <tt>255.255.255.0</tt>, tutti gli host con gli indirizzi IP da <tt>192.168.1.0</tt> a <tt>192.168.1.255</tt> vengono autorizzati all'accesso.
+<dt>IPv6 <b>Indirizzo</b> e <b>Prefisso</b>
+<dd>Tutti gli host nella sottorete specificata hanno il permesso di accedere alla condivisione.
+</dl>
+<hr>
+

@@ -1,0 +1,10 @@
+<h3>Introduzione a NFS</h3>
+
+NFS è il protocollo di condivisione di file standard per i sistemi Unix. NFS permette ad un sistema di condividere (esportare) una directory, attraverso la rete, ad uno o più host, permettendo agli utenti e ai programmi su questi host di accedere ai file condivisi esattamente come se si trovassero in locale. <p>
+
+Un server NFS è un sistema che condivide una o più directory, mentre un client NFS è un sistema che monta una o più directory condivise da un server. Un host può essere contemporaneamente server e client NFS.<p>
+
+Un server determina e controlla quali client possono montare la directory condivisa controllando l'indirizzo IP del client stesso e confrontandolo con una lista di host permessi per la directory richiesta. Il server può anche condividere la directory in sola lettura, per tutti o solamente per alcuni client.<p>
+
+A differenza di altri filesystem di rete, un client NFS non necessita di login per il collegamento al server quando monta una directory condivisa. Il server considera il client affidabile autenticando l'utente (utilizzando le sue credenziali Unix o attraverso un'autenticazione Kerberos5) e fornisce l'ID dell'utente corrente quando accede ai file condivisi.
+Ovviamente è possibile, come già specificato, fare in modo che solo alcuni client possano essere considerati affidabili per il montaggio della directory condivisa. <p>

@@ -1,0 +1,11 @@
+<header>Introduzione alle condivisioni NFS</header>
+
+<include nfs>
+
+<h3>Linux NFS</h3>
+Questo modulo ti permette di configurare la condivisione di una directory (detta <i>export</i>
+in Linux) attraverso il server NFS dal tuo sistema. La prima pagina mostra una lista di directory e i client verso i quali esse vengono condivise, permettendoti, cliccando sui client, di modificare le opzioni di condivisione o di avviare la condivisione di una nuova directory. <p>
+
+Sotto la lista delle condivisioni nella prima pagina è possibile trovare un pulsante che permetterà di attivare la condivisione. Questo risultato si ottiene riavviando il processo relativo al server NFS. <p>
+
+Se qualche directory e una delle sue sotto directory viene condivisa, le opzioni per quella specifica directory saranno applicate ai client. Ad esempio, se <tt>/usr</tt> e <tt>/usr/local</tt> sono entrambe condivise un client che accede a <tt>/usr/local/bin</tt> risponderà alle stesse regole imposte per la condivisione di <tt>/usr/local</tt>. <p>

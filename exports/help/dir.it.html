@@ -1,0 +1,10 @@
+<header>Directory da condividere</header>
+
+Questa è la directory che deve essere condivisa ai client configurati nella sezione <a href=client>Condividi a</a>.<br>
+<br>
+Invece di montare un numero di condivisioni distinte, un client NFSv4 vede la condivisione NFSv4 del server come esistente all'interno di un singolo filesystem, detto <i>pseudofilesystem</i>.<br>
+In questo modo per NFSv4 questa directory viene prima montata (con <tt>mount --bind</tt>) nello pseudofilesystem di NFSv4, lo pseudofilesystem viene condiviso, ed infine la directory.<br>
+E' preferibile condividere questa directory senza nasconderla, in modo da permettere ai client di muoversi al suo interno senza montarla.<br>
+<br>
+Diversamente da altri server NFS, Linux supporta la ri-condivisione di una directory che è stata montata in NFS da altri host, e la condivisione di una directory che contiene punti di montaggio per altri filesystem.
+<hr>
