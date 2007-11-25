@@ -22,6 +22,10 @@ elsif ($type eq 'mod') {
 			     &html_escape($object));
 		}
 	}
+elsif ($type eq 'inc') {
+	return &text("log_inc_$action", &html_escape($p->{'module'}),
+		     &html_escape($object));
+	}
 else {
 	return undef;
 	}

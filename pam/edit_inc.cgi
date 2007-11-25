@@ -18,7 +18,7 @@ else {
 	}
 
 
-print &ui_form_start("save_mod.cgi");
+print &ui_form_start("save_inc.cgi");
 print &ui_hidden("idx", $in{'idx'});
 print &ui_hidden("midx", $in{'midx'});
 print &ui_hidden("_type", $in{'type'});
@@ -35,10 +35,14 @@ print &ui_table_row($text{'mod_type'},
 		    $text{'mod_type_'.$type});
 
 # Included service
+@pam = sort { $a->{'name'} cmp $b->{'name'} } @pam;
 print &ui_table_row($text{'inc_inc'},
     &ui_select("inc", $inc,
-	[ map { [ $_->{'name'}, $text{'desc_'.$_->{'name'}} || $_->{'name'} ] }
-	      @pam ], 1, 0, $inc ? 1 : 0));
+	[ map { [ $_->{'name'},
+		  $_->{'name'}.($text{'desc_'.$_->{'name'}} ?
+				" (".$text{'desc_'.$_->{'name'}}.")" : "") ] }
+	      grep { $_->{'name'} ne $pam->{'name'} } @pam ],
+	1, 0, $inc ? 1 : 0));
 
 print &ui_table_end();
 

@@ -14,21 +14,19 @@ if ($in{'delete'}) {
 	&delete_module($pam->{'name'}, $mod);
 	}
 else {
-	if ($in{'_module'}) {
+	if ($in{'_type'}) {
 		# Adding a new include
 		$mod = { 'type' => $in{'_type'},
-			 'module' => $in{'_module'} };
-		$module = $in{'_module'};
+			 'control' => 'include',
+			 'module' => $in{'inc'} };
 		}
 	else {
 		# Existing module entry
-		# XXX
 		$mod = $pam->{'mods'}->[$in{'midx'}];
-		$module = $mod->{'module'};
-		$module =~ s/^.*\///;
+		$mod->{'module'} = $in{'inc'};
 		}
 
-	if ($in{'_module'}) {
+	if ($in{'_type'}) {
 		# Add the PAM include entry
 		&create_module($pam->{'name'}, $mod);
 		}
@@ -38,7 +36,7 @@ else {
 		}
 	}
 &unlock_file($pam->{'file'});
-&webmin_log($in{'delete'} ? "delete" : $in{'_module'} ? "create" : "modify",
+&webmin_log($in{'delete'} ? "delete" : $in{'_type'} ? "create" : "modify",
 	    "inc", $pam->{'name'}, $mod);
 &redirect("edit_pam.cgi?idx=$in{'idx'}");
 
