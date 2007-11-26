@@ -1,0 +1,5 @@
+line2=Configurazione di sistema,11
+at_style=Tipo di sistema,1,linux-Linux,solaris-Solaris,freebsd-FreeBSD,irix-Irix,macos-MacOS X,openserver-OpenServer
+at_dir=Directory dei job,0
+allow_file=File degli utenti autorizzati:,3,Nessuno
+deny_file=File degli utenti non autorizzati:,3,Nessuno
