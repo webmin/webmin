@@ -373,3 +373,4 @@ Added a checkbox to the backup form to include sub-servers of those selected too
 Added the --user option to disable-feature.pl and enable-feature.pl to turn features off and on in all domains owned by some user, and the list-domains.pl to fnd domains by user.
 ---- Changes since 3.49 ----
 Advanced autoreply options are hidden by default, to make the alias form less confusing.
+Added a Module Config option to make the Unix group name for a new domain always follow the username, and made group name selection more consistent across creation methods.

@@ -45,6 +45,7 @@ jail_shell=Shell for jailed FTP users,3,None
 unix_shell=Shell for server Unix users,15,shells,unix_shell
 append=Include domain name in usernames?,1,1-Always,0-Only to avoid a clash
 longname=Domain name style in username,1,1-Full domain name,0-Username or first part of domain,2-First part of domain
+groupsame=Force group name to be always same as username?,1,1-Yes,0-No
 localgroup=Primary group for local users,3,Don't display local users
 mail_skel=Initial files directory for mail users,3,None
 proxy_pass=Allow creation of forwarding-only websites?,1,1-Yes using proxying,2-Yes using frame forwarding,0-No
