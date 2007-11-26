@@ -374,3 +374,4 @@ Added the --user option to disable-feature.pl and enable-feature.pl to turn feat
 ---- Changes since 3.49 ----
 Advanced autoreply options are hidden by default, to make the alias form less confusing.
 Added a Module Config option to make the Unix group name for a new domain always follow the username, and made group name selection more consistent across creation methods.
+Moved the Administration username field into the first (visible) section of the Create Virtual Server page.
