@@ -1,0 +1,9 @@
+line1=Opzioni di configurazione,11
+refresh_days=Numero di giorni tra gli aggiornamenti della lista dei moduli di CPAN:,0,5
+save_partial=Mantieni i moduli scaricati se l'installazione non va a buon fine?,1,1-Si,0-No
+def_args=Argomenti di default per Makefile.PL:,0
+incpackages=Includere i moduli Perl dei pacchetti software?,1,1-Si,0-No
+incyum=Installare i moduli Perl da YUM o APT se disponibili?,1,1-Si,0-No
+line2=Configurazione di sistema,11
+packages=Lista dei moduli Perl di CPAN:,0
+cpan=URL dei moduli di CPAN:,0
