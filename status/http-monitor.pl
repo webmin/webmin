@@ -69,7 +69,8 @@ print &ui_table_row($text{'http_url'},
 	&ui_textbox("url", $url, 50), 3);
 
 print &ui_table_row($text{'http_alarm'},
-	&ui_opt_textbox("alarm", $_[0]->{'alarm'}, 5, $text{'default'}));
+	&ui_opt_textbox("alarm", $_[0]->{'alarm'}, 5, $text{'default'}).
+	" ".$text{'oldfile_secs'});
 
 print &ui_table_row($text{'http_method'},
 	&ui_select("method", $_[0]->{'method'},
