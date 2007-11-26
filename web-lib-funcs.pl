@@ -5395,6 +5395,20 @@ $text ||= $text{'ui_selinv'};
 return "<a href='#' onClick='document.forms[$form].$field.checked = !document.forms[$form].$field.checked; for(i=0; i<document.forms[$form].$field.length; i++) { document.forms[$form].${field}[i].checked = !document.forms[$form].${field}[i].checked; } return false'>$text</a>";
 }
 
+# select_rows_link(field, form, text, &rows)
+# Returns HTML for a link that uses Javascript to select rows with particular
+# values for their checkboxes
+sub select_rows_link
+{
+return &theme_select_rows_link(@_) if (defined(&theme_select_rows_link));
+local ($field, $form, $text, $rows) = @_;
+$form = int($form);
+local $js = "var sel = { ".join(",", map { "\"".&quote_escape($_)."\":1" } @$rows)." }; ";
+$js .= "for(var i=0; i<document.forms[$form].${field}.length; i++) { var r = document.forms[$form].${field}[i]; r.checked = sel[r.value]; } ";
+$js .= "return false;";
+return "<a href='#' onClick='$js'>$text</a>";
+}
+
 # check_pid_file(file)
 # Given a pid file, returns the PID it contains if the process is running
 sub check_pid_file
