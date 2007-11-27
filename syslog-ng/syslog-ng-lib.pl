@@ -66,21 +66,30 @@ while($line = <CONF>) {
 	undef(@ltok);
 	while(1) {
 		if ($line =~ /^\s*\"([^"]*)"(.*)$/) {
+			# " quoted string
 			push(@ltok, $1); $line = $2;
 			}
 		elsif ($line =~ /^\s*\'([^']*)'(.*)$/) {
+			# ' quoted string
 			push(@ltok, $1); $line = $2;
 			}
 		elsif ($line =~ /^\s*([{};\(\),\.])(.*)$/) {
+			# regular word
+			push(@ltok, $1); $line = $2;
+			}
+		elsif ($line =~ /^\s*(\d+\.\d+\.\d+\.\d+)(.*)$/) {
+			# IP address
 			push(@ltok, $1); $line = $2;
 			}
 		elsif ($line =~ /^\s*([^{};\(\) \t,\.]+)(.*)$/) {
+			# meta-character
 			push(@ltok, $1); $line = $2;
 			}
 		else { last; }
 		}
 	foreach my $t (@ltok) {
-		push(@tok, $t); push(@lnum, $lnum);
+		push(@tok, $t);
+		push(@lnum, $lnum);
 		}
 	$lnum++;
 	}
@@ -383,6 +392,7 @@ sub quoted_value
 {
 local ($str) = @_;
 return $str =~ /^[a-z\_][a-z0-9\_]*$/i ? $str :
+       $str =~ /^\d+\.\d+\.\d+\.\d+$/ ? $str :
        $str eq "," || $str eq ".." ? $str :
        $str =~ /^\d+$/ ? $str :
        $str =~ /\"/ ? "'$str'" : "\"$str\"";
