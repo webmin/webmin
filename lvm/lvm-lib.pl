@@ -125,7 +125,7 @@ sub delete_physical_volume
 if ($_[0]->{'pe_alloc'}) {
 	local $cmd = "pvmove -f '$_[0]->{'device'}'";
 	local $out = &backquote_logged("$cmd 2>&1");
-	return $out if ($?);
+	return $out if ($? && $out !~ /\-\-\s+f/);
 	}
 local $cmd = "vgreduce '$_[0]->{'vg'}' '$_[0]->{'device'}'";
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
