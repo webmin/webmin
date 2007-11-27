@@ -44,17 +44,8 @@ if (&indexof($pinfo{nice}, @nice_range) < 0) {
 	print $pinfo{nice};
 	}
 else {
-	print "<select name=nice>\n";
-	for($i=0; $i<@nice_range; $i++) {
-		printf "<option value=%d %s>%d%s\n",
-			$nice_range[$i],
-			$pinfo{nice} == $nice_range[$i] ? "selected" : "",
-			$nice_range[$i],
-			$i==0 ? " ($text{'edit_prihigh'})" :
-			$i==@nice_range-1 ? " ($text{'edit_prilow'})" :
-			$nice_range[$i]==0 ? " ($text{'edit_pridef'})" : "";
-		}
-	print "</select> <input type=submit value='$text{'edit_change'}'>\n";
+	print &nice_selector("nice", $pinfo{nice});
+	print &ui_submit($text{'edit_change'});
 	}
 print "</td> </form></tr>\n";
 $i = 0;

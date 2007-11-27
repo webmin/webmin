@@ -215,8 +215,8 @@ else {
 				}
 			}
 		elsif ($sel == 0) {
-			# nothing to read. maybe the process is done, and a subprocess
-			# is hanging things up
+			# nothing to read. maybe the process is done, and a
+			# subprocess is hanging things up
 			last if (!kill(0, $pid));
 			}
 		if ($_[7] && time() - $start > $_[7]) {
@@ -568,6 +568,19 @@ else {
 		}
 	return 0;
 	}
+}
+
+# nice_selector(name, value)
+# Returns a menu for selecting a nice level
+sub nice_selector
+{
+local ($name, $value) = @_;
+local $l = scalar(@nice_range);
+return &ui_select($name, $value,
+	[ map { [ $_, $_.($_ == $nice_range[0] ? " ($text{'edit_prihigh'})" :
+			  $_ == 0 ? " ($text{'edit_pridef'})" :
+			  $_ == $nice_range[$l-1] ? " ($text{'edit_prilow'})" :
+						    "") ] } @nice_range ]);
 }
 
 1;
