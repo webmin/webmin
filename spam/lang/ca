@@ -2,6 +2,7 @@ index_title=Filtre de Correu SpamAssassin
 index_ecmd=No s'ha trobat al sistema l'ordre $1 de SpamAssassin. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_ecmd2=No s'ha trobat al sistema l'ordre $1 de spamassassin. 
 index_econfig=No s'ha trobat al sistema el directori o fitxer de configuració local $1 de SpamAssassin. Pot ser que SpamAssassin no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_edb=No he pogut connectar amb la base de dades de configuracio de SpamAssassin: $1. Comprova la <a href='$2'>configuració del mòdul</a> per assegurar que estàs utilitzant els valors correctes.
 index_version=SpamAssassin versió $1
 index_warn_usermin=No sembla que SpamAssassin estigui configurat al fitxer de configuració $2 de Procmail ni al fitxer global $1, així que cap configuració feta utilitzant aquest mòdul tindrà cap efecte a menys que SpamAssassin s'hagi configurat globalment.
 index_warn_webmin=No sembla que SpamAssassin estigui configurat al fitxer de configuració $1 de Procmail, així que cap configuració feta utilitzant aquest mòdul tindrà cap efecte a menys que els usuaris se'l configurin individualment.
@@ -289,3 +290,51 @@ simple_err=No he pogut desar els tests de missatges
 
 before_ecmd=L'ordre d'abans de desar ha fallat: $1
 after_ecmd=L'ordre de després de desar ha fallat: $1
+
+connect_emysql=No he pogut carregar el driver $1 de la base de dades
+connect_elogin=No he pogut entrar a la base de dades $1: $2.
+connect_equery=La base de dades $1 no conté la taula de preferències $2
+connect_eldapmod=El módul perl $1 necessari per comunicar-se amb LDAP no està instal·lat o no es pot carregar
+connect_eldap=No he pogut connectar amb el servidor LDAP $1 al port $2
+connect_eldaplogin=No he pogut entrar al servidor LDAP com a $2: $3
+connect_ebase=El DN base LDAP $1 no és vàlid: $2
+
+eldap=L'operació LDAP ha fallat: $1
+esql=El SQL ha fallat: $1
+ldap_euser=No he pogut trobar l'objecte d'usuari LDAP per a $1
+
+db_title=Bases de dades SQL i LDAP
+db_header=Opcions de configuració de la base de dades d'emmagatzematge
+db_dsn=Emmagatzema les configuracions d'usuari
+db_mode0=Als fitxers de configuració
+db_mode1=A la base de dades SQL
+db_mode3=A la base de dades LDAP
+db_mode4=A un altre DSN
+db_user=Usuari de la base de dades SQL
+db_pass=Contrasenya de la base de dades SQL
+db_luser=Usuari de la base de dades LDAP
+db_lpass=Contrasenya de la base de dades LDAP
+db_dbdriver=Tipus de base de dades
+db_dbhost=Nom de host del servidor de bases de dades
+db_dbdb=Nom de la base de dades
+db_dbport=Número de port
+db_err=No he pogut desar les bases de dades
+db_edbhost=Hi falta el nom de host del servidor de bases de dades o bé és invàlid
+db_edbdb=Hi falta el nom de la base de dades o bé sembla invàlid
+db_edbport=Hi falta el número de port del servidor SQL o bé és invàlid
+db_edsn=Hi falta l'altre DSN
+db_eusername=Hi falta l'usuari de la base de dades o bé és invàlid - no es permeten espais
+db_ldaphost=Nom del host servidor LDAP
+db_ldapport=Número de port
+db_ldapdn=DN base dels usuaris
+db_ldapattr=Atribut de les preferències de SpamAssassin
+db_ldapscope=Profunditat de la recerca
+db_ldapsub=Tot el subarbre
+db_ldapone=Un nivell
+db_ldapbase=Només la base
+db_ldapuid=Atribut d'usuaris
+db_eldaphost=Hi falta el nom de host servidor LDAP o bé és invàlid
+db_eldapport=Hi falta el número de port del servidor LDAP o bé és invàlid
+db_eldapdn=Hi falta el DN base o bé és invàlid - no es permeten espais
+db_eldapattr=Hi falta l'atribut de SpamAssassin o bé és invàlid
+db_eldapuid=Hi falta l'atribut d'usuaris o bé és invàlid
