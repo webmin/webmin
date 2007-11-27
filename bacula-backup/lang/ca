@@ -172,6 +172,7 @@ schedule_header=Detalls de la planificació de còpia
 schedule_name=Nom de la planificació de còpia
 schedule_runs=Nivells d'execució i horaris
 schedule_level=Ni vell de la còpia
+schedule_pool=Volum
 schedule_times=Executa a les hores
 schedule_err=No he pogut desar la planificació de la còpia
 schedule_ename=Hi falta el nom de la planificació de la còpia o bé és invàlid
