@@ -9,6 +9,7 @@ relative_paths=iFes servir camins relatius de fitxer de zona a <tt>named.conf</t
 
 line1=Opcions de presentació,11
 show_list=Mostra els dominis com a,1,0-Icones,1-Llista,2-Jerarquia
+by_view=Categoritza les zones per vista,1,1-Sí,0-No
 records_order=Mostra els registres ordenats per,1,1-Nom,2-Valor,3-IP,0-Ordre d'introducció
 max_zones=Nombre màxim de zones a mostrar,0,8
 rev_def=Actualització inversa,1,0-Activada per defecte,1-Desactivada per defecte,2-Reescrita per defecte
@@ -18,7 +19,6 @@ allow_comments=Permet comentaris als registres,1,0-No,1-Sí
 allow_wild=Permet escarrassos (no recomanat),1,0-No,1-Sí
 allow_underscore=Permet subguions als noms de registre,1,1-Sí,0-No
 short_names=Converteix els noms de registres a la forma canònica,1,0-Sí,1-No
-by_view=Categoritza les zones per vista,1,1-Sí,0-No
 extra_forward=Tipus de registres extra de les zones de reenviament,0
 extra_reverse=Tipus de registres extra de les zones inverses,0
 largezones=Mostra els registres de les zones,1,0-Sí,1-No (per a zones grans)

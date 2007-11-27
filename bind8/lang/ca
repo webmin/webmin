@@ -16,6 +16,10 @@ index_adddele=Crea una zona de delegació.
 index_addmass=Crea zones a partir d'un fitxer batch.
 index_apply=Aplica els Canvis
 index_applymsg=Fes clic sobre aquest botó per reiniciar el servidor BIND en execució. Això farà que la configuració actual sigui efectiva
+master_freeze=Congela la zona
+master_freezemsg=Fes clic sobre aquest botó per congelar una zona dinàmica abans d'actualitzar-la. Això enviarà a la zona l'ordre $1.
+master_unfreeze=Descongela la zona
+master_unfreezemsg=Fes clic sobre aquest botó per descongelar una zona dinàmica després d'haver-la actualitzat. Això enviarà a la zona l'ordre $1.
 index_applymsg2=Fes clic sobre aquest botó per reiniciar el servidor BIND en execució i tots els esclaus del cluster. Això farà que la configuració actual sigui activa.
 index_start=Inicia el Servidor de Noms
 index_startmsg=Fes clic sobre aquest botó per iniciar el servidor BIND i carregar la configuració actual
@@ -557,6 +561,7 @@ net_topol=Topologia de tria de servidors de noms
 net_recur=Permet peticions recursives des de
 net_err=No he pogut desar les opcions d'adreces i topologia
 net_eport='$1' no és un número de port vàlid
+net_eusedport=Només es permet una línia d'adreces per al port $1
 net_etopology=No has introduït cap adreça de topologia
 net_erecur=No has introduït cap adreça des de la qual es permeti la recursió
 
@@ -706,6 +711,8 @@ log_mass=He creat $1 zones a partir del fitxer batch
 log_rndc=Configura RNDC
 log_delete_recs=He suprimit $1 registres
 log_delete_zones=He suprimit $1 zones
+log_freeze=He congelat la zona $1
+log_thaw=He descongelat la zona $1
 
 convert_err=No he pogut convertir la zona
 convert_efile=Cal especificar un fitxer de registres abans de poder convertir una zona esclava a una de mestra.
