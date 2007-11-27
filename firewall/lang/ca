@@ -1,4 +1,5 @@
 index_title=Tallafocs Linux
+index_editing=Fitxer de regles $1
 index_ecommand=No s'ha trobat al sistema l'ordre $1. Webmin necessita aquesta ordre per configurar IPtables.
 index_ekernel=S'ha produït un error en comprovar la configuració actual d'IPtables: $1 Això pot indicar que el kernel no suporta IPtables.
 index_header=Configuració del tallafocs de $1
