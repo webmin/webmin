@@ -4,12 +4,8 @@
 sub display_module_args
 {
 local $file = "/etc/securetty";
-print "<tr> <td valign=top><b>$text{'securetty_ttys'}</b></td>\n";
-print "<td><textarea name=ttys rows=5 cols=20>";
-open(FILE, $file);
-while(<FILE>) { print; }
-close(FILE);
-print "</textarea></td> </tr>\n";
+print &ui_table_row($text{'securetty_ttys'},
+	&ui_textarea("ttys", &read_file_contents($file), 5, 40), 3);
 }
 
 # parse_module_args(&service, &module, &args)

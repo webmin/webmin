@@ -3,33 +3,21 @@
 # display_args(&service, &module, &args)
 sub display_module_args
 {
-print "<tr> <td><b>$text{'tally_deny'}</b></td>\n";
-printf "<td nowrap><input type=radio name=deny_def value=1 %s> %s\n",
-	$_[2]->{'deny'} ? '' : 'checked', $text{'default'};
-printf "<input type=radio name=deny_def value=0 %s>\n",
-	$_[2]->{'deny'} ? 'checked' : '';
-print "<input name=deny size=5 value='$_[2]->{'deny'}'></td>\n";
+print &ui_table_row($text{'tally_deny'},
+	&ui_opt_textbox("deny", $_[2]->{'deny'}, 5, $text{'default'}));
 
-print "<td><b>$text{'tally_reset'}</b></td>\n";
-printf "<td><input type=radio name=reset value=0 %s> %s\n",
-	defined($_[2]->{'reset'}) || defined($_[2]->{'no_reset'}) ?
-	'' : 'checked', $text{'default'};
-printf "<input type=radio name=reset value=1 %s> %s\n",
-	defined($_[2]->{'reset'}) ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=reset value=2 %s> %s</td> </tr>\n",
-	defined($_[2]->{'no_reset'}) ? 'checked' : '', $text{'no'};
+print &ui_table_row($text{'tally_reset'},
+	&ui_radio("reset", defined($_[2]->{'reset'}) ? 1 :
+			   defined($_[2]->{'no_reset'}) ? 2 : 0,
+		  [ [ 0, $text{'default'} ],
+		    [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'tally_magic'}</b></td>\n";
-printf "<td><input type=radio name=magic value=1 %s> %s\n",
-	defined($_[2]->{'no_magic_root'}) ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=magic value=0 %s> %s</td>\n",
-	defined($_[2]->{'no_magic_root'}) ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'tally_magic'},
+	&ui_yesno_radio("magic", defined($_[2]->{'no_magic_root'}) ? 1 : 0));
 
-print "<td><b>$text{'tally_root'}</b></td>\n";
-printf "<td><input type=radio name=root value=1 %s> %s\n",
-      defined($_[2]->{'even_deny_root_account'}) ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=root value=0 %s> %s</td> </tr>\n",
-      defined($_[2]->{'even_deny_root_account'}) ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'tally_root'},
+	&ui_yesno_radio("root",
+		defined($_[2]->{'even_deny_root_account'}) ? 1 : 0));
 }
 
 # parse_module_args(&service, &module, &args)

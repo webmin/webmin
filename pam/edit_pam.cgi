@@ -9,17 +9,32 @@ require './pam-lib.pl';
 @pams = &get_pam_config();
 $pam = $pams[$in{'idx'}];
 
-print &ui_table_start($text{'edit_header'}, "width=100%", 2);
+print &ui_table_start($text{'edit_header'}, "width=100%", 2, [ "width=30%" ]);
 
-$t = $text{'desc_'.$pam->{'name'}};
+# Service name
 print &ui_table_row($text{'edit_name'},
-	"<tt>".&html_escape($pam->{'name'})."</tt> ".
-        ($pam->{'desc'} ? "($pam->{'desc'})" : $t ? "($t)" : ""));
+		    "<tt>".&html_escape($pam->{'name'})."</tt>");
+
+# Service description
+$t = $text{'desc_'.$pam->{'name'}};
+if ($pam->{'desc'} || $t) {
+	print &ui_table_row($text{'edit_desc'}, $pam->{'desc'} || $t);
+	}
+
+# File
+print &ui_table_row($text{'edit_file'},
+	"<tt>$pam->{'file'}</tt>");
+
+print &ui_table_end();
 
 foreach $t ('auth', 'account', 'session', 'password') {
-	my $ptable;
-	$ptable .= &ui_form_start("edit_mod.cgi");
+	# Start of section
 	local @mods = grep { $_->{'type'} eq $t } @{$pam->{'mods'}};
+	print &ui_form_start("edit_mod.cgi");
+	print &ui_hidden_table_start($text{"edit_header_$t"}, "width=100%", 2,
+				     $t, @mods ? 1 : 0);
+
+	my $ptable;
 	if (@mods) {
 		@tds = ( "width=20%", "width=35%", "width=20%",
 			 "width=20%", "width=5%" );
@@ -84,13 +99,14 @@ foreach $t ('auth', 'account', 'session', 'password') {
 		      &list_modules() ]);
 	$ptable .= "&nbsp;";
 	$ptable .= &ui_submit($text{'edit_addinc'}, "inc");
-	$ptable .= &ui_form_end();
 
-	print &ui_table_row($text{"edit_header_$t"}, $ptable);
+	print &ui_table_row(undef, $ptable, 2);
+	print &ui_hidden_table_end();
+	print &ui_form_end();
 	}
-print &ui_table_end();
 
 # Delete whole service form
+print "<hr>\n";
 print &ui_form_start("delete_pam.cgi");
 print &ui_hidden("idx", $in{'idx'});
 print &ui_form_end([ [ undef, $text{'edit_delete'} ] ]);

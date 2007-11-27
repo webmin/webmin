@@ -3,25 +3,15 @@
 # display_args(&service, &module, &args)
 sub display_module_args
 {
-print "<tr> <td><b>$text{'wheel_group'}</b></td>\n";
-printf "<td colspan=3><input type=radio name=group_def value=1 %s> %s\n",
-	$_[2]->{'group'} ? '' : 'checked', $text{'wheel_group_def'};
-printf "<input type=radio name=group_def value=0 %s>\n",
-	$_[2]->{'group'} ? 'checked' : '';
-print "<input name=group size=8 value='$_[2]->{'group'}'> ",
-      &group_chooser_button("group"),"</td> </tr>\n";
+print &ui_table_row($text{'wheel_group'},
+	&ui_opt_textbox("group", $_[2]->{'group'}, 8, $text{'wheel_group_def'}).
+	" ".&group_chooser_button("group"), 3);
 
-print "<tr> <td><b>$text{'wheel_trust'}</b></td>\n";
-printf "<td><input type=radio name=trust value=1 %s> %s\n",
-	defined($_[2]->{'trust'}) ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=trust value=0 %s> %s</td>\n",
-	defined($_[2]->{'trust'}) ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'wheel_trust'},
+	&ui_yesno_radio("trust", defined($_[2]->{'trust'}) ? 1 : 0));
 
-print "<td><b>$text{'wheel_deny'}</b></td>\n";
-printf "<td><input type=radio name=deny value=1 %s> %s\n",
-	defined($_[2]->{'deny'}) ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=deny value=0 %s> %s</td> </tr>\n",
-	defined($_[2]->{'deny'}) ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'wheel_deny'},
+	&ui_yesno_radio("deny", defined($_[2]->{'deny'}) ? 1 : 0));
 }
 
 # parse_module_args(&service, &module, &args)

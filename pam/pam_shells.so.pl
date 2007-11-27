@@ -4,12 +4,8 @@
 sub display_module_args
 {
 local $file = "/etc/shells";
-print "<tr> <td valign=top><b>$text{'shells_shells'}</b></td>\n";
-print "<td><textarea name=shells rows=5 cols=30>";
-open(FILE, $file);
-while(<FILE>) { print; }
-close(FILE);
-print "</textarea></td> </tr>\n";
+print &ui_table_row($text{'shells_shells'},
+	&ui_textarea("shells", &read_file_contents($file), 5, 40), 3);
 }
 
 # parse_module_args(&service, &module, &args)

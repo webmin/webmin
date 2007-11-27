@@ -14,22 +14,23 @@ while(<FILE>) {
 		}
 	}
 close(FILE);
-print "<tr> <td colspan=4><table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'time_services'}</b></td> ",
-      "<td><b>$text{'time_ttys'}</b></td> ",
-      "<td><b>$text{'time_users'}</b></td> ",
-      "<td><b>$text{'time_times'}</b></td> </tr>\n";
+local $tt = &ui_columns_start([ $text{'time_services'},
+				$text{'time_ttys'},
+				$text{'time_users'},
+				$text{'time_times'} ]);
 local $i = 0;
 foreach $t (@time, [ ]) {
-	print "<tr>\n";
-	print "<td><input name=services_$i size=25 value='$t->[0]'></td>\n";
-	print "<td><input name=ttys_$i size=25 value='$t->[1]'></td>\n";
-	print "<td><input name=users_$i size=25 value='$t->[2]'></td>\n";
-	print "<td><input name=times_$i size=25 value='$t->[3]'></td>\n";
-	print "</tr>\n";
+	$tt .= &ui_columns_row([
+		&ui_textbox("services_$i", $t->[0], 25),
+		&ui_textbox("ttys_$i", $t->[1], 25),
+		&ui_textbox("users_$i", $t->[2], 25),
+		&ui_textbox("times_$i", $t->[3], 25),
+		]);
 	$i++;
 	}
-print "</table><br>$text{'time_info'}</td> </tr>\n";
+$tt .= &ui_columns_end();
+$tt .= "<br>".$text{'time_info'};
+print &ui_table_row(undef, $tt, 4);
 }
 
 # parse_module_args(&service, &module, &args)

@@ -3,21 +3,13 @@
 # display_args(&service, &module, &args)
 sub display_module_args
 {
-print "<tr> <td><b>$text{'stack_service'}</b></td>\n";
-print "<td><select name=service>\n";
-local $found;
-foreach $c (&get_pam_config()) {
-	printf "<option value=%s %s>%s\n",
-		$c->{'name'},
-		$_[2]->{'service'} eq $c->{'name'} ? 'selected' : '',
-		$text{"desc_".$c->{'name'}} ? $text{"desc_".$c->{'name'}}
-					    : $c->{'name'};
-	$found++ if ($_[2]->{'service'} eq $c->{'name'});
-	}
-if ($_[2]->{'service'} && !$found) {
-	print "<option checked>$_[2]->{'service'}\n";
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'stack_service'},
+    &ui_select("service", $_[2]->{'service'},
+	[ map { [ $_->{'name'},
+		  $_->{'name'}.($text{'desc_'.$_->{'name'}} ?
+				" (".$text{'desc_'.$_->{'name'}}.")" : "") ] }
+	      &get_pam_config() ],
+	1, 0, $_[2]->{'service'} ? 1 : 0), 3);
 }
 
 # parse_module_args(&service, &module, &args)
