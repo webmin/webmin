@@ -58,7 +58,7 @@ else
 # Get the hardware time
 if ($config{'hwtime'}) {
 	local @tm = &get_hardware_time();
-	@tm || &error($text{'index_eformat'});
+	@tm || &error($get_hardware_time_error || $text{'index_eformat'});
 	$hw_date{ 'second' } = $tm[0];
 	$hw_date{ 'minute' } = $tm[1];
 	$hw_date{ 'hour' } = $tm[2];

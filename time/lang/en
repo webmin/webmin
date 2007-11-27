@@ -9,6 +9,7 @@ index_sync=Sync and Apply
 index_hardware2=Set hardware time too
 index_tzheader=Time Zone
 index_tz=Change timezone to
+index_ehwclock=$1 failed : $2
 
 action_save=Save
 action_apply=Apply

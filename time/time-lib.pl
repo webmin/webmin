@@ -172,10 +172,12 @@ else {
 }
 
 # get_hardware_time()
-# Returns the current hardware time, in localtime format
+# Returns the current hardware time, in localtime format. On failure returns
+# an empty array, and sets the global $get_hardware_time_error
 sub get_hardware_time
 {
 local $flags = &get_hwclock_flags();
+$get_hardware_time_error = undef;
 local $out = `hwclock $flags`;
 if ($out =~ /^(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+/) {
 	return ($6, $5, $4, $3, &month_to_number($2), $7-1900, &weekday_to_number($1));
@@ -184,6 +186,9 @@ elsif ($out =~ /^(\S+)\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(am|pm)\s+/
 	return ($7, $6, $5+($8 eq 'pm' ? 12 : 0), $2, &month_to_number($3), $4-1900, &weekday_to_number($1));
 	}
 else {
+	$get_hardware_time_error = &text('index_ehwclock',
+			"<tt>".&html_escape("hwclock $flags")."</tt>",
+			"<pre>".&html_escape($out)."</pre>");
 	return ( );
 	}
 }

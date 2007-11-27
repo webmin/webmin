@@ -11,3 +11,5 @@ Added an API for getting and setting the system and hardware times, for calling 
 When the hardware or system time is not editable due to module access control restrictions, the times are now displayed (but cannot be changed).
 ---- Changes since 1.340 ----
 Added check for empty timeservers field.
+---- Changes since 1.380 ----
+Display a more complete message if unable to get the hardware time from hwclock.
