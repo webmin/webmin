@@ -357,6 +357,7 @@ monitor_sub2=Monitor de servei
 monitor_sub3=Monitor de servei: $1 serveis
 monitor_run1=Executant $1 a $2...
 monitor_run2=Executant $1...
+monitor_runerr=No he pogut executar $1 a $2: $3
 
 deletes_egone=Un dels monitors seleccionats ja no existeix
 
