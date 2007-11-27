@@ -219,6 +219,7 @@ copy_eto=No tens permís per copiar a '$1'
 copy_elink=enllaç simbòlic fallit: $1
 
 delete_eaccess=No tens permís per esborrar '$1'
+delete_eroot=El directori '$1' és un dels directoris als quals estàs limitat, així que no es pot suprimir
 
 list_eaccess=No tens permís per accedir a aquest directori
 list_edir=No he pogut llistar $1: $2
