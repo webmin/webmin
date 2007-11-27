@@ -1,4 +1,4 @@
-index_title=Configuració de QMail
+index_title=Servidor de Correu QMail
 index_edir=El directori base $1 de QMail no existeix. Pot ser que QMail no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_edir2=No sembla que el directori $1 sigui el directori base de QMail. Pot ser que QMail no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_return=a la configuració de QMail
