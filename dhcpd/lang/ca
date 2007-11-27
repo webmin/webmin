@@ -431,7 +431,7 @@ zone_faildel=No he pogut suprimir la zona
 zone_failsave=No he pogut desar la zona
 zone_tsigkey=Clau TSIG
 
-plib_clientupdates=client-updates: Els clients poden actualitzar els seus propis registres
+plib_clientupdates=Els clients poden actualitzar els seus propis registres
 
 text_title=dhcpd.conf
 text_editor=Editor de text
