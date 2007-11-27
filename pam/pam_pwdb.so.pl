@@ -3,29 +3,18 @@
 # display_args(&service, &module, &args)
 sub display_module_args
 {
-print "<tr> <td><b>$text{'pwdb_shadow'}</b></td>\n";
-printf "<td><input type=radio name=shadow value=1 %s> %s\n",
-	defined($_[2]->{'shadow'}) ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=shadow value=0 %s> %s</td>\n",
-	defined($_[2]->{'shadow'}) ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'pwdb_shadow'},
+	&ui_yesno_radio("shadow", defined($_[2]->{'shadow'}) ? 1 : 0));
 
-print "<td><b>$text{'pwdb_nullok'}</b></td>\n";
-printf "<td><input type=radio name=nullok value=1 %s> %s\n",
-	defined($_[2]->{'nullok'}) ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=nullok value=0 %s> %s</td> </tr>\n",
-	defined($_[2]->{'nullok'}) ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'pwdb_nullok'},
+	&ui_yesno_radio("nullok", defined($_[2]->{'nullok'}) ? 1 : 0));
 
-print "<tr> <td><b>$text{'pwdb_md5'}</b></td>\n";
-printf "<td><input type=radio name=md5 value=1 %s> %s\n",
-	defined($_[2]->{'md5'}) ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=md5 value=0 %s> %s</td>\n",
-	defined($_[2]->{'md5'}) ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'pwdb_md5'},
+	&ui_yesno_radio("md5", defined($_[2]->{'md5'}) ? 1 : 0));
 
-print "<td><b>$text{'pwdb_nodelay'}</b></td>\n";
-printf "<td><input type=radio name=nodelay value=0 %s> %s\n",
-	defined($_[2]->{'nodelay'}) ? '' : 'checked', $text{'yes'};
-printf "<input type=radio name=nodelay value=1 %s> %s</td> </tr>\n",
-	defined($_[2]->{'nodelay'}) ? 'checked' : '', $text{'no'};
+print &ui_table_row($text{'pwdb_nodelay'},
+	&ui_radio("md5", defined($_[2]->{'nodelay'}) ? 1 : 0,
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 }
 
 # parse_module_args(&service, &module, &args)

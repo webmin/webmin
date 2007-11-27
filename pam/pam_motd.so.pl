@@ -5,13 +5,9 @@ $module_has_no_args = 1;	# file= arg doesn't seem to work!
 # display_args(&service, &module, &args)
 sub display_module_args
 {
-print "<tr> <td><b>$text{'motd_file'}</b></td>\n";
-printf "<td colspan=3><input type=radio name=file_def value=1 %s> %s\n",
-	$_[2]->{'file'} ? '' : 'checked', $text{'motd_file_def'};
-printf "<input type=radio name=file_def value=0 %s>\n",
-	$_[2]->{'file'} ? 'checked' : '';
-print "<input name=file size=30 value='$_[2]->{'file'}'> ",
-      &file_chooser_button("file"),"</td> </tr>\n";
+print &ui_table_row($text{'motd_file'},
+	&ui_opt_textbox("file", $_[2]->{'file'}, 40, $text{'motd_file_def'}).
+	" ".&file_chooser_button("file"), 3);
 }
 
 # parse_module_args(&service, &module, &args)

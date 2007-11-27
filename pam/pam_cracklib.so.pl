@@ -3,19 +3,11 @@
 # display_args(&service, &module, &args)
 sub display_module_args
 {
-print "<tr> <td><b>$text{'cracklib_retry'}</b></td>\n";
-printf "<td><input type=radio name=retry_def value=1 %s> %s\n",
-	$_[2]->{'retry'} ? '' : 'checked', $text{'default'};
-printf "<input type=radio name=retry_def value=0 %s>\n",
-	$_[2]->{'retry'} ? 'checked' : '';
-print "<input name=retry size=5 value='$_[2]->{'retry'}'></td>\n";
+print &ui_table_row($text{'cracklib_retry'},
+	&ui_opt_textbox("retry", $_[2]->{'retry'}, 5, $text{'default'}));
 
-print "<td><b>$text{'cracklib_type'}</b></td>\n";
-printf "<td><input type=radio name=type_def value=1 %s> %s\n",
-	$_[2]->{'type'} ? '' : 'checked', $text{'default'};
-printf "<input type=radio name=type_def value=0 %s>\n",
-	$_[2]->{'type'} ? 'checked' : '';
-print "<input name=type size=20 value='$_[2]->{'type'}'></td> </tr>\n";
+print &ui_table_row($text{'cracklib_type'},
+	&ui_opt_textbox("type", $_[2]->{'type'}, 20, $text{'default'}));
 }
 
 # parse_module_args(&service, &module, &args)

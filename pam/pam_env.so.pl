@@ -22,18 +22,21 @@ while(<FILE>) {
 		}
 	}
 close(FILE);
-print "<tr> <td colspan=4><table width=100% border>\n";
-print "<tr $tb> <td><b>$text{'env_var'}</b></td> ",
-      "<td><b>$text{'env_def'}</b></td> ",
-      "<td><b>$text{'env_over'}</b></td> </tr>\n";
+local $et;
+$et .= &ui_columns_start([ $text{'env_var'},
+			  $text{'env_def'},
+			  $text{'env_over'} ]);
 local $i = 0;
 foreach $e (@env, [ ]) {
-	print "<tr> <td><input name=var_$i size=20 value='$e->[0]'></td>\n";
-	print "<td><input name=def_$i size=30 value='$e->[1]'></td>\n";
-	print "<td><input name=over_$i size=30 value='$e->[2]'></td> </tr>\n";
+	$et .= &ui_columns_row([
+		&ui_textbox("var_$i", $e->[0], 20),
+		&ui_textbox("def_$i", $e->[1], 30),
+		&ui_textbox("over_$i", $e->[2], 30),
+		]);
 	$i++;
 	}
-print "</table></td> </tr>\n";
+$et .= &ui_columns_end();
+print &ui_table_row(undef, $et, 4);
 }
 
 # parse_module_args(&service, &module, &args)

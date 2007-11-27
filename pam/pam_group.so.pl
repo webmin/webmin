@@ -14,24 +14,26 @@ while(<FILE>) {
 		}
 	}
 close(FILE);
-print "<tr> <td colspan=4><table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'group_services'}</b></td> ",
-      "<td><b>$text{'group_ttys'}</b></td> ",
-      "<td><b>$text{'group_users'}</b></td> ",
-      "<td><b>$text{'group_times'}</b></td> ",
-      "<td><b>$text{'group_groups'}</b></td> </tr>\n";
+local $gt;
+$gt .= &ui_columns_start([ $text{'group_services'},
+			   $text{'group_ttys'},
+			   $text{'group_users'},
+			   $text{'group_times'},
+			   $text{'group_groups'} ]);
 local $i = 0;
 foreach $g (@group, [ ]) {
-	print "<tr>\n";
-	print "<td><input name=services_$i size=20 value='$g->[0]'></td>\n";
-	print "<td><input name=ttys_$i size=20 value='$g->[1]'></td>\n";
-	print "<td><input name=users_$i size=20 value='$g->[2]'></td>\n";
-	print "<td><input name=times_$i size=20 value='$g->[3]'></td>\n";
-	print "<td><input name=groups_$i size=20 value='$g->[4]'></td>\n";
-	print "</tr>\n";
+	$gt .= &ui_columns_row([
+		&ui_textbox("services_$i", $g->[0], 20),
+		&ui_textbox("ttys_$i", $g->[1], 20),
+		&ui_textbox("users_$i", $g->[2], 20),
+		&ui_textbox("times_$i", $g->[3], 20),
+		&ui_textbox("groups_$i", $g->[4], 20),
+		]);
 	$i++;
 	}
-print "</table><br>$text{'group_info'}</td> </tr>\n";
+$gt .= &ui_columns_end();
+$gt .= "<br>".$text{'group_info'};
+print &ui_table_row(undef, $gt, 4);
 }
 
 # parse_module_args(&service, &module, &args)

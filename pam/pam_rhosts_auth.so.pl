@@ -3,29 +3,20 @@
 # display_args(&service, &module, &args)
 sub display_module_args
 {
-print "<tr> <td><b>$text{'rhosts_equiv'}</b></td>\n";
-printf "<td><input type=radio name=equiv value=0 %s> $text{'yes'}\n",
-	defined($_[2]->{'no_hosts_equiv'}) ? '' : 'checked';
-printf "<input type=radio name=equiv value=1 %s> $text{'no'}</td>\n",
-	defined($_[2]->{'no_hosts_equiv'}) ? 'checked' : '';
+print &ui_table_row($text{'rhosts_equiv'},
+	&ui_radio("equiv", defined($_[2]->{'no_hosts_equiv'}) ? 1 : 0,
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print "<td><b>$text{'rhosts_rhosts'}</b></td>\n";
-printf "<td><input type=radio name=rhosts value=0 %s> $text{'yes'}\n",
-	defined($_[2]->{'no_rhosts'}) ? '' : 'checked';
-printf "<input type=radio name=rhosts value=1 %s> $text{'no'}</td> </tr>\n",
-	defined($_[2]->{'no_rhosts'}) ? 'checked' : '';
+print &ui_table_row($text{'rhosts_rhosts'},
+	&ui_radio("rhosts", defined($_[2]->{'no_hosts'}) ? 1 : 0,
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'rhosts_promiscuous'}</b></td>\n";
-printf "<td><input type=radio name=promiscuous value=1 %s> $text{'yes'}\n",
-	defined($_[2]->{'promiscuous'}) ? 'checked' : '';
-printf "<input type=radio name=promiscuous value=0 %s> $text{'no'}</td>\n",
-	defined($_[2]->{'promiscuous'}) ? '' : 'checked';
+print &ui_table_row($text{'rhosts_promiscuous'},
+	&ui_yesno_radio("promiscuous",defined($_[2]->{'promiscuous'}) ? 1 : 0));
 
-print "<td><b>$text{'rhosts_suppress'}</b></td>\n";
-printf "<td><input type=radio name=suppress value=0 %s> $text{'yes'}\n",
-	defined($_[2]->{'suppress'}) ? '' : 'checked';
-printf "<input type=radio name=suppress value=1 %s> $text{'no'}</td> </tr>\n",
-	defined($_[2]->{'suppress'}) ? 'checked' : '';
+print &ui_table_row($text{'rhosts_suppress'},
+	&ui_radio("suppress", defined($_[2]->{'supress'}) ? 1 : 0,
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 }
 
 # parse_module_args(&service, &module, &args)

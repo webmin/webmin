@@ -3,43 +3,35 @@
 # display_args(&service, &module, &args)
 sub display_module_args
 {
-print "<tr> <td><b>$text{'listfile_item'}</b></td>\n";
-print "<td><select name=item>\n";
-foreach $i ('user', 'tty', 'rhost', 'ruser', 'group', 'shell') {
-	printf "<option value='%s' %s>%s\n",
-		$i, $_[2]->{'item'} eq $i ? 'selected' : '',
-		$text{'listfile_item_'.$i};
-	}
-print "</select></td>\n";
+print &ui_table_row($text{'listfile_item'},
+	&ui_select("item", $_[2]->{'item'},
+		[ map { [ $_, $text{'listfile_item_'.$_} ] }
+		      ('user', 'tty', 'rhost', 'ruser', 'group', 'shell') ]));
 
-print "<td><b>$text{'listfile_sense'}</b></td>\n";
-printf "<td><input type=radio name=sense value=allow %s> %s\n",
-	$_[2]->{'sense'} eq 'allow' ? 'checked' : '', $text{'listfile_succeed'};
-printf "<input type=radio name=sense value=deny %s> %s</td> </tr>\n",
-	$_[2]->{'sense'} eq 'allow' ? '' : 'checked', $text{'listfile_fail'};
+print &ui_table_row($text{'listfile_sense'},
+	&ui_radio("sense", $_[2]->{'sense'} || "deny",
+		[ [ "allow", $text{'listfile_succeed'} ],
+		  [ "deny", $text{'listfile_fail'} ] ]));
 
-print "<tr> <td><b>$text{'listfile_file'}</b></td>\n";
-print "<td colspan=3><input name=file size=50 value='$_[2]->{'file'}'> ",
-      &file_chooser_button("file"),"</td> </tr>\n";
+print &ui_table_row($text{'listfile_file'},
+	&ui_textbox("file", $_[2]->{'file'}, 50)." ".
+	&file_chooser_button("file"), 3);
 
-print "<tr> <td><b>$text{'listfile_onerr'}</b></td>\n";
-printf "<td><input type=radio name=onerr value=fail %s> %s\n",
-	$_[2]->{'onerr'} eq 'fail' ? 'checked' : '', $text{'listfile_fail'};
-printf "<input type=radio name=onerr value=succeed %s> %s</td>\n",
-	$_[2]->{'onerr'} eq 'fail' ? '' : 'checked', $text{'listfile_succeed'};
+print &ui_table_row($text{'listfile_onerr'},
+	&ui_radio("onerr", $_[2]->{'onerr'} || "succeed",
+		  [ [ "fail", $text{'listfile_fail'} ],
+		    [ "success", $text{'listfile_succeed'} ] ]));
 
 local $mode = $_[2]->{'apply'} =~ /^\@/ ? 2 :
 	      $_[2]->{'apply'} ? 1 : 0;
-print "<td><b>$text{'listfile_apply'}</b></td>\n";
-printf "<td><input type=radio name=apply_mode value=0 %s> %s\n",
-	$mode == 0 ? 'checked' : '', $text{'listfile_all'};
-printf "<input type=radio name=apply_mode value=1 %s> %s %s\n",
-	$mode == 1 ? 'checked' : '', $text{'listfile_user'},
-	&unix_user_input("apply_user", $mode == 1 ? $_[2]->{'apply'} : "");
-printf "<input type=radio name=apply_mode value=2 %s> %s %s</td> </tr>\n",
-	$mode == 2 ? 'checked' : '', $text{'listfile_group'},
-	&unix_group_input("apply_group", $mode == 2 ?
-		substr($_[2]->{'apply'}, 1) : "");
+print &ui_table_row($text{'listfile_apply'},
+    &ui_radio("apply_mode", $mode,
+	[ [ 0, $text{'listfile_all'} ],
+	  [ 1, $text{'listfile_user'}." ".
+	    &unix_user_input("apply_user", $mode == 1 ? $_[2]->{'apply'} : "")],
+	  [ 2, $text{'listfile_group'}." ".
+	    &unix_group_input("apply_group", $mode == 2 ?
+			substr($_[2]->{'apply'}, 1) : "") ] ]), 3);
 }
 
 # parse_module_args(&service, &module, &args)
