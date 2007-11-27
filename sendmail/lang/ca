@@ -1,4 +1,4 @@
-index_title=Configuració de Sendmail
+index_title=Servidor de Correu Sendmail
 index_econfig=Sembla que el fitxer de configuració de sendmail $1 no existeix. Pot ser que Sendmail no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_eversion=No sembla que la versió del fitxer de configuració de sendmail sigui la més nova. Webmin només suporta de la versió 8.8 en amunt.
 index_epath=L'executable sendmail $1 no està instal·lat al sistema. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta, o bé que el sendmail no estigui instal·lat.
