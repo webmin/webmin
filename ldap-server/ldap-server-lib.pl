@@ -6,6 +6,8 @@
 # XXX more slapd.conf options
 #	XXX SSL certs
 #	XXX schemacheck / gentlehup
+# XXX LDAP logging in more detail, like we do for SQL
+#	XXX spam, postfix and ldap-useradmin too
 
 do '../web-lib.pl';
 &init_config();
