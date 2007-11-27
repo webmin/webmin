@@ -410,6 +410,9 @@ if (!@socketfhs && !$tried_inaddr_any) {
 	listen($fh, SOMAXCONN);
 	push(@socketfhs, $fh);
 	}
+elsif (!@socketfhs && $tried_inaddr_any) {
+	die "Could not listen on any ports";
+	}
 
 if ($config{'listen'}) {
 	# Open the socket that allows other webmin servers to find this one
