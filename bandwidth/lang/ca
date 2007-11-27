@@ -8,6 +8,7 @@ index_esyslog=No hi ha cap mòdul de Registres del Sistema instal·lat ni suportat
 index_firesys=Utilitzant el tallafocs $1 i $2
 index_setupcannot=De totes maneres, tu no tens permís per configurar-lo.
 index_setupdesc=Abans que aquest mòdul pugui informar de l'ús de la xarxa al sistema, cal configurar-lo per monitoritzar el trànsit en la interfície de xarxa externa seleccionada.
+index_setupdesc2=<b>Atenció - aquest mòdule registrarà TOT el transit de xarxa enviat o rebut sobre la interfície seleccionada. Això consumirà molt espai al disc dur i molt temps de CPU en una connexió de xraxa ràpida.</b>
 index_missing3=S'han d'afegir algunes regles del tallafocs, i crear una entrada de configuració de syslog.
 index_missing2=S'han d'afegir algunes regles del tallafocs.
 index_missing1=S'ha de crear una entrada de configuració de syslog.
