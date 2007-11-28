@@ -36,7 +36,7 @@ FILE: foreach $f (readdir(DIR)) {
 				       'index' => @{$serv->{'mods'}}+0 };
 			push(@{$serv->{'mods'}}, $mod);
 			}
-		elsif (/^\s*(\S+)\s+\[([^\]*\]\s+(\S+)\s*(.*)$/) {
+		elsif (/^\s*(\S+)\s+\[([^\]]*)\]\s+(\S+)\s*(.*)$/) {
 			# Line with special rules .. ignore for now
 			}
 		elsif (/^\s*(\S+)\s+(\S+)\s+(\S+)\s*(.*)$/) {

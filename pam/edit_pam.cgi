@@ -47,12 +47,11 @@ foreach $t ('auth', 'account', 'session', 'password') {
 			local $mn = $m->{'module'};
 			$mn =~ s/^.*\///;
 			local @cols;
-			if ($m->{'include'}) {
-				# Second type of include, using @
-				push(@cols, "<a href='edit_atinc.cgi?".
+			if ($m->{'control'} eq 'include') {
+				# Included module
+				push(@cols, "<a href='edit_inc.cgi?".
 				    "idx=$pam->{'index'}&midx=$m->{'index'}'>".
-				    &text('edit_inc',
-					  "<tt>$m->{'include'}</tt>")."</a>");
+				    &text('edit_inc', "<tt>$mn</tt>")."</a>");
 				@rtds = ( "colspan=4", "width=5%" );
 				}
 			else {
