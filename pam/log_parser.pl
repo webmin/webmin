@@ -26,6 +26,9 @@ elsif ($type eq 'inc') {
 	return &text("log_inc_$action", &html_escape($p->{'module'}),
 		     &html_escape($object));
 	}
+elsif ($type eq 'incs') {
+	return &text('log_incs', &html_escape($p->{'module'}));
+	}
 else {
 	return undef;
 	}

@@ -1,3 +1,3 @@
 ---- Changes since 1.380 ----
 Re-wrote the user interface to use the new UI library functions, for a more consistent look.
-Added support for PAM includes, as used in modern Linux distributions.
+Added support for two types of PAM includes, as used in modern Linux distributions.

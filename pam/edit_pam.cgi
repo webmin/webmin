@@ -47,11 +47,12 @@ foreach $t ('auth', 'account', 'session', 'password') {
 			local $mn = $m->{'module'};
 			$mn =~ s/^.*\///;
 			local @cols;
-			if ($m->{'control'} eq 'include') {
-				# Including some other file
-				push(@cols, "<a href='edit_inc.cgi?".
+			if ($m->{'include'}) {
+				# Second type of include, using @
+				push(@cols, "<a href='edit_atinc.cgi?".
 				    "idx=$pam->{'index'}&midx=$m->{'index'}'>".
-				    &text('edit_inc', "<tt>$mn</tt>")."</a>");
+				    &text('edit_inc',
+					  "<tt>$m->{'include'}</tt>")."</a>");
 				@rtds = ( "colspan=4", "width=5%" );
 				}
 			else {
@@ -98,11 +99,33 @@ foreach $t ('auth', 'account', 'session', 'password') {
 		[ map { [ $_, $text{$_} ? "$_ ($text{$_})" : $_ ] }
 		      &list_modules() ]);
 	$ptable .= "&nbsp;";
-	$ptable .= &ui_submit($text{'edit_addinc'}, "inc");
+	if (&include_style(\@pams) == 2) {
+		$ptable .= &ui_submit($text{'edit_addinc'}, "inc");
+		}
 
 	print &ui_table_row(undef, $ptable, 2);
 	print &ui_hidden_table_end();
 	print &ui_form_end();
+	}
+
+# Show section for other includes
+if (&include_style(\@pams) == 3) {
+	@incs = grep { $_->{'include'} } @{$pam->{'mods'}};
+	%inced = map { $_->{'include'}, 1 } @incs;
+	print &ui_form_start("save_incs.cgi");
+	print &ui_hidden("idx", $in{'idx'});
+	print &ui_hidden_table_start($text{'edit_iheader'}, "width=100%", 2,
+				     "incs", @incs ? 1 : 0);
+	@grid = ( );
+	foreach $p (sort { $a->{'name'} cmp $b->{'name'} } @pams) {
+		$desc = $p->{'name'}." ".
+			($p->{'desc'} || $text{'desc_'.$p->{'name'}});
+		push(@grid, &ui_checkbox("inc", $p->{'name'}, $desc,
+					 $inced{$p->{'name'}}));
+		}
+	print &ui_table_row(undef, &ui_grid_table(\@grid, 2), 2);
+	print &ui_hidden_table_end();
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 	}
 
 # Delete whole service form

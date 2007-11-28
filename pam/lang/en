@@ -1,7 +1,7 @@
 index_title=PAM Authentication
 index_name=Service
 index_desc=Description
-index_add=Add a new PAM service
+index_add=Add a new PAM service.
 index_return=service list
 index_none=No PAM configuration files were found on your system in the directory $1. Maybe PAM is not supported, or your <a href='$2'>module configuration</a> is incorrect.
 
@@ -108,6 +108,7 @@ edit_delete=Delete PAM service
 edit_move=Move
 edit_return=PAM service
 edit_inc=Include service $1
+edit_iheader=Included PAM services
 
 pam_pwdb.so=Unix password authentication
 pam_securetty.so=Secure TTY check for root
@@ -282,6 +283,7 @@ log_mod_move_l=Swapped PAM modules $1 and $2 in service $3
 log_inc_create=Added include $1 for service $2
 log_inc_modify=Modified include $1 for service $2
 log_inc_delete=Deleted include $1 for service $2
+log_incs=Updated includes for service $1
 
 inc_edit=Edit Included Service
 inc_create=Create Included Service

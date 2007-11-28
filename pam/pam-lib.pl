@@ -29,7 +29,18 @@ FILE: foreach $f (readdir(DIR)) {
 			$serv->{'desc'} = $1;
 			}
 		s/#.*$//g;
-		if (/^\s*(\S+)\s+(\S+)\s+(\S+)\s*(.*)$/) {
+		if (/^\s*\@include\s+(\S+)/) {
+			# Special include line
+			local $mod = { 'include' => $1,
+				       'line' => $lnum,
+				       'index' => @{$serv->{'mods'}}+0 };
+			push(@{$serv->{'mods'}}, $mod);
+			}
+		elsif (/^\s*(\S+)\s+\[([^\]*\]\s+(\S+)\s*(.*)$/) {
+			# Line with special rules .. ignore for now
+			}
+		elsif (/^\s*(\S+)\s+(\S+)\s+(\S+)\s*(.*)$/) {
+			# Regular line
 			local $mod = { 'type' => $1,   'control' => $2,
 				       'module' => $3, 'args' => $4,
 				       'line' => $lnum,
@@ -87,9 +98,17 @@ $lref->[$_[2]->{'line'}] = $line;
 # Returns text for a PAM module line
 sub module_line
 {
-local $l = join("\t", $_[0]->{'type'}, $_[0]->{'control'}, $_[0]->{'module'});
-$l .= "\t$_[0]->{'args'}" if ($_[0]->{'args'});
-return $l;
+if ($_[0]->{'include'}) {
+	# Special include line
+	return "\@include ".$_[0]->{'include'};
+	}
+else {
+	# A regular module
+	local $l = join("\t", $_[0]->{'type'}, $_[0]->{'control'},
+			      $_[0]->{'module'});
+	$l .= "\t$_[0]->{'args'}" if ($_[0]->{'args'});
+	return $l;
+	}
 }
 
 # list_modules()
@@ -113,6 +132,19 @@ foreach $q (split(/\s+/, $config{'mod_equiv'})) {
 		}
 	}
 return &unique(@rv);
+}
+
+# include_style(&pam)
+# Returns 1 if includes are done with pam_stack.so, 2 if done with include
+# lines, 3 if done with @include, 0 if not supported
+sub include_style
+{
+local ($pam) = @_;
+local @allmods = map { @{$_->{'mods'}} } @$pam;
+local ($atinc) = grep { $_->{'include'} } @allmods;
+local ($inc) = grep { $_->{'control'} eq 'include' } @allmods;
+local ($stack) = grep { $_ eq "pam_stack.so" } &list_modules();
+return $atinc ? 3 : $inc ? 2 : $stack ? 1 : 0;
 }
 
 1;
