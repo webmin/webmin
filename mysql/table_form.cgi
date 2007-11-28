@@ -29,7 +29,7 @@ print &ui_table_row($text{'table_copy'},
 print &ui_table_row($text{'table_type'},
 		    &ui_select("type", "",
 			[ [ "", $text{'default'} ], [ "isam" ], [ "myisam" ],
-			  [ "heap" ], [ "merge" ], [ "innodb", "ndbcluster" ]
+			  [ "heap" ], [ "merge" ], [ "innodb" ], [ "ndbcluster" ]
 			]));
 
 print "<tr> <td colspan=2>";
