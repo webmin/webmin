@@ -184,6 +184,7 @@ else {
 		print &ui_select("db", undef, [ map { [ $_ ] } @titles ]),"\n";
 		print &ui_submit($text{'index_jumpok'}),"<br>\n";
 		print &ui_form_end();
+		@icons = ( );
 		}
 	else {
 		# Show databases as table
