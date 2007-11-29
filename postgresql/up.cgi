@@ -6,11 +6,11 @@ require './postgresql-lib.pl';
 &ReadParse();
 $access{'users'} || &error($text{'host_ecannot'});
 
-&lock_file($config{'hba_conf'});
+&lock_file($hba_conf_file);
 @hosts = &get_hba_config();
 $host = $hosts[$in{'idx'}];
 &swap_hba($host, $hosts[$in{'idx'}-1]);
-&unlock_file($config{'hba_conf'});
+&unlock_file($hba_conf_file);
 &restart_postgresql();
 &webmin_log('move', 'hba',
 		   $host->{'type'} eq 'local' ? 'local' :

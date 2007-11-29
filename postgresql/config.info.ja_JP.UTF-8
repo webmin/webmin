@@ -1,4 +1,3 @@
-hba_conf=pg_hba.confファイル,0
 start_cmd=PostgreSQL起動コマンド,0
 rstr_cmd=pg_restore コマンドのパス,0
 plib=PostgreSQL シェアードライブラリ,3,必要無し

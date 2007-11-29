@@ -15,7 +15,6 @@ start_cmd=PostgreSQL起動コマンド,0
 stop_cmd=PostgreSQL停止コマンド,3,Kill プロセス
 setup_cmd=PostgreSQL 初期化コマンド,3,無し
 pid_file=postmaster PID ファイル,0
-hba_conf=pg_hba.confファイル,0
 host=PostgreSQL接続ホスト,3,ローカルホスト
 port=PostgreSQLの接続ポート,3,デフォルト
 dump_cmd=pg_dump コマンドのパス,0

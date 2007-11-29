@@ -11,6 +11,5 @@ start_cmd=Команда для запуска PostgreSQL,0
 stop_cmd=Команда для остановки PostgreSQL,3,Убить процесс
 setup_cmd=Команда для инициализации PostgreSQL,3,Нет
 pid_file=Путь к файлу PID postmaster,0
-hba_conf=Путь к файл настроек доступных узлов,0
 host=Узел PostgreSQL для соединений,3,localhost
 unix=Пользователь unix, от которого будут запускаться команды PostgreSQL,3,root

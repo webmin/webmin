@@ -1,4 +1,3 @@
-hba_conf=主機進入配置檔案路徑,0
 start_cmd=啟動 PostgreSQL 的命令,0
 host=PostgreSQL主機連線到,3,本地端
 perpage=每頁顯示的行數,0

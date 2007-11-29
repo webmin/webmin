@@ -44,6 +44,12 @@ else {
 		}
 	$max_dbs = $config{'max_dbs'};
 	}
+foreach my $hba (split(/\t+/, $config{'hba_conf'})) {
+	if (-r $hba) {
+		$hba_conf_file = $hba;
+		last;
+		}
+	}
 $cron_cmd = "$module_config_directory/backup.pl";
 
 if (!$config{'nodbi'}) {
@@ -517,7 +523,7 @@ else {
 sub get_hba_config
 {
 local $lnum = 0;
-open(HBA, $config{'hba_conf'});
+open(HBA, $hba_conf_file);
 while(<HBA>) {
 	s/\r|\n//g;
 	s/^\s*#.*$//g;
@@ -587,7 +593,7 @@ return @rv;
 # create_hba(&hba, version)
 sub create_hba
 {
-local $lref = &read_file_lines($config{'hba_conf'});
+local $lref = &read_file_lines($hba_conf_file);
 push(@$lref, &hba_line($_[0], $_[1]));
 &flush_file_lines();
 }
@@ -595,7 +601,7 @@ push(@$lref, &hba_line($_[0], $_[1]));
 # delete_hba(&hba, version)
 sub delete_hba
 {
-local $lref = &read_file_lines($config{'hba_conf'});
+local $lref = &read_file_lines($hba_conf_file);
 splice(@$lref, $_[0]->{'line'}, 1);
 &flush_file_lines();
 }
@@ -603,7 +609,7 @@ splice(@$lref, $_[0]->{'line'}, 1);
 # modify_hba(&hba, version)
 sub modify_hba
 {
-local $lref = &read_file_lines($config{'hba_conf'});
+local $lref = &read_file_lines($hba_conf_file);
 splice(@$lref, $_[0]->{'line'}, 1, &hba_line($_[0], $_[1]));
 &flush_file_lines();
 }
@@ -611,7 +617,7 @@ splice(@$lref, $_[0]->{'line'}, 1, &hba_line($_[0], $_[1]));
 # swap_hba(&hba1, &hba2)
 sub swap_hba
 {
-local $lref = &read_file_lines($config{'hba_conf'});
+local $lref = &read_file_lines($hba_conf_file);
 local $line0 = $lref->[$_[0]->{'line'}];
 local $line1 = $lref->[$_[1]->{'line'}];
 $lref->[$_[1]->{'line'}] = $line0;

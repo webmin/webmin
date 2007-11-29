@@ -23,12 +23,13 @@ if (!-x $config{'psql'} || -d $config{'psql'}) {
 	}
 
 # Check for the config file
-if (!-r $config{'hba_conf'}) {
+if (!-r $hba_conf_file) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("postgresql", "man", "doc", "google"));
+	($hba_conf_file) = split(/\t+/, $config{'hba_conf'});
 	if ($config{'setup_cmd'}) {
 		# Offer to setup DB for first time
-		print &text('index_setup', "<tt>$config{'hba_conf'}</tt>",
+		print &text('index_setup', "<tt>$hba_conf_file</tt>",
 				  "<tt>$config{'setup_cmd'}</tt>"),"<p>\n";
 		print "<form action=setup.cgi><center>\n";
 		print "<input type=submit value='$text{'index_setupok'}'>\n";
@@ -36,7 +37,7 @@ if (!-r $config{'hba_conf'}) {
 		}
 	else {
 		# Config file wasn't found
-		print &text('index_ehba', "<tt>$config{'hba_conf'}</tt>",
+		print &text('index_ehba', "<tt>$hba_conf_file</tt>",
 		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
 		}
 	&ui_print_footer("/", $text{'index'});

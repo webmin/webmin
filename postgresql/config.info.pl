@@ -6,6 +6,5 @@ basedb=Pocz±tkowa baza danych PostgreSQLa,0
 start_cmd=Polecenie uruchamiaj±ce PostgreSQLa,0
 stop_cmd=Polecenie zatrzymuj±ce PostgreSQLa,3,Zabicie procesu
 pid_file=¦cie¿ka z&nbsp;numerem PID procesu <tt>postmaster</tt>,0
-hba_conf=¦cie¿ka do pliku konfiguracyjnego dostêpu hostów,0
 perpage=Ilo¶æ linii wy¶wietlanych na stronie,0
 host=Host PostgreSQLa&#44; z&nbsp;którym siê ³±czyæ,3,Localhost

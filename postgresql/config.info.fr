@@ -16,7 +16,6 @@ start_cmd=Commande pour d&#233;marrer PostgreSQL,0
 stop_cmd=Commande pour arr&#234;ter PostgreSQL,3,Tuer le processus
 setup_cmd=Commande pour initialiser PostgreSQL,3,Aucune
 pid_file=Chemin d'acc&#232;s au fichier PID du postmaster,0
-hba_conf=Chemin d'acc&#232;s au fichier de configuration d'acc&#232;s aux h&#244;tes,0
 host=H&#244;te PostgreSQL auquel se connecter,3,localhost
 port=Port PostgreSQL auquel se connecter,3,Par d&#233;faut
 dump_cmd=Chemin d'acc&#232;s &#224; la commande pg_dump,0

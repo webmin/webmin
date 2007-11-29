@@ -6,7 +6,6 @@ basedb=Base de datos inicial de PostgreSQL,0
 start_cmd=Comando para arrancar PostgreSQL,0
 stop_cmd=Comando para parar PostgreSQL,3,Matar proceso
 pid_file=Trayectoria a archivo PID del jefe de estafeta de correos,0
-hba_conf=Trayectoria archivo de configuración de acceso de máquinas,0
 perpage=Número de filas a mostrar por página,0
 host=Máquina PostgreSQL a conectarse,3,Local
 unix=Usuario de Unix como el que ejecutar los comandos de PostgreSQL,3,root

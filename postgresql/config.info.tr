@@ -20,7 +20,6 @@ start_cmd=Command to start PostgreSQL,0
 stop_cmd=Command to stop PostgreSQL,3,Kill process
 setup_cmd=Command to initialize PostgreSQL,3,None
 pid_file=Path to postmaster PID file,0
-hba_conf=Path to host access config file,0
 host=PostgreSQL host to connect to,3,localhost
 port=PostgreSQL port to connect to,3,Default
 dump_cmd=Path to pg_dump command,0

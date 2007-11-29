@@ -4,7 +4,7 @@
 
 require './postgresql-lib.pl';
 &ReadParse();
-&lock_file($config{'hba_conf'});
+&lock_file($hba_conf_file);
 $v = &get_postgresql_version();
 @all = &get_hba_config($v);
 $host = $all[$in{'idx'}] if (!$in{'new'});
@@ -94,7 +94,7 @@ else {
 		&modify_hba($host, $v);
 		}
 	}
-&unlock_file($config{'hba_conf'});
+&unlock_file($hba_conf_file);
 &restart_postgresql();
 &webmin_log($in{'new'} ? 'create' : $in{'delete'} ? 'delete' : 'modify',
 	    'hba', $host->{'type'} eq 'local' ? 'local' :

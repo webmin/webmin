@@ -1,4 +1,3 @@
-hba_conf=主机访问配置文件路径,0
 start_cmd=启动 PostgreSQL 的命令,0
 perpage=每页显示的行数,0
 plib=PostgreSQL 共享库路径,3,不需要

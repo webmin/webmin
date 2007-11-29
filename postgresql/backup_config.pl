@@ -5,7 +5,7 @@ do 'postgresql-lib.pl';
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-return ( $config{'hba_conf'} );
+return ( $hba_conf_file );
 }
 
 # pre_backup(&files)

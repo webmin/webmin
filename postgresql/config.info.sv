@@ -6,6 +6,5 @@ basedb=PostgreSQL-databas att starta med,0
 start_cmd=Kommando för att starta PostgreSQL,0
 stop_cmd=Kommando för att stanna PostgreSQL,3,Döda processen
 pid_file=Sökväg till postmaster-PID-fil,0
-hba_conf=Sökväg till konfigurationsfil för datortillgång,0
 perpage=Antal rader som ska visas per sida,0
 host=PostgreSQL-dator att koppla upp mot,3,Localhost
