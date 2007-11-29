@@ -46,7 +46,7 @@ $ver = &get_bacula_version();
 		 $hsl, undef, undef,
 		 ($ver ? &text('index_version', $ver)."<br>" : undef).
 		 &text('index_ocmin', 'images/ocmin.gif',
-		       'http://www.ocmin.com/'));
+		       'http://www.linmin.com/'));
 if ($ver && $ver < 1.36) {
 	print &text('index_eversion', 1.36, $ver),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
