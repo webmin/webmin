@@ -35,6 +35,7 @@ dir_err=Failed to save directory
 dir_eclash=This directory is already protected
 dir_edir=Missing or invalid directory
 dir_ecannot=You are not allowed to protect this directory
+dir_ecannotcreate=You are not allow to configure which directories are protected
 dir_efile=Missing or invalid users filename
 dir_ehtaccess=Failed to create Apache options file $1 : $2
 dir_ehtpasswd=Failed to create users file $1 : $2
@@ -91,6 +92,7 @@ acl_user=Create .htaccess and htusers files as Unix user
 acl_same=Same as Webmin login
 acl_home=Include Unix user's home directory?
 acl_sync=Can setup Unix user synchronization?
+acl_uonly=Can add and change protected directories?
 
 log_create_dir=Added directory $1
 log_modify_dir=Modified directory $1

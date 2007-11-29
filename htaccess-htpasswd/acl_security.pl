@@ -5,26 +5,27 @@ require 'htaccess-lib.pl';
 # Output HTML for editing security options for the htaccess module
 sub acl_security_form
 {
-print "<tr> <td nowrap><b>$text{'acl_user'}</b></td>\n";
-printf "<td><input type=radio name=user_def value=1 %s> %s\n",
-	$_[0]->{'user'} eq "*" ? "checked" : "", $text{'acl_same'};
-printf "<input type=radio name=user_def value=0 %s>\n",
-	$_[0]->{'user'} eq "*" ? "" : "checked";
-print &unix_user_input("user", $_[0]->{'user'} eq "*" ? "" : $_[0]->{'user'});
-print "</td> </tr>\n";
+# Write files as user
+print &ui_table_row($text{'acl_user'},
+	&ui_radio("user_def", $_[0]->{'user'} eq "*" ? 1 : 0,
+		  [ [ 1, $text{'acl_same'} ],
+		    [ 0, &unix_user_input("user",
+			$_[0]->{'user'} eq "*" ? "" : $_[0]->{'user'}) ] ]), 3);
 
-print "<tr> <td valign=top><b>$text{'acl_dirs'}</b></td>\n";
-print "<td><textarea name=dirs rows=5 cols=50>",
-	join("\n", split(/\t+/, $_[0]->{'dirs'})),
-	"</textarea><br>\n";
-printf "<input type=checkbox name=home value=1 %s> %s</td> </tr>\n",
-	$_[0]->{'home'} ? "checked" : "", $text{'acl_home'};
+# Allowed directories
+print &ui_table_row($text{'acl_dirs'},
+	&ui_textarea("dirs", join("\n", split(/\t+/, $_[0]->{'dirs'})),
+		     5, 60)."<br>".
+	&ui_checkbox("home", 1, $text{'acl_home'}, $_[0]->{'home'}), 3);
 
-print "<tr> <td><b>$text{'acl_sync'}</b></td> <td>\n";
-printf "<input type=radio name=sync value=1 %s> $text{'yes'}\n",
-	$_[0]->{'sync'} ? 'checked' : '';
-printf "<input type=radio name=sync value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'sync'} ? '' : 'checked';
+# Allow sync setup
+print &ui_table_row($text{'acl_sync'},
+	&ui_yesno_radio("sync", $_[0]->{'sync'}));
+
+# Limit to user/group editing
+print &ui_table_row($text{'acl_uonly'},
+	&ui_radio("uonly", $_[0]->{'uonly'},
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 }
 
 # acl_security_save(&options)
@@ -36,5 +37,6 @@ $in{'dirs'} =~ s/\r//g;
 $_[0]->{'dirs'} = join("\t", split(/\n/, $in{'dirs'}));
 $_[0]->{'home'} = $in{'home'};
 $_[0]->{'sync'} = $in{'sync'};
+$_[0]->{'uonly'} = $in{'uonly'};
 }
 

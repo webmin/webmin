@@ -4,6 +4,7 @@
 
 require './htaccess-lib.pl';
 &ReadParse();
+$can_create || &error($text{'dir_ecannotcreate'});
 @dirs = &list_directories();
 &error_setup($text{'dir_err'});
 &foreign_require($apachemod, "apache-lib.pl");

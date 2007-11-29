@@ -14,3 +14,5 @@ On Windows systems, the htpasswd.exe program is used to generate encrypted passw
 Added checkboxes and a button for deleting multiple directories accounts at once.
 ---- Changes since 1.340 ----
 Removes the need for the htdigest command to be installed if the Digest::MD5 perl module is available.
+---- Changes since 1.380 ----
+Users can be limited to only editing users and groups (and not adding or changing protected directories) via a new Webmin access control option.

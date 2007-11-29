@@ -5,6 +5,7 @@
 require './htaccess-lib.pl';
 &foreign_require($apachemod, "apache-lib.pl");
 &ReadParse();
+$can_create || &error($text{'dir_ecannotcreate'});
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'dir_title1'}, "");
 	}

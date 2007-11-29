@@ -23,6 +23,7 @@ if ($module_info{'usermin'}) {
 	$apachemod = "htaccess";
 	$can_htpasswd = $config{'can_htpasswd'};
 	$can_htgroups = $config{'can_htgroups'};
+	$can_create = 1;
 	}
 else {
 	# Allowed directories come from ACL
@@ -47,6 +48,7 @@ else {
 	$can_htgroups = 1;
 	$default_dir = $accessdirs[0];
 	$can_sync = $access{'sync'};
+	$can_create = !$access{'uonly'};
 	}
 
 # list_directories([even-if-missing])

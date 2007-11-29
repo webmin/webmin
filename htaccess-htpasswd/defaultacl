@@ -1,3 +1,4 @@
 user=root
 dirs=/
 sync=1
+uonly=0

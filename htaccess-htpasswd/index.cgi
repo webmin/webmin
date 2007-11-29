@@ -48,15 +48,24 @@ if ($config{'digest'} && !$htdigest_command) {
 @dirs = &list_directories();
 @dirs = grep { &can_access_dir($_->[0]) } @dirs;
 if (@dirs) {
-	print &ui_form_start("delete.cgi", "post");
-	@tds = ( "width=5", "width=30% valign=top", "width=70% valign=top" );
-	print &ui_links_row(\@links);
-	print &ui_columns_start([ "", $text{'index_dir'},
+	@tds = ( "width=30% valign=top", "width=70% valign=top" );
+	if ($can_create) {
+		print &ui_form_start("delete.cgi", "post");
+		@tds = ( "width=5", @tds );
+		print &ui_links_row(\@links);
+		}
+	print &ui_columns_start([ $can_create ? ( "" ) : ( ),
+				  $text{'index_dir'},
 				  $text{'index_usersgroups'} ], 100, 0, \@tds);
 	foreach $d (@dirs) {
 		local @cols;
-		push(@cols, "<a href='edit_dir.cgi?dir=".
-			    &urlize($d->[0])."'>$d->[0]</a>");
+		if ($can_create) {
+			push(@cols, "<a href='edit_dir.cgi?dir=".
+				    &urlize($d->[0])."'>$d->[0]</a>");
+			}
+		else {
+			push(@cols, $d->[0]);
+			}
 
 		# Show the users
 		$utable = "<table width=100%>\n";
@@ -130,11 +139,19 @@ if (@dirs) {
 				 &urlize($d->[0])."'>$text{'index_gadd'}</a>\n";
 			}
 		push(@cols, $utable);
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $d->[0]);
+		if ($can_create) {
+			print &ui_checked_columns_row(\@cols, \@tds,
+						      "d", $d->[0]);
+			}
+		else {
+			print &ui_columns_row(\@cols, \@tds);
+			}
 		}
 	print &ui_columns_end();
-	print &ui_links_row(\@links);
-	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+	if ($can_create) {
+		print &ui_links_row(\@links);
+		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		}
 	}
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
@@ -142,12 +159,13 @@ else {
 	}
 
 # Form to find existing .htaccess files
-print "<hr>\n";
-print "<form action=search.cgi>\n";
-print "<input type=submit value='$text{'index_search'}'>\n";
-printf "<input name=search size=30 value='%s'> %s<br>\n",
-	$accessdirs[0] eq "/" ? "" : $accessdirs[0],
-	&file_chooser_button("search", 1);
-print "</form>\n";
+if ($can_create) {
+	print "<hr>\n";
+	print &ui_form_start("search.cgi");
+	print &ui_submit($text{'index_search'}),"\n";
+	print &ui_textbox("search", $accessdirs[0] eq "/" ? "" : $accessdirs[0],
+			  40)." ".&file_chooser_button("search", 1)."<br>\n";
+	print &ui_form_end();
+	}
 
 &ui_print_footer("/", $text{'index'});

@@ -5,6 +5,7 @@ require './htaccess-lib.pl';
 &foreign_require($apachemod, "apache-lib.pl");
 &ReadParse();
 &error_setup($text{'delete_err'});
+$can_create || &error($text{'dir_ecannotcreate'});
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'delete_enone'});
 
