@@ -116,6 +116,13 @@ foreach $line (split(/[\r\n]+/, $data)) {
 				}
 			}
 
+		# Make sure all min/max fields are numeric
+		$err = &validate_batch_minmax(\%user, $lnum);
+		if ($err) {
+			print $err,"\n";
+			next;
+			}
+
 		# Parse common fields
 		if (!$line[1]) {
 			print &text('batch_eline', $lnum),"\n";
@@ -644,5 +651,15 @@ foreach $g (@glist) {
 		}
 	}
 return @secs;
+}
+
+sub validate_batch_minmax
+{
+local ($user, $lnum) = @_;
+foreach my $f ('min', 'max', 'warn', 'inactive', 'expire', 'change') {
+	$user->{$f} =~ /^(\-|\+|)\d*$/ ||
+		return &text('batch_e'.$f, $lnum, $user->{$f});
+	}
+return undef;
 }
 

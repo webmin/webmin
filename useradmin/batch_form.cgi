@@ -7,82 +7,82 @@ require './user-lib.pl';
 $access{'batch'} || &error($text{'batch_ecannot'});
 &ui_print_header(undef, $text{'batch_title'}, "");
 
+# Instructions
+print &ui_hidden_start($text{'batch_instr'}, "instr", 0, "batch_form.cgi");
 print "$text{'batch_desc'}\n";
 $pft = &passfiles_type();
 print "<p><tt>",$text{'batch_desc'.$pft},"</tt><p>\n";
 print "$text{'batch_descafter'}<br>\n";
 print "$text{'batch_descafter2'}\n";
+print &ui_hidden_end("instr");
 
-print "<form action=batch_exec.cgi method=post enctype=multipart/form-data>\n";
-print "<table>\n";
+print &ui_form_start("batch_exec.cgi", "form-data");
+print &ui_table_start($text{'batch_header'}, undef, 2);
 
-print "<tr> <td valign=top><b>$text{'batch_source'}</b></td> <td>\n";
-print "<input type=radio name=source value=0 checked> ",
-      "$text{'batch_source0'} <input type=file name=file><br>\n";
-print "<input type=radio name=source value=1> ",
-      "$text{'batch_source1'} <input name=local size=30> ",
-      &file_chooser_button("local"),"<br>\n";
-print "<input type=radio name=source value=2> ",
-      "$text{'batch_source2'}<br><textarea name=text rows=5 cols=50></textarea>",
-      "</td> </tr>\n";
+# Source file
+print &ui_table_row($text{'batch_source'},
+	&ui_radio_table("source", 0,
+	  [ [ 0, $text{'batch_source0'}, &ui_upload("file") ],
+	    [ 1, $text{'batch_source1'}, &ui_textbox("local", undef, 40)." ".
+					 &file_chooser_button("local") ],
+	    [ 2, $text{'batch_source2'}, &ui_textarea("text", undef, 5, 60) ]
+	  ]));
 
 if ($access{'cothers'} == 1 || $access{'mothers'} == 1 ||
     $access{'dothers'} == 1) {
-	print "<tr> <td><b>$text{'batch_others'}</b></td>\n";
-	printf "<td><input name=others type=radio value=1 %s> $text{'yes'}\n",
-		$config{'default_other'} ? "checked" : "";
-	printf "<input name=others type=radio value=0 %s> $text{'no'}</td> </tr>\n",
-		$config{'default_other'} ? "" : "checked";
+	# Do other modules?
+	print &ui_table_row($text{'batch_others'},
+		&ui_yesno_radio("others", int($config{'default_other'})));
 	}
 
-print "<tr> <td><b>$text{'batch_batch'}</b></td>\n";
-print "<td><input name=batch type=radio value=1> $text{'yes'}\n";
-print "<input name=batch type=radio value=0 checked> $text{'no'}</td> </tr>\n";
+# Only run post-command at end?
+print &ui_table_row($text{'batch_batch'},
+	&ui_yesno_radio("batch", 0));
 
 if ($access{'makehome'}) {
-	print "<tr> <td><b>$text{'batch_makehome'}</b></td>\n";
-	print "<td><input name=makehome type=radio value=1 checked> $text{'yes'}\n";
-	print "<input name=makehome type=radio value=0> $text{'no'}</td> </tr>\n";
+	# Create home dir
+	print &ui_table_row($text{'batch_makehome'},
+		&ui_yesno_radio("makehome", 1));
 	}
 
 if ($access{'copy'} && $config{'user_files'} =~ /\S/) {
-	print "<tr> <td><b>$text{'batch_copy'}</b></td>\n";
-	print "<td><input name=copy type=radio value=1 checked> $text{'yes'}\n";
-	print "<input name=copy type=radio value=0> $text{'no'}</td> </tr>\n";
+	# Copy files to homes
+	print &ui_table_row($text{'batch_copy'},
+		&ui_yesno_radio("copy", 1));
 	}
 
 if ($access{'movehome'}) {
-	print "<tr> <td><b>$text{'batch_movehome'}</b></td>\n";
-	print "<td><input name=movehome type=radio value=1 checked> $text{'yes'}\n";
-	print "<input name=movehome type=radio value=0> $text{'no'}</td> </tr>\n";
+	# Move home dirs
+	print &ui_table_row($text{'batch_movehome'},
+		&ui_yesno_radio("movehome", 1));
 	}
 
 if ($access{'chuid'}) {
-	print "<tr> <td><b>$text{'batch_chuid'}</b></td>\n";
-	print "<td><input type=radio name=chuid value=0> $text{'no'}\n";
-	print "<input type=radio name=chuid value=1 checked> $text{'home'}\n";
-	print "<input type=radio name=chuid value=2> ",
-	      "$text{'uedit_allfiles'}</td></tr>\n";
+	# Update UIDs on files
+	print &ui_table_row($text{'batch_chuid'},
+		&ui_radio("chuid", 1, [ [ 0, $text{'no'} ],
+					[ 1, $text{'home'} ],
+					[ 2, $text{'uedit_allfiles'} ] ]));
 	}
 
 if ($access{'chgid'}) {
-	print "<tr> <td><b>$text{'batch_chgid'}</b></td>\n";
-	print "<td><input type=radio name=chgid value=0> $text{'no'}\n";
-	print "<input type=radio name=chgid value=1 checked> $text{'home'}\n";
-	print "<input type=radio name=chgid value=2> ",
-	      "$text{'uedit_allfiles'}</td></tr>\n";
+	# Update GIDs on files
+	print &ui_table_row($text{'batch_chgid'},
+		&ui_radio("chgid", 1, [ [ 0, $text{'no'} ],
+					[ 1, $text{'home'} ],
+					[ 2, $text{'uedit_allfiles'} ] ]));
 	}
 
-print "<tr> <td><b>$text{'batch_delhome'}</b></td>\n";
-print "<td><input name=delhome type=radio value=1 checked> $text{'yes'}\n";
-print "<input name=delhome type=radio value=0> $text{'no'}</td> </tr>\n";
+# Delete home dirs
+print &ui_table_row($text{'batch_delhome'},
+	&ui_yesno_radio("delhome", 1));
 
-print "<tr> <td><b>$text{'batch_crypt'}</b></td>\n";
-print "<td><input name=crypt type=radio value=1> $text{'yes'}\n";
-print "<input name=crypt type=radio value=0 checked> $text{'no'}</td> </tr>\n";
+# Encrypt password
+print &ui_table_row($text{'batch_crypt'},
+	&ui_yesno_radio("crypt", 1));
 
-print "<tr> <td><input type=submit value=\"$text{'batch_upload'}\"></td> </tr>\n";
-print "</table></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'batch_upload'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
