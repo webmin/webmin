@@ -27,3 +27,4 @@ desc_ja_JP.UTF-8=実行プロセス
 syslog=1
 cpan=1
 desc_ko_KR.UTF-8=실행중인 프로세스
+desc_it=Processi in esecuzione

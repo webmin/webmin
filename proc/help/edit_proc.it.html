@@ -1,0 +1,28 @@
+<header>Modifica Processo</header>
+
+Questa mostra i dettagli relativi ad un processo in esecuzione. Vengono visualizzate le seguenti informazioni:
+<dl>
+<dt><b>Comando</b>
+<dd>Il programma gli argomenti della linea di comando per questo processo.
+<dt><b>ID Processo</b>
+<dd>Il numero univoco del processo (ID).
+<dt><b>Processo padre</b>
+<dd>Il processo che ha generato il processo selezionato. Clicca su di esso per visualizzare i dettagli del processo padre.
+<dt><b>Utente</b>
+<dd>L'utente proprietario del processo e con i permessi del quale è in esecuzione.
+<dt><b>Uso CPU</b>
+<dd>La percentuale di tempo CPU che il processo sta attualmente utilizzando.
+<dt><b>Dimensione</b>
+<dd>La quantità di memoria occupata da questo processo. Una parte di essa potrebbe essere condivisa con altri processi.
+<dt><b>Tempo di esecuzione</b>
+<dd>Il totale del tempo CPU usato dal processo dal suo avvio, in minuti. A meno che il processo non sia particolarmente avido di risorse questo tempo non sarà uguale al numero di minuti passati dal suo avvio.
+<dt><b>Livello di Nice</b>
+<dd>La priorità alla quale il processo è in esecuzione. <a href=nice>Clicca qui per maggiori informazioni</a>
+    sul livello di nice level.
+</dl>
+In funzione della versione di Unix in esecuzione è possibile che vengano visualizzate informazioni addizionali. <p>
+
+In basso, rispetto alle suddette informazioni sul processo, si trova un pulsante per l'invio di un segnale al processo. E' possibile selezionare dalla lista il segnale da inviare e quindi cliccare su <tt>Invia Segnale</tt>. I segnali più utili sono il segnale di <tt>KILL</tt> e il segnale di <tt>TERM</tt>, per terminare l'esecuzione del processo. <p>
+
+Se il processo ha dei processi figli questi saranno visualizzato in fondo alla pagina. Clicca su uno degli ID dalla lista per visualizzare maggiori informazioni.
+<hr>
