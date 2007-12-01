@@ -85,17 +85,19 @@ $rv .= "</tr>\n";
 return $rv;
 }
 
-# ui_checked_columns_row(&columns, &tdtags, checkname, checkvalue, [checked?])
+# ui_checked_columns_row(&columns, &tdtags, checkname, checkvalue, [checked?],
+#			 [disabled])
 # Returns HTML for a row in a multi-column table, in which the first
 # column is a checkbox
 sub ui_checked_columns_row
 {
 return &theme_ui_checked_columns_row(@_) if (defined(&theme_ui_checked_columns_row));
-local ($cols, $tdtags, $checkname, $checkvalue, $checked) = @_;
+local ($cols, $tdtags, $checkname, $checkvalue, $checked, $disabled) = @_;
 local $rv;
 $rv .= "<tr $cb class='ui_checked_columns'>\n";
 $rv .= "<td class='ui_checked_checkbox' ".$tdtags->[0].">".
-       &ui_checkbox($checkname, $checkvalue, undef, $checked)."</td>\n";
+       &ui_checkbox($checkname, $checkvalue, undef, $checked, undef, $disabled).
+       "</td>\n";
 local $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i+1].">";
