@@ -1,0 +1,6 @@
+line1=Opzioni configurabili,11
+install=Installa GRUB sul disco/partizione:,0
+line2=Configurazione di sistema,11
+menu_file=File di configurazione del menu di GRUB:,0
+grub_path=Percorso all'eseguibile di GRUB:,0
+device_map=File per il mapping dei nomi dei dispositivi:,3,Ricava da GRUB
