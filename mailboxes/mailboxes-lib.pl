@@ -1072,5 +1072,46 @@ else {
         }
 }
 
+# delete_user_index_files(name)
+# Delete all files associated with some user's mail, such as index and maildir
+# cache files
+sub delete_user_index_files
+{
+local ($user) = @_;
+foreach my $folder (&list_user_folders($user)) {
+	if ($folder->{'type'} == 0) {
+		# Remove mbox index
+		local $ifile = &user_index_file($folder->{'file'});
+		if (-r $ifile) {
+			&unlink_logged($ifile);
+			}
+		else {
+			&unlink_logged(glob("$ifile.{dir,pag,db}"));
+			}
+		&unlink_logged("$ifile.ids");
+		}
+	elsif ($folder->{'type'} == 1) {
+		# Remove Maildir files file
+		&unlink_logged(&get_maildir_cachefile($folder->{'file'}));
+		}
+	# Remove sort index
+	local $ifile = &folder_new_sort_index_file($folder);
+	if (-r $ifile) {
+		&unlink_logged($ifile);
+		}
+	else {
+		&unlink_logged(glob("$ifile.{dir,pag,db}"));
+		}
+	}
+# Remove read file
+local $read = "$module_config_directory/$user.read";
+if (-r $read) {
+	&unlink_logged($read);
+	}
+else {
+	&unlink_logged(glob("$read.{dir,pag,db}"));
+	}
+}
+
 1;
 

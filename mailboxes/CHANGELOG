@@ -42,3 +42,4 @@ The list of users to ignore is no longer checked with an un-necessary regular ex
 When viewing a user's spam folder, buttons to globally whitelist spam or report as non-spam are displayed.
 ---- Changes since 1.380 ----
 Spam folders are detected from the Virtualmin configuration, if installed.
+Email cache and index files are now deleted when a user is removed using Webmin.

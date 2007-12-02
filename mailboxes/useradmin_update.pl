@@ -66,6 +66,7 @@ if ($config{'sync_delete'}) {
 		unlink($mf);
 		unlink($mf.".pop");
 		}
+	&delete_user_index_files($_[0]->{'user'});
 	}
 }
 
