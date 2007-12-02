@@ -3147,6 +3147,7 @@ while(1) {
 			close(LOCKING);
 			}
 		$main::locked_file_list{$realfile} = int($_[1]);
+		push(@main::temporary_files, "$realfile.lock");
 		if (($gconfig{'logfiles'} || $gconfig{'logfullfiles'}) &&
 		    !$_[1]) {
 			# Grab a copy of this file for later diffing
