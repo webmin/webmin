@@ -39,3 +39,4 @@ Webmin users can have a real name, which can be any text you like.
 When editing a user who inherits some modules and ACL settings from a group, they can no longer be de-selected or edited.
 ---- Changes since 1.380 ----
 Fixed a bug that prevented cloning from copying detailed access control settings, and ensured that other user attributes like the group, theme, language and access times are cloned too.
+Added back the ability to edit the global ACL for groups.

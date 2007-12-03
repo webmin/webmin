@@ -105,6 +105,14 @@ foreach $c (sort { $b cmp $a } @cats) {
 		}
 	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
 	}
+# Group-level global ACL
+if ($access{'acl'}) {
+	$grids .= "<b>$text{'edit_special'}</b><br>\n";
+	@grid = ( "<img src=images/empty.gif> ".
+		  "<a href='edit_acl.cgi?mod=&group=".&urlize($in{'group'}).
+		  "'>".$text{'index_global'}."</a>" );
+	$grids .= &ui_grid_table(\@grid, 2, 100);
+	}
 print &ui_table_row(undef, &ui_links_row(\@links).
 			   $grids.
 			   &ui_links_row(\@links), 2);
