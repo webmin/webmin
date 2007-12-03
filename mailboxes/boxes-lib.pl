@@ -250,6 +250,7 @@ if (scalar(@ids) != $index->{'mailcount'}) {
 
 if (!@st ||
     $index->{'lastchange'} < $st[9] ||
+    $index->{'lastsize'} != $st[7] ||
     $st[7] < $dbm_index_min ||
     $index->{'version'} != $dbm_index_version) {
 	# The mail file is newer than the index, or we are always re-indexing
@@ -331,6 +332,7 @@ if (!@st ||
 		}
 	close(MAIL);
 	$index->{'lastchange'} = time();
+	$index->{'lastsize'} = $st[7];
 	$index->{'mailcount'} = $istart;
 	$index->{'version'} = $dbm_index_version;
 	}
@@ -770,7 +772,6 @@ else {
 	}
 chown($st[4], $st[5], $f);
 chmod($st[2], $f);
-
 }
 
 # send_mail(&mail, [file], [textonly], [nocr], [smtp-server],
