@@ -224,6 +224,7 @@ sub set_current_value
         local ($out, $ex);
 	$ex = &execute_command("$config{'postfix_config_command'} -c $config_dir -e $_[0]=\"$value\"", undef, \$out, \$out);
 	$ex && &error(&text('query_set_efailed', $_[0], $_[1], $out)."<br> $config{'postfix_config_command'} -c $config_dir -e $_[0]=\"$value\" 2>&1");
+        &unflush_file_lines($config{'postfix_config_file'}); # Invalidate cache
     }
 }
 
