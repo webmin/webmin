@@ -45,5 +45,5 @@ Added the new SMTP Authentication And Encryption page for setting SASL and TLS r
 Added a popup window for selecting a map source, rather than having to type in something like hash:/etc/postfix/virtual . This source can be an LDAP or MySQL database on Postfix systems that support it, which will trigger the automatic creation of a configuration file if needed.
 Maps in MySQL and LDAP databases can be viewed and edited in the same way that those in regular files are, if the appropriate Perl modules are installed (DBI and DBD::mysql for MySQL, or Net::LDAP for LDAP). This also applies to email aliases.
 ---- Changes since 1.380 ----
-Fixed a bug that prevented comments and manual map editing, and added back support for PCRE maps.
+Fixed a bug that prevented comments and manual map editing, and added back support for PCRE and BTREE maps.
 Added a button for manually editing the aliases file.
