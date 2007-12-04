@@ -439,9 +439,11 @@ else {
 			$hasfile{$1}++;
 			}
 		if (/^(webmin-([0-9\.]+)\/([^\/]+))$/ && $3 ne ".") {
+			# Found a top-level file
 			push(@topfiles, $1);
 			}
 		elsif (/^webmin-[0-9\.]+\/([^\/]+)\// && $1 ne ".") {
+			# Found a directory, like a module
 			$intar{$1}++;
 			}
 		}
@@ -481,13 +483,16 @@ else {
 	# Do the extraction of the tar file, and run setup.sh
 	$| = 1;
 	if ($in{'only'}) {
-		# Extract only root files and modules that we already have
-		# Make sure that themes and other directories are included
-		$topfiles = join(" ", map { quotemeta($_) } @topfiles);
+		# Extact top-level files like setup.sh and os_list.txt
+		$topfiles = join(" ", map { quotemeta($_) }
+					  grep { !$intar{$_} } @topfiles);
 		$out = `cd $extract ; tar xf $file $topfiles 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
 			}
+
+		# Add current modules and current non-module directories
+		# (like themes and lang and images)
 		@mods = grep { $intar{$_} } map { $_->{'dir'} }
 			     &get_all_module_infos(1);
 		opendir(DIR, $root_directory);
@@ -499,6 +504,8 @@ else {
 				}
 			}
 		closedir(DIR);
+
+		# Extract current modules and other directories
 		$mods = join(" ", map { quotemeta("webmin-$version/$_") }
 				      @mods);
 		$out = `cd $extract ; tar xf $file $mods 2>&1 >/dev/null`;
