@@ -626,7 +626,6 @@ else
 	echo "Copying config files.."
 fi
 newmods=`$perl "$wadir/copyconfig.pl" "$os_type/$real_os_type" "$os_version/$real_os_version" "$wadir" $config_dir "" $allmods`
-echo $newmods
 if [ "$upgrading" != 1 ]; then
 	# Store the OS and version
 	echo "os_type=$os_type" >> $config_dir/config
