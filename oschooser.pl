@@ -28,7 +28,7 @@ if ($auto) {
 	elsif (-r "/etc/issue") {
 		$etc_issue = `cat /etc/issue`;
 		}
-	$uname = `uname -a`;
+	$uname = `uname -a 2>/dev/null`;
 	foreach $o (@list) {
 		if ($o->[4] && eval "$o->[4]") {
 			# Got a match! Resolve the versions
