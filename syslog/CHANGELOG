@@ -9,3 +9,4 @@ Error logs from Webmin and Usermin, and kernel messages are now viewable in this
 Added a Module Config option to specifying other log files that should be searchable, and a similar ACL option to add logs on a per-user basis.
 ---- Changes since 1.380 ----
 On Debian systems, use a syslog restart to tell it to re-open log files, as a HUP signal is not reliable.
+On Fedora 8, use rsyslog by default instead of syslog.
