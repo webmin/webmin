@@ -4456,6 +4456,8 @@ local @substrings = (
                           # they still keep this string in the UserAgent
     "SymbianOS",          # New Series60 browser has safari in it and
                           # SymbianOS is the only distinguishing string
+    "iPhone",		  # Apple iPhone KHTML browser
+    "iPod",		  # iPod touch browser
     );
 foreach my $p (@prefixes) {
 	return 1 if ($agent =~ /^\Q$p\E/);
