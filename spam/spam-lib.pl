@@ -18,7 +18,7 @@ if ($module_info{'usermin'}) {
 			}
 		}
 	$database_userpref_name = $remote_user;
-	$include_config_files = $config{'readfiles'};
+	$include_config_files = !$config{'mode'} || $config{'readfiles'};
 	$add_to_db = 1;
 	}
 else {
