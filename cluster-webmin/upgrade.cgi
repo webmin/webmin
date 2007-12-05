@@ -54,9 +54,9 @@ elsif ($in{'source'} == 2) {
 		}
         elsif ($in{'mode'} eq 'deb') {
                 # Downloading Debian package
-		$progress_callback_url = "http://$webmin::update_host/download/deb/webmin_$site_version.deb";
+		$progress_callback_url = "http://$webmin::update_host/download/deb/webmin_${site_version}_all.deb";
 		&http_download($webmin::update_host, $webmin::update_port,
-		  "/download/deb/webmin_$site_version.deb", $file,
+		  "/download/deb/webmin_${site_version}_all.deb", $file,
 		  \$error, \&progress_callback);
                 }
 	else {
