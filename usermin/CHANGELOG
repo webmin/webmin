@@ -36,3 +36,5 @@ Created the new Blocked Hosts and Users page to show blocks currently in force, 
 Separated the Configure Module page into tabs, to make it clearer which options are global and which are default user preferences.
 ---- Changes since 1.370 ----
 The format for dates displayed by Webmin can be changed by a new option on the User Interface page.
+---- Changes since 1.380 ----
+Added the Mobule Device Options page, for setting a theme specifically for small-screen browsers.

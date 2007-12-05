@@ -350,6 +350,7 @@ log_switch=Switched to Usermin user $1
 log_logout=Changed auto-logout times
 log_dav=Changed DAV server settings
 log_advanced=Changed advanced options
+log_mobile=Changed mobile device options
 
 update_err=Failed to update modules
 update_eurl=Missing or invalid update URL
@@ -483,3 +484,6 @@ blocked_title=Blocked Hosts and Users
 blocked_none=No hosts or users are currently blocked by Usermin.
 blocked_user=Usermin user
 blocked_cleardesc=Click this button to clear all current host and user blocks, by restarting the Usermin server process.
+
+mobile_title=Mobile Device Options
+

@@ -73,7 +73,7 @@ sub reload_usermin_miniserv
 {
 return undef if (&is_readonly_mode());
 local %miniserv;
-&get_miniserv_config(\%miniserv) || return;
+&get_usermin_miniserv_config(\%miniserv) || return;
 $miniserv{'inetd'} && return;
 
 local($pid, $addr, $i);
