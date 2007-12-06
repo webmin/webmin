@@ -6476,6 +6476,16 @@ close(TOUCH);
 return $cfile;
 }
 
+# supports_javascript()
+# Returns 1 if the current browser is assumed to support javascript
+sub supports_javascript
+{
+if (defined(&theme_supports_javascript)) {
+	return &theme_supports_javascript();
+	}
+return $ENV{'MOBILE_DEVICE'} ? 0 : 1;
+}
+
 $done_web_lib_funcs = 1;
 
 1;
