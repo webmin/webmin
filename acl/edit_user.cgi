@@ -327,11 +327,19 @@ foreach $c (sort { $b cmp $a } @cats) {
 
 # Add global ACL link, but only if not set from the group
 $groupglobal = $memg && -r "$config_directory/$memg->{'name'}.acl";
-if ($access{'acl'} && !$groupglobal) {
+if ($access{'acl'}) {
 	$grids .= "<b>$text{'edit_special'}</b><br>\n";
-	@grid = ( "<img src=images/empty.gif> ".
-		  "<a href='edit_acl.cgi?mod=&user=".&urlize($in{'user'}).
-		  "'>".$text{'index_global'}."</a>" );
+	if ($groupglobal) {
+		# Set by group, so cannot be edited. But show the word anyway
+		@grid = ( "<img src=images/tick.gif> ".$text{'index_global'} );
+		}
+	else {
+		# Not set by group
+		@grid = ( "<img src=images/tick.gif> ".
+			  "<a href='edit_acl.cgi?mod=&user=".
+			  &urlize($in{'user'})."'>".
+			  $text{'index_global'}."</a>" );
+		}
 	$grids .= &ui_grid_table(\@grid, 2, 100);
 	}
 print &ui_table_row(undef, &ui_links_row(\@links).
