@@ -2064,7 +2064,9 @@ return ( "permit_mynetworks",
 	 $postfix_version < 2.3 ? "reject_unknown_client"
 				: "reject_unknown_reverse_client_hostname",
 	 "permit_sasl_authenticated",
-	 "reject_unauth_destination" );
+	 "reject_unauth_destination",
+	 "check_relay_domains",
+	 "permit_mx_backup" );
 }
 
 sub file_map_type
