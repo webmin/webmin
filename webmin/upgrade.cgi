@@ -440,11 +440,12 @@ else {
 			}
 		if (/^(webmin-([0-9\.]+)\/([^\/]+))$/ && $3 ne ".") {
 			# Found a top-level file
-			push(@topfiles, $1);
+			push(@topfiles, $_);
 			}
 		elsif (/^webmin-[0-9\.]+\/([^\/]+)\// && $1 ne ".") {
 			# Found a directory, like a module
 			$intar{$1}++;
+			$tardir{$_}++;
 			}
 		}
 	close(TAR);
@@ -485,7 +486,7 @@ else {
 	if ($in{'only'}) {
 		# Extact top-level files like setup.sh and os_list.txt
 		$topfiles = join(" ", map { quotemeta($_) }
-					  grep { !$intar{$_} } @topfiles);
+					  grep { !$tardir{$_} } @topfiles);
 		$out = `cd $extract ; tar xf $file $topfiles 2>&1 >/dev/null`;
 		if ($?) {
 			&inst_error(&text('upgrade_euntar', "<tt>$out</tt>"));
