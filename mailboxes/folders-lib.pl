@@ -1105,7 +1105,8 @@ if ($userconfig{'delete_mode'} == 1 && !$f->{'trash'} && !$f->{'spam'}) {
 	local ($trash) = grep { $_->{'trash'} } &list_folders();
 	local $m;
 	foreach $m (@_) {
-		&write_mail_folder($m, $trash);
+		local $mcopy = { %$m };		# Because writing changes id
+		&write_mail_folder($mcopy, $trash);
 		}
 	}
 
