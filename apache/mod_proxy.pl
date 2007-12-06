@@ -52,13 +52,15 @@ for($i=0; $i<$max; $i++) {
 	if ($_[0]->[$i]->{'value'} =~ /^(\S+)\s+(\S+)$/) {
 		$match = $1; $proxy = $2;
 		}
-	else { $match = "*"; $proxy = ""; }
+	else {
+		$match = "*"; $proxy = "";
+		}
 	$rv .= "<tr $cb>\n";
 	$rv .= sprintf
-	        "<td><input type=radio name=ProxyRemote_match_all_$i %s> $text{'mod_proxy_all'}\n",
+	        "<td><input type=radio name=ProxyRemote_match_all_$i value=1 %s> $text{'mod_proxy_all'}\n",
 	        $match eq "*" ? "checked" : "";
 	$rv .= sprintf
-	        "<input type=radio name=ProxyRemote_match_all_$i %s> $text{'mod_proxy_match'}\n",
+	        "<input type=radio name=ProxyRemote_match_all_$i value=0 %s> $text{'mod_proxy_match'}\n",
 	        $match eq "*" ? "" : "checked";
 	$rv .= sprintf
 	        "<input name=ProxyRemote_match_$i size=20 value=\"%s\"></td>\n",
