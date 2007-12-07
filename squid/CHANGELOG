@@ -19,3 +19,4 @@ Fixed transparent proxy setup in Squid 2.6.
 ---- Changes since 1.380 ----
 Added support for editing proxy reply restrictions, thanks to Steve Williams.
 Re-design the Access Control page to use tabs, to better split up the lists of ACLs, HTTP and ICP restrictions.
+Ensure that HTTP and ICP restrictions are created after ACLs in the config file.
