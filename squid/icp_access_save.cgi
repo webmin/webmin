@@ -26,7 +26,7 @@ else {
 	if ($icp) { splice(@icps, &indexof($icp, @icps), 1, $newicp); }
 	else { push(@icps, $newicp); }
 	}
-&save_directive($conf, "icp_access", \@icps);
+&save_directive($conf, "icp_access", \@icps, "acl");
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
 &webmin_log($in{'delete'} ? 'delete' : $icp ? 'modify' : 'create', "icp");

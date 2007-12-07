@@ -26,7 +26,7 @@ else {
 	if ($http) { splice(@https, &indexof($http, @https), 1, $newhttp); }
 	else { push(@https, $newhttp); }
 	}
-&save_directive($conf, "http_access", \@https);
+&save_directive($conf, "http_access", \@https, "acl");
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
 &webmin_log($in{'delete'} ? 'delete' : $http ? 'modify' : 'create', "http");
