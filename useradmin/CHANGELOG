@@ -37,3 +37,4 @@ In a user batch file, # is only treated as a comment at the start of a line.
 The real base directory for homes is now respected when batch creating users.
 Improved MD5 encryption auto-detection with newer PAM config files.
 Batch user creation data is now better validated, and the batch form has been re-written to use the new Webmin UI library.
+When renaming a user whose group is the same as his username, the group will be renamed too by default.

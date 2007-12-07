@@ -493,6 +493,19 @@ if (%ouser) {
 		$user{'passmode'} = 4;
 		}
 	$user{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+
+	# Rename group if needed and if possible
+	if ($user{'user'} ne $ouser{'user'} &&
+	    $user{'gid'} == $ouser{'gid'}) {
+		($group) = grep { $_->{'gid'} == $user{'gid'} } &list_groups();
+		if ($group->{'group'} eq $ouser{'user'} &&
+		    &can_edit_group(\%access, $group)) {
+			# Do the rename
+			$ogroup = { %$group };
+			$group->{'group'} = $user{'user'};
+			&modify_group($ogroup, $group);
+			}
+		}
 	}
 else {
 	# Force defaults for save options if necessary

@@ -463,7 +463,7 @@ if ($n eq "" && $access{'gcreate'}) {
 		$config{'new_user_group'} ? 'checked' : '', $text{'uedit_samg'};
 	printf "<input type=radio name=gidmode value=1> %s\n",
 		$text{'uedit_newg'};
-	print "<input name=newgid size=8><br>\n";
+	print "<input name=newgid size=13><br>\n";
 	printf "<input type=radio name=gidmode value=0 %s> %s\n",
 		$config{'new_user_group'} ? '' : 'checked', $text{'uedit_oldg'};
 	}
@@ -473,7 +473,7 @@ if ($access{'ugroups'} eq "*" || $access{'uedit_gmode'} >= 3) {
 	if ($gconfig{'db_sizeuser'}) {
 		($w, $h) = split(/x/, $gconfig{'db_sizeuser'});
 		}
-	printf "<input name=gid size=8 value=\"%s\">\n",
+	printf "<input name=gid size=13 value=\"%s\">\n",
 		$n eq "" ? $config{'default_group'}
 			 : scalar(&my_getgrgid($uinfo{'gid'}));
 	print "<input type=button onClick='ifield = document.forms[0].gid; chooser = window.open(\"my_group_chooser.cgi?multi=0&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\"></td>\n";
@@ -543,43 +543,57 @@ if ($n ne "") {
 	# and updating in other modules
 	if ($access{'movehome'} == 1 || $access{'chuid'} == 1 ||
 	    $access{'chgid'} == 1 || $access{'mothers'} == 1) {
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'onsave'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table>\n";
+		print &ui_table_start($text{'onsave'}, "width=100%", 2,
+				      [ "width=30%" ]);
 
+		# Move home directory
 		if ($access{'movehome'} == 1) {
-			print "<tr> <td>",&hlink($text{'uedit_movehome'}, "movehome"),"</td>\n";
-			print "<td><input type=radio name=movehome value=1 checked> $text{'yes'}</td>\n";
-			print "<td><input type=radio name=movehome value=0> $text{'no'}</td> </tr>\n";
+			print &ui_table_row(
+				&hlink($text{'uedit_movehome'}, "movehome"),
+				&ui_yesno_radio("movehome", 1));
 			}
 
+		# Change UID on files
 		if ($access{'chuid'} == 1) {
-			print "<tr> <td>",&hlink($text{'uedit_chuid'},"chuid"),"</td>\n";
-			print "<td><input type=radio name=chuid value=0> $text{'no'}</td>\n";
-			print "<td><input type=radio name=chuid value=1 checked> ",
-			      "$text{'home'}</td>\n";
-			print "<td><input type=radio name=chuid value=2> ",
-			      "$text{'uedit_allfiles'}</td></tr>\n";
+			print &ui_table_row(
+				&hlink($text{'uedit_chuid'},"chuid"),
+				&ui_radio("chuid", 1,
+					  [ [ 0, $text{'no'} ],
+					    [ 1, $text{'home'} ],
+					    [ 2, $text{'uedit_allfiles'} ] ]));
 			}
 
+		# Change GID on files
 		if ($access{'chgid'} == 1) {
-			print "<tr> <td>",&hlink($text{'chgid'},"chgid"),"</td>\n";
-			print "<td><input type=radio name=chgid value=0> $text{'no'}</td>\n";
-			print "<td><input type=radio name=chgid value=1 checked> ".
-			      "$text{'home'}</td>\n";
-			print "<td><input type=radio name=chgid value=2> ",
-			      "$text{'uedit_allfiles'}</td></tr>\n";
+			print &ui_table_row(
+				&hlink($text{'uedit_chgid'},"chgid"),
+				&ui_radio("chgid", 1,
+					  [ [ 0, $text{'no'} ],
+					    [ 1, $text{'home'} ],
+					    [ 2, $text{'uedit_allfiles'} ] ]));
 			}
 
+		# Modify in other modules
 		if ($access{'mothers'} == 1) {
-			print "<tr> <td>",&hlink($text{'uedit_mothers'},"others"),"</td>\n";
-			printf "<td><input type=radio name=others value=1 %s> $text{'yes'}</td>\n",
-				$config{'default_other'} ? "checked" : "";
-			printf "<td><input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-				$config{'default_other'} ? "" : "checked";
+			print &ui_table_row(
+				&hlink($text{'uedit_mothers'},"others"),
+				&ui_yesno_radio("others",
+					$config{'default_other'} ? 1 : 0));
 			}
 
-		print "</table></td> </tr></table><p>\n";
+		# Rename group, if the same and if editable
+		@ginfo = &my_getgrgid($uinfo{'gid'});
+		if ($ginfo[0] eq $uinfo{'user'}) {
+			($group) = grep { $_->{'gid'} == $uinfo{'gid'} }
+					&list_groups();
+			if (&can_edit_group(\%access, $group)) {
+				print &ui_table_row(
+					&hlink($text{'uedit_grename'},"grename"),
+					&ui_yesno_radio("grename", 1));
+				}
+			}
+
+		print &ui_table_end(),"<p>\n";
 		}
 	}
 else {

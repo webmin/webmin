@@ -105,6 +105,7 @@ uedit_admchg=User must choose new password
 uedit_nocheck=Don't check password restrictions
 uedit_cothers=Create user in other modules?
 uedit_mothers=Modify user in other modules?
+uedit_grename=Rename group if username changes?
 uedit_dothers=$udel_dothers
 uedit_forcechange=Force change at next login?
 uedit_uid_def=Automatic
