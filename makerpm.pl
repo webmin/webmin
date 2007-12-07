@@ -167,6 +167,7 @@ if [ "\$1" != 1 ]; then
 	rm -rf /etc/.webmin-backup
 	cp -r /etc/webmin /etc/.webmin-backup
 fi
+/bin/true
 
 %post
 inetd=`grep "^inetd=" /etc/webmin/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
@@ -241,6 +242,7 @@ else
 	echo "Webmin install complete. You can now login to http://\$host:\$port/"
 fi
 echo "as root with your root password."
+/bin/true
 
 %preun
 if [ "\$1" = 0 ]; then
@@ -252,9 +254,9 @@ if [ "\$1" = 0 ]; then
 		(cd /usr/libexec/webmin ; WEBMIN_CONFIG=/etc/webmin WEBMIN_VAR=/var/webmin LANG= /usr/libexec/webmin/run-uninstalls.pl)
 		/etc/init.d/webmin stop >/dev/null 2>&1 </dev/null
 		/etc/webmin/stop >/dev/null 2>&1 </dev/null
-		/bin/true
 	fi
 fi
+/bin/true
 
 %postun
 if [ "\$1" = 0 ]; then
@@ -265,6 +267,7 @@ if [ "\$1" = 0 ]; then
 		rm -rf /etc/webmin /var/webmin
 	fi
 fi
+/bin/true
 
 %triggerpostun -- webmin
 if [ ! -d /var/webmin -a "\$1" = 2 ]; then
@@ -281,6 +284,7 @@ if [ ! -r /etc/webmin/miniserv.conf -a -d /etc/.webmin-backup -a "\$1" = 2 ]; th
 else
 	rm -rf /etc/.webmin-backup
 fi
+/bin/true
 
 EOF
 close(SPEC);
