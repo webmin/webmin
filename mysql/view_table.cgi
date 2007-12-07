@@ -37,14 +37,39 @@ if (!$keyed && $module_name eq "postgresql") {
 		}
 	}
 
-# Get search and limiting SQL
+# Get search SQL
 ($search, $searchhids, $searchargs, $advcount) = &get_search_args(\%in);
+
+# Work out start position
+$d = &execute_sql_safe($in{'db'},
+	"select count(*) from ".&quote_table($in{'table'})." ".$search);
+$total = int($d->{'data'}->[0]->[0]);
+if ($in{'jump'} > 0) {
+	$in{'start'} = int($in{'jump'} / $config{'perpage'}) *
+		       $config{'perpage'};
+	if ($in{'start'} >= $total) {
+		$in{'start'} = $total - $config{'perpage'};
+		$in{'start'} = int(($in{'start'} / $config{'perpage'}) + 1) *
+			       $config{'perpage'};
+		}
+	}
+else {
+	$in{'start'} = int($in{'start'});
+	}
+if ($in{'new'} && $total > $config{'perpage'}) {
+	# go to the last screen for adding a row
+	$in{'start'} = $total - $config{'perpage'};
+	$in{'start'} = int(($in{'start'} / $config{'perpage'}) + 1) *
+		       $config{'perpage'};
+	}
+
+# Get limiting and sorting SQL
 $limitsql = &get_search_limit(\%in);
 ($sortsql, $sorthids, $sortargs) = &get_search_sort(\%in);
 
 # Work out where clause for rows we are operating on
 $where_select = "select ".($use_oids ? "oid" : "*").
-		" from ".&quote_table($in{'table'})." $search $sortsql $limitsql";
+	" from ".&quote_table($in{'table'})." $search $sortsql $limitsql";
 
 if ($in{'delete'}) {
 	# Deleting selected rows
@@ -155,27 +180,6 @@ elsif ($in{'cancel'} || $in{'new'}) {
 $desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
 &ui_print_header($desc, $text{'view_title'}, "");
 
-$d = &execute_sql_safe($in{'db'},
-	"select count(*) from ".&quote_table($in{'table'})." ".$search);
-$total = int($d->{'data'}->[0]->[0]);
-if ($in{'jump'} > 0) {
-	$in{'start'} = int($in{'jump'} / $config{'perpage'}) *
-		       $config{'perpage'};
-	if ($in{'start'} >= $total) {
-		$in{'start'} = $total - $config{'perpage'};
-		$in{'start'} = int(($in{'start'} / $config{'perpage'}) + 1) *
-			       $config{'perpage'};
-		}
-	}
-else {
-	$in{'start'} = int($in{'start'});
-	}
-if ($in{'new'} && $total > $config{'perpage'}) {
-	# go to the last screen for adding a row
-	$in{'start'} = $total - $config{'perpage'};
-	$in{'start'} = int(($in{'start'} / $config{'perpage'}) + 1) *
-		       $config{'perpage'};
-	}
 if ($in{'start'} || $total > $config{'perpage'}) {
 	print "<center>\n";
 	if ($in{'start'}) {
