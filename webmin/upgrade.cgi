@@ -439,13 +439,18 @@ else {
 			$hasfile{$1}++;
 			}
 		if (/^(webmin-([0-9\.]+)\/([^\/]+))$/ && $3 ne ".") {
-			# Found a top-level file
+			# Found a top-level file, or *possibly* a directory
+			# under some versions of tar. Keep it so we know which
+			# files to extract.
 			push(@topfiles, $_);
 			}
-		elsif (/^webmin-[0-9\.]+\/([^\/]+)\// && $1 ne ".") {
-			# Found a directory, like a module
-			$intar{$1}++;
-			$tardir{$_}++;
+		elsif (/^(webmin-[0-9\.]+\/([^\/]+))\// && $2 ne ".") {
+			# Found a sub-directory, like webmin-1.xx/foo/
+			# Keep this, so that we know which modules to extract.
+			# Also keep the full directory like webmin-1.xx/foo
+			# to avoid treating it as a file.
+			$intar{$2}++;
+			$tardir{$1}++;
 			}
 		}
 	close(TAR);
