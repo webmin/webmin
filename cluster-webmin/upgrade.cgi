@@ -120,12 +120,20 @@ else {
                 if (/^[^\/]+\/(\S+)$/) {
                         $hasfile{$1}++;
                         }
-                if (/^(webmin-([0-9\.]+)\/[^\/]+)$/) {
-                        push(@topfiles, $1);
-                        }
-                elsif (/^webmin-[0-9\.]+\/([^\/]+)\//) {
-                        $intar{$1}++;
-                        }
+		if (/^(webmin-([0-9\.]+)\/([^\/]+))$/ && $3 ne ".") {
+			# Found a top-level file, or *possibly* a directory
+			# under some versions of tar. Keep it so we know which
+			# files to extract.
+			push(@topfiles, $_);
+			}
+		elsif (/^(webmin-[0-9\.]+\/([^\/]+))\// && $2 ne ".") {
+			# Found a sub-directory, like webmin-1.xx/foo/
+			# Keep this, so that we know which modules to extract.
+			# Also keep the full directory like webmin-1.xx/foo
+			# to avoid treating it as a file.
+			$intar{$2}++;
+			$tardir{$1}++;
+			}
                 }
         close(TAR);
         if ($usermin_version) {
@@ -379,7 +387,8 @@ foreach $h (@hosts) {
 			if ($in{'only'}) {
 				# Extract only root files and modules that we
 				# already have
-				$topfiles = join(" ", map { quotemeta($_) } @topfiles);
+				$topfiles = join(" ", map { quotemeta($_) }
+					 grep { !$tardir{$_} } @topfiles);
 				local ($out, $ex) = &remote_eval($s->{'host'}, "webmin", "\$out = `cd '$extract' ; tar xf '$rfile' $topfiles 2>&1 >/dev/null`; (\$out, \$?)");
 				if ($ex) {
 					print $wh &serialise_variable(
@@ -427,7 +436,7 @@ foreach $h (@hosts) {
 				 \$ENV{'autothird'} = 1;
 				 \$out = `(cd $extract/webmin-$version && $setup) </dev/null 2>&1 | tee /tmp/.webmin/webmin-setup.out`;
 				 (\$out, \$?)");
-			if ($ex || $out !~ /success/i) {
+			if ($ex || $out !~ /success|^0$/i) {
 				print $wh &serialise_variable(
 					"<pre>$out</pre>");
 				exit;
