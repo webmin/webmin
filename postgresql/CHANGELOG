@@ -60,3 +60,5 @@ Fixed a bug that prevented the 'valid until' date from being displayed for exist
 Added an option on the backup form to create the destination directory if missing.
 Re-wrote the backup form to use the new Webmin UI library.
 Improved support for Debian/Ubuntu systems that can have different PostgreSQL versions.
+---- Changes since 1.380 ----
+Fixed a bug that prevented 'Jump to row' from working properly.
