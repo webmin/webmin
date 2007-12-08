@@ -1028,7 +1028,7 @@ else {
 	}
 &unlock_all_files();
 &cleanup_tempnames();
-exit;
+exit(1);
 }
 
 # popup_error([message]+)
@@ -1295,7 +1295,6 @@ else {
 	# On Windows, we need to use the flag file
 	open(TOUCH, ">$miniserv{'restartflag'}");
 	close(TOUCH);
-	print STDERR "created restart flag file\n";
 	}
 
 if (!$nowait) {
