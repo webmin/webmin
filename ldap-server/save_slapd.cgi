@@ -54,6 +54,20 @@ else {
 	&save_directive($conf, 'timelimit', $in{'timelimit'});
 	}
 
+# SSL file options
+foreach $s ([ 'TLSCertificateFile', 'cert' ],
+	    [ 'TLSCertificateKeyFile', 'key' ],
+	    [ 'TLSCACertificateFile', 'ca' ]) {
+	if ($in{$s->[1].'_def'}) {
+		&save_directive($conf, $s->[0], undef);
+		}
+	else {
+		&valid_pem_file($in{$s->[1]}, $s->[1]) ||
+			&error($text{'slapd_e'.$s->[1]});
+		&save_directive($conf, $s->[0], $in{$s->[1]});
+		}
+	}
+
 # Write out the files
 &flush_file_lines($config{'config_file'});
 &unlock_file($config{'config_file'});

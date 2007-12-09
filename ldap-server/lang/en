@@ -52,6 +52,17 @@ slapd_timelimit=Maximum time for searches
 slapd_secs=seconds
 slapd_esizelimit=Missing or non-numeric maximum number of search results to return
 slapd_etimelimit=Missing or non-numeric maximum time for searches
+slapd_header2=Encryption options
+slapd_cert=TLS certificate file
+slapd_key=TLS private key file
+slapd_ca=TLS CA certificate file
+slapd_none=None
+slapd_ecert=Missing or incorrectly formatted TLS certificate file
+slapd_ekey=Missing or incorrectly formatted TLS private key file
+slapd_eca=Missing or incorrectly formatted TLS CA certificate file
+slapd_gencert=Generate SSL Certificate
+slapd_gencertdesc=To run your LDAP server in TLS mode, an SSL certificate and private key must first be generated. Click this button to create a self-signed certificate for your system.
+slapd_gencertwarn=Warning - your existing certificate will no longer be used.
 
 schema_title=Manage Schema
 

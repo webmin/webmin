@@ -6,9 +6,10 @@ require './ldap-server-lib.pl';
 &ui_print_header(undef, $text{'slapd_title'}, "", "slapd");
 &ReadParse();
 $conf = &get_config();
+@tds = ( "width=30%" );
 
 print &ui_form_start("save_slapd.cgi", "post");
-print &ui_table_start($text{'slapd_header'}, undef, 2);
+print &ui_hidden_table_start($text{'slapd_header'}, undef, 2, "basic", 1,\@tds);
 
 # Top-level DN
 $suffix = &find_value('suffix', $conf);
@@ -78,8 +79,33 @@ print &ui_table_row($text{'slapd_timelimit'},
 		    $text{'default'}." (3600 $text{'slapd_secs'})").
     " ".$text{'slapd_secs'});
 
-print &ui_table_end();
+print &ui_hidden_table_end("basic");
+
+# SSL section
+print &ui_hidden_table_start($text{'slapd_header2'}, undef, 2, "ssl", 0, \@tds);
+
+# SSL file options
+$anycert = 0;
+foreach $s ([ 'TLSCertificateFile', 'cert' ],
+	    [ 'TLSCertificateKeyFile', 'key' ],
+	    [ 'TLSCACertificateFile', 'ca' ]) {
+	$cert = &find_value($s->[0], $conf);
+	print &ui_table_row($text{'slapd_'.$s->[1]},
+		&ui_opt_textbox($s->[1], $cert, 50, $text{'slapd_none'}).
+		&file_chooser_button($s->[1]));
+	$anycert = 1 if ($cert);
+	}
+
+print &ui_hidden_table_end("ssl");
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
+
+# SSL setup button
+print "<hr>\n";
+print &ui_buttons_start();
+print &ui_buttons_row("gencert_form.cgi", $text{'slapd_gencert'},
+		      $text{'slapd_gencertdesc'}.
+		      ($anycert ? "<b>$text{'slapd_gencertwarn'}</b>" : ""));
+print &ui_buttons_end();
 
 &ui_print_footer("", $text{'index_return'});
 

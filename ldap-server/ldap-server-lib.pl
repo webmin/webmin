@@ -3,9 +3,7 @@
 # XXX initial setup
 # XXX install ldap server
 # XXX default configs for various systems (include search max of 100)
-# XXX more slapd.conf options
-#	XXX SSL certs
-#	XXX schemacheck / gentlehup
+# XXX button to generate SSL cert / key
 # XXX LDAP logging in more detail, like we do for SQL
 #	XXX spam, postfix and ldap-useradmin too
 
@@ -302,6 +300,21 @@ elsif ($rv->code) {
 	}
 else {
 	return undef;
+	}
+}
+
+# valid_pem_file(file, type)
+sub valid_pem_file
+{
+local ($file, $type) = @_;
+local $data = &read_file_contents($file);
+if ($type eq 'key') {
+	return $data =~ /\-{5}BEGIN RSA PRIVATE KEY\-{5}/ &&
+	       $data =~ /\-{5}END RSA PRIVATE KEY\-{5}/;
+	}
+else {
+	return $data =~ /\-{5}BEGIN CERTIFICATE\-{5}/ &&
+	       $data =~ /\-{5}END CERTIFICATE\-{5}/;
 	}
 }
 
