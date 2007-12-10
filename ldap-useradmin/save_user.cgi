@@ -200,6 +200,12 @@ else {
 			&error(&text('usave_einuse', $user));
 		}
 
+	# Check for UID clash
+	if ($in{'new'} && !$access{'umultiple'}) {
+		&check_uid_used($ldap, $uid) &&
+			&error($text{'usave_euidused2'});
+		}
+
 	# Validate IMAP quota
 	$quota = undef;
 	if ($config{'quota_support'} && !$in{'quota_def'}) {

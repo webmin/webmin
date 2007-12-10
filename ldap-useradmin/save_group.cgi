@@ -131,6 +131,12 @@ if ($in{'new'} || $oldgroup ne $group) {
 		&error(&text('gsave_einuse', $group));
 	}
 
+# Check for GID clash
+if ($in{'new'} && !$access{'gmultiple'}) {
+	&check_gid_used($ldap, $gid) &&
+		&error($text{'gsave_egidused2'});
+	}
+
 $pfx = $config{'md5'} == 1 || $config{'md5'} == 3 ? "{md5}" :
        $config{'md5'} == 0 ? "{crypt}" : "";
 if ($in{'passmode'} == 0) {

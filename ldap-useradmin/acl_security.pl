@@ -64,6 +64,14 @@ printf "<input type=checkbox name=autohome value=1 %s> %s</td> </tr>\n",
 	$o->{'autohome'} ? "checked" : "",
 	$text{'acl_autohome'};
 
+print "<tr> <td valign=top><b>$text{'acl_uid'}</b></td>\n";
+print "<td colspan=3>";
+printf "<input type=checkbox name=umultiple value=1 %s> %s<br>\n",
+        $o->{'umultiple'} ? "checked" : "", $text{'acl_umultiple'};
+printf "<input type=checkbox name=gmultiple value=1 %s> %s<br>\n",
+        $o->{'gmultiple'} ? "checked" : "", $text{'acl_gmultiple'};
+print "</td> </tr>\n";
+
 print "<tr> <td colspan=4><hr></td> </tr>\n";
 
 print "<tr> <td valign=top><b>$text{'acl_gedit'}</b></td> <td colspan=3>\n";
