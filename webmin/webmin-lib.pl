@@ -1290,7 +1290,6 @@ local %in = %$in;
 # Validate inputs
 $in{'commonName_def'} || $in{'commonName'} =~ /^[A-Za-z0-9\.\-\*]+$/ ||
 	return $text{'newkey_ecn'};
-$in{'newfile'} || return $text{'newkey_efile'};
 $in{'size_def'} || $in{'size'} =~ /^\d+$/ || return $text{'newkey_esize'};
 $in{'days'} =~ /^\d+$/ || return $text{'newkey_edays'};
 $in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};

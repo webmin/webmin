@@ -7,6 +7,7 @@ require './webmin-lib.pl';
 &error_setup($text{'newkey_err'});
 
 # Validate inputs and create the key
+$in{'newfile'} || return $text{'newkey_efile'};
 $err = &parse_ssl_key_form(\%in, $in{'newfile'});
 &error($err) if ($err);
 
