@@ -5,11 +5,10 @@
 require './ipfw-lib.pl';
 &ReadParse();
 if ($in{'boot'}) {
-	&create_firewall_init();
+	&enable_boot();
 	}
 else {
-	&foreign_require("init", "init-lib.pl");
-	&init::disable_at_boot($module_name);
+	&disable_boot();
 	}
 &webmin_log($in{'boot'} ? "bootup" : "bootdown");
 &redirect("");

@@ -6,3 +6,5 @@ Added button for deleting multiple rules from list.
 The firewall configuration can now be copied automatically to multiple hosts in a cluster, and will be applied on all hosts when the the Apply button is clicked. Like other cluster features in Webmin, this requires that the servers be first setup in the Webmin Servers Index module.
 ---- Changes since 1.260 ----
 When creating a firewall rule, the rule number can be optionally manually entered.
+---- Changes since 1.380 ----
+On FreeBSD systems, the firewall is now enabled at boot using /etc/rc.conf, and the IPFW config file specified in rc.conf is now used automatically.

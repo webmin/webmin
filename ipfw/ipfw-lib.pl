@@ -6,8 +6,23 @@
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
+if (&foreign_check("net")) {
+	&foreign_require("net", "net-lib.pl");
+	$has_net_lib = 1;
+	}
 
-$ipfw_file = $config{'save_file'} || "$module_config_directory/ipfw.rules";
+# Work out save file
+$ipfw_file = "$module_config_directory/ipfw.rules";
+if ($config{'save_file'}) {
+	$ipfw_file = $config{'save_file'};
+	}
+elsif ($has_net_lib) {
+	# Use entry in rc.conf, if set
+	local %rc = &net::get_rc_conf();
+	if ($rc{'firewall_type'} =~ /^\//) {
+		$ipfw_file = $rc{'firewall_type'};
+		}
+	}
 
 @actions = ( "allow", "deny", "reject", "reset", "skipto", "fwd", "check-state",
 	     "count", "divert", "pipe", "queue", "tee", "unreach" );
@@ -463,8 +478,7 @@ return undef;
 sub interface_choice
 {
 local @ifaces;
-if (&foreign_check("net")) {
-	&foreign_require("net", "net-lib.pl");
+if ($has_net_lib) {
 	return &net::interface_choice($_[0], $_[1],
 		$_[2] ? undef : "&lt;$text{'edit_ignored'}&gt;");
 	}
@@ -551,6 +565,65 @@ foreach $s (&list_cluster_servers()) {
 return undef;
 }
 
+# check_boot()
+# Returns 1 if enabled at boot via an init script, 2 if enabled via rc.conf,
+# -1 if a different file is enabled at boot, 0 otherwise
+sub check_boot
+{
+&foreign_require("init", "init-lib.pl");
+local $atboot = &init::action_status($module_name);
+if ($atboot == 2) {
+	return 1;
+	}
+if ($has_net_lib && defined(&net::get_rc_conf)) {
+	local %rc = &net::get_rc_conf();
+	if ($rc{'firewall_enable'} ne 'YES') {
+		# Disabled
+		return 0;
+		}
+	elsif ($rc{'firewall_type'} eq $ipfw_file) {
+		return 2;
+		}
+	elsif ($rc{'firewall_type'}) {
+		# A *different* file is enabled
+		return -1;
+		}
+	}
+return 0;
+}
 
+# enable_boot()
+# Make sure ipfw gets started at boot. Uses rc.conf if possible
+sub enable_boot
+{
+return 0 if (&check_boot());	# Already on
+if ($has_net_lib && defined(&net::get_rc_conf) && -r "/etc/rc.conf") {
+	local %rc = &net::get_rc_conf();
+	&lock_file("/etc/rc.conf");
+	&net::save_rc_conf('firewall_type', $ipfw_file);
+	&net::save_rc_conf('firewall_enable', 'YES');
+	&unlock_file("/etc/rc.conf");
+	return 2;
+	}
+&create_firewall_init();
+return 1;
+}
+
+sub disable_boot
+{
+local $mode = &check_boot();
+return 0 if ($mode <= 0);
+if ($mode == 1) {
+	# Turn off init script
+	&init::disable_at_boot($module_name);
+	}
+elsif ($mode == 2) {
+	# Take out rc.conf entry
+	&lock_file("/etc/rc.conf");
+	&net::save_rc_conf('firewall_enable', 'NO');
+	&unlock_file("/etc/rc.conf");
+	}
+return $mode;
+}
 
 1;

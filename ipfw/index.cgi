@@ -152,8 +152,7 @@ elsif (@$rules && !$in{'reset'}) {
 	# Show buttons to apply configuration and start at boot
 	print "<hr>\n";
 
-	&foreign_require("init", "init-lib.pl");
-	$atboot = &init::action_status($module_name);
+	$atboot = &check_boot();
 	print &ui_buttons_start();
 	if (&foreign_check("servers")) {
 		@servers = &list_cluster_servers();
@@ -163,11 +162,13 @@ elsif (@$rules && !$in{'reset'}) {
 				       : $text{'index_applydesc'});
 	print &ui_buttons_row("unapply.cgi", $text{'index_unapply'},
 			      $text{'index_unapplydesc'});
-	print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
-			      $text{'index_bootdesc'}, undef,
-			      &ui_radio("boot", $atboot == 2 ? 1 : 0,
-					[ [ 1, $text{'yes'} ],
-					  [ 0, $text{'no'} ] ]));
+	if ($atboot != -1) {
+		print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
+				      $text{'index_bootdesc'}, undef,
+				      &ui_radio("boot", $atboot ? 1 : 0,
+						[ [ 1, $text{'yes'} ],
+						  [ 0, $text{'no'} ] ]));
+		}
 	print &ui_buttons_row("index.cgi", $text{'index_reset'},
 			      $text{'index_resetdesc'}, undef,
 			      &ui_hidden("reset", 1));
