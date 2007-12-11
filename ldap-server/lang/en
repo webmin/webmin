@@ -171,3 +171,13 @@ log_start=Started LDAP Server
 log_apply=Applied configuration
 log_slapd=Changed LDAP server configuration
 
+gencert_title=Generate SSL Certificate
+gencert_header=New SSL certificate details
+gencert_create=Create Certificate
+gencert_desc=This page allows you to generate a new TLS certificate for your LDAP server. Without a certificate running in TLS encrypted mode is not possible.
+gencert_dest=Location for certificate and key files
+gencert_dest2=Directory for certificate and key files
+gencert_same=Current config files
+gencert_dir=Directory
+gencert_err=Failed to generate certificate
+gencert_edest=Destination directory does not exist

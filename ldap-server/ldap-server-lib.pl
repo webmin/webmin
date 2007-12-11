@@ -3,7 +3,6 @@
 # XXX initial setup
 # XXX install ldap server
 # XXX default configs for various systems (include search max of 100)
-# XXX button to generate SSL cert / key
 # XXX LDAP logging in more detail, like we do for SQL
 #	XXX spam, postfix and ldap-useradmin too
 
@@ -316,6 +315,14 @@ else {
 	return $data =~ /\-{5}BEGIN CERTIFICATE\-{5}/ &&
 	       $data =~ /\-{5}END CERTIFICATE\-{5}/;
 	}
+}
+
+sub get_config_dir
+{
+if ($config{'config_file'} =~ /^(\S+)\/([^\/]+)$/) {
+	return $1;
+	}
+return undef;
 }
 
 1;
