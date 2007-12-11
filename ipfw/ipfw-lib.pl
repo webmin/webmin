@@ -602,6 +602,7 @@ if ($has_net_lib && defined(&net::get_rc_conf) && -r "/etc/rc.conf") {
 	&lock_file("/etc/rc.conf");
 	&net::save_rc_conf('firewall_type', $ipfw_file);
 	&net::save_rc_conf('firewall_enable', 'YES');
+	&net::save_rc_conf('firewall_quiet', 'YES');
 	&unlock_file("/etc/rc.conf");
 	return 2;
 	}
