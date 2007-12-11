@@ -120,36 +120,8 @@ print &ui_table_start($text{'ssl_header1'}, undef, 2);
 
 $host = $ENV{'HTTP_HOST'};
 $host =~ s/:.*//;
-print &ui_table_row($text{'ssl_cn'},
-		    &ui_opt_textbox("commonName", $host, 30,
-				    $text{'ssl_all'}));
-
-print &ui_table_row($text{'ca_email'},
-		    &ui_textbox("emailAddress", $d->{'emailto'}, 30));
-
-print &ui_table_row($text{'ca_ou'},
-		    &ui_textbox("organizationalUnitName", undef, 30));
-
-$o = "Webmin Webserver on ".&get_system_hostname();
-print &ui_table_row($text{'ca_o'},
-		    &ui_textbox("organizationName", $o, 30));
-
-print &ui_table_row($text{'ca_city'},
-		    &ui_textbox("cityName", undef, 30));
-
-print &ui_table_row($text{'ca_sp'},
-		    &ui_textbox("stateOrProvinceName", undef, 15));
-
-print &ui_table_row($text{'ca_c'},
-		    &ui_textbox("countryName", undef, 2));
-
-print &ui_table_row($text{'ssl_size'},
-		    &ui_opt_textbox("size", undef, 6,
-				    "$text{'default'} ($default_key_size)").
-			" ".$text{'ssl_bits'});
-
-print &ui_table_row($text{'ssl_days'},
-		    &ui_textbox("days", 1825, 8));
+print &show_ssl_key_form($host, undef, 
+			 "Webmin Webserver on ".&get_system_hostname());
 
 print &ui_table_row($text{'ssl_newfile'},
 	    &ui_textbox("newfile", "$config_directory/miniserv.pem", 40));

@@ -1239,4 +1239,114 @@ close(BLOCKED);
 return @rv;
 }
 
+# show_ssl_key_form([defhost], [defemail], [deforg])
+# Returns HTML for inputs to generate a new self-signed cert
+sub show_ssl_key_form
+{
+local ($defhost, $defemail, $deforg) = @_;
+local $rv;
+
+$rv .= &ui_table_row($text{'ssl_cn'},
+		    &ui_opt_textbox("commonName", $defhost, 30,
+				    $text{'ssl_all'}));
+
+$rv .= &ui_table_row($text{'ca_email'},
+		    &ui_textbox("emailAddress", $defemail, 30));
+
+$rv .= &ui_table_row($text{'ca_ou'},
+		    &ui_textbox("organizationalUnitName", undef, 30));
+
+$rv .= &ui_table_row($text{'ca_o'},
+		    &ui_textbox("organizationName", $deforg, 30));
+
+$rv .= &ui_table_row($text{'ca_city'},
+		    &ui_textbox("cityName", undef, 30));
+
+$rv .= &ui_table_row($text{'ca_sp'},
+		    &ui_textbox("stateOrProvinceName", undef, 15));
+
+$rv .= &ui_table_row($text{'ca_c'},
+		    &ui_textbox("countryName", undef, 2));
+
+$rv .= &ui_table_row($text{'ssl_size'},
+		    &ui_opt_textbox("size", undef, 6,
+				    "$text{'default'} ($default_key_size)").
+			" ".$text{'ssl_bits'});
+
+$rv .= &ui_table_row($text{'ssl_days'},
+		    &ui_textbox("days", 1825, 8));
+
+return $rv;
+}
+
+# parse_ssl_key_form(&in, keyfile, [certfile])
+# Parses the key generation form, and creates new key and cert files.
+# Returns undef on success or an error message on failure.
+sub parse_ssl_key_form
+{
+local ($in, $keyfile, $certfile) = @_;
+local %in = %$in;
+
+# Validate inputs
+$in{'commonName_def'} || $in{'commonName'} =~ /^[A-Za-z0-9\.\-\*]+$/ ||
+	return $text{'newkey_ecn'};
+$in{'newfile'} || return $text{'newkey_efile'};
+$in{'size_def'} || $in{'size'} =~ /^\d+$/ || return $text{'newkey_esize'};
+$in{'days'} =~ /^\d+$/ || return $text{'newkey_edays'};
+$in{'countryName'} =~ /^\S\S$/ || return $text{'newkey_ecountry'};
+
+# Work out SSL command
+local %aclconfig = &foreign_config('acl');
+&foreign_require("acl", "acl-lib.pl");
+local $cmd = &acl::get_ssleay();
+if (!$cmd) {
+	return &text('newkey_ecmd', "<tt>$aclconfig{'ssleay'}</tt>",
+		     "$gconfig{'webprefix'}/config.cgi?acl");
+	}
+
+# Run openssl and feed it key data
+local $ctemp = &transname();
+local $ktemp = &transname();
+local $outtemp = &transname();
+local $size = $in{'size_def'} ? $default_key_size : quotemeta($in{'size'});
+open(CA, "| $cmd req -newkey rsa:$size -x509 -nodes -out $ctemp -keyout $ktemp -days ".quotemeta($in{'days'})." >$outtemp 2>&1");
+print CA ($in{'countryName'} || "."),"\n";
+print CA ($in{'stateOrProvinceName'} || "."),"\n";
+print CA ($in{'cityName'} || "."),"\n";
+print CA ($in{'organizationName'} || "."),"\n";
+print CA ($in{'organizationalUnitName'} || "."),"\n";
+print CA ($in{'commonName_def'} ? "*" : $in{'commonName'}),"\n";
+print CA ($in{'emailAddress'} || "."),"\n";
+close(CA);
+local $rv = $?;
+local $out = &read_file_contents($outtemp);
+unlink($outtemp);
+if (!-r $ctemp || !-r $ktemp || $?) {
+	return $text{'newkey_essl'}."<br>"."<pre>".&html_escape($out)."</pre>";
+	}
+
+# Write to the final files
+local $certout = &read_file_contents($ctemp);
+local $keyout = &read_file_contents($ktemp);
+unlink($ctemp, $ktemp);
+
+&open_lock_tempfile(KEYFILE, ">$keyfile");
+&print_tempfile(KEYFILE, $keyout);
+if ($certfile) {
+	# Separate files
+	&open_lock_tempfile(CERTFILE, ">$certfile");
+	&print_tempfile(CERTFILE, $certout);
+	&close_tempfile(CERTFILE);
+	&set_ownership_permissions(undef, undef, 0600, $certfile);
+	}
+else {
+	# Both go in the same file
+	&print_tempfile(KEYFILE, $certout);
+	}
+&close_tempfile(KEYFILE);
+&set_ownership_permissions(undef, undef, 0600, $keyfile);
+
+return undef;
+}
+
 1;

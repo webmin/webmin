@@ -364,6 +364,7 @@ newkey_ecat=An error occurred writing to the new key file :
 newkey_ok=Successfully generated the following SSL key.
 newkey_esize=Missing or invalid key size
 newkey_edays=Missing or invalid number of days before expiry
+newkey_ecountry=Country code must be two letters
 
 startpage_title=Index Page Options
 startpage_intro2=This page allows you to control the appearance of the main Webmin menu. Some options may only be effective when using the default theme.
