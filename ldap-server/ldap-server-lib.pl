@@ -237,8 +237,9 @@ sub start_ldap_server
 {
 local $cmd = $config{'start_cmd'} || $config{'slapd'};
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
-return $? ? &text('start_ecmd', "<tt>$cmd</tt>",
-		  "<pre>".&html_escape($out)."</pre>") : undef;
+return $? || $out =~ /line\s+(\d+)/ ?
+	&text('start_ecmd', "<tt>$cmd</tt>",
+	      "<pre>".&html_escape($out)."</pre>") : undef;
 }
 
 # stop_ldap_server()
@@ -323,6 +324,40 @@ if ($config{'config_file'} =~ /^(\S+)\/([^\/]+)$/) {
 	return $1;
 	}
 return undef;
+}
+
+# list_schema_files()
+# Returns a list of hashes, each of which describes one possible schema file
+sub list_schema_files
+{
+local @rv;
+opendir(SCHEMA, $config{'schema_dir'});
+foreach my $f (readdir(SCHEMA)) {
+	if ($f =~ /^(\S+)\.schema$/) {
+		local $name = $1;
+		local $lref = &read_file_lines("$config{'schema_dir'}/$f", 1);
+		local $desc;
+		foreach my $l (@$lref) {
+			if ($l !~ /^\#+\s*\$/ && $l =~ /^\#+\s*(\S.*)/) {
+				$desc .= $1." ";	# Comment
+				}
+			elsif ($l !~ /\S/) {
+				last;			# End of header
+				}
+			else {
+				last if ($desc);	# End of comment
+				}
+			}
+		$desc ||= $text{'schema_desc_'.$name};
+		push(@rv, { 'file' => "$config{'schema_dir'}/$f",
+			    'name' => $name,
+			    'desc' => $desc,
+			    'core' => $name eq 'core' });
+		}
+	}
+closedir(SCHEMA);
+return sort { $b->{'core'} <=> $a->{'core'} ||
+	      $a->{'name'} cmp $b->{'name'} } @rv;
 }
 
 1;

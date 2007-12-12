@@ -1,0 +1,30 @@
+#!/usr/local/bin/perl
+# Save included schema files
+
+require './ldap-server-lib.pl';
+&error_setup($text{'schema_err'});
+&local_ldap_server() == 1 || &error($text{'slapd_elocal'});
+&ReadParse();
+
+# Get non-schema includes
+$conf = &get_config();
+foreach $i (&find_value("include", $conf)) {
+	if ($i !~ /^(.*)\/(\S+)$/ || $1 ne $config{'schema_dir'} ||
+				     $2 eq 'core.schema') {
+		push(@incs, $i);
+		}
+	}
+
+# Build new list of includes
+push(@incs, split(/\0/, $in{'d'}));
+@incs = &unique(@incs);
+
+# Write out
+&lock_file($config{'config_file'});
+&save_directive($conf, "include", @incs);
+&flush_file_lines($config{'config_file'});
+&unlock_file($config{'config_file'});
+
+&webmin_log("schema");
+&redirect("");
+

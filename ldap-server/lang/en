@@ -65,6 +65,14 @@ slapd_gencertdesc=To run your LDAP server in TLS mode, an SSL certificate and pr
 slapd_gencertwarn=Warning - your existing certificate will no longer be used.
 
 schema_title=Manage Schema
+schema_file=Schema name
+schema_desc=Description
+schema_pagedesc=The LDAP schema determines which object classes and attributes can be stored in your LDAP database. This page allows you to select which schema types are supported by your server - but be careful de-selecting any entries that are used by existing objects.
+schema_err=Failed to save schema
+schema_move=Move
+schema_act=Actions..
+schema_view=View
+schema_edit=Edit
 
 acl_title=LDAP Access Control
 
@@ -170,6 +178,8 @@ log_stop=Stopped LDAP server
 log_start=Started LDAP Server
 log_apply=Applied configuration
 log_slapd=Changed LDAP server configuration
+log_schema=Changed enabled LDAP schemas
+log_gencert=Generated new SSL certificate
 
 gencert_title=Generate SSL Certificate
 gencert_header=New SSL certificate details
