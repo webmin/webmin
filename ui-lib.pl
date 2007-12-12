@@ -788,7 +788,7 @@ local $divid = "hiddendiv_$name";
 local $openerid = "hiddenopener_$name";
 local $defimg = $status ? "open.gif" : "closed.gif";
 local $defclass = $status ? 'opener_shown' : 'opener_hidden';
-$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a>\n";
+$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg' alt='*'></a>\n";
 $rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
 $rv .= "<div class='$defclass' id='$divid'>\n";
 return $rv;
@@ -1113,6 +1113,31 @@ foreach my $r (@$rows) {
 	}
 $rv .= "</table>\n";
 return $rv;
+}
+
+# ui_up_down_arrows(uplink, downlink, up-show, down-show)
+# Returns HTML for moving some objects in a table up or down
+sub ui_up_down_arrows
+{
+return &theme_ui_up_down_arrows(@_) if (defined(&theme_ui_up_down_arrows));
+local ($uplink, $downlink, $upshow, $downshow) = @_;
+local $mover;
+local $imgdir = "$gconfig{'webprefix'}/images";
+if ($downshow) {
+	$mover .= "<a href=\"$downlink\">".
+		  "<img src=$imgdir/movedown.gif border=0></a>";
+	}
+else {
+	$mover .= "<img src=$imgdir/movegap.gif>";
+	}
+if ($upshow) {
+	$mover .= "<a href=\"$uplink\">".
+		  "<img src=$imgdir/moveup.gif border=0></a>";
+	}
+else {
+	$mover .= "<img src=$imgdir/movegap.gif>";
+	}
+return $mover;
 }
 
 ####################### javascript functions

@@ -78,21 +78,12 @@ if (@http) {
 		push(@cols, "<a href=\"http_access.cgi?index=$h->{'index'}\">".
 			    "$v[0]</a>");
 		push(@cols, &html_escape(join(' ', @v[1..$#v])));
-		local $mover;
-		if ($hc != @http-1) {
-			$mover .= "<a href=\"move_http.cgi?$hc+1\">".
-			          "<img src=images/down.gif border=0></a>";
-			}
-		else {
-			$mover .= "<img src=images/gap.gif>";
-			}
-		if ($hc != 0) {
-			$mover .= "<a href=\"move_http.cgi?$hc+-1\">".
-			          "<img src=images/up.gif border=0></a>";
-			}
-		else {
-			$mover .= "<img src=images/gap.gif>";
-			}
+		local $mover = &ui_up_down_arrows(
+			"move_http.cgi?$hc+-1",
+			"move_http.cgi?$hc+1",
+			$hc != 0,
+			$hc != @http-1
+			);
 		push(@cols, $mover);
 		print &ui_checked_columns_row(\@cols, \@tds, "d",$h->{'index'});
 		$hc++;
@@ -131,21 +122,11 @@ if (@icp) {
 		push(@cols, "<a href=\"icp_access.cgi?index=$i->{'index'}\">".
 			    "$v[0]</a>");
 		push(@cols, &html_escape(join(' ', @v[1..$#v])));
-		local $mover;
-		if ($hc != @icp-1) {
-			$mover .= "<a href=\"move_icp.cgi?$hc+1\">".
-			          "<img src=images/down.gif border=0></a>";
-			}
-		else {
-			$mover .= "<img src=images/gap.gif>";
-			}
-		if ($hc != 0) {
-			$mover .= "<a href=\"move_icp.cgi?$hc+-1\">".
-			          "<img src=images/up.gif border=0></a>";
-			}
-		else {
-			$mover .= "<img src=images/gap.gif>";
-			}
+		local $mover = &ui_up_down_arrows(
+			"move_icp.cgi?$ic+-1",
+			"move_icp.cgi?$ic+1",
+			$ic != 0,
+			$ic != @icp-1);
 		push(@cols, $mover);
 		print &ui_checked_columns_row(\@cols, \@tds, "d",$i->{'index'});
 		$ic++;
