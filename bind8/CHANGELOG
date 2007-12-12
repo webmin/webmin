@@ -63,3 +63,4 @@ Added a button to the main page for adding a record with the same name and value
 Multiple zones can be deleted and updated when using the icons view.
 ---- Changes since 1.380 ----
 Added buttons for freezing and un-freezing a master zone, for use on systems that also use dynamic DNS. Thanks to Clément Véret for submitting this patch.
+When adding a remote slave zone, the IPs of all other slaves and the master are included in the master IPs list.

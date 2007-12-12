@@ -1447,7 +1447,7 @@ local $form = defined($_[2]) ? $_[2] : 0;
 return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"free_chooser.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=150,height=500\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
-# create_slave_zone(name, master-ip, [view], [file])
+# create_slave_zone(name, master-ip, [view], [file], [&other-ips])
 # A convenience function for creating a new slave zone, if it doesn't exist
 # yet. Mainly useful for Virtualmin, to avoid excessive transfer of BIND
 # configuration data.
@@ -1474,9 +1474,10 @@ local ($z) = grep { $_->{'value'} eq $_[0] } @zones;
 return 2 if ($z);
 
 # Create it
+local @mips = ( $_[1], @{$_[4]} );
 local $masters = { 'name' => 'masters',
                    'type' => 1,
-                   'members' => [ { 'name' => $_[1] } ] };
+                   'members' => [ map { { 'name' => $_ } } @mips ] };
 local $dir = { 'name' => 'zone',
                'values' => [ $_[0] ],
                'type' => 1,
@@ -2115,7 +2116,8 @@ local %on = map { $_, 1 } @$hosts;
 &remote_error_setup(\&slave_error_handler);
 local $slave;
 local @slaveerrs;
-foreach $slave (&list_slave_servers()) {
+local @slaves = &list_slave_servers();
+foreach $slave (@slaves) {
 	next if (%on && !$on{$slave->{'host'}});
 
 	# Connect to server
@@ -2126,10 +2128,15 @@ foreach $slave (&list_slave_servers()) {
 		next;
 		}
 
+	# Work out other slave IPs
+	local @otherslaves = grep { $_ ne '' }
+				  map { &to_ipaddress($_->{'host'}) }
+				      grep { $_ ne $slave } @slaves;
+
 	# Create the zone
 	local $err = &remote_foreign_call($slave, "bind8",
 		"create_slave_zone", $zone, $master,
-		$slave->{'bind8_view'}, $file);
+		$slave->{'bind8_view'}, $file, \@otherslaves);
 	if ($err == 1) {
 		push(@slaveerrs, [ $slave, $text{'master_esetup'} ]);
 		}
