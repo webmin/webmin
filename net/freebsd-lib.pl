@@ -512,7 +512,19 @@ return %rv;
 # Apply the interface and routing settings
 sub apply_network
 {
-&system_logged("(cd / ; /etc/netstart) >/dev/null 2>&1");
+local $oldpwd = &get_current_dir();
+chdir("/");
+
+# Take down all active alias interfaces, and any that no longer exist
+local %boot = map { $_->{'fullname'}, $_ } &boot_interfaces();
+foreach my $i (&active_interfaces()) {
+	if ($i->{'virtual'} ne '' || !$boot{$i->{'fullname'}}) {
+		&deactivate_interface($i);
+		}
+	}
+# Bring everything up
+&system_logged("/etc/netstart >/dev/null 2>&1");
+chdir($oldpwd);
 }
 
 sub os_feedback_files
