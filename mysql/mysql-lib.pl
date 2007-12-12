@@ -94,7 +94,7 @@ return ($sock ? " -S $sock" : "").
        ($host ? " -h $host" : "").
        ($port ? " -P $port" : "").
        ($login ? " -u ".quotemeta($login) : "").
-       ($mysql_version >= 5.0 ? "" :	# Password comes from environment
+       ($mysql_version >= 5.1 ? "" :	# Password comes from environment
         $pass && $mysql_version >= 4.1 ? " --password=".quotemeta($pass) :
         $pass ? " -p".quotemeta($pass) : "");
 }
