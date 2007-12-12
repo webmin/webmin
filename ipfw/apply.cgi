@@ -5,8 +5,7 @@
 require './ipfw-lib.pl';
 &ReadParse();
 &error_setup($text{'apply_err'});
-$rules = &get_config();
-$err = &apply_rules($rules);
+$err = &apply_rules();
 &error($err) if ($err);
 $err = &apply_cluster_configuration();
 &error($err) if ($err);

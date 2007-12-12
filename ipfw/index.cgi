@@ -93,23 +93,13 @@ elsif (@$rules && !$in{'reset'}) {
 			    	  $text{'index_radd'} ], 100, 0,
 				\@widths);
 	foreach $r (@$rules) {
+		next if ($r->{'other'});	# Not displayable
 		local ($mover, $adder);
-		if ($r->{'index'} >= $lastidx) {
-			$mover .= "<img src=images/gap.gif>";
-			}
-		else {
-			$mover .= "<a href='move.cgi?idx=$r->{'index'}&".
-			      	  "down=1'><img src=".
-			      	  "images/down.gif border=0></a>";
-			}
-		if ($r->{'index'} == 0 || $r->{'index'} > $lastidx) {
-			$mover .= "<img src=images/gap.gif>";
-			}
-		else {
-			$mover .= "<a href='move.cgi?idx=$r->{'index'}&".
-			          "up=1'><img src=images/up.gif ".
-			          "border=0></a>";
-			}
+		$mover = &ui_up_down_arrows(
+			"move.cgi?idx=$r->{'index'}&up=1",
+			"move.cgi?idx=$r->{'index'}&down=1",
+			$r->{'index'} != 0 && $r->{'index'} <= $lastidx,
+			$r->{'index'} < $lastidx);
 		if ($r->{'index'} <= $lastidx) {
 			$adder .= "<a href='edit_rule.cgi?new=1&".
 				  "after=$r->{'index'}'>".

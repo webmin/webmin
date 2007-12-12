@@ -5,8 +5,7 @@
 $no_acl_check++;
 require './ipfw-lib.pl';
 &ReadParse();
-$rules = &get_config();
-$err = &apply_rules($rules);
+$err = &apply_rules();
 if ($err) {
 	$err =~ s/<[^>]*>//g;
 	print STDERR "Failed to enable firewall : $err\n";

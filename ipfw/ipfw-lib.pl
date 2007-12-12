@@ -62,23 +62,35 @@ if (open(VERSION, "$module_config_directory/version")) {
 sub get_config
 {
 local $file = $_[0] || $ipfw_file;
+local $fmt = &get_ipfw_format();
 local @rv;
 local $cmt;
-local $lnum = 0;
+local $lnum = -1;
 open(LIST, $file);
 while(<LIST>) {
 	${$_[1]} .= $_ if ($_[1]);
-	if (/^(\d+)\s+(.*)/) {
+	$lnum++;
+	if ($fmt == 1 && !/^add\s+/ && !/^#/) {
+		# Format with 'add' suffixes, with some other directive
+		local $rule = { 'index' => scalar(@rv),
+                                'line' => $lnum-scalar(@cmts),
+                                'eline' => $lnum,
+				'other' => 1,
+                                'text' => $_ };
+		$cmt = undef;
+		push(@rv, $rule);
+		}
+	elsif (/^(add\s+)?(\d+)\s+(.*)/) {
 		# an ipfw rule
 		local @cmts = split(/\n/, $cmt);
 		local $rule = { 'index' => scalar(@rv),
 				'line' => $lnum-scalar(@cmts),
 				'eline' => $lnum,
-				'num' => $1,
-				'text' => $2,
+				'num' => $2,
+				'text' => $3,
 				'cmt' => $cmt };
 		$cmt = undef;
-		local @w = &split_quoted_string($2);
+		local @w = &split_quoted_string($3);
 
 		# Parse counts, if given
 		if ($w[0] =~ /^\d+$/) {
@@ -242,21 +254,26 @@ foreach $r (@{$_[0]}) {
 close(LIST);
 }
 
-# rule_lines(&rule, [nocomment])
+# rule_lines(&rule, [no-comment], [no-add])
 # Returns the lines of text to make up a rule
 sub rule_lines
 {
-local ($rule) = @_;
-local @cmts = $_[1] ? ( ) : map { "# $_" } split(/\n/, $rule->{'cmt'});
+local ($rule, $nocmt, $noadd) = @_;
+local @cmts = $nocmt ? ( ) : map { "# $_" } split(/\n/, $rule->{'cmt'});
+local $fmt = &get_ipfw_format();
 if (defined($rule->{'text'})) {
 	# Assume un-changed
-	return (@cmts, $rule->{'num'}." ".$rule->{'text'});
+	return (@cmts, (defined($rule->{'num'}) ? $rule->{'num'}." " : "").
+		       $rule->{'text'});
 	}
 else {
 	# Need to construct
 	local @w;
 
 	# Add the basic rule parameters
+	if ($fmt == 1 && !$noadd) {
+		push(@w, "add");
+		}
 	push(@w, $rule->{'num'});
 	push(@w, "set", $rule->{'set'}) if (defined($rule->{'set'}));
 	push(@w, "prob", $rule->{'prob'}) if (defined($rule->{'prob'}));
@@ -438,7 +455,7 @@ close(PROTOS);
 return &unique(@stdprotos, @otherprotos);
 }
 
-# apply_rules(&rules)
+# apply_rules([&rules])
 # Apply the supplied firewall rules
 sub apply_rules
 {
@@ -447,15 +464,24 @@ $conf ||= &get_config();
 local $dir = `pwd`;
 chop($dir);
 chdir("/");
-&system_logged("$config{'ipfw'} -f flush >/dev/null 2>&1");
-local $r;
-foreach $r (@$conf) {
-	if ($r->{'num'} != 65535) {	# skip auto-added final rule
-		local ($line) = &rule_lines($r, 1);
-		local $cmd = "$config{'ipfw'} add $line";
-		$out = &backquote_logged("$cmd 2>&1 </dev/null");
-		return "<tt>$cmd</tt> failed : <tt>$out</tt>" if ($?);
+local $fmt = &get_ipfw_format();
+if ($fmt == 0) {
+	# Apply each rule in turn
+	&system_logged("$config{'ipfw'} -f flush >/dev/null 2>&1");
+	local $r;
+	foreach $r (@$conf) {
+		if (!$r->{'other'} &&
+		    $r->{'num'} != 65535) {	# skip auto-added final rule
+			local ($line) = &rule_lines($r, 1, 1);
+			local $cmd = "$config{'ipfw'} add $line";
+			$out = &backquote_logged("$cmd 2>&1 </dev/null");
+			return "<tt>$cmd</tt> failed : <tt>$out</tt>" if ($?);
+			}
 		}
+	}
+else {
+	# The ipfw command can apply the whole file
+	&system_logged("$config{'ipfw'} ".quotemeta($ipfw_file));
 	}
 chdir($dir);
 return undef;
@@ -597,7 +623,8 @@ return 0;
 sub enable_boot
 {
 return 0 if (&check_boot());	# Already on
-if ($has_net_lib && defined(&net::get_rc_conf) && -r "/etc/rc.conf") {
+if ($has_net_lib && defined(&net::get_rc_conf) && &get_ipfw_format() == 1) {
+	# Add to rc.conf
 	local %rc = &net::get_rc_conf();
 	&lock_file("/etc/rc.conf");
 	&net::save_rc_conf('firewall_type', $ipfw_file);
@@ -606,7 +633,10 @@ if ($has_net_lib && defined(&net::get_rc_conf) && -r "/etc/rc.conf") {
 	&unlock_file("/etc/rc.conf");
 	return 2;
 	}
-&create_firewall_init();
+else {
+	# Create init script
+	&create_firewall_init();
+	}
 return 1;
 }
 
@@ -625,6 +655,39 @@ elsif ($mode == 2) {
 	&unlock_file("/etc/rc.conf");
 	}
 return $mode;
+}
+
+# get_ipfw_format()
+# Works out the IPFW file format we should use. Returns 1 for with 'add' at the
+# start, vs 0 for without.
+sub get_ipfw_format
+{
+local $fmt;
+if (open(FILE, $ipfw_file)) {
+	# Check existing format
+	while(<FILE>) {
+		if (/^(\d+)\s/) {
+			# Numeric line
+			$fmt = 0;
+			last;
+			}
+		elsif (/\S/ && !/^\#/) {
+			# Add or other directive line
+			$fmt = 1;
+			last;
+			}
+		}
+	close(FILE);
+	return $fmt if (defined($fmt));
+	}
+if (-r "/etc/rc.conf") {
+	# FreeBSD - use it's format
+	return 1;
+	}
+else {
+	# Assume numeric format
+	return 0;
+	}
 }
 
 1;
