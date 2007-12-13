@@ -3,6 +3,7 @@
 
 require './ldap-server-lib.pl';
 &ui_print_header(undef, $text{'browser_title'}, "", "browser");
+$access{'browser'} || &error($text{'browser_ecannot'});
 &ReadParse();
 
 # Connect to LDAP server, or die trying

@@ -7,6 +7,7 @@ ssl=Use TLS encryption with LDAP server?,1,-Detect automatically,1-Yes,0-No
 slapd=Full path to OpenLDAP server program,8
 config_file=OpenLDAP server configuration file,8
 schema_dir=OpenLDAP schema directory,7
+ldap_user=User OpenLDAP server runs as,5
 
 line2=User interface settings,11
 browse_max=Maximum number of sub-objects to display,3,Unlimited

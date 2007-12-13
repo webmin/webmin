@@ -41,8 +41,9 @@ if ($local) {
 	}
 else {
 	# Just browser and DN creator?
-	@pages = ( "browse", "create" );
+	@pages = ( "browser", "create" );
 	}
+@pages = grep { $access{$_} } @pages;
 @links = map { "edit_".$_.".cgi" } @pages;
 @titles = map { $text{$_."_title"} } @pages;
 @icons = map { "images/$_.gif" } @pages;

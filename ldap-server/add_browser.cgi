@@ -3,6 +3,7 @@
 
 require './ldap-server-lib.pl';
 &error_setup($text{'add_err'});
+$access{'browser'} || &error($text{'browser_ecannot'});
 &ReadParse();
 $ldap = &connect_ldap_db();
 ref($ldap) || &error($ldap);

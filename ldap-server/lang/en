@@ -63,6 +63,7 @@ slapd_eca=Missing or incorrectly formatted TLS CA certificate file
 slapd_gencert=Generate SSL Certificate
 slapd_gencertdesc=To run your LDAP server in TLS mode, an SSL certificate and private key must first be generated. Click this button to create a self-signed certificate for your system.
 slapd_gencertwarn=Warning - your existing certificate will no longer be used.
+slapd_elocal=You are not allowed to configure the LDAP server
 
 schema_title=Manage Schema
 schema_file=Name
@@ -80,11 +81,14 @@ schema_path=Full filename
 schema_edesc=This page allows you to manually edit an LDAP schema file. This should only be done if you are familiar with the file format, as no checking is done by Webmin.
 schema_return=schema list
 schema_emove=Could not find schema file to move!
+schema_ecannot=You are not allowed to manage the LDAP schema
 
 acl_title=LDAP Access Control
+acl_ecannot=You are not allowed to configure LDAP access control
 
 browser_title=Browse Database
 browser_econn=The LDAP browser cannot be used : $1
+browser_ecannot=You are not allowed to browse the LDAP database
 browser_base=Browsing:
 browser_ok=Show
 browser_esearch=LDAP search failed : $1
@@ -201,3 +205,9 @@ gencert_same=Current config files
 gencert_dir=Directory
 gencert_err=Failed to generate certificate
 gencert_edest=Destination directory does not exist
+
+acl_slapd=Can configure LDAP server?
+acl_schema=Can manage schema?
+acl_acl=Can edit access control?
+acl_browser=Can browse and edit database?
+acl_create=Can create new tree?

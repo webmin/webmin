@@ -3,6 +3,7 @@
 
 require './ldap-server-lib.pl';
 &local_ldap_server() == 1 || &error($text{'slapd_elocal'});
+$access{'slapd'} || &error($text{'slapd_ecannot'});
 &foreign_require("webmin", "webmin-lib.pl");
 
 &ui_print_header(undef, $text{'gencert_title'}, "");

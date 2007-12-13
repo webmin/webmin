@@ -2,11 +2,12 @@
 # Write out a schema file
 
 require './ldap-server-lib.pl';
+&error_setup($text{'schema_eerr'});
 &local_ldap_server() == 1 || &error($text{'slapd_elocal'});
+$access{'schema'} || &error($text{'schema_ecannot'});
 &ReadParseMime();
 
 # Validate
-&error_setup($text{'schema_eerr'});
 &is_under_directory($config{'schema_dir'}, $in{'file'}) ||
 	&error($text{'schema_edir'});
 $in{'data'} =~ s/\r//g;

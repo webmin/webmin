@@ -3,6 +3,7 @@
 
 require './ldap-server-lib.pl';
 &error_setup($text{'schema_err'});
+$access{'schema'} || &error($text{'schema_ecannot'});
 &local_ldap_server() == 1 || &error($text{'slapd_elocal'});
 &ReadParse();
 

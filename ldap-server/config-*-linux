@@ -1,3 +1,4 @@
 config_file=/etc/ldap/slapd.conf
 schema_dir=/etc/ldap/schema
 slapd=slapd
+ldap_user=ldap

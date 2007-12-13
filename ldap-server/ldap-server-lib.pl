@@ -3,8 +3,6 @@
 # XXX initial setup
 # XXX install ldap server
 # XXX default configs for various systems (include search max of 100)
-# XXX LDAP logging in more detail, like we do for SQL
-#	XXX spam, postfix and ldap-useradmin too
 
 do '../web-lib.pl';
 &init_config();

@@ -3,6 +3,7 @@
 
 require './ldap-server-lib.pl';
 &local_ldap_server() == 1 || &error($text{'slapd_elocal'});
+$access{'slapd'} || &error($text{'slapd_ecannot'});
 &foreign_require("webmin", "webmin-lib.pl");
 &ReadParse();
 &error_setup($text{'gencert_err'});
@@ -21,8 +22,13 @@ else {
 	}
 
 # Do it
-$err = &webmin::parse_ssl_key_form(\%in, $keyfile, $certfile);
+$err = &webmin::parse_ssl_key_form(\%in, $keyfile,
+				   $certfile eq $keyfile ? undef : $certfile);
 &error($err) if ($err);
+
+# Make readable by LDAP user
+&set_ownership_permissions($config{'ldap_user'}, undef, undef,
+			   $keyfile, $certfile);
 
 # Update config to use them
 &lock_file($config{'config_file'});
