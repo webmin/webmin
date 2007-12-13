@@ -2337,6 +2337,40 @@ else {
 	}
 }
 
+# disable_html_images(html, disable?, &urls)
+# Turn off some or all images in HTML email. Mode 0=Do nothing, 1=Offsite only,
+# 2=All images. Returns the number of images found.
+sub disable_html_images
+{
+local ($html, $dis, $urls) = @_;
+local $newhtml;
+while($html =~ /^([\000-\377]*)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\000-\377]*)/) {
+	local ($before, $allimg, $img, $after) = ($1, $2, $3);
+	$img =~ s/^'(.*)'$/$1/ || $img =~ s/^"(.*)"$/$1/;
+	push(@$urls, $img) if ($urls);
+	if ($dis == 0) {
+		# Don't harm image
+		$newhtml .= $before.$allimg;
+		}
+	elsif ($dis == 1) {
+		# Don't touch unless offsite
+		if ($img =~ /^(http|https|ftp):/) {
+			$newhtml .= $before;
+			}
+		else {
+			$newhtml .= $before.$allimg;
+			}
+		}
+	elsif ($dis == 2) {
+		# Always remove image
+		$newhtml .= $before;
+		}
+	$html = $after;
+	}
+$newhtml .= $html;
+return $newhtml;
+}
+
 # remove_body_attachments(&mail, &attach)
 # Returns attachments except for those that make up the message body, and those
 # that have sub-attachments.

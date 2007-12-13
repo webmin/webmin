@@ -179,6 +179,7 @@ view_remote-mta=Remote mail server
 view_reporting-mta=Reporting mail server
 view_astext=View as text
 view_ashtml=View as HTML
+view_images=Show images
 view_raw=View raw message
 view_aall=Save all attachments as ZIP.
 view_aslideshow=Show all images.
