@@ -1,0 +1,23 @@
+#!/usr/local/bin/perl
+# Move a schema include up (earlier)
+
+require './ldap-server-lib.pl';
+&local_ldap_server() == 1 || &error($text{'slapd_elocal'});
+&ReadParse();
+
+# Find it includes
+&lock_file($config{'config_file'});
+$conf = &get_config();
+@incs = &find_value("include", $conf);
+$idx = &indexof($in{'file'}, @incs);
+$idx > 0 || &error($text{'schema_emove'});
+
+# Move up
+($incs[$idx-1], $incs[$idx]) = ($incs[$idx], $incs[$idx-1]);
+&save_directive($conf, "include", @incs);
+&flush_file_lines($config{'config_file'});
+&unlock_file($config{'config_file'});
+
+&webmin_log("sup", undef, $in{'file'});
+&redirect("edit_schema.cgi");
+
