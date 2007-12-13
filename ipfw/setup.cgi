@@ -11,6 +11,11 @@ if ($in{'reset'}) {
 	@$rules = grep { $_->{'num'} == 65535 } @$rules;
 	}
 
+# A flush will generate the 65535 rule, so we can exclude it
+if (&get_ipfw_format() == 1) {
+	@$rules = grep { $_->{'num'} != 65535 } @$rules;
+	}
+
 # Add selected rules
 if ($in{'auto'} == 0) {
 	# Allow all traffic
@@ -138,6 +143,12 @@ elsif ($in{'auto'} >= 2) {
 				"from" => "any",
 				"to" => "any" });
 		}
+	}
+
+# Add flush line at top
+if (&get_ipfw_format() == 1) {
+	splice(@$rules, 0, 0, { 'other' => 1,
+				'text' => 'flush' });
 	}
 
 # Save firewall

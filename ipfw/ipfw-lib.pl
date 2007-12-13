@@ -63,6 +63,10 @@ sub get_config
 {
 local $file = $_[0] || $ipfw_file;
 local $fmt = &get_ipfw_format();
+if ($_[0] =~ /\|$/) {
+	# When getting from command, there is never an 'add'
+	$fmt = 0;
+	}
 local @rv;
 local $cmt;
 local $lnum = -1;
@@ -71,7 +75,7 @@ while(<LIST>) {
 	${$_[1]} .= $_ if ($_[1]);
 	$lnum++;
 	if ($fmt == 1 && !/^add\s+/ && !/^#/) {
-		# Format with 'add' suffixes, with some other directive
+		# Expecting 'add' suffixes, but found some other directive
 		local $rule = { 'index' => scalar(@rv),
                                 'line' => $lnum-scalar(@cmts),
                                 'eline' => $lnum,
@@ -88,9 +92,11 @@ while(<LIST>) {
 				'eline' => $lnum,
 				'num' => $2,
 				'text' => $3,
+			        'cmd' => $1,
 				'cmt' => $cmt };
 		$cmt = undef;
 		local @w = &split_quoted_string($3);
+		$rule->{'cmd'} =~ s/\s+$//;
 
 		# Parse counts, if given
 		if ($w[0] =~ /^\d+$/) {
@@ -261,9 +267,17 @@ sub rule_lines
 local ($rule, $nocmt, $noadd) = @_;
 local @cmts = $nocmt ? ( ) : map { "# $_" } split(/\n/, $rule->{'cmt'});
 local $fmt = &get_ipfw_format();
-if (defined($rule->{'text'})) {
-	# Assume un-changed
-	return (@cmts, (defined($rule->{'num'}) ? $rule->{'num'}." " : "").
+if ($rule->{'other'}) {
+	# Some other line (non-add) that never changes
+	return (@cmts, $rule->{'text'});
+	}
+elsif (defined($rule->{'text'})) {
+	# A rule line that has not changed
+	if ($fmt && !$rule->{'cmd'}) {
+		$rule->{'cmd'} = 'add';
+		}
+	return (@cmts, ($rule->{'cmd'} ? $rule->{'cmd'}." " : "").
+		       (defined($rule->{'num'}) ? $rule->{'num'}." " : "").
 		       $rule->{'text'});
 	}
 else {
@@ -461,8 +475,7 @@ sub apply_rules
 {
 local $conf = $_[0];
 $conf ||= &get_config();
-local $dir = `pwd`;
-chop($dir);
+local $dir = &get_current_dir();
 chdir("/");
 local $fmt = &get_ipfw_format();
 if ($fmt == 0) {
@@ -481,7 +494,10 @@ if ($fmt == 0) {
 	}
 else {
 	# The ipfw command can apply the whole file
-	&system_logged("$config{'ipfw'} ".quotemeta($ipfw_file));
+	local $out = &backquote_logged(
+		"$config{'ipfw'} ".quotemeta($ipfw_file)." 2>&1 </dev/null");
+	return "<tt>$config{'ipfw'} $ipfw_file</tt> failed : <tt>$out</tt>"
+		if ($?);
 	}
 chdir($dir);
 return undef;
@@ -662,6 +678,9 @@ return $mode;
 # start, vs 0 for without.
 sub get_ipfw_format
 {
+if (defined($get_ipfw_format_cache)) {
+	return $get_ipfw_format_cache;
+	}
 local $fmt;
 if (open(FILE, $ipfw_file)) {
 	# Check existing format
@@ -678,16 +697,19 @@ if (open(FILE, $ipfw_file)) {
 			}
 		}
 	close(FILE);
-	return $fmt if (defined($fmt));
 	}
-if (-r "/etc/rc.conf") {
-	# FreeBSD - use it's format
-	return 1;
+if (!defined($fmt)) {
+	if (-r "/etc/rc.conf") {
+		# FreeBSD - use it's format
+		$fmt = 1;
+		}
+	else {
+		# Assume numeric format
+		$fmt = 0;
+		}
 	}
-else {
-	# Assume numeric format
-	return 0;
-	}
+$get_ipfw_format_cache = $fmt;
+return $fmt;
 }
 
 1;
