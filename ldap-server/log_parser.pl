@@ -32,6 +32,9 @@ elsif ($type eq 'attrs') {
 	return &text('log_'.$action.'_attrs', $object,
 		     "<tt>".&html_escape($p->{'dn'})."</tt>");
 	}
+elsif ($type eq 'sfile') {
+	return &text('log_sfile', "<tt>".&html_escape($object)."</tt>");
+	}
 else {
 	return $text{'log_'.$action};
 	}

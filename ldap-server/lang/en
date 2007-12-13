@@ -65,7 +65,7 @@ slapd_gencertdesc=To run your LDAP server in TLS mode, an SSL certificate and pr
 slapd_gencertwarn=Warning - your existing certificate will no longer be used.
 
 schema_title=Manage Schema
-schema_file=Schema name
+schema_file=Name
 schema_desc=Description
 schema_pagedesc=The LDAP schema determines which object classes and attributes can be stored in your LDAP database. This page allows you to select which schema types are supported by your server - but be careful de-selecting any entries that are used by existing objects.
 schema_err=Failed to save schema
@@ -73,6 +73,12 @@ schema_move=Move
 schema_act=Actions..
 schema_view=View
 schema_edit=Edit
+schema_edir=File is not in the schema directory!
+schema_etitle=Edit Schema File
+schema_eheader=Schema file contents
+schema_path=Full filename
+schema_edesc=This page allows you to manually edit an LDAP schema file. This should only be done if you are familiar with the file format, as no checking is done by Webmin.
+schema_return=schema list
 
 acl_title=LDAP Access Control
 
@@ -180,6 +186,7 @@ log_apply=Applied configuration
 log_slapd=Changed LDAP server configuration
 log_schema=Changed enabled LDAP schemas
 log_gencert=Generated new SSL certificate
+log_sfile=Modified schema file $1
 
 gencert_title=Generate SSL Certificate
 gencert_header=New SSL certificate details

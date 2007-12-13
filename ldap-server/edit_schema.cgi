@@ -16,7 +16,7 @@ foreach $i (&find_value("include", $conf)) {
 
 # Show a table of all known schema files, with checkboxes
 print $text{'schema_pagedesc'},"<p>\n";
-@tds = ( "width=5", undef, undef, "width=10%", "width=5%" );
+@tds = ( "width=5", "width=20%", "width=65%", "width=10%", "width=5% nowrap" );
 print &ui_form_start("save_schema.cgi", "post");
 print &ui_columns_start([ "",
 			  $text{'schema_file'},
