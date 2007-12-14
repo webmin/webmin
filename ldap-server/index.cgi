@@ -65,7 +65,15 @@ if ($local == 1) {
 		}
 
 	# Start at boot button
-	# XXX
+	if (&foreign_check("init")) {
+		$iname = $config{'init_name'} || $module_name;
+		&foreign_require("init", "init-lib.pl");
+		$st = &init::action_status($iname);
+		print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
+				      $text{'index_bootdesc'},
+				      &ui_hidden("iname", $iname),
+				      &ui_yesno_radio("boot",$st == 2 ? 1 : 0));
+		}
 	print &ui_buttons_end();
 	}
 

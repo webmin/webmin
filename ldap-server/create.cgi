@@ -2,6 +2,7 @@
 # Actually create a new base DN
 
 require './ldap-server-lib.pl';
+&ReadParse();
 &error_setup($text{'create_err'});
 $access{'create'} || &error($text{'create_ecannot'});
 $ldap = &connect_ldap_db();
@@ -36,9 +37,27 @@ if ($ok && $in{'example'}) {
 	# Add the example user/alias
 	if ($in{'example'} == 1 || $in{'example'} == 2) {
 		# User
+		$edn = "uid=example, ".$dn;
+		@attrs = ( "cn", "Example user",
+			   "uid", "example",
+			   "uidNumber", 9999,
+			   "gidNumber", 9999,
+			   "loginShell", "/bin/sh",
+			   "homeDirectory", "/home/example",
+			   "objectClass", [ "posixAccount" ],
+			   "userPassword", "*LK*" );
+		if ($in{'example'} == 2) {
+			# With mail
+			push(@attrs, "mail", "example\@example.com");
+			}
 		}
 	elsif ($in{'example'} == 3) {
 		# Virtuser
+		# XXX not sure about these .. is there any standard?
+		$edn = "cn=example\@example.com, ".$dn;
+		@attrs = ( "mail", "example\@example.com",
+			   "mailForwardingAddress", "example\@somewhere.com",
+			   "objectClass", [ "top" ] );
 		}
 
 	print &text('create_doingex',

@@ -1,0 +1,6 @@
+config_file=/opt/csw/etc/openldap/slapd.conf
+alt_config_file=/opt/csw/etc/openldap/slapd.conf.default
+schema_dir=/opt/csw/etc/openldap/schema
+slapd=/opt/csw/libexec/slapd
+ldap_user=ldap
+browse_max=100

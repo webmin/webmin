@@ -9,6 +9,8 @@ index_stopdesc=Click this button to shut down the running OpenLDAP server. Bewar
 index_start=Start Server
 index_startdesc=Click this button to start up the OpenLDAP server with the current configuration. User accounts and mail aliases stored in its database will not be accessible until it is started.
 index_return=module index
+index_boot=Start at boot?
+index_bootdesc=Change this selection to determine if the OpenLDAP server is started at boot time or not.
 
 connect_eserver=The LDAP server $1 does not exist
 connect_euser=No user to login as has been configured

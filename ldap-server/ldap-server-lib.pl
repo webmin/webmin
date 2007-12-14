@@ -1,8 +1,7 @@
 # Functions for configuring and talking to an LDAP server
 # XXX help pages
-# XXX initial setup
-# XXX install ldap server
-# XXX default configs for various systems (include search max of 100)
+# XXX init ldap server
+# XXX start at boot
 
 do '../web-lib.pl';
 &init_config();
@@ -97,6 +96,11 @@ sub local_ldap_server
 if (!$config{'server'} || &to_ipaddress($config{'server'}) eq '127.0.0.1' ||
     &to_ipaddress($config{'server'}) eq &to_ipaddress(&get_system_hostname())) {
 	# Local .. but is it installed?
+	if (!-r $config{'config_file'} &&
+	    -r $config{'alt_config_file'}) {
+		&copy_source_dest($config{'alt_config_file'},
+				  $config{'config_file'});
+		}
 	return !&has_command($config{'slapd'}) ? -1 :
 	       !-r $config{'config_file'} ? -2 : 1;
 	}
