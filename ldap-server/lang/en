@@ -160,6 +160,24 @@ oadd_eclash=An object with the DN $1 already exists
 oadd_eadd=LDAP add of $1 failed : $2
 
 create_title=Create Tree
+create_ecannot=You are not allowed to create a new tree
+create_desc=This page provided a convenient way to create DN that will be the base of a new tree in the database. It can also create an example user or email alias under the tree, as a template for your own objects.
+create_header=New LDAP DN tree options
+create_dn=Name for new DN
+create_dn0=Based on domain name
+create_dn1=Distinguished name
+create_example=Create example object under new DN?
+create_unix=Unix user
+create_mail=Unix user with mail
+create_virt=Address mapping
+create_edom=Missing or invalid domain name
+create_edn=Missing or invalid distinguished name
+create_err=Failed to create new tree
+create_doingdn=Creating base DN $1 ..
+create_edoingdn=.. failed : $1
+create_done=.. done
+create_doingex=Creating example object with DN $1 ..
+create_edoingex=.. failed : $1. However, the tree can still be used.
 
 eunknown=Unknown error
 

@@ -7,6 +7,7 @@
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
+%access = &get_module_acl();
 
 eval "use Net::LDAP";
 if ($@) { $net_ldap_error = $@; }
