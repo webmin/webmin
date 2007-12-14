@@ -165,8 +165,9 @@ if (!$access{'view'} && $access{'global'}) {
 
 sub main_header
 {
+local $prog = &get_webalizer_prog();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
-	&help_search_link("webalizer", "man", "doc", "google"),
-	undef, undef, &text('index_version', $webalizer_version));
+	&help_search_link($prog, "man", "doc", "google"),
+	undef, undef, &text('index_version_'.$prog, $webalizer_version));
 }
 

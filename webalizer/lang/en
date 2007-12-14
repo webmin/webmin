@@ -1,5 +1,7 @@
 index_title=Webalizer Logfile Analysis
 index_version=Webalizer version $1
+index_version_webalizer=$index_version
+index_version_awffull=AWFFull
 index_ewebalizer=The logfile analysis command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_econf=The Webalizer configuration file $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_add=Add a new log file for analysis.

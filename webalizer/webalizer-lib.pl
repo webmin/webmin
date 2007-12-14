@@ -170,6 +170,7 @@ foreach $a (@all) {
 	local @st = stat($a);
 	$mtime{$a} = $st[9];
 	}
+local $prog = &get_webalizer_prog();
 local $type = $lconf->{'type'} == 1 ? "" :
 	      $lconf->{'type'} == 2 ? "-F squid" :
 	      $lconf->{'type'} == 3 ? "-F ftp" : "";
@@ -252,12 +253,23 @@ return 0;
 sub get_webalizer_version
 {
 local $out = `$config{'webalizer'} -v 2>&1`;
+if ($out =~ /awffull +(\S+)/) {
+	# AWfull version
+	return $1;
+	}
 if ($? || $out !~ /\sV(\S+)/) {
 	# Try -V
 	$out = `$config{'webalizer'} -V 2>&1`;
 	}
 ${$_[0]} = $out;
 return $out =~ /\sV(\S+)/ ? $1 : undef;
+}
+
+# get_webalizer_prog()
+# Returns either 'webalizer' or 'awffull'
+sub get_webalizer_prog
+{
+return $config{'webalizer'} =~ /awffull/i ? "awffull" : "webalizer";
 }
 
 # get_all_logs()

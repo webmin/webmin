@@ -6,3 +6,5 @@ Added a Module Config option to prevent the Webmin header and footer from being 
 Log files from ProFTPd and WU-FTPd are now automatically made available for generating reports on.
 ---- Changes since 1.270 ----
 Added buttons for scheduling and de-scheduling multiple Webalizer reports at once.
+---- Changes since 1.380 ----
+Added support for AWFFull, a drop in Webalizer replacement. It is used by default on Mandriva 2007.1 and later.
