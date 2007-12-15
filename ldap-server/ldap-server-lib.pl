@@ -1,7 +1,7 @@
 # Functions for configuring and talking to an LDAP server
 # XXX help pages
-# XXX init ldap server
 # XXX acl section
+# XXX /var/lib/ldap/* files are owned by root on redhat
 
 do '../web-lib.pl';
 &init_config();
@@ -22,8 +22,17 @@ return $connect_ldap_db_cache if (defined($connect_ldap_db_cache));
 
 # Do we have the module?
 if ($net_ldap_error) {
-	return &text('connect_emod', "<tt>Net::LDAP</tt>",
+	local $msg = &text('connect_emod', "<tt>Net::LDAP</tt>",
 		     "<pre>".&html_escape($net_ldap_error)."</pre>");
+	if (foreign_available("cpan")) {
+		$msg .= "<p>\n";
+		$msg .= &text('connect_cpan', "Net::LDAP",
+		      "../cpan/download.cgi?source=3&cpan=Net::LDAP&".
+		      "cpan=Convert::ASN1&".
+		      "return=../$module_name/&returndesc=".
+		      &urlize($module_info{'desc'}));
+		}
+	return $msg;
 	}
 
 # Work out server name, login and TLS mode
@@ -49,7 +58,7 @@ else {
 	$user = $config{'user'} || &find_value("rootdn", $conf);
 	$user || return $text{'connect_euser2'};
 	$pass = $config{'pass'} || &find_value("rootpw", $conf);
-	$pass || return $text{'connect_epass2'};
+	#$pass || return $text{'connect_epass2'};
 	$pass =~ /^\{/ && return $text{'connect_epass3'};
 	}
 $ssl = $config{'ssl'};
@@ -78,7 +87,9 @@ foreach $ssl (@ssls) {
 $ldap || return "This can't happen!";
 
 # Login to server
-local $mesg = $ldap->bind(dn => $user, password => $pass);
+local $mesg = $pass eq '' ? 
+		$ldap->bind(dn => $user, anonymous => 1) :
+		$ldap->bind(dn => $user, password => $pass);
 if (!$mesg || $mesg->code) {
 	return &text('connect_elogin', "<tt>$server</tt>", "<tt>$user</tt>",
 		     &ldap_error($mesg));
@@ -112,7 +123,8 @@ return 0;
 sub get_ldap_server_version
 {
 return undef if (&local_ldap_server() != 1);
-local $out = &backquote_command("$config{'slapd'} -V 2>&1 </dev/null");
+local $out = &backquote_with_timeout(
+		"$config{'slapd'} -V -d 1 2>&1 </dev/null", 1, 1, 1);
 if ($out =~ /slapd\s+([0-9\.]+)/) {
 	return $1;
 	}

@@ -1,4 +1,5 @@
 index_version=OpenLDAP $1
+index_openldap=OpenLDAP
 index_eslapd=The OpenLDAP server program $1 was not found on your system. Perhaps the path on the <a href='$2'>module configuration</a> page is incorrect?
 index_econfig=The OpenLDAP server configuration file $1 was not found on your system. Perhaps the path on the <a href='$2'>module configuration</a> page is incorrect?
 index_econnect=An error occurred connection to the LDAP server : $1. You may need to adjust settings on the <a href='$2'>module configuration</a> page.
@@ -11,6 +12,8 @@ index_startdesc=Click this button to start up the OpenLDAP server with the curre
 index_return=module index
 index_boot=Start at boot?
 index_bootdesc=Change this selection to determine if the OpenLDAP server is started at boot time or not.
+index_setupdesc=Your LDAP server's database does not contain the root DN $1 yet, which means that no data can be added until you create it. However, Webmin can do this for you by clicking the button below.
+index_setup=Create Root DN
 
 connect_eserver=The LDAP server $1 does not exist
 connect_euser=No user to login as has been configured
@@ -23,6 +26,7 @@ connect_emod=The Perl module $1 needed to connect to the LDAP server is not inst
 connect_eldap=Failed to connect to LDAP server $1 on port $2
 connect_essl=Failed to start TLS encryption with LDAP server $1 : $2
 connect_elogin=Failed to login to LDAP server $1 as $2 : $3
+connect_cpan=You can have the <tt>$1</tt> Perl module <a href='$2'>automatically installed</a> from CPAN.
 
 slapd_title=OpenLDAP Server Configuration
 slapd_header=Global LDAP server options
@@ -32,6 +36,7 @@ slapd_rootpw=Administration password
 slapd_root1=Unix encrypted <tt>$1</tt>
 slapd_root2=SHA1 encrypted <tt>$1</tt>
 slapd_root3=Encrypted <tt>$1</tt>
+slapd_noroot=<i>No password set</i>
 slapd_rootchange=New administration password
 slapd_leave=Don't change
 slapd_set=Set to
@@ -180,6 +185,7 @@ create_edoingdn=.. failed : $1
 create_done=.. done
 create_doingex=Creating example object with DN $1 ..
 create_edoingex=.. failed : $1. However, the tree can still be used.
+create_eoc=Could not find a suitable object class for the new DN
 
 eunknown=Unknown error
 

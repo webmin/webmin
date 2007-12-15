@@ -14,10 +14,21 @@ $vermsg = &text('index_version', $ver) if ($ver);
 # Is it installed and usable?
 $local = &local_ldap_server();
 if ($local == -1) {
-	&ui_print_endpage(&text('index_eslapd', "<tt>$config{'slapd'}</tt>",
-				"../config.cgi?$module_name"));
+	# Expected, but not installed
+	print &text('index_eslapd', "<tt>$config{'slapd'}</tt>",
+				"../config.cgi?$module_name"),"<p>\n";
+
+	&foreign_require("software", "software-lib.pl");
+	$lnk = &software::missing_install_link("openldap",
+			$text{'index_openldap'},
+			"../$module_name/", $module_info{'desc'});
+	print $lnk,"<p>\n" if ($lnk);
+
+	&ui_print_footer("/", $text{'index'});
+	return;
 	}
 elsif ($local == -2) {
+	# Installed but config missing
 	&ui_print_endpage(&text('index_econfig',
 				"<tt>$config{'config_file'}</tt>",
 				"../config.cgi?$module_name"));
@@ -31,8 +42,26 @@ elsif ($local == 0) {
 		}
 	}
 
-# Check if need to init new install
-# XXX
+# Check if need to init new install, by creating the root DN
+$ldap = &connect_ldap_db();
+if (ref($ldap) && $access{'browser'}) {
+	$conf = &get_config();
+	$base = &find_value("suffix", $conf);
+	$rv = $ldap->search(base => $base,
+			    filter => '(objectClass=*)',
+			    scope => 'base');
+	if ($rv->code) {
+		# Not found .. offer to init
+		print "<center>\n";
+		print &ui_form_start("create.cgi");
+		print &ui_hidden('mode', 1);
+		print &ui_hidden('dn', $base);
+		print &text('index_setupdesc', "<tt>$base</tt>"),"<p>\n";
+		print &ui_form_end([ [ undef, $text{'index_setup'} ] ]);
+		print "</center>\n";
+		print "<hr>\n";
+		}
+	}
 
 # Work out icons
 if ($local) {

@@ -46,6 +46,7 @@ print &ui_table_row($text{'slapd_rootpw'},
 		    $rootmode == 1 ? &text('slapd_root1', $rootcrypt) :
 		    $rootmode == 2 ? &text('slapd_root2', $rootsha1) :
 		    $rootmode == 3 ? &text('slapd_root3', $rootenc) :
+		    $rootplain eq '' ? $text{'slapd_noroot'} :
 				     $rootplain);
 
 # Set to new
@@ -56,10 +57,10 @@ print &ui_table_row($text{'slapd_rootchange'},
 # Cache sizes
 $cachesize = &find_value('cachesize', $conf);
 print &ui_table_row($text{'slapd_cachesize'},
-		    &ui_textbox("cachesize", $cachesize, 10));
+	    &ui_opt_textbox("cachesize", $cachesize, 10, $text{'default'}));
 $dbcachesize = &find_value('dbcachesize', $conf);
 print &ui_table_row($text{'slapd_dbcachesize'},
-		    &ui_textbox("dbcachesize", $dbcachesize, 10));
+	    &ui_opt_textbox("dbcachesize", $dbcachesize, 10, $text{'default'}));
 
 # Access control options
 $allowdir = &find("allow", $conf);

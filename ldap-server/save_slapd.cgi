@@ -30,10 +30,20 @@ if (!$in{'rootchange_def'}) {
 	}
 
 # Cache sizes
-$in{'cachesize'} =~ /^\d+$/ || &error($text{'slapd_ecachesize'});
-&save_directive($conf, 'cachesize', $in{'cachesize'});
-$in{'dbcachesize'} =~ /^\d+$/ || &error($text{'slapd_edbcachesize'});
-&save_directive($conf, 'dbcachesize', $in{'dbcachesize'});
+if (!$in{'cachesize_def'}) {
+	$in{'cachesize'} =~ /^\d+$/ || &error($text{'slapd_ecachesize'});
+	&save_directive($conf, 'cachesize', $in{'cachesize'});
+	}
+else {
+	&save_directive($conf, 'cachesize', undef);
+	}
+if (!$in{'dbcachesize_def'}) {
+	$in{'dbcachesize'} =~ /^\d+$/ || &error($text{'slapd_edbcachesize'});
+	&save_directive($conf, 'dbcachesize', $in{'dbcachesize'});
+	}
+else {
+	&save_directive($conf, 'dbcachesize', undef);
+	}
 
 # Access control options
 @allow = split(/\0/, $in{'allow'});

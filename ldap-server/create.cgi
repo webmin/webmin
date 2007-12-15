@@ -19,12 +19,32 @@ else {
 	$dn = $in{'dn'};
 	}
 
+# Work out class for the DN
+$schema = $ldap->schema();
+@allocs = map { $_->{'name'} }
+	   grep { $_->{'structural'} }
+		$schema->all_objectclasses();
+@ocs = ( );
+foreach my $poc ("top", "domain") {
+	if (&indexof($poc, @allocs) >= 0) {
+		push(@ocs, $poc);
+		}
+	}
+@ocs || &error(&text('create_eoc'));
+
 # Do it, while showing the user
 &ui_print_unbuffered_header(undef, $text{'create_title'}, "");
 
 # Create the DN
 print &text('create_doingdn', "<tt>".&html_escape($dn)."</tt>"),"<br>\n";
-$rv = $ldap->add($dn, attr => [ "objectClass", "top" ]);
+@attrs = ( "objectClass", \@ocs );
+if (&indexof("domain", @ocs) >= 0) {
+	# Domain class needs dc
+	if ($dn =~ /^([^=]+)=([^, ]+)/) {
+		push(@attrs, $1, $2);
+		}
+	}
+$rv = $ldap->add($dn, attr => \@attrs);
 if (!$rv || $rv->code) {
 	print &text('create_edoingdn', &ldap_error($rv)),"<p>\n";
 	}
