@@ -339,6 +339,10 @@ foreach my $a (@avail) {
 	    $a->{'name'} =~ /^perl-(\S+)$/) {		# Redhat
 		local $mod = $1;
 		$mod =~ s/-/::/g;
+		if ($mod eq "LDAP") {
+			# Special case for redhat-ish systems
+			$mod = "Net::LDAP";
+			}
 		push(@rv, { 'mod' => $mod,
 			    'package' => $a->{'name'},
 			    'version' => $a->{'version'}, });
