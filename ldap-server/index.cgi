@@ -42,9 +42,21 @@ elsif ($local == 0) {
 		}
 	}
 
+# Check if ldap directory permissions are correct
+$p = &check_ldap_permissions();
+if (!$p) {
+	print "<center>\n";
+	print &ui_form_start("perms.cgi");
+	print &text('index_permsdesc', "<tt>$config{'data_dir'}</tt>",
+				       "<tt>$config{'ldap_user'}</tt>"),"<p>\n";
+	print &ui_form_end([ [ undef, $text{'index_perms'} ] ]);
+	print "</center>\n";
+	print "<hr>\n";
+	}
+
 # Check if need to init new install, by creating the root DN
 $ldap = &connect_ldap_db();
-if (ref($ldap) && $access{'browser'}) {
+if ($p && ref($ldap) && $access{'browser'}) {
 	$conf = &get_config();
 	$base = &find_value("suffix", $conf);
 	$rv = $ldap->search(base => $base,

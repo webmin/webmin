@@ -1,7 +1,6 @@
 # Functions for configuring and talking to an LDAP server
 # XXX help pages
 # XXX acl section
-# XXX /var/lib/ldap/* files are owned by root on redhat
 
 do '../web-lib.pl';
 &init_config();
@@ -373,6 +372,29 @@ foreach my $f (readdir(SCHEMA)) {
 closedir(SCHEMA);
 return sort { $b->{'core'} <=> $a->{'core'} ||
 	      $a->{'name'} cmp $b->{'name'} } @rv;
+}
+
+# check_ldap_permissions()
+# Returns 1 if ownership of the data dir is correct, 0 if not, -1 if not known
+sub check_ldap_permissions
+{
+local @uinfo;
+if ($config{'data_dir'} && $config{'ldap_user'} &&
+    defined(@uinfo = getpwnam($config{'ldap_user'}))) {
+	opendir(DATADIR, $config{'data_dir'});
+	local @datafiles = grep { !/^\./ } readdir(DATADIR);
+	closedir(DATADIR);
+	if (@datafiles) {
+		local @st = stat("$config{'data_dir'}/$datafiles[0]");
+		if ($st[4] != $uinfo[2]) {
+			return 0;
+			}
+		}
+	return 1;
+	}
+else {
+	return -1;
+	}
 }
 
 1;

@@ -35,6 +35,9 @@ elsif ($type eq 'attrs') {
 elsif ($action eq 'sfile' || $action eq 'sup' || $action eq 'sdown') {
 	return &text('log_'.$action, "<tt>".&html_escape($object)."</tt>");
 	}
+elsif ($action eq 'boot') {
+	return $object ? $text{'log_bootup'} : $text{'log_bootdown'};
+	}
 else {
 	return $text{'log_'.$action};
 	}

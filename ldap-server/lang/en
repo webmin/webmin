@@ -14,6 +14,8 @@ index_boot=Start at boot?
 index_bootdesc=Change this selection to determine if the OpenLDAP server is started at boot time or not.
 index_setupdesc=Your LDAP server's database does not contain the root DN $1 yet, which means that no data can be added until you create it. However, Webmin can do this for you by clicking the button below.
 index_setup=Create Root DN
+index_permsdesc=The LDAP server data directory $1 contains files not owned by the correct user $2, which means that it is unlikely to start up properly. However, Webmin can fix this for you by clicking the button below.
+index_perms=Fix Ownership
 
 connect_eserver=The LDAP server $1 does not exist
 connect_euser=No user to login as has been configured
@@ -215,7 +217,7 @@ log_delete_attr=Deleted from object $2
 log_delete_attr_l=Deleted attribute $1 from object $2
 log_delete_attrs=Deleted $1 attributes from object $2
 log_stop=Stopped LDAP server
-log_start=Started LDAP Server
+log_start=Started LDAP server
 log_apply=Applied configuration
 log_slapd=Changed LDAP server configuration
 log_schema=Changed enabled LDAP schemas
@@ -223,6 +225,10 @@ log_gencert=Generated new SSL certificate
 log_sfile=Modified schema file $1
 log_sup=Moved up schema file $1
 log_sdown=Moved down schema file $1
+log_create=Created new DN $1
+log_bootup=Enabled LDAP server at boot
+log_bootdown=Disabled LDAP server at boot
+log_perms=Fixed LDAP server permissions
 
 gencert_title=Generate SSL Certificate
 gencert_header=New SSL certificate details
@@ -234,6 +240,8 @@ gencert_same=Current config files
 gencert_dir=Directory
 gencert_err=Failed to generate certificate
 gencert_edest=Destination directory does not exist
+
+perms_err=Failed to fix file ownership
 
 acl_slapd=Can configure LDAP server?
 acl_schema=Can manage schema?
