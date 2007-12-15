@@ -185,14 +185,17 @@ eunknown=Unknown error
 
 apply_err=Failed to apply configuration
 apply_ecmd=$1 failed : $2
+apply_ecannot=You are not allowed to apply the configuration
 
 stop_err=Failed to stop LDAP server
 stop_ecmd=$1 failed : $2
 stop_egone=No longer running!
 stop_ekill=Kill process failed : $1
+stop_ecannot=You are not allowed to stop the LDAP server
 
 start_err=Failed to start LDAP server
 start_ecmd=$1 failed : $2
+start_ecannot=You are not allowed to start the LDAP server
 
 log_create_dn=Created object $1
 log_delete_dn=Deleted object $1
@@ -231,3 +234,5 @@ acl_schema=Can manage schema?
 acl_acl=Can edit access control?
 acl_browser=Can browse and edit database?
 acl_create=Can create new tree?
+acl_start=Can start and stop LDAP server?
+acl_apply=Can apply configuration changes?

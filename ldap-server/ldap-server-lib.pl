@@ -1,7 +1,7 @@
 # Functions for configuring and talking to an LDAP server
 # XXX help pages
 # XXX init ldap server
-# XXX start at boot
+# XXX acl section
 
 do '../web-lib.pl';
 &init_config();

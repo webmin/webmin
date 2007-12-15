@@ -54,24 +54,30 @@ if ($local == 1) {
 	print "<hr>\n";
 	print &ui_buttons_start();
 	if (&is_ldap_server_running()) {
-		print &ui_buttons_row("apply.cgi", $text{'index_apply'},
-				      $text{'index_applydesc'});
-		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
-				      $text{'index_stopdesc'});
+		if ($access{'apply'}) {
+			print &ui_buttons_row("apply.cgi", $text{'index_apply'},
+					      $text{'index_applydesc'});
+			}
+		if ($access{'start'}) {
+			print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+					      $text{'index_stopdesc'});
+			}
 		}
 	else {
-		print &ui_buttons_row("start.cgi", $text{'index_start'},
-				      $text{'index_startdesc'});
+		if ($access{'start'}) {
+			print &ui_buttons_row("start.cgi", $text{'index_start'},
+					      $text{'index_startdesc'});
+			}
 		}
 
 	# Start at boot button
-	if (&foreign_check("init")) {
-		$iname = $config{'init_name'} || $module_name;
+	if (&foreign_check("init") && $access{'start'}) {
 		&foreign_require("init", "init-lib.pl");
+		$iname = $config{'init_name'} || $module_name;
 		$st = &init::action_status($iname);
 		print &ui_buttons_row("bootup.cgi", $text{'index_boot'},
 				      $text{'index_bootdesc'},
-				      &ui_hidden("iname", $iname),
+				      undef,
 				      &ui_yesno_radio("boot",$st == 2 ? 1 : 0));
 		}
 	print &ui_buttons_end();

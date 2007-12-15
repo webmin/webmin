@@ -1,6 +1,7 @@
 
 do 'ldap-server-lib.pl';
-@acl_functions = ( 'slapd', 'schema', 'acl', 'browser', 'create' );
+@acl_functions = ( 'slapd', 'schema', 'acl', 'browser', 'create', 'start',
+		   'apply' );
 
 # acl_security_form(&options)
 # Output HTML for editing security options for the acl module
