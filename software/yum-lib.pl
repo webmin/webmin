@@ -92,6 +92,7 @@ return $name eq "apache" ? "httpd" :
        $name eq "mysql" ? "mysql mysql-server mysql-devel" :
        $name eq "openssh" ? "openssh openssh-server" :
        $name eq "postgresql" ? "postgresql postgresql-libs postgresql-server" :
+       $name eq "openldap" ? "openldap-servers openldap-clients" :
        			  $name;
 }
 
