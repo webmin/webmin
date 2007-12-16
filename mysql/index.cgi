@@ -108,7 +108,7 @@ else {
 		}
 
 	&main_header();
-	print &ui_subheading($text{'index_dbs'});
+	print &ui_subheading($text{'index_dbs'}) if ($access{'perms'});
 	if ($in{'search'}) {
 		# Limit to those matching search
 		@titles = grep { /\Q$in{'search'}\E/i } @titles;
