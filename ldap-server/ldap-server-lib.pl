@@ -12,6 +12,7 @@ if ($@) { $net_ldap_error = $@; }
 
 @search_attrs = ( 'objectClass', 'cn', 'dn', 'uid' );
 @acl_dn_styles = ( 'regex', 'base', 'one', 'subtree', 'children' );
+@acl_access_levels = ( 'none', 'auth', 'compare', 'search', 'read', 'write' );
 
 # connect_ldap_db()
 # Attempts to connect to an LDAP server. Returns a handle on success or an
@@ -190,7 +191,7 @@ local @rv = map { $_->{'values'}->[0] } &find(@_);
 return wantarray ? @rv : $rv[0];
 }
 
-# save_directive(&config, name, value, ...)
+# save_directive(&config, name, value|&values|&directive, ...)
 # Update the value(s) of some entry in the config file
 sub save_directive
 {
@@ -202,8 +203,11 @@ local $changed;
 for(my $i=0; $i<@old || $i<@values; $i++) {
 	local ($line, @unqvalues, @qvalues);
 	if (defined($values[$i])) {
-		@unqvalues = ref($values[$i]) ? @{$values[$i]}
-					      : ( $values[$i] );
+		@unqvalues = ref($values[$i]) eq 'ARRAY' ?
+				@{$values[$i]} :
+			     ref($values[$i]) eq 'HASH' ?
+				@{$values[$i]->{'values'}} :
+				( $values[$i] );
 		@qvalues = map { /^[^'" ]+$/ ? $_ :
 				 /"/ ? "'$_'" : "\"$_\"" } @unqvalues;
 		$line = join(" ", $name, @qvalues);
@@ -427,8 +431,8 @@ while(@v) {
 	shift(@v);		# Remove by
 	local $by = { 'who' => shift(@v),
 		      'access' => shift(@v) };
-	if (@v && $v[0] ne 'by') {
-		$by->{'control'} = shift(@v);
+	while(@v && $v[0] ne 'by') {
+		push(@{$by->{'control'}}, shift(@v));
 		}
 	local $whodesc = $by->{'who'} eq 'self' ? $text{'access_self'} :
 			 $by->{'who'} eq 'users' ? $text{'access_users'} :
@@ -449,6 +453,28 @@ else {
 	$p->{'whatdesc'} = "<tt>$p->{'what'}</tt>";
 	}
 return $p;
+}
+
+# store_ldap_access(&directive, &acl-struct)
+# Updates the values of a directive from an ACL structure
+sub store_ldap_access
+{
+local ($a, $p) = @_;
+local @v = ( 'to' );
+push(@v, $p->{'what'});
+if ($p->{'filter'}) {
+	push(@v, "filter=$p->{'filter'}");
+	}
+if ($p->{'attrs'}) {
+	push(@v, "attrs=$p->{'attrs'}");
+	}
+foreach my $b (@{$p->{'by'}}) {
+	push(@v, "by");
+	push(@v, $b->{'who'});
+	push(@v, $b->{'access'});
+	push(@v, @{$b->{'control'}});
+	}
+$a->{'values'} = \@v;
 }
 
 1;

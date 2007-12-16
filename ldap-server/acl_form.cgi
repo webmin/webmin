@@ -22,6 +22,8 @@ else {
 
 # Form header
 print &ui_form_start("acl_save.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
 print &ui_table_start($text{'eacl_header'}, undef, 2);
 
 # Granting to what object
@@ -46,7 +48,50 @@ print &ui_table_row($text{'eacl_what'},
 	&ui_textbox("attrs", $p->{'attrs'}, 40) );
 
 # Access rights table
-# XXX
+@tds = ( "width=40% nowrap", "width=30%", "width=30%" );
+$wtable = &ui_columns_start([ $text{'eacl_who'},
+			      $text{'eacl_access'},
+			      $text{'eacl_control'} ], 100, 0, \@tds);
+$i = 0;
+foreach $b (@{$p->{'by'}}, { }, { }, { }) {
+	$kwho = $b->{'who'} eq 'self' || $b->{'who'} eq 'users' ||
+		$b->{'who'} eq 'anonymous' || $b->{'who'} eq '*' ||
+		$b->{'who'} eq '';
+	$kacc = !$b->{'access'} ? 'read' :
+		&indexof($b->{'access'}, @acl_access_levels) >= 0 ?
+			$b->{'access'} : undef;
+	$wtable .= &ui_columns_row([
+		# Who are we granting?
+		&ui_select("wmode_$i",
+			   $kwho ? $b->{'who'} : 'other',
+			   [ [ '', "&nbsp;" ],
+			     [ '*', $text{'eacl_every'} ],
+			     [ 'self', $text{'eacl_self'} ],
+			     [ 'users', $text{'eacl_users'} ],
+			     [ 'anonymous', $text{'eacl_anonymous'} ],
+			     [ 'other', $text{'eacl_other'} ] ],
+			   1, 0, 0, 0,
+			   "style='width:45%' onChange='form.who_$i.disabled = (form.wmode_$i.value != \"other\")'").
+		&ui_textbox("who_$i", $kwho ? "" : $b->{'who'}, 30,
+			    $kwho, undef, "style='width:45%'"),
+
+		# What access level? Show textbox if complex
+		$kacc ? &ui_select("access_$i", $kacc,
+				   [ map { [ $_, $text{'access_l'.$_} ] }
+					 @acl_access_levels ], 1, 0, 0, 0,
+				   "style='width:90%'")
+		      : &ui_textbox("access_$i", $b->{'access'}, 20,
+				    0, undef, "style='width:90%'"),
+
+		# Additional attrs
+		&ui_textbox("control_$i", join(" ", @{$b->{'control'}}), 30,
+			    0, undef, "style='width:90%'"),
+		], \@tds);
+	# XXX http://www.openldap.org/faq/data/cache/452.html
+	$i++;
+	}
+$wtable .= &ui_columns_end();
+print &ui_table_row(undef, $wtable, 2);
 
 # Form and page end
 print &ui_table_end();

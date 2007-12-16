@@ -100,6 +100,7 @@ acl_move=Move
 acl_none=No access control rules have been defined yet. All objects in the LDAP database will be readable by all users.
 acl_delete=Delete Selected Rules
 acl_add=Add a new access control rule.
+acl_return=access control rules
 
 browser_title=Browse Database
 browser_econn=The LDAP browser cannot be used : $1
@@ -261,16 +262,25 @@ access_desc=$2 by $1
 access_self=self
 access_users=authenticated users
 access_anon=anonymous users
+access_none=no access
+access_auth=authenticate
+access_compare=compare
+access_search=search
 access_read=read
 access_write=write
-access_auth=authenticate
 access_all=anyone
 access_any=All objects
+access_lnone=No access
+access_lauth=Authenticate
+access_lcompare=Compare
+access_lsearch=Search
+access_lread=Read
+access_lwrite=Write
 
 eacl_title1=Create Access Control Rule
 eacl_title2=Edit Access Control Rule
 eacl_header=LDAP database access control rule details
-eacl_what=Granting access to
+eacl_what=Objects being granted
 eacl_what1=All objects
 eacl_what0=Object with DN
 eacl_mtype=match type
@@ -281,3 +291,16 @@ eacl_subtree=entire subtree
 eacl_children=only children
 eacl_filter=Limit with object filter :
 eacl_attrs=Limit to listed attributes :
+eacl_who=Grant access to
+eacl_access=Access level
+eacl_control=Advanced options
+eacl_self=Self
+eacl_users=Authenticated users
+eacl_anonymous=Anonymous clients
+eacl_other=Other DN..
+eacl_every=Everyone
+eacl_err=Failed to save access control rule
+eacl_edn=Missing or invalid DN - should be like <tt>uid=joe,dc=my-domain,dc=com</tt>
+eacl_efilter=Missing or invalid filter - should be like <tt>(objectClass=posixAccount)</tt>
+eacl_eattrs=Missing or invalid comma-separated list of attributes
+
