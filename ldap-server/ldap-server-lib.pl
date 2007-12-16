@@ -11,6 +11,7 @@ eval "use Net::LDAP";
 if ($@) { $net_ldap_error = $@; }
 
 @search_attrs = ( 'objectClass', 'cn', 'dn', 'uid' );
+@acl_dn_styles = ( 'regex', 'base', 'one', 'subtree', 'children' );
 
 # connect_ldap_db()
 # Attempts to connect to an LDAP server. Returns a handle on success or an
@@ -158,6 +159,11 @@ while(<CONF>) {
 		local $value = $2;
 		$dir->{'values'} = [ &split_quoted_string($value) ];
 		push(@rv, $dir);
+		}
+	elsif (/^\s+(\S.*)$/ && @rv) {
+		# Found a continuation line, with extra values
+		local $value = $1;
+		push(@{$rv[$#rv]->{'values'}}, &split_quoted_string($value));
 		}
 	$lnum++;
 	}
@@ -395,6 +401,54 @@ if ($config{'data_dir'} && $config{'ldap_user'} &&
 else {
 	return -1;
 	}
+}
+
+# parse_ldap_access(&directive)
+# Convert a slapd.conf directive into a more usable access control rule hash
+sub parse_ldap_access
+{
+local ($a) = @_;
+local @v = @{$a->{'values'}};
+local $p = { };
+shift(@v);			# Remove to
+$p->{'what'} = shift(@v);	# Object
+if ($v[0] =~ /^filter=(\S+)/) {
+	# Filter added to what
+	$p->{'filter'} = $1;
+	shift(@v);
+	}
+if ($v[0] =~ /^attrs=(\S+)/) {
+	# Attributes added to what
+	$p->{'attrs'} = $1;
+	shift(@v);
+	}
+local @descs;
+while(@v) {
+	shift(@v);		# Remove by
+	local $by = { 'who' => shift(@v),
+		      'access' => shift(@v) };
+	if (@v && $v[0] ne 'by') {
+		$by->{'control'} = shift(@v);
+		}
+	local $whodesc = $by->{'who'} eq 'self' ? $text{'access_self'} :
+			 $by->{'who'} eq 'users' ? $text{'access_users'} :
+			 $by->{'who'} eq 'anonymous' ? $text{'access_anon'} :
+			 $by->{'who'} eq '*' ? $text{'access_all'} :
+					       "<tt>$by->{'who'}</tt>";
+	local $adesc = $text{'access_'.$by->{'access'}} ||
+		       "<tt>$by->{'access'}</tt>";
+	$adesc = ucfirst($adesc) if (!@descs);
+	push(@descs, &text('access_desc', $whodesc, $adesc));
+	push(@{$p->{'by'}}, $by);
+	}
+$p->{'bydesc'} = join(", ", @descs);
+if ($p->{'what'} eq '*') {
+	$p->{'whatdesc'} = $text{'access_any'};
+	}
+else {
+	$p->{'whatdesc'} = "<tt>$p->{'what'}</tt>";
+	}
+return $p;
 }
 
 1;

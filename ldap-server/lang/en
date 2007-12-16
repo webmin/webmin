@@ -94,6 +94,12 @@ schema_ecannot=You are not allowed to manage the LDAP schema
 
 acl_title=LDAP Access Control
 acl_ecannot=You are not allowed to configure LDAP access control
+acl_what=Objects
+acl_who=Access granted
+acl_move=Move
+acl_none=No access control rules have been defined yet. All objects in the LDAP database will be readable by all users.
+acl_delete=Delete Selected Rules
+acl_add=Add a new access control rule.
 
 browser_title=Browse Database
 browser_econn=The LDAP browser cannot be used : $1
@@ -250,3 +256,28 @@ acl_browser=Can browse and edit database?
 acl_create=Can create new tree?
 acl_start=Can start and stop LDAP server?
 acl_apply=Can apply configuration changes?
+
+access_desc=$2 by $1
+access_self=self
+access_users=authenticated users
+access_anon=anonymous users
+access_read=read
+access_write=write
+access_auth=authenticate
+access_all=anyone
+access_any=All objects
+
+eacl_title1=Create Access Control Rule
+eacl_title2=Edit Access Control Rule
+eacl_header=LDAP database access control rule details
+eacl_what=Granting access to
+eacl_what1=All objects
+eacl_what0=Object with DN
+eacl_mtype=match type
+eacl_regex=regular expression
+eacl_base=this object only
+eacl_one=one level below
+eacl_subtree=entire subtree
+eacl_children=only children
+eacl_filter=Limit with object filter :
+eacl_attrs=Limit to listed attributes :
