@@ -28,7 +28,7 @@ print &ui_table_start($text{'eacl_header'}, undef, 2);
 
 # Granting to what object
 $what = $p->{'what'} eq '*' ? 1 : 0;
-if ($p->{'what'} =~ /^dn(\.(\S+))?=(.*)$/i) {
+if ($p->{'what'} =~ /^dn(\.([^=]+))?=(.*)$/i) {
 	$dn = $3;
 	$style = $2;
 	}

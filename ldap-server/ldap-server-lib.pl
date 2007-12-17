@@ -1,8 +1,7 @@
 # Functions for configuring and talking to an LDAP server
 # XXX help pages
-# XXX acl section
-#	XXX make sure ACLs work!
-# XXX eline not respected when updating/deleting
+# XXX acl mass deletion
+# XXX make sure ACLs work!
 
 do '../web-lib.pl';
 &init_config();
@@ -205,8 +204,9 @@ local $lref = &read_file_lines(@old ? $old[0]->{'file'}
 				    : $config{'config_file'});
 local $changed;
 for(my $i=0; $i<@old || $i<@values; $i++) {
-	local ($line, @unqvalues, @qvalues);
+	local ($line, @unqvalues, @qvalues, $len);
 	if (defined($values[$i])) {
+		# Work out new line
 		@unqvalues = ref($values[$i]) eq 'ARRAY' ?
 				@{$values[$i]} :
 			     ref($values[$i]) eq 'HASH' ?
@@ -216,19 +216,35 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 				 /"/ ? "'$_'" : "\"$_\"" } @unqvalues;
 		$line = join(" ", $name, @qvalues);
 		}
+	if (defined($old[$i])) {
+		$len = $old[$i]->{'eline'} - $old[$i]->{'line'} + 1;
+		}
 	if (defined($old[$i]) && defined($values[$i])) {
 		# Update some directive
-		$lref->[$old[$i]->{'line'}] = $line;
+		splice(@$lref, $old[$i]->{'line'}, $len, $line);
 		$old[$i]->{'values'} = \@unqvalues;
+		$old[$i]->{'eline'} = $old[$i]->{'line'};
 		$changed = $old[$i];
+		if ($len != 1) {
+			# Renumber to account for shrunked directive
+			foreach my $c (@$conf) {
+				if ($c->{'line'} > $old[$i]->{'line'}) {
+					$c->{'line'} -= $len-1;
+					$c->{'eline'} -= $len-1;
+					}
+				}
+			}
 		}
 	elsif (defined($old[$i]) && !defined($values[$i])) {
 		# Remove some directive (from cache too)
-		splice(@$lref, $old[$i]->{'line'}, 1);
+		splice(@$lref, $old[$i]->{'line'}, $len);
 		local $idx = &indexof($old[$i], @$conf);
 		splice(@$conf, $idx, 1) if ($idx >= 0);
 		foreach my $c (@$conf) {
-			$c->{'line'}-- if ($c->{'line'} > $old[$i]->{'line'});
+			if ($c->{'line'} > $old[$i]->{'line'}) {
+				$c->{'line'} -= $len;
+				$c->{'eline'} -= $len;
+				}
 			}
 		}
 	elsif (!defined($old[$i]) && defined($values[$i])) {
@@ -237,6 +253,7 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 			# After last one of the same name
 			local $newdir = { 'name' => $name,
 					  'line' => $changed->{'line'}+1,
+					  'eline' => $changed->{'line'}+1,
 					  'values' => \@unqvalues };
 			foreach my $c (@$conf) {
 				$c->{'line'}++ if ($c->{'line'} > 
@@ -250,6 +267,7 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 			# At end of file
 			local $newdir = { 'name' => $name,
 					  'line' => scalar(@$lref),
+					  'eline' => scalar(@$lref),
 					  'values' => \@unqvalues };
 			push(@$lref, $line);
 			push(@$conf, $newdir);
@@ -453,8 +471,11 @@ $p->{'bydesc'} = join(", ", @descs);
 if ($p->{'what'} eq '*') {
 	$p->{'whatdesc'} = $text{'access_any'};
 	}
+elsif ($p->{'what'} =~ /^dn(\.[^=]+)?=(.*)$/) {
+	$p->{'whatdesc'} = "<tt>$2</tt>";
+	}
 else {
-	$p->{'whatdesc'} = "<tt>$p->{'what'}</tt>";
+	$p->{'whatdesc'} = $p->{'what'};
 	}
 return $p;
 }

@@ -22,13 +22,14 @@ if ($in{'delete'}) {
 	}
 else {
 	# Validate and store inputs, starting with object
-	if ($in{'what'} == 0) {
+	if ($in{'what'} == 1) {
 		$p->{'what'} = '*';
 		}
 	else {
-		$in{'dn'} =~ /^\S+=\S+$/ || &error($text{'eacl_edn'});
-		$p->{'what'} = 'dn='.($in{'style'} ? '.'.$in{'style'} : '').
-			       $in{'dn'};
+		$in{'what_dn'} =~ /^\S+=\S+$/ || &error($text{'eacl_edn'});
+		$p->{'what'} =
+			'dn'.($in{'what_style'} ? '.'.$in{'what_style'} : '').
+			'='.$in{'what_dn'};
 		}
 
 	# Object filter and attribute list
