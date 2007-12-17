@@ -72,7 +72,6 @@ else {
 		push(@by, $by);
 		}
 	$p->{'by'} = \@by;
-	# XXX
 
 	# Add to access directive list
 	if ($in{'new'}) {
@@ -90,6 +89,6 @@ else {
 
 # Log and return
 &webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "modify",
-	    "access", $p->{'who'});
+	    "access", $p->{'what'});
 &redirect("edit_acl.cgi");
 

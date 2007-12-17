@@ -23,8 +23,8 @@ if (@access) {
 		$mover = &ui_up_down_arrows(
 			"up_acl.cgi?idx=$i",
 			"down_acl.cgi?idx=$i",
-			$i > 1,
-			$i && $i < @access-1);
+			$i > 0,
+			$i < @access-1);
 		$p = &parse_ldap_access($a);
 		print &ui_checked_columns_row([
 			"<a href='acl_form.cgi?idx=$i'>$p->{'whatdesc'}</a>",

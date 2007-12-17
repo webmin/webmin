@@ -1,6 +1,5 @@
 # Functions for configuring and talking to an LDAP server
 # XXX help pages
-# XXX acl mass deletion
 # XXX make sure ACLs work!
 
 do '../web-lib.pl';
@@ -222,7 +221,9 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 	if (defined($old[$i]) && defined($values[$i])) {
 		# Update some directive
 		splice(@$lref, $old[$i]->{'line'}, $len, $line);
-		$old[$i]->{'values'} = \@unqvalues;
+		if (&indexof($values[$i], @$conf) < 0) {
+			$old[$i]->{'values'} = \@unqvalues;
+			}
 		$old[$i]->{'eline'} = $old[$i]->{'line'};
 		$changed = $old[$i];
 		if ($len != 1) {

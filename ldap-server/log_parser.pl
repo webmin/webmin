@@ -32,11 +32,24 @@ elsif ($type eq 'attrs') {
 	return &text('log_'.$action.'_attrs', $object,
 		     "<tt>".&html_escape($p->{'dn'})."</tt>");
 	}
+elsif ($type eq 'access') {
+	return &text('log_'.$action.'_access',
+		     $object eq '*' ? $text{'log_all'} :
+		     $object =~ /^dn(\.[^=]+)?=(.*)/ ?
+			"<tt>".&html_escape("$2")."</tt>" :
+			"<tt>".&html_escape($object)."</tt>");
+	}
+elsif ($type eq 'accesses') {
+	return &text('log_'.$action.'_accesses', $object);
+	}
 elsif ($action eq 'sfile' || $action eq 'sup' || $action eq 'sdown') {
 	return &text('log_'.$action, "<tt>".&html_escape($object)."</tt>");
 	}
 elsif ($action eq 'boot') {
 	return $object ? $text{'log_bootup'} : $text{'log_bootdown'};
+	}
+elsif ($action eq 'create') {
+	return &text('log_create', "<tt>".&html_escape($object)."</tt>");
 	}
 else {
 	return $text{'log_'.$action};

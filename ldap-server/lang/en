@@ -236,6 +236,13 @@ log_create=Created new DN $1
 log_bootup=Enabled LDAP server at boot
 log_bootdown=Disabled LDAP server at boot
 log_perms=Fixed LDAP server permissions
+log_create_access=Created access control rule for $1
+log_delete_access=Delete access control rule for $1
+log_modify_access=Updated access control rule for $1
+log_up_access=Moved up access control rule for $1
+log_down_access=Moved down access control rule for $1
+log_delete_accesses=Deleted $1 access control rules
+log_all=all objects
 
 gencert_title=Generate SSL Certificate
 gencert_header=New SSL certificate details
