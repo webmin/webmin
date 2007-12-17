@@ -1,6 +1,8 @@
 # Functions for configuring and talking to an LDAP server
 # XXX help pages
 # XXX acl section
+#	XXX make sure ACLs work!
+# XXX eline not respected when updating/deleting
 
 do '../web-lib.pl';
 &init_config();
@@ -156,6 +158,7 @@ while(<CONF>) {
 		# Found a directive
 		local $dir = { 'name' => $1,
 			       'line' => $lnum,
+			       'eline' => $lnum,
 			       'file' => $file };
 		local $value = $2;
 		$dir->{'values'} = [ &split_quoted_string($value) ];
@@ -165,6 +168,7 @@ while(<CONF>) {
 		# Found a continuation line, with extra values
 		local $value = $1;
 		push(@{$rv[$#rv]->{'values'}}, &split_quoted_string($value));
+		$rv[$#rv]->{'eline'} = $lnum;
 		}
 	$lnum++;
 	}

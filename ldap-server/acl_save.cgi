@@ -18,7 +18,7 @@ if (!$in{'new'}) {
 
 if ($in{'delete'}) {
 	# Just take out of access list
-	@access = grep { $_ me $acl } @access;
+	@access = grep { $_ ne $acl } @access;
 	}
 else {
 	# Validate and store inputs, starting with object
@@ -44,13 +44,40 @@ else {
 		}
 
 	# Each granted user
+	@by = ( );
+	for($i=0; defined($in{"wmode_$i"}); $i++) {
+		next if ($in{"wmode_$i"} eq "");
+		local $by = { };
+
+		# Who are we granting
+		if ($in{"wmode_$i"} eq "other") {
+			# Other DN
+			$in{"who_$i"} =~ /^\S+=\S+$/ ||
+				&error(&text('eacl_ewho', $i+1));
+			$by->{'who'} = $in{"who_$i"};
+			}
+		else {
+			# Just selected
+			$by->{'who'} = $in{"wmode_$i"};
+			}
+
+		# Access level
+		$in{"access_$i"} =~ /^\S+$/ ||
+			&error(&text('eacl_eaccess', $i+1));
+		$by->{'access'} = $in{"access_$i"};
+
+		# Additional attributes
+		$by->{'control'} = [ &split_quoted_string($in{"control_$i"}) ];
+		push(@by, $by);
+		}
+	$p->{'by'} = \@by;
 	# XXX
 
 	# Add to access directive list
 	if ($in{'new'}) {
 		$acl = { 'name' => 'access',
 			 'values' => [ ] };
-		push(@access);
+		push(@access, $acl);
 		}
 	&store_ldap_access($acl, $p);
 	}

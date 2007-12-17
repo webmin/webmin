@@ -303,4 +303,5 @@ eacl_err=Failed to save access control rule
 eacl_edn=Missing or invalid DN - should be like <tt>uid=joe,dc=my-domain,dc=com</tt>
 eacl_efilter=Missing or invalid filter - should be like <tt>(objectClass=posixAccount)</tt>
 eacl_eattrs=Missing or invalid comma-separated list of attributes
-
+eacl_ewho=Missing or invalid-looking DN in row $1
+eacl_eaccess=Missing or invalid access level in row $1
