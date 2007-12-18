@@ -1,0 +1,3 @@
+lib_dirs=/usr/lib/pam
+ignore=README .*\.rpmsave
+pam_dir=/etc/pam.d
