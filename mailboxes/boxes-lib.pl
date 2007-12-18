@@ -1624,6 +1624,17 @@ local @rv;
 foreach my $i (@$ids) {
 	local $path = "$file/$i";
 	local $mail = &read_mail_file($path, $headersonly);
+	if (!$mail && $path =~ /^(.*)\/(cur|tmp|new)\/([^:]*)(:2,([A-Z]*))?$/) {
+		# Flag may have changed - update path
+		local $suffix = "$2/$3";
+		local ($newfile) = grep
+		  { substr($_, length($file)+1, length($suffix)) eq $suffix }
+		  @files;
+		if ($newfile) {
+			$path = $newfile;
+			$mail = &read_mail_file($path, $headersonly);
+			}
+		}
 	if (!$mail && $path =~ /\/cur\//) {
 		# May have moved - update path
 		$path =~ s/\/cur\//\/new\//g;
@@ -2093,9 +2104,18 @@ open(MAIL, $_[0]) || return undef;
 $mail = &read_mail_fh(MAIL, 0, $_[1]);
 $mail->{'file'} = $_[0];
 close(MAIL);
-
 local @st = stat($_[0]);
 $mail->{'size'} = $st[7];
+
+# Set read flags based on the name
+if ($_[0] =~ /:2,([A-Z]*)$/) {
+	local @flags = split(/\s+/, $1);
+	$mail->{'read'} = &indexoflc("S", @flags) >= 0 ? 1 : 0;
+	$mail->{'special'} = &indexoflc("F", @flags) >= 0 ? 1 : 0;
+	$mail->{'replied'} = &indexoflc("R", @flags) >= 0 ? 1 : 0;
+	$mail->{'flags'} = 1;
+	}
+
 return $mail;
 }
 

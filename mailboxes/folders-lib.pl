@@ -259,6 +259,17 @@ elsif ($_[2]->{'type'} == 6) {
 			$mail[$wantidxs[$i]] = $sfmail[$i];
 			if ($sfmail[$i]) {
 				# Original mail exists .. add to results
+				if ($sfmail[$i]->{'id'} ne $wantids[$i]) {
+					# Under new ID now - fix up index
+					print DEBUG "wanted ID ",$wantids[$i],
+						" got ",$sfmail[$i]->{'id'},"\n";
+					local ($m) = grep {
+						$_->[1] eq $wantids[$i] } @$mems;
+					if ($m) {
+						$m->[1] = $sfmail[$i]->{'id'};
+						$changed = 1;
+						}
+					}
 				$sfmail[$i]->{'idx'} = $wantidxs[$i];
 				$sfmail[$i]->{'id'} =
 					$sfn."\t".$sfmail[$i]->{'id'};
@@ -1634,15 +1645,36 @@ if ($folder->{'type'} == 4) {
 					" ".$pm."FLAGS (".$f->[1].")");
 		&error(&text('save_eflag', $rv[3])) if (!$rv[0]); 
 		}
-	
-	# Update the mail object too
-	$mail->{'read'} = $read if (defined($read));
-	$mail->{'special'} = $special if (defined($special));
-	$mail->{'replied'} = $replied if (defined($replied));
+	}
+elsif ($folder->{'type'} == 1) {
+	# Add flag to special characters at end of filename
+	local ($base, %flags);
+	if ($mail->{'file'} =~ /^(.*):2,([A-Z]*)$/) {
+		$base = $1;
+		%flags = map { $_, 1 } split(//, $2);
+		}
+	else {
+		$base = $mail->{'file'};
+		}
+	$flags{'S'} = $read;
+	$flags{'F'} = $special;
+	$flags{'R'} = $replied if (defined($replied));
+	local $newfile = $base.":2,".
+			 join("", grep { $flags{$_} } keys %flags);
+	if ($newfile ne $mail->{'file'}) {
+		rename($mail->{'file'}, $newfile);
+		$newfile =~ s/^(.*)\/((cur|tmp|new)\/.*)$/$2/;
+		$mail->{'id'} = $newfile;
+		}
 	}
 else {
 	&error("Read flags cannot be set on folders of type $folder->{'type'}");
 	}
+
+# Update the mail object too
+$mail->{'read'} = $read if (defined($read));
+$mail->{'special'} = $special if (defined($special));
+$mail->{'replied'} = $replied if (defined($replied));
 }
 
 # pop3_login(&folder)
