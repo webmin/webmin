@@ -1,5 +1,4 @@
 # Functions for configuring and talking to an LDAP server
-# XXX help pages
 # XXX make sure ACLs work!
 
 do '../web-lib.pl';

@@ -1,0 +1,32 @@
+<header>Browse Database</header>
+
+This page allows you to navigate through the heirarchy of objects in your
+LDAP database, create and remove objects, and edit their attributes.
+The DN for the object being managed is always shown in the <b>Browsing</b>
+field - to quickly navigate to another object, enter a new DN and click <b>
+Show</b>. To move up the heirarchy, click on <b>Browse Parent</b>. <p>
+
+The rest of the page is divided into two tabs :
+<dl>
+<dt><b>Child objects</b>
+<dd>This table lists all objects under the current one. You can edit a
+    sub-object by clicking on it's DN, or delete objects by checking them and
+    hitting the <b>Remove Selected Children</b> button. To change the DN of
+    a sub-object, click on the <b>Rename</b> link and enter a new DN in the
+    field that appears. <p>
+    Clicking on <b>Add a new sub-object</b> will bring up a form for entering
+    the details of a new empty object under the current one. <p>
+
+<dt><b>Object attributes</b>
+<dd>This table lists all attributes of the current object. To edit the values
+    of one, click on the <b>Edit</b> link on the right. To delete attributes,
+    check the boxes next to them and then click the <b>Remove Selected
+    Attributes</b> button. In both cases, the LDAP server will enforce 
+    restrictions on allowed and required attributes for the object's class. <p>
+    A new attribute can be created by clicking the <b>Add attribute to
+    object</b> link, which will display field for entering a name and value.
+    <p>
+</dl>
+
+<footer>
+

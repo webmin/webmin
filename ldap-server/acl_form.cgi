@@ -10,12 +10,12 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 $conf = &get_config();
 @access = &find("access", $conf);
 if ($in{'new'}) {
-	&ui_print_header(undef, $text{'eacl_title1'}, "");
+	&ui_print_header(undef, $text{'eacl_title1'}, "", "eacl");
 	$p = { 'what' => '*',
 	       'by' => [ ] };
 	}
 else {
-	&ui_print_header(undef, $text{'eacl_title2'}, "");
+	&ui_print_header(undef, $text{'eacl_title2'}, "", "eacl");
 	$acl = $access[$in{'idx'}];
 	$p = &parse_ldap_access($acl);
 	}

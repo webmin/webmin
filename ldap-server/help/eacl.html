@@ -1,0 +1,27 @@
+<header>Access Control Rule</header>
+
+This page allows you to edit or create a single access control rule.
+The first section <b>Objects being granted</b> determines which DNs in
+your database the rule will apply to. You can either select <b>All objects</b>
+for the entire database, or <b>Object with DN</b> for objects matching whatever
+you enter into the adjacent field. <p>
+
+The <b>match type</b> menu determines if the rule applies to just this object,
+those under it, or if the DN is treated as a regular expression. You can also
+further control which objects are granted by entering an LDAP filter into the
+<b>Limit with object filter</b> field, like <i>(objectClass=posixAccount)</i>.
+<p>
+
+<hr>
+
+The second part of the page is a table for selecting which LDAP users have
+access to the objects. You can either select several general user classes from
+the <b>Grant access to</b> menu, or choose <b>Other</b> and enter a specific
+DN. <p>
+
+The <b>Access level</b> menu determines what these users can do with the
+objects. The lower more powerful levels imply all of those above them, so a
+user with <b>Write</b> access can also <b>Read</b> and <b>Search</b>. <p>
+
+<footer>
+
