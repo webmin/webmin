@@ -1,0 +1,36 @@
+<header>OpenLDAP Server Configuration</header>
+
+This page allows you to configure global settings for your OpenLDAP server,
+such as the root DN for the database, administration login, cache sizes
+and SSL certificates. The most commonly changed fields are :
+
+<dl>
+<dt><b>Root DN for LDAP database</b>
+<dd>This field is for entering the DN (distinguished name) under which all
+    objects in your LDAP database must be stored. Typically it should be changed
+    to something matching your company or organization's name, like
+    <i>dc=yourcompany,dc=com</i>. But you are free to enter anything as long
+    as it is correctly formatted. <p>
+
+<dt><b>Administration login DN</b>
+<dd>This is effectively the <tt>root</tt> user for your LDAP database. It should
+    be a DN under your root set in the above field, like 
+    <i>cn=Manager,dc=yourcompany,dc=com</i>. <p>
+
+<dt><b>Administration password</b>
+<dd>This field shows the current password (possibly encrypted), and an option
+    to enter a new one. If you change the password, the module will use it
+    automatically when connecting to the database to make changes. <p>
+
+</dl>
+
+Any changes made on this page will not take effect until the <b>Apply
+Configuration</b> button is clicked on the module's main page. <p>
+
+If you want your LDAP server to accept TLS encrypted connections, you must first
+generate an SSL certificate and public key. This can be mostly automated by
+clicking the <b>Generate SSL Certificate</b> button at the bottom of the page.
+<p>
+
+<footer>
+

@@ -1,0 +1,25 @@
+<header>Manage Schema</header>
+
+The LDAP schema determines which object classes and attributes can be stored in
+your LDAP database. This page allows you to select which schema types are
+supported by your server, using the checkbox next to each schema file name.
+Once you have made changes, click <b>Save</b> to update the OpenLDAP
+configuration file, then <b>Apply Configuration</b> on the main page to
+activate them. <p>
+
+Be careful de-selecting existing schema files though, as this may break your
+LDAP server if objects already exist in the database using the attributes
+defined in those files. The <b>core</b> schema which contains the most basic
+LDAP classes cannot be de-selected. <p>
+
+The ordering of schemas is important, as later schemas can only refer to
+attributes defined previously. You can re-order the list using the up and down
+arrows on this page, but again this should be done with care for existing
+schemas in order to avoid breaking the LDAP database. <p>
+
+To see what classes and attributes a schema defines, click on it's <b>View</b>
+link. If you are familiar with the schema format and want to edit a file,
+click <b>Edit</b> instead. <p>
+
+<footer>
+

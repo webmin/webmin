@@ -1,0 +1,20 @@
+<header>LDAP Access Control</header>
+
+By default, an LDAP server allows any client that can connect to read all
+objects and attributes in the database. However, only the administrative user
+can perform updates. This may not be ideal for networks that have users with
+different levels of trust though, so OpenLDAP allows you to grant varying
+access levels to different users on different parts of the database. <p>
+
+This page lists all access controls rules currently defined, if any. To create a
+new one, click the <b>Add a new access control rule</b> link. To remove several
+rules at once, check the boxes next to them and hit the <b>Delete Selected
+Rules</b> button. To change the ordering of rules, use the up and down arrows
+on the right-hand side of the table. <p>
+
+As with most other LDAP server configuration changes, access control rules will
+not take effect until the <b>Apply Configuration</b> button is clicked on the
+module's main page. <p>
+
+<footer>
+
