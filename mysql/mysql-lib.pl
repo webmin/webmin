@@ -105,6 +105,28 @@ return ($sock ? " -S $sock" : "").
 # returns the full error message
 sub is_mysql_running
 {
+# First type regular connection
+if (!$config{'nodbi'}) {
+	local $main::error_must_die = 1;
+	local ($data, $rv);
+	eval { $data = &execute_sql_safe($master_db, "select version()") };
+	local $err = $@;
+	$err =~ s/\s+at\s+\S+\s+line.*$//;
+	if ($@ =~ /denied|password/i) {
+		$rv = -1;
+		}
+	elsif ($@ =~ /connect/i) {
+		$rv = 0;
+		}
+	elsif ($data->{'data'}->[0]->[0] =~ /^\d/) {
+		$rv = 1;
+		}
+	if (defined($rv)) {
+		return wantarray ? ( $rv, $err ) : $rv;
+		}
+	}
+
+# Fall back to mysqladmin command
 local $out = `"$config{'mysqladmin'}" $authstr status 2>&1`;
 local $rv = $out =~ /uptime/i ? 1 :
             $out =~ /denied|password/i ? -1 : 0;
