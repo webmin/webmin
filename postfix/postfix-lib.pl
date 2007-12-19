@@ -1,5 +1,4 @@
 # postfix-lib.pl
-# XXX virtual mail boxes and read mail
 
 #
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
@@ -2073,7 +2072,7 @@ sub file_map_type
 {
 local ($type) = @_;
 return 1 if ($type eq 'hash' || $type eq 'regexp' || $type eq 'pcre' ||
-	     $type eq 'btree');
+	     $type eq 'btree' || $type eq 'dbm');
 }
 
 1;
