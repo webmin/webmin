@@ -22,7 +22,7 @@ else {
 print &ui_form_start("save_serv.cgi");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("id", $in{'id'});
-print &ui_table_start($text{'edit_details'}, undef, 2);
+print &ui_table_start($text{'edit_details'}, undef, 2, [ "width=30%" ]);
 
 print &ui_table_row($text{'edit_host'},
 		    &ui_textbox("host", $s->{'host'}, 60));
@@ -50,7 +50,7 @@ print &ui_table_row($text{'edit_ssl'},
 
 print &ui_table_row($text{'edit_desc'},
     $config{'show_ip'} ?
-	&ui_textbox("desc", $s->{'desc'}, 30, 0, 30) :
+	&ui_textbox("desc", $s->{'desc'}, 40, 0, 40) :
 	&ui_opt_textbox("desc", $s->{'desc'}, 40, $text{'edit_desc_def'}));
 
 if ($access{'forcegroup'}) {
