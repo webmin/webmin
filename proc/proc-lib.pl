@@ -107,13 +107,13 @@ elsif ($access{'uid'}) {
 }
 
 # safe_process_exec(command, uid, gid, handle, [input], [fixtags], [bsmode],
-#		    [timeout])
+#		    [timeout], [safe])
 # Executes the given command as the given user/group and writes all output
 # to the given file handle. Finishes when there is no more output or the
 # process stops running. Returns the number of bytes read.
 sub safe_process_exec
 {
-if (&is_readonly_mode()) {
+if (&is_readonly_mode() && !$_[8]) {
 	# Veto command in readonly mode
 	return 0;
 	}
