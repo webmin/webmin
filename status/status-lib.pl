@@ -219,7 +219,7 @@ return if ($_[0]->{'id'});	# only check for new services
 if ($_[0]->{'remote'}) {
 	# Check on the remote server
 	foreach $m (@_[1..$#_]) {
-		&remote_foreign_check($_[0]->{'remote'}, $m) ||
+		&remote_foreign_check($_[0]->{'remote'}, $m, 1) ||
 			&error(&text('depends_remote', "<tt>$m</tt>",
 				     "<tt>$_[0]->{'remote'}</tt>"));
 		}
@@ -229,7 +229,7 @@ else {
 	foreach $m (@_[1..$#_]) {
 		local %minfo = &get_module_info($m);
 		%minfo || &error(&text('depends_mod', "<tt>$m</tt>"));
-		&check_os_support(\%minfo) ||
+		&check_os_support(\%minfo, undef, undef, 1) ||
 			&error(&text('depends_os', "<tt>$minfo{'desc'}</tt>"));
 		}
 	$_[0]->{'depends'} = join(" ", @_[1..$#_]);

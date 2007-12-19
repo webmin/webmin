@@ -116,7 +116,8 @@ elsif ($arg->{'action'} eq 'check') {
 	# Check if some module is supported
 	print &serialise_variable(
 		{ 'status' => 1,
-		  'rv' => &foreign_check($arg->{'module'}) } );
+		  'rv' => &foreign_check($arg->{'module'}, undef, undef,
+					 $arg->{'api'}) } );
 	}
 elsif ($arg->{'action'} eq 'config') {
 	# Get the config for some module

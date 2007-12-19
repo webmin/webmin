@@ -10,6 +10,7 @@ desc_pt=Sistema de Ficheiros de Disco e Rede
 category=system
 desc_tr=Disk ve Að Dosya Sistemi
 os_support=slackware-linux redhat-linux mandrake-linux solaris debian-linux suse-linux united-linux freebsd hpux unixware open-linux turbo-linux corel-linux openbsd cobalt-linux lfs-linux msc-linux generic-linux gentoo-linux irix netbsd trustix-linux sol-linux coherent-linux openmamba-linux
+api_os_support=macos
 desc=Disk and Network Filesystems
 desc_es=Sistemas de Archivo de Disco y Red
 desc_sv=Filsystem för diskar och nätverk

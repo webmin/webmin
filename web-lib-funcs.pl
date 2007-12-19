@@ -1347,12 +1347,16 @@ else {
 	}
 }
 
-# check_os_support(&minfo, [os-type, os-version])
+# check_os_support(&minfo, [os-type, os-version], [api-only])
 # Returns 1 if some module is supported on the current operating system, or the
 # OS supplies as parameters.
 sub check_os_support
 {
 local $oss = $_[0]->{'os_support'};
+if ($_[3] && $oss && $_[0]->{'api_os_support'}) {
+	# May provide usable API
+	$oss .= " ".$_[0]->{'api_os_support'};
+	}
 if ($_[0]->{'nozone'} && &running_in_zone()) {
 	# Not supported in a Solaris Zone
 	return 0;
@@ -2073,14 +2077,15 @@ elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/group_chooser.cgi?multi=$_[1]&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
-# foreign_check(module)
+# foreign_check(module, [api-only])
 # Checks if some other module exists and is supported on this OS
 sub foreign_check
 {
+local ($mod, $api) = @_;
 local %minfo;
-local $mdir = &module_root_directory($_[0]);
+local $mdir = &module_root_directory($mod);
 &read_file_cached("$mdir/module.info", \%minfo) || return 0;
-return &check_os_support(\%minfo);
+return &check_os_support(\%minfo, undef, undef, $api);
 }
 
 # foreign_exists(module)
@@ -3594,7 +3599,6 @@ while(1) {
 		last;
 		}
 	}
-close(OUT);
 if (kill('TERM', $pid) && time() - $start >= $_[1]) {
 	$timed_out = 1;
 	}
@@ -3926,12 +3930,13 @@ return &remote_rpc_call($_[0], { 'action' => 'call',
 				 'args' => [ @_[3 .. $#_] ] } );
 }
 
-# remote_foreign_check(server, module)
+# remote_foreign_check(server, module, [api-only])
 # Checks if some module is installed and supported on a remote server
 sub remote_foreign_check
 {
 return &remote_rpc_call($_[0], { 'action' => 'check',
-				 'module' => $_[1] });
+				 'module' => $_[1],
+				 'api' => $_[2] });
 }
 
 # remote_foreign_config(server, module)
