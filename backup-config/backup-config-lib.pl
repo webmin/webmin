@@ -195,6 +195,8 @@ elsif ($mode == 4) {
 # or an error message on failure
 sub execute_backup
 {
+local @mods = grep { $_ ne '' } @{$_[0]};
+
 # Work out where to write to
 local ($mode, $user, $pass, $host, $path) = &parse_backup_url($_[1]);
 local $file;
@@ -208,7 +210,7 @@ else {
 # Get module descriptions
 local $m;
 local %desc;
-foreach $m (@{$_[0]}) {
+foreach $m (@mods) {
 	local %minfo = &get_module_info($m);
 	$desc{$m} = $minfo{'desc'};
 	}
@@ -216,7 +218,7 @@ foreach $m (@{$_[0]}) {
 local @files;
 if (!$_[5]) {
 	# Build list of all files to save from modules
-	foreach $m (@{$_[0]}) {
+	foreach $m (@mods) {
 		&foreign_require($m, "backup_config.pl");
 		local @mfiles = &foreign_call($m, "backup_config_files");
 		push(@files, @mfiles);
@@ -226,7 +228,7 @@ if (!$_[5]) {
 
 # Add module config files
 if ($_[4]) {
-	foreach $m (@{$_[0]}) {
+	foreach $m (@mods) {
 		local @cfiles = ( "$config_directory/$m/config" );
 		push(@files, @cfiles);
 		push(@{$manifestfiles{$m}}, @cfiles);
@@ -243,7 +245,7 @@ foreach my $f (@{$_[6]}) {
 &execute_command("rm -rf ".quotemeta($manifests_dir));
 mkdir($manifests_dir, 0755);
 local @manifests;
-foreach $m (@{$_[0]}, "_others") {
+foreach $m (@mods, "_others") {
 	next if (!defined($manifestfiles{$m}));
 	local $man = "$manifests_dir/$m";
 	&open_tempfile(MAN, ">$man");
@@ -259,7 +261,7 @@ foreach $m (@{$_[0]}, "_others") {
 if (!$_[5]) {
 	# Call all module pre functions
 	local $m;
-	foreach $m (@{$_[0]}) {
+	foreach $m (@mods) {
 		if (&foreign_defined($m, "pre_backup")) {
 			local $err = &foreign_call($m, "pre_backup", \@files);
 			if ($err) {
@@ -291,7 +293,7 @@ ${$_[2]} = $st[7] if ($_[2]);
 
 if (!$_[5]) {
 	# Call all module post functions
-	foreach $m (@{$_[0]}) {
+	foreach $m (@mods) {
 		if (&foreign_defined($m, "post_backup")) {
 			&foreign_call($m, "post_backup", \@files);
 			}
