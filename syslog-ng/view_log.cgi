@@ -59,7 +59,7 @@ if ($filter ne "") {
 	$cat = "(".join(" ; ", @cats).")";
 	$got = &foreign_call("proc", "safe_process_exec",
 		"$cat | grep -i $filter | $tailcmd",
-		0, 0, STDOUT, undef, 1);
+		0, 0, STDOUT, undef, 1, 0, undef, 1);
 	}
 else {
 	# Not filtering .. so cat the most recent non-empty file
@@ -81,7 +81,7 @@ else {
 		}
 	$got = &foreign_call("proc", "safe_process_exec",
 		$catter." | $tailcmd", 
-		0, 0, STDOUT, undef, 1);
+		0, 0, STDOUT, undef, 1, 0, undef, 1);
 	}
 print "<i>$text{'view_empty'}</i>\n" if (!$got);
 print "</pre>\n";
