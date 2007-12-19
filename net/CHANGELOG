@@ -36,3 +36,4 @@ Added support for VLANs and channel bonding on Debian, thanks to Tim Oberfoell.
 Boot-time network interfaces can have comments on Redhat-based systems.
 The list of interfaces is now separated into active and boot time using tabs.
 The Apply Configuration button on FreeBSD now properly deletes virtual interfaces that should no longer exist.
+Handle alias interfaces with no broadcast address on FreeBSD.

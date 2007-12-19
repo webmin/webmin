@@ -53,11 +53,11 @@ foreach $l (@lines) {
 	local %vtaken = map { $_->{'virtual'}, 1 }
 			    grep { $_->{'name'} eq $vifc{'name'} &&
 				   $_->{'virtual'} ne "" } @boot;
-	while($l =~ s/inet\s+(\S+)\s+netmask\s+(\S+)\s+broadcast\s+(\S+)//) {
+	while($l =~ s/inet\s+(\S+)\s+netmask\s+(\S+)(\s+broadcast\s+(\S+))?//) {
 		local %vifc = %ifc;
 		$vifc{'address'} = $1;
 		$vifc{'netmask'} = &parse_hex($2);
-		$vifc{'broadcast'} = $3;
+		$vifc{'broadcast'} = $4;
 		$vifc{'up'} = 1;
 		$vifc{'edit'} = $ifc{'edit'};
 		local $boot = $boot{$vifc{'address'}};
