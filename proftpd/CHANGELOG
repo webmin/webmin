@@ -6,3 +6,5 @@ Added a button to the main page for stopping the ProFTPd server.
 Fixed the default config file path on Debian, as it is different from Ubuntu.
 ---- Changes since 1.340 ----
 Added a Module Config option to specify the file for new virtual hosts.
+---- Changes since 1.380 ----
+Added support for the DisplayChdir directive.

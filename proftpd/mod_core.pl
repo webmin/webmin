@@ -40,7 +40,8 @@ local $rv = [
 	[ 'DenyGroup', 1, 3, 'limit', 1.11 ],
 	[ 'DenyUser', 1, 3, 'limit', 1.17 ],
 	[ 'DisplayConnect', 0, 6, 'virtual global', 1.20 ],
-	[ 'DisplayFirstChdir', 0, 2, 'virtual anon directory global', 0.99 ],
+	[ 'DisplayFirstChdir', 0, 2, 'virtual anon directory global', '0.99-1.31' ],
+	[ 'DisplayChdir', 0, 2, 'virtual anon directory global', 1.31 ],
 	[ 'DisplayGoAway', 0, 6, 'virtual anon global', 1.20 ],
 	[ 'DisplayLogin', 0, 6, 'virtual anon global', 0.99 ],
 	[ 'DisplayQuit', 0, 6, 'virtual anon global', 1.20 ],
@@ -520,6 +521,23 @@ return (1, $text{'mod_core_firstcd'},
 sub save_DisplayFirstChdir
 {
 return &parse_opt("DisplayFirstChdir", '^\S+$', $text{'mod_core_efirstcd'});
+}
+
+sub edit_DisplayChdir
+{
+return (1, $text{'mod_core_firstcd'},
+	&opt_input($_[0]->{'words'}->[0], "DisplayChdir",
+		   $text{'mod_core_none'}, 15).
+	&ui_checkbox("DisplayChdir_always", 'true', $text{'mod_core_firstcdt'},
+		     $_[0]->{'words'}->[1] eq 'true'));
+}
+sub save_DisplayChdir
+{
+local @rv = &parse_opt("DisplayChdir", '^\S+$', $text{'mod_core_efirstcd'});
+if ($in{'DisplayChdir_always'}) {
+	$rv[0]->[0] .= ' true';
+	}
+return @rv;
 }
 
 sub edit_DisplayGoAway

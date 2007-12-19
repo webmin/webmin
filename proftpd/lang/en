@@ -190,6 +190,7 @@ mod_core_display=Pre-login message file
 mod_core_none=None
 mod_core_edisplay=Missing pre-login message file
 mod_core_firstcd=Directory README filename
+mod_core_firstcdt=Always show
 mod_core_efirstcd=Missing directory README filename
 mod_core_goaway=Too many connections message file
 mod_core_egoaway=Missing too many connections file
