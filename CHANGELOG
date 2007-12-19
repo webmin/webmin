@@ -81,3 +81,5 @@ When read_file_lines is used to read a file, the Unix or Windows newlines will b
 Added a search box to the left frame of the blue theme, for finding modules, config options, help pages and text.
 All images, CSS and other static content served by Webmin has an HTTP Expires for 1 week in the future, to improve cachability.
 Lock files are automatically removed when the process creating them exits.
+NetBSD 4.0 support.
+Italian and Catalan translations contributed for many modules, thanks to Giovanni and Jaume Badiella.
