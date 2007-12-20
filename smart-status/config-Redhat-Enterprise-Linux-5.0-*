@@ -1,0 +1,4 @@
+smartctl=smartctl
+mode=1
+attribs=1
+ata=1
