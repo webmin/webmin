@@ -26,7 +26,7 @@ $zipdir = "zips";
 	  "webmin-init", "webmin-caldera-init", "webmin-daemon",
 	  "config-openbsd",
 	  "config-macos", "LICENCE", "PATENTS",
-	  "session_login.cgi", "referer_save.cgi", "acl_security.pl",
+	  "session_login.cgi", "acl_security.pl",
 	  "defaultacl", "rpc.cgi", "date_chooser.cgi", "switch_skill.cgi",
 	  "install-module.pl", "LICENCE.ja", 
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",
@@ -37,7 +37,7 @@ $zipdir = "zips";
 	  "config-lib.pl", "entities_map.txt", "ui-lib.pl",
 	  "password_form.cgi", "password_change.cgi", "pam_login.cgi",
 	  "module_chooser.cgi", "config-windows", "xmlrpc.cgi",
-	  "uptracker.cgi", "create-module.pl" );
+	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi" );
 if ($min) {
 	# Only those required by others
 	@mlist = ("cron", "init", "inittab", "proc", "webmin", "acl", "servers",
@@ -67,7 +67,7 @@ else {
 	  "smart-status", "idmapd", "krb5", "smf", "ipfilter", "rbac",
 	  "tunnel", "zones", "cluster-usermin", "dovecot", "syslog-ng",
 	  "mailcap", "blue-theme", "ldap-client", "phpini", "filter",
-	  "bacula-backup",
+	  "bacula-backup", "ldap-server",
 	  );
 	}
 @dirlist = ( "Webmin" );

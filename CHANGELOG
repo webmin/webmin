@@ -83,3 +83,4 @@ All images, CSS and other static content served by Webmin has an HTTP Expires fo
 Lock files are automatically removed when the process creating them exits.
 NetBSD 4.0 support.
 Italian and Catalan translations contributed for many modules, thanks to Giovanni and Jaume Badiella.
+Changed the error message that appears when Webmin detects a link from another web page, and removed the button to allow the link (which was unreliable anyway).

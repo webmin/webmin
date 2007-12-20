@@ -2732,39 +2732,27 @@ if ($0 && $ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ &&
     ($referer_site && $referer_site ne $http_host &&
      &indexof($referer_site, @referers) < 0 ||
     !$referer_site && $gconfig{'referers_none'} && !$trust_unknown_referers)) {
-	# Looks like a link from elsewhere ..
-	if ($0 =~ /referer_save.cgi/) {
-		# Referer link direct to ourselves!
-		&error($text{'referer_eself'});
-		}
+	# Looks like a link from elsewhere .. show an error
 	&header($text{'referer_title'}, "", undef, 0, 1, 1);
-	print "<hr><center>\n";
-	print "<form action=$gconfig{'webprefix'}/referer_save.cgi>\n";
-	&ReadParse();
-	foreach my $k (keys %in) {
-		next if ($k eq "referer_original" ||
-			 $k eq "referer_again");
-		foreach my $kk (split(/\0/, $in{$k})) {
-			print "<input type=hidden name=\"".&quote_escape($k).
-			      "\" value=\"".&quote_escape($kk)."\">\n";
-			}
-		}
-	print "<input type=hidden name=referer_original ",
-	      "value=\"".&quote_escape($ENV{'REQUEST_URI'})."\">\n";
 
 	$prot = lc($ENV{'HTTPS'}) eq 'on' ? "https" : "http";
 	local $url = "<tt>".&html_escape("$prot://$ENV{'HTTP_HOST'}$ENV{'REQUEST_URI'}")."</tt>";
 	if ($referer_site) {
-		print "<p>",&text('referer_warn',
-		      "<tt>".&html_escape($ENV{'HTTP_REFERER'})."</tt>", $url),"<p>\n";
+		# From a known host
+		print &text('referer_warn',
+		     "<tt>".&html_escape($ENV{'HTTP_REFERER'})."</tt>", $url);
+		print "<p>\n";
+		print &text('referer_fix1', &html_escape($http_host)),"<p>\n";
+		print &text('referer_fix2', &html_escape($http_host)),"<p>\n";
 		}
 	else {
-		print "<p>",&text('referer_warn_unknown', $url),"<p>\n";
+		# No referer info given
+		print &text('referer_warn_unknown', $url),"<p>\n";
+		print &text('referer_fix1u'),"<p>\n";
+		print &text('referer_fix2u'),"<p>\n";
 		}
-	print "<input type=submit value='$text{'referer_ok'}'><br>\n";
-	print "<input type=checkbox name=referer_again value=1> ",
-	      "$text{'referer_again'}<p>\n";
-	print "</form></center><hr>\n";
+	print "<p>\n";
+
 	&footer("/", $text{'index'});
 	exit;
 	}
