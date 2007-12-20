@@ -529,9 +529,6 @@ ahttp_ma=Match ACLs
 ahttp_dma=Don't match ACLs
 ahttp_return=ACL list
 
-sahttp_ftspr=Failed to save proxy restriction
-
-
 ahttp_replyheader=Create Proxy Reply Restriction
 ahttp_replyheader1=Edit Proxy Reply Restriction
 ahttp_replypr=Proxy Reply Restriction
