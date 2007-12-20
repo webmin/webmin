@@ -13,3 +13,5 @@ When doing cluster compares, groups can be selected as well as individual hosts.
 ---- Changes since 1.310 ----
 Added the ability to list, install and delete packages on systems using different package formats.
 Added a popup progress window to track uploaded package files.
+---- Changes since 1.380 ----
+Added a Module Config option to show managed systems in a table.

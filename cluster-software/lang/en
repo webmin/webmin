@@ -17,6 +17,10 @@ index_down=Each server should re-download package
 index_count=($1 packages)
 this_server=this server
 index_compare=Compare Servers
+index_thost=Hostname
+index_tdesc=Description
+index_tcount=Packages
+index_ttype=OS type
 
 install_err=Failed to install package
 install_elocal=No local file given
