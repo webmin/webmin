@@ -379,3 +379,7 @@ Cron jobs created by Virtualmin will still be recognized even if manually modifi
 Alias mail domains can now be implemented by copying virtusers into the alias rather than using a catchall. Under Postfix this allows email to invalid addresses in the alias domain to be rejected at the SMTP level. The default for this can be changed on the Server Templates page under Mail for domain, and it can be changed for existing domains on the Edit Virtual Server page.
 Shells for mailboxes and domain owners are now configured on the new Custom Shells page, linked under System Customization on the left menu. This allows you to define as many different shells as you like, for access levels like email only, FTP and SCP only. When editing mailboxes or domain owner limits, you can then select one of the defined shells.
 Backported the Extra Administrators feature from Virtualmin Pro, which allows domnain owners to create additional restricted administration logins.
+---- Changes since 3.50 ----
+Include the total backup time in the scheduled backup email.
+Added back the old one-file-per-domain backup format, which is more friendly to rsyncing the home directory separately.
+Moved the default quota for mailboxes to the 'Mail for domain' section of templates.
