@@ -35,6 +35,10 @@ index_upgradeon=Servers to upgrade
 index_update=Update Modules
 index_updateon=Servers to update
 index_updatedesc=This form allows you to upgrade Webmin modules that have been found to contain bugs or security holes from the <a href=http://www.webmin.com/updates.html>Webmin Updates</a> page or from another source.
+index_thost=Hostname
+index_tdesc=Description
+index_tver=Version
+index_ttype=OS type
 
 this_server=this server
 
