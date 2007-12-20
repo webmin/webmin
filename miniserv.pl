@@ -3463,7 +3463,7 @@ if ($ok && (!$expired ||
 		local $sec = $ssl ? "; secure" : "";
 		#$sec .= "; httpOnly";
 		if ($in{'save'}) {
-			&write_data("Set-Cookie: $sidname=$sid; path=/; expires=\"Fri, 1-Jan-2038 00:00:01\"$sec\r\n");
+			&write_data("Set-Cookie: $sidname=$sid; path=/; expires=\"Thu, 31-Dec-2037 00:00:00\"$sec\r\n");
 			}
 		else {
 			&write_data("Set-Cookie: $sidname=$sid; path=/$sec\r\n");
