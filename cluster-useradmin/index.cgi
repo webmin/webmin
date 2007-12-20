@@ -31,7 +31,33 @@ foreach $h (@hosts) {
 	$gothost{$h->{'id'}}++;
 	}
 if (@links) {
-	&icons_table(\@links, \@titles, \@icons);
+	if ($config{'table_mode'}) {
+		# Show as table
+		print &ui_columns_start([ $text{'index_thost'},
+					  $text{'index_tdesc'},
+					  $text{'index_tucount'},
+					  $text{'index_tgcount'},
+					  $text{'index_ttype'} ]);
+		foreach $h (@hosts) {
+			local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
+			next if (!$s);
+			local ($type) = grep { $_->[0] eq $s->{'type'} }
+					     @servers::server_types;
+			print &ui_columns_row([
+				"<a href='edit_host.cgi?id=$h->{'id'}'>".
+				($s->{'host'} || &get_system_hostname())."</a>",
+				$s->{'desc'},
+				scalar(@{$h->{'users'}}),
+				scalar(@{$h->{'groups'}}),
+				$type->[1],
+				]);
+			}
+		print &ui_columns_end();
+		}
+	else {
+		# Show as icons
+		&icons_table(\@links, \@titles, \@icons);
+		}
 	}
 else {
 	print "<b>$text{'index_nohosts'}</b><p>\n";

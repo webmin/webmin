@@ -12,6 +12,11 @@ index_newuser=Add User
 index_newgroup=Add Group
 index_sync=Synchronize
 this_server=this server
+index_thost=Hostname
+index_tdesc=Description
+index_tucount=Users
+index_tgcount=Groups
+index_ttype=OS type
 
 add_title=Add Servers
 add_msg=Adding $1 ..
