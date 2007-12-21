@@ -198,10 +198,19 @@ if (!defined(@mail_style_cache)) {
 			# Can get paths from Sendmail module config
 			local %sconfig = &foreign_config("sendmail");
 			if ($sconfig{'mail_dir'}) {
-				return ($sconfig{'mail_dir'}, $sconfig{'mail_style'}, undef, undef);
+				# File under /var/mail
+				return ($sconfig{'mail_dir'},
+					$sconfig{'mail_style'}, undef, undef);
+				}
+			elsif ($sconfig{'mail_type'}) {
+				# Maildir under home directory
+				return (undef, $sconfig{'mail_style'},
+					undef, $sconfig{'mail_file'});
 				}
 			else {
-				return (undef, $sconfig{'mail_style'}, $sconfig{'mail_file'}, undef);
+				# mbox under home directory
+				return (undef, $sconfig{'mail_style'},
+					$sconfig{'mail_file'}, undef);
 				}
 			}
 		elsif ($config{'mail_system'} == 0) {

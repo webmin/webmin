@@ -31,6 +31,7 @@ access_file=Source file for the access database,3,Same as DBM
 domains_file=Source file for the domains database,3,Same as DBM
 mail_dir=User mail file location,3,File under home directory
 mail_file=Mail file in home directory,0
+mail_type=Mail storage type,1,1-Maildir,0-mbox
 mail_style=Mail file directory style,4,0-mail/username,1-mail/u/username,2-mail/u/us/username,3-mail/u/s/username
 mail_sync=User mail file synchronization,2,create-Create with user,delete-Delete with user,modify-Rename with user
 smrsh_dir=SMRSH directory,3,None

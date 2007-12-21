@@ -34,3 +34,4 @@ columns=2
 show_cmts=0
 prefix_cmts=0
 sendmail_smf=network/smtp:sendmail
+mail_type=0

@@ -29,3 +29,5 @@ Cleaned up the code and UIs for all mapping lists, to fit in better with the Web
 ---- Changes since 1.300 ----
 The count of messages in the mail queue on the module's main page no longer includes those that the current user does not have access to.
 Added access control for the Spam Control page.
+---- Changes since 1.390 ----
+Added a Module Config option to support ~/Maildir mailboxes (even though Sendmail doesn't support this natively).
