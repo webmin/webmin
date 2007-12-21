@@ -383,3 +383,4 @@ Backported the Extra Administrators feature from Virtualmin Pro, which allows do
 Include the total backup time in the scheduled backup email.
 Added back the old one-file-per-domain backup format, which is more friendly to rsyncing the home directory separately.
 Moved the default quota for mailboxes to the 'Mail for domain' section of templates.
+Shell special characters like ; and & are no longer allowed in mailbox usernames.
