@@ -32,6 +32,7 @@ if ($module_info{'usermin'}) {
 		}
 	$max_dbs = $userconfig{'max_dbs'};
 	$commands_file = "$user_module_config_directory/commands";
+	$sql_charset = $userconfig{'charset'};
 	}
 else {
 	# Webmin connects to the database as the user specified in the per-user
@@ -52,6 +53,7 @@ else {
 	$cron_cmd = "$module_config_directory/backup.pl";
 	$max_dbs = $config{'max_dbs'};
 	$commands_file = "$module_config_directory/commands";
+	$sql_charset = $config{'charset'};
 	}
 $authstr = &make_authstr();
 $master_db = 'mysql';
@@ -224,9 +226,9 @@ if ($driver_handle) {
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
 					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
-	if ($config{'charset'}) {
+	if ($sql_charset) {
 		# Switch to correct character set
-		local $sql = "set names '$config{'charset'}'";
+		local $sql = "set names '$sql_charset'";
 		local $cmd = $dbh->prepare($sql);
 		if (!$cmd) {
 			&error(&text('esql', "<tt>".&html_escape($sql)."</tt>",
@@ -275,8 +277,8 @@ else {
 			}
 		}
 	open(TEMP, ">$temp");
-	if ($config{'charset'}) {
-		print TEMP "set names '$config{'charset'}';\n";
+	if ($sql_charset) {
+		print TEMP "set names '$sql_charset';\n";
 		}
 	print TEMP $sql,"\n";
 	close(TEMP);
