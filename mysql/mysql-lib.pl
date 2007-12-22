@@ -224,6 +224,20 @@ if ($driver_handle) {
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
 					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
+	if ($config{'charset'}) {
+		# Switch to correct character set
+		local $sql = "set names '$config{'charset'}'";
+		local $cmd = $dbh->prepare($sql);
+		if (!$cmd) {
+			&error(&text('esql', "<tt>".&html_escape($sql)."</tt>",
+				     "<tt>".&html_escape($dbh->errstr)."</tt>"));
+			}
+		if (!$cmd->execute()) {
+			&error(&text('esql', "<tt>".&html_escape($sql)."</tt>",
+				     "<tt>".&html_escape($dbh->errstr)."</tt>"));
+			}
+		$cmd->finish();
+		}
 	local $cmd = $dbh->prepare($sql);
 	if (!$cmd) {
 		&error(&text('esql', "<tt>".&html_escape($_[1])."</tt>",
@@ -261,6 +275,9 @@ else {
 			}
 		}
 	open(TEMP, ">$temp");
+	if ($config{'charset'}) {
+		print TEMP "set names '$config{'charset'}';\n";
+		}
 	print TEMP $sql,"\n";
 	close(TEMP);
 	open(DBS, "\"$config{'mysql'}\" $authstr -E -t ".quotemeta($_[0])." <$temp 2>&1 |");

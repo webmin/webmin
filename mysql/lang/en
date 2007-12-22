@@ -800,3 +800,6 @@ compat_maxdb=MaxDB
 compat_no_key_options=Key options
 compat_no_table_options=Table options
 compat_no_field_options=Field options
+
+config_echarset=Missing or invalid-looking character set
+
