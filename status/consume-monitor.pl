@@ -3,7 +3,7 @@
 
 sub get_consume_status
 {
-return { 'up' => -1 } if (!&foreign_check("mount"));
+return { 'up' => -1 } if (!&foreign_check("mount", 1));
 &foreign_require("mount", "mount-lib.pl");
 local $m;
 foreach $f (&mount::list_mounted()) {
