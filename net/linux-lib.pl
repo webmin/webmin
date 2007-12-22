@@ -6,7 +6,7 @@
 sub active_interfaces
 {
 local(@rv, @lines, $l);
-&open_execute_command(IFC, "ifconfig -a", 1, 1);
+&open_execute_command(IFC, "LC_ALL='' LANG='' ifconfig -a", 1, 1);
 while(<IFC>) {
 	s/\r|\n//g;
 	if (/^\S+/) { push(@lines, $_); }
