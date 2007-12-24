@@ -54,4 +54,4 @@ pid_file=Default PID file location(s),3,/var/run/named.pid
 no_pid_chroot=PID file is under chroot directory?,1,0-Yes,1-No
 start_cmd=Command to start BIND,3,Default
 stop_cmd=Command to stop BIND,3,Just kill process
-restart_cmd=Command to apply BIND configuration,3,Just send HUP signal
+restart_cmd=Command to apply BIND configuration,10,-Just send HUP signal,restart-Stop and restart,Other command

@@ -1619,13 +1619,20 @@ return 0;
 # an error message on failure.
 sub restart_bind
 {
-if ($config{'restart_cmd'}) {
+if ($config{'restart_cmd'} eq 'restart') {
+	# Stop and start again
+	&stop_bind();
+	return &start_bind();
+	}
+elsif ($config{'restart_cmd'}) {
+	# Custom command
 	local $out = &backquote_logged("$config{'restart_cmd'} 2>&1 </dev/null");
 	if ($?) {
 		return &text('restart_ecmd', "<pre>$out</pre>");
 		}
 	}
 else {
+	# Use signal
 	local $pidfile = &get_pid_file();
 	local $pid = &check_pid_file(&make_chroot($pidfile, 1));
 	if (!$pid) {
