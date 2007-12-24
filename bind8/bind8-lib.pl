@@ -1312,7 +1312,8 @@ return 1;
 # Returns the --help output if non BIND 8/9, or undef if is
 sub check_bind_8
 {
-local $out = `$config{'named_path'} -help 2>&1`;
+local $fflag = $gconfig{'os_type'} eq 'windows' ? '-f' : '';
+local $out = `$config{'named_path'} -help $fflag 2>&1`;
 return $out !~ /\[-f\]/ && $out !~ /\[-f\|/ ? $out : undef;
 }
 
@@ -1709,7 +1710,12 @@ return undef;
 sub is_bind_running
 {
 local $pidfile = &get_pid_file();
-return &check_pid_file(&make_chroot($pidfile, 1));
+local $rv = &check_pid_file(&make_chroot($pidfile, 1));
+if (!$rv && $gconfig{'os_type'} eq 'windows') {
+	# Fall back to checking for process
+	$rv = &find_byname("named");
+	}
+return $rv;
 }
 
 # version_atleast(v1, v2, v3)

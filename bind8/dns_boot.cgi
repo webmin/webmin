@@ -66,7 +66,7 @@ elsif ($in{real} == 2) {
 	print BOOT "\n";
 	}
 close(BOOT);
-&execute_command("cp $conf_temp ".&make_chroot($config{'named_conf'}));
+&copy_source_dest($conf_temp, &make_chroot($config{'named_conf'}));
 unlink($conf_temp);
 &unlock_file(&make_chroot("$conf_directory/db.cache"));
 &unlock_file(&make_chroot($config{'named_conf'}));
