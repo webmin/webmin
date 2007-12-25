@@ -1864,7 +1864,14 @@ local @hosts = split(/\s+/, $config{'mysql_hosts'} || $conf->{'hosts'});
 local $dbh;
 foreach my $host (@hosts) {
 	local $dbistr = "database=$conf->{'dbname'}";
-	$dbistr .= ";host=$host" if ($host);
+	if ($host =~ /^unix:(.*)$/) {
+		# Socket file
+		$dbistr .= ";mysql_socket=$1";
+		}
+	elsif ($host) {
+		# Remote host
+		$dbistr .= ";host=$host";
+		}
 	$dbh = $drh->connect($dbistr,
 			     $config{'mysql_user'} || $conf->{'user'},
 			     $config{'mysql_pass'} || $conf->{'password'},
@@ -1879,8 +1886,6 @@ return $dbh;
 # connect_ldap_db(&config)
 # Attempts to connect to an LDAP server with Postfix maps. Returns
 # a driver handle on success, or an error message string on failure.
-# XXX try all hosts
-# XXX handle :port syntax and ldap: syntax
 sub connect_ldap_db
 {
 local ($conf) = @_;
