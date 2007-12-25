@@ -19,7 +19,7 @@ $iptables_save_file = $iptconf{'IPTABLES_SAVE'};
 # Applies the current iptables configuration from the save file
 sub apply_iptables
 {
-local $out = &backquote_logged("cd / ; /etc/init.d/iptables restart 2>&1");
+local $out = &backquote_logged("cd / ; /etc/init.d/iptables reload 2>&1");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
