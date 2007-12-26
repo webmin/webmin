@@ -2,6 +2,7 @@
 require 'postfix-lib.pl';
 @acl_pages = ("resource", "address_rewriting", "aliases", "general",
 	      "canonical", "virtual", "transport", "relocated", "header","body",
+	      "bcc",
 	      "local_delivery", "smtpd", "sasl","smtp", "rate", "debug", "ldap",
 	      "master", "startstop", "mailq", "postfinger", "manual");
 

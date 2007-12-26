@@ -433,6 +433,7 @@ acl_boxes=Can read users' email?
 acl_postfinger=Can check postfix configuration?
 acl_manual=Can edit config file?
 acl_dir=Allowed directory for map files
+acl_bcc=Can edit BCC mapping?
 
 boxes_title=User Mailboxes
 boxes_user=User
@@ -694,7 +695,8 @@ log_misc=Changed general options
 log_opts=Changed address rewriting and masquerading
 log_aliases=Changed aliases options
 log_canonical=Changing canonical mapping options
-log_virtual=Change virtual domain options
+log_virtual=Changed virtual domain options
+log_bcc=Changed BCC map options
 log_transport=Changed transport mapping options
 log_relocated=Changed relocate mapping options
 log_header=Changed header check options
@@ -859,3 +861,7 @@ ldap_edelete=LDAP delete of $1 failed : $2
 ldap_equery=LDAP search of $1 failed : $2
 ldap_erename=LDAP rename of $1 to $2 failed : $3
 ldap_emodify=LDAP modify of $1 failed : $2
+
+bcc_title=BCC Mapping
+bcc_ecannot=You are not allowed to edit BCC mappings
+opts_sender_bcc_maps=BCC mapping lookup tables

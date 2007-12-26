@@ -48,3 +48,5 @@ Maps in MySQL and LDAP databases can be viewed and edited in the same way that t
 Fixed a bug that prevented comments and manual map editing, and added back support for PCRE and BTREE maps.
 Added a button for manually editing the aliases file.
 Added more SMTP relaying restrictions.
+---- Changes since 1.390 ----
+Outgoing email from selected addresses and domains can now be BCCd automatically using the new BCC Mapping page.

@@ -16,8 +16,8 @@ print &ui_hidden("mapname", $in{'mapname'});
 $i = 0;
 foreach $tv (@maps) {
 	print &ui_hidden_table_start(&text('chooser_header', $i+1),
-				     "width=100%", 2, "section$i", $tv->[0],
-				     [ "width=30%" ]);
+				     "width=100%", 2, "section$i",
+				     $tv->[0] || $i == 0, [ "width=30%" ]);
 
 	# Work out type
 	$t = $tv->[0] eq "" ? "" :

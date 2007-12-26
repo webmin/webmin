@@ -94,7 +94,7 @@ if ($config{'index_check'} && ($err = &check_postfix())) {
 	exit;
 	}
 
-@onames =  ( "general", "address_rewriting", "aliases", "canonical", "virtual", "transport", "relocated", "header", "body",
+@onames =  ( "general", "address_rewriting", "aliases", "canonical", "virtual", "transport", "relocated", "header", "body", "bcc",
 	     "local_delivery", "resource",
 	     "smtpd", "smtp", "sasl",
 	     "rate", "debug", $postfix_version > 2 ? ( ) : ( "ldap" ),
