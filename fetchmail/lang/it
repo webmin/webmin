@@ -39,11 +39,11 @@ index_crondesc=Clicca su questo pulsante per creare, cambiare o rimuovere un Cro
 index_crondesc2=Clicca su questo pulsante per creare, cambiare o rimuovere un Cron Job per eseguire Fetchmail automaticamente in modo da controllare e scaricare la posta per tutti gli utenti elencati.
 index_efetchmail=Il programma $1 non &#232; stato trovato.  E' probabile che fetchmail non sia installato nel tuo sistema, o che la <a href='$2'>configurazione del modulo</a> non sia corretta.
 index_file=Configurazione di Fetchmail in $1
-index_global=Modifica le impostazioni predefinite.
+index_global=Modifica le impostazioni predefinite
 index_header=Utenti con una configurazione Fetchmail
 index_none=Nessun utente Unix ha i file <tt>.fetchmailrc</tt>.
-index_ok=Aggiungi un server Fetchmail per l'utente:
-index_poll=Server to poll
+index_ok=Aggiungi un server Fetchmail per l&#8242;utente:
+index_poll=Server da interrogare
 index_proto=Protocollo
 index_return=lista dei server
 index_run=Controlla tutti i  server
