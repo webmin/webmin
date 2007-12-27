@@ -11,7 +11,6 @@
 require './init-lib.pl';
 require './hostconfig-lib.pl';
 use File::Basename;
-%access = &get_module_acl();
 $access{'bootup'} == 1 || &error($text{'edit_ecannot'});
 
 $ty = $ARGV[0];

@@ -4,9 +4,28 @@
 
 require './init-lib.pl';
 &error_setup($text{'save_err'});
-%access = &get_module_acl();
-$access{'bootup'} == 1 || &error($text{'save_ecannot'});
 &ReadParseMime();
+
+# Redirect to other CGIs for delete / start / stop
+if ($in{'delete'} && $in{'old'}) {
+	&redirect("delete_action.cgi?type=".&urlize($in{'type'}).
+		  "&action=".&urlize($in{'old'}).
+		  "&runlevel=".&urlize($in{'runlevel'}).
+		  "&startstop=".&urlize($in{'startstop'}).
+		  "&number=".&urlize($in{'number'}));
+	}
+elsif ($in{'old'}) {
+	foreach $a (@action_buttons) {
+		if ($in{$a}) {
+			&redirect("start_stop.cgi?file=".&urlize($in{'file'}).
+				  "&name=".&urlize($in{'old'})."&$a=1".
+				  "&back=".&urlize($in{'back'}));
+			exit;
+			}
+		}
+	}
+
+$access{'bootup'} == 1 || &error($text{'save_ecannot'});
 
 # Check inputs
 $in{'extra'} || $in{name} =~ /^[A-z0-9\_\-\.]+$/ ||

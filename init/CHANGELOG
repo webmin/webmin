@@ -14,3 +14,5 @@ Added a button on the main page for restarting multiple servers at once.
 Added support for Unbuntu, which has not /etc/inittab file.
 ---- Changes since 1.310 ----
 Added start_action and stop_action functions for starting and stopping services in an OS-independent manner.
+---- Changes since 1.390 ----
+Re-wrote all user interface code to use the new Webmin UI library, for a more consistent look.

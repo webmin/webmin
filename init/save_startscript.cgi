@@ -19,7 +19,6 @@
 require './init-lib.pl';
 require './hostconfig-lib.pl';
 use File::Basename;
-%access = &get_module_acl();
 $access{'bootup'} == 1 || &error("You are not allowed to edit the bootup script");
 &ReadParse();
 

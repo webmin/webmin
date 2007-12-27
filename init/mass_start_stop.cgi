@@ -3,7 +3,6 @@
 # Start or stop multiple actions at once
 
 require './init-lib.pl';
-%access = &get_module_acl();
 &ReadParse();
 @sel = split(/\0/, $in{'idx'});
 @sel || &error($text{'mass_enone2'});

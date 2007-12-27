@@ -4,7 +4,6 @@
 
 require './init-lib.pl';
 &ReadParse();
-%access = &get_module_acl();
 $access{'shutdown'} || &error($text{'shutdown_ecannot'});
 &ui_print_header(undef, $text{'shutdown_title'}, "");
 print "<p>\n";

@@ -4,7 +4,6 @@
 
 require './init-lib.pl';
 &foreign_require("proc", "proc-lib.pl");
-%access = &get_module_acl();
 $access{'bootup'} || &error($text{'ss_ecannot'});
 &ReadParse();
 

@@ -6,7 +6,6 @@
 require './init-lib.pl';
 require './hostconfig-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
-%access = &get_module_acl();
 
 if ($init_mode eq "osx" && $access{'bootup'}) {
 	# This hostconfig if block written by Michael A Peters <mpeters@mac.com>
@@ -16,23 +15,25 @@ if ($init_mode eq "osx" && $access{'bootup'}) {
 	@hconf_set = &hostconfig_settings();
 	%description_list = &hostconfig_gather(description);
 	
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>", &text('index_action'), "</b></td>\n";
-	print "<td><b>", &text('index_setting'), "</b></td>\n";
-	print "<td> <b>", &text('index_desc'), "</b></td> </tr>\n";
+	print &ui_columns_start([ &text('index_action'),
+				  &text('index_setting'),
+				  &text('index_desc') ], 100, 0);
 	$i = 0;
 	while (<@hconf_set>) {
 		$action_description = $description_list{"$hconf_set[$i][0]"};
 		print &hostconfig_table($hconf_set[$i][0], $hconf_set[$i][1], $action_description);
 		$i++;
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	if ($access{'bootup'} == 1) {
-		print "<a href='edit_hostconfig.cgi?1'>$text{'index_add_mac'}</a><br>\n";
-		print "<a href='edit_hostconfig.cgi?2'>", &text('index_editconfig',
-			"<tt>$config{'hostconfig'}</tt>"),"</a><P>\n";
+		print &ui_links_row([
+			"<a href='edit_hostconfig.cgi?1'>".
+			  "$text{'index_add_mac'}</a>",
+			"<a href='edit_hostconfig.cgi?2'>".
+			  &text('index_editconfig',
+			        "<tt>$config{'hostconfig'}</tt>")."</a>"
+			]);
 		}
-	print "<hr>\n"; 
 	}
 elsif ($init_mode eq "init" && $access{'bootup'}) {
 	# build list of normal and broken actions
@@ -97,21 +98,16 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 	if (!$config{'desc'}) {
 		# Display actions by name only
 		print &ui_links_row(\@links);
-		print "<table width=100% border>\n";
-		print "<tr $tb> <td><b>$text{'index_title'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table width=100%>\n";
-		$len = @acts; $len = int(($len+3)/4)*4;
-		for($i=0; $i<$len; $i++) {
-			if ($i%4 == 0) { print "<tr>\n"; }
-			print "<td width=25%>";
+		@grid = ( );
+		for($i=0; $i<@acts; $i++) {
 			if ($acts[$i]) {
-				print "<a href=\"edit_action.cgi?$actsl[$i]\">",
-				      "$acts[$i]</a>\n";
+				push(@grid, "<a href=\"edit_action.cgi?".
+					    "$actsl[$i]\">$acts[$i]</a>");
 				}
-			print "</td>\n";
-			if ($i%4 == 3) { print "</tr>\n"; }
 			}
-		print "</table></td></tr></table>\n";
+		print &ui_grid_table(\@grid, 4, 100,
+		     [ "width=25%", "width=25%", "width=25%", "width=25%" ],
+		     undef, $text{'index_title'});
 		print &ui_links_row(\@links);
 		}
 	else {
@@ -126,7 +122,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 			$config{'order'} ? ( $text{'index_order'} ) : ( ),
 			$config{'status_check'} == 2 ? ( $text{'index_status'} ) : ( ),
 			$text{'index_desc'} ],
-			100);
+			100, 0, [ "", "nowrap", "nowrap", "nowrap", "nowrap" ]);
 
 		for($i=0; $i<@acts; $i++) {
 			local ($boot, %daemon, @levels, $order);
@@ -188,37 +184,20 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 			}
 		print &ui_columns_end();
 		print &ui_links_row(\@links);
-		print "<input type=submit name=start value='$text{'index_start'}'>\n";
-		print "<input type=submit name=stop value='$text{'index_stop'}'>\n";
-		print "<input type=submit name=restart value='$text{'index_restart'}'>\n";
+		@buts = ( [ "start", $text{'index_start'} ],
+			  [ "stop", $text{'index_stop'} ],
+			  [ "restart", $text{'index_restart'} ] );
 		if ($access{'bootup'} == 1) {
 			# Show buttons to enable/disable at boot
-			print "&nbsp;&nbsp;\n";
-			print "<input type=submit name=addboot value='$text{'index_addboot'}'>\n";
-			print "<input type=submit name=delboot value='$text{'index_delboot'}'>\n";
-			print "&nbsp;&nbsp;\n";
-			print "<input type=submit name=addboot_start value='$text{'index_addboot_start'}'>\n";
-			print "<input type=submit name=delboot_stop value='$text{'index_delboot_stop'}'>\n";
+			push(@buts, undef,
+			    [ "addboot", $text{'index_addboot'} ],
+			    [ "delboot", $text{'index_delboot'} ],
+			    undef,
+			    [ "addboot_start", $text{'index_addboot_start'} ],
+			    [ "delboot_stop", $text{'index_delboot_stop'} ],
+			    );
 			}
-		}
-	print "</form>\n";
-	print "<hr>\n";
-
-	if ($access{'bootup'} == 1) {
-		# Show runlevel switch form
-		print "<form action=change_rl.cgi>\n";
-		print "<table width=100%>\n";
-
-		print "<tr> <td nowrap><input type=submit ",
-		      "value='$text{'index_rlchange'}'>\n";
-		print "<select name=level>\n";
-		foreach $r (@runlevels) {
-			printf "<option %s>%s\n",
-				$r eq $boot[0] ? "selected" : "", $r;
-			}
-		print "</select></td> <td>$text{'index_rlchangedesc'}</td> </tr>\n";
-
-		print "</table></form><hr>\n";
+		print &ui_form_end(\@buts);
 		}
 	}
 elsif ($init_mode eq "local" && $access{'bootup'} == 1) {
@@ -233,26 +212,20 @@ elsif ($init_mode eq "local" && $access{'bootup'} == 1) {
 		print &text('index_script',
 			"<tt>$config{'local_script'}</tt>"),"<br>\n";
 		}
-	print "<form action=save_local.cgi method=post>\n";
-	print "<textarea name=local rows=15 cols=80>";
-	open(LOCAL, $config{'local_script'});
-	while(<LOCAL>) { print &html_escape($_) }
-	close(LOCAL);
-	print "</textarea><br>\n";
+	print &ui_form_start("save_local.cgi", "post");
+	print &ui_textarea("local",
+		&read_file_contents($config{'local_script'}), 15, 80)."<br>\n";
 
+	# Show shutdown script too, if any
 	if ($config{'local_down'}) {
-		# Show shutdown script too
 		print &text('index_downscript',
 			"<tt>$config{'local_down'}</tt>"),"<br>\n";
-		print "<textarea name=down rows=15 cols=80>";
-		open(LOCAL, $config{'local_down'});
-		while(<LOCAL>) { print &html_escape($_) }
-		close(LOCAL);
-		print "</textarea><br>\n";
+		print &ui_textarea("down",
+			&read_file_contents($config{'local_down'}), 15, 80).
+			"<br>\n";
 		}
 
-	print "<input type=submit value='$text{'save'}'></form>\n";
-	print "<hr>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 	}
 elsif ($init_mode eq "win32" && $access{'bootup'}) {
 	# Show Windows services
@@ -320,28 +293,25 @@ elsif ($init_mode eq "rc" && $access{'bootup'}) {
 			     [ "addboot_start", $text{'index_addboot_start'} ],
 			     [ "delboot_stop", $text{'index_delboot_stop'} ],
 			    ]);
-	print "<hr>\n";
-
 	}
 
 # reboot/shutdown buttons
-print "<table cellpadding=5 width=100%>\n";
+print "<hr>\n";
+print &ui_buttons_start();
+if ($init_mode eq 'init' && $access{'bootup'} == 1) {
+	print &ui_buttons_row("change_rl.cgi", $text{'index_rlchange'},
+			      $text{'index_rlchangedesc'}, undef,
+			      &ui_select("level", $boot[0], \@runlevels));
+	}
 if ($access{'reboot'}) {
-	print "<form action=reboot.cgi>\n";
-	print "<tr> <td><input type=submit ",
-	      "value=\"$text{'index_reboot'}\"></td>\n";
-	print "</form>\n";
-	print "<td>$text{'index_rebootmsg'}</td> </tr>\n";
+	print &ui_buttons_row("reboot.cgi", $text{'index_reboot'},
+			      $text{'index_rebootmsg'});
 	}
-
 if ($access{'shutdown'}) {
-	print "<form action=shutdown.cgi>\n";
-	print "<tr> <td><input type=submit ",
-	      "value=\"$text{'index_shutdown'}\"></td>\n";
-	print "</form>\n";
-	print "<td>$text{'index_shutdownmsg'}</td> </tr>\n";
+	print &ui_buttons_row("shutdown.cgi", $text{'index_shutdown'},
+			      $text{'index_shutdownmsg'});
 	}
-print "</table>\n";
+print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
 

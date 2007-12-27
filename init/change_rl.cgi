@@ -4,7 +4,6 @@
 
 require './init-lib.pl';
 &ReadParse();
-%access = &get_module_acl();
 $access{'bootup'} == 1 || &error($text{'change_ecannot'});
 
 &ui_print_header(undef, $text{'change_title'}, "");

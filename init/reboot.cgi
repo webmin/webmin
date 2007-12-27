@@ -4,7 +4,6 @@
 
 require './init-lib.pl';
 &ReadParse();
-%access = &get_module_acl();
 $access{'reboot'} || &error($text{'reboot_ecannot'});
 &ui_print_header(undef, $text{'reboot_title'}, "");
 print "<p>\n";

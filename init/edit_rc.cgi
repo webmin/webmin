@@ -3,7 +3,6 @@
 
 require './init-lib.pl';
 &ReadParse();
-%access = &get_module_acl();
 $access{'bootup'} || &error($text{'edit_ecannot'});
 
 if ($in{'new'}) {

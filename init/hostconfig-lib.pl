@@ -159,26 +159,25 @@ sub hostconfig_table
 ####
 local($ahref, $setting, $link, $description);
 my($ahref, $setting, $description) = @_;
+local @cols;
 if ($access{'bootup'} == 1) {
-	$link = "<td><a href=\"edit_hostconfig.cgi?0+$ahref\">$ahref</a></td>";
+	push(@cols, "<a href=\"edit_hostconfig.cgi?0+$ahref\">$ahref</a>");
+	}
+else {
+	push(@cols, $ahref);
 	}
 if ( $setting eq "-NO-" ) {
-	$setting = "<td><FONT color=#ff0000>$setting</font></td>";
+	push(@cols, "<FONT color=#ff0000>$setting</font>");
 	}
 elsif ( $setting ne "" ) {
-	$setting = "<td>$setting</td>";
+	push(@cols, $setting);
 	}
 else {
-	$setting = "<td>&nbsp;</td>"
+	push(@cols, "");
 	}
-if ( $description ne "" ) {
-	$description = "<td>$description</td>";
-	}
-else {
-	$description = "<td>&nbsp;</td>";
-	}
+push(@cols, $description);
 if ( $ahref ne "" ) {
-	return "<tr $cb>\n$link\n$setting\n$description\n</tr>\n";
+	return &ui_columns_row(\@cols);
 	}
 else {
 	return "<!-- this is annoying- I'll have to track it down.. -->";

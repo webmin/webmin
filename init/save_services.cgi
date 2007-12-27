@@ -2,7 +2,6 @@
 # Start or stop a bunch of win32 services
 
 require './init-lib.pl';
-%access = &get_module_acl();
 &ReadParse();
 @sel = split(/\0/, $in{'d'});
 @sel || &error($text{'mass_enone2'});

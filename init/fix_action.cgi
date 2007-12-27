@@ -3,7 +3,6 @@
 # Convert an action from a run-level file to a proper action in init.d
 
 require './init-lib.pl';
-%access = &get_module_acl();
 $access{'bootup'} == 1 || &error("You are not allowed to edit bootup actions");
 $rl = $ARGV[0];
 $ss = $ARGV[1];

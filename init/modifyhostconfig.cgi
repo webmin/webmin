@@ -6,7 +6,6 @@
 # for OSX/Darwin
 
 require './init-lib.pl';
-%access = &get_module_acl();
 $access{'bootup'} == 1 || &error("You are not allowed to edit the bootup script");
 &ReadParse();
 

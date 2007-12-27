@@ -14,6 +14,9 @@
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
+@action_buttons = ( 'start', 'restart', 'condrestart', 'reload', 'status',
+		    'stop' );
+%access = &get_module_acl();
 
 # Work out init mode
 if ($config{'hostconfig'}) {
