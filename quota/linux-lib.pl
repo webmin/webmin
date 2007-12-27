@@ -57,7 +57,7 @@ sub quota_can
 return ($_[1]->[3] =~ /usrquota/ ||
 	$_[0]->[3] =~ /usrquota/ ? 1 : 0) +
        ($_[1]->[3] =~ /grpquota/ ||
-        $_[0]->[3] =~ /usrquota/ ? 2 : 0);
+        $_[0]->[3] =~ /grpquota/ ? 2 : 0);
 }
 
 # quota_now(&mnttab, &fstab)
