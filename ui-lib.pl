@@ -1066,14 +1066,15 @@ EOF
 
 ####################### grid layout functions
 
-# ui_grid_table(&elements, columns, [width-percent], [tds], [tabletags])
+# ui_grid_table(&elements, columns, [width-percent], [tds], [tabletags],
+#		[title])
 # Given a list of HTML elements, formats them into a table with the given
 # number of columns. However, themes are free to override this to use fewer
 # columns where space is limited.
 sub ui_grid_table
 {
 return &theme_ui_grid_table(@_) if (defined(&theme_ui_grid_table));
-local ($elements, $cols, $width, $tds, $tabletags) = @_;
+local ($elements, $cols, $width, $tds, $tabletags, $title) = @_;
 return "" if (!@$elements);
 local $rv = "<table".
 	    ($width ? " width=$width%" : "").
@@ -1092,6 +1093,13 @@ if ($i%$cols) {
 	$rv .= "</tr>\n";
 	}
 $rv .= "</table>\n";
+if ($title) {
+	$rv = "<table class=ui_table border ".
+	      ($width ? " width=$width%" : "").">\n".
+	      "<tr $tb> <td><b>$title</b></td> </tr>\n".
+              "<tr $cb> <td>$rv</td> </tr>\n".
+	      "</table>";
+	}
 return $rv;
 }
 
