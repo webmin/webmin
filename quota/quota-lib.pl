@@ -91,7 +91,12 @@ sub edit_user_quota
 if ($config{'user_setquota_command'} &&
     &has_command((split(/\s+/, $config{'user_setquota_command'}))[0])) {
 	# Use quota setting command
-	local $cmd = $config{'user_setquota_command'}." ".quotemeta($_[0])." ".
+	local $user = $_[0];
+	if ($user =~ /^#(\d+)$/) {
+		# Pass numeric UID
+		$user = $1;
+		}
+	local $cmd = $config{'user_setquota_command'}." ".quotemeta($user)." ".
 		     int($_[2])." ".int($_[3])." ".int($_[4])." ".int($_[5]).
 		     " ".quotemeta($_[1]);
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
@@ -129,7 +134,12 @@ sub edit_group_quota
 if ($config{'group_setquota_command'} &&
     &has_command((split(/\s+/, $config{'group_setquota_command'}))[0])) {
 	# Use quota setting command
-	local $cmd = $config{'group_setquota_command'}." ".quotemeta($_[0])." ".
+	local $group = $_[0];
+	if ($group =~ /^#(\d+)$/) {
+		# Pass numeric UID
+		$group = $1;
+		}
+	local $cmd =$config{'group_setquota_command'}." ".quotemeta($group)." ".
 		     int($_[2])." ".int($_[3])." ".int($_[4])." ".int($_[5]).
 		     " ".quotemeta($_[1]);
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
