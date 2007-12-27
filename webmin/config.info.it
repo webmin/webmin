@@ -1,0 +1,4 @@
+standard_url=URL per la lista dei moduli standard,3,Su www.webmin.com
+third_url=URL per la lista dei moduli di terze parti,3,Su www.webmin.com
+cron_mode=Mostra i tempi di aggiornamento come,1,0-Interfaccia semplice,1-Selettore del tempo di Cron
+osdn=Recupera la lista del mirror OSDN di Webmin?,1,1-Si,0-No

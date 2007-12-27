@@ -1,0 +1,2 @@
+date_subs=Effettuare le sostituzioni nei nomi dei file di destinazione dei backup utilizzando strftime?,1,1-Si,0-No
+from_addr=Indirizzo del mittente per i messaggi email,3,webmin@hostname

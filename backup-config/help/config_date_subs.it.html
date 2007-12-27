@@ -1,0 +1,144 @@
+<header>Effettuare le sostituzioni nei nomi dei file di destinazione dei backup utilizzando strftime?</header>
+
+Se questa opzione è impostata su <b>Si</b>, codici come %d, %m, %Y e %u potranno essere usati nei nomi dei file di destinazione dei backup. Questi codici saranno sostituiti con il giorno, il mese, l'anno e il giorno della settimana in base al momento in cui il backup verrà eseguito. Questo è molto utile se vuoi salvare diversi file di backup ogni giorno in modo da poter ripristinare il sistema esattamente ad una data da te preferita. <p>
+
+Altri codici che possono essere usati sono:<br>
+
+<pre><font size=-1>
+ %a     Il giorno della settimana abbreviato in funzione
+           della lingua attuale impostata nel sistema.
+
+ %A     Il giorno della settimana completo in funzione
+           della lingua attuale impostata nel sistema.
+
+ %b     Il nome del mese abbreviato in funzione
+           della lingua attuale impostata nel sistema.
+
+ %B     Il nome del mese completo in funzione
+           della lingua attuale impostata nel sistema.
+
+ %c     La formattazione preferita della data e dell'ora
+           per la lingua attuale impostata nel sistema.
+
+ %C     Il numero del secolo (anno/100) come intero di 
+           due cifre.
+
+ %d     Il giorno del mese come numero decimale 
+           (intervallo 01-31).
+
+ %e     Come %d, il giorno del mese come numero decimale,
+           ma gli zeri antecedenti i numeri verranno
+           sostituiti da uno spazio.
+
+ %E     Modificatore: usa un formato alternativo. 
+           Vedi più in basso.
+
+ %G     L'anno in formato ISO 8601 con il secolo come
+           numero decimale. Le 4 cifre dell'anno 
+           corrispondenti al numero ISO della settimana
+           (vedi %V). Questo ha lo stesso formato e
+           valore di %y tranne che se il numero ISO della
+           settimana appartiene all'anno precedente o 
+           successivo, rispetto all'anno utilizzato.
+
+ %g     Come %G ma senza secolo con l'anno in due cifre.
+
+ %h     Equivalente a %b.
+
+ %H     L'ora in formato decimale utilizzando il formato
+           24 ore (intervallo 00-23).
+
+ %I     L'ora in formato decimale utilizzando il formato
+           12 ore (intervallo 01-12).
+
+ %j     Il giorno dell'anno come numero decimale
+           (intervallo 001-366).
+
+ %k     L'ora (in formato 24 ore) come numero decimale
+           (intervallo 0-23); le singole cifre sono
+           precedute da uno spazio (vedi anche %H)
+
+ %l     L'ora (in formato 12 ore) come numero decimale
+           (intervallo 1-12); le singole cifre sono
+           precedute da uno spazio (vedi anche %I)
+
+ %m     Il mese come numero decimale (intervallo 01-12).
+
+ %M     Il minuto come numero decimale (intervallo 00-59).
+
+ %n     Una nuova linea.
+
+ %O     Modificatore: usa un formato alternativo. 
+           Vedi più in basso.
+
+ %p     Può essere 'AM'  o 'PM' in funzione del valore
+           tempo restituito o alla stringa corrispondente
+           per la lingua di sistema. Mezzogiorno è
+           considerato come 'PM' e mezzanotte
+           come 'AM'.
+
+ %P     Come %p ma con caratteri minuscoli: 'am' o 'pm'
+           o la stringa corrispondente nella lingua di
+           sistema.
+
+ %r     L'ora nella notazione a.m. o p.m. In lungua POSIX
+           equivale a '%I:%M:%S %p'.
+
+ %R     L'ora nella notazione 24 ore (%H:%M).
+           Per la versione comprendente i secondi vedi %T.
+
+ %s     Il numero di secondi a partire dall'Epoca, ad
+           esempio da 1970-01-01 00:00:00 UTC.
+
+ %S     I secondi come numero decimale (intervallo 00-61).
+
+ %t     Il carattere di tabulazione
+
+ %T     L'ora nella notazione 24 ore (%H:%M:%S).
+
+ %u     Il giorno della settimana come numero decimale
+           (intervallo 1-7). Lunedì viene considerato 
+           come 1. Vedi anche %w.
+
+ %U     Il numero della settimana nell'anno corrente come
+           numero decimale (intervallo 00-53), partendo
+           dalla domenica come primo giorno della
+           settimana 01. Vedi anche %V e %W.
+
+ %V     Il numero ISO 8601:1988 della settimana nell'anno
+           corrente come numero decimale (intervallo 01-53)
+           dove la settimana 1 è la prima settimana che ha
+           almeno 4 giorni nell'anno corrente considerando
+           il lunedì come primo giorno della settimana.
+           Vedi anche %U e %W.
+
+ %w     Il giorno della settimana come numero decimale
+           (intervallo 0-6). Domenica viene considerata
+           come 0. Vedi anche %u.
+
+ %W     Il numero della settimana nell'anno corrente come
+           numero decimale (intervallo 00-53), iniziando
+           con il primo lunedi come primo giorno della
+           settimana 01.
+
+ %x     La formattazione della data preferita per la lingua
+           di sistema senza l'ora.
+
+ %X     La formattazione dell'ora preferita per la lingua
+           di sistema senza la data.
+
+ %y     L'anno come numero decimale senza il secolo
+           (intervallo 00-99)
+
+ %Y     L'anno come numero decimale compreso il secolo.
+
+ %z     Il fuso orario come differenza da GMT. Richiede che
+           la data sia conforme allo standard emit RFC822
+           (utilizzando "%a, %d  %b  %Y %H:%M:%S %z").
+
+ %Z     Il fuso orario o il nome o l'abbreviazione.
+
+ %%     Il carattere '%'.
+</font></pre>
+
+<footer>
