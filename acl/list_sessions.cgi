@@ -17,38 +17,35 @@ foreach $u (&list_users()) {
 $haslog = &foreign_available("webminlog");
 
 print "<b>$text{'sessions_desc'}</b><p>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'sessions_id'}</b></td> ",
-      "<td><b>$text{'sessions_user'}</b></td> ",
-      "<td><b>$text{'sessions_host'}</b></td> ",
-      $haslog ? "<td><b>$text{'sessions_login'}</b></td> " : "",
-      "<td><br></td> </tr>\n";
+print &ui_columns_start([ $text{'sessions_id'},
+			  $text{'sessions_user'},
+			  $text{'sessions_host'},
+			  $haslog ? ( $text{'sessions_login'} ) : ( ),
+			  "" ], 100);
 foreach $k (sort { @a=split(/\s+/, $sessiondb{$a}); @b=split(/\s+/, $sessiondb{$b}); $b[1] <=> $a[1] } keys %sessiondb) {
 	next if ($k =~ /^1111111/);
 	local ($user, $ltime, $lip) = split(/\s+/, $sessiondb{$k});
 	next if ($miniserv{'logouttime'} &&
 		 $time_now - $ltime > $miniserv{'logouttime'}*60);
-	print "<tr $cb>\n";
-	print "<td><a href='delete_session.cgi?id=$k'>$k</a></td>\n";
+	local @cols;
+	push(@cols, "<a href='delete_session.cgi?id=$k'>$k</a>");
 	if ($hasuser{$user}) {
-		print "<td><a href='edit_user.cgi?user=$user'>$user</a></td>\n";
+		push(@cols, "<a href='edit_user.cgi?user=$user'>$user</a>");
 		}
 	elsif ($miniserv{'unixauth'}) {
-		print "<td>$user (<a href='edit_user.cgi?user=$miniserv{'unixauth'}'>$miniserv{'unixauth'}</a>)</td>\n";
+		push(@cols, "$user (<a href='edit_user.cgi?user=$miniserv{'unixauth'}'>$miniserv{'unixauth'}</a>)");
 		}
 	else {
-		print "<td>$user</td>\n";
+		push(@cols, $user);
 		}
-	print "<td>",($lip || "<br>"),"</td>\n";
-	local $tm = localtime($ltime);
-	print "<td><tt>$tm</tt></td>\n";
+	push(@cols, $lip);
+	push(@cols, &make_date($ltime));
 	if ($haslog) {
-		print "<td><a href='../webminlog/search.cgi?",
-		      "uall=1&mall=1&tall=1&wall=1&fall=1&sid=$k'>$text{'sessions_lview'}</a></td>\n";
+		push(@cols, "<a href='../webminlog/search.cgi?uall=1&mall=1&tall=1&wall=1&fall=1&sid=$k'>$text{'sessions_lview'}</a>");
 		}
-	print "</tr>\n";
+	print &ui_columns_row(\@cols);
 	}
-print "</table><br>\n";
+print &ui_columns_end();
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -64,26 +64,26 @@ else {
 		if ($access{'create'});
 	print &ui_links_row(\@rowlinks);
 
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'index_user'}</b></td>\n";
-	print "<td><b>$text{'index_modules'}</b></td> </tr>\n";
+	print &ui_columns_start([ $text{'index_user'},
+				  $text{'index_modules'} ], 100);
 	foreach $u (@canulist) {
-		print "<tr $cb>\n";
-		print "<td valign=top>",
-		      &user_link($u, "edit_user.cgi", "user"),"</td>\n";
 		if ($ingroup{$u->{'name'}}) {
 			# Is a member of a group
-			&show_modules("user", $u->{'name'}, $u->{'ownmods'}, 0,
-				      &text('index_modgroups',
-					  "<tt>$ingroup{$u->{'name'}}->{'name'}</tt>"));
+			$smods = &show_modules(
+			      "user", $u->{'name'}, $u->{'ownmods'}, 0,
+			      &text('index_modgroups',
+				  "<tt>$ingroup{$u->{'name'}}->{'name'}</tt>"));
 				      
 			}
 		else {
 			# Is a stand-alone user
-			&show_modules("user", $u->{'name'}, $u->{'modules'}, 1);
+			$smods = &show_modules(
+			      "user", $u->{'name'}, $u->{'modules'}, 1);
 			}
+		print &ui_columns_row([ &user_link($u, "edit_user.cgi", "user"),
+					$smods ], [ "valign=top" ]);
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	print &ui_links_row(\@rowlinks);
 	if (!$config{'select'}) {
 		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
@@ -105,10 +105,11 @@ if ($access{'groups'}) {
 		print "<a href=edit_group.cgi>$text{'index_gcreate'}</a><p>\n";
 		}
 	elsif ($config{'display'}) {
+		# Show just group names
 		print &ui_form_start("delete_groups.cgi", "post");
 		&show_name_table(\@glist, "edit_group.cgi",
 				 $text{'index_gcreate'},
-				 $text{'index_group'}, "group");
+				 $text{'index_groups'}, "group");
 		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
 		$form++;
 		}
@@ -200,59 +201,50 @@ if (@icons) {
 sub show_modules
 {
 local ($type, $who, $mods, $global, $prefix) = @_;
+local $rv;
 if ($config{'select'}) {
 	# Show as drop-down menu
-	print "<form action=edit_acl.cgi>\n";
-	print "<td nowrap>\n";
-	print $prefix,"<br>\n" if ($prefix);
+	$rv .= &ui_form_start("edit_acl.cgi");
+	$rv .= $prefix."<br>\n" if ($prefix);
 	if (@$mods) {
-		print "<input type=hidden name=$type value='$who'>\n";
+		$rv .= &ui_hidden($type, $who);
 		if ($access{'acl'}) {
-			print "<input type=submit value='$text{'index_edit'}'>\n";
+			$rv .= &ui_submit($text{'index_edit'});
 			}
-		print "<select name=mod>\n";
-		print "<option value=''>$text{'index_global'}\n" if ($global);
-		foreach $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
+		local @opts;
+		push(@opts, [ '', $text{'index_global'} ]) if ($global);
+		foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
 			if ($modname{$m}) {
-				print "<option value=$m>$modname{$m}\n";
+				push(@opts, [ $m, $modname{$m} ]);
 				}
 			}
-		print "</select>\n";
+		$rv .= &ui_select("mod", undef, \@opts);
 		}
-	print "</td></form> </tr>\n";
+	$rv .= &ui_form_end();
 	}
 else {
 	# Show as table
-	print "<td>\n";
-	print $prefix,"<br>\n" if ($prefix);
-	print "<table width=100% cellpadding=1 cellspacing=1>\n";
-	print "<tr> <td width=33%>\n";
+	$rv .= $prefix."<br>\n" if ($prefix);
+	local @grid;
 	if ($access{'acl'}) {
-		print "<a href='edit_acl.cgi?mod=&$type=",
-		      &urlize($who),"'>$text{'index_global'}</a></td>";
-		$done = 1;
+		push(@grid, "<a href='edit_acl.cgi?mod=&$type=".
+			    &urlize($who)."'>$text{'index_global'}</a>");
 		}
 	foreach $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
 		if ($modname{$m}) {
-			if ($done%3 == 0) { print "<tr>\n"; }
-			print "<td width=33%>";
 			if ($mcan{$m} && $access{'acl'}) {
-				print "<a href='edit_acl.cgi?mod=",
-				      &urlize($m),"&$type=",&urlize($who),
-				      "'>$modname{$m}</a>";
+				push(@grid, "<a href='edit_acl.cgi?mod=".
+				      &urlize($m)."&$type=".&urlize($who).
+				      "'>$modname{$m}</a>");
 				}
 			else {
-				print $modname{$m};
+				push(@grid, $modname{$m});
 				}
-			print "</td>\n";
-			if ($done%3 == 2) { print "<tr>\n"; }
-			$done++;
 			}
 		}
-	while($done++ % 3) { print "<td width=33%></td>\n"; }
-	print "</table>\n";
-	print "</td> </tr>\n";
+	$rv .= &ui_grid_table(\@grid, 3, 100);
 	}
+return $rv;
 }
 
 # show_name_table(&users|&groups, cgi, create-text, header-text, param)
@@ -263,24 +255,11 @@ local @rowlinks = ( &select_all_link("d", $form),
 		    &select_invert_link("d", $form) );
 push(@rowlinks, "<a href=$_[1]>$_[2]</a>") if ($_[2]);
 print &ui_links_row(\@rowlinks);
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$_[3]</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-
-for($i=0; $i<@{$_[0]}; $i++) {
-	print "<tr>\n" if ($i%4 == 0);
-	print "<td width=25%>",&user_link($_[0]->[$i], $_[1], $_[4]),"</td>\n";
-	print "</td>\n";
-	print "</tr>\n" if ($i%4 == 3);
+local @links;
+for(my $i=0; $i<@{$_[0]}; $i++) {
+	push(@links, &user_link($_[0]->[$i], $_[1], $_[4]));
 	}
-if ($i%4) {
-	while($i++%4) {
-		print "<td width=25%></td>\n";
-		}
-	print "</tr>\n";
-	}
-
-print "</table></td> </tr></table>\n";
+print &ui_grid_table(\@links, 4, 100, undef, undef, $_[3]);
 print &ui_links_row(\@rowlinks);
 }
 
