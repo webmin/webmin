@@ -1,2 +1,3 @@
----- Changes since 1.150 ----
-
+---- Changes since 1.390 ----
+Updated all code that generates HTML to use the new Webmin UI library.
+General code cleanups and support for images in documentation files.

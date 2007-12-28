@@ -32,5 +32,15 @@ $ENV{'MANPATH'} = join(":", split(/:/, $config{'man_dir'}),
 			    "/usr/share/man");
 }
 
+# show_view_table(heading, html)
+# Prints a block showing the contents of a documentation page
+sub show_view_table
+{
+local ($heading, $html) = @_;
+print &ui_table_start($heading, "width=100%", 2);
+print &ui_table_row(undef, $html, 2);
+print &ui_table_end();
+}
+
 1;
 

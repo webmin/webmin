@@ -70,22 +70,16 @@ else {
 			$out =~ s/<A HREF="file:[^"]+">([^<]+)<\/a>/$1/ig;
 			$out =~ s/<A HREF="view_man.cgi">/<A HREF=\"\">/i;
 			}
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>",&text('man_header', $in{'page'},
-					       $in{'sec'}),"</b></td> </tr>\n";
-		print "<tr $cb> <td>",$out,"</td> </tr>\n";
-		print "</table>\n";
+		&show_view_table(&text('man_header', $in{'page'}, $in{'sec'}),
+				 $out);
 	} else {
 		$out =~ s/.\010//g;
 		$out =~ s/^(man:\s*)?(re)?formatting.*//i;
 		$out =~ s/&/&amp;/g;
 		$out =~ s/</&lt;/g;
 		$out =~ s/>/&gt;/g;
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>",&text('man_header', $in{'page'},
-					       $in{'sec'}),"</b></td> </tr>\n";
-		print "<tr $cb> <td><pre>",$out,"</pre></td> </tr>\n";
-		print "</table><p>\n";
+		&show_view_table(&text('man_header', $in{'page'}, $in{'sec'}),
+				 "<pre>$out</pre>");
 		}
 	}
 

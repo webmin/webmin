@@ -10,20 +10,19 @@ $in{'mod'} !~ /[\\\&\;\`\'\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r]/ ||
 
 &ui_print_header(undef, $text{'perl_title'}, "");
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",&text('perl_header', $in{'mod'}),"</b></td> </tr>\n";
-print "<tr $cb> <td><pre>";
 @for = split(/\s+/, $in{'for'});
 &open_execute_command(DOC, "$perl_doc -t ".quotemeta($in{'mod'}), 1, 1);
+$out = "<pre>";
 while($line = <DOC>) {
 	$line = &html_escape($line);
 	foreach $f (@for) {
 		$line =~ s/($f)/<b>$1<\/b>/ig;
 		}
-	print $line;
+	$out .= $line;
 	}
 close(DOC);
-print "</pre></td></tr></table><p>\n";
+$out .= "</pre>";
+&show_view_table(&text('perl_header', $in{'mod'}), $out);
 
 &ui_print_footer("", $text{'index_return'});
 
