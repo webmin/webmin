@@ -12,3 +12,5 @@ The CPU type and speed is displayed on the processed by CPU usage page, on Linux
 On Virtuozzo systems, the free and used memory shown is determined by the VMs limits.
 ---- Changes since 1.340 ----
 Free and used real and virtual memory is now displayed on Solaris.
+---- Changes since 1.390 ----
+Re-wrote the user interface using the new Webmin UI library, for consistency.

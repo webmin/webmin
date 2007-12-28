@@ -64,7 +64,7 @@ return split(/\s+/, $out);
 sub renice_proc
 {
 return undef if (&is_readonly_mode());
-$out = `renice $_[1] -p $_[0] 2>&1`;
+local $out = &backquote_logged("renice $_[1] -p $_[0] 2>&1");
 if ($?) { return $out; }
 return undef;
 }

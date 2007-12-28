@@ -11,5 +11,6 @@ require './proc-lib.pl';
 if ($error = &renice_proc($in{pid}, $in{nice})) {
 	&error($error);
 	}
+&webmin_log("renice", undef, undef, \%in);
 &redirect("edit_proc.cgi?$in{pid}");
 

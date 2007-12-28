@@ -33,6 +33,9 @@ elsif ($action eq 'kill') {
 			}
 		}
 	}
+elsif ($action eq 'renice') {
+	return &text('log_renice', $p->{'nice'}, $p->{'pid'});
+	}
 else {
 	return undef;
 	}

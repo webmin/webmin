@@ -15,7 +15,7 @@ index_loadnums=$1 (1 mins) , $2 (5 mins) , $3 (15 mins)
 index_cpuname=CPU type:
 index_inzone=In zone $1
 
-pid=Process ID
+pid=ID
 owner=Owner
 command=Command
 cpu=CPU
@@ -58,6 +58,8 @@ run_euser2=You are not allowed to run commands as the selected user
 edit_title=Process Information
 edit_gone=This process is no longer running
 edit_sub=Subprocesses
+edit_subid=ID
+edit_subcmd=Sub-process command
 edit_kill=Send Signal
 edit_change=Change
 edit_prilow=Low priority
@@ -136,6 +138,7 @@ log_kill=Sent signal $1 to process $2
 log_kills=Send signal $1 to $2 processes
 log_kill_l=Sent signal $1 to process $2
 log_kills_l=Sent signal $1 to processes<br>$2
+log_renice=Changed priority of process $2 to $1
 
 acl_manage=Manage processes as user
 acl_manage_def=Current Webmin user

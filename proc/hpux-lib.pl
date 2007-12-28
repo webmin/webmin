@@ -45,7 +45,7 @@ sub renice_proc
 return undef if (&is_readonly_mode());
 local($out, $nice);
 $nice = $_[1] - 20;
-$out = `renice -n $nice -p $_[0] 2>&1`;
+local $out = &backquote_logged("renice -n $nice -p $_[0] 2>&1");
 if ($?) { return $out; }
 return undef;
 }

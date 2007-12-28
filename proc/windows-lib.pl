@@ -45,7 +45,7 @@ return @plist;
 sub renice_proc
 {
 return undef if (&is_readonly_mode());
-$out = `process -p $_[0] $_[1] 2>&1`;
+local $out = &backquote_logged("process -p $_[0] $_[1] 2>&1");
 if ($?) { return $out; }
 return undef;
 }

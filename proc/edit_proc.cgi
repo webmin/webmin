@@ -6,123 +6,127 @@ require './proc-lib.pl';
 &ui_print_header(undef, $text{'edit_title'}, "", "edit_proc");
 %pinfo = &process_info($ARGV[0]);
 &can_edit_process($pinfo{'user'}) || &error($text{'edit_ecannot'});
+
+# Check if the process is still running
 if (!%pinfo) {
 	print "<b>$text{'edit_gone'}</b> <p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_title'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'edit_title'}, "width=100%", 4,
+		      [ "width=20%", "width=30%", "width=20%", "width=30%" ]);
 
-print "<tr> <td width=20% nowrap><b>$text{'command'}</b></td>\n";
-print "     <td colspan=3><font size=+1>",
-      &html_escape($pinfo{args}),"</font></td> </tr>\n";
-print "<tr> <td width=20% nowrap><b>$text{'pid'}</b></td><td>$pinfo{pid}</td>\n";
-print "<td width=20% nowrap><b>$text{'parent'}</b></td>\n";
+# Full command
+print &ui_table_row($text{'command'},
+	"<tt>".&html_escape($pinfo{args})."</tt>", 3);
+
+# Process ID
+print &ui_table_row($text{'pid'}, $pinfo{pid});
+
+# Parent process
 if ($pinfo{ppid}) {
 	local %ppinfo = &process_info($pinfo{ppid});
-	print "<td><a href=\"edit_proc.cgi?$ppinfo{pid}\">",
-		&cut_string($ppinfo{'args'}, 30),"</a></td>";
-	}
-else { print "<td>$text{'edit_none'}</td>"; }
-print " </tr>\n";
-print "<tr> <td width=20% nowrap><b>$text{'owner'}</b></td> ",
-      "<td>$pinfo{'user'}</td>\n";
-print "<td width=20% nowrap><b>$text{'cpu'}</b></td> ",
-      "<td>$pinfo{'cpu'}</td> </tr>\n";
-print "<tr> <td width=20% nowrap><b>$text{'size'}</b></td> ",
-      "<td>$pinfo{'size'}</td>\n";
-print "<td width=20% nowrap><b>$text{'runtime'}</b></td> ",
-      "<td>$pinfo{'time'}</td> </tr>\n";
-print "<tr> <td>",&hlink("<b>$text{'nice'}</b>","nice"),"</td>\n";
-print "<form action=renice_proc.cgi>\n";
-print "<input type=hidden name=pid value=$ARGV[0]>\n";
-print "<td colspan=3>\n";
-if (&indexof($pinfo{nice}, @nice_range) < 0) {
-	print $pinfo{nice};
+	print &ui_table_row($text{'parent'},
+		"<a href=\"edit_proc.cgi?$ppinfo{pid}\">".
+                &cut_string($ppinfo{'args'}, 30)."</a>");
 	}
 else {
-	print &nice_selector("nice", $pinfo{nice});
-	print &ui_submit($text{'edit_change'});
+	print &ui_table_row($text{'parent'}, $text{'edit_none'});
 	}
-print "</td> </form></tr>\n";
-$i = 0;
+
+# Unix user
+print &ui_table_row($text{'owner'}, $pinfo{'user'});
+
+# CPU use
+print &ui_table_row($text{'cpu'}, $pinfo{'cpu'});
+
+# Memory size
+print &ui_table_row($text{'size'}, $pinfo{'size'});
+
+# Run time
+print &ui_table_row($text{'runtime'}, $pinfo{'time'});
+
+# Nice level
+print &ui_form_start("renice_proc.cgi");
+print &ui_hidden("pid", $ARGV[0]);
+print &ui_table_row(&hlink($text{'nice'},"nice"),
+	&indexof($pinfo{nice}, @nice_range) < 0 ? $pinfo{nice} :
+		&nice_selector("nice", $pinfo{nice}).
+		&ui_submit($text{'edit_change'}), 3);
+print &ui_form_end();
+
+# Extra OS-specific info
 foreach $k (keys %pinfo) {
 	if ($k =~ /^_/) {
-		if ($i%2 == 0) { print "<tr>\n"; }
-		printf "<td width=20%% nowrap><b>%s</b></td>\n",
-			$info_arg_map{$k};
-		print "<td>$pinfo{$k}</td>\n";
-		if ($i%2 == 1) { print "<tr>\n"; }
-		$i++;
+		print &ui_table_row($info_arg_map{$k}, $pinfo{$k});
 		}
 	}
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 print "<table width=100%><tr>\n";
 if ($access{'simple'}) {
 	# Just display buttons for common signals
-	print "<form action=kill_proc.cgi>\n";
-	print "<input type=hidden name=pid value=$pinfo{pid}><td nowrap>\n";
+	print &ui_form_start("kill_proc.cgi");
+	print &ui_hidden("pid", $pinfo{pid});
+	print "<td nowrap>\n";
 	foreach $s ('KILL', 'TERM', 'HUP', 'STOP', 'CONT') {
-		printf "<input type=submit value=\"%s\" name=%s>\n",
-			$text{"kill_".lc($s)}, $s;
+		print &ui_submit($text{"kill_".lc($s)}, $s);
 		}
-	print "</td></form>\n";
+	print "</td>\n";
+	print &ui_form_end();
 	}
 else {
 	# Allow the sending of any signal
-	print "<form action=kill_proc.cgi>\n";
-	print "<td nowrap><input type=hidden name=pid value='$pinfo{'pid'}'>\n";
-	print "<input type=submit value=\"$text{'edit_kill'}\">\n";
-	print "<select name=signal>\n";
-	foreach $s (&supported_signals()) {
-		printf "<option value=\"$s\" %s> $s\n",
-			$s eq "HUP" ? "selected" : "";
-		}
-	print "</select>";
+	print &ui_form_start("kill_proc.cgi");
+	print &ui_hidden("pid", $pinfo{pid});
+	print "<td nowrap>\n";
+	print &ui_submit($text{'edit_kill'});
+	print &ui_select("signal", "HUP", [ &supported_signals() ]);
 
 	print "&nbsp;" x 4;
-	print "<input type=submit name=TERM value='$text{'edit_sigterm'}'>\n";
-	print "<input type=submit name=KILL value='$text{'edit_sigkill'}'>\n";
+	print &ui_submit($text{'edit_sigterm'}, 'TERM');
+	print &ui_submit($text{'edit_sigkill'}, 'KILL');
 	print "&nbsp;" x 4;
-	print "<input type=submit name=STOP value='$text{'edit_sigstop'}'>\n";
-	print "<input type=submit name=CONT value='$text{'edit_sigcont'}'>\n";
-	print "</td></form>\n";
+	print &ui_submit($text{'edit_sigstop'}, 'STOP');
+	print &ui_submit($text{'edit_sigcont'}, 'CONT');
+	print "</td>\n";
+	print &ui_form_end();
 	}
 
 if ($has_trace_command) {
 	# Show button to trace syscalls
-	print "<form action=trace.cgi>\n";
-	print "<input type=hidden name=pid value=$pinfo{'pid'}>\n";
-	print "<td align=right width=10><input type=submit value='$text{'edit_trace'}'>\n";
-	print "</td></form>\n";
+	print &ui_form_start("trace.cgi");
+	print &ui_hidden("pid", $pinfo{pid});
+	print "<td align=right width=10>",
+	      &ui_submit($text{'edit_trace'}),"</td>\n";
+	print &ui_form_end();
 	}
 
 if ($has_lsof_command) {
 	# Show button to display currently open files
-	print "<form action=open_files.cgi>\n";
-	print "<input type=hidden name=pid value=$pinfo{'pid'}>\n";
-	print "<td align=right width=10><input type=submit value='$text{'edit_open'}'>\n";
-	print "</td></form>\n";
+	print &ui_form_start("open_files.cgi");
+	print &ui_hidden("pid", $pinfo{pid});
+	print "<td align=right width=10>",
+	      &ui_submit($text{'edit_open'}),"</td></form>\n";
+	print &ui_form_end();
 	}
-
 print "</tr></table><p>\n";
 
+# Sub-processes table
 @sub = grep { $_->{'ppid'} == $pinfo{pid} } &list_processes();
 if (@sub) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'edit_sub'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table>\n";
+	print &ui_columns_start([ $text{'edit_subid'},
+				  $text{'edit_subcmd'} ], 100);
 	@sub = sort { $a->{'pid'} <=> $b->{'pid'} } @sub;
 	foreach $s (@sub) {
 		local $p = $s->{'pid'};
-		print "<tr> <td><a href=\"edit_proc.cgi?$p\">$p</a></td>\n";
-		print "<td>",&cut_string($s->{args}, 80),"</td> </tr>\n";
+		print &ui_columns_row([
+			"<a href=\"edit_proc.cgi?$p\">$p</a>",
+			&cut_string($s->{args}, 80),
+			]);
 		}
-	print "</table></td></tr></table><p>\n";
+	print &ui_columns_end();
 	}
 
 &ui_print_footer("", $text{'index_return'});
