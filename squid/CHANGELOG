@@ -22,3 +22,4 @@ Re-design the Access Control page to use tabs, to better split up the lists of A
 Ensure that HTTP and ICP restrictions are created after ACLs in the config file.
 ---- Changes since 1.390 ----
 The httpd_accel family of directives are no longer shown when using Squid versions 2.6 and above (as they have been deprecated).
+Directives that refer to ACLs like http_access are no longer re-positioned in the configuration file unless necessary.

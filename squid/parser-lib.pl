@@ -102,7 +102,8 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 	if ($i >= @oldv) {
 		# a new directive is being added.. 
 		$nl = &directive_line($newv[$i]);
-		local @after = $_[3] ? &find_config($_[3], $_[0]) : ( );
+		local @after = ref($_[3]) ? ( $_[3] ) :
+			       $_[3] ? &find_config($_[3], $_[0]) : ( );
 		local $after = @after ? @after[$#after] : undef;
 		local @comment = &find_config($_[1], $_[0], 3);
 		local $comment = @comment ? $comment[$#comment] : undef;
@@ -140,7 +141,8 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 	else {
 		# updating some directive
 		$nl = &directive_line($newv[$i]);
-		local @after = $_[3] ? &find_config($_[3], $_[0]) : ( );
+		local @after = ref($_[3]) ? ( $_[3] ) :
+			       $_[3] ? &find_config($_[3], $_[0]) : ( );
 		local $after = @after ? @after[$#after] : undef;
 		if ($after && $oldv[$i]->{'line'} < $after->{'line'}) {
 			# Need to move it after some directive

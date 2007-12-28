@@ -20,13 +20,24 @@ if ($in{'delete'}) {
 else {
 	# update or create
 	@vals = ( $in{'action'} );
-	foreach $y (split(/\0/, $in{'yes'})) { push(@vals, $y); }
-	foreach $n (split(/\0/, $in{'no'})) { push(@vals, "!$n"); }
+	foreach $y (split(/\0/, $in{'yes'})) {
+		push(@vals, $y);
+		$used{$y}++;
+		}
+	foreach $n (split(/\0/, $in{'no'})) {
+		push(@vals, "!$n");
+		$used{$n}++;
+		}
 	$newicp = { 'name' => 'icp_access', 'values' => \@vals };
 	if ($icp) { splice(@icps, &indexof($icp, @icps), 1, $newicp); }
 	else { push(@icps, $newicp); }
 	}
-&save_directive($conf, "icp_access", \@icps, "acl");
+
+# Find the last referenced ACL
+@acls = grep { $used{$_->{'values'}->[0]} } &find_config("acl", $conf);
+$lastacl = @acls ? $acls[$#acls] : undef;
+
+&save_directive($conf, "icp_access", \@icps, $lastacl);
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
 &webmin_log($in{'delete'} ? 'delete' : $icp ? 'modify' : 'create', "icp");
