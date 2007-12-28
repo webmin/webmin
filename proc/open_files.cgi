@@ -17,75 +17,72 @@ print "<b>",&text('open_proc', "<tt>$pinfo{'args'}</tt>", $in{'pid'}),
       "</b><p>\n";
 
 # Show open files
+print &ui_subheading($text{'open_header1'});
 @files = &find_process_files($in{'pid'});
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'open_header1'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-
-print "<tr> <td><b>$text{'open_fd'}</b></td> ",
-      "<td><b>$text{'open_type'}</b></td> ",
-      "<td><b>$text{'open_size'}</b></td> ",
-      "<td><b>$text{'open_inode'}</b></td> ",
-      "<td><b>$text{'open_file'}</b></td> </tr>\n";
+print &ui_columns_start([ $text{'open_fd'},
+			  $text{'open_type'},
+			  $text{'open_size'},
+			  $text{'open_inode'},
+			  $text{'open_file'} ], 100, 0);
 foreach $f (@files) {
-	print "<tr>\n";
-	print "<td>",$f->{'fd'} eq 'cwd' ? $text{'open_cwd'} :
+	print &ui_columns_row([
+		     $f->{'fd'} eq 'cwd' ? $text{'open_cwd'} :
 		     $f->{'fd'} eq 'rtd' ? $text{'open_rtd'} :
 		     $f->{'fd'} eq 'txt' ? $text{'open_txt'} :
 		     $f->{'fd'} eq 'mem' ? $text{'open_mem'} :
-					   $f->{'fd'},"</td>\n";
-	print "<td>",$f->{'type'} =~ /^v?dir$/ ? $text{'open_dir'} :
+					   $f->{'fd'},
+		     $f->{'type'} =~ /^v?dir$/ ? $text{'open_dir'} :
 		     $f->{'type'} =~ /^v?reg$/ ? $text{'open_reg'} :
 		     $f->{'type'} =~ /^v?chr$/ ? $text{'open_chr'} :
 		     $f->{'type'} =~ /^v?blk$/ ? $text{'open_blk'} :
-					     $f->{'type'},"</td>\n";
-	print "<td>",$f->{'size'} || "<br>","</td>\n";
-	print "<td>$f->{'inode'}</td>\n";
-	print "<td>$f->{'file'}</td>\n";
-	print "</tr>\n";
+					     $f->{'type'},
+		     $f->{'size'},
+		     $f->{'inode'},
+		     $f->{'file'},
+		     ]);
 	}
-print "</table></td></tr></table><p>\n";
+print &ui_columns_end();
 
 # Show network connections
 @nets = &find_process_sockets($in{'pid'});
 if (@nets) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'open_header2'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_subheading($text{'open_header2'});
 
-	print "<tr> <td><b>$text{'open_type'}</b></td> ",
-	      "<td><b>$text{'open_proto'}</b></td> ",
-	      "<td><b>$text{'open_fd'}</b></td> ",
-	      "<td colspan=4><b>$text{'open_desc'}</b></td> </tr>\n";
+	print &ui_columns_start([ $text{'open_type'},
+				  $text{'open_proto'},
+				  $text{'open_fd'},
+				  $text{'open_desc'} ], 100, 0,
+				[ "", "", "", "colspan=4" ]);
 	foreach $n (@nets) {
-		print "<tr>\n";
-		print "<td>",uc($n->{'type'}),"</td>\n";
-		print "<td>",uc($n->{'proto'}),"</td>\n";
-		print "<td>",$n->{'fd'},"</td>\n";
+		@cols = ( uc($n->{'type'}),
+			  uc($n->{'proto'}),
+			  $n->{'fd'} );
+		@tds = ( "", "", "" );
 		if ($n->{'listen'} && $n->{'lhost'} eq '*') {
-			print "<td colspan=4>",
-				&text('open_listen1', "<tt>$n->{'lport'}</tt>"),
-				"</td>\n";
+			push(@cols, &text('open_listen1',
+					  "<tt>$n->{'lport'}</tt>"));
+			push(@tds, "colspan=4");
 			}
 		elsif ($n->{'listen'}) {
-			print "<td colspan=4>",
-				&text('open_listen2', "<tt>$n->{'lhost'}</tt>",
-				      "<tt>$n->{'lport'}</tt>"),"</td>\n";
+			push(@cols, &text('open_listen2',
+					  "<tt>$n->{'lhost'}</tt>",
+				          "<tt>$n->{'lport'}</tt>"));
+			push(@tds, "colspan=4");
 			}
 		elsif ($n->{'rhost'}) {
-			print "<td><tt>$n->{'lhost'}:$n->{'lport'}</tt></td>\n";
-			print "<td><tt>-&gt;</tt></td>\n";
-			print "<td><tt>$n->{'rhost'}:$n->{'rport'}</tt></td>\n";
-			print "<td><tt>$n->{'state'}</tt></td>\n";
+			push(@cols, "<tt>$n->{'lhost'}:$n->{'lport'}</tt>",
+				    "<tt>-&gt;</tt>",
+				    "<tt>$n->{'rhost'}:$n->{'rport'}</tt>",
+				    "<tt>$n->{'state'}</tt>");
 			}
 		else {
-			print "<td colspan=4>",
-				&text('open_recv', "<tt>$n->{'lhost'}</tt>",
-				      "<tt>$n->{'lport'}</tt>"),"</td>\n";
+			push(@cols, &text('open_recv', "<tt>$n->{'lhost'}</tt>",
+				      "<tt>$n->{'lport'}</tt>"));
+			push(@tds, "colspan=4");
 			}
-		print "</tr>\n";
+		print &ui_columns_row(\@cols, \@tds);
 		}
-	print "</table></td></tr></table>\n";
+	print &ui_columns_end();
 	}
 
 &ui_print_footer("edit_proc.cgi?$in{'pid'}", $text{'edit_return'},
