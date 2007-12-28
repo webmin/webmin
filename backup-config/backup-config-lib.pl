@@ -237,8 +237,18 @@ if ($_[4]) {
 
 # Add other files
 foreach my $f (@{$_[6]}) {
-	push(@files, $f);
-	push(@{$manifestfiles{"other"}}, $f);
+	if (-d $f) {
+		# A directory .. recursively expand
+		foreach my $sf (&expand_directory($f)) {
+			push(@files, $sf);
+			push(@{$manifestfiles{"other"}}, $sf);
+			}
+		}
+	else {
+		# Just one file
+		push(@files, $f);
+		push(@{$manifestfiles{"other"}}, $f);
+		}
 	}
 
 # Save the manifest files
@@ -574,6 +584,26 @@ local $others = $in->{$name."_other"} ?
 	join("\t", split(/\n+/, $in->{$name."_files"})) : undef;
 $webmin || !$nofiles || $others || &error($text{'save_ewebmin'});
 return ($webmin, $nofiles, $others);
+}
+
+sub expand_directory
+{
+local ($dir) = @_;
+local @rv;
+opendir(EXPAND, $dir);
+local @sf = readdir(EXPAND);
+closedir(EXPAND);
+foreach my $sf (@sf) {
+	next if ($sf eq "." || $sf eq "..");
+	local $path = "$dir/$sf";
+	if (-l $path || !-d $path) {
+		push(@rv, $path);
+		}
+	elsif (-d $sf) {
+		push(@rv, &expand_directory($path));
+		}
+	}
+return @rv;
 }
 
 1;

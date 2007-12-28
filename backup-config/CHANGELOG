@@ -10,3 +10,5 @@ Made the backup email contents translatable.
 Added a warning if % is used in filenames but strftime substition is not enabled.
 ---- Changes since 1.330 ----
 Added tabs to reduce the size of the main page.
+---- Changes since 1.390 ----
+When a directory is entered as an additional path to backup, it will be expanded to the list of all files under it when the backup is done.
