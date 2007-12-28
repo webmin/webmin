@@ -75,7 +75,7 @@ if ($in{'enabled'}) {
 				    'values' => [ 'virtual' ] } ]);
 		}
 	else {
-		# In Squid 2.6, acceleration is a port option
+		# In Squid 2.6+, acceleration is a port option
 		@ports = &find_config("http_port", $conf);
 		foreach my $p (@ports) {
 			local $trans = 0;

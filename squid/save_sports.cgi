@@ -33,10 +33,6 @@ else {
 	}
 
 &save_opt("dns_testnames", undef, $conf);
-&save_opt("httpd_accel_host", undef, $conf);
-&save_opt("httpd_accel_port", undef, $conf);
-&save_choice("httpd_accel_with_proxy", undef, $conf);
-&save_choice("httpd_accel_uses_host_header", undef, $conf);
 
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});

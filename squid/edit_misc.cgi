@@ -88,7 +88,7 @@ elsif ($squid_version < 2.2) {
 print &opt_input($text{'emisc_fua'}, "fake_user_agent", $conf, $text{'none'}, 15);
 
 print "</tr><tr>\n";
-if ($squid_version < 3.0) {
+if ($squid_version < 2.6) {
 	$host = &find_value("httpd_accel_host", $conf);
 	print "<td><b>$text{'emisc_hah'}</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=accel value=0 %s> %s\n",

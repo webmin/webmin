@@ -39,7 +39,7 @@ elsif ($squid_version < 2.2) {
 	}
 &save_opt("fake_user_agent", undef, $conf);
 &save_choice("memory_pools", "on", $conf);
-if ($squid_version < 3.0) {
+if ($squid_version < 2.6) {
 	if ($in{'accel'} == 0) {
 		&save_directive($conf, "httpd_accel_host", [ ]);
 		}

@@ -51,21 +51,6 @@ print &opt_input($text{'emisc_sdta'}, "dns_testnames", $conf,
 		 $text{'default'}, 40);
 print "</tr>\n";
 
-print "<tr> <td colspan=4><hr></td> </tr>\n";
-
-print "</tr><tr>\n";
-print &opt_input($text{'emisc_hah'}, "httpd_accel_host", $conf,
-                 $text{'default'}, 50);
-print "</tr><tr>\n";
-print &opt_input($text{'emisc_hap'}, "httpd_accel_port", $conf,
-                 $text{'default'}, 10);
-print "</tr><tr>\n";
-print &choice_input($text{'emisc_hawp'}, "httpd_accel_with_proxy",
-                  $conf, "off", $text{'on'}, "on", $text{'off'}, "off");
-print &choice_input($text{'emisc_hauhh'}, "httpd_accel_uses_host_header", 
-                  $conf, "off", $text{'yes'}, "on", $text{'no'}, "off");
-print "</tr><tr>\n";
-
 print "</table></td></tr></table>\n";
 print "<input type=submit value='$text{'buttsave'}'></form>\n";
 
