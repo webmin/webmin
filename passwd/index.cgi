@@ -2,6 +2,8 @@
 # Display a list of users whose passwords can be changed
 
 require './passwd-lib.pl';
+
+# Show an error if we don't know how to change passwords
 if (!$config{'passwd_cmd'} && !&foreign_check("useradmin")) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print "<p>$text{'index_euseradmin'}<p>\n";
@@ -67,35 +69,28 @@ if ($config{'sort_mode'}) {
 if ($config{'max_users'} && @ulist > $config{'max_users'}) {
 	# Show as form for entering a username
 	print "$text{'index_toomany'}<br>\n";
-	print "<form action=edit_passwd.cgi>\n";
-	print "<input type=submit value='$text{'index_user'}'>\n";
+	print &ui_form_start("edit_passwd.cgi");
+	print &ui_submit($text{'index_user'});
 	if ($config{'input_type'}) {
-		print "<select name=user>\n";
-		foreach $u (@ulist) {
-			print "<option>$u->[0]\n";
-			}
-		print "</select>\n";
+		print &ui_select("user", undef,
+				 [ map { $_->[0] } @ulist ]);
 		}
 	else {
-		print "<input name=user size=13> ",
-		      &user_chooser_button("user",0);
+		print &ui_user_textbox("user");
 		}
-	print "</form>\n";
+	print &ui_form_end();
 	}
 elsif (@ulist) {
 	# Show as table of users
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'index_header'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	@grid = ( );
 	for($i=0; $i<@ulist; $i++) {
 		if ($i%4 == 0) { print "<tr>\n"; }
-		print "<td width=25%><a href=\"edit_passwd.cgi?",
-		      "user=$ulist[$i]->[0]\">",
-		      &html_escape($ulist[$i]->[0])."</a></td>\n";
-		if ($i%4 == 3) { print "</tr>\n"; }
+		push(@grid, "<a href=\"edit_passwd.cgi?".
+			    "user=$ulist[$i]->[0]\">".
+			    &html_escape($ulist[$i]->[0])."</a>");
 		}
-	while($i++ % 4) { print "<td width=25%></td>\n"; }
-	print "</table></td> </tr></table><p>\n";
+	print &ui_grid_table(\@grid, 4, 100, undef, undef,
+			     $text{'index_header'});
 	}
 else {
 	# No users available
