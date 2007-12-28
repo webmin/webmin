@@ -20,11 +20,13 @@ index_delete=Cancel Selected Commands
 
 edit_title=Scheduled Command
 edit_cmd=Full script to execute
+edit_shortcmd=Command to execute
 edit_header=Scheduled command details
 edit_delete=Cancel this command
 edit_run=Run Now
 edit_ejob=Scheduled command no longer exists!
 edit_ecannot=You are not allowed to edit this scheduled command
+edit_showfull=Show full script.
 
 create_err=Failed to created schedule command
 create_euser=Missing or invalid username

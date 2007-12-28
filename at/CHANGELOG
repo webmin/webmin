@@ -4,3 +4,6 @@ Added the ability to run a scheduled command.
 Allowed and denied At users can now be managed, on Linux systems.
 ---- Changes since 1.300 ----
 Added checkboxes and a button for deleting multiple scheduled commands at once.
+---- Changes since 1.390 ----
+Converted all user interface code to use the new Webmin UI library.
+When editing a job, only the actual command entered is shown by default - the full command can be displayed using a new link.

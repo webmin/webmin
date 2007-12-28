@@ -9,7 +9,6 @@ require './at-lib.pl';
 
 # Delete each one
 @jobs = &list_atjobs();
-%access = &get_module_acl();
 foreach $d (@d) {
 	($job) = grep { $_->{'id'} eq $d } @jobs;
 	$job || &error($text{'delete_egone'});

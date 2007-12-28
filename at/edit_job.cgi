@@ -7,40 +7,45 @@ require './at-lib.pl';
 @jobs = &list_atjobs();
 ($job) = grep { $_->{'id'} eq $in{'id'} } @jobs;
 $job || &error($text{'edit_ejob'});
-%access = &get_module_acl();
 &can_edit_user(\%access, $job->{'user'}) || &error($text{'edit_ecannot'});
 
 &ui_print_header(undef, $text{'edit_title'}, "");
 
-print "<form action=delete_job.cgi>\n";
-print "<input type=hidden name=id value='$in{'id'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("delete_job.cgi");
+print &ui_hidden("id", $in{'id'});
+print &ui_table_start($text{'edit_header'}, "width=100%", 4);
 
-print "<tr> <td><b>$text{'index_user'}</b></td>\n";
-print "<td colspan=3>",&html_escape($job->{'user'}),"\n";
+# Run as user
 @uinfo = getpwnam($job->{'user'});
 $uinfo[6] =~ s/,.*$//g;
-print " (",&html_escape($uinfo[6]),")\n" if ($uinfo[6]);
-print "</td> </tr>\n";
+print &ui_table_row($text{'index_user'},
+	&html_escape($job->{'user'}).
+	($uinfo[6] ? " (".&html_escape($uinfo[6]).")" : ""), 3);
 
-$date = localtime($job->{'date'});
-print "<tr> <td><b>$text{'index_exec'}</b></td>\n";
-print "<td>$date</td>\n";
+# When to run
+print &ui_table_row($text{'index_exec'}, &make_date($job->{'date'}));
 
-$created = localtime($job->{'created'});
-print "<td><b>$text{'index_created'}</b></td>\n";
-print "<td>$created</td> </tr>\n";
+# When created
+print &ui_table_row($text{'index_created'}, &make_date($job->{'created'}));
 
-print "<tr> <td valign=top><b>$text{'edit_cmd'}</b></td>\n";
-print "<td colspan=3><font size=-1><pre>",
-      &html_escape(join("\n", &wrap_lines($job->{'cmd'}, 80))),
-      "</pre></font></td> </tr>\n";
+if ($in{'full'}) {
+	# Full command
+	print &ui_table_row($text{'edit_cmd'},
+		"<pre>".&html_escape(
+		    join("\n", &wrap_lines($job->{'cmd'}, 80)))."</pre>", 3);
+	}
+else {
+	# Just the short command
+	print &ui_table_row($text{'edit_shortcmd'},
+		"<pre>".&html_escape(
+		    join("\n", &wrap_lines($job->{'realcmd'}, 80)))."</pre>".
+		"<a href='edit_job.cgi?full=1&id=".&urlize($in{'id'})."'>".
+		$text{'edit_showfull'}."</a>", 3);
+	}
 
-print "<tr> <td colspan=4 align=right>",
-      "<input type=submit name=run value='$text{'edit_run'}'> ",
-      "<input type=submit value='$text{'edit_delete'}'></td> </tr>\n";
+print &ui_table_end();
+print &ui_form_end([ [ "run", $text{'edit_run'} ],
+		     [ undef, $text{'edit_delete'} ] ]);
 
 print "</table></td></tr></table></form>\n";
 &ui_print_footer("", $text{'index_return'});

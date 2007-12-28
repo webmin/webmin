@@ -9,7 +9,6 @@
 require './at-lib.pl';
 use POSIX;
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
-%access = &get_module_acl();
 ReadParse();
 
 # Show list of existing jobs
@@ -18,7 +17,7 @@ ReadParse();
 if (@jobs) {
 	print &ui_form_start("delete_jobs.cgi", "post");
 	@jobs = sort { $a->{'id'} <=> $b->{'id'} } @jobs;
-	@tds = ( "width=5" );
+	@tds = ( "width=5", "nowrap" );
 	@links = ( &select_all_link("d"), &select_invert_link("d") );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([
@@ -49,64 +48,54 @@ if (@jobs) {
 
 
 # Show form for creating a new At job
-print "<form action=create_job.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'index_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("create_job.cgi");
+print &ui_table_start($text{'index_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'index_user'}</b></td>\n";
+# User to run as
 $dir = "/";
 if ($access{'mode'} == 1) {
-	print "<td><select name=user>\n";
-	foreach $u (split(/\s+/, $access{'users'})) {
-		print "<option>$u\n";
-		}
-	print "</select></td>\n";
+	$usel = &ui_select("user", undef,
+			   [ split(/\s+/, $access{'users'}) ]);
 	}
 elsif ($access{'mode'} == 3) {
-	print "<td><tt>$remote_user</tt></td>\n";
-	print "<input type=hidden name=user value='$remote_user'>\n";
+	$usel = "<tt>$remote_user</tt>";
+	print &ui_hidden("user", $remote_user);
 	@uinfo = getpwnam($remote_user);
 	$dir = $uinfo[7];
 	}
 else {
-	print "<td><input name=user value=\"$in{ext_user}\" size=8>",
-		&user_chooser_button("user", 0),"</td>\n";
+	$usel = &ui_user_textbox("user", $in{ext_user});
 	}
+print &ui_table_row($text{'index_user'}, $usel);
 
+# Run date
 @now = localtime(time());
-print "<tr> <td><b>$text{'index_date'}</b></td>\n";
-printf "<td><input name=day size=2 value='%d'>/", $now[3];
-print "<select name=month>\n";
-for($i=0; $i<12; $i++) {
-	printf "<option value=%s %s>%s\n",
-		$i, $now[4] == $i ? 'selected' : '', $text{"smonth_".($i+1)};
-	}
-print "</select>/";
-printf "<input name=year size=4 value='%d'>\n", $now[5] + 1900;
-print &date_chooser_button("day", "month", "year"),"</td>\n";
+print &ui_table_row($text{'index_date'},
+	&ui_textbox("day", $now[3], 2)."/".
+	&ui_select("month", $now[4],
+		   [ map { [ $_, $text{"smonth_".($_+1)} ] } ( 0 .. 11 ) ])."/".
+	&ui_textbox("year", $now[5]+1900, 4).
+	&date_chooser_button("day", "month", "year"));
 
-print "<td><b>$text{'index_time'}</b></td>\n";
-print "<td><input name=hour size=2>:<input name=min size=2 value='00'></td> </tr>\n";
+# Run time
+print &ui_table_row($text{'index_time'},
+	&ui_textbox("hour", undef, 2).":".&ui_textbox("min", "00", 2));
 
+# Current date and time
 ($date, $time) = split(/\s+/, &make_date(time()));
+print &ui_table_row($text{'index_cdate'}, $date);
+print &ui_table_row($text{'index_ctime'}, $time);
 
-print "<tr> <td><b>$text{'index_cdate'}</b></td>\n";
-print "<td>$date</td>\n";
+# Run in directory
+print &ui_table_row($text{'index_dir'},
+		    &ui_textbox("dir", $dir, 50));
 
-print "<td><b>$text{'index_ctime'}</b></td>\n";
-print "<td>$time</td> </tr>\n";
+# Commands to run
+print &ui_table_row($text{'index_cmd'},
+		    &ui_textarea("cmd", $in{ext_cmd}, 5, 50));
 
-print "<tr> <td><b>$text{'index_dir'}</b></td>\n";
-print "<td colspan=3><input name=dir size=40 value='$dir'></td> </tr>\n";
-
-print "<tr> <td valign=top><b>$text{'index_cmd'}</b></td>\n";
-print "<td colspan=3><textarea rows=5 cols=40 name=cmd>$in{ext_cmd}</textarea></td></tr>\n";
-
-print "<tr> <td colspan=4 align=right>",
-      "<input type=submit value='$text{'create'}'></td> </tr>\n";
-
-print "</table></td></tr></table></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 if ($access{'allow'} && $config{'allow_file'}) {
 	# Show form to manage allowed and denied users

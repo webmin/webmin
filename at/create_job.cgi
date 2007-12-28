@@ -7,7 +7,6 @@ require 'timelocal.pl';
 require './at-lib.pl';
 &ReadParse();
 &error_setup($text{'create_err'});
-%access = &get_module_acl();
 
 # Validate inputs
 &can_edit_user(\%access, $in{'user'}) || &error($text{'create_ecannot'});

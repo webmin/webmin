@@ -4,6 +4,7 @@
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
+%access = &get_module_acl();
 
 do "$config{'at_style'}-lib.pl";
 

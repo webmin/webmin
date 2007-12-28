@@ -2,7 +2,6 @@
 # Update allowed or denied At users
 
 require './at-lib.pl';
-%access = &get_module_acl();
 ReadParse();
 &error_setup($text{'allow_err'});
 $access{'allow'} || &error($text{'allow_ecannot'});
