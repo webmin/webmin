@@ -778,19 +778,20 @@ else {
 sub show_range_input
 {
 local ($job) = @_;
+local $rng;
+$rng = &text('range_start', &ui_date_input(
+	$job->{'start'}->[0], $job->{'start'}->[1], $job->{'start'}->[2],
+	"range_start_day", "range_start_month", "range_start_year"))."\n".
+      &date_chooser_button(
+	"range_start_day", "range_start_month", "range_start_year")."\n".
+      &text('range_end', &ui_date_input(
+	$job->{'end'}->[0], $job->{'end'}->[1], $job->{'end'}->[2],
+	"range_end_day", "range_end_month", "range_end_year"))."\n".
+      &date_chooser_button(
+	"range_end_day", "range_end_month", "range_end_year")."\n";
 print &ui_oneradio("range_def", 1, $text{'range_all'}, !$job->{'start'}),
       "<br>\n";
-print &ui_oneradio("range_def", 0, "", $job->{'start'}),"\n";
-print &text('range_start', &ui_date_input(
-	$job->{'start'}->[0], $job->{'start'}->[1], $job->{'start'}->[2],
-	"range_start_day", "range_start_month", "range_start_year")),"\n",
-      &date_chooser_button(
-	"range_start_day", "range_start_month", "range_start_year"),"\n";
-print &text('range_end', &ui_date_input(
-	$job->{'end'}->[0], $job->{'end'}->[1], $job->{'end'}->[2],
-	"range_end_day", "range_end_month", "range_end_year")),"\n",
-      &date_chooser_button(
-	"range_end_day", "range_end_month", "range_end_year"),"\n";
+print &ui_oneradio("range_def", 0, $rng, $job->{'start'}),"\n";
 }
 
 # parse_range_input(&job, &in)
