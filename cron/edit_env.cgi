@@ -19,72 +19,58 @@ else {
 
 print "$text{'env_order'}<p>\n";
 
-print "<form action=save_env.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'env_details'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_env.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'env_details'}, "width=100%", 2);
 
-print "<tr> <td><b>$text{'env_user'}</b></td>\n";
+# Under user
 if ($access{'mode'} == 1) {
-	print "<td><select name=user>\n";
-	foreach $u (split(/\s+/, $access{'users'})) {
-		printf "<option %s>$u\n",
-			$env->{'user'} eq $u ? "selected" : "";
-		}
-	print "</select></td>\n";
+	$usel = &ui_select("user", $env->{'user'},
+		[ split(/\s+/, $access{'users'}) ]);
 	}
 elsif ($access{'mode'} == 3) {
-	print "<td><tt>$remote_user</tt></td>\n";
-	print "<input type=hidden name=user value='$remote_user'>\n";
+	$usel = "<tt>$remote_user</tt>";
+	print &ui_hidden("user", $remote_user);
 	}
 else {
-	print "<td><input name=user size=8 value=\"$env->{'user'}\"> ",
-		&user_chooser_button("user", 0),"</td>\n";
+	$usel = &ui_user_textbox("user", $env->{'user'});
 	}
+print &ui_table_row($text{'env_user'}, $usel);
 
-print "<td> <b>$text{'env_active'}</b></td>\n";
-printf "<td><input type=radio name=active value=1 %s> $text{'yes'}\n",
-	$env->{'active'} ? "checked" : "";
-printf "<input type=radio name=active value=0 %s> $text{'no'}</td> </tr>\n",
-	$env->{'active'} ? "" : "checked";
+# Active or now
+print &ui_table_row($text{'env_active'},
+	&ui_yesno_radio("active", $env->{'active'} ? 1 : 0));
 
-print "<td> <b>$text{'env_name'}</b></td>\n";
-printf "<td><input name=name size=30 value='%s'></td> </tr>\n",
-	$env->{'name'};
+# Variable name
+print &ui_table_row($text{'env_name'},
+	&ui_textbox("name", $env->{'name'}, 50));
 
-print "<td> <b>$text{'env_value'}</b></td>\n";
-printf "<td><input name=value size=60 value='%s'></td> </tr>\n",
-	$env->{'value'};
+# Variable value
+print &ui_table_row($text{'env_value'},
+	&ui_textbox("value", $env->{'value'}, 50));
 
 if ($in{'new'}) {
 	# Location for new variable
-	print "<td> <b>$text{'env_where'}</b></td> <td colspan=3>\n";
-	print &ui_radio("where", 1, [ [ 1, $text{'env_top'} ],
-				      [ 0, $text{'env_bot'} ] ]),"</td></tr>\n";
+	print &ui_table_row($text{'env_where'},
+	      &ui_radio("where", 1, [ [ 1, $text{'env_top'} ],
+				      [ 0, $text{'env_bot'} ] ]));
 	}
 elsif ($env->{'index'}) {
 	# Location for existing
-	print "<td> <b>$text{'env_where2'}</b></td> <td colspan=3>\n";
-	print &ui_radio("where", 0, [ [ 1, $text{'env_top'} ],
-				      [ 0, $text{'env_leave'} ]]),"</td></tr>\n";
+	print &ui_table_row($text{'env_where2'},
+	      &ui_radio("where", 0, [ [ 1, $text{'env_top'} ],
+				      [ 0, $text{'env_leave'} ]]));
 	}
 
-print "</table></td></tr></table>\n";
-
-print "<table width=100%><tr>\n";
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "</form><form action=delete_env.cgi>\n";
-	print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-	print "<td align=right><input type=submit name=delete ",
-              "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ "delete", $text{'delete'} ] ]);
 	}
-print "</tr></table></form>\n";
 
 &ui_print_footer("", $text{'index_return'});
 

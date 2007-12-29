@@ -10,3 +10,4 @@ kill_subs=0
 single_file=c:/cronw/crontab.txt
 show_comment=0
 hourly_only=0
+max_jobs=100

@@ -19,6 +19,11 @@ index_esingle=The file $1 listing Cron jobs does not exist. Maybe Cron is not in
 index_delete=Delete Selected Jobs
 index_disable=Disable Selected Jobs
 index_enable=Enable Selected Jobs
+index_esearch=No jobs matched your search for $1.
+index_toomany=There are too many jobs to show. Find those matching :
+index_ok=Search
+index_searchres=Cron jobs matching $1 ..
+index_reset=Reset search.
 
 edit_title=Edit Cron Job
 create_title=Create Cron Job

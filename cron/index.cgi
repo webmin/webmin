@@ -3,8 +3,9 @@
 # Display a list of all cron jobs, with the username and command for each one
 
 require './cron-lib.pl';
-
+&ReadParse();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+$max_jobs = $userconfig{'max_jobs'} || $config{'max_jobs'};
 
 # Make sure cron is installed (very likely!)
 if ($config{'single_file'} && !-r $config{'single_file'}) {
@@ -61,11 +62,12 @@ if ($config{cron_allow_file} && $config{cron_deny_file} && $access{'allow'}) {
 	push(@crlinks, "<a href=edit_allow.cgi>$text{'index_allow'}</a>");
 	}
 
-# Show cron jobs by user
-$single_file = !&supports_users() || !(@ulist != 1 || $access{'mode'} != 3);
+# Build a list of cron job rows to show
+$single_user = !&supports_users() || @ulist == 1;
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
 	   @crlinks );
+@rows = ( );
 foreach $u (@ulist) {
 	if (!$config{'single_file'}) {
 		# Get the Unix user's real name
@@ -90,68 +92,45 @@ foreach $u (@ulist) {
 		&convert_comment($job);
 		local @exp = @{$plist[$i]->[1]};
 		local $idx = $job->{'index'};
-		if (!$donehead) {
-			print &ui_form_start("delete_jobs.cgi", "post");
-			print &ui_links_row(\@links);
-			print "<table border width=100%> <tr $tb>\n";
-			if (!$single_file) {
-				print "<td><b>$text{'index_user'}</b></td>\n";
-				}
-			print "<td width=5><br></td>\n";
-			print "<td><b>$text{'index_active'}</b></td>\n";
-			if ($access{'command'}) {
-				print "<td><b>$text{'index_command'}</b></td>\n";
-				}
-			if (!$access{'command'} || $config{'show_time'} || $userconfig{'show_time'}) {
-				print "<td><b>$text{'index_when'}</b></td>\n";
-				}
-			if ($config{'show_comment'} || $userconfig{'show_comment'}) {
-				print "<td><b>$text{'index_comment'}</b></td>\n";
-				}
-			if ($config{'show_run'}) {
-				print "<td width=5%><b>$text{'index_run'}</b></td>\n";
-				}
-			if ($access{'move'}) {
-				print "<td width=5%><b>$text{'index_move'}</b></td>\n";
-				}
-			print "</tr>\n";
-			$donehead = 1;
-			}
+		local @cols;
 		print "<tr $cb>\n";
-		if ($i == 0 && !$single_file) {
-			printf "<td valign=top rowspan=%d>", scalar(@plist);
-			print &html_escape($uname);
-			print "</td>\n";
+		push(@cols, $idx);
+		$useridx = 0;
+		$cmdidx = 0;
+		if (!$single_user) {
+			$useridx = scalar(@cols);
+			push(@cols, &html_escape($uname));
 			}
-		print "<td>",&ui_checkbox("d", $idx),"</td>\n";
-		printf "<td valign=top>%s</td>\n",
-			$job->{'active'} ? $text{'yes'}
-				: "<font color=#ff0000>$text{'no'}</font>";
+		push(@cols, $job->{'active'} ? $text{'yes'} :
+				"<font color=#ff0000>$text{'no'}</font>");
 		$donelink = 0;
 		if ($job->{'name'}) {
 			# An environment variable - show the name only
-			print "<td><a href=\"edit_env.cgi?idx=$idx\">",
-			      "<i>$text{'index_env'}</i> ",
-			     "<tt>$job->{'name'} = $job->{'value'}</tt></td>\n";
+			$cmdidx = scalar(@cols);
+			push(@cols, "<a href=\"edit_env.cgi?idx=$idx\">".
+				   "<i>$text{'index_env'}</i> ".
+				   "<tt>$job->{'name'} = $job->{'value'}</tt>");
 			$donelink = 1;
 			}
 		elsif (@exp && $access{'command'}) {
 			# A multi-part command
+			$cmdidx = scalar(@cols);
 			@exp = map { &html_escape($_) } @exp;
-			print "<td><a href=\"edit_cron.cgi?idx=$idx\">",
-			      join("<br>",@exp),"</a></td>\n";
+			push(@cols, "<a href=\"edit_cron.cgi?idx=$idx\">".
+				    join("<br>",@exp)."</a>");
 			$donelink = 1;
 			}
 		elsif ($access{'command'}) {
 			# A simple command
+			$cmdidx = scalar(@cols);
 			local $max = $config{'max_len'} || 10000;
 			local ($cmd, $input) =
 				&extract_input($job->{'command'});
-			$cmd = 
-			  length($cmd) > $max ?
-				&html_escape(substr($cmd, 0, $max))." ..." :
+			$cmd = length($cmd) > $max ?
+			  &html_escape(substr($cmd, 0, $max))." ..." :
 			  $cmd !~ /\S/ ? "BLANK" : &html_escape($cmd);
-			print "<td><a href=\"edit_cron.cgi?idx=$idx\">$cmd</a></td>\n";
+			push(@cols,
+			     "<a href=\"edit_cron.cgi?idx=$idx\">$cmd</a>");
 			$donelink = 1;
 			}
 
@@ -159,27 +138,27 @@ foreach $u (@ulist) {
 		if (!$access{'command'} || $config{'show_time'} || $userconfig{'show_time'}) {
 			$when = &when_text($job, 1);
 			if ($job->{'name'}) {
-				print "<td><br></td>\n";
+				push(@cols, "");
 				}
 			elsif ($donelink) {
-				print "<td>$when</td>\n";
+				push(@cols, $when);
 				}
 			else {
-				print "<td><a href='edit_cron.cgi?idx=$idx'>$when</a></td>\n";
+				push(@cols,
+				  "<a href='edit_cron.cgi?idx=$idx'>$when</a>");
 				}
 			}
 
 		# Show comment
 		if ($config{'show_comment'} || $userconfig{'show_comment'}) {
-			print "<td>",($job->{'comment'} || "<br>"),"</td>\n";
+			push(@cols, $job->{'comment'});
 			}
 
 		# Show running indicator
 		if ($config{'show_run'}) {
-			print "<td>";
 			if ($job->{'name'}) {
 				# An environment variable
-				print "<br>\n";
+				push(@cols, "");
 				}
 			else {
 				# Try to find the process
@@ -190,55 +169,90 @@ foreach $u (@ulist) {
 				if ($config{'show_run'} == 2 &&
 				    ($access{'kill'} || !$proc)) {
 					$lnk = $proc ? "kill_cron.cgi?idx=$idx" : "exec_cron.cgi?idx=$idx&bg=1";
-					print "<a href='$lnk'>$txt</a>";
+					push(@cols, "<a href='$lnk'>$txt</a>");
 					}
 				else {
-					print $txt;
+					push(@cols, $txt);
 					}
 				}
-			print "</td>\n";
 			}
 
 		# Show mover buttons
 		local $prv = $i > 0 ? $plist[$i-1]->[0] : undef;
 		local $nxt = $i != $#plist ? $plist[$i+1]->[0] : undef;
 		if ($access{'move'}) {
-			print "<td width=5%>";
-			if ($prv && $prv->{'file'} eq $job->{'file'} &&
-			    ($job->{'type'} == 0 || $job->{'type'} == 3)) {
-				print "<a href='move.cgi?idx=$idx&up=1'>",
-				      "<img src=images/up.gif border=0></a>";
-				}
-			else {
-				print "<img src=images/gap.gif>";
-				}
-			if ($nxt && $nxt->{'file'} eq $job->{'file'} &&
-			    ($job->{'type'} == 0 || $job->{'type'} == 3)) {
-				print "<a href='move.cgi?idx=$idx&down=1'>",
-				      "<img src=images/down.gif border=0></a>";
-				}
-			else {
-				print "<img src=images/gap.gif>";
-				}
-			print "</td>\n";
+			push(@cols, &ui_up_down_arrows(
+				"move.cgi?idx=$idx&up=1",
+				"move.cgi?idx=$idx&down=1",
+				$prv && $prv->{'file'} eq $job->{'file'} &&
+				 ($job->{'type'} == 0 || $job->{'type'} == 3),
+				$nxt && $nxt->{'file'} eq $job->{'file'} &&
+				 ($job->{'type'} == 0 || $job->{'type'} == 3)
+			        ));
 			}
-		print "</tr>\n";
+		push(@rows, \@cols);
 		}
 	}
-if ($donehead) {
-	print "</table>\n";
-	print &ui_links_row(\@links);
+
+# Limit to search
+if ($in{'search'}) {
+	@rows = grep { $useridx && $_->[$useridx] =~ /\Q$in{'search'}\E/i ||
+		       $cmdidx && $_->[$cmdidx] =~ /\Q$in{'search'}\E/i }
+		     @rows;
 	}
-else {
-	print $module_info{'usermin'} ? "<b>$text{'index_none3'}</b> <p>\n" :
-	      $access{'mode'} ? "<b>$text{'index_none2'}</b> <p>\n"
-			      : "<b>$text{'index_none'}</b> <p>\n";
+
+# Check if we are over the display limit
+if ($max_jobs && @rows > $max_jobs && !$in{'search'}) {
+	print &ui_form_start("index.cgi");
+	print "<b>$text{'index_toomany'}</b>\n";
+	print &ui_textbox("search", $in{'search'}, 20);
+	print &ui_submit($text{'index_ok'});
+	print &ui_form_end();
 	print &ui_links_row(\@crlinks);
 	}
-if ($donehead) {
+elsif (@rows) {
+	# Show jobs
+	if ($in{'search'}) {
+		print "<b>",&text('index_searchres',
+			"<i>".&html_escape($in{'search'})."</i>"),"</b><p>\n";
+		push(@links, "<a href='index.cgi'>$text{'index_reset'}</a>");
+		}
+	print &ui_form_start("delete_jobs.cgi", "post");
+	print &ui_links_row(\@links);
+	@tds = ( "width=5" );
+	print &ui_columns_start([
+		"",
+		$single_user ? ( ) : ( $text{'index_user'} ),
+		$text{'index_active'},
+		$access{'command'} ? ( $text{'index_command'} ) : ( ),
+		!$access{'command'} || $config{'show_time'} ||
+		  $userconfig{'show_time'} ? ( $text{'index_when'} ) : ( ),
+		$config{'show_comment'} || $userconfig{'show_comment'} ?
+		  ( $text{'index_comment'} ) : ( ),
+		$config{'show_run'} ? ( $text{'index_run'} ) : ( ),
+		$access{'move'} ? ( $text{'index_move'} ) : ( ),
+		], 100, 0, \@tds);
+	foreach my $r (@rows) {
+		print &ui_checked_columns_row([ @$r[1..(@$r-1)] ],
+					      \@tds, "d", $r->[0]);
+		}
+	print &ui_columns_end();
+	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
 			     [ "disable", $text{'index_disable'} ],
 			     [ "enable", $text{'index_enable'} ] ]);
+	}
+else {
+	# Show message
+	if ($in{'search'}) {
+		push(@crlinks, "<a href='index.cgi'>$text{'index_reset'}</a>");
+		}
+	print $in{'search'} ? "<b>".&text('index_esearch',
+			"<i>".&html_escape($in{'search'})."</i>")."</b> <p>" :
+	      $module_info{'usermin'} ? "<b>$text{'index_none3'}</b> <p>\n" :
+	      $access{'mode'} ? "<b>$text{'index_none2'}</b> <p>\n"
+			      : "<b>$text{'index_none'}</b> <p>\n";
+	print &ui_links_row(\@crlinks);
 	}
 
 &ui_print_footer("/", $text{'index'});

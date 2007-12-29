@@ -21,3 +21,6 @@ When a user's home directory is changed in the Users and Groups module, any Cron
 Added a button on the Edit Job page for cloning an existing job.
 ---- Changes since 1.370 ----
 Added a Module Config option to limit Cron jobs to hourly at most, thanks to Filip Hajny.
+---- Changes since 1.390 ----
+If there are more than 100 jobs (by default), a search form is shown on the main page instead of a list of all jobs.
+Re-wrote all user interface code to use the new Webmin UI library.

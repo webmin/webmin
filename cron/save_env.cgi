@@ -16,6 +16,12 @@ else {
 	$job->{'line'} = $oldjob->{'line'};
 	}
 
+if ($in{'delete'}) {
+	# Just re-direct to delete CGI
+	&redirect("delete_env.cgi?idx=$in{'idx'}");
+	exit;
+	}
+
 @files = &unique((map { $_->{'file'} } @jobs),
 	         "$config{'cron_dir'}/$in{'user'}");
 foreach $f (@files) { &lock_file($f); }
