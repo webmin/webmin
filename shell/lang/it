@@ -1,0 +1,12 @@
+acl_user=Esegui i comandi come utente
+acl_user_def=Utente Webmin corrente
+index_clear=Svuota la cronologia
+index_clearcmds=Svuota la lista dei comandi precedenti
+index_desc=Inserisci un comando da eseguire nella casella di testo in basso.<br>Il comando <tt>cd</tt> pu&#242; essere usato per cambiare directory per i comandi in sequenza.
+index_edit=Modifica un comando precedente
+index_history=Cronologia dei comandi
+index_ok=Esegui il comando:
+index_pok=Esegui comando precedente
+index_title=Console dei comandi
+log_clear=Svuota la cronologia dei comandi
+log_run=Comando $1 eseguito

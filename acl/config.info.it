@@ -1,0 +1,6 @@
+line1=Opzioni configurabili,11
+display=Modalit&#224; di visualizzazione di utenti e gruppi,1,1-Solo i nomi,0-Nomi e moduli
+select=Mostra i moduli utente in,1,0-una tabella,1-un menu a tendina
+order=Ordina gli utenti e i gruppi per,1,0-Ordine nel file,1-Nome
+line2=Configurazione di sistema,11
+ssleay=Percorso al programma openssl o ssleay,3,Automatico
