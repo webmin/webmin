@@ -795,13 +795,21 @@ push(@{$_[0]->{'headers'}},
      [ 'Date', strftime("%a, %d %b %Y %H:%M:%S %z (%Z)", @tm) ])
 	if (!$header{'date'});
 local @from = &address_parts($header{'from'});
+local $fromaddr;
+if (@from && $from[0] =~ /\S/) {
+	$fromaddr = $from[0];
+	}
+else {
+	local @uinfo = getpwuid($<);
+	$fromaddr = $uinfo[0] || "nobody";
+	}
 local $esmtp = $_[8] ? 1 : 0;
 if ($_[1]) {
 	# Just append the email to a file using mbox format
 	open(MAIL, ">>$_[1]") || &error("Write failed : $!");
 	$lnum++;
 	print MAIL $_[0]->{'fromline'} ? $_[0]->{'fromline'}."\n" :
-		   strftime("From $from[0] %a %b %e %H:%M:%S %Y\n", @tm);
+		   strftime("From $fromaddr %a %b %e %H:%M:%S %Y\n", @tm);
 	}
 elsif ($sm) {
 	# Connect to SMTP server
@@ -874,7 +882,7 @@ elsif ($sm) {
 			}
 		}
 
-	&smtp_command(MAIL, "mail from: <$from[0]>\r\n");
+	&smtp_command(MAIL, "mail from: <$fromaddr>\r\n");
 	local $notify = $_[8] ? " NOTIFY=".join(",", @{$_[8]}) : "";
 	local $u;
 	foreach $u (&address_parts($header{'to'}.",".$header{'cc'}.
@@ -885,7 +893,7 @@ elsif ($sm) {
 	}
 elsif (defined(&send_mail_program)) {
 	# Use specified mail injector
-	local $cmd = &send_mail_program($from[0]);
+	local $cmd = &send_mail_program($fromaddr);
 	$cmd || &error("No mail program was found on your system!");
 	open(MAIL, "| $cmd >/dev/null 2>&1");
 	}
@@ -898,13 +906,13 @@ elsif ($config{'postfix_control_command'}) {
 	local $cmd = -x "/usr/lib/sendmail" ? "/usr/lib/sendmail" :
 			&has_command("sendmail");
 	$cmd || &error($text{'send_ewrapper'});
-	open(MAIL, "| $cmd -t -f$from[0] >/dev/null 2>&1");
+	open(MAIL, "| $cmd -t -f$fromaddr >/dev/null 2>&1");
 	}
 else {
 	# Start sendmail
 	&has_command($config{'sendmail_path'}) ||
 	    &error(&text('send_epath', "<tt>$config{'sendmail_path'}</tt>"));
-	open(MAIL, "| $config{'sendmail_path'} -t -f$from[0] >/dev/null 2>&1");
+	open(MAIL, "| $config{'sendmail_path'} -t -f$fromaddr >/dev/null 2>&1");
 	}
 local $ctype = "multipart/mixed";
 local $msg_id;
