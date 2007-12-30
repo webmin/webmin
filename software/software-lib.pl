@@ -85,36 +85,48 @@ elsif ($two eq "\037\213") {
 return $_[0];
 }
 
-# show_package_info(package, version)
+# show_package_info(package, version, [no-installed-message])
 sub show_package_info
 {
 @pinfo = &package_info($_[0], $_[1]);
 return () if (!@pinfo);
-print &ui_subheading(&text('do_success', $_[0]));
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'do_details'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
 
+print &ui_subheading(&text('do_success', $_[0])) if (!$_[2]);
+print &ui_table_start($text{'edit_details'}, "width=100%", 4,
+		      [ "width=20%", undef, "width=20%", undef ]);
+
+# Package description
 if ($pinfo[2]) {
-	print "<tr> <td valign=top width=20%><b>$text{'do_desc'}</b></td>\n";
-	print "<td colspan=3><pre>",&html_escape($pinfo[2]),"</pre></td> </tr>\n";
+	$desc = &html_escape(&entities_to_ascii($pinfo[2]));
+	$desc =~ s/\r?\n/&nbsp;<br>/g;
+	print &ui_table_row($text{'edit_desc'}, "<tt>$desc</tt>", 3);
 	}
 
-print "<tr> <td width=20%><b>$text{'do_pack'}</b></td> <td>",
-	&html_escape($pinfo[0]),"</td>\n";
-print "<td width=20%><b>$text{'do_class'}</b></td> <td>",
-	$pinfo[1] ? &html_escape($pinfo[1]) : $text{'do_none'},"</td> </tr>\n";
+# Name
+print &ui_table_row($text{'edit_pack'}, &html_escape($pinfo[0]));
 
-print "<tr> <td width=20%><b>$text{'do_ver'}</b></td> <td>",
-	&html_escape($pinfo[4]),"</td>\n";
-print "<td width=20%><b>$text{'do_vend'}</b></td> <td>",
-	&html_escape($pinfo[5]),"</td> </tr>\n";
+# Class, if any
+print &ui_table_row($text{'edit_class'},
+	$pinfo[1] ? &html_escape($pinfo[1]) : $text{'edit_none'});
 
-print "<tr> <td width=20%><b>$text{'do_arch'}</b></td> <td>",
-	&html_escape($pinfo[3]),"</td>\n";
-print "<td width=20%><b>$text{'do_inst'}</b></td> <td>",
-	&html_escape($pinfo[6]),"</td> </tr>\n";
-print "</table></td></tr></table><p>\n";
+# Version number
+print &ui_table_row($text{'edit_ver'},
+	&html_escape($pinfo[4]));
+
+# Vendor
+print &ui_table_row($text{'edit_vend'},
+	&html_escape($pinfo[5]));
+
+# Architecture
+print &ui_table_row($text{'edit_arch'},
+	&html_escape($pinfo[3]));
+
+# Install date
+print &ui_table_row($text{'edit_inst'},
+	&html_escape($pinfo[6]));
+
+print &ui_table_end();
+
 return @pinfo;
 }
 

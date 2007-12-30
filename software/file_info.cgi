@@ -25,35 +25,29 @@ if (!%file) {
 else {
 	# display file info
 	$nc = "width=10% nowrap";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'file_title'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'file_title'}, "width=100%", 4);
 
-	print "<tr> <td $nc><b>$text{'file_path'}</b></td>\n";
-	print "<td colspan=3><font size=+1>$file{'path'}</font></td> </tr>\n";
+	print &ui_table_row($text{'file_path'},
+			    "<tt>".&html_escape($file{'path'})."</tt>", 3);
 
-	print "<tr> <td $nc><b>$text{'file_type'}</b></td>\n";
-	print "<td>$type_map[$file{'type'}]</td>\n";
+	print &ui_table_row($text{'file_type'},
+			    $type_map[$file{'type'}]);
 
 	if ($file{'type'} != 3 && $file{'type'} != 4) {
-		print "<td $nc><b>$text{'file_perms'}</b></td>\n";
-		print "<td>$file{'mode'}</td> </tr>\n";
+		print &ui_table_row($text{'file_perms'}, $file{'mode'});
 
-		print "<tr> <td $nc><b>$text{'file_owner'}</b></td>\n";
-		print "<td>$file{'user'}</td>\n";
-		print "<td $nc><b>$text{'file_group'}</b></td>\n";
-		print "<td>$file{'group'}</td> </tr>\n";
+		print &ui_table_row($text{'file_owner'}, $file{'user'});
+		print &ui_table_row($text{'file_group'}, $file{'group'});
 
 		if ($file{'type'} == 0) {
-			print "<tr> <td $nc><b>$text{'file_size'}</b></td>\n";
-			print "<td>$file{'size'}</td> </tr>\n";
+			print &ui_table_row($text{'file_size'}, $file{'size'});
 			}
 		}
 	else {
-		print "<td $nc><b>$text{'file_link'}</b></td>\n";
-		print "<td>$file{'link'}</td> </tr>\n";
+		print &ui_table_row($text{'file_link'},
+			"<tt>".&html_escape($file{'link'})."</tt>", 3);
 		}
-	print "</table></tr> </tr></table><p>\n";
+	print &ui_table_end();
 
 	# Show packages containing the file (usually only one)
 	print &ui_columns_start([ $text{'file_pack'},

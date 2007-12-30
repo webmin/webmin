@@ -23,20 +23,18 @@ if (defined(&install_packages) && @packages > 1) {
 	if ($in{'need_unlink'}) { &unlink_file($in{'file'}); }
 
 	foreach $p (@packages) {
-		# display information
+		# Display package details
 		($package, $desc) = split(/\s+/, $p, 2);
 		@pinfo = &show_package_info($package);
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'do_files'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table width=100%>\n";
+
+		# Display new files
+		@grid = ( );
 		$n = &check_files($package);
 		for($i=0; $i<$n; $i++) {
-			if ($i%2 == 0) { print "<tr>\n"; }
-			print "<td width=50%>",
-				&html_escape($files{$i,'path'}),"</td>\n";
-			if ($i%2 == 1) { print "</tr>\n"; }
+			push(@grid, &html_escape($files{$i,'path'}));
 			}
-		print "</table></td></tr></table><p>\n";
+		print &ui_grid_table(\@grid, 2, 100, undef, undef,
+				     $text{'do_files'});
 		&list_packages($package);
 		&webmin_log('install', 'package', $package,
 			    { 'desc' => $packages{0,'desc'},
@@ -70,16 +68,12 @@ else {
 		# Show files in package, if possible
 		$n = &check_files($package);
 		if ($n) {
-			print "<table border width=100%>\n";
-			print "<tr $tb> <td><b>$text{'do_files'}</b></td> </tr>\n";
-			print "<tr $cb> <td><table width=100%>\n";
+			@grid = ( );
 			for($i=0; $i<$n; $i++) {
-				if ($i%2 == 0) { print "<tr>\n"; }
-				print "<td width=50%>",
-				    &html_escape($files{$i,'path'}),"</td>\n";
-				if ($i%2 == 1) { print "</tr>\n"; }
+				push(@grid, &html_escape($files{$i,'path'}));
 				}
-			print "</table></td></tr></table><p>\n";
+			print &ui_grid_table(\@grid, 2, 100, undef, undef,
+					     $text{'do_files'});
 			}
 		&list_packages($package);
 		&webmin_log('install', 'package', $package,

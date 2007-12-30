@@ -42,18 +42,19 @@ else {
 		}
 
 	# Ask if the user is sure..
-	print "<form action=delete_pack.cgi>\n";
-	print "<input type=hidden name=package value=\"$p\">\n";
-	print "<input type=hidden name=version value=\"$v\">\n";
-	print "<input type=hidden name=sure value=1>\n";
-	print "<input type=hidden name=search value=\"$in{'search'}\">\n";
-	print "<input type=submit value=\"$text{'delete_ok'}\"><p>\n";
+	print &ui_form_start("delete_pack.cgi");
+	print &ui_hidden("package", $p);
+	print &ui_hidden("version", $v);
+	print &ui_hidden("sure", 1);
+	print &ui_hidden("search", $in{'search'});
+	print &ui_submit($text{'delete_ok'}),"<p>\n";
 	if (defined(&delete_options)) {
 		&delete_options($p);
 		}
-	print "</center></form>\n";
+	print &ui_form_end(),"</center>\n";
 
-	&ui_print_footer("edit_pack.cgi?search=$in{'search'}&package=".&urlize($p).
+	&ui_print_footer(
+		"edit_pack.cgi?search=$in{'search'}&package=".&urlize($p).
 	 	"&version=".&urlize($v), $text{'edit_return'});
 	}
 
