@@ -2377,7 +2377,7 @@ sub disable_html_images
 local ($html, $dis, $urls) = @_;
 local $newhtml;
 while($html =~ /^([\000-\377]*)(<\s*img[^>]*src=('[^']*'|"[^"]*"|\S+)[^>]*>)([\000-\377]*)/) {
-	local ($before, $allimg, $img, $after) = ($1, $2, $3);
+	local ($before, $allimg, $img, $after) = ($1, $2, $3, $4);
 	$img =~ s/^'(.*)'$/$1/ || $img =~ s/^"(.*)"$/$1/;
 	push(@$urls, $img) if ($urls);
 	if ($dis == 0) {
