@@ -1,0 +1,41 @@
+Ciascun comando è identificato da una descrizione (visualizzata sul pulsante nella pagina principale) e dal comando stesso da eseguire. La stringa del comando può contenere operatori di shell come |, &gt; e ; per l'esecuzione di comandi multipli e pipeline. La stringa può anche contenere parametri come <tt>$foo</tt>, che vengono sostituiti dagli input dell'utente durante l'esecuzione del comando. <p>
+
+Questi parametri possono essere inseriti nella tabella che si trova nella parte bassa della pagina. Per ciascun parametro occorre inserire:
+<dl>
+<dt><b>Nome</b>
+<dd>Un identificativo univoco per il parametro. Se, ad esempio,  il nome del parametro è <tt>foo</tt>, la stringa <tt>$foo</tt> verrà sostituita con il valore del parametro quando il comando viene eseguito.<p>
+<dt><b>Descrizione</b>
+<dd>La descrizione visualizzata accanto al parametro nella pagina principale.<p>
+<dt><b>Tipo</b>
+<dd>Questa opzione mi permette di determinare il tipo di dato del parametro. Le opzioni disponibili sono:
+	<ul>
+	<li><b>Testo</b><br>
+	    Permette l'inserimento libero di caratteri alfanumerici.
+	<li><b>Utente</b><br>
+	    Uno dei nomi utente configurati nel sistema.
+	<li><b>UID</b><br>
+	    Il numero UID di un utente configurato nel sistema.
+	<li><b>Gruppo</b><br>
+	    Uno dei nomi di gruppo configurati nel sistema.
+	<li><b>GID</b><br>
+	    Il numero GID di un gruppo configurato nel sistema.
+	<li><b>File</b><br>
+	    Il percorso completo al file.
+	<li><b>Directory</b><br>
+	    Il percorso completo ad una directory.
+	<li><b>Opzione</b><br>
+	    Un input di tipo SI/NO che imposterà il parametro al valore inserito nella casella di testo accanto al tipo solo se viene scelto SI.
+	<li><b>Password</b><br>
+	    Permette l'inserimento libero di caratteri alfanumerici coperti con gli asterischi (*).
+	<li><b>Menu</b><br>
+	    Un menu di opzioni lette dal file il cui nome viene specificato nella casella di testo accanto al tipo. In alternativa è possibile passare il nome del file al comando con una | alla fine, il cui output sarà usato per determinare le opzioni disponibili.
+	<li><b>Upload</b><br>
+	    Una casella di input perla selezione di un file lato client che sarà inviato al server quando il comando viene eseguito. Il file inviato verrà salvato in un file temporaneo e il percorso ad esso sarà il valore del parametro in fase di esecuzione del comando.
+	<li><b>Casella di testo</b><br>
+	    Una casella di testo a linee multiple. Quando il comando verrà eseguito ciascun carattere di nuova linea presente nel testo sarà convertito in spazi.
+	</ul><p>
+<dt><b>Comprendere il parametro tra virgolette?</b>
+<dd>Quando si sceglie SI per questa opzione il parametro sarà compreso tra virgolette ( " ) prima della sostituzione permettendo all'utente l'inserimento di valori contenenti spazi.<p>
+</dl>
+
+<hr>
