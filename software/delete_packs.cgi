@@ -53,17 +53,17 @@ else {
 	print "<center>\n";
 	print &text('deletes_rusure', "<tt>".join(" ", @packs)."</tt>"),
 	      "<p>\n";
-	print "<form action=delete_packs.cgi method=post>\n";
+	print &ui_form_start("delete_packs.cgi", "post");
 	foreach $d (split(/\0/, $in{'del'})) {
-		print "<input type=hidden name=del value='$d'>\n";
+		print &ui_hidden("del", $d);
 		}
-	print "<input type=hidden name=sure value=1>\n";
-	print "<input type=hidden name=search value=\"$in{'search'}\">\n";
-	print "<input type=submit value=\"$text{'deletes_ok'}\"><p>\n";
+	print &ui_hidden("sure", 1);
+	print &ui_hidden("search", $in{'search'});
+	print &ui_submit($text{'deletes_ok'});
 	if (defined(&delete_options)) {
 		&delete_options($packs[0]);
 		}
-	print "</center></form>\n";
+	print &ui_form_end(),"</center>\n";
 
 	}
 

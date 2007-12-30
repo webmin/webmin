@@ -21,18 +21,18 @@ return false;
 </script>
 EOF
 
-print "<form action=rpmfind.cgi>\n";
-print "<input type=submit value='$text{'rpm_search'}'>\n";
-print "<input name=search size=20 value='$in{'search'}'><br>\n";
-print "</form><hr>\n";
+# Search form
+print &ui_form_start("rpmfind.cgi");
+print &ui_submit($text{'rpm_search'});
+print &ui_textbox("search", $in{'search'}, 20);
+print &ui_form_end();
 
 if ($in{'search'}) {
-	# Call the rpmfind.net website
-	local $temp = &transname();
+	# Call the rpmfind.net website to get matches
+	print "<hr>\n";
+	$out = "";
 	&http_download($rpmfind_host, $rpmfind_port,
-		       $rpmfind_page.&urlize($in{'search'}), $temp);
-	local $out = `cat $temp`;
-	unlink($temp);
+		       $rpmfind_page.&urlize($in{'search'}), \$out);
 	while($out =~ /<tr[^>]*>.*?<td[^>]*>([^<]*)<\/td>.*?<td[^>]*>([^<]*)<\/td>.*?((ftp|http|https):[^>]+\.rpm).*?<\/tr>([\000-\377]*)/i) {
 		local $pkg = { 'url' => $3,
 			       'dist' => $2,
@@ -58,21 +58,25 @@ if ($in{'search'}) {
 		push(@rv, $pkg);
 		}
 
+	# Show the search results
 	@rv = grep { !$_->{'source'} } @rv;
 	@rv = sort { local $vc = $b->{'version'} <=> $a->{'version'};
 		     local $rc = $b->{'version'} <=> $a->{'version'};
 		     return $vc ? $vc : $rc } @rv;
 	if (@rv) {
 		print "<table width=100%>\n";
+		print &ui_columns_start([ $text{'rpm_findrpm'},
+					  $text{'rpm_finddistro'},
+					  $text{'rpm_finddesc'} ], 100);
 		foreach $r (@rv) {
-			print "<tr>\n";
-			print "<td><a href='' onClick='sel(\"$r->{'url'}\")'>",
-			      "$r->{'file'}</a></td>\n";
-			print "<td>$r->{'dist'}</td>\n";
-			print "<td>$r->{'desc'}</td>\n";
-			print "</tr>\n";
+			print &ui_columns_row([
+				"<a href='' onClick='sel(\"$r->{'url'}\")'>".
+                                 "$r->{'file'}</a>",
+				$r->{'dist'},
+				$r->{'desc'}
+				]);
 			}
-		print "</table>\n";
+		print &ui_columns_end();
 		}
 	else {
 		print "<b>$text{'rpm_none'}</b> <p>\n";

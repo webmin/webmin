@@ -41,41 +41,38 @@ return @rv;
 sub update_system_form
 {
 print &ui_subheading($text{'rhn_form'});
-print "<form action=rhn_check.cgi>\n";
-print "<table>\n";
+print &ui_form_start("rhn_check.cgi");
+print &ui_table_start($text{'rhn_header'}, undef, 2);
 
+# Started at boot?
 &foreign_require("init", "init-lib.pl");
 local $auto = &init::action_status("rhnsd");
-print "<tr> <td><b>$text{'rhn_auto'}</b></td>\n";
-printf "<td><input type=radio name=auto value=1 %s> %s\n",
-	$auto == 2 ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=auto value=0 %s> %s</td> </tr>\n",
-	$auto == 2 ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'rhn_auto'},
+	&ui_yesno_radio("auto", $auto == 2 ? 1 : 0));
 
+# Checking interval
 local %rhnsd;
 &read_env_file($rhn_sysconfig, \%rhnsd);
-print "<tr> <td><b>$text{'rhn_interval'}</b></td>\n";
-print "<td><input name=interval size=5 value='$rhnsd{'INTERVAL'}'> ",
-      "$text{'rhn_secs'}</td> </tr>\n";
+print &ui_table_row($text{'rhn_interval'},
+	&ui_textbox("interval", $rhnsd{'INTERVAL'}, 5)." ".$text{'rhn_secs'});
 
+# Proxy server
 local $conf = &read_up2date_config();
-print "<tr> <td><b>$text{'rhn_proxy'}</b></td>\n";
-printf "<td><input type=radio name=proxy_on value=0 %s> %s\n",
-	$conf->{'enableProxy'}->{'value'} ? '' : 'checked', $text{'rhn_none'};
-printf "<input type=radio name=proxy_on value=1 %s> %s\n",
-	$conf->{'enableProxy'}->{'value'} ? 'checked' : '';
 local $prx = $conf->{'pkgProxy'} ? $conf->{'pkgProxy'}->{'value'}
 				 : $conf->{'httpProxy'}->{'value'};
-printf "<input name=proxy size=40 value='%s'></td> </tr>\n", $prx;
+print &ui_table_row($text{'rhn_proxy'},
+	&ui_radio("proxy_on", $conf->{'enableProxy'}->{'value'} ? 1 : 0,
+		  [ [ 0, $text{'rhn_none'} ],
+		    [ 1, &ui_textbox("proxy", $prx, 40) ] ]));
 
-print "<tr> <td valign=top><b>$text{'rhn_skip'}</b></td>\n";
-print "<td><textarea name=skip rows=3 cols=40>",
-      join("\n", split(/;/, $conf->{'pkgSkipList'}->{'value'})),
-      "</textarea></td> </tr>\n";
+# Packages to skip
+print &ui_table_row($text{'rhn_skip'},
+	&ui_textarea("skip",
+	  join("\n", split(/;/, $conf->{'pkgSkipList'}->{'value'})), 5, 40));
 
-print "</table>\n";
-print "<input type=submit value='$text{'rhn_apply'}'>\n";
-print "<input type=submit name=now value='$text{'rhn_now'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'rhn_apply'} ],
+		     [ "now", $text{'rhn_now'} ] ]);
 }
 
 # read_up2date_config()

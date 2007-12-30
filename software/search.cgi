@@ -35,8 +35,8 @@ if (@match) {
 	@match = sort { lc($packages{$a,'name'}) cmp lc($packages{$b,'name'}) }
 		      @match;
 	print "<b>",&text('search_match', "<tt>$s</tt>"),"</b><p>\n";
-	print "<form action=delete_packs.cgi method=post>\n";
-	print "<input type=hidden name=search value='$in{'search'}'>\n";
+	print &ui_form_start("delete_packs.cgi", "post");
+	print &ui_hidden("search", $in{'search'});
 	@tds = ( "width=5" );
 	@links = ( &select_all_link("del", 0),
 		   &select_invert_link("del", 0) );
@@ -66,7 +66,7 @@ if (@match) {
 		}
 	print &ui_columns_end();
 	print &ui_links_row(\@links);
-	print "<input type=submit value='$text{'search_delete'}'></form>\n";
+	print &ui_form_end([ [ undef, $text{'search_delete'} ] ]);
 	}
 else {
 	print "<b>",&text('search_nomatch', "<tt>$s</tt>"),"</b><p>\n";

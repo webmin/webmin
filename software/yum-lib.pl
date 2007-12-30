@@ -77,8 +77,8 @@ return undef;
 sub update_system_form
 {
 print &ui_subheading($text{'yum_form'});
-print "<form action=yum_upgrade.cgi>\n";
-print "<input type=submit value='$text{'yum_apply'}'></form>\n";
+print &ui_form_start("yum_upgrade.cgi");
+print &ui_form_end([ [ undef, $text{'yum_apply'} ] ]);
 }
 
 # update_system_resolve(name)

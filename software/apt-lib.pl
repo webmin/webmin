@@ -47,24 +47,22 @@ return @rv;
 sub update_system_form
 {
 print &ui_subheading($text{'apt_form'});
-print "<form action=apt_upgrade.cgi>\n";
-print "<table>\n";
+print &ui_form_start("apt_upgrade.cgi");
+print &ui_table_start($text{'apt_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'apt_update'}</b></td>\n";
-print "<td><input type=radio name=update value=1 checked> $text{'yes'}\n";
-print "<input type=radio name=update value=0> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'apt_update'},
+	&ui_yesno_radio("update", 1));
 
-print "<tr> <td><b>$text{'apt_mode'}</b></td>\n";
-print "<td><input type=radio name=mode value=2> $text{'apt_mode2'}\n";
-print "<input type=radio name=mode value=1> $text{'apt_mode1'}\n";
-print "<input type=radio name=mode value=0 checked> $text{'apt_mode0'}</td> </tr>\n";
+print &ui_table_row($text{'apt_mode'},
+	&ui_radio("mode", 0, [ [ 2, $text{'apt_mode2'} ],
+			       [ 1, $text{'apt_mode1'} ],
+			       [ 0, $text{'apt_mode0'} ] ]));
 
-print "<tr> <td><b>$text{'apt_sim'}</b></td>\n";
-print "<td><input type=radio name=sim value=1> $text{'yes'}\n";
-print "<input type=radio name=sim value=0 checked> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'apt_sim'},
+	&ui_yesno_radio("sim", 0));
 
-print "</table>\n";
-print "<input type=submit value='$text{'apt_apply'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'apt_apply'} ] ]);
 }
 
 # update_system_resolve(name)

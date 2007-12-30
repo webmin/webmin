@@ -385,7 +385,7 @@ $has_search_system = 1;
 
 sub search_system_input
 {
-print "<input type=button onClick='window.ifield = document.forms[2].url; chooser = window.open(\"rpmfind.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=600,height=500\")' value=\"$text{'rpm_find'}\">";
+print "<input type=button onClick='window.ifield = document.forms[2].url; chooser = window.open(\"rpmfind.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=800,height=500\")' value=\"$text{'rpm_find'}\">";
 }
 
 1;

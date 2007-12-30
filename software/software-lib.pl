@@ -1,5 +1,6 @@
 # software-lib.pl
 # A generalized system for package management on solaris, linux, etc..
+# XXX cluster-software module
 
 do '../web-lib.pl';
 &init_config();
