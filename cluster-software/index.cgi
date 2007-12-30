@@ -119,7 +119,7 @@ if (@hosts) {
 
 	print "<td align=right><form action=refresh.cgi>\n";
 	print "<input type=submit value=\"$text{'index_refresh'}\">\n";
-	print &create_on_input(undef, 1, 1);
+	&create_on_input(undef, 1, 1);
 	print "</form></td> </tr></table>\n";
 
 	# Display cross-cluster install form
@@ -131,28 +131,24 @@ if (@hosts) {
 	print &ui_form_start("install_pack.cgi?id=$upid", "form-data", undef,
 		     &read_parse_mime_javascript($upid, [ "upload" ])),"\n";
 
-	print &ui_oneradio("source", 0, $text{'index_local'}, 1),"\n",
-	      &ui_textbox("local", undef, 50),"\n",
-	      &file_chooser_button("local", 0, 2),"<br>\n";
-
-	print &ui_oneradio("source", 1, $text{'index_uploaded'}, 0),"\n",
-	      &ui_upload("upload", 20),"<br>\n";
-
-	print &ui_oneradio("source", 2, $text{'index_ftp'}, 0),"\n",
-	      &ui_textbox("url", undef, 50),"<br>",
-	      "&nbsp;" x 5,&ui_checkbox("down", 1, $text{'index_down'}, 0),
-              "<br>\n";
-
-	# Show option for APT or YUM
+	@opts = ( );
+	push(@opts, [ 0, $text{'index_local'},
+		      &ui_textbox("local", undef, 50)."\n".
+		      &file_chooser_button("local", 0, 2) ]);
+	push(@opts, [ 1, $text{'index_uploaded'},
+		      &ui_upload("upload", 50) ]);
+	push(@opts, [ 2, $text{'index_ftp'},
+		      &ui_textbox("url", undef, 50)."<br>\n".
+		      &ui_checkbox("down", 1, $text{'index_down'}, 0) ]);
 	if ($software::has_update_system) {
-		print &ui_oneradio("source", 3,
-			$software::text{$software::update_system.'_input'}, 0),
-		      "\n",&ui_textbox("update", undef, 30),"\n",
+		push(@opts, [ 3,
+		      $software::text{$software::update_system.'_input'},
+		      &ui_textbox("update", undef, 30)."\n".
 		      &software::update_system_button("update",
-			$software::text{$software::update_system.'_find'});
-		print "<br>\n";
+			    $software::text{$software::update_system.'_find'})
+		      ]);
 		}
-
+	print &ui_radio_table("source", 0, \@opts);
 	print &ui_submit($text{'index_installok'}),"\n";
 	print &ui_form_end();
 	}

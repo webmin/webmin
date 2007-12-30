@@ -133,44 +133,45 @@ if ($invalid_msg) {
 		}
 	}
 
-print "<form action=do_install.cgi>\n";
-print "<input type=hidden name=file value=\"$pfile\">\n";
-print "<input type=hidden name=unknownfile value=\"$unknownfile\">\n";
-print "<input type=hidden name=need_unlink value=\"$need_unlink\">\n";
-print "<input type=hidden name=source value='$in{'source'}'>\n";
-print "<input type=hidden name=ssl value='$ssl'>\n";
-print "<input type=hidden name=host value='$host'>\n";
-print "<input type=hidden name=page value='$page'>\n";
-print "<input type=hidden name=port value='$port'>\n";
-print "<input type=hidden name=ftpfile value='$file'>\n";
-print "<input type=hidden name=down value='$in{'down'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'install_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td valign=top><b>$text{'install_packs'}</b></td>\n";
-print $software::wide_install_options ? "<td colspan=3>\n" : "<td>\n";
+# Show install form
+print &ui_form_start("do_install.cgi");
+print &ui_hidden("file", $pfile);
+print &ui_hidden("unknownfile", $unknownfile);
+print &ui_hidden("need_unlink", $need_unlink);
+print &ui_hidden("source", $in{'source'});
+print &ui_hidden("ssl", $ssl);
+print &ui_hidden("host", $host);
+print &ui_hidden("page", $page);
+print &ui_hidden("port", $port);
+print &ui_hidden("ftpfile", $file);
+print &ui_hidden("down", $in{'down'});
+print &ui_table_start($text{'install_header'}, undef, 4);
+
+# Packages to install
+$plist = "";
 foreach (@rv) {
 	($p, $d) = split(/\s+/, $_, 2);
 	if ($d) {
-		print "$d ($p)<br>\n";
+		$plist .= &html_escape($d)," (",&html_escape($p),")<br>\n";
 		}
 	else {
-		print "$p<br>\n";
+		$plist .= &html_escape($p),"<br>\n";
 		}
-	push(@pn, $p);
 	}
-print "</td> </tr>\n";
+print &ui_table_row($text{'install_packs'}, $plist, 3);
+
+# Type-specific options
 if ($in{'source'} != 3 && !@anydiff) {
-	# Options are only shown when all systems use the same package type
-	&foreign_call("software", "install_options", $pfile, $p);
+	&software::install_options($pfile, $p);
 	}
 
 # Show input for hosts to install on
 &create_on_input($text{'install_servers'},
 		 $in{'source'} == 3, $in{'source'} == 3);
 
-print "</table></td></tr>\n";
-print "</table><input type=submit value=\"$text{'install_ok'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'install_ok'} ] ]);
+
 
 &ui_print_footer("", $text{'index_return'});
 

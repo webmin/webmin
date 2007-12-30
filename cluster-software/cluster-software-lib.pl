@@ -119,21 +119,17 @@ sub create_on_input
 {
 local @hosts = &list_software_hosts();
 local @servers = &list_servers();
-if ($_[0]) {
-	print "<tr> <td><b>$_[0]</b></td>\n";
-	print "<td>\n";
-	}
-print "<select name=server>\n";
-print "<option value=-1>$text{'edit_all'}\n";
-print "<option value=-2>$text{'edit_donthave'}\n" if (!$_[1]);
-print "<option value=-3>$text{'edit_have'}\n" if (!$_[2]);
+local @opts;
+push(@opts, [ -1, $text{'edit_all'} ]);
+push(@opts, [ -2, $text{'edit_donthave'} ]) if (!$_[1]);
+push(@opts, [ -3, $text{'edit_have'} ]) if (!$_[2]);
 local @groups = &servers::list_all_groups(\@servers);
 local $h;
 foreach $h (@hosts) {
         local ($s) = grep { $_->{'id'} == $h->{'id'} } @servers;
 	if ($s) {
-		print "<option value='$s->{'id'}'>",
-			$s->{'desc'} || $s->{'realhost'} || $s->{'host'},"\n";
+		push(@opts, [ $s->{'id'},
+			$s->{'desc'} || $s->{'realhost'} || $s->{'host'} ]);
 		$gothost{$s->{'host'}}++;
 		}
         }
@@ -143,12 +139,15 @@ foreach $g (@groups) {
         foreach $m (@{$g->{'members'}}) {
                 ($found++, last) if ($gothost{$m});
                 }
-        print "<option value='group_$g->{'name'}'>",
-                &text('edit_group', $g->{'name'}),"\n" if ($found);
+	push(@opts, [ "group_$g->{'name'}",
+		      &text('edit_group', $g->{'name'}) ]) if ($found);
         }
-print "</select>\n";
+local $sel = &ui_select("server", undef, \@opts);
 if ($_[0]) {
-	print "</td> </tr>\n";
+	print &ui_table_row($_[0], $sel);
+	}
+else {
+	print $sel;
 	}
 }
 
