@@ -131,9 +131,9 @@ else {
 # Outputs HTML for choosing install options
 sub install_options
 {
-print "<tr> <td>",&hlink("<b>$text{'pkgadd_root'}</b>","root"),"</td>\n";
-print "<td colspan=3><input name=root size=30 value=/>\n";
-print &file_chooser_button("root", 1); print "</td> </tr>\n";
+print &ui_table_row(&hlink($text{'pkgadd_root'}, "root"),
+	&ui_textbox("root", "/", 50)." ".
+	&file_chooser_button("root", 1), 3);
 }
 
 # install_package(file, package)

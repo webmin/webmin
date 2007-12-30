@@ -205,13 +205,11 @@ else {
 # Outputs HTML for choosing install options
 sub install_options
 {
-print "<tr> <td><b>$text{'bsd_scripts'}</b></td>\n";
-print "<td><input type=radio name=scripts value=0 checked> $text{'yes'}\n";
-print "<input type=radio name=scripts value=1> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'bsd_scripts'},
+	&ui_radio("scripts", 0, [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'bsd_force'}</b></td>\n";
-print "<td><input type=radio name=force value=1> $text{'yes'}\n";
-print "<input type=radio name=force value=0 checked> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'bsd_force'},
+	&ui_yesno_radio("force", 0));
 }
 
 # install_package(file, package)

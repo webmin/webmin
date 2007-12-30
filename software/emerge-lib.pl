@@ -110,19 +110,15 @@ close(EMERGE);
 return @rv;
 }
 
-$wide_install_options = 0;
-
 # install_options(file, package)
 # Outputs HTML for choosing install options for some package
 sub install_options
 {
-print "<tr> <td><b>$text{'emerge_noreplace'}</b></td>\n";
-print "<td><input type=radio name=noreplace value=0 checked> $text{'yes'}\n";
-print "<input type=radio name=noreplace value=1> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'emerge_noreplace'},
+	&ui_radio("noreplace", 0, [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'emerge_onlydeps'}</b></td>\n";
-print "<td><input type=radio name=onlydeps value=1> $text{'yes'}\n";
-print "<input type=radio name=onlydeps value=0 checked> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'emerge_onlydeps'},
+	&ui_yesno_radio("onlydeps", 0));
 }
 
 $show_install_progress = 1;

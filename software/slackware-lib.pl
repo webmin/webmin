@@ -217,9 +217,9 @@ return $desc ? "$base $desc" : "$base $text{'slack_unknown'}";
 # Outputs HTML for choosing install options
 sub install_options
 {
-print "<tr> <td><b>$text{'slack_root'}</b></td>\n";
-print "<td colspan=3><input name=root size=30 value='/'> ",
-	&file_chooser_button("root", 1),"</td> </tr>\n";
+print &ui_table_row($text{'slack_root'},
+	&ui_textbox("root", "/", 50)." ".
+	&file_chooser_button("root", 1), 3);
 }
 
 # install_package(file, package)

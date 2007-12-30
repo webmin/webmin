@@ -153,59 +153,46 @@ else {
 	}
 }
 
-$wide_install_options = 1;
-
 # install_options(file, package)
 # Outputs HTML for choosing install options for some package
 sub install_options
 {
     my ($file, $pkg) = @_;
     if ($file =~ /\/[^\s]+[_\-]src[_\-]\d[^\s]*\.tar\.bz2$/) {
-	print "<tr>\n";
+	# No options
     } elsif ($file =~ /\/[^\s]+[_\-]\d[^\s]*-\d[^\s]*\.tar\.bz2$/) {
-	print "<tr><td colspan=4><b>$text{'cygwin_warnuse'}</b></td></tr>\n";
-	print "<tr>\n";
+	print &ui_table_row(undef, "<b>$text{'cygwin_warnuse'}</b>", 4);
+
 	print &yesno_input($text{'rpm_upgrade'}, "upgrade", 1, 0, 1);
 	print &yesno_input($text{'rpm_replacepkgs'}, "replacepkgs", 1, 0);
-	print "</tr>\n";
-	print "<tr>\n";
+
 	print &yesno_input($text{'rpm_noscripts'}, "noscripts", 0, 1);
     } else {
-print "<tr>\n";
-print &yesno_input($text{'rpm_upgrade'}, "upgrade", 1, 0, 1);
-print &yesno_input($text{'rpm_replacepkgs'}, "replacepkgs", 1, 0);
-print "</tr>\n";
+	print &yesno_input($text{'rpm_upgrade'}, "upgrade", 1, 0, 1);
+	print &yesno_input($text{'rpm_replacepkgs'}, "replacepkgs", 1, 0);
 
-print "<tr>\n";
-print &yesno_input($text{'rpm_nodeps'}, "nodeps", 1, 0);
-print &yesno_input($text{'rpm_oldpackage'}, "oldpackage", 1, 0);
-print "</tr>\n";
+	print &yesno_input($text{'rpm_nodeps'}, "nodeps", 1, 0);
+	print &yesno_input($text{'rpm_oldpackage'}, "oldpackage", 1, 0);
 
-print "<tr>\n";
-print &yesno_input($text{'rpm_noscripts'}, "noscripts", 0, 1);
-print &yesno_input($text{'rpm_excludedocs'}, "excludedocs", 0, 1);
-print "</tr>\n";
+	print &yesno_input($text{'rpm_noscripts'}, "noscripts", 0, 1);
+	print &yesno_input($text{'rpm_excludedocs'}, "excludedocs", 0, 1);
 
-print "<tr>\n";
-print &yesno_input($text{'rpm_notriggers'}, "notriggers", 0, 1);
-print &yesno_input($text{'rpm_ignoresize'}, "ignoresize", 0, 1);
-print "</tr>\n";
+	print &yesno_input($text{'rpm_notriggers'}, "notriggers", 0, 1);
+	print &yesno_input($text{'rpm_ignoresize'}, "ignoresize", 0, 1);
 
-print "<tr>\n";
-print &yesno_input($text{'rpm_replacefiles'}, "replacefiles", 1, 0);
-}
-print "<td align=right>",&hlink("<b>$text{'rpm_root'}</b>","root"),"</td>\n";
-print "<td><input name=root size=25 value=\"/\">\n";
-print &file_chooser_button("root", 1),"</td> </tr>\n";
+	print &yesno_input($text{'rpm_replacefiles'}, "replacefiles", 1, 0);
+    }
+print &ui_table_row(&hlink($text{'rpm_root'}, "root"),
+		&ui_textbox("root", "/", 50)." ".
+		&file_chooser_button("root", 1), 3);
 }
 
 sub yesno_input
 {
-local $cy = $_[2] ^ $_[4] ? "" : "checked";
-local $cn = $_[3] ^ $_[4] ? "" : "checked";
-return  "<td align=right>".&hlink("<b>$_[0]</b>", $_[1])."</td> <td>\n".
-	"<input type=radio name=$_[1] value=$_[2] $cy> $text{'yes'}\n".
-	"<input type=radio name=$_[1] value=$_[3] $cn> $text{'no'}</td>\n";
+return &ui_table_row(&hlink($_[0], $_[1]),
+		     &ui_radio($_[1], int($_[4]),
+			       [ [ $_[2], $text{'yes'} ],
+				 [ $_[3], $text{'no'} ] ]));
 }
 
 # install_package(file, package, [&inputs])
@@ -435,13 +422,11 @@ sub delete_options
     if (@cygdata) {
 	print "<b>$text{'cygwin_warnuse'}</b><br>\n";
     } else {
-print "<b>$text{'delete_nodeps'}</b>\n";
-print "<input type=radio name=nodeps value=1> $text{'yes'}\n";
-print "<input type=radio name=nodeps value=0 checked> $text{'no'}<br>\n";
-}
+	print "<b>$text{'delete_nodeps'}</b>\n";
+	print &ui_yesno_radio("nodeps", 0),"<br>\n";
+    }
 print "<b>$text{'delete_noscripts'}</b>\n";
-print "<input type=radio name=noscripts value=1> $text{'yes'}\n";
-print "<input type=radio name=noscripts value=0 checked> $text{'no'}<br>\n";
+print &ui_yesno_radio("noscripts", 0),"<br>\n";
 }
 
 # delete_package(package, [&options], version)

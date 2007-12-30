@@ -115,7 +115,7 @@ print &ui_table_row($text{'edit_ver'},
 
 # Vendor
 print &ui_table_row($text{'edit_vend'},
-	&html_escape($pinfo[5]));
+	&html_escape(&entities_to_ascii($pinfo[5])));
 
 # Architecture
 print &ui_table_row($text{'edit_arch'},

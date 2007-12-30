@@ -361,3 +361,19 @@ msi_users2=All users
 msi_missing=Does not exist
 msi_size=Wrong size
 
+hpux_create_target_path=Create target path?
+hpux_mount_all_filesystems=Mount all filesystems?
+hpux_reinstall=Reinstall?
+hpux_reinstall_files=Reinstall files?
+hpux_reinstall_files_use_cksum=Reinstall files use checksum?
+hpux_allow_multiple_versions=Allow multiple versions?
+hpux_defer_configure=Defer configure?
+hpux_autorecover_product=Autorecover product?
+hpux_allow_downdate=Allow downdate?
+hpux_allow_incompatible=Allow incompatible?
+hpux_autoselect_dependencies=Autoselect dependencies?
+hpux_enforce_dependencies=Enforce dependencies?
+hpux_enforce_scripts=Enforce scripts?
+hpux_enforce_dsa=Enforce disk space analysis?
+hpux_root=Root directory
+

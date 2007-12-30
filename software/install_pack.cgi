@@ -120,26 +120,29 @@ if (!&is_package($pfile)) {
 # ask for package to install and install options
 @rv = &file_packages($pfile);
 
-print "<form action=do_install.cgi>\n";
-print "<input type=hidden name=file value=\"$pfile\">\n";
-print "<input type=hidden name=need_unlink value=\"$need_unlink\">\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'install_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td valign=top><b>$text{'install_packs'}</b></td>\n";
-print $wide_install_options ? "<td colspan=3>\n" : "<td>\n";
+print &ui_form_start("do_install.cgi");
+print &ui_hidden("file", $pfile);
+print &ui_hidden("need_unlink", $need_unlink);
+print &ui_table_start($text{'install_header'}, undef, 4);
+
+# Packages to install
+$plist = "";
 foreach (@rv) {
 	($p, $d) = split(/\s+/, $_, 2);
 	if ($d) {
-		print &html_escape($d)," (",&html_escape($p),")<br>\n";
+		$plist .= &html_escape($d)," (",&html_escape($p),")<br>\n";
 		}
 	else {
-		print &html_escape($p),"<br>\n";
+		$plist .= &html_escape($p),"<br>\n";
 		}
 	}
+print &ui_table_row($text{'install_packs'}, $plist, 3);
+
+# Type-specific options
 &install_options($pfile, $p);
-print "</table></td></tr>\n";
-print "</table><input type=submit value=\"$text{'install_ok'}\"></form>\n";
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'install_ok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

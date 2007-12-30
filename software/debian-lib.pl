@@ -132,21 +132,17 @@ return ();
 # Outputs HTML for choosing install options
 sub install_options
 {
-print "<tr> <td><b>$text{'debian_depends'}</b></td>\n";
-print "<td><input type=radio name=depends value=1> $text{'yes'}\n";
-print "<input type=radio name=depends value=0 checked> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'debian_depends'},
+	&ui_yesno_radio("depends", 0));
 
-print "<tr> <td><b>$text{'debian_conflicts'}</b></td>\n";
-print "<td><input type=radio name=conflicts value=1> $text{'yes'}\n";
-print "<input type=radio name=conflicts value=0 checked> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'debian_conflicts'},
+	&ui_yesno_radio("conflicts", 0));
 
-print "<tr> <td><b>$text{'debian_overwrite'}</b></td>\n";
-print "<td><input type=radio name=overwrite value=1> $text{'yes'}\n";
-print "<input type=radio name=overwrite value=0 checked> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'debian_overwrite'},
+	&ui_yesno_radio("overwrite", 0));
 
-print "<tr> <td><b>$text{'debian_downgrade'}</b></td>\n";
-print "<td><input type=radio name=downgrade value=1> $text{'yes'}\n";
-print "<input type=radio name=downgrade value=0 checked> $text{'no'}</td> </tr>\n";
+print &ui_table_row($text{'debian_downgrade'},
+	&ui_yesno_radio("downgrade", 0));
 }
 
 # install_package(file, package)

@@ -197,13 +197,10 @@ return ( );
 sub install_options
 {
 local ($file, $pkg) = @_;
-
-print "<tr>\n";
-print "<td><b>$text{'msi_users'}</b></td>\n";
-print "<td>",&ui_radio("users", 2, [ [ 0, $text{'msi_users0'} ],
+print &ui_table_row($text{'msi_users'},
+             &ui_radio("users", 2, [ [ 0, $text{'msi_users0'} ],
 				     [ 1, $text{'msi_users1'} ],
-				     [ 2, $text{'msi_users2'} ] ]),"</td>\n";
-print "</tr>\n";
+				     [ 2, $text{'msi_users2'} ] ]), 3);
 }
 
 # install_package(file, package, [&inputs])

@@ -117,95 +117,51 @@ return @list;
 # Outputs HTML for choosing install options for some package
 sub install_options
 {
-print "<tr> <td align=right><b>Create target path?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=create_target_path value=1 checked> Yes\n";
-print "<input type=radio name=create_target_path value=0> No\n";
-print "</td>\n";
+print &ui_table_row($text{'hpux_create_target_path'},
+	&ui_yesno_radio("create_target_path", 1));
 
-print "<td align=right><b>Mount all filesystems?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=mount_all_filesystems value=1 checked> Yes\n";
-print "<input type=radio name=mount_all_filesystems value=0> No\n";
-print "</td></tr>\n";
+print &ui_table_row($text{'hpux_mount_all_filesystems'},
+	&ui_yesno_radio("mount_all_filesystems", 1));
 
-print "<tr> <td align=right><b>Reinstall?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=reinstall value=1> Yes\n";
-print "<input type=radio name=reinstall value=0 checked> No\n";
-print "</td>\n";
+print &ui_table_row($text{'hpux_reinstall'},
+	&ui_yesno_radio("reinstall", 0));
 
-print "<td align=right><b>Reinstall files?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=reinstall_files value=1 checked> Yes\n";
-print "<input type=radio name=reinstall_files value=0> No\n";
-print "</td></tr>\n";
+print &ui_table_row($text{'hpux_reinstall_files'},
+	&ui_yesno_radio("reinstall_files", 1));
 
-print "<tr><td align=right><b>Reinstall files use checksum?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=reinstall_files_use_cksum value=1 checked> Yes\n";
-print "<input type=radio name=reinstall_files_use_cksum value=0> No\n";
-print "</td>\n";
+print &ui_table_row($text{'hpux_reinstall_files_use_cksum'},
+	&ui_yesno_radio("reinstall_files_use_cksum", 1));
 
-print "<td align=right><b>Allow multiple versions?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=allow_multiple_versions value=1> Yes\n";
-print "<input type=radio name=allow_multiple_versions value=0 checked> No\n";
-print "</td></tr>\n";
+print &ui_table_row($text{'hpux_allow_multiple_versions'},
+	&ui_yesno_radio("allow_multiple_versions", 0));
 
-print "<tr> <td align=right><b>Defer configure?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=defer_configure value=1> Yes\n";
-print "<input type=radio name=defer_configure value=0 checked> No\n";
-print "</td>\n";
+print &ui_table_row($text{'hpux_defer_configure'},
+	&ui_yesno_radio("defer_configure", 0));
 
-print "<td align=right><b>Autorecover product?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=autorecover_product value=1> Yes\n";
-print "<input type=radio name=autorecover_product value=0 checked> No\n";
-print "</td></tr>\n";
+print &ui_table_row($text{'hpux_autorecover_product'},
+	&ui_yesno_radio("autorecover_product", 0));
 
-print "<tr> <td align=right><b>Allow downdate?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=allow_downdate value=1> Yes\n";
-print "<input type=radio name=allow_downdate value=0 checked> No\n";
-print "</td>\n";
+print &ui_table_row($text{'hpux_allow_downdate'},
+	&ui_yesno_radio("allow_downdate", 0));
 
-print "<td align=right><b>Allow incompatible?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=allow_incompatible value=1> Yes\n";
-print "<input type=radio name=allow_incompatible value=0 checked> No\n";
-print "</td></tr>\n";
+print &ui_table_row($text{'hpux_allow_incompatible'},
+	&ui_yesno_radio("allow_incompatible", 0));
 
-print "<tr> <td align=right><b>Autoselect dependencies?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=autoselect_dependencies value=1 checked> Yes\n";
-print "<input type=radio name=autoselect_dependencies value=0> No\n";
-print "</td>\n";
+print &ui_table_row($text{'hpux_autoselect_dependencies'},
+	&ui_yesno_radio("autoselect_dependencies", 1));
 
-print "<td align=right><b>Enforce dependencies?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=enforce_dependencies value=1 checked> Yes\n";
-print "<input type=radio name=enforce_dependencies value=0> No\n";
-print "</td></tr>\n";
+print &ui_table_row($text{'hpux_enforce_dependencies'},
+	&ui_yesno_radio("enforce_dependencies", 1));
 
-print "<tr> <td align=right><b>Enforce scripts?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=enforce_scripts value=1 checked> Yes\n";
-print "<input type=radio name=enforce_scripts value=0> No\n";
-print "</td>\n";
+print &ui_table_row($text{'hpux_enforce_scripts'},
+	&ui_yesno_radio("enforce_scripts", 1));
 
-print "<td align=right><b>Enforce disk space analysis?</b></td>\n";
-print "<td>\n";
-print "<input type=radio name=enforce_dsa value=1 checked> Yes\n";
-print "<input type=radio name=enforce_dsa value=0> No\n";
-print "</td></tr>\n";
+print &ui_table_row($text{'hpux_enforce_dsa'},
+	&ui_yesno_radio("enforce_dsa", 1));
 
-print "<td></td> <td></td> </tr>\n";
-
-print "<tr> <td align=right><b>Root directory</b></td>\n";
-print "<td colspan=3><input name=root size=40 value=\"/\">\n";
-print &file_chooser_button("root", 1); print "</td> </tr>\n";
+print &ui_table_row($text{'hpux_root'},
+	&ui_textbox("root", "/", 50)." ".
+	&file_chooser_button("root", 1), 3);
 }
 
 # install_package(file, package)
