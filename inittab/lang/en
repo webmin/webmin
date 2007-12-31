@@ -1,4 +1,3 @@
-inittab_title=SysV Init Configuration
 inittab_new=Create a new init process.
 inittab_id=ID
 inittab_active=Active?
@@ -21,6 +20,7 @@ inittab_powerokwait=Power is restored
 inittab_powerfailnow=Power fail
 inittab_ctrlaltdel=Ctrl-Alt-Del
 inittab_kbdrequest=Special key combination
+inittab_kbrequest=$inittab_kbdrequest
 inittab_return=process list
 inittab_apply=Apply Init Configuration
 inittab_applymsg=Click this button to apply the current SysV Init Configuration by running the command <tt>telinit q</tt>. Be aware that any mistakes in your configuration may make the system unusable when this command is run.

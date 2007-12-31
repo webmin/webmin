@@ -80,66 +80,28 @@ splice(@$lref, $_[0]->{'line'}, $_[0]->{'eline'} - $_[0]->{'line'} + 1);
 &flush_file_lines();
 }
 
-sub p_link
+sub list_runlevels
 {
-    my ( $dest, $text ) = @_;
-    return "<a href=\"". $dest. "\">". $text. "</a>";
+return ( 0..6, "a", "b", "c" );
 }
 
-sub p_radio
+sub list_actions
 {
-    my ( $name, $checked, @list ) = @_;
-    local ($out, $size, $i);
-    $size = @list; $i = 0;
-
-    do
-    {
-	$out .= " <input type=radio name=".$name." value=".$list[$i];
-	$out .= " checked" if( $checked eq $list[$i++] );
-	$out .="> ".$list[$i++];
-    } while( $i < $size );
-
-    return $out;
+return ( [ "respawn", $text{ 'inittab_respawn' } ],
+	 [ "wait", $text{ 'inittab_wait' } ],
+	 [ "once", $text{ 'inittab_once' } ],
+	 [ "ondemand", $text{ 'inittab_ondemand' } ],
+         [ "initdefault", $text{ 'inittab_initdefault' } ],
+	 [ "sysinit", $text{ 'inittab_sysinit' } ],
+	 [ "powerwait", $text{ 'inittab_powerwait' } ],
+	 [ "powerfail", $text{ 'inittab_powerfail' } ],
+	 [ "powerokwait", $text{ 'inittab_powerokwait' } ],
+	 [ "powerfailnow", $text{ 'inittab_powerfailnow' } ],
+	 [ "ctrlaltdel", $text{ 'inittab_ctrlaltdel' } ],
+	 [ "kbdrequest", $text{ 'inittab_kbdrequest' } ],
+	 [ "bootwait", $text{'inittab_bootwait'} ],
+	 [ "boot", $text{'inittab_boot'} ],
+	 [ "off", $text{'inittab_off'} ],
+	);
 }
 
-sub p_entry
-{
-    my ( $name, $value, $size ) = @_;
-    my $q = $_[1] =~ /'/ ? "\"" : "'";
-
-    $size ? return "<input name=". $name. " size=". $size." value=$q". $value."$q>" : return "<input name=". $name. " value=$q". $value."$q>";
-}
-
-sub p_select_wdl
-{
-    my ( $name, $selected, @list ) = @_;
-    local $size = @list, $i = 0, $out = " <select name=".$name.">";
-    do
-    {
-	$out .= "<option name=".$name." value=".$list[$i];
-	$out .= " selected" if( $selected eq $list[$i++] );
-	$out .= ">".$list[$i++];
-    } while( $i < $size );
-    $out .= "</select>";
-
-    return $out;
-}
-
-sub p_select
-{
-    my ( $name, $selected, @list ) = @_;
-    local (@newlist, $item);
-
-    foreach $item ( @list )
-    {
-	push( @newlist, $item, $item );
-    }
-
-    p_select_wdl( $name, $selected, @newlist );
-}
-
-sub p_button
-{
-    my ( $name, $value ) = @_;
-    return "<input type=submit name=". $name. " value=\"". $value. "\">";
-}

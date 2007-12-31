@@ -4,13 +4,13 @@
 # shutdown time for each level
 
 require './inittab-lib.pl';
-&ui_print_header(undef,  $text{'inittab_title'}, "", "index", 1, 1, 0,
+&ui_print_header(undef, $module_info{'desc'}, "", "index", 1, 1, 0,
 	&help_search_link("inittab", "man"));
 
 print &ui_form_start("delete.cgi", "post");
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
-	   "<a href=new_inittab.cgi>$text{'inittab_new'}</a>" );
+	   "<a href=edit_inittab.cgi?new=1>$text{'inittab_new'}</a>" );
 print &ui_links_row(\@links);
 @tds = ( "width=5" );
 print &ui_columns_start([ "",
