@@ -11,32 +11,34 @@ use Config;
 &ReadParse();
 &index_links("run");
 
-print "<form action=run.cgi method=post>\n";
-print "<table>\n";
-print "<tr> <td>",&hlink("<b>$text{'run_command'}</b>","cmd"),"</td>\n";
-print "<td><input name=cmd size=40>\n";
-print "<input type=submit value=\"$text{'run_submit'}\"></td> </tr>\n";
+print &ui_form_start("run.cgi", "post");
+print &ui_table_start(undef, undef, 2);
 
-print "<tr> <td>",&hlink("<b>$text{'run_mode'}</b>","mode"),"</td>\n";
-print "<td><input type=radio name=mode value=1> $text{'run_bg'}\n";
-print "<input type=radio name=mode value=0 checked> $text{'run_fg'}</td>\n";
-print "</tr>\n";
+# Command to run
+print &ui_table_row(&hlink($text{'run_command'}, "cmd"),
+	&ui_textbox("cmd", undef, 60)." ".
+	&ui_submit($text{'run_submit'}));
 
+# Foreground mode
+print &ui_table_row(&hlink($text{'run_mode'}, "mode"),
+	&ui_radio("mode", 0, [ [ 1, $text{'run_bg'} ],
+			       [ 0, $text{'run_fg'} ] ]));
+
+# Run as user
 if (&supports_users()) {
 	if ($< == 0) {
-		print "<tr> <td>",&hlink("<b>$text{'run_as'}</b>","runas"),
-		      "</td>\n";
-		print "<td>",&ui_user_textbox("user", $default_run_user),
-		      "</td> </tr>\n";
+		print &ui_table_row(&hlink($text{'run_as'}, "runas"),
+			&ui_user_textbox("user", $default_run_user));
 		}
 	else {
 		print &ui_hidden("user", $remote_user),"\n";
 		}
 	}
 
-print "<tr> <td valign=top>",
-      &hlink("<b>$text{'run_input'}</b>","input"),"</td>\n";
-print "<td><textarea name=input rows=5 cols=30></textarea></td> </tr>\n";
-print "</table></form>\n";
+# Input to command
+print &ui_table_row(&hlink($text{'run_input'}, "input"),
+	&ui_textarea("input", undef, 5, 60));
+print &ui_table_end();
+print &ui_form_end();
 
 &ui_print_footer("/", $text{'index'});

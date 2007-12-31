@@ -7,92 +7,94 @@ require './proc-lib.pl';
 &ReadParse();
 &index_links("search");
 
+# Javascript to select radio
+print <<EOF;
+<script>
+function select_mode(m)
+{
+for(i=0; i<document.forms[0].mode.length; i++) {
+	document.forms[0].mode[i].checked = document.forms[0].mode[i].value == m;
+	}
+}
+</script>
+EOF
+
 # display search form
-print "<form action=index_search.cgi>\n";
-print "<table width=100%><tr><td valign=top>\n";
+print &ui_form_start("index_search.cgi");
+print &ui_table_start(undef, undef, 4);
 
-printf "<input type=radio name=mode value=0 %s>\n",
-	$in{mode}==0 ? "checked" : "";
-print &hlink("<b>$text{'search_user'}</b>","suser"),"\n";
-printf "<input name=user size=8 value=\"%s\"> %s<br>\n",
-	$in{mode}==0 ? $in{user} : "",
-	&user_chooser_button("user", 0);
+# By user
+print &ui_table_row(&ui_oneradio("mode", 0, &hlink($text{'search_user'}, "suser"),
+			      $in{'mode'} == 0),
+		    &ui_user_textbox("user", $in{'user'}, 0, 0,
+				     &mode_selector(0)));
 
-printf "<input type=radio name=mode value=1 %s>\n",
-	$in{mode}==1 ? "checked" : "";
-print &hlink("<b>$text{'search_match'}</b>","smatch"),"\n";
-printf "<input name=match size=20 value=\"%s\"><br>\n",
-	$in{mode}==1 ? $in{match} : "";
+# By process name
+print &ui_table_row(&ui_oneradio("mode", 1, &hlink($text{'search_match'},"smatch"),
+			      $in{'mode'} == 1),
+		    &ui_textbox("match", $in{'match'}, 30, 0, undef,
+				&mode_selector(1)));
 
-printf "<input type=radio name=mode value=2 %s>\n",
-	$in{mode}==2 ? "checked" : "";
-$cpu = sprintf "<input name=cpu size=4 value=\"%s\">\n",
-		$in{mode}==2 ? $in{cpu} : "";
-print &hlink("<b>".&text('search_cpupc', $cpu)."</b>", "scpu"),"<br>\n";
+if ($has_lsof_command) {
+	# TCP port
+	print &ui_table_row(&ui_oneradio("mode", 5,
+		&hlink($text{'search_port'}, "ssocket"), $in{'mode'} == 5),
+		&ui_textbox("port", $in{'port'}, 6, 0, undef,
+			    &mode_selector(5))." ".
+		$text{'search_protocol'}." ".
+		&ui_select("protocol", $in{'protocol'},
+			   [ [ 'tcp', 'TCP' ], [ 'udp', 'UDP' ] ], 1, 0, 0,
+			   0, &mode_selector(5, "onChange")));
 
-print "</td><td valign=top>\n";
+	# Using IP address
+	print &ui_table_row(&ui_oneradio("mode", 6,
+		&hlink($text{'search_ip'}, "sip"), $in{'mode'} == 6),
+		&ui_textbox("ip", $in{'ip'}, 20, 0, undef,
+			    &mode_selector(6)));
+	}
+
+# By CPU used
+print &ui_table_row(&ui_oneradio("mode", 2,
+		&hlink($text{'search_cpupc2'}, "scpu"), $in{'mode'} == 2),
+		&ui_textbox("cpu", $in{'cpu'}, 4, 0, undef,
+			    &mode_selector(2))."%");
 
 if ($has_fuser_command) {
-	printf "<input type=radio name=mode value=3 %s>\n",
-		$in{mode}==3 ? "checked" : "";
-	print &hlink("<b>$text{'search_fs'}</b>","sfs"),"\n";
+	# Using filesystem
 	if (&foreign_check("mount")) {
 		&foreign_require("mount", "mount-lib.pl");
-		print "<select name=fs>\n";
+		@opts = ( );
 		foreach $fs (&foreign_call("mount", "list_mounted")) {
 			next if ($fs->[2] eq "swap");
-			printf "<option %s>%s\n",
-			     $in{'mode'}==3 && $in{'fs'} eq $fs->[0] ?
-			     "selected" : "", $fs->[0];
+			push(@opts, $fs->[0]);
 			}
-		print "</select><br>\n";
+		$fschooser = &ui_select("fs", $in{'fs'}, \@opts, 1, 0, 0, 0,
+					&mode_selector(3, "onChange"));
 		}
 	else {
-		printf "<input name=fs size=15 value='%s'><br>\n",
-			$in{'mode'}==3 ? $in{'fs'} : "";
+		$fschooser = &ui_textbox("fs", $in{'fs'}, 30, 0, undef,
+					 &mode_selector(3));
 		}
+	print &ui_table_row(&ui_oneradio("mode", 3,
+		&hlink($text{'search_fs'}, "sfs"), $in{'mode'} == 3),
+		$fschooser, 3);
 
-	printf "<input type=radio name=mode value=4 %s>\n",
-		$in{mode}==4 ? "checked" : "";
-	print &hlink("<b>$text{'search_files'}</b>","sfiles"),"\n";
-	printf "<input name=files size=30 value=\"%s\">\n",
-		$in{mode}==4 ? $in{'files'} : "";
-	print &file_chooser_button("files", 0);
-	print "<br>\n";
-	}
-if ($has_lsof_command) {
-	# Show input for file in use
-	printf "<input type=radio name=mode value=5 %s>\n",
-		$in{mode}==5 ? "checked" : "";
-	print &hlink("<b>$text{'search_port'}</b>","ssocket"),"\n";
-	printf "<input name=port size=6 value='%s'>\n",
-		$in{mode}==5 ? $in{port} : "";
-
-	# Show input for protocol and port
-	print &hlink("<b>$text{'search_protocol'}</b>","ssocket"),"\n";
-	print "<select name=protocol>\n";
-	printf "<option value=tcp %s>TCP\n",
-		$in{protocol} eq 'tcp' ? 'selected' : '';
-	printf "<option value=udp %s>UDP\n",
-		$in{protocol} eq 'udp' ? 'selected' : '';
-	print "</select>\n";
-	print "<br>\n";
-
-	# Show input for IP address
-	printf "<input type=radio name=mode value=6 %s>\n",
-		$in{mode}==6 ? "checked" : "";
-	print &hlink("<b>$text{'search_ip'}</b>","sip"),"\n";
-	printf "<input name=ip size=15 value='%s'>\n",
-		$in{mode}==6 ? $in{ip} : "";
+	# Using file
+	print &ui_table_row(&ui_oneradio("mode", 4,
+		&hlink($text{'search_files'}, "sfiles"), $in{'mode'} == 4),
+		&ui_textbox("files", $in{'files'}, 50, 0, undef,
+			    &mode_selector(4))." ".
+		&file_chooser_button("files", 0), 3);
 	}
 
-print "</td></tr></table>\n";
-print "<input type=submit value=\"$text{'search_submit'}\">\n";
-print "&nbsp;" x 5;
-printf "<input type=checkbox name=ignore value=1 %s> %s<br>\n",
-	$in{'ignore'} || !defined($in{'mode'}) ? 'checked' : '',
-	&hlink("<b>$text{'search_ignore'}</b>","signore");
-print "</form>\n";
+# Exclude own processes
+print &ui_table_row(undef,
+	&ui_checkbox("ignore", 1,
+		&hlink("<b>$text{'search_ignore'}</b>","signore"),
+		$in{'ignore'} || !defined($in{'mode'})));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'search_submit'} ] ]);
 
 if (%in) {
 	# search for processes
@@ -208,4 +210,11 @@ if (%in) {
 	}
 
 &ui_print_footer("/", $text{'index'});
+
+sub mode_selector
+{
+local ($m, $action) = @_;
+$action ||= "onFocus";
+return "$action='select_mode($m)'";
+}
 

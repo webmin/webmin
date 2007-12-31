@@ -28,6 +28,7 @@ stime=Started
 search_user=Owned by
 search_match=Matching
 search_cpupc=Using more than $1% CPU
+search_cpupc2=Using more CPU than
 search_fs=Using filesystem
 search_files=Using file
 search_submit=Search
