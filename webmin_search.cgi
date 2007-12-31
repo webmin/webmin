@@ -19,7 +19,8 @@ $re =~ s/\s+$//;
 
 # Search module names first
 $count = 0;
-@mods = grep { !$_->{'clone'} } &get_available_module_infos();
+@mods = sort { $b->{'longdesc'} cmp $a->{'longdesc'} }
+	     grep { !$_->{'clone'} } &get_available_module_infos();
 foreach $m (@mods) {
 	if ($m->{'desc'} =~ /\Q$re\E/i || $m->{'dir'} =~ /\Q$re\E/i) {
 		&match_row(
