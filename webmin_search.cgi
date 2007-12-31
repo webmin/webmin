@@ -99,7 +99,7 @@ foreach $m (@mods) {
 			$data =~ s/<p>/\n\n/gi;
 			$data =~ s/<br>/\n/gi;
 			$data =~ s/<[^>]+>//g;
-			if ($data =~ /\Q$re\E/) {
+			if ($data =~ /\Q$re\E/i) {
 				&match_row(
 				    $m,
 				    &hlink($title, $page, $m->{'dir'}),
