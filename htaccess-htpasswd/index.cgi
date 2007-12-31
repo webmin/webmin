@@ -47,6 +47,7 @@ if ($config{'digest'} && !$htdigest_command) {
 
 @dirs = &list_directories();
 @dirs = grep { &can_access_dir($_->[0]) } @dirs;
+@gtds = ( "width=25%", "width=25%", "width=25%", "width=25%" );
 if (@dirs) {
 	@tds = ( "width=30% valign=top", "width=70% valign=top" );
 	if ($can_create) {
@@ -68,39 +69,34 @@ if (@dirs) {
 			}
 
 		# Show the users
-		$utable = "<table width=100%>\n";
 		$users = $d->[2] == 3 ? &list_digest_users($d->[1])
 				      : &list_users($d->[1]);
 		if ($userconfig{'sort'} == 1 || $config{'sort'} == 1) {
 			$users = [ sort { $a->{'user'} cmp $b->{'user'} }
 					@$users ];
 			}
+		@grid = ( );
 		for($i=0; $i<@$users; $i++) {
 			$u = $users->[$i];
 			$link = "<a href='edit_user.cgi?idx=$u->{'index'}&dir=".
 				&urlize($d->[0])."'>$u->{'user'}</a>";
-			$utable .= "<tr>\n" if ($i%4 == 0);
 			if ($u->{'enabled'}) {
-				$utable .= "<td width=25%>$link</td>\n";
+				push(@grid, $link);
 				}
 			else {
-				$utable .= "<td width=25%><i>$link</i></td>\n";
+				push(@grid, "<i>$link</i>");
 				}
-			$utable .= "</tr>\n" if ($i%4 == 3);
 			}
-		if ($i%4) {
-			while($i++%4) { $utable .= "<td width=25%></td>\n"; }
-			$utable .= "</tr>\n";
+		if (@grid) {
+			$utable = &ui_grid_table(\@grid, 4, 100, \@gtds);
 			}
-		if (!@$users) {
-			$utable .= "<tr> <td colspan=4><i>".
-				   "$text{'index_nousers'}</i></td> </tr>\n";
+		else {
+			$utable = "<i>$text{'index_nousers'}</i><br>\n";
 			}
-		$utable .= "</table>\n";
 
 		# Show the groups
 		if ($d->[4]) {
-			$utable .= "<table width=100%>\n";
+			@grid = ( );
 			$groups = &list_groups($d->[4]);
 			if ($userconfig{'sort'} == 1 || $config{'sort'} == 1) {
 				$groups = [ sort { $a->{'group'} cmp $b->{'group'} }
@@ -111,33 +107,30 @@ if (@dirs) {
 				$link= "<a href='edit_group.cgi?idx=$u->{'index'}&dir=".
 				       &urlize($d->[0])."'>$u->{'group'} (".
 				       scalar(@{$u->{'members'}}).")</a>";
-				$utable .= "<tr>\n" if ($i%4 == 0);
 				if ($u->{'enabled'}) {
-					$utable .= "<td width=25%>$link</td>\n";
+					push(@grid, $link);
 					}
 				else {
-					$utable .= "<td width=25%><i>$link</i></td>\n";
+					push(@grid, "<i>$link</i>");
 					}
-				$utable .= "</tr>\n" if ($i%4 == 3);
 				}
-			if ($i%4) {
-				while($i++%4) { $utable .= "<td width=25%></td>\n"; }
-				$utable .= "</tr>\n";
+			if (@grid) {
+				$utable .= &ui_grid_table(\@grid, 4,100,\@gtds);
 				}
-			if (!@$groups) {
-				$utable .= "<tr> <td colspan=4><i>$text{'index_nogroups'}</i></td> </tr>\n";
+			else {
+				$utable .= "<i>$text{'index_nogroups'}</i><br>\n";
 				}
-			$utable .= "</table>\n";
 			}
 
 		# User / group adder links
-		$utable .= "<a href='edit_user.cgi?new=1&dir=".&urlize($d->[0]).
-			   "'>$text{'index_uadd'}</a>\n";
+		@ulinks = ( );
+		push(@ulinks, "<a href='edit_user.cgi?new=1&dir=".
+			      &urlize($d->[0])."'>$text{'index_uadd'}</a>");
 		if ($d->[4]) {
-			$utable .= "&nbsp;&nbsp;";
-			$utable .= "<a href='edit_group.cgi?new=1&dir=".
-				 &urlize($d->[0])."'>$text{'index_gadd'}</a>\n";
+			push(@ulinks, "<a href='edit_group.cgi?new=1&dir=".
+			     &urlize($d->[0])."'>$text{'index_gadd'}</a>");
 			}
+		$utable .= &ui_links_row(\@ulinks);
 		push(@cols, $utable);
 		if ($can_create) {
 			print &ui_checked_columns_row(\@cols, \@tds,

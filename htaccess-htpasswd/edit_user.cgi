@@ -20,52 +20,45 @@ else {
 	$user = $users->[$in{'idx'}];
 	}
 
-print "<form action=save_user.cgi method=post>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=dir value='$in{'dir'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'edit_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table cellpadding=3>\n";
+print &ui_form_start("save_user.cgi", "post");
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("dir", $in{'dir'});
+print &ui_table_start($text{'edit_header'}, undef, 2);
 
 # Username
-print "<tr> <td><b>$text{'edit_user'}</b></td>\n";
-printf "<td><input name=htuser size=20 value='%s'></td> </tr>\n",
-	&html_escape($user->{'user'});
+print &ui_table_row($text{'edit_user'},
+	&ui_textbox("htuser", $user->{'user'}, 40));
 
 # User enabled?
-print "<tr> <td><b>$text{'edit_enabled'}</b></td>\n";
-printf "<td><input type=radio name=enabled value=1 %s> %s\n",
-	$user->{'enabled'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=enabled value=0 %s> %s</td> </tr>\n",
-	$user->{'enabled'} ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'edit_enabled'},
+	&ui_yesno_radio("enabled", $user->{'enabled'} ? 1 : 0));
 
 # Password
-print "<tr> <td valign=top><b>$text{'edit_pass'}</b></td> <td>\n";
-if (!$in{'new'}) {
-	print "<input type=radio name=htpass_def value=1 checked> ",
-	      "$text{'edit_pass1'}<br>\n";
-	print "<input type=radio name=htpass_def value=0> ",
-	      "$text{'edit_pass0'}\n";
+if ($in{'new'}) {
+	print &ui_table_row($text{'edit_pass'},
+		&ui_textbox("htpass", undef, 20));
 	}
-print "<input type=password name=htpass size=20></td> </tr>\n";
+else {
+	print &ui_table_row($text{'edit_pass'},
+		&ui_opt_textbox("htpass", undef, 20, $text{'edit_pass1'},
+				$text{'edit_pass0'}));
+	}
 
 if ($dir->[2] == 3) {
 	# Digest realm
-	print "<tr> <td><b>$text{'edit_dom'}</b></td>\n";
-	printf "<td><input name=dom size=20 value='%s'></td> </tr>\n",
-		&html_escape($user->{'dom'});
+	print &ui_table_row($text{'edit_dom'},
+		&ui_textbox("dom", $user->{'dom'}, 40));
 	}
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ "delete", $text{'delete'} ] ]);
 	}
-print "</form>\n";
 
 &ui_print_footer("", $text{'index_return'});
 
