@@ -1,7 +1,7 @@
 index_title=Custom Commands
-index_edit=Edit command
-index_fedit=Edit file editor
-index_sedit=Edit SQL command
+index_edit=Edit command.
+index_fedit=Edit file editor.
+index_sedit=Edit SQL command.
 index_none=No custom commands defined
 index_create=Create a new custom command.
 index_ecreate=Create a new file editor.
@@ -9,7 +9,12 @@ index_screate=Create a new SQL command.
 index_return=commands
 index_cmd=Command
 index_desc=Description
-index_ed=Edit..
+index_acts=Actions
+index_ed=Edit
+index_actform=Form
+index_actrun=Run
+index_actsql=Form
+index_acted=Open
 
 edit_title=Edit Command
 create_title=Create Command
@@ -115,6 +120,7 @@ view_err=Failed to edit file
 view_ecannot=You are not allowed to edit this file
 view_title=Edit File
 view_efile=Write to $1 failed : $2
+view_header=Editing file $1
 
 form_ecannot=You are not allowed to run this command
 form_title=Execute Command

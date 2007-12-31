@@ -15,12 +15,10 @@ else {
 	$edit = $cmds[$in{'idx'}];
 	}
 
-print "<form action=save_file.cgi method=post>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'file_details'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_file.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'file_details'}, "width=100%", 4);
 
 if (!$in{'new'}) {
 	print "<tr> <td valign=top><b>",&hlink($text{'file_id'}, "fileid"),

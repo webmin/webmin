@@ -485,4 +485,44 @@ unlink($outtemp);
 return ($got, $rv, $proc::safe_process_exec_timeout ? 1 : 0);
 }
 
+# show_parameter_input(&arg, formno)
+# Returns HTML for a parameter input
+sub show_parameter_input
+{
+local ($a, $form) = @_;
+local $n = $a->{'name'};
+if ($a->{'type'} == 0) {
+	return &ui_textbox($n, undef, 30);
+	}
+elsif ($a->{'type'} == 1 || $a->{'type'} == 2) {
+	return &ui_user_textbox($u, undef, $form);
+	}
+elsif ($a->{'type'} == 3 || $a->{'type'} == 4) {
+	return &ui_group_textbox($u, undef, $form);
+	}
+elsif ($a->{'type'} == 5 || $a->{'type'} == 6) {
+	return &ui_textbox($n, $a->{'opts'}, 30)." ".
+	       &file_chooser_button($n, $a->{'type'}-5, $form);
+	}
+elsif ($a->{'type'} == 7) {
+	return &ui_yesno_radio($n, 0);
+	}
+elsif ($a->{'type'} == 8) {
+	return &ui_password($n, undef, 30);
+	}
+elsif ($a->{'type'} == 9) {
+	return &ui_select($n, undef, [ &read_opts_file($a->{'opts'}) ]);
+	}
+elsif ($a->{'type'} == 10) {
+	return &ui_upload($n, 30);
+	}
+elsif ($a->{'type'} == 11) {
+	return &ui_textarea($n, undef, 4, 30);
+	}
+else {
+	return "Unknown parameter type $a->{'type'}";
+	}
+}
+
+
 1;

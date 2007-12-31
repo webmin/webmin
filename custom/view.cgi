@@ -18,29 +18,28 @@ if ($file !~ /^\//) {
 
 # Set environment variables for parameters
 ($env, $export, $str, $displayfile) = &set_parameter_envs($edit, $file);
+$displayfile = &html_escape($displayfile);
 
 if ($edit->{'envs'} || @{$edit->{'args'}}) {
 	# Do environment variable substitution
 	chop($file = `echo "$file"`);
 	}
 
-# Show the editor window
-&ui_print_header($displayfile, $text{'view_title'}, "");
+# Show the editor form
+&ui_print_header(undef, $text{'view_title'}, "");
 
 $w = $config{'width'} || 80;
 $h = $config{'height'} || 20;
-$wrap = $config{'wrap'} ? "wrap=$config{'wrap'}" : "";
-print "<form action=save.cgi method=post enctype=multipart/form-data>\n";
+print &ui_form_start("save.cgi", "form-data");
+print &ui_table_start(&text('view_header', "<tt>$displayfile</tt>"), undef, 2);
 foreach my $i (keys %in) {
 	print &ui_hidden($i, $in{$i}),"\n";
 	}
-print "<textarea rows=$h cols=$w $wrap name=data>";
-
-open(FILE, $file);
-while(<FILE>) { print &html_escape($_); }
-close(FILE);
-print "</textarea><br>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+$data = &read_file_contents($file);
+print &ui_table_row(undef, &ui_textarea("data", $data, $h, $w, $config{'wrap'}),
+		    2);
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
