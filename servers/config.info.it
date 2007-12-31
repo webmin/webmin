@@ -1,0 +1,15 @@
+line1=Opzioni configurabili,11
+resolve=Risolvi gli indirizzi dei server trovati,1,1-Si,0-No
+scan_time=Intervallo di attesa per le risposte alla scansione,0,5
+listen=Scansione di ricerca server sulla porta UDP,3,La stessa di questo sistema
+display_mode=Mostra i server come,1,1-Tabella,0-Icone
+sort_mode=Ordina i server per,4,4-Indirizzo IP,1-Nome Host,2-Descrizione,3-Sistema Operativo,5-Gruppo,0-Ordine di creazione
+show_status=Mostra lo stato dei server,1,1-Si,0-No
+show_ip=Mostrare sempre gli indirizzi e la porta sulla pagina principale?,1,1-Si,0-No
+deflink=Modalit&#224; di connessione predefinita,4,0-Link normale al server,1-Login tramite Webmin,2-Login con un clic sull'icona,3-Login con lo stesso nome utente e password
+deffast=Modalit&#224; RPC predefinita,1,1-Veloce,2-Automatica,0-Lenta
+auto_type=Tipo di sistema predefinito,14,show_deftype
+skipips=Indirizzi IP o nomi host del sistema da non individuare,9,50,5,\t
+skipifaces=Interfacce di rete da non individuare,0
+line2=Configurazione di sistema,11
+groups_dir=Directory dei gruppi cluster MSC,0
