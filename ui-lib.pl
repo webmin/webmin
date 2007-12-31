@@ -411,21 +411,21 @@ return "<textarea name=\"".&quote_escape($name)."\" ".
        "</textarea>";
 }
 
-# ui_user_textbox(name, value, [form], [disabled?])
+# ui_user_textbox(name, value, [form], [disabled?], [tags])
 # Returns HTML for a Unix user input
 sub ui_user_textbox
 {
 return &theme_ui_user_textbox(@_) if (defined(&theme_ui_user_textbox));
-return &ui_textbox($_[0], $_[1], 13, $_[3])." ".
+return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
        &user_chooser_button($_[0], 0, $_[2]);
 }
 
-# ui_group_textbox(name, value, [form], [disabled?])
+# ui_group_textbox(name, value, [form], [disabled?], [tags])
 # Returns HTML for a Unix group input
 sub ui_group_textbox
 {
 return &theme_ui_group_textbox(@_) if (defined(&theme_ui_group_textbox));
-return &ui_textbox($_[0], $_[1], 13, $_[3])." ".
+return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
        &group_chooser_button($_[0], 0, $_[2]);
 }
 
@@ -473,6 +473,19 @@ local ($label, $dis) = @_;
 return "<input type=reset value=\"".&quote_escape($label)."\"".
        ($dis ? " disabled=true" : "").">\n";
 			
+}
+
+# ui_button(label, [name], [disabled?], [tags])
+# Returns HTML for a form button
+sub ui_button
+{
+return &theme_ui_button(@_) if (defined(&theme_ui_button));
+local ($label, $name, $dis, $tags) = @_;
+return "<input type=button".
+       ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
+       " value=\"".&quote_escape($label)."\"".
+       ($dis ? " disabled=true" : "").
+       ($tags ? " ".$tags : "").">\n";
 }
 
 # ui_date_input(day, month, year, day-name, month-name, year-name, [disabled?])
@@ -1114,8 +1127,8 @@ return "" if (!@$rows);
 local $rv = "<table>\n";
 foreach my $r (@$rows) {
 	$rv .= "<tr>\n";
-	$rv .= "<td valign=top>".&ui_oneradio($name, $r->[0], "<b>$r->[1]</b>",
-				   $r->[0] eq $sel)."</td>\n";
+	$rv .= "<td valign=top><b>".&ui_oneradio($name, $r->[0], $r->[1],
+				   $r->[0] eq $sel)."</b></td>\n";
 	$rv .= "<td valign=top>".$r->[2]."</td>\n";
 	$rv .= "</tr>\n";
 	}
