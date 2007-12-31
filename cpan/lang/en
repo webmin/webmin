@@ -20,6 +20,10 @@ index_recs=The following Perl modules are recommended for installation by Webmin
 index_recsok=Install Selected Modules
 index_recsgot=All of the following Perl modules recommended by Webmin are installed : $1
 index_ezone=Perl appears to be shared with the global zone, so modules cannot be installed here. They must be installed in the global zone instead.
+index_none=No installed Perl modules were found on your system.
+index_tabmods=Existing modules
+index_tabinstall=Install module
+index_tabsuggest=Suggested modules
 
 download_err=Failed to install module
 download_elocal=No local file given

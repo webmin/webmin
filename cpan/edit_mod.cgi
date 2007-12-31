@@ -16,70 +16,66 @@ $midx = $in{'midx'} ? $in{'midx'} : 0;
 
 &ui_print_header(undef, $text{'edit_title'}, "");
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'edit_header'}, "width=100%", 4);
 
+# Module name and version
 @m = @{$mod->{'mods'}};
 ($desc, $ver) = &module_desc($mod, $midx);
-print "<tr> <td><b>$text{'edit_mod'}</b></td>\n";
-print "<td>$m[$midx] $ver</td>\n";
+print &ui_table_row($text{'edit_mod'}, "$m[$midx] $ver");
 
-print "<td><b>$text{'edit_desc'}</b></td>\n";
-print "<td>",$desc ? &html_escape($desc) : $text{'edit_none'},"</td> </tr>\n";
+# Description
+print &ui_table_row($text{'edit_desc'},
+	$desc ? &html_escape($desc) : $text{'edit_none'});
 
-print "<tr> <td><b>$text{'edit_date'}</b></td>\n";
-print "<td nowrap>$mod->{'date'}</td>\n";
+# Install date
+print &ui_table_row($text{'edit_date'}, $mod->{'date'});
 
-print "<td><b>$text{'edit_file'}</b></td>\n";
-print "<td>$mod->{'files'}->[$midx]</td> </tr>\n";
+# Main file
+print &ui_table_row($text{'edit_file'}, $mod->{'files'}->[$midx]);
 
-print "<tr> <td><b>$text{'edit_method'}</b></td>\n";
-print "<td>",$mod->{'pkg'} ?
-		&text('edit_'.$mod->{'pkgtype'}, "<tt>$mod->{'pkg'}</tt>") :
-		$text{'edit_manual'},"</td>\n";
-print "</tr>\n";
+# Install method (RPM or whatever)
+print &ui_table_row($text{'edit_method'},
+    $mod->{'pkg'} ? &text('edit_'.$mod->{'pkgtype'}, "<tt>$mod->{'pkg'}</tt>")
+		  : $text{'edit_manual'});
 
 if ($midx == $mod->{'master'} && @m > 1) {
-	print "<tr> <td valign=top><b>$text{'edit_subs'}</b></td>\n";
-	print "<td colspan=3>";
+	# Sub-modules
 	@links = ( );
 	for($i=0; $i<@m; $i++) {
 		push(@links, "<a href='edit_mod.cgi?idx=$in{'idx'}&midx=$i&name=$in{'name'}'>$m[$i]</a>") if ($i != $mod->{'master'});
 		}
-	print &ui_links_row(\@links);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'edit_subs'}, &ui_links_row(\@links), 3);
 	}
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 
-print "<table width=100%> <tr>\n";
+# Un-install form
+print "<table> <tr>\n";
 if ($midx == $mod->{'master'} && !$mod->{'noremove'}) {
-	print "<form action=uninstall.cgi><td>\n";
-	print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-	print "<input type=submit value='$text{'edit_uninstall'}'>\n";
-	print "</td></form>\n";
+	print &ui_form_start("uninstall.cgi");
+	print &ui_hidden("idx", $in{'idx'});
+	print "<td>",&ui_submit($text{'edit_uninstall'}),"</td>\n";
+	print &ui_form_end();
 	}
 
+# Upgrade form
 if ($midx == $mod->{'master'} && !$mod->{'noupgrade'}) {
-	print "<form action=download.cgi><td align=right>\n";
-	print "<input type=hidden name=cpan value='$mod->{'mods'}->[0]'>\n";
-	print "<input type=hidden name=source value=3>\n";
-	print "<input type=submit value='$text{'edit_upgrade'}'>\n";
-	print "</td></form>\n";
+	print &ui_form_start("download.cgi");
+	print &ui_hidden("cpan", $mod->{'mods'}->[0]);
+	print &ui_hidden("source", 3);
+	print "<td>",&ui_submit($text{'edit_upgrade'}),"</td>\n";
+	print &ui_form_end();
 	}
 print "</table>\n";
-print "<br>\n";
 
+# Module documentation
 open(DOC, "$perl_doc -t '$m[$midx]' 2>/dev/null |");
 while(<DOC>) { $doc .= $_; }
 close(DOC);
 if ($doc =~ /\S/) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'edit_header2'}</b></td> </tr>\n";
-	print "<tr $cb> <td><pre>";
-	print &html_escape($doc);
-	print "</pre></td></tr></table><br>\n";
+	print &ui_table_start($text{'edit_header2'}, "width=100%", 2);
+	print &ui_table_row(undef, "<pre>".&html_escape($doc)."</pre>", 2);
+	print &ui_table_end();
 	}
 
 &ui_print_footer($midx != $mod->{'master'} ?

@@ -6,6 +6,7 @@ require './cpan-lib.pl';
 $ver = join(".", map { ord($_) } split(//, $^V));
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		 undef, undef, undef, &text('index_pversion', $ver));
+&ReadParse();
 
 # Check if Perl is installed from a global zone
 if (&shared_perl_root()) {
@@ -13,9 +14,21 @@ if (&shared_perl_root()) {
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
+$formno = 0;
+
+# Start tabs
+@mods = &list_perl_modules();
+@tabs = ( [ 'mods', $text{'index_tabmods'}, 'index.cgi?mode=mods' ],
+	  [ 'install', $text{'index_tabinstall'}, 'index.cgi?mode=install' ],
+	  [ 'suggest', $text{'index_tabsuggest'}, 'index.cgi?mode=suggest' ],
+	);
+if (!$in{'mode'}) {
+	$in{'mode'} = @mods ? 'mods' : 'install';
+	}
+print &ui_tabs_start(\@tabs, 'mode', $in{'mode'}, 1);
 
 # Display perl modules
-@mods = &list_perl_modules();
+print &ui_tabs_start_tab('mode', 'mods');
 if (@mods) {
 	print &ui_form_start("uninstall_mods.cgi", "post");
 	print &select_all_link("d", 0),"\n";
@@ -50,42 +63,47 @@ if (@mods) {
 	print &select_invert_link("d", 0),"<br>\n";
 	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
 			     [ "upgrade", $text{'index_upgrade'} ] ]);
-	print "<hr>\n";
+	$formno++;
 	}
+else {
+	print "<b>$text{'index_none'}</b><p>\n";
+	}
+print &ui_tabs_end_tab();
 
 # Display install form
+print &ui_tabs_start_tab('mode', 'install');
 print "$text{'index_installmsg'}<p>\n";
-print "<form action=download.cgi method=post enctype=multipart/form-data>\n";
-print "<input type=radio name=source value=3 checked> $text{'index_cpan'}\n";
-print "<input name=cpan size=40>\n";
-print "<input type=button onClick='window.ifield = document.forms[0].cpan; chooser = window.open(\"cpan.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=400,height=300\")' value=\"...\">\n";
+print &ui_form_start("download.cgi", "form-data");
+
+# Work out of packages should be refreshed
 @st = stat($packages_file);
 if (@st) {
 	$now = time();
-	print "<br>&nbsp;&nbsp;&nbsp;\n";
-	printf "<input type=checkbox name=refresh value=1 %s> %s\n",
-		$st[9]+$config{'refresh_days'}*24*60*60 < $now ? "checked" : "",
-		$text{'index_refresh'};
+	$refreshopt = "<br>".&ui_checkbox("refresh", 1, $text{'index_refresh'},
+			$st[9]+$config{'refresh_days'}*24*60*60 < $now);
 	}
-print "<br>\n";
 
-print "<input type=radio name=source value=0> $text{'index_local'}\n";
-print "<input name=local size=50>\n";
-print &file_chooser_button("local", 0); print "<br>\n";
-
-print "<input type=radio name=source value=1> $text{'index_uploaded'}\n";
-print "<input type=file name=upload size=20><br>\n";
-
-print "<input type=radio name=source value=2> $text{'index_ftp'}\n";
-print "<input name=url size=50><br>\n";
-print "<input type=submit value=\"$text{'index_installok'}\">\n";
-print "</form>\n";
+@opts = ( [ 3, $text{'index_cpan'},
+	    &ui_textbox("cpan", undef, 50)." ".
+	    &ui_button("...", undef, 0, "onClick='window.ifield = document.forms[$formno].cpan; chooser = window.open(\"cpan.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=800,height=500\"); chooser.ifield = window.ifield;'").
+	    $refreshopt ],
+	  [ 0, $text{'index_local'},
+	    &ui_textbox("local", undef, 50)." ".
+	    &file_chooser_button("local", 0) ],
+	  [ 1, $text{'index_uploaded'},
+	    &ui_upload("upload", 50) ],
+	  [ 2, $text{'index_ftp'},
+	    &ui_textbox("url", undef, 50) ]
+	 );
+print &ui_radio_table("source", 3, \@opts);
+print &ui_form_end([ [ undef, $text{'index_installok'} ] ]);
+print &ui_tabs_end_tab();
 
 # Show button to install recommended Perl modules
+print &ui_tabs_start_tab('mode', 'suggest');
 @allrecs = &get_recommended_modules();
 @recs = grep { eval "use $_->[0]"; $@ } @allrecs;
 if (@recs) {
-	print "<hr>\n";
 	print &ui_form_start("download.cgi");
 	print &ui_hidden("source", 3),"\n";
 	print "$text{'index_recs'}<p>\n";
@@ -96,9 +114,11 @@ if (@recs) {
 	print &ui_form_end();
 	}
 elsif (@allrecs) {
-	print "<hr>\n";
 	print &text('index_recsgot',"<tt>".join(" ", map { $_->[0] } @allrecs)."</tt>"),"<p>\n";
 	}
+print &ui_tabs_end_tab();
+
+print &ui_tabs_end(1);
 
 &ui_print_footer("/", $text{'index'});
 

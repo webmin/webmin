@@ -37,15 +37,11 @@ while(<LIST>) {
 	}
 close(LIST);
 
-# Display the current level of modules
-$bgcolor = defined($gconfig{'cs_page'}) ? $gconfig{'cs_page'} : "ffffff";
-$link = defined($gconfig{'cs_link'}) ? $gconfig{'cs_link'} : "0000ee";
-$text = defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
+# Show page header and selection javascript
 @sel = split(/\0/, $in{'sel'});
-&PrintHeader();
+&popup_header($text{'cpan_title'});
+
 print <<EOF;
-<html>
-<head><title>$text{'cpan_title'}</title>
 <script>
 function sel(m)
 {
@@ -56,23 +52,25 @@ return false;
 </script>
 </head><body bgcolor=#$bgcolor link=#$link vlink=#$link text=#$text>
 EOF
+
 if ($in{'search'}) {
 	# Search for modules matching some name
 	print "<b>",&text('cpan_match', "<tt>$in{'search'}</tt>"),"</b><p>\n";
-	print "<table width=100% cellpadding=1 cellspacing=1>\n";
+	print &ui_columns_start(undef, 100, 1);
 	foreach $m (@mods) {
 		if (!$m->{'cat'} && $m->{'full'} =~ /$in{'search'}/i) {
 			$name = join("::",@{$m->{'name'}});
-			print "<tr>\n";
-			print "<td><a href='' onClick='sel(\"$name\")'><img src=images/mod.gif border=0></a></td>\n";
-			print "<td><a href='' onClick='sel(\"$name\")'>",
-				&html_escape($name),"</a></td>\n";
-			print "<td align=right>",&html_escape($m->{'ver'}),"</td>\n";
-			print "</tr>\n";
+			print &ui_columns_row([
+				"<a href='' onClick='sel(\"$name\")'>".
+				  "<img src=images/mod.gif border=0></a>",
+				"<a href='' onClick='sel(\"$name\")'>".
+				  &html_escape($name)."</a>",
+				&html_escape($m->{'ver'}),
+				]);
 			$matches++;
 			}
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	print "$text{'cpan_none'}<br>\n" if (!$matches);
 	}
 else {
@@ -82,17 +80,23 @@ else {
 		}
 	else {
 		# Show search form
-		print "<form action=cpan.cgi>\n";
-		print "<input type=submit value='$text{'cpan_search'}'>\n";
-		print "<input name=search size=15></form>\n";
+		print &ui_form_start("cpan.cgi");
+		print &ui_submit($text{'cpan_search'});
+		print &ui_textbox("search", undef, 20),&ui_form_end();
 		}
-	print "<table width=100% cellpadding=1 cellspacing=1>\n";
+	print &ui_columns_start(undef, 100, 1);
 	if (@sel) {
+		# Link to up one level
 		local @up = @sel[0..$#sel-1];
-		print "<tr>\n";
-		print "<td><a href='cpan.cgi?",join("&",map { "sel=$_" } @up),"#",join("::",@sel),"'><img src=images/cat.gif border=0></a></td>\n";
-		print "<td><a href='cpan.cgi?",join("&",map { "sel=$_" } @up),"#",join("::",@sel),"'>..</a></td>\n";
-		print "</tr>\n";
+		print &ui_columns_row([
+			"<a href='cpan.cgi?".
+			  join("&",map { "sel=$_" } @up),"#",join("::",@sel).
+			  "'><img src=images/cat.gif border=0></a>",
+			"<a href='cpan.cgi?".
+			  join("&",map { "sel=$_" } @up)."#".
+			  join("::",@sel)."'>..</a>",
+			""
+			]);
 		}
 	MOD: foreach $m (@mods) {
 		for($i=0; $i<@sel; $i++) {
@@ -103,17 +107,27 @@ else {
 		$pars = join("&",map { "sel=$_" } @{$m->{'name'}});
 		print "<tr>\n";
 		if ($m->{'cat'}) {
-			print "<td><a name=$name><a href='cpan.cgi?$pars'><img src=images/cat.gif border=0></a></td>\n";
-			print "<td><a href='cpan.cgi?$pars'>",&html_escape($name),"</a></td>\n";
+			# A category which can be opened
+			print &ui_columns_row([
+				"<a name=$name><a href='cpan.cgi?$pars'>".
+				  "<img src=images/cat.gif border=0></a>",
+				"<a href='cpan.cgi?$pars'>".
+				  &html_escape($name)."</a>",
+				""
+				]);
 			}
 		else {
-			print "<td><a href='' onClick='sel(\"$name\")'><img src=images/mod.gif border=0></a></td>\n";
-			print "<td><a href='' onClick='sel(\"$name\")'>",&html_escape($name),"</a></td>\n";
-			print "<td align=right>",&html_escape($m->{'ver'}),"</td>\n";
+			# A module
+			print &ui_columns_row([
+				"<a href='' onClick='sel(\"$name\")'>".
+				  "<img src=images/mod.gif border=0></a>",
+				"<a href='' onClick='sel(\"$name\")'>".
+				  &html_escape($name)."</a>",
+				&html_escape($m->{'ver'}),
+				], [ undef, undef, "align=right" ]);
 			}
-		print "</tr>\n";
 		}
+	print &ui_columns_end();
 	}
-print "</table>\n";
-print "</body></html>\n";
+&popup_footer();
 

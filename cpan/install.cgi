@@ -100,25 +100,26 @@ else {
 sub show_output
 {
 local (%seen, $endless_loop);
-print "<table border>\n";
-print "<tr $tb> <td><b>$_[0]</b></td> </tr>\n";
-print "<tr $cb> <td><pre>",&text('install_exec', $_[2]),"\n";
-print " " x 100,"\n";
+print &ui_table_start($_[0], undef, 2);
+local $msg = "<pre>".&text('install_exec', $_[2])."\n";
+$msg .= (" " x 100)."\n";
 open(CMD, "(cd $_[1] ; $_[2]) 2>&1 </dev/null |");
 while(<CMD>) {
 	if ($seen{$_}++ > 100) {
 		$endless_loop = 1;
-		print "\n$text{'install_loop'}\n";
+		$msg .= "\n$text{'install_loop'}\n";
 		last;
 		}
 	while(length($_) > 100) {
 		s/^(.{100})//;
-		print &html_escape($1),"\n";
+		$msg .= &html_escape($1)."\n";
 		}
-	print;
+	$msg .= &html_escape($_);
 	}
 close(CMD);
-print "</pre></td></tr> </table><p>\n";
+$msg .= "</pre>";
+print &ui_table_row(undef, $msg, 2);
+print &ui_table_end();
 return $? || $endless_loop ? 0 : 1;
 }
 

@@ -253,85 +253,81 @@ foreach $c (@cpan) {
 	}
 
 # Display install options
-print "<p><form action=install.cgi>\n";
-print "<input type=hidden name=source value='$in{'source'}'>\n";
-print "<input type=hidden name=need_unlink value='$need_unlink'>\n";
+print "<p>\n";
+print &ui_form_start("install.cgi");
+print &ui_hidden("source", $in{'source'});
+print &ui_hidden("need_unlink", $need_unlink);
 foreach $pfile (@pfile) {
-	print "<input type=hidden name=pfile value='$pfile'>\n";
+	print &ui_hidden("pfile", $pfile);
 	}
 foreach $m (@mods) {
-	print "<input type=hidden name=mod value='$m'>\n";
+	print &ui_hidden("mod", $m);
 	}
 foreach $v (@vers) {
-	print "<input type=hidden name=ver value='$v'>\n";
+	print &ui_hidden("ver", $v);
 	}
 foreach $d (@dirs) {
-	print "<input type=hidden name=dir value='$d'>\n";
+	print &ui_hidden("dir", $d);
 	}
-print "<input type=hidden name=return value='$in{'return'}'>\n";
-print "<input type=hidden name=returndesc value='$in{'returndesc'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'download_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_hidden("return", $in{'return'});
+print &ui_hidden("returndesc", $in{'returndesc'});
+print &ui_table_start($text{'download_header'}, undef, 2);
 
-print "<tr> <td valign=top><b>",
-	@mods > 1 ? $text{'download_mods'} : $text{'download_mod'},
-	"</b></td> <td>";
+# Modules being installed
 for($i=0; $i<@mods; $i++) {
-	print &html_escape($mods[$i])," ",&html_escape($vers[$i]),"<br>\n";
+	$modmsg .= &html_escape($mods[$i])." ".&html_escape($vers[$i])."<br>\n";
 	}
-print "</td> </tr>\n";
-print "<tr> <td valign=top><b>$text{'download_src'}</b></td> <td>",
-	$source,"</td> </tr>\n";
+print &ui_table_row(@mods > 1 ? $text{'download_mods'} : $text{'download_mod'},
+		    $modmsg);
+
+# Source
+print &ui_table_row($text{'download_src'}, $source);
 
 if (@allreqs) {
-	print "<tr> <td valign=top><b>$text{'download_pres'}</b></td> <td>",
-	      join(" ", map { $needreqs{$_} ? "<i>$_</i>" : "<tt>$_</tt>" } @allreqs);
+	# Pre-requisited
 	@needreqs = grep { $needreqs{$_} } @allreqs;
 	foreach $n (@needreqs) {
-		print "<input type=hidden name=needreq value='$n'>\n";
+		print &ui_hidden("needreq", $n);
 		}
 	if (@needreqs) {
-		print " (".&text('download_missing', scalar(@needreqs)).")";
+		$nmsg = " (".&text('download_missing', scalar(@needreqs)).")";
 		}
 	else {
-		print " ($text{'download_nomissing'})";
+		$nmsg = " ($text{'download_nomissing'})";
 		}
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'download_pres'},
+	      join(" ", map { $needreqs{$_} ? "<i>$_</i>" : "<tt>$_</tt>" }
+			    @allreqs).$nmsg);
 	}
 
-print "<tr> <td><b>$text{'download_act'}</b></td> <td><select name=act>\n";
+# Install mode
 $in{'mode'} = 3 if ($in{'mode'} eq '');
-printf "<option value=0 %s> $text{'download_m'}\n",
-	$in{'mode'} == 0 ? "selected" : "";
-printf "<option value=1 %s> $text{'download_mt'}\n",
-	$in{'mode'} == 1 ? "selected" : "";
-printf "<option value=2 %s> $text{'download_mi'}\n",
-	$in{'mode'} == 2 ? "selected" : "";
-printf "<option value=3 %s> $text{'download_mti'}\n",
-	$in{'mode'} == 3 ? "selected" : "";
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'download_act'},
+	&ui_select("act", $in{'mode'},
+		   [ [ 0, $text{'download_m'} ],
+		     [ 1, $text{'download_mt'} ],
+		     [ 2, $text{'download_mi'} ],
+		     [ 3, $text{'download_mti'} ] ]));
 
-print "<tr> <td><b>$text{'download_args'}</b></td>\n";
-print "<td>",&ui_textbox("args", $config{'def_args'}, 40),"</td> </tr>\n";
+# Command-line args to Makefile.PL
+print &ui_table_row($text{'download_args'},
+	&ui_textbox("args", $config{'def_args'}, 40));
 
-print "<tr> <td valign=top><b>$text{'download_envs'}</b></td>\n";
-print "<td><table border> <tr $tb> <td><b>$text{'download_name'}</b></td> ",
-      "<td><b>$text{'download_value'}</b></td> </tr>\n";
+# Table of environment variables
+$etable = &ui_columns_start([ $text{'download_name'},
+			      $text{'download_value'} ]);
 for($i=0; $i<4; $i++) {
-	print "<tr $cb>\n";
-	print "<td><input name=name_$i size=15></td>\n";
-	print "<td><input name=value_$i size=25></td>\n";
+	$etable .= &ui_columns_row([ &ui_textbox("name_$i", undef, 15),
+				     &ui_textbox("value_$i", undef, 30) ]);
 	}
-print "</table></td> </tr>\n";
+$etable .= &ui_columns_end();
+print &ui_table_row($text{'download_envs'}, $etable);
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'download_cont'}'>\n";
-if (@needreqs && $in{'source'} == 3) {
-	print "&nbsp;" x 2;
-	print "<input type=submit name=need value='$text{'download_need'}'>\n";
-	}
-print "</form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'download_cont'} ],
+		     @needreqs && $in{'source'} == 3 ?
+			( [ "need", $text{'download_need'} ] ) : ( )
+		   ]);
 
 &ui_print_footer("", $text{'index_return'});
 

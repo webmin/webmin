@@ -18,3 +18,5 @@ When installing a Perl module from CPAN and it already exists in an operating sy
 Added Module Config option to not install modules from APT or YUM.
 ---- Changes since 1.360 ----
 The module is now available when running Webmin inside a Solaris zone, but only if Perl is not shared with the global zone.
+---- Changes since 1.390 ----
+Converted all code to use the new Webmin UI library, for a more consistent look.
