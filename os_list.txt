@@ -71,6 +71,19 @@ Mepis Linux			$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_vers
 Debian Linux			$1	debian-linux	$1	$etc_issue =~ /Debian.*\s([0-9\.]+)\s/i || `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
 Debian Linux			3.2	debian-linux	3.2	$etc_issue =~ /Debian.*\stesting\/unstable\s/i
 Debian Linux			4.0	debian-linux	4.0	$etc_issue =~ /Debian.*lenny\/sid\s/i
+Debian Linux			$1	debian-linux	2.0	`cat /etc/debian_version 2>/dev/null` =~ /^(hamm)/i
+Debian Linux			$1	debian-linux	2.1	`cat /etc/debian_version 2>/dev/null` =~ /^(slink)/i
+Debian Linux			$1	debian-linux	2.2	`cat /etc/debian_version 2>/dev/null` =~ /^(potato)/i
+Debian Linux			$1	debian-linux	3.0	`cat /etc/debian_version 2>/dev/null` =~ /^(woody)/i
+Debian Linux			$1	debian-linux	3.1	`cat /etc/debian_version 2>/dev/null` =~ /^(sarge)/i
+Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(etch)/i
+# These change sometimes...
+Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
+# These don't have a version number yet, so we use the one from "stable"
+Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(testing)/i
+Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(lenny)/i
+Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(unstable)/i
+Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(sid)/i
 
 # SuSE enterprise versions
 SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =~ /VERSION\s+=\s+(\S+)/i
