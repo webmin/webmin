@@ -44,7 +44,7 @@ $currgfile = &foreign_call($apachemod, "find_directive",
 &open_tempfile(TEST, ">>$htaccess", 1) || &error(&text('dir_ehtaccess', $htaccess, $!));
 &close_tempfile(TEST);
 
-if ($in{'delete'}) {
+if ($in{'delete'} || $in{'remove'}) {
 	if ($in{'remove'}) {
 		# Blow away .htaccess, htpasswd and htgroups
 		&unlink_logged($htaccess);
@@ -229,6 +229,7 @@ else {
 		$dir->[1] = $file;
 		$dir->[2] = $in{'crypt'};
 		$dir->[3] = $sync if ($can_sync);
+		$dir->[4] = $gfile;
 		}
 
 	# Create an empty users file if needed
@@ -257,7 +258,8 @@ else {
 
 &save_directories(\@dirs);
 &unlock_all_files();
-&webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "modify",
+&webmin_log($in{'delete'} || $in{'remove'} ? "delete" :
+	    $in{'new'} ? "create" : "modify",
 	    "dir", $dir->[0]);
 &redirect("");
 

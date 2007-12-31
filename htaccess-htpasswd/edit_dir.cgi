@@ -16,59 +16,55 @@ else {
 	&can_access_dir($dir->[0]) || &error($text{'dir_ecannot'});
 	}
 
-print "<form action=save_dir.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'dir_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_dir.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden_table_start($text{'dir_header'}, undef, 2, "main", 1,
+			     [ "width=30%" ]);
 
 # Directory to protect
-print "<tr> <td><b>$text{'dir_dir'}</b></td> <td>\n";
 if ($in{'new'}) {
-	printf "<input name=dir size=50 value='%s'> %s\n",
-		$dir->[0], &file_chooser_button("dir", 1);
+	print &ui_table_row($text{'dir_dir'},
+		&ui_textbox("dir", $dir->[0], 50)." ".
+		&file_chooser_button("dir", 1));
 	}
 else {
-	print "<input type=hidden name=dir value='$in{'dir'}'>\n";
-	print "<tt>$dir->[0]</tt>\n";
+	print &ui_table_row($text{'dir_dir'},
+		"<tt>".&html_escape($dir->[0])."</tt>");
+	print &ui_hidden("dir", $in{'dir'});
 	}
-print "</td> </tr>\n";
 
 # File containing users
-print "<tr> <td valign=top><b>$text{'dir_file'}</b></td> <td>\n";
 if ($can_htpasswd) {
 	# Allow choice of users file
 	if ($in{'new'}) {
-		print "<input type=radio name=auto value=1 checked> ",
-		      "$text{'dir_auto'}<br>\n";
-		print "<input type=radio name=auto value=0> $text{'dir_sel'}\n";
+		$ufile = &ui_radio("auto", 1, [ [ 1, $text{'dir_auto'}."<br>" ],
+						[ 0, $text{'dir_sel'} ] ]);
 		}
-	printf "<input name=file size=50 value='%s'> %s</td> </tr>\n",
-		$dir->[1], &file_chooser_button("file", 0);
+	$ufile .= &ui_textbox("file", $dir->[1], 50)." ".
+		  &file_chooser_button("file", 0);
 	}
 else {
 	# Always automatic
 	if ($in{'new'}) {
-		print "$text{'dir_auto'}</td> </tr>\n";
+		$ufile = $text{'dir_auto'};
 		}
 	else {
-		print "<tt>$dir->[1]</tt></td> </tr>\n";
+		$ufile = "<tt>".&html_escape($dir->[1])."</tt>";
 		}
 	}
+print &ui_table_row($text{'dir_file'}, $ufile);
 
 # File containing groups
 if ($can_htgroups) {
-	print "<tr> <td valign=top><b>$text{'dir_gfile'}</b></td> <td>\n";
-	printf "<input type=radio name=gauto value=2 %s> %s<br>\n",
-		$dir->[4] ? "" : "checked", $text{'dir_none'};
+	@opts = ( [ 2, "$text{'dir_none'}<br>" ] );
 	if ($in{'new'}) {
-		print "<input type=radio name=gauto value=1> ",
-		      "$text{'dir_auto'}<br>\n";
+		push(@opts, [ 1, "$text{'dir_auto'}<br>" ]);
 		}
-	printf "<input type=radio name=gauto value=0 %s> %s\n",
-		$dir->[4] ? "checked" : "", $text{'dir_sel'};
-	printf "<input name=gfile size=50 value='%s'> %s</td> </tr>\n",
-		$dir->[4], &file_chooser_button("gfile", 0);
+	push(@opts, [ 0, $text{'dir_sel'}." ".
+		         &ui_textbox("gfile", $dir->[4], 50)." ".
+			 &file_chooser_button("gfile", 0) ]);
+	print &ui_table_row($text{'dir_gfile'},
+		&ui_radio("gauto", $dir->[4] ? 0 : 2, \@opts));
 	}
 
 # If MD5 encryption is available, show option for it
@@ -77,24 +73,23 @@ push(@crypts, 1) if ($config{'md5'});
 push(@crypts, 2) if ($config{'sha1'});
 push(@crypts, 3) if ($config{'digest'});
 if (@crypts > 1) {
-	print "<tr> <td><b>$text{'dir_crypt'}</b></td>\n";
-	print "<td>",&ui_radio("crypt", int($dir->[2]),
-	  [ map { [ $_, $text{'dir_crypt'.$_} ] } @crypts ]),"</td> </tr>\n";
+	print &ui_table_row($text{'dir_crypt'},
+		&ui_radio("crypt", int($dir->[2]),
+		  [ map { [ $_, $text{'dir_crypt'.$_} ] } @crypts ]));
 	}
 else {
-	print "<input type=hidden name=crypt value=$crypts[0]>\n";
+	print &ui_hidden("crypt", $crypts[0]);
 	}
 
 # Authentication realm
-print "<tr> <td><b>$text{'dir_realm'}</b></td>\n";
 if (!$in{'new'}) {
 	$conf = &foreign_call($apachemod, "get_htaccess_config",
 			      "$dir->[0]/$config{'htaccess'}");
 	$realm = &foreign_call($apachemod, "find_directive",
 			       "AuthName", $conf, 1);
 	}
-printf "<td><input name=realm size=40 value='%s'></td> </tr>\n",
-	$realm;
+print &ui_table_row($text{'dir_realm'},
+	&ui_textbox("realm", $realm, 50));
 
 # Users and groups to allow
 if (!$in{'new'}) {
@@ -105,46 +100,41 @@ if (!$in{'new'}) {
 else {
 	$rmode = "valid-user";
 	}
-print "<tr> <td valign=top><b>$text{'dir_require'}</b></td>\n";
-print "<td>",&ui_radio("require_mode", $rmode,
+print &ui_table_row($text{'dir_require'},
+   &ui_radio("require_mode", $rmode,
 	[ [ "valid-user", $text{'dir_requirev'}."<br>" ],
 	  [ "user", $text{'dir_requireu'}." ".
-		    &ui_textbox("require_user",
-			$rmode eq "user" ? join(" ", @rwho) : "", 40)."<br>" ],
+	    &ui_textbox("require_user",
+		$rmode eq "user" ? join(" ", @rwho) : "", 40)."<br>" ],
 	  [ "group", $text{'dir_requireg'}." ".
-		    &ui_textbox("require_group",
-			$rmode eq "group" ? join(" ", @rwho) : "", 40)."<br>" ] ]),
-       "</td> </tr>\n";
+	    &ui_textbox("require_group",
+		$rmode eq "group" ? join(" ", @rwho) : "", 40)."<br>" ] ]));
+
+print &ui_hidden_table_end();
 
 # Webmin synchronization mode
 if ($can_sync) {
-	print "<tr> <td colspan=2><hr></td> </tr>\n";
+	print &ui_hidden_table_start($text{'dir_header2'}, undef, 2, "sync", 0,
+				     [ "width=30%" ]);
 
 	%sync = map { $_, 1 } split(/,/, $dir->[3]);
 	foreach $s ('create', 'update', 'delete') {
-		print "<tr> <td><b>",$text{'dir_sync_'.$s},"</b></td> <td>\n";
-		printf "<input type=radio name=sync_%s value=1 %s> %s\n",
-			$s, $sync{$s} ? "checked" : "", $text{'yes'};
-		printf "<input type=radio name=sync_%s value=0 %s> %s\n",
-			$s, $sync{$s} ? "" : "checked", $text{'no'};
-		print "</td> </tr>\n";
+		print &ui_table_row($text{'dir_sync_'.$s},
+			&ui_yesno_radio("sync_$s", $sync{$s} ? 1 : 0));
 		}
+
+	print &ui_hidden_table_end();
 	}
 
-print "</table></td></tr></table>\n";
 if ($in{'new'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=submit name=delete value='$text{'dir_delete'}'>\n";
-	print "<input type=checkbox name=remove value=1 checked> ",
-	       &text($dir->[4] ? 'dir_remove2' : 'dir_remove',
-		     "<tt>$config{'htaccess'}</tt>",
-		     "<tt>$config{'htpasswd'}</tt>",
-		     "<tt>$config{'htgroups'}</tt>"),"\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'dir_delete'} ],
+			     [ 'remove', $dir->[4] ? $text{'dir_delete2'}
+						   : $text{'dir_delete3'} ] ]);
 	}
-print "</form>\n";
 
 &ui_print_footer("", $text{'index_return'});
 

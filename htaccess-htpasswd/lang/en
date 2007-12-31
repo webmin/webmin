@@ -19,6 +19,7 @@ index_delete=Un-Protect Selected Directories
 dir_title1=Add Protected Directory
 dir_title2=Edit Protected Directory
 dir_header=Protected directory options
+dir_header2=User synchronization options
 dir_dir=Directory path
 dir_file=File containing users
 dir_gfile=File containing groups
@@ -54,6 +55,8 @@ dir_requireg=Only members of groups ..
 dir_erequire_user=No users to allow entered
 dir_erequire_group=No groups to allow entered
 dir_delete=Un-Protect
+dir_delete2=Un-Protect And Remove Files
+dir_delete3=Un-Protect And Remove File
 
 edit_title1=Create User
 edit_title2=Edit User

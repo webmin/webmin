@@ -18,35 +18,31 @@ else {
 	$group = $groups->[$in{'idx'}];
 	}
 
-print "<form action=save_group.cgi method=post>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=dir value='$in{'dir'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'gedit_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table cellpadding=3>\n";
+print &ui_form_start("save_group.cgi", "post");
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("dir", $in{'dir'});
+print &ui_table_start($text{'gedit_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'gedit_group'}</b></td>\n";
-printf "<td><input name=group size=20 value='%s'></td> </tr>\n",
-	&html_escape($group->{'group'});
+# Group name
+print &ui_table_row($text{'gedit_group'},
+	&ui_textbox("group", $group->{'group'}, 40));
 
-print "<tr> <td><b>$text{'edit_enabled'}</b></td>\n";
-printf "<td><input type=radio name=enabled value=1 %s> %s\n",
-	$group->{'enabled'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=enabled value=0 %s> %s</td> </tr>\n",
-	$group->{'enabled'} ? "" : "checked", $text{'no'};
+# Enabled?
+print &ui_table_row($text{'edit_enabled'},
+	&ui_yesno_radio("enabled", $group->{'enabled'} ? 1 : 0));
 
-print "<tr> <td valign=top><b>$text{'gedit_members'}</b></td>\n";
-print "<td><textarea name=members rows=5 cols=40 wrap=on>",
-	join("\n", @{$group->{'members'}}),"</textarea></td> </tr>\n";
+# List of members
+print &ui_table_row($text{'gedit_members'},
+	&ui_textarea("members", join("\n", @{$group->{'members'}}), 5, 40));
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
 print "</form>\n";
 
