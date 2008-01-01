@@ -412,7 +412,7 @@ if (!$rule) {
 	if (@$rules && $rules->[0]->{'num'} < 100) {
 		$num = int($rules->[0]->{'num'} / 2);
 		}
-	$rule = { 'action' => 'allow',
+	$rule = { 'action' => 'count',
 		  'log' => 1,
 		  'proto' => 'all',
 		  'from' => 'any',
@@ -446,7 +446,8 @@ return undef;
 # find_ipfw_rule(&rules, iface)
 sub find_ipfw_rule
 {
-local ($rule) = grep { $_->{'action'} eq 'allow' &&
+local ($rule) = grep { ($_->{'action'} eq 'allow' ||
+			$_->{'action'} eq 'count') &&
 		       $_->{'log'} &&
 		       ($_->{'proto'} eq 'all' || $_->{'proto'} eq 'ip') &&
 		       $_->{'from'} eq 'any' &&
