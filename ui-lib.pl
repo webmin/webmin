@@ -24,8 +24,14 @@ return $rv;
 sub ui_table_end
 {
 return &theme_ui_table_end(@_) if (defined(&theme_ui_table_end));
+local $rv;
+if ($main::ui_table_cols == 4 && $main::ui_table_pos) {
+	# Add an empty block to balance the table
+	$rv .= &ui_table_row(" ", " ");
+	}
 $main::ui_table_default_tds = undef;
-return "</table></td></tr></table>\n";
+$rv .= "</table></td></tr></table>\n";
+return $rv;
 }
 
 # ui_columns_start(&headings, [width-percent], [noborder], [&tdtags], [heading])
