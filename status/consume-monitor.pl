@@ -67,3 +67,5 @@ $in{'rate'} =~ /^[0-9\.]+$/ || &error($text{'consume_erate'});
 $_[0]->{'rate'} = $in{'rate'}*$in{'rate_units'}/1024;
 }
 
+1;
+

@@ -47,3 +47,5 @@ Converted the UI for all monitors to use ui-lib.pl, for easier theming.
 Added support for sending status messages via SMS, for common US mobile carriers.
 ---- Changes since 1.370 ----
 Failure to run a command on a remote system is now properly detected.
+---- Changes since 1.390 ----
+Added T-COM as a carrier for SMS.

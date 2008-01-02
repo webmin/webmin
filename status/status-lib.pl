@@ -415,6 +415,9 @@ return ( { 'id' => 'tmobile',
 	 { 'id' => 'cbell',
 	   'desc' => 'Cincinnati Bell',
 	   'domain' => 'gocbw.com' },
+         { 'id' => 'tcom',
+           'desc' => 'T-COM',
+           'domain' => 'sms.t-online.de' },
         );
 }
 
