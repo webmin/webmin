@@ -294,41 +294,33 @@ return @rv;
 sub show_params_inputs
 {
 local ($cmd, $noquote, $editor) = @_;
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_params'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
 
-print "<tr> <td><b>$text{'edit_name'}</b></td> ",
-      "<td><b>$text{'edit_desc'}</b></td> <td><b>$text{'edit_type'}</b></td> ";
-if (!$noquote) {
-	print "<td><b>$text{'edit_quote'}</b></td> ";
-	}
-print "</tr>\n";
+local $ptable = &ui_columns_start([
+	$text{'edit_name'}, $text{'edit_desc'}, $text{'edit_type'},
+	$noquote ? ( ) : ( $text{'edit_quote'} ),
+	], 100, 0, undef, undef);
 local @a = (@{$cmd->{'args'}}, { });
 for(my $i=0; $i<@a; $i++) {
-	print "<tr>\n";
-	printf "<td><input name=name_$i size=10 value='%s'></td>\n",
-		$a[$i]->{'name'};
-	printf "<td><input name=desc_$i size=40 value='%s'></td>\n",
-		&html_escape($a[$i]->{'desc'});
-	print "<td><select name=type_$i>\n";
+	local @cols;
+	push(@cols, &ui_textbox("name_$i", $a[$i]->{'name'}, 10));
+	push(@cols, &ui_textbox("desc_$i", $a[$i]->{'desc'}, 40));
+	local @opts;
 	for(my $j=0; $text{"edit_type$j"}; $j++) {
 		next if ($editor &&
 			 ($j == 7 || $j == 8 || $j == 10 || $j == 11));
-		printf "<option value=%d %s>%s\n",
-			$j, $a[$i]->{'type'} == $j ? "selected" : "",
-			$text{"edit_type$j"};
+		push(@opts, [ $j, $text{"edit_type$j"} ]);
 		}
-	print "</select>\n";
-	print &ui_textbox("opts_$i", $a[$i]->{'opts'}, 20),"</td>\n";
+	push(@cols, &ui_select("type_$i", $a[$i]->{'type'}, \@opts)." ".
+		    &ui_textbox("opts_$i", $a[$i]->{'opts'}, 20));
 	if (!$noquote) {
-		print "<td>",&ui_yesno_radio("quote_$i",
-					     int($a[$i]->{'quote'})),"</td>\n";
+		push(@cols, &ui_yesno_radio("quote_$i",
+					    int($a[$i]->{'quote'})));
 		}
-	print "</tr>\n";
+	$ptable .= &ui_columns_row(\@cols);
 	}
 
-print "</table></td></tr></table>\n";
+$ptable .= &ui_columns_end();
+print $ptable;
 }
 
 # parse_params_inputs(&command)

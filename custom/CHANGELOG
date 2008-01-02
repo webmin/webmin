@@ -15,3 +15,6 @@ Added a Module Config parameter to change the number of columns used to display 
 The contents of uploaded files are no longer logged.
 ---- Changes since 1.340 ----
 Removed the Module Config option to control if a shell is used when executing a command as a user, since we can now work this out automatically.
+---- Changes since 1.390 ----
+Re-designed the user interface somewhat, and converted all code to use the new Webmin UI library.
+When commands are shown in a table and no parameters are needed, the names now link directly to run the command.
