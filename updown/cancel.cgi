@@ -33,5 +33,5 @@ foreach $i (@ids) {
 		}
 	}
 &webmin_log("cancel", undef, undef, { 'ids' => \@ids });
-&redirect("");
+&redirect("index.cgi?mode=download");
 

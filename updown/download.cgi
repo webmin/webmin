@@ -127,7 +127,7 @@ if ($in{'bg'} && $can_background) {
 			}
 		}
 
-	&redirect("");
+	&redirect("index.cgi?mode=download");
 	}
 else {
 	# Download it now, and show the results
@@ -146,7 +146,7 @@ else {
 		print "<p><b>",&text('download_failed', $error),"</b><p>\n";
 		}
 
-	&ui_print_footer("", $text{'index_return'});
+	&ui_print_footer("index.cgi?mode=download", $text{'index_return'});
 	}
 &webmin_log("download", undef, undef, { 'urls' => \@urls,
 					'time' => $download{'time'} });

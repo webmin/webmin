@@ -6,3 +6,4 @@ Added the ability to extract tar.bz2 files.
 Added a popup progress window to track large uploads.
 ---- Changes since 1.390 ----
 Tabs are now used to layout the upload, download and fetch forms on the module's main page.
+Converted all user interface code to use the new Webmin UI library.

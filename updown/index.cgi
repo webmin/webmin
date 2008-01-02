@@ -26,147 +26,127 @@ $form = 0;
 if ($can_download) {
 	# Show form for downloading
 	print &ui_tabs_start_tab("mode", "download");
-	print "<form action=download.cgi method=post>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'index_header1'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print $text{'index_descdownload'},"<p>\n";
 
-	print "<tr> <td valign=top><b>$text{'index_urls'}</b></td>\n";
-	print "<td colspan=3><textarea name=urls rows=4 cols=70 wrap=off>",
-	      "</textarea></td> </tr>\n";
+	print &ui_form_start("download.cgi", "post");
+	print &ui_table_start($text{'index_header1'}, "width=100%", 4);
 
-	print "<tr> <td><b>$text{'index_ddir'}</b></td>\n";
-	print "<td colspan=3><input name=dir size=50 value='$download_dir'> ",
-		&file_chooser_button("dir", 1, $form);
-	print "<input type=checkbox name=mkdir value=1> $text{'index_mkdir'}\n";
-	print "</td> </tr>\n";
+	# URLs to download
+	print &ui_table_row($text{'index_urls'},
+		&ui_textarea("urls", undef, 4, 70), 3);
+
+	# Destination directory
+	print &ui_table_row($text{'index_ddir'},
+		&ui_textbox("dir", $download_dir, 60)." ".
+		&file_chooser_button("dir", 1, $form)."<br>".
+		&ui_checkbox("mkdir", 1, $text{'index_mkdir'}, 0), 3);
 
 	if ($can_mode != 3) {
 		# Ask for user and group to download as
-		print "<tr> <td><b>$text{'index_user'}</b></td>\n";
-		print "<td>",&unix_user_input("user", $download_user, $form),
-		      "</td>\n";
+		print &ui_table_row($text{'index_user'},
+			&ui_user_textbox("user", $download_user, $form));
 
-		print "<td><b>$text{'index_group'}</b></td>\n";
-		printf "<td><input type=radio name=group_def value=1 %s> %s\n",
-			$download_group ? "" : "checked", $text{'default'};
-		printf "<input type=radio name=group_def value=0 %s>\n",
-			$download_group ? "checked" : "";
-		printf &unix_group_input("group", $download_group, $form),
-		       "</td> </tr>\n";
+		print &ui_table_row($text{'index_group'},
+			&ui_opt_textbox("group", $download_group, 13,
+					$text{'default'})." ".
+			&group_chooser_button("group", 0, $form));
 		}
 
 	if ($can_schedule) {
 		# Download time can be selected, for scheduling with At
-		print "<tr> <td valign=top><b>$text{'index_bg'}</b></td> <td colspan=3>\n";
-		print "<input type=radio name=bg value=0 checked> $text{'index_bg0'}<br>\n";
-		print "<input type=radio name=bg value=1> $text{'index_bg1'}\n";
-
 		@now = localtime(time());
-		printf "<input name=day size=2 value='%d'>/", $now[3];
-		print "<select name=month>\n";
-		for($i=0; $i<12; $i++) {
-			printf "<option value=%s %s>%s\n",
-				$i, $now[4] == $i ? 'selected' : '', $text{"smonth_".($i+1)};
-			}
-		print "</select>/";
-		printf "<input name=year size=4 value='%d'>\n", $now[5] + 1900;
-		print &date_chooser_button("day", "month", "year", $form),"\n";
-
-		print "$text{'index_time'}\n";
-		printf "<input name=hour size=2 value='%2.2d'>:<input name=min size=2 value='%2.2d'></td> </tr>\n", $now[2], $now[1];
+		print &ui_table_row($text{'index_bg'},
+			&ui_radio("bg", 0, [ [ 0, $text{'index_bg0'}."<br>" ],
+					     [ 1, $text{'index_bg1'} ] ])." ".
+			&ui_textbox("day", $now[3], 2)."/".
+			&ui_select("month", $now[4],
+			  [ map { [ $_, $text{"smonth_".($_+1)} ] }
+				(0 .. 11) ])."/".
+			&ui_textbox("year", $now[5]+1900, 4)." ".
+			&date_chooser_button("day", "month", "year", $form)." ".
+			$text{'index_time'}."\n".
+			&ui_textbox("hour", sprintf("%2.2d", $now[2]), 2).":".
+			&ui_textbox("min", sprintf("%2.2d", $now[1]), 2), 3);
 		}
 	elsif ($can_background) {
 		# Download must be immediate, but can be backgrounded
-		print "<tr> <td valign=top><b>$text{'index_bg'}</b></td> <td colspan=3>\n";
-		print "<input type=radio name=bg value=0 checked> $text{'index_bg0'}<br>\n";
-		print "<input type=radio name=bg value=1> $text{'index_bg1u'}\n";
+		print &ui_table_row($text{'index_bg'},
+			&ui_radio("bg", 0, [ [ 0, $text{'index_bg0'} ],
+					     [ 1, $text{'index_bg1u'} ] ]));
 		}
 	else {
 		# Download is always right now
 		}
 
-	print "</table></td></tr></table>\n";
-	print "<input type=submit value='$text{'index_down'}'></form>\n";
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'index_down'} ] ]);
 	$form++;
 
 	# Show current list of scheduled or active downloads
 	@downs = grep { &can_as_user($_->{'user'}) } &list_downloads();
 	if (@downs) {
+		@tds = $notdone ? ( "width=5" ) : ( );
 		local ($notdone) = grep { !$_->{'complete'} } @downs;
-		print "<form action=cancel.cgi>\n";
-		print "<table border width=100%>\n";
-		print "<tr $tb> ",
-		      $notdone ? "<td><br></td>" : "",
-		      "<td><b>$text{'index_urls'}</b></td> ",
-		      "<td><b>$text{'index_dest'}</b></td> ",
-		      "<td><b>$text{'index_when'}</b></td> ",
-		      "<td><b>$text{'index_user'}</b></td> ",
-		      "<td><b>$text{'index_prog'}</b></td> </tr>\n";
+		print &ui_form_start("cancel.cgi");
+		print &ui_columns_start([
+			$notdone ? ( "" ) : ( ),
+			$text{'index_urls'}, $text{'index_dest'},
+			$text{'index_when'}, $text{'index_user'},
+			$text{'index_prog'} ], 100, 0, \@tds);
 		foreach $d (@downs) {
-			print "<tr $cb>\n";
-			if (!$d->{'complete'}) {
-				printf "<td valign=top width=5><input type=checkbox ".
-				       "name=cancel value=%s></td>\n", $d->{'id'};
-				}
-			elsif ($notdone) {
-				print "<td width=5><br></td>\n";
-				}
-			print "<td valign=top>\n";
+			local @cols;
 			local $count = 0;
 			while($url = $d->{"url_$count"}) {
 				print "<br>\n" if ($count);
 				if (length($url) > 70 && $url =~ /^([^:]+:\/\/[^\/]+\/)(.*)(\/[^\/]+)$/) {
-					print "$1 .. $3";
+					push(@cols, &html_escape("$1 .. $3"));
 					}
 				else {
-					print $url;
+					push(@cols, &html_escape($url));
 					}
 				$count++;
 				}
-			print "</td>\n";
-			printf "<td valign=top>%s</td>\n", $d->{'dir'};
-			print "<td valign=top nowrap>",
-				$d->{'time'} ? &make_date($d->{'time'})
-					     : $text{'index_imm'},"</td>\n";
-			printf "<td valign=top>%s</td>\n", $d->{'user'};
-			print "<td valign=top nowrap>";
+			push(@cols, &html_escape($d->{'dir'}));
+			push(@cols, $d->{'time'} ? &make_date($d->{'time'})
+					         : $text{'index_imm'});
+			push(@cols, &html_escape($d->{'user'}));
 			if ($d->{'error'}) {
-				print "<font color=#ff0000>\n";
-				if ($count > 1) {
-					print &text('index_upto',
-						$d->{'upto'}+1, $count),"\n";
-					}
-				print "$d->{'error'}</font>\n";
+				push(@cols, "<font color=#ff0000>".
+				   ($count > 1 ? &text('index_upto',
+					$d->{'upto'}+1, $count)." " : "").
+				   "$d->{'error'}</font>");
 				&delete_download($d);
 				}
 			elsif (!defined($d->{'upto'})) {
-				print $text{'index_noprog'};
+				push(@cols, $text{'index_noprog'});
 				}
 			elsif ($d->{'complete'}) {
-				print "<font color=#00ff00>$text{'index_done'} (",
-					&nice_size($d->{'total'}),")</font>\n";
+				push(@cols, "<font color=#00ff00>".
+					  "$text{'index_done'} (".
+					  &nice_size($d->{'total'}).")</font>");
 				&delete_download($d);
 				}
 			else {
-				if ($count > 1) {
-					print &text('index_upto',
-						$d->{'upto'}+1, $count),"\n";
-					}
-				local $sz = &nice_size($d->{'got'});
-				print "$sz\n";
-				if ($d->{'size'}) {
-					print "(".int($d->{'got'}*100/$d->{'size'}).
-					      "%)\n";
-					}
+				push(@cols, ($count > 1 ? 
+				    &text('index_upto',
+					$d->{'upto'}+1, $count)." " : "").
+				    &nice_size($d->{'got'})." ".
+				    ($d->{'size'} ?
+					"(".int($d->{'got'}*100/$d->{'size'}).
+					"%)" : ""));
 				}
-			print "</td>\n";
-			print "</tr>\n";
+			if (!$d->{'complete'}) {
+				print &ui_checked_columns_row(\@cols, \@tds,
+						      "cancel", $d->{'id'});
+				}
+			else {
+				@cols = ( "", @cols ) if ($notdone);
+				print &ui_columns_row(\@cols, \@tds);
+				}
 			}
-		print "</table>\n";
-		print "<input type=submit value='$text{'index_cancel'}'>\n"
-			if ($notdone);
-		print "</form>\n";
+		print &ui_columns_end();
+		print &ui_form_end($notdone ?
+			[ [ undef, $text{'index_cancel'} ] ] : [ ]);
 		$form++;
 		}
 	print &ui_tabs_end_tab();
@@ -175,6 +155,7 @@ if ($can_download) {
 if ($can_upload) {
 	# Show form for uploading
 	print &ui_tabs_start_tab("mode", "upload");
+	print $text{'index_descupload'},"<p>\n";
 	local $upid = time().$$;
 	print &ui_form_start("upload.cgi?id=$upid", "form-data", undef,
 			     &read_parse_mime_javascript($upid,
@@ -223,22 +204,21 @@ if ($can_upload) {
 if ($can_fetch) {
 	# Show form to download fetch from server to PC
 	print &ui_tabs_start_tab("mode", "fetch");
-	print "<form action=fetch.cgi method=get>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'index_header3'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print $text{'index_descfetch'},"<p>\n";
+	print &ui_form_start("fetch.cgi");
+	print &ui_table_start($text{'index_header3'}, "width=100%", 4);
 
-	print "<tr> <td valign=top><b>$text{'index_fetch'}</b></td>\n";
-	print "<td colspan=3>\n";
-	print &ui_textbox("fetch", $fetch_file, 50),"\n",
-		&file_chooser_button("fetch", 0, $form);
-	print "</td> </tr>\n";
+	# File to fetch
+	print &ui_table_row($text{'index_fetch'},
+		&ui_textbox("fetch", $fetch_file, 50)." ".
+		&file_chooser_button("fetch", 0, $form), 3);
 
-	print "<tr> <td valign=top><b>$text{'index_show'}</b></td>\n";
-	print "<td>",&ui_yesno_radio("show", $fetch_show),"</td> </tr>\n";
+	# Show in browser?
+	print &ui_table_row($text{'index_show'},
+		&ui_yesno_radio("show", $fetch_show));
 
-	print "</table></td></tr></table>\n";
-	print "<input type=submit value='$text{'index_ok2'}'></form>\n";
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'index_ok2'} ] ]);
 	$form++;
 	print &ui_tabs_end_tab();
 	}

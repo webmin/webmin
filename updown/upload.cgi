@@ -177,5 +177,5 @@ else {
 
 &webmin_log("upload", undef, undef, { 'uploads' => \@uploads });
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=upload", $text{'index_return'});
 
