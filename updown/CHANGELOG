@@ -4,3 +4,5 @@ Added a new form for downloading a file from the server to the user's PC.
 Added the ability to extract tar.bz2 files.
 ---- Changes since 1.310 ----
 Added a popup progress window to track large uploads.
+---- Changes since 1.390 ----
+Tabs are now used to layout the upload, download and fetch forms on the module's main page.

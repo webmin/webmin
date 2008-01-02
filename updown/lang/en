@@ -31,6 +31,9 @@ index_header3=Download file from server to PC
 index_fetch=File to download
 index_ok2=Download
 index_show=Show in browser if possible?
+index_tabdownload=Download from web
+index_tabupload=Upload to server
+index_tabfetch=Download from server
 
 upload_title=Upload Files
 upload_err=Failed to upload files

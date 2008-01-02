@@ -4,10 +4,28 @@
 
 require './updown-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "", undef, 0, 1);
+&ReadParse();
+
+# Start tabs for modes
+@tabs = ( );
+if ($can_download) {
+	push(@tabs, [ "download", $text{'index_tabdownload'},
+		      "index.cgi?mode=download" ]);
+	}
+if ($can_upload) {
+	push(@tabs, [ "upload", $text{'index_tabupload'},
+		      "index.cgi?mode=upload" ]);
+	}
+if ($can_fetch) {
+	push(@tabs, [ "fetch", $text{'index_tabfetch'},
+		      "index.cgi?mode=fetch" ]);
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
 
 $form = 0;
 if ($can_download) {
 	# Show form for downloading
+	print &ui_tabs_start_tab("mode", "download");
 	print "<form action=download.cgi method=post>\n";
 	print "<table border width=100%>\n";
 	print "<tr $tb> <td><b>$text{'index_header1'}</b></td> </tr>\n";
@@ -151,11 +169,12 @@ if ($can_download) {
 		print "</form>\n";
 		$form++;
 		}
+	print &ui_tabs_end_tab();
 	}
 
 if ($can_upload) {
 	# Show form for uploading
-	print "<hr>\n" if ($can_download);
+	print &ui_tabs_start_tab("mode", "upload");
 	local $upid = time().$$;
 	print &ui_form_start("upload.cgi?id=$upid", "form-data", undef,
 			     &read_parse_mime_javascript($upid,
@@ -198,11 +217,12 @@ if ($can_upload) {
 	print &ui_table_end();
 	print &ui_form_end([ [ "ok", $text{'index_ok'} ] ]);
 	$form++;
+	print &ui_tabs_end_tab();
 	}
 
 if ($can_fetch) {
 	# Show form to download fetch from server to PC
-	print "<hr>\n" if ($can_download || $can_upload);
+	print &ui_tabs_start_tab("mode", "fetch");
 	print "<form action=fetch.cgi method=get>\n";
 	print "<table border width=100%>\n";
 	print "<tr $tb> <td><b>$text{'index_header3'}</b></td> </tr>\n";
@@ -220,7 +240,10 @@ if ($can_fetch) {
 	print "</table></td></tr></table>\n";
 	print "<input type=submit value='$text{'index_ok2'}'></form>\n";
 	$form++;
+	print &ui_tabs_end_tab();
 	}
+
+print &ui_tabs_end(1);
 
 &ui_print_footer("/", $text{'index'});
 
