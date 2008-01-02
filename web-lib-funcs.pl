@@ -3488,8 +3488,19 @@ if ($gconfig{'logsyslog'}) {
 		local $msg;
 		if (-r "$module_root_directory/log_parser.pl") {
 			do "$module_root_directory/log_parser.pl";
+			local %params;
+			foreach my $k (keys %{$_[3]}) {
+				my $v = $_[3]->{$k};
+				if (ref($v) eq 'ARRAY') {
+					$params{$k} = join("\0", @$v);
+					}
+				else {
+					$params{$k} = $v;
+					}
+				}
 			$msg = &parse_webmin_log($remote_user, $script_name,
-						 $_[0], $_[1], $_[2], $_[3]);
+						 $_[0], $_[1], $_[2], \%params);
+			$msg =~ s/<[^>]*>//g;	# Remove tags
 			}
 		elsif ($_[0] eq "_config_") {
 			local %wtext = &load_language("webminlog");
