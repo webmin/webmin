@@ -510,7 +510,7 @@ sub read_parse_mime_javascript
 {
 local ($id, $fields) = @_;
 return "" if ($gconfig{'no_upload_tracker'});
-local $opener = "window.open(\"$gconfig{'webprefix'}/uptracker.cgi?id=$id&uid=$<\", \"uptracker\", \"toolbar=no,menubar=no,scrollbar=no,width=500,height=100\");";
+local $opener = "window.open(\"$gconfig{'webprefix'}/uptracker.cgi?id=$id&uid=$<\", \"uptracker\", \"toolbar=no,menubar=no,scrollbars=no,width=500,height=100\");";
 if ($fields) {
 	local $if = join(" || ", map { "typeof($_) != \"undefined\" && $_.value != \"\"" } @$fields);
 	return "onSubmit='if ($if) { $opener }'";
@@ -1197,7 +1197,7 @@ local ($w, $h) = (400, 300);
 if ($gconfig{'db_sizefile'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizefile'});
 	}
-return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/chooser.cgi?add=$add&type=$_[1]&chroot=$chroot&file=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbar=no,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/chooser.cgi?add=$add&type=$_[1]&chroot=$chroot&file=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 # read_acl(&array, &array)
