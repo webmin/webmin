@@ -1099,7 +1099,8 @@ local $rv = "<table".
 	    ($width ? " width=$width%" : "").
 	    ($tabletags ? " ".$tabletags : "").
 	    ">\n";
-for(my $i=0; $i<@$elements; $i++) {
+my $i;
+for($i=0; $i<@$elements; $i++) {
 	$rv .= "<tr>" if ($i%$cols == 0);
 	$rv .= "<td ".$tds->[$i%$cols]." valign=top>".$elements->[$i]."</td>\n";
 	$rv .= "</tr>" if ($i%$cols == $cols-1);
