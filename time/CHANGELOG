@@ -13,3 +13,6 @@ When the hardware or system time is not editable due to module access control re
 Added check for empty timeservers field.
 ---- Changes since 1.380 ----
 Display a more complete message if unable to get the hardware time from hwclock.
+---- Changes since 1.390 ----
+Changed the main page to use tabs to split up the system time, timezone and sync sections.
+Re-wrote all user interface code to use Webmin's new UI library.

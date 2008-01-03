@@ -12,6 +12,7 @@ if (!$in{'action'}) {
 	# user probably hit return in the time server field
 	$in{'action'} = $text{ 'action_timeserver_sys' };
 	}
+$mode = "time";
 
 if( $in{ 'action' } eq $text{ 'action_apply' } )
 {
@@ -85,7 +86,8 @@ if( $in{ 'action' } eq $text{ 'action_apply' } )
   &unlock_file(&cron::cron_file($job));
 
   &webmin_log("remote", $in{'action'} eq $text{'action_timeserver_sys'} ?  "date" : "hwclock", $rawtime, \%in);
+  $mode = "sync";
 }
 
-&redirect("");
+&redirect("index.cgi?mode=$mode");
 

@@ -9,65 +9,6 @@ if ($config{'zone_style'}) {
 	do "$config{'zone_style'}-lib.pl";
 	}
 
-sub p_link
-{
-    my ( $dest, $text ) = @_;
-    return "<a href=\"". $dest. "\">". $text. "</a>";
-}
-
-sub p_radio
-{
-    my ( $name, $checked, @list ) = @_;
-    local ($out, $size, $i);
-    $size = @list; $i = 0;
-
-    do
-    {
-	$out .= " <input type=radio name=".$name." value=".$list[$i];
-	$out .= " checked" if( $checked eq $list[$i++] );
-	$out .="> ".$list[$i++];
-    } while( $i < $size );
-
-    return $out;
-}
-
-sub p_entry
-{
-    my ( $name, $value, $size ) = @_;
-
-    $size ? return "<input name=". $name. " size=". $size." value=\"". $value."\">" : return "<input name=". $name. " value=\"". $value."\">";
-}
-
-sub p_select_wdl
-{
-  my ( $name, $selected, @list ) = @_;
-  local $out = "<select name=$name>";
-  local $i = 0;
-  local $size = @list;
-
-  do
-  {
-	$out .= "<option value=$list[$i++]";
-	$out .= " selected" if( $selected eq $list[$i] );
-	$out .= ">$list[$i++]";
-  } while( $i < $size );
-  $out .= "</select>";
-
-}
-
-sub p_select
-{
-  my ( $name, $selected, @list ) = @_;
-  local (@newlist, $item);
-
-  foreach $item ( @list )
-  {
-	push( @newlist, $item, $item );
-  }
-
-  p_select_wdl( $name, $selected, @newlist );
-}
-
 sub find_cron_job
 {
 &foreign_require("cron", "cron-lib.pl");

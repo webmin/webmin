@@ -10,5 +10,5 @@ $in{'zone'} || &error($text{'timezone_enone'});
 &set_current_timezone($in{'zone'});
 &restart_miniserv();
 &webmin_log("timezone", undef, $in{'zone'});
-&redirect("");
+&redirect("index.cgi?mode=zone");
 
