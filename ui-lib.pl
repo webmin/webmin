@@ -9,6 +9,12 @@ sub ui_table_start
 {
 return &theme_ui_table_start(@_) if (defined(&theme_ui_table_start));
 local ($heading, $tabletags, $cols, $tds) = @_;
+if (defined($main::ui_table_cols)) {
+	# Push on stack, for nested call
+	push(@main::ui_table_cols_stack, $main::ui_table_cols);
+	push(@main::ui_table_pos_stack, $main::ui_table_pos);
+	push(@main::ui_table_default_tds_stack, $main::ui_table_default_tds);
+	}
 local $rv;
 $rv .= "<table class='ui_table' border $tabletags>\n";
 $rv .= "<tr $tb> <td><b>$heading</b></td> </tr>\n" if (defined($heading));
@@ -29,7 +35,16 @@ if ($main::ui_table_cols == 4 && $main::ui_table_pos) {
 	# Add an empty block to balance the table
 	$rv .= &ui_table_row(" ", " ");
 	}
-$main::ui_table_default_tds = undef;
+if (@main::ui_table_cols_stack) {
+	$main::ui_table_cols = pop(@main::ui_table_cols_stack);
+	$main::ui_table_pos = pop(@main::ui_table_pos_stack);
+	$main::ui_table_default_tds = pop(@main::ui_table_default_tds_stack);
+	}
+else {
+	$main::ui_table_cols = undef;
+	$main::ui_table_pos = undef;
+	$main::ui_table_default_tds = undef;
+	}
 $rv .= "</table></td></tr></table>\n";
 return $rv;
 }
