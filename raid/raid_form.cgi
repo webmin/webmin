@@ -24,87 +24,69 @@ $raid = { 'value' => "/dev/md$max",
 		       ] };
 
 # Find available partitions
-$disks = &find_free_partitions(undef, 1, 1);
-if (!$disks) {
+@disks = &find_free_partitions(undef, 1, 1);
+if (!@disks) {
 	print "<p><b>$text{'create_nodisks'}</b> <p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
 
-print "<form action=create_raid.cgi>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'create_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("create_raid.cgi");
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'create_header'}, undef, 2, [ "width=30%" ]);
 
-print "<tr> <td><b>$text{'create_device'}</b></td>\n";
-print "<td><tt>$raid->{'value'}</tt></td> </tr>\n";
-print "<input type=hidden name=device value='$raid->{'value'}'>\n";
+# Device name
+print &ui_table_row($text{'create_device'}, "<tt>$raid->{'value'}</tt>");
+print &ui_hidden("device", $raid->{'value'});
 
+# RAID level
 $lvl = &find_value('raid-level', $raid->{'members'});
-print "<tr> <td><b>$text{'create_level'}</b></td>\n";
-print "<td>",$lvl eq 'linear' ? $text{'linear'}
-			      : $text{"raid$lvl"},"</td> </tr>\n";
-print "<input type=hidden name=level value='$lvl'>\n";
+print &ui_table_row($text{'create_level'},
+	$lvl eq 'linear' ? $text{'linear'} : $text{"raid$lvl"});
+print &ui_hidden("level", $lvl);
 
+# Create superblock?
 $super = &find_value('persistent-superblock', $raid->{'members'});
-print "<tr> <td><b>$text{'create_super'}</b></td>\n";
-printf "<td><input name=super type=radio value=1 %s> %s\n",
-	$super ? 'checked' : '', $text{'yes'};
-printf "<input name=super type=radio value=0 %s> %s</td> </tr>\n",
-	$super ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'create_super'},
+	&ui_yesno_radio("super", $super ? 1 : 0));
 
+# Parity algorithm
 if ($lvl >= 5) {
 	$parity = &find_value('parity-algorithm', $raid->{'members'});
-	print "<tr> <td><b>$text{'create_parity'}</b></td>\n";
-	print "<td><select name=parity>\n";
-	foreach $a ('', 'left-asymmetric', 'right-asymmetric',
-		    'left-symmetric', 'right-symmetric') {
-		printf "<option value='%s' %s>%s\n",
-			$a, $parity eq $a ? 'selected' : '',
-			$a ? $a : $text{'default'};
-		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'create_parity'},
+		&ui_select("parity", $parity,
+			[ [ '', $text{'default'} ],
+			  'left-asymmetric', 'right-asymmetric',
+			  'left-symmetric', 'right-symmetric' ]));
 	}
 
+# Chunk size
 $chunk = &find_value('chunk-size', $raid->{'members'});
-print "<tr> <td><b>$text{'create_chunk'}</b></td>\n";
-print "<td><select name=chunk>\n";
-for($i=4; $i<=4096; $i*=2) {
-	printf "<option value=%d %s>%d kB\n",
-		$i, $chunk == $i ? 'selected' : '', $i;
-	}
-print "</select></td> </tr>\n";
+for($i=4; $i<=4096; $i*=2) { push(@chunks, [ $i, $i." kB" ]); }
+print &ui_table_row($text{'create_chunk'},
+	&ui_select("chunk", $chunk, \@chunks));
 
 # Display partitions in raid, spares and parity
-print "<tr> <td valign=top><b>$text{'create_disks'}</b></td>\n";
-print "<td><select name=disks multiple size=4>\n";
-print $disks;
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'create_disks'},
+	&ui_select("disks", undef, \@disks, 4, 1));
 
 if ($lvl >= 4 && $lvl != 10) {
-	print "<tr> <td valign=top><b>$text{'create_spares'}</b></td>\n";
-	print "<td><select name=spares multiple size=4>\n";
-	print $disks;
-	print "</select></td> </tr>\n";
+	print &ui_select($text{'create_spares'},
+		&ui_select("spares", undef, \@disks, 4, 1));
 	}
 
 if ($lvl == 4 && $raid_mode ne 'mdadm') {
-	print "<tr> <td valign=top><b>$text{'create_pdisk'}</b></td>\n";
-	print "<td><select name=pdisk>\n";
-	print "<option value='' selected>$text{'create_auto'}\n";
-	print $disks;
-	print "</select></td> </tr>\n";
+	print &ui_select($text{'create_pdisk'},
+		&ui_select("pdisk", '', [ [ '', $text{'create_auto'} ],
+					  @disks ], 4, 1));
 	}
 
-print "<tr> <td><b>$text{'create_force'}</b></td>\n";
-print "<td><input type=radio name=force value=1> $text{'yes'}\n";
-print "<input type=radio name=force value=0 checked> $text{'no'}\n";
-print "</td> </tr>\n";
+# Force creation
+print &ui_table_row($text{'create_force'},
+	&ui_yesno_radio("force", 0));
 
-print "</table></td></tr></table>\n";
-
-print "<input type=submit value='$text{'create'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

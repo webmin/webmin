@@ -11,3 +11,6 @@ Removed need to explicitly select a parity disk for RAID 4 when using MDADM.
 Added support for RAID 10 arrays when using MDADM.
 Changed the main page to use a table for existing RAID arrays, rather than icons.
 Added a section for configuring RAID problem notification when using MDADM.
+---- Changes since 1.390 ----
+Converted all pages to use the new Webmin UI library, for a more consistent look.
+Added a confirmation page before deleting a RAID array.

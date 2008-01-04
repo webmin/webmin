@@ -476,6 +476,7 @@ return ();
 }
 
 # find_free_partitions(&skip, showtype, showsize)
+# Returns a list of options, suitable for ui_select
 sub find_free_partitions
 {
 &foreign_require("fdisk", "fdisk-lib.pl");
@@ -490,7 +491,7 @@ foreach $c (@$conf) {
 		$used{$d}++;
 		}
 	}
-local $disks;
+local @disks;
 local $d;
 foreach $d (&fdisk::list_disks_partitions()) {
 	foreach $p (@{$d->{'parts'}}) {
@@ -500,21 +501,21 @@ foreach $d (&fdisk::list_disks_partitions()) {
 		next if (@st);
 		$tag = &foreign_call("fdisk", "tag_name", $p->{'type'});
 		$p->{'blocks'} =~ s/\+$//;
-		$disks .= sprintf "<option value='%s'>%s%s%s\n",
-			$p->{'device'}, $p->{'desc'},
-			$tag && $_[1] ? " ($tag)" : "",
-			!$_[2] ? "" :
-			$d->{'cylsize'} ? " (".&nice_size($d->{'cylsize'}*($p->{'end'} - $p->{'start'} + 1)).")" :
-			" ($p->{'blocks'} $text{'blocks'})";
+		push(@disks, [ $p->{'device'},
+			       $p->{'desc'}.
+			       ($tag && $_[1] ? " ($tag)" : "").
+			       (!$_[2] ? "" :
+				$d->{'cylsize'} ? " (".&nice_size($d->{'cylsize'}*($p->{'end'} - $p->{'start'} + 1)).")" :
+				" ($p->{'blocks'} $text{'blocks'})") ]);
 		}
 	}
 foreach $c (@$conf) {
 	next if (!$c->{'active'} || $used{$c->{'value'}});
 	local @st = &device_status($c->{'value'});
 	next if (@st || $skip{$c->{'value'}});
-	$disks .= sprintf "<option value='%s'>%s\n",
-		$c->{'value'}, &text('create_rdev',
-		    $c->{'value'} =~ /md(\d+)$/ ? "$1" : $c->{'value'});
+	push(@disks, [ $c->{'value'},
+		       &text('create_rdev',
+		         $c->{'value'} =~ /md(\d+)$/ ? "$1" : $c->{'value'}) ]);
 	}
 local $vg;
 foreach $vg (&lvm::list_volume_groups()) {
@@ -525,12 +526,11 @@ foreach $vg (&lvm::list_volume_groups()) {
 			 $skip->{$lv->{'device'}});
 		local @st = &device_status($lv->{'device'});
 		next if (@st);
-		$disks .= sprintf "<option value='%s'>%s\n",
-			$lv->{'device'},
-			&text('create_lvm', $lv->{'vg'}, $lv->{'name'});
+		push(@disks, [ $lv->{'device'},
+			      &text('create_lvm', $lv->{'vg'}, $lv->{'name'}) ]);
 		}
 	}
-return $disks;
+return @disks;
 }
 
 # convert_to_hd(device)

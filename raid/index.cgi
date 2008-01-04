@@ -50,7 +50,7 @@ if (@$conf) {
 				"<font color=#00aa00>$text{'yes'}</font>" :
 				"<font color=#ff0000>$text{'no'}</font>",
 			$lvl eq 'linear' ? $text{'linear'} : $text{'raid'.$lvl},
-			join(" ", @mems),
+			&ui_links_row(\@mems),
 			]);
 		}
 	print &ui_columns_end();

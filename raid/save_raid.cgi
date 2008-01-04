@@ -5,22 +5,41 @@
 require './raid-lib.pl';
 &ReadParse();
 $conf = &get_raidtab();
+$in{'idx'} eq '' && &error($text{'delete_eidx'});
 $old = $conf->[$in{'idx'}];
 
 if ($in{'delete'}) {
 	# Delete a RAID set
-	&lock_raid_files();
-	&unmake_raid($old);
-	&delete_raid($old);
-	&unlock_raid_files();
-	&webmin_log("delete", undef, $old->{'value'});
-	&redirect("");
+	if (!$in{'confirm'}) {
+		# Ask first!
+		&ui_print_header(undef, $text{'delete_title'}, "");
+
+		print "<center>\n";
+		print &ui_form_start("save_raid.cgi");
+		print &ui_hidden("delete", 1);
+		print &ui_hidden("idx", $in{'idx'});
+		print &text('delete_rusure', "<tt>$old->{'value'}</tt>",
+			    &nice_size($old->{'size'}*1024)),"<p>\n";
+		print &ui_form_end([ [ "confirm", $text{'delete_ok'} ] ]);
+		print "</center>\n";
+
+		&ui_print_footer("", $text{'index_return'});
+		}
+	else {
+		# Really do it
+		&lock_raid_files();
+		&unmake_raid($old);
+		&delete_raid($old);
+		&unlock_raid_files();
+		&webmin_log("delete", undef, $old->{'value'});
+		&redirect("");
+		}
 	}
 elsif ($in{'mkfs'}) {
 	# Display form for making a filesystem
 	&ui_print_header(undef, $text{'mkfs_title'}, "");
 
-	print "<p>",&text('mkfs_header2', "<tt>$old->{'value'}</tt>",
+	print &text('mkfs_header2', "<tt>$old->{'value'}</tt>",
 			  $in{'fs'}),"<br>\n";
 	print "<form action=mkfs.cgi>\n";
 	print "<input type=hidden name=idx value='$in{'idx'}'>\n";

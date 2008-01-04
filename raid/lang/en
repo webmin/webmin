@@ -89,6 +89,7 @@ view_newmount=Mount RAID on:
 view_newmount2=Mount RAID as Virtual Memory
 view_mountmsg=Enter a directory and click this button to go to a form for mounting the RAID device, which must already contain a filesystem.
 view_mountmsg2=Click this button to use this RAID device for virtual memory on your system.
+view_blocks=$1 blocks
 
 mkfs_title=Create Filesystem
 mkfs_header2=This form allows you to build a new $2 filesystem on $1. <b>All</b> existing data will be erased!
@@ -121,3 +122,8 @@ notif_err=Failed to save RAID problem notification options
 notif_emailaddr=Missing or invalid notification address
 notif_emailfrom=Missing or invalid From address
 notif_eprogram=Missing or non-existant program to run
+
+delete_title=Delete RAID Array
+delete_rusure=Are you sure you want to delete the RAID array $1, which uses $2 of disk space?
+delete_ok=Yes, Delete It
+delete_eidx=No RAID array selected!

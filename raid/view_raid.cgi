@@ -13,53 +13,53 @@ print "Refresh: $config{'refresh'}\r\n"
 $conf = &get_raidtab();
 $raid = $conf->[$in{'idx'}];
 
-print "<form action=save_raid.cgi>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'view_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("save_raid.cgi");
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'view_header'}, undef, 2, [ "width=30%" ]);
 
-print "<tr> <td><b>$text{'view_device'}</b></td>\n";
-print "<td><tt>$raid->{'value'}</tt></td> </tr>\n";
+# Device name
+print &ui_table_row($text{'view_device'}, "<tt>$raid->{'value'}</tt>");
 
+# RAID level
 $lvl = &find_value('raid-level', $raid->{'members'});
-print "<tr> <td><b>$text{'view_level'}</b></td>\n";
-print "<td>",$lvl eq 'linear' ? $text{'linear'}
-			      : $text{"raid$lvl"},"</td> </tr>\n";
+print &ui_table_row($text{'view_level'},
+	$lvl eq 'linear' ? $text{'linear'} : $text{"raid$lvl"});
 
+# Current status
 @st = &device_status($raid->{'value'});
-print "<tr> <td><b>$text{'view_status'}</b></td> <td>\n";
-print $st[1] eq 'lvm' ? &text('view_lvm', "<tt>$st[0]</tt>") :
+print &ui_table_row($text{'view_status'},
+      $st[1] eq 'lvm' ? &text('view_lvm', "<tt>$st[0]</tt>") :
       $st[2] ? &text('view_mounted', "<tt>$st[0]</tt>") :
       @st ? &text('view_mount', "<tt>$st[0]</tt>") :
       $raid->{'active'} ? $text{'view_active'} :
-			  $text{'view_inactive'};
-print "</td> </tr>\n";
+			  $text{'view_inactive'});
 
 if ($raid->{'size'}) {
-	print "<tr> <td><b>$text{'view_size'}</b></td>\n";
-	print "<td>$raid->{'size'} blocks ",
-	      "(",&nice_size($raid->{'size'}*1024),")</td> </tr>\n";
+	print &ui_table_row($text{'view_size'},
+		&text('view_blocks', $raid->{'size'})." ".
+	        "(".&nice_size($raid->{'size'}*1024).")");
 	}
 if ($raid->{'resync'}) {
-	print "<tr> <td><b>$text{'view_resync'}</b></td>\n";
-	print "<td>$raid->{'resync'} \%</td> </tr>\n";
+	print &ui_table_row($text{'view_resync'}, "$raid->{'resync'} \%");
 	}
 
+# Superblock?
 $super = &find_value('persistent-superblock', $raid->{'members'});
-print "<tr> <td><b>$text{'view_super'}</b></td>\n";
-print "<td>",$super ? $text{'yes'} : $text{'no'},"</td> </tr>\n";
+print &ui_table_row($text{'view_super'},
+	$super ? $text{'yes'} : $text{'no'});
 
+# Parity method
 if ($lvl eq '5') {
 	$parity = &find_value('parity-algorithm', $raid->{'members'});
-	print "<tr> <td><b>$text{'view_parity'}</b></td>\n";
-	print "<td>",$parity ? $parity : $text{'default'},"</td> </tr>\n";
+	print &ui_table_row($text{'view_parity'}, $parity || $text{'default'});
 	}
 
+# Chunk size
 $chunk = &find_value('chunk-size', $raid->{'members'});
-print "<tr> <td><b>$text{'view_chunk'}</b></td>\n";
-print "<td>",$chunk ? "$chunk kB" : $text{'default'},"</td> </tr>\n";
+print &ui_table_row($text{'view_chunk'},
+	$chunk ? "$chunk kB" : $text{'default'});
 
+# Current errors
 if (ref($raid->{'errors'})) {
 	for($i=0; $i<@{$raid->{'errors'}}; $i++) {
 		if ($raid->{'errors'}->[$i] ne "U") {
@@ -67,132 +67,114 @@ if (ref($raid->{'errors'})) {
 			}
 		}
 	if (@badlist) {
-		print "<tr> <td><b>$text{'view_errors'}</b></td>\n";
-		print "<td><font color=#ff0000>",
-			&text('view_bad', scalar(@badlist)),
-			"</font></td> </tr>\n";
+		print &ui_table_row($text{'view_errors'},
+			"<font color=#ff0000>".
+			&text('view_bad', scalar(@badlist)).
+			"</font>");
 		}
 	}
 
+# Current state
 if ($raid->{'state'}) {
-	print "<tr> <td><b>$text{'view_state'}</b></td>\n";
-	print "<td>$raid->{'state'}</td> </tr>\n";
+	print &ui_table_row($text{'view_state'}, $raid->{'state'});
 	}
 
+# Rebuild percent
 if ($raid->{'rebuild'}) {
-	print "<tr> <td><b>$text{'view_rebuild'}</b></td>\n";
-	print "<td>$raid->{'rebuild'} \%</td> </tr>\n";
+	print &ui_table_row($text{'view_rebuild'}, $raid->{'rebuild'}." \%");
 	}
 
 
 # Display partitions in RAID
-print "<tr> <td valign=top><b>$text{'view_disks'}</b></td> <td>\n";
+$rp = undef;
 foreach $d (&find('device', $raid->{'members'})) {
 	if (&find('raid-disk', $d->{'members'}) ||
             &find('parity-disk', $d->{'members'})) {
 		local $name = &mount::device_name($d->{'value'});
-		print $name,"\n";
+		$rp .= $name."\n";
 		if (!&indevlist($d->{'value'}, $raid->{'devices'}) &&
 		    $raid->{'active'}) {
-			print "<font color=#ff0000>$text{'view_down'}</font>\n";
+			$rp .= "<font color=#ff0000>$text{'view_down'}</font>\n";
 			}
-		print "<br>\n";
-		$rdisks .= "<option value='$d->{'value'}'>$name\n";
-		$rdisks_count++;
+		$rp .= "<br>\n";
+		push(@rdisks, [ $d->{'value'}, $name ]);
 		}
 	}
-print "</td> </tr>\n";
+print &ui_table_row($text{'view_disks'}, $rp);
 
 # Display spare partitions
+$sp = undef;
 foreach $d (&find('device', $raid->{'members'})) {
 	if (&find('spare-disk', $d->{'members'})) {
 		local $name = &mount::device_name($d->{'value'});
 		$sp .= "$name<br>\n";
-		$rdisks .= "<option value='$d->{'value'}'>$name\n";
-		$rdisks_count++;
+		push(@rdisks, [ $d->{'value'}, $name ]);
 		}
 	}
 if ($sp) {
-	print "<tr> <td valign=top><b>$text{'view_spares'}</b></td> <td>\n";
-	print $sp,"</td> </tr>\n";
+	print &ui_table_row($text{'view_spares'}, $sp);
 	}
+print &ui_table_end();
 
-print "</table></td></tr></table>\n";
-
-print "<p><hr>\n";
-print "<table width=100%><tr>\n";
+print "<hr>\n";
+@grid = ( );
 
 if ($raid_mode eq "raidtools" && !$st[2]) {
 	# Only classic raid tools can disable a RAID
 	local $act = $raid->{'active'} ? "stop" : "start";
-	print "<tr> <td><input type=submit name=$act ",
-	      "value='",$text{'view_'.$act},"'></td>\n";
-	print "<td>",$text{'view_'.$act.'desc'},"</td> </tr>\n";
+	push(@grid, &ui_submit($text{'view_'.$act}, $act),
+		    $text{'view_'.$act.'desc'});
 	}
 
 if ($raid_mode eq "mdadm") {
 	# Only MDADM can add or remove a device (so far)
-	$disks = &find_free_partitions([ $raid->{'value'} ], 0, 1);
+	@disks = &find_free_partitions([ $raid->{'value'} ], 0, 1);
 	if ($disks) {
-		print "<tr> <td><input type=submit name=add ",
-		      "value='$text{'view_add'}'>\n";
-		print "<select name=disk>\n";
-		print $disks;
-		print "</select></td>\n";
-		print "<td>$text{'view_adddesc'}</td> </tr>\n";
+		push(@grid, &ui_submit($text{'view_add'}, "add")." ".
+			    &ui_select("disk", undef, \@disks),
+			    $text{'view_adddesc'});
 		}
 
 	if ($rdisks_count > 1) {
-		print "<tr> <td><input type=submit name=remove ",
-		      "value='$text{'view_remove'}'>\n";
-		print "<select name=rdisk>\n";
-		print $rdisks;
-		print "</select></td>\n";
-		print "<td>$text{'view_removedesc'}</td> </tr>\n";
+		push(@grid, &ui_submit($text{'view_remove'}, "remove")." ".
+			    &ui_select("rdisk", undef, \@rdisks),
+			    $text{'view_removedesc'});
 		}
 	}
 
 if ($raid->{'active'} && !$st[2]) {
 	# Show buttons for creating filesystems
 	$fstype = $st[1] || "ext3";
-	print "<tr> <td nowrap><input type=submit name=mkfs ",
-	      "value='$text{'view_mkfs2'}'>\n";
-	print "<select name=fs>\n";
-	foreach $f (&fdisk::supported_filesystems()) {
-		printf "<option value=%s %s>%s (%s)\n",
-			$f, $fstype eq $f ? "selected" : "",
-			$fdisk::text{"fs_$f"}, $f;
-		}
-	print "</select></td>\n";
-	print "<td>$text{'view_mkfsdesc'}</td> </tr>\n";
+	push(@grid, &ui_submit($text{'view_mkfs2'}, "mkfs")." ".
+	    &ui_select("fs", $fstype,
+			[ map { [ $_, $fdisk::text{"fs_".$_} ] }
+			      &fdisk::supported_filesystems() ]),
+	    $text{'view_mkfsdesc'});
 	}
 
 if (!@st) {
 	# Show button for mounting filesystem
-	print "<tr> <td valign=top>\n";
-	print "<input type=submit name=mount ",
-	      "value=\"",$text{'view_newmount'},"\">\n";
-	print "<input name=newdir size=20></td>\n";
-	print "<td>$text{'view_mountmsg'}</td> </tr>\n";
+	push(@grid, &ui_submit($text{'view_newmount'}, "mount")." ".
+		    &ui_textbox("newdir", undef, 20),
+		    $text{'view_mountmsg'});
 
 	# Show button for mounting as swap
-	print "<tr> <td valign=top>\n";
-	print "<input type=submit name=mountswap ",
-	      "value=\"",$text{'view_newmount2'},"\"></td>\n";
-	print "<td>$text{'view_mountmsg2'}</td> </tr>\n";
+	push(@grid, &ui_submit($text{'view_newmount2'}, "mountswap"),
+		    $text{'view_mountmsg2'});
 	}
 
 if (!$st[2]) {
-	print "<tr> <td><input type=submit name=delete value='$text{'view_delete'}'></td>\n";
-	print "<td>$text{'view_deletedesc'}</td> </tr>\n";
+	push(@grid, &ui_submit($text{'view_delete'}, "delete"),
+		    $text{'view_deletedesc'});
 	}
 
+if (@grid) {
+	print &ui_grid_table(\@grid, 2, 100, [ "width=20% nowrap" ]);
+	}
 if ($st[2]) {
-	print "<tr> <td colspan=2><b>$text{'view_cannot2'}</b></td> </tr>\n";
+	print "<b>$text{'view_cannot2'}</b><p>\n";
 	}
-
-print "</tr></table>\n";
-print "</form>\n";
+print &ui_form_end();
 
 &ui_print_footer("", $text{'index_return'});
 
