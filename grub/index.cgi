@@ -21,6 +21,7 @@ if (!&has_command($config{'grub_path'})) {
 	}
 
 # List the boot options
+@crlinks = ( "<a href='edit_title.cgi?new=1'>$text{'index_add'}</a>" );
 $conf = &get_menu_config();
 $def = &find_value("default", $conf);
 foreach $t (&find("title", $conf)) {
@@ -32,20 +33,22 @@ foreach $t (&find("title", $conf)) {
 	$i++;
 	}
 if (@links) {
-	print "<a href='edit_title.cgi?new=1'>$text{'index_add'}</a><br>\n";
+	print &ui_links_row(\@crlinks);
 	&icons_table(\@links, \@titles, \@icons, 4);
 	}
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	}
-print "<a href='edit_title.cgi?new=1'>$text{'index_add'}</a><p>\n";
+print &ui_links_row(\@crlinks);
 print "<hr>\n";
 
-print "<table width=100%>\n";
-print "<form action=edit_global.cgi>\n";
-print "<tr><td><input type=submit value=\"$text{'index_global'}\"></td>\n";
-print "<td>$text{'index_globalmsg'}</td></tr></form>\n";
+print &ui_buttons_start();
 
+# Global options button
+print &ui_buttons_row("edit_global.cgi", $text{'index_global'},
+		      $text{'index_globalmsg'});
+
+# Install button
 %flang = &load_language('fdisk');
 $text{'select_part'} = $flang{'select_part'};
 $text{'select_device'} = $flang{'select_device'};
@@ -54,12 +57,11 @@ $r = $config{'install'};
 $dev = &bios_to_linux($r);
 &foreign_require("mount", "mount-lib.pl");
 $dev = &mount::device_name($dev);
-print "<form action=install.cgi>\n";
-print "<input type=hidden name=dev value='$dev'>\n";
-print "<tr><td><input type=submit value=\"$text{'index_install'}\"></td>\n";
-print "<td>",&text('index_installmsg', $dev),"</td></tr></form>\n";
+print &ui_buttons_row("install.cgi", $text{'index_install'},
+		      &text('index_installmsg', $dev),
+		      &ui_hidden("dev", $dev));
 
-print "</table>\n";
+print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
 

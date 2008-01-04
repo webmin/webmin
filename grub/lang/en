@@ -1,5 +1,5 @@
 index_title=GRUB Boot Loader
-index_add=Add a new boot option
+index_add=Add a new boot option.
 index_global=Edit Global Options
 index_globalmsg=Edit global bootup options that apply to all boot menu choices, and choose the device that GRUB is installed onto.
 index_install=Install GRUB
@@ -15,7 +15,7 @@ title_header=Boot menu option details
 title_title=Option title
 title_root=Boot image partition
 title_noverify=Don't mount and verify partition
-title_other=Other
+title_other=Other device file
 title_sel=Selected
 title_boot=Operating system to boot
 title_kernel=Kernel

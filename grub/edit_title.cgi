@@ -14,16 +14,15 @@ else {
 	$title = $conf->[$in{'idx'}];
 	}
 
-print "<form action=save_title.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'title_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Form header
+print &ui_form_start("save_title.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'title_header'}, "width=100%", 4);
 
-print "<tr> <td><b>$text{'title_title'}</b></td>\n";
-printf "<td colspan=3><input name=title size=35 value='%s'></td> </tr>\n",
-	$title->{'value'};
+# Kernel title
+print &ui_table_row($text{'title_title'},
+	&ui_textbox("title", $title->{'value'}, 50));
 
 $r = $title->{'root'} || $title->{'rootnoverify'};
 if (!$r) {
@@ -40,77 +39,67 @@ if (!$found && $mode == 2) {
 	$mode = 1;
 	}
 
-print "<td><b>$text{'title_root'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=root_mode value=0 %s> %s\n",
-	$mode == 0 ? 'checked' : '', $text{'default'};
-printf "<input type=radio name=root_mode value=2 %s> %s %s\n",
-	$mode == 2 ? 'checked' : '', $text{'title_sel'}, $sel;
-printf "<input type=radio name=root_mode value=1 %s> %s\n",
-	$mode == 1 ? 'checked' : '', $text{'title_other'};
-printf "<input name=other size=10 value='%s'><br>\n",
-	$mode == 1 ? $title->{'root'} : '';
+# Root partition
+print &ui_table_row($text{'title_root'},
+	&ui_radio("root_mode", $mode,
+		  [ [ 0, $text{'default'}."<br>" ],
+		    [ 2, $text{'title_sel'}." ".$sel."<br>" ],
+		    [ 1, $text{'title_other'}." ".
+			 &ui_textbox("other",
+			    $mode == 1 ? $title->{'root'} : '', 50) ] ]).
+	"<br>\n".
+	&ui_checkbox("noverify", 1, $text{'title_noverify'},
+		     $title->{'rootnoverify'}), 3);
 
-print "&nbsp;" x 3;
-printf "<input type=checkbox name=noverify value=1 %s> %s</td> </tr>\n",
-	$title->{'rootnoverify'} ? "checked" : "", $text{'title_noverify'};
-
+# Boot mode
 $boot = $title->{'chainloader'} ? 1 :
 	$title->{'kernel'} ? 2 : 0;
 if ($boot == 2) {
 	$title->{'kernel'} =~ /^(\S+)\s*(.*)$/;
 	$kernel = $1; $args = $2;
 	}
-print "<tr> <td valign=top><b>$text{'title_boot'}</b></td> <td colspan=3>\n";
-print "<table width=100%>\n";
 
-printf "<tr> <td valign=top><input type=radio name=boot_mode value=2 %s> %s</td>\n",
-	$boot == 2 ? 'checked' : '', $text{'title_kernel'};
-printf "<td>%s <input name=kernel size=40 value='%s'> %s<br>\n",
-	$text{'title_kfile'}, $kernel;
-printf "%s <input name=args size=40 value='%s'><br>\n",
-	$text{'title_args'}, $args;
-printf "%s <input type=radio name=initrd_def value=1 %s> %s\n",
-	$text{'title_initrd'}, $title->{'initrd'} ? "" : "checked", 
-	$text{'global_none'};
-printf "<input type=radio name=initrd_def value=0 %s>\n",
-	$title->{'initrd'} ? "checked" : "";
-printf "<input name=initrd size=30 value='%s'></td> </tr>\n",
-	$title->{'initrd'};
+# Booting a kernel
+@opts = ( );
+push(@opts, [ 2, $text{'title_kernel'},
+	      &ui_table_start(undef, undef, 2).
+	      &ui_table_row($text{'title_kfile'},
+		&ui_textbox("kernel", $kernel, 50)." ".
+		&file_chooser_button("kernel", 0)).
+	      &ui_table_row($text{'title_args'},
+		&ui_textbox("args", $args, 50)).
+	      &ui_table_row($text{'title_initrd'},
+		&ui_opt_textbox("initrd", $title->{'initrd'}, 50,
+				$text{'global_none'})).
+	      &ui_table_end() ]);
 
+# Chain loader
 $chain = $title->{'chainloader'};
-printf "<tr> <td valign=top><input type=radio name=boot_mode value=1 %s> %s</td>\n",
-	$boot == 1 ? 'checked' : '', $text{'title_chain'};
-printf "<td><input type=radio name=chain_def value=1 %s> %s<br>\n",
-	$chain eq '+1' || !$chain ? 'checked' : '',
-	$text{'title_chain_def'};
-printf "<input type=radio name=chain_def value=0 %s> %s\n",
-	$chain eq '+1' || !$chain ? '' : 'checked',
-	$text{'title_chain_file'};
-printf "<input name=chain size=40 value='%s'><br>\n",
-	$chain eq '+1' ? '' : $chain;
-printf "<input type=checkbox name=makeactive value=1 %s> %s</td> </tr>\n",
-	defined($title->{'makeactive'}) ? 'checked' : '',
-	$text{'title_makeactive'};
+push(@opts, [ 1, $text{'title_chain'},
+	      &ui_opt_textbox("chain", $chain eq '+1' || !$chain ? '' : $chain,
+			      50, $text{'title_chain_def'}."<br>",
+			      $text{'title_chain_file'})."<br>".
+	      &ui_checkbox("makeactive", 1, $text{'title_makeactive'},
+			   defined($title->{'makeactive'})) ]);
 
-printf "<tr> <td colspan=2><input type=radio name=boot_mode value=0 %s> %s</td> </tr>\n",
-	$boot == 0 ? 'checked' : '', $text{'title_none'};
+# None (menu entry only)
+push(@opts, [ 0, $text{'title_none'} ]);
 
-print "</table></td> </tr>\n";
+print &ui_table_row($text{'title_boot'},
+	&ui_radio_table("boot_mode", $boot, \@opts), 3);
 
-print "<tr> <td><b>$text{'title_lock'}</b></td>\n";
-printf "<td><input type=radio name=lock value=1 %s> %s\n",
-	defined($title->{'lock'}) ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=lock value=0 %s> %s</td> </tr>\n",
-	defined($title->{'lock'}) ? "" : "checked", $text{'no'};
+# Lock options
+print &ui_table_row($text{'title_lock'},
+	&ui_yesno_radio("lock", defined($title->{'lock'})));
 
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
-print "<td align=left><input type=submit value=\"$text{'save'}\"></td>\n";
-if (!$in{'new'}) {
-	print "<td align=right>",
-	     "<input type=submit name=delete value=\"$text{'delete'}\"></td>\n";
+print &ui_table_end();
+if ($in{'new'}) {
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
-print "</tr></table></form>\n";
+else {
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
+	}
 
 &ui_print_footer("", $text{'index_return'});
 
