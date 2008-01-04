@@ -50,11 +50,11 @@ foreach $v (values %users) {
 close(USERS);
 print "Updated password of Webmin user $user\n";
 
-# Send a signal to restart miniserv, if running
+# Send a signal to have miniserv reload it's config
 if (open(PID, $config{'pidfile'})) {
 	<PID> =~ /(\d+)/; $pid = $1;
 	close(PID);
-	kill('HUP', $pid);
+	kill('USR1', $pid);
 	}
 
 sub usage
