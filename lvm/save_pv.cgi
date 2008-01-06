@@ -15,20 +15,20 @@ if ($in{'confirm'}) {
 	$err = &delete_physical_volume($pv);
 	&error("<pre>$err</pre>") if ($err);
 	&webmin_log("delete", "pv", $in{'pv'}, $pv);
-	&redirect("");
+	&redirect("index.cgi?mode=pvs");
 	}
 elsif ($in{'delete'}) {
 	# Ask the user if he is sure
 	&ui_print_header(undef, $text{'pv_delete'}, "");
-	print "<center><form action=save_pv.cgi>\n";
-	print "<input type=hidden name=vg value='$in{'vg'}'>\n";
-	print "<input type=hidden name=pv value='$in{'pv'}'>\n";
+	print "<center>\n";
+	print &ui_form_start("save_pv.cgi");
+	print &ui_hidden("vg", $in{'vg'});
+	print &ui_hidden("pv", $in{'pv'});
 	print "<b>",&text('pv_rusure',
 			  "<tt>$pv->{'device'}</tt>"),"</b><p>\n";
-	print "<input type=submit name=confirm ",
-	      "value='$text{'pv_deleteok'}'>\n";
-	print "</center></form>\n";
-	&ui_print_footer("", $text{'index_return'});
+	print &ui_form_end([ [ 'confirm', $text{'pv_deleteok'} ] ]);
+	print "</center>\n";
+	&ui_print_footer("index.cgi?mode=pvs", $text{'index_return'});
 	}
 else {
 	&error_setup($text{'pv_err'});
@@ -55,6 +55,6 @@ else {
 		}
 
 	&webmin_log($in{'pv'} ? "modify" : "create", "pv", $pv->{'device'},$pv);
-	&redirect("");
+	&redirect("index.cgi?mode=pvs");
 	}
 

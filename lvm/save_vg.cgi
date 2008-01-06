@@ -24,12 +24,12 @@ elsif ($in{'delete'}) {
 		print "<p><b>",&text('vg_cannot', scalar(@lvs)),"</b> <p>\n";
 		}
 	else {
-		print "<center><form action=save_vg.cgi>\n";
-		print "<input type=hidden name=vg value='$in{'vg'}'>\n";
+		print "<center>\n";
+		print &ui_form_start("save_vg.cgi");
+		print &ui_hidden("vg", $in{'vg'});
 		print "<b>",&text('vg_rusure', $vg->{'name'}),"</b><p>\n";
-		print "<input type=submit name=confirm ",
-		      "value='$text{'vg_deleteok'}'>\n";
-		print "</center></form>\n";
+		print &ui_form_end([ [ 'confirm', $text{'vg_deleteok'} ] ]);
+		print "</center>\n";
 		}
 	&ui_print_footer("", $text{'index_return'});
 	}
@@ -64,6 +64,6 @@ else {
 			}
 		&webmin_log("modify", "vg", $in{'vg'}, $vg);
 		}
-	&redirect("");
+	&redirect("index.cgi?mode=vgs");
 	}
 

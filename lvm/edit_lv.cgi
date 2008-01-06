@@ -23,128 +23,105 @@ else {
 			  $vg->{'pe_size'} };
 	}
 
-print "<form action=save_lv.cgi>\n";
-print "<input type=hidden name=vg value='$in{'vg'}'>\n";
-print "<input type=hidden name=lv value='$in{'lv'}'>\n";
-print "<input type=hidden name=snap value='$in{'snap'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'lv_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_lv.cgi");
+print &ui_hidden("vg", $in{'vg'});
+print &ui_hidden("lv", $in{'lv'});
+print &ui_hidden("snap", $in{'snap'});
+print &ui_table_start($text{'lv_header'}, "width=100%", 4);
 
 if ($stat[2]) {
-	print "<tr> <td><b>$text{'lv_name'}</b></td>\n";
-	print "<td>$lv->{'name'}</td>\n";
+	# Current status
+	print &ui_table_row($text{'lv_name'}, $lv->{'name'});
 
-	print "<td><b>$text{'lv_size'}</b></td>\n";
-	print "<td>",&nice_size($lv->{'size'}*1024),"</td> </tr>\n";
+	print &ui_table_row($text{'lv_size'}, &nice_size($lv->{'size'}*1024));
 	}
 else {
-	print "<tr> <td><b>$text{'lv_name'}</b></td>\n";
-	print "<td><input name=name size=15 value='$lv->{'name'}'></td>\n";
+	# Details for new LV
+	print &ui_table_row($text{'lv_name'}, 
+		&ui_textbox("name", $lv->{'name'}, 20));
 
-	print "<td><b>$text{'lv_size'}</b></td>\n";
-	print "<td><input name=size size=8 value='$lv->{'size'}'> kB</td> </tr>\n";
+	print &ui_table_row($text{'lv_size'},
+		&ui_textbox("size", $lv->{'size'}, 8)." kB");
 	}
 
-print "<tr> <td><b>$text{'lv_petotal'}</b></td>\n";
-print "<td>",&text('lv_petotals', $vg->{'pe_alloc'}, $vg->{'pe_total'}),
-      "</td>\n";
+# Number of physical extents
+print &ui_table_row($text{'lv_petotal'},
+	&text('lv_petotals', $vg->{'pe_alloc'}, $vg->{'pe_total'}));
 
-print "<td><b>$text{'lv_pesize'}</b></td>\n";
-print "<td>$vg->{'pe_size'} kB</td> </tr>\n";
+# Extent size
+print &ui_table_row($text{'lv_pesize'},
+	&nice_size($vg->{'pe_size'}*1024));
 
 if ($in{'lv'}) {
-	print "<tr> <td><b>$text{'lv_device'}</b></td>\n";
-	print "<td><tt>$lv->{'device'}</tt></td>\n";
+	# Device file and current status
+	print &ui_table_row($text{'lv_device'}, "<tt>$lv->{'device'}</tt>");
 
-	print "<td><b>$text{'lv_status'}</b></td> <td>\n";
-	if (!@stat) {
-		print $text{'lv_notused'};
-		}
-	else {
-		$msg = &device_message(@stat);
-		print $msg;
-		}
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'lv_status'},
+		@stat ? &device_message(@stat) : $text{'lv_notused'});
 	}
 
 if ($lv->{'is_snap'}) {
-	print "<tr> <td><b>$text{'lv_snapof'}</b></td> <td>\n";
 	if ($in{'lv'}) {
 		# Show which LV this is a snapshot of
 		local @snapof = grep { $_->{'size'} == $lv->{'size'} &&
 				       $_->{'has_snap'} } @lvs;
 		if (@snapof == 1) {
-			print "<tt>$snapof[0]->{'name'}</tt>";
+			$snapsel = "<tt>$snapof[0]->{'name'}</tt>";
 			}
 		else {
-			print "<i>$text{'lv_nosnap'}</i>";
+			$snapsel = "<i>$text{'lv_nosnap'}</i>";
 			}
 		}
 	else {
 		# Allow selection of snapshot source
-		print "<select name=snapof>\n";
-		foreach $l (@lvs) {
-			print "<option>$l->{'name'}\n" if (!$l->{'is_snap'});
-			}
-		print "</select>\n";
+		$snapsel = &ui_select("snapof", undef,
+		    [ map { $_->{'name'} } grep { !$_->{'is_snap'} } @lvs ]);
 		}
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'lv_snapof'}, $snapsel);
 	}
 elsif ($stat[2]) {
 	# Display current permissons and allocation method
-	print "<tr> <td><b>$text{'lv_perm'}</b></td>\n";
-	print "<td>",$text{"lv_perm".$lv->{'perm'}},"</td>\n";
+	print &ui_table_row($text{'lv_perm'},
+		$text{"lv_perm".$lv->{'perm'}});
 
-	print "<td><b>$text{'lv_alloc'}</b></td>\n";
-	print "<td>",$text{"lv_alloc".$lv->{'alloc'}},"</td> </tr>\n";
+	print &ui_table_row($text{'lv_alloc'},
+		$text{"lv_alloc".$lv->{'alloc'}});
 	}
 else {
 	# Allow editing of permissons and allocation method
-	print "<tr> <td><b>$text{'lv_perm'}</b></td>\n";
-	printf "<td><input type=radio name=perm value=rw %s> %s\n",
-		$lv->{'perm'} eq 'rw' ? 'checked' : '', $text{'lv_permrw'};
-	printf "<input type=radio name=perm value=r %s> %s</td>\n",
-		$lv->{'perm'} eq 'r' ? 'checked' : '', $text{'lv_permr'};
+	print &ui_table_row($text{'lv_perm'},
+		&ui_radio("perm", $lv->{'perm'},
+			  [ [ 'rw', $text{'lv_permrw'} ],
+			    [ 'r', $text{'lv_permr'} ] ]));
 
-	print "<td><b>$text{'lv_alloc'}</b></td>\n";
-	printf "<td><input type=radio name=alloc value=y %s> %s\n",
-		$lv->{'alloc'} eq 'y' ? 'checked' : '', $text{'lv_allocy'};
-	printf "<input type=radio name=alloc value=n %s> %s</td> </tr>\n",
-		$lv->{'alloc'} eq 'n' ? 'checked' : '', $text{'lv_allocn'};
+	print &ui_table_row($text{'lv_alloc'},
+		&ui_radio("alloc", $lv->{'alloc'},
+			  [ [ 'y', $text{'lv_allocy'} ],
+			    [ 'n', $text{'lv_allocn'} ] ]));
 	}
 
 if (!$in{'lv'} && !$lv->{'is_snap'}) {
 	# Allow selection of striping
-	print "<tr> <td><b>$text{'lv_stripe'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=stripe_def value=1 checked> %s\n",
-		$text{'lv_nostripe'};
-	print "<input type=radio name=stripe_def value=0>\n";
-	print &text('lv_stripes', "<input name=stripe size=4>"),
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'lv_stripe'},
+		&ui_opt_textbox("stripe", undef, 4, $text{'lv_nostripe'},
+				$text{'lv_stripes2'}), 3);
 	}
 elsif (!$lv->{'is_snap'}) {
 	# Show current striping
-	print "<tr> <td><b>$text{'lv_stripe'}</b></td> <td colspan=3>\n";
-	if ($lv->{'stripes'} > 1) {
-		print &text('lv_stripes', $lv->{'stripes'});
-		}
-	else {
-		print $text{'lv_nostripe'};
-		}
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'lv_stripe'},
+		$lv->{'stripes'} > 1 ? &text('lv_stripes', $lv->{'stripes'})
+				     : $text{'lv_nostripe'}, 3);
 	}
 
 # Show free disk space
 if (@stat && $stat[2]) {
 	($total, $free) = &mount::disk_space($stat[1], $stat[0]);
 
-	print "<tr> <td><b>$text{'lv_freedisk'}</b></td> <td>\n";
-	print &nice_size($free*1024),"</td>\n";
+	print &ui_table_row($text{'lv_freedisk'},
+		&nice_size($free*1024));
 
-	print "<td><b>$text{'lv_free'}</b></td> <td>\n";
-	printf "%d %%\n", $total ? 100 * $free / $total : 0;
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'lv_free'},
+		($total ? 100 * $free / $total : 0)." %");
 	}
 
 # Show extents on PVs
@@ -152,65 +129,54 @@ if ($in{'lv'}) {
 	@pvinfo = &get_logical_volume_usage($lv);
 	if (@pvinfo) {
 		@pvs = &list_physical_volumes($in{'vg'});
-		print "<tr> <td><b>$text{'lv_pvs'}</b></td> <td colspan=3>\n";
 		foreach $p (@pvinfo) {
-			print " , \n" if ($p ne $pvinfo[0]);
 			($pv) = grep { $_->{'name'} eq $p->[0] } @pvs;
-			print "<a href='edit_pv.cgi?vg=$in{'vg'}&pv=$pv->{'name'}'>$pv->{'name'}</a> ";
-			print &nice_size($p->[1]*$pv->{'pe_size'}*1024),"\n";
+			push(@pvlist, "<a href='edit_pv.cgi?vg=$in{'vg'}&pv=$pv->{'name'}'>$pv->{'name'}</a> ".&nice_size($p->[1]*$pv->{'pe_size'}*1024));
 			}
-		print "</td> </tr>\n";
+		print &ui_table_row($text{'lv_pvs'}, join(" , ", @pvlist), 3);
 		}
 	}
 
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
+print &ui_table_end();
 if ($stat[2]) {
-	print "<td><b>$text{'lv_cannot'}</b></td>\n";
+	# In use - cannot be edited
+	print &ui_form_end();
+	print "<b>$text{'lv_cannot'}</b><p>\n";
 	}
 elsif ($in{'lv'}) {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
-print "</tr></table></form>\n";
 
 if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'}) {
 	# Show button for creating filesystems
 	print "<hr>\n";
-	print "<table width=100%><tr>\n";
-	print "<form action=mkfs_form.cgi>\n";
-	print "<input type=hidden name=dev value='$lv->{'device'}'>\n";
-	print "<td nowrap><input type=submit value='$text{'lv_mkfs'}'>\n";
-	print "<select name=fs>\n";
+	print &ui_buttons_start();
+
 	$fstype = $stat[1] || "ext3";
-	foreach $f (&fdisk::supported_filesystems()) {
-		printf "<option value=%s %s>%s (%s)\n",
-			$f, $fstype eq $f ? "selected" : "",
-			$fdisk::text{"fs_$f"}, $f;
-		}
-	print "</select></td>\n";
-	print "<td>$text{'lv_mkfsdesc'}</td>\n";
-	print "</form></tr>\n";
+	print &ui_buttons_row("mkfs_form.cgi", $text{'lv_mkfs'},
+			      $text{'lv_mkfsdesc'},
+			      &ui_hidden("dev", $lv->{'device'}),
+			      &ui_select("fs", $fstype,
+				[ map { [ $_, $fdisk::text{"fs_".$_}." ($_)" ] }
+				      &fdisk::supported_filesystems() ]));
 
 	if (!@stat) {
 		# Show button for mounting
 		$type = $config{'lasttype_'.$lv->{'device'}} || "ext2";
-		print "<tr> <form action=../mount/edit_mount.cgi>\n";
-		print "<input type=hidden name=type value=$type>\n";
-		print "<input type=hidden name=newdev value=$lv->{'device'}>\n";
-		print "<td valign=top>\n";
-		print "<input type=submit value=\"",$text{'lv_newmount'},"\">\n";
-		print "<input name=newdir size=20></td>\n";
-		print "<td>$text{'lv_mountmsg'}</td> </tr>\n";
-		print "</form> </tr>\n";
+		print &ui_buttons_row("../mount/edit_mount.cgi",
+				      $text{'lv_newmount'},
+				      $text{'lv_mountmsg'},
+				      &ui_hidden("type", $type).
+				      &ui_hidden("newdev", $lv->{'device'}),
+				      &ui_textbox("newdir", "", 20));
 		}
 
-	print "</table>\n";
+	print &ui_buttons_end();
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
 

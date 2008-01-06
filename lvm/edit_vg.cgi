@@ -14,54 +14,48 @@ else {
 	&ui_print_header(undef, $text{'vg_create'}, "");
 	}
 
-print "<form action=save_vg.cgi>\n";
-print "<input type=hidden name=vg value='$in{'vg'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'vg_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_vg.cgi");
+print &ui_hidden("vg", $in{'vg'});
+print &ui_table_start($text{'vg_header'}, "width=100%", 4);
 
-print "<tr> <td><b>$text{'vg_name'}</b></td>\n";
-print "<td><input name=name size=20 value='$vg->{'name'}'></td>\n";
+# VG name
+print &ui_table_row($text{'vg_name'},
+	&ui_textbox("name", $vg->{'name'}, 20));
 
 if ($in{'vg'}) {
-	print "<td><b>$text{'vg_size'}</b></td>\n";
-	print "<td>",&nice_size($vg->{'size'}*1024),"</td> </tr>\n";
+	# Details of existing VG
+	print &ui_table_row($text{'vg_size'},
+		&nice_size($vg->{'size'}*1024));
 
-	print "<tr> <td><b>$text{'vg_petotal'}</b></td>\n";
-	print "<td>",&text('lv_petotals', $vg->{'pe_alloc'}, $vg->{'pe_total'}),
-	      "</td>\n";
+	print &ui_table_row($text{'vg_petotal'},
+		&text('lv_petotals', $vg->{'pe_alloc'}, $vg->{'pe_total'}));
 
-	print "<td><b>$text{'vg_pesize'}</b></td>\n";
-	print "<td>$vg->{'pe_size'} kB</td> </tr>\n";
+	print &ui_table_row($text{'vg_pesize'},
+		&nice_size($vg->{'pe_size'}*1024));
 
-	print "<tr> <td><b>$text{'vg_petotal2'}</b></td>\n";
-	print "<td>",&text('lv_petotals', &nice_size($vg->{'pe_alloc'}*$vg->{'pe_size'}*1024), &nice_size($vg->{'pe_total'}*$vg->{'pe_size'}*1024)),"</td>\n";
-
-	print "</tr>\n";
+	print &ui_table_row($text{'vg_petotal2'},
+		&text('lv_petotals',
+			&nice_size($vg->{'pe_alloc'}*$vg->{'pe_size'}*1024),
+			&nice_size($vg->{'pe_total'}*$vg->{'pe_size'}*1024)));
 	}
 else {
-	print "<td><b>$text{'vg_pesize'}</b></td>\n";
-	print "<td><input type=radio name=pesize_def value=1 checked> ",
-		$text{'default'},"\n";
-	print "<input type=radio name=pesize_def value=0>\n";
-	print "<input name=pesize size=8> kB</td> </tr>\n";
+	# Extent size for new VG
+	print &ui_table_row($text{'vg_pesize'},
+		&ui_opt_textbox("pesize", undef, 8, $text{'default'})." kB");
 
-	print "<tr> <td><b>$text{'vg_device'}</b></td> <td colspan=3>\n";
-	&device_input();
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'vg_device'},
+		&device_input(), 3);
 	}
 
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
+print &ui_table_end();
 if ($in{'vg'}) {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      " value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 print "</tr></table>\n";
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=vgs", $text{'index_return'});
 

@@ -16,20 +16,20 @@ if ($in{'confirm'}) {
 	$err = &delete_logical_volume($lv);
 	&error("<pre>$err</pre>") if ($err);
 	&webmin_log("delete", "lv", $in{'lv'}, $lv);
-	&redirect("");
+	&redirect("index.cgi?mode=lvs");
 	}
 elsif ($in{'delete'}) {
 	# Ask the user if he is sure
 	&ui_print_header(undef, $text{'lv_delete'}, "");
-	print "<center><form action=save_lv.cgi>\n";
-	print "<input type=hidden name=vg value='$in{'vg'}'>\n";
-	print "<input type=hidden name=lv value='$in{'lv'}'>\n";
+	print "<center>\n";
+	print &ui_form_start("save_lv.cgi");
+	print &ui_hidden("vg", $in{'vg'});
+	print &ui_hidden("lv", $in{'lv'});
 	print "<b>",&text($lv->{'is_snap'} ? 'lv_rusnap' : 'lv_rusure',
 			  "<tt>$lv->{'device'}</tt>"),"</b><p>\n";
-	print "<input type=submit name=confirm ",
-	      "value='$text{'lv_deleteok'}'>\n";
-	print "</center></form>\n";
-	&ui_print_footer("", $text{'index_return'});
+	print &ui_form_end([ [ 'confirm', $text{'lv_deleteok'} ] ]);
+	print "</center>\n";
+	&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
 	}
 else {
 	# Validate inputs
@@ -140,6 +140,6 @@ else {
 			}
 		&webmin_log("modify", "lv", $in{'lv'}, $lv);
 		}
-	&redirect("");
+	&redirect("index.cgi?mode=lvs");
 	}
 

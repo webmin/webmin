@@ -18,74 +18,60 @@ else {
 	$pv = { 'alloc' => 'y' };
 	}
 
-print "<form action=save_pv.cgi>\n";
-print "<input type=hidden name=vg value='$in{'vg'}'>\n";
-print "<input type=hidden name=pv value='$in{'pv'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'pv_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_pv.cgi");
+print &ui_hidden("vg", $in{'vg'});
+print &ui_hidden("pv", $in{'pv'});
+print &ui_table_start($text{'pv_header'}, "width=100%", 4);
 
-print "<tr> <td><b>$text{'pv_device'}</b></td> <td colspan=3>\n";
+# Device file
 if ($in{'pv'}) {
-	local $name = &foreign_call("mount", "device_name", $pv->{'device'});
-	print "$name\n";
+	print &ui_table_row($text{'pv_device'},
+		&mount::device_name($pv->{'device'}), 3);
 	}
 else {
-	&device_input();
+	print &ui_table_row($text{'pv_device'}, &device_input(), 3);
 	}
-print "</td> </tr>\n";
 
-print "<tr> <td><b>$text{'pv_alloc'}</b></td>\n";
-printf "<td><input type=radio name=alloc value=y %s> %s\n",
-	$pv->{'alloc'} eq 'y' ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=alloc value=n %s> %s</td>\n",
-	$pv->{'alloc'} eq 'n' ? 'checked' : '', $text{'no'};
+# Enabled for allocation
+print &ui_table_row($text{'pv_alloc'},
+	&ui_radio('alloc', $pv->{'alloc'}, [ [ 'y', $text{'yes'} ],
+					     [ 'n', $text{'no'} ] ]));
 
 if ($in{'pv'}) {
-	print "<td><b>$text{'pv_size'}</b></td>\n";
-	print "<td>",&nice_size($pv->{'size'}*1024),"</td> </tr>\n";
+	# Details of existing PV
+	print &ui_table_row($text{'pv_size'},
+		&nice_size($pv->{'size'}*1024));
 
-	print "<tr> <td><b>$text{'pv_petotal'}</b></td>\n";
-	print "<td>",&text('lv_petotals', $pv->{'pe_alloc'}, $pv->{'pe_total'}),
-	      "</td>\n";
+	print &ui_table_row($text{'pv_petotal'},
+		&text('lv_petotals', $pv->{'pe_alloc'}, $pv->{'pe_total'}));
 
-	print "<td><b>$text{'pv_pesize'}</b></td>\n";
-	print "<td>$pv->{'pe_size'} kB</td> </tr>\n";
+	print &ui_table_row($text{'pv_pesize'},
+		&nice_size($pv->{'pe_size'}*1024));
 
-	print "<tr> <td><b>$text{'pv_petotal2'}</b></td>\n";
-	print "<td>",&text('lv_petotals', &nice_size($pv->{'pe_alloc'}*$pv->{'pe_size'}*1024), &nice_size($pv->{'pe_total'}*$pv->{'pe_size'}*1024)),
-	      "</td>\n";
+	print &ui_table_row($text{'pv_petotal2'},
+		&text('lv_petotals', &nice_size($pv->{'pe_alloc'}*$pv->{'pe_size'}*1024), &nice_size($pv->{'pe_total'}*$pv->{'pe_size'}*1024)));
 
-	print "</tr>\n";
-
+	# Used by logical volumes
 	@lvinfo = &get_physical_volume_usage($pv);
 	if (@lvinfo) {
 		@lvs = &list_logical_volumes($in{'vg'});
-		print "<tr> <td><b>$text{'pv_lvs'}</b></td> <td colspan=3>\n";
 		foreach $l (@lvinfo) {
-			print " , \n" if ($l ne $lvinfo[0]);
 			($lv) = grep { $_->{'name'} eq $l->[0] } @lvs;
-			print "<a href='edit_lv.cgi?vg=$in{'vg'}&lv=$lv->{'name'}'>$lv->{'name'}</a> ";
-			print &nice_size($l->[2]*$pv->{'pe_size'}*1024),"\n";
+			push(@lvlist, "<a href='edit_lv.cgi?vg=$in{'vg'}&lv=$lv->{'name'}'>$lv->{'name'}</a> ".&nice_size($l->[2]*$pv->{'pe_size'}*1024));
 			}
-		print "</td> </tr>\n";
+		print &ui_table_row($text{'pv_lvs'}, join(" , ", @lvlist), 3);
 		}
 	}
-else {
-	print "</tr>\n";
-	}
 
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
+print &ui_table_end();
 if ($in{'pv'}) {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      " value='$text{'pv_delete2'}'></td>\n" if (@pvs > 1);
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     @pvs > 1 ? ( [ 'delete', $text{'pv_delete2'} ] )
+				      : ( ) ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'pv_create2'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'pv_create2'} ] ]);
 	}
-print "</tr></table>\n";
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=pvs", $text{'index_return'});
 

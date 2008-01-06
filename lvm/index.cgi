@@ -150,8 +150,13 @@ if (@vgs) {
 	foreach $v (@vgs) {
 		push(@links, "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
 			     "'>".&text('index_addlv2', $v->{'name'})."</a>");
-		push(@links, "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
-		     "&snap=1'>".&text('index_addlv2s', $v->{'name'})."</a>");
+		@lvsin = grep { $_->{'vg'} eq $v->{'name'} } @alllvs;
+		if (@lvsin) {
+			push(@links,
+			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
+			  "&snap=1'>".&text('index_addlv2s', $v->{'name'}).
+			  "</a>");
+			}
 		}
 	if (!@alllvs) {
 		# None yet

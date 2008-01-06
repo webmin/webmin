@@ -581,6 +581,7 @@ return @rv;
 }
 
 # device_input()
+# Returns a selector for a free device
 sub device_input
 {
 local (%used, $vg, $pv, $d, $p);
@@ -593,7 +594,7 @@ foreach $vg (&list_volume_groups()) {
 	}
 
 # Show available partitions
-print "<select name=device>\n";
+local @opts;
 foreach $d (&foreign_call("fdisk", "list_disks_partitions")) {
 	foreach $p (@{$d->{'parts'}}) {
 		next if ($used{$p->{'device'}} || $p->{'extended'});
@@ -604,11 +605,11 @@ foreach $d (&foreign_call("fdisk", "list_disks_partitions")) {
 			next if ($used{"LABEL=$label"});
 			}
 		local $tag = &foreign_call("fdisk", "tag_name", $p->{'type'});
-		printf "<option value='%s'>%s%s%s\n",
-			$p->{'device'}, $p->{'desc'},
-			$tag ? " ($tag)" : "",
-			$d->{'cylsize'} ? " (".&nice_size($d->{'cylsize'}*($p->{'end'} - $p->{'start'} + 1)).")" :
-			" ($p->{'blocks'} $text{'blocks'})";
+		push(@opts, [ $p->{'device'},
+			$p->{'desc'}.
+			($tag ? " ($tag)" : "").
+			($d->{'cylsize'} ? " (".&nice_size($d->{'cylsize'}*($p->{'end'} - $p->{'start'} + 1)).")" :
+			" ($p->{'blocks'} $text{'blocks'})") ]);
 		}
 	}
 
@@ -618,15 +619,13 @@ foreach $c (@$conf) {
 	next if ($used{$c->{'value'}});
 	local @ds = &device_status($c->{'value'});
 	next if (@ds);
-	printf "<option value='%s'>%s\n",
-		$c->{'value'}, &text('pv_raid', $c->{'value'} =~ /md(\d+)$/ ? "$1" : $c->{'value'});
+	push(@opts, [ $c->{'value'}, &text('pv_raid', $c->{'value'} =~ /md(\d+)$/ ? "$1" : $c->{'value'}) ]);
 	}
 
-print "<option value=''>$text{'pv_other'}\n";
-print "</select>\n";
-print "<input name=other size=30> ",
-	&file_chooser_button("other"),"<br>\n";
-print "<b>$text{'pv_warn'}</b>\n";
+push(@opts, [ '', $text{'pv_other'} ]);
+return &ui_select("device", $opts[0]->[0], \@opts)." ".
+       &ui_textbox("other", undef, 30)." ".&file_chooser_button("other").
+       "<br>\n<b>$text{'pv_warn'}</b>";
 }
 
 # get_lvm_version()

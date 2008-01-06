@@ -21,5 +21,5 @@ print "<tr $cb><td><table width=100%>\n";
 print "</table></td></tr></table>\n";
 print "<input type=submit value='$text{'create'}'></form>\n";
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=lvs", $text{'index_return'});
 
