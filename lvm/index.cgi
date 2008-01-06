@@ -3,10 +3,11 @@
 # Display a table of all volumne groups and their physical and logical volumes.
 
 require './lvm-lib.pl';
+&ReadParse();
 
 if (!&has_command("vgdisplay")) {
 	&lvm_header();
-	print "<p>",&text('index_ecommands', "<tt>vgdisplay</tt>"),"<p>\n";
+	print &text('index_ecommands', "<tt>vgdisplay</tt>"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
@@ -18,7 +19,7 @@ if ($lvm_version && $lvm_version < 2) {
 		}
 	if (!-d $lvm_proc) {
 		&lvm_header();
-		print "<p>",&text('index_emodule', "<tt>$lvm_proc</tt>",
+		print &text('index_emodule', "<tt>$lvm_proc</tt>",
 				  "<tt>lvm-mod</tt>"),"<p>\n";
 		&ui_print_footer("/", $text{'index'});
 		exit;
@@ -26,76 +27,184 @@ if ($lvm_version && $lvm_version < 2) {
 	}
 if (!$lvm_version) {
 	&lvm_header();
-	print "<p>",&text('index_eversion', "<tt>vgdisplay --version</tt>",
+	print &text('index_eversion', "<tt>vgdisplay --version</tt>",
 			  "<pre>$out</pre>"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
 &lvm_header();
 
-# Show table of volume groups
 @vgs = &list_volume_groups();
 if (@vgs) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'index_vgs'}</b></td> ",
-	      "<td><b>$text{'index_pvs'}</b></td> ",
-	      "<td><b>$text{'index_lvs'}</b></td> </tr>\n";
-	foreach $v (sort { $a->{'number'} <=> $b->{'number'} } @vgs) {
-		# Show volume group icon
-		print "<tr $cb> <td valign=top width=20%>\n";
-		&icons_table( [ "edit_vg.cgi?vg=".&urlize($v->{'name'}) ],
-			      [ &html_escape($v->{'name'}).
-				"<br>".&nice_size($v->{'size'}*1024) ],
-			      [ "images/vg.gif" ], 1);
-		print &ui_links_row([
-			"<a href='edit_vg.cgi'>$text{'index_add'}</a>" ]);
-		print "</td> <td valign=top width=40%>\n";
+	# Start tabs for volume groups, physical volumes and logical volumes
+	@tabs = ( [ 'vgs', $text{'index_vgs'}, 'index.cgi?mode=vgs' ],
+		  [ 'pvs', $text{'index_pvs'}, 'index.cgi?mode=pvs' ],
+		  [ 'lvs', $text{'index_lvs'}, 'index.cgi?mode=lvs' ] );
+	print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || 'vgs', 1);
 
-		# Show physical volume icons
-		local @pvs = sort { $a->{'number'} <=> $b->{'number'} }
-				  &list_physical_volumes($v->{'name'});
-		if (@pvs) {
-			local (@icons, @titles, @links);
-			@icons = map { "images/pv.gif" } @pvs;
-			@titles = map { &html_escape($_->{'device'}).
-					"<br>".&nice_size($_->{'size'}*1024) } @pvs;
-			@links = map { "edit_pv.cgi?vg=".&urlize($v->{'name'}).
-				       "&pv=".&urlize($_->{'name'}) } @pvs;
-			&icons_table(\@links, \@titles, \@icons, 3);
+	# Show volume groups
+	print &ui_tabs_start_tab("mode", "vgs");
+	print $text{'index_vgsdesc'},"<p>\n";
+	@vgs = sort { $a->{'number'} <=> $b->{'number'} } @vgs;
+	@links = ( "<a href='edit_vg.cgi'>$text{'index_add'}</a>" );
+	if ($config{'show_table'}) {
+		# As table
+		print &ui_links_row(\@links);
+		print &ui_columns_start([ $text{'index_vgname'},
+					  $text{'index_vgsize'},
+					  $text{'index_vgtotal'},
+					  $text{'index_vgtotal2'} ], 100);
+		foreach $v (@vgs) {
+			print &ui_columns_row([
+			  "<a href='edit_vg.cgi?vg=".
+			    &urlize($v->{'name'})."'>".
+			    &html_escape($v->{'name'})."</a>",
+			  &nice_size($v->{'size'}*1024),
+			  &text('lv_petotals', $v->{'pe_alloc'},
+					       $v->{'pe_total'}),
+			  &text('lv_petotals',
+			    &nice_size($v->{'pe_alloc'}*$v->{'pe_size'}*1024),
+			    &nice_size($v->{'pe_total'}*$v->{'pe_size'}*1024))
+			  ]);
 			}
-		else {
-			print "<b>$text{'index_nopvs'}</b><p>\n";
-			}
-		print &ui_links_row([
-			"<a href='edit_pv.cgi?vg=".&urlize($v->{'name'}).
-			  "'>$text{'index_addpv'}</a>" ]);
-
-		# Show logical volume icons
-		print "</td> <td valign=top width=40%>\n";
-		local @lvs = sort { $a->{'number'} <=> $b->{'number'} }
-				  &list_logical_volumes($v->{'name'});
-		if (@lvs) {
-			@icons = map { $_->{'is_snap'} ? "images/snap.gif"
-						       : "images/lv.gif" } @lvs;
-			@titles = map { &html_escape($_->{'name'}).
-					"<br>".&nice_size($_->{'size'}*1024) } @lvs;
-			@links = map { "edit_lv.cgi?vg=".&urlize($v->{'name'}).
-				       "&lv=".&urlize($_->{'name'}) } @lvs;
-			&icons_table(\@links, \@titles, \@icons, 3);
-			}
-		else {
-			print "<b>$text{'index_nolvs'}</b><p>\n";
-			}
-		print &ui_links_row([
-			"<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
-			  "'>$text{'index_addlv'}</a>",
-			@lvs ? (
-			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
-		            "&snap=1'>$text{'index_addsnap'}</a>" ) : ( )
-			]);
-		print "</td> </tr>\n";
+		print &ui_columns_end();
 		}
-	print "</table><p>\n";
+	else {
+		# As icons
+		print &ui_links_row(\@links);
+		foreach $v (@vgs) {
+			push(@vgicons, "edit_vg.cgi?vg=".&urlize($v->{'name'}));
+			push(@vgtitles, &html_escape($v->{'name'}).
+					"<br>".&nice_size($v->{'size'}*1024));
+			push(@vglinks, "images/vg.gif");
+			}
+		&icons_table(\@vgicons, \@vgtitles, \@vglinks);
+		}
+	print &ui_links_row(\@links);
+	print &ui_tabs_end_tab();
+
+	# Show physical volumes
+	print &ui_tabs_start_tab("mode", "pvs");
+	print $text{'index_pvsdesc'},"<p>\n";
+	foreach $v (@vgs) {
+		push(@allpvs, &list_physical_volumes($v->{'name'}));
+		}
+	@allpvs = sort { $a->{'name'} cmp $b->{'name'} } @allpvs;
+	@links = ( );
+	foreach $v (@vgs) {
+		push(@links, "<a href='edit_pv.cgi?vg=".&urlize($v->{'name'}).
+			     "'>".&text('index_addpv2', $v->{'name'})."</a>");
+		}
+	if (!@allpvs) {
+		# None yet
+		print "<b>$text{'index_nopvs2'}</b><p>\n";
+		}
+	elsif ($config{'show_table'}) {
+		# Show table of PVs
+		print &ui_links_row(\@links);
+		print &ui_columns_start([ $text{'index_pvname'},
+					  $text{'index_pvvg'},
+					  $text{'index_pvsize'},
+					  $text{'index_pvtotal'},
+					  $text{'index_pvtotal2'} ], 100);
+		foreach $p (@allpvs) {
+			($v) = grep { $_->{'name'} eq $p->{'vg'} } @vgs;
+			print &ui_columns_row([
+			  "<a href='edit_pv.cgi?vg=".&urlize($v->{'name'}).
+		            "&pv=".&urlize($p->{'name'})."'>$p->{'name'}</a>",
+			  $v->{'name'},
+			  &nice_size($p->{'size'}*1024),
+			  &text('lv_petotals', $p->{'pe_alloc'},
+					       $p->{'pe_total'}),
+			  &text('lv_petotals',
+			    &nice_size($p->{'pe_alloc'}*$p->{'pe_size'}*1024),
+			    &nice_size($p->{'pe_total'}*$p->{'pe_size'}*1024)),
+			  ]);
+			}
+		print &ui_columns_end();
+		}
+	else {
+		# Show PV icons
+		print &ui_links_row(\@links);
+		foreach $p (@allpvs) {
+			($v) = grep { $_->{'name'} eq $p->{'vg'} } @vgs;
+			push(@pvicons, "edit_pv.cgi?vg=".&urlize($v->{'name'}).
+				       "&pv=".&urlize($p->{'name'}));
+			push(@pvtitles, &html_escape($p->{'name'}).
+					"<br>".&nice_size($p->{'size'}*1024));
+			push(@pvlinks, "images/vg.gif");
+			}
+		&icons_table(\@pvicons, \@pvtitles, \@pvlinks);
+		}
+	print &ui_links_row(\@links);
+	print &ui_tabs_end_tab();
+
+	# Show logical volumes
+	print &ui_tabs_start_tab("mode", "lvs");
+	print $text{'index_lvsdesc'},"<p>\n";
+	foreach $v (@vgs) {
+		push(@alllvs, &list_logical_volumes($v->{'name'}));
+		}
+	@alllvs = sort { $a->{'name'} cmp $b->{'name'} } @alllvs;
+	@links = ( );
+	foreach $v (@vgs) {
+		push(@links, "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
+			     "'>".&text('index_addlv2', $v->{'name'})."</a>");
+		push(@links, "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
+		     "&snap=1'>".&text('index_addlv2s', $v->{'name'})."</a>");
+		}
+	if (!@alllvs) {
+		# None yet
+		print "<b>$text{'index_nolvs2'}</b><p>\n";
+		}
+	elsif ($config{'show_table'}) {
+		# Show table of LVs
+		print &ui_links_row(\@links);
+		print &ui_columns_start([ $text{'index_lvname'},
+					  $text{'index_lvvg'},
+					  $text{'index_lvsize'},
+					  $text{'index_lvuse'} ], 100);
+		foreach $l (@alllvs) {
+			($v) = grep { $_->{'name'} eq $l->{'vg'} } @vgs;
+			if ($lv->{'is_snap'}) {
+				($snapof) = grep {
+					$_->{'size'} == $l->{'size'} &&
+					$_->{'vg'} eq $l->{'vg'} &&
+					$_->{'has_snap'} } @alllvs;
+				}
+			else {
+				$snapof = undef;
+				}
+			@stat = &device_status($l->{'device'});
+			print &ui_columns_row([
+			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
+		            "&lv=".&urlize($l->{'name'})."'>$l->{'name'}</a>",
+			  $v->{'name'},
+			  &nice_size($l->{'size'}*1024),
+			  (@stat ? &device_message(@stat) : undef).
+			  ($snap ? " ".&text('index_snapof', $snap->{'name'})
+				 : ""),
+			  ]);
+			}
+		print &ui_columns_end();
+		}
+	else {
+		# Show PV icons
+		print &ui_links_row(\@links);
+		foreach $l (@alllvs) {
+			($v) = grep { $_->{'name'} eq $l->{'vg'} } @vgs;
+			push(@lvicons, "edit_lv.cgi?vg=".&urlize($v->{'name'}).
+				       "&lv=".&urlize($l->{'name'}));
+			push(@lvtitles, &html_escape($l->{'name'}).
+					"<br>".&nice_size($l->{'size'}*1024));
+			push(@lvlinks, "images/lv.gif");
+			}
+		&icons_table(\@lvicons, \@lvtitles, \@lvlinks);
+		}
+	print &ui_links_row(\@links);
+	print &ui_tabs_end_tab();
+
+	print &ui_tabs_end(1);
 	}
 else {
 	print "<b>$text{'index_none'}</b> <p>\n";
@@ -112,7 +221,7 @@ else {
 
 sub lvm_header
 {
-&ui_print_header(undef, $text{'index_title'}, "", undef, 0, 1, 0,
+&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("lvm", "man", "doc", "google"), undef, undef,
 	$lvm_version ? &text('index_version', $lvm_version) : undef);
 }

@@ -6,3 +6,5 @@ Added support for LVM2, as used in the new 2.6 Linux kernel.
 When viewing a physical volume, the space used by each logical volume on it is displayed. Similarly, when viewing a logical volume, the amount of space contributed by each physical volume is displayed.
 ---- Changes since 1.290 ----
 Fixed display of space used on each physical volume by a logical volume for LVM version 2.
+---- Changes since 1.390 ----
+Re-designed the module's main page to use tabs, and added an option to show volumes and groups in tables (with more information) instead of using icons.

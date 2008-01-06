@@ -42,6 +42,7 @@ if (-d $lvm_proc) {
 else {
 	# Use pvdisplay command
 	local $pv;
+	local $_;
 	open(DISPLAY, "pvdisplay |");
 	while(<DISPLAY>) {
 		s/\r|\n//g;
@@ -258,6 +259,7 @@ if (-d $lvm_proc) {
 else {
 	# Use the lvdisplay command
 	local $lv;
+	local $_;
 	open(DISPLAY, "lvdisplay |");
 	while(<DISPLAY>) {
 		s/\r|\n//g;
