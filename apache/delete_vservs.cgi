@@ -24,6 +24,7 @@ foreach $vconf (@virts) {
 	&save_directive_struct($vconf, undef, $conf, $conf);
 	&delete_file_if_empty($vconf->{'file'});
 	}
+&flush_file_lines();
 &unlock_all_files();
 &after_changing();
 &webmin_log("virts", "delete", scalar(@virts));

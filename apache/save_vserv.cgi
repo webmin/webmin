@@ -16,6 +16,7 @@ if ($in{'delete'}) {
 	&before_changing();
 	&save_directive_struct($vconf, undef, $conf, $conf);
 	&delete_file_if_empty($virt->{'file'});
+	&flush_file_lines();
 	&unlock_file($vconf->{'file'});
 
 	&after_changing();
