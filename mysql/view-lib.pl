@@ -51,10 +51,10 @@ sub get_search_limit
 local %in = %{$_[0]};
 $in{'start'} ||= 0;
 if ($module_name eq "mysql") {
-	return "limit $in{'start'},$config{'perpage'}";
+	return "limit $in{'start'},$displayconfig{'perpage'}";
 	}
 else {
-	return "limit $config{'perpage'} offset $in{'start'}";
+	return "limit $displayconfig{'perpage'} offset $in{'start'}";
 	}
 }
 

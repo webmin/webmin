@@ -33,6 +33,7 @@ if ($module_info{'usermin'}) {
 	$max_dbs = $userconfig{'max_dbs'};
 	$commands_file = "$user_module_config_directory/commands";
 	$sql_charset = $userconfig{'charset'};
+	%displayconfig = %userconfig;
 	}
 else {
 	# Webmin connects to the database as the user specified in the per-user
@@ -54,6 +55,7 @@ else {
 	$max_dbs = $config{'max_dbs'};
 	$commands_file = "$module_config_directory/commands";
 	$sql_charset = $config{'charset'};
+	%displayconfig = %config;
 	}
 $authstr = &make_authstr();
 $master_db = 'mysql';
@@ -444,14 +446,14 @@ else {
 # Outputs a table that is split into two parts
 sub split_table
 {
-local $mid = int((@{$_[1]}+1) / 2);
+local $mid = int((@{$_[2]}+1) / 2);
 local ($i, $j);
 print "<table width=100%><tr>\n";
-foreach $s ([0, $mid-1], [$mid, @{$_[1]}-1]) {
+foreach $s ([0, $mid-1], [$mid, @{$_[2]}-1]) {
 	print "<td width=50% valign=top>\n";
 
 	# Header
-	local @tds = ( "width=5" );
+	local @tds = $_[1] ? ( "width=5" ) : ( );
 	if ($s->[0] <= $s->[1]) {
 		local @hcols;
 		foreach $t (@{$_[0]}) {
@@ -466,7 +468,12 @@ foreach $s ([0, $mid-1], [$mid, @{$_[1]}-1]) {
 		for($j=4; $j<@_; $j++) {
 			push(@cols, $_[$j]->[$i]);
 			}
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $_[1]->[$i]);
+		if ($_[1]) {
+			print &ui_checked_columns_row(\@cols, \@tds, "d", $_[1]->[$i]);
+			}
+		else {
+			print &ui_columns_row(\@cols, \@tds);
+			}
 		}
 	if ($s->[0] <= $s->[1]) {
 		print &ui_columns_end();

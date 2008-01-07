@@ -45,22 +45,22 @@ $d = &execute_sql_safe($in{'db'},
 	"select count(*) from ".&quote_table($in{'table'})." ".$search);
 $total = int($d->{'data'}->[0]->[0]);
 if ($in{'jump'} > 0) {
-	$in{'start'} = int($in{'jump'} / $config{'perpage'}) *
-		       $config{'perpage'};
+	$in{'start'} = int($in{'jump'} / $displayconfig{'perpage'}) *
+		       $displayconfig{'perpage'};
 	if ($in{'start'} >= $total) {
-		$in{'start'} = $total - $config{'perpage'};
-		$in{'start'} = int(($in{'start'} / $config{'perpage'}) + 1) *
-			       $config{'perpage'};
+		$in{'start'} = $total - $displayconfig{'perpage'};
+		$in{'start'} = int(($in{'start'} / $displayconfig{'perpage'}) + 1) *
+			       $displayconfig{'perpage'};
 		}
 	}
 else {
 	$in{'start'} = int($in{'start'});
 	}
-if ($in{'new'} && $total > $config{'perpage'}) {
+if ($in{'new'} && $total > $displayconfig{'perpage'}) {
 	# go to the last screen for adding a row
-	$in{'start'} = $total - $config{'perpage'};
-	$in{'start'} = int(($in{'start'} / $config{'perpage'}) + 1) *
-		       $config{'perpage'};
+	$in{'start'} = $total - $displayconfig{'perpage'};
+	$in{'start'} = int(($in{'start'} / $displayconfig{'perpage'}) + 1) *
+		       $displayconfig{'perpage'};
 	}
 
 # Get limiting and sorting SQL
@@ -114,7 +114,7 @@ elsif ($in{'save'}) {
 	$d = &execute_sql($in{'db'}, $where_select);
 	@t = map { $_->{'field'} } @str;
 	$count = 0;
-	for($j=0; $j<$config{'perpage'}; $j++) {
+	for($j=0; $j<$displayconfig{'perpage'}; $j++) {
 		next if (!defined($in{"${j}_$t[0]"}));
 		local (@where, @set);
 		local @r = @{$d->{'data'}->[$j]};
@@ -141,7 +141,7 @@ elsif ($in{'save'}) {
 			local $ij = $in{"${j}_$t[$i]"};
 			local $ijdef = $in{"${j}_$t[$i]_def"};
 			next if ($ijdef || !defined($ij));
-			if (!$config{'blob_mode'} || !&is_blob($str[$i])) {
+			if (!$displayconfig{'blob_mode'} || !&is_blob($str[$i])) {
 				$ij =~ s/\r//g;
 				}
 			push(@set, &quotestr($t[$i])." = ?");
@@ -161,7 +161,7 @@ elsif ($in{'save'}) {
 elsif ($in{'savenew'}) {
 	# Adding a new row
 	for($j=0; $j<@str; $j++) {
-		if (!$config{'blob_mode'} || !&is_blob($str[$j])) {
+		if (!$displayconfig{'blob_mode'} || !&is_blob($str[$j])) {
 			$in{$j} =~ s/\r//g;
 			}
 		push(@set, $in{$j} eq '' ? undef : $in{$j});
@@ -180,23 +180,23 @@ elsif ($in{'cancel'} || $in{'new'}) {
 $desc = &text('table_header', "<tt>$in{'table'}</tt>", "<tt>$in{'db'}</tt>");
 &ui_print_header($desc, $text{'view_title'}, "");
 
-if ($in{'start'} || $total > $config{'perpage'}) {
+if ($in{'start'} || $total > $displayconfig{'perpage'}) {
 	print "<center>\n";
 	if ($in{'start'}) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
 		       "<img src=/images/left.gif border=0 align=middle></a>\n",
 			$in{'db'}, $in{'table'},
-			$in{'start'} - $config{'perpage'},
+			$in{'start'} - $displayconfig{'perpage'},
 			$searchargs, $sortargs;
 		}
 	print "<font size=+1>",&text('view_pos', $in{'start'}+1,
-	      $in{'start'}+$config{'perpage'} > $total ? $total :
-	      $in{'start'}+$config{'perpage'}, $total),"</font>\n";
-	if ($in{'start'}+$config{'perpage'} < $total) {
+	      $in{'start'}+$displayconfig{'perpage'} > $total ? $total :
+	      $in{'start'}+$displayconfig{'perpage'}, $total),"</font>\n";
+	if ($in{'start'}+$displayconfig{'perpage'} < $total) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
 		       "<img src=/images/right.gif border=0 align=middle></a> ",
 			$in{'db'}, $in{'table'},
-			$in{'start'} + $config{'perpage'},
+			$in{'start'} + $displayconfig{'perpage'},
 			$searchargs, $sortargs;
 		}
 	print "</center>\n";
@@ -227,7 +227,7 @@ if ($in{'sortfield'}) {
 
 print "</table>\n";
 
-if ($config{'blob_mode'}) {
+if ($displayconfig{'blob_mode'}) {
 	print &ui_form_start("view_table.cgi", "form-data");
 	}
 else {
@@ -268,7 +268,7 @@ if ($total || $in{'new'}) {
 	$w = 10 if ($w < 10);
 	for($i=0; $i<@data; $i++) {
 		local @d = map { $_ eq "NULL" ? undef : $_ } @{$data[$i]};
-		if ($row{$i} && ($config{'add_mode'} || $has_blob)) {
+		if ($row{$i} && ($displayconfig{'add_mode'} || $has_blob)) {
 			# Show multi-line row editor
 			$et = "<table border>\n";
 			$et .= "<tr $tb> <td><b>$text{'view_field'}</b></td> ".
@@ -277,7 +277,7 @@ if ($total || $in{'new'}) {
 				local $nm = $i == $realrows ? $j :
 						"${i}_$str[$j]->{'field'}";
 				$et .= "<tr $cb> <td><b>$str[$j]->{'field'}</b></td> <td>\n";
-				if ($config{'blob_mode'} &&
+				if ($displayconfig{'blob_mode'} &&
 				    &is_blob($str[$j]) && $d[$j]) {
 					# Show as keep/upload inputs
 					$et .= &ui_radio($nm."_def", 1,
@@ -285,7 +285,7 @@ if ($total || $in{'new'}) {
 					      [ 0, $text{'view_set'} ] ])." ".
 					  &ui_upload($nm);
 					}
-				elsif ($config{'blob_mode'} &&
+				elsif ($displayconfig{'blob_mode'} &&
 				       &is_blob($str[$j])) {
 					# Show upload input
 					$et .= &ui_upload($nm);
@@ -323,7 +323,7 @@ if ($total || $in{'new'}) {
 				local $l = $d[$j] =~ tr/\n/\n/;
 				local $nm = $i == $realrows ? $j :
 						"${i}_$d->{'titles'}->[$j]";
-				if ($config{'blob_mode'} &&
+				if ($displayconfig{'blob_mode'} &&
 				    &is_blob($str[$j])) {
 					# Cannot edit this blob
 					push(@cols, undef);
@@ -361,7 +361,7 @@ if ($total || $in{'new'}) {
 			local @cols;
 			local $j = 0;
 			foreach $c (@d) {
-				if ($config{'blob_mode'} &&
+				if ($displayconfig{'blob_mode'} &&
 				    &is_blob($str[$j]) && $c ne '') {
 					# Show download link for blob
 					push(@cols, "<a href='download.cgi?db=$in{'db'}&table=$in{'table'}&start=$in{'start'}".$searchargs.$sortargs."&row=$i&col=$j'>$text{'view_download'}</a>");
@@ -417,7 +417,7 @@ else {
 	print &ui_form_end([ [ "new", $text{'view_new'} ] ]);
 	}
 
-if (!$in{'field'} && $total > $config{'perpage'}) {
+if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 	# Show search and jump buttons
 	print "<hr>\n";
 	print "<table width=100%><tr>\n";

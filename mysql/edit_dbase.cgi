@@ -74,7 +74,7 @@ elsif (@titles || @indexes) {
 		    ( map { "!".$_ } @indexes ),
 		    ( map { "*".$_ } @views ),
 		  );
-	if ($config{'style'}) {
+	if ($displayconfig{'style'}) {
 		foreach $t (@titles) {
 			local $c = &execute_sql($in{'db'},
 					"select count(*) from ".quotestr($t));
