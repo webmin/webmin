@@ -108,20 +108,14 @@ return ($sock ? " -S $sock" : "").
 sub is_mysql_running
 {
 # First type regular connection
-if (!$config{'nodbi'}) {
+if ($driver_handle) {
 	local $main::error_must_die = 1;
 	local ($data, $rv);
-	local ($db) = &list_accessible_databases();
-	if (!$db || $db !~ /^[a-z0-9\_]+$/i) {
-		$db = $master_db;
-		}
-	eval { $data = &execute_sql_safe($db, "select version()") };
+	eval { $data = &execute_sql_safe(undef, "select version()") };
 	local $err = $@;
 	$err =~ s/\s+at\s+\S+\s+line.*$//;
 	if ($@ =~ /denied|password/i) {
-		# Try mysqladmin as well instead of definitively failing,
-		# as it may connect without specifying a database.
-		#$rv = -1;
+		$rv = -1;
 		}
 	elsif ($@ =~ /connect/i) {
 		$rv = 0;
