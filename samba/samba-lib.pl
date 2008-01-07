@@ -861,6 +861,7 @@ else {
 	$out =~ /rid:\s+(\d+)/ ||
 		&error("$config{'net'} failed : <pre>$out</pre>");
 	local $maxrid = $1 + 1;
+	$maxrid = 512 if ($maxrid < 512);	# Must be >511
 	$out = &backquote_logged(
 		"$config{'net'} -s $config{'smb_conf'} groupmap add".
 		" rid=$maxrid".
