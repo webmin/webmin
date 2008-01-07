@@ -1,5 +1,7 @@
 index_title=Anàlisi de Fitxers de Registre Webalizer
 index_version=Webalizer versió $1
+index_version_webalizer=$index_version
+index_version_awffull=AWFFull
 index_ewebalizer=No s'ha trobat al sistema l'ordre $1 d'anàlisi de fitxers de registre. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_econf=No s'ha trobat al sistema el fitxer $1 de configuració de Webalizer. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_add=Afegeix un nou fitxer de registre per analitzar.

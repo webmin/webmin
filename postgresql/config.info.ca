@@ -20,6 +20,7 @@ start_cmd=Ordre per iniciar PostgreSQL,0
 stop_cmd=Ordre per aturar PostgreSQL,3,Mata el procés
 setup_cmd=Ordre per inicialitzar PostgreSQL,3,Cap
 pid_file=Camí del fitxer de PID de postmaster,8
+hba_conf=Camins del fitxer de configuració d'accés a hosts,8
 host=Host PostgreSQL a connectar,3,localhost
 port=Port PostgreSQL a connectar,3,Defecte
 dump_cmd=Camí de l'ordre pg_dump,0

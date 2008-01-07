@@ -163,6 +163,12 @@ eacl_acls1=ACLs
 eacl_move=Desplaça
 eacl_nopr=No hi ha cap restricció de proxy definida
 eacl_addpr=Afegeix restricció de proxy.
+eacl_noprr=No hi ha cap restricció de resposta de proxy definida
+eacl_addprr=Afegeix restricció de resposta de proxy.
+
+eacl_replypr=Restriccions de proxy de resposta
+eacl_replynopr=No hi ha cap restricció de proxy de resposta definida
+
 eacl_icpr=Restriccions ICP
 eacl_noicpr=No hi ha cap restricció ICP definida
 eacl_addicpr=Afegeix restricció ICP.
@@ -523,7 +529,11 @@ ahttp_ma=Fes coincidir les ACLs
 ahttp_dma=No facis coincidir les ACLs
 ahttp_return=a la llista d'ACLs
 
-sahttp_ftspr=No he pogut desar la restricció de proxy
+ahttp_replyheader=Creació de Restricció de Resposta de Proxy
+ahttp_replyheader1=Edició de Restricció de Resposta de Proxy
+ahttp_replypr=Restricció de Resposta de Proxy
+
+sahttp_ftspr=No he pogut desar la restricció de resposta de proxy
 
 aicp_header=Creació de Restricció ICP
 aicp_header1=Edició de Restricció ICP
@@ -910,7 +920,7 @@ drefesh_enone=No has seleccionat cap regla de refresc
 ptables_title=Configuració del Redireccionament de Port
 iptables_inst0=No sembla que estiguin instal·lades al sistema les ordres necessàries per a configurar el redireccionament de ports. Mira el mòdul <a href='$1'>Tallafocs Linux</a> per a més detalls.
 iptables_inst1=No sembla que el mòdul <a href='$1'>Tallafocs Linux</a> estigui completament configurat en aquest sistema. Aquest mòdul fa ús d'aquell per a configurar el redireccionament de ports Frox.
-iptables_desc=Squid pot dur a terme procuració HTTP transparent per a les peticions sobre el port $1, però configurant les regles del tallafocs per redireccionar-les automàticament i al port $2, que és el que escolta Squid. Això només funcionarà si el sistema que està executant Squid també és l'encaminador de la teva xarxa. Això es pot fer afegint una regla d'IP al tallafocs, assumint que està gestionat amb el mòdul <a href='$3'>Tallafocs Linux</a>.
+iptables_desc=Squid pot dur a terme procuració HTTP transparent per a les peticions sobre el port $1 configurant les regles del tallafocs per redireccionar-les automàticament al port $2, que és el que escolta Squid. Això només funcionarà si el sistema que està executant Squid també és l'encaminador de la teva xarxa. Això es pot fer afegint una regla d'IPtables al tallafocs, assumint que està gestionat amb el mòdul <a href='$3'>Tallafocs Linux</a>.
 iptables_disabled=El redireccionament de ports està desactivat
 iptables_enabled=El redireccionament de ports està activat per als clients de la xarxa $1
 iptables_enabled2=El redireccionament de ports està activat per als clients de la interfície $1

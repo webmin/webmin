@@ -350,6 +350,7 @@ log_switch=He canviat a l'usuari Usermin $1
 log_logout=He canviat els temps de desconnexió automàtica
 log_dav=He canviat la configuració del servidor DAV
 log_advanced=He canviat les opcions avançades
+log_mobile=he canviat les opcions del dispositiu mòbil
 
 update_err=No he pogut actualitzar els mòduls
 update_eurl=Hi falta l'URL d'actualització o bé és invàlid
@@ -483,3 +484,6 @@ blocked_title=Hosts i Usuaris Bloquejats
 blocked_none=Actualment, no hi ha cap host ni usuari bloquejat per Usermin.
 blocked_user=Usuari Usermin
 blocked_cleardesc=Fes clic sobre aquest botó per esborrar tot els blocatges actuals de hosts i usuaris  reiniciant el procés servidor d'Usermin.
+
+mobile_title=Opcions del Dispositiu Mòbil
+

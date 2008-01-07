@@ -9,9 +9,12 @@ index_apply2=Aplica les Interfícies Seleccionades
 
 ifcs_title=Interfícies de Xarxa
 ifcs_now=Interfícies Actives
+ifcs_activedesc=Les interfícies llistades en aquesta taula estan actualment actives al sistema. En la majoria de casos, les hauries d'editar a la pestanya <b>En Engegar</b>.
+ifcs_bootdesc=Les interfícies llistades en aquesta taula s'activaran quan s'engegui el sistema, i en general, ara també quedaran actives.
 ifcs_name=Nom
 ifcs_type=Tipus
 ifcs_ip=Adreça IP
+ifcs_desc=Descripció de la interfície
 ifcs_mask=Màscara de subxarxa
 ifcs_status=Estat
 ifcs_virtual=Virtual
@@ -78,6 +81,18 @@ bifc_err4=No he pogut desactivar la interfície
 bifc_capply=Crea i Aplica
 bifc_eapply=No pots activar una interfície que utilitza DHCP o BOOTP
 bifc_edhcpmain=DHCP només es pot activar a la interfície primària de xarxa
+
+bonding_add=Afegeix una nova interfície d'enllaç.
+bonding_create=Crea una Interfície d'Enllaç d'Engegada
+bonding_teamparts=Company d'Equip
+bonding_teammode=Mode d'Equip
+bonding_miimon=Interval de Monitorització Mii
+bonding_updelay=Retard superior
+bonding_downdelay=Retard inferior
+
+vlan_add=Afegeix una Interfície amb Tags Vlan
+vlan_physical=Dispositiu Físic
+vlan_create=Crea una interfície amb tags VLAN
 
 routes_title=Encaminament i Portals
 routes_boot=Configuració de l'encaminament activada <i>en engegar</i>

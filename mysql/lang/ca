@@ -600,6 +600,7 @@ log_execupload=He executat les ordres SQL del fitxer pujat
 log_execfile=He executat les ordres SQL del fitxer $1
 log_importupload=He importat les dades del fitxer pujat
 log_importfile=He importat les dades del fitxer $1
+log_set=He canviat $1 variables MySQL
 
 backup_title=Abocament de la Base de Dades
 backup_title2=Abocament de Totes les Bases de Dades

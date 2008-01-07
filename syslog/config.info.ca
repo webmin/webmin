@@ -19,4 +19,5 @@ syslogd=Camí del servidor syslog,0
 facilities=Utilitats de suport,0
 start_cmd=Ordre per iniciar syslog,3,Executa el servidor
 restart_cmd=Ordre per aplicar els canvis,3,Mata el servidor i reinicia'l
+signal_cmd=Ordre per reobrir els fitxers de registre,3,Envia el senyal HUP
 tail_cmd=Ordre 'tail' i els seus arguments,3,Per defecte (tail -n LINIES)

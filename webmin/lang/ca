@@ -272,6 +272,7 @@ os_cannot=No puc detectar el SO ni la versió
 os_update=Actualitza el Webmin per utilitzar el SO detectat
 os_new=Nou sistema operatiu
 os_path=Camí de recerca de programes
+os_syspath=Inclou el camí de recerca propi del sistema
 os_ld_path=Camí de recerca de llibreries
 os_envs=Variables d'entorn d'addicionals
 os_name=Nom de la variable
@@ -314,7 +315,7 @@ ssl_newkey=Aquest formulari es pot fer servir per crear una nova clau SSL per al
 ssl_hole=Com que actualment estàs utilitzant la clau SSL per defecte de Webmin a la qual tothom té accés, hauries de generar immediatament una clau nova. Altrament, la teva connexió SSL no serà segura!
 ssl_header1=Crea una nova clau SSL
 ssl_create=Crea-la ara
-ssl_cn=Nom del servidor a l'URL
+ssl_cn=Nom del servidor
 ssl_all=Qualsevol nom de host
 ssl_newfile=Grava la clau al fitxer
 ssl_usenew=Utilitza la nova clau immediatament
@@ -363,6 +364,7 @@ newkey_ecat=S'ha produït un error en gravar al nou fitxer de claus:
 newkey_ok=La següent clau SSL d'Usermin s'ha generat amb èxit.
 newkey_esize=Hi falta la mida de la clau o bé és invàlida
 newkey_edays=Hi falta el nombre de dies abans de caducar o bé és incorrecte
+newkey_ecountry=El codi de país ha de tenir dues lletres
 
 startpage_title=Opcions d'Indexació de Pàgina
 startpage_intro2=Aquesta pàgina permet controlar l'aparença del menú principal de Webmin. Pot ser que algunes opcions no siguin efectives quan s'utilitza el tema per defecte.
@@ -744,6 +746,8 @@ advanced_showstderr=Mostra els errors de Perl al navegador
 advanced_umask=Umask (bits de permisos) dels fitxers creats
 advanced_eumask=L'umask ha de ser un número octal de 3 dígits
 advanced_etempdelete=Hi falta l'edat màxima dels fitxers temporals o bé és invàñida
+advanced_nice=Prioritat de CPU dels treballs planificats
+advanced_pri=Nivell de prioritat
 
 syslog_errorlog=Registre d'errors de Webmin
 

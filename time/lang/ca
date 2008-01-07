@@ -9,6 +9,7 @@ index_sync=Sincronitza i Aplica
 index_hardware2=Estableix també el rellotge del maquinari
 index_tzheader=Zona Horària
 index_tz=Canvia la zona horària a
+index_ehwclock=$1 ha fallat: $2
 
 action_save=Desa
 action_apply=Aplica

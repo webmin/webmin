@@ -190,6 +190,7 @@ mod_core_display=Fitxer de missatge previ a la connexió
 mod_core_none=Cap
 mod_core_edisplay=Hi falta el fitxer de missatge previ a la connexió
 mod_core_firstcd=Nom del fitxer <i>README</i> del directori
+mod_core_firstcdt=Mostra-ho sempre
 mod_core_efirstcd=Hi falta el nom del fitxer <i>README</i> del directori
 mod_core_goaway=Fitxer de missatge de connexions excessives
 mod_core_egoaway=Hi falta el fitxer de missatge de connexions excessives
