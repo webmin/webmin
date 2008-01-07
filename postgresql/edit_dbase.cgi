@@ -94,7 +94,7 @@ elsif (@titles || @indexes || @views || @seqs) {
 		}
 	print &ui_links_row(\@rowlinks);
 	@dtitles = map { &html_escape($_) } ( @titles, @indexes, @views,@seqs );
-	if ($config{'style'}) {
+	if ($displayconfig{'style'}) {
 		# Show as table
 		foreach $t (@titles) {
 			local $c = &execute_sql($in{'db'},

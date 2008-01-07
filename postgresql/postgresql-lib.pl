@@ -28,6 +28,7 @@ if ($module_info{'usermin'}) {
 		    'tables' => 1,
 		    'cmds' => 1, );
 	$max_dbs = $userconfig{'max_dbs'};
+	%displayconfig = %userconfig;
 	}
 else {
 	# Login and password is determined by ACL in Webmin
@@ -43,6 +44,7 @@ else {
 		$postgres_sameunix = $config{'sameunix'};
 		}
 	$max_dbs = $config{'max_dbs'};
+	%displayconfig = %config;
 	}
 foreach my $hba (split(/\t+/, $config{'hba_conf'})) {
 	if (-r $hba) {
@@ -769,14 +771,14 @@ return ($out =~ /ERROR/i ? 1 : 0, $out);
 # Outputs a table that is split into two parts
 sub split_table
 {
-local $mid = int((@{$_[1]}+1) / 2);
+local $mid = int((@{$_[2]}+1) / 2);
 local ($i, $j);
 print "<table width=100%><tr>\n";
-foreach $s ([0, $mid-1], [$mid, @{$_[1]}-1]) {
+foreach $s ([0, $mid-1], [$mid, @{$_[2]}-1]) {
 	print "<td width=50% valign=top>\n";
 
 	# Header
-	local @tds = ( "width=5" );
+	local @tds = $_[1] ? ( "width=5" ) : ( );
 	if ($s->[0] <= $s->[1]) {
 		local @hcols;
 		foreach $t (@{$_[0]}) {
@@ -791,7 +793,12 @@ foreach $s ([0, $mid-1], [$mid, @{$_[1]}-1]) {
 		for($j=4; $j<@_; $j++) {
 			push(@cols, $_[$j]->[$i]);
 			}
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $_[1]->[$i]);
+		if ($_[1]) {
+			print &ui_checked_columns_row(\@cols, \@tds, "d", $_[1]->[$i]);
+			}
+		else {
+			print &ui_columns_row(\@cols, \@tds);
+			}
 		}
 	if ($s->[0] <= $s->[1]) {
 		print &ui_columns_end();
