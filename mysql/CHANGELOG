@@ -61,3 +61,4 @@ The MySQL password is no longer passed on the command line.
 Fixed a bug that prevented 'Jump to row' from working properly.
 ---- Changes since 1.390 ----
 The character set to use for MySQL output can now be set on the Module Config page.
+When testing if a user can login, the first accessible database according to the access control list is used.

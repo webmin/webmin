@@ -111,11 +111,17 @@ sub is_mysql_running
 if (!$config{'nodbi'}) {
 	local $main::error_must_die = 1;
 	local ($data, $rv);
-	eval { $data = &execute_sql_safe($master_db, "select version()") };
+	local ($db) = &list_accessible_databases();
+	if (!$db || $db !~ /^[a-z0-9\_]+$/i) {
+		$db = $master_db;
+		}
+	eval { $data = &execute_sql_safe($db, "select version()") };
 	local $err = $@;
 	$err =~ s/\s+at\s+\S+\s+line.*$//;
 	if ($@ =~ /denied|password/i) {
-		$rv = -1;
+		# Try mysqladmin as well instead of definitively failing,
+		# as it may connect without specifying a database.
+		#$rv = -1;
 		}
 	elsif ($@ =~ /connect/i) {
 		$rv = 0;
@@ -414,6 +420,29 @@ else {
 		return 1 if ($d && $d eq $_[0]);
 		}
 	return 0;
+	}
+}
+
+# list_accessible_databases()
+# Returns a list of databases that the current user may access to. Returns
+# an empty list if he has all of them.
+sub list_accessible_databases
+{
+if ($module_info{'usermin'}) {
+	# From Usermin list
+	local @rv;
+	foreach $l (split(/\t/, $config{'access'})) {
+		if ($l =~ /^(\S+):\s*(.*)$/ &&
+		    ($1 eq $remote_user || $1 eq '*')) {
+			push(@rv, split(/\s+/, $2));
+			}
+		}
+	return @rv;
+	}
+else {
+	# From Webmin access control list
+	return ( ) if ($access{'dbs'} eq '*');
+	return split(/\s+/, $access{'dbs'});
 	}
 }
 
