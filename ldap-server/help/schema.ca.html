@@ -1,0 +1,27 @@
+<header>Gestió de l'Esquema</header>
+
+L'esquema LDAP determina quines classes d'objectes i atributs es poden 
+emmagatzemar a la base de dades LDAP. Aquesta pàgina permet seleccionar quin
+tipus d'esquema està suportat pel servidor, utilitzant la casella del costat
+de cada nom d'esquema. Un cop hagis fet els canvis, fes clic a <b>Desa</b>
+per actualitzar el fitxer de configuració OpenLDAP i llavors <b>Aplica la
+Configuració</b> a la pàgina principal per activar-los. <p>
+
+Ves amb compte, però, amb deseleccionar fitxers d'esquema existents, ja que
+això pot bloquejar el servidor LDAP si ja existeixen objectes a la base de
+dades que utilitzin els atributs definits en aquests fitxers. L'esquema
+<b>core</b>, que conté les classes LDAP més bàsiques, no es pot deseleccionar.
+<p>
+
+La ordenació dels esquemes és important, ja que els esquemes posteriors només
+es poden referir als atributs definits anteriorment. Pots reordenar la llista 
+utilitzant les fletxes amunt i avall d'aquesta pàgina, però, altre cop, cal
+fer-ho amb compte per evitar que l'ordre dels esquemes no bloquegi la base
+de dades LDAP. <p>
+
+Per veure quines classes i atributs defineix cada esquema, fes clic al seu
+enllaç <b>Visualitza</b>. Si estàs familiaritzat/da amb el format de l'esquema
+i vols editar un fitxer, pots fer clic a <b>Edita</b>. <p>
+
+<footer>
+

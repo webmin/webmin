@@ -1,0 +1,35 @@
+<header>Configuració del Servidor OpenLDAP</header>
+
+Aquesta pàgina permet configurar els valors globals del servidor OpenLDAP,
+com ara el DN arrel de la base de dades, l'usuari d'administració, les mides
+de la memòria cau i els certificats SSL. Els camps que es canvien més
+correntment són:
+
+<dl>
+<dt><b>DN arrel de la base de dades LDAP</b>
+<dd>Aquest camp és per a introduir el DN (nom distingit) sota el qual
+    s'emmagatzemaran tots els objectes de la base de dades LDAP. Típicament,
+    s'ha de canviar a alguna cosa que coincideixi amb el nom de l'empresa o
+    organització, com ara <i>dc=lamevaempresa,dc=com</i>.; però ets lliure
+    de posar-hi qualsevol cosa, sempre i quan estigui correctament formatat. <p>
+
+<dt><b>DN de l'usuari d'administració</b>
+<pp>Aquest és de fet l'usuari <tt>root</tt> de la base de dades LDAP. Ha de ser un DN sota l'arrel establerta anteriorment, com ara
+<i>cn=Manager,dc=lamevaempresa,dc=com</i>. <p>
+
+<dt><b>DN de la contrasenya d'administració</b>
+<dd>Aquest camp mostra la contrasenya actual (possiblement xifrada), i una
+    opció per introduir-ne una de nova. Si canvies la contrasenya, el mòdul
+    la utilitzarà automàticament en connectar-se a la base de dades per
+    fer canvis. <p>
+</dl>
+
+Els canvis fets en aquesta pàgina no tindran efecte fins que facis clic al 
+botó <b>Aplica la Configuració<(b> de la pàgina principal del mòdul. <p>
+
+Si vols que el servidor LDAP accepti connexions xifrades amb TLS, primer has
+de generar un certificat i una clau pública SSL. Això es pot automatitzar
+fent clic sobre el botó <b>Genera el Certificat SSL</b> del peu de pàgina. <p>
+
+<footer>
+

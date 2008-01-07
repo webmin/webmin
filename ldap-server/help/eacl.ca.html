@@ -1,0 +1,28 @@
+<header>Regla de Control d'Accés</header>
+
+Aquesta pàgina permet editar o crear una sola regla de control d'accés.
+La primera secció, <b>Objectes permesos</b>, determina a quins DNs de la base
+de dades s'aplicarà la regla. Pots seleccionar <b>Tots els objectes</b> per
+a tota la base de dades, o bé <b>Objectes amb DN</b> per als objectes que 
+coincideixin amb allò que introdueixis en el camp adjacent. <p>
+
+El menú <b>tipus de coincidència</b> determina si la regla s'aplica només a
+aquest objecte, a aquells per sota, o si el DN es tracta com una expressió 
+regular. També pots controlar més encara quins objectes estan permesos 
+introduint un filtre LDAP en el camp <b>Limita amb el filtre d'objecte</b>,
+com ara <i>(objectClass=posixAccount)</i>. <p>
+
+<hr>
+
+La segona part de la pàgina és una taula per seleccionar quins usuaris LDAP
+tenen accés als objectes. Pots seleccionar diverses classes d'usuaris generals
+del menú <b>Concedeix accés a</b>, o bé triar <b>Altres</b> i introduir un
+DN específic. <p>
+
+El menú <b>Nivell d'accés</b> especifica el que aquests usuaris poden fer
+amb els objectes. Els nivells més baixos impliquen tots els superiors,
+així que un usuari amb accés d'<b>Escriptura</b> també té accés de
+<b>Lectura</b> i <b>Cerca</b>. <p>
+
+<footer>
+

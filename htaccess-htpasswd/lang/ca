@@ -35,6 +35,7 @@ dir_err=No he pogut desar el directori
 dir_eclash=Aquest directori ja està protegit
 dir_edir=Hi falta el directori o bé és invàlid
 dir_ecannot=No tens permís per protegir el directori
+dir_ecannotcreate=No tens permís per configurar quins directoris estan protegits
 dir_efile=Hi falta el fitxer d'usuaris o bé és invàlid
 dir_ehtaccess=No he pogut crear el fitxer d'opcions Apache $1: $2
 dir_ehtpasswd=No he pogut crear el fitxer d'usuaris $1: $2
@@ -91,6 +92,7 @@ acl_user=Crea els fitxers .htaccess i htusers com a usuari Unix
 acl_same=Els mateixos que l'usuari Webmin
 acl_home=Inclou el directori arrel de l'usuari Unix
 acl_sync=Pot configurar la sincronització d'usuaris Unix
+acl_uonly=Pot afegir i canviar directoris protegits
 
 log_create_dir=He afegit el directori $1
 log_modify_dir=He modificat el directori $1

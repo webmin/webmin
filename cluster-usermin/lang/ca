@@ -35,6 +35,10 @@ index_upgradeon=Servidors a actualitzar
 index_update=Actualitza Mòduls
 index_updateon=Servidors a actualitzar
 index_updatedesc=Aquest formulari permet actualitzar els mòduls d'Usermin que tenen errors o forats de seguretat a partir de la pàgina d'<a href=http://www.webmin.com/updates.html>Actualitzacions d'Usermin</a> o des d'una altra font.
+index_thost=Nom de host
+index_tdesc=Descripció
+index_tver=Versió
+index_ttype=Tipus d'OS
 
 this_server=aquest servidor
 

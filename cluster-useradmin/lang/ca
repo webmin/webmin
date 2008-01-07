@@ -12,6 +12,11 @@ index_newuser=Afegeix Usuari
 index_newgroup=Afegeix Grup
 index_sync=Sincronitza
 this_server=aquest servidor
+index_thost=Nom de host
+index_tdesc=Descripció
+index_tucount=Usuaris
+index_tgcount=Grups
+index_ttype=Tipus d'OS
 
 add_title=Addició Servidors
 add_msg=Afegint $1...

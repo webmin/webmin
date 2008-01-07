@@ -17,6 +17,10 @@ index_down=Cada servidor ha de redescarregar el paquet
 index_count=($1 paquets)
 this_server=aquest servidor
 index_compare=Compara els Servidors
+index_thost=Nom de host
+index_tdesc=Descripció
+index_tcount=Paquets
+index_ttype=Tipus d'OS
 
 install_err=No he pogut instal·lar el paquet
 install_elocal=No has donat cap fitxer local

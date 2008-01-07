@@ -27,7 +27,7 @@ index_sd=Configuració del Dimoni d'Emmagatzematge
 index_fd=Configuració del Dimoni de Fitxers
 index_groups=Configuració dels Grups de Bacula
 index_actions=Accions de Còpia i Restauració
-index_ocmin=Contribuït per <a href=$2 target=_new>Oceans Mind Corp <img align=middle border=0 src='$1'></a>
+index_ocmin=Contribuït per <a href=$2 target=_new>Linmin <img align=middle border=0 src='$1'></a>
 
 connect_emysql=No he pogut carregar el driver DBI de la base de dades.
 connect_elogin=No he pogut entrar a la base de dades $1: $2.

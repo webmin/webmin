@@ -29,6 +29,7 @@ edit_title2=Creació d'Usuari Webmin
 edit_readonly=Aquest usuari Webmin no s'hauria d'editar, per tal com es troba gestionat pel mòdul $1. <a href='$2'>Fés clic aquí</a> per ignorar aquest avís i editar l'usuari - però tingues en compte que els canvis manuals poden ser reescrits!
 edit_rights=Drets d'accés de l'usuari Webmin
 edit_user=Usuari
+edit_cloneof=Clonant l'usuari Webmin
 edit_real=Nom real
 edit_group=Membre del grup
 edit_pass=Contrasenya

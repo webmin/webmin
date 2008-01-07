@@ -34,7 +34,11 @@ index_installon=Instal·la a
 index_upgradeon=Servidors per actualitzar
 index_update=Actualitza els Mòduls
 index_updateon=Servidors a actualitzar
-> index_updatedesc=Aquest formulari permet actualitzar els mòduls Webmin que contenen errors o forats de seguretat des de la pàgina d'<a href=http://www.webmin.com/updates.html>Actualitzacions de Webmin</a> o des d'una altra font.
+index_updatedesc=Aquest formulari permet actualitzar els mòduls Webmin que contenen errors o forats de seguretat des de la pàgina d'<a href=http://www.webmin.com/updates.html>Actualitzacions de Webmin</a> o des d'una altra font.
+index_thost=Nom de host
+index_tdesc=Descripció
+index_tver=Versió
+index_ttype=Tipus d'OS
 
 this_server=aquest servidor
 

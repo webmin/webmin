@@ -1,0 +1,33 @@
+<header>Exploració de la Base de Dades</header>
+
+Aquesta pàgina permet navegar a través de la jerarquia d'objectes de la base
+de dades LDAP, crear i eliminar objectes, i editar-ne els atributs.
+El DN de l'objecte gestionat sempre es mostra en el camp <b>Exploració</b>
+- per moure's ràpidament a un altre objecte, introdueix un nou DN i fes clic
+a <b>Mostra</b>. Per moure's cap amunt dins la jerarquia, fes clic a 
+<b>Explora el Pare</b>. <p>
+
+La resta de la pàgina està dividida en dues pestanyes:
+<dl>
+<dt><b>Objectes fills</b>
+<dd>Aquesta taula llista tots els objectes per sota de l'actual. Pots editar
+    un subobjecte fent clic sobre el seu DN, o suprimir objectes marcant-los
+    i fent clic a <b>Elimina els Fills Seleccionats</b>. Per canviar el DN
+    d'un subobjecte, fes clic a l'enllaç <b>Renomena</b> i introdueix un nou
+    DN en el camp que apareix. <p>
+    Fent clic a <b>Afegeix un nou subobjecte</b>, apareixerà un formulari
+    per introduir els detalls d'un nou objecte buit sota l'actual. <p>
+
+<dt><b>Atributs de l'objecte</b>
+<dd>Aquesta taula llista tots els atributs de l'objecte actual. Per editar-ne
+    els valors d'un, fes clic a l'enllaç <b>Edita</b> de la dreta, Per 
+    suprimir atributs, marca les caselles del costat i fes clic al botó
+    <b>Suprimeix els Atributs Seleccionats</b>. En ambdós casos, el servidor
+    LDAP forçara restriccions sobre els atributs permesos i requerits per a
+    la classe de l'objecte. <p>
+    Es pot crear un nou atribut fent clic a l'enllaç <b>Afegeix un atribut a 
+    l'objecte</b>, que mostrarà un camp per introduir un nom i un valor, <p>
+</dl>
+
+<footer>
+
