@@ -35,3 +35,5 @@ Several records can be deleted at once from any table using checkboxes next to t
 ---- Changes since 1.320 ----
 Comments can now be created and edited in the rules table (and a few others), when running Shorewall 3.3.3 or higher.
 Added logging so that changes made using the module show up in the Webmin Actions Log module.
+---- Changes since 1.390 ----
+Blacklist rules can now match any host.

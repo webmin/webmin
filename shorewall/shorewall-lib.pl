@@ -1517,8 +1517,9 @@ return ( $in{'zone'}, $in{'iface'}.":".$in{'net'},
 
 sub blacklist_row
 {
-return ( $_[0], uc($_[1]) || $text{'blacklist_any'},
-		$_[2] || $text{'blacklist_any'} );
+return ( $_[0] eq '-' ? $text{'blacklist_any'} : $_[0],
+	 uc($_[1]) || $text{'blacklist_any'},
+	 $_[2] || $text{'blacklist_any'} );
 }
 
 @blacklist_protos = ( undef, 'tcp', 'udp', 'icmp' );
@@ -1533,12 +1534,16 @@ if ($_[0] =~ /^\+(.*)/) {
 elsif ($_[0] =~ /^\~(.*)$/) {
 	$mode = 1; $mac = $1;
 	}
+elsif ($_[0] eq '-') {
+	$mode = 3;
+	}
 else {
 	$mode = 0; $ip = $_[0];
 	}
 print &ui_radio("host_def", $mode,
     [ [ 0, &text('hosts_ip', &ui_textbox("host", $ip, 30))."<br>" ],
       [ 1, &text('hosts_mac', &ui_textbox("mac", $mac, 30))."<br>" ],
+      [ 3, $text{'hosts_any'}."<br>" ],
       &version_atleast(3) ?
        ( [ 2, &text('hosts_ipset', &ui_textbox("ipset", $ipset, 15)) ] ) : ( ),
 	    ]);
@@ -1581,6 +1586,9 @@ elsif ($in{'host_def'} == 1) {
 elsif ($in{'host_def'} == 2) {
 	$in{'ipset'} =~ /^\S+$/ || &error($text{'blacklist_eipset'});
 	$host = "+".$in{'ipset'};
+	}
+elsif ($in{'host_def'} == 3) {
+	$host = "-";
 	}
 local $proto;
 if ($in{'proto'} eq '*') {

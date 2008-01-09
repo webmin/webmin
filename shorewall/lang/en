@@ -305,6 +305,7 @@ hosts_routestopped=Route even when firewall is stopped?
 hosts_ip=Address or network $1
 hosts_mac=MAC address $1
 hosts_ipset=IP set $1
+hosts_any=Any host
 
 edit_before=Before entry $1
 edit_after=After entry $1
