@@ -1,0 +1,4 @@
+url=URL a cui connettersi,3,Chiedi all'utente
+loginmode=Login sul server remoto,1,0-No,1-Si&#44; con nome utente fisso,2-Si&#44; con nome fornito dall'utente
+user=Nome utente fisso,0
+pass=Password fissa,12

@@ -4,3 +4,4 @@ longdesc=Connect to another HTTP server via a tunnel through the Webmin server.
 desc_de=HTTP-Tunnel Konfiguration
 desc_ca=Túnel HTTP
 desc_es=T&#250;nel HTTP
+desc_it=Tunnel HTTP
