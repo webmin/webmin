@@ -1,0 +1,3 @@
+desc=DHCP and DNS Client
+category=servers
+depends=bind8 dhcpd
