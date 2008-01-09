@@ -2,3 +2,4 @@ desc=PHP Configuration
 longdesc=Configure PHP settings for the whole system or invidivual Apache virtual servers.
 os_support=!windows
 desc_ca=Configuració de PHP
+desc_it=Configurazione di PHP
