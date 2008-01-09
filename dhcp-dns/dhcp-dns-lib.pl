@@ -10,6 +10,32 @@ do '../ui-lib.pl';
 # Returns a list of DHCP host structures for managed hosts
 sub list_dhcp_hosts
 {
+local $conf = &dhcpd::get_config();
+local $parent = &dhcpd::get_parent_config();
+local @rv;
+foreach my $h (&dhcpd::find("host", $conf)) {
+	$h->{'parent'} = $parent;
+	push(@rv, $h);
+	}
+foreach my $g (&dhcpd::find("group", $conf)) {
+	foreach my $h (&dhcpd::find("host", $g->{'members'})) {
+		$h->{'parent'} = $g;
+		push(@rv, $h);
+		}
+	}
+foreach my $s (&dhcpd::find("subnet", $conf)) {
+	foreach my $h (&dhcpd::find("host", $s->{'members'})) {
+		$h->{'parent'} = $s;
+		push(@rv, $h);
+		}
+	foreach my $g (&dhcpd::find("group", $s->{'members'})) {
+		foreach my $h (&dhcpd::find("host", $g->{'members'})) {
+			$h->{'parent'} = $g;
+			push(@rv, $h);
+			}
+		}
+	}
+return @rv;
 }
 
 # host_form([&host])
@@ -30,9 +56,9 @@ $rv .= &ui_table_start($text{'form_header'}, "width=100%", 2);
 
 # Hostname
 local $short = &short_hostname($h->{'values'}->[0]);
-local $indom = $new || $short eq $h->{'values'}->[0];
+local $indom = $new || $short ne $h->{'values'}->[0];
 $rv .= &ui_table_row($text{'form_host'},
-	&ui_textbox("host", $short, 40).
+	&ui_textbox("host", $short, 20).
 	($indom ? "<tt>.$config{'domain'}</tt>" : ""));
 $rv .= &ui_hidden("indom", 1);
 
@@ -44,7 +70,11 @@ $rv .= &ui_table_row($text{'form_ip'},
 # MAC address
 local $hard = &dhcpd::find("hardware", $h->{'members'});
 $rv .= &ui_table_row($text{'form_mac'},
-	&ui_textbox("mac", $hard ? $hard->{'values'}->[0] : undef, 20));
+	&ui_select("media", $hard ? $hard->{'values'}->[0] : "ethernet",
+		   [ [ "ethernet", $text{'form_ethernet'} ],
+		     [ "token-ring", $text{'form_tr'} ],
+		     [ "fddi", $text{'form_fddi'} ] ], 1, 0, 1).
+	&ui_textbox("mac", $hard ? $hard->{'values'}->[1] : undef, 20));
 
 $rv .= &ui_table_end();
 if ($new) {

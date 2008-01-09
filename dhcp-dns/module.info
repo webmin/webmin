@@ -1,3 +1,3 @@
-desc=DHCP and DNS Client
+desc=DHCP and DNS Hosts
 category=servers
 depends=bind8 dhcpd
