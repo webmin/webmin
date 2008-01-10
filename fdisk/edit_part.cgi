@@ -128,7 +128,7 @@ if ($in{'new'}) {
 else {
 	$ext = "$pinfo->{'start'} - $pinfo->{'end'}";
 	}
-$ext .= " ".$text{'edit_of'}." $dinfo->{'cylinders'};
+$ext .= " ".$text{'edit_of'}." ".$dinfo->{'cylinders'};
 print &ui_table_row($text{'edit_extent'}, $ext);
 
 # Current status
@@ -207,83 +207,65 @@ else {
 
 if (!$in{'new'} && !$pinfo->{'extended'}) {
 	print "<hr>\n";
+	print &ui_buttons_start();
 
 	if (!@stat || $stat[2] == 0) {
 		# Show form for creating filesystem
-		print "<hr><table width=100%>\n" if (!$donehead++);
-		print "<tr> <form action=mkfs_form.cgi>\n";
-		print "<input type=hidden name=dev value=$dev>\n";
-		print "<td nowrap><input type=submit value='$text{'edit_mkfs2'}'>\n";
-		print "<select name=type>\n";
 		local $rt = @stat ? $stat[1] : &conv_type($pinfo->{'type'});
-		foreach $f (&supported_filesystems()) {
-			printf "<option value=%s %s>%s (%s)\n",
-				$f, $rt eq $f ? "selected" : "",
-				$text{"fs_$f"}, $f;
-			}
-		print "</select></td>\n";
-		print "<td>$text{'edit_mkfsmsg2'}</td> </form></tr>\n";
+		print &ui_buttons_row("mkfs_form.cgi",
+			$text{'edit_mkfs2'}, $text{'edit_mkfsmsg2'},
+			&ui_hidden("dev", $dev),
+			&ui_select("type", $rt,
+			  [ map { [ $_, $text{"fs_$_"} ] }
+				&supported_filesystems() ]));
 		}
 
 	if (!$in{'new'} && @stat && $stat[2] == 0 && &can_fsck($stat[1])) {
 		# Show form to fsck filesystem
-		print "<hr><table width=100%>\n" if (!$donehead++);
-		print "<tr> <form action=fsck_form.cgi>\n";
-		print "<td valign=top>\n";
-		print "<input type=hidden name=dev value=$dev>\n";
-		print "<input type=hidden name=type value=$stat[1]>\n";
-		print "<input type=submit value=\"$text{'edit_fsck'}\"></td>\n";
-		print "<td>",&text('edit_fsckmsg', "<tt>fsck</tt>"),"</td>\n";
-		print "</form> </tr>\n";
+		print &ui_buttons_row("fsck_form.cgi",
+			$text{'edit_fsck'},&text('edit_fsckmsg', "<tt>fsck</tt>"),
+			&ui_hidden("dev", $dev)." ".
+			&ui_hidden("type", $stat[1]));
 		}
 
 	if (!$in{'new'} && @stat && $stat[2] == 0 && &can_tune($stat[1])) {
 		# Show form to tune filesystem
-		print "<hr><table width=100%>\n" if (!$donehead++);
-		print "<tr> <form action=tunefs_form.cgi>\n";
-		print "<td valign=top>\n";
-		print "<input type=hidden name=dev value=$dev>\n";
-		print "<input type=hidden name=type value=$stat[1]>\n";
-		print "<input type=submit value=\"", $text{'edit_tune'}, "\"></td>\n";
-		print "<td>$text{'edit_tunemsg'}</td> </tr>\n";
-		print "</form> </tr>\n";
+		print &ui_buttons_row("tunefs_form.cgi",
+			$text{'edit_tune'}, $text{'edit_tunemsg'},
+			&ui_hidden("dev", $dev)." ".
+			&ui_hidden("type", $stat[1]));
 		}
 
 	@types = &conv_type($pinfo->{'type'});
 	if (!$in{'new'} && !@stat && @types) {
 		# Show form to mount filesystem
-		print "<hr><table width=100%>\n" if (!$donehead++);
 		print "<tr> <form action=../mount/edit_mount.cgi>\n";
 		print "<input type=hidden name=newdev value=$dev>\n";
 		print "<td valign=top>\n";
 		if ($types[0] eq "swap") {
 			# Swap partition
-			print "<input type=submit value=\"$text{'edit_newmount2'}\">\n";
-			print "</td>\n";
-			print &ui_hidden("type", $types[0]);
-			print "<td>$text{'edit_mountmsg2'}</td> </tr>\n";
+			print &ui_buttons_row("../mount/edit_mount.cgi",
+				$text{'edit_newmount2'}, $text{'edit_mountmsg2'},
+				&ui_hidden("type", $types[0]));
 			}
 		else {
 			# For some filesystem
-			print "<input type=submit value=\"$text{'edit_newmount'}\">\n";
-			print "<input name=newdir size=20>\n";
+			$dirsel = &ui_textbox("newdir", undef, 20);
 			if (@types > 1) {
-				print "$text{'edit_mountas'} <select name=type>\n";
-				foreach $t (@types) {
-					print "<option>$t\n";
-					}
-				print "</select>\n";
+				$dirsel .= $text{'edit_mountas'}." ".
+					&ui_select("type", undef, \@types);
 				}
 			else {
-				print &ui_hidden("type", $types[0]);
+				$dirsel .= &ui_hidden("type", $types[0]);
 				}
-			print "</td>\n";
-			print "<td>$text{'edit_mountmsg'}</td> </tr>\n";
+			print &ui_buttons_row("../mount/edit_mount.cgi",
+				$text{'edit_newmount'}, $text{'edit_mountmsg'},
+				undef, $dirsel);
 			}
-		print "</form> </tr>\n";
 		}
 
-	print "</table><p>\n" if ($donehead);
+	print &ui_buttons_end();
+	print "<p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

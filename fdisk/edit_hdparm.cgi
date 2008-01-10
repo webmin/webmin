@@ -9,7 +9,7 @@ $d = $dlist[$in{'disk'}];
 &can_edit_disk($d->{'device'}) ||
 	&error($text{'edit_ecannot'});
 
-&ui_print_header(undef, $text{'hdparm_title'}, "");
+&ui_print_header($d->{'desc'}, $text{'hdparm_title'}, "");
 if ( ! &has_command( "hdparm" ) ) {
 	print "<p>$text{ 'edit_ehdparm' }<p>\n";
 	&ui_print_footer( "", $text{ 'index_return' } );
@@ -30,37 +30,58 @@ foreach $argument ( 'a', 'd', 'r', 'k', 'u', 'm', 'c' )
     #( $hdparm{ $argument } ) = split( / /, $line );
 }
 
+# Javascript for slider
 print(
 "<script type=\"text/javascript\" src=\"range.js\"></script>
 <script type=\"text/javascript\" src=\"timer.js\"></script>
 <script type=\"text/javascript\" src=\"slider.js\"></script>
 <link type=\"text/css\" rel=\"StyleSheet\" href=\"winclassic.css\" />");
 
+# Form header
+print &ui_form_start("apply_hdparm.cgi");
+print &ui_hidden("drive", $d->{'device'});
+print &ui_table_start($text{'hdparm_label'}, "width=100%", 4);
 
-print(
-"<form action=apply_hdparm.cgi><table border cols=1 width=\"100%\"><input type=hidden name=drive value=", $d -> { 'device' }, ">",
-    "<tr ", $tb, ">",
-    	"<td><b>", $d->{'desc'}," (",$d->{'device'}.") : ",$text{ 'hdparm_label' }, "</b></td>",
-    "</tr><tr ", $cb, "><td>",
-	"<table width=\"100%\">",
-	    "<tr>",
-    		"<td>", &hlink( "<b>". $text{ 'hdparm_conf_X' }. "</b>", 'X' ), &p_select_wdl( "X", $hdparm{ 'X' }, ( "0", $text{ 'hdparm_conf_X_defaut' }, "1", $text{ 'hdparm_conf_X_disable' }, "9", "PIO mode 1", "10", "PIO mode 2", "11", "PIO mode 3", "12", "PIO mode 4", "32", "Multimode DMA 0", "33", "Multimode DMA 1", "34", "Multimode DMA 2", "64", "Ultra DMA 0", "65", "Ultra DMA 1", "66", "Ultra DMA 2" ) ), "</td>",
-		"<td>", &l_radio( $text{ 'hdparm_conf_d' }, 'd', @yesno ), "</td>",
-	    "</tr><tr>",
-		"<td>", &hlink( "<b>". $text{ 'hdparm_conf_a' }. "</b>", "a" ), " ", &p_entry( "a", 2, $hdparm{ 'a' } ), "</td>",
-		"<td>", &l_radio( $text{ 'hdparm_conf_A' }, 'A', @yesno ), "</td>",
-	    "</tr><tr>",
-		"<td>", &l_radio( $text{ 'hdparm_conf_W' }, 'W', @yesno ), "</td>",
-		"<td>", &l_radio( $text{ 'hdparm_conf_u' }, 'u', @yesno ), "</td>",
-	    "</tr><tr>",
-		"<td>", &l_radio( $text{ 'hdparm_conf_k' }, 'k', @yesno ), "</td>",
-		"<td>", &l_radio( $text{ 'hdparm_conf_K' }, 'K', @yesno ), "</td>",
-	    "</tr><tr>",
-		"<td>", &l_radio( $text{ 'hdparm_conf_r' }, 'r', @yesno ), "</td>",
-		"<td>", &l_radio( $text{ 'hdparm_conf_P' }, 'P', @yesno ), "</td>",
-	    "</tr><tr>",
-		"<td>", &hlink( "<b>". $text{ 'hdparm_conf_S' }. "</b>", "S" ), "</td>", "<td>", &p_slider( "S", 0, 251, 0), 
-"<script type=\"text/javascript\">
+# Transfer mode
+print &ui_table_row(&hlink($text{'hdparm_conf_X'}, 'X'),
+	&ui_select("X", $hdparm{'X'},
+		[ [ "0", $text{ 'hdparm_conf_X_defaut' } ], [ "1", $text{ 'hdparm_conf_X_disable' } ], [ "9", "PIO mode 1", ], [ "10", "PIO mode 2" ], [ "11", "PIO mode 3" ], [ "12", "PIO mode 4" ], [ "32", "Multimode DMA 0" ], [ "33", "Multimode DMA 1" ], [ "34", "Multimode DMA 2" ], [ "64", "Ultra DMA 0" ], [ "65", "Ultra DMA 1" ], [ "66", "Ultra DMA 2" ] ], 1, 0, 1));
+
+# Sector count
+print &ui_table_row(&hlink($text{'hdparm_conf_a'},"a"),
+	&ui_textbox("a", $hdparm{'a'}, 2));
+
+# Other yes/no options
+foreach $o ('d', 'A', 'W', 'u', 'k', 'K', 'r', 'P') {
+	print &ui_table_row(&hlink($text{'hdparm_conf_'.$o}, $o),
+		&ui_yesno_radio($o, $hdparm{$o}));
+	}
+
+# Standby timeout (slider)
+print &ui_table_row(&hlink($text{'hdparm_conf_S'}, 'S'),
+	&p_slider( "S", 0, 251, 0), 3);
+
+# 32-bit I/O support
+print &ui_table_row(&hlink($text{'hdparm_conf_c'}, 'c'),
+	&ui_radio('c', $hdparm{'c'},
+		  [ [ 0, $text{'hdparm_disable'} ],
+		    [ 1, $text{'hdparm_enable'} ],
+		    [ 3, $text{'hdparm_enable_special'} ] ]), 3);
+
+# Sector count for multiple sector I/O
+print &ui_table_row(&hlink($text{'hdparm_conf_m'}, 'm'),
+	&ui_radio('m', $hdparm{'m'},
+		  [ [ 0, $text{'hdparm_disable'} ],
+		    [ 2 ], [ 4 ], [ 8 ], [ 16 ], [ 32 ] ]), 3);
+
+print &ui_table_end();
+print &ui_form_end([ [ 'action', $text{'hdparm_apply'} ],
+		     [ 'action', $text{'hdparm_speed'} ] ]);
+
+&ui_print_footer( "", $text{ 'index_return' } );
+
+# Javascript for slider
+print "<script type=\"text/javascript\">
 
 var sliderEl = document.getElementById ?
                   document.getElementById(\"S-slider\") : null;
@@ -103,44 +124,9 @@ s.setValue(0);
 s.setMinimum(0);
 s.setMaximum(251);
 
-</script></td>",
-	    "</tr>",
-	"</table><table>",
-	    "<tr><td>", &l_radio( $text{ 'hdparm_conf_c' }, 'c', ( "0", $text{ 'hdparm_disable' }, "1", $text{ 'hdparm_enable' }, "3", $text{ 'hdparm_enable_special' } ) ), "</td></tr>",
-	    "<tr><td>", &l_radio( $text{ 'hdparm_conf_m' }, 'm', ( "0", $text{ 'hdparm_disable' }, "2", "2", "4", "4", "8", "8", "16", "16", "32", "32" ) ), "<td><tr>",
-	"</table></td>",
-    "</tr>",
-"</table><table cols=3 width=\"100%\" nosave>",
-    "<tr>",
-	"<td align=left><input type=submit name=action value=\"", $text{ 'hdparm_apply' }, "\"></td>",
-	"<td align=right><input type=submit name=action value=\"", $text{ 'hdparm_speed' }, "\"></td>",
-    "</tr>",
-"</table></form>" );
+</script>";
 
-&ui_print_footer( "", $text{ 'index_return' } );
-
-sub l_radio
-{
-    my ( $label, $flag, @items ) = @_;
-    return &hlink( "<b>".$label."</b>", $flag )."</td> <td>".
-	   &p_radio( $flag, $hdparm{ $flag }, @items );
-}
-
-sub p_radio
-{
-    my ( $name, $checked, @list ) = @_;
-    local $out, $size = @list, $i = 0;
-
-    do
-    {
-	$out .= " <input type=radio name=".$name." value=".$list[$i];
-	$out .= " checked" if( $checked eq $list[$i++] );
-	$out .="> ".$list[$i++];
-    } while( $i < $size );
-
-    return $out;
-}
-
+# Returns a slider
 sub p_slider
 {
    my ( $name, $min, $max, $default ) = @_;
@@ -148,30 +134,10 @@ sub p_slider
 
    $out .= "<div class=\"slider\" id=\"". $name ."-slider\" tabIndex=\"1\">";
    $out .= "<input class=\"slider-input\" id=\"".$name."-slider-input\"";
-   $out .= " name=\"".$name."\"/></div></td><td>";
+   $out .= " name=\"".$name."\"/></div>";
    $out .= "<input type=text name=\"".$name."-text\" id=\"".$name."-text-id\" readonly value=\"This field is not used\" >";
 
    return $out;
 }
 
-sub p_entry
-{
-    my ( $name, $size, $value ) = @_;
 
-    $size ? return "</td> <td><input name=\"". $name. "\" id=\"". $name. "-id\" size=". $size." value=\"". $value."\">" : return "</td> <td><input name=\"". $name. "\" id=\"". $name. "-id\" value=\"". $value."\">";
-}
-
-sub p_select_wdl
-{
-    my ( $name, $selected, @list ) = @_;
-    local $size = @list, $i = 0, $out = "</td> <td><select name=".$name.">";
-    do
-    {
-	$out .= "<option name=".$name." value=".$list[$i];
-	$out .= " selected" if( $selected eq $list[$i++] );
-	$out .= ">".$list[$i++];
-    } while( $i < $size );
-    $out .= "</select>";
-
-    return $out;
-}

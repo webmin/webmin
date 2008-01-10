@@ -28,14 +28,10 @@ if( $in{ 'action' } eq $text{ 'hdparm_apply' } )
 	( $_, $buffered ) = split( /=/, $buffered );
 	( $_, $buffer_cache ) = split( /=/, $buffer_cache );
 
-	print "<p><table border cellpadding=2>\n";
-	print "<tr $tb> <td colspan=2>",
-	      "<b>$text{'hdparm_speedres'}</b></td> </tr>\n";
-	print "<tr $cb> <td><b>$text{'hdparm_buf1'}</b></td> ",
-	      "<td>$buffered</td> </tr>\n";
-	print "<tr $cb> <td><b>$text{'hdparm_buf2'}</b></td> ",
-	      "<td>$buffer_cache</td> </tr>\n";
-	print "</table><p>\n";
+	print &ui_table_start($text{'hdparm_speedres'}, undef, 2,[ "width=30%" ]);
+	print &ui_table_row($text{'hdparm_buf1'}, $buffered);
+	print &ui_table_row($text{'hdparm_buf2'}, $buffer_cache);
+	print &ui_table_end();
 }
 
 &ui_print_footer( "", $text{ 'index_return' } );

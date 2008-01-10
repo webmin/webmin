@@ -567,49 +567,39 @@ if ($_[0] eq "ext2") {
 	&opt_input("ext2_i", "", 1);
 	&opt_input("ext2_m", "%", 0);
 	&opt_input("ext2_g", "", 1);
-	print "<td align=right><b>$text{'ext2_c'}</b></td>\n";
-	print "<td><input type=radio name=ext2_c value=1> $text{'yes'}\n";
-	print "<input type=radio name=ext2_c value=0 checked> $text{'no'}",
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'ext2_c'},
+		&ui_yesno_radio("ext2_c", 0));
 	}
 elsif ($_[0] eq "msdos" || $_[0] eq "vfat") {
 	&opt_input("msdos_ff", "", 1);
-	print "<td align=right><b>$text{'msdos_F'}</b></td>\n";
-	print "<td>",&ui_select("msdos_F", undef,
+	print &ui_table_row($text{'msdos_F'},
+	     &ui_select("msdos_F", undef,
 			[ [ undef, $text{'default'} ],
 			  [ 12 ], [ 16 ], [ 32 ],
-			  [ "*", $text{'msdos_F_other'} ] ])," ",
-		     &ui_textbox("msdos_F_other", undef, 4),"</td> </tr>\n";
+			  [ "*", $text{'msdos_F_other'} ] ])." ".
+	     &ui_textbox("msdos_F_other", undef, 4));
 	&opt_input("msdos_i", "", 1);
 	&opt_input("msdos_n", "", 0);
 	&opt_input("msdos_r", "", 1);
 	&opt_input("msdos_s", "sectors", 0);
-	print "<tr> <td align=right><b>$text{'msdos_c'}</b></td>\n";
-	print "<td><input type=radio name=msdos_c value=1> $text{'yes'}\n";
-	print "<input type=radio name=msdos_c value=0 checked> $text{'no'}",
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'msdos_c'},
+		&ui_yesno_radio("msdos_c", 0));
 	}
 elsif ($_[0] eq "minix") {
 	&opt_input("minix_n", "", 1);
 	&opt_input("minix_i", "", 0);
 	&opt_input("minix_b", "", 1);
-	print "<td align=right><b>$text{'minix_c'}</b></td>\n";
-	print "<td><input type=radio name=msdos_c value=1> $text{'yes'}\n";
-	print "<input type=radio name=msdos_c value=0 checked> $text{'no'}",
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'minix_c'},
+		&ui_yesno_radio("minix_c", 0));
 	}
 elsif ($_[0] eq "reiserfs") {
-	print "<tr> <td><b>$text{'reiserfs_force'}</b></td>\n";
-	print "<td><input type=radio name=reiserfs_f value=1> $text{'yes'}\n";
-	print "<input type=radio name=reiserfs_f value=0 checked> ",
-	      "$text{'no'}</td>\n";
+	print &ui_table_row($text{'reiserfs_force'},
+		&ui_yesno_radio("reiserfs_f", 0));
 
-	print "<td><b>$text{'reiserfs_hash'}</b></td>\n";
-	print "<td><select name=reiserfs_h>\n";
-	print "<option value='' checked>$text{'default'}\n";
-	print "<option>rupasov\n";
-	print "<option>tea\n";
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'reiserfs_hash'},
+		&ui_select("reiserfs_h", "",
+			   [ [ "", $text{'default'} ],
+			     [ "rupasov", "tea" ] ]));
 	}
 elsif ($_[0] eq "ext3") {
 	&opt_input("ext2_b", $text{'bytes'}, 1);
@@ -617,29 +607,22 @@ elsif ($_[0] eq "ext3") {
 	&opt_input("ext2_i", "", 1);
 	&opt_input("ext2_m", "%", 0);
 	&opt_input("ext3_j", "MB", 1);
-	print "<td align=right><b>$text{'ext2_c'}</b></td>\n";
-	print "<td><input type=radio name=ext2_c value=1> $text{'yes'}\n";
-	print "<input type=radio name=ext2_c value=0 checked> $text{'no'}",
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'ext2_c'},
+		&ui_yesno_radio("ext2_c", 0));
 	}
 elsif ($_[0] eq "xfs") {
-	print "<tr> <td><b>$text{'xfs_force'}</b></td>\n";
-	print "<td><input type=radio name=xfs_f value=1> $text{'yes'}\n";
-	print "<input type=radio name=xfs_f value=0 checked> ",
-	      "$text{'no'}</td>\n";
-
+	print &ui_table_row($text{'xfs_force'},
+		&ui_yesno_radio("xfs_f", 0));
 	&opt_input("xfs_b", $text{'bytes'}, 0);
 	}
 elsif ($_[0] eq "jfs") {
 	&opt_input("jfs_s", $text{'megabytes'}, 1);
-	print "<td align=right><b>$text{'jfs_c'}</b></td>\n";
-	print "<td><input type=radio name=jfs_c value=1> $text{'yes'}\n";
-	print "<input type=radio name=jfs_c value=0 checked> $text{'no'}",
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'jfs_c'},
+		&ui_yesno_radio("jfs_c", 0));
 	}
 elsif ($_[0] eq "fatx") {
 	# Has no options!
-	print "<tr> <td colspan=4>$text{'fatx_none'}</td> </tr>\n";
+	print &ui_table_row(undef, $text{'fatx_none'}, 4);
 	}
 }
 
@@ -1024,13 +1007,8 @@ syswrite($fh, $_[0], length($_[0]));
 
 sub opt_input
 {
-print $_[2] ? "<tr>" : "";
-print "<td align=right><b>$text{$_[0]}</b></td>\n";
-print "<td nowrap><input type=radio name=$_[0]_def value=1 checked> ",
-      $text{'opt_default'},"\n";
-print "&nbsp; <input type=radio name=$_[0]_def value=0>\n";
-print "<input name=$_[0] size=6> $_[1]</td>";
-print $_[2] ? "\n" : "</tr>\n";
+print &ui_table_row($text{$_[0]},
+	&ui_opt_textbox($_[0], undef, 6, $text{'opt_default'})." ".$_[1]);
 }
 
 sub opt_check

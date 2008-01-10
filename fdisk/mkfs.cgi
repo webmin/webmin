@@ -9,8 +9,8 @@ require './fdisk-lib.pl';
 &can_edit_disk($in{'dev'}) || &error($text{'mkfs_ecannot'});
 &error_setup($text{'mkfs_err'});
 $cmd = &mkfs_parse($in{type}, $in{dev});
-&ui_print_unbuffered_header(undef, $text{'mkfs_title'}, "");
 
+&ui_print_unbuffered_header(undef, $text{'mkfs_title'}, "");
 $label = &get_label($in{'dev'});
 
 print &text('mkfs_exec', "<tt>$cmd</tt>"),"<p>\n";

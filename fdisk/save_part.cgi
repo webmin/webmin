@@ -83,8 +83,12 @@ else {
 			}
 		&webmin_log("create", "part", $dinfo->{'device'}, \%in);
 		}
-	if (&need_reboot($dinfo)) { &ask_reboot($dinfo); }
-	else { &redirect(""); }
+	if (&need_reboot($dinfo)) {
+		&ask_reboot($dinfo);
+		}
+	else {
+		&redirect("edit_disk.cgi?device=$dinfo->{'device'}");
+		}
 	}
 
 # ask_reboot(disk)
@@ -92,15 +96,12 @@ else {
 sub ask_reboot
 {
 &ui_print_header(undef, $text{'reboot_title'}, "");
-print "<hr>\n";
 local $what = &text('select_device', uc($_[0]->{'type'}),
 		    uc(substr($_[0]->{'device'}, -1)));
 print "<b>",&text('reboot_why', $what),"</b> <p>\n";
-print "<form action=reboot.cgi>\n";
-print "<center><input type=submit value=\"$text{'reboot_ok'}\"></center>\n";
-print "</form>\n";
+print &ui_form_start("reboot.cgi");
+print &ui_form_end([ [ undef, $text{'reboot_ok'} ] ]);
 
-print "<hr>\n";
 &ui_print_footer("", $text{'index_return'});
 }
 
