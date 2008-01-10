@@ -18,3 +18,5 @@ Added a display of each partitions UUID, and added code to support their detecti
 Link to SMART module for SCSI disks too, and IDE params page for SATA disks pretending to the SCSI.
 ---- Changes since 1.380 ----
 Changed the IDE standby timeout to use a slider, thanks to Jean-Christophe Dubois.
+---- Changes since 1.390 ----
+Changed the module's main page so that it only lists disks, with links to a separate page for showing the partitions.
