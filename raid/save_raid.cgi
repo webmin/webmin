@@ -41,15 +41,13 @@ elsif ($in{'mkfs'}) {
 
 	print &text('mkfs_header2', "<tt>$old->{'value'}</tt>",
 			  $in{'fs'}),"<br>\n";
-	print "<form action=mkfs.cgi>\n";
-	print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-	print "<input type=hidden name=fs value='$in{'fs'}'>\n";
-	print "<table border width=100%>\n";
-	print "<tr $tb><td><b>$text{'mkfs_options'}</b></td> </tr>\n";
-	print "<tr $cb><td><table width=100%>\n";
-	&foreign_call("fdisk", "mkfs_options", $in{'fs'});
-	print "</table></td></tr></table>\n";
-	print "<input type=submit value='$text{'create'}'></form>\n";
+	print &ui_form_start("mkfs.cgi");
+	print &ui_hidden("idx", $in{'idx'});
+	print &ui_hidden("fs", $in{'fs'});
+	print &ui_table_start($text{'mkfs_options'}, undef, 4);
+	&fdisk::mkfs_options($in{'fs'});
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 	&ui_print_footer("", $text{'index_return'});
 	}
