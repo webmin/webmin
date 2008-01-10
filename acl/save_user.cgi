@@ -190,6 +190,8 @@ $user{'cert'} = !$access{'chcert'} ? $old->{'cert'} :
 $user{'notabs'} = !$access{'cats'} ? $old->{'notabs'} : $in{'notabs'};
 $user{'logouttime'} = !$access{'logouttime'} ? $old->{'logouttime'} :
 			$in{'logouttime_def'} ? undef : $in{'logouttime'};
+$user{'minsize'} = !$access{'minsize'} ? $old->{'minsize'} :
+			$in{'minsize_def'} ? undef : $in{'minsize'};
 $user{'lastchange'} = $old->{'lastchange'};
 $user{'olds'} = $old->{'olds'};
 $user{'real'} = $in{'real'} =~ /\S/ ? $in{'real'} : undef;
