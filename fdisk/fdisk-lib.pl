@@ -731,38 +731,36 @@ return $_[0] eq "ext2" || $_[0] eq "ext3";
 sub tunefs_options
 {
 if ($_[0] eq "ext2" || $_[0] eq "ext3") {
+	# Gaps between checks
 	&opt_input("tunefs_c", "", 1);
 
-	print "<td align=right><b>$text{'tunefs_e'}</b></td> <td>\n";
-	print "<input type=radio name=tunefs_e_def value=1 checked> ",
-	      "$text{'opt_default'}\n";
-	print "&nbsp; <input type=radio name=tunefs_e_def value=0>\n";
-	print "<select name=tunefs_e>\n";
-	print "<option value=continue> $text{'tunefs_continue'}\n";
-	print "<option value=remount-ro> $text{'tunefs_remount'}\n";
-	print "<option value=panic> $text{'tunefs_panic'}\n";
-	print "</select></td> </tr>\n";
+	# Action on error
+	print &ui_table_row($text{'tunefs_e'},
+		&ui_radio("tunefs_e_def", 1,
+			[ [ 1, $text{'opt_default'} ],
+			  [ 0, &ui_select("tunefs_e", undef,
+				[ [ "continue", $text{'tunefs_continue'} ],
+				  [ "remount-ro", $text{'tunefs_remount'} ],
+				  [ "panic", $text{'tunefs_panic'} ] ]) ] ]));
 
-	print "<tr> <td align=right><b>$text{'tunefs_u'}</b></td> <td>\n";
-	print "<input type=radio name=tunefs_u_def value=1 checked> ",
-	      "$text{'opt_default'}\n";
-	print "&nbsp; <input type=radio name=tunefs_u_def value=0>\n";
-	print "<input name=tunefs_u size=8> ",
-	      &user_chooser_button("tunefs_u", 0),"</td>\n";
+	# Reserved user
+	print &ui_table_row($text{'tunefs_u'},
+		&ui_opt_textbox("tunefs_u", undef, 13, $text{'opt_default'})." ".
+		&user_chooser_button("tunefs_u", 0));
 
-	print "<td align=right><b>$text{'tunefs_g'}</b></td> <td>\n";
-	print "<input type=radio name=tunefs_g_def value=1 checked> ",
-	      "$text{'opt_default'}\n";
-	print "&nbsp; <input type=radio name=tunefs_g_def value=0>\n";
-	print "<input name=tunefs_g size=8> ",
-	      &group_chooser_button("tunefs_g", 0),"</td> </tr>\n";
+	# Reserved group
+	print &ui_table_row($text{'tunefs_g'},
+		&ui_opt_textbox("tunefs_g", undef, 13, $text{'opt_default'})." ".
+		&group_chooser_button("tunefs_g", 0));
 
+	# Reserved blocks
 	&opt_input("tunefs_m", "%", 1);
-	$tsel = "<select name=tunefs_i_unit>\n".
-		"<option value=d> $text{'tunefs_days'}\n".
-		"<option value=w> $text{'tunefs_weeks'}\n".
-		"<option value=m> $text{'tunefs_months'}\n".
-		"</select>\n";
+
+	# Time between checks
+	$tsel = &ui_select("tunefs_i_unit", undef,
+			   [ [ "d", $text{'tunefs_days'} ],
+			     [ "w", $text{'tunefs_weeks'} ],
+			     [ "m", $text{'tunefs_months'} ] ]);
 	&opt_input("tunefs_i", $tsel, 0);
 	}
 }
@@ -1203,3 +1201,18 @@ if ($has_xfs_db && ($_[2] eq "xfs" || !$_[2])) {
 	}
 return 0;
 }
+
+# supports_hdparm(&disk)
+sub supports_hdparm
+{
+local ($d) = @_;
+return $d->{'type'} eq 'ide' || $d->{'type'} eq 'scsi' && $d->{'model'} =~ /ATA/;
+}
+
+# supports_smart(&disk)
+sub supports_smart
+{
+return &foreign_installed("smart-status") &&
+       &foreign_available("smart-status");
+}
+

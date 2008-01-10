@@ -132,7 +132,21 @@ else {
 	print "<b>$text{'disk_none'}</b><p>\n";
 	}
 print &ui_links_row(\@edlinks);
-print "<p>\n";
+
+# Buttons for IDE params and SMART
+print "<hr>\n";
+print &ui_buttons_start();
+if (&supports_hdparm($d)) {
+	print &ui_buttons_row("edit_hdparm.cgi", $text{'index_hdparm'},
+			      $text{'index_hdparmdesc'},
+			      &ui_hidden("disk", $d->{'index'}));
+	}
+if (&supports_smart($d)) {
+	print &ui_buttons_row("../smart-status/index.cgi", $text{'index_smart'},
+			      $text{'index_smartdesc'},
+			      &ui_hidden("drive", $d->{'device'}));
+	}
+print &ui_buttons_end();
 
 &ui_print_footer("", $text{'index_return'});
 

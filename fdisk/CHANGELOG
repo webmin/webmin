@@ -20,3 +20,4 @@ Link to SMART module for SCSI disks too, and IDE params page for SATA disks pret
 Changed the IDE standby timeout to use a slider, thanks to Jean-Christophe Dubois.
 ---- Changes since 1.390 ----
 Changed the module's main page so that it only lists disks, with links to a separate page for showing the partitions.
+Re-wrote all code to use the new Webmin user interface library, for a more consistent look.

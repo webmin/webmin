@@ -5,15 +5,21 @@
 require './fdisk-lib.pl';
 &error_setup($text{'index_err'});
 &check_fdisk();
+
+# Work out which disks are accessible
+@disks = &list_disks_partitions();
+@disks = grep { $access{'view'} || &can_edit_disk($_->{'device'}) } @disks;
+if (@disks == 1 && &can_edit_disk($disks[0]->{'device'})) {
+	# Just one .. go direct to it's page
+	&redirect("edit_disk.cgi?device=$disks[0]->{'device'}");
+	edit;
+	}
+
 &ui_print_header(undef, $module_info{'desc'}, "", undef, 0, 1, 0,
 	&help_search_link("fdisk", "man", "doc", "howto"));
 $extwidth = 250;
 
 # Show a table of just disks
-$smart = &foreign_installed("smart-status") &&
-	 &foreign_available("smart-status");
-@disks = &list_disks_partitions();
-@disks = grep { $access{'view'} || &can_edit_disk($_->{'device'}) } @disks;
 @disks = sort { $a->{'device'} cmp $b->{'device'} } @disks;
 if (@disks) {
 	($hasctrl) = grep { defined($d->{'scsiid'}) ||
@@ -27,6 +33,7 @@ if (@disks) {
 				  $text{'index_dacts'} ]);
 	foreach $d (@disks) {
 		$ed = &can_edit_disk($d->{'device'});
+		$smart = &supports_smart($d);
 		@links = ( );
 		@ctrl = ( );
 		if (defined($d->{'scsiid'}) && defined($d->{'controller'})) {
@@ -36,13 +43,12 @@ if (@disks) {
 		if ($d->{'raid'}) {
 			push(@ctrl, &text('index_draid', $d->{'raid'}));
 			}
-		if (($d->{'type'} eq 'ide' ||
-		    $d->{'type'} eq 'scsi' && $d->{'model'} =~ /ATA/) && $ed) {
+		if ($ed && &supports_hdparm($d)) {
 			# Display link to IDE params form
 			push(@links, "<a href='edit_hdparm.cgi?".
 			     "disk=$d->{'index'}'>$text{'index_dhdparm'}</a>");
 			}
-		if ($smart) {
+		if (&supports_smart($d)) {
 			# Display link to smart module
 			push(@links, "<a href='../smart-status/index.cgi?".
 			     "drive=$d->{'device'}'>$text{'index_dsmart'}</a>");
