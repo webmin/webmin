@@ -9,18 +9,19 @@ $dinfo = $dlist[$in{'disk'}];
 &can_edit_disk($dinfo->{'device'}) ||
 	&error($text{'edit_ecannot'});
 if ($in{'new'}) {
-	&ui_print_header(undef, $text{'create_title'}, "");
+	&ui_print_header($dinfo->{'desc'}, $text{'create_title'}, "");
 	}
 else {
-	&ui_print_header(undef, $text{'edit_title'}, "");
+	&ui_print_header($dinfo->{'desc'}, $text{'edit_title'}, "");
 	}
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_details'}</b></td> </tr>\n";
-print "<form action=save_part.cgi><tr $cb><td><table width=100%>\n";
-print "<input type=hidden name=disk value=$in{'disk'}>\n";
-print "<input type=hidden name=part value=$in{'part'}>\n";
-print "<input type=hidden name=new value=$in{'new'}>\n";
+print &ui_form_start("save_part.cgi");
+print &ui_table_start($text{'edit_details'}, "width=100%", 4);
+print &ui_hidden("disk", $in{'disk'});
+print &ui_hidden("part", $in{'part'});
+print &ui_hidden("new", $in{'new'});
+
+# Work out the start and end for the new partition
 @plist = @{$dinfo->{'parts'}};
 if ($in{'new'}) {
 	if ($in{'new'} == 1 || $in{'new'} == 3) {
@@ -49,9 +50,9 @@ if ($in{'new'}) {
 				}
 			}
 		}
-	print "<input type=hidden name=newpart value=$np>\n";
-	print "<input type=hidden name=min value=$min>\n";
-	print "<input type=hidden name=max value=$max>\n";
+	print &ui_hidden("newpart", $np);
+	print &ui_hidden("min", $min);
+	print &ui_hidden("max", $max);
 
 	# find a gap in the partition map
 	for($start=$min; $start<=$max; $start++) {
@@ -88,10 +89,11 @@ else {
 	$pinfo = $plist[$in{'part'}];
 	$np = $pinfo->{'number'};
 	}
-print "<input type=hidden name=np value=$np>\n";
+print &ui_hidden("np", $np);
 
-print "<tr> <td valign=top><b>$text{'edit_location'}</b></td>\n";
-print "<td>",$dinfo->{'device'} =~ /^\/dev\/(s|h)d([a-z])$/ ?
+# Describe partition
+print &ui_table_row($text{'edit_location'},
+	     $dinfo->{'device'} =~ /^\/dev\/(s|h)d([a-z])$/ ?
 		&text('select_part', $1 eq 's' ? 'SCSI' : 'IDE', uc($2), $np) :
 	     $dinfo->{'device'} =~ /rd\/c(\d+)d(\d+)$/ ?
 		&text('select_mpart', "$1", "$2", $np) :
@@ -101,118 +103,111 @@ print "<td>",$dinfo->{'device'} =~ /^\/dev\/(s|h)d([a-z])$/ ?
 		&text('select_spart', "$1", "$2", "$3", "$4", $np) :
 	     $dinfo->{'device'} =~ /ide\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc/ ?
 		&text('select_snewide', "$1", "$2", "$3", "$4", $np) :
-		$dinfo->{'device'},"</td>\n";
+		$dinfo->{'device'});
 
-print "<td><b>$text{'edit_device'}</b></td>\n";
+# Device name
 $dev = $dinfo->{'prefix'}.$np;
-print "<td>$dev</td> </tr>\n";
+print &ui_table_row($text{'edit_device'}, $dev);
 
-print "<tr> <td><b>$text{'edit_type'}</b></td>\n";
+# Partition type
 if ($pinfo->{'extended'} || $in{'new'} == 3) {
-	print "<td>$text{'extended'}</td>\n";
+	print &ui_table_row($text{'edit_type'}, $text{'extended'});
 	}
 else {
-	print "<td nowrap><select name=type>\n";
-	foreach $t (sort { &tag_name($a) cmp &tag_name($b) } &list_tags()) {
-		printf "<option value=$t %s> %s\n",
-			($in{'new'} && $t eq "83" ||
-			 !$in{'new'} && $t eq $pinfo->{'type'}) ? "selected"
-								: "",
-			&tag_name($t);
-		}
-	print "</select></td>\n";
+	print &ui_table_row($text{'edit_type'},
+		&ui_select("type", $in{'new'} ? 83 : $pinfo->{'type'},
+			   [ map { [ $_, &tag_name($_) ] }
+				 (sort { &tag_name($a) cmp &tag_name($b) }
+				       &list_tags()) ]));
 	}
 
-print "<td><b>$text{'edit_extent'}</b></td>\n";
+# Extent and cylinders
 if ($in{'new'}) {
-	print "<td><input name=start size=4 value=$start> - \n";
-	print "<input name=end size=4 value=$end>\n";
+	$ext = &ui_textbox("start", $start, 4)." - ".&ui_textbox("end", $end, 4);
 	}
 else {
-	print "<td>$pinfo->{'start'} - $pinfo->{'end'}\n";
+	$ext = "$pinfo->{'start'} - $pinfo->{'end'}";
 	}
-print $text{'edit_of'}," $dinfo->{'cylinders'}</td> </tr>\n";
+$ext .= " ".$text{'edit_of'}." $dinfo->{'cylinders'};
+print &ui_table_row($text{'edit_extent'}, $ext);
 
-print "<tr> <td><b>$text{'edit_status'}</b></td>\n";
+# Current status
 if ($pinfo->{'extended'}) {
 	foreach $p (@plist) {
 		$ecount++ if ($p->{'number'} > 4);
 		}
 	if ($ecount == 1) {
-		print "<td>", $text{'edit_cont1'}, "</td>\n";
+		$stat = $text{'edit_cont1'};
 		}
 	else {
 		if ($ecount > 4) {
-			print "<td>", &text('edit_cont5', $ecount), "</td>\n";
+			$stat = &text('edit_cont5', $ecount);
 			}
 		else {
-			print "<td>", &text('edit_cont234', $ecount), "</td>\n";
+			$stat = &text('edit_cont234', $ecount);
 			}
 		}
 	}
-else {
+elsif (!$in{'new'}) {
 	@stat = &device_status($dev);
-	if ($in{'new'}) { print "<td>$text{'edit_notexist'}</td>\n"; }
-	elsif (@stat) {
+	if (@stat) {
 		$msg = $stat[2] ? 'edit_mount' : 'edit_umount';
 		$msg .= 'vm' if ($stat[1] eq 'swap');
 		$msg .= 'raid' if ($stat[1] eq 'raid');
 		$msg .= 'lvm' if ($stat[1] eq 'lvm');
-		print "<td>",&text($msg, "<tt>$stat[0]</tt>",
-				   "<tt>$stat[1]</tt>"),"</td>\n";
+		$stat = &text($msg, "<tt>$stat[0]</tt>",
+				    "<tt>$stat[1]</tt>");
 		}
-	else { print "<td>$text{'edit_notused'}</td>\n"; }
+	else {
+		$stat = $text{'edit_notused'};
+		}
+	}
+if ($stat) {
+	print &ui_table_row($text{'edit_status'}, $stat);
 	}
 
-print "<td><b>$text{'edit_size'}</b></td>\n";
-if ($in{'new'}) {
-	print "<td>$text{'edit_notexist'}</td> </tr>\n";
-	}
-elsif ($dinfo->{'cylsize'}) {
-	print "<td>",&nice_size(($pinfo->{'end'} - $pinfo->{'start'} + 1) * $dinfo->{'cylsize'}),"</td> </tr>\n";
-	}
-else {
-	print "<td>",&text('edit_blocks', $pinfo->{'blocks'}),"</td> </tr>\n";
+# Partition size
+if (!$in{'new'}) {
+	print &ui_table_row($text{'edit_size'},
+		$dinfo->{'cylsize'} ? &nice_size(($pinfo->{'end'} - $pinfo->{'start'} + 1) * $dinfo->{'cylsize'}) : &text('edit_blocks', $pinfo->{'blocks'}));
 	}
 
 # Show field for editing filesystem label
-print "<tr>\n";
 if (($has_e2label || $has_xfs_db) && $pinfo->{'type'} eq '83' && !$in{'new'}) {
 	local $label = $in{'new'} ? undef : &get_label($pinfo->{'device'});
-	print "<td><b>$text{'edit_label'}</b></td> <td>\n";
 	if (@stat) {
-		print $label ? "<tt>$label</tt>" : $text{'edit_none'};
+		print &ui_table_row($text{'edit_label'},
+			$label ? "<tt>$label</tt>" : $text{'edit_none'});
 		}
 	else {
-		print "<input name=label size=16 value='$label'>\n";
+		print &ui_table_row($text{'edit_label'},
+			&ui_textbox("label", $label, 16));
 		}
-	print "</td>\n";
 	}
 
 # Show current UUID
 if ($has_volid && !$in{'new'}) {
 	local $volid = &get_volid($pinfo->{'device'});
-	print "<td><b>$text{'edit_volid'}</b></td>\n";
-	print "<td><tt>$volid</tt></td>\n";
+	print &ui_table_row($text{'edit_volid'}, "<tt>$volid</tt>");
 	}
-print "</tr>\n";
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<input type=submit value=\"$text{'create'}\">\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 elsif (@stat && $stat[2]) {
+	print &ui_form_end();
 	print "<b>$text{'edit_inuse'}</b><p>\n";
 	}
 else {
-	if (!$pinfo->{'extended'}) {
-		print "<input type=submit value=\"$text{'save'}\">\n";
-		}
-	print "<input name=delete type=submit value=\"$text{'delete'}\">\n";
+	print &ui_form_end([ $pinfo->{'extended'} ? ( ) :
+				( [ undef, $text{'save'} ] ),
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</form><p>\n";
 
 if (!$in{'new'} && !$pinfo->{'extended'}) {
+	print "<hr>\n";
+
 	if (!@stat || $stat[2] == 0) {
 		# Show form for creating filesystem
 		print "<hr><table width=100%>\n" if (!$donehead++);
