@@ -594,7 +594,7 @@ return @rv;
 sub is_run_parts
 {
 local $rp = $config{'run_parts'};
-return $rp && $_[0] =~ /$rp(.*)\s+(\S+)$/ ? $2 : undef;
+return $rp && $_[0] =~ /$rp(.*)\s+([a-z0-9\.\-\/_]+)(\s*\))?$/i ? $2 : undef;
 }
 
 # can_edit_user(&access, user)

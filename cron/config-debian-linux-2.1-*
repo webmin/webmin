@@ -14,7 +14,6 @@ system_crontab=/etc/crontab
 cronfiles_dir=/etc/cron.d
 run_parts=run-parts
 max_len=80
-run_parts=run-parts
 show_run=0
 show_time=0
 match_mode=0
