@@ -130,10 +130,17 @@ if ($in{'new'}) {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
+	if (&foreign_available("apache")) {
+		%aaccess = &get_module_acl(undef, "apache");
+		if ($aaccess{'global'}) {
+			@abutton = ( undef, [ 'apache', $text{'dir_apache'} ] );
+			}
+		}
 	print &ui_form_end([ [ undef, $text{'save'} ],
 			     [ 'delete', $text{'dir_delete'} ],
 			     [ 'remove', $dir->[4] ? $text{'dir_delete2'}
-						   : $text{'dir_delete3'} ] ]);
+						   : $text{'dir_delete3'} ],
+			     @abutton ]);
 	}
 
 &ui_print_footer("", $text{'index_return'});

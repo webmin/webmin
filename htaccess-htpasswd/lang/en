@@ -57,6 +57,7 @@ dir_erequire_group=No groups to allow entered
 dir_delete=Un-Protect
 dir_delete2=Un-Protect And Remove Files
 dir_delete3=Un-Protect And Remove File
+dir_apache=Edit Apache Options
 
 edit_title1=Create User
 edit_title2=Edit User

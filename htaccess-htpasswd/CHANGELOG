@@ -19,3 +19,4 @@ Users can be limited to only editing users and groups (and not adding or changin
 ---- Changes since 1.390 ----
 Converted all user interface code to use the new Webmin UI library, for consistency.
 Fixed a bug that prevented a groups file from being added to an existing directory.
+Added a button to link to the Apache module (if accessible) for editing all settings in the .htaccess file.

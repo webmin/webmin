@@ -24,6 +24,14 @@ else {
 	$htaccess = "$dir->[0]/$config{'htaccess'}";
 	}
 
+# Check for button that redirects to the Apache module for editing all
+# options in .htaccess file
+if ($in{'apache'}) {
+	&redirect("../apache/htaccess_index.cgi?file=".
+		  &urlize($htaccess));
+	exit;
+	}
+
 &lock_file($htaccess);
 &lock_file($directories_file);
 
