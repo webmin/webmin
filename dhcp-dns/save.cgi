@@ -5,6 +5,7 @@ require './dhcp-dns-lib.pl';
 &ReadParse();
 &error_setup($text{'save_err'});
 @hosts = &list_dhcp_hosts();
+($fn, $recs) = &get_dns_zone();
 if (!$in{'new'}) {
 	($host) = grep { $_->{'values'}->[0] eq $in{'old'} } @hosts;
 	$host || &error($text{'edit_egone'});
@@ -20,7 +21,12 @@ else {
 
 if ($in{'delete'}) {
 	# Remove the DHCP and DNS hosts
-	# XXX
+	&dhcpd::save_directive($par, [ $host ], [ ], $indent);
+	($old) = grep { $_->{'name'} eq $in{'old'}.'.' } @$recs;
+	if ($old) {
+		&bind8::delete_record($fn, $old);
+		&bind8::bump_soa_record($fn, $recs);
+		}
 	}
 else {
 	# Validate inputs
@@ -45,18 +51,25 @@ else {
 
 	if ($in{'new'}) {
 		# Add to DNS
-		# XXX
+		&bind8::create_record($fn, $in{'host'}.'.', undef, "IN",
+				      "A", $in{'ip'});
 		}
 	else {
 		# Update in DNS
-		# XXX
+		($old) = grep { $_->{'name'} eq $in{'old'}.'.' } @$recs;
+		if ($old) {
+			&bind8::modify_record($fn, $old, $in{'host'}.'.',
+					      $old->{'ttl'}, $old->{'class'},
+					      $old->{'type'}, $in{'ip'});
+			}
 		}
+	&bind8::bump_soa_record($fn, $recs);
 
 	# Save DHCP host
 	&dhcpd::save_directive($par, $in{'new'} ? [ ] : [ $host ],
 				[ $host ], $indent);
-	&flush_file_lines();
 	}
+&flush_file_lines();
 &apply_configuration();
 &redirect("");
 
