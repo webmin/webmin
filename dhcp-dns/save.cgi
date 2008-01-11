@@ -15,8 +15,21 @@ else {
 	$host = { 'name' => 'host',
 		  'type' => 1,
 		  'members' => [ ] };
-	$par = @hosts ? $hosts[0]->{'parent'}
-		      : &dhcpd::get_config_parent();
+	if ($in{'subnet'}) {
+		# Add to subnet selected
+		($par) = grep { $_->{'values'}->[0] eq $in{'subnet'} }
+			      &list_dhcp_subnets();
+		}
+	else {
+		if (@hosts && $hosts[0]->{'parent'}->{'name'} ne 'subnet') {
+			# Where other hosts are
+			$par = $hosts[0]->{'parent'};
+			}
+		else {
+			# Top level
+			$par = &dhcpd::get_config_parent();
+			}
+		}
 	}
 
 if ($in{'delete'}) {

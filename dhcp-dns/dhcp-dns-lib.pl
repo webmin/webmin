@@ -13,16 +13,22 @@ sub list_dhcp_hosts
 local $conf = &dhcpd::get_config();
 local $parent = &dhcpd::get_parent_config();
 local @rv;
+
+# Top-level hosts
 foreach my $h (&dhcpd::find("host", $conf)) {
 	$h->{'parent'} = $parent;
 	push(@rv, $h);
 	}
+
+# Hosts in groups
 foreach my $g (&dhcpd::find("group", $conf)) {
 	foreach my $h (&dhcpd::find("host", $g->{'members'})) {
 		$h->{'parent'} = $g;
 		push(@rv, $h);
 		}
 	}
+
+# Hosts in subjects, and hosts in groups in subnets
 foreach my $s (&dhcpd::find("subnet", $conf)) {
 	foreach my $h (&dhcpd::find("host", $s->{'members'})) {
 		$h->{'parent'} = $s;
@@ -33,6 +39,58 @@ foreach my $s (&dhcpd::find("subnet", $conf)) {
 			$h->{'parent'} = $g;
 			push(@rv, $h);
 			}
+		}
+	}
+
+# All of those, in shared networks
+foreach my $n (&dhcpd::find("shared-network", $conf)) {
+	# Hosts in shared network
+	foreach my $h (&dhcpd::find("host", $n->{'members'})) {
+		$h->{'parent'} = $n;
+		push(@rv, $h);
+		}
+
+	# Hosts in groups
+	foreach my $g (&dhcpd::find("group", $n->{'members'})) {
+		foreach my $h (&dhcpd::find("host", $g->{'members'})) {
+			$h->{'parent'} = $g;
+			push(@rv, $h);
+			}
+		}
+
+	# Hosts in subjects, and hosts in groups in subnets, in shared network
+	foreach my $s (&dhcpd::find("subnet", $n->{'members'})) {
+		foreach my $h (&dhcpd::find("host", $s->{'members'})) {
+			$h->{'parent'} = $s;
+			push(@rv, $h);
+			}
+		foreach my $g (&dhcpd::find("group", $s->{'members'})) {
+			foreach my $h (&dhcpd::find("host", $g->{'members'})) {
+				$h->{'parent'} = $g;
+				push(@rv, $h);
+				}
+			}
+		}
+	}
+
+return @rv;
+}
+
+# list_dhcp_subnets()
+# Returns a list of all DHCP subnet objects
+sub list_dhcp_subnets
+{
+local @rv;
+local $conf = &dhcpd::get_config();
+local $parent = &dhcpd::get_parent_config();
+foreach my $s (&dhcpd::find("subnet", $conf)) {
+	$s->{'parent'} = $parent;
+	push(@rv, $s);
+	}
+foreach my $n (&dhcpd::find("shared-network", $conf)) {
+	foreach my $s (&dhcpd::find("subnet", $n->{'members'})) {
+		$s->{'parent'} = $n;
+		push(@rv, $s);
 		}
 	}
 return @rv;
@@ -66,6 +124,17 @@ $rv .= &ui_hidden("indom", $indom);
 local $fixed = &dhcpd::find("fixed-address", $h->{'members'});
 $rv .= &ui_table_row($text{'form_ip'},
 	&ui_textbox("ip", $fixed ? $fixed->{'values'}->[0] : undef, 20));
+
+# Subnet for new host
+if ($new) {
+	local @subnets = &list_dhcp_subnets();
+	if (@subnets) {
+		$rv .= &ui_table_row($text{'form_subnet'},
+			&ui_select("subnet", $subnets[0]->{'values'}->[0],
+			  [ [ undef, $text{'form_nosubnet'} ],
+			    map { [ $_->{'values'}->[0] ] } @subnets ]));
+		}
+	}
 
 # MAC address
 local $hard = &dhcpd::find("hardware", $h->{'members'});
