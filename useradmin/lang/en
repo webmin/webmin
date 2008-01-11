@@ -190,6 +190,7 @@ gsave_eothers=The group was successfully saved, but an error occured in another 
 usave_elowgid=GID must be greater than or equal to $1
 usave_ehigid=GID must be less than or equal to $1
 usave_egidused=Group $1 is already using GID $2
+gsave_egidused2=GID is already in use
 usave_efromroot=You cannot move the home directory from /
 usave_etoroot=You cannot move the home directory to /
 

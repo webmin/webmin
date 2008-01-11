@@ -1119,10 +1119,23 @@ if ($config{'passwd_dict'} && $_[0] =~ /^[A-Za-z\'\-]+$/ &&
 	return &text('usave_epasswd_dict') if (!$unknown);
 	}
 if ($config{'passwd_prog'}) {
-	# Run external validation program with username and password as args
-	local $qu = quotemeta($_[1]);
-	local $qp = quotemeta($_[0]);
-	local $out = &backquote_command("$config{'passwd_prog'} $qu $qp 2>&1 </dev/null");
+	local $out;
+	if ($config{'passwd_progmode'} == 0) {
+		# Run external validation program with user and password as args
+		local $qu = quotemeta($_[1]);
+		local $qp = quotemeta($_[0]);
+		$out = &backquote_command(
+			"$config{'passwd_prog'} $qu $qp 2>&1 </dev/null");
+		}
+	else {
+		# Run program with password as input on stdin
+		local $temp = &transname();
+		&open_tempfile(TEMP, ">$temp", 0, 1);
+		&print_tempfile(TEMP, $_[1],"\n");
+		&print_tempfile(TEMP, $_[0],"\n");
+		&close_tempfile(TEMP);
+		$out = &backquote_command("$config{'passwd_prog'} <$temp 2>&1");
+		}
 	if ($?) {
 		return $out;
 		}

@@ -206,9 +206,7 @@ else {
 $real_home ||= $user{'home'};
 if (!$access{'autohome'}) {
 	$user{'home'} =~ /^\// || &error(&text('usave_ehome', $in{'home'}));
-	$al = length($access{'home'});
-	if (length($user{'home'}) < $al ||
-	    substr($user{'home'}, 0, $al) ne $access{'home'}) {
+	if (!&is_under_directory($access{'home'}, $user{'home'})) {
 		&error(&text('usave_ehomepath', $user{'home'}));
 		}
 	}
