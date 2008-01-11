@@ -19,6 +19,11 @@ if (!$config{'domain'}) {
 if (!$config{'subnets'}) {
 	&ui_print_endpage(&text('index_esubnets',"../config.cgi?$module_name"));
 	}
+($fn, $recs) = &get_dns_zone();
+if (!$fn) {
+	&ui_print_endpage(&text('index_edomain2', "../config.cgi?$module_name",
+				'../bind8/'));
+	}
 
 # Show form to add
 print &ui_hidden_start($text{'index_cheader'}, "create", 0, "index.cgi");

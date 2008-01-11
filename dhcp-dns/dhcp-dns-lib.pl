@@ -60,7 +60,7 @@ local $indom = $new || $short ne $h->{'values'}->[0];
 $rv .= &ui_table_row($text{'form_host'},
 	&ui_textbox("host", $short, 20).
 	($indom ? "<tt>.$config{'domain'}</tt>" : ""));
-$rv .= &ui_hidden("indom", 1);
+$rv .= &ui_hidden("indom", $indom);
 
 # Fixed IP address
 local $fixed = &dhcpd::find("fixed-address", $h->{'members'});
@@ -96,6 +96,29 @@ if ($hn =~ /^(\S+)\.\Q$config{'domain'}\E$/) {
 else {
 	return $hn;
 	}
+}
+
+# get_dns_zone()
+# Returns the records file and list of records for the domain
+sub get_dns_zone
+{
+local $conf = &bind8::get_config();
+local @zones = &bind8::find("zone", $conf);
+foreach my $v (&bind8::find("view", $conf)) {
+	push(@zones, &bind8::find("zone", $v->{'members'}));
+	}
+local ($z) = grep { lc($_->{'value'}) eq lc($config{'domain'}) } @zones;
+return ( ) if (!$z);
+local $file = &bind8::find("file", $z->{'members'});
+local $fn = $file->{'values'}->[0];
+local @recs = &bind8::read_zone_file($fn, $config{'domain'});
+return ( $fn, \@recs );
+}
+
+sub apply_configuration
+{
+&dhcpd::restart_dhcpd();
+&bind8::restart_bind();
 }
 
 1;
