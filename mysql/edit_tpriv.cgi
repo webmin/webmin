@@ -16,71 +16,53 @@ else {
 	&ui_print_header(undef, $text{'tpriv_title2'}, "", "edit_tpriv");
 	}
 
-print "<form action=save_tpriv.cgi>\n";
+print &ui_form_start("save_tpriv.cgi");
 if ($in{'db'}) {
-	print "<input type=hidden name=db value='$in{'db'}'>\n";
+	print &ui_hidden("db", $in{'db'});
 	}
 else {
-	print "<input type=hidden name=oldhost value='$u->[0]'>\n";
-	print "<input type=hidden name=olddb value='$u->[1]'>\n";
-	print "<input type=hidden name=olduser value='$u->[2]'>\n";
-	print "<input type=hidden name=oldtable value='$u->[3]'>\n";
+	print &ui_hidden("oldhost", $u->[0]);
+	print &ui_hidden("olddb", $u->[1]);
+	print &ui_hidden("olduser", $u->[2]);
+	print &ui_hidden("oldtable", $u->[3]);
 	}
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'tpriv_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_table_start($text{'tpriv_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'tpriv_db'}</b></td>\n";
-print "<td><tt>",$in{'db'} ? $in{'db'} : $u->[1],"</tt></td> </tr>\n";
+# Apply to DB
+print &ui_table_row($text{'tpriv_db'}, $in{'db'} || $u->[1]);
 
-print "<tr> <td><b>$text{'tpriv_table'}</b></td>\n";
-print "<td><select name=table>\n";
-print "<option selected>\n" if ($in{'db'});
-foreach $t (&list_tables($in{'db'} ? $in{'db'} : $u->[1])) {
-	printf "<option %s>%s\n",
-		$u->[3] eq $t ? 'selected' : '', $t;
-	}
-print "</select></td> </tr>\n";
+# Apply to table
+print &ui_table_row($text{'tpriv_table'},
+	&ui_select("table", $in{'db'} ? '' : $u->[3],
+		   [ $in{'db'} ? ( [ '' ] ) : ( ),
+		     &list_tables($in{'db'} || $u->[1]) ], 1, 0, 1 ]));
 
-print "<tr> <td><b>$text{'tpriv_user'}</b></td> <td>\n";
-printf "<input type=radio name=user_def value=1 %s> %s\n",
-	$u->[2] ? '' : 'checked', $text{'tpriv_anon'};
-printf "<input type=radio name=user_def value=0 %s>\n",
-	$u->[2] ? 'checked' : '';
-print "<input name=user size=20 value='$u->[2]'></td> </tr>\n";
+# Apply to user
+print &ui_table_row($text{'tpriv_user'},
+	&ui_opt_textbox("user", $u->[2], 20, $text{'tpriv_anon'}));
 
-print "<tr> <td><b>$text{'tpriv_host'}</b></td> <td>\n";
-printf "<input type=radio name=host_def value=1 %s> %s\n",
-	$u->[0] eq '%' || $u->[0] eq '' ? 'checked' : '', $text{'tpriv_any'};
-printf "<input type=radio name=host_def value=0 %s>\n",
-	$u->[0] eq '%' || $u->[0] eq '' ? '' : 'checked';
-printf "<input name=host size=40 value='%s'></td> </tr>\n",
-	$u->[0] eq '%' ? '' : $u->[0];
+# Apply to host
+print &ui_table_row($text{'tpriv_host'},
+	&ui_opt_textbox("host", $u->[0] eq '%' ? '' : $u->[0], 40,
+			$text{'tpriv_any'}));
 
-print "<tr> <td valign=top><b>$text{'tpriv_perms1'}</b></td>\n";
-print "<td><select multiple size=4 name=perms1>\n";
-foreach $p ('Select','Insert','Update','Delete','Create',
-	    'Drop','Grant','References','Index','Alter',
-	    ($mysql_version >= 5 ? ('Create View','Show view') : ( ))) {
-	printf "<option %s>%s\n",
-		$u->[6] =~ /$p/i ? 'selected' : '', $p;
-	}
-print "</select></td> </tr>\n";
+# Table permissions
+print &ui_table_row($text{'tpriv_perms1'},
+	&ui_select("perms1", [ split(/,/, $u->[6]) ],
+		   [ 'Select','Insert','Update','Delete','Create',
+		     'Drop','Grant','References','Index','Alter',
+		     ($mysql_version >= 5 ? ('Create View','Show view') : ( )) ],
+		   4, 1));
 
-print "<tr> <td valign=top><b>$text{'tpriv_perms2'}</b></td>\n";
-print "<td><select multiple size=4 name=perms2>\n";
-foreach $p ('Select','Insert','Update','References') {
-	printf "<option %s>%s\n",
-		$u->[7] =~ /$p/i ? 'selected' : '', $p;
-	}
-print "</select></td> </tr>\n";
+# Field permissions
+print &ui_table_row($text{'tpriv_perms2'},
+	&ui_select("perms2", [ split(/,/, $u->[7]) ],
+		   [ 'Select','Insert','Update','References' ], 4, 1));
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'>\n";
-if (!$in{'db'}) {
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
-	}
-print "</form>\n";
+print &ui_table_end();
+print &ui_form_end([ $in{'new'} ? ( [ undef, $text{'create'} ] )
+				: ( [ undef, $text{'save'} ],
+				    [ 'delete', $text{'delete'} ] ) ]);
 
 &ui_print_footer('list_tprivs.cgi', $text{'tprivs_return'},
 	"", $text{'index_return'});

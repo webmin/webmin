@@ -17,44 +17,36 @@ else {
 	&ui_print_header(undef, $text{'host_title2'}, "");
 	}
 
-print "<form action=save_host.cgi>\n";
+print &ui_form_start("save_host.cgi");
 if ($in{'new'}) {
-	print "<input type=hidden name=new value=1>\n";
+	print &ui_hidden("new", 1);
 	}
 else {
-	print "<input type=hidden name=oldhost value='$u->[0]'>\n";
-	print "<input type=hidden name=olddb value='$u->[1]'>\n";
+	print &ui_hidden("oldhost", $u->[0]);
+	print &ui_hidden("olddb", $u->[1]);
 	}
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'host_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_table_start($text{'host_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'host_db'}</b></td>\n";
-print "<td>",&select_db($u->[1]),"</td> </tr>\n";
+# Database name
+print &ui_table_row($text{'host_db'}, &select_db($u->[1]));
 
-print "<tr> <td><b>$text{'host_host'}</b></td> <td>\n";
-printf "<input type=radio name=host_def value=1 %s> %s\n",
-	$u->[0] eq '%' || $u->[0] eq '' ? 'checked' : '', $text{'host_any'};
-printf "<input type=radio name=host_def value=0 %s>\n",
-	$u->[0] eq '%' || $u->[0] eq '' ? '' : 'checked';
-printf "<input name=host size=40 value='%s'></td> </tr>\n",
-	$u->[0] eq '%' ? '' : $u->[0];
+# Hostname pattern
+print &ui_table_row($text{'host_host'},
+	&ui_opt_textbox("host", $u->[0] eq '%' ? '' : $u->[0], 40,
+			$text{'host_any'}));
 
-print "<tr> <td valign=top><b>$text{'host_perms'}</b></td>\n";
-print "<td><select name=perms multiple size=8>\n";
+# Host's permissions
 for($i=2; $i<=&host_priv_cols()+2-1; $i++) {
-	printf "<option value=%d %s>%s\n",
-		$i, $u->[$i] eq 'Y' ? 'selected' : '',
-		$text{"host_priv$i"};
+	push(@opts, [ $i, $text{"host_priv$i"} ]);
+	push(@sel, $i) if ($u->[$i] eq 'Y');
 	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'host_perms'},
+	&ui_select("perms", \@sel, \@opts, 10, 1, 1));
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'>\n";
-if (!$in{'new'}) {
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
-	}
-print "</form>\n";
+print &ui_table_end();
+print &ui_form_end([ $in{'new'} ? ( [ undef, $text{'create'} ] )
+				: ( [ undef, $text{'save'} ],
+				    [ 'delete', $text{'delete'} ] ) ]);
 
 &ui_print_footer('list_hosts.cgi', $text{'hosts_return'},
 	"", $text{'index_return'});

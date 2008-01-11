@@ -52,14 +52,10 @@ else {
 
 sub show_button
 {
-print "<form action=edit_tpriv.cgi>\n";
-print "<input type=submit value='$text{'tprivs_add'}'>\n";
-print "<input type=hidden name=new value=1>\n";
-print "<select name=db>\n";
-foreach $t (&list_databases()) {
-	print "<option>$t\n" if ($access{'perms'} == 1 ||
-				 &can_edit_db($t));
-	}
-print "</select></form>\n";
+print &ui_form_start("edit_tpriv.cgi");
+print &ui_submit($text{'tprivs_add'});
+print &ui_select("db", undef, [ grep { $access{'perms'} == 1 || &can_edit_db($_) }
+				     &list_databases() ]);
+print &ui_form_end();
 }
 

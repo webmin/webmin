@@ -504,33 +504,20 @@ local @dbs = &list_databases();
 local $d;
 if ($access{'perms'} == 2 && $access{'dbs'} ne '*') {
 	# Can only select his own databases
-	$rv .= "<select name=dbs>\n";
-	local $found = !$_[0];
-	foreach $d (@dbs) {
-		if (&can_edit_db($d)) {
-			$rv .= sprintf "<option %s>%s\n", $_[0] eq $d ? 'selected' : '', $d;
-			$found++ if ($_[0] eq $d);
-			}
-		}
-	$rv .= "<option selected>$_[0]\n" if (!$found);
-	$rv .= "</select>\n";
+	$rv = &ui_select("dbs", $_[0],
+			 [ grep { &can_edit_db($_) } @dbs ], 1, 0, $_[0] ? 1 : 0);
 	}
 else {
 	# Can select any databases
 	local $ind = &indexof($_[0],@dbs) >= 0;
-	$rv .= sprintf "<input type=radio name=db_def value=1 %s> %s\n",
-		$_[0] eq '%' || $_[0] eq '' ? 'checked' : '', $text{'host_any'};
-	$rv .= sprintf "<input type=radio name=db_def value=2 %s> %s\n",
-		$ind ? 'checked' : '', $text{'host_sel'};
-	$rv .= "<select name=dbs>\n";
-	foreach $d (@dbs) {
-		$rv .= sprintf "<option %s>%s\n", $_[0] eq $d ? 'selected' : '', $d;
-		}
-	$rv .= "</select>\n";
-	$rv .= sprintf "<input type=radio name=db_def value=0 %s>\n",
-		$_[0] eq '%' || $_[0] eq '' || $ind ? '' : 'checked';
-	$rv .= sprintf "<input name=db size=10 value='%s'>\n",
-		$_[0] eq '%' || $_[0] eq '' || $ind ? '' : $_[0];
+	$rv = &ui_radio("db_def", $_[0] eq '%' || $_[0] eq '' ? 1 :
+				  $ind ? 2 : 0,
+			[ [ 1, $text{'host_any'} ],
+			  [ 2, $text{'host_sel'}."&nbsp;".
+			       &ui_select("dbs", $_[0], \@dbs) ],
+			  [ 0, $text{'host_otherdb'}."&nbsp;".
+			       &ui_textbox("db", $_[0] eq '%' || $_[0] eq '' ||
+						 $ind ? '' : $_[0], 30) ] ]);
 	}
 return $rv;
 }
