@@ -24,59 +24,48 @@ else {
 		}
 	}
 
-print "<form action=save_user.cgi>\n";
+# Form header
+print &ui_form_start("save_user.cgi", "post");
 if ($in{'new'}) {
-	print "<input type=hidden name=new value=1>\n";
+	print &ui_hidden("new", 1);
 	}
 else {
-	print "<input type=hidden name=olduser value='$u->[1]'>\n";
-	print "<input type=hidden name=oldhost value='$u->[0]'>\n";
+	print &ui_hidden("olduser", $u->[1]);
+	print &ui_hidden("oldhost", $u->[0]);
 	}
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'user_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_table_start($text{'user_header'}, undef, 2);
+%sizes = &table_field_sizes($master_db, "user");
 
-print "<tr> <td><b>$text{'user_user'}</b></td> <td>\n";
-printf "<input type=radio name=mysqluser_def value=1 %s> %s\n",
-	$u->[1] ? '' : 'checked', $text{'user_all'};
-printf "<input type=radio name=mysqluser_def value=0 %s>\n",
-	$u->[1] ? 'checked' : '';
-print "<input name=mysqluser size=20 value='$u->[1]'></td> </tr>\n";
+# Username field
+print &ui_table_row($text{'user_user'},
+	&ui_opt_textbox("mysqluser", $u->[1], $sizes{'user'},
+			$text{'user_all'}));
 
-print "<tr> <td><b>$text{'user_pass'}</b></td> <td>\n";
-printf "<input type=radio name=mysqlpass_mode value=2 %s> %s\n",
-	!$in{'new'} && !$u->[2] ? 'checked' : '', $text{'user_none'};
-if (!$in{'new'}) {
-	printf "<input type=radio name=mysqlpass_mode value=1 %s> %s\n",
-		$u->[2] ? 'checked' : '', $text{'user_leave'};
-	}
-printf "<input type=radio name=mysqlpass_mode value=0 %s> %s\n",
-	$in{'new'} ? 'checked' : '', $text{'user_set'};
-print "<input name=mysqlpass type=password size=20></td> </tr>\n";
+# Password field
+print &ui_table_row($text{'user_pass'},
+	&ui_radio("mysqlpass_mode", $in{'new'} ? 0 : $u->[2] ? 1 : 2,
+		  [ [ 2, $text{'user_none'} ],
+		    $in{'new'} ? ( ) : ( [ 1, $text{'user_leave'} ] ),
+		    [ 0, $text{'user_set'} ] ])." ".
+	&ui_password("mysqlpass", undef, 20));
 
-print "<tr> <td><b>$text{'user_host'}</b></td> <td>\n";
-printf "<input type=radio name=host_def value=1 %s> %s\n",
-	$u->[0] eq '%' || $u->[0] eq '' ? 'checked' : '', $text{'user_any'};
-printf "<input type=radio name=host_def value=0 %s>\n",
-	$u->[0] eq '%' || $u->[0] eq '' ? '' : 'checked';
-printf "<input name=host size=40 value='%s'></td> </tr>\n",
-	$u->[0] eq '%' ? '' : $u->[0];
+# Allowed host / network
+print &ui_table_row($text{'user_host'},
+	&ui_opt_textbox("host", $u->[0] eq '%' ? '' : $u->[0], 40,
+			$text{'user_any'}));
 
-print "<tr> <td valign=top><b>$text{'user_perms'}</b></td>\n";
-print "<td><select name=perms multiple size=10>\n";
+# User's permissions
 for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
-	printf "<option value=%d %s>%s\n",
-		$i, $u->[$i] eq 'Y' ? 'selected' : '',
-		$text{"user_priv$i"};
+	push(@opts, [ $i, $text{"user_priv$i"} ]);
+	push(@sel, $i) if ($u->[$i] eq 'Y');
 	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'user_perms'},
+	&ui_select("perms", \@sel, \@opts, 10, 1, 1));
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'>\n";
-if (!$in{'new'}) {
-	print "<input type=submit name=delete value='$text{'delete'}'>\n";
-	}
-print "</form>\n";
+print &ui_table_end();
+print &ui_form_end([ $in{'new'} ? ( [ undef, $text{'create'} ] )
+				: ( [ undef, $text{'save'} ],
+				    [ 'delete', $text{'delete'} ] ) ]);
 
 &ui_print_footer('list_users.cgi', $text{'users_return'},
 	"", $text{'index_return'});

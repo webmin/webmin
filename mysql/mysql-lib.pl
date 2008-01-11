@@ -203,6 +203,19 @@ foreach $r (@{$s->{'data'}}) {
 return @rv;
 }
 
+# table_field_sizes(db, table)
+# Returns a hash mapping field names to sizes
+sub table_field_sizes
+{
+local %rv;
+foreach my $s (&table_structure(@_)) {
+	if ($s->{'type'} =~ /^\S+\((\d+)(,\d+)?\)/) {
+		$rv{lc($s->{'field'})} = $1;
+		}
+	}
+return %rv;
+}
+
 # execute_sql(database, command, [param, ...])
 # Executes some SQL and returns the results, after checking for the user's
 # readonly status.

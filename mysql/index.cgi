@@ -80,19 +80,19 @@ elsif ($r == -1) {
 	# Running, but webmin doesn't know the root (or user's) password!
 	&main_header();
 	print "<b>$text{'index_nopass'}</b> <p>\n";
-	print "<form action=login.cgi method=post>\n";
-	print "<center><table border>\n";
-	print "<tr $tb> <td><b>$text{'index_ltitle'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table cellpadding=2>\n";
-	print "<tr> <td><b>$text{'index_login'}</b></td>\n";
-	printf "<td><input name=login size=20 value='%s'></td> </tr>\n",
-		$access{'user'} || $config{'login'};
-	print "<tr> <td><b>$text{'index_pass'}</b></td>\n";
-	print "<td><input name=pass size=20 type=password></td>\n";
-	print "</tr> </table></td></tr></table>\n";
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=reset value='$text{'index_clear'}'>\n";
-	print "</center></form>\n";
+
+	print &ui_form_start("login.cgi", "post");
+	print &ui_table_start($text{'index_ltitle'}, undef, 2);
+
+	print &ui_table_row($text{'index_login'},
+		&ui_textbox("login", $access{'user'} || $config{'login'}, 40));
+
+	print &ui_table_row($text{'index_pass'},
+		&ui_password("pass", undef, 40));
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+
 	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
 	}
 else {
