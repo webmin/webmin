@@ -2461,7 +2461,15 @@ html=html.replace(/<(\/?)b(\s|>|\/)/ig,"<$1strong$2");
 html=html.replace(/<(\/?)i(\s|>|\/)/ig,"<$1em$2");
 html=html.replace(/<(\/?)strike(\s|>|\/)/ig,"<$1del$2");
 html=html.replace("onclick=\"try{if(document.designMode &amp;&amp; document.designMode == 'on') return false;}catch(e){} window.open(","onclick=\"window.open(");
-var _177=location.href.replace(/(https?:\/\/[^\/]*)\/.*/,"$1")+"/";
+//var _177=location.href.replace(/(https?:\/\/[^\/]*)\/.*/,"$1")+"/";
+var href;
+if (this.config.baseHref != null) {
+  href = this.config.baseHref;
+  }
+else {
+  href = location.href;
+  }
+var _177=href.replace(/(https?:\/\/[^\/]*)\/.*/,"$1")+"/";
 html=html.replace(/https?:\/\/null\//g,_177);
 html=html.replace(/((href|src|background)=[\'\"])\/+/ig,"$1"+_177);
 html=this.outwardSpecialReplacements(html);
@@ -2489,7 +2497,14 @@ html=html.replace("onclick=\"window.open(","onclick=\"try{if(document.designMode
 html=this.inwardSpecialReplacements(html);
 html=html.replace(/(<script[^>]*)(javascript)/gi,"$1freezescript");
 var _17c=new RegExp("((href|src|background)=['\"])/+","gi");
-html=html.replace(_17c,"$1"+location.href.replace(/(https?:\/\/[^\/]*)\/.*/,"$1")+"/");
+var href;
+if (this.config.baseHref != null) {
+  href = this.config.baseHref;
+  }
+else {
+  href = location.href;
+  }
+html=html.replace(_17c,"$1"+href.replace(/(https?:\/\/[^\/]*)\/.*/,"$1")+"/");
 html=this.fixRelativeLinks(html);
 if(this.config.fullPage){
 html=Xinha.addCoreCSS(html);
@@ -2521,8 +2536,9 @@ html=html.replace(reg,to.replace(/\$/g,"$$$$"));
 return html;
 };
 Xinha.prototype.fixRelativeLinks=function(html){
+var src;
 if(typeof this.config.expandRelativeUrl!="undefined"&&this.config.expandRelativeUrl){
-var src=html.match(/(src|href)="([^"]*)"/gi);
+src=html.match(/(src|href)="([^"]*)"/gi);
 }
 var b=document.location.href;
 if(src){
