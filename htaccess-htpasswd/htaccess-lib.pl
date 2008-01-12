@@ -23,7 +23,7 @@ if ($module_info{'usermin'}) {
 	$apachemod = "htaccess";
 	$can_htpasswd = $config{'can_htpasswd'};
 	$can_htgroups = $config{'can_htgroups'};
-	$can_create = 1;
+	$can_create = !$config{'nocreate'};
 	}
 else {
 	# Allowed directories come from ACL
