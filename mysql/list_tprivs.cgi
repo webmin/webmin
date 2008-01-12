@@ -54,8 +54,17 @@ sub show_button
 {
 print &ui_form_start("edit_tpriv.cgi");
 print &ui_submit($text{'tprivs_add'});
-print &ui_select("db", undef, [ grep { $access{'perms'} == 1 || &can_edit_db($_) }
-				     &list_databases() ]);
+local @dbs = sort { $a cmp $b } &list_databases();
+if (@dbs > $max_dbs) {
+	# Just show DB name
+	print &ui_textbox("db", undef, 20);
+	}
+else {
+	# DB selector
+	print &ui_select("db", undef,
+		[ grep { $access{'perms'} == 1 || &can_edit_db($_) }
+		       &list_databases() ]);
+	}
 print &ui_form_end();
 }
 

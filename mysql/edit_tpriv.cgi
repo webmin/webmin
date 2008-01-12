@@ -5,7 +5,8 @@
 require './mysql-lib.pl';
 &ReadParse();
 $access{'perms'} || &error($text{'perms_ecannot'});
-if ($in{'db'}) {
+if (defined($in{'db'})) {
+	$in{'db'} =~ /^\S+$/ || &error($text{'tpriv_edb'});
 	&ui_print_header(undef, $text{'tpriv_title1'}, "", "create_tpriv");
 	}
 else {
@@ -35,7 +36,7 @@ print &ui_table_row($text{'tpriv_db'}, $in{'db'} || $u->[1]);
 print &ui_table_row($text{'tpriv_table'},
 	&ui_select("table", $in{'db'} ? '' : $u->[3],
 		   [ $in{'db'} ? ( [ '' ] ) : ( ),
-		     &list_tables($in{'db'} || $u->[1]) ], 1, 0, 1 ]));
+		     &list_tables($in{'db'} || $u->[1]) ], 1, 0, 1));
 
 # Apply to user
 print &ui_table_row($text{'tpriv_user'},
@@ -60,7 +61,7 @@ print &ui_table_row($text{'tpriv_perms2'},
 		   [ 'Select','Insert','Update','References' ], 4, 1));
 
 print &ui_table_end();
-print &ui_form_end([ $in{'new'} ? ( [ undef, $text{'create'} ] )
+print &ui_form_end([ $in{'db'} ? ( [ undef, $text{'create'} ] )
 				: ( [ undef, $text{'save'} ],
 				    [ 'delete', $text{'delete'} ] ) ]);
 

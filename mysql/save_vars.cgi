@@ -18,11 +18,11 @@ if ($in{'save'} || !@d) {
 			}
 		}
 	&webmin_log("set", undef, $count);
-	&redirect("list_vars.cgi#$first");
+	&redirect("list_vars.cgi?search=".&urlize($in{'search'})."#$first");
 	}
 else {
 	# Return to list page, but in edit mode
-	&redirect("list_vars.cgi?".
+	&redirect("list_vars.cgi?search=".&urlize($in{'search'})."&".
 		join("&", map { "d=".&urlize($_) } @d).
 		"#".$d[0]);
 	}

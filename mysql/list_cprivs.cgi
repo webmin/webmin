@@ -51,17 +51,27 @@ else {
 
 sub show_button
 {
-print "<form action=edit_cpriv.cgi>\n";
-print "<input type=submit value='$text{'cprivs_add'}'>\n";
-print "<input type=hidden name=new value=1>\n";
-print "<select name=table>\n";
-foreach $d (&list_databases()) {
-	if ($access{'perms'} == 1 || &can_edit_db($d)) {
-		foreach $t (&list_tables($d)) {
-			print "<option>$d.$t\n";
+print &ui_form_start("edit_cpriv.cgi");
+local @opts = ( );
+local @dbs = sort { $a cmp $b } &list_databases();
+if (@dbs > $max_dbs) {
+	# Show DB and table fields
+	print &ui_submit($text{'cprivs_add2'});
+	print $text{'cprivs_db'}," ",&ui_textbox("db", undef, 20)," ",
+	      $text{'cprivs_table'}," ",&ui_textbox("table", undef, 20);
+	}
+else {
+	# Show selector
+	print &ui_submit($text{'cprivs_add'});
+	foreach $d (@dbs) {
+		if ($access{'perms'} == 1 || &can_edit_db($d)) {
+			foreach $t (&list_tables($d)) {
+				push(@opts, "$d.$t");
+				}
 			}
 		}
+	print &ui_select("table", undef, \@opts);
 	}
-print "</select></form>\n";
+print &ui_form_end();
 }
 
