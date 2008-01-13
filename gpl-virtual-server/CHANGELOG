@@ -388,3 +388,6 @@ Ported the Change IP Address page from Virtualmin Pro.
 When using Postfix with the sender_bcc_maps directive, a new option on the Module Config page can be used to allow BCCing all sent email in some or all domains to a separate address. This can be set on the Email Settings page, or by default for new domains in Server Templates.
 Fixed a bug that prevented mail for users with @ in their names and mbox-format mail files from being properly displayed on systems using Postfix.
 When an alias domain is created, the primary domain can now update its configuration as needed. This allows AWstats to work when accessed via the alias domain.
+---- Changes since 3.51 ----
+When restoring a virtual server that uses features not supported on the system, a warning will be displayed listing the missing or disabled features.
+When editing a virtual server without a private IP address, one can be added that is associated with an existing interface on the system.
