@@ -41,6 +41,16 @@ return lc($_[0]) =~ /^[a-e]/ ? "A-E" :
 sub package_info
 {
 local $qm = quotemeta($_[0]);
+
+# First check if it is really installed, and not just known to the package
+# system in some way
+local $out = &backquote_command("dpkg --list $qm 2>&1", 1);
+local @lines = split(/\r?\n/, $out);
+if ($lines[$#lines] !~ /^.[ih]/) {
+	return ( );
+	}
+
+# Get full status
 local $out = &backquote_command("dpkg --print-avail $qm 2>&1", 1);
 return () if ($? || $out =~ /Package .* is not available/i);
 local @rv = ( $_[0], &alphabet_name($_[0]) );
