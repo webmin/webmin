@@ -337,8 +337,9 @@ printf "<td><input name=deny size=35 value=\"%s\"></td> </tr>\n",
 
 # Show file in which ACL is stored
 print "<tr> <td><b>$text{'acl_file'}</b></td>\n";
-print "<td>",&ui_opt_textbox("file", $file, 40, $text{'acl_nofile'}),
-      " ",&file_chooser_button("file"),"</td> </tr>\n";
+print "<td>",&ui_opt_textbox("file", $file, 40, $text{'acl_nofile'},
+			     $text{'acl_infile'})," ",
+	     &file_chooser_button("file"),"</td> </tr>\n";
 
 if ($in{'type'}) {
 	print "<tr> <td></td>\n";

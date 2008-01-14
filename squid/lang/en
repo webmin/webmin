@@ -97,8 +97,9 @@ acl_failurl=Failure URL
 acl_buttsave=Save
 acl_buttdel=Delete
 acl_return=ACL list
-acl_file=Store ACL in file
+acl_file=Store ACL values in file
 acl_nofile=Squid configuration
+acl_infile=Separate file
 acl_keep=Just use existing contents of file?
 
 aclsave_failsave=Failed to save ACL
