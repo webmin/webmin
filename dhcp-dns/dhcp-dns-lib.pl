@@ -122,27 +122,24 @@ $rv .= &ui_hidden("indom", $indom);
 
 # Fixed IP address
 local $fixed = &dhcpd::find("fixed-address", $h->{'members'});
+$rv .= &ui_hidden("oldip", $fixed->{'values'}->[0]) if ($fixed);
+local @subnets = $new ? &list_dhcp_subnets() : ( );
 $rv .= &ui_table_row($text{'form_ip'},
-	&ui_textbox("ip", $fixed ? $fixed->{'values'}->[0] : undef, 20));
-
-# Subnet for new host
-if ($new) {
-	local @subnets = &list_dhcp_subnets();
-	if (@subnets) {
-		$rv .= &ui_table_row($text{'form_subnet'},
+	&ui_textbox("ip", $fixed ? $fixed->{'values'}->[0] : undef, 20).
+	(@subnets ? " ".$text{'form_subnet'}." ".
 			&ui_select("subnet", $subnets[0]->{'values'}->[0],
 			  [ [ undef, $text{'form_nosubnet'} ],
-			    map { [ $_->{'values'}->[0] ] } @subnets ]));
-		}
-	}
+			    map { [ $_->{'values'}->[0] ] } @subnets ]) : ""));
 
 # MAC address
 local $hard = &dhcpd::find("hardware", $h->{'members'});
+$rv .= &ui_hidden("oldmac", $hard->{'values'}->[0]) if ($hard);
 $rv .= &ui_table_row($text{'form_mac'},
-	&ui_select("media", $hard ? $hard->{'values'}->[0] : "ethernet",
-		   [ [ "ethernet", $text{'form_ethernet'} ],
-		     [ "token-ring", $text{'form_tr'} ],
-		     [ "fddi", $text{'form_fddi'} ] ], 1, 0, 1).
+#	&ui_select("media", $hard ? $hard->{'values'}->[0] : "ethernet",
+#		   [ [ "ethernet", $text{'form_ethernet'} ],
+#		     [ "token-ring", $text{'form_tr'} ],
+#		     [ "fddi", $text{'form_fddi'} ] ], 1, 0, 1).
+        &ui_hidden("media", $hard ? $hard->{'values'}->[0] : "ethernet").
 	&ui_textbox("mac", $hard ? $hard->{'values'}->[1] : undef, 20));
 
 $rv .= &ui_table_end();

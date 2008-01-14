@@ -35,8 +35,7 @@ print &ui_hidden_end();
 if (@hosts) {
 	@tds = ( "width=5" );
 	print &ui_form_start("delete.cgi");
-	@links = ( &select_all_link("d", 1),
-		   &select_invert_link("d", 1) );
+	@links = ( &select_invert_link("d", 1) );
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "",
 			 	  $text{'index_host'},

@@ -48,16 +48,28 @@ else {
 		$in{'host'} .= '.'.$config{'domain'};
 		}
 	if ($in{'new'} || $in{'host'} ne $in{'old'}) {
-		# Check for clash
+		# Check for hostname clash
 		($clash) = grep { $_->{'values'}->[0] eq $in{'host'} } @hosts;
 		$clash && &error($text{'save_eclash'});
 		}
 	$host->{'values'} = [ $in{'host'} ];
+
 	&check_ipaddress($in{'ip'}) || &error($text{'save_eip'});
+	if ($in{'new'} || $in{'ip'} ne $in{'oldip'}) {
+		# Check for IP clash
+		($clash) = grep { my $f = &dhcpd::find("fixed-address", $_->{'members'}); $f->{'values'}->[0] eq $in{'ip'} } @hosts;
+		$clash && &error($text{'save_eclaship'});
+		}
 	&dhcpd::save_directive($host, 'fixed-address',
 			[ { 'name' => 'fixed-address',
 			    'values' => [ $in{'ip'} ] } ]);
+
 	$in{'mac'} =~ /^[a-f0-9:]+$/i || &error($text{'save_emac'});
+	if ($in{'new'} || $in{'mac'} ne $in{'oldmac'}) {
+		# Check for MAC clash
+		($clash) = grep { my $h = &dhcpd::find("hardware", $_->{'members'}); $h->{'values'}->[1] eq $in{'mac'} } @hosts;
+		$clash && &error($text{'save_eclaship'});
+		}
 	&dhcpd::save_directive($host, 'hardware',
 			[ { 'name' => 'hardware',
 			    'values' => [ $in{'media'}, $in{'mac'} ] } ]);
