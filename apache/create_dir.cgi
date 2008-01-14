@@ -13,8 +13,8 @@ require './apache-lib.pl';
 
 # Validate inputs
 $in{'path'} || &error($text{'cdir_epath'});
-$in{'type'} eq 'Proxy' || &allowed_doc_dir($in{'path'}) ||
-	&error($text{'cdir_ecannot'});
+$in{'type'} eq 'Proxy' || $in{'type'} eq 'Location' ||
+   &allowed_doc_dir($in{'path'}) || &error($text{'cdir_ecannot'});
 
 # Create the file structure
 $dir = { 'type' => 1 };

@@ -1231,6 +1231,7 @@ else {
 sub allowed_doc_dir
 {
 return $access{'aliasdir'} eq '/' ||
+       $_[0] !~ /^\// ||	# Relative path, like for <Files>
        &is_under_directory($access{'aliasdir'}, $_[0]);
 }
 

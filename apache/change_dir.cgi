@@ -19,7 +19,8 @@ else {
 	# changing a directive
 	&error_setup($text{'cdir_err2'});
 	$in{'path'} || &error($text{'cdir_epath'});
-	$in{'type'} eq 'Proxy' || &allowed_doc_dir($in{'path'}) ||
+	$in{'type'} eq 'Proxy' || $in{'type'} eq 'Location' ||
+	    &allowed_doc_dir($in{'path'}) ||
 		&error($text{'cdir_ecannot'});
 	if ($in{'regexp'}) {
 		$in{'type'} eq 'Proxy' && &error($text{'cdir_eproxy'});
