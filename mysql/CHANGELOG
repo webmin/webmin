@@ -64,3 +64,4 @@ The character set to use for MySQL output can now be set on the Module Config pa
 When testing if a user can login, no specific database is used in case the user does not have access to the 'mysql' database.
 When there are too many databases, huge lists of all databases and tables are not shown on the Table Permissions and Field Permissions pages. Instead, text boxes for entering names are shown.
 System variables can now be searched using a new field, making it easier to find the one you want from the large list on some systems.
+Re-designed the Execute SQL page to use tabs.

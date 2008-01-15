@@ -132,57 +132,52 @@ else {
 sub show_buttons
 {
 if (!$access{'edonly'}) {
-	$count = 2;
-	$count++ if ($access{'delete'});
-	$count++ if ($access{'buser'});
-	$count++ if ($mysql_version >= 5);
-	$pct = int(100/$count);
-
-	print "<table width=100%> <tr>\n";
+	print "<table><tr>\n";
 
 	# Add a new table
-	print "<form action=table_form.cgi>\n";
-	print "<input type=hidden name=db value='$in{'db'}'>\n";
-	print "<td width=$pct% nowrap><input type=submit ",
-	      "value='$text{'dbase_add'}'>\n";
-	print $text{'dbase_fields'},"\n";
-	print "<input name=fields size=4 value='4'></td>\n";
-	print "</form>\n";
+	print &ui_form_start("table_form.cgi");
+	print &ui_hidden("db", $in{'db'});
+	print "<td>",&ui_submit($text{'dbase_add'})." ".$text{'dbase_fields'}.
+		     " ".&ui_textbox("fields", 4, 4),"</td>\n";
+	print &ui_form_end();
 	$form++;
 
 	# Add a new view
 	if (&supports_views() && $access{'views'}) {
-		print "<form action=edit_view.cgi>\n";
-		print "<input type=hidden name=db value='$in{'db'}'>\n";
-		print "<input type=hidden name=new value=1>\n";
-		print "<td align=middle width=$pct%><input type=submit ",
-		      "value='$text{'dbase_addview'}'></td></form>\n";
+		print &ui_form_start("edit_view.cgi");
+		print &ui_hidden("db", $in{'db'});
+		print &ui_hidden("new", 1);
+		print "<td>",&ui_submit($text{'dbase_addview'}),"</td>\n";
+		print &ui_form_end();
 		$form++;
 		}
 
+	# Delete this database
 	if ($access{'delete'}) {
-		print "<form action=drop_dbase.cgi>\n";
-		print "<input type=hidden name=db value='$in{'db'}'>\n";
-		print "<td align=middle width=$pct%><input type=submit ",
-		      "value='$text{'dbase_drop'}'></td></form>\n";
+		print &ui_form_start("drop_dbase.cgi");
+		print &ui_hidden("db", $in{'db'});
+		print "<td>",&ui_submit($text{'dbase_drop'}),"</td>\n";
+		print &ui_form_end();
 		$form++;
 		}
 
+	# Open backup form
 	if ($access{'buser'}) {
-		print "<form action=backup_form.cgi>\n";
-		print "<input type=hidden name=db value='$in{'db'}'>\n";
-		print "<td align=middle width=$pct%><input type=submit ",
-		      "value='$text{'dbase_backup'}'></td></form>\n";
+		print &ui_form_start("backup_form.cgi");
+		print &ui_hidden("db", $in{'db'});
+		print "<td>",&ui_submit($text{'dbase_backup'}),"</td>\n";
+		print &ui_form_end();
 		$form++;
 		}
 
-	print "<form action=exec_form.cgi>\n";
-	print "<input type=hidden name=db value='$in{'db'}'>\n";
-	print "<td align=right width=$pct%><input type=submit ",
-	      "value='$text{'dbase_exec'}'></td>\n";
-	print "</form>\n";
+	# Execute SQL form
+	print &ui_form_start("exec_form.cgi");
+	print &ui_hidden("db", $in{'db'});
+	print "<td>",&ui_submit($text{'dbase_exec'}),"</td>\n";
+	print &ui_form_end();
 	$form++;
-	print "</tr> </table></form>\n";
+
+	print "</tr></table>\n";
 	}
 }
 
