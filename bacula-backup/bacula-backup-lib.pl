@@ -1,5 +1,4 @@
 # Common functions for the bacula config file
-# XXX other schedule-level overrides, like pool, storage, etc..
 # XXX schedule chooser on IE
 
 do '../web-lib.pl';
@@ -68,7 +67,8 @@ if (!defined($config_file_cache{$file})) {
 	open(CONF, $_[0]) || return undef;
 	local @lines = <CONF>;
 	close(CONF);
-	foreach (@lines) {
+	for(my $i=0; $i<@lines; $i++) {
+		$_ = $lines[$i];
 		s/\r|\n//g;
 		s/#.*$//;
 		if (/^\s*\@(.*\S)/) {
@@ -159,8 +159,8 @@ if (!defined($config_file_cache{$file})) {
 			# Just a word by itself .. perhaps start of a section,
 			# if there is a { on the next line.
 			local $name = $1;
-			local $nextline = <CONF>;
-			if ($nextline =~ /^\s*{\s*$/) {
+			local $nextline = $lines[++$i];
+			if ($nextline =~ /^\s*\{\s*$/) {
 				local $dir = { 'name' => $name,
 					       'parent' => $parent,
 					       'line' => $lnum,
@@ -175,7 +175,6 @@ if (!defined($config_file_cache{$file})) {
 			}
 		$lnum++;
 		}
-	close(CONF);
 	$config_file_cache{$file} = \@rv;
 	}
 return $config_file_cache{$file};
