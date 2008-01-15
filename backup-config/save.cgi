@@ -80,11 +80,11 @@ if ($in{'run'}) {
 		}
 	&webmin_log("run", "backup", $backup->{'dest'}, $backup);
 	&ui_print_footer("edit.cgi?id=$in{'id'}", $text{'edit_return'},
-			 "", $text{'index_return'});
+			 "index.cgi?mode=sched", $text{'index_return'});
 	exit;
 	}
 else {
-	&redirect("");
+	&redirect("index.cgi?mode=sched");
 	}
 
 

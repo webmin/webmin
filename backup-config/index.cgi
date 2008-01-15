@@ -11,9 +11,9 @@ if (!@mods) {
 %mods = map { $_->{'dir'}, $_ } @mods;
 
 # Show tabs
-@tabs = ( [ "backup", $text{'index_tabbackup'}, "index.cgi?mode=clone" ],
-	  [ "sched", $text{'index_tabsched'}, "index.cgi?mode=install" ],
-	  [ "restore", $text{'index_tabrestore'}, "index.cgi?mode=delete" ],
+@tabs = ( [ "backup", $text{'index_tabbackup'}, "index.cgi?mode=backup" ],
+	  [ "sched", $text{'index_tabsched'}, "index.cgi?mode=sched" ],
+	  [ "restore", $text{'index_tabrestore'}, "index.cgi?mode=restore" ],
 	);
 print &ui_tabs_start(\@tabs, "tab", $in{'mode'} || "backup", 1);
 

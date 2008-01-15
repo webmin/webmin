@@ -64,14 +64,15 @@ sub delete_backup
 }
 
 # parse_backup_url(string)
-# Converts a URL like ftp:// or a filename into its components
+# Converts a URL like ftp:// or a filename into its components. These are
+# user, pass, host, page, port (optional)
 sub parse_backup_url
 {
-if ($_[0] =~ /^ftp:\/\/([^:]*):([^\@]*)\@([^\/]+)(\/.*)$/) {
-	return (1, $1, $2, $3, $4);
+if ($_[0] =~ /^ftp:\/\/([^:]*):([^\@]*)\@([^\/:]+)(:(\d+))?(\/.*)$/) {
+	return (1, $1, $2, $3, $6, $5);
 	}
-elsif ($_[0] =~ /^ssh:\/\/([^:]*):([^\@]*)\@([^\/]+)(\/.*)$/) {
-	return (2, $1, $2, $3, $4);
+elsif ($_[0] =~ /^ssh:\/\/([^:]*):([^\@]*)\@([^\/:]+)(:(\d+))?(\/.*)$/) {
+	return (2, $1, $2, $3, $6, $5);
 	}
 elsif ($_[0] =~ /^upload:(.*)$/) {
 	return (3, undef, undef, undef, $1);
@@ -88,7 +89,7 @@ else {
 # Returns HTML for a field for selecting a local or FTP file
 sub show_backup_destination
 {
-local ($mode, $user, $pass, $server, $path) = &parse_backup_url($_[1]);
+local ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[1]);
 local $rv;
 $rv .= "<table cellpadding=1 cellspacing=0>";
 
@@ -113,6 +114,10 @@ $rv .= "<td>$text{'backup_login'} ".
 $rv .= "<td>$text{'backup_pass'} ".
 	&ui_password("$_[0]_pass", $mode == 1 ? $pass : undef, 15).
 	"</td> </tr>\n";
+$rv .= "<tr> <td></td>\n";
+$rv .= "<td>$text{'backup_port'} ".
+	&ui_opt_textbox("$_[0]_port", $mode == 1 ? $port : undef, 5,
+			$text{'default'})."</td> </tr>\n";
 
 # SCP file fields
 $rv .= "<tr><td>".&ui_oneradio("$_[0]_mode", 2, undef, $mode == 2)."</td>\n";
@@ -129,6 +134,10 @@ $rv .= "<td>$text{'backup_login'} ".
 $rv .= "<td>$text{'backup_pass'} ".
 	&ui_password("$_[0]_spass", $mode == 2 ? $pass : undef, 15).
 	"</td> </tr>\n";
+$rv .= "<tr> <td></td>\n";
+$rv .= "<td>$text{'backup_port'} ".
+	&ui_opt_textbox("$_[0]_sport", $mode == 2 ? $port : undef, 5,
+			$text{'default'})."</td> </tr>\n";
 
 if ($_[2] == 1) {
 	# Uploaded file field
@@ -166,8 +175,12 @@ elsif ($mode == 1) {
 	$in{"$_[0]_path"} =~ /^\/\S/ || &error($text{'backup_epath'});
 	$in{"$_[0]_user"} =~ /^[^:]*$/ || &error($text{'backup_euser'});
 	$in{"$_[0]_pass"} =~ /^[^\@]*$/ || &error($text{'backup_epass'});
+	$in{"$_[0]_port_def"} || $in{"$_[0]_port"} =~ /^\d+$/ ||
+		&error($text{'backup_eport'});
 	return "ftp://".$in{"$_[0]_user"}.":".$in{"$_[0]_pass"}."\@".
-	       $in{"$_[0]_server"}.$in{"$_[0]_path"};
+	       $in{"$_[0]_server"}.
+	       ($in{"$_[0]_port_def"} ? "" : ":".$in{"$_[0]_port"}).
+	       $in{"$_[0]_path"};
 	}
 elsif ($mode == 2) {
 	# SSH server
@@ -175,8 +188,12 @@ elsif ($mode == 2) {
 	$in{"$_[0]_spath"} =~ /^\/\S/ || &error($text{'backup_epath2'});
 	$in{"$_[0]_suser"} =~ /^[^:]*$/ || &error($text{'backup_euser'});
 	$in{"$_[0]_spass"} =~ /^[^\@]*$/ || &error($text{'backup_epass'});
+	$in{"$_[0]_sport_def"} || $in{"$_[0]_sport"} =~ /^\d+$/ ||
+		&error($text{'backup_esport'});
 	return "ssh://".$in{"$_[0]_suser"}.":".$in{"$_[0]_spass"}."\@".
-	       $in{"$_[0]_sserver"}.$in{"$_[0]_spath"};
+	       $in{"$_[0]_sserver"}.
+	       ($in{"$_[0]_sport_def"} ? "" : ":".$in{"$_[0]_sport"}).
+	       $in{"$_[0]_spath"};
 	}
 elsif ($mode == 3) {
 	# Uploaded file .. save as temp file?
@@ -198,7 +215,7 @@ sub execute_backup
 local @mods = grep { $_ ne '' } @{$_[0]};
 
 # Work out where to write to
-local ($mode, $user, $pass, $host, $path) = &parse_backup_url($_[1]);
+local ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($_[1]);
 local $file;
 if ($mode == 0) {
 	$file = &date_subs($path);
@@ -313,14 +330,15 @@ if (!$_[5]) {
 if ($mode == 1) {
 	# FTP upload to destination
 	local $err;
-	&ftp_upload($host, &date_subs($path), $file, \$err, undef, $user,$pass);
+	&ftp_upload($host, &date_subs($path), $file, \$err, undef,
+		    $user, $pass, $port);
 	&unlink_file($file);
 	return $err if ($err);
 	}
 elsif ($mode == 2) {
 	# SCP to destination
 	local $err;
-	&scp_copy($file, "$user\@$host:".&date_subs($path), $pass, \$err);
+	&scp_copy($file, "$user\@$host:".&date_subs($path), $pass, \$err,$port);
 	&unlink_file($file);
 	return $err if ($err);
 	}
@@ -334,7 +352,7 @@ return undef;
 sub execute_restore
 {
 # Fetch file if needed
-local ($mode, $user, $pass, $host, $path) = &parse_backup_url($_[1]);
+local ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($_[1]);
 local $file;
 if ($mode == 0) {
 	$file = $path;
@@ -344,7 +362,7 @@ else {
 	if ($mode == 2) {
 		# Download with SCP
 		local $err;
-		&scp_copy("$user\@$host:$path", $file, $pass, \$err);
+		&scp_copy("$user\@$host:$path", $file, $pass, \$err, $port);
 		if ($err) {
 			&unlink_file($file);
 			return $err;
@@ -353,7 +371,8 @@ else {
 	elsif ($mode == 1) {
 		# Download with FTP
 		local $err;
-		&ftp_download($host, $path, $file, \$err, undef, $user, $pass);
+		&ftp_download($host, $path, $file, \$err, undef,
+			      $user, $pass, $port);
 		if ($err) {
 			&unlink_file($file);
 			return $err;
@@ -484,13 +503,14 @@ if ($_[3]) {
 return undef;
 }
 
-# scp_copy(source, dest, password, &error)
+# scp_copy(source, dest, password, &error, [port])
 # Copies a file from some source to a destination. One or the other can be
 # a server, like user@foo:/path/to/bar/
 sub scp_copy
 {
 &foreign_require("proc", "proc-lib.pl");
-local $cmd = "scp -r ".quotemeta($_[0])." ".quotemeta($_[1]);
+local $cmd = "scp -r ".($_[4] ? "-P $_[4] " : "").
+	     quotemeta($_[0])." ".quotemeta($_[1]);
 local ($fh, $fpid) = &proc::pty_process_exec($cmd);
 local $out;
 while(1) {
@@ -526,7 +546,7 @@ return $job;
 # Returns a backup filename in a human-readable format, with dates substituted
 sub nice_dest
 {
-local ($mode, $user, $pass, $server, $path) = &parse_backup_url($_[0]);
+local ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[0]);
 if ($_[1]) {
 	$path = &date_subs($path);
 	}
@@ -534,10 +554,12 @@ if ($mode == 0) {
 	return "<tt>$path</tt>";
 	}
 elsif ($mode == 1) {
-	return &text('nice_ftp', "<tt>$server</tt>", "<tt>$path</tt>");
+	return &text($port ? 'nice_ftpp' : 'nice_ftp',
+		     "<tt>$server</tt>", "<tt>$path</tt>", "<tt>$port</tt>");
 	}
 elsif ($mode == 2) {
-	return &text('nice_ssh', "<tt>$server</tt>", "<tt>$path</tt>");
+	return &text($port ? 'nice_sshp' : 'nice_ssh',
+		     "<tt>$server</tt>", "<tt>$path</tt>", "<tt>$port</tt>");
 	}
 elsif ($mode == 3) {
 	return $text{'nice_upload'};

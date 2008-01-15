@@ -11,7 +11,7 @@ $src = &parse_backup_destination("src", \%in);
 @mods || &error($text{'restore_emods'});
 
 # Do it ..
-($mode, $user, $pass, $server, $path) = &parse_backup_url($src);
+($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($src);
 if ($mode == 3) {
 	# Create temp file for uploaded file
 	$temp = &transname();

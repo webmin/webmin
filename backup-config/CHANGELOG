@@ -12,3 +12,4 @@ Added a warning if % is used in filenames but strftime substition is not enabled
 Added tabs to reduce the size of the main page.
 ---- Changes since 1.390 ----
 When a directory is entered as an additional path to backup, it will be expanded to the list of all files under it when the backup is done.
+When backing up or restoring from an FTP or SSH server, an optional port number can be entered if the remote server is using a non-standard port.

@@ -12,7 +12,7 @@ $dest = &parse_backup_destination("dest", \%in);
 @mods || ($nofiles && !$configfile) || &error($text{'backup_emods'});
 
 # Go for it
-($mode, $user, $pass, $server, $path) = &parse_backup_url($dest);
+($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($dest);
 if ($mode != 4) {
 	# Save somewhere, and tell the user
 	&ui_print_header(undef, $text{'backup_title'}, "");

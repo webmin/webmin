@@ -52,6 +52,7 @@ backup_mode4=Download in browser
 backup_path=file on server
 backup_login=Login as user
 backup_pass=with password
+backup_port=Server port
 backup_epre=Module $1 rejected backup : $2
 backup_enone=No modules provided any existing files to backup!
 backup_etar=TAR failed : $1
@@ -68,6 +69,8 @@ backup_epath=Missing or invalid absolute path on FTP server
 backup_epath2=Missing or invalid absolute path on SSH server
 backup_euser=Invalid characters in FTP server login
 backup_epass=Invalid characters in FTP server password
+backup_eport=Missing or invalid FTP server port
+backup_esport=Missing or invalid SSH server port
 backup_emods=No modules selected
 backup_title=Backup Configuration
 backup_doing=Starting backup of module configuration files to $1 ..
@@ -81,7 +84,9 @@ restore_failed=.. failed! $1
 restore_done=.. complete. $1 files were restored.
 
 nice_ftp=$2 on $1 via FTP
+nice_ftpp=$2 on $1 port $3 via FTP
 nice_ssh=$2 on $1 via SSH
+nice_sshp=$2 on $1 port $3 via SSH
 nice_upload=uploaded file
 nice_download=browser
 
