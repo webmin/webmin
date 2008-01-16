@@ -41,9 +41,21 @@ else {
 print "<script>\n";
 print "window.doneupload = 1;\n";
 print "</script>\n";
+$start = time();
 while(1) {
 	sleep(1);
-	open(UPFILE, $upfile) || next;
+	$now = time();
+	if (!open(UPFILE, $upfile)) {
+		# Doesn't exist yet
+		if ($now - $start > 60) {
+			# Give up after 60 seconds
+			print "<script>\n";
+			print "document.forms[0].pc.value = \"Not started\";\n";
+			print "</script>\n";
+			last;
+			}
+		next;
+		}
 	@lines = <UPFILE>;
 	chop(@lines);
 	close(UPFILE);
@@ -58,7 +70,6 @@ while(1) {
 		}
 
 	# Check if there has been no activity for 60 seconds
-	$now = time();
 	if ($size == $last_size) {
 		if ($last_time && $last_time < $now-60) {
 			# Too slow! Give up
