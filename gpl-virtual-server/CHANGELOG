@@ -391,3 +391,4 @@ When an alias domain is created, the primary domain can now update its configura
 ---- Changes since 3.51 ----
 When restoring a virtual server that uses features not supported on the system, a warning will be displayed listing the missing or disabled features.
 When editing a virtual server without a private IP address, one can be added that is associated with an existing interface on the system.
+Website FTP access users can be created, who have the same permissions as a domain owner but are limited to FTP access for editing web pages. This feature was ported from the Pro version.
