@@ -1701,7 +1701,7 @@ if (!$connected) {
 return 1;
 }
 
-# ftp_upload(host, file, srcfile, [&error], [&callback], [user, pass])
+# ftp_upload(host, file, srcfile, [&error], [&callback], [user, pass], [port])
 # Upload data from a local file to an FTP site
 sub ftp_upload
 {
@@ -1718,7 +1718,7 @@ local $SIG{ALRM} = "download_timeout";
 alarm(60);
 
 # connect to host and login
-&open_socket($_[0], 21, "SOCK", $_[3]) || return 0;
+&open_socket($_[0], $_[7] || 21, "SOCK", $_[3]) || return 0;
 alarm(0);
 if ($download_timed_out) {
 	if ($_[3]) { ${$_[3]} = $download_timed_out; return 0; }
