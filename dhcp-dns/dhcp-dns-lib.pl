@@ -112,6 +112,10 @@ else {
 	}
 $rv .= &ui_table_start($text{'form_header'}, "width=100%", 2);
 
+# Description
+$rv .= &ui_table_row($text{'form_comment'},
+	&ui_textbox("comment", $host->{'comment'}, 50));
+
 # Hostname
 local $short = &short_hostname($h->{'values'}->[0]);
 local $indom = $new || $short ne $h->{'values'}->[0];
@@ -133,7 +137,7 @@ $rv .= &ui_table_row($text{'form_ip'},
 
 # MAC address
 local $hard = &dhcpd::find("hardware", $h->{'members'});
-$rv .= &ui_hidden("oldmac", $hard->{'values'}->[0]) if ($hard);
+$rv .= &ui_hidden("oldmac", $hard->{'values'}->[1]) if ($hard);
 $rv .= &ui_table_row($text{'form_mac'},
 #	&ui_select("media", $hard ? $hard->{'values'}->[0] : "ethernet",
 #		   [ [ "ethernet", $text{'form_ethernet'} ],
@@ -183,8 +187,11 @@ return ( $fn, \@recs );
 
 sub apply_configuration
 {
-&dhcpd::restart_dhcpd();
-&bind8::restart_bind();
+local $err = &dhcpd::restart_dhcpd();
+return "DHCPD failed : $err" if ($err);
+$err = &bind8::restart_bind();
+return "BIND failed : $err" if ($err);
+return undef;
 }
 
 1;

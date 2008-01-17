@@ -39,19 +39,36 @@ if (@hosts) {
 	print &ui_links_row(\@links);
 	print &ui_columns_start([ "",
 			 	  $text{'index_host'},
+			 	  $text{'index_subnet'},
 			 	  $text{'index_ip'},
 			 	  $text{'index_mac'},
+			 	  $text{'index_desc'},
 				], 100, 0, \@tds);
 	foreach $h (@hosts) {
 		$fixed = &dhcpd::find("fixed-address", $h->{'members'});
 		$hard = &dhcpd::find("hardware", $h->{'members'});
+		my $parentdesc;
+		my $par = $h->{'parent'};
+		if ($par) {
+			if ($par->{'name'} eq 'subnet') {
+				$parentdesc = $par->{'values'}->[0];
+				}
+			elsif ($par->{'name'} eq 'group') {
+				$parentdesc = $par->{'comment'} || 'Group';
+				}
+			elsif ($par->{'name'} eq 'shared-network') {
+				$parentdesc = $par->{'values'}->[0];
+				}
+			}
 		print &ui_checked_columns_row([
 			"<a href='edit.cgi?host=".&urlize($h->{'values'}->[0]).
-			"'>".
-			&html_escape(&short_hostname($h->{'values'}->[0])).
-			"</a>",
+			  "'>".
+			  &html_escape(&short_hostname($h->{'values'}->[0])).
+			  "</a>",
+			$parentdesc,
 			$fixed ? $fixed->{'values'}->[0] : undef,
 			$hard ? $hard->{'values'}->[1] : undef,
+			&html_escape($h->{'comment'}),
 			], \@tds, "d", $h->{'values'}->[0])
 		}
 	print &ui_columns_end();
@@ -62,6 +79,12 @@ else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	print &ui_links_row(\@links);
 	}
+
+print "<hr>\n";
+print &ui_buttons_start();
+print &ui_buttons_row("apply.cgi", $text{'index_apply'},
+		      $text{'index_applydesc'});
+print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
 

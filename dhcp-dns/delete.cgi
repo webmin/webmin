@@ -15,7 +15,7 @@ foreach $d (@d) {
 		&dhcpd::save_directive($host->{'parent'}, [ $host ], [ ], $indent);
 		}
 	($fn, $recs) = &get_dns_zone();
-	($old) = grep { $_->{'name'} eq $d.'.' } @$recs;
+	($old) = grep { lc($_->{'name'}) eq lc($d).'.' } @$recs;
 	if ($old) {
 		&bind8::delete_record($fn, $old);
 		&bind8::bump_soa_record($fn, $recs);
@@ -24,5 +24,4 @@ foreach $d (@d) {
 
 # Apply config
 &flush_file_lines();
-&apply_configuration();
 &redirect("");

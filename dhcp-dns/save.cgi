@@ -7,11 +7,14 @@ require './dhcp-dns-lib.pl';
 @hosts = &list_dhcp_hosts();
 ($fn, $recs) = &get_dns_zone();
 if (!$in{'new'}) {
+	# Get existing host object
 	($host) = grep { $_->{'values'}->[0] eq $in{'old'} } @hosts;
 	$host || &error($text{'edit_egone'});
 	$par = $host->{'parent'};
+	($old) = grep { lc($_->{'name'}) eq lc($in{'old'}).'.' } @$recs;
 	}
 else {
+	# Create new, and work out parent
 	$host = { 'name' => 'host',
 		  'type' => 1,
 		  'members' => [ ] };
@@ -35,7 +38,6 @@ else {
 if ($in{'delete'}) {
 	# Remove the DHCP and DNS hosts
 	&dhcpd::save_directive($par, [ $host ], [ ], $indent);
-	($old) = grep { $_->{'name'} eq $in{'old'}.'.' } @$recs;
 	if ($old) {
 		&bind8::delete_record($fn, $old);
 		&bind8::bump_soa_record($fn, $recs);
@@ -43,13 +45,15 @@ if ($in{'delete'}) {
 	}
 else {
 	# Validate inputs
-	$in{'host'} =~ /^[a-z0-9\.\-]+$/ || &error($text{'save_ehost'});
+	$host->{'comment'} = $in{'comment'};
+	$in{'host'} =~ /^[a-zA-Z0-9\.\-]+$/ || &error($text{'save_ehost'});
 	if ($in{'indom'}) {
 		$in{'host'} .= '.'.$config{'domain'};
 		}
-	if ($in{'new'} || $in{'host'} ne $in{'old'}) {
+	if ($in{'new'} || lc($in{'host'}) ne lc($in{'old'})) {
 		# Check for hostname clash
-		($clash) = grep { $_->{'values'}->[0] eq $in{'host'} } @hosts;
+		($clash) = grep { lc($_->{'values'}->[0]) eq lc($in{'host'}) }
+				@hosts;
 		$clash && &error($text{'save_eclash'});
 		}
 	$host->{'values'} = [ $in{'host'} ];
@@ -58,17 +62,19 @@ else {
 	if ($in{'new'} || $in{'ip'} ne $in{'oldip'}) {
 		# Check for IP clash
 		($clash) = grep { my $f = &dhcpd::find("fixed-address", $_->{'members'}); $f->{'values'}->[0] eq $in{'ip'} } @hosts;
-		$clash && &error($text{'save_eclaship'});
+		$clash && &error(&text('save_eclaship',
+				       $clash->{'values'}->[0]));
 		}
 	&dhcpd::save_directive($host, 'fixed-address',
 			[ { 'name' => 'fixed-address',
 			    'values' => [ $in{'ip'} ] } ]);
 
-	$in{'mac'} =~ /^[a-f0-9:]+$/i || &error($text{'save_emac'});
-	if ($in{'new'} || $in{'mac'} ne $in{'oldmac'}) {
+	$in{'mac'} =~ /^[a-fA-F0-9:]+$/i || &error($text{'save_emac'});
+	if ($in{'new'} || lc($in{'mac'}) ne lc($in{'oldmac'})) {
 		# Check for MAC clash
-		($clash) = grep { my $h = &dhcpd::find("hardware", $_->{'members'}); $h->{'values'}->[1] eq $in{'mac'} } @hosts;
-		$clash && &error($text{'save_eclaship'});
+		($clash) = grep { my $h = &dhcpd::find("hardware", $_->{'members'}); lc($h->{'values'}->[1]) eq lc($in{'mac'}) } @hosts;
+		$clash && &error(&text('save_eclashmac',
+				       $clash->{'values'}->[0]));
 		}
 	&dhcpd::save_directive($host, 'hardware',
 			[ { 'name' => 'hardware',
@@ -81,7 +87,6 @@ else {
 		}
 	else {
 		# Update in DNS
-		($old) = grep { $_->{'name'} eq $in{'old'}.'.' } @$recs;
 		if ($old) {
 			&bind8::modify_record($fn, $old, $in{'host'}.'.',
 					      $old->{'ttl'}, $old->{'class'},
@@ -95,6 +100,5 @@ else {
 				[ $host ], $indent);
 	}
 &flush_file_lines();
-&apply_configuration();
 &redirect("");
 
