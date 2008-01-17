@@ -8,13 +8,23 @@ $can_fetch || &error($text{'fetch_ecannot'});
 
 # Validate filename
 $file = $ENV{'PATH_INFO'} || $in{'fetch'};
-if ($file !~ /^\// && $can_dirs[0] ne "/") {
+if ($file !~ /^([a-z]:)?\// && $can_dirs[0] ne "/") {
 	$file = "$can_dirs[0]/$file";
 	}
 $file || &error($text{'fetch_efile'});
--r $file && !-d $file || &error($text{'fetch_eexists'});
+if ($file =~ /^(.*)\.zip$/ && $in{'unzip'}) {
+	# Remove .zip extension
+	$file = $1;
+	}
+-r $file || -d $file || &error($text{'fetch_eexists2'});
 &can_write_file($file) ||
 	&error(&text('fetch_eaccess', "<tt>$file</tt>", $!));
+if (-d $file && !&has_command("zip")) {
+	&error($text{'fetch_ezip'});
+	}
+if ($file eq "/" || $file =~ /^[a-z]:\/$/) {
+	&error($text{'fetch_eroot'});
+	}
 
 if ($ENV{'PATH_INFO'}) {
 	# Switch to the correct user
@@ -27,25 +37,50 @@ if ($ENV{'PATH_INFO'}) {
 		&switch_uid_to($uinfo[2], $uinfo[3]);
 		}
 
-	# Send it
-	&open_readfile(FILE, $file) || &error(&text('fetch_eopen', $!));
-	if ($fetch_show) {
-		$type = &guess_mime_type($file, undef);
-		if (!$type) {
-			# See if it is really text
-			$out = &backquote_command("file ".quotemeta(&resolve_links($file)));
-			$type = "text/plain" if ($out =~ /text|script/);
+	if (-d $file) {
+		# Zip up the whole directory
+		($shortfile = $file) =~ s/^.*\///g;
+		$temp = &transname($shortfile.".zip");
+		$out = &backquote_command("cd ".quotemeta($file)." && zip -r $temp .");
+		if ($?) {
+			&error(&text('fetch_ezipcmd',
+				     "<tt>".&html_escape($out)."</tt>"));
 			}
+		print "Content-type: application/zip\n\n";
+		open(FILE, $temp);
+		while(<FILE>) {
+			print $_;
+			}
+		close(FILE);
+		unlink($temp);
 		}
 	else {
-		print "Content-Disposition: Attachment\n";
+		# Work out the type
+		&open_readfile(FILE, $file) ||
+			&error(&text('fetch_eopen', $!));
+		if ($fetch_show) {
+			$type = &guess_mime_type($file, undef);
+			if (!$type) {
+				# See if it is really text
+				$out = &backquote_command("file ".quotemeta(&resolve_links($file)));
+				$type = "text/plain" if ($out =~ /text|script/);
+				}
+			}
+		else {
+			print "Content-Disposition: Attachment\n";
+			}
+
+		# Send it
+		$type ||= "application/octet-stream";
+		if (!$fetch_show) {
+			print "Content-Disposition: Attachment\n";
+			}
+		print "Content-type: $type\n\n";
+		while(<FILE>) {
+			print $_;
+			}
+		close(FILE);
 		}
-	$type ||= "application/octet-stream";
-	print "Content-type: $type\n\n";
-	while(<FILE>) {
-		print $_;
-		}
-	close(FILE);
 
 	# Switch back to root
 	&switch_uid_back();
@@ -68,6 +103,11 @@ else {
 		}
 
 	# Redirect to nice URL
-	&redirect("fetch.cgi".$file);
+	if (-d $file) {
+		&redirect("fetch.cgi".$file.".zip?unzip=1");
+		}
+	else {
+		&redirect("fetch.cgi".$file);
+		}
 	}
 
