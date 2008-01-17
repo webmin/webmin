@@ -143,6 +143,18 @@ if (!defined($config_file_cache{$file})) {
 				$parent = $dir;
 				}
 			}
+		elsif (/^\s*(\S[^=]*\S)\s*=\s*$/) {
+			# A name = with no value
+			local $rest = $3;
+			local $dir = { 'name' => $1,
+				       'value' => undef,
+				       'line' => $lnum,
+				       'eline' => $lnum,
+				       'file' => $file,
+				       'type' => 0,
+				       'parent' => $parent };
+			push(@{$parent->{'members'}}, $dir);
+			}
 		elsif (/^\s*(\S+)\s*{\s*$/) {
 			# Start of a section
 			local $dir = { 'name' => $1,
