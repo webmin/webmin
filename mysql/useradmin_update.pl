@@ -49,6 +49,7 @@ sub useradmin_modify_user
 {
 if ($config{'sync_modify'}) {
 	local $sql;
+	$_[0]->{'olduser'} ||= $_[0]->{'user'};	# In case not changed
 	if ($_[0]->{'passmode'} == 4) {
 		# Not changing password
 		$sql = sprintf "update user set user = '%s' where user = '%s'", $_[0]->{'user'}, $_[0]->{'olduser'};
