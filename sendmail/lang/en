@@ -416,6 +416,7 @@ mailq_size=Size
 mailq_status=Status
 mailq_cc=Cc
 mailq_subject=Subject
+mailq_dir=Directory
 mailq_unknown=Unknown
 mailq_sending=Sending
 mailq_dmsg=To view a message from the mail queue, click on its ID in the list above.

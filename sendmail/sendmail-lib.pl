@@ -551,6 +551,7 @@ push(@hcols, $text{'mailq_cc'}) if ($show{'Cc'});
 push(@hcols, $text{'mailq_subject'}) if ($show{'Subject'});
 push(@hcols, $text{'mailq_size'}) if ($show{'Size'});
 push(@hcols, $text{'mailq_status'}) if ($show{'Status'});
+push(@hcols, $text{'mailq_dir'}) if ($show{'Dir'});
 print &ui_columns_start(\@hcols, 100, 0, \@tds);
 
 # Show table rows for emails
@@ -559,6 +560,8 @@ foreach my $f (@$qfiles) {
 	($n = $f) =~ s/^.*\///;
 	local $mail = $qmails->{$f} || &mail_from_queue($f);
 	next if (!$mail);
+	local $dir = $f;
+	$dir =~ s/\/[^\/]+$//;
 
 	$mail->{'header'}->{'from'} ||= $text{'mailq_unknown'};
 	$mail->{'header'}->{'to'} ||= $text{'mailq_unknown'};
@@ -593,6 +596,7 @@ foreach my $f (@$qfiles) {
 	push(@cols, "<font size=1>$mail->{'header'}->{'subject'}</font>") if ($show{'Subject'});
 	push(@cols, "<font size=1>$size</font>") if ($show{'Size'});
 	push(@cols, "<font size=1>$mail->{'status'}</font>") if ($show{'Status'});
+	push(@cols, "<font size=1>$dir</font>") if ($show{'Dir'});
 	print "</tr>\n";
 	if ($access{'mailq'} == 2) {
 		print &ui_checked_columns_row(\@cols, \@tds, "file",$f);

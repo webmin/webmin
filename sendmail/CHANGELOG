@@ -31,3 +31,4 @@ The count of messages in the mail queue on the module's main page no longer incl
 Added access control for the Spam Control page.
 ---- Changes since 1.390 ----
 Added a Module Config option to support ~/Maildir mailboxes (even though Sendmail doesn't support this natively).
+Added an option to show the directory queued messages are in, which is useful on systems with several queues.
