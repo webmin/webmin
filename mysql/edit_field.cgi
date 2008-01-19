@@ -20,53 +20,47 @@ else {
 	$type = $f->{'type'};
 	}
 
-print "<form action=save_field.cgi>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<input type=hidden name=table value='$in{'table'}'>\n";
-print "<input type=hidden name=new value='$in{'type'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'field_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+# Start of form
+print &ui_form_start("save_field.cgi");
+print &ui_hidden("db", $in{'db'});
+print &ui_hidden("table", $in{'table'});
+print &ui_hidden("new", $in{'type'});
+print &ui_table_start($text{'field_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'field_name'}</b></td>\n";
-print "<td><input name=field size=20 value='$f->{'field'}'></td> </tr>\n";
-print "<input type=hidden name=old value='$f->{'field'}'>\n" if (!$in{'type'});
+# Field name
+print &ui_table_row($text{'field_name'},
+	&ui_textbox("field", $f->{'field'}, 20));
+print &ui_hidden("old", $f->{'field'}) if (!$in{'type'});
 
+# Type
 if ($type =~ /^(\S+)\((.*)\)(.*)/) {
 	$type = $1;
 	$size = $2;
 	$extra = $3;
 	}
-print "<input type=hidden name=type value='$type'>\n";
-print "<tr> <td><b>$text{'field_type'}</b></td>\n";
+print &ui_hidden("type", $type);
 if ($in{'type'}) {
 	# New field .. just show chosen type
-	print "<td>$type</td> </tr>\n";
+	$tsel = $type;
 	}
 else {
 	# Existing field .. allow type change
-	print "<td><select name=newtype>\n";
-	foreach $t (@type_list) {
-		printf "<option %s>%s\n",
-			$t eq $type ? "selected" : "", $t;
-		}
-	print "</select> $text{'field_typewarn'}</td> </tr>\n";
+	$tsel = &ui_select("newtype", $type, \@type_list)." ".
+		$text{'field_typewarn'};
 	}
+print &ui_table_row($text{'field_type'}, $tsel);
 
 if ($type eq 'enum' || $type eq 'set') {
 	# List of values
 	local @ev = &split_enum($size);
-	print "<tr> <td valign=top><b>$text{'field_enum'}</b></td>\n";
-	print "<td><textarea name=size rows=4 cols=20>",
-		join("\n", @ev),"</textarea></td> </tr>\n";
+	print &ui_table_row($text{'field_enum'},
+		&ui_textarea("size", join("\n", @ev), 4, 20));
 	}
 elsif ($type eq 'float' || $type eq 'double' || $type eq 'decimal') {
-	# Two values
-	print "<tr> <td><b>$text{'field_dual'}</b></td>\n";
-	printf "<td><input name=size1 size=5 value='%s'>\n",
-		$size =~ /^(\d+)/ ? $1 : '';
-	printf "<input name=size2 size=5 value='%s'></td> </tr>\n",
-		$size =~ /(\d+)$/ ? $1 : '';
+	# Two values, for total and decimal
+	print &ui_table_row($text{'field_dual'},
+		&ui_textbox("size1", $size =~ /^(\d+)/ ? $1 : '', 5)."\n".
+		&ui_textbox("size2", $size =~ /(\d+)$/ ? $1 : '', 5));
 	}
 elsif ($type eq 'date' || $type eq 'datetime' || $type eq 'time' ||
        $type eq 'timestamp' || $type =~ /(blob|text)$/) {
@@ -74,90 +68,69 @@ elsif ($type eq 'date' || $type eq 'datetime' || $type eq 'time' ||
 	}
 elsif ($type ne 'varchar' && $type ne 'char' && $in{'type'}) {
 	# Size is optional for new fields of most types
-	print "<tr> <td><b>$text{'field_size'}</b></td>\n";
-	print "<td><input type=radio name=size_def value=1 checked> ",
-	      "$text{'default'}\n";
-	print "<input type=radio name=size_def value=0>\n";
-	print "<input name=size size=10 value='$size'></td> </tr>\n";
+	print &ui_table_row($text{'field_size'},
+		&ui_opt_textbox("size", undef, $text{'default'}, 10));
 	}
 else {
-	# One single value
-	print "<tr> <td><b>$text{'field_size'}</b></td>\n";
-	print "<td><input name=size size=10 value='$size'></td> </tr>\n";
+	# Size is one value
+	print &ui_table_row($text{'field_size'},
+		&ui_textbox("size", $size, 10));
 	}
 
 if ($type =~ /int$/) {
 	# Display unsigned/zerofill option
-	print "<tr> <td><b>$text{'field_opts'}</b></td>\n";
-	printf "<td><input name=opts type=radio value='' %s> %s\n",
-		$extra =~ /unsigned/ ? '' : 'checked',
-		$text{'field_none'};
-	printf "<input name=opts type=radio value=unsigned %s> %s\n",
-		$extra =~ /unsigned/ && $extra !~ /zerofill/ ? 'checked' : '',
-		$text{'field_unsigned'};
-	printf "<input name=opts type=radio value=zerofill %s> %s</td> </tr>\n",
-		$extra =~ /zerofill/ ? 'checked' : '',
-		$text{'field_zerofill'};
+	print &ui_table_row($text{'field_opts'},
+		&ui_radio("opts", $extra =~ /unsigned/ ? 'unsigned' :
+				  $extra =~ /zerofill/ ? 'zerofill' : '',
+			  [ [ '', $text{'field_none'} ],
+			    [ 'unsigned', $text{'field_unsigned'} ],
+			    [ 'zerofill', $text{'field_zerofill'} ] ]));
 
 	# Display auto-increment option
-	print "<tr> <td><b>$text{'field_auto'}</b></td>\n";
-	printf "<td><input name=ext type=radio value=%s %s> %s\n",
-		'auto_increment',
-		$f->{'extra'} =~ /auto_increment/ ? 'checked' : '',
-		$text{'yes'};
-	printf "<input name=ext type=radio value='' %s> %s</td></tr>\n",
-		$f->{'extra'} =~ /auto_increment/ ? '' : 'checked',
-		$text{'no'};
+	print &ui_table_row($text{'field_auto'},
+		&ui_radio("ext", $f->{'extra'} =~ /auto_increment/ ?
+					'auto_increment' : '',
+			  [ [ 'auto_increment', $text{'yes'} ],
+			    [ '', $text{'no'} ] ]));
 	}
 elsif ($type eq 'float' || $type eq 'double' || $type eq 'decimal') {
 	# Display zerofill option
-	print "<tr> <td><b>$text{'field_opts'}</b></td>\n";
-	printf "<td><input name=opts type=radio value='' %s> %s\n",
-		$extra =~ /unsigned/ ? '' : 'checked',
-		$text{'field_none'};
-	printf "<input name=opts type=radio value=zerofill %s> %s</td> </tr>\n",
-		$extra =~ /zerofill/ ? 'checked' : '',
-		$text{'field_zerofill'};
+	print &ui_table_row($text{'field_opts'},
+		&ui_radio("opts", $extra =~ /zerofill/ ? 'zerofill' : '',
+			  [ [ '', $text{'field_none'} ],
+			    [ 'zerofill', $text{'field_zerofill'} ] ]));
 	}
 elsif ($type eq 'char' || $type eq 'varchar') {
 	# Display binary option
-	print "<tr> <td><b>$text{'field_opts'}</b></td>\n";
-	printf "<td><input name=opts type=radio value='' %s> %s\n",
-		$extra =~ /binary/ ? '' : 'checked',
-		$text{'field_ascii'};
-	printf "<input name=opts type=radio value=binary %s> %s</td> </tr>\n",
-		$extra =~ /binary/ ? 'checked' : '',
-		$text{'field_binary'};
+	print &ui_table_row($text{'field_opts'},
+		&ui_radio("opts", $extra =~ /binary/ ? 'binary' : '',
+			  [ [ '', $text{'field_ascii'} ],
+			    [ 'binary', $text{'field_binary'} ] ]));
 	}
 
-print "<tr> <td><b>$text{'field_null'}</b></td>\n";
-printf "<td><input name=null type=radio value=1 %s> $text{'yes'}\n",
-	$in{'type'} || $f->{'null'} eq 'YES' ? 'checked' : '';
-printf "<input name=null type=radio value=0 %s> $text{'no'}</td> </tr>\n",
-	$in{'type'} || $f->{'null'} eq 'YES' ? '' : 'checked';
+# Allow nulls?
+print &ui_table_row($text{'field_null'},
+	&ui_radio("null", $in{'type'} || $f->{'null'} eq 'YES' ? 1 : 0,
+		  [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'field_default'}</b></td>\n";
-printf "<td><input name=default size=20 value='%s'></td> </tr>\n",
-	$f->{'default'} eq 'NULL' ? '' : $f->{'default'};
+# Default value
+print &ui_table_row($text{'field_default'},
+	&ui_textbox("default", $f->{'default'} eq 'NULL' ? '' :
+				$f->{'default'}, 40));
 
-print "<tr> <td><b>$text{'field_key'}</b></td>\n";
-printf "<td><input type=radio name=key value=1 %s> %s\n",
-	$f->{'key'} eq 'PRI' ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=key value=0 %s> %s</td> </tr>\n",
-	$f->{'key'} eq 'PRI' ? '' : 'checked', $text{'no'};
-printf "<input type=hidden name=oldkey value='%d'>\n",
-	$f->{'key'} eq 'PRI' ? 1 : 0;
+# Part of primary key
+print &ui_table_row($text{'field_key'},
+	&ui_yesno_radio("key", $f->{'key'} eq 'PRI' ? 1 : 0));
+print &ui_hidden("oldkey", $f->{'key'} eq 'PRI' ? 1 : 0);
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 if ($in{'type'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>&nbsp;\n";
-	print "<input type=submit name=delete value='$text{'delete'}'>\n"
-		if (@desc > 1);
+	print &ui_form_end([ [ undef, $text{'save'} ],
+		    @desc > 1 ? ( [ 'delete', $text{'delete'} ] ): ( ) ]);
 	}
-print "</form>\n";
 
 &ui_print_footer("edit_table.cgi?db=$in{'db'}&table=".&urlize($in{'table'}),
 		 $text{'table_return'},

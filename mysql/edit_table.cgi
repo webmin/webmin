@@ -48,52 +48,41 @@ print &ui_columns_end();
 print &ui_links_row(\@rowlinks);
 print &ui_form_end([ [ "delete", $text{'table_delete'} ] ]);
 
-print "<form action=edit_field.cgi>\n";
-print &ui_hidden("db", $in{'db'}),"\n";
-print &ui_hidden("table", $in{'table'}),"\n";
-print "<table width=100%><tr>\n";
+$hiddens = &ui_hidden("db", $in{'db'}).&ui_hidden("table", $in{'table'});
+print "<table><tr>\n";
 
 # Add field button
-print "<td width=25% nowrap><input type=submit value='$text{'table_add'}'>\n";
-print "<select name=type>\n";
-foreach $t (@type_list) {
-	print "<option>$t\n";
-	}
-print "</select></td></form>\n";
+print &ui_form_start("edit_field.cgi");
+print $hiddens;
+print "<td nowrap>",&ui_submit($text{'table_add'});
+print &ui_select("type", undef, \@type_list);
+print "</td>",&ui_form_end();
 
 # View and edit data button
-print "<form action=view_table.cgi method=post enctype=multipart/form-data>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<input type=hidden name=table value='$in{'table'}'>\n";
-print "<td align=center width=25%>\n";
-print "<input type=submit value='$text{'table_data'}'></td>\n";
-print "</form>\n";
+print &ui_form_start("view_table.cgi", "form-data");
+print $hiddens;
+print "<td>",&ui_submit($text{'table_data'});
+print "</td>",&ui_form_end();
 
 # CSV export button
-print "<form action=csv_form.cgi>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<input type=hidden name=table value='$in{'table'}'>\n";
-print "<td align=center width=25%>\n";
-print "<input type=submit value='$text{'table_csv'}'></td>\n";
-print "</form>\n";
+print &ui_form_start("csv_form.cgi");
+print $hiddens;
+print "<td>",&ui_submit($text{'table_csv'});
+print "</td>",&ui_form_end();
 
 if ($access{'indexes'}) {
 	# Create index button
-	print "<form action=edit_index.cgi>\n";
-	print "<input type=hidden name=db value='$in{'db'}'>\n";
-	print "<input type=hidden name=table value='$in{'table'}'>\n";
-	print "<td align=center width=25%>\n";
-	print "<input type=submit value='$text{'table_index'}'></td>\n";
-	print "</form>\n";
+	print &ui_form_start("edit_index.cgi");
+	print $hiddens;
+	print "<td>",&ui_submit($text{'table_index'});
+	print "</td>",&ui_form_end();
 	}
 
 # Drop table button
-print "<form action=drop_table.cgi>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<input type=hidden name=table value='$in{'table'}'>\n";
-print "<td align=right width=25%>\n";
-print "<input type=submit value='$text{'table_drop'}'></td>\n";
-print "</form>\n";
+print &ui_form_start("drop_table.cgi");
+print $hiddens;
+print "<td>",&ui_submit($text{'table_drop'});
+print "</td>",&ui_form_end();
 
 print "</tr></table>\n";
 

@@ -65,3 +65,4 @@ When testing if a user can login, no specific database is used in case the user 
 When there are too many databases, huge lists of all databases and tables are not shown on the Table Permissions and Field Permissions pages. Instead, text boxes for entering names are shown.
 System variables can now be searched using a new field, making it easier to find the one you want from the large list on some systems.
 Re-designed the Execute SQL page to use tabs.
+Converted all user interface code to use the new Webmin UI library, for a more consistent look.
