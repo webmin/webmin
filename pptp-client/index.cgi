@@ -62,7 +62,9 @@ else {
 			  $config{'tunnel'} eq $t->{'name'} ? "selected" : "",
 			  $t->{'name'};
 			}
-		print "</select></td>\n";
+		print "</select>\n";
+		print $text{'index_pass'}," ",&ui_password("cpass", undef, 10);
+		print "</td>\n";
 		print "<td>$text{'index_conndesc'}</td> </form></tr>\n";
 		}
 

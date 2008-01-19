@@ -25,7 +25,29 @@ $| = 1;
 print "<b>",&text('conn_cmd', "<tt>$config{'pptp'} $tunnel->{'server'} ".
 				 "call $in{'tunnel'}</tt>"),"</b><p>\n";
 
-($ok, @status) = &connect_tunnel($tunnel);
+# If a password is passed, use it to temprarily overwrite the one in
+# the secrets file
+if ($in{'cpass'}) {
+	$login = &find("name", $tunnel->{'opts'});
+	$sn = $login ? $login->{'value'} : &get_system_hostname(1);
+	&lock_file($config{'pap_file'});
+	@secs = &list_secrets();
+	($sec) = grep { $_->{'client'} eq $sn } @secs;
+	$oldsecret = $sec->{'secret'};
+	$sec->{'secret'} = $in{'cpass'};
+	&change_secret($sec);
+	&flush_file_lines();
+	($ok, @status) = &connect_tunnel($tunnel);
+	$sec->{'secret'} = $oldsecret;
+	&change_secret($sec);
+	&flush_file_lines();
+	&unlock_file($config{'pap_file'});
+	&lock_file($config{'pap_file'});
+	}
+else {
+	($ok, @status) = &connect_tunnel($tunnel);
+	}
+
 if ($ok) {
 	# Worked! Tell user
 	print "<b>",&text('conn_ok', "<tt>$status[0]</tt>",

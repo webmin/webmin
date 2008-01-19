@@ -7,6 +7,7 @@ index_none=No PPTP tunnels have been defined yet.
 index_tunnel=Tunnel $1
 index_add=Add a new PPTP VPN tunnel.
 index_conn=Connect to:
+index_pass=with optional password:
 index_conndesc=Click this button to connect the selected PPTP VPN tunnel using its current configuration.
 index_disc=Disconnect from:
 index_discdesc=Click this button to disconnect the selected currently active PPTP VPN tunnel and remove all routes through it.
