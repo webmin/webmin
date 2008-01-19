@@ -15,26 +15,35 @@ print &ui_table_start($text{'table_header2'}, undef, 2);
 print &ui_table_row($text{'table_name'},
 		    &ui_textbox("name", undef, 30));
 
-foreach $d (&list_databases()) {
-	next if (!&can_edit_db($d));
-	foreach $t (&list_tables($d, 1)) {
-		push(@tables, [ "$d.$t" ]);
-		}
+@dbs = grep { &can_edit_db($_) } &list_databases();
+if (@dbs > $max_dbs) {
+	# Enter source table name manually
+	print &ui_table_row($text{'table_copy2'},
+		&ui_select("copydb", $in{'db'}, \@dbs).
+		" $text{'table_copy2t'} ".
+		&ui_textbox("copytable", undef, 20));
 	}
-print &ui_table_row($text{'table_copy'},
-		    &ui_select("copy", undef,
-			       [ [ "", $text{'table_copynone'} ],
-				 @tables ]));
+else {
+	# Show all tables in all DBs
+	foreach $d (@dbs) {
+		foreach $t (&list_tables($d, 1)) {
+			push(@tables, [ "$d.$t" ]);
+			}
+		}
+	print &ui_table_row($text{'table_copy'},
+			    &ui_select("copy", undef,
+				       [ [ "", $text{'table_copynone'} ],
+					 @tables ]));
+	}
 
 print &ui_table_row($text{'table_type'},
 		    &ui_select("type", "",
-			[ [ "", $text{'default'} ], [ "isam" ], [ "myisam" ],
-			  [ "heap" ], [ "merge" ], [ "innodb" ], [ "ndbcluster" ]
-			]));
+		      [ [ "", $text{'default'} ], [ "isam" ], [ "myisam" ],
+			[ "heap" ], [ "merge" ], [ "innodb" ], [ "ndbcluster" ]
+		      ]));
 
-print "<tr> <td colspan=2>";
-&show_table_form($in{"fields"} || 4);
-print "</td> </tr>\n";
+$out = &capture_function_output(\&show_table_form, $in{"fields"} || 4);
+print &ui_table_row(undef, $out, 2);
 
 print &ui_table_end();
 print &ui_form_end([ [ "create", $text{'create'} ] ]);

@@ -727,39 +727,24 @@ return 1;
 # show_table_form(count)
 sub show_table_form
 {
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'field_name'}</b></td> ",
-      "<td><b>$text{'field_type'}</b></td> ",
-      "<td><b>$text{'field_size'}</b></td> ",
-      "<td><b>$text{'table_nkey'}</b></td> ",
-      "<td><b>$text{'field_auto'}</b></td> ",
-      "<td><b>$text{'field_null'}</b></td> ",
-      "<td><b>$text{'field_unsigned'}</b></td> ",
-      "<td><b>$text{'field_default'}</b></td> </tr>\n";
+print &ui_columns_start([ $text{'field_name'}, $text{'field_type'},
+			  $text{'field_size'}, $text{'table_nkey'},
+			  $text{'field_auto'}, $text{'field_null'},
+			  $text{'field_unsigned'}, $text{'field_default'} ]);
 local $i;
 for($i=0; $i<$_[0]; $i++) {
-	print "<tr $cb>\n";
-	print "<td><input name=field_$i size=20></td>\n";
-	print "<td><select name=type_$i>\n";
-	print "<option selected>\n";
-	local $t;
-	foreach $t (@type_list) {
-		print "<option value='$t'>$t\n";
-		}
-	print "</select></td>\n";
-	print "<td><input name=size_$i size=10></td>\n";
-	print "<td><input type=checkbox name=key_$i value=1>&nbsp;",
-	      "$text{'yes'}</td>\n";
-	print "<td><input type=checkbox name=auto_$i value=1>&nbsp;",
-	      "$text{'yes'}</td>\n";
-	print "<td><input type=checkbox name=null_$i value=1 checked>&nbsp;",
-	      "$text{'yes'}</td>\n";
-	print "<td><input type=checkbox name=unsigned_$i value=1>&nbsp;",
-	      "$text{'yes'}</td>\n";
-	print "<td><input name=default_$i size=15></td>\n";
-	print "</tr>\n";
+	local @cols;
+	push(@cols, &ui_textbox("field_$i", undef, 20));
+	push(@cols, &ui_select("type_$i", "", [ "", @type_list ]));
+	push(@cols, &ui_textbox("size_$i", undef, 10));
+	push(@cols, &ui_checkbox("key_$i", 1, $text{'yes'}, 0));
+	push(@cols, &ui_checkbox("auto_$i", 1, $text{'yes'}, 0));
+	push(@cols, &ui_checkbox("null_$i", 1, $text{'yes'}, 1));
+	push(@cols, &ui_checkbox("unsigned_$i", 1, $text{'yes'}, 0));
+	push(@cols, &ui_textbox("default_$i", undef, 20));
+	print &ui_columns_row(\@cols);
 	}
-print "</table>\n";
+print &ui_columns_end();
 }
 
 # parse_table_form(&extrafields, tablename)

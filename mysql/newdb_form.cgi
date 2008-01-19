@@ -6,37 +6,31 @@ require './mysql-lib.pl';
 $access{'create'} || &error($text{'newdb_ecannot'});
 &ui_print_header(undef, $text{'newdb_title'}, "", "newdb_form");
 
-print "<form action=newdb.cgi method=post>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'newdb_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("newdb.cgi", "post");
+print &ui_table_start($text{'newdb_header'}, undef, 2);
 
 # DB name
-print "<tr> <td><b>$text{'newdb_db'}</b></td>\n";
-print "<td><input name=db size=15></td> </tr>\n";
+print &ui_table_row($text{'newdb_db'},
+	&ui_textbox("db", undef, 20));
 
 if ($mysql_version >= 4.1) {
 	# Character set option
-	print "<tr> <td><b>$text{'newdb_charset'}</b></td>\n";
-	print "<td>",&ui_select("charset", undef,
+	print &ui_table_row($text{'newdb_charset'},
+		     &ui_select("charset", undef,
 				[ [ undef, "&lt;$text{'default'}&gt;" ],
-				  &list_character_sets() ]),"</td> </tr>\n";
+				  &list_character_sets() ]));
 	}
 
 # Initial table name
-print "<tr> <td><b>$text{'newdb_table'}</b></td> <td>\n";
-print "<input name=table_def type=radio value=1 checked> $text{'newdb_none'}\n";
-print "<input name=table_def type=radio value=0> $text{'newdb_tname'}\n";
-print "<input name=table size=20> $text{'newdb_str'}</td> </tr>\n";
+print &ui_table_row($text{'newdb_table'},
+	&ui_radio("table_def", 1, [ [ 1, $text{'newdb_none'} ],
+				    [ 0, $text{'newdb_tname'} ] ])." ".
+	&ui_textbox("table", undef, 20)." ".$text{'newdb_str'}."...");
+$out = &capture_function_output(\&show_table_form, 4);
+print &ui_table_row(undef, $out, 2);
 
-print "<tr> <td colspan=2>";
-&show_table_form(4);
-print "</td> </tr>\n";
-
-print "<tr> <td colspan=2 align=right><input type=submit ",
-      "value='$text{'create'}'></td> </tr>\n";
-
-print "</table></td></tr></table></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -8,8 +8,9 @@ require './mysql-lib.pl';
 $access{'edonly'} && &error($text{'dbase_ecannot'});
 &error_setup($text{'table_err'});
 $in{'name'} =~ /^\S+$/ || &error($text{'table_ename'});
-if ($in{'copy'}) {
-	local ($db, $table) = split(/\./, $in{'copy'});
+if ($in{'copy'} || $in{'copytable'}) {
+	local ($db, $table) = $in{'copy'} ? split(/\./, $in{'copy'})
+					  : ($in{'copydb'}, $in{'copytable'});
 	foreach $f (&table_structure($db, $table)) {
 		local $copy = &quotestr($f->{'field'})." $f->{'type'}";
 		$copy .= " not null" if (!$f->{'null'});
