@@ -122,7 +122,7 @@ print "</ul><p>\n";
 
 sub inst_error
 {
-print "<b>$whatfailed : $_[0]</b> <p>\n";
+print "<b>$main::whatfailed : $_[0]</b> <p>\n";
 &ui_print_footer("", $text{'index_return'});
 exit;
 }

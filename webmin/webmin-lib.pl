@@ -183,6 +183,7 @@ if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
 		return &text('install_eirpm', "<tt>$out</tt>");
 		}
 	unlink("$config_directory/module.infos.cache");
+	&flush_webmin_caches();
 
 	$mdirs[0] = &module_root_directory($name);
 	if (%minfo = &get_module_info($name)) {
