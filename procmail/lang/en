@@ -68,6 +68,8 @@ edit_cmode_gt=Mail is bigger than
 edit_conddesc=For the above action to be carried out, all the conditions below must match. If there are no conditions, the action will always be executed.
 edit_none=None
 edit_lock=Specific file
+edit_ctype=Condition type
+edit_cvalue=Regular expression or command
 
 save_err=Failed to save action
 save_eaction_0=Missing file to append to

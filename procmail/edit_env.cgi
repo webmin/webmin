@@ -13,41 +13,29 @@ else {
 	$env = $conf[$in{'idx'}];
 	}
 
-print "<form action=save_env.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
+print &ui_form_start("save_env.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'env_header'}, "width=100%", 2);
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'env_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Variable name
+print &ui_table_row($text{'env_name'},
+	&ui_textbox("name", $env->{'name'}, 60));
 
-print "<tr> <td><b>$text{'env_name'}</b></td>\n";
-printf "<td><input name=name size=60 value='%s'></td> </tr>\n",
-	&html_escape($env->{'name'});
-
-print "<tr> <td valign=top><b>$text{'env_value'}</b></td>\n";
-if ($env->{'value'} =~ /\n/) {
-	print "<td><textarea name=value rows=4 cols=60>",
-		&html_escape($env->{'value'}),"</textarea></td> </tr>\n";
-	}
-else {
-	printf "<td><input name=value size=60 value='%s'></td> </tr>\n",
-		&html_escape($env->{'value'});
-	}
-
-print "</table></td></tr></table>\n";
+# Value or values
+print &ui_table_row($text{'env_value'},
+	$env->{'value'} =~ /\n/ ? &ui_textarea("value", $env->{'value'}, 4, 60)
+				: &ui_textbox("value", $env->{'value'}, 60));
 
 # Show save buttons
-print "<table width=100%><tr>\n";
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</tr></table></form>\n";
 
 &ui_print_footer("", $text{'index_return'});
 

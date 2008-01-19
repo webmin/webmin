@@ -13,31 +13,25 @@ else {
 	$inc = $conf[$in{'idx'}];
 	}
 
-print "<form action=save_inc.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
+print &ui_form_start("save_inc.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'inc_header'}, "width=100%", 2);
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'inc_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-
-print "<tr> <td><b>$text{'inc_inc'}</b></td>\n";
-printf "<td><input name=inc size=60 value='%s'> %s</td> </tr>\n",
-	&html_escape($inc->{'include'}), &file_chooser_button("inc");
-
-print "</table></td></tr></table>\n";
+# Included file
+print &ui_table_row($text{'inc_inc'},
+	&ui_textbox("inc", $inc->{'include'}, 60)." ".
+	&file_chooser_button("inc"));
 
 # Show save buttons
-print "<table width=100%><tr>\n";
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</tr></table></form>\n";
 
 &ui_print_footer("", $text{'index_return'});
 
