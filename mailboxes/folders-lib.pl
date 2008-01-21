@@ -1624,6 +1624,66 @@ elsif ($_[0]->{'type'} == 6 && $_[1]) {
 	}
 }
 
+# mailbox_folder_unread(&folder)
+# Returns the total messages in some folder, the number unread and the number
+# flagged as special.
+sub mailbox_folder_unread
+{
+local ($folder) = @_;
+if ($folder->{'type'} == 4) {
+	# For IMAP, the server knows
+	local @rv = &imap_login($folder);
+	if ($rv[0] != 1) {
+		return ( );
+		}
+	local @data = ( $rv[2] );
+	local $h = $rv[1];
+	foreach my $s ("UNSEEN", "FLAGGED") {
+		@rv = &imap_command($h, "SEARCH ".$s);
+		local ($srch) = grep { $_ =~ /^\*\s+SEARCH/i } @{$rv[1]};
+		local @ids = split(/\s+/, $srch);
+		shift(@ids); shift(@ids);	# lose * SEARCH
+		push(@data, scalar(@ids));
+		}
+	return @data;
+	}
+elsif ($folder->{'type'} == 5) {
+	# Composite folder - counts are sums of sub-folders
+	local @data;
+	foreach my $sf (@{$folder->{'subfolders'}}) {
+		local @sfdata = &mailbox_folder_unread($sf);
+		if (scalar(@sfdata)) {
+			$data[0] += $sfdata[0];
+			$data[1] += $sfdata[1];
+			$data[2] += $sfdata[2];
+			}
+		}
+	return @data;
+	}
+else {
+	# For all other folders, just check individual messages
+	# XXX faster for maildir?
+	local @data = ( 0, 0, 0 );
+	local @mails;
+	eval {
+		$main::error_must_die = 1;
+		@mails = &mailbox_list_mails(undef, undef, $folder, 1);
+		};
+	return ( ) if ($@);
+	foreach my $m (@mails) {
+		local $rf = &get_mail_read($folder, $m);
+		if ($rf == 2) {
+			$data[2]++;
+			}
+		elsif ($rf == 0) {
+			$data[1]++;
+			}
+		$data[0]++;
+		}
+	return @data;
+	}
+}
+
 # mailbox_set_read_flags(&folder, &mail, read, special, replied)
 # Updates the status flags on some message
 sub mailbox_set_read_flag
@@ -1774,7 +1834,8 @@ foreach $f (keys %imap_login_handle) {
 # imap_login(&folder)
 # Logs into a POP3 server, selects a mailbox and returns a status
 # (1=ok, 0=connect failed, 2=login failed, 3=mailbox error), a handle or error
-# message, the number of messages in the mailbox, and the next UID
+# message, the number of messages in the mailbox, the next UID, the number
+# unread, and the number special.
 sub imap_login
 {
 local $h = $imap_login_handle{$_[0]->{'id'}};
@@ -2162,7 +2223,15 @@ local @opts;
 push(@opts, @$extra) if ($extra);
 foreach my $f (@$folders) {
 	next if ($f->{'hide'} && $f ne $_[1]);
-	push(@opts, [ $byid ? &folder_name($f) : $f->{'index'}, $f->{'name'} ]);
+	local $umsg;
+	if (&should_show_unread($f)) {
+		local ($c, $u) = &mailbox_folder_unread($f);
+		if ($u) {
+			$umsg = " ($u)";
+			}
+		}
+	push(@opts, [ $byid ? &folder_name($f) : $f->{'index'},
+		      $f->{'name'}.$umsg ]);
 	}
 return &ui_select($name, $byid ? &folder_name($folder) : $folder->{'index'},
 		  \@opts, 1, 0, 0, 0, $auto ? "onChange='form.submit()'" : "");
@@ -2797,6 +2866,43 @@ else {
 	my @p = split(/\//, $type);
 	return $p[1];
 	}
+}
+
+# should_show_unread(&folder)
+# Returns 1 if we should show unread counts for some folder
+sub should_show_unread
+{
+local ($folder) = @_;
+local $su = $userconfig{'show_unread'} || $config{'show_unread'};
+
+# Work out if all sub-folders are IMAP
+local $allimap;
+if ($su == 2) {
+	# Doesn't matter
+	}
+elsif ($su == 1 && $config{'mail_system'} == 4) {
+	# Totally IMAP mode
+	$allimap = 1;
+	}
+elsif ($su == 1) {
+	if ($folder->{'type'} == 5) {
+		$allimap = 1;
+		foreach my $sf (@{$folder->{'subfolders'}}) {
+			$allimap = 0 if (!&should_show_unread($sf));
+			}
+		}
+	elsif ($folder->{'type'} == 6) {
+		$allimap = 1;
+		foreach my $mem (@{$folder->{'members'}}) {
+			$allimap = 0 if (!&should_show_unread($mem->[0]));
+			}
+		}
+	}
+
+return $su == 2 ||				# All folders
+       ($folder->{'type'} == 4 ||		# Only IMAP and derived
+	$folder->{'type'} == 5 && $allimap ||
+	$folder->{'type'} == 6 && $allimap) && $su == 1;
 }
 
 1;

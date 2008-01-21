@@ -46,3 +46,4 @@ link_mode=0
 date_fmt=dmy
 arrows=1
 open_mode=0
+show_unread=0

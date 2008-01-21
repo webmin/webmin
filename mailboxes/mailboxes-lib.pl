@@ -68,6 +68,7 @@ if ($_[0] =~ /^\//) {
 		   'file' => $_[0],
 		   'type' => &folder_type($_[0]),
 		   'mode' => 1,
+		   'user' => $_[0],
 		   'index' => 0 } );
 	}
 else {
@@ -1120,6 +1121,15 @@ if (-r $read) {
 else {
 	&unlink_logged(glob("$read.{dir,pag,db}"));
 	}
+}
+
+sub get_mail_read
+{
+local ($folder, $mail) = @_;
+if (!$done_dbmopen_read++) {
+	dbmopen(%read, "$module_config_directory/$folder->{'user'}.read", 0600);
+	}
+return $read{$mail->{'header'}->{'message-id'}};
 }
 
 1;

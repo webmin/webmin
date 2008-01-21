@@ -32,6 +32,7 @@ link_mode=Open links in,1,1-New window,0-Same window
 download=Attachment MIME types to always download,9,20,4,\t
 date_fmt=Date format in mail list,1,dmy-DD/MM/YYYY,mdy-MM/DD/YYYY,ymd-YYYY/MM/DD
 date_tz=Timezone for date displays,3,System default
+show_unread=Show unread messages count?,1,2-Yes,0-No
 
 line3=Spam options,11
 spam_buttons=Show spam reporting buttons for,2,list-Mailboxes,mail-Messages
