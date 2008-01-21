@@ -4,6 +4,7 @@
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'rndc_ecannot'});
 &error_setup($text{'rndc_err'});
+$cfile = &make_chroot($config{'named_conf'});
 
 # Generate the RNDC config
 &execute_command($config{'rndcconf_cmd'}, undef, \$out, \$err);
@@ -28,7 +29,7 @@ if ($options) {
 $port ||= 953;
 
 # Add the key to named.conf
-&lock_file(&make_chroot($config{'named_conf'}));
+&lock_file($cfile);
 $parent = &get_config_parent();
 $conf = &get_config();
 @keys = &find("key", $conf);
@@ -78,7 +79,18 @@ else {
 &save_directive($controls, 'inet', [ $inet ], 1);
 
 &flush_file_lines();
-&unlock_file(&make_chroot($config{'named_conf'}));
+
+# MacOS specific fix - remove include for /etc/rndc.key , which we don't need
+$lref = &read_file_lines($cfile);
+for(my $i=0; $i<@$lref; $i++) {
+	if ($lref->[$i] =~ /^include\s+"/etc/rndc.key"/i) {
+		splice(@$lref, $i, 1);
+		last;
+		}
+	}
+&flush_file_lines($cfile);
+
+&unlock_file($cfile);
 &restart_bind();
 &webmin_log("rndc");
 &redirect("");

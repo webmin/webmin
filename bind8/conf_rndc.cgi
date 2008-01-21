@@ -22,9 +22,9 @@ if (!$? && $out !~ /failed/) {
 # Show form
 print &ui_form_start("save_rndc.cgi");
 $ex = -s $config{'rndc_conf'};
-print "<center>",&text($ex ? 'rndc_rusure' : 'rndc_rusure2',
-		       "<tt>$config{'rndc_conf'}</tt>"),"<p>\n";
-print &ui_submit($text{'rndc_ok'}),"</center>\n";
+print &text($ex ? 'rndc_rusure' : 'rndc_rusure2',
+	    "<tt>$config{'rndc_conf'}</tt>"),"<p>\n";
+print &ui_submit($text{'rndc_ok'});
 print &ui_form_end();
 
 &ui_print_footer("", $text{'index_return'});
