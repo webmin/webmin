@@ -1,2 +1,3 @@
 domain=DNS domain for hosts,0
+rev=DNS domain for IP addresses,0
 subnets=DHCP subnets for hosts<br>(In network/netmask format),0

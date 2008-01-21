@@ -10,8 +10,16 @@ if (!$in{'new'}) {
 	# Get existing host object
 	($host) = grep { $_->{'values'}->[0] eq $in{'old'} } @hosts;
 	$host || &error($text{'edit_egone'});
-	$par = $host->{'parent'};
+	$oldpar = $host->{'parent'};
 	($old) = grep { lc($_->{'name'}) eq lc($in{'old'}).'.' } @$recs;
+	if ($in{'subnet'} eq $in{'oldsubnet'}) {
+		$par = $oldpar;
+		}
+	else {
+		# Moving subnet
+		($par) = grep { $_->{'values'}->[0] eq $in{'subnet'} }
+			      &list_dhcp_subnets();
+		}
 	}
 else {
 	# Create new, and work out parent
@@ -96,8 +104,16 @@ else {
 	&bind8::bump_soa_record($fn, $recs);
 
 	# Save DHCP host
-	&dhcpd::save_directive($par, $in{'new'} ? [ ] : [ $host ],
-				[ $host ], $indent);
+	if (!$in{'new'} && $oldpar ne $par) {
+		# Move to new parent
+		&dhcpd::save_directive($oldpar, [ $host ], [ ], 0);
+		&dhcpd::save_directive($par, [ ], [ $host ], $indent);
+		}
+	else {
+		# Just save
+		&dhcpd::save_directive($par, $in{'new'} ? [ ] : [ $host ],
+					[ $host ], $indent);
+		}
 	}
 &flush_file_lines();
 &redirect("");

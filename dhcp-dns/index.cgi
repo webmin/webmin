@@ -44,7 +44,8 @@ if (@hosts) {
 			 	  $text{'index_mac'},
 			 	  $text{'index_desc'},
 				], 100, 0, \@tds);
-	foreach $h (@hosts) {
+	foreach $h (sort { lc($a->{'values'}->[0]) cmp
+			   lc($b->{'values'}->[0]) } @hosts) {
 		$fixed = &dhcpd::find("fixed-address", $h->{'members'});
 		$hard = &dhcpd::find("hardware", $h->{'members'});
 		my $parentdesc;

@@ -127,13 +127,21 @@ $rv .= &ui_hidden("indom", $indom);
 # Fixed IP address
 local $fixed = &dhcpd::find("fixed-address", $h->{'members'});
 $rv .= &ui_hidden("oldip", $fixed->{'values'}->[0]) if ($fixed);
-local @subnets = $new ? &list_dhcp_subnets() : ( );
+local @subnets = &list_dhcp_subnets();
+local $parsub;
+if (!$new) {
+	($parsub) = grep { $_ eq $h->{'parent'} } @subnets;
+	}
+elsif (@subnets) {
+	$parsub = $subnets[0];
+	}
 $rv .= &ui_table_row($text{'form_ip'},
 	&ui_textbox("ip", $fixed ? $fixed->{'values'}->[0] : undef, 20).
-	(@subnets ? " ".$text{'form_subnet'}." ".
-			&ui_select("subnet", $subnets[0]->{'values'}->[0],
-			  [ [ undef, $text{'form_nosubnet'} ],
-			    map { [ $_->{'values'}->[0] ] } @subnets ]) : ""));
+	" ".$text{'form_subnet'}." ".
+	&ui_select("subnet", $parsub ? $parsub->{'values'}->[0] : '',
+		   [ $parsub ? ( ) : ( [ '', $text{'form_nosubnet'} ] ),
+		     map { [ $_->{'values'}->[0] ] } @subnets ]));
+$rv .= &ui_hidden("oldsubnet", $parsub ? $parsub->{'values'}->[0] : '');
 
 # MAC address
 local $hard = &dhcpd::find("hardware", $h->{'members'});
@@ -187,11 +195,20 @@ return ( $fn, \@recs );
 
 sub apply_configuration
 {
-local $err = &dhcpd::restart_dhcpd();
-return "DHCPD failed : $err" if ($err);
-$err = &bind8::restart_bind();
-return "BIND failed : $err" if ($err);
-return undef;
+&lock_file("$module_config_directory/apply");
+local $err;
+$err = &dhcpd::restart_dhcpd();
+if ($err) {
+	$err = "DHCPD failed : $err";
+	}
+else {
+	$err = &bind8::restart_bind();
+	if ($err) {
+		$err = "BIND failed : $err";
+		}
+	}
+&unlock_file("$module_config_directory/apply");
+return $err;
 }
 
 1;
