@@ -165,6 +165,7 @@ local $args = ($in->{'depends'} ? " --force-depends" : "").
 	      ($in->{'overwrite'} ? " --force-overwrite" : "").
 	      ($in->{'downgrade'} ? " --force-downgrade" : "");
 local $qm = quotemeta($_[0]);
+$ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $out = &backquote_logged("dpkg --install $args $qm 2>&1 </dev/null");
 if ($?) {
 	return "<pre>$out</pre>";
@@ -177,6 +178,7 @@ return undef;
 sub delete_package
 {
 local $qm = quotemeta($_[0]);
+$ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $out = &backquote_logged("dpkg --remove $qm 2>&1 </dev/null");
 if ($? || $out =~ /which isn.t installed/i) {
 	return "<pre>$out</pre>";

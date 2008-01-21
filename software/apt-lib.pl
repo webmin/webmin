@@ -10,6 +10,7 @@ sub update_system_install
 {
 local (@rv, @newpacks);
 local $update = $_[0] || $in{'update'};
+$ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $cmd = $apt_get_command eq "apt-get" ?
 	"$apt_get_command -y --force-yes -f install $update" :
 	"$apt_get_command -y -f install $update";
