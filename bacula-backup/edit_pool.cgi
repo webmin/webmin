@@ -14,11 +14,14 @@ if ($in{'new'}) {
 		    'value' => 'yes' },
 		  { 'name' => 'AutoPrune',
 		    'value' => 'yes' },
-		  { 'name' => 'Accept Any Volume',
-		    'value' => 'yes' },
 		  { 'name' => 'Volume Retention',
 		    'value' => '365 days' },
 		];
+	if (&get_bacula_version_cached() < 2) {
+		push(@$mems,
+		  { 'name' => 'Accept Any Volume',
+		    'value' => 'yes' });
+		}
 	$pool = { 'members' => $mems };
 	}
 else {
@@ -61,8 +64,10 @@ print &ui_table_row($text{'pool_recycle'},
 		    &bacula_yesno("recycle", "Recycle", $mems));
 print &ui_table_row($text{'pool_auto'},
 		    &bacula_yesno("auto", "AutoPrune", $mems));
-print &ui_table_row($text{'pool_any'},
-		    &bacula_yesno("any", "Accept Any Volume", $mems));
+if (&get_bacula_version_cached() < 2) {
+	print &ui_table_row($text{'pool_any'},
+			    &bacula_yesno("any", "Accept Any Volume", $mems));
+	}
 
 # All done
 print &ui_table_end();

@@ -60,7 +60,10 @@ else {
 	# Save yes/no options
 	&save_directive($conf, $pool, "Recycle", $in{'recycle'} || undef, 1);
 	&save_directive($conf, $pool, "AutoPrune", $in{'auto'} || undef, 1);
-	&save_directive($conf, $pool, "Accept Any Volume", $in{'any'} || undef, 1);
+	if (&get_bacula_version_cached() < 2) {
+		&save_directive($conf, $pool, "Accept Any Volume",
+				$in{'any'} || undef, 1);
+		}
 
 	# Create or update
 	if ($in{'new'}) {
