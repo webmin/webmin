@@ -70,5 +70,6 @@ print "</tr>\n";
 
 print "</table></td></tr></table><p>\n";
 print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
+print "smtpd_recipient_restrictions = ",&get_current_value("smtpd_recipient_restrictions"),"<p>\n";
 
 &ui_print_footer("", $text{'index_return'});

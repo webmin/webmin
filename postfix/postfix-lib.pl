@@ -119,10 +119,10 @@ my ($begin_flag, $end_flag);
 foreach my $l (@$lref) {
 	# changes made to this loop by Dan Hartman of Rae Internet /
 	# Message Partners for multi-line parsing 2007-06-04
-	if ($begin_flag == 1 && $l =~ /^(\t+[^#].+)/) {
+	if ($begin_flag == 1 && $l =~ /^(\s+[^#].+)/) {
 		# non-comment continuation line, and replace tabs with spaces
 		$out .= $1;
-		$out =~ s/\t/ /;
+		$out =~ s/^\s+/ /;
 		}
  	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)|^\s*([a-z0-9\_]+)\s*=\s*$/ &&
  	    $1 . $3 eq $name) {
