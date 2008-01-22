@@ -21,82 +21,70 @@ else {
 	}
 
 # Log destination section
-print "<form action=save_log.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_header1'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_log.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'edit_header1'}, "width=100%", 2);
 
-print "<tr> <td><b>$text{'edit_logto'}</b></td>\n";
-printf "<td><input type=radio name=mode value=0 %s> %s</td>\n",
-	$log->{'file'} ? 'checked' : '', $text{'edit_file'};
-printf "<td><input name=file size=40 value='%s'> %s\n",
-	$log->{'file'}, &file_chooser_button("file");
-if ($config{'sync'}) {
-	printf "<input type=checkbox name=sync value=1 %s> %s\n",
-		$log->{'sync'} ? 'checked' : '', $text{'edit_sync'};
-	}
-print "</td> </tr>\n";
+# Log destination, starting with file
+@dopts = ( [ 0, $text{'edit_file'},
+	     &ui_textbox("file", $log->{'file'}, 40)." ".
+	     &file_chooser_button("file")." ".
+	     ($config{'sync'} ? "<br>".&ui_checkbox("sync", 1,
+				$text{'edit_sync'}, $log->{'sync'}) : "") ]);
 
+# Named pipe
 if ($config{'pipe'} == 1) {
-	print "<tr> <td></td>\n";
-	printf "<td><input type=radio name=mode value=1 %s> %s</td>\n",
-		$log->{'pipe'} ? 'checked' : '', $text{'edit_pipe'};
-	printf "<td><input name=pipe size=40 value='%s'> %s</td> </tr>\n",
-		$log->{'pipe'}, &file_chooser_button("pipe");
+	push(@dopts, [ 1, $text{'edit_pipe'},
+		       &ui_textbox("pipe", $log->{'pipe'}, 40)." ".
+		       &file_chooser_button("pipe") ]);
 	}
 elsif ($config{'pipe'} == 2) {
-	print "<tr> <td></td>\n";
-	printf "<td><input type=radio name=mode value=1 %s> %s</td>\n",
-		$log->{'pipe'} ? 'checked' : '', $text{'edit_pipe2'};
-	printf "<td><input name=pipe size=40 value='%s'></td> </tr>\n",
-		$log->{'pipe'};
+	push(@dopts, [ 1, $text{'edit_pipe2'},
+		       &ui_textbox("pipe", $log->{'pipe'}, 40) ]);
 	}
 
+# Socket file
 if ($config{'socket'}) {
-	print "<tr> <td></td>\n";
-	printf "<td><input type=radio name=mode value=5 %s> %s</td>\n",
-		$log->{'socket'} ? 'checked' : '', $text{'edit_socket'};
-	printf "<td><input name=socket size=40 value='%s'> %s</td> </tr>\n",
-		$log->{'socket'}, &file_chooser_button("socket");
+	push(@dopts, [ 5, $text{'edit_socket'},
+		       &ui_textbox("socket", $log->{'socket'}, 40)." ".
+		       &file_chooser_button("socket") ]);
 	}
 
-print "<tr> <td></td>\n";
-printf "<td><input type=radio name=mode value=2 %s> %s</td>\n",
-	$log->{'host'} ? 'checked' : '', $text{'edit_host'};
-printf "<td><input name=host size=20 value='%s'></td> </tr>\n",
-	$log->{'host'};
+# Send to users
+push(@dopts, [ 3, $text{'edit_users'},
+	       &ui_textbox("users", join(" ", @{$log->{'users'}}), 40)." ".
+	       &user_chooser_button("users", 1) ]);
 
-print "<tr> <td></td>\n";
-printf "<td><input type=radio name=mode value=3 %s> %s</td>\n",
-	$log->{'users'} ? 'checked' : '', $text{'edit_users'};
-printf "<td><input name=users size=40 value='%s'> %s</td> </tr>\n",
-	join(" ", @{$log->{'users'}}), &user_chooser_button("users", 1);
+# All users
+push(@dopts, [ 4, $text{'edit_allusers'} ]);
 
-print "<tr> <td></td>\n";
-printf "<td colspan=2><input type=radio name=mode value=4 %s> %s</td> </tr>\n",
-	$log->{'all'} ? 'checked' : '', $text{'edit_allusers'};
+# Remote host
+push(@dopts, [ 2, $text{'edit_host'},
+	       &ui_textbox("host", $log->{'host'}, 30) ]);
 
-print "<tr> <td><b>$text{'edit_active'}</b></td> <td colspan=2>\n";
-printf "<input type=radio name=active value=1 %s> %s\n",
-	$log->{'active'} ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=active value=0 %s> %s</td> </tr>\n",
-	$log->{'active'} ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'edit_logto'},
+	&ui_radio_table("mode", $log->{'file'} ? 0 :
+				$log->{'pipe'} ? 1 :
+				$log->{'socket'} ? 5 :
+				$log->{'host'} ? 2 :
+				$log->{'users'} ? 3 :
+				$log->{'all'} ? 4 : -1, \@dopts));
+
+# Log active?
+print &ui_table_row($text{'edit_active'},
+	&ui_yesno_radio("active", $log->{'active'}));
 
 if ($config{'tags'}) {
-	print "<tr> <td><b>$text{'edit_tag'}</b></td> <td colspan=2>\n";
-	print "<select name=tag>\n";
-	foreach $t (grep { $_->{'tag'} } @$conf) {
-		printf "<option %s value=%s>%s\n",
-			$log->{'section'} eq $t ? 'selected' : '',
-			$t->{'index'},
-			$t->{'tag'} eq '*' ? $text{'all'} : $t->{'tag'};
-		}
-	print "</select></td> </tr>\n";
+	# Tag name
+	print &ui_table_row($text{'edit_tag'},
+	    &ui_select("tag", $log->{'section'},
+		[ map { [ $_->{'index'},
+			  $_->{'tag'} eq '*' ? $text{'all'} : $_->{'tag'} ] }
+		      grep { $_->{'tag'} } @$conf ]));
 	}
 
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 # Log selection section
 print "<table border width=100%>\n";
