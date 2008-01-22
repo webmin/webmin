@@ -87,13 +87,10 @@ if ($config{'tags'}) {
 print &ui_table_end();
 
 # Log selection section
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'edit_header2'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'edit_header2'}, "width=100%", 2);
 
 @facil = split(/\s+/, $config{'facilities'});
-print "<tr> <td><b>$text{'edit_facil'}</b></td> ",
-      "<td><b>$text{'edit_pri'}</b></td> </tr>\n";
+$table = &ui_columns_start([ $text{'edit_facil'}, $text{'edit_pri'} ], 100);
 $i = 0;
 foreach $s (@{$log->{'sel'}}, ".none") {
 	($f, $p) = split(/\./, $s);
@@ -101,98 +98,83 @@ foreach $s (@{$log->{'sel'}}, ".none") {
 	$p =~ s/panic$/emerg/;
 	$p =~ s/error$/err/;
 
-	print "<tr> <td>\n";
-	printf "<input type=radio name=fmode_$i value=0 %s>\n",
-		$f =~ /,/ ? '' : 'checked';
-	print "<select name=facil_$i>\n";
-	printf "<option value='' %s>&nbsp;\n", $f ? '' : 'selected';
-	printf "<option value='*' %s>%s\n",
-		$f eq '*' ? 'selected' : '', $text{'edit_all'};
-	local $ffound = ($f eq '*');
-	foreach $fc (@facil) {
-		printf "<option %s>%s\n",
-			$fc eq $f ? 'selected' : '', $fc;
-		$ffound++ if ($fc eq $f);
-		}
-	print "<option selected>$f\n" if (!$ffound && $f !~ /,/);
-	print "</select>&nbsp;\n";
-	printf "<input type=radio name=fmode_$i value=1 %s> %s\n",
-		$f =~ /,/ ? 'checked' : '', $text{'edit_many'};
-	printf "<input name=facils_$i size=25 value='%s'></td>\n",
-		$f =~ /,/ ? join(" ", split(/,/, $f)) : '';
+	# Facility column
+	local $facil;
+	$facil .= &ui_radio("fmode_$i", $f =~ /,/ ? 1 : 0,
+	   [ [ 0, &ui_select("facil_$i", $f =~ /,/ ? undef : $f,
+		     [ [ undef, '&nbsp;' ],
+		       [ '*', $text{'edit_all'} ],
+		       @facil ], 1, 0, 1) ],
+	     [ 1, $text{'edit_many'}." ".
+		  &ui_textbox("facils_$i",
+			$f =~ /,/ ? join(" ", split(/,/, $f)) : '', 25) ] ]);
 
-	print "<td>\n";
-	printf "<input type=radio name=pmode_$i value=0 %s> %s&nbsp;\n",
-		$p eq 'none' ? 'checked' : '', $text{'edit_none'};
-	if ($config{'pri_all'}) {
-		printf "<input type=radio name=pmode_$i value=1 %s> %s&nbsp;\n",
-			$p eq '*' ? 'checked' : '', $text{'edit_all'};
-		}
-	printf "<input type=radio name=pmode_$i value=2 %s>\n",
-		$p eq 'none' || $p eq '*' ? '' : 'checked';
-
+	# Priorities range selector
 	if ($config{'pri_dir'} == 1) {
-		print "<select name=pdir_$i>\n";
-		printf "<option value='' selected>\n"
-			if ($p eq '*' || $p eq 'none');
-		printf "<option value='' %s>%s\n",
-			$p =~ /\!|=/ ? '' : 'selected', $text{'edit_pdir0'};
-		printf "<option value='=' %s>%s\n",
-			$p =~ /^=/ ? 'selected' : '', $text{'edit_pdir1'};
-		printf "<option value='!' %s>%s\n",
-			$p =~ /^![^=]/ ? 'selected' : '', $text{'edit_pdir2'};
-		printf "<option value='!=' %s>%s\n",
-			$p =~ /^!=/ ? 'selected' : '', $text{'edit_pdir3'};
-		print "</select>\n";
+		# Linux style
+		$psel = &ui_select("pdir_$i",
+		    $p eq '*' || $p eq 'none' ? '' :
+		      $p =~ /^=/ ? '=' :
+		      $p =~ /^![^=]/ ? '!' :
+		      $p =~ /^!=/ ? '!=' : '',
+		    [ [ '', $text{'edit_pdir0'} ],
+		      [ '=', $text{'edit_pdir1'} ],
+		      [ '!', $text{'edit_pdir2'} ],
+		      [ '!=', $text{'edit_pdir3'} ] ]);
 		$p =~ s/^[!=]*//;
 		}
 	elsif ($config{'pri_dir'} == 2) {
-		print "<select name=pdir_$i>\n";
-		printf "<option value='' selected>\n"
-			if ($p eq '*' || $p eq 'none');
+		# FreeBSD style
 		local $pfx = $p =~ /^([<=>]+)/ ? $1 : undef;
-		printf "<option value='' %s>&gt;=\n",
-			$pfx eq '>=' || $pfx eq '=>' || !$pfx ? 'selected' : '';
-		printf "<option value='>' %s>&gt;\n",
-			$pfx eq '>' ? 'selected' : '';
-		printf "<option value='<=' %s>&lt;=\n",
-			$pfx eq '<=' || $pfx eq '=<' ? 'selected' : '';
-		printf "<option value='<' %s>&lt;\n",
-			$pfx eq '<' ? 'selected' : '';
-		printf "<option value='<>' %s>&lt;&gt;\n",
-			$pfx eq '<>' || $pfx eq '><' ? 'selected' : '';
-		print "</select>\n";
+		$psel = &ui_select("pdir_$i",
+		    $p eq '*' || $p eq 'none' ||
+		      $pfx eq '>=' || $pfx eq '=>' || !$pfx ? '' :
+		    $pfx eq '<=' || $pfx eq '=<' ? '<=' :
+		    $pfx eq '<>' || $pfx eq '><' ? '<>' : $pfx,
+		    [ [ '', '&gt;=' ],
+		      [ '>', '&gt;' ],
+		      [ '<=', '&lt;=' ],
+		      [ '<', '&lt;' ],
+		      [ '<>', '&lt;&gt;' ] ], 1, 0, 1);
 		$p =~ s/^[<=>]*//;
 		}
 	else {
-		print $text{'edit_pdir0'};
+		# No range selection allowed
+		$psel = $text{'edit_pdir0'};
 		}
 
-	local $pfound = ($p eq '*' || $p eq 'none');
-	print "<select name=pri_$i>\n";
-	print "<option selected>\n" if ($p eq '*' || $p eq 'none');
+	# Priorities column
+	local $pri;
+	local $pmode = $p eq 'none' ? 0 : $p eq '*' ? 1 : 2;
+	$pri .= &ui_radio("pmode_$i", $pmode,
+	   [ [ 0, $text{'edit_none'} ],
+	     $config{'pri_all'} ? ( [ 1, $text{'edit_all'} ] ) : ( ),
+	     [ 2, $psel ] ]);
+
+	# Priority menu
+	local $selpri;
 	foreach $pr (&list_priorities()) {
-		printf "<option %s>%s\n",
-			$p =~ /$pr/ ? 'selected' : '', $pr;
-		$pfound++ if ($p =~ /$pr/);
+		$selpri = $pr if ($p =~ /$pr/);
 		}
-	print "<option selected>$p\n" if (!$pfound);
-	print "</select></td></tr>\n";
+	$pri .= &ui_select("pri_$i", $selpri,
+	   [ $p eq '*' || $p eq 'none' ? ( '' ) : ( ),
+	     &list_priorities() ], 1, 0, 1);
+
+	$table .= &ui_columns_row([ $facil, $pri ]);
 	$i++;
 	}
-print "</table></td></tr></table>\n";
+$table .= &ui_columns_end();
+print &ui_table_row(undef, $table, 2);
+print &ui_table_end();
 
-print "<table width=100%><tr>\n";
-print "<td><input type=submit value='$text{'save'}'></td>\n";
+@buts = ( [ undef, $text{'save'} ] );
 if (!$in{'new'}) {
 	if ($log->{'file'} && -f $log->{'file'}) {
-		print "<td align=center><input type=submit name=view ",
-		      "value='$text{'edit_view'}'></td>\n";
+		push(@buts, [ 'view', $text{'edit_view'} ]);
 		}
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	push(@buts, [ 'delete', $text{'delete'} ]);
 	}
-print "</tr></table></form>\n";
+print &ui_form_end(\@buts);
 
 &ui_print_footer("", $text{'index_return'});
 
