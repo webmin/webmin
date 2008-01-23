@@ -1321,14 +1321,17 @@ return $out !~ /\[-f\]/ && $out !~ /\[-f\|/ ? $out : undef;
 # Returns the chroot directory BIND is running under
 sub get_chroot
 {
-if ($config{'auto_chroot'}) {
-	local $out = `$config{'auto_chroot'} 2>/dev/null`;
-	if (!$?) {
-		$out =~ s/\r|\n//g;
-		return $out;
+if (!defined($get_chroot_cache)) {
+	if ($config{'auto_chroot'}) {
+		local $out = `$config{'auto_chroot'} 2>/dev/null`;
+		if (!$?) {
+			$out =~ s/\r|\n//g;
+			$get_chroot_cache = $out;
+			}
 		}
+	$get_chroot_cache ||= $config{'chroot'};
 	}
-return $config{'chroot'};
+return $get_chroot_cache;
 }
 
 # make_chroot(file, [is-pid])
