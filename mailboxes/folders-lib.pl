@@ -1751,7 +1751,8 @@ return (0, $error) if ($error);
 local $os = select($h); $| = 1; select($os);
 local @rv = &pop3_command($h);
 return (0, $rv[1]) if (!$rv[0]);
-@rv = &pop3_command($h, "user $_[0]->{'user'}");
+local $user = $_[0]->{'user'} eq '*' ? $remote_user : $_[0]->{'user'};
+@rv = &pop3_command($h, "user $user");
 return (2, $rv[1]) if (!$rv[0]);
 @rv = &pop3_command($h, "pass $_[0]->{'pass'}");
 return (2, $rv[1]) if (!$rv[0]);
@@ -1852,7 +1853,8 @@ if (!$h) {
 	# Login normally
 	@rv = &imap_command($h);
 	return (0, $rv[3]) if (!$rv[0]);
-	@rv = &imap_command($h,"login \"$_[0]->{'user'}\" \"$_[0]->{'pass'}\"");
+	local $user = $_[0]->{'user'} eq '*' ? $remote_user : $_[0]->{'user'};
+	@rv = &imap_command($h,"login \"$user\" \"$_[0]->{'pass'}\"");
 	return (2, $rv[3]) if (!$rv[0]);
 
 	$imap_login_handle{$_[0]->{'id'}} = $h;
