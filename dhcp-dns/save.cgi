@@ -50,6 +50,14 @@ if ($in{'delete'}) {
 		&bind8::delete_record($fn, $old);
 		&bind8::bump_soa_record($fn, $recs);
 		}
+	($rfn, $rrecs, $arpa, $rzone) = &get_reverse_dns_zone($in{'oldip'});
+	if ($rfn) {
+		($old) = grep { $_->{'name'} eq $arpa."." } @$rrecs;
+		if ($old) {
+			&bind8::delete_record($rfn, $old);
+			&bind8::bump_soa_record($rfn, $rrecs);
+			}
+		}
 	}
 else {
 	# Validate inputs
@@ -102,6 +110,51 @@ else {
 			}
 		}
 	&bind8::bump_soa_record($fn, $recs);
+
+	if ($in{'new'}) {
+		# Add reverse record to DNS
+		($rfn, $rrecs, $arpa, $rzone) = &get_reverse_dns_zone($in{'ip'});
+		if ($rfn) {
+			&bind8::create_record($rfn, $arpa.".", undef, "IN",
+					      "PTR", $in{'host'}.'.');
+			}
+		}
+	elsif ($in{'ip'} ne $in{'oldip'} ||
+	       $in{'host'} ne $in{'old'}) {
+		($orfn, $orrecs, $oarpa, $orzone) = &get_reverse_dns_zone(
+			$in{'oldip'});
+		($rfn, $rrecs, $arpa, $rzone) = &get_reverse_dns_zone(
+			$in{'ip'});
+		if ($orfn) {
+			($old) = grep { $_->{'name'} eq $oarpa."." } @$orrecs;
+			}
+		else {
+			$old = undef;
+			}
+		if ($orzone && !$rzone && $old) {
+			# No longer exists
+			&bind8::delete_record($orfn, $old);
+			}
+		elsif (!$orzone && $rzone) {
+			# Create in new reverse zone
+			&bind8::create_record($rfn, $arpa.".", undef, "IN",
+					      "PTR", $in{'host'}.'.');
+			}
+		elsif ($orzone ne $rzone && $old) {
+			# Move to new reverse zone
+			&bind8::delete_record($orfn, $old);
+			&bind8::create_record($rfn, $arpa.".", undef, "IN",
+					      "PTR", $in{'host'}.'.');
+			}
+		elsif ($old) {
+			# Update in this one
+			&bind8::modify_record($rfn, $old, $arpa.".",
+				$old->{'ttl'}, $old->{'class'}, $old->{'type'},
+				$in{'host'}.'.');
+			}
+		}
+	&bind8::bump_soa_record($rfn, $rrecs) if ($rfn);
+	&bind8::bump_soa_record($orfn, $orrecs) if ($orfn);
 
 	# Save DHCP host
 	if (!$in{'new'} && $oldpar ne $par) {

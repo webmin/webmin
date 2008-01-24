@@ -193,6 +193,26 @@ local @recs = &bind8::read_zone_file($fn, $config{'domain'});
 return ( $fn, \@recs );
 }
 
+# get_reverse_dns_zone(ip)
+# Returns the records file and list of records for the domain for some IP
+sub get_reverse_dns_zone
+{
+local ($ip) = @_;
+local $conf = &bind8::get_config();
+local @zones = &bind8::find("zone", $conf);
+foreach my $v (&bind8::find("view", $conf)) {
+	push(@zones, &bind8::find("zone", $v->{'members'}));
+	}
+local $arpa = &bind8::ip_to_arpa($ip);
+$arpa =~ s/\.$//;
+local ($z) = grep { $arpa =~ /\.$_->{'value'}$/i } @zones;
+return ( ) if (!$z);
+local $file = &bind8::find("file", $z->{'members'});
+local $fn = $file->{'values'}->[0];
+local @recs = &bind8::read_zone_file($fn, $config{'domain'});
+return ( $fn, \@recs, $arpa, $z->{'value'} );
+}
+
 sub apply_configuration
 {
 &lock_file("$module_config_directory/apply");
