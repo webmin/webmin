@@ -6037,6 +6037,16 @@ $hash{'webmin_etc'} = $config_directory;
 $hash{'module_config'} = $module_config_directory;
 $hash{'webmin_var'} = $var_directory;
 
+# Add time-based parameters, for use in DNS
+$hash{'current_time'} = time();
+local @tm = localtime($hash{'current_time'});
+$hash{'current_year'} = $tm[5]+1900;
+$hash{'current_month'} = sprintf("%2.2d", $tm[4]+1);
+$hash{'current_day'} = sprintf("%2.2d", $tm[3]);
+$hash{'current_hour'} = sprintf("%2.2d", $tm[2]);
+$hash{'current_minute'} = sprintf("%2.2d", $tm[1]);
+$hash{'current_second'} = sprintf("%2.2d", $tm[0]);
+
 # Actually do the substition
 local $rv = $_[0];
 local $s;
