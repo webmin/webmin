@@ -3,6 +3,7 @@
 
 require './dhcp-dns-lib.pl';
 &ui_print_header(undef, $module_info{'desc'}, "", undef, 1, 1);
+&ReadParse();
 
 # Check for servers
 if (!&foreign_installed("bind8", 1)) {
@@ -32,6 +33,24 @@ print &ui_hidden_end();
 
 # Show hosts, if any
 @hosts = &list_dhcp_hosts();
+if (@hosts) {
+	# Show search form
+	print &ui_form_start("index.cgi");
+	print $text{'index_search'}," ",
+	      &ui_textbox("search", $in{'search'}, 40)," ",
+	      &ui_submit($text{'index_ok'}),"<p>\n",
+	      &ui_form_end();
+	if ($in{'search'}) {
+		$s = $in{'search'};
+		@hosts = grep {
+		    $fixed = &dhcpd::find("fixed-address", $_->{'members'});
+		    $hard = &dhcpd::find("hardware", $_->{'members'});
+		    $_->{'values'}->[0] =~ /\Q$s\E/i ||
+		     $fixed =~ /\Q$s\E/i ||
+		     $hard =~ /\Q$s\E/i } @hosts;
+		}
+	}
+
 if (@hosts) {
 	@tds = ( "width=5" );
 	print &ui_form_start("delete.cgi");
@@ -76,9 +95,13 @@ if (@hosts) {
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ undef, $text{'index_delete'} ] ]);
 	}
+elsif ($in{'search'}) {
+	# Nothing matched search
+	print "<b>$text{'index_none2'}</b><p>\n";
+	}
 else {
+	# Really none
 	print "<b>$text{'index_none'}</b><p>\n";
-	print &ui_links_row(\@links);
 	}
 
 print "<hr>\n";
