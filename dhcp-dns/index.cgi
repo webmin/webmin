@@ -17,9 +17,6 @@ if (!&foreign_installed("dhcpd", 1)) {
 if (!$config{'domain'}) {
 	&ui_print_endpage(&text('index_edomain', "../config.cgi?$module_name"));
 	}
-if (!$config{'subnets'}) {
-	&ui_print_endpage(&text('index_esubnets',"../config.cgi?$module_name"));
-	}
 ($fn, $recs) = &get_dns_zone();
 if (!$fn) {
 	&ui_print_endpage(&text('index_edomain2', "../config.cgi?$module_name",
