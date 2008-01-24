@@ -46,8 +46,8 @@ if (@hosts) {
 		    $fixed = &dhcpd::find("fixed-address", $_->{'members'});
 		    $hard = &dhcpd::find("hardware", $_->{'members'});
 		    $_->{'values'}->[0] =~ /\Q$s\E/i ||
-		     $fixed =~ /\Q$s\E/i ||
-		     $hard =~ /\Q$s\E/i } @hosts;
+		     $fixed->{'values'}->[0] =~ /\Q$s\E/i ||
+		     $hard->{'values'}->[1] =~ /\Q$s\E/i } @hosts;
 		}
 	}
 
