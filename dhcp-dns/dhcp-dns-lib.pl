@@ -137,6 +137,7 @@ elsif (@subnets) {
 	}
 $rv .= &ui_table_row($text{'form_ip'},
 	&ui_textbox("ip", $fixed ? $fixed->{'values'}->[0] : undef, 20).
+	($new ? " ".&ip_chooser_button("ip") : "").
 	" ".$text{'form_subnet'}." ".
 	&ui_select("subnet", $parsub ? $parsub->{'values'}->[0] : '',
 		   [ $parsub ? ( ) : ( [ '', $text{'form_nosubnet'} ] ),
@@ -229,6 +230,12 @@ else {
 	}
 &unlock_file("$module_config_directory/apply");
 return $err;
+}
+
+# ip_chooser_button(field)
+sub ip_chooser_button
+{
+return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"ip_chooser.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=300,height=600\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
 1;
