@@ -67,13 +67,14 @@ if (!$config{'mailq_count'}) {
 	$mcount = scalar(@qfiles);
 	}
 
-@olinks =  ( "list_opts.cgi", "list_aliases.cgi", "list_cws.cgi", "list_masq.cgi", "list_trusts.cgi", "list_virtusers.cgi", "list_mailers.cgi", "list_generics.cgi", "list_cgs.cgi", "list_domains.cgi", "list_access.cgi", "list_relay.cgi", "list_features.cgi", "list_mailq.cgi", "../mailboxes/" );
+@olinks =  ( "list_opts.cgi", "list_ports.cgi", "list_aliases.cgi", "list_cws.cgi", "list_masq.cgi", "list_trusts.cgi", "list_virtusers.cgi", "list_mailers.cgi", "list_generics.cgi", "list_cgs.cgi", "list_domains.cgi", "list_access.cgi", "list_relay.cgi", "list_features.cgi", "list_mailq.cgi", "../mailboxes/" );
 
-@otitles = ( "$text{'opts_title'} (O)", "$text{'aliases_title'} (aliases)", "$text{'cws_title'} (Cw)", "$text{'masq_title'} (CM)", "$text{'trusts_title'} (T)", "$text{'virtusers_title'} (virtuser)", "$text{'mailers_title'} (mailertable)", "$text{'generics_title'} (generics)", "$text{'cgs_title'} (CG)", "$text{'domains_title'} (domaintable)", "$text{'access_title'} (access)", "$text{'relay_title'} (CR)", $text{'features_title'}, "$text{'mailq_title'} (mailq)".(defined($mcount) ? "<br>".&text('mailq_count', $mcount) : ""), "$text{'boxes_title'}"); 
+@otitles = ( "$text{'opts_title'} (O)", $text{'ports_title'}, "$text{'aliases_title'} (aliases)", "$text{'cws_title'} (Cw)", "$text{'masq_title'} (CM)", "$text{'trusts_title'} (T)", "$text{'virtusers_title'} (virtuser)", "$text{'mailers_title'} (mailertable)", "$text{'generics_title'} (generics)", "$text{'cgs_title'} (CG)", "$text{'domains_title'} (domaintable)", "$text{'access_title'} (access)", "$text{'relay_title'} (CR)", $text{'features_title'}, "$text{'mailq_title'} (mailq)".(defined($mcount) ? "<br>".&text('mailq_count', $mcount) : ""), "$text{'boxes_title'}"); 
 
-@oicons =  ( "images/opts.gif", "images/aliases.gif", "images/cws.gif", "images/masq.gif", "images/trusts.gif", "images/virtusers.gif", "images/mailers.gif", "images/generics.gif", "images/cgs.gif", "images/domains.gif", "images/access.gif", "images/relay.gif", "images/features.gif", "images/mailq.gif", "images/boxes.gif" );
+@oicons =  ( "images/opts.gif", "images/ports.gif", "images/aliases.gif", "images/cws.gif", "images/masq.gif", "images/trusts.gif", "images/virtusers.gif", "images/mailers.gif", "images/generics.gif", "images/cgs.gif", "images/domains.gif", "images/access.gif", "images/relay.gif", "images/features.gif", "images/mailq.gif", "images/boxes.gif" );
 
 &filter_icons($access{'opts'}, "list_opts.cgi");
+&filter_icons($access{'ports'}, "list_ports.cgi");
 &filter_icons($access{'cws'}, "list_cws.cgi");
 &filter_icons($access{'masq'}, "list_masq.cgi");
 &filter_icons($access{'trusts'}, "list_trusts.cgi");

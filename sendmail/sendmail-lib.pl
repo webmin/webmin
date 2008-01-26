@@ -6,8 +6,9 @@ do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
 %access = &get_module_acl();
-$features_access = $access{'opts'} && $access{'cws'} && $access{'masq'} && $access{'trusts'} && $access{'vmode'} && $access{'amode'} && $access{'omode'} && $access{'cgs'} && $access{'relay'} && $access{'mailers'} && $access{'access'} && $access{'domains'};
+$features_access = $access{'opts'} && $access{'ports'} && $access{'cws'} && $access{'masq'} && $access{'trusts'} && $access{'vmode'} && $access{'amode'} && $access{'omode'} && $access{'cgs'} && $access{'relay'} && $access{'mailers'} && $access{'access'} && $access{'domains'};
 $config{'perpage'} ||= 20;	# a value of 0 can cause problems
+@port_modifier_flags = ( 'a', 'b', 'c', 'f', 'h', 'C', 'E' );
 
 # get_sendmailcf()
 # Parses sendmail.cf and return a reference to an array of options.

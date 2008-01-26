@@ -99,8 +99,14 @@ print "</td> </tr>\n";
 print "<tr> <td><b>$text{'acl_flushq'}</b></td> <td>\n";
 printf "<input type=radio name=flushq value=1 %s> $text{'yes'}\n",
 	$_[0]->{'flushq'} ? "checked" : "";
-printf "<input type=radio name=flushq value=0 %s> $text{'no'}</td> </tr>\n",
+printf "<input type=radio name=flushq value=0 %s> $text{'no'}</td>\n",
 	$_[0]->{'flushq'} ? "" : "checked";
+
+print "<td><b>$text{'acl_ports'}</b></td> <td>\n";
+printf "<input type=radio name=ports value=1 %s> $text{'yes'}\n",
+	$_[0]->{'ports'} ? "checked" : "";
+printf "<input type=radio name=ports value=0 %s> $text{'no'}</td>\n",
+	$_[0]->{'ports'} ? "" : "checked";
 
 # Virtusers
 print "<tr> <td colspan=4><hr></td> </tr>\n";
@@ -198,6 +204,7 @@ printf "<input name=saddrs size=40 value='%s'></td> </tr>\n",
 sub acl_security_save
 {
 $_[0]->{'opts'} = $in{'opts'};
+$_[0]->{'ports'} = $in{'ports'};
 $_[0]->{'cws'} = $in{'cws'};
 $_[0]->{'masq'} = $in{'masq'};
 $_[0]->{'trusts'} = $in{'trusts'};

@@ -43,9 +43,6 @@ if ($ver >= 10) {
 	&save_option("MaxRecipientsPerMessage", '\d+', $text{'opts_maxrcpt'});
 	&save_option("BadRcptThrottle", '\d+', $text{'opts_maxbad'});
 	}
-if ($ver >= 9) {
-	&save_options("DaemonPortOptions", '.*\S.*', $text{'opts_daemon'});
-	}
 &flush_file_lines();
 &unlock_file($config{'sendmail_cf'});
 &restart_sendmail();

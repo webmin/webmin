@@ -68,13 +68,6 @@ foreach $dmo ('priority', 'host', 'time') {
 	}
 print "</td> </tr>\n";
 
-if ($ver >= 9) {
-	print "<tr>\n";
-	&options_input($text{'opts_daemon'}, "DaemonPortOptions", $conf,
-		      $default, 50);
-	print "</tr>\n";
-	}
-
 print "<tr>\n";
 &option_input($text{'opts_queuela'}, "QueueLA", $conf, $default, 6);
 &option_input($text{'opts_refusela'}, "RefuseLA", $conf, $default,6);
