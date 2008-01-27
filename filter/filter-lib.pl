@@ -27,6 +27,7 @@ if (&get_product_name() eq 'usermin') {
 	local @cst = stat($autoreply_cmd);
 	if (!@cst || $cst[7] != $rst[7]) {
 		&copy_source_dest($autoreply_src, $autoreply_cmd);
+		&set_ownership_permissions(undef, undef, 0755, $autoreply_cmd);
 		}
 
 	&switch_to_remote_user();
