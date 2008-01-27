@@ -1136,11 +1136,19 @@ if ($ver < 1.2) {
 else {
 	# ask apache for the module list
 	@mods = ("core");
-	&open_execute_command(APACHE, "\"$_[0]\" -l", 1);
+	&open_execute_command(APACHE, "\"$_[0]\" -l 2>/dev/null", 1);
 	while(<APACHE>) {
 		if (/(\S+)\.c/) { push(@mods, $1); }
 		}
 	close(APACHE);
+	if ($?) {
+		# httpd crashed! Use last known good set of modules
+		local %oldsite;
+		&read_file($site_file, \%oldsite);
+		if ($oldsite{'modules'}) {
+			@mods = split(/\s+/, $oldsite{'modules'});
+			}
+		}
 	@mods = &unique(@mods);
 	}
 return ($ver, \@mods);
