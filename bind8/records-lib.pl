@@ -164,7 +164,7 @@ while($i < @tok) {
 			$i++;
 			}
 		elsif ($tok[$i] =~ /^\d/ && $tok[$i] !~ /in-addr/i &&
-		       $oset[$i] > 0 && $tok[$i] =~ /^(in|hs)$/i) {
+		       $oset[$i] > 0 && $tok[$i+1] =~ /^(in|hs)$/i) {
 			# starting with a TTL and class
 			$dir{'ttl'} = $tok[$i];
 			$dir{'class'} = uc($tok[$i+1]);
