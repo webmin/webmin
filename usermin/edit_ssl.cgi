@@ -7,6 +7,7 @@ $access{'ssl'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'ssl_title'}, "");
 &get_usermin_miniserv_config(\%miniserv);
 
+$@ = undef;
 eval "use Net::SSLeay";
 if ($@) {
 	print &text('ssl_essl', "http://www.webmin.com/ssl.html"),"\n";

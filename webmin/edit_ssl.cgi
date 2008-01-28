@@ -8,6 +8,7 @@ require './webmin-lib.pl';
 &get_miniserv_config(\%miniserv);
 
 # Check if we even *have* SSL support
+$@ = undef;
 eval "use Net::SSLeay";
 if ($@) {
 	print &text('ssl_essl', "http://www.webmin.com/ssl.html"),"<p>\n";
