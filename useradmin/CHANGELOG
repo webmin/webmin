@@ -40,3 +40,4 @@ Batch user creation data is now better validated, and the batch form has been re
 When renaming a user whose group is the same as his username, the group will be renamed too by default.
 ---- Changes since 1.390 ----
 Added a Module Config option to send the username and password to a program for checking as input, rather than on the command line.
+Users and groups with spaces in their names can specified on the access control page by quoting them.
