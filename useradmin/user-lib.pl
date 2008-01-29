@@ -298,6 +298,7 @@ local(@passwd, @shadow, $lref);
 local $pft = &passfiles_type();
 if ($pft == 1) {
 	# just need to update master.passwd
+	$_[0]->{'line'} =~ /^\d+$/ || &error("Missing user line to modify");
 	$lref = &read_file_lines($config{'master_file'});
 	$lref->[$_[0]->{'line'}] = 
 	      "$_[1]->{'user'}:$_[1]->{'pass'}:$_[1]->{'uid'}:".
@@ -322,6 +323,7 @@ elsif ($pft == 6) {
 else {
 	# update /etc/passwd
 	$lref = &read_file_lines($config{'passwd_file'});
+	$_[0]->{'line'} =~ /^\d+$/ || &error("Missing user line to modify");
 	$lref->[$_[0]->{'line'}] =
 		"$_[1]->{'user'}:".
 		($pft == 2 || $pft == 5 ? "x" : $pft == 4 ? "!" :
@@ -330,6 +332,8 @@ else {
 		"$_[1]->{'home'}:$_[1]->{'shell'}";
 	if ($pft == 2) {
 		# update shadow file as well..
+		$_[0]->{'sline'} =~ /^\d+$/ ||
+			&error("Missing user line to modify");
 		$lref = &read_file_lines($config{'shadow_file'});
 		$lref->[$_[0]->{'sline'}] =
 			"$_[1]->{'user'}:$_[1]->{'pass'}:$_[1]->{'change'}:".
@@ -338,6 +342,8 @@ else {
 		}
 	elsif ($pft == 5) {
 		# update SCO shadow
+		$_[0]->{'sline'} =~ /^\d+$/ ||
+			&error("Missing user line to modify");
 		$lref = &read_file_lines($config{'shadow_file'});
 		$lref->[$_[0]->{'sline'}] =
 		   "$_[1]->{'user'}:$_[1]->{'pass'}:$_[1]->{'change'}:".
