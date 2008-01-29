@@ -211,7 +211,7 @@ if (!$access{'autohome'}) {
 		}
 	}
 $user{'shell'} = $in{'shell'};
-@sgnames = $config{'secmode'} == 2 ? split(/\s+/, $in{'sgid'})
+@sgnames = $config{'secmode'} == 2 ? &split_quoted_string($in{'sgid'})
                                    : split(/\0/, $in{'sgid'});
 foreach $gname (@sgnames) {
 	$ingroup{$gname}++;

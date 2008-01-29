@@ -481,7 +481,7 @@ if ($access{'ugroups'} eq "*" || $access{'uedit_gmode'} >= 3) {
 else {
 	print "<select name=gid>\n";
 	local $cg = %uinfo ? &my_getgrgid($uinfo{'gid'}) : undef;
-	@gl = &unique($cg ? ($cg) : (), split(/\s+/, $access{'ugroups'}));
+	@gl = &unique($cg ? ($cg) : (), &split_quoted_string($access{'ugroups'}));
 	foreach $g (@gl) {
 		printf "<option %s>%s\n",
 			$cg eq $g ? "selected" : "", $g;

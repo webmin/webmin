@@ -723,7 +723,7 @@ local %u;
 if ($m == 0) { return 1; }
 elsif ($m == 1) { return 0; }
 elsif ($m == 2 || $m == 3 || $m == 5) {
-	map { $u{$_}++ } split(/\s+/, $_[0]->{'uedit'});
+	map { $u{$_}++ } &split_quoted_string($_[0]->{'uedit'});
 	if ($m == 5 && $_[0]->{'uedit_sec'}) {
 		# Check secondary groups too
 		return 1 if ($u{$_[1]->{'gid'}});
@@ -761,7 +761,7 @@ local %g;
 if ($m == 0) { return 1; }
 elsif ($m == 1) { return 0; }
 elsif ($m == 2 || $m == 3) {
-	map { $g{$_}++ } split(/\s+/, $_[0]->{'gedit'});
+	map { $g{$_}++ } &split_quoted_string($_[0]->{'gedit'});
 	return $m == 2 ? $g{$_[1]->{'group'}}
 		       : !$g{$_[1]->{'group'}};
 	}
@@ -1167,7 +1167,7 @@ return undef;
 sub can_use_group
 {
 return 1 if ($_[0]->{'ugroups'} eq '*');
-local @sp = split(/\s+/, $_[0]->{'ugroups'});
+local @sp = &split_quoted_string($_[0]->{'ugroups'});
 if ($_[0]->{'uedit_gmode'} == 3) {
 	return &indexof($_[1], @sp) < 0;
 	}
@@ -1378,12 +1378,12 @@ if ($access{'uedit_mode'} == 1) {
 	}
 elsif ($access{'uedit_mode'} == 2) {
 	local %canu;
-	map { $canu{$_}++ } split(/\s+/, $access{'uedit'});
+	map { $canu{$_}++ } &split_quoted_string($access{'uedit'});
 	@ulist = grep { $canu{$_->{'user'}} } @ulist;
 	}
 elsif ($access{'uedit_mode'} == 3) {
 	local %cannotu;
-	map { $cannotu{$_}++ } split(/\s+/, $access{'uedit'});
+	map { $cannotu{$_}++ } &split_quoted_string($access{'uedit'});
 	@ulist = grep { !$cannotu{$_->{'user'}} } @ulist;
 	}
 elsif ($access{'uedit_mode'} == 4) {
@@ -1394,7 +1394,7 @@ elsif ($access{'uedit_mode'} == 4) {
 	}
 elsif ($access{'uedit_mode'} == 5) {
 	local %cangid;
-	map { $cangid{$_}++ } split(/\s+/, $access{'uedit'});
+	map { $cangid{$_}++ } &split_quoted_string($access{'uedit'});
 	if ($access{'uedit_sec'}) {
 		# Match secondary groups too
 		local @glist = &list_groups();
@@ -1449,12 +1449,12 @@ if ($access{'gedit_mode'} == 1) {
 	}
 elsif ($access{'gedit_mode'} == 2) {
 	local %cang;
-	map { $cang{$_}++ } split(/\s+/, $access{'gedit'});
+	map { $cang{$_}++ } &split_quoted_string($access{'gedit'});
 	@glist = grep { $cang{$_->{'group'}} } @glist;
 	}
 elsif ($access{'gedit_mode'} == 3) {
 	local %cannotg;
-	map { $cannotg{$_}++ } split(/\s+/, $access{'gedit'});
+	map { $cannotg{$_}++ } &split_quoted_string($access{'gedit'});
 	@glist = grep { !$cannotg{$_->{'group'}} } @glist;
 	}
 elsif ($access{'gedit_mode'} == 4) {
