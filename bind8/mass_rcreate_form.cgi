@@ -14,7 +14,7 @@ foreach $d (@d) {
 	print &ui_hidden("d", $d),"\n";
 	$dc++;
 	}
-print &ui_table_start($text{'rmass_header'}, undef, 2);
+print &ui_table_start($text{'rmass_header'}, undef, 2, [ "width=30%" ]);
 
 # Number of domains selected
 print &ui_table_row($text{'umass_sel'}, $dc);
@@ -38,6 +38,11 @@ print &ui_table_row($text{'rmass_value'},
 print &ui_table_row($text{'rmass_ttl'},
 		    &ui_opt_textbox("ttl", undef, 10, $text{'default'}).
 		    " ".$text{'seconds'});
+
+# Prevent clash
+print &ui_table_row($text{'rmass_clash'},
+		    &ui_radio("clash", 1, [ [ 0, $text{'yes'} ],
+					    [ 1, $text{'no'} ] ]));
 
 print &ui_table_end();
 print &ui_form_end([ [ "create", $text{'rmass_ok'} ] ]);

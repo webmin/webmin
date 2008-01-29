@@ -66,3 +66,4 @@ Added buttons for freezing and un-freezing a master zone, for use on systems tha
 When adding a remote slave zone, the IPs of all other slaves and the master are included in the master IPs list.
 ---- Changes since 1.390 ----
 BIND on Windows can now be configured using this module.
+Mass record creation can now add records for the domain name (by entering @ as the name), as records that already exist.

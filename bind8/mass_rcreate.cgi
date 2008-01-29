@@ -18,7 +18,7 @@ foreach $d (split(/\0/, $in{'d'})) {
 $access{'ro'} && &error($text{'master_ero'});
 
 # Validate inputs
-&valdnsname($in{'name'}) || &error($text{'rmass_ename'});
+&valdnsname($in{'name'}) || $in{'name'} eq '@' || &error($text{'rmass_ename'});
 $in{'name'} =~ /\.$/ && &error($text{'rmass_ename2'});
 if ($in{'type'} eq 'A') {
 	&check_ipaddress($in{'value'}) ||
@@ -60,13 +60,19 @@ foreach $zi (@zones) {
 		print $text{'umass_notmaster'},"<p>\n";
 		next;
 		}
-	$fullname = $in{'name'}.".".$zi->{'name'}.".";
+	$fullname = $in{'name'} eq '@' ?
+			$zi->{'name'}."." :
+			$in{'name'}.".".$zi->{'name'}.".";
 	@recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
-	($clash) = grep { $_->{'name'} eq $fullname } @recs;
-	if ($clash) {
-		print &text('rmass_eclash',
-		    "<tt>".join(" ", @{$clash->{'values'}})."</tt>"),"<p>\n";
-		next;
+	if ($in{'type'} eq 'CNAME' || $in{'clash'}) {
+		($clash) = grep { $_->{'name'} eq $fullname &&
+				  $_->{'type'} eq $in{'type'} } @recs;
+		if ($clash) {
+			print &text('rmass_eclash',
+			    "<tt>".join(" ", @{$clash->{'values'}})."</tt>"),
+			    "<p>\n";
+			next;
+			}
 		}
 	&create_record($zi->{'file'}, $in{'name'}, $in{'ttl'}, "IN",
 		       $in{'type'}, $in{'value'});
