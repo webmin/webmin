@@ -269,6 +269,10 @@ else {
 # Call mkraid or mdadm to make a raid set for real
 sub make_raid
 {
+if (!-r $_[0]->{'value'} && $_[0]->{'value'} =~ /\/md(\d+)$/) {
+	# Device file is missing - create it now
+	&system_logged("mknod $_[0]->{'value'} b 9 $1");
+	}
 if ($raid_mode eq "raidtools") {
 	# Call the raidtools mkraid command
 	local $f = $_[1] ? "--really-force" : "";
