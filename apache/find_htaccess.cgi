@@ -46,7 +46,7 @@ else {
 	# search under the given directory only
 	foreach $f (&unique(@files)) { push(@args, "-name $f"); }
 	$args = join(' -o ', @args);
-	open(FIND, "find $in{'dir'} $args -print |");
+	open(FIND, "find ".quotemeta($in{'dir'})." $args -print |");
 	while(<FIND>) {
 		s/\r|\n//g;
 		push(@rv, $_);

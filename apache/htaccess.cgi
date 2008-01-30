@@ -12,10 +12,12 @@ print "$text{'htaccess_desc'} <p>\n";
 @htaccess_files = grep { &allowed_auth_file($_) } @htaccess_files;
 if (@htaccess_files) {
 	print &ui_columns_start([ $text{'htaccess_file'} ]);
+	$i = 0;
 	foreach $f (@htaccess_files) {
 		print &ui_columns_row([
 			"<a href=\"htaccess_index.cgi?file=".&urlize($htaccess_files[$i])."\">".$htaccess_files[$i]."</a>"
 			]);
+		$i++;
 		}
 	print &ui_columns_end();
 	}
