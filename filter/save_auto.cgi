@@ -27,8 +27,7 @@ elsif ($in{'enabled'}) {
 	$filter->{'reply'}->{'autotext'} = $in{'reply'};
 
 	# From address (automatic)
-	($froms, $doms) = &mailbox::list_from_addresses();
-	$filter->{'reply'}->{'from'} = $froms->[0];
+	$filter->{'reply'}->{'from'} = &mailbox::get_preferred_from_address();
 
 	# File
 	$idx = defined($filter->{'index'}) ? $filter->{'index'}

@@ -116,8 +116,8 @@ else {
 		$in{'reply'} =~ /\S/ || &error($text{'save_ereply'});
 		$in{'reply'} =~ s/\r//g;
 		$filter->{'reply'}->{'autotext'} = $in{'reply'};
-		($froms, $doms) = &mailbox::list_from_addresses();
-		$filter->{'reply'}->{'from'} = $froms->[0];
+		$filter->{'reply'}->{'from'} =
+			&mailbox::get_preferred_from_address();
 		$idx = defined($filter->{'index'}) ? $filter->{'index'}
 						   : scalar(@filters);
 		$filter->{'reply'}->{'autoreply'} ||=
