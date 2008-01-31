@@ -24,11 +24,13 @@ if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
 	if ($data =~ /<TITLE>(.*)<\/TITLE>/i) {
 		$title = $1;
 		}
-	$data =~ s/^[\000-\377]*<BODY.*>//i;
+	$data =~ s/^[\000-\377]*<BODY[^>]*>//i;
 	$data =~ s/<\/BODY>[\000-\377]*$//i;
 
 	&header($title || $text{'view_title'}, "");
+	print "<div id=sarg-report>\n";
 	print $data;
+	print "</div>\n";
 	&footer("", $text{'index_return'});
 	}
 else {
