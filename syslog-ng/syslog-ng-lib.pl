@@ -77,6 +77,10 @@ while($line = <CONF>) {
 			# regular word
 			push(@ltok, $1); $line = $2;
 			}
+		elsif ($line =~ /^\s*([0-9\[\]\-]+\.[0-9\[\]\-]+\.[0-9\[\]\-]+\.[0-9\[\]\-]+)(.*)$/) {
+			# IP address regexp
+			push(@ltok, $1); $line = $2;
+			}
 		elsif ($line =~ /^\s*(\d+\.\d+\.\d+\.\d+)(.*)$/) {
 			# IP address
 			push(@ltok, $1); $line = $2;
