@@ -91,6 +91,10 @@ if ($_[0]->{'fs'} eq 'tar') {
 			    &ui_radio("notape", int($_[0]->{'notape'}),
 				  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]),
 			    1, $tds);
+
+	print &ui_table_row(&hlink($text{'dump_update'},"tarupdate"),
+			    &ui_yesno_radio("update", int($_[0]->{'update'})),
+			    1, $tds);
 	}
 elsif ($_[0]->{'fs'} eq 'xfs') {
 	# Display xfs dump options
@@ -225,6 +229,10 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$_[0]->{'multi'} = $in{'multi'};
 	$_[0]->{'links'} = $in{'links'};
 	$_[0]->{'xdev'} = $in{'xdev'};
+	$_[0]->{'update'} = $in{'update'};
+	if ($in{'gzip'} && $in{'update'}) {
+		&error($text{'dump_egzip3'});
+		}
 	if ($in{'multi'}) {
 		!-c $in{'file'} && !-b $in{'file'} ||
 			&error($text{'dump_emulti'});
@@ -321,7 +329,7 @@ local $tapecmd = $_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar' ? $multi_cmd :
 local @dirs = split(/\s+/, $_[0]->{'dir'});
 if ($_[0]->{'fs'} eq 'tar') {
 	# tar format backup
-	$cmd = "tar -c $flag";
+	$cmd = "tar ".($_[0]->{'update'} ? "-u" : "-c")." ".$flag;
 	$cmd .= " -V '$_[0]->{'label'}'" if ($_[0]->{'label'});
 	$cmd .= " -L $_[0]->{'blocks'}" if ($_[0]->{'blocks'});
 	$cmd .= " -z" if ($_[0]->{'gzip'} == 1);

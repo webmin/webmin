@@ -27,3 +27,5 @@ Added an option for setting the path to the remote rmt command for tar format ba
 On Linux and BSD systems, backups and restores in TAR or EXT formats can be done via FTP as well as SSH, RSH and to local files.
 ---- Changes since 1.320 ----
 Added a warning if % is used in filenames but strftime substition is not enabled.
+---- Changes since 1.390 ----
+When making tar format backups on Linux, an option to just append new files to the archive instead of over-writing it is available.
