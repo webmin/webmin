@@ -397,6 +397,7 @@ sub quoted_value
 local ($str) = @_;
 return $str =~ /^[a-z\_][a-z0-9\_]*$/i ? $str :
        $str =~ /^\d+\.\d+\.\d+\.\d+$/ ? $str :
+       $str =~ /^[0-9\[\]\-]+\.[0-9\[\]\-]+\.[0-9\[\]\-]+\.[0-9\[\]\-]+$/ ? $str :
        $str eq "," || $str eq ".." ? $str :
        $str =~ /^\d+$/ ? $str :
        $str =~ /\"/ ? "'$str'" : "\"$str\"";
