@@ -8,6 +8,7 @@ index_date=Installed on
 index_installmsg=Select a new Perl module to compile and install on your system.
 index_cpan=From CPAN, named
 index_refresh=Refresh module list from CPAN
+index_forcecpan=Always install latest version from source
 index_local=From local file
 index_uploaded=From uploaded file
 index_ftp=From ftp or http URL

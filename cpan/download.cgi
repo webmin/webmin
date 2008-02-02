@@ -68,7 +68,7 @@ elsif ($in{'source'} == 3) {
 	@cpan = split(/\s+|\0/, $in{'cpan'});
 
 	# First check if YUM or APT can install this module for us
-	if ($config{'incyum'}) {
+	if ($config{'incyum'} && !$in{'forcecpan'}) {
 		@yum = &list_packaged_modules();
 		foreach $c (@cpan) {
 			($yum) = grep { lc($_->{'mod'}) eq lc($c) } @yum;

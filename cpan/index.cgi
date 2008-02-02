@@ -82,11 +82,15 @@ if (@st) {
 	$refreshopt = "<br>".&ui_checkbox("refresh", 1, $text{'index_refresh'},
 			$st[9]+$config{'refresh_days'}*24*60*60 < $now);
 	}
+if ($config{'incyum'} && &can_list_packaged_modules()) {
+	$cpanopt = "<br>".&ui_checkbox("forcecpan", 1,
+				       $text{'index_forcecpan'}, 0);
+	}
 
 @opts = ( [ 3, $text{'index_cpan'},
 	    &ui_textbox("cpan", undef, 50)." ".
 	    &ui_button("...", undef, 0, "onClick='window.ifield = document.forms[$formno].cpan; chooser = window.open(\"cpan.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=800,height=500\"); chooser.ifield = window.ifield;'").
-	    $refreshopt ],
+	    $refreshopt.$cpanopt ],
 	  [ 0, $text{'index_local'},
 	    &ui_textbox("local", undef, 50)." ".
 	    &file_chooser_button("local", 0) ],

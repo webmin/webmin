@@ -20,3 +20,4 @@ Added Module Config option to not install modules from APT or YUM.
 The module is now available when running Webmin inside a Solaris zone, but only if Perl is not shared with the global zone.
 ---- Changes since 1.390 ----
 Converted all code to use the new Webmin UI library, for a more consistent look.
+Modules can be forcibly compiled and install from the latest source instead of APT or YUM, using a new option on the main page.

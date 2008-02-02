@@ -309,6 +309,16 @@ foreach my $m (&get_all_module_infos()) {
 return sort { $a->[0] cmp $b->[0] } @rv;
 }
 
+# can_list_packaged_modules()
+# Returns 1 if we can install Perl modules from APT or YUM
+sub can_list_packaged_modules
+{
+return 0 if (!&foreign_check("software") || !$config{'incpackages'});
+&foreign_require("software", "software-lib.pl");
+return 0 if (!$software::update_system);
+return 1;
+}
+
 # list_packaged_modules([refresh])
 # Returns a list of Perl modules that can be installed from the system's
 # package update service (ie YUM or APT).
