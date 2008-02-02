@@ -6,3 +6,5 @@ Added the ability to specify multiple ports with a range like 100-200.
 This module will now work with FreeBSD's IPFW firewall too, although data counts may not be completely accurate as individual packet sizes are not logged. Instead, only the average packet size for each hour is available.
 Firewall rules are now correctly created even when using Shorewall, by adding them to the /etc/shorewall/start file.
 The module now also supports the IPFilter firewall, although counts may not be accurate on fast network interfaces, as IPFilter appears to not log all packets.
+---- Changes since 1.390 ----
+Bandwidth monitoring can now be setup on an interface that isn't currently active, including patterns like ppp+.

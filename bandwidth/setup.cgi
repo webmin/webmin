@@ -5,8 +5,12 @@ require './bandwidth-lib.pl';
 &ReadParse();
 $access{'setup'} || &error($text{'setup_ecannot'});
 
+# Work out interface
+$iface = $in{'iface'} || $in{'other'};
+$iface =~ /^\S+$/ || &error($text{'setup_eiface'});
+
 # Add missing firewall rules
-$err = &setup_rules($in{'iface'});
+$err = &setup_rules($iface);
 &error($err) if ($err);
 
 if ($syslog_module eq "syslog") {
@@ -91,7 +95,7 @@ else {
 
 # Save the interface
 &lock_file($module_config_file);
-$config{'iface'} = $in{'iface'};
+$config{'iface'} = $iface;
 &save_module_config();
 &unlock_file($module_config_file);
 
@@ -113,6 +117,6 @@ if (!$job) {
 	&unlock_file(&cron::cron_file($job));
 	}
 
-&webmin_log("setup", undef, $in{'iface'});
+&webmin_log("setup", undef, $iface);
 &redirect("");
 

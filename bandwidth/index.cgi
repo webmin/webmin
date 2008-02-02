@@ -105,7 +105,10 @@ if (($missingrule || !$sysconf) && $access{'setup'}) {
 		push(@ifaces, $i->{'fullname'}) if ($i->{'virtual'} eq '');
 		}
 	print &ui_select("iface", $config{'iface'},
-			 [ map { [ $_, $_ ] } &unique(@ifaces) ]);
+			 [ (map { [ $_, $_ ] } &unique(@ifaces)),
+			   [ '', $text{'index_other'} ] ],
+			 1, 0, $config{'iface'} ? 1 : 0)." ".
+	      &ui_textbox("other", undef, 10);
 	print &ui_submit($text{'index_setup'});
 	print &ui_form_end();
 	print "<p>\n";

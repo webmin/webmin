@@ -13,6 +13,7 @@ index_missing3=Several firewall rules must be added, and a syslog configuration 
 index_missing2=Several firewall rules must be added.
 index_missing1=A syslog configuration entry must be created.
 index_iface=External network interface
+index_other=Other..
 index_setup=Setup Now
 index_by=Show traffic by
 index_hour=hour
@@ -66,6 +67,7 @@ acl_setup=Can setup and disable monitoring?
 turnoff_ecannot=You are not allowed to disable monitoring
 
 setup_ecannot=You are not allowed to enable monitoring
+setup_eiface=Missing or invalid interface name
 setup_ezone=Failed to fine Shorewall zone for the selected interface
 
 system_firewall=IPtables
