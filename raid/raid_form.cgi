@@ -71,12 +71,12 @@ print &ui_table_row($text{'create_disks'},
 	&ui_select("disks", undef, \@disks, 4, 1));
 
 if ($lvl >= 4 && $lvl != 10) {
-	print &ui_select($text{'create_spares'},
+	print &ui_table_row($text{'create_spares'},
 		&ui_select("spares", undef, \@disks, 4, 1));
 	}
 
 if ($lvl == 4 && $raid_mode ne 'mdadm') {
-	print &ui_select($text{'create_pdisk'},
+	print &ui_table_row($text{'create_pdisk'},
 		&ui_select("pdisk", '', [ [ '', $text{'create_auto'} ],
 					  @disks ], 4, 1));
 	}

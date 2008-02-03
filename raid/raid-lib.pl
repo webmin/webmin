@@ -150,7 +150,7 @@ else {
 			elsif (/^\s*Rebuild\s+Status\s*:\s*(\d+)\s*\%/) {
 				$md->{'rebuild'} = $1;
 				}
-			elsif (/^\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(.*\S)\s+(\/\S+)/) {
+			elsif (/^\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+|\-)\s+(.*\S)\s+(\/\S+)/) {
 				# A device line
 				local $device = { 'name' => 'device',
 						  'value' => $6,

@@ -129,13 +129,12 @@ if ($raid_mode eq "raidtools" && !$st[2]) {
 if ($raid_mode eq "mdadm") {
 	# Only MDADM can add or remove a device (so far)
 	@disks = &find_free_partitions([ $raid->{'value'} ], 0, 1);
-	if ($disks) {
+	if (@disks) {
 		push(@grid, &ui_submit($text{'view_add'}, "add")." ".
 			    &ui_select("disk", undef, \@disks),
 			    $text{'view_adddesc'});
 		}
-
-	if ($rdisks_count > 1) {
+	if (@rdisks > 1) {
 		push(@grid, &ui_submit($text{'view_remove'}, "remove")." ".
 			    &ui_select("rdisk", undef, \@rdisks),
 			    $text{'view_removedesc'});
