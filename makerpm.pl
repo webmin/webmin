@@ -206,8 +206,8 @@ if [ "\$tempdir" = "" ]; then
 	tempdir=/tmp/.webmin
 fi
 export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot
-./setup.sh >$tempdir/webmin-setup.out 2>&1
-chmod 600 $tempdir/webmin-setup.out
+./setup.sh >\$tempdir/webmin-setup.out 2>&1
+chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
 if [ "$inetd" != "1" ]; then
 	/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
