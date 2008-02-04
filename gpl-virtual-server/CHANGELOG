@@ -397,3 +397,4 @@ When a domain is restored to a system with a new IP address, the IP in the SPF r
 When a virtual server is moved under a new owner, the Apache directives that control which user CGI scripts run as are properly updated.
 Re-wrote all code that locks configuration files managed by Virtualmin. This improves the coverage of Webmin logging, and makes it much safer to perform multiple operations on the same or different domains at once.
 Outgoing email relayed via the Virtualmin system is now counted towards the sender's domain's bandwidth limit, unless disabled on the Bandwidth Monitoring page.
+New features in this version of Virtualmin and any plugins are shown on the System Information page, if using the Virtualmin theme.

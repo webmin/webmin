@@ -1,0 +1,1 @@
+../virtual-server/seen_newfeatures.cgi

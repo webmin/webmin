@@ -23,6 +23,7 @@ show_mailsize=Show mailbox size in users list?,1,1-Yes,0-No
 template_auto=Allow editing of options from template when creating server?,1,0-Yes,1-No
 domains_sort=Sort virtual servers by,1,user-Owner,dom-Domain name,owner-Description
 show_ugroup=Allow selection of different group for server admins?,1,1-Yes,0-No
+show_nf=Show new features to,2,master-Master administrator,domain-Domain owners
 
 line1.5=Server administrator permissions,11
 edit_afiles=Can edit alias include and reply files?,1,1-Yes,0-No
