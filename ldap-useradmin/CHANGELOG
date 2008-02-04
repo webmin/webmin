@@ -53,3 +53,5 @@ UID and GID allocation is now done by querying the LDAP server for specific IDs,
 All Samba attributes are removed when Samba access is disabled for a user.
 ---- Changes since 1.380 ----
 Added access control options to prevent use of the same UID or GID.
+---- Changes since 1.390 ----
+Added locking to prevent concurrent writes to the LDAP database, to prevent UID collisions.

@@ -7,6 +7,7 @@ use Time::Local;
 &ReadParse();
 $ldap = &ldap_connect();
 $schema = $ldap->schema();
+&lock_user_files();
 if (!$in{'new'}) {
 	# Get existing user
 	$rv = $ldap->search(base => $in{'dn'},
@@ -682,6 +683,7 @@ else {
 $ldap->unbind();
 delete($in{'pass'});
 delete($in{'passmode'});
+&unlock_user_files();
 &webmin_log(!$in{'new'} ? 'modify' : 'create', 'user', $user, \%in);
 &redirect($in{'return'} || "");
 

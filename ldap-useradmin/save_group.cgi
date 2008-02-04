@@ -7,6 +7,7 @@ require './ldap-useradmin-lib.pl';
 &ReadParse();
 $ldap = &ldap_connect();
 $schema = $ldap->schema();
+&lock_user_files();
 
 if (!$in{'new'}) {
 	# Get existing group
@@ -309,6 +310,7 @@ if ($in{'others'}) {
 delete($in{'pass'});
 delete($in{'encpass'});
 $ldap->unbind();
+&unlock_user_files();
 &webmin_log(!$in{'new'} ? 'modify' : 'create', 'group', $group, \%in);
 
 # Bounce back to the list

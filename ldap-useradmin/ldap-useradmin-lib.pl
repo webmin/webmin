@@ -532,11 +532,16 @@ sub set_group_envs
 return &useradmin::set_group_envs(@_);
 }
 
-# Does nothing, because no LDAP locking is needed
-sub lock_user_files { }
+# Locks a dummy file, to indicate that the DB is in use
+sub lock_user_files
+{
+&lock_file("$module_config_directory/ldapdb");
+}
 
-# Does nothing, because no LDAP locking is needed
-sub unlock_user_files { }
+sub unlock_user_files
+{
+&unlock_file("$module_config_directory/ldapdb");
+}
 
 # split_props(text, &user)
 sub split_props

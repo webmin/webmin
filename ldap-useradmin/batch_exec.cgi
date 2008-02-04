@@ -31,6 +31,7 @@ elsif ($in{'source'} == 2) {
 $ldap = &ldap_connect();
 $schema = $ldap->schema();
 $pft = $schema->attribute("shadowLastChange") ? 2 : 0;
+&lock_user_files();
 
 # Work out a good base UID for new users
 $newuid = $mconfig{'base_uid'};
@@ -532,6 +533,7 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		}
 	}
 print "</pre>\n";
+&unlock_user_files();
 &webmin_log("batch", undef, $in{'source'} == 1 ? $in{'local'} : undef,
 	    { 'created' => $created, 'modified' => $modified,
 	      'deleted' => $deleted, 'lnum' => $lnum } );
