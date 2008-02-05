@@ -1256,9 +1256,16 @@ elsif ($f->{'type'} == 5) {
 		}
 	}
 elsif ($f->{'type'} == 6) {
-	# Just clear the virtual index
-	$f->{'members'} = [ ];
-	&save_folder($f);
+	if ($folder->{'delete'}) {
+		# Delete all underlying messages
+		local @dmails = &mailbox_list_mails(undef, undef, $f, 1);
+		&mailbox_delete_mail($f, @dmails);
+		}
+	else {
+		# Clear the virtual index
+		$f->{'members'} = [ ];
+		&save_folder($f);
+		}
 	}
 
 # Trash the folder index
