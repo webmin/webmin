@@ -92,18 +92,18 @@ $tmp =~ s/=/&#61;/g;
 return $tmp;
 }
 
-# quote_escape(string)
+# quote_escape(string, [only-quote])
 # Converts ' and " characters in a string into HTML entities
 sub quote_escape
 {
-local $tmp = $_[0];
+local ($tmp, $only) = @_;
 if ($tmp !~ /\&[a-zA-Z]+;/ && $tmpl !~ /\&#/) {
 	# convert &, unless it is part of &#nnn; or &foo;
 	$tmp =~ s/&([^#])/&amp;$1/g;
 	}
 $tmp =~ s/&$/&amp;/g;
-$tmp =~ s/\"/&quot;/g;
-$tmp =~ s/\'/&#39;/g;
+$tmp =~ s/\"/&quot;/g if ($only eq '' || $only eq '"');
+$tmp =~ s/\'/&#39;/g if ($only eq '' || $only eq "'");
 return $tmp;
 }
 
