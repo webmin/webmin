@@ -132,7 +132,8 @@ MODULE: foreach $m (@mods) {
 	}
 
 if (!$count) {
-	print "<b>",&text('wsearch_enone', "<tt>$re</tt>"),"</b><p>\n";
+	print "<b>",&text('wsearch_enone',
+		"<tt>".&html_escape($re)."</tt>"),"</b><p>\n";
 	}
 
 &ui_print_footer();
@@ -151,7 +152,7 @@ if ($str =~ /(.*)(\Q$re\E)(.*)/i) {
 	if (length($after) > $hlen) {
 		$after = substr($after, 0, $hlen)."...";
 		}
-	$str = $before."<b>".$match."</b>".$after;
+	$str = $before."<b>".&html_escape($match)."</b>".$after;
 	}
 return $str;
 }
