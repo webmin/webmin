@@ -83,7 +83,7 @@ else {
 # MacOS specific fix - remove include for /etc/rndc.key , which we don't need
 $lref = &read_file_lines($cfile);
 for(my $i=0; $i<@$lref; $i++) {
-	if ($lref->[$i] =~ /^include\s+"/etc/rndc.key"/i) {
+	if ($lref->[$i] =~ /^include\s+"\/etc\/rndc.key"/i) {
 		splice(@$lref, $i, 1);
 		last;
 		}
