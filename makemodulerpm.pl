@@ -64,6 +64,9 @@ while(@ARGV) {
 	elsif ($a eq "--sign") {
 		$sign = 1;
 		}
+	elsif ($a eq "--epoch") {
+		$epoch = shift(@ARGV);
+		}
 	elsif ($a =~ /^\-\-/) {
 		print STDERR "Unknown option $a\n";
 		exit(1);
@@ -90,6 +93,7 @@ if (!$dir) {
 	print STDERR "                        [--provides provides]\n";
 	print STDERR "                        [--usermin]\n";
 	print STDERR "                        [--release number]\n";
+	print STDERR "                        [--epoch number]\n";
 	print STDERR "                        [--target-dir directory]\n";
 	print STDERR "                        [--dir directory-in-package]\n";
 	print STDERR "                        [--allow-overwrite]\n";
@@ -209,6 +213,7 @@ $rdeps = join(" ", @rdeps, @extrareqs);
 $providesheader = $provides ? "Provides: $provides" : undef;
 $vendorheader = $vendor ? "Vendor: $vendor" : undef;
 $urlheader = $url ? "URL: $url" : undef;
+$epochheader = $epoch ? "Epoch: $epoch" : undef;
 open(SPEC, ">$spec_dir/$prefix$mod.spec");
 print SPEC <<EOF;
 %define __spec_install_post %{nil}
@@ -226,6 +231,7 @@ Source: $mod.tar.gz
 Vendor: Jamie Cameron
 BuildRoot: /tmp/%{name}-%{version}
 BuildArchitectures: noarch
+$epochheader
 $providesheader
 $vendorheader
 $urlheader

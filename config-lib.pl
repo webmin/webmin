@@ -232,6 +232,7 @@ foreach $c (@info_order) {
 		# Password free text
 		$field = &ui_password($c, undef, $p[2] || 40, 0, $p[3]);
 		}
+	$label = "<a name=$c>$label</a>";
 	print &ui_table_row($label, $field, 1, [ "width=30% nowrap" ]);
 	}
 }

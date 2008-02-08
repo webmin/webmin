@@ -1,4 +1,4 @@
-acl_feedback=Può iniviare email di segnalazione?
+acl_feedback=Può inviare email di segnalazione?
 acl_feedback0=No
 acl_feedback1=Si, ma senza file di configurazione
 acl_feedback2=Si
@@ -226,7 +226,7 @@ session_mesg=Inserisci nome utente e password per il login al server Webmin su $
 session_mesg2=Inserisci nome utente e password per il login
 session_pass=Password
 session_save=Ricorda login permanentemente
-session_timed_out=Timeout di sessione dopo $1 minuti di inattività
+session_timed_out=La sessione è scaduta dopo $1 minuti di inattività
 session_user=Nome utente
 skill_high=Esperto
 skill_low=Inesperto
