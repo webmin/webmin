@@ -651,11 +651,11 @@ if [ "$upgrading" != 1 ]; then
 
 	# Use licence module specified by environment variable
 	if [ "$licence_module" != "" ]; then
-		echo licence_module=$licence_module >>$cfile
+		echo licence_module=$licence_module >>$config_dir/config
 	fi
 
 	# Disallow unknown referers by default
-	echo "referers_none=1" >>$cfile
+	echo "referers_none=1" >>$config_dir/config
 else
 	# one-off hack to set log variable in config from miniserv.conf
 	grep log= $config_dir/config >/dev/null
@@ -666,9 +666,9 @@ else
 	fi
 
 	# Disallow unknown referers if not set
-	grep referers_none= $cfile >/dev/null
+	grep referers_none= $config_dir/config >/dev/null
 	if [ "$?" != "0" ]; then
-		echo "referers_none=1" >>$cfile
+		echo "referers_none=1" >>$config_dir/config
 	fi
 fi
 echo $ver > $config_dir/version
