@@ -81,7 +81,7 @@ print "</select></td>\n";
 
 print "<td valign=top><b>$text{'defs_failure'}</b></td>\n";
 print "<td><select name=failure multiple size=5>\n";
-foreach $s ('HOST', 'USERID', 'ATTEMPT', 'RECORD') {
+foreach $s ('HOST', 'USERID', 'ATTEMPT') {
 	printf "<option value=%s %s>%s\n",
 		$s, &indexof($s, @{$q->{'log_on_failure'}})<0 ? '' : 'selected',
 		$text{"defs_failure_".lc($s)};
