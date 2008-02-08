@@ -392,7 +392,6 @@ When an alias domain is created, the primary domain can now update its configura
 When restoring a virtual server that uses features not supported on the system, a warning will be displayed listing the missing or disabled features.
 When editing a virtual server without a private IP address, one can be added that is associated with an existing interface on the system.
 Website FTP access users can be created, who have the same permissions as a domain owner but are limited to FTP access for editing web pages. This feature was ported from the Pro version.
-When editing a virtual server without a private IP address, one can be added that is associated with an existing interface on the system.
 When a domain is restored to a system with a new IP address, the IP in the SPF record is updated. Also, any NS records are updated to match the new system.
 When a virtual server is moved under a new owner, the Apache directives that control which user CGI scripts run as are properly updated.
 Re-wrote all code that locks configuration files managed by Virtualmin. This improves the coverage of Webmin logging, and makes it much safer to perform multiple operations on the same or different domains at once.
