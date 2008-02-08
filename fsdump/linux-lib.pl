@@ -92,7 +92,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 				  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]),
 			    1, $tds);
 
-	print &ui_table_row(&hlink($text{'dump_update'},"tarupdate"),
+	print &ui_table_row(&hlink($text{'dump_update2'},"tarupdate"),
 			    &ui_yesno_radio("update", int($_[0]->{'update'})),
 			    1, $tds);
 	}
