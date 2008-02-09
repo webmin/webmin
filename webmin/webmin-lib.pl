@@ -130,15 +130,17 @@ if ($two eq "\037\235") {
 	$need_unlink = 1;
 	}
 elsif ($two eq "\037\213") {
-	if (!&has_command("gunzip")) {
+	if (!&has_command("gunzip") && !&has_command("gzip")) {
 		unlink($file) if ($need_unlink);
 		return &text('install_egzip', "<tt>gunzip</tt>");
 		}
 	local $temp = $file =~ /\/([^\/]+)\.gz/i ? &transname("$1")
 						 : &transname();
-	local $out = `gunzip -c "$file" 2>&1 >$temp`;
+	local $cmd = &has_command("gunzip") ? "gunzip -c" : "gzip -d -c";
+	local $out = &backquote_command($cmd." ".&quote_path($file).
+					"  2>&1 >$temp");
 	unlink($file) if ($need_unlink);
-	if ($?) {
+	if ($? || !-s $temp) {
 		unlink($temp);
 		return &text('install_egzip2', $out);
 		}
@@ -214,7 +216,7 @@ else {
 	# theme directories)
 	local (%mods, %hasfile);
 	&has_command("tar") || return $text{'install_enotar'};
-	local $tar = `tar tf "$file" 2>&1`;
+	local $tar = &backquote_command("tar tf ".&quote_path($file)." 2>&1");
 	if ($?) {
 		unlink($file) if ($need_unlink);
 		return &text('install_etar', $tar);
