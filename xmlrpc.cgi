@@ -21,6 +21,7 @@ do './web-lib.pl';
 use POSIX;
 use Socket;
 $force_lang = $default_lang;
+$trust_unknown_referers = 1;
 &init_config();
 $main::error_must_die = 1;
 
