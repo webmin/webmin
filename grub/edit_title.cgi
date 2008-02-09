@@ -69,8 +69,12 @@ push(@opts, [ 2, $text{'title_kernel'},
 	      &ui_table_row($text{'title_args'},
 		&ui_textbox("args", $args, 50)).
 	      &ui_table_row($text{'title_initrd'},
-		&ui_opt_textbox("initrd", $title->{'initrd'}, 50,
+		&ui_opt_textbox("initrd", $title->{'initrd'}, 40,
 				$text{'global_none'})).
+	      &ui_table_row($text{'title_modules'},
+		&ui_textarea("module",
+			join("\n", split(/\0/, $title->{'module'})), 3, 50,
+			"off")).
 	      &ui_table_end() ]);
 
 # Chain loader
@@ -83,7 +87,7 @@ push(@opts, [ 1, $text{'title_chain'},
 			   defined($title->{'makeactive'})) ]);
 
 # None (menu entry only)
-push(@opts, [ 0, $text{'title_none'} ]);
+push(@opts, [ 0, $text{'title_none1'}, $text{'title_none2'} ]);
 
 print &ui_table_row($text{'title_boot'},
 	&ui_radio_table("boot_mode", $boot, \@opts), 3);

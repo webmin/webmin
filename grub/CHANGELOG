@@ -1,2 +1,4 @@
 ---- Changes since 1.390 ----
 Converted all code to use the new Webmin user interface library.
+---- Changes since 1.400 ----
+Multiple module lines in menu.lst are now preserved and editable. This prevents breakage sometimes seen on kernels using Xen.

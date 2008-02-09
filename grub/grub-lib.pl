@@ -25,7 +25,13 @@ while(<CONF>) {
 	if (/^\s*(\S+)\s*=\s*(.*)/ || /^\s*(\S+)\s*(.*)/) {
 		if ($title && $1 ne 'title') {
 			# directive in an existing section
-			$title->{$1} = $2;
+			if (defined($title->{$1})) {
+				# Multiple values!
+				$title->{$1} .= "\0".$2;
+				}
+			else {
+				$title->{$1} = $2;
+				}
 			$title->{'eline'} = $lnum;
 			}
 		else {
@@ -65,7 +71,9 @@ if (defined($_[2])) {
 				push(@lines, $k);
 				}
 			else {
-				push(@lines, $k." ".$_[2]->{$k});
+				foreach my $v (split(/\0/, $_[2]->{$k})) {
+					push(@lines, $k." ".$v);
+					}
 				}
 			}
 		}

@@ -43,10 +43,12 @@ else {
 	delete($title->{'kernel'});
 	delete($title->{'chainloader'});
 	delete($title->{'initrd'});
+	delete($title->{'module'});
 	if ($in{'boot_mode'} == 2) {
 		$title->{'kernel'} = $in{'kernel'};
 		$title->{'kernel'} .= " $in{'args'}" if ($in{'args'});
 		$title->{'initrd'} = $in{'initrd'} if (!$in{'initrd_def'});
+		$title->{'module'} = join("\0", split(/\r?\n/, $in{'module'}));
 		}
 	elsif ($in{'boot_mode'} == 1) {
 		$title->{'chainloader'} = $in{'chain_def'} ? '+1'
