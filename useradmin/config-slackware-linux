@@ -37,3 +37,4 @@ shells=fixed,passwd,shells
 secmode=0
 last_show=0
 config-aix
+passwd_progmode=0

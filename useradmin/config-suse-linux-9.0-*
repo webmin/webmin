@@ -39,3 +39,4 @@ secmode=0
 last_show=0
 nscd_restart=/etc/rc.d/nscd restart
 config-aix
+passwd_progmode=0
