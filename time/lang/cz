@@ -1,6 +1,9 @@
 index_title=Systémový èas
 index_timeserver=Èasový server
 index_address=Host/Adresa
+index_zone=Èasová zóna
+index_tz=Aktuální umístìní
+index_eformat=Nezjistitelný výstupní formát <tt>hw èasu</tt>
 
 action_save=Zapsat
 action_apply=Pou¾ít
@@ -8,6 +11,7 @@ action_sync=Sjednotit systémový èas s hardwarovým èasem
 action_sync_s=Sjednotit hardwarový èas se systémovým èasem
 action_timeserver_sys=Sjednotit systémový èas
 action_timeserver_hw=Sjednotit hardwarový èas
+action_savezone=Zmìnit èasovou zónu
 
 acl_sys=U¾ivatel mù¾e editovat systémový èas
 acl_hw=U¾ivatel mù¾e editovat hardwarový èas
@@ -48,3 +52,13 @@ day_7=Nedìle
 error_cnf=Chyba : $1 pøíkaz nenalezen
 error_hw=Nemohu nastavit hardwarová èas: $1
 error_sync=Nemù¾u nastavit systémový èas: $1
+
+log_set_date=Systémový èas nastaven na $1
+log_set_hwclock=Hardwarový èas nastaven na $1
+log_remote_date=Systémový èas pøenesen z $2
+log_remote_hwclock=Harwarový èas pøenes z $2
+log_remote_date_l=Systémový èas $1 pøenesen z $2
+log_remote_hwclock_l=Hardwarový èas $1 pøenesen z $2
+log_sync=SSystémový èas synchronizován s hardwarovým èasem
+log_sync_s=Hardwarový èas synchronizován se systémovým èasem
+
