@@ -9,3 +9,4 @@ depends=inittab
 desc_ru_SU=óÅÒ×ÅÒ PPP
 desc_ru_RU=Ñåğâåğ PPP
 longdesc=Set up a dialin server using mgetty and PPP.
+desc_cz=PPP Dialin server
