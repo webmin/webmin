@@ -1,0 +1,6 @@
+line2=Konfigurace systému,11
+proftpd_conf=Cesta ke konfiguraènímu souboru ProFTPD,0
+proftpd_path=Cesta ke spou¹tìcímu souboru ProFTPD,0
+pid_file=Cesta k ProFTPD PID souboru,0
+ftpusers=Cesta k souboru ftp u¾ivatelù,0
+start_cmd=Pøíkaz spou¹tìjící ProFTPD,3,Automaticky
