@@ -86,3 +86,5 @@ Italian and Catalan translations contributed for many modules, thanks to Giovann
 Changed the error message that appears when Webmin detects a link from another web page, and removed the button to allow the link (which was unreliable anyway).
 ---- Changes since 1.390 ----
 Links from unknown referers are now blocked by default, to prevent XSS attacks. This may break browsers that don't supply a Referer: HTTP header.
+---- Changes since 1.400 ----
+Big Czech translation updates, thanks to Petr Vanek and the Czech translation team.
