@@ -1,0 +1,264 @@
+index_title=Administrace tiskáren
+index_header=Pou¾itelné tiskárny
+index_name=Tiskárna
+index_desc=Popis
+index_to=Tisknout na
+index_driver=Ovladaè
+index_enabled=Povoleno?
+index_accepting=Pøíjímá?
+index_jobs=Úlohy
+index_none=Nejsou nainstalovány ve va¹em systému ¾ádné tiskárny
+index_list=seznam..
+index_jlist=úlohy..
+index_add=Pøidat novou tiskárnu
+index_stop=Ukonèit plánovaè
+index_stopmsg=Klepnutím na toto tlaèítko ukonèíte bìh procesu plánování tisku. To zapøíèiní, ¾e ¾ádní lokální nebo vzdálení u¾ivatelé nemohou ve va¹em systému tisknout.
+index_start=Spustit plánovaè
+index_startmsg=Klepnutím na toto tlaèítko spustíte proces plánování tisku. To umo¾ní lokálním i vzdáleným u¾ivatelùm tisknout ve va¹em systému.
+index_restart=Restartovat plánovaèe
+index_restartmsg=Klepnutím na toto tlaèítko restartujete proces plánování tisku. To zprovozní aktuální konfiguraci tisku.
+index_return=seznam tiskáren
+index_esystem=Bu» budete instalovat software pro vámi zvolená tiskový systém, nebo pou¾ijete <a href='$1'>konfiguraci modulu</a>, který provede zmìny.
+
+edit_eedit=Nemáte oprávnìní editovat tuto tiskárnu
+edit_eadd=Nemáte oprávnìní pøidávat tiskárny
+edit_add=Vytvoøit tiskárnu
+edit_edit=Editovat tiskárnu
+edit_conf=Konfigurace tiskárny
+edit_name=Název
+edit_acc=Bude akceptovat po¾adavky?
+edit_why=Ne - Proè ne
+edit_desc=Popis
+edit_ena=Povolen tisk?
+edit_acl=Kontrola pøístupu
+edit_allow=Povolit ka¾dému
+edit_deny=Zakázat ka¾dému
+edit_allowu=Povolit u¾ivatelùm ze seznamu..
+edit_denyu=Zakázat u¾ivatelùm ze seznamu..
+edit_banner=Tiskonout banner?
+edit_opt=Volitelnì
+edit_default=Výchozí tiskárna?
+edit_already=Ji¾ je výchozí tiskárnou
+edit_max=Maximální velikost tiskových úloh
+edit_unlimited=Neomezeno
+edit_dacc=Ovladaè pøijímá
+edit_dtext=Text
+edit_dpost=Postscript
+edit_dother=Jiné
+edit_alt=Alternativní jména tiskáren
+edit_dest=Cíl tisku
+edit_dev=Lokální zaøízení
+edit_file=Lokální soubor
+edit_remote=Vzálený Unix server
+edit_rqueue=Tiskárna
+edit_type=Typ
+edit_smb=Vzdálený Windows server
+edit_share=Tiskárna
+edit_user=U¾ivatel
+edit_pass=Heslo
+edit_wgroup=Skupina
+edit_hpnp=Vzdálený HPNP server
+edit_port=Port
+edit_direct=Pøímé TCP pøipojení
+edit_dport=Port
+edit_driver=Ovladaè tiskárny
+edit_check=Zkontrolovat, zda je vzdálená tiskárna pøipravena?
+
+blocks=blocky
+
+save_err=Chyba pøi ukládání tiskárny
+save_eadd=Nemáte oprávnìní pøidávat tiskárny
+save_eedit=Nemáte oprávnìní editovat tiskárnu
+save_ename='$1' není platné jméno tiskárny
+save_edup=Tiskárna nazvaná '$1' ji¾ existuje
+save_eallow=Nebyly vlo¾eni ¾ádní u¾ivatelé k povolení
+save_edeny=Nebyly vlo¾eni ¾ádní u¾ivatelé k zakázání
+save_euser=U¾ivatel '$1' neexistuje
+save_etype=Musíte vybrat pro pøíjem nejménì jeden typ pro tento ovladaè
+save_emax=Maximální velikost tiskových úloh musí být celé èíslo
+save_efile='$1' neexistuje
+save_erhost=Vzdálený host '$1' neexistuje
+save_erqueue='$1' není platný název vzdálené fronty
+save_eremote=Ovladaèe nemohou být pou¾ity pro vzdálené Unix tiskárny
+save_edhost=Pøímý host '$1' neexistuje
+save_edport=Chybìjícínebo nesprávný pøímý port
+
+jobs_title=Tiskové úlohy
+jobs_header=Tiskové úlohy na $1
+jobs_id=ID úlohy
+jobs_size=Velikost
+jobs_by=Pøedlo¾ena od
+jobs_when=Pøedlo¾ena k
+jobs_file=Jméno souboru
+jobs_cancel=Klepnutím na ID úlohy ve vý¹e uvedeném seznamu dojde k jejímu stornování
+jobs_cancelview=Klepnutím na ID úlohy ve vý¹e uvedeném seznamu dojde k jejímu stornování, nebo klepnutím na velikost úlohy dojde k jejímu zobrazení.
+jobs_none=Nejsou ¾ádné tiskové úlohy v $1
+jobs_all=Stornovat v¹echny tiskové úlohy
+jobs_bytes=bytù
+jobs_test=Zku¹ební stránka tiskárny
+
+cancel_ecannot=Nemáte oprávnìní stornovat tiskové úlohy
+cancel_err=Chyba pøi stornování tiskové úlohy
+cancel_egone=Tisková úloha $1 ji¾ neexistuje
+
+view_ecannot=Nemáte oprávnìní zobrazit tuto tiskovou úlohu
+view_egone=Tato tisková úloha ji¾ neexistuje
+
+start_ecannot=Nemáte oprávnìní spustit plánovaè
+start_err=Chyba pøi spu¹tìní spu¹tìní plánovaèe
+
+stop_ecannot=Nemáte oprávnìní ukonèit plánovaè
+stop_err=Chyba pøi ukonèování plánovaèe
+
+restart_ecannot=Nemáte oprávnìní restartovat plánovaè
+restart_err=Chyba pøi restartování plánovaèe
+
+webmin_none=Nic
+webmin_nonemsg=Postscriptová nebo textová tiskárna
+webmin_remotemsg=Vzdálená tiskárna
+webmin_model=Model
+webmin_prog=Program
+webmin_driver=Webmin ovladaè
+webmin_uniprint=Uniprint ovladaè
+webmin_edrivers=Chyba pøi získávání ovladaèù z $1. Webmin ovladaèe tiskáren pou¾ivající ghostscript nejsou k dispozici
+webmin_egs=Pøíkaz $1 nebyl nalezen. Webmin ovladaèe tiskáren pou¾ivající ghostscript nejsou k dispozici
+webmin_edriver='$1' neexistuje
+
+caldera_none=Nic
+caldera_nonemsg=Vzdálená nebo rastrová tiskárna
+caldera_prog=Program
+caldera_coas=COAS ovladaè
+caldera_printer=Tiskárna a rozli¹ení
+caldera_eof=Poslat EOF?
+caldera_paper=Velikost papíru
+caldera_double=Tisknout oboustrannì?
+caldera_gsopts=Pøídavná GS nastavení
+caldera_uniprint=Uniprint ovladaè
+caldera_eprog='$1' neexistuje
+caldera_edriver=Nebyl vybrán ¾ádný ovladaè tiskárny
+caldera_eres=Nebylo zvoleno ¾ádné rozli¹ení
+
+redhat_none=Nic
+redhat_nonemsg=Postscriptová nebo textová tiskárna
+redhat_prog=Program
+redhat_driver=Redhat ovladaè
+redhat_printer=Tiskárna a rozli¹ení
+redhat_eof=Poslat EOF?
+redhat_paper=Velikost papíru
+redhat_pages=Poèet stran na jedné výstupní stránce
+redhat_gsopts=Pøídavná GS nastavení
+redhat_hmargin=Pravý/levý okraj
+redhat_vmargin=Horní/dolní okraj
+redhat_crlf=Fixovat stair-stepping text?
+redhat_eprog='$1' neexistuje
+redhat_edriver=Nebyl vybrán ¾ádný ovladaè tiskárny
+redhat_ehmargin=Chybìjící nebo nesprávný Missing or invalid pravý/levý okraj
+redhat_evmargin=Chybìjící nebo nesprávný Missing or invalid horní/dolní okraj
+redhat_eres=Nebylo zvoleno ¾ádné rozli¹ení
+redhat_printer2=Model tiskárny a ovladaè
+
+suse_none=Nic
+suse_nonemsg=Postscript nebo textová tiskárna
+suse_prog=Program
+suse_driver=APSfilter ovladaè
+suse_printer=Typ tiskárny
+suse_res=Rozli¹ení v DPI
+suse_colour=Barevná tiskárna
+suse_paper=Velikost papíru
+suse_method=Metoda filtru
+suse_auto=Automatická
+suse_ascii=ASCII
+suse_raw=Rastr
+suse_extra=Extra ghostscript nastavení
+suse_yast2=YAST2 ovladaè
+suse_edriver=Nebyl vybrán ¾ádný typ tiskárny
+suse_eres=Chybìjící nebo nesprávné rozli¹ení
+
+estop=Chyba pøi ukonèování lpd : $1
+
+acl_printers=Tiskárny, které mù¾e tento u¾ivatel konfigurovat
+acl_add=Mù¾e pøidat nové tiskárny?
+acl_cancel=Mù¾e stornovat tisové úlohy?
+acl_stop=Mù¾e spustit plánovaè?
+acl_restart=Pouze restartovat
+acl_listed=Poue na vybraných tiskárnách ..
+acl_pall=V¹echny tiskárny
+acl_psel=Vybrané..
+acl_view=Zobrazit nekonfigurovatelné tiskárny?
+acl_test=Mù¾e tiskonout zku¹ební stránku tiskárny?
+acl_user=Spravovat tiskové úlohy vlastnìné
+acl_user_all=V¹ichni u¾ivatelé
+acl_user_this=Aktuální  u¾ivatel Webminu
+
+log_stop=Ukonèen plánovaè tisku
+log_start=Spu¹tìn plánovaè tisku
+log_restart=Restartován plánovaè tisku
+log_cancel_job=Stornována tisková úloha $2 na $1
+log_cancel_all=Stornovány v¹echny tisové úlohy na $1
+log_create=Vytvoøena tiskárna $1 na $2
+log_modify=Modifikována tiskárna $1 na $2
+log_delete=Smazána tiskárna $1 na $2
+log_create_l=Vytvoøena $3 tiskárna $1 na $2
+log_modify_l=Modifikována $3 tiskárna $1 na $2
+log_delete_l=Smazána $3 tiskárna $1 na $2
+
+linux_paralel=Paralelní oort $1
+linux_serial=Seriový oort $1 (COM$1)
+linux_null=Null Device
+linux_usb=USB tiskárna $1
+linux_ecmd=Pøíkaz $1 nemù¾e být ve va¹em systému nalezen, co¾ indikuje, ¾e Linux tiskový systém není nainstalován.
+linux_espool=Spool adresáø $1 ve va¹em systému neexistuje, co¾ indikuje, ¾e Linux tiskový systém není nainstalován.
+
+freebsd_paralel=Paralelní port
+freebsd_serial=Seriový port $1 (COM$1)
+freebsd_ecmd=Pøíkaz $1 nemù¾e být ve va¹em systému nalezen, co¾ indikuje, ¾e FreeBSD tiskový systém není nainstalován.
+freebsd_espool=Spool adresáø $1 ve va¹em systému neexistuje, co¾ indikuje, ¾e FreeBSD tiskový systém není nainstalován.
+
+openbsd_paralel=Paralelní port
+openbsd_serial=Seriový port $1 (COM$1)
+
+unixware_paralel=Paralelní port $1
+unixware_serial=Seriový port $1
+unixware_null=Null Device
+unixware_ecmd=Pøíkaz $1 nemù¾e být ve va¹em systému nalezen, co¾ indikuje, ¾e UnixWare tiskový systém není nainstalován.
+
+hpux_paralel=Paralelní $1
+hpux_serial=Seriový $1
+hpux_null=Null Device
+hpux_ecmd=Pøíkaz $1 nemù¾e být ve va¹em systému nalezen, co¾ indikuje, ¾e HPUX tiskový systém není nainstalován.
+hpux_eiface=Adresáø pro skripty rozhraní $1 ve va¹em systému neexistuje, co¾ indikuje, ¾e HPUX tiskový systém není nainstalován.
+
+lprng_paralel=Paralelní port $1
+lprng_serial=Seriový port $1 (COM$1)
+lprng_null=Null Device
+lprng_ecmd=Pøíkaz $1 nemù¾e být ve va¹em systému nalezen, co¾ indikuje, ¾e LPRng tiskový systém není nainstalován.
+lprng_espool=Spool adresáø $1 ve va¹em systému neexistuje, co¾ indikuje, ¾e LPRng tiskový systém není nainstalován.
+
+solaris_paralel=Paralelní port
+solaris_uparalel=Ultra 5/10 Paralelní port
+solaris_serial=Seriový port $1
+solaris_null=Null Device
+solaris_ecmd=Pøíkaz $1 nemù¾e být ve va¹em systému nalezen, co¾ indikuje, ¾e Solaris tiskový systém není nainstalován.
+
+test_title=Tisk zku¹ební stránky
+test_ecannot=Nemáte oprávnìní tisknout zku¹ební stránku
+test_desc=Tento formuláø umo¾òuje tisk zku¹ební stránky pro tiskárnu $1. Vyberte typ stránky, který chcete vytisknout :
+test_0=Èernobílá Postscript stránka
+test_1=Barevná Postscript stránka
+test_2=Plain ASCII text
+test_3=Jakýkoliv sta¾ený soubor
+test_print=Tisknout stránku
+test_exec=Tiskne se zku¹ební stránka pomocí pøíkazu $1 ..
+test_failed=.. pøíkaz neprobìhl!
+test_ok=.. pøíkaz byl úspì¹ný.
+
+cups_none=Nic
+cups_nonemsg=Vzdálená nebo rastrová tiskárna
+cups_prog=Program
+cups_driver=CUPS driver
+cups_eprog='$1' není platný program
+cups_opts=Nastavení pro $1
+cups_ecmd=Pøíkaz $1 nemù¾e být ve va¹em systému nalezen, co¾ indikuje, ¾e CUPS tiskový systém není nainstalován.
+
+irix_ecmd=Pøíkaz $1 nemù¾e být ve va¹em systému nalezen, co¾ indikuje, ¾e IRIX tiskový systém není nainstalován.
+irix_eiface=Adresáø pro skripty rozhraní $1 ve va¹em systému neexistuje, co¾ indikuje, ¾e IRIX tiskový systém není nainstalován.
