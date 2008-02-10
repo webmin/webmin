@@ -1,0 +1,299 @@
+index_title=Souborový mana¾er
+index_nojava=Tento soubor vy¾aduje funkènost Javy, av¹ak vá¹ prohlí¾eè Javu nepodporuje
+index_eremote=Neexistuje ¾ádný Unix u¾ivatel, který by vyhovoval pøíhlá¹ení ve Webminu $1.
+switch_euser=Unix u¾ivatel neexistuje!
+
+top_ret=Úvodní stránka
+top_down=Ulo¾it
+top_edit=Editovat
+top_refresh=Obnovit
+top_info=Info
+top_eacl=ACL
+top_attr=Attrs
+top_ext=EXT
+top_delete=Zmazat
+top_new=Nový
+top_upload=Nahrát
+top_rename=Pøejmenovat
+top_copy=Kopírovat
+top_cut=Vyjmout
+top_paste=Vlo¾it
+top_share=Sdílení
+top_search=Najít
+
+right_name=Jméno
+right_size=Velikost
+right_user=U¾ivatel
+right_group=Skupina
+right_date=Datum
+
+edit_enormal=Mohou být editovány pouze normální soubory
+edit_title=Editování $1
+edit_title2=Vytvoøení souboru
+edit_filename=Název souboru:
+edit_eover=$1 nemù¾e být pøepsán
+edit_esave=Chyba pøi ukládání souboru : $1
+edit_eaccess=Nemáte oprávnìní pro ulo¾ení '$1'
+
+info_file=Soubor
+info_path=Cesta:
+info_type=Typ:
+info_size=Velikost:
+info_mod=Modifikováno:
+info_link=Link na:
+info_perms=Práva
+info_user=U¾ivatel:
+info_group=Skupina:
+info_other=Ostatní:
+info_octal=Octal:
+info_sticky=Sticky:
+info_sticky2=Pouze vlastnící mohou smazat soubory
+info_own=Vlastnictví
+info_setuid=Nastavit UID:
+info_setuid2=Spustit pod u¾ivatelem
+info_setgid=Nastavit GID:
+info_setgid2=Soubory vlastnìné skupinou
+info_setgid3=Spusti pod skupinou
+info_apply=Pou¾ít zmìny na
+info_apply1=Pouze tento adresáø
+info_apply2=Tento adresáø a jeho soubory
+info_apply3=Tento adresáø a v¹echny podadresáøe
+info_efailed=Chyba pøi aktualizaci $1 : $2
+info_read=Ètení
+info_write=Zápis
+info_list=Výpis
+info_exec=Spu¹tìní
+
+eacl_eacls=Chyba pøi ètení ACLs : $1
+eacl_acltype=ACL typ
+eacl_aclname=Pou¾ít na
+eacl_aclperms=Práva
+eacl_add=Pøidat ACL typu :
+eacl_remove=Odstranit ACL
+eacl_efs=Souborový systém $1 nepodporuje ACLs
+eacl_create=Vytvoøit ACL
+eacl_edit=Editovat ACL
+eacl_user=Vlastník souboru $1
+eacl_group=Skupina souboru $1
+eacl_eowner=Chybìjící u¾ivatel èi skupina pro pou¾ití na
+eacl_efailed=Chyba pøi nastavení ACL pro $1 : $2
+eacl_emask=Mù¾e být uveden nanejvý¹ jeden zápis masky pro ACL
+eacl_edefmask=Mù¾e být uveden nanejvý¹ jeden zápis výchozí masky pro ACL
+eacl_title=ACL pro $1
+eacl_owner=Vlastník souboru
+eacl_edefaults=Jestli¾e má soubor nejaký váchozí ACL, musí mít výchozího u¾ivatele, skupinu a ostatní pro ACLs.
+
+acltype_user=U¾ivatel
+acltype_group=Skupina
+acltype_other=Ostatní
+acltype_mask=Maska
+acltype_default_user=Výchozí u¾ivatel
+acltype_default_group=Výchozí skupna
+acltype_default_other=Výchozí ostatní
+acltype_default_mask=Výchozí maska
+
+delete_mtitle=Vícenásobné mmazání souborù
+delete_dtitle=Smazat adresáø
+delete_ftitle=Smazat soubor
+delete_ddesc=Skuteènì chcete permanentnì mazat adresáø $1 a celý jeho obsah?
+delete_fdesc=Skuteènì chcete permanentnì mazat soubor $1 ?
+delete_mdesc=Skuteènì chcete permanentnì mazat tyto soubory a adresáøe? :
+delete_efailed=Chyba pøi mazání $1 : $2
+
+mkdir_title=Nový adresáø
+mkdir_dir=Nový adresáø:
+mkdir_eexists=$1 ji¾ existuje
+mkdir_efailed=Chyba pøi vytváøení adresáøe : $1
+mkdir_eaccess=Nemáte oprávnìní vytváøet '$1'
+
+link_title=Vytvoøení linku
+link_from=Link z:
+link_to=Link na:
+link_eexists=$1 ji¾ existuje
+link_efailed=Chyba pøi linku : $1
+link_efrom=Nemáte oprávnìní linkovat z '$1'
+link_efollow=Nemáte oprávnìní tytváøet symbolické linky
+
+rename_title=Pøejmenování $1
+rename_old=Staré jméno:
+rename_new=Nové jméno:
+rename_ok=Pøejmenovat
+rename_eexists=Objekt pojmenovaný $1 ji¾ existuje
+rename_efailed=Chyba pøi pøejmenování : $1
+rename_eold=Nemáte oprávnìní pøejmenovat '$1'
+rename_enew=Nemáte oprávnìní pøejmenovat na '$1'
+
+file_type0=Adresáø
+file_type1=Textový soubor
+file_type2=Image soubor
+file_type3=Binarní soubor
+file_type4=Soubor
+file_type5=Symbolický link
+file_type6=Soubor zaøízení
+file_type7=Roura
+
+view_enormal=Mohou být zobrazovány pouze normální soubory
+view_enormal2=Mohou být stahovány pouze normální soubory
+view_eaccess=Nemáte oprávnìní pøístupu k $1
+view_eopen=Chyba pøi otevøení $1 : $2
+
+paste_ecopy=Ne ¾ pou¾ijete vlo¾ení ze schránky, musíte do ní neco zkopírovat nebo vyjmout
+paste_egone=Kopírované soubory $1 ji¾ neexistují
+paste_eover=$1 nemù¾e být pøepsán
+paste_eself=Nemù¾ete vlo¾it sebe sama
+paste_emfailed=Chyba pøi pøesunu : $1
+paste_ecfailed=Chyba pøi kopírování : $1
+
+over_title=Soubor existuje
+over_msg=Soubor $1 ji¾ existuje. Pou¾ijte ní¾e uvedené pole pro zapsání nového jména souboru pro vkládaný soubor.
+over_new=Nové jméno souboru:
+over_ok=Ok
+
+upload_efailed=Chyba pøi otevøenínahrávky : $1
+upload_title=Nahrání souboru
+upload_file=Soubor pro nahrání
+upload_dir=Nahrát do adresáøe
+upload_ok=Nahrát
+upload_conv=Konverovat DOS pøechody na nový øádek?
+upload_efile=Nebyl vybrán ¾ádný souobor pro nahrání.
+upload_edir=Adresáø pro nahrání neexistuje.
+upload_eperm=Nemáte oprávnìní vytvoøit $1
+upload_ewrite=Chyba pøi zápisu do $1 : $2.
+
+find_eaccess=Nemáte oprávnìní pøístupus $1
+find_eexist=$1 neexistuje v $2
+find_edir=$1 není adresáø v $2
+
+cancel=Opustit
+
+chmod_eaccess=Nemáte oprávnìní pøístupu '$1'
+chmod_euser=$1 : není takový u¾ivatel
+chmod_egroup=$1 : není taková skupina
+chmod_elink=Symlink neúspì¹ný: $1
+chmod_echown=Chown neúspì¹ný : $1
+chmod_echmod=Chmod neúspì¹ný : $1
+chmod_efollow=Nemáte oprávnìní edotovat symbolické linky
+
+copy_efrom=Nemáte oprávnìní kopírovat z '$1'
+copy_eto=Nemáte oprávnìní kopírovat do '$1'
+copy_elink=Symlink neúspì¹nì : $1
+
+delete_eaccess=Nemáte oprávnìní mazat '$1'
+
+list_eaccess=Nemáte oprávnìní pøístupu do tohoto adresáøe
+list_edir=Chyba pøi vypisování $1 : $2
+
+move_eto=Nemáte oprávnìní pøesunout do '$1'
+move_afrom=Nemáte oprávnìní pøesunout '$1'
+
+acl_user=Soubory pøístupu na serveru pod u¾ivatelem
+acl_user_def=Shodné s Webmin pøihlá¹ením
+acl_umask=Umask pro nové soubory
+acl_follow=V¾dy následovat symlinky?
+acl_ro=Mód pouze pro ètení?
+acl_dirs=Povolit pouze pøístup do adresáøù
+acl_home=Zahrnout domovská adresáø Webmin u¾ivatele
+acl_log=Logovat v¹echny modifikace souborù?
+acl_goto=Otevøít nejprve povolené adresáøe?
+
+share_title=Sdílení
+share_samba=Windows
+share_nfs=NFS
+share_son=Povoleno Windows sdílení souborù
+share_soff=Nepovoleno Windows sdílení souborù
+share_writable=Pøepisovatelné?
+share_available=Aktuálnì aktivní?
+share_sheader=Mo¾nosti sdílení
+share_only=Pouze
+share_guest=Pøístup jako guest?
+share_comment=Komentáø
+share_nheader=Nastavení NFS exportu
+share_non=Povoleno NFS sdílení souborù
+share_noff=Nepovoleno Windows sdílení souborù
+share_desc=Popis
+share_ro=Hosté s povolením pouhého ètení
+share_rw=Hosté s ètení i zápisu
+share_root=Hosté s pøístupem root
+share_none=Nic
+share_all=V¹ichni
+share_listed=Uvedení..
+share_host=Hosté
+share_opts=Nastavení
+share_s0=Nikomu nedùvìøivat
+share_s1=Dùvìøovat non-root
+share_s2=Dùvìøovat ka¾dému
+share_lro=Pouze ke ètení
+share_lrw=Ètení i zápis
+
+log_create_export=Vytvoøen NFS export $1
+log_modify_export=Modifikován NFS export $1
+log_delete_export=Smazán NFS export $1
+log_create_share=Vytvoøeno Samba sdílení $1
+log_modify_share=Modifikováno Samba sdílení $1
+log_delete_share=Smazáno Samba sdílení $1
+log_save=Ulo¾en soubor $1
+log_chmod=Zmìnìna práva u souboru $1
+log_mkdir=Vytvoøen adresáø $1
+log_upload=Nahrán soubor $1
+log_link=Vytvoøen symbolický link $1 do $2
+log_relink=Modififikován symbolický link $1 do $2
+log_copy=Zkopírován soubor $1 do $2
+log_move=Pøesunut soubor $1 do $2
+log_delete=Smazán soubor $1
+log_attr=Nastaveny adributy souboru $1
+log_acl=Nastavno ACL u souboru $1
+
+search_eaccess=Nemáte oprávnìní hledat tento adresáø
+search_title=Najít soubory
+search_ok=Hledat
+search_dir=Hledat adresáø
+search_match=Pro soubory, které vyhovují
+search_user=Vlastnìné u¾ivatelem
+search_group=Vlastnìné skupinou
+search_any=Kdokoliv
+search_type=Typ souboru
+search_types_=Jakýkoliv
+search_types_f=Soubor
+search_types_d=Adresáø
+search_types_l=Symbolický link
+search_types_p=Pojmenovaná roura
+search_size=Velikost souboru
+search_more=Více ne¾
+search_less=Ménì ne¾
+search_xdev=Hledat minulá mountování?
+search_edir=Chybìjící nebo nesprávný vyhledávací adresáø
+search_ematch=Chybìjící porovnávací zápis regexp
+search_euser=Chybìjící u¾ivatelské jméno
+search_egroup=MChybìjící jméno skupiny
+search_esize=Velikost souboru musí být celé èíslo
+search_crit=Kritéria hledání
+search_list=Výsledky hledání
+
+facl_eaccess=Nemáte oprávnìní nastavit ACLs pro tento soubor
+
+attr_eattrs=Chyba pøi získávání atributù : $1
+attr_efs=Souborový systém $1 nepodporuje atributy
+attr_add=Pøidat atribut
+attr_name=Název atributu
+attr_value=Hodnota atributu
+attr_efailed=Chyba pøi nastavení atributù pro $1 : $2
+attr_title=Atributy souboru pro $1
+attr_create=Pøidat atribut
+attr_edit=Editovat atribut
+attr_ename=Chybìjící název atributu
+
+ext_eattrs=Chyba pøi získávání EXT atributù : $1
+ext_efs=Souborový systém $1 nepodporuje EXT atributy
+ext_title=EXT atributy pro $1
+ext_header=EXT souborové atributy
+ext_efailed=Chyba pøi nastavení atributù pro $1 : $2
+
+eattr_A=Neaktualizovat èas pøístupu
+eattr_a=Mù¾e pouze pøidat do souboru
+eattr_c=hustit data na disku
+eattr_d=Nezálohovat pøi úschovì
+eattr_i=Nepovolit modifikaci
+eattr_s=Nastaviz nulové bloky pøi mazání
+eattr_S=V¾dy synchronizovat po zápisu
+eattr_u=Ulo¾it obsah pro obnovu po smazání
+
