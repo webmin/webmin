@@ -10,3 +10,4 @@ longdesc=Configure a Linux firewall using iptables. Allows the editing of all ta
 desc_ja_JP.euc=Linux ¥Õ¥¡¥¤¥ä¥¦¥©¡¼¥ë
 desc_es=Cortafuegos Linux
 desc_ja_JP.UTF-8=Linux ãƒ•ã‚¡ã‚¤ãƒ¤ã‚¦ã‚©ãƒ¼ãƒ«
+desc_cz=Firewall Linuxu
