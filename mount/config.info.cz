@@ -1,0 +1,9 @@
+line1=Nastavení konfigurace,11
+browse_server=Server zobrazující po¾adovaný seznam z,3,localhost
+long_fstypes=Zobrazit dlouhá jména u souborových systémù?,1,1-ano,0-ne
+line2=Konfigurace systému,11
+fstab_file=Soubor obsahující souborové systémy mountované pøi bootování,0
+auto_file=Soubor NFS automountování,3
+autofs_file=Soubor automontování u jádra,3
+smbclient_path=Úplná cesta pro smbclient,3
+nmblookup_path=Úplná cesta pro nmblookup,3
