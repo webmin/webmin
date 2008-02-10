@@ -1,0 +1,6 @@
+line1=Mo¾nosti konfigurace,11
+default_mode=Výchozí styl seznamu procesù,4,last-Poslední zmìna,tree-Strom peocesù,user-Poøadí podle u¾ivatele,size-Poøadí podle velikosti,cpu-Poøadí v CPU,search-Vyhledávací formuláø,run-Spou¹tìcí formuláø
+cut_length=Znaky usekávající pøíkazy na,3,Neomezeno
+trace_java=Zobrazit trasování systémových volání vyu¾ívající,1,1-Java applet,0-Text
+line2=Konfigurace systému,11
+ps_style=Styl výstupu PS pøíkazu,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS,openbsd-OpenBSD
