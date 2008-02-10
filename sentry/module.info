@@ -11,3 +11,4 @@ longdesc=Configure the portsentry, hostsentry and logcheck system security monit
 readonly=1
 os_support=!windows
 nondefault=1
+desc_cz=Bezpeènostní hlídaè
