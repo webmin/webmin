@@ -1,0 +1,355 @@
+index_title=Konfigurace QMailu
+index_edir=QMail základní adresáø $1 neexistuje. Mo¾ná není QMail nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_edir2=Vypadá to, ¾e adresáø $1 naní QMail základním adresáøem. Mo¾ná není QMail nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_return=konfigurace QMailu
+index_stop=Ukonèit QMail procesy
+index_stopmsg=Klepnutím na toto tlaèítko se ukonèí QMail procesy bì¾ící v pozadí, které slou¾i pro odesílání mailù ve frontì. Bez tìchto procesù maily nebudou øádnì odesílány ani ven ze systému ani dovnitø systému.
+index_start=Spustit QMail procesy
+index_startmsg=Klepnutím na toto tlaèítko se spustí QMail procesy bì¾ící v pozadí, které slou¾i pro odesílání mailù ve frontì. Bez tìchto procesù maily nebudou øádnì odesílány ani ven ze systému ani dovnitø systému.
+
+opts_title=Nastavení QMailu
+opts_me=Jméno lokálního hosta
+opts_helo=Jméno hosta pro SMTP HELO
+opts_toconnect=Èasová prodleva SMTP pøipojení
+opts_secs=vteøiny
+opts_toremote=Èasová prodleva SMTP odchozího reakce
+opts_bytes=Maximální velikost zprávy
+opts_unlimited=Neomezeno
+opts_timeout=Èasová prodleva SMTP pøíchozích dat
+opts_localip=Jméno hosta pro email do lokálních IP adres
+opts_greet=SMTP zpráva s pozdravem
+opts_err=Chyba pøi ukládání nastavení QMailu
+opts_eme=Nesprávné jméno lokálního hosta
+opts_etoconnect=Nesprávná èasová prodleva SMTP pøipojení
+opts_etoremote=Nesprávná èasová prodleva SMTP odchozí reakce
+opts_ebytes=Nesprávná maximální velikost zprávy
+opts_etimeout=Nesprávná èasová prodleva SMTP pøíchozích dat
+opts_elocalip=Nesprávné jméno hosta lokálních IP adres
+
+aliases_title=Aliasy mailù
+aliases_addr=Adresa
+aliases_to=Alias na..
+aliases_type1=Adresa $1
+aliases_type2=Mail adresáø $1
+aliases_type3=Mail soubor $1
+aliases_type4=Program $1
+aliases_type5=Soubor automatické odpovìdi $1
+aliases_type6=Soubor pou¾ívaných filtrù $1
+aliases_none=Nic
+aliases_return=seznam aliasu
+aliases_toomany=Máte ve va¹em systému pøíli¹ mnoho mail aliasù zobrazitelných na jednu stránku.
+aliases_go=Najít aliasy obsahující:
+
+aform_type0=Nic
+aform_type1=Email adresa
+aform_type2=Mail adresáø
+aform_type3=Mail soubor
+aform_type4=®ivený program
+aform_type5=Soubor automatické odpovìïi
+aform_type6=Soubor pou¾ívaných filtrù
+aform_edit=Editovat alias
+aform_create=Vytvoøit alias
+aform_name=Adresa
+aform_val=Alias na
+aform_afile=Editovat..
+aform_novirt=&lt;V¹echny domény&gt;
+aform_return=alias
+
+asave_err=Chyba pøi ukládání aliasu
+asave_eaddr='$1' není platná adresa
+asave_ealready=Alias pro '$1' ji¾ existuje
+asave_etype1='$1' není platná email adresa
+asave_etype2='$1' není platný mail adresáø
+asave_etype3='$1' není platné jméno mail souboru
+asave_etype4='$1' není platný program nebo neexistuje
+asave_etype5=Soubor automatické odpovìdi '$1' není platný
+asave_etype4none=Naní zadán ¾ádný program
+asave_etype6=Soubor filtrù '$1' není platný
+
+locals_title=Lokální domény
+locals_domains=Lokální domény pro tento server
+locals_desc=Qmail bude pøijímat odesílání emailù k lokálním u¾ivatelùm domén a hostù uvedených v text boxu vlevo. Pokud chcete, aby vá¹ mail server udr¾oval vícenásobné email domény, mìly by být uvedeny v tomto formuláøi.
+locals_only=Pouze jména lokálních hotù $1
+locals_sel=Ní¾e uvedené domény ..
+
+rcpts_title=Akceptované domény
+rcpts_domains=Akceptované lokální a pøenosné domény
+rcpts_all=Jakákolv doména
+rcpts_sel=Ní¾e uvedené domény ..
+rcpts_desc=Qmail bude akceptovat pøená¹ení nebo lokální odesílání poze emailù k doménám a hotùm uvedených v text boxu vlevo. Mù¾ete také vkládat zástupné znaky, které vyhovují v¹em hostùm v doménì napø. <tt>.foo.com</tt>. Pokud chcete, aby vá¹ mail server pøená¹el emaily pro klienty, musíte akceptovat mail z jakékoliv domény.
+rcpts_domains2=Pøídavné lokální a pøenosné domény
+rcpts_desc2=Máte-li velké mno¾ství akceptovaných domén, bez spoleènì u¾ívaných, maly by být vlo¾eny do tohoto text boxu. Obecnì øeèeno, va¹ich prvních povolených domén by mìlo být vlo¾eno do vý¹e uvedeného text boxu a mìly by tam zùstat.
+
+bads_title=Odmítané adresy
+bads_addresses=Odmítané email adresy
+bads_desc=QMail bude odmítat meily k odesílání nebo pøedávání od jakékoliv z adres uvedených v text boxu vlevo. Tyto adresy musí být vlo¾eny ve stylu <tt>username@domainname</tt>. Pokud chcete odmítat mail zcelé domény, mù¾ete pou¾ít zápis <tt>@domainname</tt>.
+
+routes_title=Routování domén
+routes_toomany=Máte ve va¹em systému pøíli¹ mnoho routerù domén zobrazitelných na jednu stránku.
+routes_go=Najít routery domén obsahující:
+routes_from=Mail pro doménu
+routes_to=Poslat pøes server
+routes_direct=Pøímo odesílat
+routes_defroute=Odesílat v¹echny ostatní odchozí maily pøes:
+routes_return=routery domén
+
+rform_edit=Ediace routeru domény
+rform_create=Vytvoøení routeru domény
+rform_from=Mail pro hosta nabo doménu
+rform_to=Poslat pøes SMTP server
+rform_port=SMTP port
+
+rsave_err=Chyba pøi ukládání routeru domén
+rsave_efrom='$1' není platné jméno domény
+rsave_eto='$1' není platný SMTP server
+rsave_eport='$1' není platné èíslo portu
+
+percents_title=Domény % adres
+percents_domains=Domény, které podporují % adresy
+percents_desc=QMail bude akceptovat emaily s adresami ve formátu <tt>user%firstdomain@seconddomain</tt>, pokud je <tt>seconddomain</tt> uvedena v text boxu vlevo. Zprávy v tomto formátu budou pøedány na <tt>user@firstdomain</tt> pomocí tohoto mail serveru.
+
+virts_title=Virtuální mapování
+virts_toomany=Máte ve va¹em systému pøíli¹ mnoho virtuálního mapování zobrazitelného na jednu stránku.
+virts_go=Najít virtuální mapování obsahující:
+virts_from=Mail pro
+virts_prepend=Dodateènì pøidaný prefix
+virts_all=V¹echny adresy
+virts_none=Kromì virtuálních
+virts_desc=Virtuální mapování jsou pou¾ívaná QMailem pro údr¾bu emailù rozdílných domén na va¹em serveru, dodateèné pøidání textu do u¾ivatelské èásti emailové adresy pøed jejím dal¹ím zpracováním. Tot mù¾ete pou¾ít pøi nastavování virtuálních mail domén tak, ¾e vytvoøíte nové virtuální mapování pro doménu, pokud pou¾ijete stránku <a href='$1'>Mail Aliasy</a> a vytvoøíte aliasy v rámci takové domény.
+virts_return=virtuální mapování
+
+vform_edit=Editace virtuálního mapování
+vform_create=Vytvoøení virtuálního mapování
+vform_from=Mail pro adresu
+vform_all=®ádné adresy neobsahují jiné virtuální mapování
+vform_domain=Adresy s doménou
+vform_user=Adresa
+vform_to=Dodateèné pøidání do jména u¾ivatele
+vform_none=Nic
+vform_prepend=Specifikovaný prefix
+vform_auto=Automatická výmìna prefixu
+
+vsave_err=Chyba pøi ukládání virtuálního mapování
+vsave_edomain='$1' není platná email doména
+vsave_euser='$1' není platné jméno u¾ivatele emailu
+vsave_eprepend='$1' není platný prefix mapování
+vsave_eboth=Nemùø¾ete vybrat jak '$vform_all' tak '$vform_none'
+
+stop_err=qmail-send proces ji¾ nebì¾í
+
+log_stop=Ukonèen QMail procesy
+log_start=Spu¹tìn QMail procesy
+log_opts=Zmìnìna nastavení QMailu
+log_alias_create=Vytvoøen alias $1
+log_alias_delete=Smazán alias $1
+log_alias_modify=Modifikován alias $1
+log_virt_create=Vytvoøeno virtuální mapování $1
+log_virt_delete=Smazáno virtuální mapování $1
+log_virt_modify=Modifikováno virtuální mapování $1
+log_virtall_create=Vytvoøeno záchytné virtuální mapování
+log_virtall_delete=Smazáno záchytné virtuální mapování
+log_virtall_modify=Modifikováno záchytné virtuální mapování
+log_locals=Zmìnìny lokální domény
+log_rcpts=Zmìnìny akceptované domény
+log_bads=Zmìnìny odmítané adresy
+log_percents=Zmìnìny domény % adresy
+log_route_create=Vytvoøeno routování pro $1
+log_route_delete=Smazáno routování pro $1
+log_route_modifed=Modifikováno routování pro $1
+log_defroute=Modifikováno výchozí routování
+log_assign_create=Vytvoøen mail u¾ivatel $1
+log_assign_delete=Smazán mail u¾ivatel $1
+log_assign_modifed=Modifikován mail u¾ivatel $1
+
+rfile_title=Editace souboru s automatickou odpovìdí
+rfile_desc=Pou¾itím ní¾e uvedeného text area editujete zprávu s automatickou odpovìdí v $1. Zpráva mù¾e obsahovat makra $SUBJECT, $FROM, $TO, $DATE a $BODY, která budou pou¾ita v momentì, kdy bude automatická odpovìï aktivována.
+rfile_efile=Nemáte oprávnìní editovat $1.
+rfile_undo=Odvolat zmìny
+
+ffile_title=Editace soiuboru s filtry
+ffile_desc=Pou¾itím ní¾e uvedeného formuláøe nastavíte pravidla filtrace v souboru $1.
+ffile_efile=Nemáte oprávnìní editovat $1.
+ffile_line=Jestli¾e $1 pole $2 $3, pak pøedat dál k $4
+ffile_from=od
+ffile_to=komu
+ffile_subject=pøedmìt
+ffile_cc=kopie
+ffile_body=tìlo
+ffile_what0=neobsahuje
+ffile_what1=obsahuje
+ffile_other=Jinak pøedat dál k $1
+ffile_err=Chyba pøi ukládání souboru s filtry
+ffile_ematch=Chybìjící zápis porovnání
+ffile_eaction=Chybìjící adresa pro pøedání dál
+
+queue_title=Mailvá fronta
+queue_count=$1 zprávy
+queue_none=Momentálnì nejsou ve frontì ¾ádné zprávy k odeslání
+queue_id=ID mailu
+queue_date=Odesláno
+queue_from=Od
+queue_to=Komu
+queue_cc=Kopie
+queue_subject=Pøedmìt
+queue_return=mailová fronta
+queue_delete=Smazat vybrané zprávy
+queue_all=Vybrat v¹e
+queue_invert=Invertovat výbìr
+
+qview_title=Zpráva ve frontì
+qview_desc=Ze souboru $1
+qview_headers=Hlavièky mailu
+qview_attach=Pøílohy
+
+assigns_title=Pøidìlování mail u¾ivatelù
+assigns_return=pøidìlování mail u¾ivatelù
+assigns_toomany=Máte ve va¹em systému pøíli¹ mnoho mail u¾ivatelù zobrazitelných na jednu stránku.
+assigns_go=Najít mail u¾ivatele, kteøí obsahují:
+assigns_address=Mail do adresy
+assigns_user=Unix u¾ivatel
+assigns_uid=UID
+assigns_gid=GID
+assigns_home=Domovský adresáø
+assigns_desc=Pøidìlování mail u¾ivatelù umo¾òuje vytváøení mailboxù pro u¾ivatele, kteøí nejsou definováni v seznamu Unix u¾ivatelù. Ka¾dé pøidìlení bude odesílat mail pro vybrané u¾ivatelské jméno nebo "otce" u¾ivatelského jména tak, ¾e bude odeslán do mailboxu skuteèného Unix u¾ivatele.
+
+sform_edit=Editace mail u¾ivatele
+sform_create=Vytvoøení mail u¾ivatele
+sform_address=U¾ivatelské jméno adresy
+sform_mode0=Pøesné u¾ivatelské jméno
+sform_mode1=U¾ivatelská jména zaèínající
+sform_user=Unix u¾ivatel
+sform_uid=UID
+sform_gid=GID
+sform_home=Domovský adresáø
+
+ssave_err=Chyba pøi ukládání mail u¾ivatele
+ssave_eaddress=Chybìjící nebo nesprávné u¾ivatelské jméno adresy
+ssave_euser=Chybìjící nebo nesprávný Unix u¾ivatel
+ssave_euid=Chybìjící nebo nesprávné UID
+ssave_egid=Chybìjící nebo nesprávné GID
+ssave_ehome=Chybìjící nebo nesprávný domovský adresáø
+
+delete_egone=Zpráva ve frontì ji¾ neexistuje
+
+boxes_title=U¾ivatelské mailboxy
+boxes_user=U¾ivatel
+boxes_size=Velikost mailboxu
+boxes_none=®ádný mail
+boxes_return=mailboxy
+boxes_sent=Odeslaný mail
+boxes_ecannot=Nemáte oprávnìní èíst email
+boxes_toomany=Ve va¹em systému je pøíli¹ mnoho u¾ivatelù, tak¾e nejdou vypsat v¹echny jejich mailboxy.
+boxes_go=Zobrazit mail pro u¾ivatele:
+
+mail_title=Email u¾ivatele
+mail_from=Od
+mail_date=Datum
+mail_subject=Pøedmìt
+mail_to=Komu
+mail_cc=Kopie
+mail_bcc=Skrytá kopie
+mail_pri=Priorita
+mail_highest=Nejvy¹¹í
+mail_high=Vysoká
+mail_normal=Normální
+mail_low=Nízká
+mail_lowest=Nejni¾¹í
+mail_for=V $1
+mail_for2=Pro u¾ivatele $1
+mail_sent=Seznam odeslaných mailù
+mail_size=Velikost
+mail_delete=Smazat
+mail_compose=Napsat
+mail_return=mailbox u¾ivatele
+mail_pos=Zprávy $1 a¾ $2 z $3
+mail_none=Tento mailbox neobsahuje ¾ádné zprávy
+mail_ecannot=Nemáte oprávnìní èíst mail tohoto u¾ivatele
+mail_all=Vybrat v¹e
+mail_invert=Invertovat výbìr
+mail_search=Najít zprávy, kde
+mail_body=Tìlo
+mail_match=obsahuje
+mail_ok=Hledat
+mail_nonefrom=Nic
+mail_mark=Oznaèit jako:
+mail_mark0=Nepøeètená
+mail_mark1=Pøeètená
+mail_mark2=Speciální
+mail_forward=Pøedaná dál
+mail_rfc=Z øádku
+
+view_title=Ètení emailu
+view_desc=Zpráva $1 v $2
+view_desc2=Zpráva $1 pro u¾ivatele $2
+view_desc3=Zpráva $1
+view_sent=Zpráva $1 v seznamu odeslaných mailù
+view_qdesc=Zpráva ve frontì $1
+view_headers=Hlavièky mailu
+view_allheaders=Zobrazit v¹echny hlavièky
+view_noheaders=Zobrazit základní hlavièky
+view_attach=Pøílohy
+view_reply=Odpovìdìt
+view_reply2=Odpovìdìt v¹em
+view_enew=Editovat jako novou
+view_forward=Pøedat dál
+view_delete=Smazat
+view_strip=Odstranit pøílohy
+view_ecannot=Nemáte oprávnìní èíst mail tohoto u¾ivatele
+view_mark=Oznaèit zprávu jako:
+view_mark0=Nepøeètenou
+view_mark1=Pøeèteno
+view_mark2=Speciální
+view_return=originální email
+view_sub=Pøibalená email
+
+compose_title=Napsání emailu
+reply_title=Odpovìï na email
+forward_title=Email pøedaný dál
+enew_title=Editace emailu
+reply_headers=Hlavièky mailu
+reply_attach=Pøílohy pøedané dál
+reply_mailforward=Zprávy pøedané dál
+reply_attach2=Klientské a server-side pøílohy
+reply_send=Odeslat mail
+reply_ecannot=Nemáte oprávnìní odeslat mail pod tímto u¾ivatelem
+
+send_err=Chyba pøi odeslání mailu
+send_eto=Chybìjící Komu adresa
+send_efrom=Chybìjící Od adresa
+send_title=Odesílaný mail
+send_ok=Mail byl úspì¹nì odeslán adresátovi $1
+send_ecannot=Nemáte oprávnìní odesílat mail pod tímto u¾ivatelem
+send_esmtp=SMTP pøíkaz $1 vykázal chybu : $2
+send_efile=Pøilo¾ený soubor $1 neexistuje
+send_eattach=Pøílohy nemohou mít vìt¹í velikost ne¾ $1 kB.
+send_eperms=U¾ivatel $1 nemù¾e èíst $2
+send_eperms2=Nemáte oprávnìní odeslat soubor $1
+send_epath=Spou¹tìè Sendmailu $1 neexistuje.
+
+delete_ecannot=Nemáte oprávnìní smazat mail od tohoto u¾ivatele
+delete_enone=Nebyly vybrány ¾ádné maily ke smazání
+delete_emnone=Nebyly vybrány ¾ádné maily k oznaèení
+
+search_title=Výsledky hledání
+search_ecannot=Nemáte oprávnìní prohledávat emaily tohoto u¾ivatele
+search_ematch=Musíte vlo¾it text, který se bude porovnávat.
+search_none=Nebyly nalezeny ¾ádné zprávy.
+search_results2=$1 mailové zprávy obsahují $2 ..
+search_results3=$1 mailové zprávy neobsahují $2 ..
+
+match_from=Od: obsahuje
+match_subject=Pøedmìt: obsahuje
+match_to=Komu: obsahuje
+match_cc=Kopie: obsahuje
+match_date=Datum: obsahuje
+match_body=Tìlo obsahuje
+match_size=Velikost je vìt¹í ne¾
+match_!from=Od: neobsahuje
+match_!subject=Pøedmìt: neobsahuje
+match_!to=Komu: neobsahuje
+match_!cc=Kopie: neobsahuje
+match_!date=Datum: neobsahuje
+match_!body=Tìlo neobsahuje
+match_!size=Velikost je men¹í ne¾
+
+
