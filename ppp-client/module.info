@@ -5,3 +5,4 @@ longdesc=Configure the WV-Dial package to connect to the Internet with a modem P
 os_support=*-linux
 depends=proc init cron
 desc_ca=Client PPP
+desc_cz=PPP Dialup klient
