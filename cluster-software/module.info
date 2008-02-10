@@ -9,3 +9,4 @@ desc_es=Cluster - Paquetes de Software
 desc_de=Cluster - Softwaremanagement
 longdesc=Install RPMs, debian and solaris packages across multiple servers from one source.
 desc_fr=Paquetages logiciels de clusters
+desc_cz=Cluster - Softwarové balíèky
