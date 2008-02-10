@@ -1,0 +1,89 @@
+index_title=System logs
+index_m4msg=Vá¹ konfiguraèní systémový log soubor $1 obsahuje <tt>m4</tt> direktivy. Ne¾ v¹ak mohou být editovány, Webmin potøebuje pøenést soubor pøes <tt>m4</tt>, aby byly bezpeènì odstranìny tyto direktivy.
+index_m4=Odstranit m4 direktivy z konfiguraèního souboru
+index_active=Aktivní?
+index_tag=Program
+index_to=Log cíl
+index_rule=Vybrané zprávy
+index_file=Soubor $1
+index_pipe=Pojmenovaná roura $1
+index_pipe2=Pøíkaz pro rouru $1
+index_host=Syslog server na $1
+index_socket=Unix socket soubor $1
+index_all=V¹ichni u¾ivatelé
+index_users=U¾ivatelé $1
+index_add=Pøidat nový systémový log
+index_return=systémové logs
+index_restart=Pou¾ít zmìny
+index_restartmsg=Klepnutím na toto tlaèítko zaktivizujete aktuální konfiguraci, co¾ zabije <tt>syslog</tt> proces a restartuje ho.
+index_start=Spu¹tìní syslog serveru
+index_startmsg=Klepnutím na toto tlaèítko spustíte syslog server $1. Dokud není spu¹tìn, není provádìn ¾ádný logging.
+all=V¹e
+index_view=Zobrazit..
+
+restart_ekill=Chyba pøi poslání signálu syslog procesu $1 : $2
+restart_ecannot=Nemáte oprávnìní restartovat syslog
+start_ecannot=Nemáte oprávnìní spustit syslog
+
+edit_title=Editace systémmového logu
+create_title=Pøidání systémmového logu
+edit_header1=Cíl logu
+edit_logto=Logovat do
+edit_file=Soubor
+edit_sync=Synchorizace po ka¾dé zprávì?
+edit_pipe=Pojmenovaná roura
+edit_socket=Unix doménový socket soubor
+edit_pipe2=Pøíkaz pro rouru
+edit_host=Syslog server na
+edit_users=Lokální u¾ivatelé
+edit_allusers=V¹ichni pøihlá¹ení u¾ivatelé
+edit_active=Aktivovat logging?
+edit_header2=Typy zpráv pro log
+edit_facil=Kanály
+edit_pri=Priority
+edit_all=V¹echny
+edit_one=Jedna
+edit_many=Více
+edit_pdir0=Tato nebo vý¹e uvedená..
+edit_pdir1=Pøesnì..
+edit_pdir2=Ní¾e uvedená..
+edit_pdir3=V¹echny kromì..
+edit_none=®ádné
+edit_view=Zobrazit logfile
+edit_tag=Pouze pro program
+edit_return=detaily logu
+edit_ecannot=Nemáte oprávnìní editovat log nastavení
+
+view_title=Zobrazit logfile
+view_header=Posledních $1 øádkù v $2
+view_empty=Log soubor je prázdný
+view_refresh=Obnovit
+
+save_err=Chyba pøi ukládání logu
+save_efile='$1' není platné jméno souboru : $2
+save_epipe='$1' není platné jméno roury
+save_epipe2=Chybìjící pøíkaz pro rouru
+save_esocket=Chybìjící nebo naplatný unix doménový socket
+save_ehost=Syslog host '$1' neexistuje
+save_enousers=Nejsou vlo¾eni ¾ádní u¾ivatele
+save_euser=User '$1' neexistuje
+save_efacils=Nejsou vlo¾eny ¾ádné kanály
+save_esel=®ádné typy zpráv pro log
+save_epri=Nebyla vybrána ¾ádná priorita
+
+log_modify=Modifikován log k $1
+log_create=Pøidán log k $1
+log_delete=Smazáv log k $1
+log_apply=Aplikovány zmìny
+
+desc_sysmesg=Systémové zprávy
+desc_mail=Mail log
+desc_auth=Autentikaèní log
+desc_boot=Boot zprávy
+desc_news=NNTP News log
+desc_uucp=UUCP log
+desc_debug=Debug zprávy
+desc_cron=Cron Job log
+
+acl_noedit=Mù¾e poze zobrazit logy?
+
