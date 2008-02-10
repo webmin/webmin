@@ -1,0 +1,16 @@
+line1=Nastavení konfigurace,11
+dont_convert=Nepøidávat seznam Unix u¾ivatelù do seznamu samba hesel,0
+sort_mode=Tøídit u¾ivatele a skupiny podle jména?,1,1-ano,0-ne
+line2=Konfigurace systému,11
+smb_conf=Umístìní konfiguraèního souboru Samby,0
+smb_passwd=Umístìní souboru s hesly Samby,3
+samba_status_program=Úplná cesta k smbstatus,0
+samba_password_program=Úplná cesta k smbpasswd,0
+samba_server=Úplná cesta k smbd,0
+name_server=Úplná cesta k nmbd,0
+swat_path=Úplná cesta k swat,3,Nic
+smbgroupedit=Úplná cesta k smbgroupedit,3,Nic
+pdbedit=Úplná cesta k pdbedit,3,Nic
+net=Úplná cesta k pøíkazu net,3,Nic
+start_cmd=Pøíkaz spou¹tìjící Samba servery,3,Nic
+stop_cmd=Pøíkaz ukonèující Samba servery,3,Nic
