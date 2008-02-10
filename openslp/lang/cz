@@ -1,0 +1,50 @@
+index_title=Konfigurace OpenSLP
+index_return=konfigurace OpenSLP
+index_eslpd=OpenSLP démon $1 nebyl ve va¹em systému nalezen. Mo¾ná není nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_econf=OpenSLP konfiguraèní soubor $1 nebyl ve va¹em systému nalezen. Mo¾ná není nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_version=OpenSLP verze $1
+
+slp_apply=Pou¾ít zmìny
+slp_stop=Ukonèit OpenSLP
+
+snda_title=Statické pøíle¾itosti a DA
+snda_useScopes=Staticý seznam pøíle¾itostí
+snda_DAAddresses=Statický seznam adresáøových agentù (DA)
+
+netcfg_title=Konfigurace sítì
+netcfg_isBroadcastOnly=Uplatnít broadcasty namísto vícenásobných po¾adavkù
+netcfg_passiveDADetection=Pou¾ít pasivní DA detekci
+netcfg_activeDADetection=Pou¾ít aktivní DA detekci (omezeno pouze na DHCP nebo DA adresy)
+netcfg_DAActiveDiscoveryInterval=Aktivní objevování e vteøinách (0 nepovouje aktivní objevování)
+netcfg_multicastTTL=Vícenásobné TTL (0-255)
+netcfg_DADiscoveryMaximumWait=Maximimální doba èekání pro DA objevování po¾adavkù (v milisekundách)
+netcfg_DADiscoveryTimeouts=Doba èekání postupného DA objevování (v milisekundách)
+netcfg_HintsFile=Cesta k OpenSLP souboru upozornìní
+netcfg_multicastMaximumWait=Maximální doba èekání na vícenásobné po¾adavky (v milisekundách)
+netcfg_multicastTimeouts=Doba èekání postupných vícenásobných po¾adavkù (v milisekundách)
+netcfg_unicastMaximumWait=Maximální èasová prodleva mezi unikátními po¾adavky (v milisekundách)
+netcfg_randomWaitBound=Maximální hodnota pro v¹echny náhodné parametry èekání (v milisekundách)
+netcfg_MTU=MTU velikost packetu (v bytech)
+netcfg_interfaces=IP adresy rozhraní, které by mìlo naslouchat DA/SA
+
+dacfg_title=DA konfigurace
+dacfg_isDA=Fukce, které jsou pouze pro DA (ne¾ budete cokoliv m¹nit, pøeètìte si u¾ivatelskou pøíruèku)
+
+log_title=Tracing a Logging
+log_traceDATraffic=Tisknout DA zpravy pøenosù
+log_traceMsg=Tisknout SLP detailní zprávy
+log_traceDrop=Tisknout SLP informace o smazané zprávì
+log_traceReg=Tisknout DA a SA informace o registraci a zru¹ení registrace
+
+error_open=Chyba pøi otevírání soubory
+error_flock_on=Chyba pøi vytváøení zámku souboru
+error_flock_off=Chyba pøi zru¹ení zámku souboru
+error_hup=Chyba restartování OpenSLP pomocí PID
+
+index_start=Spustit OpenSLP
+index_startmsg=Klepnutím na toto tlaèítko spustíte na va¹em systému démona OpenSLP.
+index_stop=Ukonèit OpenSLP
+index_stopmsg=Klepnutím na toto tlaèítko ukonèíte na va¹em systému démona OpenSLP.
+
+stop_err=Chyba pøi ukonèení OpenSLP
+start_err=Chyba pøi spu¹tìní OpenSLP
