@@ -2020,6 +2020,7 @@ if ($imap =~ /FLAGS\s+\(([^\)]+)\)/ ||
 	$mail->{'read'} = &indexoflc("\\Seen", @flags) >= 0 ? 1 : 0;
 	$mail->{'special'} = &indexoflc("\\Flagged", @flags) >= 0 ? 1 : 0;
 	$mail->{'replied'} = &indexoflc("\\Answered", @flags) >= 0 ? 1 : 0;
+	$mail->{'deleted'} = &indexoflc("\\Deleted", @flags) >= 0 ? 1 : 0;
 	}
 $imap =~ s/^\*\s+(\d+)\s+FETCH.*\{(\d+)\}\r?\n// || return undef;
 $mail->{'imapidx'} = $1;
