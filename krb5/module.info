@@ -6,3 +6,4 @@ longdesc=Configure the Kerberos 5 client on your system.
 os_support=*-linux
 desc_de=Kerberos5
 desc_ca=Configuració de Kerberos5
+desc_cz=Kerberos5
