@@ -27,3 +27,4 @@ desc_zh_TW.UTF-8=BIND 8 DNS 伺服器
 desc_zh_CN.UTF-8=BIND 8 DNS 服务器
 desc_ja_JP.UTF-8=BIND DNS サーバ
 desc_ko_KR.UTF-8=BIND DNS 서버 
+desc_cz=DNS BIND Server
