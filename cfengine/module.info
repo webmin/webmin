@@ -8,3 +8,4 @@ longdesc=Configure the CFengine program, for checking and maintaining various sy
 desc_fr=Moteur de configuration
 os_support=!windows
 desc_sv=Konfigurations Motor
+desc_cz=Konfiguraèní stroj
