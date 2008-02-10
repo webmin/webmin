@@ -9,3 +9,4 @@ desc_ru_RU=Настройки QMail
 longdesc=Configure the QMail mail server, a simpler alternative to Sendmail.
 os_support=!windows
 library=qmail-lib.pl
+desc_cz=Konfigurace QMail
