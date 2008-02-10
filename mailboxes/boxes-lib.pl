@@ -2377,5 +2377,4 @@ local $mail = { 'headers' =>
 return &send_mail($mail, undef, 1, 0, $smtp);
 }
 
-
 1;

@@ -2915,5 +2915,52 @@ return $su == 2 ||				# All folders
 	$folder->{'type'} == 6 && $allimap) && $su == 1;
 }
 
+# mail_has_attachments(&mail, &folder)
+# Returns 1 if some message has attachments. Uses a cache DBM by message ID,
+# and fetches the whole mail if needed.
+sub mail_has_attachments
+{
+local ($mail, $folder) = @_;
+if (!defined(%hasattach)) {
+	local $hasattach_file = $module_info{'usermin'} ?
+		"$user_module_config_directory/attach" :
+		"$module_config_directory/attach";
+	&open_dbm_db(\%hasattach, $hasattach_file, 0600);
+	}
+local $mid = $mail->{'header'}->{'message-id'};
+if (defined($hasattach{$mid})) {
+	# Already cached .. use it
+	return $hasattach{$mid};
+	}
+if (!$mail->{'body'}) {
+	# The body hasn't been read yet - read it now
+	($mail) = &mailbox_select_mails($folder, [ $mail->{'id'} ], 0);
+	return 0 if (!$mail);	# No longer exists!
+	}
+if (!@{$mail->{'attach'}}) {
+	# Parse out attachments
+	&parse_mail($mail, undef, 0);
+	}
+
+# Check for non-text attachments
+$rv = 0;
+foreach my $a (@{$mail->{'attach'}}) {
+	if ($a->{'type'} =~ /^text\/(plain|html)/i || $a->{'type'} eq 'text') {
+		# Text part .. may be an attachment
+		if ($a->{'header'}->{'content-disposition'} =~ /^attachment/i) {
+			$rv = 1;
+			}
+		}
+	else {
+		# Non-text .. assume this means we have an attachment
+		$rv = 1;
+		}
+	}
+
+# Update cache
+$hasattach{$mid} = $rv;
+return $rv;
+}
+
 1;
 
