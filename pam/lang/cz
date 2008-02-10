@@ -1,0 +1,243 @@
+index_title=PAM autetntikace
+index_name=Slu¾ba
+index_desc=Popis
+index_add=Pøidat novou PAM slu¾bu
+index_return=seznam slu¾eb
+index_none=Nebylynelzeny ¾ádné soubory s PAM konfigurací ve va¹em systému v adresáøi $1.Mo¾ná není PAM podporována, nebo va¹e <a href='$2'>konfigurace modulu</a>není správná.
+
+desc_su=Zapnutí u¾ivatele
+desc_login=Locální nebo vzdálené pøihlá¹ení
+desc_samba=Samba Windows souborový server
+desc_imap=IMAP mail server
+desc_pop=POP mail server
+desc_kde=KDE pøihlá¹ení
+desc_rexec=Vzdálený exec server
+desc_rlogin=Vzdálený login server
+desc_rsh=Vzdálený shell server
+desc_passwd=Zm¹na hesla
+desc_chfn=Zmìnit finger informace
+desc_chsh=Zmìnit shell
+desc_ftp=Souborový transfer server
+desc_ftpd=File transfer server
+desc_wu-ftpd=WuFTPd souborový transfer server
+desc_xscreensaver=Spoøiè obrazovky
+desc_other=Ostatní slu¾by
+desc_netatalk.pamd=$desc_netatalk
+desc_netatalk=Netatalk Apple souborový server
+desc_webmin=Webmin web server
+desc_xdm=Lokální nebo vzdálené X pøihlá¹ení
+desc_gdm=Gnome X pøihlá¹ení
+desc_linuxconf=LinuxConf pøihlá¹ení
+desc_linuxconf-pair=LinuxConf pøídavné pøihlá¹ení
+desc_linuxconf-auth=LinuxConf autentikace
+desc_xlock=Uzamèení obrazovky
+desc_vlock=Uzamèení virtuální console
+desc_kbdrate=Kontrola rychlost klávesnice
+desc_halt=Pozastavení systému
+desc_poweroff=Vypnutí systému
+desc_reboot=Rebootování systému
+desc_shutdown=Shození systému
+desc_mcserv=Midnight commander
+desc_kppp=KDE PPP klient nástroj
+desc_xserver=X11 server
+desc_gnorpm-auth=Gnome RPM nástroj
+desc_kpackage=KDE RPM nástroj
+desc_ppp=PPP daemon pøihlá¹ení
+desc_rp3-config=Redhat PPP klient slu¾ba
+desc_up2date=Redhat Linux update agent
+desc_up2date-config=Redhat Linux update konfigurace
+desc_sudo=Omezení spou¹tìní root pøíkazu
+desc_httpd=Web Server
+desc_qpop=POP Mail Server
+desc_sshd=SSH Login
+desc_squid=Squid Proxy Server
+desc_bindconf=Redhat BIND konfiguraèní nástroj
+desc_apacheconf=Redhat Apache konfiguraèní nástroj
+desc_adsl-config=Redhat ADSL konfiguraèní nástroj
+desc_internet-config=Redhat internet konfiguraèní nástroj
+desc_isdn-config=Redhat ISDN konfiguraèní nástroj
+desc_kontrol-panel=Redhat KDE konfiguraèní nástroj
+desc_kscreensaver=KDE spoøiè obrazovky
+desc_printconf-gui=Redhat printer konfiguraèní nástroj
+desc_rhn_register=Redhat sí»ové registrace
+desc_system-auth=Spoleèná autentikace
+desc_cups=CUPS tisk
+
+edit_title=Editace PAM slu¾by
+edit_header=Detaily PAM slu¾by
+edit_name=Název slu¾by
+edit_header_auth=Kroky pøi autentikaci
+edit_header_account=Kroky p¾i verifikaci úètu
+edit_header_session=Kroky pøi nastavení relací
+edit_header_password=Kroky pøi zmìnìn hesla
+edit_mod=PAM modul
+edit_desc=Popis
+edit_args=Parametery
+edit_addmod=Pøidat krok pro:
+edit_control=Úroveò chyb
+edit_none=Nejsou specifikovány ¾ádné PAM modul v tomto kroku
+edit_delete=Smazat PAM slu¾bu
+edit_move=Pøesunout
+edit_return=PAM slu¾ba
+
+pam_pwdb.so=Autentikace Unix hesla
+pam_securetty.so=Bezpeènostní TTY kontrola pro root
+pam_nologin.so=<tt>/etc/nologin</tt> kontrola souboru
+pam_mail.so=Notifikace nového mailu
+pam_lastlog.so=Notifikace posledního pøihlá¹ení
+pam_rootok.so=Kontrola pouze u¾ivatele <tt>root</tt>
+pam_cracklib.so=Silná kontrola hesla
+pam_access.so=Kontrola souboru s kontroluou pøístupu
+pam_deny.so=V¾dy zakázané pøístupy
+pam_env.so=Nastavené systémové promìnné
+pam_ftp.so=Kontrola FTP autentikace
+pam_time.so=Kontrola èasu pøihlá¹ení
+pam_group.so=Nastavené èlenství ve skupinì
+pam_listfile.so=Kontrola obsahu souboru
+pam_limits.so=Nastavené zdrojové limity
+pam_mkhomedir.so=Vytvoøený domovský adresáø
+pam_motd.so=Zobrazení souboru message-of-the-day
+pam_permit.so=V¾dy povolené pøístupy
+pam_radius.so=RADIUS server autentikace
+pam_rhosts.so=Kontrola <tt>.rhosts</tt> souborù
+pam_rhosts_auth.so=Kontrola <tt>.rhosts</tt> souborù
+pam_shells.so=Kontrola platného shellu
+pam_unix.so=Autentikace starého Unix hesla
+pam_userdb.so=Autentikace DBM souboru hesel
+pam_warn.so=Log upozornìní
+pam_wheel.so=kontrola <tt>wheel</tt> skupiny
+pam_issue.so=Zobrazení souboru <tt>/etc/issue</tt>
+pam_ldap.so=LDAP server autentikace
+pam_unix_auth.so=Autentikace Unix hesla
+pam_unix_sess.so=Nastavení Unix relace
+pam_unix_session.so=Nastavení Unix relace
+pam_unix_acct.so=erifikace Unix úètu
+pam_unix_passwd.so=Zmìna Unix hesla
+pam_stress.so=Test zatí¾ení aplikace
+pam_tally.so=Sledovat pokusy chybného pøihlá¹ení
+pam_passwd+.so=Kontrola mocnosti hesla
+pam_filter.so=Vstupní/výstupní filter
+pam_desgold.so=DESGold smartcard autentikace
+pam_console.so=Kontrola pouze console
+pam_xauth.so=X autentikace
+pam_stack.so=Zavolat jinou PAM slu¾bu
+
+control_requisite=Potøeba
+control_required=Po¾adováno
+control_sufficient=Dostateèný
+control_optional=Volitelný
+control_desc_requisite=Opustit autentikaci na poèátku nezdaru
+control_desc_required=Opustit autentikaci na konci nezdaru
+control_desc_sufficient=Pokraèovat v autentikaci na poèátku úspìchu
+control_desc_optional=Úspìch èi nezdar je ingorován
+
+create_title=Vytvoøení PAM slu¾by
+create_header=Nastavení nové PAM slu¾by
+create_name=Název slu¾by
+create_desc=Popis
+create_mods=Poèáteèní PAM moduly
+create_0=Nic
+create_1=Unix autentikace
+create_2=Zakázat v¹echny pøístupy
+
+mod_edit=Editovat PAM modul
+mod_create=Pøidat PAM modul
+mod_header=Nastavení PAM modulu
+mod_name=Název slu¾by
+mod_mod=PAM modul
+mod_type=Pou¾ít ve slu¾bì
+mod_type_auth=Autentikace
+mod_type_account=Verifikace úètu
+mod_type_session=Nastavení relace
+mod_type_password=Zmìna hesla
+mod_control=Úroveò chyby
+mod_args=MArgumenty modulu
+mod_err=Chyba pøi ukládání modulu
+
+pwdb_shadow=Po¾ít shadow soubor hesel?
+pwdb_nullok=Akceptovat null hesla?
+pwdb_md5=Pou¾ít MD5-encrypted hesla?
+pwdb_nodelay=Poseèkat po chybném pøihlá¹ení?
+
+listfile_item=Hledat soubor pro
+listfile_item_user=U¾ivatel
+listfile_item_tty=TTY
+listfile_item_rhost=Vzdálený host
+listfile_item_ruser=Vzdálený u¾ivatel
+listfile_item_group=Skupina
+listfile_item_shell=Shell
+listfile_sense=Pokud je nalezen v souboru
+listfile_file=Soubor pro hledání
+listfile_onerr=Pøi chybì souboru
+listfile_fail=Chyba
+listfile_succeed=Úspìch
+listfile_apply=Omezit kontrolu na
+listfile_all=V¹echny u¾ivatele
+listfile_user=Pouze u¾ivatele
+listfile_group=Pouze skupinu
+
+cracklib_type=Typ hesla v promptu
+cracklib_retry=Maximum opakovaných pokusù pøe nezdarem
+cracklib_eretry=Chybìjící nebo nesprávná hodnota opakovaných pokusù
+cracklib_etype=Chybìjící nebo nesprávný typ hesla
+
+rhosts_equiv=Èíst soubor <tt>/etc/hosts.equiv</tt>?
+rhosts_rhosts=Èíst u¾ivatelské <tt>.rhosts</tt> soubory?
+rhosts_promiscuous=<tt>+</tt> zápis povoluje v¹echny hosty?
+rhosts_suppress=Logovat neúspì¹né autentikace?
+
+env_var=Jméno promìnné
+env_def=Výchozí value
+env_over=Pøepsat value
+env_evar=Jméno promìnné nesmí obsahovat mezery
+
+securetty_ttys=Zabezpeèení TTYs
+
+shells_shells=Platné shelly u¾ivatele
+
+tally_deny=Nezdaøené pokusy pøed zakázáním pøístupu
+tally_reset=Resetovat èítaè nezdaøených pøístupù
+tally_edeny=Chybìjící nebo nsprávný poèet nezdaøených pokusù
+tally_magic=Èítaè nezdaøených pøístupù se pou¾ije pro <tt>root</tt>?
+tally_root=Mù¾e být <tt>root</tt> úèet znepøístupnìn?
+
+time_services=Slu¾by
+time_ttys=TTYs
+time_users=U¾ivatelé
+time_times=Èasy pøístupu
+time_info=V¹echna pole mohou obsahovat vícenásobné hodnoty oddìlené |, a zárovìò hodnoty mohou obsahovat * jako zástupný znak èi ! jako negaci.
+
+group_services=Slu¾by
+group_ttys=TTYs
+group_users=U¾ivatelé
+group_times=Èasy pøístupu
+group_groups=Pøidat skupiny
+group_info=V¹echna pole mohou obsahovat vícenásobné hodnoty oddìlené |, a zárovìò hodnoty mohou obsahovat * jako zástupný znak èi ! jako negaci.
+
+wheel_group=Kontrolovat èlenství ve skupinì
+wheel_group_def=Výchozí (<tt>wheel</tt> nebo GID 0)
+wheel_trust=Èlenové skupiny pøeskoèí pøes autentikaci?
+wheel_deny=Zakázat namísto povolení u èlenù skupiny?
+wheel_egroup=Chybìjící nebo nesprávné jméno skupiny
+
+motd_file=Soubor k zobrazení
+motd_file_def=Výchozí (<tt>/etc/motd</tt>)
+motd_efile=Chybìjící nebo nesprávné jméno souboru
+
+mail_nopen=Zobrazit notifikaci mailu pøi pøihlá¹ení?
+mail_close=Zobrazit notifikaci mailu pøi  pøi odhlá¹ení?
+mail_empty=Ovìøit, zda je mailový soubor prázdný?
+mail_noenv=Nastavit $MAIL ystémovou promìnnou?
+mail_dir=Spool adresáø pro mail
+mail_edir=Chybìjící nebo nesprávný spoll adresáø pro mail
+
+stack_service=Pøeskoèit kontrolu pro PAM slu¾bu
+
+log_pam_create=Vytvoøena PAM slu¾ba $1
+log_pam_delete=Smazána PAM slu¾ba $1
+log_mod_create=Pøidán PAM modul $1 pve slu¾bì $2
+log_mod_modify=Modifikována PAM modul $1 ve slu¾bì $2
+log_mod_delete=Smazána PAM modul $1 ve slu¾bì $2
+log_mod_move=Swappována PAM modul $1 ve slu¾bì $2
+log_mod_move_l=Swappovány PAM moduly $1 a $2 ve slu¾bì $3
+
