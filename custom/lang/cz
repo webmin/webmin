@@ -1,0 +1,102 @@
+index_title=Vlastní pøíkazy
+index_edit=Editovat pøíkaz
+index_fedit=Editovat editor souboru
+index_none=Nejsou definovány ¾ádné vlastní pøíkazy
+index_create=Vytvoøit nový vlastní pøíkaz
+index_ecreate=Vytvoøit nový editor souboru
+index_return=pøíkazy
+index_cmd=Pøíkaz
+index_desc=Popis
+index_ed=Editovat..
+
+edit_title=Editace pøíkazu
+create_title=Vytvoøit pøíkaz
+edit_ecannot=Nemáte oprávnìní editovat pøíkazy
+edit_details=Detaily pøíkazu
+edit_desc=Popis
+edit_cmd=Pøíkaz
+edit_dir=Spustit v adresáøi
+edit_user=Spustit pod u¾ivatelem
+edit_user_def=Webmin u¾ivatel
+edit_raw=Výstupy pøíkazu v HTML?
+edit_su=Pou¾ít u¾ivatelské prostøedí?
+edit_order=Seøazení na hlavní stránce
+edit_params=Parametry pøíkazu
+edit_name=Jméno
+edit_type=Typ
+edit_quote=Nabídnout parametr?
+edit_type0=Text
+edit_type1=U¾ivatel
+edit_type2=UID
+edit_type3=Skupina
+edit_type4=GID
+edit_type5=Soubor
+edit_type6=Adresáø
+edit_type7=Volba..
+edit_type8=Heslo
+edit_type9=Menu..
+edit_noshow=Skrýt pøíkaz bìhem spu¹tìní?
+edit_usermin=Je pou¾itelný v Userminu?
+
+save_err=Chyba pøi ukládání pøíkazu
+save_ecannot=Nemáte oprávnìní editovat pøíkazy
+save_ecmd®ádný pøíkaz nebyl vlo¾en
+save_edir=Chybìjící nebo nesprávný adresáø
+save_edesc=Nebyl vlo¾en ¾ádný popis
+save_euser=Chybìjící nebo nesprávný u¾ivatel
+
+run_err=Chyba pøi spu¹tìní pøíkazu
+run_ecannot=Nemáte oprávnìní spustit tento pøíkaz
+run_euser=Chybìjící nebo nesprávný u¾ivatel
+run_egroup=Chybìjící nebo nesprávná skupina
+run_title=Spustit pøíkaz
+run_out=Výstup z $1 ..
+run_out2=Výstup z pøíkazu ..
+run_noout=Nebyl generován ¾ádný výstup
+run_ecmduser=U¾ivetel '$1' pro spu¹tìní pøíkazu neexistuje
+run_eopt=Nesprávný výbìr mo¾nosti
+
+log_modify=Modífikován pøíkaz $1
+log_create=Vytvoøen pøíkaz $1
+log_delete=DSmazán pøíkaz $1
+log_exec=Spu¹tìn pøíkaz $1
+log_modify_edit=Modifikován editor souboru $1
+log_create_edit=Vytvoøen editor souboru $1
+log_delete_edit=Smazán editor souboru $1
+log_save_edit=Ulo¾en soubor $1
+
+acl_cmds=Pøíkazy, které mù¾e tento u¾ivatel spustit
+acl_call=V¹echny pøíkazy
+acl_csel=Vybrané..
+acl_cexceptV¹echny kromì vybraných..
+acl_edit=Je mo¾né vytvoøit a editovat pøíkazy?
+
+file_ecannot=Nemáte oprávnìní editovat soubory
+fcreate_title=Vytvoøit editor souboru
+fedit_title=Editovat editor souboru
+file_details=Detaily editoru souboru
+file_desc=Popis
+file_edit=Soubor k editování
+file_owner=Vlastník souboru
+file_user=U¾ivatel
+file_group=Skupina
+file_leave=Opustit jako je
+file_perms=Práva souboru
+file_set=Nastavit octal
+file_before=Pøíkaz spu¹tìný pøed ulo¾ením
+file_after=Pøíkaz spu¹tìný po ulo¾ení
+file_err=Chyba pøi ukládání editoru souboru
+file_eedit=Chybìjící jméno souboru k editování
+file_edesc=Chybìjící popis
+file_euser=Chybìjící nebo nesprávné jméno u¾ivatele
+file_egroup=Chybìjící nebo nesprávné jméno skupiny
+file_eperms=Chybìjící nebo nesprávná práva (octal)
+
+view_err=Chyba pøi editaci souboru
+view_ecannot=Nemáte oprávnìní editovat tento soubor
+view_title=Editace souboru
+view_efile=Zápis do $1 je chybný : $2
+
+form_ecannot=Nemáte oprávnìní spustit tento pøíkaz
+form_title=Spu¹tìní pøíkazu
+form_exec=Spustit
