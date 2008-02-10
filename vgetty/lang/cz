@@ -1,0 +1,111 @@
+index_title=Voicemail server
+index_ecmd=Vgetty pøíkaz $1 nebyl ve va¹em systému nalezen. Mo¾ná není nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_econfig=Konfiguraèní soubor Vgetty $1 nebyl ve va¹em systému nalezen. Mo¾ná není nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_return=úvodní stránka Voicemailu
+
+vgetty_title=Konfigurace seriového portu
+vgetty_desc=Pokud má vá¹ server odpovídat na hlasová volání pomocí modemu pøipojeného na seriový port, mùsí být ní¾e uveden. Jakmile pøidáte port do seznamu, program $1 bude nakonfigurován pro odpovìdi na volání a bude pøehrána zpráva.
+vgetty_add=Pøidat nový seriový port
+vgetty_tty=Seriové zaøízení
+vgetty_type=Typ
+vgetty_vgetty=Hlas
+vgetty_mgetty=Data/fax
+vgetty_none=Prozatím nebyly nakonfigurovány ¾ádné seriové porty pro potøebu Voicemailu.
+vgetty_apply=Pou¾ít konfiguraci
+vgetty_applydesc=Klepnutím na toto tlaèítko se pou¾ije aktuální konfigurace Voicemail serveru tak, ¾e se spustí pøíkaz $1 a zabijí se Vgetty procesy.
+vgetty_applyerr=Chyba pøi pou¾ití konfigurace
+vgetty_return=seznam seriovych portù
+vgetty_create=Pøidat seriový port
+vgetty_edit=Editovat seriový port
+vgetty_header=Konfiguraèní nastavení seriového portu
+vgetty_ts=Seriový port $1
+vgetty_other=Jiné zaøízení..
+vgetty_rings=Poèet vyzvánìní pøed odpovídáním
+vgetty_default=Globální výchozí nastavení
+vgetty_ans=Mód odpovìdi
+vgetty_ans_=&nbsp;
+vgetty_ans_voice=Hlas
+vgetty_ans_fax=Fax
+vgetty_ans_data=Data
+vgetty_err=Chyba pøi ukládání seriového portu
+vgetty_etty=Chybìjící nebo neexistující seriové zaøízení
+vgetty_erings=Chybìjící nebo nesprávný poèet vyzvánìní
+vgetty_erings2=Poèet vyzvánìní musí být nejménì 2
+vgetty_eans=Nebyl vybrán ¾ádný mód odpovìdi
+vgetty_eclash=Seriový port $1 je ji¾ pou¾íván
+
+options_title=Nastavení Voicemail serveru
+options_header=Nastavení pro v¹echny seriové porty
+options_maxlen=Maximální délka zprávy
+options_secs=vteøiny
+options_minlen=Minimální délka zprávy
+options_silence=Potichu odstraòovat od konce zpráv?
+options_thresh=Úroveò prahu zti¹ení
+options_rgain=Úroveò hlasitosti pøi nahrávání
+options_tgain=Úroveò hlasitosti pøi pøehrávání
+options_rings=Poèet vyzvánìní pøed odpovídáním
+options_perport=Mù¾e být nastaven pro ka¾dý port zvlá¹»
+options_ans=Mód odpovìdi
+options_keep=Udr¾et zprávy obsahující data nebo DTMF kódy?
+options_light=Zapnout auto-answer kontrolku po pøijetí?
+options_owner=Unix vlastník pro soubory zpráv
+options_group=Unix skupina pro soubory zpráv
+options_mode=Práva pro soubory zpráv
+options_prog=Po nahrání zprávy
+options_prog0=Neudìlat nic
+options_prog1=Email ve formatu WAV adresátovi
+options_prog2=Spusti pøíkaz na souboru zpráv
+options_err=Chyba pøi ukládání nastavení voicemailu
+options_erings=Chybìjící nebo nesprávný poèet vyzvánìní
+options_erings2=Poèet vyzvánìní musí být nejménì 2
+options_emaxlen=Chybìjící nebo nesprávná maximální délka zprávy
+options_eminlen=Chybìjící nebo nesprávná minimální délka zprávy
+options_ethresh=Chybìjící nebo nesprávný práh zti¹ení
+options_ergain=Chybìjící nebo nesprávná úroveò hlasitosti nahrávání
+options_ergain2=Úroveò hlasitosti nahrávání musí být mezi 0 a 100
+options_etgain=Chybìjící nebo nesprávná úroveò hlasitosti pøehrávání
+options_etgain2=Úroveò hlasitosti pøehrávání musí být mezi 0 a 100
+options_eemail=Chybìjící nebo nesprávná emailová adresa
+options_eprog=Chybìjící nebo neexistující program ke spu¹tìní
+
+received_title=Pøijímané zprávy
+recieved_desc=Ní¾e jsou uvedeny Voicemail zprávy, které byly pøijaty do va¹eho serveru. Chcete-li si poslechnout zprávu, klepnìte na datum/èas v prvním sloupci.
+received_none=Nebyly nalezeny ¾ádné Voicemail zprávy.
+received_date=Pøijato v
+received_size=Velikost souboru
+received_speed=Vzorová rychlost záznamu
+received_type=Audio formát
+received_delete=Smazat vybrané zprávy
+received_move=Pøevést vybrané zprávy do uvítání
+
+listen_efile=Neplatné jméno souboru se zprávou!
+listen_epath=Voicemail zpráva ji¾ neexistuje
+
+delete_efile=Neplatné jméno souboru se zprávou!
+
+messages_title=Uvítací zprávy
+messages_desc=ato stránka vypisuje seznam uvítacích zpráv, které budou pøehrány, jakmile se spojí volající s va¹ím Voicemail serverem. Chcete-li více ne¾ jednu uvítací zprávu, bude pou¾it náhodný výbìr jedné ze zpráv pro pøehrání.
+messages_file=Jméno souboru
+messages_none=Nejsou k dispozici ¾ádné uvítací zprávy.
+messages_updesc=Tento formuláø umo¾òuje nahrát pøídavné uvítací zprávu v souboru WAV, která bude pøevedena do zvoleného formátu pou¾itelného va¹ím modemem. Sample rate nahraného WAV by mìla být shodná se sample rate pøijímaných zpráv, stejnì jako u vybraného formátu.
+messages_upload=Nahrát zprávu
+messages_fmt=pøevést na
+
+pvfdesc=$1, $2 bity
+
+upload_err=Chyba pøi pøidání zprávy
+upload_emessage=Nebyl vybrán ¾ádný WAV soubor
+upload_ewav=Chyba pøi pøevodu WAV souboru : $1
+upload_epvf=Chyba pøi vytvoøení RMD souboru : $1
+upload_esame=Soubor se zprávou $1 ji¾ existuje
+
+log_apply=Aplikována konfigurace
+log_upload=Nahrána uvítací zpráva $1
+log_move=Pøevedeny $1 pøijaté zprávy
+log_delete0=Smazány $1 pøijaté zprávy
+log_delete1=Smazány $1 pøuvítací zprávy
+log_options=Zmìnìna nastavení Voicemailu
+log_vgetty_create=Pøidán seriový port $1
+log_vgetty_modify=Modifikován seriový port $1
+log_vgetty_delete=Smazán seriový port $1
+
