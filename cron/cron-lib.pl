@@ -778,6 +778,7 @@ else {
 sub show_range_input
 {
 local ($job) = @_;
+local $has_start = $job->{'start'};
 local $rng;
 $rng = &text('range_start', &ui_date_input(
 	$job->{'start'}->[0], $job->{'start'}->[1], $job->{'start'}->[2],
@@ -789,9 +790,9 @@ $rng = &text('range_start', &ui_date_input(
 	"range_end_day", "range_end_month", "range_end_year"))."\n".
       &date_chooser_button(
 	"range_end_day", "range_end_month", "range_end_year")."\n";
-print &ui_oneradio("range_def", 1, $text{'range_all'}, !$job->{'start'}),
+print &ui_oneradio("range_def", 1, $text{'range_all'}, !$has_start),
       "<br>\n";
-print &ui_oneradio("range_def", 0, $rng, $job->{'start'}),"\n";
+print &ui_oneradio("range_def", 0, $rng, $has_start),"\n";
 }
 
 # parse_range_input(&job, &in)
