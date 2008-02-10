@@ -7,3 +7,4 @@ desc_ca=Filtre de Correu SpamAssassin
 desc_fr=Filtre de courrier SpamAssassin
 desc_es=SpamAssassin - Filtro de Correo
 os_support=!windows
+desc_cz=Spamový filtr SpamAssassin
