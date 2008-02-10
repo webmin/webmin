@@ -5,3 +5,4 @@ longdesc=Configure and schedule SARG, a tool for generating reports from Squid a
 desc_ca=Generador d'Informes de l'Anàlisi de Squid
 os_support=!windows
 desc_es=Generador de Informes de An&#225;lisis de Squid
+desc_cz=Generátor analýzy Squid
