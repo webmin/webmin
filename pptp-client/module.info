@@ -5,3 +5,4 @@ depends=net proc syslog
 os_support=*-linux
 longdesc=Configure and establish connections to a VPN server using the PPTP protocol.
 desc_ca=Client VPN PPTP
+desc_cz=PPTP VPN klient
