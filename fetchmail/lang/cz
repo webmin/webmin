@@ -1,0 +1,91 @@
+index_title=Fetchmail pøíjemce mailù
+index_poll=Server ke sdru¾ení
+index_proto=Protokol
+index_users=Vzdálení a lokální u¾ivatelé
+index_add=Pøidat nový server
+index_run=Kontrolovat v¹echny servery
+index_global=Editovat výchozí nastavení
+index_user=Unix u¾ivatel
+index_conf=Konfigurace Fetchmailu
+index_ok=Pøidat Fetchmail server pro u¾ivatele:
+index_file=Konfigurace Fetchmailu v $1
+index_return=Seznam serverù
+index_start=Spustit démona Fetchmailu
+index_stop=Ukonèit démona Fetchmailu
+index_startmsg=Klepnutím na toto tlaèítko se spustí na tomto serveru démon Fetchmailu, co¾ umo¾ní kontrolu mailu ka¾dých $1 vteøin. Démon pobì¾í pod u¾ivatelem $2 za pou¾ití vý¹e uvedené konfigurace.
+index_stopmsg=Klepnutím na toto tlaèítko se ukonèí démon Fetchmail, který momentálnì bì¾í pod u¾ivatelem $1. Od tohoto momentu nebude se nebudou maily automaticky stahovat ka¾dých $2 vteøin.
+index_efetchmail=Program Fetchmailu $1 nemù¾e být nalezen. Mo¾ná nemáte Fetchmail ve va¹em systému nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_none=Neexistují ¾ádní Unix u¾ivatelé vlastnící <tt>.fetchmailrc</tt> soubory.
+
+poll_create=Pøidat server
+poll_edit=Editovat server
+poll_header=Nastavení mail serveru
+poll_poll=Název serveru
+poll_skip=Povoleno sdru¾ování?
+poll_via=Mail server ke kontaktování
+poll_via_def=Shodný s názvem serveru
+poll_proto=Protokol
+poll_port=Port serveru
+poll_uheader=Detauly u¾ivatele mail serveru
+poll_user=Vzdálený u¾ivatel
+poll_pass=Vzdálené heslo
+poll_is=Locální u¾ivatel(é)
+poll_keep=Opustit zprávy na serveru?
+poll_fetchall=V¾dy pøenés v¹echny zprávy?
+poll_usually=Vìt¹inou ne
+poll_err=Cgyba pøi ukládání serveru
+poll_epoll=Chybìjící nebo nesprávný název serveru
+poll_evia=Nesprávný název mail serveru
+poll_eport=Chybìjící nebo nesprávné èíslo portu
+poll_euser=Chybìjící nebo nesprávné jméno vzdáleného u¾ivatele
+poll_adduser=Pøidat jiného u¾ivatele
+poll_check=Zkontrolovat tento server
+poll_interface=Zkontrolovat podmínku
+poll_interface_def=V¾dy kontrolovat
+poll_interface_ifc=Pouze v pøípadì, kdy¾ ¾ije rozhraní
+poll_interface_ip=s adresou / sí»ovou maskou
+poll_einterface=Chybìjící nebo nesprávné sí»ové rozhraní
+poll_enet=Chybìjící nebo nesprávná adresa
+poll_emask=Nesprávná sí»ová maska
+poll_preconnect=Pøíkaz, který se spustí pøed pøipojením
+poll_postconnect=Pøíkaz, který se spustí po odpojení
+poll_ecannot=Nemáte oprávnìní editovat konfiguraci Fetchmail u tohoto u¾ivatele
+poll_efile=Mohou být editovány pouze konfiguraèní soubory Fetchmail u¾ivatele
+
+stop_err=Chyba pøi ukonèení Fetchmailu
+stop_ecannot=Nemáte oprávnìní ukonèit Fetchmail
+start_err=Chyba pøi spu¹tìní Fetchmailu
+start_einterval=Chybìjící nebo nesprávný interval kontroly
+start_ecannot=Nemáte oprávnìní spustit Fetchmail
+
+check_title=Kontrola serverù
+check_exec=Kontrola mailù na serveru(ech) pomocí pøíkazu $1 ..
+check_ok=.. kontrola je ukonèena.
+check_failed=.. kontrola nebyla úspì¹ná!
+
+global_title=Výchozí nastavení
+global_header=Výchozí nastavení pro v¹echny servery
+global_err=Chyba pøi ukládání výchozích nastavení
+
+log_create_poll_file=Pøidán server $1 v souboru $2
+log_modify_poll_file=Modifikován server $1 v souboru $2
+log_delete_poll_file=Smazán server $1 v souboru $2
+log_create_poll_user=Pøidán server $1 pro u¾ivatele $2
+log_modify_poll_user=Modifikován server $1 pro u¾ivatele $2
+log_delete_poll_user=Smazán server $1 pro u¾ivatele $2
+log_check_file_file=Zkontrolovány v¹echny servery v souboru $1
+log_check_file_server=Zkontrolován server $2 v souboru $1
+log_check_user_file=Zkontrolovány v¹echny servery pro u¾ivatele $1
+log_check_user_server=Zkontrolován server $2 pro u¾ivatele $1
+log_check_server_l=Zkontrolován server $2 v souboru $1
+log_global_user=Zmìnìna globální nastavení pro u¾ivatele $1
+log_global_file=Zmìnìna globální nastavení v souboru $1
+log_start=Spu¹tìn démon Fetchmailu
+log_stop=SUkonèen démon Fetchmailu
+
+acl_users=Mù¾e editovat konfiguraci Fetchmailu pro
+acl_all=V¹ichni u¾ivatelé
+acl_this=Aktuální Webmin u¾ivatel
+acl_only=Pouze u¾ivatelé
+acl_except=V¹ichni u¾ivatelé kromì
+
