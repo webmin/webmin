@@ -1,0 +1,9 @@
+index_title=Pøíkazovı shell
+index_ok=Spustit ppøíkaz:
+index_history=Historie pøíkazù
+index_clear=Vyèistit historii
+index_desc=Vlo¾ením Unix pøíkazushellu dojde k jeho spu¹tìní v ní¾e uvedeném textovém poli. <tt>cd</tt> pøíkaz mù¾e bıt vyu¾it pro zmìnu adresáøe pro následné pøíkazy.
+index_pok=Spusrit pøedchozí pøíkaz
+
+acl_user=Spustit pøíkazy pod u¾ivatelem
+acl_user_def=Aktuální Webmin u¾ivatel
