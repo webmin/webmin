@@ -1,0 +1,202 @@
+index_title=Stav systému a serveru
+index_name=Název slu¾by
+index_host=Na hostu
+index_desc=Monitorování
+index_up=Stav
+index_last=Poslední kontrola
+index_local=Lokální
+index_add=Pøidat monitor typu:
+index_sched=Plánování monitorování
+index_return=seznam slu¾eb
+index_none=Momentálnì není definováo ¾ádné monitorování.
+index_oldtime=Stav z poslední naplánované kontroly v $1
+
+type_apache=Apache webserver
+type_inetd=Internet a RPC server
+type_xinetd=Roz¹íøený Internet server
+type_squid=Squid Proxy server
+type_bind8=BIND DNS server
+type_dnsadmin=BIND 4 DNS server
+type_dhcpd=DHCP server
+type_tcp=Vzdálená TCP slu¾ba
+type_http=Vzdálená HTTP slu¾ba HTTP
+type_sendmail=Sendmail server
+type_postfix=Postfix server
+type_ping=Vzdálený ping
+type_proc=Kontrola procesu
+type_mysql=MySQL databázový server
+type_postgresql=PostgreSQL databázový server
+type_samba=Samba servery
+type_nfs=NFS server
+type_exec=Spu¹tìní pøíkazu
+type_file=Kontrola souborù
+type_traffic=sí»ový pøenos
+type_space=Místo na disku
+type_load=Prùmìrné nahrávání
+type_change=Zmìna souborù
+type_qmailadmin=QMail server
+type_mon=MON monitor slu¾ba
+type_jabber=Jabber IM server
+type_usermin=Usermin webserver
+type_portsentry=Portsentry démon
+type_hostsentry=Hostsentry démon
+type_webmin=Webmin webserver
+type_cfengine=Démon konfiguraèního stroje
+type_memory=Volná pamì»
+
+mon_create=Vytvoøit monitorování
+mon_edit=Editovat monitorování
+mon_header=Detaily monitorování
+mon_desc=Popis
+mon_remote=Bì¾et na hostu
+mon_local=Lokální
+mon_none=Nejsou definovány ¾ádné vzdálené servery
+mon_nosched=Kontrolovat podle naplánování?
+mon_warn1=Ano, a odeslat mail o zmìnì stavu
+mon_warn0=Ano, a odeslat mail, pokud dochází ke spadnutí
+mon_warn2=Ano, a odeslat mail, pokud je shozen
+mon_status=Aktuální stav
+mon_up=®ije
+mon_down=Mrtvý
+mon_webmin=Webminem shozen
+mon_not=Není nainstalován
+mon_ondown=Pokud se monitorování shazuje, spustit pøíkaz
+mon_onup=Pokud se monitorování nahazuje, spustit pøíkaz
+mon_clone=Modul do monitorování
+mon_err=Chyba pøi ukládání monitorování
+mon_edesc=Chybìjící popis
+mon_elogin=Neplatné pøihlá¹ení pro RPC na Webmin serveru $1
+mon_eremote=Webmin server $1 nepodporuje RPC
+mon_estatus=Webmin server $1 nemá modul Stav systému a serveru
+mon_ecannot=Nemáte oprávnìní editovat minitorování
+mon_ertype=Tento typ monitorování neni k dispozici na $1
+mon_runon=Spustit pøíkazy na
+mon_runon0=Tento server
+mon_runon1=Vzdálený host
+
+sched_title=Plánované monitorování
+sched_header=Nastavení monitorování naplánované na pozadí
+sched_mode=Povolena plnánovaná kontrola?
+sched_email=Poslat email s reportem o stavu do
+sched_pager=Stránkovat report o stavu do poètu
+sched_none=Nikdo
+sched_from=<tt>From:</tt> adresa pro mail
+sched_int=Kontrolovat ka¾dých
+sched_period_0=minuty
+sched_period_1=hodiny
+sched_period_2=dny
+sched_period_3=mìsíce
+sched_period_4=týdny
+sched_offset=do vypr¹ení
+sched_warn=Poslat mail, pokud
+sched_warn1=slu¾ba zmìnila stav
+sched_warn0=slu¾ba je shazována
+sched_warn2=je slu¾ba kdykoliv shozena
+sched_single=Poslat jeden mail na jednu slu¾bu?
+sched_hours=Spustit monitorování bìhem daných hodin
+sched_days=Spustit monitorování ve dnech
+sched_err=Chyba pøi ukládání naplánovaní monitorování
+sched_eemail=Chybìjící email adresa
+sched_eint=Chybìjící nebo nesprávný interval
+sched_eoffset=Chybìjící nebo nesprávná hodnota pro vypr¹ení
+sched_ehours=Nejsou nastaveny ¾ádné hodiny, ve kterých se má monitorování spou¹tìt
+sched_edays=Nejsou nastaveny ¾ádné dny, ve kterých se má monitorování spou¹tìt
+sched_ecannot=Nemáte oprávnìní editovat naplánování monitorování
+sched_smtp=Poslat mail prostøednictvím
+sched_smtp_prog=Lokální spou¹tìè Sendmail
+sched_smtp_server=SMTP server
+sched_esmtp=Chybìjící nebo nesprávný SMTP server
+sched_esmtpcmd=SMTP pøíkaz $1 byl neúspì¹ný : $2
+
+up_since=®ije dokud $1
+depends_mod=Modul $1 není ve va¹em systému nainstalován
+depends_os=Modul $1 není ve va¹em systému podporován
+depends_remote=Modul $1 není vpodporován na serveru $2
+
+tcp_host=Host k pøipojení do
+tcp_port=Port k pøipojení do
+tcp_alarm=Èasová prodleva pøipojení
+tcp_ehost=Chybìjící nebo nesprávné jméno hosta
+tcp_eport=Chybìjící nebo nesprávné èíslo portu
+tcp_ealarm=Chybìjící nebo nesprávná èasová prodleva pøipojení
+
+http_url=URL na po¾adavky
+http_alarm=asová prodleva pøipojení
+http_eurl=Chybìjící nebo nesprávná URL
+http_ealarm=Chybìjící nebo nesprávná èasová prodleva pøipojení
+http_login=Pøihlásit se pod
+http_none=Neautentikovat
+http_user=U¾ivatelské jméno
+http_pass=Heslo
+http_euser=Chybìjící u¾ivatelské jméno
+
+ping_host=Host pro ping
+ping_wait=Doba èekání na odezvu
+ping_ehost=Chybìjící nebo nesprávné jméno hosta
+ping_ewait=Chybìjící nebo nesprávná doba èekání
+ping_econfig=Nebyl nastaven ¾ádný ping pøikaz v konfiguraci modulu
+
+proc_pid=Práve bì¾í s PID $1
+proc_cmd=Pøíkaz ke kontrole pro
+proc_not=Nahlásit chybu, jestli¾e je proces
+proc_not0=Nebì¾í
+proc_not1=Bì¾í
+proc_ecmd=Chybìjící pøíkaz
+
+exec_cmd=Pøíkaz, který kontroluje stav opou¹tení
+exec_ecmd=Chybìjící pøíkaz
+
+file_file=Soubor ke kontrole
+file_test=Testovat na provedení
+file_test_0=Soubor musí existovat
+file_test_1=Soubor nesmí existovat
+file_test_2=Soubor musí být vìt¹í ne¾
+file_test_3=Soubor musí být men¹í ne¾
+file_bytes=bytù
+file_efile=Chybìjící soubor ke kontrole
+file_esize=Neplatná velikost souboru
+
+traffic_iface=Rozhraní pro monitorování
+traffic_bytes=Maximum bytes/second
+traffic_dir=Smìr k monitorování
+traffic_dir0=Pøíchozí a odchozí
+traffic_dir1=Pouze pøíchozí
+traffic_dir2=Pouze odchozí
+traffic_desc=Toto monitorování udr¾uje trasy sí»ových pøenosù na vybraném rozhraní, dále zobrazuje, zda je monitorování shozené, èi zda pøenos je schopen pøijmout ní¾e uvedný poèet bytù za vteøinu. Tato èinnost pracuje správnì pouze v pøípadì, ¾e je naplánované monitorování v krátkých intervalech, jako napøíklad ka¾dých 5 minut.
+traffic_eifaces=Vá¹ operaèní systém nemá soubor /proc/net/dev
+traffic_ebytes=Chybìjící nebo nesprávný poèet bytes/second
+
+space_fs=Souborový systém ke kontrole
+space_min=Minimální volné místo (v kB)
+space_desc=$1 kB je volných
+space_nofs=Souborový systém není namountován
+space_other=Jiný..
+space_emin=Chybìjící nebo nesprávná hodnota pro udání volného místa
+space_eother=Chybìjící nebo nesprávný souborový systém
+
+load_time=Prùmìrné nahrávání ke kontrole
+load_1=1 minuta
+load_5=5 minut
+load_15=15 minut
+load_max=Maximální prùmìrné nahrávání
+load_emax=Chybìjící nebo nesprávné prùmìrné nahrávání
+load_ecmd=Pøíkaz <tt>uptime</tt> nebyl nalezen ve va¹em systému
+load_efmt=Výstup pøíkazu <tt>uptime</tt> nemù¾e být rozebrán
+
+log_create=Vytvoøeno monitorování $1
+log_modify=Modifikováno monitorování $1
+log_delete=Smazáno monitorování $1
+log_sched=Zmìnìno plánování monitorování
+
+acl_edit=Mù¾e vytvoøit a editovat monitorování?
+acl_sched=Mù¾e zmìnit plánování monitorování?
+
+change_file=Soubor pro monitorování
+
+jabber_eparser=Perl modul $1není nainstalován ve va¹em systému.
+
+memory_min=Minimální volná pamì» (v kB)
+memory_emin=Chybìjící nebo nesprávné urèení volné pamìti
+memory_eproc=Webmin neví, jak zkontrolovat volnou pamì» u va¹eho operaèního systému
+memory_free=$1 kB je volných
+
