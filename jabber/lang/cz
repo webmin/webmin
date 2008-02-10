@@ -1,0 +1,117 @@
+index_title=Jabber IM server
+index_econfig=Konfiguraèní soubor Jabberu $1 neexistuje. Buï není Jabber nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_edir=Jabber základní adresáø $1 neexistuje. Buï není Jabber nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_emodule=Modul Perlu $1, který je vy¾adován Webminem pro údr¾bu Jabber XML konfigurace není nainstalován. <a href='$2'>Klepnutím zde</a> jej nainstalujete z CPAN.
+index_eparse=Modul Perlu $1 nemù¾e rozebrat vá¹ konfiguraèní soubor Jabberu : $2
+index_ejabberd=Program Jabber serveru  $1 nebyl ve va¹em systému nalezen. Buï není Jabber nainstalován, nebo va¹e <a href='$2'>konfigurace modulu</a> není správná.
+index_eversion=Webmin podporuje pouze Jabber verze $2, av¹ak pøíkaz $3 pøedal informaci o následující verzi : $1
+index_start=Spustit Jabber server
+index_startmsg=Klepnutím na toto tlaèítko se ve va¹em systému spustí Jabbe severr. Dokud nebude spu¹tìn, nemohou ho vyu¾ívat ¾ádní klienti pro okam¾ité zprávy.
+index_stop=Ukonèit Jabber server
+index_stopmsg=Klepnutím na toto tlaèítko se ve va¹em systému ukonèí spu¹tìný Jabber server. Jakmile ho ukonèíte, nemohou ho vyu¾ívat ¾ádní klienti pro okam¾ité zprávy.
+index_restart=Pou¾ít zmìny
+index_restartmsg=Klepnutím na toto tlaèítko se pou¾ije aktuální konfigurace tak, ¾e se ukonèí a restartuje Jabber server.
+index_comments=Upozornìní - vá¹ konfiguraèní soubor Jabberu $1 obsahuje komentáøe, které budou odstranìny, jakmile se provedou jakékoliv zmìny v konfiguraci pomocí tohoto modulu.
+index_return=Menu Jabberu
+index_version=Jabber verze $1
+
+general_title=Hlavní nastavení
+general_header=Globální nastavení Jabber serveru
+general_host=Jméno hosta va¹eho serveru
+general_elog=Log soubor chyb
+general_elogfmt=Log formát chyb
+general_rlog=Log soubor pøístupù
+general_rlogfmt=Log formát pøístupù
+general_pidfile=PID soubor
+general_err=Chyba pøi ukládání hlavních nastavení
+general_ehost=Chybìjící nebo nesprávné jmìno hosta serveru
+general_eelog=Chybìjící nebo nesprávný log soubor chyb
+general_eelogfmt=Chybìjící log formát chyb
+general_erlog=Chybìjící nebo nesprávný log soubor pøenosù
+general_erlogfmt=Chybìjící log formát pøenosù
+general_epidfile=Chybìjící nebo nesprávný PID soubor
+
+messages_title=Zprávy
+messages_header=Zpráva Jabber serveru pro klienty
+messages_wsubject=Pøedmìt uvítací zprávy
+messages_wbody=Tìlo uvítací zprávy
+messages_vcard=Server vCard
+messages_rinstr=Instrukce pro registraci
+messages_rnotify=Uvìdomit admina o registraci?
+messages_rfields=Pole po¾adovaní pøi registraci
+messages_vcard2jud=Poslat vCard do Jabber u¾ivatelského adresáøe?
+messages_err=Chyba pøi ukládání zpráv
+messages_evcard=Neplatný vCard XML : $1
+messages_etag=Server vCard XML nezaèíná pomocí &lt;vCard&gt;
+
+modules_title=Moduly Jabberu
+modules_desc=Ní¾e uvedené moduly jsou pou¾ity za úèelem vykonávání zpráv pøijatých mana¾erem Jabber relací. Tento seznam mù¾ete mìnit pouze v pøípadì, pokud víte, co dìláte.
+modules_header=Moduly mana¾eru Jabber serverových relací
+modules_mod=Název modulu
+modules_so=Sdílená knihovna
+modules_err=Chyba pøi ukládání Jabber modulù
+modules_emod='$1' není platný název modulu
+modules_eso=Sdílená knihovna '$1' neexistuje
+
+karma_title=Karma kontrola pøenosù
+karma_header=Nastavení kontroly dávky pøenosu
+karma_rate=Udr¾ování nadmìrného pøipojení
+karma_rate_def=Nepovoleno
+karma_rate_sel=Blokovat klienta po dobu $2 vteøin po $1 pøipojeních
+karma_mode=Karma mód
+karma_none=®ádná omezení
+karma_low=Nízká omezení pøenosu
+karma_medium=Støední omezení pøenosu
+karma_high=Vysoká omezení pøenosu
+karma_sel=Pou¾ít ni¾e vybraná nastavení ..
+karma_heartbeat=Délka periody ve vteøinách (<tt>heartbeat</tt>)
+karma_init=Periody inicializace (<tt>init</tt>)
+karma_max=Karma maximum (<tt>max</tt>)
+karma_inc=Karma narùstání (<tt>inc</tt>)
+karma_dec=Karma ubírání (<tt>dec</tt>)
+karma_penalty=Trestné periody (<tt>penalty</tt>)
+karma_restore=Periody náhlých obnov (<tt>restore</tt>)
+karma_err=Chyba pøi ukládání karma nastavení
+karma_eheartbeat=Chybìjící nebo nesprávná délka periody
+karma_einit=Chybìjící nebo nesprávné peroiody inicializace
+karma_emax=Chybìjící nebo nesprávné karma maximum
+karma_einc=Chybìjící nebo nesprávné karma narùstání
+karma_edec=Chybìjící nebo nesprávné karma ubírání
+karma_epenalty=Chybìjící nebo nesprávné trestné periody
+karma_erestore=Chybìjící nebo nesprávná obnovovací periody
+karma_epoints=Chybìjící nebo nesprávný poèet pøipojení
+karma_etime=Chybìjící nebo nesprávný èas blokování pro
+
+ips_title=Kontrola IP pøístupu
+ips_header=Kontrola IP pøístupu Jabber serveru
+ips_allow=Povolení IPs klientù
+ips_all=V¹echny adresy
+ips_deny=Zakázané IPs klientù
+ips_none=Nic
+ips_sel=Uvedené adresy/sí»ové masky ..
+ips_err=Chyba pøi ukládání kontroly IP pøístupù
+ips_eaddr='$1' není platná IP adresa nebo IP adresa/sí»ová maska
+
+file_title=Editace konfiguraèního souboru
+file_desc=Pou¾itím ní¾e uvedeného formuláøe editujete pøímo konfiguraèní soubor Jabberu. Tento postup mù¾ete vyu¾ít pouze v pøípadì, pokud rozumíte XML konfiguraènímu formátu.
+file_header=Editovat konfiguraèní soubor Jabberu
+file_err=Chyba pøi ukládání konfiguraèního souboru
+
+admin_title=Administrativa u¾ivatelù
+admin_header=U¾ivatelé administrující server
+admin_read=Administrátoøi s povolením ètení
+admin_write=Administrátoøi s povolením zápisu
+admin_reply=Automaticky odpovídat na zprávy administrátorùm?
+admin_rsubject=Pøedmìt automatické odpovìdi
+admin_rbody=Zpráva automatické odpovìdi
+
+filter_title=Filtry u¾ivatelù
+filter_header=Práva u¾ivatelských filtrù
+filter_max=Maximální poèet pravidel ve filru
+filter_conds=Povolující podmínky filtru
+filter_acts=Povolené akce filtru
+
+restart_err=Chyba pøi aplikaci zmìn
+stop_err=Chyba pøi ukonèení Jabberu
+start_err=Chyba pøi spu¹tìní Jabberu
+
