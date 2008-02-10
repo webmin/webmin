@@ -28,3 +28,4 @@ syslog=1
 cpan=1
 desc_ko_KR.UTF-8=실행중인 프로세스
 desc_it=Processi in esecuzione
+desc_cz=Spu�t�n� procesy
