@@ -17,7 +17,7 @@ edit_commands=Pøíkazy
 edit_command=Pøíkaz
 edit_input=Vstup pøíkazu???
 edit_when=Èas spou¹tìní
-edit_minutes=Minuty
+edit_mins=Minuty
 edit_hours=Hodiny
 edit_days=Dny
 edit_months=Mìsíce
@@ -25,6 +25,8 @@ edit_weekdays=Dny v týdnu
 edit_all=V¹echny
 edit_selected=Vybrané ..
 edit_run=Spustit teï
+edit_return=cron úloha
+edit_ctrl=Poznámka: Ctrl-click umo¾òuje výbìr èi zru¹ení výbìru minut, hodin, dnù a mìsícù.
 
 month_1=Leden
 month_2=Únor
@@ -39,9 +41,18 @@ month_10=Øíjen
 month_11=Listopad
 month_12=Prosinec
 
+day_0=Nedìle
+day_1=Pondìlí
+day_2=Støeda
+day_3=Ètvrtek
+day_4=Pátek
+day_5=Sobota
+day_6=Nedìle
+
 save_err=Chyba pøi ukládání úlohy
 save_ecmd=Nezadal jste pøíkaz ke spou¹tìní
 save_euser=Musíte vybrat u¾ivatele
+save_euser2=U¾ivatel '$1' neexistuje
 save_eallow=U¾ivatel '$1' nemá povolen pøístup ke cronu
 save_ecannot=Nemáte oprávnìní vytvoøit úlohu pro '$1'
 save_enone=Nevybral jste ¾ádné $1 ke spu¹tìní
@@ -69,6 +80,18 @@ exec_none=Nebyl generován ¾ádný výstup
 
 acl_users=Mù¾e editovat úlohy pro
 acl_all=V¹echny u¾ivatele
+acl_this=Aktuální webmin u¾ivatel
 acl_only=Pouze u¾ivatele
 acl_except=V¹echny mimo u¾ivatelù
 acl_control=Mù¾e nastavit u¾ivatelský pøístup ke Cronu?
+acl_uid=U¾ivatelé s UID v rozsahu
+acl_gid=U¾ivatelé v primární skupinì
+
+log_modify=Modifikována cron úloha pro $1
+log_modify_l=Modifikována cron úloha "$2" pro $1
+log_create=Vytvoøena cron úloha pro $1
+log_create_l=Vytvoøena cron úloha "$2" pro $1
+log_delete=Smazána cron úloha for $1
+log_exec=Spu¹tìna cron úloha jako $1
+log_exec_l=Spu¹tìna cron úloha "$2" jako $1
+log_allow=Zmìnìn u¾ivatelský pøístup to cron úlohu
