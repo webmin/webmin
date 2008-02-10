@@ -1,0 +1,15 @@
+line1=Mo¾nosti konfigurace,11
+lines=Výchozí poèet zobrazených øádkù,0
+line2=Konfigurace systému,11
+syslog_conf=Cesta k syslog konfiguraènímu souboru,0
+m4_conf=Je syslog config provozována procesem pomocí m4?,1,1-ano,0-ne
+m4_path=Cesta k m4,0
+sync=Synchronizace, pokud nebude k dispozici ka¾dá správa?,1,1-ano,0-ne
+pipe=Podporován logging do rour?,1,2-do pøíkazù,1-do pojmenovaných rour,0-Ne
+socket=Podporován logging do socketù?,1,1-ano,0-ne
+pri_dir=Podporován roz¹íøený výbìr priorit?,1,2-FreeBSD styl,1-Linux styl,0-Ne
+pri_all=Podporovány v¹echny priority?,1,1-ano,0-ne
+tags=Podporovány tagged sekce?,1,1-ano,0-ne
+pid_file=Syslog PID soubor,3,Nic
+syslogd=Cesta k syslog server,0
+facilities=Podporované kanály,0
