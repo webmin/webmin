@@ -1,2 +1,3 @@
+line2=Konfigurace systému,11
 raidtab=Konfiguraèní soubor RAIDu,0
-mdstat=Kernel RAID stavový soubor,0
+mdstat=RAID stavový soubor jádra,0
