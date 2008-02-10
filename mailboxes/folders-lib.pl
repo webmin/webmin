@@ -2932,6 +2932,10 @@ if (defined($hasattach{$mid})) {
 	# Already cached .. use it
 	return $hasattach{$mid};
 	}
+if (!$mail->{'body'} && $mail->{'size'} > 1024*1024) {
+	# Message is big .. just assume it has attachments
+	return 1;
+	}
 if (!$mail->{'body'}) {
 	# The body hasn't been read yet - read it now
 	($mail) = &mailbox_select_mails($folder, [ $mail->{'id'} ], 0);
