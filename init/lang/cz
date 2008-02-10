@@ -1,0 +1,114 @@
+index_title=Boot a Shutdown
+index_add=Vytvoøit nové akce pro bootování a shození
+index_reboot=Rebootovat systém
+index_rebootmsg=Klepnutím na toto tlaèítko se ihned rebootuje systém. V¹ichni aktuálnì pøipojení u¾ivatelé budou odpojeni a v¹echny slu¾by budou restartovány.
+index_shutdown=Shodit systém
+index_shutdownmsg=Klepnutím na toto tlaèítko se ihned shodí systém. V¹echny slu¾by budou ukonèeny, v¹ichni u¾ivatelé odpojeni a systém se vypne (jestli¾e to vá¹ hardware podporuje).
+index_script=Skript $1 zobrazený ní¾e pobì¾í v prùbìhu bootování. Mù¾ete pøidávat vlastní pøíkazy pro démony nebo restarování serverù v pøípadì, kdy byl systém rebootován.
+index_return=akce pro bootování a shození
+index_action=Akce
+index_desc=Popis
+index_boot=Spustit pøi bootování?
+index_levels=Spustit v úrovních bìhu
+index_status=Spustit hned?
+index_order=Poøadí
+index_add_mac=Pøidat nový skript pro bootup akci
+index_provides=Provede
+index_setting=Nastavení
+index_script_mac=Skript $1 zobrazený ní¾e pobì¾í v prùbìhu bootování. To tedy znamená, ¾e pøidáním vlastních pøíkazù musí být démoni nebo servery spu¹tìné bìhem bootování v spou¹tìcím adresáøi.
+index_editconfig=Editovat soubor $1 ruènì
+index_stop=Bylo zvoleno ukonèení
+index_start=Bylo zvoleno spu¹tìní
+index_rlchange=Zmìnit v úrovni bìhu:
+index_rlchangedesc=Klepnutím na toto tlaèítko pøepnete vá¹ systém z aktuální urovnì bìhu do jiné vámi zvolené. To znamená, ¾e v¹echny akce aktuální úrovnì budou zastaveny a v¹echny akce nové úrovnì bìhu budou spu¹tìny.
+
+edit_title=Editovat akci
+create_title=Vytvoøit akci
+edit_ecannot=Nemáte oprávnìní editovat bootup akce
+edit_details=Detaily akce
+edit_name=Název
+edit_desc=Popis
+edit_startmsg=Bootup zpráva
+edit_stopmsg=Shutdown zpráva
+edit_start=Bootup pøíkazy
+edit_stop=Shutdown pøíkazy
+edit_script=Skript akce
+edit_boot=Spustit v prùbìhu bootování?
+edit_badS=Jeliko¾ nebyla tota akce správnì vytvoøena, spustí se pouze v úrovni bìhu $1.
+edit_badK=Jeliko¾ nebyla tota akce správnì vytvoøena, ukonèí se pouze v úrovni bìhu $1.
+edit_fix=Klepnutím zde docílíte toho, ¾e tato akce bude k pou¾itelná pro ostatní úrovnì bìhu
+edit_levels=Ùrovnì bìhu pro spu¹tìní a ukonèení v
+edit_rl=Úroveò bìhu $1
+edit_startat=Spustit v
+edit_stopat=Ukonèit v
+edit_startnow=Spustit
+edit_stopnow=Ukonèit
+edit_restartnow=Restartovat
+edit_condrestartnow=Restartovat, je-li to potøeba
+edit_reloadnow=Znovu nahrát
+edit_statusnow=Zobrazit stav
+edit_return=akce
+edit_status=Spustit ihned?
+edit_unknown=Neznámý
+
+save_err=Chyba pøi ukládání akce
+save_ecannot=Nemáte oprávnìní editovat bootup akce
+save_ealready=Akce nazvaná '$1' ji¾ existuje
+save_ewrite=Chyba pøi zápisu do $1 : $2
+
+ss_ecannot=Nemáte oprávnìní spustit nebo ukonèit bootup akce
+ss_start=Spustit akci
+ss_stop=Ukonèit akci
+ss_restart=Restartovat akci
+ss_reload=Znovu nahrát akci
+ss_status=Stav akce
+ss_exec=Spu¹tí se $1 ..
+
+shutdown_ecannot=Nemáte oprávnìní shodit systém
+shutdown_title=Shutdown
+shutdown_rusure=Skuteènì chcete shodit systém pomocí pøíkazu $1 ?
+shutdown_ok=Shutdown System
+shutdown_exec=Probíhá shazování pomocí pøíkazu $1 ..
+
+reboot_ecannot=Nemáte oprávnìní rebootovat systém
+reboot_title=Reboot
+reboot_rusure=Skuteènì chcete rebootovat systém pomocí pøíkazu $1 ?
+reboot_ok=Rebootovat systém
+reboot_exec=Probíhá rebootování pomocí pøíkazu $1 ..
+
+acl_script=Mù¾e editovat bootup skript?
+acl_actions=Mù¾e editovat, vytváøet a mazat akce?
+acl_reboot=Mù¾e rebootovat systém?
+acl_shutdown=Mù¾e shodit systém?
+
+log_rename=Pøejmenována akce $1 na $2
+log_modify=Modifikována akce $1
+log_create=Vytvoøena action $1
+log_delete=Smazána action $1
+log_start=Spu¹tìna bootup akce $1
+log_stop=Ukonèena shutdown akce $1
+log_reboot=Rebootován system
+log_shutdown=Shozen system
+log_local=Modifikován bootup skript
+log_bootup=Zmìnìna bootovací akce pro $1
+
+edit_hostconfig_startup=Skript $1 se spustí a prùbìhu bootování systému, pokud je tato akce aktivní. Mù¾ete ji editovat ní¾e
+edit_hostconfig_plist=Soubor $1 nastavuje hlavní parametry, které bude respektovat boot skriptu. Mù¾ete jej editovat ní¾e
+edit_hostconfig_new=Vytvoøit novou akci
+edit_hostconfig_noquotes=Nepou¾ívejte uvozovky pro ¾ádná pole kromì pole $1.
+edit_hostconfig_startitems=Pole $1 by nemìlo zaèít èíslem nebo podtr¾ítkem, a dle konvencí, by mìla být v¹echna písmana velká. Pole $2 by mìlo být platným jménem souboru a nemìl by obsahovat teèku.
+edit_hostconfig_actionname=Název akce
+edit_hostconfig_scriptname=Název skriptu
+edit_hostconfig_array=Pole $1, $2, a $3 jsou pole typu array a mohou obsahovat více jak jednu hodnotu. Oddìlujte vícenásobné hodnoty dvojteèkou.
+edit_hostconfig_further=Po vytvoøení nové spou¹tìcí akce, byste mìli pøejít na stránku, která vám  umo¾ní upravit spuu¹tìcí skript a seznam parametrù, pokud je potøeba.
+edit_hostconfig_hostconfig=Soubor $1 kontroluje systémové ¹iroce pou¾ívané slu¾by a démony, které jsou spou¹tìny bìhem bootování. Mù¾ete ho editovat ní¾e
+edit_hostconfig_title=Editovat Hostconfig
+
+mass_enone=®ádné akce nebyly vybrány
+mass_start=Spou¹tìní akcí
+mass_stop=Ukonèování akcí
+
+change_err=Nemáte oprávnìní pøepínat úrovnì bìhu
+change_title=Pøepnutí úrovnì bìhu
+change_cmd=Pøepínání úrovnì bìhu $1 pomocí pøíkazu $2. Toto mù¾e být obèas vyu¾íváno a Webmin nemusí být pøístupný po takovém pøepnutí.
+
