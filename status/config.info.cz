@@ -1,0 +1,13 @@
+line1=Mo¾nosti konfigurace,11
+index_status=Stav zobrazený v seznamu,1,1-Aktuální stav,0-Z poslední naplánované kontroly
+pager_cmd=Pøíkaz pro poslání zprávy stránkovaèi,3,Nic
+refresh=Vteøiny mezi obnovou stránky,3,Neobnovovat
+sort_mode=Setøídìní zobrazených monitorù podle,1,0-Poøadí vytvoøení,1-Popisu,2-Hosta
+columns=Sloupce pro tabulku slu¾eb,1,2-2,1-1
+output=Zachytit výstup z programù&#44; kdy¾ se vypínají?,1,1-Ano,0-Ne
+subject_mode=Mód pro pøedmìt mailu,1,0-Nový styl,1-Starý styl
+pinger=Poslat ping pomocí pøíkazu,10,-Pou¾ít zabudovaný kód,linux-Pou¾ít pøíkaz pou¾ívaný pro Linux nebo FreeBSD,Jiný pøíkaz
+snmp_server=Poslat SNMP trapy serveru,3,Nic
+snmp_version=Verze SNMP protokolu,1,3-v3,2-v2,1-v1
+snmp_community=Øetìzec SNMP komunity,0
+snmp_trap=SNMP OID pro trapy,0
