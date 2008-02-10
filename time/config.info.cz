@@ -1,2 +1,10 @@
-lease=Akceptovatelná prodleva (v sekundách) mezi systémovým a harwarovým èasem,0
+line1=Mo¾nosti konfigurace,11
+lease=Akceptovatelná prodleva (ve vteøinách) mezi systémovým a harwarovým èasem,0
+timeserver=Výchozí èas serveru,3,Nic
+line2=Konfigurace systému,11
+hwtime=Systém podporuje hardwarový èas?,1,1-ano,0-ne
+seconds=Formát nastavení systémového èasu,1,1-MMDDHHMMYYYY.SS,0-MMDDHHMMYY,2-YYYYMMDDHHMM.SS
+zonelink=Soubor èasových zón,0
+zonetab=Soubor se seznamem pøístupných èasových zón,0
+zonedir=Adresáø se soubory èasových zón,0
 
