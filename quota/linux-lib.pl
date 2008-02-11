@@ -54,10 +54,10 @@ return @rv;
 #  3 = User and group quotas
 sub quota_can
 {
-return ($_[1]->[3] =~ /usrquota/ ||
-	$_[0]->[3] =~ /usrquota/ ? 1 : 0) +
-       ($_[1]->[3] =~ /grpquota/ ||
-        $_[0]->[3] =~ /grpquota/ ? 2 : 0);
+return ($_[1]->[3] =~ /usrquota|usrjquota/ ||
+	$_[0]->[3] =~ /usrquota|usrjquota/ ? 1 : 0) +
+       ($_[1]->[3] =~ /grpquota|grpjquota/ ||
+        $_[0]->[3] =~ /grpquota|grpjquota/ ? 2 : 0);
 }
 
 # quota_now(&mnttab, &fstab)
