@@ -1706,6 +1706,7 @@ if ($folder->{'type'} == 4) {
 	foreach my $f ([ $read, "\\Seen" ],
 		       [ $special, "\\Flagged" ],
 		       [ $replied, "\\Answered" ]) {
+		print DEBUG "setting '$f->[0]' '$f->[1]' for $mail->{'id'}\n";
 		next if (!defined($f->[0]));
 		local $pm = $f->[0] ? "+" : "-";
 		@rv = &imap_command($h, "UID STORE ".$mail->{'id'}.
@@ -1852,8 +1853,8 @@ if (!$h) {
 	# Need to open socket
 	$h = time().++$imap_login_count;
 	local $error;
-	&open_socket($_[0]->{'server'}, $_[0]->{'port'} ||
-		$imap_port, $h, \$error);
+	&open_socket($_[0]->{'server'}, $_[0]->{'port'} || $imap_port,
+		     $h, \$error);
 	return (0, $error) if ($error);
 	local $os = select($h); $| = 1; select($os);
 
@@ -2938,8 +2939,14 @@ if (!$mail->{'body'} && $mail->{'size'} > 1024*1024) {
 	}
 if (!$mail->{'body'}) {
 	# The body hasn't been read yet - read it now
+	local $read = &get_mail_read($folder, $mail);
 	($mail) = &mailbox_select_mails($folder, [ $mail->{'id'} ], 0);
 	return 0 if (!$mail);	# No longer exists!
+	if ($read == 0 && defined(&set_mail_read)) {
+		# Put back original read flag, as the select will clobber it
+		# on the IMAP server
+		&set_mail_read($folder, $mail, $read);
+		}
 	}
 if (!@{$mail->{'attach'}}) {
 	# Parse out attachments
