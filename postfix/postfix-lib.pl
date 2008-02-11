@@ -1401,7 +1401,7 @@ return &ui_table_row($text{'header_name'},
 
 sub parse_name_header_checks
 {
-$_[1]->{'name'} =~ /^\/\S+\/[a-z]*$/ || &error($text{'header_ename'});
+$_[1]->{'name'} =~ /^\/.*\S.*\/[a-z]*$/ || &error($text{'header_ename'});
 return $_[1]->{'name'};
 }
 
