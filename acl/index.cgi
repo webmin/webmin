@@ -125,28 +125,28 @@ if ($access{'groups'}) {
 		     "<a href=edit_group.cgi>$text{'index_gcreate'}</a>");
 		print &ui_links_row(\@rowlinks);
 
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'index_group'}</b></td>\n";
-		print "<td><b>$text{'index_members'}</b></td>\n";
-		print "<td><b>$text{'index_modules'}</b></td> </tr>\n";
+		print &ui_columns_start([ $text{'index_group'},
+					  $text{'index_members'},
+					  $text{'index_modules'} ], 100);
 		foreach $g (@glist) {
-			print "<tr $cb> <td valign=top>\n";
-			print &user_link($g,"edit_group.cgi","group"),"</td>\n";
-			print "<td valign=top>",join(" ", @{$g->{'members'}}),
-			      "&nbsp;</td>\n";
-
+			local @cols;
+			push(@cols, &user_link($g,"edit_group.cgi","group"));
+			push(@cols, join(" ", @{$g->{'members'}}));
 			if ($ingroup{'@'.$g->{'name'}}) {
 				# Is a member of some other group
-				&show_modules("group", $g->{'name'}, $g->{'ownmods'},0,
-					&text('index_modgroups',
-					  "<tt>$ingroup{$g->{'name'}}->{'name'}</tt>"));
+				push(@cols, &show_modules("group", $g->{'name'},
+				    $g->{'ownmods'},0,
+				    &text('index_modgroups',
+					  "<tt>$ingroup{$g->{'name'}}->{'name'}</tt>")));
 				}
 			else {
 				# Is a top-level group
-				&show_modules("group", $g->{'name'}, $g->{'modules'},1);
+				push(@cols, &show_modules("group", $g->{'name'},
+					      $g->{'modules'}, 1));
 				}
+			print &ui_columns_row(\@cols);
 			}
-		print "</table>\n";
+		print &ui_columns_end();
 		print &ui_links_row(\@rowlinks);
 		if (!$config{'select'}) {
 			print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
@@ -230,7 +230,7 @@ else {
 		push(@grid, "<a href='edit_acl.cgi?mod=&$type=".
 			    &urlize($who)."'>$text{'index_global'}</a>");
 		}
-	foreach $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
+	foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
 		if ($modname{$m}) {
 			if ($mcan{$m} && $access{'acl'}) {
 				push(@grid, "<a href='edit_acl.cgi?mod=".
@@ -242,7 +242,8 @@ else {
 				}
 			}
 		}
-	$rv .= &ui_grid_table(\@grid, 3, 100);
+	$rv .= &ui_grid_table(\@grid, 3, 100,
+		[ "width=33%", "width=33%", "width=33%" ]);
 	}
 return $rv;
 }
