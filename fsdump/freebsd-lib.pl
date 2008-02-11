@@ -251,6 +251,7 @@ else {
 
 &system_logged("sync");
 sleep(1);
+$ENV{'DUMP_PASSWORD'} = $_[0]->{'pass'};
 local $got = &run_ssh_command($cmd, $fh, $_[2], $_[0]->{'pass'});
 if ($_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar') {
 	# Run multi-file switch command one last time
@@ -449,6 +450,7 @@ return $cmd;
 sub restore_backup
 {
 &additional_log('exec', undef, $_[1]);
+$ENV{'DUMP_PASSWORD'} = $in{'pass'};
 
 # Need to supply prompts
 &foreign_require("proc", "proc-lib.pl");

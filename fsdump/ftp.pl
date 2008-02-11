@@ -49,7 +49,7 @@ while(1) {
 
 		# Work out what we are doing
 		$mode = 0;
-		if ($perms & 0100 ||
+		if (($perms & 0100) || ($perms & 01000) ||
 		    (($perms & 01) || ($perms & 02)) && $touched) {
 			# Writing new file
 			$mode = 1;
