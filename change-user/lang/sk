@@ -3,6 +3,7 @@ acl_pass=Mô¾e zmeni» heslo (ak je nastavené vo Webmine) ?
 acl_theme=Mô¾e zmeni» vzhµad?
 change_done=.. hotovo
 change_ecolon=Va¹e heslo nesmie obsahova» : znak
+change_epass=Nové heslo nie je platné : $1
 change_redirect=Návrat do hlavného menu ..
 change_restart=Re¹tartujem Webmin ..
 change_title=Zmeni» nastavenia
