@@ -2,6 +2,7 @@
 # show.cgi
 # Output some file for the browser
 
+$trust_unknown_referers = 1;
 require './file-lib.pl';
 &ReadParse();
 use POSIX;
