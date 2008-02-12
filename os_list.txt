@@ -261,6 +261,7 @@ NetBSD				1.6	netbsd		1.6	$uname =~ /NetBSD.*1\.6/i
 NetBSD				2.0	netbsd		2.0	$uname =~ /NetBSD.*2\.0/i
 NetBSD				3.0	netbsd		3.0	$uname =~ /NetBSD.*3\.0/i
 NetBSD				4.0	netbsd		4.0	$uname =~ /NetBSD.*4\.0/i
+NetBSD				$1	netbsd		$1	`uname` =~ /NetBSD/ && `uname -r` =~ /([\d.]+)/
 
 # BSDI (may not be detected properly)
 BSDI				$1	freebsd		$1	$uname =~ /BSDI.*\s([0-9\.]+)/i
