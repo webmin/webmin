@@ -44,7 +44,7 @@ $temp = &transname();
 $p = &unmake_chroot($p);
 if (!&can_access($p)) {
 	# ACL rules prevent access to file
-	&error_exit(&text('view_eaccess', $p));
+	&error_exit(&text('view_eaccess', &html_escape($p)));
 	}
 
 if ($in{'format'}) {
@@ -59,7 +59,7 @@ if ($in{'format'}) {
 	elsif ($in{'format'} == 3) {
 		$p =~ s/\.tar$//;
 		}
-	-d $p || &error_exit($text{'view_edir'}." ".$p);
+	-d $p || &error_exit($text{'view_edir'}." ".&html_escape($p));
 	if ($archive == 2 && $archmax > 0) {
 		# Check if directory is too large to archive
 		local $kb = &disk_usage_kb($p);
@@ -103,7 +103,7 @@ if ($in{'format'}) {
 	local $out = `cd $qpdir ; ($cmd) 2>&1 </dev/null`;
 	if ($?) {
 		unlink($temp);
-		&error_exit(&text('view_ecomp', $out));
+		&error_exit(&text('view_ecomp', &html_escape($out)));
 		}
 	local @st = stat($temp);
 	print "Content-length: $st[7]\n";
