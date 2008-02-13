@@ -544,6 +544,7 @@ session_pmode2=Prompt users with expired passwords to enter a new one
 session_md5off=Use standard Unix <tt>crypt</tt> encryption for Webmin passwords
 session_md5on=Use MD5 encryption for Webmin passwords (allows long passwords)
 session_emd5=MD5 encryption cannot be used, as Perl does not have built-in <tt>crypt</tt> MD5 support on your system
+session_blocklock=Also lock users with failed logins
 
 assignment_title=Reassign Modules
 assignment_header=Module category assignments

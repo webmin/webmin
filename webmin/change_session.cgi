@@ -35,6 +35,7 @@ if ($in{'blockuser_on'}) {
 else {
 	$miniserv{'blockuser_time'} = $miniserv{'blockuser_failures'} = undef;
 	}
+$miniserv{'blocklock'} = $in{'blocklock'};
 
 $miniserv{'syslog'} = $in{'syslog'};
 if ($in{'session'} && $ENV{'HTTP_COOKIE'} !~ /sessiontest=1/i) {

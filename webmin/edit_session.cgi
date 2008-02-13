@@ -35,6 +35,11 @@ print &text('session_blockuser',
     &ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
     &ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),"<br>\n";
 
+# Lock bad users
+print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n",
+      &ui_checkbox("blocklock", 1, $text{'session_blocklock'},
+		   $miniserv{'blocklock'}),"<br>\n";
+
 # Log to syslog
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {

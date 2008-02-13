@@ -822,6 +822,19 @@ while(1) {
 							}
 						}
 
+					# Lock out the user's password, if enabled
+					if ($config{'blocklock'} &&
+					    $userfail{$1} >=
+					      $config{'blockuser_failures'}) {
+						my $lk = &lock_user_password($1);
+						$blocked = 2;
+						if ($use_syslog) {
+							local $logtext = $lk == 1 ? "Security alert: User $1 locked after $config{'blockuser_failures'} failed logins" : $lk < 0 ? "Security alert: User could not be locked" : "Security alert: User is already locked";
+							syslog("crit", "%s",
+								$logtext);
+							}
+						}
+
 					# Send back a delay
 					$dl = $userdlay{$1} -
 				           int(($time_now - $userlast{$1})/50);
@@ -4488,5 +4501,35 @@ sub write_pid_file
 open(PIDFILE, ">$config{'pidfile'}");
 printf PIDFILE "%d\n", getpid();
 close(PIDFILE);
+}
+
+# lock_user_password(user)
+# Updates a user's password file entry to lock it, both in memory and on disk.
+# Returns 1 if done, -1 if no such user, 0 if already locked
+sub lock_user_password
+{
+local ($user) = @_;
+if ($users{$user}) {
+	if ($users{$user} !~ /^\!/) {
+		# Lock the password
+		$users{$user} = "!".$users{$user};
+		open(USERS, $config{'userfile'});
+		local @ufile = <USERS>;
+		close(USERS);
+		foreach my $u (@ufile) {
+			local @uinfo = split(/:/, $u);
+			if ($uinfo[0] eq $user) {
+				$uinfo[1] = $users{$user};
+				}
+			$u = join(":", @uinfo);
+			}
+		open(USERS, ">$config{'userfile'}");
+		print USERS @ufile;
+		close(USERS);
+		return 1;
+		}
+	return 0;
+	}
+return -1;
 }
 
