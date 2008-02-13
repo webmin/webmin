@@ -402,3 +402,5 @@ Apache log files outside a domain's home directory are renamed and deleted when 
 Hitting Stop in the browser during the creation of a virtual server or some other action will no longer cancel it, which prevents domains from being half created.
 When the Apache virtual host *.domain exists and a new virtual host for something.domain is created, it is placed before *.domain in the Apache config file to give it precedence.
 SSL can now be enabled for domains without a private IP address, for a single virtual server on each shared address. This means that on a typical single-IP system, you can have one SSL website.
+The logrotate configuration is now validated by Virtualmin, to detect duplicate entries that can cause rotation to stop working.
+Vpopmail systems with so many domains that letter-suffix directories under /home/vpopmail/domains are needed are now handed by Virtualmin.
