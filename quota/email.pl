@@ -18,6 +18,7 @@ foreach $k (keys %config) {
 	if ($k =~ /^email_(\S+)$/ && $fslist{$1}) {
 		# Found a filesystem to check users on
 		$f = $1;
+		%user = ( );
 		$n = &filesystem_users($f);
 		local %emailtimes;
 		local $qf = $f;
