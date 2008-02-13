@@ -79,6 +79,7 @@ else {
 			}
 		}
 	unlink($nfile);
+	delete($dump->{'pass'});
 	&webmin_log("backup", undef, undef, $dump);
 	}
 

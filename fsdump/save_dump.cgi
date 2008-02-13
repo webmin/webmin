@@ -32,6 +32,7 @@ if ($in{'delete'}) {
 		&foreign_call("cron", "delete_cron_job", $job);
 		&unlock_file($job->{'file'});
 		}
+	delete($dump->{'pass'});
 	&webmin_log("delete", undef, $dump->{'id'}, $dump);
 	&redirect("");
 	}
@@ -114,7 +115,9 @@ else {
 		}
 	&unlock_file(&cron::cron_file($job)) if ($job);
 
-	&webmin_log($in{'id'} ? "modify" : "create", undef, $dump->{'id'}, $dump);
+	delete($dump->{'pass'});
+	&webmin_log($in{'id'} ? "modify" : "create", undef,
+		    $dump->{'id'}, $dump);
 	if ($in{'savenow'}) {
 		&redirect("backup.cgi?id=$dump->{'id'}");
 		}
