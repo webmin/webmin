@@ -42,3 +42,5 @@ Fixed a bug that prevented cloning from copying detailed access control settings
 Added back the ability to edit the global ACL for groups.
 ---- Changes since 1.390 ----
 Updated the user interface to use the Webmin UI library.
+---- Changes since 1.400 ----
+Fixed the display of modules granted to groups.
