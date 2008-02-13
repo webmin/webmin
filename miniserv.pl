@@ -2935,7 +2935,7 @@ elsif ($canmode == 1) {
 	if ($users{$webminuser} eq &unix_crypt($pass, $users{$webminuser})) {
 		# Password is valid .. but check for expiry
 		local $lc = $lastchanges{$user};
-		if ($config{'pass_maxdays'} && $lc) {
+		if ($config{'pass_maxdays'} && $lc && !$nochange{$user}) {
 			local $daysold = (time() - $lc)/(24*60*60);
 			print DEBUG "maxdays=$config{'pass_maxdays'} daysold=$daysold\n";
 			if ($config{'pass_lockdays'} &&
@@ -3896,6 +3896,7 @@ undef(%deny);
 undef(%allowdays);
 undef(%allowhours);
 undef(%lastchanges);
+undef(%nochange);
 if ($config{'userfile'}) {
 	open(USERS, $config{'userfile'});
 	while(<USERS>) {
@@ -3920,6 +3921,7 @@ if ($config{'userfile'}) {
 			$allowhours{$user[0]} = [ $1*60+$2, $3*60+$4 ];
 			}
 		$lastchanges{$user[0]} = $user[6];
+		$nochange{$user[0]} = $user[9];
 		}
 	close(USERS);
 	}

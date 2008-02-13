@@ -192,6 +192,8 @@ $user{'logouttime'} = !$access{'logouttime'} ? $old->{'logouttime'} :
 			$in{'logouttime_def'} ? undef : $in{'logouttime'};
 $user{'minsize'} = !$access{'minsize'} ? $old->{'minsize'} :
 			$in{'minsize_def'} ? undef : $in{'minsize'};
+$user{'nochange'} = !$access{'nochange'} || !defined($in{'nochange'}) ?
+			$old->{'nochange'} : $in{'nochange'};
 $user{'lastchange'} = $old->{'lastchange'};
 $user{'olds'} = $old->{'olds'};
 $user{'real'} = $in{'real'} =~ /\S/ ? $in{'real'} : undef;

@@ -216,6 +216,13 @@ if ($access{'minsize'}) {
 		      		$text{'default'})." ".$text{'edit_chars'});
 	}
 
+if ($access{'nochange'} && $miniserv{'pass_maxdays'}) {
+	# Opt out of forced password change, for this user
+	print &ui_table_row($text{'edit_nochange'},
+		&ui_radio("nochange", $user{'nochange'}, [ [ 0, $text{'yes'} ],
+							   [ 1, $text{'no'} ] ]));
+	}
+
 if ($access{'ips'}) {
 	# Allowed IP addresses
 	print &ui_table_row(&hlink("<b>$text{'edit_ips'}</b>", "ips"),

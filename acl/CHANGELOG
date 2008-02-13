@@ -44,3 +44,4 @@ Added back the ability to edit the global ACL for groups.
 Updated the user interface to use the Webmin UI library.
 ---- Changes since 1.400 ----
 Fixed the display of modules granted to groups.
+Added a per-user option to opt out of forced password changes after a certain number of days.

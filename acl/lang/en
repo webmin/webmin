@@ -52,6 +52,7 @@ edit_logout=Inactivity logout time
 edit_mins=minutes
 edit_chars=letters
 edit_minsize=Minimum password length
+edit_nochange=Enforce password change days?
 edit_cert=SSL certificate name
 edit_none=None
 edit_ips=IP access control
