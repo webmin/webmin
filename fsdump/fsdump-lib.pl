@@ -147,11 +147,12 @@ foreach $p (@{$_[0]}) {
 		local $backup = &get_dump($1);
 		local $sfile = "$module_config_directory/$1.$p->{'pid'}.status";
 		local %status;
-		&read_file($sfile, \%status);
-		$backup->{'status'} = \%status;
-		$backup->{'pid'} = $p->{'pid'};
-		push(@rv, $backup);
-		$got{$sfile} = 1 if (!$status{'end'});
+		if (&read_file($sfile, \%status)) {
+			$backup->{'status'} = \%status;
+			$backup->{'pid'} = $p->{'pid'};
+			push(@rv, $backup);
+			$got{$sfile} = 1 if (!$status{'end'});
+			}
 		}
 	}
 # Remove any left over .status files
