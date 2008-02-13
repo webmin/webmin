@@ -13,7 +13,9 @@
 		"tar", "binary.gif"
 		);
 
+$trust_unknown_referers = 1;
 require (-r './web-lib.pl' ? './web-lib.pl' : '../web-lib.pl');
+require (-r './ui-lib.pl' ? './ui-lib.pl' : '../ui-lib.pl');
 &init_config();
 %access = &get_module_acl();
 
@@ -90,6 +92,9 @@ if (!&allowed_dir($dir)) {
 # Work out the top allowed dir
 $topdir = $rootdir eq "/" || $rootdir eq "c:" ? $rootdir :
 	  $access{'otherdirs'} ? "/" : $rootdir;
+$uchroot = &urlize($in{'chroot'});
+$utype = &urlize($in{'type'});
+$ufile = &urlize($in{'file'});
 
 if ($in{'frame'} == 0) {
 	# base frame
@@ -102,13 +107,11 @@ if ($in{'frame'} == 0) {
 		}
 	print "<frameset rows='*,50'>\n";
 	print "<frame marginwidth=5 marginheight=5 name=topframe ",
-	     "src=\"chooser.cgi?frame=1&file=".&urlize($in{'file'}).
-	     "&chroot=".&urlize($in{'chroot'}).
-	     "&type=".&urlize($in{'type'})."&add=$add\">\n";
+	     "src=\"chooser.cgi?frame=1&file=".$ufile.
+	     "&chroot=".$uchroot."&type=".$utype."&add=$add\">\n";
 	print "<frame marginwidth=0 marginheight=0 name=bottomframe ",
-	      "src=\"chooser.cgi?frame=2&file=".&urlize($in{'file'}).
-	      "&chroot=".&urlize($in{'chroot'}).
-	      "&type=".&urlize($in{'type'})."&add=$add\" scrolling=no>\n";
+	      "src=\"chooser.cgi?frame=2&file=".$ufile.
+	      "&chroot=".$uchroot."&type=".$utype."&add=$add\" scrolling=no>\n";
 	print "</frameset>\n";
 	}
 elsif ($in{'frame'} == 1) {
@@ -123,7 +126,7 @@ if (curr == f) {
 	// Double-click! Enter directory or select file
 	if (d) {
 		// Enter this directory
-		location = "chooser.cgi?frame=1&add=$add&chroot=$in{'chroot'}&type=$in{'type'}&file="+f+"/";
+		location = "chooser.cgi?frame=1&add=$add&chroot=$uchroot&type=$utype&file="+f+"/";
 		}
 	else {
 		// Select this file and close the window
@@ -147,7 +150,7 @@ else {
 function parentdir(p)
 {
 top.frames[1].document.forms[0].elements[1].value = p;
-location = "chooser.cgi?frame=1&chroot=$in{'chroot'}&type=$in{'type'}&file="+p;
+location = "chooser.cgi?frame=1&chroot=$uchroot&type=$utype&file="+p;
 }
 </script>
 EOF
@@ -155,7 +158,7 @@ EOF
 	print "<b>",&text('chooser_dir', &html_escape($dir)),"</b>\n";
 	opendir(DIR, $in{'chroot'}.$dir) ||
 		&popup_error(&text('chooser_eopen', "$!"));
-	print "<table width=100%>\n";
+	print &ui_columns_start(undef, 100);
 	foreach $f (sort { $a cmp $b } readdir(DIR)) {
 		$path = "$in{'chroot'}$dir$f";
 		if ($f eq ".") { next; }
@@ -164,7 +167,6 @@ EOF
 		if (!(-d $path) && $in{'type'} == 1) { next; }
 
 		@st = stat($path);
-		print "<tr>\n";
 		$isdir = 0; undef($icon);
 		if (-d $path) { $icon = "dir.gif"; $isdir = 1; }
 		elsif ($path =~ /\.([^\.\/]+)$/) { $icon = $icon_map{$1}; }
@@ -177,20 +179,18 @@ EOF
 		else {
 			$link = "<a href=\"\" onClick='fileclick(\"".&html_escape(quotemeta("$dir$f"))."\", $isdir); return false'>";
 			}
-		print "<td>$link<img border=0 src=/images/$icon></a></td>\n";
-		print "<td nowrap>$link".&html_escape($f)."</a></td>\n";
-		printf "<td nowrap>%s</td>\n",
-			$st[7] > 1000000 ? int($st[7]/1000000)." MB" :
-			$st[7] > 1000 ? int($st[7]/1000)." kB" :
-			$st[7];
+		local @cols;
+		push(@cols, "$link<img border=0 src=$gconfig{'webprefix'}/images/$icon></a>");
+		push(@cols, "$link".&html_escape($f)."</a>");
+		push(@cols, &nice_size($st[7]));
 		@tm = localtime($st[9]);
-		printf "<td nowrap><tt>%.2d/%s/%.4d</tt></td>\n",
-			$tm[3], $text{'smonth_'.($tm[4]+1)}, $tm[5]+1900;
-		printf "<td nowrap><tt>%.2d:%.2d</tt></td>\n", $tm[2], $tm[1];
-		print "</tr>\n";
+		push(@cols, sprintf "<tt>%.2d/%s/%.4d</tt>",
+			$tm[3], $text{'smonth_'.($tm[4]+1)}, $tm[5]+1900);
+		push(@cols, sprintf "<tt>%.2d:%.2d</tt>", $tm[2], $tm[1]);
+		print &ui_columns_row(\@cols);
 		}
 	closedir(DIR);
-	print "</table>\n";
+	print &ui_columns_end();
 	&popup_footer();
 	}
 elsif ($in{'frame'} == 2) {
@@ -213,12 +213,15 @@ top.close();
 }
 </script>
 EOF
-	print "<table>\n";
-	print "<form onSubmit='filechosen(); return false'>\n";
-	print "<tr><td><input type=submit value=\"$text{'chooser_ok'}\"></td>\n";
-	print "<td><input name=path size=45 value=\"$dir$file\"></td></tr>\n";
-	print "</form>\n";
-	print "</table>\n";
+	print &ui_form_start(undef, undef, undef,
+		"onSubmit='filechosen(); return false'");
+	print &ui_table_start(undef, "width=100%", 2);
+	print &ui_table_row(undef,
+		&ui_submit($text{'chooser_ok'})." ".
+		&ui_textbox("path", $dir.$file, 45, 0, undef,
+			    "style='width:90%'"), 2);
+	print &ui_table_end();
+	print &ui_form_end();
 	&popup_footer();
 	}
 
