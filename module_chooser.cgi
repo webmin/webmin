@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # This CGI generates the HTML for choosing a module or list of modules
 
+$trust_unknown_referers = 1;
 require './web-lib.pl';
 &init_config();
 &ReadParse(undef, undef, 2);
@@ -17,10 +18,11 @@ if ($in{'multi'}) {
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
-			print "sel[$i] = \"$ul[$i]\";\n";
 			%minfo = &get_module_info($ul[$i]);
-			if (%minfo) { print "selr[$i] = \"$minfo{'desc'}\";\n"; }
-			else { print "selr[$i] = \"???\";\n"; }
+			if (%minfo) {
+				print "sel[$i] = \"$ul[$i]\";\n";
+				print "selr[$i] = \"$minfo{'desc'}\";\n";
+				}
 			}
 		print "</script>\n";
 		print "<title>$text{'modules_title1'}</title>\n";
