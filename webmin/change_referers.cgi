@@ -13,7 +13,7 @@ foreach my $r (@refs) {
 	$r =~ /^[a-z0-9\.\-\_]+$/ || &error(&text('referers_ehost', $r));
 	}
 $gconfig{'referers'} = join(" ", @refs);
-$gconfig{'referers_none'} = !$in{'referers_none'};
+$gconfig{'referers_none'} = int(!$in{'referers_none'});
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 &webmin_log('referers', undef, undef, \%in);
