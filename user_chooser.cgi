@@ -2,6 +2,7 @@
 # user_chooser.cgi
 # This CGI generated the HTML for choosing a user or list of users.
 
+$trust_unknown_referers = 1;
 require './web-lib.pl';
 &init_config();
 &ReadParse(undef, undef, 2);
@@ -18,7 +19,8 @@ if ($in{'multi'}) {
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
-			print "sel[$i] = \"$ul[$i]\";\n";
+			print "sel[$i] = \"".
+			      &quote_escape($ul[$i], '"')."\";\n";
 			@uinfo = getpwnam($ul[$i]);
 			if (@uinfo) { print "selr[$i] = \"$uinfo[6]\";\n"; }
 			else { print "selr[$i] = \"???\";\n"; }

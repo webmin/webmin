@@ -2,6 +2,7 @@
 # group_chooser.cgi
 # This CGI generated the HTML for choosing a group or list of groups.
 
+$trust_unknown_referers = 1;
 require './web-lib.pl';
 &init_config();
 &ReadParse(undef, undef, 2);
@@ -25,7 +26,8 @@ if ($in{'multi'}) {
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
-			print "sel[$i] = \"$ul[$i]\";\n";
+			print "sel[$i] = \"".
+			      &quote_escape($ul[$i], '"')."\";\n";
 			@ginfo = getgrnam($ul[$i]);
 			if (@ginfo) {
 				@mems = &unique( split(/ /, $ginfo[3]),
