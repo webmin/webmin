@@ -2,6 +2,7 @@
 # date_chooser.cgi
 # Display a table of days in the current month
 
+$trust_unknown_referers = 1;
 require './web-lib.pl';
 require 'timelocal.pl';
 &init_config();
@@ -24,21 +25,24 @@ if ($in{'day'} > $daysin[$in{'month'}]) {
 $tm = timelocal(0, 0, 12, $in{'day'}, $in{'month'}, $in{'year'});
 
 &popup_header($text{'chooser_date'});
+$uday = &urlize($in{'day'});
+$umonth = &urlize($in{'month'});
+$uyear = &urlize($in{'year'});
 print <<EOF;
 <script>
 function newmonth(m)
 {
-location = "date_chooser.cgi?day=$in{'day'}&month="+m.selectedIndex+"&year=$in{'year'}";
+location = "date_chooser.cgi?day=$uday&month="+m.selectedIndex+"&year=$uyear";
 }
 function newyear(y)
 {
-location = "date_chooser.cgi?day=$in{'day'}&month=$in{'month'}&year="+(y.selectedIndex+$in{'year'}-10);
+location = "date_chooser.cgi?day=$uday&month=$umonth&year="+(y.selectedIndex+$in{'year'}-10);
 }
 function newday(d)
 {
 opener.dfield.value = d;
-opener.mfield.selectedIndex = $in{'month'};
-opener.yfield.value = $in{'year'};
+opener.mfield.selectedIndex = $umonth;
+opener.yfield.value = $uyear;
 close();
 }
 </script>
