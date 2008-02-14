@@ -2,6 +2,7 @@
 # my_user_chooser.cgi
 # A modified version of chooser.cgi that uses the my_ functions
 
+$trust_unknown_referers = 1;
 require './user-lib.pl';
 &init_config();
 &ReadParse(undef, undef, 1);
@@ -18,10 +19,16 @@ if ($in{'multi'}) {
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
-			print "sel[$i] = \"$ul[$i]\";\n";
+			print "sel[$i] = \"".
+			      &quote_escape($ul[$i], '"')."\";\n";
 			@uinfo = &my_getpwnam($ul[$i]);
-			if (@uinfo) { print "selr[$i] = \"$uinfo[6]\";\n"; }
-			else { print "selr[$i] = \"???\";\n"; }
+			if (@uinfo) {
+				print "selr[$i] = \"".
+				      &quote_escape($uinfo[6], '"')."\";\n";
+				}
+			else {
+				print "selr[$i] = \"???\";\n";
+				}
 			}
 		print "</script>\n";
 		print "<title>$text{'users_title1'}</title>\n";

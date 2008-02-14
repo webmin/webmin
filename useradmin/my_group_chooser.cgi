@@ -2,6 +2,7 @@
 # my_group_chooser.cgi
 # A modified version of group_chooser.cgi that uses the my_ functions
 
+$trust_unknown_referers = 1;
 require './user-lib.pl';
 &init_config();
 &ReadParse(undef, undef, 1);
@@ -25,13 +26,15 @@ if ($in{'multi'}) {
 		print "sel = new Array($len);\n";
 		print "selr = new Array($len);\n";
 		for($i=0; $i<$len; $i++) {
-			print "sel[$i] = \"$ul[$i]\";\n";
+			print "sel[$i] = \"".
+			      &quote_escape($ul[$i], '"')."\";\n";
 			@ginfo = &my_getgrnam($ul[$i]);
 			if (@ginfo) {
 				@mems = &unique( split(/ /, $ginfo[3]),
 						 @{$members{$ginfo[2]}} );
 				if (@mems > 3) { @mems = (@mems[0..1], "..."); }
-				print "selr[$i] = \"",join(' ', @mems),"\";\n";
+				print "selr[$i] = \"",
+				  &quote_escape(join(' ', @mems), '"'),"\";\n";
 				}
 			else { print "selr[$i] = \"???\";\n"; }
 			}
