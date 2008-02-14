@@ -176,7 +176,7 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 		"</table>", 2);
 
 	print &ui_table_end();
-	print &ui_form_end([ [ undef, $text{'index_sync'} ] ]);
+	print &ui_form_end([ [ "action", $text{'index_sync'} ] ]);
 	print &ui_tabs_end_tab();
 }
 print &ui_tabs_end(1);
