@@ -22,8 +22,13 @@ if ($in{'multi'}) {
 			print "sel[$i] = \"".
 			      &quote_escape($ul[$i], '"')."\";\n";
 			@uinfo = getpwnam($ul[$i]);
-			if (@uinfo) { print "selr[$i] = \"$uinfo[6]\";\n"; }
-			else { print "selr[$i] = \"???\";\n"; }
+			if (@uinfo) {
+				print "selr[$i] = \"".
+				      &quote_escape($uinfo[6])."\";\n"; }
+				}
+			else {
+				print "selr[$i] = \"???\";\n";
+				}
 			}
 		print "</script>\n";
 		print "<title>$text{'users_title1'}</title>\n";

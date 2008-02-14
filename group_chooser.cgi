@@ -33,7 +33,8 @@ if ($in{'multi'}) {
 				@mems = &unique( split(/ /, $ginfo[3]),
 						 @{$members{$ginfo[2]}} );
 				if (@mems > 3) { @mems = (@mems[0..1], "..."); }
-				print "selr[$i] = \"",join(' ', @mems),"\";\n";
+				print "selr[$i] = \"",
+				  &quote_escape(join(' ', @mems), "'"),"\";\n";
 				}
 			else { print "selr[$i] = \"???\";\n"; }
 			}
