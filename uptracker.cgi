@@ -1,14 +1,14 @@
 #!/usr/local/bin/perl
 # Output Javascript in a loop to track an upload
-# XXX add to more modules
 
+$trust_unknown_referers = 1;
 require './web-lib.pl';
 &init_config();
 do './ui-lib.pl';
 &ReadParse();
 $id = $in{'id'};
 $id || &error($text{'uptracker_eid'});
-$id !~ /\.\./ && $id !~ /\0/ || &error($text{'uptracker_eid2'});
+$id =~ /^[a-z0-9_]+$/i || &error($text{'uptracker_eid2'});
 
 &popup_header($text{'uptracker_title'}, undef,
 	      "onunload='if (!window.doneupload) { opener.stop() }'");
