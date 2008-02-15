@@ -2,6 +2,7 @@
 # upform.cgi
 # Display the upload form
 
+$trust_unknown_referers = 1;
 require './file-lib.pl';
 $disallowed_buttons{'upload'} && &error($text{'ebutton'});
 &ReadParse(undef, undef, 1);

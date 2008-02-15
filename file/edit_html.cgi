@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # Show an HTML editor window
 
+$trust_unknown_referers = 1;
 require './file-lib.pl';
 do '../ui-lib.pl';
 $disallowed_buttons{'edit'} && &error($text{'ebutton'});
