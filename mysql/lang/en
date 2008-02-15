@@ -48,6 +48,7 @@ stop_err=Failed to stop database
 start_err=Failed to start database
 
 dbase_title=Edit Database
+dbase_header=Database tables, indexes and views
 dbase_tables=Database Tables
 dbase_add=Create a new table
 dbase_drop=Drop Database

@@ -112,7 +112,8 @@ elsif (@titles || @indexes) {
 			  " <a href='$links[$i]'>".
 			  &html_escape($all[$i])." ".$descs[$i]."</a>");
 			}
-		print &ui_grid_table(\@grid, 4, 100, undef, undef, "");
+		print &ui_grid_table(\@grid, 4, 100, undef, undef,
+				     $text{'dbase_header'});
 		}
 	else {
 		# Show table icons
