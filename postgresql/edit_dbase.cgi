@@ -79,6 +79,11 @@ elsif (@titles || @indexes || @views || @seqs) {
 		   ( map { "edit_seq.cgi?db=$in{'db'}&seq=".&urlize($_) }
                          @seqs ),
 		 );
+        @descs = ( ( map { "" } @titles ),
+                   ( map { " ($text{'dbase_index'})" } @indexes),
+                   ( map { " ($text{'dbase_view'})" } @views),
+                   ( map { " ($text{'dbase_seq'})" } @seqs),
+                 );
 	#&show_buttons();
 	@rowlinks = ( );
 	if ($access{'tables'}) {
@@ -94,7 +99,7 @@ elsif (@titles || @indexes || @views || @seqs) {
 		}
 	print &ui_links_row(\@rowlinks);
 	@dtitles = map { &html_escape($_) } ( @titles, @indexes, @views,@seqs );
-	if ($displayconfig{'style'}) {
+	if ($displayconfig{'style'} == 1) {
 		# Show as table
 		foreach $t (@titles) {
 			local $c = &execute_sql($in{'db'},
@@ -122,6 +127,18 @@ elsif (@titles || @indexes || @views || @seqs) {
 			     \@checks, \@links, \@dtitles,
 			     \@rows, \@fields) if (@titles);
 		}
+        elsif ($displayconfig{'style'} == 2) {
+                # Just show table names
+                @grid = ( );
+                @all = ( @titles, @indexes, @views, @seqs );
+                for(my $i=0; $i<@links; $i++) {
+                        push(@grid, &ui_checkbox("d", $checks[$i]).
+                          " <a href='$links[$i]'>".
+                          &html_escape($all[$i])." ".$descs[$i]."</a>");
+                        }
+                print &ui_grid_table(\@grid, 4, 100, undef, undef,
+				     $text{'dbase_header'});
+                }
 	else {
 		# Show as icons
 		@checks = map { &ui_checkbox("d", $_) } @checks;

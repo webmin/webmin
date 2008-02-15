@@ -24,7 +24,7 @@ print &ui_form_start("save_index.cgi", "post");
 print &ui_hidden("db", $in{'db'}),"\n";
 print &ui_hidden("table", $table),"\n";
 print &ui_hidden("old", $in{'index'}),"\n";
-print &ui_table_start($text{'index_header1'}, undef, 2);
+print &ui_table_start($text{'index_header1'}, undef, 2, [ "width=30%" ]);
 
 # Index name
 print &ui_table_row($text{'index_name'},

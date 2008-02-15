@@ -54,6 +54,7 @@ login_epass=Incorrect administration username or password
 
 dbase_title=Edit Database
 dbase_noconn=This database is not currently accepting connections, so no actions can be performed in it.
+dbase_header=Database tables, indexes, views and sequences
 dbase_tables=Database Tables
 dbase_add=Create Table
 dbase_vadd=Create View

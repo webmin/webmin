@@ -202,7 +202,8 @@ else {
 			}
 		print &ui_links_row(\@rowlinks);
 		@checks = @titles;
-		if ($config{'style'}) {
+		if ($config{'style'} == 1) {
+			# Show as DB names and table counts
 			@tables = map { if (&accepting_connections($_)) {
 						my @t = &list_tables($_);
 						scalar(@t);
@@ -216,6 +217,16 @@ else {
 				       $text{'index_tables'} ],
 				     \@checks, \@links, \@titles, \@tables)
 				if (@titles);
+			}
+		elsif ($config{'style'} == 2) {
+                        # Show just DB names
+                        @grid = ( );
+                        for(my $i=0; $i<@links; $i++) {
+                                push(@grid, &ui_checkbox("d", $titles[$i]).
+                                  " <a href='$links[$i]'>".
+                                  &html_escape($titles[$i])."</a>");
+                                }
+                        print &ui_grid_table(\@grid, 4, 100, undef, undef, "");
 			}
 		else {
 			# Show databases as icons

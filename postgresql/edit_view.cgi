@@ -18,7 +18,7 @@ $desc = "<tt>$in{'db'}</tt>";
 print &ui_form_start("save_view.cgi", "post");
 print &ui_hidden("db", $in{'db'}),"\n";
 print &ui_hidden("old", $in{'view'}),"\n";
-print &ui_table_start($text{'view_header1'}, undef, 2);
+print &ui_table_start($text{'view_header1'}, undef, 2, [ "width=30%" ]);
 
 # View name
 print &ui_table_row($text{'view_name'},
