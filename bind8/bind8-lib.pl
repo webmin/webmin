@@ -1326,10 +1326,12 @@ if (!defined($get_chroot_cache)) {
 		local $out = `$config{'auto_chroot'} 2>/dev/null`;
 		if (!$?) {
 			$out =~ s/\r|\n//g;
-			$get_chroot_cache = $out;
+			$get_chroot_cache = $out || "";
 			}
 		}
-	$get_chroot_cache ||= $config{'chroot'};
+	if (!defined($get_chroot_cache)) {
+		$get_chroot_cache = $config{'chroot'};
+		}
 	}
 return $get_chroot_cache;
 }
