@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # Show a list of free IPs in all subnets
 
+$trust_unknown_referers = 1;
 require './dhcp-dns-lib.pl';
 &popup_header($text{'chooser_title'});
 &foreign_require("net", "net-lib.pl");
