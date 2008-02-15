@@ -64,6 +64,10 @@ elsif (@titles || @indexes) {
 		   ( map { "edit_view.cgi?db=$in{'db'}&view=".&urlize($_) }
                          @views ),
 		 );
+	@descs = ( ( map { "" } @titles ),
+		   ( map { " ($text{'dbase_index'})" } @indexes),
+		   ( map { " ($text{'dbase_view'})" } @views),
+		 );
 	#&show_buttons();
 	print &ui_form_start("drop_tables.cgi");
 	print &ui_hidden("db", $in{'db'});
@@ -74,7 +78,8 @@ elsif (@titles || @indexes) {
 		    ( map { "!".$_ } @indexes ),
 		    ( map { "*".$_ } @views ),
 		  );
-	if ($displayconfig{'style'}) {
+	if ($displayconfig{'style'} == 1) {
+		# Show table names, fields and row counts
 		foreach $t (@titles) {
 			local $c = &execute_sql($in{'db'},
 					"select count(*) from ".quotestr($t));
@@ -98,7 +103,19 @@ elsif (@titles || @indexes) {
 			     \@checks, \@links, \@dtitles,
 			     \@rows, \@fields) if (@titles);
 		}
+	elsif ($displayconfig{'style'} == 2) {
+		# Just show table names
+		@grid = ( );
+		@all = ( @titles, @indexes, @views );
+		for(my $i=0; $i<@links; $i++) {
+			push(@grid, &ui_checkbox("d", $checks[$i]).
+			  " <a href='$links[$i]'>".
+			  &html_escape($all[$i])." ".$descs[$i]."</a>");
+			}
+		print &ui_grid_table(\@grid, 4, 100, undef, undef, "");
+		}
 	else {
+		# Show table icons
 		@checks = map { &ui_checkbox("d", $_) } @checks;
 		@titles = map { &html_escape($_) } ( @titles, @indexes, @views);
 		&icons_table(\@links, \@titles, \@icons, 5, undef, undef, undef,

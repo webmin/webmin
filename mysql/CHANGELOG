@@ -66,3 +66,5 @@ When there are too many databases, huge lists of all databases and tables are no
 System variables can now be searched using a new field, making it easier to find the one you want from the large list on some systems.
 Re-designed the Execute SQL page to use tabs.
 Converted all user interface code to use the new Webmin UI library, for a more consistent look.
+---- Changes since 1.400 ----
+Added a Module Config option to show databases and tables using just their names, which is much faster under MySQL 5 as it avoids the need to count their tables, fields and rows.
