@@ -24,7 +24,7 @@ if ($in{'multi'}) {
 			@uinfo = getpwnam($ul[$i]);
 			if (@uinfo) {
 				print "selr[$i] = \"".
-				      &quote_escape($uinfo[6])."\";\n"; }
+				      &quote_escape($uinfo[6])."\";\n";
 				}
 			else {
 				print "selr[$i] = \"???\";\n";
