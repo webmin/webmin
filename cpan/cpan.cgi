@@ -2,6 +2,7 @@
 # cpan.cgi
 # Display known perl modules and categories
 
+$trust_unknown_referers = 1;
 require './cpan-lib.pl';
 &ReadParse();
 
@@ -38,7 +39,7 @@ while(<LIST>) {
 close(LIST);
 
 # Show page header and selection javascript
-@sel = split(/\0/, $in{'sel'});
+@sel = grep { /^[a-z0-9\-\_\:\.]+$/i } split(/\0/, $in{'sel'});
 &popup_header($text{'cpan_title'});
 
 print <<EOF;
@@ -55,10 +56,11 @@ EOF
 
 if ($in{'search'}) {
 	# Search for modules matching some name
-	print "<b>",&text('cpan_match', "<tt>$in{'search'}</tt>"),"</b><p>\n";
+	print "<b>",&text('cpan_match',
+		"<tt>".&html_escape($in{'search'})."</tt>"),"</b><p>\n";
 	print &ui_columns_start(undef, 100, 1);
 	foreach $m (@mods) {
-		if (!$m->{'cat'} && $m->{'full'} =~ /$in{'search'}/i) {
+		if (!$m->{'cat'} && $m->{'full'} =~ /\Q$in{'search'}\E/i) {
 			$name = join("::",@{$m->{'name'}});
 			print &ui_columns_row([
 				"<a href='' onClick='sel(\"$name\")'>".
