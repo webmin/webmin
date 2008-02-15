@@ -1,7 +1,0 @@
-name=Dump
-desc=Filesystem Backup
-category=system
-depends=mount cron proc
-os_support=redhat-linux mandrake-linux slackware-linux debian-linux suse-linux open-linux turbo-linux corel-linux cobalt-linux msc-linux generic-linux solaris freebsd
-desc_zh_TW.Big5=檔案系統備份
-desc_ca=C犤ia de Sistemes de Fitxers

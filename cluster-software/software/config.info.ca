@@ -1,2 +1,0 @@
-package_system=Sistema de gestió de paquets,4,rpm-RPM,pkgadd-Solaris,hpux-HPUX,freebsd-FreeBSD,slackware-Slackware,debian-Debian,aix-AIX,emerge-Gentoo,cygwin-Cygwin
-update_system=Sistema d'actualització de paquets,1,-Detecta'l automàticament,apt-APT,yum-YUM,rhn-Xarxa de Redhat,csw-Blastwave,urpmi-URPMI,emerge-Emerge
