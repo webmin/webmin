@@ -2,9 +2,10 @@
 # nfs_export.cgi
 # Display a list of NFS exports on some host for the user to choose from
 
+$trust_unknown_referers = 1;
 require './mount-lib.pl';
 &ReadParse();
-&popup_header(&text('nfs_choose', $in{'server'}));
+&popup_header(&text('nfs_choose', &html_escape($in{'server'})));
 print <<EOF;
 <script>
 function choose(f)
@@ -16,7 +17,7 @@ window.close();
 EOF
 
 if ($error = &exports_list($in{'server'}, \@dirs, \@clients)) {
-	print "<b>",&text('nfs_failed', $in{'server'},
+	print "<b>",&text('nfs_failed', &html_escape($in{'server'}),
 			  "<p><tt>$error</tt><p>"),"</b>\n";
 	exit;
 	}
