@@ -78,7 +78,7 @@ print &ui_table_row($text{'edit_active'},
 if ($config{'tags'}) {
 	# Tag name
 	print &ui_table_row($text{'edit_tag'},
-	    &ui_select("tag", $log->{'section'},
+	    &ui_select("tag", $log->{'section'}->{'tag'},
 		[ map { [ $_->{'index'},
 			  $_->{'tag'} eq '*' ? $text{'all'} : $_->{'tag'} ] }
 		      grep { $_->{'tag'} } @$conf ]));
