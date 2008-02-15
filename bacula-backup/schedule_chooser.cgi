@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # Show a popup window for selecting a Bacula schedule
 
+$trust_unknown_referers = 1;
 require './bacula-backup-lib.pl';
 &ReadParse();
 &popup_header($text{'chooser_title'});
