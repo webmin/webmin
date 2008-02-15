@@ -99,7 +99,7 @@ if ($raid_mode eq "raidtools") {
 			elsif ($dir->{'name'} eq 'raiddev') {
 				$raiddev = $dir;
 				local $m = $mdstat{$dir->{'value'}};
-				$dir->{'active'} = $m->[0] eq 'active';
+				$dir->{'active'} = $m->[0] =~ /^active/;
 				$dir->{'level'} = $m->[1] =~ /raid(\d+)/ ? $1 : $m->[1];
 				$dir->{'devices'} = [
 					map { /(\S+)\[\d+\](\((.)\))?/;
@@ -122,7 +122,7 @@ else {
 			      'members' => [ ],
 			      'index' => scalar(@get_raidtab_cache) };
 		local $mdstat = $mdstat{$md->{'value'}};
-		$md->{'active'} = $mdstat->[0] eq 'active';
+		$md->{'active'} = $mdstat->[0] =~ /^active/;
 		$md->{'level'} = $mdstat->[1] =~ /raid(\d+)/ ? $1 : $mdstat->[1];
 		$md->{'devices'} = [
 			map { /(\S+)\[\d+\](\((.)\))?/;
