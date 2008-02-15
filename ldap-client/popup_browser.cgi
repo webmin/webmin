@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # Show the LDAP tree in a popup browser window, for selecting something
 
+$trust_unknown_referers = 1;
 require './ldap-client-lib.pl';
 &popup_header($text{'browser_title'});
 &ReadParse();
@@ -57,7 +58,8 @@ $parent =~ s/^[^,]+,\s*//;
 if ($in{'node'} == 0 && $top ||
     $in{'node'} == 1 && !$top ||
     $in{'node'} == 2) {
-	print "<input type=button onClick='return ldap_select(\"$base\")' ",
+	print "<input type=button onClick='return ldap_select(\"".
+	      &quote_escape($base, '"'),"\")' ",
 	      "value='$text{'browser_sel'}'>\n";
 	}
 print &ui_form_end();
@@ -75,14 +77,16 @@ if ($rv->code) {
 
 print "<table width=100%>\n";
 if ($parent =~ /\S/) {
-	print "<tr> <td><i><a href='popup_browser.cgi?node=$in{'node'}&base=",
+	print "<tr> <td><i><a href='popup_browser.cgi?node=".
+	      &urlize($in{'node'})."&base=",
 	      &urlize($parent),"'><img src=images/up.gif border=0> ",
 	      &html_escape($parent),"</a></td> </tr>\n";
 	}
 if ($rv->all_entries) {
 	# If this object has sub-objects, show them
 	foreach $dn (sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries) {
-		print "<tr> <td><a href='popup_browser.cgi?node=$in{'node'}&",
+		print "<tr> <td><a href='popup_browser.cgi?node=".
+		      &urlize($in{'node'}),"&",
 		      "base=".&urlize($dn->dn()).
 		      "'><img src=images/open.gif border=0>",
 		      " ",&html_escape($dn->dn()),"</a></td> </tr>\n";
