@@ -16,14 +16,14 @@ $default = &find_value("default", $conf);
 print &ui_table_row($text{'global_default'},
 	&ui_select("default", $default,
 		   [ [ '', $text{'global_first'} ],
-		     map { [ $_, $titles[$i] ] } (0..$#titles) ]));
+		     map { [ $_, $titles[$_] ] } (0..$#titles) ]));
 
 # Fallback kernel
 $fallback = &find_value("fallback", $conf);
 print &ui_table_row($text{'global_fallback'},
 	&ui_select("fallback", $fallback,
 		   [ [ '', $text{'global_first'} ],
-		     map { [ $_, $titles[$i] ] } (0..$#titles) ]));
+		     map { [ $_, $titles[$_] ] } (0..$#titles) ]));
 
 # Boot timeout
 $timeout = &find_value("timeout", $conf);
