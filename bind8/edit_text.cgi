@@ -22,15 +22,13 @@ if (!$access{'ro'}) {
 	print &text('text_desc', "<tt>$file</tt>"),"<p>\n";
 	}
 
-print "<form action=save_text.cgi method=post enctype=multipart/form-data>\n";
-print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-print "<textarea name=text rows=20 cols=80>",
-	join("", @lines),"</textarea><p>\n";
-print "<input type=submit value=\"$text{'save'}\"> ",
-      "<input type=reset value=\"$text{'text_undo'}\">\n"
-	if (!$access{'ro'});
-print "</form>\n";
+print &ui_form_start("save_text.cgi", "form-data");
+print &ui_table_start(undef, undef, 2);
+print &ui_hidden("index", $in{'index'});
+print &ui_hidden("view", $in{'view'});
+print &ui_table_row(undef, &ui_textarea("text", join("", @lines), 20, 80), 2);
+print &ui_table_end();
+print &ui_form_end($access{'ro'} ? [ ] : [ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer(($tv eq "master" ? "edit_master.cgi" :
 	 $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").

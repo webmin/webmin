@@ -18,12 +18,9 @@ if ($in{'show'}) {
 	$desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
 	&ui_print_header($desc, $text{'gen_title2'}, "");
 
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'recs_name'}</b></td> ",
-	      "<td><b>$text{'recs_type'}</b></td> ",
-	      "<td><b>$text{'recs_ttl'}</b></td> ",
-	      "<td><b>$text{'recs_vals'}</b></td> ",
-	      "<td><b>$text{'gen_raw'}</b></td> </tr>\n";
+	print &ui_columns_start([ $text{'recs_name'}, $text{'recs_type'},
+				  $text{'recs_ttl'}, $text{'recs_vals'},
+				  $text{'gen_raw'} ], 100);
 	foreach $g (@gens) {
 		@gv = @{$g->{'generate'}};
 		if ($gv[0] =~ /^(\d+)-(\d+)\/(\d+)$/) {
@@ -48,16 +45,13 @@ if ($in{'show'}) {
 			$rhsfull = $rhs =~ /\.$/ ? $rhs :
 				    $dom eq "." ? "$rhs." : "$rhs.$dom";
 
-			print "<tr $cb>\n";
-			print "<td>",&arpa_to_ip($lhsfull),"</td>\n";
-			print "<td>$gv[2]</td>\n";
-			print "<td>$text{'default'}</td>\n";
-			print "<td>",&arpa_to_ip($rhsfull),"</td>\n";
-			print "<td><tt>$lhs IN $gv[2] $rhs</tt></td>\n";
-			print "</tr>\n";
+			print &ui_columns_row([
+				&arpa_to_ip($lhsfull), $gv[2],
+				$text{'default'}, &arpa_to_ip($rhsfull),
+				"<tt>$lhs IN $gv[2] $rhs</tt>" ]);
 			}
 		}
-	print "</table><br>\n";
+	print &ui_columns_end();
 
 	&ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
 		$text{'master_return'});

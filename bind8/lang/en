@@ -126,6 +126,7 @@ master_apply=Apply Changes
 master_applymsg=Click this button to apply changes for this zone only, using the command $1. This will only work if changes have been applied for the entire server at least once since the zone was created.
 master_defttl=Default time-to-live for records
 master_edefttl='$1' is not a valid default time-to-live for records
+master_esoagone=No SOA record found!
 
 delete_title=Delete Zone
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.

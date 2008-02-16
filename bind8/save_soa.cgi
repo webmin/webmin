@@ -12,6 +12,14 @@ $dom = $zone->{'name'};
 $access{'ro'} && &error($text{'master_ero'});
 $access{'params'} || &error($text{'master_esoacannot'});
 
+# Get the SOA and file
+@recs = &read_zone_file($zone->{'file'}, $dom);
+foreach $r (@recs) {
+	$soa = $r if ($r->{'type'} eq "SOA");
+	}
+$soa || &error($text{'master_esoagone'});
+$file = $soa->{'file'};
+
 # check inputs
 &valdnsname($in{'master'}, 0, $in{'origin'}) ||
 	&error(&text('master_emaster', $in{'master'}));
@@ -31,8 +39,8 @@ if ($in{'email'} =~ /\@/) {
 $in{'defttl_def'} || $in{'defttl'} =~ /^\d+$/ ||
 	&error(&text('master_edefttl', $in{'defttl'}));
 
-&lock_file(&make_chroot($in{'file'}));
-@recs = &read_zone_file($in{'file'}, $in{'origin'});
+&lock_file(&make_chroot($file));
+@recs = &read_zone_file($file, $in{'origin'});
 $old = $recs[$in{'num'}];
 # already set serial if no acl allow it to update or update is disabled
 $serial = $old->{'values'}->[2];
@@ -50,21 +58,21 @@ $vals = "$in{'master'} $in{'email'} (\n".
 	"\t\t\t$in{'retry'}$in{'retunit'}\n".
 	"\t\t\t$in{'expiry'}$in{'expunit'}\n".
 	"\t\t\t$in{'minimum'}$in{'minunit'} )";
-&modify_record($in{'file'}, $old, $old->{'name'}, $old->{'ttl'},
+&modify_record($file, $old, $old->{'name'}, $old->{'ttl'},
 	       $old->{'class'}, "SOA", $vals);
 
 ($defttl) = grep { $_->{'defttl'} } @recs;
 if (!$defttl && !$in{'defttl_def'}) {
-	&create_defttl($in{'file'}, $in{'defttl'}.$in{'defttlunit'});
+	&create_defttl($file, $in{'defttl'}.$in{'defttlunit'});
 	}
 elsif ($defttl && !$in{'defttl_def'}) {
-	&modify_defttl($in{'file'}, $defttl, $in{'defttl'}.$in{'defttlunit'});
+	&modify_defttl($file, $defttl, $in{'defttl'}.$in{'defttlunit'});
 	}
 elsif ($defttl && $in{'defttl_def'}) {
-	&delete_defttl($in{'file'}, $defttl);
+	&delete_defttl($file, $defttl);
 	}
 
-&unlock_file(&make_chroot($in{'file'}));
+&unlock_file(&make_chroot($file));
 &webmin_log("soa", undef, $in{'origin'}, \%in);
 &redirect("edit_master.cgi?index=$in{'index'}&view=$in{'view'}");
 

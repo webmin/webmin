@@ -27,22 +27,24 @@ foreach $wf ("$module_root_directory/whois-servers",
 foreach $d (sort { length($b) <=> length($a) } keys %whois) {
 	if ($dom =~ /\Q$d\E$/) {
 		$server = "-h ".quotemeta($whois{$d});
+		$pserver = "-h ".$whois{$d};
 		last;
 		}
 	}
 
 $qdom = quotemeta($dom);
 $cmd = "$config{'whois_cmd'} $server $qdom";
+$pcmd = "$config{'whois_cmd'} $pserver $dom";
 $out = `$cmd 2>&1`;
 if ($out =~ /whois\s+server:\s+(\S+)/i) {
-	$cmd = "$config{'whois_cmd'} -h $1 '$dom'";
+	$cmd = "$config{'whois_cmd'} -h ".quotemeta($1)." $qdom";
+	$pcmd = "$config{'whois_cmd'} -h $1 $dom";
 	$out = `$cmd 2>&1`;
 	}
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",&text('whois_header', "<tt>$cmd</tt>"),
-      "</b></td> </tr>\n";
-print "<tr $cb> <td><pre>",&html_escape($out);
-print "</pre></td> </tr></table><br>\n";
+print &ui_table_start(&text('whois_header', "<tt>".&html_escape($pcmd)."</tt>"),
+		      "width=100%", 2);
+print &ui_table_row(undef, "<pre>".&html_escape($out)."</pre>", 2);
+print &ui_table_end();
 
 &ui_print_footer(($tv eq "master" ? "edit_master.cgi" :
 	 $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
