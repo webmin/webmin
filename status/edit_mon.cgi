@@ -91,6 +91,7 @@ if (!$in{'type'}) {
 
 # Show servers to run on
 @servs = grep { $_->{'user'} } &servers::list_servers_sorted();
+@servs = sort { $a->{'host'} cmp $b->{'host'} } @servs;
 if (@servs) {
 	# Show list of remote servers
 	print &ui_table_row($text{'mon_remotes'},
@@ -107,6 +108,7 @@ else {
 
 # Show groups to run on
 @groups = &servers::list_all_groups(\@servs);
+@groups = sort { $a->{'name'} cmp $b->{'name'} } @groups;
 if (@groups) {
 	print &ui_table_row($text{'mon_groups'},
 	      &ui_select("groups", [ split(/\s+/, $serv->{'groups'}) ],
