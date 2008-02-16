@@ -40,6 +40,11 @@ foreach $p (@ports, { }) {
 			delete($p->{$fk});
 			}
 		}
+	if ($p->{'Addr'}) {
+		# Some systems use 'Addr' instead of 'Address'
+		$p->{'Address'} = $p->{'Addr'};
+		delete($p->{'Addr'});
+		}
 	push(@cols, &ui_textbox("name_$i", $p->{'Name'}, 10));
 	push(@cols, &ui_opt_textbox("addr_$i", $p->{'Address'}, 15,
 				    $text{'ports_all'}, $text{'ports_ip'}));
