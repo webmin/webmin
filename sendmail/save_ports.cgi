@@ -29,6 +29,7 @@ if (!$in{'ports_def'}) {
 		if (!$in{"port_${i}_def"}) {
 			$in{"port_$i"} =~ /^\d+$/ && $in{"port_$i"} > 0 &&
 			    $in{"port_$i"} < 65536 ||
+			    getservbyname($in{"port_$i"}, "tcp") ||
 				&error(&text('ports_eport', $i+1));
 			push(@opts, "Port=".$in{"port_$i"});
 			}
