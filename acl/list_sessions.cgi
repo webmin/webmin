@@ -28,7 +28,14 @@ foreach $k (sort { @a=split(/\s+/, $sessiondb{$a}); @b=split(/\s+/, $sessiondb{$
 	next if ($miniserv{'logouttime'} &&
 		 $time_now - $ltime > $miniserv{'logouttime'}*60);
 	local @cols;
-	push(@cols, "<a href='delete_session.cgi?id=$k'>$k</a>");
+	if ($k eq $main::session_id ||
+	    $k eq &hash_session_id($main::session_id)) {
+		# Cannot self-terminate
+		push(@cols, "<b>$k</b>");
+		}
+	else {
+		push(@cols, "<a href='delete_session.cgi?id=$k'>$k</a>");
+		}
 	if ($hasuser{$user}) {
 		push(@cols, "<a href='edit_user.cgi?user=$user'>$user</a>");
 		}
