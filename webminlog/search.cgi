@@ -4,6 +4,7 @@
 
 require './webminlog-lib.pl';
 require 'timelocal.pl';
+&foreign_require("acl", "acl-lib.pl");
 &ReadParse();
 &error_setup($text{'search_err'});
 
@@ -54,7 +55,8 @@ while(($id, $idx) = each %index) {
 	     $in{'uall'} == 0 && $in{'user'} eq $user ||
 	     $in{'uall'} == 2 && $in{'nuser'} ne $user) &&
 	    ($in{'mall'} || $in{'module'} eq $module) &&
-	    (!$in{'sid'} || $in{'sid'} eq $sid) &&
+	    (!$in{'sid'} || $in{'sid'} eq $sid ||
+			    $in{'sid'} eq &acl::hash_session_id($sid)) &&
 	    ($in{'tall'} || $from < $time && $to > $time)) {
 		# Passed index check .. now look at actual log entry
 		seek(LOG, $pos, 0);
