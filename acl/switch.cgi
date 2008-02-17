@@ -8,9 +8,10 @@ require './acl-lib.pl';
 
 &get_miniserv_config(\%miniserv);
 &open_session_db(\%miniserv);
-($olduser, $oldtime) = split(/\s+/, $sessiondb{$main::session_id});
+$skey = &session_db_key($main::session_id);
+($olduser, $oldtime) = split(/\s+/, $sessiondb{$skey});
 $olduser || &error($text{'switch_eold'});
-$sessiondb{$main::session_id} = "$in{'user'} $oldtime $ENV{'REMOTE_ADDR'}";
+$sessiondb{$skey} = "$in{'user'} $oldtime $ENV{'REMOTE_ADDR'}";
 dbmclose(%sessiondb);
 &reload_miniserv();
 &webmin_log("switch", undef, $in{'user'});

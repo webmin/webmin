@@ -783,5 +783,114 @@ if ($miniserv{'pass_oldblock'} && $user) {
 return undef;
 }
 
+# hash_session_id(sid)
+# Returns an MD5 or Unix-crypted session ID
+sub hash_session_id
+{
+local ($sid) = @_;
+local $use_md5 = &md5_perl_module();
+if (!$hash_session_id_cache{$sid}) {
+        if ($use_md5) {
+                # Take MD5 hash
+                $hash_session_id_cache{$sid} = &encrypt_md5($sid);
+                }
+        else {
+                # Unix crypt
+                $hash_session_id_cache{$sid} = &unix_crypt($sid, "XX");
+                }
+        }
+return $hash_session_id_cache{$sid};
+}
+
+# encrypt_md5(string)
+# Returns a string encrypted in MD5 format
+sub encrypt_md5
+{
+local $passwd = $_[0];
+local $use_md5 = &md5_perl_module();
+
+# Add the password
+local $ctx = eval "new $use_md5";
+$ctx->add($passwd);
+
+# Add some more stuff from the hash of the password and salt
+local $ctx1 = eval "new $use_md5";
+$ctx1->add($passwd);
+$ctx1->add($passwd);
+local $final = $ctx1->digest();
+for($pl=length($passwd); $pl>0; $pl-=16) {
+	$ctx->add($pl > 16 ? $final : substr($final, 0, $pl));
+	}
+
+# This piece of code seems rather pointless, but it's in the C code that
+# does MD5 in PAM so it has to go in!
+local $j = 0;
+local ($i, $l);
+for($i=length($passwd); $i; $i >>= 1) {
+	if ($i & 1) {
+		$ctx->add("\0");
+		}
+	else {
+		$ctx->add(substr($passwd, $j, 1));
+		}
+	}
+$final = $ctx->digest();
+
+# Convert the 16-byte final string into a readable form
+local $rv;
+local @final = map { ord($_) } split(//, $final);
+$l = ($final[ 0]<<16) + ($final[ 6]<<8) + $final[12];
+$rv .= &to64($l, 4);
+$l = ($final[ 1]<<16) + ($final[ 7]<<8) + $final[13];
+$rv .= &to64($l, 4);
+$l = ($final[ 2]<<16) + ($final[ 8]<<8) + $final[14];
+$rv .= &to64($l, 4);
+$l = ($final[ 3]<<16) + ($final[ 9]<<8) + $final[15];
+$rv .= &to64($l, 4);
+$l = ($final[ 4]<<16) + ($final[10]<<8) + $final[ 5];
+$rv .= &to64($l, 4);
+$l = $final[11];
+$rv .= &to64($l, 2);
+
+return $rv;
+}
+
+sub to64
+{
+local ($v, $n) = @_;
+local @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+local $r;
+while(--$n >= 0) {
+        $r .= $itoa64[$v & 0x3f];
+        $v >>= 6;
+        }
+return $r;
+}
+
+# Returns a Perl module for MD5 hashing, or undef if none
+sub md5_perl_module
+{
+eval "use MD5";
+if (!$@) {
+        $use_md5 = "MD5";
+        }
+else {
+        eval "use Digest::MD5";
+        if (!$@) {
+                $use_md5 = "Digest::MD5";
+                }
+        }
+}
+
+# session_db_key(sid)
+# Returns the session DB key for some session ID. Assumes that open_session_db
+# has already been called.
+sub session_db_key
+{
+local ($sid) = @_;
+local $hash = &hash_session_id($sid);
+return $sessiondb{$hash} ? $hash : $sid;
+}
+
 1;
 
