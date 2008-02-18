@@ -100,10 +100,10 @@ elsif ($in{'view'}) {
 			$catter = $cmd;
 			}
 		else {
-			# Find the first non-empty file
+			# Find the first non-empty file, newest first
 			$catter = "cat ".quotemeta($file);
 			if (!-s $file && $config{'compressed'}) {
-				foreach $l (&all_log_files($file)) {
+				foreach $l (reverse(&all_log_files($file))) {
 					next if (!-s $l);
 					$c = &catter_command($l);
 					if ($c) {

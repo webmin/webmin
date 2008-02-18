@@ -257,7 +257,7 @@ local ($f, @rv);
 opendir(DIR, &translate_filename($dir));
 foreach $f (readdir(DIR)) {
 	local $trans = &translate_filename("$dir/$f");
-	if ($f =~ /^\Q$base\E/ && -f $trans) {
+	if ($f =~ /^\Q$base\E/ && -f $trans && $f !~ /\.offset$/) {
 		push(@rv, "$dir/$f");
 		$mtime{"$dir/$f"} = [ stat($trans) ];
 		}
