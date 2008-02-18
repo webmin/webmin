@@ -2726,6 +2726,7 @@ if ($ENV{'HTTP_REFERER'} =~/^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?([^\/:@]+)/
 local $http_host = $ENV{'HTTP_HOST'};
 $http_host =~ s/:\d+$//;
 if ($0 && $ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ &&
+    $ENV{'SCRIPT_NAME'} !~ /^\/([a-z0-9\_\-]+)\/$/i &&
     $0 !~ /session_login\.cgi$/ && !$gconfig{'referer'} &&
     $ENV{'MINISERV_CONFIG'} && !$main::no_referers_check &&
     $ENV{'HTTP_USER_AGENT'} !~ /^Webmin/i &&
