@@ -1917,8 +1917,7 @@ foreach $d ("$_[0]/cur", "$_[0]/new") {
 		}
 	closedir(DIR);
 	}
-local $cachefile = &get_maildir_cachefile($_[0]);
-unlink($cachefile) if ($cachefile);
+&flush_maildir_cachefile($_[0]);
 }
 
 # get_maildir_cachefile(dir)
@@ -1936,6 +1935,17 @@ if (!-d $sd) {
 	}
 $dir =~ s/\//_/g;
 return "$sd/$dir";
+}
+
+# flush_maildir_cachefile(dir)
+# Clear the on-disk and in-memory maildir caches
+sub flush_maildir_cachefile
+{
+local ($dir) = @_;
+local $cachefile = &get_maildir_cachefile($dir);
+unlink($cachefile) if ($cachefile);
+delete($main::list_maildir_cache{$dir});
+delete($main::list_maildir_cache_time{$dir});
 }
 
 # count_maildir(dir)

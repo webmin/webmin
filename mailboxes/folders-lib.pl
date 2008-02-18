@@ -1730,9 +1730,11 @@ elsif ($folder->{'type'} == 1) {
 	local $newfile = $base.":2,".
 			 join("", grep { $flags{$_} } keys %flags);
 	if ($newfile ne $mail->{'file'}) {
+		# Need to rename file
 		rename($mail->{'file'}, $newfile);
 		$newfile =~ s/^(.*)\/((cur|tmp|new)\/.*)$/$2/;
 		$mail->{'id'} = $newfile;
+		&flush_maildir_cachefile($folder->{'file'});
 		}
 	}
 else {
