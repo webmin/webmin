@@ -2,6 +2,7 @@
 # help.cgi
 # Displays help HTML for some module, with substitutions
 
+$trust_unknown_referers = 1;
 require './web-lib.pl';
 &init_config();
 &error_setup($text{'help_err'});
@@ -25,7 +26,7 @@ close(HELP);
 
 # find and replace the <header> section
 if ($help =~ s/<header>([^<]+)<\/header>/<center><h3>$1<\/h3><\/center><hr>/i) {
-	&header($1);
+	&popup_header($1);
 	}
 else {
 	&helperror($text{'help_eheader'});
@@ -48,7 +49,7 @@ $help =~ s/<exec\s+([^>]*)>/exechelp($1)/ige;
 
 # output the HTML
 print $help;
-&footer();
+&popup_footer();
 
 # inchelp(path)
 sub inchelp
