@@ -31,3 +31,4 @@ Added a warning if % is used in filenames but strftime substition is not enabled
 When making tar format backups on Linux, an option to just append new files to the archive instead of over-writing it is available.
 ---- Changes since 1.400 ----
 Fixed remote tar backups via FTP on OSX.
+Files and directories to exclude can be specified for TAR format backups on Linux.

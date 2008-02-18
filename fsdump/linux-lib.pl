@@ -69,6 +69,10 @@ if ($_[0]->{'fs'} eq 'tar') {
 					    $text{'dump_auto'})." kB",
 			    3, $tds);
 
+	print &ui_table_row(&hlink($text{'dump_exclude'}, "exclude"),
+			    &ui_textbox("exclude", $_[0]->{'exclude'}, 50),
+			    3, $tds);
+
 	print &ui_table_row(&hlink($text{'dump_gzip'},"gzip"),
 			    &ui_select("gzip", int($_[0]->{'gzip'}),
 				[ [ 0, $text{'no'} ],
@@ -225,6 +229,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 		$_[0]->{'blocks'} = $in{'blocks'};
 		$in{'gzip'} && &error($text{'dump_egzip'});
 		}
+	$_[0]->{'exclude'} = $in{'exclude'};
 	$_[0]->{'gzip'} = $in{'gzip'};
 	$_[0]->{'multi'} = $in{'multi'};
 	$_[0]->{'links'} = $in{'links'};
@@ -340,6 +345,11 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " -F \"$tapecmd $_[0]->{'id'}\"" if (!$_[0]->{'gzip'} && $tapecmd);
 	$cmd .= " --rsh-command=".quotemeta($_[0]->{'rsh'}) if ($_[0]->{'rsh'});
 	$cmd .= " --rmt-command=".quotemeta($_[0]->{'rmt'}) if ($_[0]->{'rmt'});
+	if ($_[0]->{'exclude'}) {
+		foreach my $e (&split_quoted_string($_[0]->{'exclude'})) {
+			$cmd .= " --exclude ".quotemeta($e);
+			}
+		}
 	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
 	$cmd .= " ".join(" ", map { "'$_'" } @dirs);
 	}

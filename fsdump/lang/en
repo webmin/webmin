@@ -37,6 +37,7 @@ dump_level_0=(Full backup)
 dump_label=Backup label
 dump_multi=Split across multiple files?
 dump_update=Update <tt>/etc/dumpdates</tt> file?
+dump_exclude=Files and directories to skip
 dump_edir=Missing or invalid directory to backup
 dump_efile=Missing file or device to backup to
 dump_ehost=Missing or invalid host to backup to
