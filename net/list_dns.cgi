@@ -49,7 +49,7 @@ print "$dns->{'name'}[0] " if $dns->{'name'};
 print "$text{'dns_servers'}</b></td> <td valign=top>\n";
 print "<input type=hidden name=name0 value=\"$dns->{'name'}[0]\">\n"
     if $dns->{'name'};
-for($i=0; $i<$max_dns_servers; $i++) {
+for($i=0; $i<$max_dns_servers || $i<@{$dns->{'nameserver'}}+1; $i++) {
 	printf "<input name=nameserver_$i size=15 value=\"%s\"><br>\n",
 		$dns->{'nameserver'}->[$i];
 	}
