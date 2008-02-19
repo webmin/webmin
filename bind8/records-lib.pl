@@ -621,7 +621,7 @@ return $_[0] eq "." ||
 # If a path does not start with a /, prepend the base directory
 sub absolute_path
 {
-if ($_[0] =~ /^\//) { return $_[0]; }
+if ($_[0] =~ /^([a-zA-Z]:)?\//) { return $_[0]; }
 return &base_directory()."/".$_[0];
 }
 
