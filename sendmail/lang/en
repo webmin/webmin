@@ -618,6 +618,7 @@ acl_flushq=Can flush the mail queue?
 acl_mailq=Can manage mail queue?
 acl_viewdel=View and delete
 acl_view=View only
+acl_vcatchall=Can create catchall mappings?
 acl_qdoms=Addresses visible in queue
 acl_qdomsmode=Queue address to match
 acl_qdomsmode0=From: address

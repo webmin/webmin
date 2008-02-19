@@ -37,7 +37,7 @@ if ($in{'delete'}) {
 else {
 	# Saving or creating.. check inputs
 	&error_setup($text{'vsave_err'});
-	if ($in{'from_type'} == 0) {
+	if ($in{'from_type'} == 0 || !$access{'vcatchall'}) {
 		$in{'from_addr'} =~ /^(\S+)\@(\S+)$/ ||
 			&error(&text('vsave_efrom', $in{'from_addr'}));
 		$from = $in{'from_addr'};

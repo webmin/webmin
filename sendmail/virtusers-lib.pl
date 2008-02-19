@@ -166,13 +166,22 @@ print &ui_table_row($text{'vform_cmt'},
 
 # Source address
 $addr = !$v || $v->{'from'} =~ /^(\S+)\@(\S+)$/;
-print &ui_table_row($text{'vform_for'},
-	&ui_radio_table("from_type", $addr ? 0 : 1,
-	  [ [ 0, $text{'vform_address'},
-		 &ui_textbox("from_addr", $addr ? $v->{'from'} : "", 20) ],
-	    [ 1, $text{'vform_domain'},
-		 &ui_textbox("from_dom",
+if ($access{'vcatchall'}) {
+	# Can be address or whole domain
+	print &ui_table_row($text{'vform_for'},
+		&ui_radio_table("from_type", $addr ? 0 : 1,
+		  [ [ 0, $text{'vform_address'},
+			 &ui_textbox("from_addr",
+			     $addr ? $v->{'from'} : "", 20) ],
+		    [ 1, $text{'vform_domain'},
+			 &ui_textbox("from_dom",
 			     $addr ? "" : substr($v->{'from'}, 1), 20) ] ]));
+	}
+else {
+	# Just address
+	print &ui_table_row($text{'vform_for'},
+		&ui_textbox("from_addr", $addr ? $v->{'from'} : "", 40));
+	}
 		
 # Virtuser destination
 $mode = !$v ? 2 :
@@ -230,6 +239,9 @@ return wantarray ? @rv : $rv[0];
 sub can_edit_virtuser
 {
 local ($v) = @_;
+if ($v->{'from'} =~ /^\@/ && !$access{'vcatchall'}) {
+	return 0;
+	}
 return $access{'vmode'} == 1 ||
        $access{'vmode'} == 2 && $v->{'from'} =~ /$access{'vaddrs'}/ ||
        $access{'vmode'} == 3 && $v->{'from'} =~ /^$remote_user\@/;

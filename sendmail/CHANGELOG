@@ -33,3 +33,5 @@ Added access control for the Spam Control page.
 Added a Module Config option to support ~/Maildir mailboxes (even though Sendmail doesn't support this natively).
 Added an option to show the directory queued messages are in, which is useful on systems with several queues.
 Network ports and addresses used by Sendmail can now be more easily edited on the new Network Ports page, which updates both sendmail.cf and any .mc file.
+---- Changes since 1.400 ----
+Added an access control page option to prevent creation and editing of catchall address mappings.

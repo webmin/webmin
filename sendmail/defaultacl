@@ -29,3 +29,4 @@ qdomsmode=2
 flushq=1
 smode=1
 ports=1
+vcatchall=1

@@ -132,12 +132,16 @@ for($n=0; $n<3; $n++) {
 print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'acl_vmax'}</b></td>\n";
-printf "<td colspan=3><input type=radio name=vmax_def value=1 %s> %s\n",
+printf "<td><input type=radio name=vmax_def value=1 %s> %s\n",
 	$_[0]->{'vmax'} ? "" : "checked", $text{'acl_unlimited'};
 printf "<input type=radio name=vmax_def value=0 %s>\n",
 	$_[0]->{'vmax'} ? "checked" : "";
-printf "<input name=vmax size=5 value='%s'></td> </tr>\n",
+printf "<input name=vmax size=5 value='%s'></td>\n",
 	$_[0]->{'vmax'};
+
+print "<td><b>$text{'acl_vcatchall'}</b></td>\n";
+print "<td>",&ui_yesno_radio("vcatchall",
+			     int($_[0]->{'vcatchall'})),"</td> </tr>\n";
 
 # Aliases
 print "<tr> <td colspan=4><hr></td> </tr>\n";
@@ -224,6 +228,7 @@ $_[0]->{'vmax'} = $in{'vmax_def'} ? undef : $in{'vmax'};
 foreach $i (0..2) {
 	$_[0]->{"vedit_$i"} = $in{"vedit_$i"};
 	}
+$_[0]->{'vcatchall'} = $in{'vcatchall'};
 $_[0]->{'amode'} = $in{'amode'};
 $_[0]->{'aliases'} = $in{'amode'} == 2 ? $in{'aliases'} : "";
 $_[0]->{'amax'} = $in{'amax_def'} ? undef : $in{'amax'};

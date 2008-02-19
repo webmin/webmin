@@ -34,6 +34,9 @@ elsif ($access{'vmode'} == 3) {
 	@virts = grep { $_->{'from'} =~ /^$remote_user\@/ } @virts;
 	}
 @virts = grep { $access{"vedit_".&virt_type($_->{'to'})} } @virts; 
+if (!$access{'vcatchall'}) {
+	@virts = grep { $_->{'from'} !~ /^\@/ } @virts;
+	}
 
 &virtuser_form();
 
