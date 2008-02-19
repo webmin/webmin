@@ -25,6 +25,7 @@ for(i=0; i<n; i++) {
 		expand_flags(mntlist[i].f_flags),
 		mntlist[i].f_flags);
 	}
+return 0;
 }
 
 char *expand_flags(int f)
