@@ -212,6 +212,7 @@ else {
 		&error(&text('ecompile', "<pre>$out</pre>"));
 		}
 	}
+&set_ownership_permissions(undef, undef, 0755,"$module_config_directory/$_[0]");
 }
 
 # get_filesystem_users()
