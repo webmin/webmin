@@ -107,7 +107,7 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
 		print "<tr><td>\n";
 		print "<input type=submit value=\"$text{'slave_apply'}\">\n";
-		$args = $view ? "$dom IN $view->{'value'}" : $dom;
+		$args = $zone->{'view'} ? "$dom IN $zone->{'view'}" : $dom;
 		$cmd = &has_ndc() == 2 ? $config{'rndc_cmd'}
 				       : $config{'ndc_cmd'};
 		print "</td> <td>",&text('slave_applymsg',
