@@ -7,6 +7,8 @@ use Socket;
 use POSIX;
 use Time::Local;
 
+@itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
+
 # Find and read config file
 if (@ARGV != 1) {
 	die "Usage: miniserv.pl <config file>";
@@ -52,6 +54,18 @@ if ($config{'libwrap'}) {
 	eval "use Authen::Libwrap qw(hosts_ctl STRING_UNKNOWN)";
 	if (!$@) {
 		$use_libwrap = 1;
+		}
+	}
+
+# Check if the MD5 perl module is available
+eval "use MD5";
+if (!$@) {
+	$use_md5 = "MD5";
+	}
+else {
+	eval "use Digest::MD5";
+	if (!$@) {
+		$use_md5 = "Digest::MD5";
 		}
 	}
 
@@ -600,7 +614,8 @@ while(1) {
 		# Remove sessions with more than 7 days of inactivity,
 		local $s;
 		foreach $s (keys %sessiondb) {
-			local ($user, $ltime, $lip) = split(/\s+/, $sessiondb{$s});
+			local ($user, $ltime, $lip) =
+				split(/\s+/, $sessiondb{$s});
 			if ($time_now - $ltime > 7*24*60*60) {
 				&run_logout_script($s, $user);
 				&write_logout_utmp($user, $lip);
@@ -853,20 +868,23 @@ while(1) {
 				# Verifying a session ID
 				local $session_id = $1;
 				local $notimeout = $2;
-				if (!defined($sessiondb{$session_id})) {
+				local $skey = $sessiondb{$session_id} ?
+						$session_id : 
+						&hash_session_id($session_id);
+				if (!defined($sessiondb{$skey})) {
 					# Session doesn't exist
 					print $outfd "0 0\n";
 					}
 				else {
 					local ($user, $ltime) =
-					  split(/\s+/, $sessiondb{$session_id});
+					  split(/\s+/, $sessiondb{$skey});
 					local $lot = &get_logout_time($user, $session_id);
 					if ($lot &&
 					    $time_now - $ltime > $lot*60 &&
 					    !$notimeout) {
 						# Session has timed out
 						print $outfd "1 ",$time_now - $ltime,"\n";
-						#delete($sessiondb{$session_id});
+						#delete($sessiondb{$skey});
 						}
 					else {
 						# Session is OK
@@ -874,21 +892,28 @@ while(1) {
 						if ($lot &&
 						    $time_now - $ltime >
 						    ($lot*60)/2) {
-							$sessiondb{$session_id} = "$user $time_now";
+							$sessiondb{$skey} = "$user $time_now";
 							}
 						}
 					}
 				}
 			elsif ($inline =~ /^new\s+(\S+)\s+(\S+)\s+(\S+)/) {
 				# Creating a new session
-				$sessiondb{$1} = "$2 $time_now $3";
+				local $session_id = $1;
+				local $user = $2;
+				local $ip = $3;
+				$sessiondb{&hash_session_id($session_id)} =
+					"$user $time_now $ip";
 				}
 			elsif ($inline =~ /^delete\s+(\S+)/) {
 				# Logging out a session
-				local $sid = $1;
-				local @sdb = split(/\s+/, $sessiondb{$sid});
+				local $session_id = $1;
+				local $skey = $sessiondb{$session_id} ?
+						$session_id : 
+						&hash_session_id($session_id);
+				local @sdb = split(/\s+/, $sessiondb{$skey});
 				print $outfd $sdb[0],"\n";
-				delete($sessiondb{$sid});
+				delete($sessiondb{$skey});
 				}
 			elsif ($inline =~ /^pamstart\s+(\S+)\s+(\S+)\s+(.*)/) {
 				# Starting a new PAM conversation
@@ -1241,6 +1266,10 @@ if ($method eq 'POST' &&
 		# If the client sent more data than we asked for, chop the
 		# rest off
 		$posted_data = substr($posted_data, 0, $clen);
+		}
+	if (length($posted_data) > $clen) {
+		# When the client sent too much, delay so that it gets headers
+		sleep(3);
 		}
 	if ($header{'user-agent'} =~ /MSIE/ &&
 	    $header{'user-agent'} !~ /Opera/i) {
@@ -4533,5 +4562,86 @@ if ($users{$user}) {
 	return 0;
 	}
 return -1;
+}
+
+# hash_session_id(sid)
+# Returns an MD5 or Unix-crypted session ID
+sub hash_session_id
+{
+local ($sid) = @_;
+if (!$hash_session_id_cache{$sid}) {
+	if ($use_md5) {
+		# Take MD5 hash
+		$hash_session_id_cache{$sid} = &encrypt_md5($sid);
+		}
+	else {
+		# Unix crypt
+		$hash_session_id_cache{$sid} = &unix_crypt($sid, "XX");
+		}
+	}
+return $hash_session_id_cache{$sid};
+}
+
+# encrypt_md5(string)
+# Returns a string encrypted in MD5 format
+sub encrypt_md5
+{
+local $passwd = $_[0];
+
+# Add the password
+local $ctx = eval "new $use_md5";
+$ctx->add($passwd);
+
+# Add some more stuff from the hash of the password and salt
+local $ctx1 = eval "new $use_md5";
+$ctx1->add($passwd);
+$ctx1->add($passwd);
+local $final = $ctx1->digest();
+for($pl=length($passwd); $pl>0; $pl-=16) {
+	$ctx->add($pl > 16 ? $final : substr($final, 0, $pl));
+	}
+
+# This piece of code seems rather pointless, but it's in the C code that
+# does MD5 in PAM so it has to go in!
+local $j = 0;
+local ($i, $l);
+for($i=length($passwd); $i; $i >>= 1) {
+	if ($i & 1) {
+		$ctx->add("\0");
+		}
+	else {
+		$ctx->add(substr($passwd, $j, 1));
+		}
+	}
+$final = $ctx->digest();
+
+# Convert the 16-byte final string into a readable form
+local $rv;
+local @final = map { ord($_) } split(//, $final);
+$l = ($final[ 0]<<16) + ($final[ 6]<<8) + $final[12];
+$rv .= &to64($l, 4);
+$l = ($final[ 1]<<16) + ($final[ 7]<<8) + $final[13];
+$rv .= &to64($l, 4);
+$l = ($final[ 2]<<16) + ($final[ 8]<<8) + $final[14];
+$rv .= &to64($l, 4);
+$l = ($final[ 3]<<16) + ($final[ 9]<<8) + $final[15];
+$rv .= &to64($l, 4);
+$l = ($final[ 4]<<16) + ($final[10]<<8) + $final[ 5];
+$rv .= &to64($l, 4);
+$l = $final[11];
+$rv .= &to64($l, 2);
+
+return $rv;
+}
+
+sub to64
+{
+local ($v, $n) = @_;
+local $r;
+while(--$n >= 0) {
+        $r .= $itoa64[$v & 0x3f];
+        $v >>= 6;
+        }
+return $r;
 }
 
