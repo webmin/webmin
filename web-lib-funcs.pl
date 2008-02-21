@@ -1472,13 +1472,14 @@ if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
 	else { &error($h); }
 	}
-&complete_http_download($h, $dest, $error, $cbfunc, $osdn);
+&complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
 }
 
-# complete_http_download(handle, destfile, [&error], [&callback], [osdn])
+# complete_http_download(handle, destfile, [&error], [&callback], [osdn],
+#			 [oldhost], [oldport])
 # Do a HTTP download, after the headers have been sent
 sub complete_http_download
 {
@@ -1516,6 +1517,12 @@ if ($rcode == 302 || $rcode == 301) {
 		}
 	elsif ($header{'location'} =~ /^http:\/\/([^:\/]+)(\/.*)?$/) {
 		$host = $1; $port = 80; $page = $2 || "/";
+		}
+	elsif ($header{'location'} =~ /^\// && $_[5]) {
+		# Relative to same server
+		$host = $_[5];
+		$port = $_[6];
+		$page = $header{'location'};
 		}
 	elsif ($header{'location'}) {
 		if ($_[2]) { ${$_[2]} = "Invalid Location header $header{'location'}"; return; }
