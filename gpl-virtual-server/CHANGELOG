@@ -404,3 +404,4 @@ When the Apache virtual host *.domain exists and a new virtual host for somethin
 SSL can now be enabled for domains without a private IP address, for a single virtual server on each shared address. This means that on a typical single-IP system, you can have one SSL website.
 The logrotate configuration is now validated by Virtualmin, to detect duplicate entries that can cause rotation to stop working.
 Vpopmail systems with so many domains that letter-suffix directories under /home/vpopmail/domains are needed are now handed by Virtualmin.
+When a DNS domain is disabled, all records in it that use the domain name are renamed too, to keep BIND happy.
