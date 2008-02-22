@@ -343,6 +343,7 @@ pass_header=Webmin password enforcement options
 pass_minsize=Minimum password length
 pass_nominsize=No minimum
 pass_regexps=Regular expressions passwords must match
+pass_regdesc=Human-readable description for regular expression
 pass_maxdays=Days before password must be changed
 pass_lockdays=Days before un-changed password locks account
 pass_nomaxdays=Change never required

@@ -18,6 +18,9 @@ print &ui_table_row($text{'pass_regexps'},
 	&ui_textarea("regexps",
 		join("\n", split(/\t+/, $miniserv{'pass_regexps'})), 5, 60));
 
+print &ui_table_row($text{'pass_regdesc'},
+	&ui_textbox("regdesc", $miniserv{'pass_regdesc'}, 60));
+
 # Days before forced change
 print &ui_table_row($text{'pass_maxdays'},
 	&ui_opt_textbox("maxdays", $miniserv{'pass_maxdays'}, 5,

@@ -736,10 +736,12 @@ if (length($pass) < $minsize) {
 foreach my $re (split(/\t+/, $miniserv{'pass_regexps'})) {
 	if ($re =~ /^\!(.*)$/) {
 		$re = $1;
-		$pass !~ /$re/ || return $text{'cpass_notre'};
+		$pass !~ /$re/ || return ($miniserv{'pass_regdesc'} ||
+					  $text{'cpass_notre'});
 		}
 	else {
-		$pass =~ /$re/ || return $text{'cpass_re'};
+		$pass =~ /$re/ || return ($miniserv{'pass_regdesc'} ||
+					  $text{'cpass_re'});
 		}
 	}
 if ($miniserv{'pass_nouser'}) {

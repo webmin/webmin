@@ -15,6 +15,7 @@ else {
 	$miniserv{'pass_minsize'} = $in{'minsize'};
 	}
 $miniserv{'pass_regexps'} = join("\t", split(/\r?\n/, $in{'regexps'}));
+$miniserv{'pass_regdesc'} = $in{'regdesc'};
 if ($in{'maxdays_def'}) {
 	delete($miniserv{'pass_maxdays'});
 	}
