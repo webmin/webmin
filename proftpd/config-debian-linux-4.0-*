@@ -7,4 +7,3 @@ ftpusers=/etc/ftpusers
 test_config=1
 test_always=0
 test_manual=0
-add_file=/etc/proftpd/proftpd.conf
