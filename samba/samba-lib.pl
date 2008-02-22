@@ -858,9 +858,7 @@ if ($has_smbgroupedit) {
 	}
 else {
 	$out = &backquote_logged("$config{'net'} -s $config{'smb_conf'} maxrid 2>&1");
-	$out =~ /rid:\s+(\d+)/ ||
-		&error("$config{'net'} failed : <pre>$out</pre>");
-	local $maxrid = $1 + 1;
+	local $maxrid = $out =~ /rid:\s+(\d+)/ ? $1 + 1 : undef;
 	$maxrid = 1000 if ($maxrid < 1000);	# Should be >1000
 	$out = &backquote_logged(
 		"$config{'net'} -s $config{'smb_conf'} groupmap add".
