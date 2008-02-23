@@ -3247,7 +3247,9 @@ if (exists($main::locked_file_data{$realfile})) {
 		open(ORIGFILE, ">$realfile.webminorig");
 		print ORIGFILE $main::locked_file_data{$realfile};
 		close(ORIGFILE);
-		$diff = `diff "$realfile.webminorig" "$realfile"`;
+		$diff = &backquote_command(
+			"diff ".quotemeta("$realfile.webminorig")." ".
+				quotemeta($realfile)." 2>/dev/null");
 		push(@main::locked_file_diff,
 		     { 'type' => $type, 'object' => $realfile,
 		       'data' => $diff } ) if ($diff);
