@@ -51,6 +51,7 @@ homes_dir=Subdirectory for mailbox user home directories,0,20
 passwd_mode=Password field type,1,1-Randomly generated password,0-Enter password once,2-Enter password twice
 passwd_length=Length of randomly generated password,3,Default (15 characters),5
 webalizer_nocron=Setup Webalizer Cron job for each virtual server?,1,0-Yes,1-No
+allow_subdoms=Allow creation of sub-domains?,1,1-Yes,0-No,-Decide automatically
 denied_domains=Regular expressions for disallowed domains,0
 
 line2.1=SSL settings,11
