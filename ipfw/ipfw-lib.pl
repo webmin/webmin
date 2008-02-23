@@ -8,7 +8,9 @@ do '../web-lib.pl';
 do '../ui-lib.pl';
 if (&foreign_check("net")) {
 	&foreign_require("net", "net-lib.pl");
-	$has_net_lib = 1;
+	if (defined(&net::get_rc_conf)) {
+		$has_net_lib = 1;
+		}
 	}
 
 # Work out save file
