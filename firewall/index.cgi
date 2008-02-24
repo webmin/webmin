@@ -90,7 +90,7 @@ if (!$config{'direct'} &&
 		print &text($in{'reset'} ? 'index_rsetup' : 'index_setup',
 			    "<tt>$iptables_save_file</tt>"),"<p>\n";
 		print "<form action=setup.cgi>\n";
-		print "<input type=hidden name=reset value='$in{'reset'}'>\n";
+		print &ui_hidden("reset", $in{'reset'});
 		print "<center><table><tr><td>\n";
 		print "<input type=radio name=auto value=0 checked> ",
 		      "$text{'index_auto0'}<p>\n";
@@ -168,8 +168,7 @@ else {
 	if ($access{'newchain'}) {
 		# Show form to create a chain
 		print "<form action=newchain.cgi>\n";
-		print "<td align=right><input type=hidden name=table ",
-		      "value='$in{'table'}'>\n";
+		print "<td align=right>",&ui_hidden("table", $in{'table'});
 		print "<input type=submit value='$text{'index_cadd'}'>\n";
 		print "<input name=chain size=20></td></form>\n";
 		print "</tr></table>\n";
@@ -184,7 +183,7 @@ else {
 		print "<b>",$text{"index_chain_".lc($c)} ||
 			    &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
 		print "<form action=save_policy.cgi>\n";
-		print "<input type=hidden name=table value='$in{'table'}'>\n";
+		print &ui_hidden("table", $in{'table'});
 		print "<input type=hidden name=chain value='$c'>\n";
 		if (@rules) {
 			@links = ( &select_all_link("d", $form),
@@ -215,7 +214,7 @@ else {
 				  $text{"index_jump_".lc($r->{'j'}->[1])} ||
 				  &text('index_jump', $r->{'j'}->[1]);
 				if ($edit) {
-					push(@cols, "<a href='edit_rule.cgi?table=$in{'table'}&idx=$r->{'index'}'>$act</a>");
+					push(@cols, "<a href='edit_rule.cgi?table=".&urlize($in{'table'})."&idx=$r->{'index'}'>$act</a>");
 					}
 				else {
 					push(@cols, $act);
@@ -236,7 +235,8 @@ else {
 					}
 				else {
 					$mover .= "<a href='move.cgi?table=".
-					      "$in{'table'}&idx=$r->{'index'}&".
+					      &urlize($in{'table'}).
+					      "&idx=$r->{'index'}&".
 					      "down=1'><img src=".
 					      "images/down.gif border=0></a>";
 					}
@@ -245,7 +245,8 @@ else {
 					}
 				else {
 					$mover .= "<a href='move.cgi?table=".
-					      "$in{'table'}&idx=$r->{'index'}&".
+					      &urlize($in{'table'}).
+					      "&idx=$r->{'index'}&".
 					      "up=1'><img src=images/up.gif ".
 					      "border=0></a>";
 					}
@@ -254,11 +255,13 @@ else {
 				# Before / after adder
 				local $adder;
 				$adder .= "<a href='edit_rule.cgi?table=".
-				      "$in{'table'}&chain=$c&new=1&".
+				      &urlize($in{'table'}).
+				      "&chain=$c&new=1&".
 				      "after=$r->{'index'}'><img src=".
 				      "images/after.gif border=0></a>";
 				$adder .= "<a href='edit_rule.cgi?table=".
-				      "$in{'table'}&chain=$c&new=1&".
+				      &urlize($in{'table'}).
+				      "&chain=$c&new=1&".
 				      "before=$r->{'index'}'><img src=".
 				      "images/before.gif border=0></a>";
 				push(@cols, $adder);
@@ -342,7 +345,7 @@ else {
 			}
 		if ($access{'apply'}) {
 			print "<tr><form action=apply.cgi>\n";
-			print "<input type=hidden name=table value='$in{'table'}'>\n";
+			print &ui_hidden("table", $in{'table'});
 			print "<td><input type=submit ",
 			      "value='$text{'index_apply'}'></td>\n";
 			if (@servers) {
@@ -356,7 +359,7 @@ else {
 
 		if ($access{'unapply'}) {
 			print "<tr><form action=unapply.cgi>\n";
-			print "<input type=hidden name=table value='$in{'table'}'>\n";
+			print &ui_hidden("table", $in{'table'});
 			print "<td><input type=submit ",
 			      "value='$text{'index_unapply'}'></td>\n";
 			print "<td>$text{'index_unapplydesc'}</td>\n";
@@ -365,8 +368,7 @@ else {
 
 		if ($init_support && $access{'bootup'}) {
 			print "<tr><form action=bootup.cgi>\n";
-			print "<input type=hidden name=table ",
-			      "value='$in{'table'}'>\n";
+			print &ui_hidden("table", $in{'table'});
 			print "<td nowrap><input type=submit ",
 			      "value='$text{'index_bootup'}'>\n";
 			printf "<input type=radio name=boot value=1 %s> %s\n",
