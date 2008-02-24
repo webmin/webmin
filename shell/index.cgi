@@ -2,6 +2,7 @@
 # index.cgi
 # Show the shell user interface
 
+$unsafe_index_cgi = 1;
 require './shell-lib.pl';
 %access = &get_module_acl();
 &ReadParseMime() if ($ENV{'REQUEST_METHOD'} ne 'GET');

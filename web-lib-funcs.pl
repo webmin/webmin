@@ -4,7 +4,7 @@
 use Socket;
 
 use vars qw($user_risk_level $loaded_theme_library $wait_for_input
-	    $done_webmin_header $trust_unknown_referers
+	    $done_webmin_header $trust_unknown_referers $unsafe_index_cgi
 	    %done_foreign_require $webmin_feedback_address
 	    $user_skill_level $pragma_no_cache $foreign_args);
 
@@ -2732,8 +2732,10 @@ if ($ENV{'HTTP_REFERER'} =~/^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?([^\/:@]+)/
 	}
 local $http_host = $ENV{'HTTP_HOST'};
 $http_host =~ s/:\d+$//;
-if ($0 && $ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ &&
-    $ENV{'SCRIPT_NAME'} !~ /^\/([a-z0-9\_\-]+)\/$/i &&
+if ($0 &&
+    ($ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ || $unsafe_index_cgi) &&
+    ($ENV{'SCRIPT_NAME'} !~ /^\/([a-z0-9\_\-]+)\/(index.cgi)?$/i ||
+     $unsafe_index_cgi) &&
     $0 !~ /session_login\.cgi$/ && !$gconfig{'referer'} &&
     $ENV{'MINISERV_CONFIG'} && !$main::no_referers_check &&
     $ENV{'HTTP_USER_AGENT'} !~ /^Webmin/i &&
