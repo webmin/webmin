@@ -51,7 +51,7 @@ if ($gconfig{'referers_none'}) {
 $sharing = $access{'uid'} ? 0 : 1;
 $mounting = !$access{'uid'} && &foreign_check("mount") ? 1 : 0;
 if ($in{'open'}) {
-	$open = "<param name=open value=\"$in{'open'}\">";
+	$open = "<param name=open value=\"".&html_escape($in{'open'})."\">";
 	}
 if ($session_id) {
 	$session = "<param name=session value=\"sid=$session_id\">";
