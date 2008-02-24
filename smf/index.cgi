@@ -2,6 +2,7 @@
 # index.cgi
 # Display a list of services, built from svcs command
 
+$unsafe_index_cgi = 1;
 require './smf-lib.pl';
 &ReadParse();
 &ui_print_header(undef, $text{'index_title'}, "", "help", 1, 1, 0,
