@@ -156,14 +156,15 @@ else {
 		@titles = grep { /\Q$in{'search'}\E/i } @titles;
 		print "<table width=100%><tr>\n";
 		print "<td> <b>",&text('index_showing',
-			"<tt>$in{'search'}</tt>"),"</b></td>\n";
+		    "<tt>".&html_escape($in{'search'})."</tt>"),"</b></td>\n";
 		print "<td align=right><a href='index.cgi'>",
 			"$text{'view_searchreset'}</a></td>\n";
 		print "</tr></table>\n";
 		}
 	elsif ($in{'show'}) {
 		# Limit to specific databases
-		@titles = split(/\0/, $in{'show'});
+		%show = map { $_, 1 } split(/\0/, $in{'show'});
+		@titles = grep { $show{$_} } @titles;
 		}
 
 	# List the databases
