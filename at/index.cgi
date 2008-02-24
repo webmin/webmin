@@ -64,7 +64,7 @@ elsif ($access{'mode'} == 3) {
 	$dir = $uinfo[7];
 	}
 else {
-	$usel = &ui_user_textbox("user", $in{ext_user});
+	$usel = &ui_user_textbox("user", $in{'ext_user'});
 	}
 print &ui_table_row($text{'index_user'}, $usel);
 
@@ -92,7 +92,7 @@ print &ui_table_row($text{'index_dir'},
 
 # Commands to run
 print &ui_table_row($text{'index_cmd'},
-		    &ui_textarea("cmd", $in{ext_cmd}, 5, 50));
+		    &ui_textarea("cmd", $in{'ext_cmd'}, 5, 50));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'create'} ] ]);
