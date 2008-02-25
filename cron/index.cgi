@@ -8,12 +8,7 @@ require './cron-lib.pl';
 $max_jobs = $userconfig{'max_jobs'} || $config{'max_jobs'};
 
 # Make sure cron is installed (very likely!)
-if ($config{'single_file'} && !-r $config{'single_file'}) {
-	$err = &text('index_esingle', "<tt>$config{'single_file'}</tt>");
-	}
-if ($config{'cron_get_command'} =~ /^(\S+)/ && !&has_command("$1")) {
-	$err = &text('index_ecmd', "<tt>$1</tt>");
-	}
+$err = &check_cron_config();
 if ($err) {
 	print $err,"<p>\n";
 	&ui_print_footer("/", $text{'index'});

@@ -265,6 +265,7 @@ else {
 # Add a Cron job to a user's file
 sub create_cron_job
 {
+&check_cron_config_or_error();
 &list_cron_jobs();	# init cache
 if ($config{'single_file'} && !$config{'cron_dir'}) {
 	# Add to the single file
@@ -292,6 +293,7 @@ else {
 # Add a Cron job at the top of the user's file
 sub insert_cron_job
 {
+&check_cron_config_or_error();
 &list_cron_jobs();	# init cache
 if ($config{'single_file'} && !$config{'cron_dir'}) {
 	# Insert into single file
@@ -1078,6 +1080,33 @@ if ($job->{'comment'} =~ /\S/) {
 	return 1;
 	}
 return 0;
+}
+
+# check_cron_config()
+# Returns an error message if the cron config doesn't look valid
+sub check_cron_config
+{
+# Check for single file and getter command
+if ($config{'single_file'} && !-r $config{'single_file'}) {
+	return &text('index_esingle', "<tt>$config{'single_file'}</tt>");
+	}
+if ($config{'cron_get_command'} =~ /^(\S+)/ && !&has_command("$1")) {
+	return &text('index_ecmd', "<tt>$1</tt>");
+	}
+# Check for directory
+local $fcron = ($config{'cron_dir'} =~ /\/fcron$/);
+if (!$single_user && !$fcron && !-d $config{'cron_dir'}) {
+	return &text('index_ecrondir', "<tt>$config{'cron_dir'}</tt>");
+	}
+return undef;
+}
+
+sub check_cron_config_or_error
+{
+local $err = &check_cron_config();
+if ($err) {
+	&error(&text('index_econfigcheck', $err));
+	}
 }
 
 1;
