@@ -155,6 +155,10 @@ while(<$fh>) {
 			$rec->{'type'} = undef;
 			$rec->{'action'} = $_;
 			$rec->{'eline'} = $lnum;
+			if ($rec->{'action'} =~ /^\"(.*)\"$/) {
+				# Quoted path .. un-quote
+				$rec->{'action'} = $1;
+				}
 			$rec = undef;
 			}
 		}
@@ -257,7 +261,12 @@ else {
 	elsif ($_[0]->{'type'} && $_[0]->{'type'} ne '=') {
 		push(@rv, $_[0]->{'type'}." ".$_[0]->{'action'});
 		}
+	elsif ($_[0]->{'action'} !~ /^\S+$/) {
+		# File with a space .. need to quote
+		push(@rv, "\"$_[0]->{'action'}\"");
+		}
 	else {
+		# File delivery
 		push(@rv, $_[0]->{'action'});
 		}
 	return @rv;
