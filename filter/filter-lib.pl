@@ -142,14 +142,19 @@ foreach my $r (@pmrc) {
 	if ($simple->{'condtype'} ne '<' && $simple->{'condtype'} ne '>' &&
 	    !$simple->{'body'} &&
 	    $simple->{'cond'} =~ /^\^?([a-zA-Z0-9\-]+):\s*(.*)/) {
-		if ($1 eq "X-Spam-Status" && $2 eq "Yes") {
+		local ($h, $v) = ($1, $2);
+		if ($h eq "X-Spam-Status" && $v eq "Yes") {
 			# Special case for spam detection
 			$simple->{'condspam'} = 1;
 			}
+		elsif ($h eq "X-Spam-Level" && $v =~ /^(\\\*)+$/) {
+			# Spam above some level
+			$simple->{'condlevel'} = length($v)/2;
+			}
 		else {
 			# Match on some header
-			$simple->{'condheader'} = $1;
-			$simple->{'condvalue'} = $2;
+			$simple->{'condheader'} = $h;
+			$simple->{'condvalue'} = $v;
 			}
 		delete($simple->{'cond'});
 		}
@@ -209,6 +214,10 @@ local @conds;
 local @flags;
 if ($filter->{'condspam'}) {
 	@conds = ( [ "", "X-Spam-Status: Yes" ] );
+	}
+elsif ($filter->{'condlevel'}) {
+	local $stars = join("", map { "\\*" } (1..$filter->{'condlevel'}));
+	@conds = ( [ "", "X-Spam-Level: $stars" ] );
 	}
 elsif ($filter->{'condheader'}) {
 	@conds = ( [ "", $filter->{'condheader'}.": ".
@@ -426,6 +435,9 @@ local $cond;
 local $lastalways = 0;
 if ($f->{'condspam'}) {
 	$cond = $text{'index_cspam'};
+	}
+elsif ($f->{'condlevel'}) {
+	$cond = &text('index_clevel', $f->{'condlevel'});
 	}
 elsif ($f->{'condheader'}) {
 	$cond = &text('index_cheader',

@@ -14,3 +14,5 @@ Added a Module Config option to create a .forward file automatically that runs p
 Added Module Config options to set the minimum allowed time between autoreplies, and to force use of that minimum.
 ---- Changes since 1.320 ----
 The default From: address for autoreplies now respects the default address set in the user's address book.
+---- Changes since 1.330 ----
+Added a filter condition to match mail with a spam score at or above some level.

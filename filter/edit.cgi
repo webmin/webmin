@@ -22,6 +22,7 @@ print &ui_hidden("idx", $in{'idx'});
 
 # Start of condition section
 $cmode = $filter->{'condspam'} ? 5 :
+	 $filter->{'condlevel'} ? 6 :
          $filter->{'condheader'} ? 4 :
 	 $filter->{'condtype'} eq '<' ? 3 :
 	 $filter->{'condtype'} eq '>' ? 2 :
@@ -37,6 +38,11 @@ print &ui_table_row(
 print &ui_table_row(
 	&ui_oneradio("cmode", 5, $text{'edit_cmode5'}, $cmode == 5),
 	"", undef, \@tds);
+
+# Spam level is at or above
+print &ui_table_row(
+	&ui_oneradio("cmode", 6, $text{'edit_cmode6'}, $cmode == 6),
+	&ui_textbox("condlevel", $filter->{'condlevel'}, 4), undef, \@tds);
 
 # Check some header
 @headers = ( "From", "To", "Subject", "Cc" );

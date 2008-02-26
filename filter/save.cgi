@@ -25,6 +25,7 @@ else {
 
 	# Parse condition first
 	delete($filter->{'condspam'});
+	delete($filter->{'condlevel'});
 	delete($filter->{'condheader'});
 	delete($filter->{'condtype'});
 	delete($filter->{'cond'});
@@ -33,8 +34,14 @@ else {
 		# Always enabled, so nothing to set!
 		}
 	elsif ($in{'cmode'} == 5) {
-		# Need to run spamassassin
+		# Match if spamassassin has set header
 		$filter->{'condspam'} = 1;
+		}
+	elsif ($in{'cmode'} == 6) {
+		# Match by spam level
+		$in{'condlevel'} =~ /^[1-9]\d*$/ ||
+			&error($text{'save_econdlevel'});
+		$filter->{'condlevel'} = $in{'condlevel'};
 		}
 	elsif ($in{'cmode'} == 4) {
 		# Check some header
