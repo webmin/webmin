@@ -18,3 +18,5 @@ Removed the Module Config option to control if a shell is used when executing a 
 ---- Changes since 1.390 ----
 Re-designed the user interface somewhat, and converted all code to use the new Webmin UI library.
 When commands are shown in a table and no parameters are needed, the names now link directly to run the command.
+---- Changes since 1.400 ----
+Added a popup progress tracker to commands with file upload fields.

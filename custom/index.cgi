@@ -36,9 +36,14 @@ elsif ($config{'display_mode'} == 0) {
 			$html .= &ui_form_start("sql.cgi");
 			}
 		else {
-			local ($up) = grep { $_->{'type'} == 10 } @a;
-			if ($up) {
-				$html .= &ui_form_start("run.cgi", "form-data");
+			local @up = grep { $_->{'type'} == 10 } @a;
+			if (@up) {
+				# Has upload fields
+				@ufn = map { $_->{'name'} } @up;
+				$upid = time().$$;
+				$html .= &ui_form_start("run.cgi?id=$upid",
+				  "form-data", undef,
+				  &read_parse_mime_javascript($upid, \@ufn));
 				}
 			elsif (@a) {
 				$html .= &ui_form_start("run.cgi", "post");

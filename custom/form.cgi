@@ -11,12 +11,17 @@ $cmd = $cmds[$in{'idx'}];
 # Display form for command parameters
 &ui_print_header(undef, $text{'form_title'}, "");
 @a = @{$cmd->{'args'}};
-($up) = grep { $_->{'type'} == 10 } @a;
+@up = grep { $_->{'type'} == 10 } @a;
 if ($cmd->{'edit'}) {
 	print &ui_form_start("view.cgi");
 	}
-elsif ($up) {
-	print &ui_form_start("run.cgi", "form-data");
+elsif (@up) {
+	# Has upload fields
+	@ufn = map { $_->{'name'} } @up;
+	$upid = time().$$;
+	$html .= &ui_form_start("run.cgi?id=$upid",
+	  "form-data", undef,
+	  &read_parse_mime_javascript($upid, \@ufn));
 	}
 elsif (@a) {
 	print &ui_form_start("run.cgi", "post");

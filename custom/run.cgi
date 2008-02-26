@@ -5,7 +5,8 @@
 require './custom-lib.pl';
 $theme_no_table = 1;
 if ($ENV{'CONTENT_TYPE'} =~ /multipart\/form-data/i) {
-	&ReadParseMime();
+	&ReadParse(\%getin, "GET");
+	&ReadParseMime(undef, \&read_parse_mime_callback, [ $getin{'id'} ]);
 	}
 else {
 	&ReadParse();

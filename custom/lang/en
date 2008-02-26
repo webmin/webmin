@@ -76,6 +76,7 @@ run_out2on=Output from command on $2 ..
 run_noout=No output generated
 run_ecmduser=User '$1' to run command as does not exist
 run_eopt=Invalid option selected
+run_eupload=No file to upload selected
 run_timeout=Command terminated after $1 second timeout.
 
 log_modify=Modified command $1
