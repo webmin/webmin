@@ -43,8 +43,11 @@ if (&no_user_procmailrc()) {
 	}
 
 @filters = &list_filters();
-@links = ( &select_all_link("d"), &select_invert_link("d"),
-	   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );
+@links = ( );
+if (@filters) {
+	push(@links, &select_all_link("d"), &select_invert_link("d"));
+	}
+push(@links, "<a href='edit.cgi?new=1'>$text{'index_add'}</a>");
 ($auto) = grep { $_->{'actionreply'} } @filters;
 if (&can_simple_autoreply() && !$auto) {
 	push(@links, "<a href='edit_auto.cgi'>$text{'index_addauto'}</a>");
@@ -55,7 +58,7 @@ if (&can_simple_forward() && !$fwd) {
 	}
 
 @folders = &mailbox::list_folders();
-if (@filters) {
+if (@filters || &get_global_spamassassin()) {
 	# Show table of filters
 	print &ui_form_start("delete.cgi", "post");
 	@tds = ( "width=5", "width=50%", "width=50%", "width=32" );
@@ -72,6 +75,16 @@ if (@filters) {
 			[ "", $text{'index_calways'}, $text{'index_aspam'},
 			  @filters > 1 ? ( "" ) : ( ) ],
 			\@tds);
+		# Delete level
+		$spamlevel = &get_global_spam_delete();
+		if ($spamlevel) {
+			print &ui_columns_row(
+				[ "", &text('index_clevel', $spamlevel),
+				      $text{'index_athrow'},
+				  @filters > 1 ? ( "" ) : ( ) ],
+				\@tds);
+			}
+		# Delivery path
 		$spamfile = &get_global_spam_path();
 		if ($spamfile) {
 			$folder = &file_to_folder($spamfile, \@folders, 0, 1);
@@ -145,32 +158,9 @@ else {
 	if (@pmrc) {
 		print "<b>$text{'index_none2'}</b><p>\n";
 		}
-	elsif (&get_global_spamassassin()) {
-		$spamfile = &get_global_spam_path();
-		if ($spamfile) {
-			$folder = &file_to_folder($spamfile, \@folders, 0, 1);
-			print "<b>";
-			$id = &mailbox::folder_name($folder);
-			if ($folder->{'fake'}) {
-				print &text('index_none4',
-					    "<u>$folder->{'name'}</u>");
-				}
-			else {
-				print &text('index_none4',
-				    "<a href='../mailbox/index.cgi?id=$id'>".
-				    "$folder->{'name'}</a>");
-				}
-			print "</b><p>\n";
-			}
-		else {
-			print "<b>$text{'index_none3'}</b><p>\n";
-			}
-		}
 	else {
 		print "<b>$text{'index_none'}</b><p>\n";
 		}
-	shift(@links);
-	shift(@links);
 	print &ui_links_row(\@links);
 	}
 

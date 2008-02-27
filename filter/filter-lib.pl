@@ -350,6 +350,33 @@ else {
 	}
 }
 
+# get_global_spam_delete()
+# Returns the global score above which spam is deleted, typically by a 
+# Virtualmin per-domain procmail file
+sub get_global_spam_delete
+{
+if ($virtualmin_domain_id) {
+	# Read the Virtualmin procmailrc for the domain
+	local $vmpmrc = "$config{'virtualmin_config'}/procmail/".
+		        $virtualmin_domain_id;
+	local @vmrecipes = &procmail::parse_procmail_file($vmpmrc);
+	local ($spamrec, $level) = &spam::find_delete_recipe(\@vmrecipes);
+	if ($spamrec) {
+		return $level;
+		}
+	}
+# Also check the global /etc/procmailrc
+local @recipes = &procmail::parse_procmail_file(
+	$spam::config{'global_procmailrc'});
+local ($spamrec, $level) = &spam::find_delete_recipe(\@recipes);
+if ($spamrec) {
+	return $level;
+	}
+else {
+	return undef;
+	}
+}
+
 sub has_spamassassin
 {
 return &foreign_installed("spam");
