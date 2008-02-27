@@ -648,18 +648,34 @@ return undef;
 }
 
 # find_file_recipe(&recipes)
-# Returns the recipe for delivering mail based on the X-Spam-Status header
+# returns the recipe for delivering mail based on the x-spam-status header
 sub find_file_recipe
 {
 local ($r, $c);
 foreach $r (@{$_[0]}) {
 	foreach $c (@{$r->{'conds'}}) {
-		if ($c->[1] =~ /X-Spam-Status/i) {
+		if ($c->[1] =~ /x-spam-status/i) {
 			return $r;
 			}
 		}
 	}
 return undef;
+}
+
+# find_delete_recipe(&recipes)
+# returns the recipe for delete mail based on the x-spam-level header, and
+# the level it deletes at.
+sub find_delete_recipe
+{
+local ($r, $c);
+foreach $r (grep { $_->{'action'} eq '/dev/null' } @{$_[0]}) {
+	foreach $c (@{$r->{'conds'}}) {
+		if ($c->[1] =~ /x-spam-level:\s+((\\\*)+)/i) {
+			return ($r, length($1)/2);
+			}
+		}
+	}
+return ( );
 }
 
 # find_virtualmin_recipe(&recipes)
