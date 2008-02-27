@@ -19,7 +19,7 @@ elsif (@up) {
 	# Has upload fields
 	@ufn = map { $_->{'name'} } @up;
 	$upid = time().$$;
-	$html .= &ui_form_start("run.cgi?id=$upid",
+	print &ui_form_start("run.cgi?id=$upid",
 	  "form-data", undef,
 	  &read_parse_mime_javascript($upid, \@ufn));
 	}
