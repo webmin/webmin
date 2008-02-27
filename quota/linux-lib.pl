@@ -521,7 +521,6 @@ local($rv, $line, @m, %mtab, @line);
 @line = split(/\n/, $_[0]);
 for(my $i=0; $i<@line; $i++) {
 	$line = $line[$i];
-	print STDERR "line = $line\n";
 	if ($line =~ /^(\S+): block grace period: (\d+) (\S+), file grace period: (\d+) (\S+)/ && $mtab{&resolve_links("$1")} eq $_[1]) {
 		# replace this line
 		$line = "$1: block grace period: $_[2] $unit_to_name{$_[3]}, file grace period: $_[4] $unit_to_name{$_[5]}";
@@ -536,7 +535,6 @@ for(my $i=0; $i<@line; $i++) {
 		$line = "Block grace: $_[2] $unit_to_name{$_[3]} Inode grace: $_[4] $unit_to_name{$_[5]}";
 		$i++;
 		}
-	print STDERR "new = $line\n";
 	$rv .= "$line\n";
 	}
 return $rv;
