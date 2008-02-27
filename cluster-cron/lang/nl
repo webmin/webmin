@@ -1,4 +1,6 @@
 create_title=Cluster Cron Taak Aanmaken
+delete_enone=Niets geselecteerd
+delete_err=Mislukt om cluster cron jobs te verwijderen
 edit_all=&lt;Alle hosts&gt;
 edit_group=Leden van $1
 edit_servers=Uitvoeren op servers
@@ -20,6 +22,7 @@ log_create=Cluster cron taak aangemaakt voor $1
 log_create_l=Cluster cron taak $2 aangemaakt voor $1
 log_delete=Cluster cron taak verwijderd voor $1
 log_delete_l=Cluster cron taak $2 verwijderd voor $1
+log_deletes=$1 cluster cron job verwijdert
 log_modify=Cluster cron taak aangepast voor $1
 log_modify_l=Cluster cron taak $2 aangepast voor $1
 log_run=$1 uitgevoerd op $2 servers
