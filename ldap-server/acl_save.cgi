@@ -26,7 +26,7 @@ else {
 		$p->{'what'} = '*';
 		}
 	else {
-		$in{'what_dn'} =~ /^\S+=\S+$/ || &error($text{'eacl_edn'});
+		$in{'what_dn'} =~ /^\S+=\S.*$/ || &error($text{'eacl_edn'});
 		$p->{'what'} =
 			'dn'.($in{'what_style'} ? '.'.$in{'what_style'} : '').
 			'='.$in{'what_dn'};
@@ -53,7 +53,7 @@ else {
 		# Who are we granting
 		if ($in{"wmode_$i"} eq "other") {
 			# Other DN
-			$in{"who_$i"} =~ /^\S+=\S+$/ ||
+			$in{"who_$i"} =~ /^\S+=\S.*$/ ||
 				&error(&text('eacl_ewho', $i+1));
 			$by->{'who'} = $in{"who_$i"};
 			}
