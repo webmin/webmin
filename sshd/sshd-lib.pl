@@ -269,7 +269,8 @@ if ($file) {
 	return &check_pid_file($file);
 	}
 else {
-	return &find_byname("sshd");
+	local ($rv) = &find_byname("sshd");
+	return $rv;
 	}
 }
 
