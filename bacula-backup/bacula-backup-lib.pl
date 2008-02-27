@@ -907,7 +907,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 			     'name' => &job_name($2),
 			     'status' => $4 });
 		}
-	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
+	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/){
 		push(@done, { 'id' => $1,
 			      'level' => &full_level($2),
 			      'files' => &remove_comma($3),
@@ -947,7 +947,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 	elsif ($sect == 2 && $l =~ /^\s*Backup\s+Job\s+started:\s+(\S+\s+\S+)/) {
 		$run[$#run]->{'date'} = $1;
 		}
-	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
+	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
 		push(@done, { 'id' => $1,
 			      'level' => &full_level($2),
 			      'files' => &remove_comma($3),
@@ -994,7 +994,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 		$run[$#run]->{'volume'} = $4;
 		$run[$#run]->{'device'} = $6;
 		}
-	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
+	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
 		push(@done, { 'id' => $1,
 			      'level' => &full_level($2),
 			      'files' => &remove_comma($3),
