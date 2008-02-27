@@ -131,7 +131,7 @@ open(QUOTA, "$config{'user_quota_command'} ".quotemeta($_[0])." |");
 $n=0; while(<QUOTA>) {
 	chop;
 	if (/^(Disk|\s+Filesystem)/) { next; }
-	if (/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+).(.{9})\s+(\S+)\s+(\S+)\s+(\S+)/) {
+	if (/^\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+).(.{9})\s+(\S+)\s+(\S+)\s+(\S+)/) {
 		$filesys{$n,'filesys'} = $1;
 		$filesys{$n,'ublocks'} = int($2);
 		$filesys{$n,'sblocks'} = int($3);
@@ -156,7 +156,7 @@ open(QUOTA, "$config{'group_quota_command'} ".quotemeta($_[0])." |");
 $n=0; while(<QUOTA>) {
 	chop;
 	if (/^(Disk|\s+Filesystem)/) { next; }
-	if (/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+).(.{9})\s+(\S+)\s+(\S+)\s+(\S+)/) {
+	if (/^\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+).(.{9})\s+(\S+)\s+(\S+)\s+(\S+)/) {
 		$filesys{$n,'filesys'} = $1;
 		$filesys{$n,'ublocks'} = int($2);
 		$filesys{$n,'sblocks'} = int($3);
