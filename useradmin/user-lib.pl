@@ -1686,12 +1686,13 @@ sub berkeley_cksum {
     return sprintf("%lu",${crc});;
 }
 
-# users_table(&users, [form], [no-last], [no-boxes], [&otherlinks])
+# users_table(&users, [form], [no-last], [no-boxes], [&otherlinks],
+#	      [&rightlinks])
 # Prints a table listing full user details, with checkboxes and buttons to
 # delete or disable multiple at once.
 sub users_table
 {
-local ($users, $formno, $nolast, $noboxes, $links) = @_;
+local ($users, $formno, $nolast, $noboxes, $links, $rightlinks) = @_;
 
 local (@ginfo, %gidgrp);
 &my_setgrent();
@@ -1716,7 +1717,8 @@ if ($anyedit) {
 			&select_invert_link("d", $_[1]));
 	}
 push(@linksrow, @$links);
-print &ui_links_row(\@linksrow);
+local @grid = ( &ui_links_row(\@linksrow), &ui_links_row($rightlinks) );
+print &ui_grid_table(\@grid, 2, 100, [ "align=left", "align=right" ]);
 
 local @tds = $anyedit ? ( "width=5" ) : ( );
 push(@tds, "width=15%", "width=10%");

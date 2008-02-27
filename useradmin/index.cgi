@@ -92,7 +92,10 @@ elsif (@ulist) {
 		}
 	elsif ($config{'display_mode'} == 1) {
 		# Show names, real names, home dirs and shells
-		&users_table(\@ulist, $formno++, 0, 0, [ &get_user_buttons() ]);
+		@b = &get_user_buttons();
+		@left = grep { !/batch_form|export_form/ } @b;
+		@right = grep { /batch_form|export_form/ } @b;
+		&users_table(\@ulist, $formno++, 0, 0, \@left, \@right);
 		$no_user_buttons = 1;
 		}
 	else {
@@ -247,7 +250,10 @@ return @rv;
 sub show_user_buttons
 {
 local @b = &get_user_buttons();
-print &ui_links_row(\@b);
+local @left = grep { !/batch_form|export_form/ } @b;
+local @right = grep { /batch_form|export_form/ } @b;
+local @grid = ( &ui_links_row(\@left), &ui_links_row(\@right) );
+print &ui_grid_table(\@grid, 2, 100, [ "align=left", "align=right" ]);
 }
 
 sub get_group_buttons

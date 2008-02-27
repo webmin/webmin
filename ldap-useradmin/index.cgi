@@ -180,7 +180,9 @@ if ($ucount > $mconfig{'display_max'}) {
 elsif (@ulist) {
 	# Show table of all users
 	@ulist = &useradmin::sort_users(\@ulist, $mconfig{'sort_mode'});
-	&useradmin::users_table(\@ulist, $form++, 1, 0, \@links);
+	@left = grep { !/batch_form|export_form/ } @links;
+	@right = grep { /batch_form|export_form/ } @links;
+	&useradmin::users_table(\@ulist, $form++, 1, 0, \@left, \@right);
 	}
 else {
 	# No users
