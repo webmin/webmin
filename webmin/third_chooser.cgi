@@ -2,8 +2,9 @@
 # third_chooser.cgi
 # Display a list of third-party modules for installation
 
+$trust_unknown_referers = 1;
 require './webmin-lib.pl';
-&ui_print_header(undef, );
+&popup_header($text{'third_title'});
 $mods = &list_third_modules();
 if (!ref($mods)) {
 	print "<b>",&text('third_failed', $mods),"</b><p>\n";
@@ -28,5 +29,5 @@ else {
 		}
 	print "</table>\n";
 	}
-&ui_print_footer();
+&popup_footer();
 

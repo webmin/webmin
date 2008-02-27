@@ -687,6 +687,7 @@ standard_eurl=Invalid standard modules URL
 third_failed=Failed to download modules list : $1
 third_header=Third Party Webmin modules
 third_eurl=Invalid third party modules URL
+third_title=Select Third Party Module
 
 lock_title=File Locking
 lock_desc=By default, Webmin will obtain a lock on any file that it modifies in order to prevent concurrent modification by multiple processes, which could lead to file corruption. This page allows you to selectively or totally disable locking if it is causing problems.
