@@ -51,7 +51,8 @@ else {
 		}
 	if (!$filter) {
 		# Create filter for facility and level
-		($fac, $lvl) = split(/\./, &get_loglevel());
+		local @ll = &get_loglevel();
+		($fac, $lvl) = split(/\./, $ll[0]);
 		$lvl =~ s/^=//;
 		$filter = { 'name' => 'filter',
 			    'type' => 1,

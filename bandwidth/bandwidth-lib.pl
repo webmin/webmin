@@ -93,10 +93,11 @@ sub find_sysconf
 {
 local ($conf) = @_;
 local $c;
+local @ll = &get_loglevel();
 foreach $c (@$conf) {
 	next if (!$c->{'active'});
 	next if ($c->{'file'} ne $bandwidth_log);
-	next if ($c->{'sel'}->[0] ne &get_loglevel());
+	next if ($c->{'sel'}->[0] ne $ll[0]);
 	return $c;
 	}
 return undef;
@@ -386,7 +387,7 @@ else {
 # get_firewall_loglevel()
 sub get_firewall_loglevel
 {
-return "kern.=debug";
+return ( "kern.=debug" );
 }
 
 ############### functions for ipfw #################
@@ -477,10 +478,10 @@ else {
 sub process_ipfw_line
 {
 local ($line, $hours, $time_now) = @_;
-if ($line =~ /^(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+).*ipfw:\s+\S+\s+Accept\s+(\S+)\s+(\S+)\s+(\S+)\s+(in|out)\s+via\s+(\S+)/) {
+if ($line =~ /^(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+).*ipfw:\s+\S+\s+(Accept|Count)\s+(\S+)\s+(\S+)\s+(\S+)\s+(in|out)\s+via\s+(\S+)/) {
 	# Found a valid line
 	local ($mon, $day, $hr, $min, $sec) = ($1, $2, $3, $4, $5);
-	local ($proto, $src, $dest, $dir, $iface) = ($6, $7, $8, $9, $10);
+	local ($proto, $src, $dest, $dir, $iface) = ($7, $8, $9, $10, $11);
 	local ($srchost, $srcport) = split(/:/, $src);
 	local ($desthost, $destport) = split(/:/, $dest);
 	$proto =~ s/:.*//;
@@ -510,7 +511,7 @@ if ($line =~ /^(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+).*ipfw:\s+\S+\s+Accept\s+(\S+)\s
 			$port = '_'.$srcport.'_'.$destport;
 			}
 		}
-	local $host = $dir eq "in" ? $dest : $src;
+	local $host = $dir eq "in" ? $desthost : $srchost;
 	local $key = $host.'_'.$proto.$port;
 	local ($in, $out) = split(/ /, $hour->{$key});
 	if ($dir eq "in") {
@@ -532,7 +533,7 @@ else {
 # get_ipfw_loglevel()
 sub get_ipfw_loglevel
 {
-return "security.*";
+return ( "security.*", "kern.debug" );
 }
 
 ############### functions for Shorewall #################
@@ -626,7 +627,7 @@ return undef;
 # get_shorewall_loglevel()
 sub get_shorewall_loglevel
 {
-return "kern.=debug";
+return ( "kern.=debug" );
 }
 
 sub process_shorewall_line
@@ -776,7 +777,7 @@ else {
 # get_ipfilter_loglevel()
 sub get_ipfilter_loglevel
 {
-return "local7.debug";
+return ( "local7.debug" );
 }
 
 1;

@@ -8,3 +8,5 @@ Firewall rules are now correctly created even when using Shorewall, by adding th
 The module now also supports the IPFilter firewall, although counts may not be accurate on fast network interfaces, as IPFilter appears to not log all packets.
 ---- Changes since 1.390 ----
 Bandwidth monitoring can now be setup on an interface that isn't currently active, including patterns like ppp+.
+---- Changes since 1.400 ----
+Fixed several bugs that prevented bandwidth monitoring from working properly on FreeBSD and OSX.
