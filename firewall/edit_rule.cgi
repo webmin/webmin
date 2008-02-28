@@ -162,7 +162,8 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
 		    "<input name=dpto size=6 value='$dpto'>"),"</td> </tr>\n";
 	}
 
-if (($table->{'name'} eq 'nat' && $rule->{'chain'} eq 'POSTROUTING') &&
+if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
+     $rule->{'chain'} ne 'OUTPUT') &&
     &can_jump("SNAT")) {
 	if ($rule->{'j'}->[1] eq 'SNAT') {
 		if ($rule->{'to-source'}->[1] =~

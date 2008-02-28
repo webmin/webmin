@@ -154,7 +154,7 @@ else {
 	print "<table width=100%><tr>\n";
 	print "<form action=index.cgi>\n";
 	print "<td><input type=submit value='$text{'index_change'}'>\n";
-	print "<select name=table>\n";
+	print "<select name=table onChange='form.submit()'>\n";
 	foreach $t (@tables) {
 		if (&can_edit_table($t->{'name'})) {
 			printf "<option value=%s %s>%s\n",
