@@ -463,7 +463,7 @@ sub pre_ipfw_process
 &foreign_require("ipfw", "ipfw-lib.pl");
 local $active = &ipfw::get_config("$ipfw::config{'ipfw'} show |", \$out);
 local $rule = &find_ipfw_rule($active, $config{'iface'});
-if ($rule) {
+if ($rule && $rule->{'count1'}) {
 	$average_packet_size = $rule->{'count2'} / $rule->{'count1'};
 	system("$ipfw::config{'ipfw'} zero $rule->{'num'} >/dev/null 2>&1");
 	}
