@@ -10,6 +10,7 @@ do 'folders-lib.pl';
 $config{'perpage'} ||= 20;
 $config{'column_count'} ||= 4;
 $gconfig{'logfiles'} = 0;	# file change logging never needs to be done
+$gconfig{'logfullfiles'} = 0;
 
 # Always detect the mail system if not set
 if ($config{'mail_system'} == 3) {
