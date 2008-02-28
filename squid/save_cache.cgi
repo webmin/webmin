@@ -78,11 +78,12 @@ if ($squid_version < 2) {
 	&save_list("cache_stoplist_pattern", undef, $conf);
 	}
 @noch = split(/\0/, $in{'no_cache'});
+$nochname = $squid_version >= 2.6 ? 'cache' : 'no_cache';
 if (@noch) {
-	$nc[0] = { 'name' => 'no_cache',
+	$nc[0] = { 'name' => $nochname,
 		   'values' => [ "deny", @noch ] };
 	}
-&save_directive($conf, "no_cache", \@nc, "acl");
+&save_directive($conf, $nochname, \@nc, "acl");
 &save_opt_time("reference_age", $conf);
 if ($squid_version < 2) {
 	&save_opt("request_size", \&check_size, $conf);
