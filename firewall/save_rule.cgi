@@ -58,8 +58,9 @@ else {
 			delete($rule->{'reject-with'});
 			}
 		}
-	if ($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING' ||
-	    $table->{'name'} eq 'nat' && $rule->{'chain'} eq 'POSTROUTING') {
+
+	# Parse redirect or masquerade input
+	if ($table->{'name'} eq 'nat') {
 		if ($rule->{'j'}->[1] eq 'REDIRECT' && !$in{'rtodef'}) {
 			$in{'rtofrom'} =~ /^\d+$/ ||
 				&error($text{'save_ertoports'});

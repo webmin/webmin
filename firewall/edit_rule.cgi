@@ -122,7 +122,8 @@ if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'POSTROUTING') &&
 		    "<input name=rtoto size=6 value='$rtoto'>"),"</td> </tr>\n";
 	}
 
-if (($table->{'name'} eq 'nat' && $rule->{'chain'} eq 'POSTROUTING') &&
+if (($table->{'name'} eq 'nat' && $rule->{'chain'} ne 'PREROUTING' &&
+     $rule->{'chain'} ne 'OUTPUT') &&
     &can_jump("MASQUERADE")) {
 	# Show inputs for masquerading ports
 	if ($rule->{'j'}->[1] eq 'MASQUERADE') {

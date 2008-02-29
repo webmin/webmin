@@ -18,4 +18,4 @@ On Debian 3.1 systems, IPtables rules are saved in /etc/iptables.up.rules and ac
 ---- Changes since 1.350 ----
 Added a setup option to configure a firewall for a typical hosting server.
 ---- Changes since 1.400 ----
-Show SNAT inputs in custom NAT chains.
+Show SNAT and masquerade inputs in custom NAT chains.
