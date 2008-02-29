@@ -6,14 +6,14 @@ require './squid-lib.pl';
 $access{'headeracc'} || &error($text{'header_ecannot'});
 &lock_file($config{'squid_conf'});
 $conf = &get_config();
-($pos, $move) = @ARGV;
+($pos, $move, $type) = @ARGV;
 
-@headeracc = &find_config("header_access", $conf);
+@headeracc = &find_config($type, $conf);
 $newpos = $pos + $move;
 $oldv = $headeracc[$pos]->{'values'};
 $headeracc[$pos]->{'values'} = $headeracc[$newpos]->{'values'};
 $headeracc[$newpos]->{'values'} = $oldv;
-&save_directive($conf, "header_access", \@headeracc);
+&save_directive($conf, $type, \@headeracc);
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
 &webmin_log("move", "headeracc");

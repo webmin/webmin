@@ -8,7 +8,7 @@ $access{'headeracc'} || &error($text{'headeracc_ecannot'});
 $conf = &get_config();
 &error_setup($text{'headeracc_err'});
 
-@headeracc = &find_config("header_access", $conf);
+@headeracc = &find_config($in{'type'}, $conf);
 if (defined($in{'index'})) {
 	$h = $conf->[$in{'index'}];
 	}
@@ -22,11 +22,11 @@ else {
 	@vals = ( $in{'name'}, $in{'action'} );
 	foreach $y (split(/\0/, $in{'yes'})) { push(@vals, $y); }
 	foreach $n (split(/\0/, $in{'no'})) { push(@vals, "!$n"); }
-	$newh = { 'name' => 'header_access', 'values' => \@vals };
+	$newh = { 'name' => $in{'type'}, 'values' => \@vals };
 	if ($h) { splice(@headeracc, &indexof($h, @headeracc), 1, $newh); }
 	else { push(@headeracc, $newh); }
 	}
-&save_directive($conf, "header_access", \@headeracc);
+&save_directive($conf, $in{'type'}, \@headeracc);
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
 &webmin_log($in{'delete'} ? 'delete' : $h ? 'modify' : 'create',

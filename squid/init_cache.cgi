@@ -13,6 +13,7 @@ $conf = &get_config();
 if (!$in{'nouser'}) {
 	$in{'user'} || &error($text{'icache_ymcautrsa'});
 	@uinfo = getpwnam($in{'user'});
+	scalar(@uinfo) || &error($text{'icache_euser'});
 	@ginfo = getgrgid($uinfo[3]);
 	if ($squid_version < 2) {
 		$dir = { 'name' => 'cache_effective_user',

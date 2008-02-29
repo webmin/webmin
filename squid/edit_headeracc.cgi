@@ -7,11 +7,13 @@ $access{'headeracc'} || &error($text{'header_ecannot'});
 $conf = &get_config();
 
 if (!defined($in{'index'})) {
-	&ui_print_header(undef, $text{'header_create'}, "",
+	&ui_print_header(undef, $text{'header_create_'.$in{'type'}} ||
+				$text{'header_create'}, "",
 		undef, 0, 0, 0, &restart_button());
 	}
 else {
-	&ui_print_header(undef, $text{'header_edit'}, "",
+	&ui_print_header(undef, $text{'header_edit_'.$in{'type'}} ||
+				$text{'header_edit'}, "",
 		undef, 0, 0, 0, &restart_button());
 	@v = @{$conf->[$in{'index'}]->{'values'}};
 	}
@@ -20,6 +22,7 @@ print "<form action=save_headeracc.cgi>\n";
 if (@v) {
 	print "<input type=hidden name=index value='$in{'index'}'>\n";
 	}
+print &ui_hidden("type", $in{'type'});
 print "<table border>\n";
 print "<tr $tb> <td><b>$text{'header_header'}</b></td> </tr>\n";
 print "<tr $cb> <td><table>\n";

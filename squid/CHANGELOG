@@ -25,3 +25,4 @@ The httpd_accel family of directives are no longer shown when using Squid versio
 Directives that refer to ACLs like http_access are no longer re-positioned in the configuration file unless necessary.
 ---- Changes since 1.400 ----
 Use the cache directive instead of no_cache for Squid 2.6.
+Allow request and reply headers access control rules to be configured separately in Squid 3.0.
