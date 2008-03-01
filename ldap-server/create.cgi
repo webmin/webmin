@@ -59,12 +59,13 @@ if ($ok && $in{'example'}) {
 		# User
 		$edn = "uid=example, ".$dn;
 		@attrs = ( "cn", "Example user",
+			   "sn", "Example user",
 			   "uid", "example",
 			   "uidNumber", 9999,
 			   "gidNumber", 9999,
 			   "loginShell", "/bin/sh",
 			   "homeDirectory", "/home/example",
-			   "objectClass", [ "posixAccount" ],
+			   "objectClass", [ "posixAccount", "person" ],
 			   "userPassword", "*LK*" );
 		if ($in{'example'} == 2) {
 			# With mail

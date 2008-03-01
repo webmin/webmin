@@ -486,12 +486,7 @@ sub store_ldap_access
 {
 local ($a, $p) = @_;
 local @v = ( 'to' );
-if ($p->{'what'} =~ /^\S+$/) {
-	push(@v, $p->{'what'});
-	}
-else {
-	push(@v, "\"$p->{'what'}\"");
-	}
+push(@v, $p->{'what'});
 if ($p->{'filter'}) {
 	push(@v, "filter=$p->{'filter'}");
 	}
@@ -500,12 +495,7 @@ if ($p->{'attrs'}) {
 	}
 foreach my $b (@{$p->{'by'}}) {
 	push(@v, "by");
-	if ($b->{'who'} =~ /^\S+$/) {
-		push(@v, $b->{'who'});
-		}
-	else {
-		push(@v, "\"$b->{'who'}\"");
-		}
+	push(@v, $b->{'who'});
 	push(@v, $b->{'access'});
 	push(@v, @{$b->{'control'}});
 	}
