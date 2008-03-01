@@ -137,7 +137,7 @@ if ($squid_version >= 2.1) {
 	print "</td> </tr>\n";
 	}
 
-if ($squid_version >= 3.0) {
+if ($squid_version >= 2.6) {
 	print "<tr> <td><b>$text{'ech_timeo'}</b></td>\n";
 	printf "<td><input type=radio name=connect-timeout_def value=1 %s> $text{'ech_d'}\n",
 		$opts{'connect-timeout'} ? "" : "checked";
