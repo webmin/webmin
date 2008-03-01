@@ -80,6 +80,14 @@ if ($ok && $in{'example'}) {
 			   "mailForwardingAddress", "example\@somewhere.com",
 			   "objectClass", [ "top" ] );
 		}
+	elsif ($in{'example'} == 4) {
+		# Unix group
+		$edn = "cn=example, ".$dn;
+		@attrs = ( "cn", "example",
+			   "gidNumber", 9999,
+			   "memberUid", "example",
+			   "objectClass", [ "posixGroup" ] );
+		}
 
 	print &text('create_doingex',
 		    "<tt>".&html_escape($edn)."</tt>"),"<br>\n";

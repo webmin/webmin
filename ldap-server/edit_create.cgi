@@ -27,6 +27,7 @@ print &ui_table_row($text{'create_example'},
 		  [ [ 0, $text{'no'} ],
 		    [ 1, $text{'create_unix'} ],
 		    [ 2, $text{'create_mail'} ],
+		    [ 4, $text{'create_group'} ],
 		    [ 3, $text{'create_virt'} ] ]));
 
 print &ui_table_end();

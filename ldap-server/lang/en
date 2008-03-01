@@ -186,6 +186,7 @@ create_example=Create example object under new DN?
 create_unix=Unix user
 create_mail=Unix user with mail
 create_virt=Address mapping
+create_group=Unix group
 create_edom=Missing or invalid domain name
 create_edn=Missing or invalid distinguished name
 create_err=Failed to create new tree
