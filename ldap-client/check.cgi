@@ -11,7 +11,7 @@ $conf = &get_config();
 $user_base = &find_svalue("nss_base_passwd", $conf) ||
 	     &find_svalue("base", $conf);
 if (!$user_base) {
-	print &text('check_ebase'),"<p>\n";
+	&print_problem(&text('check_ebase'));
 	goto END;
 	}
 else {
@@ -22,7 +22,7 @@ else {
 print $text{'check_connect'},"<br>\n";
 $ldap = &ldap_connect(1, \$host);
 if (!ref($ldap)) {
-	print &text('check_econnect', $ldap),"<p>\n";
+	&print_problem(&text('check_econnect', $ldap));
 	goto END;
 	}
 else {
@@ -43,11 +43,11 @@ $rv = $ldap->search(base => $user_base,
 		    scope => $scope);
 if ($rv->code) {
 	# Search failed!
-	print &text('check_esearch', $rv->error),"<p>\n";
+	&print_problem(&text('check_esearch', $rv->error));
 	goto END;
 	}
 if (!$rv->count) {
-	print &text('check_eusers', "<tt>$user_base</tt>"),"<p>\n";
+	&print_problem(&text('check_eusers', "<tt>$user_base</tt>"));
 	goto END;
 	}
 else {
@@ -60,7 +60,7 @@ $nss = &get_nsswitch_config();
 ($passwd) = grep { $_->{'name'} eq 'passwd' } @$nss;
 ($ldapsrc) = grep { $_->{'src'} eq 'ldap' } @{$passwd->{'srcs'}};
 if (!$ldapsrc) {
-	print $text{'check_enss'},"<p>\n";
+	&print_problem($text{'check_enss'});
 	goto END;
 	}
 else {
@@ -72,7 +72,7 @@ $first = $rv->entry(0);
 print &text('check_match', "<tt>".$first->get_value("uid")."</tt>"),"<br>\n";
 @uinfo = getpwnam($first->get_value("uid"));
 if (!@uinfo) {
-	print $text{'check_ematch'},"<p>\n";
+	&print_problem($text{'check_ematch'});
 	goto END;
 	}
 else {
@@ -83,3 +83,8 @@ else {
 
 END:
 &ui_print_footer("", $text{'index_return'});
+
+sub print_problem
+{
+print "<font color=#ff0000>",@_,"</font><p>\n";
+}
