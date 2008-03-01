@@ -245,11 +245,18 @@ $_[0]->{'dn'} = "uid=$_[0]->{'user'},$base";
 local @classes = ( "posixAccount", "shadowAccount",
 		   split(/\s+/, $config{'other_class'}),
 		   @{$_[0]->{'ldap_class'}} );
+if ($schema->objectclass("person") && $config{'person'}) {
+	push(@classes, "person");
+	}
 @classes = &unique(@classes);
 local @attrs = &user_to_dn($_[0]);
 push(@attrs, &split_props($config{'props'}, $_[0]));
 push(@attrs, @{$_[0]->{'ldap_attrs'}});
 push(@attrs, "objectClass" => \@classes);
+if (&indexoflc("person", @classes) >= 0 && !&in_props(\@attrs, "sn")) {
+	# Person needs 'sn'
+	push(@attrs, "sn", &in_props(\@attrs, "cn"));
+	}
 local $rv = $ldap->add($_[0]->{'dn'}, attr => \@attrs);
 if ($rv->code) {
 	&error(&text('usave_eadd', $rv->error));
@@ -1203,6 +1210,19 @@ $string =~ tr/Ýýÿ/y/;
 $string =~ tr/ß/b/;
 $string =~ s/æÆ/ae/go;
 return $string;
+}
+
+# in_props(&props, name)
+# Looks up the value of a named property in a list
+sub in_props
+{
+local ($props, $name) = @_;
+for(my $i=0; $i<@$props; $i++) {
+	if (lc($props->[$i]) eq lc($name)) {
+		return $props->[$i+1];
+		}
+	}
+return undef;
 }
 
 1;

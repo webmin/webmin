@@ -55,3 +55,5 @@ All Samba attributes are removed when Samba access is disabled for a user.
 Added access control options to prevent use of the same UID or GID.
 ---- Changes since 1.390 ----
 Added locking to prevent concurrent writes to the LDAP database, to prevent UID collisions.
+---- Changes since 1.400 ----
+By default, all new Unix users are given the person object class too, as this seems to be needed in most new LDAP schemas.

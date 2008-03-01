@@ -345,6 +345,9 @@ else {
 
 		# Add to the ldap database
 		@classes = ( "posixAccount", "shadowAccount" );
+		if ($schema->objectclass("person") && $config{'person'}) {
+			push(@classes, "person");
+			}
 
 		push(@classes, split(/\s+/, $config{'other_class'}));
 		push(@classes, $samba_class) if ($in{'samba'});
@@ -353,16 +356,21 @@ else {
 		@classes = &unique(@classes);
 		$base = &get_user_base();
 		$newdn = "uid=$user,$base";
-		$rv = $ldap->add($newdn, attr =>
-                        [ "cn" => $real,
-			  "uid" => \@users,
-			  "uidNumber" => $uid,
-			  "loginShell" => $shell,
-			  "homeDirectory" => $home,
-			  "gidNumber" => $gid,
-			  "userPassword" => $pass,
-			  "objectClass" => \@classes,
-			  @props ]);
+		@allprops = ( "cn" => $real,
+                              "uid" => \@users,
+                              "uidNumber" => $uid,
+                              "loginShell" => $shell,
+                              "homeDirectory" => $home,
+                              "gidNumber" => $gid,
+                              "userPassword" => $pass,
+                              "objectClass" => \@classes,
+			      @props );
+		if (&indexoflc("person", @classes) >= 0 &&
+		    !&in_props(\@allprops, "sn")) {
+			# Person needs an 'sn' too
+			push(@allprops, "sn", $real);
+			}
+		$rv = $ldap->add($newdn, attr => \@allprops);
 		if ($rv->code) {
 			&error(&text('usave_eadd', $rv->error));
 			}
@@ -511,26 +519,31 @@ else {
 		else {
                        @cyrus_class_4 = split(' ',$cyrus_class);
                        foreach $one_cyrus_class (@cyrus_class_4) {     
-                       @classes = grep { $_ ne $one_cyrus_class } @classes;
-                       }
-
+			       @classes = grep { $_ ne $one_cyrus_class }
+					       @classes;
+			       }
 			}
 		push(@classes, "shadowAccount") if ($shadow);
 		&name_fields();
 		@classes = &unique(@classes);
 		@rprops = grep { defined($uinfo->get_value($_)) } @rprops;
 		$newdn = $in{'dn'};
-		$rv = $ldap->modify($in{'dn'}, replace =>
-                        { "cn" => $real,
-			  "uid" => \@users,
-			  "uidNumber" => $uid,
-			  "loginShell" => $shell,
-			  "homeDirectory" => $home,
-			  "gidNumber" => $gid,
-			  "userPassword" => $pass,
-			  "objectClass" => [ &unique(@classes) ],
-			  @props },
-			'delete' => \@rprops);
+		%allprops = ( "cn" => $real,
+			      "uid" => \@users,
+			      "uidNumber" => $uid,
+			      "loginShell" => $shell,
+			      "homeDirectory" => $home,
+			      "gidNumber" => $gid,
+			      "userPassword" => $pass,
+			      "objectClass" => \@classes,
+			      @props );
+		if (&indexoflc("person", @classes) >= 0 &&
+		    !$allprops{'sn'}) {
+			# Person needs 'sn'
+			$allprops{'sn'} = $real;
+			}
+		$rv = $ldap->modify($in{'dn'}, 'replace' => \%allprops,
+					       'delete' => \@rprops);
 		if ($rv->code) {
 			&error(&text('usave_emod', $rv->error));
 			}

@@ -22,6 +22,7 @@ group_mod_props=LDAP properties for modified groups<br>(In <i>fieldname</i>: <i>
 group_fields=Extra LDAP group properties to allow editing of<br>(In <i>fieldname</i> <i>description</i> format),9,40,3,\t
 multi_fields=Allow multiple values for extra properties?,1,1-Yes,0-No
 noclash=Attributes for which duplicates are disallowed,0
+person=Give all Unix users the <tt>person</tt> object class?,1,1-Yes,0-No
 
 line5=Home directory options,11
 homedir_perms=Permissions on new home directories,3,From Users and Groups module

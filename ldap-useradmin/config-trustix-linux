@@ -15,3 +15,4 @@ secmode=0
 samba_gclass=sambaGroup
 alias_same=0
 given_class=inetOrgPerson
+person=1
