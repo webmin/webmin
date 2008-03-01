@@ -245,6 +245,7 @@ $_[0]->{'dn'} = "uid=$_[0]->{'user'},$base";
 local @classes = ( "posixAccount", "shadowAccount",
 		   split(/\s+/, $config{'other_class'}),
 		   @{$_[0]->{'ldap_class'}} );
+local $schema = $ldap->schema();
 if ($schema->objectclass("person") && $config{'person'}) {
 	push(@classes, "person");
 	}
