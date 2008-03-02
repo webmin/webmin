@@ -2,6 +2,9 @@ index_econf=The NSS-LDAP configuration file $1 was not found on your system. May
 index_check=Validate Configuration
 index_checkdesc=Click this button to have Webmin validate your LDAP server configuration, by ensuring that the server can be contacted and that it contains users and groups.
 index_return=module index
+index_fixpam=<b>Warning</b> - Webmin has detected two separate LDAP configuration files on your system. NSS-LDAP is configured using $1, while PAM-LDAP uses $2. This may cause in-consistencies between the two services.
+index_fix=Fix by Linking Files
+index_ignore=Don't Show This Message
 
 server_title=LDAP Server Configuration
 server_header=LDAP server and login options

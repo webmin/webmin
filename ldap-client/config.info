@@ -1,4 +1,5 @@
 auth_ldap=LDAP client configuration file,8
+pam_ldap=PAM LDAP configuration file,3,Same as LDAP client file
 secret=Root LDAP client password file,8
 line0=LDAP browser and validation settings,11
 ldap_hosts=LDAP server hosts,3,From config file,50

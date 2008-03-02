@@ -3,3 +3,5 @@ First version of this module.
 ---- Changes since 1.290 ----
 Added Module Config options for specifying a different LDAP server to connect to for the browser and validation features.
 Object and attribute lists in the LDAP browser are now sorted.
+---- Changes since 1.400 ----
+On Debian/Ubuntu systems with separate PAM and NSS LDAP config files, offer to link them with a new button.

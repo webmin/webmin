@@ -11,6 +11,19 @@ if (!-r $config{'auth_ldap'}) {
 			[ "<tt>$config{'auth_ldap'}</tt>", undef ]));
 	}
 
+# Check for separate config files for PAM and NSS
+if ($config{'pam_ldap'} && -r $config{'pam_ldap'} && !$config{'nofixpam'} &&
+    !&same_file($config{'pam_ldap'}, $config{'auth_ldap'})) {
+	print "<center>\n";
+	print &ui_form_start("fixpam.cgi");
+	print &text('index_fixpam',
+		"<tt>".&html_escape($config{'auth_ldap'})."</tt>",
+		"<tt>".&html_escape($config{'pam_ldap'})."</tt>"),"<p>\n";
+	print &ui_form_end([ [ undef, $text{'index_fix'} ],
+			     [ "ignore", $text{'index_ignore'} ] ]);
+	print "</center>\n";
+	}
+
 # Show icons for option categories
 @pages = ( "server", "base", "pam", "switch", "browser" );
 @links = map { $_ eq "browser" ? "browser.cgi" :
