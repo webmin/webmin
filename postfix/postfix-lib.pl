@@ -964,7 +964,8 @@ elsif ($maps_type eq "ldap") {
 	local $conf = &ldap_value_to_conf($maps_file);
 	local $ldap = &connect_ldap_db($conf);
 	ref($ldap) || &error($ldap);
-	local @classes = split(/\s+/, $config{'ldap_class'} || "top");
+	local @classes = split(/\s+/, $config{'ldap_class'} ||
+				      "inetLocalMailRecipient");
 	local @attrs = ( "objectClass", \@classes );
 	local $name_attr = &get_ldap_key($conf);
 	push(@attrs, $name_attr, $_[1]->{'name'});
@@ -1836,7 +1837,8 @@ elsif ($type eq "ldap") {
 	if (!ref($ldap)) {
 		return $ldap;
 		}
-	local @classes = split(/\s+/, $config{'ldap_class'} || "top");
+	local @classes = split(/\s+/, $config{'ldap_class'} ||
+				      "inetLocalMailRecipient");
 	local $rv = $ldap->search(base => $conf->{'search_base'},
 				  filter => "(objectClass=$classes[0])",
 				  sizelimit => 1);

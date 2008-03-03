@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # Show a form for selecting the source for a map
 
+$trust_unknown_referers = 1;
 require './postfix-lib.pl';
 &ReadParse();
 &popup_header($text{'chooser_title'});

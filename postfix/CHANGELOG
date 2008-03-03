@@ -50,3 +50,5 @@ Added a button for manually editing the aliases file.
 Added more SMTP relaying restrictions.
 ---- Changes since 1.390 ----
 Outgoing email from selected addresses and domains can now be BCCd automatically using the new BCC Mapping page.
+---- Changes since 1.400 ----
+Changed the default LDAP class for maps to inetLocalMailRecipient.
