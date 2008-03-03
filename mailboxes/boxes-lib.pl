@@ -498,7 +498,7 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 			# expand them.
 			local $amail = { 'header' => $attach->{'header'},
 					 'body' => $attach->{'data'} };
-			&parse_mail($amail, $attach);
+			&parse_mail($amail, $attach, 0, $_[3]);
 			$attach->{'attach'} = [ @{$amail->{'attach'}} ];
 			map { $_->{'idx'} += scalar(@attach) }
 			    @{$amail->{'attach'}};
