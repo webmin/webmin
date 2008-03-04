@@ -16,6 +16,8 @@ index_refresh=Refresh Status
 index_refreshdesc=Perform an immediate refresh of all monitor statuses, instead of waiting for the next scheduled update.
 index_delete=Delete Selected
 index_group=Members of $1
+index_tmpls=List Templates
+index_tmplsdesc=View and edit templates used to construct email messages sent when monitored services go down.
 
 type_apache=Apache Webserver
 type_inetd=Internet and RPC Server

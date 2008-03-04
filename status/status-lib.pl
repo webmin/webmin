@@ -12,6 +12,8 @@ $cron_cmd = "$module_config_directory/monitor.pl";
 $oldstatus_file = "$module_config_directory/oldstatus";
 $fails_file = "$module_config_directory/fails";
 
+$templates_dir = "$module_config_directory/templates";
+
 %monitor_os_support = ( 'traffic' => { 'os_support' => '*-linux freebsd' },
 		      );
 
@@ -443,6 +445,56 @@ return ( { 'id' => 'tmobile',
            'desc' => 'Skytel',
            'domain' => 'skytel.com' },
         );
+}
+
+# list_templates()
+# Returns a list of hash refs, one for each email template
+sub list_templates
+{
+opendir(DIR, $templates_dir) || return ( );
+local @rv;
+foreach my $f (readdir(DIR)) {
+	if ($f =~ /^\d+$/) {
+		push(@rv, &get_template($f));
+		}
+	}
+closedir(DIR);
+return @rv;
+}
+
+# get_template(id)
+# Returns the hash ref for a specific template, by ID
+sub get_template
+{
+local ($id) = @_;
+local %tmpl;
+&read_file("$templates_dir/$id");
+$tmpl{'id'} = $id;
+$tmpl{'file'} = "$templates_dir/$id";
+$tmpl{'msg'} =~ s/\\n/\n/g;
+$tmpl{'msg'} =~ s/\\\\/\\/g;
+return \%tmpl;
+}
+
+# save_template(&template)
+# Creates or saves an email template
+sub save_template
+{
+local ($tmpl) = @_;
+$tmpl->{'id'} ||= time().$$;
+$tmpl->{'file'} = "$templates_dir/$tmpl->{'id'}";
+local %write = %$tmpl;
+$write{'msg'} =~ s/\\/\\\\/g;
+$write{'msg'} =~ s/\n/\\n/g;
+&write_file($tmpl->{'file'}, \%write);
+}
+
+# delete_template(&template)
+# Removes an existing template
+sub delete_template
+{
+local ($tmpl) = @_;
+&unlink_file($tmpl->{'file'});
 }
 
 1;

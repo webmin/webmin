@@ -2,6 +2,7 @@
 # index.cgi
 # List all services currently being monitored
 
+$trust_unknown_referers = 1;
 require './status-lib.pl';
 print "Refresh: $config{'refresh'}\r\n"
 	if ($config{'refresh'});
@@ -75,11 +76,19 @@ else {
 print "<hr>\n";
 print &ui_buttons_start();
 if ($access{'sched'}) {
+	# Open scheduled monitoring form
 	print &ui_buttons_row("edit_sched.cgi",
 			      $text{'index_sched'},
 			      $text{'index_scheddesc'});
 	}
+if ($access{'edit'}) {
+	# Email templates button
+	print &ui_buttons_row("list_tmpls.cgi",
+			      $text{'index_tmpls'},
+			      $text{'index_tmplsdesc'});
+	}
 if (!$config{'index_status'}) {
+	# Refresh now
 	print &ui_buttons_row("refresh.cgi",
 			      $text{'index_refresh'},
 			      $text{'index_refreshdesc'});
