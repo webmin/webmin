@@ -802,4 +802,7 @@ blocked_clear=Clear All Blocks
 blocked_cleardesc=Click this button to clear all current host and user blocks, by restarting the Webmin server process.
 blocked_restarting=The Webmin server process is now restarting to clear blocked hosts and users - please wait for a few seconds before continuing.
 
+refreshmods_title=Refresh Modules
+refreshmods_installed=Checking for usable Webmin modules ..
+refeshmods_counts=.. found $2 with installed applications, $1 not installed.
 

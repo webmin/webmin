@@ -411,6 +411,7 @@ print "Wrote source deb/${product}_$ver.dsc\n";
 if (!$webmail) {
 	# Add to our repository
 	chdir("/usr/local/webadmin/deb/repository");
+	system("reprepro -Vb . remove sarge $product");
 	system("reprepro -Vb . includedeb sarge ../${product}_${ver}_all.deb");
 	}
 

@@ -3037,6 +3037,14 @@ foreach $m (@rv) {
 		$m->{'desc'} = $gaccess{"desc_".$m->{'dir'}};
 		}
 	}
+
+# Apply installed flags
+local %installed;
+&read_file_cached("$config_directory/installed.cache", \%installed);
+foreach $m (@rv) {
+	$m->{'installed'} = $installed{$m->{'dir'}};
+	}
+
 return @rv;
 }
 

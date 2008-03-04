@@ -1351,4 +1351,35 @@ else {
 return undef;
 }
 
+# build_installed_modules(force-all, force-mod)
+# Calls each module's install_check function, and updates the cache of
+# modules whose underlying servers are installed.
+sub build_installed_modules
+{
+local ($force, $mod) = @_;
+local %installed;
+local $changed;
+&read_file_cached("$config_directory/installed.cache", \%installed);
+local @changed;
+foreach my $minfo (&get_all_module_infos()) {
+	next if ($mod && $minfo->{'dir'} ne $mod);
+	next if (defined($installed{$minfo->{'dir'}}) && !$force && !$mod);
+	next if (!&check_os_support($minfo));
+	$@ = undef;
+	local $o = $installed{$minfo->{'dir'}};
+	eval {
+		local $main::error_must_die = 1;
+		$installed{$minfo->{'dir'}} =
+			&foreign_installed($minfo->{'dir'}, 0) ? 1 : 0;
+		};
+	if ($@) {
+		# Couldn't check .. assume no
+		$installed{$minfo->{'dir'}} = 0;
+		}
+	push(@changed, $minfo->{'dir'}) if ($installed{$minfo->{'dir'}} ne $o);
+	}
+&write_file("$config_directory/installed.cache", \%installed);
+return wantarray ? (\%installed, \@changed) : \%installed;
+}
+
 1;

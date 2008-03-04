@@ -234,6 +234,10 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$_[0]->{'multi'} = $in{'multi'};
 	$_[0]->{'links'} = $in{'links'};
 	$_[0]->{'xdev'} = $in{'xdev'};
+	if ($in{'update'} && $in{'rsh_def'} == 3) {
+		# Cannot append via FTP
+		&error($text{'dump_eftpupdate'});
+		}
 	$_[0]->{'update'} = $in{'update'};
 	if ($in{'gzip'} && $in{'update'}) {
 		&error($text{'dump_egzip3'});

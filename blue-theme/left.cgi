@@ -7,8 +7,12 @@ do './ui-lib.pl';
 &ReadParse();
 %text = &load_language($current_theme);
 
-# Work out what categories we have
+# Work out what modules and categories we have
 @modules = &get_visible_module_infos();
+if (&get_product_name() eq 'webmin') {
+	@unmodules = grep { $_->{'installed'} eq '0' } @modules;
+	@modules = grep { $_->{'installed'} ne '0' } @modules;
+	}
 %cats = &list_categories(\@modules);
 if (defined($cats{''})) {
 	$cats{'others'} = $cats{''};
@@ -94,6 +98,23 @@ else {
 			}
 		print "</div>\n";
 		}
+
+	# Show un-installed modules
+	if (@unmodules) {
+		&print_category_opener('_unused', $in{'_unused'} ? 1 : 0,
+		       "<font color=#888888>$text{'main_unused'}</font>");
+		$cls = $in{'_unused'} ? "itemshown" : "itemhidden";
+		print "<div class='$cls' id='_unused'>";
+		foreach $minfo (@unmodules) {
+			&print_category_link("$minfo->{'dir'}/",
+					     $minfo->{'desc'},
+					     undef,
+					     undef,
+					     $minfo->{'noframe'} ? "_top" : "",
+					);
+			}
+		print "</div>\n";
+		}
 	}
 
 # Show module/help search form
@@ -128,6 +149,12 @@ if (&get_product_name() eq 'webmin' &&		# For Webmin
     ) {
 	print "<div class='linkwithicon'><img src=images/mail-small.gif>\n";
 	print "<div class='aftericon'><a target=right href='feedback_form.cgi'>$text{'left_feedback'}</a></div></div>\n";
+	}
+
+# Show refesh modules link, for master admin
+if (&foreign_available("webmin")) {
+	print "<div class='linkwithicon'><img src=images/refresh-small.gif>\n";
+	print "<div class='aftericon'><a target=right href='webmin/refresh_modules.cgi'>$text{'main_refreshmods'}</a></div></div>\n";
 	}
 
 # Show logout link

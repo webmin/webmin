@@ -65,44 +65,14 @@ while(1) {
 		else {
 			&error_exit("Unknown permissions $perms");
 			}
-
-		# Open passive port
-		$pasv = &ftp_command("PASV", 2, \$err);
-		$pasv || &error_exit("FTP port failed : $err");
-		$pasv =~ /\(([0-9,]+)\)/;
-		@n = split(/,/ , $1);
-		&open_socket("$n[0].$n[1].$n[2].$n[3]", $n[4]*256 + $n[5],
-			     "CON", \$err) ||
-			&error_exit("FTP port failed : $err");
-
-		if ($mode == 0) {
-			# Read from file
-			&ftp_command("RETR $file", 1, \$err) ||
-				&error_exit("FTP read failed : $err");
-			$opened = 1;
-			}
-		elsif ($mode == 1) {
-			# Create new file if requested by the client, or if
-			# the touch command was specified by the caller
-			&ftp_command("STOR $file", 1, \$err) ||
-				&error_exit("FTP write failed : $err");
-			$touched = 0;
-			$opened = 1;
-			}
-		elsif ($mode == 2) {
-			# Otherwise append to the file
-			&ftp_command("APPE $file", 1, \$err) ||
-				&error_exit("FTP write failed : $err");
-			$opened = 1;
-			}
-		else {
-			$opened = 0;
-			}
 		print "A0\n";
 		}
 	elsif ($line =~ /^W(\d+)/) {
 		# Write to FTP server
-		$opened || &error_exit("FTP connection not opened yet");
+		if ($opened != 1) {
+			&open_ftp_file($mode);
+			}
+		#$opened || &error_exit("FTP connection not opened yet");
 		$len = $1;
 		read(STDIN, $buf, $len);
 		$wrote = (print CON $buf);
@@ -110,8 +80,9 @@ while(1) {
 		}
 	elsif ($line =~ /^R(\d+)/) {
 		# Read from to FTP server
-		# XXX doesn't work yet?
-		$opened || &error_exit("FTP connection not opened yet");
+		if ($opened != 2) {
+			&open_ftp_file(0);
+			}
 		$len = $1;
 		$read = read(CON, $buf, $len);
 		if ($read >= 0) {
@@ -167,4 +138,41 @@ $rv =~ s/<p>/\n\n/g;
 return $rv;
 }
 
+sub open_ftp_file
+{
+local ($mode) = @_;
+
+# Open passive port
+local $pasv = &ftp_command("PASV", 2, \$err);
+$pasv || &error_exit("FTP port failed : $err");
+$pasv =~ /\(([0-9,]+)\)/;
+local @n = split(/,/ , $1);
+&open_socket("$n[0].$n[1].$n[2].$n[3]", $n[4]*256 + $n[5],
+	     "CON", \$err) ||
+	&error_exit("FTP port failed : $err");
+
+if ($mode == 0) {
+	# Read from file
+	&ftp_command("RETR $file", 1, \$err) ||
+		&error_exit("FTP read failed : $err");
+	$opened = 2;
+	}
+elsif ($mode == 1) {
+	# Create new file if requested by the client, or if
+	# the touch command was specified by the caller
+	&ftp_command("STOR $file", 1, \$err) ||
+		&error_exit("FTP write failed : $err");
+	$touched = 0;
+	$opened = 1;
+	}
+elsif ($mode == 2) {
+	# Otherwise append to the file
+	&ftp_command("APPE $file", 1, \$err) ||
+		&error_exit("FTP write failed : $err");
+	$opened = 1;
+	}
+else {
+	$opened = 0;
+	}
+}
 

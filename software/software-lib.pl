@@ -177,7 +177,9 @@ return undef if (!defined(&update_system_resolve));
 return undef if (!&foreign_check($module_name));
 local $pkg = &update_system_resolve($name);
 return undef if (!$pkg);
-return &text('missing_link', $desc, "../$module_name/install_pack.cgi?source=3&update=".&urlize($pkg)."&return=".&urlize($return)."&returndesc=".&urlize($returndesc), $text{$update_system."_name"});
+local ($cpkg) = caller();
+local $caller = eval '$'.$cpkg.'::module_name';
+return &text('missing_link', $desc, "../$module_name/install_pack.cgi?source=3&update=".&urlize($pkg)."&return=".&urlize($return)."&returndesc=".&urlize($returndesc)."&caller=".&urlize($caller), $text{$update_system."_name"});
 }
 
 # update_system_button(field-name, label)

@@ -9,6 +9,8 @@ main_none=You do not have access to any Webmin modules.
 main_skill=Skill level
 main_readonly=(Read-only mode)
 main_return=Return to $1
+main_unused=Un-used Modules
+main_refreshmods=Refesh Modules
 
 link_essl=The Net::SSLeay Perl module needed to make HTTPS connections is not installed on your system.
 

@@ -282,3 +282,12 @@ $theme_ui_columns_count++;
 return $rv;
 }
 
+sub theme_post_change_modules
+{
+print "<script>\n";
+print "top.left.location = top.left.location;\n";
+print "</script>\n";
+}
+
+1;
+

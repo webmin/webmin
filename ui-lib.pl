@@ -181,7 +181,7 @@ sub ui_form_start
 return &theme_ui_form_start(@_) if (defined(&theme_ui_form_start));
 local ($script, $method, $target, $tags) = @_;
 local $rv;
-$rv .= "<form class='ui_form' action='$script' ".
+$rv .= "<form class='ui_form' action='".&html_escape($script)."' ".
 	($method eq "post" ? "method=post" :
 	 $method eq "form-data" ?
 		"method=post enctype=multipart/form-data" :
@@ -1128,10 +1128,10 @@ if ($i%$cols) {
 	$rv .= "</tr>\n";
 	}
 $rv .= "</table>\n";
-if ($title) {
+if (defined($title)) {
 	$rv = "<table class=ui_table border ".
 	      ($width ? " width=$width%" : "").">\n".
-	      "<tr $tb> <td><b>$title</b></td> </tr>\n".
+	      ($title ? "<tr $tb> <td><b>$title</b></td> </tr>\n" : "").
               "<tr $cb> <td>$rv</td> </tr>\n".
 	      "</table>";
 	}

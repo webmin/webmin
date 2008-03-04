@@ -100,6 +100,7 @@ dump_emulti2=Multi-file backups cannot be done to a remote server
 dump_ermt=Missing or invalid path to <tt>rmt</tt> program
 dump_reverify=Attempt test restore after backup to verify?
 dump_remount=Remount with <tt>noatime</tt> option during backup?
+dump_eftpupdate=Adding files to an existing archive is not possible when using FTP.
 
 edit_err=Failed to create backup
 edit_edir=Missing backup directory

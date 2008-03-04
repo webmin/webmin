@@ -83,6 +83,16 @@ elsif ($in{'source'} == 3) {
 	&webmin_log($config{'update_system'}, "install", undef,
 		    { 'packages' => \@packs } ) if (@packs);
 
+	if ($in{'caller'} && &foreign_check("webmin")) {
+		# Software installed - refresh installed flag cache
+		&foreign_require("webmin", "webmin-lib.pl");
+		($inst, $changed) =
+			&webmin::build_installed_modules(0, $in{'caller'});
+		if (@$changed && defined(&theme_post_change_modules)) {
+			&theme_post_change_modules();
+			}
+		}
+
 	if ($in{'return'}) {
 		&ui_print_footer($in{'return'}, $in{'returndesc'});
 		}

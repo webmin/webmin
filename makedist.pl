@@ -37,7 +37,8 @@ $zipdir = "zips";
 	  "config-lib.pl", "entities_map.txt", "ui-lib.pl",
 	  "password_form.cgi", "password_change.cgi", "pam_login.cgi",
 	  "module_chooser.cgi", "config-windows", "xmlrpc.cgi",
-	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi" );
+	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi",
+	 );
 if ($min) {
 	# Only those required by others
 	@mlist = ("cron", "init", "inittab", "proc", "webmin", "acl", "servers",
@@ -151,7 +152,7 @@ if (!$min && -d $zipdir) {
 	system("rm -rf $zipdir/webmin");
 	system("mkdir $zipdir/webmin");
 	system("cp -rp $tardir/$dir/* $zipdir/webmin");
-	system("rm -rf $zipdir/webmin/{fdisk,exports,bsdexports,hpuxexports,sgiexports,zones,rbac}");
+	system("rm -rf $zipdir/webmin/{fdisk,exports,bsdexports,hpuxexports,sgiexports,zones,rbac,Webmin}");
 	system("rm -rf $zipdir/webmin/acl/Authen-SolarisRBAC-0.1/*");
 	system("rm -f $zipdir/webmin/software/msi-lib.pl");
 	system("echo zip >$zipdir/webmin/install-type");

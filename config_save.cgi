@@ -43,6 +43,12 @@ if (defined(&$pfn)) {
 	&foreign_call($m, "config_post_save", \%config, \%oldconfig);
 	}
 
+# Refresh installed modules
+if (&foreign_check("webmin")) {
+	&foreign_require("webmin", "webmin-lib.pl");
+	&webmin::build_installed_modules(0, $m);
+	}
+
 &webmin_log("_config_", undef, undef, \%in, $m);
 &redirect("/$m/");
 
