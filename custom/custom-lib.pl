@@ -487,10 +487,10 @@ if ($a->{'type'} == 0) {
 	return &ui_textbox($n, undef, 30);
 	}
 elsif ($a->{'type'} == 1 || $a->{'type'} == 2) {
-	return &ui_user_textbox($u, undef, $form);
+	return &ui_user_textbox($n, undef, $form);
 	}
 elsif ($a->{'type'} == 3 || $a->{'type'} == 4) {
-	return &ui_group_textbox($u, undef, $form);
+	return &ui_group_textbox($n, undef, $form);
 	}
 elsif ($a->{'type'} == 5 || $a->{'type'} == 6) {
 	return &ui_textbox($n, $a->{'opts'}, 30)." ".
