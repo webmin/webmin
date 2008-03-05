@@ -433,6 +433,7 @@ acl_startstop=Pot iniciar i aturar postfix
 acl_postfinger=Pot comprovar la configuració de postfix
 acl_manual=Pot editar el fitxer de configuració
 acl_dir=Directori permès de fitxers de mapejat
+acl_bcc=Pot editar el mapejat BCC
 
 boxes_title=Bústies d'Usuari
 boxes_user=Usuari
@@ -694,7 +695,8 @@ log_misc=He canviat les opcions generals
 log_opts=He canviat la reescriptura d'adreces i la mascarada
 log_aliases=He canviat les opcions d'àlies
 log_canonical=Canviant les opcins de mapejat canònic
-log_virtual=Canvi de les opcions de dominis virtuals
+log_virtual=He canviat les opcions de dominis virtuals
+log_bcc=He canviat les opcions de mapejat BCC
 log_transport=He canviat les opcions de mapejat de transport
 log_relocated=He canviatles opcions de mapejat de reubicacions
 log_header=He canviat les opcions de comprovaió de capçaleres
@@ -859,3 +861,7 @@ ldap_edelete=La supressió LDAP de $1 ha fallat: $2
 ldap_equery=La receerca LDAP de $1 ha fallat: $2
 ldap_erename=El renomenament LDAP de $1 a $2 ha fallat: $3
 ldap_emodify=La modificació LDAP de $1 ha fallat: $2
+
+bcc_title=Mapejats BCC
+bcc_ecannot=No tens permís per editar els mapejats BCC
+opts_sender_bcc_maps=Taules de consulte dels papejats BCC
