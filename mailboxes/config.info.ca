@@ -32,6 +32,7 @@ link_mode=Obre els enllaços a,1,1-Finestra nova,0-La mateixa finestra
 download=Tipus MIME d'adjuncions que sempres s'han de descarrregar,9,20,4,\t
 date_fmt=iFormat de la data a la llista de correu,1,dmy-DD/MM/AAAA,mdy-MM/DD/AAAA,ymd-AAAA/MM/DD
 date_tz=Zona horària de la data,3,Valor per defecte del sistema
+show_unread=Mostra el recompte de missatges no llegits,1,2-Sí,0-No
 
 line3=Opcions de spam,11
 spam_buttons=Mostra els botons d'informe de spam de,2,list-Les bústies,mail-Els missatges
