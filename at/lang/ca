@@ -20,11 +20,13 @@ index_delete=Cancel·la les Ordres Seleccionades
 
 edit_title=Ordre Planificada
 edit_cmd=Script complet per executar
+edit_shortcmd=Ordre a executar
 edit_header=Detalls de l'ordre planificada
 edit_delete=Cancel·la aquesta ordre
 edit_run=Executa-ho Ara
 edit_ejob=L'ordre planificada ja no existeix!
 edit_ecannot=No tens permís per editar aquesta ordre planificada
+edit_showfull=Mostra el script sencer.
 
 create_err=No he pogut crear l'ordre planificada
 create_euser=Hi falta el nom d'usuari o bé no és vàlid
