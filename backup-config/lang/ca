@@ -52,6 +52,7 @@ backup_mode4=Descarrega amb el navegador
 backup_path=fitxer del servidor
 backup_login=Entra com a usuari
 backup_pass=amb contrasenya
+backup_port=Port del servidor
 backup_epre=El mòdul $1 ha rebutjat la còpia: $2
 backup_enone=Cap mòdul ha donat cap fitxer existent per copiar!
 backup_etar=TAR ha fallat: $1
@@ -68,6 +69,8 @@ backup_epath=Hi falta el camí absolut del servidor FTP o bé és invàlid
 backup_epath2=Hi falta el camí absolut del servidor SSH o bé és invàlid
 backup_euser=Caràcters invàlids en l'usuari del servidor FTP
 backup_epass=Caràcters invàlids en la contrasenya del servidor FTP
+backup_eport=Hi falta el port FTP del seridor o bé és invàlid
+backup_esport=Hi falta el port SSH del seridor o bé és invàlid
 backup_emods=No has seleccionat cap mòdul
 backup_title=Configuració de Còpia
 backup_doing=Començant la còpia dels fitxers de configuració de mòduls a $1...
@@ -81,7 +84,9 @@ restore_failed=... ha fallat! $1
 restore_done=... completa. S'han restaurat $1 fitxers.
 
 nice_ftp=$2 on $1 via FTP
+nice_ftpp=$2 al port $3 de $1 via FTP
 nice_ssh=$2 on $1 via SSH
+nice_sshp=$2 al port $3 de $1 via SSH
 nice_upload=fitxer pujat
 nice_download=navegador
 
