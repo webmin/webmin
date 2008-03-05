@@ -233,7 +233,8 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 			     undef, undef, \@befores);
 		}
 	print &ui_links_row(\@links);
-	print &ui_form_end([ [ "delete", $text{'index_massdelete'} ],
+	print &ui_form_end([ $access{'delete'} ?
+			      ( [ "delete", $text{'index_massdelete'} ] ) : ( ),
 			     [ "update", $text{'index_massupdate'} ],
 			     [ "create", $text{'index_masscreate'} ] ]);
 	}
@@ -298,7 +299,8 @@ elsif (@zones) {
 			}
 		print &ui_links_row(\@crlinks);
 		print &ui_form_end([
-			[ "delete", $text{'index_massdelete'} ],
+			$access{'delete'} ?
+			  ( [ "delete", $text{'index_massdelete'} ] ) : ( ),
 			[ "update", $text{'index_massupdate'} ],
 			[ "create", $text{'index_masscreate'} ] ]);
 		}
