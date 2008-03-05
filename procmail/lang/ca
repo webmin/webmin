@@ -68,6 +68,8 @@ edit_cmode_gt=El correu és més gran de
 edit_conddesc=Per tal de portar a terme l'acció de sobre, cal que es compleixin totes les condicions de sota. Si no hi ha cap condició, l'acció s'executarà sempre.
 edit_none=Cap
 edit_lock=Fitxer específic
+edit_ctype=Tipus de condició
+edit_cvalue=Expressió regular o ordre
 
 save_err=No he pogut desar l'acció
 save_eaction_0=Hi falta el fitxer on afegir
