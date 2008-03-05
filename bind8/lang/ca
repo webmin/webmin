@@ -926,3 +926,4 @@ rmass_ettl=Hi falta el temps de vida o bé és invàlid
 rmass_doing=Afegint el registre a la zona $1...
 rmass_done=...fet
 rmass_eclash=...ja existeix un registre amb el mateix nom i valor $1.
+rmass_clash=Crea'l encara que ja existeixi un registre
