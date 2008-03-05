@@ -468,7 +468,7 @@ sub get_template
 {
 local ($id) = @_;
 local %tmpl;
-&read_file("$templates_dir/$id");
+&read_file("$templates_dir/$id", \%tmpl);
 $tmpl{'id'} = $id;
 $tmpl{'file'} = "$templates_dir/$id";
 $tmpl{'msg'} =~ s/\\n/\n/g;
@@ -477,7 +477,7 @@ return \%tmpl;
 }
 
 # save_template(&template)
-# Creates or saves an email template
+# Creates or saves an email template. Also does locking.
 sub save_template
 {
 local ($tmpl) = @_;
@@ -486,15 +486,20 @@ $tmpl->{'file'} = "$templates_dir/$tmpl->{'id'}";
 local %write = %$tmpl;
 $write{'msg'} =~ s/\\/\\\\/g;
 $write{'msg'} =~ s/\n/\\n/g;
+if (!-d $templates_dir) {
+	&make_dir($templates_dir, 0755);
+	}
+&lock_file($tmpl->{'file'});
 &write_file($tmpl->{'file'}, \%write);
+&unlock_file($tmpl->{'file'});
 }
 
 # delete_template(&template)
-# Removes an existing template
+# Removes an existing template. Also does locking.
 sub delete_template
 {
 local ($tmpl) = @_;
-&unlink_file($tmpl->{'file'});
+&unlink_logged($tmpl->{'file'});
 }
 
 1;

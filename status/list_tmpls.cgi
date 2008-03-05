@@ -2,6 +2,7 @@
 # List all email templates
 
 require './status-lib.pl';
+$access{'edit'} || &error($text{'tmpls_ecannot'});
 &ui_print_header(undef, $text{'tmpls_title'}, "");
 
 @tmpls = &list_templates();
@@ -11,13 +12,14 @@ if (@tmpls) {
 	print &ui_form_start("delete_tmpls.cgi", "post");
 	print &ui_links_row(\@links);
 	@tds = ( "width=5" );
-	print &ui_columns_start([ "", $text{'tmpl_desc'}, $text{'tmpl_msg'} ],
+	print &ui_columns_start([ "", $text{'tmpls_desc'}, $text{'tmpls_msg'} ],
 				100, 0, \@tds);
 	foreach $tmpl (@tmpls) {
 		$msg = $tmpl->{'msg'};
-		$msg = substr($msg, 0, 8)." ..." if (length($msg) > 80);
+		$msg = substr($msg, 0, 80)." ..." if (length($msg) > 80);
 		print &ui_checked_columns_row(
-			[ $tmpl->{'desc'}, &html_escape($msg) ],
+			[ "<a href='edit_tmpl.cgi?id=$tmpl->{'id'}'>".
+			  "$tmpl->{'desc'}</a>", &html_escape($msg) ],
 		      	\@tds, "d", $tmpl->{'id'});
 		}
 	print &ui_columns_end();
