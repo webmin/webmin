@@ -1,5 +1,6 @@
 line1=Opcions configurables,11
 max_len=Llargària màxima de l'ordre a mostrar,3,Il·limitada
+max_jobs=Nombre màxim de treballs cron a mostrar,3,Il·limitat
 show_time=Mostra la planificació dels treballs,1,1-Sí,0-No
 show_comment=Mostra els comentaris dels treballs,1,1-Sí,0-No
 show_run=Mostra l'estat actual dels treballs,1,2-Sí&#44; i permet l'inici i l'aturada,1-Sí,0-No
