@@ -416,6 +416,7 @@ mailq_size=Mida
 mailq_status=Estat
 mailq_cc=Cc
 mailq_subject=Tema
+mailq_dir=Directori
 mailq_unknown=Desconegut
 mailq_sending=Enviant
 mailq_dmsg=Per veure un missatge de la cua de correu, fes clic sobre el seu ID a la llista anterior.
@@ -602,6 +603,7 @@ file_emode=Mode desconegut!
 file_err=No he pogut editar el fitxer
 
 acl_opts=Pot editar les opcions del sendmail
+acl_ports=Pot editar els ports de xarxa
 acl_cws=Pot editar els dominis locals
 acl_masq=Pot configurar l'emmascarament de dominis
 acl_trusts=Pot editar els usuaris fiables
@@ -667,7 +669,8 @@ acl_usersu=Amb UID en el rang
 acl_spam=Adreces de control de <i>spam</i> que aquest usuari pot editar
 
 log_opts=He canviat les opcions del sendmail
-log_alias_create=He creat àlies $1
+log_ports=He canviat els ports de xarxa
+log_alias_create=He creat l'àlies $1
 log_alias_modify=He modificat l'àlies $1
 log_alias_delete=He suprimit l'àlies $1
 log_alias_manual=He editat manualment el fitxer d'àlies $1
@@ -802,3 +805,27 @@ restart_ekill=no he pogut enviar el senyal als porcessos sendmail: $1
 
 start_err=No he pogut iniciar sendmail
 start_ecannot=No tens permís per iniciar sendmail
+
+ports_title=Ports  de Xarxa
+ports_name=Nom del port
+ports_addr=Escolta les adreces
+ports_all=Totes
+ports_ip=IP
+ports_port=Escolta el port
+ports_opts=Opcions del port
+ports_mod_a=Requereix autenticació SMTP
+ports_mod_b=Utilitza la mateixa interfície per al correu de sortida
+ports_mod_c=Canonifica els noms de host
+ports_mod_f=Requuereix nom de host completament qualificat
+ports_mod_h=Utilitza el nom de la interfície per a HELO
+ports_mod_C=No canonifiquis els noms de host
+ports_mod_E=Desactiva ETRN
+ports_def1=Accepta correu al port 25 i a totes les adreces
+ports_def0=Accepta correu només als ports de sota...
+ports_err=No he pogut desar els ports de xarxa
+ports_ecannot=No tens permís per gestionar els ports de xarxa
+ports_ename=Nom de port invàlid a la fila $1
+ports_eclash=Nom de port duplicat a la fila $1
+ports_eaddress=Hi falta l'adreça IP a la fila $1 o bé és invàlida
+ports_eport=Hi falta el número de port a la fila $1 o bé és invàlid
+
