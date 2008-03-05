@@ -19,6 +19,11 @@ index_esingle=El fitxer $1 que llista els treballs Cron no existeix. Pot ser que
 index_delete=Suprimeix els Treballs Seleccionats
 index_disable=Desactiva els Treballs Seleccionats
 index_enable=Activa els Treballs Seleccionats
+index_esearch=No hi ha cap treball que coincideixi amb la recerca de $1.
+index_toomany=Hi ha massa treballs per mostrar. Ensenya els que coincideixin amb:
+index_ok=Busca
+index_searchres=Treballs cron que coincideien amb...
+index_reset=Reinici la cerca.
 
 edit_title=Edició de Treball Cron
 create_title=Creació de Treball Cron
