@@ -11,6 +11,7 @@ passwd_mode=Mode de hashing de les contrasenyes,1,1-Antic,0-Per defecte
 encoding=Codificació del contingut de la base de dades,3,Per defecte (de l'idioma actual)
 max_dbs=Nombre màxim de bases de dades i taules a mostrar,0,5
 max_text=Llargada màxima de mostra dels camps de text,3,Il·limitada
+charset=Joc de caràcters de les dades de MySQL,15,charset
 line2=Configuració del sistema,11
 mysqlshow=Camí de l'ordre mysqlshow,0
 mysqladmin=Camí de l'ordre mysqladmin,0
