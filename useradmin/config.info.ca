@@ -51,6 +51,7 @@ passwd_dict=Evita contrasenyes amb paraules de diccionari,1,1-Sí,0-No
 passwd_re=Expressió regular perl per a verificar la contrasenya,3,Cap
 passwd_same=Evita que les contrasenyes continguin noms d'usuari,1,1-Sí,0-No
 passwd_prog=Prograna extern de comprovació de contrasenyes,3,Cap
+passwd_progmode=Passa el nom i la contrasenya de l'usuari al programa,1,1-COm a entrada,0-Com a paràmetres
 
 line0=Ordres 'd'abans i després,11
 pre_command=Orde a executar abans de fer els canvis,0
