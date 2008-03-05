@@ -7,6 +7,7 @@ index_none=Encara no s'ha definit cap túnel PPTP.
 index_tunnel=Túnel $1
 index_add=Afegeix un nou túnel VPN PPTP.
 index_conn=Connecta't a:
+index_pass=amb la contrasenya opcional:
 index_conndesc=Fes clic sobre aquest botó per connectar amb el túnel VPN PPTP seleccionat utilitzant la seva configuració actual.
 index_disc=Desconnecta't de:
 index_discdesc=Fes clic sobre aquest botó per desconnectar el túnel VPN PPTP actiu seleccionat i treure totes les rutes que hi passen.
