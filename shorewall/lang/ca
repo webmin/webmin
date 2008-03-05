@@ -305,6 +305,7 @@ hosts_routestopped=Encamina encara que el tallafocs estigui aturat
 hosts_ip=Adreça o xarxa $1
 hosts_mac=Adreça MAC $1
 hosts_ipset=Conjunt IP $1
+hosts_any=Qualsevol host
 
 edit_before=Abans de l'entrada $1
 edit_after=Després de l'entrada $1
