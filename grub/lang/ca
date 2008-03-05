@@ -1,5 +1,5 @@
 index_title=Gestor d'Engegada GRUB
-index_add=Afegeix una nova opció d'engegada
+index_add=Afegeix una nova opció d'engegada.
 index_global=Edita les Opcions Globals
 index_globalmsg=Edita les opcions globals d'engegada que s'apliquen a totes les opcions del menú d'engegada, i tria el dispositiu on està instal·lat el GRUB.
 index_install=Instal·la el GRUB
@@ -15,7 +15,7 @@ title_header=Detalls de l'opció del menú d'engegada
 title_title=Títol de l'opció
 title_root=Partició d'engegada
 title_noverify=No muntis ni verifiquis la partició
-title_other=Altres
+title_other=Un altre fitxer de dispositiu
 title_sel=Seleccionat
 title_boot=Sistema operatiu a engegar
 title_kernel=Kernel
