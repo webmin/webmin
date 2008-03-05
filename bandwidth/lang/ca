@@ -13,6 +13,7 @@ index_missing3=S'han d'afegir algunes regles del tallafocs, i crear una entrada 
 index_missing2=S'han d'afegir algunes regles del tallafocs.
 index_missing1=S'ha de crear una entrada de configuració de syslog.
 index_iface=Interfície de xarxa externa
+index_other=Altres...
 index_setup=Configura-ho Ara
 index_by=Mostra el trànsit pe
 index_hour=hora
@@ -66,6 +67,7 @@ acl_setup=Pot configurar i desactivar la monitorització
 turnoff_ecannot=No tens permís per desactivar la monitorització
 
 setup_ecannot=No tens permís per activar la monitorització
+setup_eiface=Hi falta el nom de la interfície o bé és invàlid
 setup_ezone=No he pogut trobar cap zona Shorewall per a la interfícies seleccionada
 
 system_firewall=IPtables
