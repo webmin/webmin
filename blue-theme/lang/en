@@ -25,6 +25,8 @@ right_out=$1&nbsp;of&nbsp;$2
 right_quota=Disk usage and quota
 right_header5=Account Information
 right_uquota=Disk quota and usage
-right_time=Time on server
-
-
+right_time=Time on system
+right_uptime=System uptime
+right_updays=$1 days, $2 hours, $3 minutes
+right_uphours=$1 hours, $2 minutes
+right_upmins=$1 minutes

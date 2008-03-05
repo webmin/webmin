@@ -16,3 +16,5 @@ Added a whole new set of icons from Virtualmin.
 ---- Changes since 1.340 ----
 Fixed bad table indentation on some browsers.
 Changed link colors to be darker.
+---- Changes since 1.400 ----
+Display system uptime in the right frame after logging in.

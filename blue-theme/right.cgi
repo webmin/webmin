@@ -51,6 +51,24 @@ if ($level == 0) {
 	print "<tr> <td><b>$text{'right_time'}</b></td>\n";
 	print "<td>$tm</td> </tr>\n";
 
+	# System uptime
+	$out = &backquote_command("uptime");
+	$uptime = undef;
+	if ($out =~ /up\s+(\d+)\s+days,\s+(\d+):(\d+)/) {
+		# up 198 days,  2:06
+		$uptime = &text('right_updays', int($1), int($2), int($3));
+		}
+	elsif ($out =~ /up\s+(\d+):(\d+)/) {
+		$uptime = &text('right_uphours', int($1), int($2));
+		}
+	elsif ($out =~ /up\s+(\d+)\s+mins/) {
+		$uptime = &text('right_upmins', int($1));
+		}
+	if ($uptime) {
+		print "<tr> <td><b>$text{'right_uptime'}</b></td>\n";
+		print "<td>$uptime</td> </tr>\n";
+		}
+
 	# Load and memory info
 	if (&foreign_check("proc")) {
 		&foreign_require("proc", "proc-lib.pl");
