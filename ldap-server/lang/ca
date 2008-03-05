@@ -72,7 +72,7 @@ slapd_eca=Hi falta el fitxer de certificat CA TLS o bé té un format incorrecte
 slapd_gencert=Genera el Certificat SSL
 slapd_gencertdesc=Per executar el servidor LDAP en mode TLS, cal genera primer un certificat SSL i una clau privada. Fes clic sobre aquest botó per crear un certificat autosignat per a aquest sistema.
 slapd_gencertwarn=Atenció - el teu certificat existent ja no s'utilitzarà més.
-slapd_elocal=No tens permís per configurar el servidor LDAP
+slapd_ecannot=No tens permís per configurar el servidor LDAP
 
 schema_title=Gestió de l'Esquema
 schema_file=Nom
