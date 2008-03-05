@@ -54,4 +54,4 @@ pid_file=Ubicacio(ns) per defecte del fitxer de PID,3,/var/run/named.pid
 no_pid_chroot=El fitxer de PID està sota el directori chroot,1,0-Sí,1-No
 start_cmd=Ordre per iniciar BIND,3,Defecte
 stop_cmd=Ordre per aturar BIND,3,Mata el procés
-restart_cmd=Ordre per aplicar la configuració de BIND,3,Envia el senyal HUP
+restart_cmd=Ordre per aplicar la configuració de BIND,10,-Envia el senyal HUP,restart-Atura ireinicia,Una altra ordre
