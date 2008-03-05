@@ -1,4 +1,3 @@
-inittab_title=Configuració init de SysV
 inittab_new=Crea un nou procés init.
 inittab_id=ID
 inittab_active=Actiu
@@ -21,6 +20,7 @@ inittab_powerokwait=La màquina es torna a encendre
 inittab_powerfailnow=Se'n va la llum
 inittab_ctrlaltdel=Ctrl-Alt-Supr
 inittab_kbdrequest=Combinació especial de tecles
+inittab_kbrequest=$inittab_kbdrequest
 inittab_return=a la llista de processos
 inittab_apply=Aplica la Configuració d'Init
 inittab_applymsg=Fes clic sobre aquest botó per aplicar la configuració Init de SysV actual executant l'ordre <tt>telinit q</tt>. Tingues en compte que, en executar aquesta ordre, qualsevol error en la configuració pot fer que el sistema no funcioni.
