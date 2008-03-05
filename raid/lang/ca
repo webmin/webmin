@@ -89,6 +89,7 @@ view_newmount=Munta el RAID a:
 view_newmount2=Munta el RAID com a Memòria Virtual
 view_mountmsg=Introdueix un directori i fes clic sobre aquest botó per anar a un formulari per muntar el dispositiu RAID, que ha de contenir ja un sistema de fitxers.
 view_mountmsg2=Fes clic sobre aquest botó per utilitzar aquest dispositiu RAID com a memòria virtual del sistema.
+view_blocks=$1 blocs
 
 mkfs_title=Creació de Sistema de Fitxers
 mkfs_header2=Aquest formulari permet construir un nou sistema de fitxers $2 a $1. S'esborraran <b>totes</b> les dades existents!
@@ -121,3 +122,8 @@ notif_err=No he pogut desar les opcions de notificació de problemes RAID
 notif_emailaddr=Hi falta l'adreça de notificació o bé és invàlida
 notif_emailfrom=Hi falta l'adreça From: o bé és invàlida
 notif_eprogram=Hi falta el programa a executar o bé no existeix
+
+delete_title=Supressió d'Array RAID
+delete_rusure=Segur que vols suprimir l'array RAID $1, que utilitza $2 d'espai al disc?
+delete_ok=Sí, Suprimeix-lo
+delete_eidx=No has seleccionat cap array RAID!
