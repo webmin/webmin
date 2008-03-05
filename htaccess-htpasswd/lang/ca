@@ -19,6 +19,7 @@ index_delete=Desprotegeix els Directoris Seleccionats
 dir_title1=Addició de Directori Protegit
 dir_title2=Edició de Directori Protegit
 dir_header=Opcions del directori protegit
+dir_header2=Opcions de sincronització d'usuaris
 dir_dir=Camí del directori
 dir_file=Fitxer que conté els usuaris
 dir_gfile=Fitxer que conté els grups
@@ -54,6 +55,9 @@ dir_requireg=Només els membres de grups...
 dir_erequire_user=No has introduït cap usuari permès
 dir_erequire_group=No has introduït cap grup permès
 dir_delete=Desprotegeix
+dir_delete2=Desprotegeix i Elimina els Fitxers
+dir_delete3=Desprotegeix i Elimina el Fitxer
+dir_apache=Edita les Opcions d'Apache
 
 edit_title1=Creació d'Usuari
 edit_title2=Edició d'Usuari
