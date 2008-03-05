@@ -97,8 +97,9 @@ acl_extargs=Arguments addicionals
 acl_buttsave=Desa
 acl_buttdel=Suprimeix
 acl_return=a la llista d'ACLs
-acl_file=Emmagatzema l'ACL al fitxer
+acl_file=Emmagatzema els valors de l'ACL al fitxer
 acl_nofile=Configuració de Squid
+acl_infile=Fitxer a part
 acl_keep=Utilitza simplement el contingut del fitxer
 
 aclsave_failsave=No he pogut desar l'ACL
