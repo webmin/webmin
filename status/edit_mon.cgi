@@ -93,28 +93,23 @@ if (!$in{'type'}) {
 @servs = grep { $_->{'user'} } &servers::list_servers_sorted();
 @servs = sort { $a->{'host'} cmp $b->{'host'} } @servs;
 if (@servs) {
-	# Show list of remote servers
-	print &ui_table_row($text{'mon_remotes'},
-	      &ui_select("remotes", [ split(/\s+/, $serv->{'remote'}) ],
+	# Show list of remote servers, and maybe groups
+	$s = &ui_select("remotes", [ split(/\s+/, $serv->{'remote'}) ],
 			 [ [ "*", "&lt;$text{'mon_local'}&gt;" ],
 			   map { [ $_->{'host'}, $_->{'host'} ] } @servs ],
 			 5, 1, 1),
-	      undef, \@tds);
+	@groups = &servers::list_all_groups(\@servs);
+	@groups = sort { $a->{'name'} cmp $b->{'name'} } @groups;
+	if (@groups) {
+		$s .= &ui_select("groups", [ split(/\s+/, $serv->{'groups'}) ],
+			 [ map { [ $_->{'name'}, &group_desc($_) ] } @groups ],
+			 5, 1, 1),
+		}
+	print &ui_table_row($text{'mon_remotes2'}, $s, undef, \@tds);
 	}
 else {
 	# Only local is available
 	print &ui_hidden("remotes", "*"),"\n";
-	}
-
-# Show groups to run on
-@groups = &servers::list_all_groups(\@servs);
-@groups = sort { $a->{'name'} cmp $b->{'name'} } @groups;
-if (@groups) {
-	print &ui_table_row($text{'mon_groups'},
-	      &ui_select("groups", [ split(/\s+/, $serv->{'groups'}) ],
-			 [ map { [ $_->{'name'}, &group_desc($_) ] } @groups ],
-			 5, 1, 1),
-	      undef, \@tds);
 	}
 
 # Show emailing schedule
@@ -152,6 +147,15 @@ print &ui_table_row($text{'mon_notify'}, $notify,
 print &ui_table_row($text{'mon_email'},
 		    &ui_textbox("email", $serv->{'email'}, 60),
 		    undef, \@tds);
+
+# Show template to use
+@tmpls = &list_templates();
+if (@tmpls) {
+	print &ui_table_row($text{'mon_tmpl'},
+		&ui_select("tmpl", $serv->{'tmpl'},
+			   [ [ "", "&lt;$text{'mon_notmpl'}&gt;" ],
+			     map { [ $_->{'id'}, $_->{'desc'} ] } @tmpls ]));
+	}
 
 # Which clone module to use
 if (@clones) {

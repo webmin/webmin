@@ -8,6 +8,7 @@ sub backup_config_files
 local @servs = &list_services();
 local @rv = map { $_->{'_file'} } @servs;
 push(@rv, $module_config_file);
+push(@rv, map { $_->{'_file'} } &list_templates());
 return @rv;
 }
 

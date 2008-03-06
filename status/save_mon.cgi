@@ -70,6 +70,7 @@ else {
 	$in{'fails'} =~ /^\d+$/ || &error($text{'mon_efails'});
 	$serv->{'fails'} = $in{'fails'};
 	$serv->{'email'} = $in{'email'};
+	$serv->{'tmpl'} = $in{'tmpl'};
 	$type = $serv->{'type'};
 	if ($in{'depend'} && $in{'depend'} eq $serv->{'id'}) {
 		&error($text{'mon_edepend'});
