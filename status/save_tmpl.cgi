@@ -16,6 +16,10 @@ else {
 
 if ($in{'delete'}) {
 	# Remove this template
+	&error_setup($text{'tmpl_err2'});
+	@users = grep { $_->{'tmpl'} eq $tmpl->{'id'} } &list_services();
+	@users && &error(&text('tmpl_eusers',
+			join(", ", map { "<i>$_->{'desc'}</i>" } @users)));
 	&delete_template($tmpl);
 	&webmin_log("delete", "template", $tmpl->{'desc'});
 	}
@@ -23,8 +27,8 @@ else {
 	# Validate and store inputs
 	$in{'desc'} =~ /\S/ || &error($text{'tmpl_edesc'});
 	$tmpl->{'desc'} = $in{'desc'};
-	$in{'msg'} =~ /\S/ || &error($text{'tmpl_emsg'});
-	$tmpl->{'msg'} = $in{'msg'};
+	$in{'email'} =~ /\S/ || &error($text{'tmpl_eemail'});
+	$tmpl->{'email'} = $in{'email'};
 	if ($in{'sms_def'}) {
 		delete($tmpl->{'sms'});
 		}
@@ -32,12 +36,12 @@ else {
 		$in{'sms'} =~ /\S/ || &error($text{'tmpl_esms'});
 		$tmpl->{'sms'} = $in{'sms'};
 		}
-	if ($in{'pager_def'}) {
-		delete($tmpl->{'pager'});
+	if ($in{'snmp_def'}) {
+		delete($tmpl->{'snmp'});
 		}
 	else {
-		$in{'pager'} =~ /\S/ || &error($text{'tmpl_epager'});
-		$tmpl->{'pager'} = $in{'pager'};
+		$in{'snmp'} =~ /\S/ || &error($text{'tmpl_esnmp'});
+		$tmpl->{'snmp'} = $in{'snmp'};
 		}
 
 	# Save or create

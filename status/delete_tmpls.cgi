@@ -10,6 +10,17 @@ $access{'edit'} || &error($text{'tmpls_ecannot'});
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'dtmpls_enone'});
 
+# Check for users
+@servs = &list_services();
+foreach $d (@d) {
+	@users = grep { $_->{'tmpl'} eq $d } @servs;
+	if (@users) {
+		$tmpl = &get_template($d);
+		&error(&text('dtmpls_eusers', "<i>$tmpl->{'desc'}</i>",
+			join(", ", map { "<i>$_->{'desc'}</i>" } @users)));
+		}
+	}
+
 # Waste them
 foreach $d (@d) {
 	$tmpl = &get_template($d);

@@ -468,11 +468,11 @@ sub get_template
 {
 local ($id) = @_;
 local %tmpl;
-&read_file("$templates_dir/$id", \%tmpl);
+&read_file("$templates_dir/$id", \%tmpl) || return undef;
 $tmpl{'id'} = $id;
 $tmpl{'file'} = "$templates_dir/$id";
-$tmpl{'msg'} =~ s/\\n/\n/g;
-$tmpl{'msg'} =~ s/\\\\/\\/g;
+$tmpl{'email'} =~ s/\\n/\n/g;
+$tmpl{'email'} =~ s/\\\\/\\/g;
 return \%tmpl;
 }
 
@@ -484,8 +484,8 @@ local ($tmpl) = @_;
 $tmpl->{'id'} ||= time().$$;
 $tmpl->{'file'} = "$templates_dir/$tmpl->{'id'}";
 local %write = %$tmpl;
-$write{'msg'} =~ s/\\/\\\\/g;
-$write{'msg'} =~ s/\n/\\n/g;
+$write{'email'} =~ s/\\/\\\\/g;
+$write{'email'} =~ s/\n/\\n/g;
 if (!-d $templates_dir) {
 	&make_dir($templates_dir, 0755);
 	}

@@ -39,19 +39,19 @@ print &ui_table_row($text{'tmpl_desc'},
 	&ui_textbox("desc", $tmpl->{'desc'}, 60));
 
 # Email message
-print &ui_table_row($text{'tmpl_msg'},
-	&ui_textarea("msg", $tmpl->{'msg'}, 5, 60));
+print &ui_table_row($text{'tmpl_email'},
+	&ui_textarea("email", $tmpl->{'email'}, 5, 60));
 
-# SMS message
+# SMS / pager message
 print &ui_table_row($text{'tmpl_sms'},
 	&ui_radio("sms_def", $tmpl->{'sms'} ? 0 : 1,
 		  [ [ 1, $text{'tmpl_sms1'} ], [ 0, $text{'tmpl_sms0'} ] ]).
 	"<br>\n".
 	&ui_textarea("sms", $tmpl->{'sms'}, 3, 60));
 
-# Pager message
-print &ui_table_row($text{'tmpl_pager'},
-	&ui_opt_textbox("pager", $tmpl->{'pager'}, 50, $text{'tmpl_sms1'}));
+# SNMP message
+print &ui_table_row($text{'tmpl_snmp'},
+	&ui_opt_textbox("snmp", $tmpl->{'snmp'}, 50, $text{'tmpl_sms1'}));
 
 # Save buttons
 print &ui_table_end();

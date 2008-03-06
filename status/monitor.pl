@@ -28,7 +28,9 @@ if ($ARGV[0] ne "--force") {
 @services = sort { &sort_func($a, $b) } @services;
 
 # Check for services that are down
-$now = localtime(time());
+$nowunix = time();
+$now = &make_date($nowunix);
+($nowdate, $nowtime) = split(/\s+/, $now);
 $thishost = &get_system_hostname();
 $ecount = 0;
 foreach $serv (@services) {
@@ -152,20 +154,20 @@ foreach $serv (@services) {
 			$subj = &text('monitor_sub_'.$suffix,
 				      $serv->{'desc'}, $host);
 			if ($notify{'pager'}) {
-				$pager_msg .= &text('monitor_pager_'.$suffix,
-						$host, $serv->{'desc'}, $now);
+				$pager_msg .= &make_message($suffix, $host,
+							    $serv, 'pager');
 				}
 			if ($notify{'sms'}) {
-				$sms_msg .= &text('monitor_pager_'.$suffix,
-						$host, $serv->{'desc'}, $now);
+				$sms_msg .= &make_message($suffix, $host,
+                                                          $serv, 'sms');
 				}
 			if ($notify{'snmp'}) {
-				push(@snmp_msg, &text('monitor_snmp_'.$suffix,
-						      $host, $serv->{'desc'}));
+				push(@snmp_msg, &make_message($suffix, $host,
+                                                              $serv, 'snmp'));
 				}
 			if ($notify{'email'}) {
-				$thisemail .= &text('monitor_email_'.$suffix,
-						    $host, $serv->{'desc'}, $now)."\n";
+				$thisemail .= &make_message($suffix, $host,
+                                                              $serv, 'email');
 				if ($out) {
 					$thisemail .= $out;
 					}
@@ -440,5 +442,46 @@ sub quoted_encode
 local $t = $_[0];
 $t =~ s/([=\177-\377])/sprintf("=%2.2X",ord($1))/ge;
 return $t;
+}
+
+# make_message(status, host, &server, type)
+# Returns the message for some email, SMS or SNMP. May use a template, or
+# the built-in default.
+sub make_message
+{
+local ($suffix, $host, $serv, $type) = @_;
+local $tmpl = $serv->{'tmpl'} ? &get_template($serv->{'tmpl'}) : undef;
+if ($tmpl && $tmpl->{$type}) {
+	# Construct from template
+	local %hash = ( 'DESC' => $serv->{'desc'},
+			'HOST' => $host,
+			'DATE' => $nowdate,
+			'TIME' => $nowtime,
+			'STATUS' => $text{'mon_'.$suffix},
+			uc($suffix) => 1,
+		      );
+	foreach my $k (keys %$serv) {
+		$hash{'SERVICE_'.uc($k)} = $serv->{$k};
+		}
+	local $rv = &substitute_template($tmpl->{$type}, \%hash);
+	$rv =~ s/[\r\n]+$//;
+	$rv .= "\n";
+	return $rv;
+	}
+else {
+	# Use built-in
+	if ($type eq 'sms') {
+		return &text('monitor_pager_'.$suffix,
+			     $host, $serv->{'desc'}, $now);
+		}
+	elsif ($type eq 'snmp') {
+		return &text('monitor_snmp_'.$suffix,
+			     $host, $serv->{'desc'});
+		}
+	elsif ($type eq 'email') {
+		return &text('monitor_email_'.$suffix,
+			     $host, $serv->{'desc'}, $now)."\n";
+		}
+	}
 }
 

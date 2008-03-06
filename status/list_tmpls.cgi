@@ -12,10 +12,10 @@ if (@tmpls) {
 	print &ui_form_start("delete_tmpls.cgi", "post");
 	print &ui_links_row(\@links);
 	@tds = ( "width=5" );
-	print &ui_columns_start([ "", $text{'tmpls_desc'}, $text{'tmpls_msg'} ],
-				100, 0, \@tds);
+	print &ui_columns_start(
+	    [ "", $text{'tmpls_desc'}, $text{'tmpls_email'} ], 100, 0, \@tds);
 	foreach $tmpl (@tmpls) {
-		$msg = $tmpl->{'msg'};
+		$msg = $tmpl->{'email'};
 		$msg = substr($msg, 0, 80)." ..." if (length($msg) > 80);
 		print &ui_checked_columns_row(
 			[ "<a href='edit_tmpl.cgi?id=$tmpl->{'id'}'>".

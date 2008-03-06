@@ -151,8 +151,17 @@ print &ui_table_row($text{'mon_email'},
 # Show template to use
 @tmpls = &list_templates();
 if (@tmpls) {
+	if ($in{'type'}) {
+		($deftmpl) = grep { $_->{'desc'} eq $config{'def_tmpl'}} @tmpls;
+		if ($deftmpl) {
+			$tid = $deftmpl->{'id'};
+			}
+		}
+	else {
+		$tid = $serv->{'tmpl'};
+		}
 	print &ui_table_row($text{'mon_tmpl'},
-		&ui_select("tmpl", $serv->{'tmpl'},
+		&ui_select("tmpl", $tid,
 			   [ [ "", "&lt;$text{'mon_notmpl'}&gt;" ],
 			     map { [ $_->{'id'}, $_->{'desc'} ] } @tmpls ]));
 	}

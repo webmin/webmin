@@ -49,3 +49,5 @@ Added support for sending status messages via SMS, for common US mobile carriers
 Failure to run a command on a remote system is now properly detected.
 ---- Changes since 1.390 ----
 Added T-COM, Skytel, Vodaphone and several more as a carriers for SMS.
+---- Changes since 1.400 ----
+Email, SMS and SNMP messages sent by Webmin can be customized, with multiple message templates defined and a different one selected for each monitor.
