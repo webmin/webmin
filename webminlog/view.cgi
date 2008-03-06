@@ -76,7 +76,7 @@ foreach $d (&list_diffs($act)) {
 		($rb) = grep { $_->{'file'} eq $d->{'object'} } @files;
 		}
 	local $cbox = @files ?
-		&ui_checkbox("r", $d->{'object'}, "", 1, undef, !$rb) : undef;
+		&ui_checkbox("r", $d->{'object'}, "", $rb, undef, !$rb) : undef;
 	$rbcount++ if ($rb);
 	if ($t =~ /\$2/ || !$d->{'diff'}) {
 		# Diff is just a single line message
