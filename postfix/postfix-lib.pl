@@ -973,7 +973,7 @@ elsif ($maps_type eq "ldap") {
 		     $_[1]->{'value'});
 	push(@attrs, &split_props($config{'ldap_attrs'}));
 	local $dn = &make_map_ldap_dn($_[1], $conf);
-	if ($dn =~ /^([^=]+)=([^, ]+)/) {
+	if ($dn =~ /^([^=]+)=([^, ]+)/ && !&in_props(\@attrs, $1)) {
 		push(@attrs, $1, $2);
 		}
 
@@ -1088,7 +1088,6 @@ elsif ($_[1]->{'map_type'} eq 'ldap') {
 		[ $_[2]->{'value'} ];
 
 	# Work out new DN, if needed
-	# XXX fails and messes up DN!!!
 	local $newdn = &make_map_ldap_dn($_[2], $conf);
 	if ($_[1]->{'name'} ne $_[2]->{'name'} &&
 	    $_[1]->{'dn'} ne $newdn) {
@@ -2089,6 +2088,21 @@ local ($type) = @_;
 return 1 if ($type eq 'hash' || $type eq 'regexp' || $type eq 'pcre' ||
 	     $type eq 'btree' || $type eq 'dbm');
 }
+
+# in_props(&props, name)
+# Looks up the value of a named property in a list
+sub in_props
+{
+local ($props, $name) = @_;
+for(my $i=0; $i<@$props; $i++) {
+	if (lc($props->[$i]) eq lc($name)) {
+		return $props->[$i+1];
+		}
+	}
+return undef;
+}
+
+
 
 1;
 
