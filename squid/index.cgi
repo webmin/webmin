@@ -116,7 +116,7 @@ $iptables = &foreign_check("firewall");
 	     'refresh',
 	     'miscopt',
 	     ( $iptables ? ( 'iptables' ) : ( ) ),
-	     'cms', 'rebuild',
+	     'cms', 'cachemgr', 'rebuild',
 	     ( $calamaris ? ( 'calamaris' ) : ( ) ) );
 @olinks =  ( "edit_ports.cgi", "edit_icp.cgi", "edit_mem.cgi",
 	     "edit_logs.cgi", "edit_cache.cgi", "edit_progs.cgi",
@@ -129,7 +129,7 @@ $iptables = &foreign_check("firewall");
 	     "list_refresh.cgi",
 	     "edit_misc.cgi",
 	     ( $iptables ? ( "edit_iptables.cgi" ) : ( ) ),
-	     "cachemgr.cgi", "clear.cgi",
+	     "cachemgr.cgi", "edit_cachemgr.cgi", "clear.cgi",
 	     ( $calamaris ? ( "calamaris.cgi" ) : ( ) ) );
 for($i=0; $i<@otitles; $i++) {
 	if (!$access{$otitles[$i]}) {

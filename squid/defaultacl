@@ -19,3 +19,4 @@ authparam=1
 headeracc=1
 refresh=1
 iptables=1
+cachemgr=1

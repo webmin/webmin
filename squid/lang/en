@@ -25,6 +25,7 @@ index_delay=Delay Pools
 index_authparam=Authentication Programs
 index_headeracc=Header Access Control
 index_refresh=Refresh Rules
+index_cachemgr=Cache Manager Passwords
 index_return=index
 index_squidver=The command <tt>$1</tt> returned :
 index_version=Squid version $1
@@ -765,6 +766,7 @@ log_refresh_move=Moved refresh rule for $1
 log_refreshes_delete=Deleted $1 refresh rules
 log_iptables=Updated port redirection setup
 log_purge=Removed URL $1 from cache
+log_cachemgr=Changed cache manager passwords
 
 acl_root=Root directory for ACL files
 acl_sections=Allowed configuration pages
@@ -954,3 +956,17 @@ dhttp_enone=None selected
 
 dicp_err=Failed to delete ICP restrictions
 dicp_enone=None selected
+
+cachemgr_title=Cache Manager Passwords
+cachemgr_ecannot=You are not allowed to edit cache manager passwords
+cachemgr_def1=No passwords required
+cachemgr_def0=Passwords and actions specified below ..
+cachemgr_pass=Password
+cachemgr_none=None needed
+cachemgr_set=Set to
+cachemgr_disable=Actions disabled
+cachemsg_actions=Apply to actions
+cachemgr_all=Use this password for all actions
+cachemgr_others=Other actions:
+cachemgr_enone=None entered - you should select <i>No passwords required</i> instead
+cachemgr_err=Failed to save cache manager passwords

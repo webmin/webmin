@@ -2,7 +2,7 @@
 require 'squid-lib.pl';
 @accopts = ('portsnets', 'othercaches', 'musage', 'logging', 'copts',
 	    'hprogs', 'actrl', 'admopts', 'proxyauth', 'miscopt', 'cms',
-	    'rebuild', 'calamaris', 'delay', 'headeracc', 'refresh',
+	    'rebuild', 'calamaris', 'delay', 'headeracc', 'refresh', 'cachemgr',
 	    'authparam', 'iptables');
 
 # acl_security_form(&options)

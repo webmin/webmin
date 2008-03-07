@@ -551,5 +551,12 @@ else {
 return undef;
 }
 
+# list_cachemgr_actions()
+# Returns a list of actions for use in the cachemgr_passwd directive
+sub list_cachemgr_actions
+{
+return ("5min" ,"60min" ,"asndb" ,"authenticator" ,"cbdata" ,"client_list" ,"comm_incoming" ,"config" ,"counters" ,"delay" ,"digest_stats" ,"dns" ,"events" ,"filedescriptors" ,"fqdncache" ,"histograms" ,"http_headers" ,"info" ,"io" ,"ipcache" ,"mem" ,"menu" ,"netdb" ,"non_peers" ,"objects" ,"offline_toggle" ,"pconn" ,"peer_select" ,"redirector" ,"refresh" ,"server_list" ,"shutdown" ,"store_digest" ,"storedir" ,"utilization" ,"via_headers" ,"vm_objects");
+}
+
 1;
 
