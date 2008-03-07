@@ -141,7 +141,7 @@ for($i=0; $i<@otitles; $i++) {
 		$otitles[$i] = $text{'index_'.$otitles[$i]};
 		}
 	}
-@oicons =  map { $t=$_; $t=~s/cgi/gif/; $t=~s/edit_//; "images/$t" } @olinks;
+@oicons =  map { $t=$_; $t=~s/cgi/gif/; $t=~s/edit_// if ($t ne 'edit_cachemgr.gif'); "images/$t" } @olinks;
 &icons_table(\@olinks, \@otitles, \@oicons);
 
 # Show start/stop/apply buttons
