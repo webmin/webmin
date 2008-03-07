@@ -194,7 +194,8 @@ if (!-d $lconf->{'dir'}) {
 	}
 local $anyok = 0;
 foreach $a (sort { $mtime{$a} <=> $mtime{$b} } @all) {
-	local $cmd = "$config{'webalizer'} $conf -o '$lconf->{'dir'}' $type -p '$a'";
+	local $cmd = "$config{'webalizer'} $conf -o ".
+		     quotemeta($lconf->{'dir'})." $type -p ".quotemeta($a);
 	if ($user ne "root") {
 		$cmd = &command_as_user($user, 0, $cmd);
 		}
