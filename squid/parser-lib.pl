@@ -141,7 +141,8 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 	else {
 		# updating some directive
 		$nl = &directive_line($newv[$i]);
-		local @after = $change ? ( $change ) :	# After last one updated
+		local @after = $change && $_[3] ? ( $change ) :
+							# After last one updated
 			       ref($_[3]) ? ( $_[3] ) :	# After specific
 			       $_[3] ? &find_config($_[3], $_[0]) : ( );
 		local $after = @after ? @after[$#after] : undef;
