@@ -408,3 +408,5 @@ When a DNS domain is disabled, all records in it that use the domain name are re
 ---- Changes since 3.53 ----
 Fixed bugs in Plesk migration, and added automatic detection of alias domains in the original backup. SSL certificates and keys from the backup are also migrated. Also added initial support for Windows Plesk backups.
 A domain's private IP and external IP for DNS are now also included in SPF records.
+Added a check for Sendmail not accepting email on the external interface, which is the default in some distributions.
+When a sub-domain is created with the same name as a record in the parent domain, the record is not removed whem the domain is deleted.
