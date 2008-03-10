@@ -10,4 +10,4 @@ os_support=!windows
 desc_es=Rotaci&#243;n de Hist&#243;ricos (Logs)
 desc_sk=Archivácia systémových záznamov
 desc_fr=Rotation de fichier journal
-desc_cz=Archivace systémových logù
+desc_cz=Rotování log souborù
