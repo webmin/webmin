@@ -24,6 +24,7 @@ period_daily=Daily
 period_weekly=Weekly
 period_monthly=Monthly
 period_never=Never
+period_bytes=bytes
 
 edit_title1=Edit Log File
 edit_title2=Create Log File

@@ -48,7 +48,8 @@ $size = &find_value("size", $lconf);
 print &ui_table_row($text{'edit_size'},
 		    &ui_opt_textbox("size", $size, 10,
 				    &deftext(&find_default("size") ||
-					     $text{'period_never'})));
+					     $text{'period_never'})).
+		    " ".$text{'period_bytes'});
 
 print &ui_table_hr();
 
