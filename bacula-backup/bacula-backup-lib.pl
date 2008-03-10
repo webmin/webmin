@@ -1360,7 +1360,7 @@ if (!$in{'tls_cert_def'}) {
 sub schedule_chooser_button
 {
 local ($name) = @_;
-return "<input type=button onClick='ifield = form.$name; schedule = window.open(\"schedule_chooser.cgi?schedule=\"+escape(ifield.value), \"schedule\", \"toolbar=no,menubar=no,scrollbars=no,width=600,height=600\"); exclude.ifield = ifield; window.ifield = ifield;' value=\"...\">\n";
+return "<input type=button onClick='ifield = form.$name; schedule = window.open(\"schedule_chooser.cgi?schedule=\"+escape(ifield.value), \"schedule\", \"toolbar=no,menubar=no,scrollbars=no,width=600,height=600\"); schedule.ifield = ifield; window.ifield = ifield;' value=\"...\">\n";
 }
 
 # parse_schedule(string)
