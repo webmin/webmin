@@ -10,19 +10,18 @@ $access{'configs'} || &error($text{'acl_ecannot'});
 @mods = &list_modules();
 &get_usermin_miniserv_config(\%miniserv);
 print "$text{'configs_desc'}<p>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'configs_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+@grid = ( );
+
 foreach $m (@mods) {
 	if ((-r "$miniserv{'root'}/$m->{'dir'}/config.info" ||
 	    -r "$miniserv{'root'}/$m->{'dir'}/uconfig.info") &&
 	    &can_use_module($m->{'dir'})) {
-		print "<tr>\n" if ($i%3 == 0);
-		print "<td><a href='edit_configs.cgi?mod=$m->{'dir'}'>",
-		      "$m->{'desc'}</a></td>\n";
-		print "</tr>\n" if ($i++%3 == 2);
+		push(@grid, "<a href='edit_configs.cgi?mod=$m->{'dir'}'>".
+			    "$m->{'desc'}</a>");
 		}
 	}
-print "</table></td></tr></table>\n";
+print &ui_grid_table(\@grid, 4, 100,
+	[ "width=25%", "width=25%", "width=25%", "width=25%" ],
+	undef, $text{'configs_header'});
 
 &ui_print_footer("", $text{'index_return'});
