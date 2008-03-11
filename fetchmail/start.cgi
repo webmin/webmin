@@ -6,6 +6,7 @@ require './fetchmail-lib.pl';
 &ReadParse();
 &error_setup($text{'start_err'});
 $config{'config_file'} || $< || &error($text{'start_ecannot'});
+$can_daemon || &error($text{'start_ecannot'});
 
 if ($config{'start_cmd'}) {
 	$out = &backquote_logged("$config{'start_cmd'} 2>&1");

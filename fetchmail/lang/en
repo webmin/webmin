@@ -105,6 +105,7 @@ acl_this=Current webmin user
 acl_only=Only users
 acl_except=All except users
 acl_cron=Can configure scheduled checking?
+acl_daemon=Can configure Fetchmail daemon?
 
 cron_title=Scheduled Checking
 cron_desc=This page can be used to enable or disable a Cron job to check the mail servers in your Fetchmail configuration on a regular schedule. Using a Cron job superior to running the Fetchmail daemon, as it does not need to be re-started at boot time.

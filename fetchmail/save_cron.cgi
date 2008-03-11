@@ -4,7 +4,7 @@
 
 require './fetchmail-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
-$access{'cron'} || &error($text{'cron_ecannot2'});
+$can_cron || &error($text{'cron_ecannot2'});
 &error_setup($text{'cron_err'});
 &ReadParse();
 

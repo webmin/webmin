@@ -118,7 +118,7 @@ foreach $u (@users) {
 
 	print "<tr> <td><b>$text{'poll_is'}</b></td> <td colspan=3>\n";
 	printf "<input name=is_$i size=60 value='%s'></td> </tr>\n",
-		join(" ", @{$u->{'is'}});
+		join(" ", @{$u->{'is'}}) || $remote_user;
 
 	print "<tr> <td><b>$text{'poll_keep'}</b></td> <td colspan=3>\n";
 	printf "<input type=radio name=keep_$i value=1 %s> %s\n",

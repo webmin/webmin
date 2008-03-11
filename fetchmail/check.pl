@@ -52,6 +52,11 @@ sub run_fetchmail
 {
 local ($config, $user) = @_;
 
+# Check if we have anything to do
+local @conf = &parse_config_file($config);
+@conf = grep { $_->{'poll'} } @conf;
+return if (!@conf);
+
 # Build the command
 local $cmd = "$config{'fetchmail_path'} -v -f ".quotemeta($config);
 if ($config{'mda_command'}) {

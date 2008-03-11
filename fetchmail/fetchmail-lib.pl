@@ -17,11 +17,15 @@ if ($module_info{'usermin'}) {
 	$cron_cmd = "$user_module_config_directory/check.pl";
 	$cron_user = $remote_user;
 	$fetchmail_config = "$remote_user_info[7]/.fetchmailrc";
+	$can_cron = $config{'can_cron'};
+	$can_daemon = $config{'can_daemon'};
 	}
 else {
 	$cron_cmd = "$module_config_directory/check.pl";
 	$cron_user = "root";
 	$fetchmail_config = $config{'config_file'};
+	$can_cron = $access{'cron'};
+	$can_daemon = $access{'daemon'};
 	}
 
 # parse_config_file(file, [&global])
@@ -295,7 +299,6 @@ if (@{$_[0]}) {
 	}
 print &ui_links_row(\@links);
 }
-
 
 
 1;

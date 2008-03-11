@@ -23,6 +23,10 @@ printf "<input name=userscannot size=40 value='%s'> %s</td> </tr>\n",
 
 print "<tr> <td valign=top><b>$text{'acl_cron'}</b></td> <td>\n";
 print &ui_radio("cron", $_[0]->{'cron'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
+
+print "<td valign=top><b>$text{'acl_daemon'}</b></td> <td>\n";
+print &ui_radio("daemon", $_[0]->{'daemon'},
 		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
 }
 
@@ -35,6 +39,7 @@ $_[0]->{'users'} = $in{'mode'} == 0 || $in{'mode'} == 3 ? "" :
 		   $in{'mode'} == 1 ? $in{'userscan'}
 				    : $in{'userscannot'};
 $_[0]->{'cron'} = $in{'cron'};
+$_[0]->{'daemon'} = $in{'daemon'};
 
 }
 
