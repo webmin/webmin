@@ -22,9 +22,10 @@ foreach $m (@{$defs->{'members'}}) {
 
 # Show table header
 print "<form action=mass_enable.cgi method=post>\n";
-print &select_all_link("serv"),"\n";
-print &select_invert_link("serv"),"\n";
-print "<a href='edit_serv.cgi?new=1'>$text{'index_add_inet'}</a><br>\n";
+@links = ( &select_all_link("serv"),
+	   &select_invert_link("serv"),
+	   "<a href='edit_serv.cgi?new=1'>$text{'index_add_inet'}</a>" );
+print &ui_links_row(\@links);
 @tds = ( "width=5" );
 print &ui_columns_start([ "",
 			  $text{'index_name'},
@@ -90,9 +91,7 @@ foreach $x (@conf) {
 	print &ui_checked_columns_row(\@cols, \@tds, "serv", $x->{'index'});
 	}
 print &ui_columns_end();
-print &select_all_link("serv"),"\n";
-print &select_invert_link("serv"),"\n";
-print "<a href='edit_serv.cgi?new=1'>$text{'index_add_inet'}</a><p>\n";
+print &ui_links_row(\@links);
 
 print "<input type=submit name=enable value='$text{'index_enable'}'>\n";
 print "<input type=submit name=disable value='$text{'index_disable'}'>\n";
