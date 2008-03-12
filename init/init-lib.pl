@@ -430,6 +430,14 @@ elsif ($init_mode eq "rc") {
 	return !$rc ? 0 :
 	       $rc->{'enabled'} ? 2 : 1;
 	}
+elsif ($init_mode eq "osx") {
+	# Look for a hostconfig entry
+	local $ucname = uc($_[0]);
+	local %hc;
+	&read_env_file($config{'hostconfig'}, \%hc);
+	return $hc{$ucname} eq '-YES-' ? 2 :
+	       $hc{$ucname} eq '-NO-' ? 1 : 0;
+	}
 }
 
 # enable_at_boot(action, description, startcode, stopcode, statuscode)
@@ -661,6 +669,59 @@ elsif ($init_mode eq "rc") {
 		}
 	&unlock_rc_files();
 	}
+elsif ($init_mode eq "osx") {
+	# Add hostconfig file entry
+	local $ucname = uc($_[0]);
+	local %hc;
+	&lock_file($config{'hostconfig'});
+	&read_env_file($config{'hostconfig'}, \%hc);
+	if (!$hc{$ucname}) {
+		# Need to create action
+		local $ucfirst = ucfirst($_[0]);
+		local $dir = "$config{'darwin_setup'}/$ucfirst";
+		local $paramlist = "$dir/$config{'plist'}";
+		local $scriptfile = "$dir/$ucfirst";
+
+		# Create dirs if missing
+		if (!-d $config{'darwin_setup'}) {
+			&make_dir($config{'darwin_setup'}, 0755);
+			}
+		if (!-d $dir) {
+			&make_dir($dir, 0755);
+			}
+
+		# Make params list file
+		&open_lock_tempfile(PLIST, ">$paramlist");
+		&print_tempfile(PLIST, "{\n");
+		&print_tempfile(PLIST, "\t\tDescription\t\t= \"$_[1]\";\n");
+		&print_tempfile(PLIST, "\t\tProvides\t\t= (\"$ucfirst\");\n");
+		&print_tempfile(PLIST, "\t\tRequires\t\t= (\"Resolver\");\n");
+		&print_tempfile(PLIST, "\t\tOrderPreference\t\t= \"None\";\n");
+		&print_tempfile(PLIST, "\t\tMessages =\n");
+		&print_tempfile(PLIST, "\t\t{\n");
+		&print_tempfile(PLIST, "\t\t\tstart\t= \"Starting $ucfirst\";\n");
+		&print_tempfile(PLIST, "\t\t\tstop\t= \"Stopping $ucfirst\";\n");
+		&print_tempfile(PLIST, "\t\t};\n");
+		&print_tempfile(PLIST, "}\n");
+		&close_tempfile(PLIST);
+
+		# Create Bootup Script
+		&open_lock_tempfile(STARTUP, ">$scriptfile");
+		&print_tempfile(STARTUP, "#!/bin/sh\n\n");
+		&print_tempfile(STARTUP, ". /etc/rc.common\n\n");
+		&print_tempfile(STARTUP, "if [ \"\${$ucname:=-NO-}\" = \"-YES-\" ]; then\n");
+		&print_tempfile(STARTUP, "\tConsoleMessage \"Starting $ucfirst\"\n");
+		&print_tempfile(STARTUP, "\t$_[2]\n");
+		&print_tempfile(STARTUP, "fi\n");
+		&close_tempfile(STARTUP);
+		&set_ownership_permissions(undef, undef, 0750, $scriptfile);
+		}
+
+	# Update hostconfig file
+	$hc{$ucname} = '-YES-';
+	&write_env_file($config{'hostconfig'}, \%hc);
+	&unlock_file($config{'hostconfig'});
+	}
 }
 
 # disable_at_boot(action)
@@ -738,6 +799,18 @@ elsif ($init_mode eq "rc") {
 	&lock_rc_files();
 	&disable_rc_script($_[0]);
 	&unlock_rc_files();
+	}
+elsif ($init_mode eq "osx") {
+	# Disable in hostconfig
+	local $ucname = uc($_[0]);
+	local %hc;
+	&lock_file($config{'hostconfig'});
+	&read_env_file($config{'hostconfig'}, \%hc);
+	if ($hc{$ucname} eq '-YES-' || $hc{$ucname} eq '-AUTOMATIC-') {
+		$hc{$ucname} = '-NO-';
+		&write_env_file($config{'hostconfig'}, \%hc);
+		}
+	&unlock_file($config{'hostconfig'});
 	}
 }
 

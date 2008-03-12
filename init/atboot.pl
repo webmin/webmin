@@ -9,47 +9,9 @@ $ucproduct = ucfirst($product);
 
 if ($init_mode eq "osx") {
 	# Darwin System
-	&open_tempfile(LOCAL, ">>$config{'hostconfig'}");
-	&print_tempfile(LOCAL, "WEBMIN=-YES-\n");
-	&close_tempfile(LOCAL);
-	
-	$paramlist = "$config{'darwin_setup'}/$ucproduct/$config{'plist'}";
-	$scriptfile = "$config{'darwin_setup'}/$ucproduct/$ucproduct";
-	
-	# On a Virgin darwin system, $config{'darwin_setup'} may not yet exist
-	-d "$config{'darwin_setup'}/$ucproduct" || do {
-		if ( -d "$config{'darwin_setup'}" ) {
-			mkdir ("$config{'darwin_setup'}/$ucproduct", 0755);
-			} else {
-			mkdir ("$config{'darwin_setup'}", 0755);
-			mkdir ("$config{'darwin_setup'}/$ucproduct",0755);
-			}
-		} until -d "$config{'darwin_setup'}/$ucproduct";
-
-	&open_tempfile(PLIST, ">$paramlist");
-	&print_tempfile(PLIST, "{\n");
-	&print_tempfile(PLIST, "\t\tDescription\t\t= \"$ucproduct system administration daemon\";\n");
-	&print_tempfile(PLIST, "\t\tProvides\t\t= (\"$ucproduct\");\n");
-	&print_tempfile(PLIST, "\t\tRequires\t\t= (\"Resolver\");\n");
-	&print_tempfile(PLIST, "\t\tOrderPreference\t\t= \"None\";\n");
-	&print_tempfile(PLIST, "\t\tMessages =\n");
-	&print_tempfile(PLIST, "\t\t{\n");
-	&print_tempfile(PLIST, "\t\t\tstart\t= \"Starting $ucproduct Server\";\n");
-	&print_tempfile(PLIST, "\t\t\tstop\t= \"Stopping $ucproduct Server\";\n");
-	&print_tempfile(PLIST, "\t\t};\n");
-	&print_tempfile(PLIST, "}\n");
-	&close_tempfile(PLIST);
-
-	# Create Bootup Script
-	&open_tempfile(STARTUP, ">$scriptfile");
-	&print_tempfile(STARTUP, "#!/bin/sh\n\n");
-	&print_tempfile(STARTUP, ". /etc/rc.common\n\n");
-	&print_tempfile(STARTUP, "if [ \"\${WEBMIN:=-NO-}\" = \"-YES-\" ]; then\n");
-	&print_tempfile(STARTUP, "\tConsoleMessage \"Starting $ucproduct\"\n");
-	&print_tempfile(STARTUP, "\t$config_directory/start >/dev/null 2>&1 </dev/null\n");
-	&print_tempfile(STARTUP, "fi\n");
-	&close_tempfile(STARTUP);
-	chmod(0750, $scriptfile);
+	&enable_at_boot("webmin", "Webmin administration server",
+			"/etc/webmin/start >/dev/null 2>&1 </dev/null",
+			"/etc/webmin/stop");
 	}
 elsif ($init_mode eq "local") {
 	# Add to the boot time rc script

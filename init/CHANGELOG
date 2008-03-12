@@ -16,3 +16,5 @@ Added support for Unbuntu, which has not /etc/inittab file.
 Added start_action and stop_action functions for starting and stopping services in an OS-independent manner.
 ---- Changes since 1.390 ----
 Re-wrote all user interface code to use the new Webmin UI library, for a more consistent look.
+---- Changes since 1.400 ----
+Updated the API used by other modules to allow new actions to be created on MacOS X systems, such as the firewall startup script.
