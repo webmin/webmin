@@ -79,7 +79,7 @@ print &ui_table_row($text{'batch_delhome'},
 
 # Encrypt password
 print &ui_table_row($text{'batch_crypt'},
-	&ui_yesno_radio("crypt", 1));
+	&ui_yesno_radio("crypt", 0));
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'batch_upload'} ] ]);
