@@ -410,3 +410,5 @@ Fixed bugs in Plesk migration, and added automatic detection of alias domains in
 A domain's private IP and external IP for DNS are now also included in SPF records.
 Added a check for Sendmail not accepting email on the external interface, which is the default in some distributions.
 When a sub-domain is created with the same name as a record in the parent domain, the record is not removed whem the domain is deleted.
+When using Qmail, domains with the same name as the system's primary hostname (typically from the <tt>control/me</tt> file) are not longer allowed, as they break Virtualmin's use of the <tt>virtualdomains</tt> file.
+When email is disabled for a domain, only MX and mail records pointing to the Virtualmin system or known secondaries are removed.
