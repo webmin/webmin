@@ -109,7 +109,7 @@ foreach $s (@run) {
 	else {
 		# Done - show output
 		print "<b>",&text('run_success', $d),"</b>\n";
-		print "<ul><pre>$rv->[1]</pre></ul><p>\n";
+		print "<ul><pre>".&html_escape($rv->[1])."</pre></ul><p>\n";
 		}
 	$p++;
 	}
