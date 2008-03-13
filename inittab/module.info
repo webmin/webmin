@@ -25,3 +25,4 @@ desc_zh_CN.UTF-8=SysV 初始化配置
 desc_ja_JP.UTF-8=SysV Init の設定
 desc_ko_KR.UTF-8=SysV Init 구성 
 desc_cz=Konfigurace SysV Inicializace
+desc_nl=Initial Systeem bootup
