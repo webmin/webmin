@@ -1492,7 +1492,8 @@ if (%users) {
 				&validate_user($in{'user'}, $in{'pass'}, $host);
 			local $hrv = &handle_login(
 					$vu || $in{'user'}, $vu ? 1 : 0,
-				      	$expired, $nonexist, $in{'pass'});
+				      	$expired, $nonexist, $in{'pass'},
+					$in{'notestingcookie'});
 			return $hrv if (defined($hrv));
 			}
 		}
@@ -1547,7 +1548,8 @@ if (%users) {
 			local ($user, $ok, $expired, $nonexist) =
 				split(/\s+/, $question);
 			local $hrv = &handle_login(
-				$user, $ok, $expired, $nonexist, undef);
+				$user, $ok, $expired, $nonexist, undef,
+				$in{'notestingcookie'});
 			return $hrv if (defined($hrv));
 			}
 		elsif ($rv == 4) {
@@ -3446,16 +3448,16 @@ if (!$sid && !$force_urandom) {
 return $sid;
 }
 
-# handle_login(username, ok, expired, not-exists, password)
+# handle_login(username, ok, expired, not-exists, password, [no-test-cookie])
 # Called from handle_session to either mark a user as logged in, or not
 sub handle_login
 {
-local ($vu, $ok, $expired, $nonexist, $pass) = @_;
+local ($vu, $ok, $expired, $nonexist, $pass, $notest) = @_;
 $authuser = $vu if ($ok);
 
 # check if the test cookie is set
 if ($header{'cookie'} !~ /testing=1/ && $vu &&
-    !$config{'no_testing_cookie'}) {
+    !$config{'no_testing_cookie'} && !$notest) {
 	&http_error(500, "No cookies",
 	   "Your browser does not support cookies, ".
 	   "which are required for this web server to ".
