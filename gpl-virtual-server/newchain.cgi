@@ -1,0 +1,1 @@
+../virtual-server/newchain.cgi
