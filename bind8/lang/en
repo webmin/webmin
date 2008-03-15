@@ -522,6 +522,7 @@ acls_name=ACL Name
 acls_values=Matching addresses, networks and ACLs
 acls_err=Failed to save access control lists
 acls_ename='$1' is not a valid ACL name
+acls_eline=Each IP address must be entered on a separate line for ACL '$1'
 
 files_title=Files and Directories
 files_ecannot=You are not allowed to configure files

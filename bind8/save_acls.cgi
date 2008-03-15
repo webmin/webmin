@@ -12,11 +12,19 @@ $conf = &get_config();
 for($i=0; defined($name = $in{"name_$i"}); $i++) {
 	next if (!$name);
 	$name =~ /^\S+$/ || &error(&text('acls_ename', $name));
-	@vals = split(/\s+/, $in{"values_$i"});
+	$in{"values_$i"} =~ s/\r//g;
+	@vals = split(/\n+/, $in{"values_$i"});
+	foreach $v (@vals) {
+		if ($v =~ /^[0-9\.]+\s+\S/) {
+			&error(&text('acls_eline', $name));
+			}
+		}
 	push(@acls, { 'name' => 'acl',
 		      'values' => [ $name ],
 		      'type' => 1,
-		      'members' => [ map { { 'name' => $_ } } @vals ] });
+		      'members' => [ map { my ($n, @w)=split(/\s+/, $_);
+				           { 'name' => $n,
+					     'values' => \@w } } @vals ] });
 	}
 
 &save_directive(&get_config_parent(), 'acl', \@acls, 0, 0, 1);

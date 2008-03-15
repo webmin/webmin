@@ -67,3 +67,5 @@ When adding a remote slave zone, the IPs of all other slaves and the master are 
 ---- Changes since 1.390 ----
 BIND on Windows can now be configured using this module.
 Mass record creation can now add records for the domain name (by entering @ as the name), as records that already exist.
+---- Changes since 1.400 ----
+Keys in ACL sections are no long mangled by Webmin. This means that each IP or key must be entered on a separate line in the Access Control Lists page.
