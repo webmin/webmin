@@ -1131,20 +1131,25 @@ if (exists($main::has_command_cache{$_[0]})) {
 local $rv = undef;
 local $slash = $gconfig{'os_type'} eq 'windows' ? '\\' : '/';
 if ($_[0] =~ /^\// || $_[0] =~ /^[a-z]:[\\\/]/i) {
-	$rv = (-x &translate_filename($_[0])) ? $_[0] : undef;
+	# Absolute path given - just use it
+	local $t = &translate_filename($_[0]);
+	$rv = (-x $t && !-d _) ? $_[0] : undef;
 	}
 else {
+	# Check each directory in the path
 	local %donedir;
 	foreach $d (split($path_separator, $ENV{'PATH'})) {
 		next if ($donedir{$d}++);
 		$d =~ s/$slash$// if ($d ne $slash);
-		if (-x &translate_filename("$d/$_[0]")) {
+		local $t = &translate_filename("$d/$_[0]");
+		if (-x $t && !-d _) {
 			$rv = $d.$slash.$_[0];
 			last;
 			}
 		if ($gconfig{'os_type'} eq 'windows') {
 			foreach my $sfx (".exe", ".com", ".bat") {
-				if (-r &translate_filename("$d/$_[0]").$sfx) {
+				local $t = &translate_filename("$d/$_[0]").$sfx;
+				if (-r $t && !-d _) {
 					$rv = $d.$slash.$_[0].$sfx;
 					last;
 					}
