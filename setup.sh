@@ -746,11 +746,13 @@ EOF
 fi
 
 echo "Changing ownership and permissions .."
+# Make all config dirs non-world-readable
 for m in $newmods; do
 	chown -R root $config_dir/$m
 	chgrp -R bin $config_dir/$m
 	chmod -R og-rw $config_dir/$m
 done
+# Make miniserv config files non-world-readable
 for f in miniserv.conf miniserv.pem miniserv.users; do
 	chown -R root $config_dir/$f
 	chgrp -R bin $config_dir/$f
@@ -758,16 +760,27 @@ for f in miniserv.conf miniserv.pem miniserv.users; do
 done
 chmod +r $config_dir/version
 if [ "$nochown" = "" ]; then
+	# Make program directory non-world-writable, but executable
 	chown -R root "$wadir"
 	chgrp -R bin "$wadir"
 	chmod -R og-w "$wadir"
 	chmod -R a+rx "$wadir"
 fi
 if [ $var_dir != "/var" ]; then
+	# Make log directory non-world-readable or writable
 	chown -R root $var_dir
 	chgrp -R bin $var_dir
 	chmod -R og-rwx $var_dir
 fi
+# Fix up bad permissions from some older installs
+for m in ldap-client ldap-server ldap-useradmin mailboxes mysql postgresql servers virtual-server; do
+	if [ -d "$config_dir/$m" ]; then
+		chown root $config_dir/$m
+		chgrp bin $config_dir/$m
+		chmod og-rw $config_dir/$m
+		chmod og-rw $config_dir/$m/config 2>/dev/null
+	fi
+done
 echo "..done"
 echo ""
 
