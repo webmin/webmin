@@ -111,6 +111,7 @@ foreach $m (@mods) {
 		&write_file("$confdir/$c/config", \%newconf);
 		}
 	}
+print join(" ", @newmods),"\n";
 
 # read_file(file, array)
 # Fill an associative array with name=value pairs from a file
