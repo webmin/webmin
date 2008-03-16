@@ -356,7 +356,17 @@ else {
 		}
 
 	# Copy appropriate config file from modules to /etc/webmin
+	local @permmods = grep { !-d "$config_directory/$_" } @newmods;
 	system("cd $root_directory ; $perl $root_directory/copyconfig.pl '$gconfig{'os_type'}/$gconfig{'real_os_type'}' '$gconfig{'os_version'}/$gconfig{'real_os_version'}' '$install_root_directory' '$config_directory' ".join(' ', @realmods));
+
+	# Set correct permissions on *new* config directory
+	if (&supports_users()) {
+		foreach my $m (@permmods) {
+			system("chown -R root $config_directory/$m");
+			system("chgrp -R bin $config_directory/$m");
+			system("chmod -R og-rw $config_directory/$m");
+			}
+		}
 
 	# Update ACL for this user so they can access the new modules
 	&grant_user_module($grant, \@grantmods);
