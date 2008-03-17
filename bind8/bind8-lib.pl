@@ -465,7 +465,9 @@ $rv .= "<input type=radio name=$_[1]_def value=1 ".
        ($v ? "" : "checked")."> $text{'default'}";
 $rv .= "<input type=radio name=$_[1]_def value=0 ".
        ($v ? "checked" : "")."> $text{'listed'}<br>";
-foreach $av (@{$v->{'members'}}) { push(@av, $av->{'name'}); }
+foreach $av (@{$v->{'members'}}) {
+	push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
+	}
 $rv .= "<textarea name=$_[1] rows=3 cols=15>".
 	join("\n", @av)."</textarea></td>\n";
 }
@@ -476,8 +478,10 @@ sub save_addr_match
 local($addr, @vals, $dir);
 if ($in{"$_[0]_def"}) { &save_directive($_[1], $_[0], [ ], $_[2]); }
 else {
-	foreach $addr (split(/\s+/, $in{$_[0]})) {
-		push(@vals, { 'name' => $addr });
+	$in{$_[0]} =~ s/\r//g;
+	foreach $addr (split(/\n+/, $in{$_[0]})) {
+		local ($n, @v) = split(/\s+/, $addr);
+		push(@vals, { 'name' => $n, 'values' => \@v });
 		}
 	$dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
 	&save_directive($_[1], $_[0], [ $dir ], $_[2]);
