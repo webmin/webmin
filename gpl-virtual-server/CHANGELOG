@@ -412,3 +412,5 @@ Added a check for Sendmail not accepting email on the external interface, which 
 When a sub-domain is created with the same name as a record in the parent domain, the record is not removed whem the domain is deleted.
 When using Qmail, domains with the same name as the system's primary hostname (typically from the <tt>control/me</tt> file) are not longer allowed, as they break Virtualmin's use of the <tt>virtualdomains</tt> file.
 When email is disabled for a domain, only MX and mail records pointing to the Virtualmin system or known secondaries are removed.
+---- Changes since 3.54 ----
+New DNS domains have the localhost A record added, with an IP of 127.0.0.1.
