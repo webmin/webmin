@@ -7,3 +7,4 @@ os_support=*-linux
 desc_de=IdmapD&#45;Daemon
 desc_ca=Dimoni Idmapd
 desc_cz=Démon idmapd
+desc_nl=idmapd Deamon
