@@ -22,3 +22,4 @@ longdesc=Edit services in /etc/inetd.conf, /etc/services and /etc/rpc.
 desc_zh_TW.UTF-8=網際網路服務與協定
 desc_zh_CN.UTF-8=inetd 服务配置
 desc_ko_KR.UTF-8=인트넷 서비스 및 프로토콜 
+desc_nl=Internet Services en Protocollen
