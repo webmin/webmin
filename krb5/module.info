@@ -7,3 +7,4 @@ os_support=*-linux
 desc_de=Kerberos5
 desc_ca=Configuració de Kerberos5
 desc_cz=Kerberos5
+desc_nl=Kerberos5 Configuratie
