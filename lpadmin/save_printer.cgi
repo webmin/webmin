@@ -109,7 +109,7 @@ if ($in{'new'} || &printer_support('editdest')) {
 		    &check_ipaddress($rhost) ||
 			&error(&text('save_erhost', $rhost));
 		$rport =~ /^\d+$/ || &error(&text('save_erport', $rport));
-		$in{'rqueue'} =~ /^[A-z0-9\-\_\.]+$/ ||
+		$in{'rqueue'} =~ /^[A-z0-9\-\_\.\/]+$/ ||
 			(!$in{'rqueue'} && &printer_support('rnoqueue')) ||
 			&error(&text('save_erqueue', $in{'rqueue'}));
 		$prn{'rhost'} = $in{'rhost'};
