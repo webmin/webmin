@@ -250,6 +250,7 @@ if ($schema->objectclass("person") && $config{'person'}) {
 	push(@classes, "person");
 	}
 @classes = &unique(@classes);
+@classes = grep { /\S/ } @classes;	# Remove empty
 local @attrs = &user_to_dn($_[0]);
 push(@attrs, &split_props($config{'props'}, $_[0]));
 push(@attrs, @{$_[0]->{'ldap_attrs'}});
