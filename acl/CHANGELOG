@@ -46,3 +46,4 @@ Updated the user interface to use the Webmin UI library.
 Fixed the display of modules granted to groups.
 Added a per-user option to opt out of forced password changes after a certain number of days.
 A human-readable description of the password restrictions regular expression can be entered, for use in error messages.
+Webmin users can now be given temporary passwords, which they are forced to change at the next login.

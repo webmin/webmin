@@ -232,8 +232,11 @@ if ($in{'pass_def'} == 0) {
 	$in{'pass'} =~ /:/ && &error($text{'save_ecolon'});
 	$user{'pass'} = &encrypt_password($in{'pass'});
 	$user{'sync'} = 0;
-	$perr = &check_password_restrictions($in{'name'}, $in{'pass'});
-	$perr && &error(&text('save_epass', $perr));
+	if (!$in{'temp'}) {
+		# Check password quality, unless this is a temp password
+		$perr = &check_password_restrictions($in{'name'}, $in{'pass'});
+		$perr && &error(&text('save_epass', $perr));
+		}
 	}
 elsif ($in{'pass_def'} == 1) {
 	# No change in password
@@ -303,6 +306,9 @@ if (!$in{'lock'} && $user{'pass'} =~ /^\!(.*)$/) {
 elsif ($in{'lock'} && $user{'pass'} !~ /^\!/ && $in{'pass_def'} <= 1) {
 	$user{'pass'} = "!".$user{'pass'};
 	}
+
+# Check for force change
+$user{'temppass'} = $in{'temp'};
 
 if ($in{'old'}) {
 	# update user and all ACLs

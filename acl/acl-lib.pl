@@ -43,6 +43,7 @@ while(<PWFILE>) {
 		$user{'olds'} = [ split(/\s+/, $user[7]) ];
 		$user{'minsize'} = $user[8];
 		$user{'nochange'} = int($user[9]);
+		$user{'temppass'} = int($user[10]);
 		$user{'modules'} = $acl{$user[0]};
 		$user{'lang'} = $gconfig{"lang_$user[0]"};
 		$user{'notabs'} = $gconfig{"notabs_$user[0]"};
@@ -135,7 +136,8 @@ push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
 	$user{'lastchange'},":",
 	join(" ", @{$user{'olds'}}),":",
 	$user{'minsize'},":",
-	$user{'nochange'},
+	$user{'nochange'},":",
+	$user{'temppass'},
 	"\n");
 &close_tempfile(PWFILE);
 &unlock_file($miniserv{'userfile'});
@@ -238,7 +240,8 @@ foreach (@pwfile) {
 			$user{'lastchange'},":",
 			join(" ", @{$user{'olds'}}),":",
 			$user{'minsize'},":",
-			$user{'nochange'},
+			$user{'nochange'},":",
+			$user{'temppass'},
 			"\n");
 		}
 	else {

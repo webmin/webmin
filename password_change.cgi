@@ -39,6 +39,7 @@ if ($wuser) {
 	$perr = &acl::check_password_restrictions($in{'user'}, $in{'new1'});
 	$perr && &pass_error(&text('password_enewpass', $perr));
 	$wuser->{'pass'} = &acl::encrypt_password($in{'new1'});
+	$wuser->{'temppass'} = 0;
 	&acl::modify_user($wuser->{'name'}, $wuser);
 	&reload_miniserv();
 	}

@@ -114,6 +114,10 @@ if ($passmode == 1) {
 	$lockbox = &ui_checkbox("lock", 1, $text{'edit_templock'},
 			               $user{'pass'} =~ /^\!/ ? 1 : 0);
 	}
+if ($passmode != 3 && $passmode != 4) {
+	$tempbox = &ui_checkbox("temp", 1, $text{'edit_temppass'},
+				$user{'temppass'});
+	}
 if ($user{'lastchange'} && $miniserv{'pass_maxdays'}) {
 	$daysold = int((time() - $user{'lastchange'})/(24*60*60));
 	if ($miniserv{'pass_lockdays'} &&
@@ -134,7 +138,8 @@ if ($user{'lastchange'} && $miniserv{'pass_maxdays'}) {
 	}
 print &ui_table_row($text{'edit_pass'},
 	&ui_select("pass_def", $passmode, \@opts)." ".
-	&ui_password("pass", undef, 25).$lockbox.$expmsg);
+	&ui_password("pass", undef, 25).
+	($lockbox || $tempbox ? "<br>" : "").$lockbox.$tempbox.$expmsg);
 
 # Real name
 print &ui_table_row($text{'edit_real'},

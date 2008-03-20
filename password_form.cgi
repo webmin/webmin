@@ -5,39 +5,45 @@
 $ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
 require './web-lib.pl';
 &init_config();
+require './ui-lib.pl';
 &ReadParse();
 &header(undef, undef, undef, undef, 1, 1);
 
 print "<center>\n";
-print "<h3>$text{'password_expired'}</h3><p>\n";
+if ($in{'expired'} == 2) {
+	print &ui_subheading($text{'password_temp'});
+	}
+else {
+	print &ui_subheading($text{'password_expired'});
+	}
 
+# Start of the form
 print "$text{'password_prefix'}\n";
-print "<form action=$gconfig{'webprefix'}/password_change.cgi method=post>\n";
-print "<input type=hidden name=user value='",&html_escape($in{'user'}),"'>\n";
-print "<input type=hidden name=pam value='",&html_escape($in{'pam'}),"'>\n";
+print &ui_form_start("$gconfig{'webprefix'}/password_change.cgi", "post");
+print &ui_hidden("user", $in{'user'});
+print &ui_hidden("pam", $in{'pam'});
+print &ui_hidden("expired", $in{'expired'});
+print &ui_table_start($text{'password_header'}, "width=50% style='width:50%'", 2);
 
-print "<table border width=40%>\n";
-print "<tr $tb> <td><b>$text{'password_header'}</b></td> </tr>\n";
-print "<tr $cb> <td align=center><table cellpadding=3>\n";
+# Current username
+print &ui_table_row($text{'password_user'},
+	&html_escape($in{'user'}));
 
-print "<tr> <td><b>$text{'password_user'}</b></td>\n";
-print "<td><tt>",&html_escape($in{'user'}),"</tt></td> </tr>\n";
+# Old password
+print &ui_table_row($text{'password_old'},
+	&ui_password("old", undef, 20));
 
-print "<tr> <td><b>$text{'password_old'}</b></td>\n";
-print "<td><input name=old size=20 type=password></td> </tr>\n";
+# New password, twice
+print &ui_table_row($text{'password_new1'},
+	&ui_password("new1", undef, 20));
+print &ui_table_row($text{'password_new2'},
+	&ui_password("new2", undef, 20));
 
-print "<tr> <td><b>$text{'password_new1'}</b></td>\n";
-print "<td><input name=new1 size=20 type=password></td> </tr>\n";
-print "<tr> <td><b>$text{'password_new2'}</b></td>\n";
-print "<td><input name=new2 size=20 type=password></td> </tr>\n";
-
-print "<tr> <td colspan=2 align=center><input type=submit ",
-      "value='$text{'password_ok'}'>\n";
-print "<input type=reset value='$text{'password_clear'}'><br>\n";
-print "</td> </tr>\n";
-print "</table></td></tr></table><p>\n";
-print "<hr>\n";
-print "</form></center>\n";
+# End of form
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'password_ok'} ] ]);
+print "</center>\n";
 print "$text{'password_postfix'}\n";
+
 &footer();
 

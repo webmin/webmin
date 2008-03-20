@@ -2944,7 +2944,7 @@ sub urlize {
 
 # validate_user(username, password, host)
 # Checks if some username and password are valid. Returns the modified username,
-# the expired flag, and the non-existence flag
+# the expired / temp pass flag, and the non-existence flag
 sub validate_user
 {
 local ($user, $pass, $host) = @_;
@@ -2977,6 +2977,10 @@ elsif ($canmode == 1) {
 			elsif ($daysold > $config{'pass_maxdays'}) {
 				# Password has expired
 				return ( $user, 1, 0 );
+				}
+			elsif ($temppass{$user}) {
+				# Temporary password - force change now
+				return ( $user, 2, 0 );
 				}
 			}
 		return ( $user, 0, 0 );
@@ -3522,13 +3526,14 @@ if ($ok && (!$expired ||
 	return 0;
 	}
 elsif ($ok && $expired &&
-       $config{'passwd_mode'} == 2) {
-	# Login was ok, but password has expired. Need
+       ($config{'passwd_mode'} == 2 || $expired == 2)) {
+	# Login was ok, but password has expired or was temporary. Need
 	# to force display of password change form.
 	$validated = 1;
 	$authuser = undef;
 	$querystring = "&user=".&urlize($vu).
-		       "&pam=".$use_pam;
+		       "&pam=".$use_pam.
+		       "&expired=".$expired;
 	$method = "GET";
 	$queryargs = "";
 	$page = $config{'password_form'};
@@ -3928,6 +3933,7 @@ undef(%allowdays);
 undef(%allowhours);
 undef(%lastchanges);
 undef(%nochange);
+undef(%temppass);
 if ($config{'userfile'}) {
 	open(USERS, $config{'userfile'});
 	while(<USERS>) {
@@ -3953,6 +3959,7 @@ if ($config{'userfile'}) {
 			}
 		$lastchanges{$user[0]} = $user[6];
 		$nochange{$user[0]} = $user[9];
+		$temppass{$user[0]} = $user[10];
 		}
 	close(USERS);
 	}
