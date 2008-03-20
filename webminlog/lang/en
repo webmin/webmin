@@ -77,6 +77,9 @@ view_rollback2=Roll Back Selected Files
 view_return=action details
 view_input=Input to command
 view_anno=Log entry annotation
+view_raw=Raw log data
+view_rawname=Parameter name
+view_rawvalue=Parameter value
 
 acl_mods=Can view logs in modules
 acl_all=All

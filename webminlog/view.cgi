@@ -65,6 +65,27 @@ print &ui_table_row(undef,
 	&ui_submit($text{'save'}, "annosave"));
 print &ui_hidden_table_end("anno");
 
+# Raw log data, hidden by default
+print &ui_hidden_table_start($text{'view_raw'}, "width=100%", 1, "raw", 0);
+@tds = ( "width=20% ");
+$rtable = &ui_columns_start([ $text{'view_rawname'}, $text{'view_rawvalue'} ],
+			    100, 0, \@tds);
+foreach $k (keys %$act) {
+	next if ($k eq 'param');
+	$rtable .= &ui_columns_row([
+		"<b>".&html_escape($k)."</b>",
+		&html_escape($act->{$k}) ], \@tds);
+	}
+foreach $k (keys %{$act->{'param'}}) {
+	$rtable .= &ui_columns_row([
+		&html_escape($k),
+		&html_escape(join("\n", split(/\0/, $act->{'param'}->{$k}))) ],
+		\@tds);
+	}
+$rtable .= &ui_columns_end();
+print &ui_table_row(undef, $rtable, 2);
+print &ui_hidden_table_end("raw");
+
 # display modified files
 $rbcount = 0;
 $i = 0;

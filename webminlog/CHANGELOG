@@ -17,3 +17,5 @@ Rollback actions can themselves now be rolled back.
 Re-designed the UI to use Webmin standard layout and functions.
 Added a field for searching based on the contents of commands run or file changes made.
 When viewing the details of a logged action, an annotation can be entered to explain why it was done.
+---- Changes since 1.400 ----
+Added a section to the Action Details page for viewing raw log data, which can show more detail.
