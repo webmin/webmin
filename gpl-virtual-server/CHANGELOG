@@ -418,3 +418,4 @@ Ported the migrate-domain.pl script from Virtualmin GPL, which allows migration 
 When migrating a domain from other control panel like Plesk, you can now select to have to downloaded directly from a remote FTP or SSH server. The migrate-domain.pl command-line script also allows use of ftp:// or ssh:// URLs for backup sources.
 If the skeleton directory contains a public_html sub-directory, it is copied to a sub-domain's web pages directory when the domain is created.
 For alias domains whose virtusers are always copied from the target, no home directory is created (as it isn't needed).
+The path to the public_html and cgi-bin directories is now stored in each new domain's data file, so that they are correctly preserved when the path is changed in the template, or the domain is moved to another system with a different directory name.
