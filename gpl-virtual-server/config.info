@@ -1,5 +1,5 @@
 line1=Other server settings,11
-mail_system=Mail server to configure,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPOPMail,3-Detect automatically
+mail_system=Mail server to configure,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPOPMail,6-Exim (experimental),3-Detect automatically
 generics=Also update outgoing addresses for mailboxes?,1,1-Yes,0-No
 bccs=Allow automatic BCCing of outgoing email?,1,1-Yes,0-No
 quotas=Quota setup for domain and mail users?,1,1-Yes (if enabled),0-No
