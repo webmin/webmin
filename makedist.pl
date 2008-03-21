@@ -68,7 +68,7 @@ else {
 	  "smart-status", "idmapd", "krb5", "smf", "ipfilter", "rbac",
 	  "tunnel", "zones", "cluster-usermin", "dovecot", "syslog-ng",
 	  "mailcap", "blue-theme", "ldap-client", "phpini", "filter",
-	  "bacula-backup", "ldap-server",
+	  "bacula-backup", "ldap-server", "exim",
 	  );
 	}
 @dirlist = ( "Webmin" );
