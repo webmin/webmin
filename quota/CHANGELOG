@@ -30,3 +30,5 @@ Added a Module Config option to sort user lists by the percentage of soft quota 
 Added a Module Config option to show both hard and/or soft quota percentages.
 ---- Changes since 1.380 ----
 Quotas are considered active for a filesystem if the usrquota or grpquota options are on in /etc/mtab, even if missing from /etc/fstab.
+---- Changes since 1.400 ----
+If a user to email is a Virtualmin domain owner, send email to the domain's contact address.

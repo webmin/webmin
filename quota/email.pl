@@ -56,7 +56,12 @@ foreach $k (keys %config) {
 				if ($d) {
 					local @users = &virtual_server::list_domain_users($d, 0, 0, 1, 1);
 					local ($uinfo) = grep { $_->{'user'} eq $user{$i,'user'} } @users;
-					if ($uinfo && $uinfo->{'email'}) {
+					if ($uinfo && $uinfo->{'domainowner'}) {
+						# Domain owner, with own email
+						$email = $d->{'emailto'};
+						}
+					elsif ($uinfo && $uinfo->{'email'}) {
+						# Regular user with email
 						$email = $uinfo->{'email'};
 						}
 					}
