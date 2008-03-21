@@ -1,0 +1,8 @@
+exim_dir=Exim directory,0
+exim_virt_dir=Exim aliases directory,0
+exim_addrfile=Exim local domains file,3,
+exim_aliasfileext=Exim domain alias file extension,3,
+exim_dbmfile=Exim local domains file,3,
+exim_dbmext=Exim local domain mapping extension,3,
+mail_system=Create mbox or maildir for new users?,1
+exim_mail_file=Name of mbox file or maildir directory,0
