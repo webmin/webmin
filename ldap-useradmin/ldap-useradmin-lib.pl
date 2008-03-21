@@ -191,6 +191,12 @@ sub encrypt_password
 {
 local ($pass, $salt) = @_;
 &seed_random();
+if ($config{'md5'} == 4) {
+	# LDAP SSHA encryption
+	local $qp = quotemeta($pass);
+	local $out = `$config{'slappasswd'} -h '{ssha}' -s $qp 2>/dev/null`;
+	return $out;
+	}
 if ($config{'md5'} == 3) {
 	# LDAP MD5 encryption
 	local $qp = quotemeta($pass);
@@ -453,13 +459,15 @@ sub user_to_dn
 {
 local $pfx = $_[0]->{'pass'} =~ /^\{[a-z0-9]+\}/i ? undef :
 	     $config{'md5'} == 1 || $config{'md5'} == 3 ? "{md5}" :
+	     $config{'md5'} == 4 ? "{ssha}" : 
 	     $config{'md5'} == 0 ? "{crypt}" : "";
 local $pass = $_[0]->{'pass'};
 local $disabled;
 if ($pass =~ s/^\!//) {
 	$disabled = "!";
 	}
-return ( "cn" => $_[0]->{'real'},
+$cn = $_[0]->{'real'} eq '' ? $_[0]->{'user'} : $_[0]->{'real'};
+return ( "cn" => $cn,
 	 "uid" => $_[0]->{'user'},
 	 "uidNumber" => $_[0]->{'uid'},
 	 "loginShell" => $_[0]->{'shell'},
@@ -475,7 +483,7 @@ return ( "cn" => $_[0]->{'real'},
 	 $_[0]->{'max'} eq '' ? ( ) :
 		( "shadowMax" => $_[0]->{'max'} ),
 	 $_[0]->{'warn'} eq '' ? ( ) :
-		( "shadowWarn" => $_[0]->{'warn'} ),
+		( "shadowWarning" => $_[0]->{'warn'} ),
 	 $_[0]->{'inactive'} eq '' ? ( ) :
 		( "shadowInactive" => $_[0]->{'inactive'} )
 	);

@@ -99,7 +99,7 @@ if ($config{'md5'} == 1) {
 		exit;
 		}
 	}
-elsif ($config{'md5'} == 3) {
+elsif ($config{'md5'} == 3 || $config{'md5'} == 4) {
 	# Check if slappasswd is installed
 	if (!&has_command($config{'slappasswd'})) {
 		print &text('index_eslappasswd',
