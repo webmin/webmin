@@ -4,3 +4,4 @@ os_support=!windows
 desc_ca=Configuració de PHP
 desc_it=Configurazione di PHP
 desc_cz=PHP konfigurace
+desc_nl=PHP Configuratie
