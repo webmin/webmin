@@ -9,3 +9,4 @@ desc_ms=Pelayan OpenSLP
 os_support=!windows
 library=slp-lib.pl
 desc_cz=OpenSLP server
+desc_nl=OpenSLP Server
