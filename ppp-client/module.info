@@ -6,3 +6,4 @@ os_support=*-linux
 depends=proc init cron
 desc_ca=Client PPP
 desc_cz=PPP Dialup klient
+desc_nl=PPP Dailup Client
