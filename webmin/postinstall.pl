@@ -7,7 +7,8 @@ sub module_install
 &build_installed_modules();
 
 # Pick a random update time
-if (!defined($config{'uphour'})) {
+if (!defined($config{'uphour'}) ||
+    $config{'uphour'} == 3 && $config{'upmins'} == 0 && !$config{'update'}) {
 	&seed_random();
 	$config{'uphour'} = int(rand()*24);
 	$config{'upmins'} = int(rand()*60);
