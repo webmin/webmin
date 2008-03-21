@@ -1,9 +1,17 @@
 
 require 'webmin-lib.pl';
 
-# Update cache of which module's underlying servers are installed 
 sub module_install
 {
+# Update cache of which module's underlying servers are installed 
 &build_installed_modules();
+
+# Pick a random update time
+if (!defined($config{'uphour'})) {
+	&seed_random();
+	$config{'uphour'} = int(rand()*24);
+	$config{'upmins'} = int(rand()*60);
+	&save_module_config();
+	}
 }
 

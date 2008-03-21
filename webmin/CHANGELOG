@@ -74,3 +74,4 @@ The nice level (CPU priority) of all cron and other background jobs run by Webmi
 ---- Changes since 1.400 ----
 Use the gzip -d command to extract Webmin modules, if gunzip is missing (such as on Windows).
 Users with too many failed logins can be locked until the administrator unlocks them.
+The default scheduled update time is now randomly selected.
