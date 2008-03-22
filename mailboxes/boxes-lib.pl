@@ -183,6 +183,7 @@ else {
 
 # Need to scan through possible messages to find those that match
 open(MAIL, &user_mail_file($_[0]));
+local $headersonly = !&matches_needs_body($_[1]);
 foreach $i (@possible) {
 	# Seek to mail position
 	local @idx = split(/\0/, $index{$i});
@@ -191,7 +192,7 @@ foreach $i (@possible) {
 	seek(MAIL, $pos, 0);
 
 	# Read the mail
-	local $mail = &read_mail_fh(MAIL, $dash ? 2 : 1, 0);
+	local $mail = &read_mail_fh(MAIL, $dash ? 2 : 1, $headersonly);
 	$mail->{'line'} = $startline;
 	$mail->{'eline'} = $startline + $mail->{'lines'} - 1;
 	$mail->{'idx'} = $i;
@@ -1746,7 +1747,8 @@ if ($_[3] && $_[3]->{'latest'}) {
 	$min = -1;
 	$max = -$_[3]->{'latest'};
 	}
-foreach $mail (&list_maildir($_[0], $min, $max, $_[4])) {
+local $headersonly = $_[4] && !&matches_needs_body($_[1]);
+foreach $mail (&list_maildir($_[0], $min, $max, $headersonly)) {
 	push(@rv, $mail) if ($mail &&
 			     &mail_matches($_[1], $_[2], $mail));
 	}
@@ -2052,7 +2054,8 @@ if ($_[3] && $_[3]->{'latest'}) {
 	$min = -1;
 	$max = -$_[3]->{'latest'};
 	}
-foreach $mail (&list_mhdir($_[0], $min, $max, $_[4])) {
+local $headersonly = $_[4] && !&matches_needs_body($_[1]);
+foreach $mail (&list_mhdir($_[0], $min, $max, $headersonly)) {
 	push(@rv, $mail) if ($mail && &mail_matches($_[1], $_[2], $mail));
 	}
 return @rv;
@@ -2273,7 +2276,7 @@ foreach $f (@{$_[0]}) {
 		}
 	return 1 if ($count && !$_[1]);
 	}
-return $count == @{$_[0]};
+return $count == scalar(@{$_[0]});
 }
 
 # search_fields(&fields)
@@ -2281,11 +2284,21 @@ return $count == @{$_[0]};
 sub search_fields
 {
 local @rv;
-foreach $f (@{$_[0]}) {
+foreach my $f (@{$_[0]}) {
 	$f->[0] =~ /^\!?(.*)$/;
 	push(@rv, $1);
 	}
 return &unique(@rv);
+}
+
+# matches_needs_body(&fields)
+# Returns 1 if a search needs to check the mail body
+sub matches_needs_body
+{
+foreach my $f (@{$_[0]}) {
+	return 1 if ($f->[0] eq 'body' || $f->[0] eq 'all');
+	}
+return 0;
 }
 
 # parse_delivery_status(text)

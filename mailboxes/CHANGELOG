@@ -45,3 +45,5 @@ Spam folders are detected from the Virtualmin configuration, if installed.
 Email cache and index files are now deleted when a user is removed using Webmin.
 ---- Changes since 1.390 ----
 The number of un-read messages in user folders can be displayed using a new Module Config option (off by default, as there is no fast way to compute this).
+---- Changes since 1.400 ----
+Fixed a bug that broke searching by message body contents.

@@ -929,6 +929,7 @@ if ($folder->{'type'} != 4 &&
     ($folder->{'type'} != 0 || !&has_dbm_index($folder->{'file'})) &&
     scalar(@idxfields) == scalar(@$fields) && @idxfields &&
     &get_product_name() eq 'usermin') {
+	print DEBUG "using index to search\n";
 	local %index;
 	&build_new_sort_index($folder, undef, \%index);
 	local @rv;
