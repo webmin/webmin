@@ -1,4 +1,4 @@
-index_title=Squid Analysis Report Generator
+index_title=Squid Report Generator
 index_econf=The Sarg configuration file $1 was not found on your system. Maybe Sarg is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_ecmd=The Sarg program $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_eversion=Failed to get the version of Sarg with the command $1 : $2
