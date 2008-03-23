@@ -12,3 +12,4 @@ readonly=1
 os_support=!windows
 nondefault=1
 desc_cz=Bezpeènostní hlídaè
+desc_nl=Beveiligings Sentries (Schildwachten)
