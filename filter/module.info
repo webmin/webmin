@@ -9,3 +9,4 @@ webmin_hidden=1
 desc_ca=Filtres i Reenviaments de Correu
 desc_cz=Filtrování a pøeposílání po¹ty
 desc_nl=Filter en Mail Forward
+desc_de=Filter und Mailweiterleitung
