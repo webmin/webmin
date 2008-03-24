@@ -27,3 +27,4 @@ Directives that refer to ACLs like http_access are no longer re-positioned in th
 Use the cache directive instead of no_cache for Squid 2.6.
 Allow request and reply headers access control rules to be configured separately in Squid 3.0.
 Added a page for editing cache manager passwords and the actions that they apply to.
+Comments at the end of lines are now preserved when Webmin changes directives in squid.conf.

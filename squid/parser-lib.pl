@@ -20,8 +20,17 @@ if (!@get_config_cache) {
 			local $str = $3;
 			while($str =~ /^\s*("[^"]*")(.*)$/ ||
 			      $str =~ /^\s*(\S+)(.*)$/) {
-				push(@{$dir{'values'}}, $1);
+				local $v = $1;
 				$str = $2;
+				if ($v !~ /^"/ && $v =~ /^(.*)#/ &&
+				    !$dir{'comment'}) {
+					# A comment .. end of values
+					$v = $1;
+					$dir{'postcomment'} = $str;
+					$str = undef;
+					last if ($v eq '');
+					}
+				push(@{$dir{'values'}}, $v);
 				}
 			$dir{'line'} = $lnum;
 			$dir{'index'} = scalar(@get_config_cache);
@@ -140,6 +149,7 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 		}
 	else {
 		# updating some directive
+		$newv[$i]->{'postcomment'} = $oldv[$i]->{'postcomment'};
 		$nl = &directive_line($newv[$i]);
 		local @after = $change && $_[3] ? ( $change ) :
 							# After last one updated
@@ -174,7 +184,8 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 sub directive_line
 {
 local @v = @{$_[0]->{'values'}};
-return $_[0]->{'name'}.(@v ? " ".join(' ',@v) : "");
+return $_[0]->{'name'}.(@v ? " ".join(' ',@v) : "").
+       ($_[0]->{'postcomment'} ? " #".$_[0]->{'postcomment'} : "");
 }
 
 # renumber(&directives, line, count, [end])
