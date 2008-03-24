@@ -46,6 +46,7 @@ global_DailyStats=Statistieken  dagelijks gebruik
 global_GraphLegend=Grafieken geschiedenis
 global_HourlyGraph=histogram gebruik per uur
 global_HourlyStats=Statistieken gebruik per uur
+global_TopAgents=Gebruiker agenten
 global_TopCountries=Landen
 global_TopEntry=Entry pagina's
 global_TopExit=Exit pagina's
