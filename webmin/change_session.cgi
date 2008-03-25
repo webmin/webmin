@@ -111,11 +111,10 @@ else {
 	$gconfig{'loginbanner'} = $in{'banner'};
 	}
 if ($in{'md5pass'}) {
-	# MD5 enabled .. but is it supported by crypt?
-	if (&unix_crypt('test', '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') ne
-	    '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') {
-		&error($text{'session_emd5'});
-		}
+	# MD5 enabled .. but is it supported by this system?
+	&foreign_require("acl", "acl-lib.pl");
+	$need = &acl::check_md5();
+	$need && &error(&text('session_emd5mod', "<tt>$need</tt>"));
 	}
 $gconfig{'md5pass'} = $in{'md5pass'};
 &write_file("$config_directory/config", \%gconfig);

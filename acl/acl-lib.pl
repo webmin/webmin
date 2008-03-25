@@ -4,6 +4,7 @@
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
+do 'md5-lib.pl';
 %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
@@ -658,14 +659,17 @@ else {
 }
 
 # encrypt_password(password, [salt])
+# Encrypts a Webmin user password
 sub encrypt_password
 {
 local ($pass, $salt) = @_;
 if ($gconfig{'md5pass'}) {
-	$salt ||= '$1$'.substr(time(), -8);
-	return crypt($pass, $salt);
+	# Use MD5 encryption
+	$salt ||= '$1$'.substr(time(), -8).'$xxxxxxxxxxxxxxxxxxxxxx';
+	return &encrypt_md5($pass, $salt);
 	}
 else {
+	# Use Unix DES
 	&seed_random();
 	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65);
 	return &unix_crypt($pass, $salt);
@@ -797,7 +801,7 @@ local $use_md5 = &md5_perl_module();
 if (!$hash_session_id_cache{$sid}) {
         if ($use_md5) {
                 # Take MD5 hash
-                $hash_session_id_cache{$sid} = &encrypt_md5($sid);
+                $hash_session_id_cache{$sid} = &hash_md5_session($sid);
                 }
         else {
                 # Unix crypt
@@ -807,9 +811,9 @@ if (!$hash_session_id_cache{$sid}) {
 return $hash_session_id_cache{$sid};
 }
 
-# encrypt_md5(string)
+# hash_md5_session(string)
 # Returns a string encrypted in MD5 format
-sub encrypt_md5
+sub hash_md5_session
 {
 local $passwd = $_[0];
 local $use_md5 = &md5_perl_module();
@@ -858,18 +862,6 @@ $l = $final[11];
 $rv .= &to64($l, 2);
 
 return $rv;
-}
-
-sub to64
-{
-local ($v, $n) = @_;
-local @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
-local $r;
-while(--$n >= 0) {
-        $r .= $itoa64[$v & 0x3f];
-        $v >>= 6;
-        }
-return $r;
 }
 
 # Returns a Perl module for MD5 hashing, or undef if none

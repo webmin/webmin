@@ -5,6 +5,10 @@
 # are not installed, or undef if they are
 sub check_md5
 {
+# On some systems, the crypt function just works!
+return undef if (&unix_crypt_supports_md5());
+
+# Try Perl modules
 eval "use MD5";
 if (!$@) {
 	eval "use Digest::MD5";
@@ -25,6 +29,11 @@ local $salt = $_[1] || substr(time(), -8);
 if ($salt =~ /^\$1\$(.{8})/) {
 	# Extract actual salt from already encrypted password
 	$salt = $1;
+	}
+
+# Use built-in crypt support for MD5, if we can
+if (&unix_crypt_supports_md5()) {
+	return &unix_crypt($passwd, $magic.$salt.'$xxxxxxxxxxxxxxxxxxxxxx');
 	}
 
 # Add the password, magic and salt
@@ -93,6 +102,14 @@ $l = $final[11];
 $rv .= &to64($l, 2);
 
 return $rv;
+}
+
+# unix_crypt_supports_md5()
+# Returns 1 if the built-in crypt() function can already do MD5
+sub unix_crypt_supports_md5
+{
+return &unix_crypt('test', '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') eq
+       '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/';
 }
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");

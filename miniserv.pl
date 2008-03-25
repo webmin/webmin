@@ -2963,7 +2963,8 @@ elsif ($canmode == 0) {
 	}
 elsif ($canmode == 1) {
 	# Attempt Webmin authentication
-	if ($users{$webminuser} eq &unix_crypt($pass, $users{$webminuser})) {
+	if ($users{$webminuser} eq
+	    &password_crypt($pass, $users{$webminuser})) {
 		# Password is valid .. but check for expiry
 		local $lc = $lastchanges{$user};
 		if ($config{'pass_maxdays'} && $lc && !$nochange{$user}) {
@@ -3066,7 +3067,8 @@ elsif ($config{'passwd_file'}) {
 			if (/^\s*(\S+):/ && $1 eq $_[0]) {
 				$_ = <FILE>;
 				if (/^\s*password\s*=\s*(\S+)\s*$/) {
-					$rv = $1 eq &unix_crypt($_[1], $1) ? 1 : 0;
+					$rv = $1 eq &password_crypt($_[1], $1) ?
+						1 : 0;
 					}
 				last;
 				}
@@ -3079,7 +3081,7 @@ elsif ($config{'passwd_file'}) {
 			local $u = $l[$config{'passwd_uindex'}];
 			local $p = $l[$config{'passwd_pindex'}];
 			if ($u eq $_[0]) {
-				$rv = $p eq &unix_crypt($_[1], $p) ? 1 : 0;
+				$rv = $p eq &password_crypt($_[1], $p) ? 1 : 0;
 				if ($config{'passwd_cindex'} ne '' && $rv) {
 					# Password may have expired!
 					local $c = $l[$config{'passwd_cindex'}];
@@ -3105,7 +3107,7 @@ elsif ($config{'passwd_file'}) {
 
 # Fallback option - check password returned by getpw*
 local @uinfo = getpwnam($_[0]);
-if ($uinfo[1] ne '' && &unix_crypt($_[1], $uinfo[1]) eq $uinfo[1]) {
+if ($uinfo[1] ne '' && &password_crypt($_[1], $uinfo[1]) eq $uinfo[1]) {
 	return 1;
 	}
 
@@ -4161,6 +4163,22 @@ if (!defined($logout_time_cache{$user,$sid})) {
 return $logout_time_cache{$user,$sid};
 }
 
+# password_crypt(password, salt)
+# If the salt looks like MD5 and we have a library for it, perform MD5 hashing
+# of a password. Otherwise, do Unix crypt.
+sub password_crypt
+{
+local ($pass, $salt) = @_;
+if ($salt =~ /^\$1\$/ && $use_md5) {
+	return &encrypt_md5($pass, $salt);
+	}
+else {
+	return &unix_crypt($pass, $salt);
+	}
+}
+
+# unix_crypt(password, salt)
+# Performs standard Unix hashing for a password
 sub unix_crypt
 {
 local ($pass, $salt) = @_;
@@ -4591,19 +4609,31 @@ if (!$hash_session_id_cache{$sid}) {
 return $hash_session_id_cache{$sid};
 }
 
-# encrypt_md5(string)
+# encrypt_md5(string, [salt])
 # Returns a string encrypted in MD5 format
 sub encrypt_md5
 {
-local $passwd = $_[0];
+local ($passwd, $salt) = @_;
+local $magic = '$1$';
+if ($salt =~ /^\$1\$(.{8})/) {
+	# Extract actual salt from already encrypted password
+	$salt = $1;
+	}
 
 # Add the password
 local $ctx = eval "new $use_md5";
 $ctx->add($passwd);
+if ($salt) {
+	$ctx->add($magic);
+	$ctx->add($salt);
+	}
 
 # Add some more stuff from the hash of the password and salt
 local $ctx1 = eval "new $use_md5";
 $ctx1->add($passwd);
+if ($salt) {
+	$ctx1->add($salt);
+	}
 $ctx1->add($passwd);
 local $final = $ctx1->digest();
 for($pl=length($passwd); $pl>0; $pl-=16) {
@@ -4624,6 +4654,18 @@ for($i=length($passwd); $i; $i >>= 1) {
 	}
 $final = $ctx->digest();
 
+if ($salt) {
+	# This loop exists only to waste time
+	for($i=0; $i<1000; $i++) {
+		$ctx1 = eval "new $use_md5";
+		$ctx1->add($i & 1 ? $passwd : $final);
+		$ctx1->add($salt) if ($i % 3);
+		$ctx1->add($passwd) if ($i % 7);
+		$ctx1->add($i & 1 ? $final : $passwd);
+		$final = $ctx1->digest();
+		}
+	}
+
 # Convert the 16-byte final string into a readable form
 local $rv;
 local @final = map { ord($_) } split(//, $final);
@@ -4640,7 +4682,13 @@ $rv .= &to64($l, 4);
 $l = $final[11];
 $rv .= &to64($l, 2);
 
-return $rv;
+# Add salt if needed
+if ($salt) {
+	return $magic.$salt.'$'.$rv;
+	}
+else {
+	return $rv;
+	}
 }
 
 sub to64
