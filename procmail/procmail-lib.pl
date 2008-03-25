@@ -308,6 +308,49 @@ $_[1] =~ /^(.*)\/[^\/]+$/;
 return "$1/$_[0]";
 }
 
+# check_mailserver_config()
+# Works out which mail server appears to be installed, and returns the
+# module name and possibly an error message if Procmail is not setup
+sub check_mailserver_config
+{
+local $ms = &foreign_installed("qmailadmin") ? "qmailadmin" :
+	    &foreign_installed("postfix") ? "postfix" :
+	    &foreign_installed("sendmail") ? "sendmail" : undef;
+return () if (!$ms);
+local $err;
+local $procmail_cmd = &has_command($config{'procmail'});
+if ($ms eq "qmailadmin") {
+	# Don't know how to check for this
+	$err = undef;
+	}
+elsif ($ms eq "postfix") {
+	# Check mailbox_command
+	&foreign_require("postfix", "postfix-lib.pl");
+	local $cmd = &postfix::get_real_value("mailbox_command");
+	if ($cmd !~ /procmail/) {
+		$err = &text('check_epostfix', "mailbox_command",
+			     $postfix::config{'postfix_config_file'},
+			     $procmail_cmd);
+		}
+	}
+elsif ($ms eq "sendmail") {
+	# Check for local or procmail mailer
+	&foreign_require("sendmail", "sendmail-lib.pl");
+	local $conf = &sendmail::get_sendmailcf();
+	local $found;
+	foreach my $c (@$conf) {
+		if ($c->{'type'} eq 'M' && $c->{'value'} =~ /procmail/) {
+			$found++;
+			last;
+			}
+		}
+	if (!$found) {
+		$err = &text('check_esendmail','../sendmail/list_features.cgi');
+		}
+	}
+return ($ms, $err);
+}
+
 @known_flags = ('H', 'B', 'D', 'h', 'b', 'c', 'w', 'W', 'i', 'r', 'f');
 
 1;

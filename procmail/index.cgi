@@ -30,10 +30,13 @@ if ($module_info{'usermin'}) {
 	print &text('index_desc', "<tt>$procmailrc</tt>"),"<p>\n";
 	}
 else {
-	$ms = &foreign_installed("qmailadmin") ? "qmail" :
-	      &foreign_installed("postfix") ? "postfix" :
-	      &foreign_installed("sendmail") ? "sendmail" : "other";
-	print &text('index_desc_'.$ms, "<tt>$procmailrc</tt>"),"<p>\n";
+	($ms, $mserr) = &check_mailserver_config();
+	if ($mserr) {
+		print "<b>",&text('index_mserr', $mserr),"</b><p>\n";
+		}
+	elsif (!$ms) {
+		print &text('index_desc_other', "<tt>$procmailrc</tt>"),"<p>\n";
+		}
 	}
 
 # Build links for adding things

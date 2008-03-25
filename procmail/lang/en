@@ -1,8 +1,6 @@
 index_title=Procmail Mail Filter
-index_desc_sendmail=The procmail actions below from $1 will apply to <b>all</b> email delivered to users on your system. However, they will only be used if Procmail is installed and the Sendmail <tt>local_procmail</tt> feature is enabled.
-index_desc_postfix=The procmail actions below from $1 will apply to <b>all</b> email delivered to users on your system. However, they will only be used if Procmail is installed and Postfix is configured to use it for mailbox delivery.
-index_desc_qmail=The procmail actions below from $1 will apply to <b>all</b> email delivered to users on your system. However, they will only be used if Procmail is installed and Qmail is configured to use it as the delivery program.
 index_desc_other=The procmail actions below from $1 will apply to <b>all</b> email delivered to users on your system. However, they will only be used if Procmail is installed and your mail server is configured to use it.
+index_mserr=Warning - any rules defined below will not be used : $1
 index_action=Action to take
 index_conds=Conditions
 index_move=Move
@@ -127,3 +125,5 @@ log_down=Moved an entry down
 delete_err=Failed to delete actions
 delete_enone=None selected
 
+check_epostfix=Procmail is not enabled in your Postfix configuration. The configuration file <tt>$2</tt> must have the <tt>$1</tt> option set to <tt>$3</tt>.
+check_esendmail=Sendmail is not setup to use Procmail for local delivery. This can be configured in Webmin's <a href='$1'>Sendmail Mail Server</a> module.
