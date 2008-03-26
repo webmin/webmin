@@ -1195,7 +1195,8 @@ elsif ($config{'nscd_restart'}) {
 	}
 elsif (&has_command("nscd")) {
 	# Use nscd -i to reload
-	&system_logged("nscd -i passwd -i group >/dev/null 2>&1 </dev/null");
+	&system_logged("nscd -i group >/dev/null 2>&1 </dev/null");
+	&system_logged("nscd -i passwd >/dev/null 2>&1 </dev/null");
 	}
 else {
 	# Send HUP signal
