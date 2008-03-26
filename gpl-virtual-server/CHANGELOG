@@ -420,3 +420,8 @@ If the skeleton directory contains a public_html sub-directory, it is copied to 
 For alias domains whose virtusers are always copied from the target, no home directory is created (as it isn't needed).
 The path to the public_html and cgi-bin directories is now stored in each new domain's data file, so that they are correctly preserved when the path is changed in the template, or the domain is moved to another system with a different directory name.
 Basic Exim support, thanks to Bill Moyers and John Gray.
+When migrating a cPanel, Plesk or Ensim backup, the original domain name can now be worked out automatically, as long as the backup contains just one.
+For new installs, new features in older versions are not shown on the System Information page.
+Fixed the modification of Webalizer and Logrotate config files when a domain's Apache logs are outside it's home directory.
+Apache logs outside a domain's home directory are now included in backups and restores.
+Ported the delete-user.pl command-line script from the Pro version.
