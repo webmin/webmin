@@ -6152,6 +6152,16 @@ close(MTAB);
 return $vserver;
 }
 
+# running_in_xen()
+# Returns 1 if Webmin is running inside a Xen instance, by looking
+# at /proc/xen/capabilities
+sub running_in_xen
+{
+return 0 if (!-r "/proc/xen/capabilities");
+local $cap = &read_file_contents("/proc/xen/capabilities");
+return $cap =~ /control_d/ ? 0 : 1;
+}
+
 # list_categories(&modules)
 # Returns a hash mapping category codes to names
 sub list_categories
