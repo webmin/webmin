@@ -888,7 +888,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 	elsif ($l =~ /^Terminated\s+Jobs/i) { $sect = 3; }
 
 	if ($sect == 1 && $l =~ /^\s*(\S+)\s+(\S+)\s+(\d+)\s+(\S+\s+\S+)\s+(\S+)\s+(\S+)\s*$/) {
-		push(@sched, { 'level' => &full_level($1),
+		push(@sched, { 'level' => &full_level("$1"),
 			       'type' => $2,
 			       'pri' => $3,
 			       'date' => $4,
@@ -897,24 +897,24 @@ foreach my $l (split(/\r?\n/, $status)) {
 		}
 	elsif ($sect == 2 && $l =~ /^\s*(\d+)\s+(\S+)\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/) {
 		push(@run, { 'id' => $1,
-			     'level' => &full_level($2),
-			     'name' => &job_name($3),
+			     'level' => &full_level("$2"),
+			     'name' => &job_name("$3"),
 			     'status' => $5 });
 		}
 	elsif ($sect == 2 && $l =~ /^\s*(\d+)\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/) {
 		push(@run, { 'id' => $1,
 			     'level' => "Restore",
-			     'name' => &job_name($2),
+			     'name' => &job_name("$2"),
 			     'status' => $4 });
 		}
-	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/){
+	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+|\d+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/){
 		push(@done, { 'id' => $1,
-			      'level' => &full_level($2),
-			      'files' => &remove_comma($3),
-			      'bytes' => &remove_comma($4),
+			      'level' => &full_level("$2"),
+			      'files' => &remove_comma("$3"),
+			      'bytes' => &remove_comma("$4"),
 			      'status' => $5,
 			      'date' => $6,
-			      'name' => &job_name($7) });
+			      'name' => &job_name("$7") });
 		}
 	}
 return (\@sched, \@run, \@done);
@@ -941,20 +941,20 @@ foreach my $l (split(/\r?\n/, $status)) {
 
 	if ($sect == 2 && $l =~ /^\s*JobID\s+(\d+)\s+Job\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/i) {
 		push(@run, { 'id' => $1,
-			     'name' => &job_name($2),
+			     'name' => &job_name("$2"),
 			     'status' => $4 });
 		}
 	elsif ($sect == 2 && $l =~ /^\s*Backup\s+Job\s+started:\s+(\S+\s+\S+)/) {
 		$run[$#run]->{'date'} = $1;
 		}
-	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
+	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+|\d+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
 		push(@done, { 'id' => $1,
-			      'level' => &full_level($2),
-			      'files' => &remove_comma($3),
-			      'bytes' => &remove_comma($4),
+			      'level' => &full_level("$2"),
+			      'files' => &remove_comma("$3"),
+			      'bytes' => &remove_comma("$4"),
 			      'status' => $5,
 			      'date' => $6,
-			      'name' => &job_name($7) });
+			      'name' => &job_name("$7") });
 		}
 	}
 return ($msg, $msg =~ /failed|error/i ? 0 : 1, \@run, \@done);
@@ -981,7 +981,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 	elsif ($l =~ /^Terminated\s+Jobs/i) { $sect = 3; }
 
 	if ($sect == 2 && $l =~ /^\s*Backup\s+Job\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/) {
-		push(@run, { 'name' => &job_name($1),
+		push(@run, { 'name' => &job_name("$1"),
 			     'status' => $3 });
 		}
 	elsif ($sect == 2 && $l =~ /^\s*(\S+)\s+Backup\s+job\s+(\S+)\s+JobId=(\d+)\s+Volume="(.*)"(\s+device="(.*)")?/i) {
@@ -994,14 +994,14 @@ foreach my $l (split(/\r?\n/, $status)) {
 		$run[$#run]->{'volume'} = $4;
 		$run[$#run]->{'device'} = $6;
 		}
-	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
+	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+|\d+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/) {
 		push(@done, { 'id' => $1,
-			      'level' => &full_level($2),
-			      'files' => &remove_comma($3),
-			      'bytes' => &remove_comma($4),
+			      'level' => &full_level("$2"),
+			      'files' => &remove_comma("$3"),
+			      'bytes' => &remove_comma("$4"),
 			      'status' => $5,
 			      'date' => $6,
-			      'name' => &job_name($7) });
+			      'name' => &job_name("$7") });
 		}
 	}
 return ($msg, $msg =~ /failed|error/i ? 0 : 1, \@run, \@done);
