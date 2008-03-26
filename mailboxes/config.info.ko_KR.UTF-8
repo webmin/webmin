@@ -68,3 +68,4 @@ size_mode=크기에 모든 하위 디렉토리를 포함하겠습니까?,1,1-예
 spam_buttons=스팸 보고 버튼 출력,2,list-메일박스,mail-메시지
 smtp_pass=메일서버의 SMTP 암호,3,없음
 perpage=페이지당 출력할 메일 메시지 수,0,6
+show_unread=읽지 않은 메일 수 보기?,1,2-예,0-아니오
