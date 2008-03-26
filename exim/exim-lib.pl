@@ -158,6 +158,20 @@ sub delete_alias
 	}
 }
 
+# list_domains
+# List all domains from the exim alias file dir
+sub list_domains
+{
+	opendir(DIR, $exim_virt_dir);
+	@files = readdir(DIR);
+	closedir(DIR);
+
+	for my $file (@files)
+	{ $file =~ s/$config{'exim_aliasfileextre'}$//g; }
+
+	return @files;
+}
+
 # list_virtusers
 # Go through exim alias files and build list of users.
 sub list_virtusers
