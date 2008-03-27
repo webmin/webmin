@@ -6118,6 +6118,16 @@ foreach $s (keys %hash) {
 		$rv =~ s/\$IFEQ-\Q$us\E-\S+(\n?)([\000-\377]*?)\$ENDIFEQ-\Q$us\E-\S+(\n?)//g;
 		}
 	}
+
+# Now assume any $IF blocks whose variables are not present in the hash
+# evaluate to false.
+# $IF...$ELSE x $ENDIF => x
+$rv =~ s/\$\{IF\-([A-Z]+)\}.*?\$\{ELSE\-\1\}(.*?)\$\{ENDIF\-\1\}/$2/gs;
+# $IF...x...$ENDIF => (nothing)
+$rv =~ s/\$\{IF\-([A-Z]+)\}.*?\$\{ENDIF\-\1\}//gs;
+# ${var} => (nothing)
+$rv =~ s/\$\{[A-Z]+\}//g;
+
 return $rv;
 }
 
