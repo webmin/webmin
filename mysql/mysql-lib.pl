@@ -51,6 +51,9 @@ else {
 		chop($mysql_version = <VERSION>);
 		close(VERSION);
 		}
+	else {
+		$mysql_version = &get_mysql_version();
+		}
 	$cron_cmd = "$module_config_directory/backup.pl";
 	$max_dbs = $config{'max_dbs'};
 	$commands_file = "$module_config_directory/commands";
