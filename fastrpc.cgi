@@ -56,11 +56,12 @@ $acptaddr = accept(SOCK, MAIN);
 die "accept failed!" if (!$acptaddr);
 select(SOCK); $| = 1;
 
+$rcount = 0;
 while(1) {
-	# Wait for the request
+	# Wait for the request. Wait longer if this isn't the first one
 	local $rmask;
 	vec($rmask, fileno(SOCK), 1) = 1;
-	local $sel = select($rmask, undef, undef, 60);
+	local $sel = select($rmask, undef, undef, $rcount ? 360 : 60);
 	if ($sel <= 0) {
 		print STDERR "fastrpc: session timed out\n"
 			if ($gconfig{'rpcdebug'});
@@ -281,6 +282,7 @@ while(1) {
 	print SOCK length($rawrv),"\n";
 	print SOCK $rawrv;
 	last if ($arg->{'action'} eq 'quit');
+	$rcount++;
 	}
 
 # allocate_socket(handle, &port)
