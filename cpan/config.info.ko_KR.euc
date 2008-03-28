@@ -1,0 +1,9 @@
+line1=설정 옵션,11
+refresh_days=CPAN 모듈 리스트를 갱신할 기간(일)
+save_partial=설치 실패시에 다운로드한 모듈을 보관,1,1-예,0-아니오
+def_args=Makefile.PL의 기본 인자,0
+incpackages=소프트웨어 패키지에 펄 모듈 포함,1,1-예,0-아니오
+incyum=가능하면 YUM 또는 APT로 펄 모듈 설치,1,1-예,0-아니오
+line2=시스템 설정,11
+packages=CPAN 펄 모듈 리스트,0
+cpan=CPAN 모듈 기본 URL,0
