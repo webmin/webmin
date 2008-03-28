@@ -15,3 +15,4 @@ library=htaccess-lib.pl
 desc_fi=Web Hakemistojen Suojaus
 desc_cz=Blokování web adresáøù
 desc_nl=Beschermde Web Directories
+desc_ko_KR.euc=À¥ µğ·ºÅä¸® º¸È£
