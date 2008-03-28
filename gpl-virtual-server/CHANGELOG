@@ -425,3 +425,5 @@ For new installs, new features in older versions are not shown on the System Inf
 Fixed the modification of Webalizer and Logrotate config files when a domain's Apache logs are outside it's home directory.
 Apache logs outside a domain's home directory are now included in backups and restores.
 Ported the delete-user.pl command-line script from the Pro version.
+Added the --delete-existing flag to migrate-domain.pl, to remove any existing virtual server with the same name before re-migrating.
+The background collectinfo.pl cron job can be run less frequently or disabled using a new Module Config page option.
