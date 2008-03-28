@@ -56,6 +56,10 @@ $base = $access{'dir'} ne '/' ? $access{'dir'} :
 	$config{'master_dir'} ? $config{'master_dir'} :
 				&base_directory($conf);
 $base =~ s/\/+$// if ($base ne '/');
+if ($base !~ /^([a-z]:)?\//) {
+	# Master dir is relative .. make absolute
+	$base = &base_directory()."/".$base;
+	}
 if ($in{'tmpl'}) {
 	for($i=0; $config{"tmpl_$i"}; $i++) {
 		@c = split(/\s+/, $config{"tmpl_$i"}, 3);

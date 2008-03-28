@@ -60,6 +60,10 @@ $base = $access{'dir'} ne '/' ? $access{'dir'} :
 	$config{'slave_dir'} ? $config{'slave_dir'} :
 			       &base_directory($conf);
 $base =~ s/\/+$// if ($base ne '/');
+if ($base !~ /^([a-z]:)?\//) {
+	# Slave dir is relative .. make absolute
+	$base = &base_directory()."/".$base;
+	}
 if ($in{'file_def'} == 0) {
 	# Use the entered filename
 	$in{'file'} =~ /^\S+$/ ||

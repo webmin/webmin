@@ -1497,6 +1497,10 @@ local $dir = { 'name' => 'zone',
                             ]
 	     };
 local $base = $config{'slave_dir'} || &base_directory();
+if ($base !~ /^([a-z]:)?\//) {
+	# Slave dir is relative .. make absolute
+	$base = &base_directory()."/".$base;
+	}
 local $file;
 if (!$_[3]) {
 	# File has default name and is under default directory

@@ -111,6 +111,10 @@ foreach $l (@lines) {
 		$base = $config{'master_dir'} ? $config{'master_dir'} :
 			$access{'dir'} eq '/' ? &base_directory($conf) :
 						$access{'dir'};
+		if ($base !~ /^([a-z]:)?\//) {
+			# Master dir is relative .. make absolute
+			$base = &base_directory()."/".$base;
+			}
 
 		# Make sure a template IP was given, if needed
 		if ($tmpl_ip && !@mips) {
@@ -173,6 +177,10 @@ foreach $l (@lines) {
 		$base = $config{'slave_dir'} ? $config{'slave_dir'} :
 			$access{'dir'} eq '/' ? &base_directory($conf) :
 						$access{'dir'};
+		if ($base !~ /^([a-z]:)?\//) {
+			# Slave dir is relative .. make absolute
+			$base = &base_directory()."/".$base;
+			}
 
 		# Make sure some master IPs were given
 		if (!@mips) {
