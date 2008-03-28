@@ -1,0 +1,8 @@
+htaccess=아파치 옵션 파일 이름,0
+htpasswd=유저 파일 이름,0
+htgroups=그룹 파일 이름,0
+sort=유저 정렬,1,1-유저 이름,0-파일에 등록된 순서
+md5=MD5 알고리즘 사용,1,1-예,0-아니요
+sha1=SHA1 알고리즘 사용,1,1-예,0-아니요
+digest=digest 알고리즘 사용,1,1-예,0-아니요
+extra_directives=.htaccess에 예외 지시자 포함,9,0,0,\t
