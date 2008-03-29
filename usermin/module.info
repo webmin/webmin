@@ -19,3 +19,4 @@ syslog=1
 os_support=!windows
 desc_fi=Usermin asetukset
 desc_cz=Konfigurace Userminu
+desc_nl=Usermin Configuratie
