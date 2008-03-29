@@ -188,7 +188,7 @@ EOF
 sub print_category_opener
 {
 local ($c, $status, $label) = @_;
-$label = $c eq "others" ? "Others" : $label;
+$label = $c eq "others" ? $text{'left_others'} : $label;
 local $img = $status ? "open.gif" : "closed.gif";
 
 # Show link to close or open catgory

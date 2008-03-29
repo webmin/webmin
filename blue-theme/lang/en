@@ -6,6 +6,7 @@ left_search_webmin=Search Webmin:
 left_search_usermin=Search Usermin:
 left_search=Search:
 left_logs=View Module's Logs
+left_others=Others
 
 right_header0=System Information
 right_host=System hostname
