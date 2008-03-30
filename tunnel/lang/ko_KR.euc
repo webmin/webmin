@@ -1,0 +1,17 @@
+index_elink=아직 설정된 터널 URL이 없습니다.
+index_open=열기
+index_url=열기를 할 URL 입력:
+link_eautologin=$1에 대한 잘못된 로그인 또는 암호입니다. 로그인을 하려면 <a href='$2'>여기를 클릭</a>하십시오.
+link_ebadurl=$1 URL에 접근할 권한이 없습니다.
+link_elogin=$2 사용자로 $1에 로그인 실패
+link_enouser=$1에 로그인하기 위하여 사용자와 암호가 필요하지만, 설정된 값이 없습니다.
+link_eurl=올바르지 않은 터널 URL : $1
+login_clear=초기화
+login_desc=$1로 로그인하기 위해서는 사용자와 암호가 필요합니다.
+login_header=웹사이트 인증
+login_login=로그인
+login_pass=암호
+login_title=웹사이트 로그인
+login_user=사용자 이름
+seturl_err=URL 열기 실패
+seturl_eurl=유효하지 않은 URL을 입력
