@@ -103,7 +103,7 @@ while($line = <$fh>) {
 		# end of a container directive. This can only happen in a
 		# recursive call to this function
 		$_[1]++;
-		last if ($_[3]);
+		last if (lc($_[3]) eq lc($1));
 		}
 	elsif ($line =~ /^\s*<IfModule\s+(\!?)(\S+)\.c>/i ||
 	       $line =~ /^\s*<IfModule\s+(\!?)(\S+)>/i) {
@@ -112,7 +112,7 @@ while($line = <$fh>) {
 		local ($not, $mod) = ($1, $2);
 		local $oldline = $_[1];
 		$_[1]++;
-		local @dirs = &parse_config_file($fh, $_[1], $_[2], 1);
+		local @dirs = &parse_config_file($fh, $_[1], $_[2], 'IfModule');
 		local $altmod = $mod;
 		$altmod =~ s/^(\S+)_module$/mod_$1/g;
 		local $mpmmod = $mod;
@@ -142,7 +142,7 @@ while($line = <$fh>) {
 		local ($not, $def) = ($1, $2);
 		local $oldline = $_[1];
 		$_[1]++;
-		local @dirs = &parse_config_file($fh, $_[1], $_[2], 1);
+		local @dirs = &parse_config_file($fh, $_[1], $_[2], 'IfDefine');
 		if (!$not && $defs{$def} ||
 		    $not && !$defs{$def}) {
 			# use the directives..
@@ -163,7 +163,7 @@ while($line = <$fh>) {
 		local ($not, $op, $ver) = ($1, $2, $3);
 		local $oldline = $_[1];
 		$_[1]++;
-		local @dirs = &parse_config_file($fh, $_[1], $_[2], 1);
+		local @dirs = &parse_config_file($fh, $_[1], $_[2], 'IfVersion');
 		$op ||= "=";
 		local $match = 0;
 		local $myver = $httpd_modules{'core'};
@@ -217,7 +217,7 @@ while($line = <$fh>) {
 		$dir{'value'} =~ s/\s+$//g;
 		$dir{'words'} = &wsplit($dir{'value'});
 		$_[1]++;
-		@members = &parse_config_file($fh, $_[1], $_[2], 1);
+		@members = &parse_config_file($fh, $_[1], $_[2], $dir{'name'});
 		$dir{'members'} = \@members;
 		$dir{'eline'} = $_[1]-1;
 		push(@rv, \%dir);
