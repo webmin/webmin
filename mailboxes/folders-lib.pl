@@ -1395,9 +1395,17 @@ if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 		}
 	}
 else {
-	# Need to copy one by one :(
-	local @mails = &mailbox_list_mails(undef, undef, $src);
-	&mailbox_move_mail($src, $dst, @mails);
+	# Need to read in and write out. But do it in 1000-message blocks
+	local $count = &mailbox_folder_size($src);
+	local $step = 1000;
+	for(my $start=0; $start<$count; $start+=$step) {
+		local $end = $start + $step - 1;
+		$end = $count-1 if ($end >= $count);
+		local @mails = &mailbox_list_mails($start, $end, $src);
+		@mails = @mails[$start..$end];
+		&mailbox_copy_mail($src, $dst, @mails);
+		}
+	&mailbox_empty_folder($src);
 	}
 
 # Delete source folder index
