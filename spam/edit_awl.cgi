@@ -1,0 +1,62 @@
+#!/usr/local/bin/perl
+# Display entries in the auto-whitelist
+
+require './spam-lib.pl';
+&can_use_check("awl");
+&ui_print_header(undef, $text{'awl_title'}, "");
+&ReadParse();
+
+# Open the DBM, or give up
+$ok = &open_auto_whitelist_dbm();
+if ($ok == 0) {
+	&ui_print_endpage(&text('awl_cannot',
+				&get_auto_whitelist_file()));
+	}
+elsif ($ok < 0) {
+	&ui_print_endpage(&text('awl_empty', &get_auto_whitelist_file()));
+	}
+
+# Show search form
+@keys = sort { $a cmp $b } keys %awl;
+print &ui_form_start("edit_awl.cgi");
+print "<b>$text{'awl_search'}</b>\n";
+print &ui_textbox("search", $in{'search'}, 30),"\n",
+      &ui_submit($text{'awl_ok'});
+print &ui_form_end();
+if ($in{'search'}) {
+	@keys = grep { /\Q$in{'search'}\E/i } @keys;
+	print &text('awl_searching',
+		    "<i>".&html_escape($in{'search'})."</i>"),"<p>\n";
+	}
+
+# Show table
+print &ui_form_start("delete_awl.cgi", "post");
+print &ui_hidden("search", $in{'search'});
+@links = ( &select_all_link("d", 1), &select_invert_link("d", 1) );
+@tds = ( "width=5" );
+print &ui_links_row(\@links);
+print &ui_columns_start([ "",
+			  $text{'awl_email'},
+		          $text{'awl_ip'},
+		          $text{'awl_score'} ], \@tds);
+foreach $k (@keys) {
+	($email, $ip, $rest) = split(/\|/, $k);
+	next if ($rest eq "totscore");
+	if ($ip eq "ip=none") {
+		$ip = $text{'awl_none'};
+		}
+	elsif ($ip =~ /^ip=(\S+)$/) {
+		$ip = $1;
+		}
+	else {
+		$ip = $text{'awl_unknown'};
+		}
+	print &ui_checked_columns_row([ $email, $ip, $awl{$k} ],
+				      \@tds, "d", $k);
+	}
+print &ui_columns_end();
+print &ui_links_row(\@links);
+print &ui_form_end([ [ undef, $text{'awl_delete'} ] ]);
+&close_auto_whitelist_dbm();
+
+&ui_print_footer("", $text{'index_return'});

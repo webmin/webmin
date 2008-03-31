@@ -338,3 +338,20 @@ db_eldapport=Missing or invalid LDAP server port number
 db_eldapdn=Missing or invalid base DN - no spaces are allowed
 db_eldapattr=Missing or invalid SpamAssassin attribute
 db_eldapuid=Missing or invalid username attribute
+
+awl_title=Manage Auto-Whitelist
+awl_search=Search whitelist for:
+awl_ok=Search
+awl_searching=Showing auto-whitelist entries matching $1 ..
+awl_email=Email address
+awl_ip=Sender's IP or network
+awl_score=Score to apply
+awl_none=None
+awl_unknown=Unknown
+awl_delete=Remove Selected Entries
+awl_cannot=Usermin could not open your auto-whitelist file <tt>$1</tt>, perhaps because it is in an un-supported format.
+awl_empty=Your auto-whitelist file <tt>$1</tt> does not contain any entries. It will be populated by SpamAsssassin as mail is processed by the system.
+
+dawl_err=Failed to delete from auto-whitelist
+dawl_eopen=Could not open whitelist
+dawl_enone=No addresses to delete selected

@@ -4,6 +4,7 @@
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
+use Fcntl;
 
 $local_cf = $config{'local_cf'};
 $warn_procmail = $config{'warn_procmail'};
@@ -516,6 +517,7 @@ sub can_use_page
 local %avail_icons;
 if ($module_info{'usermin'}) {
 	%avail_icons = map { $_, 1 } split(/,/, $config{'avail_icons'});
+	$avail_icons{'awl'} = 1;	# Always usable
 	}
 else {
 	%avail_icons = map { $_, 1 } split(/,/, $access{'avail'});
@@ -929,6 +931,60 @@ if (!$rv || $rv->code) {
 local ($uinfo) = $rv->all_entries;
 $get_ldap_user_cache{$user} = $uinfo;
 return $uinfo;
+}
+
+# get_auto_whitelist_file()
+# Returns the base path to the auto whitelist DBM, if any. 
+sub get_auto_whitelist_file
+{
+local $conf = &get_config();
+local $awp = &find("auto_whitelist_path", $conf);
+if (!$awp) {
+	$awp = &find_default("auto_whitelist_path",
+		"~/.spamassassin/auto-whitelist");
+	}
+if ($awp !~ /^\//) {
+	# Make absolute
+	return undef if (!$module_info{'usermin'});
+	$awp =~ s/^(\~|\$HOME)\//$remote_user_info[7]\//;
+	if ($awp !~ /^\//) {
+		$awp = "$remote_user_info[7]/$awp";
+		}
+	}
+# Does it exist?
+if (!-r $awp) {
+	local @real = glob("$awp.*");
+	$awp = undef if (!@real);
+	}
+return $awp;
+}
+
+# open_auto_whitelist_dbm()
+# Ties the %awl hash to the autowhitelist DBM file. Returns 1 if successful, or
+# 0 if it could not be opened, or -1 if empty.
+sub open_auto_whitelist_dbm
+{
+local $awp = &get_auto_whitelist_file();
+return 0 if (!$awp);
+local $anyok;
+foreach my $cls ('DB_File', 'GDBM_File', 'SDBM_File') {
+	$@ = undef;
+	eval "use $cls";
+	next if ($@);
+	tie(%awl, $cls, $awp, O_RDWR, 0755) || next;
+	if (scalar(keys %awl)) {
+		return 1;
+		}
+	$anyok = 1;
+	}
+return $anyok ? -1 : 0;
+}
+
+# close_auto_whitelist_dbm()
+# Disconnects the global %awl hash from the DBM file, flushing changes to disk
+sub close_auto_whitelist_dbm
+{
+untie(%awl);
 }
 
 1;
