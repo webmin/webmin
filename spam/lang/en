@@ -254,6 +254,10 @@ apply_none=No SpamAssassin daemon processes found!
 acl_avail=Icons available to user
 acl_file=SpamAssassin configuration file to edit
 acl_filedef=Global config file
+acl_awl=Allowed users for auto-whitelist editing
+acl_awl0=All users
+acl_awl1=Only listed users $1
+acl_awl2=Only members of groups $1
 
 search_escore=Missing or invalid spam score
 search_results5=$1 mail messages with spam score at or above $2 ..
@@ -351,6 +355,9 @@ awl_unknown=Unknown
 awl_delete=Remove Selected Entries
 awl_cannot=Usermin could not open your auto-whitelist file <tt>$1</tt>, perhaps because it is in an un-supported format.
 awl_empty=Your auto-whitelist file <tt>$1</tt> does not contain any entries. It will be populated by SpamAsssassin as mail is processed by the system.
+awl_user=Show auto-whitelist for user:
+awl_uok=Show
+awl_nofile=This user does not have an auto-whitelist file.
 
 dawl_err=Failed to delete from auto-whitelist
 dawl_eopen=Could not open whitelist

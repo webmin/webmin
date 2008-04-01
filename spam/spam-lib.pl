@@ -933,22 +933,25 @@ $get_ldap_user_cache{$user} = $uinfo;
 return $uinfo;
 }
 
-# get_auto_whitelist_file()
+# get_auto_whitelist_file([user])
 # Returns the base path to the auto whitelist DBM, if any. 
 sub get_auto_whitelist_file
 {
+local ($user) = @_;
 local $conf = &get_config();
 local $awp = &find("auto_whitelist_path", $conf);
 if (!$awp) {
-	$awp = &find_default("auto_whitelist_path",
-		"~/.spamassassin/auto-whitelist");
+	$awp = &find_default("auto_whitelist_path");
 	}
+$awp ||= "~/.spamassassin/auto-whitelist";
 if ($awp !~ /^\//) {
 	# Make absolute
-	return undef if (!$module_info{'usermin'});
-	$awp =~ s/^(\~|\$HOME)\//$remote_user_info[7]\//;
+	local @uinfo = $module_info{'usermin'} ? @remote_user_info :
+		       $user ? getpwnam($user) : ( );
+	return undef if (scalar(@uinfo) == 0);
+	$awp =~ s/^(\~|\$HOME)\//$uinfo[7]\//;
 	if ($awp !~ /^\//) {
-		$awp = "$remote_user_info[7]/$awp";
+		$awp = "$uinfo[7]/$awp";
 		}
 	}
 # Does it exist?
@@ -959,12 +962,13 @@ if (!-r $awp) {
 return $awp;
 }
 
-# open_auto_whitelist_dbm()
+# open_auto_whitelist_dbm([user])
 # Ties the %awl hash to the autowhitelist DBM file. Returns 1 if successful, or
 # 0 if it could not be opened, or -1 if empty.
 sub open_auto_whitelist_dbm
 {
-local $awp = &get_auto_whitelist_file();
+local ($user) = @_;
+local $awp = &get_auto_whitelist_file($user);
 return 0 if (!$awp);
 local $anyok;
 foreach my $cls ('DB_File', 'GDBM_File', 'SDBM_File') {
@@ -985,6 +989,46 @@ return $anyok ? -1 : 0;
 sub close_auto_whitelist_dbm
 {
 untie(%awl);
+}
+
+# supports_auto_whitelist()
+# Returns 1 if SpamAssassin is doing auto-whitelisting for the current user,
+# 2 if for multiple users.
+sub supports_auto_whitelist
+{
+if ($module_info{'usermin'}) {
+	return &get_auto_whitelist_file() ? 1 : 0;
+	}
+else {
+	return 2;
+	}
+}
+
+sub can_edit_awl
+{
+local ($user) = @_;
+return 1 if ($module_info{'usermin'});		# Only one user anyway
+if ($_[0]->{'awl_users'}) {
+	# Check if on user list
+	return &indexof($user, split(/\s+/, $_[0]->{'awl_users'})) >= 0;
+	}
+elsif ($_[0]->{'awl_groups'}) {
+	# Check if the user is a member of any of the allowed groups
+	local %ugroups;
+	local @uinfo = getpwnam($user);
+	return 0 if (!defined(@uinfo));
+	local @ginfo = getgrgid($uinfo[3]);
+	$ugroups{$ginfo[0]}++ if (defined(@ginfo));
+	foreach my $o (&other_groups($user)) {
+		$ugroups{$o}++;
+		}
+	local @can = grep { $ugroups{$_} } split(/\s+/, $_[0]->{'awl_groups'});
+	return @can ? 1 : 0;
+	}
+else {
+	# No restrictions
+	return 1;
+	}
 }
 
 1;

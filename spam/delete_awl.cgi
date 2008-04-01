@@ -7,7 +7,7 @@ require './spam-lib.pl';
 &ReadParse();
 
 # Check stuff
-&open_auto_whitelist_dbm() || &error($text{'dawl_eopen'});
+&open_auto_whitelist_dbm($in{'user'}) || &error($text{'dawl_eopen'});
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'dawl_enone'});
 
@@ -18,5 +18,6 @@ foreach $d (@d) {
 	}
 
 &close_auto_whitelist_dbm();
-&redirect("edit_awl.cgi?search=".&urlize($in{'search'}));
+&redirect("edit_awl.cgi?search=".&urlize($in{'search'}).
+	  "&user=".&urlize($in{'user'}));
 
