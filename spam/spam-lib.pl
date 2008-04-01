@@ -1010,11 +1010,11 @@ sub can_edit_awl
 {
 local ($user) = @_;
 return 1 if ($module_info{'usermin'});		# Only one user anyway
-if ($_[0]->{'awl_users'}) {
+if ($access{'awl_users'}) {
 	# Check if on user list
-	return &indexof($user, split(/\s+/, $_[0]->{'awl_users'})) >= 0;
+	return &indexof($user, split(/\s+/, $access{'awl_users'})) >= 0;
 	}
-elsif ($_[0]->{'awl_groups'}) {
+elsif ($access{'awl_groups'}) {
 	# Check if the user is a member of any of the allowed groups
 	local %ugroups;
 	local @uinfo = getpwnam($user);
@@ -1024,7 +1024,7 @@ elsif ($_[0]->{'awl_groups'}) {
 	foreach my $o (&other_groups($user)) {
 		$ugroups{$o}++;
 		}
-	local @can = grep { $ugroups{$_} } split(/\s+/, $_[0]->{'awl_groups'});
+	local @can = grep { $ugroups{$_} } split(/\s+/, $access{'awl_groups'});
 	return @can ? 1 : 0;
 	}
 else {
