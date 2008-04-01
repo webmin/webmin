@@ -21,6 +21,7 @@ if ($module_info{'usermin'}) {
 	$database_userpref_name = $remote_user;
 	$include_config_files = !$config{'mode'} || $config{'readfiles'};
 	$add_to_db = 1;
+	$max_awl_keys = $userconfig{'max_awl'} || 200;
 	}
 else {
 	# Running under Webmin, typically editing global config file
@@ -34,6 +35,7 @@ else {
 	$database_userpref_name = $config{'dbglobal'} || '@GLOBAL';
 	$include_config_files = 1;
 	$add_to_db = $config{'addto'};
+	$max_awl_keys = $config{'max_awl'} || 200;
 	}
 $ldap_spamassassin_attr = $config{'attr'} || 'spamassassin';
 $ldap_username_attr = $config{'uid'} || 'uid';

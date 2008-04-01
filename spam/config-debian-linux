@@ -9,3 +9,4 @@ restart_cmd=/etc/init.d/spamassassin restart
 procmail_cmd=*
 mode=0
 addto=0
+max_awl=200

@@ -8,3 +8,4 @@ processes=spamd amavisd
 procmail_cmd=*
 mode=0
 addto=0
+max_awl=200

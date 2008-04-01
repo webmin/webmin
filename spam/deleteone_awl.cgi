@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Delete auto-whitelist entries
+# Delete all auto-whitelist entries
 
 require './spam-lib.pl';
 &error_setup($text{'dawl_err'});
@@ -7,17 +7,11 @@ require './spam-lib.pl';
 &ReadParse();
 &can_edit_awl($in{'user'}) || &error($text{'dawl_ecannot'});
 
-# Check stuff
+# Delete them
 &open_auto_whitelist_dbm($in{'user'}) || &error($text{'dawl_eopen'});
-@d = split(/\0/, $in{'d'});
-@d || &error($text{'dawl_enone'});
-
-# Delete from hash
-foreach $d (@d) {
-	delete($awl{$d});
-	delete($awl{$d."|totscore"});
+foreach $k (keys %awl) {
+	delete($awl{$k});
 	}
-
 &close_auto_whitelist_dbm();
 &redirect("edit_awl.cgi?search=".&urlize($in{'search'}).
 	  "&user=".&urlize($in{'user'}));

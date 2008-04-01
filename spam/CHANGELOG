@@ -11,3 +11,5 @@ Added Module Config options for commands to run before and after saving SpamAssa
 ---- Changes since 1.360 ----
 Added the SQL and LDAP Databases page for configuring SpamAssassin to use a MySQL, PostgreSQL or LDAP database for user preferences.
 Added global configuration settings to use MySQL, PostgreSQL or LDAP backends for storing preferences.
+---- Changes since 1.410 ----
+Auto-whitelists can now be viewed, deleted from and cleared for all users on the system. An access control option allows this to be limited to just certain users or group members.

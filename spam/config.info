@@ -9,6 +9,7 @@ restart_cmd=Command to restart processes,3,Just send HUP signal
 procmail_cmd=SpamAssassin command for Procmail configuration,10,*-Detect automatically
 before_cmd=Command to run before changing rules,3,None
 after_cmd=Command to run after changing rules,3,None
+max_awl=Maximum number of auto-whitelist entries to display,0,5
 line1=LDAP and SQL server options,11
 mode=Store SpamAssassin settings in,1,0-Configuration files,1-MySQL database,2-PostgreSQL database,3-LDAP database
 server=LDAP or SQL server hostname,0
