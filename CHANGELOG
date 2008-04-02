@@ -91,3 +91,6 @@ Big Czech translation updates, thanks to Petr Vanek and the Czech translation te
 All popups in Webmin are now XSS-safe, and thus do not need protection from unknown referers which prevented them from working in some browsers.
 All Webmin session IDs are now stored MD5 hashed, to prevent sessions from being captured if the sessiondb DBM is somehow read by an attacker.
 Many Dutch updates, thanks to Gandyman.
+MD5 encryption for Webmin and Unix passwords can be used on systems that have either the MD5 or Digest::MD5 perl module, or support it in the crypt() function.
+---- Changes since 1.410 ----
+Many Korean updates, thanks to Joung Kyun.
