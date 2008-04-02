@@ -93,4 +93,4 @@ All Webmin session IDs are now stored MD5 hashed, to prevent sessions from being
 Many Dutch updates, thanks to Gandyman.
 MD5 encryption for Webmin and Unix passwords can be used on systems that have either the MD5 or Digest::MD5 perl module, or support it in the crypt() function.
 ---- Changes since 1.410 ----
-Many Korean updates, thanks to Joung Kyun.
+Many Korean updates, thanks to JoungKyun Kim.
