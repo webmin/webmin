@@ -427,3 +427,4 @@ Apache logs outside a domain's home directory are now included in backups and re
 Ported the delete-user.pl command-line script from the Pro version.
 Added the --delete-existing flag to migrate-domain.pl, to remove any existing virtual server with the same name before re-migrating.
 The background collectinfo.pl cron job can be run less frequently or disabled using a new Module Config page option.
+Ported the Move Virtual Server feature from the Pro version, which allows domains to be moved under different parents or converted from sub-servers to top-level.
