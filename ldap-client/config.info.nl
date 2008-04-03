@@ -1,0 +1,9 @@
+auth_ldap=LDAP client configuratie file&#44;8
+pam_ldap=PAM LDAP configuratie file&#44;3&#44;Zelfde als LDAP client file
+secret=Root LDAP client wachtwoord file&#44;8
+line0=LDAP browser en validatie settings&#44;11
+ldap_hosts=LDAP server hosts&#44;3&#44;Van config file&#44;50
+ldap_port=LDAP server poort&#44;3&#44;Van config file&#44;5
+ldap_tls=Gebruik SSL verbinding&#44;1&#44;&#45;Van config file&#44;1&#45;Ja&#44;0&#45;Nee
+ldap_user=Login met gebruikersnaam&#44;3&#44;Van config file
+ldap_pass=Login met wachtwoord&#44;3&#44;Van config file
