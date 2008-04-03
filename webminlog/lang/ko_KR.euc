@@ -12,6 +12,7 @@ index_mall=임의 모듈에서
 index_module=모듈에서
 index_nolog=<b>참고</b> - <a href='$1'>Webmin에 로깅</a>이 현재 사용 불능으로 설정되어 있으므로 동작 로그를 검색해도 결과가 생성되지 않습니다.
 index_nologfiles=<b>참고</b> - <a href='$1'>파일 변경 내용 로그</a>가 현재 사용 불능으로 설정되어 있으므로 로그된 동작의 정보에는 변경된 파일이나 실행된 명령이 포함되지 않습니다.
+index_nuser=다음 사용자를 제외한 다른 사용자로
 index_return=검색 양식
 index_sdiff=파일 변경 또는 명령 실행
 index_search=검색
@@ -50,6 +51,7 @@ rollback_nodeleted=존재하지 않는 파일 $1 건너띔
 rollback_nolink=링크 타겟이 변경되지 않았습니다.
 rollback_none=모든 파일들이 이 실행이 발생하기 전에는 같은 컨텐츠를 가지고 있었습니다. 변경이 필요하지 않습니다.
 rollback_ok=지금 파일 롤백
+rollback_rusure=이 작업을 수행하기 전에 다음 리스트된 모든 파일을 그들의 콘텐츠로 복구하겠습니까? 다음의 변경에 의하여 현재 포함하고 있는 모든 데이터가 덮어씌어집니다.
 rollback_skipdir=$1 디렉토리 스킵
 rollback_title=롤백 실행
 search_action=동작
@@ -82,6 +84,9 @@ view_input=명령을 입력
 view_ip=클라이언트 IP 또는 호스트 이름
 view_module=Webmin 모듈
 view_nofiles=이 동작에 대해 로그된 구성 파일 변경 내용이 없습니다
+view_raw=원본 로그 데이터
+view_rawname=파라미터 이름
+view_rawvalue=파라미터 값
 view_return=실행 상세사항
 view_rollback2=선택된 파일들을 롤백
 view_script=스크립트로 생성됨
