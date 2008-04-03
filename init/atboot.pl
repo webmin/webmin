@@ -10,8 +10,8 @@ $ucproduct = ucfirst($product);
 if ($init_mode eq "osx") {
 	# Darwin System
 	&enable_at_boot("webmin", "Webmin administration server",
-			"/etc/webmin/start >/dev/null 2>&1 </dev/null",
-			"/etc/webmin/stop");
+			"$config_directory/start >/dev/null 2>&1 </dev/null",
+			"$config_directory/stop");
 	}
 elsif ($init_mode eq "local") {
 	# Add to the boot time rc script
@@ -19,7 +19,6 @@ elsif ($init_mode eq "local") {
 	for($i=0; $i<@$lref && $lref->[$i] !~ /^exit\s/; $i++) { }
 	splice(@$lref, $i, 0, "$config_directory/start >/dev/null 2>&1 </dev/null # Start $ucproduct");
 	&flush_file_lines();
-	print STDERR "Added to bootup script $config{'local_script'}\n";
 	}
 elsif ($init_mode eq "init") {
 	# Create a bootup action
