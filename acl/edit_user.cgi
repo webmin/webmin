@@ -166,7 +166,7 @@ if ($access{'lang'}) {
 	print &ui_table_row($text{'edit_lang'},
 		&ui_radio("lang_def", $user{'lang'} ? 0 : 1,
 		  [ [ 1, $text{'default'} ],
-		    [ 0, &ui_select("lang", $user->{'lang'},
+		    [ 0, &ui_select("lang", $user{'lang'},
 			    [ map { [ $_->{'lang'}, $_->{'desc'}." (".
 					uc($_->{'lang'}).")" ] }
 				  &list_languages() ]) ]
