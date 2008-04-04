@@ -454,7 +454,11 @@ local @rv;
 foreach my $f (&get_maps_types_files(&get_current_value("alias_maps"))) {
 	if (&file_map_type($f->[0])) {
 		# We can read this file directly
-		push(@rv, &list_aliases([ $f->[1] ]));
+		local $sofar = scalar(@rv);
+		foreach my $a (&list_aliases([ $f->[1] ])) {
+			$a->{'num'} += $sofar;
+			push(@rv, $a);
+			}
 		}
 	else {
 		# Treat as a map
