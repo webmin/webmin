@@ -143,3 +143,10 @@ log_disc=Disconnected client $1
 log_start=Started PPTP server
 log_stop=Stopped PPTP server
 log_apply=Applied PPTP server configuration
+
+acl_conf=Can edit configuration?
+acl_options=Can edit options?
+acl_secrets=Can manage PPTP accounts?
+acl_conns=Can view connections?
+acl_stop=Can stop and start PPTP server?
+acl_apply=Can apply configuration?
