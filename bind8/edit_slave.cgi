@@ -43,9 +43,9 @@ if ($zone->{'file'}) {
 	if ($config{'show_list'}) {
 		# display as list
 		$mid = int((@rcodes+1)/2);
-		print "<table width=100%> <tr><td width=50%>\n";
+		print "<table width=100%> <tr><td width=50% valign=top>\n";
 		&types_table(@rcodes[0..$mid-1]);
-		print "</td><td width=50%>\n";
+		print "</td><td width=50% valign=top>\n";
 		&types_table(@rcodes[$mid..$#rcodes]);
 		print "</td></tr> </table>\n";
 		}

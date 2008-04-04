@@ -207,7 +207,12 @@ while($i < @tok) {
 			$i++;
 			}
 		if ($dir{'name'} eq '') {
-			local $prv = $#rv >= 0 ? $rv[$#rv] : $_[2];	
+			# Name comes from previous record
+			for(my $p=$#rv; $p>=0; $p--) {
+				$prv = $rv[$p];
+				last if ($prv->{'name'});
+				}
+			$prv ||= $_[2];
 			$prv || &error(&text('efirst', $lnum[$i]+1, $file));
 			$dir{'name'} = $prv->{'name'};
 			$dir{'realname'} = $prv->{'realname'};
