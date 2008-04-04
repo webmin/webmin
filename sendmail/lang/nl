@@ -66,6 +66,7 @@ acl_userse=All except users
 acl_usersg=Members of group
 acl_usersm=Users matching
 acl_usersu=Met UID in range
+acl_vcatchall=Kan catchall mappings maken?
 acl_view=View only
 acl_viewdel=View and delete
 acl_virtusers=Address mappings this user can edit
