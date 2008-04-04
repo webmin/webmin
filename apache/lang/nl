@@ -903,6 +903,7 @@ mod_ssl_onlyssl=Alleen SSL toegang toestaan
 mod_ssl_opt=Optioneel
 mod_ssl_optca=Optioneel geen CA
 mod_ssl_pass=Wachtwoord voor SSL key
+mod_ssl_passnone=Nog niet gezet
 mod_ssl_passph=Vast wachtwoord $1
 mod_ssl_passsc=uitvoeren script $1
 mod_ssl_proto=SSL protocollen
@@ -946,7 +947,7 @@ perchild_sthreads=Aanvankelijke uitvoeringen per child proces
 perchild_uid=UID
 reconfig_desc1=Uw Apache configuratie is gewijzigd, of is nog niet onderzocht door Webmin. Hieronder staat een lijst van alle Apache modules die door Webmin worden ondersteund, met degenen die nu zijn geinstalleerd geselecteerd. U kunt modules selecteren of deselecteren wanneer de lijst niet klopt.
 reconfig_desc2=Hieronder staat een lijst van alle Apache modules die door Webmin worden ondersteund, met degenen die nu zijn geinstalleerd geselecteerd. Als u dynamisch geladen modules gebruikt moet u mogelijk de dynamisch geladen modules aanvinken.
-reconfig_desc3=Als U niet zeker bent welke modules worden gebruikt door Apache op uw systeem, kan Webmin automatisch uitzoeken welke modules ondersteund worden 
+reconfig_desc3=Als U niet zeker bent welke modules worden gebruikt door Apache op uw systeem, kan Webmin automatisch uitzoeken welke modules ondersteund worden
 reconfig_ecannot=U bent niet bevoegd om apache te herconfigureren
 reconfig_ever=Fout bij het ophalen van de versie van het Apache server programma $1. Controleer uw <a href='$2'>module configuratie</a> om er zeker van te zijn dat het pad correct is.
 reconfig_ok=Configureer
