@@ -13,6 +13,7 @@ delete_indom=Delete all Apache virtual hosts in domain when deleting?,1,1-Yes,0-
 ldap=Store users and groups,1,1-In LDAP database,0-In local files
 ldap_mail=Add mail attribute to LDAP users?,1,1-Yes,0-No
 compression=Backup compression format,1,0-gzip,1-bzip2,2-None (tar only)
+preload_mode=Preload Virtualmin libraries at startup?,1,2-All libraries,1-Only core,0-No
 collect_interval=Interval between status collection job runs,10,none-Never run,Minutes
 
 line1.4=User interface settings,11

@@ -428,3 +428,4 @@ Ported the delete-user.pl command-line script from the Pro version.
 Added the --delete-existing flag to migrate-domain.pl, to remove any existing virtual server with the same name before re-migrating.
 The background collectinfo.pl cron job can be run less frequently or disabled using a new Module Config page option.
 Ported the Move Virtual Server feature from the Pro version, which allows domains to be moved under different parents or converted from sub-servers to top-level.
+Ported the Module Config option to preload Virtualmin libraries from the Pro version, which can speed up the web-based UI. This is not enabled by default on regular manual installs though.
