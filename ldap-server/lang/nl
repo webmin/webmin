@@ -99,6 +99,7 @@ create_edom=Ontbrekende of ongeldige domein naam
 create_eoc=Kan geen bruikbaar object class vinden voor de nieuwe DN
 create_err=Mislukt een nieuwe tree te maken
 create_example=Maak een voorbeeld object onder de nieuwe DN?
+create_group=Unix groep
 create_header=Nieuww LDAP DN tree opties
 create_mail=Unix gebruiker met mail
 create_title=Maak Tree
@@ -259,7 +260,7 @@ slapd_erootpw=Ontbrekend nieuwe administratie wachtwoord
 slapd_err=Mislukt om LDAP server configuratie op te slaan
 slapd_esizelimit=Ontbrekend of niet numerieke maximum aantal zoek resultaten om te laten zien
 slapd_esuffix=Ontbrekende of ongeldig lijkende root DN - het moet lijken op <tt>dc=jouw-domein,dc=com</tt>
-slapd_etimelimit=Ontbrekend of niet numerieke maximale zoektijd 
+slapd_etimelimit=Ontbrekend of niet numerieke maximale zoektijd
 slapd_gencert=Genereer SSL Certificaat
 slapd_gencertdesc=Om uw LDAP server in TLS mode te laten werken, moet er eerst een SSL certificaat en een prive key gegenereerd worden. Klik op deze knop om een zelf ondertekende certificaat te maken voor uw systeem.
 slapd_gencertwarn=Waarschuwing - uw bestaande certificaat word niet langer gebruikt.
