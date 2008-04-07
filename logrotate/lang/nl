@@ -71,6 +71,7 @@ log_delete_sched=Verwijder log rotatie Cron job
 log_global=Gemodificeerde globale opties
 log_modify=Gemodificeerde rotatie voor log file $1
 log_modify_sched=Veranderde log rotatie Cron job
+period_bytes=bytes
 period_daily=Dagelijks
 period_monthly=Maandelijks
 period_never=Nooit
