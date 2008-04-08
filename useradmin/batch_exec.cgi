@@ -223,6 +223,28 @@ foreach $line (split(/[\r\n]+/, $data)) {
 				}
 			}
 
+		# Work out the password
+		if ($in{'crypt'}) {
+			$user{'pass'} = $line[2];
+			$user{'passmode'} = 2;
+			}
+		elsif ($line[2] eq 'x') {
+			# No login allowed
+			$user{'pass'} = $config{'lock_string'};
+			$user{'passmode'} = 1;
+			}
+		elsif ($line[2] eq '') {
+			# No password needed
+			$user{'pass'} = '';
+			$user{'passmode'} = 0;
+			}
+		else {
+			# Normal password
+			$user{'pass'} = &encrypt_password($line[2]);
+			$user{'passmode'} = 3;
+			$user{'plainpass'} = $line[2];
+			}
+
 		# Run the before command
 		&set_user_envs(\%user, 'CREATE_USER', $user{'plainpass'},
 			       [ map { $_->{'gid'} } @secs ]);
@@ -261,26 +283,6 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		# Create the user!
 		if ($in{'makehome'} && !-d $user{'home'}) {
 			&create_home_directory(\%user, $real_home);
-			}
-		if ($in{'crypt'}) {
-			$user{'pass'} = $line[2];
-			$user{'passmode'} = 2;
-			}
-		elsif ($line[2] eq 'x') {
-			# No login allowed
-			$user{'pass'} = $config{'lock_string'};
-			$user{'passmode'} = 1;
-			}
-		elsif ($line[2] eq '') {
-			# No password needed
-			$user{'pass'} = '';
-			$user{'passmode'} = 0;
-			}
-		else {
-			# Normal password
-			$user{'pass'} = &encrypt_password($line[2]);
-			$user{'passmode'} = 3;
-			$user{'plainpass'} = $line[2];
 			}
 		&create_user(\%user);
 
