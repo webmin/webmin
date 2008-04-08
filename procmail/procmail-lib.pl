@@ -261,6 +261,10 @@ else {
 	elsif ($_[0]->{'type'} && $_[0]->{'type'} ne '=') {
 		push(@rv, $_[0]->{'type'}." ".$_[0]->{'action'});
 		}
+	elsif ($_[0]->{'action'} =~ /^(\S+)=/) {
+		# Variable assignment .. don't quote
+		push(@rv, $_[0]->{'action'});
+		}
 	elsif ($_[0]->{'action'} !~ /^\S+$/) {
 		# File with a space .. need to quote
 		push(@rv, "\"$_[0]->{'action'}\"");
