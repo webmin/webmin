@@ -37,6 +37,7 @@ dump_level_0=(Còpia completa)
 dump_label=Etiqueta de la còpia
 dump_multi=Parteix en múltiples fitxers
 dump_update=Actualitza el fitxer <tt>/etc/dumpdates</tt>
+dump_exclude=Fitxers i directoris a ometre
 dump_edir=Hi falta el directori a copiar o bé és invàlid
 dump_efile=Hi falta el fitxer o dispositiu de còpia
 dump_ehost=Hi falta el host de còpia o bé és invàlid
@@ -99,6 +100,7 @@ dump_emulti2=No es poden fer còpies multifitxer sobre un servidor remot
 dump_ermt=Hi falta el camí del programa <tt>rmt</tt> o bé és invàlid
 dump_reverify=Intenta fer una prova de restauració després de la còpia per verificar-la
 dump_remount=Remunta amb l'opció <tt>noatime</tt> durant la còpia
+dump_eftpupdate=No és possible afegir fitxers a un arxiu existent utilitzant FTP.
 
 edit_err=No he pogut crear la còpia
 edit_edir=Hi falta el directori a copiar
