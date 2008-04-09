@@ -126,6 +126,7 @@ master_apply=Aplica els Canvis
 master_applymsg=Fes clic sobre aquest botó per aplicar només els canvis d'aquesta zona fent servir l'ordre $1. Això funcionarà només si els canvis han estat aplicats almenys un cop a tot el servidor des que es va crear la zona.
 master_defttl=Temps de vida per defecte dels registres
 master_edefttl='$1' no és un temps de vida per defecte dels registres
+master_esoagone=No s'ha trobat cap registre SOA!
 
 delete_title=Supressió de Zona
 delete_mesg=Segur que vols suprimir la zona $1? S'esborrarà la zona i tots els seus registres.
@@ -521,6 +522,7 @@ acls_name=Nom de l'ACL
 acls_values=Adreces, xarxes i ACLs que coincideixen
 acls_err=No he pogut desar les llistes de control d'accés
 acls_ename='$1' no és un nom d'ACL vàlid
+acls_eline=Cada adreça IP s'ha d'introduir en una línia separada per a l'ACL '$1'
 
 files_title=Fitxers i Directoris
 files_ecannot=No tens permís per configurar els fitxers
