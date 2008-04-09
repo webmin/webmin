@@ -48,6 +48,7 @@ stop_err=No he pogut aturar la base de dades
 start_err=No he pogut engegar la base de dades
 
 dbase_title=Edició de Base de Dades
+dbase_header=Taules, índexs i vistes de la base de dades
 dbase_tables=Taules de la Base de Dades
 dbase_add=Crea nova taula
 dbase_drop=Destrueix BD
