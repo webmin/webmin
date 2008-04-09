@@ -186,6 +186,7 @@ create_example=Crea objecte d'exemple sota el nou DN
 create_unix=Usuari Unix
 create_mail=Usuari Unix amb correu
 create_virt=Mapejat d'Adreça
+create_group=Grup Unix
 create_edom=Hi falta el nom de domini o bé és invàlid
 create_edn=Hi falta el nom distingit o bé és invàlid
 create_err=No he pogut crear el nou arbre
