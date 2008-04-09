@@ -77,6 +77,9 @@ view_rollback2=Reverteix els Fitxers Seleccionats
 view_return=als detalls de l'acció
 view_input=Entrada de l'ordre
 view_anno=Notes de l'entrada de registre
+view_raw=Dades del registre pelades
+view_rawname=Nom del paràmetre
+view_rawvalue=valor del paràmetre
 
 acl_mods=Pot veure els registres dels mòduls
 acl_all=Tots
