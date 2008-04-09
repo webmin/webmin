@@ -76,6 +76,7 @@ run_out2on=Sortida de l'ordre a $2...
 run_noout=No s'ha generat cap sortida
 run_ecmduser=L'usuari '$1' sota el qual s'ha d'executar l'ordre no existeix
 run_eopt=Has seleccionat una opció invàlida
+run_eupload=No has seleccionat cap fitxer per pujar
 run_timeout=L'ordre s'ha tallat després d'un temps màxim d'espera de $1 segons.
 
 log_modify=He modificat l'ordre $1
