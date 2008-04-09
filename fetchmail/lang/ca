@@ -105,6 +105,7 @@ acl_this=L'usuari Webmin actual
 acl_only=Només els usuaris
 acl_except=Tots els usuaris excepte
 acl_cron=Pot configurar la comprovació planificada
+acl_daemon=Pot configurar el dimoni Fetchmail
 
 cron_title=Comprovació Planificada
 cron_desc=Aquesta pàgina es pot fer servir per activar o desactivar un treball Cron per comprovar i els servidors de correu de la configuració de Fetchmail de forma regular. Fer servir un treball cron és millor que executar el dimoni de Fetchmail, ja que no cal reiniciar-lo en engegar el sistema.
