@@ -543,7 +543,8 @@ session_pmode1=Permet sempre els usuaris amb contrasenyes caducades
 session_pmode2=Força els usuaris amb contrasenyes caducades a introduir-ne una de nova
 session_md5off=Utilitza el xifratge <tt>crypt</tt> estàndard de Unix per a les contrasenyes de Webmin
 session_md5on=Utilitza el xifratge MD5 per a les contrasenyes de Webmin (permet contrasenyes més llargues)
-session_emd5=No es pot utilitzar el xifratge MD5 perquè Perl no té suport MD5 de <tt>crypt</tt> en aquest sistema
+session_emd5mod=No es pot utilitzar el xifratge MD5 perquè el mòdul Perl $1 no està instal·lat.
+session_blocklock=Bloqueja també els usuaris amb entrades fallides
 
 assignment_title=Reassignació de Mòduls
 assignment_header=Assignacions de categories de mòduls
@@ -686,6 +687,7 @@ standard_eurl=URL de mòduls estàndard invàlid
 third_failed=No he pogut descarregar la llista de mòduls: $1
 third_header=Mòduls Webmin de Tercers
 third_eurl=URL de mòduls de tercers invàlid
+third_title=Seleccio de Mòdul de Tercers
 
 lock_title=Bloqueig de Fitxers
 lock_desc=Per defecte, Webmin obtindrà un bloqueig sobre qualsevol fitxer que modifiqui per tal d'evitar la modificació concorrent per part de múltiples processos, cosa que podria dur a la corrupció del fitxer. Aquesta pàgina permet desactivar el blocatge de fitxers de forma selectiva o total si això causa problemes.
@@ -800,4 +802,6 @@ blocked_clear=Esborra Tots els Blocatges
 blocked_cleardesc=Fes clic sobre aquest botó per esborrar tots els blocatges actuals de hosts i usuaris, reiniciant el procés servidor de Webmin.
 blocked_restarting=El procés servidor de Webmin s'està reiniciant per esborrar els blocatges de hosts i usuaris - espera uns segons abans de continuar, si et plau.
 
-
+refreshmods_title=Refresc de Mòduls
+refreshmods_installed=Comprovant els mòduls de Webmin utilitzables...
+refeshmods_counts=...n'he trobat $2 amb aplicacions instal·lades, $1 no instal·lats.
