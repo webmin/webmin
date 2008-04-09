@@ -6,6 +6,7 @@ sort_mode=Mostra els monitors ordenats per,1,0-Ordre de creació,1-Descripció,2-H
 columns=Columnes per a la taula de serveis,1,2-2,1-1
 output=Captura la sortida dels programes executats quan estigui desactivat,1,1-Sí,0-No
 subject_mode=Mode d'assumpte de correu,1,0-Estil nou,1-Estil vell
+def_tmpl=Plantilla per defecte,10,-None,Plantilla amb nom
 pinger=Envia els pings amb l'ordre,10,-Utilitza el codi integrat,linux-Utilitza l'ordre apropiada per a Linux o FreeBSD,Una altra ordre
 snmp_server=Envia trampes SNMP al servidor,3,Cap
 snmp_version=Versió del protocol SNMP,1,3-v3,2-v2,1-v1
