@@ -54,6 +54,7 @@ login_epass=Usuari o contrasenya d'administració incorrectes
 
 dbase_title=Edició de Base de Dades
 dbase_noconn=Aquesta base de dades actualment no suporta connexions, així que no s'hi pot efectuar cap acció.
+dbase_header=Taules, índexs, vistes i seqüències de la base de dades
 dbase_tables=Taules de la base de dades
 dbase_add=Crea Taula
 dbase_vadd=Crea Vista
