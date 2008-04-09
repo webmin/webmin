@@ -24,6 +24,7 @@ period_daily=Diàriament
 period_weekly=Setmanalment
 period_monthly=Mensualment
 period_never=Mai
+period_bytes=bytes
 
 edit_title1=Creació de Fitxer de Registre
 edit_title2=Edició de Fitxer de Registre
