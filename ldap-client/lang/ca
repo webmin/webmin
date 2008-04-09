@@ -2,6 +2,9 @@ index_econf=No s'ha trobat al sistema el fitxer $1 de configuració de LDAP-NSS. 
 index_check=Valida la Configuració
 index_checkdesc=Fes clic sobre aquest botó per tal que Webmin validi la configuració del teu servidor LDAP i assegurar així que es pot contactar amb el servidor i que aquest conté usuaris i grups.
 index_return=a l'índex de mòduls
+index_fixpam=<b>Atenció</b> - Webmin ha detectat dos fitxers de configuració LDAP separats al sistemat. NSS-LDAP està configurat utilitzant $1, mentre que PAM-LDAP utilitza $2. Això pot causar inconsistències entre els dos serveis.
+index_fix=Arregla-ho Enllaçant els Fitxers
+index_ignore=No Mostris Aquest Missatge
 
 server_title=Configuració del Servidor LDAP
 server_header=Servidor LDAP i opcions d'entrada
