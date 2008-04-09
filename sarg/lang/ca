@@ -1,4 +1,4 @@
-index_title=Generador d'Informes de l'Anàlisi de Squid
+index_title=Generador d'Informes de Squid
 index_econf=No s'ha trobat al sistema el fitxer de configuració $1 de Sarg. Pot ser que Sarg no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_ecmd=No s'ha trobat al sistema el programa $1 de Sarg. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_eversion=No he pogut obtenir la versió de Sarg amb l'ordre $1: $2
