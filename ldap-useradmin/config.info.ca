@@ -22,6 +22,7 @@ group_mod_props=Propietats LDAP per als grups modificats<br>(En format <i>nomcam
 group_fields=Propietats extra de grups LDAP per permetre l'edició de<br>(AL format de <i>fieldname</i> <i>description</i>),9,40,3,\t
 multi_fields=Permet valors múltiples a les propietats extra,1,1-Sí,0-No
 noclash=Atributs que no permeten duplicats,0
+person=Dóna la classe d'objecte <tt>person</tt> a tots els usuaris Unix,1,1-Sí,0-No
 
 line5=Opcions del directori arrel,11
 homedir_perms=Permisos dels nous directoris arrel,3,Del mòdul d'Usuaris i Grups
@@ -32,7 +33,7 @@ home_style=Estil automàtic drl directori arrel,4,0-home/username,1-home/u/userna
 line6=Opcions d'usuari nou,11
 base_uid=UID més baix per a usuaris nous,3,Del mòdul d'Usuaris i Grups
 base_gid=GID més baix per a grups nous,3,Del mòdul d'Usuaris i Grups
-md5=Mètode de xifratge de les contrasenyes,1,3-LDAP MD5,1-MD5 de Unix,0-crypt,2-Text planer
+md5=Mètode de xifratge de les contrasenyes,1,3-MD5 LDAP,1-MD5 de Unix,0-crypt,2-Text planer,4-SSHA LDAP
 shells=Construeix la llista de shells de,2,fixed-Llista integrada,passwd-Usuaris del sistema,shells-/etc/shells
 
 line7=Valors per defecte dels usuaris nous,11
