@@ -618,6 +618,7 @@ acl_flushq=Pot buidar la cua de correu
 acl_mailq=Pot gestionar la cua de correu
 acl_viewdel=Veure i suprimir
 acl_view=Només veure
+acl_vcatchall=Pot crear mapejats 'catchall'
 acl_qdoms=Adreces visibles a la cua
 acl_qdomsmode=Adreça de cua que ha de coincidir
 acl_qdomsmode0=Adreça From:
