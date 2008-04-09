@@ -1,0 +1,8 @@
+exim_dir=Directori d'exim,0
+exim_virt_dir=Directori d'àlies d'exim,0
+exim_addrfile=Fitxer local de dominis d'exim,3,
+exim_aliasfileext=Extensió del fitxer d'àlies de dominis d'exim,3,
+exim_dbmfile=Fitxer local de dominis d'exim,3,
+exim_dbmext=Extensió local de mapejat de dominis,3,
+mail_system=Crea mbox o maildir per als nous usuaris,1
+exim_mail_file=Nom del fitxer mbox o directori maildir,0
