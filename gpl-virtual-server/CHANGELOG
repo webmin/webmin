@@ -414,7 +414,7 @@ When using Qmail, domains with the same name as the system's primary hostname (t
 When email is disabled for a domain, only MX and mail records pointing to the Virtualmin system or known secondaries are removed.
 ---- Changes since 3.54 ----
 New DNS domains have the localhost A record added, with an IP of 127.0.0.1.
-Ported the migrate-domain.pl script from Virtualmin GPL, which allows migration from cPanel, Plesk and Ensim at the command line.
+Ported the migrate-domain.pl script from Virtualmin Pro, which allows migration from cPanel, Plesk and Ensim at the command line.
 When migrating a domain from other control panel like Plesk, you can now select to have to downloaded directly from a remote FTP or SSH server. The migrate-domain.pl command-line script also allows use of ftp:// or ssh:// URLs for backup sources.
 If the skeleton directory contains a public_html sub-directory, it is copied to a sub-domain's web pages directory when the domain is created.
 For alias domains whose virtusers are always copied from the target, no home directory is created (as it isn't needed).
