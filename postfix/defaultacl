@@ -29,3 +29,4 @@ manual=1
 dir=/
 sasl=1
 bcc=1
+client=1

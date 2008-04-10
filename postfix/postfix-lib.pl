@@ -2086,6 +2086,29 @@ return ( "permit_mynetworks",
 	 "permit_mx_backup" );
 }
 
+# list_client_restrictions()
+# Returns a list of boolean values for use in smtpd_client_restrictions
+sub list_client_restrictions
+{
+return ( "permit_mynetworks",
+	 "permit_inet_interfaces",
+	 $postfix_version < 2.3 ? "reject_unknown_client"
+				: "reject_unknown_reverse_client_hostname",
+	 "permit_tls_all_clientcerts",
+	 "reject_unauth_pipelining",
+	);
+}
+
+# list_multi_client_restrictions()
+# Returns a list of restrictions that have a following value
+sub list_multi_client_restrictions
+{
+return ( "check_client_access",
+	 "reject_rbl_client",
+	 "reject_rhsbl_client",
+       );
+}
+
 sub file_map_type
 {
 local ($type) = @_;
