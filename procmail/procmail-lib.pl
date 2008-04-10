@@ -317,6 +317,14 @@ return "$1/$_[0]";
 # module name and possibly an error message if Procmail is not setup
 sub check_mailserver_config
 {
+# Find a running mail server
+local $ms = &foreign_installed("qmailadmin") &&
+	     &qmailadmin::is_qmail_running() ? "qmailadmin" :
+	    &foreign_installed("postfix") &&
+	     &postfix::is_postfix_running() ? "postfix" :
+	    &foreign_installed("sendmail") &&
+	     &sendmail::is_sendmail_running() ? "sendmail" : undef;
+# Fall back to installed mail server
 local $ms = &foreign_installed("qmailadmin") ? "qmailadmin" :
 	    &foreign_installed("postfix") ? "postfix" :
 	    &foreign_installed("sendmail") ? "sendmail" : undef;
