@@ -71,3 +71,4 @@ Mass record creation can now add records for the domain name (by entering @ as t
 Keys in ACL sections are no long mangled by Webmin. This means that each IP or key must be entered on a separate line in the Access Control Lists page.
 ---- Changes since 1.410 ----
 Corrected parsing of records in zone files with no names, which inherit from the previous record.
+Spaces are now allowed in Host Information records.

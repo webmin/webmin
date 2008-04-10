@@ -194,10 +194,12 @@ else {
 			&error(&text('edit_epri', $in{'value0'}));
 		}
 	elsif ($in{'type'} eq "HINFO") {
-		$in{'value0'} =~ /^[^\s\";]+$/ ||
+		$in{'value0'} =~ /\S/ ||
 			&error($text{'edit_ehard'});
-		$in{'value1'} =~ /^[^\s\";]+$/ ||
+		$in{'value1'} =~ /\S/ ||
 			&error($text{'edit_eos'});
+		$in{'value0'} = "\"$in{'value0'}\"" if ($in{'value0'} =~ /\s/);
+		$in{'value1'} = "\"$in{'value1'}\"" if ($in{'value1'} =~ /\s/);
 		$vals = $in{'value0'}." ".$in{'value1'};
 		}
 	elsif ($in{'type'} eq "TXT") {
