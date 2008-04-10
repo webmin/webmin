@@ -262,7 +262,7 @@ opts_delay_warning_time=Time in hours before sending a warning for no delivery
 opts_delay_warning_time_default=Disabled
 opts_content_filter_default=None
 
-smtpd_title=SMTP server options
+smtpd_title=SMTP Server Options
 smtpd_ecannot=You are not allowed to edit the SMTP server options
 opts_disable_vrfy_command=Disable SMTP VRFY command
 opts_smtpd_banner=SMTP greeting banner
@@ -290,7 +290,7 @@ opts_unknown_client_reject_code=SMTP server response on unknown client reject
 opts_unknown_hostname_reject_code=SMTP server response on unknown hostname reject
 
 
-smtp_title=SMTP client options
+smtp_title=SMTP Client Options
 smtp_ecannot=You are not allowed to edit the SMTP client options
 opts_best_mx_transport=Action when listed as best MX host
 opts_best_mx_transport_default=Default (bounce message)
@@ -761,6 +761,8 @@ log_start=Started Postfix server
 log_delqs=Deleted $1 messages from mail queue
 log_flushq=Flushed mail queue
 log_backend=Updated configuration file for map $1
+log_sasl=Changed SMTP authentication and encryption
+log_client=Changed SMTP client restrictions
 
 sasl_title=SMTP Authentication And Encryption
 opts_smtpd_sasl_auth_enable=Enable SASL SMTP authentication?
@@ -798,6 +800,9 @@ client_restrict=Client restrictions
 client_restrict1=Postfix default (allow all clients)
 client_restrict0=Selected below ..
 client_other=Other restrictions :
+client_err=Failed to save client restrictions
+client_evalue=Missing value for restriction $1
+client_return=SMTP client restrictions
 
 chooser_title=Select Map Source
 chooser_header=Map source $1

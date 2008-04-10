@@ -107,8 +107,8 @@ elsif ($in{'map_name'} eq 'header_checks') {
 elsif ($in{'map_name'} eq 'body_checks') {
 	&ui_print_footer("body.cgi", $text{'body_return'});
 	}
-elsif ($in{'map_name'} =~ /check_sender_access/) {
-	&ui_print_footer("edit_access.cgi?name=smtpd_client_restrictions:check_sender_access&title=Check sender access mapping table", $text{'access_return'});
+elsif ($in{'map_name'} =~ /^smtpd_client_restrictions:/) {
+	&ui_print_footer("client.cgi", $text{'client_return'});
 	}
 else {
 	&ui_print_footer("", $text{'index_return'});

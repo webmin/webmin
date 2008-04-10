@@ -1592,7 +1592,7 @@ elsif ($map_name =~ /relocated/) { &redirect("relocated.cgi"); }
 elsif ($map_name =~ /header/) { &redirect("header.cgi"); }
 elsif ($map_name =~ /body/) { &redirect("body.cgi"); }
 elsif ($map_name =~ /sender_bcc/) { &redirect("bcc.cgi"); }
-elsif ($map_name =~ /sender_access/) { &redirect("edit_access.cgi?name=smtpd_client_restrictions:check_sender_access&title=Check+sender+access+mapping+table"); }
+elsif ($map_name =~ /^smtpd_client_restrictions:/) { &redirect("client.cgi"); }
 else { &redirect(""); }
 }
 

@@ -1,8 +1,6 @@
 #!/usr/local/bin/perl
 # A single page just for editing smtpd_client_restrictions
 # XXX editing access maps?
-# XXX maps rbl parameters
-# XXX icon
 
 require './postfix-lib.pl';
 
@@ -33,16 +31,23 @@ foreach $r (&list_client_restrictions()) {
 
 # Add restrictions with values
 foreach $r (&list_multi_client_restrictions()) {
+	$v = $opts{$r};
 	push(@grid, &ui_checkbox("client", $r, $text{'sasl_'.$r},
 				 defined($v)),
 		    &ui_textbox("value_$r",
 			        defined($v) ? $opts[$v+1] : undef, 40).
 		    ($r eq "check_client_access" ?
 			" ".&map_chooser_button("value_$r", $r) : ""));
+	$done{$r} = 1;
+	$done{$opts[$v+1]} = 1;
+	if ($r eq "check_client_access" && defined($v)) {
+		# Can show client access map
+		$has_client_access = 1;
+		}
 	}
 
 # Show text field for the rest
-@rest = grep { !$done{$o} } @opts;
+@rest = grep { !$done{$_} } @opts;
 if (@rest) {
 	push(@grid, &ui_checkbox("other", 1, $text{'client_other'}, 1),
 		    &ui_textbox("other_list", join(" ", @rest), 40));
@@ -57,5 +62,14 @@ print &ui_table_row($text{'client_restrict'},
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
+
+if ($has_client_access) {
+	print "<hr>\n";
+	&generate_map_edit("smtpd_client_restrictions:check_client_access",
+		$text{'map_click'}." ".
+		"<font size=\"-1\">".&hlink("$text{'help_map_format'}",
+			"access")."</font>\n<br>\n", 1,
+		$text{'mapping_client'}, $text{'header_value'});
+	}
 
 &ui_print_footer("", $text{'index_return'});

@@ -52,3 +52,5 @@ Added more SMTP relaying restrictions.
 Outgoing email from selected addresses and domains can now be BCCd automatically using the new BCC Mapping page.
 ---- Changes since 1.400 ----
 Changed the default LDAP class for maps to inetLocalMailRecipient.
+---- Changes since 1.410 ----
+Added the SMTP Client Restrictions page, and replaced some oddly-designed UI fields on the SMTP Server Options page to it with more Webmin-standard inputs for configuring RBLs and client access.
