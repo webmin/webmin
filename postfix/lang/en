@@ -327,6 +327,7 @@ debug_ecannot=You are not allowed to edit the debugging features
 opts_debug_peer_list=List of domain/network patterns for which verbose log is enabled
 opts_debug_peer_level=Verbose logging level when matching the above list
 debug_version=Postfix Module for Webmin - Version $1
+opts_edebug=Missing or invalid verbose logging level - must be a number greater than zero
 
 ldap_title=LDAP lookups
 ldap_ecannot=You are not allowed to edit the LDAP lookups options

@@ -1,5 +1,8 @@
 #!/usr/local/bin/perl
 # A single page just for editing smtpd_client_restrictions
+# XXX editing access maps?
+# XXX maps rbl parameters
+# XXX icon
 
 require './postfix-lib.pl';
 
@@ -37,8 +40,6 @@ foreach $r (&list_multi_client_restrictions()) {
 		    ($r eq "check_client_access" ?
 			" ".&map_chooser_button("value_$r", $r) : ""));
 	}
-
-# XXX editing access maps?
 
 # Show text field for the rest
 @rest = grep { !$done{$o} } @opts;
