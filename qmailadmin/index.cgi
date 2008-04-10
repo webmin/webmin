@@ -53,20 +53,17 @@ if (!$config{'mailq_count'}) {
 
 # Check if the qmail processes are running
 print "<hr>\n";
-print "<table cellpadding=5 width=100%><tr>\n";
-($pid) = &find_byname("qmail-send");
-if ($pid && kill(0, $pid)) {
-	print "<form action=stop.cgi>\n";
-	print "<td><input type=submit value=\"$text{'index_stop'}\">\n";
-	print "</td> <td>$text{'index_stopmsg'}\n";
+print &ui_buttons_start();
+if (&is_qmail_running()) {
+	print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+			      $text{'index_stopmsg'});
 	}
 else {
-	print "<form action=start.cgi>\n";
-	print "<td><input type=submit value=\"$text{'index_start'}\">\n";
-	print "</td> <td>",&text('index_startmsg',
-	      "<tt>$qmail_start_cmd</tt>"),"</td>\n";
+	print &ui_buttons_row("start.cgi", $text{'index_start'},
+			      &text('index_startmsg',
+				"<tt>$qmail_start_cmd</tt>"));
 	}
-print "</tr></table>\n";
+print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
 

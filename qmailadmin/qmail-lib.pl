@@ -793,5 +793,12 @@ else {
 return undef;
 }
 
+# Returns the PID of qmail-send is running
+sub is_qmail_running
+{
+local ($pid) = &find_byname("qmail-send");
+return kill(0, $pid) ? $pid : undef;
+}
+
 1;
 
