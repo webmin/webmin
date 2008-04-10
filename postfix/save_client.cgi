@@ -11,43 +11,51 @@ $access{'client'} || &error($text{'opts_ecannot'});
 
 &lock_postfix_files();
 
-# Save client options
-@opts = split(/[\s,]+/, &get_current_value("smtpd_client_restrictions"));
-%oldopts = map { $_, 1 } @opts;
-%newopts = map { $_, 1 } split(/\0/, $in{'client'});
-
-# Save boolean options
-foreach $o (&list_client_restrictions()) {
-	if ($newopts{$o} && !$oldopts{$o}) {
-		push(@opts, $o);
-		}
-	elsif (!$newopts{$o} && $oldopts{$o}) {
-		@opts = grep { $_ ne $o } @opts;
-		}
+if ($in{'client_def'}) {
+	# Reset to default
+	&set_current_value("smtpd_client_restrictions",
+			   "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__");
 	}
+else {
+	# Save client options
+	@opts = split(/[\s,]+/,&get_current_value("smtpd_client_restrictions"));
+	%oldopts = map { $_, 1 } @opts;
+	%newopts = map { $_, 1 } split(/\0/, $in{'client'});
 
-# Save options with values
-foreach $o (&list_multi_client_restrictions()) {
-	$idx = &indexof($o, @opts);
-	if ($newopts{$o}) {
-		$in{"value_$o"} =~ /^\S+$/ ||
-			&error(&text('client_evalue', $text{'sasl_'.$o}));
+	# Save boolean options
+	foreach $o (&list_client_restrictions()) {
+		if ($newopts{$o} && !$oldopts{$o}) {
+			push(@opts, $o);
+			}
+		elsif (!$newopts{$o} && $oldopts{$o}) {
+			@opts = grep { $_ ne $o } @opts;
+			}
 		}
-	if ($newopts{$o} && !$oldopts{$o}) {
-		# Add to end
-		push(@opts, $o, $in{"value_$o"});
+
+	# Save options with values
+	foreach $o (&list_multi_client_restrictions()) {
+		$idx = &indexof($o, @opts);
+		if ($newopts{$o}) {
+			$in{"value_$o"} =~ /^\S+$/ ||
+			    &error(&text('client_evalue', $text{'sasl_'.$o}));
+			}
+		if ($newopts{$o} && !$oldopts{$o}) {
+			# Add to end
+			push(@opts, $o, $in{"value_$o"});
+			}
+		elsif ($newopts{$o} && $oldopts{$o}) {
+			# Update value
+			$opts[$idx+1] = $in{"value_$o"};
+			}
+		elsif (!$newopts{$o} && $oldopts{$o}) {
+			# Remove and value
+			splice(@opts, $idx, 2);
+			}
 		}
-	elsif ($newopts{$o} && $oldopts{$o}) {
-		# Update value
-		$opts[$idx+1] = $in{"value_$o"};
-		}
-	elsif (!$newopts{$o} && $oldopts{$o}) {
-		# Remove and value
-		splice(@opts, $idx, 2);
-		}
+
+	&set_current_value("smtpd_client_restrictions",
+			   join(" ", &unique(@opts)));
 	}
-
-&set_current_value("smtpd_client_restrictions", join(" ", &unique(@opts)));
 
 &unlock_postfix_files();
 
