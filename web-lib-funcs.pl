@@ -2746,7 +2746,7 @@ if ($0 &&
     $ENV{'HTTP_USER_AGENT'} !~ /^Webmin/i &&
     ($referer_site && $referer_site ne $http_host &&
      &indexof($referer_site, @referers) < 0 ||
-    !$referer_site && $gconfig{'referers_none'} && !$trust_unknown_referers)) {
+    !$referer_site && $gconfig{'referers_none'}) && !$trust_unknown_referers) {
 	# Looks like a link from elsewhere .. show an error
 	&header($text{'referer_title'}, "", undef, 0, 1, 1);
 
