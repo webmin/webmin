@@ -889,5 +889,54 @@ local $hash = &hash_session_id($sid);
 return $sessiondb{$hash} ? $hash : $sid;
 }
 
+# setup_anonymous_access(path, module)
+# Grants anonymous access to some path. By default, the user for other anonymous
+# access will be used, or if there is none, a user named 'anonymous' will be
+# created and granted access to the module.
+sub setup_anonymous_access
+{
+local ($path, $mod) = @_;
+
+# Find out what users and paths we grant access to currently
+local %miniserv;
+&get_miniserv_config(\%miniserv);
+local @anon = split(/\s+/, $miniserv{'anonymous'});
+local $found = 0;
+local $user;
+foreach my $a (@anon) {
+        local ($p, $u) = split(/=/, $a);
+	$found++ if ($p eq $path);
+	$user = $u;
+	}
+return 1 if ($found);		# Already setup
+
+if (!$user) {
+	# Create a user if need be
+	$user = "anonymous";
+	local $uinfo = { 'name' => $user,
+			 'pass' => '*LK*',
+			 'modules' => [ $mod ],
+		       };
+	&create_user($uinfo);
+	}
+else {
+	# Make sure the user has the module
+	local ($uinfo) = grep { $_->{'name'} eq $user } &list_users();
+	if ($uinfo && &indexof($mod, @{$uinfo->{'modules'}}) < 0) {
+		push(@{$uinfo->{'modules'}}, $mod);
+		&modify_user($uinfo->{'name'}, $uinfo);
+		}
+	else {
+		print STDERR "Anonymous access is granted to user $user, but he doesn't exist!\n";
+		}
+	}
+
+# Grant access to the user and path
+push(@anon, "$path=$user");
+$miniserv{'anonymous'} = join(" ", @anon);
+&put_miniserv_config(\%miniserv);
+&reload_miniserv();
+}
+
 1;
 

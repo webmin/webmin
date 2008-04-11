@@ -47,3 +47,5 @@ Fixed the display of modules granted to groups.
 Added a per-user option to opt out of forced password changes after a certain number of days.
 A human-readable description of the password restrictions regular expression can be entered, for use in error messages.
 Webmin users can now be given temporary passwords, which they are forced to change at the next login. Thanks to GE Medical Systems for supporting this feature.
+---- Changes since 1.410 ----
+Added an API function to allow easier anonymous module access setup.
