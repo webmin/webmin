@@ -7,11 +7,11 @@ require './lilo-lib.pl';
 	&help_search_link("lilo", "man", "doc", "howto"));
 
 # Check for non-intel architecture
-if (!&is_x86()) {
-	print "<p>$text{'index_earch'}<p>\n";
-	&ui_print_footer("/", $text{'index'});
-	exit;
-	}
+#if (!&is_x86()) {
+#	print "<p>$text{'index_earch'}<p>\n";
+#	&ui_print_footer("/", $text{'index'});
+#	exit;
+#	}
 
 # Check if lilo.conf exists
 if (!-r $config{'lilo_conf'}) {
