@@ -121,7 +121,7 @@ if ($ver >= 1.047 && $miniserv{'passwd_cindex'} ne '') {
 
 # Prompt to choose password at login
 if ($ver >= 1.087) {
-	printf "<input type=checkbox name=passwd_blank value=1 %s> %s<p>\n",
+	printf "<input type=checkbox name=passwd_blank value=1 %s> %s<br>\n",
 		$miniserv{'passwd_blank'} ? "checked" : "",
 		$text{'session_blank'};
 	}
