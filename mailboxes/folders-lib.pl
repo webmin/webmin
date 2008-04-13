@@ -1304,8 +1304,12 @@ elsif ($src->{'type'} == 1 && $dest->{'type'} == 0) {
 	# maildir to mbox .. append all the files
 	local @files = &get_maildir_files($src->{'file'});
 	&open_tempfile(DEST, ">>$dest->{'file'}");
+	local @tm = localtime(time());
+	local $fromline = strftime(
+		"From webmin\@example.com %a %b %e %H:%M:%S %Y\n", @tm);
 	foreach my $f (@files) {
 		&open_readfile(SOURCE, $f);
+		&print_tempfile("DEST", $fromline);
 		while(read(SOURCE, $buf, 1024) > 0) {
 			&print_tempfile(DEST, $buf);
 			}
@@ -1398,8 +1402,12 @@ elsif ($src->{'type'} == 1 && $dst->{'type'} == 0) {
 	# For Maildir to mbox moves, just append files
 	local @files = &get_maildir_files($src->{'file'});
 	&open_tempfile(DEST, ">>$dst->{'file'}");
+	local @tm = localtime(time());
+	local $fromline = strftime(
+		"From webmin\@example.com %a %b %e %H:%M:%S %Y\n", @tm);
 	foreach my $f (@files) {
 		&open_readfile(SOURCE, $f);
+		&print_tempfile("DEST", $fromline);
 		while(read(SOURCE, $buf, 1024) > 0) {
 			&print_tempfile(DEST, $buf);
 			}
