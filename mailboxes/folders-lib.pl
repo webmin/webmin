@@ -1394,6 +1394,19 @@ if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 			}
 		}
 	}
+elsif ($src->{'type'} == 1 && $dst->{'type'} == 0) {
+	# For Maildir to mbox moves, just append files
+	local @files = &get_maildir_files($src->{'file'});
+	&open_tempfile(DEST, ">>$dst->{'file'}");
+	foreach my $f (@files) {
+		&open_readfile(SOURCE, $f);
+		while(read(SOURCE, $buf, 1024) > 0) {
+			&print_tempfile(DEST, $buf);
+			}
+		&unlink_file($f);
+		}
+	&close_tempfile(DEST);
+	}
 else {
 	# Need to read in and write out. But do it in 1000-message blocks
 	local $count = &mailbox_folder_size($src);
