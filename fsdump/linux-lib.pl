@@ -175,7 +175,7 @@ else {
 	if ($dump_version >= 0.424) {
 		print &ui_table_row(&hlink($text{'dump_comp'},"comp"),
 			&ui_opt_textbox("comp", $_[0]->{'comp'}, 4,
-					$text{'dump_complvl'}, $text{'no'}),
+					$text{'no'}, $text{'dump_complvl'}),
 			3, $tds);
 		}
 	}

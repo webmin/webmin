@@ -9,7 +9,7 @@ do 'fsdump-lib.pl';
 sub is_installed
 {
 local @fslist = &supported_filesystems();
-if (@fslist) {
+if (@fslist || $supports_tar) {
 	return $_[0] ? 2 : 1;
 	}
 return 0;
