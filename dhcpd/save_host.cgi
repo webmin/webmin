@@ -62,13 +62,26 @@ else {
 	$host->{'values'} = [ $in{'name'} ];
 
 	if ($in{'hardware'}) {
+		# Check for hardware clash
+		$oldhard = $in{'new'} ? undef
+				      : &find("hardware", $host->{'members'});
+		if ((!$oldhard || $in{'hardward'} ne $oldhard->{'values'}->[1])
+		    && $access{'uniq_hst'}) {
+			foreach $h (&get_hosts()) {
+				$chard = &find("hardware", $h->{'members'});
+				&error("$text{'eacl_np'} $text{'eacl_uniqh'}")
+					if ($chard && lc($chard->{'values'}->[1]) eq lc($in{'hardware'}));
+				}
+			}
+
 		# Convert from Windows / Cisco formats
 		$in{'hardware'} =~ s/-/:/g;
 		if ($in{'hardware'} =~ /^([0-9a-f]{2})([0-9a-f]{2}).([0-9a-f]{2})([0-9a-f]{2}).([0-9a-f]{2})([0-9a-f]{2}).([0-9a-f]{2})([0-9a-f]{2})$/) {
 			$in{'hardware'} = "$1:$2:$3:$4:$5:$6";
 			}
 		$in{'hardware'} =~ /^([0-9a-f]{1,2}:)*[0-9a-f]{1,2}$/i ||
-			&error(&text('shost_invalidhwa',$in{'hardware'},$in{'hardware_type'}) );
+			&error(&text('shost_invalidhwa', $in{'hardware'},
+				     $in{'hardware_type'}) );
 		@hard = ( { 'name' => 'hardware',
 			    'values' => [ $in{'hardware_type'},
 					  $in{'hardware'} ] } );
@@ -76,6 +89,21 @@ else {
 	&save_directive($host, 'hardware', \@hard);
 
 	if ($in{'fixed-address'}) {
+		# Check for IP clash
+		$oldfixed = $in{'new'} ? undef
+			      : &find("fixed-address", $host->{'members'});
+		if ((!$oldfixed ||
+		    $in{'fixed-address'} ne $oldfixed->{'values'}->[0])
+		    && $access{'uniq_hst'}) {
+			foreach $h (&get_hosts()) {
+				$cfixed = &find("fixed-address",
+						$h->{'members'});
+				&error("$text{'eacl_np'} $text{'eacl_uniqi'}")
+					if ($cfixed && lc($cfixed->{'values'}->[0]) eq lc($in{'fixed-address'}));
+				}
+			}
+
+		# Save IP address
 		if ($in{'fixed-address'} !~ /^[\w\s\.\-,]+$/ ||
 		    $in{'fixed-address'} =~ /(^|[\s,])[-_]/ ||
 		    $in{'fixed-address'} =~ /\.([\s,\.]|$)/ ||

@@ -19,3 +19,5 @@ Changed the Module Config PID file setting to allow None to be selected, which t
 Added a field on the Client Options page for the DHCP server identifier.
 ---- Changes since 1.370 ----
 Fixed a bug that causes hosts to be deleted when searching for them!
+---- Changes since 1.410 ----
+Clashes between hosts with the same IP address, MAC address or hostname are no longer allowed by default - but this can be changed on the DHCP Server access control page in the Webmin User's module.
