@@ -17,6 +17,8 @@ $templates_dir = "$module_config_directory/templates";
 %monitor_os_support = ( 'traffic' => { 'os_support' => '*-linux freebsd' },
 		      );
 
+@monitor_statuses = ( 'up', 'down', 'un', 'webmin', 'timed', 'isdown' );
+
 # list_services()
 # Returns a list of all services this module knows how to get status on.
 # If this is the first time the function is called a default set of services

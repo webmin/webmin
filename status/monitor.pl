@@ -460,6 +460,9 @@ if ($tmpl && $tmpl->{$type}) {
 			'STATUS' => $text{'mon_'.$suffix},
 			uc($suffix) => 1,
 		      );
+	foreach my $s (@monitor_statuses) {
+		$hash{uc($s)} ||= 0;
+		}
 	foreach my $k (keys %$serv) {
 		$hash{'SERVICE_'.uc($k)} = $serv->{$k};
 		}
