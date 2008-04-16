@@ -75,6 +75,8 @@ else {
 	if ($access{'cmds'}) {
 		$dump->{'before'} = $in{'before'};
 		$dump->{'after'} = $in{'after'};
+		$dump->{'beforefok'} = !$in{'beforefok'};
+		$dump->{'afterfok'} = !$in{'afterfok'};
 		}
 	&parse_dump($dump);
 	$dump->{'reverify'} = $in{'reverify'} if (defined(&verify_dump));

@@ -41,7 +41,7 @@ else {
 	&create_wrappers();
 
 	$bok = &execute_before($dump, OUT, 0);
-	if (!$bok) {
+	if (!$bok && !$dump->{'beforefok'}) {
 		# Before command failed!
 		print OUT "\n$text{'email_ebefore'}\n";
 		$status{'status'} = 'failed';
@@ -74,7 +74,7 @@ else {
 	if ($status{'status'} = 'complete') {
 		# Execute the post-backup script
 		$bok = &execute_after($dump, OUT, 0);
-		if (!$bok) {
+		if (!$bok && && !$dump->{'afterfok'}) {
 			print OUT "\n$text{'email_eafter'}\n";
 			$status{'status'} = 'failed';
 			$ok = 0;

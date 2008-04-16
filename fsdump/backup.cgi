@@ -35,7 +35,7 @@ else {
 			     &dump_dest($dump)),"</b><p>\n";
 	print "<pre>";
 	$bok = &execute_before($dump, STDOUT, 1);
-	if (!$bok) {
+	if (!$bok && !$dump->{'beforefok'}) {
 		# Before command failed
 		print "</pre>\n";
 		print "<b>$text{'backup_beforefailed'}</b><p>\n";

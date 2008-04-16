@@ -32,3 +32,5 @@ When making tar format backups on Linux, an option to just append new files to t
 ---- Changes since 1.400 ----
 Fixed remote tar backups via FTP on OSX.
 Files and directories to exclude can be specified for TAR format backups on Linux.
+---- Changes since 1.410 ----
+Added checkboxes to control if failure of the pre and post-backup commands cause the whole job to be regarded as a failure.
