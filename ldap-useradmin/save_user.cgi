@@ -209,7 +209,8 @@ else {
 
 	# Validate IMAP quota
 	$quota = undef;
-	if ($config{'quota_support'} && !$in{'quota_def'}) {
+	if ($config{'quota_support'} && !$in{'quota_def'} &&
+            defined($in{'quota'})) {
 		$in{'quota'} =~ /^\d+$/ || &error($text{'usave_equota'});
 		$quota = $in{'quota'};
 		}
