@@ -1,4 +1,4 @@
-proftpd_path=/usr/local/libexec/proftpd
+proftpd_path=/usr/local/sbin/proftpd
 proftpd_conf=/usr/local/etc/proftpd.conf
 pid_file=/var/run/proftpd.pid
 ftpusers=/etc/ftpusers
