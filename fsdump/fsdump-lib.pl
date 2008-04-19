@@ -68,8 +68,8 @@ unlink("$module_config_directory/$_[0]->{'id'}.dump");
 sub directory_filesystem
 {
 local $fs;
-foreach $m (sort { length($a->[0]) <=> length($b->[0]) }
-	         &foreign_call("mount", "list_mounted")) {
+foreach my $m (sort { length($a->[0]) <=> length($b->[0]) }
+	         &mount::list_mounted()) {
 	local $l = length($m->[0]);
 	if ($m->[0] eq $_[0] || $m->[0] eq "/" ||
 	    (length($_[0]) >= $l && substr($_[0], 0, $l+1) eq $m->[0]."/")) {
@@ -77,6 +77,17 @@ foreach $m (sort { length($a->[0]) <=> length($b->[0]) }
 		}
 	}
 return wantarray ? @$fs : $fs->[2];
+}
+
+# is_mount_point(dir)
+# Returns 1 if some directory is a filesystem mount point
+sub is_mount_point
+{
+local ($dir) = @_;
+foreach my $m (&mount::list_mounted()) {
+	return 1 if ($m->[0] eq $dir);
+	}
+return 0;
 }
 
 # same_filesystem(fs1, fs2)

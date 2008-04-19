@@ -33,7 +33,7 @@ dump_dest=Backup to
 dump_file=File or tape device
 dump_host=Host $1 as user $2 in file or device $3
 dump_level=Dump level
-dump_level_0=(Full backup)
+dump_level_0=0 (Full backup)
 dump_label=Backup label
 dump_multi=Split across multiple files?
 dump_update=Update <tt>/etc/dumpdates</tt> file?
@@ -102,6 +102,8 @@ dump_ermt=Missing or invalid path to <tt>rmt</tt> program
 dump_reverify=Attempt test restore after backup to verify?
 dump_remount=Remount with <tt>noatime</tt> option during backup?
 dump_eftpupdate=Adding files to an existing archive is not possible when using FTP.
+dump_eleveldir=Only level 0 backups are allowed for directories that are not filesystem mount points
+dump_eupdatedir=The <tt>/etc/dumpdates</tt> file can only be updated for directories that are filesystem mount points
 
 edit_err=Failed to create backup
 edit_edir=Missing backup directory

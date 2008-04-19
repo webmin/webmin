@@ -259,11 +259,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 	}
 elsif ($_[0]->{'fs'} eq 'xfs') {
 	# Parse xfs options
-	local $mp;
-	foreach $m (&foreign_call("mount", "list_mounted")) {
-		$mp++ if ($m->[0] eq $in{'dir'});
-		}
-	$mp || &error($text{'dump_emp'});
+	&is_mount_point($in{'dir'}) || &error($text{'dump_emp'});
 	$in{'label'} =~ /^\S*$/ && length($in{'label'}) < 256 ||
 		&error($text{'dump_elabel2'});
 	$_[0]->{'label'} = $in{'label'};
@@ -289,11 +285,17 @@ elsif ($_[0]->{'fs'} eq 'xfs') {
 		}
 	}
 else {
-	# Parse ext2/3 options
+	# Parse ext2/3 dump options
 	$_[0]->{'rsh'} = &rsh_command_parse("rsh_def", "rsh");
 	$_[0]->{'pass'} = $in{'pass'};
+	if ($in{'update'}) {
+		&is_mount_point($in{'dir'}) || &error($text{'dump_eupdatedir'});
+		}
 	$_[0]->{'update'} = $in{'update'};
 	$_[0]->{'multi'} = $in{'multi'};
+	if ($in{'level'} > 0) {
+		&is_mount_point($in{'dir'}) || &error($text{'dump_eleveldir'});
+		}
 	$_[0]->{'level'} = $in{'level'};
 	$in{'label'} =~ /^\S*$/ && length($in{'label'}) < 16 ||
 		&error($text{'dump_elabel'});

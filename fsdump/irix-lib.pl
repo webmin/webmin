@@ -166,11 +166,7 @@ else {
 
 if ($_[0]->{'fs'} eq 'xfs') {
 	# Parse xfs options
-	local $mp;
-	foreach $m (&foreign_call("mount", "list_mounted")) {
-		$mp++ if ($m->[0] eq $in{'dir'});
-		}
-	$mp || &error($text{'dump_emp'});
+	&is_mount_point($in{'dir'}) || &error($text{'dump_emp'});
 	$in{'label'} =~ /^\S*$/ && length($in{'label'}) < 256 ||
 		&error($text{'dump_elabel2'});
 	$_[0]->{'label'} = $in{'label'};

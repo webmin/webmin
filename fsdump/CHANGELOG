@@ -34,3 +34,4 @@ Fixed remote tar backups via FTP on OSX.
 Files and directories to exclude can be specified for TAR format backups on Linux.
 ---- Changes since 1.410 ----
 Added checkboxes to control if failure of the pre and post-backup commands cause the whole job to be regarded as a failure.
+Prevent non-level-0 backups and updating of the /etc/dumpdates file for backups of directories that are not filesystem mount points, as this isn't supported by the <tt>dump</tt> command.
