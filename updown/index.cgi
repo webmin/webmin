@@ -78,6 +78,13 @@ if ($can_download) {
 		# Download is always right now
 		}
 
+	# Email address to notify when done
+	if ($can_schedule || $can_background) {
+		print &ui_table_row($text{'index_email'},
+			&ui_opt_textbox("email", undef, 40,
+				$text{'no'}, $text{'index_emailto'}), 3);
+		}
+
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'index_down'} ] ]);
 	$form++;

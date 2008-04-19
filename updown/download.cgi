@@ -74,6 +74,11 @@ if ($in{'bg'} && $can_schedule) {
 			 $in{'day'}, $in{'month'}, $in{'year'}-1900) };
 	$@ && &error($text{'download_edate2'});
 	}
+if (defined($in{'email_def'}) && !$in{'email_def'}) {
+	# Validate email
+	$in{'email'} =~ /\S/ || &error($text{'download_eemail'});
+	$download{'email'} = $in{'email'};
+	}
 
 # Create the directory if needed
 if (!-d $download{'dir'} && $in{'mkdir'}) {
@@ -109,7 +114,7 @@ if ($in{'bg'} && $can_background) {
 
 	if (!$can_schedule) {
 		# Just run this script right now
-		system("$atjob_cmd $download{'id'} >/dev/null 2>&1 </dev/null &");
+		&execute_command("$atjob_cmd $download{'id'} &");
 		}
 	else {
 		# Create an At job to do the download

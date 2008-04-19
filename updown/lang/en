@@ -37,6 +37,8 @@ index_tabfetch=Download from server
 index_descdownload=This form allows you to download files or web pages from HTTP or FTP URLs to the system running Webmin. The download can be done immediately, or scheduled for some time in the future.
 index_descupload=This page allows you to upload one or more files from the PC on which your web browser runs to the system running Webmin.
 index_descfetch=This page is for downloading a file from the system running Webmin for display in your browser or saving on the same system.
+index_email=Send email when downloads are done?
+index_emailto=Yes, to address
 
 upload_title=Upload Files
 upload_err=Failed to upload files
@@ -104,3 +106,10 @@ fetch_eopen=Failed to open file : $1
 fetch_eaccess=You are not allowed to download files from $1
 fetch_ezip=A directory cannot be downloaded unless the <tt>zip</tt> command is installed
 fetch_eroot=The root directory cannot be downloaded!
+
+email_downmsg=The following download has completed :
+email_downurl=URL: $1
+email_downerr=Error message: $1
+email_downpath=Destination filename: $1
+email_downsize=Downloaded size: $1
+email_subjectd=Download complete

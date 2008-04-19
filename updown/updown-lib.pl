@@ -159,6 +159,21 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 		}
 	unlink($path) if ($error);
 	&switch_uid_back();
+	if ($down->{'email'}) {
+		# Send email when done
+		local $msg = $text{'email_downmsg'}."\n\n";
+		$msg .= &text('email_downurl', $_[0]->{"url_$i"})."\n";
+		if ($error) {
+			$msg .= &text('email_downerr', $error)."\n";
+			}
+		else {
+			local @st = stat($path);
+			$msg .= &text('email_downpath', $path)."\n";
+			$msg .= &text('email_downsize',&nice_size($st[7]))."\n";
+			}
+		&send_email_notification(
+			$down->{'email'}, $text{'email_subjectd'}, $msg);
+		}
 	return $error if ($error);
 	push(@{$_[2]}, $path);
 	}
@@ -227,6 +242,23 @@ if (defined($old_uid)) {
 	$> = $old_uid;
 	$) = $old_gid;
 	$old_uid = $old_gid = undef;
+	}
+}
+
+# send_email_notification(address, subject, message)
+# Send email when some download or upload is complete
+sub send_email_notification
+{
+local ($to, $subject, $msg) = @_;
+if ($module_info{'usermin'}) {
+	&foreign_require("mailbox", "mailbox-lib.pl");
+	local $from = &mailbox::get_preferred_from_address();
+	&mailbox::send_text_mail($from, $to, undef, $subject, $msg);
+	}
+else {
+	&foreign_require("mailboxes", "mailboxes-lib.pl");
+	local $from = &mailboxes::get_from_address();
+	&mailboxes::send_text_mail($from, $to, undef, $subject, $msg);
 	}
 }
 
