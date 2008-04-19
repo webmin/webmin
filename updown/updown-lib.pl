@@ -118,11 +118,11 @@ unlink("$downloads_dir/$_[0]->{'id'}.down");
 # Actually download one or more files, and return undef or any error message
 sub do_download
 {
-local $i;
+local ($i, $error, $msg);
 for($i=0; $_[0]->{"url_$i"}; $i++) {
+	$error = undef;
 	$progress_callback_url = $_[0]->{"url_$i"};
 	$progress_callback_count = $i;
-	local $error;
 	local $path;
 	if (-d $_[0]->{'dir'}) {
 		if ($_[0]->{"page_$i"} =~ /([^\/]+)$/) {
@@ -159,25 +159,32 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 		}
 	unlink($path) if ($error);
 	&switch_uid_back();
-	if ($down->{'email'}) {
-		# Send email when done
-		local $msg = $text{'email_downmsg'}."\n\n";
-		$msg .= &text('email_downurl', $_[0]->{"url_$i"})."\n";
-		if ($error) {
-			$msg .= &text('email_downerr', $error)."\n";
-			}
-		else {
-			local @st = stat($path);
-			$msg .= &text('email_downpath', $path)."\n";
-			$msg .= &text('email_downsize',&nice_size($st[7]))."\n";
-			}
-		&send_email_notification(
-			$down->{'email'}, $text{'email_subjectd'}, $msg);
+
+	# Add to email message
+	$msg .= &text('email_downurl', $_[0]->{"url_$i"})."\n";
+	if ($error) {
+		$msg .= &text('email_downerr', $error)."\n";
 		}
-	return $error if ($error);
+	else {
+		local @st = stat($path);
+		$msg .= &text('email_downpath', $path)."\n";
+		$msg .= &text('email_downsize',&nice_size($st[7]))."\n";
+		}
+	$msg .= "\n";
+
+	last if ($error);
 	push(@{$_[2]}, $path);
 	}
-return undef;
+
+# Send status email
+if ($down->{'email'}) {
+	# Send email when done
+	$msg = $text{'email_downmsg'}."\n\n".$msg;
+	&send_email_notification(
+                        $down->{'email'}, $text{'email_subjectd'}, $msg);
+	}
+
+return $error;
 }
 
 # can_write_file(file)

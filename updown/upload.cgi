@@ -11,6 +11,10 @@ $can_upload || &error($text{'upload_ecannot'});
 
 # Validate inputs
 $in{'dir'} || &error($text{'upload_edir'});
+if (defined($in{'email_def'}) && !$in{'email_def'}) {
+	$in{'email'} =~ /\S/ || &error($text{'upload_eemail'});
+	$email = $in{'email'};
+	}
 if ($can_mode != 3) {
 	# User can be entered
 	defined(@uinfo = getpwnam($in{'user'})) ||
@@ -45,6 +49,7 @@ if (!-d $in{'dir'} && $in{'mkdir'}) {
 	}
 
 # Save the actual files
+$msg = undef;
 for($i=0; defined($d = $in{"upload$i"}); $i++) {
 	$f = $in{"upload${i}_filename"};
 	next if (!$f);
@@ -61,7 +66,9 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 	&print_tempfile(FILE, $d);
 	&close_tempfile(FILE);
 	push(@uploads, $path);
+	@st = stat($path);
 
+	$estatus = undef;
 	if ($in{'zip'}) {
 		local ($err, $out);
 		$path =~ /^(\S*\/)/;
@@ -85,6 +92,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				close(OUT);
 				$err = $out if ($?);
 				}
+			$fmt = "zip";
 			}
 		elsif ($path =~ /\.tar$/i) {
 			if (!&has_command("tar")) {
@@ -101,6 +109,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				close(OUT);
 				$err = $out if ($?);
 				}
+			$fmt = "tar";
 			}
 		elsif ($path =~ /\.(tar\.gz|tgz|tar\.bz|tbz|tar\.bz2|tbz2)$/i) {
 			local $zipper = $path =~ /bz(2?)$/i ? "bunzip2"
@@ -122,6 +131,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				close(OUT);
 				$err = $out if ($?);
 				}
+			$fmt = $zipper eq "gunzip" ? "tgz" : "tbz2";
 			}
 		else {
 			# Doesn't look possible
@@ -140,9 +150,20 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				}
 			}
 		else {
-			$ext{$path} = &text('upload_eextract', $err);
+			$ext{$path} = &text('email_eextract', $err);
 			}
+		$estatus = $err ? &text('email_extfailed', $err)
+				: &text('email_extdone_'.$fmt);
 		}
+
+	# Add to email message
+	$msg .= &text('email_upfile', $f)."\n";
+	$msg .= &text('email_uppath', $path)."\n";
+	$msg .= &text('email_upsize', &nice_size($st[7]))."\n";
+	if ($estatus) {
+		$msg .= &text('email_upextract', $estatus)."\n";
+		}
+	$msg .= "\n";
 	}
 
 # Switch back to root
@@ -173,6 +194,12 @@ else {
 							   : $in{'group'};
 	&write_file("$module_config_directory/config", \%config);
 	&unlock_file("$module_config_directory/config");
+	}
+
+# Send email
+if ($email && $msg) {
+	$msg = $text{'email_upmsg'}."\n\n".$msg;
+	&send_email_notification($email, $text{'email_subjectu'}, $msg);
 	}
 
 &webmin_log("upload", undef, undef, { 'uploads' => \@uploads });

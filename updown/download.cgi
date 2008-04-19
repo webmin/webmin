@@ -76,7 +76,7 @@ if ($in{'bg'} && $can_schedule) {
 	}
 if (defined($in{'email_def'}) && !$in{'email_def'}) {
 	# Validate email
-	$in{'email'} =~ /\S/ || &error($text{'download_eemail'});
+	$in{'email'} =~ /\S/ || &error($text{'upload_eemail'});
 	$download{'email'} = $in{'email'};
 	}
 

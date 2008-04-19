@@ -202,6 +202,11 @@ if ($can_upload) {
 			    [ 1, $text{'yes'} ],
 			    [ 0, $text{'no'} ] ]));
 
+	# Email notification
+	print &ui_table_row($text{'index_email2'},
+		&ui_opt_textbox("email", undef, 40,
+			$text{'no'}, $text{'index_emailto'}), 3);
+
 	print &ui_table_end();
 	print &ui_form_end([ [ "ok", $text{'index_ok'} ] ]);
 	$form++;
