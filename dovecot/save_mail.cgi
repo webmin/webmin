@@ -61,6 +61,28 @@ if (&find("pop3_uidl_format", $conf, 2)) {
 &save_directive($conf, "pop3_enable_last",
 		$in{'last'} ? $in{'last'} : undef);
 
+# Index lock method
+if (&find("lock_method", $conf, 2)) {
+	&save_directive($conf, "lock_method",
+			$in{'lock_method'} ? $in{'lock_method'} : undef);
+	}
+
+# Mailbox lock method
+foreach $l ("mbox_read_locks", "mbox_write_locks") {
+	next if (!&find($l, $conf, 2));
+	if ($in{$l."_def"}) {
+		&save_directive($conf, $l, undef);
+		}
+	else {
+		@methods = ( );
+		for(my $i=0; defined($m = $in{$l."_".$i}); $i++) {
+			push(@methods, $m) if ($m);
+			}
+		@methods || &error($text{'mail_e'.$l});
+		&save_directive($conf, $l, join(" ", @methods));
+		}
+	}
+
 &flush_file_lines();
 &unlock_file($config{'dovecot_config'});
 &webmin_log("mail");

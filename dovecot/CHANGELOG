@@ -12,3 +12,5 @@ Fixed a bug that causes config file corruption in the userdb section with the de
 Added fields for editing the UIDL format and number of login processes.
 ---- Changes since 1.360 ----
 Supported newer versions of Dovecot which use mail_location instead of default_mail_env.
+---- Changes since 1.410 ----
+The locking methods for mailboxes and index files can be configured on the Mail Files page.

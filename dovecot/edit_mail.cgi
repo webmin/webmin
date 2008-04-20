@@ -100,8 +100,42 @@ if (&find("pop3_enable_last", $conf, 2)) {
 	@opts = ( [ 'yes', $text{'yes'} ], [ 'no', $text{'no'} ] );
 	print &ui_table_row($text{'mail_last'},
 		&ui_radio("pop3_enable_last", $last,
-		  [ @opts,
-		    [ '', &getdef("pop3_enable_last", \@opts) ] ]), 3);
+		  [ [ '', &getdef("pop3_enable_last", \@opts) ],
+		    @opts ]), 3);
+	}
+
+# Index lock method
+if (&find("lock_method", $conf, 2)) {
+	$method = &find_value("lock_method", $conf);
+	@opts = map { [ $_, $text{'mail_'.$_} ] } &list_lock_methods(1);
+	print &ui_table_row($text{'mail_lock'},
+		&ui_select("lock_method", $method,
+			   [ @opts,
+			     [ '', &getdef("lock_method", \@opts) ] ],
+			   1, 0, 1), 3);
+	}
+
+# Mailbox lock methods
+@opts = map { [ $_, $text{'mail_'.$_} ] } &list_lock_methods(0);
+foreach $l ("mbox_read_locks", "mbox_write_locks") {
+	next if (!&find($l, $conf, 2));
+	$def = &find_value($l, $conf, 1);
+	$defmsg = join(", ", map { $text{'mail_'.$_} || $_ }
+				 split(/\s+/, $def));
+	$defmsg = " ($defmsg)" if ($defmsg);
+	$method = &find_value($l, $conf);
+	$defsel = &ui_radio($l."_def", $method ? 0 : 1,
+			    [ [ 1, $text{'default'}.$defmsg ],
+			      [ 0, $text{'mail_sel'} ] ]);
+	$methsel = "";
+	@methods = split(/\s+/, $method);
+	for(my $i=0; $i<@opts; $i++) {
+		$methsel .= &ui_select($l."_".$i, $methods[$i],
+				       [ [ '', "&lt;$text{'mail_none'}&gt;" ],
+					 @opts ], 1, 0, 1);
+		}
+	print &ui_table_row($text{'mail_'.$l},
+			    $defsel."<br>\n".$methsel, 3);
 	}
 
 print &ui_table_end();

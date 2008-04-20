@@ -151,6 +151,17 @@ mail_uidl_courier2=Courier verion 2
 mail_uidl_tpop3d=tpop3d
 mail_euidl=Missing or invalid UIDL format
 mail_last=Allow use of POP3 LAST command?
+mail_lock=Index files locking method
+mail_fcntl=fcntl function
+mail_flock=flock function
+mail_dotlock=.lock files
+mail_lockf=lockf function
+mail_mbox_read_locks=Mailbox read locking method
+mail_mbox_write_locks=Mailbox write locking method
+mail_none=None
+mail_sel=Selected below, in order ..
+mail_embox_read_locks=No read locking methods selected
+mail_embox_write_locks=No write locking methods selected
 
 log_net=Changed Networking and Protocols
 log_login=Changed User and Login Options

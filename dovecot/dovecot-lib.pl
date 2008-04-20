@@ -319,5 +319,11 @@ local $out = `$config{'dovecot'} --version 2>&1`;
 return $out =~ /([0-9\.]+)/ ? $1 : undef;
 }
 
+sub list_lock_methods
+{
+local ($forindex) = @_;
+return ( "dotlock", "fcntl", "flock", $forindex ? ( ) : ( "lockf" ) );
+}
+
 1;
 
