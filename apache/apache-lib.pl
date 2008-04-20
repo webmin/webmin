@@ -1418,7 +1418,7 @@ elsif ($config{'apply_cmd'}) {
 	local $out = &backquote_logged("$config{'apply_cmd'} 2>&1");
 	&reset_environment();
 	if ($?) {
-		return "<pre>$out</pre>";
+		return "<pre>".&html_escape($out)."</pre>";
 		}
 	}
 elsif (-x &translate_filename($config{'apachectl_path'})) {
@@ -1429,7 +1429,7 @@ elsif (-x &translate_filename($config{'apachectl_path'})) {
 		local $out = &backquote_logged("$config{'apachectl_path'} graceful 2>&1");
 		&reset_environment();
 		if ($?) {
-			return "<pre>$out</pre>";
+			return "<pre>".&html_escape($out)."</pre>";
 			}
 		}
 	else {
@@ -1437,7 +1437,7 @@ elsif (-x &translate_filename($config{'apachectl_path'})) {
 		local $out = &backquote_logged("$config{'apachectl_path'} restart 2>&1");
 		&reset_environment();
 		if ($out !~ /httpd restarted/) {
-			return "<pre>$out</pre>";
+			return "<pre>".&html_escape($out)."</pre>";
 			}
 		}
 	}
@@ -1461,14 +1461,14 @@ if ($config{'stop_cmd'}) {
 	# use the configured stop command
 	$out = &backquote_logged("($config{'stop_cmd'}) 2>&1");
 	if ($?) {
-		return "<pre>$out</pre>";
+		return "<pre>".&html_escape($out)."</pre>";
 		}
 	}
 elsif (-x $config{'apachectl_path'}) {
 	# use the apachectl program
 	$out = &backquote_logged("($config{'apachectl_path'} stop) 2>&1");
 	if ($httpd_modules{'core'} >= 2 ? $? : $out !~ /httpd stopped/) {
-		return "<pre>$out</pre>";
+		return "<pre>".&html_escape($out)."</pre>";
 		}
 	}
 else {
@@ -1498,7 +1498,7 @@ if ($config{'start_cmd'}) {
 	$out = &backquote_logged("($config{'start_cmd'}) 2>&1");
 	&reset_environment();
 	if ($?) {
-		return "<pre>$out</pre>";
+		return "<pre>".&html_escape($out)."</pre>";
 		}
 	}
 elsif (-x $config{'apachectl_path'}) {
@@ -1506,7 +1506,7 @@ elsif (-x $config{'apachectl_path'}) {
 	$out = &backquote_logged("($config{'apachectl_path'} start) 2>&1");
 	&reset_environment();
 	if ($out =~ /\S/ && $out !~ /httpd started/) {
-		return "<pre>$out</pre>";
+		return "<pre>".&html_escape($out)."</pre>";
 		}
 	}
 else {
@@ -1521,11 +1521,12 @@ else {
 		}
 	local $temp = &transname();
 	local $rv = &system_logged("( $cmd ) >$temp 2>&1 </dev/null");
-	$out = `cat $temp`;
+	$out = &read_file_contents($temp);
 	unlink($temp);
 	&reset_environment();
 	if ($out =~ /\S/ && $out !~ /httpd started/) {
-		return "<pre>$cmd :\n$out</pre>";
+		return "<pre>".&html_escape($cmd)." :\n".
+			       &html_escape($out)."</pre>";
 		}
 	}
 

@@ -11,7 +11,7 @@ $conf = &get_config();
 
 if ($config{'test_config'}) {
 	$err = &test_config();
-	&error("<pre>$err</pre>") if ($err);
+	&error("<pre>".&html_escape($err)."</pre>") if ($err);
 	}
 $err = &restart_apache();
 &error($err) if ($err);
