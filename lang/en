@@ -10,7 +10,7 @@ main_skill=Skill level
 main_readonly=(Read-only mode)
 main_return=Return to $1
 main_unused=Un-used Modules
-main_refreshmods=Refesh Modules
+main_refreshmods=Refresh Modules
 
 link_essl=The Net::SSLeay Perl module needed to make HTTPS connections is not installed on your system.
 
@@ -262,6 +262,7 @@ readparse_enc=Expecting form-data encoding, but got normal encoding
 readparse_max=Data exceeded maximum size of $1 bytes
 
 password_expired=Your password has expired, and a new one must be chosen.
+password_temp=You must select a new password to replace your temporary login.
 password_header=Select New Password
 password_user=Username
 password_old=Current password
