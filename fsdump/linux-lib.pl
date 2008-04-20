@@ -347,7 +347,7 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " --bzip" if ($_[0]->{'gzip'} == 2);
 	$cmd .= " -M" if ($_[0]->{'multi'});
 	$cmd .= " -h" if ($_[0]->{'links'});
-	$cmd .= " -l" if ($_[0]->{'xdev'});
+	$cmd .= " --one-file-system" if ($_[0]->{'xdev'});
 	$cmd .= " -F \"$tapecmd $_[0]->{'id'}\"" if (!$_[0]->{'gzip'} && $tapecmd);
 	$cmd .= " --rsh-command=".quotemeta($_[0]->{'rsh'}) if ($_[0]->{'rsh'});
 	$cmd .= " --rmt-command=".quotemeta($_[0]->{'rmt'}) if ($_[0]->{'rmt'});
