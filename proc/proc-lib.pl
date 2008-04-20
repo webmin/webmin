@@ -60,17 +60,20 @@ return @plist ? %{$plist[0]} : ();
 sub index_links
 {
 local(%linkname, $l);
-print "<b>$text{'index_display'} : </b>&nbsp;&nbsp;\n";
+print "<b>$text{'index_display'} : </b>\n";
+local @links;
 foreach $l ("tree", "user", "size", "cpu", ($has_zone ? ("zone") : ()),
 	    "search", "run") {
 	next if ($l eq "run" && !$access{'run'});
-	if ($l ne $_[0]) { print "<a href=index_$l.cgi>"; }
-	else { print "<b>"; }
-	print $text{"index_$l"};
-	if ($l ne $_[0]) { print "</a>"; }
-	else { print "</b>"; }
-	print "&nbsp;\n";
+	local $link;
+	if ($l ne $_[0]) { $link .= "<a href=index_$l.cgi>"; }
+	else { $link .= "<b>"; }
+	$link .= $text{"index_$l"};
+	if ($l ne $_[0]) { $link .= "</a>"; }
+	else { $link .= "</b>"; }
+	push(@links, $link);
 	}
+print &ui_links_row(\@links);
 print "<p>\n";
 &create_user_config_dirs();
 open(INDEX, ">$index_file");
