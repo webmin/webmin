@@ -54,7 +54,9 @@ untie(*STDOUT);
 # Accept the TCP connection
 $acptaddr = accept(SOCK, MAIN);
 die "accept failed!" if (!$acptaddr);
-select(SOCK); $| = 1;
+$oldsel = select(SOCK);
+$| = 1;
+select($oldsel);
 
 $rcount = 0;
 while(1) {
