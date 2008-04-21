@@ -38,6 +38,10 @@ if (!$found) {
 	}
 else {
 	if (&has_command($config{'man2html_path'})) {
+                if ($out =~ /\(<--\s+(.*)\)/) {
+                        # Output has cached file and original path
+                        $out = $1;
+                        }
 		$out =~ s/ .*//;
 		$out =~ s/\n//;
 		if( $out =~ /^.*\.gz/i ) {
