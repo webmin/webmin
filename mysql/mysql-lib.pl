@@ -1231,7 +1231,7 @@ local $cmd = "$config{'mysqldump'} $authstr $dropsql $wheresql $charsetsql $comp
 if ($user && $user ne "root") {
 	$cmd = &command_as_user($user, undef, $cmd);
 	}
-local $out = &backquote_logged("$cmd 2>&1");
+local $out = &backquote_logged("($cmd) 2>&1");
 if ($? || $out) {
 	return $out;
 	}
