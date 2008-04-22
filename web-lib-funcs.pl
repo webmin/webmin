@@ -1960,6 +1960,7 @@ if (!$_[0]) {
 local $realfile = &translate_filename($_[0]);
 if (!$main::file_cache{$realfile}) {
         local(@lines, $_, $eol);
+	&webmin_debug_log('READ', $_[0]) if ($gconfig{'debug_what_read'});
         open(READFILE, $realfile);
         while(<READFILE>) {
 		if (!$eol) {
@@ -2642,6 +2643,26 @@ if ($module_name) {
 			my $root = &get_windows_root();
 			$config{$k} =~ s/\$\{systemroot\}/$root/g;
 			}
+		}
+	}
+
+# If debugging is enabled, open the debug log
+if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
+	local $dlog = $gconfig{'debug_file'} || $main::default_debug_log_file;
+	if ($gconfig{'debug_size'}) {
+		local @st = stat($dlog);
+		if ($st[7] > $gconfig{'debug_size'}) {
+			rename($dlog, $dlog.".0");
+			}
+		}
+	open(main::DEBUGLOG, ">>$dlog");
+	$main::opened_debug_log = 1;
+
+	if ($gconfig{'debug_what_start'}) {
+		local $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
+		$main::debug_log_start_time = time();
+		&webmin_debug_log("START",
+			"module=$module_name script=$script_name");
 		}
 	}
 
@@ -3337,7 +3358,8 @@ else {
 	}
 }
 
-# webmin_log(action, type, object, &params, [module], [host, script-on-host, client-ip])
+# webmin_log(action, type, object, &params, [module],
+#            [host, script-on-host, client-ip])
 # Log some action taken by a user
 sub webmin_log
 {
@@ -3551,6 +3573,28 @@ if ($gconfig{'logfiles'}) {
 	     { 'type' => $_[0], 'object' => $_[1], 'data' => $_[2],
 	       'input' => $_[3] } );
 	}
+}
+
+# webmin_debug_log(type, message)
+# Write something to the Webmin debug log
+sub webmin_debug_log
+{
+local ($type, $msg) = @_;
+return 0 if (!$main::opened_debug_log);
+local $now = time();
+local @tm = localtime($now);
+local $line = sprintf
+	"%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s \"%s\"",
+        $$, $tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900,
+        $tm[2], $tm[1], $tm[0],
+	$remote_user || "-",
+	$ENV{'REMOTE_HOST'} || "-",
+	$module_name || "-",
+	$type,
+	$msg;
+seek(main::DEBUGLOG, 0, 2);
+print main::DEBUGLOG $line."\n";
+return 1;
 }
 
 # system_logged(command)
@@ -5546,6 +5590,7 @@ else {
 	# Actually opening
 	local ($fh, $file, $noerror, $notemp, $safe) = @_;
 	local %gaccess = &get_module_acl(undef, "");
+	my $db = $gconfig{'debug_what_write'};
 	if ($file =~ /\r|\n|\0/) {
 		if ($noerror) { return 0; }
 		else { &error("Filename contains invalid characters"); }
@@ -5555,11 +5600,18 @@ else {
 		print STDERR "vetoing write to $file\n";
 		return open($fh, ">$null_file");
 		}
-	elsif ($file =~ /^(>|>>)\/dev\// || lc($file) eq "nul") {
+	elsif ($file =~ /^(>|>>|)nul$/i) {
+		# Write to Windows null device
+		&webmin_debug_log($1 eq ">" ? "WRITE" :
+			  $l eq ">>" ? "APPEND" : "READ", "nul") if ($db);
+		}
+	elsif ($file =~ /^(>|>>)(\/dev\/.*)/ || lc($file) eq "nul") {
 		# Writes to /dev/null or TTYs don't need to be handled
+		&webmin_debug_log($1 eq ">" ? "WRITE" : "APPEND", $2) if ($db);
 		return open($fh, $file);
 		}
 	elsif ($file =~ /^>\s*(([a-zA-Z]:)?\/.*)$/ && !$notemp) {
+		&webmin_debug_log("WRITE", $1) if ($db);
 		# Over-writing a file, via a temp file
 		$file = $1;
 		$file = &translate_filename($file);
@@ -5591,6 +5643,7 @@ else {
 		}
 	elsif ($file =~ /^>\s*(([a-zA-Z]:)?\/.*)$/ && $notemp) {
 		# Just writing direct to a file
+		&webmin_debug_log("WRITE", $1) if ($db);
 		$file = $1;
 		$file = &translate_filename($file);
 		local $ex = open($fh, ">$file");
@@ -5603,6 +5656,7 @@ else {
 		}
 	elsif ($file =~ /^>>\s*(([a-zA-Z]:)?\/.*)$/) {
 		# Appending to a file .. nothing special to do
+		&webmin_debug_log("APPEND", $1) if ($db);
 		$file = $1;
 		$file = &translate_filename($file);
 		local $ex = open($fh, ">>$file");
@@ -5615,6 +5669,7 @@ else {
 		}
 	elsif ($file =~ /^([a-zA-Z]:)?\//) {
 		# Read mode .. nothing to do here
+		&webmin_debug_log("READ", $file) if ($db);
 		$file = &translate_filename($file);
 		return open($fh, $file);
 		}
@@ -5645,6 +5700,7 @@ if (defined($file = $main::open_temphandles{$_[0]})) {
 	}
 elsif (defined($main::open_tempfiles{$_[0]})) {
 	# Closing a file
+	&webmin_debug_log("CLOSE", $_[0]) if ($gconfig{'debug_what_write'});
 	local @st = stat($_[0]);
 	if ($gconfig{'os_type'} =~ /-linux$/ && &has_command("chcon")) {
 		# Set original security context
@@ -5709,6 +5765,11 @@ sub END
 {
 if ($$ == $main::initial_process_id) {
 	&cleanup_tempnames();
+	if ($gconfig{'debug_what_start'} && $main::debug_log_start_time) {
+		local $len = time() - $main::debug_log_start_time;
+		&webmin_debug_log("STOP", "runtime=$len");
+		$main::debug_log_start_time = 0;
+		}
 	}
 }
 
@@ -5930,6 +5991,7 @@ sub open_readfile
 {
 local ($fh, $file) = @_;
 local $realfile = &translate_filename($file);
+&webmin_debug_log('READ', $file) if ($gconfig{'debug_what_read'});
 return open($fh, "<".$realfile);
 }
 

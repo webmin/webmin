@@ -9,7 +9,7 @@ print &ui_table_start($text{'debug_header'}, undef, 2);
 
 # Debugging mode enabled
 print &ui_table_row($text{'debug_enabled'},
-	&ui_yesno_radio("enabled", $gconfig{'debug_enabled'}));
+	&ui_yesno_radio("debug_enabled", $gconfig{'debug_enabled'}));
 
 # What to log
 print &ui_table_row($text{'debug_what'},
