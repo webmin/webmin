@@ -20,3 +20,5 @@ Re-designed the user interface somewhat, and converted all code to use the new W
 When commands are shown in a table and no parameters are needed, the names now link directly to run the command.
 ---- Changes since 1.400 ----
 Added a popup progress tracker to commands with file upload fields.
+---- Changes since 1.410 ----
+All links to commands are via an ID number rather than an index, which makes them easier to link to from other web pages.

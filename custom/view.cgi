@@ -4,8 +4,7 @@
 
 require './custom-lib.pl';
 &ReadParse();
-@cmds = &list_commands();
-$edit = $cmds[$in{'idx'}];
+$edit = &get_command($in{'id'}, $in{'idx'});
 $edit->{'edit'} && &can_run_command($edit) || &error($text{'edit_ecannot'});
 
 # Work out proper filename

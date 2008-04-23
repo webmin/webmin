@@ -52,7 +52,7 @@ elsif ($config{'display_mode'} == 0) {
 				$html .= &ui_form_start("run.cgi");
 				}
 			}
-		$html .= &ui_hidden("idx", $c->{'index'});
+		$html .= &ui_hidden("id", $c->{'id'});
 		$w = $config{'columns'} == 2 ? 2 : 4;
 		$html .= &ui_table_start(undef, undef, $w,
 		   $config{'columns'} == 1 ? [ "width=20%", "width=30%" ]
@@ -72,13 +72,13 @@ elsif ($config{'display_mode'} == 0) {
 			}
 		if ($access{'edit'}) {
 			if ($c->{'edit'}) {
-				$link = "<a href='edit_file.cgi?idx=$c->{'index'}'>$text{'index_fedit'}</a>";
+				$link = "<a href='edit_file.cgi?id=$c->{'id'}'>$text{'index_fedit'}</a>";
 				}
 			elsif ($c->{'sql'}) {
-				$link = "<a href='edit_sql.cgi?idx=$c->{'index'}'>$text{'index_sedit'}</a>";
+				$link = "<a href='edit_sql.cgi?id=$c->{'id'}'>$text{'index_sedit'}</a>";
 				}
 			else {
-				$link = "<a href='edit_cmd.cgi?idx=$c->{'index'}'>$text{'index_edit'}</a>";
+				$link = "<a href='edit_cmd.cgi?id=$c->{'id'}'>$text{'index_edit'}</a>";
 				}
 			$html .= &ui_table_row(undef,
 					&ui_links_row([ $link ]), $w);
@@ -107,42 +107,42 @@ else {
 			local $e = $c->{'edit'} ? "edit_file.cgi" :
 				   $c->{'sql'} ? "edit_sql.cgi" :
 						 "edit_cmd.cgi";
-			push(@links, "<a href='$e?idx=$c->{'index'}'>".
+			push(@links, "<a href='$e?id=$c->{'id'}'>".
 				     "$text{'index_ed'}</a>");
 			}
 		if ($c->{'edit'} && !@{$c->{'args'}}) {
 			# Open file editor directly, as file is known
-			push(@cols, "<a href='view.cgi?idx=$c->{'index'}'>".
+			push(@cols, "<a href='view.cgi?id=$c->{'id'}'>".
 				    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='view.cgi?idx=$c->{'index'}'>".
+			push(@links, "<a href='view.cgi?id=$c->{'id'}'>".
 				     $text{'index_acted'}."</a>");
 			}
 		elsif ($c->{'sql'} && !@{$c->{'args'}}) {
 			# Execute SQL directorly, as no args
-			push(@cols, "<a href='sql.cgi?idx=$c->{'index'}'>".
+			push(@cols, "<a href='sql.cgi?id=$c->{'id'}'>".
 			      	    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='sql.cgi?idx=$c->{'index'}'>".
+			push(@links, "<a href='sql.cgi?id=$c->{'id'}'>".
 				     $text{'index_actrun'}."</a>");
 			}
 		elsif ($c->{'sql'}) {
 			# Link to SQL query form
-			push(@cols, "<a href='sqlform.cgi?idx=$c->{'index'}'>".
+			push(@cols, "<a href='sqlform.cgi?id=$c->{'id'}'>".
 			      	    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='sqlform.cgi?idx=$c->{'index'}'>".
+			push(@links, "<a href='sqlform.cgi?id=$c->{'id'}'>".
 				     $text{'index_actsql'}."</a>");
 			}
 		elsif (!@{$c->{'args'}}) {
 			# Link direct to execute page
-			push(@cols, "<a href='run.cgi?idx=$c->{'index'}'>".
+			push(@cols, "<a href='run.cgi?id=$c->{'id'}'>".
 			      	    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='run.cgi?idx=$c->{'index'}'>".
+			push(@links, "<a href='run.cgi?id=$c->{'id'}'>".
 				     $text{'index_actrun'}."</a>");
 			}
 		else {
 			# Link to parameters form
-			push(@cols, "<a href='form.cgi?idx=$c->{'index'}'>".
+			push(@cols, "<a href='form.cgi?id=$c->{'id'}'>".
 			      	    &html_escape($c->{'desc'})."</a>");
-			push(@links, "<a href='form.cgi?idx=$c->{'index'}'>".
+			push(@links, "<a href='form.cgi?id=$c->{'id'}'>".
 				     $text{'index_actform'}."</a>");
 			}
 		push(@cols, $c->{'html'});

@@ -13,8 +13,7 @@ else {
 	}
 $| = 1;
 &error_setup($text{'run_err'});
-@cmds = &list_commands();
-$cmd = $cmds[$in{'idx'}];
+$cmd = &get_command($in{'id'}, $in{'idx'});
 &can_run_command($cmd) || &error($text{'run_ecannot'});
 if (&supports_users()) {
 	$user = $cmd->{'user'} eq '*' ? $remote_user : $cmd->{'user'};

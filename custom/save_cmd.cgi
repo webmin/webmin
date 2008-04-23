@@ -6,16 +6,15 @@ require './custom-lib.pl';
 &ReadParse();
 
 $access{'edit'} || &error($text{'save_ecannot'});
-@cmds = &list_commands();
 if ($in{'delete'}) {
-	$cmd = $cmds[$in{'idx'}];
+	$cmd = &get_command($in{'id'}, $in{'idx'});
 	&delete_command($cmd);
 	&webmin_log("delete", "command", $cmd->{'id'}, $cmd);
 	}
 else {
 	&error_setup($text{'save_err'});
 	if (!$in{'new'}) {
-		$cmd = $cmds[$in{'idx'}];
+		$cmd = &get_command($in{'id'}, $in{'idx'});
 		}
 	else {
 		$cmd = { 'id' => time() };

@@ -11,14 +11,13 @@ if ($in{'new'}) {
 	}
 else {
 	&ui_print_header(undef, $text{'edit_title'}, "", "edit");
-	@cmds = &list_commands();
-	$cmd = $cmds[$in{'idx'}];
+	$cmd = &get_command($in{'id'}, $in{'idx'});
 	}
 
 # Form header
 print &ui_form_start("save_cmd.cgi", "post");
 print &ui_hidden("new", $in{'new'});
-print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("id", $cmd->{'id'});
 print &ui_table_start($text{'edit_details'}, "width=100%", 4);
 
 # Command ID

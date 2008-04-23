@@ -11,13 +11,12 @@ if ($in{'new'}) {
 	}
 else {
 	&ui_print_header(undef, $text{'fedit_title'}, "", "fedit");
-	@cmds = &list_commands();
-	$edit = $cmds[$in{'idx'}];
+	$edit = &get_command($in{'id'}, $in{'idx'});
 	}
 
 print &ui_form_start("save_file.cgi", "post");
 print &ui_hidden("new", $in{'new'});
-print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("id", $edit->{'id'});
 print &ui_table_start($text{'file_details'}, "width=100%", 2);
 
 if (!$in{'new'}) {

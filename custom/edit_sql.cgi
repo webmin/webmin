@@ -26,13 +26,12 @@ if ($in{'new'}) {
 	}
 else {
 	&ui_print_header(undef, $text{'sql_title2'}, "");
-	@cmds = &list_commands();
-	$cmd = $cmds[$in{'idx'}];
+	$cmd = &get_command($in{'id'}, $in{'idx'});
 	}
 
 print &ui_form_start("save_sql.cgi", "post");
 print &ui_hidden("new", $in{'new'}),"\n";
-print &ui_hidden("idx", $in{'idx'}),"\n";
+print &ui_hidden("id", $cmd->{'id'}),"\n";
 print &ui_table_start($text{'sql_header'}, "width=100%", 2);
 
 # Show command info

@@ -4,8 +4,7 @@
 
 require './custom-lib.pl';
 &ReadParseMime();
-@cmds = &list_commands();
-$edit = $cmds[$in{'idx'}];
+$edit = &get_command($in{'id'}, $in{'idx'});
 &error_setup($text{'view_err'});
 $edit->{'edit'} && &can_run_command($edit) || &error($text{'edit_ecannot'});
 

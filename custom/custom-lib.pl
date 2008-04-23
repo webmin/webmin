@@ -101,6 +101,22 @@ closedir(DIR);
 return @rv;
 }
 
+# get_command(id)
+# Returns the command with some ID
+sub get_command
+{
+local ($id, $idx) = @_;
+local @cmds = &list_commands();
+local $cmd;
+if ($id) {
+	($cmd) = grep { $_->{'id'} eq $id } &list_commands();
+	}
+else {
+	$cmd = $cmds[$idx];
+	}
+return $cmd;
+}
+
 # save_command(&command)
 sub save_command
 {

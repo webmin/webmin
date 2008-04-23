@@ -4,8 +4,7 @@
 
 require './custom-lib.pl';
 &ReadParse();
-@cmds = &list_commands();
-$cmd = $cmds[$in{'idx'}];
+$cmd = &get_command($in{'id'}, $in{'idx'});
 &can_run_command($cmd) || &error($text{'form_ecannot'});
 
 # Display form for command parameters
@@ -21,7 +20,7 @@ elsif (@a) {
 else {
 	print &ui_form_start("sql.cgi");
 	}
-print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("id", $cmd->{'id'});
 print &ui_table_start(&html_escape($cmd->{'desc'}), "width=100%", 4,
 		      [ "width=20%", "width=30%", "width=20%", "width=30%" ]);
 print &ui_table_row(undef, $cmd->{'html'}, 4);
