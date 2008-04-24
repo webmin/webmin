@@ -10,3 +10,5 @@ Fixed display of space used on each physical volume by a logical volume for LVM 
 Re-designed the module's main page to use tabs, and added an option to show volumes and groups in tables (with more information) instead of using icons.
 Converted all user interface code to use the new Webmin UI library.
 Fixed the command used to move data to another physical volume under LVM 2.
+---- Changes since 1.410 ----
+The percentage of a snapshot's blocks used is now shown on the Edit Snapshot page.

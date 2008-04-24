@@ -259,6 +259,16 @@ if (-d $lvm_proc) {
 		$lv->{'is_snap'} = $p{'access'} == 5;
 		$lv->{'stripes'} = $p{'stripes'};
 		push(@rv, $lv);
+
+		# For snapshots, use the lvdisplay command to get usage
+		if ($lv->{'is_snap'}) {
+			local $out = &backquote_command(
+				"lvdisplay ".quotemeta($lv->{'device'}).
+				" 2>/dev/null");
+			if ($out =~/Allocated\s+to\s+snapshot\s+([0-9\.]+)%/i) {
+				$lv->{'snapusage'} = $1;
+				}
+			}
 		}
 	closedir(DIR);
 	}
@@ -297,6 +307,9 @@ else {
 			}
 		elsif (/Stripes\s+(\d+)/) {
 			$lv->{'stripes'} = $1;
+			}
+		elsif (/Allocated\s+to\s+snapshot\s+([0-9\.]+)%/i) {
+			$lv->{'snapusage'} = $1;
 			}
 		}
 	close(DISPLAY);

@@ -78,6 +78,12 @@ if ($lv->{'is_snap'}) {
 		    [ map { $_->{'name'} } grep { !$_->{'is_snap'} } @lvs ]);
 		}
 	print &ui_table_row($text{'lv_snapof'}, $snapsel);
+
+	# Show snapshot percentage used
+	if ($lv->{'snapusage'}) {
+		print &ui_table_row($text{'lv_snapusage'},
+			$lv->{'snapusage'}."%");
+		}
 	}
 elsif ($stat[2]) {
 	# Display current permissons and allocation method
@@ -121,7 +127,7 @@ if (@stat && $stat[2]) {
 		&nice_size($free*1024));
 
 	print &ui_table_row($text{'lv_free'},
-		($total ? 100 * $free / $total : 0)." %");
+		int($total ? 100 * $free / $total : 0)." %");
 	}
 
 # Show extents on PVs

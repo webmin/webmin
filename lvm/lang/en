@@ -88,6 +88,7 @@ lv_mountmsg=Mount this LV on new directory on your system, so that it can be use
 lv_free=Free percentage
 lv_freedisk=Free space
 lv_pvs=Physical volumes allocated
+lv_snapusage=Snapshot use percentage
 
 mkfs_title=Create Filesystem
 mkfs_desc=This form allows you to build a new $2 ($1) filesystem on logical volume $3. All existing data will be erased.
