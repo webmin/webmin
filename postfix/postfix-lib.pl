@@ -638,6 +638,12 @@ sub regenerate_bcc_table
     &regenerate_any_table("sender_bcc_maps");
 }
 
+# regenerate_recipient_bcc_table()
+sub regenerate_recipient_bcc_table
+{
+    &regenerate_any_table("recipient_bcc_maps");
+}
+
 # regenerate_header_table()
 sub regenerate_header_table
 {
@@ -1591,7 +1597,8 @@ elsif ($map_name =~ /virtual/) { &redirect("virtual.cgi"); }
 elsif ($map_name =~ /relocated/) { &redirect("relocated.cgi"); }
 elsif ($map_name =~ /header/) { &redirect("header.cgi"); }
 elsif ($map_name =~ /body/) { &redirect("body.cgi"); }
-elsif ($map_name =~ /sender_bcc/) { &redirect("bcc.cgi"); }
+elsif ($map_name =~ /sender_bcc/) { &redirect("bcc.cgi?mode=sender"); }
+elsif ($map_name =~ /recipient_bcc/) { &redirect("bcc.cgi?mode=recipient"); }
 elsif ($map_name =~ /^smtpd_client_restrictions:/) { &redirect("client.cgi"); }
 else { &redirect(""); }
 }
@@ -1605,6 +1612,7 @@ if ($map_name =~ /virtual/) { &regenerate_virtual_table(); }
 if ($map_name =~ /transport/) { &regenerate_transport_table(); }
 if ($map_name =~ /sender_access/) { &regenerate_any_table($map_name); }
 if ($map_name =~ /sender_bcc/) { &regenerate_bcc_table(); }
+if ($map_name =~ /recipient_bcc/) { &regenerate_recipient_bcc_table(); }
 }
 
 # mailq_table(&qfiles)

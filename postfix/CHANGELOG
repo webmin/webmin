@@ -54,3 +54,4 @@ Outgoing email from selected addresses and domains can now be BCCd automatically
 Changed the default LDAP class for maps to inetLocalMailRecipient.
 ---- Changes since 1.410 ----
 Added the SMTP Client Restrictions page, and replaced some oddly-designed UI fields on the SMTP Server Options page to it with more Webmin-standard inputs for configuring RBLs and client access.
+Updated the BCC Mappings page to allow both sender and recipient maps to be defined and edited.

@@ -883,4 +883,9 @@ ldap_emodify=LDAP modify of $1 failed : $2
 
 bcc_title=BCC Mapping
 bcc_ecannot=You are not allowed to edit BCC mappings
-opts_sender_bcc_maps=BCC mapping lookup tables
+opts_sender_bcc_maps=Sender BCC mapping lookup tables
+opts_recipient_bcc_maps=Recipient BCC mapping lookup tables
+bcc_sender=Sender mappings
+bcc_recipient=Recipient mappings
+bcc_senderdesc=The sender BCC mappings define an additional email address that mail <b>from</b> the addresses or domains listed will be BCCd to.
+bcc_recipientdesc=The recipient BCC mappings define an additional email address that mail <b>to</b> the addresses or domains listed will be BCCd to.
