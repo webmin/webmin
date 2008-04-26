@@ -1672,6 +1672,7 @@ foreach my $d ("$_[0]/cur", "$_[0]/new") {
 	local @dst = stat($d);
 	$newest = $dst[9] if ($dst[9] > $newest);
 	}
+local $skipt = $config{'maildir_deleted'} || $userconfig{'maildir_deleted'};
 
 local @files;
 if (defined($main::list_maildir_cache{$_[0]}) &&
@@ -1698,8 +1699,12 @@ else {
 		foreach my $d ("cur", "new") {
 			opendir(DIR, "$_[0]/$d");
 			while(my $f = readdir(DIR)) {
+				next if ($f eq "." || $f eq "..");
+				if ($skipt && $f =~ /:2,([A-Z]*T[A-Z]*)$/) {
+					# Flagged as deleted by IMAP .. skip
+					next;
+					}
 				push(@shorts, "$d/$f")
-					if ($f ne "." && $f ne "..");
 				}
 			closedir(DIR);
 			}

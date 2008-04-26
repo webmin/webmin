@@ -47,3 +47,6 @@ Email cache and index files are now deleted when a user is removed using Webmin.
 The number of un-read messages in user folders can be displayed using a new Module Config option (off by default, as there is no fast way to compute this).
 ---- Changes since 1.400 ----
 Fixed a bug that broke searching by message body contents.
+---- Changes since 1.410 ----
+Re-organized the Module Config page to make the first section less crowded.
+Added an option to skip messages flagged as deleted in a Maildir.
