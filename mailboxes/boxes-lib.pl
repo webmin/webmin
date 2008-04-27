@@ -1633,7 +1633,7 @@ local @rv;
 foreach my $i (@$ids) {
 	local $path = "$file/$i";
 	local $mail = &read_mail_file($path, $headersonly);
-	if (!$mail && $path =~ /^(.*)\/(cur|tmp|new)\/([^:]*)(:2,([A-Z]*))?$/) {
+	if (!$mail && $path =~ /^(.*)\/(cur|tmp|new)\/([^:]*)(:2,([A-Za-z]*))?$/) {
 		# Flag may have changed - update path
 		local $suffix = "$2/$3";
 		local ($newfile) = grep
@@ -1700,7 +1700,7 @@ else {
 			opendir(DIR, "$_[0]/$d");
 			while(my $f = readdir(DIR)) {
 				next if ($f eq "." || $f eq "..");
-				if ($skipt && $f =~ /:2,([A-Z]*T[A-Z]*)$/) {
+				if ($skipt && $f =~ /:2,([A-Za-z]*T[A-Za-z]*)$/) {
 					# Flagged as deleted by IMAP .. skip
 					next;
 					}
@@ -2134,8 +2134,8 @@ local @st = stat($_[0]);
 $mail->{'size'} = $st[7];
 
 # Set read flags based on the name
-if ($_[0] =~ /:2,([A-Z]*)$/) {
-	local @flags = split(/\s+/, $1);
+if ($_[0] =~ /:2,([A-Za-z]*)$/) {
+	local @flags = split(//, $1);
 	$mail->{'read'} = &indexoflc("S", @flags) >= 0 ? 1 : 0;
 	$mail->{'special'} = &indexoflc("F", @flags) >= 0 ? 1 : 0;
 	$mail->{'replied'} = &indexoflc("R", @flags) >= 0 ? 1 : 0;
