@@ -1959,15 +1959,8 @@ delete($main::list_maildir_cache_time{$dir});
 # Returns the number of messages in a maildir directory
 sub count_maildir
 {
-local $d;
-local $count = 0;
-foreach $d ("$_[0]/cur", "$_[0]/new") {
-	opendir(DIR, $d);
-	local @files = grep { $_ !~ /^\./ } readdir(DIR);
-	$count += scalar(@files);
-	closedir(DIR);
-	}
-return $count;
+local @files = &get_maildir_files($_[0]);
+return scalar(@files);
 }
 
 # list_mhdir(file, [start], [end], [headersonly])
