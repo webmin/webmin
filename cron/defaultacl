@@ -7,3 +7,4 @@ create=1
 delete=1
 move=1
 kill=1
+hourly=2

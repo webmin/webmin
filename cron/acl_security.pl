@@ -6,63 +6,56 @@ do '../ui-lib.pl';
 # Output HTML for editing security options for the cron module
 sub acl_security_form
 {
-print "<tr> <td valign=top><b>$text{'acl_users'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=mode value=0 %s> $text{'acl_all'}<br>\n",
-	$_[0]->{'mode'} == 0 ? "checked" : "";
+local $m = $_[0]->{'mode'};
+print &ui_table_row($text{'acl_users'},
+	&ui_radio("mode", $m,
+	 [ [ 0, "$text{'acl_all'}<br>" ],
+	   [ 3, "$text{'acl_this'}<br>" ],
+	   [ 1, $text{'acl_only'}." ".
+		&ui_textbox("userscan",
+			$m == 1 ? $_[0]->{'users'} : "", 40)." ".
+		&user_chooser_button("userscan", 1)."<br>" ],
+	   [ 2, $text{'acl_except'}." ".
+		&ui_textbox("userscannot",
+			$m == 2 ? $_[0]->{'users'} : "", 40)." ".
+		&user_chooser_button("userscannot", 1)."<br>" ],
+	   [ 5, $text{'acl_gid'}." ".
+		&ui_textbox("gid",
+		    $m == 5 ? scalar(getgrgid($_[0]->{'users'})) : "", 13)." ".
+		&group_chooser_button("gid", 0)."<br>" ],
+	   [ 4, $text{'acl_uid'}." ".
+		&ui_textbox("uidmin", $_[0]->{'uidmin'}, 6)." - ".
+		&ui_textbox("uidmax", $_[0]->{'uidmax'}, 6)."<br>" ],
+	 ]), 3);
 
-printf "<input type=radio name=mode value=3 %s> $text{'acl_this'}<br>\n",
-	$_[0]->{'mode'} == 3 ? "checked" : "";
+print &ui_table_row($text{'acl_control'},
+	&ui_radio("allow", $_[0]->{'allow'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-printf "<input type=radio name=mode value=1 %s> $text{'acl_only'}\n",
-	$_[0]->{'mode'} == 1 ? "checked" : "";
-printf "<input name=userscan size=40 value='%s'> %s<br>\n",
-	$_[0]->{'mode'} == 1 ? $_[0]->{'users'} : "",
-	&user_chooser_button("userscan", 1);
+print &ui_table_row($text{'acl_command'},
+	&ui_radio("command", $_[0]->{'command'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-printf "<input type=radio name=mode value=2 %s> $text{'acl_except'}\n",
-	$_[0]->{'mode'} == 2 ? "checked" : "";
-printf "<input name=userscannot size=40 value='%s'> %s<br>\n",
-	$_[0]->{'mode'} == 2 ? $_[0]->{'users'} : "",
-	&user_chooser_button("userscannot", 1);
+print &ui_table_row($text{'acl_create'},
+	&ui_radio("create", $_[0]->{'create'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-printf "<input type=radio name=mode value=5 %s> $text{'acl_gid'}\n",
-	$_[0]->{'mode'} == 5 ? "checked" : "";
-printf "<input name=gid size=8 value='%s'> %s<br>\n",
-	$_[0]->{'mode'} == 5 ? scalar(getgrgid($_[0]->{'users'})) : "",
-	&group_chooser_button("gid", 0);
+print &ui_table_row($text{'acl_delete'},
+	&ui_radio("delete", $_[0]->{'delete'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-printf "<input type=radio name=mode value=4 %s> $text{'acl_uid'}\n",
-	$_[0]->{'mode'} == 4 ? "checked" : "";
-printf "<input name=uidmin size=6 value='%s'> -\n",
-	$_[0]->{'mode'} == 4 ? $_[0]->{'uidmin'} : "";
-printf "<input name=uidmax size=6 value='%s'></td> </tr>\n",
-	$_[0]->{'mode'} == 4 ? $_[0]->{'uidmax'} : "";
+print &ui_table_row($text{'acl_move'},
+	&ui_radio("move", $_[0]->{'move'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<tr> <td><b>$text{'acl_control'}</b></td>\n";
-print "<td>",&ui_radio("allow", $_[0]->{'allow'},
-	[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
+print &ui_table_row($text{'acl_kill'},
+	&ui_radio("kill", $_[0]->{'kill'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<td><b>$text{'acl_command'}</b></td>\n";
-print "<td>",&ui_radio("command", $_[0]->{'command'},
-	[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
-
-print "<tr> <td><b>$text{'acl_create'}</b></td>\n";
-print "<td>",&ui_radio("create", $_[0]->{'create'},
-	[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
-
-print "<td><b>$text{'acl_delete'}</b></td>\n";
-print "<td>",&ui_radio("delete", $_[0]->{'delete'},
-	[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
-
-print "<tr> <td><b>$text{'acl_move'}</b></td>\n";
-print "<td>",&ui_radio("move", $_[0]->{'move'},
-	[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td>\n";
-
-print "<td><b>$text{'acl_kill'}</b></td>\n";
-print "<td>",&ui_radio("kill", $_[0]->{'kill'},
-	[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]),"</td> </tr>\n";
-
-print "</tr>\n";
+print &ui_table_row($text{'acl_hourly'},
+	&ui_radio("hourly", $_[0]->{'hourly'},
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
+		  [ 2, $text{'acl_hourlydef'} ] ]), 3);
 }
 
 # acl_security_save(&options)
@@ -83,5 +76,6 @@ $_[0]->{'create'} = $in{'create'};
 $_[0]->{'delete'} = $in{'delete'};
 $_[0]->{'move'} = $in{'move'};
 $_[0]->{'kill'} = $in{'kill'};
+$_[0]->{'hourly'} = $in{'hourly'};
 }
 

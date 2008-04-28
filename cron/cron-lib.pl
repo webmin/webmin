@@ -12,9 +12,13 @@ if ($module_info{'usermin'}) {
 	&switch_to_remote_user();
 	&create_user_config_dirs();
 	$range_cmd = "$user_module_config_directory/range.pl";
+	$hourly_only = 0;
 	}
 else {
 	$range_cmd = "$module_config_directory/range.pl";
+	$hourly_only = $access{'hourly'} == 0 ? 0 :
+		       $access{'hourly'} == 1 ? 1 :
+			$config{'hourly_only'};
 	}
 $temp_delete_cmd = "$module_config_directory/tempdelete.pl";
 $cron_temp_file = &transname();
@@ -691,18 +695,18 @@ foreach $arr ("mins", "hours", "days", "months", "weekdays") {
 	# Output selection list
 	print "<td valign=top>\n";
         printf "<input type=radio name=all_$arr value=1 %s %s> $text{'edit_all'}<br>\n",
-                $arr eq "mins" && $config{'hourly_only'} ? "disabled" : "",
+                $arr eq "mins" && $hourly_only ? "disabled" : "",
 		$job->{$arr} eq "*" ? "checked" : "";
 	printf "<input type=radio name=all_$arr value=0 %s> $text{'edit_selected'}<br>\n",
 		$job->{$arr} ne "*" ? "checked" : "";
 	print "<table> <tr>\n";
-        for($j=0; $j<@$arr; $j+=($arr eq "mins" && $config{'hourly_only'} ? 60 : 12)) {
-                $jj = $j+($arr eq "mins" && $config{'hourly_only'} ? 59 : 11);
+        for($j=0; $j<@$arr; $j+=($arr eq "mins" && $hourly_only ? 60 : 12)) {
+                $jj = $j+($arr eq "mins" && $hourly_only ? 59 : 11);
 		if ($jj >= @$arr) { $jj = @$arr - 1; }
 		@sec = @$arr[$j .. $jj];
                 printf "<td valign=top><select %s size=%d name=$arr>\n",
-                        $arr eq "mins" && $config{'hourly_only'} ? "" : "multiple",
-                        @sec > 12 ? ($arr eq "mins" && $config{'hourly_only'} ? 1 : 12) : scalar(@sec);
+                        $arr eq "mins" && $hourly_only ? "" : "multiple",
+                        @sec > 12 ? ($arr eq "mins" && $hourly_only ? 1 : 12) : scalar(@sec);
 		foreach $v (@sec) {
 			if ($v =~ /^(.*)=(.*)$/) { $disp = $1; $code = $2; }
 			else { $disp = $code = $v; }

@@ -118,6 +118,8 @@ acl_create=Can create Cron jobs?
 acl_delete=Can delete Cron jobs?
 acl_move=Can move Cron jobs?
 acl_kill=Can terminate Cron jobs?
+acl_hourly=Limit jobs to at most hourly?
+acl_hourlydef=As set in Module Config
 
 log_modify=Modified Cron job for $1
 log_modify_l=Modified Cron job "$2" for $1
