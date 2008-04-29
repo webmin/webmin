@@ -218,7 +218,7 @@ open(PWFILE, $miniserv{'userfile'});
 close(PWFILE);
 &open_tempfile(PWFILE, ">$miniserv{'userfile'}");
 foreach (@pwfile) {
-	if (/^([^:]+):([^:]*):/ && $1 eq $_[0]) {
+	if (/^([^:]+):([^:]*)/ && $1 eq $_[0]) {
 		if ($2 ne $user{'pass'} &&
 		    "!".$2 ne $user{'pass'} &&
 		    $2 ne "!".$user{'pass'} &&
@@ -227,7 +227,9 @@ foreach (@pwfile) {
 		    $user{'pass'} ne '*LK*') {
 			# Password change detected .. update change time, and
 			# save the old one
-			unshift(@{$user{'olds'}}, $2);
+			local $nolock = $2;
+			$nolock =~ s/^\!//;
+			unshift(@{$user{'olds'}}, $nolock);
 			if ($miniserv{'pass_oldblock'}) {
 				while(scalar(@{$user{'olds'}}) >
 				      $miniserv{'pass_oldblock'}) {
