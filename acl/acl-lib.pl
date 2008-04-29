@@ -222,7 +222,7 @@ foreach (@pwfile) {
 		if ($2 ne $user{'pass'} &&
 		    "!".$2 ne $user{'pass'} &&
 		    $2 ne "!".$user{'pass'} &&
-		    && $user{'pass'} ne 'x' &&
+		    $user{'pass'} ne 'x' &&
 		    $user{'pass'} ne 'e' &&
 		    $user{'pass'} ne '*LK*') {
 			# Password change detected .. update change time, and
