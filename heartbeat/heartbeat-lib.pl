@@ -191,7 +191,7 @@ foreach $k (keys %{$_[0]}) {
 }
 
 # add two more functions (Christof Amelunxen, 22.08.2003)
-sub check_status_resource () {
+sub check_status_resource {
 	@ips = @_;
 	$ifconfig="/sbin/ifconfig";
 	@lines=qx|$ifconfig| or die("ifconfig does not seem to work: ".$!);
@@ -208,7 +208,7 @@ sub check_status_resource () {
 	return 1;
 }
 
-sub get_resource () {
+sub get_resource {
 	foreach(@_) {
 		system("$config{req_resource_cmd} $_");
 	}
