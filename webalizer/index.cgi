@@ -132,7 +132,8 @@ if (@logs) {
 			print &ui_columns_row(\@cols);
 			}
 		elsif (!%$lconf) {
-			print &ui_columns_row([ "&nbsp;&nbsp;", @cols ]);
+			print &ui_columns_row([ "<img src=images/empty.gif>",
+						@cols ]);
 			}
 		else {
 			print &ui_checked_columns_row(\@cols, \@tds, "d",
