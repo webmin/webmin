@@ -1701,7 +1701,15 @@ while(@ginfo = &my_getgrent()) {
 	$gidgrp{$ginfo[2]} = $ginfo[0];
 	}
 &my_endgrent();
-local ($anyedit) = grep { !$_->{'noedit'} } @$users;
+
+# Work out if any users can be edited
+local $anyedit;
+foreach my $u (@$users) {
+	if (!$u->{'noedit'}) {
+		$anyedit = 1;
+		last;
+		}
+	}
 $anyedit = 0 if ($noboxes);
 local $lshow = !$nolast && $config{'last_show'};
 
@@ -1772,7 +1780,14 @@ sub groups_table
 {
 local ($groups, $formno, $noboxes, $links) = @_;
 
-local ($anyedit) = grep { !$_->{'noedit'} } @$groups;
+# Work out if any groups can be edited
+local $anyedit;
+foreach my $g (@$groups) {
+	if (!$g->{'noedit'}) {
+		$anyedit = 1;
+		last;
+		}
+	}
 $anyedit = 0 if ($noboxes);
 
 local @linksrow;
