@@ -16,3 +16,5 @@ test_apachectl=1
 virt_file=/etc/apache2/sites-available
 link_dir=/etc/apache2/sites-enabled
 auto_mods=1
+defines_file=/etc/apache2/envvars
+apachectl_path=/usr/sbin/apache2ctl

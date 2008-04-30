@@ -37,3 +37,5 @@ On Debian and Ubuntu systems, replaced the existing pages for selecting Apache m
 Available Apache modules are now fully automatically detected on all operating systems, which does away with the Re-Configure Known Modules page.
 ---- Changes since 1.400 ----
 Moved the SSL password option to the global settings level, to correspond with the way Apache expects it.
+---- Changes since 1.410 ----
+Added support for the funny ${APACHE_RUN_USER} and ${APACHE_PID_FILE} variables seen in apache2.conf on Ubuntu 8.04.

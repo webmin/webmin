@@ -95,7 +95,15 @@ $dummy{'file'} = $_[2];
 $dummy{'type'} = 0;
 $dummy{'name'} = "dummy";
 @rv = (\%dummy);
-local %defs = map { $_, 1 } &get_httpd_defines();
+local %defs;
+foreach my $d (&get_httpd_defines()) {
+	if ($d =~ /^(\S+)=(.*)$/) {
+		$defs{$1} = $2;
+		}
+	else {
+		$defs{$d} = '';
+		}
+	}
 while($line = <$fh>) {
 	chop;
 	$line =~ s/^\s*#.*$//g;
@@ -143,8 +151,8 @@ while($line = <$fh>) {
 		local $oldline = $_[1];
 		$_[1]++;
 		local @dirs = &parse_config_file($fh, $_[1], $_[2], 'IfDefine');
-		if (!$not && $defs{$def} ||
-		    $not && !$defs{$def}) {
+		if (!$not && defined($defs{$def}) ||
+		    $not && !defined($defs{$def})) {
 			# use the directives..
 			push(@rv, { 'line', $oldline,
 				    'eline', $oldline,
@@ -242,6 +250,13 @@ while($line = <$fh>) {
 				}
 			}
 		$dir{'value'} =~ s/\s+$//g;
+		if ($dir{'value'} =~ /^(.*)\$\{([^\}]+)\}(.*)$/) {
+			# Contains a variable .. replace with define
+			local $v = $defs{$2};
+			if ($v) {
+				$dir{'value'} = $1.$v.$3;
+				}
+			}
 		$dir{'words'} = &wsplit($dir{'value'});
 		push(@rv, \%dir);
 		$_[1]++;
@@ -1616,17 +1631,25 @@ if (!$auto) {
 	push(@rv, keys %httpd_defines);
 	}
 if ($config{'defines_file'}) {
-	# Add defines from an environment file
+	# Add defines from an environment file, which can be in
+	# the format :
+	# OPTIONS='-Dfoo -Dbar'
+	# or regular name=value format
 	local %def;
 	&read_env_file($config{'defines_file'}, \%def);
-	local $var = $def{$config{'defines_name'}};
-	foreach my $v (split(/\s+/, $var)) {
-		if ($v =~ /^-[Dd](\S+)$/) {
-			push(@rv, $1);
+	if ($config{'defines_name'}) {
+		local $var = $def{$config{'defines_name'}};
+		foreach my $v (split(/\s+/, $var)) {
+			if ($v =~ /^-[Dd](\S+)$/) {
+				push(@rv, $1);
+				}
+			else {
+				push(@rv, $v);
+				}
 			}
-		else {
-			push(@rv, $v);
-			}
+		}
+	else {
+		push(@rv, map { $_."=".$def{$_} } keys %def);
 		}
 	}
 foreach my $md (split(/\t+/, $config{'defines_mods'})) {
