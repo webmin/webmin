@@ -47,7 +47,10 @@ else {
 	%displayconfig = %config;
 	}
 foreach my $hba (split(/\t+/, $config{'hba_conf'})) {
-	if (-r $hba) {
+	if ($hba =~ /\*|\?/) {
+		($hba) = glob($hba);
+		}
+	if ($hba && -r $hba) {
 		$hba_conf_file = $hba;
 		last;
 		}
@@ -265,6 +268,15 @@ sub execute_sql_safe
 {
 local $sql = $_[1];
 local @params = @_[2..$#_];
+if ($gconfig{'debug_what_sql'}) {
+	# Write to Webmin debug log
+	local $params;
+	for(my $i=0; $i<@params; $i++) {
+		$params .= " ".$i."=".$params[$i];
+		}
+	&webmin_debug_log('SQL', "db=$_[0] sql=$sql".$params);
+	}
+$sql =~ s/\\/\\\\/g;
 if ($driver_handle &&
     $sql !~ /^\s*(create|drop)\s+database/ && $sql !~ /^\s*\\/ &&
     !$force_nodbi) {

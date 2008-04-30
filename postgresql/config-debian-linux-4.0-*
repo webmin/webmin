@@ -1,12 +1,12 @@
-hba_conf=/etc/postgresql/7.4/main/pg_hba.conf	/etc/postgresql/8.2/main/pg_hba.conf
+hba_conf=/etc/postgresql/*/main/pg_hba.conf
 psql=/usr/bin/psql
-start_cmd=if [ -r /etc/init.d/postgresql-7.4 ]; then /etc/init.d/postgresql-7.4 start; else /etc/init.d/postgresql-8.2 start; fi
+start_cmd=/etc/init.d/postgresql-* start
+stop_cmd=/etc/init.d/postgresql-* stop
 basedb=template1
 perpage=25
 plib=
 pass=
 login=postgres
-stop_cmd=if [ -r /etc/init.d/postgresql-7.4 ]; then /etc/init.d/postgresql-7.4 stop; else /etc/init.d/postgresql-8.2 stop; fi
 pid_file=/var/run/postmaster.pid
 nodbi=0
 dump_cmd=/usr/bin/pg_dump

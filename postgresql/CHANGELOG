@@ -64,3 +64,5 @@ Improved support for Debian/Ubuntu systems that can have different PostgreSQL ve
 Fixed a bug that prevented 'Jump to row' from working properly.
 ---- Changes since 1.400 ----
 Added a Module Config option to show databases and tables using just their names.
+---- Changes since 1.410 ----
+Improve support for PostgreSQL 8.3 on Ubuntu 8.04.
