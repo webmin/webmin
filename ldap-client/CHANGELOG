@@ -5,3 +5,5 @@ Added Module Config options for specifying a different LDAP server to connect to
 Object and attribute lists in the LDAP browser are now sorted.
 ---- Changes since 1.400 ----
 On Debian/Ubuntu systems with separate PAM and NSS LDAP config files, offer to link them with a new button.
+---- Changes since 1.410 ----
+Handle new LDAP config config file path seen on Ubuntu 8.04.

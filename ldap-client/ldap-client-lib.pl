@@ -185,7 +185,7 @@ if ($config{'ldap_hosts'}) {
 elsif ($uri) {
 	# Using uri directive
 	foreach $u (split(/\s+/, $uri)) {
-		if ($u =~ /^(ldap|ldaps):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/) {
+		if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/) {
 			($proto, $host, $port) = ($1, $2, $4);
 			if (!$port && $proto eq "ldap") {
 				$port = 389;
@@ -205,6 +205,9 @@ elsif ($uri) {
 				last;
 				}
 			}
+		}
+	if (!$ldap) {
+		$err = &text('ldap_eparse', $uri);
 		}
 	}
 else {

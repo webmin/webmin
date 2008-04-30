@@ -108,6 +108,7 @@ ldap_emodule=The $1 Perl module needed for talking to the LDAP server is not ins
 ldap_econn=Failed to connect to LDAP server $1 port $2
 ldap_elogin=Failed to bind to LDAP server $1 as $2 : $3
 ldap_anon=anonymous
+ldap_eparse=Could not parse the LDAP server URI $1
 
 browser_title=LDAP Browser
 browser_econn=The LDAP browser cannot be used : $1
