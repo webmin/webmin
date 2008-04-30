@@ -10,7 +10,7 @@ local $arg = @_ ? join(" ", map { quotemeta($_) } @_) : "";
 &open_execute_command(PKGINFO, "COLUMNS=200 dpkg --list $arg", 1, 1);
 while(<PKGINFO>) {
 	next if (/^\|/ || /^\+/);
-	if (/^[ri]i..(\S+)\s+(\S+)\s+(.*)/) {
+	if (/^[uirph]i..(\S+)\s+(\S+)\s+(.*)/) {
 		$packages{$i,'name'} = $1;
 		$packages{$i,'class'} = &alphabet_name($1);
 		$packages{$i,'version'} = $2;

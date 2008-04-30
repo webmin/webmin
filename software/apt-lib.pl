@@ -18,7 +18,13 @@ print "<b>",&text('apt_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 &additional_log('exec', undef, $cmd);
-&open_execute_command(CMD, "yes Yes | $cmd 2>&1", 1);
+local $yesfile = &transname();
+&open_tempfile(YESFILE, ">$yesfile", 0, 1);
+foreach (0..100) {
+	&print_tempfile(YESFILE, "Yes\n");
+	}
+&close_tempfile(YESFILE);
+&open_execute_command(CMD, "$cmd 2>&1 <$yesfile", 1);
 while(<CMD>) {
 	if (/setting\s+up\s+(\S+)/i && !/as\s+MDA/i) {
 		push(@rv, $1);
