@@ -1,4 +1,4 @@
-auth_ldap=/etc/libnss-ldap.conf
+auth_ldap=/etc/ldap.conf
 imap_login=cyrus
 samba_class=sambaSamAccount
 imap_class=SuSEeMailObject
