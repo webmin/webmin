@@ -1,5 +1,5 @@
 show_list=0
-httpd_dir=/usr/local/etc/apache
+httpd_dir=/usr/local
 httpd_path=/usr/local/sbin/httpd
 apachectl_path=/usr/local/sbin/apachectl
 httpd_conf=/usr/local/etc/apache/httpd.conf
