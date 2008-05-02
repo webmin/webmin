@@ -1502,7 +1502,7 @@ return undef;
 # upon failure.
 sub start_apache
 {
-local $out;
+local ($out, $cmd);
 &clean_environment();
 if ($config{'start_cmd'}) {
 	# use the configured start command
@@ -1518,16 +1518,14 @@ if ($config{'start_cmd'}) {
 	}
 elsif (-x $config{'apachectl_path'}) {
 	# use the apachectl program
-	$out = &backquote_logged("($config{'apachectl_path'} start) 2>&1");
+	$cmd = "$config{'apachectl_path'} start";
+	$out = &backquote_logged("($cmd) 2>&1");
 	&reset_environment();
-	if ($out =~ /\S/ && $out !~ /httpd started/) {
-		return "<pre>".&html_escape($out)."</pre>";
-		}
 	}
 else {
 	# start manually
 	local $httpd = &find_httpd();
-	local $cmd = "$httpd -d $config{'httpd_dir'}";
+	$cmd = "$httpd -d $config{'httpd_dir'}";
 	if ($config{'httpd_conf'}) {
 		$cmd .= " -f $config{'httpd_conf'}";
 		}
@@ -1539,16 +1537,23 @@ else {
 	$out = &read_file_contents($temp);
 	unlink($temp);
 	&reset_environment();
-	if ($out =~ /\S/ && $out !~ /httpd started/) {
+	}
+
+# Check if Apache may have failed to start
+local $slept;
+if ($out =~ /\S/ && $out !~ /httpd\s+started/i) {
+	sleep(3);
+	if (!&is_apache_running()) {
 		return "<pre>".&html_escape($cmd)." :\n".
 			       &html_escape($out)."</pre>";
 		}
+	$slept = 1;
 	}
 
 # check if startup was successful. Later apache version return no
 # error code, but instead fail to start and write the reason to
 # the error log file!
-sleep(3);
+sleep(3) if (!$slept);
 local $conf = &get_config();
 if (!&is_apache_running()) {
 	# Not running..  find out why
