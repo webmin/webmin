@@ -2125,6 +2125,7 @@ $mail->{'file'} = $_[0];
 close(MAIL);
 local @st = stat($_[0]);
 $mail->{'size'} = $st[7];
+$mail->{'time'} = $st[9];
 
 # Set read flags based on the name
 if ($_[0] =~ /:2,([A-Za-z]*)$/) {
@@ -2317,10 +2318,12 @@ return \%rv;
 # Converts a mail Date: header into a unix time
 sub parse_mail_date
 {
+local ($str) = @_;
+$str =~ s/^[, \t]+//;
 open(OLDSTDERR, ">&STDERR");	# suppress STDERR from Time::Local
 close(STDERR);
 my $rv = eval {
-	if ($_[0] =~ /^\s*(\S+),\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+):\s?(\d+):\s?(\d+)\s+(\S+)/) {
+	if ($str =~ /^(\S+),\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+):\s?(\d+):\s?(\d+)\s+(\S+)/) {
 		# Format like Mon, 13 Dec 2004 14:40:41 +0100
 		# or          Mon, 13 Dec 2004 14:18:16 GMT
 		# or	      Tue, 14 Sep 04 02:45:09 GMT
@@ -2334,7 +2337,7 @@ my $rv = eval {
 			}
 		return $tm;
 		}
-	elsif ($_[0] =~ /^\s*(\S+),\s+(\d+),?\s+(\S+)\s+(\d+)\s+(\d+):\s?(\d+):\s?(\d+)/) {
+	elsif ($str =~ /^(\S+),\s+(\d+),?\s+(\S+)\s+(\d+)\s+(\d+):\s?(\d+):\s?(\d+)/) {
 		# Format like Mon, 13 Dec 2004 14:40:41 or
 		#	      Mon, 13, Dec 2004 14:40:41
 		# No timezone, so assume local
@@ -2342,18 +2345,18 @@ my $rv = eval {
 				   $4 < 50 ? $4+100 : $4 < 1000 ? $4 : $4-1900);
 		return $tm;
 		}
-	elsif ($_[0] =~ /^\s*(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)/) {
+	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)/) {
 		# Format like Tue Dec  7 12:58:52 2004
 		local $tm = timelocal($6, $5, $4, $3, &month_to_number($2),
 				      $7 < 50 ? $7+100 : $7 < 1000 ? $7 : $7-1900);
 		return $tm;
 		}
-	elsif ($_[0] =~ /^(\d{4})\-(\d+)\-(\d+)\s+(\d+):(\d+)/) {
+	elsif ($str =~ /^(\d{4})\-(\d+)\-(\d+)\s+(\d+):(\d+)/) {
 		# Format like 2004-12-07 12:53
 		local $tm = timelocal(0, $4, $4, $3, $2-1,
 				      $1 < 50 ? $1+100 : $1 < 1000 ? $1 : $1-1900);
 		}
-	elsif ($_[0] =~ /^(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\S+)/) {
+	elsif ($str =~ /^(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\S+)/) {
 		# Format like 30 Jun 2005 21:01:01 -0000
 		local $tm = timegm($6, $5, $4, $1, &month_to_number($2),
 				   $3 < 50 ? $3+100 : $3 < 1000 ? $3 : $3-1900);
@@ -2363,6 +2366,12 @@ my $rv = eval {
 			$tz = $tz/100 if ($tz >= 50 || $tz <= -50);
 			$tm -= $tz*60*60;
 			}
+		return $tm;
+		}
+	elsif ($str =~ /^(\d+)\/(\S+)\/(\d+)\s+(\d+):(\d+)/) {
+		# Format like 21/Feb/2008 24:13
+		local $tm = timelocal(0, $5, $4, $1, &month_to_number($2),
+				      $3-1900);
 		return $tm;
 		}
 	else {
