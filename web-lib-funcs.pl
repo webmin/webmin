@@ -1426,6 +1426,11 @@ sub http_download
 {
 local ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
        $timeout, $osdn, $nocache, $headers) = @_;
+if ($gconfig{'debug_what_net'}) {
+	&webmin_debug_log('HTTP', "host=$host port=$port page=$page ssl=$ssl".
+				  ($user ? " user=$user pass=$pass" : "").
+				  (ref($dest) ? "" : " dest=$dest"));
+	}
 if ($osdn) {
 	# Convert OSDN URL first
 	local $prot = $ssl ? "https://" : "http://";
@@ -1477,14 +1482,15 @@ if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
 	else { &error($h); }
 	}
-&complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port);
+&complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
+			$headers);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
 }
 
 # complete_http_download(handle, destfile, [&error], [&callback], [osdn],
-#			 [oldhost], [oldport])
+#			 [oldhost], [oldport], [&send-headers])
 # Do a HTTP download, after the headers have been sent
 sub complete_http_download
 {
@@ -1538,7 +1544,7 @@ if ($rcode == 302 || $rcode == 301) {
 		else { &error("Missing Location header"); }
 		}
 	&http_download($host, $port, $page, $_[1], $_[2], $cbfunc, undef,
-		       undef, undef, undef, $_[4]);
+		       undef, undef, undef, $_[4], 0, $_[7]);
 	}
 else {
 	# read data
@@ -1582,6 +1588,11 @@ sub ftp_download
 {
 local ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port) = @_;
 $port ||= 21;
+if ($gconfig{'debug_what_net'}) {
+	&webmin_debug_log('FTP', "host=$host port=$port file=$file".
+				 ($user ? " user=$user pass=$pass" : "").
+				 (ref($dest) ? "" : " dest=$dest"));
+	}
 local($buf, @n);
 local $cbfunc = $_[4];
 if (&is_readonly_mode()) {
@@ -1809,9 +1820,14 @@ return 0;
 }
 
 # open_socket(host, port, handle, [&error])
+# Open a TCP connection to some host and port, using a file handle.
+# Either calls error or modifies &error if something goes wrong.
 sub open_socket
 {
 local($addr, $h); $h = $_[2];
+if ($gconfig{'debug_what_net'}) {
+	&webmin_debug_log('TCP', "host=$_[0] port=$_[1]");
+	}
 if (!socket($h, PF_INET, SOCK_STREAM, getprotobyname("tcp"))) {
 	if ($_[3]) { ${$_[3]} = "Failed to create socket : $!"; return 0; }
 	else { &error("Failed to create socket : $!"); }
