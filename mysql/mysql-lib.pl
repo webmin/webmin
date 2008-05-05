@@ -233,8 +233,16 @@ return &execute_sql_safe(@_);
 sub execute_sql_safe
 {
 local $sql = $_[1];
-$sql =~ s/\\/\\\\/g;
 @params = @_[2..$#_];
+if ($gconfig{'debug_what_sql'}) {
+	# Write to Webmin debug log
+	local $params;
+	for(my $i=0; $i<@params; $i++) {
+		$params .= " ".$i."=".$params[$i];
+		}
+	&webmin_debug_log('SQL', "db=$_[0] sql=$sql".$params);
+	}
+$sql =~ s/\\/\\\\/g;
 if ($driver_handle) {
 	# Use the DBI interface
 	local $cstr = "database=$_[0]";

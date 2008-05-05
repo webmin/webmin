@@ -24,6 +24,17 @@ if ($cmode) {
 		exit(1);
 		}
 	}
+
+# Check if MySQL is running
+if (!$config{'host'}) {
+	($r, $out) = &is_mysql_running();
+	if (!$r) {
+		print "MySQL does not appear to be running : $out\n";
+		print "Backups cannot be performed.\n";
+		exit(1);
+		}
+	}
+
 $ex = 0;
 foreach $db (@dbs) {
 	$sf = $all ? "" : $db;
