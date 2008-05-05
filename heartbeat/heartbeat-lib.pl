@@ -202,7 +202,7 @@ sub check_status_resource {
 	}
 	$iplist = join (' ',@realips);
 	foreach my $ip (@ips) {
-		$ip =~ s/\///;
+		$ip =~ s/\/.*//;
 		return 0 unless ( $iplist =~ m/$ip/);
 	}		
 	return 1;
