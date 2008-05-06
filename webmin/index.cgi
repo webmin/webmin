@@ -7,6 +7,7 @@ $ver = &get_webmin_version();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	undef, undef, undef, &text('index_version', $ver));
 %access = &get_module_acl();
+&ReadParse();
 
 @wlinks = ( "edit_access.cgi", "edit_bind.cgi", "edit_log.cgi",
 	    "edit_proxy.cgi", "edit_ui.cgi", "edit_mods.cgi",
@@ -93,6 +94,11 @@ if (!$config{'submitted'}) {
 	}
 
 print &ui_buttons_end();
+
+if ($in{'refresh'} && defined(&theme_post_change_modules)) {
+	# Refresh left menu
+	&theme_post_change_modules();
+	}
 
 &ui_print_footer("/", $text{'index'});
 

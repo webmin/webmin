@@ -70,5 +70,10 @@ for($i=0; $i<@mdesc; $i++) {
 	print $mdesc[$i],"<p>\n";
 	}
 print "</ul><p>\n";
+
+if (defined(&theme_post_change_modules)) {
+	&theme_post_change_modules();
+	}
+
 &ui_print_footer("", $text{'index_return'});
 

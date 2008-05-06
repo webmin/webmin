@@ -32,4 +32,4 @@ $file .= ".".$in{'lang'} if ($in{'lang'});
 &unlock_file($file);
 &webmin_log("categories", undef, $in{'lang'}, \%in);
 &flush_webmin_caches();
-&redirect("");
+&redirect("index.cgi?refresh=1");

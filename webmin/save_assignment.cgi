@@ -15,4 +15,4 @@ foreach $module (keys %in){
 &webmin_log("assignment", undef, undef, \%in);
 &flush_webmin_caches();
 
-&redirect("");
+&redirect("index.cgi?refresh=1");

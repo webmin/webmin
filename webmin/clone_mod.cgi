@@ -68,5 +68,5 @@ if ($in{'cat'} ne '*') {
 					  'dst' => $dst,
 					  'dstdesc' => $in{'desc'} });
 &flush_webmin_caches();
-&redirect("");
+&redirect("index.cgi?refresh=1");
 
