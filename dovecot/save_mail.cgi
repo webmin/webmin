@@ -15,6 +15,22 @@ if ($in{'envmode'} == 4) {
 else {
 	$env = $mail_envs[$in{'envmode'}];
 	}
+
+# Add index file location
+$env || !$in{'indexmode'} || &error($text{'mail_eindexmode'});
+$env || !$in{'controlmode'} || &error($text{'mail_econtrolmode'});
+if ($in{'indexmode'} == 1) {
+	$env .= ":INDEX=MEMORY";
+	}
+elsif ($in{'indexmode'} == 2) {
+	$in{'index'} =~ /^\/\S+$/ || &error($text{'mail_eindex'});
+	$env .= ":INDEX=".$in{'index'};
+	}
+if ($in{'controlmode'}) {
+	$in{'control'} =~ /^\/\S+$/ || &error($text{'mail_econtrol'});
+	$env .= ":CONTROL=".$in{'control'};
+	}
+
 if (&find("mail_location", $conf, 2)) {
 	&save_directive($conf, "mail_location", $env eq "" ? undef : $env);
 	}

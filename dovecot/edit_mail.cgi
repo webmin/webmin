@@ -16,6 +16,12 @@ if (&find("mail_location", $conf, 2)) {
 else {
 	$env = &find_value("default_mail_env", $conf);
 	}
+if ($env =~ s/:INDEX=([^:]+)//) {
+	$index = $1;
+	}
+if ($env =~ s/:CONTROL=([^:]+)//) {
+	$control = $1;
+	}
 for($i=0; $i<@mail_envs; $i++) {
 	$envmode = $i if ($mail_envs[$i] eq $env);
 	}
@@ -23,8 +29,28 @@ print &ui_table_row($text{'mail_env'},
 	&ui_radio("envmode", $envmode,
 		[ ( map { [ $_, $text{'mail_env'.$_}."<br>" ] } (0.. 3) ),
 		  [ 4, &text('mail_env4',
-			&ui_textbox("other", $envmode == 4 ? $env : undef, 30)) ] ],
+			&ui_textbox("other", $envmode == 4 ? $env : undef, 40)) ] ],
 		), 3);
+
+# Index files location
+$indexmode = $index eq 'MEMORY' ? 1 :
+	     $index ? 2 : 0;
+print &ui_table_row($text{'mail_index'},
+	&ui_radio("indexmode", $indexmode,
+	  [ [ 0, $text{'mail_index0'}."<br>" ],
+	    [ 1, $text{'mail_index1'}."<br>" ],
+	    [ 2, &text('mail_index2',
+		  &ui_textbox("index", $indexmode == 2 ? $index : "", 40)) ]
+	  ]), 3);
+
+# Control files location
+print &ui_table_row($text{'mail_control'},
+	&ui_radio("controlmode", $control ? 1 : 0,
+	  [ [ 0, $text{'mail_index0'}."<br>" ],
+	    [ 1, &text('mail_index2',
+		  &ui_textbox("control", $control, 40)) ] ]), 3);
+
+print &ui_table_hr();
 
 # Check interval
 $check = &find_value("mailbox_check_interval", $conf);
