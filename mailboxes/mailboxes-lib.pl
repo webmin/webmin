@@ -717,8 +717,21 @@ if ($config{'mail_system'} < 3) {
 	local ($dir, $style, $mailbox, $maildir) = &get_mail_style();
 	setpwent();
 	while(my (@uinfo) = getpwent()) {
-		next if ($found{$uinfo[0]}++);	# done this username already
-		next if (!$dir && $hfound{$uinfo[7]}++);
+		if ($found{$uinfo[0]}++) {
+			# done this username already
+			next;
+			}
+		if (!$dir && $hfound{$uinfo[7]}++) {
+			# done this home directory (and thus inbox) already
+			next;
+			}
+		if ($dir && $uinfo[0] =~ /\@/) {
+			# If this is a user@domain username, mark user-domain
+			# as done already, to avoid showing dupes
+			local $noat = $uinfo[0];
+			$noat =~ s/\@/-/g;
+			$found{$noat}++;
+			}
 		next if ($filter && !&$filter(@uinfo));
 		push(@rv, \@uinfo);
 		last if ($max && @rv > $max);
