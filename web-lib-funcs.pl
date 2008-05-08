@@ -1088,7 +1088,6 @@ $codes .=
 " }\n";
 $rv = eval $codes;
 if ($@) {
-	print STDERR $codes,"\n";
 	&error("wait_for error : $@\n");
 	}
 return $rv;
@@ -2415,8 +2414,8 @@ elsif ($gconfig{"risk_$u"} && $m) {
 	local $sf = $gconfig{"skill_$u"}.'.skill';
 	&read_file_cached("$mdir/$sf", \%rv);
 	}
-else {
-	# Use normal Webmin ACL
+elsif ($u ne '') {
+	# Use normal Webmin ACL, if a user is set
 	&read_file_cached("$config_directory/$m/$u.acl", \%rv);
 	if ($remote_user ne $base_remote_user && !defined($_[0])) {
 		&read_file_cached("$config_directory/$m/$remote_user.acl",\%rv);
