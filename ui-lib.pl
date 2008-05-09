@@ -1183,6 +1183,14 @@ else {
 return $mover;
 }
 
+# ui_hr()
+# Returns a horizontal row tag
+sub ui_hr
+{
+return &theme_ui_hr() if (defined(&theme_ui_hr));
+return "<hr>\n";
+}
+
 ####################### javascript functions
 
 # js_disable_input(&disable-inputs, &enable-inputs, [tag])
