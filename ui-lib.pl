@@ -1066,12 +1066,12 @@ if (!$main::ui_radio_selector_donejs++) {
 	}
 local $optnames =
 	"[".join(",", map { "\"".&html_escape($_->[0])."\"" } @$opts)."]";
-foreach my $o (@opts) {
+foreach my $o (@$opts) {
 	$rv .= &ui_oneradio($name, $o->[0], $o->[1], $sel eq $o->[0],
 	    "onClick='selector_show(\"$name\", \"$o->[0]\", $optnames)'");
 	}
 $rv .= "<br>\n";
-foreach my $o (@opts) {
+foreach my $o (@$opts) {
 	local $cls = $o->[0] eq $sel ? "selector_shown" : "selector_hidden";
 	$rv .= "<div id=sel_${name}_$o->[0] class=$cls>".$o->[2]."</div>\n";
 	}
