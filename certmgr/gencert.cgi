@@ -42,9 +42,9 @@ if ($error) {
         print "$error</ul>\n$text{'gencert_pleasefix'}\n";
 }
 
-print "<hr>\n";
+print &ui_hr();
 &print_cert_form("gencert");
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 
 sub process{
@@ -52,7 +52,7 @@ sub process{
 	$outfile=&tempname();
 	if (((-e $in{'certfile'})||(-e $in{'keyfile'})||(-e $in{'keycertfile'}))&&($in{'overwrite'} ne "yes")) {
 		&overwriteprompt();
-		print "<hr>\n";
+		print &ui_hr();
 		&footer("", $text{'index_return'});
 		exit;
 	}
@@ -102,7 +102,7 @@ EOF
 	}
 	unlink($outfile);
 	unlink($conffilename);
-	print "<hr>\n";
+	print &ui_hr();
 	if ($error){ print "<b>$text{'gencert_e_genfailed'}</b>\n<pre>$error</pre>\n<hr>\n";}
 	else {
 		print "<b>$text{'gencert_genworked'}</b>\n<pre>$out</pre>\n";
@@ -114,9 +114,9 @@ EOF
 		if (-e $in{'keycertfile'}) {
 			print "<b>$text{'gencert_saved_keycert'} <a href=$url>$in{'keyfile'}</a></b><br>\n";
 		}
-		print "<hr>\n";
+		print &ui_hr();
 	}
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", $text{'index_return'});
 }
 

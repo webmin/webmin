@@ -120,7 +120,7 @@ print "</tr></table>\n";
 
 if (@hosts) {
 	# Display user search forms and new user buttons
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_users'});
 	print "<table width=100%>\n";
 
@@ -181,7 +181,7 @@ if (@hosts) {
 	print "</table>\n";
 
 	# Display modules lists and new module form
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_modules'});
 	print "<table width=100%><tr>\n";
 	print "<form action=edit_mod.cgi><td>\n";
@@ -226,7 +226,7 @@ if (@hosts) {
 
 	# Display upgrade form
 	&foreign_require("webmin", "webmin-lib.pl");
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_upgrade'});
 	print "$text{'index_updesc'}<p>\n";
 
@@ -261,7 +261,7 @@ if (@hosts) {
 	$formno++;
 
 	# Show form for installing updates
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_update'});
 	print "$text{'index_updatedesc'}<p>\n";
 	print "<form action=update.cgi>\n";

@@ -11,7 +11,7 @@ $zconf = &get_config()->[$in{'index'}];
 $file = &absolute_path($zconf->{'values'}->[1]);
 &header("Edit Records File", "");
 print "<center><font size=+1>$file</font></center>\n";
-print "<hr>\n";
+print &ui_hr();
 
 open(FILE, $file);
 while(<FILE>) {
@@ -29,6 +29,6 @@ print "<textarea name=text rows=20 cols=80>",
 	join("", @lines),"</textarea><p>\n";
 print "<input type=submit value=Save> <input type=reset value=Undo></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("edit_master.cgi?index=$in{'index'}", "record types");
 

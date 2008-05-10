@@ -118,9 +118,9 @@ sub receive {
 	close(FILE);
 	if ($type eq "cert") { chmod(0644,$filename); }
 	elsif ($type eq "key") { chmod(0400,$filename); }
-	print "<hr>\n";
+	print &ui_hr();
 	print "<h4>File $filename uploaded successfully</h4>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", $text{'import_return'});
 }
 

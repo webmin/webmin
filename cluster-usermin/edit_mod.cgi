@@ -184,7 +184,7 @@ print "</select></td></form>\n";
 print "</tr></table>\n";
 
 # Show hosts with the module or theme
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'edit_hosts'});
 @icons = map { "/servers/images/$_->{'type'}.gif" } @got;
 @links = map { "edit_host.cgi?id=$_->{'id'}" } @got;

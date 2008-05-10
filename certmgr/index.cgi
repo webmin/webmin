@@ -23,6 +23,6 @@ foreach $p (@pages) {
 	print "</td><td><a href=$p.cgi>$txt</a></td></tr>\n";
 	}
 print "</table></td></tr></table>\n";
-print "<hr>\n";
+print &ui_hr();
 
 &footer("/", $text{'index_index'});

@@ -12,7 +12,7 @@ $conf = &get_config();
 &header("Edit Slave Zone", "");
 print "<center><font size=+2>",&arpa_to_ip($v[0]),"</font></center>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print "<form action=save_slave.cgi>\n";
 print "<input type=hidden name=index value=\"$in{'index'}\">\n";
 print "<table border width=100%>\n";
@@ -41,6 +41,6 @@ print "<form action=delete_zone.cgi>\n";
 print "<input type=hidden name=index value=\"$in{'index'}\">\n";
 print "<td align=right><input type=submit value=Delete></td></form>\n";
 print "</tr></table>\n";
-print "<hr>\n";
+print &ui_hr();
 &footer("", "zone list");
 

@@ -42,7 +42,7 @@ if (@recs) {
                 }
         print "<p>\n";
         }
-print "<hr>\n";
+print &ui_hr();
 &footer("edit_master.cgi?index=$in{'index'}", "record types");
 
 sub recs_table

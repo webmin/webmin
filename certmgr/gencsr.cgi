@@ -45,9 +45,9 @@ if ($error) {
 	if (!$in{'emailAddress'}) { $in{'emailAddress'}=$config{'default_email'}; }
 }
 
-print "<hr>\n";
+print &ui_hr();
 &print_cert_form("gencsr");
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 
 sub process{
@@ -55,7 +55,7 @@ sub process{
 	$outfile=&tempname();
 	if (((-e $in{'csrfile'})||(-e $in{'keyfile'}))&&($in{'overwrite'} ne "yes")) {
 		&overwriteprompt();
-		print "<hr>\n";
+		print &ui_hr();
 		&footer("", $text{'index_return'});
 		exit;
 	}
@@ -93,7 +93,7 @@ EOF
 	}
 	unlink($outfile);
 	unlink($conffilename);
-	print "<hr>\n";
+	print &ui_hr();
 	if ($error){ print "<b>$text{'gencsr_e_genfailed'}</b>\n<pre>$error</pre>\n<hr>\n";}
 	else {
 		print "<b>$text{'gencsr_genworked'}</b>\n<pre>$out</pre>\n";
@@ -102,7 +102,7 @@ EOF
 		$url="\"view.cgi?keyfile=".&my_urlize($in{'keyfile'}).'"';
 		print "<b>$text{'gencert_saved_key'} <a href=$url>$in{'keyfile'}</a></b><br>\n";
 	}
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", $text{'index_return'});
 }
 

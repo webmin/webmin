@@ -42,7 +42,7 @@ print "</table></td></tr></table>\n";
 print "<input type=submit value='$text{'save'}'></form>\n";
 
 if (@$hosts) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=push.cgi>\n";
 	print "<table width=100%><tr>\n";
 	print "<td><input type=submit value='$text{'push_push'}'></td>\n";

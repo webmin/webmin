@@ -83,7 +83,7 @@ $heiropen{""}++;
 
 # traverse the heirarchy
 $spacer = "&nbsp;"x3;
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'host_installed'});
 print "<table width=100%>\n";
 &traverse("", 0);

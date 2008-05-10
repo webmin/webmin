@@ -52,7 +52,7 @@ print "</tr></table></form>\n";
 
 # Display run form
 if (@hosts) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=cluster.cgi>\n";
 	print "<table width=100%>\n";
 	print "<tr> <td><input type=submit value='$text{'hosts_run'}'></td>\n";

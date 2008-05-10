@@ -19,7 +19,7 @@ $conf = &get_cfd_config();
 
 # Allow starting or stopping of cfd
 ($pid) = &find_byname("cfd");
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%><tr>\n";
 if ($pid) {
 	print "<form action=stop.cgi>\n";

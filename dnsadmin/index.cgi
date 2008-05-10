@@ -3,7 +3,7 @@
 require './dns-lib.pl';
 
 &header("BIND 4 DNS Server", "", undef, 1, 1);
-print "<hr>\n";
+print &ui_hr();
 %access = &get_module_acl();
 
 # Check if named exists
@@ -12,7 +12,7 @@ if (!-x $config{'named_pathname'}) {
 	print "could not be found on your system. Maybe it is not installed,\n";
 	print "or your <a href=\"$gconfig{'webprefix'}/config.cgi?$module_name\">BIND 4 module\n";
 	print "configuration</a> is incorrect. <p>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("/", "index");
 	exit;
 	}
@@ -23,7 +23,7 @@ if (0 && ($out =~ /bind\s+(\d+)\./i || $out =~ /named\s+(\d+)\./) && $1 >= 8) {
 	print "<p>The server <i>$config{'named_pathname'}</i> appears to\n";
 	print "be BIND 8. Maybe your should use the\n";
 	print "<a href=/bind8/>BIND 8 server module</a> instead. <p>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("/", "index");
 	exit;
 	}
@@ -35,7 +35,7 @@ if (0 && $out =~ /\[-f\]/) {
 	print "<p>The server <i>$config{'named_pathname'}</i> appears to\n";
 	print "be BIND 8. Maybe your should use the\n";
 	print "<a href=/bind8/>BIND 8 server module</a> instead. <p>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("/", "index");
 	exit;
 	}
@@ -61,7 +61,7 @@ if ($need_create) {
 	      "server, but use Webmin's older root server information<p>\n";
 	print "<center><input type=submit value=\"Create Primary Configuration File and Start Nameserver\"></center>\n";
 	print "</form>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("/", "index");
 	exit;
 	}
@@ -130,7 +130,7 @@ print "<p>\n";
 if ($access{'defaults'}) {
 	# Display form to set the defaults for new zones
 	&get_zone_defaults(\%zd);
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading("New Master Zone Defaults");
 	print "<form action=save_zonedef.cgi>\n";
 	print "<table border>\n";
@@ -151,7 +151,7 @@ if ($access{'defaults'}) {
 	}
 
 # Display a form to start or restart named
-print "<hr>\n";
+print &ui_hr();
 if ($config{'named_pid_file'}) {
 	if (open(PID, $config{'named_pid_file'})) {
 		<PID> =~ /(\d+)/;
@@ -189,7 +189,7 @@ else {
         print "</form>\n";
         }
 
-print "<hr>\n";
+print &ui_hr();
 &footer("/", "index");
 
 sub zones_table

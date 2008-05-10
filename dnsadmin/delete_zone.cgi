@@ -14,7 +14,7 @@ $rev = $zconf->{'values'}->[0] =~ /in-addr.arpa/i;
 if (!$in{'confirm'}) {
 	# Ask the user if he is sure ..
 	&header("Delete Zone", "");
-	print "<hr>\n";
+	print &ui_hr();
 
 	print "<center><p>Are you sure you want to delete the zone <tt>",
 		&arpa_to_ip($zconf->{'values'}->[0]),"</tt> ? All records ",
@@ -27,7 +27,7 @@ if (!$in{'confirm'}) {
 	print "<input type=radio name=rev value=1 checked> $text{'yes'}\n";
 	print "<input type=radio name=rev value=0> $text{'no'}\n";
 	print "</form></center>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", "record types");
 	exit;
 	}

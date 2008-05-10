@@ -79,7 +79,7 @@ foreach $h (@hosts) {
 	local $rv = &unserialise_variable($line);
 	close($rh);
 
-	print "<hr>\n";
+	print &ui_hr();
 	if ($rv && $rv->[0]) {
 		# Run ok! Show the output
 		print "<font size=+1>",&text('cluster_success', $d),"</font><br>\n";

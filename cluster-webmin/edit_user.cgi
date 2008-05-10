@@ -202,7 +202,7 @@ print "<td align=right><input type=submit value='$text{'delete'}'></td></form>\n
 print "</tr></table>\n";
 
 # Show hosts with the user
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'user_hosts'});
 @icons = map { "/servers/images/$_->{'type'}.gif" } @got;
 @links = map { "edit_host.cgi?id=$_->{'id'}" } @got;

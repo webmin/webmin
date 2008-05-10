@@ -108,7 +108,7 @@ print "</tr></table>\n";
 
 if (@hosts) {
 	# Display search form
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_installed'});
 	print "<table cellpadding=0 cellspacing=0 width=100%><tr><td>\n";
 	$formno += 2;
@@ -123,7 +123,7 @@ if (@hosts) {
 	print "</form></td> </tr></table>\n";
 
 	# Display cross-cluster install form
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_install'});
 	print "$text{'index_installmsg'}<p>\n";
 

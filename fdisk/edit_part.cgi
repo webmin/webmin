@@ -206,7 +206,7 @@ else {
 	}
 
 if (!$in{'new'} && !$pinfo->{'extended'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 
 	if (!@stat || $stat[2] == 0) {

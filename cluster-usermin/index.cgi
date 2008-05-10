@@ -109,7 +109,7 @@ print "</tr></table>\n";
 
 if (@hosts) {
 	# Display modules lists and new module form
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_modules'});
 	print "<table width=100%><tr>\n";
 	print "<form action=edit_mod.cgi><td>\n";
@@ -155,7 +155,7 @@ if (@hosts) {
 
 	# Display upgrade form
 	&foreign_require("webmin", "webmin-lib.pl");
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_upgrade'});
 	print "$text{'index_updesc'}<p>\n";
 

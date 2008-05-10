@@ -89,7 +89,7 @@ if (!$pinfo[7]) {
 print "</tr> </table><p>\n";
 
 # Show hosts with the package
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'edit_hosts'});
 @icons = map { "/servers/images/$_->{'type'}.gif" } @got;
 @links = map { "edit_host.cgi?id=$_->{'id'}" } @got;

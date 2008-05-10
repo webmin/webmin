@@ -12,12 +12,12 @@ $dom = $zconf->{'values'}->[0];
         &error("You are not allowed to edit records in this zone");
 &header("Edit $code_map{$in{'type'}}", "");
 print "<center><font size=+2>In ",&arpa_to_ip($dom),"</font></center>\n";
-print "<hr>\n";
+print &ui_hr();
 
 @recs = &read_zone_file($zconf->{'values'}->[1], $zconf->{'values'}->[0]);
 &foreign_call("bind8", "record_input", $in{'index'}, undef, $in{'type'},
 	      $zconf->{'values'}->[1], $zconf->{'values'}->[0], $in{'num'},
 	      $recs[$in{'num'}]);
-print "<hr>\n";
+print &ui_hr();
 &footer("edit_recs.cgi?index=$in{'index'}&type=$in{'type'}", "records");
 

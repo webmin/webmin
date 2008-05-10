@@ -134,7 +134,7 @@ else {
 print &ui_links_row(\@edlinks);
 
 # Buttons for IDE params and SMART
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 if (&supports_hdparm($d)) {
 	print &ui_buttons_row("edit_hdparm.cgi", $text{'index_hdparm'},

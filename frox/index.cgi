@@ -40,7 +40,7 @@ push(@names, "iptables") if (&foreign_check("firewall"));
 # Show start/stop/apply buttons
 $conf = &get_config();
 if (&find_value("FromInetd", $conf) ne "yes") {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	if (&is_frox_running()) {
 		print &ui_buttons_row("apply.cgi", $text{'index_apply'},

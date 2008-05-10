@@ -85,7 +85,7 @@ else {
 	}
 
 if (!$access{'view'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	print &ui_buttons_row("restart_sharing.cgi",
 			      $text{'index_apply'},

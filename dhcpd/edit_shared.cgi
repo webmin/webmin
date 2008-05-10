@@ -159,7 +159,7 @@ else {
 
 if ($config{'dhcpd_version'} >= 3 && !$in{'new'}) {
 	# Display address pools
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'esh_pools'});
 	local $pn = 1;
 	foreach $p (&find('pool', $sconf)) {

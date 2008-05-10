@@ -287,7 +287,7 @@ if ($show_subnet_shared) {
 	print "</tr></table>\n";
 	}
 
-print "<hr>\n";
+print &ui_hr();
 
 foreach $g (@group) {
 	$parent = (defined($subnet{$g}) ? 1 + $subnet{$g} : 0) +
@@ -439,7 +439,7 @@ if ($show_host_group) {
 	print "</tr></table>\n";
 	}
 
-print "<hr>\n";
+print &ui_hr();
 
 ############ START ZONES #####
 
@@ -471,7 +471,7 @@ if ($config{'dhcpd_version'} >= 3) {
 		print "<b>$text{'index_nozones'}</b><p>\n";
 		}
 	print "<a href='edit_zones.cgi?new=1'>","$text{'index_addzone'}</a>&nbsp;&nbsp;\n" if $access{'c_sub'};
-	print "<hr>\n";
+	print &ui_hr();
 
 }
 ############ END ZONES #####

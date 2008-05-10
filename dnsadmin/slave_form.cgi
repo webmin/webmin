@@ -6,7 +6,7 @@ require './dns-lib.pl';
 %access = &get_module_acl();
 $access{'slave'} || &error("You are not allowed to create slave zones");
 &header("Create Slave Zone", "");
-print "<hr>\n";
+print &ui_hr();
 
 print "<form action=create_slave.cgi>\n";
 print "<input type=hidden name=type value=\"$lctype\">\n";
@@ -35,6 +35,6 @@ print "<textarea name=masters rows=4 cols=30></textarea></td> </tr>\n";
 print "</table></td></tr></table><br>\n";
 print "<input type=submit value=\"Create Zone\"></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", "zone list");
 

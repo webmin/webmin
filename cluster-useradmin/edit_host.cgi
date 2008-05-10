@@ -56,7 +56,7 @@ print "</form>\n";
 print "</tr></table>\n";
 
 # Show users and groups
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'host_ulist'});
 print "<table width=100% border>\n";
 print "<tr $tb> <td><b>$text{'index_users'}</b></td> </tr>\n";

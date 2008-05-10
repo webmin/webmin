@@ -15,7 +15,7 @@ $wildcard_pattern=~s/\?/./g;
 
 if ($in{'dl'} ne "yes" && $in{'pkcs12'} ne "yes") {
 	&header($text{'view_title'}, "");
-	print "<hr>\n";
+	print &ui_hr();
 }
 if ($in{'delete'} eq "yes"){
 	if ($in{'keyfile'}) { $file=$in{'keyfile'} }
@@ -72,7 +72,7 @@ if ($in{'keyfile'}) {
 	else {&print_key_info(1,$buffer);}
 	print "</td></tr></table>\n";
 	&download_form("keyfile", $in{'keyfile'}, $text{'key'});
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", $text{'index_return'});
 	exit;
 }
@@ -101,7 +101,7 @@ if ($in{'certfile'}||$in{'csrfile'}) {
 	else {&print_cert_info(1,$buffer);}
 	print "</td></tr></table>\n";
 	&download_form("certfile", $in{'certfile'}, $text{'certificate'});
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", $text{'index_return'});
 	exit;
 }
@@ -131,7 +131,7 @@ if ($in{'keycertfile'}) {
 	print "</td></tr></table>\n";
 	&download_form("keycertfile", $in{'keycertfile'},
 		       "$text{'certificate'} / $text{'key'}");
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", $text{'index_return'});
 	exit;
 }
@@ -147,7 +147,7 @@ foreach $f ( grep { /^(.*\/)*$wildcard_pattern$/ && -f "$config{'ssl_dir'}/$_" }
 print "</select>\n";
 print "</td><td><input type=submit name=view value=\"$text{'view_view'}\"></td></tr></table></td></tr></table>\n";
 print "</form>\n";
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 
 sub output_cert

@@ -37,9 +37,9 @@ if ($error) {
         print "$error</ul>\n$text{'gencert_pleasefix'}\n";
 }
 
-print "<hr>\n";
+print &ui_hr();
 &print_sign_form("signcsr");
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 
 sub process{
@@ -51,7 +51,7 @@ sub process{
 		}
 	if ((-e $in{'signfile'})&&($in{'overwrite'} ne "yes")) {
 		&overwriteprompt();
-		print "<hr>\n";
+		print &ui_hr();
 		&footer("", $text{'index_return'});
 		exit;
 	}
@@ -67,13 +67,13 @@ sub process{
 		$error=0;
 		chmod(0400,$in{'signfile'});
 	}
-	print "<hr>\n";
+	print &ui_hr();
 	if ($error){ print "<b>$text{'signcsr_e_signfailed'}</b>\n<pre>$error</pre>\n<hr>\n";}
 	else {
 		print "<b>$text{'signcsr_worked'}</b>\n<pre>$out</pre>\n";
 		$url="\"view.cgi?certfile=".&my_urlize($in{'signfile'}).'"';
 		print "<b>$text{'signcsr_saved_cert'} <a href=$url>$in{'signfile'}</a></b><br>\n";
-		print "<hr>\n";
+		print &ui_hr();
 	}
 	&footer("", $text{'index_return'});
 }

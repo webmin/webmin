@@ -30,7 +30,7 @@ if ($config{'config_file'}) {
 	&show_polls(\@conf, $config{'config_file'}, $config{'daemon_user'});
 
 	local @uinfo = getpwnam($config{'daemon_user'});
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%>\n";
 
 	if (&foreign_installed("cron") && $access{'cron'}) {
@@ -132,7 +132,7 @@ else {
 
 	if (&foreign_installed("cron") && $access{'cron'}) {
 		# Show button to manage global cron job
-		print "<hr>\n";
+		print &ui_hr();
 		print &ui_buttons_start();
 		print &ui_buttons_row("edit_cron.cgi",
 				      $text{'index_cron'}, $text{'index_crondesc2'});

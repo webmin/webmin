@@ -89,7 +89,7 @@ print "</tr></table></form>\n";
 
 if (@hosts) {
 	# Display search and add forms
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_users'});
 
 	print "<table width=100%><tr>\n";

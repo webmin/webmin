@@ -177,7 +177,7 @@ else {
 
 	# Display a table of rules for each chain
 	foreach $c (sort by_string_for_iptables keys %{$table->{'defaults'}}) {
-		print "<hr>\n";
+		print &ui_hr();
 		@rules = grep { lc($_->{'chain'}) eq lc($c) }
 			      @{$table->{'rules'}};
 		print "<b>",$text{"index_chain_".lc($c)} ||
@@ -336,7 +336,7 @@ else {
 
 	# Display buttons for applying and un-applying the configuration,
 	# and for creating an init script if possible
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%>\n";
 
 	if (!$config{'direct'}) {

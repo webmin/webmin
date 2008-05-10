@@ -101,7 +101,7 @@ else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	}
 
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 print &ui_buttons_row("apply.cgi", $text{'index_apply'},
 		      $text{'index_applydesc'});

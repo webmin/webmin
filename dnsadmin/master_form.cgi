@@ -7,7 +7,7 @@ require './dns-lib.pl';
 &header("Create Master Zone", "");
 %access = &get_module_acl();
 $access{'master'} || &error("You cannot create master zones");
-print "<hr>\n";
+print &ui_hr();
 
 print "<form action=create_master.cgi>\n";
 print "<table border width=100%>\n";
@@ -51,6 +51,6 @@ print "<td><input name=minimum size=8 value=$zd{'minimum'}> seconds</td> </tr>\n
 print "</table></td></tr></table><br>\n";
 print "<input type=submit value=\"Create Zone\"></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", "zone list");
 

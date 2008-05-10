@@ -85,7 +85,7 @@ print "<input type=hidden name=index value=\"$in{'index'}\">\n";
 print "<td align=right><input type=submit value=Delete>\n";
 print "</td></form> </tr></table>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", "zone list");
 
 sub types_table

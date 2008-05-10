@@ -49,7 +49,7 @@ $conf = &get_config();
 &show_classes_table(\@secs, 0);
 
 # Display option icons
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'index_options'});
 @links = ( "run_form.cgi", "list_hosts.cgi", "edit_cfd.cgi", "edit_push.cgi" );
 @titles = ( $text{'run_title'}, $text{'hosts_title'}, $text{'cfd_title'},

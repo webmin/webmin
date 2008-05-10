@@ -114,7 +114,7 @@ print "<input type=hidden name=group value=\"$ginfo{'group'}\">\n";
 print "<td align=right><input type=submit value=\"$text{'delete'}\"></td> </tr>\n";
 print "</form></table><p>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'uedit_hosts'});
 &icons_table(\@links, \@titles, \@icons);
 
