@@ -81,13 +81,13 @@ if ($access{'whois'} && &has_command($config{'whois_cmd'}) &&
 	push(@images, "images/whois.gif");
 	}
 if (@links) {
-	print "<hr>\n" if ($done_recs);
+	print &ui_hr() if ($done_recs);
 	&icons_table(\@links, \@titles, \@images);
 	}
 
 $apply = $access{'apply'} && &has_ndc();
 if (!$access{'ro'} && ($access{'delete'} || $apply)) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%>\n";
 
 	if ($access{'delete'}) {

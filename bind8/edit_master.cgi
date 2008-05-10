@@ -101,13 +101,13 @@ if ($access{'whois'} && &has_command($config{'whois_cmd'}) &&
 	}
 
 if (@links) {
-	print "<hr>\n";
+	print &ui_hr();
 	&icons_table(\@links, \@titles, \@images);
 	}
 
 $apply = $access{'apply'} && &has_ndc();
 if (!$access{'ro'} && ($access{'delete'} || $apply)) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%>\n";
 
 	if ($access{'delete'}) {
