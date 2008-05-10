@@ -111,7 +111,7 @@ print &ui_form_end([ [ "save", $text{'save'} ],
 @cached = &list_cached_files();
 if (@cached) {
 	# Show cache management and clearing buttons
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	print &ui_buttons_row("cache.cgi", $text{'proxy_cacheb'},
 					   $text{'proxy_cachebdesc'});

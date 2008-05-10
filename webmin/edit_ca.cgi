@@ -64,7 +64,7 @@ print "<input name=size size=6> $text{'ssl_bits'}</td> </tr>\n";
 print "</table></td></tr></table>\n";
 print "<input type=submit value='$text{'ca_create'}'></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print -r $miniserv{'ca'} ? $text{'ca_oldmsg1'} : $text{'ca_oldmsg2'},"<p>\n";
 print "<form action=change_ca.cgi method=post enctype=multipart/form-data>\n";
 print "<table border>\n";
@@ -79,7 +79,7 @@ print "</textarea></td> </tr>\n";
 print "</table><input type=submit value='$text{'save'}'></form>\n";
 
 if (-r $miniserv{'ca'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=stop_ca.cgi><table><tr>\n";
 	print "<td><input type=submit value='$text{'ca_stop'}'></td>\n";
 	print "<td>$text{'ca_stopmsg'}</td>\n";

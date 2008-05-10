@@ -25,7 +25,7 @@ if (@themes) {
 
 if (!&shared_root_directory()) {
 	# Display install form
-	print "<hr>\n";
+	print &ui_hr();
 	print "$text{'themes_installdesc'}<br>\n";
 	print "<form action=install_theme.cgi method=post enctype=multipart/form-data>\n";
 	print "<input type=radio name=source value=0 checked> $text{'mods_local'}\n";
@@ -40,7 +40,7 @@ if (!&shared_root_directory()) {
 	# Display deletion form
 	@themes = grep { $gconfig{'theme'} ne $_->{'dir'} } @themes;
 	if (@themes) {
-		print "<hr>\n";
+		print &ui_hr();
 		print "$text{'themes_delete'}<br>\n";
 		print "<form action=delete_mod.cgi>\n";
 		print "<b>$text{'themes_delok'}</b>\n";
@@ -55,7 +55,7 @@ if (!&shared_root_directory()) {
 	}
 
 # Display export form
-print "<hr>\n";
+print &ui_hr();
 print "$text{'themes_desc4'}<p>\n";
 
 print &ui_form_start("export_mod.cgi/theme.wbt.gz");

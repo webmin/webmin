@@ -61,7 +61,7 @@ for($i=0; $i<@wlinks; $i++) {
 	}
 &icons_table(\@wlinks, \@wtitles, \@wicons);
 
-print "<hr>\n";
+print &ui_hr();
 
 print &ui_buttons_start();
 

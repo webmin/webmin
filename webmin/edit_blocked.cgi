@@ -21,7 +21,7 @@ if (@blocked) {
 			]);
 		}
 	print &ui_columns_end();
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	print &ui_buttons_row("clear_blocked.cgi",
 			      $text{'blocked_clear'},
