@@ -59,7 +59,7 @@ if ($r == 0) {
 	print "<p> <b>$text{'index_notrun'}</b> <p>\n";
 
 	if ($access{'stop'} && &is_mysql_local()) {
-		print "<hr>\n";
+		print &ui_hr();
 		print "<form action=start.cgi>\n";
 		print "<table width=100%><tr><td>\n";
 		print "<input type=submit ",
@@ -202,7 +202,7 @@ else {
 
 	if ($access{'perms'}) {
 		# Show icons for editing user permissions and server settings
-		print "<hr>\n";
+		print &ui_hr();
 		print &ui_subheading($text{'index_global'});
 		$canvars = &supports_variables();
 		@links = ( 'list_users.cgi', 'list_dbs.cgi', 'list_hosts.cgi',
@@ -233,7 +233,7 @@ else {
 
 	if ($access{'stop'} && &is_mysql_local() ||
 	    $can_all && !$access{'edonly'} && $access{'buser'}) {
-		print "<hr>\n";
+		print &ui_hr();
 		print &ui_buttons_start();
 		$started_buttons_row = 1;
 		}

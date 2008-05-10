@@ -419,7 +419,7 @@ else {
 
 if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 	# Show search and jump buttons
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%><tr>\n";
 	print "<form action=view_table.cgi>\n";
 	print "<input type=hidden name=search value=1>\n";

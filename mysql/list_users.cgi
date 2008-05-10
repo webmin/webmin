@@ -41,7 +41,7 @@ print &ui_columns_end();
 print &ui_links_row(\@rowlinks);
 print &ui_form_end([ [ "delete", $text{'users_delete'} ] ]);
 
-print "<hr>\n";
+print &ui_hr();
 print "<form action=save_sync.cgi>\n";
 print "$text{'users_sync'}<p>\n";
 print "<table><tr><td valign=top>\n";
