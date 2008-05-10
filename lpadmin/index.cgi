@@ -184,7 +184,7 @@ else {
 	}
 
 # display button to start or stop the scheduler (lpd, lpsched, etc..)
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 $pid = &sched_running();
 if ($pid < 0 || !$access{'stop'}) {

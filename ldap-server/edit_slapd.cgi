@@ -102,7 +102,7 @@ print &ui_hidden_table_end("ssl");
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 # SSL setup button
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 print &ui_buttons_row("gencert_form.cgi", $text{'slapd_gencert'},
 		      $text{'slapd_gencertdesc'}.

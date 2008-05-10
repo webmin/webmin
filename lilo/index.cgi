@@ -51,7 +51,7 @@ print "<a href='edit_other.cgi?new=1'>$text{'index_addp'}</a><br>\n";
 &icons_table(\@links, \@titles, \@icons, 4);
 print "<a href='edit_image.cgi?new=1'>$text{'index_addk'}</a> &nbsp;\n";
 print "<a href='edit_other.cgi?new=1'>$text{'index_addp'}</a><p>\n";
-print "<hr>\n";
+print &ui_hr();
 
 print "<table width=100%>\n";
 print "<form action=edit_global.cgi>\n";

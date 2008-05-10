@@ -34,7 +34,7 @@ if ($config{'pam_ldap'} && -r $config{'pam_ldap'} && !$config{'nofixpam'} &&
 &icons_table(\@links, \@titles, \@icons, 5);
 
 # Validate button
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 print &ui_buttons_row("check.cgi", $text{'index_check'},
 		      $text{'index_checkdesc'});

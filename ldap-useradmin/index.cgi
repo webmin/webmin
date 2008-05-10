@@ -193,7 +193,7 @@ else {
 
 # Show groups header
 if ($gcount || $access{'gcreate'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<a name=groups></a>\n";
 	print "<table width=100% cellpadding=0 cellspacing=0><tr>\n";
 	print "<td>".&ui_subheading($text{'index_groups'})."</td>\n";

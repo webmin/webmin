@@ -76,7 +76,7 @@ else {
 			print "<p>\n";
 
 			# Show icons for various options
-			print "<hr>\n";
+			print &ui_hr();
 			print &ui_subheading($text{'index_header2'});
 			@links = ( "edit_config.cgi", "showkey.cgi",
 				   "list_secrets.cgi" );
@@ -101,7 +101,7 @@ else {
 					"$gconfig{'webprefix'}/config.cgi?$module_name"),"</b><p>\n";
 				}
 
-			print "<hr>\n";
+			print &ui_hr();
 			print "<table width=100%>\n";
 
 			# Start connection button

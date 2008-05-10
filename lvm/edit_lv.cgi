@@ -159,7 +159,7 @@ else {
 
 if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'}) {
 	# Show button for creating filesystems
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 
 	$fstype = $stat[1] || "ext3";

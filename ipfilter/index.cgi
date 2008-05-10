@@ -131,7 +131,7 @@ elsif (@$rules && !$in{'reset'}) {
 	print &ui_form_end();
 
 	# Show NAT rules
-	print "<hr>\n";
+	print &ui_hr();
 	$natrules = &get_ipnat_config();
 	print &ui_form_start("edit_nat.cgi");
 	if (@$natrules) {
@@ -207,7 +207,7 @@ elsif (@$rules && !$in{'reset'}) {
 	print &ui_form_end();
 
 	# Show buttons to apply configuration and start at boot
-	print "<hr>\n";
+	print &ui_hr();
 
 	print &ui_buttons_start();
 	if (&foreign_check("servers")) {

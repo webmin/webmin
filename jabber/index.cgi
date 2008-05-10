@@ -65,7 +65,7 @@ if (@needs) {
 	print &text(@needs == 2 ? 'index_emodules' : 'index_emodule', @needs,
 	    "/cpan/download.cgi?source=3&cpan=$needs&mode=2&return=/$module_name/&returndesc=".&urlize($text{'index_return'})),"<p>\n";
 	print "$text{'index_expat'}<p>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}
@@ -74,7 +74,7 @@ if (@needs) {
 $conf = &get_jabber_config();
 if (!ref($conf)) {
 	print &text('index_eparse', "<tt>XML::Parser</tt>", $conf),"<p>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}
@@ -97,7 +97,7 @@ print "<b>",&text('index_comments',
 	  "<tt>$config{'jabber_config'}</tt>"),"</b><p>\n" if ($has_comment);
 
 # Check if jabber is running and show the correct buttons
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%>\n";
 if (&check_pid_file(&jabber_pid_file())) {
 	# Running .. offer to restart and stop

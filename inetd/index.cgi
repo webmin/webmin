@@ -72,7 +72,7 @@ if (!$config{'show_empty'}) {
 	}
 print "</tr></table></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print "<a href=\"edit_rpc.cgi?new=1\">$text{'index_newrpc'}</a>. <br>\n";
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'index_rpc'}</b></td> </tr>\n";
@@ -107,7 +107,7 @@ foreach $r (@rlist) {
 print "</table></td></tr></table>\n";
 print "<a href=\"edit_rpc.cgi?new=1\">$text{'index_newrpc'}</a>. <p>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print "<form action=restart_inetd.cgi>\n";
 print "<table width=100%> <tr>\n";
 print "<td><input type=submit value=\"$text{'index_apply'}\"></td>\n";

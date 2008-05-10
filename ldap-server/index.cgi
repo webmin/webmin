@@ -51,7 +51,7 @@ if (!$p) {
 				       "<tt>$config{'ldap_user'}</tt>"),"<p>\n";
 	print &ui_form_end([ [ undef, $text{'index_perms'} ] ]);
 	print "</center>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	}
 
 # Check if need to init new install, by creating the root DN
@@ -71,7 +71,7 @@ if ($p && ref($ldap) && $access{'browser'}) {
 		print &text('index_setupdesc', "<tt>$base</tt>"),"<p>\n";
 		print &ui_form_end([ [ undef, $text{'index_setup'} ] ]);
 		print "</center>\n";
-		print "<hr>\n";
+		print &ui_hr();
 		}
 	}
 
@@ -92,7 +92,7 @@ else {
 
 if ($local == 1) {
 	# Show stop/restart buttons
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	if (&is_ldap_server_running()) {
 		if ($access{'apply'}) {

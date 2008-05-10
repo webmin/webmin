@@ -40,7 +40,7 @@ if ($ty == 0) {
 	
 	#create the edit file forms
 	if ($startscript ne "") {
-		print "<hr>\n";
+		print &ui_hr();
 		print &text('edit_hostconfig_startup',
 			"<tt>$startscript</tt>"),"<br>\n";
 		#	}
@@ -54,7 +54,7 @@ if ($ty == 0) {
 		print "<input type=submit value='$text{'save'}'></form>\n";
 		}
 	if ($plistedit ne "") {
-		print "<hr>\n";
+		print &ui_hr();
 		print &text('edit_hostconfig_plist',
 			"<tt>$plistedit</tt>"),"<br>\n";
 		#	}
@@ -148,7 +148,7 @@ if ($ty == 2) {
 	close(LOCAL);
 	print "</textarea><br>\n";
 	print "<input type=submit value='$text{'save'}'></form>\n";
-	print "<hr>\n";
+	print &ui_hr();
 
 	#add reboot and shutdown messages to this page as well...
 	print "<table cellpadding=5 width=100%>\n";

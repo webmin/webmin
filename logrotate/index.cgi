@@ -89,7 +89,7 @@ else {
 	}
 
 # Show buttons for editing global config and scheduling
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 print &ui_buttons_row("edit_log.cgi", $text{'index_global'},
 		      $text{'index_globaldesc'},

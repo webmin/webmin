@@ -38,7 +38,7 @@ print &ui_columns_end();
 print &ui_links_row(\@links);
 print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
 
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%><tr>\n";
 print "<form action=apply.cgi>\n";
 print "<td><input type=submit value='$text{'inittab_apply'}'></td>\n";

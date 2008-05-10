@@ -259,7 +259,7 @@ elsif ($init_mode eq "win32" && $access{'bootup'}) {
 			     [ "addboot_start", $text{'index_addboot_start'} ],
 			     [ "delboot_stop", $text{'index_delboot_stop'} ],
 			    ]);
-	print "<hr>\n";
+	print &ui_hr();
 	}
 elsif ($init_mode eq "rc" && $access{'bootup'}) {
 	# Show FreeBSD scripts
@@ -296,7 +296,7 @@ elsif ($init_mode eq "rc" && $access{'bootup'}) {
 	}
 
 # reboot/shutdown buttons
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 if ($init_mode eq 'init' && $access{'bootup'} == 1) {
 	print &ui_buttons_row("change_rl.cgi", $text{'index_rlchange'},

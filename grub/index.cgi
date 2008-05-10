@@ -40,7 +40,7 @@ else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	}
 print &ui_links_row(\@crlinks);
-print "<hr>\n";
+print &ui_hr();
 
 print &ui_buttons_start();
 

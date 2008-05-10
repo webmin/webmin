@@ -60,7 +60,7 @@ else {
 	}
 print "<a href=\"edit_export.cgi?new=1\">$text{'index_add'}</a> <p>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%> <tr>\n";
 print "<td><form action=restart_mountd.cgi>\n";
 print "<input type=submit value=\"$text{'index_apply'}\">\n";

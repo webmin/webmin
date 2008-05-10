@@ -153,7 +153,7 @@ else {
 
 # Form to find existing .htaccess files
 if ($can_create) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_form_start("search.cgi");
 	print &ui_submit($text{'index_search'}),"\n";
 	print &ui_textbox("search", $accessdirs[0] eq "/" ? "" : $accessdirs[0],

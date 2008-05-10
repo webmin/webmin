@@ -77,7 +77,7 @@ if (!-r $config{'req_resource_cmd'}) {
 @icons = map { "images/${_}.gif" } @opts;
 &icons_table(\@links, \@titles, \@icons);
 
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%><tr>\n";
 
 # Show status

@@ -46,7 +46,7 @@ if (!-r $config{'slpd_conf'}) {
 	    "images/dacfg.gif", "images/log.gif" );
 &icons_table(\@links, \@titles, \@icons);
 
-print "<hr>\n";
+print &ui_hr();
 if (&slpd_is_running()) {
   print "<form action=stop.cgi>\n";
   print "<table width=100%><tr><td>\n";

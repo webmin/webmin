@@ -140,7 +140,7 @@ elsif (@$rules && !$in{'reset'}) {
 	print &ui_form_end();
 
 	# Show buttons to apply configuration and start at boot
-	print "<hr>\n";
+	print &ui_hr();
 
 	$atboot = &check_boot();
 	print &ui_buttons_start();

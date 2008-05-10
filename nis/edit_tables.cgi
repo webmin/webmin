@@ -128,7 +128,7 @@ else {
 	}
 
 if ($config{'manual_build'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%><tr>\n";
 	print "<form action=build.cgi>\n";
 	print "<input type=hidden name=table value='$in{'table'}'>\n";
