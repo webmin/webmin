@@ -113,7 +113,7 @@ else {
 	}
 
 # Show start/stop buttons
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%>\n";
 $cmd = &hostsentry_start_cmd();
 if ($pid) {

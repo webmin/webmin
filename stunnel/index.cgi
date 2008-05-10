@@ -28,7 +28,7 @@ $ver = &get_stunnel_version(\$out);
 	&text('index_version', $ver));
 #if ($ver >= 4) {
 #	print "<p>",&text('index_eversion', $ver, 4.0),"<p>\n";
-#	print "<hr>\n";
+#	print &ui_hr();
 #	&ui_print_footer("/", $text{'index'});
 #	exit;
 #	}
@@ -120,7 +120,7 @@ else {
 	print &ui_links_row([ $links[2] ]);
 	}
 
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%><tr>\n";
 print "<form action=apply.cgi>\n";
 print "<td><input type=submit value='$text{'index_apply'}'></td>\n";

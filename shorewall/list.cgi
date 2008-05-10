@@ -112,7 +112,7 @@ if (@table) {
 	print &ui_form_end([ [ "delete", $text{'list_delete'} ] ]);
 	}
 
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 print &ui_buttons_row("manual_form.cgi", $text{'list_manual'},
 		      &text('list_manualdesc',

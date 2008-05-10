@@ -36,7 +36,7 @@ else {
 
 		# Check if shorewall is running by looking for the 'shorewall'
 		# chain in the filter table
-		print "<hr>\n";
+		print &ui_hr();
 		print "<table width=100%>\n";
 		system("iptables -t filter -L shorewall -n >/dev/null 2>&1");
 		if ($?) {

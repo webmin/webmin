@@ -73,7 +73,7 @@ else {
 	}
 &show_button();
 
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 if ($access{'sched'}) {
 	# Open scheduled monitoring form

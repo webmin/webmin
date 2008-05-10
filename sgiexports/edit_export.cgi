@@ -13,7 +13,7 @@ else {
 	$export = $exports[$in{'idx'}];
 	$opts = $export->{'opts'};
 	}
-print "<hr>\n";
+print &ui_hr();
 
 print "<form action=save_export.cgi method=post>\n";
 print "<input type=hidden name=new value='$in{'new'}'>\n";
@@ -93,6 +93,6 @@ else {
 	}
 print "</tr></table></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("", $text{'index_return'});
 

@@ -90,7 +90,7 @@ if ($history) {
 	print &ui_table_start($text{'shell_history'}, "width=100%", 2);
 	print &ui_table_row(undef, "<pre>$history</pre>", 2);
 	print &ui_table_end();
-	print "<hr>\n";
+	print &ui_hr();
 	}
 
 print "$text{'index_desc'}<br>\n";

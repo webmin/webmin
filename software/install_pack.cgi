@@ -76,7 +76,7 @@ elsif ($in{'source'} == 3) {
 	@packs = &update_system_install($in{'update'}, \%in);
 	&reset_environment();
 
-	print "<hr>\n" if (@packs);
+	print &ui_hr() if (@packs);
 	foreach $p (@packs) {
 		local @pinfo = &show_package_info($p);
 		}

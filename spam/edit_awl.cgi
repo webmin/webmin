@@ -100,7 +100,7 @@ else {
 &close_auto_whitelist_dbm();
 
 # Show delete buttons
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 if ($in{'user'} || &supports_auto_whitelist() == 1) {
 	# Delete for this user

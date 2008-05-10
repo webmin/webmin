@@ -91,7 +91,7 @@ push(@icons, "images/manual.gif");
 
 # Check if sshd is running
 $pid = &get_sshd_pid();
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 if ($pid) {
 	# Running .. offer to apply changes and stop

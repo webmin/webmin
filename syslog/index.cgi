@@ -158,7 +158,7 @@ if ($access{'any'}) {
 
 # Buttons to restart/start syslogd
 if (!$access{'noedit'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	$pid = &get_syslog_pid();
 	print &ui_buttons_start();
 	if ($pid) {

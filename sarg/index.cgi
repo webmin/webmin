@@ -45,7 +45,7 @@ $odir = &find_value("output_dir", $conf);
 $odir ||= &find_value("output_dir", $conf, 1);
 $sfile = &find_value("access_log", $conf);
 if ($sfile || $odir && -r "$odir/index.html") {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	}
 if ($sfile) {

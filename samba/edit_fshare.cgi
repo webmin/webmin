@@ -126,7 +126,7 @@ if ($s) {
 		$disp++;
 		}
 	if ($disp) {
-		print "<hr>\n";
+		print &ui_hr();
 		print &ui_subheading($text{'share_option'});
 		&icons_table(\@url, \@text, \@icon);
 		}

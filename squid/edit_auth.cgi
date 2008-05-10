@@ -38,7 +38,7 @@ print "</table></td></tr></table>\n";
 print "<input type=submit value=$text{'eauth_buttsave'}></form>\n";
 
 if ($authfile) {
-	print "<hr>\n";
+	print &ui_hr();
 	print $text{'eauth_msgaccess'};
 	print "\n<p>\n";
 	@users = &list_auth_users($authfile);

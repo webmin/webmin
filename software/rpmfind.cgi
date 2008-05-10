@@ -29,7 +29,7 @@ print &ui_form_end();
 
 if ($in{'search'}) {
 	# Call the rpmfind.net website to get matches
-	print "<hr>\n";
+	print &ui_hr();
 	$out = "";
 	&http_download($rpmfind_host, $rpmfind_port,
 		       $rpmfind_page.&urlize($in{'search'}), \$out);

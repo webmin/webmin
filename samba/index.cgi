@@ -212,7 +212,7 @@ foreach $i (0..$#gc_acl) {
 	}
 
 if ($disp) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'global_title'});
 	&icons_table(\@gc_progs1, \@gc_names1, \@gc_icons1, 4);
 	}
@@ -253,7 +253,7 @@ if ($samba_version >= 3) {
 
 if (@utitles) {
 	# We have some icons to show
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'global_users'});
 	&icons_table(\@ulinks, \@utitles, \@uicons, 3);
 	}
@@ -261,7 +261,7 @@ if (@utitles) {
 if ($access{'apply'}) {
 	$isrun = &is_samba_running();
 	if ($isrun == 0) {
-		print "<hr>\n";
+		print &ui_hr();
 		print "<form action=start.cgi>\n";
 		print "<table width=100%><tr>\n";
 		print "<td><input type=submit value=\"$text{'index_start'}\"></td>\n";
@@ -269,7 +269,7 @@ if ($access{'apply'}) {
 		print "</tr></table></form>\n";
 		}
 	elsif ($isrun == 1) {
-		print "<hr>\n";
+		print &ui_hr();
 		print "<table width=100%><tr>\n";
 		print "<form action=restart.cgi>\n";
 		print "<td><input type=submit value=\"$text{'index_restart'}\"></td>\n";

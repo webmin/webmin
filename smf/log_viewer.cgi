@@ -41,7 +41,7 @@ print
  "<input type=submit name=\"submit\" value=\"$text{'log_viewer_submit'}\">";
 print "</p></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 
 print "<p><pre>";
 print "$data";

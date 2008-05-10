@@ -5,7 +5,7 @@
 require './sgiexports-lib.pl';
 &header($text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("exports", "man"));
-print "<hr>\n";
+print &ui_hr();
 
 @exports = &get_exports();
 if (@exports) {
@@ -28,7 +28,7 @@ else {
 	}
 print "<a href='edit_export.cgi?new=1'>$text{'index_add'}<p>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%> <tr>\n";
 print "<td><form action=apply.cgi>\n";
 print "<input type=submit value=\"$text{'index_apply'}\">\n";
@@ -36,6 +36,6 @@ print "</form></td>\n";
 print "<td valign=top>$text{'index_applymsg'}</td>\n";
 print "</tr> <tr> </table>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("/", $text{'index'});
 

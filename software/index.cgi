@@ -21,7 +21,7 @@ print &ui_form_end();
 print "</tr></table>\n";
 
 # Show form to install a new package
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'index_install'});
 print &text('index_installmsg', &package_system()),"<p>\n";
 
@@ -51,7 +51,7 @@ print &ui_form_end();
 
 # Show search form by file, if supported by package system
 if (!$no_package_filesearch) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_ident'});
 	print &text('index_identmsg', &package_system()),"<p>\n";
 	print &ui_form_start("file_info.cgi");
@@ -62,7 +62,7 @@ if (!$no_package_filesearch) {
 	}
 
 if ($has_update_system && defined(&update_system_form)) {
-	print "<hr>\n";
+	print &ui_hr();
 	&update_system_form();
 	}
 

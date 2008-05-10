@@ -100,7 +100,7 @@ if ($access{'edit'}) {
 $myip = &get_my_address();
 $myscan = &address_to_broadcast($myip, 1) if ($myip);
 if ($access{'find'} || $access{'auto'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	if ($access{'find'}) {
 		# Buttons to scan and broadcast for servers

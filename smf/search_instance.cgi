@@ -40,7 +40,7 @@ print
 print "&nbsp;<input type=submit value=\"$text{'search_instance_go'}\">\n";
 print "</form>\n";
 if ($got_results == 1) {
-	print "<hr>\n";
+	print &ui_hr();
 	for $svc_info (@svcs_info) {
 		$fmri = $svc_info->{'FMRI'};
 		print "<p>\n";
@@ -48,7 +48,7 @@ if ($got_results == 1) {
 		print "</p>\n";
 		}
 } elsif ($got_results == 0) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<p>$text{'search_instance_noresults'}</p>\n";
 	}
 

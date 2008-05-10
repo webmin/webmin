@@ -19,7 +19,7 @@ if (!$in{'confirm'}) {
 
 	if (&has_command($config{'squidclient'})) {
 		# Show form to clear just one URL
-		print "<hr>\n";
+		print &ui_hr();
 		print &ui_form_start("purge.cgi");
 		print "<b>$text{'clear_url'}</b>\n";
 		print &ui_textbox("url", undef, 50),"\n";

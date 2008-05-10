@@ -142,7 +142,7 @@ else {
 		# Show buttons for HUPing spamd processes (if any)
 		if (!$module_info{'usermin'} &&
 		    (@pids = &get_process_pids())) {
-			print "<hr>\n";
+			print &ui_hr();
 			print "<form action=apply.cgi>\n";
 			print "<table>\n";
 			print "<tr> <td><input type=submit ",

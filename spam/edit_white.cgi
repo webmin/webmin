@@ -89,7 +89,7 @@ else {
 &end_form(undef, $text{'save'});
 
 # Show whitelist import form
-print "<hr>\n";
+print &ui_hr();
 print "$text{'white_importdesc'}<p>\n";
 print "<form action=import.cgi method=post enctype=multipart/form-data>\n";
 print "<table>\n";

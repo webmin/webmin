@@ -45,7 +45,7 @@ else {
 # Show other module's logs
 @others = &get_other_module_logs();
 if (@others) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_columns_start([ $text{'destinations_desc'},
 				  $text{'destinations_file'},
 				  "" ]);

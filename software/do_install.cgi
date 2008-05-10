@@ -45,7 +45,7 @@ else {
 	# Must install and show one by one
 	foreach $p (@packages) {
 		# attempt to install
-		print "<hr>\n" if ($p ne $packages[0]);
+		print &ui_hr() if ($p ne $packages[0]);
 		($package, $desc) = split(/\s+/, $p, 2);
 		&clean_environment();
 		if ($show_install_progress) {
@@ -93,7 +93,7 @@ if ($in{'need_unlink'}) {
 		"delete_file.cgi?file=".
 		&urlize($in{'file'})),"<p>\n";
 	}
-print "<hr>\n";
+print &ui_hr();
 &ui_print_footer("", $text{'index_return'});
 exit;
 }

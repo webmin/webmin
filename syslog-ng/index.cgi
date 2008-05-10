@@ -31,7 +31,7 @@ if (!-r $config{'syslogng_conf'}) {
 &icons_table(\@links, \@titles, \@icons, 5);
 
 # Show start/stop buttons
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 if (&is_syslog_ng_running()) {
 	print &ui_buttons_row("apply.cgi", $text{'index_apply'},

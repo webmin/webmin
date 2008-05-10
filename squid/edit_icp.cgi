@@ -30,7 +30,7 @@ else {
 	print &ui_links_row([ $links[2] ]);
 	}
 
-print "<hr>\n";
+print &ui_hr();
 print "<form action=save_icp.cgi>\n";
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'eicp_cso'}</b></td> </tr>\n";

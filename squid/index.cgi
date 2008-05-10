@@ -78,7 +78,7 @@ if (!&check_cache($conf, \@caches)) {
 	print "<input type=hidden name=caches value=\"",
 		join(" ",@caches),"\">\n";
 	print "</form></center>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	}
 else {
 	&ui_print_header(undef, $text{'index_header'}, "", "intro",
@@ -146,7 +146,7 @@ for($i=0; $i<@otitles; $i++) {
 
 # Show start/stop/apply buttons
 if ($config{'restart_pos'} != 1) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	if ($pid = &is_squid_running()) {
 		if ($access{'restart'}) {
