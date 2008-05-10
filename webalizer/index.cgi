@@ -154,7 +154,7 @@ if (@logs && !$access{'view'}) {
 	}
 
 if (!$access{'view'} && $access{'global'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=edit_global.cgi>\n";
 	print "<table width=100%><tr>\n";
 	print "<td><input type=submit value='$text{'index_global'}'></td>\n";
