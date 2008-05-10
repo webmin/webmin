@@ -20,7 +20,7 @@ foreach $i ('ifcs', 'routes', 'dns', 'hosts',
 
 if (defined(&apply_network) && $access{'apply'} && !$zone) {
 	# Allow the user to apply the network config
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	print &ui_buttons_row("apply.cgi", $text{'index_apply'},
 			      $text{'index_applydesc'});

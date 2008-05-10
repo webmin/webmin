@@ -22,7 +22,7 @@ printf "<input type=submit value=\"%s\">\n",
 print "</form>\n";
 
 # Show routes active now
-print "<hr>\n";
+print &ui_hr();
 if (defined(&list_routes)) {
 	if (defined(&delete_route)) {
 		# With deletion button
