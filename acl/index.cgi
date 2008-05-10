@@ -94,7 +94,7 @@ else {
 print "<p>\n";
 
 if ($shown_users && $access{'groups'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	}
 
 if ($access{'groups'}) {
@@ -191,7 +191,7 @@ push(@links, "edit_pass.cgi");
 push(@titles, $text{'pass_title'});
 
 if (@icons) {
-	print "<hr>\n";
+	print &ui_hr();
 	&icons_table(\@links, \@titles, \@icons, scalar(@links));
 	}
 
