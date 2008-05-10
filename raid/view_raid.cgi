@@ -116,7 +116,7 @@ if ($sp) {
 	}
 print &ui_table_end();
 
-print "<hr>\n";
+print &ui_hr();
 @grid = ( );
 
 if ($raid_mode eq "raidtools" && !$st[2]) {

@@ -101,7 +101,7 @@ if (!$inet) {
 	}
 
 if (!$inet && $pid) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=restart.cgi>\n";
 	print "<input type=hidden name=pid value='$pid'>\n";
 	print "<table width=100%><tr>\n";
@@ -110,7 +110,7 @@ if (!$inet && $pid) {
 	print "</tr></table></form>\n";
 	}
 elsif (!$inet && !$pid) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=start.cgi>\n";
 	print "<table width=100%><tr>\n";
 	print "<td><input type=submit value=\"$text{'index_start'}\"></td>\n";

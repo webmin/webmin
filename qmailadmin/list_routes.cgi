@@ -51,7 +51,7 @@ if (@routes) {
         print &ui_form_end([ [ "delete", $text{'routes_delete'} ] ]);
 	}
 
-print "<hr>\n";
+print &ui_hr();
 print "<form action=save_defroute.cgi>\n";
 print "<input type=hidden name=idx value='$defroute->{'idx'}'>\n"
 	if ($defroute);

@@ -63,7 +63,7 @@ else {
 # Form for mdadm monitoring options
 if ($raid_mode eq "mdadm") {
 	$notif = &get_mdadm_notifications();
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_form_start("save_mdadm.cgi", "post");
 	print &ui_table_start($text{'index_header'}, undef, 2, [ "width=30%" ]);
 

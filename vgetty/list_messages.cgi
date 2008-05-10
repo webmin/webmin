@@ -56,7 +56,7 @@ else {
 	print "<p><b>$text{'messages_none'}</b> <p>\n";
 	}
 
-print "<hr>\n";
+print &ui_hr();
 print "$text{'messages_updesc'}<p>\n";
 print "<form action=upload.cgi method=post enctype=multipart/form-data>\n";
 print "<input type=submit value='$text{'messages_upload'}'>\n";

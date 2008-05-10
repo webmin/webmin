@@ -52,7 +52,7 @@ if (!$config{'mailq_count'}) {
 &icons_table(\@olinks, \@otitles, \@oicons);
 
 # Check if the qmail processes are running
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 if (&is_qmail_running()) {
 	print &ui_buttons_row("stop.cgi", $text{'index_stop'},

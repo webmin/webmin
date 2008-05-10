@@ -6,7 +6,7 @@ require '../web-lib.pl';
 use Socket;
 &init_config();
 &header($text{'index_title'}, "", undef, &get_product_name() eq 'webmin', 1);
-print "<hr>\n";
+print &ui_hr();
 
 if ($config{'program'}) {
 	# Check if Xvnc is installed
@@ -77,7 +77,7 @@ print "$text{'index_nojava'} <p>\n";
 print "</applet><br>\n";
 print "$text{'index_credits'}</center>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer("/", $text{'index'});
 
 sub connect_timeout
@@ -87,7 +87,7 @@ sub connect_timeout
 sub error_exit
 {
 print "<p>",@_,"<p>\n";
-print "<hr>\n";
+print &ui_hr();
 &footer("/", $text{'index'});
 exit;
 }

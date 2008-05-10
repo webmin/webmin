@@ -31,7 +31,7 @@ if (!-r $config{'vgetty_config'}) {
 	   "images/messages.gif" );
 &icons_table(\@links, \@titles, \@icons);
 
-print "<hr>\n";
+print &ui_hr();
 print "<form action=vgetty_apply.cgi>\n";
 print "<table width=100%><tr>\n";
 print "<td><input type=submit value='$text{'vgetty_apply'}'></td>\n";

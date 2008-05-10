@@ -97,7 +97,7 @@ print "<input type=submit name=enable value='$text{'index_enable'}'>\n";
 print "<input type=submit name=disable value='$text{'index_disable'}'>\n";
 print "</form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print "<table>\n";
 print "<form action=edit_defaults.cgi>\n";
 print "<tr> <td><input type=submit value=\"$text{'index_defaults'}\"></td>\n";

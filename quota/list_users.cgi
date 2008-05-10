@@ -207,7 +207,7 @@ else {
 
 # Show form for setting default quotas for new users
 if ($access{'default'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &text('lusers_info', $text{'lusers_useradmin'});
 	print "<p>\n";
 
@@ -237,7 +237,7 @@ if ($access{'default'}) {
 # Show form for email notifications
 if ($access{'email'} && &foreign_check("cron") &&
     &foreign_check("mailboxes")) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_form_start("save_email.cgi");
 	print &ui_hidden("filesys", $f);
 	print &ui_table_start($text{'lusers_emailheader'}, "width=100%", 4);
