@@ -36,7 +36,7 @@ else {
 printf "<a href=\"edit_authuser.cgi?file=%s&url=%s\">%s</a><p>\n",
         &urlize($f), &urlize(&this_url()), $text{'authu_add'};
 
-print "<hr>\n";
+print &ui_hr();
 $s = $config{"sync_$f"};
 print "<form action=save_sync.cgi>\n";
 print "$text{'authu_sync'} <p>\n";

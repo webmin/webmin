@@ -25,7 +25,7 @@ if ($access{'types'} eq '*') {
 &config_icons("directory", "edit_files.cgi?file=".&urlize($in{'file'})."&idx=$in{'idx'}&",
 	      $sw_icon, $ed_icon ? ( $ed_icon ) : ( ));
 
-print "<hr>\n";
+print &ui_hr();
 print &ui_form_start("change_files.cgi", "post");
 print &ui_hidden("file", $in{'file'});
 print &ui_hidden("idx", $in{'idx'});

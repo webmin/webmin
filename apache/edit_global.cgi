@@ -25,7 +25,7 @@ if ($in{'type'} == 6) {
 	if (!$mfile) { $mfile = &server_root("etc/mime.types", $conf); }
 	if (!-r $mfile) { $mfile = &server_root("conf/mime.types", $conf); }
 	$mfile = &server_root($mfile, $conf);
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'global_mime'});
 	print "$text{'global_mimedesc'}<p>\n";
 	@links = ( "<a href=\"edit_gmime_type.cgi?file=$mfile\">".

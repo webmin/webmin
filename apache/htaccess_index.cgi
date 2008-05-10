@@ -29,7 +29,7 @@ if ($access{'types'} eq '*') {
           &find_directive_struct("FilesMatch", $conf) );
 if (@file && $httpd_modules{'core'} >= 1.2) {
 	# Files sub-directives
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'htindex_file'});
 	foreach $f (@file) {
 		$what = &dir_name($f);

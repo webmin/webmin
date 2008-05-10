@@ -31,7 +31,7 @@ if ($in{'virt'} && $access{'types'} eq '*') {
 	 &find_directive_struct("LocationMatch", $conf),
 	 &find_directive_struct("Proxy", $conf) );
 if (@dir) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'dir_title'});
 	foreach $d (@dir) {
 		$what = &dir_name($d);
@@ -88,7 +88,7 @@ print &ui_form_end([ [ "", $text{'create'} ] ]);
 
 if ($in{'virt'} && $access{'vaddr'}) {
 	# Show form for changing virtual server
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_form_start("save_vserv.cgi");
 	print &ui_hidden("virt", $in{'virt'});
 	print &ui_table_start($text{'virt_opts'}, undef, 2);
