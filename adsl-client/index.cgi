@@ -139,7 +139,7 @@ else {
 	print "<input type=submit value='$text{'index_save'}'></form>\n";
 
 	# Show connected/disconnect buttons
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	local ($dev, $ip) = &get_adsl_ip();
 	if ($ip) {

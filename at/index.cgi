@@ -43,7 +43,7 @@ if (@jobs) {
 	print &ui_columns_end();
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
-	print "<hr>\n";
+	print &ui_hr();
 	}
 
 
@@ -101,7 +101,7 @@ if ($access{'allow'} && $config{'allow_file'}) {
 	# Show form to manage allowed and denied users
 	@allow = &list_allowed();
 	@deny = &list_denied();
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_form_start("save_allow.cgi", "post");
 	print &ui_table_start($text{'index_allow'}, undef, 2);
 	print &ui_table_row($text{'index_amode'},

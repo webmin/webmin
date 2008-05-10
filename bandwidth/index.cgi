@@ -382,7 +382,7 @@ if ($in{'by'}) {
 }
 
 if (!$missingrule && $sysconf) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 
 	# Show button to rotate now

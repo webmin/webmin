@@ -44,7 +44,7 @@ else {
 	print "<a href=edit_export.cgi>$text{'index_add'}</a> <p>\n";
 	}
 
-print "<hr>\n";
+print &ui_hr();
 
 print &ui_buttons_start();
 print &ui_buttons_row("restart_mountd.cgi",

@@ -132,7 +132,7 @@ if (&has_bacula_dir() && &has_node_groups()) {
 
 if (&has_bacula_dir()) {
 	# Show icons for actions
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_actions'});
 	if (&is_bacula_running("bacula-dir")) {
 		@actions = ( "backup", "dirstatus", "clientstatus",
@@ -148,7 +148,7 @@ if (&has_bacula_dir()) {
 		}
 	}
 
-print "<hr>\n";
+print &ui_hr();
 
 # See what processes are running
 print "<b>$text{'index_status'}</b>\n";

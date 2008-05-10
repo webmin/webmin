@@ -61,7 +61,7 @@ else {
 &show_button();
 
 if ($access{'global'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	@links = ( "edit_mkisofs.cgi", "edit_dev.cgi" );
 	@titles = ( $text{'mkisofs_title'}, $text{'dev_title'} );
 	@icons = ( "images/mkisofs.gif", "images/dev.gif" );
