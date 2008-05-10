@@ -137,11 +137,11 @@ print "<center><h3>",&text('password_done', "/"),"</h3></center>\n";
 sub pass_error
 {
 &header(undef, undef, undef, undef, 1, 1);
-print "<hr>\n";
+print &ui_hr();
 
 print "<center><h3>",$text{'password_err'}," : ",@_,"</h3></center>\n";
 
-print "<hr>\n";
+print &ui_hr();
 &footer();
 exit;
 }
