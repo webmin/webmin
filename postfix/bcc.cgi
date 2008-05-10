@@ -25,7 +25,7 @@ print "</tr>\n";
 print "</table></td></tr></table><p>\n";
 print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
 print "<p>\n";
-print "<hr>\n";
+print &ui_hr();
 
 print &ui_tabs_start([ [ "sender", $text{'bcc_sender'} ],
 		       [ "recipient", $text{'bcc_recipient'} ] ],

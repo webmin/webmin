@@ -41,7 +41,7 @@ print "</tr>\n";
 
 print "</table></td></tr></table><p>\n";
 print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
-print "<hr>\n";
+print &ui_hr();
 print "<font size=\"-1\"> <p>", &text('debug_version', postfix_module_version()),
       "</p></font>\n";
 &ui_print_footer("", $text{'index_return'});

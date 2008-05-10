@@ -64,7 +64,7 @@ print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 if ($has_client_access) {
-	print "<hr>\n";
+	print &ui_hr();
 	&generate_map_edit("smtpd_client_restrictions:check_client_access",
 		$text{'map_click'}." ".
 		"<font size=\"-1\">".&hlink("$text{'help_map_format'}",
