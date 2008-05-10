@@ -48,7 +48,7 @@ else {
 	}
 
 if ($access{'sync'}) {
-	print "<hr>\n", $text{'index_info'}, " <p>\n";
+	print &ui_hr(), $text{'index_info'}, " <p>\n";
 
 	print "<form action=save_sync.cgi>\n";
 	printf "<input type=checkbox name=add value=1 %s>\n",

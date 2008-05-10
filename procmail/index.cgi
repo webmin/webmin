@@ -158,7 +158,7 @@ else {
 	}
 
 # Manual edit button
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 print &ui_buttons_row("manual_form.cgi",
 		      $text{'index_man'}, $text{'index_mandesc'});

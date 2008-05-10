@@ -71,7 +71,7 @@ if (@qfiles) {
 
 	# Show flush button, if the needed command is installed
 	if (&has_command($config{'postfix_queue_command'})) {
-		print "<hr>\n";
+		print &ui_hr();
 		print "<table width=100%><tr><form action=flushq.cgi>\n";
 		print "<td><input type=submit ",
 		      "value='$text{'mailq_flush'}'></td>\n";

@@ -55,7 +55,7 @@ else {
 		&icons_table(\@links, \@titles, \@images);
 
 		# Start or stop/apply buttons
-		print "<hr>\n";
+		print &ui_hr();
 		print "<table width=100%>\n";
 		$pid = &get_pptpd_pid();
 		if ($access{'apply'}) {

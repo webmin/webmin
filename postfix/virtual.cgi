@@ -45,7 +45,7 @@ if ($postfix_version >= 2) {
 
 print "</table></td></tr></table><p>\n";
 print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
-print "<hr>\n";
+print &ui_hr();
 print "<br>\n";
 
 

@@ -58,7 +58,7 @@ if (!-d "$config{'cvsroot'}/CVSROOT") {
 
 if ($access{'setup'}) {
 	# Check if run from inetd or xinetd
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%><tr>\n";
 	$inet = &check_inetd();
 	if ($inet && $inet->{'args'} =~ /\s(\/\S+)\s+pserver$/) {

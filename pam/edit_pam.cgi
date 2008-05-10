@@ -128,7 +128,7 @@ if (&include_style(\@pams) == 3) {
 	}
 
 # Delete whole service form
-print "<hr>\n";
+print &ui_hr();
 print &ui_form_start("delete_pam.cgi");
 print &ui_hidden("idx", $in{'idx'});
 print &ui_form_end([ [ undef, $text{'edit_delete'} ] ]);

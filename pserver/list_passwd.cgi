@@ -39,7 +39,7 @@ else {
 	}
 print &ui_links_row(\@links);
 
-print "<hr>\n";
+print &ui_hr();
 print "<form action=save_sync.cgi>\n";
 print "$text{'passwd_sync'}<p>\n";
 printf "<input type=checkbox name=sync_create value=1 %s> %s<br>\n",

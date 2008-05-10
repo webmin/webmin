@@ -65,7 +65,7 @@ else {
 	}
 print "<a href='edit_mgetty.cgi?new=1'>$text{'mgetty_add'}</a><p>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print "<form action=mgetty_apply.cgi>\n";
 print "<table width=100%><tr>\n";
 print "<td><input type=submit value='$text{'mgetty_apply'}'></td>\n";

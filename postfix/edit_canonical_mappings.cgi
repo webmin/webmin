@@ -60,6 +60,6 @@ print "</table></td></tr></table><p>\n";
 print "<input type=submit value=\"$text{'alias_save'}\">\n";
 print "<input type=submit name=delete value=\"$text{'delete_alias'}\"></form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 print "<br>\n";
 

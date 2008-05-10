@@ -57,7 +57,7 @@ else {
 		# Show buttons for connect/disconnect and status
 		local @dials = grep { $_->{'name'} =~ /^Dialer\s+/i }
 				    @$conf;
-		print "<hr>\n";
+		print &ui_hr();
 		print "<table width=100%>\n";
 		($ip, $pid, $sect) = &get_connect_details();
 		if ($ip && kill(0, $pid)) {

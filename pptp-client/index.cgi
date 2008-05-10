@@ -40,7 +40,7 @@ else {
 		}
 	print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><p>\n";
 
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%>\n";
 	print "<tr><form action=edit_opts.cgi>\n";
 	print "<td><input type=submit ",

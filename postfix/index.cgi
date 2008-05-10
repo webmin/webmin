@@ -124,7 +124,7 @@ foreach $oitem (@onames)
 
 if ($access{'startstop'})
 {
-    print "<hr>\n";
+    print &ui_hr();
 
     if (&is_postfix_running())
     {
