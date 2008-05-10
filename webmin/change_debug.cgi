@@ -37,6 +37,11 @@ else {
 	$gconfig{'debug_size'} = $in{'debug_size'}*$in{'debug_size_units'};
 	}
 
+# What to debug
+$gconfig{'debug_noweb'} = !$in{'debug_web'};
+$gconfig{'debug_nocmd'} = !$in{'debug_cmd'};
+$gconfig{'debug_nocron'} = !$in{'debug_cron'};
+
 # Write out
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");

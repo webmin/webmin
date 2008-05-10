@@ -32,6 +32,15 @@ print &ui_table_row($text{'debug_size'},
 		    [ 0, &ui_bytesbox("debug_size", $gconfig{'debug_size'}) ] ]
 		 ));
 
+# Debug background processes?
+print &ui_table_row($text{'debug_procs'},
+	&ui_checkbox("debug_web", 1, $text{'debug_web'},
+		     !$gconfig{'debug_noweb'})."\n".
+	&ui_checkbox("debug_cmd", 1, $text{'debug_cmd'},
+		     !$gconfig{'debug_nocmd'})."\n".
+	&ui_checkbox("debug_cron", 1, $text{'debug_cron'},
+		     !$gconfig{'debug_nocron'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

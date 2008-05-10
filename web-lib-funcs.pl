@@ -906,7 +906,7 @@ local(@pids);
 @pids = &find_byname($_[0]);
 return scalar(@pids) if (&is_readonly_mode());
 &webmin_debug_log('KILL', "signal=$_[1] name=$_[0]")
-	if ($gconfig{'debug_what_write'});
+	if ($gconfig{'debug_what_procs'});
 if (@pids) { kill($_[1], @pids); return scalar(@pids); }
 else { return 0; }
 }
@@ -2609,19 +2609,35 @@ else {
 	&error("Script was not run with full path (failed to find $0 under $root_directory)") if (!$rok);
 	}
 
+# Work out of this is a web, command line or cron job
+if (!$main::webmin_script_type) {
+	if ($ENV{'SCRIPT_NAME'}) {
+		# Run via a CGI
+		$main::webmin_script_type = 'web';
+		}
+	else {
+		# Cron jobs have no TTY
+		if ($gconfig{'os_type'} eq 'windows' ||
+		    open(DEVTTY, ">/dev/tty")) {
+			$main::webmin_script_type = 'cmd';
+			close(DEVTTY);
+			}
+		else {
+			$main::webmin_script_type = 'cron';
+			}
+		}
+	}
+
 # Set the umask based on config
 if ($gconfig{'umask'} && !$main::umask_already++) {
 	umask(oct($gconfig{'umask'}));
 	}
 
 # If this is a cron job or other background task, set the nice level
-if (!$main::nice_already && !$ENV{'SCRIPT_NAME'} && $gconfig{'nice'} &&
-    $gconfig{'os_type'} ne 'windows') {
+if (!$main::nice_already && $gconfig{'nice'} &&
+    $main::webmin_script_type eq 'cron') {
 	# Cron jobs have no tty
-	if (!open(TTY, ">/dev/tty")) {
-		eval 'use POSIX; POSIX::nice($gconfig{\'nice\'});';
-		}
-	close(TTY);
+	eval 'use POSIX; POSIX::nice($gconfig{\'nice\'});';
 	}
 $main::nice_already++;
 
@@ -2678,8 +2694,8 @@ if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
 	if ($gconfig{'debug_what_start'}) {
 		local $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
 		$main::debug_log_start_time = time();
-		&webmin_debug_log("START",
-			"module=$module_name script=$script_name");
+		&webmin_debug_log("START", "script=$script_name");
+		$main::debug_log_start_module = $module_name;
 		}
 	}
 
@@ -3598,6 +3614,7 @@ sub webmin_debug_log
 {
 local ($type, $msg) = @_;
 return 0 if (!$main::opened_debug_log);
+return 0 if ($gconfig{'debug_no'.$main::webmin_script_type});
 local $now = time();
 local @tm = localtime($now);
 local $line = sprintf
@@ -3714,7 +3731,7 @@ sub kill_logged
 {
 return scalar(@_)-1 if (&is_readonly_mode());
 &webmin_debug_log('KILL', "signal=$_[0] pids=".join(" ", @_[1..@_-1]))
-	if ($gconfig{'debug_what_write'});
+	if ($gconfig{'debug_what_procs'});
 &additional_log('kill', $_[0], join(" ", @_[1..@_-1])) if (@_ > 1);
 if ($gconfig{'os_type'} eq 'windows') {
 	# Emulate some kills with process.exe
@@ -3759,7 +3776,7 @@ if (&is_readonly_mode()) {
 local $src = &translate_filename($_[0]);
 local $dst = &translate_filename($_[1]);
 &webmin_debug_log('RENAME', "src=$src dst=$dst")
-	if ($gconfig{'debug_what_write'});
+	if ($gconfig{'debug_what_ops'});
 local $ok = rename($src, $dst);
 if (!$ok && $! !~ /permission/i) {
 	# Try the mv command, in case this is a cross-filesystem rename
@@ -3800,7 +3817,7 @@ if (&is_readonly_mode()) {
 local $src = &translate_filename($_[0]);
 local $dst = &translate_filename($_[1]);
 &webmin_debug_log('SYMLINK', "src=$src dst=$dst")
-	if ($gconfig{'debug_what_write'});
+	if ($gconfig{'debug_what_ops'});
 return symlink($src, $dst);
 }
 
@@ -3816,7 +3833,7 @@ if (&is_readonly_mode()) {
 local $src = &translate_filename($_[0]);
 local $dst = &translate_filename($_[1]);
 &webmin_debug_log('LINK', "src=$src dst=$dst")
-	if ($gconfig{'debug_what_write'});
+	if ($gconfig{'debug_what_ops'});
 unlink($dst);			# make sure link works
 return link($src, $dst);
 }
@@ -3832,7 +3849,7 @@ if (&is_readonly_mode()) {
 	}
 $dir = &translate_filename($dir);
 return 1 if (-d $dir && $recur);	# already exists
-&webmin_debug_log('MKDIR', $dir) if ($gconfig{'debug_what_write'});
+&webmin_debug_log('MKDIR', $dir) if ($gconfig{'debug_what_ops'});
 local $rv = mkdir($dir, $perms);
 if (!$rv && $recur) {
 	# Failed .. try mkdir -p
@@ -3856,7 +3873,7 @@ if (&is_readonly_mode()) {
 	return 1;
 	}
 @files = map { &translate_filename($_) } @files;
-if ($gconfig{'debug_what_write'}) {
+if ($gconfig{'debug_what_ops'}) {
 	foreach my $f (@files) {
 		&webmin_debug_log('PERMS',
 			"file=$f user=$user group=$group perms=$perms");
@@ -3909,7 +3926,7 @@ my $rv = 1;
 my $err;
 foreach my $f (@_) {
 	my $realf = &translate_filename($f);
-	&webmin_debug_log('UNLINK', $realf) if ($gconfig{'debug_what_write'});
+	&webmin_debug_log('UNLINK', $realf) if ($gconfig{'debug_what_ops'});
 	if (-d $realf) {
 		if (!rmdir($realf)) {
 			if ($gconfig{'os_type'} eq 'windows') {
@@ -3952,7 +3969,7 @@ local ($src, $dst) = @_;
 local $ok = 1;
 local ($err, $out);
 &webmin_debug_log('COPY', "src=$src dst=$dst")
-	if ($gconfig{'debug_what_write'});
+	if ($gconfig{'debug_what_ops'});
 if ($gconfig{'os_type'} eq 'windows') {
 	# No tar or cp on windows, so need to use copy command
 	$src =~ s/\//\\/g;
@@ -5807,7 +5824,8 @@ sub END
 {
 if ($$ == $main::initial_process_id) {
 	&cleanup_tempnames();
-	if ($gconfig{'debug_what_start'} && $main::debug_log_start_time) {
+	if ($gconfig{'debug_what_start'} && $main::debug_log_start_time &&
+	    $main::debug_log_start_module eq $module_name) {
 		local $len = time() - $main::debug_log_start_time;
 		&webmin_debug_log("STOP", "runtime=$len");
 		$main::debug_log_start_time = 0;

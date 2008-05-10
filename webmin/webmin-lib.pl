@@ -41,7 +41,7 @@ $detect_operating_system_cache = "$module_config_directory/oscache";
 @webmin_date_formats = ( "dd/mon/yyyy", "dd/mm/yyyy",
 			 "mm/dd/yyyy", "yyyy/mm/dd" );
 
-@debug_what_events = ( 'start', 'read', 'write', 'diff', 'cmd', 'net', 'sql' );
+@debug_what_events = ( 'start', 'read', 'write', 'ops', 'procs', 'diff', 'cmd', 'net', 'sql' );
 
 sub setup_ca
 {
