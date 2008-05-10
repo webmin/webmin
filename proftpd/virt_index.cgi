@@ -28,7 +28,7 @@ $ed_icon = { "icon" => "images/edit.gif",
 @dir = ( &find_directive_struct("Directory", $conf) ,
 	 &find_directive_struct("Limit", $conf) );
 if (@dir) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<h3>$text{'virt_header'}</h3>\n";
 	foreach $d (@dir) {
 		if ($d->{'name'} eq 'Limit') {

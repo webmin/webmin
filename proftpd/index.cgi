@@ -97,7 +97,7 @@ $gconf = $global->{'members'} if ($global);
 @dir = ( &find_directive_struct("Directory", $gconf) ,
 	 &find_directive_struct("Limit", $gconf) );
 if (@dir) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'virt_header'});
 	foreach $d (@dir) {
 		if ($d->{'name'} eq 'Limit') {
@@ -165,7 +165,7 @@ foreach $v (@virt) {
 	}
 
 # Show virtual servers
-print "<hr>\n";
+print &ui_hr();
 print &ui_subheading($text{'index_virts'});
 
 if ($config{'show_list'} && scalar(@vname)) {
@@ -223,7 +223,7 @@ print "</form>\n";
 if (!$inet) {
 	# Get the FTP server pid
 	$pid = &get_proftpd_pid();
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	}
 if (!$inet && $pid) {

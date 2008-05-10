@@ -25,7 +25,7 @@ $ed_icon = { "icon" => "images/edit.gif",
 @limit = ( &find_directive_struct("Limit", $conf) );
 if (@limit) {
 	# Limit sub-directives
-	print "<hr>\n";
+	print &ui_hr();
 	print "<h3>$text{'ftpindex_limit'}</h3>\n";
 	foreach $l (@limit) {
 		push(@links, "limit_index.cgi?limit=".&indexof($l, @$conf).

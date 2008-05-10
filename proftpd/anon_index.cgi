@@ -28,7 +28,7 @@ $anon_icon = { "icon" => "images/anon.gif",
 @dir = ( &find_directive_struct("Directory", $anon) ,
 	 &find_directive_struct("Limit", $anon) );
 if (@dir) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<h3>$text{'virt_header'}</h3>\n";
 	foreach $d (@dir) {
 		if ($d->{'name'} eq 'Limit') {

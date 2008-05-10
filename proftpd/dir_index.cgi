@@ -36,7 +36,7 @@ $ed_icon = { "icon" => "images/edit.gif",
 # Display limit options
 @lim = &find_directive_struct("Limit", $dconf);
 if (@lim) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<h3>$text{'dir_header'}</h3>\n";
 	foreach $l (@lim) {
 		push(@links, "limit_index.cgi?limit=".&indexof($l, @$dconf).
