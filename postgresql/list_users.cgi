@@ -33,7 +33,7 @@ print &ui_links_row(\@rowlinks);
 print &ui_form_end([ [ "delete", $text{'user_delete'} ] ]);
 
 if (&get_postgresql_version() >= 7 && &foreign_installed("useradmin")) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_form_start("save_sync.cgi");
 	print "$text{'user_sync'}<br>\n";
 

@@ -58,7 +58,7 @@ if ($r == 0) {
 
 	if (&is_postgresql_local()) {
 		if ($access{'stop'} || $access{'users'}) {
-			print "<hr>\n";
+			print &ui_hr();
 			}
 		print &ui_buttons_start();
 		if ($access{'stop'}) {
@@ -243,7 +243,7 @@ else {
 		}
 
 	if ($access{'users'}) {
-		print "<hr>\n";
+		print &ui_hr();
 		print &ui_subheading($text{'index_users'});
 		@links = ( 'list_users.cgi', 'list_groups.cgi',
 			   'list_hosts.cgi', 'list_grants.cgi' );
@@ -255,7 +255,7 @@ else {
 		}
 
 	if ($access{'stop'} && &is_postgresql_local()) {
-		print "<hr>\n";
+		print &ui_hr();
 		print "<form action=stop.cgi>\n";
 		print "<table width=100%><tr><td width=25%>\n";
 		print "<input type=submit ",
@@ -266,7 +266,7 @@ else {
 
 	# Show backup all button
 	if ($can_all && $access{'backup'}) {
-		print "<hr>\n" if (!$access{'stop'});
+		print &ui_hr() if (!$access{'stop'});
 		print "<form action=backup_form.cgi>\n";
 		print "<input type=hidden name=all value=1>\n";
 		print "<table width=100%><tr><td width=25%>\n";

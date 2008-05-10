@@ -15,7 +15,7 @@ print "<textarea name=cmd rows=10 cols=70></textarea><br>\n";
 print "<input type=submit value='$text{'exec_exec'}'></form>\n";
 
 # Form for executing commands from a file
-print "<hr>\n";
+print &ui_hr();
 print "<p>",&text('exec_header2', "<tt>$in{'db'}</tt>"),"<p>\n";
 print "<form action=exec_file.cgi method=post enctype=multipart/form-data>\n";
 print "<input type=hidden name=db value='$in{'db'}'> <table>\n";
@@ -28,7 +28,7 @@ print "<tr> <td><input type=radio name=mode value=1> ",
 print "</table> <input type=submit value='$text{'exec_exec'}'></form>\n";
 
 # Form for loading a CSV or tab-separated file
-print "<hr>\n";
+print &ui_hr();
 print "<p>",&text('exec_header3', "<tt>$in{'db'}</tt>"),"<br>",
       $text{'exec_header4'},"<p>\n";
 print "<form action=import.cgi method=post enctype=multipart/form-data>\n";
