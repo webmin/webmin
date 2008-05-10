@@ -905,6 +905,8 @@ sub kill_byname
 local(@pids);
 @pids = &find_byname($_[0]);
 return scalar(@pids) if (&is_readonly_mode());
+&webmin_debug_log('KILL', "signal=$_[1] name=$_[0]")
+	if ($gconfig{'debug_what_write'});
 if (@pids) { kill($_[1], @pids); return scalar(@pids); }
 else { return 0; }
 }
@@ -3652,6 +3654,7 @@ while($cmd =~ s/(\d*)(<|>)((\/(tmp\/.webmin|dev)\S+)|&\d+)\s*$//) { }
 $cmd =~ s/^\((.*)\)\s*$/$1/;
 $cmd .= $and;
 &additional_log('exec', undef, $cmd);
+&webmin_debug_log('CMD', "cmd=$cmd") if ($gconfig{'debug_what_cmd'});
 return `$realcmd`;
 }
 
@@ -3661,6 +3664,8 @@ return `$realcmd`;
 sub backquote_with_timeout
 {
 local $realcmd = &translate_command($_[0]);
+&webmin_debug_log('CMD', "cmd=$realcmd timeout=$_[1]")
+	if ($gconfig{'debug_what_cmd'});
 local $out;
 local $pid = &open_execute_command(OUT, "($realcmd) <$null_file", 1, $_[2]);
 local $start = time();
@@ -3700,6 +3705,7 @@ if (&is_readonly_mode() && !$_[1]) {
 	return undef;
 	}
 local $realcmd = &translate_command($_[0]);
+&webmin_debug_log('CMD', "cmd=$realcmd") if ($gconfig{'debug_what_cmd'});
 return `$realcmd`;
 }
 
@@ -3707,6 +3713,8 @@ return `$realcmd`;
 sub kill_logged
 {
 return scalar(@_)-1 if (&is_readonly_mode());
+&webmin_debug_log('KILL', "signal=$_[0] pids=".join(" ", @_[1..@_-1]))
+	if ($gconfig{'debug_what_write'});
 &additional_log('kill', $_[0], join(" ", @_[1..@_-1])) if (@_ > 1);
 if ($gconfig{'os_type'} eq 'windows') {
 	# Emulate some kills with process.exe
@@ -3748,8 +3756,11 @@ if (&is_readonly_mode()) {
 	print STDERR "Vetoing rename from $_[0] to $_[1]\n";
 	return 1;
 	}
-local $ok = rename(&translate_filename($_[0]),
-	      	   &translate_filename($_[1]));
+local $src = &translate_filename($_[0]);
+local $dst = &translate_filename($_[1]);
+&webmin_debug_log('RENAME', "src=$src dst=$dst")
+	if ($gconfig{'debug_what_write'});
+local $ok = rename($src, $dst);
 if (!$ok && $! !~ /permission/i) {
 	# Try the mv command, in case this is a cross-filesystem rename
 	if ($gconfig{'os_type'} eq 'windows') {
@@ -3786,8 +3797,11 @@ if (&is_readonly_mode()) {
 	print STDERR "Vetoing symlink from $_[0] to $_[1]\n";
 	return 1;
 	}
-return symlink(&translate_filename($_[0]),
-	       &translate_filename($_[1]));
+local $src = &translate_filename($_[0]);
+local $dst = &translate_filename($_[1]);
+&webmin_debug_log('SYMLINK', "src=$src dst=$dst")
+	if ($gconfig{'debug_what_write'});
+return symlink($src, $dst);
 }
 
 # link_file(src, dest)
@@ -3799,9 +3813,12 @@ if (&is_readonly_mode()) {
 	print STDERR "Vetoing link from $_[0] to $_[1]\n";
 	return 1;
 	}
-unlink(&translate_filename($_[1]));	# make sure link works
-return link(&translate_filename($_[0]),
-	    &translate_filename($_[1]));
+local $src = &translate_filename($_[0]);
+local $dst = &translate_filename($_[1]);
+&webmin_debug_log('LINK', "src=$src dst=$dst")
+	if ($gconfig{'debug_what_write'});
+unlink($dst);			# make sure link works
+return link($src, $dst);
 }
 
 # make_dir(dir, perms, recursive)
@@ -3815,6 +3832,7 @@ if (&is_readonly_mode()) {
 	}
 $dir = &translate_filename($dir);
 return 1 if (-d $dir && $recur);	# already exists
+&webmin_debug_log('MKDIR', $dir) if ($gconfig{'debug_what_write'});
 local $rv = mkdir($dir, $perms);
 if (!$rv && $recur) {
 	# Failed .. try mkdir -p
@@ -3838,6 +3856,12 @@ if (&is_readonly_mode()) {
 	return 1;
 	}
 @files = map { &translate_filename($_) } @files;
+if ($gconfig{'debug_what_write'}) {
+	foreach my $f (@files) {
+		&webmin_debug_log('PERMS',
+			"file=$f user=$user group=$group perms=$perms");
+		}
+	}
 local $rv = 1;
 if (defined($user)) {
 	local $uid = $user !~ /^\d+$/ ? getpwnam($user) : $user;
@@ -3885,6 +3909,7 @@ my $rv = 1;
 my $err;
 foreach my $f (@_) {
 	my $realf = &translate_filename($f);
+	&webmin_debug_log('UNLINK', $realf) if ($gconfig{'debug_what_write'});
 	if (-d $realf) {
 		if (!rmdir($realf)) {
 			if ($gconfig{'os_type'} eq 'windows') {
@@ -3926,6 +3951,8 @@ return (1, undef) if (&is_readonly_mode());
 local ($src, $dst) = @_;
 local $ok = 1;
 local ($err, $out);
+&webmin_debug_log('COPY', "src=$src dst=$dst")
+	if ($gconfig{'debug_what_write'});
 if ($gconfig{'os_type'} eq 'windows') {
 	# No tar or cp on windows, so need to use copy command
 	$src =~ s/\//\\/g;
@@ -5922,6 +5949,7 @@ elsif (!$stdin && !$stdout && !$stderr) {
 	$cmd = "($cmd)" if ($gconfig{'os_type'} ne 'windows');
 	return system("$cmd >$null_file 2>$null_file <$null_file");
 	}
+&webmin_debug_log('CMD', "cmd=$cmd") if ($gconfig{'debug_what_cmd'});
 
 # Setup pipes
 $| = 1;		# needed on some systems to flush before forking
@@ -6028,7 +6056,10 @@ if (&is_readonly_mode() && !$safe) {
 		return open($fh, $null_file);
 		}
 	}
-elsif ($mode == 0) {
+# Really run it
+&webmin_debug_log('CMD', "cmd=$realcmd mode=$mode")
+	if ($gconfig{'debug_what_cmd'});
+if ($mode == 0) {
 	return open($fh, "| $cmd");
 	}
 elsif ($mode == 1) {

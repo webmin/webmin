@@ -120,6 +120,8 @@ if (&is_readonly_mode() && !$_[8]) {
 	# Veto command in readonly mode
 	return 0;
 	}
+&webmin_debug_log('CMD', "cmd=$_[0] uid=$_[1] gid=$_[2]")
+	if ($gconfig{'debug_what_cmd'});
 
 if ($gconfig{'os_type'} eq 'windows') {
 	# For Windows, just run the command and read output
@@ -261,6 +263,8 @@ if (&is_readonly_mode()) {
 	# When in readonly mode, don't run the command
 	$cmd = "/bin/true";
 	}
+&webmin_debug_log('CMD', "cmd=$cmd uid=$uid gid=$gid")
+	if ($gconfig{'debug_what_cmd'});
 
 eval "use IO::Pty";
 if (!$@) {
