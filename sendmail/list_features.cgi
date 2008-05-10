@@ -63,7 +63,7 @@ if (@features) {
 	print "</tr></table></form>\n";
 
 	# Show button to rebuild sendmail.cf
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=build.cgi>\n";
 	print "<table width=100%><tr>\n";
 	print "<td><input type=submit value='$text{'features_build'}'></td>\n";

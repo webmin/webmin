@@ -99,7 +99,7 @@ if (@qfiles) {
 
 	# Show flush button(s)
 	if ($access{'flushq'}) {
-		print "<hr>\n";
+		print &ui_hr();
 		print &ui_buttons_start();
 		print &ui_buttons_row("flushq.cgi", $text{'mailq_flush'}, $text{'mailq_flushdesc'});
 		if ($quarcount) {

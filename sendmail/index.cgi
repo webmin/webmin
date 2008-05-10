@@ -93,7 +93,7 @@ if (!$config{'mailq_count'}) {
 &icons_table(\@olinks, \@otitles, \@oicons);
 
 if ($access{'stop'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	if (&is_sendmail_running()) {
 		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
