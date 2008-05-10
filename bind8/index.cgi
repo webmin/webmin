@@ -97,7 +97,7 @@ if ($access{'defaults'}) {
 	@otitles = map { /(conf|list)_(\S+).cgi/; $text{$2."_title"} } @olinks;
 	@oicons = map { /^(conf|list)_(\S+).cgi/; "images/$2.gif"; } @olinks;
 	&icons_table(\@olinks, \@otitles, \@oicons, 6);
-	print "<hr>\n";
+	print &ui_hr();
 	}
 
 # Work out what creation links we have
@@ -312,7 +312,7 @@ else {
 
 if ($access{'views'} && $bind_version >= 9) {
 	# Display list of views
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_views'});
 	@views = grep { &can_edit_view($_) } @views;
 	foreach $v (@views) {
@@ -335,7 +335,7 @@ if ($access{'views'} && $bind_version >= 9) {
 
 # read the PID
 if (!$access{'ro'} && ($access{'apply'} == 1 || $access{'apply'} == 3)) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_buttons_start();
 	if (&is_bind_running()) {
 		# named is running .. show restart and stop button
