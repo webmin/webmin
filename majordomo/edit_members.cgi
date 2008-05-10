@@ -30,7 +30,7 @@ if (!$access{'edit'}) {
 	}
 else {
 	print "<br><input type=submit value=\"$text{'save'}\" name=update>\n";
-	print "<hr>\n";
+	print &ui_hr();
 
 	print "<table>\n";
 	print "<tr> <td><b>$text{'members_sub'}</b></td>\n";
@@ -44,7 +44,7 @@ else {
 	      "value=\"$text{'members_rem'}\"></td> </tr>\n";
 	print "</table></form>\n";
 
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=save_auto.cgi>\n";
 	print "<input type=hidden name=name value='$in{'name'}'>\n";
 	print "<table>\n";

@@ -105,7 +105,7 @@ if (!$majordomo_alias) {
 	print "<input type=hidden name=email_a value='$email'>\n";
 	print "<input type=submit value=\"$text{'index_setup'}\">\n";
 	print "</form></center>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	}
 
 # Display active lists
@@ -135,7 +135,7 @@ if ($access{'create'}) {
 	}
 
 if ($access{'global'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table> <tr>\n";
 	print "<form action=edit_global.cgi>\n";
 	print "<td><input type=submit value='$text{'index_global'}'></td>\n";

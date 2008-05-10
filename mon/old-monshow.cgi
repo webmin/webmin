@@ -26,7 +26,7 @@
 require './mon-lib.pl';
 &init_config();
 &ui_print_header(undef, $text{'mon_status_title'}, "","monshow");
-print "<hr>\n";
+print &ui_hr();
 
 use strict "vars";
 use Getopt::Long;

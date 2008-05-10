@@ -64,7 +64,7 @@ print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
 # Form to control search from other modules
 if (!$module_info{'usermin'}) {
 	@check = $config{'check'} ? split(/\s+/, $config{'check'}) : @search;
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_form_start("save_check.cgi");
 	print &ui_hidden("count", scalar(@search));
 	print "<b>$text{'index_others'}</b><br>\n";

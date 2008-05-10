@@ -158,7 +158,7 @@ if ($config{'arrows'} && @mail) {
         }
 
 if (@mail) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%><tr>\n";
 
 	# Show simple search form

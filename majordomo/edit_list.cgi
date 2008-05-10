@@ -28,7 +28,7 @@ map { s/edit_(\S+).cgi/$text{"$1_title"}/ } (@titles = @links);
 @links = map { $_."?name=".&urlize($in{'name'}) } @links;
 &icons_table(\@links, \@titles, \@icons);
 
-print "<hr>\n";
+print &ui_hr();
 print "<table>\n";
 print "<form action=delete_list.cgi>\n";
 print "<input type=hidden name=name value=\"$in{'name'}\">\n";

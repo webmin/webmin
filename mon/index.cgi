@@ -24,7 +24,7 @@ if (!-r $mon_config_file) {
 &icons_table(\@links, \@titles, \@icons);
 
 # check if mon is running
-print "<hr>\n";
+print &ui_hr();
 print "<table width=100%>\n";
 if (&check_pid_file($config{'pid_file'})) {
 	print "<tr><form action=stop.cgi>\n";
