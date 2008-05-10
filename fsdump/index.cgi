@@ -87,7 +87,7 @@ print "</form>\n";
 
 if ($access{'restore'}) {
 	# Display restore button
-	print "<hr>\n";
+	print &ui_hr();
 	print "<form action=restore_form.cgi>\n";
 	print "<table width=100%><tr><td nowrap>\n";
 	@fstypes = ( );
@@ -112,7 +112,7 @@ if ($access{'restore'}) {
 @procs = &proc::list_processes();
 @running = grep { &can_edit_dir($_) } &running_dumps(\@procs);
 if (@running) {
-	print "<hr>\n";
+	print &ui_hr();
 	print &ui_subheading($text{'index_running'});
 	print &ui_columns_start([ $text{'dump_dir'},
 				  $text{'dump_dest'},
