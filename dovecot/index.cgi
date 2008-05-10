@@ -39,7 +39,7 @@ if (!-r $config{'dovecot_config'}) {
 &icons_table(\@links, \@titles, \@icons, scalar(@titles));
 
 # Show start/stop and atboot buttons
-print "<hr>\n";
+print &ui_hr();
 print &ui_buttons_start();
 
 if (&is_dovecot_running()) {
