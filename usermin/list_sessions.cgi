@@ -49,7 +49,7 @@ else {
 	}
 
 # Show quick switch form
-print "<hr>\n";
+print &ui_hr();
 print &ui_form_start("switch.cgi", "get", "_new");
 print $text{'sessions_switch'},"\n";
 print &ui_user_textbox("user");

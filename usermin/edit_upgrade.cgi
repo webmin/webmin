@@ -41,7 +41,7 @@ print "</td></tr></table>\n";
 print "<input type=submit value=\"$text{'upgrade_ok'}\">\n";
 print "</form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 
 print "$text{'update_desc1'}<p>\n";
 
@@ -65,7 +65,7 @@ print "</td></tr></table>\n";
 print "<input type=submit value=\"$text{'update_ok'}\">\n";
 print "</form>\n";
 
-print "<hr>\n";
+print &ui_hr();
 
 print "$text{'update_desc2'}<p>\n";
 

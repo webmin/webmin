@@ -75,7 +75,7 @@ print "</ul><p>\n";
 sub inst_error
 {
 print "<br><b>$whatfailed : $_[0]</b> <p>\n";
-print "<hr>\n";
+print &ui_hr();
 &ui_print_footer("", $text{'index_return'});
 exit;
 }

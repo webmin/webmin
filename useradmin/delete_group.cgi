@@ -25,7 +25,7 @@ if ($in{'confirmed'}) {
 	# Check for repeat click
 	if ($group->{'group'} ne $in{'group'} || $in{'group'} eq '') {
 		print "<p> <b>$text{'gdel_ealready'}</b> <p>\n";
-		print "<hr>\n";
+		print &ui_hr();
 		&footer("", $text{'index_return'});
 		exit;
 		}
@@ -65,7 +65,7 @@ else {
 		if ($u->{'gid'} == $group->{'gid'}) {
 			print "<b>",&text('gdel_eprimary', $u->{'user'}),
 			      "</b> <p>\n";
-			print "<hr>\n";
+			print &ui_hr();
 			&footer("", $text{'index_return'});
 			exit;
 			}

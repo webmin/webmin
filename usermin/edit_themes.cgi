@@ -21,7 +21,7 @@ if (@themes) {
 		}
 	print "</select>\n";
 	print "<input type=submit value='$text{'themes_change'}'></form>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	}
 
 # Display install form
@@ -46,7 +46,7 @@ foreach $c (keys %uconfig) {
 @themes = grep { $_->{'dir'} ne $uconfig{'theme'} &&
 		 !$utheme{$_->{'dir'}} } @themes;
 if (@themes) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "$text{'themes_delete'}<br>\n";
 	print "<form action=delete_mod.cgi>\n";
 	print "<b>$text{'themes_delok'}</b>\n";
@@ -60,7 +60,7 @@ if (@themes) {
 	}
 
 # Display export form
-print "<hr>\n";
+print &ui_hr();
 print "$text{'themes_desc4'}<p>\n";
 
 print &ui_form_start("export_mod.cgi/theme.ubt.gz");

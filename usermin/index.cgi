@@ -84,7 +84,7 @@ for($i=0; $i<@links; $i++) {
 &icons_table(\@links, \@titles, \@icons);
 
 $init = &foreign_check("init") && $access{'bootup'};
-print "<hr>\n";
+print &ui_hr();
 
 print &ui_buttons_start();
 

@@ -97,7 +97,7 @@ print "<input type=submit value=\"$text{'mods_deleteok'}\">\n";
 print "</form>\n";
 
 # Display export form
-print "<hr>\n";
+print &ui_hr();
 print "$text{'mods_desc4'}<p>\n";
 
 print &ui_form_start("export_mod.cgi/module.wbm.gz");

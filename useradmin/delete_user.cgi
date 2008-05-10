@@ -18,7 +18,7 @@ $| = 1;
 
 if (!$config{'delete_root'} && $user->{'uid'} <= 10) {
 	print "<p> <b>$text{'udel_eroot'}</b> <p>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", $text{'index_return'});
 	exit;
 	}
@@ -26,7 +26,7 @@ if (!$config{'delete_root'} && $user->{'uid'} <= 10) {
 # Check for repeat click
 if ($user->{'user'} ne $in{'user'} || $in{'user'} eq '') {
 	print "<p> <b>$text{'udel_ealready'}</b> <p>\n";
-	print "<hr>\n";
+	print &ui_hr();
 	&footer("", $text{'index_return'});
 	exit;
 	}

@@ -61,7 +61,7 @@ else {
 	print "</table></td></tr></table>\n";
 	print "<input type=submit value=\"$text{'save'}\"></form>\n";
 
-	print "<hr>\n";
+	print &ui_hr();
 
 	# Table listing per-IP SSL certs
 	print "$webmin::text{'ssl_ipkeys'}<p>\n";
@@ -86,7 +86,7 @@ else {
 	print "<a href='edit_ipkey.cgi?new=1'>$webmin::text{'ssl_addipkey'}</a><p>\n";
 
 	# SSL key generation form
-	print "<hr>\n";
+	print &ui_hr();
 	print "$text{'ssl_newkey'}\n";
 	local $curkey = `cat $miniserv{'keyfile'} 2>/dev/null`;
 	local $origkey = `cat $miniserv{'root'}/miniserv.pem 2>/dev/null`;

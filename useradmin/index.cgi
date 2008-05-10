@@ -124,7 +124,7 @@ elsif ($access{'ucreate'}) {
 print "<p>\n";
 
 if (@glist || $access{'gcreate'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<a name=groups></a>\n";
 	print "<table width=100% cellpadding=0 cellspacing=0><tr>\n";
 	print "<td>".&ui_subheading($text{'index_groups'})."</td>\n";
@@ -187,7 +187,7 @@ elsif (@glist) {
 		}
 	}
 elsif ($access{'gcreate'} == 1) {
-	print "<hr>\n";
+	print &ui_hr();
 	if (@allglist) {
 		print "<b>$text{'index_notgroups'}</b>. <p>\n";
 		}
@@ -198,7 +198,7 @@ elsif ($access{'gcreate'} == 1) {
 &show_group_buttons() if (!$no_group_buttons);
 
 if ($access{'logins'}) {
-	print "<hr>\n";
+	print &ui_hr();
 	print "<table width=100%><tr>\n";
 	print "<form action=list_logins.cgi>\n";
 	print "<td><input type=submit value=\"$text{'index_logins'}\">\n";
