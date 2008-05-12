@@ -12,7 +12,9 @@ require './webmin-lib.pl';
 foreach $minfo (&get_all_module_infos()) {
 	if (&check_os_support($minfo) && &indexof($minfo->{'dir'}, @mods) < 0) {
 		foreach $d (split(/\s+/, $minfo->{'depends'})) {
-			$depends{$d} = $minfo->{'desc'};
+			if (&indexof($minfo->{'dir'}, @mods) < 0) {
+				$depends{$d} = $minfo->{'desc'};
+				}
 			}
 		}
 	}
