@@ -12,11 +12,14 @@ $access{'umods'} || &error($text{'acl_ecannot'});
 local %miniserv;
 &get_usermin_miniserv_config(\%miniserv);
 
-# check if any other module depends on those to be deleted
+# Check if any other module depends on those to be deleted
+# %depends maps module dirs to the descriptions of those that depend on them
 foreach $minfo (&list_modules()) {
 	if (&check_usermin_os_support($minfo)) {
 		foreach $d (split(/\s+/, $minfo->{'depends'})) {
-			$depends{$d} = $minfo->{'desc'};
+			if (&indexof($minfo->{'dir'}, @mods) < 0) {
+				$depends{$d} = $minfo->{'desc'};
+				}
 			}
 		}
 	}
