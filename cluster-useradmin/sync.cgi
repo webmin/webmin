@@ -108,7 +108,7 @@ foreach $host (@phosts) {
 				if (!$exists) {
 					print "$text{'usave_mkhome'}<br>\n";
 					if (!$in{'test'}) {
-						local $rv = &remote_eval($serv->{'host'}, "useradmin", "mkdir('$u->{'home'}', oct('$uconfig{'homedir_perms'}')) && chmod(oct('$uconfig{'homedir_perms'}'), '$u->{'home'}') ? undef : \$!");
+						local $rv = &remote_eval($serv->{'host'}, "useradmin", "&make_dir('$u->{'home'}', oct('$uconfig{'homedir_perms'}'), 1) && chmod(oct('$uconfig{'homedir_perms'}'), '$u->{'home'}') ? undef : \$!");
 						$rv && &error(&text(
 							'usave_emkdir', $rv));
 
