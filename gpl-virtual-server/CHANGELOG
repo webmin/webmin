@@ -436,3 +436,7 @@ Reduced the memory needed to migrated Plesk backups, by not reading the whole so
 When creating a sub-server whose prefix is in use by another domain, a non-clashing prefix for users is automatically selected.
 International domain names are now automatically converted to the IDN xn-- format when creating, and converted back for display.
 The Virtualmin master administrator can now control which domains and users are limited to their home directories when logging in via FTP, using the new FTP Directory Restrictions page.
+---- Changes since 3.56 ----
+Post-change scripts have access to the settings of a virtual server before it was changed in the VIRTUALSERVER_OLDSERVER_* environment variables.
+If MySQL or PostgreSQL have no root password set, display a warning during the configuration check.
+When scheduled backups are sent to their domain owners as well, each owner only receives the backup messages related to the domains they own.
