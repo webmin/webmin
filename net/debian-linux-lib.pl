@@ -9,6 +9,9 @@ use File::Copy;
 
 $network_interfaces_config = '/etc/network/interfaces';
 $modules_config = '/etc/modprobe.d/arch/i386';
+if (!-d $modules_config) {
+	($modules_config) = glob('/etc/modprobe.d/arch/*');
+	}
 $network_interfaces = '/proc/net/dev';
 
 do 'linux-lib.pl';
