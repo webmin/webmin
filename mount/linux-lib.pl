@@ -1582,14 +1582,14 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 				defined($options{"ro"}) ? "checked" : "";
 			printf "<input type=radio name=smbfs_ro value=0 %s> $text{'no'}</td>\n",
 				defined($options{"ro"}) ? "" : "checked";
-
+			}
+		if ($support == 4) {
 			print "<td><b>$text{'linux_user'}</b></td>\n";
 			printf "<td><input type=radio name=smbfs_user2 value=1 %s> $text{'yes'}\n",
 				defined($options{"user"}) ? "checked" : "";
 			printf "<input type=radio name=smbfs_user2 value=0 %s> $text{'no'}</td> </tr>\n",
 				defined($options{"user"}) ? "" : "checked";
-			}
-		if ($support == 4) {
+
 			print "<tr> <td><b>$text{'linux_cname'}</b></td>\n";
 			printf "<td colspan=3><input type=radio name=smbfs_cname_def value=1 %s> $text{'linux_auto'}\n",
 				defined($options{"netbiosname"}) ? "" : "checked";
@@ -1610,7 +1610,8 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 			printf "<input type=radio name=smbfs_wg_def value=0 %s>\n",
 				defined($options{"workgroup"}) ? "checked" : "";
 			print "<input size=10 name=smbfs_wg value=\"$options{'workgroup'}\"></td>\n";
-
+			}
+		if ($support >= 3) {
 			print "</tr>\n";
 			}
 		}
@@ -2151,7 +2152,8 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 
 			delete($options{'ro'}); delete($options{'rw'});
 			if ($in{'smbfs_ro'}) { $options{'ro'} = ''; }
-
+			}
+		if ($support == 4) {
 			delete($options{'user'});
 			if ($in{'smbfs_user2'}) { $options{'user'} = ''; }
 			}
