@@ -440,3 +440,5 @@ The Virtualmin master administrator can now control which domains and users are 
 Post-change scripts have access to the settings of a virtual server before it was changed in the VIRTUALSERVER_OLDSERVER_* environment variables.
 If MySQL or PostgreSQL have no root password set, display a warning during the configuration check.
 When scheduled backups are sent to their domain owners as well, each owner only receives the backup messages related to the domains they own.
+---- Changes since 3.57 ----
+Mailbox users' passwords are now shown in a separate popup window, rather than on the Edit Mailbox page where anyone can see them.
