@@ -16,8 +16,8 @@ print &ui_table_start($text{'log_header'}, undef, 2, [ "width=30%" ]);
 # Is logging enabled?
 print &ui_table_row($text{'log_status'},
 	&ui_radio("log", $miniserv{'log'} ? 1 : 0,
-		  [ [ 0, $text{'log_disable'} ],
-		    [ 1, $text{'log_enable'} ] ]));
+		  [ [ 1, $text{'log_enable'} ],
+		    [ 0, $text{'log_disable'} ] ]));
 
 # Log resolved hostnames
 print &ui_table_row($text{'log_resolv'},
