@@ -53,6 +53,7 @@ while(($id, $idx) = each %index) {
 	local ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
 	if (($in{'uall'} == 1 ||
 	     $in{'uall'} == 0 && $in{'user'} eq $user ||
+	     $in{'uall'} == 3 && $in{'ouser'} eq $user ||
 	     $in{'uall'} == 2 && $in{'nuser'} ne $user) &&
 	    ($in{'mall'} || $in{'module'} eq $module) &&
 	    (!$in{'sid'} || $in{'sid'} eq $sid ||
@@ -103,6 +104,8 @@ if (!$in{'mall'}) {
 $searchmsg = join(" ",
 	$in{'uall'} == 0 ? &text('search_critu',
 		 "<tt>".&html_escape($in{'user'})."</tt>") :
+	$in{'uall'} == 3 ? &text('search_critu',
+		 "<tt>".&html_escape($in{'ouser'})."</tt>") :
 	$in{'uall'} == 2 ? &text('search_critnu',
 		 "<tt>".&html_escape($in{'nuser'})."</tt>") : "",
 	$in{'mall'} ? '' : &text('search_critm',

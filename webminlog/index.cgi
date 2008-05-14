@@ -31,7 +31,9 @@ else {
 		       &ui_select("user", undef, \@unames)."<br>" ] );
 	if ($access_users{'*'}) {
 		push(@opts, [ 2, $text{'index_nuser'}." ".
-			         &ui_select("nuser", undef, \@unames) ]);
+			         &ui_select("nuser", undef, \@unames)."<br>" ]);
+		push(@opts, [ 3, $text{'index_ouser'}." ".
+				 &ui_textbox("ouser", undef, 20) ]);
 		}
 	print &ui_table_row($text{'index_susers'},
 			    &ui_radio("uall", 1, \@opts));

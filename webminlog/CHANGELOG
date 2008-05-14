@@ -19,3 +19,5 @@ Added a field for searching based on the contents of commands run or file change
 When viewing the details of a logged action, an annotation can be entered to explain why it was done.
 ---- Changes since 1.400 ----
 Added a section to the Action Details page for viewing raw log data, which can show more detail.
+---- Changes since 1.410 ----
+Added an option to search for actions by non-Webmin users (such as those authenticating via sudo).

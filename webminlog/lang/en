@@ -3,6 +3,7 @@ index_header=Search the Webmin log for actions ..
 index_uall=By any user
 index_user=By user
 index_nuser=By any user except
+index_ouser=By non-Webmin user
 index_mall=In any module
 index_module=In module
 index_tall=At any time
