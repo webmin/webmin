@@ -107,6 +107,9 @@ while(<DUMP>) {
 			$pkg->{'version'} = $2;
 			}
 		}
+	elsif (/^\s*File:\s*(\S+)/ && $pkg) {
+		$pkg->{'file'} = $1;
+		}
 	}
 close(DUMP);
 return @rv;
