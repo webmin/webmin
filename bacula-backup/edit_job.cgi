@@ -127,7 +127,7 @@ print &ui_table_row($text{'job_messages'},
 		  map { [ $_ ] } @messages ], 1, 0, 1));
 
 # Priority level
-$prority = &find_value("Priority", $mems);
+$priority = &find_value("Priority", $mems);
 print &ui_table_row($text{'job_prority'},
 	&ui_opt_textbox("priority", $priority, 4, $text{'default'}));
 
