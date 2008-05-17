@@ -209,18 +209,21 @@ else {
 			   'list_tprivs.cgi', 'list_cprivs.cgi',
 			   'edit_cnf.cgi', 'list_procs.cgi',
 			   $canvars ? ( 'list_vars.cgi' ) : ( ),
+			   'root_form.cgi',
 			 );
 		@titles = ( $text{'users_title'}, $text{'dbs_title'},
 			    $text{'hosts_title'}, $text{'tprivs_title'},
 			    $text{'cprivs_title'},$text{'cnf_title'},
 			    $text{'procs_title'},
 			    $canvars ? ( $text{'vars_title'} ) : ( ),
+			    $text{'root_title'},
 			  );
 		@images = ( 'images/users.gif', 'images/dbs.gif',
 			    'images/hosts.gif', 'images/tprivs.gif',
 			    'images/cprivs.gif', 'images/cnf.gif',
 			    'images/procs.gif',
 			    $canvars ? ( 'images/vars.gif' ) : ( ),
+			    'images/root.gif',
 			  );
 		if ($access{'perms'} == 2) {
 			# Remove my.cnf and database connections icons

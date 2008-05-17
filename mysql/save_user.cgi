@@ -70,7 +70,9 @@ if (!$in{'delete'} && !$in{'new'} &&
 	elsif ($in{'mysqlpass_mode'} == 2) {
 		$config{'pass'} = undef;
 		}
-	&write_file("$module_config_directory/config", \%config);
+	&lock_file($module_config_file);
+	&save_module_config();
+	&unlock_file($module_config_file);
 	}
 if ($in{'delete'}) {
 	&webmin_log("delete", "user", $in{'olduser'},

@@ -615,6 +615,7 @@ log_execfile=Executed SQL commands from file $1
 log_importupload=Imported data from uploaded file
 log_importfile=Imported data from file $1
 log_set=Changed $1 MySQL variables
+log_root=Changed administration password
 
 backup_title=Backup Database
 backup_title2=Backup All Databases
@@ -821,3 +822,13 @@ compat_no_field_options=Field options
 
 config_echarset=Missing or invalid-looking character set
 
+root_title=Change Administration Password
+root_header=New administration password
+root_user=Administration login
+root_pass=Current password
+root_newpass1=New password
+root_newpass2=Repeat password
+root_ok=Change Now
+root_err=Failed to change administration password
+root_epass1=No new password entered
+root_epass2=Passwords do not match

@@ -87,6 +87,9 @@ elsif ($action eq 'import') {
 elsif ($action eq 'set') {
 	return &text('log_set', $object);
 	}
+elsif ($action eq 'root') {
+	return $text{'log_root'};
+	}
 else {
 	return undef;
 	}
