@@ -4522,6 +4522,7 @@ local @substrings = (
     "AU-MIC-A700",        # Samsung A700 Obigo browsers
     "Danger hiptop",      # Danger Sidekick hiptop
     "Windows CE",         # Windows CE Pocket PC
+    "IEMobile",           # Windows mobile browser
     "Blazer",             # Palm Treo Blazer
     "BlackBerry",         # BlackBerries can emulate other browsers, but
                           # they still keep this string in the UserAgent
