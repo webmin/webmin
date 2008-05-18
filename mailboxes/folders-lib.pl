@@ -2948,61 +2948,112 @@ return $su == 2 ||				# All folders
 	$folder->{'type'} == 6 && $allimap) && $su == 1;
 }
 
-# mail_has_attachments(&mail, &folder)
-# Returns 1 if some message has attachments. Uses a cache DBM by message ID,
-# and fetches the whole mail if needed.
+# mail_has_attachments(&mail|&mails, &folder)
+# Returns an array of flags, each being 1 if the message has attachments, 0
+# if not. Uses a cache DBM by message ID and fetches the whole mail if needed.
 sub mail_has_attachments
 {
-local ($mail, $folder) = @_;
+local ($mails, $folder) = @_;
+if (ref($mails) ne 'ARRAY') {
+	# Just one
+	$mails = [ $mails ];
+	}
+
+# Open cache DBM
 if (!defined(%hasattach)) {
 	local $hasattach_file = $module_info{'usermin'} ?
 		"$user_module_config_directory/attach" :
 		"$module_config_directory/attach";
 	&open_dbm_db(\%hasattach, $hasattach_file, 0600);
 	}
-local $mid = $mail->{'header'}->{'message-id'};
-if (defined($hasattach{$mid})) {
-	# Already cached .. use it
-	return $hasattach{$mid};
-	}
-if (!$mail->{'body'} && $mail->{'size'} > 1024*1024) {
-	# Message is big .. just assume it has attachments
-	return 1;
-	}
-if (!$mail->{'body'}) {
-	# The body hasn't been read yet - read it now
-	local $read = &get_mail_read($folder, $mail);
-	($mail) = &mailbox_select_mails($folder, [ $mail->{'id'} ], 0);
-	return 0 if (!$mail);	# No longer exists!
-	if ($read == 0 && defined(&set_mail_read)) {
-		# Put back original read flag, as the select will clobber it
-		# on the IMAP server
-		&set_mail_read($folder, $mail, $read);
+
+# See which mail we already know about
+local @rv = map { undef } @$mails;
+local @needbody;
+for(my $i=0; $i<scalar(@rv); $i++) {
+	local $mail = $mails->[$i];
+	local $mid = $mail->{'header'}->{'message-id'};
+	if (defined($hasattach{$mid})) {
+		# Already cached .. use it
+		$rv[$i] = $hasattach{$mid};
+		}
+	elsif (!$mail->{'body'} && $mail->{'size'} > 1024*1024) {
+		# Message is big .. just assume it has attachments
+		$rv[$i] = 1;
+		}
+	elsif (!$mail->{'body'}) {
+		# Need to get body
+		push(@needbody, $i);
 		}
 	}
-if (!@{$mail->{'attach'}}) {
-	# Parse out attachments
-	&parse_mail($mail, undef, 0);
-	}
 
-# Check for non-text attachments
-$rv = 0;
-foreach my $a (@{$mail->{'attach'}}) {
-	if ($a->{'type'} =~ /^text\/(plain|html)/i || $a->{'type'} eq 'text') {
-		# Text part .. may be an attachment
-		if ($a->{'header'}->{'content-disposition'} =~ /^attachment/i) {
-			$rv = 1;
+# We need to actually fetch some message bodies to check for attachments
+if (@needbody) {
+	local (@needmail, %oldread);
+	foreach my $i (@needbody) {
+		local $mail = $mails->[$i];
+		push(@needmail, $mail);
+		$oldread{$mail->{'id'}} = &get_mail_read($folder, $mail);
+		}
+	@needmail = &mailbox_select_mails($folder,
+		[ map { $_->{'id'} } @needmail ], 0);
+	foreach my $i (@needbody) {
+		$mails->[$i] = shift(@needmail);
+		}
+	if (defined(&set_mail_read)) {
+		# Put back original read flag, as the select will clobber it
+                # on the IMAP server
+		foreach my $i (@needbody) {
+			local $mail = $mails->[$i];
+			&set_mail_read($folder, $mail, $oldread{$mail->{'id'}});
 			}
 		}
-	else {
-		# Non-text .. assume this means we have an attachment
-		$rv = 1;
+	}
+
+# Now we have bodies, check for attachments
+for(my $i=0; $i<scalar(@rv); $i++) {
+	next if (defined($rv[$i]));
+	local $mail = $mails->[$i];
+	if (!$mail) {
+		# Couldn't read from server
+		$rv[$i] = 0;
+		next;
+		}
+	local $mid = $mail->{'header'}->{'message-id'};
+
+	if (!@{$mail->{'attach'}}) {
+		# Parse out attachments
+		&parse_mail($mail, undef, 0);
+		}
+
+	# Check for non-text attachments
+	$rv[$i] = 0;
+	foreach my $a (@{$mail->{'attach'}}) {
+		if ($a->{'type'} =~ /^text\/(plain|html)/i ||
+		    $a->{'type'} eq 'text') {
+			# Text part .. may be an attachment
+			if ($a->{'header'}->{'content-disposition'} =~
+			    /^attachment/i) {
+				$rv[$i] = 1;
+				}
+			}
+		else {
+			# Non-text .. assume this means we have an attachment
+			$rv[$i] = 1;
+			}
 		}
 	}
 
-# Update cache
-$hasattach{$mid} = $rv;
-return $rv;
+# Update the cache
+for(my $i=0; $i<scalar(@rv); $i++) {
+	local $mail = $mails->[$i];
+	local $mid = $mail->{'header'}->{'message-id'};
+	if (!defined($hasattach{$mid})) {
+		$hasattach{$mid} = $rv[$i]
+		}
+	}
+
+return wantarray ? @rv : $rv[0];
 }
 
 1;
