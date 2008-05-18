@@ -173,7 +173,7 @@ elsif ($_[2]->{'type'} == 4) {
 	else {
 		# Whole messages
 		@rv = &imap_command($h,
-			sprintf "FETCH %d:%d (UID FLAGS RFC822)", $start+1, $end+1);
+			sprintf "FETCH %d:%d (UID FLAGS BODY.PEEK[])", $start+1, $end+1);
 		}
 
 	# Parse the headers or whole messages that came back
@@ -447,7 +447,7 @@ elsif ($folder->{'type'} == 4) {
 	# hitting a the IMAP server's max request limit
 	local @rv = map { undef } @$ids;
 	local $wanted = $headersonly ? "(RFC822.SIZE UID FLAGS RFC822.HEADER)"
-				     : "(UID FLAGS RFC822)";
+				     : "(UID FLAGS BODY.PEEK[])";
 	if (@$ids) {
 		for(my $chunk=0; $chunk<@$ids; $chunk+=1000) {
 			local $chunkend = $chunk+999;
@@ -2991,22 +2991,12 @@ for(my $i=0; $i<scalar(@rv); $i++) {
 if (@needbody) {
 	local (@needmail, %oldread);
 	foreach my $i (@needbody) {
-		local $mail = $mails->[$i];
-		push(@needmail, $mail);
-		$oldread{$mail->{'id'}} = &get_mail_read($folder, $mail);
+		push(@needmail, $mails->[$i]);
 		}
 	@needmail = &mailbox_select_mails($folder,
 		[ map { $_->{'id'} } @needmail ], 0);
 	foreach my $i (@needbody) {
 		$mails->[$i] = shift(@needmail);
-		}
-	if (defined(&set_mail_read)) {
-		# Put back original read flag, as the select will clobber it
-                # on the IMAP server
-		foreach my $i (@needbody) {
-			local $mail = $mails->[$i];
-			&set_mail_read($folder, $mail, $oldread{$mail->{'id'}});
-			}
 		}
 	}
 
