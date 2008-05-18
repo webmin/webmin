@@ -89,28 +89,36 @@ if (@mail) {
 	print &ui_columns_start(\@hcols, 100, 0, \@tds);
 	}
 
-# Show rows for actual mail messages
+# Get the mails
+@showmail = ( );
 for($i=$in{'start'}; $i<@mail && $i<$in{'start'}+$perpage; $i++) {
-	local $idx = $mail[$i]->{'idx'};
+	push(@showmail, $mail[$i]);
+	}
+@hasattach = &mail_has_attachments(\@showmail, $folder);
+
+# Show rows for actual mail messages
+$i = 0;
+foreach my $mail (@showmail) {
+	local $idx = $mail->{'idx'};
 	local $cols = 0;
 	local @cols;
-	local $from = $mail[$i]->{'header'}->{$showto ? 'to' : 'from'};
+	local $from = $mail->{'header'}->{$showto ? 'to' : 'from'};
 	$from = $text{'mail_unknown'} if ($from !~ /\S/);
 	push(@cols, &view_mail_link($in{'user'}, $folder, $idx, $from));
 	if ($config{'show_to'}) {
 		push(@cols, &simplify_from(
-	   		$mail[$i]->{'header'}->{$showto ? 'from' : 'to'}));
+	   		$mail->{'header'}->{$showto ? 'from' : 'to'}));
 		}
-	push(@cols, &simplify_date($mail[$i]->{'header'}->{'date'}));
-	push(@cols, &nice_size($mail[$i]->{'size'}, 1024));
+	push(@cols, &simplify_date($mail->{'header'}->{'date'}));
+	push(@cols, &nice_size($mail->{'size'}, 1024));
 	local $tbl;
 	$tbl .= "<table border=0 cellpadding=0 cellspacing=0 width=100%>".
-	      "<tr><td>".&simplify_subject($mail[$i]->{'header'}->{'subject'}).
+	      "<tr><td>".&simplify_subject($mail->{'header'}->{'subject'}).
 	      "</td> <td align=right>";
-	if ($mail[$i]->{'header'}->{'content-type'} =~ /multipart\/\S+/i) {
+	if ($hasattach[$i]) {
 		$tbl .= "<img src=images/attach.gif>";
 		}
-	local $p = int($mail[$i]->{'header'}->{'x-priority'});
+	local $p = int($mail->{'header'}->{'x-priority'});
 	if ($p == 1) {
 		$tbl .= "&nbsp;<img src=images/p1.gif>";
 		}
@@ -118,17 +126,17 @@ for($i=$in{'start'}; $i<@mail && $i<$in{'start'}+$perpage; $i++) {
 		$tbl .= "&nbsp;<img src=images/p2.gif>";
 		}
 	if (!$showto) {
-		if ($read{$mail[$i]->{'header'}->{'message-id'}} == 2) {
+		if ($read{$mail->{'header'}->{'message-id'}} == 2) {
 			$tbl .= "&nbsp;<img src=images/special.gif>";
 			}
-		elsif ($read{$mail[$i]->{'header'}->{'message-id'}} == 1) {
+		elsif ($read{$mail->{'header'}->{'message-id'}} == 1) {
 			$tbl .= "&nbsp;<img src=images/read.gif>";
 			}
 		}
 	$tbl .= "</td></tr></table>\n";
 	push(@cols, $tbl);
 
-	if (&editable_mail($mail[$i])) {
+	if (&editable_mail($mail)) {
 		print &ui_checked_columns_row(\@cols, \@tds, "d", $idx);
 		}
 	else {
@@ -137,13 +145,14 @@ for($i=$in{'start'}; $i<@mail && $i<$in{'start'}+$perpage; $i++) {
 
 	if ($config{'show_body'}) {
                 # Show part of the body too
-                &parse_mail($mail[$i]);
-		local $data = &mail_preview($mail[$i]);
+                &parse_mail($mail);
+		local $data = &mail_preview($mail);
 		if ($data) {
                         print "<tr $cb> <td colspan=",(scalar(@cols)+1),"><tt>",
 				&html_escape($data),"</tt></td> </tr>\n";
 			}
                 }
+	$i++;
 	}
 if (@mail) {
 	print &ui_columns_end();

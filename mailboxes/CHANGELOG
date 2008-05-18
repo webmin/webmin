@@ -50,3 +50,4 @@ Fixed a bug that broke searching by message body contents.
 ---- Changes since 1.410 ----
 Re-organized the Module Config page to make the first section less crowded.
 Added an option to skip messages flagged as deleted in a Maildir.
+Detection of messages with attachments is now 100% accurate, rather than taking a guess based on the MIME type.
