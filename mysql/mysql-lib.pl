@@ -1081,7 +1081,7 @@ sub list_views
 {
 local ($db) = @_;
 local @rv;
-local $d = &execute_sql($db, "select table_schema,table_name from information_schema.views");
+local $d = &execute_sql($db, "select table_schema,table_name from information_schema.views where table_schema = ?", $db);
 foreach $r (@{$d->{'data'}}) {
 	push(@rv, $r->[1]);
 	}
