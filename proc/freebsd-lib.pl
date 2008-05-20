@@ -94,5 +94,29 @@ local ($ptyfh, $ttyfh, $pty, $tty) = @_;
 ioctl($ttyfh, 536900705, 0);
 }
 
+# get_memory_info()
+# Returns a list containing the real mem, free real mem, swap and free swap
+# (In kilobytes).
+sub get_memory_info
+{
+my $sysctl = {};
+my $sysctl_output = &backquote_command("/sbin/sysctl -a 2>/dev/null");
+return ( ) if ($?);
+foreach my $line (split(/\n/, $sysctl_output)) {
+	if ($line =~ m/^([^:]+):\s+(.+)\s*$/s) {
+		$sysctl->{$1} = $2;
+		}
+	}
+return ( ) if (!$sysctl->{"hw.physmem"});
+my $mem_inactive = $sysctl->{"vm.stats.vm.v_inactive_count"} *
+		   $sysctl->{"hw.pagesize"};
+my $mem_cache = $sysctl->{"vm.stats.vm.v_cache_count"} *
+		$sysctl->{"hw.pagesize"};
+my $mem_free = $sysctl->{"vm.stats.vm.v_free_count"} *
+	       $sysctl->{"hw.pagesize"};
+return ( $sysctl->{"hw.physmem"},
+	 $mem_inactive + $mem_cache + $mem_free );
+}
+
 1;
 

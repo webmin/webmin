@@ -15,3 +15,5 @@ Free and used real and virtual memory is now displayed on Solaris.
 ---- Changes since 1.390 ----
 Re-wrote the user interface using the new Webmin UI library, for consistency.
 Re-designed the Run and Search pages, and made the search radio buttons auto-selecting.
+---- Changes since 1.410 ----
+Added physical memory display on FreeBSD.
