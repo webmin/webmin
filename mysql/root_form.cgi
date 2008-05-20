@@ -9,8 +9,10 @@ $access{'perms'} == 1 || &error($text{'perms_ecannot'});
 print &ui_form_start("save_root.cgi", "post");
 print &ui_table_start($text{'root_header'}, undef, 2, [ "width=30%" ]);
 
-print &ui_table_row($text{'root_user'}, "<tt>$mysql_login</tt>");
-print &ui_table_row($text{'root_pass'}, "<tt>$mysql_pass</tt>");
+print &ui_table_row($text{'root_user'},
+	$mysql_login ? "<tt>$mysql_login</tt>" : "<i>$text{'root_auto'}</i>");
+print &ui_table_row($text{'root_pass'},
+	$mysql_pass ? "<tt>$mysql_pass</tt>" : "<i>$text{'root_none'}</i>");
 print &ui_table_row($text{'root_newpass1'},
 	&ui_password("newpass1", undef, 20));
 print &ui_table_row($text{'root_newpass2'},

@@ -12,9 +12,10 @@ $in{'newpass1'} eq $in{'newpass2'} || &error($text{'root_epass2'});
 
 # Update MySQL
 $esc = &escapestr($in{'newpass1'});
+$user = $mysql_login || "root";
 &execute_sql_logged($master_db,
     "update user set password = $password_func('$esc') ".
-    "where user = '$mysql_login'");
+    "where user = '$user'");
 &execute_sql_logged($master_db, 'flush privileges');
 
 # Update webmin

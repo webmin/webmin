@@ -1,5 +1,5 @@
 line1=Configurable options,11
-login=Administration login,0
+login=Administration login,3,Automatic
 pass=Administration password,12
 perpage=Number of rows to display per page,0,5
 style=Show databases and tables as,1,1-List,0-Icons,2-Names only
