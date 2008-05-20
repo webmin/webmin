@@ -868,7 +868,7 @@ mysql_eadd=SQL insert failed : $1
 mysql_edelete=SQL delete failed : $1
 mysql_eupdate=SQL update failed : $1
 mysql_esource=No MySQL source named $1 was found
-mysql_eneed=The MySQL configuration parameter $1 was not found. Virtualmin needs this to figure out which table and fields to query.
+mysql_eneed=The MySQL configuration parameter $1 was not found. Webmin needs this to figure out which table and fields to query.
 
 ldap_ecfile=LDAP configuration file $1 was not found
 ldap_eldapmod=Perl module $1 needed to communicate with LDAP is not installed or not loadable
