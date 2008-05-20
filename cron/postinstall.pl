@@ -6,7 +6,7 @@ sub module_install
 # Create a cron job to delete old files in /tmp/.webmin
 eval {
 	$main::error_must_die = 1;
-	local @jobs = &cron::list_cron_jobs();
+	local @jobs = &list_cron_jobs();
 	local ($job) = grep { $_->{'user'} eq 'root' &&
 			      $_->{'command'} eq $temp_delete_cmd } @jobs;
 	if (!$job) {
