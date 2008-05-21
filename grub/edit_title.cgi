@@ -62,7 +62,7 @@ if ($boot == 2) {
 # Booting a kernel
 @opts = ( );
 push(@opts, [ 2, $text{'title_kernel'},
-	      &ui_table_start(undef, undef, 2).
+	      &ui_table_start(undef, undef, 2, [ undef, "nowrap" ]).
 	      &ui_table_row($text{'title_kfile'},
 		&ui_textbox("kernel", $kernel, 50)." ".
 		&file_chooser_button("kernel", 0)).
