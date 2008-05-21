@@ -204,6 +204,9 @@ proc_not1=Running
 proc_ecmd=Missing command
 proc_thresh=Number of process that must exist for<br>monitor to consider them running
 proc_ethresh=Missing or invalid number of processes
+proc_asuser=Running as user
+proc_anyuser=Any user
+proc_easuser=User for process to run as does not exist
 
 exec_cmd=Command to check exit status of
 exec_ecmd=Missing command
