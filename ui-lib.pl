@@ -72,6 +72,20 @@ $rv .= "</tr>\n";
 return $rv;
 }
 
+# ui_checked_columns_start(&headings, [width-percent], [noborder], [&tdtags],
+#			   [heading])
+# Returns HTML for a multi-column table whose first column will contain
+# checkboxes or radio buttons
+sub ui_checked_columns_start
+{
+return &theme_ui_checked_columns_start(@_)
+	if (defined(&theme_ui_checked_columns_start));
+local ($heads, $width, $noborder, $tdtags, $heading) = @_;
+local @cheads = ( "&nbsp;", @$heads );
+local @ctdtags = ( "width=5", $tdtags ? @$tdtags : ( ) );
+return &ui_columns_start(\@cheads, $width, $noborder, \@ctdtags, $heading);
+}
+
 # ui_columns_row(&columns, &tdtags)
 # Returns HTML for a row in a multi-column table
 sub ui_columns_row
@@ -171,6 +185,17 @@ sub ui_columns_end
 return &theme_ui_columns_end(@_) if (defined(&theme_ui_columns_end));
 return "</table>\n";
 }
+
+# ui_checked_columns_end()
+# Returns HTML to end a table started by ui_checked_columns_start
+sub ui_checked_columns_end
+{
+return &theme_ui_checked_columns_end(@_)
+	if (defined(&theme_ui_checked_columns_end));
+return "</table>\n";
+}
+
+
 
 ####################### form generation functions
 
