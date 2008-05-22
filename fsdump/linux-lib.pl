@@ -208,6 +208,7 @@ else {
 		&error($text{'dump_ehost'});
 	$_[0]->{'host'} = $in{'host'};
 	$in{'huser'} =~ /^\S*$/ || &error($text{'dump_ehuser'});
+	$in{'huser'} =~ /\@/ && &error($text{'dump_ehuser2'});
 	$_[0]->{'huser'} = $in{'huser'};
 	$in{'hfile'} || &error($text{'dump_ehfile'});
 	$_[0]->{'hfile'} = $in{'hfile'};

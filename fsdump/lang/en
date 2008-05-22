@@ -42,6 +42,7 @@ dump_edir=Missing or invalid directory to backup
 dump_efile=Missing file or device to backup to
 dump_ehost=Missing or invalid host to backup to
 dump_ehuser=Invalid username on host to backup to
+dump_ehuser2=Username cannot contain the @ character
 dump_ehfile=Missing or invalid file or device on host to backup to
 dump_elabel=Invalid backup label (can be at most 15 characters)
 dump_elabel2=Invalid backup label (can be at most 255 characters)

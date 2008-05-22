@@ -74,7 +74,7 @@ else {
 	if ($status{'status'} = 'complete') {
 		# Execute the post-backup script
 		$bok = &execute_after($dump, OUT, 0);
-		if (!$bok && && !$dump->{'afterfok'}) {
+		if (!$bok && !$dump->{'afterfok'}) {
 			print OUT "\n$text{'email_eafter'}\n";
 			$status{'status'} = 'failed';
 			$ok = 0;
