@@ -54,13 +54,13 @@ return $rv;
 sub ui_columns_start
 {
 return &theme_ui_columns_start(@_) if (defined(&theme_ui_columns_start));
-local ($heads, $width, $noborder, $tdtags, $heading) = @_;
+local ($heads, $width, $noborder, $tdtags, $title) = @_;
 local $rv;
 $rv .= "<table".($noborder ? "" : " border").
 		(defined($width) ? " width=$width%" : "")." class='ui_columns'>\n";
-if ($heading) {
+if ($title) {
 	$rv .= "<tr $tb><td colspan=".scalar(@$heads).
-	       " class='ui_columns_heading'><b>$heading</b></td></tr>\n";
+	       " class='ui_columns_heading'><b>$title</b></td></tr>\n";
 	}
 $rv .= "<tr $tb class='ui_columns_heads'>\n";
 local $i;
@@ -70,20 +70,6 @@ for($i=0; $i<@$heads; $i++) {
 	}
 $rv .= "</tr>\n";
 return $rv;
-}
-
-# ui_checked_columns_start(&headings, [width-percent], [noborder], [&tdtags],
-#			   [heading])
-# Returns HTML for a multi-column table whose first column will contain
-# checkboxes or radio buttons
-sub ui_checked_columns_start
-{
-return &theme_ui_checked_columns_start(@_)
-	if (defined(&theme_ui_checked_columns_start));
-local ($heads, $width, $noborder, $tdtags, $heading) = @_;
-local @cheads = ( "&nbsp;", @$heads );
-local @ctdtags = ( "width=5", $tdtags ? @$tdtags : ( ) );
-return &ui_columns_start(\@cheads, $width, $noborder, \@ctdtags, $heading);
 }
 
 # ui_columns_row(&columns, &tdtags)
@@ -150,17 +136,18 @@ $rv .= "</tr>\n";
 return $rv;
 }
 
-# ui_radio_columns_row(&columns, &tdtags, checkname, checkvalue, [checked])
+# ui_radio_columns_row(&columns, &tdtags, checkname, checkvalue, [checked],
+#		       [disabled])
 # Returns HTML for a row in a multi-column table, in which the first
 # column is a radio button
 sub ui_radio_columns_row
 {
 return &theme_ui_radio_columns_row(@_) if (defined(&theme_ui_radio_columns_row));
-local ($cols, $tdtags, $checkname, $checkvalue, $checked) = @_;
+local ($cols, $tdtags, $checkname, $checkvalue, $checked, $dis) = @_;
 local $rv;
 $rv .= "<tr $cb class='ui_radio_columns'>\n";
 $rv .= "<td class='ui_radio_radio' ".$tdtags->[0].">".
-       &ui_oneradio($checkname, $checkvalue, "", $checked)."</td>\n";
+    &ui_oneradio($checkname, $checkvalue, "", $checked, undef, $dis)."</td>\n";
 local $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i+1].">";
@@ -186,16 +173,105 @@ return &theme_ui_columns_end(@_) if (defined(&theme_ui_columns_end));
 return "</table>\n";
 }
 
-# ui_checked_columns_end()
-# Returns HTML to end a table started by ui_checked_columns_start
-sub ui_checked_columns_end
+# ui_columns_table(&headings, width-percent, no-border, &data, &types,
+#                  no-sort, title)
+# Returns HTML for a complete table.
+# headings - An array ref of heading HTML
+# data - A 2x2 array ref of table contents. Each can either be a simple string,
+#        or a hash ref like :
+#          { 'type' => 'group', 'desc' => 'Some section title' }
+#          { 'type' => 'string', 'value' => 'Foo', 'colums' => 3 }
+#          { 'type' => 'checkbox', 'name' => 'd', 'value' => 'foo',
+#            'label' => 'Yes', 'checked' => 1, 'disabled' => 1 }
+#          { 'type' => 'radio', 'name' => 'd', 'value' => 'foo', ... }
+# types - An array ref of data types, such as 'string', 'number', 'bytes'
+#         or 'date'
+# title - Text to appear above the table
+sub ui_columns_table
 {
-return &theme_ui_checked_columns_end(@_)
-	if (defined(&theme_ui_checked_columns_end));
-return "</table>\n";
+return &theme_ui_columns_table(@_) if (defined(&theme_ui_columns_table));
+local ($heads, $width, $noborder, $data, $types, $nosort, $title) = @_;
+local $rv;
+
+# Are there any checkboxes in each column? If so, make those columns narrow
+local @tds = ( );
+local $maxwidth = 0;
+foreach my $r (@$data) {
+	local $cc = 0;
+	foreach my $c (@$r) {
+		if (ref($c) &&
+		    ($c->{'type'} eq 'checkbox' || $c->{'type'} eq 'radio')) {
+			$tds[$cc] = "width=5";
+			}
+		$cc++;
+		}
+	$maxwidth = $cc if ($cc > $maxwidth);
+	}
+$rv .= &ui_columns_start($heads, $width, $noborder, \@tds, $title);
+
+# Add the data rows
+foreach my $r (@$data) {
+	local $c0;
+	if (ref($r->[0]) && ($r->[0]->{'type'} eq 'checkbox' ||
+			     $r->[0]->{'type'} eq 'radio')) {
+		# First column is special
+		$c0 = $r->[0];
+		$r = [ @$r[1..(@$r-1)] ];
+		}
+	# Turn data into HTML
+	local @rtds = @tds;
+	local @cols;
+	foreach my $c (@$r) {
+		if (!ref($c)) {
+			# Plain old string
+			push(@cols, $c);
+			}
+		elsif ($c->{'type'} eq 'checkbox') {
+			# Checkbox in non-first column
+			push(@cols, &ui_checkbox($c->{'name'}, $c->{'value'},
+					         $c->{'label'}, $c->{'checked'},
+						 undef, $c->{'disabled'}));
+			}
+		elsif ($c->{'type'} eq 'radio') {
+			# Radio button in non-first column
+			push(@cols, &ui_oneradio($c->{'name'}, $c->{'value'},
+					         $c->{'label'}, $c->{'checked'},
+						 undef, $c->{'disabled'}));
+			}
+		elsif ($c->{'type'} eq 'group') {
+			# Header row that spans whole table
+			$rv .= &ui_columns_header([ $c->{'desc'} ],
+						  [ "colspan=$width" ]);
+			next;
+			}
+		elsif ($c->{'type'} eq 'string') {
+			# A string, which might be special
+			push(@cols, $c->{'value'});
+			if ($c->{'columns'} > 1) {
+				splice(@rtds, 0, $c->{'columns'},
+				       "colspan=".$c->{'columns'});
+				}
+			}
+		}
+	# Add the row
+	if (!$c0) {
+		$rv .= &ui_columns_row(\@cols, \@rtds);
+		}
+	elsif ($c0->{'type'} eq 'checkbox') {
+		$rv .= &ui_checked_columns_row(\@cols, \@rtds, $c0->{'name'},
+					       $c0->{'value'}, $c0->{'checked'},
+					       $c0->{'disabled'});
+		}
+	elsif ($c0->{'type'} eq 'radio') {
+		$rv .= &ui_radio_columns_row(\@cols, \@rtds, $c0->{'name'},
+					     $c0->{'value'}, $c0->{'checked'},
+					     $c0->{'disabled'});
+		}
+	}
+
+$rv .= &ui_columns_end();
+return $rv;
 }
-
-
 
 ####################### form generation functions
 
