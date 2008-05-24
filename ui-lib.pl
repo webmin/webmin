@@ -173,10 +173,11 @@ return &theme_ui_columns_end(@_) if (defined(&theme_ui_columns_end));
 return "</table>\n";
 }
 
-# ui_columns_table(&headings, width-percent, no-border, &data, &types,
-#                  no-sort, title)
+# ui_columns_table(&headings, width-percent, &data, &types, no-sort, title,
+#		   empty-msg)
 # Returns HTML for a complete table.
 # headings - An array ref of heading HTML
+# width-percent - Preferred total width
 # data - A 2x2 array ref of table contents. Each can either be a simple string,
 #        or a hash ref like :
 #          { 'type' => 'group', 'desc' => 'Some section title' }
@@ -186,12 +187,21 @@ return "</table>\n";
 #          { 'type' => 'radio', 'name' => 'd', 'value' => 'foo', ... }
 # types - An array ref of data types, such as 'string', 'number', 'bytes'
 #         or 'date'
+# no-sort - Set to 1 to disable sorting by theme
 # title - Text to appear above the table
+# empty-msg - Message to display if no data
 sub ui_columns_table
 {
 return &theme_ui_columns_table(@_) if (defined(&theme_ui_columns_table));
-local ($heads, $width, $noborder, $data, $types, $nosort, $title) = @_;
+local ($heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
 local $rv;
+
+# Just show empty message if no data
+if ($emptymsg && !@$data) {
+	$rv .= &ui_subheading($title) if ($title);
+	$rv .= "<b>$emptymsg</b><p>\n";
+	return $rv;
+	}
 
 # Are there any checkboxes in each column? If so, make those columns narrow
 local @tds = ( );
@@ -270,6 +280,60 @@ foreach my $r (@$data) {
 	}
 
 $rv .= &ui_columns_end();
+return $rv;
+}
+
+# ui_form_columns_table(cgi, &buttons, select-all, &otherlinks, 
+#		        &headings, width-percent, &data, &types, no-sort, title,
+#			empty-msg)
+# Similar to ui_columns_table, but wrapped in a form. Args are :
+# cgi - URL to submit the form to
+# buttons - An array ref of buttons at the end of the form, similar to
+#           that taken by ui_form_end
+# select-all - If set to 1, include select all / invert links
+# otherslinks - An array ref of other links to put at the top of the table,
+#               each of which is a 2-element hash ref of url and text
+# All other parameters are the same as ui_columns_table
+sub ui_form_columns_table
+{
+return &theme_ui_form_columns_table(@_)
+	if (defined(&theme_ui_form_columns_table));
+local ($cgi, $buttons, $selectall, $others,
+       $heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
+local $rv;
+local @links = map { "<a href='$_->[0]'>$_->[1]</a>" } @$others;
+
+# Start the form, if we need one
+if (@$data) {
+	$rv .= &ui_form_start($cgi, "post");
+	if ($selectall) {
+		local $cbname;
+		foreach my $r (@$data) {
+			foreach my $c (@$r) {
+				if (ref($c) && $c->{'type'} eq 'checkbox') {
+					$cbname = $c->{'name'};
+					last;
+					}
+				}
+			}
+		if ($cbname) {
+			unshift(@links, &select_all_link("d"),
+					&select_invert_link("d"));
+			}
+		}
+	$rv .= &ui_links_row(\@links);
+	}
+
+# Add the table
+$rv .= &ui_columns_table($heads, $width, $data, $types, $nosort, $title,
+			 $emptymsg);
+
+# Add form end
+$rv .= &ui_links_row(\@links);
+if (@$data) {
+	$rv .= &ui_form_end($buttons);
+	}
+
 return $rv;
 }
 
