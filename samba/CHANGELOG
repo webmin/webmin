@@ -16,3 +16,5 @@ Added an icon for manually editing the Samba configuration file.
 Added checkboxes and a button to the View Connections page for disconnecting multiple users at once.
 ---- Changes since 1.270 ----
 Added checkboxes and a button for deleting multiple shares at once.
+---- Changes since 1.410 ----
+Added fields to set the permissions and group ownership of new shared directories.

@@ -57,6 +57,10 @@ if ($name ne "global") {
 if ($in{'create'} eq "yes") {
 	defined(getpwnam($in{'createowner'})) ||
 		&error($text{'savefshare_owner'});
+	defined(getgrnam($in{'creategroup'})) ||
+		&error($text{'savefshare_group'});
+	$in{'createperms'} =~ /^[0-7]{3,4}$/ ||
+		&error($text{'savefshare_perms'});
 	}
 
 # Update config file
@@ -73,10 +77,12 @@ else {
 	# Creating a new share
 	&create_share($name);
 	if ($in{'create'} eq "yes" && !-d $in{'path'}) {
-		mkdir($in{'path'}, 0755);
-		@uinfo = getpwnam($in{'createowner'});
-		chown($uinfo[2], $uinfo[3], $in{'path'});
-	}
+		&make_dir($in{'path'}, oct($in{'createperms'}));
+		&set_ownership_permissions($in{'createowner'},
+					   $in{'creategroup'},
+					   oct($in{'createperms'}),
+					   $in{'path'});
+		}
 	&save_samba_acl('rwvVsSpPnNoO', \%access, $name);
 	}
 &unlock_file($config{'smb_conf'});

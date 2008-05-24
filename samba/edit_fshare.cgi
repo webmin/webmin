@@ -59,6 +59,12 @@ if (!$s) {
 
 	print "<td align=right><b>$text{'share_owner'}</b></td>\n";
 	print "<td>",&ui_user_textbox("createowner", "root"),"</td> </tr>\n";
+
+	print "<tr> <td align=right><b>$text{'share_createperms'}</b></td>\n";
+	print "<td>",&ui_textbox("createperms", "755", 5),"</td>\n";
+
+	print "<td align=right><b>$text{'share_group'}</b></td>\n";
+	print "<td>",&ui_group_textbox("creategroup", "root"),"</td> </tr>\n";
 }
 
 print "<tr> <td align=right><b>$text{'share_available'}</b></td>\n";

@@ -247,6 +247,8 @@ share_home=Home Directories Share
 share_dir=Directory to share
 share_create=Automatically create directory?
 share_owner=Create with owner
+share_createperms=Create with permissions
+share_group=Create with group
 share_available=Available?
 share_browseable=Browseable?
 share_comment=Share Comment
@@ -349,6 +351,8 @@ savefshare_exist=A share called '$1' already exists
 savefshare_mode='$1' is not a valid share name
 savefshare_global=The name 'global' cannot be used for a share
 savefshare_owner=Missing or invalid owner for new directory
+savefshare_group=Missing or invalid group for new directory
+savefshare_perms=Missing or invalid permissions for new directory
 
 savemisc_fail=Failed to save options
 savemisc_lockdir=The directory containing the lock directory does not exist
