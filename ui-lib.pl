@@ -283,7 +283,7 @@ $rv .= &ui_columns_end();
 return $rv;
 }
 
-# ui_form_columns_table(cgi, &buttons, select-all, &otherlinks, 
+# ui_form_columns_table(cgi, &buttons, select-all, &otherlinks, &hiddens,
 #		        &headings, width-percent, &data, &types, no-sort, title,
 #			empty-msg)
 # Similar to ui_columns_table, but wrapped in a form. Args are :
@@ -292,20 +292,28 @@ return $rv;
 #           that taken by ui_form_end
 # select-all - If set to 1, include select all / invert links
 # otherslinks - An array ref of other links to put at the top of the table,
-#               each of which is a 2-element hash ref of url and text
+#               each of which is a 3-element hash ref of url, text and
+#		alignment (left or right)
+# hiddens - An array ref of hidden fields, each of which is a 2-element array
+#           ref containing the name and value
 # All other parameters are the same as ui_columns_table
 sub ui_form_columns_table
 {
 return &theme_ui_form_columns_table(@_)
 	if (defined(&theme_ui_form_columns_table));
-local ($cgi, $buttons, $selectall, $others,
+local ($cgi, $buttons, $selectall, $others, $hiddens,
        $heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
 local $rv;
-local @links = map { "<a href='$_->[0]'>$_->[1]</a>" } @$others;
 
-# Start the form, if we need one
+# Build links
+local @leftlinks = map { "<a href='$_->[0]'>$_->[1]</a>" }
+		       grep { $_->[2] ne 'right' } @$others;
+local @rightlinks = map { "<a href='$_->[0]'>$_->[1]</a>" }
+		       grep { $_->[2] eq 'right' } @$others;
+local $links;
+
+# Add select links
 if (@$data) {
-	$rv .= &ui_form_start($cgi, "post");
 	if ($selectall) {
 		local $cbname;
 		foreach my $r (@$data) {
@@ -317,11 +325,29 @@ if (@$data) {
 				}
 			}
 		if ($cbname) {
-			unshift(@links, &select_all_link("d"),
-					&select_invert_link("d"));
+			unshift(@leftlinks, &select_all_link("d"),
+					    &select_invert_link("d"));
 			}
 		}
-	$rv .= &ui_links_row(\@links);
+	}
+
+# Turn to HTML
+if (@rightlinks) {
+	$links = &ui_grid_table([ &ui_links_row(\@leftlinks),
+				  &ui_links_row(\@rightlinks) ], 2, 100,
+			        [ undef, "align=right" ]);
+	}
+elsif (@leftlinks) {
+	$links = &ui_links_row(\@leftlinks);
+	}
+
+# Start the form, if we need one
+if (@$data) {
+	$rv .= &ui_form_start($cgi, "post");
+	foreach my $h (@$hiddens) {
+		$rv .= &ui_hidden(@$h);
+		}
+	$rv .= $links;
 	}
 
 # Add the table
@@ -329,7 +355,7 @@ $rv .= &ui_columns_table($heads, $width, $data, $types, $nosort, $title,
 			 $emptymsg);
 
 # Add form end
-$rv .= &ui_links_row(\@links);
+$rv .= $links;
 if (@$data) {
 	$rv .= &ui_form_end($buttons);
 	}
