@@ -3468,8 +3468,9 @@ $main::action_id_count++;
 local $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" \"%s\" \"%s\"",
 	$id, $tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900,
 	$tm[2], $tm[1], $tm[0],
-	$remote_user || "-", $main::session_id ? $main::session_id : '-',
-	$_[7] || $ENV{'REMOTE_HOST'},
+	$remote_user || '-',
+	$main::session_id || '-',
+	$_[7] || $ENV{'REMOTE_HOST'} || '-',
 	$m, $_[5] ? "$_[5]:$_[6]" : $script_name,
 	$_[0], $_[1] ne '' ? $_[1] : '-', $_[2] ne '' ? $_[2] : '-';
 local %param;
@@ -3848,7 +3849,8 @@ if (&is_readonly_mode()) {
 	return 1;
 	}
 $dir = &translate_filename($dir);
-return 1 if (-d $dir && $recur);	# already exists
+local $exists = -d $dir ? 1 : 0;
+return 1 if ($exists && $recur);	# already exists
 &webmin_debug_log('MKDIR', $dir) if ($gconfig{'debug_what_ops'});
 local $rv = mkdir($dir, $perms);
 if (!$rv && $recur) {
@@ -3859,7 +3861,9 @@ if (!$rv && $recur) {
 		return 0;
 		}
 	}
-chmod($perms, $dir);
+if (!$exists) {
+	chmod($perms, $dir);
+	}
 return 1;
 }
 
