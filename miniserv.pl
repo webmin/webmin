@@ -2488,6 +2488,7 @@ print STDERR "restarting miniserv\n";
 close(SOCK);
 &close_all_sockets();
 &close_all_pipes();
+dbmclose(%sessiondb);
 kill('KILL', $logclearer) if ($logclearer);
 kill('KILL', $extauth) if ($extauth);
 exec($perl_path, $miniserv_path, @miniserv_argv);
