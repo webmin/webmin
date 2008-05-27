@@ -617,6 +617,7 @@ return \@conf;
 # Returns an array ref of members of the <Global> section, creating if necessary
 sub get_or_create_global
 {
+local ($conf) = @_;
 local $global = &find_directive_struct("Global", $conf);
 if ($global) {
 	# Already exists .. just return member list
@@ -721,7 +722,8 @@ sub is_proftpd_running
 local $conf = &get_config();
 local $st = &find_directive("ServerType", $conf);
 return -1 if (lc($st) eq "inetd");
-return &check_pid_file($config{'pid_file'});
+local $pid = &get_proftpd_pid();
+return $pid;
 }
 
 # this_url()
