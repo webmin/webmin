@@ -1,0 +1,4 @@
+dovecot=Dovecot 伺服器程式,0
+dovecot_config=Dovecot 設定檔的完整路徑和檔案名稱,0
+init_script=Dovecot 起始 Script 名稱,3,不存在
+pid_file=Dovecot 伺服器 PID 檔案,0
