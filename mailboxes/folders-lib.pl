@@ -1894,7 +1894,10 @@ if (!$h) {
 	@rv = &imap_command($h);
 	return (0, $rv[3]) if (!$rv[0]);
 	local $user = $_[0]->{'user'} eq '*' ? $remote_user : $_[0]->{'user'};
-	@rv = &imap_command($h,"login \"$user\" \"$_[0]->{'pass'}\"");
+	local $pass = $_[0]->{'pass'};
+	$pass =~ s/\\/\\\\/g;
+	$pass =~ s/"/\\"/g;
+	@rv = &imap_command($h,"login \"$user\" \"$pass\"");
 	return (2, $rv[3]) if (!$rv[0]);
 
 	$imap_login_handle{$_[0]->{'id'}} = $h;
