@@ -83,15 +83,21 @@ if (&foreign_check("init")) {
 		}
 	}
 
+# Restart Webmin
 if (!$miniserv{'inetd'} && $ENV{'MINISERV_CONFIG'}) {
 	print &ui_buttons_row("restart.cgi",
 		      $text{'index_restart'}, $text{'index_restartmsg'});
 	}
 
+# Submit OS info
 if (!$config{'submitted'}) {
 	print &ui_buttons_row("submit.cgi",
 		      $text{'index_submit'}, $text{'index_submitmsg'});
 	}
+
+# Refresh modules
+print &ui_buttons_row("refresh_modules.cgi",
+	      $text{'index_refresh'}, $text{'index_refreshmsg'});
 
 print &ui_buttons_end();
 

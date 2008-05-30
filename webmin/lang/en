@@ -9,6 +9,8 @@ index_restart=Restart Webmin
 index_restartmsg=Click this button to re-start the Webmin server process. This may be necessary if you have recently upgraded Perl.
 index_submit=Submit OS Information
 index_submitmsg=Clicking this button will send information about your operating system and Perl version to the Webmin developers. This data will be strictly anonymous, and will provide information about which operating systems to best focus the development of Webmin on.
+index_refresh=Refresh Modules
+index_refreshmsg=Re-check all Webmin modules for installed servers, and update those that appear in the 'Un-used modules' category.
 
 access_title=IP Access Control
 access_desc=The Webmin server can be configured to deny or allow access only from certain IP addresses using this form. Hostnames (like foo.bar.com) and IP networks (like 10.254.3.0 or 10.254.1.0/255.255.255.128) can also be entered. You should limit access to your server to trusted addresses, especially if it is accessible from the Internet. Otherwise, anyone who guesses your password will have complete control of your system.
