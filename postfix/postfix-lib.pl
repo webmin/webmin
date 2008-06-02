@@ -1174,7 +1174,7 @@ local ($conf) = @_;
 local ($filter, $name_attr) = @_;
 if ($conf->{'query_filter'}) {
 	$filter = $conf->{'query_filter'};
-	$conf->{'query_filter'} =~ /([a-z0-9]+)=\%s/i ||
+	$conf->{'query_filter'} =~ /([a-z0-9]+)=\%[su]/i ||
 		&error("Could not get attribute from ".
 		       $conf->{'query_filter'});
 	$name_attr = $1;
