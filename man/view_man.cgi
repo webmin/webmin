@@ -18,18 +18,27 @@ if ($config{'strip_letters'}) {
 	$in{'sec'} =~ s/^(\d+).*$/$1/;
 	}
 &set_manpath($in{'opts'});
-foreach $page ($in{'page'}, lc($in{'page'})) {
-	$qpage = quotemeta($page);
-	$qsec = quotemeta($in{'sec'});
-	$cmd = $ocmd;
-	$cmd =~ s/PAGE/$qpage/;
-	$cmd =~ s/SECTION/$qsec/;
-	$out = &backquote_command("$cmd 2>&1", 1);
-	if ($out !~ /^.*no manual entry/i && $out !~ /^.*no entry/i &&
-	    $out !~ /^.*nothing appropriate/i) {
-		# Found it
-		$found++;
-		last;
+
+# Try various man commands, like :
+# man -s 3x Foo, man -s 3x foo, man -s 3 Foo, man -s 3 foo
+@sects = ( $in{'sec'} );
+if ($in{'sec'} =~ /^(\d+)[^0-9]+$/) {
+	push(@sects, $1);
+	}
+SECT: foreach $sec (@sects) {
+	foreach $page ($in{'page'}, lc($in{'page'})) {
+		$qpage = quotemeta($page);
+		$qsec = quotemeta($sec);
+		$cmd = $ocmd;
+		$cmd =~ s/PAGE/$qpage/;
+		$cmd =~ s/SECTION/$qsec/;
+		$out = &backquote_command("$cmd 2>&1", 1);
+		if ($out !~ /^.*no manual entry/i && $out !~ /^.*no entry/i &&
+		    $out !~ /^.*nothing appropriate/i) {
+			# Found it
+			$found++;
+			last SECT;
+			}
 		}
 	}
 if (!$found) {
