@@ -72,3 +72,5 @@ Keys in ACL sections are no long mangled by Webmin. This means that each IP or k
 ---- Changes since 1.410 ----
 Corrected parsing of records in zone files with no names, which inherit from the previous record.
 Spaces are now allowed in Host Information records.
+---- Changes since 1.420 ----
+The default TTL for multiple zones can now be changed on the Update Records in Zones page.

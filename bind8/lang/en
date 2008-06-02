@@ -357,6 +357,7 @@ edit_LOC=Location
 edit_SRV=Service Address
 edit_KEY=Public Key
 
+recs_ttl=Default TTL
 recs_A=Address
 recs_AAAA=IPv6 Address
 recs_NS=Name Server
@@ -714,6 +715,7 @@ log_mass=Created $1 zones from batch file
 log_rndc=Setup RNDC
 log_delete_recs=Deleted $1 records
 log_delete_zones=Deleted $1 zones
+log_update_zones=Updated records in $1 zones
 log_freeze=Froze zone $1
 log_thaw=Un-froze zone $1
 
@@ -901,6 +903,7 @@ umass_title=Update Records in Zones
 umass_header=Mass record change details
 umass_sel=Zones selected
 umass_old=Current value to change
+umass_any=Update <b>all</b> records
 umass_new=New value
 umass_type=Record type to update
 umass_ok=Change Records
