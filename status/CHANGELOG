@@ -53,3 +53,5 @@ Added T-COM, Skytel, Vodaphone and several more as a carriers for SMS.
 Email, SMS and SNMP messages sent by Webmin can be customized, with multiple message templates defined and a different one selected for each monitor.
 ---- Changes since 1.410 ----
 The process check monitor can now be limited to a particular user.
+---- Changes since 1.420 ----
+Allow saving of remote Webmin monitors when the remote host is down.

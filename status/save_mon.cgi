@@ -37,10 +37,18 @@ else {
 		# Only need to check for new monitors
 		foreach $r (@remotes) {
 			next if ($r eq "*");
-			eval { $ch = &remote_foreign_check($r, 'status') };
+			eval { local $main::error_must_die = 1;
+			       $ch = &remote_foreign_check($r, 'status') };
 			&error(&text('mon_elogin', $r))
 			    if ($@ =~ /invalid.*login/i || $@ =~ /HTTP.*401/i);
-			&error(&text('mon_eremote', $r)) if ($@);
+			if ($@) {
+				# If down, let it go for now as we can't really
+				# check what is installed
+				next;
+				#$err = $@;
+				#$err =~ s/\s+at\s.*\sline\s+(\d+).*$//;
+				#&error(&text('mon_eremote2', $r, $err));
+				}
 			$ch || &error(&text('mon_estatus', $r));
 			&remote_foreign_require($r, 'status',
 						'status-lib.pl');
