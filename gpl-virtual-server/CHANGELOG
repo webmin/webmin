@@ -453,3 +453,4 @@ Fixed support for international domain names using non-european character sets (
 Completely re-designed the Virtualmin backup UI, to support multiple backup schedules and allow domain owners and resellers to schedule their own backups (subject to limits configured by the master administrator). Domain owners can now also restore backups of their home directories and databases. Backups can either be full or incremental, to speed up the process of backing up large but infrequently-changing sites.
 By default, new DNS zones only allow localhost, hosts on the local network and known slaves to transfer records.
 All text in the Virtualmin user interface is now available in Dutch, thanks to Gandyman.
+The remote hosts from which connections to MySQL are allowed can be easily edited on a per-domain basis on the Edit Databases page, in the new 'Remote hosts' tab. These apply to the domain owner and any mailboxes with database access.
