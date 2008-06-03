@@ -442,3 +442,14 @@ If MySQL or PostgreSQL have no root password set, display a warning during the c
 When scheduled backups are sent to their domain owners as well, each owner only receives the backup messages related to the domains they own.
 ---- Changes since 3.57 ----
 Mailbox users' passwords are now shown in a separate popup window, rather than on the Edit Mailbox page where anyone can see them.
+Added links from the Status section of the System Information page to the Webmin modules for their particular servers, and additional stats where available.
+If a migrated domain needs features that are not supported by the system, a warning message is displayed.
+All new SSL certificate and key files how have 700 permissions, so that only the domain owner and Apache (which starts as root) can read them.
+All Virtualmin command-line and remote API programs now participate in Webmin logging, so their invocation and changes can be viewed in the Webmin Actions Log module.
+Plesk sub-domains are now imported as Virtualmin sub-servers.
+The $DNS_SERIAL variable can be used in templates, as an initial serial for new domains.
+Improved the migration of Plesk mailbox aliases and forwarding, and protected directories.
+Fixed support for international domain names using non-european character sets (like Chinese and Cyrillic) in newer versions of Perl.
+Completely re-designed the Virtualmin backup UI, to support multiple backup schedules and allow domain owners and resellers to schedule their own backups (subject to limits configured by the master administrator). Domain owners can now also restore backups of their home directories and databases. Backups can either be full or incremental, to speed up the process of backing up large but infrequently-changing sites.
+By default, new DNS zones only allow localhost, hosts on the local network and known slaves to transfer records.
+All text in the Virtualmin user interface is now available in Dutch, thanks to Gandyman.
