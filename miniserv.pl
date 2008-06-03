@@ -678,7 +678,7 @@ while(1) {
 						}
 					close(TCP);
 					}
-				else {
+				if (!$localauth_user) {
 					# Call lsof for the info
 					local $lsofpid = open(LSOF,
 						"$config{'localauth'} -i TCP\@127.0.0.1:$peerp |");
