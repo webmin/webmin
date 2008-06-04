@@ -9,7 +9,7 @@ require './webmin-lib.pl';
 &ui_print_header(undef, $text{'assignment_title'}, undef);
 print qq(
 $text{'assignment_desc'}<p>
-<form action="save_assignment.cgi">
+<form action="save_assignment.cgi" method=post>
 <table border><tr $tb>
 <td><b>$text{'assignment_header'}</b></td></tr>
 <tr $cb><td><table>
