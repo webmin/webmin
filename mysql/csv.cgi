@@ -70,8 +70,10 @@ if ($in{'dest'}) {
 	print &text('csv_done', "<tt>$in{'file'}</tt>",
 				&nice_size($st[7])),"<p>\n";
 
-	&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-		"", $text{'index_return'});
+	&ui_print_footer(
+	   "$gconfig{'webprefix'}/$module_name/edit_dbase.cgi?db=$in{'db'}",
+	   $text{'dbase_return'},
+	   "", $text{'index_return'});
 	}
 
 sub quote_csv
