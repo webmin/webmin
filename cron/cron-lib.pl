@@ -652,6 +652,20 @@ if ($config{'vixie_cron'} && (!$_[1] || $_[0]->{'special'})) {
 	print "</td></tr>\n";
 	}
 
+# Javascript to disable and enable fields
+print <<EOF;
+<script>
+function enable_cron_fields(name, form, ena)
+{
+var els = form.elements[name];
+els.disabled = !ena;
+for(i=0; i<els.length; i++) {
+  els[i].disabled = !ena;
+  }
+}
+</script>
+EOF
+
 print "<tr $tb>\n";
 print "<td><b>$text{'edit_mins'}</b></td> <td><b>$text{'edit_hours'}</b></td> ",
       "<td><b>$text{'edit_days'}</b></td> <td><b>$text{'edit_months'}</b></td>",
@@ -694,19 +708,26 @@ foreach $arr ("mins", "hours", "days", "months", "weekdays") {
 
 	# Output selection list
 	print "<td valign=top>\n";
-        printf "<input type=radio name=all_$arr value=1 %s %s> $text{'edit_all'}<br>\n",
+        printf "<input type=radio name=all_$arr value=1 %s %s %s> %s<br>\n",
                 $arr eq "mins" && $hourly_only ? "disabled" : "",
-		$job->{$arr} eq "*" ? "checked" : "";
-	printf "<input type=radio name=all_$arr value=0 %s> $text{'edit_selected'}<br>\n",
-		$job->{$arr} ne "*" ? "checked" : "";
+		$job->{$arr} eq "*" ||  $job->{$arr} eq "" ? "checked" : "",
+		"onClick='enable_cron_fields(\"$arr\", form, 0)'",
+		$text{'edit_all'};
+	printf "<input type=radio name=all_$arr value=0 %s %s> %s<br>\n",
+		$job->{$arr} eq "*" || $job->{$arr} eq "" ? "" : "checked",
+		"onClick='enable_cron_fields(\"$arr\", form, 1)'",
+		$text{'edit_selected'};
 	print "<table> <tr>\n";
         for($j=0; $j<@$arr; $j+=($arr eq "mins" && $hourly_only ? 60 : 12)) {
                 $jj = $j+($arr eq "mins" && $hourly_only ? 59 : 11);
 		if ($jj >= @$arr) { $jj = @$arr - 1; }
 		@sec = @$arr[$j .. $jj];
-                printf "<td valign=top><select %s size=%d name=$arr>\n",
+                printf "<td valign=top><select %s size=%d name=$arr %s>\n",
                         $arr eq "mins" && $hourly_only ? "" : "multiple",
-                        @sec > 12 ? ($arr eq "mins" && $hourly_only ? 1 : 12) : scalar(@sec);
+                        @sec > 12 ? ($arr eq "mins" && $hourly_only ? 1 : 12)
+				  : scalar(@sec),
+			$job->{$arr} eq "*" ||  $job->{$arr} eq "" ?
+				"disabled" : "";
 		foreach $v (@sec) {
 			if ($v =~ /^(.*)=(.*)$/) { $disp = $1; $code = $2; }
 			else { $disp = $code = $v; }
