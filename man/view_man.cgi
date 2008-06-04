@@ -47,12 +47,14 @@ if (!$found) {
 	}
 else {
 	if (&has_command($config{'man2html_path'})) {
+		# Last line only
+		@lines = split(/\r?\n/, $out);
+		$out = $lines[$#lines];
                 if ($out =~ /\(<--\s+(.*)\)/) {
                         # Output has cached file and original path
                         $out = $1;
                         }
 		$out =~ s/ .*//;
-		$out =~ s/\n//;
 		if( $out =~ /^.*\.gz/i ) {
 			$cmd = "gunzip -c";
 			}
