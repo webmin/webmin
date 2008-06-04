@@ -1,0 +1,20 @@
+<header>Partag&#233; &#224;...</header>
+
+Les h&#244;tes qui auront acc&#232;s au r&#233;pertoire partag&#233;.<br>
+<b>Attention :</b> lors d'un partage avec krb5, le choix des clients est fait dans la configuration de Kerberos5.<br><br>
+Il existe six fa&#231;on de sp&#233;cifier quels h&#244;tes sont autoris&#233;s &#224; monter ce r&#233;pertoire :
+<dl>
+<dt><b>Tous</b>
+<dd>Tout h&#244;te capable de contacter le syst&#232;me est autoris&#233;. Cette option doit &#234;tre utilis&#233;e avec soin, particuli&#232;rement si votre syst&#232;me est connect&#233; &#224; Internet.
+<dt><b>H&#244;te(s)</b>
+<dd>Ce peut &#234;tre une adresse IP, un nom d'h&#244;te, ou une expression r&#233;guli&#232;re comme <tt>*.foo.com</tt>.  Dans ce dernier cas, tout h&#244;te dont la v&#233;rification inverse de nom de domaine correspond &#224; l'adresse IP sera autoris&#233;.
+<dt><b>WebNFS clients</b>
+<dd>Autorise l'acc&#232;s aux clients utilisant le protocole WebNFS de Sun
+<dt><b>Groupe r&#233;seau NIS</b>
+<dd>Autorise tous les membres du groupe r&#233;seau NIS sp&#233;cifi&#233; d'avoir acc&#232;s &#224; ce partage.
+<dt><b>R&#233;seau</b> IPv4 et <b>Masque de sous-r&#233;seau</b>
+<dd>Toute machine dans le sous-r&#233;seau sp&#233;cifi&#233; est autoris&#233;e.
+<dt><b>Adresse</b> IPv6 et <b>Prefix</b>
+<dd>Toute machine dans le sous-r&#233;seau sp&#233;cifi&#233; est autoris&#233;e.
+</dl>
+<hr>

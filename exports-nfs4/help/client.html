@@ -1,0 +1,29 @@
+<header>Export to..</header>
+
+The hosts that will have access to the exported directory.<br>
+<b>Warning:</b> when exporting with krb5, the choice of the clients is made in the configuration of Kerberos5.<br><br>
+Six ways of specifying which hosts are allowed to mount the directory are available:
+<dl>
+<dt><b>Everyone</b>
+<dd>Any host capable of contacting your system is allowed access. This option
+    should be used with care, especially if your system is connected to the
+    Internet.
+<dt><b>Host(s)</b>
+<dd>This can either be a single IP address, a single hostname, or a regular
+    expression like <tt>*.foo.com</tt>. In the last case, any host whose
+    reverse DNS lookup by IP address matches the expression will be allowed
+    access.
+<dt><b>WebNFS clients</b>
+<dd>Allows clients using Sun's WebNFS protocol to access this directory.
+<dt><b>NIS Netgroup</b>
+<dd>Allows all members of the specified NIS netgroup to access this export.
+<dt>IPv4 <b>Network</b> and <b>Netmask</b>
+<dd>Any host in the specified subnet is allowed access. For example, if the
+    network was <tt>10.1.2.0</tt> and the netmask <tt>255.255.255.0</tt>,
+    all hosts with IP addresses from <tt>10.1.2.0</tt> to <tt>10.1.2.255</tt>
+    would be allowed.
+<dt>IPv6 <b>Address</b> and <b>Prefix</b>
+<dd>Any host in the specified subnet is allowed access.
+</dl>
+<hr>
+

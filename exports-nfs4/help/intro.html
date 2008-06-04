@@ -1,0 +1,23 @@
+<header>Introduction to NFS Shares</header>
+
+<include nfs>
+
+<h3>Linux NFS</h3>
+This module allows you to configure directories (called <i>exports</i>
+in Linux) shared via NFS from your system. The first page
+shows a list of directories and the clients they are exported to, allowing
+you to click on the client to edit its options or start exporting
+a new directory. <p>
+
+Below the list of shares on the first page is a button which will
+make the current configuration active. This is done by stopping and
+starting the running NFS server processes. <p>
+
+If some directory and one of its sub-directories is exported, the options
+for the most specific directory will apply to clients. For example, if
+<tt>/usr</tt> and <tt>/usr/local</tt> are both exported, a client accessing
+<tt>/usr/local/bin</tt> will be effected by the options for the
+<tt>/usr/local</tt> export. <p>
+
+<hr>
+

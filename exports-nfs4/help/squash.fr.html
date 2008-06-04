@@ -1,0 +1,14 @@
+<header>Faire confiance aux usagers distants</header>
+
+D&#233;termine dans quels utilisateurs Unix sur le client le serveur peut faire confiance.<br> 
+Trois options sont disponibles :
+<dl>
+<dt><b>Tous</b>
+<dd>Tous les utilisateurs sur le client sont trait&#233;s de la m&#234;me mani&#232;re par le serveur
+<dt><b>Tous sauf root</b>
+<dd>Seul l'utilisateur <tt>root</tt> sur le client est trait&#233; comme un <a href=anonuid>utilisateur non s&#251;r</a> par le serveur
+<dt><b>Aucun</b>
+<dd>Tous les utilisateurs sur le client sont trait&#233;s comme un <a href=anonuid>utilisateur non s&#251;r</a>. Cette option est &#224; choisir lors du partage vers un syst&#232;me que vous ne contr&#244;lez pas (comme un PC mono-utilisateur), ou lors d'un partage &#224; tout le monde.
+</dl>
+<i>options de exportfs : root_squash, no_root_squash, all_squash</i>
+<hr>

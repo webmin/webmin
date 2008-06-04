@@ -1,0 +1,10 @@
+<header>Hide the filesystem</header>
+Normally, if a server exports two filesystems one of which is mounted on the other, then the client will have to mount both filesystems explicitly to get access to them.  If it just mounts the parent, it will see an empty  directory  at  the place where the other filesystem is mounted.  That filesystem is "hidden".
+<br>
+Not hiding option is currently only effective on single host exports.  It does not work reliably with netgroup, subnet, or wildcard exports.
+<br>
+This option can be very useful in some situations, but it should be used with due care, and only after confirming that the client system copes with the situation effectively.
+<br>
+<br>
+<i>exportfs options: hide, nohide</i>
+<hr>

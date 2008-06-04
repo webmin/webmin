@@ -1,0 +1,18 @@
+<header>Trust remote users</header>
+
+Determines which Unix users on the client are trusted by the server.<br>
+Three options are available :
+<dl>
+<dt><b>Everyone</b>
+<dd>All client users will be treated the same by the server
+<dt><b>Everyone except root</b>
+<dd>The <tt>root</tt> user on the client is treated as the
+    <a href="anonuid">untrusted user</a> by the server, but all other users
+    are trusted.
+<dt><b>Nobody</b>
+<dd>All users on the client are treated as the <a href="anonuid">untrusted
+    user</a>. This option is best used when exporting to a system that you
+    do not control (such as a single-user PC), or when exporting to everyone.
+</dl>
+<i>exportfs options: root_squash, no_root_squash, all_squash</i>
+<hr>

@@ -1,0 +1,19 @@
+<header>Lita på användare</header>
+
+Här anger du de Unix-användare på klienten som servern ska lita på.
+Det finns tre alternativ:
+<dl>
+<dt><b>Alla</b>
+<dd>Alla användare på klienten kommer att behandlas likadant av servern
+<dt><b>Alla utom root</b>
+<dd><tt>root</tt>-användare på klienten behandlas som en
+    <a href=anonuid>opålitlig användare</a> av servern, medan den litar
+    på övriga användare.
+<dt><b>Ingen</b>
+<dd>Alla användare på klienten behandlas som en <a href=anonuid>opålitlig
+    användare</a> av servern. Detta alternativ är att föredra om du exporterar
+    till ett system som du inte har kontroll över (exempelvis en PC) eller
+    om du exporterar katalogen till alla.
+</dl>
+<hr>
+

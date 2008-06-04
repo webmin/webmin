@@ -1,0 +1,28 @@
+<header>Exportar a...</header>
+
+Las máquinas que tendrán acceso al directorio exportado. Se permiten cinco
+formas para especificar qué máquinas estás autorizadas a montar el directorio:
+<dl>
+<dt><b>Cualquiera</b>
+<dd>Cualquier máquina capaz de contactar con tu sistema tiene el acceso
+    autorizado. Esta opción debería de ser usadas con mucho cuidado,
+    especialmente si tu sistema está conectado a Internet.
+<dt><b>Máquina(s)</b>
+<dd>Ésta puede ser o una dirección IP o un nombre de máquina o una expresión
+    regular como <tt>*.foo.com</tt>. En el último caso, cualquier máquina
+    cuya búsqueda en DNS al revés por dirección IP coincida con la expresión
+    tendrá permitido el acceso.
+<dt><b>Clientes WebNFS</b>
+<dd>Permite que aquellos clientes que usen el protocolo WebNFS de Sun puedan
+    acceder a este directorio.
+<dt><b>Grupo de Red</b>
+<dd>Permite que todos los miembros del grupo de red NIS especificado accedan
+    a esta exportación.
+<dt><b>Red</b> y <b>Máscara de Red</b>
+<dd>Cualquier máquina dentro de las subred especificada tiene permitido el
+    acceso. Por ejemplo, si la red fuera <tt>10.1.2.0</tt> y la máscara
+    de red <tt>255.255.255.0</tt>, todas las máquinas con direcciones IP
+    desde la <tt>10.1.2.0</tt> a la <tt>10.1.2.255</tt> estarían autorizadas.
+</dl>
+<hr>
+

@@ -1,0 +1,23 @@
+<header>Introducción a Comparticiones NFS</header>
+
+<include nfs.es>
+
+<h3>NFS para Linux</h3>
+Este módulo te permite configurar directorios (llamados <i>exportaciones</i>
+en Linux) compartidos en tu sistema a través de NFS. La primera página te
+muestra una lista de directorios y de clientes a los que aquellos han sido
+exportados, permitiéndote hacer click en el cliente para editar sus opciones
+o empezar a exportar un nuevo directorio. <p>
+
+Bajo la lista de comparticiones en la primera página hay un botón que hace
+posible que la configuración en curso quede activa. Esto se realiza mediante
+la parada y rearranque de los procesos actuales del servidor NFS. <p>
+
+Si algún directorio y uno de sus subdirectorios es exportado, las opciones
+para el directorio más específico se aplicarán a los clientes. Por ejemplo,
+si <tt>/usr</tt> y <tt>/usr/local</tt> son exportados, un cliente que acceda
+a <tt>/usr/local/bin</tt> se verá afectado por las opciones de la exportación
+de <tt>/usr/local</tt>. <p>
+
+<hr>
+

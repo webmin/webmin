@@ -1,0 +1,21 @@
+<header>Introduktion till NFS-resurser</header>
+
+<include nfs>
+
+<h3>Linux NFS</h3>
+I denna modul kan du göra inställningar för kataloger (kallas
+<i>exports</i> i Linux) som ska delas från ditt system via NFS.
+Förstasidan visar en lista över kataloger samt de klienter som katalogerna
+exporteras till. Om du klickar på en klient kan du ändra inställningarna
+för den samt exportera nya kataloger.
+
+<p>Under listan finns en knapp som aktiverar inställningarna. Detta genomförs
+genom att alla NFS-serverprocesser stannas och startas om.
+
+<p>Om en katalog och någon underkatalog till denna exporteras kommer
+inställningarna att hämtas från den lägsta katalogen. Om exempelvis både
+<tt>/usr</tt> och <tt>/usr/local</tt> exporteras, kommer en klient som
+monterar <tt>/usr/local/bin</tt> att påverkas av de inställningar som gjorts
+för <tt>/usr/local</tt>-exporteringen.
+<hr>
+

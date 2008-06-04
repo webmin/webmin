@@ -1,0 +1,25 @@
+<header>Introducció a les Exportacions NFS</header>
+
+<include nfs>
+
+<h3>NFS de Linux</h3>
+Aquest mòdul permet configurar directoris (anomenats <i>exportacions</i>
+en Linux) per tal que siguin compartits des del teu sistema a través de
+NFS. La primera pàgina mostra una llista de directoris i els clients 
+als quals s'exporten, i permet que facis clic sobre un client per tal de
+canviar-ne les opcions o començar l'exportació d'un nou directori.
+<p>
+Sota la llista d'exportacions de la primera pàgina hi ha un botó que
+farà activa la configuració actual. Això es fa aturant i engegant els
+processos servidors NFS en execució.
+<p>
+Si tens exportats al mateix temps un directori i algun dels seus 
+subdirectoris, s'aplicaran als clients les opcions del directori
+més específic. Per exemple, si tant <tt>/usr</tt> com <tt>/usr/local</tt>
+estan exportats, un client que accedeixi a <tt>/usr/local/bin</tt>
+es trobarà afectat per les opcions d'exportació de <tt>/usr/local</tt>.
+<p>
+
+<hr>
+
+

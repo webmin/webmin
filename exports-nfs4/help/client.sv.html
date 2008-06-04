@@ -1,0 +1,26 @@
+<header>Exportera till ...</header>
+
+Datorer som ska ha tillgång till den exporterade katalogen. Det finns
+fem sätt att ange de datorer som får montera katalogen:
+<dl>
+<dt><b>Alla</b>
+<dd>Alla datorer som kan komma åt systemet får tillgång till katalogen.
+    Detta alternativ ska du vara försiktig med, särskilt om ditt system
+    är kopplat till Internet.
+<dt><b>Datorer(s)</b>
+<dd>Här kan du ange en IP-adress, ett datornamn eller ett reguljärt uttryck,
+    t ex <tt>*.foo.com</tt>. Det senare alternativet innebär att alla
+    datorer som vid bakåtuppslagning visar sig finnas i domänen foo.com
+    får tillgång till katalogen.
+<dt><b>WebNFS-klienter</b>
+<dd>Klienter som använder Suns WebNFS-protokoll får tillgång till katalogen.
+<dt><b>Nätverksgrupp</b>
+<dd>Alla medlemmar i den angivna NIS-nätverksgruppen får tillgång till katalogen.
+<dt><b>Nätverk</b> och <b>Nätmask</b>
+<dd>Alla datorer i det angivna delnätet får tillgång till katalogen.
+    Om du till exempel har angivit nätverket <tt>10.1.2.0</tt> och nätmasken
+    <tt>255.255.255.0</tt> får alla datorer med IP-adresser från
+    <tt>10.1.2.0</tt> till <tt>10.1.2.255</tt> tillgång till den.
+</dl>
+<hr>
+

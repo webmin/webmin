@@ -1,0 +1,21 @@
+<header>Directori a exportar</header>
+
+Aquest és el directori que s''exporta als clients llistats a la secció
+<a href=client>Exporta a ...</a>.<br>
+<br>
+En lloc demuntar un cert nombre d'exportacions diferents, un client NFSv4 veu
+les exportacions del servidor NFSv4 com si estiguessin dins d'un sol sistema
+de fitxers, anomenat el pseudo-sistema de fitxers NFSv4.<br>
+
+Així que per a NFSv4, primer es munta aquest directori (amb <tt>mount --bind</tt>)
+en el pseudo-sistema de fitxers NFSv4, i el pseudo-sistema s'exporta (si no hoestava), llavors el directori.<br>
+És preferible exportar aquest directori sense amagar-lo, de manera que el client
+s'hi podrà moure sense muntar-lo.<br>
+<br>
+Contràriament a altres servidors NFS, Linus suporta la reexportació d'un
+directori que s'ha muntat a través de NFS des d'un altre host, i l'exportació
+d'un directori que conté punts de muntatge per a altres sistemes de fitxers.
+
+<hr>
+
+

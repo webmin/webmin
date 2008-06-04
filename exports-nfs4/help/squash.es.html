@@ -1,0 +1,19 @@
+<header>Confiar en los usuario remotos</header>
+
+Determina qué usuarios de Unix en el cliente son fiables para el servidor.
+Hay tres opciones disponibles:
+<dl>
+<dt><b>Cualquiera</b>
+<dd>Todos los usuarios del cliente serán tratados igual por el servidor
+<dt><b>Cualquiera menos root</b>
+<dd>El usuario <tt>root</tt> del cliente es tratado como el
+    <a href=anonuid>usuario no fiable</a> por el servidor, pero los demás
+    son considerados como fiables.
+<dt><b>Nadie</b>
+<dd>Todos los usuarios del cliente son tratados como el <a href=anonuid>
+    usuario no fiable</a>. Esta opción es buenísima cuando se exporta a
+    un sistema que no controlas (como un PC mono-usuario) o cuando exportas
+    a todo el mundo.
+</dl>
+<hr>
+

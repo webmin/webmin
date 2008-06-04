@@ -1,0 +1,11 @@
+<header>Don't trust UIDs</header>
+
+<i>This is a NFSv2-specific option.</i><br>
+<i>The mapping daemon <tt>ugidd</tt> must be running.</i><br>
+In addition to the <a href="squash">Trust remote users</a> section, this option
+allows you to specify a list of client UIDs to be treated as the
+<a href="anonuid">untrusted user</a>. You must enter a comma-separated list
+of UIDs or UID ranges like <tt>1,10,20-25,100-150</tt>.<br>
+<br><i>exportfs options: squash_uids, map_daemon</i>
+<hr>
+

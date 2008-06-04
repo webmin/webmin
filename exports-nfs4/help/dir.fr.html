@@ -1,0 +1,9 @@
+<header>R&#233;pertoire &#224; Partager</header>
+
+Ceci est le r&#233;pertoire qui sera partag&#233; aux clients list&#233;s dans la section <a href=client>Partag&#233; &#224;</a>.<br>
+Au lieu de monter un &#224; un les diff&#233;rents r&#233;pertoires export&#233;s par un serveur, un client NFSv4 voit les partages d'un serveur NFSv4 comme existants &#224; l'int&#233;rieur d'un m&#234;me syst&#232;me de fichiers, appel&#233; le pseudo syst&#232;me de fichier NFSv4.<br>
+Donc, pour NFSv4, ce r&#233;pertoire est d'abord mont&#233; (avec <tt>mount --bind</tt>) dans le pseudosyst&#232;me de fichiers NFSv4, ce pseudo syt&#232;me de fichiers est export&#233; (si ce n'&#233;tait pas d&#233;j&#224; le cas), puis enfin le r&#233;pertoire est export&#233;.<br>
+Il est pr&#233;f&#233;rable d'exporter ce r&#233;pertoire sans le cacher, ainsi le client sera capable d'y acc&#233;der sans le monter.<br>
+<br>
+Contrairement aux autres serveurs NFS, Linux supporte le r&#233;export d'un r&#233;pertoire qui a d&#233;j&#224; &#233;t&#233; mont&#233; depuis un autre serveur, et le partage d'un r&#233;pertoire qui contient des points de montage pour d'autre syst&#232;me de fichiers.
+<hr>
