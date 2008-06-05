@@ -114,8 +114,8 @@ my $mem_cache = $sysctl->{"vm.stats.vm.v_cache_count"} *
 		$sysctl->{"hw.pagesize"};
 my $mem_free = $sysctl->{"vm.stats.vm.v_free_count"} *
 	       $sysctl->{"hw.pagesize"};
-return ( $sysctl->{"hw.physmem"},
-	 $mem_inactive + $mem_cache + $mem_free );
+return ( $sysctl->{"hw.physmem"} / 1024,
+	 ($mem_inactive + $mem_cache + $mem_free) / 1024 );
 }
 
 1;
