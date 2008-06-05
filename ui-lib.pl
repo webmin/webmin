@@ -204,20 +204,20 @@ if ($emptymsg && !@$data) {
 	}
 
 # Are there any checkboxes in each column? If so, make those columns narrow
-local @tds = ( );
+local @tds = map { "valign=top" } @$heads;
 local $maxwidth = 0;
 foreach my $r (@$data) {
 	local $cc = 0;
 	foreach my $c (@$r) {
 		if (ref($c) &&
 		    ($c->{'type'} eq 'checkbox' || $c->{'type'} eq 'radio')) {
-			$tds[$cc] = "width=5";
+			$tds[$cc] .= " width=5";
 			}
 		$cc++;
 		}
 	$maxwidth = $cc if ($cc > $maxwidth);
 	}
-$rv .= &ui_columns_start($heads, $width, $noborder, \@tds, $title);
+$rv .= &ui_columns_start($heads, $width, 0, \@tds, $title);
 
 # Add the data rows
 foreach my $r (@$data) {
