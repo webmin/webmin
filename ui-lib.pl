@@ -325,8 +325,8 @@ if (@$data) {
 				}
 			}
 		if ($cbname) {
-			unshift(@leftlinks, &select_all_link("d"),
-					    &select_invert_link("d"));
+			unshift(@leftlinks, &select_all_link($cbname),
+					    &select_invert_link($cbname));
 			}
 		}
 	}
