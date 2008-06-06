@@ -1,0 +1,31 @@
+index_title=Αλλαγή Γλώσσας και Θέματος
+index_lang=Γλώσσα Περιβάλλοντος Webmin
+index_langglobal=Καθολική γλώσσα ($1)
+index_langset=Προσωπική επιλογή ..
+index_theme=Θέμα Περιβάλλοντος Webmin
+index_themeglobal=Καθολικό θέμα ($1)
+index_themeset=Προσωπική επιλογή ..
+index_pass=Κωδικός πρόσβασης Webmin
+index_passleave=¶φησε αμετάβλητο
+index_passset=Ορισμός σε ..
+index_ok=Πραγματοποίηση Αλλαγών
+index_themedef=Παλιό Θέμα Webmin
+index_desc2=Το άρθρωμα αυτό μπορεί να χρησιμοποιθεί για να αλλάξετε $1, μόνο στον δικό σας λογαριασμό.
+index_d3=$1, $2 και $3
+index_d2=$1 και $2
+index_d1=$1
+index_dlang=γλώσσα εμφάνισης των αρθρωμάτων
+index_dtheme=το θέμα που ελέγχει την εμφάνιση του Webmin
+index_dpass=Ο κωδικός σύνδεσης που χρησιμοποιείται
+
+change_title=Αλλαγή Ρυθμίσεων
+change_user=Τροποποίηση σύνδεσης σε Webmin  ..
+change_done=.. ολοκληρώθηκε
+change_restart=Επανεκκίνηση Webmin ..
+change_redirect=Ανακατεύθυνση στο βασικό μενού ..
+change_ecolon=Ο κωδικός σας δεν μπορεί να περιέχει τον χαρακτήρα :
+
+acl_lang=Μπορεί να αλλάξει γλώσσα?
+acl_theme=Μπορεί να αλλάξει θέμα?
+acl_pass=Μπορεί να αλλάξει κωδικό (όταν έχει οριστεί στο Webmin) ?
+
