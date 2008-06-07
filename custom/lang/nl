@@ -96,6 +96,7 @@ run_ecmduser=Gebruiker '$1' om opdracht als uit tevoeren indien deze niet bestaa
 run_egroup=Geen of ongeldige groep
 run_eopt=Ongeldige optie geselecteerd
 run_err=Uitvoering opdracht mislukt
+run_eupload=Geen file geselecteerd voor upload
 run_euser=Geen of ongeldige gebruiker
 run_noout=Er is geen uitvoer aangemaakt
 run_out=Uitvoer van $1 ..
