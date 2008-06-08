@@ -77,3 +77,5 @@ Users with too many failed logins can be locked until the administrator unlocks 
 The default scheduled update time is now randomly selected.
 ---- Changes since 1.410 ----
 Refresh the left-side frame when installing, removing or re-categorizing modules.
+---- Changes since 1.420 ----
+On Linux systems, the IO scheduling class and priority for Webmin Cron jobs can be set on the Advanced Options page.

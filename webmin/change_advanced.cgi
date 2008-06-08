@@ -59,6 +59,12 @@ else {
 	$gconfig{'nice'} = $in{'nice'};
 	}
 
+# Save scheduling class
+if (defined($in{'sclass'})) {
+	$gconfig{'sclass'} = $in{'sclass'};
+	$gconfig{'sprio'} = $in{'sprio'};
+	}
+
 &lock_file("$config_directory/config");
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");

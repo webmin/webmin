@@ -70,6 +70,21 @@ if (&foreign_check("proc")) {
 	      [ [ 1, $text{'default'} ],
 		[ 0, $text{'advanced_pri'}." ".
 		     &proc::nice_selector("nice", $gconfig{'nice'} || 0) ] ]));
+
+	# IO scheduling class and priority
+	if (defined(&proc::os_list_scheduling_classes) &&
+	    (@classes = &proc::os_list_scheduling_classes())) {
+		print &ui_table_row($text{'advanced_sclass'},
+			&ui_select("sclass", $gconfig{'sclass'},
+				   [ [ undef, $text{'default'} ],
+				     @classes ]));
+
+		@prios = &proc::os_list_scheduling_priorities();
+		print &ui_table_row($text{'advanced_sprio'},
+			&ui_select("sprio", $gconfig{'sprio'},
+				   [ [ undef, $text{'default'} ],
+				     @prios ]));
+		}
 	}
 
 print &ui_table_end();

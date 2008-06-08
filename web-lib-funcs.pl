@@ -2634,10 +2634,22 @@ if ($gconfig{'umask'} && !$main::umask_already++) {
 	}
 
 # If this is a cron job or other background task, set the nice level
-if (!$main::nice_already && $gconfig{'nice'} &&
-    $main::webmin_script_type eq 'cron') {
-	# Cron jobs have no tty
-	eval 'use POSIX; POSIX::nice($gconfig{\'nice\'});';
+if (!$main::nice_already && $main::webmin_script_type eq 'cron') {
+	# Set nice level
+	if ($gconfig{'nice'}) {
+		eval 'use POSIX; POSIX::nice($gconfig{\'nice\'});';
+		}
+
+	# Set IO scheduling class and priority
+	if ($gconfig{'sclass'} ne '' || $gconfig{'sprio'} ne '') {
+		local $cmd = "ionice";
+		$cmd .= " -c ".quotemeta($gconfig{'sclass'})
+			if ($gconfig{'sclass'} ne '');
+		$cmd .= " -n ".quotemeta($gconfig{'sprio'})
+			if ($gconfig{'sprio'} ne '');
+		$cmd .= " -p $$";
+		&execute_command("$cmd >/dev/null 2>&1");
+		}
 	}
 $main::nice_already++;
 

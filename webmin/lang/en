@@ -752,6 +752,8 @@ advanced_eumask=Umask must be a 3-digit octal number
 advanced_etempdelete=Missing or invalid maximum age of temporary files
 advanced_nice=CPU priority for scheduled jobs
 advanced_pri=Priority level
+advanced_sclass=IO class for scheduled jobs
+advanced_sprio=IO priority for scheduled jobs
 
 syslog_errorlog=Webmin error log
 
