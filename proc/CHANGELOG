@@ -17,3 +17,6 @@ Re-wrote the user interface using the new Webmin UI library, for consistency.
 Re-designed the Run and Search pages, and made the search radio buttons auto-selecting.
 ---- Changes since 1.410 ----
 Added physical memory display on FreeBSD.
+---- Changes since 1.420 ----
+Corrected physical memory display on FreeBSD.
+On Linux systems with the ionice command, the IO scheduling class and priority of running processes can be edited.

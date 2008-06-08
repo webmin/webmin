@@ -24,6 +24,8 @@ parent=Parent process
 runtime=Run time
 nice=Nice level
 stime=Started
+sclass=IO scheduling class
+sprio=IO priority
 
 search_user=Owned by
 search_match=Matching
@@ -100,6 +102,10 @@ linuxstat_S=Sleeping
 linuxstat_D=Deep sleep
 linuxstat_T=Stopped
 linuxstat_Z=Zombie
+
+linux_real=Real time
+linux_be=Best effort
+linux_idle=Idle
 
 freebsd_ruser=Real user
 freebsd_rgroup=Real group

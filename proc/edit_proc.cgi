@@ -54,6 +54,23 @@ print &ui_table_row(&hlink($text{'nice'},"nice"),
 	&indexof($pinfo{nice}, @nice_range) < 0 ? $pinfo{nice} :
 		&nice_selector("nice", $pinfo{nice}).
 		&ui_submit($text{'edit_change'}), 3);
+
+# IO scheduling class, if support
+if (defined(&os_list_scheduling_classes) &&
+    (@classes = &os_list_scheduling_classes())) {
+	($class, $prio) = &os_get_scheduling_class($pinfo{'pid'});
+	($got) = grep { $_->[0] == $class } @classes;
+	if (!$got) {
+		# Some unknown class, probably 'none'
+		unshift(@classes, [ $class, $text{'default'} ]);
+		}
+	print &ui_table_row(&hlink($text{'sclass'},"sclass"),
+		&ui_select("sclass", $class, \@classes));
+	print &ui_table_row(&hlink($text{'sprio'},"sprio"),
+		&ui_select("sprio", $prio,
+			   [ &os_list_scheduling_priorities() ], 1, 0, 1));
+	}
+
 print &ui_form_end();
 
 # Extra OS-specific info

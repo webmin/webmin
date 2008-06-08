@@ -360,5 +360,54 @@ foreach $ia (keys %text) {
 
 $has_fuser_command = 1;
 
+# os_list_scheduling_classes()
+# Returns a list of Linux scheduling classes, if supported. Each element is a
+# 2-element array ref containing a code and description.
+sub os_list_scheduling_classes
+{
+if (&has_command("ionice")) {
+	return ( [ 1, $text{'linux_real'} ],
+		 [ 2, $text{'linux_be'} ],
+		 [ 3, $text{'linux_idle'} ] );
+	}
+return ( );
+}
+
+# os_list_scheduling_priorities()
+# Returns a list of IO priorities, each of which is an array ref containing
+# a number and description
+sub os_list_scheduling_priorities
+{
+return ( [ 0, "0 ($text{'edit_prihigh'})" ],
+	 [ 1 ], [ 2 ], [ 3 ], [ 4 ], [ 5 ], [ 6 ],
+	 [ 7, "7 ($text{'edit_prilow'})" ] );
+}
+
+# os_get_scheduling_class(pid)
+# Returns the IO scheduling class and priority for a running program
+sub os_get_scheduling_class
+{
+local ($pid) = @_;
+local $out = &backquote_command("ionice -p ".quotemeta($pid));
+if ($out =~ /^(realtime|best-effort|idle|none):\s+prio\s+(\d+)/) {
+	return ($1 eq "realtime" ? 1 : $1 eq "best-effort" ? 2 :
+		$1 eq "idle" ? 3 : 0, $2);
+	}
+return ( );
+}
+
+# os_set_scheduling_class(pid, class, priority)
+# Sets the ID scheduling class and priority for some process. Returns an error
+# message on failure, undef on success.
+sub os_set_scheduling_class
+{
+local ($pid, $class, $prio) = @_;
+local $cmd = "ionice -c ".quotemeta($class);
+$cmd .= " -n ".quotemeta($prio) if (defined($prio));
+$cmd .= " -p ".quotemeta($pid);
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+return $? ? $out : undef;
+}
+
 1;
 
