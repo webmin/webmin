@@ -51,6 +51,13 @@ if ($level == 0) {
 	print "<tr> <td><b>$text{'right_time'}</b></td>\n";
 	print "<td>$tm</td> </tr>\n";
 
+	# Kernel and CPU
+	$out = &backquote_command(
+	  "uname -r 2>/dev/null ; uname -m 2>/dev/null ; uname -s 2>/dev/null");
+	local ($r, $m, $o) = split(/\r?\n/, $out);
+	print "<tr> <td><b>$text{'right_kernel'}</b></td>\n";
+	print "<td>",&text('right_kernelon', $o, $r, $m),"</td> </tr>\n";
+
 	# System uptime
 	$out = &backquote_command("uptime");
 	$uptime = undef;

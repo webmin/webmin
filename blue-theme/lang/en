@@ -31,3 +31,6 @@ right_uptime=System uptime
 right_updays=$1 days, $2 hours, $3 minutes
 right_uphours=$1 hours, $2 minutes
 right_upmins=$1 minutes
+right_kernel=Kernel and CPU
+right_kernelon=$1 $2 on $3
+
