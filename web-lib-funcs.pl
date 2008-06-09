@@ -5697,7 +5697,7 @@ else {
 		if (-d $file) {
 			# Cannot open a directory!
 			if ($noerror) { return 0; }
-			else { &error("Cannot write to directory"); }
+			else { &error("Cannot write to directory $file"); }
 			}
 		local $tmp = &open_tempfile($file);
 		local $ex = open($fh, ">$tmp");
