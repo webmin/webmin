@@ -139,5 +139,12 @@ local $sh = eval "use Digest::SHA1 qw(sha1_base64);return sha1_base64(\$pass);";
 return "{SHA}$sh=";
 }
 
+# encrypt_sha1_hash(password, salt)
+# Hashes a combined salt+password with SHA1, and returns it in hex. Used on OSX
+sub encrypt_sha1_hash
+{
+local ($pass, $salt) = @_;
+}
+
 1;
 

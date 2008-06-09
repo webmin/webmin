@@ -484,13 +484,13 @@ if (%ouser) {
 		}
 
 	# Update user details
-	&modify_user(\%ouser, \%user);
 	$user{'passmode'} = $in{'passmode'};
 	if ($in{'passmode'} == 2 && $user{'pass'} eq $ouser{'pass'}) {
 		# not changing password
 		$user{'passmode'} = 4;
 		}
 	$user{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+	&modify_user(\%ouser, \%user);
 
 	# Rename group if needed and if possible
 	if ($user{'user'} ne $ouser{'user'} &&
@@ -553,9 +553,9 @@ else {
 		}
 
 	# Save user details
-	&create_user(\%user);
 	$user{'passmode'} = $in{'passmode'};
 	$user{'plainpass'} = $in{'pass'} if ($in{'passmode'} == 3);
+	&create_user(\%user);
 
 	# Copy files into user's directory
 	if ($in{'copy_files'} && $in{'makehome'}) {

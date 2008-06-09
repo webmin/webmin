@@ -3,18 +3,55 @@
 
 $netinfo_domain = $config{'netinfo_domain'} || ".";
 
+# Mapping from OSX user properties to Webmin user hash keys
+%user_properties_map = (
+	'RecordName' => 'user',
+	'UniqueID' => 'uid',
+	'PrimaryGroupID' => 'gid',
+	'RealName' => 'real',
+	'NFSHomeDirectory' => 'home',
+	'UserShell' => 'shell',
+	);
+
+# And to group hash keys
+%group_properties_map = (
+	'RecordName' => 'group',
+	'PrimaryGroupID' => 'gid',
+	'GroupMembership' => 'members',
+	);
+
 # passfiles_type()
-# Returns 6 for macos netinfo user storage
+# Returns 6 for macos netinfo user storage, 7 for new directory service
 sub passfiles_type
 {
-return 6;
+if (-x "/usr/bin/nidump") {
+	# Old netinfo format users DB
+	return 6;
+	}
+elsif (-x "/usr/bin/dscl") {
+	# New directory service DB
+	return 7;
+	}
+else {
+	return 0;
+	}
 }
 
 # groupfiles_type()
-# Returns 5 for  macos netinfo group storage
+# Returns 5 for macos netinfo group storage, 7 for new directory service
 sub groupfiles_type
 {
-return 5;
+if (-x "/usr/bin/nidump") {
+	# Old netinfo format groups DB
+	return 5;
+	}
+elsif (-x "/usr/bin/dscl") {
+	# New directory service DB
+	return 7;
+	}
+else {
+	return 0;
+	}
 }
 
 # open_last_command(handle, user)
@@ -42,6 +79,36 @@ while(1) {
 		return ($1, $2, $3, $4);
 		}
 	}
+}
+
+# execute_dscl_command(command, arg, ...)
+# Executes some batch command with dscl, and calls error on failure
+sub execute_dscl_command
+{
+local ($cmd, @args) = @_;
+local $fullcmd = "dscl '$netinfo_domain' ".quotemeta($cmd);
+foreach my $a (@args) {
+	$fullcmd .= " ".($a eq '' ? "''" : quotemeta($a));
+	}
+local $out = &backquote_command("$fullcmd 2>&1 </dev/null");
+if ($?) {
+	&error("<tt>".&html_escape($fullcmd)."</tt> failed : ".
+	       "<tt>".&html_escape($out)."</tt>");
+	}
+return $out;
+}
+
+# get_macos_password_hash(uid)
+# Given a user's ID, return the password hash. This is in SHA1 format, and the
+# first 4 bytes are the salt
+sub get_macos_password_hash
+{
+local ($uuid) = @_;
+local $hashfile = &read_file_contents("/var/db/shadow/hash/$uuid");
+if ($hashfile) {
+	return substr($hashfile, 169, 48);
+	}
+return undef;
 }
 
 1;

@@ -80,6 +80,44 @@ elsif ($pft == 6) {
 		}
 	close(PASSWD);
 	}
+elsif ($pft == 7) {
+	# Read directory services dump of users
+	&open_execute_command(PASSWD,
+		"dscl '$netinfo_domain' readall /Users", 1);
+	local $user;
+	while(<PASSWD>) {
+		s/\r|\n//g;
+		if ($_ eq "-") {
+			# End of the current user
+			$user = undef;
+			}
+		elsif (/^(\S+):\s*(.*)$/) {
+			# Value for a user
+			if (!$user) {
+				$user = { 'num' => scalar(@rv) };
+				push(@rv, $user);
+				}
+			local ($n, $v) = ($1, $2);
+			if ($v eq '') {
+				# Multi-line value
+				$v = <PASSWD>;
+				$v =~ s/^ //;
+				}
+			local $p = $user_properties_map{$n};
+			if ($p) {
+				# Some OSX users have two names, like _foo foo
+				$v =~ s/\s.*$// if ($p eq 'user');
+				$user->{$p} = $v;
+				}
+			elsif ($n eq "GeneratedUID") {
+				# Given the UID, we can get the password hash
+				$user->{'pass'} = &get_macos_password_hash($v);
+				$user->{'uuid'} = $v;
+				}
+			}
+		}
+	close(PASSWD);
+	}
 else {
 	# start by reading /etc/passwd
 	$lnum = 0;
@@ -219,6 +257,11 @@ elsif ($pft == 6) {
 	&system_logged("niutil -create '$netinfo_domain' '/users/$_[0]->{'user'}'");
 	&set_netinfo($_[0]);
 	}
+elsif ($pft == 7) {
+	# Add to directory services
+	&execute_dscl_command("create", "/Users/$_[0]->{'user'}");
+	&set_user_dirinfo($_[0]);
+	}
 else {
 	# add to /etc/passwd
 	$lref = &read_file_lines($config{'passwd_file'});
@@ -320,6 +363,15 @@ elsif ($pft == 6) {
 		}
 	&set_netinfo($_[1]);
 	}
+elsif ($pft == 7) {
+	# Call directory services to update the user
+	if ($_[0]->{'user'} && $_[0]->{'user'} ne $_[1]->{'user'}) {
+		# Need to rename
+		&execute_dscl_command("change", "/Users/$_[0]->{'user'}",
+			      "RecordName", $_[0]->{'user'}, $_[1]->{'user'});
+		}
+	&set_user_dirinfo($_[1]);
+	}
 else {
 	# update /etc/passwd
 	$lref = &read_file_lines($config{'passwd_file'});
@@ -414,6 +466,10 @@ elsif ($pft == 6) {
 	# Just delete with the niutil command
 	&system_logged("niutil -destroy '$netinfo_domain' '/users/$_[0]->{'user'}'");
 	}
+elsif ($gft == 7) {
+	# Delete from directory services
+	&execute_dscl_command("delete", "/Users/$_[0]->{'user'}");
+	}
 else {
 	# XXX doesn't delete from AIX file!
 	$_[0]->{'line'} =~ /^\d+$/ || &error("Missing user line to delete");
@@ -463,6 +519,41 @@ if ($gft == 5) {
 			}
 		}
 	close(GROUP);
+	}
+elsif ($gft == 7) {
+	# Read directory services dump of groups
+	&open_execute_command(PASSWD,
+		"dscl '$netinfo_domain' readall /Groups", 1);
+	local $group;
+	while(<PASSWD>) {
+		s/\r|\n//g;
+		if ($_ eq "-") {
+			# End of the current group
+			$group = undef;
+			}
+		elsif (/^(\S+):\s*(.*)$/) {
+			# Value for a group
+			if (!$group) {
+				$group = { 'num' => scalar(@rv) };
+				push(@rv, $group);
+				}
+			local ($n, $v) = ($1, $2);
+			if ($v eq '') {
+				# Multi-line value
+				$v = <PASSWD>;
+				$v =~ s/^ //;
+				}
+			local $p = $group_properties_map{$n};
+			if ($p) {
+				# Convert spaces in members list to ,
+				$v =~ s/ /,/g if ($p eq 'members');
+				# Some OSX groups have two names, like _foo foo
+				$v =~ s/\s.*$// if ($p eq 'group');
+				$group->{$p} = $v;
+				}
+			}
+		}
+	close(PASSWD);
 	}
 else {
 	# Read the standard group file
@@ -527,6 +618,11 @@ return @rv;
 }
 
 # create_group(&details)
+# Create a new Unix group based on the given hash. Required keys are
+# gid - Unix group ID
+# group - Group name
+# pass - Encrypted password
+# members - Comma-separated list of members
 sub create_group
 {
 local $gft = &groupfiles_type();
@@ -534,6 +630,11 @@ if ($gft == 5) {
 	# Use niutil command
 	&system_logged("niutil -create '$netinfo_domain' '/groups/$_[0]->{'group'}'");
 	&set_group_netinfo($_[0]);
+	}
+elsif ($gft == 7) {
+	# Use the dscl directory services command
+	&execute_dscl_command("create", "/Groups/$_[0]->{'group'}");
+	&set_group_dirinfo($_[0]);
 	}
 else {
 	# Update group file(s)
@@ -571,6 +672,11 @@ push(@list_groups_cache, $_[0]) if (defined(@list_groups_cache));
 }
 
 # modify_group(&old, &details)
+# Update an existing Unix group based on the given hash. Required keys are
+# gid - Unix group ID
+# group - Group name
+# pass - Encrypted password
+# members - Comma-separated list of members
 sub modify_group
 {
 $_[0] || &error("Missing parameter to modify_group");
@@ -583,6 +689,15 @@ if ($gft == 5) {
 		&system_logged("niutil -create '$netinfo_domain' '/groups/$_[1]->{'group'}'");
 		}
 	&set_group_netinfo($_[1]);
+	}
+elsif ($gft == 7) {
+	# Call dscl to update the group
+	if ($_[0]->{'group'} && $_[0]->{'group'} ne $_[1]->{'group'}) {
+		# Need to rename
+		&execute_dscl_command("change", "/Groups/$_[0]->{'group'}",
+			      "RecordName", $_[0]->{'group'}, $_[1]->{'group'});
+		}
+	&set_group_dirinfo($_[1]);
 	}
 else {
 	# Update in files
@@ -609,6 +724,7 @@ if ($_[0] ne $_[1] && &indexof($_[0], @list_groups_cache) != -1) {
 }
 
 # delete_group(&details)
+# Delete an existing Unix group, whose details are in the hash ref supplied
 sub delete_group
 {
 $_[0] || &error("Missing parameter to delete_group");
@@ -616,6 +732,10 @@ local $gft = &groupfiles_type();
 if ($gft == 5) {
 	# Call niutil to delete
 	&system_logged("niutil -destroy '$netinfo_domain' '/groups/$_[0]->{'group'}'");
+	}
+elsif ($gft == 7) {
+	# Delete from directory services
+	&execute_dscl_command("delete", "/Groups/$_[0]->{'group'}");
 	}
 else {
 	# Remove from group file(s)
@@ -1063,6 +1183,8 @@ sub mkdir_if_needed
 -d $_[0] || &make_dir($_[0], 0755);
 }
 
+# set_netinfo(&user)
+# Update a NetInfo user based on a Webmin user hash
 sub set_netinfo
 {
 local %u = %{$_[0]};
@@ -1077,6 +1199,8 @@ local %u = %{$_[0]};
 &system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' shell '$u{'shell'}'");
 }
 
+# set_group_netinfo(&group)
+# Update a NetInfo group based on a Webmin group hash
 sub set_group_netinfo
 {
 local %g = %{$_[0]};
@@ -1084,6 +1208,49 @@ local $mems = join(" ", map { "'$_'" } split(/,/, $g{'members'}));
 &system_logged("niutil -createprop '$netinfo_domain' '/groups/$g{'group'}' gid '$g{'gid'}'");
 &system_logged("niutil -createprop '$netinfo_domain' '/groups/$g{'group'}' passwd '$g{'pass'}'");
 &system_logged("niutil -createprop '$netinfo_domain' '/groups/$g{'group'}' users $mems");
+}
+
+# set_user_dirinfo(&user)
+# Update a user in OSX directive services based on a Webmin user hash
+sub set_user_dirinfo
+{
+local %u = %{$_[0]};
+foreach my $k (keys %user_properties_map) {
+	local $v = $u{$user_properties_map{$k}};
+	if (defined($v)) {
+		&execute_dscl_command("create", "/Users/$u{'user'}", $k, $v);
+		}
+	}
+print STDERR "passmode=$u{'passmode'} plainpass=$u{'plainpass'}\n";
+if ($u{'passmode'} == 3 && defined($u{'plainpass'}) ||
+    $u{'passmode'} == 0) {
+	# A new plain password was given - use it
+	&execute_dscl_command("passwd", "/Users/$u{'user'}", $u{'plainpass'});
+	if ($user->{'uuid'}) {
+		$user->{'pass'} = &get_macos_password_hash($user->{'uuid'});
+		}
+	}
+elsif ($u{'passmode'} == 4) {
+	# Explicitly not changed, so do nothing
+	}
+else {
+	# Has the hash changed?
+	# XXX what about locked? empty?
+	}
+}
+
+# set_group_dirinfo(&group)
+# Update a group in OSX directive services based on a Webmin group hash
+sub set_group_dirinfo
+{
+local %g = %{$_[0]};
+$g{'members'} =~ s/,/ /g;
+foreach my $k (keys %group_properties_map) {
+	local $v = $g{$group_properties_map{$k}};
+	if (defined($v)) {
+		&execute_dscl_command("create", "/Groups/$g{'group'}", $k, $v);
+		}
+	}
 }
 
 # check_password_restrictions(pass, username)
@@ -1274,7 +1441,30 @@ sub encrypt_password
 {
 local ($pass, $salt) = @_;
 local $md5 = 0;
-if ($config{'md5'} == 2) {
+if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
+	# New OSX directory service uses SHA1 for passwords!
+	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65). 
+		  chr(int(rand(26))+65).chr(int(rand(26))+65);
+	if (&check_sha1()) {
+		# Use Digest::SHA1 perl module
+		return &encrypt_sha1_hash($pass, $salt);
+		}
+	elsif (&has_command("openssl")) {
+		# Use openssl command
+		local $temp = &transname();
+		&open_execute_command(OPENSSL, "openssl dgst -sha1 >$temp", 0);
+		print OPENSSL $salt,$pass;
+		close(OPENSSL);
+		local $rv = &read_file_contents($temp);
+		&unlink_file($temp);
+		$rv =~ s/\r|\n//g;
+		return $rv;
+		}
+	else {
+		&error("Either the Digest::SHA1 Perl module or openssl command is needed to hash passwords");
+		}
+	}
+elsif ($config{'md5'} == 2) {
 	# Always use MD5
 	$md5 = 1;
 	}
@@ -1817,7 +2007,7 @@ foreach $g (@$groups) {
 		}
 	push(@cols, &group_link($g));
 	push(@cols, $g->{'gid'});
-	push(@cols, &ifblank($members));
+	push(@cols, &html_escape($members));
 	if ($g->{'noedit'} || !$access{'gdelete'}) {
 		print &ui_columns_row(\@cols, \@tds);
 		}
@@ -1831,11 +2021,6 @@ if ($anyedit && $access{'gdelete'}) {
 	print &ui_submit($text{'index_gmass'}, "delete"),"<br>\n";
 	print &ui_form_end();
 	}
-}
-
-sub ifblank
-{
-return $_[0] ? &html_escape($_[0]) : "&nbsp;";
 }
 
 # date_input(day, month, year, prefix)
