@@ -4,7 +4,7 @@
 
 require './squid-lib.pl';
 $access{'cms'} || &error($text{'cach_ecannot'});
-$mgr = $config{'cachemgr_path'};
+($mgr) = glob($config{'cachemgr_path'});
 &same_file($0, $mgr) && &error($text{'cach_esame'});
 if (&has_command($mgr)) {
 	$| = 1;
