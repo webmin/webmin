@@ -74,3 +74,4 @@ Corrected parsing of records in zone files with no names, which inherit from the
 Spaces are now allowed in Host Information records.
 ---- Changes since 1.420 ----
 The default TTL for multiple zones can now be changed on the Update Records in Zones page.
+When adding a cluster slave server, multiple views can be entered to have slave zones created in all of them.

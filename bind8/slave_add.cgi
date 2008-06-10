@@ -26,7 +26,7 @@ else {
 	$msg = &text('add_gmsg', $in{'group'});
 	$in{'name_def'} || &error($text{'add_egname'});
 	}
-$in{'view_def'} || $in{'view'} =~ /^\S+$/ || &error($text{'add_eview'});
+$in{'view_def'} || $in{'view'} =~ /\S/ || &error($text{'add_eview'});
 $myip = $config{'this_ip'} || &to_ipaddress(&get_system_hostname());
 $myip && $myip ne "127.0.0.1" ||
 	&error($text{'add_emyip'});
@@ -62,10 +62,16 @@ foreach $s (@add) {
 		print &text('add_emissing', $s->{'host'}),"<p>\n";
 		next;
 		}
-	if (&remote_foreign_call($s, "bind8",
-				 "get_webmin_version") < 1.202) {
+
+	# Check for needed Webmin versions
+	local $rver = &remote_foreign_call($s, "bind8", "get_webmin_version");
+	if ($rver < 1.202) {
 		print &text('add_eversion', $s->{'host'}, 1.202),"<p>\n";
 		next;
+		}
+	if ($s->{'bind8_view'} && $s->{'bind8_view'} =~ /\s/ &&
+	    $rver < 1.422) {
+		print &text('add_eversion2', $s->{'host'}, 1.422),"<p>\n";
 		}
 
 	@rzones = grep { $_->{'type'} ne 'view' }
@@ -84,7 +90,8 @@ foreach $s (@add) {
 			($slaveerr) = &create_on_slaves($zone->{'name'}, $myip,
 						       undef, [ $s->{'host'} ]);
 			if ($slaveerr) {
-				$zerrs{$slaveerr->[0]->{'host'}} ||= $slaveerr->[1];
+				$zerrs{$slaveerr->[0]->{'host'}} ||=
+					$slaveerr->[1];
 				$zerr++;
 				}
 			else {
@@ -99,7 +106,8 @@ foreach $s (@add) {
 
 		# Tell the user
 		if ($zerr) {
-			print &text('add_createerr', $s->{'host'}, $zcount, $zerr),"<br>\n";
+			print &text('add_createerr', $s->{'host'},
+				    $zcount, $zerr),"<br>\n";
 			foreach $k (keys %zerrs) {
 				print "$k : $zerrs{$k}<br>\n";
 				}

@@ -50,25 +50,25 @@ if (@allservers) {
 	print "<table width=100%><tr>\n";
 	%gothost = map { $_->{'id'}, 1 } @servers;
 	@addservers = grep { !$gothost{$_->{'id'}} } @allservers;
+	@addservers = sort { $a->{'host'} cmp $b->{'host'} } @addservers;
 	if (@addservers) {
-		print "<td><input type=submit name=add value='$text{'slaves_add'}'>\n";
-		print "<select name=server>\n";
-		foreach $s (@addservers) {
-			print "<option value=$s->{'id'}>",
-				$s->{'desc'} ? $s->{'desc'} : $s->{'host'},"\n";
-			}
-		print "</select>\n";
+		print "<td>";
+		print &ui_submit($text{'slaves_add'}, "add");
+		print &ui_select("server", undef,
+			[ map { [ $_->{'id'},
+				  $_->{'host'}.($_->{'desc'} ? " ($_->{'desc'})"
+							     : "") ] }
+			      @addservers ]);
 		print "</td>\n";
 		}
 	@groups = &servers::list_all_groups(\@allservers);
+	@groups = sort { $a->{'name'} cmp $b->{'name'} } @groups;
 	if (@groups) {
-		print "<td align=right><input type=submit name=gadd ",
-		      "value='$text{'slaves_gadd'}'>\n";
-		print "<select name=group>\n";
-		foreach $g (@groups) {
-			print "<option>$g->{'name'}\n";
-			}
-		print "</select></td>\n";
+		print "<td align=right>\n";
+		print &ui_submit($text{'slaves_gadd'}, "gadd");
+		print &ui_select("group", undef,
+			[ map { $_->{'name'} } @groups ]);
+		print "</td>\n";
 		}
 	print "</tr></table>\n";
 
@@ -76,8 +76,9 @@ if (@allservers) {
 		# Show inputs for view and existing create
 		print "<table><tr>\n";
 		print "<tr> <td><b>$text{'slaves_toview'}</b></td>\n";
-		print "<td>",&ui_opt_textbox("view", undef, 15, $text{'slaves_noview2'},
-				      $text{'slaves_inview'}),"</td> </tr>\n";
+		print "<td>",&ui_opt_textbox("view", undef, 30,
+			$text{'slaves_noview2'}, $text{'slaves_inview'}),
+			"</td> </tr>\n";
 
 		print "<tr> <td><b>$text{'slaves_sec'}</b></td>\n";
 		print "<td>",&ui_yesno_radio("sec", 0),"</td> </tr>\n";

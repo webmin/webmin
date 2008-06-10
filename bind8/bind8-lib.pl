@@ -168,7 +168,7 @@ return $any;
 # Pos will end up at the start of the next structure
 sub parse_struct
 {
-local (%str, $i, $j, $t, @vals, $str);
+local (%str, $i, $j, $t, @vals);
 $i = ${$_[2]};
 $str{'name'} = lc($_[0]->[$i]);
 $str{'line'} = $_[1]->[$i];
@@ -186,9 +186,11 @@ if ($str{'name'} eq 'inet') {
 			$i += 2;	# skip {
 			$j = 0;
 			while($_[0]->[$i] ne "}") {
-				$str = &parse_struct($_[0], $_[1], \$i, $j++, $_[4]);
-				if ($str) {
-					push(@{$str{'members'}->{$t}}, $str);
+				my $substr = &parse_struct(
+						$_[0], $_[1], \$i, $j++, $_[4]);
+				if ($substr) {
+					$substr->{'parent'} = \%str;
+					push(@{$str{'members'}->{$t}}, $substr);
 					}
 				}
 			next;
@@ -218,8 +220,12 @@ else {
 		$j = 0;
 		while($_[0]->[$i] ne "}") {
 			if (!defined($_[0]->[$i])) { ${$_[2]} = $i; return undef; }
-			$str = &parse_struct($_[0], $_[1], \$i, $j++, $_[4]);
-			if ($str) { push(@mems, $str); }
+			my $substr = &parse_struct(
+				$_[0], $_[1], \$i, $j++, $_[4]);
+			if ($substr) {
+				$substr->{'parent'} = \%str;
+				push(@mems, $substr);
+				}
 			}
 		$str{'members'} = \@mems;
 		$i += 2;	# skip trailing } and ;
@@ -1523,15 +1529,25 @@ if ($file) {
         &set_ownership(&make_chroot($file));
 	}
 
-local $view;
+# Get and validate view(s)
+local @views;
 if ($_[2]) {
-	# Get and validate view
-	($view) = grep { $_->{'value'} eq $_[2] } &find("view", $conf);
-	return 3 if (!$view);
+	foreach my $vn (split(/\s+/, $_[2])) {
+		my ($view) = grep { $_->{'value'} eq $vn }
+				    &find("view", $conf);
+		push(@views, $view);
+		}
+	return 3 if (!@views);
+	}
+else {
+	# Top-level only
+	push(@views, undef);
 	}
 
-# Create the zone
-&create_zone($dir, $conf, $view ? $view->{'index'} : undef);
+# Create the zone in all views
+foreach my $view (@views) {
+	&create_zone($dir, $conf, $view ? $view->{'index'} : undef);
+	}
 
 return 0;
 }
@@ -1544,42 +1560,50 @@ sub delete_zone
 local $parent = &get_config_parent();
 local $conf = $parent->{'members'};
 local @zones;
+
 if ($_[1]) {
-	# Look in one view
-	local ($v) = grep { $_->{'value'} eq $_[1] } &find("view", $conf);
-	return 2 if (!$v);
-	@zones = &find("zone", $v->{'members'});
+	# Look in one or more views
+	foreach my $vn (split(/\s+/, $_[1])) {
+		local ($v) = grep { $_->{'value'} eq $vn }
+				  &find("view", $conf);
+		if ($v) {
+			push(@zones, &find("zone", $v->{'members'}));
+			}
+		}
+	return 2 if (!@zones);
 	$parent = $v;
 	}
 else {
 	# Look in all views
-	@zones = &find("zone", $conf);
-	local $v;
-	foreach $v (&find("view", $conf)) {
+	push(@zones, &find("zone", $conf));
+	foreach my $v (&find("view", $conf)) {
 		push(@zones, &find("zone", $v->{'members'}));
 		}
 	}
-local ($z) = grep { $_->{'value'} eq $_[0] } @zones;
-return 1 if (!$z);
 
-# Remove from config file
-&lock_file($z->{'file'});
-&save_directive($parent, [ $z ], [ ]);
-&unlock_file($z->{'file'});
-&flush_file_lines();
+# Delete all zones in the list
+local $found = 0;
+foreach my $z (grep { $_->{'value'} eq $_[0] } @zones) {
+	$found++;
 
-if ($_[2]) {
-	# Remove file
-	local $f = &find("file", $z->{'members'});
-	if ($f) {
-		&lock_file(&make_chroot(&absolute_path($f->{'value'})));
-		unlink(&make_chroot(&absolute_path($f->{'value'})));
-		&unlock_file(&make_chroot(&absolute_path($f->{'value'})));
+	# Remove from config file
+	&lock_file($z->{'file'});
+	&save_directive($z->{'parent'} || $parent, [ $z ], [ ]);
+	&unlock_file($z->{'file'});
+	&flush_file_lines();
+
+	if ($_[2]) {
+		# Remove file
+		local $f = &find("file", $z->{'members'});
+		if ($f) {
+			&unlink_logged(&make_chroot(
+				&absolute_path($f->{'value'})));
+			}
 		}
 	}
 
 &flush_zone_names();
-return 0;
+return $found ? 0 : 1;
 }
 
 # rename_zone(oldname, newname, [view])
