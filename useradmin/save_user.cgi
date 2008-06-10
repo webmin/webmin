@@ -282,7 +282,8 @@ elsif ($in{'passmode'} == 3) {
 	&error($err) if ($err);
 	$user{'pass'} = &encrypt_password($in{'pass'});
 	}
-if ($in{'disable'} && ($in{'passmode'} == 2 || $in{'passmode'} == 3)) {
+if (&supports_temporary_disable() &&
+    $in{'disable'} && ($in{'passmode'} == 2 || $in{'passmode'} == 3)) {
 	$user{'pass'} = $disable_string.$user{'pass'};
 	}
 

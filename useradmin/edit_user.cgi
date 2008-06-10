@@ -215,16 +215,19 @@ if (!%uinfo && $config{'random_password'}) {
 					rand(scalar(@random_password_chars))];
 		}
 	}
-if (%uinfo && $pass ne $config{'lock_string'} && $pass ne "") {
-	# Can disable if not already locked, or if a new account
-	$can_disable = 1;
-	if ($pass =~ /^\Q$disable_string\E/) {
-		$disabled = 1;
-		$pass =~ s/^\Q$disable_string\E//;
+# Check if temporary locking is supported
+if (&supports_temporary_disable()) {
+	if (%uinfo && $pass ne $config{'lock_string'} && $pass ne "") {
+		# Can disable if not already locked, or if a new account
+		$can_disable = 1;
+		if ($pass =~ /^\Q$disable_string\E/) {
+			$disabled = 1;
+			$pass =~ s/^\Q$disable_string\E//;
+			}
 		}
-	}
-elsif (!%uinfo) {
-	$can_disable = 1;
+	elsif (!%uinfo) {
+		$can_disable = 1;
+		}
 	}
 print "<td valign=top rowspan=4>",&hlink("<b>$text{'pass'}</b>","pass"),
       "</td> <td rowspan=4 valign=top>\n";
@@ -239,16 +242,19 @@ printf "<input %s name=pass size=15 value='%s'><br>\n",
 	$config{'passwd_stars'} ? "type=password" : "",
 	$config{'random_password'} && $n eq "" ? $random_password : "";
 if ($access{'nocrypt'}) {
+	# Don't show current encrypted password
 	printf
 	  "<input type=radio name=passmode value=2 %s> $text{'nochange'}\n",
 	  $pass && $pass ne $config{'lock_string'} && $random_password eq "" ? "checked" : "";
-	print "<input type=hidden name=encpass size=30 value=\"$pass\">\n";
+	print "<input type=hidden name=encpass value=\"$pass\">\n";
 	}
 else {
+	# Show encrypted
+	local $size = length($pass) > 13 ? length($pass) : 13;
 	printf
 	  "<input type=radio name=passmode value=2 %s> $text{'encrypted'}\n",
 	  $pass && $pass ne $config{'lock_string'} ? "checked" : "";
-	printf "<input name=encpass size=13 value=\"%s\">\n",
+	printf "<input name=encpass size=$size value=\"%s\">\n",
 		$pass && $pass ne $config{'lock_string'} ? $pass : "";
 	}
 

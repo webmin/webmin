@@ -85,6 +85,7 @@ elsif ($pft == 7) {
 	&open_execute_command(PASSWD,
 		"dscl '$netinfo_domain' readall /Users", 1);
 	local $user;
+	local $ls = $config{'lock_string'};
 	while(<PASSWD>) {
 		s/\r|\n//g;
 		if ($_ eq "-") {
@@ -113,6 +114,11 @@ elsif ($pft == 7) {
 				# Given the UID, we can get the password hash
 				$user->{'pass'} = &get_macos_password_hash($v);
 				$user->{'uuid'} = $v;
+				if (substr($user->{'pass'}, 0,
+					   length($ls)) eq $ls) {
+					# Account locked
+					$user->{'pass'} = $ls;
+					}
 				}
 			}
 		}
@@ -250,7 +256,9 @@ elsif ($pft == 3) {
 	# Just invoke the useradd command
 	&system_logged("useradd -u $_[0]->{'uid'} -g $_[0]->{'gid'} -c \"$_[0]->{'real'}\" -d $_[0]->{'home'} -s $_[0]->{'shell'} $_[0]->{'user'}");
 	# And set the password
-	&system_logged("echo $_[0]->{'pass'} | /usr/lib/scoadmin/account/password.tcl $_[0]->{'user'} >/dev/null 2>&1");
+	&system_logged("echo ".quotemeta($_[0]->{'pass'}).
+		       " | /usr/lib/scoadmin/account/password.tcl ".
+		       "$_[0]->{'user'} >/dev/null 2>&1");
 	}
 elsif ($pft == 6) {
 	# Use the niutil command
@@ -260,6 +268,10 @@ elsif ($pft == 6) {
 elsif ($pft == 7) {
 	# Add to directory services
 	&execute_dscl_command("create", "/Users/$_[0]->{'user'}");
+	local $out = &execute_dscl_command("read", "/Users/$_[0]->{'user'}");
+	if ($out =~ /GeneratedUID:\s+(\S+)/) {
+		$_[0]->{'uuid'} = $1;
+		}
 	&set_user_dirinfo($_[0]);
 	}
 else {
@@ -370,6 +382,7 @@ elsif ($pft == 7) {
 		&execute_dscl_command("change", "/Users/$_[0]->{'user'}",
 			      "RecordName", $_[0]->{'user'}, $_[1]->{'user'});
 		}
+	$_[1]->{'uuid'} = $_[0]->{'uuid'};
 	&set_user_dirinfo($_[1]);
 	}
 else {
@@ -430,6 +443,7 @@ else {
 if ($_[0] ne $_[1] && &indexof($_[0], @list_users_cache) != -1) {
 	# Update old object in cache
 	$_[1]->{'line'} = $_[0]->{'line'} if (defined($_[0]->{'line'}));
+	$_[1]->{'uuid'} = $_[0]->{'uuid'} if (defined($_[0]->{'uuid'}));
 	$_[1]->{'sline'} = $_[0]->{'sline'} if (defined($_[0]->{'sline'}));
 	$_[1]->{'seline'} = $_[0]->{'seline'} if (defined($_[0]->{'seline'}));
 	%{$_[0]} = %{$_[1]};
@@ -466,7 +480,7 @@ elsif ($pft == 6) {
 	# Just delete with the niutil command
 	&system_logged("niutil -destroy '$netinfo_domain' '/users/$_[0]->{'user'}'");
 	}
-elsif ($gft == 7) {
+elsif ($pft == 7) {
 	# Delete from directory services
 	&execute_dscl_command("delete", "/Users/$_[0]->{'user'}");
 	}
@@ -550,6 +564,11 @@ elsif ($gft == 7) {
 				# Some OSX groups have two names, like _foo foo
 				$v =~ s/\s.*$// if ($p eq 'group');
 				$group->{$p} = $v;
+				}
+			elsif ($n eq "GeneratedUID") {
+				# Given the UUID, we can get the password hash
+				$group->{'pass'} = &get_macos_password_hash($v);
+				$group->{'uuid'} = $v;
 				}
 			}
 		}
@@ -697,6 +716,7 @@ elsif ($gft == 7) {
 		&execute_dscl_command("change", "/Groups/$_[0]->{'group'}",
 			      "RecordName", $_[0]->{'group'}, $_[1]->{'group'});
 		}
+	$_[1]->{'uuid'} = $_[0]->{'uuid'};
 	&set_group_dirinfo($_[1]);
 	}
 else {
@@ -718,6 +738,7 @@ else {
 if ($_[0] ne $_[1] && &indexof($_[0], @list_groups_cache) != -1) {
 	$_[1]->{'line'} = $_[0]->{'line'} if (defined($_[0]->{'line'}));
 	$_[1]->{'sline'} = $_[0]->{'sline'} if (defined($_[0]->{'sline'}));
+	$_[1]->{'uuid'} = $_[0]->{'uuid'} if (defined($_[0]->{'uuid'}));
 	%{$_[0]} = %{$_[1]};
 	}
 &refresh_nscd();
@@ -1233,9 +1254,17 @@ if ($u{'passmode'} == 3 && defined($u{'plainpass'}) ||
 elsif ($u{'passmode'} == 4) {
 	# Explicitly not changed, so do nothing
 	}
+elsif ($u{'passmode'} == 1 || $u{'pass'} eq $config{'lock_string'}) {
+	# Account locked - set hash to match
+	&set_macos_password_hash($u{'uuid'}, $u{'pass'});
+	}
 else {
 	# Has the hash changed?
-	# XXX what about locked? empty?
+	local $oldpass = &get_macos_password_hash($u{'uuid'});
+	if (defined($oldpass) && $u{'pass'} ne $oldpass) {
+		# Yes .. so set it
+		&set_macos_password_hash($u{'uuid'}, $u{'pass'});
+		}
 	}
 }
 
@@ -2168,6 +2197,14 @@ if ($user->{'home'} && -d $user->{'home'}) {
 		}
 	unlink($user->{'home'});	# in case of links
 	}
+}
+
+# supports_temporary_disable()
+# Returns 1 if temporary locking of passwords (with an ! at the start of the
+# hash) is supported.
+sub supports_temporary_disable
+{
+return &passfiles_type() != 7;    # Not on OSX, which has a fixed-size hash
 }
 
 1;

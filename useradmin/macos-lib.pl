@@ -104,11 +104,36 @@ return $out;
 sub get_macos_password_hash
 {
 local ($uuid) = @_;
+return undef if (!$uuid);
 local $hashfile = &read_file_contents("/var/db/shadow/hash/$uuid");
 if ($hashfile) {
 	return substr($hashfile, 169, 48);
 	}
 return undef;
+}
+
+# set_macos_password_hash(uuid, hash)
+# Updates the password hash for some OSX user
+sub set_macos_password_hash
+{
+local ($uuid, $pass) = @_;
+print STDERR "uuid=$uuid hash=$pass\n";
+return 0 if (!$uuid);
+local $hashfile = &read_file_contents("/var/db/shadow/hash/$uuid");
+if ($hashfile) {
+	if (length($pass) > 48) {
+		$pass = substr($pass, 0, 48);
+		}
+	elsif (length($pass) < 48) {
+		$pass .= ("0" x (48-length($pass)));
+		}
+	substr($hashfile, 169, 48) = $pass;
+	&open_tempfile(HASHFILE, ">/var/db/shadow/hash/$uuid");
+	&print_tempfile(HASHFILE, $hashfile);
+	&close_tempfile(HASHFILE);
+	return 1;
+	}
+return 0;
 }
 
 1;
