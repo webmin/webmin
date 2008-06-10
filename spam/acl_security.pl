@@ -28,10 +28,10 @@ print "<td>",&ui_radio("awl_mode", $_[0]->{'awl_groups'} ? 2 :
 	[ [ 0, $text{'acl_awl0'}."<br>\n" ],
 	  [ 1, &text('acl_awl1',
 		&ui_textbox("awl_users", $_[0]->{'awl_users'}, 40).
-		&user_chooser_button("awl_users", 1)."<br>\n" ],
+		&user_chooser_button("awl_users", 1))."<br>\n" ],
 	  [ 2, &text('acl_awl2',
 		&ui_textbox("awl_groups", $_[0]->{'awl_groups'}, 40).
-		&group_chooser_button("awl_users", 1)."<br>\n" ],
+		&group_chooser_button("awl_users", 1))."<br>\n" ],
 	]),"</td> </tr>\n";
 }
 

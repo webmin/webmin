@@ -1,6 +1,5 @@
 #!/usr/local/bin/perl
 # Display entries in the auto-whitelist
-# XXX delete all
 
 require './spam-lib.pl';
 &can_use_check("awl");
@@ -15,6 +14,7 @@ if (&supports_auto_whitelist() == 2) {
 	print &ui_user_textbox("user", $in{'user'}),"\n",
 	      &ui_submit($text{'awl_uok'});
 	print &ui_form_end();
+	$formno++;
 
 	if (!$in{'user'}) {
 		# Can't do any more
@@ -30,7 +30,7 @@ if (!&can_edit_awl($in{'user'})) {
 	&ui_print_endpage("<b>".&text('awl_cannotuser',
 		"<tt>".&html_escape($in{'user'})."</tt>")."</b>");
 	}
-elsif (!defined(getpwnam($in{'user'}))) {
+elsif (!defined(getpwnam($in{'user'})) && !$module_info{'usermin'}) {
 	&ui_print_endpage("<b>".&text('awl_nouser',
 		"<tt>".&html_escape($in{'user'})."</tt>")."</b>");
 	}
