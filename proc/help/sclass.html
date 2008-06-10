@@ -1,0 +1,16 @@
+<header>IO scheduling class</header>
+
+The options available are :<p>
+<dl>
+<dt><b>Idle</b>
+<dd>A program running with idle io priority will only get disk  time when no other program has asked for disk io for a defined grace period.  The impact of idle io processes on normal  system  activity  should  be zero. This scheduling class does not take a priority argument.<p>
+
+<li><b>Best effort</b>
+<dd>This is the default scheduling class for any process that hasn't asked for a specific io priority. Programs running  at  the same best effort priority are served in a round-robin fashion.
+
+<li><b>Real time</b>
+<dd>The RT scheduling class is given first access to the disk, regardless of what else is going on in the system. Thus  the  RT  class needs  to  be used with some care, as it can starve other processes.
+
+</dl>
+<footer>
+
