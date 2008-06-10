@@ -128,32 +128,13 @@ print &option_input($text{'eopt_slps'}, "slp-service-scope", \@opts, 3,
 		    $text{'eopt_slpsonly'});
 print "</tr>\n";
 
-# Show custom options
-print "<tr> <td colspan=4><hr></td> </tr>\n";
-@custom = grep { $_->{'values'}->[0] =~ /^option-(\S+)$/ &&
-		 $_->{'values'}->[1] ne 'code' } @opts;
-push(@custom, undef);
-push(@custom, undef) if (@custom%2 == 1);
-for($i=0; $i<@custom; $i++) {
-	$o = $custom[$i];
-	print "<tr>\n" if ($i%2 == 0);
-	print "<td><b>$text{'eopt_custom'}</b></td>\n";
-	print "<td nowrap>$text{'eopt_cnum'}\n";
-	local ($ov, @v) = @{$o->{'values'}};
-	printf "<input name=cnum_$i size=4 value='%s'>\n",
-		$ov =~ /^option-(\S+)$/ ? $1 : '';
-	print "$text{'eopt_cval'}\n";
-	printf "<input name=cval_$i size=15 value='%s'></td>\n",
-		join(" ", @v);
-	print "</tr>\n" if ($i%2 != 0);
-	}
-
 if ($config{'dhcpd_version'} >= 3) {
 	# Show option definitions
 	print "<tr> <td colspan=4><hr></td> </tr>\n";
 	@defs = grep { $_->{'values'}->[1] eq 'code' &&
 		       $_->{'values'}->[3] eq '=' } @opts;
 	push(@defs, undef);
+	%optdef = ( );
 	for($i=0; $i<@defs; $i++) {
 		$o = $defs[$i];
 		print "<tr>\n";
@@ -168,6 +149,49 @@ if ($config{'dhcpd_version'} >= 3) {
 		printf "<input name=dtype_$i size=10 value='%s'>\n",
 			$o->{'values'}->[4];
 		print "</td> </tr>\n";
+		$optdef{$o->{'values'}->[0]} = $o if ($o->{'values'}->[0]);
+		}
+
+	# Show values for custom options
+	if (keys %optdef) {
+		@custom = grep { $optdef{$_->{'values'}->[0]} &&
+				 $_->{'values'}->[1] ne 'code' } @opts;
+		push(@custom, undef);
+		push(@custom, undef) if (@custom%2 == 1);
+		for($i=0; $i<@custom; $i++) {
+			$o = $custom[$i];
+			print "<tr> <td><b>$text{'eopt_custom'}</b></td>\n";
+			print "<td nowrap colspan=3>$text{'eopt_cname'}\n";
+			local ($ov, @v) = @{$o->{'values'}};
+			print &ui_select("cname_$i", $ov,
+				[ [ "", "&nbsp;" ],
+				  sort { $a cmp $b } keys %optdef ],
+				1, 0, $ov ? 1 : 0);
+			print "$text{'eopt_cval'}\n";
+			print &ui_textbox("cval_$i", join(" ", @v), 40);
+			print "</td> </tr>\n";
+			}
+		}
+	}
+else {
+	# Show custom numeric options
+	print "<tr> <td colspan=4><hr></td> </tr>\n";
+	@custom = grep { $_->{'values'}->[0] =~ /^option-(\S+)$/ &&
+			 $_->{'values'}->[1] ne 'code' } @opts;
+	push(@custom, undef);
+	push(@custom, undef) if (@custom%2 == 1);
+	for($i=0; $i<@custom; $i++) {
+		$o = $custom[$i];
+		print "<tr>\n" if ($i%2 == 0);
+		print "<td><b>$text{'eopt_custom'}</b></td>\n";
+		print "<td nowrap>$text{'eopt_cnum'}\n";
+		local ($ov, @v) = @{$o->{'values'}};
+		printf "<input name=cnum_$i size=4 value='%s'>\n",
+			$ov =~ /^option-(\S+)$/ ? $1 : '';
+		print "$text{'eopt_cval'}\n";
+		printf "<input name=cval_$i size=15 value='%s'></td>\n",
+			join(" ", @v);
+		print "</tr>\n" if ($i%2 != 0);
 		}
 	}
 

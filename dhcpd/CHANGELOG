@@ -21,3 +21,5 @@ Added a field on the Client Options page for the DHCP server identifier.
 Fixed a bug that causes hosts to be deleted when searching for them!
 ---- Changes since 1.410 ----
 Clashes between hosts with the same IP address, MAC address or hostname are no longer allowed by default - but this can be changed on the DHCP Server access control page in the Webmin User's module.
+---- Changes since 1.420 ----
+Support the new configuration file format for custom options, as used in DHCPd version 3.

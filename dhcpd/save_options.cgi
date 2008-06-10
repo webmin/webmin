@@ -82,30 +82,13 @@ elsif ($in{'level'} eq "shared-network") {
 	$ret="edit_shared.cgi?idx=$in{'idx'}";
 	}
 
-# save custom options
-@custom = grep { $_->{'name'} eq 'option' &&
-		 $_->{'values'}->[0] =~ /^option-(\S+)$/ &&
-		 $_->{'values'}->[1] ne 'code' }
-	       @{$client->{'members'}};
-for($i=0; defined($in{"cnum_$i"}); $i++) {
-	next if (!$in{"cnum_$i"} || !$in{"cval_$i"});
-	$in{"cnum_$i"} =~ /^\d+$/ ||
-	   ($config{'dhcpd_version'} >= 3 && $in{"cnum_$i"} =~ /^\S+$/) ||
-		&error(&text('sopt_ednum', $in{"cnum_$i"}));
-	local $cv = $in{"cval_$i"};
-	$cv = "\"$cv\"" if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/);
-	push(@newcustom, { 'name' => 'option',
-			   'values' => [ 'option-'.$in{"cnum_$i"},
-					 $cv ] } );
-	}
-&save_directive($client, \@custom, \@newcustom, $indent, 1);
-
 if ($config{'dhcpd_version'} >= 3) {
-	# save option definitions
+	# Save option definitions
 	@defs = grep { $_->{'name'} eq 'option' &&
 			 $_->{'values'}->[1] eq 'code' &&
 			 $_->{'values'}->[3] eq '=' }
 		       @{$client->{'members'}};
+	%optdef = map { $_->{'values'}->[0], $_ } @defs;
 	for($i=0; defined($in{"dname_$i"}); $i++) {
 		next if (!$in{"dname_$i"} || !$in{"dnum_$i"} ||
 			 !$in{"dtype_$i"});
@@ -122,6 +105,43 @@ if ($config{'dhcpd_version'} >= 3) {
 					     ] } );
 		}
 	&save_directive($client, \@defs, \@newdefs, $indent, 1);
+
+	# Save custom options
+	@custom = grep { $_->{'name'} eq 'option' &&
+			 $optdef{$_->{'values'}->[0]} &&
+			 $_->{'values'}->[1] ne 'code' }
+		       @{$client->{'members'}};
+	for($i=0; defined($in{"cname_$i"}); $i++) {
+		next if ($in{"cname_$i"} eq "");
+		local $cv = $in{"cval_$i"};
+		$cv =~ /\S/ || &error(&text('sopt_ecval', $in{"cname_$i"}));
+		$cv = "\"$cv\""
+			if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/);
+		push(@newcustom, { 'name' => 'option',
+				   'values' => [ $in{"cname_$i"}, $cv ] } );
+		}
+	&save_directive($client, \@custom, \@newcustom, $indent, 1);
+	}
+else {
+	# Save custom options
+	@custom = grep { $_->{'name'} eq 'option' &&
+			 $_->{'values'}->[0] =~ /^option-(\S+)$/ &&
+			 $_->{'values'}->[1] ne 'code' }
+		       @{$client->{'members'}};
+	for($i=0; defined($in{"cnum_$i"}); $i++) {
+		next if (!$in{"cnum_$i"} || !$in{"cval_$i"});
+		$in{"cnum_$i"} =~ /^\d+$/ ||
+		   ($config{'dhcpd_version'} >= 3 &&
+		    $in{"cnum_$i"} =~ /^\S+$/) ||
+			&error(&text('sopt_ednum', $in{"cnum_$i"}));
+		local $cv = $in{"cval_$i"};
+		$cv = "\"$cv\""
+			if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/);
+		push(@newcustom, { 'name' => 'option',
+				   'values' => [ 'option-'.$in{"cnum_$i"},
+						 $cv ] } );
+		}
+	&save_directive($client, \@custom, \@newcustom, $indent, 1);
 	}
 
 &flush_file_lines();

@@ -179,6 +179,7 @@ sopt_invalidipp=is not a valid IP address pair (like 1.2.3.4,5.6.7.8)
 sopt_edname='$1' is not a valid option name
 sopt_ednum='$1' is not a valid option number
 sopt_edtype='$1' is not a valid option type
+sopt_ecval=Missing value for custom option '$1'
 
 sshared_faildel=Failed to delete shared network
 sshared_failsave=Failed to save shared network
@@ -281,6 +282,7 @@ eopt_nbntype=NetBIOS node type
 eopt_toffset=Time offset
 eopt_custom=Custom option
 eopt_cnum=Number
+eopt_cname=Name
 eopt_cval=Value
 eopt_def=Option definition
 eopt_dname=Option name
