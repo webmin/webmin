@@ -1037,7 +1037,7 @@ elsif ($_[1]->{'map_type'} eq 'mysql') {
 	}
 elsif ($_[1]->{'map_type'} eq 'ldap') {
 	# Deleting from LDAP
-	local $conf = &ldap_value_to_conf($maps_file);
+	local $conf = &ldap_value_to_conf($_[1]->{'map_file'});
 	local $ldap = &connect_ldap_db($conf);
 	ref($ldap) || &error($ldap);
 	local $rv = $ldap->delete($_[1]->{'dn'});
@@ -2012,7 +2012,7 @@ local $cfile = $value;
 if ($cfile !~ /^\//) {
 	$cfile = &guess_config_dir()."/".$cfile;
 	}
--r $cfile || &error(&text('ldap_ecfile', "<tt>$cfile</tt>"));
+-r $cfile && !-d $cfile || &error(&text('ldap_ecfile', "<tt>$cfile</tt>"));
 return &get_backend_config($cfile);
 }
 
