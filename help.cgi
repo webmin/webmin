@@ -5,6 +5,7 @@
 $trust_unknown_referers = 1;
 require './web-lib.pl';
 &init_config();
+require './ui-lib.pl';
 &error_setup($text{'help_err'});
 $ENV{'PATH_INFO'} !~ /[\\\&\;\`\'\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r]/ ||
 	&error($text{'help_epath'});
@@ -25,8 +26,9 @@ read(HELP, $help, $st[7]);
 close(HELP);
 
 # find and replace the <header> section
-if ($help =~ s/<header>([^<]+)<\/header>/<center><h3>$1<\/h3><\/center><hr>/i) {
+if ($help =~ s/<header>([^<]+)<\/header>//i) {
 	&popup_header($1);
+	print &ui_subheading($1);
 	}
 else {
 	&helperror($text{'help_eheader'});
