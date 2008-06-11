@@ -84,7 +84,8 @@ for($i=0; $i<@mdescs; $i++) {
 		}
 	}
 print "</ul><p>\n";
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("edit_mods.cgi?mode=install", $webmin::text{'mods_return'},
+		 "", $text{'index_return'});
 
 sub inst_error
 {

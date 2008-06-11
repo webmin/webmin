@@ -123,7 +123,8 @@ if (defined(&theme_post_change_modules)) {
 	&theme_post_change_modules();
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("edit_mods.cgi?mode=install", $text{'mods_return'},
+		 "", $text{'index_return'});
 
 sub inst_error
 {
