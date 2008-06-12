@@ -34,27 +34,37 @@ else {
 
 	# Save options with values
 	foreach $o (&list_multi_client_restrictions()) {
-		$idx = &indexof($o, @opts);
+		# Find all current positions
+		local @pos;
+		for(my $i=0; $i<@opts; $i++) {
+			push(@pos, $i) if ($opts[$i] eq $o);
+			}
+
+		# Make sure something was entered
 		if ($newopts{$o}) {
-			$in{"value_$o"} =~ /^\S+$/ ||
+			$in{"value_$o"} =~ /\S/ ||
 			    &error(&text('client_evalue', $text{'sasl_'.$o}));
 			}
-		if ($newopts{$o} && !$oldopts{$o}) {
-			# Add to end
-			push(@opts, $o, $in{"value_$o"});
-			}
-		elsif ($newopts{$o} && $oldopts{$o}) {
-			# Update value
-			$opts[$idx+1] = $in{"value_$o"};
-			}
-		elsif (!$newopts{$o} && $oldopts{$o}) {
-			# Remove and value
-			splice(@opts, $idx, 2);
+
+		# Sync with values entered
+		@v = split(/\s+/, $in{"value_$o"});
+		for(my $i=0; $i<@pos || $i<@v; $i++) {
+			if ($i<@pos && $i<@v) {
+				# Updating a value
+				$opts[$pos[$i]+1] = $v[$i];
+				}
+			elsif ($i<@pos && $i>=@v) {
+				# Removing a value
+				splice(@opts, $pos[$i], 2);
+				}
+			elsif ($i>=@pos && $i<@v) {
+				# Adding a value, at the end
+				push(@opts, $o, $v[$i]);
+				}
 			}
 		}
 
-	&set_current_value("smtpd_client_restrictions",
-			   join(" ", &unique(@opts)));
+	&set_current_value("smtpd_client_restrictions", join(" ", @opts));
 	}
 
 &unlock_postfix_files();

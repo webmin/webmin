@@ -1754,7 +1754,7 @@ sub get_backend_config
 {
 local ($file) = @_;
 local %rv;
-local $lref = &read_file_lines($file);
+local $lref = &read_file_lines($file, 1);
 foreach my $l (@$lref) {
 	if ($l =~ /^\s*([a-z0-9\_]+)\s*=\s*(.*)/i) {
 		$rv{$1} = $2;

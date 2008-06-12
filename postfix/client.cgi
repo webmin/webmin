@@ -14,10 +14,11 @@ $no_ = $text{'opts_no'};
 print &ui_form_start("save_client.cgi", "post");
 print &ui_table_start($text{'client_title'}, undef, 2);
 
-# Parse current settings
+# Parse current settings, by building a map from names to indexes
 @opts = split(/[\s,]+/, &get_current_value('smtpd_client_restrictions'));
 for(my $i=0; $i<@opts; $i++) {
-	$opts{$opts[$i]} = $i;
+	$opts{$opts[$i]} ||= [ ];
+	push(@{$opts{$opts[$i]}}, $i);
 	}
 
 # Add binary restrictions to list
@@ -31,15 +32,20 @@ foreach $r (&list_client_restrictions()) {
 
 # Add restrictions with values
 foreach $r (&list_multi_client_restrictions()) {
-	$v = $opts{$r};
+	@v = @{$opts{$r}};
+	$vals = undef;
+	if (scalar(@v)) {
+		$vals = join(" ", map { $opts[$_+1] } @v);
+		}
 	push(@grid, &ui_checkbox("client", $r, $text{'sasl_'.$r},
-				 defined($v)),
-		    &ui_textbox("value_$r",
-			        defined($v) ? $opts[$v+1] : undef, 40).
+				 scalar(@v)),
+		    &ui_textbox("value_$r", $vals, 40).
 		    ($r eq "check_client_access" ?
 			" ".&map_chooser_button("value_$r", $r) : ""));
 	$done{$r} = 1;
-	$done{$opts[$v+1]} = 1;
+	foreach $v (@v) {
+		$done{$opts[$v+1]} = 1;
+		}
 	if ($r eq "check_client_access" && defined($v)) {
 		# Can show client access map
 		$has_client_access = 1;
