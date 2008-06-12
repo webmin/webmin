@@ -34,8 +34,12 @@ else {
 	&helperror($text{'help_eheader'});
 	}
 
+# replace any explicit use of <hr> with the ui-lib function
+$uihr = &ui_hr();
+$help =~ s/<hr>/$uihr/ig;
+
 # find and replace the <footer> section
-$help =~ s/<footer>/<p><hr>/i;
+$help =~ s/<footer>/<p>/i;
 
 # find and replace <include> directives
 $help =~ s/<include\s+(\S+)>/inchelp($1)/ige;
