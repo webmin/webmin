@@ -2594,13 +2594,13 @@ else {
 	local $r;
 	local $rok = 0;
 	foreach $r (@root_directories) {
-		if ($0 =~ /^$r\/([^\/]+)\/[^\/]+$/) {
+		if ($0 =~ /^$r\/([^\/]+)\/[^\/]+$/i) {
 			# Under a module directory
 			$module_name = $1;
 			$rok = 1;
 			last;
 			}
-		elsif ($0 =~ /^$root_directory\/[^\/]+$/) {
+		elsif ($0 =~ /^$root_directory\/[^\/]+$/i) {
 			# At the top level
 			$rok = 1;
 			last;
