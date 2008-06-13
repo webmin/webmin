@@ -1242,7 +1242,6 @@ foreach my $k (keys %user_properties_map) {
 		&execute_dscl_command("create", "/Users/$u{'user'}", $k, $v);
 		}
 	}
-print STDERR "passmode=$u{'passmode'} plainpass=$u{'plainpass'}\n";
 if ($u{'passmode'} == 3 && defined($u{'plainpass'}) ||
     $u{'passmode'} == 0) {
 	# A new plain password was given - use it
