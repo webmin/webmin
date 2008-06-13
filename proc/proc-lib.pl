@@ -273,15 +273,21 @@ if (!$@) {
 	if (!$ptyfh) {
 		&error("Failed to create new PTY with IO::Pty");
 		}
-	local $ttyfh = $ptyfh->slave();
-	local $tty = $ptyfh->ttyname();
 	local $pid = fork();
 	if (!$pid) {
+		local $ttyfh = $ptyfh->slave();
+		local $tty = $ptyfh->ttyname();
 		if (defined(&close_controlling_pty)) {
 			&close_controlling_pty();
 			}
 		setsid();	# create a new session group
 		$ptyfh->make_slave_controlling_terminal();
+
+		# Turn off echoing, if we can
+		eval "use IO::Stty";
+		if (!$@) {
+			IO::Stty::stty($ttyfh, 'raw', '-echo');
+			}
 
 		close(STDIN); close(STDOUT); close(STDERR);
 		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
@@ -290,10 +296,11 @@ if (!$@) {
 			($>, $<) = ($_[1], $_[1]);
 			}
 
-		open(STDIN, "<$tty");
-		open(STDOUT, ">$tty");
-		open(STDERR, ">&STDOUT");
-		close($ptyfh);
+		close($ptyfh);		# Used by other side only
+		open(STDIN, "<&".fileno($ttyfh));
+		open(STDOUT, ">&".fileno($ttyfh));
+		open(STDERR, ">&".fileno($ttyfh));
+		close($ttyfh);		# Already dup'd
 		exec($cmd);
 		print "Exec failed : $!\n";
 		exit 1;
@@ -321,6 +328,12 @@ else {
 				chown($_[1], $_[2], $tty);
 				}
 			open($ttyfh, "+<$tty") || &error("Failed to open $tty : $!");
+			}
+
+		# Turn off echoing, if we can
+		eval "use IO::Stty";
+		if (!$@) {
+			IO::Stty::stty($ttyfh, 'raw', '-echo');
 			}
 
 		if (defined(&open_controlling_pty)) {
