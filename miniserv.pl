@@ -4617,7 +4617,7 @@ sub encrypt_md5
 {
 local ($passwd, $salt) = @_;
 local $magic = '$1$';
-if ($salt =~ /^\$1\$(.{8})/) {
+if ($salt =~ /^\$1\$([^\$]+)/) {
 	# Extract actual salt from already encrypted password
 	$salt = $1;
 	}

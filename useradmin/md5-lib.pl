@@ -26,7 +26,7 @@ sub encrypt_md5
 local $passwd = $_[0];
 local $magic = '$1$';
 local $salt = $_[1] || substr(time(), -8);
-if ($salt =~ /^\$1\$(.{8})/) {
+if ($salt =~ /^\$1\$([^\$]+)/) {
 	# Extract actual salt from already encrypted password
 	$salt = $1;
 	}
