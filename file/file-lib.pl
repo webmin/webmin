@@ -261,7 +261,9 @@ return @rv;
 
 sub open_trust_db
 {
-local $trust = "$ENV{'WEBMIN_CONFIG'}/file/trust";
+local $trust = $ENV{'WEBMIN_CONFIG'} =~ /\/usermin/ ?
+	"/tmp/trust.$ENV{'REMOTE_USER'}" :
+	"$ENV{'WEBMIN_CONFIG'}/file/trust";
 eval "use SDBM_File";
 dbmopen(%trustdb, $trust, 0700);
 eval { $trustdb{'1111111111'} = 'foo bar' };
@@ -291,8 +293,8 @@ else {
 }
 
 # extract_archive(path, delete)
-# Called by upload to extract some zip or tar.gz file. Returns undef if something
-# was actually done, an error message otherwise.
+# Called by upload to extract some zip or tar.gz file. Returns undef if
+# something was actually done, an error message otherwise.
 sub extract_archive
 {
 local $out;
@@ -360,7 +362,7 @@ elsif ($unarchive == 0) {
 local $refresh = $path;
 local $err;
 if ($zip) {
-	$err = &extract_archive($path, $zip-1);
+	$err = &extract_archive(&unmake_chroot($path), $zip-1);
 	if (!$err) {
 		# Refresh whole dir
 		$refresh = $in{'dir'};
