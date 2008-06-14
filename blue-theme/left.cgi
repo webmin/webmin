@@ -8,17 +8,8 @@ do './ui-lib.pl';
 %text = &load_language($current_theme);
 
 # Work out what modules and categories we have
-@modules = &get_visible_module_infos();
-if (&get_product_name() eq 'webmin') {
-	@unmodules = grep { $_->{'installed'} eq '0' } @modules;
-	@modules = grep { $_->{'installed'} ne '0' } @modules;
-	}
-%cats = &list_categories(\@modules);
-if (defined($cats{''})) {
-	$cats{'others'} = $cats{''};
-	delete($cats{''});
-	}
-@cats = sort { ($b eq "others" ? "" : $b) cmp ($a eq "others" ? "" : $a) } keys %cats;
+@cats = &get_visible_modules_categories();
+@modules = map { @{$_->{'modules'}} } @cats;
 
 $charset = defined($force_charset) ? $force_charset : &get_charset();
 &PrintHeader($charset);
@@ -83,29 +74,15 @@ else {
 	# Show all modules under categories
 	foreach $c (@cats) {
 		# Show category opener, plus modules under it
-		&print_category_opener($c, $in{$c} ? 1 : 0, $cats{$c});
-		$cls = $in{$c} ? "itemshown" : "itemhidden";
-		print "<div class='$cls' id='$c'>";
-		$creal = $c eq "others" ? "" : $c;
-		@inmodules = grep { $_->{'category'} eq $creal } @modules;
-		foreach $minfo (@inmodules) {
-			&print_category_link("$minfo->{'dir'}/",
-					     $minfo->{'desc'},
-					     undef,
-					     undef,
-					     $minfo->{'noframe'} ? "_top" : "",
-					);
-			}
-		print "</div>\n";
-		}
-
-	# Show un-installed modules
-	if (@unmodules) {
-		&print_category_opener('_unused', $in{'_unused'} ? 1 : 0,
-		       "<font color=#888888>$text{'main_unused'}</font>");
-		$cls = $in{'_unused'} ? "itemshown" : "itemhidden";
-		print "<div class='$cls' id='_unused'>";
-		foreach $minfo (@unmodules) {
+		&print_category_opener(
+			$c->{'code'},
+			$in{$c->{'code'}} ? 1 : 0,
+			$c->{'unused'} ?
+				"<font color=#888888>$c->{'desc'}</font>" :
+				$c->{'desc'});
+		$cls = $in{$c->{'code'}} ? "itemshown" : "itemhidden";
+		print "<div class='$cls' id='$c->{'code'}'>";
+		foreach my $minfo (@{$c->{'modules'}}) {
 			&print_category_link("$minfo->{'dir'}/",
 					     $minfo->{'desc'},
 					     undef,

@@ -5285,9 +5285,46 @@ return @licrv;
 # Like get_available_module_infos, but excludes hidden modules from the list
 sub get_visible_module_infos
 {
+local ($nocache) = @_;
 local $pn = &get_product_name();
 return grep { !$_->{'hidden'} &&
-	      !$_->{$pn.'_hidden'} } &get_available_module_infos($_[0]);
+	      !$_->{$pn.'_hidden'} } &get_available_module_infos($nocache);
+}
+
+# get_visible_modules_categories(nocache)
+# Returns a list of Webmin module categories, each of which is a hash ref
+# with 'code', 'desc' and 'modules' keys. The modules value is an array ref
+# of modules in the category, in the format returned by get_module_info.
+# Un-used modules are automatically assigned to the 'unused' category, and
+# those with no category are put into 'others'.
+sub get_visible_modules_categories
+{
+local ($nocache) = @_;
+local @mods = &get_visible_module_infos($nocache);
+local @unmods;
+if (&get_product_name() eq 'webmin') {
+	@unmods = grep { $_->{'installed'} eq '0' } @mods;
+	@mods = grep { $_->{'installed'} ne '0' } @mods;
+	}
+local %cats = &list_categories(\@mods);
+local @rv;
+foreach my $c (keys %cats) {
+	local $cat = { 'code' => $c || 'other',
+		       'desc' => $cats{$c} };
+	$cat->{'modules'} = [ grep { $_->{'category'} eq $c } @mods ];
+	push(@rv, $cat);
+	}
+@rv = sort { ($b->{'code'} eq "others" ? "" : $b->{'code'}) cmp
+	     ($a->{'code'} eq "others" ? "" : $a->{'code'}) } @rv;
+if (@unmods) {
+	# Add un-installed modules in magic category
+	local $cat = { 'code' => 'unused',
+		       'desc' => $text{'main_unused'},
+		       'unused' => 1,
+		       'modules' => \@unmods };
+	push(@rv, $cat);
+	}
+return @rv;
 }
 
 # is_under_directory(directory, file)
