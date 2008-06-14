@@ -10,7 +10,7 @@ $access{'indexes'} || &error($text{'index_ecannot'});
 
 if ($in{'delete'}) {
 	# Just drop the index
-	$sql = "drop index ".&quotestr($in{'old'});
+	$sql = "drop index ".&quote_table($in{'old'});
 	&execute_sql_logged($in{'db'}, $sql);
 	&webmin_log("delete", "index", $in{'old'}, \%in);
 	}
@@ -31,11 +31,11 @@ else {
 	# Do it
 	if ($in{'old'}) {
 		# Remove the old one first
-		$sql = "drop index ".&quotestr($in{'old'});
+		$sql = "drop index ".&quote_table($in{'old'});
 		&execute_sql_logged($in{'db'}, $sql);
 		}
 	$sql = "create $in{'type'} index ".&quotestr($in{'name'})." on ".
-	       &quotestr($in{'table'})." using ".&quotestr($in{'using'}).
+	       &quote_table($in{'table'})." using ".&quotestr($in{'using'}).
 	       " (".join(", ", map { &quotestr($_) } @cols).")";
 	&execute_sql_logged($in{'db'}, $sql);
 

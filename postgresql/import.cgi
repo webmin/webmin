@@ -29,7 +29,8 @@ else {
 	}
 
 if (!$in{'delete'}) {
-	$data = &execute_sql($in{'db'}, "select * from ".&quotestr($in{'table'}));
+	$data = &execute_sql($in{'db'},
+		"select * from ".&quote_table($in{'table'}));
 	foreach $r (@{$data->{'data'}}) {
 		$done{join("/", @$r)}++;
 		}

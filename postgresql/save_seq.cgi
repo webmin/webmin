@@ -10,7 +10,7 @@ $access{'seqs'} || &error($text{'seq_ecannot'});
 
 if ($in{'delete'}) {
 	# Just drop the sequence
-	$sql = "drop sequence ".&quotestr($in{'old'});
+	$sql = "drop sequence ".&quote_table($in{'old'});
 	&execute_sql_logged($in{'db'}, $sql);
 	&webmin_log("delete", "seq", $in{'old'}, \%in);
 	}
@@ -33,7 +33,7 @@ else {
 	if (&supports_sequences() == 2 && $in{'old'}) {
 		# Need to drop and re-create
 		if (&indexof($in{'old'}, &list_sequences($in{'db'})) >= 0) {
-			$sql = "drop sequence ".&quotestr($in{'old'});
+			$sql = "drop sequence ".&quote_table($in{'old'});
 			&execute_sql_logged($in{'db'}, $sql);
 			}
 		$sql = "create sequence ".&quote_table($in{'old'}).

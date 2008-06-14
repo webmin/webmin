@@ -10,7 +10,7 @@ $access{'views'} || &error($text{'view_ecannot'});
 
 if ($in{'delete'}) {
 	# Just drop the view
-	$sql = "drop view ".&quotestr($in{'old'});
+	$sql = "drop view ".&quote_table($in{'old'});
 	&execute_sql_logged($in{'db'}, $sql);
 	&webmin_log("delete", "view", $in{'old'}, \%in);
 	}
@@ -32,10 +32,10 @@ else {
 	# Do it
 	if ($in{'old'}) {
 		# Remove the old one first
-		$sql = "drop view ".&quotestr($in{'old'});
+		$sql = "drop view ".&quote_table($in{'old'});
 		&execute_sql_logged($in{'db'}, $sql);
 		}
-	$sql = "create view ".&quotestr($in{'name'}).
+	$sql = "create view ".&quote_table($in{'name'}).
 	       ($cols ? " (".$cols.")" : "")." as ".$in{'query'};
 	&execute_sql_logged($in{'db'}, $sql);
 
