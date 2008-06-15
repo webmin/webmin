@@ -9,7 +9,6 @@ do 'lilo-lib.pl';
 sub is_installed
 {
 return 0 if (!-r $config{'lilo_conf'} || !&has_command($config{'lilo_cmd'}));
-return 0 if (!&is_x86());
 return $_[0] ? 2 : 1;
 }
 

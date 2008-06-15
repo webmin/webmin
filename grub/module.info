@@ -1,6 +1,6 @@
 category=hardware
 desc_ko_KR.euc= GRUB 부트 로더 
-os_support={-r "/boot/grub/menu.lst" || -r "/boot/boot/grub/menu.lst" || -x "/usr/sbin/grub" || -x "/sbin/grub"}*-linux open-linux/2.4-* solaris/11-*
+os_support=*-linux solaris/11-*
 desc_pl=Inicjator systemu GRUB
 desc=GRUB Boot Loader
 name=GRUB
