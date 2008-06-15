@@ -211,7 +211,7 @@ foreach my $r (@$data) {
 	foreach my $c (@$r) {
 		if (ref($c) &&
 		    ($c->{'type'} eq 'checkbox' || $c->{'type'} eq 'radio')) {
-			$tds[$cc] .= " width=5";
+			$tds[$cc] .= " width=5" if ($tds[$cc] !~ /width=/);
 			}
 		$cc++;
 		}
