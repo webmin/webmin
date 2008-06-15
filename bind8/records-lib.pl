@@ -726,11 +726,19 @@ else {
 }
 
 # convert_to_absolute(short, origin)
+# Make a short name like foo a fully qualified name like foo.domain.com.
 sub convert_to_absolute
 {
 local ($name, $origin) = @_;
+if ($name eq $origin ||
+    $name =~ /\.\Q$origin\E$/) {
+	# Name already ends in domain name - add . automatically, so we don't
+	# re-append the domain name.
+	$name .= ".";
+	}
 local $rv = $name eq "" ? "$origin." :
-       $name !~ /\.$/ ? "$name.$origin." : $name;
+	    $name eq "@" ? "$origin." :
+	    $name !~ /\.$/ ? "$name.$origin." : $name;
 $rv =~ s/\.+$/\./;
 return $rv;
 }

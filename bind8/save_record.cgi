@@ -94,7 +94,7 @@ if ($in{'delete'}) {
 	exit;
 	}
 
-# parse inputs
+# Create values string based on inputs
 if (!$in{'ttl_def'}) {
 	$in{'ttl'} =~ /^\d+$/ ||
 		&error(&text('edit_ettl', $in{'ttl'}));
@@ -106,6 +106,7 @@ for($i=1; defined($in{"value$i"}); $i++) {
 	}
 $vals =~ s/^\s+//;
 $vals =~ s/\s+$//;
+
 if ($in{'type'} eq "PTR" && $reverse) {
 	# a reverse address
 	local($ipv4);
@@ -182,16 +183,26 @@ else {
 	elsif ($in{'type'} eq "NS") {
 		&valname($vals) ||
 			&error(&text('edit_ens', $vals));
+		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
+			# Make absolute
+			$vals .= ".";
+			}
 		}
 	elsif ($in{'type'} eq "CNAME") {
 		&valname($vals) || $vals eq '@' ||
 			&error(&text('edit_ecname', $vals));
+		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
+			$vals .= ".";
+			}
 		}
 	elsif ($in{'type'} eq "MX") {
 		&valname($in{'value1'}) ||
 			&error(&text('edit_emx', $in{'value1'}));
 		$in{'value0'} =~ /^\d+$/ ||
 			&error(&text('edit_epri', $in{'value0'}));
+		if ($vals =~ /\.\Q$in{'origin'}\E$/) {
+			$vals .= ".";
+			}
 		}
 	elsif ($in{'type'} eq "HINFO") {
 		$in{'value0'} =~ /\S/ ||
