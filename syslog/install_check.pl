@@ -9,12 +9,6 @@ do 'syslog-lib.pl';
 sub is_installed
 {
 return 0 if (!-r $config{'syslog_conf'});
-if ($_[0]) {
-	if ($config{'m4_conf'}) {
-		return 1 if (!&needs_m4());
-		}
-	return 2;
-	}
-return 1;
+return $_[0] ? 2 : 1;
 }
 
