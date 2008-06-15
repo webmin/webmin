@@ -1,7 +1,6 @@
 category=net
 desc_ko_KR.euc=확장 인터넷 서비스
 risk=low medium high
-os_support={-r "/etc/xinetd.conf" || -x "/usr/sbin/xinetd" || -x "/sbin/xinetd" || -r "/usr/local/etc/xinetd.conf"}
 desc_pl=Rozszerzone us퀅gi internetowe  (XInetd)
 desc=Extended Internet Services
 desc_es=Servicios Extendidos de Internet  (XInetd)
