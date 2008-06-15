@@ -146,7 +146,9 @@ $upstream ||= $email;
 # Create the base directories
 system("rm -rf $tmp_dir");
 mkdir($tmp_dir, 0755);
+chmod(0755, $tmp_dir);
 mkdir($debian_dir, 0755);
+chmod(0755, $debian_dir);
 system("mkdir -p $usr_dir");
 
 # Copy the directory to a temp directory
@@ -300,7 +302,7 @@ if [ "$depends" != "" -a "$debdepends" != 1 ]; then
 	done
 fi
 # Check if this module is already installed
-if [ -d /usr/share/$product/$mod -a "\$1" != "upgrade" -a "\$allow_overwrite" != "1" ]; then
+if [ -d /usr/share/$product/$mod -a "\$1" != "upgrade" -a "$allow_overwrite" != "1" ]; then
 	echo "This $ucproduct module is already installed on your system."
 	exit 1
 fi
