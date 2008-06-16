@@ -103,16 +103,18 @@ if ($can_download) {
 		foreach $d (@downs) {
 			local @cols;
 			local $count = 0;
+			local @urls;
 			while($url = $d->{"url_$count"}) {
 				print "<br>\n" if ($count);
 				if (length($url) > 70 && $url =~ /^([^:]+:\/\/[^\/]+\/)(.*)(\/[^\/]+)$/) {
-					push(@cols, &html_escape("$1 .. $3"));
+					push(@urls, &html_escape("$1 .. $3"));
 					}
 				else {
-					push(@cols, &html_escape($url));
+					push(@urls, &html_escape($url));
 					}
 				$count++;
 				}
+			push(@cols, join("<br>\n", @urls));
 			push(@cols, &html_escape($d->{'dir'}));
 			push(@cols, $d->{'time'} ? &make_date($d->{'time'})
 					         : $text{'index_imm'});
