@@ -140,7 +140,30 @@ else {
 	}
 &show_buttons();
 
-if ($single) {
+# Check if the user is from Virtualmin, and if so link back to his DB list
+if (&foreign_check("virtual-server")) {
+	$virtual_server::no_virtualmin_plugins = 1;
+	&foreign_require("virtual-server", "virtual-server-lib.pl");
+	if (!&virtual_server::master_admin() &&
+	    !&virtual_server::reseller_admin()) {
+		# Is a domain owner .. which domain is this DB in?
+		foreach my $d (grep { &virtual_server::can_edit_domain($_) }
+				    &virtual_server::list_domains()) {
+			@dbs = &virtual_server::domain_databases($d);
+			($got) = grep { $_->{'name'} eq $in{'db'} &&
+					$_->{'type'} eq 'mysql' } @dbs;
+			if ($got) {
+				$virtualmin = $d->{'id'};
+				}
+			}
+		}
+	}
+
+if ($virtualmin) {
+	&ui_print_footer("../virtual-server/list_databases.cgi?dom=$virtualmin",
+			 $text{'index_return'});
+	}
+elsif ($single) {
 	&ui_print_footer("/", $text{'index'});
 	}
 else {
