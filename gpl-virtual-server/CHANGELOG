@@ -457,3 +457,6 @@ The remote hosts from which connections to MySQL are allowed can be easily edite
 Old local file backups created using date-based filenames can now be automatically deleted if older than a selected number of days, configurable on the Scheduled Backups page.
 ---- Changes since 3.58 ----
 Plesk 7 backups can now be migrated as Virtualmin domains, using a new backup file type on the migration page.
+Allow the default shell to be set on a per-template basis.
+Added a complete Spanish translation, contributed by Ignacio.
+The bandwidth usage graphs can be restricted to showing just servers that are over their limits, using a new mode link.
