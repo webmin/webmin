@@ -32,7 +32,13 @@ sub create_atjob
 local @tm = localtime($_[1]);
 local $date = sprintf "%2.2d:%2.2d %d.%d.%d",
 		$tm[2], $tm[1], $tm[3], $tm[4]+1, $tm[5]+1900;
-&open_execute_command(AT, "su \"$_[0]\" -c \"cd $_[3] ; at $date\" >/dev/null 2>&1", 0); 
+local $cmd = "cd ".quotemeta($_[3])." ; at $date";
+local @uinfo = getpwnam($_[0]);
+if ($uinfo[2] != $<) {
+	# Only SU if we are not already the user
+	$cmd = &command_as_user($_[0], 0, $cmd);
+	}
+&open_execute_command(AT, "$cmd >/dev/null 2>&1", 0); 
 print AT $_[2];
 close(AT);
 &additional_log('exec', undef, "su \"$_[0]\" -c \"cd $_[3] ; at $date\"");
@@ -41,6 +47,6 @@ close(AT);
 # delete_atjob(id)
 sub delete_atjob
 {
-&system_logged("atrm \"$_[0]\" >/dev/null 2>&1");
+&system_logged("atrm ".quotemeta($_[0])." >/dev/null 2>&1");
 }
 

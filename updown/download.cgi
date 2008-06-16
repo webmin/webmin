@@ -126,8 +126,11 @@ if ($in{'bg'} && $can_background) {
 			&clean_environment();
 			$ENV{'REMOTE_USER'} = $remote_user;	# For usermin
 			$ENV{'BASE_REMOTE_USER'} = $base_remote_user;
-			&at::create_atjob("root", $download{'time'},
-					  "$atjob_cmd $download{'id'}", "/");
+			&at::create_atjob(
+				$module_info{'usermin'} ? $remote_user : "root",
+				$download{'time'},
+				"$atjob_cmd $download{'id'}",
+				"/");
 			&reset_environment();
 			}
 		}

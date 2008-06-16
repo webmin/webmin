@@ -14,7 +14,7 @@ if ($module_info{'usermin'}) {
 	$can_upload = $config{'upload'};
 	$can_download = $config{'download'};
 	$can_fetch = $config{'fetch'};
-	$can_schedule = 0;
+	$can_schedule = $config{'background'} && &foreign_check("at");
 	$can_background = $config{'background'};
 	if ($config{'home_only'}) {
 		@can_dirs = ( &resolve_links($remote_user_info[7]),
