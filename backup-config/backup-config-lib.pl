@@ -608,6 +608,8 @@ $webmin || !$nofiles || $others || &error($text{'save_ewebmin'});
 return ($webmin, $nofiles, $others);
 }
 
+# expand_directory(directory)
+# Given a directory, return a list of full paths to all files within it
 sub expand_directory
 {
 local ($dir) = @_;
@@ -621,7 +623,7 @@ foreach my $sf (@sf) {
 	if (-l $path || !-d $path) {
 		push(@rv, $path);
 		}
-	elsif (-d $sf) {
+	elsif (-d $path) {
 		push(@rv, &expand_directory($path));
 		}
 	}
