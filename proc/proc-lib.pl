@@ -311,7 +311,7 @@ if (!$@) {
 else {
 	# Need to create a PTY using built-in Webmin code
 	local ($ptyfh, $ttyfh, $pty, $tty) = &get_new_pty();
-	$tty || &error("Failed to create new PTY");
+	$tty || &error("Failed to create new PTY - try installing the IO::Tty Perl module");
 	local $pid = fork();
 	if (!$pid) {
 		if (defined(&close_controlling_pty)) {
