@@ -71,6 +71,8 @@ return @rv;
 }
 
 # save_directories(&dirs)
+# Save the list of known directories, which must be in the same format as
+# returned by list_directories
 sub save_directories
 {
 local $d;
