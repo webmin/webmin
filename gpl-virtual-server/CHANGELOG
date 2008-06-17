@@ -460,3 +460,5 @@ Plesk 7 backups can now be migrated as Virtualmin domains, using a new backup fi
 Allow the default shell to be set on a per-template basis.
 Added a complete Spanish translation, contributed by Ignacio.
 The bandwidth usage graphs can be restricted to showing just servers that are over their limits, using a new mode link.
+---- Changes since 3.59 ----
+Added a Module Config option to have MySQL users and permissions added to multiple servers, for use with replication or NDBCluster.
