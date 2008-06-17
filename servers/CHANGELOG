@@ -13,3 +13,5 @@ Made the auto-registration email contents translatable.
 Fixed return link when using a framed theme.
 ---- Changes since 1.320 ----
 Added several new operating systems and distributions to the server type list.
+---- Changes since 1.420 ----
+Allow the Backup Configuration Files module to save and restore Webmin server details.

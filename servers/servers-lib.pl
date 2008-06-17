@@ -56,6 +56,7 @@ sub get_server
 local $serv;
 $serv->{'id'} = $_[0];
 &read_file("$module_config_directory/$_[0].serv", $serv) || return undef;
+$serv->{'file'} = "$module_config_directory/$_[0].serv";
 return $serv;
 }
 
