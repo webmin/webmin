@@ -181,7 +181,8 @@ return "</table>\n";
 # data - A 2x2 array ref of table contents. Each can either be a simple string,
 #        or a hash ref like :
 #          { 'type' => 'group', 'desc' => 'Some section title' }
-#          { 'type' => 'string', 'value' => 'Foo', 'colums' => 3 }
+#          { 'type' => 'string', 'value' => 'Foo', 'colums' => 3,
+#	     'nowrap' => 1 }
 #          { 'type' => 'checkbox', 'name' => 'd', 'value' => 'foo',
 #            'label' => 'Yes', 'checked' => 1, 'disabled' => 1 }
 #          { 'type' => 'radio', 'name' => 'd', 'value' => 'foo', ... }
@@ -231,6 +232,8 @@ foreach my $r (@$data) {
 	# Turn data into HTML
 	local @rtds = @tds;
 	local @cols;
+	my $cn = 0;
+	$cn++ if ($c0);
 	foreach my $c (@$r) {
 		if (!ref($c)) {
 			# Plain old string
@@ -258,10 +261,14 @@ foreach my $r (@$data) {
 			# A string, which might be special
 			push(@cols, $c->{'value'});
 			if ($c->{'columns'} > 1) {
-				splice(@rtds, 0, $c->{'columns'},
+				splice(@rtds, $cn, $c->{'columns'},
 				       "colspan=".$c->{'columns'});
 				}
+			if ($c->{'nowrap'}) {
+				$rtds[$cn] .= " nowrap";
+				}
 			}
+		$cn++;
 		}
 	# Add the row
 	if (!$c0) {
