@@ -8,10 +8,10 @@ $access{'routes'} || &error($text{'routes_ecannot'});
 
 # Validate and parse inputs
 $route = { };
-$in{'dest_def'} || &check_ipaddress($in{'dest'}) ||
+$in{'dest_def'} || &check_ipaddress_any($in{'dest'}) ||
 	&error($text{'routes_ecdest'});
 $route->{'dest'} = $in{'dest_def'} ? undef : $in{'dest'};
-$in{'netmask_def'} || &check_ipaddress($in{'netmask'}) ||
+$in{'netmask_def'} || &check_netmask($in{'netmask'},$in{'dest'}) ||
 	&error($text{'routes_ecnetmask'});
 if ($in{'dest_def'}) {
 	$in{'netmask_def'} || &error($text{'routes_ecnetmask2'});
@@ -19,7 +19,7 @@ if ($in{'dest_def'}) {
 $route->{'netmask'} = $in{'netmask_def'} ? undef : $in{'netmask'};
 if ($in{'via'}) {
 	# Via gateway
-	&check_ipaddress($in{'gateway'}) || &error($text{'routes_ecgw'});
+	&check_ipaddress_any($in{'gateway'}) || &error($text{'routes_ecgw'});
 	$route->{'gateway'} = $in{'gateway'};
 	}
 else {

@@ -60,6 +60,7 @@ else {
 print "</td>\n";
 
 # Show broadcast address
+if( $in{'new'} || (!&is_ipv6_address($a->{'address'})) ){
 print "<td><b>$text{'ifcs_broad'}</b></td> <td>\n";
 if (!$access{'broadcast'}) {
 	print $a ? $a->{'broadcast'} :
@@ -72,6 +73,7 @@ else {
 			      $text{'ifcs_auto'});
 	}
 print "</td> </tr>\n";
+}
 
 # Show MTU
 print "<tr> <td><b>$text{'ifcs_mtu'}</b></td> <td>\n";

@@ -81,7 +81,7 @@ else {
 	elsif ($in{'name'} =~/^[a-z]+\d*(\.\d+)?$/) {
 		# creating a real interface
 		foreach $eb (@boot) {
-			if ($eb->{'fullname'} eq $in{'name'}) {
+			if ($eb->{'fullname'} eq $in{'name'} && (!&is_ipv6_address($in{'address'}))) {
 				&error(&text('bifc_edup', $in{'name'}));
 				}
 			}
@@ -143,7 +143,7 @@ else {
 			$oldb->{'netmask'};
 		}
 	elsif (&can_edit("netmask", $b) && $access{'netmask'}) {
-		$auto && !$in{'netmask'} || &check_ipaddress($in{'netmask'}) ||
+		$auto && !$in{'netmask'} || &check_netmask($in{'netmask'},$in{'address'}) ||
 			&error(&text('bifc_emask', $in{'netmask'}));
 		$b->{'netmask'} = $in{'netmask'};
 		}
@@ -155,7 +155,9 @@ else {
 			$oldb->{'broadcast'};
 		}
 	elsif (&can_edit("broadcast", $b)) {
-		$auto && !$in{'broadcast'} ||
+
+		&is_ipv6_address($in{'address'}) || 
+		($auto && !$in{'broadcast'}) ||
 			&check_ipaddress($in{'broadcast'}) ||
 			&error(&text('bifc_ebroad', $in{'broadcast'}));
 		$b->{'broadcast'} = $in{'broadcast'};
@@ -210,11 +212,13 @@ else {
 		if($in{'vlanid'}) {
 			$b->{'vlanid'} = $in{'vlanid'};
 		}
-		
-	}
-	
-	$b->{'fullname'} = $b->{'name'}.
-			   ($b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
+  }
+  if(&is_ipv6_address){
+     $b->{'fullname'} = $in{'name'};
+  }   
+  else{
+    $b->{'fullname'} = $b->{'name'}.( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
+  } 
 	&save_interface($b);
 
 	if ($in{'activate'}) {

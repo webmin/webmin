@@ -37,3 +37,5 @@ Boot-time network interfaces can have comments on Redhat-based systems.
 The list of interfaces is now separated into active and boot time using tabs.
 The Apply Configuration button on FreeBSD now properly deletes virtual interfaces that should no longer exist.
 Handle alias interfaces with no broadcast address on FreeBSD.
+---- Changes since 1.430 ----
+Added support for IPv6 interfaces on Debian, thanks to Sébastien Ducloux.

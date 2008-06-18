@@ -30,14 +30,18 @@ sub list_hosts
 {
 local @rv;
 local $lnum = 0;
+local $line="";
+
 &open_readfile(HOSTS, $config{'hosts_file'});
-while(<HOSTS>) {
-	s/\r|\n//g;
-	s/#.*$//g;
-	s/\s+$//g;
-	if (/(\d+\.\d+\.\d+\.\d+)\s+(.*)$/) {
-		push(@rv, { 'address' => $1,
-			    'hosts' => [ split(/\s+/, $2) ],
+while($line=<HOSTS>) {
+	$line =~ s/\r|\n//g;
+	$line =~ s/#.*$//g;
+	$line =~ s/\s+$//g;
+	local(@f)=split(/\s+/, $line);
+	local($ipaddr)=shift(@f);
+	if (check_ipaddress_any($ipaddr)) {
+		push(@rv, { 'address' => $ipaddr,
+			    'hosts' => [ @f ],
 			    'line', $lnum,
 			    'index', scalar(@rv) });
 		}
@@ -343,6 +347,48 @@ foreach my $a (&boot_interfaces()) {
 	push(@rv, $a);
 	}
 return @rv;
+}
+
+# is_ipv6_address(ipaddr)
+# Returns 1 if the given ip address is from IPV6 type, 0 if not.
+# IPV6 address field separator is ":", this character is researched inside IP adress string
+sub is_ipv6_address
+{
+  local ($ipaddr) = @_;
+  return 1 if (index($ipaddr,":") != -1);
+  return 0;
+}
+
+# check_netmask(netmask,ipaddress_associated)
+# check if some netmask is properly formatted accordingly
+# the associated address format (IPv4 or IPv6)
+sub check_netmask
+{
+  local($netmask,$address)= @_;
+  local($ret);
+  
+  # Detect IP address type (V4, V6) and check syntax accordingly
+  if ( &is_ipv6_address($address)  ) {
+    $ret=&check_ip6netmask($netmask);
+  }
+  
+  else {
+    $ret=&check_ipaddress($netmask);
+  }
+  return $ret;
+}
+
+# check_ip6netmask(netmask)
+# check if some netmask has IPv6 format: its value is between 0 and 128.
+sub check_ip6netmask
+{   
+  return 0 if ( @_[0] <0 || @_[0] >128 );
+  return 1;
+}
+
+sub check_ipaddress_any
+{
+return &check_ipaddress($_[0]) || &check_ip6address($_[0]);
 }
 
 1;

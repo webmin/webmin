@@ -23,10 +23,11 @@ sub boot_interfaces
 my @ifaces = &get_interface_defs();
 my @autos = &get_auto_defs();
 my @rv;
+local $index_ip_v6 =1;
 foreach $iface (@ifaces) {
 	my ($name, $addrfam, $method, $options) = @$iface;
 	my $cfg;
-	if ($addrfam eq 'inet') {
+	if ($addrfam eq 'inet' || $addrfam eq 'inet6') {
 		$cfg->{'fullname'} = $name;
 		if ($cfg->{'fullname'} =~ /(\S+):(\d+)/) {
 			$cfg->{'name'} = $1;
@@ -34,9 +35,15 @@ foreach $iface (@ifaces) {
 			}
 		else {
 			$cfg->{'name'} = $cfg->{'fullname'};
-			}
+		}
+		if($addrfam eq 'inet6'){
+			$cfg->{'fullname'} .= "-IPv6-" . $index_ip_v6;
+			$index_ip_v6 ++;
+		}		
+		
 		if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
 			$cfg->{'up'} = &indexof($name, @autos) >= 0;
+      #$cfg->{'up'} = 1;
 			}
 		else {
 			$cfg->{'up'} = 1;
@@ -82,10 +89,10 @@ else {
 	$method = 'static';
 	push(@options, ['address', $cfg->{'address'}]);
 	push(@options, ['netmask', $cfg->{'netmask'}]);
-	push(@options, ['broadcast', $cfg->{'broadcast'}]);
+	push(@options, ['broadcast', $cfg->{'broadcast'}]) if !&is_ipv6_address($cfg->{'address'});
 	my ($ip1, $ip2, $ip3, $ip4) = split(/\./, $cfg->{'address'});
 	my ($nm1, $nm2, $nm3, $nm4) = split(/\./, $cfg->{'netmask'});
-	if ($cfg->{'address'} && $cfg->{'netmask'}) {
+	if ($cfg->{'address'} && $cfg->{'netmask'} && !&is_ipv6_address($cfg->{'address'})) {
 		my $network = sprintf "%d.%d.%d.%d",
 					($ip1 & int($nm1))&0xff,
 					($ip2 & int($nm2))&0xff,
@@ -93,6 +100,9 @@ else {
 					($ip4 & int($nm4))&0xff;
 		push(@options, ['network', $network]);
 		}
+	if(&is_ipv6_address($cfg->{'address'})){
+		push(@options, ['pre-up', 'modprobe ipv6']);
+	}
 	}
 my @autos = get_auto_defs();
 my $amode = $gconfig{'os_version'} > 3 || scalar(@autos);
@@ -113,21 +123,33 @@ if($cfg->{'vlan'} == 1){
 my @ifaces = get_interface_defs();
 my $changeit = 0;
 foreach $iface (@ifaces) {
-	if ($iface->[0] eq $cfg->{'fullname'}) {
+	local $address;
+	foreach $opt(@{$iface->[3]}){
+		if($opt->[0] eq 'address'){
+			$address = $opt->[1];
+			last;
+		}			
+	}
+	if( ($iface->[0] eq $cfg->{'fullname'}) && 
+	( ($iface->[1] eq 'inet' && !&is_ipv6_address($cfg->{'address'}))||
+	  ($iface->[1] eq 'inet6' && &is_ipv6_address($cfg->{'address'}) && $address eq $cfg->{'address'}) ) ){
 		$changeit = 1;
 		foreach $o (@{$iface->[3]}) {
 			if ($o->[0] eq 'gateway') {
 				push(@options, $o);
-				}
 			}
 		}
 	}
+}
 if ($changeit == 0) {
 	if($in{'vlan'} == 1) {
 		new_interface_def($cfg->{'physical'} . '.' . $cfg->{'vlanid'}, 'inet', $method, \@options);
-	} else {
+	} elsif (&is_ipv6_address($cfg->{'address'})) {
+		new_interface_def($cfg->{'name'}, 'inet6', $method, \@options);
+	}
+	else{
 		new_interface_def($cfg->{'fullname'}, 'inet', $method, \@options);
- 	}
+	}
 	if($cfg->{'bond'} == 1) {
 		new_module_def($cfg->{'fullname'}, $cfg->{'mode'}, $cfg->{'miimon'}, $cfg->{'downdelay'}, $cfg->{'updelay'});
 	}
@@ -135,9 +157,12 @@ if ($changeit == 0) {
 else {
 	if($in{'vlan'} == 1) {
 		modify_interface_def($cfg->{'physical'} . '.' . $cfg->{'vlanid'}, 'inet', $method, \@options, 0);
-	} else {
+	} elsif (&is_ipv6_address($cfg->{'address'})) {
+		modify_interface_def($cfg->{'name'}, 'inet6', $method, \@options, 0);
+	}
+	else{
 		modify_interface_def($cfg->{'fullname'}, 'inet', $method, \@options, 0);
- 	}
+	}
 	if($cfg->{'bond'} == 1) {
 		modify_module_def($cfg->{'fullname'}, 0, $cfg->{'mode'}, $cfg->{'miimon'}, $cfg->{'downdelay'}, $cfg->{'updelay'});
 	}
@@ -291,11 +316,12 @@ sub new_module_def
 sub delete_interface
 {
 my $cfg = $_[0];
-delete_interface_def($cfg->{'fullname'}, 'inet');
-my @autos = get_auto_defs();
-if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
-	@autos = grep { $_ ne $cfg->{'fullname'} } @autos;
-	&modify_auto_defs(@autos);
+	local @address = ('address',$cfg->{'address'});
+	delete_interface_def(&is_ipv6_address($cfg->{'address'})?$cfg->{'name'}:$cfg->{'fullname'}, &is_ipv6_address($cfg->{'address'})?'inet6':'inet','',\@address);
+	my @autos = get_auto_defs();
+	if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
+		@autos = grep { $_ ne $cfg->{'fullname'} } @autos;
+		&modify_auto_defs(@autos);
 	}
 }
 
@@ -310,7 +336,7 @@ return $_[0] ne "mtu";
 # Is some address valid for a bootup interface
 sub valid_boot_address
 {
-return &check_ipaddress($_[0]);
+return &check_ipaddress_any($_[0]);
 }
 
 # get_hostname()
@@ -435,7 +461,7 @@ sub parse_routing
 {
 local ($dev, $gw);
 if (!$in{'gateway_def'}) {
-	&check_ipaddress($in{'gateway'}) ||
+		&check_ipaddress_any($in{'gateway'}) ||
 		&error(&text('routes_egateway', $in{'gateway'}));
 	$gw = $in{'gateway'};
 	$dev = $in{'gatewaydev'};
@@ -453,7 +479,7 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	local $gw = $in{"gw_$i"};
 	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
 	gethostbyname($net) || &error(&text('routes_enet', $net));
-	&check_ipaddress($netmask) || &error(&text('routes_emask', $netmask));
+		&check_ipaddress_any($netmask) || &error(&text('routes_emask', $netmask));
 	gethostbyname($gw) || &error(&text('routes_egateway', $gw));
 	local $prefix = &mask_to_prefix($netmask);
 	push(@{$st{$dev}}, [ "up", "ip route add $net/$prefix via $gw" ]);
@@ -466,7 +492,7 @@ for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
 	gethostbyname($net) || $net =~ /^(\S+)\/(\d+)$/ && gethostbyname($1) ||
 		&error(&text('routes_enet', $net));
-	&check_ipaddress($netmask) || &error(&text('routes_emask', $netmask));
+		&check_ipaddress_any($netmask) || &error(&text('routes_emask', $netmask));
 	local $prefix = &mask_to_prefix($netmask);
 	push(@{$hr{$dev}}, [ "up", "ip route add $net/$prefix dev $dev" ]);
 	}

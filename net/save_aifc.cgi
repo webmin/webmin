@@ -60,7 +60,7 @@ else {
 	elsif ($in{'name'} =~ /^[a-z]+\d*(\.\d+)?$/) {
 		# creating a real interface
 		foreach $ea (@acts) {
-			if ($ea->{'name'} eq $in{'name'}) {
+			if ($ea->{'name'} eq $in{'name'} && !&is_ipv6_address($ea->{'address'}) && !&is_ipv6_address($in{'address'}) ) {
 				&error(&text('aifc_edup', $in{'name'}));
 				}
 			}
@@ -82,7 +82,7 @@ else {
 		}
 
 	# Validate and store inputs
-	&check_ipaddress($in{'address'}) ||
+	&check_ipaddress_any($in{'address'}) ||
 		&error(&text('aifc_eip', $in{'address'}));
 	$a->{'address'} = $in{'address'};
 
@@ -97,7 +97,7 @@ else {
 			$olda->{'netmask'};
 		}
 	elsif (!$in{'netmask_def'}) {
-		&check_ipaddress($in{'netmask'}) ||
+		&check_netmask($in{'netmask'},$a->{'address'}) ||
 			&error(&text('aifc_emask', $in{'netmask'}));
 		$a->{'netmask'} = $in{'netmask'};
 		}
@@ -109,7 +109,7 @@ else {
 			$olda->{'broadcast'};
 		}
 	elsif (!$in{'broadcast_def'}) {
-		&check_ipaddress($in{'broadcast'}) ||
+		&is_ipv6_address($a->{address})|| &check_ipaddress_any($in{'broadcast'}) ||
 			&error(&text('aifc_ebroad', $in{'broadcast'}));
 		$a->{'broadcast'} = $in{'broadcast'};
 		}
@@ -143,9 +143,15 @@ else {
 			   ($a->{'virtual'} eq '' ? '' : ':'.$a->{'virtual'});
 
 	# Bring it up
+	if( !is_ipv6_address($a->{'address'}) || (&is_ipv6_address($a->{'address'}) && $olda->{'address'} ne $a->{'address'}) ){
 	&activate_interface($a);
 	&webmin_log($in{'new'} ? 'create' : 'modify',
 		    "aifc", $a->{'fullname'}, $a);
-	}
+	}elsif(&is_ipv6_address($a->{'address'}) && $olda->{'address'} eq $a->{'address'}){
+     &deactivate_interface($olda);
+     &activate_interface($a);
+       
+  }
+}
 &redirect("list_ifcs.cgi?mode=active");
 

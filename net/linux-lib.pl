@@ -12,24 +12,71 @@ while(<IFC>) {
 	if (/^\S+/) { push(@lines, $_); }
 	else { $lines[$#lines] .= $_; }
 	}
-close(IFC);
-foreach $l (@lines) {
-	local %ifc;
-	$l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
-	$l =~ /^(\S+)/; $ifc{'fullname'} = $1;
-	if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
-	if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
-	elsif (!$_[0]) { next; }
-	if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
-	if ($l =~ /Bcast:(\S+)/) { $ifc{'broadcast'} = $1; }
-	if ($l =~ /HWaddr (\S+)/) { $ifc{'ether'} = $1; }
-	if ($l =~ /MTU:(\d+)/) { $ifc{'mtu'} = $1; }
-	if ($l =~ /P-t-P:(\S+)/) { $ifc{'ptp'} = $1; }
-	$ifc{'up'}++ if ($l =~ /\sUP\s/);
-	$ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
-	$ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
-	$ifc{'index'} = scalar(@rv);
-	push(@rv, \%ifc);
+  close(IFC);
+  foreach $l (@lines) {
+	  local %ifc;
+	  $l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
+	  $l =~ /^(\S+)/; $ifc{'fullname'} = $1;
+	  if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
+	  if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
+	  elsif (!$_[0]) { next; }
+	  if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
+	  if ($l =~ /Bcast:(\S+)/) { $ifc{'broadcast'} = $1; }
+	  if ($l =~ /HWaddr (\S+)/) { $ifc{'ether'} = $1; }
+	  if ($l =~ /MTU:(\d+)/) { $ifc{'mtu'} = $1; }
+	  if ($l =~ /P-t-P:(\S+)/) { $ifc{'ptp'} = $1; }
+	  $ifc{'up'}++ if ($l =~ /\sUP\s/);
+	  $ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
+	  $ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
+	  $ifc{'index'} = scalar(@rv);
+	  push(@rv, \%ifc);
+
+
+# We detect IPV6 adresses. An interface can have multiple IPv6 addresses. 
+# So we have to scan the entire line to extract each of them. 
+	  if ($l =~ /inet6 addr: (\S+)\/(\S+)/) { 
+		  local($fin)=0;
+		  local($ic)=0;
+		  local $j=1;
+		  while (!$fin) {
+			  local %ifc;
+			  local $where;
+			  $where=index($l,"inet6 addr:",$ic);
+			  if ($where != -1) {
+				  local $sub_l = substr($l, $where, (length($l) - $where));
+				  $sub_l =~ /inet6 addr: (\S+)\/(\S+)/; 
+				  $ifc{'address'} = $1; 
+				  $ifc{'netmask'} = $2; 
+				  $l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
+
+				# An IPv6 address has to be up
+				  $ifc{'up'}++;
+
+				# The fe80 type IPV6 adresses and the IPv6 loopback interface address 
+				# are set to be non-modifiable (for "security" reason)	
+				  if (index($ifc{'address'},"fe80") != -1 ) {
+				  } 
+				  elsif ($ifc{'address'} eq "::1") {
+				  }
+				  else {
+					  $l =~ /^(\S+)/; $ifc{'fullname'} = $1 . "-IPV6-" . $j;
+					  $ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
+				  }
+				  $ifc{'ether'}=$rv[-1]{'ether'};
+				  #printf "$ifc{'ether'}\n";
+				  $ifc{'index'} = scalar(@rv);
+				  push(@rv, \%ifc);
+
+# We add an offset to look for another possible IPv6 address ot he interface
+				  $ic=$where+1;
+				  $j++;
+			  } 
+			  else 
+			  {
+				  $fin=1;
+			  }
+      }
+	  }
 	}
 return @rv;
 }
@@ -45,13 +92,20 @@ if($a->{'vlan'} == 1) {
 if ($?) { &error($vonconfigout); }
 }
 
-local $cmd;
 if($a->{'vlan'} == 1) {
 	$cmd .= "ifconfig $a->{'physical'}.$a->{'vlanid'}";
 } else {
 	$cmd .= "ifconfig $a->{'name'}";
+	if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
+	if (&is_ipv6_address($a->{'address'}) ) { 
+	  $cmd .= " inet6 add ";
+     
+	  if($a->{'netmask'} ){
+		  $a->{'address'} .= "/$a->{'netmask'}";
+		  $a->{'netmask'} = ''; 
+    }
+  } 
 }
-if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
 $cmd .= " $a->{'address'}";
 if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
 if ($a->{'broadcast'}) { $cmd .= " broadcast $a->{'broadcast'}"; }
@@ -73,12 +127,19 @@ sub deactivate_interface
 {
 local $name = $_[0]->{'name'}.
 	      ($_[0]->{'virtual'} ne "" ? ":$_[0]->{'virtual'}" : "");
+local $address = $_[0]->{'address'}.
+        ($_[0]->{'virtual'} ne "" ? ":$_[0]->{'virtual'}" : "");
+local $netmask = $_[0]->{'netmask'};
+ 
 if ($_[0]->{'virtual'} ne "") {
 	# Shutdown virtual interface by setting address to 0
 	local $out = &backquote_logged("ifconfig $name 0 2>&1");
 	}
+ elsif (&is_ipv6_address($address)){
+    local $out = &backquote_logged("ifconfig $name inet6 del $address/$netmask 2>&1");
+  }
 local ($still) = grep { $_->{'fullname'} eq $name } &active_interfaces();
-if ($still) {
+if ($still && !&is_ipv6_address($address)) {
 	# Old version of ifconfig or non-virtual interface.. down it
 	local $out = &backquote_logged("ifconfig $name down 2>&1");	
 	if(&iface_type($name) =~ /^(.*) (VLAN)$/) {
@@ -133,6 +194,18 @@ while(<ROUTES>) {
 		}
 	}
 close(ROUTES);
+&open_execute_command(ROUTES, "netstat -rn -A inet6", 1, 1);
+	while(<ROUTES>) {
+		s/\s+$//;
+		if (/^([0-9a-z:]+)\/([0-9]+)\s+([0-9a-z:]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
+			push(@rv, { 'dest' => $1,
+				'gateway' => $3,
+				'netmask' => $2,
+				'iface' => $4 });
+						}
+	}
+
+	close(ROUTES);
 return @rv;
 }
 
@@ -187,18 +260,22 @@ sub list_interfaces
 sub delete_route
 {
 local ($route) = @_;
-local $cmd = "route del ";
-if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0') {
+	local $cmd = "route " . (&is_ipv6_address($route->{'dest'})? "-A inet6 ":"-A inet ") . "del ";
+	
+	if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' || $route->{'dest'} eq '::') {
 	$cmd .= " default";
 	}
 elsif ($route->{'netmask'} eq '255.255.255.255') {
 	$cmd .= " -host $route->{'dest'}";
 	}
-else {
+	elsif (!&is_ipv6_address($route->{'dest'})) {
 	$cmd .= " -net $route->{'dest'}";
 	if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
 		$cmd .= " netmask $route->{'netmask'}";
 		}
+	}
+	else{
+		$cmd .= "$route->{'dest'}/$route->{'netmask'}";
 	}
 if ($route->{'gateway'}) {
 	$cmd .= " gw $route->{'gateway'}";
@@ -215,25 +292,27 @@ return $? ? $out : undef;
 sub create_route
 {
 local ($route) = @_;
-local $cmd = "route add ";
-if (!$route->{'dest'}) {
+	local $cmd = "route " . (&is_ipv6_address($route->{'dest'})? "-A inet6 ":"-A inet ") . "add ";
+	
+	if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' || $route->{'dest'} eq '::') {
 	$cmd .= " default";
 	}
-else {
-	if ($route->{'netmask'} eq '255.255.255.255') {
+	elsif ($route->{'netmask'} eq '255.255.255.255') {
 		$cmd .= " -host $route->{'dest'}";
 		}
-	elsif ($route->{'netmask'}) {
-		$cmd .= " -net $route->{'dest'} netmask $route->{'netmask'}";
+	elsif (!&is_ipv6_address($route->{'dest'})) {
+		$cmd .= " -net $route->{'dest'}";
+		if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
+			$cmd .= " netmask $route->{'netmask'}";
 		}
-	else {
-		$cmd .= " $route->{'dest'}";
 		}
+	else{
+		$cmd .= "$route->{'dest'}/$route->{'netmask'}";
 	}
 if ($route->{'gateway'}) {
 	$cmd .= " gw $route->{'gateway'}";
 	}
-if ($route->{'iface'}) {
+	elsif ($route->{'iface'}) {
 	$cmd .= " dev $route->{'iface'}";
 	}
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");

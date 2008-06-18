@@ -2,8 +2,11 @@
 # De-activate a bunch of active interfaces
 
 require './net-lib.pl';
+
 &ReadParse();
+
 &error_setup($text{'daifcs_err'});
+
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'daifcs_enone'});
 

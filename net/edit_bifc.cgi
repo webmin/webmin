@@ -101,16 +101,17 @@ elsif (&can_edit("netmask", $b) && $access{'netmask'}) {
 else {
 	printf "<td>%s</td>\n", $b ? $b->{'netmask'} : $text{'ifcs_auto'};
 	}
-
-print "<td><b>$text{'ifcs_broad'}</b></td>\n";
-if (&can_edit("broadcast", $b) && $access{'broadcast'}) {
-	printf "<td><input name=broadcast size=15 value='%s'></td>\n",
-		$b ? $b->{'broadcast'} : $config{'def_broadcast'};
+if(!$b || !&is_ipv6_address($b->{'address'})){
+	print "<td><b>$text{'ifcs_broad'}</b></td>\n";
+	if (&can_edit("broadcast", $b) && $access{'broadcast'}) {
+		printf "<td><input name=broadcast size=15 value='%s'></td>\n",
+			$b ? $b->{'broadcast'} : $config{'def_broadcast'};
 	}
-else {
-	printf "<td>%s</td> </tr>\n", $b ? $b->{'broadcast'}
-					 : $text{'ifcs_auto'};
+	else {
+		printf "<td>%s</td> </tr>\n", $b ? $b->{'broadcast'}
+						: $text{'ifcs_auto'};
 	}
+}
 
 print "<tr> <td><b>$text{'ifcs_mtu'}</b></td>\n";
 if (&can_edit("mtu", $b) && $access{'mtu'}) {

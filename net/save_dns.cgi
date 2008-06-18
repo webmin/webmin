@@ -15,7 +15,7 @@ for($i=0; $i<$max_dns_servers; $i++) {
 	$ns = $in{"nameserver_$i"};
 	$ns =~ s/^\s+//; $ns =~ s/\s+$//;
 	if ($ns) {
-		&check_ipaddress($ns) ||
+		&check_ipaddress_any($ns) ||
 			&error(&text('dns_ens', $ns));
 		push(@{$dns->{'nameserver'}}, $ns);
 		}
@@ -31,7 +31,7 @@ if ($in{'name0'}) {
 	    $ns = $in{"${nskey}_$j"};
 	    $ns =~ s/^\s+//; $ns =~ s/\s+$//;
 	    if ($ns) {
-		&check_ipaddress($ns) ||
+		&check_ipaddress_any($ns) ||
 		    &error(&text('dns_ens', $ns));
 		push(@{$dns->{$nskey}}, $ns);
 	    }
