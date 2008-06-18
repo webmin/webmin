@@ -46,6 +46,8 @@ if ($ENV{'PATH_INFO'}) {
 			&error(&text('fetch_ezipcmd',
 				     "<tt>".&html_escape($out)."</tt>"));
 			}
+		@st = stat($temp);
+		print "Content-size: $st[7]\n";
 		print "Content-type: application/zip\n\n";
 		open(FILE, $temp);
 		while(<FILE>) {
@@ -62,7 +64,8 @@ if ($ENV{'PATH_INFO'}) {
 			$type = &guess_mime_type($file, undef);
 			if (!$type) {
 				# See if it is really text
-				$out = &backquote_command("file ".quotemeta(&resolve_links($file)));
+				$out = &backquote_command("file ".
+					quotemeta(&resolve_links($file)));
 				$type = "text/plain" if ($out =~ /text|script/);
 				}
 			}
@@ -75,6 +78,8 @@ if ($ENV{'PATH_INFO'}) {
 		if (!$fetch_show) {
 			print "Content-Disposition: Attachment\n";
 			}
+		@st = stat($file);
+		print "Content-size: $st[7]\n";
 		print "Content-type: $type\n\n";
 		while(<FILE>) {
 			print $_;
