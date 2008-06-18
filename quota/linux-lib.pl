@@ -269,7 +269,7 @@ sub parse_quota_output
 {
 local($n, $_, %mtab);
 %mtab = &get_mtab_map();
-open(QUOTA, "$_[0] |");
+open(QUOTA, "$_[0] 2>/dev/null |");
 $n=0; while(<QUOTA>) {
 	chop;
 	if (/^(Disk|\s+Filesystem)/) { next; }
@@ -333,7 +333,7 @@ sub parse_repquota_output
 local($rep, @rep, $n, $what, $u, @uinfo);
 $what = $_[1];
 $$what = ( );
-$rep = `$_[0] 2>&1`;
+$rep = &backquote_command("$_[0] 2>&1");
 if ($?) { return -1; }
 local $st = &supports_status($_[0], $what);
 if (!$st) {
