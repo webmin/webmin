@@ -2932,6 +2932,8 @@ else {
 }
 
 # text(message, [substitute]+)
+# Returns a translated message from %text, but with $1, $2, etc.. replaced with the
+# substitute parameters.
 sub text
 {
 local $rv = $text{$_[0]};

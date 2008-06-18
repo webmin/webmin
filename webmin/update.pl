@@ -55,7 +55,7 @@ foreach $url (@urls) {
 			       $u->[4]."\n\n";
 			}
 		else {
-			# Actually do the update .. XXX remove html from comments
+			# Actually do the update ..
 			local (@mdescs, @mdirs, @msizes);
 			$rv .= &text('update_mok', $u->[0], $u->[1])."\n".
 			       ($info{'longdesc'} ? "$text{'update_fixes'} : " : "").
@@ -75,6 +75,7 @@ foreach $url (@urls) {
 				$irv = &install_webmin_module($mtemp, 1, 0,
 							      [ "admin", "root" ]);
 				if (!ref($irv)) {
+					$irv =~ s/<[^>]*>//g;
 					$rv .= &text('update_failed', $irv)."\n\n";
 					}
 				else {

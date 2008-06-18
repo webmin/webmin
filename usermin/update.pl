@@ -93,6 +93,7 @@ foreach $u (@updates) {
 		else {
 			$irv = &install_usermin_module($mtemp, 1, 0);
 			if (!ref($irv)) {
+				$irv =~ s/<[^>]*>//g;
 				$irv .= &text('update_failed', $irv)."\n\n";
 				}
 			else {
