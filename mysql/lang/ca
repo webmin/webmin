@@ -615,6 +615,7 @@ log_execfile=He executat les ordres SQL del fitxer $1
 log_importupload=He importat les dades del fitxer pujat
 log_importfile=He importat les dades del fitxer $1
 log_set=He canviat $1 variables MySQL
+log_root=He canviat la contrasenya d'administració
 
 backup_title=Abocament de la Base de Dades
 backup_title2=Abocament de Totes les Bases de Dades
@@ -820,3 +821,16 @@ compat_no_table_options=Opcions de taules
 compat_no_field_options=Opcions de camps
 
 config_echarset=Hi falta el joc de caràcters o bé sembla invàlid
+
+root_title=Canvi de la Contrasenya d'Administració
+root_header=Nova contrasenya d'administració
+root_user=Usuari d'administració
+root_pass=Contrasenya actual
+root_newpass1=Nova contrasenya
+root_newpass2=Repeteix la contrasenya
+root_ok=Canvia-la Ara
+root_err=No he pogut canviar la contrasenya d'administració
+root_epass1=No has introduït la nova contrasenya
+root_epass2=Les contrasenyes no coincideixen
+root_none=No hi ha cap contrasenya!
+root_auto=Automàtic (típicament, <tt>root</tt>)
