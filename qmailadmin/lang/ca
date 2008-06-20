@@ -401,4 +401,3 @@ match_!headers=Les capçaleres no coincideixen
 delq_titles=Supressió de Missatges
 delq_rusure=Segur que vols suprimir els $1 missatges en cua seleccionats?
 delq_confirm=Suprimeix els missatges
-
