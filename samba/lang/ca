@@ -247,6 +247,8 @@ share_home=Compartició dels Directoris Arrel
 share_dir=Directori compartit
 share_create=Crea el directori automàticament
 share_owner=Crea amb usuari
+share_createperms=Crea amb el permisos
+share_group=Crea amb el grup
 share_available=Disponible
 share_browseable=Explorable
 share_comment=Comentari del Recurs
@@ -349,6 +351,8 @@ savefshare_exist=Ja existeix un recurs anomenat '$1'
 savefshare_mode='$1' no és un nom de recurs vàlid
 savefshare_global=El nom 'global' o es pot fer servir per a cap recurs
 savefshare_owner=Hi falta l'usuari del nou directori o bé és invàlid
+savefshare_group=Hi falta grup del nou directori o bé és invàlid
+savefshare_perms=Hi falten els permisos del nou directori o bé són invàlids
 
 savemisc_fail=No he pogut desar les opcions
 savemisc_lockdir=El directori que conté el directori de bloqueigs no existeix
