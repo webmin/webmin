@@ -33,4 +33,3 @@ log_deletes=he suprimit $1 treballs cron de cluster
 
 delete_err=No he pogut suprimir els treballs cron de cluster
 delete_enone=No has seleccionat cap treball
-
