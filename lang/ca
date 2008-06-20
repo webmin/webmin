@@ -9,6 +9,8 @@ main_none=No tens accés a cap mòdul Webmin.
 main_skill=Nivell de Coneixements
 main_readonly=(Mode només lectura)
 main_return=Torna $1
+main_unused=Mòduls No utilitzats
+main_refreshmods=Refresca els Mòduls
 
 link_essl=El mòdul Perl Net::SSLeay necessari per establir connexions HTTPS no es troba instal·lat al sistema.
 
@@ -260,6 +262,7 @@ readparse_enc=Esperava la codificació de dades de formulari, però he rebut la co
 readparse_max=Les dades excedeixen la mida màxima de $1 bytes
 
 password_expired=La teva contrasenya ha caducat i n'has de triar una de nova.
+password_temp=Has de seleccionar una nova contrasenya  per substituir la teva entrada temporal.
 password_header=Selecciona la Nova Contrasenya
 password_user=Usuari
 password_old=Contrasenya actual
@@ -300,3 +303,17 @@ uptracker_pc=Progrés
 uptracker_eid=No has especificat cap ID de pujada
 uptracker_eid2=L'ID de pujada és invàlid!
 uptracker_of=$1 de $2
+
+wsearch_title=Cerca $1
+wsearch_modt=Mòdul
+wsearch_mtitle=Nom del mòdul
+wsearch_what=Pàgina coincident
+wsearch_type=Tipus de coincidència
+wsearch_mod=Mòdul $1
+wsearch_config_webmin=Configuració de mòdul Webmin
+wsearch_config_usermin=Preferències d'Usermin
+wsearch_help=Pàgina d'ajuda
+wsearch_inmod=A $1
+wsearch_text=Text d'interfície d'usuari
+wsearch_esearch=No has introduït res per buscar.
+wsearch_enone=No s'ha trobat cap mòdul ni pàgina de Webmin que coincideixi amb  $1.
