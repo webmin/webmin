@@ -94,6 +94,7 @@ log_delete_prog_l=He suprimit el servei $1 al port $2 pel programa $3
 log_create_rpc=He creat l'RPC $1
 log_modify_rpc=He modificat l'RPC $1
 log_delete_rpc=He suprimit l'RPC $1
+
 log_create_rprog=He creat l'RPC i el programa $1
 log_modify_rprog=He modificat l'RPC i el programa $1
 log_delete_rprog=He suprimit l'RPC i el programa $1
@@ -103,6 +104,4 @@ log_delete_rpc_l=He suprimit l'RPC $1 número $2
 log_create_rprog_l=He creat l'RPC $1 número $2 pel programa $3
 log_modify_rprog_l=He modificat l'RPC $1 número $2 pel programa $3
 log_delete_rprog_l=He suprimit l'RPC $1 número $2 pel programa $3
-
-
 
