@@ -1,9 +1,2 @@
 date_subs=Fes la substitució <tt>strftime</tt> de les destinacions de còpia,1,1-Sí,0-No
 from_addr=Adreça From: dels missatges de correu,3,webmin@hostname
-
-email_mods=La còpia dels mòduls:
-email_failed=a $1 ha fallat:
-email_ok=a $1 ha reeixit.
-email_sfailed=La còpia de la configuració a $1 ha fallat
-email_sok=La còpia de la configuració a $1 ha reeixit
-email_final=La mida final del fitxer de còpia és de $1
