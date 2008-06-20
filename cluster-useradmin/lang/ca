@@ -163,3 +163,4 @@ log_add_host=He afegit els usuaris i els grups del host $1
 log_add_group=He afegit els usuaris i els grups dels hosts al grup $1
 log_refresh=He refrescat els usuaris i els grups
 log_sync=He sincronitzat els els usuaris i els grups
+
