@@ -193,4 +193,5 @@ trace_sel=Les llistades...
 trace_change=Canvia
 
 windows_threads=Fils del procés
+
 syslog_dmesg=Missatges del kernel
