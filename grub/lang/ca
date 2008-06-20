@@ -67,5 +67,3 @@ install_desc=Instal·lant el GRUB a $1 amb les ordres $2 i $3...
 install_ok=...instal·lació completa.
 install_failed=...la instal·lació ha fallat!
 
-
-
