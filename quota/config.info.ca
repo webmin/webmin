@@ -25,4 +25,3 @@ group_quotaoff_command=Ordre per desactivar les quotes de grup,0
 quotacheck_command=Ordre per comprovar les quotes,0
 user_grace_command=Ordre per editar el nombre d'intents de l'usuari,0
 group_grace_command=Ordre per editar el nombre d'intents del grup,0
-
