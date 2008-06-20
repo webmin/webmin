@@ -24,6 +24,7 @@ index_out=La sortida de $1 ha estat
 ndex_boot=Connect at boot with:
 index_noboot=&lt;No et connectis&gt;
 index_bootdesc=Canvia aquesta opció per controlar si la connexió PPP seleccionada s'inicia en engegar el sistema o no.
+
 init_title=Detecció de la Configuració
 init_cmd=Detectant un mòdem connectat amb l'ordre $1...
 init_done=...fet
