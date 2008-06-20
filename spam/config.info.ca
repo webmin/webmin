@@ -9,6 +9,7 @@ restart_cmd=Ordre per reiniciar els processos,3,Envia el senyal HUP
 procmail_cmd=Ordre de SpamAssassin per a la configuració de Procmail,10,*-Detecta-la automàticament
 before_cmd=Ordre a executar abans de canviar les regles,3,Cap
 after_cmd=Ordre a executar després de canviar les regles,3,Cap
+max_awl=Nombre màxim d'entrades de la Llista blanca automàtica a mostrar,0,5
 line1=Opcions dels servidor LDAP i SQL,11
 mode=Emmagatzema la configuració de SpamAssassin,1,0-Als fitxers de configuració,1-A la base de dades MySQL,2-A la base de dades PostgreSQL,3- A la base de dades LDAP
 server=Nom de host del servidor LDAP o SQL,0
