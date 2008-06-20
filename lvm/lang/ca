@@ -88,6 +88,7 @@ lv_mountmsg=Munta aquest VL en un directori nou del sistema, de manera que es pu
 lv_free=Percentage lliure
 lv_freedisk=Espai lliure
 lv_pvs=Volums físics allotjats
+lv_snapusage=Percentatge d'ús d'instantànies
 
 mkfs_title=Creació de Sistema de Fitxers
 mkfs_desc=Aquest formulari permet crear un nou sistema de fitxers $2 ($1) a volum lògic $3. Totes les dades existents s'esborraran.
