@@ -3,6 +3,7 @@ index_header=Cerca accions al registre de Webmin...
 index_uall=Per a qualsevol usuari
 index_user=Per a l'usuari
 index_nuser=per qualsevol usuari excepte
+index_ouser=per a l'usuari no Webmin
 index_mall=A qualsevol mòdul
 index_module=Al mòdul
 index_tall=Qualsevol dia
