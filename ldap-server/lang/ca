@@ -313,4 +313,3 @@ eacl_efilter=Hi falta el filtre o bé és invàlid - ha de ser de la forma <tt>(obj
 eacl_eattrs=Hi falta la llista separada per comes d'atributs
 eacl_ewho=Hi falta el DN o bé sembla invàlid a la fila $1
 eacl_eaccess=Hi falta el nivell d'accés o bé és invàlid a la fila $1
-
