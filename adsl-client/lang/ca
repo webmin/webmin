@@ -16,6 +16,7 @@ index_cancel=Cancel·la la Connexió
 index_canceldesc=El client ADSL està provant d'establir una connexió. Fes clic sobre aquest botó per cancel·lar l'intent amb l'ordre $1.
 index_cdemand=Cancel·la Sota Demanda
 index_cdemanddesc=Actualment, el client ADSL està esperant una petició de connexió sota demanda. Fes clic sobre aquest botó per aturar-lo amb l'ordre $1.
+
 index_header=Opcions de la configuració del client ADSL
 index_desc=Els valors de sota s'apliquen a qualsevol nova connexió ADSL activada pel sistema. Si els canvies, la connexió s'ha de desactivar i reactivar per tal que les modificacions tinguin efecte.
 index_eth=Interfície Ethernet
