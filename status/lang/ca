@@ -204,6 +204,9 @@ proc_not1=S'està executant
 proc_ecmd=Falta l'ordre
 proc_thresh=El nombre de processo que han d'existir<br>per tal que el monitor els consideri en execució
 proc_ethresh=Hi falta el nombre de processos o bé és invàlid
+proc_asuser=Executant-se com a usuari
+proc_anyuser=Qualsevol usuari
+proc_easuser=L'usuari d'execució del procés no existeix
 
 exec_cmd=Ordre a verificar
 exec_ecmd=Falta l'ordre
