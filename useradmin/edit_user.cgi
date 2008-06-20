@@ -341,7 +341,11 @@ elsif (($pft == 2 || $pft == 5) && $access{'peopt'}) {
 		}
 	elsif ($n eq "") { print "$text{'uedit_never'}\n"; }
 	else { print "$text{'uedit_unknown'}\n"; }
-	if ($uinfo{'max'} && $pft == 2) {
+	if (($n eq "" && $config{'default_max'} ||
+	     $n ne "" && $uinfo{'max'}) &&
+	    $pft == 2) {
+		# Show checkbox to set last change date to 0, forcing
+		# a password change at next login
 		print "<input type=checkbox name=forcechange value=1> ",
 		      "$text{'uedit_forcechange'}\n";
 		}

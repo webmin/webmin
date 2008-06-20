@@ -43,3 +43,5 @@ Added a Module Config option to send the username and password to a program for 
 Users and groups with spaces in their names can specified on the access control page by quoting them.
 ---- Changes since 1.410 ----
 Added support for the new user and group databases found in OSX 10.5 and later, which use Apple's directory services instead of NetInfo.
+---- Changes since 1.420 ----
+The option to force a password change at the next login is available for new users, if a default 'Maximum days' is set on the Module Config page.
