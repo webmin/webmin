@@ -364,4 +364,7 @@ pass_eoldblock=Hi falta el nombre de contrasenyes antigues a rebutjar o bé és in
 cpass_minsize=Ha de ternir almenys $1 lletres de llarg
 cpass_notre=Coincideix amb un patró rebutjat
 cpass_re=No coincideix amb el patró demanat
-
+cpass_name=Contains the username
+cpass_dict=És una paraula de diccionari
+cpass_spellcmd=Ni l'ordre $1 ni la $2 que calen per comprovar paraules de diccionari es troben instal·lades
+cpass_old=Les contrasenyes antigues no es poden reutilitzar
