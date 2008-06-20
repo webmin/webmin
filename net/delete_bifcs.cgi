@@ -40,7 +40,8 @@ foreach $d (reverse(@d)) {
 
 		# Delete config
 		&delete_interface($b);
-		if(&iface_type($b->{'name'}) eq 'Bonded'){
+		if(&iface_type($b->{'name'}) eq 'Bonded' &&
+		   defined(&delete_module_def)){
 			&delete_module_def($b->{'name'});	
  		}
 		}
