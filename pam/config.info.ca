@@ -1,5 +1,4 @@
 line2=Configuració del sistema,11
-pam_ldap=Fitxer de configuracio LDAP de PAM,3,El mateix fitxer que el client LDAP
 pam_dir=Directori de configuració PAM,0
 ignore=Fitxers del directori PAM a ignorar,0
 lib_dirs=Directoris que contenen llibreries PAM,0
