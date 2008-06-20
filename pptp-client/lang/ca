@@ -22,6 +22,7 @@ index_bootdesc=Canvia aquesta opció per controlar si la connexió VPN PPTP s'inic
 disc_err=No he pogut desconnectar el túnel
 disc_egone=Ja no està actiu
 disc_ekill=No he pogut matar el procés
+disc_done=El túnel $1 s'ha desconnectat correctament.
 
 conn_err=No he pogut connectar amb el túnel
 conn_egone=El túnel ja no existeix
