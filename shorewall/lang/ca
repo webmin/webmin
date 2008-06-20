@@ -437,7 +437,6 @@ shorewall_conf_varname=Nom de variable invàlid (ha de ser un nom de variable she
 
 params_title=Paràmetres Personalitzats
 params_desc=Aquesta pàgina permet configurar els paràmetres personalitzats de Shorewall. NOTA: No és recomanable canviar aquí l'ordre de les variables si vols conservar la posició relativa dels comentaris al fitxer de configuració.
-shorewall_conf_add=Afegeix una nova variable de configuració.
 params_add=Afegeix un nou paràmetre personalitzat
 params_none=No he trobat cap paràmetre personalitzat.
 params_0=Paràmetre
