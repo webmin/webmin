@@ -69,4 +69,3 @@ log_create=He creat el túnel SSL $1
 log_delete=He suprimit el túnel SSL $1
 log_modify=He modificat el túnel SSL $1
 log_delete_stunnels=He suprimit $1 túnels SSL
-
