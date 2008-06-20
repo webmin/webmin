@@ -101,3 +101,10 @@ run_title=Còpia de Configuracions
 run_doing=Iniciant la còpia de $1 mòduls a $2...
 run_ok=...la còpia s'ha completat correctament.
 run_failed=...la còpia ha fallat! Vegeu el missatge d'error per saber-ne el motiu.
+
+email_mods=La còpia delss mòduls
+email_failed=a $1 ha fallat:
+email_ok=a $1 ha reeixit.
+email_sfailed=La còpia de la configuració a $1 ha fallat
+email_sok=La còpia de la configuració a $1 ha reeixit
+email_final=La mida final del fitxer de còpia és de $1
