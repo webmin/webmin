@@ -143,3 +143,10 @@ log_disc=He desconnectat el client $1
 log_start=He iniciat el servidor PPTP
 log_stop=He aturat el servidor PPTP
 log_apply=He aplicat la configuració del servidor PPTP
+
+acl_conf=Pot editar la configuració
+acl_options=Pot editar les opcions
+acl_secrets=Pot gestionar els comptes PPTP
+acl_conns=Pot visualitzar les connexions
+acl_stop=Pot aturar i iniciar el servidor PPTP
+acl_apply=Pot aplicar la configuració
