@@ -21,4 +21,3 @@ cachemgr_path=Executable cachemgr.cgi de squid,0
 log_dir=Camí complet del directori de registres de squid,0
 calamaris=Camí del programa analitzador de registres calamaris,3,No instal·lat
 squidclient=Camí del programa squidclient,3,No instal·lat
-
