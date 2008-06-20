@@ -234,3 +234,4 @@ add_echeck=El servidor $1 no té el mòdul de Tallafocs IPFW
 add_emissing=EL servidor $1 no té la configuració del tallafocs IPFW
 add_ok=He afegit $1, amb $2 regles del tallafocs actives.
 
+
