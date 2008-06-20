@@ -1,5 +1,5 @@
 line1=Opcions configurable,11
-login=Usuari d'administració,0
+login=Usuari d'administració,3,Automàtic
 pass=Contrasenya d'administració,12
 perpage=Nombre de files per pàgina a mostrar,0,5
 style=Mostra les bases de dades i les taules com a,1,1-Llista,0-Icones,2-Només noms
