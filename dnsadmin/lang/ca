@@ -25,4 +25,3 @@ log_create_record=He creat $1 registre(s) $2 a la zona $3
 log_modify_record=He modificat $1 registre(s) $2 de la zona $3
 log_boot=He creat el fitxer de configuració primari
 
-
