@@ -102,4 +102,8 @@ acl_access=Pot editar el control d'accés d'usuaris
 acl_config=Pot editar la configuració del servidor
 acl_cvsweb=Pot veure el repositori CVS
 acl_setup=Pot configurar inetd o xinetd per per executar el servidor CVS
+acl_init=Pot inicialitzar el repositori
+
+init_err=No he pogut inicialitzar el repositori
+init_ecannot=No tens permís per inicialitzar repositoris
 
