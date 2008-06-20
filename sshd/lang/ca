@@ -221,6 +221,7 @@ manual_efile=El fitxer seleccionat no forma part de la configuració del servidor
 manual_file=Edita el fitxer de configuració:
 manual_edata=No has introduït res!
 manual_err=No he pogut desar la configuració del fitxer
+
 dknown_err=No he pogut suprimir els hosts coneguts
 dknown_enone=No n'hi ha cap de seleccionat
 
