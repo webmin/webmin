@@ -2351,6 +2351,18 @@ my $rv = eval {
 				      $7 < 50 ? $7+100 : $7 < 1000 ? $7 : $7-1900);
 		return $tm;
 		}
+	elsif ($str =~ /^(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+(\S+)/) {
+		# Format like Dec  7 12:58:52 2004 GMT
+		local $tm = timelocal($5, $4, $3, $2, &month_to_number($1),
+			      $6 < 50 ? $6+100 : $6 < 1000 ? $6 : $6-1900);
+		local $tz = $7;
+		if ($tz =~ /^(\-|\+)?\d+$/) {
+			$tz = int($tz);
+			$tz = $tz/100 if ($tz >= 50 || $tz <= -50);
+			$tm -= $tz*60*60;
+			}
+		return $tm;
+		}
 	elsif ($str =~ /^(\d{4})\-(\d+)\-(\d+)\s+(\d+):(\d+)/) {
 		# Format like 2004-12-07 12:53
 		local $tm = timelocal(0, $4, $4, $3, $2-1,
