@@ -55,3 +55,4 @@ Email, SMS and SNMP messages sent by Webmin can be customized, with multiple mes
 The process check monitor can now be limited to a particular user.
 ---- Changes since 1.420 ----
 Allow saving of remote Webmin monitors when the remote host is down.
+Added a new monitor type for checking the expiry and validity of SSL certificates in a local file or on any SSL website.

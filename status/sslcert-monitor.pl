@@ -4,54 +4,97 @@ sub get_sslcert_status
 {
 local $up = 0;
 local $desc;
-eval "use Net::SSLeay";
+local $certfile;
+local ($host, $port, $page, $ssl);
 
-# Parse the URL and connect
-local ($host, $port, $page, $ssl) = &parse_http_url($_[0]->{'url'});
+if ($_[0]->{'url'}) {
+	# Parse the URL and connect
+	($host, $port, $page, $ssl) = &parse_http_url($_[0]->{'url'});
 
-# Run the openssl command to connect
-local $cmd = "openssl s_client -host ".quotemeta($host).
-	     " -port ".quotemeta($port)." </dev/null 2>&1";
-local $out = &backquote_with_timeout($cmd, 10);
-if ($?) {
-	# Connection failed
-	return { 'up' => -1 };
-	}
+	# Run the openssl command to connect
+	local $cmd = "openssl s_client -host ".quotemeta($host).
+		     " -port ".quotemeta($port)." </dev/null 2>&1";
+	local $out = &backquote_with_timeout($cmd, 10);
+	if ($?) {
+		# Connection failed
+		return { 'up' => -1 };
+		}
 
-# Extract the cert part and save
-local $temp = &transname();
-if ($out =~ /(-----BEGIN CERTIFICATE-----\n(.*\n)+-----END CERTIFICATE-----\n)/) {
-	local $cert = $1;
-	print STDERR "cert=$cert\n";
-	&open_tempfile(CERT, ">$temp", 0, 1);
-	&print_tempfile(CERT, $cert);
-	&close_tempfile(CERT);
+	# Extract the cert part and save
+	$certfile = &transname();
+	if ($out =~ /(-----BEGIN CERTIFICATE-----\n(.*\n)+-----END CERTIFICATE-----\n)/) {
+		local $cert = $1;
+		&open_tempfile(CERT, ">$certfile", 0, 1);
+		&print_tempfile(CERT, $cert);
+		&close_tempfile(CERT);
+		}
+	else {
+		# No cert?
+		return { 'up' => 0,
+			 'desc' => $text{'sslcert_ecert'} };
+		}
 	}
 else {
-	# No cert?
-	return { 'up' => 0,
-		 'desc' => $text{'sslcert_ecert'} };
+	# Cert is already in a file
+	$certfile = $_[0]->{'file'};
 	}
 
 # Get end date with openssl x509 -in cert.pem -inform PEM -text -noout -enddate 
-local $info = &backquote_command("openssl x509 -in ".quotemeta($temp).
+local $info = &backquote_command("openssl x509 -in ".quotemeta($certfile).
 				 " -inform PEM -text -noout -enddate ".
 				 " </dev/null 2>&1");
 print STDERR "info=$info\n";
 
 # Check dates
-# XXX (before and after)
+&foreign_require("mailboxes", "mailboxes-lib.pl");
+local ($start, $end);
+if ($info =~ /Not\s*Before\s*:\s*(.*)/i) {
+	$start = &mailboxes::parse_mail_date("$1");
+	}
+if ($info =~ /Not\s+After\s*:\s*(.*)/i) {
+	$end = &mailboxes::parse_mail_date("$1");
+	}
+local $now = time();
+print STDERR "start=$start end=$end now=$now\n";
+if ($start && $now < $start) {
+	# Too new?!
+	$desc = &text('sslcert_estart', &make_date($start));
+	}
+elsif ($end && $now > $end-$_[0]->{'days'}*24*60*60) {
+	# Too old
+	$desc = &text('sslcert_eend', &make_date($end));
+	}
+elsif ($_[0]->{'mismatch'} && $_[0]->{'url'} &&
+       $info =~ /Subject:.*CN=([a-z0-9\.\-\_\*]+)/i) {
+	# Check hostname
+	local $cn = $1;
+	local $match = $1;
+	$match =~ s/\*/\.\*/g;	# Make perl RE
+	if ($host !~ /^$match$/i) {
+		$desc = &text('sslcert_ematch', "<tt>$host</tt>",
+			      "<tt>$cn</tt>");
+		}
+	}
 
-$up = 1;
+if (!$desc) {
+	# All OK!
+	$desc = &text('sslcert_left', int(($end-$now)/(24*60*60)));
+	$up = 1;
+	}
 
 return { 'up' => $up, 'desc' => $desc };
 }
 
 sub show_sslcert_dialog
 {
-# URK to check
-print &ui_table_row($text{'sslcert_url'},
-	&ui_textbox("url", $_[0]->{'url'}, 50), 3);
+# URL or file to check
+print &ui_table_row($text{'sslcert_src'},
+	&ui_radio_table("src", $_[0]->{'file'} ? 1 : 0,
+		[ [ 0, $text{'sslcert_url'},
+		    &ui_textbox("url", $_[0]->{'url'}, 50) ],
+		  [ 1, $text{'sslcert_file'},
+		    &ui_textbox("file", $_[0]->{'file'}, 50)." ".
+		    &file_chooser_button("file") ] ]), 3);
 
 # Days before expiry to warn
 print &ui_table_row($text{'sslcert_days'},
@@ -64,9 +107,21 @@ print &ui_table_row($text{'sslcert_mismatch'},
 
 sub parse_sslcert_dialog
 {
-# Parse URL
-$in{'url'} =~ /^https:\/\/(\S+)$/ || &error($text{'sslcert_eurl'});
-$_[0]->{'url'} = $in{'url'};
+&has_command("openssl") || &error($text{'sslcert_eopenssl'});
+
+if ($in{'src'} == 0) {
+	# Parse URL
+	$in{'url'} =~ /^https:\/\/(\S+)$/ || &error($text{'sslcert_eurl'});
+	$_[0]->{'url'} = $in{'url'};
+	delete($_[0]->{'file'});
+	}
+else {
+	# Parse file
+	$in{'file'} =~ /^\// && -r $in{'file'} ||
+		&error($text{'sslcert_efile'});
+	$_[0]->{'file'} = $in{'file'};
+	delete($_[0]->{'url'});
+	}
 
 # Parse number of days
 if ($in{'days_def'}) {
@@ -79,5 +134,8 @@ else {
 
 # Check hostname
 $_[0]->{'mismatch'} = $in{'mismatch'};
+if ($in{'mismatch'} && $in{'src'}) {
+	&error($text{'sslcert_emismatch'});
+	}
 }
 
