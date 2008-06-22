@@ -166,8 +166,9 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 	print &ui_table_row($text{'index_sched'},
 		&ui_radio("sched", $job ? 1 : 0,
 		  [ [ 0, $text{'no'} ], [ 1, $text{'index_schedyes'} ] ]));
-	$job ||= { 'mins' => '0',
-		   'hours' => '0',
+	&seed_random();
+	$job ||= { 'mins' => int(rand()*60),
+		   'hours' => int(rand()*24),
 		   'days' => '*',
 		   'months' => '*',
 		   'weekdays' => '*' };
