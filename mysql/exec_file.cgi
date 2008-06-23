@@ -47,12 +47,39 @@ if ($cmd) {
 	$need_unlink = 1;
 	}
 
+# Check the file for tables created and rows inserted
+$create_count = 0;
+$insert_count = 0;
+open(SQL, $file);
+while(<SQL>) {
+	if (/^\s*insert\s+into\s+`(\S+)`/i ||
+            /^\s*insert\s+into\s+(\S+)/i) {
+		$insert_count++;
+		}
+	if (/^\s*create\s+table\s+`(\S+)`/i ||
+            /^\s*create\s+table\s+(\S+)/i) {
+		$create_count++;
+		}
+	}
+close(SQL);
+
 print "<pre>";
 ($ex, $out) = &execute_sql_file($in{'db'}, $file);
 print &html_escape($out);
 $got++ if ($out =~ /\S/);
 print "<i>$text{'exec_noout'}</i>\n" if (!$got);
 print "</pre>\n";
+if (!$ex) {
+	if ($create_count) {
+		print &text('exec_created', $create_count),"\n";
+		}
+	if ($insert_count) {
+		print &text('exec_inserted', $insert_count),"\n";
+		}
+	if ($create_count || $insert_count) {
+		print "<p>\n";
+		}
+	}
 &webmin_log("execfile", undef, $in{'db'}, { 'mode' => $in{'mode'},
 					    'file' => $in{'file'} });
 unlink($file) if ($need_unlink);
