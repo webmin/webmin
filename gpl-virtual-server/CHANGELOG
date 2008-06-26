@@ -465,4 +465,4 @@ Allow the default shell to be set on a per-template basis.
 Move some rarely-used options to the Advanced section of the Module Config page.
 Additional manually configured nameservers can now be more easily entered in server templates, in the BIND DNS domain section.
 Converted all command-line API scripts to use POD format documentation.
-Added the Virtualmin API helper command /usr/bin/virtualmin, which lets you more easily call API scripts with a command like "virtualmin list-domains --multiline". Help on commands can also be displayed with like "virtualmin help list-domains".
+Added the Virtualmin API helper command /usr/sbin/virtualmin, which lets you more easily call API scripts with a command like "virtualmin list-domains --multiline". Help on commands can also be displayed with like "virtualmin help list-domains".
