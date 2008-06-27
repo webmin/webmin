@@ -1719,6 +1719,7 @@ class GotoWindow extends FixedFrame implements CbButtonCallback
 					// Found the line!
 					editor.edit.select(c, c);
 					dispose();
+					editor.edit.requestFocus();
 					return;
 					}
 				}
@@ -1804,10 +1805,16 @@ class FindReplaceWindow extends FixedFrame implements CbButtonCallback
 		// the cursor + 1, and select it
 		int pos = edittxt.indexOf(findtxt,
 					   editor.edit.getSelectionStart()+1);
+		if (pos < 0) {
+			// Not found .. but try wrap-around
+			pos = edittxt.indexOf(findtxt, 0);
+			}
 		if (pos < 0)
 			new ErrorWindow(filemgr.text("edit_notfound", findtxt));
-		else
+		else {
 			editor.edit.select(pos, pos+findtxt.length());
+			editor.edit.requestFocus();
+			}
 		}
 	else if (b == replace_b) {
 		// If the word to search for is selected, replace it. Otherwise
