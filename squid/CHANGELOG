@@ -28,3 +28,5 @@ Use the cache directive instead of no_cache for Squid 2.6.
 Allow request and reply headers access control rules to be configured separately in Squid 3.0.
 Added a page for editing cache manager passwords and the actions that they apply to.
 Comments at the end of lines are now preserved when Webmin changes directives in squid.conf.
+---- Changes since 1.420 ----
+Fixed the Calamaris page for newer versions.

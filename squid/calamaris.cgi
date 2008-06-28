@@ -15,8 +15,8 @@ if (!&has_command($config{'calamaris'})) {
 	}
 
 # Work out Calamaris version and args
-if (`$config{'calamaris'} -V 2>&1` =~ /revision:\s+(\S+)/i) {
-	$ver = $1;
+if (`$config{'calamaris'} -V 2>&1` =~ /(revision:|Calamaris)\s+(\d\S+)/i) {
+	$ver = $2;
 	}
 $args = $config{'cal_all'} ? " -a" : "";
 if ($ver >= 2.5) {
@@ -92,31 +92,31 @@ else {
 close(CAL);
 
 # Put the calamaris output into a nice webmin like table.
-$date = localtime(time());
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",&text('calamaris_gen', $date),"</b></td> </tr>\n";
-print "<tr $cb> <td>\n";
+$date = &make_date(time());
+print &ui_table_start(&text('calamaris_gen', $date), undef, 2);
 
+# Get the output
 open(OUT, $temp);
 if ($config{'cal_fmt'} eq 'm') {
-	print "<pre>";
+	$html = "<pre>";
 	while(<OUT>) {
-		print &html_escape($_);
+		$html .= &html_escape($_);
 		}
-	print "</pre>\n";
+	$html = "</pre>";
 	}
 else {
 	while(<OUT>) {
 		if (/<\s*\/head/i || /<\s*body/i) { $inbody = 1; }
 		elsif (/<\s*\/body/i) { $inbody = 0; }
-		elsif ($inbody) { print; }
+		elsif ($inbody) { $html .= $_; }
 		}
 	}
 close(OUT);
 unlink($temp);
 
-# Close it.
-print "</td></tr></table><p>";
+# Show it
+print &ui_table_row(undef, $html, 2);
+print &ui_table_end();
 
 &ui_print_footer("", $text{'index_return'});
 
