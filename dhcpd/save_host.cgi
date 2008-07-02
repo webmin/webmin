@@ -65,7 +65,7 @@ else {
 		# Check for hardware clash
 		$oldhard = $in{'new'} ? undef
 				      : &find("hardware", $host->{'members'});
-		if ((!$oldhard || $in{'hardward'} ne $oldhard->{'values'}->[1])
+		if ((!$oldhard || $in{'hardware'} ne $oldhard->{'values'}->[1])
 		    && $access{'uniq_hst'}) {
 			foreach $h (&get_hosts()) {
 				$chard = &find("hardware", $h->{'members'});
