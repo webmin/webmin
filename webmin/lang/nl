@@ -19,7 +19,7 @@ advanced_days=dagen
 advanced_err=Fout bij het opslaan van geavanceerde opties
 advanced_etdir=Ontbrekende of niet bestaande tijdelijke files directorie voor $1
 advanced_etemp=Ontbrekende of niet bestaande directory voor tijdelijke bestanden
-advanced_etempdelete=Ontbrekende of ongeldige maximum leeftijd van tijdelijke files 
+advanced_etempdelete=Ontbrekende of ongeldige maximum leeftijd van tijdelijke files
 advanced_eumask=Umask moet een 3 digit getal zijn
 advanced_header=Geavanceerde en experimentele opties
 advanced_nice=CPU prioriteit voor geplande jobs
@@ -148,6 +148,30 @@ cs_link=Link tekst
 cs_page=Pagina achtergrond
 cs_table=Tabel achtergrond
 cs_text=Normale tekst
+debug_cmd=Opdracht regel
+debug_cron=Achtergrond jobs
+debug_edir=Directory '$1' voor de debug log file bestaat niet
+debug_efile=Debug log file moet een absoluut pad zijn
+debug_enabled=Debug log aangezet?
+debug_err=Mislukt om debug opties op te slaan
+debug_esize=Maximum grote moet een getal zijn
+debug_ewhat=Geen zaken geselecteerd om te loggen
+debug_file=Debugging log file
+debug_header=Webmin debug log file opties
+debug_procs=Script soorten om te debuggen
+debug_size=Maximum grote voor log file
+debug_title=Debuggen Log File
+debug_web=Web interface CGIs
+debug_what=Gebeurtenissen voor log
+debug_what_cmd=Uitgevoerde opdrachten
+debug_what_diff=Configuratie file verschil
+debug_what_net=Gemaakte netwerk verbindingen
+debug_what_ops=Andere file operaties
+debug_what_procs=Operaties op processen
+debug_what_read=Files geopend om te lezen
+debug_what_sql=SQL uitgevoerd
+debug_what_start=Scripts starten en stoppen
+debug_what_write=Files geopend om te beschrijven
 delete_acls=Van gebruikers verwijderen en de ACLs opnieuw instellen?
 delete_desc1=$1 (Kloon van $2)
 delete_desc2=$1 in $2 ($3 kB)
@@ -701,7 +725,6 @@ upgrade_delete=Verwijder deriectory van de oude versie na het bijwerken?
 upgrade_desc=Met deze functie kunt u uw gehele webmin installatie opwaarderen naar een nieuwere versie. U kun installeren vanuit een lokaal bestand, of vanaf de laatste versie op <a href=http://www.webmin.com/>www.webmin.com</a>. Evenals bij een handmatige upgrade, zullen alle configuratie instellingen en third-party modules worden behouden.
 upgrade_desccaldera=Dit formulier stelt u instaat uw volledige webmininstallatie bij te werken naar een nieuwe versie door gebruik te maken van RPM's upgrade optie. U kunt installeren vanuit een lokaal RPM bestand, een geupload bestand of vanuit de laatste versie van Caldera.
 upgrade_descdeb=Met dit formulier kunt U de gehele Webmin installatie upgraden naar een nieuwere versie van het Debian pakket. U kunt van een locale .deb file installeren of van een geuploaden file van de laatste versie van <a href=http://www.webmin.com/>www.webmin.com</a>. Net zoals bij een handmatige upgrade, al uw config settings en derde partij modules zullen onaangeroert blijven.
-
 upgrade_descgentoo=Dit formulier stelt u instaat uw volledige webmininstallatie bij te werken naar een nieuwe versie door het huidige Emerge pakket de deinstalleren en een nieuwe te installeren. U kunt installeren vanuit een lokaal Gentoo pakket bestand, een geupload bestand of vanuit de laatste in de Emerge repository. Net als bij een handmatige upgrade zullan alle configuratie instellingen en third party modules worden behouden.
 upgrade_descrpm=Met deze functie kunt u uw gehele webmin installatie opwaarderen naar een nieuwere versie. U kun installeren vanuit een lokaal bestand, of vanaf de laatste versie op <a href=http://www.webmin.com/>www.webmin.com</a>. Evenals bij een handmatige upgrade, zullen alle configuratie instellingen en third-party modules worden behouden.
 upgrade_descsolaris-pkg=Met deze functie kunt u uw gehele webmin installatie opwaarderen naar een nieuwere versie. U kun installeren vanuit een lokaal bestand, of vanaf de laatste versie op <a href=http://www.webmin.com/>www.webmin.com</a>. Evenals bij een handmatige upgrade, zullen alle configuratie instellingen en third-party modules worden behouden.
@@ -748,7 +771,6 @@ upgrade_ok=Webmin bijwerken
 upgrade_only=Verwijderede modules niet opnieuw installeren
 upgrade_setup=Voert setup.sh script uit om Webmin op te waarderen.. Een ogenbik geduld a.u.b. totodat het script is voltooid voordat u verder gaat.
 upgrade_setupdeb=Uitvoeren van DPKG om Webmin te upgraden .. Wacht alstublieft een paar minuten totdat dit is afgerond voordat U verder gaat.
-
 upgrade_setuppackage=Voert pkgadd uit om Webmin op te waarderen.. Een ogenbik geduld a.u.b. totodat het script is voltooid voordat u verder gaat.
 upgrade_setuprpm=Voert RPM uit om Webmin op te waarderen.. Een ogenbik geduld a.u.b. totodat het script is voltooid voordat u verder gaat.
 upgrade_sig=GnuPG handtekening van pakket controleren?
