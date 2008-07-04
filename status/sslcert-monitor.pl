@@ -43,7 +43,6 @@ else {
 local $info = &backquote_command("openssl x509 -in ".quotemeta($certfile).
 				 " -inform PEM -text -noout -enddate ".
 				 " </dev/null 2>&1");
-print STDERR "info=$info\n";
 
 # Check dates
 &foreign_require("mailboxes", "mailboxes-lib.pl");
@@ -55,7 +54,6 @@ if ($info =~ /Not\s+After\s*:\s*(.*)/i) {
 	$end = &mailboxes::parse_mail_date("$1");
 	}
 local $now = time();
-print STDERR "start=$start end=$end now=$now\n";
 if ($start && $now < $start) {
 	# Too new?!
 	$desc = &text('sslcert_estart', &make_date($start));

@@ -65,7 +65,7 @@ sub get_sensors_values
 {
 if (!defined(@get_sensors_cache)) {
 	local @rv;
-	open(SENS, "sensors |");
+	open(SENS, "sensors 2>/dev/null |");
 	while(<SENS>) {
 		if (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\(min\s+=\s+([0-9\.\+\-]+)\s*(\S+),\s+max\s+=\s+([0-9\.\+\-]+)/) {
 			# Value with min and max
