@@ -139,3 +139,4 @@ delete_virts=Delete all email aliases when disabling mail?,1,1-Yes,0-No
 leave_acl=Always re-update Webmin module ACLs?,1,0-Yes,1-No
 webalizer_nocron=Setup Webalizer Cron job for each virtual server?,1,0-Yes,1-No
 allow_subdoms=Allow creation of sub-domains?,1,1-Yes,0-No,-Decide automatically
+mem_cmd=Command to get memory usage,3,Query operating system
