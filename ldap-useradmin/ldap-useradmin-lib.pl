@@ -195,6 +195,8 @@ if ($config{'md5'} == 4) {
 	# LDAP SSHA encryption
 	local $qp = quotemeta($pass);
 	local $out = `$config{'slappasswd'} -h '{ssha}' -s $qp 2>/dev/null`;
+	$out =~ s/\s+$//;
+	$out =~ s/^\{ssha\}//i;
 	return $out;
 	}
 if ($config{'md5'} == 3) {
