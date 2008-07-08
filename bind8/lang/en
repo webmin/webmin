@@ -270,6 +270,7 @@ text_desc2=This page shows the DNS records file $1, created by BIND when the zon
 text_undo=Undo
 text_ecannot=You are not allowed to edit record files
 text_none=However the file is currently empty, probably because the zone has not yet been transferred from the master server.
+text_soa=Increase serial number automatically
 
 restart_err=Failed to apply changes
 restart_ecannot=You are not allowed to restart BIND

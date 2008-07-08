@@ -76,3 +76,4 @@ Spaces are now allowed in Host Information records.
 The default TTL for multiple zones can now be changed on the Update Records in Zones page.
 When adding a cluster slave server, multiple views can be entered to have slave zones created in all of them.
 Record names or values entered like ns.foo.com in the domain foo.com automatically have a . added to make them absolute as the user presumably expected, rather than being coverted to ns.foo.com.foo.com.
+Update serial number (by default) when editing records manually.

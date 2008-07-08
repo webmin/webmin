@@ -12,12 +12,20 @@ $tv = $zone->{'type'};
 $access{'file'} || &error($text{'text_ecannot'});
 $access{'ro'} && &error($text{'master_ero'});
 
+# Write out the file
 &lock_file(&make_chroot($file));
 $in{'text'} =~ s/\r//g;
 $in{'text'} .= "\n" if ($in{'text'} !~ /\n$/);
 &open_tempfile(FILE, ">".&make_chroot($file));
 &print_tempfile(FILE, $in{'text'});
 &close_tempfile(FILE);
+
+# BUMP soa too
+if ($in{'soa'}) {
+	@recs = &read_zone_file($file, $zone->{'name'});
+	&bump_soa_record($file, \@recs);
+	}
+
 &unlock_file(&make_chroot($file));
 &webmin_log("text", undef, $zone->{'name'},
 	    { 'file' => $file });
