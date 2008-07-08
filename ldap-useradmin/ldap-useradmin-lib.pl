@@ -1118,7 +1118,7 @@ if ($new) {
 			else {
 				# Based on the GID
 				push(@$props, "sambaPrimaryGroupSID",
-					      $user->{'gid'}*2+1000);
+					      $user->{'gid'}*2+1001);
 				}
 			}
 		}

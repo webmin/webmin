@@ -206,7 +206,7 @@ if (!$in{'new'}) {
 			if (&in_schema($schema, "rid") &&
 			    $samba_group_schema == 2);
 		push(@props, "sambaSID",
-			     "$config{'samba_domain'}-".($gid*2+1000))
+			     "$config{'samba_domain'}-".($gid*2+1001))
 			if (&in_schema($schema, "sambaSID") &&
 			    $samba_group_schema == 3);
 		push(@props, "sambaGrouptype", 2)
@@ -273,11 +273,11 @@ else {
 	push(@classes, split(/\s+/, $config{'gother_class'}));
 	if ($in{'samba'}) {
 		push(@classes, $samba_group_class);
-		push(@props, "rid", $gid*2+1000)
+		push(@props, "rid", $gid*2+1001)
 			if (&in_schema($schema, "rid") &&
 			    $samba_group_class eq 'sambaGroup');
 		push(@props, "sambaSID",
-			     "$config{'samba_domain'}-".($gid*2+1000))
+			     "$config{'samba_domain'}-".($gid*2+1001))
 			if (&in_schema($schema, "sambaSID") &&
 			    $samba_group_schema == 3);
 		push(@props, "sambaGrouptype", 2)
