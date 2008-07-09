@@ -469,4 +469,5 @@ Added the Virtualmin API helper command /usr/sbin/virtualmin, which lets you mor
 Purging of old backups made to FTP or SSH servers is now supported, for FTP servers that use Unix directory listings and SSH servers that allow commands to be run.
 ---- Changes since 3.58 ----
 Added a Module Config field for a custom command to get memory and swap information.
+Included domains can now be specified when editing SPF information, and IP networks can be entered.
 Added the check-config.pl command line script, for validating the configuration.
