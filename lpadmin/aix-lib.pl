@@ -211,7 +211,7 @@ sub delete_printer
 {
 # Find old entry
 local @qc = &get_qconfig();
-local ($real) = grep { $_->{'name'} eq $_[0]->{'name'} } @qc;
+local ($real) = grep { $_->{'name'} eq $_[0] } @qc;
 local ($device) = grep { $_->{'name'} eq $real->{'values'}->{'device'} &&
 			    $_->{'line'} > $real->{'line'} } @qc;
 
