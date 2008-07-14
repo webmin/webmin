@@ -8,8 +8,8 @@ index_addpv2=Voeg een Fysiek volume toe aan <tt>$1</tt>.
 index_addsnap=Maak een nieuw snapshot.
 index_ecommands=De LVM opdracht $1 is niet gevonden op uw systeem. Webmin heeft de LVM administratie opdrachten nodig om logische volumes op te zetten en te beheren.
 index_emodule=De LVM status directorie $1 bestaat niet. Dit houd in dat uw kernel geen LVM ondersteunt, of dat de $2 kernel module niet is geladen.
-index_eversion=Webmin ondersteund alleen LVM versies 1.0 en hoger. De output van $1 op uw systeem was : $2 
-index_init=Dit is misschien omdat LVM nog niet geactiveerd is. <a href='$1'>Activeer het nu</a> om alle volume groepen te zien. 
+index_eversion=Webmin ondersteund alleen LVM versies 1.0 en hoger. De output van $1 op uw systeem was : $2
+index_init=Dit is misschien omdat LVM nog niet geactiveerd is. <a href='$1'>Activeer het nu</a> om alle volume groepen te zien.
 index_lvname=Logische volume
 index_lvs=Logische Volumes
 index_lvsdesc=Een logische volume is een virtuele partitie die gemaakt is van gecombineerde disk ruimte van een volume groep. Ieder kan een filesysteem hebben en dan gemount zijn aan opgeslagen files.
@@ -89,9 +89,10 @@ lv_petotal=Toegewezen blokken van volume groep
 lv_petotals=$1 van $2
 lv_pvs=Fysiek volume toegewezen
 lv_rusnap=Weet U zeker dat U de snapshot $1 wilt verwijderen?
-lv_rusure=Weet U zeker dat U het logische volume $1 wilt verwijderen? Alle data in het filesysteem op deze logische volume word voor altijd gewist! 
+lv_rusure=Weet U zeker dat U het logische volume $1 wilt verwijderen? Alle data in het filesysteem op deze logische volume word voor altijd gewist!
 lv_size=Volume grote
 lv_snapof=Snapshot van logisch volume
+lv_snapusage=Snapshot percentage gebruik
 lv_status=Huidige status
 lv_stripe=Volume striping
 lv_stripes=Stripe tussen $1 fysieke volumes
