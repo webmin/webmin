@@ -467,9 +467,10 @@ Additional manually configured nameservers can now be more easily entered in ser
 Converted all command-line API scripts to use POD format documentation.
 Added the Virtualmin API helper command /usr/sbin/virtualmin, which lets you more easily call API scripts with a command like "virtualmin list-domains --multiline". Help on commands can also be displayed with like "virtualmin help list-domains".
 Purging of old backups made to FTP or SSH servers is now supported, for FTP servers that use Unix directory listings and SSH servers that allow commands to be run.
----- Changes since 3.58 ----
+---- Changes since 3.59 ----
 Added a Module Config field for a custom command to get memory and swap information.
 Included domains can now be specified when editing SPF information, and IP networks can be entered.
 Added the check-config.pl command line script, for validating the configuration.
 Added Module Config options for a hosting provider logo and link.
 Added an option on the Module Config page for an alternate GPL to Pro upgrade URL.
+The default limit on the number of non-alias domains can now be set in server templates.
