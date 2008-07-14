@@ -57,9 +57,20 @@ foreach $x (@conf) {
 			}
 		}
 	else {
-		# Only service specified, check all protocols
+		# Only service specified, check protocols based on socket type,
+		# or failing that all protocols
 		if ($config{'lookup_servs'}) {
-			foreach $p (&list_protocols()) {
+			local @protos;
+			if ($q->{'socket_type'}->[0] eq 'stream') {
+				@protos = ( 'tcp' );
+				}
+			elsif ($q->{'socket_type'}->[0] eq 'dgram') {
+				@protos = ( 'udp' );
+				}
+			else {
+				@protos = &list_protocols();
+				}
+			foreach $p (@protos) {
 				@s = getservbyname($x->{'value'}, $p);
 				last if (@s);
 				}
