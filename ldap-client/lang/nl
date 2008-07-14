@@ -118,11 +118,15 @@ eswitch_unavail=Indien niet beschikbaar
 index_check=Validatie Configuratie
 index_checkdesc=Klik op deze knop om Webmin uw LDAP server configuratie te laten valideren, om er zeker van te zijn dat de server bereikt kan worden en het gebruikers en groepen bevat.
 index_econf=De NSS-LDAP configuratie file $1 is niet gevonden op uw systeem. Misschien is LDAP client support niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet correct.
+index_fix=Fix door Linken Files
+index_fixpam=<b>Waarschuwing</b> - Webmin heeft 2 aparte LDAP configuratie files ontdekt op uw systeem. NSS-LDAP is geconfigureerd om $1 te gebruiken, terwijl PAM-LDAP $2 gebruikt. Dit kan lijden tot inconsistentie tussen deze twee services. 
+index_ignore=Dit Bericht Niet Laten Zien
 index_return=module index
 ldap_anon=anoniem
 ldap_econn=Mislukt om te verbinden met de LDAP server $1 poort $2
 ldap_elogin=Bind is mislukt aan LDAP server $1 als $2 : $3
 ldap_emodule=De $1 Perl module die nodig is om met de LDAP server te communiceren is niet geinstalleerd. <a href='$2'>Klik hier</a> zodat Webmin het nu kan downloaden en installeren.
+ldap_eparse=Ontleden mislukt van de LDAP server URI $1
 log_base=Gemodificeerde LDAP zoek basis
 log_modify_switch=Veranderde service $1
 log_pam=Gemodificeerde identificatie opties
