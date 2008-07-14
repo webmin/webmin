@@ -48,8 +48,12 @@ if ($in{real} == 0) {
 elsif ($in{real} == 1) {
 	# Try to download the root servers file from
 	# ftp://rs.internic.net/domain/named.root
-	&ftp_download("rs.internic.net", "/domain/named.root", 
-		      &make_chroot("$conf_directory/db.cache"));
+	$hfile = &make_chroot("$conf_directory/db.cache");
+	&ftp_download($internic_ftp_host, $internic_ftp_file, $hfile, \$ftperr);
+	if ($ftperr) {
+		# Try IP address directly
+		&ftp_download($internic_ftp_ip, $internic_ftp_file, $hfile);
+		}
 	print BOOT "zone \".\" {\n";
 	print BOOT "\ttype hint;\n";
 	print BOOT "\tfile \"$conf_directory/db.cache\";\n";

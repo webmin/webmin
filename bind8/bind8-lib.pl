@@ -12,6 +12,11 @@ do '../ui-lib.pl';
 $zone_names_cache = "$module_config_directory/zone-names";
 $zone_names_version = 2;
 
+# Where to find root zones file
+$internic_ftp_host = "rs.internic.net";
+$internic_ftp_ip = "198.41.0.6";
+$internic_ftp_file = "/domain/named.root";
+
 if (open(VERSION, "$module_config_directory/version")) {
 	chop($bind_version = <VERSION>);
 	close(VERSION);
