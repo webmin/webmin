@@ -155,7 +155,7 @@ foreach $line (split(/[\r\n]+/, $data)) {
 			$user{'uid'} = $line[3];
 			}
 		$used{$user{'uid'}}++;
-		if (!-r $line[7]) {
+		if ($line[7] !~ /^\//) {
 			print &text('batch_eshell', $lnum, $line[7]),"\n";
 			next;
 			}
