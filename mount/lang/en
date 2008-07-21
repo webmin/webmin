@@ -313,6 +313,7 @@ linux_secs=seconds
 linux_smbwarn=Warning! Filesystem was not mounted from Webmin, so existing options are not available
 linux_username=Login Name
 linux_password=Login Password
+linux_credentials=Credentials File
 linux_sname=Server Name
 linux_wg=Workgroup
 linux_auto=Automatic

@@ -17,3 +17,5 @@ Added support for HFS and FATX filesystems under Linux.
 Partitions specified using the UUID notation in /etc/fstab are now supported, as seen on Ubuntu Linux.
 ---- Changes since 1.330 ----
 Mounted filesystems can now be displayed on Intel macs, without needing the gcc program.
+---- Changes since 1.420 ----
+SMBFS authentication credentials can be stored in a separate file, thanks to a patch by Rob Shinn.

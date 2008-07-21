@@ -1499,7 +1499,17 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 	print "<td><b>$text{'linux_password'}</b></td>\n";
 	printf "<td><input type=password name=smbfs_passwd size=15 value=\"%s\"></td> </tr>\n",
 		$support == 4 ? $options{'password'} : $options{'passwd'};
-
+	
+ 	print "<td><b>$text{'linux_credentials'}</b></td>\n";
+	if ($support == 4) {
+		printf "<td><input name=smbfs_creds size=30 value=\"%s\"> ",
+			defined($options{"credentials"}) ? $options{'credentials'} : "";
+		
+		if ($access{'browse'}) {
+			print &file_chooser_button("smbfs_creds", 0);
+			}
+		}
+	print "</td>\n";
 	if (!$access{'simopts'}) {
 		if ($support != 2) {
 			print "<tr> <td><b>$text{'linux_uid'}</b></td>\n";
@@ -2060,6 +2070,13 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 	delete($options{'passwd'}); delete($options{'password'});
 	if ($in{smbfs_passwd}) {
 		$options{$support == 4 ? 'password' : 'passwd'} = $in{smbfs_passwd};
+		}
+
+	if ($support == 4) {	
+		delete($options{'credentials'});
+		if ($in{smbfs_creds}) {
+			$options{'credentials'} = $in{smbfs_creds};
+			}
 		}
 
 	if (!$access{'simopts'}) {
