@@ -1,0 +1,59 @@
+<header>TCP Wrappers</header>
+
+<h3>Patterns</h3>
+The access control language implements the following patterns:
+<ul>
+<li>A  string  that begins with a '.' character. A host name is matched if the last components of its name match the specified pattern.  For example, the pattern '.tue.nl' matches the host name 'wzv.win.tue.nl'.</li>
+<li>A string that ends with a '.' character. A host address is matched if its first  numeric  fields  match  the  given  string.   For  example,  the  pattern '131.155.' matches the address of (almost) every host on the Eindhoven University network (131.155.x.x).</li>
+<li>A  string  that begins with an '@' character is treated as an NIS (formerly YP) netgroup name. A host name is matched if it is a host member of the specified netgroup. Netgroup matches are not supported for daemon process names or for client user names.</li>
+<li>An expression of the form 'n.n.n.n/m.m.m.m' is interpreted as a 'net/mask' pair. An IPv4 host address is matched if 'net' is equal to the bitwise  AND  of the  address  and  the  'mask'.  For  example, the net/mask pattern '131.155.72.0/255.255.254.0' matches every address in the range '131.155.72.0' through '131.155.73.255'.</li>
+<li>An expression of the form '[n:n:n:n:n:n:n:n]/m' is interpreted as a '[net]/prefixlen' pair. An IPv6 host address is matched if 'prefixlen' bits  of  'net' is  equal  to  the  'prefixlen'  bits  of  the  address. For example, the [net]/prefixlen pattern '[3ffe:505:2:1::]/64' matches every address in the range '3ffe:505:2:1:'? through '3ffe:505:2:1:ffff:ffff:ffff:ffff'.</li>
+<li>A string that begins with a '/' character is treated as a file name. A host name or address is matched if it matches any  host  name  or  address  pattern listed in the named file. The file format is zero or more lines with zero or more host name or address patterns separated by whitespace.  A file name pattern can be used anywhere a host name or address pattern can be used.</li>
+<li>Wildcards '*' and '?' can be used to match hostnames or IP addresses.  This method of matching cannot be used in  conjunction  with  'net/mask'  matching, hostname matching beginning with '.' or IP address matching ending with '.'.</li>
+</ul>
+
+<h3>Wildcards</h3>
+The access control language supports explicit wildcards:
+<table border>
+<tr><td><b>ALL</b></td><td>The universal wildcard, always matches.</td></tr>
+<tr><td><b>LOCAL</b></td><td>Matches any host whose name does not contain a dot character.</td></tr>
+<tr><td><b>UNKNOWN</b></td><td>
+              Matches  any user whose name is unknown, and matches any host whose name or address are unknown.  This pattern should be used with care: host names may be
+              unavailable due to temporary name server problems. A network address will be unavailable when the software cannot figure out what type of  network  it  is
+              talking to.</td></tr>
+<tr><td><b>KNOWN</b></td><td>Matches  any  user  whose  name  is known, and matches any host whose name and address are known. This pattern should be used with care: host names may be
+              unavailable due to temporary name server problems.  A network address will be unavailable when the software cannot figure out what type of network  it  is
+              talking to.</td></tr>
+<tr><td><b>PARANOID</b></td><td>
+              Matches  any  host  whose  name  does  not match its address.  When tcpd is built with -DPARANOID (default mode), it drops requests from such clients even
+              before looking at the access control tables.  Build without -DPARANOID when you want more control over such requests.</td></tr>
+</table>
+
+<h3>Operators</h3>
+<b>EXCEPT</b> Intended use is of the form: 'list_1 EXCEPT list_2'; this construct matches anything that matches list_1 unless it matches list_2.   The  EXCEPT  operator
+              can be used in daemon_lists and in client_lists. The EXCEPT operator can be nested: if the control language would permit the use of parentheses, 'a EXCEPT
+              b EXCEPT c' would parse as '(a EXCEPT (b EXCEPT c))'.
+
+<h3>Shell Commands</h3>
+       If the first-matched access control rule contains a shell command, that command is subjected to %<letter> substitutions (see next section).  The result  is  exe-
+       cuted  by  a  /bin/sh child process with standard input, output and error connected to /dev/null.  Specify an '&' at the end of the command if you do not want to
+       wait until it has completed.<p />
+
+       Shell commands should not rely on the PATH setting of the inetd.  Instead, they should use absolute path names, or they should begin with an explicit  PATH=what-
+       ever statement.
+<h3>% Expansions</h3>
+The following expansions are available within shell commands:
+<table>
+<tr><td>%a (%A)</td><td>The client (server) host address.</td></tr>
+<tr><td>%c</td><td>Client information: user@host, user@address, a host name, or just an address, depending on how much information is available.</td></tr>
+<tr><td>%d</td><td>The daemon process name (argv[0] value).</td></tr>
+<tr><td>%h (%H)</td><td>The client (server) host name or address, if the host name is unavailable.</td></tr>
+<tr><td>%n (%N)</td><td>The client (server) host name (or "unknown" or "paranoid").</td></tr>
+<tr><td>%p</td><td>The daemon process id.</td></tr>
+<tr><td>%s</td><td>Server information: daemon@host, daemon@address, or just a daemon name, depending on how much information is available.</td></tr>
+<tr><td>%u</td><td>The client user name (or "unknown").</td></tr>
+<tr><td>%%</td><td>Expands to a single '%? character.</td></tr>
+</table>
+Characters in % expansions that may confuse the shell are replaced by underscores.
+
+<hr />

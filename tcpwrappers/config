@@ -1,0 +1,2 @@
+hosts_allow=/etc/hosts.allow
+hosts_deny=/etc/hosts.deny

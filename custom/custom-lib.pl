@@ -1,8 +1,5 @@
 # custom-lib.pl
 # Functions for storing custom commands
-# XXX variable in file editors
-# XXX don't need quoting option
-# XXX don't need upload type, or password, or text box, or option
 
 do '../web-lib.pl';
 &init_config();

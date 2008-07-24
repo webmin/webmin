@@ -1,0 +1,19 @@
+<header>TCP Wrappers</header>
+
+<h3>Introduction</h3>
+This module uses a simple access control language that is based on client (host name/address, user name), and server (process name, host name/address)
+patterns.<p />
+An extended version of the access control language is described in the hosts_options(5) document. The extensions are turned on at program build time by  building
+with -DPROCESS_OPTIONS.
+                            
+<h3>Access Control Files</h3>
+The access control software consults two files. The search stops at the first match:
+<ul>                                                 
+<li>Access will be granted when a (daemon,client) pair matches an entry in the /etc/hosts.allow file.</li>
+<li>Otherwise, access will be denied when a (daemon,client) pair matches an entry in the /etc/hosts.deny file.</li>
+<li>Otherwise, access will be granted.</li>
+</ul>
+A non-existing access control file is treated as if it were an empty file. Thus, access control can be turned off by providing no access control files.
+                                                                             
+
+<hr />

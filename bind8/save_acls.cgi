@@ -7,6 +7,8 @@ $access{'defaults'} || &error($text{'acls_ecannot'});
 &error_setup($text{'acls_err'});
 &ReadParse();
 
+# Convert inputs into ACL structures
+%depmap = ( );
 &lock_file(&make_chroot($config{'named_conf'}));
 $conf = &get_config();
 for($i=0; defined($name = $in{"name_$i"}); $i++) {
@@ -25,7 +27,21 @@ for($i=0; defined($name = $in{"name_$i"}); $i++) {
 		      'members' => [ map { my ($n, @w)=split(/\s+/, $_);
 				           { 'name' => $n,
 					     'values' => \@w } } @vals ] });
+
+	# Record this ACL as a dependency of some ACL it refers to
+	foreach (@vals) {
+		my ($n, @w)=split(/\s+/, $_);
+		if ($n !~ /^[0-9\.]+$/) {
+			push(@{$depmap{$n}}, $name);
+			}
+		}
 	}
+
+# Sort the list so that depended-on ACLs come first
+@acls = sort { my $an = $a->{'values'}->[0];
+	       my $bn = $b->{'values'}->[0];
+	       &indexof($an, @{$depmap{$bn}}) >= 0 ? 1 :
+	       &indexof($bn, @{$depmap{$an}}) >= 0 ? -1 : 0 } @acls;
 
 &save_directive(&get_config_parent(), 'acl', \@acls, 0, 0, 1);
 &flush_file_lines();

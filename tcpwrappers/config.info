@@ -1,0 +1,2 @@
+hosts_allow=TCP wrappers allow file,0
+hosts_deny=TCP wrappers deny file,0

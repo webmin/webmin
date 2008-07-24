@@ -45,6 +45,7 @@ if ($access{'theme'}) {
 	}
 if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 	$user->{'pass'} = &acl::encrypt_password($in{'pass'});
+	$user->{'temppass'} = 0;
 	}
 &acl::modify_user($user->{'name'}, $user);
 print "$text{'change_done'}<p>\n";

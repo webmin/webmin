@@ -462,7 +462,7 @@ close(HTACCESS);
 return \@conf;
 }
 
-# save_directive(name, &values, &parent-directives, &config)
+# save_directive(name, &values, &parent-directives, &config, [always-at-end])
 # Updates the config file(s) and the directives structure with new values
 # for the given directives.
 # If a directive's value is merely being changed, then its value only needs
@@ -477,7 +477,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		# a new directive is being added. If other directives of this
 		# type exist, add it after them. Otherwise, put it at the end of
 		# the first file in the section
-		if ($change) {
+		if ($change && !$_[4]) {
 			# Have changed some old directive.. add this new one
 			# after it, and update change
 			local(%v, $j);

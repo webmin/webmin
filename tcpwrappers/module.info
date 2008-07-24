@@ -1,0 +1,5 @@
+name=tcpwrappers
+desc=TCP Wrappers
+category=net
+version=0.3
+longdesc=Configure the TCP wrappers networking access control files

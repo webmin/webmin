@@ -1,0 +1,29 @@
+index_title=TCP Wrappers
+index_return=index
+index_allowtitle=Allowed hosts
+index_denytitle=Denied hosts
+index_norule=File '$1' doesn't contain any rules.
+index_nofile=File '$1' doesn't exist - check your <a href="/config.cgi?tcpwrappers">module configuration</a>
+index_add=Add rule
+index_service=Daemon
+index_hosts=Hosts
+index_cmd=Command
+index_delete=Delete Selected
+index_none=none
+
+edit_title1=Create rule
+edit_title2=Edit rule
+edit_eid=This rule was not found
+edit_header=Rule options
+edit_service=Service
+edit_hosts=Hosts
+edit_cmd=Shell commands
+edit_efound=Daemon '$1' was not found in xinetd configuration.
+
+save_errtitle=Error on save rule
+save_ehost=Host input contains bad characters
+save_ecmd=Command input contains bad characters
+save_eservice=Daemon names contain bad characters
+
+del_errtitle=Error on rules delete
+del_enone=No rules marked to delete
