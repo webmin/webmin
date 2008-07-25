@@ -1,5 +1,5 @@
 line1=LDAP server options,11
-auth_ldap=Linux LDAP NSS library config file,3,None
+auth_ldap=Linux LDAP NSS library config file,3,None (use settings below),40,,,Use settings from file
 ldap_host=LDAP server host,3,From NSS config file
 ldap_port=LDAP server port,3,From NSS config file or default
 ldap_tls=LDAP server uses TLS?,1,1-Yes,0-No

@@ -122,9 +122,9 @@ foreach $c (@info_order) {
 		}
 	elsif ($p[1] == 3) {
 		# Optional value
-		local $none = $p[2] ? $p[2] : $text{'config_none'};
+		local $none = $p[2] || $text{'config_none'};
 		$field = &ui_opt_textbox($c, $config{$c}, $p[3] || 20, $none,
-					 undef, 0, undef, $p[4])." ".$p[5];
+					 $p[6], 0, undef, $p[4])." ".$p[5];
 		}
 	elsif ($p[1] == 4) {
 		# One of many menu
