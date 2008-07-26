@@ -476,3 +476,4 @@ Added an option on the Module Config page for an alternate GPL to Pro upgrade UR
 The default limit on the number of non-alias domains can now be set in server templates.
 DNS aliases named 'webmail' and 'admin' are now created in all new virtual servers by default, and Apache is configured to redirect requests for them to Usermin and Webmin by default.
 Added the Global Variables page under the System Customization category, for creating variables that can be used in all templates.
+When the virtualmin --help command is run, it now outputs a list of all available API commands with short descriptions, broken down into categories.
