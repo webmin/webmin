@@ -477,3 +477,6 @@ The default limit on the number of non-alias domains can now be set in server te
 DNS aliases named 'webmail' and 'admin' are now created in all new virtual servers by default, and Apache is configured to redirect requests for them to Usermin and Webmin by default.
 Added the Global Variables page under the System Customization category, for creating variables that can be used in all templates.
 When the virtualmin --help command is run, it now outputs a list of all available API commands with short descriptions, broken down into categories.
+---- Changes since 3.60 ----
+When the virtualmin --help command is run, it now outputs a list of all available API commands with short descriptions, broken down into categories.
+Extra administrators can now have contact email addresses, which can be used when sending email to all domain owners. These can be set via the web interface, or the command-line API.
