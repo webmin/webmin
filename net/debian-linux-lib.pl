@@ -188,6 +188,7 @@ if ($amode) {
 # modify_module_def(name, delete, mode, miimon, downdelay, updelay)
 sub modify_module_def
 {
+        return if (!$modules_config);
 	my ($name, $delete, $mode, $miimon, $downdelay, $updelay) = @_;
 	my $modify_block = 0;
 	
@@ -253,6 +254,7 @@ sub delete_module_def
 # Return hash: ($mode, $miimon, $downdelay, $updelay)
 sub get_module_defs
 {
+        return ( ) if (!$modules_config);
 	local *CFGFILE;
 	my($device) = @_;
 	my %ret;
@@ -286,6 +288,7 @@ sub get_module_defs
 # Parameters should be (name, mode, miimon, downdelay, updelay)
 sub new_module_def
 {
+        return if (!$modules_config);
 	copy("$modules_config", "$modules_config~");
 	local *CFGFILE;
 	&open_lock_tempfile(CFGFILE, ">> $modules_config") ||
