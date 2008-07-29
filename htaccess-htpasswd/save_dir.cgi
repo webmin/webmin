@@ -56,8 +56,8 @@ if ($in{'delete'} || $in{'remove'}) {
 	if ($in{'remove'}) {
 		# Blow away .htaccess, htpasswd and htgroups
 		&unlink_logged($htaccess);
-		&unlink_logged($currfile) if ($currfile);
-		&unlink_logged($currgfile) if ($currgfile);
+		&unlink_logged($currfile) if ($currfile && !-d $currfile);
+		&unlink_logged($currgfile) if ($currgfile && !-d $currgfile);
 		@dirs = grep { $_ ne $dir } @dirs;
 		}
 	else {
@@ -94,6 +94,7 @@ else {
 			$file = $in{'file'};
 			}
 		}
+	-d $file && &error(&text('dir_efiledir', $file));
 
 	# Parse groups file option
 	if (!$can_htgroups) {
@@ -118,6 +119,7 @@ else {
 			$gfile = $in{'gfile'};
 			}
 		}
+	-d $gfile && &error(&text('dir_egfiledir', $gfile));
 
 	# Parse require option
 	@require = ( $in{'require_mode'} );

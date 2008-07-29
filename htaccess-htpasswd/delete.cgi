@@ -17,8 +17,8 @@ foreach $d (@d) {
 		$htaccess = "$dir->[0]/$config{'htaccess'}";
 		&can_access_dir($htaccess) || &error($text{'dir_ecannot'});
 		&unlink_logged($htaccess);
-		&unlink_logged($dir->[1]);
-		&unlink_logged($dir->[4]) if ($dir->[4]);
+		&unlink_logged($dir->[1]) if (!-d $dir->[1]);
+		&unlink_logged($dir->[4]) if ($dir->[4] && !-d $dir->[4]);
 		@dirs = grep { $_ ne $dir } @dirs;
 		}
 	}

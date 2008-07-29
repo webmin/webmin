@@ -58,6 +58,8 @@ dir_delete=Un-Protect
 dir_delete2=Un-Protect And Remove Files
 dir_delete3=Un-Protect And Remove File
 dir_apache=Edit Apache Options
+dir_efiledir='$1' is a directory, and so cannot be used as a users file
+dir_egfiledir='$1' is a directory, and so cannot be used as a groups file
 
 edit_title1=Create User
 edit_title2=Edit User
