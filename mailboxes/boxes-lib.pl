@@ -1333,8 +1333,10 @@ return &html_escape($rv);
 sub quoted_decode
 {
 local $t = $_[0];
-$t =~ s/=\n//g;
-$t =~ s/=([a-zA-Z0-9]{2})/pack("c",hex($1))/ge;
+$t =~ s/[ \t]+?(\r?\n)/$1/g;
+$t =~ s/=\r?\n//g;
+$t =~ s/(^|[^\r])\n\Z/$1\r\n/;
+$t =~ s/=([a-fA-F0-9]{2})/pack("c",hex($1))/ge;
 return $t;
 }
 
