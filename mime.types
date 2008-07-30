@@ -40,6 +40,8 @@ application/marc
 application/mathematica
 application/mathematica-old
 application/msword		doc # Microsoft Word document
+application/vnd.openxmlformats-officedocument.wordprocessingml.document	docx	# Microsoft Word 2007 document
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet	xlsx	# Microsoft Excel 2007 document
 application/news-message-id
 application/news-transmission
 application/ocsp-request
