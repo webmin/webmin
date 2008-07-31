@@ -1329,6 +1329,7 @@ else {
 }
 
 # simplify_subject(subject)
+# Simplifies and truncates a subject for display in the mail list
 sub simplify_subject
 {
 local $rv = &eucconv(&decode_mimewords($_[0]));
@@ -1337,6 +1338,7 @@ return &html_escape($rv);
 }
 
 # quoted_decode(text)
+# Converts quoted-printable format to the original
 sub quoted_decode
 {
 local $t = $_[0];
@@ -1348,6 +1350,7 @@ return $t;
 }
 
 # quoted_encode(text)
+# Encodes text to quoted-printable format
 sub quoted_encode
 {
 local $t = $_[0];

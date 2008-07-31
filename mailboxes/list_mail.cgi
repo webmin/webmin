@@ -31,7 +31,7 @@ print &check_clicks_function();
 ($folder) = grep { $_->{'index'} == $in{'folder'} } @folders;
 
 # Get folder-selection HTML
-$sel = &folder_select(\@folders, $folder, "folder");
+$sel = &folder_select(\@folders, $folder, "folder", undef, 0, 1);
 
 # Work out start from jump page
 $perpage = $folder->{'perpage'} || $config{'perpage'};
