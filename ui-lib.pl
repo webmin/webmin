@@ -1430,5 +1430,16 @@ foreach $f (@{$_[2]}) {
 return $_[3] ? "$_[3]='$rv'" : $rv;
 }
 
+# js_redirect(url)
+# Returns HTML to trigger a redirect to some URL
+sub js_redirect
+{
+local ($url) = @_;
+if (defined(&theme_js_redirect)) {
+	return &theme_js_redirect(@_);
+	}
+return "<script>window.location = '".&quote_escape($url)."';</script>\n";
+}
+
 1;
 
