@@ -791,10 +791,15 @@ local $port = $_[9] || $config{'smtp_port'} || 25;
 foreach $h (@{$_[0]->{'headers'}}) {
 	$header{lc($h->[0])} = $h->[1];
 	}
+
+# Add the date header, always in english
+&clear_time_locale();
 local @tm = localtime(time());
 push(@{$_[0]->{'headers'}},
      [ 'Date', strftime("%a, %d %b %Y %H:%M:%S %z (%Z)", @tm) ])
 	if (!$header{'date'});
+&reset_time_locale();
+
 local @from = &address_parts($header{'from'});
 local $fromaddr;
 if (@from && $from[0] =~ /\S/) {
@@ -810,7 +815,7 @@ if ($_[1]) {
 	open(MAIL, ">>$_[1]") || &error("Write failed : $!");
 	$lnum++;
 	print MAIL $_[0]->{'fromline'} ? $_[0]->{'fromline'}."\n" :
-		   strftime("From $fromaddr %a %b %e %H:%M:%S %Y\n", @tm);
+					 &make_from_line($fromaddr)."\n";
 	}
 elsif ($sm) {
 	# Connect to SMTP server
@@ -2419,6 +2424,44 @@ local $mail = { 'headers' =>
 		  [ 'Subject', $subject ] ],
 		'attach' => [ $attach ] };
 return &send_mail($mail, undef, 1, 0, $smtp);
+}
+
+# clear_time_locale()
+# Temporarily force the locale to C, until reset_time_locale is called
+sub clear_time_locale
+{
+if ($main::clear_time_locale_count == 0) {
+	eval {
+		$main::clear_time_locale_old = POSIX::setlocale(POSIX::LC_TIME);
+		POSIX::setlocale(POSIX::LC_TIME, "C");
+		};
+	}
+$main::clear_time_locale_count++;
+}
+
+# reset_time_locale()
+# Revert the locale to whatever it was before clear_time_locale was called
+sub reset_time_locale
+{
+if ($main::clear_time_locale_count == 1) {
+	eval {
+		POSIX::setlocale(POSIX::LC_TIME, $main::clear_time_locale_old);
+		$main::clear_time_locale_old = undef;
+		};
+	}
+$main::clear_time_locale_count--;
+}
+
+# make_from_line(address, [time])
+# Returns a From line for mbox emails, based on the current time
+sub make_from_line
+{
+local ($addr, $t) = @_;
+$t ||= time();
+&clear_time_locale();
+local $rv = "From $addr ".strftime("%a %b %e %H:%M:%S %Y", localtime($t)); 
+&reset_time_locale();
+return $rv;
 }
 
 1;
