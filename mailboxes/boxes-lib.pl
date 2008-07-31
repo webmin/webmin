@@ -1286,6 +1286,8 @@ while($lines[++$l]) {
 return $data;
 }
 
+# simplify_date(datestring)
+# Given a date from an email header, convert to the user's preferred format
 sub simplify_date
 {
 local $u = &parse_mail_date($_[0]);
