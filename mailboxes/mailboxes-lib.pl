@@ -1137,6 +1137,8 @@ else {
 	}
 }
 
+# get_mail_read(&folder, &mail)
+# Returns the read flag for some message, from the DBM
 sub get_mail_read
 {
 local ($folder, $mail) = @_;
@@ -1144,6 +1146,17 @@ if (!$done_dbmopen_read++) {
 	dbmopen(%read, "$module_config_directory/$folder->{'user'}.read", 0600);
 	}
 return $read{$mail->{'header'}->{'message-id'}};
+}
+
+# set_mail_read(&folder, &mail, read)
+# Sets the read flag for some message in the DBM
+sub set_mail_read
+{
+local ($folder, $mail, $read) = @_;
+if (!$done_dbmopen_read++) {
+	dbmopen(%read, "$module_config_directory/$folder->{'user'}.read", 0600);
+	}
+$read{$mail->{'header'}->{'message-id'}} = $read;
 }
 
 1;

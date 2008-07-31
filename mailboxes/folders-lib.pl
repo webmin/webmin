@@ -1112,13 +1112,17 @@ sub mailbox_delete_mail
 {
 return undef if (&is_readonly_mode());
 local $f = shift(@_);
-if ($userconfig{'delete_mode'} == 1 && !$f->{'trash'} && !$f->{'spam'}) {
-	# Copy to trash folder first
+if ($userconfig{'delete_mode'} == 1 && !$f->{'trash'} && !$f->{'spam'} &&
+    !$f->{'notrash'}) {
+	# Copy to trash folder first .. if we have one
 	local ($trash) = grep { $_->{'trash'} } &list_folders();
-	local $m;
-	foreach $m (@_) {
-		local $mcopy = { %$m };		# Because writing changes id
-		&write_mail_folder($mcopy, $trash);
+	if ($trash) {
+		foreach my $m (@_) {
+			my $r = &get_mail_read($f, $m);
+			my $mcopy = { %$m };	  # Because writing changes id
+			&write_mail_folder($mcopy, $trash);
+			&set_mail_read($trash, $mcopy, $r);
+			}
 		}
 	}
 
@@ -1363,13 +1367,15 @@ elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
 	}
 else {
 	# Append to new folder file, or create in folder directory
-	local $m;
-	local @mdel;
-	foreach $m (@_) {
-		local $mcopy = { %$m };
-		&write_mail_folder($m, $dst);
-		push(@mdel, $mcopy);
+	my @mdel;
+	foreach my $m (@_) {
+		my $r = &get_mail_read($src, $m);
+		my $mcopy = { %$m };
+		&write_mail_folder($mcopy, $dst);
+		&set_mail_read($dst, $mcopy, $r);
+		push(@mdel, $m);
 		}
+	local $src->{'notrash'} = 1;	# Prevent saving to trash
 	&mailbox_delete_mail($src, @mdel);
 	}
 }
@@ -1444,18 +1450,17 @@ local $src = shift(@_);
 local $dst = shift(@_);
 local $now = time();
 &create_folder_maildir($dst);
-local $m;
 if ($src->{'type'} == 6 && $dst->{'type'} == 6) {
 	# Copying from one virtual folder to another, so just copy the
 	# reference
-	foreach $m (@_) {
+	foreach my $m (@_) {
 		push(@{$dst->{'members'}}, [ $m->{'subfolder'}, $m->{'subid'},
 					     $m->{'header'}->{'message-id'} ]);
 		}
 	}
 elsif ($dst->{'type'} == 6) {
 	# Add this mail to the index of the virtual folder
-	foreach $m (@_) {
+	foreach my $m (@_) {
 		push(@{$dst->{'members'}}, [ $src, $m->{'idx'},
 					     $m->{'header'}->{'message-id'} ]);
 		}
@@ -1463,8 +1468,11 @@ elsif ($dst->{'type'} == 6) {
 	}
 else {
 	# Just write to destination folder
-	foreach $m (@_) {
-		&write_mail_folder($m, $dst);
+	foreach my $m (@_) {
+		my $r = &get_mail_read($src, $m);
+		my $mcopy = { %$m };
+		&write_mail_folder($mcopy, $dst);
+		&set_mail_read($dst, $mcopy, $r);
 		}
 	}
 }
@@ -1543,10 +1551,13 @@ elsif ($_[1]->{'type'} == 5) {
 	}
 elsif ($_[1]->{'type'} == 6) {
 	# Add mail to first sub-folder, and to virtual index
+	# XXX not done
 	&error("Cannot add mail to virtual folders");
 	}
 if ($needid) {
+	# Get the ID of the new mail
 	local @idlist = &mailbox_idlist($_[1]);
+	print DEBUG "new idlist=",join(" ", @idlist),"\n";
 	$_[0]->{'id'} = $idlist[$#idlist];
 	}
 }
