@@ -346,6 +346,8 @@ push(@list_users_cache, $_[0]) if (defined(@list_users_cache));
 }
 
 # modify_user(&old, &details)
+# Update an existing Unix user with new details. The user to change must be
+# in &old, and the new values are in &details.
 sub modify_user
 {
 $_[0] || &error("Missing parameter to modify_user");
@@ -455,6 +457,8 @@ if (!$batch_mode) {
 }
 
 # delete_user(&details)
+# Delete an existing user. The &details hash must be user information as
+# returned by list_users
 sub delete_user
 {
 local $lref;
