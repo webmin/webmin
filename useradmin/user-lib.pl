@@ -552,7 +552,7 @@ elsif ($gft == 7) {
 				push(@rv, $group);
 				}
 			local ($n, $v) = ($1, $2);
-			if ($v eq '') {
+			if ($n ne 'GroupMembership' && $v eq '') {
 				# Multi-line value
 				$v = <PASSWD>;
 				$v =~ s/^ //;
