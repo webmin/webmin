@@ -1445,6 +1445,11 @@ my $charset  = $params{Charset} || 'ISO-8859-1';
 my $encoding = lc($params{Encoding} || 'q');
 my $NONPRINT = "\\x00-\\x1F\\x7F-\\xFF";
 
+if ($rawstr =~ /^[\x20-\x7E]*$/) {
+	# No encoding needed
+	return $rawstr;
+	}
+
 ### Encode any "words" with unsafe characters.
 ###    We limit such words to 18 characters, to guarantee that the
 ###    worst-case encoding give us no more than 54 + ~10 < 75 characters
