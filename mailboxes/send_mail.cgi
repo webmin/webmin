@@ -47,10 +47,10 @@ $subs = join("", map { "&sub=$_" } @sub);
 $in{'from'} || &error($text{'send_efrom'});
 $newmid = &generate_message_id($in{'from'});
 $mail->{'headers'} = [ [ 'From', $in{'from'} ],
-		       [ 'Subject', $in{'subject'} ],
-		       [ 'To', $in{'to'} ],
-		       [ 'Cc', $in{'cc'} ],
-		       [ 'Bcc', $in{'bcc'} ],
+		       [ 'Subject', &encode_mimewords($in{'subject'}) ],
+		       [ 'To', &encode_mimewords($in{'to'}) ],
+		       [ 'Cc', &encode_mimewords($in{'cc'}) ],
+		       [ 'Bcc', &encode_mimewords($in{'bcc'}) ],
 		       [ 'X-Originating-IP', $ENV{'REMOTE_ADDR'} ],
 		       [ 'X-Mailer', "Webmin ".&get_webmin_version() ],
 		       [ 'Message-Id', $newmid ] ];

@@ -1358,6 +1358,9 @@ $t =~ s/([=\177-\377])/sprintf("=%2.2X",ord($1))/ge;
 return $t;
 }
 
+# decode_mimewords(string)
+# Converts a string in MIME words format like
+# =?ISO-8859-1?Q?Keld_J=F8rn_Simonsen?= to actual 8-bit characters
 sub decode_mimewords {
     my $encstr = shift;
     my %params = @_;
@@ -1431,6 +1434,59 @@ sub _decode_Q {
 sub _decode_B {
     my $str = shift;
     &decode_base64($str);
+}
+
+# encode_mimewords(string, %params)
+# Converts a word with 8-bit characters to MIME words format
+sub encode_mimewords
+{
+my ($rawstr, %params) = @_;
+my $charset  = $params{Charset} || 'ISO-8859-1';
+my $encoding = lc($params{Encoding} || 'q');
+my $NONPRINT = "\\x00-\\x1F\\x7F-\\xFF";
+
+### Encode any "words" with unsafe characters.
+###    We limit such words to 18 characters, to guarantee that the
+###    worst-case encoding give us no more than 54 + ~10 < 75 characters
+my $word;
+$rawstr =~ s{([ a-zA-Z0-9\x7F-\xFF]{1,18})}{     ### get next "word"
+    $word = $1;
+    (($word !~ /(?:[$NONPRINT])|(?:^\s+$)/o)
+     ? $word                                          ### no unsafe chars
+     : encode_mimeword($word, $encoding, $charset));  ### has unsafe chars
+}xeg;
+$rawstr =~ s/\?==\?/?= =?/g;
+return $rawstr;
+}
+
+# encode_mimeword(string, [encoding], [charset])
+# Converts a word with 8-bit characters to MIME words format
+sub encode_mimeword
+{
+my $word = shift;
+my $encoding = uc(shift || 'Q');
+my $charset  = uc(shift || 'ISO-8859-1');
+my $encfunc  = (($encoding eq 'Q') ? \&_encode_Q : \&_encode_B);
+return "=?$charset?$encoding?" . &$encfunc($word) . "?=";
+}
+
+# _encode_Q STRING
+#     Private: used by _encode_header() to decode "Q" encoding, which is
+#     almost, but not exactly, quoted-printable.  :-P
+sub _encode_Q {
+    my $str = shift;
+    my $NONPRINT = "\\x00-\\x1F\\x7F-\\xFF";
+    $str =~ s{([ _\?\=$NONPRINT])}{sprintf("=%02X", ord($1))}eog;
+    return $str;
+}
+
+# _encode_B STRING
+#     Private: used by _decode_header() to decode "B" encoding.
+sub _encode_B {
+    my $str = shift;
+    my $enc = &encode_base64($str);
+    $enc =~ s/\n//;
+    return $enc;
 }
 
 # user_mail_file(user|file, [other details])
