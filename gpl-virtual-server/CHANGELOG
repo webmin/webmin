@@ -481,3 +481,4 @@ When the virtualmin --help command is run, it now outputs a list of all availabl
 When the virtualmin --help command is run, it now outputs a list of all available API commands with short descriptions, broken down into categories.
 Extra administrators can now have contact email addresses, which can be used when sending email to all domain owners. These can be set via the web interface, or the command-line API.
 Added a Module Config option in the advanced section to change the path for the API helper command, and improved automatic selection of a path if the default directory /usr/sbin is not writable.
+Ported across all help files from the Pro version, so that all pages and most links now have help.
