@@ -386,5 +386,18 @@ if (&foreign_exists("mount")) {
 return 0;
 }
 
+# get_nice_perl_version()
+# Returns the Perl version is human-readable format
+sub get_nice_perl_version
+{
+local $ver = $^V;
+if ($ver =~ /^v/) {
+	return $ver;
+	}
+else {
+	return join(".", map { ord($_) } split(//, $^V));
+	}
+}
+
 1;
 

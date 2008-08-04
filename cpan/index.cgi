@@ -3,7 +3,7 @@
 # Display installed perl modules and a form for installing new ones
 
 require './cpan-lib.pl';
-$ver = join(".", map { ord($_) } split(//, $^V));
+$ver = &get_nice_perl_version();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		 undef, undef, undef, &text('index_pversion', $ver));
 &ReadParse();
