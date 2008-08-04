@@ -484,3 +484,4 @@ Added a Module Config option in the advanced section to change the path for the 
 Ported across all help files from the Pro version, so that all pages and most links now have help.
 Custom links can be limited to virtual servers with a specific template if you have any custom templates defined, for more control over when each link is displayed.
 Backups now include any custom template used to create virtual servers, which allow domains to be restored even on systems that do not yet have the original templates.
+When a virtual server's IP address is changed, the addresses of all alias domains are updated to match.
