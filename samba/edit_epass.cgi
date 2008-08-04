@@ -17,19 +17,15 @@ require './samba-lib.pl';
 @ulist = sort { $a->{'name'} cmp $b->{'name'} } @ulist
 	if ($config{'sort_mode'});
 if (@ulist) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'smbuser_list'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	@grid = ( );
 	for($i=0; $i<@ulist; $i++) {
 		$u = $ulist[$i];
-		if ($i%4 == 0) { print "<tr>\n"; }
-		print "<td width=25%><a href='edit_euser.cgi?idx=$u->{'index'}'>",&html_escape($u->{'name'}),"</a></td>\n";
-		if ($i%4 == 3) { print "</tr>\n"; }
+		push(@grid, "<a href='edit_euser.cgi?idx=$u->{'index'}'>".
+			    &html_escape($u->{'name'})."</a>");
 		}
-	while($i++%4) {
-		print "<td width=25%></td>\n";
-		}
-	print "</table></td> </tr></table><p>\n";
+	print &ui_grid_table(\@grid, 4, 100,
+		[ "width=25%", "width=25%", "width=25%", "width=25%" ],
+		undef, $text{'smbuser_list'});
 	}
 else {
 	print "<b>$text{'smbuser_nouser'}</b> <p>\n";
