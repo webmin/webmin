@@ -260,34 +260,23 @@ if (@utitles) {
 
 if ($access{'apply'}) {
 	$isrun = &is_samba_running();
+	print &ui_hr();
+	print &ui_buttons_start();
 	if ($isrun == 0) {
-		print &ui_hr();
-		print "<form action=start.cgi>\n";
-		print "<table width=100%><tr>\n";
-		print "<td><input type=submit value=\"$text{'index_start'}\"></td>\n";
-		print "<td>$text{'index_startmsg'}</td>\n";
-		print "</tr></table></form>\n";
+		# Start button
+		print &ui_buttons_row("start.cgi", $text{'index_start'},
+				      $text{'index_startmsg'});
 		}
 	elsif ($isrun == 1) {
-		print &ui_hr();
-		print "<table width=100%><tr>\n";
-		print "<form action=restart.cgi>\n";
-		print "<td><input type=submit value=\"$text{'index_restart'}\"></td>\n";
-		print "<td>$text{'index_restartmsg'}\n";
-		print "$text{'index_restartmsg2'}</td>\n";
-		print "</tr></form>\n";
-
-		print "<form action=stop.cgi>\n";
-		print "<td><input type=submit value=\"$text{'index_stop'}\"></td>\n";
-		print "<td>$text{'index_stopmsg'}</td>\n";
-		print "</tr></form>\n";
-		print "</table>\n";
+		# Restart / stop buttons
+		print &ui_buttons_row("restart.cgi", $text{'index_restart'},
+				      $text{'index_restartmsg'}."\n".
+				      $text{'index_restartmsg2'});
+		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+				      $text{'index_stopmsg'});
 		}
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("/", $text{'index'});
-
-sub show_buttons
-{
-}
 
