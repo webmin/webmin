@@ -1,6 +1,5 @@
 
 require 'syslog-lib.pl';
-require 'ui-lib.pl';
 
 # acl_security_form(&options)
 # Output HTML for editing security options for the syslog module
