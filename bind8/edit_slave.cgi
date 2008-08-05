@@ -18,7 +18,7 @@ $dom = $zone->{'name'};
 
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 if ($zone->{'file'}) {
-	@st = stat(&make_chroot($zone->{'file'}));
+	@st = stat(&make_chroot(&absolute_path($zone->{'file'})));
 	$lasttrans = &text('slave_last', @st && $st[7] ? &make_date($st[9])
 					     	       : $text{'slave_never'});
 	}
