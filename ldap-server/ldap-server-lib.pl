@@ -69,6 +69,7 @@ local $ldap;
 foreach $ssl (@ssls) {
 	$ldap = Net::LDAP->new($server, port => $port);
 	if (!$ldap) {
+		# Connection failed .. give up completely
 		return &text('connect_eldap', "<tt>$server</tt>", $port);
 		}
 	if ($ssl) {
@@ -76,11 +77,15 @@ foreach $ssl (@ssls) {
 		local $mesg;
 		eval { $mesg = $ldap->start_tls(); };
 		if ($@ || !$mesg || $mesg->code) {
-			next if (@ssls);  # Try non-SSL
-			}
-		else {
-			return &text('connect_essl', "<tt>$server</tt>",
-				     $@ ? %@ : &ldap_error($mesg));
+			# Failed to switch to SSL mode. If also trying non-SSL,
+			# continue around the loop. Otherwise, give up
+			if (@ssls > 1) {
+				next;
+				}
+			else {
+				return &text('connect_essl', "<tt>$server</tt>",
+					     $@ ? $@ : &ldap_error($mesg));
+				}
 			}
 		}
 	}
