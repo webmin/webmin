@@ -29,6 +29,7 @@ server_uport=Port number
 server_uproto=Protocol
 server_ldap=Standard
 server_ldaps=SSL
+server_ldapi=Unix socket
 server_err=Failed to save LDAP server configuration
 server_ehost='$1' is not a valid hostname
 server_ehosts=No LDAP servers entered

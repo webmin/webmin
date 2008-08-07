@@ -21,6 +21,7 @@ if ($uri) {
 		    $port =~ /^\d+$/ && $port > 0 && $port < 65536 ||
 		    &error(&text('server_euport', $host));
 		$uri = $proto."://".$host.($port ? ":$port" : "");
+		$uri .= "/" if ($proto eq "ldap" || $proto eq "ldaps");
 		push(@uris, $uri);
 		}
 	@uris || &error($text{'server_euri'});

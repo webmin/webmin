@@ -68,36 +68,70 @@ return \%nss_config_cache;
 sub ldap_connect
 {
 local $conf = &get_nss_config();
+
+# Work out LDAP hostnames, ports and SSL
 local (@hosts, $port);
 if ($conf) {
-	@hosts = split(/[ ,]+/, $conf->{'host'});
-	$port = $conf->{'port'};
+	# From ldap.conf file, using host and uri lines
+	my @hostnames = split(/[ ,]+/, $conf->{'host'});
+	my $port = $conf->{'port'};
+	my @uris = split(/[ ,]+/, $conf->{'uri'});
+	my $ssl = $conf->{'start_tls'};
+	foreach my $hname (@hostnames) {
+		push(@hosts, [ $hname, $port, $ssl eq 'start_tls' ]);
+		}
+	foreach my $u (@uris) {
+		if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/){
+			my ($proto, $host, $port) = ($1, $2, $4);
+			if (!$port && $proto eq "ldap") {
+				$port = 389;
+				}
+			elsif (!$port && $proto eq "ldaps") {
+				$port = 636;
+				}
+			push(@hosts, [ $host, $port, $proto eq 'ldaps' ]);
+			}
+		}
 	}
 else {
-	@hosts = split(/[ ,]+/, $config{'ldap_host'});
-	$port = $config{'ldap_port'};
+	# From config
+	foreach my $hname (split(/[ ,]+/, $config{'ldap_host'})) {
+		push(@hosts, [ $hname, $config{'ldap_port'},
+			       $config{'ldap_tls'} ]);
+		}
 	}
-@hosts = ( "localhost" ) if (!@hosts);
-$port ||= 389;
+if (!@hosts) {
+	# Last-ditch fallback
+	push(@hosts, [ "localhost", 389, 0 ]);
+	}
+
+# Try each host in turn
 local ($ldap, $err);
-foreach $host (@hosts) {
-	$ldap = Net::LDAP->new($host, port => $port);
+foreach my $host (@hosts) {
+	$ldap = Net::LDAP->new($host->[0], port => $host->[1]);
 	if (!$ldap) {
 		$err = &text('conn_econn',
-				   "<tt>$host</tt>","<tt>$port</tt>");
+			     "<tt>$host->[0]</tt>","<tt>$host->[1]</tt>");
+		next;
 		}
-	else {
-		last;
+	# Connected .. but try SSL if needed
+	if ($host->[2]) {
+		my $mesg;
+		eval { $mesg = $ldap->start_tls(); };
+		if ($@ || !$mesg || $mesg->code) {
+			# SSL failed
+			$err = &text('conn_essl',
+			     "<tt>$host->[0]</tt>", "<tt>$host->[1]</tt>", $@);
+			next;
+			}
 		}
+	# If we got here, it all worked!
+	$err = undef;
+	last;
 	}
 if ($err) {
 	if ($_[0]) { return $err; }
 	else { &error($err); }
-	}
-
-# Start TLS if configured
-if ($config{'ldap_tls'}) {
-	$ldap->start_tls;
 	}
 
 local ($dn, $password);

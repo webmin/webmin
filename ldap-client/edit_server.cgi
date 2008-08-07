@@ -18,7 +18,7 @@ if ($uri) {
 	$i = 0;
 	foreach $u (split(/\s+/, $uri), undef) {
 		local ($proto, $host, $port);
-		if ($u =~ /^(ldap|ldaps):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/) {
+		if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/) {
 			($proto, $host, $port) = ($1, $2, $4);
 			}
 		$utable .= &ui_columns_row([
@@ -26,7 +26,8 @@ if ($uri) {
 		    &ui_opt_textbox("uport_$i", $port, 5, $text{'default'}),
 		    &ui_select("uproto_$i", $proto,
 			       [ [ 'ldap', $text{'server_ldap'} ],
-				 [ 'ldaps', $text{'server_ldaps'} ] ]),
+				 [ 'ldaps', $text{'server_ldaps'} ],
+				 [ 'ldapi', $text{'server_ldapi'} ] ]),
 		    ]);
 		$i++;
 		}
