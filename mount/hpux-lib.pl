@@ -230,8 +230,8 @@ if (&get_mounted($_[1], "*") < 0) { return (); }
 if ($_[0] eq "swap") {
 	return ();
 	}
-local $out;
-&execute_command("bdf $_[1]", undef, \$out, \$out, 0, 1);
+my $out;
+&execute_command("bdf ".quotemeta($_[1]), undef, \$out, \$out, 0, 1);
 if ($out =~ /Mounted on\n\S+\s+(\S+)\s+\S+\s+(\S+)/) {
 	return ($1, $2);
 	}

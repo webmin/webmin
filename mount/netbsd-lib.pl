@@ -231,7 +231,7 @@ sub disk_space
 {
 if (&get_mounted($_[1], "*") < 0) { return (); }
 if ($_[0] eq "proc" || $_[0] eq "swap") { return (); }
-if (&backquote_command("df -k $_[1]", 1) =~
+if (&backquote_command("df -k ".quotemeta($_[1]), 1) =~
     /Mounted on\n\S+\s+(\S+)\s+\S+\s+(\S+)/) {
 	return ($1, $2);
 	}
