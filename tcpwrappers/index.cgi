@@ -1,51 +1,59 @@
 #!/usr/local/bin/perl
-# index.cgi
+# Show allowed and denied lists
 
 require './tcpwrappers-lib.pl';
-
+&ReadParse();
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 
-# ALLOWED HOSTS & DENIED HOSTS
+# Start of tabs
+@types = ('allow', 'deny');
+print &ui_tabs_start(
+	[ map { [ $_, $text{'index_'.$_.'title'},
+		  "index.cgi?type=$_" ] } @types ],
+	"type",
+	$in{'type'} || "allow",
+	1);
+
+# Tables of rules
 foreach my $type ('allow', 'deny') {
-    my $file = $type eq 'allow' ? $config{'hosts_allow'} : $config{'hosts_deny'};
-    @rules = &list_rules($file);
-    print "<font size=+1>".($type eq 'allow' ? $text{'index_allowtitle'} : $text{'index_denytitle'})."</font><p />\n";
-    if (@rules) {
-	print &ui_form_start("delete_rules.cgi", "post");
-	print &ui_hidden($type, 1),"\n";
-	print &select_all_link("d"),"\n";
-	print &select_invert_link("d"),"\n";
-	print "<a href='edit_rule.cgi?$type=1&new=1'>$text{'index_add'}</a><br />\n";
-	
-	@tds = ( "width=5" );
-	print &ui_columns_start([
-				 "",
-				 $text{'index_service'},
-				 $text{'index_hosts'},
-				 $text{'index_cmd'},
-				 ], "width=100%", 0, \@tds);
+	print &ui_tabs_start_tab("type", $type);
+	my $file = $type eq 'allow' ? $config{'hosts_allow'}
+				    : $config{'hosts_deny'};
+	@rules = &list_rules($file);
+
+	# Build grid of rules
+	@table = ( );
 	foreach my $r (@rules) {
-	    print &ui_checked_columns_row([
-					   "<a href='edit_rule.cgi?$type=1&id=$r->{'id'}'>$r->{'service'}</a>",
-					   $r->{'host'},
-					   $r->{'cmd'} ? join("<br>", split /:/, $r->{'cmd'}) : $text{'index_none'},
-					   ], \@tds, "d", $r->{'id'});
+		push(@table, [
+			{ 'type' => 'checkbox', 'name' => 'd',
+			  'value' => $r->{'id'} },
+			"<a href='edit_rule.cgi?$type=1&id=$r->{'id'}'>".
+			 "$r->{'service'}</a>",
+			$r->{'host'},
+			$r->{'cmd'} ? join("<br>", split /:/, $r->{'cmd'})
+				    : $text{'index_none'},
+			]);
+		}
+
+	# Show them
+	print &ui_form_columns_table(
+		"delete_rules.cgi",
+	       [ [ "delete", $text{'index_delete'} ] ],
+	       1,
+	       [ [ "edit_rule.cgi?$type=1&new=1", $text{'index_add'} ] ],
+	       [ [ $type, 1 ] ],
+	       [ "", $text{'index_service'},
+		 $text{'index_hosts'}, $text{'index_cmd'}, ],
+	       100,
+	       \@table,
+	       undef,
+	       0,
+	       undef,
+	       &text('index_norule', $file),
+	       );			
+	print &ui_tabs_end_tab("type", $type);
 	}
-	print &ui_columns_end();
-	
-	print &select_all_link("d"),"\n";
-	print &select_invert_link("d"),"\n";
-	print "<a href='edit_rule.cgi?$type=1&new=1'>$text{'index_add'}</a><br />\n";
-	print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
-    } else {
-	if (-r $file) {
-	    print "<b>".&text('index_norule', $file)."</b><br />\n";
-	    print "<a href='edit_rule.cgi?$type=1&new=1'>$text{'index_add'}</a><p />\n";
-	} else {
-	    print "<br>".&text('index_nofile', $file)."</b><p />\n";
-	}
-    }   
-    print "<hr />\n" if ($type eq 'allow');
-}
+
+print &ui_tabs_end(1);
 
 &ui_print_footer("/", $text{'index_return'});

@@ -4,7 +4,8 @@
 require './tcpwrappers-lib.pl';
 &ReadParse();
 &error_setup($text{'save_errtitle'});
-$file = $in{'allow'} ? $config{'hosts_allow'} : $config{'hosts_deny'};
+$type = $in{'allow'} ? 'allow' : 'deny';
+$file = $config{'hosts_'.$type};
 @rules = &list_rules($file);
 
 if (!$in{'new'}) {
@@ -16,6 +17,7 @@ if (!$in{'new'}) {
 if ($in{'delete'}) {
     # Delete one rule
     &delete_rule($file, $rule);
+    goto ALLDONE;
 } else {
     # Check input
     &error($text{'save_eservice'}) if ($in{'service_custom'} && $in{'service_custom'} !~ /^[\w\d\s\-\/\.,]+$/);
@@ -27,12 +29,14 @@ if ($in{'delete'}) {
     for (my $i = 0; $i <= $in{'cmd_count'}; $i++) {
 	&error($text{'save_ecmd'}) if ($in{'cmd_'.$i} && $in{'cmd_'.$i} !~ /^[\w\d\s\-\/\@\%\|\(\)\'\"\&\.,]+$/);
     }
-
 }
 
 # Build rule record
 if ($in{'service_custom'}) {
-    $service = $in{'service_custom'}." EXCEPT ".$in{'service_except_custom'};
+    $service = $in{'service_custom'};
+    if ($in{'service_except_custom'}) {
+	$service .= " EXCEPT ".$in{'service_except_custom'};
+    }
 } else {
     # listed from (x)inetd
     $service = join(",", split /\0/, $in{'service'});
@@ -66,6 +70,8 @@ if ($in{'new'}) {
     &modify_rule($file, $rule, \%newrule);
 }
 
+ALLDONE:
 &unlock_file($file);
 &webmin_log($in{'new'} ? "create" : $in{'delete'} ? "delete" : "modify", "rule", $rule->{'id'});
-&redirect("");
+&redirect("index.cgi?type=$type");
+
