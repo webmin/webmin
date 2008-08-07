@@ -242,22 +242,25 @@ while($i < @tok) {
 			}
 		$dir{'values'} = \@values;
 		$dir{'eline'} = $lnum[$i-1];
-		if (!$config{'short_names'}) {
-			if ($dir{'name'} eq "@") {
-				$dir{'name'} = $origin eq "." ? "."
-							      : "$origin.";
-				}
-			elsif ($dir{'name'} !~ /\.$/) {
-				$dir{'name'} .= $origin eq "." ? "."
-							       : ".$origin.";
-				}
+
+		# Work out canonical form, and maybe use it
+		my $canon = $dir{'name'};
+		if ($canon eq "@") {
+			$canon = $origin eq "." ? "." : "$origin.";
 			}
+		elsif ($canon !~ /\.$/) {
+			$canon .= $origin eq "." ? "." : ".$origin.";
+			}
+		if (!$config{'short_names'}) {
+			$dir{'name'} = $canon;
+			}
+		$dir{'canon'} = $canon;
 		$dir{'num'} = $num++;
 
+		# If this is an SPF record .. adjust the class
 		local $spf;
 		if ($dir{'type'} eq 'TXT' &&
 		    ($spf=&parse_spf($dir{'values'}->[0]))) {
-			# An SPF record .. adjust the class
 			if (!@{$spf->{'other'}}) {
 				$dir{'type'} = 'SPF';
 				}

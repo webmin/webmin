@@ -213,6 +213,7 @@ edit_edit=Edit $1 Record
 edit_add=Add $1 Record
 edit_addr=Address
 edit_name=Name
+edit_canon=Full canonical name
 edit_zonename=Zone Name
 edit_ttl=Time-To-Live
 edit_comment=Comment

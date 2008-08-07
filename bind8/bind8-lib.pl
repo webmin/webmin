@@ -898,6 +898,11 @@ else {
 		&ui_textbox("name", $rec{'name'}, 30));
 	}
 
+# Show canonical name too, if not auto-converted
+if ($config{'short_names'} && @_ > 6) {
+	print &ui_table_row($text{'edit_canon'}, "<tt>$rec{'canon'}</tt>");
+	}
+
 # TTL field
 if ($rec{'ttl'} =~ /^(\d+)([SMHDW]?)$/i) {
 	$ttl = $1; $ttlunit = $2;
