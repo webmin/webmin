@@ -115,20 +115,7 @@ if ($level == 0) {
 	# Disk space on local drives
 	if (&foreign_check("mount")) {
 		&foreign_require("mount", "mount-lib.pl");
-		@mounted = &mount::list_mounted();
-		$total = 0;
-		$free = 0;
-		foreach $m (@mounted) {
-			if ($m->[2] eq "ext2" || $m->[2] eq "ext3" ||
-			    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
-			    $m->[2] eq "zfs" || $m->[2] eq "simfs" ||
-			    $m->[2] eq "xfs" ||
-			    $m->[1] =~ /^\/dev\//) {
-				($t, $f) = &mount::disk_space($m->[2], $m->[0]);
-				$total += $t*1024;
-				$free += $f*1024;
-				}
-			}
+		($total, $free) = &mount::local_disk_space();
 		if ($total) {
 			print "<tr> <td><b>$text{'right_disk'}</b></td>\n";
 			print "<td>",&text('right_used',
