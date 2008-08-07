@@ -38,7 +38,7 @@ title { color: #000000;
 /* headers */
 h1, h2, h3, p {
   //padding: 10px;    
-  margin: 0;
+  //margin: 0;
 }
 h1, h2, h3, h4 {
   font-family: Tahoma, Verdana, 'Trebuchet MS', Sans-serif;
