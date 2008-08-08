@@ -176,7 +176,7 @@ if ($type eq 'rpm' && $file =~ /\.rpm$/i &&
 	# Looks like an RPM of some kind, hopefully an RPM webmin module
 	# or theme
 	local (%minfo, %tinfo);
-	if ($out !~ /(^|\n)(wbm|wbt)-([a-z\-]+)/) {
+	if ($out !~ /(^|\n)(wbm|wbt)-([a-z\-]+[a-z])/) {
 		unlink($file) if ($need_unlink);
 		return $text{'install_erpm'};
 		}
