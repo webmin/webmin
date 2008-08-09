@@ -486,3 +486,4 @@ Custom links can be limited to virtual servers with a specific template if you h
 Backups now include any custom template used to create virtual servers, which allow domains to be restored even on systems that do not yet have the original templates.
 When a virtual server's IP address is changed, the addresses of all alias domains are updated to match.
 The Website Options page now has a field to enable matching all sub-domains for the virtual server's website, via a *.domain.com DNS entry and Apache server alias directive.
+If a backup is taken on a system that uses ~/mail for user folders and restored on one using ~/Maildir, they will be properly converted during the restore (and vice-versa).
