@@ -1456,7 +1456,7 @@ return $config{'named_conf'};
 sub get_all_config_files
 {
 local ($conf) = @_;
-local @rv;
+local @rv = ( $config{'named_conf'} );
 foreach my $c (@$conf) {
 	push(@rv, $c->{'file'});
 	if ($c->{'type'} == 1) {

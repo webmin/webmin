@@ -1,6 +1,5 @@
 #!/usr/local/bin/perl
 # Show a page for manually editing named.conf
-# XXX chroot!
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'manual_ecannot'});
