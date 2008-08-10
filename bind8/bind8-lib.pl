@@ -2223,12 +2223,12 @@ foreach $slave (@slaves) {
 return @slaveerrs;
 }
 
-# delete_on_slaves(domain, [&slave-hostnames])
+# delete_on_slaves(domain, [&slave-hostnames], [local-view])
 # Delete some domain or all or listed slave servers
 sub delete_on_slaves
 {
-local $dom = $_[0];
-local %on = map { $_, 1 } @{$_[1]};
+local ($dom, $slavehosts, $localview) = @_;
+local %on = map { $_, 1 } @$slavehosts;
 &remote_error_setup(\&slave_error_handler);
 local $slave;
 local @slaveerrs;
@@ -2248,8 +2248,7 @@ foreach $slave (&list_slave_servers()) {
 	if ($slave->{'bind8_view'} eq "*") {
 		# Same as on master .. but for now, don't pass in any view
 		# so that it will be found automatically
-		# XXX
-		$view = undef;
+		$view = $localview;
 		}
 	elsif ($slave->{'bind8_view'}) {
 		# Named view

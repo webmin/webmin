@@ -82,9 +82,11 @@ else {
 
 		# Also delete from slave servers
 		if ($in{'onslave'} && $access{'remote'}) {
+			$viewname = $view ? $view->{'values'}->[0] : undef;
 			print &text('massdelete_slaves',
 				    $zconf->{'value'}),"<br>\n";
-			@slaveerrs = &delete_on_slaves($zconf->{'value'});
+			@slaveerrs = &delete_on_slaves(
+				$zconf->{'value'}, undef, $viewname);
 			if (@slaveerrs) {
 				print $text{'massdelete_failed'},"<br>\n";
 				foreach $s (@slaveerrs) {

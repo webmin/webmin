@@ -8,6 +8,10 @@ $conf = &get_config();
 if ($in{'view'} ne '') {
 	$view = $conf->[$in{'view'}];
 	$conf = $view->{'members'};
+	$viewname = $view->{'values'}->[0];
+	}
+else {
+	$viewname = undef;
 	}
 $zconf = $conf->[$in{'index'}];
 &can_edit_zone($zconf, $view) ||
@@ -140,7 +144,7 @@ foreach $u (keys %wusers) {
 
 # Also delete from slave servers
 if ($in{'onslave'} && $access{'remote'}) {
-	@slaveerrs = &delete_on_slaves($zconf->{'value'});
+	@slaveerrs = &delete_on_slaves($zconf->{'value'}, undef, $viewname);
 	if (@slaveerrs) {
 		&error(&text('delete_errslave',
 		     "<p>".join("<br>", map { "$_->[0]->{'host'} : $_->[1]" }

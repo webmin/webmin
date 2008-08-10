@@ -27,8 +27,11 @@ if (@servers) {
 		push(@cols, $s->{'host'}.
 			    ($s->{'nsname'} ? " ($s->{'nsname'})" : ""));
 		push(@cols, $s->{'sec'} ? $text{'yes'} : $text{'no'});
-		push(@cols, $s->{'bind8_view'} ||
-			    "<i>$text{'slaves_noview'}</i>");
+		push(@cols, $s->{'bind8_view'} eq '*' ?
+				"<i>$text{'slaves_sameview'}</i>" :
+			    $s->{'bind8_view'} ?
+				$s->{'bind8_view'} :
+			        "<i>$text{'slaves_noview'}</i>");
 		push(@cols, $s->{'desc'});
 		($type) = grep { $_->[0] eq $s->{'type'} }
 			       @servers::server_types;
