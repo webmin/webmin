@@ -32,6 +32,7 @@ else {
 	# At top-level
 	@zones = grep { !$_->{'view'} && $_->{'type'} ne 'view' }
 		      &list_zone_names();
+	$vn = undef;
 	}
 %taken = map { $_->{'name'}, $_ } @zones;
 
@@ -281,7 +282,8 @@ foreach $l (@lines) {
 	if ($type eq "master" && $in{'onslave'} && $access{'remote'}) {
 		# Create on slave servers
 		local @slaveerrs = &create_on_slaves($dom,
-		  $config{'this_ip'} || &to_ipaddress(&get_system_hostname()));
+		  $config{'this_ip'} || &to_ipaddress(&get_system_hostname()),
+		  undef, undef, $vn);
 		print "&nbsp;&nbsp;\n";
 		if (@slaveerrs) {
 			$serrs = join(", ", map { "$_->[0]->{'host'} : $_->[1]" } @slaveerrs);

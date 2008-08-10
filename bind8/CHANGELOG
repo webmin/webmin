@@ -80,3 +80,4 @@ Update serial number (by default) when editing records manually.
 Try downloading root zone files from the IP for rs.internic.net if the hostname cannot be resolved, to avoid catch-22 problem.
 Access control lists are now automatically re-ordered to handle dependencies.
 When Webmin is not automatically converting records to canonical format for editing, display the canonical name on the Edit Record page.
+When adding a cluster slave server, allow zones to be created in the same view on the slave as on the master.

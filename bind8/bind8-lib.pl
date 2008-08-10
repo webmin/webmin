@@ -2166,12 +2166,12 @@ $format =~ s/ZONE/$subs/g;
 return $file = $base."/".$format;
 }
 
-# create_on_slaves(zone, master-ip, file, [&hostnames])
+# create_on_slaves(zone, master-ip, file, [&hostnames], [local-view])
 # Creates the given zone on all configured slave servers, and returns a list
 # of errors
 sub create_on_slaves
 {
-local ($zone, $master, $file, $hosts) = @_;
+local ($zone, $master, $file, $hosts, $localview) = @_;
 local %on = map { $_, 1 } @$hosts;
 &remote_error_setup(\&slave_error_handler);
 local $slave;
@@ -2193,10 +2193,21 @@ foreach $slave (@slaves) {
 				  map { &to_ipaddress($_->{'host'}) }
 				      grep { $_ ne $slave } @slaves;
 
+	# Work out the view
+	my $view;
+	if ($slave->{'bind8_view'} eq '*') {
+		# Same as this system
+		$view = $localview;
+		}
+	elsif ($slave->{'bind8_view'}) {
+		# Named view
+		$view = $slave->{'bind8_view'};
+		}
+
 	# Create the zone
 	local $err = &remote_foreign_call($slave, "bind8",
 		"create_slave_zone", $zone, $master,
-		$slave->{'bind8_view'}, $file, \@otherslaves);
+		$view, $file, \@otherslaves);
 	if ($err == 1) {
 		push(@slaveerrs, [ $slave, $text{'master_esetup'} ]);
 		}
@@ -2232,9 +2243,22 @@ foreach $slave (&list_slave_servers()) {
 		next;
 		}
 
+	# Work out the view
+	my $view;
+	if ($slave->{'bind8_view'} eq "*") {
+		# Same as on master .. but for now, don't pass in any view
+		# so that it will be found automatically
+		# XXX
+		$view = undef;
+		}
+	elsif ($slave->{'bind8_view'}) {
+		# Named view
+		$view = $slave->{'bind8_view'};
+		}
+
 	# Delete the zone
 	$err = &remote_foreign_call($slave, "bind8", "delete_zone",
-			    $dom, $slave->{'bind8_view'}, 1);
+			    $dom, $view, 1);
 	if ($err == 1) {
 		push(@slaveerrs, [ $slave, $text{'delete_ezone'} ]);
 		}

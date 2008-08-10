@@ -89,7 +89,7 @@ foreach $s (@add) {
 		$zerr = 0;
 		foreach $zone (grep { !$rgot{$_->{'name'}} } @zones) {
 			($slaveerr) = &create_on_slaves($zone->{'name'}, $myip,
-						       undef, [ $s->{'host'} ]);
+				undef, [ $s->{'host'} ], $zone->{'view'});
 			if ($slaveerr) {
 				$zerrs{$slaveerr->[0]->{'host'}} ||=
 					$slaveerr->[1];

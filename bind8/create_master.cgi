@@ -12,9 +12,11 @@ if ($in{'view'} ne '') {
 	$view = $conf->[$in{'view'}];
 	&can_edit_view($view) || &error($text{'master_eviewcannot'});
 	$vconf = $view->{'members'};
+	$viewname = $view->{'values'}->[0];
 	}
 else {
 	$vconf = $conf;
+	$viewname = undef;
 	}
 
 # validate inputs
@@ -135,7 +137,8 @@ $idx = &get_zone_index($in{'zone'}, $in{'view'});
 if ($in{'onslave'} && $access{'remote'}) {
 	@slaveerrs = &create_on_slaves($in{'zone'}, $mips[0],
 			$in{'sfile_def'} == 1 ? "none" :
-			$in{'sfile_def'} == 2 ? undef : $in{'sfile'});
+			$in{'sfile_def'} == 2 ? undef : $in{'sfile'},
+			undef, $viewname);
 	if (@slaveerrs) {
 		&error(&text('master_errslave',
 		     "<p>".join("<br>", map { "$_->[0]->{'host'} : $_->[1]" }
