@@ -805,18 +805,22 @@ slaves_noview=Top level
 slaves_desc=Description
 slaves_os=Operating system
 slaves_add=Add server
+slaves_ok=Add Now
 slaves_gadd=Add servers in group
+slaves_group=In group &lt;$1&gt;
 slaves_need=You must add servers with a login and password in the <a href='$1'>Webmin Servers Index</a> module before they can be managed here.
 slaves_return=cluster servers
 slaves_delete=Remove Selected
 slaves_ecannot=You are not allowed to manage cluster slave servers
 slaves_noview2=At top level
+slaves_sameview=View with same name
 slaves_inview=View named
 slaves_toview=View on slaves to add zones to
 slaves_sync=Create all existing master zones on slave?
 slaves_sec=Create secondary on slave when creating locally?
 slaves_name=Name for NS record
 slaves_same=Same as hostname
+slaves_header=Cluster slave server options
 
 add_title=Add Servers
 add_msg=Adding $1 ..

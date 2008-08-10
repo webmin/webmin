@@ -7,24 +7,24 @@ $access{'slaves'} || &error($text{'slaves_ecannot'});
 &foreign_require("servers", "servers-lib.pl");
 @allservers = grep { $_->{'user'} } &servers::list_servers();
 
-if ($in{'add'}) {
+if ($in{'server'} =~ /^group_(\S+)/) {
+	# Add all from a group
+	($group) = grep { $_->{'name'} eq $1 }
+			&servers::list_all_groups(\@allservers);
+	foreach $m (@{$group->{'members'}}) {
+		push(@add, grep { $_->{'host'} eq $m } @allservers);
+		}
+	&error_setup($text{'add_gerr'});
+	$msg = &text('add_gmsg', $group->{'name'});
+	$in{'name_def'} || &error($text{'add_egname'});
+	}
+else {
 	# Add a single host
 	@add = grep { $_->{'id'} eq $in{'server'} } @allservers;
 	&error_setup($text{'add_err'});
 	$msg = &text('add_msg', &server_name($add[0]));
 	$in{'name_def'} || &valdnsname($in{'name'}) ||
 		&error($text{'add_ename'});
-	}
-else {
-	# Add all from a group
-	($group) = grep { $_->{'name'} eq $in{'group'} }
-			&servers::list_all_groups(\@allservers);
-	foreach $m (@{$group->{'members'}}) {
-		push(@add, grep { $_->{'host'} eq $m } @allservers);
-		}
-	&error_setup($text{'add_gerr'});
-	$msg = &text('add_gmsg', $in{'group'});
-	$in{'name_def'} || &error($text{'add_egname'});
 	}
 $in{'view_def'} || $in{'view'} =~ /\S/ || &error($text{'add_eview'});
 $myip = $config{'this_ip'} || &to_ipaddress(&get_system_hostname());
@@ -44,7 +44,8 @@ $add_error_msg = join("", @_);
 # Make sure each host is set up for BIND
 @zones = grep { $_->{'type'} eq 'master' } &list_zone_names();
 foreach $s (@add) {
-	$s->{'bind8_view'} = $in{'view_def'} ? undef : $in{'view'};
+	$s->{'bind8_view'} = $in{'view_def'} == 1 ? undef :
+			     $in{'view_def'} == 2 ? "*" : $in{'view'};
 	$add_error_msg = undef;
 	local $bind8 = &remote_foreign_check($s, "bind8");
 	if ($add_error_msg) {
@@ -123,7 +124,7 @@ if ($in{'add'}) {
 	&webmin_log("add", "host", $add[0]->{'host'});
 	}
 else {
-	&webmin_log("add", "group", $in{'group'});
+	&webmin_log("add", "group", $group->{'name'});
 	}
 
 &ui_print_footer("list_slaves.cgi", $text{'slaves_return'});

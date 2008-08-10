@@ -43,56 +43,61 @@ else {
 	print "<b>$text{'slaves_none'}</b><p>\n";
 	}
 
-# Show buttons to add
+# Get all Webmin servers and groups
 @allservers = grep { $_->{'user'} } &servers::list_servers();
-if (@allservers) {
-	print "<form action=slave_add.cgi>\n";
-	print "<table width=100%><tr>\n";
-	%gothost = map { $_->{'id'}, 1 } @servers;
-	@addservers = grep { !$gothost{$_->{'id'}} } @allservers;
+%gothost = map { $_->{'id'}, 1 } @servers;
+@addservers = grep { !$gothost{$_->{'id'}} } @allservers;
+@groups = &servers::list_all_groups(\@allservers);
+
+# Show form buttons to add, if any
+if (@addservers || @groups) {
+	print &ui_form_start("slave_add.cgi", "post");
+	print &ui_table_start($text{'slaves_header'}, undef, 2);
+
+	# Host or group to add
 	@addservers = sort { $a->{'host'} cmp $b->{'host'} } @addservers;
+	@opts = ( );
 	if (@addservers) {
-		print "<td>";
-		print &ui_submit($text{'slaves_add'}, "add");
-		print &ui_select("server", undef,
-			[ map { [ $_->{'id'},
-				  $_->{'host'}.($_->{'desc'} ? " ($_->{'desc'})"
-							     : "") ] }
-			      @addservers ]);
-		print "</td>\n";
+		# Add hosts not already in list
+		foreach my $s (@addservers) {
+			push(@opts, [ $s->{'id'},
+				      $s->{'host'}.
+				      ($s->{'desc'} ? " ($s->{'desc'})" : "")]);
+			}
 		}
-	@groups = &servers::list_all_groups(\@allservers);
 	@groups = sort { $a->{'name'} cmp $b->{'name'} } @groups;
 	if (@groups) {
-		print "<td align=right>\n";
-		print &ui_submit($text{'slaves_gadd'}, "gadd");
-		print &ui_select("group", undef,
-			[ map { $_->{'name'} } @groups ]);
-		print "</td>\n";
+		# Add groups
+		foreach my $g (@groups) {
+			push(@opts, [ "group_".$g->{'name'},
+				      &text('slaves_group', $g->{'name'}) ]);
+			}
 		}
-	print "</tr></table>\n";
+	print &ui_table_row($text{'slaves_add'},
+		&ui_select("server", undef, \@opts));
 
-	if (@addservers || @groups) {
-		# Show inputs for view and existing create
-		print "<table><tr>\n";
-		print "<tr> <td><b>$text{'slaves_toview'}</b></td>\n";
-		print "<td>",&ui_opt_textbox("view", undef, 30,
-			$text{'slaves_noview2'}, $text{'slaves_inview'}),
-			"</td> </tr>\n";
+	# Add to view
+	print &ui_table_row($text{'slaves_toview'},
+		&ui_radio("view_def", 1,
+			  [ [ 1, $text{'slaves_noview2'}."<br>" ],
+			    [ 2, $text{'slaves_sameview'}."<br>" ],
+			    [ 0, $text{'slaves_inview'} ] ])." ".
+		&ui_textbox("view", undef, 20));
 
-		print "<tr> <td><b>$text{'slaves_sec'}</b></td>\n";
-		print "<td>",&ui_yesno_radio("sec", 0),"</td> </tr>\n";
+	# Create secondary on slave?
+	print &ui_table_row($text{'slaves_sec'},
+		&ui_yesno_radio("sec", 0));
 
-		print "<tr> <td><b>$text{'slaves_sync'}</b></td>\n";
-		print "<td>",&ui_yesno_radio("sync", 0),"</td> </tr>\n";
+	# Create all existing masters?
+	print &ui_table_row($text{'slaves_sync'},
+		&ui_yesno_radio("sync", 0));
 
-		print "<tr> <td><b>$text{'slaves_name'}</b></td>\n";
-		print "<td>",&ui_opt_textbox("name", undef, 30,
-				$text{'slaves_same'}),"</td> </tr>\n";
+	# NS name
+	print &ui_table_row($text{'slaves_name'},
+		&ui_opt_textbox("name", undef, 30, $text{'slaves_same'}));
 
-		print "</table>\n";
-		}
-	print "</form>\n";
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'slaves_ok'} ] ]);
 	}
 else {
 	print "<b>",&text('slaves_need', '../servers/'),"</b><p>\n";
