@@ -34,3 +34,4 @@ soa_start=0
 rndc_conf=/etc/rndc.conf
 rndcconf_cmd=rndc-confgen
 largezones=0
+checkzone=named-checkzone

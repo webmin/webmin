@@ -40,3 +40,4 @@ rndcconf_cmd=rndc-confgen
 largezones=0
 slave_dir=/var/lib/named/slave
 master_dir=/var/lib/named/master
+checkzone=named-checkzone

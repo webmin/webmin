@@ -108,58 +108,58 @@ if (@links) {
 $apply = $access{'apply'} && &has_ndc();
 if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 	print &ui_hr();
-	print "<table width=100%>\n";
+	print &ui_buttons_start();
 
 	if ($access{'delete'}) {
 		# Show button to delete zome
-		print "<form action=delete_zone.cgi>\n";
-		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-		print "<tr><td>\n";
-		print "<input type=submit value=\"$text{'master_del'}\">\n";
-		print "</td> <td>$text{'master_delmsg'}\n";
-		if ($dom !~ /in-addr\.arpa/i && $dom !~ /\.$ipv6revzone/i) {
-			print "$text{'master_delrev'}\n";
-			}
-		print "</td> </tr></form>\n";
+		print &ui_buttons_row(
+			"delete_zone.cgi", $text{'master_del'},
+			$text{'master_delmsg'}." ".
+			($dom !~ /in-addr\.arpa/i &&
+			 $dom !~ /\.$ipv6revzone/i ? $text{'master_delrev'}
+						   : ""),
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'})
+			);
 		}
 
 	if ($apply) {
 		# Show button to do an NDC reload
-		print "<form action=restart_zone.cgi>\n";
-		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-		print "<tr><td>\n";
-		print "<input type=submit value=\"$text{'master_apply'}\">\n";
-		$args = $view ? "$dom IN $view->{'value'}" : $dom;
-		$cmd = &has_ndc() == 2 ? $config{'rndc_cmd'}
-				       : $config{'ndc_cmd'};
-		print "</td> <td>",&text('master_applymsg',
-			"<tt>$cmd reload $args</tt>");
-		print "</td> </tr></form>\n";
+		print &ui_buttons_row(
+			"restart_zone.cgi", $text{'master_apply'},
+			$text{'master_applymsg2'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'})
+			);
 
 		# Show button to freeze
-		print "<form action=freeze_zone.cgi>\n";
-		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-		print "<tr><td>\n";
-		print "<input type=submit value=\"$text{'master_freeze'}\">\n";
-		print "</td> <td>",&text('master_freezemsg',
-			"<tt>$cmd freeze $args</tt>");
-		print "</td> </tr></form>\n";
+		print &ui_buttons_row(
+			"freeze_zone.cgi", $text{'master_freeze'},
+			$text{'master_freezemsg2'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'})
+			);
 
 		# Show button to un-freeze
-		print "<form action=unfreeze_zone.cgi>\n";
-		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-		print "<tr><td>\n";
-		print "<input type=submit value=\"$text{'master_unfreeze'}\">\n";
-		print "</td> <td>",&text('master_unfreezemsg',
-			"<tt>$cmd thaw $args</tt>");
-		print "</td> </tr></form>\n";
+		print &ui_buttons_row(
+			"unfreeze_zone.cgi", $text{'master_unfreeze'},
+			$text{'master_unfreezemsg2'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'})
+			);
+
+		# Show button to check records
+		if (&supports_check_zone()) {
+			print &ui_buttons_row(
+				"check_zone.cgi", $text{'master_checkzone'},
+				$text{'master_checkzonemsg'},
+				&ui_hidden("index", $in{'index'}).
+				&ui_hidden("view", $in{'view'})
+				);
+			}
 		}
 
-	print "</table>\n";
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("", $text{'index_return'});

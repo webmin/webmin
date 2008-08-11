@@ -2392,5 +2392,23 @@ if (&has_ndc() != 2 || $out =~ /connect\s+failed/i) {
 return $out;
 }
 
+# supports_check_zone()
+# Returns 1 if zone checking is supported, 0 if not
+sub supports_check_zone
+{
+return $config{'checkzone'} && &has_command($config{'checkzone'});
+}
+
+# check_zone_records(&zone-name)
+# Returns a list of errors from checking some zone file, if any
+sub check_zone_records
+{
+local ($zone) = @_;
+local $out = &backquote_command(
+	$config{'checkzone'}." ".quotemeta($zone->{'name'})." ".
+	quotemeta(&make_chroot($zone->{'file'}))." 2>&1 </dev/null");
+return $? ? split(/\r?\n/, $out) : ( );
+}
+
 1;
 

@@ -33,3 +33,4 @@ rndc_conf=/etc/rndc.conf
 rndcconf_cmd=/usr/bin/rndc-confgen
 largezones=0
 no_pid_chroot=0
+checkzone=/usr/bin/named-checkzone
