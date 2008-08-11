@@ -2399,14 +2399,26 @@ sub supports_check_zone
 return $config{'checkzone'} && &has_command($config{'checkzone'});
 }
 
-# check_zone_records(&zone-name)
+# check_zone_records(&zone-name|&zone)
 # Returns a list of errors from checking some zone file, if any
 sub check_zone_records
 {
 local ($zone) = @_;
+local ($zonename, $zonefile);
+if ($zone->{'values'}) {
+	# Zone object
+	$zonename = $zone->{'values'}->[0];
+	local $f = &find("file", $zone->{'members'});
+	$zonefile = $f->{'values'}->[0];
+	}
+else {
+	# Zone name object
+	$zonename = $zone->{'name'};
+	$zonefile = $zone->{'file'};
+	}
 local $out = &backquote_command(
-	$config{'checkzone'}." ".quotemeta($zone->{'name'})." ".
-	quotemeta(&make_chroot($zone->{'file'}))." 2>&1 </dev/null");
+	$config{'checkzone'}." ".quotemeta($zonename)." ".
+	quotemeta(&make_chroot($zonefile))." 2>&1 </dev/null");
 return $? ? split(/\r?\n/, $out) : ( );
 }
 
