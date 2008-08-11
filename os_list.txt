@@ -52,7 +52,7 @@ White Dwarf Linux		2.1.0	slackware-linux	8.1	`cat /tmp/wd/version 2>/dev/null` =
 Slamd64 Linux			$1	slackware-linux	11.1	`cat /etc/slamd64-version 2>/dev/null` =~ /\s([0-9\.]+)/
 
 # Slackware Linux
-Slackware Linux			$1	slackware-linux	$1	`cat /etc/slackware-version 2>/dev/null` =~ /([0-9\.]+)/
+Slackware Linux			$1	slackware-linux	$1	`cat /etc/slackware-version 2>/dev/null` =~ /Slackware ([0-9\.]+)/i
 
 # Debian clones
 Xandros Linux			2.0	debian-linux	3.0	$etc_issue =~ /Xandros.*\s2\.0/i
