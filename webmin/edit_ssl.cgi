@@ -54,6 +54,10 @@ print &ui_table_row($text{'ssl_version'},
 	&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
 			$text{'ssl_auto'}));
 
+print &ui_table_row($text{'ssl_cipher_list'},
+	&ui_opt_textbox("cipher_list", $miniserv{'ssl_cipher_list'}, 30,
+			$text{'ssl_auto'}));
+
 print &ui_table_row($text{'ssl_extracas'},
 	&ui_textarea("extracas", join("\n",split(/\s+/, $miniserv{'extracas'})),
 		     3, 60));

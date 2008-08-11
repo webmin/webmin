@@ -3816,6 +3816,17 @@ if (!$sn) {
 local $myip = inet_ntoa((unpack_sockaddr_in($sn))[1]);
 local $ssl_ctx = $ssl_contexts{$myip} || $ssl_contexts{"*"};
 local $ssl_con = Net::SSLeay::new($ssl_ctx);
+if ($config{'ssl_cipher_list'}) {
+	# Force use of ciphers
+	eval "Net::SSLeay::set_cipher_list(
+			\$ssl_con, \$config{'ssl_cipher_list'})";
+	if ($@) {
+		print STDERR "SSL cipher $config{'ssl_cipher_list'} failed : ",
+			     "$@\n";
+		}
+	else {
+		}
+	}
 Net::SSLeay::set_fd($ssl_con, fileno($sock));
 if (!Net::SSLeay::accept($ssl_con)) {
 	print STDERR "Failed to initialize SSL connection\n";
@@ -4531,6 +4542,7 @@ local @substrings = (
                           # SymbianOS is the only distinguishing string
     "iPhone",		  # Apple iPhone KHTML browser
     "iPod",		  # iPod touch browser
+    "MobileSafari",	  # HTTP client in iPhone
     );
 foreach my $p (@prefixes) {
 	return 1 if ($agent =~ /^\Q$p\E/);

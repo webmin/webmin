@@ -20,6 +20,13 @@ else {
 	$in{'version'} =~ /^\d+$/ || &error($text{'ssl_eversion'});
 	$miniserv{'ssl_version'} = $in{'version'};
 	}
+if ($in{'cipher_list_def'}) {
+	delete($miniserv{'ssl_cipher_list'});
+	}
+else {
+	$in{'cipher_list'} =~ /^\S+$/ || &error($text{'ssl_ecipher_list'});
+	$miniserv{'ssl_cipher_list'} = $in{'cipher_list'};
+	}
 foreach $ec (split(/[\r\n]+/, $in{'extracas'})) {
 	-r $ec && !-d $ec || &error(&text('ssl_eextraca', $ec));
 	push(@extracas, $ec);
