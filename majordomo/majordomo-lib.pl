@@ -15,7 +15,8 @@ local(@rv, $line);
 open(CONF, $config{'majordomo_cf'});
 while(<CONF>) {
 	s/\r|\n//g;
-	if (/^\s*\$(\S+)\s*=\s*"(.*)";\s*$/) {
+	if (/^\s*\$(\S+)\s*=\s*"(.*)";\s*$/ ||
+	    /^\s*\$(\S+)\s*=\s*'(.*)';\s*$/) {
 		# static config option
 		push(@rv, { 'name' => $1,
 			    'value' => &perl_unescape($2),
