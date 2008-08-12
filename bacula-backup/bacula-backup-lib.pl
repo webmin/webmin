@@ -35,12 +35,13 @@ $cron_cmd = "$module_config_directory/sync.pl";
 sub connect_to_database
 {
 local $drh;
+local $driver = $config{'driver'} || "mysql";
 eval <<EOF;
 use DBI;
-\$drh = DBI->install_driver(\$config{'driver'} || "mysql");
+\$drh = DBI->install_driver(\$driver);
 EOF
 if ($@) {
-        die $text{'connect_emysql'}."\n";
+        die &text('connect_emysql', "<tt>$driver</tt>");
         }
 local $dbistr = &make_dbistr($config{'driver'}, $config{'db'}, $config{'host'});
 local $dbh = $drh->connect($dbistr,
@@ -522,6 +523,13 @@ if ($gconfig{'os_type'} eq 'windows') {
 else {
  	# On Unix, each daemon has an action
 	@bacula_inits = @bacula_processes;
+	foreach my $i (@bacula_inits) {
+		if ($i eq "bacula-dir" && !-r "/etc/init.d/$i" &&
+		    -r "/etc/init.d/bacula-director") {
+			# Different location on Ubuntu / Debian
+			$i = "bacula-director";
+			}
+		}
 	}
 
 # is_bacula_running(process)

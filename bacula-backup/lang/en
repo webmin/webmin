@@ -1,5 +1,5 @@
 index_echeck=$1 Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
-index_edb=Failed to connect to the Bacula database : $1. Maybe it is not set up, or the <a href='$2'>module configuration</a> is incorrect.
+index_edb=Failed to connect to the Bacula database : $1 Maybe it is not set up, or the <a href='$2'>module configuration</a> is incorrect.
 index_eng=Failed to connect to the Bacula groups database : $1. Maybe it does not exist, or the <a href='$2'>module configuration</a> is incorrect.
 index_econsole=The Bacula console command $1 could not communicate with the Bacula director. Make sure the password in $2 is correct.
 index_econsole2=The Bacula console command $1 is not configured with a valid Bacula director host. It is currently using $2, which does not exist.
@@ -29,7 +29,7 @@ index_groups=Bacula Group Configuration
 index_actions=Backup and Restore Actions
 index_ocmin=Contributed by <a href=$2 target=_new>Linmin <img align=middle border=0 src='$1'></a>
 
-connect_emysql=Failed to load the database DBI driver.
+connect_emysql=Failed to load the database DBI driver $1
 connect_elogin=Failed to login to the database $1 : $2.
 connect_equery=The database $1 does not appear to contain Bacula tables.
 connect_equery2=This may be because the SQLite Perl module installed is too new, and does not support the older SQLite database format used by Bacula.
