@@ -361,7 +361,7 @@ edit_LOC=Location
 edit_SRV=Service Address
 edit_KEY=Public Key
 
-recs_ttl=Default TTL
+recs_defttl=Default TTL
 recs_A=Address
 recs_AAAA=IPv6 Address
 recs_NS=Name Server
