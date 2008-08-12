@@ -1303,6 +1303,7 @@ elsif ($src->{'type'} == 1 && $dest->{'type'} == 1) {
 		$fn =~ s/^.*\///;
 		&copy_source_dest($f, "$dest->{'file'}/$fn");
 		}
+	&mailbox_fix_permissions($dest);
 	}
 elsif ($src->{'type'} == 1 && $dest->{'type'} == 0) {
 	# maildir to mbox .. append all the files
@@ -1344,13 +1345,14 @@ local $hn = &get_system_hostname();
 &create_folder_maildir($dst);
 local $fix_index;
 if (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 1) {
-	# Can just move mail files
+	# Can just move mail files to Maildir names
 	local $dd = $dst->{'file'};
 	&create_folder_maildir($dst);
 	foreach $m (@_) {
 		rename($m->{'file'}, "$dd/cur/$now.$$.$hn");
 		$now++;
 		}
+	&mailbox_fix_permissions($dst);
 	$fix_index = 1;
 	}
 elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
@@ -1361,6 +1363,7 @@ elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
 		rename($m->{'file'}, "$dd/$num");
 		$num++;
 		}
+	&mailbox_fix_permissions($dst);
 	$fix_index = 1;
 	}
 else {
@@ -1378,6 +1381,28 @@ else {
 	}
 }
 
+# mailbox_fix_permissions(&folder, [&stat])
+# Set the ownership on all files in a folder correctly, either based on its
+# current stat or a structure passed in.
+sub mailbox_fix_permissions
+{
+local ($f, $st) = @_;
+$st ||= [ stat($f->{'file'}) ];
+return 0 if ($< != 0);		# Only makes sense when running as root
+if ($f->{'type'} == 0) {
+	# Set perms on a single file
+	&set_ownership_permissions($st->[4], $st->[5], $st->[2], $f->{'file'});
+	return 1;
+	}
+elsif ($f->{'type'} == 1 || $f->{'type'} == 3) {
+	# Do a whole directory
+	&execute_command("chown -R $st->[4]:$st->[5] ".
+			 quotemeta($dst->{'file'}));
+	return 1;
+	}
+return 0;
+}
+
 # mailbox_move_folder(&source, &dest)
 # Moves all mail from one folder to another, possibly converting the type
 sub mailbox_move_folder
@@ -1389,17 +1414,8 @@ if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 	local @st = stat($dst->{'file'});
 	system("rm -rf ".quotemeta($dst->{'file'}));
 	system("mv ".quotemeta($src->{'file'})." ".quotemeta($dst->{'file'}));
-	if ($< == 0 && @st) {
-		if ($src->{'type'} == 0) {
-			# Fix mbox perms
-			&set_ownership_permissions($st[4], $st[5], $st[2],
-						   $dst->{'file'});
-			}
-		else {
-			# Fix maildir/MH perms
-			system("chown -R $st[4]:$st[5] ".
-			       quotemeta($dst->{'file'}));
-			}
+	if (@st) {
+		&mailbox_fix_permissions($dst, \@st);
 		}
 	}
 elsif ($src->{'type'} == 1 && $dst->{'type'} == 0) {
