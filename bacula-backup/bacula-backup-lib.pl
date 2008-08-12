@@ -896,6 +896,7 @@ foreach my $l (split(/\r?\n/, $status)) {
 	elsif ($l =~ /^Terminated\s+Jobs/i) { $sect = 3; }
 
 	if ($sect == 1 && $l =~ /^\s*(\S+)\s+(\S+)\s+(\d+)\s+(\S+\s+\S+)\s+(\S+)\s+(\S+)\s*$/) {
+		# Scheduled job
 		push(@sched, { 'level' => &full_level("$1"),
 			       'type' => $2,
 			       'pri' => $3,
@@ -904,18 +905,21 @@ foreach my $l (split(/\r?\n/, $status)) {
 			       'volume' => $6 });
 		}
 	elsif ($sect == 2 && $l =~ /^\s*(\d+)\s+(\S+)\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/) {
+		# Running job
 		push(@run, { 'id' => $1,
 			     'level' => &full_level("$2"),
 			     'name' => &job_name("$3"),
 			     'status' => $5 });
 		}
 	elsif ($sect == 2 && $l =~ /^\s*(\d+)\s+(\S+)\.(\d+\-\d+\-\S+)\s+(.*)/) {
+		# Running job
 		push(@run, { 'id' => $1,
 			     'level' => "Restore",
 			     'name' => &job_name("$2"),
 			     'status' => $4 });
 		}
 	elsif ($sect == 3 && $l =~ /^\s*(\d+)\s+(\S+)\s+([0-9,]+)\s+([0-9,]+\.[0-9,]+\s+\S+|\d+)\s+(\S+)\s+(\S+\s+\S+)\s+(\S+)\s*$/){
+		# Terminated job
 		push(@done, { 'id' => $1,
 			      'level' => &full_level("$2"),
 			      'files' => &remove_comma("$3"),
@@ -1063,16 +1067,16 @@ sub remove_comma
 {
 local ($n) = @_;
 $n =~ s/,//g;
-if ($n =~ /^(\d+)\s*k/i) {
+if ($n =~ /^([0-9\.]+)\s*k/i) {
 	$n = $1*1024;
 	}
-elsif ($n =~ /^(\d+)\s*M/i) {
+elsif ($n =~ /^([0-9\.]+)\s*M/i) {
 	$n = $1*1024*1024;
 	}
-elsif ($n =~ /^(\d+)\s*G/i) {
+elsif ($n =~ /^([0-9\.]+)\s*G/i) {
 	$n = $1*1024*1024*1024;
 	}
-elsif ($n =~ /^(\d+)\s*T/i) {
+elsif ($n =~ /^([0-9\.]+)\s*T/i) {
 	$n = $1*1024*1024*1024*1024;
 	}
 return $n;
