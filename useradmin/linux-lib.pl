@@ -69,7 +69,8 @@ if (&foreign_check("pam")) {
 	&foreign_require("pam", "pam-lib.pl");
 	local @conf = &foreign_call("pam", "get_pam_config");
 	local ($svc) = grep { $_->{'name'} eq 'passwd' } @conf;
-	LOOP: foreach my $m (@{$svc->{'mods'}}) {
+	LOOP:
+	foreach my $m (@{$svc->{'mods'}}) {
 		if ($m->{'type'} eq 'password') {
 			if ($m->{'args'} =~ /md5/) { $md5++; }
 			elsif ($m->{'module'} =~ /pam_stack\.so/ &&
@@ -86,6 +87,12 @@ if (&foreign_check("pam")) {
                                 if ($svc) { goto LOOP }
                                 else { last; }
                                 }
+			}
+		elsif ($m->{'include'}) {
+			# Include another section, with @ syntax
+			($svc) = grep { $_->{'name'} eq $m->{'include'} } @conf;
+			if ($svc) { goto LOOP }
+			else { last; }
 			}
 		}
 	}
