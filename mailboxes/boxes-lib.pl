@@ -814,8 +814,8 @@ if ($_[1]) {
 	# Just append the email to a file using mbox format
 	open(MAIL, ">>$_[1]") || &error("Write failed : $!");
 	$lnum++;
-	print MAIL $_[0]->{'fromline'} ? $_[0]->{'fromline'}."\n" :
-					 &make_from_line($fromaddr)."\n";
+	print MAIL $_[0]->{'fromline'} ? $_[0]->{'fromline'}.$eol :
+					 &make_from_line($fromaddr).$eol;
 	}
 elsif ($sm) {
 	# Connect to SMTP server

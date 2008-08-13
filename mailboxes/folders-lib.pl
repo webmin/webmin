@@ -1547,9 +1547,10 @@ elsif ($_[1]->{'type'} == 4) {
 
 	# Create a temp file and use it to create the IMAP command
 	local $temp = &transname();
-	&send_mail($_[0], $temp, $_[2], 1);
+	&send_mail($_[0], $temp, $_[2], 0, "dummy");
 	local $text = &read_file_contents($temp);
 	unlink($temp);
+	$text =~ s/^From.*\r?\n//;	# Not part of IMAP format
 	@rv = &imap_command($h, sprintf "APPEND %s {%d}\r\n%s",
 			$_[1]->{'mailbox'} || "INBOX", length($text), $text);
 	&error(&text('save_eappend', $rv[3])) if (!$rv[0]); 
@@ -1945,12 +1946,28 @@ local @rv;
 
 # Send the command, and read lines until a non-* one is found
 local $id = $$."-".$imap_command_count++;
-if ($c) {
+local ($first, $rest) = split(/\r?\n/, $c, 2);
+if ($rest) {
+	# Multi-line - send first line, then wait for continuation, then rest
+	print $h "$id $first\r\n";
+	print DEBUG "imap command $id $first\n";
+	local $l = <$h>;
+	print DEBUG "imap line $l";
+	if ($l =~ /^\+/) {
+		print $h $rest."\r\n";
+		}
+	else {
+		local $err = "Server did not ask for continuation : $l";
+		return (0, [ $err ], $err, $err);
+		}
+	}
+elsif ($c) {
 	print $h "$id $c\r\n";
 	print DEBUG "imap command $id $c\n";
 	}
 while(1) {
 	local $l = <$h>;
+	print DEBUG "imap line $l";
 	last if (!$l);
 	if ($l =~ /^(\*|\+)/) {
 		# Another response, and possibly the only one if no command
@@ -1986,6 +2003,7 @@ while(1) {
 		}
 	}
 local $j = join("", @rv);
+print DEBUG "imap response $j\n";
 local $lline = $rv[$#rv];
 if ($lline =~ /^(\S+)\s+OK\s*(.*)/) {
 	# Looks like the command worked
