@@ -2970,7 +2970,7 @@ elsif ($canmode == 1) {
 		local $lc = $lastchanges{$user};
 		if ($config{'pass_maxdays'} && $lc && !$nochange{$user}) {
 			local $daysold = (time() - $lc)/(24*60*60);
-			print DEBUG "maxdays=$config{'pass_maxdays'} daysold=$daysold\n";
+			print DEBUG "maxdays=$config{'pass_maxdays'} daysold=$daysold temppass=$temppass{$user}\n";
 			if ($config{'pass_lockdays'} &&
 			    $daysold > $config{'pass_lockdays'}) {
 				# So old that the account is locked
@@ -2980,10 +2980,10 @@ elsif ($canmode == 1) {
 				# Password has expired
 				return ( $user, 1, 0 );
 				}
-			elsif ($temppass{$user}) {
-				# Temporary password - force change now
-				return ( $user, 2, 0 );
-				}
+			}
+		if ($temppass{$user}) {
+			# Temporary password - force change now
+			return ( $user, 2, 0 );
 			}
 		return ( $user, 0, 0 );
 		}
