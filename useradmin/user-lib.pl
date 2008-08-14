@@ -1943,7 +1943,6 @@ $buttons .= "<br>" if ($buttons);
 local @linksrow;
 if ($anyedit) {
 	print &ui_form_start("mass_delete_user.cgi", "post");
-	print $buttons;
 	push(@linksrow, &select_all_link("d", $_[1]),
 			&select_invert_link("d", $_[1]));
 	}
@@ -2015,7 +2014,6 @@ $anyedit = 0 if ($noboxes);
 local @linksrow;
 if ($anyedit && $access{'gdelete'}) {
 	print &ui_form_start("mass_delete_group.cgi", "post");
-	print &ui_submit($text{'index_gmass'}, "delete"),"<br>\n";
 	push(@linksrow, &select_all_link("d", $formno),
 			&select_invert_link("d", $formno) );
 	}

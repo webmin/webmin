@@ -5,6 +5,8 @@ require './user-lib.pl';
 		 &help_search_link("passwd group shadow gshadow", "man"));
 $formno = 0;
 %access = &get_module_acl();
+&ReadParse();
+@quarters = ( "width=25%", "width=25%", "width=25%", "width=25%" );
 
 # Get the user and group lists
 @allulist = &list_users();
@@ -15,16 +17,23 @@ foreach $g (@allglist) {
 	$usedgid{$g->{'gid'}} = $g;
 	}
 
-# Show users list header
+# Start of tabs, based on what can be edited
+@tabs = ( );
 if (@ulist || $access{'ucreate'}) {
-	print "<a name=users></a>\n";
-	print "<table width=100% cellpadding=0 cellspacing=0><tr>\n";
-	print "<td>".&ui_subheading($text{'index_users'})."</td>\n";
-	if (@glist || $access{'gcreate'}) {
-		print "<td align=right valign=top>",
-		      "<a href=#groups>$text{'index_gjump'}</a></td>\n";
-		}
-	print "</tr></table>\n";
+	push(@tabs, [ "users", $text{'index_users'},
+		      "index.cgi?mode=users" ]);
+	$can_users = 1;
+	}
+if (@glist || $access{'gcreate'}) {
+	push(@tabs, [ "groups", $text{'index_groups'},
+		      "index.cgi?mode=groups" ]);
+	$can_groups = 1;
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
+
+# Start of users tab
+if ($can_users) {
+	print &ui_tabs_start_tab("mode", "users");
 	}
 
 if (@ulist > $config{'display_max'}) {
@@ -41,8 +50,8 @@ if (@ulist > $config{'display_max'}) {
 	print "<option value=group>$text{'gid'}\n";
 	print "<option value=gid>$text{'gidnum'}\n";
 	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}\n";
-	print "<option value=4>$text{'index_contains'}\n";
+	print "<option value=0>$text{'index_equals'}\n";
+	print "<option value=4 checked>$text{'index_contains'}\n";
 	print "<option value=1>$text{'index_matches'}\n";
 	print "<option value=2>$text{'index_nequals'}\n";
 	print "<option value=5>$text{'index_ncontains'}\n";
@@ -56,39 +65,23 @@ if (@ulist > $config{'display_max'}) {
 elsif (@ulist) {
 	# Display a table of all users
 	@ulist = &sort_users(\@ulist, $config{'sort_mode'});
-	if ($access{'icons'}) {
-		# Show an icon for each user
-		&show_user_buttons();
-		local @icons = map { "images/user.gif" } @ulist;
-		local @links = map { "edit_user.cgi?num=$_->{'num'}" } @ulist;
-		local @titles = map { $_->{'user'} } @ulist;
-		&icons_table(\@links, \@titles, \@icons, 5);
-		}
-	elsif ($config{'display_mode'} == 2) {
+	if ($config{'display_mode'} == 2) {
 		# Show usernames under groups
 		foreach $u (@ulist) {
 			push(@{$ug{$u->{'gid'}}}, $u);
 			}
-		&show_user_buttons();
-		print "<table width=100% border>\n";
-		print "<tr $tb> <td><b>$text{'index_ugroup'}</b></td> ",
-		      "<td><b>$text{'index_users'}</b></td> </tr>\n";
-		foreach $g (keys %ug) {
-			print "<tr $cb> <td width=20%><b>",
-			      &html_escape($usedgid{$g}->{'group'}),
-			      "</b></td>\n";
-			print "<td width=80%><table width=100% ",
-			      "cellpadding=0 cellspacing=0>\n";
-			$i = 0;
-			foreach $u (@{$ug{$g}}) {
-				if ($i%4 == 0) { print "<tr>\n"; }
-				print "<td width=25%>",&user_link($u),"</td>\n";
-				if ($i%4 == 3) { print "</tr>\n"; }
-				$i++;
-				}
-			print "</table></td> </tr>\n";
+		@table = ( );
+		foreach $g (sort { $usedgid{$a}->{'group'} cmp
+				   $usedgid{$b}->{'group'} } keys %ug) {
+			@grid = map { &user_link($_) } @{$ug{$g}};
+			push(@table, [ &html_escape($usedgid{$g}->{'group'}),
+			       &ui_grid_table(\@grid, 4, 100, \@quarters) ]);
 			}
-		print "</table>\n";
+		print &ui_columns_table(
+			[ $text{'index_ugroup'}, $text{'index_users'} ],
+			100,
+			\@table,
+			);
 		}
 	elsif ($config{'display_mode'} == 1) {
 		# Show names, real names, home dirs and shells
@@ -100,16 +93,9 @@ elsif (@ulist) {
 		}
 	else {
 		# Just show names
-		&show_user_buttons();
-		print "<table width=100% border>\n";
-		print "<tr $tb> <td><b>$text{'index_users'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table width=100%>\n";
-		for($i=0; $i<@ulist; $i++) {
-			if ($i%4 == 0) { print "<tr>\n"; }
-			print "<td width=25%>",&user_link($ulist[$i]),"</td>\n";
-			if ($i%4 == 3) { print "</tr>\n"; }
-			}
-		print "</table></td> </tr></table>\n";
+		@grid = map { &user_link($_) } @ulist;
+		print &ui_grid_table(\@grid, 4, 100, \@quarters,
+			undef, $text{'index_users'});
 		}
 	}
 elsif ($access{'ucreate'}) {
@@ -121,19 +107,17 @@ elsif ($access{'ucreate'}) {
 		}
 	}
 &show_user_buttons() if (!$no_user_buttons);
-print "<p>\n";
 
-if (@glist || $access{'gcreate'}) {
-	print &ui_hr();
-	print "<a name=groups></a>\n";
-	print "<table width=100% cellpadding=0 cellspacing=0><tr>\n";
-	print "<td>".&ui_subheading($text{'index_groups'})."</td>\n";
-	if (@ulist || $access{'ucreate'}) {
-		print "<td align=right valign=top>",
-		      "<a href=#users>$text{'index_ujump'}</a></td>\n";
-		}
-	print "</tr></table>\n";
+# End of users tab
+if ($can_users) {
+	print &ui_tabs_end_tab("mode", "users");
 	}
+
+# Start of groups tab
+if ($can_groups) {
+	print &ui_tabs_start_tab("mode", "groups");
+	}
+
 if (@glist > $config{'display_max'}) {
 	# Display group search form
 	print "<b>$text{'index_gtoomany'}</b><p>\n";
@@ -144,8 +128,8 @@ if (@glist > $config{'display_max'}) {
 	print "<option value=members>$text{'gedit_members'}\n";
 	print "<option value=gid>$text{'gedit_gid'}\n";
 	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}\n";
-	print "<option value=4>$text{'index_contains'}\n";
+	print "<option value=0>$text{'index_equals'}\n";
+	print "<option value=4 checked>$text{'index_contains'}\n";
 	print "<option value=1>$text{'index_matches'}\n";
 	print "<option value=2>$text{'index_nequals'}\n";
 	print "<option value=5>$text{'index_ncontains'}\n";
@@ -158,32 +142,16 @@ if (@glist > $config{'display_max'}) {
 	}
 elsif (@glist) {
 	@glist = &sort_groups(\@glist, $config{'sort_mode'});
-	if ($access{'icons'}) {
-		# Show an icon for each group
-		&show_group_buttons();
-		local @icons = map { "images/group.gif" } @glist;
-		local @links = map { "edit_group.cgi?num=$_->{'num'}" } @glist;
-		local @titles = map { $_->{'group'} } @glist;
-		&icons_table(\@links, \@titles, \@icons, 5);
-		}
-	elsif ($config{'display_mode'} == 1) {
+	if ($config{'display_mode'} == 1) {
 		# Display group name, ID and members
 		&groups_table(\@glist, $formno++, 0, [ &get_group_buttons() ]);
 		$no_group_buttons = 1;
 		}
 	else {
 		# Just display group names
-		&show_group_buttons();
-		print "<table width=100% border>\n";
-		print "<tr $tb> <td><b>$text{'index_groups'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table width=100%>\n";
-		for($i=0; $i<@glist; $i++) {
-			if ($i%4 == 0) { print "<tr>\n"; }
-			print "<td width=25%>",
-			      &group_link($glist[$i]),"</td>\n";
-			if ($i%4 == 3) { print "</tr>\n"; }
-			}
-		print "</table></td> </tr></table>\n";
+		@grid = map { &group_link($_) } @glist;
+		print &ui_grid_table(\@grid, 4, 100, \@quarters,
+			undef, $text{'index_groups'});
 		}
 	}
 elsif ($access{'gcreate'} == 1) {
@@ -196,6 +164,12 @@ elsif ($access{'gcreate'} == 1) {
 		}
 	}
 &show_group_buttons() if (!$no_group_buttons);
+
+# End of groups tab
+if ($can_groups) {
+	print &ui_tabs_end_tab("mode", "groups");
+	}
+print &ui_tabs_end();
 
 if ($access{'logins'}) {
 	print &ui_hr();
