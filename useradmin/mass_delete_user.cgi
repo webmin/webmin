@@ -160,7 +160,7 @@ else {
 				if (defined($merr));
 
 			# Go ahead and do it!
-			$others = $config{'default_other'};
+			$others = $in{'others'};
 			$others = !$access{'dothers'}
 				if ($access{'dothers'} != 1);
 			if ($others) {
