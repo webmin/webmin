@@ -6,7 +6,6 @@ require './user-lib.pl';
 require 'timelocal.pl';
 &ReadParse();
 $n = $in{'num'};
-%access = &get_module_acl();
 if ($n eq "") {
 	$access{'ucreate'} || &error($text{'uedit_ecreate'});
 	&ui_print_header(undef, $text{'uedit_title2'}, "", "create_user");
@@ -690,6 +689,6 @@ else {
 	print "<input type=submit value=\"$text{'create'}\"></form><p>\n";
 	}
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=users", $text{'index_return'});
 
 

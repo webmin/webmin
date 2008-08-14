@@ -4,7 +4,6 @@
 
 require './user-lib.pl';
 &ReadParse();
-%access = &get_module_acl();
 %ulist = map { $_->{'user'}, $_ } &list_users();
 &error_setup($text{'umass_err'});
 foreach $name (split(/\0/, $in{'d'})) {

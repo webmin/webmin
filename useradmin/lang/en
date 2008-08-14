@@ -1,6 +1,10 @@
 index_title=Users and Groups
 index_toomany=There are too many users on your system to display on one page.
 index_find=Find users whose
+index_usheader=User search
+index_gsheader=Group search
+index_fmode=Match mode
+index_ftext=Search text
 index_gtoomany=There are too many groups on your system to display on one page.
 index_gfind=Find groups whose
 index_ugroup=Primary Group

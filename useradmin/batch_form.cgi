@@ -3,7 +3,6 @@
 # Display a form for doing batch creation, updates or deletion from a text file
 
 require './user-lib.pl';
-%access = &get_module_acl();
 $access{'batch'} || &error($text{'batch_ecannot'});
 &ui_print_header(undef, $text{'batch_title'}, "");
 

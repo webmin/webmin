@@ -9,7 +9,6 @@ $group = $glist[$in{'num'}];
 $group || &error($text{'gdel_enum'});
 $| = 1;
 &error_setup($text{'gdel_err'});
-%access = &get_module_acl();
 &can_edit_group(\%access, $group) || &error($text{'gdel_egroup'});
 $access{'gdelete'} || &error($text{'gdel_egroup'});
 

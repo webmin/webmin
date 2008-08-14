@@ -7,7 +7,6 @@ require './user-lib.pl';
 require 'timelocal.pl';
 &error_setup($text{'usave_err'});
 &ReadParse();
-%access = &get_module_acl();
 
 # Build list of used UIDs and GIDs
 &build_user_used(\%used);
@@ -632,6 +631,6 @@ delete($in{'encpass'});
 
 # Bounce back to the list, if everything worked
 &error(&text('usave_eothers', $others_err)) if ($others_err);
-&redirect("");
+&redirect("index.cgi?mode=users");
 
 

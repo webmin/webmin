@@ -3,7 +3,6 @@
 # Actually output a user creation batch file
 
 require './user-lib.pl';
-%access = &get_module_acl();
 $access{'export'} || &error($text{'export_ecannot'});
 &ReadParse();
 

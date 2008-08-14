@@ -3,7 +3,6 @@
 # Display a form for exporting a batch file
 
 require './user-lib.pl';
-%access = &get_module_acl();
 $access{'export'} || &error($text{'export_ecannot'});
 &ui_print_header(undef, $text{'export_title'}, "", "export");
 

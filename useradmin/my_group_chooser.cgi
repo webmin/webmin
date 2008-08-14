@@ -6,7 +6,6 @@ $trust_unknown_referers = 1;
 require './user-lib.pl';
 &init_config();
 &ReadParse(undef, undef, 1);
-%access = &get_module_acl(undef, "");
 
 # Build list of primary groups
 &my_setpwent();

@@ -11,6 +11,7 @@ else {
 	do "$gconfig{'os_type'}-lib.pl";
 	}
 do "md5-lib.pl";
+%access = &get_module_acl();
 
 @random_password_chars = ( 'a' .. 'z', 'A' .. 'Z', '0' .. '9' );
 $disable_string = $config{'lock_prepend'} eq "" ? "!" : $config{'lock_prepend'};
@@ -1997,6 +1998,7 @@ if ($anyedit) {
 }
 
 # groups_table(&groups, [form], [no-buttons], [&otherlinks])
+# Prints a table of groups, possibly with checkboxes and a delete button
 sub groups_table
 {
 local ($groups, $formno, $noboxes, $links) = @_;
@@ -2014,8 +2016,8 @@ $anyedit = 0 if ($noboxes);
 local @linksrow;
 if ($anyedit && $access{'gdelete'}) {
 	print &ui_form_start("mass_delete_group.cgi", "post");
-	push(@linksrow, &select_all_link("d", $formno),
-			&select_invert_link("d", $formno) );
+	push(@linksrow, &select_all_link("gd", $formno),
+			&select_invert_link("gd", $formno) );
 	}
 push(@linksrow, @$links);
 print &ui_links_row(\@linksrow);
@@ -2042,7 +2044,8 @@ foreach $g (@$groups) {
 		print &ui_columns_row(\@cols, \@tds);
 		}
 	else {
-		print &ui_checked_columns_row(\@cols, \@tds, "d",$g->{'group'});
+		print &ui_checked_columns_row(\@cols, \@tds, "gd",
+					      $g->{'group'});
 		}
 	}
 print &ui_columns_end();

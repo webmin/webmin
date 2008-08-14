@@ -3,10 +3,9 @@
 
 require './user-lib.pl';
 &ReadParse();
-%access = &get_module_acl();
 %glist = map { $_->{'group'}, $_ } &list_groups();
 &error_setup($text{'gmass_err'});
-foreach $name (split(/\0/, $in{'d'})) {
+foreach $name (split(/\0/, $in{'gd'})) {
 	$group = $glist{$name};
 	if ($group) {
 		&can_edit_group(\%access, $group) ||

@@ -3,7 +3,6 @@
 # Display logged-in users
 
 require './user-lib.pl';
-%access = &get_module_acl();
 $access{'logins'} || &error($text{'who_ecannot'});
 
 &ui_print_header(undef, $text{'who_title'}, "");

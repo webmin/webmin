@@ -6,7 +6,6 @@ require './user-lib.pl';
 require 'timelocal.pl';
 &error_setup($text{'gsave_err'});
 &ReadParse();
-%access = &get_module_acl();
 
 # Build list of used GIDs
 &build_group_used(\%gused);
@@ -168,5 +167,5 @@ delete($in{'encpass'});
 
 # Bounce back to the list, if successful
 &error(&text('gsave_eothers', $others_err)) if ($others_err);
-&redirect("");
+&redirect("index.cgi?mode=groups");
 

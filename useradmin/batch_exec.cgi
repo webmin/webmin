@@ -3,7 +3,6 @@
 # Execute create/modify/delete commands in a batch file
 
 require './user-lib.pl';
-%access = &get_module_acl();
 $access{'batch'} || &error($text{'batch_ecannot'});
 if ($ENV{'REQUEST_METHOD'} eq 'GET') {
 	&ReadParse();

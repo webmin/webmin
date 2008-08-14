@@ -5,7 +5,6 @@
 require './user-lib.pl';
 &ReadParse();
 $u = $in{'username'};
-%access = &get_module_acl();
 if (!$access{'logins'}) {
 	&error($text{'logins_elist'});
 	}

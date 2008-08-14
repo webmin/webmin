@@ -4,7 +4,6 @@
 
 require './user-lib.pl';
 &ReadParse();
-%access = &get_module_acl();
 @ulist = &list_users();
 $m = $in{'match'};
 $w = $in{'what'};

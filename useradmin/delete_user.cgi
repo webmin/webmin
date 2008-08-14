@@ -9,7 +9,6 @@ require './user-lib.pl';
 $user = $ulist[$in{'num'}];
 $user || &error($text{'udel_enum'});
 &error_setup($text{'udel_err'});
-%access = &get_module_acl();
 &can_edit_user(\%access, $user) || &error($text{'udel_euser'});
 $access{'udelete'} || &error($text{'udel_euser'});
 

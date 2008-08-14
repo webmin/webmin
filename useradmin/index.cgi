@@ -4,7 +4,6 @@ require './user-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		 &help_search_link("passwd group shadow gshadow", "man"));
 $formno = 0;
-%access = &get_module_acl();
 &ReadParse();
 @quarters = ( "width=25%", "width=25%", "width=25%", "width=25%" );
 
@@ -36,30 +35,35 @@ if ($can_users) {
 	print &ui_tabs_start_tab("mode", "users");
 	}
 
+$match_modes = [ [ 0, $text{'index_equals'} ], [ 4, $text{'index_contains'} ],
+		 [ 1, $text{'index_matches'} ], [ 2, $text{'index_nequals'} ],
+		 [ 5, $text{'index_ncontains'} ], [ 3, $text{'index_nmatches'}],
+		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
+
 if (@ulist > $config{'display_max'}) {
-	# Display user search form
+	# Display advanced search form
 	print "<b>$text{'index_toomany'}</b><p>\n";
-	print "<form action=search_user.cgi>\n";
-	print &hlink("<b>$text{'index_find'}</b>","findform"),
-	      " <select name=field>\n";
-	print "<option value=user selected>$text{'user'}\n";
-	print "<option value=real>$text{'real'}\n";
-	print "<option value=shell>$text{'shell'}\n";
-	print "<option value=home>$text{'home'}\n";
-	print "<option value=uid>$text{'uid'}\n";
-	print "<option value=group>$text{'gid'}\n";
-	print "<option value=gid>$text{'gidnum'}\n";
-	print "</select> <select name=match>\n";
-	print "<option value=0>$text{'index_equals'}\n";
-	print "<option value=4 checked>$text{'index_contains'}\n";
-	print "<option value=1>$text{'index_matches'}\n";
-	print "<option value=2>$text{'index_nequals'}\n";
-	print "<option value=5>$text{'index_ncontains'}\n";
-	print "<option value=3>$text{'index_nmatches'}\n";
-	print "<option value=6>$text{'index_lower'}\n";
-	print "<option value=7>$text{'index_higher'}\n";
-	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
-	print "<input type=submit value=\"$text{'find'}\"></form>\n";
+	print &ui_form_start("search_user.cgi");
+	print &ui_table_start($text{'index_usheader'}, undef, 2);
+
+	# Field to search
+	print &ui_table_row($text{'index_find'},
+		&ui_select("field", "user",
+			   [ [ "user", $text{'user'} ],
+			     [ "real", $text{'real'} ],
+			     [ "shell", $text{'shell'} ],
+			     [ "home", $text{'home'} ],
+			     [ "uid", $text{'uid'} ],
+			     [ "group", $text{'group'} ],
+			     [ "gid", $text{'gid'} ] ])." ".
+		&ui_select("match", 4, $match_modes));
+
+	# Text
+	print &ui_table_row($text{'index_ftext'},
+		&ui_textbox("what", undef, 50));
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'find'} ] ]);
 	$formno++;
 	}
 elsif (@ulist) {
@@ -121,23 +125,23 @@ if ($can_groups) {
 if (@glist > $config{'display_max'}) {
 	# Display group search form
 	print "<b>$text{'index_gtoomany'}</b><p>\n";
-	print "<form action=search_group.cgi>\n";
-	print &hlink("<b>$text{'index_gfind'}</b>","gfindform"),
-	      " <select name=field>\n";
-	print "<option value=group selected>$text{'gedit_group'}\n";
-	print "<option value=members>$text{'gedit_members'}\n";
-	print "<option value=gid>$text{'gedit_gid'}\n";
-	print "</select> <select name=match>\n";
-	print "<option value=0>$text{'index_equals'}\n";
-	print "<option value=4 checked>$text{'index_contains'}\n";
-	print "<option value=1>$text{'index_matches'}\n";
-	print "<option value=2>$text{'index_nequals'}\n";
-	print "<option value=5>$text{'index_ncontains'}\n";
-	print "<option value=3>$text{'index_nmatches'}\n";
-	print "<option value=6>$text{'index_lower'}\n";
-	print "<option value=7>$text{'index_higher'}\n";
-	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
-	print "<input type=submit value=\"$text{'find'}\"></form>\n";
+	print &ui_form_start("search_group.cgi");
+	print &ui_table_start($text{'index_gsheader'}, undef, 2);
+
+	# Field to search
+	print &ui_table_row($text{'index_gfind'},
+		&ui_select("field", "group",
+			   [ [ "group", $text{'gedit_group'} ],
+			     [ "members", $text{'gedit_members'} ],
+			     [ "gedit_gid", $text{'gedit_gid'} ] ])." ".
+		&ui_select("match", 4, $match_modes));
+
+	# Text
+	print &ui_table_row($text{'index_ftext'},
+		&ui_textbox("what", undef, 50));
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'find'} ] ]);
 	$formno++;
 	}
 elsif (@glist) {
@@ -169,7 +173,7 @@ elsif ($access{'gcreate'} == 1) {
 if ($can_groups) {
 	print &ui_tabs_end_tab("mode", "groups");
 	}
-print &ui_tabs_end();
+print &ui_tabs_end(1);
 
 if ($access{'logins'}) {
 	print &ui_hr();
