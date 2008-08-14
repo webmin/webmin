@@ -437,6 +437,16 @@ return "<input name=\"".&quote_escape($name)."\" ".
        ">";
 }
 
+# ui_filebox(name, value, size, [disabled?], [maxlength], [tags], [dir-only])
+# Returns HTML for a text box for choosing a file
+sub ui_filebox
+{
+return &theme_ui_filebox(@_) if (defined(&theme_ui_filebox));
+local ($name, $value, $size, $dis, $max, $tags, $dironly) = @_;
+return &ui_textbox($name, $value, $size, $dis, $max, $tags)."&nbsp;".
+       &file_chooser_button($name, $dironly);
+}
+
 # ui_bytesbox(name, bytes, [size], [disabled?])
 # Returns HTML for entering a number of bytes, but with friendly kB/MB/GB
 # options. May truncate values to 2 decimal points!
@@ -521,7 +531,7 @@ local %sel = ref($value) ? ( map { $_, 1 } @$value ) : ( $value, 1 );
 foreach $o (@$opts) {
 	$o = [ $o ] if (!ref($o));
 	$rv .= "<option value=\"".&quote_escape($o->[0])."\"".
-	       ($sel{$o->[0]} ? " selected" : "").">".
+	       ($sel{$o->[0]} ? " selected" : "")." ".$o->[2].">".
 	       ($o->[1] || $o->[0])."\n";
 	$opt{$o->[0]}++;
 	}
