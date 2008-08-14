@@ -88,7 +88,7 @@ opts_mru=Maximum receiving packet size
 opts_err=Failed to save global PPP options
 opts_emtu=Missing or invalid maximum sending packet size
 opts_emru=Missing or invalid maximum receiving packet size
-opts_msdesc=The options below enable MPPE encryption, used by by Windows VPN servers. However, MPPE requires support in both the PPP daemon and operating system kernel.
+opts_msdesc=The options below enable MPPE encryption, used by Windows VPN servers. However, MPPE requires support in both the PPP daemon and operating system kernel.
 
 mppe_mppe-40=Use 40-bit MPPE encryption?
 mppe_mppe-128=Use 128-bit MPPE encryption?
