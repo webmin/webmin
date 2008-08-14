@@ -4,25 +4,41 @@
 
 require './user-lib.pl';
 &ReadParse();
-@ulist = &list_users();
+
+# Build fields to search
 $m = $in{'match'};
-$w = $in{'what'};
+$w = lc($in{'what'});
+@fields = ( );
 if ($in{'field'} eq "group") {
-	$in{'field'} = "gid";
+	@fields = ( 'gid' );
 	$w = &my_getgrnam($w) || $w;
 	}
+elsif ($in{'field'} eq 'userreal') {
+	@fields = ( 'user', 'real' );
+	}
+else {
+	@fields = ( $in{'field'} );
+	}
+
+# Search users for matches
+@ulist = &list_users();
 for($i=0; $i<@ulist; $i++) {
 	$u = $ulist[$i];
-	$f = $u->{$in{'field'}};
-	if ($m == 0 && $f eq $w ||
-	    $m == 1 && eval { $f =~ /$w/i } ||
-	    $m == 4 && index($f, $w) >= 0 ||
-	    $m == 2 && $f ne $w ||
-	    $m == 3 && eval { $f !~ /$w/i } ||
-	    $m == 5 && index($f, $w) < 0 ||
-	    $m == 6 && $f < $w ||
-	    $m == 7 && $f > $w) {
-		push(@match, $u) if (&can_edit_user(\%access, $u));
+	FIELD: foreach my $field (@fields) {
+		$f = lc($u->{$field});
+		if ($m == 0 && $f eq $w ||
+		    $m == 1 && eval { $f =~ /$w/i } ||
+		    $m == 4 && index($f, $w) >= 0 ||
+		    $m == 2 && $f ne $w ||
+		    $m == 3 && eval { $f !~ /$w/i } ||
+		    $m == 5 && index($f, $w) < 0 ||
+		    $m == 6 && $f < $w ||
+		    $m == 7 && $f > $w) {
+			if (&can_edit_user(\%access, $u)) {
+				push(@match, $u);
+				last FIELD;
+				}
+			}
 		}
 	}
 if (@match == 1) {

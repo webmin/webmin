@@ -6,10 +6,10 @@ require './user-lib.pl';
 &ReadParse();
 @glist = &list_groups();
 $m = $in{'match'};
-$w = $in{'what'};
+$w = lc($in{'what'});
 for($i=0; $i<@glist; $i++) {
 	$g = $glist[$i];
-	$f = $g->{$in{'field'}};
+	$f = lc($g->{$in{'field'}});
 	if ($m == 0 && $f eq $w ||
 	    $m == 1 && eval { $f =~ /$w/i } ||
 	    $m == 4 && index($f, $w) >= 0 ||

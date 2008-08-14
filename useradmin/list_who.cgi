@@ -7,27 +7,31 @@ $access{'logins'} || &error($text{'who_ecannot'});
 
 &ui_print_header(undef, $text{'who_title'}, "");
 
+# Build table of users
 @whos = &logged_in_users();
-if (@whos) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'who_user'}</b></td> ",
-	      "<td><b>$text{'who_tty'}</b></td> ",
-	      "<td><b>$text{'who_when'}</b></td> ",
-	      "<td><b>$text{'who_from'}</b></td> </tr>\n";
-	foreach $w (@whos) {
-		print "<tr $cb>\n";
-		print "<td><tt><a href='list_logins.cgi?username=$w->{'user'}'>",&html_escape($w->{'user'}),"</a></tt></td>\n";
-		print "<td><tt>",&html_escape($w->{'tty'}),"</tt></td>\n";
-		print "<td><tt>",&html_escape($w->{'when'}),"</tt></td>\n";
-		print "<td><tt>",$w->{'from'} ? &html_escape($w->{'from'}) :
-			$text{'logins_local'},"</tt></td>\n";
-		print "</tr>\n";
-		}
-	print "</table><br>\n";
+@table = ( );
+foreach $w (@whos) {
+	push(@table, [
+		"<a href='list_logins.cgi?username=".&urlize($w->{'user'})."'>".
+		&html_escape($w->{'user'})."</a>",
+		&html_escape($w->{'tty'}),
+		&html_escape($w->{'when'}),
+		$w->{'from'} ? &html_escape($w->{'from'})
+			     : $text{'logins_local'},
+		]);
 	}
-else {
-	print "<b>$text{'who_none'}</b> <p>\n";
-	}
+
+# Show it
+print &ui_columns_table(
+	[ $text{'who_user'}, $text{'who_tty'}, $text{'who_when'},
+	  $text{'who_from'} ],
+	100,
+	\@table,
+	undef,
+	0,
+	undef,
+	$text{'who_none'},
+	);
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -16,6 +16,12 @@ foreach $g (@allglist) {
 	$usedgid{$g->{'gid'}} = $g;
 	}
 
+# Search types
+$match_modes = [ [ 0, $text{'index_equals'} ], [ 4, $text{'index_contains'} ],
+		 [ 1, $text{'index_matches'} ], [ 2, $text{'index_nequals'} ],
+		 [ 5, $text{'index_ncontains'} ], [ 3, $text{'index_nmatches'}],
+		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
+
 # Start of tabs, based on what can be edited
 @tabs = ( );
 if (@ulist || $access{'ucreate'}) {
@@ -35,11 +41,6 @@ if ($can_users) {
 	print &ui_tabs_start_tab("mode", "users");
 	}
 
-$match_modes = [ [ 0, $text{'index_equals'} ], [ 4, $text{'index_contains'} ],
-		 [ 1, $text{'index_matches'} ], [ 2, $text{'index_nequals'} ],
-		 [ 5, $text{'index_ncontains'} ], [ 3, $text{'index_nmatches'}],
-		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
-
 if (@ulist > $config{'display_max'}) {
 	# Display advanced search form
 	print "<b>$text{'index_toomany'}</b><p>\n";
@@ -48,8 +49,9 @@ if (@ulist > $config{'display_max'}) {
 
 	# Field to search
 	print &ui_table_row($text{'index_find'},
-		&ui_select("field", "user",
-			   [ [ "user", $text{'user'} ],
+		&ui_select("field", "userreal",
+			   [ [ "userreal", $text{'index_userreal'} ],
+			     [ "user", $text{'user'} ],
 			     [ "real", $text{'real'} ],
 			     [ "shell", $text{'shell'} ],
 			     [ "home", $text{'home'} ],
@@ -175,20 +177,33 @@ if ($can_groups) {
 	}
 print &ui_tabs_end(1);
 
+# Buttons to show recent logins and logged-in users
 if ($access{'logins'}) {
 	print &ui_hr();
-	print "<table width=100%><tr>\n";
-	print "<form action=list_logins.cgi>\n";
-	print "<td><input type=submit value=\"$text{'index_logins'}\">\n";
-	print "<input name=username size=8> ",
-	      &user_chooser_button("username",0,$formno),"</td></form>\n";
+	print &ui_buttons_start();
 
+	# Show recent logins
+	print &ui_buttons_row(
+		"list_logins.cgi",
+		$text{'index_logins'},
+		$text{'index_loginsdesc'},
+		undef,
+		&ui_radio("username_def", 1,
+		  [ [ 1, $text{'index_loginsall'} ],
+		    [ 0, $text{'index_loginsuser'}." ".
+			 &ui_user_textbox("username", undef, $formno) ] ]));
+
+	# Show currently logged in user
 	if (defined(&logged_in_users)) {
-		print "<form action=list_who.cgi>\n";
-		print "<td align=right><input type=submit ",
-		      "value=\"$text{'index_who'}\"></td></form>\n";
+		print &ui_buttons_row(
+			"list_who.cgi",
+			$text{'index_who'},
+			$text{'index_whodesc'},
+			);
 		}
 	print "</tr></table>\n";
+
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("/", $text{'index'});

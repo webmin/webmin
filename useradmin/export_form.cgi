@@ -7,55 +7,55 @@ $access{'export'} || &error($text{'export_ecannot'});
 &ui_print_header(undef, $text{'export_title'}, "", "export");
 
 print "$text{'export_desc'}<p>\n";
-print "<form action=export_exec.cgi>\n";
-print "<table>\n";
+print &ui_form_start("export_exec.cgi");
+print &ui_table_start(undef, undef, 2);
 
-print "<tr> <td valign=top><b>$text{'export_to'}</b></td> <td valign=top>\n";
+# Destination
 if ($access{'export'} == 2) {
-	print "<input type=radio name=to value=0 checked> $text{'export_show'}<br>\n";
-	print "<input type=radio name=to value=1> $text{'export_file'}\n";
-	print "<input name=file size=30> ",&file_chooser_button("file"),"</td> </tr>\n";
+	# Can be to a file
+	print &ui_table_row($text{'export_to'},
+		&ui_radio_table("to", 0,
+			[ [ 0, $text{'export_show'} ],
+			  [ 1, $text{'export_file'},
+				&ui_filebox("file", undef, 30) ] ]));
 	}
 else {
-	print "$text{'export_show'}</td> </tr>\n";
+	# Always in browser
+	print &ui_table_row($text{'export_to'}, $text{'export_show'});
 	}
 
+# Export type
 $pft = &passfiles_type();
-print "<tr> <td valign=top><b>$text{'export_pft'}</b></td> <td valign=top>\n";
-print "<select name=pft>\n";
-foreach $k (sort { $a cmp $b } keys %text) {
-	next if ($k !~ /^pft_(\d+)$/ || $done{$text{$k}}++);
-	printf "<option value=%d %s> %s<br>\n",
-		$1, $1 == $pft ? "selected" : "", $text{$k};
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'export_pft'},
+	&ui_select("pft", $pft,
+		[ map { [ $_, $text{'pft_'.$_} ] }
+		      map { /^pft_(\d+)$/ ? ( $1 ) : ( ) }
+			  sort { $a cmp $b } (keys %text) ]));
 
-print "<tr> <td valign=top><b>$text{'export_who'}</b></td> <td valign=top>\n";
-print "<input type=radio name=mode value=0 checked> $text{'acl_uedit_all'}<br>\n";
-print "<input type=radio name=mode value=2> $text{'acl_uedit_only'}\n";
-printf "<input name=can size=40> %s<br>\n",
-	&user_chooser_button("can", 1);
-print "<input type=radio name=mode value=3> $text{'acl_uedit_except'}\n";
-printf "<input name=cannot size=40> %s<br>\n",
-	&user_chooser_button("cannot", 1);
+# Users to include
+print &ui_table_row($text{'export_who'},
+	&ui_radio_table("mode", 0,
+		[ [ 0, $text{'export_who'} ],
+		  [ 2, $text{'acl_uedit_only'},
+			&ui_textbox("can", undef, 40)." ".
+			&user_chooser_button("can", 1) ],
+		  [ 3, $text{'acl_uedit_except'},
+			&ui_textbox("cannot", undef, 40)." ".
+			&user_chooser_button("cannot", 1) ],
+		  [ 4, $text{'acl_uedit_uid'},
+		        &ui_textbox("uid", undef, 6)." - ".
+			&ui_textbox("uid2", undef, 6) ],
+		  [ 5, $text{'acl_uedit_group'},
+			&ui_textbox("group", undef, 40)." ".
+			&group_chooser_button("group", 1)."<br>".
+			&ui_checkbox("sec", 1, $text{'acl_uedit_sec'}, 0) ],
+		  [ 8, $text{'acl_uedit_gid'},
+		        &ui_textbox("gid", undef, 6)." - ".
+			&ui_textbox("gid2", undef, 6) ],
+		 ]));
 
-print "<input type=radio name=mode value=4> $text{'acl_uedit_uid'}\n";
-print "<input name=uid size=6> - \n";
-print "<input name=uid2 size=6><br>\n";
-
-print "<input type=radio name=mode value=5> $text{'acl_uedit_group'}\n";
-printf "<input name=group size=40> %s<br>\n",
-	&group_chooser_button("group", 1);
-printf "%s <input type=checkbox name=sec value=1> %s<br>\n",
-	"&nbsp;" x 5, $text{'acl_uedit_sec'};
-
-print "<input type=radio name=mode value=8> $text{'acl_uedit_gid'}\n";
-print "<input name=gid size=6> - \n";
-print "<input name=gid2 size=6><br>\n";
-print "</td> </tr>\n",
-
-print "<tr> <td><input type=submit value=\"$text{'export_ok'}\"></td> </tr>\n";
-print "</table></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'export_ok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
