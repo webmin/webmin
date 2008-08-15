@@ -94,7 +94,7 @@ elsif ( $in{'gid_def'} eq '2' ) {
 		}
 	}
 
-@mems = &split_quoted_string($in{members});
+@mems = split(/\r?\n/, $in{'members'});
 $group{'members'} = join(',', @mems);
 $group{'gid'} = $in{'gid'};
 

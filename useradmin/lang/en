@@ -185,6 +185,8 @@ gedit_cothers=Create group in other modules?
 gedit_mothers=Modify group in other modules?
 gedit_gid_calc=Calculated
 gedit_gid_def=Automatic
+gedit_allu=All users
+gedit_selu=Users in group
 
 gsave_err=Failed to save group
 gsave_eedit=You cannot edit this group

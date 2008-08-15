@@ -545,14 +545,18 @@ $rv .= "</select>\n";
 return $rv;
 }
 
-# ui_multi_select(name, &values, &options, size, [add-if-missing], [disabled?])
+# ui_multi_select(name, &values, &options, size, [add-if-missing], [disabled?],
+#                 [options-title, values-title], [width])
 # Returns HTML for selecting many of many from a list. By default, this is
 # implemented using two <select> lists and Javascript buttons to move elements
-# between them.
+# between them. The resulting input value is \n separated.
+# XXX IE testing
+# XXX mobile theme
 sub ui_multi_select
 {
 return &theme_ui_multi_select(@_) if (defined(&theme_ui_multi_select));
-local ($name, $values, $opts, $size, $missing, $dis) = @_;
+local ($name, $values, $opts, $size, $missing, $dis,
+       $opts_title, $vals_title, $width) = @_;
 local $rv;
 local %already = map { $_->[0], $_ } @$values;
 local $leftover = [ grep { !$already{$_->[0]} } @$opts ];
@@ -560,19 +564,73 @@ if ($missing) {
 	local %optsalready = map { $_->[0], $_ } @$opts;
 	push(@$opts, grep { !$optsalready{$_->[0]} } @$values);
 	}
+if (!defined($width)) {
+	$width = "200";
+	}
+local $wstyle = $width ? "style='width:$width'" : "";
 
-# XXX javascript?
-$rv .= "<table cellpadding=0 cellspacing=0><tr>";
+if (!$main::ui_multi_select_donejs++) {
+	$rv .= &ui_multi_select_javascript();
+	}
+$rv .= "<table cellpadding=0 cellspacing=0 class='ui_multi_select'>";
+if (defined($opts_title)) {
+	$rv .= "<tr class='ui_multi_select_heads'> ".
+	       "<td><b>$opts_title</b></td> ".
+	       "<td></td> <td><b>$vals_title</b></td> </tr>";
+	}
+$rv .= "<tr class='ui_multi_select_row'>";
 $rv .= "<td>".&ui_select($name."_opts", [ ], $leftover,
-			 $size, 1, 0, $dis)."</td>\n";
+			 $size, 0, 0, $dis, $wstyle)."</td>\n";
 $rv .= "<td>".&ui_button("->", undef, $dis,
-			 "onClick='multi_select_add(\"$name\")'")."<br>".
+		 "onClick='multi_select_move(\"$name\", form, 1)'")."<br>".
 	      &ui_button("<-", undef, $dis,
-			 "onClick='multi_select_remove(\"$name\")'")."</td>\n";
-$rv .= "<td>".&ui_select($name, [ ], $values,
-			 $size, 1, 0, $dis)."</td>\n";
+		 "onClick='multi_select_move(\"$name\", form, 0)'")."</td>\n";
+$rv .= "<td>".&ui_select($name."_vals", [ ], $values,
+			 $size, 0, 0, $dis, $wstyle)."</td>\n";
 $rv .= "</tr></table>\n";
+$rv .= &ui_hidden($name, join("\n", map { $_->[0] } @$values));
 return $rv;
+}
+
+# ui_multi_select_javascript()
+# Returns <script> section for left/right select boxes
+sub ui_multi_select_javascript
+{
+return &theme_ui_multiselect_javascript()
+	if (defined(&theme_ui_multiselect_javascript));
+return <<EOF;
+<script>
+// Move an element from the options list to the values list, or vice-versa
+function multi_select_move(name, f, dir)
+{
+var opts = f.elements[name+"_opts"];
+var vals = f.elements[name+"_vals"];
+var opts_idx = opts.selectedIndex;
+var vals_idx = vals.selectedIndex;
+if (dir == 1 && opts_idx >= 0) {
+	// Moving from options to selected list
+	var o = opts.options[opts_idx];
+	vals.options[vals.options.length] = o;
+	opts.remove(opts_idx);
+	}
+else if (dir == 0 && vals_idx >= 0) {
+	// Moving the other way
+	var o = vals.options[vals_idx];
+	opts.options[opts.options.length] = o;
+	vals.remove(vals_idx);
+	}
+// Fill in hidden field
+var hid = f.elements[name];
+if (hid) {
+	var hv = new Array();
+	for(var i=0; i<vals.options.length; i++) {
+		hv.push(vals.options[i].value);
+		}
+	hid.value = hv.join("\\n");
+	}
+}
+</script>
+EOF
 }
 
 # ui_radio(name, value, &options, [disabled?])

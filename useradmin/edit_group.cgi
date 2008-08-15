@@ -33,90 +33,33 @@ print &ui_table_row(&hlink($text{'gedit_group'}, "ggroup"),
 		 : "<tt>$group{'group'}</tt>");
 
 # Group ID
-# XXX massively simplify!!
-print "<td valign=middle>",&hlink("<b>$text{'gedit_gid'}</b>","ggid"),"</td>\n";
-if ($n eq "") {
-    print "<td>\n";
-    $defgid = &allocate_gid(\%gused);
-
-    if ( $access{'calcgid'} && $access{'autogid'} && $access{'usergid'} ) {
-        # Show options for calculated, auto-incremented and user entered GID
-        printf "<input type=radio name=gid_def value=1 %s> %s\n",
-            $config{'gid_mode'} eq '1' ? "checked" : "",
-            $text{'gedit_gid_def'};
-        printf "<input type=radio name=gid_def value=2 %s> %s\n",
-            $config{'gid_mode'} eq '2' ? "checked" : "",
-            $text{'gedit_gid_calc'};
-        printf "<input type=radio name=gid_def value=0 %s> %s\n",
-            $config{'gid_mode'} eq '0' ? "checked" : "",
-	    "<input name=gid size=10 value='$defgid'>";
-    }
-
-    if ( $access{'calcgid'} && $access{'autogid'} && !$access{'usergid'} ) {
-        # Show options for calculated and auto-incremented GID
-        printf "<input type=radio name=gid_def value=1 %s> %s\n",
-            $config{'gid_mode'} eq '1' ? "checked" : "",
-            $text{'gedit_gid_def'};
-        printf "<input type=radio name=gid_def value=2 %s> %s\n",
-            $config{'gid_mode'} eq '2' ? "checked" : "",
-            $text{'gedit_gid_calc'};
-    }
-
-    if ( $access{'calcgid'} && !$access{'autogid'} && $access{'usergid'} ) {
-        # Show options for calculated and user entered GID
-        printf "<input type=radio name=gid_def value=2 %s> %s\n",
-            $config{'gid_mode'} eq '2' ? "checked" : "",
-            $text{'gedit_gid_calc'};
-        printf "<input type=radio name=gid_def value=0 %s> %s\n",
-            $config{'gid_mode'} eq '0' ? "checked" : "",
-	    "<input name=gid size=10 value='$defgid'>";
-    }
-
-    if ( !$access{'calcgid'} && $access{'autogid'} && $access{'usergid'} ) {
-        # Show options for auto-incremented and user entered GID
-        printf "<input type=radio name=gid_def value=1 %s> %s\n",
-            $config{'gid_mode'} eq '1' ? "checked" : "",
-            $text{'gedit_gid_def'};
-        printf "<input type=radio name=gid_def value=0 %s> %s\n",
-            $config{'gid_mode'} eq '0' ? "checked" : "",
-	    "<input name=gid size=10 value='$defgid'>";
-    }
-
-    if ( $access{'calcgid'} && !$access{'autogid'} && !$access{'usergid'} ) {
-        # Hidden field  for calculated GID
-	print "<input type=hidden name=gid_def value=2>";
-	print "$text{'gedit_gid_calc'} from Berkeley style cksum\n";
-    }
-
-    if ( !$access{'calcgid'} && $access{'autogid'} && !$access{'usergid'} ) {
-        # Hidden field for auto-incremented GID
-	print "<input type=hidden name=gid_def value=1>";
-	print "$text{'gedit_gid_calc'}\n";
-    }
-
-    if ( !$access{'calcgid'} && !$access{'autogid'} && $access{'usergid'} ) {
-        # Show field for user entered GID
-	print "<input type=hidden name=gid_def value=0>";
-	print "GID: <input name=gid size=10 value='$defgid'>\n";
-    }
-
-    if ( !$access{'calcgid'} && !$access{'autogid'} && !$access{'usergid'} ) {
-        if ( $config{'gid_mode'} eq '0' ) {
-          print "<input type=hidden name=gid_def value=0>";
-          print "GID: <input name=gid size=10 value='$defgid'>\n";
-        } else {
-          print "<input type=hidden name=gid_def value=$config{'gid_mode'}>";
-          print "$text{'gedit_gid_def'}\n" if ( $config{'gid_mode'} eq '1' );
-          print "$text{'gedit_gid_calc'}\n" if ( $config{'gid_mode'} eq '2' );
-        }
-    }
-    print "</td></tr>\n";
+if ($n ne "") {
+	# Existing group, just show field to edit
+	$gidfield = &ui_textbox("gid", $group{'gid'}, 10);
 	}
 else {
-	print "<td valign=top><input name=gid size=10 ",
-	      "value=\"$group{'gid'}\"></td>\n";
+	# Work out which GID modes are available
+	@gidmodes = ( );
+	$defgid = &allocate_gid(\%gused);
+	if ($access{'autogid'}) {
+		push(@gidmodes, [ 1, $text{'gedit_gid_def'} ]);
+		}
+	if ($access{'calcgid'}) {
+		push(@gidmodes, [ 2, $text{'gedit_gid_calc'} ]);
+		}
+	if ($access{'usergid'}) {
+		push(@gidmodes, [ 0, &ui_textbox("gid", $defgid, 10) ]);
+		}
+	if (@gidmodes == 1) {
+		$gidfield = &ui_hidden("gid_def", $gidmodes[0]->[0]).
+			    $gidmodes[0]->[1];
+		}
+	else {
+		$gidfield = &ui_radio("gid_def", $config{'gid_mode'},
+				      \@gidmodes);
+		}
 	}
-print "</tr>\n";
+print &ui_table_row(&hlink($text{'gedit_gid'}, "ggid"), $gidfield);
 
 # Group password (rarely used, but..)
 print &ui_table_row(&hlink($text{'pass'}, "gpasswd"),
@@ -128,17 +71,20 @@ print &ui_table_row(&hlink($text{'pass'}, "gpasswd"),
 		       &ui_textbox("pass", undef, 15) ] ]));
 
 # Member chooser
-# XXX doesn't work yet!
 print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
 	&ui_multi_select("members",
 		[ map { [ $_, $_ ] } split(/,/ , $group{'members'}) ],
 		[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
-		10, 1));
+		10, 1, 0,
+		$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
+
+print &ui_table_end();
 
 # Section for on-change and on-create events
 if ($n ne "") {
 	if ($access{'chgid'} == 1 || $access{'mothers'} == 1) {
-		print &ui_table_start($text{'onsave'}, "width=100%", 2);
+		print &ui_table_start($text{'onsave'}, "width=100%", 2,
+				      [ "width=30%" ]);
 
 		# Change file GIDs on save
 		if ($access{'chgid'} == 1) {
