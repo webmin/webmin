@@ -43,7 +43,7 @@ edit_fstype=Filesystem type
 edit_fsmounted=Mounted?
 edit_fsadd=Add Filesystem Of Type:
 edit_fsnone=No additional filesystems have been defined yet.
-edit_rctl=Resouce controls
+edit_rctl=Ressource controls
 edit_rctlname=Resource name
 edit_rctlpriv=Privilege types
 edit_rctllimit=Limits
@@ -85,7 +85,7 @@ delete_doing=Now deleting zone ..
 
 uninstall_title=Un-Install System
 uninstall_rusure=Are you sure you want to un-install the system software from zone $1? All files within its private filesystems will be lost.
-uninstall_err=Failed to un-install zone
+uninstall_err=Failed to un-install system software from zone
 uninstall_doing=Now un-installing system from zone ..
 
 install_title=Install System
