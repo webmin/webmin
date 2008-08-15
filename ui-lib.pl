@@ -545,6 +545,36 @@ $rv .= "</select>\n";
 return $rv;
 }
 
+# ui_multi_select(name, &values, &options, size, [add-if-missing], [disabled?])
+# Returns HTML for selecting many of many from a list. By default, this is
+# implemented using two <select> lists and Javascript buttons to move elements
+# between them.
+sub ui_multi_select
+{
+return &theme_ui_multi_select(@_) if (defined(&theme_ui_multi_select));
+local ($name, $values, $opts, $size, $missing, $dis) = @_;
+local $rv;
+local %already = map { $_->[0], $_ } @$values;
+local $leftover = [ grep { !$already{$_->[0]} } @$opts ];
+if ($missing) {
+	local %optsalready = map { $_->[0], $_ } @$opts;
+	push(@$opts, grep { !$optsalready{$_->[0]} } @$values);
+	}
+
+# XXX javascript?
+$rv .= "<table cellpadding=0 cellspacing=0><tr>";
+$rv .= "<td>".&ui_select($name."_opts", [ ], $leftover,
+			 $size, 1, 0, $dis)."</td>\n";
+$rv .= "<td>".&ui_button("->", undef, $dis,
+			 "onClick='multi_select_add(\"$name\")'")."<br>".
+	      &ui_button("<-", undef, $dis,
+			 "onClick='multi_select_remove(\"$name\")'")."</td>\n";
+$rv .= "<td>".&ui_select($name, [ ], $values,
+			 $size, 1, 0, $dis)."</td>\n";
+$rv .= "</tr></table>\n";
+return $rv;
+}
+
 # ui_radio(name, value, &options, [disabled?])
 # Returns HTML for a series of radio buttons
 sub ui_radio

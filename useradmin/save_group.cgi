@@ -7,6 +7,12 @@ require 'timelocal.pl';
 &error_setup($text{'gsave_err'});
 &ReadParse();
 
+if ($in{'delete'}) {
+	# Redirect to deletion page
+	&redirect("delete_group.cgi?num=$in{'num'}");
+	return;
+	}
+
 # Build list of used GIDs
 &build_group_used(\%gused);
 

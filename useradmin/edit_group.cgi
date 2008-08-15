@@ -4,9 +4,11 @@
 
 require './user-lib.pl';
 &ReadParse();
+
+# Get group and show page header
 $n = $in{'num'};
 if ($n eq "") {
-	$access{'gcreate'}==1 || &error($text{'gedit_ecreate'});
+	$access{'gcreate'} == 1 || &error($text{'gedit_ecreate'});
 	&ui_print_header(undef, $text{'gedit_title2'}, "", "create_group");
 	}
 else {
@@ -16,26 +18,22 @@ else {
 		&error($text{'gedit_eedit'});
 	&ui_print_header(undef, $text{'gedit_title'}, "", "edit_group");
 	}
+@ulist = &list_users();
 
 &build_group_used(\%gused);
 
-print "<form action=\"save_group.cgi\" method=post>\n";
-if ($n ne "") {
-	print "<input type=hidden name=num value=\"$n\">\n";
-	}
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'gedit_details'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of form
+print &ui_form_start("save_group.cgi", "post");
+print &ui_hidden("num", $n) if ($n ne "");
+print &ui_table_start($text{'gedit_details'}, "width=100%", 4);
 
-print "<tr> <td valign=top>",&hlink("<b>$text{'gedit_group'}</b>","ggroup"),
-      "</td>\n";
-if ($n eq "") {
-	print "<td valign=top><input name=group size=10></td>\n";
-	}
-else {
-	print "<td valign=top><tt>$group{'group'}</tt></td>\n";
-	}
+# Group name
+print &ui_table_row(&hlink($text{'gedit_group'}, "ggroup"),
+	$n eq "" ? &ui_textbox("group", undef, 20)
+		 : "<tt>$group{'group'}</tt>");
 
+# Group ID
+# XXX massively simplify!!
 print "<td valign=middle>",&hlink("<b>$text{'gedit_gid'}</b>","ggid"),"</td>\n";
 if ($n eq "") {
     print "<td>\n";
@@ -120,84 +118,74 @@ else {
 	}
 print "</tr>\n";
 
-print "<tr> <td valign=top>",&hlink("<b>$text{'pass'}</b>","gpasswd"),"</td>\n";
-printf "<td valign=top><input type=radio name=passmode value=0 %s> $text{'none2'}<br>\n",
-	$group{'pass'} eq "" ? "checked" : "";
-printf "<input type=radio name=passmode value=1 %s> $text{'encrypted'}\n",
-	$group{'pass'} eq "" ? "" : "checked";
-print "<input name=encpass size=13 value=\"$group{'pass'}\"><br>\n";
-print "<input type=radio name=passmode value=2 %s> $text{'clear'}\n";
-print "<input name=pass size=15></td>\n";
+# Group password (rarely used, but..)
+print &ui_table_row(&hlink($text{'pass'}, "gpasswd"),
+	&ui_radio_table("passmode", $group{'pass'} eq "" ? 0 : 1,
+		[ [ 0, $text{'none2'} ],
+		  [ 1, $text{'encrypted'},
+		       &ui_textbox("encpass", $group{'pass'}, 20) ],
+		  [ 2, $text{'clear'},
+		       &ui_textbox("pass", undef, 15) ] ]));
 
 # Member chooser
-local $w = 500;
-local $h = 200;
-if ($gconfig{'db_sizeusers'}) {
-	($w, $h) = split(/x/, $gconfig{'db_sizeusers'});
-	}
-print "<td valign=top>",&hlink("<b>$text{'gedit_members'}</b>","gmembers"),
-      "</td>\n";
-print "<td><table><tr><td><textarea wrap=auto name=members rows=5 cols=10>",
-	join("\n", split(/,/ , $group{'members'})),"</textarea></td>\n";
-print "<td valign=top><input type=button onClick='ifield = document.forms[0].members; chooser = window.open(\"my_user_chooser.cgi?multi=1&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\"></td></tr></table></td> </tr>\n";
-print "</table></td></tr></table><p>\n";
+# XXX doesn't work yet!
+print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
+	&ui_multi_select("members",
+		[ map { [ $_, $_ ] } split(/,/ , $group{'members'}) ],
+		[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
+		10, 1));
 
+# Section for on-change and on-create events
 if ($n ne "") {
 	if ($access{'chgid'} == 1 || $access{'mothers'} == 1) {
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'onsave'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table>\n";
+		print &ui_table_start($text{'onsave'}, "width=100%", 2);
 
+		# Change file GIDs on save
 		if ($access{'chgid'} == 1) {
-			print "<tr> <td>",&hlink($text{'chgid'},"gchgid"),"</td>\n";
-			print "<td><input type=radio name=chgid value=0 checked> $text{'no'}</td>\n";
-			print "<td><input type=radio name=chgid value=1> $text{'gedit_homedirs'}</td>\n";
-			print "<td><input type=radio name=chgid value=2> $text{'gedit_allfiles'}</td> </tr>\n";
+			print &ui_table_row(
+				&hlink($text{'chgid'}, "gchgid"),
+				&ui_radio("chgid", 0,
+				  [ [ 0, $text{'no'} ],
+				    [ 1, $text{'gedit_homedirs'} ],
+				    [ 2, $text{'gedit_allfiles'} ] ]));
 			}
 
+		# Update in other modules?
 		if ($access{'mothers'} == 1) {
-			print "<tr> <td>",&hlink($text{'gedit_mothers'},"others"),"</td>\n";
-			printf "<td><input type=radio name=others value=1 %s> $text{'yes'}</td>\n",
-				$config{'default_other'} ? "checked" : "";
-			printf "<td><input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-				$config{'default_other'} ? "" : "checked";
+			print &ui_table_row(
+				&hlink($text{'gedit_mothers'}, "others"),
+				&ui_radio("others", $config{'default_other'},
+					  [ [ 1, $text{'yes'} ],
+					    [ 0, $text{'no'} ] ]));
 			}
 
-		print "</table></td> </tr></table><p>\n";
+		print &ui_table_end();
 		}
 	}
 else {
 	if ($access{'cothers'} == 1) {
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'uedit_oncreate'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table>\n";
+		print &ui_table_start($text{'uedit_oncreate'}, "width=100%", 2);
 
-		if ($access{'cothers'} == 1) {
-			print "<tr> <td>",&hlink($text{'gedit_cothers'},"others"),"</td>\n";
-			printf "<td><input type=radio name=others value=1 %s> $text{'yes'}</td>\n",
-				$config{'default_other'} ? "checked" : "";
-				
-			printf "<td><input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-				$config{'default_other'} ? "" : "checked";
-			}
+		# Create in other modules?
+		print &ui_table_row(
+			&hlink($text{'gedit_cothers'}, "others"),
+			&ui_radio("others", $config{'default_other'},
+				  [ [ 1, $text{'yes'} ],
+				    [ 0, $text{'no'} ] ]));
 
-		print "</table></td> </tr></table><p>\n";
+		print &ui_table_end();
 		}
 	}
 
+# Save/delete/create buttons
 if ($n ne "") {
-	print "<table width=100%>\n";
-	print "<tr> <td><input type=submit value=\"$text{'save'}\"></td>\n";
-
-	if ($access{'gdelete'}) {
-		print "</form><form action=\"delete_group.cgi\">\n";
-		print "<input type=hidden name=num value=\"$n\">\n";
-		print "<td align=right><input type=submit value=\"$text{'delete'}\"></td> </tr>\n";
-		}
-	print "</form></table><p>\n";
+	print &ui_form_end([
+		[ undef, $text{'save'} ],
+		$access{'gdelete'} ? ( [ 'delete', $text{'delete'} ] ) : ( ),
+		]);
 	}
 else {
-	print "<input type=submit value=\"$text{'create'}\"></form><p>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 
 &ui_print_footer("index.cgi?mode=groups", $text{'index_return'});

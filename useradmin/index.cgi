@@ -161,7 +161,6 @@ elsif (@glist) {
 		}
 	}
 elsif ($access{'gcreate'} == 1) {
-	print &ui_hr();
 	if (@allglist) {
 		print "<b>$text{'index_notgroups'}</b>. <p>\n";
 		}
@@ -179,7 +178,6 @@ print &ui_tabs_end(1);
 
 # Buttons to show recent logins and logged-in users
 if ($access{'logins'}) {
-	print &ui_hr();
 	print &ui_buttons_start();
 
 	# Show recent logins
@@ -201,7 +199,6 @@ if ($access{'logins'}) {
 			$text{'index_whodesc'},
 			);
 		}
-	print "</tr></table>\n";
 
 	print &ui_buttons_end();
 	}
