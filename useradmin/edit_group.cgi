@@ -71,6 +71,7 @@ print &ui_table_row(&hlink($text{'pass'}, "gpasswd"),
 		       &ui_textbox("pass", undef, 15) ] ]));
 
 # Member chooser
+@ulist = &sort_users(\@ulist, $config{'sort_mode'});
 print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
 	&ui_multi_select("members",
 		[ map { [ $_, $_ ] } split(/,/ , $group{'members'}) ],

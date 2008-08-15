@@ -551,7 +551,6 @@ return $rv;
 # implemented using two <select> lists and Javascript buttons to move elements
 # between them. The resulting input value is \n separated.
 # XXX IE testing
-# XXX mobile theme
 sub ui_multi_select
 {
 return &theme_ui_multi_select(@_) if (defined(&theme_ui_multi_select));
@@ -610,13 +609,13 @@ var vals_idx = vals.selectedIndex;
 if (dir == 1 && opts_idx >= 0) {
 	// Moving from options to selected list
 	var o = opts.options[opts_idx];
-	vals.options[vals.options.length] = o;
+	vals.options[vals.options.length] = new Option(o.text, o.value);
 	opts.remove(opts_idx);
 	}
 else if (dir == 0 && vals_idx >= 0) {
 	// Moving the other way
 	var o = vals.options[vals_idx];
-	opts.options[opts.options.length] = o;
+	opts.options[opts.options.length] = new Option(o.text, o.value);
 	vals.remove(vals_idx);
 	}
 // Fill in hidden field
