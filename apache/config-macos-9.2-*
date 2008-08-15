@@ -1,0 +1,16 @@
+httpd_path=/usr/sbin/httpd
+apachectl_path=/usr/sbin/apachectl
+start_cmd=
+httpd_dir=/etc/apache2
+virt_file=
+stop_cmd=
+httpd_conf=/etc/apache2/httpd.conf
+show_list=0
+mime_types=/etc/apache2/mime.types
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1
+auto_mods=1
