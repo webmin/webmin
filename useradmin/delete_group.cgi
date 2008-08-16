@@ -71,17 +71,17 @@ else {
 		}
 
 	# Ask if the user is sure
-	print "<form action=delete_group.cgi>\n";
-	print "<input type=hidden name=num value=\"$in{'num'}\">\n";
-	print "<input type=hidden name=group value=\"$group->{'group'}\">\n";
-	print "<input type=hidden name=confirmed value=1>\n";
-	print "<center><b>",&text('gdel_sure', $group->{'group'}),"</b><p>\n";
-	print "<input type=submit value=\"$text{'gdel_del'}\">\n";
-	printf "<br><input type=checkbox name=others value=1 %s> %s<br>\n",
-		$config{'default_other'} ? "checked" : "",
-		$text{'gdel_dothers'};
-	print "</center><p>\n";
-	print "</form>\n";
+	print "<center>\n";
+	print &ui_form_start("delete_group.cgi");
+	print &ui_hidden("num", $in{'num'});
+	print &ui_hidden("group", $group->{'group'});
+	print "<b>",&text('gdel_sure', $group->{'group'}),"</b><p>\n";
+	print &ui_submit($text{'gdel_del'}, "confirm"),"<br>\n";
+	print &ui_checkbox("others", 1, $text{'gdel_dothers'},
+			   $config{'default_other'});
+	print &ui_form_end();
+	print "</center>\n";
+
 	&ui_print_footer("", $text{'index_return'});
 	}
 

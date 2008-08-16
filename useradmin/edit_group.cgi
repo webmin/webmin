@@ -111,7 +111,8 @@ if ($n ne "") {
 	}
 else {
 	if ($access{'cothers'} == 1) {
-		print &ui_table_start($text{'uedit_oncreate'}, "width=100%", 2);
+		print &ui_table_start($text{'uedit_oncreate'}, "width=100%", 2,
+				      [ "width=30%" ]);
 
 		# Create in other modules?
 		print &ui_table_row(

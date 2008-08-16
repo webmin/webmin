@@ -5,6 +5,8 @@
 require './user-lib.pl';
 require 'timelocal.pl';
 &ReadParse();
+
+# Show header and get the user
 $n = $in{'num'};
 if ($n eq "") {
 	$access{'ucreate'} || &error($text{'uedit_ecreate'});
@@ -35,175 +37,120 @@ if (%uinfo) {
 	push(@shlist, $uinfo{'shell'});
 	}
 
-print "<form action=save_user.cgi method=post>\n";
-if ($n ne "") {
-	print "<input type=hidden name=num value=\"$n\">\n";
-	}
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'uedit_details'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of the form
+print &ui_form_start("save_user.cgi", "post");
+print &ui_hidden("num", $n) if ($n ne "");
+print &ui_table_start($text{'uedit_details'}, "width=100%", 4);
 
+# Username
 print "<tr> <td>",&hlink("<b>$text{'user'}</b>","user"),"</td>\n";
 if ($n eq "" && $config{'new_user_group'} && $access{'gcreate'}) {
 	$onch = "newgid.value = user.value";
 	}
 if ($access{'urename'} || $n eq "") {
-	print "<td><input name=user size=20 value=\"$uinfo{'user'}\" onChange='$onch'></td>\n";
+	print &ui_table_row(&hlink($text{'user'}, "user"),
+		&ui_textbox("user", $uinfo{'user'}, 20, 0, undef,
+			    "onChange='$onch'"));
 	}
 else {
-	print "<td><tt>$uinfo{'user'}</tt></td>\n";
+	print &ui_table_row(&hlink($text{'user'}, "user"),
+		"<tt>".&html_escape($uinfo{'user'})."</tt>");
 	print &ui_hidden("user", $uinfo{'user'}),"\n";
 	}
 
-print "<td>",&hlink("<b>$text{'uid'}</b>","uid"),"</td>\n";
-if ($n eq "") {
-    $defuid = &allocate_uid(\%used);
-    print "<td>\n";
-
-    if ( $access{'calcuid'} && $access{'autouid'} && $access{'useruid'} ) {
-        # Show options for calculated, auto-incremented and user entered UID
-        printf "<input type=radio name=uid_def value=1 %s> %s\n",
-            $config{'uid_mode'} eq '1' ? "checked" : "",
-            $text{'uedit_uid_def'};
-        printf "<input type=radio name=uid_def value=2 %s> %s\n",
-            $config{'uid_mode'} eq '2' ? "checked" : "",
-            $text{'uedit_uid_calc'};
-        printf "<input type=radio name=uid_def value=0 %s> %s\n",
-            $config{'uid_mode'} eq '0' ? "checked" : "",
-	    "<input name=uid size=10 value='$defuid'>";
-    }
-
-    if ( $access{'calcuid'} && $access{'autouid'} && !$access{'useruid'} ) {
-	# Show options for calculated and auto-incremented UID
-        printf "<input type=radio name=uid_def value=1 %s> %s\n",
-            $config{'uid_mode'} eq '1' ? "checked" : "",
-            $text{'uedit_uid_def'};
-        printf "<input type=radio name=uid_def value=2 %s> %s\n",
-            $config{'uid_mode'} eq '2' ? "checked" : "",
-            $text{'uedit_uid_calc'};
-    }
-
-    if ( $access{'calcuid'} && !$access{'autouid'} && $access{'useruid'} ) {
-	# Show options for calculated and user entered UID
-        printf "<input type=radio name=uid_def value=2 %s> %s\n",
-            $config{'uid_mode'} eq '2' ? "checked" : "",
-            $text{'uedit_uid_calc'};
-        printf "<input type=radio name=uid_def value=0 %s> %s\n",
-            $config{'uid_mode'} eq '0' ? "checked" : "",
-	    "<input name=uid size=10 value='$defuid'>";
-    }
-
-    if ( !$access{'calcuid'} && $access{'autouid'} && $access{'useruid'} ) {
-        # Show options for auto-incremented and user entered UID
-        printf "<input type=radio name=uid_def value=1 %s> %s\n",
-            $config{'uid_mode'} eq '1' ? "checked" : "",
-            $text{'uedit_uid_def'};
-        printf "<input type=radio name=uid_def value=0 %s> %s\n",
-            $config{'uid_mode'} eq '0' ? "checked" : "",
-	    "<input name=uid size=10 value='$defuid'>";
-    }
-
-    if ( $access{'calcuid'} && !$access{'autouid'} && !$access{'useruid'} ) {
-        # Hidden field  for calculated UID
-	print "<input type=hidden name=uid_def value=2>";
-	print "$text{'uedit_uid_calc'}\n";
-    }
-
-    if ( !$access{'calcuid'} && $access{'autouid'} && !$access{'useruid'} ) {
-        # Hidden field for auto-incremented UID
-	print "<input type=hidden name=uid_def value=1>";
-	print "$text{'uedit_uid_calc'}\n";
-    }
-
-    if ( !$access{'calcuid'} && !$access{'autouid'} && $access{'useruid'} ) {
-        # Show field for user entered UID
-	print "<input type=hidden name=uid_def value=0>";
-	print "UID: <input name=uid size=10 value='$defuid'>\n";
-    }
-
-    if ( !$access{'calcuid'} && !$access{'autouid'} && !$access{'useruid'} ) {
-        if ( $config{'uid_mode'} eq '0' ) {
-          print "<input type=hidden name=uid_def value=0>";
-          print "UID: <input name=uid size=10 value='$defuid'>\n";
-        } else {
-          print "<input type=hidden name=uid_def value=$config{'uid_mode'}>";
-          print "$text{'uedit_uid_def'}\n" if ( $config{'uid_mode'} eq '1' );
-          print "$text{'uedit_uid_calc'}\n" if ( $config{'uid_mode'} eq '2' );
-        }
-    }
-    print "</td></tr>\n";
-    }
-else {
-	print "<td><input name=uid size=10 value='$uinfo{'uid'}'></td> </tr>\n";
+# User ID
+if ($n ne "") {
+	# Existing user, just show field to edit
+	$uidfield = &ui_textbox("uid", $user{'uid'}, 10);
 	}
+else {
+	# Work out which UID modes are available
+	@uidmodes = ( );
+	$defuid = &allocate_uid(\%used);
+	if ($access{'autouid'}) {
+		push(@uidmodes, [ 1, $text{'gedit_uid_def'} ]);
+		}
+	if ($access{'calcuid'}) {
+		push(@uidmodes, [ 2, $text{'gedit_uid_calc'} ]);
+		}
+	if ($access{'useruid'}) {
+		push(@uidmodes, [ 0, &ui_textbox("uid", $defuid, 10) ]);
+		}
+	if (@uidmodes == 1) {
+		$uidfield = &ui_hidden("uid_def", $uidmodes[0]->[0]).
+			    $uidmodes[0]->[1];
+		}
+	else {
+		$uidfield = &ui_radio("uid_def", $config{'uid_mode'},
+				      \@uidmodes);
+		}
+	}
+print &ui_table_row(&hlink($text{'uid'}, "uid"), $uidfield);
 
+# Real name
 if ($config{'extra_real'}) {
+	# Has separate name, office, work and home phone parts
 	local @real = split(/,/, $uinfo{'real'}, 5);
-	print "<tr> <td>",&hlink("<b>$text{'real'}</b>","real"),"</td>\n";
-	print "<td><input name=real size=20 value=\"$real[0]\"></td>\n";
+	print &ui_table_row(&hlink($text{'real'}, "real"),
+		&ui_textbox("real", $real[0], 20));
 
-	print "<td>",&hlink("<b>$text{'office'}</b>","office"),"</td>\n";
-	print "<td><input name=office size=20 value=\"$real[1]\"></td> </tr>\n";
+	print &ui_table_row(&hlink($text{'office'}, "office"),
+		&ui_textbox("office", $real[1], 20));
 
-	print "<tr> <td>",&hlink("<b>$text{'workph'}</b>","workph"),"</td>\n";
-	print "<td><input name=workph size=20 value=\"$real[2]\"></td>\n";
+	print &ui_table_row(&hlink($text{'workph'}, "workph"),
+		&ui_textbox("workph", $real[2], 20));
 
-	print "<td>",&hlink("<b>$text{'homeph'}</b>","homeph"),"</td>\n";
-	print "<td><input name=homeph size=20 value=\"$real[3]\"></td> </tr>\n";
+	print &ui_table_row(&hlink($text{'homeph'}, "homeph"),
+		&ui_textbox("homeph", $real[3], 20));
 
-	print "<tr> <td>",&hlink("<b>$text{'extra'}</b>","extra"),"</td>\n";
-	print "<td><input name=extra size=20 value=\"$real[4]\"></td>\n";
+	print &ui_table_row(&hlink($text{'extra'}, "extra"),
+		&ui_textbox("extra", $real[4], 20));
 	}
 else {
-	print "<tr> <td>",&hlink("<b>$text{'real'}</b>","real"),"</td>\n";
-	print "<td><input name=real size=20 value=\"$uinfo{'real'}\"></td>\n";
+	# Just a name
+	print &ui_table_row(&hlink($text{'real'}, "real"),
+		&ui_textbox("real", $uinfo{'real'}, 20));
 	}
 
 # Show input for home directory
-print "<td>",&hlink("<b>$text{'home'}</b>","home"),"</td>\n";
 if ($access{'autohome'}) {
-	print "<td>$text{'uedit_auto'} ",
-	      $n eq "" ? "" : "( <tt>$uinfo{'home'}</tt> )",
-	      "</td>\n";
+	# AUtomatic, cannot be changed
+	$homefield = $text{'uedit_auto'}.
+		     ($n eq "" ? "" : "( <tt>$uinfo{'home'}</tt> );
 	}
 else {
-	print "<td>\n";
 	if ($config{'home_base'}) {
+		# Can be automatic
 		local $grp = &my_getgrgid($uinfo{'gid'});
 		local $hb = $n eq "" || &auto_home_dir($config{'home_base'},
 			    $uinfo{'user'}, $grp) eq $uinfo{'home'};
-		printf "<input type=radio name=home_base value=1 %s> %s\n",
-			$hb ? "checked" : "", $text{'uedit_auto'};
-		printf "<input type=radio name=home_base value=0 %s>\n",
-			$hb ? "" : "checked";
-		printf "<input name=home size=25 value=\"%s\"> %s\n",
-			$hb ? "" : $uinfo{'home'},
-			&file_chooser_button("home", 1);
+		$homefield = &ui_radio("home_base", $hb ? 1 : 0,
+			[ [ 1, $text{'uedit_auto'} ],
+			  [ 0, &ui_filebox("home", $hb ? "" : $uinfo{'home'},
+					   25, 0, undef, undef, 1) ] ]);
 		}
 	else {
-		print "<input name=home size=25 value=\"$uinfo{'home'}\">\n",
-		      &file_chooser_button("home", 1);
+		# Allow any directory
+		$homefield = &ui_filebox("home", $uinfo{'home'}, 25, 0,
+					 undef, undef, 1);
 		}
 	}
-print "</td> </tr>\n";
+print &ui_table_row(&hlink($text{'home'}, "home"),
+	$homefield);
 
 # Show shell drop-down
-print "<tr> <td valign=top>",&hlink("<b>$text{'shell'}</b>","shell"),"</td>\n";
-print "<td valign=top><select name=shell>\n";
+# XXX other field??
+@shlist = ( );
 if ($access{'shells'} ne "*") {
-	@shlist = %uinfo ? ($uinfo{'shell'}) : ();
+	push(@shlist, $uinfo{'shell'} || [ "", "&lt;None&gt;" ]) if (%uinfo);
 	push(@shlist, split(/\s+/, $access{'shells'}));
 	$shells = 1;
 	}
 $shells = 1 if ($access{'noother'});
 @shlist = &unique(@shlist);
-foreach $s (@shlist) {
-	printf "<option value='%s' %s>%s\n", $s,
-		$s eq $uinfo{'shell'} ? "selected" : "",
-		$s eq "" ? "&lt;None&gt;" : $s;
-	}
-print "<option value=*>$text{'uedit_other'}\n" if (!$shells);
-print "</select></td>\n";
+push(@shlist, [ "*", $text{'uedit_other'} ]) if (!$shells);
+print &ui_table_row(&hlink($text{'shell'}, "shell"),
+	&ui_select("shell", $uinfo{'shell'}, \@shlist));
 
 # Show password field
 $pass = %uinfo ? $uinfo{'pass'} : $config{'lock_string'};
