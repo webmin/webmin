@@ -11,6 +11,7 @@ other_class=Other objectClasses to add to new users,0
 gother_class=Other objectClasses to add to new groups,0
 given=Show fields for given name and surname?,1,1-Yes,0-No
 given_class=Object class to add for given name?,0
+given_order=Order for first name and surname,1,1-Surname&#44; Firstname,0-Firstname Surname
 slappasswd=Full path to <tt>slappasswd</tt> program,0
 
 line9=LDAP attributes,11

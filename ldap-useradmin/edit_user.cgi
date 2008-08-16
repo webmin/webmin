@@ -128,7 +128,14 @@ else {
 if ($config{'given'}) {
 	# Show Full name inputs
 	if ($in{'new'}) {
-		$onch = "onChange='form.real.value = form.firstname.value+\" \"+form.lastname.value'";
+		if ($config{'given_order'} == 0) {
+			# Firstname surname
+			$onch = "onChange='form.real.value = form.firstname.value+\" \"+form.lastname.value'";
+			}
+		else {
+			# Surname, firstname
+			$onch = "onChange='form.real.value = form.lastname.value+\", \"+form.firstname.value'";
+			}
 		}
 	print "<tr> <td><b>$text{'uedit_firstname'}</b></td>\n";
 	print "<td><input name=firstname size=20 value=\"$firstname\" $onch></td>\n";

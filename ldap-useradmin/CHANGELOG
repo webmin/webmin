@@ -58,3 +58,5 @@ Added locking to prevent concurrent writes to the LDAP database, to prevent UID 
 ---- Changes since 1.400 ----
 By default, all new Unix users are given the person object class too, as this seems to be needed in most new LDAP schemas.
 Added support for LDAP SSHA passwords, thanks to Bill Moyers and John Gray.
+---- Changes since 1.430 ----
+The order of the first name and surname in the real name can be changed by a new Module Config setting.
