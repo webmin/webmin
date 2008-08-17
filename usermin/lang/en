@@ -242,6 +242,10 @@ ui_efeedbackmail=Missing or invalid SMTP server
 ui_feedbackhost=Hostname in feedback From: address
 ui_feedbackthis=System's hostname
 ui_hostnamemode=Hostname to display in Usermin
+ui_hnm0=Real hostname
+ui_hnm1=Hostname from URL
+ui_hnm2=Domain name from URL
+ui_hnm3=Other name..
 ui_tabs=Categorise modules on index page?
 
 upgrade_title=Upgrade Usermin
