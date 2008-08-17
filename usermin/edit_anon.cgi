@@ -13,22 +13,22 @@ foreach $a (split(/\s+/, $miniserv{'anonymous'})) {
 		}
 	}
 
-print "<form action=change_anon.cgi>\n";
-print "<table border> <tr $tb>\n";
-print "<td><b>$webmin::text{'anon_url'}</b></td>\n";
-print "<td><b>$text{'anon_user'}</b></td>\n";
-print "</tr>\n";
+print &ui_form_start("change_anon.cgi");
+print &ui_columns_start([ $webmin::text{'anon_url'},
+                          $text{'anon_user'} ]);
+
 push(@anon, scalar(@anon)%2 == 0 ? ( [ ], [ ] ) : ( [ ] ));
-$i = 0;
+
+my $i = 0;
 foreach $a (@anon) {
-	print "<tr $cb>\n";
-	print "<td><input name=url_$i size=30 value='$a->[0]'></td>\n";
-	print "<td><input name=user_$i size=20 value='$a->[1]'></td>\n";
-	print "</tr>\n";
+	print &ui_columns_row([
+	  &ui_textbox("url_$i", $a->[0], 30),
+	  &ui_textbox("user_$i", $a->[1], 20)]);
 	$i++;
-	}
-print "</table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+}
+
+print &ui_columns_end();
+print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
