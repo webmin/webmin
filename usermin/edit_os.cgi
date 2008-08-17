@@ -12,75 +12,79 @@ print $text{'os_desc2'},"<br>\n";
 &get_usermin_config(\%uconfig);
 &get_usermin_miniserv_config(\%miniserv);
 
-print "<form action=change_os.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$webmin::text{'os_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("change_os.cgi", "post");
+print &ui_table_start($webmin::text{'os_header'}, undef, 2, [ "width=30%" ]);
 
 # OS according to Usermin
 $osfile = "$miniserv{'root'}/os_list.txt";
-print "<tr> <td><b>$text{'os_usermin'}</b></td>\n";
-print "<td>",&ui_select("type", $uconfig{'real_os_type'},
-	[ map { [ $_ ] } sort { $a cmp $b } &unique(map { $_->{'realtype'} }
-			 &webmin::list_operating_systems($osfile)) ]),"\n";
-print &ui_textbox("version", $uconfig{'real_os_version'}, 10),"</td> </tr>\n";
+print &ui_table_row($text{'os_usermin'},
+      &ui_select("type", $uconfig{'real_os_type'},
+        [ map { [ $_ ] } sort { $a cmp $b } &unique(map { $_->{'realtype'} }
+          &webmin::list_operating_systems($os_file)) ])." ".
+      &ui_textbox("version", $uconfig{'real_os_version'}, 10));
 
 # Internal OS code
-print "<tr> <td><b>$text{'os_iusermin'}</b></td>\n";
-print "<td>",&ui_select("itype", $uconfig{'os_type'},
-	[ map { [ $_ ] } sort { $a cmp $b } &unique(map { $_->{'type'} }
-			 &webmin::list_operating_systems($osfile)) ]),"\n";
-print &ui_textbox("iversion", $uconfig{'os_version'}, 10),"</td> </tr>\n";
+print &ui_table_row($text{'os_iusermin'},
+      &ui_select("itype", $uconfig{'os_type'},
+        [ map { [ $_ ] } sort { $a cmp $b } &unique(map { $_->{'type'} }
+          &webmin::list_operating_systems($os_file)) ])." ".
+      &ui_textbox("iversion", $uconfig{'os_version'}, 10));
 
 # Detected OS
 %osinfo = &webmin::detect_operating_system($osfile);
-print "<tr> <td valign=top><b>$webmin::text{'os_detect'}</b></td> <td>\n";
 if ($osinfo{'real_os_type'}) {
-	print "$osinfo{'real_os_type'} $osinfo{'real_os_version'}\n";
-	if ($osinfo{'os_type'} ne $uconfig{'os_type'} ||
-	    $osinfo{'os_version'} ne $uconfig{'os_version'}) {
-		print "<br>",&ui_checkbox("update", 1, $text{'os_update'});
-		}
+	print &ui_table_row(
+	        $webmin::text{'os_detect'},
+	        "$osinfo{'real_os_type'} $osinfo{'real_os_version'}\n".
+                ($osinfo{'os_type'} ne $uconfig{'os_type'} ||
+                 $osinfo{'os_version'} ne $uconfig{'os_version'} ?
+                 "<br>".&ui_checkbox("update", 1, $webmin::text{'os_update'}) :
+                 ""));
 	}
 else {
-	print "<i>$webmin::text{'os_cannot'}</i>\n";
+	print &ui_table_row($text{'os_detect'},
+	                    "<i>$webmin::text{'os_cannot'}</i>");
 	}
-print "</td> </tr>\n";
+print &ui_table_hr();
 
-print "<tr> <td valign=top><b>$webmin::text{'os_path'}</b></td>\n";
-print "<td><textarea name=path rows=5 cols=30>",
-	join("\n", split(/:/, $uconfig{'path'})),
-	"</textarea></td> </tr>\n";
+# Search path
+print &ui_table_row($webmin::text{'os_path'},
+	&ui_textarea("path",
+	  join("\n", split($path_separator, $uconfig{'path'})),
+	  5, 30)."<br>".
+	&ui_checkbox(
+	  "syspath", 1, $webmin::text{'os_syspath'}, !$uconfig{'syspath'}));
 
-print "<tr> <td valign=top><b>$webmin::text{'os_ld_path'}</b></td>\n";
-print "<td><textarea name=ld_path rows=3 cols=30>",
-	join("\n", split(/:/, $uconfig{'ld_path'})),
-	"</textarea></td> </tr>\n";
+# Shared library path
+if ($uconfig{'ld_env'}) {
+	print &ui_table_row($webmin::text{'os_ld_path'},
+	        &ui_textarea("ld_path",
+	          join("\n", split($path_separator, $uconfig{'ld_path'})),
+	          5, 30));
+        }
 
-print "<tr> <td valign=top><b>$webmin::text{'os_envs'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$webmin::text{'os_name'}</b></td> ",
-      "<td><b>$webmin::text{'os_value'}</b></td> </tr>\n";
+# Global environment variables
+&get_miniserv_config(\%miniserv);
+$atable = &ui_columns_start([ $webmin::text{'os_name'},
+                              $webmin::text{'os_value'} ]);
 $i = 0;
 foreach $e (keys %miniserv) {
-	if ($e =~ /^env_(\S+)$/ &&
-	    $1 ne "WEBMIN_CONFIG" && $1 ne "WEBMIN_VAR") {
-		print "<tr $cb>\n";
-		print "<td><input name=name_$i size=20 value='$1'></td>\n";
-		print "<td><input name=value_$i size=30 ",
-		      "value='$miniserv{$e}'></td>\n";
-		print "</tr>\n";
-		$i++;
-		}
-	}
-print "<td><input name=name_$i size=20></td>\n";
-print "<td><input name=value_$i size=30></td>\n";
-print "</table></td></tr>\n";
+        if ($e =~ /^env_(\S+)$/ &&
+            $1 ne "WEBMIN_CONFIG" && $1 ne "WEBMIN_VAR") {
+                $atable .= &ui_columns_row([
+                        &ui_textbox("name_$i", $1, 20),
+                        &ui_textbox("value_$i", $miniserv{$e}, 30)
+                        ]);
+                $i++;
+                }
+        }
+$atable .= &ui_columns_row([ &ui_textbox("name_$i", undef, 20),
+                             &ui_textbox("value_$i", undef, 30) ]);
+$atable .= &ui_columns_end();
+print &ui_table_row($webmin::text{'os_envs'}, $atable);
 
-
-
-print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ "", $webmin::text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
