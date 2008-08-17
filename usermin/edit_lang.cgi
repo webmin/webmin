@@ -9,30 +9,22 @@ $access{'lang'} || &error($text{'acl_ecannot'});
 &get_usermin_config(\%uconfig);
 print $text{'lang_intro'},"<p>\n";
 
-print "<form action=change_lang.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'lang_title2'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_form_start("change_lang.cgi", "post");
+print &ui_table_start($webmin::text{'lang_title2'}, undef, 2, [ "width=30%" ]);
 
+# Language
 $clang = $uconfig{'lang'} ? $uconfig{'lang'} : $default_lang;
-print "<tr> <td><b>$webmin::text{'lang_lang'}</b></td>\n";
-print "<td><select name=lang>\n";
-foreach $l (&list_languages()) {
-	printf "<option value=%s %s>%s (%s)\n",
-		$l->{'lang'},
-		$clang eq $l->{'lang'} ? 'selected' : '',
-		$l->{'desc'}, uc($l->{'lang'});
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($webmin::text{'lang_lang'},
+        &ui_select("lang", $clang,
+           [ map { [ $_->{'lang'}, "$_->{'desc'} (".uc($_->{'lang'}).")" ] }
+                 &list_languages() ]));
 
-print "<tr> <td><b>$webmin::text{'lang_accept'}</b></td>\n";
-printf "<td><input type=radio name=acceptlang value=1 %s> %s\n",
-	$uconfig{'acceptlang'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=acceptlang value=0 %s> %s</td> </tr>\n",
-	$uconfig{'acceptlang'} ? "" : "checked", $text{'no'};
+# Use language from browser?
+print &ui_table_row($webmin::text{'lang_accept'},
+        &ui_yesno_radio("acceptlang", int($uconfig{'acceptlang'})));
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$webmin::text{'lang_ok'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ "", $webmin::text{'lang_ok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
