@@ -77,6 +77,11 @@ print "var rowsel = new Array();\n";
 print "</script>\n";
 }
 
+sub theme_popup_prehead
+{
+&theme_prehead();
+}
+
 # theme_ui_columns_start(&headings, [width-percent], [noborder], [&tdtags], [heading])
 # Returns HTML for a multi-column table, with the given headings
 sub theme_ui_columns_start
