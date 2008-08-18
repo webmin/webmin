@@ -7,6 +7,8 @@ do '../ui-lib.pl';
 %access = &get_module_acl();
 
 # get_config()
+# Parses the syslog configuration file into an array ref of hash refs, one
+# for each log file or destination
 sub get_config
 {
 local $lnum = 0;
@@ -30,8 +32,12 @@ while($line = <CONF>) {
 			last if ($line !~ s/\\$//);
 			}
 		}
-	if ($line =~ /^(#*)\s*([^#\s]+\.\S+)\s+(\S+)$/ ||
-	    $line =~ /^(#*)\s*([^#\s]+\.\S+)\s+(\|.*)$/) {
+	if ($line =~ /^\$(\S+)\s*(\S*)/) {
+		# rsyslog special directive - ignored for now
+		}
+	elsif ($line =~ /^(#*)\s*([^#\s]+\.\S+)\s+(\S+)$/ ||
+	       $line =~ /^(#*)\s*([^#\s]+\.\S+)\s+(\|.*)$/) {
+		# Regular log destination
 		local $act = $3;
 		local $log = { 'active' => !$1,
 			       'sel' => [ split(/;/, $2) ],
@@ -66,6 +72,7 @@ while($line = <CONF>) {
 		push(@rv, $log);
 		}
 	elsif ($line =~ /^(#?)!(\S+)$/) {
+		# Start of tagged section, as seen on BSD
 		push(@rv, { 'tag' => $2,
 			    'index' => scalar(@rv),
 			    'line' => $lnum,

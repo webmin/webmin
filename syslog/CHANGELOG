@@ -10,3 +10,5 @@ Added a Module Config option to specifying other log files that should be search
 ---- Changes since 1.380 ----
 On Debian systems, use a syslog restart to tell it to re-open log files, as a HUP signal is not reliable.
 On Fedora 8, use rsyslog by default instead of syslog.
+---- Changes since 1.430 ----
+Added support for rsyslogd, as seen by default on Debian 5.0.
