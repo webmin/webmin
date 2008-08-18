@@ -17,6 +17,7 @@ index_amode0=All Unix users
 index_amode1=Only listed users ..
 index_amode2=All except listed users ..
 index_delete=Cancel Selected Commands
+index_noat=The $1 command was not found on your system - maybe it is not installed, or not available for your operating system.
 
 edit_title=Scheduled Command
 edit_cmd=Full script to execute

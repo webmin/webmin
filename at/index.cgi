@@ -11,6 +11,12 @@ use POSIX;
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 ReadParse();
 
+# Check if at is installed
+if (!&has_command("at")) {
+	&ui_print_endpage(&text('index_noat', "<tt>at</tt>",
+			        "../config.cgi?$module_name"));
+	}
+
 # Show list of existing jobs
 @jobs = &list_atjobs();
 @jobs = grep { &can_edit_user(\%access, $_->{'user'}) } @jobs;
