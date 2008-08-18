@@ -14,7 +14,8 @@ if ($type eq 'host') {
 elsif ($type eq 'ipnode') {
 	return &text("log_${action}_ipnode", "<tt>$object</tt>");
 	}
-elsif ($type eq 'hosts' || $type eq 'aifcs' || $type eq 'bifcs') {
+elsif ($type eq 'hosts' || $type eq 'ipnodes' ||
+       $type eq 'aifcs' || $type eq 'bifcs') {
 	return &text("log_${action}_${type}", $object);
 	}
 elsif ($action eq 'dns') {

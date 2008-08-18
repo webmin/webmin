@@ -14,27 +14,29 @@ else {
 	$h = $ipnodes[$in{'idx'}];
 	}
 
-print "<form action=save_ipnode.cgi>\n";
-print "<input type=hidden name=new value=\"$in{'new'}\">\n";
-print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'ipnodes_detail'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td><b>$text{'ipnodes_ip'}</b></td>\n";
-print "<td><input name=address size=30 value=\"$h->{'address'}\"></td> </tr>\n";
-print "<tr $cb> <td valign=top><b>$text{'ipnodes_host'}</b></td>\n";
-print "<td><textarea cols=30 rows=5 name=ipnodes>",
-	join("\n", @{$h->{'ipnodes'}}),"</textarea></td> </tr>\n";
-print "<tr> <td colspan=2 align=right>\n";
+# Form start
+print &ui_form_start("save_ipnode.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'ipnodes_detail'}, undef, 2);
+
+# IPv6 address
+print &ui_table_row($text{'ipnodes_ip'},
+	&ui_textbox("address", $h->{'address'}, 30));
+
+# Hostnames for address
+print &ui_table_row($text{'ipnodes_host'},
+	&ui_textarea("ipnodes", join("\n", @{$h->{'ipnodes'}}), 5, 50));
+
+# End of the form
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<input type=submit value=\"$text{'create'}\">\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<input type=submit value=\"$text{'save'}\">\n";
-	print "<input type=submit name=delete value=\"$text{'delete'}\">\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ "delete", $text{'delete'} ] ]);
 	}
-print "</table></td></tr></table>\n";
-print "</form>\n";
 
 &ui_print_footer("list_ipnodes.cgi", $text{'ipnodes_return'});
 

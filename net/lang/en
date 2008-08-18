@@ -194,6 +194,8 @@ ipnodes_create=Create IPv6 Host Address
 ipnodes_detail=Host and Addresses
 ipnodes_return=IPv6 host addresses list
 ipnodes_ecannot=You are not allowed to edit IPv6 host addresses
+ipnodes_none=No IPv6 host addresses have been defined yet.
+ipnodes_delete=Delete Selected IPv6 Host Addresses
 
 log_create_host=Created host address $1
 log_delete_host=Deleted host address $1
@@ -211,6 +213,7 @@ log_modify_bifc=Modified interface $1 address $2
 log_delete_bifc=Deleted interface $1 address $2
 log_dyn=dynamic
 log_delete_hosts=Deleted $1 host addresses
+log_delete_ipnodes=Deleted $1 IPv6 host addresses
 log_delete_afics=Deleting $1 active interfaces
 log_delete_bfics=Deleting $1 boot-time interfaces
 log_apply_bfics=Activated $1 boot-time interfaces
@@ -282,4 +285,8 @@ daifcs_egone=Interface no longer exists!
 
 dbifcs_err=Failed to delete interfaces
 dbifcs_err2=Failed to activate interfaces
+
+hdelete_err=Failed to delete host addresses
+hdelete_enone=None selected
+idelete_err=Failed to delete IPv6 host addresses
 
