@@ -7,3 +7,5 @@ Added an icon for manually editing the SSH server and client configuration files
 Added support for systems that don't have an SSH server PID file (like OS X).
 ---- Changes since 1.330 ----
 Added a Module Config option to set the SSH server version, rather than having Webmin auto-detect it.
+---- Changes since 1.430 ----
+Added a button on the module's main page for viewing the public side of the host keys, thanks to Sean Cox.
