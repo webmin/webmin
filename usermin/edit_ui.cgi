@@ -59,14 +59,9 @@ print &ui_table_row($text{'ui_feedbackmail'},
         , [ 0, $text{'ui_feedbackmail0'} . ' '
             . &ui_textbox('feedbackmail', $uconfig{'feedbackmail'}) ] ]));
 
-print "<tr> <td><b>$text{'ui_feedbackhost'}</b></td>\n";
-printf "<td><input type=radio name=feedbackhost_def value=1 %s> %s\n",
-	$uconfig{'feedbackhost'} ? "" : "checked",
-	$text{'ui_feedbackthis'};
-printf "<input type=radio name=feedbackhost_def value=0 %s>\n",
-	$uconfig{'feedbackhost'} ? "checked" : "";
-printf "<input name=feedbackhost size=30 value='%s'></td> </tr>\n",
-	$uconfig{'feedbackhost'};
+print &ui_table_row($text{'ui_feedbackhost'},
+        &ui_opt_textbox("feedbackhost", $uconfig{'feedbackhost'}, 30,
+          $text{'ui_feedbackthis'}));
 
 print &ui_table_row($text{'ui_tabs'},
 	&ui_radio("notabs", $uconfig{'notabs'} ? 1 : 0,
