@@ -378,22 +378,8 @@ $max_dns_servers = 3;
 # Returns HTML for selecting the name resolution order
 sub order_input
 {
-local @o = @{$_[0]->{'order'}};
-local ($rv, $i, $j);
-local @srcs = ( "", "hosts", "bind", "nis" );
-local @srcn = ( "", "Hosts", "DNS", "NIS" );
-for($i=1; $i<@srcs; $i++) {
-	local $ii = $i-1;
-	$rv .= "<select name=order_$ii>\n";
-	for($j=0; $j<@srcs; $j++) {
-		$rv .= sprintf "<option value=\"%s\" %s>%s\n",
-				$srcs[$j],
-				$o[$ii] eq $srcs[$j] ? "selected" : "",
-				$srcn[$j] ? $srcn[$j] : "&nbsp;";
-		}
-	$rv .= "</select>\n";
-	}
-return $rv;
+return &common_order_input("order", $_[0]->{'order'},
+	[ [ "hosts", "Hosts" ], [ "bind", "DNS" ], [ "nis", "NIS" ] ]);
 }
 
 # parse_order(&dns)

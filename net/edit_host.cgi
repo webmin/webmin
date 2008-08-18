@@ -14,27 +14,29 @@ else {
 	$h = $hosts[$in{'idx'}];
 	}
 
-print "<form action=save_host.cgi>\n";
-print "<input type=hidden name=new value=\"$in{'new'}\">\n";
-print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'hosts_detail'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-print "<tr> <td><b>$text{'hosts_ip'}</b></td>\n";
-print "<td><input name=address size=30 value=\"$h->{'address'}\"></td> </tr>\n";
-print "<tr $cb> <td valign=top><b>$text{'hosts_host'}</b></td>\n";
-print "<td><textarea cols=30 rows=5 name=hosts>",
-	join("\n", @{$h->{'hosts'}}),"</textarea></td> </tr>\n";
-print "<tr> <td colspan=2 align=right>\n";
+# Start of the form
+print &ui_form_start("save_host.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start($text{'hosts_detail'}, undef, 2);
+
+# IP address
+print &ui_table_row($text{'hosts_ip'},
+	&ui_textbox("address", $h->{'address'}, 30));
+
+# Hostnames
+print &ui_table_row($text{'hosts_host'},
+	&ui_textarea("hosts", join("\n", @{$h->{'hosts'}}), 5, 50));
+
+# End of the form
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<input type=submit value=\"$text{'create'}\">\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<input type=submit value=\"$text{'save'}\">\n";
-	print "<input type=submit name=delete value=\"$text{'delete'}\">\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ "delete", $text{'delete'} ] ]);
 	}
-print "</table></td></tr></table>\n";
-print "</form>\n";
 
 &ui_print_footer("list_hosts.cgi", $text{'hosts_return'});
 

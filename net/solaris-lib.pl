@@ -271,29 +271,9 @@ $max_dns_servers = 3;
 # Returns HTML for selecting the name resolution order
 sub order_input
 {
-if ($_[0]->{'order'} =~ /\[/) {
-	# Using a complex resolve list
-	return "<input name=order size=45 value=\"$_[0]->{'order'}\">\n";
-	}
-else {
-	# Can select by menus
-	local @o = split(/\s+/, $_[0]->{'order'});
-	local ($rv, $i, $j);
-	local @srcs = ( "", "files", "dns", "nis", "nisplus", "ldap" );
-	local @srcn = ( "", "Hosts", "DNS", "NIS", "NIS+", "LDAP" );
-	for($i=1; $i<@srcs; $i++) {
-		local $ii = $i-1;
-		$rv .= "<select name=order_$ii>\n";
-		for($j=0; $j<@srcs; $j++) {
-			$rv .= sprintf "<option value=\"%s\" %s>%s\n",
-					$srcs[$j],
-					$o[$ii] eq $srcs[$j] ? "selected" : "",
-				        $srcn[$j] ? $srcn[$j] : "&nbsp;";
-			}
-		$rv .= "</select>\n";
-		}
-	return $rv;
-	}
+return &common_order_input("order", $_[0]->{'order'},
+	[ [ "files", "Hosts" ], [ "dns", "DNS" ], [ "nis", "NIS" ],
+	  [ "nisplus", "NIS+" ], [ "ldap", "LDAP" ] ]);
 }
 
 # parse_order(&dns)

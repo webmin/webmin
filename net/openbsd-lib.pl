@@ -371,24 +371,10 @@ $max_dns_servers = 3;
 # order_input(&dns)
 # Returns HTML for selecting the name resolution order
 sub order_input
-  {
-      local @o = @{$_[0]->{'order'}};
-      local ($rv, $i, $j);
-      local @srcs = ( "", "file", "bind", "yp" );
-      local @srcn = ( "", "Hosts", "DNS", "YP" );
-      for($i=1; $i<@srcs; $i++) {
-	  local $ii = $i-1;
-	  $rv .= "<select name=order_$ii>\n";
-	  for($j=0; $j<@srcs; $j++) {
-	      $rv .= sprintf "<option value=\"%s\" %s>%s\n",
-	      $srcs[$j],
-	      $o[$ii] eq $srcs[$j] ? "selected" : "",
-	      $srcn[$j] ? $srcn[$j] : "&nbsp;";
-	  }
-	  $rv .= "</select>\n";
-      }
-      return $rv;
-  }
+{
+return &common_order_input("order", $_[0]->{'order'},
+	[ [ "file", "Hosts" ], [ "bind", "DNS" ], [ "yp", "NIS" ] ]);
+}
 
 # parse_order(&dns)
 # Parses the form created by order_input()

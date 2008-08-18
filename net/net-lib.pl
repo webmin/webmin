@@ -391,5 +391,26 @@ sub check_ipaddress_any
 return &check_ipaddress($_[0]) || &check_ip6address($_[0]);
 }
 
+# common_order_input(name, value, &opts)
+# Returns a field for a standard DNS resolution order input
+sub common_order_input
+{
+my ($name, $value, $opts) = @_;
+if ($value =~ /\[/) {
+	# Using a complex resolve list
+	return &ui_textbox($name, $value, 60);
+	}
+else {
+	# Can select by menus
+	my $rv;
+	my @o = split(/\s+/, $value);
+	for(my $i = 0; $i<scalar(@o)+2; $i++) {
+		$rv .= &ui_select($name."_".$i, $o[$i],
+				  [ [ "", "&nbsp;" ], @$opts ], 1, 0, 1);
+		}
+	return $rv;
+	}
+}
+
 1;
 
