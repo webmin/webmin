@@ -2,13 +2,23 @@
 # Show all scheduled cluster copy jobs
 
 require './cluster-copy-lib.pl';
-&ui_print_header(undef, $text{'index_title'}, "", "intro", 0, 1);
+&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 
 @links = ( &select_all_link("d"),
 	   &select_invert_link("d"),
 	   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );
 
+# Get and sort jobs
 @jobs = &list_copies();
+if ($config{'sort_mode'} == 1) {
+	# By filename
+	@jobs = sort { $a->{'files'} cmp $b->{'files'} } @jobs;
+	}
+elsif ($config{'sort_mode'} == 2) {
+	# By destination server
+	@jobs = sort { $a->{'servers'} cmp $b->{'servers'} } @jobs;
+	}
+
 if (@jobs) {
 	print &ui_form_start("delete.cgi", "post");
 	print &ui_links_row(\@links);

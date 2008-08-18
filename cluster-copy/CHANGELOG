@@ -11,3 +11,5 @@ A command to run before copying can now be specified, and both the before and af
 Made the backup email contents translatable.
 ---- Changes since 1.310 ----
 Added checkboxes and a button for deleting multiple cluster copies at once.
+---- Changes since 1.430 ----
+Added a Module Config setting to control the default sort order.
