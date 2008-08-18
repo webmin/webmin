@@ -84,10 +84,15 @@ if (-r $config{'client_config'}) {
 push(@links, "edit_sync.cgi");
 push(@titles, $text{'sync_title'});
 push(@icons, "images/sync.gif");
+
+push(@links, "edit_keys.cgi");
+push(@titles, $text{'keys_title'});
+push(@icons, "images/keys.gif");
+
 push(@links, "edit_manual.cgi");
 push(@titles, $text{'manual_title'});
 push(@icons, "images/manual.gif");
-&icons_table(\@links, \@titles, \@icons, scalar(@links));
+&icons_table(\@links, \@titles, \@icons, 4);
 
 # Check if sshd is running
 $pid = &get_sshd_pid();

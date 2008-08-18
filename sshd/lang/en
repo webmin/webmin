@@ -214,6 +214,10 @@ sync_gnupg=Setup GNUPG key for new Unix users.
 sync_type=Key type
 sync_auto=&lt;Automatic&gt;
 
+keys_title=Host SSH Keys
+keys_desc=This page allows you to view the SSH keys for this host.
+keys_none=Could not find any HostKey entries in your SSHD configuration.
+
 manual_title=Edit Config Files
 manual_ecannot=You are not allowed to edit the SSH server config file
 manual_ok=Edit

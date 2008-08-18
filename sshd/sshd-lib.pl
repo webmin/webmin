@@ -274,5 +274,33 @@ else {
 	}
 }
 
+# get_mlvalues(file, id, [splitchar])
+# Return an array with values from a file, where the
+# values are one per line with an id preceeding them
+sub get_mlvalues
+{
+local @rv;
+local $_;
+local $split = defined($_[2]) ? $_[2] : " ";
+local $realfile = &translate_filename($_[0]);
+&open_readfile(ARFILE, $_[0]) || return 0;
+while(<ARFILE>) {
+	chomp;
+	local $hash = index($_, "#");
+	local $eq = index($_, $split);
+	if ($hash != 0 && $eq >= 0) {
+		local $n = substr($_, 0, $eq);
+		local $v = substr($_, $eq+1);
+		chomp($v);
+		if ($n eq $_[1]) {
+			push(@rv, $v);
+						}
+        	}
+        }
+close(ARFILE);
+return @rv;
+}
+
+
 1;
 
