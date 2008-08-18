@@ -80,7 +80,7 @@ Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(e
 Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
 # These don't have a version number yet, so we use the one from "stable"
 Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(testing)/i
-Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(lenny)/i
+Debian Linux			$1	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(lenny)/i
 Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(unstable)/i
 Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(sid)/i
 
