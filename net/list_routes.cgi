@@ -7,28 +7,46 @@ $access{'routes'} || &error($text{'routes_ecannot'});
 &ReadParse();
 &ui_print_header(undef, $text{'routes_title'}, "");
 
+# Start of tabs for boot time / active routes
+@tabs = ( [ "boot", $text{'routes_tabboot'}, "list_routes.cgi?mode=boot" ] );
+if (defined(&list_routes)) {
+	push(@tabs, [ "active", $text{'routes_tabactive'},
+		      "list_routes.cgi?mode=active" ] );
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
+
 # Show boot-time routes
-print "<form action=save_routes.cgi method=post>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>",
-      $routes_active_now? $text{'routes_now'} : $text{'routes_boot'},
-      "</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+print &ui_tabs_start_tab("mode", "boot");
+print $text{'routes_descboot'},"<p>\n";
+print &ui_form_start("save_routes.cgi", "post");
+print &ui_table_start($routes_active_now ? $text{'routes_now'}
+					 : $text{'routes_boot'}, undef, 2);
+
+# OS-specific routes function
 &routing_input();
-print "</table></td></tr></table>\n";
-printf "<input type=submit value=\"%s\">\n",
-    ($routes_active_now?  $text{'bifc_apply'} : $text{'save'})
-	if ($access{'routes'} == 2);
-print "</form>\n";
+
+print &ui_table_end();
+if ($access{'routes'} == 2) {
+	print &ui_form_end([ [ undef, $routes_active_now ? $text{'bifc_apply'}
+							 : $text{'save'} ] ] );
+	}
+else {
+	print &ui_form_end();
+	}
+print &ui_tabs_end_tab("mode", "boot");
+
+# Active routes tab
+if (defined(&list_routes) || defined(&create_route)) {
+	print &ui_tabs_start_tab("mode", "active");
+	print $text{'routes_descactive'},"<p>\n";
+	}
 
 # Show routes active now
-print &ui_hr();
 if (defined(&list_routes)) {
 	if (defined(&delete_route)) {
 		# With deletion button
 		print &ui_form_start("delete_routes.cgi", "post");
 		}
-	print &ui_subheading($text{'routes_active'});
 	local @tds = defined(&delete_route) ? ( "width=5" ) : ( );
 	print &ui_columns_start([ defined(&delete_route) ? ( "" ) : ( ),
 				  $text{'routes_dest'},
@@ -83,6 +101,11 @@ if (defined(&create_route)) {
 	print &ui_table_end();
 	print &ui_form_end([ [ "create", $text{'create'} ] ]);
 	}
+
+if (defined(&list_routes) || defined(&create_route)) {
+	print &ui_tabs_end_tab("mode", "active");
+	}
+print &ui_tabs_end(1);
 
 &ui_print_footer("", $text{'index_return'});
 

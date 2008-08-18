@@ -279,70 +279,51 @@ local (%conf, @st, @hr, %sysctl);
 &read_env_file($network_config, \%conf);
 if (!$supports_dev_gateway) {
 	# show default router and device
-	print "<tr> <td><b>$text{'routes_default'}</b></td> <td>\n";
-	printf "<input type=radio name=gateway_def value=1 %s> $text{'routes_none'}\n",
-		$conf{'GATEWAY'} ? "" : "checked";
-	printf "<input type=radio name=gateway_def value=0 %s>\n",
-		$conf{'GATEWAY'} ? "checked" : "";
-	printf "<input name=gateway size=15 value=\"%s\"></td> </tr>\n",
-		$conf{'GATEWAY'};
+	print &ui_table_row($text{'routes_default'},
+		&ui_opt_textbox("gateway", $conf{'GATEWAY'}, 15,
+				$text{'routes_none'}));
 
-	print "<tr> <td><b>$text{'routes_device2'}</b></td> <td>\n";
-	printf "<input type=radio name=gatewaydev_def value=1 %s> $text{'routes_none'}\n",
-		$conf{'GATEWAYDEV'} ? "" : "checked";
-	printf "<input type=radio name=gatewaydev_def value=0 %s>\n",
-		$conf{'GATEWAYDEV'} ? "checked" : "";
-	printf "<input name=gatewaydev size=6 value=\"%s\"></td> </tr>\n",
-		$conf{'GATEWAYDEV'};
+	print &ui_table_row($text{'routes_device2'},
+		&ui_opt_textbox("gatewaydev", $conf{'GATEWAYDEV'}, 6,
+			        $text{'routes_none'}));
 	}
 else {
-	# multiple default routers can exist!
-	print "<tr> <td valign=top><b>$text{'routes_default2'}</b></td>\n";
-	print "<td><table border>\n";
-	print "<tr $tb> <td><b>$text{'routes_ifc'}</b></td> ",
-	      "<td><b>$text{'routes_gateway'}</b></td> </tr>\n";
+	# multiple default routers can exist, one per interface
+	my @table;
 	local $r = 0;
 	if ($conf{'GATEWAY'}) {
-		print "<tr $cb>\n";
-		print "<td>",&interface_sel("gatewaydev$r",
-				    $conf{'GATEWAYDEV'} || "*"),"</td>\n";
-		printf "<td><input name=gateway$r size=15 value='%s'></td>\n",
-			$conf{'GATEWAY'};
-		print "</tr>\n";
+		push(@table, [ &interface_sel("gatewaydev$r",
+					      $conf{'GATEWAYDEV'} || "*"),
+			       &ui_textbox("gateway$r", $conf{'GATEWAY'}, 15),
+			     ]);
 		$r++;
 		}
 	local @boot = &boot_interfaces();
 	foreach $b (grep { $_->{'gateway'} && $_->{'virtual'} eq '' } @boot) {
-		print "<tr $cb>\n";
-		print "<td>",&interface_sel("gatewaydev$r",
-				    $b->{'name'}),"</td>\n";
-		printf "<td><input name=gateway$r size=15 value='%s'></td>\n",
-			$b->{'gateway'};
-		print "</tr>\n";
+		push(@table, [ &interface_sel("gatewaydev$r", $b->{'name'}),
+			       &ui_textbox("gateway$r", $b->{'gateway'}, 15),
+			     ]);
 		$r++;
 		}
-	print "<tr $cb>\n";
-	print "<td>",&interface_sel("gatewaydev$r"),"</td>\n";
-	print "<td><input name=gateway$r size=15></td>\n";
-	print "</tr>\n";
-	print "</table></td> </tr>\n";
+	push(@table, [ &interface_sel("gatewaydev$r"),
+		       &ui_textbox("gateway$r", undef, 15) ]);
+	print &ui_columns_row($text{'routes_default2'},
+		&ui_columns_table(
+			[ $text{'routes_ifc'}, $text{'routes_gateway'} ],
+			undef, \@table, undef, 1));
 	}
 
 # show routing
 if ($gconfig{'os_version'} < 7.0) {
-	print "<tr> <td><b>$text{'routes_forward'}</b></td> <td>\n";
-	printf "<input type=radio name=forward value=1 %s> $text{'yes'}\n",
-		$conf{'FORWARD_IPV4'} eq "yes" ? "checked" : "";
-	printf "<input type=radio name=forward value=0 %s> $text{'no'}</td> </tr>\n",
-		$conf{'FORWARD_IPV4'} eq "yes" ? "" : "checked";
+	print &ui_table_row($text{'routes_forward'},
+		&ui_yesno_radio("forward",
+				$conf{'FORWARD_IPV4'} eq "yes" ? 1 : 0));
 	}
 else {
 	&read_env_file($sysctl_config, \%sysctl);
-	print "<tr> <td><b>$text{'routes_forward'}</b></td> <td>\n";
-	printf "<input type=radio name=forward value=1 %s> $text{'yes'}\n",
-		$sysctl{'net.ipv4.ip_forward'} ? "checked" : "";
-	printf "<input type=radio name=forward value=0 %s> $text{'no'}</td> </tr>\n",
-		$sysctl{'net.ipv4.ip_forward'} ? "" : "checked";
+	print &ui_table_row($text{'routes_forward'},
+		&ui_yesno_radio("forward",
+				$sysctl{'net.ipv4.ip_forward'} ? 1 : 0));
 	}
 
 if (!$supports_dev_routes) {
@@ -378,7 +359,7 @@ else {
 				if ($rfile{"GATEWAY$i"}) {
 					push(@st, [ $dev, $rfile{"ADDRESS$i"},
 							  $rfile{"NETMASK$i"},
-							  $rfile{"GATEWAY$i"} ]);
+							  $rfile{"GATEWAY$i"}]);
 					}
 				else {
 					push(@hr, [ $dev, $rfile{"ADDRESS$i"},
@@ -391,39 +372,32 @@ else {
 	closedir(DIR);
 	}
 
-# show static network routes
-print "<tr> <td valign=top><b>$text{'routes_static'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'routes_ifc'}</b></td> ",
-      "<td><b>$text{'routes_net'}</b></td> ",
-      "<td><b>$text{'routes_mask'}</b></td> ",
-      "<td><b>$text{'routes_gateway'}</b></td> </tr>\n";
+# Show static network routes
+my @table;
 for($i=0; $i<=@st; $i++) {
 	local $st = $st[$i];
-	print "<tr $cb>\n";
-	print "<td><input name=dev_$i size=6 value='$st->[0]'></td>\n";
-	print "<td><input name=net_$i size=15 value='$st->[1]'></td>\n";
-	print "<td><input name=netmask_$i size=15 value='$st->[2]'></td>\n";
-	print "<td><input name=gw_$i size=15 value='$st->[3]'></td>\n";
-	print "</tr>\n";
+	push(@table, [ &ui_textbox("dev_$i", $st->[0], 6),
+		       &ui_textbox("net_$i", $st->[1], 15),
+		       &ui_textbox("netmask_$i", $st->[2], 15),
+		       &ui_textbox("gw_$i", $st->[3], 15) ]);
 	}
-print "</table></td> </tr>\n";
+print &ui_table_row($text{'routes_static'},
+	&ui_columns_table([ $text{'routes_ifc'}, $text{'routes_net'},
+			    $text{'routes_mask'}, $text{'routes_gateway'} ],
+			  undef, \@table, undef, 1));
 
 # Show static host routes
-print "<tr> <td valign=top><b>$text{'routes_local'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'routes_ifc'}</b></td> ",
-      "<td><b>$text{'routes_net'}</b></td> ",
-      "<td><b>$text{'routes_mask'}</b></td> </tr>\n";
+my @table;
 for($i=0; $i<=@hr; $i++) {
 	local $st = $hr[$i];
-	print "<tr $cb>\n";
-	print "<td><input name=ldev_$i size=6 value='$st->[0]'></td>\n";
-	print "<td><input name=lnet_$i size=15 value='$st->[1]'></td>\n";
-	print "<td><input name=lnetmask_$i size=15 value='$st->[2]'></td>\n";
-	print "</tr>\n";
+	push(@table, [ &ui_textbox("ldev_$i", $st->[0], 6),
+		       &ui_textbox("lnet_$i", $st->[1], 15),
+		       &ui_textbox("lnetmask_$i", $st->[2], 15) ]);
 	}
-print "</table></td> </tr>\n";
+print &ui_table_row($text{'routes_local'},
+	&ui_columns_table([ $text{'routes_ifc'}, $text{'routes_net'},
+			    $text{'routes_mask'} ],
+			  undef, \@table, undef, 1));
 }
 
 sub parse_routing

@@ -160,28 +160,23 @@ local (%conf, %ifc, $f, $gateway, $gatewaydev);
 &read_file($network_config, \%conf);
 local ($gateway, $gatewaydev) = &get_default_gateway();
 
-print "<tr> <td><b>$text{'routes_default'}</b></td> <td>\n";
-printf "<input type=radio name=gateway_def value=1 %s> %s\n",
-	$gateway ? "" : "checked", $text{'routes_none'};
-printf "<input type=radio name=gateway_def value=0 %s> %s\n",
-	$gateway ? "checked" : "", $text{'routes_gateway'};
-printf "<input name=gateway size=15 value=\"%s\"> %s\n",
-	$gateway, $text{'routes_device'};
-printf "<input name=gatewaydev size=6 value=\"%s\"></td> </tr>\n",
-	$gatewaydev;
+# Default router and device
+print &ui_table_row($text{'routes_default'},
+	&ui_radio("gateway_def", $gateway ? 0 : 1,
+		  [ [ 1, $text{'routes_none'} ],
+		    [ 0, $text{'routes_gateway'}." ".
+			 &ui_textbox("gateway", $gateway, 15)." ".
+			 $text{'routes_device'}." ".
+			 &ui_textbox("gatewaydev", $gatewaydev, 6) ] ]));
 
-print "<tr> <td><b>$text{'routes_forward'}</b></td> <td>\n";
-printf "<input type=radio name=forward value=1 %s> $text{'yes'}\n",
-	$conf{'IPFORWARDING'} =~ /yes|true/i ? "checked" : "";
-printf "<input type=radio name=forward value=0 %s> $text{'no'}</td> </tr>\n",
-	$conf{'IPFORWARDING'} =~ /yes|true/i ? "" : "checked";
+# Forward traffic
+print &ui_table_row($text{'routes_forward'},
+	&ui_yesno_radio("forward", $conf{'IPFORWARDING'} =~ /yes|true/i));
 
-print "<tr> <td valign=top><b>$text{'routes_script'}</b></td> <td>\n";
-print "<textarea name=script rows=4 cols=60>\n";
-&open_readfile(SCRIPT, $static_route_config);
-while(<SCRIPT>) { print; }
-close(SCRIPT);
-print "</textarea></td> </tr>\n";
+# Additional routes script
+print &ui_table_row($text{'routes_script'},
+	&ui_textarea("script", &read_file_contents($static_route_config),
+		     4, 60));
 }
 
 sub parse_routing

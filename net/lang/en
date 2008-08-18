@@ -151,6 +151,10 @@ routes_derr=Failed to delete routes
 routes_denone=None selected
 routes_ecnetmask2=A netmask cannot be specified for the default route
 routes_ggw=Use router $1 via interface $2
+routes_tabboot=Boot time configuration
+routes_tabactive=Active configuration
+routes_descactive=This section lists routes that the system currently has configured, and allows you to add or remove active routes on some systems. Be careful doing this, as incorrect changes may cut the system running Webmin off from the rest of the network.
+routes_descboot=This section allows you to configure the routes that are activated when the system boots up, or when network settings are fully re-applied.
 
 dns_title=Hostname and DNS Client
 dns_options=DNS Client Options

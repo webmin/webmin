@@ -12,7 +12,12 @@ foreach $i ('ifcs', 'routes', 'dns', 'hosts',
 	next if (!$access{$i});
 	next if ($i eq "ifcs" && $zone);
 
-	push(@links, "list_${i}.cgi?mode=active");
+	if ($i eq "ifcs") {
+		push(@links, "list_${i}.cgi?mode=active");
+		}
+	else {
+		push(@links, "list_${i}.cgi");
+		}
 	push(@titles, $text{"${i}_title"});
 	push(@icons, "images/${i}.gif");
 	}

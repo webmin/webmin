@@ -221,53 +221,39 @@ close(ROUTE);
 # input for routing
 local $rc = &parse_rc_config();
 local $ipf = $rc->{'IP_FORWARD'}->{'value'};
-print "<tr> <td><b>$text{'routes_forward'}</b></td> <td>\n";
-printf "<input type=radio name=forward value=yes %s> $text{'yes'}\n",
-	$ipf eq "yes" ? "checked" : "";
-printf "<input type=radio name=forward value=no %s> $text{'no'}</td> </tr>\n",
-	$ipf eq "yes" ? "" : "checked";
+print &ui_table_row($text{'routes_forward'},
+	&ui_radio("forward", $ipf || "no",
+		  [ [ "yes", $text{'yes'} ], [ "no", $text{'no'} ] ]));
 
 # input for default route
-print "<tr> <td><b>$text{'routes_default'}</b></td> <td>\n";
-printf "<input type=radio name=default_def value=1 %s> $text{'routes_none'}\n",
-	$default ? "" : "checked";
-printf "<input type=radio name=default_def value=0 %s>\n",
-	$default ? "checked" : "";
-printf "<input name=default size=15 value=\"%s\"></td> </tr>\n",
-	$default;
+print &ui_table_row($text{'routes_default'},
+	&ui_opt_textbox("default", $default, 15, $text{'routes_none'}));
 
 # table for local routes
-print "<tr> <td valign=top><b>$text{'routes_local'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'routes_ifc'}</b></td> ",
-      "<td><b>$text{'routes_net'}</b></td> ",
-      "<td><b>$text{'routes_mask'}</b></td> </tr>\n";
+my @table;
 for($i=0; $i<=@lr; $i++) {
 	local $lr = $lr[$i];
-	print "<tr $cb>\n";
-	print "<td><input name=lr_dev_$i size=6 value='$lr->[3]'></td>\n";
-	print "<td><input name=lr_net_$i size=15 value='$lr->[0]'></td>\n";
-	print "<td><input name=lr_mask_$i size=15 value='$lr->[2]'></td>\n";
-	print "</tr>\n";
+	push(@table, [ &ui_textbox("lr_dev_$i", $lr->[3], 6),
+		       &ui_textbox("lr_net_$i", $lr->[0], 15),
+		       &ui_textbox("lr_mask_$i", $lr->[2], 15) ]);
 	}
-print "</table></td> </tr>\n";
+print &ui_table_row($text{'routes_local'},
+	&ui_columns_table([ $text{'routes_ifc'}, $text{'routes_net'},
+			    $text{'routes_mask'} ],
+			  undef, \@table, undef, 1));
 
 # table for static routes
-print "<tr> <td valign=top><b>$text{'routes_static'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'routes_net'}</b></td> ",
-      "<td><b>$text{'routes_gateway'}</b></td> ",
-      "<td><b>$text{'routes_mask'}</b></td> </tr>\n";
+my @table;
 for($i=0; $i<=@sr; $i++) {
 	local $sr = $sr[$i];
-	print "<tr $cb>\n";
-	print "<td><input name=sr_net_$i size=15 value='$sr->[0]'></td>\n";
-	print "<td><input name=sr_gw_$i size=15 value='$sr->[1]'></td>\n";
-	print "<td><input name=sr_mask_$i size=15 value='$sr->[2]'></td>\n";
-	print "</tr>\n";
+	push(@table, [ &ui_textbox("sr_net_$i", $sr->[0], 15),
+		       &ui_textbox("sr_gw_$i", $sr->[1], 15),
+		       &ui_textbox("sr_mask_$i", $sr->[2], 15) ]);
 	}
-print "</table></td> </tr>\n";
-
+print &ui_table_row($text{'routes_static'},
+	&ui_columns_table([ $text{'routes_net'}, $text{'routes_gateway'},
+			    $text{'routes_mask'} ],
+			  undef, \@table, undef, 1));
 }
 
 sub parse_routing
