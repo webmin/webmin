@@ -85,6 +85,7 @@ return $name eq "dhcpd" ? "dhcp3-server" :
        $name eq "postgresql" ? "postgresql postgresql-client" :
        $name eq "openssh" ? "ssh" :
        $name eq "openldap" ? "slapd" :
+       $name eq "dovecot" ? "dovecot-common dovecot-imapd dovecot-pop3d" :
 			       $name;
 }
 
