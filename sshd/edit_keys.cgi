@@ -2,12 +2,28 @@
 # Show a page for manually editing host keys
 # Only displays keys for now
 
+use File::Basename;
 require './sshd-lib.pl';
 &ReadParse();
 &ui_print_header(undef, $text{'keys_title'}, "");
 
 # Work out and show the files
 @files = &get_mlvalues($config{'sshd_config'}, "HostKey");
+
+# If there are no HostKey entries assume default keys in use
+
+if (scalar(@files) == 0) {
+	if (-r (dirname($config{'sshd_config'}) . '/ssh_host_rsa_key')) {
+		push(@files, (dirname($config{'sshd_config'}) . '/ssh_host_rsa_key'));
+		}
+	if (-r (dirname($config{'sshd_config'}) . '/ssh_host_dsa_key')) {
+		push(@files, (dirname($config{'sshd_config'}) . '/ssh_host_dsa_key'));
+		}
+	if (-r (dirname($config{'sshd_config'}) . '/ssh_host_key')) {
+		push(@files, (dirname($config{'sshd_config'}) . '/ssh_host_key'));
+		}
+	}
+
 foreach $key (@files) {
 	 $key = $key . ".pub";
 	 }
