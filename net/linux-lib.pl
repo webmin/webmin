@@ -32,9 +32,10 @@ while(<IFC>) {
 	  push(@rv, \%ifc);
 
 
-# We detect IPV6 adresses. An interface can have multiple IPv6 addresses. 
-# So we have to scan the entire line to extract each of them. 
-	  if ($l =~ /inet6 addr: (\S+)\/(\S+)/) { 
+	  # We detect IPV6 adresses. An interface can have multiple IPv6
+	  # addresses. So we have to scan the entire line to extract each
+	  # of them. 
+	  if ($l =~ /inet6 addr:\s+(\S+)\/(\S+)/) { 
 		  local($fin)=0;
 		  local($ic)=0;
 		  local $j=1;

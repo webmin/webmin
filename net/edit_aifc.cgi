@@ -16,132 +16,140 @@ else {
 	&ui_print_header(undef, $text{'aifc_edit'}, "");
 	}
 
-print "<form action=save_aifc.cgi>\n";
-print "<input type=hidden name=new value=\"$in{'new'}\">\n";
-print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",
-      $in{'virtual'} || $a && $a->{'virtual'} ne "" ? $text{'aifc_desc2'}
-						    : $text{'aifc_desc1'},
-      "</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Form start
+print &ui_form_start("save_aifc.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_table_start(
+	$in{'virtual'} || $a && $a->{'virtual'} ne "" ? $text{'aifc_desc2'}
+						      : $text{'aifc_desc1'},
+	"width=100%", 4);
 
-print "<tr> <td><b>$text{'ifcs_name'}</b></td> <td>\n";
+# Interface name, perhaps editable
 if ($in{'new'} && $in{'virtual'}) {
-	print "<input type=hidden name=name value=$in{'virtual'}>\n";
-	print "$in{'virtual'}:<input name=virtual size=3>\n";
+	$namefield = $in{'virtual'}.":".
+		     &ui_textbox("virtual", undef, 3).
+		     &ui_hidden("name", $in{'virtual'});
 	}
 elsif ($in{'new'}) {
-	print "<input name=name size=6>\n";
+	$namefield = &ui_textbox("name", undef, 6);
 	}
 else {
-	print "<font size=+1><tt>$a->{'fullname'}</tt></font>\n";
+	$namefield = "<tt>$a->{'fullname'}</tt>";
 	}
-print "</td>\n";
+print &ui_table_row($text{'ifcs_name'}, $namefield);
 
-print "<td><b>$text{'ifcs_ip'}</b></td>\n";
-printf "<td><input name=address size=15 value=\"%s\"></td> </tr>\n",
-	$a ? $a->{'address'} : "";
+# IP address
+print &ui_table_row($text{'ifcs_ip'},
+	&ui_textbox("address", $a ? $a->{'address'} : "", 15));
 
-# Show netmask
-print "<tr> <td><b>$text{'ifcs_mask'}</b></td> <td>\n";
+# Netmask field
 if ($in{'virtual'} && $in{'new'} && $virtual_netmask) {
-	# Virtual netmask cannot be edited
-	print "$virtual_netmask\n";
+	# Fixed for virtual interface
+	$netmaskfield = $virtual_netmask;
 	}
 elsif (!$access{'netmask'}) {
-	print $a ? $a->{'netmask'} : $config{'def_netmask'};
+	# Cannot be edited
+	$netmaskfield = $a ? $a->{'netmask'} : $config{'def_netmask'};
+	}
+elsif ($in{'new'}) {
+	# Enter or use default
+	$netmaskfield = &ui_opt_textbox(
+		"netmask", $config{'def_netmask'}, 15, $text{'ifcs_auto'});
 	}
 else {
-	print &ui_opt_textbox("netmask", $a ? $a->{'netmask'}
-					    : $config{'def_netmask'}, 15,
-			      $text{'ifcs_auto'});
+	# Allow editing
+	$netmaskfield = &ui_textbox("netmask", $a->{'netmask'}, 15);
 	}
-print "</td>\n";
+print &ui_table_row($text{'ifcs_mask'}, $netmaskfield);
 
-# Show broadcast address
-if( $in{'new'} || (!&is_ipv6_address($a->{'address'})) ){
-print "<td><b>$text{'ifcs_broad'}</b></td> <td>\n";
-if (!$access{'broadcast'}) {
-	print $a ? $a->{'broadcast'} :
-	      $config{'def_broadcast'} ? $config{'def_broadcast'} :
-					 $text{'ifcs_auto'};
+# Broadcast address field, except for IPv6
+if ($in{'new'} || !&is_ipv6_address($a->{'address'})) {
+	if (!$access{'broadcast'}) {
+		# Cannot be edited
+		$broadfield = $a ? $a->{'broadcast'} : $config{'def_broadcast'};
+		}
+	elsif ($in{'new'}) {
+		# Can enter or use default
+		$broadfield = &ui_opt_textbox(
+			"broadcast", $config{'def_broadcast'}, 15,
+			$text{'ifcs_auto'});
+		}
+	else {
+		# Allow editing
+		$broadfield = &ui_textbox("broadcast", $a->{'broadcast'}, 15);
+		}
+	print &ui_table_row($text{'ifcs_broad'}, $broadfield);
 	}
-else {
-	print &ui_opt_textbox("broadcast", $a ? $a->{'broadcast'}
-					      : $config{'def_broadcast'}, 15,
-			      $text{'ifcs_auto'});
-	}
-print "</td> </tr>\n";
-}
 
 # Show MTU
-print "<tr> <td><b>$text{'ifcs_mtu'}</b></td> <td>\n";
 if (!$access{'mtu'}) {
-	print $a ? $a->{'mtu'} :
-	      $config{'def_mtu'} ? $config{'def_mtu'} : $text{'default'};
+	# Cannot be edited
+	$mtufield = $a ? $a->{'mtu'} :
+		    $config{'def_mtu'} ? $config{'def_mtu'} : $text{'default'};
+	}
+elsif ($in{'new'}) {
+	# Can enter or use default
+	$mtufield = &ui_opt_textbox("mtu", $config{'def_mtu'}, 6,
+				    $text{'ifcs_auto'});
 	}
 else {
-	print &ui_opt_textbox("mtu", $a ? $a->{'mtu'}
-					: $config{'def_mtu'}, 15,
-			      $text{'ifcs_auto'});
+	# Allow editing
+	$mtufield = &ui_textbox("mtu", $a->{'mtu'}, 6);
 	}
-print "</td>\n";
+print &ui_table_row($text{'ifcs_mtu'}, $mtufield);
 
-print "<td><b>$text{'ifcs_status'}</b></td> <td>\n";
+# Current status
 if (!$access{'up'}) {
-	print !$a ? $text{'ifcs_up'} :
-		$a->{'up'} ? $text{'ifcs_up'} : $text{'ifcs_down'};
+	# Cannot edit
+	$upfield = !$a ? $text{'ifcs_up'} :
+		   $a->{'up'} ? $text{'ifcs_up'} : $text{'ifcs_down'};
 	}
 else {
-	print &ui_radio("up", !$a || $a->{'up'} ? 1 : 0,
+	$upfield = &ui_radio("up", $in{'new'} || $a->{'up'} ? 1 : 0,
 			[ [ 1, $text{'ifcs_up'} ], [ 0, $text{'ifcs_down'} ] ]);
 	}
-print "</td> </tr>\n";
+print &ui_table_row($text{'ifcs_status'}, $upfield);
 
+# Hardware address, if non-virtual
 if ((!$a && $in{'virtual'} eq "") ||
     ($a && $a->{'virtual'} eq "" && &iface_hardware($a->{'name'}))) {
-	print "<tr> <td><b>$text{'aifc_hard'}</b></td> <td>\n";
 	if ($in{'new'}) {
-		printf "<input type=radio name=ether_def value=1 %s> %s\n",
-			$a ? "" : "checked", $text{'aifc_default'};
-		printf "<input type=radio name=ether_def value=0 %s>\n",
-			$a ? "checked" : "";
+		$hardfield = &ui_opt_textbox("ether", undef, 18,
+					     $text{'aifc_default'});
 		}
-	printf "<input name=ether size=18 value=\"%s\"></td>\n",
-		$a ? $a->{'ether'} : "";
+	else {
+		$hardfield = &ui_textbox("ether", $a->{'ether'}, 18);
+		}
+	print &ui_table_row($text{'aifc_hard'}, $hardfield);
 	}
-else {
-	print "<tr> <td colspan=2></td>\n";
-	}
+
+# Virtual sub-interfaces
 if ($a && $a->{'virtual'} eq "") {
-	print "<td><b>$text{'ifcs_virts'}</b></td>\n";
 	$vcount = 0;
 	foreach $va (@act) {
 		if ($va->{'virtual'} ne "" && $va->{'name'} eq $a->{'name'}) {
 			$vcount++;
 			}
 		}
-	print "<td>$vcount\n";
-	print "(<a href='edit_aifc.cgi?new=1&virtual=$a->{'name'}'>",
-	      "$text{'ifcs_addvirt'}</a>)</td>\n";
+	print &ui_table_row($text{'ifcs_virts'},
+		$vcount." ".
+	        "(<a href='edit_aifc.cgi?new=1&virtual=$a->{'name'}'>".
+		"$text{'ifcs_addvirt'}</a>)");
 	}
-print "</tr>\n";
      
-
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
+# End of the form
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<td><input type=submit value=\"$text{'create'}\"></td>\n";
+	@buts = ( [ undef, $text{'create'} ] );
 	}
 else {
-	print "<td><input type=submit value=\"$text{'save'}\"></td>\n";
+	@buts = ( [ undef, $text{'save'} ] );
 	if ($access{'delete'}) {
-		print "<td align=right><input type=submit name=delete ",
-		      "value=\"$text{'delete'}\"></td>\n";
+		push(@buts, [ 'delete', $text{'delete'} ]);
 		}
 	}
-print "</tr></table></form>\n";
+print &ui_form_end(\@buts);
 
 &ui_print_footer("list_ifcs.cgi?mode=active", $text{'ifcs_return'});
 
