@@ -391,20 +391,14 @@ local ($addr, $router) = &get_default_gateway();
 local @ifaces = &get_interface_defs();
 
 # Show default gateway
-print "<tr> <td><b>$text{'routes_default'}</b></td>\n";
-printf "<td><input type=radio name=gateway_def value=1 %s> %s\n",
-	$addr ? '' : 'checked', $text{'routes_none'};
-printf "<input type=radio name=gateway_def value=0 %s> %s\n",
-	$addr ? 'checked' : '', $text{'routes_gateway'};
-printf "<input name=gateway size=15 value='%s'>\n", $addr;
-print "$text{'routes_device'}\n";
-print "<select name=gatewaydev>\n";
-foreach $iface (@ifaces) {
-	next if ($iface->[0] eq 'lo');
-	printf "<option %s>%s\n",
-		$router eq $iface->[0] ? 'selected' : '', $iface->[0];
-	}
-print "</select></td> </tr>\n";
+print &ui_table_row($text{'routes_default'},
+	&ui_radio("gateway_def", $addr ? 0 : 1,
+		  [ [ 1, $text{'routes_none'} ],
+		    [ 0, $text{'routes_gateway'}." ".
+			 &ui_textbox("gateway", $addr, 15)." ".
+			 &ui_select("gatewaydev", $router,
+				[ map { $_->[0] } grep { $_->[0] ne 'lo' }
+				      @ifaces ]) ] ]));
 
 # Get static routes
 local ($d, @st, @hr);
@@ -425,39 +419,31 @@ foreach $d (@ifaces) {
 	}
 
 # Show static routes via gateways
-print "<tr> <td valign=top><b>$text{'routes_static'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'routes_ifc'}</b></td> ",
-      "<td><b>$text{'routes_net'}</b></td> ",
-      "<td><b>$text{'routes_mask'}</b></td> ",
-      "<td><b>$text{'routes_gateway'}</b></td> </tr>\n";
-local $i;
+my @table;
 for($i=0; $i<=@st; $i++) {
 	local $st = $st[$i];
-	print "<tr $cb>\n";
-	print "<td><input name=dev_$i size=6 value='$st->[0]'></td>\n";
-	print "<td><input name=net_$i size=15 value='$st->[1]'></td>\n";
-	print "<td><input name=netmask_$i size=15 value='$st->[2]'></td>\n";
-	print "<td><input name=gw_$i size=15 value='$st->[3]'></td>\n";
-	print "</tr>\n";
+	push(@table, [ &ui_textbox("dev_$i", $st->[0], 6),
+		       &ui_textbox("net_$i", $st->[1], 15),
+		       &ui_textbox("netmask_$i", $st->[2], 15),
+		       &ui_textbox("gw_$i", $st->[3], 15), ]);
 	}
-print "</table></td> </tr>\n";
+print &ui_table_row($text{'routes_static'},
+	&ui_columns_table([ $text{'routes_ifc'}, $text{'routes_net'},
+			    $text{'routes_mask'}, $text{'routes_gateway'} ],
+			  undef, \@table, undef, 1));
 
 # Show static host routes
-print "<tr> <td valign=top><b>$text{'routes_local'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'routes_ifc'}</b></td> ",
-      "<td><b>$text{'routes_net'}</b></td> ",
-      "<td><b>$text{'routes_mask'}</b></td> </tr>\n";
+my @table;
 for($i=0; $i<=@hr; $i++) {
 	local $st = $hr[$i];
-	print "<tr $cb>\n";
-	print "<td><input name=ldev_$i size=6 value='$st->[0]'></td>\n";
-	print "<td><input name=lnet_$i size=15 value='$st->[1]'></td>\n";
-	print "<td><input name=lnetmask_$i size=15 value='$st->[2]'></td>\n";
-	print "</tr>\n";
+	push(@table, [ &ui_textbox("ldev_$i", $st->[0], 6),
+		       &ui_textbox("lnet_$i", $st->[1], 15),
+		       &ui_textbox("lnetmask_$i", $st->[2], 15) ]);
 	}
-print "</table></td> </tr>\n";
+print &ui_table_row($text{'routes_local'},
+	&ui_columns_table([ $text{'routes_ifc'}, $text{'routes_net'},
+			    $text{'routes_mask'} ],
+			  undef, \@table, undef, 1));
 }
 
 sub parse_routing

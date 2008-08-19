@@ -353,21 +353,18 @@ while(<DEFRT>) {
 	if (/(\S+)/) { push(@defrt, $1); }
 	}
 close(DEFRT);
-print "<tr> <td valign=top><b>$text{'routes_defaults'}</b></td>\n";
-print "<td><textarea name=defrt rows=3 cols=40>",
-	join("\n", @defrt),"</textarea></td> </tr>\n";
+print &ui_table_row($text{'routes_defaults'},
+	&ui_textarea("defrt", join("\n", @defrt), 3, 40));
 
 # show router input
 local $notrt = (-r "/etc/notrouter");
 local $gatew = (-r "/etc/gateways");
-print "<tr> <td><b>Act as router?</b></td> <td>\n";
-printf "<input type=radio name=router value=0 %s> $text{'yes'}\n",
-	$gatew && !$notrt ? "checked" : "";
-printf "<input type=radio name=router value=1 %s> $text{'routes_possible'}\n",
-	!$gatew && !$notrt ? "checked" : "";
-printf "<input type=radio name=router value=2 %s> $text{'no'}\n",
-	$notrt ? "checked" : "";
-print "</td> </tr>\n";
+print &ui_table_row($text{'routes_forward'},
+	&ui_radio("router", $gatew && !$notrt ? 0 :
+			    !$gatew && !$notrt ? 1 : 2,
+		  [ [ 0, $text{'yes'} ],
+		    [ 1, $text{'routes_possible'} ],
+		    [ 2, $text{'no'} ] ]));
 }
 
 sub parse_routing
