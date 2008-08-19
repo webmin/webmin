@@ -14,7 +14,7 @@ print "<b>",&text('rhn_install', "<tt>up2date $update</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "up2date \"$update\"");
 local $qm = quotemeta($update);
-&open_execute_command(CMD, "up2date $qm 2>&1", 1);
+&open_execute_command(CMD, "up2date $qm", 2);
 local $got_error = 0;
 while(<CMD>) {
 	while(s/^[^\015]+\015([^\012])/$1/) { }

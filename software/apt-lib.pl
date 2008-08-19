@@ -24,7 +24,7 @@ foreach (0..100) {
 	&print_tempfile(YESFILE, "Yes\n");
 	}
 &close_tempfile(YESFILE);
-&open_execute_command(CMD, "$cmd 2>&1 <$yesfile", 1);
+&open_execute_command(CMD, "$cmd <$yesfile", 2);
 while(<CMD>) {
 	if (/setting\s+up\s+(\S+)/i && !/as\s+MDA/i) {
 		push(@rv, $1);

@@ -28,7 +28,7 @@ do {
 	$failed = 0;
 	$retry = 0;
 	print "<pre>";
-	&open_execute_command(PKGGET, "$pkg_get -i -f ".quotemeta($update), 1);
+	&open_execute_command(PKGGET, "$pkg_get -i -f ".quotemeta($update), 2);
 	while(<PKGGET>) {
 		if (!/^\s*\d+\%\s+\[/) {
 			# Output everything except download lines

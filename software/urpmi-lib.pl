@@ -12,7 +12,7 @@ print "<b>",&text('urpmi_install', "<tt>$cmd $update</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log('exec', undef, "$cmd $update");
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
-&open_execute_command(CMD, "$cmd $qm 2>&1 </dev/null", 1);
+&open_execute_command(CMD, "$cmd $qm </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
 	if (/installing\s+(\S+)\s+from/) {

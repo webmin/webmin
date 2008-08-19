@@ -18,7 +18,7 @@ print "<b>",&text('yum_install', "<tt>yum $enable -y install $update</tt>"),"</b
 print "<pre>";
 &additional_log('exec', undef, "yum $enable -y install $update");
 local $qm = join(" ", map { quotemeta($_) } split(/\s+/, $update));
-&open_execute_command(CMD, "yum $enable -y install $qm 2>&1 </dev/null", 1);
+&open_execute_command(CMD, "yum $enable -y install $qm </dev/null", 2);
 while(<CMD>) {
 	s/\r|\n//g;
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
