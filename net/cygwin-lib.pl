@@ -395,22 +395,16 @@ sub routing_input
     my $i = 0;
     foreach (@if) {
 	next if $_->{'address'} eq "127.0.0.1";
-	my $none_or_dhcp = ! defined $ifc{'gateway'};
+	my $none_or_dhcp = defined($ifc{'gateway'}) ? 0 : 1;
 	my $desc = $_->{'name'} . ($_->{'dhcp'}? "" : " ($_->{'address'})");
-	print "<tr><td valign=top><b>$desc $text{'routes_default'}:" .
-	    "</b></td>\n";
-	printf "<td><input type=radio name=gateway${i}_def value=1 %s> %s\n",
-	    $none_or_dhcp ? 'checked' : '', $text{'routes_none'};
-	printf "<input type=hidden name=ifname${i} value='%s'></td>\n",
-	    $_->{'name'};
-	printf "<td><input type=radio name=gateway${i}_def value=0 %s> %s",
-	    $none_or_dhcp ? '' : 'checked', $text{'routes_gateway'};
-	printf "<input name=gateway$i size=15 value='%s'>\n",
-	    $_->{'gateway'};
-	print "</td><td>$text{'routes_gwmetric'}";
-	printf "<input name=gwmetric$i size=4 value='%s'>\n",
-	    $_->{'gwmetric'};
-	print "</td></tr>\n";
+	print &ui_table_row("$desc $text{'routes_default'}",
+		&ui_radio("gateway${i}_def", $none_or_dhcp,
+		  [ [ 1, $text{'routes_none'} ],
+		    [ 0, $text{'routes_gateway'}." ".
+		         &ui_textbox("gateway$i", $_->{'gateway'}, 15)." ".
+			 $text{'routes_gwmetric'}." ".
+		         &ui_textbox("gwmetric$i", $_->{'gwmetric'}, 4) ] ]).
+		&ui_hidden("ifname${i}", $_->{'name'}));
 	$i++;
     }
 }

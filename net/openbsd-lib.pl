@@ -450,29 +450,24 @@ return ( "/etc/mygate", "/etc/sysctl.conf", "/etc/rc.conf" );
 }
 
 sub routing_input
-  {
-      &read_routing;
+{
+&read_routing;
 
-      print "<tr> <td><b>$text{'routes_default'}</b></td> <td>\n";
-      printf "<input name=defr_def type=radio value=1 %s> %s\n",
-      $defr eq '' ? 'checked' : '', $text{'routes_none'};
-      printf "<input name=defr_def type=radio value=0 %s>\n",
-      $defr eq '' ? '' : 'checked';
-      printf "<input name=defr size=20 value='%s'></td> </tr>\n",
-      $defr;
-      
-      print "<tr> <td><b>$text{'routes_forward'}</b></td> <td>\n";
-      printf "<input name=gw type=radio value=1 %s> %s\n",
-      $gw eq '1' ? 'checked' : '', $text{'yes'};
-      printf "<input name=gw type=radio value=0 %s> %s</td> </tr>\n",
-      $gw eq '1' ? '' : 'checked', $text{'no'};
-      
-      print "<tr> <td><b>$text{'routes_routed'}</b></td> <td>\n";
-      printf "<input name=rd type=radio value=-q %s> %s\n",
-      $rd eq 'NO' ? '':'checked', $text{'yes'};
-      printf "<input name=rd type=radio value=NO %s> %s</td> </tr>\n",
-      $rd eq 'NO' ? 'checked':'', $text{'no'};
-  }
+# Default router
+print &ui_table_row($text{'routes_default'},
+	&ui_opt_textbox("defr", $defr eq 'NO' ? '' : $defr, 20,
+			$text{'routes_none'}));
+
+# Act as router?
+print &ui_table_row($text{'routes_forward'},
+	&ui_radio("gw", $gw || 0, [ [ 1, $text{'yes'} ],
+				    [ 0, $text{'no'} ] ]));
+
+# Run route discovery
+print &ui_table_row($text{'routes_routed'},
+	&ui_radio("rd", $rd || '-q', [ [ '-q', $text{'yes'} ],
+				       [ 'NO', $text{'no'} ] ]));
+}
 
 sub parse_routing
   {

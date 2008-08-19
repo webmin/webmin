@@ -245,18 +245,15 @@ while(<INIT>) {
 		}
 	}
 close(INIT);
-print "<tr> <td><b>$text{'routes_default'}</b></td> <td>\n";
-printf "<input type=radio name=default value=1 %s> %s\n",
-	$gw ? "" : "checked", $text{'routes_none'};
-printf "<input type=radio name=default value=0 %s> %s\n",
-	$gw ? "checked" : "", $text{'routes_gateway'};
-printf "<input name=gw size=20 value='%s'></td> </tr>\n", $gw;
+print &ui_table_row($text{'routes_default'},
+	&ui_opt_textbox("gw", $gw, 20, $text{'routes_none'},
+			$text{'routes_gateway'}));
 }
 
 sub parse_routing
 {
 local $gw = "";
-if (!$in{'default'}) {
+if (!$in{'gw_def'}) {
 	&check_ipaddress($in{'gw'}) ||
 		&error(&text('routes_edefault', $in{'gw'}));
 	$gw = $in{'gw'};

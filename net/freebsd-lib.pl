@@ -417,28 +417,24 @@ return ( "/etc/defaults/rc.conf", "/etc/rc.conf" );
 sub routing_input
 {
 local %rc = &get_rc_conf();
+
+# Default router
 local $defr = $rc{'defaultrouter'};
-print "<tr> <td><b>$text{'routes_default'}</b></td> <td>\n";
-printf "<input name=defr_def type=radio value=1 %s> %s\n",
-	$defr eq 'NO' ? 'checked' : '', $text{'routes_none'};
-printf "<input name=defr_def type=radio value=0 %s>\n",
-	$defr eq 'NO' ? '' : 'checked';
-printf "<input name=defr size=20 value='%s'></td> </tr>\n",
-	$defr eq 'NO' ? '' : $defr;
+print &ui_table_row($text{'routes_default'},
+	&ui_opt_textbox("defr", $defr eq 'NO' ? '' : $defr, 20,
+			$text{'routes_none'}));
 
+# Act as router?
 local $gw = $rc{'gateway_enable'};
-print "<tr> <td><b>$text{'routes_forward'}</b></td> <td>\n";
-printf "<input name=gw type=radio value=YES %s> %s\n",
-	$gw eq 'YES' ? 'checked' : '', $text{'yes'};
-printf "<input name=gw type=radio value=NO %s> %s</td> </tr>\n",
-	$gw eq 'YES' ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'routes_forward'},
+	&ui_radio("gw", $gw || 'NO', [ [ 'YES', $text{'yes'} ],
+				       [ 'NO', $text{'no'} ] ]));
 
+# Run route discovery
 local $rd = $rc{'router_enable'};
-print "<tr> <td><b>$text{'routes_routed'}</b></td> <td>\n";
-printf "<input name=rd type=radio value=YES %s> %s\n",
-	$rd eq 'YES' ? 'checked' : '', $text{'yes'};
-printf "<input name=rd type=radio value=NO %s> %s</td> </tr>\n",
-	$rd eq 'YES' ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'routes_routed'},
+	&ui_radio("rd", $rd || 'NO', [ [ 'YES', $text{'yes'} ],
+				       [ 'NO', $text{'no'} ] ]));
 }
 
 sub parse_routing

@@ -1,11 +1,19 @@
 # redhat-linux-lib.pl
 # Networking functions for redhat linux
 
-$net_scripts_dir = "/etc/sysconfig/network-scripts";
+if ($gconfig{'os_type'} eq 'openmamba-linux') {
+	# OpenMamba Linux
+	$net_scripts_dir = "/etc/sysconfig/network-devices";
+	$devices_dir = "/etc/sysconfig/network-devices";
+	}
+else {
+	# Redhat, Mandrake, etc..
+	$net_scripts_dir = "/etc/sysconfig/network-scripts";
+	$devices_dir = "/etc/sysconfig/networking/devices";
+	}
 $network_config = "/etc/sysconfig/network";
 $static_route_config = "/etc/sysconfig/static-routes";
 $sysctl_config = "/etc/sysctl.conf";
-$devices_dir = "/etc/sysconfig/networking/devices";
 
 # Redhat 7.2+ and Mandrake 9.1+ support separate gateways in each interface file
 $supports_dev_gateway = ($gconfig{'os_type'} eq 'redhat-linux' &&

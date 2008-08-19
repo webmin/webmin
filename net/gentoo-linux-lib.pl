@@ -280,14 +280,13 @@ sub routing_input
 {
 local ($gw, $dev) = &get_default_gateway();
 local @ifaces = grep { $_->{'virtual'} eq '' } &boot_interfaces();
-print "<tr> <td valign=top><b>$text{'routes_def'}</b></td>\n";
-print "<td>",&ui_radio("route_def", $gw ? 0 : 1,
+print &ui_table_row($text{'routes_def'},
+      &ui_radio("route_def", $gw ? 0 : 1,
 		[ [ 1, $text{'routes_nogw'}."<br>" ],
 		  [ 0, &text('routes_ggw',
 			  &ui_textbox("gw", $gw, 20),
 			  &ui_select("dev", $dev,
-			    [ map { $_->{'name'} } @ifaces ])) ] ]),
-      "</td> </tr>\n";
+			    [ map { $_->{'name'} } @ifaces ])) ] ]));
 }
 
 # parse_routing()
