@@ -666,51 +666,37 @@ sub range_input
 local $new = !$_[0];
 
 # Range description
-print "<tr> <td><b>$text{'ifcs_desc'}</b></td>\n";
-print "<td colspan=3>",&ui_textbox("desc", $_[0] ? $_[0]->{'desc'} : undef, 60),
-      "</td> </tr>\n";
+print &ui_table_row($text{'ifcs_desc'},
+	&ui_textbox("desc", $_[0] ? $_[0]->{'desc'} : undef, 60));
 
 # Base interface
-print "<tr> <td><b>$text{'range_iface'}</b></td>\n";
+my $ifaceinput;
 if ($new) {
-	print "<td><select name=iface>\n";
-	local $b;
-	foreach $b (&boot_interfaces()) {
-		if ($b->{'virtual'} eq '') {
-			printf "<option %s>%s\n",
-			 $b->{'fullname'} eq $_[0]->{'name'} ?  "selected" : "",
-			 $b->{'fullname'};
-			}
-		}
-	print "</select></td>\n";
+	$ifaceinput = &ui_select("iface", $_[0]->{'name'},
+		[ map { $_->{'fullname'} } grep { $b->{'virtual'} eq '' }
+		      &boot_interfaces() ]);
 	}
 else {
-	print "<td><tt>$_[0]->{'name'}</tt></td>\n";
+	$ifaceinput = "<tt>$_[0]->{'name'}</tt>";
 	}
+print &ui_table_row($text{'range_iface'}, $ifaceinput);
 
 # Name for this range
-print "<td><b>$text{'range_name'}</b></td>\n";
-if ($new) {
-	print "<td><input name=range size=10></td> </tr>\n";
-	}
-else {
-	print "<td><tt>$_[0]->{'range'}</tt></td> </tr>\n";
-	}
+print &ui_table_row($text{'range_name'},
+	$new ? &ui_textbox("range", undef, 10)
+	     : "<tt>$_[0]->{'range'}</tt>");
 
 # Start
-print "<tr> <td><b>$text{'range_start'}</b></td>\n";
-printf "<td><input name=start size=15 value='%s'></td>\n",
-	$_[0]->{'start'};
+print &ui_table_row($text{'range_start'},
+	&ui_textbox("start", $_[0]->{'start'}, 15));
 
 # Stop
-print "<td><b>$text{'range_end'}</b></td>\n";
-printf "<td><input name=end size=15 value='%s'></td> </tr>\n",
-	$_[0]->{'end'};
+print &ui_table_row($text{'range_end'},
+	&ui_textbox("end", $_[0]->{'end'}, 15));
 
 # Base number
-print "<tr> <td><b>$text{'range_num'}</b></td>\n";
-printf "<td><input name=num size=5 value='%s'></td> </tr>\n",
-	$_[0]->{'num'};
+print &ui_table_row($text{'range_num'},
+	&ui_textbox("num", $_[0]->{'num'}, 5));
 }
 
 # parse_range(&range, &in)
