@@ -393,22 +393,18 @@ sub routing_input
 local $hc = &read_hostconfig();
 local $r = $hc->{'ROUTER'};
 local $mode = $r eq "-AUTOMATIC-" ? 1 : $r ? 2 : 0;
-print "<tr> <td><b>$text{'routes_default'}</b></td> <td>\n";
-printf "<input type=radio name=router_mode value=0 %s> %s\n",
-	$mode == 0 ? "checked" : "", $text{'routes_none2'};
-printf "<input type=radio name=router_mode value=1 %s> %s\n",
-	$mode == 1 ? "checked" : "", $text{'routes_auto'};
-printf "<input type=radio name=router_mode value=2 %s>\n",
-	$mode == 2 ? "checked" : "";
-printf "<input name=router size=20 value='%s'></td> </tr>\n",
-	$mode == 2 ? $r : "";
 
+# Default router
+print &ui_table_row($text{'routes_default'},
+	&ui_radio("router_mode", $mode,
+		  [ [ 0, $text{'routes_none2'} ],
+		    [ 1, $text{'routes_auto'} ],
+		    [ 2, &ui_textbox("router", $mode == 2 ? $r : "", 20) ] ]));
+
+# Forward traffic?
 local $f = $hc->{'IPFORWARDING'};
-print "<tr> <td><b>$text{'routes_forward'}</b></td> <td>\n";
-printf "<input name=forward type=radio value=1 %s> %s\n",
-	$f eq '-YES-' ? 'checked' : '', $text{'yes'};
-printf "<input name=forward type=radio value=0 %s> %s</td> </tr>\n",
-	$f eq '-YES-' ? '' : 'checked', $text{'no'};
+print &ui_table_row($text{'routes_forward'},
+	&ui_yesno_radio("forward", $f eq '-YES-'));
 }
 
 sub parse_routing

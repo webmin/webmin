@@ -172,50 +172,32 @@ close(ROUTES);
 
 # show default router and device
 local ($def) = grep { $_->[0] eq "default" } @routes;
-print "<tr> <td><b>$text{'routes_default'}</b></td> <td>\n";
-printf "<input type=radio name=gateway_def value=1 %s> $text{'routes_none'}\n",
-	$def->[1] ? "" : "checked";
-printf "<input type=radio name=gateway_def value=0 %s>\n",
-	$def->[1] ? "checked" : "";
-printf "<input name=gateway size=15 value=\"%s\"></td> </tr>\n",
-	$def->[1];
+print &ui_table_row($text{'routes_default'},
+        &ui_opt_textbox("gateway", $def->[1], 15, $text{'routes_none'}));
 
-print "<tr> <td><b>$text{'routes_device2'}</b></td> <td>\n";
-printf "<input type=radio name=gatewaydev_def value=1 %s> $text{'routes_none'}\n",
-	$def->[3] ? "" : "checked";
-printf "<input type=radio name=gatewaydev_def value=0 %s>\n",
-	$def->[3] ? "checked" : "";
-printf "<input name=gatewaydev size=6 value=\"%s\"></td> </tr>\n",
-	$def->[3];
+print &ui_table_row($text{'routes_device2'},
+        &ui_opt_textbox("gatewaydev", $def->[3], 6, $text{'routes_none'}));
 
+# Forwarding enabled?
 &read_env_file($sysctl_config, \%sysctl);
-print "<tr> <td><b>$text{'routes_forward'}</b></td> <td>\n";
-printf "<input type=radio name=forward value=1 %s> $text{'yes'}\n",
-	$sysctl{'IP_FORWARD'} eq 'yes' ? "checked" : "";
-printf "<input type=radio name=forward value=0 %s> $text{'no'}</td> </tr>\n",
-	$sysctl{'IP_FORWARD'} eq 'yes' ? "" : "checked";
+print &ui_table_row($text{'routes_forward'},
+        &ui_yesno_radio("forward", $sysctl{'IP_FORWARD'} eq 'yes'));
 
 # show static network routes
-print "<tr> <td valign=top><b>$text{'routes_static'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'routes_ifc'}</b></td> ",
-      "<td><b>$text{'routes_net'}</b></td> ",
-      "<td><b>$text{'routes_mask'}</b></td> ",
-      "<td><b>$text{'routes_gateway'}</b></td> ",
-      "<td><b>$text{'routes_type'}</b></td> </tr>\n";
-local ($r, $i = 0);
-foreach $r (@routes, [ ]) {
-	next if ($r eq $def);
-	print "<tr $cb>\n";
-	print "<td><input name=dev_$i size=6 value='$r->[3]'></td>\n";
-	print "<td><input name=net_$i size=15 value='$r->[0]'></td>\n";
-	print "<td><input name=netmask_$i size=15 value='$r->[2]'></td>\n";
-	print "<td><input name=gw_$i size=15 value='$r->[1]'></td>\n";
-	print "<td><input name=type_$i size=10 value='$r->[4]'></td>\n";
-	print "</tr>\n";
-	$i++;
-	}
-print "</table></td> </tr>\n";
+my $i = 0;
+my @table;
+foreach my $r (@routes, [ ]) {
+        next if ($r eq $def);
+        push(@table, [ &ui_textbox("dev_$i", $r->[3], 6),
+                       &ui_textbox("net_$i", $r->[0], 15),
+                       &ui_textbox("netmask_$i", $r->[2], 15),
+                       &ui_textbox("gw_$i", $r->[1], 15),
+                       &ui_textbox("type_$i", $r->[4], 10) ]);
+        }
+print &ui_table_row($text{'routes_static'},         &ui_columns_table([ $text{'routes_ifc'}, $text{'routes_net'},
+                            $text{'routes_mask'}, $text{'routes_gateway'},
+                            $text{'routes_type'} ],
+                          undef, \@table, undef, 1));
 }
 
 sub parse_routing
