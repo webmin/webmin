@@ -68,6 +68,10 @@ if (!$access{'bootonly'}) {
 		if ($a->{'virtual'} ne "") {
 			$cols[0] = "&nbsp;&nbsp;".$cols[0];
 			}
+		if (%minfo && $minfo{'dir'} eq 'virtual-server') {
+			# Shorten name
+			$minfo{'desc'} = $text{'index_vmin'};
+			}
 		push(@cols, &iface_type($a->{'name'}).
 		      ($a->{'virtual'} eq "" ||
 		       $mod ? "" : " ($text{'ifcs_virtual'})").
@@ -169,6 +173,10 @@ foreach $a (@boot) {
 			}
 		if ($a->{'virtual'} ne "") {
 			$cols[0] = "&nbsp;&nbsp;".$cols[0];
+			}
+		if (%minfo && $minfo{'dir'} eq 'virtual-server') {
+			# Shorten name
+			$minfo{'desc'} = $text{'index_vmin'};
 			}
 		push(@cols, &iface_type($a->{'name'}).
 		     ($a->{'virtual'} eq "" ||
