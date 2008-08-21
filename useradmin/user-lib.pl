@@ -2057,18 +2057,17 @@ if ($anyedit && $access{'gdelete'}) {
 }
 
 # date_input(day, month, year, prefix)
+# Returns HTML for selecting a date
 sub date_input
 {
-print "<input name=$_[3]d size=3 value='$_[0]'>";
-print "/<select name=$_[3]m>\n";
-local $m;
-foreach $m (1..12) {
-	printf "<option value=%d %s>%s\n",
-		$m, $_[1] eq $m ? 'selected' : '', $text{"smonth_$m"};
-	}
-print "</select>";
-print "/<input name=$_[3]y size=5 value='$_[2]'>";
-print &date_chooser_button("$_[3]d", "$_[3]m", "$_[3]y");
+local ($d, $m, $y, $prefix) = @_;
+local $rv;
+$rv .= &ui_textbox($prefix."d", $d, 3)."/";
+$rv .= &ui_select($prefix."m", $m,
+		[ map { [ $_, $text{"smonth_".$_} ] } (1..12) ])."/";
+$rv .= &ui_textbox($prefix."y", $y, 5);
+$rv .= &date_chooser_button($prefix."d", $prefix."m", $prefix."y");
+return $rv;
 }
 
 # list_last_logins([user], [max])

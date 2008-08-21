@@ -43,7 +43,6 @@ print &ui_hidden("num", $n) if ($n ne "");
 print &ui_table_start($text{'uedit_details'}, "width=100%", 4);
 
 # Username
-print "<tr> <td>",&hlink("<b>$text{'user'}</b>","user"),"</td>\n";
 if ($n eq "" && $config{'new_user_group'} && $access{'gcreate'}) {
 	$onch = "newgid.value = user.value";
 	}
@@ -61,7 +60,7 @@ else {
 # User ID
 if ($n ne "") {
 	# Existing user, just show field to edit
-	$uidfield = &ui_textbox("uid", $user{'uid'}, 10);
+	$uidfield = &ui_textbox("uid", $uinfo{'uid'}, 10);
 	}
 else {
 	# Work out which UID modes are available
@@ -109,21 +108,22 @@ if ($config{'extra_real'}) {
 else {
 	# Just a name
 	print &ui_table_row(&hlink($text{'real'}, "real"),
-		&ui_textbox("real", $uinfo{'real'}, 20));
+		&ui_textbox("real", $uinfo{'real'}, 40));
 	}
 
 # Show input for home directory
 if ($access{'autohome'}) {
 	# AUtomatic, cannot be changed
 	$homefield = $text{'uedit_auto'}.
-		     ($n eq "" ? "" : "( <tt>$uinfo{'home'}</tt> );
+		     ($n eq "" ? "" : "( <tt>$uinfo{'home'}</tt>" );
 	}
 else {
 	if ($config{'home_base'}) {
 		# Can be automatic
 		local $grp = &my_getgrgid($uinfo{'gid'});
-		local $hb = $n eq "" || &auto_home_dir($config{'home_base'},
-			    $uinfo{'user'}, $grp) eq $uinfo{'home'};
+		local $hb = $n eq "" ||
+			    &auto_home_dir($config{'home_base'},
+				    $uinfo{'user'}, $grp) eq $uinfo{'home'};
 		$homefield = &ui_radio("home_base", $hb ? 1 : 0,
 			[ [ 1, $text{'uedit_auto'} ],
 			  [ 0, &ui_filebox("home", $hb ? "" : $uinfo{'home'},
@@ -139,8 +139,6 @@ print &ui_table_row(&hlink($text{'home'}, "home"),
 	$homefield);
 
 # Show shell drop-down
-# XXX other field??
-@shlist = ( );
 if ($access{'shells'} ne "*") {
 	push(@shlist, $uinfo{'shell'} || [ "", "&lt;None&gt;" ]) if (%uinfo);
 	push(@shlist, split(/\s+/, $access{'shells'}));
@@ -150,9 +148,11 @@ $shells = 1 if ($access{'noother'});
 @shlist = &unique(@shlist);
 push(@shlist, [ "*", $text{'uedit_other'} ]) if (!$shells);
 print &ui_table_row(&hlink($text{'shell'}, "shell"),
-	&ui_select("shell", $uinfo{'shell'}, \@shlist));
+	&ui_select("shell", $uinfo{'shell'}, \@shlist, 1, 0, 0, 0,
+	   "onChange='form.othersh.disabled = form.shell.value != \"*\"'").
+	($shells ? "" : &ui_filebox("othersh", undef, 40, 1)), 3);
 
-# Show password field
+# Get the password, generate random if needed
 $pass = %uinfo ? $uinfo{'pass'} : $config{'lock_string'};
 if (!%uinfo && $config{'random_password'}) {
 	&seed_random();
@@ -161,6 +161,7 @@ if (!%uinfo && $config{'random_password'}) {
 					rand(scalar(@random_password_chars))];
 		}
 	}
+
 # Check if temporary locking is supported
 if (&supports_temporary_disable()) {
 	if (%uinfo && $pass ne $config{'lock_string'} && $pass ne "") {
@@ -175,61 +176,39 @@ if (&supports_temporary_disable()) {
 		$can_disable = 1;
 		}
 	}
-print "<td valign=top rowspan=4>",&hlink("<b>$text{'pass'}</b>","pass"),
-      "</td> <td rowspan=4 valign=top>\n";
-printf"<input type=radio name=passmode value=0 %s> %s<br>\n",
-	$pass eq "" && $random_password eq "" ? "checked" : "",
-	$config{'empty_mode'} ? $text{'none1'} : $text{'none2'};
-printf"<input type=radio name=passmode value=1 %s> $text{'nologin'}<br>\n",
-	$pass eq $config{'lock_string'} && $random_password eq "" ? "checked" : "";
-printf "<input type=radio name=passmode value=3 %s> $text{'clear'}\n",
-	$random_password ne "" ? "checked" : "";
-printf "<input %s name=pass size=15 value='%s'><br>\n",
-	$config{'passwd_stars'} ? "type=password" : "",
-	$config{'random_password'} && $n eq "" ? $random_password : "";
-if ($access{'nocrypt'}) {
-	# Don't show current encrypted password
-	printf
-	  "<input type=radio name=passmode value=2 %s> $text{'nochange'}\n",
-	  $pass && $pass ne $config{'lock_string'} && $random_password eq "" ? "checked" : "";
-	print "<input type=hidden name=encpass value=\"$pass\">\n";
-	}
-else {
-	# Show encrypted
-	local $size = length($pass) > 13 ? length($pass) : 13;
-	printf
-	  "<input type=radio name=passmode value=2 %s> $text{'encrypted'}\n",
-	  $pass && $pass ne $config{'lock_string'} ? "checked" : "";
-	printf "<input name=encpass size=$size value=\"%s\">\n",
-		$pass && $pass ne $config{'lock_string'} ? $pass : "";
-	}
 
-# Show password lock checkbox
-if ($can_disable) {
-	printf "<br>&nbsp;&nbsp;&nbsp;".
-	       "<input type=checkbox name=disable value=1 %s> %s\n",
-		$disabled ? "checked" : "", $text{'uedit_disabled'};
-	}
-print "</td> </tr>\n";
+# Show password field
+$passmode = $pass eq "" && $random_password eq "" ? 0 :
+	    $pass eq $config{'lock_string'} && $random_password eq "" ? 1 :
+	    $random_password ne "" ? 3 :
+	    $pass && $pass ne $config{'lock_string'} &&
+		$random_password eq "" ? 2 : -1;
+$pffunc = $config{'passwd_stars'} ? \&ui_password : \&ui_textbox;
+print &ui_table_row(&hlink($text{'pass'}, "pass"),
+	&ui_radio_table("passmode", $passmode,
+	  [ [ 0, $config{'empty_mode'} ? $text{'none1'} : $text{'none2'} ],
+	    [ 1, $text{'nologin'} ],
+	    [ 3, $text{'clear'},
+	      &$pffunc("pass", $config{'random_password'} && $n eq "" ?
+				$random_password : "", 15) ],
+	    $access{'nocrypt'} ?
+		( [ 2, $text{'nochange'},
+		    &ui_hidden("encpass", $pass) ] ) :
+		( [ 2, $text{'encrypted'},
+		    &ui_textbox("encpass", $passmode == 2 ? $pass : "", 40) ] )
+	  ]).
+	  ($can_disable ? "&nbsp;&nbsp;".&ui_checkbox("disable", 1,
+				$text{'uedit_disabled'}, $disabled) : ""),
+	  3);
 
-# Show other-shell option
-if (!$shells) {
-	print "<tr> <td valign=top rowspan=3>$text{'uedit_other'}</td>\n";
-	print "<td valign=top rowspan=3><input size=25 name=othersh>\n";
-	print &file_chooser_button("othersh", 0),"</td> </tr>\n";
-	print "<tr> <td colspan=2 rowspan=2><br></td> </tr>\n";
-	}
-
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 $pft = &passfiles_type();
 if (($pft == 1 || $pft == 6) && $access{'peopt'}) {
-	# This is a BSD system.. a few extra password options are supported
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
-	print "<tr> <td>",&hlink("<b>$text{'change2'}</b>",
-				 "change2"),"</td>\n";
+	# Additional user fields for BSD users
+	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4);
+
+	# Last change date
 	if ($uinfo{'change'}) {
 		@tm = localtime($uinfo{'change'});
 		$cday = $tm[3];
@@ -240,10 +219,12 @@ if (($pft == 1 || $pft == 6) && $access{'peopt'}) {
 		}
 	print "<td>";
 	&date_input($cday, $cmon, $cyear, 'change');
-	print " &nbsp; <input name=changeh size=3 value=\"$chour\">";
-	print ":<input name=changemi size=3 value=\"$cmin\"></td>\n";
+	print &ui_table_row(&hlink($text{'change2'}, "change2"),
+		&date_input($cday, $cmon, $cyear, 'change').
+		" ".&ui_textbox("changeh", $chour, 3).
+		":".&ui_textbox("changemi", $cmin, 3));
 
-	print "<td>",&hlink("<b>$text{'expire2'}</b>","expire2"),"</td>\n";
+	# Expiry date
 	if ($n eq "") {
 		if ($config{'default_expire'} =~
 		    /^(\d+)\/(\d+)\/(\d+)$/) {
@@ -262,44 +243,35 @@ if (($pft == 1 || $pft == 6) && $access{'peopt'}) {
 		$ehour = sprintf "%2.2d", $tm[2];
 		$emin = sprintf "%2.2d", $tm[1];
 		}
-	print "<td>";
-	&date_input($eday, $emon, $eyear, 'expire');
-	print " &nbsp; <input name=expireh size=3 value=\"$ehour\">";
-	print ":<input name=expiremi size=3 value=\"$emin\"></td> </tr>\n";
+	print &ui_table_row(&hlink($text{'expire2'}, "expire2"),
+		&date_input($eday, $emon, $eyear, 'expire').
+		" ".&ui_textbox("expireh", $ehour, 3).
+		":".&ui_textbox("expiremi", $emin, 3));
 
-	print "<tr> <td>",&hlink("<b>$text{'class'}</b>","class"),"</td>\n";
-	print "<td><input name=class size=10 value=\"$uinfo{'class'}\"></td>\n";
-	print "</tr>\n";
-	print "</table></td></tr></table><p>\n";
+	# BSD login class
+	print &ui_table_row(&hlink($text{'class'}, "class"),
+		&ui_textbox("class", $uinfo{'class'}, 10));
+
+	print &ui_table_end();
 	}
 elsif (($pft == 2 || $pft == 5) && $access{'peopt'}) {
 	# System has a shadow password file as well.. which means it supports
 	# password expiry and so on
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
-	print "<tr> <td>",&hlink("<b>$text{'change'}</b>","change"),"</td>\n";
-	print "<td>";
-	if ($uinfo{'change'}) {
-		@tm = localtime(timelocal(gmtime($uinfo{'change'} * 60*60*24)));
-		printf "%s/%s/%s\n",
-			$tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900;
-		}
-	elsif ($n eq "") { print "$text{'uedit_never'}\n"; }
-	else { print "$text{'uedit_unknown'}\n"; }
+	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4);
 
-	# Show checkbox to set last change date to 0, forcing
-	# a password change at next login
+	# Last change date, with checkbox to force change
 	local $max = $n eq "" ? $config{'default_max'} : $uinfo{'max'};
-	if (($max || $gconfig{'os_type'} =~ /-linux$/) && $pft == 2) {
-		print "<input type=checkbox name=forcechange value=1> ",
-		      "$text{'uedit_forcechange'}\n";
-		}
-	print "</td>\n";
+	print &ui_table_row(&hlink($text{'change'}, "change"),
+		($uinfo{'change'} ? &make_date(timelocal(
+					gmtime($uinfo{'change'} * 60*60*24)),1) :
+		 $n eq "" ? $text{'uedit_never'} :
+			    $text{'uedit_unknown'}).
+		 (($max || $gconfig{'os_type'} =~ /-linux$/) && $pft == 2 ?
+		    &ui_checkbox("forcechange", 1, $text{'uedit_forcechange'}) :
+		    ""));
 
 	if ($pft == 2) {
-		print "<td>",&hlink("<b>$text{'expire'}</b>","expire"),
-		      "</td>\n";
+		# Expiry date
 		if ($n eq "") {
 			if ($config{'default_expire'} =~
 			    /^(\d+)\/(\d+)\/(\d+)$/) {
@@ -309,44 +281,45 @@ elsif (($pft == 2 || $pft == 5) && $access{'peopt'}) {
 				}
 			}
 		elsif ($uinfo{'expire'}) {
-			@tm = localtime(timelocal(gmtime($uinfo{'expire'} * 60*60*24)));
+			@tm = localtime(timelocal(gmtime($uinfo{'expire'} *
+							 60*60*24)));
 			$eday = $tm[3];
 			$emon = $tm[4]+1;
 			$eyear = $tm[5]+1900;
 			}
-		print "<td>";
-		&date_input($eday, $emon, $eyear, 'expire');
-		print "</td>\n";
+		print &ui_table_row(&hlink($text{'expire'}, "expire"),
+			&date_input($eday, $emon, $eyear, 'expire'));
 		}
 	else {
-		print "<td>",&hlink("<b>$text{'ask'}</b>","ask"),"</td>\n";
-		printf "<td><input type=radio name=ask value=1 %s> %s\n",
-			$uinfo{'change'} eq '0' ? 'checked' : '', $text{'yes'};
-		printf "<input type=radio name=ask value=0 %s> %s</td>\n",
-			$uinfo{'change'} eq '0' ? '' : 'checked', $text{'no'};
+		# Ask at first login?
+		print &ui_table_row(&hlink($text{'ask'}, "ask"),
+			&ui_yesno_radio("ask", $uinfo{'change'} eq '0'));
 		}
-	print "</tr>\n";
 
-	print "<tr> <td>",&hlink("<b>$text{'min'}</b>","min"),"</td>\n";
-	printf "<td><input size=5 name=min value=\"%s\"></td>\n",
-		$n eq "" ? $config{'default_min'} : $uinfo{'min'};
+	# Minimum and maximum days for changing
+	print &ui_table_row(&hlink($text{'min'}, "min"),
+		&ui_textbox("min", $n eq "" ? $config{'default_min'} :
+					$uinfo{'min'}, 5));
 
-	print "<td>",&hlink("<b>$text{'max'}</b>","max"),"</td>\n";
-	printf "<td><input size=5 name=max value=\"%s\"></td></tr>\n",
-		$n eq "" ? $config{'default_max'} : $uinfo{'max'};
+	print &ui_table_row(&hlink($text{'max'}, "max"),
+		&ui_textbox("max", $n eq "" ? $config{'default_max'} :
+					$uinfo{'max'}, 5));
 
 	if ($pft == 2) {
-		# SCO does not have these password file options
-		print "<tr> <td>",&hlink("<b>$text{'warn'}</b>","warn"),"</td>\n";
-		printf "<td><input size=5 name=warn value=\"%s\"></td>\n",
-			$n eq "" ? $config{'default_warn'} : $uinfo{'warn'};
+		# Warning and inactive days. Only available when full shadow
+		# files are used
+		print &ui_table_row(&hlink($text{'warn'}, "warn"),
+			&ui_textbox("warn", $n eq "" ? $config{'default_warn'}
+						     : $uinfo{'warn'}, 5));
 
-		print "<td>",&hlink("<b>$text{'inactive'}</b>","inactive"),"</td>\n";
-		printf "<td><input size=5 name=inactive value=\"%s\"></td></tr>\n",
-			$n eq "" ? $config{'default_inactive'} : $uinfo{'inactive'};
+		print &ui_table_row(&hlink($text{'inactive'}, "inactive"),
+			&ui_textbox("inactive", $n eq "" ?
+					$config{'default_inactive'} :
+					$uinfo{'inactive'}, 5));
+
 		}
 
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_end();
 	}
 elsif ($pft == 4 && $access{'peopt'}) {
 	# System has extra AIX password information
