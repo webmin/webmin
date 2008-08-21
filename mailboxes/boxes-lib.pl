@@ -1950,9 +1950,10 @@ local $hn = &get_system_hostname();
 local $mf;
 mkdir($_[1], 0755);
 mkdir("$_[1]/cur", 0755);
+++$main::write_maildir_count;
 do {
-	$mf = "$_[1]/cur/$now.$$.$hn";
-	$_[0]->{'id'} = "cur/$now.$$.$hn";
+	$mf = "$_[1]/cur/$now.$$.$main::write_maildir_count.$hn";
+	$_[0]->{'id'} = "cur/$now.$$.$main::write_maildir_count.$hn";
 	$now++;
 	} while(-r $mf);
 &send_mail($_[0], $mf, $_[2], 1);
