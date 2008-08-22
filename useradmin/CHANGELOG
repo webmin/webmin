@@ -46,4 +46,5 @@ Added support for the new user and group databases found in OSX 10.5 and later, 
 ---- Changes since 1.420 ----
 The option to force a password change at the next login is available for new users, if a default 'Maximum days' is set on the Module Config page or if running Linux.
 ---- Changes since 1.430 ----
+Added tabs to the module's page page, to switching between user and group lists easier.
 Cleaned up the user interface to be more consistent with the rest of Webmin.

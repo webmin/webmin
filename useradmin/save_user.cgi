@@ -8,6 +8,25 @@ require 'timelocal.pl';
 &error_setup($text{'usave_err'});
 &ReadParse();
 
+# Check for buttons at end of user form, redirect if needed
+if ($in{'list'}) {
+	&redirect("list_logins.cgi?username=".&urlize($in{'old'}));
+	return;
+	}
+elsif ($in{'mailboxes'}) {
+	&redirect("../mailboxes/list_mail.cgi?user=".&urlize($in{'old'}));
+	return;
+	}
+elsif ($in{'switch'}) {
+	&redirect("../usermin/switch.cgi?user=".&urlize($in{'old'}));
+	return;
+	}
+elsif ($in{'delete'}) {
+	&redirect("delete_user.cgi?user=".&urlize($in{'old'}).
+		  "&num=".$in{'num'});
+	return;
+	}
+
 # Build list of used UIDs and GIDs
 &build_user_used(\%used);
 &build_group_used(\%used) if ($config{'new_user_gid'});
@@ -211,7 +230,7 @@ if (!$access{'autohome'}) {
 	}
 $user{'shell'} = $in{'shell'};
 @sgnames = $config{'secmode'} == 2 ? &split_quoted_string($in{'sgid'})
-                                   : split(/\0/, $in{'sgid'});
+                                   : split(/\r?\n/, $in{'sgid'});
 foreach $gname (@sgnames) {
 	$ingroup{$gname}++;
 	$gid = &my_getgrnam($gname);

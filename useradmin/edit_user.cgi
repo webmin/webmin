@@ -18,6 +18,7 @@ else {
 	&can_edit_user(\%access, \%uinfo) || &error($text{'uedit_eedit'});
 	&ui_print_header(undef, $text{'uedit_title'}, "", "edit_user");
 	}
+@tds = ( "width=30%" );
 
 # build list of used shells
 %shells = map { $_, 1 } split(/,/, $config{'shells'});
@@ -40,7 +41,8 @@ if (%uinfo) {
 # Start of the form
 print &ui_form_start("save_user.cgi", "post");
 print &ui_hidden("num", $n) if ($n ne "");
-print &ui_table_start($text{'uedit_details'}, "width=100%", 4);
+print &ui_hidden("old", $uinfo{'user'}) if ($n ne "");
+print &ui_table_start($text{'uedit_details'}, "width=100%", 2, \@tds);
 
 # Username
 if ($n eq "" && $config{'new_user_group'} && $access{'gcreate'}) {
@@ -67,10 +69,10 @@ else {
 	@uidmodes = ( );
 	$defuid = &allocate_uid(\%used);
 	if ($access{'autouid'}) {
-		push(@uidmodes, [ 1, $text{'gedit_uid_def'} ]);
+		push(@uidmodes, [ 1, $text{'uedit_uid_def'} ]);
 		}
 	if ($access{'calcuid'}) {
-		push(@uidmodes, [ 2, $text{'gedit_uid_calc'} ]);
+		push(@uidmodes, [ 2, $text{'uedit_uid_calc'} ]);
 		}
 	if ($access{'useruid'}) {
 		push(@uidmodes, [ 0, &ui_textbox("uid", $defuid, 10) ]);
@@ -125,8 +127,9 @@ else {
 			    &auto_home_dir($config{'home_base'},
 				    $uinfo{'user'}, $grp) eq $uinfo{'home'};
 		$homefield = &ui_radio("home_base", $hb ? 1 : 0,
-			[ [ 1, $text{'uedit_auto'} ],
-			  [ 0, &ui_filebox("home", $hb ? "" : $uinfo{'home'},
+			[ [ 1, $text{'uedit_auto'}."<br>" ],
+			  [ 0, $text{'uedit_manual'}." ".
+			       &ui_filebox("home", $hb ? "" : $uinfo{'home'},
 					   25, 0, undef, undef, 1) ] ]);
 		}
 	else {
@@ -150,7 +153,7 @@ push(@shlist, [ "*", $text{'uedit_other'} ]) if (!$shells);
 print &ui_table_row(&hlink($text{'shell'}, "shell"),
 	&ui_select("shell", $uinfo{'shell'}, \@shlist, 1, 0, 0, 0,
 	   "onChange='form.othersh.disabled = form.shell.value != \"*\"'").
-	($shells ? "" : &ui_filebox("othersh", undef, 40, 1)), 3);
+	($shells ? "" : &ui_filebox("othersh", undef, 40, 1)));
 
 # Get the password, generate random if needed
 $pass = %uinfo ? $uinfo{'pass'} : $config{'lock_string'};
@@ -198,15 +201,15 @@ print &ui_table_row(&hlink($text{'pass'}, "pass"),
 		    &ui_textbox("encpass", $passmode == 2 ? $pass : "", 40) ] )
 	  ]).
 	  ($can_disable ? "&nbsp;&nbsp;".&ui_checkbox("disable", 1,
-				$text{'uedit_disabled'}, $disabled) : ""),
-	  3);
+				$text{'uedit_disabled'}, $disabled) : "")
+	  );
 
 print &ui_table_end();
 
 $pft = &passfiles_type();
 if (($pft == 1 || $pft == 6) && $access{'peopt'}) {
 	# Additional user fields for BSD users
-	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4);
+	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4, \@tds);
 
 	# Last change date
 	if ($uinfo{'change'}) {
@@ -257,7 +260,7 @@ if (($pft == 1 || $pft == 6) && $access{'peopt'}) {
 elsif (($pft == 2 || $pft == 5) && $access{'peopt'}) {
 	# System has a shadow password file as well.. which means it supports
 	# password expiry and so on
-	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4);
+	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4, \@tds);
 
 	# Last change date, with checkbox to force change
 	local $max = $n eq "" ? $config{'default_max'} : $uinfo{'max'};
@@ -323,22 +326,14 @@ elsif (($pft == 2 || $pft == 5) && $access{'peopt'}) {
 	}
 elsif ($pft == 4 && $access{'peopt'}) {
 	# System has extra AIX password information
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
+	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4, \@tds);
 
-	print "<tr> <td>",&hlink("<b>$text{'change'}</b>","change"),
-	      "</td>\n";
-	if ($uinfo{'change'}) {
-		@tm = localtime($uinfo{'change'});
-		printf "<td>%s/%s/%s %2.2d:%2.2d:%2.2d</td>\n",
-			$tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900,
-			$tm[2], $tm[1], $tm[0];
-		}
-	elsif ($n eq "") { print "<td>$text{'uedit_never'}</td>\n"; }
-	else { print "<td>$text{'uedit_unknown'}</td>\n"; }
+	# Last change date and time
+	print &ui_table_row(&hlink($text{'change'}, "change"),
+		($uinfo{'change'} ? &make_date($uinfo{'change'}) :
+		 $n eq "" ? $text{'uedit_never'} :
+			    $text{'uedit_unknown'}));
 
-	print "<td>",&hlink("<b>$text{'expire'}</b>","expire"),"</td>\n";
 	if ($uinfo{'expire'}) {
 		$uinfo{'expire'} =~ /^(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/;
 		$emon = $1;
@@ -354,72 +349,78 @@ elsif ($pft == 4 && $access{'peopt'}) {
 			}
 		}
 	$emon =~ s/0(\d)/$1/;	# strip leading 0 
-	print "<td>";
-	&date_input($eday, $emon, $eyear, 'expire');
-	print " &nbsp; <input name=expireh size=3 value=\"$ehour\">";
-	print "<b>:</b><input name=expiremi size=3 value=\"$emin\"></td> </tr>\n";
+	print &ui_table_row(&hlink($text{'expire'}, "expire"),
+		&date_input($eday, $emon, $eyear, 'expire').
+		" ".&ui_textbox("expireh", $ehour, 3).
+		"/".&ui_textbox("expiremi", $emin, 3));
 
-	print "<tr> <td>",&hlink("<b>$text{'min_weeks'}</b>","min_weeks"),"</td>\n";
-	print "<td><input size=5 name=min value=\"$uinfo{'min'}\"></td>\n";
+	# Minimum and maximum ages in weeks
+	print &ui_table_row(&hlink($text{'min_weeks'}, "min_weeks"),
+		&ui_textbox("min", $uinfo{'min'}, 5));
 
-	print "<td>",&hlink("<b>$text{'max_weeks'}</b>","max_weeks"),"</td>\n";
-	print "<td><input size=5 name=max value=\"$uinfo{'max'}\"></td></tr>\n";
+	print &ui_table_row(&hlink($text{'max_weeks'}, "max_weeks"),
+		&ui_textbox("max", $uinfo{'max'}, 5));
 
-	print "<tr> <td valign=top>",&hlink("<b>$text{'warn'}</b>","warn"),"</td>\n";
-	print "<td valign=top><input size=5 name=warn value=\"$uinfo{'warn'}\"></td>\n";
+	# Warning days
+	print &ui_table_row(&hlink($text{'warn'}, "warn"),
+		&ui_textbox("warn", $uinfo{'warn'}, 5));
 
-	print "<td valign=top>",&hlink("<b>$text{'flags'}</b>","flags"),
-	      "</td> <td>\n";
-	printf "<input type=checkbox name=flags value=admin %s> %s<br>\n",
-		$uinfo{'admin'} ? 'checked' : '', $text{'uedit_admin'};
-	printf "<input type=checkbox name=flags value=admchg %s> %s<br>\n",
-		$uinfo{'admchg'} ? 'checked' : '', $text{'uedit_admchg'};
-	printf "<input type=checkbox name=flags value=nocheck %s> %s\n",
-		$uinfo{'nocheck'} ? 'checked' : '', $text{'uedit_nocheck'};
-	print "</td> </tr>\n";
+	# AIX-specific flags
+	print &ui_table_row(&hlink($text{'flags'}, "flags"),
+		&ui_checkbox("flags", "admin", $text{'uedit_admin'},
+			     $uinfo{'admin'})."<br>".
+		&ui_checkbox("flags", "admchg", $text{'uedit_admchg'},
+			     $uinfo{'admchg'})."<br>".
+		&ui_checkbox("flags", "nocheck", $text{'uedit_nocheck'},
+			     $uinfo{'nocheck'}));
 
-	print "</table></td></tr></table><p>\n";
+	print &ui_table_end();
 	}
 
-# Output group memberships
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'uedit_gmem'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-print "<tr> <td valign=top>",&hlink("<b>$text{'group'}</b>","group"),
-      "</td> <td valign=top>\n";
+# Group memberships section
+print &ui_table_start($text{'uedit_gmem'}, "width=100%", 4, \@tds);
+
+# Primary group
+@groupopts = ( );
+$gidmode = 0;
 if ($n eq "" && $access{'gcreate'}) {
-	printf "<input type=radio name=gidmode value=2 %s> %s<br>\n",
-		$config{'new_user_group'} ? 'checked' : '', $text{'uedit_samg'};
-	printf "<input type=radio name=gidmode value=1> %s\n",
-		$text{'uedit_newg'};
-	print "<input name=newgid size=13><br>\n";
-	printf "<input type=radio name=gidmode value=0 %s> %s\n",
-		$config{'new_user_group'} ? '' : 'checked', $text{'uedit_oldg'};
+	# Has option to create a group
+	push(@groupopts, [ 2, $text{'uedit_samg'} ]);
+	push(@groupopts, [ 1, $text{'uedit_newg'},
+			   &ui_textbox("newgid", undef, 20) ]);
+	$gidmode = $config{'new_user_group'} ? 2 : 0;
 	}
 if ($access{'ugroups'} eq "*" || $access{'uedit_gmode'} >= 3) {
+	# Group can be chosen with popup window
 	local $w = 300;
 	local $h = 200;
 	if ($gconfig{'db_sizeuser'}) {
 		($w, $h) = split(/x/, $gconfig{'db_sizeuser'});
 		}
-	printf "<input name=gid size=13 value=\"%s\">\n",
-		$n eq "" ? $config{'default_group'}
-			 : scalar(&my_getgrgid($uinfo{'gid'}));
-	print "<input type=button onClick='ifield = document.forms[0].gid; chooser = window.open(\"my_group_chooser.cgi?multi=0&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\"></td>\n";
+	push(@groupopts, [ 0, $text{'uedit_oldg'},
+		   &ui_textbox("gid", $n eq "" ? $config{'default_group'} :
+				 scalar(&my_getgrgid($uinfo{'gid'})), 13)." ".
+		   &popup_window_button("my_group_chooser.cgi?multi=0", $w, $h,
+					1, [ [ "ifield", "gid", "group" ] ]) ]);
 	}
 else {
-	print "<select name=gid>\n";
-	local $cg = %uinfo ? &my_getgrgid($uinfo{'gid'}) : undef;
-	@gl = &unique($cg ? ($cg) : (), &split_quoted_string($access{'ugroups'}));
-	foreach $g (@gl) {
-		printf "<option %s>%s\n",
-			$cg eq $g ? "selected" : "", $g;
-		}
-	print "</select></td>\n";
+	# From fixed menu of groups
+	$cg = %uinfo ? &my_getgrgid($uinfo{'gid'}) : undef;
+	@gl = &unique($cg ? ($cg) : (),
+		      &split_quoted_string($access{'ugroups'}));
+	push(@groupopts, [ 0, $text{'uedit_oldg'},
+			   &ui_select("gid", $cg, \@gl) ]);
 	}
+if (@groupopts == 1) {
+	$groupfield = $groupopts[0]->[2];
+	}
+else {
+	$groupfield = &ui_radio_table("gidmode", $gidmode, \@groupopts);
+	}
+print &ui_table_row(&hlink($text{'group'}, "group"), $groupfield, 3);
 
+# Work out which secondary groups the user is in
 if ($config{'secmode'} != 1) {
-	# Work out which secondary groups the user is in
 	@defsecs = &split_quoted_string($config{'default_secs'});
 	@glist = &list_groups();
 	@glist = sort { $a->{'group'} cmp $b->{'group'} } @glist
@@ -433,21 +434,20 @@ if ($config{'secmode'} != 1) {
 			}
 		$ingroups{$g->{'group'}} = $ismem;
 		}
-	print "<td valign=top>",
-	      &hlink("<b>$text{'uedit_2nd'}</b>","2nd"),"</td>\n";
 	}
 
 if ($config{'secmode'} == 0) {
 	# Show secondary groups with select menu
-	print "<td><select name=sgid multiple size=5>\n";
+	@canglist = ( );
 	foreach $g (@glist) {
 		next if (!&can_use_group(\%access, $g->{'group'}) &&
 			 !$ingroups{$g->{'group'}});
-		printf "<option value=\"%s\" %s>%s (%s)\n",
-		    $g->{'group'}, $ingroups{$g->{'group'}} ? "selected" : "",
-		    $g->{'group'}, $g->{'gid'};
+		push(@canglist, [ $g->{'group'}, $g->{'group'} ]);
 		}
-	print "</select></td>\n";
+	@ingroups = map { [ $_, $_ ] } sort { $a cmp $b }
+			grep { $ingroups{$_} } (keys %ingroups);
+	$secfield = &ui_multi_select("sgid", \@ingroups, \@canglist, 5, 1, 0,
+				     $text{'uedit_allg'}, $text{'uedit_ing'});
 	}
 elsif ($config{'secmode'} == 2) {
 	# Show a text box
@@ -457,23 +457,24 @@ elsif ($config{'secmode'} == 2) {
 			push(@insecs, $g->{'group'});
 			}
 		}
-	print "<td>",&ui_textarea("sgid", join("\n", @insecs), 5, 20),"</td>\n";
+	$secfield = &ui_textarea("sgid", join("\n", @insecs), 5, 20);
 	}
 else {
 	# Don't show
-	print "<td colspan=2 width=50%></td>\n";
+	$secfield = undef;
 	}
-print "</tr>\n";
+if ($secfield) {
+	print &ui_table_row(&hlink($text{'uedit_2nd'}, "2nd"), $secfield, 3);
+	}
 
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 if ($n ne "") {
 	# Editing a user - show options for moving home directory, changing IDs
 	# and updating in other modules
 	if ($access{'movehome'} == 1 || $access{'chuid'} == 1 ||
 	    $access{'chgid'} == 1 || $access{'mothers'} == 1) {
-		print &ui_table_start($text{'onsave'}, "width=100%", 2,
-				      [ "width=30%" ]);
+		print &ui_table_start($text{'onsave'}, "width=100%", 2, \@tds);
 
 		# Move home directory
 		if ($access{'movehome'} == 1) {
@@ -530,54 +531,49 @@ else {
 	# skel files and creating in other modules
 	if ($access{'makehome'} == 1 || $access{'copy'} == 1 ||
 	    $access{'cothers'} == 1) {
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'uedit_oncreate'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table>\n";
+		print &ui_table_start($text{'uedit_oncreate'}, "width=100%",
+				      2, \@tds);
 
+		# Create home dir
 		if ($access{'makehome'} == 1) {
-			print "<tr> <td>",&hlink($text{'uedit_makehome'},"makehome"),"</td>\n";
-			print "<td><input type=radio name=makehome value=1 checked> $text{'yes'}</td>\n";
-			print "<td><input type=radio name=makehome value=0> $text{'no'}</td> </tr>\n";
+			print &ui_table_row(
+				&hlink($text{'uedit_makehome'}, "makehome"),
+				&ui_yesno_radio("makehome", 1));
 			}
 
+		# Copy skel files
 		if ($config{'user_files'} =~ /\S/ && $access{'copy'} == 1) {
-			print "<tr> <td>",&hlink($text{'uedit_copy'},
-						 "copy_files"),"</td>\n";
-			print "<td><input type=radio name=copy_files ",
-			      "value=1 checked> $text{'yes'}</td>\n";
-			print "<td><input type=radio name=copy_files ",
-			      "value=0> $text{'no'}</td> </tr>\n";
+			print &ui_table_row(
+				&hlink($text{'uedit_copy'}, "copy_files"),
+				&ui_yesno_radio("copy_files", 1));
 			}
 
+		# Create in other modules
 		if ($access{'cothers'} == 1) {
-			print "<tr> <td>",&hlink($text{'uedit_cothers'},"others"),"</td>\n";
-			printf "<td><input type=radio name=others value=1 %s> $text{'yes'}</td>\n",
-				$config{'default_other'} ? "checked" : "";
-			printf "<td><input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-				$config{'default_other'} ? "" : "checked";
+			print &ui_table_row(
+				&hlink($text{'uedit_cothers'},"others"),
+				&ui_yesno_radio("others",
+					        $config{'default_other'}));
 			}
 
-		print "</table></td> </tr></table><p>\n";
+		print &ui_table_end();
 		}
 	}
+
 if ($n ne "") {
-	print "<table width=100%>\n";
-	print "<tr> <td><input type=submit value=\"$text{'save'}\"></td>\n";
+	# Buttons for saving and other actions
+	@buts = ( [ undef, $text{'save'} ] );
 
-	print "</form><form action=\"list_logins.cgi\">\n";
-	print "<input type=hidden name=username value=\"$uinfo{'user'}\">\n";
-	print "<td align=center>\n";
-	print "<input type=submit value=\"$text{'uedit_logins'}\"></td>\n";
+	# List logins by user
+	push(@buts, [ "list", $text{'uedit_logins'} ]);
 
+	# Link to the mailboxes module, if installed
 	if (&foreign_available("mailboxes") &&
 	    &foreign_installed("mailboxes", 1)) {
-		# Link to the mailboxes module, if installed
-		print "</form><form action=../mailboxes/list_mail.cgi>\n";
-		print "<input type=hidden name=user value='$uinfo{'user'}'>\n";
-		print "<td align=center>\n";
-		print "<input type=submit value='$text{'uedit_mail'}'></td>\n";
+		push(@buts, [ "mailboxes", $text{'uedit_mail'} ]);
 		}
 
+	# Link to Usermin for switching user
 	if (&foreign_available("usermin") &&
 	    &foreign_installed("usermin", 1) &&
 	    (%uacl = &get_module_acl("usermin") &&
@@ -587,26 +583,19 @@ if ($n ne "") {
 		local %uminiserv;
 		&usermin::get_usermin_miniserv_config(\%uminiserv);
 		if ($uminiserv{'session'}) {
-			print "</form><form action=../usermin/switch.cgi ",
-			      "target=_new>\n";
-			print "<input type=hidden name=user ",
-			      "value='$uinfo{'user'}'>\n";
-			print "<td align=center>\n";
-			print "<input type=submit value='$text{'uedit_swit'}'>",
-			      "</td>\n";
+			push(@buts, [ "switch", $text{'uedit_swit'} ]);
 			}
 		}
 
+	# Delete user
 	if ($access{'udelete'}) {
-		print "</form><form action=\"delete_user.cgi\">\n";
-		print "<input type=hidden name=num value=\"$n\">\n";
-		print "<input type=hidden name=user value=\"$uinfo{'user'}\">\n";
-		print "<td align=right><input type=submit value=\"$text{'delete'}\"></td> </tr>\n";
+		push(@buts, [ "delete", $text{'delete'} ]);
 		}
-	print "</form></table><p>\n";
+	print &ui_form_end(\@buts);
 	}
 else {
-	print "<input type=submit value=\"$text{'create'}\"></form><p>\n";
+	# Create button
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 
 &ui_print_footer("index.cgi?mode=users", $text{'index_return'});
