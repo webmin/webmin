@@ -13,7 +13,6 @@ $desc = &html_escape($in{'file'});
 	undef, undef, undef, undef, "<a href=\"delete_htaccess.cgi?file=".
 	&urlize($in{'file'})."\">$text{'htindex_delete'}</a>");
 
-print &ui_subheading($text{'htindex_opts'});
 $sw_icon = { "icon" => "images/show.gif",
 	     "name" => $text{'htindex_show'},
 	     "link" => "show.cgi?file=".&urlize($in{'file'}) };

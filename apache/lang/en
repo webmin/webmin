@@ -158,6 +158,7 @@ manual_editfile=Edit config file:
 manual_switch=Edit
 
 dir_title=Per-Directory Options
+dir_proxyall=All proxy requests
 dir_header=For $1 on $2
 dir_show=Show Directives
 dir_edit=Edit Directives

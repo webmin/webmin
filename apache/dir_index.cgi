@@ -11,7 +11,6 @@ $desc = &text('dir_header', &dir_name($d), &virtual_name($v));
 &ui_print_header($desc, $text{'dir_title'}, "",
 	undef, undef, undef, undef, &restart_button());
 
-print &ui_subheading($text{'dir_title'});
 $sw_icon = { "icon" => "images/show.gif",
 	     "name" => $text{'dir_show'},
 	     "link" => "show.cgi?virt=$in{'virt'}&idx=$in{'idx'}" };

@@ -10,7 +10,6 @@ $desc = &text('virt_header', &virtual_name($v));
 &ui_print_header($desc, $text{'virt_title'}, "", undef, undef, undef, undef, &restart_button());
 
 # Display header and icons
-print &ui_subheading($text{'virt_opts2'});
 $sw_icon = { "icon" => "images/show.gif",
 	     "name" => $text{'virt_show'},
 	     "link" => "show.cgi?virt=$in{'virt'}" };

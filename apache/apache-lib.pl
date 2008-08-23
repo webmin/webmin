@@ -1005,18 +1005,27 @@ else { return $_[1] ? "*" : $text{'default_serv'}; }
 }
 
 # dir_name(struct)
+# Given a <directory> or similar structure, return a human-readable description
 sub dir_name
 {
-local($dfm, $mat);
-$_[0]->{'name'} =~ /^(Directory|Files|Location)(Match)?$/;
-$dfm = $1; $mat = $2;
-if ($mat) {
+$_[0]->{'name'} =~ /^(Directory|Files|Location|Proxy)(Match)?$/;
+my ($dfm, $mat) = ($1, $2);
+if ($dfm eq "Proxy" && !$mat && $_[0]->{'words'}->[0] eq "*") {
+	# Proxy for all
+	return $text{'dir_proxyall'};
+	}
+elsif ($mat) {
+	# Match-type directive
 	return "$dfm regexp <tt>".&html_escape($_[0]->{'words'}->[0])."</tt>";
 	}
 elsif ($_[0]->{'words'}->[0] eq "~") {
+	# Regular expression
 	return "$dfm regexp <tt>".&html_escape($_[0]->{'words'}->[1])."</tt>";
 	}
-else { return "$dfm <tt>".&html_escape($_[0]->{'words'}->[0])."</tt>"; }
+else {
+	# Exact match
+	return "$dfm <tt>".&html_escape($_[0]->{'words'}->[0])."</tt>";
+	}
 }
 
 # list_user_file(file, &user,  &pass)

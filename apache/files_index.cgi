@@ -12,7 +12,6 @@ $d = $conf->[$in{'idx'}];
 $desc = &text('htfile_header', &dir_name($d), "<tt>$in{'file'}</tt>");
 &ui_print_header($desc, $text{'htfile_title'}, "");
 
-print "<h3>$text{'htfile_title'}</h3>\n";
 $sw_icon = { "icon" => "images/show.gif",
 	     "name" => $text{'htfile_show'},
 	     "link" => "show.cgi?file=".&urlize($in{'file'})."&idx=$in{'idx'}" };
