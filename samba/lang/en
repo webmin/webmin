@@ -187,6 +187,7 @@ euser_homedir=Home directory
 euser_shell=Shell
 euser_option=User options
 euser_normal=Normal user
+euser_noexpire=Password never expires
 euser_nopwrequired=No password required
 euser_disable=Account disabled
 euser_trust=Workstation trust account
