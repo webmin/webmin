@@ -907,7 +907,7 @@ mod_ssl_epassph=No SSL password entered
 mod_ssl_epasssc=Missing or invalid SSL password script
 
 # nodo50 v0.1 - Change 000003 - New Script. Define Editors for mod_apachessl directives (Apache-ssl not use mod_ssl)
-# nodo50 v0.1 - Change 000003 - Nuevo Script. Define edición de directivas de mod_apachessl (Apache-ssl no usa mod_ssl)
+# nodo50 v0.1 - Change 000003 - Nuevo Script. Define edici&#243;n de directivas de mod_apachessl (Apache-ssl no usa mod_ssl)
 mod_apachessl_notssl=Deny SSL access
 mod_apachessl_forcessl=Force SSL/notSSL access?
 mod_apachessl_capath=Path to directory with certificates of the Certification Authorities in
