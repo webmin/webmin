@@ -9,21 +9,31 @@ $apt_search_command = $config{'apt_mode'} ? "aptitude" : "apt-cache";
 sub update_system_install
 {
 local (@rv, @newpacks);
+
+# Build the command to run
 local $update = $_[0] || $in{'update'};
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $cmd = $apt_get_command eq "apt-get" ?
 	"$apt_get_command -y --force-yes -f install $update" :
 	"$apt_get_command -y -f install $update";
+$update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 print "<b>",&text('apt_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
-$update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 &additional_log('exec', undef, $cmd);
+
+# Run dpkg --configure -a to clear any un-configured packages
+local $out = &backquote_logged("dpkg --configure -a 2>&1 </dev/null");
+print &html_escape($out);
+
+# Create an input file of 'yes'
 local $yesfile = &transname();
 &open_tempfile(YESFILE, ">$yesfile", 0, 1);
 foreach (0..100) {
 	&print_tempfile(YESFILE, "Yes\n");
 	}
 &close_tempfile(YESFILE);
+
+# Run the command
 &open_execute_command(CMD, "$cmd <$yesfile", 2);
 while(<CMD>) {
 	if (/setting\s+up\s+(\S+)/i && !/as\s+MDA/i) {
@@ -36,7 +46,7 @@ while(<CMD>) {
 		$line =~ s/^\s+//; $line =~ s/\s+$//;
 		push(@newpacks, split(/\s+/, $line));
 		}
-	print;
+	print &html_escape("$_");
 	}
 close(CMD);
 if (!@rv && $config{'package_system'} ne 'debian' && !$?) {
