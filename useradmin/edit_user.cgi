@@ -34,9 +34,6 @@ if ($shells{'shells'}) {
 		}
 	close(SHELLS);
 	}
-if (%uinfo) {
-	push(@shlist, $uinfo{'shell'});
-	}
 
 # Start of the form
 print &ui_form_start("save_user.cgi", "post");
@@ -50,7 +47,7 @@ if ($n eq "" && $config{'new_user_group'} && $access{'gcreate'}) {
 	}
 if ($access{'urename'} || $n eq "") {
 	print &ui_table_row(&hlink($text{'user'}, "user"),
-		&ui_textbox("user", $uinfo{'user'}, 20, 0, undef,
+		&ui_textbox("user", $uinfo{'user'}, 40, 0, undef,
 			    "onChange='$onch'"));
 	}
 else {
@@ -93,7 +90,7 @@ if ($config{'extra_real'}) {
 	# Has separate name, office, work and home phone parts
 	local @real = split(/,/, $uinfo{'real'}, 5);
 	print &ui_table_row(&hlink($text{'real'}, "real"),
-		&ui_textbox("real", $real[0], 20));
+		&ui_textbox("real", $real[0], 40));
 
 	print &ui_table_row(&hlink($text{'office'}, "office"),
 		&ui_textbox("office", $real[1], 20));
@@ -130,7 +127,7 @@ else {
 			[ [ 1, $text{'uedit_auto'}."<br>" ],
 			  [ 0, $text{'uedit_manual'}." ".
 			       &ui_filebox("home", $hb ? "" : $uinfo{'home'},
-					   25, 0, undef, undef, 1) ] ]);
+					   40, 0, undef, undef, 1) ] ]);
 		}
 	else {
 		# Allow any directory
@@ -142,13 +139,17 @@ print &ui_table_row(&hlink($text{'home'}, "home"),
 	$homefield);
 
 # Show shell drop-down
+push(@shlist, $uinfo{'shell'}) if (%uinfo && $uinfo{'shell'});
 if ($access{'shells'} ne "*") {
-	push(@shlist, $uinfo{'shell'} || [ "", "&lt;None&gt;" ]) if (%uinfo);
 	push(@shlist, split(/\s+/, $access{'shells'}));
 	$shells = 1;
 	}
 $shells = 1 if ($access{'noother'});
 @shlist = &unique(@shlist);
+if (%uinfo && !$uinfo{'shell'}) {
+	# No shell!
+	push(@shlist, [ "", "&lt;None&gt;" ]);
+	}
 push(@shlist, [ "*", $text{'uedit_other'} ]) if (!$shells);
 print &ui_table_row(&hlink($text{'shell'}, "shell"),
 	&ui_select("shell", $uinfo{'shell'}, \@shlist, 1, 0, 0, 0,
@@ -262,16 +263,13 @@ elsif (($pft == 2 || $pft == 5) && $access{'peopt'}) {
 	# password expiry and so on
 	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4, \@tds);
 
-	# Last change date, with checkbox to force change
+	# Last change date
 	local $max = $n eq "" ? $config{'default_max'} : $uinfo{'max'};
 	print &ui_table_row(&hlink($text{'change'}, "change"),
 		($uinfo{'change'} ? &make_date(timelocal(
-					gmtime($uinfo{'change'} * 60*60*24)),1) :
+				       gmtime($uinfo{'change'} * 60*60*24)),1) :
 		 $n eq "" ? $text{'uedit_never'} :
-			    $text{'uedit_unknown'}).
-		 (($max || $gconfig{'os_type'} =~ /-linux$/) && $pft == 2 ?
-		    &ui_checkbox("forcechange", 1, $text{'uedit_forcechange'}) :
-		    ""));
+			    $text{'uedit_unknown'}));
 
 	if ($pft == 2) {
 		# Expiry date
@@ -319,7 +317,13 @@ elsif (($pft == 2 || $pft == 5) && $access{'peopt'}) {
 			&ui_textbox("inactive", $n eq "" ?
 					$config{'default_inactive'} :
 					$uinfo{'inactive'}, 5));
+		}
 
+	# Force change at next login
+	if (($max || $gconfig{'os_type'} =~ /-linux$/) && $pft == 2) {
+		print &ui_table_row(
+			&hlink($text{'uedit_forcechange'}, 'forcechange'),
+			&ui_yesno_radio("forcechange", 0));
 		}
 
 	print &ui_table_end();

@@ -109,54 +109,46 @@ done:
 else {
 	# Check if something has changed
 	if ($user->{'user'} ne $in{'user'}) {
-		print "<p> <b>$text{'udel_echanged'}</b> <p>\n";
+		print "<b>$text{'udel_echanged'}</b> <p>\n";
 		&ui_print_footer("", $text{'index_return'});
 		exit;
 		}
 
 	# Ask if the user is sure
-	print "<form action=delete_user.cgi>\n";
-	print "<input type=hidden name=num value=\"$in{'num'}\">\n";
-	print "<input type=hidden name=user value=\"$user->{'user'}\">\n";
-	print "<input type=hidden name=confirmed value=1>\n";
-
-	if ($user->{'home'} ne "/" && -d $user->{'home'} && $access{'delhome'} != 0) {
+	@buts = ( );
+	if ($user->{'home'} ne "/" && -d $user->{'home'} &&
+	    $access{'delhome'} != 0) {
 		# Has a home directory, so check for files owned by others
 		$size = &disk_usage_kb($user->{'home'});
-		print "<center><b>",&text('udel_sure', $user->{'user'},
-			   "<tt>$user->{'home'}</tt>", &nice_size($size*1024)),
-			   "</b><p>\n";
+		$msg = &text('udel_sure', $user->{'user'},
+                           "<tt>$user->{'home'}</tt>", &nice_size($size*1024));
 		if ($access{'delhome'} != 1) {
-			print "<input type=submit value=\"$text{'udel_del1'}\">\n";
+			push(@buts, [ undef, $text{'udel_del1'} ]);
 			}
-		print "<input name=delhome type=submit ",
-		      "value=\"$text{'udel_del2'}\">\n";
+		push(@buts, [ "delhome", $text{'udel_del2'} ]);
 
 		# check for files owned by other users
-		@others = &backquote_command("find ".quotemeta($user->{'home'})." ! -user $user->{'uid'} 2>/dev/null", 1);
-		if (@others) {
-			print "<br><b><font color=#ff0000>",
-			      &text('udel_others', "<tt>$user->{'home'}</tt>", scalar(@others)),
-			      "</font></b><br>\n";
-			}
+		@others = &backquote_command("find ".quotemeta($user->{'home'}).
+			" ! -user $user->{'uid'} 2>/dev/null", 1);
 		}
 	else {
 		# No home directory
-		print "<center><b>",&text('udel_sure2',
-					   $user->{'user'}),"</b><p>\n";
-		print "<input type=submit value=\"$text{'udel_del1'}\">\n";
+		$msg = &text('udel_sure2', $user->{'user'});
+		push(@buts, [ undef, $text{'udel_del1'} ]);
 		}
-	print "<br>\n";
-	if ($access{'dothers'} == 1) {
-		printf "<input type=checkbox name=others value=1 %s> %s<br>\n",
-			$config{'default_other'} ? "checked" : "",
-	      		$text{'udel_dothers'};
-		}
-	if ($user->{'user'} eq 'root') {
-		print "<center><b><font color=#ff0000>$text{'udel_root'}",
-		      "</font></b><p></center>\n";
-		}
-	print "</form></center>\n";
+
+	print &ui_confirmation_form("delete_user.cgi", $msg,
+		[ [ "num", $in{'num'} ],
+		  [ "user", $user->{'user'} ],
+		  [ "confirmed", 1 ] ],
+		\@buts,
+		$access{'dothers'} == 1 ?
+			&ui_checkbox("others", 1, $text{'udel_dothers'},
+                                     $config{'default_other'}) : "",
+		(@others ? &text('udel_others', "<tt>$user->{'home'}</tt>",
+                                                   scalar(@others))."<p>" : "").
+		($user->{'user'} eq 'root' ? $text{'udel_root'} : ""),
+		);
 
 	&ui_print_footer("", $text{'index_return'});
 	}

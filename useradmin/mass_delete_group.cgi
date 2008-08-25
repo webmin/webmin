@@ -81,17 +81,14 @@ else {
 		}
 
 	# Ask if the user is sure
-	print "<form action=mass_delete_group.cgi method=post>\n";
-	foreach $group (@dlist) {
-		print "<input type=hidden name=d value='$group->{'group'}'>\n";
-		}
-	print "<input type=hidden name=confirmed value=1>\n";
-	print "<center><b>",&text('gmass_sure', scalar(@dlist)),"</b><p>\n";
-	print "<input type=submit value=\"$text{'gdel_del'}\">\n";
-	print "<br><input type=checkbox name=others value=1 checked> ",
-	      "$text{'gdel_dothers'}<br>\n";
-	print "</center><p>\n";
-	print "</form>\n";
+	print &ui_confirmation_form("mass_delete_group.cgi",
+		&text('gmass_sure', scalar(@dlist)),
+		[ [ "confirmed", 1 ],
+		  map { [ "gd", $_->{'group'} ] } @dlist ],
+		[ [ undef, $text{'gdel_del'} ] ],
+		&ui_checkbox("others", 1, $text{'gdel_dothers'}, 1),
+		);
+
 	&ui_print_footer("", $text{'index_return'});
 	}
 

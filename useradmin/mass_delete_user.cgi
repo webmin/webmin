@@ -65,20 +65,14 @@ if ($in{'disable'}) {
 		&ui_print_footer("", $text{'index_return'});
 		}
 	else {
-		# Ask if the user is sure
-		print "<form action=mass_delete_user.cgi method=post>\n";
-		print "<input type=hidden name=confirmed value=1>\n";
-		print "<input type=hidden name=disable value=1>\n";
-		foreach $user (@dlist) {
-			print "<input type=hidden name=d value='$user->{'user'}'>\n";
-			}
-
-		# Show buttons
-		print "<center><b>",&text('dmass_sure',
-				   scalar(@dlist)),"</b><p>\n";
-		print "<input type=submit value=\"$text{'dmass_dis'}\">\n";
-		print "<br>\n";
-		print "</form></center>\n";
+		# Ask if the user is sure he wants to disable
+		print &ui_confirmation_form("mass_delete_user.cgi",
+			&text('dmass_sure', scalar(@dlist)),
+			[ [ "confirmed", 1 ],
+			  [ "disable", 1 ],
+			  map { [ "d", $_->{'user'} ] } @dlist ],
+			[ [ undef, $text{'dmass_dis'} ] ],
+			);
 
 		&ui_print_footer("", $text{'index_return'});
 		}
@@ -225,10 +219,9 @@ else {
 		}
 	else {
 		# Ask if the user is sure
-		print "<form action=mass_delete_user.cgi method=post>\n";
-		print "<input type=hidden name=confirmed value=1>\n";
+		@hids = ( [ "confirmed", 1 ] );
 		foreach $user (@dlist) {
-			print "<input type=hidden name=d value='$user->{'user'}'>\n";
+			push(@hids, [ "d", $user->{'user'} ]);
 			}
 
 		# Sum up home directories
@@ -238,33 +231,34 @@ else {
 				}
 			}
 
-		# Show buttons
-		print "<center><b>",&text('umass_sure',
-			   scalar(@dlist), &nice_size($size*1024)),"</b><p>\n";
-
 		if ($access{'delhome'} == 1) {
 			# Force home directory deletion
-			print &ui_hidden("delhome", 1),"\n";
-			print &ui_submit($text{'umass_del2'}),"\n";
+			push(@hids, [ "delhome", 1 ]);
+			@buts = ( [ undef, $text{'umass_del2'} ] );
 			}
 		elsif ($access{'delhome'} == 0) {
 			# Never allow home directory deletion
-			print &ui_submit($text{'umass_del1'}),"\n";
+			@buts = ( [ undef, $text{'umass_del1'} ] );
 			}
 		else {
-			print &ui_submit($text{'umass_del1'}),"\n";
-			print &ui_submit($text{'umass_del2'}, "delhome"),"\n";
+			# Give user a choice
+			@buts = ( [ undef, $text{'umass_del1'} ],
+				  [ "delhome", $text{'umass_del2'} ] );
 			}
 
-		print "<br>\n";
-		printf "<input type=checkbox name=others value=1 %s> %s<br>\n",
-			$config{'default_other'} ? "checked" : "",
-	      		$text{'udel_dothers'};
-		if ($delete_sys && $delete_sys->{'user'} eq 'root') {
-			print "<center><b><font color=#ff0000>$text{'udel_root'}",
-			      "</font></b><p></center>\n";
-			}
-		print "</form></center>\n";
+		# Show the warning
+		print &ui_confirmation_form(
+			"mass_delete_user.cgi",
+			$size ? &text('umass_sure', scalar(@dlist),
+				      &nice_size($size*1024)) :
+				&text('umass_sure2', scalar(@dlist)),
+			\@hids, \@buts,
+			&ui_checkbox("others", 1, $text{'udel_dothers'},
+				     $config{'default_other'}),
+			$delete_sys && $delete_sys->{'user'} eq 'root' ?
+			   $text{'udel_root'} : "",
+			);
+				
 
 		&ui_print_footer("", $text{'index_return'});
 		}

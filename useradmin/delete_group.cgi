@@ -15,7 +15,7 @@ $access{'gdelete'} || &error($text{'gdel_egroup'});
 &ui_print_header(undef, $text{'gdel_title'}, "");
 
 if (!$config{'delete_root'} && $group->{'gid'} <= 10) {
-	print "<p> <b>$text{'gdel_eroot'}</b> <p>\n";
+	print "<b>$text{'gdel_eroot'}</b> <p>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
@@ -23,9 +23,8 @@ if (!$config{'delete_root'} && $group->{'gid'} <= 10) {
 if ($in{'confirmed'}) {
 	# Check for repeat click
 	if ($group->{'group'} ne $in{'group'} || $in{'group'} eq '') {
-		print "<p> <b>$text{'gdel_ealready'}</b> <p>\n";
-		print &ui_hr();
-		&footer("", $text{'index_return'});
+		print "<b>$text{'gdel_ealready'}</b> <p>\n";
+		&ui_print_footer("", $text{'index_return'});
 		exit;
 		}
 
@@ -64,23 +63,20 @@ else {
 		if ($u->{'gid'} == $group->{'gid'}) {
 			print "<b>",&text('gdel_eprimary', $u->{'user'}),
 			      "</b> <p>\n";
-			print &ui_hr();
-			&footer("", $text{'index_return'});
+			&ui_print_footer("", $text{'index_return'});
 			exit;
 			}
 		}
 
 	# Ask if the user is sure
-	print "<center>\n";
-	print &ui_form_start("delete_group.cgi");
-	print &ui_hidden("num", $in{'num'});
-	print &ui_hidden("group", $group->{'group'});
-	print "<b>",&text('gdel_sure', $group->{'group'}),"</b><p>\n";
-	print &ui_submit($text{'gdel_del'}, "confirm"),"<br>\n";
-	print &ui_checkbox("others", 1, $text{'gdel_dothers'},
-			   $config{'default_other'});
-	print &ui_form_end();
-	print "</center>\n";
+	print &ui_confirmation_form("delete_group.cgi",
+		&text('gdel_sure', $group->{'group'}),
+		[ [ "num", $in{'num'} ],
+		  [ "group", $group->{'group'} ] ],
+		[ [ "confirm", $text{'gdel_del'} ] ],
+		ui_checkbox("others", 1, $text{'gdel_dothers'},
+                           $config{'default_other'}),
+		);
 
 	&ui_print_footer("", $text{'index_return'});
 	}

@@ -550,7 +550,6 @@ return $rv;
 # Returns HTML for selecting many of many from a list. By default, this is
 # implemented using two <select> lists and Javascript buttons to move elements
 # between them. The resulting input value is \n separated.
-# XXX IE testing
 sub ui_multi_select
 {
 return &theme_ui_multi_select(@_) if (defined(&theme_ui_multi_select));
@@ -1444,9 +1443,13 @@ return "" if (!@$rows);
 local $rv = "<table>\n";
 foreach my $r (@$rows) {
 	$rv .= "<tr>\n";
-	$rv .= "<td valign=top><b>".&ui_oneradio($name, $r->[0], $r->[1],
-				   $r->[0] eq $sel)."</b></td>\n";
-	$rv .= "<td valign=top>".$r->[2]."</td>\n";
+	$rv .= "<td valign=top".(defined($r->[2]) ? "" : " colspan=2").
+	       "><b>".
+	       &ui_oneradio($name, $r->[0], $r->[1], $r->[0] eq $sel).
+	       "</b></td>\n";
+	if (defined($r->[2])) {
+		$rv .= "<td valign=top>".$r->[2]."</td>\n";
+		}
 	$rv .= "</tr>\n";
 	}
 $rv .= "</table>\n";
@@ -1484,6 +1487,31 @@ sub ui_hr
 {
 return &theme_ui_hr() if (defined(&theme_ui_hr));
 return "<hr>\n";
+}
+
+# ui_confirmation_form(cgi, message, &hiddens, [&buttons], [&otherinputs],
+#                      [extra-warning])
+# Returns HTML for a form asking for confirmation before performing some
+# action, such as deleting a user.
+sub ui_confirmation_form
+{
+local ($cgi, $message, $hiddens, $buttons, $others, $warning) = @_;
+local $rv;
+$rv .= "<center class=ui_confirmation>\n";
+$rv .= &ui_form_start($cgi, "post");
+foreach my $h (@$hiddens) {
+	$rv .= &ui_hidden(@$h);
+	}
+$rv .= "<b>$message</b><p>\n";
+if ($warning) {
+	$rv .= "<b><font color=#ff0000>$warning</font></b><p>\n";
+	}
+if ($others) {
+	$rv .= $others."<p>\n";
+	}
+$rv .= &ui_form_end($buttons);
+$rv .= "</center>\n";
+return $rv;
 }
 
 ####################### javascript functions
