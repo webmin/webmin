@@ -7,6 +7,7 @@ require './init-lib.pl';
 $access{'bootup'} || &error($text{'ss_ecannot'});
 &ReadParse();
 
+# Work out the correct command, and show header
 $| = 1;
 $theme_no_header = 1;
 if (defined($in{'start'})) {
@@ -33,10 +34,16 @@ else {
 	&ui_print_header(undef, $text{'ss_stop'}, "");
 	$cmd = "$in{'file'} stop";
 	}
+
+# In case the action was Webmin
+$SIG{'TERM'} = 'IGNORE';
+
+# Run the command
 print &text('ss_exec', "<tt>$cmd</tt>"),"<p>\n";
 print "<pre>";
 &foreign_call("proc", "safe_process_exec_logged", $cmd, 0, 0, STDOUT, undef, 1);
 print "</pre>\n";
 &webmin_log($in{'start'} ? 'start' : 'stop', 'action', $in{'name'});
+
 &ui_print_footer($in{'back'}, $text{'edit_return'});
 

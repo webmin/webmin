@@ -17,6 +17,9 @@ $disable = 1 if ($in{'delboot'} || $in{'delboot_stop'});
 				   $restart ? $text{'mass_restart'} :
 					      $text{'mass_stop'}, "");
 
+# In case the action was Webmin
+$SIG{'TERM'} = 'IGNORE';
+
 if ($start || $stop || $restart) {
 	# Starting or stopping a bunch of actions
 	&foreign_require("proc", "proc-lib.pl");
