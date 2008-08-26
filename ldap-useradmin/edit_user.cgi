@@ -320,15 +320,14 @@ if ($config{'secmode'} != 1) {
 
 if ($config{'secmode'} == 0) {
 	# Show secondary groups with select menu
-	print "<td><select name=sgid multiple size=5>\n";
 	foreach $g (sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries) {
 		$group = $g->get_value("cn");
-		$gid = $g->get_value('gidNumber');
-		printf "<option value=\"%s\" %s>%s (%s)\n",
-		    $group, $ingroups{$group} ? "selected" : "",
-		    $group, $gid;
+		push(@canglist, [ $group, $group ]);
 		}
-	print "</select></td>\n";
+	@ingroups = map { [ $_, $_ ] } sort { $a cmp $b }
+                        grep { $ingroups{$_} } (keys %ingroups);
+	print "<td>",&ui_multi_select("sgid", \@ingroups, \@canglist, 5, 1, 0,
+			     $text{'uedit_allg'}, $text{'uedit_ing'}),"</td>\n";
 	}
 elsif ($config{'secmode'} == 2) {
 	# Show a text box

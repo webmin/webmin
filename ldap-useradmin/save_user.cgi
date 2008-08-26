@@ -616,7 +616,7 @@ else {
 	if ($config{'secmode'} != 1) {
 		# Update any groups that the user has been added to/removed from
 		@sgnames = $config{'secmode'} == 2 ? split(/\s+/, $in{'sgid'})
-						   : split(/\0/, $in{'sgid'});
+						   : split(/\r?\n/, $in{'sgid'});
 		foreach $gname (@sgnames) {
 			$ingroup{$gname}++;
 			}
