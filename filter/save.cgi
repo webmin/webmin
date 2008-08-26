@@ -112,7 +112,8 @@ else {
 			}
 		$file =~ s/^\Q$remote_user_info[7]\/\E/\$HOME\//;
 		$filter->{'action'} = $file;
-		if ($folder->{'type'} == 1) {
+		if ($folder->{'type'} == 1 ||
+		    $folder->{'type'} == 4 && -d $folder->{'file'}) {
 			# Maildir has to end with /
 			$filter->{'action'} .= '/';
 			}
