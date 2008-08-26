@@ -299,8 +299,17 @@ if ($total || $in{'new'}) {
 					}
 				elsif ($str[$j]->{'type'} =~ /\((\d+)\)/) {
 					# Show as known-size text
-					local $nw = $1 > 70 ? 70 : $1;
-					$et .= &ui_textbox($nm, $d[$j], $nw);
+					if ($1 > 255) {
+						# Too big, use text area
+						$et .= &ui_textarea(
+							$nm, $d[$j], 5, 70);
+						}
+					else {
+						# Text box
+						local $nw = $1 > 70 ? 70 : $1;
+						$et .= &ui_textbox(
+							$nm, $d[$j], $nw);
+						}
 					}
 				elsif (&is_blob($str[$j])) {
 					# Show as multiline text
