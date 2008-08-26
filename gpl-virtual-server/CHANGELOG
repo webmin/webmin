@@ -488,3 +488,5 @@ When a virtual server's IP address is changed, the addresses of all alias domain
 The Website Options page now has a field to enable matching all sub-domains for the virtual server's website, via a *.domain.com DNS entry and Apache server alias directive.
 If a backup is taken on a system that uses ~/mail for user folders and restored on one using ~/Maildir, they will be properly converted during the restore (and vice-versa).
 Preserve encrypted passwords when backing up domains, in case they don't match the plaintext password stored by Virtualmin. Also, have validation report an error in the case of a mismatch.
+---- Changes since 3.61 ----
+Added a new sort mode (used by default for new installs) to order virtual servers by domain name, but with sub-servers indented under them.

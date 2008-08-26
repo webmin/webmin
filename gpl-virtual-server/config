@@ -120,7 +120,7 @@ iface_manual=0
 template_auto=1
 php_vars=memory_limit=32M
 webalizer_nocron=0
-domains_sort=user
+domains_sort=sub
 name_max=20
 show_mailsize=0
 check_apache=0
