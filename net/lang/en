@@ -94,6 +94,7 @@ bonding_downdelay=Downdelay
 
 vlan_add=Add Vlan Tagged Interface
 vlan_physical=Physical Device
+vlan_id=Vlan ID
 vlan_create=Create a VLAN tagged interface
 
 routes_title=Routing and Gateways

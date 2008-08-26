@@ -6,7 +6,7 @@ require './net-lib.pl';
 &ReadParse();
 !$in{'new'} || &can_create_iface() || &error($text{'ifcs_ecannot'});
 
-# Show page title
+# Show page title and get interface
 if ($in{'new'} && $in{'bond'}) {
 	&ui_print_header(undef, $text{'bonding_create'}, "");
 	}
@@ -21,6 +21,11 @@ else {
 	$b = $boot[$in{'idx'}];
 	&can_iface($b) || &error($text{'ifcs_ecannot_this'});
 	&ui_print_header(undef, $text{'bifc_edit'}, "");
+	if (!$b->{'dhcp'} && !$b->{'bootp'} && !$b->{'broadcast'}) {
+		# Fill in broadcast if missing
+		$b->{'broadcast'} = &compute_broadcast(
+			$b->{'address'}, $b->{'netmask'});
+		}
 	}
 
 # Start of the form
@@ -82,7 +87,8 @@ if ($dhcp) {
 if ($bootp) {
 	push(@opts, [ "bootp", $text{'ifcs_bootp'} ]);
 	}
-@grid = ( $text{'ifcs_ip'}, &ui_textbox("address", $b->{'address'}, 15) );
+@grid = ( $text{'ifcs_ip'},
+	  &ui_textbox("address", $b ? $b->{'address'} : "", 15) );
 if ($in{'virtual'} && $in{'new'} && $virtual_netmask) {
 	# Netmask is fixed
 	push(@grid, $text{'ifcs_mask'}, "<tt>$virtual_netmask</tt>");
@@ -151,101 +157,48 @@ if ($b && $b->{'virtual'} eq "") {
 	}
 
 # Special parameters for teaming
-print "<tr>\n";
-if($in{'bond'} or (&iface_type($b->{'name'}) eq 'Bonded')) {		
+if ($in{'bond'} || &iface_type($b->{'name'}) eq 'Bonded') {
 	# Select bonding teampartner
-	print "<td><b>$text{'bonding_teamparts'}</b></td>\n";
-	print "<td>\n";
-	print "<input type='text' name='partner' value='$b->{'partner'}' />";
-	print "</td>\n";
-	
-	@mode = ("balance-rr", "activebackup", "balance-xor", "broadcast", "802.3ad", "balance-tlb", "balance-alb");
+	print &ui_table_row($text{'bonding_teamparts'},
+		&ui_textbox("partner", $b->{'partner'}, 10));
 	
 	# Select teaming mode
-	print "<td><b>$text{'bonding_teammode'}</b></td>\n";
-	print "<td>\n";
-	print "<select name=bondmode>\n";
-	for ($i = 0; $i < 7; $i++){
-		print "<option value=\"$i\"";
-		
-		if($i == $b->{'mode'}){
-			print " selected=true";
-		} 
-		
-		print ">\n";
-		print $mode[$i];
-		print "</option>\n";
-	}
-	print "</select>\n";
-	print "</td>\n";
-	print "<tr>\n";
+	@mode = ("balance-rr", "activebackup", "balance-xor", "broadcast", "802.3ad", "balance-tlb", "balance-alb");
+	print &ui_table_row($text{'bonding_teammode'},
+		&ui_select("bondmode",
+			   $b->{'mode'} ? &indexof($b->{'mode'}, @mode) : 0,
+			   map { [ $_, $mode[$_] ] } (0 .. $#mode)));
 
 	# Select mii Monitoring Interval
-	print "<td><b>$text{'bonding_miimon'}</b></td>\n";
-	print "<td>\n";
-	print "<input type=\"text\" name=\"miimon\" value=\"" . $b->{'miimon'} . "\"/> ms\n";
-	print "</td>\n";
+	print &ui_table_row($text{'bonding_miimon'},
+		&ui_textbox("miimon", $b->{'miimon'}, 5)." ms");
 
 	# Select updelay
-	print "<td><b>$text{'bonding_updelay'}</b></td>\n";
-	print "<td>\n";
-	print "<input type=\"text\" name=\"updelay\" value=\"" . $b->{'updelay'} . "\" /> ms\n";
-	print "</td>\n";
-	print "</tr>\n";
+	print &ui_table_row($text{'bonding_updelay'},
+		&ui_textbox("updelay", $b->{'updelay'}, 5)." ms");
 
-	print "<tr>\n";
 	# Select downdelay
-	print "<td><b>$text{'bonding_downdelay'}</b></td>\n";
-	print "<td>\n";
-	print "<input type=\"text\" name=\"downdelay\" value=\"" . $b->{'downdelay'} . "\" /> ms\n";
-	print "</td>\n";
-}
-print "</tr>\n";
-
+	print &ui_table_row($text{'bonding_downdelay'},
+		&ui_textbox("downdelay", $b->{'downdelay'}, 5)." ms");
+	}
 
 # Special Parameter for vlan tagging
 if(($in{'vlan'}) or (&iface_type($b->{'name'}) =~ /^(.*) (VLAN)$/)) {
 	$b->{'name'} =~ /(\S+)\.(\d+)/;
-	
 	$physical = $1;
 	$vlanid = $2;
 
-	print "<tr>\n";
-	print "<td><b>$text{'vlan_physical'}</b></td>\n";
-	print "<td>\n";
+	# Phyical device
+	@phys = grep { $_->{'virtual'} eq '' } &active_interfaces();
+	print &ui_table_row($text{'vlan_physical'},
+		$in{'new'} ? &ui_select("physical", $physical,
+					[ map { $_->{'fullname'} } @phys ])
+			   : $physical.&ui_hidden("physical", $physical));
 	
-	if(!$in{'new'}) {
-		print "$physical";
-		print "<input type='hidden' name='physical' value='$physical' />\n";
-	} else {
-		print "<select name='physical' size='1'>"; 
-	
-		@interfaces = &list_interfaces();
-		foreach $if (@interfaces) {
-			if(!($if eq $b->{'name'})){
-				print "<option";
-				if($if eq $physical) {
-					print " selected='true'";
-				} 
-				print ">" . $if . "</option>\n";
-			}
-		}
-		print "</select>";
-	}
-	print "</td>\n";
-	
-	print "<td><b>VLAN-ID</b></td>\n";
-	print "<td>\n";
-	
-	if(!$in{'new'}) {
-		print "$vlanid";
-		print "<input type='hidden' name='vlanid' value='$vlanid' />\n";
-	} else {
-		print "<input type='text' name='vlanid' value='$vlanid' ";	
-	}
-	print "</td>\n";
-	
-	print "</tr>\n";
+	# VLAN ID
+	print &ui_table_row($text{'vlan_id'},
+		$in{'new'} ? &ui_textbox("vlanid", $vlanid, 10)
+			   : $vlanid.&ui_hidden("vlanid", $vlanid));
 }
 
 print &ui_table_end();
