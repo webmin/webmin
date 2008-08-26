@@ -1143,7 +1143,7 @@ sub get_mail_read
 {
 local ($folder, $mail) = @_;
 if (!$done_dbmopen_read++) {
-	dbmopen(%read, "$module_config_directory/$folder->{'user'}.read", 0600);
+	&open_dbm_db(\%read, "$module_config_directory/$folder->{'user'}.read", 0600);
 	}
 return $read{$mail->{'header'}->{'message-id'}};
 }
@@ -1154,7 +1154,7 @@ sub set_mail_read
 {
 local ($folder, $mail, $read) = @_;
 if (!$done_dbmopen_read++) {
-	dbmopen(%read, "$module_config_directory/$folder->{'user'}.read", 0600);
+	&open_dbm_db(\%read, "$module_config_directory/$folder->{'user'}.read", 0600);
 	}
 $read{$mail->{'header'}->{'message-id'}} = $read;
 }

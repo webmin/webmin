@@ -1024,7 +1024,9 @@ elsif ($folder->{'type'} == 4) {
 		local $field = $f->[0];
 		local $neg = ($field =~ s/^\!//);
 		local $what = $f->[1];
-		$what = "\"$what\"" if ($field ne "size");
+		if ($field ne "size") {
+			$what = "\"".$what."\""
+			}
 		$field = "LARGER" if ($field eq "size");
 		local $search = uc($field)." ".$what."";
 		$search = "NOT $search" if ($neg);
