@@ -90,13 +90,12 @@ if (!$skip_upgrade) {
 	}
 
 # Display new module grants form
-print &ui_tabs_start_tab("mode", "grants");
+print ui_tabs_start_tab("mode", "grants");
 print "$text{'newmod_desc'}<p>\n";
 print ui_form_start("save_newmod.cgi", "post");
-print "<form action=save_newmod.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td valign=top><b>$text{'newmod_header'}</b></td> </tr>\n";
-print "<tr> <td $cb>\n";
+print ui_table_start($text{'newmod_header'});
+#print "<tr $tb> <td valign=top><b>$text{'newmod_header'}</b></td> </tr>\n";
+#print "<tr> <td $cb>\n";
 
 $newmod = &get_newmodule_users();
 printf "<input type=radio name=newmod_def value=1 %s> %s<br>\n",
@@ -106,16 +105,15 @@ printf "<input type=radio name=newmod_def value=0 %s> %s\n",
 printf "<input name=newmod size=30 value='%s'><br>\n",
 	join(" ", @$newmod);
 
-print "</td></tr></table>\n";
+print ui_table_end();
 print "<input type=submit value='$text{'save'}'></form>\n";
-print &ui_tabs_end_tab();
+print ui_tabs_end_tab();
 
 # Display module update form
-print &ui_tabs_start_tab("mode", "update");
+print ui_tabs_start_tab("mode", "update");
 print "$text{'update_desc1'}<p>\n";
-print "<form action=update.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'update_header1'}</b></td> </tr>\n";
+print ui_form_start("update.cgi", "post");
+print ui_table_start($text{'update_header1'});
 print "<tr $cb> <td nowrap>\n";
 
 printf "<input type=radio name=source value=0 %s> %s<br>\n",
@@ -140,17 +138,16 @@ print "<tr> <td>$text{'update_pass'}</td>\n";
 print "<td>",&ui_password("uppass", $config{'uppass'}, 30),"</td> </tr>\n";
 print "</table>\n";
 
-print "</td></tr></table>\n";
+print ui_table_end();
 print "<input type=submit value=\"$text{'update_ok'}\">\n";
 print "</form>\n";
-print &ui_tabs_end_tab();
+print ui_tabs_end_tab();
 
 # Display scheduled update form
-print &ui_tabs_start_tab("mode", "sched");
+print ui_tabs_start_tab("mode", "sched");
 print "$text{'update_desc2'}<p>\n";
-print "<form action=update_sched.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'update_header2'}</b></td> </tr>\n";
+print ui_form_start("update_sched.cgi", "post");
+print ui_table_start($text{'update_header2'});
 print "<tr $cb> <td nowrap>\n";
 printf "<input type=checkbox name=enabled value=1 %s> %s<p>\n",
 	$config{'update'} ? 'checked' : '', $text{'update_enabled'};
@@ -202,10 +199,10 @@ print "<tr> <td>$text{'update_pass'}</td>\n";
 print "<td>",&ui_password("uppass", $config{'uppass'}, 30),"</td> </tr>\n";
 print "</table>\n";
 
-print "</td></tr></table>\n";
+print ui_table_end();
 print "<input type=submit value=\"$text{'update_apply'}\">\n";
 print "</form>\n";
-print &ui_tabs_end_tab();
+print ui_tabs_end_tab();
 
 print &ui_tabs_end(1);
 
