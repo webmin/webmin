@@ -4,15 +4,18 @@
 
 require './net-lib.pl';
 &ReadParse();
-if ($in{'new' && $in{'bonding'}}) {
-	&ui_print_header(undef, $text{'bifc_create'}, "");
-	&can_create_iface() || &error($text{'ifcs_ecannot'});
+!$in{'new'} || &can_create_iface() || &error($text{'ifcs_ecannot'});
+
+# Show page title
+if ($in{'new'} && $in{'bond'}) {
+	&ui_print_header(undef, $text{'bonding_create'}, "");
+	}
+elsif ($in{'new'} && $in{'vlan'}) {
+	&ui_print_header(undef, $text{'vlan_create'}, "");
 	}
 elsif ($in{'new'}) {
-	&ui_print_header(undef, $text{'vlan_create'}, "");
-	&can_create_iface() || &error($text{'ifcs_ecannot'});
+	&ui_print_header(undef, $text{'bifc_create'}, "");
 	}
-
 else {
 	@boot = &boot_interfaces();
 	$b = $boot[$in{'idx'}];
@@ -20,139 +23,132 @@ else {
 	&ui_print_header(undef, $text{'bifc_edit'}, "");
 	}
 
-print "<form action=save_bifc.cgi>\n";
-print "<input type=hidden name=new value=\"$in{'new'}\">\n";
-print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-if($in{'vlan'} == 1) {
-	print "<input type=hidden name=vlan value=\"$in{'vlan'}\">\n";
-} elsif($in{'bond'} == 1) {
-	print "<input type=hidden name=bond value=\"$in{'bond'}\">\n";
-}
-
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>",
-      $in{'virtual'} || $b && $b->{'virtual'} ne "" ? $text{'bifc_desc2'}
-						    : $text{'bifc_desc1'},
-      "</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of the form
+print &ui_form_start("save_bifc.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("vlan", $in{'vlan'});
+print &ui_hidden("bond", $in{'bond'});
+print &ui_table_start($in{'virtual'} || $b && $b->{'virtual'} ne "" ?
+			$text{'bifc_desc2'} : $text{'bifc_desc1'},
+		      "width=100%", 4);
 
 # Comment, if allowed
 if (defined(&can_iface_desc) && &can_iface_desc($b)) {
-	print "<tr> <td><b>$text{'ifcs_desc'}</b></td>\n";
-	print "<td colspan=3>",
-	      &ui_textbox("desc", $b ? $b->{'desc'} : undef, 60),
-	      "</td> </tr>\n";
+	print &ui_table_row($text{'ifcs_desc'},
+		&ui_textbox("desc", $b ? $b->{'desc'} : undef, 60), 3);
 	}
 
 # Interface name
-print "<tr> <td><b>$text{'ifcs_name'}</b></td> <td>\n";
 if ($in{'new'} && $in{'virtual'}) {
-	print "<input type=hidden name=name value=$in{'virtual'}>\n";
-	print "$in{'virtual'}:<input name=virtual size=3>\n";
+	# New virtual interface
+	$namefield = $in{'virtual'}.":".&ui_textbox("virtual", undef, 3).
+		     &ui_hidden("name", $in{'virtual'});
 	}
 elsif ($in{'new'}) {
-	if($in{'vlan'} == 1) {
-		print "auto";
-		print "<input type='hidden' name='name' value='auto' />"
-	} else {
-		print "<input name=name size=6>\n";
- 	}
-
+	# New real interface
+	if ($in{'vlan'} == 1) {
+		$namefield = "auto".&ui_hidden("name", "auto");
+		}
+	else {
+		$namefield = &ui_textbox("name", undef, 6);
+		}
 	}
 else {
-	print "<font size=+1><tt>$b->{'fullname'}</tt></font>\n";
+	# Existing interface
+	$namefield = "<tt>$b->{'fullname'}</tt>";
 	}
-print "</td>\n";
+print &ui_table_row($text{'ifcs_name'}, $namefield);
 
-# IP address
-print "<td><b>$text{'ifcs_ip'}</b></td> <td>\n";
+# Activate at boot?
+if (&can_edit("up", $b) && $access{'up'}) {
+	$upfield = &ui_yesno_radio("up", !$b || $b->{'up'});
+	}
+else {
+	$upfield = !$b ? $text{'yes'} :
+		   $b->{'up'} ? $text{'yes'} : $text{'no'};
+	}
+print &ui_table_row($text{'ifcs_act'}, $upfield);
+
+# IP address source. This can either be DHCP, BootP or a fixed IP,
+# netmask and broadcast
 $virtual = (!$b && $in{'virtual'}) || ($b && $b->{'virtual'} ne "");
 $dhcp = &can_edit("dhcp") && !$virtual;
 $bootp = &can_edit("bootp") && !$virtual;
+@opts = ( );
 if ($dhcp) {
-	printf "<input type=radio name=mode value=dhcp %s> %s\n",
-		$b && $b->{'dhcp'} ? "checked" : "", $text{'ifcs_dhcp'};
+	push(@opts, [ "dhcp", $text{'ifcs_dhcp'} ]);
 	}
 if ($bootp) {
-	printf "<input type=radio name=mode value=bootp %s> %s\n",
-		$b && $b->{'bootp'} ? "checked" : "", $text{'ifcs_bootp'};
+	push(@opts, [ "bootp", $text{'ifcs_bootp'} ]);
 	}
-if ($dhcp || $bootp) {
-	printf "<input type=radio name=mode value=address %s> %s\n",
-		!$b || (!$b->{'bootp'} && !$b->{'dhcp'}) ? "checked" : "",
-		$text{'ifcs_static'};
-	}
-else {
-	print "<input type=hidden name=mode value=address>\n";
-	}
-printf "<input name=address size=15 value=\"%s\"></td> </tr>\n",
-	$b && !$b->{'bootp'} && !$b->{'dhcp'} ? $b->{'address'} : "";
-
-# Netmask
-print "<tr> <td><b>$text{'ifcs_mask'}</b></td>\n";
+@grid = ( $text{'ifcs_ip'}, &ui_textbox("address", $b->{'address'}, 15) );
 if ($in{'virtual'} && $in{'new'} && $virtual_netmask) {
-	# Virtual netmask cannot be edited
-	print "<td>$virtual_netmask</td>\n";
+	# Netmask is fixed
+	push(@grid, $text{'ifcs_mask'}, "<tt>$virtual_netmask</tt>");
 	}
 elsif (&can_edit("netmask", $b) && $access{'netmask'}) {
-	printf "<td><input name=netmask size=15 value='%s'></td>\n",
-		$b ? $b->{'netmask'} : $config{'def_netmask'};
+	# Can edit netmask
+	push(@grid, $text{'ifcs_mask'},
+		    &ui_textbox("netmask", $b ? $b->{'netmask'}
+					      : $config{'def_netmask'}, 15));
 	}
-else {
-	printf "<td>%s</td>\n", $b ? $b->{'netmask'} : $text{'ifcs_auto'};
+elsif ($b && $b->{'netmask'}) {
+	# Cannot edit
+	push(@grid, $text{'ifcs_mask'}, "<tt>$b->{'netmask'}</tt>");
 	}
-if(!$b || !&is_ipv6_address($b->{'address'})){
-	print "<td><b>$text{'ifcs_broad'}</b></td>\n";
+if (!$b || !&is_ipv6_address($b->{'address'})){
 	if (&can_edit("broadcast", $b) && $access{'broadcast'}) {
-		printf "<td><input name=broadcast size=15 value='%s'></td>\n",
-			$b ? $b->{'broadcast'} : $config{'def_broadcast'};
+		# Can edit broadcast address
+		push(@grid, $text{'ifcs_broad'},
+		    &ui_textbox("broadcast", $b ? $b->{'broadcast'}
+						: $config{'def_broadcast'},15));
+		}
+	elsif ($b && $b->{'broadcast'}) {
+		# Broadcast is fixed
+		push(@grid, $text{'ifcs_broad'}, "<tt>$b->{'broadcast'}</tt>");
+		}
 	}
-	else {
-		printf "<td>%s</td> </tr>\n", $b ? $b->{'broadcast'}
-						: $text{'ifcs_auto'};
-	}
-}
+push(@opts, [ "address", $text{'ifcs_static2'}, &ui_grid_table(\@grid, 2) ]);
 
-print "<tr> <td><b>$text{'ifcs_mtu'}</b></td>\n";
+# Show the IP field
+if (@opts > 1) {
+	print &ui_table_row($text{'ifcs_mode'},
+		&ui_radio_table("mode", $b && $b->{'dhcp'} ? "dhcp" :
+					$b && $b->{'bootp'} ? "bootp" :
+							      "address",
+				\@opts));
+	}
+else {
+	print &ui_table_row($opts[0]->[1], $opts[0]->[2]);
+	}
+
+# MTU
 if (&can_edit("mtu", $b) && $access{'mtu'}) {
-	printf "<td><input name=mtu size=15 value='%s'></td>\n",
-		$b ? $b->{'mtu'} : $config{'def_mtu'};
+	$mtufield = &ui_textbox("mtu", $b ? $b->{'mtu'} : $config{'def_mtu'},8);
 	}
 else {
-	printf "<td>%s</td>\n", $b && $b->{'mtu'} ? $b->{'mtu'}
-						  : $text{'ifcs_auto'};
+	$mtufield = $b && $b->{'mtu'} ? $b->{'mtu'} : undef;
+	}
+if ($mtufield) {
+	print &ui_table_row($text{'ifcs_mtu'}, $mtufield);
 	}
 
-print "<td><b>$text{'ifcs_act'}</b></td>\n";
-if (&can_edit("up", $b) && $access{'up'}) {
-	printf "<td><input type=radio name=up value=1 %s> $text{'yes'}\n",
-		!$b || $b->{'up'} ? "checked" : "";
-	printf "<input type=radio name=up value=0 %s> $text{'no'}</td>\n",
-		$b && !$b->{'up'} ? "checked" : "";
-	}
-else {
-	printf "<td>%s</td> </tr>\n",
-		!$b ? $text{'yes'} :
-		$b->{'up'} ? $text{'yes'} : $text{'no'};
-	}
-
-print "<tr> <td colspan=2></td>\n";
+# Virtual sub-interfaces
 if ($b && $b->{'virtual'} eq "") {
-	print "<td><b>$text{'ifcs_virts'}</b></td>\n";
 	$vcount = 0;
 	foreach $vb (@boot) {
 		if ($vb->{'virtual'} ne "" && $vb->{'name'} eq $b->{'name'}) {
 			$vcount++;
 			}
 		}
-	print "<td>$vcount\n";
+	$vlink = "";
 	if ($access{'virt'} && !$noos_support_add_virtifcs) {
-		print "(<a href='edit_bifc.cgi?new=1&virtual=$b->{'name'}'>",
-		      "$text{'ifcs_addvirt'}</a>)\n";
+		$vlink = "(<a href='edit_bifc.cgi?new=1&virtual=$b->{'name'}'>".
+		         "$text{'ifcs_addvirt'}</a>)\n";
 		}
-	print "</td>\n";
+	print &ui_table_row($text{'ifcs_virts'}, $vcount." ".$vlink);
 	}
-print "</tr>\n";
 
 # Special parameters for teaming
 print "<tr>\n";
@@ -251,48 +247,44 @@ if(($in{'vlan'}) or (&iface_type($b->{'name'}) =~ /^(.*) (VLAN)$/)) {
 	
 	print "</tr>\n";
 }
+
+print &ui_table_end();
      
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
+# Generate and show buttons at end of the form
+@buts = ( );
 if ($access{'bootonly'}) {
 	# Can only save both boot-time and active
 	if ($in{'new'}) {
-		print "<td><input type=submit ",
-		      "name=activate value=\"$text{'bifc_capply'}\"></td>\n";
+		push(@buts, [ "activate", $text{'bifc_capply'} ]);
 		}
 	else {
-		print "<td><input type=submit ",
-		      "name=activate value=\"$text{'bifc_apply'}\"></td>\n";
+		push(@buts, [ "activate", $text{'bifc_apply'} ]);
 		if ($access{'delete'}) {
-			print "<td align=right><input type=submit ",
-			      "name=unapply value=\"$text{'bifc_dapply'}\"></td>\n";
+			push(@buts, [ "unapply", $text{'bifc_dapply'} ]);
 			}
 		}
 	}
 else {
 	# Show buttons to save both boot-time and/or active
 	if ($in{'new'}) {
-		print "<td><input type=submit value=\"$text{'create'}\"></td>\n";
-		print "<td align=right><input type=submit ",
-		      "name=activate value=\"$text{'bifc_capply'}\"></td>\n";
+		push(@buts, [ undef, $text{'create'} ]);
+		push(@buts, [ "activate", $text{'bifc_capply'} ]);
 		}
 	else {
-		print "<td><input type=submit value=\"$text{'save'}\"></td>\n"
+		push(@buts, [ undef, $text{'save'} ])
 			unless $always_apply_ifcs;
-		if (!($b->{'bootp'} || $b->{'dhcp'}) || defined(&apply_interface)) {
-			print "<td align=center><input type=submit ",
-			      "name=activate value=\"$text{'bifc_apply'}\"></td>\n";
+		if (!($b->{'bootp'} || $b->{'dhcp'}) ||
+		    defined(&apply_interface)) {
+			push(@buts, [ "activate", $text{'bifc_apply'} ]);
 			}
 		if ($access{'delete'}) {
-			print "<td align=center><input type=submit ",
-			      "name=unapply value=\"$text{'bifc_dapply'}\"></td>\n";
-			print "<td align=right><input type=submit name=delete ",
-			      "value=\"$text{'delete'}\"></td>\n"
+			push(@buts, [ "unapply", $text{'bifc_dapply'} ]);
+			push(@buts, [ "delete", $text{'delete'} ])
 				unless $noos_support_delete_ifcs;
 			}
 		}
 	}
-print "</tr></table></form>\n";
+print &ui_form_end(\@buts);
 
 &ui_print_footer("list_ifcs.cgi?mode=boot", $text{'ifcs_return'});
 

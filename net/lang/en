@@ -38,7 +38,8 @@ ifcs_all=All interfaces
 ifcs_ecannot=You are not allowed to edit network interfaces
 ifcs_ecannot_this=You are not allowed to edit this network interface
 ifcs_range=Range $1
-ifcs_static=Static
+ifcs_static2=Static configuration
+ifcs_mode=Address source
 
 aifc_create=Create Active Interface
 aifc_edit=Edit Active Interface
