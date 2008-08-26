@@ -30,22 +30,21 @@ elsif ($mode eq "zip") {
 @tabs = map { [ $_, $text{'upgrade_tab'.$_}, "edit_upgrade.cgi?mode=$_" ] }
 	    ( $skip_upgrade ? ( ) : ( "upgrade" ),
 	      "grants", "update", "sched" );
-print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
+print ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
 
 if (!$skip_upgrade) {
 	# Display upgrade form
-	print &ui_tabs_start_tab("mode", "upgrade");
+	print ui_tabs_start_tab("mode", "upgrade");
 	print $text{"upgrade_desc$mode"},"<p>";
 
-	print "<form action=upgrade.cgi method=post enctype=multipart/form-data>\n";
-	print "<input type=hidden name=mode value='$mode'>\n";
-	print "<input type=hidden name=dir value='$dir'>\n";
-	print "<table border>\n";
-	print "<tr $tb> <td><b>$text{'upgrade_title'}</b></td> </tr>\n";
+	print ui_form_start("upgrade.cgi", "form-data");
+	print ui_hidden("mode", $mode);
+	print ui_hidden("dir", $dir);
+	print ui_table_start($text{'upgrade_title'}, undef, 1);
 	print "<tr $cb> <td nowrap>\n";
 	print "<input type=radio name=source value=0> $text{'upgrade_local'}\n";
 	print "<input name=file size=40>\n";
-	print &file_chooser_button("file", 0),"<br>\n";
+	print file_chooser_button("file", 0),"<br>\n";
 	print "<input type=radio name=source value=1> $text{'upgrade_uploaded'}\n";
 	print "<input name=upload type=file size=30><br>\n";
 	print "<input type=radio name=source value=5> $text{'upgrade_url'}\n";
@@ -84,15 +83,16 @@ if (!$skip_upgrade) {
 		printf "<input type=checkbox name=disc value=1> %s<br>\n",
 			$text{'upgrade_disc'};
 		}
-	print "</td></tr></table>\n";
+	print ui_table_end();
 	print "<input type=submit value=\"$text{'upgrade_ok'}\">\n";
 	print "</form>\n";
-	print &ui_tabs_end_tab();
+	print ui_tabs_end_tab();
 	}
 
 # Display new module grants form
 print &ui_tabs_start_tab("mode", "grants");
 print "$text{'newmod_desc'}<p>\n";
+print ui_form_start("save_newmod.cgi", "post");
 print "<form action=save_newmod.cgi>\n";
 print "<table border>\n";
 print "<tr $tb> <td valign=top><b>$text{'newmod_header'}</b></td> </tr>\n";
