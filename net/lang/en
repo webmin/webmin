@@ -10,7 +10,7 @@ index_vmin=Virtualmin
 
 ifcs_title=Network Interfaces
 ifcs_now=Active Now
-ifcs_activedesc=Interfaces listed in this table are currently active on the system. In most cases, you should edit them under the <b>Boot Time</b> tab.
+ifcs_activedesc=Interfaces listed in this table are currently active on the system. In most cases, you should edit them under the <b>Activated at Boot</b> tab.
 ifcs_bootdesc=Interfaces listed in this table will be activated when the system boots up, and will generally be active now too.
 ifcs_name=Name
 ifcs_type=Type
@@ -23,7 +23,7 @@ ifcs_up=Up
 ifcs_down=Down
 ifcs_add=Add a new interface.
 ifcs_radd=Add a new address range.
-ifcs_boot=Activated at Boot Time
+ifcs_boot=Activated at Boot
 ifcs_act=Activate at boot?
 ifcs_bootp=From BOOTP
 ifcs_dhcp=From DHCP
