@@ -315,7 +315,7 @@ else {
 		}
 	push(@table, [ &interface_sel("gatewaydev$r"),
 		       &ui_textbox("gateway$r", undef, 15) ]);
-	print &ui_columns_row($text{'routes_default2'},
+	print &ui_table_row($text{'routes_default2'},
 		&ui_columns_table(
 			[ $text{'routes_ifc'}, $text{'routes_gateway'} ],
 			undef, \@table, undef, 1));
