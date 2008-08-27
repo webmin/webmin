@@ -5,7 +5,7 @@
 $no_acl_check++;
 require './webalizer-lib.pl';
 $lconf = &get_log_config($ARGV[0]);
-$lconf || die "Logfile $ARGV[0] does not exist";
+$lconf || die "Logfile $ARGV[0] config file does not exist";
 
 open(NULL, ">/dev/null");
 $ok = &generate_report($ARGV[0], NULL, 0);
