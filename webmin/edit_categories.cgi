@@ -2,32 +2,28 @@
 # Show a form for editing custom category names
 
 require './webmin-lib.pl';
-&ReadParse();
-&ui_print_header(undef, $text{'categories_title'}, undef);
+ReadParse();
+ui_print_header(undef, $text{'categories_title'}, undef);
 
 # Show language selector
-print &ui_form_start("edit_categories.cgi");
+print ui_form_start("edit_categories.cgi");
 print "<b>$text{'categories_lang'}</b>\n";
-print &ui_select("lang", $in{'lang'},
+print ui_select("lang", $in{'lang'},
 	[ [ "", "&lt;$text{'default'}&gt;" ],
 	  map { [ $_->{'lang'}, "$_->{'desc'} (".uc($_->{'lang'}).")" ] }
-	      &list_languages() ]),"\n";
-print &ui_submit($text{'categories_langok'}),"\n";
-print &ui_form_end();
+	      list_languages() ]),"\n";
+print ui_submit($text{'categories_langok'}),"\n";
+print ui_form_end();
 
-print qq(
-$text{'categories_desc'}<p>
-<form action="save_categories.cgi">
-<input type=hidden name=lang value='$in{'lang'}'>
-<table border><tr $tb>
-<td><b>$text{'categories_header'}</b></td></tr>
-<tr $cb><td><table>
-);
+print "$text{'categories_desc'}<p>\n";
+print ui_form_start("save_categories.cgi");
+print ui_hidden("lang", $in{'lang'});
+print ui_table_start($text{'categories_header'});
 
 # Show the existing categories
 $file = "$config_directory/webmin.catnames";
 $file .= ".".$in{'lang'} if ($in{'lang'});
-&read_file($file, \%catnames);
+read_file($file, \%catnames);
 foreach $t (keys %text) {
 	$t =~ s/^category_// || next;
 	print "<tr> <td><b>",$t ? $t : "<i>other</i>","</b></td>\n";
@@ -57,11 +53,7 @@ foreach $c (keys %catnames) {
 print "<tr> <td><input name=cat_$i size=10></td>\n";
 print "<td colspan=2><input name=desc_$i size=30></td> </tr>\n";
 
-print qq(
-</td></tr></table>
-</td></tr></table>
-<input type=submit value="$text{'categories_ok'}">
-</form>
-);
-&ui_print_footer("", $text{'index_return'});
+print ui_table_end();
+print ui_form_end([ [ "ok", $text{'categories_ok'} ] ]);
+ui_print_footer("", $text{'index_return'});
 
