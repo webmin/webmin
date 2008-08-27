@@ -7,7 +7,7 @@ $access{'perms'} == 1 || &error($text{'perms_ecannot'});
 &ui_print_header(undef, $text{'root_title'}, "");
 
 print &ui_form_start("save_root.cgi", "post");
-print &ui_table_start($text{'root_header'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'root_header'}, undef, 2);
 
 print &ui_table_row($text{'root_user'},
 	$mysql_login ? "<tt>$mysql_login</tt>" : "<i>$text{'root_auto'}</i>");
