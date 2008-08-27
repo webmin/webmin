@@ -170,9 +170,10 @@ else {
 		}
 	elsif (&can_edit("mtu", $b) && $access{'mtu'}) {
 		$auto && !$in{'mtu'} ||
-			$in{'mtu'} =~ /^\d*$/ ||
+			$in{'mtu_def'} ||
+			$in{'mtu'} =~ /^\d+$/ ||
 			&error(&text('bifc_emtu', $in{'mtu'}));
-		$b->{'mtu'} = $in{'mtu'};
+		$b->{'mtu'} = $in{'mtu_def'} ? undef : $in{'mtu'};
 		}
 
 	if ($in{'new'} && !$access{'up'} ||
