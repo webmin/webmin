@@ -4,15 +4,14 @@
 
 require './webmin-lib.pl';
 print "Set-Cookie: sessiontest=1; path=/\n";
-&ui_print_header(undef, $text{'session_title'}, "");
-&get_miniserv_config(\%miniserv);
+ui_print_header(undef, $text{'session_title'}, "");
+get_miniserv_config(\%miniserv);
 
 print "$text{'session_desc1'}<p>\n";
 print "$text{'session_desc2'}<p>\n";
 
-print "<form action=change_session.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'session_header'}</b></td> </tr>\n";
+print ui_form_start("change_session.cgi", "post");
+print ui_table_start($text{'session_header'});
 print "<tr $cb> <td nowrap>\n";
 
 # Bad password delay
@@ -24,20 +23,20 @@ printf "<input type=radio name=passdelay value=1 %s> %s<br>\n",
 # Block bad hosts
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=blockhost_on value=1 %s>\n",
 	$miniserv{'blockhost_failures'} ? "checked" : "";
-print &text('session_blockhost',
-    &ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
-    &ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),"<br>\n";
+print text('session_blockhost',
+    ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
+    ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),"<br>\n";
 
 # Block bad users
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=blockuser_on value=1 %s>\n",
 	$miniserv{'blockuser_failures'} ? "checked" : "";
-print &text('session_blockuser',
-    &ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
-    &ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),"<br>\n";
+print text('session_blockuser',
+    ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
+    ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),"<br>\n";
 
 # Lock bad users
 print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n",
-      &ui_checkbox("blocklock", 1, $text{'session_blocklock'},
+      ui_checkbox("blocklock", 1, $text{'session_blocklock'},
 		   $miniserv{'blocklock'}),"<br>\n";
 
 # Log to syslog
@@ -57,7 +56,7 @@ printf "<input type=radio name=session value=1 %s> %s<br>\n",
 	$miniserv{'session'} ? "checked" : "", $text{'session_enable'};
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=logouttime_on value=1 %s>\n",
 	$miniserv{'logouttime'} ? "checked" : "";
-print &text('session_logout',
+print text('session_logout',
 	"<input name=logouttime value='$miniserv{'logouttime'}' size=10>"),"<br>\n";
 #printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=locking value=1 %s>\n",
 #	$gconfig{'locking'} ? "checked" : "";
@@ -99,7 +98,7 @@ print "&nbsp;&nbsp;&nbsp;",&text('session_pfile',
 	"<input name=passwd_pindex size=2 value='$miniserv{'passwd_pindex'}'>"),
 	"<br>\n";
 print "&nbsp;&nbsp;&nbsp;",
-	&ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
+	ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
 		     $miniserv{'pam_conv'}),"<p>\n";
 
 print "$text{'session_pmodedesc3'}<br>\n";
@@ -120,8 +119,8 @@ printf "<input type=radio name=md5pass value=0 %s> %s<br>\n",
 printf "<input type=radio name=md5pass value=1 %s> %s<br>\n",
 	$gconfig{'md5pass'} ? "checked" : "", $text{'session_md5on'};
 
-print "</td> </tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print ui_table_end();
+print ui_form_end([ [ "save", $text{'save'} ] ]);
 
-&ui_print_footer("", $text{'index_return'});
+ui_print_footer("", $text{'index_return'});
 

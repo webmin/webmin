@@ -94,8 +94,6 @@ print ui_tabs_start_tab("mode", "grants");
 print "$text{'newmod_desc'}<p>\n";
 print ui_form_start("save_newmod.cgi", "post");
 print ui_table_start($text{'newmod_header'});
-#print "<tr $tb> <td valign=top><b>$text{'newmod_header'}</b></td> </tr>\n";
-#print "<tr> <td $cb>\n";
 
 $newmod = &get_newmodule_users();
 printf "<input type=radio name=newmod_def value=1 %s> %s<br>\n",

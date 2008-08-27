@@ -2,31 +2,23 @@
 
 require './webmin-lib.pl';
 
-@modules = grep { &check_os_support($_) } &get_all_module_infos();
+@modules = grep { check_os_support($_) } get_all_module_infos();
 @modules = sort { $a->{'desc'} cmp $b->{'desc'} } @modules;
-&read_file("$config_directory/webmin.catnames", \%catnames);
+read_file("$config_directory/webmin.catnames", \%catnames);
 
-&ui_print_header(undef, $text{'assignment_title'}, undef);
-print qq(
-$text{'assignment_desc'}<p>
-<form action="save_assignment.cgi" method=post>
-<table border><tr $tb>
-<td><b>$text{'assignment_header'}</b></td></tr>
-<tr $cb><td><table>
-);
+ui_print_header(undef, $text{'assignment_title'}, undef);
+print "$text{'assignment_desc'}<p>\n";
+print ui_form_start("save_assignment.cgi", "post");
+print ui_table_start($text{'assignment_header'});
 foreach ( @modules ){
     $a++;
     print "<tr></tr>" if $a%2;
-    print qq(<td>$_->{desc}</td><td>), &cats($_->{dir}, $_->{category}), "</td>\n";
+    print qq(<td>$_->{desc}</td><td>), cats($_->{dir}, $_->{category}), "</td>\n";
 }
 
-print qq(
-</td></tr></table>
-</td></tr></table>
-<input type=submit value="$text{'assignment_ok'}">
-</form>
-);
-&ui_print_footer("", $text{'index_return'});
+print ui_table_end();
+print ui_form_end([ [ "save", $text{'assignment_ok'} ] ]);
+ui_print_footer("", $text{'index_return'});
 
 sub cats {
     my $cats;
