@@ -8,6 +8,20 @@ require './mysql-lib.pl';
 $access{'edonly'} && &error($text{'dbase_ecannot'});
 &error_setup($text{'field_err'});
 
+# Build default clause
+if ($in{'default_def'} == 0) {
+	$default = "default NULL";
+	}
+elsif ($in{'default_def'} == 2) {
+	$default = "default CURRENT_TIMESTAMP";
+	}
+elsif ($in{'default_def'} == 3) {
+	$default = $in{'new'} ? "" : "default none";
+	}
+else {
+	$default = "default '$in{'default'}'";
+	}
+
 if ($in{'delete'}) {
 	# delete this field
 	&execute_sql_logged($in{'db'},
@@ -23,8 +37,7 @@ elsif ($in{'new'}) {
 	$sql = sprintf "alter table %s add %s %s%s %s %s %s",
 		&quotestr($in{'table'}), &quotestr($in{'field'}), $in{'type'},
 		$size, $in{'null'} ? '' : 'not null',
-		$in{'default'} ne '' ? "default '$in{'default'}'"
-				     : "default NULL",
+		$default,
 		$in{'ext'};
 	&execute_sql_logged($in{'db'}, $sql);
 	&webmin_log("create", "field", $in{'field'}, \%in);
@@ -37,8 +50,7 @@ else {
 	$sql = sprintf "alter table %s modify %s %s%s %s %s %s",
 			&quotestr($in{'table'}), &quotestr($in{'old'}),
 			$in{'type'}, $size, $in{'null'} ? 'null' : 'not null',
-			$in{'default'} ne '' ? "default '$in{'default'}'" :
-			$in{'null'} ? "default NULL" : "",
+			$default,
 			$in{'ext'};
 	&execute_sql_logged($in{'db'}, $sql);
 	if ($in{'old'} ne $in{'field'} ||

@@ -69,7 +69,7 @@ elsif ($type eq 'date' || $type eq 'datetime' || $type eq 'time' ||
 elsif ($type ne 'varchar' && $type ne 'char' && $in{'type'}) {
 	# Size is optional for new fields of most types
 	print &ui_table_row($text{'field_size'},
-		&ui_opt_textbox("size", undef, $text{'default'}, 10));
+		&ui_opt_textbox("size", undef, 10, $text{'default'}));
 	}
 else {
 	# Size is one value
@@ -114,9 +114,19 @@ print &ui_table_row($text{'field_null'},
 		  [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
 # Default value
+$defmode = $f->{'default'} eq 'NULL' ? 0 :
+	   $f->{'default'} eq 'CURRENT_TIMESTAMP' ? 2 :
+	   $f->{'default'} eq '' ? 3 : 1;
+@defs = ( [ 3, $in{'type'} ? $text{'field_defnone'}
+			   : $text{'field_defleave'} ],
+	  [ 0, 'NULL' ] );
+if ($type eq "timestamp") {
+	push(@defs, [ 2, $text{'field_current'} ]);
+	}
+push(@defs, [ 1, $text{'field_defval'}." ".
+	 &ui_textbox("default", $defmode == 1 ? $f->{'default'} : "", 40) ]);
 print &ui_table_row($text{'field_default'},
-	&ui_textbox("default", $f->{'default'} eq 'NULL' ? '' :
-				$f->{'default'}, 40));
+	&ui_radio("default_def", $defmode, \@defs));
 
 # Part of primary key
 print &ui_table_row($text{'field_key'},

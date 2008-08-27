@@ -73,3 +73,5 @@ Display a more friendly error if a scheduled backup cannot be performed because 
 The root password can be more easily change by the new 'Change Administration Password' page.
 ---- Changes since 1.420 ----
 Display the number of tables and records created when executing SQL for a restore.
+---- Changes since 1.430 ----
+Improved the input for setting the default value for new fields, and added support for CURRENT_TIMESTAMP.
