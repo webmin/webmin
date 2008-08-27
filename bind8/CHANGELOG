@@ -82,3 +82,5 @@ Access control lists are now automatically re-ordered to handle dependencies.
 When Webmin is not automatically converting records to canonical format for editing, display the canonical name on the Edit Record page.
 When adding a cluster slave server, allow zones to be created in the same view on the slave as on the master.
 Added a button to the Edit Master Zone page for checking records with the named-checkzone command.
+---- Changes since 1.430 ----
+Don't pass the -g flag to BIND version 9 when starting without an init script.

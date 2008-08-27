@@ -36,11 +36,8 @@ if ($out = &check_bind_8()) {
 	exit;
 	}
 
-# Try to get the version number
-$out = `$config{'named_path'} -v 2>&1`;
-if ($out =~ /(bind|named)\s+([0-9\.]+)/i) {
-	$bind_version = $2;
-	}
+# Try to get the version number, and save for later calls
+$bind_version = &get_bind_version();
 &open_tempfile(VERSION, ">$module_config_directory/version");
 &print_tempfile(VERSION, "$bind_version\n");
 &close_tempfile(VERSION);

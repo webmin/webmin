@@ -17,10 +17,25 @@ $internic_ftp_host = "rs.internic.net";
 $internic_ftp_ip = "198.41.0.6";
 $internic_ftp_file = "/domain/named.root";
 
+# Get the version number
 if (open(VERSION, "$module_config_directory/version")) {
 	chop($bind_version = <VERSION>);
 	close(VERSION);
 	}
+else {
+	$bind_version = &get_bind_version();
+	}
+
+# get_bind_version()
+# Returns the BIND verison number, or undef if unknown
+sub get_bind_version
+{
+my $out = `$config{'named_path'} -v 2>&1`;
+if ($out =~ /(bind|named)\s+([0-9\.]+)/i) {
+	return $2;
+	}
+return undef;
+}
 
 # get_config()
 # Returns an array of references to assocs, each containing the details of
@@ -1702,13 +1717,16 @@ local $user;
 local $cmd;
 if ($config{'named_user'}) {
 	$user = "-u $config{'named_user'}";
-	if ($config{'named_group'}) {
-		$user .= " -g $config{'named_group'}";
-		}
-	else {
-		local @u = getpwnam($config{'named_user'});
-		local @g = getgrgid($u[3]);
-		$user .= " -g $g[0]";
+	if (&get_bind_version() < 9) {
+		# Only version 8 takes the -g flag
+		if ($config{'named_group'}) {
+			$user .= " -g $config{'named_group'}";
+			}
+		else {
+			local @u = getpwnam($config{'named_user'});
+			local @g = getgrgid($u[3]);
+			$user .= " -g $g[0]";
+			}
 		}
 	}
 if ($config{'start_cmd'}) {
