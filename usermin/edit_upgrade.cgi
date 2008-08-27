@@ -3,11 +3,11 @@
 # Display a form for upgrading all of usermin from a tarfile
 
 require './usermin-lib.pl';
-$access{'upgrade'} || &error($text{'acl_ecannot'});
-&ui_print_header(undef, $text{'upgrade_title'}, "");
+$access{'upgrade'} || error($text{'acl_ecannot'});
+ui_print_header(undef, $text{'upgrade_title'}, "");
 
 # what kind of install was this?
-$mode = &get_install_type();
+my $mode = get_install_type();
 
 # was the install to a target directory?
 if (open(DIR, "$config{'usermin_dir'}/install-dir")) {
@@ -17,15 +17,14 @@ if (open(DIR, "$config{'usermin_dir'}/install-dir")) {
 
 print $text{"upgrade_desc$mode"},"<p>";
 
-print "<form action=upgrade.cgi method=post enctype=multipart/form-data>\n";
-print "<input type=hidden name=mode value='$mode'>\n";
-print "<input type=hidden name=dir value='$dir'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'upgrade_title'}</b></td> </tr>\n";
+print ui_form_start("upgrade.cgi", "form-data");
+print ui_hidden("mode", $mode);
+print ui_hidden("dir", $dir);
+print ui_table_start($text{'upgrade_title'});
 print "<tr $cb> <td nowrap>\n";
 print "<input type=radio name=source value=0> $text{'upgrade_local'}\n";
 print "<input name=file size=40>\n";
-print &file_chooser_button("file", 0),"<br>\n";
+print file_chooser_button("file", 0),"<br>\n";
 print "<input type=radio name=source value=1> $text{'upgrade_uploaded'}\n";
 print "<input name=upload type=file size=30><br>\n";
 print "<input type=radio name=source value=5> $text{'upgrade_url'}\n";
@@ -37,17 +36,15 @@ if (!$mode && !$dir) {
 	}
 print "<input type=checkbox name=force value=1> ",
 	"$webmin::text{'upgrade_force'}<br>\n";
-print "</td></tr></table>\n";
-print "<input type=submit value=\"$text{'upgrade_ok'}\">\n";
-print "</form>\n";
+print ui_table_end();
+print ui_form_end([ [ "upgrade", $text{'upgrade_ok'} ] ]);
 
 print &ui_hr();
 
 print "$text{'update_desc1'}<p>\n";
 
-print "<form action=update.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'update_header1'}</b></td> </tr>\n";
+print ui_form_start("update.cgi");
+print ui_table_start($text{'update_header1'});
 print "<tr $cb> <td nowrap>\n";
 
 printf "<input type=radio name=source value=0 %s> %s<br>\n",
@@ -61,17 +58,15 @@ printf "<input type=checkbox name=show value=1 %s> %s<br>\n",
 	$config{'upshow'} ? "checked" : "", $text{'update_show'};
 printf "<input type=checkbox name=missing value=1 %s> %s<br>\n",
 	$config{'upmissing'} ? "checked" : "", $text{'update_missing'};
-print "</td></tr></table>\n";
-print "<input type=submit value=\"$text{'update_ok'}\">\n";
-print "</form>\n";
+print ui_table_end();
+print ui_form_end([ [ "update", $text{'update_ok'} ] ]);
 
 print &ui_hr();
 
 print "$text{'update_desc2'}<p>\n";
 
-print "<form action=update_sched.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'update_header2'}</b></td> </tr>\n";
+print ui_form_start("update_sched.cgi");
+print ui_table_start($text{'update_header2'});
 print "<tr $cb> <td nowrap>\n";
 printf "<input type=checkbox name=enabled value=1 %s> %s<p>\n",
 	$config{'update'} ? 'checked' : '', $text{'update_enabled'};
@@ -113,9 +108,8 @@ printf "<input type=checkbox name=quiet value=1 %s> %s<br>\n",
 printf "%s <input name=email size=30 value='%s'><br>\n",
 	$text{'update_email'}, $config{'upemail'};
 
-print "</td></tr></table>\n";
-print "<input type=submit value=\"$text{'update_apply'}\">\n";
-print "</form>\n";
+print ui_table_end();
+print ui_form_end([ [ "apply", $text{'update_apply'} ] ]);
 
-&ui_print_footer("", $text{'index_return'});
+ui_print_footer("", $text{'index_return'});
 
