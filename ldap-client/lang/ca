@@ -29,6 +29,7 @@ server_uport=Número de port
 server_uproto=Protocol
 server_ldap=Estàndard
 server_ldaps=SSL
+server_ldapi=Sòcol Unix
 server_err=No he pogut desar la configuració de LDAP
 server_ehost='$1' no és un nom de host vàlid
 server_ehosts=No has introduït cap servidor LDAP
