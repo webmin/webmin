@@ -21,6 +21,7 @@ index_users=Usuaris LDAP
 index_groups=Grups LDAP
 
 conn_econn=No he pogut connectar amb el servidor LDAP $1 port $2
+conn_essl=No he pogut iniciar SSL per al servidor LDAP $1 port $2: $3
 conn_elogin=No he pogut lligar el servidor LDAP $1 com a $2: $3
 imap_econn=No he pogut connectar amb el servidor IMAP $1
 imap_elogin=No he pogut entrar al servidor IMAP $1 com a $2: $3
