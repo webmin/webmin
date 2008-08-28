@@ -179,6 +179,7 @@ sopt_invalidipp=no és una parella IP vàlida (com ara 1.2.3.4,5.6.7.8)
 sopt_edname='$1' no és un nom d'opció vàlid
 sopt_ednum='$1' no és un número d'opció vàlid
 sopt_edtype='$1' no és un tipus d'opció vàlid
+sopt_ecval=Hi falta el valor de l'opció personalitzada '$1'
 
 sshared_faildel=No he pogut suprimir la xarxa compartida
 sshared_failsave=No he pogut desar la xarxa compartida
@@ -281,6 +282,7 @@ eopt_nbntype=Tipus de node NetBIOS
 eopt_custom=Opció personalitzada
 eopt_toffset=Interval de temps
 eopt_cnum=Número
+eopt_cname=Nom
 eopt_cval=Valor
 eopt_def=Definició de l'opció
 eopt_dname=Nom de l'opció
