@@ -1,0 +1,24 @@
+<header>Embolcalls TCP</header>
+
+<h3>Introducció</h3>
+Aquest mòdul utilitza un llenguatge simple de control d'accés basat en patrons
+del client (nom de host/adreça, nom d'usuari) i el servidor (nom del procés,
+nom/adreça del servidor).</p>
+Al document hosts_options(5), s'hi descriu una versió ampliada del llenguatge
+de control d'accés. Les extensions s'activen a l'hora de compilar el programa
+amb -DPROCESS_OPTIONS.
+                            
+<h3>Fitxers de Control d'Accés</h3>
+El programari de control d'accés consulta dos fitxers. La cerca s'atura a la
+primera coincidència:
+<ul>                                                 
+<li>Es concedirà l'accés quan una parella (dimoni,client) coincideixi amb una
+de les entrades del fitxer /etc/hosts.allow.</li>
+<li>Altrament, es denegarà l'accés quan un aparella (dimoni,client) coincideixi
+amb una entrada del fitxer /etc/hosts.deny.</li>
+<li>Altrament, es concedirà l'accés.</li>
+</ul>
+Un fitxer de control d'accés inexistent es tractarà com si fos un fitxer buit.
+Així doncs, es pot desactivar el control d'accés eliminant els fitxers.
+
+<hr />
