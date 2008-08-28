@@ -3,3 +3,4 @@ desc=TCP Wrappers
 category=net
 version=0.3
 longdesc=Configure the TCP wrappers networking access control files
+desc_ca=Embolcalls TCP
