@@ -1,5 +1,5 @@
 line1=Opcions del servidor LDAP,11
-auth_ldap=Fitxer de configuració de la llibreria LDAP NSS de Linux,3,Cap
+auth_ldap=Fitxer de configuració de la llibreria LDAP NSS de Linux,3,Cap (utilitza els valors de sota),40,,,Utilitza els valors del fitxer
 ldap_host=Servidor LDAP,3,Del fitxer de configuració NSS
 ldap_port=Port del servidor LDAP,3,Per defecte o del fitxer de configuració NSS
 ldap_tls=El servidor LDAP utilitza TLS,1,1-Sí,0-No
