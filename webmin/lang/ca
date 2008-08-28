@@ -9,6 +9,8 @@ index_restart=Reinicia Webmin
 index_restartmsg=Fes clic sobre aquest botó per reiniciar el procés servidor de Webmin. Això pot ser necessari si has actualitzat Perl fa poc.
 index_submit=Envia la Informació del SO
 index_submitmsg=Fent clic sobre aquest botó s'enviarà la informació del teu sistema operatiu i versió Perl als desenvolupadors de Webmin. Aquestes dades seran estrictament anònimes, i proporcionaran informació sobre quins sistemes operatius són millor per centrar-hi el desenvolupament de Webmin.
+index_refresh=Refresca els Mòduls
+index_refreshmsg=Recomprova tots els mòduls Webmin dels servidors instal·lats, i actualitza aquells que apareixen a la categoria de 'Mòduls no utilitzats'
 
 access_title=Control d'Accés IP
 access_desc=Amb aquest formulari, es pot configurar el servidor Webmin per a denegar o permetre l'accés només des de certes adreces. També s'hi poden introduir noms de hosts (com ara foo.bar.com) i xarxes IP (com ara  10.254.3.0 o 10.254.1.0/255.255.255.128). Hauries de limitar l'accés al servidor a adreces fiables, sobretot si és accessible des d'Internet. Altrament, qualsevol que endevini la teva contrasenya tindrà el control absolut del sistema.
@@ -331,6 +333,8 @@ ssl_addipkey=Afegeix una nova clau SSL especifica d'IP.
 ssl_return=Claus SSL
 ssl_version=Versió del protocol SSL
 ssl_no2=Permet navegadors amb la versió 2 de SSL
+ssl_cipher_list=Xifratges SSL permesos
+ssl_ecipher_list=Hi falta la llista de xifratges o bé no és vàlida - ha de ser de la forma <tt>HIGH:-SSLv2:-aNULL</tt>
 ssl_auto=Detecta-la automàticament
 ssl_eversion=Hi falta el número de versió o bé és invàlid
 ssl_saveheader=Puja la clau existent
@@ -750,6 +754,8 @@ advanced_eumask=L'umask ha de ser un número octal de 3 dígits
 advanced_etempdelete=Hi falta l'edat màxima dels fitxers temporals o bé és invàñida
 advanced_nice=Prioritat de CPU dels treballs planificats
 advanced_pri=Nivell de prioritat
+advanced_sclass=Classe d'E/S dels treballs planificats
+advanced_sprio=Prioritat d'E/S dels treballss planificats
 
 syslog_errorlog=Registre d'errors de Webmin
 
