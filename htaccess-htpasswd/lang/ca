@@ -58,6 +58,8 @@ dir_delete=Desprotegeix
 dir_delete2=Desprotegeix i Elimina els Fitxers
 dir_delete3=Desprotegeix i Elimina el Fitxer
 dir_apache=Edita les Opcions d'Apache
+dir_efiledir='$1' és un directori, i per tant no es pot utilitzar com a fitxer d'usuaris
+dir_egfiledir='$1' és un directori, i per tant no es pot utilitzar com a fitxer de grups
 
 edit_title1=Creació d'Usuari
 edit_title2=Edició d'Usuari
