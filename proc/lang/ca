@@ -24,6 +24,8 @@ parent=Procés pare
 runtime=Temps d'execució
 nice=Nivell <i>nice</i>
 stime=Iniciat
+sclass=Classe de planificació E/S
+sprio=Prioritat E/S
 
 search_user=de l'usuari
 search_match=amb patró de coincidència
@@ -101,6 +103,10 @@ linuxstat_D=Dormint profundament
 linuxstat_T=Aturat
 linuxstat_Z=Zombi
 
+linux_real=Temps real
+linux_be=Millor esforç
+linux_idle=Inactiu
+
 freebsd_ruser=Usuari real
 freebsd_rgroup=Grup real
 freebsd_tty=TTY
@@ -142,8 +148,8 @@ log_kills_l=He enviat el senyal $1 als processos<br>$2
 log_renice=He canviat la prioritat del procés $2 a $1
 
 acl_manage=Gestiona els processos com un usuari
-acl_edit=Pot matar i canviar el <i>nice</i> dels processos
 acl_manage_def=Usuari Webmin actual
+acl_edit=Pot matar i canviar el <i>nice</i> dels processos
 acl_run=Pot executar ordres
 acl_only=Només pot veure els seus processos
 acl_who=Pot gestionar els processos dels usuaris
