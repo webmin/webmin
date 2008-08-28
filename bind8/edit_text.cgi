@@ -12,12 +12,7 @@ $tv = $zone->{'type'};
 $access{'file'} || &error($text{'text_ecannot'});
 &ui_print_header($file, $text{'text_title'}, "");
 
-open(FILE, &make_chroot($file));
-while(<FILE>) {
-	push(@lines, $_);
-	}
-close(FILE);
-
+$text = &read_file_contents(&make_chroot($file));
 if (!$access{'ro'}) {
 	print &text('text_desc', "<tt>$file</tt>"),"<p>\n";
 	}
@@ -26,7 +21,7 @@ print &ui_form_start("save_text.cgi", "form-data");
 print &ui_table_start(undef, undef, 2);
 print &ui_hidden("index", $in{'index'});
 print &ui_hidden("view", $in{'view'});
-print &ui_table_row(undef, &ui_textarea("text", join("", @lines), 20, 80,
+print &ui_table_row(undef, &ui_textarea("text", $text, 20, 80,
 					undef, 0, "style='width:100%'"), 2);
 print &ui_table_row(undef, &ui_checkbox("soa", 1, $text{'text_soa'}, 1), 2);
 print &ui_table_end();

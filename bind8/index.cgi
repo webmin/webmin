@@ -130,11 +130,11 @@ if (@crlinks) {
 if (@zones > $config{'max_zones'}) {
 	# Too many zones, show search form
 	print &ui_subheading($text{'index_zones'});
-	print "<p>$text{'index_toomany'}<p>\n";
-	print "<form action=find_zones.cgi>\n";
+	print "$text{'index_toomany'}<p>\n";
+	print &ui_form_start("find_zones.cgi");
 	print "<b>$text{'index_find'}</b>\n";
-	print "<input name=search size=20>\n";
-	print "<input type=submit value='$text{'index_search'}'></form>\n";
+	print &ui_textbox("search", undef, 20);
+	print &ui_form_end([ [ undef, $text{'index_search'} ] ]);
 	print &ui_links_row(\@crlinks);
 	}
 elsif (@zones && (!@views || !$config{'by_view'})) {
@@ -190,19 +190,19 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 	if ($config{'show_list'} == 1) {
 		# display as list
 		$mid = int((@zlinks+1)/2);
-		print "<table width=100%><tr><td width=50% valign=top>\n";
-		&zones_table([ @zlinks[0 .. $mid-1] ],
-			     [ @ztitles[0 .. $mid-1] ],
-			     [ @ztypes[0 .. $mid-1] ],
-			     [ @zdels[0 .. $mid-1] ] );
-		print "</td><td width=50% valign=top>\n";
+		@grid = ( );
+		push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
+				      [ @ztitles[0 .. $mid-1] ],
+				      [ @ztypes[0 .. $mid-1] ],
+				      [ @zdels[0 .. $mid-1] ] ));
 		if ($mid < @zlinks) {
-			&zones_table([ @zlinks[$mid .. $#zlinks] ],
-				     [ @ztitles[$mid .. $#ztitles] ],
-				     [ @ztypes[$mid .. $#ztypes] ],
-				     [ @zdels[$mid .. $#zdels] ]);
+			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
+					     [ @ztitles[$mid .. $#ztitles] ],
+					     [ @ztypes[$mid .. $#ztypes] ],
+					     [ @zdels[$mid .. $#zdels] ]));
 			}
-		print "</td></tr></table>\n";
+		print &ui_grid_table(\@grid, 2, 100,
+				     [ "width=50%", "width=50%" ]);
 		}
 	elsif ($config{'show_list'} == 2) {
 		# Show as collapsible tree, broken down by domain parts
@@ -273,19 +273,20 @@ elsif (@zones) {
 		if ($config{'show_list'}) {
 			# display as list
 			$mid = int((@zlinks+1)/2);
-			print "<table width=100%><tr><td width=50% valign=top>\n";
-			&zones_table([ @zlinks[0 .. $mid-1] ],
-				     [ @ztitles[0 .. $mid-1] ],
-				     [ @ztypes[0 .. $mid-1] ],
-				     [ @zdels[0 .. $mid-1] ]);
-			print "</td><td width=50% valign=top>\n";
+			@grid = ( );
+			push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
+					     [ @ztitles[0 .. $mid-1] ],
+					     [ @ztypes[0 .. $mid-1] ],
+					     [ @zdels[0 .. $mid-1] ]));
 			if ($mid < @zlinks) {
-				&zones_table([ @zlinks[$mid .. $#zlinks] ],
+				push(@grid, &zones_table(
+					     [ @zlinks[$mid .. $#zlinks] ],
 					     [ @ztitles[$mid .. $#ztitles] ],
 					     [ @ztypes[$mid .. $#ztypes] ],
-					     [ @zdels[$mid .. $#zdels] ]);
+					     [ @zdels[$mid .. $#zdels] ]));
 				}
-			print "</td></tr></table>\n";
+			print &ui_grid_table(\@grid, 2, 100,
+					     [ "width=50%", "width=50%" ]);
 			}
 		else {
 			# display as icons

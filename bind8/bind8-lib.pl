@@ -460,19 +460,19 @@ elsif ($_[0]->{'type'} == 2) {
 }
 
 # choice_input(text, name, &config, [display, option]+)
+# Returns a table row for a multi-value BIND option
 sub choice_input
 {
-local($rv, $v, $i, @ops);
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top>";
+local ($rv, $v, $i, @opts);
 $v = &find_value($_[1], $_[2]);
 for($i=3; $i<@_; $i+=2) {
-	$rv .= sprintf "<input type=radio name=%s value='%s' %s> %s\n",
-		$_[1], $_[$i+1], $v eq $_[$i+1] ? "checked" : "", $_[$i];
+	push(@opts, [ $_[$i+1], $_[$i] ]);
 	}
-return $rv."</td>\n";
+return &ui_table_row($_[0], &ui_radio($_[1], $v, \@opts));
 }
 
 # save_choice(name, &parent, indent)
+# Updates the config from a multi-value option
 sub save_choice
 {
 local($nd);
@@ -544,22 +544,21 @@ sub address_port_input
 # address_input(text, name, &config, type)
 sub address_input
 {
-local($v, $rv, $av, @av);
+local($v, $av, @av);
 $v = &find($_[1], $_[2]);
 foreach $av (@{$v->{'members'}}) {
 	push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
 	}
 if ($_[3] == 0) {
 	# text area
-	$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top>";
-	$rv .= "<textarea name=$_[1] rows=3 cols=15>".
-		join("\n", @av)."</textarea></td>\n";
+	return &ui_table_row($_[0],
+		&ui_textarea($_[1], join("\n", @av), 3, 15));
 	}
 else {
-	$rv = "<td valign=top><b>$_[0]</b></td> <td colspan=3 valign=top>";
-	$rv .= "<input name=$_[1] size=50 value=\"".join(' ',@av)."\"></td>\n";
+	# text row
+	return &ui_table_row($_[0],
+		&ui_textbox($_[1], join(' ',@av), 50));
 	}
-return $rv;
 }
 
 # save_port_address(name, portname, &config, indent)
@@ -1106,24 +1105,26 @@ if (!$access{'ro'}) {
 }
 
 # zones_table(&links, &titles, &types, &deletes)
-# Prints a table of zones, with checkboxes to delete
+# Returns a table of zones, with checkboxes to delete
 sub zones_table
 {
 local($i);
 local @tds = ( "width=5" );
-print &ui_columns_start([ "", $text{'index_zone'}, $text{'index_type'} ],
+local $rv;
+$rv .= &ui_columns_start([ "", $text{'index_zone'}, $text{'index_type'} ],
 			100, 0, \@tds);
 for($i=0; $i<@{$_[0]}; $i++) {
 	local @cols = ( "<a href=\"$_[0]->[$i]\">$_[1]->[$i]</a>",
 			$_[2]->[$i] );
 	if (defined($_[3]->[$i])) {
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $_[3]->[$i]);
+		$rv .= &ui_checked_columns_row(\@cols, \@tds, "d", $_[3]->[$i]);
 		}
 	else {
-		print &ui_columns_row(\@cols, \@tds);
+		$rv .= &ui_columns_row(\@cols, \@tds);
 		}
 	}
-print &ui_columns_end();
+$rv .= &ui_columns_end();
+return $rv;
 }
 
 # convert_illegal(text)

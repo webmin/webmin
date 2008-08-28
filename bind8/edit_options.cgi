@@ -17,68 +17,55 @@ $access{'opts'} || &error($text{'master_eoptscannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 &ui_print_header($desc, $text{'master_opts'}, "");
 
-# Form for editing zone options
-print "<a name=options>\n";
-print "<form action=save_master.cgi>\n";
-print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'master_opts'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of form for editing zone options
+print &ui_form_start("save_master.cgi");
+print &ui_hidden("index", $in{'index'});
+print &ui_hidden("view", $in{'view'});
+print &ui_table_start($text{'master_opts'}, "width=100%", 4);
 
-print "<tr>\n";
 print &choice_input($text{'master_check'}, "check-names", $zconf,
 		    $text{'warn'}, "warn", $text{'fail'}, "fail",
 		    $text{'ignore'}, "ignore", $text{'default'}, undef);
 print &choice_input($text{'master_notify'}, "notify", $zconf,
 		    $text{'yes'}, "yes", $text{'no'}, "no",
 		    $text{'default'}, undef);
-print "</tr>\n";
 
-print "<tr>\n";
 print &address_input($text{'master_update'}, "allow-update", $zconf);
 print &address_input($text{'master_transfer'}, "allow-transfer", $zconf);
-print "</tr>\n";
 
-print "<tr>\n";
 print &address_input($text{'master_query'}, "allow-query", $zconf);
 print &address_input($text{'master_notify2'}, "also-notify", $zconf);
-print "</tr>\n";
 
-print "</table></td></tr> </table>\n";
-print "<table width=100%><tr>\n";
-print "<td width=33%><input type=submit value=\"$text{'save'}\"></td></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
+# Buttons at end of page
+print &ui_hr();
+print &ui_buttons_start();
+
+# Move to another view
 @views = grep { &can_edit_view($_) } &find("view", $bconf);
 if ($in{'view'} eq '' && @views || $in{'view'} ne '' && @views > 1) {
-	print "<form action=move_zone.cgi>\n";
-	print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-	print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-	print "<td width=33% align=middle>\n";
-	print "<input type=submit value=\"$text{'master_move'}\">\n";
-	print "<select name=newview>\n";
-	foreach $v (@views) {
-		printf "<option value=%d>%s\n", $v->{'index'}, $v->{'value'}
-			if ($v->{'index'} ne $in{'view'});
-		}
-	print "</select></td></form>\n";
-	}
-else {
-	print "<td width=33%></td>\n";
+	print &ui_buttons_row("move_zone.cgi",
+		$text{'master_move'},
+		$text{'master_movedesc'},
+		&ui_hidden("index", $in{'index'}).
+		&ui_hidden("view", $in{'view'}),
+		&ui_select("newview", undef,
+			map { [ $_->{'index'}, $_->{'view'} ] }
+			    grep { $_->{'index'} ne $in{'view'} } @views));
 	}
 
+# Convert to slave zone
 if ($access{'slave'}) {
-	print "<form action=convert_master.cgi>\n";
-	print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-	print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-	print "<td width=33% align=right>\n";
-	print "<input type=submit value=\"$text{'master_convert'}\">\n";
-	print "</td></form>\n";
+	print &ui_buttons_row("convert_master.cgi",
+		$text{'master_convert'},
+		$text{'master_convertdesc'},
+		&ui_hidden("index", $in{'index'}).
+		&ui_hidden("view", $in{'view'}));
 	}
-else {
-	print "<td width=33%></td>\n";
-	}
-print "</tr></table>\n";
+
+print &ui_buttons_end();
 
 &ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
 	$text{'master_return'});

@@ -52,19 +52,19 @@ if ($len) {
 		@links = ( &select_all_link("d", 0),
 			   &select_invert_link("d", 0) );
 		print &ui_links_row(\@links);
-		print "<table width=100%><tr><td width=50% valign=top>\n";
-		&zones_table([ @zlinks[0 .. $mid-1] ],
-			     [ @ztitles[0 .. $mid-1] ],
-			     [ @ztypes[0 .. $mid-1] ],
-			     [ @zdels[0 .. $mid-1] ] );
-		print "</td><td width=50% valign=top>\n";
+		@grid = ( );
+		push(@grid, &zones_table([ @zlinks[0 .. $mid-1] ],
+				      [ @ztitles[0 .. $mid-1] ],
+				      [ @ztypes[0 .. $mid-1] ],
+				      [ @zdels[0 .. $mid-1] ] ));
 		if ($mid < @zlinks) {
-			&zones_table([ @zlinks[$mid .. $#zlinks] ],
-				     [ @ztitles[$mid .. $#ztitles] ],
-				     [ @ztypes[$mid .. $#ztypes] ],
-				     [ @zdels[$mid .. $#zdels] ]);
+			push(@grid, &zones_table([ @zlinks[$mid .. $#zlinks] ],
+					     [ @ztitles[$mid .. $#ztitles] ],
+					     [ @ztypes[$mid .. $#ztypes] ],
+					     [ @zdels[$mid .. $#zdels] ]));
 			}
-		print "</td></tr></table>\n";
+		print &ui_grid_table(\@grid, 2, 100,
+				     [ "width=50%", "width=50%" ]);
 		print &ui_links_row(\@links);
 		print &ui_form_end([ [ "delete", $text{'index_massdelete'} ] ]);
 		}

@@ -14,16 +14,11 @@ $access{'file'} || &error($text{'text_ecannot'});
 
 print &text('text_desc2', "<tt>$file</tt>"),"<p>\n";
 
-open(FILE, &make_chroot($file));
-while(<FILE>) {
-	push(@lines, &html_escape($_));
-	}
-close(FILE);
-
-if (@lines) {
-	print "<table border width=100%><tr $cb><td><pre>";
-	print @lines;
-	print "</pre></td></tr></table>\n";
+$text = &read_file_contents(&make_chroot($file));
+if ($text) {
+	print &ui_table_start(undef, "width=100%", 2);
+	print &ui_table_row(undef, "<pre>".&html_escape($text)."</pre>", 2);
+	print &ui_table_end();
 	}
 else {
 	print "$text{'text_none'}<p>\n";
