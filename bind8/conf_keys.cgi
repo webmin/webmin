@@ -9,33 +9,30 @@ $access{'defaults'} || &error($text{'keys_ecannot'});
 $conf = &get_config();
 @keys = ( &find("key", $conf), { } );
 
-print "<form action=save_keys.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'keys_id'}</b></td> ",
-      "<td><b>$text{'keys_alg'}</b></td> ",
-      "<td><b>$text{'keys_secret'}</b></td> </tr>\n";
+# Build table of keys
+@table = ( );
 for($i=0; $i<@keys; $i++) {
 	$k = $keys[$i];
-	print "<tr $cb>\n";
-	printf "<td><input name=id_$i size=15 value='%s'></td>\n",
-		$k->{'value'};
-
 	@algs = ( "hmac-md5" );
 	$alg = &find_value("algorithm", $k->{'members'});
-	print "<td><select name=alg_$i>\n";
-	local $found;
-	foreach $a (@algs) {
-		printf "<option %s>%s\n", $alg eq $a ? "selected" : "", $a;
-		$found++ if ($alg eq $a);
-		}
-	print "<option selected>$alg\n" if (!$found && $alg);
-	print "</select></td>\n";
-
-	printf "<td><input name=secret_$i size=64 value='%s'></td> </tr>\n",
-		&find_value("secret", $k->{'members'});
+	$secret = &find_value("secret", $k->{'members'});
+	push(@table, [ &ui_textbox("id_$i", $k->{'value'}, 15),
+		       &ui_select("alg_$i", $alg, \@algs, 1, 0, $alg ? 1 : 0),
+		       &ui_textbox("secret_$i", $secret, 65) ]);
 	}
-print "</table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+
+# Show the table
+print &ui_form_columns_table(
+	"save_keys.cgi",
+	[ [ undef, $text{'save'} ] ],
+	0,
+	undef,
+	undef,
+	[ $text{'keys_id'}, $text{'keys_alg'}, $text{'keys_secret'} ],
+	undef,
+	\@table,
+	undef,
+	1);
 
 &ui_print_footer("", $text{'index_return'});
 
