@@ -313,6 +313,7 @@ linux_secs=segons
 linux_smbwarn=Atenció! EL sistema de fitxers no ha estat muntat des de Webmin, així que les opcions existents no estan disponibles
 linux_username=Usuari
 linux_password=Contrasenya
+linux_credentials=Fitxer de Credencials
 linux_sname=Nom del Servidor
 linux_wg=Grup de Treball
 linux_auto=Automàtic
