@@ -463,9 +463,9 @@ elsif ($_[0]->{'type'} == 2) {
 # Returns a table row for a multi-value BIND option
 sub choice_input
 {
-local ($rv, $v, $i, @opts);
-$v = &find_value($_[1], $_[2]);
-for($i=3; $i<@_; $i+=2) {
+my $v = &find_value($_[1], $_[2]);
+my @opts;
+for(my $i=3; $i<@_; $i+=2) {
 	push(@opts, [ $_[$i+1], $_[$i] ]);
 	}
 return &ui_table_row($_[0], &ui_radio($_[1], $v, \@opts));
@@ -637,20 +637,15 @@ local $dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
 }
 
 # opt_input(text, name, &config, default, size, units)
+# Returns a table row with an optional text field
 sub opt_input
 {
-local($v, $rv, $n);
-$v = &find($_[1], $_[2]);
+my $v = &find($_[1], $_[2]);
+my $n;
 ($n = $_[1]) =~ s/[^A-Za-z0-9_]/_/g;
-$rv = "<td valign=top><b>$_[0]</b></td> <td nowrap valign=top";
-$rv .= $_[4] > 30 ? " colspan=3>\n" : ">\n";
-$rv .= sprintf "<input type=radio name=${n}_def value=1 %s> $_[3]\n",
-	$v ? "" : "checked";
-$rv .= sprintf "<input type=radio name=${n}_def value=0 %s> ",
-	$v ? "checked" : "";
-$rv .= sprintf "<input name=$n size=$_[4] value=\"%s\"> $_[5]</td>\n",
-	$v ? $v->{'value'} : "";
-return $rv;
+return &ui_table_row($_[0],
+	&ui_opt_textbox($n, $v ? $v->{'value'} : "", $_[4], $_[3])." ".$_[5],
+	$_[4] > 30 ? 3 : 1);
 }
 
 sub save_opt
