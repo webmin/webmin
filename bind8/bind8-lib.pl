@@ -593,11 +593,12 @@ $dir = { 'name' => $_[0], 'type' => 1, 'members' => \@vals };
 }
 
 # forwarders_input(text, name, &config)
+# Returns a form field containing a table of forwarding IPs and ports
 sub forwarders_input
 {
-local($v, $rv, $av, @ips, @prs);
-$v = &find($_[1], $_[2]);
-foreach $av (@{$v->{'members'}}) {
+my $v = &find($_[1], $_[2]);
+my (@ips, @prs);
+foreach my $av (@{$v->{'members'}}) {
 	push(@ips, $av->{'name'});
 	if ($av->{'values'}->[0] eq 'port') {
 		push(@prs, $av->{'values'}->[1]);
@@ -606,18 +607,16 @@ foreach $av (@{$v->{'members'}}) {
 		push(@prs, undef);
 		}
 	}
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top>\n";
-$rv .= "<table border>\n";
-$rv .= "<tr $tb> <td><b>$text{'forwarding_ip'}</b></td> ".
-       "<td><b>$text{'forwarding_port'}</b></td> </tr>\n";
-for($i=0; $i<@ips+3; $i++) {
-	$rv .= "<tr $cb>\n";
-	$rv .= "<td><input name=$_[1]_ip_$i size=20 value='$ips[$i]'></td>\n";
-	$rv .= "<td><input name=$_[1]_pr_$i size=15 value='$prs[$i]'></td>\n";
-	$rv .= "</tr>\n";
+my @table;
+for(my $i=0; $i<@ips+3; $i++) {
+	push(@table, [ &ui_textbox("$_[1]_ip_$i", $ips[$i], 20),
+		       &ui_opt_textbox("$_[1]_pr_$i", $prs[$i], 5,
+				       $text{'default'}),
+		     ]);
 	}
-$rv .= "</table>\n";
-return $rv;
+return &ui_table_row($_[0],
+	&ui_columns_table([ $text{'forwarding_ip'}, $text{'forwarding_port'} ],
+			  undef, \@table, undef, 1), 3);
 }
 
 # save_forwarders(name, &parent, indent)
@@ -627,7 +626,7 @@ local ($i, $ip, $pr, @vals);
 for($i=0; defined($ip = $in{"$_[0]_ip_$i"}); $i++) {
 	next if (!$ip);
 	&check_ipaddress($ip) || &error(&text('eip', $ip));
-	$pr = $in{"$_[0]_pr_$i"};
+	$pr = $in{"$_[0]_pr_${i}_def"} ? undef : $in{"$_[0]_pr_$i"};
 	!$pr || $pr =~ /^\d+$/ || &error(&text('eport', $pr));
 	push(@vals, { 'name' => $ip,
 		      'values' => $pr ? [ "port", $pr ] : [ ] });

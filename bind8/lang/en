@@ -558,7 +558,7 @@ forwarding_emins=Missing or invalid maximum transfer time
 forwarding_etrans=Missing or invalid maximum concurrent transfers
 forwarding_minutes=minutes
 forwarding_ip=IP address
-forwarding_port=Port (optional)
+forwarding_port=Port
 
 net_title=Addresses and Topology
 net_ecannot=You are not allowed to edit address and topology options

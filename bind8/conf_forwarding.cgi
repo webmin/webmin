@@ -10,40 +10,29 @@ $conf = &get_config();
 $options = &find("options", $conf);
 $mems = $options->{'members'};
 
-print "<form action=save_forwarding.cgi>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'forwarding_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of the form
+print &ui_form_start("save_forwarding.cgi");
+print &ui_table_start($text{'forwarding_header'}, "width=100%", 4);
 
-print "<tr>\n";
 print &forwarders_input($text{'forwarding_fwders'}, 'forwarders', $mems);
-print "</tr>\n";
 
-print "<tr>\n";
 print &choice_input($text{'forwarding_fwd'}, 'forward', $mems,
 		    $text{'yes'}, 'first', $text{'no'}, 'only',
 		    $text{'default'}, undef);
-print "</tr>\n";
 
-print "<tr>\n";
 print &opt_input($text{'forwarding_max'}, "max-transfer-time-in",
 		 $mems, $text{'default'}, 4, $text{'forwarding_minutes'});
-print "</tr>\n";
 
-print "<tr>\n";
 print &choice_input($text{'forwarding_format'}, 'transfer-format', $mems,
 		    $text{'forwarding_one'}, 'one-answer',
 		    $text{'forwarding_many'}, 'many-answers',
 		    $text{'default'}, undef);
-print "</tr>\n";
 
-print "<tr>\n";
 print &opt_input($text{'forwarding_in'}, "transfers-in",
 		 $mems, $text{'default'}, 4);
-print "</tr>\n";
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
