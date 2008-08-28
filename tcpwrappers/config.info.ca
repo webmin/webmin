@@ -1,0 +1,2 @@
+hosts_allow=Fitxer d'embolcalls TCP permesos,0
+hosts_deny=Fitxer d'embolcalls TCP denegats,0
