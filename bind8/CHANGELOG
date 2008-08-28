@@ -84,3 +84,4 @@ When adding a cluster slave server, allow zones to be created in the same view o
 Added a button to the Edit Master Zone page for checking records with the named-checkzone command.
 ---- Changes since 1.430 ----
 Don't pass the -g flag to BIND version 9 when starting without an init script.
+Converted all forms to use the Webmin UI library, for a more consistent look and easier theming.

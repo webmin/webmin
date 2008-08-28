@@ -484,18 +484,17 @@ if ($in{$_[0]}) { $nd = { 'name' => $_[0], 'values' => [ $in{$_[0]} ] }; }
 # A field for editing a list of addresses, ACLs and partial IP addresses
 sub addr_match_input
 {
-local($v, $rv, $av, @av);
-$v = &find($_[1], $_[2]);
-$rv = "<td valign=top><b>$_[0]</b></td> <td valign=top>";
-$rv .= "<input type=radio name=$_[1]_def value=1 ".
-       ($v ? "" : "checked")."> $text{'default'}";
-$rv .= "<input type=radio name=$_[1]_def value=0 ".
-       ($v ? "checked" : "")."> $text{'listed'}<br>";
-foreach $av (@{$v->{'members'}}) {
-	push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
+my @av;
+my $v = &find($_[1], $_[2]);
+if ($v) {
+	foreach my $av (@{$v->{'members'}}) {
+		push(@av, join(" ", $av->{'name'}, @{$av->{'values'}}));
+		}
 	}
-$rv .= "<textarea name=$_[1] rows=3 cols=15>".
-	join("\n", @av)."</textarea></td>\n";
+return &ui_table_row($_[0],
+	&ui_radio("$_[1]_def", $v ? 0 : 1, [ [ 1, $text{'default'} ],
+					     [ 0, $text{'listed'} ] ])."<br>".
+	&ui_textarea($_[1], join("\n", @av), 3, 15));
 }
 
 # save_addr_match(name, &parent, indent)

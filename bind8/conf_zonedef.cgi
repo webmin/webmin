@@ -6,115 +6,98 @@ require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'zonedef_ecannot'});
 &ui_print_header(undef, $text{'zonedef_title'}, "");
 
-print "<form action=save_zonedef.cgi>\n";
-
+# Start of defaults for new zones form
+print &ui_form_start("save_zonedef.cgi");
+print &ui_table_start($text{'zonedef_msg'}, "width=100%", 4);
 &get_zone_defaults(\%zd);
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'zonedef_msg'}</b></td> </tr>\n";
-print "<tr $cb> <td><table cellpadding=5>\n";
 
-print "<tr> <td><b>$text{'master_refresh'}</b></td>\n";
-print "<td><input name=refresh size=10 value='$zd{'refresh'}'>\n";
-print &time_unit_choice("refunit", $zd{'refunit'});
-print "</td>\n";
-print "<td><b>$text{'master_retry'}</b></td>\n";
-print "<td><input name=retry size=10 value='$zd{'retry'}'>\n";
-print &time_unit_choice("retunit", $zd{'retunit'});
-print "</td> </tr>\n";
+# Default refresh time
+print &ui_table_row($text{'master_refresh'},
+	&ui_textbox("refresh", $zd{'refresh'}, 10)." ".
+	&time_unit_choice("refunit", $zd{'refunit'}));
 
-print "<tr> <td><b>$text{'master_expiry'}</b></td>\n";
-print "<td><input name=expiry size=10 value='$zd{'expiry'}'>\n";
-print &time_unit_choice("expunit", $zd{'expunit'});
-print "</td>\n";
-print "<td><b>$text{'master_minimum'}</b></td>\n";
-print "<td><input name=minimum size=10 value='$zd{'minimum'}'>\n";
-print &time_unit_choice("minunit", $zd{'minunit'});
-print "</td>\n";
+# Default retry time
+print &ui_table_row($text{'master_retry'},
+	&ui_textbox("retry", $zd{'retry'}, 10)." ".
+	&time_unit_choice("retunit", $zd{'retunit'}));
 
-print "<tr> <td valign=top><b>$text{'master_tmplrecs'}</b></td>\n";
-print "<td colspan=3><table border>\n";
-print "<tr $tb> <td><b>$text{'master_name'}</b></td> ",
-      "<td><b>$text{'master_type'}</b></td> ",
-      "<td><b>$text{'master_value'}</b></td> </tr>\n";
+# Default expiry time
+print &ui_table_row($text{'master_expiry'},
+	&ui_textbox("expiry", $zd{'expiry'}, 10)." ".
+	&time_unit_choice("expunit", $zd{'expunit'}));
+
+# Default minimum time (what is this really?)
+print &ui_table_row($text{'master_minimum'},
+	&ui_textbox("minimum", $zd{'minimum'}, 10)." ".
+	&time_unit_choice("minunit", $zd{'minunit'}));
+
+# Records for new zones, as a table
+@table = ( );
 for($i=0; $i<2 || $config{"tmpl_".($i-1)}; $i++) {
 	@c = split(/\s+/, $config{"tmpl_$i"}, 3);
-	print "<tr $cb>\n";
-	print "<td><input name=name_$i size=15 value='$c[0]'></td>\n";
-	print "<td><select name=type_$i>\n";
-	foreach $t ('A', 'CNAME', 'MX', 'NS', 'TXT', 'HINFO') {
-		printf "<option value=%s %s>%s\n",
-			$t, $c[1] eq $t ? 'selected' : '', $text{"type_$t"};
-		}
-	print "</select></td>\n";
-	printf "<td><input type=radio name=def_$i value=1 %s> %s\n",
-		$c[2] ? '' : 'checked', $text{'master_user'};
-	printf "<input type=radio name=def_$i value=0 %s>\n",
-		$c[2] ? 'checked' : '';
-	print "<input name=value_$i size=15 value='$c[2]'></td> </tr>\n";
+	push(@table, [ &ui_textbox("name_$i", $c[0], 15),
+		       &ui_select("type_$i", $c[1],
+			[ map { [ $_, $text{"type_".$_} ] }
+			    ('A', 'CNAME', 'MX', 'NS', 'TXT', 'HINFO') ]),
+		       &ui_opt_textbox("value_$i", $c[2], 15,
+				       $text{'master_user'}),
+		     ]);
 	}
-print "</table>\n";
+print &ui_table_row($text{'master_tmplrecs'},
+	&ui_columns_table([ $text{'master_name'}, $text{'master_type'},
+			    $text{'master_value'} ],
+			  undef, \@table, undef, 1), 3);
 
-print "<b>$text{'master_include'}</b>\n";
-printf "<input name=include size=40 value='%s'> %s\n",
-	$config{'tmpl_include'}, &file_chooser_button("include");
-print "</td> </tr>\n";
+# Additional include file
+print &ui_table_row($text{'master_include'},
+	&ui_opt_textbox("include", $config{'tmpl_include'}, 40,
+			$text{'master_noinclude'})." ".
+	&file_chooser_button("include"), 3);
 
-print "<tr> <td><b>$text{'zonedef_email'}</b></td>\n";
-print "<td colspan=3>",&ui_textbox("email", $config{'tmpl_email'}, 40),
-      "</td> </tr>\n";
+# Default email address
+print &ui_table_row($text{'zonedef_email'},
+	&ui_textbox("email", $config{'tmpl_email'}, 40), 3);
 
-print "<tr> <td><b>$text{'zonedef_prins'}</b></td>\n";
-print "<td colspan=3>",&ui_opt_textbox("prins", $config{'default_prins'}, 30,
-		&text('zonedef_this', "<tt>".&get_system_hostname()."</tt>")),
-		"</td> </tr>\n";
+# Default nameservers
+print &ui_table_row($text{'zonedef_prins'},
+	&ui_opt_textbox("prins", $config{'default_prins'}, 30,
+	    &text('zonedef_this', "<tt>".&get_system_hostname()."</tt>")), 3);
 
-print "</tr> </table></td></tr></table><br>\n";
+print &ui_table_end();
 
+# Start of table for global BIND options
 $conf = &get_config();
 $options = &find("options", $conf);
 $mems = $options->{'members'};
 foreach $c (&find("check-names", $mems)) {
 	$check{$c->{'values'}->[0]} = $c->{'values'}->[1];
 	}
+print &ui_table_start($text{'zonedef_msg2'}, "width=100%", 4);
 
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'zonedef_msg2'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
-
-print "<tr>\n";
 print &addr_match_input($text{'zonedef_transfer'}, "allow-transfer", $mems);
 print &addr_match_input($text{'zonedef_query'}, "allow-query", $mems);
-print "</tr>\n";
 
-print "<tr>\n";
-&ignore_warn_fail($text{'zonedef_cmaster'}, 'master', $check{'master'});
-&ignore_warn_fail($text{'zonedef_cslave'}, 'slave', $check{'slave'});
-print "</tr>\n";
+print &ignore_warn_fail($text{'zonedef_cmaster'}, 'master', $check{'master'});
+print &ignore_warn_fail($text{'zonedef_cslave'}, 'slave', $check{'slave'});
 
-print "<tr>\n";
-&ignore_warn_fail($text{'zonedef_cresponse'}, 'response', $check{'response'});
+print &ignore_warn_fail($text{'zonedef_cresponse'}, 'response',
+			$check{'response'});
 print &choice_input($text{'zonedef_notify'}, "notify", $mems,
 		    $text{'yes'}, "yes", $text{'no'}, "no",
 		    $text{'default'}, undef);
-print "</tr>\n";
 
-print "</tr> </table></td></tr></table><br>\n";
-
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
 # ignore_warn_fail(text, name, value)
 sub ignore_warn_fail
 {
-print "<td><b>$_[0]</b></td> <td>\n";
-printf "<input type=radio name=$_[1] value=ignore %s> $text{'ignore'}\n",
-	$_[2] eq 'ignore' ? 'checked' : '';
-printf "<input type=radio name=$_[1] value=warn %s> $text{'warn'}\n",
-	$_[2] eq 'warn' ? 'checked' : '';
-printf "<input type=radio name=$_[1] value=fail %s> $text{'fail'}\n",
-	$_[2] eq 'fail' ? 'checked' : '';
-printf "<input type=radio name=$_[1] value='' %s> $text{'default'}</td>\n",
-	!$_[2] ? 'checked' : '';
+return &ui_table_row($_[0],
+	&ui_radio($_[1], $_[2], [ [ 'ignore', $text{'ignore'} ],
+			          [ 'warn', $text{'warn'} ],
+			          [ 'fail', $text{'fail'} ],
+			          [ '', $text{'default'} ] ]));
 }
 

@@ -43,11 +43,18 @@ for($i=0; defined($in{"name_$i"}); $i++) {
 	$in{"type_$i"} eq 'A' || !$in{"def_$i"} ||
 		&error($text{'master_eiptmpl'});
 	$config{"tmpl_$j"} = join(' ', $in{"name_$i"}, $in{"type_$i"},
-				  $in{"def_$i"} ? () : ( $in{"value_$i"} ) );
+			  $in{"value_${i}_def"} ? () : ( $in{"value_$i"} ) );
 	$j++;
 	}
 $config{'tmpl_email'} = $in{'email'};
-$config{'tmpl_include'} = $in{'include'};
+if ($in{'include_def'}) {
+	delete($config{'tmpl_include'});
+	}
+else {
+	-r $in{'include'} && !-d $in{'include'} ||
+		&error($text{'master_einclude'});
+	$config{'tmpl_include'} = $in{'include'};
+	}
 if ($in{'prins_def'}) {
 	delete($config{'default_prins'});
 	}

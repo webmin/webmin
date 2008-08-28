@@ -112,6 +112,7 @@ master_eoptscannot=You are not allowed to edit zone options
 master_edeletecannot=You are not allowed to delete zones
 master_etaken=This zone already exists
 master_include=Additional template file
+master_noinclude=Just use records above
 master_convert=Convert to slave zone
 master_convertdesc=Turns this master zone into a slave, so that it will receive records from another master server instead of serving them locally.
 master_whois=Lookup WHOIS Information
@@ -131,6 +132,7 @@ master_applymsg2=Click this button to apply changes for this zone only. This wil
 master_defttl=Default time-to-live for records
 master_edefttl='$1' is not a valid default time-to-live for records
 master_esoagone=No SOA record found!
+master_einclude=Additional template file does not exist
 
 delete_title=Delete Zone
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.
