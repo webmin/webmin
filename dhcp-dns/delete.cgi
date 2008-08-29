@@ -20,6 +20,11 @@ foreach $d (@d) {
 		}
 	($fn, $recs) = &get_dns_zone();
 	($old) = grep { lc($_->{'name'}) eq lc($d).'.' } @$recs;
+	if (!$old) {
+		# Search by hostname only
+		($old) = grep { lc($_->{'name'}) eq
+				lc($d).'.'.lc($config{'domain'}).'.' } @$recs;
+		}
 	if ($old) {
 		&bind8::delete_record($fn, $old);
 		&bind8::bump_soa_record($fn, $recs);

@@ -7,11 +7,15 @@ require './dhcp-dns-lib.pl';
 @hosts = &list_dhcp_hosts();
 ($fn, $recs) = &get_dns_zone();
 if (!$in{'new'}) {
-	# Get existing host object
+	# Get existing host object and DNS record
 	($host) = grep { $_->{'values'}->[0] eq $in{'old'} } @hosts;
 	$host || &error($text{'edit_egone'});
 	$oldpar = $host->{'parent'};
 	($old) = grep { lc($_->{'name'}) eq lc($in{'old'}).'.' } @$recs;
+	if (!$old) {
+		($old) = grep { lc($_->{'name'}) eq
+			lc($in{'old'}).'.'.lc($config{'domain'}).'.' } @$recs;
+		}
 	if ($in{'subnet'} eq $in{'oldsubnet'}) {
 		$par = $oldpar;
 		}
