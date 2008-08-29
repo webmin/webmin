@@ -11,7 +11,8 @@ $dom = $zone->{'name'};
 &can_edit_type($in{'type'}, \%access) ||
 	&error($text{'recs_ecannottype'});
 $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
-&ui_print_header($desc, &text('recs_title', $text{"recs_$in{'type'}"} || $in{'type'}), "");
+$typedesc = $text{"recs_$in{'type'}"} || $in{'type'};
+&ui_print_header($desc, &text('recs_title', $typedesc), "");
 
 # Show form for adding a record
 $type = $zone->{'type'};
@@ -20,6 +21,7 @@ $form = 0;
 if (!$access{'ro'} && $type eq 'master' && $in{'type'} ne 'ALL') {
 	&record_input($in{'index'}, $in{'view'}, $in{'type'}, $file, $dom);
 	$form++;
+	$shown_create_form = 1;
 	}
 
 if ($config{'largezones'}) {
@@ -110,6 +112,11 @@ if (@recs) {
 		print &ui_form_end();
 		}
 	}
+elsif (!$shown_create_form) {
+	# Show error message
+	print "<b>",&text('recs_none', $typedesc),"</b><p>\n";
+	}
+
 &ui_print_footer("", $text{'index_return'},
 	"edit_$type.cgi?index=$in{'index'}&view=$in{'view'}",
 	$text{'recs_return'});

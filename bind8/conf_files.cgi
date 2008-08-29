@@ -11,33 +11,24 @@ $conf = &get_config();
 $options = &find("options", $conf);
 $mems = $options->{'members'};
 
-print "<form action=save_files.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'files_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of the form
+print &ui_form_start("save_files.cgi");
+print &ui_table_start($text{'files_header'}, "width=100%", 4);
 
-print "<tr>\n";
 print &opt_input($text{'files_stats'}, "statistics-file", $mems,
 		 $text{'default'}, 40, &file_chooser_button("statistics_file"));
-print "</tr>\n";
 
-print "<tr>\n";
 print &opt_input($text{'files_dump'}, "dump-file", $mems,
 		 $text{'default'}, 40, &file_chooser_button("dump_file"));
-print "</tr>\n";
 
-print "<tr>\n";
 print &opt_input($text{'files_pid'}, "pid-file", $mems,
 		 $text{'default'}, 40, &file_chooser_button("pid_file"));
-print "</tr>\n";
 
-print "<tr>\n";
 print &opt_input($text{'files_xfer'}, "named-xfer", $mems,
 		 $text{'default'}, 40, &file_chooser_button("named_xfer"));
-print "</tr>\n";
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

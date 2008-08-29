@@ -13,22 +13,24 @@ $dom = $zone->{'name'};
 
 print $text{'hint_desc'},"<p>\n";
 
-print "<table width=100%> <tr>\n";
+print &ui_buttons_start();
 
 # Re-fetch master file button
-print "<form action=refetch.cgi>\n";
-print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-print "<td width=50%><input type=submit ",
-      "value=\"$text{'hint_refetch'}\"></td></form>\n";
+print &ui_buttons_row("refetch.cgi",
+		      $text{'hint_refetch'},
+		      $text{'hint_refetchdesc'},
+		      &ui_hidden("index", $in{'index'}).
+		      &ui_hidden("view", $in{'view'}));
 
 # Delete button
-print "<form action=delete_zone.cgi>\n";
-print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-print "<td align=right width=50%><input type=submit ",
-      "value=\"$text{'delete'}\"></td></form>\n";
-print "</tr></table>\n";
+print &ui_buttons_row(
+	"delete_zone.cgi",
+        $text{'hint_delete'},
+        $text{'hint_deletedesc'},
+        &ui_hidden("index", $in{'index'}).
+        &ui_hidden("view", $in{'view'}));
+
+print &ui_buttons_end();
 
 &ui_print_footer("", $text{'index_return'});
 

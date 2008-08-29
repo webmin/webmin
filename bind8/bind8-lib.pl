@@ -515,8 +515,10 @@ else {
 
 # address_port_input(addresstext, portlabeltext, portnametext, defaulttext,
 #                    addressname, portname, &config, size, type)
+# Returns table fields for address and a port number
 sub address_port_input
   {
+    # Address, using existing function
     my $rv = &address_input($_[0], $_[4], $_[6], $_[8]);
     my $v = &find($_[4], $_[6]);
 
@@ -527,16 +529,12 @@ sub address_port_input
 	last;
       }
     }
+
+    # Port part
     my $n;
     ($n = $_[5]) =~ s/[^A-Za-z0-9_]/_/g;
-    $rv .= "<td valign=top><b>$_[1]</b></td> <td nowrap valign=top>\n";
-    $rv .= sprintf "<input type=radio name=${n}_def value=1 %s> $_[3]\n",
-      defined($port) ? "" : "checked";
-    $rv .= sprintf "<input type=radio name=${n}_def value = 0 %s> ",
-      defined($port) ? "checked" : "";
-    $rv .= sprintf "<input name=$n size=$_[7] value=\"%s\"> $_[2]</td>\n",
-      defined($port) ? $port : "";
-
+    $rv .= &ui_table_row($_[1],
+		&ui_opt_textbox($n, $port, $_[7], $_[3], $_[2]));
     return $rv;
   }
 

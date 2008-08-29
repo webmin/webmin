@@ -178,6 +178,7 @@ slave_efile2='$1' is not an allowable records file
 slave_mins=minutes
 slave_master_port=port
 slave_convert=Convert to master zone
+slave_convertdesc=Click this button to convert this slave zone into a master, with all the records that were last transferred from the original master system.
 slave_manual=View Records File
 slave_delmsg=Click this button to delete this zone from your DNS server. The source master zone will be un-touched.
 slave_apply=Force Update
@@ -212,6 +213,7 @@ recs_vals=Values
 recs_find=Show records matching:
 recs_search=Search
 recs_drev=Delete reverses too?
+recs_none=The domain does not have any $1 records yet.
 
 edit_title=Edit $1
 edit_header=In $1
@@ -758,6 +760,9 @@ hint_desc=The root zone is used by your DNS server to contact the root servers o
 hint_move=Move to view:
 hint_ecannot=You are not allowed to edit this root zone
 hint_refetch=Re-Download Root Nameservers
+hint_refetchdesc=Click this button to have Webmin re-download the root zone file from it's source on the Internic FTP server.
+hint_delete=Delete Root Zone
+hint_deletedesc=Click this button to remove this root zone. Without it, your nameserver will be unable to resolve domains on the Internet other than those it is a secondary for.
 
 hcreate_title=Create Root Zone
 hcreate_desc=The root zone is used by your DNS server to contact the root servers on the internet, so that it can resolve names in domains not handled by your DNS server, like <tt>.com</tt> or <tt>.net.au</tt>. If you are using multiple views, you may need to have a separate root zone in each view so that all clients can resolve internet domains properly.
