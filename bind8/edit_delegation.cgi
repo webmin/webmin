@@ -16,49 +16,34 @@ $dom = $conf->[$in{'index'}]->{'value'};
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 &ui_print_header($desc, $text{'delegation_title'}, "");
 
-print "<form action=save_delegation.cgi>\n";
-print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'delegation_opts'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print "<b>$text{'delegation_noopts'}</b><p>\n";
 
-print "<tr> <td colspan=4>$text{'delegation_noopts'}</td> </tr>\n";
+if (!$access{'ro'}) {
+	print &ui_hr();
+	print &ui_buttons_start();
 
-print "</table></td></tr> </table>\n";
-
-if ($access{'ro'}) {
-	print "</form>\n";
-	}
-else {
-	print "<table width=100%><tr><td align=left>\n";
-	print "<input type=submit value=\"$text{'save'}\"></td></form>\n";
-
+	# Move to another view
 	@views = &find("view", $bconf);
 	if ($in{'view'} eq '' && @views || $in{'view'} ne '' && @views > 1) {
-		print "<form action=move_zone.cgi>\n";
-		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-		print "<td width=33% align=middle>\n";
-		print "<input type=submit value=\"$text{'master_move'}\">\n";
-		print "<select name=newview>\n";
-		foreach $v (@views) {
-			printf "<option value=%d>%s\n",
-			    $v->{'index'}, $v->{'value'}
-				if ($v->{'index'} ne $in{'view'});
-			}
-		print "</select></td></form>\n";
-		}
-	else {
-		print "<td></td>\n";
+		print &ui_buttons_row("move_zone.cgi",
+			$text{'master_move'},
+			$text{'master_movedesc'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'}),
+			&ui_select("newview", undef,
+			  map { [ $_->{'index'}, $_->{'view'} ] }
+			    grep { $_->{'index'} ne $in{'view'} } @views));
 		}
 
-	print "<form action=delete_zone.cgi>\n";
-	print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-	print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-	print "<td align=right><input type=submit ",
-	      "value=\"$text{'delete'}\"></td></form>\n";
-	print "</tr></table>\n";
+	# Delete zone
+	if ($access{'delete'}) {
+		print &ui_buttons_row("delete_zone.cgi",
+			$text{'master_del'}, $text{'delegation_delmsg'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'}));
+		}
+
+	print &ui_buttons_end();
 	}
 &ui_print_footer("", $text{'index_return'});
 

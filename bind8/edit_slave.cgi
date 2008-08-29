@@ -88,34 +88,26 @@ if (@links) {
 $apply = $access{'apply'} && &has_ndc();
 if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 	print &ui_hr();
-	print "<table width=100%>\n";
+	print &ui_buttons_start();
 
+	# Delete zone
 	if ($access{'delete'}) {
-		print "<form action=delete_zone.cgi>\n";
-		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-		print "<tr><td>\n";
-		print "<input type=submit value=\"$text{'master_del'}\">\n";
-		print "</td> <td>$text{'slave_delmsg'}\n";
-		print "</td> </tr></form>\n";
+		print &ui_buttons_row("delete_zone.cgi",
+			$text{'master_del'}, $text{'slave_delmsg'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'}));
 		}
 
 	if ($apply) {
 		# Show button to do an NDC reload
-		print "<form action=restart_zone.cgi>\n";
-		print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-		print "<input type=hidden name=view value=\"$in{'view'}\">\n";
-		print "<tr><td>\n";
-		print "<input type=submit value=\"$text{'slave_apply'}\">\n";
-		$args = $zone->{'view'} ? "$dom IN $zone->{'view'}" : $dom;
-		$cmd = &has_ndc() == 2 ? $config{'rndc_cmd'}
-				       : $config{'ndc_cmd'};
-		print "</td> <td>",&text('slave_applymsg',
-			"<tt>$cmd reload $args</tt>");
-		print "</td> </tr></form>\n";
+		print &ui_buttons_row("restart_zone.cgi",
+			$text{'slave_apply'},
+			$text{'slave_applymsg2'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'}));
 		}
 
-	print "</table>\n";
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("", $text{'index_return'});

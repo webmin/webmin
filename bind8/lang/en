@@ -182,7 +182,7 @@ slave_convertdesc=Click this button to convert this slave zone into a master, wi
 slave_manual=View Records File
 slave_delmsg=Click this button to delete this zone from your DNS server. The source master zone will be un-touched.
 slave_apply=Force Update
-slave_applymsg=Click this button to force a re-transfer of the zone from the master server, using the command $1.
+slave_applymsg2=Click this button to force a re-transfer of the zone from the master server, so that it gets all the latest records.
 slave_last=Last transferred : $1
 slave_never=Never
 
@@ -302,12 +302,14 @@ fwd_masters=Master servers
 fwd_forward=Try other servers?
 fwd_check=Check names?
 fwd_err=Failed to save options
+fwd_delmsg=Click this button to delete this zone from your DNS server. Records in it will then be looked up using the normal resolution process.
 
 delegation_title=Edit Delegation Zone
 delegation_ecannot=You are not allowed to edit this zone
 delegation_opts=Zone Options
 delegation_err=Failed to save options
 delegation_noopts=Delegation zones do not have any configurable options.
+delegation_delmsg=Click this button to delete this zone from your DNS server. Record types in it other than NS will then be recognized by BIND.
 
 fcreate_title=Create Forward Zone
 fcreate_ecannot=You are not allowed to create forward zones
