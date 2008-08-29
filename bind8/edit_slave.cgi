@@ -98,11 +98,24 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 			&ui_hidden("view", $in{'view'}));
 		}
 
+	# Show button to do an NDC reload
 	if ($apply) {
-		# Show button to do an NDC reload
 		print &ui_buttons_row("restart_zone.cgi",
 			$text{'slave_apply'},
 			$text{'slave_applymsg2'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'}));
+		}
+
+	# Move to other view
+	$conf = &get_config();
+	print &move_zone_button($conf, $in{'view'}, $in{'index'});
+
+	# Convert to master zone
+	if ($access{'master'} && $st[7]) {
+		print &ui_buttons_row("convert_slave.cgi",
+			$text{'slave_convert'},
+			$text{'slave_convertdesc'},
 			&ui_hidden("index", $in{'index'}).
 			&ui_hidden("view", $in{'view'}));
 		}

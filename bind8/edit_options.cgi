@@ -39,34 +39,6 @@ print &address_input($text{'master_notify2'}, "also-notify", $zconf);
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
-# Buttons at end of page
-print &ui_hr();
-print &ui_buttons_start();
-
-# Move to another view
-@views = grep { &can_edit_view($_) } &find("view", $bconf);
-if ($in{'view'} eq '' && @views || $in{'view'} ne '' && @views > 1) {
-	print &ui_buttons_row("move_zone.cgi",
-		$text{'master_move'},
-		$text{'master_movedesc'},
-		&ui_hidden("index", $in{'index'}).
-		&ui_hidden("view", $in{'view'}),
-		&ui_select("newview", undef,
-			map { [ $_->{'index'}, $_->{'view'} ] }
-			    grep { $_->{'index'} ne $in{'view'} } @views));
-	}
-
-# Convert to slave zone
-if ($access{'slave'}) {
-	print &ui_buttons_row("convert_master.cgi",
-		$text{'master_convert'},
-		$text{'master_convertdesc'},
-		&ui_hidden("index", $in{'index'}).
-		&ui_hidden("view", $in{'view'}));
-	}
-
-print &ui_buttons_end();
-
 &ui_print_footer("edit_master.cgi?index=$in{'index'}&view=$in{'view'}",
 	$text{'master_return'});
 

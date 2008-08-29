@@ -12,40 +12,39 @@ $access{'views'} || &error($text{'view_ecannot'});
 
 &ui_print_header(undef, $text{'view_title'}, "");
 
-print "<form action=save_view.cgi>\n";
-print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'view_opts'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Form header
+print &ui_form_start("save_view.cgi");
+print &ui_hidden("index", $in{'index'});
+print &ui_table_start($text{'view_opts'}, "width=100%", 4);
 
+# View name
 @v = @{$view->{'values'}};
-print "<tr> <td><b>$text{'view_name'}</b></td>\n";
-print "<td><tt>$v[0]</tt></td>\n";
+print &ui_table_row($text{'view_name'}, "<tt>$v[0]</tt>");
 
-print "<td><b>$text{'view_class'}</b></td>\n";
-printf "<td>%s</td> </tr>\n",
-	$v[1] ? "<tt>$v[1]</tt>" : "$text{'default'} (<tt>IN</tt>)";
+# Class (not editable)
+print &ui_table_row($text{'view_class'},
+	$v[1] ? "<tt>$v[1]</tt>" : "$text{'default'} (<tt>IN</tt>)");
 
-print "<tr>\n";
 print &addr_match_input($text{'view_match'}, "match-clients", $vconf);
 print &choice_input($text{'view_recursion'}, 'recursion', $vconf,
 		    $text{'yes'}, 'yes', $text{'no'}, 'no',
 		    $text{'default'}, undef);
-print "</tr>\n";
 
-print "</table></td></tr> </table>\n";
+print &ui_table_end();
+
 if ($access{'ro'}) {
-	print "</form>\n";
+	print &ui_form_end();
 	}
 else {
-	print "<table width=100%><tr><td align=left>\n";
-	print "<input type=submit value=\"$text{'save'}\"></td></form>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
-	print "<form action=delete_view.cgi>\n";
-	print "<input type=hidden name=index value=\"$in{'index'}\">\n";
-	print "<td align=right><input type=submit ",
-	      "value=\"$text{'delete'}\"></td></form>\n";
-	print "</tr></table>\n";
+	# Delete button
+	print &ui_hr();
+	print &ui_buttons_start();
+	print &ui_buttons_row("delete_view.cgi",
+		$text{'view_delete'}, $text{'view_deletemsg'},
+		&ui_hidden("index", $in{'index'}));
+	print &ui_buttons_end();
 	}
 &ui_print_footer("", $text{'index_return'});
 

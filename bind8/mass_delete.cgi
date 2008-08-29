@@ -66,8 +66,7 @@ else {
 		# delete the records file
 		$f = &find("file", $zconf->{'members'});
 		if ($f && $type ne 'hint') {
-			&lock_file(&make_chroot(&absolute_path($f->{'value'})));
-			unlink(&make_chroot(&absolute_path($f->{'value'})));
+			&delete_records_file($f->{'value'});
 			}
 
 		# remove the zone directive

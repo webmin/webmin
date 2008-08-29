@@ -10,28 +10,26 @@ $access{'ro'} && &error($text{'vcreate_ecannot'});
 
 &ui_print_header(undef, $text{'vcreate_title'}, "");
 
-print "<form action=create_view.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'view_opts'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Form header
+print &ui_form_start("create_view.cgi");
+print &ui_table_start($text{'view_opts'}, "width=100%", 4);
 
-print "<tr> <td><b>$text{'view_name'}</b></td>\n";
-print "<td><input name=name size=25></td>\n";
+# View name
+print &ui_table_row($text{'view_name'},
+	&ui_textbox("name", undef, 25));
 
-print "<td><b>$text{'view_class'}</b></td>\n";
-print "<td><input type=radio name=class_def value=1 checked> ",
-      "$text{'default'}\n";
-print "<input type=radio name=class_def value=0>\n";
-print "<input name=class size=4></td> </tr>\n";
+# Custom class
+print &ui_table_row($text{'view_class'},
+	&ui_opt_textbox("class", undef, 4, "$text{'default'} (<tt>IN</tt>)"));
 
-print "<tr> <td valign=top><b>$text{'view_match'}</b></td> <td colspan=3>\n";
-print "<input type=radio name=match_def value=1> $text{'vcreate_match_all'}\n";
-print "<input type=radio name=match_def value=0 checked> ",
-      "$text{'vcreate_match_sel'}<br>\n";
-print "<textarea name=match rows=5 cols=40></textarea></td> </tr>\n";
+# Clients to match
+print &ui_table_row($text{'view_match'},
+	&ui_radio("match_def", 0, [ [ 1, $text{'vcreate_match_all'} ],
+				    [ 0, $text{'vcreate_match_sel'} ] ])."<br>".
+	&ui_textarea("match", undef, 5, 40));
 
-print "</table></td></tr> </table>\n";
-print "<input type=submit value=\"$text{'create'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

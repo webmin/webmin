@@ -5,10 +5,12 @@
 require './bind8-lib.pl';
 &ReadParse();
 $conf = &get_config();
+$parent = &get_config_parent();
 if ($in{'view'} ne '') {
 	$view = $conf->[$in{'view'}];
 	$conf = $view->{'members'};
 	$viewname = $view->{'values'}->[0];
+	$parent = $view;
 	}
 else {
 	$viewname = undef;
@@ -41,7 +43,7 @@ if (!$in{'confirm'} && $config{'confirm_zone'}) {
 				    &text('delete_mesg3', $zdesc),
 		[ [ 'index', $in{'index'} ],
 		  [ 'view', $in{'view'} ] ],
-		[ [ 'confirm', $text{'delete'} ] ],
+		[ [ 'confirm', $text{'master_del'} ] ],
 		($type eq 'master' ?
 			$text{$rev ? 'delete_fwd' : 'delete_rev'}." ".
 			&ui_yesno_radio("rev", 1)."<br>" : "").
@@ -106,21 +108,12 @@ elsif ($rev && $in{'rev'} && $type eq 'master') {
 # delete the records file
 $f = &find("file", $zconf->{'members'});
 if ($f && $type ne 'hint') {
-	local $zonefile = &make_chroot(&absolute_path($f->{'value'}));
-	&lock_file($zonefile);
-	unlink($zonefile);
-	local $logfile = $zonefile.".log";
-	if (!-r $logfile) { $logfile = $zonefile.".jnl"; }
-	if (-r $logfile) {
-		&lock_file($logfile);
-		unlink($logfile);
-		}
+	&delete_records_file($f->{'value'});
 	}
 
 # remove the zone directive
 &lock_file(&make_chroot($zconf->{'file'}));
-$lref = &read_file_lines(&make_chroot($zconf->{'file'}));
-splice(@$lref, $zconf->{'line'}, $zconf->{'eline'} - $zconf->{'line'} + 1);
+&save_directive($parent, [ $zconf ], [ ]);
 &flush_file_lines();
 &unlock_all_files();
 &webmin_log("delete", &find("type", $zconf->{'members'})->{'value'},

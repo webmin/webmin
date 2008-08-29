@@ -71,13 +71,14 @@ $chroot = &get_chroot();
 if ($need_create) {
 	print &text('index_eempty',
 		    "<tt>".&make_chroot($config{'named_conf'})."</tt>"),"<p>\n";
-	print "<form action=\"dns_boot.cgi\">\n";
-	print "<input type=radio name=real value=0> $text{'index_local'}<p>\n";
-	print "<input type=radio name=real value=1 checked> ",
-	      "$text{'index_download'}<p>\n";
-	print "<input type=radio name=real value=2> $text{'index_webmin'}<p>\n";
-	print "<center><input type=submit value=\"$text{'index_create'}\">",
-	      "</center></form>\n";
+
+	print &ui_form_start("dns_boot.cgi");
+	print &ui_radio("real", 1,
+		[ [ 0, $text{'index_local'}."<br>" ],
+		  [ 1, $text{'index_download'}."<br>" ],
+		  [ 2, $text{'index_webmin'}."<br>" ] ]);
+	print &ui_form_end([ [ undef, $text{'index_create'} ] ]);
+
 	&ui_print_footer("/", $text{"index"});
 	exit;
 	}

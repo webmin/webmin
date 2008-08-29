@@ -147,16 +147,29 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 			&ui_hidden("index", $in{'index'}).
 			&ui_hidden("view", $in{'view'})
 			);
+		}
 
-		# Show button to check records
-		if (&supports_check_zone()) {
-			print &ui_buttons_row(
-				"check_zone.cgi", $text{'master_checkzone'},
-				$text{'master_checkzonemsg'},
-				&ui_hidden("index", $in{'index'}).
-				&ui_hidden("view", $in{'view'})
-				);
-			}
+	# Show button to check records
+	if (&supports_check_zone()) {
+		print &ui_buttons_row(
+			"check_zone.cgi", $text{'master_checkzone'},
+			$text{'master_checkzonemsg'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'})
+			);
+		}
+
+	# Move zone button
+	$conf = &get_config();
+	print &move_zone_button($conf, $in{'view'}, $in{'index'});
+
+	# Convert to slave zone
+	if ($access{'slave'}) {
+		print &ui_buttons_row("convert_master.cgi",
+			$text{'master_convert'},
+			$text{'master_convertdesc'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'}));
 		}
 
 	print &ui_buttons_end();

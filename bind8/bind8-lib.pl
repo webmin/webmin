@@ -312,7 +312,7 @@ else {
 	}
 }
 
-# save_directive(&parent, name|&old, &values, indent, [structonly])
+# save_directive(&parent, name|&olds, &values, indent, [structonly])
 # Given a structure containing a directive name, type, values and members
 # add, update or remove that directive in config structure and data files.
 # Updating of files assumes that there is no overlap between directives -
@@ -328,11 +328,9 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 		# a new directive is being added.. put it at the end of
 		# the parent
 		if (!$_[4]) {
-			local $parent = &get_config_parent($newv[$i]->{'file'} ||
-							   $_[0]->{'file'});
-			$lref = &read_file_lines(
-				&make_chroot($newv[$i]->{'file'} ||
-					     $_[0]->{'file'}));
+			local $addfile = $newv[$i]->{'file'} || $_[0]->{'file'};
+			local $parent = &get_config_parent($addfile);
+			$lref = &read_file_lines(&make_chroot($addfile));
 			@nl = &directive_lines($newv[$i], $_[3]);
 			splice(@$lref, $_[0]->{'eline'}, 0, @nl);
 			$newv[$i]->{'file'} = $_[0]->{'file'};
@@ -2430,6 +2428,46 @@ local $out = &backquote_command(
 	$config{'checkzone'}." ".quotemeta($zonename)." ".
 	quotemeta(&make_chroot($zonefile))." 2>&1 </dev/null");
 return $? ? split(/\r?\n/, $out) : ( );
+}
+
+# delete_records_file(file)
+# Given a file (chroot-relative), delete it with locking, and any associated
+# journal or log files
+sub delete_records_file
+{
+local ($file) = @_;
+local $zonefile = &make_chroot(&absolute_path($file));
+&lock_file($zonefile);
+unlink($zonefile);
+local $logfile = $zonefile.".log";
+if (-r $logfile) {
+	&lock_file($logfile);
+	unlink($logfile);
+	}
+local $jnlfile = $zonefile.".jnl";
+if (-r $jnlfile) {
+	&lock_file($jnlfile);
+	unlink($jnlfile);
+	}
+}
+
+# move_zone_button(&config, current-view, zone-index)
+# If possible, returns a button row for moving this zone to another view
+sub move_zone_button
+{
+local ($conf, $view, $index) = @_;
+local @views = grep { &can_edit_view($_) } &find("view", $conf);
+if ($view eq '' && @views || $view ne '' && @views > 1) {
+	return &ui_buttons_row("move_zone.cgi",
+                $text{'master_move'},
+                $text{'master_movedesc'},
+                &ui_hidden("index", $index).
+                &ui_hidden("view", $view),
+                &ui_select("newview", undef,
+                        [ map { [ $_->{'index'}, $_->{'value'} ] }
+                            grep { $_->{'index'} ne $view } @views ]));
+	}
+return undef;
 }
 
 1;

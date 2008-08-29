@@ -4,8 +4,8 @@
 
 require './bind8-lib.pl';
 &ReadParse();
-$pconf = &get_config_parent();
-$conf = $pconf->{'members'};
+$parent = &get_config_parent();
+$conf = $parent->{'members'};
 $vconf = $conf->[$in{'index'}];
 $access{'views'} || &error($text{'view_ecannot'});
 
@@ -13,34 +13,31 @@ if (!$in{'confirm'}) {
 	# Ask the user if he is sure ..
 	&ui_print_header(undef, $text{'vdelete_title'}, "");
 
+	# Build input for moving zones to another view
 	@zones = &find("zone", $vconf->{'members'});
-	print "<center><p>",&text(@zones ? 'vdelete_mesg' : 'vdelete_mesg2',
-				  "<tt>$vconf->{'value'}</tt>"),"<p>\n";
-	print "<form action=delete_view.cgi>\n";
-	print "<input type=hidden name=index value=$in{'index'}>\n";
-	print "<input type=submit name=confirm value='$text{'delete'}'><br>\n";
 	if (@zones) {
-		print "<b>$text{'vdelete_newview'}</b>\n";
-		print "<input type=radio name=mode value=0> ",
-		      "$text{'vdelete_delete'}\n";
-		print "<input type=radio name=mode value=1 checked> ",
-		      "$text{'vdelete_root'}\n";
+		@moveopts = ( [ 0, $text{'vdelete_delete'} ],
+			      [ 1, $text{'vdelete_root'} ] );
 		@views = &find("view", $conf);
 		if (@views > 1) {
-			print "<input type=radio name=mode value=2> ",
-			      "$text{'vdelete_move'}\n";
-			print "<select name=newview>\n";
-			foreach $v (@views) {
-				if ($v->{'index'} != $in{'index'}) {
-					printf "<option value=%d>%s\n",
-						$v->{'index'}, $v->{'value'};
-					}
-				}
-			print "</select>\n";
+			push(@moveopts, [ 2, $text{'vdelete_move'}." ".
+				&ui_select("newview", undef,
+				   [ map { [ $_->{'index'}, $_->{'value'} ] }
+					 grep { $_->{'index'} != $in{'index'} }
+					      @views ]) ]);
 			}
-		print "<br>\n";
+		$movefield = "<b>$text{'vdelete_newview'}</b> ".
+			     &ui_radio("mode", 1, \@moveopts);
 		}
-	print "</form></center>\n";
+
+	# Show confirm form
+	print &ui_confirmation_form("delete_view.cgi",
+		&text(@zones ? 'vdelete_mesg' : 'vdelete_mesg2',
+		      "<tt>$vconf->{'value'}</tt>"),
+		[ [ 'index', $in{'index'} ] ],
+		[ [ 'confirm', $text{'view_delete'} ] ],
+		$movefield);
+
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}
@@ -48,9 +45,11 @@ if (!$in{'confirm'}) {
 # deal with the zones in this view
 @zones = &find("zone", $vconf->{'members'});
 if ($in{'mode'} == 1) {
-	$dest = $pconf;
+	# Adding to top level
+	$dest = &get_config_parent(&add_to_file());
 	}
 else {
+	# Adding to some other view
 	$dest = $conf->[$in{'newview'}];
 	}
 &lock_file(&make_chroot($dest->{'file'}));
@@ -58,24 +57,23 @@ foreach $z (@zones) {
 	local $type = &find_value("type", $z->{'members'});
 	next if (!$type || $type eq 'hint');
 	if ($in{'mode'} == 0) {
-		# Delete the records file
-		local $file = &find_value("file", $z->{'members'});
-		if ($file) {
-			&lock_file(&make_chroot(&absolute_path($file)));
-			unlink(&make_chroot(&absolute_path($file)));
+		# Delete the records file, and perhaps journal
+		local $f = &find_value("file", $z->{'members'});
+		if ($f) {
+			&delete_records_file($f->{'value'});
 			}
 		}
 	else {
-		# Move to another view or the top level
+		# Move to another view or the top level.
+		# File may change 
+		delete($z->{'file'});
 		&save_directive($dest, undef, [ $z ], $in{'mode'} == 2 ? 1 : 0);
 		}
 	}
-&flush_file_lines();
 
 # remove the view directive
 &lock_file(&make_chroot($vconf->{'file'}));
-$lref = &read_file_lines(&make_chroot($vconf->{'file'}));
-splice(@$lref, $vconf->{'line'}, $vconf->{'eline'} - $vconf->{'line'} + 1);
+&save_directive($parent, [ $vconf ], [ ]);
 &flush_file_lines();
 &unlock_all_files();
 &webmin_log("delete", "view", $vconf->{'value'}, \%in);
