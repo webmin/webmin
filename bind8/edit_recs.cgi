@@ -91,16 +91,18 @@ if (@recs) {
 	if ($in{'type'} =~ /HINFO|WKS|RP|KEY|LOC|SPF/ ||
 	    $config{'allow_comments'}) {
 		# One-column table
-		&recs_table(@recs);
+		print &recs_table(@recs);
 		}
 	else {
 		# Two-column table
 		$mid = int((@recs+1)/2);
-		print "<table width=100%><tr><td width=50% valign=top>\n";
-		&recs_table(@recs[0 .. $mid-1]);
-		print "</td><td width=50% valign=top>\n";
-		if ($mid < @recs) { &recs_table(@recs[$mid .. $#recs]); }
-		print "</td></tr></table>\n";
+		@grid = ( );
+		push(@grid, &recs_table(@recs[0 .. $mid-1]));
+		if ($mid < @recs) {
+			push(@grid, &recs_table(@recs[$mid .. $#recs]));
+			}
+		print &ui_grid_table(\@grid, 2, 100,
+			[ "width=50%", "width=50%" ]);
 		}
 	print &ui_links_row(\@links);
 	if (!$access{'ro'} && $type eq 'master') {
@@ -123,7 +125,8 @@ elsif (!$shown_create_form) {
 
 sub recs_table
 {
-local($r, $i, $j, $k, $h);
+my ($r, $i, $j, $k, $h);
+my $rv;
 
 # Generate header, with correct columns for record type
 local (@hcols, @tds);
@@ -144,7 +147,7 @@ if ($in{'type'} eq "ALL" || $is_extra{$in{'type'}}) {
 if ($config{'allow_comments'} && $in{'type'} ne "WKS") {
 	push(@hcols, "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=4'>$text{'recs_comment'}</a>");
 	}
-print &ui_columns_start(\@hcols, 100);
+$rv .= &ui_columns_start(\@hcols, 100);
 
 # Show the actual records
 for($i=0; $i<@_; $i++) {
@@ -212,13 +215,14 @@ for($i=0; $i<@_; $i++) {
 		push(@cols, &html_escape($r->{'comment'}));
 		}
 	if (!$access{'ro'} && $type eq 'master') {
-		print &ui_checked_columns_row(\@cols, \@tds,
+		$rv .= &ui_checked_columns_row(\@cols, \@tds,
 					      "d", $r->{'num'});
 		}
 	else {
-		print &ui_columns_row(\@cols, \@tds);
+		$rv .= &ui_columns_row(\@cols, \@tds);
 		}
 	}
-print &ui_columns_end();
+$rv .= &ui_columns_end();
+return $rv;
 }
 

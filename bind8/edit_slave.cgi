@@ -43,11 +43,11 @@ if ($zone->{'file'}) {
 	if ($config{'show_list'}) {
 		# display as list
 		$mid = int((@rcodes+1)/2);
-		print "<table width=100%> <tr><td width=50% valign=top>\n";
-		&types_table(@rcodes[0..$mid-1]);
-		print "</td><td width=50% valign=top>\n";
-		&types_table(@rcodes[$mid..$#rcodes]);
-		print "</td></tr> </table>\n";
+		@grid = ( );
+		push(@grid, &types_table(@rcodes[0..$mid-1]));
+		push(@grid, &types_table(@rcodes[$mid..$#rcodes]));
+		print &ui_grid_table(\@grid, 2, 100,
+			[ "width=50%", "width=50%" ]);
 		}
 	else {
 		# display as icons
@@ -127,20 +127,21 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 
 sub types_table
 {
+my $rv;
 if ($_[0]) {
-	local($i);
-	print &ui_columns_start([
+	$rv .= &ui_columns_start([
 		$text{'master_type'},
 		$text{'master_records'},
 		], 100);
-	for($i=0; $_[$i]; $i++) {
+	for(my $i=0; $_[$i]; $i++) {
 		local @cols = ( "<a href=\"edit_recs.cgi?".
 		      "index=$in{'index'}&view=$in{'view'}&type=$_[$i]\">".
 		      ($text{"recs_$_[$i]"} || $_[$i])."</a>",
 		      $rnum{$_[$i]} );
-		print &ui_columns_row(\@cols);
+		$rv .= &ui_columns_row(\@cols);
 		}
-	print &ui_columns_end();
+	$rv .= &ui_columns_end();
 	}
+return $rv;
 }
 

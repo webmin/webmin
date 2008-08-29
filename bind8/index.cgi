@@ -48,8 +48,8 @@ $bind_version = &get_bind_version();
 		&can_edit_zone($_) &&
 		(!$access{'ro'} || $_->{'name'} ne '.') } @allzones;
 @views = grep { $_->{'type'} eq 'view' } @allzones;
-($hashint) = grep { $_->{'type'} ne 'view' &&
-		    $_->{'name'} eq '.' } @allzones;
+@hashint = grep { $_->{'type'} ne 'view' &&
+		  $_->{'name'} eq '.' } @allzones;
 
 if (@zones == 1 && $access{'zones'} ne '*' && !$access{'defaults'} &&
     !$access{'views'} && $access{'apply'} != 1 && !$access{'master'} &&
@@ -119,7 +119,7 @@ if ($access{'delegation'} && !$access{'ro'} && &version_atleast(9, 2, 1)) {
 	     "<a href=\"delegation_form.cgi\">$text{'index_adddele'}</a>");
 	}
 if ($access{'master'} && !$access{'ro'} &&
-    $hashint < (@views ? scalar(@views) : 1)) {
+    scalar(@hashint) < (@views ? scalar(@views) : 1)) {
 	push(@crlinks,
 	     "<a href=\"hint_form.cgi\">$text{'index_addhint'}</a>");
 	}

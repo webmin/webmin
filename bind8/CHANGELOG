@@ -85,3 +85,5 @@ Added a button to the Edit Master Zone page for checking records with the named-
 ---- Changes since 1.430 ----
 Don't pass the -g flag to BIND version 9 when starting without an init script.
 Converted all forms to use the Webmin UI library, for a more consistent look and easier theming.
+Moved buttons for deleting, moving and converting zones up to the page shown when you click on a zone name.
+Switched to the new root zone file available from Internic.

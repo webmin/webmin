@@ -16,6 +16,7 @@ $zone_names_version = 2;
 $internic_ftp_host = "rs.internic.net";
 $internic_ftp_ip = "198.41.0.6";
 $internic_ftp_file = "/domain/named.root";
+$internic_ftp_gzip = "/domain/root.zone.gz";
 
 # Get the version number
 if (open(VERSION, "$module_config_directory/version")) {
@@ -1471,11 +1472,11 @@ foreach my $c (@$conf) {
 return &unique(@rv);
 }
 
-# free_address_button(name, [form])
+# free_address_button(name)
 sub free_address_button
 {
-local $form = defined($_[2]) ? $_[2] : 0;
-return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"free_chooser.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=150,height=500\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return &popup_window_button("free_chooser.cgi", 200, 500, 1,
+			    [ [ "ifield", $_[0] ] ]);
 }
 
 # create_slave_zone(name, master-ip, [view], [file], [&other-ips])
@@ -2466,6 +2467,44 @@ if ($view eq '' && @views || $view ne '' && @views > 1) {
                 &ui_select("newview", undef,
                         [ map { [ $_->{'index'}, $_->{'value'} ] }
                             grep { $_->{'index'} ne $view } @views ]));
+	}
+return undef;
+}
+
+# download_root_zone(file)
+# Download the root zone data to a file (under the chroot), and returns undef
+# on success or an error message on failure.
+sub download_root_zone
+{
+my ($file) = @_;
+my $rootfile = &make_chroot($file);
+my $ftperr;
+my $temp;
+&ftp_download($internic_ftp_host, $internic_ftp_file, $rootfile, \$ftperr);
+if ($ftperr) {
+	# Try IP address directly
+	$ftperr = undef;
+	&ftp_download($internic_ftp_ip, $internic_ftp_file, $rootfile,\$ftperr);
+	}
+if ($ftperr) {
+	# Try compressed version
+	$ftperr = undef;
+	$temp = &transname();
+	&ftp_download($internic_ftp_host, $internic_ftp_gzip, $temp, \$ftperr);
+	}
+if ($ftperr) {
+	# Try IP address directly for compressed version!
+	$ftperr = undef;
+	&ftp_download($internic_ftp_ip, $internic_ftp_gzip, $temp, \$ftperr);
+	}
+return $ftperr if ($ftperr);
+
+# Got some file .. maybe need to un-compress
+if ($temp) {
+	&has_command("gzip") || return $text{'boot_egzip'};
+	my $out = &backquote_command("gzip -d -c ".quotemeta($temp)." 2>&1 >".
+				     quotemeta($rootfile)." </dev/null");
+	return &text('boot_egzip2', "<tt>".&html_escape($out)."</tt>") if ($?);
 	}
 return undef;
 }

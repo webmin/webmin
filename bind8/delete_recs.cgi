@@ -19,18 +19,16 @@ $dom = $zone->{'name'};
 if (!$in{'confirm'} && $config{'confirm_rec'}) {
 	# Ask first
 	&ui_print_header(undef, $text{'drecs_title'}, "");
-	print &ui_form_start("delete_recs.cgi");
-	print &ui_hidden("index", $in{'index'}),"\n";
-	print &ui_hidden("view", $in{'view'}),"\n";
-	print &ui_hidden("rev", $in{'rev'}),"\n";
-	foreach $d (@d) {
-		print &ui_hidden("d", $d),"\n";
-		}
-	print "<center>\n";
-	print &text('drecs_rusure', scalar(@d), $dom),"<p>\n";
-	print &ui_submit($text{'drecs_ok'}, "confirm");
-	print "</center>\n";
-	print &ui_form_end();
+
+	print &ui_confirmation_form("delete_recs.cgi",
+		&text('drecs_rusure', scalar(@d), $dom),
+		[ [ 'index', $in{'index'} ],
+		  [ 'view', $in{'view'} ],
+		  [ 'rev', $in{'rev'} ],
+		  map { [ 'd', $_ ] } @d ],
+		[ [ 'confirm', $text{'drecs_ok'} ] ],
+		);
+
 	&ui_print_footer("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=$in{'sort'}", $text{'recs_return'});
 	}
 else {

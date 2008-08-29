@@ -42,7 +42,7 @@ else {
 @nets = sort { $a cmp $b } @nets;
 
 # display list of free IPs in the nets
-&header();
+&popup_header($text{'free_title'});
 print "<script>\n";
 print "function select(f)\n";
 print "{\n";
@@ -51,8 +51,7 @@ print "top.close();\n";
 print "return false;\n";
 print "}\n";
 print "</script>\n";
-print "<title>$text{'free_title'}</title>\n";
-print "<table width=100%>\n";
+print &ui_columns_start([ $text{'free_ip'} ], 100);
 foreach $net (@nets) {
 	@netip = split(/\./, $net);
 	if ($netip[3] eq "0") {
@@ -69,10 +68,10 @@ foreach $net (@nets) {
 	for($d=$start; $d<=$end; $d++) {
 		$ip = "$netip[0].$netip[1].$netip[2].$d";
 		if (!$taken{$ip}) {
-			print "<tr> <td><a href=\"\" onClick='return select(\"$ip\")'>$ip</a></td> </tr>\n";
+			print &ui_columns_row([ "<a href=\"\" onClick='return select(\"$ip\")'>$ip</a>" ]);
 			}
 		}
 	}
-print "</table>\n";
-&ui_print_footer();
+print &ui_columns_end();
+&popup_footer();
 

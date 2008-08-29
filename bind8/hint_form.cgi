@@ -23,34 +23,33 @@ foreach $z (@zones) {
 		}
 	}
 
+# Form start
 print $text{'hcreate_desc'},"<p>\n";
-print "<form action=\"create_hint.cgi\">\n";
-print "<table>\n";
+print &ui_form_start("create_hint.cgi");
+print &ui_table_start($text{'hcreate_header'}, "width=100%", 4);
 
-print "<tr> <td><b>$text{'hcreate_file'}</b></td>\n";
-print "<td><input name=file size=30 value='$file'> ",
-	&file_chooser_button("file"),"</td> </tr>\n";
+# File for root data
+print &ui_table_row($text{'hcreate_file'},
+	&ui_filebox("file", $file, 40));
 
-print "<tr> <td valign=top><b>$text{'hcreate_real'}</b></td> <td>\n";
-printf "<input type=radio name=real value=1 %s> $text{'hcreate_down'}<br>\n",
-	$file ? "" : "checked";
-print "<input type=radio name=real value=2> $text{'hcreate_webmin'}<br>\n";
-printf "<input type=radio name=real value=3 %s> $text{'hcreate_keep'}\n",
-	$file ? "checked" : "";
-print "</td> </tr>\n";
+# Data source
+print &ui_table_row($text{'hcreate_real'},
+	&ui_radio("real", $file ? 3 : 1,
+		  [ [ 1, $text{'hcreate_down'}."<br>" ],
+		    [ 2, $text{'hcreate_webmin'}."<br>" ],
+		    [ 3, $text{'hcreate_keep'} ] ]));
 
+# Create in view
+@views = grep { &can_edit_view($_) && !$hashint{$_} } @views;
 if (@views) {
-	print "<tr> <td><b>$text{'mcreate_view'}</b></td>\n";
-	print "<td colspan=3><select name=view>\n";
-	foreach $v (@views) {
-		printf "<option value=%d>%s\n",
-			$v->{'index'}, $v->{'value'} if (!$hashint{$v});
-		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'mcreate_view'},
+		&ui_select("view", undef,
+		  [ map { [ $_->{'index'}, $_->{'values'}->[0] ] }
+			@views ]), 3);
 	}
 
-print "</table>\n";
-print "<input type=submit value='$text{'create'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
