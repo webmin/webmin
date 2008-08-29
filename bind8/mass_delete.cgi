@@ -40,20 +40,16 @@ if (!$in{'confirm'}) {
 	# Ask the user if he is sure
 	&ui_print_header(undef, $text{'massdelete_title'}, "");
 
-	print &ui_form_start("mass_delete.cgi", "post");
-	foreach $d (split(/\0/, $in{'d'})) {
-		print &ui_hidden("d", $d),"\n";
-		}
-	print "<center>",&text('massdelete_rusure', scalar(@zones),
-			       join(", ", @znames)),"<p>\n";
-	print &ui_submit($text{'massdelete_ok'}, "confirm"),"<p>\n";
 	@servers = &list_slave_servers();
-	if (@servers && $access{'remote'}) {
-		print $text{'delete_onslave'},"\n";
-		print &ui_yesno_radio("onslave", 1),"<br>\n";
-		}
-	print "</center>\n";
-	print &ui_form_end();
+	print &ui_confirmation_form("mass_delete.cgi",
+		&text('massdelete_rusure', scalar(@zones),
+		      join(", ", @znames)),
+		[ map { [ "d", $_ ] } split(/\0/, $in{'d'}) ],
+		[ [ 'confirm', $text{'massdelete_ok'} ] ],
+		@servers && $access{'remote'} ?
+			$text{'delete_onslave'}." ".
+			&ui_yesno_radio("onslave", 1) : "",
+		);
 
 	&ui_print_footer("", $text{'index_return'});
 	}

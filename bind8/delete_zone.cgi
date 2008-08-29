@@ -25,24 +25,7 @@ if (!$in{'confirm'} && $config{'confirm_zone'}) {
 	# Ask the user if he is sure ..
 	&ui_print_header(undef, $text{'delete_title'}, "");
 
-	print "<center><p>\n";
-	if ($type eq 'hint') {
-		print $text{'delete_mesg2'},"<p>\n";
-		}
-	else {
-		print &text('delete_mesg', "<tt>".&ip6int_to_net(&arpa_to_ip(
-			$zconf->{'value'}))."</tt>"),"<p>\n";
-		}
-	print "<form action=delete_zone.cgi>\n";
-	print "<input type=hidden name=index value=$in{'index'}>\n";
-	print "<input type=hidden name=view value=$in{'view'}>\n";
-	print "<input type=submit name=confirm value='$text{'delete'}'><br>\n";
-	if ($type eq 'master') {
-		print $text{$rev ? 'delete_fwd' : 'delete_rev'},"\n";
-		print &ui_yesno_radio("rev", 1),"<br>\n";
-		}
-
-	# Ask if zone should be deleted on slaves too
+	# Check if deleted on slaves too
 	@servers = &list_slave_servers();
 	if ($type eq 'slave' || $type eq 'stub') {
 		@servers = grep { $_->{'sec'} } @servers;
@@ -50,11 +33,23 @@ if (!$in{'confirm'} && $config{'confirm_zone'}) {
 	elsif ($type ne 'master') {
 		@servers = ( );
 		}
-	if (@servers && $access{'remote'}) {
-		print $text{'delete_onslave'},"\n";
-		print &ui_yesno_radio("onslave", 1),"<br>\n";
-		}
-	print "</form></center>\n";
+
+	$zdesc = "<tt>".&ip6int_to_net(&arpa_to_ip($zconf->{'value'}))."</tt>";
+	print &ui_confirmation_form("delete_zone.cgi",
+		$type eq 'hint' ? $text{'delete_mesg2'} :
+		$type eq 'master' ? &text('delete_mesg', $zdesc) :
+				    &text('delete_mesg3', $zdesc),
+		[ [ 'index', $in{'index'} ],
+		  [ 'view', $in{'view'} ] ],
+		[ [ 'confirm', $text{'delete'} ] ],
+		($type eq 'master' ?
+			$text{$rev ? 'delete_fwd' : 'delete_rev'}." ".
+			&ui_yesno_radio("rev", 1)."<br>" : "").
+		(@servers && $access{'remote'} ?
+			$text{'delete_onslave'}." ".
+			&ui_yesno_radio("onslave", 1)."<br>" : "")
+		);
+
 	&ui_print_footer("", $text{'index_return'});
 	exit;
 	}

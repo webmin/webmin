@@ -137,6 +137,7 @@ master_einclude=Additional template file does not exist
 delete_title=Delete Zone
 delete_mesg=Are you sure you want to delete the zone $1 ? All records and the zone file will be deleted.
 delete_mesg2=Are you sure you want to delete the root zone ? Your DNS server may no longer be able to lookup addresses on the internet.
+delete_mesg3=Are you sure you want to delete the zone $1 ?
 delete_rev=Delete reverse records in other zones?
 delete_fwd=Delete forward records in other zones?
 delete_onslave=Also delete from slave servers?

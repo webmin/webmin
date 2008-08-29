@@ -34,17 +34,14 @@ if ($in{'delete'}) {
 	# Check if confirmation is needed
 	if (!$in{'confirm'} && $config{'confirm_rec'}) {
 		&ui_print_header(undef, $text{'edit_dtitle'}, "");
-		print "<form action=save_record.cgi>\n";
-		foreach $i (keys %in) {
-			print "<input type=hidden name=$i value='",
-				&html_escape($in{$i}),"'>\n";
-			}
-		print "<center>\n";
-		print &text('edit_rusure', "<tt>$r->{'name'}</tt>",
-					   "<tt>$in{'origin'}</tt>"),"<p>\n";
-		print "<input type=submit name=confirm ",
-		      "value='$text{'edit_dok'}'>\n";
-		print "</center>\n";
+
+		print &ui_confirmation_form("save_record.cgi",
+			&text('edit_rusure', "<tt>$r->{'name'}</tt>",
+                                             "<tt>$in{'origin'}</tt>"),
+			[ map { [ $_, $in{$_} ] } (keys %in) ],
+			[ [ 'confirm', $text{'edit_dok'} ] ],
+			);
+
 		&ui_print_footer("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}", $text{'recs_return'});
 		}
 	else {
