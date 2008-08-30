@@ -118,7 +118,7 @@ print &ui_table_row(
 	undef, \@tds);
 
 # Save to a folder or file
-@folders = grep { $_->{'file'} } &mailbox::list_folders();
+@folders = grep { $_->{'file'} } &mailbox::list_folders_sorted();
 if ($amode == 0) {
 	$folder = &file_to_folder($filter->{'action'}, \@folders);
 	}
