@@ -5,19 +5,21 @@
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'logging_ecannot'});
 &ui_print_header(undef, $text{'logging_title'}, "");
-
 &ReadParse();
 $conf = &get_config();
 $logging = &find("logging", $conf);
 $mems = $logging ? $logging->{'members'} : [ ];
 
-print "<form action=save_logging.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'logging_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-print "<tr> <td valign=top><b>$text{'logging_chans'}</b></td> <td>\n";
+# Start of tabs for channels and categories
+@tabs = ( [ "chans", $text{'logging_chans'}, "conf_logging.cgi?mode=chans" ],
+	  [ "cats", $text{'logging_cats'}, "conf_logging.cgi?mode=cats" ] );
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || "chans", 1);
 
-# display default channels
+print &ui_tabs_start_tab("mode", "chans");
+print $text{'logging_chansdesc'},"<p>\n";
+
+# Add default channels to table
+@table = ( );
 @defchans = ( { 'name' => 'default_syslog',
 		'syslog' => 'daemon',
 		'severity' => 'info' },
@@ -30,37 +32,19 @@ print "<tr> <td valign=top><b>$text{'logging_chans'}</b></td> <td>\n";
 	      { 'name' => 'null',
 		'null' => 1 } );
 foreach $c (@defchans) {
-	print "<table width=100% border><tr><td><table>\n";
-	print "<tr> <td><b>$text{'logging_cname'}</b></td>\n";
-	print "<td colspan=3><i>$c->{'name'}</i></td> </tr>\n";
-
-	print "<tr> <td><b>$text{'logging_to'}</b></td>\n";
-	if ($c->{'syslog'}) {
-		print "<td>$text{'logging_syslog'} ",
-		      "<i>$c->{'syslog'}</i></td>\n";
-		}
-	elsif ($c->{'file'}) {
-		print "<td>$text{'logging_file'} <i>$c->{'file'}</i></td>\n";
-		}
-	elsif ($c->{'fd'}) {
-		print "<td>$text{'logging_fd'} <i>$c->{'fd'}</i></td>\n";
-		}
-	else {
-		print "<td>$text{'logging_null'}</td>\n";
-		}
-	print "</tr>\n";
-
-	print "<tr> <td><b>$text{'logging_sev'}</b></td>\n";
-	if ($c->{'severity'}) {
-		print "<td><i>$c->{'severity'}</i></td> </tr>\n";
-		}
-	else {
-		print "<td><i>$text{'logging_any'}</i></td> </tr>\n";
-		}
-	print "</table></td></tr></table><br>\n";
+	push(@table, [
+		$c->{'name'},
+		$c->{'syslog'} ? $c->{'syslog'} :
+		$c->{'file'} ? $text{'logging_file'}.
+			       " <tt>".$c->{'file'}."</tt>" :
+		$c->{'fd'} ? $text{'logging_fd'}." <tt>".$c->{'fd'}."</tt>" :
+			     $text{'logging_null'},
+		$c->{'severity'} || "<i>$text{'logging_any'}</i>",
+		]);
 	}
 
-# display user-defined channels
+# Add user-defined channels
+# XXX
 @chans = &find("channel", $mems);
 @channames = ( (map { $_->{'value'} } @chans) ,
 	       'default_syslog', 'default_debug', 'default_stderr', 'null' );
@@ -151,38 +135,57 @@ for($i=0; $i<@chans; $i++) {
 print "<a href='conf_logging.cgi?add=1'>$text{'logging_add'}</a>\n";
 print "</td> </tr>\n";
 
-print "<tr> <td valign=top><b>$text{'logging_cats'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'logging_cat'}</b></td> ",
-      "<td><b>$text{'logging_cchans'}</b></td> </tr>\n";
+# Output the channels table
+print &ui_form_columns_table(
+        "save_logging.cgi",
+        [ [ undef, $text{'save'} ] ],
+        0,
+        undef,
+        [ [ 'mode', 'chans' ] ],
+	[ $text{'logging_cname'}, $text{'logging_to'}, $text{'logging_sev'} ],
+	100,
+	\@table,
+	undef,
+	1);
+
+print &ui_tabs_end_tab("mode", "chans");
+
+# Start of categories tab
+print &ui_tabs_start_tab("mode", "cats");
+print $text{'logging_catsdesc'},"<p>\n";
+
+# Build table of categories
+@table = ( );
 @cats = ( &find("category", $mems), { } );
 for($i=0; $i<@cats; $i++) {
-	print "<tr $cb> <td><select name=cat_$i>\n";
-	print "<option>\n";
-	local $found;
-	foreach $c (@cat_list) {
-		printf "<option %s>%s\n",
-			$cats[$i]->{'value'} eq $c ? "selected" : "", $c;
-		$found++ if ($cats[$i]->{'value'} eq $c);
-		}
-	if (!$found && $cats[$i]->{'value'}) {
-		print "<option selected>",$cats[$i]->{'value'},"\n";
-		}
-	print "</select></td> <td>\n";
-	local %cchan;
+	my %cchan;
 	foreach $c (@{$cats[$i]->{'members'}}) {
 		$cchan{$c->{'name'}}++;
 		}
-	foreach $c (@channames) {
-		printf "<input type=checkbox name=cchan_$i value=%s %s> %s\n",
-			$c, $cchan{$c} ? "checked" : "", $c;
-		}
-	print "</td> </tr>\n";
+	push(@table, [
+		&ui_select("cat_$i", $cats[$i]->{'value'},
+			   [ [ "", "&nbsp;" ], @cat_list ],
+			   1, 0, $cats[$i]->{'value'} ? 1 : 0),
+		join(" ", map { &ui_checkbox("cchan_$i", $_, $_, $cchan{$_}) }
+			      @channames)
+		]);
 	}
-print "</table></td> </tr>\n";
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value=\"$text{'save'}\"></form>\n";
+# Show the table
+print &ui_form_columns_table(
+	"save_logging.cgi",
+	[ [ undef, $text{'save'} ] ],
+	0,
+	undef,
+	[ [ 'mode', 'cats' ] ],
+	[ $text{'logging_cat'}, $text{'logging_cchans'} ],
+	100,
+	\@table,
+	undef,
+	1);
+
+print &ui_tabs_end_tab("mode", "cats");
+print &ui_tabs_end(1);
 
 &ui_print_footer("", $text{'index_return'});
 

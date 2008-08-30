@@ -506,6 +506,7 @@ logging_default2=Use the settings below ..
 logging_cats=Logging categories
 logging_cat=Category
 logging_cchans=Channels
+logging_catsdesc=This table controls which categories of messages are written to which logging channels, as defined on the other tab.
 logging_chans=Logging channels
 logging_cname=Channel name
 logging_to=Log to
