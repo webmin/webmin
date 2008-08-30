@@ -843,7 +843,8 @@ sub can_edit_reverse
 return $access{'reverse'} || &can_edit_zone($_[0]);
 }
 
-# record_input(zoneindex, view, type, file, origin, [num], [record])
+# record_input(zoneindex, view, type, file, origin, [num], [record],
+#	       [new-name, new-value])
 # Display a form for editing or creating a DNS record
 sub record_input
 {
@@ -855,16 +856,18 @@ print &ui_hidden("view", $_[1]);
 print &ui_hidden("file", $_[3]);
 print &ui_hidden("origin", $_[4]);
 print &ui_hidden("sort", $in{'sort'});
-if (@_ >= 6) {
+if (defined($_[5])) {
 	print &ui_hidden("num", $_[5]);
 	%rec = %{$_[6]};
 	}
 else {
 	print &ui_hidden("new", 1);
+	$rec{'name'} = $_[7] if ($_[7]);
+	$rec{'values'} = [ $_[8] ] if ($_[8]);
 	}
 print &ui_hidden("type", $type);
 print &ui_hidden("redirtype", $_[2]);
-print &ui_table_start(&text(@_ >= 6 ? 'edit_edit' : 'edit_add',
+print &ui_table_start(&text(defined($_[5]) ? 'edit_edit' : 'edit_add',
 			    $text{"edit_".$type}));
 
 # Record name field(s)
@@ -903,7 +906,7 @@ else {
 	}
 
 # Show canonical name too, if not auto-converted
-if ($config{'short_names'} && @_ > 6) {
+if ($config{'short_names'} && defined($_[5])) {
 	print &ui_table_row($text{'edit_canon'}, "<tt>$rec{'canon'}</tt>");
 	}
 
@@ -923,8 +926,9 @@ print &ui_table_row($text{'edit_ttl'},
 if ($type eq "A" || $type eq "AAAA") {
 	print &ui_table_row($text{'value_A1'},
 	    &ui_textbox("value0", $v[0], 20)." ".
-	    (@_ < 6 && $type eq "A" ? &free_address_button("value0") : ""), 3);
-	if (@_ >= 6) {
+	    (!defined($_[5]) && $type eq "A" ?
+	     &free_address_button("value0") : ""), 3);
+	if (defined($_[5])) {
 		print &ui_hidden("oldname", $rec{'name'});
 		print &ui_hidden("oldvalue0", $v[0]);
 		}
@@ -977,7 +981,7 @@ elsif ($type eq "PTR") {
 	# Reverse address
 	print &ui_table_row($text{'value_PTR1'},
 		&ui_textbox("value0", $v[0], 30), 3);
-	if (@_ >= 6) {
+	if (defined($_[5])) {
 		print &ui_hidden("oldname", $rec{'name'});
 		print &ui_hidden("oldvalue0", $v[0]);
 		}
@@ -1071,7 +1075,7 @@ if ($type eq "A" || $type eq "AAAA") {
 		&ui_radio("rev", $config{'rev_def'} == 0 ? 1 :
 				 $config{'rev_def'} == 2 ? 2 : 0,
 		   [ [ 1, $text{'yes'} ],
-		     @_ < 6 ? ( [ 2, $text{'edit_over'} ] ) : ( ),
+		     defined($_[5]) ? ( ) : ( [ 2, $text{'edit_over'} ] ),
 		     [ 0, $text{'no'} ] ]));
 	}
 elsif ($type eq "PTR") {
@@ -1084,7 +1088,7 @@ print &ui_table_end();
 
 # End buttons
 if (!$access{'ro'}) {
-	if (@_ >= 6) {
+	if (defined($_[5])) {
 		print &ui_form_end([ [ undef, $text{'save'} ],
 				     [ "delete", $text{'delete'} ] ]);
 		}

@@ -20,3 +20,4 @@ gen=1
 vlist=*
 delegation=1
 slaves=1
+findfree=1

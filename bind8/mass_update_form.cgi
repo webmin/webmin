@@ -7,7 +7,7 @@ require './bind8-lib.pl';
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'umass_enone'});
 
-&ui_print_header(undef, $text{'umass_title'}, "", [ "width=30%" ]);
+&ui_print_header(undef, $text{'umass_title'}, "");
 
 print &ui_form_start("mass_update.cgi", "post");
 foreach $d (@d) {

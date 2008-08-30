@@ -17,23 +17,10 @@ if (!$access{'findfree'}) {&error($text{'findfree_nofind'})};
 $desc = &text('findfree_header', &arpa_to_ip($dom));
 &ui_print_header($desc, &text('findfree_title'), "");
 
-my $cf=1;
-if (@in == 2) {
-	&find_ips ($in{'index'}, $in{'from'});
-}
-elsif (@in == 3) {
-	&find_ips ($in{'index'}, $in{'from'}, $in{'to'});
-}
-elsif (@in == 4) {
-	$cf=$in{'cf'};
-	&find_ips ($in{'index'}, $in{'from'}, $in{'to'}, $in{'cf'});
-}
-else {
-	&find_ips ($in{'index'});
-}
+&find_ips($in{'index'}, $in{'from'}, $in{'to'}, $in{'cf'});
 
-if (@in >= 3) { #we need to do the search!
-
+if ($in{'from'} && $in{'to'}) {
+   # Do the search
    @recs = &read_zone_file($file, $dom);
    @recs = grep { ($_->{'type'} eq 'A') || ($_->{'type'} eq 'PTR')} @recs;
    my $freeXXXcount=0;
@@ -57,7 +44,7 @@ if (@in >= 3) { #we need to do the search!
 		
 #	print "evaluating ", $hip, " ", $hname, "...<BR>"; #debug
 		
-		if($cf & ($hname=~ /^free.*/) & exists $frecs{$hip}) {	# 'freeXXX' hostnames are free IP's!
+		if($in{'cf'} & ($hname=~ /^free.*/) & exists $frecs{$hip}) {	# 'freeXXX' hostnames are free IP's!
 			# update
 #	print "&nbsp;&nbsp;updating: ",$hip, "... <BR>"; #debug
 			$frecs{$hip}->{'ttl'}=$recs[$i]->{'ttl'};
@@ -72,23 +59,16 @@ if (@in >= 3) { #we need to do the search!
 	}
 	
 	
-
+        # Show a message
 	my @frecs=sort ffree_ip_sort_func values %frecs; 
-	my $mid = int((@frecs+1)/2);
-	print "<P align = \"center\"><STRONG>Found <BIG>" . @frecs . "</BIG> free IP number" . (@frecs==1?"\n":"s\n");
-	if ($cf) {
-		print " (<BIG>$freeXXXcount</BIG> ". ($freeXXXcount==1?" is":"are") .
-				" <EM>`freeXXX'</EM>" .
-				" of which <BIG>$freemaccount</BIG> ". ($freemaccount==1?" is":"are") . 
-				" <EM>`freemac'</EM>)" ;
-	print "</STRONG></P>\n";
-	}
-	print "<table width=100%><tr><td width=50% valign=top>\n";
-	&frecs_table(@frecs[0 .. $mid-1]);
-	print "</td><td width=50% valign=top>\n";
-	if ($mid < @frecs) { &frecs_table(@frecs[$mid .. $#frecs]); }
-	print "</td></tr></table><p>\n";
-	print "<p>\n";
+	print "<b>",&text('findfree_msg', scalar(@frecs)),"\n";
+	if ($in{'cf'}) {
+		print &text('findfree_msg2', $freeXXXcount, $freemaccount),"\n";
+		}
+	print "...</b><p>\n";
+
+	# Show all the IPs
+	&frecs_table(@frecs);
 
     } # if(@recs)
 } # if(@in >= 3)
@@ -139,90 +119,39 @@ for ($byte0=$from[0]; $byte0<=$to[0]; $byte0++) {
 return %frecs;
 } # sub build_iprange
 
-
-
-
-
-
-
-
-
-
-
-
 # find_ips (zoneindex, from_ip, to_ip, consider_freeXX_names)
 # Display a form for searching for free IP nos
 sub find_ips
 {
-print "<form action=find_free.cgi>\n";
-print "<input type=hidden name=index value='$_[0]'>\n";
-print "<input type=hidden name=view value='$in{'view'}'>\n";
+print &ui_form_start("find_free.cgi");
+print &ui_hidden("index", $_[0]);
+print &ui_hidden("view", $in{'view'});
+print &ui_table_start($text{'findfree_sopt'}, undef, 2);
 
-print "<table border>\n";
-print "<tr $tb><td><b>$text{'findfree_sopt'}</b></td> </tr>\n";
-print "<tr $cb><td><table>\n";
+# Range start
+print &ui_table_row($text{'findfree_fromip'},
+	&ui_textbox("from", $_[1], 20));
 
-print "<tr> <td><b>$text{'findfree_IPrange'}</b></td>\n";
-print "<td><b>$text{'findfree_from'}</b></td>\n";
-if (@_ >= 2) { # there is a "from" field on the URL
-	print "<td> <input name=from value=\"$_[1]\" size=30></td> </tr>\n";
-	}
-else {
-	print "<td> <input name=from value=\"\" size=30></td> </tr>\n";
-	}
+# Range end
+print &ui_table_row($text{'findfree_toip'},
+	&ui_textbox("to", $_[2], 20));
 
-print "<tr> <td>&nbsp;</td>\n";
-print "<td><b>$text{'findfree_to'}</b></td>\n";
-if (@_ >= 3) { # there is a "to" field on the URL
-	print "<td> <input name=to value=\"$_[2]\" size=30></td> </tr>\n";
-	}
-else {
-	print "<td> <input name=to value=\"\" size=30></td> </tr>\n";
-	}
+# Handle freeXXX hostnames?
+print &ui_table_row($text{'findfree_cf'},
+	&ui_yesno_radio("cf", $_[3]));
 
-print "<tr> <td colspan=3 nowrap><b>$text{'findfree_cf'}</b>\n";
-
-$cfy=$cf?'checked':'';
-$cfn=(!$cf)?'checked':'';
-
-print " &nbsp; <input type=radio name=cf value=1 $cfy> $text{'yes'}\n";
-print "<input type=radio name=cf value=0 $cfn> $text{'no'}</td></tr>\n";
-
-print "<tr colspan=3><td><input type=submit value=\"$text{'findfree_search'}\"></td></tr>\n";
-print "</table></td></tr></table></form>\n";
-
-} #	end of find_ips
-
-
-
-
-
-
-
-
-
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'findfree_search'} ] ]);
+}
 
 # frecs_table(array_of_freerecords)
 sub frecs_table
 {
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>", $text{'recs_addr'},"</b></td>",
-	"<td><b>$text{'recs_ttl'}</b></td>\n",
-	"<td><b>$text{'recs_name'}</b></td>\n",
-	"</tr>\n";
-
-for($i=0; $i<@_; $i++) {
-	$r = $_[$i];
-	print "<tr $cb> <td>$r->{'ip'}</td>\n",
-	"<td>",$r->{'ttl'} ? $r->{'ttl'} : $text{'default'},"</td>\n",
-	"<td>",$r->{'name'}?$r->{'name'}:'&nbsp;',"</td>\n",
-	"</tr>\n";
-	}
-	print "</table>\n";
+print &ui_grid_table(
+	[ map { "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}".
+		"&type=A&newvalue=$_->{'ip'}'>$_->{'ip'}</a>" } @_ ],
+	4, 100, [ "width=25%", "width=25%", "width=25%", "width=25%" ]);
 }
-
-
-
 
 sub ffree_ip_sort_func
 {

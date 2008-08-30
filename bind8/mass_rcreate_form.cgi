@@ -7,14 +7,14 @@ require './bind8-lib.pl';
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'rmass_enone'});
 
-&ui_print_header(undef, $text{'umass_title'}, "", [ "width=30%" ]);
+&ui_print_header(undef, $text{'rmass_title'}, "");
 
 print &ui_form_start("mass_rcreate.cgi", "post");
 foreach $d (@d) {
 	print &ui_hidden("d", $d),"\n";
 	$dc++;
 	}
-print &ui_table_start($text{'rmass_header'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'rmass_header'}, undef, 2);
 
 # Number of domains selected
 print &ui_table_row($text{'umass_sel'}, $dc);

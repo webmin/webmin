@@ -679,11 +679,12 @@ findfree_desc=Find Free IPs
 findfree_nofind=You cannot look for free IP's
 findfree_header=In $1
 findfree_sopt=Search options
-findfree_IPrange=IP range
-findfree_from=from
-findfree_to=to
-findfree_cf=Consider <em>`freeXXX'</em> hostnames as free IP's?
+findfree_fromip=From IP address
+findfree_toip=To IP address
+findfree_cf=Consider <em>`freeXXX'</em> hostnames as free IPs?
 findfree_search=Search
+findfree_msg=Found $1 free IP addresses
+findfree_msg2=(of which $1 are like <i>freeXXX</i>, $2 like <i>freemac</i>)
 
 free_title=Free IP Addresses
 free_ip=IP Address
