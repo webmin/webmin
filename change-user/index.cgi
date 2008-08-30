@@ -14,28 +14,23 @@ push(@can, 'pass') if ($access{'pass'} && &can_change_pass($user));
 $can = &text('index_d'.scalar(@can), map { $text{'index_d'.$_} } @can);
 print &text('index_desc2', $can),"<p>\n";
 
-print "<form action=change.cgi method=post>\n";
-print "<table>\n";
+print &ui_form_start("change.cgi", "post");
+print &ui_table_start(undef, undef, 2);
 
 if ($access{'lang'}) {
 	# Show personal language
 	@langs = &list_languages();
 	$glang = $gconfig{"lang"} || $default_lang;
 	($linfo) = grep { $_->{'lang'} eq $glang } @langs;
-	print "<tr> <td valign=top><b>$text{'index_lang'}</b></td> <td>\n";
-	printf "<input type=radio name=lang_def value=1 %s> %s<br>\n",
-		$user->{'lang'} ? "" : "checked",
-		&text('index_langglobal', $linfo->{'desc'});
-	printf "<input type=radio name=lang_def value=0 %s> %s\n",
-		$user->{'lang'} ? "checked" : "", $text{'index_langset'};
-	print "<select name=lang>\n";
-	foreach $l (&list_languages()) {
-		printf "<option value=%s %s>%s (%s)\n",
-			$l->{'lang'},
-			$user->{'lang'} eq $l->{'lang'} ? 'selected' : '',
-			$l->{'desc'}, uc($l->{'lang'});
-		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'index_lang'},
+		&ui_radio("lang_def", $user->{'lang'} ? 0 : 1,
+			  [ [ 1, &text('index_langglobal',
+				       $linfo->{'desc'})."<br>" ],
+			    [ 0, $text{'index_langset'} ] ])." ".
+		&ui_select("lang", $user->{'lang'},
+			   [ map { [ $_->{'lang'},
+				     $_->{'desc'}." (".uc($_->{'lang'}).")" ] }
+			         &list_languages() ]));
 	}
 
 if ($access{'theme'}) {
@@ -47,33 +42,27 @@ if ($access{'theme'}) {
 	else {
 		$tname = $text{'index_themedef'};
 		}
-	print "<tr> <td valign=top><b>$text{'index_theme'}</b></td> <td>\n";
-	printf "<input type=radio name=theme_def value=1 %s> %s<br>\n",
-		defined($user->{'theme'}) ? "" : "checked",
-		&text('index_themeglobal', $tname);
-	printf "<input type=radio name=theme_def value=0 %s> %s\n",
-		defined($user->{'theme'}) ? "checked" : "", $text{'index_themeset'};
-	print "<select name=theme>\n";
-	foreach $t ( { 'desc' => $text{'index_themedef'} }, &webmin::list_themes() ) {
-		printf "<option value='%s' %s>%s\n",
-		  $t->{'dir'}, $user->{'theme'} eq $t->{'dir'} ? 'selected' : '',
-		  $t->{'desc'};
-		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row($text{'index_theme'},
+		&ui_radio("theme_def", defined($user->{'theme'}) ? 0 : 1,
+			  [ [ 1, &text('index_themeglobal', $tname)."<br>" ],
+			    [ 0, $text{'index_themeset'} ] ])." ".
+		&ui_select("theme", $user->{'theme'},
+			[ [ '', $text{'index_themedef'} ],
+			  map { [ $_->{'dir'}, $_->{'desc'} ] }
+			      &webmin::list_themes() ]));
 	}
 
 if ($access{'pass'} && &can_change_pass($user)) {
 	# Show password
-	print "<tr> <td valign=top><b>$text{'index_pass'}</b></td> <td>\n";
-	printf "<input type=radio name=pass_def value=1 %s> %s<br>\n",
-		"checked", $text{'index_passleave'};
-	printf "<input type=radio name=pass_def value=0 %s> %s\n",
-		"", $text{'index_passset'};
-	print "<input type=password name=pass size=20></td> </tr>\n";
+	print &ui_table_row($text{'index_pass'},
+		&ui_radio("pass_def", 1,
+			  [ [ 1, $text{'index_passleave'}."<br>" ],
+			    [ 0, $text{'index_passset'} ] ])." ".
+		&ui_password("pass", undef, 20));
 	}
 
-print "</table>\n";
-print "<input type=submit value='$text{'index_ok'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'index_ok'} ] ]);
 
 &ui_print_footer("/", $text{'index'});
 

@@ -1,2 +1,2 @@
----- Changes since 1.150 ----
-
+---- Changes since 1.430 ----
+Converted the UI to use the new Webmin user interface functions, for a more consistent look.
