@@ -88,6 +88,7 @@ master_update=Allow updates from..
 master_transfer=Allow transfers from..
 master_query=Allow queries from..
 master_notify2=Also notify slaves..
+master_notify3=Allow notifications from ..
 master_type=Type
 master_records=Records
 master_return=record types
@@ -746,6 +747,7 @@ whois_ecannot=You are not allowed to lookup WHOIS information
 
 view_title=Edit Client View
 view_opts=Client view details
+view_opts2=Options for zones in view
 view_name=View name
 view_class=DNS records class
 view_match=Apply this view to clients

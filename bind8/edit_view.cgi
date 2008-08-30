@@ -15,7 +15,8 @@ $access{'views'} || &error($text{'view_ecannot'});
 # Form header
 print &ui_form_start("save_view.cgi");
 print &ui_hidden("index", $in{'index'});
-print &ui_table_start($text{'view_opts'}, "width=100%", 4);
+print &ui_table_start($text{'view_opts'}, "width=100%", 4,
+		      [ "width=30%", undef, "width=30%", undef ]);
 
 # View name
 @v = @{$view->{'values'}};
@@ -29,6 +30,18 @@ print &addr_match_input($text{'view_match'}, "match-clients", $vconf);
 print &choice_input($text{'view_recursion'}, 'recursion', $vconf,
 		    $text{'yes'}, 'yes', $text{'no'}, 'no',
 		    $text{'default'}, undef);
+
+print &ui_table_end();
+
+# Options for zones in view
+print &ui_table_start($text{'view_opts2'}, "width=100%", 4,
+		      [ "width=30%", undef, "width=30%", undef ]);
+
+print &address_input($text{'master_transfer'}, "allow-transfer", $vconf);
+print &address_input($text{'master_query'}, "allow-query", $vconf);
+
+print &address_input($text{'master_notify2'}, "also-notify", $vconf);
+print &address_input($text{'master_notify3'}, "allow-notify", $vconf);
 
 print &ui_table_end();
 
