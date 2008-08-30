@@ -8,7 +8,7 @@ $access{'export'} || &error($text{'export_ecannot'});
 
 print "$text{'export_desc'}<p>\n";
 print &ui_form_start("export_exec.cgi");
-print &ui_table_start(undef, undef, 2);
+print &ui_table_start($text{'export_header'}, undef, 2);
 
 # Destination
 if ($access{'export'} == 2) {

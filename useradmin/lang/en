@@ -422,6 +422,7 @@ who_none=No users are currently logged in.
 
 export_title=Export Batch File
 export_desc=This form allows you to create a batch file containing some or all of the available users on the system. The file can be used on the Export Batch File page on another system to re-create the exported users, assuming that it uses the selected batch file format.
+export_header=Batch user export options
 export_to=Batch file destination
 export_show=Display in browser
 export_file=Write to file
