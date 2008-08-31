@@ -1119,11 +1119,13 @@ if ($userconfig{'delete_mode'} == 1 && !$f->{'trash'} && !$f->{'spam'} &&
 	# Copy to trash folder first .. if we have one
 	local ($trash) = grep { $_->{'trash'} } &list_folders();
 	if ($trash) {
+		my $r;
+		my $save_read = &get_product_name() eq "usermin";
 		foreach my $m (@_) {
-			my $r = &get_mail_read($f, $m);
+			$r = &get_mail_read($f, $m) if ($save_read);
 			my $mcopy = { %$m };	  # Because writing changes id
 			&write_mail_folder($mcopy, $trash);
-			&set_mail_read($trash, $mcopy, $r);
+			&set_mail_read($trash, $mcopy, $r) if ($save_read);
 			}
 		}
 	}
@@ -1371,11 +1373,13 @@ elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 3) {
 else {
 	# Append to new folder file, or create in folder directory
 	my @mdel;
+	my $r;
+	my $save_read = &get_product_name() eq "usermin";
 	foreach my $m (@_) {
-		my $r = &get_mail_read($src, $m);
+		$r = &get_mail_read($src, $m) if ($save_read);
 		my $mcopy = { %$m };
 		&write_mail_folder($mcopy, $dst);
-		&set_mail_read($dst, $mcopy, $r);
+		&set_mail_read($dst, $mcopy, $r) if ($save_read);
 		push(@mdel, $m);
 		}
 	local $src->{'notrash'} = 1;	# Prevent saving to trash
@@ -1481,12 +1485,15 @@ elsif ($dst->{'type'} == 6) {
 	&save_folder($dst);
 	}
 else {
-	# Just write to destination folder
+	# Just write to destination folder. The read status is preserved, but
+	# only if in Usermin.
+	my $r;
+	my $save_read = &get_product_name() eq "usermin";
 	foreach my $m (@_) {
-		my $r = &get_mail_read($src, $m);
+		$r = &get_mail_read($src, $m) if ($save_read);
 		my $mcopy = { %$m };
 		&write_mail_folder($mcopy, $dst);
-		&set_mail_read($dst, $mcopy, $r);
+		&set_mail_read($dst, $mcopy, $r) if ($save_read);
 		}
 	}
 }
