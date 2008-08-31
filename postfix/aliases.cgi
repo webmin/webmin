@@ -25,33 +25,23 @@ $access{'aliases'} || &error($text{'aliases_ecannot'});
 
 
 # alias general options
+print "$text{'aliases_warning'}<p>\n";
+print &ui_form_start("save_opts_aliases.cgi");
+print &ui_table_start($text{'aliasopts_title'}, "width=100%", 2);
 
-print "<form action=save_opts_aliases.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'aliasopts_title'}</b></td></tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-
+# Aliases file
 $none = $text{'opts_none'};
-
-print "<tr>\n";
 &option_mapfield("alias_maps", 60, $none);
-print "</tr>\n";
 
-print "<tr>\n";
+# Aliases DB?
 &option_mapfield("alias_database", 60, $none);
-print "</tr>\n";
 
-print "</table></td></tr></table><p>\n";
-print "$text{'aliases_warning'}<p><br>\n";
-print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 print &ui_hr();
-print "<br>\n";
-
-
 
 
 # double-table displaying all aliases
-
 my @aliases = &list_postfix_aliases();
 if ($config{'sort_mode'} == 1) {
 	@aliases = sort { lc($a->{'name'}) cmp lc($b->{'name'}) }
@@ -71,48 +61,45 @@ for($mid=0; $mid<@aliases && $aline[$mid] < $midline; $mid++) { }
 # render tables
 print &ui_form_start("delete_aliases.cgi", "post");
 @links = ( &select_all_link("d", 1),
-	   &select_invert_link("d", 1) );
+	   &select_invert_link("d", 1),
+	   "<a href='edit_alias.cgi?new=1'>$text{'new_alias'}</a>",
+	 );
 print &ui_links_row(\@links);
 if ($config{'columns'} == 2) {
-	print "<table width=100%> <tr><td width=50% valign=top>\n";
-	&aliases_table(@aliases[0..$mid-1]);
-	print "</td><td width=50% valign=top>\n";
-	if ($mid < @aliases) { &aliases_table(@aliases[$mid..$#aliases]); }
-	print "</td></tr> </table>\n";
+	@grid = ( );
+	push(@grid, &aliases_table(@aliases[0..$mid-1]));
+	if ($mid < @aliases) {
+		push(@grid, &aliases_table(@aliases[$mid..$#aliases]));
+		}
+	print &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
 	}
 else {
-	&aliases_table(@aliases);
+	print &aliases_table(@aliases);
 	}
 print &ui_links_row(\@links);
 print &ui_form_end([ [ "delete", $text{'aliases_delete'} ] ]);
 
-# new alias button
-print &ui_buttons_start();
-print &ui_buttons_row("edit_alias.cgi", $text{'new_alias'},
-		      $text{'new_aliasmsg'},
-		      &ui_hidden("new", 1));
-
 # manual edit button
 if ($access{'manual'} && &can_map_manual($_[0])) {
+    print &ui_hr();
+    print &ui_buttons_start();
     print &ui_buttons_row("edit_manual.cgi", $text{'new_manual'},
 			  $text{'new_manualmsg'},
 			  &ui_hidden("map_name", "alias_maps"));
+    print &ui_buttons_end();
     }
-
-print &ui_buttons_end();
 
 &ui_print_footer("", $text{'index_return'});
 
+# aliases_table(&alias, ...)
+# Returns a table of aliases
 sub aliases_table
 {
-local @tds = ( "width=5", "valign=top", "valign=top" );
-print &ui_columns_start([ "",
-			  $text{'aliases_addr'},
-			  $text{'aliases_to'},
-			  $config{'show_cmts'} ? ( $text{'mapping_cmt'} )
-					       : ( ) ], 100, 0, \@tds);
-foreach $a (@_) {
-	local @cols;
+my @table;
+foreach my $a (@_) {
+	my @cols;
+	push(@cols, { 'type' => 'checkbox', 'name' => 'd',
+		      'value' => $a->{'name'} });
 	push(@cols, "<a href=\"edit_alias.cgi?num=$a->{'num'}\">".
 	      ($a->{'enabled'} ? "" : "<i>").&html_escape($a->{'name'}).
 	      ($a->{'enabled'} ? "" : "</i>")."</a>");
@@ -125,8 +112,12 @@ foreach $a (@_) {
 	$vstr ||= "<i>$text{'aliases_none'}</i>\n";
 	push(@cols, $vstr);
 	push(@cols, &html_escape($a->{'cmt'})) if ($config{'show_cmts'});
-	print &ui_checked_columns_row(\@cols, \@tds, "d", $a->{'name'});
+	push(@table, \@cols);
 	}
-print &ui_columns_end();
+
+return &ui_columns_table(
+	[ '', $text{'aliases_addr'}, $text{'aliases_to'},
+	  $config{'show_cmts'} ? ( $text{'mapping_cmt'} ) : ( ) ],
+	100, \@table);
 }
 
