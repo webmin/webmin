@@ -858,6 +858,9 @@ sub generate_map_edit
     my $nt = $_[3] || $text{'mapping_name'};
     my $vt = $_[4] || $text{'mapping_value'};
 
+    local @links = ( "<a href='edit_mapping.cgi?map_name=$_[0]'>".
+		      $text{'new_mapping'}."</a>",);
+
     if ($#{$mappings} ne -1)
     {
         # Map description
@@ -888,11 +891,8 @@ sub generate_map_edit
 	# Start of the overall form
 	print &ui_form_start("delete_mappings.cgi", "post");
 	print &ui_hidden("map_name", $_[0]),"\n";
-	local @links = ( &select_all_link("d", 1),
-			 &select_invert_link("d", 1),
-			 "<a href='edit_mapping.cgi?map_name=$_[0]'>".
-			  $text{'new_mapping'}."</a>",
-		       );
+	unshift(@links, &select_all_link("d", 1),
+			&select_invert_link("d", 1));
 	print &ui_links_row(\@links);
 
 	my @grid;
@@ -931,6 +931,11 @@ sub generate_map_edit
  	# Main form end
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'mapping_delete'} ] ]);
+    }
+    else {
+        # None, so just show edit link
+        print "<b>$text{'mapping_none'}</b><p>\n";
+        print &ui_links_row(\@links);
     }
 
     # Manual edit button

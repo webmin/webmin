@@ -21,7 +21,7 @@ require './postfix-lib.pl';
 
 
 my $first_line = $text{'map_click'}." ".
-                 "<font size=\"-1\">".&hlink("$text{'help_map_format'}", "canonical")."</font>\n<br>\n";
+                 &hlink($text{'help_map_format'}, "canonical");
 
 if ($in{'which1'})
 { 

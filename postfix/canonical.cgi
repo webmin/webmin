@@ -22,45 +22,28 @@ require './postfix-lib.pl';
 $access{'canonical'} || &error($text{'canonical_ecannot'});
 &ui_print_header(undef, $text{'canonical_title'}, "", "canonical");
 
-
-
-# alias general options
-
-print "<form action=save_opts_canonical.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'canonical_title'}</b></td></tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of canonical maps form
+print &ui_form_start("save_opts_canonical.cgi");
+print &ui_table_start($text{'canonical_title'}, "width=100%", 2);
 
 $none = $text{'opts_none'};
-
-print "<tr>\n";
 &option_mapfield("canonical_maps", 60, $none);
-print "</tr>\n";
 
-print "<tr>\n";
 &option_mapfield("recipient_canonical_maps", 60, $none);
-print "</tr>\n";
 
-print "<tr>\n";
 &option_mapfield("sender_canonical_maps", 60, $none);
-print "</tr>\n";
 
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
-
-print "</table></td></tr></table><p>\n";
-print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
+# Buttons to edit the three map types
 print &ui_hr();
 
-print "<br>\n";
-
-print "<table cellpadding=5 width=100%><tr><td>\n";
-print "<form action=canonical_edit.cgi>\n";
-print "$text{'edit_canonical_maps_general'}:</td></tr><tr><td>\n";
-print "<input type=submit name=which1 value=\"$text{'edit_canonical_maps'}\">\n";
-print "<input type=submit name=which2 value=\"$text{'edit_recipient_canonical_maps'}\">\n";
-print "<input type=submit name=which3 value=\"$text{'edit_sender_canonical_maps'}\">\n";
-print "</td></tr></table></form>\n";
-
-
+print &ui_form_start("canonical_edit.cgi");
+print "$text{'edit_canonical_maps_general'}<p>\n";
+print &ui_submit($text{'edit_canonical_maps'}, "which1");
+print &ui_submit($text{'edit_recipient_canonical_maps'}, "which2");
+print &ui_submit($text{'edit_sender_canonical_maps'}, "which3");
+print &ui_form_end();
 
 &ui_print_footer("", $text{'index_return'});
