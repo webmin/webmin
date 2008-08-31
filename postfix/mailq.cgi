@@ -57,26 +57,21 @@ if (@qfiles) {
 	&mailq_table([ @qfiles[$s .. $e] ]);
 
 	# Show queue search form
-	print "<form action=mailq_search.cgi>\n";
+	print &ui_form_start("mailq_search.cgi");
 	print "<b>$text{'mailq_search'}</b>\n";
-	print "<select name=field>\n";
-	foreach $f ('from', 'to', 'date', 'size', '',
-	    	    '!from', '!to', '!date', '!size') {
-		printf "<option value='%s'>%s\n", $f, $text{"match_$f"};
-		}
-	print "</select>\n";
-	print "<input name=match size=20>\n";
-	print "&nbsp;<input type=submit value='$text{'mail_ok'}'>\n";
-	print "</form><p>\n";
+	print &ui_select("field", "from",
+		[ map { [ $_, $text{'match_'.$_} ] }
+		    ('from', 'to', 'date', 'size', '',
+		     '!from', '!to', '!date', '!size') ]);
+	print &ui_textbox("match", undef, 40);
+	print &ui_submit($text{'mail_ok'});
+	print &ui_form_end();
 
 	# Show flush button, if the needed command is installed
 	if (&has_command($config{'postfix_queue_command'})) {
 		print &ui_hr();
-		print "<table width=100%><tr><form action=flushq.cgi>\n";
-		print "<td><input type=submit ",
-		      "value='$text{'mailq_flush'}'></td>\n";
-		print "<td>$text{'mailq_flushdesc'}</td>\n";
-		print "</form></tr></table>\n";
+		print &ui_buttons_row("flushq.cgi", $text{'mailq_flush'},
+				      $text{'mailq_flushdesc'});
 		}
 	}
 else {

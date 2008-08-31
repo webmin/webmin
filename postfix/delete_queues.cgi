@@ -51,14 +51,11 @@ else {
 	else {
 		# Ask for confirmation
 		&ui_print_header(undef, $text{'delq_titles'}, "");
-		print "<center>\n";
-		print &ui_form_start("delete_queues.cgi", "post");
-		print &text('delq_rusure', scalar(@files)),"<p>\n";
-		foreach $f (@files) {
-			print &ui_hidden("file", $f),"\n";
-			}
-		print &ui_form_end([ [ "confirm", $text{'delq_confirm'} ] ]);
-		print "</center>\n";
+		print &ui_confirmation_form("delete_queues.cgi",
+			&text('delq_rusure', scalar(@files)),
+			[ map { [ 'f', $_ ] } @files ],
+			[ [ 'confirm', $text{'delq_confirm'} ] ],
+			);
 		&ui_print_footer("mailq.cgi", $text{'mailq_return'});
 		exit;
 		}

@@ -1622,24 +1622,12 @@ sub mailq_table
 {
 local ($qfiles) = @_;
 
-# Show queued messages
-print "<form action=delete_queues.cgi method=post>\n";
-local @links = ( &select_all_link("file", 0),
-		 &select_invert_link("file", 0) );
-print &ui_links_row(\@links);
-
-# Table header
-local @tds = ( "width=5" );
-print &ui_columns_start([
-	"",
-	$text{'mailq_id'},
-	$text{'mailq_date'},
-	$text{'mailq_from'},
-	$text{'mailq_to'},
-	$text{'mailq_size'},
-	$text{'mailq_status'} ], 100, 0, \@tds);
+# Build table data
+my @table;
 foreach my $q (@$qfiles) {
 	local @cols;
+	push(@cols, { 'type' => 'checkbox', 'name' => 'file',
+		      'value' => $q->{'id'} });
 	push(@cols, "<a href='view_mailq.cgi?id=$q->{'id'}'>$q->{'id'}</a>");
 	local $size = &nice_size($q->{'size'});
 	push(@cols, "<font size=1>$q->{'date'}</font>");
@@ -1647,24 +1635,23 @@ foreach my $q (@$qfiles) {
 	push(@cols, "<font size=1>".&html_escape($q->{'to'})."</font>");
 	push(@cols, "<font size=1>$size</font>");
 	push(@cols, "<font size=1>".&html_escape($q->{'status'})."</font>");
-	print &ui_checked_columns_row(\@cols, \@tds, "file", $q->{'id'});
+	push(@table, \@cols);
 	}
-print &ui_columns_end();
-print &ui_links_row(\@links);
-print "<input type=submit value='$text{'mailq_delete'}'>\n";
-if ($postfix_version >= 1.1) {
-	# Show button to re-queue
-	print "&nbsp;\n";
-	print &ui_submit($text{'mailq_move'}, "move");
-	}
-if ($postfix_version >= 2) {
-	# Show button to hold and un-hold
-	print "&nbsp;\n";
-	print &ui_submit($text{'mailq_hold'}, "hold");
-	print &ui_submit($text{'mailq_unhold'}, "unhold");
-	}
-print "<p>\n";
-print "</form>\n";
+
+# Show the table and form
+print &ui_form_columns_table("delete_queues.cgi",
+	[ [ undef, $text{'mailq_delete'} ],
+	  $postfix_version >= 1.1 ? ( [ 'move', $text{'mailq_move'} ] ) : ( ),
+	  $postfix_version >= 2 ? ( [ 'hold', $text{'mailq_hold'} ],
+				    [ 'unhold', $text{'mailq_unhold'} ] ) : ( ),
+	],
+	1,
+	undef,
+	undef,
+	[ "", $text{'mailq_id'}, $text{'mailq_date'}, $text{'mailq_from'},
+          $text{'mailq_to'}, $text{'mailq_size'}, $text{'mailq_status'} ],
+	100,
+	\@table);
 }
 
 # is_table_comment(line, [force-prefix])
