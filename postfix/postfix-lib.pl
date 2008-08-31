@@ -303,14 +303,11 @@ sub option_radios_freefield
     my $check_free_field = 1;
     
     my $help = -r &help_file($module_name, "opt_".$name) ?
-		&hlink("<b>$text{$key}</b>", "opt_".$name) :
-		"<b>$text{$key}</b>";
-    printf "<td>$help</td> <td %s nowrap>\n",
-	    $length > 20 ? "colspan=3" : "";
+		&hlink($text{$key}, "opt_".$name) : $text{$key};
+    my $rv;
 
     # first radio button (must be default value!!)
-    
-    print &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
+    $rv .= &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
 		       $_[2], &if_default_value($name));
 
     $check_free_field = 0 if &if_default_value($name);
@@ -319,17 +316,17 @@ sub option_radios_freefield
     # other radio buttons
     while (defined($_[2]))
     {
-	print &ui_oneradio($name."_def", $_[2], $_[3], $v eq $_[2]);
+	$rv .= &ui_oneradio($name."_def", $_[2], $_[3], $v eq $_[2]);
 	if ($v eq $_[2]) { $check_free_field = 0; }
 	shift;
 	shift;
     }
 
     # the free field
-    print &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
+    $rv .= &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
 		       $check_free_field == 1);
-    print &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
-    print "</td>\n";
+    $rv .= &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
+    print &ui_table_row($help, $rv, $length > 20 ? 3 : 1);
 }
 
 # option_mapfield(name_of_option, length_of_free_field, defaulttext)
@@ -344,23 +341,20 @@ sub option_mapfield
     my $check_free_field = 1;
     
     my $help = -r &help_file($module_name, "opt_".$name) ?
-		&hlink("<b>$text{$key}</b>", "opt_".$name) :
-		"<b>$text{$key}</b>";
-    printf "<td>$help</td> <td %s nowrap>\n",
-	    $length > 20 ? "colspan=3" : "";
-
-    print &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
+		&hlink($text{$key}, "opt_".$name) : $text{$key};
+    my $rv;
+    $rv .= &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
 		       $_[2], &if_default_value($name));
 
     $check_free_field = 0 if &if_default_value($name);
     shift;
     
     # the free field
-    print &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
+    $rv .= &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
 		       $check_free_field == 1);
-    print &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
-    print &map_chooser_button($name, $name);
-    print "</td>\n";
+    $rv .= &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
+    $rv .= &map_chooser_button($name, $name);
+    print &ui_table_row($help, $rv, $length > 20 ? 3 : 1);
 }
 
 
@@ -833,6 +827,7 @@ sub get_maps
 
 
 # generate_map_edit(name, desc, [wide], [nametitle], [valuetitle])
+# Prints a table showing map contents, with links to edit and add
 sub generate_map_edit
 {
     # Check if map is set
@@ -865,23 +860,10 @@ sub generate_map_edit
 
     if ($#{$mappings} ne -1)
     {
-	print $_[1];
-	
-	print &ui_form_start("delete_mappings.cgi", "post");
-	print &ui_hidden("map_name", $_[0]),"\n";
-	local @links = ( &select_all_link("d", 1),
-			 &select_invert_link("d", 1) );
-	print &ui_links_row(\@links);
-	print "<table width=100%> <tr><td width=50% valign=top>\n";
-	
-	local @tds = ( "width=5" );
-	print &ui_columns_start(
-			[ "", $nt, $vt,
-			  $config{'show_cmts'} ? ( $text{'mapping_cmt'} ) : ( )
-			], 100, 0, \@tds);
-	my $split_index = int(($#{$mappings})/2);
-	my $i = -1;
-	
+        # Map description
+	print $_[1],"<p>\n";
+
+	# Sort the map
 	if ($config{'sort_mode'} == 1) {
 		if ($_[0] eq $virtual_maps) {
 			@{$mappings} = sort sort_by_domain @{$mappings};
@@ -891,46 +873,75 @@ sub generate_map_edit
 					    @{$mappings};
 			}
 		}
-	foreach $map (@{$mappings})
-	{
-	    local @cols = ( "<a href=\"edit_mapping.cgi?num=$map->{'number'}&map_name=$_[0]\">$map->{'name'}</a>",
-			    $map->{'value'} );
-	    push(@cols, &html_escape($map->{'cmt'})) if ($config{'show_cmts'});
-	    print &ui_checked_columns_row(\@cols, \@tds, "d", $map->{'name'});
-	    $i++;
-	    if ($i == $split_index && !$_[2] && $config{'columns'} == 2)
-	    {
-		# Switch to second table
-		print &ui_columns_end();
-		print "</td><td width=50% valign=top>\n";
-		if ($i == @$mappings -1) {
-			# No more to show!
-			print &ui_columns_start([ ]);
-			}
-		else {
-			print &ui_columns_start([ "", $nt, $vt ], 100, 0,\@tds);
-			}
-	    }
-	}
+
+	# Split into two columns, if needed
+	my @parts;
+	my $split_index = int(($#{$mappings})/2);
+	if ($config{'columns'} == 2) {
+		@parts = ( [ @{$mappings}[0 .. $split_index] ],
+			   [ @{$mappings}[$split_index+1 .. $#{$mappings} ] ] );
+		}
+	else {
+		@parts = ( $mappings );
+		}
 	
-	print &ui_columns_end();
-	print "</td></tr></table>\n";
+	# Start of the overall form
+	print &ui_form_start("delete_mappings.cgi", "post");
+	print &ui_hidden("map_name", $_[0]),"\n";
+	local @links = ( &select_all_link("d", 1),
+			 &select_invert_link("d", 1),
+			 "<a href='edit_mapping.cgi?map_name=$_[0]'>".
+			  $text{'new_mapping'}."</a>",
+		       );
+	print &ui_links_row(\@links);
+
+	my @grid;
+	foreach my $p (@parts) {
+		# Build one table
+		my @table;
+		foreach my $map (@$p) {
+			push(@table, [
+			    { 'type' => 'checkbox', 'name' => 'd',
+			      'value' => $map->{'name'} },
+			    "<a href=\"edit_mapping.cgi?num=$map->{'number'}&".
+			     "map_name=$_[0]\">".&html_escape($map->{'name'}).
+			     "</a>",
+			    &html_escape($map->{'value'}),
+			    $config{'show_cmts'} ?
+			     ( &html_escape($map->{'cmt'}) ) : ( ),
+			    ]);
+			}
+
+		# Add a table to the grid
+		push(@grid, &ui_columns_table(
+			[ "", $nt, $vt,
+                          $config{'show_cmts'} ? ( $text{'mapping_cmt'} ) : ( ),
+			],
+			100,
+			\@table));
+		}
+	if (@grid == 1) {
+		print $grid[0];
+		}
+	else {
+		print &ui_grid_table(\@grid, 2, 100,
+			[ "width=50%", "width=50%" ]);
+		}
+	
+ 	# Main form end
 	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'mapping_delete'} ] ]);
     }
 
-
-    # new form
-    print &ui_buttons_start();
-    print &ui_buttons_row("edit_mapping.cgi", $text{'new_mapping'},
-			  $text{'new_mappingmsg'},
-			  &ui_hidden("map_name", $_[0]));
+    # Manual edit button
     if ($access{'manual'} && &can_map_manual($_[0])) {
+	    print &ui_hr();
+	    print &ui_buttons_start();
 	    print &ui_buttons_row("edit_manual.cgi", $text{'new_manual'},
 				  $text{'new_manualmsg'},
 				  &ui_hidden("map_name", $_[0]));
+	    print &ui_buttons_end();
 	    }
-    print &ui_buttons_end();
 
 }
 
@@ -1699,13 +1710,13 @@ sub unlock_postfix_files
 &unlock_file($config{'postfix_master'});
 }
 
-# map_chooser_button(field, mapname, [form])
+# map_chooser_button(field, mapname)
 # Returns HTML for a button for popping up a map file chooser
 sub map_chooser_button
 {
-local ($name, $mapname, $form) = @_;
-$form ||= 0;
-return "<input type=button onClick='ifield = form.$name; map = window.open(\"map_chooser.cgi?map=\"+escape(ifield.value)+\"&mapname=$mapname\", \"map\", \"toolbar=no,menubar=no,scrollbars=yes,width=1024,height=600\"); map.ifield = ifield; window.ifield = ifield;' value=\"...\">\n";
+local ($name, $mapname) = @_;
+return &popup_window_button("map_chooser.cgi?mapname=$mapname", 1024, 600, 1,
+			    [ [ "ifield", $name, "map" ] ]);
 }
 
 # get_maps_types_files(value)
