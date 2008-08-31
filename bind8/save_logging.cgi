@@ -22,6 +22,7 @@ if ($in{'mode'} eq 'cats') {
 				  'members' =>
 					[ map { { 'name' => $_ } } @cchan ] });
 		}
+	@channel = &find("channel", $logging->{'members'}) if ($logging);
 	}
 else {
 	# Save channels
@@ -72,6 +73,7 @@ else {
 				 'type' => 1,
 				 'members' => \@mems } );
 		}
+	@category = &find("category", $logging->{'members'}) if ($logging);
 	}
 
 # Write out the logging section, creating if needed
