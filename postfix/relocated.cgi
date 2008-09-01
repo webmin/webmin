@@ -22,33 +22,27 @@ require './postfix-lib.pl';
 $access{'relocated'} || &error($text{'relocated_ecannot'});
 &ui_print_header(undef, $text{'relocated_title'}, "", "relocated");
 
-# alias general options
-
-print "<form action=save_opts_relocated.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'relocated_title'}</b></td></tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Relocated map form start
+print &ui_form_start("save_opts_relocated.cgi");
+print &ui_table_start($text{'relocated_title'}, "width=100%", 2);
 
 $none = $text{'opts_none'};
-
-print "<tr>\n";
 &option_mapfield("relocated_maps", 60, $none);
-print "</tr>\n";
 
-print "</table></td></tr></table><p>\n";
-print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
+
+# Map contents
 print &ui_hr();
-print "<br>\n";
-
-
 if (&get_current_value("relocated_maps") eq "")
 {
-    print ($text{'no_map'}."<br><br>");
+    print $text{'no_map'},"<p>\n";
 }
 else
 {
     &generate_map_edit("relocated_maps", $text{'map_click'}." ".
-		       "<font size=\"-1\">".&hlink("$text{'help_map_format'}", "relocated")."</font>\n<br>\n");
+		       &hlink($text{'help_map_format'}, "relocated"));
 }
 
 &ui_print_footer("", $text{'index_return'});
+

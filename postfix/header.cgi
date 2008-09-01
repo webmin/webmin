@@ -22,34 +22,26 @@ require './postfix-lib.pl';
 $access{'header'} || &error($text{'header_ecannot'});
 &ui_print_header(undef, $text{'header_title'}, "", "header");
 
-
-# alias general options
-
-print "<form action=save_opts_header.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'header_title'}</b></td></tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of header checks for
+print &ui_form_start("save_opts_header.cgi");
+print &ui_table_start($text{'header_title'}, "width=100%", 2);
 
 $none = $text{'opts_none'};
+&option_mapfield("header_checks", 60, $none);
 
-print "<tr>\n";
-&option_radios_freefield("header_checks", 60, $none);
-print "</tr>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
-print "</table></td></tr></table><p>\n";
-print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
+# Header map contents
 print &ui_hr();
-print "<br>\n";
-
-
 if (&get_current_value("header_checks") eq "")
 {
-    print ($text{'no_map'}."<br><br>");
+    print $text{'no_map'},"<p>\n";
 }
 else
 {
     &generate_map_edit("header_checks", $text{'map_click'}." ".
-		       "<font size=\"-1\">".&hlink("$text{'help_map_format'}", "header")."</font>\n<br>\n", 1,
+		       &hlink($text{'help_map_format'}, "header"), 1,
 		       $text{'header_name'}, $text{'header_value'});
 }
 

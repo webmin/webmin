@@ -22,35 +22,26 @@ require './postfix-lib.pl';
 $access{'transport'} || &error($text{'transport_ecannot'});
 &ui_print_header(undef, $text{'transport_title'}, "", "transport");
 
-
-
-# alias general options
-
-print "<form action=save_opts_transport.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'transport_title'}</b></td></tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of transport form
+print &ui_form_start("save_opts_transport.cgi");
+print &ui_table_start($text{'transport_title'}, "width=100%", 2);
 
 $none = $text{'opts_none'};
-
-print "<tr>\n";
 &option_mapfield("transport_maps", 60, $none);
-print "</tr>\n";
 
-print "</table></td></tr></table><p>\n";
-print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
+
+# Transport map contents
 print &ui_hr();
-print "<br>\n";
-
-
 if (&get_current_value("transport_maps") eq "")
 {
-    print ($text{'no_map'}."<br><br>");
+    print $text{'no_map'},"<p>\n";
 }
 else
 {
     &generate_map_edit("transport_maps", $text{'map_click'}." ".
-		       "<font size=\"-1\">".&hlink("$text{'help_map_format'}", "transport")."</font>\n<br>\n");
+		       &hlink($text{'help_map_format'}, "transport"));
 }
 
 &ui_print_footer("", $text{'index_return'});
