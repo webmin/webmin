@@ -302,13 +302,11 @@ if (defined($def)) {
 	if (defined($map)) {
 		return "$text{'default'} ($map->[1])";
 		}
-	else {
+	elsif ($def) {
 		return "$text{'default'} ($def)";
 		}
 	}
-else {
-	return $text{'default'};
-	}
+return $text{'default'};
 }
 
 # get_dovecot_version()

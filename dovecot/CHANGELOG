@@ -15,3 +15,5 @@ Supported newer versions of Dovecot which use mail_location instead of default_m
 ---- Changes since 1.410 ----
 The locking methods for mailboxes and index files can be configured on the Mail Files page.
 Added fields for setting the index and control files locations.
+---- Changes since 1.430 ----
+Added fields to the SSL page for an optional CA certificate file and private key password.

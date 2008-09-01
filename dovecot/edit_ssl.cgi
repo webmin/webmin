@@ -19,6 +19,19 @@ print &ui_table_row($text{'ssl_key'},
 	    &ui_opt_textbox("key", $key, 40, &getdef("ssl_key_file")), 3,
 	    [ undef, "nowrap" ]);
 
+# SSL key password
+$pass = &find_value("ssl_key_password", $conf);
+print &ui_table_row($text{'ssl_pass'},
+	    &ui_opt_textbox("pass", $pass, 20, $text{'ssl_prompt'}), 3,
+	    [ undef, "nowrap" ]);
+
+# SSL CA file
+$ca = &find_value("ssl_ca_file", $conf);
+print &ui_table_row($text{'ssl_ca'},
+	    &ui_opt_textbox("ca", $ca, 40,
+		&getdef("ssl_ca_file", [ [ "", $text{'ssl_none'} ] ])), 3,
+	    [ undef, "nowrap" ]);
+
 # Parameter regen time
 $regen = &find_value("ssl_parameters_regenerate", $conf);
 print &ui_table_row($text{'ssl_regen'},
