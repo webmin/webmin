@@ -732,5 +732,66 @@ else {
 return $mode;
 }
 
+# switch_to_usermin_user(username)
+# Returns a set-cookie header and redirect URL for auto-logging into Usermin
+# as some user.
+sub switch_to_usermin_user
+{
+my ($user) = @_;
+
+# Stop Usermin first, so that the DBM can be safely written
+my %miniserv;
+&get_usermin_miniserv_config(\%miniserv);
+my $stopped;
+if (&check_pid_file($miniserv{'pidfile'})) {
+	&stop_usermin();
+	$stopped = 1;
+	}
+
+# Generate a session ID and set it in the DB
+&acl::open_session_db(\%miniserv);
+&seed_random();
+my $now = time();
+my $sid = int(rand()*$now);
+$acl::sessiondb{$sid} = "$in{'user'} $now $ENV{'REMOTE_ADDR'}";
+dbmclose(%acl::sessiondb);
+if ($stopped) {
+	&start_usermin();
+	}
+&reload_usermin_miniserv();
+&webmin_log("switch", undef, $in{'user'});
+eval "use Net::SSLeay";
+if ($@) {
+	$miniserv{'ssl'} = 0;
+	}
+my $ssl = $miniserv{'ssl'} || $miniserv{'inetd_ssl'};
+my $sec = $ssl ? "; secure" : "";
+my $sidname = $miniserv{'sidname'} || 'sid';
+my $cookie = "$sidname=$sid; path=/$sec";
+
+# Work out redirect host
+my @sockets = &webmin::get_miniserv_sockets(\%miniserv);
+my ($host, $port);
+if ($config{'host'}) {
+	# Specific hostname set
+	$host = $config{'host'};
+	}
+else {
+	if ($sockets[0]->[0] ne "*") {
+		# Listening on special IP
+		$host = $sockets[0]->[0];
+		$port = $sockets[0]->[1] if ($sockets[0]->[1] ne '*');
+		}
+	else {
+		# Use same hostname as this server
+		$host = $ENV{'HTTP_HOST'};
+		$host =~ s/:.*//;
+		}
+	}
+$port ||= $config{'port'} || $miniserv{'port'};
+
+return ($cookie, ($ssl ? "https://" : "http://").$host.":".$port."/");
+}
+
 1;
 
