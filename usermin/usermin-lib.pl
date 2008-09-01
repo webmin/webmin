@@ -753,13 +753,12 @@ if (&check_pid_file($miniserv{'pidfile'})) {
 &seed_random();
 my $now = time();
 my $sid = int(rand()*$now);
-$acl::sessiondb{$sid} = "$in{'user'} $now $ENV{'REMOTE_ADDR'}";
+$acl::sessiondb{$sid} = "$user $now $ENV{'REMOTE_ADDR'}";
 dbmclose(%acl::sessiondb);
 if ($stopped) {
 	&start_usermin();
 	}
 &reload_usermin_miniserv();
-&webmin_log("switch", undef, $in{'user'});
 eval "use Net::SSLeay";
 if ($@) {
 	$miniserv{'ssl'} = 0;
