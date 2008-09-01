@@ -22,34 +22,25 @@ require './postfix-lib.pl';
 $access{'body'} || &error($text{'body_ecannot'});
 &ui_print_header(undef, $text{'body_title'}, "", "body");
 
+# Start of body form
+print &ui_form_start("save_opts_body.cgi");
+print &ui_table_start($text{'body_title'}, "width=100%", 2);
 
-# alias general options
+&option_mapfield("body_checks", 60);
 
-print "<form action=save_opts_body.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'body_title'}</b></td></tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
-$none = $text{'opts_none'};
-
-print "<tr>\n";
-&option_radios_freefield("body_checks", 60, $none);
-print "</tr>\n";
-
-print "</table></td></tr></table><p>\n";
-print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
+# Map contents
 print &ui_hr();
-print "<br>\n";
-
-
 if (&get_current_value("body_checks") eq "")
 {
-    print ($text{'no_map'}."<br><br>");
+    print $text{'no_map'},"<p>\n";
 }
 else
 {
     &generate_map_edit("body_checks", $text{'map_click'}." ".
-		       "<font size=\"-1\">".&hlink("$text{'help_map_format'}", "body")."</font>\n<br>\n", 1,
+		       &hlink($text{'help_map_format'}, "body"), 1,
 		       $text{'header_name'}, $text{'header_value'});
 }
 

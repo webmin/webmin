@@ -26,8 +26,7 @@ $access{'header'} || &error($text{'header_ecannot'});
 print &ui_form_start("save_opts_header.cgi");
 print &ui_table_start($text{'header_title'}, "width=100%", 2);
 
-$none = $text{'opts_none'};
-&option_mapfield("header_checks", 60, $none);
+&option_mapfield("header_checks", 60);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);

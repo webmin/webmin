@@ -329,7 +329,7 @@ sub option_radios_freefield
     print &ui_table_row($help, $rv, $length > 20 ? 3 : 1);
 }
 
-# option_mapfield(name_of_option, length_of_free_field, defaulttext)
+# option_mapfield(name_of_option, length_of_free_field)
 # Prints a field for selecting a map, or none
 sub option_mapfield
 {
@@ -344,14 +344,15 @@ sub option_mapfield
 		&hlink($text{$key}, "opt_".$name) : $text{$key};
     my $rv;
     $rv .= &ui_oneradio($name."_def", "__DEFAULT_VALUE_IE_NOT_IN_CONFIG_FILE__",
-		       $_[2], &if_default_value($name));
+		        $text{'opts_nomap'}, &if_default_value($name));
+    $rv .= "<br>\n";
 
     $check_free_field = 0 if &if_default_value($name);
     shift;
     
     # the free field
-    $rv .= &ui_oneradio($name."_def", "__USE_FREE_FIELD__", undef,
-		       $check_free_field == 1);
+    $rv .= &ui_oneradio($name."_def", "__USE_FREE_FIELD__",
+		        $text{'opts_setmap'}, $check_free_field == 1);
     $rv .= &ui_textbox($name, $check_free_field == 1 ? $v : undef, $length);
     $rv .= &map_chooser_button($name, $name);
     print &ui_table_row($help, $rv, $length > 20 ? 3 : 1);

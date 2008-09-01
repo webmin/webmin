@@ -30,11 +30,10 @@ print &ui_form_start("save_opts_aliases.cgi");
 print &ui_table_start($text{'aliasopts_title'}, "width=100%", 2);
 
 # Aliases file
-$none = $text{'opts_none'};
-&option_mapfield("alias_maps", 60, $none);
+&option_mapfield("alias_maps", 60);
 
 # Aliases DB?
-&option_mapfield("alias_database", 60, $none);
+&option_mapfield("alias_database", 60);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);

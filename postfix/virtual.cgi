@@ -27,8 +27,7 @@ $access{'virtual'} || &error($text{'virtual_ecannot'});
 print &ui_form_start("save_opts_virtual.cgi");
 print &ui_table_start($text{'virtual_title'}, "width=100%", 2);
 
-$none = $text{'opts_none'};
-&option_mapfield($virtual_maps, 40, $none);
+&option_mapfield($virtual_maps, 60);
 
 if ($postfix_version >= 2) {
 	&option_radios_freefield("virtual_alias_domains", 40,

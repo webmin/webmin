@@ -26,12 +26,11 @@ $access{'canonical'} || &error($text{'canonical_ecannot'});
 print &ui_form_start("save_opts_canonical.cgi");
 print &ui_table_start($text{'canonical_title'}, "width=100%", 2);
 
-$none = $text{'opts_none'};
-&option_mapfield("canonical_maps", 60, $none);
+&option_mapfield("canonical_maps", 60);
 
-&option_mapfield("recipient_canonical_maps", 60, $none);
+&option_mapfield("recipient_canonical_maps", 60);
 
-&option_mapfield("sender_canonical_maps", 60, $none);
+&option_mapfield("sender_canonical_maps", 60);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);

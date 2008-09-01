@@ -133,6 +133,8 @@ what_is_it=What is it?
 
 opts_default=Default
 opts_none=None
+opts_nomap=No map set
+opts_setmap=Map specifications
 opts_relayhost=Send outgoing mail via host
 opts_direct=Deliver directly
 opts_myorigin=What domain to use in outbound mail

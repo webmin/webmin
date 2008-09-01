@@ -13,13 +13,11 @@ print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'bcc_title'}</b></td></tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
-$none = $text{'opts_none'};
-
 print "<tr>\n";
-&option_mapfield("sender_bcc_maps", 60, $none);
+&option_mapfield("sender_bcc_maps", 60);
 print "</tr>\n";
 print "<tr>\n";
-&option_mapfield("recipient_bcc_maps", 60, $none);
+&option_mapfield("recipient_bcc_maps", 60);
 print "</tr>\n";
 
 print "</table></td></tr></table><p>\n";

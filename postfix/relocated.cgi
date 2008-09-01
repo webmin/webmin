@@ -26,8 +26,7 @@ $access{'relocated'} || &error($text{'relocated_ecannot'});
 print &ui_form_start("save_opts_relocated.cgi");
 print &ui_table_start($text{'relocated_title'}, "width=100%", 2);
 
-$none = $text{'opts_none'};
-&option_mapfield("relocated_maps", 60, $none);
+&option_mapfield("relocated_maps", 60);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);

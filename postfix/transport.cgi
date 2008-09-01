@@ -26,8 +26,7 @@ $access{'transport'} || &error($text{'transport_ecannot'});
 print &ui_form_start("save_opts_transport.cgi");
 print &ui_table_start($text{'transport_title'}, "width=100%", 2);
 
-$none = $text{'opts_none'};
-&option_mapfield("transport_maps", 60, $none);
+&option_mapfield("transport_maps", 60);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
