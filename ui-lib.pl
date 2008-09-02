@@ -8,14 +8,14 @@
 sub ui_table_start
 {
 return &theme_ui_table_start(@_) if (defined(&theme_ui_table_start));
-local ($heading, $tabletags, $cols, $tds) = @_;
+my ($heading, $tabletags, $cols, $tds) = @_;
 if (defined($main::ui_table_cols)) {
 	# Push on stack, for nested call
 	push(@main::ui_table_cols_stack, $main::ui_table_cols);
 	push(@main::ui_table_pos_stack, $main::ui_table_pos);
 	push(@main::ui_table_default_tds_stack, $main::ui_table_default_tds);
 	}
-local $rv;
+my $rv;
 $rv .= "<table class='ui_table' border $tabletags>\n";
 $rv .= "<tr $tb> <td><b>$heading</b></td> </tr>\n" if (defined($heading));
 $rv .= "<tr $cb> <td><table width=100%>\n";
@@ -30,7 +30,7 @@ return $rv;
 sub ui_table_end
 {
 return &theme_ui_table_end(@_) if (defined(&theme_ui_table_end));
-local $rv;
+my $rv;
 if ($main::ui_table_cols == 4 && $main::ui_table_pos) {
 	# Add an empty block to balance the table
 	$rv .= &ui_table_row(" ", " ");
@@ -54,8 +54,8 @@ return $rv;
 sub ui_columns_start
 {
 return &theme_ui_columns_start(@_) if (defined(&theme_ui_columns_start));
-local ($heads, $width, $noborder, $tdtags, $title) = @_;
-local $rv;
+my ($heads, $width, $noborder, $tdtags, $title) = @_;
+my $rv;
 $rv .= "<table".($noborder ? "" : " border").
 		(defined($width) ? " width=$width%" : "")." class='ui_columns'>\n";
 if ($title) {
@@ -63,7 +63,7 @@ if ($title) {
 	       " class='ui_columns_heading'><b>$title</b></td></tr>\n";
 	}
 $rv .= "<tr $tb class='ui_columns_heads'>\n";
-local $i;
+my $i;
 for($i=0; $i<@$heads; $i++) {
 	$rv .= "<td ".$tdtags->[$i]."><b>".
 	       ($heads->[$i] eq "" ? "<br>" : $heads->[$i])."</b></td>\n";
@@ -77,10 +77,10 @@ return $rv;
 sub ui_columns_row
 {
 return &theme_ui_columns_row(@_) if (defined(&theme_ui_columns_row));
-local ($cols, $tdtags) = @_;
-local $rv;
+my ($cols, $tdtags) = @_;
+my $rv;
 $rv .= "<tr $cb class='ui_columns_row'>\n";
-local $i;
+my $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i].">".
 	       ($cols->[$i] !~ /\S/ ? "<br>" : $cols->[$i])."</td>\n";
@@ -94,10 +94,10 @@ return $rv;
 sub ui_columns_header
 {
 return &theme_ui_columns_header(@_) if (defined(&theme_ui_columns_header));
-local ($cols, $tdtags) = @_;
-local $rv;
+my ($cols, $tdtags) = @_;
+my $rv;
 $rv .= "<tr $tb class='ui_columns_header'>\n";
-local $i;
+my $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i]."><b>".
 	       ($cols->[$i] eq "" ? "<br>" : $cols->[$i])."</b></td>\n";
@@ -113,13 +113,13 @@ return $rv;
 sub ui_checked_columns_row
 {
 return &theme_ui_checked_columns_row(@_) if (defined(&theme_ui_checked_columns_row));
-local ($cols, $tdtags, $checkname, $checkvalue, $checked, $disabled) = @_;
-local $rv;
+my ($cols, $tdtags, $checkname, $checkvalue, $checked, $disabled) = @_;
+my $rv;
 $rv .= "<tr $cb class='ui_checked_columns'>\n";
 $rv .= "<td class='ui_checked_checkbox' ".$tdtags->[0].">".
        &ui_checkbox($checkname, $checkvalue, undef, $checked, undef, $disabled).
        "</td>\n";
-local $i;
+my $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i+1].">";
 	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
@@ -143,12 +143,12 @@ return $rv;
 sub ui_radio_columns_row
 {
 return &theme_ui_radio_columns_row(@_) if (defined(&theme_ui_radio_columns_row));
-local ($cols, $tdtags, $checkname, $checkvalue, $checked, $dis) = @_;
-local $rv;
+my ($cols, $tdtags, $checkname, $checkvalue, $checked, $dis) = @_;
+my $rv;
 $rv .= "<tr $cb class='ui_radio_columns'>\n";
 $rv .= "<td class='ui_radio_radio' ".$tdtags->[0].">".
     &ui_oneradio($checkname, $checkvalue, "", $checked, undef, $dis)."</td>\n";
-local $i;
+my $i;
 for($i=0; $i<@$cols; $i++) {
 	$rv .= "<td ".$tdtags->[$i+1].">";
 	if ($cols->[$i] !~ /<a\s+href|<input|<select|<textarea/) {
@@ -194,8 +194,8 @@ return "</table>\n";
 sub ui_columns_table
 {
 return &theme_ui_columns_table(@_) if (defined(&theme_ui_columns_table));
-local ($heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
-local $rv;
+my ($heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
+my $rv;
 
 # Just show empty message if no data
 if ($emptymsg && !@$data) {
@@ -205,10 +205,10 @@ if ($emptymsg && !@$data) {
 	}
 
 # Are there any checkboxes in each column? If so, make those columns narrow
-local @tds = map { "valign=top" } @$heads;
-local $maxwidth = 0;
+my @tds = map { "valign=top" } @$heads;
+my $maxwidth = 0;
 foreach my $r (@$data) {
-	local $cc = 0;
+	my $cc = 0;
 	foreach my $c (@$r) {
 		if (ref($c) &&
 		    ($c->{'type'} eq 'checkbox' || $c->{'type'} eq 'radio')) {
@@ -222,7 +222,7 @@ $rv .= &ui_columns_start($heads, $width, 0, \@tds, $title);
 
 # Add the data rows
 foreach my $r (@$data) {
-	local $c0;
+	my $c0;
 	if (ref($r->[0]) && ($r->[0]->{'type'} eq 'checkbox' ||
 			     $r->[0]->{'type'} eq 'radio')) {
 		# First column is special
@@ -230,8 +230,8 @@ foreach my $r (@$data) {
 		$r = [ @$r[1..(@$r-1)] ];
 		}
 	# Turn data into HTML
-	local @rtds = @tds;
-	local @cols;
+	my @rtds = @tds;
+	my @cols;
 	my $cn = 0;
 	$cn++ if ($c0);
 	foreach my $c (@$r) {
@@ -308,21 +308,21 @@ sub ui_form_columns_table
 {
 return &theme_ui_form_columns_table(@_)
 	if (defined(&theme_ui_form_columns_table));
-local ($cgi, $buttons, $selectall, $others, $hiddens,
+my ($cgi, $buttons, $selectall, $others, $hiddens,
        $heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
-local $rv;
+my $rv;
 
 # Build links
-local @leftlinks = map { "<a href='$_->[0]'>$_->[1]</a>" }
+my @leftlinks = map { "<a href='$_->[0]'>$_->[1]</a>" }
 		       grep { $_->[2] ne 'right' } @$others;
-local @rightlinks = map { "<a href='$_->[0]'>$_->[1]</a>" }
+my @rightlinks = map { "<a href='$_->[0]'>$_->[1]</a>" }
 		       grep { $_->[2] eq 'right' } @$others;
-local $links;
+my $links;
 
 # Add select links
 if (@$data) {
 	if ($selectall) {
-		local $cbname;
+		my $cbname;
 		foreach my $r (@$data) {
 			foreach my $c (@$r) {
 				if (ref($c) && $c->{'type'} eq 'checkbox') {
@@ -377,8 +377,8 @@ return $rv;
 sub ui_form_start
 {
 return &theme_ui_form_start(@_) if (defined(&theme_ui_form_start));
-local ($script, $method, $target, $tags) = @_;
-local $rv;
+my ($script, $method, $target, $tags) = @_;
+my $rv;
 $rv .= "<form class='ui_form' action='".&html_escape($script)."' ".
 	($method eq "post" ? "method=post" :
 	 $method eq "form-data" ?
@@ -395,11 +395,11 @@ return $rv;
 sub ui_form_end
 {
 return &theme_ui_form_end(@_) if (defined(&theme_ui_form_end));
-local ($buttons, $width) = @_;
-local $rv;
+my ($buttons, $width) = @_;
+my $rv;
 if ($buttons && @$buttons) {
 	$rv .= "<table class='ui_form_end_buttons' ".($width ? " width=$width" : "")."><tr>\n";
-	local $b;
+	my $b;
 	foreach $b (@$buttons) {
 		if (ref($b)) {
 			$rv .= "<td".(!$width ? "" :
@@ -427,7 +427,7 @@ return $rv;
 sub ui_textbox
 {
 return &theme_ui_textbox(@_) if (defined(&theme_ui_textbox));
-local ($name, $value, $size, $dis, $max, $tags) = @_;
+my ($name, $value, $size, $dis, $max, $tags) = @_;
 $size = &ui_max_text_width($size);
 return "<input name=\"".&quote_escape($name)."\" ".
        "value=\"".&quote_escape($value)."\" ".
@@ -442,7 +442,7 @@ return "<input name=\"".&quote_escape($name)."\" ".
 sub ui_filebox
 {
 return &theme_ui_filebox(@_) if (defined(&theme_ui_filebox));
-local ($name, $value, $size, $dis, $max, $tags, $dironly) = @_;
+my ($name, $value, $size, $dis, $max, $tags, $dironly) = @_;
 return &ui_textbox($name, $value, $size, $dis, $max, $tags)."&nbsp;".
        &file_chooser_button($name, $dironly);
 }
@@ -452,8 +452,8 @@ return &ui_textbox($name, $value, $size, $dis, $max, $tags)."&nbsp;".
 # options. May truncate values to 2 decimal points!
 sub ui_bytesbox
 {
-local ($name, $bytes, $size, $dis) = @_;
-local $units = 1;
+my ($name, $bytes, $size, $dis) = @_;
+my $units = 1;
 if ($bytes >= 10*1024*1024*1024) {
 	$units = 1024*1024*1024;
 	}
@@ -482,7 +482,7 @@ return &ui_textbox($name, $bytes, $size, $dis)." ".
 sub ui_upload
 {
 return &theme_ui_upload(@_) if (defined(&theme_ui_upload));
-local ($name, $size, $dis, $tags) = @_;
+my ($name, $size, $dis, $tags) = @_;
 $size = &ui_max_text_width($size);
 return "<input type=file name=\"".&quote_escape($name)."\" ".
        "size=$size ".
@@ -495,7 +495,7 @@ return "<input type=file name=\"".&quote_escape($name)."\" ".
 sub ui_password
 {
 return &theme_ui_password(@_) if (defined(&theme_ui_password));
-local ($name, $value, $size, $dis, $max) = @_;
+my ($name, $value, $size, $dis, $max) = @_;
 $size = &ui_max_text_width($size);
 return "<input type=password name=\"".&quote_escape($name)."\" ".
        "value=\"".&quote_escape($value)."\" ".
@@ -509,7 +509,7 @@ return "<input type=password name=\"".&quote_escape($name)."\" ".
 sub ui_hidden
 {
 return &theme_ui_hidden(@_) if (defined(&theme_ui_hidden));
-local ($name, $value) = @_;
+my ($name, $value) = @_;
 return "<input type=hidden name=\"".&quote_escape($name)."\" ".
        "value=\"".&quote_escape($value)."\">\n";
 }
@@ -520,14 +520,14 @@ return "<input type=hidden name=\"".&quote_escape($name)."\" ".
 sub ui_select
 {
 return &theme_ui_select(@_) if (defined(&theme_ui_select));
-local ($name, $value, $opts, $size, $multiple, $missing, $dis, $js) = @_;
-local $rv;
+my ($name, $value, $opts, $size, $multiple, $missing, $dis, $js) = @_;
+my $rv;
 $rv .= "<select name=\"".&quote_escape($name)."\"".
        ($size ? " size=$size" : "").
        ($multiple ? " multiple" : "").
        ($dis ? " disabled=true" : "")." ".$js.">\n";
-local ($o, %opt, $s);
-local %sel = ref($value) ? ( map { $_, 1 } @$value ) : ( $value, 1 );
+my ($o, %opt, $s);
+my %sel = ref($value) ? ( map { $_, 1 } @$value ) : ( $value, 1 );
 foreach $o (@$opts) {
 	$o = [ $o ] if (!ref($o));
 	$rv .= "<option value=\"".&quote_escape($o->[0])."\"".
@@ -553,19 +553,19 @@ return $rv;
 sub ui_multi_select
 {
 return &theme_ui_multi_select(@_) if (defined(&theme_ui_multi_select));
-local ($name, $values, $opts, $size, $missing, $dis,
+my ($name, $values, $opts, $size, $missing, $dis,
        $opts_title, $vals_title, $width) = @_;
-local $rv;
-local %already = map { $_->[0], $_ } @$values;
-local $leftover = [ grep { !$already{$_->[0]} } @$opts ];
+my $rv;
+my %already = map { $_->[0], $_ } @$values;
+my $leftover = [ grep { !$already{$_->[0]} } @$opts ];
 if ($missing) {
-	local %optsalready = map { $_->[0], $_ } @$opts;
+	my %optsalready = map { $_->[0], $_ } @$opts;
 	push(@$opts, grep { !$optsalready{$_->[0]} } @$values);
 	}
 if (!defined($width)) {
 	$width = "200";
 	}
-local $wstyle = $width ? "style='width:$width'" : "";
+my $wstyle = $width ? "style='width:$width'" : "";
 
 if (!$main::ui_multi_select_donejs++) {
 	$rv .= &ui_multi_select_javascript();
@@ -636,13 +636,13 @@ EOF
 sub ui_radio
 {
 return &theme_ui_radio(@_) if (defined(&theme_ui_radio));
-local ($name, $value, $opts, $dis) = @_;
-local $rv;
-local $o;
+my ($name, $value, $opts, $dis) = @_;
+my $rv;
+my $o;
 foreach $o (@$opts) {
-	local $id = &quote_escape($name."_".$o->[0]);
-	local $label = $o->[1] || $o->[0];
-	local $after;
+	my $id = &quote_escape($name."_".$o->[0]);
+	my $label = $o->[1] || $o->[0];
+	my $after;
 	if ($label =~ /^(.*?)((<a\s+href|<input|<select|<textarea)[\000-\377]*)$/i) {
 		$label = $1;
 		$after = $2;
@@ -662,7 +662,7 @@ return $rv;
 # Like ui_yesno, but always displays just two inputs (yes and no)
 sub ui_yesno_radio
 {
-local ($name, $value, $yes, $no, $dis) = @_;
+my ($name, $value, $yes, $no, $dis) = @_;
 return &theme_ui_yesno_radio(@_) if (defined(&theme_ui_yesno_radio));
 $yes = 1 if (!defined($yes));
 $no = 0 if (!defined($no));
@@ -676,8 +676,8 @@ return &ui_radio($name, $value, [ [ $yes, $text{'yes'} ],
 sub ui_checkbox
 {
 return &theme_ui_checkbox(@_) if (defined(&theme_ui_checkbox));
-local ($name, $value, $label, $sel, $tags, $dis) = @_;
-local $after;
+my ($name, $value, $label, $sel, $tags, $dis) = @_;
+my $after;
 if ($label =~ /^([^<]*)(<[\000-\377]*)$/) {
 	$label = $1;
 	$after = $2;
@@ -697,9 +697,9 @@ return "<input type=checkbox name=\"".&quote_escape($name)."\" ".
 sub ui_oneradio
 {
 return &theme_ui_oneradio(@_) if (defined(&theme_ui_oneradio));
-local ($name, $value, $label, $sel, $tags, $dis) = @_;
-local $id = &quote_escape("${name}_${value}");
-local $after;
+my ($name, $value, $label, $sel, $tags, $dis) = @_;
+my $id = &quote_escape("${name}_${value}");
+my $after;
 if ($label =~ /^([^<]*)(<[\000-\377]*)$/) {
 	$label = $1;
 	$after = $2;
@@ -716,7 +716,7 @@ return "<input type=radio name=\"".&quote_escape($name)."\" ".
 sub ui_textarea
 {
 return &theme_ui_textarea(@_) if (defined(&theme_ui_textarea));
-local ($name, $value, $rows, $cols, $wrap, $dis, $tags) = @_;
+my ($name, $value, $rows, $cols, $wrap, $dis, $tags) = @_;
 $cols = &ui_max_text_width($cols, 1);
 return "<textarea name=\"".&quote_escape($name)."\" ".
        "rows=$rows cols=$cols".($wrap ? " wrap=$wrap" : "").
@@ -750,10 +750,10 @@ return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
 sub ui_opt_textbox
 {
 return &theme_ui_opt_textbox(@_) if (defined(&theme_ui_opt_textbox));
-local ($name, $value, $size, $opt1, $opt2, $dis, $extra, $max) = @_;
-local $dis1 = &js_disable_inputs([ $name, @$extra ], [ ]);
-local $dis2 = &js_disable_inputs([ ], [ $name, @$extra ]);
-local $rv;
+my ($name, $value, $size, $opt1, $opt2, $dis, $extra, $max) = @_;
+my $dis1 = &js_disable_inputs([ $name, @$extra ], [ ]);
+my $dis2 = &js_disable_inputs([ ], [ $name, @$extra ]);
+my $rv;
 $size = &ui_max_text_width($size);
 $rv .= &ui_radio($name."_def", $value eq '' ? 1 : 0,
 		 [ [ 1, $opt1, "onClick='$dis1'" ],
@@ -770,7 +770,7 @@ return $rv;
 sub ui_submit
 {
 return &theme_ui_submit(@_) if (defined(&theme_ui_submit));
-local ($label, $name, $dis, $tags) = @_;
+my ($label, $name, $dis, $tags) = @_;
 return "<input type=submit".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
@@ -784,7 +784,7 @@ return "<input type=submit".
 sub ui_reset
 {
 return &theme_ui_reset(@_) if (defined(&theme_ui_reset));
-local ($label, $dis) = @_;
+my ($label, $dis) = @_;
 return "<input type=reset value=\"".&quote_escape($label)."\"".
        ($dis ? " disabled=true" : "").">\n";
 			
@@ -795,7 +795,7 @@ return "<input type=reset value=\"".&quote_escape($label)."\"".
 sub ui_button
 {
 return &theme_ui_button(@_) if (defined(&theme_ui_button));
-local ($label, $name, $dis, $tags) = @_;
+my ($label, $name, $dis, $tags) = @_;
 return "<input type=button".
        ($name ne '' ? " name=\"".&quote_escape($name)."\"" : "").
        " value=\"".&quote_escape($label)."\"".
@@ -807,8 +807,8 @@ return "<input type=button".
 # Returns HTML for a date-selection field
 sub ui_date_input
 {
-local ($day, $month, $year, $dayname, $monthname, $yearname, $dis) = @_;
-local $rv;
+my ($day, $month, $year, $dayname, $monthname, $yearname, $dis) = @_;
+my $rv;
 $rv .= &ui_textbox($dayname, $day, 3, $dis);
 $rv .= "/";
 $rv .= &ui_select($monthname, $month,
@@ -825,10 +825,10 @@ return $rv;
 sub ui_table_row
 {
 return &theme_ui_table_row(@_) if (defined(&theme_ui_table_row));
-local ($label, $value, $cols, $tds) = @_;
+my ($label, $value, $cols, $tds) = @_;
 $cols ||= 1;
 $tds ||= $main::ui_table_default_tds;
-local $rv;
+my $rv;
 if ($main::ui_table_pos+$cols+1 > $main::ui_table_cols &&
     $main::ui_table_pos != 0) {
 	# If the requested number of cols won't fit in the number
@@ -851,7 +851,7 @@ return $rv;
 sub ui_table_hr
 {
 return &theme_ui_table_hr(@_) if (defined(&theme_ui_table_hr));
-local $rv;
+my $rv;
 if ($ui_table_pos) {
 	$rv .= "</tr>\n";
 	$ui_table_pos = 0;
@@ -864,9 +864,9 @@ return $rv;
 # Outputs a table row that spans the whole table, and contains the given text
 sub ui_table_span
 {
-local ($text) = @_;
+my ($text) = @_;
 return &theme_ui_table_hr(@_) if (defined(&theme_ui_table_hr));
-local $rv;
+my $rv;
 if ($ui_table_pos) {
 	$rv .= "</tr>\n";
 	$ui_table_pos = 0;
@@ -894,7 +894,7 @@ return "</table>\n";
 sub ui_buttons_row
 {
 return &theme_ui_buttons_row(@_) if (defined(&theme_ui_buttons_row));
-local ($script, $label, $desc, $hiddens, $after, $before) = @_;
+my ($script, $label, $desc, $hiddens, $after, $before) = @_;
 return "<form action=$script>\n".
        $hiddens.
        "<tr> <td nowrap width=20% valign=top>".($before ? $before." " : "").
@@ -906,7 +906,7 @@ return "<form action=$script>\n".
 # ui_buttons_hr([title])
 sub ui_buttons_hr
 {
-local ($title) = @_;
+my ($title) = @_;
 return &theme_ui_buttons_hr(@_) if (defined(&theme_ui_buttons_hr));
 if ($title) {
 	return "<tr> <td colspan=2><table cellpadding=0 cellspacing=0 width=100%><tr> <td width=50%><hr></td> <td nowrap>$title</td> <td width=50%><hr></td> </tr></table></td> </tr>\n";
@@ -923,8 +923,8 @@ else {
 sub ui_post_header
 {
 return &theme_ui_post_header(@_) if (defined(&theme_ui_post_header));
-local ($text) = @_;
-local $rv;
+my ($text) = @_;
+my $rv;
 $rv .= "<center class='ui_post_header'><font size=+1>$text</font></center>\n" if (defined($text));
 if (!$tconfig{'nohr'} && !$tconfig{'notophr'}) {
 	$rv .= "<hr id='post_header_hr'>\n";
@@ -937,7 +937,7 @@ return $rv;
 sub ui_pre_footer
 {
 return &theme_ui_pre_footer(@_) if (defined(&theme_ui_pre_footer));
-local $rv;
+my $rv;
 if (!$tconfig{'nohr'} && !$tconfig{'nobottomhr'}) {
 	$rv .= "<hr id='pre_footer_hr'>\n";
 	}
@@ -951,7 +951,7 @@ sub ui_print_header
 {
 &load_theme_library();
 return &theme_ui_print_header(@_) if (defined(&theme_ui_print_header));
-local ($text, @args) = @_;
+my ($text, @args) = @_;
 &header(@args);
 print &ui_post_header($text);
 }
@@ -974,7 +974,7 @@ $theme_no_table = 1;
 sub ui_print_footer
 {
 return &theme_ui_print_footer(@_) if (defined(&theme_ui_print_footer));
-local @args = @_;
+my @args = @_;
 print &ui_pre_footer();
 &footer(@args);
 }
@@ -985,8 +985,8 @@ print &ui_pre_footer();
 sub ui_config_link
 {
 return &theme_ui_config_link(@_) if (defined(&theme_ui_config_link));
-local ($text, $subs) = @_;
-local @subs = map { $_ || "../config.cgi?$module_name" }
+my ($text, $subs) = @_;
+my @subs = map { $_ || "../config.cgi?$module_name" }
 		  ($subs ? @$subs : ( undef ));
 return "<p>".&text($text, @subs)."<p>\n";
 }
@@ -997,7 +997,7 @@ return "<p>".&text($text, @subs)."<p>\n";
 sub ui_print_endpage
 {
 return &theme_ui_print_endpage(@_) if (defined(&theme_ui_print_endpage));
-local ($text) = @_;
+my ($text) = @_;
 print $text,"<p class='ui_footer'>\n";
 print "</p>\n";
 &ui_print_footer("/", $text{'index'});
@@ -1017,7 +1017,7 @@ return "<h3 class='ui_subheading'>".join("", @_)."</h3>\n";
 sub ui_links_row
 {
 return &theme_ui_links_row(@_) if (defined(&theme_ui_links_row));
-local ($links) = @_;
+my ($links) = @_;
 return @$links ? join("\n|\n", @$links)."<br>\n"
 	       : "";
 }
@@ -1030,9 +1030,9 @@ sub ui_hidden_javascript
 {
 return &theme_ui_hidden_javascript(@_)
 	if (defined(&theme_ui_hidden_javascript));
-local $rv;
-local $imgdir = "$gconfig{'webprefix'}/images";
-local ($jscb, $jstb) = ($cb, $tb);
+my $rv;
+my $imgdir = "$gconfig{'webprefix'}/images";
+my ($jscb, $jstb) = ($cb, $tb);
 $jscb =~ s/'/\\'/g;
 $jstb =~ s/'/\\'/g;
 
@@ -1107,15 +1107,15 @@ EOF
 sub ui_hidden_start
 {
 return &theme_ui_hidden_start(@_) if (defined(&theme_ui_hidden_start));
-local ($title, $name, $status, $url) = @_;
-local $rv;
+my ($title, $name, $status, $url) = @_;
+my $rv;
 if (!$main::ui_hidden_start_donejs++) {
 	$rv .= &ui_hidden_javascript();
 	}
-local $divid = "hiddendiv_$name";
-local $openerid = "hiddenopener_$name";
-local $defimg = $status ? "open.gif" : "closed.gif";
-local $defclass = $status ? 'opener_shown' : 'opener_hidden';
+my $divid = "hiddendiv_$name";
+my $openerid = "hiddenopener_$name";
+my $defimg = $status ? "open.gif" : "closed.gif";
+my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 $rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg' alt='*'></a>\n";
 $rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
 $rv .= "<div class='$defclass' id='$divid'>\n";
@@ -1127,7 +1127,7 @@ return $rv;
 sub ui_hidden_end
 {
 return &theme_ui_hidden_end(@_) if (defined(&theme_ui_hidden_end));
-local ($name) = @_;
+my ($name) = @_;
 return "</div>\n";
 }
 
@@ -1138,15 +1138,15 @@ sub ui_hidden_table_row_start
 {
 return &theme_ui_hidden_table_row_start(@_)
 	if (defined(&theme_ui_hidden_table_row_start));
-local ($title, $name, $status, $url) = @_;
-local ($rv, $rrv);
+my ($title, $name, $status, $url) = @_;
+my ($rv, $rrv);
 if (!$main::ui_hidden_start_donejs++) {
 	$rv .= &ui_hidden_javascript();
 	}
-local $divid = "hiddendiv_$name";
-local $openerid = "hiddenopener_$name";
-local $defimg = $status ? "open.gif" : "closed.gif";
-local $defclass = $status ? 'opener_shown' : 'opener_hidden';
+my $divid = "hiddendiv_$name";
+my $openerid = "hiddenopener_$name";
+my $defimg = $status ? "open.gif" : "closed.gif";
+my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 $rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a>\n";
 $rrv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\">$title</a><br>\n";
 $rv .= &ui_table_row(undef, $rrv, $main::ui_table_cols);
@@ -1161,7 +1161,7 @@ sub ui_hidden_table_row_end
 {
 return &theme_ui_hidden_table_row_end(@_)
 	if (defined(&theme_ui_hidden_table_row_end));
-local ($name) = @_;
+my ($name) = @_;
 return "</table></div><table width=100%>\n";
 }
 
@@ -1172,16 +1172,16 @@ sub ui_hidden_table_start
 {
 return &theme_ui_hidden_table_start(@_)
 	if (defined(&theme_ui_hidden_table_start));
-local ($heading, $tabletags, $cols, $name, $status, $tds) = @_;
-local $rv;
+my ($heading, $tabletags, $cols, $name, $status, $tds) = @_;
+my $rv;
 if (!$main::ui_hidden_start_donejs++) {
 	$rv .= &ui_hidden_javascript();
 	}
-local $divid = "hiddendiv_$name";
-local $openerid = "hiddenopener_$name";
-local $defimg = $status ? "open.gif" : "closed.gif";
-local $defclass = $status ? 'opener_shown' : 'opener_hidden';
-local $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} : 
+my $divid = "hiddendiv_$name";
+my $openerid = "hiddenopener_$name";
+my $defimg = $status ? "open.gif" : "closed.gif";
+my $defclass = $status ? 'opener_shown' : 'opener_hidden';
+my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} : 
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 $rv .= "<table class='ui_table' border $tabletags class='ui_table'>\n";
 $rv .= "<tr $tb> <td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#$text>$heading</font></b></a></td> </tr>\n" if (defined($heading));
@@ -1197,7 +1197,7 @@ return $rv;
 # ui_hidden_table_start
 sub ui_hidden_table_end
 {
-local ($name) = @_;
+my ($name) = @_;
 return &theme_ui_hidden_table_end(@_) if (defined(&theme_ui_hidden_table_end));
 return "</table></div></td></tr></table>\n";
 }
@@ -1208,22 +1208,22 @@ return "</table></div></td></tr></table>\n";
 sub ui_tabs_start
 {
 return &theme_ui_tabs_start(@_) if (defined(&theme_ui_tabs_start));
-local ($tabs, $name, $sel, $border) = @_;
-local $rv;
+my ($tabs, $name, $sel, $border) = @_;
+my $rv;
 if (!$main::ui_hidden_start_donejs++) {
 	$rv .= &ui_hidden_javascript();
 	}
 
 # Build list of tab titles and names
-local $tabnames = "[".join(",", map { "\"".&html_escape($_->[0])."\"" } @$tabs)."]";
-local $tabtitles = "[".join(",", map { "\"".&html_escape($_->[1])."\"" } @$tabs)."]";
+my $tabnames = "[".join(",", map { "\"".&html_escape($_->[0])."\"" } @$tabs)."]";
+my $tabtitles = "[".join(",", map { "\"".&html_escape($_->[1])."\"" } @$tabs)."]";
 $rv .= "<script>\n";
 $rv .= "document.${name}_tabnames = $tabnames;\n";
 $rv .= "document.${name}_tabtitles = $tabtitles;\n";
 $rv .= "</script>\n";
 
 # Output the tabs
-local $imgdir = "$gconfig{'webprefix'}/images";
+my $imgdir = "$gconfig{'webprefix'}/images";
 $rv .= &ui_hidden($name, $sel)."\n";
 $rv .= "<table border=0 cellpadding=0 cellspacing=0>\n";
 $rv .= "<tr><td bgcolor=#ffffff colspan=".(scalar(@$tabs)*2+1).">";
@@ -1240,7 +1240,7 @@ foreach my $t (@$tabs) {
 		$rv .= "<td width=2 bgcolor=#ffffff>".
 		       "<img src=$imgdir/1x1.gif></td>\n";
 		}
-	local $tabid = "tab_".$t->[0];
+	my $tabid = "tab_".$t->[0];
 	$rv .= "<td id=${tabid}>";
 	$rv .= "<table cellpadding=0 cellspacing=0 border=0><tr>";
 	if ($t->[0] eq $sel) {
@@ -1287,9 +1287,9 @@ return $rv;
 sub ui_tabs_end
 {
 return &theme_ui_tabs_end(@_) if (defined(&theme_ui_tabs_end));
-local ($border) = @_;
-local $rv;
-local $imgdir = "$gconfig{'webprefix'}/images";
+my ($border) = @_;
+my $rv;
+my $imgdir = "$gconfig{'webprefix'}/images";
 if ($border) {
 	$rv .= "</td>\n";
 	$rv .= "<td $cb width=2><img src=$imgdir/1x1.gif></td>\n";
@@ -1305,10 +1305,10 @@ return $rv;
 sub ui_tabs_start_tab
 {
 return &theme_ui_tabs_start_tab(@_) if (defined(&theme_ui_tabs_start_tab));
-local ($name, $tab) = @_;
-local $defclass = $tab eq $main::ui_tabs_selected ?
+my ($name, $tab) = @_;
+my $defclass = $tab eq $main::ui_tabs_selected ?
 			'opener_shown' : 'opener_hidden';
-local $rv = "<div id='div_$tab' class='$defclass'>\n";
+my $rv = "<div id='div_$tab' class='$defclass'>\n";
 return $rv;
 }
 
@@ -1318,7 +1318,7 @@ sub ui_tabs_start_tabletab
 {
 return &theme_ui_tabs_start_tabletab(@_)
 	if (defined(&theme_ui_tabs_start_tabletab));
-local $div = &ui_tabs_start_tab(@_);
+my $div = &ui_tabs_start_tab(@_);
 return "</table>\n".$div."<table width=100%>\n";
 }
 
@@ -1339,8 +1339,8 @@ return "</table></div><table width=100%>\n";
 # Returns a new width for a text field, based on theme settings
 sub ui_max_text_width
 {
-local ($w, $ta) = @_;
-local $max = $ta ? $tconfig{'maxareawidth'} : $tconfig{'maxboxwidth'};
+my ($w, $ta) = @_;
+my $max = $ta ? $tconfig{'maxareawidth'} : $tconfig{'maxboxwidth'};
 return $max && $w > $max ? $max : $w;
 }
 
@@ -1353,12 +1353,12 @@ return $max && $w > $max ? $max : $w;
 sub ui_radio_selector
 {
 return &theme_ui_radio_selector(@_) if (defined(&theme_ui_radio_selector));
-local ($opts, $name, $sel) = @_;
-local $rv;
+my ($opts, $name, $sel) = @_;
+my $rv;
 if (!$main::ui_radio_selector_donejs++) {
 	$rv .= &ui_radio_selector_javascript();
 	}
-local $optnames =
+my $optnames =
 	"[".join(",", map { "\"".&html_escape($_->[0])."\"" } @$opts)."]";
 foreach my $o (@$opts) {
 	$rv .= &ui_oneradio($name, $o->[0], $o->[1], $sel eq $o->[0],
@@ -1366,7 +1366,7 @@ foreach my $o (@$opts) {
 	}
 $rv .= "<br>\n";
 foreach my $o (@$opts) {
-	local $cls = $o->[0] eq $sel ? "selector_shown" : "selector_hidden";
+	my $cls = $o->[0] eq $sel ? "selector_shown" : "selector_hidden";
 	$rv .= "<div id=sel_${name}_$o->[0] class=$cls>".$o->[2]."</div>\n";
 	}
 return $rv;
@@ -1402,9 +1402,9 @@ EOF
 sub ui_grid_table
 {
 return &theme_ui_grid_table(@_) if (defined(&theme_ui_grid_table));
-local ($elements, $cols, $width, $tds, $tabletags, $title) = @_;
+my ($elements, $cols, $width, $tds, $tabletags, $title) = @_;
 return "" if (!@$elements);
-local $rv = "<table".
+my $rv = "<table".
 	    ($width ? " width=$width%" : "").
 	    ($tabletags ? " ".$tabletags : "").
 	    ">\n";
@@ -1438,9 +1438,9 @@ return $rv;
 sub ui_radio_table
 {
 return &theme_ui_radio_table(@_) if (defined(&theme_ui_radio_table));
-local ($name, $sel, $rows) = @_;
+my ($name, $sel, $rows) = @_;
 return "" if (!@$rows);
-local $rv = "<table>\n";
+my $rv = "<table>\n";
 foreach my $r (@$rows) {
 	$rv .= "<tr>\n";
 	$rv .= "<td valign=top".(defined($r->[2]) ? "" : " colspan=2").
@@ -1461,9 +1461,9 @@ return $rv;
 sub ui_up_down_arrows
 {
 return &theme_ui_up_down_arrows(@_) if (defined(&theme_ui_up_down_arrows));
-local ($uplink, $downlink, $upshow, $downshow) = @_;
-local $mover;
-local $imgdir = "$gconfig{'webprefix'}/images";
+my ($uplink, $downlink, $upshow, $downshow) = @_;
+my $mover;
+my $imgdir = "$gconfig{'webprefix'}/images";
 if ($downshow) {
 	$mover .= "<a href=\"$downlink\">".
 		  "<img src=$imgdir/movedown.gif border=0></a>";
@@ -1495,8 +1495,8 @@ return "<hr>\n";
 # action, such as deleting a user.
 sub ui_confirmation_form
 {
-local ($cgi, $message, $hiddens, $buttons, $others, $warning) = @_;
-local $rv;
+my ($cgi, $message, $hiddens, $buttons, $others, $warning) = @_;
+my $rv;
 $rv .= "<center class=ui_confirmation>\n";
 $rv .= &ui_form_start($cgi, "post");
 foreach my $h (@$hiddens) {
@@ -1520,8 +1520,8 @@ return $rv;
 # Returns Javascript to disable some form elements and enable others
 sub js_disable_inputs
 {
-local $rv;
-local $f;
+my $rv;
+my $f;
 foreach $f (@{$_[0]}) {
 	$rv .= "e = form.elements[\"$f\"]; e.disabled = true; ";
 	$rv .= "for(i=0; i<e.length; i++) { e[i].disabled = true; } ";
@@ -1534,18 +1534,83 @@ foreach $f (@{$_[1]}) {
 	if ($f =~ /^(.*)_def$/ && &indexof($1, @{$_[1]}) >= 0) {
 		# When enabling both a _def field and its associated text field,
 		# disable the text if the _def is set to 1
-		local $tf = $1;
+		my $tf = $1;
 		$rv .= "e = form.elements[\"$f\"]; for(i=0; i<e.length; i++) { if (e[i].checked && e[i].value == \"1\") { form.elements[\"$tf\"].disabled = true } } ";
 		}
 	}
 return $_[2] ? "$_[2]='$rv'" : $rv;
 }
 
+# ui_page_flipper(message, [inputs, cgi], left-link, right-link,
+#                 [far-left-link], [far-right-link])
+# Returns HTML for moving left and right in some large list, such as an inbox
+# or database table. If only 5 parameters are given, no far links are included.
+# If any link is undef, that array will be greyed out.
+sub ui_page_flipper
+{
+return &theme_ui_page_flipper(@_) if (defined(&theme_ui_page_flipper));
+my ($msg, $inputs, $cgi, $left, $right, $farleft, $farright) = @_;
+my $rv = "<center>";
+$rv .= &ui_form_start($cgi) if ($cgi);
+
+# Far left link, if needed
+if (@_ > 5) {
+	if ($farleft) {
+		$rv .= "<a href='$farleft'><img src=/images/first.gif ".
+		       "border=0 align=middle></a>\n";
+		}
+	else {
+		$rv .= "<img src=/images/first-grey.gif ".
+		       "border=0 align=middle></a>\n";
+		}
+	}
+
+# Left link
+if ($left) {
+	$rv .= "<a href='$left'><img src=/images/left.gif ".
+	       "border=0 align=middle></a>\n";
+	}
+else {
+	$rv .= "<img src=/images/left-grey.gif ".
+	       "border=0 align=middle></a>\n";
+	}
+
+# Message and inputs
+$rv .= $msg;
+$rv .= " ".$inputs if ($inputs);
+
+# Right link
+if ($right) {
+	$rv .= "<a href='$right'><img src=/images/right.gif ".
+	       "border=0 align=middle></a>\n";
+	}
+else {
+	$rv .= "<img src=/images/right-grey.gif ".
+	       "border=0 align=middle></a>\n";
+	}
+
+# Far right link, if needed
+if (@_ > 5) {
+	if ($farright) {
+		$rv .= "<a href='$farright'><img src=/images/last.gif ".
+		       "border=0 align=middle></a>\n";
+		}
+	else {
+		$rv .= "<img src=/images/last-grey.gif ".
+		       "border=0 align=middle></a>\n";
+		}
+	}
+
+$rv .= &ui_form_end() if ($cgi);
+$rv .= "</center>\n";
+return $rv;
+}
+
 # js_checkbox_disable(name, &checked-disable, &checked-enable, [tag])
 sub js_checkbox_disable
 {
-local $rv;
-local $f;
+my $rv;
+my $f;
 foreach $f (@{$_[1]}) {
 	$rv .= "form.elements[\"$f\"].disabled = $_[0].checked; ";
 	}
@@ -1559,7 +1624,7 @@ return $_[3] ? "$_[3]='$rv'" : $rv;
 # Returns HTML to trigger a redirect to some URL
 sub js_redirect
 {
-local ($url) = @_;
+my ($url) = @_;
 if (defined(&theme_js_redirect)) {
 	return &theme_js_redirect(@_);
 	}
