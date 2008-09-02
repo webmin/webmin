@@ -1972,7 +1972,8 @@ if ($lshow) {
 	}
 local $u;
 foreach $u (@$users) {
-	$u->{'real'} =~ s/,.*$// if ($config{'extra_real'});
+	$u->{'real'} =~ s/,.*$// if ($config{'extra_real'} ||
+				     $u->{'real'} =~ /,$/);
 	local @cols;
 	push(@cols, "") if ($anyedit && $u->{'noedit'});
 	push(@cols, &user_link($u));
