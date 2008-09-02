@@ -26,23 +26,16 @@ $default = $text{'opts_default'};
 $none = $text{'opts_none'};
 $no_ = $text{'opts_no'};
 
-print "<form action=save_opts.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'debug_title'}</b></td></tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of form
+print &ui_form_start("save_opts.cgi");
+print &ui_table_start($text{'debug_title'}, "width=100%", 4);
 
-print "<tr>\n";
 &option_freefield("debug_peer_list", 65);
-print "</tr>\n";
 
-print "<tr>\n";
 &option_freefield("debug_peer_level", 15);
-print "</tr>\n";
 
-print "</table></td></tr></table><p>\n";
-print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
-print &ui_hr();
-print "<font size=\"-1\"> <p>", &text('debug_version', postfix_module_version()),
-      "</p></font>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
+
 &ui_print_footer("", $text{'index_return'});
 

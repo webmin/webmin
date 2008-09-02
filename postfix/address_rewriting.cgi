@@ -18,7 +18,6 @@
 
 require './postfix-lib.pl';
 
-
 $access{'address_rewriting'} || &error($text{'address_rewriting_ecannot'});
 &ui_print_header(undef, $text{'address_rewriting_title'}, "");
 
@@ -26,36 +25,24 @@ $default = $text{'opts_default'};
 $none = $text{'opts_none'};
 $no_ = $text{'opts_no'};
 
-print "<form action=save_opts.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'address_rewriting_title'}</b></td></tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_opts.cgi");
+print &ui_table_start($text{'address_rewriting_title'}, "width=100%", 4);
 
-print "<tr>\n";
 &option_yesno("allow_percent_hack");
 &option_yesno("append_at_myorigin");
-print "</tr>\n";
 
-print "<tr>\n";
 &option_yesno("append_dot_mydomain");
 &option_yesno("swap_bangpath", 'help');
-print "</tr>\n";
 
-print "<tr>\n";
-&option_radios_freefield("empty_address_recipient", 20, $text{'opt_empty_recip_default'});
-print "</tr>\n";
+&option_radios_freefield("empty_address_recipient", 35, $text{'opt_empty_recip_default'});
 
-print "<tr>\n";
 &option_radios_freefield("masquerade_domains", 35, $none);
-print "</tr>\n";
 
-print "<tr>\n";
 &option_radios_freefield("masquerade_exceptions", 35, $none);
-print "</tr>\n";
 
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
-print "</table></td></tr></table><p>\n";
-print "<input type=submit value=\"$text{'opts_save'}\"></form>\n";
 &ui_print_footer("", $text{'index_return'});
 
 

@@ -178,7 +178,7 @@ new_aliasmsg=Click this button to create a new alias
 
 
 local_delivery_ecannot=You are not allowed to edit local delivery options
-local_delivery_title=Local delivery
+local_delivery_title=Local Delivery
 opts_local_transport=Name of the transport for local deliveries
 opts_local_transport_local=Local
 opts_local_command_shell=Shell to use for delivery to external command
@@ -204,7 +204,7 @@ opts_prepend_delivered_header=Prepend a <tt>Delivered-To:</tt> when...
 opts_prepend_delivered_header_default=Default
 
 
-resource_title=General resource control
+resource_title=General Resource Control
 resource_ecannot=You are not allowed to edit resource control parameters
 opts_bounce_size_limit=Max size of bounced message
 opts_command_time_limit=Max time for delivery to external commands
