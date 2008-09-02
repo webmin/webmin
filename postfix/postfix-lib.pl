@@ -369,10 +369,9 @@ sub option_freefield
     my $v = &get_current_value($name);
     my $key = 'opts_'.$name;
     
-    printf "<td>".&hlink("<b>$text{$key}</b>", "opt_".$name)."</td> <td %s nowrap>\n",
-    $length > 20 ? "colspan=3" : "";
-    
-    print &ui_textbox($name."_def", $v, $length),"</td>\n";
+    print &ui_table_row(&hlink($text{$key}, "opt_".$name),
+	&ui_textbox($name."_def", $v, $length),
+	$length > 20 ? 3 : 1);
 }
 
 
@@ -384,14 +383,11 @@ sub option_yesno
     my $v = &get_current_value($name);
     my $key = 'opts_'.$name;
 
-    defined($_[1]) ?
-	print "<td>".&hlink("<b>$text{$key}</b>", "opt_".$name)."</td> <td nowrap>\n"
-    :
-	print "<td><b>$text{$key}</b></td> <td nowrap>\n";
-    
-    print &ui_radio($name."_def", lc($v),
-		    [ [ "yes", $text{'yes'} ], [ "no", $text{'no'} ] ]);
-    print "</td>\n";
+    print &ui_table_row(defined($_[1]) ? &hlink($text{$key}, "opt_".$name)
+		       		       : $text{$key},
+			&ui_radio($name."_def", lc($v),
+				  [ [ "yes", $text{'yes'} ],
+				    [ "no", $text{'no'} ] ]));
 }
 
 # option_select(name_of_option, &options, [help])
