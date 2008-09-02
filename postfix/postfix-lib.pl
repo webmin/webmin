@@ -681,7 +681,7 @@ sub regenerate_any_table
     {
         next unless $map;
 	if (&file_map_type($map->[0])) {
-		local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map->[1] 2>&1");
+		local $out = &backquote_logged("$config{'postfix_lookup_table_command'} -c $config_dir $map->[0]:$map->[1] 2>&1");
 		if ($?) { &error(&text('regenerate_table_efailed', $map->[1], $out)); }
 	}
     }
