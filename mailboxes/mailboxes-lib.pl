@@ -429,8 +429,8 @@ return ref($err) ? undef : $err;
 # Outputs HTML for a table of users, with the appropriate sorting and mode
 sub show_users_table
 {
-local @users = @{$_[0]};
-local ($u, %size, %incount, %sentcount, %foldercount);
+my @users = @{$_[0]};
+my ($u, %size, %incount, %sentcount, %foldercount);
 if ($config{'sort_mode'} == 2 || $config{'show_size'} > 0 || $_[1] ||
     $config{'show_count'} || $config{'show_sent'}) {
 	# Need to check folders
@@ -488,13 +488,14 @@ elsif ($config{'show_size'} == 2) {
 	push(@ccols, $text{'find_sentcount'}) if ($config{'show_sent'});
 	push(@ccols, $text{'find_fcount'}) if (%foldercount);
 	print &ui_columns_start( [ $text{'find_user'}, $text{'find_real'},
-				   $text{'find_group'}, $text{'find_home'},
+				   $text{'find_group'},
 				   $text{'find_size'}, @ccols ], 100);
 	foreach $u (@users) {
 		local $g = getgrgid($u->[3]);
 	        next if ($config{'ignore_users_enabled'} == 1 &&
 			 &indexof($u->[0], @ignore_users_list) >= 0);
-		$u->[6] =~ s/,.*$// if ($uconfig{'extra_real'});
+		$u->[6] =~ s/,.*$// if ($uconfig{'extra_real'} ||
+				        $u->[6] =~ /,$/);
 		local $home = $u->[7];
 		if (length($home) > 30) {
 			$home = "...".substr($home, -30);
@@ -511,7 +512,7 @@ elsif ($config{'show_size'} == 2) {
 			}
 		print &ui_columns_row(
 			[ "<a href='list_mail.cgi?user=$u->[0]'>$u->[0]</a>",
-			  $u->[6], $g, $home,
+			  $u->[6], $g,
 			  $size{$u->[0]} == 0 ? $text{'index_empty'} :
 				&nice_size($size{$u->[0]}),
 			  @ccols ],
@@ -521,40 +522,36 @@ elsif ($config{'show_size'} == 2) {
 	}
 else {
 	# Just showing username (and maybe size)
-	print &ui_table_start($text{'index_header'}, "width=100%", $config{'column_count'});
-	local $i = 0;
+	my @grid;
 	foreach $u (@users) {
 	        next if ($config{'ignore_users_enabled'} == 1 &&
 			 &indexof($u->[0], @ignore_users_list) >= 0);
-		print "<tr>\n" if ($i % $config{'column_count'} == 0);
-		print "<td width=", int(100/$config{'column_count'}), "%><a href='list_mail.cgi?user=$u->[0]'>";
-		print $u->[0];
+		my $g = "<a href='list_mail.cgi?user=".&urlize($u->[0])."'>";
+		$g .= &html_escape($u->[0]);
 		if ($config{'show_size'} == 1) {
 			local @folders = &list_user_folders(@$u);
 			local $total = &folder_size(@folders);
 			if ($size{$u->[0]} > 0) {
-				print $config{'show_size_below'} ? '<BR>' : ' ';
-				print "(";
+				$g .= $config{'show_size_below'} ? '<br>' : ' ';
+				$g .= "(";
 				if (%foldercount) {
-					print &text('find_in',
+					$g .= &text('find_in',
 						&nice_size($size{$u->[0]}),
 						$foldercount{$u->[0]});
 					}
 				else {
-					print &nice_size($size{$u->[0]});
+					$g .= &nice_size($size{$u->[0]});
 					}
-				print ")";
+				$g .= ")";
 				}
 			}
-		print "</a></td>\n";
-		print "</tr>\n" if ($i % $config{'column_count'} == ($config{'column_count'} - 1));
-		$i++;
+		$g .= "</a>";
+		push(@grid, $g);
 		}
-	if ($i % $config{'column_count'}) {
-		while($i++ % $config{'column_count'}) { print "<td width=", int(100/$config{'column_count'}), "%></td>\n"; }
-		print "</tr>\n";
-		}
-	print &ui_table_end();
+	my $w = int(100/$config{'column_count'});
+	my @tds = map { "width=".int($w)."%" } (1..$config{'column_count'});
+	print &ui_grid_table(\@grid, $config{'column_count'}, 100, \@tds, undef,
+			     $text{'index_header'});
 	}
 }
 

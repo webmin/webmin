@@ -54,11 +54,12 @@ if ($in{'start'} >= @mail && $in{'jump'}) {
 # Show page flipping arrows
 &show_arrows();
 
-print "<form action=delete_mail.cgi method=post>\n";
-print "<input type=hidden name=user value='$in{'user'}'>\n";
-print "<input type=hidden name=folder value='$folder->{'index'}'>\n";
-print "<input type=hidden name=mod value=",&modification_time($folder),">\n";
-print "<input type=hidden name=start value='$in{'start'}'>\n";
+# Start of the deletion / move form
+print &ui_form_start("delete_mail.cgi", "post");
+print &ui_hidden("user", $in{'user'});
+print &ui_hidden("folder", $folder->{'index'});
+print &ui_hidden("mod", &modification_time($folder));
+print &ui_hidden("start", $in{'start'});
 if ($config{'top_buttons'} && @mail) {
 	&show_buttons(1, \@folders, $folder, \@mail, $in{'user'});
 	@links = ( &select_all_link("d", 1),
@@ -225,30 +226,26 @@ if ($config{'log_read'}) {
 
 sub show_arrows
 {
-print "<center>\n";
-print "<form action=list_mail.cgi><font size=+1>\n";
-print "<input type=hidden name=user value='$in{'user'}'>\n";
-if ($in{'start'}+$perpage < @mail) {
-	printf "<a href='list_mail.cgi?start=%d&user=%s&folder=%d'>".
-	       "<img src=/images/left.gif border=0 align=middle></a>\n",
-		$in{'start'}+$perpage, $uuser, $in{'folder'};
-	}
-
-local $s = @mail-$in{'start'};
-local $e = @mail-$in{'start'}-$perpage+1;
-if (@mail) {
-	print &text('mail_pos', $s, $e < 1 ? 1 : $e, scalar(@mail), $sel);
-	}
-else {
-	print &text('mail_none', $sel);
-	}
-print "</font><input type=submit value='$text{'mail_fchange'}'>\n";
-
-if ($in{'start'}) {
-	printf "<a href='list_mail.cgi?start=%d&user=%s&folder=%d'>".
-	       "<img src=/images/right.gif border=0 align=middle></a>\n",
-		$in{'start'}-$perpage, $uuser, $in{'folder'};
-	}
-print "</form></center>\n";
+my $link = "list_mail.cgi?user=".&urlize($in{'user'})."&folder=".$in{'folder'};
+my $left = $in{'start'} ?
+	   $link."&start=".($in{'start'}-$perpage) : undef;
+my $right = $in{'start'}+$perpage < @mail ?
+	    $link."&start=".($in{'start'}+$perpage) : undef;
+my $first = $in{'start'} ?
+	    $link."&start=0" : undef;
+my $last = $in{'start'}+$perpage < @mail ?
+	   $link."&start=".(int((scalar(@mail)-$perpage-1)/$perpage + 1)*$perpage) : undef;
+my $s = @mail-$in{'start'};
+my $e = @mail-$in{'start'}-$perpage+1;
+print &ui_page_flipper(
+	@mail ? &text('mail_pos', $s, $e < 1 ? 1 : $e, scalar(@mail), $sel)
+	      : &text('mail_none', $sel),
+	&ui_submit($text{'mail_fchange'}).&ui_hidden("user", $in{'user'}),
+	"list_mail.cgi",
+	$left,
+	$right,
+	$first,
+	$last,
+	);
 }
 

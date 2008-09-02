@@ -88,7 +88,7 @@ else {
 
 if (&allowed_directory()) {
 	# Show form to view any mail file
-	print "<p>\n";
+	print &ui_hr();
 	print &ui_form_start("list_mail.cgi");
 	print &ui_submit($text{'index_file'}),"\n";
 	print &ui_textbox("user", undef, 40),"\n",
