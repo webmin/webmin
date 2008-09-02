@@ -92,7 +92,7 @@ index_contains=bevat
 index_empty=Geen mail
 index_eperl=De Perl module $1 die nodig is voor de geselecteerde SMTP authenticatie mode is niet geinstalleerd of mist een afhankelijke module. <a href='$2'>Klik hier</a> om het nu te installeren.
 index_equals=Gelijken
-index_esystem=Geen van de ondersteunende mail servers (Qmail, Postfix and Sendmail) zijn gedetecteerd op uw systeem. U moet de <a href='$1'>module configuratie</a> handmatig veranderen om het pad naar de mail server te corrigeren.
+index_esystem=Geen van de ondersteunende mail servers (Exim, Qmail, Postfix and Sendmail) zijn gedetecteerd op uw systeem. U moet de <a href='$1'>module configuratie</a> handmatig veranderen om het pad naar de mail server te corrigeren.
 index_esystem2=De mail server waarnaar verwezen word in de <a href='$1'>module configuratie</a> is niet gevonden op uw systeem. U moet uw configuratie veranderen om de juiste server te gebruiken.
 index_esystem3=Er onstand een fout tijdens het kontakt maken met het mail systeem waarnaar verwezen word in de <a href='$1'>module configuratie</a> : $2.
 index_file=Lees Mail in File:

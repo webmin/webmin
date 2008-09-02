@@ -92,7 +92,7 @@ index_contains=contiene
 index_empty=Nessun messaggio
 index_eperl=Il modulo Perl $1 necessario per la modalit&#224; di autenticazione SMTP selezionata non &#232; installato, o manca un modulo da cui dipende. <a href='$2'>Clicca qui</a> per installarlo adesso.
 index_equals=uguale
-index_esystem=Nessun server di posta supportato (Qmail, Postfix and Sendmail) &#232; stato individuato nel tuo sistema. E' necessario verificare la <a href='$1'>configurazione del modulo</a> per impostare manualmente il server di posta eventualmente installato e i possibili percorsi in cui &#232; salvata la posta.
+index_esystem=Nessun server di posta supportato (Exim, Qmail, Postfix and Sendmail) &#232; stato individuato nel tuo sistema. E' necessario verificare la <a href='$1'>configurazione del modulo</a> per impostare manualmente il server di posta eventualmente installato e i possibili percorsi in cui &#232; salvata la posta.
 index_esystem2=Il server di posta impsotato nella <a href='$1'>configurazione del modulo</a> non &#232; stato trovato nel sistema. E' necessario verificare la configurazione impostando il aserver corretto da usare.
 index_esystem3=Si &#232; verificato un errore durante la comunicazione con il sistema di posta impostato nella <a href='$1'>configurazione del modulo</a>: $2
 index_file=Leggi la posta nel file:

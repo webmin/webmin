@@ -248,6 +248,10 @@ if (!defined(@mail_style_cache)) {
 			# vpopmail always uses ~/Maildir
 			return ( undef, 0, undef, "Maildir" );
 			}
+ 		elsif ($config{'mail_system'} == 6) {
+ 			# localmail using smail or exim
+ 			return ( "/var/spool/mail", 0, undef, undef );
+ 			}
 		else {
 			# No mail server set yet!
 			return (undef, undef, undef, undef);
@@ -354,6 +358,7 @@ return $_[0]->{'type'} == 0 &&
 			 [ "qmailadmin", 2 ],
 			 [ "postfix", 0 ],
 			 [ "sendmail", 1 ],
+ 			 [undef, 6, \&check_exim ]
 			);
 
 # detect_mail_system()
@@ -412,6 +417,14 @@ sub check_vpopmail
 return 0 if (&foreign_installed("qmailadmin", 1) != 2);
 return -x "$config{'vpopmail_dir'}/bin/vadddomain";
 }
+
+# check_exim()
+# Make sure Exim is installed
+sub check_exim
+{
+return &has_command('exim');
+}
+
 
 # test_qmail_ldap()
 # Returns undef the Qmail+LDAP database can be contacted OK, or an error message
@@ -707,8 +720,9 @@ sub list_mail_users
 {
 local ($max, $filter) = @_;
 local @rv;
-if ($config{'mail_system'} < 3) {
-	# Postfix, Sendmail and Qmail all use Unix users
+
+if ($config{'mail_system'} < 3 or $config{'mail_system'} == 6 ) {
+	# Postfix, Sendmail, smail, exim and Qmail all use Unix users
 	local %found;
 	local %hfound;
 	local ($dir, $style, $mailbox, $maildir) = &get_mail_style();
@@ -798,8 +812,8 @@ return @rv;
 # Looks up a user by name
 sub get_mail_user
 {
-if ($config{'mail_system'} < 3) {
-	# Just find Unix user
+if ($config{'mail_system'} < 3 || $config{'mail_system'} == 6) {
+	# Just find Unix user for Sendmail, Postfix, Qmail and Exim
 	return getpwnam($_[0]);
 	}
 elsif ($config{'mail_system'} == 4) {

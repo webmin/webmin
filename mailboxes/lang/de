@@ -90,7 +90,7 @@ index_contains=beinhaltet
 index_empty=Keine E-Mail
 index_eperl=Das Perl-Modul $1, welches f&#252;r den ausgew&#228;hlten SMTP-Authentisierungsmodus n&#246;tig ist, ist nicht installiert oder es fehlt ein zur Ausf&#252;hrung abh&#228;ngiges Modul. <a href='$2'>Klicken Sie hier</a> um dieses zu installieren.
 index_equals=ist gleich
-index_esystem=Keiner der unterst&#252;tzten E-Mailserver (Qmail, Postfix und Sendmail) wurde auf Ihrem System gefunden. Sie m&#252;ssen die <a href='$1'>Modulkonfiguration</a> manuell anpassen und dort den E-Mailserver und die zugeh&#246;rigen Serverpfade eintragen.
+index_esystem=Keiner der unterst&#252;tzten E-Mailserver (Exim, Qmail, Postfix und Sendmail) wurde auf Ihrem System gefunden. Sie m&#252;ssen die <a href='$1'>Modulkonfiguration</a> manuell anpassen und dort den E-Mailserver und die zugeh&#246;rigen Serverpfade eintragen.
 index_esystem2=Der in der <a href='$1'>Modulkonfiguration</a> gesetzte E-Mailserver wurde auf ihrem System nicht gefunden. Sie m&#252;ssen dort die Konfiguration so anpassen, da&#223; der richtige E-Mailserver benutzt wird.
 index_esystem3=Ein Fehler ist beim Zugriff auf das Mailsystem in <a href='$1'>Modulekonfiguration</a> augetreten: $2.
 index_file=Lese E-Mail in Datei:

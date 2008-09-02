@@ -51,7 +51,7 @@ from_virtualmin=Get From: address from Virtualmin?,1,1-Yes,0-No
 from_dom=Domain to use in From: address,3,System hostname
 
 line1=System configuration,11
-mail_system=Mail server installed,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,3-Detect automatically
+mail_system=Mail server installed,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Detect automatically
 send_mode=Send mail using,10,-Mail server program,SMTP server
 no_crlf=Add carriage return ( \r ) to each line?,1,0-Yes,1-No
 smtp_user=SMTP login name for mail server,3,None

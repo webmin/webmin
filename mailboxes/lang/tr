@@ -90,7 +90,7 @@ index_contains=içeriyor
 index_empty=Posta yok
 index_eperl=Seçilen STMP doðrulama modu için $1 Perl modülüne ihtiyaç. <a href='$2'>buraya týklayara yükleyebilirsiniz</a>
 index_equals=Eþitlik
-index_esystem=Sisteminizde desteklenen posta sunucularý (Qmail, Postfix ve Sendmail) yoktur. Posta sunucusunu ve mail yolunu açmak için <a href='$1'>modül yapýlandýrmasý</a>'ný elle ayarlamaya gereksinim duyacaksýnýz.
+index_esystem=Sisteminizde desteklenen posta sunucularý (Exim, Qmail, Postfix ve Sendmail) yoktur. Posta sunucusunu ve mail yolunu açmak için <a href='$1'>modül yapýlandýrmasý</a>'ný elle ayarlamaya gereksinim duyacaksýnýz.
 index_esystem2=<a href='$1'>modül yapýlandýrma</a>'daki mail sunucu ayarý sisteminizde bulunamadý. Doðru sunucuyu kullanmak için bu yapýlandýrmayý ayarlamanýz gerekmektedir.
 index_esystem3=<a href='$1'>bu adresteki</a> posta sistem ayarýna baglanýrken hata oluþtu : $2
 index_file=Dosyadaki postayý oku:

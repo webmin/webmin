@@ -92,7 +92,7 @@ index_contains=obsahuje
 index_empty=®ádný mail
 index_eperl=Perlový podul $1 potøebný pro vybraný mód ovìøení SMTP není instalován nebo chybí závislý modul. <a href='$2'>Kliknìte zde</a> pro instalaci.
 index_equals=odpovídá
-index_esystem=Nebyl detekován ¾ádný z podporovaných serverù (Qmail, Postfix a Sendmail). Musíte upravit <a href='$1'>konfiguraci modulu</a> a nastavit mail server ruènì.
+index_esystem=Nebyl detekován ¾ádný z podporovaných serverù (Exim, Qmail, Postfix a Sendmail). Musíte upravit <a href='$1'>konfiguraci modulu</a> a nastavit mail server ruènì.
 index_esystem2=Mail server nastavený v <a href='$1'>konfiguraci modulu</a> nebyl ve va¹em systému nalezen. Musíte upravit konfiguraci a nastavit server správnì.
 index_esystem3=Vyskytla se chyba dotykající se po¹tovního systému nastaveného v <a href='$1'>konfigiraci modulu</a> : $2.
 index_file=Ètení po¹ty ze souboru:

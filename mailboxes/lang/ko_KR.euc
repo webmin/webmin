@@ -91,7 +91,7 @@ ham_title=Ham 으로 보고
 index_contains=포함
 index_empty=메일이 없습니다.
 index_eperl=SMTP 인증 모드를 위한 $1 펄모듈이 설치되어 있지 않거나, 의존성이 걸려있는 도뮬이 설치되어 있지 않습니다. 지금 설치 하려면 <a href='$2'>여기를 클릭</a>하십시오.
-index_esystem=메일 서버(Qmail, Postfix, Sendmail)를 시스템에서 찾을 수 없습니다. <a href='$1'>모듈 구성</a>에 메일 서버를 설정하고, 메일 경로를 수동으로 지정해 줘야 할 수도 있습니다.
+index_esystem=메일 서버(Exim, Qmail, Postfix, Sendmail)를 시스템에서 찾을 수 없습니다. <a href='$1'>모듈 구성</a>에 메일 서버를 설정하고, 메일 경로를 수동으로 지정해 줘야 할 수도 있습니다.
 index_esystem2=시스템에서 <a href='$1'>모듈 구성</a>에 설정되어 있는 메일 서버를 찾을 수 없습니다. 설정에서 정확한 서버를 재설정 하십시오.
 index_esystem3=<a href='$1'>모듈 구성</a>에 설정되어 있는 메일 시스템에 연결하는 동안 에러가 발생했습니다 :$2.
 index_file=파일의 메일 읽기:
