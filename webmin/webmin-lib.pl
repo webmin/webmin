@@ -359,7 +359,7 @@ else {
 
 	# Copy appropriate config file from modules to /etc/webmin
 	local @permmods = grep { !-d "$config_directory/$_" } @newmods;
-	system("cd $root_directory ; $perl $root_directory/copyconfig.pl '$gconfig{'os_type'}/$gconfig{'real_os_type'}' '$gconfig{'os_version'}/$gconfig{'real_os_version'}' '$install_root_directory' '$config_directory' ".join(' ', @realmods));
+	system("cd $root_directory ; $perl $root_directory/copyconfig.pl '$gconfig{'os_type'}/$gconfig{'real_os_type'}' '$gconfig{'os_version'}/$gconfig{'real_os_version'}' '$install_root_directory' '$config_directory' ".join(' ', @realmods)." >/dev/null");
 
 	# Set correct permissions on *new* config directory
 	if (&supports_users()) {
