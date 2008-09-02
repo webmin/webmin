@@ -106,6 +106,7 @@ if ($config{'extra_real'}) {
 	}
 else {
 	# Just a name
+	$uinfo{'real'} =~ s/,*$//;	# Strip empty extra fields
 	print &ui_table_row(&hlink($text{'real'}, "real"),
 		&ui_textbox("real", $uinfo{'real'}, 40));
 	}
