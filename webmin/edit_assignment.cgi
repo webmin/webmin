@@ -2,23 +2,24 @@
 
 require './webmin-lib.pl';
 
-@modules = grep { check_os_support($_) } get_all_module_infos();
+@modules = grep { &check_os_support($_) } &get_all_module_infos();
 @modules = sort { $a->{'desc'} cmp $b->{'desc'} } @modules;
-read_file("$config_directory/webmin.catnames", \%catnames);
+&read_file("$config_directory/webmin.catnames", \%catnames);
 
-ui_print_header(undef, $text{'assignment_title'}, undef);
-print "$text{'assignment_desc'}<p>\n";
-print ui_form_start("save_assignment.cgi", "post");
-print ui_table_start($text{'assignment_header'});
+&ui_print_header(undef, $text{'assignment_title'}, undef);
+
+print $text{'assignment_desc'},"<p>\n";
+
+print &ui_form_start("save_assignment.cgi", "post");
+@grid = ( );
 foreach ( @modules ){
-    $a++;
-    print "<tr></tr>" if $a%2;
-    print qq(<td>$_->{desc}</td><td>), cats($_->{dir}, $_->{category}), "</td>\n";
-}
+    push(@grid, $_->{'desc'} || $_->{'dir'});
+    push(@grid, &cats($_->{'dir'}, $_->{'category'}));
+    }
+print &ui_grid_table(\@grid, 4, 100, undef, undef, $text{'assignment_header'});
+print &ui_form_end([ [ undef, $text{'assignment_ok'} ] ]);
 
-print ui_table_end();
-print ui_form_end([ [ "save", $text{'assignment_ok'} ] ]);
-ui_print_footer("", $text{'index_return'});
+&ui_print_footer("", $text{'index_return'});
 
 sub cats {
     my $cats;
@@ -32,9 +33,7 @@ sub cats {
     foreach (keys %catnames) {
 	$cats{$_} = $catnames{$_};
 	}
-    foreach $c (sort { $cats{$a} cmp $cats{$b} } keys %cats) {
-	$cats .= sprintf "<option value='%s' %s>%s\n",
-			$c, $_[1] eq $c ? 'selected' : '', $cats{$c};
-	}
-    $cats = qq(<select name="$_[0]">$cats\n</select>\n);
+    return &ui_select($_[0], $_[1],
+		[ map { [ $_, $cats{$_} ] }
+		      sort { $cats{$a} cmp $cats{$b} } keys %cats ]);
 }
