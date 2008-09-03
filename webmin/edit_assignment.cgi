@@ -2,7 +2,8 @@
 
 require './webmin-lib.pl';
 
-@modules = grep { &check_os_support($_) } &get_all_module_infos();
+@modules = grep { &check_os_support($_) &&
+		  !$_->{'hidden'} } &get_all_module_infos();
 @modules = sort { $a->{'desc'} cmp $b->{'desc'} } @modules;
 &read_file("$config_directory/webmin.catnames", \%catnames);
 
