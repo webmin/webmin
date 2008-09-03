@@ -40,11 +40,10 @@ else {
 &get_zone_defaults(\%zd);
 
 if ($in{'local'}) {
-	open(LOCAL, $in{'local'}) || &error($text{'mass_elocal'});
-	while(<LOCAL>) {
-		$local .= $_;
-		}
-	close(LOCAL);
+	&allowed_zone_file(\%access, $in{'local'}) ||
+		&error($text{'mass_elocalcannot'});
+	$local = &read_file_contents($in{'local'});
+	$local || &error($text{'mass_elocal'});
 	print "<b>",&text('mass_dolocal', "<tt>$in{'local'}</tt>"),"</b><br>\n";
 	&execute_batchfile($local);
 	print "<b>",$text{'mass_done'},"</b><p>\n";
