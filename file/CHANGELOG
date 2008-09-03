@@ -41,3 +41,5 @@ Added Module Config options for the default unzip mode and default user to uploa
 Added a Module Config option to specify file extensions to treat as HTML, rather than always using only .html and .htm.
 ---- Changes since 1.380 ----
 Use of the Preview button can now be controlled on the access control page.
+---- Changes since 1.430 ----
+POSIX ACLs can now be edited on FreeBSD, if the setfacl and getfacl commands are installed.
