@@ -2,4 +2,4 @@ name=Exim Mail Server
 category=servers
 hidden=1
 desc_ca=Servidor de Correu Exim
-desc_de=Exim Mailserver
+desc=Exim Mailserver
