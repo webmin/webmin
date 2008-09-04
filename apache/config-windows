@@ -15,3 +15,4 @@ start_cmd=net start apache2
 stop_cmd=net stop apache2
 #apply_cmd="c:/program files/apache group/apache2/bin/Apache.exe" -k restart
 auto_mods=1
+show_names=0
