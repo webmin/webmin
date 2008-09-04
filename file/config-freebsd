@@ -6,3 +6,5 @@ force_text=0
 defzip=0
 defuser=root
 ufs_acl=&has_command("getfacl") && &has_command("setfacl")
+getfacl=getfacl
+setfacl=setfacl -M -
