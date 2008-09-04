@@ -78,7 +78,7 @@ else {
 	print &ui_columns_start([ "",
 				  $text{'awl_email'},
 				  $text{'awl_ip'},
-				  $text{'awl_score'} ], \@tds);
+				  $text{'awl_score'} ], undef, 0, \@tds);
 	foreach $k (@keys) {
 		($email, $ip, $rest) = split(/\|/, $k);
 		if ($ip eq "ip=none") {
@@ -95,7 +95,9 @@ else {
 		}
 	print &ui_columns_end();
 	print &ui_links_row(\@links);
-	print &ui_form_end([ [ undef, $text{'awl_delete'} ] ]);
+	print &ui_form_end([ [ undef, $text{'awl_delete'} ],
+			     [ 'white', $text{'awl_white'} ],
+			     [ 'black', $text{'awl_black'} ] ]);
 	}
 &close_auto_whitelist_dbm();
 

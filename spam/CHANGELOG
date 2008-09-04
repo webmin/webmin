@@ -13,3 +13,5 @@ Added the SQL and LDAP Databases page for configuring SpamAssassin to use a MySQ
 Added global configuration settings to use MySQL, PostgreSQL or LDAP backends for storing preferences.
 ---- Changes since 1.410 ----
 Auto-whitelists can now be viewed, deleted from and cleared for all users on the system. An access control option allows this to be limited to just certain users or group members.
+---- Changes since 1.430 ----
+Added buttons to the auto-whitelist page for permanently allowing or denying selected addresses.
