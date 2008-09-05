@@ -3471,6 +3471,7 @@ class ACLEntry
 	String type;
 	String owner;
 	boolean read, write, exec;
+	boolean empty_owner = false;
 
 	ACLEntry(String l, ACLWindow w)
 	{
@@ -3488,9 +3489,11 @@ class ACLEntry
 			owner = null;
 		}
 	String rwx = tok.nextToken();
-	if (rwx.length() == 0)
-		rwx = tok.nextToken();	// getfacl outputs a blank owner for mask
-					// and other on some systems
+	if (rwx.length() == 0) {
+		rwx = tok.nextToken();	// getfacl outputs a blank owner for
+					// mask and other on some systems
+		empty_owner = true;
+		}
 	read = (rwx.charAt(0) == 'r');
 	write = (rwx.charAt(1) == 'w');
 	exec = (rwx.charAt(2) == 'x');
@@ -3527,7 +3530,9 @@ class ACLEntry
 	{
 	String rv = def ? "default:" : "";
 	rv += type+":";
-	if (!type.equals("mask") && !type.equals("other"))
+	if (!type.equals("mask") && !type.equals("other") || empty_owner)
+		// mask and other types have no owner field at all, except
+		// on some operating systems like FreeBSD where it is empty
 		rv += (owner == null ? "" : owner)+":";
 	rv += (read ? 'r' : '-');
 	rv += (write ? 'w' : '-');
@@ -3557,13 +3562,14 @@ class ACLEditor extends FixedFrame implements CbButtonCallback
 	}
 
 	// Creating a new ACL entry
-	ACLEditor(ACLWindow w, String type, boolean def)
+	ACLEditor(ACLWindow w, String type, boolean def, boolean empty_owner)
 	{
 	aclwin = w;
 	filemgr = aclwin.filemgr;
 	acl = new ACLEntry(aclwin);
 	acl.def = def;
 	acl.type = type;
+	acl.empty_owner = empty_owner;
 	creating = true;
 	makeUI();
 	}
@@ -3815,7 +3821,17 @@ class ACLWindow extends FixedFrame implements CbButtonCallback,MultiColumnCallba
 					}
 				}
 			}
-		new ACLEditor(this, t, def);
+		// Check if owner field exists and is empty for existing
+		// mask or other fields
+		boolean new_empty_owner = false;
+		for(int i=0; i<acllist.size(); i++) {
+			ACLEntry a = (ACLEntry)acllist.elementAt(i);
+			if ((a.type.equals("mask") || a.type.equals("other")) &&
+			   a.empty_owner) {
+				new_empty_owner = true;
+				}
+			}
+		new ACLEditor(this, t, def, new_empty_owner);
 		}
 	else if (b == cancel) {
 		// Don't save

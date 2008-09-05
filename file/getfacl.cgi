@@ -21,7 +21,7 @@ else {
 	else {
 		$in{'file'} =~ s/^\///;
 		}
-	$out = `$getfacl '$in{'file'}' 2>&1`;
+	$out = &backquote_command($getfacl." ".quotemeta($in{'file'})." 2>&1");
 	if ($?) {
 		print $out,"\n";
 		}
