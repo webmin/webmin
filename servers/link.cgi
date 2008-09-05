@@ -31,21 +31,21 @@ if ($s->{'autouser'}) {
 	else {
 		# No - need to display a login form
 		&ui_print_header(undef, $text{'login_title'}, "");
-		print "<center>",&text('login_desc', "<tt>$s->{'host'}</tt>"),
-		      "</center><p>\n";
-		print "<form action=/$module_name/login.cgi method=post>\n";
-		print "<input type=hidden name=id value='$id'>\n";
-		print "<center><table border>\n";
-		print "<tr $tb> <td><b>$text{'login_header'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table cellpadding=2>\n";
-		print "<tr> <td><b>$text{'login_user'}</b></td>\n";
-		print "<td><input name=user size=20></td> </tr>\n";
-		print "<tr> <td><b>$text{'login_pass'}</b></td>\n";
-		print "<td><input name=pass size=20 type=password></td>\n";
-		print "</tr> </table></td></tr></table>\n";
-		print "<input type=submit value='$text{'login_login'}'>\n";
-		print "<input type=reset value='$text{'login_clear'}'>\n";
-		print "</center></form>\n";
+
+		print &text('login_desc', "<tt>$s->{'host'}</tt>"),"<p>\n";
+
+		print &ui_form_start("/$module_name/login.cgi", "post");
+		print &ui_hidden("id", $id);
+
+		print &ui_table_start($text{'login_header'}, undef, 2);
+		print &ui_table_row($text{'login_user'},
+			&ui_textbox("user", undef, 20));
+		print &ui_table_row($text{'login_pass'},
+			&ui_password("pass", undef, 20));
+		print &ui_table_end();
+
+		print &ui_form_end([ [ undef, $text{'login_login'} ] ]);
+
 		&ui_print_footer("", $text{'index_return'});
 		exit;
 		}
