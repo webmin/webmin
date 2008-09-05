@@ -2631,9 +2631,6 @@ if(navigator.productSub<20021201){
 alert("You need at least Mozilla-1.3 Alpha.\nSorry, your Gecko is not supported.");
 return false;
 }
-if(navigator.productSub<20030210){
-alert("Mozilla < 1.3 Beta is not supported!\nI'll try, though, but it might not work.");
-}
 }
 return Xinha.is_gecko||Xinha.ie_version>=5.5;
 };
