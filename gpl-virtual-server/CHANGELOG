@@ -490,3 +490,6 @@ If a backup is taken on a system that uses ~/mail for user folders and restored 
 Preserve encrypted passwords when backing up domains, in case they don't match the plaintext password stored by Virtualmin. Also, have validation report an error in the case of a mismatch.
 ---- Changes since 3.61 ----
 Added a new sort mode (used by default for new installs) to order virtual servers by domain name, but with sub-servers indented under them.
+Included domains for SPF for new virtual servers can now be set in server templates.
+Added a button to the Edit Mailbox page for logging into Usermin as a user without having to enter their password. Requires Webmin 1.440 or later though.
+On FreeBSD, the Gnu tar command gtar is used in preference to regular tar when installed. This allows incremental backups to be performed.
