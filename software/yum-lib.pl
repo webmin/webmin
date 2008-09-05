@@ -27,9 +27,11 @@ while(<CMD>) {
 	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated):\s+(.*)/) {
 		local @pkgs = split(/\s+/, $2);
 		foreach my $p (@pkgs) {
-			if ($p !~ /:/ && $p =~ /^(\S+)\.(\S+)$/ &&
-			    $p =~ /[^0-9\.\-\_i]/) {
-				push(@rv, $1);
+			if ($p !~ /:/ && $p =~ /^(\S+)\.(\S+)$/) {
+				my $pname = $1;
+				if ($p =~ /[^0-9\.\-\_i]/) {
+					push(@rv, $pname);
+					}
 				}
 			}
 		}
