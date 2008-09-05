@@ -20,11 +20,10 @@ $access{'links'} || &error($text{'link_ecannot'});
 $url = "$gconfig{'webprefix'}/$module_name/link.cgi/$s->{'id'}";
 $| = 1;
 $meth = $ENV{'REQUEST_METHOD'};
+&get_miniserv_config(\%miniserv);
 
 if ($s->{'autouser'}) {
 	# Login is variable .. check if we have it yet
-	# XXX logout?
-	# XXX upload fixed version
 	if ($ENV{'HTTP_COOKIE'} =~ /$id=(\S+)/) {
 		# Yes - set the login and password to use
 		($user, $pass) = split(/:/, &decode_base64("$1"));
@@ -75,14 +74,17 @@ $auth = &encode_base64("$user:$pass");
 $auth =~ s/\n//g;
 &write_http_connection($con, "Authorization: basic $auth\r\n");
 if ($ENV{'HTTP_HOST'} =~ /^(\S+):(\d+)$/) {
+	# Browser supplies port
 	$http_host = $1;
 	$http_port = $2;
 	}
 elsif ($ENV{'HTTP_HOST'}) {
+	# Browser only supplies host
 	$http_host = $ENV{'HTTP_HOST'};
-	$http_port = 80;
+	$http_port = $ENV{'SERVER_PORT'} || $miniserv{'port'} || 80;
 	}
 else {
+	# Web server supplies host and port
 	$http_host = $ENV{'SERVER_NAME'};
 	$http_port = $ENV{'SERVER_PORT'};
 	}
