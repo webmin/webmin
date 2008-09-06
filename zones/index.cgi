@@ -40,7 +40,6 @@ else {
 		}
 	$table->set_emptymsg($text{'index_none'});
 	$table->add_link("create_form.cgi", $text{'index_add'});
-	$table->set_heading($text{'index_zones'});
 	$p->add_footer("/", $text{'index'});
 	}
 $p->print();
