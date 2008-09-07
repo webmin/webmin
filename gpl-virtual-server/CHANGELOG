@@ -493,3 +493,4 @@ Added a new sort mode (used by default for new installs) to order virtual server
 Included domains for SPF for new virtual servers can now be set in server templates.
 Added a button to the Edit Mailbox page for logging into Usermin as a user without having to enter their password. Requires Webmin 1.440 or later though.
 On FreeBSD, the Gnu tar command gtar is used in preference to regular tar when installed. This allows incremental backups to be performed.
+When MySQL is on a remote system, the 'show table status' command is used to get an approximate size for each database.
