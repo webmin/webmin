@@ -29,6 +29,7 @@ for($i=0; $i<$len; $i++) {
 	$rv .= "<td><input name=$_[1]_from_$i size=20 value=\"$from\"></td>\n";
 	$rv .= "<td><input name=$_[1]_to_$i size=40 value=\"$to\"></td>\n";
 	$rv .= "</tr>\n";
+	$rv. = &ui_hidden("$_[1]_old_to_$i", $to);
 	}
 $rv .= "</table>\n";
 return (2, $_[2], $rv);
@@ -62,6 +63,7 @@ for($i=0; $i<$len; $i++) {
 	$rv .= "<td><input name=$_[1]_stat_$i size=4 value=\"$stat\"></td>\n";
 	$rv .= "<td><input name=$_[1]_to_$i size=40 value=\"$to\"></td>\n";
 	$rv .= "</tr>\n";
+	$rv. = &ui_hidden("$_[1]_old_to_$i", $to);
 	}
 $rv .= "</table>\n";
 return (2, $_[2], $rv);
@@ -73,11 +75,15 @@ sub parse_alias
 local($re, @rv, $i, $from, $to);
 $re = $_[2];
 for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
-	$from = $in{"$_[0]_from_$i"}; $to = $in{"$_[0]_to_$i"};
+	$from = $in{"$_[0]_from_$i"};
+	$to = $in{"$_[0]_to_$i"};
+	$old_to = $in{"$_[0]_old_to_$i"};
 	if ($from !~ /\S/ && $to !~ /\S/) { next; }
 	if ($from !~ /^\S+$/) { &error(&text('mod_alias_efrom', $from, $_[1])); }
 	if ($to !~ /$re/) { &error(&text('mod_alias_edest', $to, $_[1])); }
-	&allowed_doc_dir($to) || &error(&text('mod_alias_edest2', $to, $_[1]));
+	&allowed_doc_dir($to) ||
+	    $old_to && !&allowed_doc_dir($old_to) ||
+		&error(&text('mod_alias_edest2', $to, $_[1]));
 	push(@rv, "$from \"$to\"");
 	}
 return ( \@rv );
@@ -91,6 +97,7 @@ $re = $_[2];
 for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 	$from = $in{"$_[0]_from_$i"};
 	$to = $in{"$_[0]_to_$i"};
+	$old_to = $in{"$_[0]_old_to_$i"};
 	$stat = $in{"$_[0]_stat_$i"};
 	if ($from !~ /\S/ && $to !~ /\S/) { next; }
 	if ($from !~ /^\S+$/) { &error(&text('mod_alias_efrom', $from, $_[1])); }
@@ -100,6 +107,7 @@ for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 			&error(&text('mod_alias_edest', $to, $_[1]));
 			}
 		&allowed_doc_dir($to) ||
+	            $old_to && !&allowed_doc_dir($old_to) ||
 			&error(&text('mod_alias_edest2', $to, $_[1]));
 		}
 	else { $to = ""; }
