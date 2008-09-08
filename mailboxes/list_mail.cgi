@@ -62,9 +62,6 @@ print &ui_hidden("mod", &modification_time($folder));
 print &ui_hidden("start", $in{'start'});
 if ($config{'top_buttons'} && @mail) {
 	&show_buttons(1, \@folders, $folder, \@mail, $in{'user'});
-	@links = ( &select_all_link("d", 1),
-		   &select_invert_link("d", 1) );
-	print &ui_links_row(\@links);
 	}
 
 # Show error opening folder
@@ -87,6 +84,9 @@ if (@mail) {
 	push(@hcols, $text{'mail_date'});
 	push(@hcols, $text{'mail_size'});
 	push(@hcols, $text{'mail_subject'});
+	@links = ( &select_all_link("d", 1),
+		   &select_invert_link("d", 1) );
+	print &ui_links_row(\@links);
 	print &ui_columns_start(\@hcols, 100, 0, \@tds);
 	}
 
