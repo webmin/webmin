@@ -3586,6 +3586,7 @@ if ($write_utmp) {
 }
 
 # write_logout_utmp(user, host)
+# Record the logout by some user in utmp
 sub write_logout_utmp
 {
 if ($write_utmp) {
