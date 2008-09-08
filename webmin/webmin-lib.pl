@@ -1379,15 +1379,13 @@ foreach my $minfo (&get_all_module_infos()) {
 	next if (!&check_os_support($minfo));
 	$@ = undef;
 	local $o = $installed{$minfo->{'dir'}};
-	eval {
-		local $main::error_must_die = 1;
-		$installed{$minfo->{'dir'}} =
-			&foreign_installed($minfo->{'dir'}, 0) ? 1 : 0;
-		};
-	if ($@) {
-		# Couldn't check .. assume no
-		$installed{$minfo->{'dir'}} = 0;
+	local $pid = fork();
+	if (!$pid) {
+		# Check in a sub-process
+		exit(&foreign_installed($minfo->{'dir'}, 0) ? 1 : 0);
 		}
+	waitpid($pid, 0);
+	$installed{$minfo->{'dir'}} = $? / 256;
 	push(@changed, $minfo->{'dir'}) if ($installed{$minfo->{'dir'}} ne $o);
 	}
 &write_file("$config_directory/installed.cache", \%installed);
