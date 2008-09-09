@@ -102,6 +102,7 @@ if ($in{'virt'} && $access{'vaddr'}) {
 	else { $addr = $val; }
 
 	if ($addrs) {
+		# Multiple addresses and ports
 		print &ui_table_row($text{'vserv_addrs'},
 			&ui_textarea("addrs", join("\n", split(/\s+/, $addrs)),
 				    4, 30));
@@ -130,6 +131,7 @@ if ($in{'virt'} && $access{'vaddr'}) {
 		&opt_input($root->{'words'}->[0], "root",
 					  $text{'vserv_default'}, 50).
 		&file_chooser_button("root", 1, 1));
+	print &ui_hidden("old_root", $root->{'words'}->[0]);
 
 	# Server name
 	$name = &find_directive("ServerName", $v->{'members'});

@@ -106,7 +106,26 @@ else {
 	&save_directive("ServerName", $name ? [ $name ] : [ ],
 			$vconf->{'members'}, $conf);
 
-	# write out file
+	# Update any <Directory> blocks under the old path
+	if ($in{'root'} ne $in{'old_root'}) {
+		@dirs = &find_directive_struct("Directory", $vmembers);
+		foreach $dir (@dirs) {
+			if ($dir->{'words'}->[0] eq $in{'old_root'}) {
+				# Same dir
+				$dir->{'value'} = $in{'root'};
+				}
+			elsif ($dir->{'words'}->[0] =~ /^\Q$in{'old_root'}\E(\/.*)$/) {
+				# Under the dir
+				$dir->{'value'} = $in{'root'}.$1;
+				}
+			else {
+				next;
+				}
+			&save_directive_struct($dir, $dir, $vconf, $vconf, 1);
+			}
+		}
+
+	# Write out file
 	&flush_file_lines();
 	&after_changing();
 	&unlock_file($vconf->{'file'});
