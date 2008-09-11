@@ -482,9 +482,8 @@ local $dir = $in{'sortfield'} eq $field ? !$in{'sortdir'} : 0;
 local $img = $in{'sortfield'} eq $field && $dir ? "sortascgrey.gif" :
 	     $in{'sortfield'} eq $field && !$dir ? "sortdescgrey.gif" :
 	     $dir ? "sortasc.gif" : "sortdesc.gif";
-return "<table cellpadding=0 cellspacing=0><tr><td><a href='view_table.cgi?db=$in{'db'}&table=".
+return "<a href='view_table.cgi?db=$in{'db'}&table=".
        &urlize($in{'table'})."&start=$in{'start'}&sortfield=$field&sortdir=$dir$searchargs'>".
-       "<b>$field</b></td><td align=right><img valign=middle src=../images/$img border=0></td>".
-       "</tr></table>";
+       "<b>$field</b><img valign=middle src=../images/$img border=0>";
 }
 
