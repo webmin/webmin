@@ -266,6 +266,8 @@ lusers_domain=Domain for user addresses
 luser_virtualmin=Get domain from Virtualmin?
 lusers_from=From: address for email
 lusers_mass=Update Selected Users
+lusers_cc=Also Cc: email to
+lusers_nocc=Don't Cc
 
 grace_seconds=Seconds
 grace_minutes=Minutes
@@ -297,6 +299,7 @@ email_einterval=Missing or invalid interval
 email_epercent=Missing or invalid usage percentage
 email_edomain=Missing or invalid mail domain
 email_efrom=Missing or invalid From: address
+email_ecc=Missing or invalid Cc: address
 email_msg=Disk usage for user $1 on filesystem $2 has reached $3% of the\nallowed quota.\n\n$4 of disk space is being used, out of a maximum of $5.
 gemail_msg=Disk usage for group $1 on filesystem $2 has reached $3% of the\nallowed quota.\n\n$4 of disk space is being used, out of a maximum of $5.
 email_subject=Disk quota exceeded

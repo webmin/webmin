@@ -78,6 +78,7 @@ foreach $k (keys %config) {
 				$config{'email_from_'.$f},
 				$user{$i,'gblocks'},
 				'email',
+				$config{'email_cc_'.$f},
 				);
 
 			# Save last email time
@@ -170,7 +171,8 @@ foreach $k (keys %config) {
 
 sub send_quota_mail
 {
-local ($user, $addr, $limit, $used, $fs, $percent, $from, $grace, $suffix) =@_;
+local ($user, $addr, $limit, $used, $fs, $percent, $from, $grace, $suffix,
+       $ccaddr) = @_;
 local $bsize = &block_size($fs);
 if ($bsize) {
 	$used = &nice_size($used*$bsize);
@@ -208,7 +210,7 @@ else {
 	}
 &mailboxes::send_text_mail($from || &mailboxes::get_from_address(),
 			   $addr,
-			   undef,
+			   $ccaddr,
 			   $subject,
 			   $body);
 }
