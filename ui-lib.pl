@@ -1245,11 +1245,11 @@ foreach my $t (@$tabs) {
 	$rv .= "<table cellpadding=0 cellspacing=0 border=0><tr>";
 	if ($t->[0] eq $sel) {
 		# Selected tab
-		$rv .= "<td valign=top $cb>".
+		$rv .= "<td valign=top $cb class='selectedTabLeft'>".
 		       "<img src=$imgdir/lc2.gif alt=\"\"></td>";
-		$rv .= "<td $cb nowrap>".
+		$rv .= "<td $cb nowrap class='selectedTabMiddle'>".
 		       "&nbsp;<b>$t->[1]</b>&nbsp;</td>";
-		$rv .= "<td valign=top $cb>".
+		$rv .= "<td valign=top $cb class='selectedTabRight'>".
 		       "<img src=$imgdir/rc2.gif alt=\"\"></td>";
 		}
 	else {
@@ -1487,6 +1487,17 @@ sub ui_hr
 {
 return &theme_ui_hr() if (defined(&theme_ui_hr));
 return "<hr>\n";
+}
+
+# ui_nav_link(direction, url, grey)
+# Returns an arrow icon linking to provided url
+sub ui_nav_link
+{
+return &theme_ui_nav_link(@_) if (defined(&theme_ui_hr));
+my ($direction, $url, $grey) = @_;
+if ($gray) { $direction .= "-grey"; }
+return "<a href=\"$url\"><img alt=\"<-\" align=top"
+       . "src=\"$gconfig{'webprefix'}/images/$direction.gif\"></a>\n";
 }
 
 # ui_confirmation_form(cgi, message, &hiddens, [&buttons], [&otherinputs],
