@@ -1496,7 +1496,7 @@ sub ui_nav_link
 return &theme_ui_nav_link(@_) if (defined(&theme_ui_hr));
 my ($direction, $url, $grey) = @_;
 if ($gray) { $direction .= "-grey"; }
-return "<a href=\"$url\"><img alt=\"<-\" align=top"
+return "<a href=\"$url\"><img alt=\"<-\" align=\"middle\""
        . "src=\"$gconfig{'webprefix'}/images/$direction.gif\"></a>\n";
 }
 
