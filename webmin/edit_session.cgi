@@ -42,11 +42,11 @@ print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\n",
 # Log to syslog
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
-	printf "<input type=checkbox name=syslog value=1 %s> %s\n",
-		$miniserv{'syslog'} ? "checked" : "", $text{'session_syslog2'};
+	print ui_checkbox('syslog', 1, $text{'session_syslog2'},
+	  $miniserv{'syslog'});
 	}
 else {
-	print "<input type=hidden name=syslog value='$miniserv{'syslog'}'>\n";
+	print ui_hidden('syslog', $miniserv{'syslog'});
 	}
 print "<p>\n";
 
@@ -61,19 +61,14 @@ print text('session_logout',
 #printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=locking value=1 %s>\n",
 #	$gconfig{'locking'} ? "checked" : "";
 #print "$text{'session_locking'}<br>\n";
-printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=remember value=1 %s>\n",
-	$gconfig{'noremember'} ? "" : "checked";
-print "$text{'session_remember'}<br>\n";
-printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=hostname value=1 %s>\n",
-	$gconfig{'nohostname'} ? "" : "checked";
-print "$text{'session_hostname'}<br>\n";
-print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-printf "<input type=checkbox name=realname value=1 %s>\n",
-	$gconfig{'realname'} ? "checked" : "";
-print "$text{'session_realname'}<br>\n";
-printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=utmp value=1 %s>\n",
-	$miniserv{'utmp'} ? "checked" : "";
-print "$text{'session_utmp'}<br>\n";
+print '&nbsp;&nbsp;&nbsp;', ui_checkbox('remember', 1, $text{'session_remember'},
+       !$gconfig{'noremember'}), "<br>\n";
+print '&nbsp;&nbsp;&nbsp;', ui_checkbox('hostname', 1, $text{'session_hostname'},
+       !$gconfig{'nohostname'}), "<br>\n";
+print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', ui_checkbox('realname', 1,
+       $text{'session_realname'}, $gconfig{'realname'}), "<br>\n";
+print '&nbsp;&nbsp;&nbsp;', ui_checkbox('utmp', 1, $text{'session_utmp'},
+       $miniserv{'utmp'}), "<br>\n";
 printf "&nbsp;&nbsp;&nbsp;<input type=radio name=banner_def value=1 %s> %s\n",
 	$gconfig{'loginbanner'} ? "" : "checked", $text{'session_banner1'};
 printf "<input type=radio name=banner_def value=0 %s> %s\n",
