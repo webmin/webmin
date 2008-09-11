@@ -1489,15 +1489,21 @@ return &theme_ui_hr() if (defined(&theme_ui_hr));
 return "<hr>\n";
 }
 
-# ui_nav_link(direction, url, grey)
+# ui_nav_link(direction, url, disabled)
 # Returns an arrow icon linking to provided url
 sub ui_nav_link
 {
-return &theme_ui_nav_link(@_) if (defined(&theme_ui_hr));
-my ($direction, $url, $grey) = @_;
-if ($gray) { $direction .= "-grey"; }
-return "<a href=\"$url\"><img alt=\"<-\" align=\"middle\""
-       . "src=\"$gconfig{'webprefix'}/images/$direction.gif\"></a>\n";
+return &theme_ui_nav_link(@_) if (defined(&theme_ui_nav_link));
+my ($direction, $url, $disabled) = @_;
+my $alt = $direction eq "left" ? '<-' : '->';
+if ($disabled) {
+	return "<img alt=\"$alt\" align=\"middle\""
+	     . "src=\"$gconfig{'webprefix'}/images/$direction-grey.gif\">\n";
+	}
+else {
+	return "<a href=\"$url\"><img alt=\"$alt\" align=\"middle\""
+	     . "src=\"$gconfig{'webprefix'}/images/$direction.gif\"></a>\n";
+	}
 }
 
 # ui_confirmation_form(cgi, message, &hiddens, [&buttons], [&otherinputs],
