@@ -98,6 +98,7 @@ spam_delivery=Default delivery for spam,10,-Deliver normally,/dev/null-Delete,$H
 clam_delivery=Default delivery for viruses,10,/dev/null-Delete,$HOME/mail/virus-Virus mbox folder,$HOME/Maildir/.virus/-Virus Maildir folder,Other file or email address
 spam_white=Default spam whitelist option,1,1-Enabled,0-Disabled
 spam_level=Default score to delete spam,3,Don't delete,4
+spam_lock=Only run one spamassasin process at a time?,1,1-Yes,0-No
 
 line4.8=Quota commands,11
 quota_commands=Use external commands to get and set quotas?,1,1-Yes,0-No

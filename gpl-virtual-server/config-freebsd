@@ -164,3 +164,4 @@ collect_interval=5
 nodeniedssh=0
 web_webmail=1
 web_admin=1
+spam_lock=0
