@@ -1,0 +1,1 @@
+../virtual-server/list-domains.pl
