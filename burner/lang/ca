@@ -1,26 +1,26 @@
 index_title=Gravadora de CDs
-index_profiles=Perfils de Gravació
+index_profiles=Perfils de Gravaci&#243;
 index_name=Nom del perfil
-index_type=Tipus de gravació
+index_type=Tipus de gravaci&#243;
 index_files=Fitxer(s) a enregistrar
 index_add=Afegeix un nou perfil del tipus:
 index_type1=Imatge ISO solament
 index_type2=Fitxers i directoris
-index_type3=Pistes àudio
+index_type3=Pistes &#224;udio
 index_type4=Copia CD
-index_none=No hi ha cap perfil de gravació definit.
-index_noaccess=No tens accés a cap perfil de gravació.
+index_none=No hi ha cap perfil de gravaci&#243; definit.
+index_noaccess=No tens acc&#233;s a cap perfil de gravaci&#243;.
 index_global=Opcions Globals
-index_ecdrecord=No s'ha trobat al sistema l'ordre de gravació de CDs <tt>$1</tt>. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_ecdrecord=No s'ha trobat al sistema l'ordre de gravaci&#243; de CDs <tt>$1</tt>. Pot ser que no estigui instal&#183;lada, o b&#233; que la <a href='$2'>configuraci&#243; del m&#242;dul</a> sigui incorrecta.
 index_return= a la llista de perfils
 index_delete=Suprimeix els Perfils Seleccionats
 
-edit_title=Edició de Perfil de Gravació
-create_title=Creació de Perfil de Gravació
-edit_emkisofs=No s'ha trobat al sistema l'ordre de creació de sistemes de fitxers ISO <tt>$1</tt>. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-edit_empg123=No s'ha trobat al sistema l'ordre de descodificació MP3 $1. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-edit_ecdrdao=No s'ha trobat al sistema l'ordre $1 de còpia de CDs. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> és incorrecta.
-edit_header=Opcions del perfil de gravació
+edit_title=Edici&#243; de Perfil de Gravaci&#243;
+create_title=Creaci&#243; de Perfil de Gravaci&#243;
+edit_emkisofs=No s'ha trobat al sistema l'ordre de creaci&#243; de sistemes de fitxers ISO <tt>$1</tt>. Pot ser que no estigui instal&#183;lada, o b&#233; que la <a href='$2'>configuraci&#243; del m&#242;dul</a> sigui incorrecta.
+edit_empg123=No s'ha trobat al sistema l'ordre de descodificaci&#243; MP3 $1. Pot ser que no estigui instal&#183;lada, o b&#233; que la <a href='$2'>configuraci&#243; del m&#242;dul</a> sigui incorrecta.
+edit_ecdrdao=No s'ha trobat al sistema l'ordre $1 de c&#242;pia de CDs. Pot ser que no estigui instal&#183;lada, o b&#233; que la <a href='$2'>configuraci&#243; del m&#242;dul</a> &#233;s incorrecta.
+edit_header=Opcions del perfil de gravaci&#243;
 edit_name=Nom del perfil
 edit_iso=Imatge ISO a gravar
 edit_isosize=Extreu la mida del fitxer ISO
@@ -28,7 +28,7 @@ edit_dirs=Directoris a incloure
 edit_source=Directori o fitxer origen
 edit_dest=Directori del CD
 edit_rock=Genera extensions RockRidge (Unix)
-edit_rock2=Sí, amb permisos adients
+edit_rock2=S&#237;, amb permisos adients
 edit_joliet=Genera extensions Joliet (Windows)
 edit_netatalk=Inclou fitxers NETATALK de Macintosh
 edit_cap=Inclou fitxers CAP de Macintosh
@@ -38,112 +38,112 @@ edit_volid=ID de volum del CD
 edit_mp3s=Fitxers i directoris MP3
 edit_burn=Desa i Grava Ara
 edit_burn2=Grava'l Ara
-edit_test=Desa i Fes una Prova de Gravació Ara
-edit_test2=Fes una Prova de Gravació Ara
-edit_return=al perfil de gravació
-edit_ask=Demana confirmació abans de gravar
+edit_test=Desa i Fes una Prova de Gravaci&#243; Ara
+edit_test2=Fes una Prova de Gravaci&#243; Ara
+edit_return=al perfil de gravaci&#243;
+edit_ask=Demana confirmaci&#243; abans de gravar
 edit_sdev=Dispositiu CD font
 edit_other=Altres dispositius...
-edit_fly=Mode de còpia
+edit_fly=Mode de c&#242;pia
 edit_fly1=Directe del CD a la gravadora
 edit_fly0=Utilitza un fitxer temporal
 edit_srcdrv=Driver del dispositiu font
-edit_dstdrv=Driver del dispositiu destí
-edit_ecannot=No tens permís per editar aquest perfil de gravació
+edit_dstdrv=Driver del dispositiu dest&#237;
+edit_ecannot=No tens perm&#237;s per editar aquest perfil de gravaci&#243;
 
 save_err=No he pogut desar el perfil
 save_ename=Hi falta el nom del perfil
-save_eiso=Hi falta el nom del fitxer imatge ISO o bé és invàlid
-save_esource=Hi falta el directori origen $1 o bé és invàlid
+save_eiso=Hi falta el nom del fitxer imatge ISO o b&#233; &#233;s inv&#224;lid
+save_esource=Hi falta el directori origen $1 o b&#233; &#233;s inv&#224;lid
 save_edest=Hi falta el directori del CD de $1
 save_edirs=No has triat cap directori origen
-save_emp3s=No has introduït cap directori ni fitxer
+save_emp3s=No has introdu&#239;t cap directori ni fitxer
 save_emp3=El fitxer o directori MP3 '$1' no existeix
 save_eother=El fitxer del dispositiu font no existeix
-save_ecannot1=La imatge ISO no està en un directori permès
-save_ecannot2=El directori origen $1 no està en un directori permès
-save_ecannot3=El fitxer MP3 o directori $1 no està en un directori permès
-save_ecannot4=El fitxer de dispositiu origen no està en un directori permès
+save_ecannot1=La imatge ISO no est&#224; en un directori perm&#232;s
+save_ecannot2=El directori origen $1 no est&#224; en un directori perm&#232;s
+save_ecannot3=El fitxer MP3 o directori $1 no est&#224; en un directori perm&#232;s
+save_ecannot4=El fitxer de dispositiu origen no est&#224; en un directori perm&#232;s
 
-burn_title=Gravació de CD
-burn_rutest1=Segur que vols fer una prova de gravació de la imatge ISO $1?
+burn_title=Gravaci&#243; de CD
+burn_rutest1=Segur que vols fer una prova de gravaci&#243; de la imatge ISO $1?
 burn_rusure1=Segur que vols gravar la imatge ISO $1 al CD ?
-burn_rutest2=Segur que vols fer una prova de gravació dels directoris triats?
+burn_rutest2=Segur que vols fer una prova de gravaci&#243; dels directoris triats?
 burn_rusure2=Segur que vols gravar els directoris triats al CD ?
-burn_rutest3=Segur que vols fer la prova de gravació de les pistes àudio triades?
-burn_rusure3=Segur que vols gravar les pistes àudio triades al CD?
+burn_rutest3=Segur que vols fer la prova de gravaci&#243; de les pistes &#224;udio triades?
+burn_rusure3=Segur que vols gravar les pistes &#224;udio triades al CD?
 burn_rusure4=Segur que vols copiar a partir de $1?
-burn_ok=Sí, grava-ho ara!
+burn_ok=S&#237;, grava-ho ara!
 burn_cancel=No, suprimeix la imatge ISO temporal
-burn_eject=Expulsa el CD després de la gravació
+burn_eject=Expulsa el CD despr&#233;s de la gravaci&#243;
 burn_blank=Esborra el CD abans de gravar
-burn_bfast=Esborrat ràpid
+burn_bfast=Esborrat r&#224;pid
 burn_ball=Esborrat lent
-burn_bg=Executa la gravació en segon pla
-burn_edev=No pots gravar un CD fins que no hagis configurat una gravadora a la pàgina d'<a href='$1'>Opcions de dispositiu</a>.
+burn_bg=Executa la gravaci&#243; en segon pla
+burn_edev=No pots gravar un CD fins que no hagis configurat una gravadora a la p&#224;gina d'<a href='$1'>Opcions de dispositiu</a>.
 burn_header=Gravant el CD amb l'ordre $1...
-burn_theader=Fent una prova de gravació amb l'ordre $1...
+burn_theader=Fent una prova de gravaci&#243; amb l'ordre $1...
 burn_header2=Gravant el CD en segon pla amb l'ordre $1...
-burn_theader2=Fent una prova de gravació en segon pla amb l'ordre $1...
+burn_theader2=Fent una prova de gravaci&#243; en segon pla amb l'ordre $1...
 burn_mheader=Creant un sistema de fitxers ISO amb l'ordre $1...
 burn_mfailed=No he pogut crear el sistema de fitxers ISO!
-burn_egone=He suprimit la imatge ISO - Hauràs de tornar al <a href='$1'>perfil de gravació</a> per tornar-la a regenerar.
-burn_egone2=S'han esborrat les pistes àudio temporals - Hauràs de tornar al <a href='$1'>perfil de gravació</a> per regenerar-les.
-burn_700=Atenció! La teva imatge ISO té una mida de $1 Mb, que està per damunt dels 700 Mb permesos fins i tot als CDs de 80 minuts.
-burn_650=Atenció! La teva imatge ISO té una mida de $1 Mb, que està per sobre dels 650 Mb permesos en un CD normal. No obstant, t'hi cabrà en un CD de 80 minuts.
+burn_egone=He suprimit la imatge ISO - Haur&#224;s de tornar al <a href='$1'>perfil de gravaci&#243;</a> per tornar-la a regenerar.
+burn_egone2=S'han esborrat les pistes &#224;udio temporals - Haur&#224;s de tornar al <a href='$1'>perfil de gravaci&#243;</a> per regenerar-les.
+burn_700=Atenci&#243;! La teva imatge ISO t&#233; una mida de $1 Mb, que est&#224; per damunt dels 700 Mb permesos fins i tot als CDs de 80 minuts.
+burn_650=Atenci&#243;! La teva imatge ISO t&#233; una mida de $1 Mb, que est&#224; per sobre dels 650 Mb permesos en un CD normal. No obstant, t'hi cabr&#224; en un CD de 80 minuts.
 burn_size=La imatge ISO generada fa $1 Mb, d'un total de $2 Mb permesos en un CD normal.
 burn_nomp3s=No hi ha cap fitxer als directoris seleccionats.
-burn_mp3header=Convertint els fitxers MP3 a pistes àudio amb l'ordre $1...
+burn_mp3header=Convertint els fitxers MP3 a pistes &#224;udio amb l'ordre $1...
 burn_mp3failed=No he pogut convertir cap fitxer MP3!
-burn_mp3failed2=Atenció - alguns fitxers MP3 no s'han pogut convertir, però la resta han reeixit
+burn_mp3failed2=Atenci&#243; - alguns fitxers MP3 no s'han pogut convertir, per&#242; la resta han reeixit
 burn_mp3format=No sembla que el fitxer $1 estigui en format MP3.
-burn_746=Atenció! La mida total de les pistes fa $1 Mb, que està per damunt dels 746 Mb permesos en un CD àudio normal. No obstant, t'hi cabrà en un CD de 80 minuts.
-burn_807=Atenció! La mida total de les pistes fa $1 Mb, que està per damunt dels 807 Mb permesos en un CD de 80 minuts.
-burn_mp3size=Les pistes àudio convertides fan $1 Mb, d'un total de $2 Mb permesos en un CD àudio normal.
-burn_seconddesc=Insereix el CD en blanc de destí i fes clic sobre el botó de sota.
-burn_second=Grava el CD de destí
+burn_746=Atenci&#243;! La mida total de les pistes fa $1 Mb, que est&#224; per damunt dels 746 Mb permesos en un CD &#224;udio normal. No obstant, t'hi cabr&#224; en un CD de 80 minuts.
+burn_807=Atenci&#243;! La mida total de les pistes fa $1 Mb, que est&#224; per damunt dels 807 Mb permesos en un CD de 80 minuts.
+burn_mp3size=Les pistes &#224;udio convertides fan $1 Mb, d'un total de $2 Mb permesos en un CD &#224;udio normal.
+burn_seconddesc=Insereix el CD en blanc de dest&#237; i fes clic sobre el bot&#243; de sota.
+burn_second=Grava el CD de dest&#237;
 
 dev_title=Opcions de Dispositiu
 dev_header=Opcions de la gravadora de CDs
 dev_device=Gravadora
 dev_none=&lt;Cap&gt;
-dev_speed=Velocitat de gravació
+dev_speed=Velocitat de gravaci&#243;
 dev_other=Altres...
 dev_extra=Opcions extres de <tt>cdrecord</tt>
 dev_err=No he pogut desar les opcions del dispositiu
-dev_eother=Hi falta la velocitat de gravació o bé és invàlida
-dev_ecannot=No tens permís per editar les opcions del dispositiu
+dev_eother=Hi falta la velocitat de gravaci&#243; o b&#233; &#233;s inv&#224;lida
+dev_ecannot=No tens perm&#237;s per editar les opcions del dispositiu
 
 mkisofs_title=Opcions de Sistema de fitxers ISO
 mkisofs_header=Opcions globals del sistema de fitxers ISO
-mkisofs_novers=Inclou el número de la versió als noms de fitxers
-mkisofs_notrans=Permet tots els caràcters als noms de fitxers
-mkisofs_nobak=Omet fitxers de còpies de seguretat
-mkisofs_fsyms=Segueix els enllaços simbòlics
-mkiofs_ecannot=No tens permís per editar les opcions del sistema de fitxers ISO
+mkisofs_novers=Inclou el n&#250;mero de la versi&#243; als noms de fitxers
+mkisofs_notrans=Permet tots els car&#224;cters als noms de fitxers
+mkisofs_nobak=Omet fitxers de c&#242;pies de seguretat
+mkisofs_fsyms=Segueix els enlla&#231;os simb&#242;lics
+mkiofs_ecannot=No tens perm&#237;s per editar les opcions del sistema de fitxers ISO
 
-config_cdrecord=Ordre de gravació de CDs
-config_mkisofs=Ordre de creació de sistemes de fitxers ISO
-config_mpg123=Ordre de descodificació MP3
-config_sox=Ordre de SOX per a la descodificació WAV i OGG
-config_cdrdao=Ordre de còpia de CDs
-config_ecdrecord=Hi falta l'ordre de gravació de CDs o bé és invàlida
+config_cdrecord=Ordre de gravaci&#243; de CDs
+config_mkisofs=Ordre de creaci&#243; de sistemes de fitxers ISO
+config_mpg123=Ordre de descodificaci&#243; MP3
+config_sox=Ordre de SOX per a la descodificaci&#243; WAV i OGG
+config_cdrdao=Ordre de c&#242;pia de CDs
+config_ecdrecord=Hi falta l'ordre de gravaci&#243; de CDs o b&#233; &#233;s inv&#224;lida
 config_temp=Directori de fitxers temporals
 config_temp_def=Directori temporal de Webmin
-config_emkisofs=Hi falta l'ordre de creació de sistemes de fitxers ISO o bé és invàlida
-config_empg123=Hi falta l'ordre de descodificació MP3 o bé és invàlida
-config_esox=Hi falta l'ordre de SOX o bé és invàlida
-config_ecdrdao=Hi falta l'ordre de còpia de CDs o bé és invàlida
-config_etemp=Hi falta el directori de fitxers temporals o bé és invàlid
+config_emkisofs=Hi falta l'ordre de creaci&#243; de sistemes de fitxers ISO o b&#233; &#233;s inv&#224;lida
+config_empg123=Hi falta l'ordre de descodificaci&#243; MP3 o b&#233; &#233;s inv&#224;lida
+config_esox=Hi falta l'ordre de SOX o b&#233; &#233;s inv&#224;lida
+config_ecdrdao=Hi falta l'ordre de c&#242;pia de CDs o b&#233; &#233;s inv&#224;lida
+config_etemp=Hi falta el directori de fitxers temporals o b&#233; &#233;s inv&#224;lid
 
-acl_create=Pot crear nous perfils de gravació
-acl_edit=Pot editar perfils de gravació existents
-acl_global=Pot editar la configuració global
+acl_create=Pot crear nous perfils de gravaci&#243;
+acl_edit=Pot editar perfils de gravaci&#243; existents
+acl_global=Pot editar la configuraci&#243; global
 acl_profiles=Pot utilitzar els perfils
 acl_all=Tots
 acl_sel=Els seleccionats a sota...
 acl_dirs=Permet els directoris per als fitxers origen
 
-delete_err=No he pogut suprimir els perfils de gravació
+delete_err=No he pogut suprimir els perfils de gravaci&#243;
 delete_enone=No has seleccionat cap perfil
 

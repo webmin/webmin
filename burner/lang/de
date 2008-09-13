@@ -56,6 +56,7 @@ config_sox=SOX Kommando f&#252;r WAV- und OGG-Decoding
 config_temp=Verzeichnis f&#252;r tempor&#228;re Dateien
 config_temp_def=Webmin's TEMP-Verzeichnis
 create_title=Erstelle Brenn-Profil
+delete_enone=Nichts ausgew&#228;hlt
 delete_err=L&#246;schen des Brenn-Profiles fehlgeschlagen
 dev_device=Brennerlaufwerk
 dev_ecannot=Sie d&#252;rfen die Ger&#228;te-Einstellungen nicht &#228;ndern
