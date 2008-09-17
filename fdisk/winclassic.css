@@ -1,0 +1,99 @@
+.dynamic-slider-control {
+	position:			relative;
+	background-color:	ThreeDFace;
+	-moz-user-focus:	normal;
+	-moz-user-select:	none;
+	cursor:				default;
+}
+
+.horizontal {
+	width:				200px;
+	height:				29px;
+}
+
+.vertical {
+	width:				29px;
+	height:				200px;
+}
+
+.dynamic-slider-control input {
+	display:	none;
+}
+
+.dynamic-slider-control .handle {
+	position:			absolute;
+	-moz-user-select:	none;
+	cursor:				default;
+	background:			ThreeDFace;
+	border:				1px solid;
+	border-color:		ThreeDHighlight ThreeDDarkShadow
+						ThreeDDarkShadow ThreeDHighlight;
+}
+
+/* inner border */
+.dynamic-slider-control .handle div {
+	font-size:			1px;
+	border:				1px solid;
+	border-color:		ThreeDLightShadow ThreeDShadow
+						ThreeDShadow ThreeDLightShadow;	
+
+	behavior:			url("css/boxsizing.htc");	/* ie path bug */
+	box-sizing:			content-box;
+	-moz-box-sizing:	content-box;
+}
+
+/*	inner sets size
+.dynamic-slider-control.horizontal .handle {
+	width:				12px;
+	height:				22px;
+}
+*/
+
+.dynamic-slider-control.horizontal .handle div {
+	width:				8px;
+	height:				18px;
+}
+
+.dynamic-slider-control.horizontal .handle.hover {}
+
+/* inner sets size
+.dynamic-slider-control.vertical .handle {
+	width:				22px;
+	height:				12px;
+}
+*/
+
+.dynamic-slider-control.vertical .handle div {
+	width:				18px;
+	height:				8px;
+}
+
+.dynamic-slider-control.vertical .handle.hover {}
+
+.dynamic-slider-control .line {
+	
+	behavior:			url("css/boxsizing.htc"); /* ie path bug */
+	box-sizing:			content-box;
+	-moz-box-sizing:	content-box;
+		
+	position:			absolute;
+	font-size:			0.01mm;
+	overflow:			hidden;
+	border:				1px solid;
+	border-color:		ThreeDShadow ThreeDHighlight
+						ThreeDHighlight ThreeDShadow;
+	background:			ThreeDDarkShadow;
+}
+
+.dynamic-slider-control.vertical .line {
+	width:				1px;
+	
+}
+
+.dynamic-slider-control.horizontal .line {
+	height:				1px;
+}
+
+.dynamic-slider-control .line div {
+	display:	none;
+}
