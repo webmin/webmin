@@ -1075,7 +1075,7 @@ if ($job->{'start'}) {
 		}
 	delete($job->{'start'});
 	delete($job->{'end'});
-	&create_wrapper($range_cmd, $module_name, "range.pl");
+	&copy_source_dest("$module_root_directory/range.pl", $range_cmd);
 	&set_ownership_permissions(undef, undef, 0755, $range_cmd);
 	return 1;
 	}
