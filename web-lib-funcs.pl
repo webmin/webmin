@@ -1227,6 +1227,37 @@ if ($gconfig{'db_sizefile'}) {
 return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/chooser.cgi?add=$add&type=$_[1]&chroot=$chroot&file=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
+# popup_window_button(url, width, height, scrollbars?, &field-mappings)
+# Returns HTML for a button that will popup a chooser window of some kind. 
+# The field-mappings parameter is an array ref of array refs containing
+#  - Attribute to assign field to in the popup window
+#  - Form field name
+#  - CGI parameter to URL for value, if any
+sub popup_window_button
+{
+return &theme_popup_window_button(@_) if (defined(&theme_popup_window_button));
+local ($url, $w, $h, $scroll, $fields) = @_;
+local $scrollyn = $scroll ? "yes" : "no";
+local $rv;
+$rv .= "<input type=button onClick='";
+foreach my $m (@$fields) {
+	$rv .= "$m->[0] = form.$m->[1]; ";
+	}
+$rv .= "chooser = window.open(\"$url\"";
+foreach my $m (@$fields) {
+	if ($m->[2]) {
+		$rv .= "+\"&$m->[2]=\"+escape($m->[0].value)";
+		}
+	}
+$rv .= ", \"chooser\", \"toolbar=no,menubar=no,scrollbars=$scrollyn,resizable=yes,width=$w,height=$h\"); ";
+foreach my $m (@$fields) {
+	$rv .= "chooser.$m->[0] = $m->[0]; ";
+	$rv .= "window.$m->[0] = $m->[0]; ";
+	}
+$rv .= "' value=\"...\">";
+return $rv;
+}
+
 # read_acl(&array, &array)
 # Reads the acl file into the given associative arrays
 sub read_acl
