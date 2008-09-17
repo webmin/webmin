@@ -50,6 +50,7 @@ $ver = $ARGV[0];
 print "Creating Debian package of ",ucfirst($product)," ",$ver," ...\n";
 system("rm -rf $tmp_dir");
 mkdir($tmp_dir, 0755);
+chmod(0755, $tmp_dir);
 mkdir($debian_dir, 0755);
 system("mkdir -p $pam_dir");
 if ($baseproduct eq "usermin") {
@@ -413,7 +414,12 @@ if (!$webmail) {
 	chdir("/usr/local/webadmin/deb/repository");
 	system("reprepro -Vb . remove sarge $product");
 	system("reprepro -Vb . includedeb sarge ../${product}_${ver}_all.deb");
+	chdir("/usr/local/webadmin");
 	}
+
+# Create PGP signature
+unlink("sigs/${product}_${ver}_all.deb-sig.asc");
+system("gpg --armor --output sigs/${product}_${ver}_all.deb-sig.asc --default-key jcameron\@webmin.com --detach-sig deb/${product}_${ver}_all.deb");
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file
