@@ -100,7 +100,7 @@ elsif ($pft == 7) {
 				push(@rv, $user);
 				}
 			local ($n, $v) = ($1, $2);
-			if ($v eq '') {
+			if ($n ne 'RealName' && $v eq '') {
 				# Multi-line value
 				$v = <PASSWD>;
 				$v =~ s/^ //;
