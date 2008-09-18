@@ -59,3 +59,5 @@ Updated the BCC Mappings page to allow both sender and recipient maps to be defi
 Properly handle multiple reject_rbl_client DNS domains on the SMTP Client Restrictions page.
 ---- Changes since 1.430 ----
 Converted all pages to use the new Webmin UI library, for a more consistent and themable look.
+Autoreply messages containing non-ASCII characters are now properly quoted-printable encoded.
+

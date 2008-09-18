@@ -203,6 +203,17 @@ foreach $f (@files) {
 			'data' => $data });
 	}
 
+# Work out the encoding
+if ($rbody =~ /[\177-\377]/) {
+	# High-ascii
+	$enc = "quoted-printable";
+	$encrbody = &quoted_encode($rbody);
+	}
+else {
+	$enc = undef;
+	$encrbody = $rbody;
+	}
+
 # run sendmail and feed it the reply
 ($rfrom) = &split_addresses($rheader{'From'});
 if ($rfrom->[0]) {
@@ -218,8 +229,11 @@ foreach $h (keys %rheader) {
 # Create the message body
 if (!@attach) {
 	# Just text, so no encoding is needed
+	if ($enc) {
+		print MAIL "Content-Transfer-Encoding: $enc\n";
+		}
 	print MAIL "\n";
-	print MAIL $rbody;
+	print MAIL $encrbody;
 	}
 else {
 	# Need to send a multi-part MIME message
@@ -228,9 +242,13 @@ else {
 	$ctype = "multipart/mixed";
 	print MAIL "Content-Type: $ctype; boundary=\"$bound\"\n";
 	print MAIL "\n";
-	splice(@attach, 0, 0, { 'headers' => [ [ 'Content-Type', 'text/plain' ],
-					     ],
-				'data' => $rbody });
+	$bodyattach = { 'headers' => [ [ 'Content-Type', 'text/plain' ], ],
+			'data' => $encrbody };
+	if ($enc) {
+		push(@{$bodyattach->{'headers'}},
+		     [ 'Content-Transfer-Encoding', $enc ]);
+		}
+	splice(@attach, 0, 0, $bodyattach);
 
 	# Send attachments
 	print MAIL "This is a multi-part message in MIME format.","\n";
@@ -348,5 +366,14 @@ if (open(CONF, $_[0])) {
 	close(CONF);
 	}
 return %config;
+}
+
+# quoted_encode(text)
+# Encodes text to quoted-printable format
+sub quoted_encode
+{
+local $t = $_[0];
+$t =~ s/([=\177-\377])/sprintf("=%2.2X",ord($1))/ge;
+return $t;
 }
 
