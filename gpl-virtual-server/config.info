@@ -25,6 +25,7 @@ show_ugroup=Allow selection of different group for server admins?,1,1-Yes,0-No
 theme_image=URL for company logo image,3,None or default,50
 theme_link=Link destination for company logo,3,None,50
 upgrade_link=Link for GPL to Pro upgrades,3,Built-in upgrader
+serials_link=Link for purchasing Pro serial numbers,3,Virtualmin.com
 show_nf=Show new features to,2,master-Master administrator,domain-Domain owners
 
 line1.5=Server administrator permissions,11
