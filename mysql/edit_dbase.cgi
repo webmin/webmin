@@ -48,7 +48,8 @@ if (@titles+@indexes+@views > $max_dbs && !$in{'search'}) {
 	print &ui_form_start("edit_table.cgi");
 	print $text{'dbase_jump'},"\n";
 	print &ui_hidden("db", $in{'db'}),"\n";
-	print &ui_select("table", undef, [ map { [ $_ ] } @titles ]),"\n";
+	print &ui_select("table", undef, [ map { [ $_ ] } @titles ],
+			 1, 0, 0, 0, "onChange='form.submit()'"),"\n";
 	print &ui_submit($text{'index_jumpok'}),"<br>\n";
 	print &ui_form_end();
 	}

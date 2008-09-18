@@ -189,7 +189,8 @@ else {
 
 		print &ui_form_start("edit_dbase.cgi");
 		print $text{'index_jump'},"\n";
-		print &ui_select("db", undef, [ map { [ $_ ] } @titles ]),"\n";
+		print &ui_select("db", undef, [ map { [ $_ ] } @titles ],
+				 1, 0, 0, 0, "onChange='form.submit()'"),"\n";
 		print &ui_submit($text{'index_jumpok'}),"<br>\n";
 		print &ui_form_end();
 		@icons = ( );
