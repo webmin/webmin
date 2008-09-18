@@ -1028,9 +1028,9 @@ else { return " $_[2] $in{$_[0]}"; }
 	 '8', 'AIX',
 	 '9', 'AIX bootable',
 	 'a', 'OS/2 boot manager',
-	 'b', 'Win95 FAT32',
-	 'c', 'Win95 FAT32 LBA',
-	 'e', 'Win95 FAT16 LBA',
+	 'b', 'Windows FAT32',
+	 'c', 'Windows FAT32 LBA',
+	 'e', 'Windows FAT16 LBA',
 	'10', 'OPUS',
 	'11', 'Hidden FAT12',
 	'12', 'Compaq diagnostic',
@@ -1038,9 +1038,9 @@ else { return " $_[2] $in{$_[0]}"; }
 	'16', 'Hidden FAT16',
 	'17', 'Hidden NTFS',
 	'18', 'AST Windows swapfile',
-	'1b', 'Hidden Win95 FAT (1b)',
-	'1c', 'Hidden Win95 FAT (1c)',
-	'1e', 'Hidden Win95 FAT (1e)',
+	'1b', 'Hidden Windows FAT (1b)',
+	'1c', 'Hidden Windows FAT (1c)',
+	'1e', 'Hidden Windows FAT (1e)',
 	'24', 'NEC DOS',
 	'3c', 'PartitionMagic recovery',
 	'40', 'Venix 80286',
@@ -1099,7 +1099,7 @@ else { return " $_[2] $in{$_[0]}"; }
 
 %hidden_tags = (
 	 '5', 'Extended',
-	 'f', 'Win95 extended LBA',
+	 'f', 'Windows extended LBA',
 	);
 	
 @space_type = ( '1', '4', '5', '6', 'b', 'c', 'e', '83' );
