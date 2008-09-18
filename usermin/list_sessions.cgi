@@ -19,30 +19,27 @@ if (&foreign_available("useradmin")) {
 print "<b>$text{'sessions_desc'}</b><p>\n";
 @keys = keys %acl::sessiondb;
 if (@keys) {
-	print "<table border>\n";
-	print "<tr $tb> <td><b>$text{'sessions_id'}</b></td> ",
-	      "<td><b>$text{'sessions_user'}</b></td> ",
-	      "<td><b>$text{'sessions_host'}</b></td> ",
-	      "<td><b>$text{'sessions_login'}</b></td> </tr>\n";
+	print &ui_columns_start([ $text{'sessions_id'},
+				  $text{'sessions_user'},
+				  $text{'sessions_host'},
+				  $text{'sessions_login'} ]);
 	foreach $k (sort { @a=split(/\s+/, $acl::sessiondb{$a}); @b=split(/\s+/, $acl::sessiondb{$b}); $b[1] <=> $a[1] } @keys) {
 		next if ($k =~ /^1111111/);
 		local ($user, $ltime, $lip) = split(/\s+/, $acl::sessiondb{$k});
 		next if ($miniserv{'logouttime'} &&
 			 $time_now - $ltime > $miniserv{'logouttime'}*60);
-		print "<tr $cb>\n";
-		print "<td><a href='delete_session.cgi?id=$k'>$k</a></td>\n";
+		@cols = ( "<a href='delete_session.cgi?id=$k'>$k</a>" );
 		if ($uinfo = $umap{$user}) {
-			print "<td><a href='../useradmin/edit_user.cgi?num=$uinfo->{'num'}'>$user</a></td>\n";
+			push(@cols, "<a href='../useradmin/edit_user.cgi?num=$uinfo->{'num'}'>$user</a>");
 			}
 		else {
-			print "<td>$user</td>\n";
+			push(@cols, $user);
 			}
-		print "<td>",($lip || "<br>"),"</td>\n";
-		local $tm = localtime($ltime);
-		print "<td><tt>$tm</tt></td>\n";
-		print "</tr>\n";
+		push(@cols, $lip);
+		push(@cols, &make_date($ltime));
+		print &ui_columns_row(\@cols);
 		}
-	print "</table>\n";
+	print &ui_columns_end();
 	}
 else {
 	print "<b>$text{'sessions_none'}</b><p>\n";
