@@ -17,3 +17,5 @@ The default From: address for autoreplies now respects the default address set i
 ---- Changes since 1.330 ----
 Added a filter condition to match mail with a spam score at or above some level.
 If spam deletion above some level level is configured globally or for the user's domain, display a non-editable rule for it.
+---- Changes since 1.360 ----
+Autoreply messages containing non-ASCII characters are now properly quoted-printable encoded.
