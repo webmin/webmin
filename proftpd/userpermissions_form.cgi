@@ -127,13 +127,13 @@ foreach $ParamName(keys %in){
     #print "Name=\"$ParamName\" Value=\"".$in{$ParamName}."\"<br>\n";
     if($ParamName eq "AddUser"){
 	$Username=$in{$ParamName};
-	if($Username =~ /^[a-zA-Z_]+$/){
+	if($Username =~ /^[a-zA-Z0-9_]+$/){
 	    &AddUser($Username,$file);
 	}
     }
     if($ParamName eq "DeleteUser"){
 	$Username=$in{$ParamName};
-	if($Username =~ /^[a-zA-Z_]+$/){
+	if($Username =~ /^[a-zA-Z0-9_]+$/){
 	    if($in{"Confirm Delete User"} eq "on"){
 		&DeleteUser($Username,$file);
 		#print "New used usernames: $UsedUsernames<br>\n";
@@ -144,7 +144,7 @@ foreach $ParamName(keys %in){
     }
     if($ParamName eq "ChangePermissions"){
 	$Username=$in{$ParamName};
-	if($Username =~ /^[a-zA-Z_]+$/){
+	if($Username =~ /^[a-zA-Z0-9_]+$/){
 	    &ChangePermissions($Username,$file);
 	}
     }
