@@ -18,3 +18,5 @@ Fixed bad table indentation on some browsers.
 Changed link colors to be darker.
 ---- Changes since 1.400 ----
 Display system uptime in the right frame after logging in.
+---- Changes since 1.430 ----
+Updated CSS and all UI elements to match the Virtualmin theme, except for colors and icons.
