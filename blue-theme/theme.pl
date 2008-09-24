@@ -249,11 +249,11 @@ sub theme_popup_prehead
 return &theme_prehead();
 }
 
-# ui_table_start(heading, [tabletags], [cols], [&default-tds])
+# ui_table_start(heading, [tabletags], [cols], [&default-tds], [right-heading])
 # A table with a heading and table inside
 sub theme_ui_table_start
 {
-my ($heading, $tabletags, $cols, $tds) = @_;
+my ($heading, $tabletags, $cols, $tds, $rightheading) = @_;
 if (! $tabletags =~ /width/) { $tabletages .= " width=100%"; }
 if (defined($main::ui_table_cols)) {
   # Push on stack, for nested call
@@ -262,6 +262,7 @@ if (defined($main::ui_table_cols)) {
   push(@main::ui_table_default_tds_stack, $main::ui_table_default_tds);
   }
 my $rv;
+my $colspan = 1;
 
 if (!$WRAPPER_OPEN) {
 	$rv .= "<table class='shrinkwrapper' $tabletags>\n";
@@ -269,8 +270,18 @@ if (!$WRAPPER_OPEN) {
 	}
 $WRAPPER_OPEN++;
 $rv .= "<table class='ui_table' $tabletags>\n";
-$rv .= "<thead> <tr> <td><b>$heading</b></td> </tr> </thead>\n" if (defined($heading));
-$rv .= "<tbody> <tr> <td><table width=100%>\n";
+if (defined($heading) || defined($rightheading)) {
+        $rv .= "<thead><tr>";
+        if (defined($heading)) {
+                $rv .= "<td><b>$heading</b></td>"
+                }
+        if (defined($rightheading)) {
+                $rv .= "<td align=right>$rightheading</td>";
+                $colspan++;
+                }
+        $rv .= "</tr></thead>\n";
+        }
+$rv .= "<tbody> <tr> <td colspan=$colspan><table width=100%>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
@@ -493,11 +504,11 @@ return $rv;
 }
 
 # theme_ui_hidden_table_start(heading, [tabletags], [cols], name, status,
-#     [&default-tds])
+#                             [&default-tds], [rightheading])
 # A table with a heading and table inside, and which is collapsible
 sub theme_ui_hidden_table_start
 {
-my ($heading, $tabletags, $cols, $name, $status, $tds) = @_;
+my ($heading, $tabletags, $cols, $name, $status, $tds, $rightheading) = @_;
 my $rv;
 if (!$main::ui_hidden_start_donejs++) {
   $rv .= &ui_hidden_javascript();
@@ -513,9 +524,20 @@ if (!$WRAPPER_OPEN) { # If we're not already inside of a wrapper, wrap it
 	$rv .= "<tr><td>\n";
 	}
 $WRAPPER_OPEN++;
+my $colspan = 1;
 $rv .= "<table class='ui_table' $tabletags>\n";
-$rv .= "<thead> <tr> <td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#$text>$heading</font></b></a></td> </tr> </thead>\n" if (defined($heading));
-$rv .= "<tbody><tr> <td><div class='$defclass' id='$divid'><table width=100%>\n";
+if (defined($heading) || defined($rightheading)) {
+	$rv .= "<thead><tr>";
+	if (defined($heading)) {
+		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#$text>$heading</font></b></a></td>";
+		}
+        if (defined($rightheading)) {
+                $rv .= "<td align=right>$rightheading</td>";
+                $colspan++;
+                }
+	$rv .= "</tr> </thead>\n";
+	}
+$rv .= "<tbody><tr> <td colspan=$colspan><div class='$defclass' id='$divid'><table width=100%>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
@@ -719,7 +741,7 @@ for($i=0; $i+1<@_; $i+=2) {
 			}
 		$url = "$gconfig{'webprefix'}$url" if ($url =~ /^\//);
 		if ($count++ == 0) {
-			print ui_nav_link("left", $url);
+			print theme_ui_nav_link("left", $url);
 			}
 		else {
 			print "&nbsp;|\n";
