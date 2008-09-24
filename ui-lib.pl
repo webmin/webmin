@@ -1178,13 +1178,13 @@ return "</table></div><table width=100%>\n";
 }
 
 # ui_hidden_table_start(heading, [tabletags], [cols], name, status,
-#			[&default-tds])
+#			[&default-tds], [rightheading])
 # A table with a heading and table inside, and which is collapsible
 sub ui_hidden_table_start
 {
 return &theme_ui_hidden_table_start(@_)
 	if (defined(&theme_ui_hidden_table_start));
-my ($heading, $tabletags, $cols, $name, $status, $tds) = @_;
+my ($heading, $tabletags, $cols, $name, $status, $tds, $rightheading) = @_;
 my $rv;
 if (!$main::ui_hidden_start_donejs++) {
 	$rv .= &ui_hidden_javascript();
@@ -1196,8 +1196,19 @@ my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} : 
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 $rv .= "<table class='ui_table' border $tabletags class='ui_table'>\n";
-$rv .= "<tr $tb> <td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#$text>$heading</font></b></a></td> </tr>\n" if (defined($heading));
-$rv .= "<tr $cb> <td><div class='$defclass' id='$divid'><table width=100%>\n";
+my $colspan = 1;
+if (defined($heading) || defined($rightheading)) {
+	$rv .= "<tr $tb> <td>";
+	if (defined($heading)) {
+		$rv .= "<a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#$text>$heading</font></b></a></td>";
+		}
+	if (defined($rightheading)) {
+                $rv .= "<td align=right>$rightheading</td>";
+                $colspan++;
+                }
+	$rv .= "</td> </tr>\n";
+	}
+$rv .= "<tr $cb> <td colspan=$colspan><div class='$defclass' id='$divid'><table width=100%>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
