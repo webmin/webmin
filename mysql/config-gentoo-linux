@@ -16,5 +16,5 @@ date_subs=0
 passwd_mode=0
 mysql_data=/var/lib/mysql
 max_dbs=50
-my_cnf=/etc/my.cnf
+my_cnf=/etc/mysql/my.cnf
 max_text=1000
