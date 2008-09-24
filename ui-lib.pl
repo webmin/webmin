@@ -3,22 +3,34 @@
 
 ####################### table generation functions
 
-# ui_table_start(heading, [tabletags], [cols], [&default-tds])
+# ui_table_start(heading, [tabletags], [cols], [&default-tds],
+#		 [right-heading])
 # A table with a heading and table inside
 sub ui_table_start
 {
 return &theme_ui_table_start(@_) if (defined(&theme_ui_table_start));
-my ($heading, $tabletags, $cols, $tds) = @_;
+my ($heading, $tabletags, $cols, $tds, $rightheading) = @_;
 if (defined($main::ui_table_cols)) {
 	# Push on stack, for nested call
 	push(@main::ui_table_cols_stack, $main::ui_table_cols);
 	push(@main::ui_table_pos_stack, $main::ui_table_pos);
 	push(@main::ui_table_default_tds_stack, $main::ui_table_default_tds);
 	}
+my $colspan = 1;
 my $rv;
 $rv .= "<table class='ui_table' border $tabletags>\n";
-$rv .= "<tr $tb> <td><b>$heading</b></td> </tr>\n" if (defined($heading));
-$rv .= "<tr $cb> <td><table width=100%>\n";
+if (defined($heading) || defined($rightheading)) {
+	$rv .= "<tr $tb>";
+	if (defined($heading)) {
+		$rv .= "<td><b>$heading</b></td>"
+		}
+	if (defined($rightheading)) {
+		$rv .= "<td align=right>$rightheading</td>";
+		$colspan++;
+		}
+	$rv .= "</tr>\n";
+	}
+$rv .= "<tr $cb> <td colspan=$colspan><table width=100%>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
