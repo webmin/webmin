@@ -241,18 +241,20 @@ else {
 		return $text{'install_enone'};
 		}
 
-	# Get the module.info files to check dependancies
+	# Get the module.info or theme.info files to check dependancies
 	local $ver = &get_webmin_version();
 	local $tmpdir = &transname();
 	mkdir($tmpdir, 0700);
 	local $err;
 	local @realmods;
 	foreach $m (keys %mods) {
-		next if (!$hasfile{$m,"module.info"});
+		next if (!$hasfile{$m,"module.info"} &&
+			 !$hasfile{$m,"theme.info"});
 		push(@realmods, $m);
 		local %minfo;
-		system("cd $tmpdir ; tar xf \"$file\" $m/module.info ./$m/module.info >/dev/null 2>&1");
-		if (!&read_file("$tmpdir/$m/module.info", \%minfo)) {
+		system("cd $tmpdir ; tar xf \"$file\" $m/module.info ./$m/module.info $m/theme.info ./$m/theme.info >/dev/null 2>&1");
+		if (!&read_file("$tmpdir/$m/module.info", \%minfo) &&
+		    !&read_file("$tmpdir/$m/theme.info", \%minfo)) {
 			$err = &text('install_einfo', "<tt>$m</tt>");
 			}
 		elsif (!&check_os_support(\%minfo)) {

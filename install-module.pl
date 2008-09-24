@@ -63,6 +63,7 @@ if (ref($rv)) {
 		}
 	}
 else {
+	$rv =~ s/<[^>]+>//g;
 	print STDERR "Install failed : $rv\n";
 	}
 
