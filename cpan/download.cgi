@@ -189,7 +189,7 @@ if ($file{'Build.PL'} && $file{'Makefile.PL'} < @dirs) {
 		}
 	}
 foreach $d (@dirs) {
-	if ($d =~ /^(\S+)\-v?([0-9\.]+)$/) {
+	if ($d =~ /^(\S+)\-v?([0-9\.ab]+)$/) {
 		push(@mods, $1);
 		push(@vers, $2);
 		}
