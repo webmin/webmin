@@ -289,7 +289,9 @@ else {
 			 'shell' => $shell,
 			 'pass' => $pass,
 			 'plainpass' => $plainpass,
-			 'home' => $home );
+			 'home' => $home,
+			 'firstname' => $firstname,
+			 'lastname' => $lastname );
 
 	if ($in{'new'}) {
 		defined(&all_getpwnam($user)) &&
