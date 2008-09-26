@@ -28,7 +28,13 @@ else {
 	&setval("wins support", "false");
 	}
 
-&setval("server string", $in{server_string_def} ? "" : $in{server_string}, "");
+if ($in{server_string_def} == 1) {
+	&delval("server string");
+	}
+else {
+	&setval("server string",
+		$in{server_string_def} == 2 ? "" : $in{server_string}, "NONE");
+	}
 
 &setval("netbios name", $in{'netbios_name'}, "");
 

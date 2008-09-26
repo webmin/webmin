@@ -142,6 +142,7 @@ smb_wins=WINS mode
 smb_winsserver=Be WINS server
 smb_useserver=Use server
 smb_description=Server description
+smb_descriptionnone=None
 smb_name=Server name
 smb_aliase=Server aliases
 smb_default=Default service

@@ -40,14 +40,15 @@ printf "$gap <input type=radio name=wins value=2 %s> $text{'config_neither'}\n",
       &isfalse("wins support") && &getval("wins server") eq "" ? "checked" : "";
 print "</td> </tr>\n";
 
+$desc = &getval("server string");
 print "<tr> <td><b>$text{'smb_description'}</b></td>\n";
 print "<td colspan=3>\n";
-printf "<input type=radio name=server_string_def value=1 %s> $text{'default'}\n",
-	&getval("server string") eq "" ? "checked" : "";
-printf "$gap <input type=radio name=server_string_def value=0 %s>\n",
-	&getval("server string") eq "" ? "" : "checked";
-printf "<input name=server_string size=20 value=\"%s\"></td> </tr>\n",
-	&getval("server string");
+print &ui_radio("server_string_def", !defined($desc) ? 1 :
+				     $desc eq "" ? 2 : 0,
+		[ [ 1, $text{'default'} ],
+		  [ 2, $text{'smb_descriptionnone'} ],
+		  [ 0, &ui_textbox("server_string", $desc, 40) ] ]);
+print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'smb_name'}</b></td>\n";
 printf "<td><input name=netbios_name size=15 value=\"%s\"></td>\n",
