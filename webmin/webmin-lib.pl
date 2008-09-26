@@ -580,7 +580,7 @@ else {
 	($host, $port, $page, $ssl) = ($standard_host, $standard_port,
 				       $standard_page, $standard_ssl);
 	}
-&http_download($host, $port, $page, $temp, \$error);
+&http_download($host, $port, $page, $temp, \$error, undef, $ssl);
 return $error if ($error);
 local @rv;
 open(TEMP, $temp);
@@ -618,7 +618,7 @@ else {
 	($host, $port, $page, $ssl) = ($third_host, $third_port,
 				       $third_page, $third_ssl);
 	}
-&http_download($host, $port, $page, $temp, \$error);
+&http_download($host, $port, $page, $temp, \$error, undef, $ssl);
 return $error if ($error);
 local @rv;
 open(TEMP, $temp);
