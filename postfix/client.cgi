@@ -46,7 +46,7 @@ foreach $r (&list_multi_client_restrictions()) {
 	foreach $v (@v) {
 		$done{$opts[$v+1]} = 1;
 		}
-	if ($r eq "check_client_access" && defined($v)) {
+	if ($r eq "check_client_access" && @v) {
 		# Can show client access map
 		$has_client_access = 1;
 		}
