@@ -496,3 +496,5 @@ On FreeBSD, the Gnu tar command gtar is used in preference to regular tar when i
 When MySQL is on a remote system, the 'show table status' command is used to get an approximate size for each database.
 Added the list-domains.pl API script from Virtualmin Pro.
 Added a Module Config option to have only one spamassassin process run at a time.
+---- Changes since 3.62 ----
+Ported the Change IP Addresses page from Virtualmin GPL, to allow updating multiple domains at the same time.
