@@ -16,6 +16,6 @@ if (!&can_access($in{'file'})) {
 &webmin_log("extract", undef, $in{'file'});
 $realfile = &unmake_chroot($in{'file'});
 &switch_acl_uid();
-$err = &extract_archive($in{'file'}, $in{'delete'});
+$err = &extract_archive($realfile, $in{'delete'});
 print $err,"\n";
 
