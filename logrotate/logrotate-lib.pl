@@ -183,7 +183,7 @@ foreach $p ("daily", "weekly", "monthly") {
 return undef;
 }
 
-# save_directive(&parent, &old|name, &new)
+# save_directive(&parent, &old|name, &new, [indent])
 sub save_directive
 {
 local $conf = $_[0]->{'members'};
@@ -192,7 +192,7 @@ local $lref = &read_file_lines($old ? $old->{'file'} : $_[0]->{'file'});
 local $new = !defined($_[2]) ? undef : ref($_[2]) ? $_[2] :
 			{ 'name' => $old ? $old->{'name'} : $_[1],
 		     	  'value' => $_[2] };
-local @lines = &directive_lines($new) if ($new);
+local @lines = &directive_lines($new, $_[3]) if ($new);
 local $gparent = &get_config_parent();
 if ($old && $new) {
 	# Update
