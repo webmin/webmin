@@ -35,7 +35,7 @@ else {
 	@files || &error($text{'save_efiles'});
 	$in{'dest'} =~ /^\// || &error($text{'save_edest'});
 	if ($in{'email_def'}) {
-		delete($copy->{'email'});
+		$copy->{'email'} = '';
 		}
 	else {
 		$in{'email'} =~ /^\S+$/ || &error($text{'save_eemail'});
