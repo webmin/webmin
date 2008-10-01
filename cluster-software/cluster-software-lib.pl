@@ -66,8 +66,8 @@ delete($h{'packages'});
 # delete_software_host(&host)
 sub delete_software_host
 {
-unlink("$module_config_directory/hosts/$_[0]->{'id'}.host");
-system("rm -rf '$module_config_directory/hosts/$_[0]->{'id'}'");
+&delete_file("$module_config_directory/hosts/$_[0]->{'id'}.host");
+&delete_file("$module_config_directory/hosts/$_[0]->{'id'}");
 }
 
 # list_servers()
