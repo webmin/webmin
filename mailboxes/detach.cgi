@@ -68,15 +68,23 @@ else {
 	# Just output the attachment
 	print "X-no-links: 1\n";
 	@download = split(/\t+/, $config{'download'});
-	if (&indexof($attach->{'type'}, @download) >= 0) {
-		# Force download in IE
-		print "Content-Disposition: Attachment\n";
-		}
-	if ($attach->{'type'} eq 'message/delivery-status') {
-		print "Content-type: text/plain\n\n";
-		}
-	else {
-		print "Content-type: $attach->{'type'}\n\n";
+	if ($in{'type'}) {
+                # Display as a specific MIME type
+                print "Content-type: $in{'type'}\n\n";
+                print $attach->{'data'};
+                }
+        else {
+		# Auto-detect type
+                if ($in{'save'}) {
+                        # Force download
+                        print "Content-Disposition: Attachment\n";
+                        }
+                if ($attach->{'type'} eq 'message/delivery-status') {
+                        print "Content-type: text/plain\n\n";
+                        }
+                else {
+                        print "Content-type: $attach->{'type'}\n\n";
+                        }
 		}
 	if ($attach->{'type'} =~ /^text\/html/i) {
 		print &safe_urls(&filter_javascript($attach->{'data'}));

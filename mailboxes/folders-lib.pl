@@ -3099,5 +3099,135 @@ for(my $i=0; $i<scalar(@rv); $i++) {
 return wantarray ? @rv : $rv[0];
 }
 
+# show_delivery_status(&dstatus)
+# Show the delivery status HTML for some email
+sub show_delivery_status
+{
+local ($dstatus) = @_;
+local $ds = &parse_delivery_status($dstatus->{'data'});
+$dtxt = $ds->{'status'} =~ /^2\./ ? $text{'view_dstatusok'}
+				  : $text{'view_dstatus'};
+print &ui_table_start($dtxt, "width=100%", 2, [ "width=10% nowrap" ]);
+foreach $dsh ('final-recipient', 'diagnostic-code',
+	      'remote-mta', 'reporting-mta') {
+	if ($ds->{$dsh}) {
+		$ds->{$dsh} =~ s/^\S+;//;
+		print &ui_table_row($text{'view_'.$dsh},
+				    &html_escape($ds->{$dsh}));
+		}
+	}
+print &ui_table_end();
+}
+
+# attachments_table(&attach, folder, view-url, detach-url, [show-checkboxes])
+# Prints an HTML table of attachments. Returns a list of those that can be
+# server-side detached.
+sub attachments_table
+{
+local ($attach, $folder, $viewurl, $detachurl, $cbs) = @_;
+local %typemap = map { $_->{'type'}, $_->{'desc'} } &list_mime_types();
+local $qid = &urlize($id);
+local $rv;
+local (@files, @actions, @detach, @sizes, @titles, @links);
+foreach my $a (@$attach) {
+	local $fn;
+	local $size = &nice_size(length($a->{'data'}));
+	local $cb;
+	if (!$a->{'type'}) {
+		# An actual email
+		push(@files, &text('view_sub2', $a->{'header'}->{'from'}));
+		$fn = "mail.txt";
+		$size = &nice_size($a->{'size'});
+		}
+	elsif ($a->{'type'} eq 'message/rfc822') {
+		# Attached email
+		local $amail = &extract_mail($a->{'data'});
+		if ($amail && $amail->{'header'}->{'from'}) {
+			push(@files, &text('view_sub2',
+					$amail->{'header'}->{'from'}));
+			}
+		else {
+			push(@files, &text('view_sub'));
+			}
+		$fn = "mail.txt";
+		}
+	elsif ($a->{'filename'}) {
+		# Known filename
+		push(@files, &decode_mimewords($a->{'filename'}));
+		$fn = &decode_mimewords($a->{'filename'});
+		push(@detach, [ $a->{'idx'}, $fn ]);
+		}
+	else {
+		# No filename
+		push(@files, "<i>$text{'view_anofile'}</i>");
+		$fn = "file.".&type_to_extension($a->{'type'});
+		push(@detach, [ $a->{'idx'}, $fn ]);
+		}
+	push(@sizes, $size);
+	push(@titles, $files[$#files]."<br>".$size);
+	if ($a->{'error'}) {
+		$titles[$#titles] .= "<br><font size=-1>($a->{'error'})</font>";
+		}
+	$fn =~ s/ /_/g;
+	$fn =~ s/\#/_/g;
+	$fn = &html_escape($fn);
+	local @a;
+	local $detachfile = $detachurl;
+	$detachfile =~ s/\?/\/$fn\?/;
+	if (!$a->{'type'}) {
+		# Complete email for viewing
+		local $qmid = &urlize($a->{'id'});
+		push(@links, "view_mail.cgi?id=$qmid&folder=$folder->{'index'}");
+		}
+	elsif ($a->{'type'} eq 'message/rfc822') {
+		# Attached sub-email
+		push(@links, $viewurl."&sub=$a->{'idx'}");
+		}
+	else {
+		# Regular attachment
+		push(@links, $detachfile."&attach=$a->{'idx'}");
+		}
+	push(@a, "<a href='$links[$#links]'>$text{'view_aview'}</a>");
+	push(@a, "<a href='$links[$#links]' target=_new>$text{'view_aopen'}</a>");
+	if ($a->{'type'}) {
+		push(@a, "<a href='$detachfile&attach=$a->{'idx'}&save=1'>$text{'view_asave'}</a>");
+		}
+	if ($a->{'type'} eq 'message/rfc822') {
+		push(@a, "<a href='$detachfile&attach=$a->{'idx'}&type=text/plain$subs'>$text{'view_aplain'}</a>");
+		}
+	push(@actions, \@a);
+	}
+local @tds = ( "width=50%", "width=25%", "width=10%", "width=15% nowrap" );
+if ($cbs) {
+	unshift(@tds, "width=5");
+	}
+print &ui_columns_start([
+	$cbs ? ( "" ) : ( ),
+	$text{'view_afile'},
+	$text{'view_atype'},
+	$text{'view_asize'},
+	$text{'view_aactions'},
+	], 100, 0, \@tds);
+for(my $i=0; $i<@files; $i++) {
+	local $type = $attach[$i]->{'type'} || "message/rfc822";
+	local $typedesc = $typemap{lc($type)} || $type;
+	local @cols = (
+		"<a href='$links[$i]'>$files[$i]</a>",
+		$typedesc,
+		$sizes[$i],
+		&ui_links_row($actions[$i]),
+		);
+	if ($cbs) {
+		print &ui_checked_columns_row(\@cols, \@tds,
+					      $cbs, $attach->[$i]->{'idx'}, 1);
+		}
+	else {
+		print &ui_columns_row(\@cols, \@tds);
+		}
+	}
+print &ui_columns_end();
+return @detach;
+}
+
 1;
 

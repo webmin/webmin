@@ -167,55 +167,51 @@ if ($config{'arrows'} && @mail) {
         &show_arrows();
         }
 
+@grid = ( );
 if (@mail) {
-	print &ui_hr();
-	print "<table width=100%><tr>\n";
-
 	# Show simple search form
-	print "<form action=mail_search.cgi><td width=30%>\n";
-	print "<input type=hidden name=user value='$in{'user'}'>\n";
-	print "<input type=hidden name=folder value='$folder->{'index'}'>\n";
-	print "<input type=hidden name=simple value=1>\n";
-	print "<input type=submit value='$text{'mail_search2'}'>\n";
-	print "<input name=search size=20></td></form>\n";
+	push(@grid, &ui_form_start("mail_search.cgi").
+		    &ui_hidden("user", $in{'user'}).
+		    &ui_hidden("folder", $folder->{'index'}).
+		    &ui_hidden("simple", 1).
+		    &ui_submit($text{'mail_search2'})." ".
+		    &ui_textbox("search", undef, 20).
+		    &ui_form_end());
 
 	# Show advanced search button
-	print "<form action=search_form.cgi>\n";
-	print "<input type=hidden name=user value='$in{'user'}'>\n";
-	print "<input type=hidden name=folder value='$folder->{'index'}'>\n";
-	print "<td width=20% align=center><input type=submit name=advanced ",
-	      "value='$text{'mail_advanced'}'></td>\n";
-	print "</form>\n";
+	push(@grid, &ui_form_start("search_form.cgi").
+		    &ui_hidden("user", $in{'user'}).
+		    &ui_hidden("folder", $folder->{'index'}).
+		    &ui_submit($text{'mail_advanced'}, "advanced").
+		    &ui_form_end());
 
 	# Show delete all button
-	print "<form action=delete_all.cgi>\n";
-	print "<input type=hidden name=user value='$in{'user'}'>\n";
-	print "<input type=hidden name=folder value='$folder->{'index'}'>\n";
-	print "<td width=20% align=center><input type=submit ",
-	      "value='$text{'mail_delall'}'></td>\n";
-	print "</form>\n";
+	push(@grid, &ui_form_start("delete_all.cgi").
+		    &ui_hidden("user", $in{'user'}).
+		    &ui_hidden("folder", $folder->{'index'}).
+		    &ui_submit($text{'mail_delall'}).
+		    &ui_form_end());
 	}
 
 # Show page jump form
 $jumpform = (@mail > $perpage);
 if ($jumpform) {
-	print "<form action=list_mail.cgi>\n";
-	print "<input type=hidden name=user value='$in{'user'}'>\n";
-	print "<input type=hidden name=folder value='$folder->{'index'}'>\n";
-	print "<td width=30% align=right>\n";
-	print "<input type=submit value='$text{'mail_jump'}'>\n";
-	printf "<input name=jump size=3 value='%s'> %s %s\n",
-		int($in{'start'} / $perpage)+1, $text{'mail_of'},
-		int(@mail / $perpage)+1;
-	print "</td></form>\n";
-	}
-elsif (@mail) {
-	print "<td width=30% align=right></td>\n";
+	push(@grid, &ui_form_start("list_mail.cgi").
+		    &ui_hidden("user", $in{'user'}).
+		    &ui_hidden("folder", $folder->{'index'}).
+		    &ui_submit($text{'mail_jump'})." ".
+		    &ui_textbox("jump", int($in{'start'} / $perpage)+1, 3)." ".
+		    $text{'mail_of'}." ".(int(@mail / $perpage)+1).
+		    &ui_form_end());
 	}
 
-if (@mail) {
-	print "</tr>\n";
-	print "</table>\n";
+# Show the buttons, if any
+if (@grid) {
+	print &ui_hr();
+	print &ui_grid_table(\@grid, 4, 100,
+		  [ "align=left width=25%", "align=center width=25%",
+		    "align=center width=25%", "align=right width=25%" ],
+		  "cellpadding=0 cellspacing=0");
 	}
 
 if ($config{'log_read'}) {

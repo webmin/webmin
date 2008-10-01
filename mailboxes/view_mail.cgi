@@ -67,13 +67,14 @@ if ($body && $body eq $htmlbody) {
 print &check_clicks_function();
 &show_arrows();
 
-print "<form action=reply_mail.cgi>\n";
-print "<input type=hidden name=user value='$in{'user'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=folder value='$in{'folder'}'>\n";
-print "<input type=hidden name=mod value=",&modification_time($folder),">\n";
+# Start of the form
+print &ui_form_start("reply_mail.cgi");
+print &ui_hidden("user", $in{'user'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("folder", $in{'folder'});
+print &ui_hidden("mod", &modification_time($folder));
 foreach $s (@sub) {
-	print "<input type=hidden name=sub value='$s'>\n";
+	print &ui_hidden("sub", $s);
 	}
 
 # Find any delivery status attachment
@@ -88,51 +89,52 @@ if ($config{'top_buttons'} == 2 && &editable_mail($mail)) {
 	print "<p>\n";
 	}
 
-print "<table width=100% border=1>\n";
-print "<tr> <td $tb><table width=100% cellpadding=0 cellspacing=0><tr>",
-      "<td><b>$text{'view_headers'}</b></td> <td align=right>\n";
+# Start of headers section
+$hbase = "view_mail.cgi?idx=$in{'idx'}&body=$in{'body'}&".
+	 "folder=$in{'folder'}&user=$uuser$subs";
 if ($in{'headers'}) {
-	print "<a href='view_mail.cgi?idx=$in{'idx'}&body=$in{'body'}&folder=$in{'folder'}&user=$uuser&headers=0$subs'>$text{'view_noheaders'}</a>\n";
+	push(@hmode, "<a href='$hbase&headers=0'>$text{'view_noheaders'}</a>");
 	}
 else {
-	print "<a href='view_mail.cgi?idx=$in{'idx'}&body=$in{'body'}&folder=$in{'folder'}&user=$uuser&headers=1$subs'>$text{'view_allheaders'}</a>\n";
+	push(@hmode, "<a href='$hbase&headers=1'>$text{'view_allheaders'}</a>");
 	}
-print "&nbsp;&nbsp;<a href='view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$uuser&raw=1$subs'>$text{'view_raw'}</a></td>\n";
-print "</tr></table></td> </tr>\n";
+push(@hmode, "<a href='$hbase&raw=1'>$text{'view_raw'}</a>");
+print &ui_table_start($text{'view_headers'},
+		      "width=100%", 2, [ "width=10% nowrap" ],
+		      &ui_links_row(\@hmode));
 
-print "<tr> <td $cb><table width=100%>\n";
 if ($in{'headers'}) {
 	# Show all the headers
 	if ($mail->{'fromline'}) {
-		print "<tr> <td><b>$text{'mail_rfc'}</b></td>",
-		      "<td>",&eucconv_and_escape($mail->{'fromline'}),
-		      "</td> </tr>\n";
+		print &ui_table_row($text{'mail_rfc'},
+			&eucconv_and_escape($mail->{'fromline'}));
 		}
 	foreach $h (@{$mail->{'headers'}}) {
-		print "<tr> <td><b>$h->[0]:</b></td> ",
-		      "<td>",&eucconv_and_escape(&decode_mimewords($h->[1])),
-		      "</td> </tr>\n";
+		print &ui_table_row($h->[0].":",
+			&eucconv_and_escape(&decode_mimewords($h->[1])));
 		}
 	}
 else {
 	# Just show the most useful headers
-	print "<tr> <td><b>$text{'mail_from'}</b></td> ",
-	      "<td>",&address_link($mail->{'header'}->{'from'}),"</td> </tr>\n";
-	print "<tr> <td><b>$text{'mail_to'}</b></td> ",
-	      "<td>",&address_link($mail->{'header'}->{'to'}),"</td> </tr>\n";
-	print "<tr> <td><b>$text{'mail_cc'}</b></td> ",
-	      "<td>",&address_link($mail->{'header'}->{'cc'}),"</td> </tr>\n"
-		if ($mail->{'header'}->{'cc'});
-	print "<tr> <td><b>$text{'mail_date'}</b></td> ",
-	      "<td>",&eucconv_and_escape($mail->{'header'}->{'date'}),
-	      "</td> </tr>\n";
-	print "<tr> <td><b>$text{'mail_subject'}</b></td> ",
-	      "<td>",&eucconv_and_escape(&decode_mimewords(
-			$mail->{'header'}->{'subject'})),"</td> </tr>\n";
+	print &ui_table_row($text{'mail_from'},
+		&address_link($mail->{'header'}->{'from'}));
+	print &ui_table_row($text{'mail_to'},
+		&address_link($mail->{'header'}->{'to'}));
+	if ($mail->{'header'}->{'cc'}) {
+		print &ui_table_row($text{'mail_cc'},
+			&address_link($mail->{'header'}->{'cc'}));
+		}
+	print &ui_table_row($text{'mail_date'},
+		&eucconv_and_escape(
+                        &simplify_date($mail->{'header'}->{'date'})));
+	print &ui_table_row($text{'mail_subject'},
+		&eucconv_and_escape(&decode_mimewords(
+                                        $mail->{'header'}->{'subject'})));
 	}
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 # Show body attachment, with properly linked URLs
+@bodyright = ( );
 if ($body && $body->{'data'} =~ /\S/) {
 	if ($body eq $textbody) {
 		# Show plain text
@@ -144,7 +146,8 @@ if ($body && $body->{'data'} =~ /\S/) {
 			}
 		$bodycontents .= "</pre>";
 		if ($htmlbody) {
-			$bodyright = "<a href='view_mail.cgi?idx=$in{'idx'}&headers=$in{'headers'}&folder=$in{'folder'}&user=$uuser&body=2$subs'>$text{'view_ashtml'}</a>";
+			push(@bodyright,
+			    "<a href='$hbase&body=2'>$text{'view_ashtml'}</a>");
 			}
 		}
 	elsif ($body eq $htmlbody) {
@@ -153,106 +156,58 @@ if ($body && $body->{'data'} =~ /\S/) {
 		$bodycontents = &fix_cids($bodycontents, \@attach,
 			"detach.cgi?user=$uuser&idx=$in{'idx'}&folder=$in{'folder'}$subs");
 		if ($textbody) {
-			$bodyright = "<a href='view_mail.cgi?idx=$in{'idx'}&headers=$in{'headers'}&folder=$in{'folder'}&user=$uuser&body=1$subs'>$text{'view_astext'}</a>";
+			push(@bodyright,
+			    "<a href='$hbase&body=1'>$text{'view_ashtml'}</a>");
 			}
 		}
 	}
 if ($bodycontents) {
-	print "<table width=100% border=1>\n";
-	print "<tr $tb> <td><table width=100% cellpadding=0 cellspacing=0><tr>",
-	      "<td><b>$text{'view_body'}</b></td> ",
-	      "<td align=right>$bodyright</td> </tr></table></td> </tr>\n";
-	print "<tr $cb> <td>\n";
-	print $bodycontents;
-	print "</pre></td></tr></table><p>\n";
+	print &ui_table_start($text{'view_body'}, "width=100%", 1,
+                              undef, &ui_links_row(\@bodyright));
+	print &ui_table_row(undef, $bodycontents);
+	print &ui_table_end();
 	}
 
 # Show delivery status
 if ($dstatus) {
-	print "<table width=100% border=1>\n";
-	print "<tr> <td $tb><b>$text{'view_dstatus'}</b></td> </tr>\n";
-	print "<tr> <td $cb><table>\n";
-
-	local $ds = &parse_delivery_status($dstatus->{'data'});
-	foreach $dsh ('final-recipient', 'diagnostic-code',
-		      'remote-mta', 'reporting-mta') {
-		if ($ds->{$dsh}) {
-			$ds->{$dsh} =~ s/^\S+;//;
-			print "<tr> <td nowrap valign=top><b>",
-			      $text{'view_'.$dsh},"</b></td>\n";
-			print "<td>",&html_escape($ds->{$dsh}),"</td> </tr>\n";
-			}
-		}
-
-	print "</table></td></tr></table><p>\n";
+	&show_delivery_status($dstatus);
 	}
 
 # Display other attachments
 if (@attach) {
-	print "<table width=100% border=1>\n";
-	print "<tr> <td $tb><b>$text{'view_attach'}</b></td> </tr>\n";
-	print "<tr> <td $cb>\n";
-	foreach $a (@attach) {
-		local $fn;
-		$size = (int(length($a->{'data'})/1000)+1)." Kb";
-		local $cb;
-		if ($a->{'type'} eq 'message/rfc822') {
-			push(@titles, "$text{'view_sub'}<br>$size");
-			}
-		elsif ($a->{'filename'}) {
-			push(@titles, &decode_mimewords($a->{'filename'}).
-				      "<br>$size");
-			$fn = &decode_mimewords($a->{'filename'});
-			push(@detach, [ $a->{'idx'}, $fn ]);
-			}
-		else {
-			push(@titles, "$a->{'type'}<br>$size");
-			$a->{'type'} =~ /\/(\S+)$/;
-			$fn = "file.$1";
-			push(@detach, [ $a->{'idx'}, $fn ]);
-			}
-		if ($a->{'error'}) {
-			$titles[$#titles] .= "<br><font size=-1>($a->{'error'})</font>";
-			}
-		$fn =~ s/ /_/g;
-		$fn =~ s/\#/_/g;
-		$fn = &html_escape($fn);
-		if ($a->{'type'} eq 'message/rfc822') {
-			push(@links, "view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$uuser$subs&sub=$a->{'idx'}");
-			}
-		else {
-			push(@links, "detach.cgi/$fn?idx=$in{'idx'}&folder=$in{'folder'}&user=$uuser&attach=$a->{'idx'}$subs");
-			}
-		if ($config{'thumbnails'} &&
-		    ($a->{'type'} =~ /image\/gif/i && &has_command("giftopnm")&&
-		     &has_command("pnmscale") && &has_command("cjpeg") ||
-		     $a->{'type'} =~ /image\/jpeg/i && &has_command("djpeg") &&
-		     &has_command("pnmscale") && &has_command("cjpeg"))) {
-			# Can show an image icon
-			push(@icons, "detach.cgi?scale=1&idx=$in{'idx'}&folder=$in{'folder'}&attach=$a->{'idx'}$subs");
-			$imgicons++;
-			}
-		else {
-			push(@icons, "images/boxes.gif");
-			}
+	# Table of attachments
+	$viewurl = "view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&".
+		   "user=$uuser$subs";
+	$detachurl = "detach.cgi?idx=$in{'idx'}&folder=$in{'folder'}&".
+		     "user=$uuser$subs";
+        @detach = &attachments_table(\@attach, $folder, $viewurl, $detachurl);
+
+	# Links to download all / slideshow
+	@links = ( );
+	if (@attach > 1) {
+		push(@links, "<a href='detachall.cgi/attachments.zip?folder=$in{'folder'}&idx=$in{'idx'}&user=$uuser$subs'>$text{'view_aall'}</a>");
 		}
-	&icons_table(\@links, \@titles, \@icons, 6, undef,
-		     $imgicons ? ( 0, 0 ) : ( ));
+	@iattach = grep { $_->{'type'} =~ /^image\// } @attach;
+	if (@iattach > 1) {
+		push(@links, "<a href='slideshow.cgi?folder=$in{'folder'}&idx=$in{'idx'}&user=$uuser$subs'>$text{'view_aslideshow'}</a>");
+		}
+	print &ui_links_row(\@links) if (@links);
+
+	# Show form to detact to server, if enabled
 	if ($access{'candetach'} && @detach && defined($uinfo[2])) {
-		print "<input type=submit name=detach value='$text{'view_detach'}'>\n";
-		print "<input type=hidden name=bindex value='$body->{'idx'}'>\n" if ($body);
-		print "<select name=attach>\n";
-		print "<option value=*>$text{'view_dall'}\n";
-		foreach $a (@detach) {
-			printf "<option value=%s>%s\n",
-				$a->[0], $a->[1];
-			}
-		print "</select>\n";
-		print "<b>$text{'view_dir'}</b>\n";
-		print "<input name=dir size=40> ",
-			&file_chooser_button("dir", 1),"\n";
-		}
-	print "</td></tr></table><p>\n";
+                print &ui_table_start($text{'view_dheader'}, "width=100%", 1);
+                $dtach = &ui_submit($text{'view_detach'}, 'detach');
+                $dtach .= &ui_hidden("bindex", $body->{'idx'}) if ($body);
+                $dtach .= &ui_hidden("sindex", $sindex) if (defined($sindex));
+                $dtach .= &ui_select("attach", undef,
+                                [ [ '*', $text{'view_dall'} ],
+                                  @detach ]);
+                $dtach .= "<b>$text{'view_dir'}</b>\n";
+                $dtach .= &ui_textbox("dir", undef, 60)." ".
+                          &file_chooser_button("dir", 1);
+                print &ui_table_row(undef, $dtach);
+                print &ui_table_end();
+                }
 	}
 
 &show_mail_buttons(2, scalar(@sub)) if (&editable_mail($mail));
@@ -263,12 +218,14 @@ print "</form>\n";
 
 dbmclose(%read);
 
+# Footer with backlinks
 local @sr = !@sub ? ( ) :
     ( "view_mail.cgi?idx=$in{'idx'}", $text{'view_return'} ),
 $s = int((@mail - $in{'idx'} - 1) / $config{'perpage'}) *
 	$config{'perpage'};
-&mail_page_footer(@sub ? ( "view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$uuser",
-		 $text{'view_return'} ) : ( ),
+&mail_page_footer(
+	@sub ? ("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$uuser",
+		$text{'view_return'}) : ( ),
 	"list_mail.cgi?folder=$in{'folder'}&user=$uuser", $text{'mail_return'},
 	"", $text{'index_return'});
 
