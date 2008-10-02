@@ -72,24 +72,6 @@ if (@error) {
 	print "</font></b></center>\n";
 	}
 
-$showto = $folder->{'sent'} || $folder->{'drafts'};
-@tds = ( "width=5", "nowrap", "nowrap", "nowrap", "nowrap" );
-if (@mail) {
-	# Show mailbox headers
-	local @hcols;
-	push(@hcols, "");
-	push(@hcols, $showto ? $text{'mail_to'} : $text{'mail_from'});
-	push(@hcols, $config{'show_to'} ? $showto ? ( $text{'mail_from'} ) :
-						    ( $text{'mail_to'} ) : ());
-	push(@hcols, $text{'mail_date'});
-	push(@hcols, $text{'mail_size'});
-	push(@hcols, $text{'mail_subject'});
-	@links = ( &select_all_link("d", 1),
-		   &select_invert_link("d", 1) );
-	print &ui_links_row(\@links);
-	print &ui_columns_start(\@hcols, 100, 0, \@tds);
-	}
-
 # Get the mails
 @showmail = ( );
 for($i=$in{'start'}; $i<@mail && $i<$in{'start'}+$perpage; $i++) {
@@ -97,71 +79,13 @@ for($i=$in{'start'}; $i<@mail && $i<$in{'start'}+$perpage; $i++) {
 	}
 @hasattach = &mail_has_attachments(\@showmail, $folder);
 
-# Show rows for actual mail messages
-$i = 0;
-foreach my $mail (@showmail) {
-	local $idx = $mail->{'idx'};
-	local $cols = 0;
-	local @cols;
-	local $from = $mail->{'header'}->{$showto ? 'to' : 'from'};
-	$from = $text{'mail_unknown'} if ($from !~ /\S/);
-	push(@cols, &view_mail_link($in{'user'}, $folder, $idx, $from));
-	if ($config{'show_to'}) {
-		push(@cols, &simplify_from(
-	   		$mail->{'header'}->{$showto ? 'from' : 'to'}));
-		}
-	push(@cols, &simplify_date($mail->{'header'}->{'date'}));
-	push(@cols, &nice_size($mail->{'size'}, 1024));
-	local $tbl;
-	$tbl .= "<table border=0 cellpadding=0 cellspacing=0 width=100%>".
-	      "<tr><td>".&simplify_subject($mail->{'header'}->{'subject'}).
-	      "</td> <td align=right>";
-	if ($hasattach[$i]) {
-		$tbl .= "<img src=images/attach.gif>";
-		}
-	local $p = int($mail->{'header'}->{'x-priority'});
-	if ($p == 1) {
-		$tbl .= "&nbsp;<img src=images/p1.gif>";
-		}
-	elsif ($p == 2) {
-		$tbl .= "&nbsp;<img src=images/p2.gif>";
-		}
-	if (!$showto) {
-		if ($read{$mail->{'header'}->{'message-id'}} == 2) {
-			$tbl .= "&nbsp;<img src=images/special.gif>";
-			}
-		elsif ($read{$mail->{'header'}->{'message-id'}} == 1) {
-			$tbl .= "&nbsp;<img src=images/read.gif>";
-			}
-		}
-	$tbl .= "</td></tr></table>\n";
-	push(@cols, $tbl);
-
-	if (&editable_mail($mail)) {
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $idx);
-		}
-	else {
-		print &ui_columns_row([ "", @cols ], \@tds);
-		}
-
-	if ($config{'show_body'}) {
-                # Show part of the body too
-                &parse_mail($mail);
-		local $data = &mail_preview($mail);
-		if ($data) {
-                        print "<tr $cb> <td colspan=",(scalar(@cols)+1),"><tt>",
-				&html_escape($data),"</tt></td> </tr>\n";
-			}
-                }
-	$i++;
-	}
+# Show them
 if (@mail) {
-	print &ui_columns_end();
-	print &ui_links_row(\@links);
+	&show_mail_table(\@showmail, $folder, 1);
 	}
 
 &show_buttons(2, \@folders, $folder, \@mail, $in{'user'});
-print "</form>\n";
+print &ui_form_end();
 if ($config{'arrows'} && @mail) {
         # Show page flipping arrows at the bottom
         &show_arrows();

@@ -103,98 +103,19 @@ else {
 	}
 @rv = reverse(@rv);
 
-$showto = $folder->{'sent'} || $folder->{'drafts'};
+# Show list of messages, with form
 if (@rv) {
-	print "<form action=delete_mail.cgi method=post>\n";
-	print "<input type=hidden name=folder value='$in{'folder'}'>\n";
-	print "<input type=hidden name=user value='$in{'user'}'>\n";
-	if ($config{'top_buttons'}) {
-		if (!$multi_folder) {
-			&show_buttons(1, \@folders, $folder, \@rv, $in{'user'},
-				      1);
-			@links = ( &select_all_link("d", 0),
-				   &select_invert_link("d", 0) );
-			print &ui_links_row(\@links);
-			}
+	print &ui_form_start("delete_mail.cgi", "post");
+	print &ui_hidden("user", $in{'user'});
+	print &ui_hidden("folder", $in{'folder'});
+	if ($config{'top_buttons'} && !$multi_folder) {
+		&show_buttons(1, \@folders, $folder, \@rv, $in{'user'}, 1);
 		}
-
-	# Show mailbox headers
-	local @hcols;
-	push(@hcols, "");
-	push(@hcols, $showto ? $text{'mail_to'} : $text{'mail_from'});
-	push(@hcols, $config{'show_to'} ? $showto ? ( $text{'mail_from'} ) :
-						    ( $text{'mail_to'} ) : ());
-	push(@hcols, $text{'mail_date'});
-	push(@hcols, $text{'mail_size'});
-	push(@hcols, $text{'mail_subject'});
-	print &ui_columns_start(\@hcols, 100, 0, \@tds);
-	}
-foreach $m (@rv) {
-	local $idx = $m->{'idx'};
-	local $mf = $m->{'folder'};
-	local @cols;
-	local $from = &simplify_from($m->{'header'}->{
-					$showto ? 'to' : 'from'});
-	$from = $text{'mail_unknown'} if ($from !~ /\S/);
-	push(@cols, "<a href='view_mail.cgi?idx=$idx&user=$uuser&folder=$mf->{'index'}'>$from</a>");
-	if ($config{'show_to'}) {
-		push(@cols, &simplify_from(
-	   		$m->{'header'}->{$showto ? 'from' : 'to'}));
-		}
-	push(@cols, &simplify_date($m->{'header'}->{'date'}));
-	push(@cols, &nice_size($m->{'size'}, 1024));
-	local $tbl;
-	$tbl .= "<table border=0 cellpadding=0 cellspacing=0 width=100%>".
-	      "<tr><td>".&simplify_subject($m->{'header'}->{'subject'}).
-	      "</td> <td align=right>";
-	if ($m->{'header'}->{'content-type'} =~ /multipart\/\S+/i) {
-		$tbl .= "<img src=images/attach.gif>";
-		}
-	local $p = int($m->{'header'}->{'x-priority'});
-	if ($p == 1) {
-		$tbl .= "&nbsp;<img src=images/p1.gif>";
-		}
-	elsif ($p == 2) {
-		$tbl .= "&nbsp;<img src=images/p2.gif>";
-		}
-	if (!$showto) {
-		if ($read{$m->{'header'}->{'message-id'}} == 2) {
-			$tbl .= "&nbsp;<img src=images/special.gif>";
-			}
-		elsif ($read{$m->{'header'}->{'message-id'}} == 1) {
-			$tbl .= "&nbsp;<img src=images/read.gif>";
-			}
-		}
-	$tbl .= "</td></tr></table>\n";
-	push(@cols, $tbl);
-
-	if (&editable_mail($m)) {
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $idx);
-		}
-	elsif ($multi_folder) {
-		print &ui_columns_row([ $mf->{'name'}, @cols ], \@tds);
-		}
-	else {
-		print &ui_columns_row([ "", @cols ], \@tds);
-		}
-
-	if ($config{'show_body'}) {
-                # Show part of the body too
-                &parse_mail($m);
-		local $data = &mail_preview($m);
-		if ($data) {
-                        print "<tr $cb> <td colspan=",(scalar(@cols)+1),"><tt>",
-				&html_escape($data),"</tt></td> </tr>\n";
-			}
-                }
-	}
-if (@rv) {
-	print &ui_columns_end();
+	&show_mail_table(\@rv, $multi_folder ? undef : $ofolder, 0);
 	if (!$multi_folder) {
-		print &ui_links_row(\@links);
 		&show_buttons(2, \@folders, $folder, \@rv, $in{'user'}, 1);
 		}
-	print "</form><p>\n";
+	print &ui_form_end();
 	}
 else {
 	print "<b>$text{'search_none'}</b> <p>\n";

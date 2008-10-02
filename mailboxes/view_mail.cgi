@@ -48,7 +48,7 @@ if ($in{'raw'}) {
 		}
 	print "\n";
 	print $mail->{'body'};
-	exit;
+	return;
 	}
 
 # Find body attachment and type

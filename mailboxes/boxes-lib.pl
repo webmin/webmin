@@ -1980,7 +1980,7 @@ if ($up2date && $cachefile) {
 	# Bring cache up to date
 	$now--;
 	local $lref = &read_file_lines($cachefile);
-	push(@$lref, "cur/$now.$$.$hn");
+	push(@$lref, "cur/$now.$$.$main::write_maildir_count.$hn");
 	&flush_file_lines($cachefile);
 	}
 }

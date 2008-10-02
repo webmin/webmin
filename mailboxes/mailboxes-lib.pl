@@ -1170,5 +1170,89 @@ if (!$done_dbmopen_read++) {
 $read{$mail->{'header'}->{'message-id'}} = $read;
 }
 
+# show_mail_table(&mails, &folder, formno)
+# Output a full table of messages
+sub show_mail_table
+{
+local @mail = @{$_[0]};
+local (undef, $folder, $formno) = @_;
+
+my $showto = !$folder ? 0 :
+	     $folder->{'sent'} || $folder->{'drafts'} ? 1 : 0;
+my @tds = ( "nowrap", "nowrap", "nowrap", "nowrap" );
+
+# Show mailbox headers
+local @hcols;
+if ($folder) {
+	push(@hcols, "");
+	splice(@tds, "width=5", 0, 0);
+	}
+push(@hcols, $showto ? $text{'mail_to'} : $text{'mail_from'});
+push(@hcols, $config{'show_to'} ? $showto ? ( $text{'mail_from'} ) :
+					    ( $text{'mail_to'} ) : ());
+push(@hcols, $text{'mail_date'});
+push(@hcols, $text{'mail_size'});
+push(@hcols, $text{'mail_subject'});
+my @links = ( &select_all_link("d", $formno),
+	      &select_invert_link("d", $formno) );
+if ($folder) {
+	print &ui_links_row(\@links);
+	}
+print &ui_columns_start(\@hcols, 100, 0, \@tds);
+
+# Show rows for actual mail messages
+my $i = 0;
+foreach my $mail (@mail) {
+	local $idx = $mail->{'idx'};
+	local $cols = 0;
+	local @cols;
+
+	# From and To columns, with links
+	local $from = $mail->{'header'}->{$showto ? 'to' : 'from'};
+	$from = $text{'mail_unknown'} if ($from !~ /\S/);
+	local $mfolder = $mail->{'folder'} || $folder;
+	push(@cols, &view_mail_link($in{'user'}, $mfolder, $idx, $from));
+	if ($config{'show_to'}) {
+		push(@cols, &simplify_from(
+	   		$mail->{'header'}->{$showto ? 'from' : 'to'}));
+		}
+
+	# Date and size columns
+	push(@cols, &simplify_date($mail->{'header'}->{'date'}));
+	push(@cols, &nice_size($mail->{'size'}, 1024));
+
+	# Subject with icons
+	local @icons = &message_icons($mail, $mfolder->{'sent'}, $mfolder);
+	push(@cols, &simplify_subject($mail->{'header'}->{'subject'}).
+		    join("&nbsp;", @icons));
+
+	# Generate the row
+	if (!$folder) {
+		print &ui_columns_row(\@cols, \@tds);
+		}
+	elsif (&editable_mail($mail)) {
+		print &ui_checked_columns_row(\@cols, \@tds, "d", $idx);
+		}
+	else {
+		print &ui_columns_row([ "", @cols ], \@tds);
+		}
+
+	if ($config{'show_body'}) {
+                # Show part of the body too
+                &parse_mail($mail);
+		local $data = &mail_preview($mail);
+		if ($data) {
+                        print "<tr $cb> <td colspan=",(scalar(@cols)+1),"><tt>",
+				&html_escape($data),"</tt></td> </tr>\n";
+			}
+                }
+	$i++;
+	}
+print &ui_columns_end();
+if ($folder) {
+	print &ui_links_row(\@links);
+	}
+}
+
 1;
 
