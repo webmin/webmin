@@ -180,7 +180,8 @@ if (@attach) {
 		   "user=$uuser$subs";
 	$detachurl = "detach.cgi?idx=$in{'idx'}&folder=$in{'folder'}&".
 		     "user=$uuser$subs";
-        @detach = &attachments_table(\@attach, $folder, $viewurl, $detachurl);
+        @detach = &attachments_table(\@attach, $folder, $viewurl, $detachurl,
+				     undef, undef, undef);
 
 	# Links to download all / slideshow
 	@links = ( );

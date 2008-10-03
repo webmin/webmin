@@ -19,17 +19,16 @@ if ($in{'confirm'}) {
 else {
 	# Ask first
 	&ui_print_header(undef, $text{'delall_title'}, "");
-	print &ui_form_start("delete_all.cgi");
-	print &ui_hidden("user", $in{'user'}),"\n";
-	print &ui_hidden("folder", $in{'folder'}),"\n";
-	print "<center>\n";
-	print &text('delall_rusure',
-		    "<tt>$folder->{'file'}</tt>",
-		    &mailbox_folder_size($folder), 
-		    &nice_size(&folder_size($folder))),"<p>\n";
-	print &ui_submit($text{'delall_ok'}, "confirm"),"\n";
-	print &ui_form_end();
-	print "</center>\n";
+	print &ui_confirmation_form(
+		"delete_all.cgi",
+		&text('delall_rusure',
+                    "<tt>$folder->{'file'}</tt>",
+                    &mailbox_folder_size($folder),
+                    &nice_size(&folder_size($folder))),
+		[ [ 'user', $in{'user'} ],
+		  [ 'folder', $in{'folder'} ] ],
+		[ [ 'confirm', $text{'delall_ok'} ] ],
+		);
 	&ui_print_footer("list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}",
 			 $text{'mail_return'},
 			 "", $text{'index_return'});

@@ -1,5 +1,6 @@
 line0=User interface options,11
 wrap_width=Width to wrap mail messages at,0,6
+wrap_compose=Width to wrap composed mail messages at,10,-Don't wrap,80-80 columns (standard),Other size
 perpage=Mail messages to display per page,0,6
 show_to=Show To: address in mailboxes?,1,1-Yes,0-No
 top_buttons=Show buttons at top for,1,2-Mailboxes and mails,1-Mailboxes only,0-Never
@@ -9,7 +10,7 @@ show_sent=Show number of messages in sent mail folder?,1,1-Yes,0-No
 fwd_mode=Forward messages with quoting?,1,0-Yes,1-No
 delete_warn=Ask for confirmation before deleting?,10,y-Yes,n-No,For mbox files larger than
 view_html=Show message body as,4,0-Always plain text,1-Text if possible&#44; HTML otherwise,2-HTML if possible&#44; text otherwise,3-Convert HTML to plain text
-html_edit=Use HTML editor for composing?,1,2-Always,1-When replying to HTML email,0-Never
+html_edit=Use HTML editor for composing?,4,2-Always,1-When replying to HTML email,0-Never
 html_quote=HTML quoting mode,1,1-Message below &lt;hr&gt;,0-Message inside &lt;blockquote&gt;
 log_read=Record the reading of mail in the Webmin Actions Log?,1,1-Yes,0-No
 bcc_to=Bcc: sent messages to,0

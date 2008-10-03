@@ -3,7 +3,8 @@
 # Send off an email message
 
 require './mailboxes-lib.pl';
-&ReadParseMime();
+&ReadParse(\%getin, "GET");
+&ReadParseMime(undef, \&read_parse_mime_callback, [ $getin{'id'} ]);
 &can_user($in{'user'}) || &error($text{'mail_ecannot'});
 @uinfo = &get_mail_user($in{'user'});
 @uinfo || &error($text{'view_eugone'});
@@ -57,60 +58,21 @@ $mail->{'headers'} = [ [ 'From', $in{'from'} ],
 push(@{$mail->{'headers'}}, [ 'X-Priority', $in{'pri'} ]) if ($in{'pri'});
 $in{'body'} =~ s/\r//g;
 if ($in{'body'} =~ /\S/) {
+	# Perform spell check on body if requested
+	local $plainbody = $in{'html_edit'} ? &html_to_text($in{'body'})
+                                            : $in{'body'};
 	if ($in{'spell'}) {
-		pipe(INr, INw);
-		pipe(OUTr, OUTw);
-		select(INw); $| = 1; select(OUTr); $| = 1; select(STDOUT);
-		if (!fork()) {
-			close(INw);
-			close(OUTr);
-			untie(*STDIN);
-			untie(*STDOUT);
-			untie(*STDERR);
-			open(STDOUT, ">&OUTw");
-			open(STDERR, ">/dev/null");
-			open(STDIN, "<&INr");
-			exec("ispell -a");
-			exit;
-			}
-		close(INr);
-		close(OUTw);
-		local $indent = "&nbsp;" x 4;
-		local @errs;
-		foreach $line (split(/\n+/, $in{'body'})) {
-			next if ($line !~ /\S/);
-			print INw $line,"\n";
-			local @lerrs;
-			while(1) {
-				($spell = <OUTr>) =~ s/\r|\n//g;
-				last if (!$spell);
-				if ($spell =~ /^#\s+(\S+)/) {
-					# Totally unknown word
-					push(@lerrs, $indent.&text('send_eword', "<i>".&html_escape($1)."</i>"));
-					}
-				elsif ($spell =~ /^&\s+(\S+)\s+(\d+)\s+(\d+):\s+(.*)/) {
-					# Maybe possible word, with options
-					push(@lerrs, $indent.&text('send_eword2', "<i>".&html_escape($1)."</i>", "<i>".&html_escape($4)."</i>"));
-					}
-				elsif ($spell =~ /^\?\s+(\S+)/) {
-					# Maybe possible word
-					push(@lerrs, $indent.&text('send_eword', "<i>".&html_escape($1)."</i>"));
-					}
-				}
-			if (@lerrs) {
-				push(@errs, &text('send_eline', "<tt>".&html_escape($line)."</tt>")."<br>".join("<br>", @lerrs)."<p>\n");
-				}
-			}
-		close(INw);
-		close(OUTr);
+		@errs = &spell_check_text($plainbody);
 		if (@errs) {
 			# Spelling errors found!
 			&mail_page_header($text{'compose_title'}, undef, undef,
 					  &folder_link($in{'user'}, $folder));
 			print "<b>$text{'send_espell'}</b><p>\n";
-			print @errs;
-			&mail_page_footer("index.cgi?user=$in{'user'}&folder=$in{'folder'}",
-				$text{'mail_return'});
+			print map { $_."<p>\n" } @errs;
+			&mail_page_footer(
+			    "javascript:back()", $text{'reply_return'},
+			    "index.cgi?user=$in{'user'}&folder=$in{'folder'}",
+			    $text{'mail_return'});
 			exit;
 			}
 		}
@@ -133,7 +95,7 @@ if ($in{'body'} =~ /\S/) {
 	$bodyattach = $attach[0];
 	}
 $attachsize = 0;
-foreach $i (0 .. 5) {
+for($i=0; defined($in{"attach$i"}); $i++) {
 	# Add uploaded attachment
 	next if (!$in{"attach$i"});
 	&test_max_attach($attachsize);
@@ -149,7 +111,8 @@ foreach $i (0 .. 5) {
 					 'base64' ] ] });
 	$atotal += length($in{"attach${i}"});
 	}
-foreach $i (0 .. 2) {
+for($i=0; defined($in{"file$i"}); $i++) {
+	# Add uploaded attachment
 	# Add server-side attachment
 	next if (!$in{"file$i"} || !$access{'canattach'});
 	@uinfo = &get_mail_user($in{'user'});
@@ -162,11 +125,8 @@ foreach $i (0 .. 2) {
 	&test_max_attach($st[7]);
 	local $data;
 	&switch_to_user($in{'user'});
-	open(DATA, $in{"file$i"}) || &error(&text('send_efile', $in{"file$i"}, $!));
-	while(<DATA>) {
-		$data .= $_;
-		}
-	close(DATA);
+	$data = &read_file_contents($in{"file$i"});
+	$data || &error(&text('send_efile', $in{"file$i"}, $!));
 	&switch_user_back();
 	$in{"file$i"} =~ s/^.*\///;
 	local $type = &guess_mime_type($in{"file$i"}).

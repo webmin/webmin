@@ -6,12 +6,18 @@ require './mailboxes-lib.pl';
 &can_user($in{'user'}) || &error($text{'mail_ecannot'});
 @uinfo = &get_mail_user($in{'user'});
 @uinfo || &error($text{'view_eugone'});
+$euser = &urlize($in{'user'});
 
 @folders = &list_user_folders($in{'user'});
 $folder = $folders[$in{'folder'}];
 if ($in{'new'}) {
 	# Composing a new email
-	$html_edit = 1 if ($config{'html_edit'} == 2);
+	if (defined($in{'html'})) {
+		$html_edit = $in{'html'};
+		}
+	else {
+		$html_edit = $config{'html_edit'} == 2 ? 1 : 0;
+		}
 	$sig = &get_signature($in{'user'});
 	if ($html_edit) {
 		$sig =~ s/\n/<br>\n/g;
@@ -28,13 +34,14 @@ if ($in{'new'}) {
 else {
 	# Replying or forwarding
 	if ($in{'mailforward'} ne '') {
-		# Replying to multiple
+		# Forwarding multiple
 		@mailforward = sort { $a <=> $b }
 				    split(/\0/, $in{'mailforward'});
 		@mails = &mailbox_list_mails(
 			     $mailforward[0], $mailforward[@mailforward-1],
 			     $folder);
 		$mail = $mails[$mailforward[0]];
+		@fwdmail = map { $mails[$_] } @mailforward;
 		}
 	else {
 		# Replying to one
@@ -52,29 +59,18 @@ else {
 			# Need to ask for confirmation before deleting
 			&mail_page_header($text{'confirm_title'}, undef, undef,
 					  &folder_link($in{'user'}, $folder));
-			print &check_clicks_function();
-
-			print "<form action=reply_mail.cgi>\n";
-			foreach $i (keys %in) {
-				foreach $v (split(/\0/, $in{$i})) {
-					print "<input type=hidden name=$i ",
-					      "value='",&html_escape($v),"'>\n";
-					}
-				}
-			print "<center><b>$text{'confirm_warn3'}<br>\n";
-			if ($config{'delete_warn'} ne 'y') {
-				print "$text{'confirm_warn2'}<p>\n"
-				}
-			else {
-				print "$text{'confirm_warn4'}<p>\n"
-				}
-			print "</b><p><input type=submit name=confirm ",
-			      "value='$text{'confirm_ok'}' ",
-			      "onClick='return check_clicks(form)'></center></form>\n";
-			
-			&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$in{'user'}",
+			print &ui_confirmation_form(
+				"reply_mail.cgi",
+				$text{'confirm_warn3'}."<br>".
+				($config{'delete_warn'} ne 'y' ?
+					$text{'confirm_warn2'} :
+					$text{'confirm_warn4'}),
+				[ &inputs_to_hiddens(\%in) ],
+				[ [ 'confirm', $text{'confirm_ok'} ] ],
+				);
+			&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$euser",
 				$text{'view_return'},
-				"list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}",
+				"list_mail.cgi?folder=$in{'folder'}&user=$euser",
 				$text{'mail_return'},
 				"", $text{'index_return'});
 			exit;
@@ -85,72 +81,28 @@ else {
 		&webmin_log("delmail", undef, undef,
 			    { 'from' => $folder->{'file'},
 			      'count' => 1 } );
-		&redirect("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}");
+		&redirect("list_mail.cgi?folder=$in{'folder'}&user=$euser");
 		exit;
 		}
 	elsif ($in{'print'}) {
-		# Extract the mail body
+		# Show email for printing
 		&decode_and_sub();
 		($textbody, $htmlbody, $body) =
 			&find_body($mail, $config{'view_html'});
-
-		# Output HTML header
-		&PrintHeader();
-		print "<html><head>\n";
-		print "<title>",&html_escape(&decode_mimewords(
-			$mail->{'header'}->{'subject'})),"</title></head>\n";
-		print "<body bgcolor=#ffffff onLoad='window.print()'>\n";
-
-		# Display the headers
-		print "<table width=100% border=1>\n";
-		print "<tr $tb> <td><b>$text{'view_headers'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table width=100%>\n";
-		print "<tr> <td><b>$text{'mail_from'}</b></td> ",
-		      "<td>",&eucconv_and_escape($mail->{'header'}->{'from'}),"</td> </tr>\n";
-		print "<tr> <td><b>$text{'mail_to'}</b></td> ",
-		      "<td>",&eucconv_and_escape($mail->{'header'}->{'to'}),"</td> </tr>\n";
-		print "<tr> <td><b>$text{'mail_cc'}</b></td> ",
-		      "<td>",&eucconv_and_escape($mail->{'header'}->{'cc'}),"</td> </tr>\n"
-			if ($mail->{'header'}->{'cc'});
-		print "<tr> <td><b>$text{'mail_date'}</b></td> ",
-		      "<td>",&eucconv_and_escape(&html_escape($mail->{'header'}->{'date'})),
-		      "</td> </tr>\n";
-		print "<tr> <td><b>$text{'mail_subject'}</b></td> ",
-		      "<td>",&eucconv_and_escape(&decode_mimewords(
-			$mail->{'header'}->{'subject'})),"</td> </tr>\n";
-		print "</table></td></tr></table><p>\n";
-
-		# Just display the mail body for printing
-		if ($body eq $textbody) {
-			print "<table border width=100%><tr $cb><td><pre>";
-			foreach $l (&wrap_lines($body->{'data'},
-						$config{'wrap_width'})) {
-				print &eucconv_and_escape($l),"\n";
-				}
-			print "</pre></td></tr></table>\n";
-			}
-		elsif ($body eq $htmlbody) {
-			print "<table border width=100%><tr><td>\n";
-			print &safe_html($body->{'data'});
-			print "</td></tr></table>\n";
-			}
-
-		print "</body></html>\n";
+                &ui_print_header(undef, &decode_mimewords(
+                                        $mail->{'header'}->{'subject'}));
+                &show_mail_printable($mail, $body, $textbody, $htmlbody);
+                print "<script>window.print();</script>\n";
+                &ui_print_footer();
 		exit;
 		}
 	elsif ($in{'mark1'} || $in{'mark2'}) {
 		# Just mark the message
-		dbmopen(%read, "$module_config_directory/$in{'user'}.read", 0600);
 		$mode = $in{'mark1'} ? $in{'mode1'} : $in{'mode2'};
-		if ($mode) {
-			$read{$mail->{'header'}->{'message-id'}} = $mode;
-			}
-		else {
-			delete($read{$mail->{'header'}->{'message-id'}});
-			}
+		&set_mail_read($folder, $mail, $mode);
 		$perpage = $folder->{'perpage'} || $config{'perpage'};
 		$s = int((@mails - $in{'idx'} - 1) / $perpage) * $perpage;
-		&redirect("list_mail.cgi?start=$s&folder=$in{'folder'}&user=$in{'user'}");
+		&redirect("list_mail.cgi?start=$s&folder=$in{'folder'}&user=$euser");
 		exit;
 		}
 	elsif ($in{'detach'}) {
@@ -220,8 +172,8 @@ else {
 					  "<tt>$paths[$i]</tt>", $sz),"<p>\n";
 			}
 
-		&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$in{'user'}", $text{'view_return'},
-			"list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}", $text{'mail_return'},
+		&mail_page_footer("view_mail.cgi?idx=$in{'idx'}&folder=$in{'folder'}&user=$euser", $text{'view_return'},
+			"list_mail.cgi?folder=$in{'folder'}&user=$euser", $text{'mail_return'},
 			"", $text{'index_return'});
 		exit;
 		}
@@ -248,7 +200,7 @@ else {
 					  "<tt>$spamfrom</tt>"),"</b><p>\n";
 			}
 
-		&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}", $text{'mail_return'}, "", $text{'index_return'});
+		&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$euser", $text{'mail_return'}, "", $text{'index_return'});
 		exit;
 		}
 	elsif ($in{'razor'}) {
@@ -285,7 +237,7 @@ else {
 				}
 			}
 
-		&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}", $text{'mail_return'}, "", $text{'index_return'});
+		&mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$euser", $text{'mail_return'}, "", $text{'index_return'});
 		exit;
 		}
 
@@ -309,7 +261,7 @@ else {
 		&lock_folder($folder);
 		&mailbox_modify_mail($mail, $newmail, $folder);
 		&unlock_folder($folder);
-		&redirect("list_mail.cgi?user=$in{'user'}&folder=$in{'folder'}");
+		&redirect("list_mail.cgi?user=$euser&folder=$in{'folder'}");
 		exit;
 		}
 
@@ -330,12 +282,17 @@ else {
 		if ($in{'rall'}) {
 			# If replying to all, add any addresses in the original
 			# To: or Cc: to our new Cc: address.
-			# XXX should strip own addresses
 			$cc = $mail->{'header'}->{'to'};
 			$cc .= ", ".$mail->{'header'}->{'cc'}
 				if ($mail->{'header'}->{'cc'});
 			}
 		}
+
+	# Convert MIMEwords in headers to 8 bit for display
+        $to = &decode_mimewords($to);
+        $rto = &decode_mimewords($rto);
+        $cc = &decode_mimewords($cc);
+        $bcc = &decode_mimewords($bcc);
 
 	# Work out new subject, depending on whether we are replying
 	# our forwarding a message (or neither)
@@ -367,86 +324,118 @@ else {
 		&folder_link($in{'user'}, $folder));
 	}
 
-print "<form action=send_mail.cgi method=post enctype=multipart/form-data>\n";
+# Show form start, with upload progress tracker hook
+$upid = time().$$;
+$onsubmit = &read_parse_mime_javascript($upid, [ map { "attach$_" } (0..10) ]);
+print &ui_form_start("send_mail.cgi?id=$upid", "form-data", undef, $onsubmit);
 
 # Output various hidden fields
-print "<input type=hidden name=user value='$in{'user'}'>\n";
-print "<input type=hidden name=ouser value='$ouser'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=folder value='$in{'folder'}'>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=enew value='$in{'enew'}'>\n";
+print &ui_hidden("user", $in{'user'});
+print &ui_hidden("ouser", $ouser);
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("folder", $in{'folder'});
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("enew", $in{'enew'});
 foreach $s (@sub) {
-	print "<input type=hidden name=sub value='$s'>\n";
+	print &ui_hidden("sub", $s);
 	}
 
-print "<table width=100% border=1>\n";
-print "<tr> <td $tb><b>$text{'reply_headers'}</b></td> </tr>\n";
-print "<tr> <td $cb><table width=100%>\n";
+# Start tabs for from / to / cc / bcc
+# Subject is separate
+print &ui_table_start($text{'reply_headers'}, "width=100%", 2);
+@tds = ( "width=10%", "width=90% nowrap" );
+@tabs = ( [ "from", $text{'reply_tabfrom'} ],
+          [ "to", $text{'reply_tabto'} ],
+          [ "cc", $text{'reply_tabcc'} ],
+          [ "bcc", $text{'reply_tabbcc'} ],
+          [ "options", $text{'reply_taboptions'} ] );
+print &ui_table_row(undef, &ui_tabs_start(\@tabs, "tab", "to", 0), 2);
 
-# Work out and show the From: address
-print "<tr> <td><b>$text{'mail_from'}</b></td>\n";
+# From address tab
 $from ||= &get_user_from_address(\@uinfo);
+@froms = split(/\s+/, $access{'from'});
 if ($access{'fmode'} == 0) {
 	# Any email addresss
-	print "<td><input name=from size=40 value='$from'></td>\n";
+	$frominput = &ui_address_field("from", $from, 1, 0);
 	}
 elsif ($access{'fmode'} == 1) {
-	# User's name in selected domains
+	# Current username at some domains
 	local $u = $from || $ouser || $in{'user'};
 	$u =~ s/\@.*$//;
-	print "<td><select name=from>\n";
-	foreach $f (split(/\s+/, $access{'from'})) {
-		printf "<option value=%s %s>%s\n",
-		    "$u\@$f", $from eq "$u\@$f" ? 'selected' : '',
-		    $access{'fromname'} ?
-			"\"$access{'fromname'}\" &lt;$u\@$f&gt;" : "$u\@$f";
-		}
-	print "</select></td>\n";
+	$frominput = &ui_select("from", $from,
+		$access{'fromname'} ?
+			[ map { [ "$access{'fromname'} &lt;$u\@$_&gt;",
+				  "$u\@$_" ] } @froms ] :
+			[ map { "$u\@$_" } @froms ]);
 	}
 elsif ($access{'fmode'} == 2) {
 	# Listed from addresses
-	print "<td><select name=from>\n";
-	foreach $f (split(/\s+/, $access{'from'})) {
-		printf "<option value=%s %s>%s\n",
-		    $f, $from eq $f ? 'selected' : '',
-		    $access{'fromname'} ? "$access{'fromname'} &lt;$f&gt;" : $f;
-		}
-	print "</select></td>\n";
+	$frominput = &ui_select("from", $from,
+		$access{'fromname'} ?
+			[ map { [ "$access{'fromname'} &lt;$_&gt;", $_ ] }
+			      @froms ] :
+			\@froms);
 	}
 elsif ($access{'fmode'} == 3) {
 	# Fixed address in fixed domain
-	print "<td><input name=from size=10>$ouser\@$access{'from'}</td>\n";
+	$frominput = "<tt>$ouser\@$access{'from'}</tt>".
+		     &ui_hidden("from", "$ouser\@$access{'from'}");
+	}
+print &ui_tabs_start_tabletab("tab", "from");
+print &ui_table_row($text{'mail_from'}, $frominput, 1, \@tds);
+print &ui_tabs_end_tabletab();
+
+# Show To: field
+print &ui_tabs_start_tabletab("tab", "to");
+print &ui_table_row($text{'mail_to'}, &ui_address_field("to", $to, 0, 1),
+                    1, \@tds);
+print &ui_tabs_end_tabletab();
+
+# Show Cc: field
+print &ui_tabs_start_tabletab("tab", "cc");
+print &ui_table_row($text{'mail_cc'}, &ui_address_field("cc", $cc, 0, 1),
+                    1, \@tds);
+print &ui_tabs_end_tabletab();
+
+# Show Bcc: field
+$bcc ||= $config{'bcc_to'};
+print &ui_tabs_start_tabletab("tab", "bcc");
+print &ui_table_row($text{'mail_bcc'}, &ui_address_field("bcc", $bcc, 0, 1),
+                    1, \@tds);
+print &ui_tabs_end_tabletab();
+
+# Show tab for options
+print &ui_tabs_start_tabletab("tab", "options");
+print &ui_table_row($text{'mail_pri'},
+                &ui_select("pri", "",
+                        [ [ 1, $text{'mail_highest'} ],
+                          [ 2, $text{'mail_high'} ],
+                          [ "", $text{'mail_normal'} ],
+                          [ 4, $text{'mail_low'} ],
+                          [ 5, $text{'mail_lowest'} ] ]), 1, \@tds);
+print &ui_tabs_end_tabletab();
+print &ui_tabs_end();
+
+# Subject field, outside tabs
+print &ui_table_row($text{'mail_subject'},
+	&ui_textbox("subject", $subject, 40, 0, undef,
+		    "style='width:95%'"), 1, \@tds);
+print &ui_table_end();
+
+# Create link for switching to HTML/text mode for new mail
+@bodylinks = ( );
+if ($in{'new'}) {
+	if ($html_edit) {
+		push(@bodylinks, "<a href='reply_mail.cgi?folder=$in{'folder'}&user=$euser&new=1&html=0'>$text{'reply_html0'}</a>");
+		}
+	else {
+		push(@bodylinks, "<a href='reply_mail.cgi?folder=$in{'folder'}&user=$euser&new=1&html=1'>$text{'reply_html1'}</a>");
+		}
 	}
 
-$to = &html_escape($to);
-print "<td><b>$text{'mail_to'}</b></td> ",
-      "<td><input name=to size=40 value=\"$to\"></td> </tr>\n";
-
-$cc = &html_escape($cc);
-print "<tr> <td><b>$text{'mail_cc'}</b></td> ",
-      "<td><input name=cc size=40 value=\"$cc\"></td>\n";
-print "<td><b>$text{'mail_bcc'}</b></td> ",
-      "<td><input name=bcc size=40 value='$config{'bcc_to'}'></td> </tr>\n";
-print "<tr> <td><b>$text{'mail_subject'}</b></td> ",
-      "<td><input name=subject size=40 value=\"$subject\"></td>\n";
-print "<td><b>$text{'mail_pri'}</b></td> ",
-      "<td><table cellpadding=0 cellspacing=0 width=100%>\n",
-      "<tr><td align=left><select name=pri>\n",
-      "<option value=1>$text{'mail_highest'}\n",
-      "<option value=2>$text{'mail_high'}\n",
-      "<option value='' selected>$text{'mail_normal'}\n",
-      "<option value=4>$text{'mail_low'}\n",
-      "<option value=5>$text{'mail_lowest'}\n",
-      "</select></td>\n",
-      "<td align=right><input type=submit value=\"$text{'reply_send'}\">\n",
-      "</tr></table></td></tr>\n";
-print "</table></td></tr></table><p>\n";
-
 # Output message body input
-print "<table width=100% border=1>\n",
-      "<tr $tb> <td><b>$text{'reply_body'}</b></td> </tr>",
-      "<tr $cb> <td>";
+print &ui_table_start($text{'reply_body'}, "width=100%", 2, undef,
+		      &ui_links_row(\@bodylinks));
 if ($html_edit) {
 	# Output HTML editor textarea
 	print <<EOF;
@@ -465,74 +454,53 @@ function initEditor() {
 }
 </script>
 EOF
-	print "<textarea rows=20 cols=80 style='width:100%' name=body id=body>",
-	      &html_escape($quote),"</textarea>\n";
+	print &ui_table_row(undef,
+		&ui_textarea("body", $quote, 20, 80, undef, 0,
+		  	     "style='width:100%' id=body"), 2);
 	}
 else {
 	# Show text editing area
-	print "<textarea rows=20 cols=80 name=body $config{'wrap_mode'}>",
-	      &html_escape($quote),"</textarea>\n";
-	if (&has_command("ispell")) {
-		print "<br>\n";
-		print "<input type=checkbox name=spell value=1> $text{'reply_spell'}\n";
-		}
+	$wm = $config{'wrap_mode'};
+	$wm =~ s/^wrap=//g;
+	$wcols = $config{'wrap_compose'};
+	print &ui_table_row(undef,
+		&ui_textarea("body", $quote, 20,
+			     $wcols || 80,
+			     $wcols ? "hard" : "",
+			     0,
+			     $wcols ? "" : "style='width:100%'"), 2);
 	}
-print "</td></tr></table><p>\n";
-print "<input type=hidden name=html_edit value='$html_edit'>\n";
+if (&has_command("ispell")) {
+	print &ui_table_row(undef,
+	      &ui_checkbox("spell", 1, $text{'reply_spell'}, 0), 2);
+	}
+print &ui_table_end();
+print &ui_hidden("html_edit", $html_edit);
 
 # Display forwarded attachments
+$viewurl = "view_mail.cgi?idx=$in{'idx'}&user=$euser&".
+           "&folder=$folder->{'index'}$subs";
+$detachurl = "detach.cgi?idx=$in{'idx'}&user=$euser&".
+             "&folder=$folder->{'index'}$subs";
+$mailurl = "view_mail.cgi?user=$euser&folder=$folder->{'index'}$subs";
 if (@attach) {
-	print "<table width=100% border=1>\n";
-	print "<tr> <td $tb><b>$text{'reply_attach'}</b></td> </tr>\n";
-	print "<tr> <td $cb>\n";
-	foreach $a (@attach) {
-		push(@titles, "<input type=checkbox name=forward value=$a->{'idx'} checked> ".($a->{'filename'} ? $a->{'filename'} : $a->{'type'}));
-		push(@links, "detach.cgi?idx=$in{'idx'}&folder=$in{'folder'}&attach=$a->{'idx'}$subs");
-		push(@icons, "images/boxes.gif");
-		}
-	&icons_table(\@links, \@titles, \@icons, 8);
-	print "</td></tr></table><p>\n";
-	}
+        &attachments_table(\@attach, $folder, $viewurl, $detachurl,
+			   $mailurl, 'idx', "forward");
+        }
 
 # Display forwarded mails
-if (@mailforward) {
-	print "<table width=100% border=1>\n";
-	print "<tr> <td $tb><b>$text{'reply_mailforward'}</b></td> </tr>\n";
-	print "<tr> <td $cb>\n";
+if (@fwdmail) {
+	&attachments_table(\@fwdmail, $folder, $viewurl, $detachurl,
+			   $mailurl, 'idx');
 	foreach $f (@mailforward) {
-		push(@titles, &simplify_subject($mails[$f]->{'header'}->{'subject'}));
-		push(@links, "view_mail.cgi?idx=$f&folder=$in{'folder'}&user=$in{'user'}");
-		push(@icons, "images/boxes.gif");
-		print "<input type=hidden name=mailforward value=$f>\n";
+		print &ui_hidden("mailforward", $f);
 		}
-	&icons_table(\@links, \@titles, \@icons, 8);
-	print "</td></tr></table><p>\n";
 	}
 
-# Add form for more attachments
-print "<table width=100% border=1>\n";
-print "<tr $tb> <td colspan=3><b>$text{'reply_attach2'}</b></td> </tr>\n";
+# Display new attachment fields
+&show_attachments_fields(3, $access{'canattach'});
 
-print "<tr $cb> <td><input type=file size=20 name=attach0></td>\n";
-print "<td><input type=file size=20 name=attach1></td>\n";
-print "<td><input type=file size=20 name=attach2></td> </tr>\n";
-
-print "<tr $cb> <td><input type=file size=20 name=attach3></td>\n";
-print "<td><input type=file size=20 name=attach4></td>\n";
-print "<td><input type=file size=20 name=attach5></td> </tr>\n";
-
-if ($access{'canattach'}) {
-	print "<tr $cb> <td><input name=file0 size=20> ",
-		&file_chooser_button("file0"),"</td>\n";
-	print "<td><input name=file1 size=20> ",
-		&file_chooser_button("file1"),"</td>\n";
-	print "<td><input name=file2 size=20> ",
-		&file_chooser_button("file2"),"</td> </tr>\n";
-	}
-
-print "</table><p>\n";
-print "<input type=submit value=\"$text{'reply_send'}\">\n";
-print "</form>\n";
+print &ui_form_end([ [ undef, $text{'reply_send'} ] ]);
 
 &mail_page_footer("list_mail.cgi?folder=$in{'folder'}&user=$in{'user'}",
 	$text{'mail_return'},

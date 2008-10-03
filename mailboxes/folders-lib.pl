@@ -3119,12 +3119,13 @@ foreach $dsh ('final-recipient', 'diagnostic-code',
 print &ui_table_end();
 }
 
-# attachments_table(&attach, folder, view-url, detach-url, [show-checkboxes])
+# attachments_table(&attach, folder, view-url, detach-url,
+#                   [viewmail-url, viewmail-field], [show-checkboxes])
 # Prints an HTML table of attachments. Returns a list of those that can be
 # server-side detached.
 sub attachments_table
 {
-local ($attach, $folder, $viewurl, $detachurl, $cbs) = @_;
+local ($attach, $folder, $viewurl, $detachurl, $mailurl, $idfield, $cbs) = @_;
 local %typemap = map { $_->{'type'}, $_->{'desc'} } &list_mime_types();
 local $qid = &urlize($id);
 local $rv;
@@ -3176,8 +3177,8 @@ foreach my $a (@$attach) {
 	$detachfile =~ s/\?/\/$fn\?/;
 	if (!$a->{'type'}) {
 		# Complete email for viewing
-		local $qmid = &urlize($a->{'id'});
-		push(@links, "view_mail.cgi?id=$qmid&folder=$folder->{'index'}");
+		local $qmid = &urlize($a->{$idfield});
+		push(@links, "$mailurl&$idfield=$qmid&folder=$folder->{'index'}");
 		}
 	elsif ($a->{'type'} eq 'message/rfc822') {
 		# Attached sub-email
@@ -3270,6 +3271,235 @@ if ($showto && defined(&open_dsn_hash)) {
 		}
 	}
 return @rv;
+}
+
+# show_mail_printable(&mail, body, textbody, htmlbody)
+# Output HTML for printing a message
+sub show_mail_printable
+{
+local ($mail, $body, $textbody, $htmlbody) = @_;
+
+# Display the headers
+print &ui_table_start($text{'view_headers'}, "width=100%", 2);
+print &ui_table_row($text{'mail_from'},
+	&eucconv_and_escape($mail->{'header'}->{'from'}));
+print &ui_table_row($text{'mail_to'},
+	&eucconv_and_escape($mail->{'header'}->{'to'}));
+if ($mail->{'header'}->{'cc'}) {
+	print &ui_table_row($text{'mail_cc'},
+		&eucconv_and_escape($mail->{'header'}->{'cc'}));
+	}
+print &ui_table_row($text{'mail_date'},
+	&eucconv_and_escape($mail->{'header'}->{'date'}));
+print &ui_table_row($text{'mail_subject'},
+	&eucconv_and_escape(&decode_mimewords(
+		$mail->{'header'}->{'subject'})));
+print &ui_table_end(),"<br>\n";
+
+# Just display the mail body for printing
+print &ui_table_start(undef, "width=100%", 2);
+if ($body eq $textbody) {
+	my $plain;
+	foreach my $l (&wrap_lines($body->{'data'},
+				   $config{'wrap_width'} ||
+				    $userconfig{'wrap_width'})) {
+		$plain .= &eucconv_and_escape($l)."\n";
+		}
+	print &ui_table_row(undef, "<pre>$plain</pre>", 2);
+	}
+elsif ($body eq $htmlbody) {
+	print &ui_table_row(undef,
+		&safe_html($body->{'data'}), 2);
+	}
+print &ui_table_end();
+}
+
+# show_attachments_fields(count, server-side)
+# Outputs HTML for new attachment fields
+sub show_attachments_fields
+{
+local ($count, $server_attach) = @_;
+
+# Work out if any attachments are supported
+my $any_attach = $server_attach || !$main::no_browser_uploads;
+
+my ($uploader, $ssider);
+if ($any_attach && &supports_javascript()) {
+	# Javascript to increase attachments fields
+	$uploader = &ui_upload("NAME", 80, 0, "style='width:100%'");
+	$uploader =~ s/\r|\n//g;
+	$uploader =~ s/"/\\"/g;
+	$ssider = &ui_textbox("NAME", undef, 60, 0, undef, "style='width:95%'").
+		  &file_chooser_button("NAME");
+	$ssider =~ s/\r|\n//g;
+	$ssider =~ s/"/\\"/g;
+	print <<EOF;
+<script>
+function add_attachment()
+{
+var block = document.getElementById("attachblock");
+var uploader = "$uploader";
+if (block) {
+	var count = 0;
+	while(document.forms[0]["attach"+count]) { count++; }
+	block.innerHTML += uploader.replace("NAME", "attach"+count)+"<br>\\n";
+	}
+return false;
+}
+function add_ss_attachment()
+{
+var block = document.getElementById("ssattachblock");
+var uploader = "$ssider";
+if (block) {
+	var count = 0;
+	while(document.forms[0]["file"+count]) { count++; }
+	block.innerHTML += uploader.replace("NAME", "file"+count)+"<br>\\n";
+	}
+return false;
+}
+</script>
+EOF
+
+	# Show form for attachments (both uploaded and server-side)
+	print &ui_table_start($server_attach ? $text{'reply_attach2'}
+					     : $text{'reply_attach3'},
+			      "width=100%", 2);
+	}
+
+# Uploaded attachments
+if (!$main::no_browser_uploads) {
+	my $atable;
+	for(my $i=0; $i<$count; $i++) {
+		$atable .= &ui_upload("attach$i", 80, 0,
+				      "style='width:100%'")."<br>";
+		}
+	print &ui_hidden("attachcount", int($i)),"\n";
+	print &ui_table_row(undef, $atable, 2, [ undef, "id=attachblock" ]);
+	}
+if ($server_attach) {
+	my $atable;
+	for(my $i=0; $i<$count; $i++) {
+		$atable .= &ui_textbox("file$i", undef, 60, 0, undef,
+				       "style='width:95%'").
+			   &file_chooser_button("file$i"),"<br>\n";
+		}
+	print &ui_table_row(undef, $atable, 2, [ undef, "id=ssattachblock" ]);
+	print &ui_hidden("ssattachcount", int($i)),"\n";
+	}
+
+# Links to add more fields
+my @addlinks;
+if (!$main::no_browser_uploads && &supports_javascript()) {
+	push(@addlinks, "<a href='' onClick='return add_attachment()'>".
+		        "$text{'reply_addattach'}</a>" );
+	}
+if ($server_attach && &supports_javascript()) {
+	push(@addlinks, "<a href='' onClick='return add_ss_attachment()'>".
+			"$text{'reply_addssattach'}</a>" );
+	}
+if ($any_attach) {
+	print &ui_table_row(undef, &ui_links_row(\@addlinks), 2);
+	print &ui_table_end();
+	}
+}
+
+# inputs_to_hiddens([&in])
+# Converts a hash as created by ReadParse into a list of names and values
+sub inputs_to_hiddens
+{
+my $in = $_[0] || \%in;
+my @hids;
+foreach $i (keys %$in) {
+	push(@hids, map { [ $i, $_ ] } split(/\0/, $in->{$i}));
+	}
+return @hids;
+}
+
+# ui_address_field(name, value, from-mode?, multi-line?)
+# Returns HTML for a field for selecting an email address
+sub ui_address_field
+{
+return &theme_ui_address_field(@_) if (defined(&theme_ui_address_field));
+local ($name, $value, $from, $multi) = @_;
+local @faddrs;
+if (defined(&list_addresses)) {
+	@faddrs = grep { $_->[3] } &list_addresses();
+	}
+local $f = $multi ? &ui_textarea($name, $value, 3, 40, undef, 0,
+				 "style='width:95%'")
+		  : &ui_textbox($name, $value, 40, 0, undef,
+				"style='width:95%'");
+if ((!$from || @faddrs) && defined(&address_button)) {
+	$f .= " ".&address_button($name, 0, $from);
+	}
+return $f;
+}
+
+# Returns 1 if spell checking is supported on this system
+sub can_spell_check_text
+{
+return &has_command("ispell");
+}
+
+# spell_check_text(text)
+# Checks for spelling errors in some text, and returns a list of those found
+# as HTML strings
+sub spell_check_text
+{
+local ($plainbody) = @_;
+local @errs;
+pipe(INr, INw);
+pipe(OUTr, OUTw);
+select(INw); $| = 1; select(OUTr); $| = 1; select(STDOUT);
+if (!fork()) {
+	close(INw);
+	close(OUTr);
+	untie(*STDIN);
+	untie(*STDOUT);
+	untie(*STDERR);
+	open(STDOUT, ">&OUTw");
+	open(STDERR, ">/dev/null");
+	open(STDIN, "<&INr");
+	exec("ispell -a");
+	exit;
+	}
+close(INr);
+close(OUTw);
+local $indent = "&nbsp;" x 4;
+local @errs;
+foreach $line (split(/\n+/, $plainbody)) {
+	next if ($line !~ /\S/);
+	print INw $line,"\n";
+	local @lerrs;
+	while(1) {
+		($spell = <OUTr>) =~ s/\r|\n//g;
+		last if (!$spell);
+		if ($spell =~ /^#\s+(\S+)/) {
+			# Totally unknown word
+			push(@lerrs, $indent.&text('send_eword',
+					"<i>".&html_escape($1)."</i>"));
+			}
+		elsif ($spell =~ /^&\s+(\S+)\s+(\d+)\s+(\d+):\s+(.*)/) {
+			# Maybe possible word, with options
+			push(@lerrs, $indent.&text('send_eword2',
+					"<i>".&html_escape($1)."</i>",
+					"<i>".&html_escape($4)."</i>"));
+			}
+		elsif ($spell =~ /^\?\s+(\S+)/) {
+			# Maybe possible word
+			push(@lerrs, $indent.&text('send_eword',
+					"<i>".&html_escape($1)."</i>"));
+			}
+		}
+	if (@lerrs) {
+		push(@errs, &text('send_eline',
+				"<tt>".&html_escape($line)."</tt>")."<br>".
+				join("<br>", @lerrs));
+		}
+	}
+close(INw);
+close(OUTr);
+return @errs;
 }
 
 1;

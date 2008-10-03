@@ -165,16 +165,13 @@ elsif ($in{'delete'} || $in{'deleteall'}) {
 		# Need to ask for confirmation before deleting
 		&ui_print_header(undef, $text{'confirm_title'}, "");
 
-		foreach $i (keys %in) {
-			push(@hids, map { [ $i, $_ ] } split(/\0/, $in{$i}));
-			}
 		print &ui_confirmation_form("delete_mail.cgi",
 			($in{'deleteall'} ? &text('confirm_warnall') :
 				&text('confirm_warn', scalar(@delete)))."<br>".
 			($config{'delete_warn'} ne 'y' ?
 				$text{'confirm_warn2'} :
 				$text{'confirm_warn4'}),
-			\@hids,
+			[ &inputs_to_hiddens(\%in) ],
 			[ [ 'confirm', $text{'confirm_ok'} ] ],
 			);
 		

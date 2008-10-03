@@ -53,3 +53,4 @@ Added an option to skip messages flagged as deleted in a Maildir.
 Detection of messages with attachments is now 100% accurate, rather than taking a guess based on the MIME type.
 ---- Changes since 1.430 ----
 Added support for Exim, thanks to Emmanuel Florac.
+Re-wrote the entire user interface to use the new Webmin UI library, and to bring it into sync with the Usermin module for reading mail.
