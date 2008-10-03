@@ -164,31 +164,19 @@ elsif ($in{'delete'} || $in{'deleteall'}) {
 	if (!$in{'confirm'} && &need_delete_warn($folder)) {
 		# Need to ask for confirmation before deleting
 		&ui_print_header(undef, $text{'confirm_title'}, "");
-		print &check_clicks_function();
 
-		print "<form action=delete_mail.cgi method=post>\n";
 		foreach $i (keys %in) {
-			foreach $v (split(/\0/, $in{$i})) {
-				print "<input type=hidden name=$i value='",
-				      &html_escape($v),"'>\n";
-				}
+			push(@hids, map { [ $i, $_ ] } split(/\0/, $in{$i}));
 			}
-		print "<center><b>\n";
-		if ($in{'deleteall'}) {
-			print &text('confirm_warnall'),"<br>\n";
-			}
-		else {
-			print &text('confirm_warn', scalar(@delete)),"<br>\n";
-			}
-		if ($config{'delete_warn'} ne 'y') {
-			print "$text{'confirm_warn2'}<p>\n"
-			}
-		else {
-			print "$text{'confirm_warn4'}<p>\n"
-			}
-		print "</b><p><input type=submit name=confirm ",
-		      "value='$text{'confirm_ok'}' ",
-		      "onClick='return check_clicks(form)'></center></form>\n";
+		print &ui_confirmation_form("delete_mail.cgi",
+			($in{'deleteall'} ? &text('confirm_warnall') :
+				&text('confirm_warn', scalar(@delete)))."<br>".
+			($config{'delete_warn'} ne 'y' ?
+				$text{'confirm_warn2'} :
+				$text{'confirm_warn4'}),
+			\@hids,
+			[ [ 'confirm', $text{'confirm_ok'} ] ],
+			);
 		
 		&ui_print_footer("list_mail.cgi?start=$in{'start'}&folder=$in{'folder'}&user=$in{'user'}", $text{'mail_return'});
 		}
