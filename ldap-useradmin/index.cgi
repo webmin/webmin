@@ -132,6 +132,25 @@ if ($gcount <= $mconfig{'display_max'}) {
 	@glist = &useradmin::list_allowed_groups(\%access, \@allglist);
 	}
 
+# Start of tabs, based on what can be edited
+@tabs = ( );
+if ($ucount || $access{'ucreate'}) {
+        push(@tabs, [ "users", $text{'index_users'},
+                      "index.cgi?mode=users" ]);
+        $can_users = 1;
+	}
+if ($gcount || $access{'gcreate'}) {
+        push(@tabs, [ "groups", $text{'index_groups'},
+                      "index.cgi?mode=groups" ]);
+        $can_groups = 1;
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
+
+# Start of users tab
+if ($can_users) {
+        print &ui_tabs_start_tab("mode", "users");
+        }
+
 # Build links for adding users
 @links = ( );
 if ($access{'ucreate'}) {
@@ -143,39 +162,31 @@ if ($access{'batch'}) {
 	     "<a href=\"batch_form.cgi\">$text{'index_batch'}</a>");
 	}
 
-# Show users list header
-if ($ucount || $access{'ucreate'}) {
-	print "<a name=users></a>\n";
-	print "<table width=100% cellpadding=0 cellspacing=0><tr>\n";
-	print "<td>".&ui_subheading($text{'index_users'})."</td>\n";
-	if ($gcount || $access{'gcreate'}) {
-		print "<td align=right valign=top>",
-		      "<a href=#groups>$text{'index_gjump'}</a></td>\n";
-		}
-	print "</tr></table>\n";
-	}
-
 $form = 0;
 if ($ucount > $mconfig{'display_max'}) {
 	# Show user search form
-	print "<b>$text{'index_toomany'}</b><p>\n";
-	print "<form action=search_user.cgi>\n";
-	print "<b>$text{'index_find'}</b> <select name=field>\n";
-	print "<option value=uid selected>$text{'user'}\n";
-	print "<option value=cn>$text{'real'}\n";
-	print "<option value=loginShell>$text{'shell'}\n";
-	print "<option value=homeDirectory>$text{'home'}\n";
-	print "<option value=uidNumber>$text{'uid'}\n";
-	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}\n";
-	print "<option value=1>$text{'index_contains'}\n";
-	print "<option value=2>$text{'index_nequals'}\n";
-	print "<option value=3>$text{'index_ncontains'}\n";
-	print "<option value=6>$text{'index_lower'}\n";
-	print "<option value=7>$text{'index_higher'}\n";
-	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
-	print "<input type=submit value=\"$text{'find'}\"></form>\n";
-	print &ui_links_row(\@links);
+        print "<b>$text{'index_toomany'}</b><p>\n";
+        print &ui_form_start("search_user.cgi");
+        print &ui_table_start($text{'index_usheader'}, undef, 2);
+
+        # Field to search
+        print &ui_table_row($text{'index_find'},
+                &ui_select("field", "uid",
+                           [ [ "uid", $text{'user'} ],
+                             [ "cn", $text{'real'} ],
+                             [ "loginShell", $text{'shell'} ],
+                             [ "homeDirectory", $text{'home'} ],
+                             [ "uidNumber", $text{'uid'} ],
+                             [ "gidNumber", $text{'gid'} ] ])." ".
+                &ui_select("match", 1, $match_modes));
+
+        # Text
+        print &ui_table_row($text{'index_ftext'},
+                &ui_textbox("what", undef, 50));
+
+        print &ui_table_end();
+        print &ui_form_end([ [ undef, $text{'find'} ] ]);
+	$formno++;
 	}
 elsif (@ulist) {
 	# Show table of all users
@@ -184,49 +195,49 @@ elsif (@ulist) {
 	@right = grep { /batch_form|export_form/ } @links;
 	&useradmin::users_table(\@ulist, $form++, 1, 0, \@left, \@right);
 	}
-else {
+elsif ($access{'ucreate'}) {
 	# No users
 	$base = &get_user_base();
 	print "<b>",&text('index_unone', "<tt>$base</tt>"),"</b><p>\n";
 	print &ui_links_row(\@links);
 	}
 
-# Show groups header
-if ($gcount || $access{'gcreate'}) {
-	print &ui_hr();
-	print "<a name=groups></a>\n";
-	print "<table width=100% cellpadding=0 cellspacing=0><tr>\n";
-	print "<td>".&ui_subheading($text{'index_groups'})."</td>\n";
-	if ($ucount || $access{'ucreate'}) {
-		print "<td align=right valign=top>",
-		      "<a href=#users>$text{'index_ujump'}</a></td>\n";
-		}
-	print "</tr></table>\n";
-	}
+# End of users tab
+if ($can_users) {
+        print &ui_tabs_end_tab("mode", "users");
+        }
 
-# Get the list of groups
+# Start of groups tab
+if ($can_groups) {
+        print &ui_tabs_start_tab("mode", "groups");
+        }
+
+# Create group links
 @links = ( );
 if ($access{'gcreate'}) {
 	push(@links, "<a href='edit_group.cgi?new=1'>$text{'index_gadd'}</a>");
 	}
+
 if ($gcount > $mconfig{'display_max'}) {
 	# Show group search form
-	print "<b>$text{'index_gtoomany'}</b><br>\n";
-	print "<form action=search_group.cgi>\n";
-	print "<b>$text{'index_gfind'}</b> <select name=field>\n";
-	print "<option value=cn selected>$text{'gedit_group'}\n";
-	print "<option value=memberUid>$text{'gedit_members'}\n";
-	print "<option value=gidNumber>$text{'gedit_gid'}\n";
-	print "</select> <select name=match>\n";
-	print "<option value=0 checked>$text{'index_equals'}\n";
-	print "<option value=1>$text{'index_contains'}\n";
-	print "<option value=2>$text{'index_nequals'}\n";
-	print "<option value=3>$text{'index_ncontains'}\n";
-	print "<option value=6>$text{'index_lower'}\n";
-	print "<option value=7>$text{'index_higher'}\n";
-	print "</select> <input name=what size=15>&nbsp;&nbsp;\n";
-	print "<input type=submit value=\"$text{'find'}\"></form>\n";
-	print "<br>\n";
+        print "<b>$text{'index_gtoomany'}</b><p>\n";
+        print &ui_form_start("search_group.cgi");
+        print &ui_table_start($text{'index_gsheader'}, undef, 2);
+
+        # Field to search
+        print &ui_table_row($text{'index_gfind'},
+                &ui_select("field", "cn",
+                           [ [ "cn", $text{'gedit_group'} ],
+                             [ "memberUid", $text{'gedit_members'} ],
+                             [ "gidNumber", $text{'gedit_gid'} ] ])." ".
+                &ui_select("match", 1, $match_modes));
+
+        # Text
+        print &ui_table_row($text{'index_ftext'},
+                &ui_textbox("what", undef, 50));
+
+        print &ui_table_end();
+        print &ui_form_end([ [ undef, $text{'find'} ] ]);
 	print &ui_links_row(\@links);
 	}
 elsif (@glist) {
@@ -240,6 +251,12 @@ elsif ($access{'gcreate'} || !@allglist) {
 	print "<b>",&text('index_gnone', "<tt>$base</tt>"),"</b><p>\n";
 	print &ui_links_row(\@links);
 	}
+
+# End of groups tab
+if ($can_groups) {
+        print &ui_tabs_end_tab("mode", "groups");
+        }
+print &ui_tabs_end(1);
 
 &ui_print_footer("/", $text{'index'});
 

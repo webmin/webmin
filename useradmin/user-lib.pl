@@ -16,6 +16,12 @@ do "md5-lib.pl";
 @random_password_chars = ( 'a' .. 'z', 'A' .. 'Z', '0' .. '9' );
 $disable_string = $config{'lock_prepend'} eq "" ? "!" : $config{'lock_prepend'};
 
+# Search types
+$match_modes = [ [ 0, $text{'index_equals'} ], [ 4, $text{'index_contains'} ],
+		 [ 1, $text{'index_matches'} ], [ 2, $text{'index_nequals'} ],
+		 [ 5, $text{'index_ncontains'} ], [ 3, $text{'index_nmatches'}],
+		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
+
 # password_file(file)
 # Returns true if some file looks like a valid Unix password file
 sub password_file

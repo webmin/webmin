@@ -48,7 +48,7 @@ default_inactive=Default inactive days for new users,3,From Users and Groups mod
 default_expire=Default expiry date for new users (dd/mm/yyyy),3,From Users and Groups module
 default_other=Create and update in other modules,1,1-Yes,0-No,-From Users and Groups module
 
-line8=Display options,11
+line8=User interface options,11
 display_max=Maximum number of users or groups to display,3,From Users and Groups module
 passwd_stars=Conceal plain-text password?,1,1-Yes,0-No,-From Users and Groups module
 random_password=Generate password for new users?,1,1-Yes,0-No,-From Users and Groups module

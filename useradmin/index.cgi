@@ -16,12 +16,6 @@ foreach $g (@allglist) {
 	$usedgid{$g->{'gid'}} = $g;
 	}
 
-# Search types
-$match_modes = [ [ 0, $text{'index_equals'} ], [ 4, $text{'index_contains'} ],
-		 [ 1, $text{'index_matches'} ], [ 2, $text{'index_nequals'} ],
-		 [ 5, $text{'index_ncontains'} ], [ 3, $text{'index_nmatches'}],
-		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
-
 # Start of tabs, based on what can be edited
 @tabs = ( );
 if (@ulist || $access{'ucreate'}) {

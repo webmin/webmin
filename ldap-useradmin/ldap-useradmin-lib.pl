@@ -44,6 +44,11 @@ if ($config{'charset'}) {
 	$force_charset = $config{'charset'};
 	}
 
+# Search types
+$match_modes = [ [ 0, $text{'index_equals'} ], [ 1, $text{'index_contains'} ],
+                 [ 2, $text{'index_nequals'} ], [ 3, $text{'index_ncontains'} ],
+		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
+
 # get_nss_config()
 # Parses the NSS config file into a hash reference
 sub get_nss_config

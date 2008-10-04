@@ -4,6 +4,7 @@
 
 require './ldap-useradmin-lib.pl';
 &ReadParse();
+&useradmin::load_theme_library();	# So that ui functions work
 
 # Do the search
 $ldap = &ldap_connect();
