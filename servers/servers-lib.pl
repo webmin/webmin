@@ -14,7 +14,7 @@ sub list_servers
 local ($f, @rv);
 opendir(DIR, $module_config_directory);
 while($f = readdir(DIR)) {
-	if ($f =~ /^(\d+)\.serv$/) {
+	if ($f =~ /^(\S+)\.serv$/) {
 		push(@rv, &get_server($1));
 		}
 	}
