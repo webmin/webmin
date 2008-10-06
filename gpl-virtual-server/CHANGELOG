@@ -500,3 +500,5 @@ Added a Module Config option to have only one spamassassin process run at a time
 Ported the Change IP Addresses page from Virtualmin GPL, to allow updating multiple domains at the same time.
 Plugins can now define additional inputs to appear on the Create Virtual Server page and accepted by create-domain.pl, for options specific to the plugin's feature.
 When the user or group for a domain is changed, references to the old user or group in lgorotate.conf are updated to the new values.
+When setting up clamd, the provided example init script is copied instead of bring modified, so that it can be safely replaced by RPM upgrades.
+Changed the meaning of the 'Can choose database names?' server owner restriction to just prevent modification of the domain's default database, instead of blocking all database management.
