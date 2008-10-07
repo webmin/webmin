@@ -8,6 +8,11 @@ sub read_zone_file
 local($file, $lnum, $line, $t, @tok, @lnum, @coms,
       $i, @rv, $origin, $num, $j, @inc, @oset, $comment);
 $origin = $_[1];
+if ($origin ne ".") {
+	# Remove trailing dots in origin name, as they are added automatically
+	# in the code below.
+	$origin =~ s/\.*$//;
+	}
 $file = &absolute_path($_[0]);
 local $rootfile = &make_chroot($file);
 open(FILE, $rootfile);
