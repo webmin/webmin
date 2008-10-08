@@ -15,6 +15,7 @@ $options = &find("options", $conf);
 &save_opt('max-transfer-time-in', \&check_mins, $options, 1);
 &save_choice('transfer-format', $options, 1);
 &save_opt('transfers-in', \&check_trans, $options, 1);
+&save_opt('transfers-per-ns', \&check_trans, $options, 1);
 &save_opt('transfers-out', \&check_trans, $options, 1);
 
 &flush_file_lines();

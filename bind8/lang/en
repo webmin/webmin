@@ -565,6 +565,7 @@ forwarding_one=One at a time
 forwarding_many=Many
 forwarding_in=Maximum concurrent incoming zone transfers
 forwarding_out=Maximum concurrent outgoing zone transfers
+forwarding_per_ns=Maximum concurrent incoming transfers per server
 forwarding_err=Failed to save forwarding and transfer options
 forwarding_emins=Missing or invalid maximum transfer time
 forwarding_etrans=Missing or invalid maximum concurrent transfers

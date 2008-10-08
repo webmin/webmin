@@ -31,6 +31,9 @@ print &choice_input($text{'forwarding_format'}, 'transfer-format', $mems,
 print &opt_input($text{'forwarding_in'}, "transfers-in",
 		 $mems, $text{'default'}, 4);
 
+print &opt_input($text{'forwarding_per_ns'}, "transfers-per-ns",
+		 $mems, $text{'default'}, 4);
+
 print &opt_input($text{'forwarding_out'}, "transfers-out",
 		 $mems, $text{'default'}, 4);
 
