@@ -144,5 +144,5 @@ else {
         }
 print "</tr></table>\n";
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=groups", $text{'index_return'});
 

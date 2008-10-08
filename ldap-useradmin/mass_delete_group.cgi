@@ -72,7 +72,7 @@ else {
 	# Ask if the user is sure
 	print "<form action=mass_delete_group.cgi>\n";
 	foreach $group (@dlist) {
-		print "<input type=hidden name=d value='$group->{'group'}'>\n";
+		print "<input type=hidden name=gd value='$group->{'group'}'>\n";
 		}
 	print "<input type=hidden name=confirmed value=1>\n";
 	print "<center><b>",&text('gmass_sure', scalar(@dlist)),"</b><p>\n";

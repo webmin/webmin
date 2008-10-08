@@ -223,7 +223,22 @@ if (!$in{'new'}) {
 	# Update the LDAP database
 	@classes = &unique(@classes);
 	@rprops = grep { defined($ginfo->get_value($_)) } @rprops;
-	$rv = $ldap->modify($in{'dn'}, replace =>
+
+	if ($oldgroup ne $group) {
+	        # Need to rename the LDAP dn itself, first
+	        $base = &get_group_base();
+	        $newdn = "cn=$group,$base";
+	        $rv = $ldap->moddn($in{'dn'}, newrdn => "cn=$group");
+	        if ($rv->code) {
+	                &error(&text('gsave_emoddn', $rv->error));
+	                }
+	        }
+	else {
+		$newdn = $in{'dn'};
+		}
+
+	# Update group properties
+	$rv = $ldap->modify($newdn, replace =>
 			    { "gidNumber" => $gid,
 			      "cn" => $group,
 			      "userPassword" => $pass,
@@ -241,15 +256,6 @@ if (!$in{'new'}) {
 			}
 		}
 
-	if ($oldgroup ne $group) {
-	        # Need to rename the LDAP dn itself
-	        $base = &get_group_base();
-	        $newdn = "cn=$group,$base";
-	        $rv = $ldap->moddn($in{'dn'}, newrdn => "cn=$group");
-	        if ($rv->code) {
-	                &error(&text('gsave_emoddn', $rv->error));
-	                }
-	        }
 	}
 else {
 	# Run the pre-change command
@@ -315,7 +321,7 @@ $ldap->unbind();
 &webmin_log(!$in{'new'} ? 'modify' : 'create', 'group', $group, \%in);
 
 # Bounce back to the list
-&redirect("");
+&redirect("index.cgi?mode=groups");
 
 # dn_to_hash(&ldap-object)
 sub dn_to_hash

@@ -533,7 +533,22 @@ else {
 		@classes = &unique(@classes);
 		@classes = grep { /\S/ } @classes;	# Remove empty
 		@rprops = grep { defined($uinfo->get_value($_)) } @rprops;
-		$newdn = $in{'dn'};
+
+		if ($olduser ne $user) {
+			# Need to rename the LDAP dn itself, first
+			$renaming = 1;
+			$base = &get_user_base();
+			$newdn = "uid=$user,$base";
+			$rv = $ldap->moddn($in{'dn'}, newrdn => "uid=$user");
+			if ($rv->code) {
+				&error(&text('usave_emoddn', $rv->error));
+				}
+			}
+		else {
+			$newdn = $in{'dn'};
+			}
+
+		# Change the user's properties
 		%allprops = ( "cn" => $real,
 			      "uid" => \@users,
 			      "uidNumber" => $uid,
@@ -548,22 +563,13 @@ else {
 			# Person needs 'sn'
 			$allprops{'sn'} = $real;
 			}
-		$rv = $ldap->modify($in{'dn'}, 'replace' => \%allprops,
-					       'delete' => \@rprops);
+		$rv = $ldap->modify($newdn, 'replace' => \%allprops,
+					    'delete' => \@rprops);
 		if ($rv->code) {
 			&error(&text('usave_emod', $rv->error));
 			}
 
 		if ($olduser ne $user) {
-			# Need to rename the LDAP dn itself
-			$renaming = 1;
-			$base = &get_user_base();
-			$newdn = "uid=$user,$base";
-			$rv = $ldap->moddn($in{'dn'}, newrdn => "uid=$user");
-			if ($rv->code) {
-				&error(&text('usave_emoddn', $rv->error));
-				}
-
 			# Check if an addressbook dn exists
 			local $olda =
 				"ou=$olduser, $config{'addressbook'}";
