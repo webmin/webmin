@@ -2246,7 +2246,7 @@ local %on = map { $_, 1 } @$slavehosts;
 local $slave;
 local @slaveerrs;
 foreach $slave (&list_slave_servers()) {
-	next if (%on && !$on{$slave->{'host'}});
+	next if (%on && !$on{$slave->{'host'}} && !$on{$slave->{'nsname'}});
 
 	# Connect to server
 	$slave_error = undef;
