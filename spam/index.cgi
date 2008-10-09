@@ -134,7 +134,10 @@ else {
 		@pages = grep { &can_use_page($_) } @pages;
 		$sfolder = $module_info{'usermin'} ? &spam_file_folder()
 						   : undef;
-		@links = map { $_ eq "mail" && $sfolder ? "../mailbox/index.cgi?folder=$sfolder->{'index'}" : "edit_${_}.cgi" } @pages;
+		if (!$sfolder) {
+			@pages = grep { $_ ne 'mail' } @pages;
+			}
+		@links = map { $_ eq "mail" ? "../mailbox/index.cgi?folder=$sfolder->{'index'}" : "edit_${_}.cgi" } @pages;
 		@icons = map { "images/${_}.gif" } @pages;
 		@titles = map { $text{"${_}_title"} } @pages;
 		&icons_table(\@links, \@titles, \@icons);
