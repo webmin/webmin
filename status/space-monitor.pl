@@ -35,16 +35,24 @@ else {
 
 sub show_space_dialog
 {
-&foreign_require("mount", "mount-lib.pl");
-local @mounted = &mount::list_mounted();
-local ($got) = grep { $_->[0] eq $_[0]->{'fs'} } @mounted;
-print &ui_table_row($text{'space_fs'},
-	&ui_select("fs", !$_[0]->{'fs'} ? $mounted[0]->[0] :
-			 !$got ? "" : $_[0]->{'fs'},
-		   [ (map { [ $_->[0] ] } @mounted),
-		     [ "", $text{'space_other'} ] ])."\n".
-	&ui_textbox("other", $got ? "" : $_[0]->{'fs'}, 30),
-	3);
+if (&foreign_check("mount")) {
+	# Can get filesystem list from mount module
+	&foreign_require("mount", "mount-lib.pl");
+	local @mounted = &mount::list_mounted();
+	local ($got) = grep { $_->[0] eq $_[0]->{'fs'} } @mounted;
+	print &ui_table_row($text{'space_fs'},
+		&ui_select("fs", !$_[0]->{'fs'} ? $mounted[0]->[0] :
+				 !$got ? "" : $_[0]->{'fs'},
+			   [ (map { [ $_->[0] ] } @mounted),
+			     [ "", $text{'space_other'} ] ])."\n".
+		&ui_textbox("other", $got ? "" : $_[0]->{'fs'}, 30),
+		3);
+	}
+else {
+	# Just show text box
+	print &ui_table_row($text{'space_fs'},
+		&ui_textbox("other", $_[0]->{'fs'}, 30));
+	}
 
 print &ui_table_row($text{'space_min2'},
 	&ui_bytesbox("min", $_[0]->{'min'}*1024));
