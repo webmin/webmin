@@ -29,7 +29,7 @@ for($i=0; $i<$len; $i++) {
 	$rv .= "<td><input name=$_[1]_from_$i size=20 value=\"$from\"></td>\n";
 	$rv .= "<td><input name=$_[1]_to_$i size=40 value=\"$to\"></td>\n";
 	$rv .= "</tr>\n";
-	$rv. = &ui_hidden("$_[1]_old_to_$i", $to);
+	$rv .= &ui_hidden("$_[1]_old_to_$i", $to);
 	}
 $rv .= "</table>\n";
 return (2, $_[2], $rv);
@@ -63,7 +63,7 @@ for($i=0; $i<$len; $i++) {
 	$rv .= "<td><input name=$_[1]_stat_$i size=4 value=\"$stat\"></td>\n";
 	$rv .= "<td><input name=$_[1]_to_$i size=40 value=\"$to\"></td>\n";
 	$rv .= "</tr>\n";
-	$rv. = &ui_hidden("$_[1]_old_to_$i", $to);
+	$rv .= &ui_hidden("$_[1]_old_to_$i", $to);
 	}
 $rv .= "</table>\n";
 return (2, $_[2], $rv);
