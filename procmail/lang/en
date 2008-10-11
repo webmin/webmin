@@ -30,7 +30,6 @@ index_env=Set variable $1 to $2
 index_include=Process include file $1
 index_man=Manually Edit Configuration
 index_mandesc=Directly edit the primary Procmail configuration file, to create your own rules, variables and blocks.
-index_procmail=Procmail
 index_ecmd=The Procmail program $1 was not found on your system. Either it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
 index_delete=Delete Selected Actions
 
