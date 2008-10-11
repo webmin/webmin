@@ -578,7 +578,6 @@ net_ecannot=You are not allowed to edit address and topology options
 net_header=Global address and topology options
 net_listen=Ports and addresses to listen on
 net_below=Listed below..
-net_port=Port
 net_addrs=Addresses
 net_saddr=Source IP address for queries
 net_ip=IP address
