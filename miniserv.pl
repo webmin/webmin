@@ -4544,6 +4544,7 @@ local @substrings = (
     "iPhone",		  # Apple iPhone KHTML browser
     "iPod",		  # iPod touch browser
     "MobileSafari",	  # HTTP client in iPhone
+    "Android",		  # gPhone
     );
 foreach my $p (@prefixes) {
 	return 1 if ($agent =~ /^\Q$p\E/);
