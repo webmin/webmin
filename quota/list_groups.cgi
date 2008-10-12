@@ -266,7 +266,11 @@ if ($access{'email'} && &foreign_check("cron") &&
 
 	print &ui_table_row($text{'lusers_from'},
 		    &ui_textbox("from", $config{"gemail_from_$f"} ||
-					'webmin@'.&get_system_hostname(), 20));
+					'webmin@'.&get_system_hostname(), 30));
+
+	print &ui_table_row($text{'lusers_cc'},
+		&ui_opt_textbox("cc", $config{"gemail_cc_$f"}, 30,
+				$text{'lusers_nocc'}), 3);
 
 	print &ui_table_end();
 	print &ui_form_end([ [ 'save', $text{'lusers_apply'} ] ]);

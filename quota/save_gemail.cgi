@@ -14,6 +14,7 @@ if ($in{'email'}) {
 	$in{'from'} =~ /^\S+$/i || &error($text{'email_efrom'});
 	$in{'tomode'} != 1 || $in{'to'} =~ /^\S+$/ ||
 		&error($text{'email_eto'});
+	$in{'cc_def'} || $in{'cc'} =~ /^\S+$/i || &error($text{'email_ecc'});
 	}
 
 # Save settings
@@ -25,6 +26,7 @@ $config{"gemail_percent_".$in{'filesys'}} = $in{'percent'};
 $config{"gemail_from_".$in{'filesys'}} = $in{'from'};
 $config{"gemail_to_".$in{'filesys'}} = $in{'to'};
 $config{"gemail_tomode_".$in{'filesys'}} = $in{'tomode'};
+$config{"gemail_cc_".$in{'filesys'}} = $in{'cc'};
 &save_module_config();
 &unlock_file($module_config_file);
 

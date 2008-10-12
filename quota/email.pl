@@ -154,9 +154,10 @@ foreach $k (keys %config) {
 					$group{$i,'ublocks'},
 					$f,
 					$upercent,
-					$config{'email_from_'.$f},
+					$config{'gemail_from_'.$f},
 					$group{$i,'gblocks'},
 					'gemail',
+					$config{'gemail_cc_'.$f},
 					);
 				}
 

@@ -33,4 +33,4 @@ Quotas are considered active for a filesystem if the usrquota or grpquota option
 ---- Changes since 1.400 ----
 If a user to email is a Virtualmin domain owner, send email to the domain's contact address.
 ---- Changes since 1.430 ----
-Email to users who are over quota on some filesystem can also be Cc'd to another address, such as the system administrator.
+Email to users and groups who are over quota on some filesystem can also be Cc'd to another address, such as the system administrator.
