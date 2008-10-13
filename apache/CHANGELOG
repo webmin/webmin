@@ -41,3 +41,4 @@ Moved the SSL password option to the global settings level, to correspond with t
 Added support for the funny ${APACHE_RUN_USER} and ${APACHE_PID_FILE} variables seen in apache2.conf on Ubuntu 8.04.
 ---- Changes since 1.430 ----
 When a virtual host's base directory is changed, all <directory> blocks under it are updated too.
+When stopping and re-starting Apache, give it time to fully stop before continuing.

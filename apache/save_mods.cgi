@@ -29,6 +29,7 @@ unlink($site_file);
 if ($changed && &is_apache_running()) {
 	$err = &stop_apache();
 	&error($err) if ($err);
+	&wait_for_apache_stop();
 	$err = &start_apache();
 	&error($err) if ($err);
 	}

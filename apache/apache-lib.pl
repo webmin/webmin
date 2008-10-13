@@ -1434,6 +1434,7 @@ if ($config{'apply_cmd'} eq 'restart') {
 	# Call stop and start functions
 	local $err = &stop_apache();
 	return $err if ($err);
+	local $stopped = &wait_for_apache_stop();
 	local $err = &start_apache();
 	return $err if ($err);
 	}
@@ -1597,6 +1598,18 @@ else {
 	local $pidfile = &get_pid_file();
 	return &check_pid_file($pidfile);
 	}
+}
+
+# wait_for_apache_stop([secs])
+# Wait 30 (by default) seconds for Apache to stop. Returns 1 if OK, 0 if not
+sub wait_for_apache_stop
+{
+local $secs = $_[0] || 30;
+for(my $i=0; $i<$secs; $i++) {
+	return 1 if (!&is_apache_running());
+	sleep(1);
+	}
+return 0;
 }
 
 # configurable_modules()
