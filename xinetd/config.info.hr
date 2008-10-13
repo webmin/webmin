@@ -1,0 +1,7 @@
+line2=Konfiguracija sustava,11
+xinetd_conf=Konifiguracijska datoteka Xinetd,0
+protocols_file=Datoteka mrežnih protokola,0
+pid_file=Putanja za Xinetd PID datoteku,3,Nema (pogledati pod procese)
+start_cmd=Naredba za izvršavanje xinetd,0
+add_dir=Dodaj novi servis,15,add_dir
+lookup_servs=Pogledaj broj porta na glavnoj stranici?,1,1-Da,0-Ne

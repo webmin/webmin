@@ -1,0 +1,9 @@
+line2=Konfiguracija sustava,11
+ftpd_path=Putanja za wuftpd,0
+ftpaccess=Putanja za ftpaccess file,0
+ftpconversions=Putanja za ftpconversions file,0
+ftpgroups=Putanja za ftpgroups file,0
+ftphosts=Putanja za ftphosts file,0
+ftpusers=Putanja za ftpusers file,0
+pid_file=FTP server PID file,0
+log_file=FTP server log datoteka,0
