@@ -829,6 +829,27 @@ $rv{'time'} = time();
 return %rv;
 }
 
+# show_webmin_notifications()
+# Print various notifications for the current user, if needed
+sub show_webmin_notifications
+{
+# Need OS upgrade
+local %realos = &detect_operating_system(undef, 1);
+if (($realos{'os_version'} ne $gconfig{'os_version'} ||
+     $realos{'os_type'} ne $gconfig{'os_type'}) &&
+    &foreign_available("webmin")) {
+	print "<center>\n";
+	print &ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi");
+	print &text('os_incorrect', $realos{'real_os_type'},
+				    $realos{'real_os_version'}),"<p>\n";
+	print &ui_form_end([ [ undef, $text{'os_fix'} ] ]);
+	print "</center>\n";
+	}
+
+# Password close to expiry
+# XXX
+}
+
 # get_system_uptime()
 # Returns the number of seconds the system has been up, or undef if un-available
 sub get_system_uptime

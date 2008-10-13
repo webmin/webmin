@@ -180,20 +180,9 @@ else {
 	}
 
 # Check for incorrect OS
-if (&foreign_available("webmin")) {
+if (&foreign_check("webmin")) {
 	&foreign_require("webmin", "webmin-lib.pl");
-	%realos = &webmin::detect_operating_system(undef, 1);
-	if ($realos{'os_version'} ne $gconfig{'os_version'} ||
-	    $realos{'os_type'} ne $gconfig{'os_type'}) {
-		print "<form action=webmin/fix_os.cgi>\n";
-		print "<p><center>",&webmin::text('os_incorrect',
-			$realos{'real_os_type'},
-			$realos{'real_os_version'}),"<p>\n";
-		print "<input type=submit ",
-		      "value='$webmin::text{'os_fix'}'>\n";
-		print "</center>\n";
-		print "</form>\n";
-		}
+	&webmin::show_webmin_notifications();
 	}
 
 if ($miniserv{'logout'} && !$gconfig{'alt_startpage'} &&
