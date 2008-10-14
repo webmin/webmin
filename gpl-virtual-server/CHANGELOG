@@ -502,3 +502,4 @@ Plugins can now define additional inputs to appear on the Create Virtual Server 
 When the user or group for a domain is changed, references to the old user or group in lgorotate.conf are updated to the new values.
 When setting up clamd, the provided example init script is copied instead of bring modified, so that it can be safely replaced by RPM upgrades.
 Changed the meaning of the 'Can choose database names?' server owner restriction to just prevent modification of the domain's default database, instead of blocking all database management.
+Mail aliases that forward to all users in a domain can now be created, using the Edit Mail Aliases page.
