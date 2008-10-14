@@ -2,17 +2,6 @@
 # Icons copyright David Vignoni, all other theme elements copyright 2005-2007
 # Virtualmin, Inc.
 
-$main::vm2_no_create_links = 1;
-$main::vm2_no_edit_buttons = 1;
-$main::vm2_no_global_links = 1;
-
-$main::mailbox_no_addressbook_button = 1;
-$main::mailbox_no_folder_button = 1;
-
-$main::basic_virtualmin_menu = 1;
-$main::nocreate_virtualmin_menu = 1;
-$main::nosingledomain_virtualmin_mode = 1;
-
 $default_domains_to_show = 10;
 
 # Global state for wrapper
