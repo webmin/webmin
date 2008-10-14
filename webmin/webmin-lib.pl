@@ -833,21 +833,94 @@ return %rv;
 # Print various notifications for the current user, if needed
 sub show_webmin_notifications
 {
+local @notif = &get_webmin_notifications();
+if (@notifs) {
+	print "<center>\n",@notifs,"</center>\n";
+	}
+}
+
+# get_webmin_notifications()
+# Returns a list of Webmin notification messages
+sub get_webmin_notifications
+{
+local @notifs;
+local %miniserv;
+&get_miniserv_config(\%miniserv);
+
 # Need OS upgrade
 local %realos = &detect_operating_system(undef, 1);
 if (($realos{'os_version'} ne $gconfig{'os_version'} ||
      $realos{'os_type'} ne $gconfig{'os_type'}) &&
     &foreign_available("webmin")) {
-	print "<center>\n";
-	print &ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi");
-	print &text('os_incorrect', $realos{'real_os_type'},
-				    $realos{'real_os_version'}),"<p>\n";
-	print &ui_form_end([ [ undef, $text{'os_fix'} ] ]);
-	print "</center>\n";
+	push(@notifs, 
+		&ui_form_start("$gconfig{'webprefix'}/webmin/fix_os.cgi").
+		&text('os_incorrect', $realos{'real_os_type'},
+				    $realos{'real_os_version'})."<p>\n".
+		&ui_form_end([ [ undef, $text{'os_fix'} ] ])
+		);
 	}
 
 # Password close to expiry
-# XXX
+local $warn_days = $config{'warn_days'};
+if (&foreign_check("acl")) {
+	# Get the Webmin user
+	&foreign_require("acl", "acl-lib.pl");
+	local @users = &acl::list_users();
+	local ($uinfo) = grep { $_->{'name'} eq $base_remote_user } @users;
+	if ($uinfo && $uinfo->{'pass'} eq 'x' && &foreign_check("useradmin")) {
+		# Unix auth .. check password in Users and Groups
+		&foreign_require("useradmin", "user-lib.pl");
+		($uinfo) = grep { $_->{'user'} eq $remote_user }
+				&useradmin::list_users();
+		if ($uinfo && $uinfo->{'warn'} && $uinfo->{'change'} &&
+		    $uinfo->{'max'}) {
+			local $daysago = int(time()/(24*60*60)) -
+					 $uinfo->{'change'};
+			local $cdate = &make_date(
+				$uinfo->{'change'}*24*60*60, 1);
+			if ($daysago > $uinfo->{'max'}) {
+				# Passed expiry date
+				push(@notifs, &text('notif_unixexpired',
+						    $cdate));
+				}
+			elsif ($daysago > $uinfo->{'max'}-$uinfo->{'warn'}) {
+				# Passed warning date
+				push(@notifs, &text('notif_unixwarn',
+						    $cdate,
+						    $uinfo->{'max'}-$daysago));
+				}
+			}
+		}
+	elsif ($uinfo && $uinfo->{'lastchange'}) {
+		# Webmin auth .. check password in Webmin
+		local $daysold = (time() - $uinfo->{'lastchange'})/(24*60*60);
+		local $link = &foreign_available("change-user") ?
+			&text('notif_changenow',
+			     "$gconfig{'webprefix'}/change-user/")."<p>\n" : "";
+		if ($miniserv{'pass_maxdays'} &&
+		    $daysold > $miniserv{'pass_maxdays'}) {
+			# Already expired
+			push(@notifs, &text('notif_passexpired')."<p>\n".$link);
+			}
+		elsif ($miniserv{'pass_maxdays'} &&
+		       $daysold > $miniserv{'pass_maxdays'} - $warn_days) {
+			# About to expire
+			push(@notifs, &text('notif_passchange',
+				&make_date($uinfo->{'lastchange'}, 1),
+				int($miniserv{'pass_maxdays'} - $daysold)).
+				"<p>\n".$link);
+			}
+		elsif ($miniserv{'pass_lockdays'} &&
+		       $daysold > $miniserv{'pass_lockdays'} - $warn_days) {
+			# About to lock out
+			push(@notifs, &text('notif_passlock',
+				&make_date($uinfo->{'lastchange'}, 1),
+				int($miniserv{'pass_maxdays'} - $daysold)).
+				"<p>\n".$link);
+			}
+		}
+	}
+return @notifs;
 }
 
 # get_system_uptime()
