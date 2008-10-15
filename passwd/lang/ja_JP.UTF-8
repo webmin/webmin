@@ -1,0 +1,45 @@
+index_title=パスワードの変更
+index_header=パスワードを変更するユーザを選択してください
+index_return=ユーザ一覧
+index_user=Change password for user:
+index_euseradmin=This module cannot be used because the Users and Groups module is not installed or not supported on your system.
+index_toomany=There are too many users to display on your system. Enter the name of the user whose password you want to change below..
+index_none=You do not have access to any users to change their passwords.
+
+passwd_title=パスワードの変更
+passwd_header=Unix ユーザパスワードの変更
+passwd_for=パスワード変更中 &gt;
+passwd_old=旧パスワード
+passwd_new=新パスワード
+passwd_repeat=新パスワード (確認)
+passwd_expire=次回のログインでユーザにパスワードの変更を強制?
+passwd_others=別のモジュールでパスワードを変更?
+passwd_change=変更
+passwd_reset=Clear form
+passwd_err=Failed to change password
+passwd_ecannot=You are not allowed to change this user's password
+passwd_euser=User does not exist
+passwd_eold=Incorrect old password
+passwd_erepeat=New passwords are not the same
+passwd_ecmd=$1 failed : $2
+passwd_ok=The password for user $1 has been changed successfully. If this is your current Webmin user, you may be forced to login again.
+passwd_ok2=ユーザ $1 のパスワードの変更に成功しました。
+
+log_passwd=ユーザ $1 のパスワードを変更しました
+
+acl_repeat=Must enter new password again?
+acl_old=Must enter old password?
+acl_old_this=Only for other users
+acl_others=Change password in other modules?
+acl_opt=Optional
+acl_users=Users whose passwords can be changed
+acl_mode0=All users
+acl_mode1=Only users
+acl_mode2=All except users
+acl_mode3=Only this user
+acl_mode4=Users with UID in range
+acl_mode5=Users with primary group
+acl_mode6=Users matching
+acl_expire=Can force users to change password at next login?
+acl_sec=Include secondary groups?
+acl_notusers=Except for users
