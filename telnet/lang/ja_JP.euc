@@ -4,3 +4,5 @@ index_nojava=¤³¤Î¥â¥¸¥å¡¼¥ë¤ÏÆ°ºî¤¹¤ë¤Î¤Ë Java ¤òÉ¬Í×¤È¤·¤Þ¤¹¤¬¡¢¤´»ÈÍÑ¤Î¥Ö¥é¥¦¥
 index_credits=¥¢¥×¥ì¥Ã¥È¤Ï GPL ¤Î¤â¤È¤Ç<a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Meisner</a>¤Ë¤è¤Ã¤Æ³«È¯¤µ¤ì¤Þ¤·¤¿¡£
 index_sshcredits=¥½¥Õ¥È¥¦¥§¥¢¤ÏCryptix Development Team (<a href=$1 target=_top>$1</a>) ¤Ë¤è¤ê³«È¯¤µ¤ì¤Þ¤·¤¿¡£
 index_esocket=$1 ¥Ý¡¼¥È $2 ¾å¤Ç¼Â¹ÔÃæ¤Î telnet ¥µ¡¼¥Ð¤Ï¤¢¤ê¤Þ¤»¤ó¡£
+index_esocket2=$1 ¥Ý¡¼¥È $2 ¾å¤Ç¼Â¹ÔÃæ¤Î SSH ¥µ¡¼¥Ð¤Ï¤¢¤ê¤Þ¤»¤ó¡£
+index_elookup=telnet ¤Þ¤¿¤Ï SSH ¥µ¡¼¥Ð¥Æ¥¹¥È¤Î¤¿¤á¤ÎIP¥¢¥É¥ì¥¹ $1 ¤Î¥ë¥Ã¥¯¥¢¥Ã¥×¤Ë¼ºÇÔ¤·¤Þ¤·¤¿¡£
