@@ -1,0 +1,2 @@
+date_subs=バックアップ先に<tt>strftime</tt>置換を行いますか?,1,1-はい,0-いいえ
+from_addr=電子メールメッセージの From: アドレス,3,webmin@hostname
