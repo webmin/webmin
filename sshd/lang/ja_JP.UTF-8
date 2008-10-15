@@ -6,9 +6,17 @@ index_eversion2=SSHサーバプログラム $1 のバージョンは $2 です�
 index_return=モジュールインデックス
 index_apply=変更を適用する
 index_applymsg=このボタンをクリックすると現在動作中のSSHDにSIGHUPシグナルを送信し現在の設定を適用します。
+index_applymsg2=このボタンをクリックすると現在の設定を適用し$1を実行します。
 index_start=サーバ起動
 index_startmsg=このボタンをクリックするとSSHサーバを起動します。起動が完了するまでSSH経由でのログインはできません。
+index_stop=サーバ停止
+index_stopmsg=このボタンをクリックするとSSHサーバを停止します。一度停止すると、SSH経由のログインはできなくなりますが、現在ログインしている接続は継続されます。
 index_version=$1
+index_type=SSH key type:
+index_rsa1=RSA (for SSH v1)
+index_rsa=RSA (for SSH v2)
+index_dsa=DSA (for SSH v2)
+
 bits=ビット
 secs=秒
 users_title=認証
@@ -60,7 +68,7 @@ net_listen2=待受け(Listen)アドレス
 net_laddress=アドレス
 net_lport=ポート
 net_listen_def=全てのアドレス
-net_below=Entered below ..
+net_below=次のアドレスを使う
 net_grace=ログインを待つ時間
 net_grace_def=永遠に
 net_grace_s=秒
@@ -120,6 +128,7 @@ misc_eregen=無効なキー再生成間隔です
 misc_epid=PIDファイルパスが見付かりません
 
 start_err=SSHサーバの起動に失敗しました
+apply_epid=Not running
 
 hosts_title=クライアントオプション
 hosts_header=SSHクライアントホスト
@@ -176,6 +185,10 @@ host_erhost=無効なリモートホスト名です
 host_erport=無効なリモートポート番号です
 host_elhost=無効なローカルホスト名です
 host_eprots=１つ以上のプロトコルを選択する必要があります
+host_proxy=Connection proxy command
+host_proxy_def=None
+host_eproxy=Missing or invalid-looking connection proxy command
+
 log_users=認証オプションが変更されました
 log_net=ネットワークオプションが変更されました
 log_access=アクセス制御が変更されました
@@ -186,12 +199,27 @@ log_delete_host=ホスト $1 用のオプションが削除されました
 log_create_all=全てのホストに対するオプションが作成されました
 log_update_all=全てのホストに対するオプションが更新されました
 log_delete_all=全てのホストに対するオプションが削除されました
+log_stop=SSHサーバを停止しました
+log_start=SSHサーバを開始しました
+log_apply=変更を適用しました
+log_manual=設定ファイル$1を手で編集しました
+
 sync_title=ユーザSSH鍵を設定する
 sync_desc=このページでは新しく作成したUNIXユーザのためにSSH設定を自動化することができます。設定をした場合、新しいユーザはSSHの前に<tt>ssh-keygen</tt>を実行する必要が無くなります
 sync_create=新しいUNIXユーザのためにSSH鍵を設定する
 sync_auth=新しい<tt>identify.pub</tt>を<tt>authorized_keys</tt>にコピーする
 sync_pass=パスワードにパスフレーズを使用する
 sync_gnupg=新しいユーザのためにGNUPG鍵を設定する
+sync_type=鍵の種類
+sync_auto=&lt;自動&gt;
 
+manual_title=設定ファイルの編集
+manual_ecannot=You are not allowed to edit the SSH server config file
+manual_ok=編集
+manual_efile=Selected file is not part of the SSH server configuration
+manual_file=編集する設定ファイル:
+manual_edata=Nothing entered!
+manual_err=Failed to save config file
 
-
+dknown_err=Failed to delete knwon hosts
+dknown_enone=None selected
