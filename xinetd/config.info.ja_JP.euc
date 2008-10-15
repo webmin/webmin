@@ -1,0 +1,7 @@
+line2=システム設定,11
+xinetd_conf=Xinetd設定ファイル,0
+protocols_file=ネットワークプロトコル定義ファイル,0
+pid_file=XinetdのPIDファイル,3,なし(かわりにプロセスを探します)
+start_cmd=Xinetd開始コマンド,0
+add_dir=新サービスを追加する場所,15,add_dir
+lookup_servs=モジュールインデックスのポート番号を参照しますか?,1,1-はい,0-いいえ
