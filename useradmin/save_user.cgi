@@ -390,9 +390,19 @@ elsif ($pft == 1 || $pft == 6) {
 	}
 elsif ($pft == 4) {
 	# Validate AIX-style password inputs
-	if ($in{'expired'} ne "" && $in{'expirem'} ne ""	
-		&& $in{'expirey'} ne "" ) {
+	if ($in{'expire_def'} == 1) {
+		# System default expiry date
+		$expire = undef;
+		}
+	elsif ($in{'expire_def'} == 2) {
+		# Never expires
+		$expire = "0";
+		}
+	else {
 		# Add a leading zero if only 1 digit long
+		$in{'expirem'} =~ /^\d+$/ && $in{'expired'} =~ /^\d+$/ &&
+		   $in{'expireh'} =~ /^\d+$/ && $in{'expiremi'} =~ /^\d+$/ &&
+		   $in{'expirey'} =~ /^\d+$/ || &error($text{'usave_eexpire'});
 		$in{'expirem'} =~ s/^(\d)$/0$1/;
 		$in{'expired'} =~ s/^(\d)$/0$1/;
 		$in{'expireh'} =~ s/^(\d)$/0$1/;
@@ -406,15 +416,14 @@ elsif ($pft == 4) {
 		$in{'expiremi'} = "01" if $in{'expiremi'} eq "";
 		$expire="$in{'expirem'}$in{'expired'}$in{'expireh'}$in{'expiremi'}$in{'expirey'}";
 		}
-	else { $expire = ""; }
 	if ($access{'peopt'}) {
 		$user{'admin'} = $in{'flags'} =~ /admin/;
 		$user{'admchg'} = $in{'flags'} =~ /admchg/;
 		$user{'nocheck'} = $in{'flags'} =~ /nocheck/;
 		$user{'expire'} = $expire;
-		$user{'min'} = $in{'min'};
-		$user{'max'} = $in{'max'};
-		$user{'warn'} = $in{'warn'};
+		$user{'min'} = $in{'min_def'} ? undef : $in{'min'};
+		$user{'max'} = $in{'max_def'} ? undef : $in{'max'};
+		$user{'warn'} = $in{'warn_def'} ? undef : $in{'warn'};
 		}
 	else {
 		$user{'admin'} = $ouser{'admin'};

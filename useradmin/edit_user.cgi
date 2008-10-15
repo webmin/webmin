@@ -339,8 +339,7 @@ elsif ($pft == 4 && $access{'peopt'}) {
 		 $n eq "" ? $text{'uedit_never'} :
 			    $text{'uedit_unknown'}));
 
-	if ($uinfo{'expire'}) {
-		$uinfo{'expire'} =~ /^(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/;
+	if ($uinfo{'expire'} =~ /^(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/) {
 		$emon = $1;
 		$eday = $2;
 		$ehour = $3;
@@ -355,20 +354,24 @@ elsif ($pft == 4 && $access{'peopt'}) {
 		}
 	$emon =~ s/0(\d)/$1/;	# strip leading 0 
 	print &ui_table_row(&hlink($text{'expire'}, "expire"),
-		&date_input($eday, $emon, $eyear, 'expire').
-		" ".&ui_textbox("expireh", $ehour, 3).
-		"/".&ui_textbox("expiremi", $emin, 3));
+		&ui_radio("expire_def", $uinfo{'expire'} eq '' ? 1 :
+					$uinfo{'expire'} eq '0' ? 2 : 0,
+			  [ [ 1, $text{'uedit_sys'} ],
+			    [ 2, $text{'uedit_never'} ],
+			    [ 0, &date_input($eday, $emon, $eyear, 'expire').
+				 " ".&ui_textbox("expireh", $ehour, 3).
+				 "/".&ui_textbox("expiremi", $emin, 3) ] ]));
 
 	# Minimum and maximum ages in weeks
 	print &ui_table_row(&hlink($text{'min_weeks'}, "min_weeks"),
-		&ui_textbox("min", $uinfo{'min'}, 5));
+		&ui_opt_textbox("min", $uinfo{'min'}, 5, $text{'uedit_sys'}));
 
 	print &ui_table_row(&hlink($text{'max_weeks'}, "max_weeks"),
-		&ui_textbox("max", $uinfo{'max'}, 5));
+		&ui_opt_textbox("max", $uinfo{'max'}, 5, $text{'uedit_sys'}));
 
 	# Warning days
 	print &ui_table_row(&hlink($text{'warn'}, "warn"),
-		&ui_textbox("warn", $uinfo{'warn'}, 5));
+		&ui_opt_textbox("warn", $uinfo{'warn'}, 5, $text{'uedit_sys'}));
 
 	# AIX-specific flags
 	print &ui_table_row(&hlink($text{'flags'}, "flags"),

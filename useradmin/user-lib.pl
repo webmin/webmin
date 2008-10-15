@@ -216,19 +216,15 @@ else {
 			elsif (/^\s*([^=\s]+)\s*=\s*(.*)/) {
 				if ($1 eq 'expires') {
 					$lastuser->{'expire'} = $2;
-					$lastuser->{'expire'} =~ s/^0$//;
 					}
 				elsif ($1 eq 'minage') {
 					$lastuser->{'min'} = $2;
-					$lastuser->{'min'} =~ s/^0$//;
 					}
 				elsif ($1 eq 'maxage') {
 					$lastuser->{'max'} = $2;
-					$lastuser->{'max'} =~ s/^0$//;
 					}
 				elsif ($1 eq 'pwdwarntime') {
 					$lastuser->{'warn'} = $2;
-					$lastuser->{'warn'} =~ s/^0$//; 
 					}
 				}
 			}
