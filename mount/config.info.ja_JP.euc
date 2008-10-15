@@ -1,0 +1,11 @@
+line1=設定可能オプション,11
+browse_server=ブラウズリストを要求するサーバ,3,ローカルホスト
+long_fstypes=ファイルシステムの長い名前を表示するか,1,1-はい,0-いいえ
+sort_mode=ファイルシステムのソート,1,2-マウントポイント順,1-タイプ順,0-ファイル順
+delete_under=以下のマウントがアンマウントされたときにディレクトリを削除する,3,削除しない
+line2=システム設定,11
+fstab_file=ブート時にマウントされるファイルシステム一覧ファイル,0
+auto_file=NFS 自動マウントファイル,3
+autofs_file=カーネル自動マウントファイル,3
+smbclient_path=smbclientのフルパス,3
+nmblookup_path=nmblookupのフルパス,3
