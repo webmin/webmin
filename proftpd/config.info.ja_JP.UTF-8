@@ -8,3 +8,5 @@ proftpd_conf=ProFTPDの設定ファイルへのパス,0
 pid_file=ProFTPDのPIDファイルへのパス,0
 test_always=変更後に設定ファイルのテストしますか?,1,1-はい,0-いいえ
 test_manual=手動で変更した後に設定ファイルをテストしますか?,1,1-はい,0-いいえ
+add_file=新しいバーチャルホストの設定を追加するファイル,3,設定ファイルの最後に
+stop_cmd=ProFTPDの停止コマンド,3,通常停止
