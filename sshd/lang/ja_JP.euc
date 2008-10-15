@@ -6,9 +6,17 @@ index_eversion2=SSH¥µ¡¼¥Ð¥×¥í¥°¥é¥à $1 ¤Î¥Ð¡¼¥¸¥ç¥ó¤Ï $2 ¤Ç¤¹¡£Webmin¤Ç¤ÏSSH ¥Ð¡
 index_return=¥â¥¸¥å¡¼¥ë¥¤¥ó¥Ç¥Ã¥¯¥¹
 index_apply=ÊÑ¹¹¤òÅ¬ÍÑ¤¹¤ë
 index_applymsg=¤³¤Î¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤¹¤ë¤È¸½ºßÆ°ºîÃæ¤ÎSSHD¤ËSIGHUP¥·¥°¥Ê¥ë¤òÁ÷¿®¤·¸½ºß¤ÎÀßÄê¤òÅ¬ÍÑ¤·¤Þ¤¹¡£
+index_applymsg2=¤³¤Î¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤¹¤ë¤È¸½ºß¤ÎÀßÄê¤òÅ¬ÍÑ¤·$1¤ò¼Â¹Ô¤·¤Þ¤¹¡£
 index_start=¥µ¡¼¥Ðµ¯Æ°
 index_startmsg=¤³¤Î¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤¹¤ë¤ÈSSH¥µ¡¼¥Ð¤òµ¯Æ°¤·¤Þ¤¹¡£µ¯Æ°¤¬´°Î»¤¹¤ë¤Þ¤ÇSSH·ÐÍ³¤Ç¤Î¥í¥°¥¤¥ó¤Ï¤Ç¤­¤Þ¤»¤ó¡£
+index_stop=¥µ¡¼¥ÐÄä»ß
+index_stopmsg=¤³¤Î¥Ü¥¿¥ó¤ò¥¯¥ê¥Ã¥¯¤¹¤ë¤ÈSSH¥µ¡¼¥Ð¤òÄä»ß¤·¤Þ¤¹¡£°ìÅÙÄä»ß¤¹¤ë¤È¡¢SSH·ÐÍ³¤Î¥í¥°¥¤¥ó¤Ï¤Ç¤­¤Ê¤¯¤Ê¤ê¤Þ¤¹¤¬¡¢¸½ºß¥í¥°¥¤¥ó¤·¤Æ¤¤¤ëÀÜÂ³¤Ï·ÑÂ³¤µ¤ì¤Þ¤¹¡£
 index_version=$1
+index_type=SSH key type:
+index_rsa1=RSA (for SSH v1)
+index_rsa=RSA (for SSH v2)
+index_dsa=DSA (for SSH v2)
+
 bits=¥Ó¥Ã¥È
 secs=ÉÃ
 users_title=Ç§¾Ú
@@ -60,7 +68,7 @@ net_listen2=ÂÔ¼õ¤±(Listen)¥¢¥É¥ì¥¹
 net_laddress=¥¢¥É¥ì¥¹
 net_lport=¥Ý¡¼¥È
 net_listen_def=Á´¤Æ¤Î¥¢¥É¥ì¥¹
-net_below=Entered below ..
+net_below=¼¡¤Î¥¢¥É¥ì¥¹¤ò»È¤¦
 net_grace=¥í¥°¥¤¥ó¤òÂÔ¤Ä»þ´Ö
 net_grace_def=±Ê±ó¤Ë
 net_grace_s=ÉÃ
@@ -120,6 +128,7 @@ misc_eregen=Ìµ¸ú¤Ê¥­¡¼ºÆÀ¸À®´Ö³Ö¤Ç¤¹
 misc_epid=PID¥Õ¥¡¥¤¥ë¥Ñ¥¹¤¬¸«ÉÕ¤«¤ê¤Þ¤»¤ó
 
 start_err=SSH¥µ¡¼¥Ð¤Îµ¯Æ°¤Ë¼ºÇÔ¤·¤Þ¤·¤¿
+apply_epid=Not running
 
 hosts_title=¥¯¥é¥¤¥¢¥ó¥È¥ª¥×¥·¥ç¥ó
 hosts_header=SSH¥¯¥é¥¤¥¢¥ó¥È¥Û¥¹¥È
@@ -176,6 +185,10 @@ host_erhost=Ìµ¸ú¤Ê¥ê¥â¡¼¥È¥Û¥¹¥ÈÌ¾¤Ç¤¹
 host_erport=Ìµ¸ú¤Ê¥ê¥â¡¼¥È¥Ý¡¼¥ÈÈÖ¹æ¤Ç¤¹
 host_elhost=Ìµ¸ú¤Ê¥í¡¼¥«¥ë¥Û¥¹¥ÈÌ¾¤Ç¤¹
 host_eprots=£±¤Ä°Ê¾å¤Î¥×¥í¥È¥³¥ë¤òÁªÂò¤¹¤ëÉ¬Í×¤¬¤¢¤ê¤Þ¤¹
+host_proxy=Connection proxy command
+host_proxy_def=None
+host_eproxy=Missing or invalid-looking connection proxy command
+
 log_users=Ç§¾Ú¥ª¥×¥·¥ç¥ó¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿
 log_net=¥Í¥Ã¥È¥ï¡¼¥¯¥ª¥×¥·¥ç¥ó¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿
 log_access=¥¢¥¯¥»¥¹À©¸æ¤¬ÊÑ¹¹¤µ¤ì¤Þ¤·¤¿
@@ -186,12 +199,27 @@ log_delete_host=¥Û¥¹¥È $1 ÍÑ¤Î¥ª¥×¥·¥ç¥ó¤¬ºï½ü¤µ¤ì¤Þ¤·¤¿
 log_create_all=Á´¤Æ¤Î¥Û¥¹¥È¤ËÂÐ¤¹¤ë¥ª¥×¥·¥ç¥ó¤¬ºîÀ®¤µ¤ì¤Þ¤·¤¿
 log_update_all=Á´¤Æ¤Î¥Û¥¹¥È¤ËÂÐ¤¹¤ë¥ª¥×¥·¥ç¥ó¤¬¹¹¿·¤µ¤ì¤Þ¤·¤¿
 log_delete_all=Á´¤Æ¤Î¥Û¥¹¥È¤ËÂÐ¤¹¤ë¥ª¥×¥·¥ç¥ó¤¬ºï½ü¤µ¤ì¤Þ¤·¤¿
+log_stop=SSH¥µ¡¼¥Ð¤òÄä»ß¤·¤Þ¤·¤¿
+log_start=SSH¥µ¡¼¥Ð¤ò³«»Ï¤·¤Þ¤·¤¿
+log_apply=ÊÑ¹¹¤òÅ¬ÍÑ¤·¤Þ¤·¤¿
+log_manual=ÀßÄê¥Õ¥¡¥¤¥ë$1¤ò¼ê¤ÇÊÔ½¸¤·¤Þ¤·¤¿
+
 sync_title=¥æ¡¼¥¶SSH¸°¤òÀßÄê¤¹¤ë
 sync_desc=¤³¤Î¥Ú¡¼¥¸¤Ç¤Ï¿·¤·¤¯ºîÀ®¤·¤¿UNIX¥æ¡¼¥¶¤Î¤¿¤á¤ËSSHÀßÄê¤ò¼«Æ°²½¤¹¤ë¤³¤È¤¬¤Ç¤­¤Þ¤¹¡£ÀßÄê¤ò¤·¤¿¾ì¹ç¡¢¿·¤·¤¤¥æ¡¼¥¶¤ÏSSH¤ÎÁ°¤Ë<tt>ssh-keygen</tt>¤ò¼Â¹Ô¤¹¤ëÉ¬Í×¤¬Ìµ¤¯¤Ê¤ê¤Þ¤¹
 sync_create=¿·¤·¤¤UNIX¥æ¡¼¥¶¤Î¤¿¤á¤ËSSH¸°¤òÀßÄê¤¹¤ë
 sync_auth=¿·¤·¤¤<tt>identify.pub</tt>¤ò<tt>authorized_keys</tt>¤Ë¥³¥Ô¡¼¤¹¤ë
 sync_pass=¥Ñ¥¹¥ï¡¼¥É¤Ë¥Ñ¥¹¥Õ¥ì¡¼¥º¤ò»ÈÍÑ¤¹¤ë
 sync_gnupg=¿·¤·¤¤¥æ¡¼¥¶¤Î¤¿¤á¤ËGNUPG¸°¤òÀßÄê¤¹¤ë
+sync_type=¸°¤Î¼ïÎà
+sync_auto=&lt;¼«Æ°&gt;
 
+manual_title=ÀßÄê¥Õ¥¡¥¤¥ë¤ÎÊÔ½¸
+manual_ecannot=You are not allowed to edit the SSH server config file
+manual_ok=ÊÔ½¸
+manual_efile=Selected file is not part of the SSH server configuration
+manual_file=ÊÔ½¸¤¹¤ëÀßÄê¥Õ¥¡¥¤¥ë:
+manual_edata=Nothing entered!
+manual_err=Failed to save config file
 
-
+dknown_err=Failed to delete knwon hosts
+dknown_enone=None selected
