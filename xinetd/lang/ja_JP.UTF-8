@@ -1,4 +1,4 @@
-index_title=Extended Internet Services (Xinetd)
+index_title=拡張インターネットサービス (Xinetd)
 index_name=サービス名
 index_type=種類
 index_port=ポート/番号
@@ -87,6 +87,7 @@ proto_udp=UDP (ユーザ データグラム プロトコル)
 
 restart_err=変更を適用できませんでした
 restart_ekill=HUP 信号を PID $1 に送信できませんでした: $2
+restart_epid=No longer running
 
 start_err=Xinetd を起動できませんでした
 start_estart=$1 が失敗しました: $2
@@ -123,3 +124,14 @@ log_start=Xinetd サーバを起動しました
 log_apply=変更を適用しました
 log_defaults=デフォルト オプションを変更しました
 
+config_dirdef=Xinetd設定ファイル
+config_dirto=ディレクトリに新ファイル
+
+index_disable=選択したサービスを無効に
+index_enable=選択したサービスを有効に
+index_noport=Unknown
+
+log_enable=Enabled $1 services
+log_disable=Disabled $1 services
+log_enable_l=Enabled services $1
+log_disable_l=Disabled services $1
