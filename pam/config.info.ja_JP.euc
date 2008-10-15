@@ -1,0 +1,5 @@
+line2=システム設定,11
+pam_dir=PAM 設定ディレクトリ,0
+ignore=PAM ディレクトリで無視するファイル,0
+lib_dirs=PAM ライブラリを含むディレクトリ,0
+mod_equiv=評価する PAM モジュール,0
