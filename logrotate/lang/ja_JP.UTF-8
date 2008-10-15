@@ -1,0 +1,110 @@
+index_title=ログファイルローテート
+index_econf=The log rotation configuration file $1 was not found on your system. Maybe logrotate is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_ecmd=The log rotation program $1 was not found on your system. Maybe it is not installed, or the <a href='$2'>module configuration</a> is incorrect.
+index_eversion=Failed to get the version of logrotate with the command $1 : $2
+index_version=Logrotate version $1
+index_add=Add a new log file to rotate.
+index_file=ログファイル
+index_period=ローテーション期間
+index_post=ローテート後に実行するコマンド
+index_none=No log files have been defined yet.
+index_global=グローバル設定を編集
+index_globaldesc=ボタンをクリックするとすべてのログファイルへの設定を編集します。
+index_sched=スケジュールを編集
+index_scheddesc=ボタンをクリックするとCronで実行されるログローテーションのスケジュールを編集します。
+index_nocmd=なし
+index_notset=Not set
+index_return=ログファイル一覧
+index_force=強制ログローテート
+index_forcedesc=指定された時間になっていなくても強制的にログローテートを行います。
+index_logrotate=Logrotate
+index_delete=選択したログローテートを削除
+
+period_daily=Daily
+period_weekly=Weekly
+period_monthly=Monthly
+period_never=Never
+period_bytes=bytes
+
+edit_title1=ログファイルの編集
+edit_title2=ログローテートの作成
+edit_header=ローテート設定の詳細
+edit_file=ログファイルのパス
+edit_sched=ローテートスケジュール
+edit_rotate=古いログをどれだけ残すか
+edit_compress=古いログを圧縮するか
+edit_delaycompress=圧縮を次のサイクルまで遅らせるか
+edit_copytruncate=ログファイルを切り詰めるか
+edit_ifempty=ログファイルが空でもローテートするか
+edit_missingok=ログファイルがなければ無視するか
+edit_size=ローテート前の最大サイズ
+edit_always=Ignored
+edit_ext=ローテートしたファイル名の拡張子
+edit_mail=ログファイルを削除する前にメールするか
+edit_mailto=はい、アドレス
+edit_mailno=いいえ、メールしません
+edit_mailfl=メールするログファイル
+edit_mailfirst=最新のログファイルをローテートしたら
+edit_maillast=最古のログファイルを削除しようとしたら
+edit_create=ローテート後にログファイルを再作成するか
+edit_createas=はい、モード $1 ユーザ $2 グループ $3 で作成
+edit_createno=いいえ、作成しません
+edit_createsame=はい、同じパーミッションで
+edit_olddir=ローテート後のログの場所
+edit_olddirto=ディレクトリ
+edit_olddirsame=ログファイルと同じ場所
+edit_errors=Email error messages to
+edit_errorsno=Nobody
+edit_errorsto=Address or user
+edit_post=ローテート後に実行するコマンド
+edit_pre=ローテート前に実行するコマンド
+edit_default=$default ($1)
+edit_sharedscripts=Only run scripts once for all files?
+edit_now=Rotate Now
+
+global_title=Global Options
+global_header=Default options for all log files
+
+save_err=Failed to save log
+save_efile=Missing or invalid log filename
+save_esize=Missing or invalid maximum size
+save_erotate=Missing or invalid maximum number of old logs to keep
+save_ecreatemode=Missing or invalid 3 or 4 digit octal creation mode
+save_ecreateuser=Missing or invalid creation user
+save_ecreategroup=Missing or invalid creation group
+save_emust1=You must enter a creation mode when entering a creation user
+save_emust2=You must enter a creation user when entering a creation group
+save_eolddirto=Missing or invalid directory for old rotated logs
+save_eext=Missing extension for rotated log filenames
+save_emailto=Missing email address for rotated logs
+save_eerrors=Missing email address for error messages
+save_epre=Pre-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+save_epost=Post-rotation script cannot contain an <tt>endscript</tt> or <tt>endrotate</tt> line
+
+log_modify_sched=Changed log rotation Cron job
+log_create_sched=Created log rotation Cron job
+log_delete_sched=Deleted log rotation Cron job
+log_global=Modified global options
+log_create=Added rotation for log file $1
+log_modify=Modified rotation for log file $1
+log_delete=Deleted rotation for log file $1
+log_delete_logs=Deleted rotation for $1 log files
+
+sched_title=ログローテートスケジュール
+sched_desc=このモジュールで構成されたログローテートが実行される場合、Cronがコマンドlogrotateを定期的に(通常毎日)実行しなければなりません。
+sched_runparts=現在、ログローテートコマンドはスクリプト $1 $2 を実行するようになっており、調整できません。
+sched_sched=Log rotation cron job
+sched_disabled=Disabled
+sched_enabled=Enabled, at times below ..
+sched_save=Update Cron Job
+sched_err=Failed to save rotation schedule
+
+force_title=強制ログローテート
+force_doing=強制的にすべてのログファイルをローテートしています..
+force_doingone=強制的にログファイルをローテートしています..
+force_done=.. 終了
+force_failed=.. failed! See the output above for the reason why.
+
+delete_err=Failed to delete logs
+delete_enone=None selected
+
