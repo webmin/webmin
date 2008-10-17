@@ -60,12 +60,10 @@ else {
 	}
 
 print &ui_hr();
-print "<table width=100%> <tr>\n";
-print "<td><form action=restart_mountd.cgi>\n";
-print "<input type=submit value=\"$text{'index_apply'}\">\n";
-print "</form></td>\n";
-print "<td valign=top>$text{'index_applymsg'}</td>\n";
-print "</tr> <tr> </table>\n";
+print &ui_buttons_start();
+print &ui_buttons_row("restart_mountd.cgi", $text{'index_apply'},
+		      $text{'index_applymsg'});
+print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
 
