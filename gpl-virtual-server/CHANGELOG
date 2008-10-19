@@ -505,3 +505,5 @@ Changed the meaning of the 'Can choose database names?' server owner restriction
 Mail aliases that forward to all users in a domain can now be created, using the Edit Mail Aliases page.
 SSL keys with passphrases can now be installed on the Manage SSL Certificate page, and trying to use a key that needs a passphrase without one being entered will display an error.
 The clamd-stream-client virus scanner can be selected to offload the actual scanning process to clamd on a remote system, if you have it installed.
+---- Changes since 3.63 ----
+On systems running Postfix with spam filtering enabled, the ownership and permissions on the procmail wrapper command are validated as part of the configuration check to ensure that it is setuid and setgid to root.
