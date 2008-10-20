@@ -371,7 +371,7 @@ if ($raid_mode eq "mdadm") {
 			}
 		elsif ($lref->[$i] =~ /^ARRAY\s+(\S+)/ &&
 		       $1 eq $_[0]->{'value'}) {
-			$lref->[$i] =~ s/devices=(\S+)/devices=$1,$_[1]/;
+			$lref->[$i] =~ s/(\s)devices=(\S+)/${1}devices=${2},$_[1]/;
 			}
 		}
 	&flush_file_lines();
