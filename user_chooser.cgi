@@ -151,13 +151,19 @@ if ($access{'uedit_mode'} == 2 || $access{'uedit_mode'} == 3) {
 	}
 setpwent();
 while(@uinfo = getpwent()) {
+	if ($access{'uedit_mode'} == 5 && $access{'uedit'} !~ /^\d+$/) {
+		# Get group for matching by group name
+		@ginfo = getgrgid($uinfo[3]);
+		}
 	if ($access{'uedit_mode'} == 0 ||
 	    $access{'uedit_mode'} == 2 && $ucan{$uinfo[0]} ||
 	    $access{'uedit_mode'} == 3 && !$ucan{$uinfo[0]} ||
 	    $access{'uedit_mode'} == 4 &&
 		(!$access{'uedit'} || $uinfo[2] >= $access{'uedit'}) &&
 		(!$access{'uedit2'} || $uinfo[2] <= $access{'uedit2'}) ||
-	    $access{'uedit_mode'} == 5 && $uinfo[3] == $access{'uedit'}) {
+	    $access{'uedit_mode'} == 5 &&
+	     ($access{'uedit'} =~ /^\d+$/ && $uinfo[3] == $access{'uedit'} ||
+	      $ginfo[0] eq $access{'uedit'})) {
 		push(@users, [ @uinfo ]) if (!$found{$uinfo[0]}++);
 		}
 	}
