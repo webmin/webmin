@@ -438,10 +438,6 @@ else {
 		# update AIX security user file as well..
 		# use chuser command because it's easier than working
 		# with the complexity issues of the file.
-		$_[1]->{'expire'} = '' if (! $_[1]->{'expire'}); 
-		$_[1]->{'min'} = '' if (! $_[1]->{'min'}); 
-		$_[1]->{'max'} = '' if (! $_[1]->{'max'}); 
-		$_[1]->{'warn'} = '' if (! $_[1]->{'warn'}); 
 		&system_logged("chuser expires=$_[1]->{'expire'} minage=$_[1]->{'min'} maxage=$_[1]->{'max'} pwdwarntime=$_[1]->{'warn'} $_[1]->{'user'}");
 		}
 	}
