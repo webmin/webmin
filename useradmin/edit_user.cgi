@@ -360,18 +360,18 @@ elsif ($pft == 4 && $access{'peopt'}) {
 			    [ 2, $text{'uedit_never'} ],
 			    [ 0, &date_input($eday, $emon, $eyear, 'expire').
 				 " ".&ui_textbox("expireh", $ehour, 3).
-				 "/".&ui_textbox("expiremi", $emin, 3) ] ]));
+				 "/".&ui_textbox("expiremi", $emin, 3) ] ]), 3);
 
 	# Minimum and maximum ages in weeks
 	print &ui_table_row(&hlink($text{'min_weeks'}, "min_weeks"),
-		&ui_opt_textbox("min", $uinfo{'min'}, 5, $text{'uedit_sys'}));
+	   &ui_opt_textbox("min", $uinfo{'min'}, 5, $text{'uedit_sys'}), 3);
 
 	print &ui_table_row(&hlink($text{'max_weeks'}, "max_weeks"),
-		&ui_opt_textbox("max", $uinfo{'max'}, 5, $text{'uedit_sys'}));
+	    &ui_opt_textbox("max", $uinfo{'max'}, 5, $text{'uedit_sys'}), 3);
 
 	# Warning days
 	print &ui_table_row(&hlink($text{'warn'}, "warn"),
-		&ui_opt_textbox("warn", $uinfo{'warn'}, 5, $text{'uedit_sys'}));
+	    &ui_opt_textbox("warn", $uinfo{'warn'}, 5, $text{'uedit_sys'}), 3);
 
 	# AIX-specific flags
 	print &ui_table_row(&hlink($text{'flags'}, "flags"),
@@ -380,7 +380,7 @@ elsif ($pft == 4 && $access{'peopt'}) {
 		&ui_checkbox("flags", "admchg", $text{'uedit_admchg'},
 			     $uinfo{'admchg'})."<br>".
 		&ui_checkbox("flags", "nocheck", $text{'uedit_nocheck'},
-			     $uinfo{'nocheck'}));
+			     $uinfo{'nocheck'}), 3);
 
 	print &ui_table_end();
 	}
