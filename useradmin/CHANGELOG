@@ -48,3 +48,4 @@ The option to force a password change at the next login is available for new use
 ---- Changes since 1.430 ----
 Added tabs to the module's page page, to switching between user and group lists easier.
 Cleaned up the user interface to be more consistent with the rest of Webmin.
+Improved support for default password changing options on AIX.
