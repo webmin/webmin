@@ -563,7 +563,7 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 		}
 
 	if ($need_links && $init_mode eq "init") {
-		local $date = &read_file_contents($fn);
+		local $data = &read_file_contents($fn);
 		if (&has_command("chkconfig") && !$config{'no_chkconfig'} &&
 		    (@chk && $chk[3] || $data =~ /Default-Start:/i)) {
 			# Call the chkconfig command to link up
