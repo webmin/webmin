@@ -11,8 +11,10 @@ $conf = &get_config();
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 
 $client = &get_parent_config();
+push(@parents, $client);
 foreach $i ($in{'sidx'}, $in{'uidx'}, $in{'gidx'}, $in{'idx'}) {
 	$client = $client->{'members'}->[$i] if ($i ne '');
+	push(@parents, $client);
 	}
 
 if ($client->{'name'} eq 'subnet') {
@@ -134,7 +136,6 @@ if ($config{'dhcpd_version'} >= 3) {
 	@defs = grep { $_->{'values'}->[1] eq 'code' &&
 		       $_->{'values'}->[3] eq '=' } @opts;
 	push(@defs, undef);
-	%optdef = ( );
 	for($i=0; $i<@defs; $i++) {
 		$o = $defs[$i];
 		print "<tr>\n";
@@ -149,7 +150,18 @@ if ($config{'dhcpd_version'} >= 3) {
 		printf "<input name=dtype_$i size=10 value='%s'>\n",
 			$o->{'values'}->[4];
 		print "</td> </tr>\n";
-		$optdef{$o->{'values'}->[0]} = $o if ($o->{'values'}->[0]);
+		}
+
+	# Find option definitions at higher levels
+	%optdef = ( );
+	foreach $p (@parents) {
+		@popts = &find("option", $p->{'members'});
+		@pdefs = grep { $_->{'values'}->[1] eq 'code' &&
+			        $_->{'values'}->[3] eq '=' } @popts;
+		foreach $o (@pdefs) {
+			$optdef{$o->{'values'}->[0]} = $o
+				if ($o->{'values'}->[0]);
+			}
 		}
 
 	# Show values for custom options

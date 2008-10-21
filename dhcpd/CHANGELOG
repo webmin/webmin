@@ -25,3 +25,4 @@ Clashes between hosts with the same IP address, MAC address or hostname are no l
 Support the new configuration file format for custom options, as used in DHCPd version 3.
 ---- Changes since 1.430 ----
 Fixed bug that can cause option definitions and values to be incorrectly ordered.
+Custom option types defined at a higher level (such as in a subnet) can be used in the Edit Options page at lower levels (such as in a host).
