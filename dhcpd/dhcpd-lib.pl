@@ -325,7 +325,7 @@ else {
 	}
 }
 
-# save_directive(&parent, [name|&oldvalues], &values, indent, start)
+# save_directive(&parent, [name|&oldvalues], &values, indent, start, [after])
 # Given a structure containing a directive name, type, values and members
 # add, update or remove that directive in config structure and data files.
 # Updating of files assumes that there is no overlap between directives -
@@ -337,10 +337,28 @@ $pm = $_[0]->{'members'};
 @oldv = ref($_[1]) ? @{$_[1]} : &find($_[1], $pm);
 @newv = @{$_[2]};
 for($i=0; $i<@oldv || $i<@newv; $i++) {
-	if ($i >= @oldv && $_[4]) {
+	if ($i >= @oldv && $_[5]) {
+		# a new directive is being added.. put it after some other
+		$lref = $_[0]->{'file'} ? &read_file_lines($_[0]->{'file'})
+					: [ ];
+		@nl = &directive_lines($newv[$i], $_[3]);
+		$nline = $_[5]->{'line'}+1;
+		$nidx = &indexof($_[5], @$pm) + 1;
+		splice(@$lref, $nline, 0, @nl);
+		&renumber(&get_config(), $nline,
+			  $_[0]->{'file'}, scalar(@nl));
+		&renumber_index($_[0]->{'members'}, $nidx, 1);
+		$newv[$i]->{'index'} = $nidx;
+		$newv[$i]->{'file'} = $_[0]->{'file'};
+		$newv[$i]->{'line'} = $nline;
+		$newv[$i]->{'eline'} = $nline + scalar(@nl);
+		splice(@$pm, $nidx, 0, $newv[$i]);
+		}
+	elsif ($i >= @oldv && $_[4]) {
 		# a new directive is being added.. put it at the start of
 		# the parent
-		$lref = $_[0]->{'file'} ? &read_file_lines($_[0]->{'file'}) : [ ];
+		$lref = $_[0]->{'file'} ? &read_file_lines($_[0]->{'file'})
+					: [ ];
 		@nl = &directive_lines($newv[$i], $_[3]);
 		$nline = $_[0]->{'fline'}+1;
 		splice(@$lref, $nline, 0, @nl);
@@ -377,6 +395,9 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 		}
 	else {
 		# updating some directive
+		if (!defined($newv[$i]->{'comment'})) {
+			$newv[$i]->{'comment'} = $oldv[$i]->{'comment'};
+			}
 		$lref = $oldv[$i]->{'file'} ? &read_file_lines($oldv[$i]->{'file'}) : [ ];
 		@nl = &directive_lines($newv[$i], $_[3]);
 		$ol = $oldv[$i]->{'eline'} - $oldv[$i]->{'line'} + 1;

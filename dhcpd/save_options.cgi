@@ -106,6 +106,12 @@ if ($config{'dhcpd_version'} >= 3) {
 		}
 	&save_directive($client, \@defs, \@newdefs, $indent, 1);
 
+	# Find the last definition
+	$maxdef = undef;
+	foreach $d (@newdefs) {
+		$maxdef = $d if (!$maxdef || $d->{'line'} > $maxdef->{'line'});
+		}
+
 	# Save custom options
 	@custom = grep { $_->{'name'} eq 'option' &&
 			 $optdef{$_->{'values'}->[0]} &&
@@ -120,7 +126,8 @@ if ($config{'dhcpd_version'} >= 3) {
 		push(@newcustom, { 'name' => 'option',
 				   'values' => [ $in{"cname_$i"}, $cv ] } );
 		}
-	&save_directive($client, \@custom, \@newcustom, $indent, 1);
+	&save_directive($client, \@custom, \@newcustom, $indent,
+			$maxdef ? 0 : 1, $maxdef);
 	}
 else {
 	# Save custom options
