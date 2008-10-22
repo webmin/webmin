@@ -875,7 +875,8 @@ sub partition_select
 {
 local $rv = "<select name=$_[0]>\n";
 local ($found, $d, $p);
-if ($_[2] == 0 || $_[2] == 2) {
+if (($_[2] == 0 || $_[2] == 2) &&
+    (-r "/dev/fd0" || $_[1] =~ /^\/dev\/fd[01]$/)) {
 	$rv .= sprintf "<option %s value=/dev/fd0>%s\n",
 		$_[1] eq "/dev/fd0" ? "selected" : "",
 		&text('select_fd', 0) if (!$_[4] || "/dev/fd0" =~ /$_[4]/);
