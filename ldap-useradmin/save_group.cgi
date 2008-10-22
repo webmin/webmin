@@ -80,23 +80,21 @@ if ($in{'delete'}) {
 			}
 		else {
 			# Ask the user if he is sure
-			print "<form action=save_group.cgi>\n";
-			print "<input type=hidden name=dn value=\"$in{'dn'}\">\n";
-			print "<input type=hidden name=delete value=1>\n";
-			print "<input type=hidden name=confirm value=1>\n";
-			print "<center><b>",&text('gdel_sure', $group),"</b><p>\n";
-			print "<input type=submit value=\"$text{'gdel_del'}\">\n";
-
-			printf "<br><input type=checkbox name=others value=1 %s> %s<br>\n",
-				$mconfig{'default_other'} ? "checked" : "",
-				$text{'gdel_dothers'};
-			print "</center><p>\n";
-			print "</form>\n";
+			print &ui_confirmation_form(
+				"save_group.cgi",
+				&text('gdel_sure', $group),
+				[ [ "dn", $in{'dn'} ],
+				  [ "delete", 1 ] ],
+				[ [ "confirm", $text{'gdel_del'} ] ],
+				&ui_checkbox("others", 1,
+					$text{'gdel_dothers'},
+					$mconfig{'default_other'}),
+				undef);
 			}
 		}
 
 	$ldap->unbind();
-	&ui_print_footer("", $text{'index_return'});
+	&ui_print_footer("index.cgi?mode=groups", $text{'index_return'});
 	exit;
 	}
 elsif ($in{'raw'}) {

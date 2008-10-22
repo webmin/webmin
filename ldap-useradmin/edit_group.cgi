@@ -26,123 +26,122 @@ else {
 	&ui_print_header(undef, $text{'gedit_title'}, "");
 	}
 
-print "<form action=\"save_group.cgi\" method=post>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=dn value='$in{'dn'}'>\n";
+# Build list of all possible users
+@ulist = &useradmin::list_users();
+%ulistdone = map { $_->{'user'}, 1 } @ulist;
+push(@ulist, grep { !$ulistdone{$_->{'user'}} } &list_users());
 
-# Show group details
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'gedit_details'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of form
+print &ui_form_start("save_group.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("dn", $in{'dn'});
+print &ui_table_start($text{'gedit_details'}, "width=100%", 4);
 
+# Current DN and classes
 if (!$in{'new'}) {
-        print "<tr> <td><b>$text{'gedit_dn'}</b></td>\n";
-        print "<td colspan=3><tt>$in{'dn'}</tt></td> </tr>\n";
+	print &ui_table_row($text{'gedit_dn'},
+		"<tt>$in{'dn'}</tt>", 3);
 
-	print "<tr> <td><b>$text{'uedit_classes'}</b></td>\n";
-	print "<td colspan=3>",join(" , ", map { "<tt>$_</tt>" }
-			$ginfo->get_value('objectClass')),"</td> </tr>\n";
+	print &ui_table_row($text{'uedit_classes'},
+		join(" , ", map { "<tt>$_</tt>" }
+                        $ginfo->get_value('objectClass')), 3);
         }
 
-print "<tr> <td valign=top><b>$text{'gedit_group'}</b></td>\n";
-print "<td valign=top><input name=group size=10 value='$group'></td>\n";
+# Group name
+print &ui_table_row($text{'gedit_group'},
+	&ui_textbox("group", $group, 20));
 
-print "<td valign=top><b>$text{'gedit_gid'}</b></td>\n";
+# Group ID
 if ($in{'new'}) {
 	# Next GID comes from LDAP only
 	$newgid = $mconfig{'base_gid'};
 	while(&check_gid_used($ldap, $newgid)) {
 		$newgid++;
 		}
-	print "<td valign=top><input name=gid size=10 ",
-	      "value='$newgid'></td>\n";
+	$gidfield = &ui_textbox("gid", $newgid, 10);
 	}
 else {
-	print "<td valign=top><input name=gid size=10 ",
-	      "value=\"$gid\"></td>\n";
+	$gidfield = &ui_textbox("gid", $gid, 10);
 	}
-print "</tr>\n";
+print &ui_table_row($text{'gedit_gid'},
+	$gidfield);
 
-print "<tr> <td valign=top><b>$text{'pass'}</b></td>\n";
-printf "<td valign=top><input type=radio name=passmode value=0 %s> $text{'none2'}<br>\n",
-	$pass eq "" ? "checked" : "";
-printf "<input type=radio name=passmode value=1 %s> $text{'encrypted'}\n",
-	$pass eq "" ? "" : "checked";
-print "<input name=encpass size=20 value=\"$pass\"><br>\n";
-print "<input type=radio name=passmode value=2 %s> $text{'clear'}\n";
-print "<input name=pass size=15></td>\n";
+# Group password (rarely used, but..)
+print &ui_table_row($text{'pass'},
+	&ui_radio_table("passmode", $pass eq "" ? 0 : 1,
+		[ [ 0, $text{'none2'} ],
+		  [ 1, $text{'encrypted'},
+		       &ui_textbox("encpass", $pass, 20) ],
+		  [ 2, $text{'clear'},
+		       &ui_textbox("pass", undef, 15) ] ]));
 
-print "<td valign=top><b>$text{'gedit_members'}</b></td>\n";
-print "<td><table><tr><td><textarea wrap=auto name=members rows=5 cols=10>",
-	join("\n", @members),"</textarea></td>\n";
-print "<td valign=top>",&user_chooser_button("members", 1),
-      "</td></tr></table></td></tr>\n";
-print "</table></td></tr></table><p>\n";
+# Group members, using multi-select
+print &ui_table_row($text{'gedit_members'},
+	&ui_multi_select("members",
+		[ map { [ $_, $_ ] } @members ],
+		[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
+		10, 1, 0,
+		$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
+print &ui_table_end();
 
 # Show extra fields (if any)
 &extra_fields_input($config{'group_fields'}, $ginfo);
 
 # Show capabilties section
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'gedit_cap'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'gedit_cap'}, "width=100%", 4, [ "width=30%" ]);
 
-print "<tr> <td><b>$text{'gedit_samba'}</b></td>\n";
-printf "<td><input type=radio name=samba value=1 %s> %s\n",
-	$oclass{$samba_group_class} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=samba value=0 %s> %s</td>\n",
-	$oclass{$samba_group_class} ? "" : "checked", $text{'no'};
+# Samba group?
+print &ui_table_row($text{'gedit_samba'},
+	&ui_radio("samba", $oclass{$samba_group_class},
+		  [ [ 1, $text{'yes'} ],
+		    [ 0, $text{'no'} ] ]));
 
-print "<td colspan=2 width=50%></td>\n";
-
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 # Show section for on-save or on-creation options
 if (!$in{'new'}) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'onsave'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table>\n";
+	print &ui_table_start($text{'onsave'}, "width=100%", 2,
+			      [ "width=30%" ]);
 
-	print "<tr> <td><b>$text{'chgid'}</b></td>\n";
-	print "<td><input type=radio name=chgid value=0 checked> $text{'no'}\n";
-	print "<input type=radio name=chgid value=1> $text{'gedit_homedirs'}\n";
-	print "<input type=radio name=chgid value=2> $text{'gedit_allfiles'}</td> </tr>\n";
+	# Change GID on save
+	print &ui_table_row($text{'chgid'},
+		&ui_radio("chgid", 0,
+		  [ [ 0, $text{'no'} ],
+		    [ 1, $text{'gedit_homedirs'} ],
+		    [ 2, $text{'gedit_allfiles'} ] ]));
 
-	print "<tr> <td><b>$text{'gedit_mothers'}</b></td>\n";
-	printf "<td><input type=radio name=others value=1 %s> $text{'yes'}\n",
-		$mconfig{'default_other'} ? "checked" : "";
-	printf "<input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-		$mconfig{'default_other'} ? "" : "checked";
 
-	print "</table></td> </tr></table>\n";
+	# Update in other modules?
+	print &ui_table_row($text{'gedit_mothers'},
+		&ui_radio("others", $mconfig{'default_other'},
+			  [ [ 1, $text{'yes'} ],
+			    [ 0, $text{'no'} ] ]));
+
+	print &ui_table_end();
 	}
 else {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_oncreate'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table>\n";
+	print &ui_table_start($text{'uedit_oncreate'}, "width=100%", 2,
+			      [ "width=30%" ]);
 
-	print "<tr> <td><b>$text{'gedit_cothers'}</b></td>\n";
-	printf "<td><input type=radio name=others value=1 %s> $text{'yes'}\n",
-		$mconfig{'default_other'} ? "checked" : "";
-	printf "<input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-		$mconfig{'default_other'} ? "" : "checked";
+	# Create in other modules?
+	print &ui_table_row($text{'gedit_cothers'},
+		&ui_radio("others", $mconfig{'default_other'},
+			  [ [ 1, $text{'yes'} ],
+			    [ 0, $text{'no'} ] ]));
 
-	print "</table></td> </tr></table>\n";
-
+	print &ui_table_end();
 	}
 
-print "<table width=100%><tr>\n";
-if ($in{'new'}) {
-        print "<td><input type=submit value='$text{'create'}'></td>\n";
-        }
+# Save/delete/create buttons
+if (!$in{'new'}) {
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'raw', $text{'uedit_raw'} ],
+			     [ 'delete', $text{'delete'} ],
+			   ]);
+	}
 else {
-        print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=center><input type=submit name=raw ",
-	      "value='$text{'uedit_raw'}'></td>\n";
-        print "<td align=right><input type=submit name=delete ",
-              "value='$text{'delete'}'></td>\n";
-        }
-print "</tr></table>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
+	}
 
 &ui_print_footer("index.cgi?mode=groups", $text{'index_return'});
 
