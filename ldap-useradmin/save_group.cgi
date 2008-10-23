@@ -63,15 +63,12 @@ if ($in{'delete'}) {
 		# Check if any user has this group as his primary
 		$gid = $ginfo->get_value("gidNumber");
 		$group = $ginfo->get_value("cn");
-
-		setpwent();
-		while(@uinfo = getpwent()) {
-			if ($uinfo[3] == $gid) {
-				$found = $uinfo[0];
+		foreach $u (&list_users()) {
+			if ($u->{'gid'} == $gid) {
+				$found = $u->{'user'};
 				last;
 				}
 			}
-		endpwent();
 
 		if ($found) {
 			# Cannot delete

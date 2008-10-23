@@ -20,14 +20,16 @@ foreach $name (split(/\0/, $in{'gd'})) {
 if ($in{'confirmed'}) {
 	foreach $group (@dlist) {
 		# Show username
-		print "<b>",&text('gmass_doing', $group->{'group'}),"</b><br>\n";
+		print "<b>",&text('gmass_doing', $group->{'group'}),
+		      "</b><br>\n";
 		print "<ul>\n";
 
 		# Delete from other modules
 		if ($in{'others'}) {
 			print "$text{'gdel_other'}<br>\n";
 			local $error_must_die = 1;
-			eval { &other_modules("useradmin_delete_group", $group); };
+			eval { &other_modules("useradmin_delete_group",
+					      $group); };
 			if ($@) {
 				print &text('udel_failed', $@),"<p>\n";
 				}
@@ -41,7 +43,8 @@ if ($in{'confirmed'}) {
 		print "$text{'gdel_group'}<br>\n";
 		&set_group_envs($group, 'DELETE_GROUP');
 		$merr = &making_changes();
-		&error(&text('usave_emaking', "<tt>$merr</tt>")) if (defined($merr));
+		&error(&text('usave_emaking', "<tt>$merr</tt>"))
+			if (defined($merr));
 
 		&delete_group($group);
 		&unlock_user_files();
@@ -70,17 +73,15 @@ else {
 		}
 
 	# Ask if the user is sure
-	print "<form action=mass_delete_group.cgi>\n";
-	foreach $group (@dlist) {
-		print "<input type=hidden name=gd value='$group->{'group'}'>\n";
-		}
-	print "<input type=hidden name=confirmed value=1>\n";
-	print "<center><b>",&text('gmass_sure', scalar(@dlist)),"</b><p>\n";
-	print "<input type=submit value=\"$text{'gdel_del'}\">\n";
-	print "<br><input type=checkbox name=others value=1 checked> ",
-	      "$text{'gdel_dothers'}<br>\n";
-	print "</center><p>\n";
-	print "</form>\n";
+	print &ui_confirmation_form(
+		"mass_delete_group.cgi",
+		&text('gmass_sure', scalar(@dlist)),
+		[ map { [ "gd", $_->{'group'} ] } @dlist ],
+		[ [ "confirmed", $text{'gdel_del'} ] ],
+		&ui_checkbox("others", 1, $text{'gdel_dothers'},
+			     $mconfig{'default_other'}),
+		);
+
 	&ui_print_footer("", $text{'index_return'});
 	}
 

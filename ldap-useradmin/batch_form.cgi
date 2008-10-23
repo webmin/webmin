@@ -10,62 +10,72 @@ $ldap = &ldap_connect();
 $schema = $ldap->schema();
 $pft = $schema->attribute("shadowLastChange") ? 2 : 0;
 
+# Instructions
+print &ui_hidden_start($text{'batch_instr'}, "instr", 0, "batch_form.cgi");
 print "$text{'batch_desc'}\n";
 print "<p><tt>",$text{'batch_desc'.$pft},"</tt><p>\n";
 print "$text{'batch_descafter'}<br>\n";
 print "$text{'batch_descafter2'}<br>\n";
-print "$text{'batch_descafter3'}<br>\n";
+print &ui_hidden_end("instr");
 
-print "<form action=batch_exec.cgi method=post enctype=multipart/form-data>\n";
-print "<table>\n";
+print &ui_form_start("batch_exec.cgi", "form-data");
+print &ui_table_start($text{'batch_header'}, undef, 2);
 
-print "<tr> <td valign=top><b>$text{'batch_source'}</b></td> <td>\n";
-print "<input type=radio name=source value=0 checked> ",
-      "$text{'batch_source0'} <input type=file name=file><br>\n";
-print "<input type=radio name=source value=1> ",
-      "$text{'batch_source1'} <input name=local size=30> ",
-      &file_chooser_button("local"),"<br>\n";
-print "<input type=radio name=source value=2> ",
-      "$text{'batch_source2'}<br><textarea name=text rows=5 cols=50></textarea>",
-      "</td> </tr>\n";
+# Source file
+print &ui_table_row($text{'batch_source'},
+	&ui_radio_table("source", 0,
+	  [ [ 0, $text{'batch_source0'}, &ui_upload("file") ],
+	    [ 1, $text{'batch_source1'}, &ui_textbox("local", undef, 40)." ".
+					 &file_chooser_button("local") ],
+	    [ 2, $text{'batch_source2'}, &ui_textarea("text", undef, 5, 60) ]
+	  ]));
 
-print "<tr> <td><b>$text{'batch_others'}</b></td>\n";
-print "<td>",&ui_yesno_radio("others", $mconfig{'default_other'} ? 1 : 0),
-      "</td> </tr>\n";
+# Do other modules?
+print &ui_table_row($text{'batch_others'},
+	&ui_yesno_radio("others", $config{'default_other'}));
 
-print "<tr> <td><b>$text{'batch_batch'}</b></td>\n";
-print "<td>",&ui_yesno_radio("batch", 1),"</td> </tr>\n";
+# Only run post-command at end?
+print &ui_table_row($text{'batch_batch'},
+	&ui_yesno_radio("batch", 0));
 
-print "<tr> <td><b>$text{'batch_makehome'}</b></td>\n";
-print "<td>",&ui_yesno_radio("makehome", 1),"</td> </tr>\n";
+# Create home dir
+print &ui_table_row($text{'batch_makehome'},
+	&ui_yesno_radio("makehome", 1));
 
-print "<tr> <td><b>$text{'batch_copy'}</b></td>\n";
-print "<td>",&ui_yesno_radio("copy", 1),"</td> </tr>\n";
+# Copy files to homes
+print &ui_table_row($text{'batch_copy'},
+	&ui_yesno_radio("copy", 1));
 
-print "<tr> <td><b>$text{'batch_movehome'}</b></td>\n";
-print "<td>",&ui_yesno_radio("movehome", 1),"</td> </tr>\n";
+# Move home dirs
+print &ui_table_row($text{'batch_movehome'},
+	&ui_yesno_radio("movehome", 1));
 
-print "<tr> <td><b>$text{'batch_chuid'}</b></td>\n";
-print "<td>",&ui_radio("chuid", 1, [ [ 0, $text{'no'} ],
-			     [ 1, $text{'home'} ],
-			     [ 2, $text{'uedit_allfiles'} ] ]),"</td> </tr>\n";
+# Update UIDs on files
+print &ui_table_row($text{'batch_chuid'},
+	&ui_radio("chuid", 1, [ [ 0, $text{'no'} ],
+				[ 1, $text{'home'} ],
+				[ 2, $text{'uedit_allfiles'} ] ]));
 
-print "<tr> <td><b>$text{'batch_chgid'}</b></td>\n";
-print "<td>",&ui_radio("chgid", 1, [ [ 0, $text{'no'} ],
-			     [ 1, $text{'home'} ],
-			     [ 2, $text{'uedit_allfiles'} ] ]),"</td> </tr>\n";
+# Update GIDs on files
+print &ui_table_row($text{'batch_chgid'},
+	&ui_radio("chgid", 1, [ [ 0, $text{'no'} ],
+				[ 1, $text{'home'} ],
+				[ 2, $text{'uedit_allfiles'} ] ]));
 
-print "<tr> <td><b>$text{'batch_delhome'}</b></td>\n";
-print "<td>",&ui_yesno_radio("delhome", 1),"</td> </tr>\n";
+# Delete home dirs
+print &ui_table_row($text{'batch_delhome'},
+        &ui_yesno_radio("delhome", 1));
 
-print "<tr> <td><b>$text{'batch_crypt'}</b></td>\n";
-print "<td>",&ui_yesno_radio("crypt", 0),"</td> </tr>\n";
+# Encrypt password
+print &ui_table_row($text{'batch_crypt'},
+        &ui_yesno_radio("crypt", 0));
 
-print "<tr> <td><b>$text{'batch_samba'}</b></td>\n";
-print "<td>",&ui_yesno_radio("samba", $config{'samba_def'} ? 1 : 0),"</td> </tr>\n";
+# Create Samba account
+print &ui_table_row($text{'batch_samba'},
+	&ui_yesno_radio("samba", $config{'samba_def'} ? 1 : 0));
 
-print "<tr> <td><input type=submit value=\"$text{'batch_upload'}\"></td> </tr>\n";
-print "</table></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'batch_upload'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -130,45 +130,30 @@ elsif ($in{'delete'}) {
 		}
 	else {
 		# Show confirmation page
-		print "<form action=save_user.cgi>\n";
-		print "<input type=hidden name=dn value=\"$in{'dn'}\">\n";
-		print "<input type=hidden name=delete value=1>\n";
-		print "<input type=hidden name=confirm value=1>\n";
-
 		if ($home ne "/" && -d $home) {
+			# With option to delete home
 			$size = &nice_size(&disk_usage_kb($home)*1024);
-			print "<center><b>",&text('udel_sure', $user, $home,
-						   $size),"</b><p>\n";
-			print "<input type=submit ",
-			      "value=\"$text{'udel_del1'}\">\n";
-			print "<input name=delhome type=submit ",
-			      "value=\"$text{'udel_del2'}\">\n";
+			$msg = &text('udel_sure', $user, $home, $size);
+			@buts = ( [ undef, $text{'udel_del1'} ],
+				  [ "delhome", $text{'udel_del2'} ] );
 			}
 		else {
-			print "<center><b>",&text('udel_sure2', $user),
-			      "</b><p>\n";
-			print "<input type=submit ",
-			      "value=\"$text{'udel_del1'}\">\n";
+			# Without home
+			$msg = &text('udel_sure2', $user);
+			@buts = ( [ undef, $text{'udel_del1'} ] );
 			}
-		if ($user eq 'root') {
-			print "<b><font color=#ff0000>",
-			      "$text{'udel_root'}</font></b><p>\n";
-			}
-
-		if ($config{'imap_host'}) {
-			# TODO quota anzeigen
-			$imap = &imap_connect();
-			$rv = $imap->status("user.".$user, "messages");
-			if ($rv->{'Status'} eq 'ok') {
-				print "<h4><B>$text{'udel_warnimap'}</B></h4>\n";
-				}
-			$imap->logout();
-			}
-
-		printf "<br><input type=checkbox name=others value=1 %s> %s<br>\n",
-			$mconfig{'default_other'} ? "checked" : "",
-	      		$text{'udel_dothers'};
-		print "</form></center>\n";
+		print &ui_confirmation_form(
+			"save_user.cgi",
+			$msg,
+			[ [ "dn", $in{'dn'} ],
+			  [ "confirm", 1 ],
+			  [ "delete", 1 ] ],
+			\@buts,
+			&ui_checkbox("others", 1, $text{'udel_dothers'},
+				     $mconfig{'default_other'}),
+			$user eq 'root' ?
+			  "<font color=#ff0000>$text{'udel_root'}</font>" : ""
+			);
 		}
 
 	$ldap->unbind();
