@@ -539,7 +539,7 @@ return $rv;
 sub theme_ui_hidden_table_end
 {
 my ($name) = @_;
-$rv .= "</table></div></td></tr></tbody></table>\n";
+local $rv = "</table></div></td></tr></tbody></table>\n";
 if ( $WRAPPER_OPEN == 1 ) {
 	$WRAPPER_OPEN--;
 	#$rv .= "</div>\n";
