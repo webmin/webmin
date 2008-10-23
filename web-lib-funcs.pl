@@ -1000,6 +1000,13 @@ if (!$main::error_must_die) {
 	}
 &load_theme_library();
 if ($main::error_must_die) {
+	if ($gconfig{'error_stack'}) {
+		print STDERR "Error: ",@_,"\n";
+		for(my $i=0; my @stack = caller($i); $i++) {
+			print STDERR "File: $stack[1] Line: $stack[2] ",
+				     "Function: $stack[3]\n";
+			}
+		}
 	die @_;
 	}
 elsif (!$ENV{'REQUEST_METHOD'}) {
@@ -1011,7 +1018,7 @@ elsif (!$ENV{'REQUEST_METHOD'}) {
 	if ($gconfig{'error_stack'}) {
 		# Show call stack
 		print STDERR $text{'error_stack'},"\n";
-		for($i=0; my @stack = caller($i); $i++) {
+		for(my $i=0; my @stack = caller($i); $i++) {
 			print STDERR &text('error_stackline',
 				$stack[1], $stack[2], $stack[3]),"\n";
 			}
@@ -1553,7 +1560,7 @@ local $cbfunc = $_[3];
 # read headers
 alarm(60);
 ($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
-if ($line !~ /^HTTP\/1\..\s+(200|302|301)(\s+|$)/) {
+if ($line !~ /^HTTP\/1\..\s+(200|303|302|301)(\s+|$)/) {
 	if ($_[2]) { ${$_[2]} = $line; return; }
 	else { &error("Download failed : $line"); }
 	}
@@ -1572,7 +1579,7 @@ if ($download_timed_out) {
 	else { &error($download_timed_out); }
 	}
 &$cbfunc(2, $header{'content-length'}) if ($cbfunc);
-if ($rcode == 302 || $rcode == 301) {
+if ($rcode == 303 || $rcode == 302 || $rcode == 301) {
 	# follow the redirect
 	&$cbfunc(5, $header{'location'}) if ($cbfunc);
 	local ($host, $port, $page);
