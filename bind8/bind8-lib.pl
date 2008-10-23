@@ -2191,7 +2191,8 @@ local $slave;
 local @slaveerrs;
 local @slaves = &list_slave_servers();
 foreach $slave (@slaves) {
-	next if (%on && !$on{$slave->{'host'}});
+	# Skip if not on list to add to
+	next if (%on && !$on{$slave->{'host'}} && !$on{$slave->{'nsname'}});
 
 	# Connect to server
 	$slave_error = undef;
