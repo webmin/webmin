@@ -155,7 +155,7 @@ if ($mconfig{'home_base'}) {
 else {
 	$homefield = &ui_filebox("home", $home, 25, 0, undef, undef, 1);
 	}
-print &ui_table_row(&hlink($text{'home'}, "home"), $homefield);
+print &ui_table_row($text{'home'}, $homefield);
 
 # Show shell selection menu
 print &ui_table_row($text{'shell'},
@@ -192,7 +192,7 @@ $passmode = $pass eq "" && $random_password eq "" ? 0 :
             $pass && $pass ne $mconfig{'lock_string'} &&
                 $random_password eq "" ? 2 : -1;
 $pffunc = $mconfig{'passwd_stars'} ? \&ui_password : \&ui_textbox;
-print &ui_table_row(&hlink($text{'pass'}, "pass"),
+print &ui_table_row($text{'pass'},
         &ui_radio_table("passmode", $passmode,
           [ [ 0, $mconfig{'empty_mode'} ? $text{'none1'} : $text{'none2'} ],
             [ 1, $text{'nologin'} ],
@@ -234,8 +234,8 @@ if (&in_schema($schema, "shadowLastChange")) {
 		$emon = $tm[4]+1;
 		$eyear = $tm[5]+1900;
 		}
-	print &ui_table_row(&hlink($text{'expire'}, "expire"),
-		&date_input($eday, $emon, $eyear, 'expire'));
+	print &ui_table_row($text{'expire'},
+		&useradmin::date_input($eday, $emon, $eyear, 'expire'));
 
         # Minimum and maximum days for changing
         print &ui_table_row($text{'min'},
@@ -265,9 +265,8 @@ print &ui_table_start($text{'uedit_gmem'}, "width=100%", 4, \@tds);
 print &ui_table_row($text{'group'},
 	&ui_textbox("gid", $in{'new'} ? $mconfig{'default_group'}
 				      : ($x=&all_getgrgid($gid)) || $gid, 13).
-	" ".&group_chooser_button("gid"));
+	" ".&group_chooser_button("gid"), 3);
 
-# XXXX
 if ($config{'secmode'} != 1) {
 	# Work out which secondary groups the user is in
 	@defsecs = &split_quoted_string($mconfig{'default_secs'});
@@ -284,7 +283,6 @@ if ($config{'secmode'} != 1) {
 			}
 		$ingroups{$group} = $ismem;
 		}
-	print "<td valign=top><b>$text{'uedit_2nd'}</b></td>\n";
 	}
 
 if ($config{'secmode'} == 0) {
@@ -295,8 +293,8 @@ if ($config{'secmode'} == 0) {
 		}
 	@ingroups = map { [ $_, $_ ] } sort { $a cmp $b }
                         grep { $ingroups{$_} } (keys %ingroups);
-	print "<td>",&ui_multi_select("sgid", \@ingroups, \@canglist, 5, 1, 0,
-			     $text{'uedit_allg'}, $text{'uedit_ing'}),"</td>\n";
+	$groupfield = &ui_multi_select("sgid", \@ingroups, \@canglist, 5, 1, 0,
+			     $text{'uedit_allg'}, $text{'uedit_ing'});
 	}
 elsif ($config{'secmode'} == 2) {
 	# Show a text box
@@ -307,13 +305,11 @@ elsif ($config{'secmode'} == 2) {
 			push(@insecs, $group);
 			}
 		}
-	print "<td>",&ui_textarea("sgid", join("\n", @insecs), 5, 20),"</td>\n";
+	$groupfield = &ui_textarea("sgid", join("\n", @insecs), 5, 20);
 	}
-else {
-	# Don't show
-	print "<td colspan=2 width=50%></td>\n";
+if ($groupfield) {
+	print &ui_table_row($text{'uedit_2nd'}, $groupfield, 3);
 	}
-print "</tr>\n";
 
 print &ui_table_end();
 
@@ -321,118 +317,99 @@ print &ui_table_end();
 &extra_fields_input($config{'fields'}, $uinfo);
 
 # Show capabilties section
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'uedit_cap'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_table_start($text{'uedit_cap'}, "width=100%", 4, \@tds);
 
-print "<tr> <td><b>$text{'uedit_samba'}</b></td>\n";
-printf "<td><input type=radio name=samba value=1 %s> %s\n",
-	$oclass{$samba_class} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=samba value=0 %s> %s</td>\n",
-	$oclass{$samba_class} ? "" : "checked", $text{'no'};
+# Samba login?
+print &ui_table_row($text{'uedit_samba'},
+	&ui_yesno_radio("samba", $oclass{$samba_class} ? 1 : 0));
 
 if ($config{'imap_host'}) {
-	print "<td><b>$text{'uedit_cyrus'}</b></td>\n";
+	# Cyrus IMAP login
 	@cyrus_class_3 = split(' ',$cyrus_class);
-	printf "<td><input type=radio name=cyrus value=1 %s> %s\n",
-		$oclass{$cyrus_class_3[0]} ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=cyrus value=0 %s> %s</td> </tr>\n",
-		$oclass{$cyrus_class_3[0]} ? "" : "checked", $text{'no'};
+	print &ui_table_row($text{'uedit_cyrus'},
+		&ui_yesno_radio("cyrus", $oclass{$cyrus_class_3[0]} ? 1 : 0));
 
+	# IMAP domain
 	if ($config{'domain'}) {
-		print "<tr> <td><b>$text{'uedit_alias'}</b></td>\n";
-		print "<td colspan=3>\n";
-		printf "<input name=alias size=50 value='%s'></td> </tr>\n",
-			join(" ", @alias);
+		print &ui_table_row($text{'uedit_alias'},
+			&ui_textbox("alias", join(" ", @alias), 40), 3);
 		}
 
 	# Show field for changing the quota on existing users, or setting
 	# it for new users
 	if ($config{'quota_support'}) {
-		print "<tr> <td><b>$text{'uedit_quota'}</b></td> <td>\n";
-		if ($in{'new'} || !$oclass{$cyrus_class_3[0]}) {
-			print &ui_textbox("quota", $config{'quota'}, 10)." kB";
-			}
-		else {
-			print &ui_opt_textbox("quota", undef, 10,
-					      $text{'uedit_unquota'})." Kb";
-			}
-		print "</td> </tr>\n";
+		print &ui_table_row($text{'uedit_quota'},
+			$in{'new'} || !$oclass{$cyrus_class_3[0]} ?
+			  &ui_textbox("quota", $config{'quota'}, 10)." kB" :
+			  &ui_opt_textbox("quota", undef, 10,
+                                              $text{'uedit_unquota'})." Kb");
 		}
 	}
 else {
-	printf "<input type=hidden name=cyrus value='%s'>\n",
-		$oclass{$cyrus_class};
-	print "<td colspan=2 width=50%></td> </tr>\n";
+	print &ui_hidden("cyrus", $oclass{$cyrus_class});
 	}
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 if ($in{'new'}) {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_oncreate'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table>\n";
+	# On-create options
+	print &ui_table_start($text{'uedit_oncreate'}, "width=100%",
+			      2, \@tds);
 
-	print "<tr> <td><b>$text{'uedit_makehome'}</b></td>\n";
-	print "<td><input type=radio name=makehome value=1 checked> $text{'yes'}\n";
-	print "<input type=radio name=makehome value=0> $text{'no'}</td> </tr>\n";
+	# Create home dir?
+	print &ui_table_row($text{'uedit_makehome'},
+		&ui_yesno_radio("makehome", 1));
 
-	print "<tr> <td><b>$text{'uedit_cothers'}</b></td>\n";
-	printf "<td><input type=radio name=others value=1 %s> $text{'yes'}\n",
-		$mconfig{'default_other'} ? "checked" : "";
-	printf "<input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-		$mconfig{'default_other'} ? "" : "checked";
+	# Create in other modules?
+	print &ui_table_row($text{'uedit_cothers'},
+		&ui_yesno_radio("others", $mconfig{'default_other'}));
 
-	print "</table></td></tr></table>\n";
+	print &ui_table_end();
 	}
 else {
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'onsave'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table>\n";
+	# On save options
+	print &ui_table_start($text{'onsave'}, "width=100%", 2, \@tds);
 
-	print "<tr> <td><b>$text{'uedit_movehome'}</b></td>\n";
-	print "<td><input type=radio name=movehome value=1 checked> $text{'yes'}\n";
-	print "<input type=radio name=movehome value=0> $text{'no'}</td> </tr>\n";
+	# Move home directory
+	print &ui_table_row($text{'uedit_movehome'},
+		&ui_yesno_radio("movehome", 1));
 
-	print "<tr> <td><b>$text{'uedit_chuid'}</b></td>\n";
-	print "<td><input type=radio name=chuid value=0> $text{'no'}\n";
-	print "<input type=radio name=chuid value=1 checked> ",
-	      "$text{'home'}\n";
-	print "<input type=radio name=chuid value=2> ",
-	      "$text{'uedit_allfiles'}</td> </tr>\n";
+	# Change UID on files
+	print &ui_table_row($text{'uedit_chuid'},
+		&ui_radio("chuid", 1,
+			  [ [ 0, $text{'no'} ],
+			    [ 1, $text{'home'} ],
+			    [ 2, $text{'uedit_allfiles'} ] ]));
 
-	print "<tr> <td><b>$text{'chgid'}</b></td>\n";
-	print "<td><input type=radio name=chgid value=0> $text{'no'}\n";
-	print "<input type=radio name=chgid value=1 checked> ".
-	      "$text{'home'}\n";
-	print "<input type=radio name=chgid value=2> ",
-	      "$text{'uedit_allfiles'}</td></tr>\n";
+	# Change GID on files
+	print &ui_table_row($text{'uedit_chgid'},
+		&ui_radio("chgid", 1,
+			  [ [ 0, $text{'no'} ],
+			    [ 1, $text{'home'} ],
+			    [ 2, $text{'uedit_allfiles'} ] ]));
 
-	print "<tr> <td><b>$text{'uedit_mothers'}</b></td>\n";
-	printf "<td><input type=radio name=others value=1 %s> $text{'yes'}\n",
-		$mconfig{'default_other'} ? "checked" : "";
-	printf "<input type=radio name=others value=0 %s> $text{'no'}</td> </tr>\n",
-		$mconfig{'default_other'} ? "" : "checked";
+	# Modify in other modules
+	print &ui_table_row($text{'uedit_mothers'},
+		&ui_yesno_radio("others",
+			$mconfig{'default_other'} ? 1 : 0));
 
-	print "</table></td></tr></table>\n";
+	print &ui_table_end();
 	}
 
-print "<table width=100%><tr>\n";
+# Build buttons for end of form
+@buts = ( );
 if ($in{'new'}) {
 	# Show buttons for new users
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	push(@buts, [ undef, $text{'create'} ]);
 	}
 else {
 	# Show buttons for existing users
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-
-	print "<td align=center><input type=submit name=raw ",
-	      "value='$text{'uedit_raw'}'></td>\n";
+	push(@buts, [ undef, $text{'save'} ],
+		    [ 'raw', $text{'uedit_raw'} ]);
 
 	if (&foreign_available("mailboxes") &&
 	    &foreign_installed("mailboxes", 1)) {
 		# Link to the mailboxes module, if installed
-		print "<td align=center><input type=submit name=mailboxes ",
-		      "value='$text{'uedit_mail'}'></td>\n";
+		push(@buts, [ 'mailboxes', $text{'uedit_mail'} ]);
 		}
 
 	if (&foreign_available("usermin") &&
@@ -440,15 +417,17 @@ else {
 	    (%uacl = &get_module_acl("usermin") &&
 	    $uacl{'sessions'})) {
 		# Link to Usermin module for switching to some user
-		print "<td align=center><input type=submit name=switch ",
-		      "value='$text{'uedit_swit'}'></td>\n";
+		&foreign_require("usermin", "usermin-lib.pl");
+		local %uminiserv;
+		&usermin::get_usermin_miniserv_config(\%uminiserv);
+		if ($uminiserv{'session'}) {
+			push(@buts, [ "switch", $text{'uedit_swit'} ]);
+			}
 		}
 
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	push(@buts, [ 'delete', $text{'delete'} ]);
 	}
-print "</tr></table>\n";
-print "</form>\n";
+print &ui_form_end(\@buts);
 
 &ui_print_footer("", $text{'index_return'});
 
