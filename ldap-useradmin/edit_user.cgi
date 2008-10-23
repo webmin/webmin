@@ -62,6 +62,7 @@ else {
 	&can_edit_user(\%uinfo) || &error($text{'uedit_eedit'});
 	&ui_print_header(undef, $text{'uedit_title'}, "");
 	}
+@tds = ( "width=30%" );
 
 # build a list of used shells and uids
 @shlist = ($mconfig{'default_shell'} ? ( $mconfig{'default_shell'} ) : ( ));
@@ -83,47 +84,40 @@ if ($shells{'shells'}) {
 push(@shlist, $shell) if ($shell);
 @shlist = &unique(@shlist);
 
-print "<form action=save_user.cgi method=post>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=dn value='$in{'dn'}'>\n";
-print "<input type=hidden name=return value='$in{'return'}'>\n";
+# Start of the form
+print &ui_form_start("save_user.cgi", "post");
+print &ui_hidden("new", $in{'new'});
+print &ui_hidden("dn", $in{'dn'});
+print &ui_table_start($text{'uedit_details'}, "width=100%", 2, \@tds);
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'uedit_details'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-
+# DN and classes
 if (!$in{'new'}) {
-	print "<tr> <td><b>$text{'uedit_dn'}</b></td>\n";
-	print "<td colspan=3><tt>$in{'dn'}</tt></td> </tr>\n";
+	print &ui_table_row($text{'uedit_dn'},
+		"<tt>$in{'dn'}</tt>", 3);
 
-	print "<tr> <td><b>$text{'uedit_classes'}</b></td>\n";
-	print "<td colspan=3>",join(" , ", map { "<tt>$_</tt>" }
-			$uinfo->get_value('objectClass')),"</td> </tr>\n";
+	print &ui_table_row($text{'uedit_classes'},
+		,join(" , ", map { "<tt>$_</tt>" }
+                        $uinfo->get_value('objectClass')), 3);
 	}
 
 # Show username input
-print "<tr> <td><b>$text{'user'}</b></td>\n";
-if (@users > 1) {
-	print "<td><textarea name=user rows=2 cols=10>",
-		join("\n", @users),"</textarea></td>\n";
-	}
-else {
-	print "<td><input name=user size=20 value=\"$user\"></td>\n";
-	}
+print &ui_table_row($text{'user'},
+	@users > 1 ? &ui_textarea("user", join("\n", @users), 2, 10)
+		   : &ui_textbox("user", $user, 20));
 
 # Show UID input, filled in with a default for new users
-print "<td><b>$text{'uid'}</b></td>\n";
 if ($in{'new'}) {
 	# Find the first free UID above the base
 	$newuid = $mconfig{'base_uid'};
 	while(&check_uid_used($ldap, $newuid)) {
 		$newuid++;
 		}
-	print "<td><input name=uid size=10 value='$newuid'></td> </tr>\n";
+	$uidfield = &ui_textbox("uid", $newuid, 10);
 	}
 else {
-	print "<td><input name=uid size=10 value='$uid'></td> </tr>\n";
+	$uidfield = &ui_textbox("uid", $uid, 10);
 	}
+print &ui_table_row($text{'uid'}, $uidfield);
 
 if ($config{'given'}) {
 	# Show Full name inputs
@@ -137,49 +131,39 @@ if ($config{'given'}) {
 			$onch = "onChange='form.real.value = form.lastname.value+\", \"+form.firstname.value'";
 			}
 		}
-	print "<tr> <td><b>$text{'uedit_firstname'}</b></td>\n";
-	print "<td><input name=firstname size=20 value=\"$firstname\" $onch></td>\n";
+	print &ui_table_row($text{'uedit_firstname'},
+		&ui_textbox("firstname", $firstname, 20, 0, undef, $onch));
 
-	print "<td><b>$text{'uedit_lastname'}</b></td>\n";
-	print "<td><input name=lastname size=20 value=\"$lastname\" $onch></td></tr>\n";
+	print &ui_table_row($text{'uedit_lastname'},
+		&ui_textbox("lastname", $lastname, 20, 0, undef, $onch));
 	}
 
 # Show real name input
-print "<tr> <td><b>$text{'real'}</b></td>\n";
-print "<td><input name=real size=20 value=\"$real\"></td>\n";
+print &ui_table_row($text{'real'},
+	&ui_textbox("real", $real, 40));
 
 # Show home directory input, with an 'automatic' option
-print "<td><b>$text{'home'}</b></td>\n";
-print "<td>\n";
 if ($mconfig{'home_base'}) {
 	local $hb = $in{'new'} ||
 	    &auto_home_dir($mconfig{'home_base'}, $user) eq $home;
-	printf "<input type=radio name=home_base value=1 %s> %s\n",
-		$hb ? "checked" : "", $text{'uedit_auto'};
-	printf "<input type=radio name=home_base value=0 %s>\n",
-		$hb ? "" : "checked";
-	printf "<input name=home size=25 value=\"%s\"> %s\n",
-		$hb ? "" : $home,
-		&file_chooser_button("home", 1);
+	$homefield = &ui_radio("home_base", $hb ? 1 : 0,
+			       [ [ 1, $text{'uedit_auto'} ],
+				 [ 0, &ui_filebox("home", $hb ? "" : $home,
+						  25, 0, undef, undef, 1) ]
+			       ]);
 	}
 else {
-	print "<input name=home size=25 value=\"$home\">\n",
-	      &file_chooser_button("home", 1);
+	$homefield = &ui_filebox("home", $home, 25, 0, undef, undef, 1);
 	}
-print "</td> </tr>\n";
+print &ui_table_row(&hlink($text{'home'}, "home"), $homefield);
 
 # Show shell selection menu
-print "<tr> <td valign=top><b>$text{'shell'}</b></td>\n";
-print "<td valign=top><select name=shell>\n";
-foreach $s (@shlist) {
-	printf "<option value='%s' %s>%s\n", $s,
-		$s eq $shell ? "selected" : "",
-		$s eq "" ? "&lt;None&gt;" : $s;
-	}
-print "<option value=*>$text{'uedit_other'}\n";
-print "</select></td>\n";
+print &ui_table_row($text{'shell'},
+	&ui_select("shell", $uinfo{'shell'}, \@shlist, 1, 0, 0, 0,
+           "onChange='form.othersh.disabled = form.shell.value != \"*\"'").
+	&ui_filebox("othersh", undef, 40, 1));
 
-# Show password fields
+# Generate password if needed
 if ($in{'new'} && $mconfig{'random_password'}) {
 	&seed_random();
 	foreach (1 .. 15) {
@@ -187,7 +171,9 @@ if ($in{'new'} && $mconfig{'random_password'}) {
 					rand(scalar(@random_password_chars))];
 		}
 	}
-if (%uinfo && $pass ne $config{'lock_string'} && $pass ne "") {
+
+# Check if temporary locking is supported
+if (!$in{'new'} && $pass ne $mconfig{'lock_string'} && $pass ne "") {
         # Can disable if not already locked, or if a new account
         $can_disable = 1;
         if ($pass =~ /^\Q$useradmin::disable_string\E/) {
@@ -195,69 +181,52 @@ if (%uinfo && $pass ne $config{'lock_string'} && $pass ne "") {
                 $pass =~ s/^\Q$useradmin::disable_string\E//;
                 }
         }
-elsif (!%uinfo) {
+elsif ($in{'new'}) {
         $can_disable = 1;
         }
-print "<td valign=top rowspan=4><b>$text{'pass'}</b>",
-      "</td> <td rowspan=4 valign=top>\n";
-printf"<input type=radio name=passmode value=0 %s> %s<br>\n",
-	$pass eq "" && $random_password eq "" ? "checked" : "",
-	$mconfig{'empty_mode'} ? $text{'none1'} : $text{'none2'};
-printf"<input type=radio name=passmode value=1 %s> $text{'nologin'}<br>\n",
-	$pass eq $mconfig{'lock_string'} && $random_password eq "" ? "checked" : "";
 
-printf "<input type=radio name=passmode value=3 %s> $text{'clear'}\n",
-	$random_password ne "" ? "checked" : "";
-printf "<input %s name=pass size=15 value='%s'><br>\n",
-	$mconfig{'passwd_stars'} ? "type=password" : "",
-	$mconfig{'random_password'} && $n eq "" ? $random_password : "";
+# Show password field
+$passmode = $pass eq "" && $random_password eq "" ? 0 :
+            $pass eq $mconfig{'lock_string'} && $random_password eq "" ? 1 :
+            $random_password ne "" ? 3 :
+            $pass && $pass ne $mconfig{'lock_string'} &&
+                $random_password eq "" ? 2 : -1;
+$pffunc = $mconfig{'passwd_stars'} ? \&ui_password : \&ui_textbox;
+print &ui_table_row(&hlink($text{'pass'}, "pass"),
+        &ui_radio_table("passmode", $passmode,
+          [ [ 0, $mconfig{'empty_mode'} ? $text{'none1'} : $text{'none2'} ],
+            [ 1, $text{'nologin'} ],
+            [ 3, $text{'clear'},
+              &$pffunc("pass", $mconfig{'random_password'} && $n eq "" ?
+                                $random_password : "", 15) ],
+            $access{'nocrypt'} ?                 ( [ 2, $text{'nochange'},
+                    &ui_hidden("encpass", $pass) ] ) :
+                ( [ 2, $text{'encrypted'},
+                    &ui_textbox("encpass", $passmode == 2 ? $pass : "", 40) ] )
+          ]).
+          ($can_disable ? "&nbsp;&nbsp;".&ui_checkbox("disable", 1,
+                                $text{'uedit_disabled'}, $disabled) : "")
+          );
 
-printf "<input type=radio name=passmode value=2 %s> $text{'encrypted'}\n",
-	$pass && $pass ne $mconfig{'lock_string'} ? "checked" : "";
-printf "<input name=encpass size=20 value=\"%s\">\n",
-	$pass && $pass ne $mconfig{'lock_string'} ? $pass : "";
+print &ui_table_end();
 
-# Show password lock checkbox
-if ($can_disable) {
-        printf "<br>&nbsp;&nbsp;&nbsp;".
-               "<input type=checkbox name=disable value=1 %s> %s\n",
-                $disabled ? "checked" : "", $text{'uedit_disabled'};
-        }
-
-print "</td> </tr>\n";
-
-# Show alternate shell field
-print "<tr> <td valign=top>$text{'uedit_other'}</td>\n";
-print "<td valign=top><input size=25 name=othersh>\n";
-print &file_chooser_button("othersh", 0),"</td> </tr>\n";
-print "<tr> <td colspan=2><br></td> </tr>\n";
-
-print "</table></td></tr></table><p>\n";
-
+# Show shadow password options
 if (&in_schema($schema, "shadowLastChange")) {
-	# Show shadow password options
-	print "<table border width=100%>\n";
-	print "<tr $tb> <td><b>$text{'uedit_passopts'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table width=100%>\n";
-	print "<tr> <td><b>$text{'change'}</b></td>\n";
-	print "<td>";
-	if ($change) {
-		@tm = localtime(timelocal(gmtime($change * 60*60*24)));
-		printf "%s/%s/%s\n",
-			$tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900;
-		}
-	elsif ($in{'new'}) { print "$text{'uedit_never'}\n"; }
-	else { print "$text{'uedit_unknown'}\n"; }
-	print "</td>\n";
+	print &ui_table_start($text{'uedit_passopts'}, "width=100%", 4, \@tds);
 
-	print "<td><b>$text{'expire'}</b></td>\n";
-	if ($in{'new'}) {
-		if ($mconfig{'default_expire'} =~
-		    /^(\d+)\/(\d+)\/(\d+)$/) {
-			$eday = $1;
-			$emon = $2;
-			$eyear = $3;
-			}
+	# Last change date
+        print &ui_table_row($text{'change'},
+                ($uinfo{'change'} ? &make_date(timelocal(
+                                       gmtime($change * 60*60*24)),1) :
+                 $n eq "" ? $text{'uedit_never'} :
+                            $text{'uedit_unknown'}));
+
+	# Expiry date
+	if ($in{'new'} &&
+	    $mconfig{'default_expire'} =~ /^(\d+)\/(\d+)\/(\d+)$/) {
+		$eday = $1;
+		$emon = $2;
+		$eyear = $3;
 		}
 	elsif ($expire) {
 		@tm = localtime(timelocal(gmtime($expire * 60*60*24)));
@@ -265,40 +234,40 @@ if (&in_schema($schema, "shadowLastChange")) {
 		$emon = $tm[4]+1;
 		$eyear = $tm[5]+1900;
 		}
-	print "<td>";
-	&useradmin::date_input($eday, $emon, $eyear, 'expire');
-	print "</td>\n";
+	print &ui_table_row(&hlink($text{'expire'}, "expire"),
+		&date_input($eday, $emon, $eyear, 'expire'));
 
-	print "<tr> <td><b>$text{'min'}</b></td>\n";
-	printf "<td><input size=5 name=min value=\"%s\"></td>\n",
-		$in{'new'} ? $mconfig{'default_min'} : $min;
+        # Minimum and maximum days for changing
+        print &ui_table_row($text{'min'},
+                &ui_textbox("min", $in{'new'} ? $mconfig{'default_min'}
+					      : $min, 5));
+        print &ui_table_row($text{'max'},
+                &ui_textbox("max", $in{'new'} ? $mconfig{'default_max'}
+					      : $max, 5));
 
-	print "<td><b>$text{'max'}</b></td>\n";
-	printf "<td><input size=5 name=max value=\"%s\"></td></tr>\n",
-		$in{'new'} ? $mconfig{'default_max'} : $max;
+	# Password warning days
+        print &ui_table_row($text{'warn'},
+                &ui_textbox("warn", $in{'new'} ? $mconfig{'default_warn'}
+					       : $warn, 5));
 
-	print "<tr> <td><b>$text{'warn'}</b></td>\n";
-	printf "<td><input size=5 name=warn value=\"%s\"></td>\n",
-		$in{'new'} ? $mconfig{'default_warn'} : $warn;
+	# Inactive dats
+        print &ui_table_row($text{'inactive'},
+                &ui_textbox("inactive", $in{'new'} ?$mconfig{'default_inactive'}
+					           : $inactive, 5));
 
-	print "<td><b>$text{'inactive'}</b></td>\n";
-	printf "<td><input size=5 name=inactive value=\"%s\"></td></tr>\n",
-		$in{'new'} ? $mconfig{'default_inactive'} : $inactive;
-
-	print "</table></td></tr></table><p>\n";
-
+	print &ui_table_end();
 	}
 
-# Show primary group
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'uedit_gmem'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
-print "<tr> <td valign=top><b>$text{'group'}</b></td> <td valign=top>\n";
-printf "<input name=gid size=8 value=\"%s\"> %s</td>\n",
-	$in{'new'} ? $mconfig{'default_group'}
-		   : ($x=&all_getgrgid($gid)) || $gid,
-	&group_chooser_button("gid");
+# Group memberships section
+print &ui_table_start($text{'uedit_gmem'}, "width=100%", 4, \@tds);
 
+# Primary group
+print &ui_table_row($text{'group'},
+	&ui_textbox("gid", $in{'new'} ? $mconfig{'default_group'}
+				      : ($x=&all_getgrgid($gid)) || $gid, 13).
+	" ".&group_chooser_button("gid"));
+
+# XXXX
 if ($config{'secmode'} != 1) {
 	# Work out which secondary groups the user is in
 	@defsecs = &split_quoted_string($mconfig{'default_secs'});
@@ -346,7 +315,7 @@ else {
 	}
 print "</tr>\n";
 
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 # Show extra fields (if any)
 &extra_fields_input($config{'fields'}, $uinfo);
