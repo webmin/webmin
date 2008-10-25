@@ -347,12 +347,12 @@ if (&indexof($type, &mount::list_fstypes()) >= 0) {
 	}
 else {
 	# Un-supported, so show just text fields
-	local $sinput = new Webmin::Textboc("special", $fs->{'special'}, 40);
+	local $sinput = new Webmin::Textbox("special", $fs->{'special'}, 40);
 	$sinput->set_mandatory(1);
 	$sinput->set_validation_func(\&validate_special);
 	$section->add_input($text{'fs_special'}, $sinput);
 
-	local $oinput = new Webmin::Textboc("options", $fs->{'options'}, 40);
+	local $oinput = new Webmin::Textbox("options", $fs->{'options'}, 40);
 	$oinput->set_mandatory(1);
 	$oinput->set_validation_func(\&validate_options);
 	$section->add_input($text{'fs_options'}, $oinput);
