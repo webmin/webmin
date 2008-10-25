@@ -188,6 +188,7 @@ if ($ucount > $mconfig{'display_max'}) {
         print &ui_table_end();
         print &ui_form_end([ [ undef, $text{'find'} ] ]);
 	$formno++;
+	print &ui_links_row(\@links);
 	}
 elsif (@ulist) {
 	# Show table of all users
