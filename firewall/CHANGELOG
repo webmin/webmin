@@ -19,3 +19,5 @@ On Debian 3.1 systems, IPtables rules are saved in /etc/iptables.up.rules and ac
 Added a setup option to configure a firewall for a typical hosting server.
 ---- Changes since 1.400 ----
 Show SNAT and masquerade inputs in custom NAT chains.
+---- Changes since 1.440 ----
+DNS queries are now allowed when the firewall is setup for web hosting.
