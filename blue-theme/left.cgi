@@ -55,7 +55,6 @@ else {
 </script>
 </head>
 <body>
-<div class='menubody'>
 EOF
 
 # Show login
@@ -156,7 +155,6 @@ if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
 
 print <<EOF;
 </form>
-</div>
 </body>
 EOF
 
