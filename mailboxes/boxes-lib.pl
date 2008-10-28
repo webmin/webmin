@@ -1946,16 +1946,8 @@ if ($cachefile) {
 
 # Select a unique filename and write to it
 local $now = time();
-local $hn = &get_system_hostname();
-local $mf;
-mkdir($_[1], 0755);
-mkdir("$_[1]/cur", 0755);
-++$main::write_maildir_count;
-do {
-	$mf = "$_[1]/cur/$now.$$.$main::write_maildir_count.$hn";
-	$_[0]->{'id'} = "cur/$now.$$.$main::write_maildir_count.$hn";
-	$now++;
-	} while(-r $mf);
+$_[0]->{'id'} = &unique_maildir_filename($_[1]);
+$mf = "$_[1]/$_[0]->{'id'}";
 &send_mail($_[0], $mf, $_[2], 1);
 
 # Set ownership of the new message file to match the directory
@@ -1980,9 +1972,26 @@ if ($up2date && $cachefile) {
 	# Bring cache up to date
 	$now--;
 	local $lref = &read_file_lines($cachefile);
-	push(@$lref, "cur/$now.$$.$main::write_maildir_count.$hn");
+	push(@$lref, $_[0]->{'id'});
 	&flush_file_lines($cachefile);
 	}
+}
+
+# unique_maildir_filename(dir)
+# Returns a filename for a new message in a maildir, relative to the directory
+sub unique_maildir_filename
+{
+local ($dir) = @_;
+mkdir("$dir/cur", 0755);
+local $now = time();
+local $hn = &get_system_hostname();
+++$main::write_maildir_count;
+local $rv;
+do {
+	$rv = "cur/$now.$$.$main::write_maildir_count.$hn";
+	$now++;
+	} while(-r "$dir/$rv");
+return $rv;
 }
 
 # empty_maildir(file)

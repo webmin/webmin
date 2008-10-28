@@ -1303,8 +1303,7 @@ elsif ($src->{'type'} == 1 && $dest->{'type'} == 1) {
 	# maildir to maildir .. just copy the files
 	local @files = &get_maildir_files($src->{'file'});
 	foreach my $f (@files) {
-		local $fn = $f;
-		$fn =~ s/^.*\///;
+		local $fn = &unique_maildir_filename($dest);
 		&copy_source_dest($f, "$dest->{'file'}/$fn");
 		}
 	&mailbox_fix_permissions($dest);
