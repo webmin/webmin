@@ -122,7 +122,8 @@ if ($config{'dhcpd_version'} >= 3) {
 		local $cv = $in{"cval_$i"};
 		$cv =~ /\S/ || &error(&text('sopt_ecval', $in{"cname_$i"}));
 		$cv = "\"$cv\""
-			if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/);
+			if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
+			    !&check_ipaddress($cv));
 		push(@newcustom, { 'name' => 'option',
 				   'values' => [ $in{"cname_$i"}, $cv ] } );
 		}
@@ -143,7 +144,8 @@ else {
 			&error(&text('sopt_ednum', $in{"cnum_$i"}));
 		local $cv = $in{"cval_$i"};
 		$cv = "\"$cv\""
-			if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/);
+			if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
+			    !&check_ipaddress($cv));
 		push(@newcustom, { 'name' => 'option',
 				   'values' => [ 'option-'.$in{"cnum_$i"},
 						 $cv ] } );
