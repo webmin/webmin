@@ -115,7 +115,9 @@ else {
 	$cmd .= "f '".&date_subs($_[0]->{'file'})."'";
 	}
 $cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-$cmd .= " ".join(" ", map { "'$_'" } split(/\s+/, $_[0]->{'dir'}));
+local @dirs = $_[0]->{'tabs'} ? split(/\t+/, $_[0]->{'dir'})
+			      : split(/\s+/, $_[0]->{'dir'});
+$cmd .= " ".join(" ", map { "'$_'" } @dirs);
 
 &system_logged("sync");
 sleep(1);

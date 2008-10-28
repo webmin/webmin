@@ -35,3 +35,5 @@ Files and directories to exclude can be specified for TAR format backups on Linu
 ---- Changes since 1.410 ----
 Added checkboxes to control if failure of the pre and post-backup commands cause the whole job to be regarded as a failure.
 Prevent non-level-0 backups and updating of the /etc/dumpdates file for backups of directories that are not filesystem mount points, as this isn't supported by the <tt>dump</tt> command.
+---- Changes since 1.430 ----
+Fixed a bug that prevented backups of directories with spaces in their names from working properly on Linux.
