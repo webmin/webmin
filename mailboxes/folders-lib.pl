@@ -3359,7 +3359,9 @@ return false;
 }
 </script>
 EOF
+	}
 
+if ($any_attach) {
 	# Show form for attachments (both uploaded and server-side)
 	print &ui_table_start($server_attach ? $text{'reply_attach2'}
 					     : $text{'reply_attach3'},

@@ -63,7 +63,7 @@ mail_dir=User mail file directory,3,None
 mail_style=Mail file directory style,4,0-mail/username,1-mail/u/username,2-mail/u/us/username,3-mail/u/s/username
 mail_file=Mail file in user home directories,3,None
 mail_sub=Mail directory in user home directories,3,None
-mail_usermin=Usermin-style folders subdirectory in home directory,3,None
+mail_usermin=Folders subdirectory under home directory,3,None
 mailbox_user=Usermin Read Mail configuration directory in home directory,3,None
 
 line2=User synchronization,11
