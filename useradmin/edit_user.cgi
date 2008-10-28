@@ -142,6 +142,8 @@ print &ui_table_row(&hlink($text{'home'}, "home"),
 # Show shell drop-down
 push(@shlist, $uinfo{'shell'}) if (%uinfo && $uinfo{'shell'});
 if ($access{'shells'} ne "*") {
+	# Limit to shells from ACL
+	@shlist = %uinfo ? ($uinfo{'shell'}) : ();
 	push(@shlist, split(/\s+/, $access{'shells'}));
 	$shells = 1;
 	}
@@ -413,7 +415,7 @@ if ($access{'ugroups'} eq "*" || $access{'uedit_gmode'} >= 3) {
 	}
 else {
 	# From fixed menu of groups
-	$cg = %uinfo ? &my_getgrgid($uinfo{'gid'}) : undef;
+	$cg = $uinfo{'gid'} ? &my_getgrgid($uinfo{'gid'}) : undef;
 	@gl = &unique($cg ? ($cg) : (),
 		      &split_quoted_string($access{'ugroups'}));
 	push(@groupopts, [ 0, $text{'uedit_oldg'},
