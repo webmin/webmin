@@ -508,3 +508,5 @@ The clamd-stream-client virus scanner can be selected to offload the actual scan
 ---- Changes since 3.63 ----
 On systems running Postfix with spam filtering enabled, the ownership and permissions on the procmail wrapper command are validated as part of the configuration check to ensure that it is setuid and setgid to root.
 When a virtual server with slave DNS zones is disabled, then will be removed from slave servers to properly prevent DNS resolution of the domain. When it is re-enabled, the slave zones will be re-created.
+Optimized the spam and virus deletion screen to deal better with large folders, by processing only 100 messages at a time.
+Added a check to ensure that the Webalizer template configuration file actually exists.
