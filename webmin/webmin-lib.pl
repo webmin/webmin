@@ -920,6 +920,31 @@ if (&foreign_check("acl")) {
 			}
 		}
 	}
+
+# New Webmin version is available, but only once per day
+local $now = time();
+if (&foreign_available($module_name) &&
+    (!$config{'last_version_check'} ||
+     time() - $config{'last_version_check'} > 24*60*60)) {
+	local ($ok, $version) = &get_latest_webmin_version();
+	$config{'last_version_check'} = $now;
+	&save_module_config();
+	if ($ok && $version > &get_webmin_version()) {
+		# New version is out there .. offer to upgrade
+		push(@notifs,
+		     &ui_form_start("$gconfig{'webprefix'}/webmin/upgrade.cgi",
+				    "form-data").
+		     &ui_hidden("source", 2).
+		     &ui_hidden("sig", 1).
+		     &ui_hidden("mode", $mode).
+		     &text('notif_upgrade', $version,
+			   &get_webmin_version())."<p>\n".
+		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
+		}
+	}
+
+# Webmin module updates
+
 return @notifs;
 }
 
@@ -1486,6 +1511,49 @@ foreach my $minfo (&get_all_module_infos()) {
 	}
 &write_file("$config_directory/installed.cache", \%installed);
 return wantarray ? (\%installed, \@changed) : \%installed;
+}
+
+# get_latest_webmin_version()
+# Returns 1 and the latest version of Webmin available on www.webmin.com, or
+# 0 and an error message
+sub get_latest_webmin_version
+{
+local $file = &transname();
+local ($error, $version);
+&http_download($update_host, $update_port, '/', $file, \$error);
+return (0, $error) if ($error);
+open(FILE, $file);
+while(<FILE>) {
+	if (/webmin-([0-9\.]+)\.tar\.gz/) {
+		$version = $1;
+		last;
+		}
+	}
+close(FILE);
+unlink($file);
+return $version ? (1, $version)
+		: (0, "No version number found at $update_host");
+}
+
+# filter_updates(&updates, [version])
+# Given a list of updates, filters them to include only those that are
+# suitable for this system.
+# XXX check if module is not installed, non-core, etc..
+sub filter_updates
+{
+local $allupdates = $_[0];
+local $version = $_[1] || &get_webmin_version();
+local $bversion = &base_version($version);
+local $updatestemp = &transname();
+local @updates;
+foreach my $u (@$allupdates) {
+	next if ($u->[1] >= $bversion + .01 || $u->[1] <= $bversion ||
+		 $u->[1] <= $version);
+	local $osinfo = { 'os_support' => $u->[3] };
+	next if (!&check_os_support($osinfo));
+	push(@updates, $u);
+	}
+return \@updates;
 }
 
 1;

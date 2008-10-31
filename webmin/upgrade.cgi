@@ -50,18 +50,8 @@ elsif ($in{'source'} == 1) {
 elsif ($in{'source'} == 2) {
 	# find latest version at www.webmin.com by looking at index page
 	&error_setup($text{'upgrade_err3'});
-	$file = &transname();
-	&http_download($update_host, $update_port, '/', $file, \$error);
-	$error && &inst_error($error);
-	open(FILE, $file);
-	while(<FILE>) {
-		if (/webmin-([0-9\.]+)\.tar\.gz/) {
-			$version = $1;
-			last;
-			}
-		}
-	close(FILE);
-	unlink($file);
+	($ok, $version) = &get_latest_webmin_version();
+	$ok || &inst_error($version);
 	if (!$in{'force'}) {
 		if ($version == &get_webmin_version()) {
 			&inst_error(&text('upgrade_elatest', $version));
@@ -219,11 +209,6 @@ if ($in{'mode'} ne 'gentoo') {
 		}
 	}
 $qfile = quotemeta($file);
-
-# Get list of updates
-$updatestemp = &transname();
-&http_download($update_host, $update_port, "/updates/updates.txt", $updatestemp,
-	       \$updates_error);
 
 if ($in{'mode'} eq 'rpm') {
 	# Check if it is an RPM package
@@ -568,30 +553,11 @@ if ($in{'disc'}) {
 	}
 
 # Find out about any updates for this new version.
-if ($updates_error) {
-	print "<br>",&text('upgrade_eupdates', $updates_error),"<p>\n";
-	}
-else {
-	open(UPDATES, $updatestemp);
-	while(<UPDATES>) {
-		if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {
-			push(@updates, [ $1, $2, $3, $4, $5 ]);
-			}
-		}
-	close(UPDATES);
-	unlink($updatestemp);
-	$bversion = &base_version($version);
-	foreach $u (@updates) {
-		next if ($u->[1] >= $bversion + .01 || $u->[1] <= $bversion ||
-			 $u->[1] <= $version);
-		local $osinfo = { 'os_support' => $u->[3] };
-		next if (!&check_os_support($osinfo));
-		$ucount++;
-		}
-	if ($ucount) {
-		print "<br>",&text('upgrade_updates', $ucount,
-			"update.cgi?source=0&show=0&missing=0"),"<p>\n";
-		}
+($updates) = &fetch_updates($update_url);
+$updates = &filter_updates($updates, $version);
+if (scalar(@$updates)) {
+	print "<br>",&text('upgrade_updates', scalar(@$updates),
+		"update.cgi?source=0&show=0&missing=0"),"<p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

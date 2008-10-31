@@ -843,4 +843,6 @@ notif_passlock=Your Webmin password was last changed on $1, and your account wil
 notif_changenow=You can <a href='$1'>change your password now</a> in the Change Language and Theme module.
 notif_unixwarn=Your Unix password was last changed on $1, and must be changed in $2 days.
 notif_unixexpired=Your Unix password has expired! You will be forced to change it at the next login.
+notif_upgrade=Webmin version $1 is now available, but you are running version $2.
+notif_upgradeok=Upgrade Webmin Now
 
