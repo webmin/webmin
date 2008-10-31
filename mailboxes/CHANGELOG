@@ -54,3 +54,5 @@ Detection of messages with attachments is now 100% accurate, rather than taking 
 ---- Changes since 1.430 ----
 Added support for Exim, thanks to Emmanuel Florac.
 Re-wrote the entire user interface to use the new Webmin UI library, and to bring it into sync with the Usermin module for reading mail.
+---- Changes since 1.440 ----
+HTML messages now have a converted plain-text attachment automatically added, for mail clients that only support text.

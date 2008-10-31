@@ -93,6 +93,25 @@ if ($in{'body'} =~ /\S/) {
 			      'data' => $in{'body'} } );
 		}
 	$bodyattach = $attach[0];
+
+	if ($in{'html_edit'}) {
+		# Add the plain-text body
+		local $mt = "text/plain";
+		if ($plainbody =~ /[\177-\377]/) {
+			push(@attach,
+			  { 'headers' => [ [ 'Content-Type', $mt ],
+					   [ 'Content-Transfer-Encoding',
+					     'quoted-printable' ] ],
+			    'data' => quoted_encode($plainbody) });
+			}
+		else {
+			push(@attach,
+			  { 'headers' => [ [ 'Content-Type', $mt ],
+					   [ 'Content-Transfer-Encoding',
+					     '7bit' ] ],
+			    'data' => $plainbody });
+			}
+		}
 	}
 $attachsize = 0;
 for($i=0; defined($in{"attach$i"}); $i++) {
