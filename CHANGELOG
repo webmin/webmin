@@ -104,3 +104,5 @@ Many Dutch translation contributions by Gandyman.
 A large Hungarian translation update, thanks to Domagoj Bikic.
 When a user whose password is close to expiry or has already expired logs in, a warning will be displayed on Webmin's first page.
 Many Japanese translation updates, thanks to Kazuya Masuda.
+---- Changes since 1.440 ----
+Russian translation updates, thanks to Anton Statutov.
