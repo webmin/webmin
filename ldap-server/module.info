@@ -4,3 +4,4 @@ category=servers
 perldepends=Net::LDAP
 desc_ca=Servidor LDAP
 desc_nl=LDAP Server
+desc_ru_RU=Сервер LDAP
