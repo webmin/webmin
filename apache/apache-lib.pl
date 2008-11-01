@@ -642,10 +642,11 @@ return $line;
 sub delete_file_if_empty
 {
 local ($file) = @_;
-local $lref = &read_file_lines($file);
+local $lref = &read_file_lines($file, 1);
 foreach my $l (@$lref) {
 	return 0 if ($l =~ /\S/);
 	}
+&unflush_file_lines($file);
 unlink($file);
 &delete_webfile_link($file);
 }
