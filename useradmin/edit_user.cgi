@@ -154,10 +154,13 @@ if (%uinfo && !$uinfo{'shell'}) {
 	push(@shlist, [ "", "&lt;None&gt;" ]);
 	}
 push(@shlist, [ "*", $text{'uedit_other'} ]) if (!$shells);
+$firstshell = ref($shlist[0]) ? $shlist[0]->[0] : $shlist[0];
 print &ui_table_row(&hlink($text{'shell'}, "shell"),
-	&ui_select("shell", $uinfo{'shell'}, \@shlist, 1, 0, 0, 0,
+	&ui_select("shell", $n eq "" ? $config{'default_shell'} || $firstshell
+				     : $uinfo{'shell'},
+	   \@shlist, 1, 0, 0, 0,
 	   "onChange='form.othersh.disabled = form.shell.value != \"*\"'").
-	($shells ? "" : &ui_filebox("othersh", undef, 40, 1)));
+	   ($shells ? "" : &ui_filebox("othersh", undef, 40, 1)));
 
 # Get the password, generate random if needed
 $pass = %uinfo ? $uinfo{'pass'} : $config{'lock_string'};
