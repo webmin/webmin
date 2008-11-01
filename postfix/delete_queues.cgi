@@ -29,7 +29,7 @@ elsif ($in{'unhold'}) {
 	}
 else {
 	@files = split(/\0/, $in{'file'});
-	if ($in{'confirm'}) {
+	if ($in{'confirm'} || !$config{'delete_confirm'}) {
 		# Deleting messages
 		if ($postfix_version < 1.1) {
 			@qfiles = &recurse_files($config{'mailq_dir'});
@@ -53,7 +53,7 @@ else {
 		&ui_print_header(undef, $text{'delq_titles'}, "");
 		print &ui_confirmation_form("delete_queues.cgi",
 			&text('delq_rusure', scalar(@files)),
-			[ map { [ 'f', $_ ] } @files ],
+			[ map { [ 'file', $_ ] } @files ],
 			[ [ 'confirm', $text{'delq_confirm'} ] ],
 			);
 		&ui_print_footer("mailq.cgi", $text{'mailq_return'});

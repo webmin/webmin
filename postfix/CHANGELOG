@@ -60,4 +60,4 @@ Properly handle multiple reject_rbl_client DNS domains on the SMTP Client Restri
 ---- Changes since 1.430 ----
 Converted all pages to use the new Webmin UI library, for a more consistent and themable look.
 Autoreply messages containing non-ASCII characters are now properly quoted-printable encoded.
-
+Added a module config option to control if the user is prompted for confirmation before deleting queued messages.
