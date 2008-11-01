@@ -334,7 +334,7 @@ else {
 
 		# Add to the ldap database
 		@classes = ( "posixAccount", "shadowAccount" );
-		if ($schema->objectclass("person") && $config{'person'}) {
+		if ($schema && $schema->objectclass("person") && $config{'person'}) {
 			push(@classes, "person");
 			}
 
