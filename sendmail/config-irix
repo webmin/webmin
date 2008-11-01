@@ -35,3 +35,4 @@ show_cmts=0
 prefix_cmts=0
 
 mail_type=0
+delete_confirm=1

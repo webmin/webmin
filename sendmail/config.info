@@ -12,6 +12,8 @@ mailq_show=Headers to show in mail queue,2,Date-Date,From-From,To-To,Subject-Sub
 mailq_sort=Sort mail queue by,1,0-Queue ID,1-From address,2-To address,3-Subject,4-Status,5-Size
 mailq_count=Show size of mail queue on main page?,1,0-Yes,1-No
 mailq_order=Ordering when flushing mail queue,1,-Default,priority-Priority,host-Hostname,time-Date received
+delete_confirm=Prompt for confirmation before deleting?,1,1-Yes,0-No
+
 line2=System configuration,11
 sendmail_cf=Full path to sendmail.cf,8
 sendmail_features=Sendmail M4 base directory,7

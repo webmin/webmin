@@ -36,7 +36,7 @@ else {
 	@files || &error($text{'delq_enone'});
 	&ui_print_header(undef, $text{'delq_titles'}, "");
 
-	if ($in{'confirm'}) {
+	if ($in{'confirm'} || !$config{'delete_confirm'}) {
 		# Do it!
 		$count = 0;
 		$conf = &get_sendmailcf();
