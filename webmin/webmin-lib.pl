@@ -16,6 +16,7 @@ $update_port = 80;
 $update_page = "/updates/updates.txt";
 $update_url = "http://$update_host:$update_port$update_page";
 $redirect_url = "http://$update_host/cgi-bin/redirect.cgi";
+$update_cache = "$module_config_directory/update-cache";
 
 $webmin_key_email = "jcameron\@webmin.com";
 $webmin_key_fingerprint = "1719 003A CE3E 5A41 E2DE  70DF D97A 3AE9 11F6 3C51";
@@ -829,20 +830,22 @@ $rv{'time'} = time();
 return %rv;
 }
 
-# show_webmin_notifications()
+# show_webmin_notifications([no-updates])
 # Print various notifications for the current user, if needed
 sub show_webmin_notifications
 {
-local @notif = &get_webmin_notifications();
+local ($noupdates) = @_;
+local @notif = &get_webmin_notifications($noupdates);
 if (@notifs) {
 	print "<center>\n",@notifs,"</center>\n";
 	}
 }
 
-# get_webmin_notifications()
+# get_webmin_notifications([no-updates])
 # Returns a list of Webmin notification messages
 sub get_webmin_notifications
 {
+local ($noupdates) = @_;
 local @notifs;
 local %miniserv;
 &get_miniserv_config(\%miniserv);
@@ -923,13 +926,18 @@ if (&foreign_check("acl")) {
 
 # New Webmin version is available, but only once per day
 local $now = time();
-if (&foreign_available($module_name) &&
-    (!$config{'last_version_check'} ||
-     time() - $config{'last_version_check'} > 24*60*60)) {
-	local ($ok, $version) = &get_latest_webmin_version();
-	$config{'last_version_check'} = $now;
-	&save_module_config();
-	if ($ok && $version > &get_webmin_version()) {
+if (&foreign_available($module_name) && !$noupdates) {
+	if (!$config{'last_version_check'} ||
+            $now - $config{'last_version_check'} > 24*60*60) {
+		# Cached last version has expired .. re-fetch
+		local ($ok, $version) = &get_latest_webmin_version();
+		if ($ok) {
+			$config{'last_version_check'} = $now;
+			$config{'last_version_number'} = $version;
+			&save_module_config();
+			}
+		}
+	if ($config{'last_version_number'} > &get_webmin_version()) {
 		# New version is out there .. offer to upgrade
 		push(@notifs,
 		     &ui_form_start("$gconfig{'webprefix'}/webmin/upgrade.cgi",
@@ -937,13 +945,63 @@ if (&foreign_available($module_name) &&
 		     &ui_hidden("source", 2).
 		     &ui_hidden("sig", 1).
 		     &ui_hidden("mode", $mode).
-		     &text('notif_upgrade', $version,
+		     &text('notif_upgrade', $config{'last_version_number'},
 			   &get_webmin_version())."<p>\n".
 		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
 		}
 	}
 
 # Webmin module updates
+if (&foreign_available($module_name) && !$noupdates) {
+	local @st = stat($update_cache);
+	local $allupdates = [ ];
+	if (!@st || $now - $st[9] > 24*60*60) {
+		# Need to re-fetch cache
+		local @urls = $config{'upsource'} ?
+			split(/\t+/, $config{'upsource'}) :
+			( $update_url );
+		foreach my $url (@urls) {
+			eval {
+				local $main::error_must_die = 1;
+				local ($updates) = &fetch_updates($url,
+					$config{'upuser'}, $config{'uppass'});
+				$updates = &filter_updates($updates);
+				push(@$allupdates, @$updates);
+				};
+			}
+		&open_tempfile(UPCACHE, ">$update_cache", 1);
+		&print_tempfile(UPCACHE, &serialise_variable($allupdates));
+		&close_tempfile(UPCACHE);
+		}
+	else {
+		# Just use cache
+		local $cdata = &read_file_contents($update_cache);
+		$allupdates = &unserialise_variable($update_cache);
+		}
+
+	# All a table of them, and a form to install
+	if (@$allupdates) {
+		local $msg = &ui_form_start(
+			"$gconfig{'webprefix'}/webmin/update.cgi");
+		$msg .= &text('notif_updatemsg', scalar(@allupdates))."<br>\n";
+		$msg .= &ui_columns_start(
+			[ $text{'notify_updatemod'},
+			  $text{'notify_updatever'},
+			  $text{'notify_updatedesc'} ]);
+		foreach my $u (@$allupdates) {
+			local %minfo = &get_module_info($u->[0]);
+			local %tinfo = &get_theme_info($u->[0]);
+			local %info = %minfo ? %minfo : %tinfo;
+			$msg .= &ui_columns_row([
+				$info{'desc'},
+				$u->[1],
+				$u->[4] ]);
+			}
+		$msg .= &ui_columns_end();
+		$msg .= &ui_form_end([ [ undef, $text{'notif_updateok'} ] ]);
+		push(@notifs, $msg);
+		}
+	}
 
 return @notifs;
 }
