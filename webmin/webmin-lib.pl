@@ -835,9 +835,9 @@ return %rv;
 sub show_webmin_notifications
 {
 local ($noupdates) = @_;
-local @notif = &get_webmin_notifications($noupdates);
+local @notifs = &get_webmin_notifications($noupdates);
 if (@notifs) {
-	print "<center>\n",@notifs,"</center>\n";
+	print "<center>\n",join("<hr>\n", @notifs),"</center>\n";
 	}
 }
 
@@ -849,6 +849,7 @@ local ($noupdates) = @_;
 local @notifs;
 local %miniserv;
 &get_miniserv_config(\%miniserv);
+&load_theme_library();	# So that UI functions work
 
 # Need OS upgrade
 local %realos = &detect_operating_system(undef, 1);
@@ -955,19 +956,19 @@ if (&foreign_available($module_name) && !$noupdates) {
 if (&foreign_available($module_name) && !$noupdates) {
 	local @st = stat($update_cache);
 	local $allupdates = [ ];
+	local @urls = $config{'upsource'} ?
+		split(/\t+/, $config{'upsource'}) : ( $update_url );
 	if (!@st || $now - $st[9] > 24*60*60) {
 		# Need to re-fetch cache
-		local @urls = $config{'upsource'} ?
-			split(/\t+/, $config{'upsource'}) :
-			( $update_url );
 		foreach my $url (@urls) {
 			eval {
 				local $main::error_must_die = 1;
 				local ($updates) = &fetch_updates($url,
 					$config{'upuser'}, $config{'uppass'});
-				$updates = &filter_updates($updates);
+				print STDERR "got ",scalar(@$updates)," from $url\n";
 				push(@$allupdates, @$updates);
 				};
+			print STDERR $@;
 			}
 		&open_tempfile(UPCACHE, ">$update_cache", 1);
 		&print_tempfile(UPCACHE, &serialise_variable($allupdates));
@@ -976,14 +977,16 @@ if (&foreign_available($module_name) && !$noupdates) {
 	else {
 		# Just use cache
 		local $cdata = &read_file_contents($update_cache);
-		$allupdates = &unserialise_variable($update_cache);
+		$allupdates = &unserialise_variable($cdata);
 		}
 
 	# All a table of them, and a form to install
+	$allupdates = &filter_updates($allupdates);
+	print STDERR "filtered to ",scalar(@$allupdates),"\n";
 	if (@$allupdates) {
 		local $msg = &ui_form_start(
 			"$gconfig{'webprefix'}/webmin/update.cgi");
-		$msg .= &text('notif_updatemsg', scalar(@allupdates))."<br>\n";
+		$msg .= &text('notif_updatemsg', scalar(@$allupdates))."<p>\n";
 		$msg .= &ui_columns_start(
 			[ $text{'notify_updatemod'},
 			  $text{'notify_updatever'},
@@ -998,6 +1001,11 @@ if (&foreign_available($module_name) && !$noupdates) {
 				$u->[4] ]);
 			}
 		$msg .= &ui_columns_end();
+		$msg .= &ui_hidden("source", 1);
+		$msg .= &ui_hidden("other", join("\n", @urls));
+		$msg .= &ui_hidden("upuser", $config{'upuser'});
+		$msg .= &ui_hidden("uppass", $config{'uppass'});
+		$msg .= &ui_hidden("third", $config{'upthird'});
 		$msg .= &ui_form_end([ [ undef, $text{'notif_updateok'} ] ]);
 		push(@notifs, $msg);
 		}
@@ -1605,8 +1613,10 @@ local $bversion = &base_version($version);
 local $updatestemp = &transname();
 local @updates;
 foreach my $u (@$allupdates) {
+	print STDERR "considering $u->[0] version $u->[1] vs version=$version bversion=$bversion\n";
 	next if ($u->[1] >= $bversion + .01 || $u->[1] <= $bversion ||
 		 $u->[1] <= $version);
+	print STDERR "doing $u->[0] version $u->[1] vs version=$version bversion=$bversion\n";
 	local $osinfo = { 'os_support' => $u->[3] };
 	next if (!&check_os_support($osinfo));
 	push(@updates, $u);
