@@ -134,6 +134,7 @@ linux_codepage=Code pagina
 linux_continue=Continue
 linux_conv=DOS-Unix nieuwe-regel omzetting
 linux_conv2=OS/2-Unix nieuwe-regel omzetting
+linux_credentials=Credentials File
 linux_df=Rreserve blokken toevoegen in filesysteem grote?
 linux_disk=Disk
 linux_dmode=Directorie permissies
