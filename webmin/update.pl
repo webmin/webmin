@@ -9,45 +9,18 @@ require './webmin-lib.pl';
 @urls = $config{'upsource'} ? split(/\t+/, $config{'upsource'})
 			    : ( $update_url );
 foreach $url (@urls) {
+	# Get updates from this URL, and filter to those for this system
 	($updates, $host, $port, $page, $ssl) = &fetch_updates($url, $config{'upuser'}, $config{'uppass'});
+	$updates = &filter_updates($updates, undef, $config{'upthird'},
+				   $config{'upmissing'});
 
 	# Go through the results
 	foreach $u (@$updates) {
-		# Skip modules that are not for this version of Webmin, IF the module
-		# is a core module or is not installed
+		# Get module or theme's details
 		local %minfo = &get_module_info($u->[0]);
 		local %tinfo = &get_theme_info($u->[0]);
 		local %info = %minfo ? %minfo : %tinfo;
-		next if (($u->[1] >= &get_webmin_base_version() + .01 ||
-			  $u->[1] < &get_webmin_base_version()) &&
-			 (!%info || $info{'longdesc'} || !$config{'upthird'}));
 
-		if (!%info && !$config{'upmissing'}) {
-			$rv .= &text('update_mmissing', $u->[0])."\n"
-				if (!$config{'upquiet'});
-			next;
-			}
-		if (%info && $info{'version'} >= $u->[1]) {
-			$rv .= &text('update_malready', $u->[0])."\n"
-				if (!$config{'upquiet'});
-			next;
-			}
-		local $osinfo = { 'os_support' => $u->[3] };
-		if (!&check_os_support($osinfo)) {
-			$rv .= &text('update_mos', $u->[0])."\n"
-				if (!$config{'upquiet'});
-			next;
-			}
-		if ($itype = &get_module_install_type($u->[0])) {
-			# Module was installed from an RPM/DEB - only allow if
-			# update is in the same format
-			if ($u->[2] !~ /\.$itype$/i) {
-				$rv .= &text('update_mtype', "<b>$u->[0]</b>",
-							     uc($itype))."\n"
-					if (!$config{'upquiet'});
-				next;
-				}
-			}
 		if ($config{'upshow'}) {
 			# Just tell the user what would be done
 			$rv .= &text('update_mshow', $u->[0], $u->[1])."\n".
@@ -88,17 +61,7 @@ foreach $url (@urls) {
 	}
 
 # Check if a new version of webmin itself is available
-$file = &transname();
-&http_download('www.webmin.com', 80, '/', $file);
-open(FILE, $file);
-while(<FILE>) {
-	if (/webmin-([0-9\.]+)\.tar\.gz/) {
-		$version = $1;
-		last;
-		}
-	}
-close(FILE);
-unlink($file);
+$version = &get_latest_webmin_version();
 if ($version > &get_webmin_version()) {
 	$rv .= &text('update_version', $version)."\n";
 	}

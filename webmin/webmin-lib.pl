@@ -965,10 +965,8 @@ if (&foreign_available($module_name) && !$noupdates) {
 				local $main::error_must_die = 1;
 				local ($updates) = &fetch_updates($url,
 					$config{'upuser'}, $config{'uppass'});
-				print STDERR "got ",scalar(@$updates)," from $url\n";
 				push(@$allupdates, @$updates);
 				};
-			print STDERR $@;
 			}
 		&open_tempfile(UPCACHE, ">$update_cache", 1);
 		&print_tempfile(UPCACHE, &serialise_variable($allupdates));
@@ -982,7 +980,6 @@ if (&foreign_available($module_name) && !$noupdates) {
 
 	# All a table of them, and a form to install
 	$allupdates = &filter_updates($allupdates);
-	print STDERR "filtered to ",scalar(@$allupdates),"\n";
 	if (@$allupdates) {
 		local $msg = &ui_form_start(
 			"$gconfig{'webprefix'}/webmin/update.cgi");
@@ -1601,24 +1598,42 @@ return $version ? (1, $version)
 		: (0, "No version number found at $update_host");
 }
 
-# filter_updates(&updates, [version])
+# filter_updates(&updates, [version], [include-third], [include-missing])
 # Given a list of updates, filters them to include only those that are
 # suitable for this system.
-# XXX check if module is not installed, non-core, etc..
 sub filter_updates
 {
-local $allupdates = $_[0];
-local $version = $_[1] || &get_webmin_version();
+local ($allupdates, $version, $third, $missing) = @_;
+$version ||= &get_webmin_version();
 local $bversion = &base_version($version);
 local $updatestemp = &transname();
 local @updates;
 foreach my $u (@$allupdates) {
-	print STDERR "considering $u->[0] version $u->[1] vs version=$version bversion=$bversion\n";
-	next if ($u->[1] >= $bversion + .01 || $u->[1] <= $bversion ||
-		 $u->[1] <= $version);
-	print STDERR "doing $u->[0] version $u->[1] vs version=$version bversion=$bversion\n";
+	local %minfo = &get_module_info($u->[0]);
+	local %tinfo = &get_theme_info($u->[0]);
+	local %info = %minfo ? %minfo : %tinfo;
+
+	# Skip if wrong version of Webmin, unless this is non-core module and
+	# we are handling them too
+	next if (($u->[1] >= $bversion + .01 ||
+		  $u->[1] <= $bversion ||
+		  $u->[1] <= $version) &&
+		 (!%info || $info{'longdesc'} || !$third));
+
+	# Skip if not installed, unless installing new
+	next if (!%info && !$missing);
+
+	# Skip if module has a version, and we already have it
+	next if (%info && $info{'version'} && $info{'version'} >= $u->[1]);
+
+	# Skip if not supported on this OS
 	local $osinfo = { 'os_support' => $u->[3] };
 	next if (!&check_os_support($osinfo));
+
+	# Skip if installed from RPM or Deb and update was not
+	local $itype = &get_module_install_type($u->[0]);
+	next if ($itype && $u->[2] !~ /\.$itype$/i);
+
 	push(@updates, $u);
 	}
 return \@updates;
