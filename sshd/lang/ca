@@ -214,6 +214,10 @@ sync_gnupg=Configura la clau GNUPG dels nous usuaris Unix
 sync_type=Tipus de clau
 sync_auto=&lt;Automàtic&gt;
 
+keys_title=Claus SSH del Host
+keys_desc=Aquesta pàgina permet visualitzar les claus SSH d'aquest host.
+keys_none=No he pogut trobar cat entrada HostKey a la configuració de SSHD.
+
 manual_title=Edició dels Fitxers de Configuració
 manual_ecannot=No tens permís per editar el fitxer de configuració del servidor SSH
 manual_ok=Edita
