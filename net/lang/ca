@@ -6,10 +6,11 @@ index_delete1=Desactiva les Interfícies Seleccionades
 index_delete2=Suprimeix les Interfícies Seleccionades
 index_delete3=Suprimeix i Aplica les Interfícies Seleccionades
 index_apply2=Aplica les Interfícies Seleccionades
+index_vmin=Virtualmin
 
 ifcs_title=Interfícies de Xarxa
-ifcs_now=Interfícies Actives
-ifcs_activedesc=Les interfícies llistades en aquesta taula estan actualment actives al sistema. En la majoria de casos, les hauries d'editar a la pestanya <b>En Engegar</b>.
+ifcs_now=Actives Actualment
+ifcs_activedesc=Les interfícies llistades en aquesta taula estan actualment actives al sistema. En la majoria de casos, les hauries d'editar a la pestanya <b>Activades en Engegar</b>.
 ifcs_bootdesc=Les interfícies llistades en aquesta taula s'activaran quan s'engegui el sistema, i en general, ara també quedaran actives.
 ifcs_name=Nom
 ifcs_type=Tipus
@@ -22,7 +23,7 @@ ifcs_up=Activa
 ifcs_down=Inactiva
 ifcs_add=Afegeix una nova interfície.
 ifcs_radd=Afegeix un nou rang d'adreces.
-ifcs_boot=Interfícies Activades en Engegar
+ifcs_boot=Activades en Engegar
 ifcs_act=Activa en engegar
 ifcs_bootp=Des de BOOTP
 ifcs_dhcp=Des de DHCP
@@ -37,7 +38,8 @@ ifcs_all=Totes les interfícies
 ifcs_ecannot=No tens permís per editar interfícies de xarxa
 ifcs_ecannot_this=No tens permís per editar aquesta interfície de xarxa
 ifcs_range=Rang $1
-ifcs_static=Estàtica
+ifcs_static=Configuració estàtica
+ifcs_mode=Origen de l'adreça
 
 aifc_create=Creació d'Interfície Activa
 aifc_edit=Edició d'Interfície Activa
@@ -92,6 +94,7 @@ bonding_downdelay=Retard inferior
 
 vlan_add=Afegeix una Interfície amb Tags Vlan
 vlan_physical=Dispositiu Físic
+vlan_id=ID Vlan
 vlan_create=Crea una interfície amb tags VLAN
 
 routes_title=Encaminament i Portals
@@ -151,6 +154,10 @@ routes_derr=No he pogut suprimir les rutes
 routes_denone=No has seleccionat cap ruta
 routes_ecnetmask2=No es pot especificar una màscara de xarxa com a ruta per defecte
 routes_ggw=Utilitza l'encaminador $1 a través de la interfície $2
+routes_tabboot=Configuració d'engegada
+routes_tabactive=Configuració activa
+routes_descactive=Aquesta secció llista les rutes que el sistema té actualment configurades, i permet afegir o eliminar rutes actives en alguns sistemes. Compte a l'hora de fer això, ja que els canvis incorrecte podrien deixar el sistema que està executant Webmin incomunicat amb la resta de la xarxa.
+routes_descboot=Aquesta secció permet configurar les rutes que s'activen quan s'engega el sistema. o quan s'aplica completament la configuració de xarxa.
 
 dns_title=Nom de Host i Client DNS
 dns_options=Opcions de Client DNS
@@ -190,6 +197,8 @@ ipnodes_create=Crea una Adreça de Host IPv6
 ipnodes_detail=Host i Adreces
 ipnodes_return=a la llista d'adreces de host IPv6
 ipnodes_ecannot=No tens permís per editar adreces de host IPv6
+ipnodes_none=Encara no s'ha definit cap adreça de host IPv6.
+ipnodes_delete=Suprimeix les Adreces de Host IPv6 Seleccionades
 
 log_create_host=He creat l'adreça de host $1
 log_delete_host=He suprimit l'adreça de host $1
@@ -207,6 +216,7 @@ log_modify_bifc=He modificat la interfície $1 adreça $2
 log_delete_bifc=He suprimit la interfície $1 adreça $2
 log_dyn=dinàmic
 log_delete_hosts=He suprimit $1 adreces de host
+log_delete_ipnodes=He suprimit $1 adreces de host IPv6
 log_delete_afics=Suprimint $1 interfícies actives
 log_delete_bfics=Suprimint $1 interfícies de temps d'engegada
 log_apply_bfics=He activat $1 interfícies en temps d'engegada
@@ -278,4 +288,8 @@ daifcs_egone=La interfície ja no existeix!
 
 dbifcs_err=No he pogut suprimir les interfícies
 dbifcs_err2=No he pogut activar les interfícies
+
+hdelete_err=No he pogut suprimir les adreces de host
+hdelete_enone=No n'has seleccionat cap
+idelete_err=No he pogut suprimir les adreces de host IPv6
 
