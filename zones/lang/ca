@@ -85,7 +85,7 @@ delete_doing=Suprimint la zona...
 
 uninstall_title=Desinstal·lació del Sistema
 uninstall_rusure=Segur que vols desinstal·lar el programari del sistema de la zona $1? Es perdran tots els fitxers dels seus sistemes de fitxers privats.
-uninstall_err=No he pogut desinstal·lar la zona
+uninstall_err=No he pogut desinstal·lar el programari de sistema de la zona
 uninstall_doing=Desinstal·lant el sistema de la zona...
 
 install_title=Instal·lació del Sistema
