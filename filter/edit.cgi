@@ -8,6 +8,11 @@ require './filter-lib.pl';
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'edit_title1'}, "");
 	$filter = { 'actiondefault' => 1 };
+	if ($in{'header'}) {
+		# Initial filter is based on URL params
+		$filter->{'condheader'} = $in{'header'};
+		$filter->{'condvalue'} = $in{'value'};
+		}
 	}
 else {
 	&ui_print_header(undef, $text{'edit_title2'}, "");
@@ -60,7 +65,7 @@ print &ui_table_row(
 			  $common ? "" : $filter->{'condheader'}, 20,
 			  $cmode != 4 || $common),
 	      &ui_textbox("condvalue",
-			  $filter->{'condvalue'}, 20)),
+			  $filter->{'condvalue'}, 40)),
 	undef, \@tds);
 
 # Smaller

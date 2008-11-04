@@ -70,9 +70,12 @@ mail_black=Deny Senders
 mail_white=Allow Senders
 mail_whitemove=Allow Senders and Inbox
 mail_efile=Mail file does not exist
-mail_fromsrch=Same sender..
-mail_subsrch=Same subject..
-mail_tosrch=Same recipient..
+mail_fromsrch=Find email with same sender
+mail_subsrch=Find email with same subject
+mail_tosrch=Find email with recipient
+mail_fromfilter=Create filter by sender
+mail_tofilter=Create filter by recipient
+mail_subfilter=Create filter by subject
 mail_unknown=Unknown
 
 mail_sign=Sign with key
