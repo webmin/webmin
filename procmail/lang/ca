@@ -1,4 +1,5 @@
 index_title=Filtre de Correu Procmail
+index_procmail=Filtre de correu Procmail
 index_desc_other=Les accions de procmail de $1 a sota s'aplicaran a <b>tot</b> el correu lliurat als usuaris del sistema. No obstant, només s'utilitzaran si Procmail està instal·lat i el teu servidor de correu està configurat per fer-lo servir per lliurar correu.
 index_mserr=Atenció - no s'utilitzarà cap de les regles definides a sota: $1
 index_action=Acció a prendre
@@ -27,9 +28,8 @@ index_none=Encara no s'ha configurat cap acció de procmail.
 index_return=a la llista d'accions
 index_env=Estableix la variable $1 a $2
 index_include=Processa el fitxer d'inclosió $1
-index_manual=Edita la Configuració Manualment
+index_manl=Edita la Configuració Manualment
 index_mandesc=Edita directament el fitxer de configuració primari de Procmail per crear les teves pròpies regles, variables i blocs.
-index_procmail=Procmail
 index_ecmd=No s'ha trobat al sistema el programa $1 de Procmail. O bé no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
 index_delete=Suprimeix les Accions Seleccionades
 
