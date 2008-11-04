@@ -836,3 +836,11 @@ debug_procs=Tipus de scripts a depurar
 debug_web=CGIs d'interfície Web
 debug_cmd=Línia d'ordres
 debug_cron=Treballs en segon pla
+
+notif_passexpired=La teva contrasenya de Webmin ha expirat! Se t'obligarà a canviar-la a la propera connexió.
+notif_passchange=La teva contrasenya de Webmin es va canviar per darrer cop el $1, i cal tornar-la a canviar abans de $2 dies.
+notif_passlock=La teva contrasenya de Webmin es va canviar per darrer cop el $1, i el teu compte quedarà bloquejat d'aquí a $2 dies si no la canvies.
+notif_changenow=Pots <a href='$1'>canviar la teva contrasenya ara</a> al mòdul de Canvi d'Idioma i Tema.
+notif_unixwarn=La teva contrasenya Unix es va canviar per darrer cop el $1, i cal tornar-la a canviar abans de $2 dies.
+notif_unixexpired=La teva contrasenya Unix ha expirat! Se t'obligarà a canviar-la a la propera connexió.
+
