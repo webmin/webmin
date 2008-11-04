@@ -14,46 +14,47 @@ index_ctime=Hora actual
 index_allow=Usuaris d'ordres planificades permesos
 index_amode=Usuaris permesos
 index_amode0=Tos els usuaris Unix
-index_amode1=Nom&#233;s els usuaris llistats...
+index_amode1=Només els usuaris llistats...
 index_amode2=Tots excepte els usuaris llistats...
-index_delete=Cancel&#183;la les Ordres Seleccionades
+index_delete=Cancel·la les Ordres Seleccionades
+index_noat=No s'ha trobat al sistema l'ordre $1 - pot ser que no estigui instal·lada, o no estigui disponible en el teu sistema operatiu.
 
 edit_title=Ordre Planificada
 edit_cmd=Script complet per executar
 edit_shortcmd=Ordre a executar
 edit_header=Detalls de l'ordre planificada
-edit_delete=Cancel&#183;la aquesta ordre
+edit_delete=Cancel·la aquesta ordre
 edit_run=Executa-ho Ara
 edit_ejob=L'ordre planificada ja no existeix!
-edit_ecannot=No tens perm&#237;s per editar aquesta ordre planificada
+edit_ecannot=No tens permís per editar aquesta ordre planificada
 edit_showfull=Mostra el script sencer.
 
 create_err=No he pogut crear l'ordre planificada
-create_euser=Hi falta el nom d'usuari o b&#233; no &#233;s v&#224;lid
-create_edate=Hi falta la data o l'hora, o b&#233; no &#233;s v&#224;lida
-create_ecmd=No has introdu&#239;t cap ordre
-create_efuture=La data i hora s&#243;n passades
-create_edir=Hi falta el directori o b&#233; no &#233;s v&#224;lid
-create_ecannot=No tens perm&#237;s per crear ordres planificades per a aquest usuari
-create_eallow=L'usuari especificat no t&#233; perm&#237;s per executar ordres planificades
+create_euser=Hi falta el nom d'usuari o bé no és vàlid
+create_edate=Hi falta la data o l'hora, o bé no és vàlida
+create_ecmd=No has introduït cap ordre
+create_efuture=La data i hora són passades
+create_edir=Hi falta el directori o bé no és vàlid
+create_ecannot=No tens permís per crear ordres planificades per a aquest usuari
+create_eallow=L'usuari especificat no té permís per executar ordres planificades
 
-delete_err=No he pogut cancel&#183;lar l'ordre
+delete_err=No he pogut cancel·lar l'ordre
 delete_egone=Ordre ja executada o suprimida
 
 acl_users=Pot editar les ordres programades de
 acl_all=Tots els usuaris
 acl_this=L'usuari Webmin actual
-acl_only=Nom&#233;s els usuaris
+acl_only=Només els usuaris
 acl_except=Tots excepte els usuaris
 acl_allow=Pot editar els usuaris At permesos
 
-run_title=Execuci&#243; de l'Ordre
+run_title=Execució de l'Ordre
 run_output=Sortida de l'ordre programada...
 run_none=No s'ha generat cap sortida
 
 allow_err=No he pogut desar els usuaris permesos
-allow_ecannot=No tens perm&#237;s per gestionar els usuaris permesos
-allow_eusers=No has introdu&#239;t cap usuari
+allow_ecannot=No tens permís per gestionar els usuaris permesos
+allow_eusers=No has introduït cap usuari
 
-deletes_err=No he pogut cancel&#183;lar les ordres
+deletes_err=No he pogut cancel·lar les ordres
 deletes_enone=No has seleccionat cap ordre
