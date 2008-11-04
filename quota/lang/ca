@@ -266,6 +266,8 @@ lusers_domain=Domini de les adreces d'usuari
 luser_virtualmin=Obtingues el domini de Virtualmin
 lusers_from=Adreça From: del correu
 lusers_mass=Actualitza els Usuaris Seleccionats
+lusrs_cc=Fes també Cc: a
+lusers_nocc=No facis Cc
 
 grace_seconds=Segons
 grace_minutes=Minuts
@@ -297,6 +299,7 @@ email_einterval=Hi falta l'interval o bé és invàlid
 email_epercent=Hi falta el percentatge d'ús o bé és invàlid
 email_edomain=Hi falta el domini de correu o bé és invàlid
 email_efrom=Hi falta l'adreça From: o bé és invàlida
+email_ecc=hi falta l'adreça Cc: o bé és invàlida
 email_msg=L'ús del disc per part de l'usuari $1 al sistema de fitxers $2\nha atès el $3% de la quota permesa.\n\nS'estan utilitzant $4 de l'espai en disc d'un total de $5.
 gemail_msg=L'ús de disc del grup $1 al sistema de fitxers $2 ha atès el $3% de la \nquota permesa.\n\nS'està utilitzant $4 de l'espài en disc, d'un màxim de $5.
 email_subject=S'ha excedit la quota de disc
