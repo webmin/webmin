@@ -1,5 +1,6 @@
 line0=Opcions de la interfície d'usuari,11
 wrap_width=Amplada dels missatges de correu,0,6
+wrap_compose=Amplada de tall dels missatges de correu,10,-No els tallis,80-80 columnes (estàndard),Una altra mida
 perpage=Nombre de missatges a mostrar per pàgina,0,6
 show_to=Mostra les adreces To: a les bústies,1,1-Sí,0-No
 top_buttons=Mostra els botons a dalt per a,1,2-Bústies i correus,1-Només les bústies,0-Mai
@@ -9,7 +10,7 @@ show_sent=Mostra el nombre de missatges de la carpeta de coreru enviat,1,1-Sí,0-
 fwd_mode=Reenvia els missatges citats,1,0-Sí,1-No
 delete_warn=Demana confirmació abans d'esborrar,10,y-Sí,n-No,Per a bústies més grans de
 view_html=Mostra el cos del missatge,4,0-Sempre en text planer,1-En text si és possible&#44; altrament en HTML,2-HTML si és possible&#44; altrament en text,3-Converteix HTML a text planer
-html_edit=Utilitza l'editor HTML per a redactar,1,2-Sempre,1-En respondre correus HTML,0-Mai
+html_edit=Utilitza l'editor HTML per a redactar,4,2-Sempre,1-En respondre correus HTML,0-Mai
 html_quote=Mode de citat HTML,1,1-Missatge sota &lt;hr&gt;,0-Missatge dins de &lt;blockquote&gt;
 log_read=Registra la lectura del correu al Fitxer d'Accions de Webmin,1,1-Sí,0-No
 bcc_to=Fés còpia cega dels missatges enviats a,0
@@ -51,7 +52,7 @@ from_virtualmin=Obtingues l'adreça From: de Virtualmin,1,1-Sí,0-No
 from_dom=Domini a utilitzar a les adreces From:,3,Nom de host del sistema
 
 line1=Configuració del sistema,11
-mail_system=Servidor de correu instal·lat,1,1-Sendmail,0-Postfix,2-Qmail,3-Detecta'l automàticament,4-Qmail+LDAP,5-Qmail+VPopMail
+mail_system=Servidor de correu instal·lat,1,1-Sendmail,0-Postfix,2-Qmail,3-Detecta'l automàticament,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Detecta'l automàticament
 send_mode=Envia el correu emprant,10,-El programa servidor de correu,El servidor SMTP
 no_crlf=Afegeix un retorn de carro ( \r ) a cada línia,1,0-Sí,1-No
 smtp_user=Nom d'usuari SMTP al servidor de correu,3,Cap
