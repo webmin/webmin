@@ -242,6 +242,10 @@ ui_efeedbackmail=Hi falta el servidor SMTP o bé és invàlid
 ui_feedbackhost=Nom de host a l'adreça From: d'opinions
 ui_feedbackthis=Nom de host del sistema
 ui_hostnamemode=Nom de host a mostrar a Usermin
+ui_hnm0=Nom de host real
+ui_hnm1=Nom de host apartir de l'URL
+ui_hnm2=Nom de domini a partir de l'URL
+ui_hnm3=Un altre nom...
 ui_tabs=Categoritza els mòduls de la pàgina índex
 
 upgrade_title=Actualització d'Usermin
