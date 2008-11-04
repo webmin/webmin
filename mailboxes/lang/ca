@@ -6,6 +6,9 @@ index_return=a la llista d'usuaris
 index_esystem=No s'ha detectat al sistema cap dels servidors de correu suportats (Exim, Qmail, Postfix i Sendmail). Hauràs d'ajustar la <a href='$1'>configuració del mòdul</a> per configurar manualment el servidor de correu i possiblement els camins del correu.
 index_esystem2=No s'ha trobat al sistema el servidor de correu establert a la <a href='$1'>configuració del mòdul</a>. Hauràs de modificar la configuració per que faci servir el servidor correcte.
 index_esystem3=S'ha produït un error en contactar el sistema de correu establert a la <a href='$1'>configuració del mòdul</a>: $2.
+index_system6=Servidor de correu: Exim
+index_system5=Servidor de correu: Qmail+VPopMail
+index_system4=Servidor de correu: Qmail+LDAP
 index_system2=Servidor de correu: Qmail
 index_system1=Servidor de correu: Sendmail
 index_system0=Servidor de correu: Postfix
@@ -201,6 +204,20 @@ reply_errc=No he pogut copiar el correu
 reply_errm=No he pogut desplaçar el correu
 reply_return=a la redacció del correu
 reply_efwdnone=No existeix cap dels missatges reenviats
+reply_dsn=Demana notificació de l'estat de lectura
+reply_del=Demana notificació de l'estat de lliurament
+reply_aboot=Afegeix els destinataris a la llibreta d'adreces
+reply_tabfrom=De
+reply_tabto=A
+reply_tabreplyto=Respon-A
+reply_tabcc=Cc
+reply_tabbcc=Bcc
+reply_tabsigning=Signatura
+reply_taboptions=Opcions
+reply_addattach=Afegeix un camp d'adjunció.
+reply_addssattach=Afegeix un camp d'adjunció de la part del servidor.
+reply_html0=Redacta en text
+reply_html1=Redacta en HTML
 
 reply_spell=Comprova l'ortografia
 reply_draft=Desa com a Esborrany
