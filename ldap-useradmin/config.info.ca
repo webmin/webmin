@@ -11,6 +11,7 @@ other_class=Altres objectClasses per afegir als usuaris nous,0
 gother_class=Altres objectClasses per afegir als grups nous,0
 given=Mostra els camps per al nom i cognom donats,1,1-Sí,0-No
 given_class=Classe d'objectes a afegir per al nom donat,0
+given_order=Ordre del cognom i el nom,1,1-Nom&#44; Cognom,0-Cognom Nom
 slappasswd=Camí complet del programa <tt>slappasswd</tt>,0
 
 line9=Atributs LDAP,11
@@ -47,7 +48,7 @@ default_inactive=Dies inactius per defecte dels usuaris nous,3,Del mòdul d'Usuar
 default_expire=Data de caducitat per defecte dels usuaris nous (dd/mm/aaaa),3,Del mòdul d'Usuaris i Grups
 default_other=Crea i actualitza als altres mòduls,1,1-Sí,0-No,-Del mòdul d'Usuaris i Grups
 
-line8=Opcions de presentació,11
+line8=Opcions de la interfície d'usuari,11
 display_max=Nombre màxim d'usuaris o grups a mostrar,3,Del mòdul d'Usuaris i Grups
 passwd_stars=Amaga la contrasenya en text planer,1,1-Sí,0-No,-Del mòdul d'Usuaris i Grups
 random_password=Genera la contrasenya dels usuaris nous,1,1-Sí,0-No,-Del mòdul d'Usuaris i Grups
