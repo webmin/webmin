@@ -67,20 +67,16 @@ print &ui_buttons_start();
 
 if (&foreign_check("init")) {
 	&foreign_require("init", "init-lib.pl");
-	if ($init::init_mode eq "init" ||
-	    $init::init_mode eq "win32" ||
-	    $init::init_mode eq "rc") {
-		$starting = &init::action_status("webmin");
-		print &ui_buttons_row("bootup.cgi",
-		      $text{'index_boot'},
-		      $text{'index_bootmsg'}.
-		      ($miniserv{'inetd'} ? "<b>$text{'index_inetd'}</b>" :
-		       !$ENV{'MINISERV_CONFIG'} ? "<b>$text{'index_apache'}</b>" : ""),
-		      &ui_hidden("starting", $starting),
-		      &ui_radio("boot", $starting == 2 ? 1 : 0,
-				[ [ 1, $text{'yes'} ],
-				  [ 0, $text{'no'} ] ]));
-		}
+	$starting = &init::action_status("webmin");
+	print &ui_buttons_row("bootup.cgi",
+	      $text{'index_boot'},
+	      $text{'index_bootmsg'}.
+	      ($miniserv{'inetd'} ? "<b>$text{'index_inetd'}</b>" :
+	       !$ENV{'MINISERV_CONFIG'} ? "<b>$text{'index_apache'}</b>" : ""),
+	      &ui_hidden("starting", $starting),
+	      &ui_radio("boot", $starting == 2 ? 1 : 0,
+			[ [ 1, $text{'yes'} ],
+			  [ 0, $text{'no'} ] ]));
 	}
 
 # Restart Webmin
