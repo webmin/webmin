@@ -79,6 +79,28 @@ print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
 		10, 1, 0,
 		$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
 
+# Primary members (read-only)
+if ($n ne "") {
+	@upri = grep { $_->{'gid'} == $group{'gid'} } @ulist;
+	if (@upri) {
+		@uprilinks = ( );
+		foreach $u (@upri) {
+			if (&can_edit_user(\%access, $u)) {
+				push(@uprilinks, "<a href='edit_user.cgi?".
+				  "num=$u->{'num'}'>$u->{'user'}</a>");
+				}
+			else {
+				push(@uprilinks, $u->{'user'});
+				}
+			}
+		$upri = &ui_links_row(\@uprilinks);
+		}
+	else {
+		$upri = $text{'gedit_prinone'};
+		}
+	print &ui_table_row(&hlink($text{'gedit_pri'}, "gpri"), $upri, 3);
+	}
+
 print &ui_table_end();
 
 # Section for on-change and on-create events

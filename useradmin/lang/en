@@ -191,6 +191,8 @@ gedit_gid_calc=Calculated
 gedit_gid_def=Automatic
 gedit_allu=All users
 gedit_selu=Users in group
+gedit_pri=Primary group members
+gedit_prinone=No users have this group as their primary
 
 gsave_err=Failed to save group
 gsave_eedit=You cannot edit this group
