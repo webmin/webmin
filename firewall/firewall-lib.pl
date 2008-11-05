@@ -86,7 +86,12 @@ while(<FILE>) {
 		# Parse arguments
 		foreach $a (@known_args) {
 			local @vl;
-			while($rule->{'args'} =~ s/\s+(!?)\s*($a)\s+(!?)\s*(([^ \-!]\S*(\s+|$))+)/ / || $rule->{'args'} =~ s/\s+(!?)\s*($a)()(\s+|$)/ /) {
+			while($rule->{'args'} =~
+			       s/\s+(!?)\s*($a)\s+(!?)\s*("[^"]*")(\s+|$)/ / ||
+			      $rule->{'args'} =~
+			       s/\s+(!?)\s*($a)\s+(!?)\s*(([^ \-!]\S*(\s+|$))+)/ / ||
+			      $rule->{'args'} =~
+			       s/\s+(!?)\s*($a)()(\s+|$)/ /) {
 				push(@vl, [ $1 || $3, &split_quoted_string($4) ]);
 				}
 			local ($aa = $a); $aa =~ s/^-+//;
