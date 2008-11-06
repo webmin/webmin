@@ -808,6 +808,7 @@ if (@from && $from[0] =~ /\S/) {
 else {
 	local @uinfo = getpwuid($<);
 	$fromaddr = $uinfo[0] || "nobody";
+	$fromaddr .= '@'.&get_system_hostname();
 	}
 local $esmtp = $_[8] ? 1 : 0;
 if ($_[1]) {
