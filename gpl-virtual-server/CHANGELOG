@@ -510,3 +510,6 @@ On systems running Postfix with spam filtering enabled, the ownership and permis
 When a virtual server with slave DNS zones is disabled, then will be removed from slave servers to properly prevent DNS resolution of the domain. When it is re-enabled, the slave zones will be re-created.
 Optimized the spam and virus deletion screen to deal better with large folders, by processing only 100 messages at a time.
 Added a check to ensure that the Webalizer template configuration file actually exists.
+Multiple virtual servers with SSL enabled can now share the same IP address. However, Virtualmin will display a warning message if a new domain does not match the hostname in the certificate for an existing domain.
+UCC certificates and CSRs can now be created and displayed on the Manage SSL Certificate page.
+Domain owners can now restore from files under their virtualmin-backup directory, subject to regular Unix permissions.
