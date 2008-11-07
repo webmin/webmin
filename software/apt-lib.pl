@@ -22,6 +22,7 @@ print "<pre>";
 &additional_log('exec', undef, $cmd);
 
 # Run dpkg --configure -a to clear any un-configured packages
+$SIG{'TERM'} = 'ignore';	# This may cause a Webmin re-config!
 local $out = &backquote_logged("dpkg --configure -a 2>&1 </dev/null");
 print &html_escape($out);
 
