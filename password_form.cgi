@@ -23,7 +23,7 @@ print &ui_form_start("$gconfig{'webprefix'}/password_change.cgi", "post");
 print &ui_hidden("user", $in{'user'});
 print &ui_hidden("pam", $in{'pam'});
 print &ui_hidden("expired", $in{'expired'});
-print &ui_table_start($text{'password_header'}, "width=50% style='width:50%'", 2);
+print &ui_table_start($text{'password_header'}, undef, 2);
 
 # Current username
 print &ui_table_row($text{'password_user'},

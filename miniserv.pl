@@ -1567,8 +1567,7 @@ if (%users) {
 
 	# Check for a visit to the special password change page
 	if ($config{'session'} && !$deny_authentication &&
-	    $page eq $config{'password_change'} && !$validated &&
-	    $config{'passwd_mode'} == 2) {
+	    $page eq $config{'password_change'} && !$validated) {
 		# Just let this slide ..
 		$validated = 1;
 		$miniserv_internal = 3;
