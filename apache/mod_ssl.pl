@@ -25,6 +25,11 @@ return (1, $text{'mod_ssl_enable'},
 }
 sub save_SSLEngine
 {
+if ($in{'SSLEngine'} eq 'on' &&
+    $in{'SSLCertificateFile_def'}) {
+	# SSL enabled but no cert .. fail
+	&error($text{'mod_ssl_ecerton'});
+	}
 return &parse_choice("SSLEngine");
 }
 

@@ -905,6 +905,7 @@ mod_ssl_builtin=Prompt at startup
 mod_ssl_passsc=Execute script $1
 mod_ssl_epassph=No SSL password entered
 mod_ssl_epasssc=Missing or invalid SSL password script
+mod_ssl_ecerton=When SSL is enabled, a certificate file must be selected
 
 # nodo50 v0.1 - Change 000003 - New Script. Define Editors for mod_apachessl directives (Apache-ssl not use mod_ssl)
 # nodo50 v0.1 - Change 000003 - Nuevo Script. Define edici&#243;n de directivas de mod_apachessl (Apache-ssl no usa mod_ssl)
