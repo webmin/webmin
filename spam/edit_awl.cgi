@@ -78,6 +78,7 @@ else {
 	print &ui_columns_start([ "",
 				  $text{'awl_email'},
 				  $text{'awl_ip'},
+				  $text{'awl_count'},
 				  $text{'awl_score'} ], undef, 0, \@tds);
 	foreach $k (@keys) {
 		($email, $ip, $rest) = split(/\|/, $k);
@@ -90,7 +91,8 @@ else {
 		else {
 			$ip = $text{'awl_unknown'};
 			}
-		print &ui_checked_columns_row([ $email, $ip, $awl{$k} ],
+		$score = $awl{$k."|totscore"};
+		print &ui_checked_columns_row([ $email, $ip, $awl{$k}, $score ],
 					      \@tds, "d", $k);
 		}
 	print &ui_columns_end();

@@ -15,3 +15,5 @@ Added global configuration settings to use MySQL, PostgreSQL or LDAP backends fo
 Auto-whitelists can now be viewed, deleted from and cleared for all users on the system. An access control option allows this to be limited to just certain users or group members.
 ---- Changes since 1.430 ----
 Added buttons to the auto-whitelist page for permanently allowing or denying selected addresses.
+---- Changes since 1.440 ----
+Corrected the columns on the auto-whitelist page, to show the message count and score.

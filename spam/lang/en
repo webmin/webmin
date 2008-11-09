@@ -349,6 +349,7 @@ awl_ok=Search
 awl_searching=Showing auto-whitelist entries matching $1 ..
 awl_email=Email address
 awl_ip=Sender's IP or network
+awl_count=Messages received
 awl_score=Score to apply
 awl_none=None
 awl_unknown=Unknown
