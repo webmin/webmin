@@ -126,7 +126,7 @@ else {
 	else {
 		$w = 590; $h = 360;
 		}
-	$jar = $config{'applet'} ? "jta25.jar" : "jta20.jar";
+	$jar = "jta26.jar";
 	print "<applet archive=\"$jar\" code=de.mud.jta.Applet ",
 	      "width=$w height=$h>\n";
 	printf "<param name=config value=%s>\n",
@@ -137,7 +137,7 @@ else {
 	if ($config{'host'}) {
 		print "<param name=Socket.host value=$config{'host'}>\n";
 		}
-	elsif ($config{'applet'}) {
+	else {
 		print "<param name=Socket.host value=$ENV{'SERVER_NAME'}>\n";
 		}
 	if ($config{'script'}) {

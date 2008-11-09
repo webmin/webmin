@@ -7,4 +7,3 @@ size=Custom width x height,0
 fontsize=Font size in points,3,Default
 detach=Separate window mode,1,1-Yes,0-No
 no_test=Test telnet or SSH server?,1,0-Yes,1-No
-applet=SSH applet to use,1,1-New version (SSH 1 and 2),0-Old version (SSH 1 only)
