@@ -1561,6 +1561,7 @@ local $cbfunc = $_[3];
 alarm(60);
 ($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
 if ($line !~ /^HTTP\/1\..\s+(200|303|302|301)(\s+|$)/) {
+	alarm(0);
 	if ($_[2]) { ${$_[2]} = $line; return; }
 	else { &error("Download failed : $line"); }
 	}
@@ -1690,6 +1691,7 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 	if (&open_socket($1, $2, "SOCK", \$error)) {
 		# Connected OK
 		if ($download_timed_out) {
+			alarm(0);
 			if ($_[3]) { ${$_[3]} = $download_timed_out; return 0; }
 			else { &error($download_timed_out); }
 			}
@@ -1709,6 +1711,7 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 		$connected = 1;
 		}
 	elsif (!$gconfig{'proxy_fallback'}) {
+		alarm(0);
 		if ($error) { $$error = $download_timed_out; return 0; }
 		else { &error($download_timed_out); }
 		}
@@ -1930,6 +1933,7 @@ if ($_[0] ne "") {
         }
 alarm(60);
 if (!($line = <SOCK>)) {
+	alarm(0);
 	if ($_[2]) { ${$_[2]} = "Failed to read reply to $what"; return undef; }
 	else { &error("Failed to read reply to $what"); }
         }
@@ -1944,6 +1948,7 @@ else {
 	$found++ if (int($1/100) == $_[1]);
 	}
 if (!$found) {
+	alarm(0);
 	if ($_[2]) { ${$_[2]} = "$what failed : $3"; return undef; }
 	else { &error("$what failed : $3"); }
 	}
@@ -1952,6 +1957,7 @@ if ($2 eq "-") {
         # Need to skip extra stuff..
         while(1) {
                 if (!($line = <SOCK>)) {
+			alarm(0);
 			if ($_[2]) { ${$_[2]} = "Failed to read reply to $what";
 				     return undef; }
 			else { &error("Failed to read reply to $what"); }
