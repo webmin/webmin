@@ -2,6 +2,7 @@ lang=en,titles=1	English
 lang=de,titles=1	German
 lang=ru_SU,charset=koi8-r,titles=0	Russian KOI8
 lang=ru_RU,charset=windows-1251,titles=0	Russian CP1251
+lang=ru.UTF-8,charset=UTF-8,titles=0	Russian UTF-8
 lang=es,titles=1	Spanish
 lang=fr,titles=1	French
 lang=pt,titles=1	Portuguese
