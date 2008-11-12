@@ -390,7 +390,9 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		&made_changes();
 
 		# Delete his home directory
-		if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/) {
+		if ($in{'delhome'} &&
+		    $user->{'home'} &&
+		    $user->{'home'} !~ /^\/+$/) {
 			&delete_home_directory($user);
 			}
 
