@@ -9,3 +9,5 @@ Added support for systems that don't have an SSH server PID file (like OS X).
 Added a Module Config option to set the SSH server version, rather than having Webmin auto-detect it.
 ---- Changes since 1.430 ----
 Added a button on the module's main page for viewing the public side of the host keys, thanks to Sean Cox.
+---- Changes since 1.440 ----
+Added a field to allow or deny SSH 2 public key authentication.

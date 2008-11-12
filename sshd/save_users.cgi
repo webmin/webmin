@@ -50,6 +50,10 @@ if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
 if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
 	&save_directive("RSAAuthentication", $conf, $in{'rsa'} ? 'yes' : 'no');
 	}
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
+	&save_directive("PubkeyAuthentication", $conf,
+			$in{'dsa'} ? 'yes' : 'no');
+	}
 
 &save_directive("StrictModes", $conf, $in{'strict'} ? 'yes' : 'no');
 

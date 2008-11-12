@@ -126,6 +126,7 @@ else {
 print "</select></td>\n";
 &ecmd();
 
+# SSH 1 RSA authentication
 if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
 	&scmd();
 	$rsa = &find_value("RSAAuthentication", $conf);
@@ -133,6 +134,18 @@ if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
 	printf "<input type=radio name=rsa value=1 %s> %s\n",
 		lc($rsa) eq 'no' ? "" : "checked", $text{'yes'};
 	printf "<input type=radio name=rsa value=0 %s> %s</td>\n",
+		lc($rsa) eq 'no' ? "checked" : "", $text{'no'};
+	&ecmd();
+	}
+
+# SSH 2 DSA authentication
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
+	&scmd();
+	$rsa = &find_value("PubkeyAuthentication", $conf);
+	print "<td><b>$text{'users_dsa'}</b></td> <td nowrap>\n";
+	printf "<input type=radio name=dsa value=1 %s> %s\n",
+		lc($rsa) eq 'no' ? "" : "checked", $text{'yes'};
+	printf "<input type=radio name=dsa value=0 %s> %s</td>\n",
 		lc($rsa) eq 'no' ? "checked" : "", $text{'no'};
 	&ecmd();
 	}
