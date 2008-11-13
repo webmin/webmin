@@ -7,7 +7,7 @@ local (@found, $count);
 return { 'up' => -1 } if (!&foreign_check("proc"));
 &foreign_require("proc", "proc-lib.pl");
 foreach $p (&foreign_call("proc", "list_processes")) {
-	if ($p->{'args'} =~ /$_[0]->{'cmd'}/i &&
+	if (eval { $p->{'args'} =~ /$_[0]->{'cmd'}/i } &&
 	    (!$_[0]->{'asuser'} || $_[0]->{'asuser'} eq $p->{'user'})) {
 		push(@found, $p->{'pid'});
 		$count++;

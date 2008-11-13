@@ -42,9 +42,12 @@ eval {
 		while(defined($buf = &read_http_connection($con))) {
 			$data .= $buf;
 			}
-		if ($data !~ /$re/i) {
-			$up = 0;
-			}
+		eval {
+			# Check for regexp match
+			if ($data !~ /$re/i) {
+				$up = 0;
+				}
+			};
 		}
 
 	&close_http_connection($con);
