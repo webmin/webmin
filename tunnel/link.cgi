@@ -11,7 +11,7 @@ $protocol = $1;
 $ssl = $protocol eq "https";
 $host = $2;
 $port = $4 || 80;
-$path = $5;
+$path = $5 || "/";
 $openurl = "$1://$2$3$5";
 $baseurl = "$1://$2$3";
 if ($ENV{'QUERY_STRING'}) {
