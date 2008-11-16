@@ -48,7 +48,7 @@ else {
 		$w = "100%"; $h = "80%";
 		}
 	else {
-		$w = 590; $h = 360;
+		$w = 800; $h = 420;
 		}
 	print "<applet archive=\"mindterm.jar\" code=com.mindbright.application.MindTerm.class ",
 	      "width=$w height=$h>\n";
