@@ -4,14 +4,15 @@
 
 require '../web-lib.pl';
 &init_config();
-&header("SSH Login", "images/ssh.gif", undef, 1, 1);
+do '../ui-lib.pl';
+&ui_print_header(undef, "SSH Login", "", undef, 1, 1);
 
 $addr = $config{'host'} ? $config{'host'}
 			: &to_ipaddress(&get_system_hostname());
 $config{'port'} = 22 if ($config{'port'} == 23);
 print <<EOF;
 <hr>
-<center><applet archive=mindtermfull.jar code=mindbright.application.MindTerm.class width=600 height=400>
+<center><applet archive=mindtermfull.jar code=com.mindbright.application.MindTerm.class width=600 height=420>
 <param name=te value="xterm-color">
 <param name=gm value="80x24">
 <param name=server value="$addr">
@@ -33,5 +34,5 @@ Applet developed under GPL by <a href=http://www.mindbright.se/mindterm/>Mindbri
 </center>
 <hr>
 EOF
-&footer("/", "index");
+&ui_print_footer("/", "index");
 
