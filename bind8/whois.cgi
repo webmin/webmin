@@ -8,6 +8,7 @@ $access{'whois'} || &error($text{'whois_ecannot'});
 $zone = &get_zone_name($in{'index'}, $in{'view'});
 $dom = $zone->{'name'};
 $tv = $zone->{'type'};
+$dom =~ s/\.$//;
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
