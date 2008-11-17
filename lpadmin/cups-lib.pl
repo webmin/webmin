@@ -138,10 +138,17 @@ while(<LPQ>) {
 		while($f = readdir(DIR)) {
 			if ($f =~ /^d(\d+)\-(\d+)$/ && $1 == $job{'id'}) {
 				push(@pq, "$d/$f");
+				local @st = stat("$d/$f");
+				if (@st) {
+					$job{'time'} ||= $st[9];
+					}
 				}
 			}
 		closedir(DIR);
 		$job{'printfile'} = @pq ? \@pq : undef;
+		if ($job{'time'}) {
+			$job{'when'} = &make_date($job{'time'});
+			}
 		push(@jobs, \%job);
 		}
 	}
