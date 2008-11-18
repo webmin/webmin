@@ -513,3 +513,4 @@ Added a check to ensure that the Webalizer template configuration file actually 
 Multiple virtual servers with SSL enabled can now share the same IP address. However, Virtualmin will display a warning message if a new domain does not match the hostname in the certificate for an existing domain.
 UCC certificates and CSRs can now be created and displayed on the Manage SSL Certificate page.
 Domain owners can now restore from files under their virtualmin-backup directory, subject to regular Unix permissions.
+If the post-modification or creation script for a domain fails, its output is now displayed as an error message.
