@@ -15,7 +15,7 @@ $raid = $conf->[$in{'idx'}];
 
 print &ui_form_start("save_raid.cgi");
 print &ui_hidden("idx", $in{'idx'});
-print &ui_table_start($text{'view_header'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'view_header'}, undef, 2);
 
 # Device name
 print &ui_table_row($text{'view_device'}, "<tt>$raid->{'value'}</tt>");
