@@ -196,13 +196,16 @@ if ($in{'search'}) {
 		     @rows;
 	}
 
+# Show search form
+print &ui_form_start("index.cgi");
+print "<b>$text{'index_search'}</b>\n";
+print &ui_textbox("search", $in{'search'}, 20);
+print &ui_submit($text{'index_ok'});
+print &ui_form_end();
+
 # Check if we are over the display limit
 if ($max_jobs && @rows > $max_jobs && !$in{'search'}) {
-	print &ui_form_start("index.cgi");
-	print "<b>$text{'index_toomany'}</b>\n";
-	print &ui_textbox("search", $in{'search'}, 20);
-	print &ui_submit($text{'index_ok'});
-	print &ui_form_end();
+	print "<b>$text{'index_toomany2'}</b><p>\n";
 	print &ui_links_row(\@crlinks);
 	}
 elsif (@rows) {
