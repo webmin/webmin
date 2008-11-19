@@ -71,6 +71,7 @@ backup_feature_dns=1
 backup_feature_mysql=1
 backup_feature_postgres=1
 backup_feature_logrotate=1
+backup_onebyone=1
 avail_dns=1
 avail_web=1
 avail_webalizer=1
