@@ -4,7 +4,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'logging_ecannot'});
-&ui_print_header(undef, $text{'logging_title'}, "");
+&ui_print_header(undef, $text{'logging_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 &ReadParse();
 $conf = &get_config();
 $logging = &find("logging", $conf);

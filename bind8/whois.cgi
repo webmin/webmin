@@ -12,7 +12,8 @@ $dom =~ s/\.$//;
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
-&ui_print_header($desc, $text{'whois_title'}, "");
+&ui_print_header($desc, $text{'whois_title'}, "",
+		 undef, undef, undef, undef, &restart_links($zone));
 
 # Find the best whois server for the domain
 foreach $wf ("$module_root_directory/whois-servers",

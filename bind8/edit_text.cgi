@@ -10,7 +10,8 @@ $tv = $zone->{'type'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'file'} || &error($text{'text_ecannot'});
-&ui_print_header($file, $text{'text_title'}, "");
+&ui_print_header($file, $text{'text_title'}, "",
+		 undef, undef, undef, undef, &restart_links($zone));
 
 $text = &read_file_contents(&make_chroot($file));
 if (!$access{'ro'}) {

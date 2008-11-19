@@ -4,7 +4,8 @@
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'manual_ecannot'});
 &ReadParse();
-&ui_print_header(undef, $text{'manual_title'}, "");
+&ui_print_header(undef, $text{'manual_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 # Work out and show the files
 $conf = &get_config();

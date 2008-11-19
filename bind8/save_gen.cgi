@@ -16,7 +16,8 @@ $file = $zone->{'file'};
 if ($in{'show'}) {
 	# Just show what would be generated
 	$desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
-	&ui_print_header($desc, $text{'gen_title2'}, "");
+	&ui_print_header($desc, $text{'gen_title2'}, "",
+			 undef, undef, undef, undef, &restart_links($zone));
 
 	print &ui_columns_start([ $text{'recs_name'}, $text{'recs_type'},
 				  $text{'recs_ttl'}, $text{'recs_vals'},

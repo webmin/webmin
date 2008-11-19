@@ -10,7 +10,8 @@ $tv = $zone->{'type'};
 &can_edit_zone($zone) ||
 	&error($text{'master_ecannot'});
 $access{'file'} || &error($text{'text_ecannot'});
-&ui_print_header($file, $text{'text_title2'}, "");
+&ui_print_header($file, $text{'text_title2'}, "",
+		 undef, undef, undef, undef, &restart_links($zone));
 
 print &text('text_desc2', "<tt>$file</tt>"),"<p>\n";
 

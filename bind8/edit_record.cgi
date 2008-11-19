@@ -16,7 +16,8 @@ $rec = $recs[$in{'num'}];
 	&error($text{'recs_ecannottype'});
 
 $desc = &text('edit_header', &ip6int_to_net(&arpa_to_ip($dom)));
-&ui_print_header($desc, &text('edit_title', $text{"edit_".$rec->{'type'}} || $rec->{'type'}), "");
+&ui_print_header($desc, &text('edit_title', $text{"edit_".$rec->{'type'}} || $rec->{'type'}), "",
+		 undef, undef, undef, undef, &restart_links($zone));
 
 &record_input($in{'index'}, $in{'view'}, $in{'type'}, $file,
 	      $dom, $in{'num'}, $rec);

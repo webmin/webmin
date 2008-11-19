@@ -3,7 +3,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'controls_ecannot'});
-&ui_print_header(undef, $text{'controls_title'}, "");
+&ui_print_header(undef, $text{'controls_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 $conf = &get_config();
 $controls = &find("controls", $conf);

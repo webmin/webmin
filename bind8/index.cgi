@@ -63,6 +63,7 @@ if (@zones == 1 && $access{'zones'} ne '*' && !$access{'defaults'} &&
 
 $chroot = &get_chroot();
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
+	&restart_links().'<br>'.
 	&help_search_link("bind", "doc", "google"), undef, undef,
 	&text($chroot eq "/" || !$chroot ? 'index_version' : 'index_chroot',
 	      $bind_version, "<tt>$chroot</tt>"));
@@ -330,31 +331,6 @@ if ($access{'views'} && $bind_version >= 9) {
 		print "<b>$text{'index_vnone'}</b><p>\n";
 		}
 	print &ui_links_row(\@links);
-	}
-
-# read the PID
-if (!$access{'ro'} && ($access{'apply'} == 1 || $access{'apply'} == 3)) {
-	print &ui_hr();
-	print &ui_buttons_start();
-	if (&is_bind_running()) {
-		# named is running .. show restart and stop button
-		if ($access{'remote'}) {
-			@servers = &list_slave_servers();
-			}
-		print &ui_buttons_row("restart.cgi", $text{'index_apply'},
-				      @servers ? $text{'index_applymsg2'}
-					       : $text{'index_applymsg'});
-		if ($access{'apply'} == 1) {
-			print &ui_buttons_row("stop.cgi", $text{'index_stop'},
-					      $text{'index_stopmsg'});
-			}
-		}
-	elsif ($access{'apply'} == 1) {
-		# named is not running .. show start button
-		print &ui_buttons_row("start.cgi", $text{'index_start'},
-				      $text{'index_startmsg'});
-		}
-	print &ui_buttons_end();
 	}
 
 &ui_print_footer("/", $text{"index"});

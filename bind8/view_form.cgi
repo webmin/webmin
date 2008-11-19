@@ -8,7 +8,8 @@ $conf = &get_config();
 $access{'views'} == 1 || &error($text{'vcreate_ecannot'});
 $access{'ro'} && &error($text{'vcreate_ecannot'});
 
-&ui_print_header(undef, $text{'vcreate_title'}, "");
+&ui_print_header(undef, $text{'vcreate_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 # Form header
 print &ui_form_start("create_view.cgi");

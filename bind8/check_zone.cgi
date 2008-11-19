@@ -8,7 +8,8 @@ $zone = &get_zone_name($in{'index'}, $in{'view'});
 &can_edit_zone($zone) || &error($text{'master_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
-&ui_print_header($desc, $text{'check_title'}, "");
+&ui_print_header($desc, $text{'check_title'}, "",
+		 undef, undef, undef, undef, &restart_links($zone));
 
 $file = &make_chroot($zone->{'file'});
 @errs = &check_zone_records($zone);

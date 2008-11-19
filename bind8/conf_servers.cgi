@@ -4,7 +4,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'servers_ecannot'});
-&ui_print_header(undef, $text{'servers_title'}, "");
+&ui_print_header(undef, $text{'servers_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 $conf = &get_config();
 @servers = ( &find("server", $conf), { } );

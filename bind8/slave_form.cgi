@@ -8,7 +8,8 @@ $access{'slave'} || &error($type ? $text{'screate_ecannot1'}
 				 : $text{'screate_ecannot2'});
 $conf = &get_config();
 &ui_print_header(undef, $type ? $text{'screate_title1'}
-			      : $text{'screate_title2'}, "");
+			      : $text{'screate_title2'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 # Start of the form
 print &ui_form_start("create_slave.cgi");

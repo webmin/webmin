@@ -4,7 +4,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'zonedef_ecannot'});
-&ui_print_header(undef, $text{'zonedef_title'}, "");
+&ui_print_header(undef, $text{'zonedef_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 # Start of defaults for new zones form
 print &ui_form_start("save_zonedef.cgi");

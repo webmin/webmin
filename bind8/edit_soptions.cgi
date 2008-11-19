@@ -4,6 +4,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
+$zone = &get_zone_name($in{'index'}, $in{'view'});
 $bconf = $conf = &get_config();
 if ($in{'view'} ne '') {
 	$view = $conf->[$in{'view'}];
@@ -16,7 +17,8 @@ $dom = $conf->[$in{'index'}]->{'value'};
 	&error($text{'slave_ecannot'});
 $access{'opts'} || &error($text{'slave_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
-&ui_print_header($desc, $text{'master_opts'}, "");
+&ui_print_header($desc, $text{'master_opts'}, "",
+		 undef, undef, undef, undef, &restart_links($zone));
 
 # Start of the form
 print &ui_form_start("save_slave.cgi");

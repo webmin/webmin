@@ -14,7 +14,8 @@ $dom = $conf->[$in{'index'}]->{'value'};
 &can_edit_zone($conf->[$in{'index'}], $view) ||
 	&error($text{'fwd_ecannot'});
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
-&ui_print_header($desc, $text{'fwd_title'}, "");
+&ui_print_header($desc, $text{'fwd_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 # Start of the form
 print &ui_form_start("save_forward.cgi");

@@ -7,5 +7,5 @@ $access{'apply'} || &error($text{'stop_ecannot'});
 $err = &stop_bind();
 &error($err) if ($err);
 &webmin_log("stop");
-&redirect("");
+&redirect($in{'return'} ? $ENV{'HTTP_REFERER'} : "");
 

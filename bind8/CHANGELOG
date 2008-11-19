@@ -91,3 +91,5 @@ Restrictions that apply to all zones in a view (such as allowed IPs for transfer
 Made the Find Free IPs page visible, for finding addresses in a master zone that are not currently used.
 Added a field to limit concurrent outgoing zone transfers and incoming transfers per nameserver to the Forwarding and Transfers page.
 Ignore tailing dots in zone names in named.conf.
+---- Changes since 1.440 ----
+Moved the apply, stop and start buttons to the top-right corner of every page, so that you don't have to return all the way to the module's main page to apply configuration changes.

@@ -4,7 +4,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'keys_ecannot'});
-&ui_print_header(undef, $text{'keys_title'}, "");
+&ui_print_header(undef, $text{'keys_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 $conf = &get_config();
 @keys = ( &find("key", $conf), { } );

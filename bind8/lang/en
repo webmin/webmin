@@ -976,3 +976,7 @@ check_ecannot=You are not allowed to check records
 check_errs=The following errors were found in the records file $1 ..
 check_allok=No errors were found in the records file $1.
 
+links_restart=Apply Configuration
+links_stop=Stop BIND
+links_start=Start BIND
+links_apply=Apply Zone

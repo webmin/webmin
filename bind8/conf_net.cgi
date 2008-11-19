@@ -3,7 +3,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'net_ecannot'});
-&ui_print_header(undef, $text{'net_title'}, "");
+&ui_print_header(undef, $text{'net_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 &ReadParse();
 $conf = &get_config();

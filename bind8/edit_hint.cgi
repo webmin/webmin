@@ -9,7 +9,8 @@ $dom = $zone->{'name'};
 &can_edit_zone($zone) ||
 	&error($text{'hint_ecannot'});
 
-&ui_print_header(undef, $text{'hint_title'}, "");
+&ui_print_header(undef, $text{'hint_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 print $text{'hint_desc'},"<p>\n";
 

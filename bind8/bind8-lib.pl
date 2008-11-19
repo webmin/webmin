@@ -2514,5 +2514,35 @@ if ($temp) {
 return undef;
 }
 
+# restart_links([&zone-name])
+# Returns HTML for links to restart or start BIND, separated by <br> for use
+# in ui_print_header
+sub restart_links
+{
+local ($zone) = @_;
+local @rv;
+if (!$access{'ro'} && ($access{'apply'} == 1 || $access{'apply'} == 3)) {
+	if (&is_bind_running()) {
+		if ($zone) {
+			push(@rv, "<a href='restart_zone.cgi?return=1&".
+				  "view=$zone->{'viewindex'}&".
+				  "index=$zone->{'index'}'>".
+				  "$text{'links_apply'}</a>");
+			}
+		push(@rv, "<a href='restart.cgi?return=1'>".
+			  "$text{'links_restart'}</a>");
+		if ($access{'apply'} == 1) {
+			push(@rv, "<a href='stop.cgi?return=1'>".
+				  "$text{'links_stop'}</a>");
+			}
+		}
+	elsif ($access{'apply'} == 1) {
+		push(@rv, "<a href='start.cgi?return=1'>".
+			  "$text{'links_start'}</a>");
+		}
+	}
+return join('<br>', @rv);
+}
+
 1;
 

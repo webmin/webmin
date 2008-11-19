@@ -12,7 +12,8 @@ $dom = $zone->{'name'};
 	&error($text{'recs_ecannottype'});
 $desc = &text('recs_header', &ip6int_to_net(&arpa_to_ip($dom)));
 $typedesc = $text{"recs_$in{'type'}"} || $in{'type'};
-&ui_print_header($desc, &text('recs_title', $typedesc), "");
+&ui_print_header($desc, &text('recs_title', $typedesc), "",
+		 undef, undef, undef, undef, &restart_links($zone));
 
 # Show form for adding a record
 $type = $zone->{'type'};

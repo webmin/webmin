@@ -5,7 +5,8 @@
 require './bind8-lib.pl';
 $access{'delegation'} || &error($text{'dcreate_ecannot'});
 $access{'ro'} && &error($text{'master_ero'});
-&ui_print_header(undef, $text{'dcreate_title'}, "");
+&ui_print_header(undef, $text{'dcreate_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 # Form start
 print &ui_form_start("create_delegation.cgi");

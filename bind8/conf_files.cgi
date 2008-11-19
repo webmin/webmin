@@ -4,7 +4,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'files_ecannot'});
-&ui_print_header(undef, $text{'files_title'}, "");
+&ui_print_header(undef, $text{'files_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 &ReadParse();
 $conf = &get_config();

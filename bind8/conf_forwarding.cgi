@@ -4,7 +4,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'forwarding_ecannot'});
-&ui_print_header(undef, $text{'forwarding_title'}, "");
+&ui_print_header(undef, $text{'forwarding_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 $conf = &get_config();
 $options = &find("options", $conf);

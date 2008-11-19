@@ -10,7 +10,8 @@ $vconf = $view->{'members'};
 $access{'views'} || &error($text{'view_ecannot'});
 &can_edit_view($view) || &error($text{'view_ecannot'});
 
-&ui_print_header(undef, $text{'view_title'}, "");
+&ui_print_header(undef, $text{'view_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 # Form header
 print &ui_form_start("save_view.cgi");

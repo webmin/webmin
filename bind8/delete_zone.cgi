@@ -25,7 +25,8 @@ $rev = ($zconf->{'value'} =~ /in-addr\.arpa/i || $zconf->{'value'} =~ /\.$ipv6re
 $type = &find("type", $zconf->{'members'})->{'value'};
 if (!$in{'confirm'} && $config{'confirm_zone'}) {
 	# Ask the user if he is sure ..
-	&ui_print_header(undef, $text{'delete_title'}, "");
+	&ui_print_header(undef, $text{'delete_title'}, "",
+			 undef, undef, undef, undef, &restart_links());
 
 	# Check if deleted on slaves too
 	@servers = &list_slave_servers();

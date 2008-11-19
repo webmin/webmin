@@ -8,5 +8,5 @@ $access{'apply'} || &error($text{'start_ecannot'});
 $err = &start_bind();
 &error($err) if ($err);
 &webmin_log("start");
-&redirect("");
+&redirect($in{'return'} ? $ENV{'HTTP_REFERER'} : "");
 

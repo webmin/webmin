@@ -23,5 +23,5 @@ if ($access{'remote'}) {
 	}
 
 &webmin_log("apply");
-&redirect("");
+&redirect($in{'return'} ? $ENV{'HTTP_REFERER'} : "");
 

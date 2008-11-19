@@ -24,7 +24,8 @@ if ($zone->{'file'}) {
 	}
 &ui_print_header($desc, $0 =~ /edit_slave/ ? $text{'slave_title'}
 					   : $text{'stub_title'},
-		 "", undef, 0, 0, 0, undef, undef, undef, $lasttrans);
+		 "", undef, 0, 0, 0, &restart_links($zone),
+		 undef, undef, $lasttrans);
 
 if ($zone->{'file'}) {
 	print "<p>\n";

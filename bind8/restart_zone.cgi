@@ -41,7 +41,12 @@ elsif ($? || $out =~ /failed|not found|error/i) {
 &webmin_log("apply", $dom);
 
 $tv = $zone->{'type'};
-&redirect(($tv eq "master" ? "edit_master.cgi" :
-	  $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
-	  "?index=$in{'index'}&view=$in{'view'}");
+if ($in{'return'}) {
+	&redirect($ENV{'HTTP_REFERER'});
+	}
+else {
+	&redirect(($tv eq "master" ? "edit_master.cgi" :
+		  $tv eq "forward" ? "edit_forward.cgi" : "edit_slave.cgi").
+		  "?index=$in{'index'}&view=$in{'view'}");
+	}
 

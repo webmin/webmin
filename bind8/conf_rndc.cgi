@@ -4,7 +4,9 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'rndc_ecannot'});
-&ui_print_header(undef, $text{'rndc_title'}, "");
+&ui_print_header(undef, $text{'rndc_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
+
 print $text{'rndc_desc'},"<p>\n";
 
 # Check for rndc-confgen program

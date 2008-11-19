@@ -4,7 +4,8 @@
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'acls_ecannot'});
-&ui_print_header(undef, $text{'acls_title'}, "");
+&ui_print_header(undef, $text{'acls_title'}, "",
+		 undef, undef, undef, undef, &restart_links());
 
 $conf = &get_config();
 @acls = ( &find("acl", $conf), { } );

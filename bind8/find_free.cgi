@@ -5,6 +5,7 @@
 
 require './bind8-lib.pl';
 &ReadParse();
+$zone = &get_zone_name($in{'index'}, $in{'view'});
 $conf = &get_config();
 if ($in{'view'} ne '') {
 	$conf = $conf->[$in{'view'}]->{'members'};
@@ -15,7 +16,8 @@ $file = &find("file", $zconf)->{'value'};
 $dom = $conf->[$in{'index'}]->{'value'};
 if (!$access{'findfree'}) {&error($text{'findfree_nofind'})};
 $desc = &text('findfree_header', &arpa_to_ip($dom));
-&ui_print_header($desc, &text('findfree_title'), "");
+&ui_print_header($desc, &text('findfree_title'), "",
+		 undef, undef, undef, undef, &restart_links($zone));
 
 &find_ips($in{'index'}, $in{'from'}, $in{'to'}, $in{'cf'});
 
