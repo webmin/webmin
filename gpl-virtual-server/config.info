@@ -52,6 +52,7 @@ proxy_pass=Allow creation of forwarding-only websites?,1,1-Yes using proxying,2-
 homes_dir=Subdirectory for mailbox user home directories,0,20
 passwd_mode=Password field type,1,1-Randomly generated password,0-Enter password once,2-Enter password twice
 passwd_length=Length of randomly generated password,3,Default (15 characters),5
+limitnoalias=Include alias servers in limits?,1,0-Yes,1-No
 denied_domains=Regular expressions for disallowed domains,0
 
 line2.1=SSL settings,11
@@ -60,10 +61,6 @@ key_tmpl=Template for private key path,3,Default (<tt>~/ssl.key</tt>)
 cert_tmpl=Template for certificate path,3,Default (<tt>~/ssl.cert</tt>)
 ca_tmpl=Template for CA certificate path,3,Default (<tt>~/ssl.ca</tt>)
 openssl_cnf=Location of OpenSSL configuration file,3,Work out automatically
-
-line6=Default limits for new servers,11
-defnodbname=Default database name restriction,1,0-Can,1-Cannot
-limitnoalias=Include alias servers in limits?,1,0-Yes,1-No
 
 line4=Actions upon server and user creation,11
 from_addr=From: address for email sent by Virtualmin,3,Default
