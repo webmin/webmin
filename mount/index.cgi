@@ -50,6 +50,7 @@ if (@visible) {
 	print &ui_columns_start([ $text{'index_dir'},
 				$text{'index_type'},
 				$text{'index_dev'},
+				$text{'index_used'},
 				$text{'index_use'},
 				$text{'index_perm'} ], 100);
 	foreach $m (@visible) {
@@ -79,6 +80,15 @@ if (@visible) {
 		$fsn .= " ($minfo[2])" if (uc($fsn) ne uc($minfo[2]));
 		push(@cols, $minfo[2] eq "*" ? $text{'index_auto'} : $fsn);
 		push(@cols, &device_name($minfo[1]));
+		($total, $free) = &disk_space($minfo[2],$minfo[0]);
+		if ($total) {
+			$pc = int(100*($total-$free) / $total);
+			push(@cols, $pc >= 99 ? "<font color=red>$pc %</font>" :
+				    $pc >= 95 ? "<font color=orange>$pc %</font>" : $pc."%");
+			}
+		else {
+			push(@cols, "");
+			}
 		if (&can_edit_fs(@minfo)) {
 			push(@cols,
 				defined($medidx) ?

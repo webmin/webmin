@@ -21,3 +21,4 @@ Mounted filesystems can now be displayed on Intel macs, without needing the gcc 
 SMBFS authentication credentials can be stored in a separate file, thanks to a patch by Rob Shinn.
 ---- Changes since 1.440 ----
 Improved support for filesystems on partitions identified by volume ID when the vol_id command is missing.
+Show the used disk space for each filesystem on the main page.
