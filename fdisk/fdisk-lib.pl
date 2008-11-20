@@ -19,6 +19,7 @@ $has_e2label = &has_command("e2label");
 $has_xfs_db = &has_command("xfs_db");
 $has_volid = &has_command("vol_id");
 $has_reiserfstune = &has_command("reiserfstune");
+$uuid_directory = "/dev/disk/by-uuid";
 $| = 1;
 
 # list_disks_partitions([include-cds])
@@ -1179,13 +1180,30 @@ return $? || $label !~ /\S/ ? undef : $label;
 # Returns the UUID for some device's filesystem
 sub get_volid
 {
-if ($has_volid) {
-	local $out = &backquote_command("vol_id $_[0] 2>&1");
+local ($device) = @_;
+local $uuid;
+if (-d $uuid_directory) {
+	# Use UUID mapping directory
+	opendir(DIR, $uuid_directory);
+	foreach my $f (readdir(DIR)) {
+		local $linkdest = &simplify_path(
+			&resolve_links("$uuid_directory/$f"));
+		if ($linkdest eq $device) {
+			$uuid = $f;
+			last;
+			}
+		}
+	closedir(DIR);
+	}
+elsif ($has_volid) {
+	# Use vol_id command
+	local $out = &backquote_command(
+			"vol_id ".quotemeta($device)." 2>&1", 1);
 	if ($out =~ /ID_FS_UUID=(\S+)/) {
-		return $1;
+		$uuid = $1;
 		}
 	}
-return undef;
+return $uuid;
 }
 
 # set_label(device, label, [type])

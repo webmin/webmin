@@ -50,6 +50,7 @@ if (&has_command("vol_id")) {
 if (&has_command("reiserfstune")) {
 	$has_reiserfstune = 1;
 	}
+$uuid_directory = "/dev/disk/by-uuid";
 
 # Return information about a filesystem, in the form:
 #  directory, device, type, options, fsck_order, mount_at_boot
@@ -485,21 +486,14 @@ while(<MTAB>) {
 				}
 			}
 		}
-	if (!$_[0] && $has_volid && $p[0] =~ /^\/dev\//) {
-		# Check for a UUID on this partition, and if there is one
-		# and the filesystem is in fstab with the label, change
-		# the device.
-		local $out = &backquote_command(
-				"vol_id ".quotemeta($p[0])." 2>&1", 1);
-		if ($out =~ /ID_FS_UUID=(\S+)/) {
-			local $uuid = $1;
-			foreach $m (@mounts) {
-				if ($m->[0] eq $p[1] &&
-				    $m->[1] eq "UUID=$uuid") {
-					$p[0] = "UUID=$uuid";
-					last;
-					}
-				}
+
+	# Check for a UUID on this partition, and if there is one
+	# and the filesystem is in fstab with the label, change
+	# the device.
+	if (!$_[0]) {
+		local $uuid = &device_to_uuid($p[0], \@mounts);
+		if ($uuid) {
+			$p[0] = "UUID=$uuid";
 			}
 		}
 
@@ -536,19 +530,12 @@ while(<SWAPS>) {
 					}
 				}
 			}
-		if (!$_[0] && $has_volid && $sf =~ /^\/dev\//) {
-			# Similarly, fix up UUID= entrys for swap in /etc/fstab
-			local $out = &backquote_command(
-					"vol_id ".quotemeta($sf)." 2>&1", 1);
-			if ($out =~ /ID_FS_UUID=(\S+)/) {
-				local $uuid = $1;
-				foreach $m (@mounts) {
-					if ($m->[0] eq "swap" &&
-					    $m->[1] eq "UUID=$uuid") {
-						$sf = "UUID=$uuid";
-						last;
-						}
-					}
+
+		# Convert to UUID format if used in fstab
+		if (!$_[0]) {
+			local $uuid = &device_to_uuid($sf, \@mounts);
+			if ($uuid) {
+				$sf = "UUID=$uuid";
 				}
 			}
 		push(@rv, [ "swap", $sf, "swap", "-" ]);
@@ -560,6 +547,48 @@ $list_mounted_cache_mode = $_[0];
 return @rv;
 }
 
+# device_to_uuid(device, [&mounts])
+# Given a device name like /dev/sda1, return the UUID for it.
+# If a list of mounts are given, only match if found in mount list.
+sub device_to_uuid
+{
+local ($device, $mounts) = @_;
+local $uuid;
+if ($device =~ /^\/dev\// && ($has_volid || -d $uuid_directory)) {
+	if (-d $uuid_directory) {
+		# Use UUID mapping directory
+		opendir(DIR, $uuid_directory);
+		foreach my $f (readdir(DIR)) {
+			local $linkdest = &simplify_path(
+				&resolve_links("$uuid_directory/$f"));
+			if ($linkdest eq $device) {
+				$uuid = $f;
+				last;
+				}
+			}
+		closedir(DIR);
+		}
+	else {
+		# Use vol_id command
+		local $out = &backquote_command(
+				"vol_id ".quotemeta($device)." 2>&1", 1);
+		if ($out =~ /ID_FS_UUID=(\S+)/) {
+			$uuid = $1;
+			}
+		}
+	}
+if ($uuid && @$mounts) {
+	my $found;
+	foreach my $m (@$mounts) {
+		if ($m->[1] eq "UUID=$uuid") {
+			$found++;
+			last;
+			}
+		}
+	$uuid = undef if (!$found);
+	}
+return $uuid;
+}
 
 # mount_dir(directory, device, type, options)
 # Mount a new directory from some device, with some options. Returns 0 if ok,
@@ -966,7 +995,7 @@ elsif ($_[0] eq "swap") {
 		$found ? "checked" : "", $text{'linux_disk'}, $sel;
 
 	# Show UUID input
-	if ($has_volid) {
+	if ($has_volid || -d $uuid_directory) {
 		local $u = $_[1] =~ /UUID=(\S+)/ ? $1 : undef;
 		local $usel = &fdisk::volid_select("lnx_volid", $u, \$ufound);
 		if ($usel) {
@@ -1073,7 +1102,7 @@ else {
 		}
 
 	# Show UUID input
-	if ($has_volid) {
+	if ($has_volid || -d $uuid_directory) {
 		local $u = $_[1] =~ /UUID=(\S+)/ ? $1 : undef;
 		local $usel = &fdisk::volid_select("lnx_uuid", $u, \$ufound);
 		if ($usel) {
