@@ -1597,6 +1597,7 @@ if ($rcode == 303 || $rcode == 302 || $rcode == 301) {
 		$page = $header{'location'};
 		}
 	elsif ($header{'location'}) {
+		# Assume relative to same dir
 		if ($_[2]) { ${$_[2]} = "Invalid Location header $header{'location'}"; return; }
 		else { &error("Invalid Location header $header{'location'}"); }
 		}

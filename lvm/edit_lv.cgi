@@ -21,6 +21,7 @@ else {
 		'is_snap' => $in{'snap'},
 	 	'size' => ($vg->{'pe_total'} - $vg->{'pe_alloc'})*
 			  $vg->{'pe_size'} };
+	$lv->{'size'} = &nice_round($lv->{'size'});
 	}
 
 print &ui_form_start("save_lv.cgi");
@@ -40,8 +41,16 @@ else {
 	print &ui_table_row($text{'lv_name'}, 
 		&ui_textbox("name", $lv->{'name'}, 20));
 
-	print &ui_table_row($text{'lv_size'},
-		&ui_textbox("size", $lv->{'size'}, 8)." kB");
+	if (!$in{'lv'}) {
+		# Can show nice size chooser
+		print &ui_table_row($text{'lv_size'},
+			&ui_bytesbox("size", $lv->{'size'}*1024, 8));
+		}
+	else {
+		# Show in exactly kB
+		print &ui_table_row($text{'lv_size'},
+			&ui_textbox("size", $lv->{'size'}, 8)." kB");
+		}
 	}
 
 # Number of physical extents

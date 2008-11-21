@@ -40,6 +40,11 @@ else {
 	$same && (!$in{'lv'} || $in{'lv'} ne $in{'name'}) &&
 		&error($text{'lv_esame'});
 	$in{'size'} =~ /^\d+$/ || &error($text{'lv_esize'});
+	if (defined($in{'size_units'})) {
+		# Convert selected units to kB
+		$in{'size'} = $in{'size'}*$in{'size_units'}/1024;
+		delete($in{'size_units'});
+		}
 	$in{'snap'} || $in{'lv'} || $in{'stripe_def'} ||
 		$in{'stripe'} =~ /^[1-9]\d*$/ || &error($text{'lv_estripe'});
 

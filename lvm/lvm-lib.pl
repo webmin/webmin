@@ -657,5 +657,29 @@ local $ver = $out =~ /\s+([0-9\.]+)/ ? $1 : undef;
 return wantarray ? ( $ver, $out ) : $ver;
 }
 
+# nice_round(number)
+# Round some number to TB, GB, MB or kB, depending on size
+sub nice_round
+{
+local ($bytes) = @_;
+my $units;
+if ($bytes >= 10*1024*1024*1024*1024) {
+        $units = 1024*1024*1024*1024;
+        }
+elsif ($bytes >= 10*1024*1024*1024) {
+        $units = 1024*1024*1024;
+        }
+elsif ($bytes >= 10*1024*1024) {
+        $units = 1024*1024;
+        }
+elsif ($bytes >= 10*1024) {
+        $units = 1024;
+        }
+else {
+	$units = 1;
+	}
+return int($bytes / $units) * $units;
+}
+
 1;
 

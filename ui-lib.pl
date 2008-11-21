@@ -466,7 +466,10 @@ sub ui_bytesbox
 {
 my ($name, $bytes, $size, $dis) = @_;
 my $units = 1;
-if ($bytes >= 10*1024*1024*1024) {
+if ($bytes >= 10*1024*1024*1024*1024) {
+	$units = 1024*1024*1024*1024;
+	}
+elsif ($bytes >= 10*1024*1024*1024) {
 	$units = 1024*1024*1024;
 	}
 elsif ($bytes >= 10*1024*1024) {
@@ -485,8 +488,11 @@ if ($bytes ne "") {
 $size = &ui_max_text_width($size || 8);
 return &ui_textbox($name, $bytes, $size, $dis)." ".
        &ui_select($name."_units", $units,
-		 [ [ 1, "bytes" ], [ 1024, "kB" ], [ 1024*1024, "MB" ],
-		   [ 1024*1024*1024, "GB" ] ], undef, undef, undef, $dis);
+		 [ [ 1, "bytes" ],
+		   [ 1024, "kB" ],
+		   [ 1024*1024, "MB" ],
+		   [ 1024*1024*1024, "GB" ],
+		   [ 1024*1024*1024*1024, "TB" ] ], undef, undef, undef, $dis);
 }
 
 # ui_upload(name, size, [disabled?], [tags])
