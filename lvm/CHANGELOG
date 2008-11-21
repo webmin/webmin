@@ -14,3 +14,4 @@ Fixed the command used to move data to another physical volume under LVM 2.
 The percentage of a snapshot's blocks used is now shown on the Edit Snapshot page.
 ---- Changes since 1.440 ----
 Filesystem space used is show on the logical volume list, and the field for a new volume's size is more user-friendly.
+When using newer versions of the resize2fs command, EXT filesystems can be shrunk as well as enlarged.

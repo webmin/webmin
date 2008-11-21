@@ -421,8 +421,8 @@ if ($_[0] eq "ext2" || $_[0] eq "ext3") {
 		}
 	elsif (&has_command("resize2fs")) {
 		# Only new versions can reduce a FS
-		local $out = &backquote_command("resize2fs");
-		return $out =~ /resize2fs\s+([0-9\.]+)/i && $1 > 1.4 ? 2 : 1;
+		local $out = &backquote_command("resize2fs 2>&1");
+		return $out =~ /resize2fs\s+([0-9\.]+)/i && $1 >= 1.4 ? 2 : 1;
 		}
 	else {
 		return 0;
@@ -476,10 +476,10 @@ if ($_[1] eq "ext2" || $_[1] eq "ext3") {
 			# Need to shrink filesystem first, then LV
 			local $cmd = "resize2fs -f '$_[0]->{'device'}' $_[2]k";
 			local $out = &backquote_logged("$cmd 2>&1");
-			return $? ? $out : undef;
+			return $out if ($?);
 
 			local $err = &resize_logical_volume($_[0], $_[2]);
-			return $err if ($err);
+			return $err;
 			}
 		}
 	}
