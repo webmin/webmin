@@ -1071,7 +1071,14 @@ return @rv;
 # allowed.
 sub shared_root_directory
 {
-return 1 if ($gconfig{'shared_root'});
+if ($gconfig{'shared_root'} eq '1') {
+	# Always shared
+	return 1;
+	}
+elsif ($gconfig{'shared_root'} eq '0') {
+	# Definately not shared
+	return 0;
+	}
 if (&running_in_zone()) {
 	# In a Solaris zone .. is the root directory loopback mounted?
 	if (&foreign_exists("mount")) {
