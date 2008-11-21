@@ -35,6 +35,7 @@ index_lvsdesc=A logical volume is a virtual partition created from the combined 
 index_lvname=Logical volume
 index_lvvg=Volume group
 index_lvsize=Size
+index_lvused=Space used
 index_lvuse=Used for
 index_snapof=(Snapshot of $1)
 

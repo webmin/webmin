@@ -12,3 +12,5 @@ Converted all user interface code to use the new Webmin UI library.
 Fixed the command used to move data to another physical volume under LVM 2.
 ---- Changes since 1.410 ----
 The percentage of a snapshot's blocks used is now shown on the Edit Snapshot page.
+---- Changes since 1.440 ----
+Filesystem space used is show on the logical volume list, and the field for a new volume's size is more user-friendly.

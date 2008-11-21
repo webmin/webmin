@@ -168,6 +168,7 @@ if (@vgs) {
 		print &ui_columns_start([ $text{'index_lvname'},
 					  $text{'index_lvvg'},
 					  $text{'index_lvsize'},
+					  $text{'index_lvused'},
 					  $text{'index_lvuse'} ], 100);
 		foreach $l (@alllvs) {
 			($v) = grep { $_->{'name'} eq $l->{'vg'} } @vgs;
@@ -181,11 +182,20 @@ if (@vgs) {
 				$snapof = undef;
 				}
 			@stat = &device_status($l->{'device'});
+			$usedmsg = "";
+			if (@stat[2]) {
+				($total, $free) = &mount::disk_space(
+					$stat[1], $stat[0]);
+				$usedmsg = &text('lv_petotals',
+					&nice_size(($total-$free)*1024),
+					&nice_size($total));
+				}
 			print &ui_columns_row([
 			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
 		            "&lv=".&urlize($l->{'name'})."'>$l->{'name'}</a>",
 			  $v->{'name'},
 			  &nice_size($l->{'size'}*1024),
+			  $usedmsg,
 			  (@stat ? &device_message(@stat) : undef).
 			  ($snap ? " ".&text('index_snapof', $snap->{'name'})
 				 : ""),
