@@ -416,8 +416,17 @@ return $? ? $out : undef;
 sub can_resize_filesystem
 {
 if ($_[0] eq "ext2" || $_[0] eq "ext3") {
-	return &has_command("e2fsadm") ? 2 :
-	       &has_command("resize2fs") ? 1 : 0;
+	if (&has_command("e2fsadm")) {
+		return 2;	# Can extend and reduce
+		}
+	elsif (&has_command("resize2fs")) {
+		# Only new versions can reduce a FS
+		local $out = &backquote_command("resize2fs");
+		return $out =~ /resize2fs\s+([0-9\.]+)/i && $1 > 1.4 ? 2 : 1;
+		}
+	else {
+		return 0;
+		}
 	}
 # This is supposed to work, but doesn't for me!
 #elsif ($_[0] eq "xfs") {
@@ -454,13 +463,24 @@ if ($_[1] eq "ext2" || $_[1] eq "ext3") {
 		return $? ? $out : undef;
 		}
 	else {
-		# Need to resize LVM first, then filesystem
-		local $err = &resize_logical_volume($_[0], $_[2]);
-		return $err if ($err);
+		if ($_[2] > $_[0]->{'size'}) {
+			# Need to enlarge LV first, then filesystem
+			local $err = &resize_logical_volume($_[0], $_[2]);
+			return $err if ($err);
 
-		local $cmd = "resize2fs -f '$_[0]->{'device'}'";
-		local $out = &backquote_logged("$cmd 2>&1");
-		return $? ? $out : undef;
+			local $cmd = "resize2fs -f '$_[0]->{'device'}'";
+			local $out = &backquote_logged("$cmd 2>&1");
+			return $? ? $out : undef;
+			}
+		else {
+			# Need to shrink filesystem first, then LV
+			local $cmd = "resize2fs -f '$_[0]->{'device'}' $_[2]k";
+			local $out = &backquote_logged("$cmd 2>&1");
+			return $? ? $out : undef;
+
+			local $err = &resize_logical_volume($_[0], $_[2]);
+			return $err if ($err);
+			}
 		}
 	}
 elsif ($_[1] eq "xfs") {
