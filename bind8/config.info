@@ -6,6 +6,7 @@ named_user=User to start BIND as,3,Default
 named_group=Group to start BIND as,3,Default
 zones_file=Add new zones to file,3,named.conf
 relative_paths=Use relative zone file paths in <tt>named.conf</tt>?,1,1-Yes,0-No
+keys_dir=Directory for DNSSEC keys,3,Same as zone files
 
 line1=Display options,11
 show_list=Display domains as,1,0-Icons,1-List,2-Hierarchy
@@ -51,6 +52,8 @@ rndc_cmd=Full path to rndc command,0
 rndcconf_cmd=Full path to rndc-confgen command,0
 rndc_conf=Full path to the rndc.conf file,0
 checkzone=Full path to named-checkzone command,0
+keygen=Full path to dnssec-keygen command,0
+signzone=Full path to dnssec-signzone command,0
 pid_file=Default PID file location(s),3,/var/run/named.pid
 no_pid_chroot=PID file is under chroot directory?,1,0-Yes,1-No
 start_cmd=Command to start BIND,3,Default

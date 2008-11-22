@@ -980,3 +980,12 @@ links_restart=Apply Configuration
 links_stop=Stop BIND
 links_start=Start BIND
 links_apply=Apply Zone
+
+dnssec_title=DNSSEC Keys
+dnssec_ecannot=You are not allowed to manage DNSSEC keys
+dnssec_delete=Delete Selected Keys
+dnssec_id=Key ID
+dnssec_alg=Algorithm
+dnssec_bits=Key bits
+dnssec_none=No DNSSEC signing keys have been created yet.
+dnssec_header=Create DNSSEC key

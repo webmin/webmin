@@ -2544,5 +2544,13 @@ if (!$access{'ro'} && ($access{'apply'} == 1 || $access{'apply'} == 3)) {
 return join('<br>', @rv);
 }
 
+# supports_dnssec()
+# Returns 1 if zone signing is supported
+sub supports_dnssec
+{
+return &has_command($config{'signzone'}) &&
+       &has_command($config{'keygen'});
+}
+
 1;
 
