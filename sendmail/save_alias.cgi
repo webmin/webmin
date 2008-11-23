@@ -64,7 +64,7 @@ else {
 		$v = $in{"val_$i"};
 		$v =~ s/^\s+//;
 		$v =~ s/\s+$//;
-		if ($t == 1 && $v !~ /^(\S+)$/) {
+		if ($t == 1 && $v !~ /^([^\|\:\"\' \t\/\\\%]\S*)$/) {
 			&error(&text('asave_etype1', $v));
 			}
 		elsif ($t == 2 && !&check_aliasfile($v, 1)) {
