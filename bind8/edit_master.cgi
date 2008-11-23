@@ -69,35 +69,47 @@ else {
 
 # links to forms editing text, soa and zone options
 if ($access{'file'}) {
+	# Manually edit zone
 	push(@links, "edit_text.cgi?index=$in{'index'}&view=$in{'view'}");
 	push(@titles, $text{'master_manual'});
 	push(@images, "images/text.gif");
 	}
 if ($access{'params'}) {
+	# SOA values
 	push(@links, "edit_soa.cgi?index=$in{'index'}&view=$in{'view'}");
 	push(@titles, $text{'master_soa'});
 	push(@images, "images/soa.gif");
 	}
 if ($access{'opts'}) {
+	# Zone options in named.conf
 	push(@links, "edit_options.cgi?index=$in{'index'}&view=$in{'view'}");
 	push(@titles, $text{'master_options'});
 	push(@images, "images/options.gif");
 	}
 if ($access{'findfree'}) {
+	# Find free IPs
 	push(@links, "find_free.cgi?index=$in{'index'}&view=$in{'view'}");
 	push(@titles, $text{'findfree_desc'});
 	push(@images, "images/findfree.gif");
 	}
 if ($access{'gen'}) {
+	# Generators
 	push(@links, "list_gen.cgi?index=$in{'index'}&view=$in{'view'}");
 	push(@titles, $text{'gen_title'});
 	push(@images, "images/gen.gif");
 	}
 if ($access{'whois'} && &has_command($config{'whois_cmd'}) &&
     $dom !~ /in-addr\.arpa/i) {
+	# Whois lookup
 	push(@links, "whois.cgi?index=$in{'index'}&view=$in{'view'}");
 	push(@titles, $text{'master_whois'});
 	push(@images, "images/whois.gif");
+	}
+if (&supports_dnssec()) {
+	# Zone key
+	push(@links, "edit_zonekey.cgi?index=$in{'index'}&view=$in{'view'}");
+	push(@titles, $text{'zonekey_title'});
+	push(@images, "images/zonekey.gif");
 	}
 
 if (@links) {

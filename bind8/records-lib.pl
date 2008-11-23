@@ -286,29 +286,32 @@ return @rv;
 # Add a new record of some type to some zone file
 sub create_record
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $fn = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($fn);
 push(@$lref, &make_record(@_[1..$#_]));
-&flush_file_lines();
+&flush_file_lines($fn);
 }
 
 # modify_record(file, &old, name, ttl, class, type, values, comment)
 # Updates an existing record in some zone file
 sub modify_record
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $fn = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($fn);
 local $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
 splice(@$lref, $_[1]->{'line'}, $lines, &make_record(@_[2..$#_]));
-&flush_file_lines();
+&flush_file_lines($fn);
 }
 
 # delete_record(file, &old)
 # Deletes a record in some zone file
 sub delete_record
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $fn = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($fn);
 local $lines = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
 splice(@$lref, $_[1]->{'line'}, $lines);
-&flush_file_lines();
+&flush_file_lines($fn);
 }
 
 # create_generator(file, range, lhs, type, rhs, [comment])
@@ -749,6 +752,51 @@ local $rv = $name eq "" ? "$origin." :
 	    $name !~ /\.$/ ? "$name.$origin." : $name;
 $rv =~ s/\.+$/\./;
 return $rv;
+}
+
+# get_zone_file(&zone|&zonename, [absolute])
+# Returns the relative-to-chroot path to a domain's zone file.
+# If absolute is 1, the path is make absolute. If 2, it is almost un-chrooted
+sub get_zone_file
+{
+local ($z, $abs) = @_;
+local $fn;
+if ($z->{'members'}) {
+	local $file = &bind8::find("file", $z->{'members'});
+	return undef if (!$file);
+	$fn = $file->{'values'}->[0];
+	}
+else {
+	$fn = $z->{'file'};
+	}
+if ($abs) {
+	$fn = &absolute_path($fn);
+	}
+if ($abs == 2) {
+	$fn = &make_chroot($fn);
+	}
+return $fn;
+}
+
+# get_dnskey_record(&zone|&zonename, [&records])
+# Returns the DNSKEY record for some domain, or undef if none
+sub get_dnskey_record
+{
+local ($z, $recs) = @_;
+if (!$recs) {
+	# Need to get zone file and thus records
+	local $fn = &get_zone_file($z);
+	$recs = [ &read_zone_file($fn, $dom) ];
+	}
+# Find the record
+local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+foreach my $r (@$recs) {
+	if ($r->{'type'} eq 'DNSKEY' &&
+	    $r->{'name'} eq $dom.'.') {
+		return $r;
+		}
+	}
+return undef;
 }
 
 1;

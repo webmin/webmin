@@ -1367,6 +1367,7 @@ return $get_chroot_cache;
 }
 
 # make_chroot(file, [is-pid])
+# Given a path that is relative to the chroot directory, return the real path
 sub make_chroot
 {
 local $chroot = &get_chroot();
@@ -2522,22 +2523,23 @@ sub restart_links
 local ($zone) = @_;
 local @rv;
 if (!$access{'ro'} && ($access{'apply'} == 1 || $access{'apply'} == 3)) {
+	local $r = $ENV{'REQUEST_METHOD'} eq 'POST' ? 0 : 1;
 	if (&is_bind_running()) {
 		if ($zone) {
-			push(@rv, "<a href='restart_zone.cgi?return=1&".
+			push(@rv, "<a href='restart_zone.cgi?return=$r&".
 				  "view=$zone->{'viewindex'}&".
 				  "index=$zone->{'index'}'>".
 				  "$text{'links_apply'}</a>");
 			}
-		push(@rv, "<a href='restart.cgi?return=1'>".
+		push(@rv, "<a href='restart.cgi?return=$r'>".
 			  "$text{'links_restart'}</a>");
 		if ($access{'apply'} == 1) {
-			push(@rv, "<a href='stop.cgi?return=1'>".
+			push(@rv, "<a href='stop.cgi?return=$r'>".
 				  "$text{'links_stop'}</a>");
 			}
 		}
 	elsif ($access{'apply'} == 1) {
-		push(@rv, "<a href='start.cgi?return=1'>".
+		push(@rv, "<a href='start.cgi?return=$r'>".
 			  "$text{'links_start'}</a>");
 		}
 	}
@@ -2550,6 +2552,168 @@ sub supports_dnssec
 {
 return &has_command($config{'signzone'}) &&
        &has_command($config{'keygen'});
+}
+
+# dnssec_size_range(algorithm)
+# Given an algorithm like DSA or DH, return the max and min allowed key sizes,
+# and an optional forced divisor.
+sub dnssec_size_range
+{
+local ($alg) = @_;
+return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ? ( 512, 2048 ) :
+       $alg eq 'DH' ? ( 128, 4096 ) :
+       $alg eq 'DSA' ? ( 512, 1024, 64 ) :
+       $alg eq 'HMAC-MD5' ? ( 1, 512 ) : ( );
+}
+
+# create_dnssec_key(&zone|&zone-name, algorithm, size)
+# Creates a new DNSSEC key for some zone, and places it in the same directory
+# as the zone file. Returns undef on success or an error message on failure.
+sub create_dnssec_key
+{
+local ($z, $alg, $size) = @_;
+local $fn = &get_zone_file($z, 2);
+$fn || return "Could not work out records file!";
+$fn =~ s/\/[^\/]+$//;
+
+# Remove all keys for the same zone
+opendir(ZONEDIR, $fn);
+foreach my $f (readdir(ZONEDIR)) {
+	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.(key|private)$/) {
+		&unlink_file("$fn/$f");
+		}
+	}
+closedir(ZONEDIR);
+
+# Create the zone key
+local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+local $out = &backquote_logged(
+	"cd ".quotemeta($fn)." && ".
+	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($size).
+	" -n ZONE $dom 2>&1");
+return $out if ($?);
+
+# Get the new key
+local $key = &get_dnssec_key($z);
+$key || return "No new key found for zone : $out";
+ref($key) || return "Failed to get new key for zone : $key";
+
+# Add the new DNSKEY record to the zone
+local $chrootfn = &get_zone_file($z);
+local @recs = &read_zone_file($chrootfn, $dom);
+for(my $i=$#recs; $i>=0; $i--) {
+	if ($recs[$i]->{'type'} eq 'DNSKEY') {
+		&delete_record($chrootfn, $recs[$i]);
+		}
+	}
+&create_record($chrootfn, $dom.".", undef, "IN", "DNSKEY",
+	       join(" ", @{$key->{'values'}}));
+&bump_soa_record($chrootfn, \@recs);
+
+return undef;
+}
+
+# sign_dnssec_zone(&zone|&zone-name)
+# Replaces a zone's file with one containing signed records.
+sub sign_dnssec_zone
+{
+local ($z) = @_;
+local $fn = &get_zone_file($z, 2);
+$fn || return "Could not work out records file!";
+$fn =~ /^(.*)\/([^\/]+$)/;
+local ($dir, $zf) = ($1, $2);
+local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+local $signed = $fn.".webmin-signed";
+
+# Create the signed file. Sometimes this fails with an error like :
+# task.c:310: REQUIRE(task->references > 0) failed
+# But re-trying works!?!
+local $out;
+local $tries = 0;
+while($tries++ < 10) {
+	$out = &backquote_logged(
+		"cd ".quotemeta($dir)." && ".
+		"$config{'signzone'} -o ".quotemeta($dom).
+		" -f ".quotemeta($signed)." ".
+		quotemeta($zf)." 2>&1");
+	last if (!$?);
+	}
+return $out if ($tries >= 10);
+
+# Merge records back into original file, by deleting all NSEC and RRSIG records
+# and then copying over
+local $fn = &get_zone_file($z, 1);
+$fn =~ /^(.*)\/([^\/]+$)/;
+local @recs = &read_zone_file($fn, $dom);
+for(my $i=$#recs; $i>=0; $i--) {
+	if ($recs[$i]->{'type'} eq 'NSEC' ||
+	    $recs[$i]->{'type'} eq 'RRSIG') {
+		&delete_record($fn, $recs[$i]);
+		}
+	}
+local @signedrecs = &read_zone_file($fn.".webmin-signed", $dom);
+foreach my $r (@signedrecs) {
+	if ($r->{'type'} eq 'NSEC' ||
+	    $r->{'type'} eq 'RRSIG') {
+		&create_record($fn, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
+			       $r->{'type'}, join(" ", @{$r->{'values'}}),
+			       $r->{'comment'});
+		}
+	}
+}
+
+# get_dnssec_key(&zone|&zone-name)
+# Returns a hash containing details of a zone's key, or an error string
+sub get_dnssec_key
+{
+local ($z) = @_;
+local $fn = &get_zone_file($z, 1);
+$fn || return "Could not work out records file!";
+$fn =~ /^(.*)\/([^\/]+$)/;
+local ($chrootdir, $zf) = ($1, $2);
+local $dir = &make_chroot($chrootdir);
+local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+local $rv;
+opendir(ZONEDIR, $dir);
+foreach my $f (readdir(ZONEDIR)) {
+	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.key$/) {
+		# Found the public key file .. read it
+		$rv ||= { };
+		$rv->{'publicfile'} = "$dir/$f";
+		$rv->{'algorithmid'} = $1;
+		$rv->{'keyid'} = $2;
+		local $config{'short_names'} = 0;	# Force canonicalization
+		local ($pub) = &read_zone_file("$chrootdir/$f", $dom);
+		$pub || return "Public key file $dir/$f does not contain ".
+			       "any records";
+		$pub->{'name'} eq $dom."." ||
+			return "Public key file $dir/$f is not for zone $dom";
+		$pub->{'type'} eq "DNSKEY" ||
+			return "Public key file $dir/$f does not contain ".
+			       "a DNSKEY record";
+		$rv->{'size'} = $pub->{'values'}->[0];
+		$rv->{'public'} = $pub->{'values'}->[3];
+		$rv->{'values'} = $pub->{'values'};
+		}
+	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private$/) {
+		# Found the private key file
+		$rv ||= { };
+		$rv->{'privatefile'} = "$dir/$f";
+		local $lref = &read_file_lines("$dir/$f", 1);
+		foreach my $l (@$lref) {
+			if ($l =~ /^(\S+):\s*(.*)/) {
+				local ($n, $v) = ($1, $2);
+				$n =~ s/\(\S+\)$//;
+				$n = lc($n);
+				$rv->{$n} = $v;
+				}
+			}
+		$rv->{'algorithm'} =~ s/^\d+\s+\((\S+)\)$/$1/;
+		$rv->{'privatetext'} = join("\n", @$lref)."\n";
+		}
+	}
+closedir(ZONEDIR);
+return $rv;
 }
 
 1;
