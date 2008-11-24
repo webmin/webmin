@@ -156,6 +156,8 @@ mcreate_view=Create in view
 mcreate_file=Records file
 mcreate_auto=Automatic
 mcreate_err=Failed to create master zone
+mcreate_ednssecsize=Failed to compute key size : $1
+mcreate_ednssec=Record creation succeeded, but DNSSEC failed : $1
 
 slave_title=Edit Slave Zone
 stub_title=Edit Stub Zone
@@ -672,6 +674,8 @@ zonedef_prins=Default nameserver for master domains
 zonedef_this=System hostname ($1)
 zonedef_eprins=Missing or invalid default nameserver for master domains
 zonedef_dnssec=Create DNSSEC key and sign new zones?
+zonedef_alg=Initial key algorithm
+zonedef_size=Initial key size
 
 find_title=Find Zones
 find_match=Zones matching $1 ..

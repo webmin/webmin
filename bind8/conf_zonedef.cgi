@@ -66,8 +66,26 @@ print &ui_table_row($text{'zonedef_prins'},
 
 # Setup DNSSEC by default?
 if (&supports_dnssec()) {
+	print &ui_table_hr();
+
+	# Enabled?
 	print &ui_table_row($text{'zonedef_dnssec'},
-		&ui_yesno_radio("dnssec", $config{'tmpl_dnssec'}));
+		&ui_yesno_radio("dnssec", $config{'tmpl_dnssec'}), 3);
+
+	# Default algorithm
+	print &ui_table_row($text{'zonedef_alg'},
+		&ui_select("alg", $config{'tmpl_dnssecalg'} || "DSA",
+			   [ &list_dnssec_algorithms() ]), 3);
+
+	# Default size
+	$sizedef = $config{'tmpl_dnssecsizedef'};
+	$sizedef = 1 if ($sizedef eq '');
+	print &ui_table_row($text{'zonedef_size'},
+		&ui_radio("size_def", $sizedef,
+			[ [ 1, $text{'zonekey_ave'}."<br>" ],
+			  [ 2, $text{'zonekey_strong'}."<br>"],
+			  [ 0, $text{'zonekey_other'} ] ]).
+		" ".&ui_textbox("size", $config{'tmpl_dnssecsize'}, 6), 3);
 	}
 
 print &ui_table_end();

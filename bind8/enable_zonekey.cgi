@@ -11,25 +11,9 @@ $dom = $zone->{'name'};
 $desc = &ip6int_to_net(&arpa_to_ip($dom));
 
 # Validate inputs and compute size
-($min, $max, $factor) = &dnssec_size_range($in{'alg'});
-if ($in{'size_def'} == 1) {
-	$size = int(($max + $min) / 2);
-	if ($factor) {
-		$size = int($size / $factor) * $factor;
-		}
-	}
-elsif ($in{'size_def'} == 2) {
-	# Max allowed
-	$size = $max;
-	}
-else {
-	$in{'size'} =~ /^\d+$/ && $in{'size'} >= $min && $in{'size'} <= $max ||
-		&error(&text('zonekey_esize', $min, $max));
-	if ($factor && $in{'size'} % $factor) {
-		&error(&text('zonekey_efactor', $factor));
-		}
-	$size = $in{'size'};
-	}
+($ok, $size) = &compute_dnssec_key_size($in{'alg'}, $in{'size_def'},
+					$in{'size'});
+&error($size) if (!$ok);
 
 &ui_print_unbuffered_header($desc, $text{'zonekey_title'}, "",
 			    undef, undef, undef, undef, &restart_links($zone));
@@ -53,9 +37,6 @@ else {
 	else {
 		print $text{'zonekey_done'},"<p>\n";
 		}
-
-	# Show the key
-	# XXX
 	}
 
 &unlock_file(&make_chroot(&absolute_path($zone->{'file'})));

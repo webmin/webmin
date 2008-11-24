@@ -68,7 +68,7 @@ else {
 	# Key algorithm
 	print &ui_table_row($text{'zonekey_alg'},
 		&ui_select("alg", "DSA",
-			[ "DSA", "RSAMD5", "RSASHA1", "DSA", "HMAC-MD5" ]));
+			   [ &list_dnssec_algorithms() ]));
 
 	# Key size
 	print &ui_table_row($text{'zonekey_size'},

@@ -2155,12 +2155,34 @@ if ($add_tmpl) {
 	}
 
 # If DNSSEC for new zones was requested, sign now
+local $secerr;
 if ($config{'tmpl_dnssec'} && &supports_dnssec()) {
-	# XXX algorithm? size?
+	# Compute the size
+	($ok, $size) = &compute_dnssec_key_size($config{'tmpl_dnssecalg'},
+						$config{'tmpl_dnssecsizedef'},
+						$config{'tmpl_dnssecsize'});
+	if (!$ok) {
+		# Error computing size??
+		$secerr = &text('mcreate_ednssecsize', $size);
+		}
+	else {
+		# Create key and sign, saving any error
+		local $fake = { 'file' => $file,
+			        'name' => $zone };
+		$secerr = &create_dnssec_key($fake, $config{'tmpl_dnssecalg'},
+					     $size);
+		if (!$secerr) {
+			$secerr = &sign_dnssec_zone($fake);
+			}
+		}
 	}
 
 &unlock_file(&make_chroot($file));
 &set_ownership(&make_chroot($file));
+
+if ($secerr) {
+	return &text('mcreate_ednssec', $secerr);
+	}
 return undef;
 }
 
@@ -2574,6 +2596,11 @@ return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ? ( 512, 2048 ) :
        $alg eq 'HMAC-MD5' ? ( 1, 512 ) : ( );
 }
 
+sub list_dnssec_algorithms
+{
+return ("DSA", "RSAMD5", "RSASHA1", "DSA", "HMAC-MD5");
+}
+
 # create_dnssec_key(&zone|&zone-name, algorithm, size)
 # Creates a new DNSSEC key for some zone, and places it in the same directory
 # as the zone file. Returns undef on success or an error message on failure.
@@ -2778,6 +2805,36 @@ foreach my $f (readdir(ZONEDIR)) {
 	}
 closedir(ZONEDIR);
 return $rv;
+}
+
+# compute_dnssec_key_size(algorithm, def-mode, size)
+# Given an algorith and size mode (0=entered, 1=average, 2=big), returns either
+# 0 and an error message or 1 and the corrected size
+sub compute_dnssec_key_size
+{
+local ($alg, $def, $size) = @_;
+local ($min, $max, $factor) = &dnssec_size_range($alg);
+local $rv;
+if ($def == 1) {
+	# Average
+	$rv = int(($max + $min) / 2);
+	if ($factor) {
+		$rv = int($rv / $factor) * $factor;
+		}
+	}
+elsif ($def == 2) {
+	# Max allowed
+	$rv = $max;
+	}
+else {
+	$size =~ /^\d+$/ && $size >= $min && $size <= $max ||
+		return (0, &text('zonekey_esize', $min, $max));
+	if ($factor && $size % $factor) {
+		return (0, &text('zonekey_efactor', $factor));
+		}
+	$rv = $size;
+	}
+return (1, $rv);
 }
 
 1;
