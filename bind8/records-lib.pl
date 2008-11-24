@@ -405,8 +405,6 @@ for($i=0; $i<@{$_[1]}; $i++) {
 	}
 }
 
-
-
 # date_serial()
 # Returns a string like YYYYMMDD
 sub date_serial

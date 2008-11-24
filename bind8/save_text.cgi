@@ -21,10 +21,13 @@ $in{'text'} .= "\n" if ($in{'text'} !~ /\n$/);
 &close_tempfile(FILE);
 
 # BUMP soa too
+@recs = &read_zone_file($file, $zone->{'name'});
 if ($in{'soa'}) {
-	@recs = &read_zone_file($file, $zone->{'name'});
 	&bump_soa_record($file, \@recs);
 	}
+
+# Sign too
+&sign_dnssec_zone_if_key($zone, \@recs);
 
 &unlock_file(&make_chroot($file));
 &webmin_log("text", undef, $zone->{'name'},

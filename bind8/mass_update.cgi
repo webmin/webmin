@@ -86,6 +86,7 @@ foreach $zi (@zones) {
 		}
 	if ($rcount) {
 		&bump_soa_record($zi->{'file'}, \@recs);
+		&sign_dnssec_zone_if_key($zi, \@recs);
 		print &text('umass_done', $rcount, scalar(@recs)),"<p>\n";
 		}
 	else {

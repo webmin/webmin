@@ -78,6 +78,7 @@ if (!$rev && $in{'rev'} && $type eq 'master') {
 			@orrecs = &read_zone_file($orevfile,
 						  $orevconf->{'name'});
 			&bump_soa_record($orevfile, \@orrecs);
+			&sign_dnssec_zone_if_key($orevconf, \@orrecs);
 			}
 		}
 	}
@@ -102,6 +103,7 @@ elsif ($rev && $in{'rev'} && $type eq 'master') {
 			@ofrecs = &read_zone_file($ofwdfile,
 						  $ofwdconf->{'name'});
 			&bump_soa_record($ofwdfile, \@ofrecs);
+			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
 		}
 	}

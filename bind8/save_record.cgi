@@ -49,6 +49,7 @@ if ($in{'delete'}) {
 		&lock_file(&make_chroot($r->{'file'}));
 		&delete_record($r->{'file'}, $r);
 		&bump_soa_record($in{'file'}, \@recs);
+		&sign_dnssec_zone_if_key($zone, \@recs);
 
 		# Update reverse
 		$fulloldvalue0 = &convert_to_absolute(
@@ -68,6 +69,7 @@ if ($in{'delete'}) {
 			&lock_file(&make_chroot($orevfile));
 			@orrecs = &read_zone_file($orevfile, $orevconf->{'name'});
 			&bump_soa_record($orevfile, \@orrecs);
+			&sign_dnssec_zone_if_key($orevconf, \@orrecs);
 			}
 
 		# Update forward
@@ -82,6 +84,7 @@ if ($in{'delete'}) {
 			&lock_file(&make_chroot($ofwdfile));
 			@ofrecs = &read_zone_file($ofwdfile, $ofwdconf->{'name'});
 			&bump_soa_record($ofwdfile, \@ofrecs);
+			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
 
 		&redirect("edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'redirtype'}&sort=$in{'sort'}");
@@ -358,6 +361,7 @@ if ($in{'new'}) {
 				       $fullname);
 			@rrecs = &read_zone_file($revfile, $revconf->{'name'});
 			&bump_soa_record($revfile, \@rrecs);
+			&sign_dnssec_zone_if_key($revconf, \@rrecs);
 			}
 		elsif (!$revrec) {
 			# Add a reverse record if we are the master for the
@@ -368,6 +372,7 @@ if ($in{'new'}) {
 				$ttl, "IN", "PTR", $fullname);
 			@rrecs = &read_zone_file($revfile, $revconf->{'name'});
 			&bump_soa_record($revfile, \@rrecs);
+			&sign_dnssec_zone_if_key($revconf, \@rrecs);
 			}
 		}
 
@@ -391,6 +396,7 @@ if ($in{'new'}) {
 				       $ttl, "IN", $rtype, $in{'name'});
 			@frecs = &read_zone_file($fwdfile, $fwdconf->{'name'});
 			&bump_soa_record($fwdfile, \@frecs);
+			&sign_dnssec_zone_if_key($fwdconf, \@frecs);
 			}
 		}
 	}
@@ -430,6 +436,7 @@ else {
 				       $orevrec->{'ttl'}, "IN", "PTR", $fullname,
 				       $in{'comment'});
 			&bump_soa_record($orevfile, \@orrecs);
+			&sign_dnssec_zone_if_key($orevconf, \@orrecs);
 			}
 		elsif ($revconf && &can_edit_reverse($revconf)) {
 			# old and new in different files
@@ -439,12 +446,15 @@ else {
 				       $in{'comment'});
 			&bump_soa_record($orevfile, \@orrecs);
 			&bump_soa_record($revfile, \@rrecs);
+			&sign_dnssec_zone_if_key($orevconf, \@orrecs);
+			&sign_dnssec_zone_if_key($revconf, \@rrecs);
 			}
 		else {
 			# we don't handle the new reverse domain.. lose the
 			# reverse record
 			&delete_record($orevrec->{'file'}, $orevrec);
 			&bump_soa_record($orevfile, \@orrecs);
+			&sign_dnssec_zone_if_key($orevconf, \@orrecs);
 			}
 		}
 	elsif ($in{'rev'} && !$orevrec && $revconf && !$revrec && 
@@ -456,6 +466,7 @@ else {
 		&create_record($revfile, &net_to_ip6int(&ip_to_arpa($in{'value0'})),
 			       $ttl, "IN", "PTR", $fullname, $in{'comment'});
 		&bump_soa_record($revfile, \@rrecs);
+		&sign_dnssec_zone_if_key($revconf, \@rrecs);
 		}
 
 	local($ipv6 = ($in{'value0'} =~ /\.$ipv6revzone/i));
@@ -478,6 +489,7 @@ else {
 				       $ipv6 ? "AAAA" : "A",
 				       $in{'name'}, $in{'comment'});
 			&bump_soa_record($ofwdfile, \@ofrecs);
+			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
 		elsif ($fwdconf && &can_edit_zone($fwdconf)) {
 			# old and new in different files
@@ -487,18 +499,22 @@ else {
 					       "IN", $ipv6 ? "AAAA" : "A",
 					       $in{'name'}, $in{'comment'});
 				&bump_soa_record($fwdfile, \@frecs);
+				&sign_dnssec_zone_if_key($fwdconf, \@frecs);
 				}
 			&bump_soa_record($ofwdfile, \@ofrecs);
+			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
 		else {
 			# lose the forward because it has been moved to
 			# a zone not handled by this server
 			&delete_record($ofwdrec->{'file'} , $ofwdrec);
 			&bump_soa_record($ofwdfile, \@ofrecs);
+			&sign_dnssec_zone_if_key($ofwdconf, \@ofrecs);
 			}
 		}
 	}
 &bump_soa_record($in{'file'}, \@recs);
+&sign_dnssec_zone_if_key($zone, \@recs);
 &unlock_all_files();
 $r->{'newvalues'} = $vals;
 &webmin_log($in{'new'} ? 'create' : 'modify', 'record', $in{'origin'}, $r);

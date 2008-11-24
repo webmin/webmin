@@ -671,6 +671,7 @@ zonedef_email=Default email address
 zonedef_prins=Default nameserver for master domains
 zonedef_this=System hostname ($1)
 zonedef_eprins=Missing or invalid default nameserver for master domains
+zonedef_dnssec=Create DNSSEC key and sign new zones?
 
 find_title=Find Zones
 find_match=Zones matching $1 ..
@@ -742,6 +743,9 @@ log_delete_zones=Deleted $1 zones
 log_update_zones=Updated records in $1 zones
 log_freeze=Froze zone $1
 log_thaw=Un-froze zone $1
+log_zonekeyon=Enabled DNSSEC for zone $1
+log_zonekeyoff=Disabled DNSSEC for zone $1
+log_sign=Updated DNSSEC signatures for zone $1
 
 convert_err=Failed to convert zone
 convert_efile=A records file must be specified before a slave zone can be converted to a master.
@@ -1004,10 +1008,14 @@ zonekey_esign=.. signing failed : $1
 zonekey_already=The zone already has a DNSSEC key, and so is already signed.
 zonekey_webmin=Webmin will re-sign the zone automatically when any changes are made.
 zonekey_public=Public key record :
-zonekey_private=Private key details ..
+zonekey_private=Private key details :
+zonekey_expand=Show public and private key details ..
 zonekey_eprivate=An error occurred fetching private key details : $1
 zonekey_noprivate=However, Webmin could not find the private key associated with the zone, and so will not be able to re-sign it.
 zonekey_disable=Remove Key
 zonekey_disabledesc=Removes the DNSSEC key from this zone, and all signing records. Once this is done, you will be able to generate a new key.
 zonekey_sign=Sign Zone
 zonekey_signdesc=Immediately re-sign this zone, so that any changes to records made manually will be included in the signing records.
+
+sign_err=Failed to sign zone
+sign_emsg=DNSSEC signing after records change failed : $1

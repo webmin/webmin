@@ -2136,6 +2136,8 @@ if ($add_tmpl) {
 					local @rrecs = &read_zone_file(
 						$revfile, $revconf->{'name'});
 					&bump_soa_record($revfile, \@rrecs);
+					&sign_dnssec_zone_if_key(
+						$revconf, \@rrecs);
 					}
 				}
 			}
@@ -2151,6 +2153,12 @@ if ($add_tmpl) {
 		&close_tempfile(FILE);
 		}
 	}
+
+# If DNSSEC for new zones was requested, sign now
+if ($config{'tmpl_dnssec'} && &supports_dnssec()) {
+	# XXX algorithm? size?
+	}
+
 &unlock_file(&make_chroot($file));
 &set_ownership(&make_chroot($file));
 return undef;
@@ -2585,12 +2593,20 @@ foreach my $f (readdir(ZONEDIR)) {
 	}
 closedir(ZONEDIR);
 
+# Fork a background job to do lots of IO, to generate entropy
+local $pid = fork();
+if (!$pid) {
+	exec("find / -type f >/dev/null 2>&1");
+	exit(1);
+	}
+
 # Create the zone key
 local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 local $out = &backquote_logged(
 	"cd ".quotemeta($fn)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($size).
 	" -n ZONE $dom 2>&1");
+kill('KILL', $pid);
 return $out if ($?);
 
 # Get the new key
@@ -2613,17 +2629,54 @@ for(my $i=$#recs; $i>=0; $i--) {
 return undef;
 }
 
-# sign_dnssec_zone(&zone|&zone-name)
+# delete_dnssec_key(&zone|&zone-name)
+# Deletes the key for a zone, and all DNSSEC records
+sub delete_dnssec_key
+{
+local ($z) = @_;
+local $fn = &get_zone_file($z);
+$fn || return "Could not work out records file!";
+local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+
+# Remove the key
+local $key = &get_dnssec_key($z);
+if ($key) {
+	foreach my $f ('publicfile', 'privatefile') {
+		&unlink_file($key->{$f}) if ($key->{$f});
+		}
+	}
+
+# Remove records
+local @recs = &read_zone_file($fn, $dom);
+for(my $i=$#recs; $i>=0; $i--) {
+	if ($recs[$i]->{'type'} eq 'NSEC' ||
+	    $recs[$i]->{'type'} eq 'RRSIG' ||
+	    $recs[$i]->{'type'} eq 'DNSKEY') {
+		&delete_record($fn, $recs[$i]);
+		}
+	}
+&bump_soa_record($fn, \@recs);
+}
+
+# sign_dnssec_zone(&zone|&zone-name, [bump-soa])
 # Replaces a zone's file with one containing signed records.
 sub sign_dnssec_zone
 {
-local ($z) = @_;
-local $fn = &get_zone_file($z, 2);
-$fn || return "Could not work out records file!";
-$fn =~ /^(.*)\/([^\/]+$)/;
+local ($z, $bump) = @_;
+local $chrootfn = &get_zone_file($z, 2);
+$chrootfn || return "Could not work out records file!";
+$chrootfn =~ /^(.*)\/([^\/]+$)/;
 local ($dir, $zf) = ($1, $2);
 local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
-local $signed = $fn.".webmin-signed";
+local $signed = $chrootfn.".webmin-signed";
+
+# Up the serial number, if requested
+local $fn = &get_zone_file($z, 1);
+$fn =~ /^(.*)\/([^\/]+$)/;
+local @recs = &read_zone_file($fn, $dom);
+if ($bump) {
+	&bump_soa_record($fn, \@recs);
+	}
 
 # Create the signed file. Sometimes this fails with an error like :
 # task.c:310: REQUIRE(task->references > 0) failed
@@ -2642,9 +2695,6 @@ return $out if ($tries >= 10);
 
 # Merge records back into original file, by deleting all NSEC and RRSIG records
 # and then copying over
-local $fn = &get_zone_file($z, 1);
-$fn =~ /^(.*)\/([^\/]+$)/;
-local @recs = &read_zone_file($fn, $dom);
 for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'NSEC' ||
 	    $recs[$i]->{'type'} eq 'RRSIG') {
@@ -2659,6 +2709,20 @@ foreach my $r (@signedrecs) {
 			       $r->{'type'}, join(" ", @{$r->{'values'}}),
 			       $r->{'comment'});
 		}
+	}
+&unlink_file($signed);
+return undef;
+}
+
+# sign_dnssec_zone_if_key(&zone|&zone-name, &recs, [bump-soa])
+# If a zone has a DNSSEC key, sign it. Calls error if signing fails
+sub sign_dnssec_zone_if_key
+{
+local ($z, $recs, $bump) = @_;
+local $keyrec = &get_dnskey_record($z, $recs);
+if ($keyrec) {
+	local $err = &sign_dnssec_zone($z, $bump);
+	&error(&text('sign_emsg', $err)) if ($err);
 	}
 }
 

@@ -63,7 +63,10 @@ else {
 		&error($text{'zonedef_eprins'});
 	$config{'default_prins'} = $in{'prins'};
 	}
-&write_file("$module_config_directory/config", \%config);
+if (defined($in{'dnssec'})) {
+	$config{'tmpl_dnssec'} = $in{'dnssec'};
+	}
+&save_module_config();
 &unlock_file("$module_config_directory/config");
 
 &save_zone_defaults(\%zonedef);

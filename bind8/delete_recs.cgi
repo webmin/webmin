@@ -59,6 +59,7 @@ else {
 				if (!$bumpedrev{$orevfile}++) {
 					&bump_soa_record($orevfile, \@orrecs);
 					}
+				&sign_dnssec_zone_if_key($orevconf, \@orrecs);
 				}
 			}
 
@@ -68,6 +69,7 @@ else {
 		splice(@recs, $d, 1);
 		}
 	&bump_soa_record($zone->{'file'}, \@recs);
+	&sign_dnssec_zone_if_key($zone, \@recs);
 	&unlock_all_files();
 
 	&webmin_log("delete", "recs", scalar(@d));

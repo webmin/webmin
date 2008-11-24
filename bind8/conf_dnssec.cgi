@@ -1,14 +1,5 @@
 #!/usr/local/bin/perl
 # Show a list of signing keys, with a form to add
-#
-# XXX key commands
-#     dnssec-keygen -a DSA -b 768 -n ZONE signingtest.com
-#     dnssec-signzone -o signingtest.com signingtest.com.hosts
-# XXX what if key is for a different domain??
-# XXX need separate source files?
-# XXX virtualmin support
-#	XXX re-sign after all changes
-# XXX keys need to go in zone files? Can re-use?
 
 require './bind8-lib.pl';
 $access{'defaults'} || &error($text{'dnssec_ecannot'});

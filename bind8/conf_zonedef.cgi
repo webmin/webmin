@@ -64,6 +64,12 @@ print &ui_table_row($text{'zonedef_prins'},
 	&ui_opt_textbox("prins", $config{'default_prins'}, 30,
 	    &text('zonedef_this', "<tt>".&get_system_hostname()."</tt>")), 3);
 
+# Setup DNSSEC by default?
+if (&supports_dnssec()) {
+	print &ui_table_row($text{'zonedef_dnssec'},
+		&ui_yesno_radio("dnssec", $config{'tmpl_dnssec'}));
+	}
+
 print &ui_table_end();
 
 # Start of table for global BIND options

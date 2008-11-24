@@ -103,5 +103,6 @@ for($i=0; defined($in{"type_$i"}); $i++) {
 		}
 	}
 &bump_soa_record($file, \@recs);
+&sign_dnssec_zone_if_key($zone, \@recs);
 &redirect("edit_master.cgi?index=$in{'index'}&view=$in{'view'}");
 
