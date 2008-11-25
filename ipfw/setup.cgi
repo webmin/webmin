@@ -83,14 +83,14 @@ elsif ($in{'auto'} >= 2) {
 			"proto" => "tcp",
 			"from" => "any",
 			"to" => "any",
-			"to_ports" => "ssh",
+			"to_ports" => 22,
 			"cmt" => "Allow connections to our SSH server" },
 		      { "action" => "allow",
 			"num" => "00800",
 			"proto" => "tcp",
 			"from" => "any",
 			"to" => "any",
-			"to_ports" => "auth",
+			"to_ports" => 113,
 			"cmt" => "Allow connections to our IDENT server" });
 		}
 	if ($in{'auto'} >= 4) {
