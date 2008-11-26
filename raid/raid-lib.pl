@@ -236,9 +236,13 @@ if ($raid_mode eq "raidtools") {
 	# Remove from /etc/raidtab
 	local $lref = &read_file_lines($config{'raidtab'});
 	splice(@$lref, $_[0]->{'line'}, $_[0]->{'eline'} - $_[0]->{'line'} + 1);
-	&flush_file_lines();
+	&flush_file_lines($config{'raidtab'});
 	}
 else {
+	# Zero out the RAID
+	&system_logged(
+		"mdadm --zero-superblock $_[0]->{'value'} >/dev/null 2>&1");
+
 	# Remove from /etc/mdadm.conf
 	local ($d, %devices);
 	foreach $d (&find("device", $_[0]->{'members'})) {
@@ -261,7 +265,7 @@ else {
 				}
 			}
 		}
-	&flush_file_lines();
+	&flush_file_lines($config{'mdadm'});
 	}
 }
 
