@@ -44,9 +44,11 @@ eval {
 			}
 		eval {
 			# Check for regexp match
-			if ($data !~ /$re/i) {
-				$up = 0;
-				}
+			eval {
+				if ($data !~ /$re/i) {
+					$up = 0;
+					}
+				};
 			};
 		}
 

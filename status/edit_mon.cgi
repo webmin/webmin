@@ -219,14 +219,11 @@ if ($type =~ /^(\S+)::(\S+)$/) {
 	# From another module
 	($mod, $mtype) = ($1, $2);
 	&foreign_require($mod, "status_monitor.pl");
-	$html = &foreign_call($mod, "status_monitor_dialog", $mtype, $serv);
-	if ($html) {
-		print "<p>\n";
-		print &ui_table_start($text{'mon_header3'}, "width=100%", 4,
-				      \@tds);
-		print $html;
-		print &ui_table_end();
-		}
+	print "<p>\n";
+	print &ui_table_start($text{'mon_header3'}, "width=100%", 4,
+			      \@tds);
+	print &foreign_call($mod, "status_monitor_dialog", $mtype, $serv);
+	print &ui_table_end();
 	}
 else {
 	# From this module
