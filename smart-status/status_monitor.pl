@@ -42,24 +42,23 @@ else {
 sub status_monitor_dialog
 {
 local $rv;
-$rv = "<tr> <td><b>$text{'monitor_drive'}</b></td>\n";
-$rv .= "<td colspan=3>";
-local @drives = grep { $_->{'type'} eq 'ide' } &fdisk::list_disks_partitions();
+local @drives = grep { $_->{'type'} eq 'ide' ||
+		       $_->{'type'} eq 'scsi' } &fdisk::list_disks_partitions();
 @drives = sort { $a->{'device'} cmp $b->{'device'} } @drives;
 local ($inlist) = grep { $_->{'device'} eq $_[1]->{'drive'} } @drives;
 $inlist = 1 if (!$_[1]->{'drive'});
-$rv .= &ui_select("drive", !$_[1]->{'drive'} ? $drives[0]->{'device'} :
+$rv .= &ui_table_row($text{'monitor_drive'},
+      &ui_select("drive", !$_[1]->{'drive'} ? $drives[0]->{'device'} :
 			   $inlist ? $_[1]->{'drive'} : undef,
 		 [ (map { [ $_->{'device'},
 			   $_->{'desc'}.($_->{'model'} ?
 				" ($_->{'model'})" : "") ] } @drives),
-		   [ "", $text{'monitor_other'} ] ]);
-$rv .= &ui_textbox("other", $inlist ? "" : $_[1]->{'drive'}, 15);
-$rv .= "</td> </tr>\n";
+		   [ "", $text{'monitor_other'} ] ]).
+      &ui_textbox("other", $inlist ? "" : $_[1]->{'drive'}, 15), 3);
 
-$rv .= "<tr> <td><b>$text{'monitor_errors'}</b></td>\n";
-$rv .= "<td>".&ui_radio("errors", $_[1]->{'errors'} || 0,
-		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ])."</td> </tr>\n";
+$rv .= &ui_table_row($text{'monitor_errors'},
+	&ui_radio("errors", $_[1]->{'errors'} || 0,
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 return $rv;
 }
 
