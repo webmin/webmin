@@ -509,7 +509,7 @@ my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
         defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 if (!$WRAPPER_OPEN) { # If we're not already inside of a wrapper, wrap it
-	$rv .= "<table class='wrapper' width=100%>\n";
+	$rv .= "<table class='shrinkwrapper' $tabletags>\n";
 	$rv .= "<tr><td>\n";
 	}
 $WRAPPER_OPEN++;
