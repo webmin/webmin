@@ -2598,7 +2598,7 @@ return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ? ( 512, 2048 ) :
 
 sub list_dnssec_algorithms
 {
-return ("DSA", "RSAMD5", "RSASHA1", "DSA", "HMAC-MD5");
+return ("DSA", "RSAMD5", "RSASHA1", "DH", "HMAC-MD5");
 }
 
 # create_dnssec_key(&zone|&zone-name, algorithm, size)
@@ -2785,6 +2785,7 @@ foreach my $f (readdir(ZONEDIR)) {
 		$rv->{'size'} = $pub->{'values'}->[0];
 		$rv->{'public'} = $pub->{'values'}->[3];
 		$rv->{'values'} = $pub->{'values'};
+		$rv->{'publictext'} = &read_file_contents("$dir/$f");
 		}
 	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private$/) {
 		# Found the private key file

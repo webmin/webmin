@@ -989,8 +989,8 @@ links_stop=Stop BIND
 links_start=Start BIND
 links_apply=Apply Zone
 
-dnssec_title=DNSSEC Master Key
-dnssec_ecannot=You are not allowed to manage the DNSSEC master key
+dnssec_title=DNSSEC Configuration
+dnssec_ecannot=You are not allowed to configure DNSSEC
 
 zonekey_title=Setup DNSSEC Key
 zonekey_desc=This zone does not have a DNSSEC signing key yet. You can use this form to have Webmin create one, so that clients resolving this zone are protected against DNS spoofing attacks.
