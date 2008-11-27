@@ -16,7 +16,14 @@ if (defined(&get_cpu_info)) {
 			"</td> </tr>\n";
 		if (@c >= 5) {
 			print "<tr> <td><b>$text{'index_cpuname'}</b></td>\n";
-			print "<td>$c[4] ($c[3] MHz)</td> </tr>\n";
+			print "<td>$c[4]\n";
+			if ($c[4] !~ /Hz/) {
+				print "($c[3] MHz)\n";
+				}
+			if ($c[7]) {
+				print ", $c[7] cores\n";
+				}
+			print "</td> </tr>\n";
 			}
 		}
 	print "</table><br>\n";
