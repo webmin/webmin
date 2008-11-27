@@ -943,8 +943,10 @@ foreach $h (@{$_[0]->{'headers'}}) {
 	}
 if (!$msg_id) {
 	# Add a message-id header if missing
-	print MAIL "Message-Id: <",time().".".$$."\@".
-				  &get_system_hostname(),">",$eol;
+	$main::mailboxes_message_id_count++;
+	print MAIL "Message-Id: <",time().".".$$.".".
+				$main::mailboxes_message_id_count."\@".
+				&get_system_hostname(),">",$eol;
 	}
 
 # Work out first attachment content type
