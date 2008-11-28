@@ -426,3 +426,6 @@ extract_rusure=Are you sure you want to extract the compressed file :
 extract_rusure2=Existing files in the same directory may be overwritten.
 extract_err=Failed to extract file : $1
 extract_yes=Yes, then delete
+extract_show=Show contents
+extract_err2=Failed to get file contents : $1
+extract_shown=Contents of compressed file

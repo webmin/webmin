@@ -4475,7 +4475,7 @@ class ImagePanel extends Panel
 
 class ExtractWindow extends FixedFrame implements CbButtonCallback
 {
-	CbButton yes, yesdelete, no;
+	CbButton yes, yesdelete, no, show;
 	FileManager filemgr;
 	RemoteFile file;
 
@@ -4499,6 +4499,7 @@ class ExtractWindow extends FixedFrame implements CbButtonCallback
 	bot.add(yes = new CbButton(filemgr.text("yes"), this));
 	bot.add(yesdelete = new CbButton(filemgr.text("extract_yes"), this));
 	bot.add(no = new CbButton(filemgr.text("no"), this));
+	bot.add(show = new CbButton(filemgr.text("extract_show"), this));
 	add("South", bot);
 	pack();
 	show();
@@ -4530,6 +4531,20 @@ class ExtractWindow extends FixedFrame implements CbButtonCallback
 			new ErrorWindow(filemgr.text("extract_err", rv[0]));
 			}
 		}
+	else if (b == show) {
+		// Open window just showing contents
+		String rv[] = filemgr.get_text("contents.cgi?file="+
+				       	       filemgr.urlize(file.path));
+		dispose();
+		if (rv[0].equals("")) {
+			// Worked - show the files
+			new ContentsWindow(file, filemgr, rv);
+			}
+		else {
+			// Failed - show the error
+			new ErrorWindow(filemgr.text("extract_err2", rv[0]));
+			}
+		}
 	else {
 		// Just close the window
 		dispose();
@@ -4537,4 +4552,48 @@ class ExtractWindow extends FixedFrame implements CbButtonCallback
 	}
 }
 
+class ContentsWindow extends FixedFrame implements CbButtonCallback
+{
+	RemoteFile file;
+        FileManager filemgr;
+        CbButton close_b;
+
+	ContentsWindow(RemoteFile f, FileManager p, String rv[])
+	{
+	file = f;
+	filemgr = p;
+
+	// Create UI
+	setTitle(f.path);
+	setLayout(new BorderLayout());
+	Panel bot = new Panel();
+	bot.setLayout(new FlowLayout(FlowLayout.RIGHT));
+	bot.add(close_b = new CbButton(filemgr.get_image("cancel.gif"),
+					filemgr.text("close"),
+					CbButton.LEFT, this));
+	add("South", bot);
+
+	// Create text area showing contents
+	String lines = "";
+	for(int i=1; i<rv.length; i++) {
+		lines = lines + rv[i] + "\n";
+		}
+	TextArea contents = new TextArea(lines, 30, 60);
+	contents.setEditable(false);
+	add("Center", contents);
+	add("North", new Label(filemgr.text("extract_shown")));
+
+	Util.recursiveBody(this);
+	pack();
+	show();
+	}
+
+	public void click(CbButton b)
+	{
+	if (b == close_b) {
+		// Just close
+		dispose();
+		}
+	}
+}
 

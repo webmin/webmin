@@ -292,50 +292,72 @@ else {
 	}
 }
 
-# extract_archive(path, delete)
+# extract_archive(path, delete-after, get-contents)
 # Called by upload to extract some zip or tar.gz file. Returns undef if
 # something was actually done, an error message otherwise.
 sub extract_archive
 {
+local ($path, $delete, $contents) = @_;
 local $out;
-$_[0] =~ /^(\S*\/)/ || return 0;
+$path =~ /^(\S*\/)/ || return 0;
 local $dir = $1;
 local $qdir = quotemeta($dir);
-local $qpath = quotemeta($_[0]);
-if ($_[0] =~ /\.zip$/i) {
+local $qpath = quotemeta($path);
+if ($path =~ /\.zip$/i) {
 	# Extract zip file
 	return &text('zip_ecmd', "unzip") if (!&has_command("unzip"));
-	$out = `(cd $qdir; unzip -o $qpath) 2>&1 </dev/null`;
+	if ($contents) {
+		$out = `(cd $qdir; unzip -l $qpath) 2>&1 </dev/null`;
+		}
+	else {
+		$out = `(cd $qdir; unzip -o $qpath) 2>&1 </dev/null`;
+		}
 	if ($?) {
 		return &text('zip_eunzip', $out);
 		}
 	}
-elsif ($_[0] =~ /\.tar$/i) {
+elsif ($path =~ /\.tar$/i) {
 	# Extract un-compressed tar file
 	return &text('zip_ecmd', "tar") if (!&has_command("tar"));
-	$out = `(cd $qdir; tar xf $qpath) 2>&1 </dev/null`;
+	if ($contents) {
+		$out = `(cd $qdir; tar tf $qpath) 2>&1 </dev/null`;
+		}
+	else {
+		$out = `(cd $qdir; tar xf $qpath) 2>&1 </dev/null`;
+		}
 	if ($?) {
 		return &text('zip_euntar', $out);
 		}
 	}
-elsif ($_[0] =~ /\.(tar\.gz|tgz|tar\.bz|tbz|tar\.bz2|tbz2)$/i) {
+elsif ($path =~ /\.(tar\.gz|tgz|tar\.bz|tbz|tar\.bz2|tbz2)$/i) {
 	# Extract gzip or bzip2-compressed tar file
 	local $zipper = $_[0] =~ /bz(2?)$/i ? "bunzip2"
 					    : "gunzip";
 	return &text('zip_ecmd', "tar") if (!&has_command("tar"));
 	return &text('zip_ecmd', $zipper) if (!&has_command($zipper));
-	$out = `(cd $qdir; $zipper -c $qpath | tar xf -) 2>&1`;
+	if ($contents) {
+		$out = `(cd $qdir; $zipper -c $qpath | tar tf -) 2>&1`;
+		}
+	else {
+		$out = `(cd $qdir; $zipper -c $qpath | tar xf -) 2>&1`;
+		}
 	if ($?) {
 		return &text('zip_euntar2', $out);
 		}
 	}
-elsif ($_[0] =~ /\.gz$/i) {
+elsif ($path =~ /\.gz$/i) {
 	# Uncompress gzipped file
 	return &text('zip_ecmd', "gunzip") if (!&has_command("gunzip"));
 	local $final = $_[0];
 	$final =~ s/\.gz$//;
 	local $qfinal = quotemeta($final);
-	$out = `(cd $qdir; gunzip -c $qpath >$qfinal) 2>&1`;
+	if ($contents) {
+		$out = $final;
+		$out =~ s/^.*\///;
+		}
+	else {
+		$out = `(cd $qdir; gunzip -c $qpath >$qfinal) 2>&1`;
+		}
 	if ($?) {
 		return &text('zip_euntar2', $out);
 		}
@@ -343,8 +365,11 @@ elsif ($_[0] =~ /\.gz$/i) {
 else {
 	return $text{'zip_ename'};
 	}
-if ($_[1]) {
-	unlink($_[0]);
+if ($contents) {
+	return (undef, split(/\r?\n/, $out));
+	}
+elsif ($delete) {
+	unlink($path);
 	}
 return undef;
 }

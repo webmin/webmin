@@ -2,6 +2,7 @@
 # filesystems.cgi
 # List all filesystems and their types
 
+$trust_unknown_referers = 1;
 require './file-lib.pl';
 print "Content-type: text/plain\n\n";
 if (!&foreign_check("mount") || !$access{'filesystems'}) {

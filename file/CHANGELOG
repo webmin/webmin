@@ -43,3 +43,5 @@ Added a Module Config option to specify file extensions to treat as HTML, rather
 Use of the Preview button can now be controlled on the access control page.
 ---- Changes since 1.430 ----
 POSIX ACLs can now be edited on FreeBSD, if the setfacl and getfacl commands are installed.
+---- Changes since 1.440 ----
+Added a button to the compressed file extraction dialog to show the contents of a ZIP or tar file, instead of extracting it.
