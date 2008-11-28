@@ -269,13 +269,33 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 			push(@$conf, $newdir);
 			}
 		else {
-			# At end of file
-			local $newdir = { 'name' => $name,
-					  'line' => scalar(@$lref),
-					  'eline' => scalar(@$lref),
-					  'values' => \@unqvalues };
-			push(@$lref, $line);
-			push(@$conf, $newdir);
+			# At end of file, or over commented directive
+			my $cmtline = undef;
+			for(my $i=0; $i<@$lref; $i++) {
+				if ($lref->[$i] =~ /^\s*\#+\s*(\S+)/ &&
+				    $1 eq $name) {
+					$cmtline = $i;
+					last;
+					}
+				}
+			if (defined($cmtline)) {
+				# Over comment
+				local $newdir = { 'name' => $name,
+						  'line' => $cmtline,
+						  'eline' => $cmtline,
+						  'values' => \@unqvalues };
+				$lref->[$cmtline] = $line;
+				push(@$conf, $newdir);
+				}
+			else {
+				# Really at end
+				local $newdir = { 'name' => $name,
+						  'line' => scalar(@$lref),
+						  'eline' => scalar(@$lref),
+						  'values' => \@unqvalues };
+				push(@$lref, $line);
+				push(@$conf, $newdir);
+				}
 			}
 		}
 	}
