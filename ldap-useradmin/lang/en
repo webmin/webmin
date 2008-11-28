@@ -14,6 +14,7 @@ index_gadd=Add a new LDAP group.
 index_unone=No LDAP users were found under $1.
 index_gnone=No LDAP groups were found under $1.
 index_return=user list
+index_greturn=group list
 index_egsearch=Failed to search for groups under $1 : $2
 index_samba=Samba?
 index_cyrus=IMAP?

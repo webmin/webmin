@@ -92,9 +92,7 @@ print &ui_table_start($text{'gedit_cap'}, "width=100%", 4, [ "width=30%" ]);
 
 # Samba group?
 print &ui_table_row($text{'gedit_samba'},
-	&ui_radio("samba", $oclass{$samba_group_class},
-		  [ [ 1, $text{'yes'} ],
-		    [ 0, $text{'no'} ] ]));
+	&ui_yesno_radio("samba", $oclass{$samba_group_class}));
 
 print &ui_table_end();
 
@@ -143,5 +141,5 @@ else {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 
-&ui_print_footer("index.cgi?mode=groups", $text{'index_return'});
+&ui_print_footer("index.cgi?mode=groups", $text{'index_greturn'});
 

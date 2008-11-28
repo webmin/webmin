@@ -91,7 +91,7 @@ if ($in{'delete'}) {
 		}
 
 	$ldap->unbind();
-	&ui_print_footer("index.cgi?mode=groups", $text{'index_return'});
+	&ui_print_footer("index.cgi?mode=groups", $text{'index_greturn'});
 	exit;
 	}
 elsif ($in{'raw'}) {
