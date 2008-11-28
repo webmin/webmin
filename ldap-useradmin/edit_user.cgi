@@ -57,7 +57,7 @@ else {
 	foreach $oc ($uinfo->get_value('objectClass')) {
 		$oclass{$oc} = 1;
 		}
-	@alias = $uinfo->get_value('alias');
+	@alias = $uinfo->get_value($config{'maillocaladdress'} || 'alias');
 	%uinfo = &dn_to_hash($uinfo);
 	&can_edit_user(\%uinfo) || &error($text{'uedit_eedit'});
 	&ui_print_header(undef, $text{'uedit_title'}, "");

@@ -888,7 +888,7 @@ else {
 	$rv->{'Status'} eq 'ok' ||
 		&imap_error($text{'usave_eiacl'}, $rv);
 
-	if (defined($quota)) {
+	if (defined($quota) && $config{'quota_support'}) {
 		# Set his IMAP quota
 		$rv = $imap->setquota("user".$config{'imap_foldersep'}.$user->{'user'},
 				      "STORAGE", $quota);

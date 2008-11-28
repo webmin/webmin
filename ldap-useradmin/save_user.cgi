@@ -600,7 +600,7 @@ else {
 			}
 		elsif ($in{'cyrus'} && $wascyrus) {
 			# Changing IMAP support
-			if (!$in{'quota_def'}) {
+			if (!$in{'quota_def'} && $config{'quota_support'}) {
 				&set_imap_quota(\%uhash, $in{'quota'});
 				}
 			}
