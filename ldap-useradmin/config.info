@@ -72,6 +72,7 @@ imap_pass=Administration password for IMAP server,0
 imap_props=LDAP properties for new IMAP users,9,40,5,\t
 imap_folders=Folders to create for new IMAP users,9,30,3,\t
 imap_folderalt=Path for folders,1,1-user.$user.$folder,0-$folder
+imap_foldersep=Folder separator,1,.-.,/-/
 domain=Email domain for mail attribute,0,Don't add mail attributes
 mailfmt=Email address format,1,0-firstname.surname@domain,1-username@domain
 addressbook=Address book base,3,None

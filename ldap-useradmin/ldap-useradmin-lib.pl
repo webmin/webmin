@@ -871,26 +871,26 @@ local ($user, $quota) = @_;
 
 # Check if the user already exists
 local $imap = &imap_connect();
-local $rv = $imap->status("user.".$user->{'user'}, "messages");
+local $rv = $imap->status("user".$user{'imap_foldersep'}.$user->{'user'}, "messages");
 if ($rv->{'Status'} eq 'ok') {
 	# Already exists, so do nothing
 	$imap->logout();
 	}
 else {
 	# Create the user on the IMAP server
-	$rv = $imap->create("user.".$user->{'user'});
+	$rv = $imap->create("user".$config{'imap_foldersep'}.$user->{'user'});
 	$rv->{'Status'} eq 'ok' ||
 		&imap_error($text{'usave_eicreate'}, $rv);
 
 	# Grant all rights to admin user
-	$rv = $imap->setacl("user.".$user->{'user'},
+	$rv = $imap->setacl("user".$config{'imap_foldersep'}.$user->{'user'},
 			    $config{'imap_login'}, "lrswipcda");
 	$rv->{'Status'} eq 'ok' ||
 		&imap_error($text{'usave_eiacl'}, $rv);
 
 	if (defined($quota)) {
 		# Set his IMAP quota
-		$rv = $imap->setquota("user.".$user->{'user'},
+		$rv = $imap->setquota("user".$config{'imap_foldersep'}.$user->{'user'},
 				      "STORAGE", $quota);
 		$rv->{'Status'} eq 'ok' ||
 			&imap_error($text{'usave_eiquota'}, $rv);
@@ -909,7 +909,7 @@ else {
 
 	foreach $f (split(/\t+/, $config{'imap_folders'})) {
 		local $fp = $config{'imap_folderalt'} ?
-				"user.$user->{'user'}.$f" : $f;
+				"user$config{'imap_foldersep'}$user->{'user'}$config{'imap_foldersep'}$f" : $f;
 		$rv = $uimap->create($fp);
 		$rv->{'Status'} eq 'ok' ||
 		    &imap_error(&text('usave_eifolder',$f),$rv);
@@ -933,10 +933,10 @@ local ($user, $quota) = @_;
 
 # Check if the user already exists
 local $imap = &imap_connect();
-local $rv = $imap->status("user.".$user->{'user'}, "messages");
+local $rv = $imap->status("user".$config{'imap_foldersep'}.$user->{'user'}, "messages");
 if ($rv->{'Status'} eq 'ok') {
 	# Set his IMAP quota
-	$rv = $imap->setquota("user.".$user->{'user'},
+	$rv = $imap->setquota("user".$config{'imap_foldersep'}.$user->{'user'},
 			      "STORAGE", $quota);
 	$rv->{'Status'} eq 'ok' ||
 		&imap_error($text{'usave_eiquota'}, $rv);

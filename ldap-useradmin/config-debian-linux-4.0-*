@@ -17,3 +17,4 @@ alias_same=0
 other_class=inetOrgPerson
 person=1
 given_order=0
+imap_foldersep=.
