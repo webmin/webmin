@@ -225,7 +225,9 @@ else {
 				if ($config{'imap_host'}) {
 					print "$text{'udel_imap'}<br>\n";
 					$imap = &imap_connect();
-					$rv = $imap->delete("user.".$user->{'user'});
+					$rv = $imap->delete("user".
+						$config{'imap_foldersep'}.
+						$user->{'user'});
 					$imap->logout();
 					print "$text{'udel_done'}<p>\n";
 					}

@@ -117,7 +117,8 @@ elsif ($in{'delete'}) {
 		  if ($config{'imap_host'}) {
 			print "$text{'udel_imap'}<br>\n";
 			$imap = &imap_connect();
-			$rv = $imap->delete("user.".$uinfo->get_value("uid"));
+			$rv = $imap->delete("user".$config{'imap_foldersep'}.
+					    $uinfo->get_value("uid"));
 			$imap->logout();
 			print "$text{'udel_done'}<p>\n";
 			}
