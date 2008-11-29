@@ -1510,6 +1510,7 @@ sub create_folder_maildir
 mkdir($folders_dir, 0700);
 if ($_[0]->{'type'} == 1) {
 	local $id = $_[0]->{'file'};
+	mkdir($id, 0700);
 	mkdir("$id/cur", 0700);
 	mkdir("$id/new", 0700);
 	mkdir("$id/tmp", 0700);
