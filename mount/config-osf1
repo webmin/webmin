@@ -5,3 +5,4 @@ nmblookup_path=/usr/local/samba/bin/nmblookup
 long_fstypes=1
 smbclient_path=/usr/local/samba/bin/smbclient
 fstab_file=/etc/fstab
+show_used=1
