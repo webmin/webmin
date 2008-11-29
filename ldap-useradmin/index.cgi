@@ -63,6 +63,14 @@ if (!ref($ldap)) {
 	exit;
 	}
 
+# Make sure we can get the schema
+$schema = $ldap->schema();
+if (!$schema) {
+	print &text('index_eschema', '../ldap-server/'),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
 if ($config{'imap_host'}) {
 	# Make sure the IMAP Perl module is installed, and if not offer
 	# to install

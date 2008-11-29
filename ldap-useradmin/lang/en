@@ -5,6 +5,7 @@ index_ehost=If no LDAP NSS configuration file is set in the <a href='$1'>module 
 index_eperl=The $1 Perl module that this module requires is not installed or is not working properly. <a href='$2'>Click here</a> to have it downloaded and installed now.
 index_eperl2=The error reported by Perl when trying to load the module was :
 index_eldap=$1. Maybe your <a href='$2'>module configuration</a> is incorrect.
+index_eschema=Webmin has connected to the LDAP server, but failed to fetch the schema. Make sure that access has not been denied in the <a href='$1'>LDAP Server</a> module.
 index_eimap=$1. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_emd5=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the $2 Perl module is not installed. <a href='$3'>Click here</a> to have the $2 module downloaded and installed.
 index_eslappasswd=This module has been <a href='$1'>configured</a> to use LDAP MD5 encryption for passwords, but the program <tt>$2</tt> used for encrypting a password is not installed.
