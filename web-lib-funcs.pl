@@ -2777,6 +2777,9 @@ if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
 		}
 	}
 
+# Record the initial module
+$main::initial_module_name ||= $module_name;
+
 # Set some useful variables
 $current_theme = $ENV{'MOBILE_DEVICE'} && defined($gconfig{'mobile_theme'}) ?
 		    $gconfig{'mobile_theme'} :
@@ -5943,13 +5946,22 @@ return &open_tempfile(@_);
 
 sub END
 {
+$main::end_exit_status ||= $?;
 if ($$ == $main::initial_process_id) {
+	# Exiting from initial process
 	&cleanup_tempnames();
 	if ($gconfig{'debug_what_start'} && $main::debug_log_start_time &&
 	    $main::debug_log_start_module eq $module_name) {
 		local $len = time() - $main::debug_log_start_time;
 		&webmin_debug_log("STOP", "runtime=$len");
 		$main::debug_log_start_time = 0;
+		}
+	if (!$ENV{'SCRIPT_NAME'} &&
+	    $main::initial_module_name eq $module_name) {
+		# In a command-line script - call the real exit, so that the
+		# exit status gets properly propogated. In some cases this
+		# was not happening.
+		exit($main::end_exit_status);
 		}
 	}
 }
@@ -6794,4 +6806,3 @@ return $ENV{'MOBILE_DEVICE'} ? 0 : 1;
 $done_web_lib_funcs = 1;
 
 1;
-
