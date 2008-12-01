@@ -109,6 +109,7 @@ foreach $m (@mlist) {
 
 # Remove files that shouldn't be publicly available
 system("rm -rf $tardir/$dir/status/mailserver*");
+system("rm -rf $tardir/$dir/file/plugin.jar");
 
 # Add other directories
 foreach $d (@dirlist) {
