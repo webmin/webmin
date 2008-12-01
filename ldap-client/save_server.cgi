@@ -96,10 +96,8 @@ else {
 	&save_rootbinddn_secret($in{'rootbindpw'});
 	}
 
-if (!$uri) {
-	# SSL mode
-	&save_directive($conf, "ssl", $in{'ssl'} || undef);
-	}
+# SSL mode
+&save_directive($conf, "ssl", $in{'ssl'} || undef);
 
 # Check server SSL cert
 &save_directive($conf, "tls_checkpeer", $in{'peer'} || undef);

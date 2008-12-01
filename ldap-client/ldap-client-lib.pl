@@ -160,17 +160,23 @@ if ($@) {
 local $conf = &get_config();
 local $uri = &find_svalue("uri", $conf);
 local ($ldap, $use_ssl, $err);
+local $ssl = &find_svalue("ssl", $conf);
 if ($config{'ldap_hosts'}) {
 	# Using hosts from module config
 	local @hosts = split(/\s+/, $config{'ldap_hosts'});
-	$use_ssl = $config{'ldap_tls'} eq '' ?
-			&find_svalue("ssl", $conf) eq "start_tls" :
-			$config{'ldap_tls'};
+	if ($config{'ldap_tls'} ne '') {
+		$use_ssl = $config{'ldap_tls'};
+		}
+	else {
+		$use_ssl = $ssl eq 'yes' ? 1 :
+			   $ssl eq 'start_tls' ? 2 : 0;
+		}
 	local $port = $config{'ldap_port'} ||
 		      &find_svalue("port", $conf) ||
-		      ($use_ssl ? 636 : 389);
+		      ($use_ssl == 1 ? 636 : 389);
 	foreach $host (@hosts) {
-		$ldap = Net::LDAP->new($host, port => $port);
+		$ldap = Net::LDAP->new($host, port => $port,
+				schema => $use_ssl == 2 ? 'ldaps' : 'ldap');
 		${$_[1]} = $host if ($_[1]);
 		if (!$ldap) {
 			$err = &text('ldap_econn',
@@ -202,7 +208,8 @@ elsif ($uri) {
 				}
 			else {
 				$err = undef;
-				$use_ssl = $proto eq "ldaps" ? 1 : 0;
+				$use_ssl = $proto eq "ldaps" ? 1 :
+					   $ssl eq 'start_tls' ? 2 : 0;
 				last;
 				}
 			}
@@ -213,9 +220,8 @@ elsif ($uri) {
 	}
 else {
 	# Using host and port directives
-	if (&find_svalue("ssl", $conf) eq "start_tls") {
-		$use_ssl = 1;
-		}
+	$use_ssl = $ssl eq 'yes' ? 1 :
+		   $ssl eq 'start_tls' ? 2 : 0;
 	local @hosts = split(/[ ,]+/, &find_svalue("host", $conf));
 	local $port = &find_svalue("port", $conf) ||
 		      $use_ssl ? 636 : 389;
@@ -223,7 +229,7 @@ else {
 
 	foreach $host (@hosts) {
 		$ldap = Net::LDAP->new($host, port => $port,
-				       schema => $use_ssl ? 'ldaps' : 'ldap');
+			       schema => $use_ssl == 1 ? 'ldaps' : 'ldap');
 		${$_[1]} = $host if ($_[1]);
 		if (!$ldap) {
 			$err = &text('ldap_econn',
@@ -235,15 +241,20 @@ else {
 			}
 		}
 	}
+
+# Start TLS if configured
+if ($use_ssl == 2 && !$err) {
+	local $mesg;
+	eval { $mesg = $ldap->start_tls; };
+	if ($@ || !$mesg || $mesg->code) {
+		$err = &text('ldap_etls', $@ ? $@ : $mesg ? $mesg->error :
+					  "Unknown error");
+		}
+	}
+
 if ($err) {
 	if ($_[0]) { return $err; }
 	else { &error($err); }
-	}
-
-# Start TLS if configured
-if ($use_ssl) {
-	# Errors are ignored, as we may already be in SSL mode
-	eval { $ldap->start_tls; };
 	}
 
 local ($dn, $password);

@@ -20,6 +20,7 @@ server_same=Same as non-<tt>root</tt>
 server_none=None
 server_anon=Anonymous
 server_ssl=Use encrypted connection?
+server_tls=Yes, using TLS
 server_peer=Verify LDAP SSL certificate?
 server_def=Default (usually $1)
 server_cacert=CA certificate file
@@ -110,6 +111,7 @@ ldap_econn=Failed to connect to LDAP server $1 port $2
 ldap_elogin=Failed to bind to LDAP server $1 as $2 : $3
 ldap_anon=anonymous
 ldap_eparse=Could not parse the LDAP server URI $1
+ldap_etls=Failed to switch to TLS mode : $1
 
 browser_title=LDAP Browser
 browser_econn=The LDAP browser cannot be used : $1
