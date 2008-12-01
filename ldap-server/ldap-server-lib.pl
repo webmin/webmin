@@ -74,22 +74,6 @@ foreach $ssl (@ssls) {
 		# Connection failed .. give up completely
 		return &text('connect_eldap', "<tt>$server</tt>", $sslport);
 		}
-	if ($ssl) {
-		# Switch to TLS mode. It is OK if this fails though
-		local $mesg;
-		eval { $mesg = $ldap->start_tls(); };
-		#if ($@ || !$mesg || $mesg->code) {
-		#	# Failed to switch to SSL mode. If also trying non-SSL,
-		#	# continue around the loop. Otherwise, give up
-		#	if (@ssls > 1) {
-		#		next;
-		#		}
-		#	else {
-		#		return &text('connect_essl', "<tt>$server</tt>",
-		#			     $@ ? $@ : &ldap_error($mesg));
-		#		}
-		#	}
-		}
 	}
 $ldap || return "This can't happen!";
 
