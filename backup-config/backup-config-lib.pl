@@ -235,7 +235,7 @@ foreach $m (@mods) {
 local @files;
 if (!$_[5]) {
 	# Build list of all files to save from modules
-	foreach $m (@mods) {
+	foreach my $m (@mods) {
 		&foreign_require($m, "backup_config.pl");
 		local @mfiles = &foreign_call($m, "backup_config_files");
 		push(@files, @mfiles);
@@ -442,14 +442,13 @@ if (!@files) {
 
 # Get descriptions for each module
 local %desc;
-foreach $m (@{$_[0]}) {
+foreach my $m (@{$_[0]}) {
 	local %minfo = &get_module_info($m);
 	$desc{$m} = $minfo{'desc'};
 	}
 
 # Call module pre functions
-local $m;
-foreach $m (@{$_[0]}) {
+foreach my $m (@{$_[0]}) {
 	&foreign_require($m, "backup_config.pl");
 	if (&foreign_defined($m, "pre_restore")) {
 		local $err = &foreign_call($m, "pre_restore", \@files);
