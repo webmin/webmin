@@ -65,6 +65,12 @@ else {
 	&save_directive($conf, 'timelimit', $in{'timelimit'});
 	}
 
+# LDAP protocols
+if (&can_get_ldap_protocols()) {
+	@newprotos = split(/\0/, $in{'protos'});
+	@newprotos || &error($text{'slapd_eprotos'});
+	}
+
 # SSL file options
 foreach $s ([ 'TLSCertificateFile', 'cert' ],
 	    [ 'TLSCertificateKeyFile', 'key' ],
@@ -86,6 +92,16 @@ if ($save_config) {
 	&lock_file($module_config_file);
 	&save_module_config();
 	&unlock_file($module_config_file);
+	}
+if (&can_get_ldap_protocols()) {
+	$protos = &get_ldap_protocols();
+	foreach $p (keys %$protos) {
+		$protos->{$p} = 0;
+		}
+	foreach $p (@newprotos) {
+		$protos->{$p} = 1;
+		}
+	&save_ldap_protocols($protos);
 	}
 &webmin_log('slapd');
 

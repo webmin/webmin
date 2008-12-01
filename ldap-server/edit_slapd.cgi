@@ -86,6 +86,17 @@ print &ui_hidden_table_end("basic");
 # SSL section
 print &ui_hidden_table_start($text{'slapd_header2'}, undef, 2, "ssl", 0, \@tds);
 
+# Protocols to serve
+if (&can_get_ldap_protocols()) {
+	$protos = &get_ldap_protocols();
+	@protos = sort { $a cmp $b } keys %$protos;
+	print &ui_table_row($text{'slapd_protos'},
+		&ui_select("protos",
+			   [ grep { $protos->{$_} } @protos ],
+			   [ map { [ $_, $text{'slapd_'.$_} ] } @protos ],
+			   scalar(@protos), 1));
+	}
+
 # SSL file options
 $anycert = 0;
 foreach $s ([ 'TLSCertificateFile', 'cert' ],

@@ -36,13 +36,13 @@ if ($net_ldap_error) {
 	}
 
 # Work out server name, login and TLS mode
-local ($server, $port, $user, $pass, $ssl) = @_;
+local ($server, $port, $user, $pass, $ssl);
 if ($config{'server'}) {
 	# Remote box .. everything must be set
 	$server = $config{'server'};
 	gethostbyname($server) || return &text('connect_eserver',
 					       "<tt>$server</tt>");
-	$port = $config{'port'} || 389;
+	$port = $config{'port'};
 	$user = $config{'user'};
 	$user || return $text{'connect_euser'};
 	$pass = $config{'pass'};
@@ -54,7 +54,7 @@ else {
 					"<tt>$config{'config_file'}</tt>");
 	local $conf = &get_config();
 	$server = "127.0.0.1";
-	$port = $config{'port'} || &find_value("port", $conf) || 389;
+	$port = $config{'port'} || &find_value("port", $conf);
 	$user = $config{'user'} || &find_value("rootdn", $conf);
 	$user || return $text{'connect_euser2'};
 	$pass = $config{'pass'} || &find_value("rootpw", $conf);
@@ -67,26 +67,28 @@ $ssl = $config{'ssl'};
 local @ssls = $ssl eq "" ? ( 1, 0 ) : ( $ssl );
 local $ldap;
 foreach $ssl (@ssls) {
-	$ldap = Net::LDAP->new($server, port => $port);
+	my $sslport = $port ? $port : $ssl ? 636 : 389;
+	$ldap = Net::LDAP->new($server, port => $sslport,
+			       scheme=>$ssl ? 'ldaps' : 'ldap');
 	if (!$ldap) {
 		# Connection failed .. give up completely
-		return &text('connect_eldap', "<tt>$server</tt>", $port);
+		return &text('connect_eldap', "<tt>$server</tt>", $sslport);
 		}
 	if ($ssl) {
-		# Switch to TLS mode
+		# Switch to TLS mode. It is OK if this fails though
 		local $mesg;
 		eval { $mesg = $ldap->start_tls(); };
-		if ($@ || !$mesg || $mesg->code) {
-			# Failed to switch to SSL mode. If also trying non-SSL,
-			# continue around the loop. Otherwise, give up
-			if (@ssls > 1) {
-				next;
-				}
-			else {
-				return &text('connect_essl', "<tt>$server</tt>",
-					     $@ ? $@ : &ldap_error($mesg));
-				}
-			}
+		#if ($@ || !$mesg || $mesg->code) {
+		#	# Failed to switch to SSL mode. If also trying non-SSL,
+		#	# continue around the loop. Otherwise, give up
+		#	if (@ssls > 1) {
+		#		next;
+		#		}
+		#	else {
+		#		return &text('connect_essl', "<tt>$server</tt>",
+		#			     $@ ? $@ : &ldap_error($mesg));
+		#		}
+		#	}
 		}
 	}
 $ldap || return "This can't happen!";
@@ -525,6 +527,90 @@ foreach my $b (@{$p->{'by'}}) {
 	push(@v, @{$b->{'control'}});
 	}
 $a->{'values'} = \@v;
+}
+
+# can_get_ldap_protocols()
+# Returns 1 if we can get the protocols this LDAP server will serve. Depends
+# on the OS, as this is often set in the init script.
+sub can_get_ldap_protocols
+{
+return $gconfig{'os_type'} eq 'redhat-linux' &&
+	-r "/etc/sysconfig/ldap" ||
+       $gconfig{'os_type'} eq 'debian-linux' &&
+	-r "/etc/default/slapd" &&
+	&get_ldap_protocols();
+}
+
+# get_ldap_protocols()
+# Returns a hash from known LDAP protcols (like ldap, ldaps and ldapi) to
+# flags indicating if they are enabled
+sub get_ldap_protocols
+{
+if ($gconfig{'os_type'} eq 'redhat-linux') {
+	# Stored in /etc/sysconfig/ldap file
+	local %ldap;
+	&read_env_file("/etc/init.d/ldap", \%ldap);
+	&read_env_file("/etc/sysconfig/ldap", \%ldap);
+	return { 'ldap' => $ldap{'SLAPD_LDAP'} eq 'yes' ? 1 : 0,
+		 'ldapi' => $ldap{'SLAPD_LDAPI'} eq 'yes' ? 1 : 0,
+		 'ldaps' => $ldap{'SLAPD_LDAPS'} eq 'yes' ? 1 : 0,
+	       };
+	}
+elsif ($gconfig{'os_type'} eq 'debian-linux') {
+	# Stored in /etc/default/slapd, in SLAPD_SERVICES line
+	local %ldap;
+	&read_env_file("/etc/default/slapd", \%ldap);
+	if ($ldap{'SLAPD_SERVICES'}) {
+		local @servs = split(/\s+/, $ldap{'SLAPD_SERVICES'});
+		local $rv = { 'ldap' => 0, 'ldaps' => 0, 'ldapi' => 0 };
+		foreach my $w (@servs) {
+			if ($w =~ /^(ldap|ldaps|ldapi):\/\/\/$/) {
+				$rv->{$1} = 1;
+				}
+			else {
+				# Unknown protocol spec .. ignore
+				return undef;
+				}
+			}
+		return $rv;
+		}
+	else {
+		# Default is non-encrypted only
+		return { 'ldap' => 1, 'ldaps' => 0, 'ldapi' => 0 };
+		}
+	}
+}
+
+# save_ldap_protocols(&protos)
+# Updates the OS-specific file containing enabled LDAP protocols. Also does
+# locking on the file.
+sub save_ldap_protocols
+{
+local ($protos) = @_;
+if ($gconfig{'os_type'} eq 'redhat-linux') {
+	# Stored in /etc/sysconfig/ldap file
+	local %ldap;
+	&lock_file("/etc/sysconfig/ldap");
+	&read_env_file("/etc/sysconfig/ldap", \%ldap);
+	$ldap{'SLAPD_LDAP'} = $protos->{'ldap'} ? 'yes' : 'no'
+		if (defined($protos->{'ldap'}));
+	$ldap{'SLAPD_LDAPI'} = $protos->{'ldapi'} ? 'yes' : 'no'
+		if (defined($protos->{'ldapi'}));
+	$ldap{'SLAPD_LDAPS'} = $protos->{'ldaps'} ? 'yes' : 'no'
+		if (defined($protos->{'ldaps'}));
+	&write_env_file("/etc/sysconfig/ldap", \%ldap);
+	&unlock_file("/etc/sysconfig/ldap");
+	}
+elsif ($gconfig{'os_type'} eq 'debian-linux') {
+	# Update /etc/default/slapd SLAPD_SERVICES line
+	local %ldap;
+	&lock_file("/etc/default/slapd");
+	&read_env_file("/etc/default/slapd", \%ldap);
+	$ldap{'SLAPD_SERVICES'} =
+	    join(" ", map { $_.":///" } grep { $protos->{$_} } keys %$protos);
+	&write_env_file("/etc/default/slapd", \%ldap);
+	&unlock_file("/etc/default/slapd");
+	}
 }
 
 1;

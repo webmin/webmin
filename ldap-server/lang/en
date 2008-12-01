@@ -73,6 +73,10 @@ slapd_gencert=Generate SSL Certificate
 slapd_gencertdesc=To run your LDAP server in TLS mode, an SSL certificate and private key must first be generated. Click this button to create a self-signed certificate for your system.
 slapd_gencertwarn=Warning - your existing certificate will no longer be used.
 slapd_ecannot=You are not allowed to configure the LDAP server
+slapd_protos=LDAP connections to accept
+slapd_ldap=LDAP over network
+slapd_ldaps=LDAP over SSL
+slapd_ldapi=Unix socket file
 
 schema_title=Manage Schema
 schema_file=Name
