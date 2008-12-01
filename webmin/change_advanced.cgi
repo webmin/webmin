@@ -51,6 +51,11 @@ else {
 	$gconfig{'umask'} = $in{'umask'};
 	}
 
+# Save chattr
+if (defined($in{'chattr'})) {
+	$gconfig{'chattr'} = $in{'chattr'};
+	}
+
 # Save nice level
 if ($in{'nice_def'}) {
 	delete($gconfig{'nice'});

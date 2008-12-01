@@ -5829,7 +5829,9 @@ else {
 		&webmin_debug_log("WRITE", $1) if ($db);
 		$file = $1;
 		$file = &translate_filename($file);
+		my @old_attributes = &get_clear_file_attributes($file);
 		local $ex = open($fh, ">$file");
+		&reset_file_attributes($file, \@old_attributes);
 		$main::open_temphandles{$fh} = $file;
 		if (!$ex && !$noerror) {
 			&error(&text("efileopen", $file, $!));
@@ -5842,7 +5844,9 @@ else {
 		&webmin_debug_log("APPEND", $1) if ($db);
 		$file = $1;
 		$file = &translate_filename($file);
+		my @old_attributes = &get_clear_file_attributes($file);
 		local $ex = open($fh, ">>$file");
+		&reset_file_attributes($file, \@old_attributes);
 		$main::open_temphandles{$fh} = $file;
 		if (!$ex && !$noerror) {
 			&error(&text("efileopen", $file, $!));
@@ -5891,12 +5895,14 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 		       " ".quotemeta($main::open_tempfiles{$_[0]}).
 		       " >/dev/null 2>&1");
 		}
+	my @old_attributes = &get_clear_file_attributes($_[0]);
 	rename($main::open_tempfiles{$_[0]}, $_[0]) || &error("Failed to replace $_[0] with $main::open_tempfiles{$_[0]} : $!");
 	if (@st) {
 		# Set original permissions and ownership
 		chmod($st[2], $_[0]);
 		chown($st[4], $st[5], $_[0]);
 		}
+	&reset_file_attributes($_[0], \@old_attributes);
 	delete($main::open_tempfiles{$_[0]});
 	@main::temporary_files = grep { $_ ne $main::open_tempfiles{$_[0]} } @main::temporary_files;
 	if ($main::open_templocks{$_[0]}) {
@@ -5909,6 +5915,48 @@ else {
 	# Must be closing a handle not associated with a file
 	close($_[0]);
 	return 1;
+	}
+}
+
+# get_clear_file_attributes(file)
+# Finds file attributes that may prevent writing, clears them and returns them
+# as a list. May call error.
+sub get_clear_file_attributes
+{
+my ($file) = @_;
+my @old_attributes;
+if ($gconfig{'chattr'}) {
+	# Get original immutable bit
+	my $out = &backquote_command(
+		"lsattr ".quotemeta($file)." 2>/dev/null");
+	if (!$?) {
+		$out =~ s/\s\S+\n//;
+		@old_attributes = grep { $_ ne '-' } split(//, $out);
+		}
+	if (&indexof("i", @old_attributes) >= 0) {
+		my $err = &backquote_logged(
+			"chattr -i ".quotemeta($file)." 2>&1");
+		if ($?) {
+			&error("Failed to remove immutable bit on ".
+			       "$file : $err");
+			}
+		}
+	}
+return @old_attributes;
+}
+
+# reset_file_attributes(file, &attributes)
+# Put back cleared attributes on some file. May call error.
+sub reset_file_attributes
+{
+local ($file, $old_attributes) = @_;
+if (&indexof("i", @$old_attributes) >= 0) {
+	my $err = &backquote_logged(
+		"chattr +i ".quotemeta($file)." 2>&1");
+	if ($?) {
+		&error("Failed to restore immutable bit on ".
+		       "$file : $err");
+		}
 	}
 }
 

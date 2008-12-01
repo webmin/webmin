@@ -750,6 +750,7 @@ advanced_tdir=Directory
 advanced_stack=Show stack trace for error messages?
 advanced_showstderr=Show Perl errors in browser?
 advanced_umask=Umask (unset permission bits) for created files
+advanced_chattr=Allow modification of immutable files?
 advanced_eumask=Umask must be a 3-digit octal number
 advanced_etempdelete=Missing or invalid maximum age of temporary files
 advanced_nice=CPU priority for scheduled jobs

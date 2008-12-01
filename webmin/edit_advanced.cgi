@@ -62,6 +62,12 @@ print &ui_table_row($text{'advanced_pass'},
 print &ui_table_row($text{'advanced_umask'},
 	    &ui_opt_textbox("umask", $gconfig{'umask'}, 5, $text{'default'}));
 
+# Overwrite immutable files
+if (&has_command("chattr")) {
+	print &ui_table_row($text{'advanced_chattr'},
+		    &ui_yesno_radio("chattr", $gconfig{'chattr'}));
+	}
+
 # Nice level for cron jobs
 if (&foreign_check("proc")) {
 	&foreign_require("proc", "proc-lib.pl");
