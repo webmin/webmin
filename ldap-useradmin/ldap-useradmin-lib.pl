@@ -81,9 +81,10 @@ if ($conf) {
 	my @hostnames = split(/[ ,]+/, $conf->{'host'});
 	my $port = $conf->{'port'};
 	my @uris = split(/[ ,]+/, $conf->{'uri'});
-	my $ssl = $conf->{'start_tls'};
+	my $ssl = $conf->{'ssl'};
 	foreach my $hname (@hostnames) {
-		push(@hosts, [ $hname, $port, $ssl eq 'start_tls' ]);
+		push(@hosts, [ $hname, $port, $ssl eq 'start_tls' ? 2 :
+					      $ssl eq 'on' ? 1 : 0 ]);
 		}
 	foreach my $u (@uris) {
 		if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/){
@@ -94,12 +95,13 @@ if ($conf) {
 			elsif (!$port && $proto eq "ldaps") {
 				$port = 636;
 				}
-			push(@hosts, [ $host, $port, $proto eq 'ldaps' ]);
+			push(@hosts, [ $host, $port,
+				       $proto eq 'ldaps' ? 1 : 0 ]);
 			}
 		}
 	}
 else {
-	# From config
+	# From module config
 	foreach my $hname (split(/[ ,]+/, $config{'ldap_host'})) {
 		push(@hosts, [ $hname, $config{'ldap_port'},
 			       $config{'ldap_tls'} ]);
@@ -113,22 +115,23 @@ if (!@hosts) {
 # Try each host in turn
 local ($ldap, $err);
 foreach my $host (@hosts) {
-	$ldap = Net::LDAP->new($host->[0], port => $host->[1]);
+	$ldap = Net::LDAP->new($host->[0], port => $host->[1],
+			       scheme => $host->[2] == 1 ? 'ldaps' : 'ldap');
 	if (!$ldap) {
 		$err = &text('conn_econn',
 			     "<tt>$host->[0]</tt>","<tt>$host->[1]</tt>");
 		next;
 		}
-	# Connected .. but try SSL if needed
-	if ($host->[2]) {
+	# Switch to TLS if needed
+	if ($host->[2] == 2) {
 		my $mesg;
 		eval { $mesg = $ldap->start_tls(); };
-		if ($@ || !$mesg || $mesg->code) {
-			# SSL failed
-			$err = &text('conn_essl',
-			     "<tt>$host->[0]</tt>", "<tt>$host->[1]</tt>", $@);
-			next;
-			}
+                if ($@ || !$mesg || $mesg->code) {
+                        # TLS failed
+                        $err = &text('conn_essl',
+                             "<tt>$host->[0]</tt>", "<tt>$host->[1]</tt>", $@);
+                        next;
+                        }
 		}
 	# If we got here, it all worked!
 	$err = undef;
