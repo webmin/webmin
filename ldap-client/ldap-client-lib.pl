@@ -193,7 +193,8 @@ elsif ($uri) {
 			elsif (!$port && $proto eq "ldaps") {
 				$port = 636;
 				}
-			$ldap = Net::LDAP->new($host, port => $port);
+			$ldap = Net::LDAP->new($host, port => $port,
+					       scheme => $proto);
 			${$_[1]} = $host if ($_[1]);
 			if (!$ldap) {
 				$err = &text('ldap_econn',
@@ -221,7 +222,8 @@ else {
 	@hosts = ( "localhost" ) if (!@hosts);
 
 	foreach $host (@hosts) {
-		$ldap = Net::LDAP->new($host, port => $port);
+		$ldap = Net::LDAP->new($host, port => $port,
+				       schema => $use_ssl ? 'ldaps' : 'ldap');
 		${$_[1]} = $host if ($_[1]);
 		if (!$ldap) {
 			$err = &text('ldap_econn',
@@ -240,7 +242,8 @@ if ($err) {
 
 # Start TLS if configured
 if ($use_ssl) {
-	$ldap->start_tls;
+	# Errors are ignored, as we may already be in SSL mode
+	eval { $ldap->start_tls; };
 	}
 
 local ($dn, $password);
