@@ -676,6 +676,9 @@ zonedef_eprins=Missing or invalid default nameserver for master domains
 zonedef_dnssec=Create DNSSEC key and sign new zones?
 zonedef_alg=Initial key algorithm
 zonedef_size=Initial key size
+zonedef_single=Number of keys to create
+zonedef_two=Zone key and key-signing key
+zonedef_one=Zone key only
 
 find_title=Find Zones
 find_match=Zones matching $1 ..
@@ -989,8 +992,13 @@ links_stop=Stop BIND
 links_start=Start BIND
 links_apply=Apply Zone
 
-dnssec_title=DNSSEC Configuration
+dnssec_title=DNSSEC Key Re-Signing
 dnssec_ecannot=You are not allowed to configure DNSSEC
+dnssec_header=Key re-signing optioins
+dnssec_enabled=Automatic key re-signing enabled?
+dnssec_period=Period between re-signs?
+dnssec_days=days
+dnssec_desc=Zones signed with DNSSEC typically have two keys - a zone key which must be re-generated and signed regularly, and a key signing key which remains constant. This page allows you to configure Webmin to perform this re-signing automatically.
 
 zonekey_title=Setup DNSSEC Key
 zonekey_desc=This zone does not have a DNSSEC signing key yet. You can use this form to have Webmin create one, so that clients resolving this zone are protected against DNS spoofing attacks.
