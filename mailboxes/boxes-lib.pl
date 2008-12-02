@@ -651,12 +651,20 @@ delete($_[0]->{'body'}) if (!$_[2]);
 # Delete mail messages from a user by copying the file and rebuilding the index
 sub delete_mail
 {
+# Validate messages
 local @m = sort { $a->{'line'} <=> $b->{'line'} } @_[1..@_-1];
+foreach my $m (@m) {
+	defined($m->{'line'}) && defined($m->{'eline'}) &&
+	  $m->{'eline'} > $m->{'line'} ||
+	    &error("Message to delete is invalid, perhaps to due to ".
+		   "out-of-date index");
+	}
+
 local $i = 0;
 local $f = &user_mail_file($_[0]);
 local $ifile = &user_index_file($_[0]);
 local $lnum = 0;
-local %dline;
+local (%dline, @fline);
 local ($dpos = 0, $dlnum = 0);
 local (@index, %index);
 &build_dbm_index($_[0], \%index);
@@ -669,6 +677,7 @@ open(SOURCE, $f) || &error("Read failed : $!");
 open(DEST, ">$tmpf") || &error("Open of $tmpf failed : $!");
 while(<SOURCE>) {
 	if ($i >= @m || $lnum < $m[$i]->{'line'}) {
+		# Within a range that we want to preserve
 		$dpos += length($_);
 		$dlnum++;
 		local $w = (print DEST $_);
@@ -680,7 +689,19 @@ while(<SOURCE>) {
 			&error("Write to $tmpf failed : $e");
 			}
 		}
+	elsif (!$fline[$i]) {
+		# Start line of a message to delete
+		if (!/^From\s/) {
+			# Not actually a message! Fail now
+			close(DEST);
+			close(SOURCE);
+			unlink($tmpf);
+			&error("Index on $f is corrupt - did not find expected mesage start at line $lnum");
+			}
+		$fline[$i] = 1;
+		}
 	elsif ($lnum == $m[$i]->{'eline'}) {
+		# End line of the current message to delete
 		$dline{$m[$i]->{'line'}}++;
 		$i++;
 		}
