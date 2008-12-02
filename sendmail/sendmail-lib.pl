@@ -192,11 +192,32 @@ else {
 }
 
 # run_makemap(textfile, dbmfile, type)
+# Run makemap to rebuild some map. Calls error if it fails.
 sub run_makemap
 {
 local($out);
-$out = &backquote_logged("$config{'makemap_path'} $_[2] $_[1] <\"$_[0]\" 2>&1");
-if ($?) { &error("makemap failed : <pre>$out</pre>"); }
+$out = &backquote_logged(
+	$config{'makemap_path'}." ".quotemeta($_[2])." ".quotemeta($_[1]).
+	" <".quotemeta($_[0])." 2>&1");
+if ($?) { &error("makemap failed : <pre>".
+		 &html_escape($out)."</pre>"); }
+}
+
+# rebuild_map_cmd(textfile)
+# If a map rebuild command is defined, run it and return 1, otherwise return 0.
+# Calls error if it fails.
+sub rebuild_map_cmd
+{
+local ($file) = @_;
+if ($config{'rebuild_cmd'}) {
+	local $cmd = &substitute_template($config{'rebuild_cmd'},
+					  { 'map_file' => $file });
+	local $out = &backquote_logged("($cmd) 2>&1");
+	if ($?) { &error("Map rebuild failed : <pre>".
+			 &html_escape($out)."</pre>"); }
+	return 1;
+	}
+return 0;
 }
 
 # find_textfile(config, dbm)

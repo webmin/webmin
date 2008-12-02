@@ -38,4 +38,5 @@ Added an access control page option to prevent creation and editing of catchall 
 ---- Changes since 1.430 ----
 Autoreply messages containing non-ASCII characters are now properly quoted-printable encoded.
 ---- Changes since 1.440 ----
-Added a module config option to control if the user is prompted for confirmation before deleting queued messages.
+Added a Module Config option to control if the user is prompted for confirmation before deleting queued messages.
+A custom command to rebuild all maps can be specified on the Module Config page, to be used instead of makemap or newaliases.

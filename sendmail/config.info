@@ -38,3 +38,4 @@ mail_style=Mail file directory style,4,0-mail/username,1-mail/u/username,2-mail/
 mail_sync=User mail file synchronization,2,create-Create with user,delete-Delete with user,modify-Rename with user
 smrsh_dir=SMRSH directory,3,None
 queue_dirs=Extra mail queue directories,3,None
+rebuild_cmd=Command to rebuild all maps,3,Use makemap command

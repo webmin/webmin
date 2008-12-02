@@ -73,6 +73,8 @@ $in{'text'} =~ s/\r//g;
 &close_tempfile(FILE);
 &webmin_log("manual", $log, $file);
 
-&system_logged("$post >/dev/null 2>&1") if ($post);
+if (!&rebuild_map_cmd($file)) {
+	&system_logged("$post >/dev/null 2>&1") if ($post);
+	}
 &redirect($return);
 

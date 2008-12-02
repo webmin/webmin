@@ -72,12 +72,14 @@ $_[0]->{'eline'} = scalar(@$lref)-1;
 &flush_file_lines();
 
 # Write to the DBM
-if ($_[3] eq "dbm") {
-	dbmopen(%mailer, $_[2], 0644);
-	$mailer{$_[0]->{'domain'}} = "$_[0]->{'mailer'}:$_[0]->{'dest'}";
-	dbmclose(%mailer);
+if (!&rebuild_map_cmd($_[1])) {
+	if ($_[3] eq "dbm") {
+		dbmopen(%mailer, $_[2], 0644);
+		$mailer{$_[0]->{'domain'}} = "$_[0]->{'mailer'}:$_[0]->{'dest'}";
+		dbmclose(%mailer);
+		}
+	else { &run_makemap($_[1], $_[2], $_[3]); }
 	}
-else { &run_makemap($_[1], $_[2], $_[3]); }
 
 # Update the cache
 $_[0]->{'num'} = scalar(@list_mailers_cache);
@@ -100,13 +102,15 @@ splice(@$lref, $_[0]->{'line'}, $oldlen, @newlines);
 &flush_file_lines($_[2]);
 
 # Update the DBM
-if ($_[3] eq "dbm") {
-	dbmopen(%mailer, $_[3], 0644);
-	delete($mailer{$_[0]->{'domain'}});
-	$mailer{$_[1]->{'domain'}} = "$_[1]->{'mailer'}:$_[1]->{'dest'}";
-	dbmclose(%mailer);
+if (!&rebuild_map_cmd($_[2])) {
+	if ($_[3] eq "dbm") {
+		dbmopen(%mailer, $_[3], 0644);
+		delete($mailer{$_[0]->{'domain'}});
+		$mailer{$_[1]->{'domain'}} = "$_[1]->{'mailer'}:$_[1]->{'dest'}";
+		dbmclose(%mailer);
+		}
+	else { &run_makemap($_[2], $_[3], $_[4]); }
 	}
-else { &run_makemap($_[2], $_[3], $_[4]); }
 
 local $idx = &indexof($_[0], @list_mailers_cache);
 $_[1]->{'line'} = $_[0]->{'line'};
@@ -127,12 +131,14 @@ splice(@$lref, $_[0]->{'line'}, $len);
 &flush_file_lines($_[1]);
 
 # Delete f rom the DBM
-if ($_[3] eq "dbm") {
-	dbmopen(%mailer, $_[2], 0644);
-	delete($mailer{$_[0]->{'domain'}});
-	dbmclose(%mailer);
+if (!&rebuild_map_cmd($_[1])) {
+	if ($_[3] eq "dbm") {
+		dbmopen(%mailer, $_[2], 0644);
+		delete($mailer{$_[0]->{'domain'}});
+		dbmclose(%mailer);
+		}
+	else { &run_makemap($_[1], $_[2], $_[3]); }
 	}
-else { &run_makemap($_[1], $_[2], $_[3]); }
 
 # Update the cache
 local $idx = &indexof($_[0], @list_mailers_cache);

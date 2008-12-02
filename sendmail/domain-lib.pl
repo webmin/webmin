@@ -72,12 +72,14 @@ $_[0]->{'eline'} = scalar(@$lref)-1;
 &flush_file_lines($_[1]);
 
 # Add to DBM
-if ($_[3] eq "dbm") {
-	dbmopen(%dom, $_[2], 0644);
-	$dom{$_[0]->{'from'}} = $_[0]->{'to'};
-	dbmclose(%dom);
+if (!&rebuild_map_cmd($_[1])) {
+	if ($_[3] eq "dbm") {
+		dbmopen(%dom, $_[2], 0644);
+		$dom{$_[0]->{'from'}} = $_[0]->{'to'};
+		dbmclose(%dom);
+		}
+	else { &run_makemap($_[1], $_[2], $_[3]); }
 	}
-else { &run_makemap($_[1], $_[2], $_[3]); }
 
 # Add to cache
 $_[0]->{'num'} = scalar(@list_domains_cache);
@@ -98,12 +100,14 @@ splice(@$lref, $_[0]->{'line'}, $len);
 &flush_file_lines($_[1]);
 
 # Delete from DBM
-if ($_[3] eq "dbm") {
-	dbmopen(%dom, $_[2], 0644);
-	delete($dom{$_[0]->{'from'}});
-	dbmclose(%dom);
+if (!&rebuild_map_cmd($_[1])) {
+	if ($_[3] eq "dbm") {
+		dbmopen(%dom, $_[2], 0644);
+		delete($dom{$_[0]->{'from'}});
+		dbmclose(%dom);
+		}
+	else { &run_makemap($_[1], $_[2], $_[3]); }
 	}
-else { &run_makemap($_[1], $_[2], $_[3]); }
 
 # Delete from cache
 local $idx = &indexof($_[0], @list_domains_cache);
@@ -127,13 +131,15 @@ splice(@$lref, $_[0]->{'line'}, $oldlen, @newlines);
 &flush_file_lines($_[2]);
 
 # Update DBM
-if ($_[4] eq "dbm") {
-	dbmopen(%dom, $_[3], 0644);
-	delete($dom{$_[0]->{'from'}});
-	$dom{$_[1]->{'from'}} = $_[1]->{'to'};
-	dbmclose(%dom);
+if (!&rebuild_map_cmd($_[2])) {
+	if ($_[4] eq "dbm") {
+		dbmopen(%dom, $_[3], 0644);
+		delete($dom{$_[0]->{'from'}});
+		$dom{$_[1]->{'from'}} = $_[1]->{'to'};
+		dbmclose(%dom);
+		}
+	else { &run_makemap($_[2], $_[3], $_[4]); }
 	}
-else { &run_makemap($_[2], $_[3], $_[4]); }
 
 # Update cache
 local $idx = &indexof($_[0], @list_domains_cache);

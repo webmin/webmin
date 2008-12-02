@@ -184,7 +184,11 @@ local $str = ($_[0]->{'enabled'} ? "" : "# ") . $_[0]->{'name'} . ": " .
 push(@$lref, $str);
 $_[0]->{'eline'} = scalar(@$lref)-1;
 &flush_file_lines($_[1]->[0]);
-&system_logged("newaliases >/dev/null 2>&1") if (!$_[2]);
+if (!$_[2]) {
+	if (!&rebuild_map_cmd($_[1]->[0])) {
+		&system_logged("newaliases >/dev/null 2>&1");
+		}
+	}
 
 # Add to the cache
 local $jfiles = join(",", @{$_[1]});
@@ -203,7 +207,11 @@ local $lref = &read_file_lines($_[0]->{'file'});
 local $len = $_[0]->{'eline'} - $_[0]->{'line'} + 1;
 splice(@$lref, $_[0]->{'line'}, $len);
 &flush_file_lines($_[0]->{'file'});
-&system_logged("newaliases >/dev/null 2>&1") if (!$_[1]);
+if (!$_[1]) {
+	if (!&rebuild_map_cmd($_[0]->{'file'})) {
+		&system_logged("newaliases >/dev/null 2>&1");
+		}
+	}
 
 # Remove from the cache
 local $jfiles = join(",", @{$_[0]->{'files'}});
@@ -227,7 +235,11 @@ local $lref = &read_file_lines($_[0]->{'file'});
 local $len = $_[0]->{'eline'} - $_[0]->{'line'} + 1;
 splice(@$lref, $_[0]->{'line'}, $len, @newlines);
 &flush_file_lines($_[0]->{'file'});
-&system_logged("newaliases >/dev/null 2>&1") if (!$_[2]);
+if (!$_[2]) {
+	if (!&rebuild_map_cmd($_[0]->{'file'})) {
+		&system_logged("newaliases >/dev/null 2>&1");
+		}
+	}
 
 local $jfiles = join(",", @{$_[0]->{'files'}});
 local $c = $list_aliases_cache{$jfiles};

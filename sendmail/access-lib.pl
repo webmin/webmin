@@ -76,12 +76,14 @@ $_[0]->{'eline'} = scalar(@$lref)-1;
 &flush_file_lines($_[1]);
 
 # Add to DBM
-if ($_[3] eq "dbm") {
-	dbmopen(%acc, $_[2], 0644);
-	$acc{$from} = $_[0]->{'action'};
-	dbmclose(%acc);
+if (!&rebuild_map_cmd($_[1])) {
+	if ($_[3] eq "dbm") {
+		dbmopen(%acc, $_[2], 0644);
+		$acc{$from} = $_[0]->{'action'};
+		dbmclose(%acc);
+		}
+	else { &run_makemap($_[1], $_[2], $_[3]); }
 	}
-else { &run_makemap($_[1], $_[2], $_[3]); }
 
 # Add to cache
 $_[0]->{'num'} = scalar(@list_access_cache);
@@ -104,12 +106,14 @@ splice(@$lref, $_[0]->{'line'}, $len);
 # Delete from DBM
 local $oldfrom = $_[0]->{'tag'} ? "$_[0]->{'tag'}:$_[0]->{'from'}"
 			        : $_[0]->{'from'};
-if ($_[3] eq "dbm") {
-	dbmopen(%acc, $_[2], 0644);
-	delete($acc{$oldfrom});
-	dbmclose(%acc);
+if (!&rebuild_map_cmd($_[1])) {
+	if ($_[3] eq "dbm") {
+		dbmopen(%acc, $_[2], 0644);
+		delete($acc{$oldfrom});
+		dbmclose(%acc);
+		}
+	else { &run_makemap($_[1], $_[2], $_[3]); }
 	}
-else { &run_makemap($_[1], $_[2], $_[3]); }
 
 # Delete from cache
 local $idx = &indexof($_[0], @list_access_cache);
@@ -137,13 +141,15 @@ splice(@$lref, $_[0]->{'line'}, $oldlen, @newlines);
 &flush_file_lines($_[2]);
 
 # Update DBM
-if ($_[4] eq "dbm") {
-	dbmopen(%virt, $_[3], 0644);
-	delete($virt{$oldfrom});
-	$virt{$from} = $_[1]->{'action'};
-	dbmclose(%virt);
+if (!&rebuild_map_cmd($_[2])) {
+	if ($_[4] eq "dbm") {
+		dbmopen(%virt, $_[3], 0644);
+		delete($virt{$oldfrom});
+		$virt{$from} = $_[1]->{'action'};
+		dbmclose(%virt);
+		}
+	else { &run_makemap($_[2], $_[3], $_[4]); }
 	}
-else { &run_makemap($_[2], $_[3], $_[4]); }
 
 # Update cache
 local $idx = &indexof($_[0], @list_generics_cache);
