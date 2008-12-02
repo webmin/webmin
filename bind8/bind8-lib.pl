@@ -2601,12 +2601,12 @@ sub list_dnssec_algorithms
 return ("DSA", "RSAMD5", "RSASHA1", "DH", "HMAC-MD5");
 }
 
-# create_dnssec_key(&zone|&zone-name, algorithm, size)
+# create_dnssec_key(&zone|&zone-name, algorithm, size, single-key)
 # Creates a new DNSSEC key for some zone, and places it in the same directory
 # as the zone file. Returns undef on success or an error message on failure.
 sub create_dnssec_key
 {
-local ($z, $alg, $size) = @_;
+local ($z, $alg, $size, $single) = @_;
 local $fn = &get_zone_file($z, 2);
 $fn || return "Could not work out records file!";
 $fn =~ s/\/[^\/]+$//;
@@ -2633,15 +2633,38 @@ local $out = &backquote_logged(
 	"cd ".quotemeta($fn)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($size).
 	" -n ZONE $dom 2>&1");
-kill('KILL', $pid);
-return $out if ($?);
+if ($?) {
+	kill('KILL', $pid);
+	return $out;
+	}
 
-# Get the new key
-local $key = &get_dnssec_key($z);
-$key || return "No new key found for zone : $out";
-ref($key) || return "Failed to get new key for zone : $key";
+# Create the key signing key, if needed
+if (!$single) {
+	$out = &backquote_logged(
+		"cd ".quotemeta($fn)." && ".
+		"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($size).
+		" -n ZONE -f KSK $dom 2>&1");
+	kill('KILL', $pid);
+	if ($?) {
+		return $out;
+		}
+	}
+else {
+	kill('KILL', $pid);
+	}
 
-# Add the new DNSKEY record to the zone
+# Get the new keys
+local @keys = &get_dnssec_key($z);
+@keys || return "No new keys found for zone : $out";
+foreach my $key (@keys) {
+	ref($key) || return "Failed to get new key for zone : $key";
+	}
+if (!$single) {
+	@keys == 2 || return "Expected 2 keys for zone, but found ".
+			     scalar(@keys);
+	}
+
+# Add the new DNSKEY record(s) to the zone
 local $chrootfn = &get_zone_file($z);
 local @recs = &read_zone_file($chrootfn, $dom);
 for(my $i=$#recs; $i>=0; $i--) {
@@ -2649,8 +2672,10 @@ for(my $i=$#recs; $i>=0; $i--) {
 		&delete_record($chrootfn, $recs[$i]);
 		}
 	}
-&create_record($chrootfn, $dom.".", undef, "IN", "DNSKEY",
-	       join(" ", @{$key->{'values'}}));
+foreach my $key (@keys) {
+	&create_record($chrootfn, $dom.".", undef, "IN", "DNSKEY",
+		       join(" ", @{$key->{'values'}}));
+	}
 &bump_soa_record($chrootfn, \@recs);
 
 return undef;
@@ -2666,8 +2691,8 @@ $fn || return "Could not work out records file!";
 local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Remove the key
-local $key = &get_dnssec_key($z);
-if ($key) {
+local @keys = &get_dnssec_key($z);
+foreach my $key (@keys) {
 	foreach my $f ('publicfile', 'privatefile') {
 		&unlink_file($key->{$f}) if ($key->{$f});
 		}
@@ -2754,22 +2779,24 @@ if ($keyrec) {
 }
 
 # get_dnssec_key(&zone|&zone-name)
-# Returns a hash containing details of a zone's key, or an error string
+# Returns a list of hash containing details of a zone's keys, or an error
+# message. The KSK is always returned first.
 sub get_dnssec_key
 {
 local ($z) = @_;
 local $fn = &get_zone_file($z, 1);
-$fn || return "Could not work out records file!";
+$fn || return ("Could not work out records file!");
 $fn =~ /^(.*)\/([^\/]+$)/;
 local ($chrootdir, $zf) = ($1, $2);
 local $dir = &make_chroot($chrootdir);
 local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
-local $rv;
+local %keymap;
 opendir(ZONEDIR, $dir);
 foreach my $f (readdir(ZONEDIR)) {
 	if ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.key$/) {
 		# Found the public key file .. read it
-		$rv ||= { };
+		$keymap{$2} ||= { };
+		local $rv = $keymap{$2};
 		$rv->{'publicfile'} = "$dir/$f";
 		$rv->{'algorithmid'} = $1;
 		$rv->{'keyid'} = $2;
@@ -2782,14 +2809,15 @@ foreach my $f (readdir(ZONEDIR)) {
 		$pub->{'type'} eq "DNSKEY" ||
 			return "Public key file $dir/$f does not contain ".
 			       "a DNSKEY record";
-		$rv->{'size'} = $pub->{'values'}->[0];
+		$rv->{'ksk'} = $pub->{'values'}->[0] % 2 ? 1 : 0;
 		$rv->{'public'} = $pub->{'values'}->[3];
 		$rv->{'values'} = $pub->{'values'};
 		$rv->{'publictext'} = &read_file_contents("$dir/$f");
 		}
 	elsif ($f =~ /^K\Q$dom\E\.\+(\d+)\+(\d+)\.private$/) {
 		# Found the private key file
-		$rv ||= { };
+		$keymap{$2} ||= { };
+		local $rv = $keymap{$2};
 		$rv->{'privatefile'} = "$dir/$f";
 		local $lref = &read_file_lines("$dir/$f", 1);
 		foreach my $l (@$lref) {
@@ -2805,7 +2833,11 @@ foreach my $f (readdir(ZONEDIR)) {
 		}
 	}
 closedir(ZONEDIR);
-return $rv;
+
+# Sort to put KSK first
+local @rv = values %keymap;
+@rv = sort { $b->{'ksk'} <=> $a->{'ksk'} } @rv;
+return wantarray ? @rv : $rv[0];
 }
 
 # compute_dnssec_key_size(algorithm, def-mode, size)

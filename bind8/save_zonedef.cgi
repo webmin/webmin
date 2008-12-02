@@ -71,6 +71,7 @@ if (defined($in{'dnssec'})) {
 	&error($err) if (!$ok);
 	$config{'tmpl_dnssecsizedef'} = $in{'size_def'};
 	$config{'tmpl_dnssecsize'} = $in{'size'};
+	$config{'tmpl_dnssecsingle'} = $in{'single'};
 	}
 &save_module_config();
 &unlock_file("$module_config_directory/config");

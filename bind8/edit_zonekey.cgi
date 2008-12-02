@@ -28,14 +28,15 @@ if ($keyrec) {
 	print $text{'zonekey_public'},"<br>\n";
 	print &ui_textarea("keyline", $keyline, 5, 80, "off", 0,
 			   "readonly style='width:90%'"),"<p>\n";
-	$key = &get_dnssec_key($zone);
-	if ($key && ref($key)) {
-		print $text{'zonekey_private'},"<br>\n";
-		print &ui_textarea("private", $key->{'privatetext'}, 10, 80,
-				   "off", 0, "readonly style='width:90%'");
-		}
-	elsif ($key) {
-		print &text('zonekey_eprivate', $key),"<p>\n";
+
+	@keys = &get_dnssec_key($zone);
+	if (@keys) {
+		foreach $key (@keys) {
+			print $text{'zonekey_private'},"<br>\n";
+			print &ui_textarea(
+				"private", $key->{'privatetext'}, 10, 80,
+				"off", 0, "readonly style='width:90%'");
+			}
 		}
 	else {
 		print &text('zonekey_noprivate'),"<p>\n";
@@ -54,6 +55,16 @@ if ($keyrec) {
 			      $text{'zonekey_signdesc'},
 			      &ui_hidden("view", $in{'view'}).
 			      &ui_hidden("index", $in{'index'}));
+
+	# Offer to re-generate now, for zones with a KSK
+	if (@keys == 2) {
+		print &ui_buttons_row("resign_zone.cgi",
+				      $text{'zonekey_resign'},
+				      $text{'zonekey_resigndesc'},
+				      &ui_hidden("view", $in{'view'}).
+				      &ui_hidden("index", $in{'index'}));
+		}
+
 	print &ui_buttons_end();
 	}
 else {
@@ -76,6 +87,11 @@ else {
 					   [ 2, $text{'zonekey_strong'}."<br>"],
 					   [ 0, $text{'zonekey_other'} ] ]).
 		" ".&ui_textbox("size", undef, 6));
+
+	# Number of keys
+	print &ui_table_row($text{'zonedef_single'},
+		&ui_radio("single", 0, [ [ 0, $text{'zonedef_two'} ],
+					 [ 1, $text{'zonedef_one'} ] ]));
 	
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'zonekey_enable'} ] ]);

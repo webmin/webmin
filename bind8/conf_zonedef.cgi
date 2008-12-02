@@ -86,6 +86,12 @@ if (&supports_dnssec()) {
 			  [ 2, $text{'zonekey_strong'}."<br>"],
 			  [ 0, $text{'zonekey_other'} ] ]).
 		" ".&ui_textbox("size", $config{'tmpl_dnssecsize'}, 6), 3);
+
+	# Number of keys
+	print &ui_table_row($text{'zonedef_single'},
+		&ui_radio("single", $config{'tmpl_dnssecsingle'} ? 1 : 0,
+			  [ [ 0, $text{'zonedef_two'} ],
+			    [ 1, $text{'zonedef_one'} ] ]));
 	}
 
 print &ui_table_end();

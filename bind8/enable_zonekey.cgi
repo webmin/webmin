@@ -21,7 +21,7 @@ $desc = &ip6int_to_net(&arpa_to_ip($dom));
 # Create the key
 &lock_file(&make_chroot(&absolute_path($zone->{'file'})));
 print &text('zonekey_creating', $dom),"<br>\n";
-$err = &create_dnssec_key($zone, $in{'alg'}, $size);
+$err = &create_dnssec_key($zone, $in{'alg'}, $size, $in{'single'});
 if ($err) {
 	print &text('zonekey_ecreate', $err),"<p>\n";
 	}
