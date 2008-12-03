@@ -91,23 +91,6 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 	print &ui_hr();
 	print &ui_buttons_start();
 
-	# Delete zone
-	if ($access{'delete'}) {
-		print &ui_buttons_row("delete_zone.cgi",
-			$text{'master_del'}, $text{'slave_delmsg'},
-			&ui_hidden("index", $in{'index'}).
-			&ui_hidden("view", $in{'view'}));
-		}
-
-	# Show button to do an NDC reload
-	if ($apply) {
-		print &ui_buttons_row("restart_zone.cgi",
-			$text{'slave_apply'},
-			$text{'slave_applymsg2'},
-			&ui_hidden("index", $in{'index'}).
-			&ui_hidden("view", $in{'view'}));
-		}
-
 	# Move to other view
 	$conf = &get_config();
 	print &move_zone_button($conf, $in{'view'}, $in{'index'});
@@ -117,6 +100,14 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 		print &ui_buttons_row("convert_slave.cgi",
 			$text{'slave_convert'},
 			$text{'slave_convertdesc'},
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'}));
+		}
+
+	# Delete zone
+	if ($access{'delete'}) {
+		print &ui_buttons_row("delete_zone.cgi",
+			$text{'master_del'}, $text{'slave_delmsg'},
 			&ui_hidden("index", $in{'index'}).
 			&ui_hidden("view", $in{'view'}));
 		}

@@ -122,28 +122,7 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 	print &ui_hr();
 	print &ui_buttons_start();
 
-	if ($access{'delete'}) {
-		# Show button to delete zome
-		print &ui_buttons_row(
-			"delete_zone.cgi", $text{'master_del'},
-			$text{'master_delmsg'}." ".
-			($dom !~ /in-addr\.arpa/i &&
-			 $dom !~ /\.$ipv6revzone/i ? $text{'master_delrev'}
-						   : ""),
-			&ui_hidden("index", $in{'index'}).
-			&ui_hidden("view", $in{'view'})
-			);
-		}
-
 	if ($apply) {
-		# Show button to do an NDC reload
-		print &ui_buttons_row(
-			"restart_zone.cgi", $text{'master_apply'},
-			$text{'master_applymsg2'},
-			&ui_hidden("index", $in{'index'}).
-			&ui_hidden("view", $in{'view'})
-			);
-
 		# Show button to freeze
 		print &ui_buttons_row(
 			"freeze_zone.cgi", $text{'master_freeze'},
@@ -182,6 +161,19 @@ if (!$access{'ro'} && ($access{'delete'} || $apply)) {
 			$text{'master_convertdesc'},
 			&ui_hidden("index", $in{'index'}).
 			&ui_hidden("view", $in{'view'}));
+		}
+
+	if ($access{'delete'}) {
+		# Show button to delete zome
+		print &ui_buttons_row(
+			"delete_zone.cgi", $text{'master_del'},
+			$text{'master_delmsg'}." ".
+			($dom !~ /in-addr\.arpa/i &&
+			 $dom !~ /\.$ipv6revzone/i ? $text{'master_delrev'}
+						   : ""),
+			&ui_hidden("index", $in{'index'}).
+			&ui_hidden("view", $in{'view'})
+			);
 		}
 
 	print &ui_buttons_end();
