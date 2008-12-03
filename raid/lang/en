@@ -9,6 +9,7 @@ index_raidtools=Using RaidTools
 index_name=Device name
 index_active=Active?
 index_level=RAID level
+index_size=Usable size
 index_members=Member disk devices
 index_header=RAID problem notification options
 index_mailaddr=Send notifications to

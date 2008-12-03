@@ -458,11 +458,14 @@ sub device_status
 @mounted = &foreign_call("mount", "list_mounted") if (!@mounted);
 @mounts = &foreign_call("mount", "list_mounts") if (!@mounts);
 local $label = &fdisk::get_label($_[0]);
+local $volid = &fdisk::get_volid($_[0]);
 
 local ($mounted) = grep { &same_file($_->[1], $_[0]) ||
-			  $_->[1] eq "LABEL=$label" } @mounted;
+			  $_->[1] eq "LABEL=$label" ||
+			  $_->[1] eq "UUID=$volid" } @mounted;
 local ($mount) = grep { &same_file($_->[1], $_[0]) ||
-			$_->[1] eq "LABEL=$label" } @mounts;
+			$_->[1] eq "LABEL=$label" ||
+		        $_->[1] eq "UUID=$volid" } @mounts;
 if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
 			&indexof($mount, @mounts),
 			&indexof($mounted, @mounted)); }

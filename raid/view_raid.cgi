@@ -168,7 +168,8 @@ if (!$st[2]) {
 	}
 
 if (@grid) {
-	print &ui_grid_table(\@grid, 2, 100, [ "width=20% nowrap" ]);
+	print &ui_grid_table(\@grid, 2, 100, [ "width=20% nowrap" ],
+			     "cellpadding=5"),"<p>\n";
 	}
 if ($st[2]) {
 	print "<b>$text{'view_cannot2'}</b><p>\n";

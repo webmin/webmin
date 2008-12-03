@@ -33,6 +33,7 @@ if (@$conf) {
 	print &ui_columns_start([ $text{'index_name'},
 				$text{'index_active'},
 				$text{'index_level'},
+				$text{'index_size'},
 				$text{'index_members'} ]);
 	foreach $c (@$conf) {
 		$lvl = &find_value('raid-level', $c->{'members'});
@@ -50,6 +51,7 @@ if (@$conf) {
 				"<font color=#00aa00>$text{'yes'}</font>" :
 				"<font color=#ff0000>$text{'no'}</font>",
 			$lvl eq 'linear' ? $text{'linear'} : $text{'raid'.$lvl},
+			$c->{'size'} ? &nice_size($c->{'size'}*1024) : "",
 			&ui_links_row(\@mems),
 			]);
 		}
