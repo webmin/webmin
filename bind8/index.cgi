@@ -316,6 +316,17 @@ if ($access{'views'} && $bind_version >= 9) {
 	# Display list of views
 	print &ui_hr();
 	print &ui_subheading($text{'index_views'});
+
+	# Show a warning if any zones are not in a view
+	@notinview = grep { !$_->{'viewidx'} } @zones;
+	if (@notinview && @views) {
+		print "<b>",&text('index_viewwarn',
+		  join(" , ", map { "<tt>".&ip6int_to_net(
+					  &arpa_to_ip($_->{'name'}))."</tt>" }
+				@notinview)),"</b><p>\n";
+		print "<b>$text{'index_viewwarn2'}</b><p>\n";
+		}
+
 	@views = grep { &can_edit_view($_) } @views;
 	foreach $v (@views) {
 		push(@vlinks, "edit_view.cgi?index=$v->{'index'}");
