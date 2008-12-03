@@ -39,7 +39,8 @@ if ($config{'mode'} == 1 || $in{'drive'}) {
 	print "<b>$text{'index_show'}</b>\n";
 	print &ui_select("drive", $in{'drive'},
 			 [ map { [ $_->{'device'},
-				   $_->{'desc'}.($_->{'model'} ? " ($_->{'model'})" : "") ] } @drives ]);
+				   $_->{'desc'}.($_->{'model'} ? " ($_->{'model'})" : "") ] } @drives ],
+			 1, 0, 0, 0, "onChange='form.submit()'");
 	print &ui_submit($text{'index_ok'}),"\n";
 	print &ui_form_end();
 
