@@ -1039,3 +1039,22 @@ sign_emsg=DNSSEC signing after records change failed : $1
 
 resign_err=Failed to re-sign zone
 
+trusted_title=DNSSEC Verification
+trusted_ecannot=You are not allowed to configure DNSSEC verification
+trusted_header=Options for DNSSEC verification of other zones
+trusted_dnssec=DNSSEC verification enabled?
+trusted_dlvs=Additional trust anchors
+trusted_anchor=Anchor zone
+trusted_dlv=Real zone
+trusted_keys=Additional trusted keys
+trusted_zone=Zone name
+trusted_flags=Key flags
+trusted_proto=Key protocol
+trusted_alg=Key algorithm
+trusted_key=Key text
+trusted_none=None
+trusted_zn=Zone
+trusted_root=Root zone
+trusted_err=Failed to save DNSSEC verification
+trusted_eanchor=Missing or invalid anchor zone in row $1
+trusted_edlv=Missing or invalid real zone in row $1

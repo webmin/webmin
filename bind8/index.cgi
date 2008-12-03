@@ -92,6 +92,7 @@ if ($access{'defaults'}) {
 		   "conf_misc.cgi", "conf_controls.cgi", "conf_keys.cgi",
 		   "conf_zonedef.cgi", "list_slaves.cgi",
 		   $bind_version >= 9 ? ( "conf_rndc.cgi" ) : ( ),
+		   $bind_version >= 9 ? ( "conf_trusted.cgi" ) : ( ),
 		   &supports_dnssec() ? ( "conf_dnssec.cgi" ) : ( ),
 		   "conf_manual.cgi" );
 	@otitles = map { /(conf|list)_(\S+).cgi/; $text{$2."_title"} } @olinks;
