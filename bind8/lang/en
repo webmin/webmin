@@ -1024,13 +1024,15 @@ zonekey_already=The zone already has a DNSSEC key, and so is already signed.
 zonekey_webmin=Webmin will re-sign the zone automatically when any changes are made.
 zonekey_public=Public key record :
 zonekey_private=Private key details :
-zonekey_expand=Show public and private key details ..
-zonekey_eprivate=An error occurred fetching private key details : $1
+zonekey_expandksk=Show public and private key-signing-key details ..
+zonekey_expandzone=Show public and private zone-key details .
 zonekey_noprivate=However, Webmin could not find the private key associated with the zone, and so will not be able to re-sign it.
 zonekey_disable=Remove Key
 zonekey_disabledesc=Removes the DNSSEC key from this zone, and all signing records. Once this is done, you will be able to generate a new key.
 zonekey_sign=Sign Zone
 zonekey_signdesc=Immediately re-sign this zone, so that any changes to records made manually will be included in the signing records.
+zonekey_resign=Re-Sign Zone
+zonekey_resigndesc=Generate a new zone signing key, sign it with the zone's master key, and re-sign all records.
 
 sign_err=Failed to sign zone
 sign_emsg=DNSSEC signing after records change failed : $1

@@ -11,7 +11,7 @@ $dom = $zone->{'name'};
 
 # Do the signing
 &lock_file(&make_chroot(&absolute_path($zone->{'file'})));
-$err = &resign_dnssec_zone($zone);
+$err = &resign_dnssec_key($zone);
 &error($err) if ($err);
 &unlock_file(&make_chroot(&absolute_path($zone->{'file'})));
 

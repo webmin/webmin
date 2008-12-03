@@ -114,6 +114,9 @@ if ($f && $type ne 'hint') {
 	&delete_records_file($f->{'value'});
 	}
 
+# delete any keys
+&delete_dnssec_key($zconf);
+
 # remove the zone directive
 &lock_file(&make_chroot($zconf->{'file'}));
 &save_directive($parent, [ $zconf ], [ ]);

@@ -22,28 +22,28 @@ if ($keyrec) {
 	print $text{'zonekey_webmin'},"\n";
 	print "<p>\n";
 
-	# Collapsible section for key details
-	print &ui_hidden_start($text{'zonekey_expand'},
-			       "expand", 0, "edit_zonekey.cgi?$in");
-	print $text{'zonekey_public'},"<br>\n";
-	print &ui_textarea("keyline", $keyline, 5, 80, "off", 0,
-			   "readonly style='width:90%'"),"<p>\n";
-
 	@keys = &get_dnssec_key($zone);
-	if (@keys) {
-		foreach $key (@keys) {
-			print $text{'zonekey_private'},"<br>\n";
-			print &ui_textarea(
-				"private", $key->{'privatetext'}, 10, 80,
-				"off", 0, "readonly style='width:90%'");
-			}
+	foreach $key (@keys) {
+		# Collapsible section for key details
+		$kt = $key->{'ksk'} ? 'ksk' : 'zone';
+		print &ui_hidden_start($text{'zonekey_expand'.$kt},
+				       $kt, 0, "edit_zonekey.cgi?$in");
+		print $text{'zonekey_public'},"<br>\n";
+		print &ui_textarea("keyline", $keyline, 2, 80, "off", 0,
+				   "readonly style='width:90%'"),"<p>\n";
+
+		print $text{'zonekey_private'},"<br>\n";
+		print &ui_textarea(
+			"private", $key->{'privatetext'}, 8, 80,
+			"off", 0, "readonly style='width:90%'");
+		print &ui_hidden_end();
 		}
-	else {
+	if (!@keys) {
 		print &text('zonekey_noprivate'),"<p>\n";
 		}
-	print &ui_hidden_end();
 
 	# Offer to disable
+	print &ui_hr();
 	print &ui_buttons_start();
 	print &ui_buttons_row("disable_zonekey.cgi", $text{'zonekey_disable'},
 			      $text{'zonekey_disabledesc'},

@@ -27,7 +27,7 @@ else {
 	$bind_version = &get_bind_version();
 	}
 
-$dnssec_cron_cmd = "$module_config_directory/renew.pl";
+$dnssec_cron_cmd = "$module_config_directory/resign.pl";
 
 # get_bind_version()
 # Returns the BIND verison number, or undef if unknown
@@ -2488,6 +2488,11 @@ if (-r $jnlfile) {
 	&lock_file($jnlfile);
 	unlink($jnlfile);
 	}
+local $signfile = $zonefile.".signed";
+if (-r $signfile) {
+	&lock_file($signfile);
+	unlink($signfile);
+	}
 }
 
 # move_zone_button(&config, current-view, zone-index)
@@ -2706,14 +2711,14 @@ local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Get the old zone key record
 local @recs = &read_zone_file($fn, $dom);
-locla $zonerec;
+local $zonerec;
 foreach my $r (@recs) {
 	if ($r->{'type'} eq 'DNSKEY' && $r->{'values'}->[0] % 2 == 0) {
 		$zonerec = $r;
 		}
 	}
 $zonerec || return "Could not find DNSSEC zone key record";
-local @keys = &get_dnssec_keys($z);
+local @keys = &get_dnssec_key($z);
 @keys == 2 || return "Expected to find 2 keys, but found ".scalar(@keys);
 local ($zonekey) = grep { !$_->{'ksk'} } @keys;
 $zonekey || return "Could not find DNSSEC zone key";
@@ -2727,8 +2732,8 @@ if (!$pid) {
 
 # Work out zone key size
 local $zonesize;
-(undef, $zonesize) = &compute_dnssec_key_size($alg, 1);
 local $alg = $zonekey->{'algorithm'};
+(undef, $zonesize) = &compute_dnssec_key_size($alg, 1);
 
 # Generate a new zone key
 local $out = &backquote_logged(
@@ -2745,10 +2750,10 @@ if ($?) {
 &unlink_file($zonekey->{'publicfile'});
 
 # Update the zone file with the new key
-@keys = &get_dnssec_keys($z);
+@keys = &get_dnssec_key($z);
 local ($newzonekey) = grep { !$_->{'ksk'} } @keys;
 $newzonekey || return "Could not find new DNSSEC zone key";
-&modify_record($fn, $dom.".", undef, "IN", "DNSKEY",
+&modify_record($fn, $zonerec, $dom.".", undef, "IN", "DNSKEY",
 	       join(" ", @{$newzonekey->{'values'}}));
 &bump_soa_record($fn, \@recs);
 
@@ -2946,6 +2951,17 @@ else {
 	$rv = $size;
 	}
 return (1, $rv);
+}
+
+# get_dnssec_cron_job()
+# Returns the cron job object for re-signing DNSSEC domains
+sub get_dnssec_cron_job
+{
+&foreign_require("cron", "cron-lib.pl");
+local ($job) = grep { $_->{'user'} eq 'root' &&
+		      $_->{'command'} =~ /^\Q$dnssec_cron_cmd\E/ }
+		    &cron::list_cron_jobs();
+return $job;
 }
 
 1;

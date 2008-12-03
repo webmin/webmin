@@ -69,6 +69,9 @@ else {
 			&delete_records_file($f->{'value'});
 			}
 
+		# delete any keys
+		&delete_dnssec_key($zconf);
+
 		# remove the zone directive
 		&lock_file(&make_chroot($zconf->{'file'}));
 		&save_directive($view || &get_config_parent($zconf->{'file'}),

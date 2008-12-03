@@ -31,7 +31,7 @@ elsif (!$job && $in{'enabled'}) {
 	&cron::create_cron_job($job);
 	&unlock_file(&cron::cron_file($job));
 	}
-&cron::create_wrapper($dnssec_cron_cmd, $module_name, "renew.pl");
+&cron::create_wrapper($dnssec_cron_cmd, $module_name, "resign.pl");
 
 &lock_file($module_config_file);
 $config{'dnssec_period'} = $in{'period'};

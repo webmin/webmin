@@ -18,7 +18,7 @@ foreach $z (@zones) {
 	# Get the key
 	next if ($z->{'type'} ne 'master');
 	print STDERR "Considering zone $z->{'name'}\n" if ($debug);
-	@keys = &get_dnssec_keys($z);
+	@keys = &get_dnssec_key($z);
 	print STDERR "  Key count ",scalar(@keys),"\n" if ($debug);
 	next if (@keys != 2);
 	($zonekey) = grep { !$_->{'ksk'} } @keys;
@@ -27,8 +27,13 @@ foreach $z (@zones) {
 		if ($debug);
 
 	# Check if old enough
-	@st = stat($key->{'privatefile'});
-	$old = (time() - $st[9]) / (24*60*60)
+	@st = stat($zonekey->{'privatefile'});
+	if (!@st) {
+		print STDERR "  Private key file $zonekey->{'privatefile'} ",
+			     "missing\n" if ($debug);
+		next;
+		}
+	$old = (time() - $st[9]) / (24*60*60);
 	print STDERR "  Age in days $old\n" if ($debug);
 	if ($old > $config{'dnssec_period'}) {
 		# Too old .. signing
