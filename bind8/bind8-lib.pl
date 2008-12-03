@@ -27,6 +27,8 @@ else {
 	$bind_version = &get_bind_version();
 	}
 
+$dnssec_cron_cmd = "$module_config_directory/renew.pl";
+
 # get_bind_version()
 # Returns the BIND verison number, or undef if unknown
 sub get_bind_version
@@ -2627,11 +2629,20 @@ if (!$pid) {
 	exit(1);
 	}
 
+# Work out zone key size
+local $zonesize;
+if ($single) {
+	(undef, $zonesize) = &compute_dnssec_key_size($alg, 1);
+	}
+else {
+	$zonesize = $size;
+	}
+
 # Create the zone key
 local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 local $out = &backquote_logged(
 	"cd ".quotemeta($fn)." && ".
-	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($size).
+	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
 	" -n ZONE $dom 2>&1");
 if ($?) {
 	kill('KILL', $pid);
@@ -2677,6 +2688,73 @@ foreach my $key (@keys) {
 		       join(" ", @{$key->{'values'}}));
 	}
 &bump_soa_record($chrootfn, \@recs);
+
+return undef;
+}
+
+# resign_dnssec_key(&zone|&zone-name)
+# Re-generate the zone key, and re-sign everything. Returns undef on success or
+# an error message on failure.
+sub resign_dnssec_key
+{
+local ($z) = @_;
+local $fn = &get_zone_file($z);
+$fn || return "Could not work out records file!";
+local $dir = $fn;
+$dir =~ s/\/[^\/]+$//;
+local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
+
+# Get the old zone key record
+local @recs = &read_zone_file($fn, $dom);
+locla $zonerec;
+foreach my $r (@recs) {
+	if ($r->{'type'} eq 'DNSKEY' && $r->{'values'}->[0] % 2 == 0) {
+		$zonerec = $r;
+		}
+	}
+$zonerec || return "Could not find DNSSEC zone key record";
+local @keys = &get_dnssec_keys($z);
+@keys == 2 || return "Expected to find 2 keys, but found ".scalar(@keys);
+local ($zonekey) = grep { !$_->{'ksk'} } @keys;
+$zonekey || return "Could not find DNSSEC zone key";
+
+# Fork a background job to do lots of IO, to generate entropy
+local $pid = fork();
+if (!$pid) {
+	exec("find / -type f >/dev/null 2>&1");
+	exit(1);
+	}
+
+# Work out zone key size
+local $zonesize;
+(undef, $zonesize) = &compute_dnssec_key_size($alg, 1);
+local $alg = $zonekey->{'algorithm'};
+
+# Generate a new zone key
+local $out = &backquote_logged(
+	"cd ".quotemeta($dir)." && ".
+	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
+	" -n ZONE $dom 2>&1");
+kill('KILL', $pid);
+if ($?) {
+	return "Failed to generate new zone key : $out";
+	}
+
+# Delete the old key file
+&unlink_file($zonekey->{'privatefile'});
+&unlink_file($zonekey->{'publicfile'});
+
+# Update the zone file with the new key
+@keys = &get_dnssec_keys($z);
+local ($newzonekey) = grep { !$_->{'ksk'} } @keys;
+$newzonekey || return "Could not find new DNSSEC zone key";
+&modify_record($fn, $dom.".", undef, "IN", "DNSKEY",
+	       join(" ", @{$newzonekey->{'values'}}));
+&bump_soa_record($fn, \@recs);
+
+# Re-sign everything
+local $err = &sign_dnssec_zone($z);
+return "Re-signing failed : $err" if ($err);
 
 return undef;
 }

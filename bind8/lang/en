@@ -753,6 +753,7 @@ log_thaw=Un-froze zone $1
 log_zonekeyon=Enabled DNSSEC for zone $1
 log_zonekeyoff=Disabled DNSSEC for zone $1
 log_sign=Updated DNSSEC signatures for zone $1
+log_resign=Re-signed DNSSEC key for zone $1
 
 convert_err=Failed to convert zone
 convert_efile=A records file must be specified before a slave zone can be converted to a master.
@@ -999,6 +1000,8 @@ dnssec_enabled=Automatic key re-signing enabled?
 dnssec_period=Period between re-signs?
 dnssec_days=days
 dnssec_desc=Zones signed with DNSSEC typically have two keys - a zone key which must be re-generated and signed regularly, and a key signing key which remains constant. This page allows you to configure Webmin to perform this re-signing automatically.
+dnssec_err=Failed to save DNSSEC key re-signing
+dnssec_eperiod=Missing or invalid number of days between re-signs
 
 zonekey_title=Setup DNSSEC Key
 zonekey_desc=This zone does not have a DNSSEC signing key yet. You can use this form to have Webmin create one, so that clients resolving this zone are protected against DNS spoofing attacks.
@@ -1031,3 +1034,6 @@ zonekey_signdesc=Immediately re-sign this zone, so that any changes to records m
 
 sign_err=Failed to sign zone
 sign_emsg=DNSSEC signing after records change failed : $1
+
+resign_err=Failed to re-sign zone
+
