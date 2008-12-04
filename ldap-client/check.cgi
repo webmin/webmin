@@ -20,13 +20,13 @@ else {
 
 # Attempt to connect to LDAP server
 print $text{'check_connect'},"<br>\n";
-$ldap = &ldap_connect(1, \$host);
+$ldap = &ldap_connect(1);
 if (!ref($ldap)) {
 	&print_problem(&text('check_econnect', $ldap));
 	goto END;
 	}
 else {
-	print &text('check_connected', $host),"<p>\n";
+	print &text('check_connected', $ldap->host()),"<p>\n";
 	}
 
 # Work out the scope

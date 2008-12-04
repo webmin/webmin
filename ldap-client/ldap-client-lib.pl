@@ -155,15 +155,40 @@ if ($@) {
 	if ($_[0]) { return $err; }
 	else { &error($err); }
 	}
+local $err = &generic_ldap_connect($config{'ldap_hosts'}, $config{'ldap_port'},
+			     $config{'ldap_tls'}, $config{'ldap_user'},
+			     $config{'ldap_pass'});
+if (ref($err)) { return $err; }		# Worked
+elsif ($_[0]) { return $err; }		# Caller asked for error return
+else { &error($err); }			# Caller asked for error() call
+}
+
+# generic_ldap_connect([host], [port], [login], [password])
+# A generic function for connecting to an LDAP server. Uses the system's
+# LDAP client config file if any parameters are missing. Returns the LDAP
+# handle on success or an error message on failure.
+sub generic_ldap_connect
+{
+local ($ldap_hosts, $ldap_port, $ldap_ssl, $ldap_user, $ldap_pass) = @_;
+
+# Check for perl module and config file
+eval "use Net::LDAP";
+if ($@) {
+	return &text('ldap_emodule2', "<tt>Net::LDAP</tt>");
+	}
+if (!-r $config{'auth_ldap'}) {
+	$ldap_hosts && $ldap_user && $ldap_pass ||
+		return &text('ldap_econf', "<tt>$config{'auth_ldap'}</tt>");
+	}
 
 # Get the host and port
 local $conf = &get_config();
 local $uri = &find_svalue("uri", $conf);
 local ($ldap, $use_ssl, $err);
 local $ssl = &find_svalue("ssl", $conf);
-if ($config{'ldap_hosts'}) {
+if ($ldap_hosts) {
 	# Using hosts from module config
-	local @hosts = split(/\s+/, $config{'ldap_hosts'});
+	local @hosts = split(/\s+/, $ldap_hosts);
 	if ($config{'ldap_tls'} ne '') {
 		$use_ssl = $config{'ldap_tls'};
 		}
@@ -171,13 +196,12 @@ if ($config{'ldap_hosts'}) {
 		$use_ssl = $ssl eq 'yes' ? 1 :
 			   $ssl eq 'start_tls' ? 2 : 0;
 		}
-	local $port = $config{'ldap_port'} ||
+	local $port = $ldap_port ||
 		      &find_svalue("port", $conf) ||
 		      ($use_ssl == 1 ? 636 : 389);
 	foreach $host (@hosts) {
 		$ldap = Net::LDAP->new($host, port => $port,
 				schema => $use_ssl == 2 ? 'ldaps' : 'ldap');
-		${$_[1]} = $host if ($_[1]);
 		if (!$ldap) {
 			$err = &text('ldap_econn',
 				     "<tt>$host</tt>", "<tt>$port</tt>");
@@ -201,7 +225,6 @@ elsif ($uri) {
 				}
 			$ldap = Net::LDAP->new($host, port => $port,
 					       scheme => $proto);
-			${$_[1]} = $host if ($_[1]);
 			if (!$ldap) {
 				$err = &text('ldap_econn',
 					     "<tt>$host</tt>","<tt>$port</tt>");
@@ -230,7 +253,6 @@ else {
 	foreach $host (@hosts) {
 		$ldap = Net::LDAP->new($host, port => $port,
 			       schema => $use_ssl == 1 ? 'ldaps' : 'ldap');
-		${$_[1]} = $host if ($_[1]);
 		if (!$ldap) {
 			$err = &text('ldap_econn',
 				     "<tt>$host</tt>", "<tt>$port</tt>");
@@ -253,16 +275,15 @@ if ($use_ssl == 2 && !$err) {
 	}
 
 if ($err) {
-	if ($_[0]) { return $err; }
-	else { &error($err); }
+	return $err;
 	}
 
 local ($dn, $password);
 local $rootbinddn = &find_svalue("rootbinddn", $conf);
-if ($config{'ldap_user'}) {
+if ($ldap_user) {
 	# Use login from config
-	$dn = $config{'ldap_user'};
-	$password = $config{'ldap_pass'};
+	$dn = $ldap_user;
+	$password = $ldap_pass;
 	}
 elsif ($rootbinddn) {
 	# Use the root login if we have one
@@ -275,11 +296,11 @@ else {
 	$password = &find_svalue("bindpw", $conf);
 	}
 local $mesg;
-if ($dn) {
+if ($password) {
 	$mesg = $ldap->bind(dn => $dn, password => $password);
 	}
 else {
-	$mesg = $ldap->bind(anonymous => 1);
+	$mesg = $ldap->bind(dn => $dn, anonymous => 1);
 	}
 if (!$mesg || $mesg->code) {
 	local $err = &text('ldap_elogin', "<tt>$host</tt>",
