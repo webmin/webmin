@@ -756,6 +756,8 @@ log_zonekeyon=Enabled DNSSEC for zone $1
 log_zonekeyoff=Disabled DNSSEC for zone $1
 log_sign=Updated DNSSEC signatures for zone $1
 log_resign=Re-signed DNSSEC key for zone $1
+log_trusted=Changed DNSSEC verification
+log_dnssec=Change DNSSEC key re-signing
 
 convert_err=Failed to convert zone
 convert_efile=A records file must be specified before a slave zone can be converted to a master.
