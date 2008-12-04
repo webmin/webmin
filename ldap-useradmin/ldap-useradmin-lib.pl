@@ -7,6 +7,7 @@ do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
 &foreign_require("useradmin", "user-lib.pl");
+&foreign_require("ldap-client", "ldap-client-lib.pl");
 %access = &get_module_acl();
 $useradmin::access{'udelete'} = 1;	# needed for users_table / groups_table
 $useradmin::access{'gdelete'} = 1;
@@ -49,139 +50,36 @@ $match_modes = [ [ 0, $text{'index_equals'} ], [ 1, $text{'index_contains'} ],
                  [ 2, $text{'index_nequals'} ], [ 3, $text{'index_ncontains'} ],
 		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
 
-# get_nss_config()
-# Parses the NSS config file into a hash reference
-sub get_nss_config
-{
-return undef if (!$config{'auth_ldap'});
-if (!%nss_config_cache) {
-	open(CONF, $config{'auth_ldap'});
-	while(<CONF>) {
-		s/\r|\n//g;
-		s/#.*$//;
-		if (/^\s*(\S+)\s*(.*)/) {
-			$nss_config_cache{lc($1)} = $2;
-			}
-		}
-	close(CONF);
-	}
-return \%nss_config_cache;
-}
-
 # ldap_connect(return-error)
 # Connect to the LDAP server and return a handle to the Net::LDAP object
 sub ldap_connect
 {
-local $conf = &get_nss_config();
-
-# Work out LDAP hostnames, ports and SSL
-local (@hosts, $port);
-if ($conf) {
-	# From ldap.conf file, using host and uri lines
-	my @hostnames = split(/[ ,]+/, $conf->{'host'});
-	my $port = $conf->{'port'};
-	my @uris = split(/[ ,]+/, $conf->{'uri'});
-	my $ssl = $conf->{'ssl'};
-	foreach my $hname (@hostnames) {
-		push(@hosts, [ $hname, $port, $ssl eq 'start_tls' ? 2 :
-					      $ssl eq 'on' ? 1 : 0 ]);
-		}
-	foreach my $u (@uris) {
-		if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/){
-			my ($proto, $host, $port) = ($1, $2, $4);
-			if (!$port && $proto eq "ldap") {
-				$port = 389;
-				}
-			elsif (!$port && $proto eq "ldaps") {
-				$port = 636;
-				}
-			push(@hosts, [ $host, $port,
-				       $proto eq 'ldaps' ? 1 : 0 ]);
+if (!$ldap_client::config{'auth_ldap'} ||
+    !-r $ldap_client::config{'auth_ldap'}) {
+	# LDAP client config file not known .. force manual specification
+	foreach my $f ("ldap_host", "login") {
+		if (!$config{$f}) {
+			if ($_[0]) { return $text{'conn_e'.$f}; }
+			else { &error($text{'conn_e'.$f}); }
 			}
 		}
 	}
-else {
-	# From module config
-	foreach my $hname (split(/[ ,]+/, $config{'ldap_host'})) {
-		push(@hosts, [ $hname, $config{'ldap_port'},
-			       $config{'ldap_tls'} ]);
-		}
-	}
-if (!@hosts) {
-	# Last-ditch fallback
-	push(@hosts, [ "localhost", 389, 0 ]);
-	}
 
-# Try each host in turn
-local ($ldap, $err);
-foreach my $host (@hosts) {
-	$ldap = Net::LDAP->new($host->[0], port => $host->[1],
-			       scheme => $host->[2] == 1 ? 'ldaps' : 'ldap');
-	if (!$ldap) {
-		$err = &text('conn_econn',
-			     "<tt>$host->[0]</tt>","<tt>$host->[1]</tt>");
-		next;
-		}
-	# Switch to TLS if needed
-	if ($host->[2] == 2) {
-		my $mesg;
-		eval { $mesg = $ldap->start_tls(); };
-                if ($@ || !$mesg || $mesg->code) {
-                        # TLS failed
-                        $err = &text('conn_essl',
-                             "<tt>$host->[0]</tt>", "<tt>$host->[1]</tt>", $@);
-                        next;
-                        }
-		}
-	# If we got here, it all worked!
-	$err = undef;
-	last;
-	}
-if ($err) {
-	if ($_[0]) { return $err; }
-	else { &error($err); }
-	}
-
-local ($dn, $password);
-if ($config{'login'}) {
-	# Use the configured login
-	$dn = $config{'login'};
-	$password = $config{'pass'};
-	}
-elsif ($conf->{'rootbinddn'}) {
-	# Use the root login if we have one
-	$dn = $conf->{'rootbinddn'};
-	open(SECRET, $secret_file);
-	$password = <SECRET>;
-	$password =~ s/\r|\n//g;
-	close(SECRET);
-	}
-else {
-	# Use the normal login
-	$dn = $conf->{'binddn'};
-	$password = $conf->{'bindpw'};
-	}
-local $mesg;
-if ($dn) {
-	$mesg = $ldap->bind(dn => $dn, password => $password);
-	}
-else {
-	$mesg = $ldap->bind(anonymous => 1);
-	}
-if (!$mesg || $mesg->code) {
-	local $err = &text('conn_elogin', "<tt>$conf{'host'}</tt>",
-		     $dn, $mesg ? $mesg->error : "Unknown error");
-	if ($_[0]) { return $err; }
-	else { &error($err); }
-	}
-return $ldap;
+local $ldap = &ldap_client::generic_ldap_connect(
+		$config{'ldap_host'}, $config{'ldap_port'},
+		$config{'ldap_tls'}, $config{'login'}, $config{'pass'});
+if (ref($ldap)) { return $ldap; }
+elsif ($_[0]) { return $ldap; }
+else { &error($ldap); }
 }
 
 # get_user_base()
 sub get_user_base
 {
-local $conf = &get_nss_config();
-local $base = $config{'user_base'} || $conf->{'nss_base_passwd'} || $conf->{'base'};
+local $conf = &ldap_client::get_config();
+local $base = $config{'user_base'} ||
+	      &ldap_client::find_svalue("nss_base_passwd", $conf) ||
+	      &ldap_client::find_svalue("base", $conf);
 $base =~ s/\?.*$//;
 return $base;
 }
@@ -189,8 +87,10 @@ return $base;
 # get_group_base()
 sub get_group_base
 {
-local $conf = &get_nss_config();
-local $base = $config{'group_base'} || $conf->{'nss_base_group'} || $conf->{'base'};
+local $conf = &ldap_client::get_config();
+local $base = $config{'group_base'} ||
+	      &ldap_client::find_svalue("nss_base_group", $conf) ||
+	      &ldap_client::find_svalue("base", $conf);
 $base =~ s/\?.*$//;
 return $base;
 }

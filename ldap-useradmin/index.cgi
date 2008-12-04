@@ -7,35 +7,6 @@ require './ldap-useradmin-lib.pl';
 &useradmin::load_theme_library();	# So that ui functions work
 &ReadParse();
 
-# Make sure the LDAP NSS client config file exists, or the needed information
-# has been provided
-if ($config{'auth_ldap'}) {
-	if (!-r $config{'auth_ldap'}) {
-		print &text('index_econfig',
-		    "<tt>$config{'auth_ldap'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
-		&ui_print_footer("/", $text{'index'});
-		exit;
-		}
-	$nss = &get_nss_config();
-	if ($nss->{'pidfile'} || $nss->{'directory'}) {
-		print &text('index_econfig2',
-		    "<tt>$config{'auth_ldap'}</tt>",
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
-		&ui_print_footer("/", $text{'index'});
-		exit;
-		}
-	}
-else {
-	if (!$config{'ldap_host'} || !$config{'login'} || !$config{'pass'} ||
-	    !$config{'user_base'} || !$config{'group_base'}) {
-		print &text('index_ehost',
-		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
-		&ui_print_footer("/", $text{'index'});
-		exit;
-		}
-	}
-
 # Make sure the LDAP Perl module is installed, and if not offer to install
 if (!$got_net_ldap) {
 	local @needs;
@@ -67,6 +38,14 @@ if (!ref($ldap)) {
 $schema = $ldap->schema();
 if (!$schema) {
 	print &text('index_eschema', '../ldap-server/'),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
+# Make sure the LDAP bases are set or available
+if (!&get_user_base() || !&get_group_base()) {
+	print &text('index_ebase',
+		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}

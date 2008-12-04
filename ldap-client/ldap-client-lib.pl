@@ -177,7 +177,7 @@ if ($@) {
 	return &text('ldap_emodule2', "<tt>Net::LDAP</tt>");
 	}
 if (!-r $config{'auth_ldap'}) {
-	$ldap_hosts && $ldap_user && $ldap_pass ||
+	$ldap_hosts && $ldap_user ||
 		return &text('ldap_econf', "<tt>$config{'auth_ldap'}</tt>");
 	}
 
@@ -188,7 +188,7 @@ local ($ldap, $use_ssl, $err);
 local $ssl = &find_svalue("ssl", $conf);
 if ($ldap_hosts) {
 	# Using hosts from parameter
-	local @hosts = split(/\s+/, $ldap_hosts);
+	local @hosts = split(/[ \t,]+/, $ldap_hosts);
 	if ($ldap_ssl ne '') {
 		$use_ssl = $ldap_ssl;
 		}

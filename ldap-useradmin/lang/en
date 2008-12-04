@@ -1,10 +1,8 @@
 index_title=LDAP Users and Groups
-index_econfig=The LDAP NSS configuration file $1 was not found on your system. You will need to adjust the <a href='$2'>module configuration</a> to use the correct path.
-index_econfig2=The LDAP NSS configuration file $1 appears to be the LDAP <i>server</i> configuration file. You will need to adjust the <a href='$2'>module configuration</a> to use the path to the NSS <i>client</i> config file.
-index_ehost=If no LDAP NSS configuration file is set in the <a href='$1'>module configuration</a>, an LDAP server, login, password, base user DN and base group DN must be set instead.
+index_ebase=No LDAP client configuration file was found on your system, so the use and group bases must be set on the <a href='$1'>module config</a> page.
 index_eperl=The $1 Perl module that this module requires is not installed or is not working properly. <a href='$2'>Click here</a> to have it downloaded and installed now.
 index_eperl2=The error reported by Perl when trying to load the module was :
-index_eldap=$1. Maybe your <a href='$2'>module configuration</a> is incorrect.
+index_eldap=$1. Click here to adjust the <a href='$2'>module configuration</a>.
 index_eschema=Webmin has connected to the LDAP server, but failed to fetch the schema. Make sure that access has not been denied in the <a href='$1'>LDAP Server</a> module.
 index_eimap=$1. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_emd5=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the $2 Perl module is not installed. <a href='$3'>Click here</a> to have the $2 module downloaded and installed.
@@ -27,6 +25,8 @@ conn_essl=Failed to start SSL for LDAP server $1 port $2 : $3
 conn_elogin=Failed to bind to LDAP server $1 as $2 : $3
 imap_econn=Failed to connect to IMAP server $1
 imap_elogin=Failed to login to IMAP server $1 as $2 : $3
+conn_eldap_host=No LDAP client configuration file was found on your system, so the LDAP server must be set on the Module Config page
+conn_elogin=No LDAP client configuration file was found on your system, so the LDAP login must be set on the Module Config page
 
 uedit_cap=User capabilities
 uedit_samba=Samba login?
