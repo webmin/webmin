@@ -63,28 +63,22 @@ else {
 	}
 $ssl = $config{'ssl'};
 
-# Try to connect
-local @ssls = $ssl eq "" ? ( 1, 0 ) : ( $ssl );
+# Call generic LDAP client function to connect
+&foreign_require("ldap-client", "ldap-client-lib.pl");
+local @ssls = $ssl eq "" ? ( 1, 2, 0 ) : ( $ssl );
 local $ldap;
 foreach $ssl (@ssls) {
-	my $sslport = $port ? $port : $ssl ? 636 : 389;
-	$ldap = Net::LDAP->new($server, port => $sslport,
-			       scheme=>$ssl ? 'ldaps' : 'ldap');
-	if (!$ldap) {
-		# Connection failed .. give up completely
-		return &text('connect_eldap', "<tt>$server</tt>", $sslport);
+	my $sslport = $port ? $port : $ssl == 1 ? 636 : 389;
+	$ldap = &ldap_client::generic_ldap_connect($server, $sslport, $ssl,
+					           $user, $pass);
+	if (!ref($ldap)) {
+		# Failed .. but try again in other SSL mode
+		if ($ssl == $ssls[$#ssls]) {
+			return $ldap;
+			}
 		}
 	}
 $ldap || return "This can't happen!";
-
-# Login to server
-local $mesg = $pass eq '' ? 
-		$ldap->bind(dn => $user, anonymous => 1) :
-		$ldap->bind(dn => $user, password => $pass);
-if (!$mesg || $mesg->code) {
-	return &text('connect_elogin', "<tt>$server</tt>", "<tt>$user</tt>",
-		     &ldap_error($mesg));
-	}
 
 $connect_ldap_db = $ldap;
 return $ldap;

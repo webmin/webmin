@@ -187,10 +187,10 @@ local $uri = &find_svalue("uri", $conf);
 local ($ldap, $use_ssl, $err);
 local $ssl = &find_svalue("ssl", $conf);
 if ($ldap_hosts) {
-	# Using hosts from module config
+	# Using hosts from parameter
 	local @hosts = split(/\s+/, $ldap_hosts);
-	if ($config{'ldap_tls'} ne '') {
-		$use_ssl = $config{'ldap_tls'};
+	if ($ldap_ssl ne '') {
+		$use_ssl = $ldap_ssl;
 		}
 	else {
 		$use_ssl = $ssl eq 'yes' ? 1 :
@@ -201,7 +201,7 @@ if ($ldap_hosts) {
 		      ($use_ssl == 1 ? 636 : 389);
 	foreach $host (@hosts) {
 		$ldap = Net::LDAP->new($host, port => $port,
-				schema => $use_ssl == 2 ? 'ldaps' : 'ldap');
+				scheme => $use_ssl == 1 ? 'ldaps' : 'ldap');
 		if (!$ldap) {
 			$err = &text('ldap_econn',
 				     "<tt>$host</tt>", "<tt>$port</tt>");
@@ -252,7 +252,7 @@ else {
 
 	foreach $host (@hosts) {
 		$ldap = Net::LDAP->new($host, port => $port,
-			       schema => $use_ssl == 1 ? 'ldaps' : 'ldap');
+			       scheme => $use_ssl == 1 ? 'ldaps' : 'ldap');
 		if (!$ldap) {
 			$err = &text('ldap_econn',
 				     "<tt>$host</tt>", "<tt>$port</tt>");
