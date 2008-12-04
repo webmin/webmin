@@ -33,6 +33,9 @@ print &ui_table_start($text{'trusted_header'}, undef, 2);
 print &choice_input($text{'trusted_dnssec'}, 'dnssec-enable', $mems,
 		    $text{'yes'}, 'yes', $text{'no'}, 'no',
 		    $text{'default'}, undef);
+print &choice_input($text{'trusted_validation'}, 'dnssec-validation', $mems,
+		    $text{'yes'}, 'yes', $text{'no'}, 'no',
+		    $text{'default'}, undef);
 
 # Trusted DLVs
 @dtable = ( );
