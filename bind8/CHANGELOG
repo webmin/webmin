@@ -93,3 +93,5 @@ Added a field to limit concurrent outgoing zone transfers and incoming transfers
 Ignore tailing dots in zone names in named.conf.
 ---- Changes since 1.440 ----
 Moved the apply, stop and start buttons to the top-right corner of every page, so that you don't have to return all the way to the module's main page to apply configuration changes.
+Zones can now be signed with DNSSEC, using one or two keys. This can be done automatically at master zone creation time, or later for existing zones. Signatures can also be removed or re-generated at any time. Zones with a key-signing and zone key can have their zone key automatically regenated on a regular interval.
+Added the DNSSEC Verification page for configuring BIND to validate signatures on other zones, and to use DLV until the root zone is signed.
