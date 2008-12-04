@@ -10,6 +10,21 @@ $access{'defaults'} || &error($text{'trusted_ecannot'});
 $conf = &get_config();
 $options = &find("options", $conf);
 $mems = $options->{'members'};
+@dlv = &find("dnssec-lookaside", $mems);
+$tkeys = &find("trusted-keys", $conf);
+$tkeys ||= { 'members' => [ ] };
+
+# Check if not setup at all
+if (!@dlv && !@{$tkeys->{'members'}}) {
+	print "<center>\n";
+	print &ui_form_start("setup_trusted.cgi");
+
+	print &text('trusted_setup', "<tt>$dnssec_dlv_zone</tt>"),"<p>\n";
+
+	print &ui_form_end([ [ undef, $text{'trusted_ok'} ] ]);
+	print "</center>\n";
+	print "<hr>\n";
+	}
 
 print &ui_form_start("save_trusted.cgi");
 print &ui_table_start($text{'trusted_header'}, undef, 2);
@@ -22,8 +37,7 @@ print &choice_input($text{'trusted_dnssec'}, 'dnssec-enable', $mems,
 # Trusted DLVs
 @dtable = ( );
 $i = 0;
-foreach $d (&find("dnssec-lookaside", $mems),
-	    { 'values' => [ '.' ] }) {
+foreach $d (@dlv, { 'values' => [ '.' ] }) {
 	$dlv = $d->{'values'}->[0];
 	$dlv = "" if ($dlv eq ".");
 	push(@dtable, [ &ui_opt_textbox("anchor_$i", $d->{'values'}->[2],
@@ -39,17 +53,21 @@ print &ui_table_row($text{'trusted_dlvs'},
 
 # Trusted keys
 @ktable = ( );
-$tkeys = &find("trusted-keys", $conf);
-$tkeys ||= { 'members' => [ ] };
 $i = 0;
 foreach $k (@{$tkeys->{'members'}}, { }) {
 	@v = @{$k->{'values'}};
+	@wrapped = ( );
+	while(length($v[3]) > 30) {
+		push(@wrapped, substr($v[3], 0, 30));
+		$v[3] = substr($v[3], 30);
+		}
+	push(@wrapped, $v[3]);
 	push(@ktable, [ &ui_opt_textbox("zone_$i", $k->{'name'}, 20,
 					$text{'trusted_none'}),
 		 	&ui_textbox("flags_$i", $v[0], 6),
 		 	&ui_textbox("proto_$i", $v[1], 6),
 		 	&ui_textbox("alg_$i", $v[2], 6),
-			&ui_textarea("key_$i", $v[3], 4, 30, "hard") ]);
+			&ui_textarea("key_$i", join("\n", @wrapped), 4, 32) ]);
 	$i++;
 	}
 print &ui_table_row($text{'trusted_keys'},
