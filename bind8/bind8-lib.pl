@@ -2596,10 +2596,12 @@ return &has_command($config{'signzone'}) &&
 }
 
 # supports_dnssec_client()
-# Returns 1 if this BIND can send and verify DNSSEC requests
+# Returns 2 if this BIND can send and verify DNSSEC requests, 1 if the 
+# dnssec-validation directive is not supported, 0 otherwise
 sub supports_dnssec_client
 {
-return $bind_version >= 9.4;
+return $bind_version >= 9.4 ? 2 :
+       $bind_version >= 9 ? 1 : 0;
 }
 
 # dnssec_size_range(algorithm)

@@ -13,7 +13,9 @@ $options = &find("options", $conf);
 
 # DNSSEC enabled
 &save_choice("dnssec-enable", $options, 1);
-&save_choice("dnssec-validation", $options, 1);
+if (&supports_dnssec_client() == 2) {
+	&save_choice("dnssec-validation", $options, 1);
+	}
 
 # Save DLV zones
 @dlvs = ( );
