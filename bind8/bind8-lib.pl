@@ -2595,6 +2595,13 @@ return &has_command($config{'signzone'}) &&
        &has_command($config{'keygen'});
 }
 
+# supports_dnssec_client()
+# Returns 1 if this BIND can send and verify DNSSEC requests
+sub supports_dnssec_client
+{
+return $bind_version >= 9.4;
+}
+
 # dnssec_size_range(algorithm)
 # Given an algorithm like DSA or DH, return the max and min allowed key sizes,
 # and an optional forced divisor.

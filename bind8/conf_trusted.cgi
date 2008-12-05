@@ -27,7 +27,7 @@ if (!@dlv && !@{$tkeys->{'members'}}) {
 	}
 
 print &ui_form_start("save_trusted.cgi");
-print &ui_table_start($text{'trusted_header'}, undef, 2);
+print &ui_table_start($text{'trusted_header'}, undef, 4);
 
 # DNSSEC enabled?
 print &choice_input($text{'trusted_dnssec'}, 'dnssec-enable', $mems,
