@@ -15,9 +15,11 @@ $options = &find("options", $conf);
 &save_directive($options, "dnssec-enable",
 		[ { 'name' => 'dnssec-enable',
 		    'values' => [ 'yes' ] } ], 1);
-&save_directive($options, "dnssec-validation",
-		[ { 'name' => 'dnssec-validation',
-		    'values' => [ 'yes' ] } ], 1);
+if (&supports_dnssec_client() == 2) {
+	&save_directive($options, "dnssec-validation",
+			[ { 'name' => 'dnssec-validation',
+			    'values' => [ 'yes' ] } ], 1);
+	}
 
 # Lookaside
 &save_directive($options, "dnssec-lookaside", 
