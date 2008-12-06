@@ -1,0 +1,47 @@
+index_ebind8=The DNS server is not installed on this system, or is not running. Use Webmin's <a href='$1'>BIND DNS Server</a> module to configure it.
+index_edhcpd=The DHCP server is not installed on this system, or is not running. Use Webmin's <a href='$1'>DHCP Server</a> module to configure it.
+index_edomain=No DNS domain to add hosts to has been set on the <a href='$1'>module configuration</a> page.
+index_edomain2=The DNS domain set on the <a href='$1'>module configuration</a> page was not found in the local <a href='$2'>BIND DNS server</a>.
+index_esubnets=No DHCP subnets to add hosts to has been set on the <a href='$1'>module configuration</a> page.
+index_cheader=Add new host
+index_host=Hostname
+index_subnet=Parent
+index_ip=IP address
+index_mac=MAC address
+index_desc=Description
+index_delete=Delete Selected Hosts
+index_none=Host hosts in the configured subnets have been added yet.
+index_none2=No hosts matched your search.
+index_return=list of hosts
+index_apply=Apply Configuration
+index_applydesc=Click this button to apply the current configuration by restarting the DHCP and DNS servers.
+index_search=Find hosts matching:
+index_ok=Search
+
+form_header=DHCP / DNS host details
+form_comment=Host description
+form_host=Hostname
+form_ip=Fixed IP address
+form_subnet=DHCP subnet
+form_nosubnet=&lt;None&gt;
+form_mac=MAC address
+form_ethernet=Ethernet
+form_tr=Token ring
+form_fddi=FDDI
+
+edit_title=Edit Host
+edit_egone=Selected host no longer exists!
+
+save_err=Failed to save host
+save_ehost=Missing or invalid hostname
+save_eclash=A host with the same name already exists
+save_eclaship=A host with the same IP address already exists ($1)
+save_eclashmac=A host with the same MAC address already exists ($1)
+save_eip=Missing or invalid IPv4 address
+save_emac=Missing or invalid MAC address
+
+delete_err=Failed to delete hosts
+delete_enone=None selected
+
+chooser_ip=Select free IP address
+chooser_none=No free IP addresses were found in any of your subnets!
