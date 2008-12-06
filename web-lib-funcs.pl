@@ -4595,6 +4595,13 @@ elsif ($r eq 'HASH') {
 elsif ($r eq 'REF') {
 	$rv = &serialise_variable(${$_[0]});
 	}
+elsif ($r) {
+	# An object - treat as a hash
+	$r = "OBJECT ".&urlize($r);
+	$rv = join(",", map { &urlize(&serialise_variable($_)).",".
+			      &urlize(&serialise_variable($_[0]->{$_})) }
+		            keys %{$_[0]});
+	}
 return ($r ? $r : 'VAL').",".$rv;
 }
 
@@ -4632,6 +4639,17 @@ elsif ($v[0] eq 'REF') {
 	}
 elsif ($v[0] eq 'UNDEF') {
 	$rv = undef;
+	}
+elsif ($v[0] =~ /^OBJECT\s+(.*)$/) {
+	# An object hash that we have to re-bless
+	local $cls = $1;
+	$rv = { };
+	for($i=1; $i<@v; $i+=2) {
+		$rv->{&unserialise_variable(&un_urlize($v[$i]))} =
+			&unserialise_variable(&un_urlize($v[$i+1]));
+		}
+	eval "use $cls";
+	bless $rv, $cls;
 	}
 return $rv;
 }
