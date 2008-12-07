@@ -517,3 +517,4 @@ If the post-modification or creation script for a domain fails, its output is no
 Validation now checks that each domain's Unix user and group quotas match what Virtualmin expects.
 Added a DNS template option to have a DNSSEC key generated for new domains, and records automatically signed. Requires Webmin version 1.443 or later though.
 Virtual server backups can now be in ZIP format, by changing the 'Backup compression format' option on the Module Config page. TAR format is still recommended though, as it better preserves Unix filesystem attributes.
+When submitting a new SSL certificate and key, they are checked to ensure a modulus match, ensuring that they were generated and can be used together.
