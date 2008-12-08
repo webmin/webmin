@@ -1566,7 +1566,8 @@ if ($line !~ /^HTTP\/1\..\s+(200|303|302|301)(\s+|$)/) {
 	else { &error("Download failed : $line"); }
 	}
 local $rcode = $1;
-&$cbfunc(1, $rcode == 302 || $rcode == 301 ? 1 : 0) if ($cbfunc);
+&$cbfunc(1, $rcode == 303 || $rcode == 302 || $rcode == 301 ? 1 : 0)
+	if ($cbfunc);
 while(1) {
 	$line = &read_http_connection($_[0]);
 	$line =~ tr/\r\n//d;
