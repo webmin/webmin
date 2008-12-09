@@ -584,25 +584,17 @@ sub netmask {
 sub index_links
 {
 local (%linkname, $l);
-print "<table><tr><td valign=top><b>$_[3] </b>&nbsp;&nbsp;</td>\n";
-print "<td>";
-for ($l = 0; $l < $_[2]; $l++) {
-	if ($l ne $_[0]) {
-		print "<a href=?$_[1]order=$l\&$_[4]>";
+local @links;
+for (my $l = 0; $l < $_[2]; $l++) {
+	my $msg = $text{"index_$_[1]order$l"};
+	if ($l eq $_[0]) {
+		push(@links, $msg);
 		}
 	else {
-		print "<b>";
+		push(@links, "<a href='?$_[1]order=$l\&$_[4]'>$msg</a>");
 		}
-	print $text{"index_$_[1]order$l"};
-	if ($l ne $_[0]) {
-		print "</a>";
-		}
-	else {
-		print "</b>";
-		}
-	print "&nbsp;\n";
 	}
-print "</td></table>\n";
+print "<b>$_[3]</b> ",&ui_links_row(\@links),"\n";
 open(INDEX, "> $module_config_directory/$_[1]index.".$remote_user);
 print INDEX "$_[0]\n";
 close(INDEX);
