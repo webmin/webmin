@@ -75,9 +75,9 @@ function ts_resortTable(lnk,clid) {
     if (itm.match(/^\d\d[\/-]\d\d[\/-]\d\d$/)) sortfn = ts_sort_date;
     if (itm.match(/^[£$]/)) sortfn = ts_sort_currency;
     //if (itm.match(/^[\d\.]+$/)) sortfn = ts_sort_numeric;
-    if (itm.match(/^[\d\.]+\s*(bytes|b|kb|tb|gb|mb)*$/i)) sortfn = ts_sort_filesize;
+    if (itm.match(/^[\d\.]+\s*(bytes|b|kb|tb|gb|mb)$/i)) sortfn = ts_sort_filesize;
     // Special cases for our mailbox lists
-		if (itm.match(/^(None|Empty|Unlimited)$/)) sortfn = ts_sort_filesize;
+    if (itm.match(/^(None|Empty|Unlimited)$/)) sortfn = ts_sort_filesize;
     SORT_COLUMN_INDEX = column;
     var firstRow = new Array();
     var newRows = new Array();
