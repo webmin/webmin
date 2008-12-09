@@ -3,8 +3,13 @@
 # Allows searching for processes by user or command
 
 require './proc-lib.pl';
-&ui_print_header(undef, $text{'index_title'}, "", "search", !$no_module_config, 1);
 &ReadParse();
+$in{'mode'} = 1 if ($in{'mode'} eq '');
+$deffield = ("user", "match", "cpu", "sfs", "files", "port", "sip")
+	    [$in{'mode'}];
+&ui_print_header(undef, $text{'index_title'}, "", "search",
+		 !$no_module_config, 1, 0, undef, undef,
+		 "onLoad='document.forms[0].$deffield.focus()'");
 &index_links("search");
 
 # Javascript to select radio
