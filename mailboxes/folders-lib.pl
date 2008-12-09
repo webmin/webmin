@@ -288,6 +288,9 @@ elsif ($_[2]->{'type'} == 6) {
 		$folder->{'members'} = $mems;
 		&save_folder($folder, $folder);
 		}
+
+	# Filter out messages that don't exist anymore
+	@mail = grep { defined($_) } @mail;
 	return @mail;
 	}
 }
