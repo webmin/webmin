@@ -7,11 +7,7 @@ require './acl-lib.pl';
 &ReadParse();
 
 # Check for special button clicks, and redirect
-if ($in{'but_hide'}) {
-	&redirect("hide_form.cgi?user=".&urlize($in{'old'}));
-	exit;
-	}
-elsif ($in{'but_clone'}) {
+if ($in{'but_clone'}) {
 	&redirect("edit_user.cgi?clone=".&urlize($in{'old'}));
 	exit;
 	}
@@ -334,6 +330,21 @@ else {
 	#%aclacl = &get_module_acl();
 	#&save_module_acl(\%aclacl, $in{'name'});
 	}
+
+if ($in{'old'} && $in{'acl_security_form'} && !$group) {
+	# Update user's global ACL
+	&foreign_require("", "acl_security.pl");
+	%global::in = %in;
+	&foreign_call("", "acl_security_save",
+		      \%uaccess, \%in);
+	$aclfile = "$config_directory/$in{'name'}.acl";
+	&lock_file($aclfile);
+	&write_file($aclfile, \%uaccess);
+	chmod(0640, $aclfile);
+	&unlock_file($aclfile);
+	}
+
+# Log the event
 delete($in{'pass'});
 if ($in{'old'}) {
 	&webmin_log("modify", "user", $in{'old'}, \%in);

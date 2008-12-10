@@ -105,24 +105,26 @@ foreach $c (sort { $b cmp $a } @cats) {
 		}
 	$grids .= &ui_grid_table(\@grid, 2, 100, [ "width=50%", "width=50%" ]);
 	}
-# Group-level global ACL
-if ($access{'acl'}) {
-	$grids .= "<b>$text{'edit_special'}</b><br>\n";
-	@grid = ( "<img src=images/empty.gif> ".
-		  "<a href='edit_acl.cgi?mod=&group=".&urlize($in{'group'}).
-		  "'>".$text{'index_global'}."</a>" );
-	$grids .= &ui_grid_table(\@grid, 2, 100);
-	}
 print &ui_table_row(undef, &ui_links_row(\@links).
-			   $grids.
-			   &ui_links_row(\@links), 2);
+                           $grids.
+                           &ui_links_row(\@links), 2);
 print &ui_hidden_table_end("mods");
+
+# Add global ACL section
+if ($access{'acl'} && $in{'group'}) {
+	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
+				     "global", 0, [ "width=30%" ]);
+	%uaccess = &get_module_acl($in{'group'}, "", 1);
+	print &ui_hidden("acl_security_form", 1);
+	&foreign_require("", "acl_security.pl");
+	&foreign_call("", "acl_security_form", \%uaccess);
+	print &ui_hidden_table_end("global");
+	}
 
 # Generate form end buttons
 @buts = ( );
 push(@buts, [ undef, $in{'group'} ? $text{'save'} : $text{'create'} ]);
 if ($in{'group'}) {
-	push(@buts, [ "but_hide", $text{'edit_hide'} ]);
 	push(@buts, [ "but_clone", $text{'edit_clone'} ]);
 	push(@buts, [ "but_delete", $text{'delete'} ]);
 	}

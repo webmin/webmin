@@ -6,11 +6,7 @@ require './acl-lib.pl';
 &ReadParse();
 
 # Check for special button clicks, and redirect
-if ($in{'but_hide'}) {
-	&redirect("hide_form.cgi?group=".&urlize($in{'old'}));
-	exit;
-	}
-elsif ($in{'but_clone'}) {
+if ($in{'but_clone'}) {
 	&redirect("edit_group.cgi?clone=".&urlize($in{'old'}));
 	exit;
 	}
@@ -118,6 +114,20 @@ else {
 	# create group
 	&create_group(\%group, $in{'clone'});
 	}
+
+if ($in{'old'} && $in{'acl_security_form'}) {
+	# Update group's global ACL
+	&foreign_require("", "acl_security.pl");
+	%global::in = %in;
+	&foreign_call("", "acl_security_save",
+		      \%uaccess, \%in);
+	$aclfile = "$config_directory/$in{'name'}.gacl";
+	&lock_file($aclfile);
+	&write_file($aclfile, \%uaccess);
+	chmod(0640, $aclfile);
+	&unlock_file($aclfile);
+	}
+
 &reload_miniserv();
 if ($in{'old'}) {
 	&webmin_log("modify", "group", $in{'old'}, \%in);

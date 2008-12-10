@@ -212,7 +212,6 @@ if ($config{'select'}) {
 			$rv .= &ui_submit($text{'index_edit'});
 			}
 		local @opts;
-		push(@opts, [ '', $text{'index_global'} ]) if ($global);
 		foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
 			if ($modname{$m}) {
 				push(@opts, [ $m, $modname{$m} ]);
@@ -226,10 +225,6 @@ else {
 	# Show as table
 	$rv .= $prefix."<br>\n" if ($prefix);
 	local @grid;
-	if ($access{'acl'}) {
-		push(@grid, "<a href='edit_acl.cgi?mod=&$type=".
-			    &urlize($who)."'>$text{'index_global'}</a>");
-		}
 	foreach my $m (sort { $modname{$a} cmp $modname{$b} } @$mods) {
 		if ($modname{$m}) {
 			if ($mcan{$m} && $access{'acl'}) {
