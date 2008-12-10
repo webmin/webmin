@@ -897,7 +897,7 @@ return $rv;
 sub ui_buttons_start
 {
 return &theme_ui_buttons_start(@_) if (defined(&theme_ui_buttons_start));
-return "<table width=100%>\n";
+return "<table width=100% class='ui_buttons_table'>\n";
 }
 
 # ui_buttons_end()
@@ -915,9 +915,11 @@ return &theme_ui_buttons_row(@_) if (defined(&theme_ui_buttons_row));
 my ($script, $label, $desc, $hiddens, $after, $before) = @_;
 return "<form action=$script>\n".
        $hiddens.
-       "<tr> <td nowrap width=20% valign=top>".($before ? $before." " : "").
+       "<tr> <td nowrap width=20% valign=top class=ui_buttons_label>".
+       ($before ? $before." " : "").
        &ui_submit($label).($after ? " ".$after : "")."</td>\n".
-       "<td valign=top width=80% valign=top>$desc</td> </tr>\n".
+       "<td valign=top width=80% valign=top class=ui_buttons_value>".
+       $desc."</td> </tr>\n".
        "</form>\n";
 }
 
@@ -1469,7 +1471,7 @@ sub ui_radio_table
 return &theme_ui_radio_table(@_) if (defined(&theme_ui_radio_table));
 my ($name, $sel, $rows) = @_;
 return "" if (!@$rows);
-my $rv = "<table>\n";
+my $rv = "<table class='ui_radio_table'>\n";
 foreach my $r (@$rows) {
 	$rv .= "<tr>\n";
 	$rv .= "<td valign=top".(defined($r->[2]) ? "" : " colspan=2").
