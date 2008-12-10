@@ -2463,7 +2463,16 @@ local $u = defined($_[0]) ? $_[0] : $base_remote_user;
 local $m = defined($_[1]) ? $_[1] : $module_name;
 local $mdir = &module_root_directory($m);
 if (!$_[3]) {
+	# Read default ACL first, to be overridden by per-user settings
 	&read_file_cached("$mdir/defaultacl", \%rv);
+
+	# If this isn't a master admin user, apply the negative permissions
+	# so that he doesn't un-expectedly gain access to new features
+	local %gacccess;
+	&read_file_cached("$config_directory/$u.acl", \%gaccess);
+	if ($gaccess{'negative'}) {
+		&read_file_cached("$mdir/negativeacl", \%rv);
+		}
 	}
 local %usersacl;
 if (!$_[2] && &supports_rbac($m) && &use_rbac_module_acl($u, $m)) {
