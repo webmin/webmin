@@ -10,19 +10,16 @@ $access{'filesys'} eq "*" ||
 	&error($text{'cuform_euallow'});
 &ui_print_header(undef, $text{'cuform_title'}, "", "copy_user");
 
-print "<form action=copy_user.cgi>\n";
-print "<input type=hidden name=user value=\"$in{'user'}\">\n";
 print "<b>",&text('cuform_copyto', $in{'user'}),"</b><p>\n";
-print "<ul>\n";
-print "<input type=radio name=dest value=0> ",
-      "<b>$text{'cuform_all'}</b><br>\n";
-print "<input type=radio name=dest value=1 checked> ",
-      "<b>$text{'cuform_select'}</b>\n";
-print "<input name=users size=30> ",&user_chooser_button("users",1),"<br>\n";
-print "<input type=radio name=dest value=2> ",
-      "<b>$text{'cuform_members'}</b>\n";
-print "<input name=groups size=30> ",&group_chooser_button("groups",1),"<br>\n";
-print "<input type=submit value=$text{'cuform_doit'}></form>\n";
-print "</ul>\n";
+print &ui_form_start("copy_user.cgi");
+print &ui_hidden("user", $in{'user'});
+print &ui_radio_table("dest", 1,
+	[ [ 0, $text{'cuform_all'} ],
+	  [ 1, $text{'cuform_select'}, &ui_textbox("users", undef, 40)." ".
+				       &user_chooser_button("users",1) ],
+	  [ 2, $text{'cuform_members'}, &ui_textbox("groups", undef, 40)." ".
+					&group_chooser_button("groups",1) ],
+	]);
+print &ui_form_end([ [ undef, $text{'cuform_doit'} ] ]);
 
 &ui_print_footer("user_filesys.cgi?user=$in{'user'}", $text{'cuform_return'});

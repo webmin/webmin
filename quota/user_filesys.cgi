@@ -31,7 +31,9 @@ if ($n) {
 	# Generate top header (showing blocks/files)
 	@hcols = ( undef, $variable_bsize ? $text{'ufilesys_blocks'}
 					  : $text{'ufilesys_space'},
-		   $text{'ufilesys_files'});
+		   $config{'show_grace'} ? ( undef ) : ( ),
+		   $text{'ufilesys_files'},
+		   $config{'show_grace'} ? ( undef ) : ( ) );
 	print &ui_columns_start(\@hcols, 100, 0,
 		[ undef, "colspan=3 align=center", "colspan=3 align=center" ]);
 
@@ -78,22 +80,26 @@ else {
 	}
 
 if (!$access{'ro'}) {
-	print "<table width=100%><tr>\n";
-	print "<form action=edit_user_quota.cgi>\n";
-	print "<input type=hidden name=user value=\"$u\">\n";
-	print "<input type=hidden name=source value=1>\n";
-	print "<td align=left><input type=submit value=\"$text{'ufilesys_edit'}\">\n";
-	print "<select name=filesys>\n";
-	foreach $f (@fslist) { print "<option>$f\n"; }
-	print "</select></td></form>\n";
+	print &ui_hr();
+	print &ui_buttons_start();
+
+	# Form to edit quota on other filesystems
+	print &ui_buttons_row("edit_user_quota.cgi",
+		$text{'ufilesys_edit'},
+		$text{'ufilesys_editdesc'},
+		&ui_hidden("user", $u).&ui_hidden("source", 1),
+		&ui_select("filesys", undef, \@fslist)
+		);
 
 	if ($access{'filesys'} eq "*") {
-		print "<form action=copy_user_form.cgi>\n";
-		print "<input type=hidden name=user value=\"$u\">\n";
-		print "<td align=right><input type=submit value=\"$text{'ufilesys_copy'}\">\n";
-		print "</td></form>\n";
+		# Button to copy quotas
+		print &ui_buttons_row("copy_user_form.cgi",
+			$text{'ufilesys_copy'},
+			$text{'ufilesys_copydesc'},
+			&ui_hidden("user", $u));
 		}
-	print "</tr></table>\n";
+
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("", $text{'ufilesys_return'});

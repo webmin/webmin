@@ -86,6 +86,7 @@ egroup_sflimit=Soft file Limit
 egroup_hflimit=Hard file Limit
 egroup_update=Update
 egroup_listall=List All Quotas
+egroup_listalldesc=Click this button to display a list of all filesystems on which this group has disk quotas, with links to edit them.
 
 euser_title=Edit Quota
 euser_freturn=filesystem list
@@ -108,6 +109,7 @@ euser_sflimit=Soft file limit
 euser_hflimit=Hard file limit
 euser_update=Update
 euser_listall=List All Quotas
+euser_listalldesc=Click this button to display a list of all filesystems on which this user has disk quotas, with links to edit them.
 
 gfilesys_title=Group Quotas
 gfilesys_return=filesystems list
@@ -124,6 +126,8 @@ gfilesys_hard=Hard Limit
 gfilesys_nogquota=Group <tt>$1</tt> does not have quotas on any filesystem
 gfilesys_edit=Edit Quota On:
 gfilesys_copy=Copy Quotas
+gfilesys_editdesc=View and edit the quotas for this group on some other filesystem that it currently does not have quotas on.
+gfilesys_copydesc=Copy quota limits for this group on all filesystems to some or all other groups.
 
 ggracef_title=Grace Times
 ggracef_return=group list
@@ -210,6 +214,8 @@ ufilesys_soft=Soft Limit
 ufilesys_hard=Hard Limit
 ufilesys_nouquota=User <tt>$1</tt> does not have quotas on any filesystem
 ufilesys_edit=Edit Quota On:
+ufilesys_editdesc=View and edit the quotas for this user on some other filesystem that he currently does not have quotas on.
+ufilesys_copydesc=Copy quota limits for this user on all filesystems to some or all other users.
 ufilesys_copy=Copy Quotas
 ufilesys_grace=Grace
 

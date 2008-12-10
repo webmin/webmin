@@ -17,64 +17,77 @@ $first = (@quot == 0);
 $bsize = &block_size($fs);
 $fsbsize = &block_size($fs, 1);
 
-print "<table border width=100%>\n";
-print "<form action=save_group_quota.cgi>\n";
-print "<input type=hidden name=group value=\"$u\">\n";
-print "<input type=hidden name=filesys value=\"$fs\">\n";
-print "<input type=hidden name=source value=$in{'source'}>\n";
-print "<tr $tb> <td colspan=2><b>",&text('egroup_quotas', &html_escape($u), $fs),"</b></td> </tr>\n";
-print "<tr $cb> <td width=50%><table width=100%>\n";
+print &ui_form_start("save_group_quota.cgi");
+print &ui_hidden("group", $u);
+print &ui_hidden("filesys", $fs);
+print &ui_hidden("source", $in{'source'});
+print &ui_table_start(&text('egroup_quotas', &html_escape($u), $fs),
+		      "width=100%", 4);
 
+# Soft block limit
+print &ui_table_row($bsize ? $text{'egroup_sklimit'} : $text{'egroup_sblimit'},
+	&quota_input("sblocks", $quot[1], $bsize));
+
+# Hard block limit
+print &ui_table_row($bsize ? $text{'egroup_hklimit'} : $text{'egroup_hblimit'},
+	&quota_input("hblocks", $quot[2], $bsize));
+
+# Space used
 if (!$first) {
 	if ($bsize) {
-		print "<tr> <td><b>$text{'egroup_kused'}</b></td> ",
-		      "<td>",&nice_size($quot[0]*$bsize),"</td> </tr>\n",
+		print &ui_table_row($text{'egroup_kused'},
+				    &nice_size($quot[0]*$bsize));
 		}
 	else {
-		print "<tr> <td><b>$text{'egroup_bused'}</b></td> ",
-		      "<td>$quot[0]</td> </tr>\n",
+		print &ui_table_row($text{'egroup_bused'},
+				    $quot[0]);
 		}
 	}
-print "<tr> <td><b>",$bsize ? $text{'egroup_sklimit'} :
-			      $text{'egroup_sblimit'},"</b></td>\n";
-&quota_input("sblocks", $quot[1], $bsize);
-print "<tr> <td><b>",$bsize ? $text{'egroup_hklimit'} :
-			      $text{'egroup_hblimit'},"</b></td>\n";
-&quota_input("hblocks", $quot[2], $bsize);
+
 if ($access{'diskspace'}) {
+	# Filesystem space
 	($binfo, $finfo) = &filesystem_info($fs, undef, undef, $fsbsize);
-	print "<tr> <td><b>",$bsize ? $text{'euser_kdisk'} :
-				      $text{'euser_bdisk'},"</b></td>\n";
-	print "<td>$binfo</td> </tr>\n";
+	print &ui_table_row($bsize ? $text{'euser_sdisk'}
+				   : $text{'euser_bdisk'}, $binfo);
 	}
 
-print "</table></td><td width=50%><table width=100%>\n";
+print &ui_table_hr();
+
+# Soft file limit
+print &ui_table_row($text{'egroup_sflimit'},
+	&quota_input("sfiles", $quot[4]));
+
+# Hard file limit
+print &ui_table_row($text{'egroup_hflimit'},
+	&quota_input("hfiles", $quot[5]));
+
+# Files used
 if (!$first) {
-	print "<tr> <td><b>$text{'egroup_fused'}</b></td> <td>$quot[3]</td> </tr>\n",
+	print &ui_table_row($text{'egroup_fused'}, $quot[3]);
 	}
-print "<tr> <td><b>$text{'egroup_sflimit'}</b></td>\n";
-&quota_input("sfiles", $quot[4]);
-print "<tr> <td><b>$text{'egroup_hflimit'}</b></td>\n";
-&quota_input("hfiles", $quot[5]);
+
+# Filesystem files
 if ($access{'diskspace'}) {
-	print "<tr> <td><b>$text{'euser_fdisk'}</b></td>\n";
-	print "<td>$finfo</td> </tr>\n";
+	print &ui_table_row($text{'euser_fdisk'}, $finfo);
 	}
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'egroup_update'} ] ]);
 
-print "<table width=100%><tr>\n";
-print "<td><input type=submit value=$text{'egroup_update'}></td>\n";
-print "</form><form action=group_filesys.cgi>\n";
-print "<input type=hidden name=group value=\"$u\">\n";
-print "<td align=right><input type=submit value=\"$text{'egroup_listall'}\"></td>\n";
-print "</form></tr></table>\n";
+print &ui_hr();
+print &ui_buttons_start();
+print &ui_buttons_row("group_filesys.cgi", $text{'egroup_listall'},
+		      $text{'egroup_listalldesc'},
+		      &ui_hidden("group", $u));
+print &ui_buttons_end();
 
 if ($in{'source'}) {
-	&ui_print_footer("group_filesys.cgi?group=".&urlize($u),$text{'egroup_freturn'});
+	&ui_print_footer("group_filesys.cgi?group=".&urlize($u),
+			 $text{'egroup_freturn'});
 	}
 else {
-	&ui_print_footer("list_groups.cgi?dir=".&urlize($fs), $text{'egroup_greturn'});
+	&ui_print_footer("list_groups.cgi?dir=".&urlize($fs),
+			 $text{'egroup_greturn'});
 	}
 
 

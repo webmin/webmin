@@ -200,10 +200,9 @@ $ENV{'QUOTA_FUNITS'} = $_[4];
 # Prints an input for selecting a quota or unlimited, in a table
 sub quota_input
 {
-print "<td nowrap>",&ui_radio($_[0]."_def", $_[1] == 0 ? 1 : 0,
-			      [ [ 1, $text{'quota_unlimited'} ], [ 0, " " ] ]);
-print &quota_inputbox(@_);
-print "</td> </tr>\n";
+return &ui_radio($_[0]."_def", $_[1] == 0 ? 1 : 0,
+		 [ [ 1, $text{'quota_unlimited'} ], [ 0, " " ] ])." ".
+       &quota_inputbox(@_);
 }
 
 # quota_inputbox(name, value, [blocksize])
