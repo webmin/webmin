@@ -52,3 +52,4 @@ Added an API function to allow easier anonymous module access setup.
 ---- Changes since 1.440 ----
 Removed the Hide Unused button and associated functionality, as un-available modules are already automatically hidden in the Un-used Modules category.
 Moved the 'global ACL' fields to the Edit User and Edit Group pages, so that restrictions applying to all modules can be more easily found and edited.
+Added a per-user option to not grant that user new module permissions when Webmin is upgraded.
