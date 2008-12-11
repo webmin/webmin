@@ -16,7 +16,7 @@ $access{'ro'} && &error(&text('euser_eallowus', $u));
 
 $bsize = &block_size($fs);
 
-print &text('umass_count', scalar(@d)),"<br>\n";
+print &text('umass_count', scalar(@d)),"<p>\n";
 print &ui_form_start("save_user_mass.cgi", "post");
 foreach $u (@d) {
 	print &ui_hidden("d", $u),"\n";

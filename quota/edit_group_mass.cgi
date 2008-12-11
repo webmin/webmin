@@ -16,7 +16,7 @@ $access{'ro'} && &error(&text('egroup_eallowgr', $u));
 
 $bsize = &block_size($fs);
 
-print &text('gmass_count', scalar(@d)),"<br>\n";
+print &text('gmass_count', scalar(@d)),"<p>\n";
 print &ui_form_start("save_group_mass.cgi", "post");
 foreach $u (@d) {
 	print &ui_hidden("d", $u),"\n";

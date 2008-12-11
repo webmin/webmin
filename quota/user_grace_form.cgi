@@ -11,46 +11,41 @@ $access{'ugrace'} && &can_edit_filesys($in{'filesys'}) ||
 print "$text{'ugracef_info'}<p>\n";
 
 @gr = &get_user_grace($in{'filesys'});
-print "<form action=user_grace_save.cgi>\n";
-print "<input type=hidden name=filesys value=\"$in{'filesys'}\">\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td colspan=2><b>",&text('ugracef_graces', $in{'filesys'}),"</b></td></tr>\n";
+print &ui_form_start("user_grace_save.cgi");
+print &ui_hidden("filesys", $in{'filesys'});
+print &ui_table_start(&text('ugracef_graces', $in{'filesys'}),
+		      "width=100%", 4);
 
-print "<tr $cb> <td width=20%><b>$text{'ugracef_block'}</b></td> <td>\n";
+# Block grace time
+$bfield = &ui_textbox("btime", $gr[0], 6)." ".
+	  &select_units("bunits", $gr[1]);
 if (&default_grace()) {
-	printf "<input type=radio name=bdef value=1 %s> $text{'default'}\n",
-		$gr[0] ? "" : "checked";
-	printf "<input type=radio name=bdef value=0 %s>\n",
-		$gr[0] ? "checked" : "";
+	$bfield = &ui_radio("bdef", $gr[0] ? 0 : 1,
+			    [ [ 1, $text{'default'} ],
+			      [ 0, $bfield ] ]);
 	}
-print "<input name=btime size=6 value=\"$gr[0]\">";
-&select_units("bunits", $gr[1]);
-print "</td> </tr>\n";
+print &ui_table_row($text{'ugracef_block'}, $bfield);
 
-print "<tr $cb> <td width=20%><b>$text{'ugracef_file'}</b></td> <td>\n";
+# Files grace time
+$ffield = &ui_textbox("ftime", $gr[2], 6)." ".
+	  &select_units("funits", $gr[3]);
 if (&default_grace()) {
-	printf "<input type=radio name=fdef value=1 %s> $text{'default'}\n",
-		$gr[2] ? "" : "checked";
-	printf "<input type=radio name=fdef value=0 %s>\n",
-		$gr[2] ? "checked" : "";
+	$ffield = &ui_radio("fdef", $gr[2] ? 0 : 1,
+			    [ [ 1, $text{'default'} ],
+			      [ 0, $ffield ] ]);
 	}
-print "<input name=ftime size=6 value=\"$gr[2]\">";
-&select_units("funits", $gr[3]);
-print "</td> </tr>\n";
+print &ui_table_row($text{'ugracef_file'}, $ffield);
 
-print "</table>\n";
-print "<input type=submit value=$text{'ugracef_update'}></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'ugracef_update'} ] ]);
 
-&ui_print_footer("list_users.cgi?dir=".&urlize($in{'filesys'}), $text{'ugracef_return'});
+&ui_print_footer("list_users.cgi?dir=".&urlize($in{'filesys'}),
+		 $text{'ugracef_return'});
 
 sub select_units
 {
-@uarr = &grace_units();
-print "<select name=$_[0]>\n";
-for($i=0; $i<@uarr; $i++) {
-	printf "<option value=$i %s>$uarr[$i]\n",
-		$i == $_[1] ? "selected" : "";
-	}
-print "</select>\n";
+local @uarr = &grace_units();
+return &ui_select($_[0], $_[1],
+	[ map { [ $_, $uarr[$_] ] } (0..$#uarr) ]);
 }
 

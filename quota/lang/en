@@ -233,6 +233,9 @@ ugraces_eedit=You cannot edit grace times on this filesystem
 ugraces_enumber='$1' is not a number
 
 lusers_failed=Failed to list users
+lusers_tablist=User list
+lusers_tabdefault=Default quotas
+lusers_tabemail=Email notifications
 lusers_eallow=You are not allowed to edit quotas on this filesystem
 lusers_title=Filesystem Quotas
 lusers_return=filesystems list
