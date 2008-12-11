@@ -319,7 +319,8 @@ return $n;
 sub filesystem_users
 {
 return &parse_repquota_output(
-	"$config{'user_repquota_command'} $_[0]", "user");
+#	"$config{'user_repquota_command'} $_[0]", "user");
+	"cat /tmp/repquota.txt", "user");
 }
 
 sub filesystem_groups
@@ -357,7 +358,7 @@ if (!$st) {
 local $nn = 0;
 local %already;
 for($n=0; $n<@rep; $n++) {
-	if ($rep[$n] =~ /^\s*(\S.*\S|\S)\s+[\-\+]{2}\s+(\S+)\s+(\S+)\s+(\S+)(.{7})\s+(\S+)\s+(\S+)\s+(\S+)(.*)/ || $rep[$n] =~ /([^\-\s]\S*)\s*[\-\+]{2}(.{8})(.{8})(.{8})(.{7})(.{8})(.{6})(.{6})(.*)/) {
+	if ($rep[$n] =~ /^\s*(\S.*\S|\S)\s+[\-\+]{2}\s+(\S+)\s+(\S+)\s+(\S+)(.{8})\s+(\S+)\s+(\S+)\s+(\S+)(.*)/ || $rep[$n] =~ /([^\-\s]\S*)\s*[\-\+]{2}(.{8})(.{8})(.{8})(.{7})(.{8})(.{6})(.{6})(.*)/) {
 		$$what{$nn,$what} = $1;
 		$$what{$nn,'ublocks'} = int($2);
 		$$what{$nn,'sblocks'} = int($3);
