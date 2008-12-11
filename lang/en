@@ -167,7 +167,9 @@ acl_rpc=Can accept RPC calls?
 acl_rpc2=Only for <tt>root</tt> or <tt>admin</tt>
 acl_rpc1=Yes
 acl_rpc0=No
-acl_readonly=User is in demo mode?<br>(Some modules may not be available)
+acl_readonly2=User is in demo mode?
+acl_readonlyyes=Yes (Some modules may not be available)
+acl_negative=Grant new module permissions to user?
 acl_fileunix=Browse files as Unix user
 acl_sameunix=Same as Webmin login
 
