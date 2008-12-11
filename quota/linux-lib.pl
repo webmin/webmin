@@ -319,8 +319,7 @@ return $n;
 sub filesystem_users
 {
 return &parse_repquota_output(
-#	"$config{'user_repquota_command'} $_[0]", "user");
-	"cat /tmp/repquota.txt", "user");
+	"$config{'user_repquota_command'} $_[0]", "user");
 }
 
 sub filesystem_groups
