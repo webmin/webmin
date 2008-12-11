@@ -36,5 +36,5 @@ rndc_conf=/etc/bind/rndc.conf
 rndcconf_cmd=rndc-confgen
 largezones=0
 checkzone=named-checkzone
-keygen=keygen
-signzone=signzone
+keygen=dnssec-keygen
+signzone=dnssec-signzone

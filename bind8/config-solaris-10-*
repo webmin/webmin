@@ -34,5 +34,5 @@ rndcconf_cmd=/usr/bin/rndc-confgen
 largezones=0
 no_pid_chroot=0
 checkzone=/usr/bin/named-checkzone
-keygen=keygen
-signzone=signzone
+keygen=/usr/bin/dnssec-keygen
+signzone=/usr/bin/dnssec-signzone

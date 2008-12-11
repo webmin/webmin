@@ -51,5 +51,5 @@ start_cmd=sc start named
 zones_file=
 extra_forward=
 slave_dir=
-keygen=keygen
-signzone=signzone
+keygen=dnssec-keygen
+signzone=dnssec-signzone
