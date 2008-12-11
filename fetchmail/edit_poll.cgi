@@ -113,8 +113,7 @@ foreach $u (@users) {
 		$u->{'user'};
 
 	print "<td><b>$text{'poll_pass'}</b></td>\n";
-	printf "<td><input type=password name=pass_$i size=15 value='%s'></td> </tr>\n",
-		$u->{'pass'};
+	print "<td>",&ui_password("pass_$i", $u->{'pass'}, 15),"</td> </tr>\n";
 
 	print "<tr> <td><b>$text{'poll_is'}</b></td> <td colspan=3>\n";
 	printf "<input name=is_$i size=60 value='%s'></td> </tr>\n",
