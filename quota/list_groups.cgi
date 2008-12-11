@@ -11,19 +11,43 @@ $whatfailed = $text{'lgroups_failed'};
 $form = 0;
 
 # List quotas
-&ui_print_header(undef, $text{'lgroups_title'}, "", "list_groups");
+&ui_print_header(&text('lgroups_quotas', $f),
+		 $text{'lgroups_title'}, "", "list_groups");
 
+# Build and show tabs
+$prog = "list_groups.cgi?dir=".&urlize($f);
+@tabs = ( [ 'list', $text{'lgroups_tablist'}, $prog."&mode=list" ] );
+if ($access{'default'}) {
+	push(@tabs, [ 'default', $text{'lusers_tabdefault'},
+		      $prog."&mode=default" ]);
+	}
+if ($access{'email'} && &foreign_check("cron") && &foreign_check("mailboxes")) {
+	push(@tabs, [ 'email', $text{'lusers_tabemail'},
+		      $prog."&mode=email" ]);
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || 'list', 1);
+
+# Build user list links
+@ulinks = ( );
+if ($access{'ggrace'}) {
+	push(@ulinks, "<a href='group_grace_form.cgi?filesys=".&urlize($f).
+		      "'>$text{'lusers_egrace'}</a>");
+	}
+push(@ulinks, "<a href='check_quotas.cgi?filesys=".&urlize($f).
+	      "&source=group'>$text{'lusers_check'}</a>");
+
+# Groups list, in a tab
+print &ui_tabs_start_tab("mode", "list");
 $n = &filesystem_groups($f);
 $bsize = &block_size($f);
 $fsbsize = &block_size($f);
 if ($n > $config{'display_max'} && !$access{'ro'}) {
-	print "<b>",&text('lgroups_toomany', $f),"</b><br>\n";
+	print "<b>",&text('lgroups_toomany', $f),"</b><p>\n";
+	print &ui_links_row(\@ulinks);
 	}
 elsif ($n) {
 	my $threshold_pc = $config{'threshold_pc'} || 101;
 	$threshold_pc = 101 if $threshold_pc < 1 or $threshold_pc > 101;
-	print &ui_subheading(&text('lgroups_quotas', $f));
-	&show_buttons();
 	if (!$access{'ro'}) {
 		print &ui_form_start("edit_group_mass.cgi", "post");
 		print &ui_hidden('dir', $f),"\n";
@@ -31,7 +55,8 @@ elsif ($n) {
 
 	# Generate select links
 	@links = ( &select_all_link("d", $form),
-		   &select_invert_link("d", $form) );
+		   &select_invert_link("d", $form),
+		   @ulinks );
 	if (!$access{'ro'}) {
 		print &ui_links_row(\@links);
 		}
@@ -199,42 +224,55 @@ elsif ($n) {
 		}
 	}
 else {
-	print "<b>",&text('lgroups_noquota', $f),"</b><br>\n";
+	print "<b>",&text('lgroups_noquota', $f),"</b><p>\n";
+	print &ui_links_row(\@ulinks);
 	}
-&show_buttons();
 
+# Form to edit any user
+if (!$access{'ro'}) {
+	print &ui_form_start("edit_group_quota.cgi");
+	print &ui_hidden("filesys", $f);
+	print &ui_hidden("source", 0);
+	print &ui_submit($text{'lgroups_equota'});
+	print &ui_group_textbox("group");
+	print &ui_form_end();
+	}
+
+print &ui_tabs_end_tab("mode", "list");
+
+# Show form for default quotas, in a tab
 if ($access{'default'}) {
-	print &ui_hr();
-	print &text('lgroups_info', $text{'lusers_useradmin'});
-	print "<p>\n";
+	print &ui_tabs_start_tab("mode", "default");
+	print &text('lgroups_info', $text{'lusers_useradmin'}),"<p>\n";
 
 	@dquot = split(/\s+/, $config{"gsync_$f"});
-	print "<form action=save_gsync.cgi>\n";
-	print "<input type=hidden name=filesys value=\"$f\">\n";
-	print "<table width=100% border> <tr $tb>\n";
-	print "<td colspan=2><b>$text{'lgroups_newgroup'}</b></td> </tr> <tr $cb>\n";
+	print &ui_form_start("save_gsync.cgi");
+	print &ui_hidden("filesys", $f);
+	print &ui_table_start($text{'lgroups_newgroup'}, "width=100%", 4);
 
-	print "<td width=50%><table><tr>\n";
-	print "<td><b>$text{'lusers_sblimit'}</b></td> <td>\n";
-	&quota_input("sblocks", $dquot[0], $bsize);
-	print "</td> </tr><tr> <td><b>$text{'lusers_hblimit'}</b></td> <td>\n";
-	&quota_input("hblocks", $dquot[1], $bsize);
-	print "</td> </tr></table></td>\n";
+	# Default block limits
+	print &ui_table_row($text{'lusers_sblimit'},
+		&quota_input("sblocks", $dquot[0], $bsize));
+	print &ui_table_row($text{'lusers_hblimit'},
+		&quota_input("hblocks", $dquot[1], $bsize));
 
-	print "<td width=50%><table><tr>\n";
-	print "<td><b>$text{'lusers_sflimit'}</b></td> <td>\n";
-	&quota_input("sfiles", $dquot[2]);
-	print "</td> </tr><tr> <td><b>$text{'lusers_hflimit'}</b></td> <td>\n";
-	&quota_input("hfiles", $dquot[3]);
-	print "</td> </tr></table></td>\n";
-	print "</tr> </table>\n";
-	print "<input type=submit value=$text{'lusers_apply'}></form>\n";
+	# Default file limits
+	print &ui_table_row($text{'lusers_sflimit'},
+		&quota_input("sfiles", $dquot[2]));
+	print &ui_table_row($text{'lusers_hflimit'},
+		&quota_input("hfiles", $dquot[3]));
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'lusers_apply'} ] ]);
+
+	print &ui_tabs_end_tab("mode", "default");
 	}
 
 # Show form for email notifications
 if ($access{'email'} && &foreign_check("cron") &&
     &foreign_check("mailboxes")) {
-	print &ui_hr();
+	print &ui_tabs_start_tab("mode", "email");
+
 	print &ui_form_start("save_gemail.cgi");
 	print &ui_hidden("filesys", $f);
 	print &ui_table_start($text{'lgroups_emailheader'}, "width=100%", 4);
@@ -274,42 +312,11 @@ if ($access{'email'} && &foreign_check("cron") &&
 
 	print &ui_table_end();
 	print &ui_form_end([ [ 'save', $text{'lusers_apply'} ] ]);
+
+	print &ui_tabs_end_tab("mode", "email");
 	}
 
-
+print &ui_tabs_end(1);
 
 &ui_print_footer("", $text{'lgroups_return'});
-
-sub show_buttons
-{
-print "<table width=100%><tr>\n";
-if (!$access{'ro'}) {
-	print "<form action=edit_group_quota.cgi>\n";
-	print "<input type=hidden name=filesys value=\"$f\">\n";
-	print "<input type=hidden name=source value=0>\n";
-	print "<td align=left width=33%>\n";
-	print "<input type=submit value=\"$text{'lgroups_equota'}\">\n";
-	print "<input name=group size=8> ",
-	      &group_chooser_button("group", 0, $form),"</td></form>\n";
-	$form++;
-	}
-else { print "<td width=33%></td>\n"; }
-
-if ($access{'ggrace'}) {
-	print "<form action=group_grace_form.cgi>\n";
-	print "<input type=hidden name=filesys value=\"$f\">\n";
-	print "<td align=center width=33%>\n";
-	print "<input type=submit value=\"$text{'lgroups_grace'}\">\n";
-	print "</td></form>\n";
-	$form++;
-	}
-else { print "<td width=33%></td>\n"; }
-
-print "<form action=check_quotas.cgi>\n";
-print "<input type=hidden name=filesys value=\"$f\">\n";
-print "<input type=hidden name=source value=group>\n";
-print "<td align=right width=33%><input type=submit value=\"$text{'lgroups_check'}\">\n";
-print "</td></form> </tr></table>\n";
-$form++;
-}
 

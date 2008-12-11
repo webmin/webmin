@@ -69,7 +69,7 @@ cuform_select=Selected users
 cuform_members=Members of selected groups
 cuform_doit=Copy
 
-egroup_title=Edit Quota
+egroup_title=Edit Group Quota
 egroup_freturn=filesystem list
 egroup_greturn=group list
 egroup_eallowgr=You are not allowed to edit quotas for '$1'
@@ -88,7 +88,7 @@ egroup_update=Update
 egroup_listall=List All Quotas
 egroup_listalldesc=Click this button to display a list of all filesystems on which this group has disk quotas, with links to edit them.
 
-euser_title=Edit Quota
+euser_title=Edit User Quota
 euser_freturn=filesystem list
 euser_ureturn=user list
 euser_eallowus=You are not allowed to edit quotas for '$1'
@@ -163,6 +163,7 @@ index_nosupport=No local filesystems can support quotas.
 index_mountmod=You can enable quotas for a filesystem in the <a href='$1'>Disk and Network Filesystems</a> module.
 
 lgroups_failed=Failed to list groups
+lgroups_tablist=Group list
 lgroups_eallow=You are not allowed to edit quotas on this filesystem
 lgroups_title=Filesystem Quotas
 lgroups_return=filesystems list
@@ -253,8 +254,8 @@ lusers_hard=Hard Limit
 lusers_grace=Grace
 lusers_noquota=No users have quotas on <tt>$1</tt>
 lusers_equota=Edit Quota For:
-lusers_egrace=Edit Grace Times
-lusers_check=Check Quotas
+lusers_egrace=Edit grace times
+lusers_check=Check quotas
 lusers_info=Webmin can be configured to automatically set the quotas on this filesystem when a new Unix user is created. This will only work when the $1 Webmin module is used to add users.
 lusers_useradmin=Users and Groups
 lusers_newuser=New User Quotas
