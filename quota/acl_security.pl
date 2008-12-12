@@ -86,25 +86,21 @@ print &ui_table_row($text{'acl_uquota'},
 
 # Allowed groups
 if ($groups) {
-	print &ui_hr();
-	# XXX
+	print &ui_table_hr();
 
-	print "<tr> <td valign=top><b>$text{'acl_gquota'}",
-	      "</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=gmode value=0 %s>$text{'acl_gall'}<br>\n",
-		$_[0]->{'gmode'} == 0 ? "checked" : "";
-	printf "<input type=radio name=gmode value=3 %s>$text{'acl_gnone'}<br>\n",
-		$_[0]->{'gmode'} == 3 ? "checked" : "";
-	printf "<input type=radio name=gmode value=1 %s>$text{'acl_gonly'}\n",
-		$_[0]->{'gmode'} == 1 ? "checked" : "";
-	printf "<input name=gcan size=40 value='%s'> %s<br>\n",
-		$_[0]->{'gmode'} == 1 ? $_[0]->{'groups'} : "",
-		&group_chooser_button("gcan", 1);
-	printf "<input type=radio name=gmode value=2 %s>$text{'acl_gexcept'}\n",
-		$_[0]->{'gmode'} == 2 ? "checked" : "";
-	printf "<input name=gcannot size=40 value='%s'> %s</td> </tr>\n",
-		$_[0]->{'gmode'} == 2 ? $_[0]->{'groups'} : "",
-		&group_chooser_button("gcannot", 1);
+	print &ui_table_row($text{'acl_gquota'},
+	    &ui_radio_table("gmode", int($_[0]->{'gmode'}),
+		[ [ 0, $text{'acl_gall'} ],
+		  [ 3, $text{'acl_gnone'} ],
+		  [ 1, $text{'acl_gonly'},
+		    &ui_textbox("gcan",
+			$_[0]->{'gmode'} == 1 ? $_[0]->{'groups'} : "", 40)." ".
+		    &group_chooser_button("gcan", 1) ],
+		  [ 2, $text{'acl_gexcept'},
+		    &ui_textbox("gcannot",
+			$_[0]->{'gmode'} == 2 ? $_[0]->{'groups'} : "", 40)." ".
+		    &group_chooser_button("gcannot", 1) ],
+		]), 3);
 	}
 }
 
