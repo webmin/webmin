@@ -2347,13 +2347,32 @@ return %fconfig;
 # the server is installed.
 sub foreign_installed
 {
-return 0 if (!&foreign_check($_[0]));
-local $mdir = &module_root_directory($_[0]);
-if (!-r "$mdir/install_check.pl") {
-	return $_[1] ? 2 : 1;
+local ($mod, $configured) = @_;
+if (defined($main::foreign_installed_cache{$mod,$configured})) {
+	# Already cached..
+	return $main::foreign_installed_cache{$mod,$configured};
 	}
-&foreign_require($_[0], "install_check.pl");
-return &foreign_call($_[0], "is_installed", $_[1]);
+else {
+	local $rv;
+	if (!&foreign_check($mod)) {
+		# Module is missing
+		$rv = 0;
+		}
+	else {
+		local $mdir = &module_root_directory($mod);
+		if (!-r "$mdir/install_check.pl") {
+			# Not known, assume OK
+			$rv = $configured ? 2 : 1;
+			}
+		else {
+			# Call function to check
+			&foreign_require($mod, "install_check.pl");
+			$rv = &foreign_call($mod, "is_installed", $configured);
+			}
+		}
+	$main::foreign_installed_cache{$mod,$configured} = $rv;
+	return $rv;
+	}
 }
 
 # foreign_defined(module, function)
@@ -5242,6 +5261,7 @@ undef(%main::has_command_cache);
 undef(@main::list_languages_cache);
 undef($main::got_list_usermods_cache);
 undef(@main::list_usermods_cache);
+undef(%main::foreign_installed_cache);
 unlink("$config_directory/module.infos.cache");
 &get_all_module_infos();
 }
