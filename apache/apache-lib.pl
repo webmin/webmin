@@ -471,6 +471,7 @@ sub save_directive
 {
 local($i, @old, $lref, $change, $len, $v);
 @old = &find_directive_struct($_[0], $_[2]);
+local @files;
 for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 	$v = ${$_[1]}[$i];
 	if ($i >= @old) {
@@ -491,6 +492,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			&renumber($_[3], $v{'line'}, $v{'file'}, 1);
 			splice(@{$_[2]}, $j, 0, \%v);
 			$lref = &read_file_lines($v{'file'});
+			push(@files, $v{'file'});
 			splice(@$lref, $v{'line'}, 0, "$_[0] $v");
 			$change = \%v;
 			}
@@ -510,12 +512,14 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 			&renumber($_[3], $l, $f, 1);
 			splice(@{$_[2]}, $j, 0, \%v);
 			$lref = &read_file_lines($f);
+			push(@files, $f);
 			splice(@$lref, $l, 0, "$_[0] $v");
 			}
 		}
 	elsif ($i >= @{$_[1]}) {
 		# a directive was deleted
 		$lref = &read_file_lines($old[$i]->{'file'});
+		push(@files, $old[$i]->{'file'});
 		$idx = &indexof($old[$i], @{$_[2]});
 		splice(@{$_[2]}, $idx, 1);
 		$len = $old[$i]->{'eline'} - $old[$i]->{'line'} + 1;
@@ -525,6 +529,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 	else {
 		# just changing the value
 		$lref = &read_file_lines($old[$i]->{'file'});
+		push(@files, $old[$i]->{'file'});
 		$len = $old[$i]->{'eline'} - $old[$i]->{'line'} + 1;
 		&renumber($_[3], $old[$i]->{'eline'}+1,
 			  $old[$i]->{'file'},1-$len);
@@ -534,6 +539,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		$change = $old[$i];
 		}
 	}
+return &unique(@files);
 }
 
 # save_directive_struct(&old-directive, &directive, &parent-directives,
