@@ -353,14 +353,6 @@ if ($mount) {
 return undef;
 }
 
-# print_limit(amount, no-blocks)
-sub print_limit
-{
-if ($_[0] == 0) { print "<td>$text{'quota_unlimited'}</td>\n"; }
-elsif ($bsize && !$_[1]) { print "<td>",&nice_size($_[0]*$bsize),"</td>"; }
-else { print "<td>$_[0]</td>\n"; }
-}
-
 # nice_limit(amount, bsize, no-blocks)
 sub nice_limit
 {
@@ -423,6 +415,15 @@ if ($_[1]) {
 else {
 	return 0;
 	}
+}
+
+# select_grace_units(name, value)
+# Returns a menu for selecting grace time units
+sub select_grace_units
+{
+local @uarr = &grace_units();
+return &ui_select($_[0], $_[1],
+	[ map { [ $_, $uarr[$_] ] } (0..$#uarr) ]);
 }
 
 1;

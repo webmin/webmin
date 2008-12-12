@@ -100,28 +100,23 @@ else {
 		}
 	}
 
+# Buttons to edit and specific user or group
 if ($useractive || $groupactive) {
-	print "<table width=100%><tr>\n";
+	print &ui_hr();
+	print &ui_buttons_start();
 	}
 if ($useractive) {
-	print "<form action=user_filesys.cgi>\n";
-	print "<td><input type=submit value=\"$text{'index_euser'}\">\n";
-	print "<input name=user size=8> ",
-	      &user_chooser_button("user", 0),"</td></form>\n";
+	print &ui_buttons_row("user_filesys.cgi", $text{'index_euser'},
+			      $text{'index_euserdesc'}, undef,
+			      &ui_user_textbox("user"));
 	}
-else { print "<td></td>\n"; }
-
 if ($groupactive) {
-	print "<form action=group_filesys.cgi>\n";
-	print "<td align=right>\n";
-	print "<input type=submit value=\"$text{'index_egroup'}\">\n";
-	print "<input name=group size=8> ",
-	      &group_chooser_button("group", 0, $useractive ? 1 : 0),
-	      "</td></form>\n";
+	print &ui_buttons_row("group_filesys.cgi", $text{'index_egroup'},
+			      $text{'index_egroupdesc'}, undef,
+			      &ui_group_textbox("group"));
 	}
-else { print "<td></td>\n"; }
 if ($useractive || $groupactive) {
-	print "</tr></table>\n";
+	print &ui_buttons_end();
 	}
 
 &ui_print_footer("/", $text{'index_return'});

@@ -7,114 +7,87 @@ sub acl_security_form
 {
 local $groups = &quotas_supported() >= 2;
 
-print "<tr> <td valign=top><b>$text{'acl_fss'}</b></td>\n";
-print "<td colspan=3>\n";
-printf "<input type=radio name=filesys_def value=1 %s> %s\n",
-	$_[0]->{'filesys'} eq '*' ? 'checked' : '', $text{'acl_fall'};
-printf "<input type=radio name=filesys_def value=0 %s> %s<br>\n",
-	$_[0]->{'filesys'} eq '*' ? '' : 'checked', $text{'acl_fsel'};
-print "<select width=150 name=filesys multiple size=3>\n";
-local ($f, %qcan);
-map { $qcan{$_}++ } split(/\s+/, $_[0]->{'filesys'});
-foreach $f (&list_filesystems()) {
-	if ($f->[4]) {
-		printf "<option %s>%s\n",
-			$qcan{$f->[0]} ? "selected" : "", $f->[0];
-		}
-	}
-print "</select></td> </tr>\n";
+# Allowed filesystems
+print &ui_table_row($text{'acl_fss'},
+	&ui_radio("filesys_def", $_[0]->{'filesys'} eq '*' ? 1 : 0,
+		  [ [ 1, $text{'acl_fall'} ], [ 0, $text{'acl_fsel'} ] ]).
+	"<br>\n".
+	&ui_select("filesys",
+		   $_[0]->{'filesys'} eq '*' ? [ ] :
+			[ split(/\s+/, $_[0]->{'filesys'}) ],
+		   [ map { $_->[0] } grep { $_->[4] } &list_filesystems() ],
+		   6, 1, 1, 0), 3);
 
-print "<tr> <td><b>$text{'acl_ro'}</b></td> <td>\n";
-printf "<input type=radio name=ro value=1 %s> $text{'yes'}\n",
-	$_[0]->{'ro'} ? "checked" : "";
-printf "<input type=radio name=ro value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'ro'} ? "" : "checked";
+# Readonly mode
+print &ui_table_row($text{'acl_ro'},
+	&ui_yesno_radio("ro", $_[0]->{'ro'}), 3);
 
-print "<tr> <td colspan=4><hr></td> </tr>\n";
+print &ui_table_hr();
 
-print "<tr> <td><b>$text{'acl_quotaon'}</b></td> <td>\n";
-printf "<input type=radio name=enable value=1 %s> $text{'yes'}\n",
-	$_[0]->{'enable'} ? "checked" : "";
-printf "<input type=radio name=enable value=0 %s> $text{'no'}</td>\n",
-	$_[0]->{'enable'} ? "" : "checked";
+# Can enable quotas?
+print &ui_table_row($text{'acl_quotaon'},
+	&ui_yesno_radio("enable", $_[0]->{'enable'}));
 
-print "<td><b>$text{'acl_quotanew'}</b></td> <td>\n";
-printf "<input type=radio name=default value=1 %s> $text{'yes'}\n",
-	$_[0]->{'default'} ? "checked" : "";
-printf "<input type=radio name=default value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'default'} ? "" : "checked";
+# Can edit defaults for new users?
+print &ui_table_row($text{'acl_quotanew'},
+	&ui_yesno_radio("default", $_[0]->{'default'}));
 
-print "<tr> <td><b>$text{'acl_ugrace'}</b></td> <td>\n";
-printf "<input type=radio name=ugrace value=1 %s> $text{'yes'}\n",
-	$_[0]->{'ugrace'} ? "checked" : "";
-printf "<input type=radio name=ugrace value=0 %s> $text{'no'}</td>\n",
-	$_[0]->{'ugrace'} ? "" : "checked";
+# Can edit user grace times
+print &ui_table_row($text{'acl_ugrace'},
+	&ui_yesno_radio("ugrace", $_[0]->{'ugrace'}));
 
-print "<td><b>$text{'acl_vtotal'}</b></td> <td>\n";
-printf "<input type=radio name=diskspace value=1 %s> $text{'yes'}\n",
-	$_[0]->{'diskspace'} ? "checked" : "";
-printf "<input type=radio name=diskspace value=0 %s> $text{'no'}</td> </tr>\n",
-	$_[0]->{'diskspace'} ? "" : "checked";
-
-print "<tr> <td><b>$text{'acl_maxblocks'}</b></td> <td>\n";
-printf "<input type=radio name=maxblocks_def value=1 %s> %s\n",
-	$_[0]->{'maxblocks'} ? '' : 'checked', $text{'acl_unlimited'};
-printf "<input type=radio name=maxblocks_def value=0 %s>\n",
-	$_[0]->{'maxblocks'} ? 'checked' : '';
-print "<input name=maxblocks size=8 value='$_[0]->{'maxblocks'}'></td>\n";
-
-print "<td><b>$text{'acl_maxfiles'}</b></td> <td>\n";
-printf "<input type=radio name=maxfiles_def value=1 %s> %s\n",
-	$_[0]->{'maxfiles'} ? '' : 'checked', $text{'acl_unlimited'};
-printf "<input type=radio name=maxfiles_def value=0 %s>\n",
-	$_[0]->{'maxfiles'} ? 'checked' : '';
-print "<input name=maxfiles size=8 value='$_[0]->{'maxfiles'}'></td> </tr>\n";
-
-print "<tr> <td><b>$text{'acl_email'}</b></td> <td>\n";
-printf "<input type=radio name=email value=1 %s> $text{'yes'}\n",
-	$_[0]->{'email'} ? "checked" : "";
-printf "<input type=radio name=email value=0 %s> $text{'no'}</td>\n",
-	$_[0]->{'email'} ? "" : "checked";
-
+# Can edit group grace times
 if ($groups) {
-	print "<td><b>$text{'acl_ggrace'}</b></td> <td>\n";
-	printf "<input type=radio name=ggrace value=1 %s> $text{'yes'}\n",
-		$_[0]->{'ggrace'} ? "checked" : "";
-	printf "<input type=radio name=ggrace value=0 %s> $text{'no'}</td>\n",
-		$_[0]->{'ggrace'} ? "" : "checked";
+	print &ui_table_row($text{'acl_ggrace'},
+		&ui_yesno_radio("ggrace", $_[0]->{'ggrace'}));
 	}
-print "</tr>\n";
 
-print "<tr> <td colspan=4><hr></td> </tr>\n";
+# Can see total disk space
+print &ui_table_row($text{'acl_vtotal'},
+	&ui_yesno_radio("diskspace", $_[0]->{'diskspace'}));
 
-print "<tr> <td valign=top><b>$text{'acl_uquota'}",
-      "</b></td> <td colspan=3>\n";
-printf "<input type=radio name=umode value=0 %s> $text{'acl_uall'}<br>\n",
-	$_[0]->{'umode'} == 0 ? "checked" : "";
-printf "<input type=radio name=umode value=1 %s> $text{'acl_uonly'}\n",
-	$_[0]->{'umode'} == 1 ? "checked" : "";
-printf "<input name=ucan size=40 value='%s'> %s<br>\n",
-	$_[0]->{'umode'} == 1 ? $_[0]->{'users'} : "",
-	&user_chooser_button("ucan", 1);
-printf "<input type=radio name=umode value=2 %s> $text{'acl_uexcept'}\n",
-	$_[0]->{'umode'} == 2 ? "checked" : "";
-printf "<input name=ucannot size=40 value='%s'> %s<br>\n",
-	$_[0]->{'umode'} == 2 ? $_[0]->{'users'} : "",
-	&user_chooser_button("ucannot", 1);
-printf "<input type=radio name=umode value=3 %s> $text{'acl_ugroup'}\n",
-	$_[0]->{'umode'} == 3 ? "checked" : "";
-printf "<input name=upri size=8 value='%s'> %s<br>\n",
-	$_[0]->{'umode'} == 3 ? scalar(getgrgid($_[0]->{'users'})) : "",
-	&group_chooser_button("upri", 0);
-printf "<input type=radio name=umode value=4 %s> $text{'acl_uuid'}\n",
-	$_[0]->{'umode'} == 4 ? "checked" : "";
-printf "<input name=umin size=6 value='%s'> -\n",
-	$_[0]->{'umode'} == 4 ? $_[0]->{'umin'} : "";
-printf "<input name=umax size=6 value='%s'></td> </tr>\n",
-	$_[0]->{'umode'} == 4 ? $_[0]->{'umax'} : "";
+# Maximum block quota
+print &ui_table_row($text{'acl_maxblocks'},
+	&ui_opt_textbox("maxblocks", $_[0]->{'maxblocks'}, 8,
+			$text{'acl_unlimited'}));
 
+# Maximum file quota
+print &ui_table_row($text{'acl_maxfiles'},
+	&ui_opt_textbox("maxfiles", $_[0]->{'maxfiles'}, 8,
+			$text{'acl_unlimited'}));
+
+# Can edit email notifications?
+print &ui_table_row($text{'acl_email'},
+	&ui_yesno_radio("email", $_[0]->{'email'}));
+
+print &ui_table_hr();
+
+# Allowed users
+print &ui_table_row($text{'acl_uquota'},
+    &ui_radio_table("umode", int($_[0]->{'umode'}),
+	[ [ 0, $text{'acl_uall'} ],
+	  [ 1, 	$text{'acl_uonly'},
+	    &ui_textbox("ucan",
+			$_[0]->{'umode'} == 1 ? $_[0]->{'users'} : "",
+			40)." ".&user_chooser_button("ucan", 1) ],
+	  [ 2, $text{'acl_uexcept'},
+	    &ui_textbox("ucannot",
+			$_[0]->{'umode'} == 2 ? $_[0]->{'users'} : "",
+			40)." ".&user_chooser_button("ucannot", 1) ],
+	  [ 3, $text{'acl_ugroup'},
+	    &ui_group_textbox("upri", $_[0]->{'umode'} == 3 ?
+				scalar(getgrgid($_[0]->{'users'})) : "") ],
+	  [ 4, $text{'acl_uuid'},
+	    &ui_textbox("umin",
+			$_[0]->{'umode'} == 4 ? $_[0]->{'umin'} : "", 6)." - ".
+	    &ui_textbox("umax",
+			$_[0]->{'umode'} == 4 ? $_[0]->{'umax'} : "", 6) ]
+	]), 3);
+
+# Allowed groups
 if ($groups) {
-	print "<tr> <td colspan=4><hr></td> </tr>\n";
+	print &ui_hr();
+	# XXX
 
 	print "<tr> <td valign=top><b>$text{'acl_gquota'}",
 	      "</b></td> <td colspan=3>\n";

@@ -13,12 +13,11 @@ print "$text{'ugracef_info'}<p>\n";
 @gr = &get_user_grace($in{'filesys'});
 print &ui_form_start("user_grace_save.cgi");
 print &ui_hidden("filesys", $in{'filesys'});
-print &ui_table_start(&text('ugracef_graces', $in{'filesys'}),
-		      "width=100%", 4);
+print &ui_table_start(&text('ugracef_graces', $in{'filesys'}), undef, 2);
 
 # Block grace time
 $bfield = &ui_textbox("btime", $gr[0], 6)." ".
-	  &select_units("bunits", $gr[1]);
+	  &select_grace_units("bunits", $gr[1]);
 if (&default_grace()) {
 	$bfield = &ui_radio("bdef", $gr[0] ? 0 : 1,
 			    [ [ 1, $text{'default'} ],
@@ -28,7 +27,7 @@ print &ui_table_row($text{'ugracef_block'}, $bfield);
 
 # Files grace time
 $ffield = &ui_textbox("ftime", $gr[2], 6)." ".
-	  &select_units("funits", $gr[3]);
+	  &select_grace_units("funits", $gr[3]);
 if (&default_grace()) {
 	$ffield = &ui_radio("fdef", $gr[2] ? 0 : 1,
 			    [ [ 1, $text{'default'} ],
@@ -42,10 +41,4 @@ print &ui_form_end([ [ undef, $text{'ugracef_update'} ] ]);
 &ui_print_footer("list_users.cgi?dir=".&urlize($in{'filesys'}),
 		 $text{'ugracef_return'});
 
-sub select_units
-{
-local @uarr = &grace_units();
-return &ui_select($_[0], $_[1],
-	[ map { [ $_, $uarr[$_] ] } (0..$#uarr) ]);
-}
 

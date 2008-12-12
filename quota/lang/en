@@ -3,7 +3,7 @@ quota_unlimited=Unlimited
 acl_fss=Filesystems this user can edit
 acl_fall=All filesystems
 acl_fsel=Selected..
-acl_ro=Can only view quota, not edit?
+acl_ro=Can only view quotas, not edit?
 acl_quotaon=Can enable and disable quotas?
 acl_quotanew=Can configure quotas for new users?
 acl_ugrace=Can edit user grace times?
@@ -158,7 +158,9 @@ index_status=Status
 index_action=Action
 index_return=index
 index_euser=Edit User Quotas:
+index_euserdesc=Enter or select a user, and click this button to view his quotas on all filesystems.
 index_egroup=Edit Group Quotas:
+index_egroupdesc=Enter or select a group, and click this button to view its quotas on all filesystems.
 index_nosupport=No local filesystems can support quotas.
 index_mountmod=You can enable quotas for a filesystem in the <a href='$1'>Disk and Network Filesystems</a> module.
 
