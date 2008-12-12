@@ -29,6 +29,7 @@ while(<ARFILE>) {
         	}
         }
 close(ARFILE);
+$main::read_file_missing{$realfile} = 0;	# It exists now
 if (defined($main::read_file_cache{$realfile})) {
 	%{$main::read_file_cache{$realfile}} = %{$_[1]};
 	}
@@ -41,13 +42,27 @@ sub read_file_cached
 {
 local $realfile = &translate_filename($_[0]);
 if (defined($main::read_file_cache{$realfile})) {
+	# Use cached data
 	%{$_[1]} = ( %{$_[1]}, %{$main::read_file_cache{$realfile}} );
+	return 1;
+	}
+elsif ($main::read_file_missing{$realfile}) {
+	# Doesn't exist, so don't re-try read
+	return 0;
 	}
 else {
+	# Actually read the file
 	local %d;
-	&read_file($_[0], \%d, $_[2], $_[3], $_[4]);
-	%{$main::read_file_cache{$realfile}} = %d;
-	%{$_[1]} = ( %{$_[1]}, %d );
+	if (&read_file($_[0], \%d, $_[2], $_[3], $_[4])) {
+		%{$main::read_file_cache{$realfile}} = %d;
+		%{$_[1]} = ( %{$_[1]}, %d );
+		return 1;
+		}
+	else {
+		# Flag as non-existant
+		$main::read_file_missing{$realfile} = 1;
+		return 0;
+		}
 	}
 }
  
@@ -75,6 +90,9 @@ foreach $k (keys %{$_[1]}) {
 &close_tempfile(ARFILE);
 if (defined($main::read_file_cache{$realfile})) {
 	%{$main::read_file_cache{$realfile}} = %{$_[1]};
+	}
+if (defined($main::read_file_missing{$realfile})) {
+	$main::read_file_missing{$realfile} = 0;
 	}
 }
 
@@ -3190,11 +3208,13 @@ foreach $m (@rv) {
 		}
 	}
 
-# Apply installed flags
-local %installed;
-&read_file_cached("$config_directory/installed.cache", \%installed);
-foreach $m (@rv) {
-	$m->{'installed'} = $installed{$m->{'dir'}};
+# Apply installed flags, for Webmin
+if (&get_product_name() eq 'webmin') {
+	local %installed;
+	&read_file_cached("$config_directory/installed.cache", \%installed);
+	foreach $m (@rv) {
+		$m->{'installed'} = $installed{$m->{'dir'}};
+		}
 	}
 
 return @rv;
@@ -5220,6 +5240,8 @@ undef(%main::acl_hash_cache);
 undef(%main::acl_array_cache);
 undef(%main::has_command_cache);
 undef(@main::list_languages_cache);
+undef($main::got_list_usermods_cache);
+undef(@main::list_usermods_cache);
 unlink("$config_directory/module.infos.cache");
 &get_all_module_infos();
 }
@@ -5229,7 +5251,7 @@ unlink("$config_directory/module.infos.cache");
 # usermin only.
 sub list_usermods
 {
-if (!defined(@main::list_usermods_cache)) {
+if (!$main::got_list_usermods_cache) {
 	@main::list_usermods_cache = ( );
 	local $_;
 	open(USERMODS, "$config_directory/usermin.mods");
@@ -5240,6 +5262,7 @@ if (!defined(@main::list_usermods_cache)) {
 			}
 		}
 	close(USERMODS);
+	$main::got_list_usermods_cache = 1;
 	}
 return @main::list_usermods_cache;
 }
