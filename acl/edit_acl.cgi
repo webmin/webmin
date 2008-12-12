@@ -62,15 +62,13 @@ $mdir = &module_root_directory($in{'mod'});
 if (-r "$mdir/acl_security.pl") {
 	print &ui_table_hr() if ($in{'mod'});
 	&foreign_require($in{'mod'}, "acl_security.pl");
+	&foreign_call($in{'mod'}, "load_theme_library");
 	&foreign_call($in{'mod'}, "acl_security_form", \%access);
 	}
 
 print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ],
+		     [ "reset", $text{'acl_reset'} ] ]);
 
-print "<table width=100%><tr>\n";
-print "<td>",&ui_submit($text{'save'}),"</td>\n";
-print "<td align=right>",&ui_submit($text{'acl_reset'}, "reset"),"</td>\n";
-print "</table>\n";
-print &ui_form_end();
 &ui_print_footer("", $text{'index_return'});
 
