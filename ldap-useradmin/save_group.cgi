@@ -120,7 +120,7 @@ else {
 	}
 $in{'gid'} =~ /^[0-9]+$/ || &error(&text('gsave_egid', $in{'gid'}));
 $gid = $in{'gid'};
-@members = split(/\s+/, $in{members});
+@members = split(/\r?\n/, $in{members});
 if ($in{'new'} || $oldgroup ne $group) {
 	# Check for collision
 	defined(&all_getgrnam($group)) &&

@@ -35,16 +35,16 @@ push(@ulist, grep { !$ulistdone{$_->{'user'}} } &list_users());
 print &ui_form_start("save_group.cgi", "post");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("dn", $in{'dn'});
-print &ui_table_start($text{'gedit_details'}, "width=100%", 4);
+print &ui_table_start($text{'gedit_details'}, "width=100%", 2, [ "width=30%" ]);
 
 # Current DN and classes
 if (!$in{'new'}) {
 	print &ui_table_row($text{'gedit_dn'},
-		"<tt>$in{'dn'}</tt>", 3);
+		"<tt>$in{'dn'}</tt>");
 
 	print &ui_table_row($text{'uedit_classes'},
 		join(" , ", map { "<tt>$_</tt>" }
-                        $ginfo->get_value('objectClass')), 3);
+                        $ginfo->get_value('objectClass')));
         }
 
 # Group name
@@ -75,13 +75,22 @@ print &ui_table_row($text{'pass'},
 		  [ 2, $text{'clear'},
 		       &ui_textbox("pass", undef, 15) ] ]));
 
-# Group members, using multi-select
-print &ui_table_row($text{'gedit_members'},
-	&ui_multi_select("members",
-		[ map { [ $_, $_ ] } @members ],
-		[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
-		10, 1, 0,
-		$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
+# Member chooser
+if ($config{'membox'} == 0) {
+	# Nicer left/right chooser
+	print &ui_table_row($text{'gedit_members'},
+		&ui_multi_select("members",
+			[ map { [ $_, $_ ] } @members ],
+			[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
+			10, 1, 0,
+			$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
+	}
+else {
+	# Text box
+	print &ui_table_row($text{'gedit_members'},
+		&ui_textarea("members", join("\n", @members), 5, 30));
+	}
+
 print &ui_table_end();
 
 # Show extra fields (if any)

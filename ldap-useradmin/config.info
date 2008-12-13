@@ -53,6 +53,7 @@ passwd_stars=Conceal plain-text password?,1,1-Yes,0-No,-From Users and Groups mo
 random_password=Generate password for new users?,1,1-Yes,0-No,-From Users and Groups module
 charset=Character set for editing users and groups,3,From Webmin language
 secmode=Show secondary groups on user form?,1,0-Yes,1-No,2-As text box
+membox=Edit group members using,1,1-Text box,0-User selector
 
 line2=Samba account options,11
 samba_class=LDAP object class for Samba users,10,sambaAccount-sambaAccount (Samba 2),sambaSamAccount-sambaSamAccount (Samba 3),Other

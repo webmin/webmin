@@ -65,3 +65,4 @@ Coverted all pages to use the new Webmin UI library, for a more consistent look.
 Added a Module Config option to allow / as an IMAP folder separator, thanks to Bas van den Heuvel.
 Added a check on the module's main page to ensure that the LDAP schema is accessible.
 Fixed support for SSL and TLS when connecting to the LDAP server, thanks to Paul R. Ganci.
+Added a Module Config option to use a text box for entering secondary group members, rather than the left/right user chooser.
