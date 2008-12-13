@@ -44,6 +44,7 @@ random_password=Generate password for new users?,1,1-Yes,0-No
 extra_real=Show office and phone details?,1,1-Yes,0-No
 delete_root=Allow deletion of system users and groups?,1,1-Yes,0-No
 secmode=Show secondary groups on user form?,1,0-Yes,1-No,2-As text box
+membox=Edit group members using,1,1-Text box,0-User selector
 
 line5=Password restrictions,11
 passwd_min=Minimum password length,3,No minimum

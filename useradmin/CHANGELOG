@@ -51,3 +51,4 @@ Cleaned up the user interface to be more consistent with the rest of Webmin.
 Improved support for default password changing options on AIX.
 ---- Changes since 1.440 ----
 Added a non-editable list of users who have this group as their primary to the Edit Group page.
+Added a Module Config option to use a text box for entering secondary group members, rather than the left/right user chooser.

@@ -25,7 +25,7 @@ else {
 # Start of form
 print &ui_form_start("save_group.cgi", "post");
 print &ui_hidden("num", $n) if ($n ne "");
-print &ui_table_start($text{'gedit_details'}, "width=100%", 4);
+print &ui_table_start($text{'gedit_details'}, "width=100%", 2, [ "width=30%" ]);
 
 # Group name
 print &ui_table_row(&hlink($text{'gedit_group'}, "ggroup"),
@@ -72,12 +72,22 @@ print &ui_table_row(&hlink($text{'pass'}, "gpasswd"),
 
 # Member chooser
 @ulist = &sort_users(\@ulist, $config{'sort_mode'});
-print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
-	&ui_multi_select("members",
-		[ map { [ $_, $_ ] } split(/,/ , $group{'members'}) ],
-		[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
-		10, 1, 0,
-		$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
+if ($config{'membox'} == 0) {
+	# Nicer left/right chooser
+	print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
+		&ui_multi_select("members",
+			[ map { [ $_, $_ ] } split(/,/ , $group{'members'}) ],
+			[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
+			10, 1, 0,
+			$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
+	}
+else {
+	# Text box
+	print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
+		&ui_textarea("members",
+			     join("\n", split(/,/ , $group{'members'})),
+			     5, 30));
+	}
 
 # Primary members (read-only)
 if ($n ne "") {
