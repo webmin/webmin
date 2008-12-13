@@ -425,7 +425,7 @@ who_from=Logged in from
 who_none=No users are currently logged in.
 
 export_title=Export Batch File
-export_desc=This form allows you to create a batch file containing some or all of the available users on the system. The file can be used on the Export Batch File page on another system to re-create the exported users, assuming that it uses the selected batch file format.
+export_desc=This form allows you to create a batch file containing some or all of the available users on the system. The file can be used on the Execute Batch File page on another system to re-create the exported users, assuming that it uses the selected batch file format.
 export_header=Batch user export options
 export_to=Batch file destination
 export_show=Display in browser
@@ -443,6 +443,16 @@ export_egid2=Invalid second GID in range
 export_done=Successfully exported $1 users to the file $2 ($3).
 export_pft=Batch file format
 export_who=Users to export
+export_ecannot=You are not allowed to export users
+
+gexport_title=Export Groups Batch File
+gexport_desc=This form allows you to create a batch file containing some or all of the available groups on the system. The file can be used on the Execute Group Batch File page on another system to re-create the exported groups.
+gexport_header=Batch group export options
+gexport_who=Groups to export
+gexport_ecannot=You are not allowed to export groups
+gexport_err=Failed to export group batch file
+gexport_egid=Invalid first GID in range
+gexport_egid2=Invalid second GID in range
 
 pft_0=Classic <tt>passwd</tt> file only
 pft_1=BSD <tt>master.passwd</tt> file

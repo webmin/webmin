@@ -3,6 +3,7 @@
 # Actually output a user creation batch file
 
 require './user-lib.pl';
+&error_setup($text{'export_err'});
 $access{'export'} || &error($text{'export_ecannot'});
 &ReadParse();
 

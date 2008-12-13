@@ -1996,11 +1996,11 @@ if ($anyedit) {
 	}
 }
 
-# groups_table(&groups, [form], [no-buttons], [&otherlinks])
+# groups_table(&groups, [form], [no-buttons], [&otherlinks], [&rightlinks])
 # Prints a table of groups, possibly with checkboxes and a delete button
 sub groups_table
 {
-local ($groups, $formno, $noboxes, $links) = @_;
+local ($groups, $formno, $noboxes, $links, $rightlinks) = @_;
 
 # Work out if any groups can be edited
 local $anyedit;
@@ -2019,7 +2019,8 @@ if ($anyedit && $access{'gdelete'}) {
 			&select_invert_link("gd", $formno) );
 	}
 push(@linksrow, @$links);
-print &ui_links_row(\@linksrow);
+local @grid = ( &ui_links_row(\@linksrow), &ui_links_row($rightlinks) );
+print &ui_grid_table(\@grid, 2, 100, [ "align=left", "align=right" ]);
 
 local @tds = $anyedit ? ( "width=5" ) : ( );
 push(@tds, "width=15%", "width=10%");

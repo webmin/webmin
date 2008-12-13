@@ -144,7 +144,10 @@ elsif (@glist) {
 	@glist = &sort_groups(\@glist, $config{'sort_mode'});
 	if ($config{'display_mode'} == 1) {
 		# Display group name, ID and members
-		&groups_table(\@glist, $formno++, 0, [ &get_group_buttons() ]);
+		@b = &get_group_buttons();
+		@left = grep { !/gbatch_form|gexport_form/ } @b;
+		@right = grep { /gbatch_form|gexport_form/ } @b;
+		&groups_table(\@glist, $formno++, 0, \@left, \@right);
 		$no_group_buttons = 1;
 		}
 	else {
@@ -261,12 +264,19 @@ if ($access{'gcreate'} == 1) {
 		push(@rv, $text{'index_nomoregroups'});
 		}
 	}
+push(@rv, "<a href=\"gbatch_form.cgi\">$text{'index_batch'}</a>")
+	if ($access{'batch'});
+push(@rv, "<a href=\"gexport_form.cgi\">$text{'index_export'}</a>")
+	if ($access{'export'});
 return @rv;
 }
 
 sub show_group_buttons
 {
 local @b = &get_group_buttons();
-print &ui_links_row(\@b);
+local @left = grep { !/gbatch_form|gexport_form/ } @b;
+local @right = grep { /gbatch_form|gexport_form/ } @b;
+local @grid = ( &ui_links_row(\@left), &ui_links_row(\@right) );
+print &ui_grid_table(\@grid, 2, 100, [ "align=left", "align=right" ]);
 }
 
