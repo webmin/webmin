@@ -117,16 +117,8 @@ if (%ogroup) {
 		# Change GID on files if needed
 		if ($in{'chgid'} == 1) {
 			# Do all the home directories of users in this group
-			&my_setpwent();
-			while(@tmp = &my_getpwent()) {
-				if ($tmp[3] == $ogroup{'gid'} ||
-				    &indexof($tmp[0], @mems) >= 0) {
-					&recursive_change(
-						$tmp[7], -1, $ogroup{'gid'},
-							 -1, $group{'gid'});
-					}
-				}
-			&my_endpwent();
+			&change_all_home_groups($ogroup{'gid'}, $group{'gid'},
+					        \@mems);
 			}
 		else {
 			# Do all files in this group from the root dir

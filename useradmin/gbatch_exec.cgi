@@ -206,180 +206,96 @@ foreach $line (split(/[\r\n]+/, $data)) {
 		$deleted++;
 		}
 	elsif ($line[0] eq 'modify') {
-		# Modifying an existing user
-		local $wlen = $pft == 5 ? 11 :
-			      $pft == 4 ? 13 :
-			      $pft == 2 ? 14 :
-			      $pft == 1 || $pft == 6 ? 12 : 9;
-		if (@line != $wlen) {
-			print &text('batch_elen', $lnum, $wlen),"\n";
+		# Modifying an existing group
+		if (@line != 6) {
+			print &text('batch_elen', $lnum, 6),"\n";
 			next;
 			}
-		local @ulist = &list_users();
-		local ($user) = grep { $_->{'user'} eq $line[1] } @ulist;
-		if (!$user) {
-			print &text('batch_enouser', $lnum, $line[1]),"\n";
+		local @glist = &list_groups();
+		local ($group) = grep { $_->{'group'} eq $line[1] } @glist;
+		if (!$group) {
+			print &text('gbatch_enogroup', $lnum, $line[1]),"\n";
 			next;
 			}
-		%olduser = %user = %$user;
+		%oldgroup = %group = %$group;
 		$user{'olduser'} = $user->{'user'};
-		if (!&can_edit_user(\%access, \%user)) {
-			print &text('batch_emaccess', $lnum,
-				    $text{'usave_eedit'}),"\n";
+		if (!&can_edit_group(\%access, \%group)) {
+			print &text('gbatch_emaccess', $lnum,
+				    $text{'gsave_eedit'}),"\n";
 			next;
 			}
 
 		# Update supplied fields
 		if ($line[2] ne '') {
-			if (!$access{'urename'}) {
-				print &text('batch_erename', $lnum, $line[1]),"\n";
+			if (!$access{'grename'}) {
+				print &text('gbatch_erename',
+					    $lnum, $line[1]),"\n";
 				}
-			$user{'user'} = $line[2];
+			$group{'group'} = $line[2];
 			}
-		if ($in{'crypt'} && $line[3] ne '') {
-			# Changing to pre-encrypted password
-			$user{'pass'} = $line[3];
-			$user{'passmode'} = 2;
-			}
-		elsif ($line[3] eq 'x') {
-			# No login allowed
-			$user{'pass'} = $config{'lock_string'};
-			$user{'passmode'} = 1;
-			}
-		elsif ($line[3] ne '') {
-			# Normal password
-			$user{'pass'} = &encrypt_password($line[3]);
-			$user{'passmode'} = 3;
-			$user{'plainpass'} = $line[3];
+		if ($line[3] ne '') {
+			# New normal password
+			$group{'pass'} = &encrypt_password($line[3]);
+			$group{'passmode'} = 3;
+			$group{'plainpass'} = $line[3];
 			}
 		else {
 			# No change
-			$user{'passmode'} = 4;
+			$group{'passmode'} = 4;
 			}
-		$user{'uid'} = $line[4] if ($line[4] ne '');
-		$user{'gid'} = $line[5] if ($line[5] ne '');
-		$user{'real'} = $line[6] if ($line[6] ne '');
-		$user{'home'} = $line[7] if ($line[7] ne '');
-		$user{'shell'} = $line[8] if ($line[8] ne '');
-		if ($access{'peopt'}) {
-			if ($pft == 5) {
-				# Openserver password and short shadow
-				$user{'min'}=$line[9] if ($line[9] ne '');
-				$user{'max'}=$line[10] if ($line[10] ne '');
-				$user{'change'}=int(time() / (60*60*24))
-					if ($line[3] ne '');
-				}
-			elsif ($pft == 4) {
-				# AIX password and security information
-				$user{'min'}=$line[9] if ($line[9] ne '');
-				$user{'max'}=$line[10] if ($line[10] ne '');
-				$user{'expire'}=$line[11] if ($line[11] ne '');
-				if ($line[12] ne '') {
-					delete($user{'admin'});
-					delete($user{'admchg'});
-					delete($user{'nocheck'});
-					map { $user{$_}++ }
-					    split(/\s+/, $line[12]);
-					}
-				$user{'change'}=time() if ($line[3] ne '');
-				}
-			elsif ($pft == 2) {
-				# SYSV-style passwd and shadow information
-				$user{'min'}=$line[9] if ($line[9] ne '');
-				$user{'max'}=$line[10] if ($line[10] ne '');
-				$user{'warn'}=$line[11] if ($line[11] ne '');
-				$user{'inactive'}=$line[12]
-					if ($line[12] ne '');
-				$user{'expire'}=$line[13] if ($line[13] ne '');
-				$user{'change'}=int(time() / (60*60*24))
-					if ($line[3] ne '');
-				}
-			elsif ($pft == 1 || $pft == 6) {
-				# BSD master.passwd information
-				$user{'class'}=$line[9] if ($line[9] ne '');
-				$user{'change'}=$line[10] if ($line[10] ne '');
-				$user{'expire'}=$line[11] if ($line[11] ne '');
-				}
+		$group{'gid'} = $line[4] if ($line[4] ne '');
+		if ($line[5] =~ /^\s+$/ || $line[5] eq 'NONE') {
+			# No members
+			$group{'members'} = '';
+			}
+		elsif ($line[5]) {
+			$group{'members'} = $line[5];
 			}
 
 		# Check access control restrictions
-		local $ch = &check_user(\%user, \%olduser);
+		local $ch = &check_group(\%group, \%oldgroup);
 		if ($ch) {
-			print &text('batch_emaccess', $lnum, $ch),"\n";
+			print &text('gbatch_emaccess', $lnum, $ch),"\n";
 			next;
 			}
 
 		# Run the before command
-		&set_user_envs(\%user, 'MODIFY_USER', $user{'plainpass'},
-			       [ &secondary_groups($user{'user'}) ]);
+		&set_user_envs(\%group, 'MODIFY_GROUP');
 		$merr = &making_changes();
 		&error(&text('usave_emaking', "<tt>$merr</tt>"))
 			if (defined($merr));
 
-		# Move home directory if needed
-		if ($olduser{'home'} ne $user{'home'} && $in{'movehome'} &&
-		    $user{'home'} ne '/' && $olduser{'home'} ne '/') {
-			if (-d $olduser{'home'} && !-e $user{'home'}) {
-				local $out = &backquote_logged(
-					"mv \"$olduser{'home'}\" ".
-					"\"$user{'home'}\" 2>&1");
-				if ($?) { &error(&text('batch_emove',
-						 $lnum, $out)); }
-				}
-			}
-
-		# Change UIDs and GIDs
-		if ($olduser{'gid'} != $user{'gid'} && $in{'chgid'}) {
+		# Change GIDs
+		if ($oldgroup{'gid'} != $group{'gid'} && $in{'chgid'}) {
 			if ($in{'chgid'} == 1) {
-				&recursive_change($user{'home'},$olduser{'uid'},
-					  $olduser{'gid'}, -1, $user{'gid'});
+				# Do all the home directories of members
+				&change_all_home_groups(
+					$oldgroup{'gid'}, $group{'gid'},
+					[ split(/,/, $group{'members'}) ]);
 				}
 			else {
-				&recursive_change("/", $olduser{'uid'},
-					  $olduser{'gid'}, -1, $user{'gid'});
-				}
-			}
-		if ($olduser{'uid'} != $user{'uid'} && $in{'chuid'}) {
-			if ($in{'chuid'} == 1) {
-				&recursive_change($user{'home'},$olduser{'uid'},
-						  -1, $user{'uid'}, -1);
-				}
-			else {
-				&recursive_change("/", $olduser{'uid'},
-						  -1, $user{'uid'}, -1);
+				# Do all files in this group from the root dir
+				&recursive_change("/", -1, $oldgroup{'gid'},
+						       -1, $group{'gid'});
 				}
 			}
 
-		# Actually modify the user
-		&modify_user(\%olduser, \%user);
-
-		# If the user has been renamed, update any secondary groups
-		if ($olduser{'user'} ne $user{'user'}) {
-			foreach $group (@glist) {
-				local @mems = split(/,/, $group->{'members'});
-				local $idx = &indexof($olduser{'user'}, @mems);
-				if ($idx >= 0) {
-					$mems[$idx] = $user{'user'};
-					$group->{'members'} = join(",", @mems);
-					&modify_group($group, $group);
-					}
-				}
-			}
-
+		# Actually modify the group
+		&modify_group(\%oldgroup, \%group);
 		&made_changes();
 
 		# Modify in other modules, ignoring errors
 		$error_must_die = 1;
 		eval {
-			&other_modules("useradmin_modify_user",
-				       \%user, \%olduser)
+			&other_modules("groupadmin_modify_group",
+				       \%group, \%oldgroup)
 				if ($access{'mothers'} == 1 && $in{'others'} ||
 				    $access{'mothers'} == 0);
 			};
 		$error_must_die = 0;
 		$other_err = $@;
 
-		print "<b>",&text('batch_modified',$olduser{'user'}),"</b>\n";
+		print "<b>",&text('batch_modified',$oldgroup{'group'}),"</b>\n";
 		print "<b><i>",&text('batch_eother', $other_err),"</i></b>\n"
 			if ($other_err);
 		$modified++;

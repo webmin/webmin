@@ -2210,4 +2210,19 @@ sub supports_temporary_disable
 return &passfiles_type() != 7;    # Not on OSX, which has a fixed-size hash
 }
 
+# change_all_home_groups(old-gid, new-gid, &members)
+# Change the GID on all files in the home directories of users whose GID is the
+# old GID.
+sub change_all_home_groups
+{
+local ($oldgid, $gid, $mems) = @_;
+&my_setpwent();
+while(my @uinfo = &my_getpwent()) {
+	if ($uinfo[3] == $oldgid || &indexof($uinfo[0], @$mems) >= 0) {
+		&recursive_change($uinfo[7], -1, $oldgid, -1, $gid);
+		}
+	}
+&my_endpwent();
+}
+
 1;

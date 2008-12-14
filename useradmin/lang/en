@@ -519,3 +519,4 @@ gbatch_enogroup=Group does not exist at line $1 : $2
 gbatch_eprimary=Group at line $1 cannot be deleted, as it is the primary group of user $2.
 gbatch_egroup=Duplicate group name at line $1 : $2
 gbatch_egroupname=Invalid group name at line $1
+gbatch_erename=You are not allowed to rename groups at line $1 : $2

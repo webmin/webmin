@@ -39,7 +39,7 @@ print &ui_table_row($text{'gbatch_batch'},
 if ($access{'chgid'}) {
 	# Update GIDs on files
 	print &ui_table_row($text{'gbatch_chgid'},
-		&ui_radio("chgid", 1, [ [ 0, $text{'no'} ],
+		&ui_radio("chgid", 0, [ [ 0, $text{'no'} ],
 					[ 1, $text{'home'} ],
 					[ 2, $text{'uedit_allfiles'} ] ]));
 	}
