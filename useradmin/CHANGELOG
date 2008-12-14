@@ -53,3 +53,4 @@ Improved support for default password changing options on AIX.
 Added a non-editable list of users who have this group as their primary to the Edit Group page.
 Added a Module Config option to use a text box for entering secondary group members, rather than the left/right user chooser.
 Created a page for exporting groups to a batch file, for importing on other systems.
+Added support for creating, deleting and modifying groups from a batch file. This is similar to the long-standing batch user management functionality.

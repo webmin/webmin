@@ -40,14 +40,14 @@ elsif ($type eq 'group') {
 		return &text('log_gdelete', "<tt>$object</tt>");
 		}
 	}
-elsif ($action eq 'batch') {
+elsif ($action eq 'batch' || $action eq 'gbatch') {
 	if ($object =~ /^\//) {
-		return &text($long ? 'log_batch_l' : 'log_batch',
+		return &text($long ? 'log_'.$action.'_l' : 'log_'.$action,
 			     "<tt>$object</tt>", $p->{'created'},
 			     $p->{'modified'}, $p->{'deleted'});
 		}
 	else {
-		return &text($long ? 'log_ubatch_l' : 'log_ubatch',
+		return &text($long ? 'log_u'.$action.'_l' : 'log_u'.$action,
 			     $p->{'created'}, $p->{'modified'},$p->{'deleted'});
 		}
 	}
