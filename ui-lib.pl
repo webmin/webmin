@@ -1590,14 +1590,14 @@ return $_[2] ? "$_[2]='$rv'" : $rv;
 }
 
 # ui_page_flipper(message, [inputs, cgi], left-link, right-link,
-#                 [far-left-link], [far-right-link])
+#                 [far-left-link], [far-right-link], [below])
 # Returns HTML for moving left and right in some large list, such as an inbox
 # or database table. If only 5 parameters are given, no far links are included.
 # If any link is undef, that array will be greyed out.
 sub ui_page_flipper
 {
 return &theme_ui_page_flipper(@_) if (defined(&theme_ui_page_flipper));
-my ($msg, $inputs, $cgi, $left, $right, $farleft, $farright) = @_;
+my ($msg, $inputs, $cgi, $left, $right, $farleft, $farright, $below) = @_;
 my $rv = "<center>";
 $rv .= &ui_form_start($cgi) if ($cgi);
 
@@ -1649,6 +1649,7 @@ if (@_ > 5) {
 		}
 	}
 
+$rv .= "<br>".$below if ($below);
 $rv .= &ui_form_end() if ($cgi);
 $rv .= "</center>\n";
 return $rv;
