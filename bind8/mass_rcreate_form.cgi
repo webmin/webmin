@@ -20,7 +20,7 @@ print &ui_table_start($text{'rmass_header'}, undef, 2);
 print &ui_table_row($text{'umass_sel'}, $dc);
 
 # Type to add
-@rtypes = ( 'A', 'CNAME', 'NS', 'MX', 'PTR', 'TXT',
+@rtypes = ( 'A', 'CNAME', 'NS', 'MX', 'PTR', 'TXT', 'SPF',
 	    $config{'support_aaaa'} ? ( "AAAA" ) : ( ) );
 print &ui_table_row($text{'rmass_type'},
 	&ui_select("type", "A",

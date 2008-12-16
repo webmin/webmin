@@ -41,7 +41,7 @@ elsif ($in{'type'} eq 'MX') {
 	$in{'new'} =~ /^(\d+)\s+(\S+)$/ && &valname("$2") ||
 		&error(&text('emass_emx', $in{'new'}));
 	}
-elsif ($in{'type'} eq 'TXT') {
+elsif ($in{'type'} eq 'TXT' || $in{'type'} eq 'SPF') {
 	$in{'new'} = "\"$in{'new'}\"";
 	}
 elsif ($in{'type'} eq 'PTR') {

@@ -20,7 +20,7 @@ print &ui_table_start($text{'umass_header'}, undef, 2);
 print &ui_table_row($text{'umass_sel'}, $dc);
 
 # Type to change
-@rtypes = ( 'ttl', 'A', 'CNAME', 'NS', 'MX', 'PTR', 'TXT',
+@rtypes = ( 'ttl', 'A', 'CNAME', 'NS', 'MX', 'PTR', 'TXT', 'SPF',
 	    $config{'support_aaaa'} ? ( "AAAA" ) : ( ) );
 print &ui_table_row($text{'umass_type'},
 	&ui_select("type", "A",
