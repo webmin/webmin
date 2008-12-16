@@ -63,9 +63,7 @@ print text('session_logout',
 #print "$text{'session_locking'}<br>\n";
 print '&nbsp;&nbsp;&nbsp;', ui_checkbox('remember', 1, $text{'session_remember'},
        !$gconfig{'noremember'}), "<br>\n";
-print '&nbsp;&nbsp;&nbsp;', ui_checkbox('hostname', 1, $text{'session_hostname'},
-       !$gconfig{'nohostname'}), "<br>\n";
-print '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', ui_checkbox('realname', 1,
+print '&nbsp;&nbsp;&nbsp;', ui_checkbox('realname', 1,
        $text{'session_realname'}, $gconfig{'realname'}), "<br>\n";
 print '&nbsp;&nbsp;&nbsp;', ui_checkbox('utmp', 1, $text{'session_utmp'},
        $miniserv{'utmp'}), "<br>\n";

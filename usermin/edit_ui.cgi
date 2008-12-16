@@ -33,7 +33,11 @@ print &ui_table_row($text{'ui_hostnamemode'},
       " ".&ui_textbox("hostnamedisplay", $uconfig{'hostnamedisplay'}, 20));
 
 print &ui_table_row($webmin::text{'ui_showlogin'},
-      &ui_yesno_radio("showlogin", int($uconfig{'showlogin'})));
+      &ui_yesno_radio("showlogin", $uconfig{'showlogin'}));
+
+print &ui_table_row($webmin::text{'startpage_nohost'},
+      &ui_radio("nohostname", $uconfig{'nohostname'} ? 1 : 0,
+		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
 print &ui_table_row($webmin::text{'startpage_gotoone'},
       &ui_yesno_radio("gotoone", int($uconfig{'gotoone'})));

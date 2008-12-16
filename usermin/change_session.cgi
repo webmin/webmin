@@ -131,7 +131,6 @@ if ($ver >= 1.153) {
 &get_usermin_config(\%uconfig);
 #$uconfig{'locking'} = $in{'locking'};
 $uconfig{'noremember'} = !$in{'remember'};
-$uconfig{'nohostname'} = !$in{'hostname'};
 $uconfig{'realname'} = $in{'realname'};
 if ($in{'passwd_file'}) {
 	$uconfig{'passwd_file'} = $in{'passwd_file'};

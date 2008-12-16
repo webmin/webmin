@@ -91,7 +91,6 @@ $miniserv{'utmp'} = $in{'utmp'};
 &lock_file("$config_directory/config");
 #$gconfig{'locking'} = $in{'locking'};
 $gconfig{'noremember'} = !$in{'remember'};
-$gconfig{'nohostname'} = !$in{'hostname'};
 $gconfig{'realname'} = $in{'realname'};
 if ($in{'passwd_file'}) {
 	$gconfig{'passwd_file'} = $in{'passwd_file'};

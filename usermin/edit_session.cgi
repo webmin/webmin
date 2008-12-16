@@ -63,10 +63,7 @@ print &webmin::text('session_logout',
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=remember value=1 %s>\n",
 	$uconfig{'noremember'} ? "" : "checked";
 print "$webmin::text{'session_remember'}<br>\n";
-printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=hostname value=1 %s>\n",
-	$uconfig{'nohostname'} ? "" : "checked";
-print "$webmin::text{'session_hostname'}<br>\n";
-print "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+print "&nbsp;&nbsp;&nbsp;";
 printf "<input type=checkbox name=realname value=1 %s>\n",
 	$uconfig{'realname'} ? "checked" : "";
 print "$webmin::text{'session_realname'}<br>\n";
