@@ -1784,16 +1784,17 @@ local $preroots = $mobile_device && defined($config{'mobile_preroot'}) ?
 			$config{'preroot'};
 local @preroots = reverse(split(/\s+/, $preroots));
 
-# Look for the file under the roots
-local ($full, @stfull);
+# Canonicalize the directories
 foreach my $preroot (@preroots) {
 	# Always under the current webmin root
 	$preroot =~ s/^.*\///g;
 	$preroot = $roots[0].'/'.$preroot;
 	}
+
+# Look in the theme root directories first
+local ($full, @stfull);
 $foundroot = undef;
 foreach my $preroot (@preroots) {
-	# Look in the theme root directory first
 	$is_directory = 1;
 	$sofar = "";
 	$full = $preroot.$sofar;
@@ -1810,7 +1811,9 @@ foreach my $preroot (@preroots) {
 			$is_directory = 1;
 			next;
 			}
-		else { $is_directory = 0; }
+		else {
+			$is_directory = 0;
+			}
 
 		# Check if this is a CGI program
 		if (&get_type($full) eq "internal/cgi") {
@@ -1820,6 +1823,13 @@ foreach my $preroot (@preroots) {
 			last;
 			}
 		}
+
+	# Don't stop at a directory unless this is the last theme, which
+	# is the 'real' one that provides the .cgi scripts
+	if ($is_directory && $preroot ne $preroots[$#preroots]) {
+		next;
+		}
+
 	if ($full) {
 		# Found it!
 		if ($sofar eq '') {
