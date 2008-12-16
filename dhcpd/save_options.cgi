@@ -7,9 +7,11 @@ require './params-lib.pl';
 &ReadParse();
 &lock_file($config{'dhcpd_conf'});
 $client = &get_parent_config();
+push(@parents, $client);
 foreach $i ($in{'sidx'}, $in{'uidx'}, $in{'gidx'}, $in{'idx'}) {
 	if ($i ne '') {
 		$client = $client->{'members'}->[$i];
+		push(@parents, $client);
 		$indent++;
 		}
 	}
@@ -83,7 +85,7 @@ elsif ($in{'level'} eq "shared-network") {
 	}
 
 if ($config{'dhcpd_version'} >= 3) {
-	# Save option definitions
+	# Save option definitions, new DHCPd
 	@defs = grep { $_->{'name'} eq 'option' &&
 			 $_->{'values'}->[1] eq 'code' &&
 			 $_->{'values'}->[3] eq '=' }
@@ -105,6 +107,17 @@ if ($config{'dhcpd_version'} >= 3) {
 					     ] } );
 		}
 	&save_directive($client, \@defs, \@newdefs, $indent, 1);
+
+	# Find option definitions at higher levels
+	foreach $p (@parents) {
+		@popts = &find("option", $p->{'members'});
+		@pdefs = grep { $_->{'values'}->[1] eq 'code' &&
+			        $_->{'values'}->[3] eq '=' } @popts;
+		foreach $o (@pdefs) {
+			$optdef{$o->{'values'}->[0]} = $o
+				if ($o->{'values'}->[0]);
+			}
+		}
 
 	# Find the last definition
 	$maxdef = undef;
@@ -131,7 +144,7 @@ if ($config{'dhcpd_version'} >= 3) {
 			$maxdef ? 0 : 1, $maxdef);
 	}
 else {
-	# Save custom options
+	# Save custom options, old DHCPd
 	@custom = grep { $_->{'name'} eq 'option' &&
 			 $_->{'values'}->[0] =~ /^option-(\S+)$/ &&
 			 $_->{'values'}->[1] ne 'code' }
