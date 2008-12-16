@@ -1773,8 +1773,8 @@ if ($davpath) {
 	return &handle_dav_request($davpath);
 	}
 
-# Work out the active theme
-local $preroot = $mobile_device && defined($config{'mobile_preroot'}) ?
+# Work out the active theme(s)
+local $preroots = $mobile_device && defined($config{'mobile_preroot'}) ?
 			$config{'mobile_preroot'} :
 		 $authuser && defined($config{'preroot_'.$authuser}) ?
 			$config{'preroot_'.$authuser} :
@@ -1782,16 +1782,17 @@ local $preroot = $mobile_device && defined($config{'mobile_preroot'}) ?
 		     defined($config{'preroot_'.$baseauthuser}) ?
 		 	$config{'preroot_'.$baseauthuser} :
 			$config{'preroot'};
+local @preroots = reverse(split(/\s+/, $preroots));
 
 # Look for the file under the roots
 local ($full, @stfull);
-if ($preroot) {
+foreach my $preroot (@preroots) {
 	# Always under the current webmin root
 	$preroot =~ s/^.*\///g;
 	$preroot = $roots[0].'/'.$preroot;
 	}
 $foundroot = undef;
-if ($preroot) {
+foreach my $preroot (@preroots) {
 	# Look in the theme root directory first
 	$is_directory = 1;
 	$sofar = "";
@@ -1851,6 +1852,7 @@ if ($preroot) {
 			@stfull = stat($full) if (!$foundidx);
 			}
 		}
+	last if ($foundroot);
 	}
 print DEBUG "handle_request: initial full=$full\n";
 

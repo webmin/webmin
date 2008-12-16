@@ -665,6 +665,9 @@ local $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\""
 					 : "";
 print "<body bgcolor=#$bgcolor link=#$link vlink=#$link text=#$text ",
       "$bgimage $tconfig{'inbody'} $dir $_[8]>\n";
+if (defined(&theme_prebody)) {
+	&theme_prebody(@_);
+	}
 local $hostname = &get_display_hostname();
 local $version = &get_webmin_version();
 local $prebody = $tconfig{'prebody'};
@@ -682,9 +685,6 @@ if ($tconfig{'prebodyinclude'}) {
 		print;
 		}
 	close(INC);
-	}
-if (defined(&theme_prebody)) {
-	&theme_prebody(@_);
 	}
 if (@_ > 1) {
 	print $tconfig{'preheader'};
@@ -897,9 +897,13 @@ print "</body></html>\n";
 # For internal use only
 sub load_theme_library
 {
-return if (!$current_theme || !$tconfig{'functions'} ||
-	   $loaded_theme_library++);
-do "$theme_root_directory/$tconfig{'functions'}";
+return if (!$current_theme || $loaded_theme_library++);
+for(my $i=0; $i<@theme_root_directories; $i++) {
+	if ($theme_configs[$i]->{'functions'}) {
+		do $theme_root_directories[$i]."/".
+		   $theme_configs[$i]->{'functions'};
+		}
+	}
 }
 
 # redirect
@@ -2828,16 +2832,24 @@ if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
 $main::initial_module_name ||= $module_name;
 
 # Set some useful variables
-$current_theme = $ENV{'MOBILE_DEVICE'} && defined($gconfig{'mobile_theme'}) ?
+local $current_themes;
+$current_themes = $ENV{'MOBILE_DEVICE'} && defined($gconfig{'mobile_theme'}) ?
 		    $gconfig{'mobile_theme'} :
-		 defined($gconfig{'theme_'.$remote_user}) ?
+		  defined($gconfig{'theme_'.$remote_user}) ?
 		    $gconfig{'theme_'.$remote_user} :
-		 defined($gconfig{'theme_'.$base_remote_user}) ?
+		  defined($gconfig{'theme_'.$base_remote_user}) ?
 		    $gconfig{'theme_'.$base_remote_user} :
 		    $gconfig{'theme'};
-if ($current_theme) {
-	$theme_root_directory = "$root_directory/$current_theme";
-	&read_file_cached("$theme_root_directory/config", \%tconfig);
+@current_themes = split(/\s+/, $current_themes);
+$current_theme = $current_themes[0];
+@theme_root_directories = map { "$root_directory/$_" } @current_themes;
+$theme_root_directory = $theme_root_directories[0];
+@theme_configs = ( );
+foreach my $troot (@theme_root_directories) {
+	local %onetconfig;
+	&read_file_cached("$troot/config", \%onetconfig);
+	&read_file_cached("$troot/config", \%tconfig);
+	push(@theme_configs, \%onetconfig);
 	}
 $tb = defined($tconfig{'cs_header'}) ? "bgcolor=#$tconfig{'cs_header'}" :
       defined($gconfig{'cs_header'}) ? "bgcolor=#$gconfig{'cs_header'}" :
