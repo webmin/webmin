@@ -409,7 +409,7 @@ system("gpg --output deb/${product}_$ver.dsc --clearsign deb/${product}_$ver.pla
 unlink("deb/${product}_$ver.plain");
 print "Wrote source deb/${product}_$ver.dsc\n";
 
-if (!$webmail) {
+if (!$webmail && -d "/usr/local/webadmin/deb/repository") {
 	# Add to our repository
 	chdir("/usr/local/webadmin/deb/repository");
 	system("reprepro -Vb . remove sarge $product");

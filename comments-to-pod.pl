@@ -48,15 +48,21 @@ foreach $f (@files) {
 					$cont =~ s/^\s*#+\s*//;
 					$args .= " ".$cont;
 					}
+				$args = undef if ($args =~ /^\(\s*\)$/);
 				}
-			push(@out, "=head2 $name$args");
-			push(@out, "");
-			foreach $c (@cmts) {
-				$c =~ s/^\s*#+\s*//;
-				push(@out, $c);
+			if (@cmts || $args) {
+				push(@out, "=head2 $name$args");
+				push(@out, "");
+				if (!@cmts) {
+					@cmts = ( "MISSING DOCUMENTATION" );
+					}
+				foreach $c (@cmts) {
+					$c =~ s/^\s*#+\s*//;
+					push(@out, $c);
+					}
+				push(@out, "");
+				push(@out, "=cut");
 				}
-			push(@out, "");
-			push(@out, "=cut");
 			push(@out, $lines[$i]);
 			@cmts = ( );
 			$count++;

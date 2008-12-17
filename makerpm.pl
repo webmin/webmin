@@ -303,4 +303,9 @@ if (-d "rpm") {
 		}
 	}
 
+if (!$webmail && -d "/usr/local/webadmin/rpm/yum") {
+	# Add to our repository
+	system("cp $rpms_dir/webmin-$ver-$rel.noarch.rpm /usr/local/webadmin/rpm/yum");
+	}
+
 

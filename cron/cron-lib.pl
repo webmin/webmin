@@ -1,6 +1,5 @@
 # cron-lib.pl
 # Common crontab functions
-# XXX support for envs in /etc/crontab and /etc/cron.d (impossible!)
 
 do '../web-lib.pl';
 &init_config();
@@ -992,6 +991,9 @@ else {
 }
 
 # find_cron_process(&job, [&procs])
+# Finds the running process that was launched from a cron job.
+# job - A cron job hash reference
+# procs - An optional array reference of running process hash refs
 sub find_cron_process
 {
 local @procs;
