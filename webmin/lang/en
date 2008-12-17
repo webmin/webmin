@@ -602,12 +602,20 @@ log_clearcache=Cleared all URLs from cache
 log_lock=Changed file locking
 
 themes_title=Webmin Themes
-themes_desc=Themes control the appearance of the Webmin user interface, including icons, colours, backgrounds and possibly the layout of pages. The selection box below can be used to choose one of the themes installed on your system.
+themes_desc=Themes control the appearance of the Webmin user interface, including icons, colours, backgrounds and the layout of pages. The selection box below can be used to choose one of the themes installed on your system.
 themes_sel=Current theme :
 themes_default=Old Webmin theme
+themes_none=None - let theme decide
 themes_change=Change
+themes_overdesc=Overlays modify the appearance of a theme, by changing the colors, backgrounds and icons. They do not change the layout.
+themes_overlay=Current overlay :
 themes_installdesc=Use the form below to install a new Webmin theme on your system. Themes are typically distributed in <tt>.wbt</tt> files, but can also be installed from RPM files if supported by your operating system.
 themes_installok=Install Theme
+themes_tabchange=Change theme
+themes_taboverlay=Change overlay
+themes_tabinstall=Install theme
+themes_tabdelete=Delete themes
+themes_tabexport=Export themes
 
 themes_err1=Failed to install theme from $1
 themes_efile=File does not exist
@@ -628,9 +636,12 @@ themes_egzip2=Failed to gunzip file : $1
 themes_erpm=Not a Webmin theme RPM
 themes_eirpm=RPM install failed : $1
 themes_ok=Theme changed successfully .. redirecting to the Webmin index page.
+themes_ok2=Theme overlay changed successfully .. redirecting to the Webmin index page.
 themes_delete=This form can be used to delete one of the themes installed on your system that is not currently in use.
 themes_delok=Theme to delete :
 themes_return=themes list
+themes_err4=Failed to change overlay theme
+themes_eoverlay=Selected overlay is not compatible with the current global theme
 
 themes_desc4=Installed themes can be exported as a wbt.gz file using the form below. A theme file can then be installed onto another system running Webmin.
 themes_exportmods=Themes to export

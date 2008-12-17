@@ -6,74 +6,103 @@ require './webmin-lib.pl';
 &ReadParse();
 &ui_print_header(undef, $text{'themes_title'}, "");
 
-# Display change form
-@themes = &list_themes();
+@all = &list_themes();
+@themes = grep { !$_->{'overlay'} } @all;
+@overlays = grep { $_->{'overlay'} } @all;
+$prog = "edit_themes.cgi?mode=";
+($gtheme, $goverlay) = split(/\s+/, $gconfig{'theme'});
+
+# Start tabs
 if (@themes) {
-	print "$text{'themes_desc'}<br>\n";
-	print "<form action=change_theme.cgi>\n";
-	print "<b>$text{'themes_sel'}</b> <select name=theme>\n";
-	foreach $t ( { 'desc' => $text{'themes_default'} },
-		     &list_themes() ) {
-		printf "<option value='%s' %s>%s\n",
-			$t->{'dir'},
-			$gconfig{'theme'} eq $t->{'dir'} ? 'selected' : '',
-			$t->{'desc'};
-		}
-	print "</select>\n";
-	print "<input type=submit value='$text{'themes_change'}'></form>\n";
+	@tabs = ( [ "change", $text{'themes_tabchange'}, $prog."change" ] );
+	}
+if (@overlays) {
+	push(@tabs, [ "overlay", $text{'themes_taboverlay'}, $prog."overlay" ]);
+	}
+if (!&shared_root_directory()) {
+	push(@tabs, [ "install", $text{'themes_tabinstall'}, $prog."install" ]);
+	}
+if (!&shared_root_directory() && @all) {
+	push(@tabs, [ "delete", $text{'themes_tabdelete'}, $prog."delete" ]);
+	}
+if (@themes || @overlays) {
+	push(@tabs, [ "export", $text{'themes_tabexport'}, $prog."export" ] );
+	}
+print &ui_tabs_start(\@tabs, "mode", $in{'mode'} || $tabs[0]->[0], 1);
+
+# Display theme change form
+if (@themes) {
+	print &ui_tabs_start_tab("mode", "change");
+	print "$text{'themes_desc'}<p>\n";
+	print &ui_form_start("change_theme.cgi");
+	print "<b>$text{'themes_sel'}</b>\n";
+	print &ui_select("theme", $gtheme,
+		[ [ '', $text{'themes_default'} ],
+		  map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ]),"<p>\n";
+	print &ui_form_end([ [ undef, $text{'themes_change'} ] ]);
+	print &ui_tabs_end_tab("mode", "change");
+	}
+
+# Display overlay change form
+if (@overlays && $gtheme) {
+	print &ui_tabs_start_tab("mode", "overlay");
+	print "$text{'themes_overdesc'}<p>\n";
+	print &ui_form_start("change_overlay.cgi");
+	print "<b>$text{'themes_overlay'}</b>\n";
+	print &ui_select("overlay", $goverlay,
+		[ [ '', $text{'themes_none'} ],
+		  map { [ $_->{'dir'}, $_->{'desc'} ] } @overlays ]),"<br>\n";
+	print &ui_form_end([ [ undef, $text{'themes_change'} ] ]);
+	print &ui_tabs_end_tab("mode", "overlay");
 	}
 
 if (!&shared_root_directory()) {
 	# Display install form
-	print &ui_hr();
-	print "$text{'themes_installdesc'}<br>\n";
-	print "<form action=install_theme.cgi method=post enctype=multipart/form-data>\n";
-	print "<input type=radio name=source value=0 checked> $text{'mods_local'}\n";
-	print "<input name=file size=40>\n";
-	print &file_chooser_button("file", 0, 1),"<br>\n";
-	print "<input type=radio name=source value=1> $text{'mods_uploaded'}\n";
-	print "<input name=upload type=file size=30><br>\n";
-	print "<input type=radio name=source value=2> $text{'mods_ftp'}\n";
-	print "<input name=url size=40><br>\n";
-	print "<input type=submit value=\"$text{'themes_installok'}\"></form>\n";
+	print &ui_tabs_start_tab("mode", "install");
+	print "$text{'themes_installdesc'}<p>\n";
+	print &ui_form_start("install_theme.cgi", "form-data");
+	print &ui_radio_table("source", 0,
+		[ [ 0, $text{'mods_local'}, &ui_filebox("file", undef ,40) ],
+		  [ 1, $text{'mods_uploaded'}, &ui_upload("upload") ],
+		  [ 2, $text{'mods_ftp'}, &ui_textbox("url", undef, 40) ] ]);
+	print &ui_form_end([ [ undef, $text{'themes_installok'} ] ]);
+	print &ui_tabs_end_tab("mode", "install");
+	}
 
+if (!&shared_root_directory() && @all) {
 	# Display deletion form
-	@themes = grep { $gconfig{'theme'} ne $_->{'dir'} } @themes;
-	if (@themes) {
-		print &ui_hr();
-		print "$text{'themes_delete'}<br>\n";
-		print "<form action=delete_mod.cgi>\n";
-		print "<b>$text{'themes_delok'}</b>\n";
-		print "<select name=mod>\n";
-		foreach $t (@themes) {
-			printf "<option value=%s>%s\n",
-				$t->{'dir'}, $t->{'desc'};
-			}
-		print "</select>\n";
-		print "<input type=submit value='$text{'delete'}'></form>\n";
-		}
+	print &ui_tabs_start_tab("mode", "delete");
+	print "$text{'themes_delete'}<p>\n";
+	print &ui_form_start("delete_mod.cgi");
+	print "<b>$text{'themes_delok'}</b>\n";
+	print &ui_select("mod", undef,
+		[ map { [ $_->{'dir'}, $_->{'desc'} ] } @all ]),"<br>\n";
+	print &ui_form_end([ [ undef, $text{'delete'} ] ]);
+	print &ui_tabs_end_tab("mode", "delete");
 	}
 
 # Display export form
-print &ui_hr();
+print &ui_tabs_start_tab("mode", "export");
 print "$text{'themes_desc4'}<p>\n";
 
 print &ui_form_start("export_mod.cgi/theme.wbt.gz");
-print "<table>\n";
+print &ui_table_start(undef, undef, 2);
 
-print "<tr> <td valign=top><b>$text{'themes_exportmods'}</b></td>\n";
-print "<td>",&ui_select("mod", undef,
-	[ map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ], 5, 1),
-	"</td> </tr>\n";
+print &ui_table_row($text{'themes_exportmods'},
+	&ui_select("mod", undef,
+		[ map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ], 5, 1));
 
-print "<tr> <td valign=top><b>$text{'mods_exportto'}</b></td>\n";
-print "<td>",&ui_radio("to", 0,
-	[ [ 0, $text{'mods_exportshow'}."<br>" ],
-	  [ 1, &text('mods_exportfile',
-		     &ui_textbox("file", undef, 40)) ] ]),"</td> </tr>\n";
+print &ui_table_row($text{'mods_exportto'},
+	&ui_radio("to", 0,
+		[ [ 0, $text{'mods_exportshow'}."<br>" ],
+		  [ 1, &text('mods_exportfile',
+			     &ui_textbox("file", undef, 40)) ] ]));
 
-print "</table>\n";
+print &ui_table_end();
 print &ui_form_end([ [ "ok", $text{'themes_exportok'} ] ]);
+print &ui_tabs_end_tab("mode", "export");
+
+print &ui_tabs_end(1);
 
 &ui_print_footer("", $text{'index_return'});
 

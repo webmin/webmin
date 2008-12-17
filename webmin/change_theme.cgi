@@ -6,14 +6,20 @@ require './webmin-lib.pl';
 &ReadParse();
 
 &lock_file("$config_directory/config");
-$gconfig{'theme'} = $in{'theme'};
+($gtheme, @others) = split(/\s+/, $gconfig{'theme'});
+if ($in{'theme'}) {
+	$gconfig{'theme'} = join(" ", $in{'theme'}, @others);
+	}
+else {
+	delete($gconfig{'theme'});
+	}
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");
 
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
 if ($in{'theme'}) {
-	$miniserv{'preroot'} = $in{'theme'};
+	$miniserv{'preroot'} = join(" ", $in{'theme'}, @others);
 	}
 else {
 	delete($miniserv{'preroot'});
@@ -24,9 +30,7 @@ else {
 
 &webmin_log('theme', undef, undef, \%in);
 &ui_print_header(undef, $text{'themes_title'}, "");
-print "<script>\n";
-print "top.location = \"/\";\n";
-print "</script>\n";
-print "<p>$text{'themes_ok'}<p>\n";
+print "$text{'themes_ok'}<p>\n";
+print &js_redirect("/", "top");
 &ui_print_footer("", $text{'index_return'});
 
