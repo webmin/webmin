@@ -520,3 +520,4 @@ Virtual server backups can now be in ZIP format, by changing the 'Backup compres
 When submitting a new SSL certificate and key, they are checked to ensure a modulus match, ensuring that they were generated and can be used together.
 ---- Changes since 3.63 ----
 Mail files are now included by default in backups made and restored using backup-domain.pl and restore-domain.pl. This can be disabled with the --no-mailfiles parameter.
+Added validation to the configuration check to detect MySQL or disk quota synchronization that conflicts with Virtualmin.
