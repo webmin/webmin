@@ -41,34 +41,36 @@ print &ui_columns_end();
 print &ui_links_row(\@rowlinks);
 print &ui_form_end([ [ "delete", $text{'users_delete'} ] ]);
 
+# Unix / MySQL user syncing
 print &ui_hr();
-print "<form action=save_sync.cgi>\n";
+print &ui_form_start("save_sync.cgi");
 print "$text{'users_sync'}<p>\n";
-print "<table><tr><td valign=top>\n";
-printf "<input type=checkbox name=sync_create value=1 %s> %s<br>\n",
-	$config{'sync_create'} ? "checked" : "", $text{'users_sync_create'};
-printf "<input type=checkbox name=sync_modify value=1 %s> %s<br>\n",
-	$config{'sync_modify'} ? "checked" : "", $text{'users_sync_modify'};
-printf "<input type=checkbox name=sync_delete value=1 %s> %s<br>\n",
-	$config{'sync_delete'} ? "checked" : "", $text{'users_sync_delete'};
+print &ui_table_start(undef, undef, 2);
 
-map { $priv{$_}++ } split(/\s+/, $config{'sync_privs'});
-print "</td><td><select name=sync_privs multiple size=5>\n";
-for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
-	printf "<option value=%d %s>%s\n",
-		$i, $priv{$i} ? 'selected' : '',
-		$text{"user_priv$i"};
-	}
-print "</select></td> </tr>\n";
-print "<tr> <td colspan=2>$text{'users_sync_host'}\n";
-printf "<input type=radio name=host_def value=1 %s> %s\n",
-	$config{'sync_host'} ? "" : "checked", $text{'users_sync_def'};
-printf "<input type=radio name=host_def value=0 %s> %s\n",
-	$config{'sync_host'} ? "checked" : "", $text{'users_sync_sel'};
-printf "<input name=host size=30 value='%s'></td> </tr>\n",
-	$config{'sync_host'};
-print "</table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+# When to sync
+print &ui_table_row($text{'users_syncwhen'},
+	&ui_checkbox("sync_create", 1, $text{'users_sync_create'},
+		     $config{'sync_create'})."<br>\n".
+	&ui_checkbox("sync_modify", 1, $text{'users_sync_modify'},
+		     $config{'sync_modify'})."<br>\n".
+	&ui_checkbox("sync_delete", 1, $text{'users_sync_delete'},
+		     $config{'sync_delete'}));
+
+# Privs for new users
+print &ui_table_row($text{'users_sync_privs'},
+	&ui_select("sync_privs",
+		   [ split(/\s+/, $config{'sync_privs'}) ],
+		   [ map { [ $_, $text{"user_priv$_"} ] }
+			 ( 3 .. &user_priv_cols()+3-1 ) ],
+		   5, 1));
+
+# Hosts for new users
+print &ui_table_row($text{'users_sync_host'},
+	&ui_opt_textbox("host", $config{'sync_host'}, 30,
+			$text{'users_sync_def'}, $text{'users_sync_sel'}));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
