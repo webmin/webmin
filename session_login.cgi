@@ -80,9 +80,9 @@ print &ui_table_end(),"\n";
 print &ui_submit($text{'session_login'});
 print &ui_reset($text{'session_clear'});
 print &ui_form_end();
-print "</center>\n";
 
 print "$text{'session_postfix'}\n";
+print "</center>\n";
 
 # Output frame-detection Javascript, if theme uses frames
 if ($tconfig{'inframe'}) {
