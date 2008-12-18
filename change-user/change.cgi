@@ -5,13 +5,12 @@
 require './change-user-lib.pl';
 &ReadParse();
 
-&ui_print_unbuffered_header(undef, $text{'change_title'}, "");
-
 @users = &acl::list_users();
 ($user) = grep { $_->{'name'} eq $base_remote_user } @users;
 $oldtheme = $user->{'theme'};
+$oldoverlay = $user->{'overlay'};
 if (!defined($oldtheme)) {
-	$oldtheme = $gconfig{'theme'};
+	($oldtheme, $oldoverlay) = split(/\s+/, $gconfig{'theme'});
 	}
 
 # Validate the password
@@ -22,7 +21,7 @@ if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 	&error(&text('change_epass', $perr)) if ($perr);
 	}
 
-print "$text{'change_user'}<br>\n";
+# Parse custom language
 if ($access{'lang'}) {
 	if ($in{'lang_def'}) {
 		$user->{'lang'} = undef;
@@ -31,6 +30,8 @@ if ($access{'lang'}) {
 		$user->{'lang'} = $in{'lang'};
 		}
 	}
+
+# Parse custom theme and possibly overlay
 if ($access{'theme'}) {
 	if ($in{'theme_def'}) {
 		$user->{'theme'} = undef;
@@ -42,11 +43,33 @@ if ($access{'theme'}) {
 	if (!defined($newtheme)) {
 		$newtheme = $gconfig{'theme'};
 		}
+
+	# Overlay
+	if ($in{'overlay_def'} || !defined($in{'overlay'})) {
+		$newoverlay = undef;
+		}
+	else {
+		$newoverlay = $in{'overlay'};
+		$user->{'theme'} || &error($text{'change_eoverlay'});
+		%oinfo = &get_theme_info($in{'overlay'});
+		if ($oinfo{'depends'} &&
+		    &indexof($user->{'theme'},
+			     split(/\s+/, $oinfo{'depends'})) < 0) {
+			&error($text{'change_eoverlay2'});
+			}
+		$user->{'overlay'} = $in{'overlay'};
+		}
 	}
+
+# Parse password change
 if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 	$user->{'pass'} = &acl::encrypt_password($in{'pass'});
 	$user->{'temppass'} = 0;
 	}
+
+&ui_print_unbuffered_header(undef, $text{'change_title'}, "");
+
+print "$text{'change_user'}<br>\n";
 &acl::modify_user($user->{'name'}, $user);
 print "$text{'change_done'}<p>\n";
 
@@ -54,11 +77,10 @@ print "$text{'change_restart'}<br>\n";
 &reload_miniserv();
 print "$text{'change_done'}<p>\n";
 
-if ($access{'theme'} && $newtheme ne $oldtheme) {
+if ($access{'theme'} &&
+    ($newtheme ne $oldtheme || $newoverlay ne $oldoverlay)) {
 	print "$text{'change_redirect'}<br>\n";
-	print "<script>\n";
-	print "window.parent.location = '/';\n";
-	print "</script>\n";
+	print &js_redirect("/", "top");
 	print "$text{'change_done'}<p>\n";
 	}
 

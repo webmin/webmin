@@ -12,12 +12,8 @@ do './ui-lib.pl';
 @modules = map { @{$_->{'modules'}} } @cats;
 
 $charset = defined($force_charset) ? $force_charset : &get_charset();
-&PrintHeader($charset);
+print &popup_header();
 print <<EOF;
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
-<head>
-<link rel="stylesheet" type="text/css" href="unauthenticated/style.css" />
 <link rel="stylesheet" type="text/css" href="left.css" />
 <script>
 function toggleview (id1,id2) {
@@ -153,10 +149,7 @@ if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
 	print "<div class='aftericon'><a target=_top href='$ENV{'HTTP_WEBMIN_SERVERS'}'>$text{'header_servers'}</a></div>";
 	}
 
-print <<EOF;
-</form>
-</body>
-EOF
+print &popup_footer();
 
 # print_category_opener(name, &allcats, label)
 # Prints out an open/close twistie for some category

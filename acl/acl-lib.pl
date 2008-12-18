@@ -51,7 +51,8 @@ while(<PWFILE>) {
 		$user{'skill'} = $gconfig{"skill_$user[0]"};
 		$user{'risk'} = $gconfig{"risk_$user[0]"};
 		$user{'rbacdeny'} = $gconfig{"rbacdeny_$user[0]"};
-		$user{'theme'} = $gconfig{"theme_$user[0]"};
+		($user{'theme'}, $user{'overlay'}) =
+			split(/\s+/, $gconfig{"theme_$user[0]"});
 		$user{'readonly'} = $gconfig{"readonly_$user[0]"};
 		$user{'ownmods'} = [ split(/\s+/,
 					   $gconfig{"ownmods_$user[0]"}) ];
@@ -110,7 +111,8 @@ local(%user, %miniserv, @mods);
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
 if ($user{'theme'}) {
-	$miniserv{"preroot_".$user{'name'}} = $user{'theme'};
+	$miniserv{"preroot_".$user{'name'}} =
+		$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
 	}
 elsif (defined($user{'theme'})) {
 	$miniserv{"preroot_".$user{'name'}} = "";
@@ -164,7 +166,13 @@ delete($gconfig{"ownmods_".$user{'name'}});
 $gconfig{"ownmods_".$user{'name'}} = join(" ", @{$user{'ownmods'}})
 	if (@{$user{'ownmods'}});
 delete($gconfig{"theme_".$user{'name'}});
-$gconfig{"theme_".$user{'name'}} = $user{'theme'} if (defined($user{'theme'}));
+if ($user{'theme'}) {
+	$gconfig{"theme_".$user{'name'}} =
+		$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+	}
+elsif (defined($user{'theme'})) {
+	$gconfig{"theme_".$user{'name'}} = '';
+	}
 $gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
 	if (defined($user{'readonly'}));
 $gconfig{"realname_".$user{'name'}} = $user{'real'}
@@ -194,7 +202,8 @@ local(%user, %miniserv, @pwfile, @acl, @mods, $_, $m);
 &get_miniserv_config(\%miniserv);
 delete($miniserv{"preroot_".$_[0]});
 if ($user{'theme'}) {
-	$miniserv{"preroot_".$user{'name'}} = $user{'theme'};
+	$miniserv{"preroot_".$user{'name'}} =
+		$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
 	}
 elsif (defined($user{'theme'})) {
 	$miniserv{"preroot_".$user{'name'}} = "";
@@ -289,7 +298,13 @@ delete($gconfig{"ownmods_".$_[0]});
 $gconfig{"ownmods_".$user{'name'}} = join(" ", @{$user{'ownmods'}})
 	if (@{$user{'ownmods'}});
 delete($gconfig{"theme_".$_[0]});
-$gconfig{"theme_".$user{'name'}} = $user{'theme'} if (defined($user{'theme'}));
+if ($user{'theme'}) {
+        $gconfig{"theme_".$user{'name'}} =
+                $user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+        }
+elsif (defined($user{'theme'})) {
+        $gconfig{"theme_".$user{'name'}} = '';
+        }
 delete($gconfig{"readonly_".$_[0]});
 $gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
 	if (defined($user{'readonly'}));

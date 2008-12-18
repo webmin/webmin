@@ -36,12 +36,18 @@ if ($access{'lang'}) {
 if ($access{'theme'}) {
 	# Show personal theme
 	if ($gconfig{'theme'}) {
-		%tinfo = &webmin::get_theme_info($gconfig{'theme'});
+		($gtheme, $goverlay) = split(/\s+/, $gconfig{'theme'});
+		%tinfo = &webmin::get_theme_info($gtheme);
 		$tname = $tinfo{'desc'};
 		}
 	else {
 		$tname = $text{'index_themedef'};
 		}
+	@all = &webmin::list_themes();
+	@themes = grep { !$_->{'overlay'} } @all;
+	@overlays = grep { $_->{'overlay'} } @all;
+
+	# Main theme
 	print &ui_table_row($text{'index_theme'},
 		&ui_radio("theme_def", defined($user->{'theme'}) ? 0 : 1,
 			  [ [ 1, &text('index_themeglobal', $tname)."<br>" ],
@@ -49,7 +55,16 @@ if ($access{'theme'}) {
 		&ui_select("theme", $user->{'theme'},
 			[ [ '', $text{'index_themedef'} ],
 			  map { [ $_->{'dir'}, $_->{'desc'} ] }
-			      &webmin::list_themes() ]));
+			      @themes ]));
+
+	# Overlay, if any
+	if (@overlays) {
+		print &ui_table_row($text{'index_overlay'},
+			&ui_select("overlay", $user->{'overlay'},
+				[ [ '', $text{'index_overlaydef'} ],
+				  map { [ $_->{'dir'}, $_->{'desc'} ] }
+				      @overlays ]));
+		}
 	}
 
 if ($access{'pass'} && &can_change_pass($user)) {

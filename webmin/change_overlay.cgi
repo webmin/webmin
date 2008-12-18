@@ -9,8 +9,8 @@ require './webmin-lib.pl';
 ($gtheme) = split(/\s+/, $gconfig{'theme'});
 if ($in{'overlay'}) {
 	%oinfo = &get_theme_info($in{'overlay'});
-	if ($oinfo{'overlay'} &&
-	    &indexof($gtheme, split(/\s+/, $oinfo{'overlay'})) < 0) {
+	if ($oinfo{'depends'} &&
+	    &indexof($gtheme, split(/\s+/, $oinfo{'depends'})) < 0) {
 		&error($text{'themes_eoverlay'});
 		}
 	}
