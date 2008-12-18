@@ -2,5 +2,5 @@ desc=CSS Overlay Demo Theme
 overlay=1
 webmin=1
 usermin=1
-depends=virtual-server-theme blue-theme
+overlays=virtual-server-theme blue-theme
 version=1.0

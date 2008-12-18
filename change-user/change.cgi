@@ -52,9 +52,9 @@ if ($access{'theme'}) {
 		$newoverlay = $in{'overlay'};
 		$user->{'theme'} || &error($text{'change_eoverlay'});
 		%oinfo = &get_theme_info($in{'overlay'});
-		if ($oinfo{'depends'} &&
+		if ($oinfo{'overlays'} &&
 		    &indexof($user->{'theme'},
-			     split(/\s+/, $oinfo{'depends'})) < 0) {
+			     split(/\s+/, $oinfo{'overlays'})) < 0) {
 			&error($text{'change_eoverlay2'});
 			}
 		$user->{'overlay'} = $in{'overlay'};
