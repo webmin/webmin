@@ -179,8 +179,17 @@ $salt = chr(int(rand(26))+65).chr(int(rand(26))+65);
 $user{'name'} = $in{'name'};
 $user{'lang'} = !$access{'lang'} ? $old->{'lang'} :
 		$in{'lang_def'} ? undef : $in{'lang'};
-$user{'theme'} = !$access{'theme'} ? $old->{'theme'} :
-		 $in{'theme_def'} ? undef : $in{'theme'};
+if (!$access{'theme'}) {
+	$user{'theme'} = $old->{'theme'};
+	$user{'overlay'} = $old->{'overlay'};
+	}
+else {
+	$user{'theme'} = $in{'theme_def'} ? undef : $in{'theme'};
+	$user{'overlay'} = $in{'overlay_def'} ? undef : $in{'overlay'};
+	if ($user{'overlay'} && !$user{'theme'}) {
+		&error($text{'save_eoverlay'});
+		}
+	}
 $user{'cert'} = !$access{'chcert'} ? $old->{'cert'} :
 		$in{'cert_def'} ? undef : $in{'cert'};
 $user{'notabs'} = !$access{'cats'} ? $old->{'notabs'} : $in{'notabs'};

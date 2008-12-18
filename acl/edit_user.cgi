@@ -183,16 +183,30 @@ if ($access{'cats'}) {
 	}
 
 if ($access{'theme'}) {
+	@all = &webmin::list_themes();
+	@themes = grep { !$_->{'overlay'} } @all;
+	@overlays = grep { $_->{'overlay'} } @all;
+
 	# Current theme
 	@topts = ( );
 	push(@topts, [ "", $text{'edit_themedef'} ]);
-	foreach $t (&webmin::list_themes()) {
+	foreach $t (@themes) {
 		push(@topts, [ $t->{'dir'}, $t->{'desc'} ]);
 		}
 	print &ui_table_row($text{'edit_theme'},
 		&ui_radio("theme_def", defined($user{'theme'}) ? 0 : 1,
 		  [ [ 1, $text{'edit_themeglobal'} ],
 		    [ 0, &ui_select("theme", $user{'theme'}, \@topts) ] ]));
+	}
+
+if ($access{'theme'} && @overlays) {
+	# Overlay theme, if any
+	print &ui_table_row($text{'edit_overlay'},
+		&ui_radio("overlay_def", defined($user{'overlay'}) ? 0 : 1,
+		  [ [ 1, $text{'edit_overlayglobal'} ],
+		    [ 0, &ui_select("overlay", $user{'overlay'},
+			   [ map { [ $_->{'dir'}, $_->{'desc'} ] } @overlays ]
+				    ) ] ]));
 	}
 
 if ($showui) {

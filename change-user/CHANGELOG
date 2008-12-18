@@ -1,2 +1,4 @@
 ---- Changes since 1.430 ----
 Converted the UI to use the new Webmin user interface functions, for a more consistent look.
+---- Changes since 1.440 ----
+If any theme overlays are installed, one can be selected in this module to modify the appearance of the underlying theme.
