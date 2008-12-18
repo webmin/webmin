@@ -1973,6 +1973,7 @@ local $now = time();
 $_[0]->{'id'} = &unique_maildir_filename($_[1]);
 $mf = "$_[1]/$_[0]->{'id'}";
 &send_mail($_[0], $mf, $_[2], 1);
+$_[0]->{'file'} = $mf;
 
 # Set ownership of the new message file to match the directory
 local @st = stat($_[1]);
