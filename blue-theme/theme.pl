@@ -46,7 +46,7 @@ my ($i, $need_tr);
 my $cols = $_[3] ? $_[3] : 4;
 my $per = int(100.0 / $cols);
 print "<div class='wrapper'>\n";
-print "<table id='main' width=100% cellpadding=5>\n";
+print "<table class='icons_table' id='main' width=100% cellpadding=5>\n";
 for($i=0; $i<@{$_[0]}; $i++) {
 	if ($i%$cols == 0) { print "<tr>\n"; }
 	print "<td width=$per% align=center valign=top>\n";
@@ -102,101 +102,6 @@ else {
 	print "top.left.location = top.left.location;\n";
 	}
 print "</script>\n";
-}
-
-# theme_post_save_domains([domain, action]+)
-# Called after multiple domains are updated, to refresh the left menu
-sub theme_post_save_domains
-{
-print "<script>\n";
-print "top.left.location = top.left.location;\n";
-print "</script>\n";
-}
-
-# Called by VM2 after a server is updated, to refresh the left menu
-sub theme_post_save_server
-{
-local ($s, $action) = @_;
-if ($action eq 'create' || $action eq 'delete' ||
-    !$done_theme_post_save_server++) {
-	print "<script>\n";
-	print "top.left.location = top.left.location;\n";
-	print "</script>\n";
-	}
-}
-
-# theme_select_server(&server)
-# Called by VM2 when a page for a server is displayed, to select it on the
-# left menu.
-sub theme_select_server
-{
-local ($server) = @_;
-print <<EOF;
-<script>
-if (window.parent && window.parent.frames[0]) {
-	var leftdoc = window.parent.frames[0].document;
-	var leftform = leftdoc.forms[0];
-	if (leftform) {
-		var serversel = leftform['sid'];
-		if (serversel && serversel.value != '$server->{'id'}') {
-			// Need to change value
-			serversel.value = '$server->{'id'}';
-			window.parent.frames[0].location =
-				'$gconfig{'webprefix'}/left.cgi?mode=vm2&sid=$server->{'id'}';
-			}
-		}
-	}
-</script>
-EOF
-}
-
-# theme_select_domain(&server)
-# Called by Virtualmin when a page for a server is displayed, to select it on
-# the left menu.
-sub theme_select_domain
-{
-local ($server) = @_;
-print <<EOF;
-<script>
-if (window.parent && window.parent.frames[0]) {
-	var leftdoc = window.parent.frames[0].document;
-	var leftform = leftdoc.forms[0];
-	if (leftform) {
-		var domsel = leftform['dom'];
-		if (domsel && domsel.value != '$d->{'id'}') {
-			// Need to change value
-			domsel.value = '$d->{'id'}';
-			window.parent.frames[0].location =
-				'$gconfig{'webprefix'}/left.cgi?mode=virtualmin&dom=$d->{'id'}';
-			}
-		}
-	}
-</script>
-EOF
-}
-
-# theme_post_save_folder(&folder, action)
-# Called after some folder is changed, to refresh the left frame. The action
-# may be 'create', 'delete', 'modify' or 'read'
-sub theme_post_save_folder
-{
-local ($folder, $action) = @_;
-my $ref;
-if ($action eq 'create' || $action eq 'delete' || $action eq 'modify') {
-	# Always refresh
-	$ref = 1;
-	}
-else {
-	# Only refesh if showing unread count
-	if (defined(&should_show_unread) && &should_show_unread($folder)) {
-		$ref = 1;
-		}
-	}
-if ($ref) {
-	print "<script>\n";
-	print "top.frames[0].document.location = top.frames[0].document.location;\n";
-	print "</script>\n";
-	}
 }
 
 sub theme_post_change_modules
@@ -260,7 +165,7 @@ if (!$WRAPPER_OPEN) {
 $WRAPPER_OPEN++;
 $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
-        $rv .= "<thead><tr>";
+        $rv .= "<thead><tr class='ui_table_head'>";
         if (defined($heading)) {
                 $rv .= "<td><b>$heading</b></td>"
                 }
@@ -270,7 +175,8 @@ if (defined($heading) || defined($rightheading)) {
                 }
         $rv .= "</tr></thead>\n";
         }
-$rv .= "<tbody> <tr> <td colspan=$colspan><table width=100%>\n";
+$rv .= "<tbody> <tr class='ui_table_body'> <td colspan=$colspan>".
+       "<table width=100%>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
@@ -328,7 +234,7 @@ $rv .= "</script>\n";
 # Output the tabs
 my $imgdir = "$gconfig{'webprefix'}/images";
 $rv .= &ui_hidden($name, $sel)."\n";
-$rv .= "<table border=0 cellpadding=0 cellspacing=0>\n";
+$rv .= "<table border=0 cellpadding=0 cellspacing=0 class='ui_tabs'>\n";
 $rv .= "<tr><td bgcolor=#ffffff colspan=".(scalar(@$tabs)*2+1).">";
 if ($ENV{'HTTP_USER_AGENT'} !~ /msie/i) {
 	# For some reason, the 1-pixel space above the tabs appears huge on IE!
@@ -340,11 +246,11 @@ $rv .= "<td bgcolor=#ffffff width=1><img src=$imgdir/1x1.gif></td>\n";
 foreach my $t (@$tabs) {
 	if ($t ne $tabs[0]) {
 		# Spacer
-		$rv .= "<td width=2 bgcolor=#ffffff>".
+		$rv .= "<td width=2 bgcolor=#ffffff class='ui_tab_spacer'>".
 		       "<img src=$imgdir/1x1.gif></td>\n";
 		}
 	my $tabid = "tab_".$t->[0];
-	$rv .= "<td id=${tabid}>";
+	$rv .= "<td id=${tabid} class='ui_tab'>";
 	$rv .= "<table cellpadding=0 cellspacing=0 border=0><tr>";
 	if ($t->[0] eq $sel) {
 		# Selected tab
@@ -376,7 +282,8 @@ $rv .= "</table>\n";
 
 if ($border) {
 	# All tabs are within a grey box
-	$rv .= "<table width=100% cellpadding=0 cellspacing=0>\n";
+	$rv .= "<table width=100% cellpadding=0 cellspacing=0 ".
+	       "class='ui_tabs_box'>\n";
 	$rv .= "<tr> <td bgcolor=#ffffff rowspan=3 width=1><img src=$imgdir/1x1.gif></td>\n";
 	$rv .= "<td $cb colspan=3 height=2><img src=$imgdir/1x1.gif></td> </tr>\n";
 	$rv .= "<tr> <td $cb width=2><img src=$imgdir/1x1.gif></td>\n";
@@ -397,7 +304,7 @@ $theme_ui_columns_row_toggle = 0;
 if (!$noborder && !$WRAPPER_OPEN) {
 	$rv .= "<table class='wrapper' width="
 	     . ($width ? $width : "100")
-	     . "%>\n";
+	     . "% class='ui_columns'>\n";
 	$rv .= "<tr><td>\n";
 	}
 $WRAPPER_OPEN++;
@@ -407,10 +314,11 @@ push(@classes, "sortable") if (!$href);
 $rv .= "<table".(@classes ? " class='".join(" ", @classes)."'" : "").
     (defined($width) ? " width=$width%" : "").">\n";
 if ($heading) {
-  $rv .= "<thead> <tr $tb><td colspan=".scalar(@$heads).
-         "><b>$heading</b></td></tr> </thead> <tbody>\n";
+  $rv .= "<thead> <tr $tb title='ui_columns_heading'>".
+	 "<td colspan=".scalar(@$heads).
+         "><b>$heading</b></td></tr> </thead>\n";
   }
-$rv .= "<thead> <tr $tb>\n";
+$rv .= "<thead> <tr $tb class='ui_columns_heads'>\n";
 my $i;
 for($i=0; $i<@$heads; $i++) {
   $rv .= "<td ".$tdtags->[$i]."><b>".
@@ -465,23 +373,25 @@ my $rv = "<table class='wrapper' "
        . ($width ? " width=$width%" : " width=100%")
        . ($tabletags ? " ".$tabletags : "")
        . "><tr><td>\n";
-$rv .= "<table class='ui_table'"
+$rv .= "<table class='ui_grid_table'"
      . ($width ? " width=$width%" : "")
      . ($tabletags ? " ".$tabletags : "")
      . ">\n";
 if ($title) {
-	$rv .= "<thead><tr $tb> <td colspan=$cols><b>$title</b></td> </tr></thead>\n";
+	$rv .= "<thead><tr $tb class='ui_grid_heading'> ".
+	       "<td colspan=$cols><b>$title</b></td> </tr></thead>\n";
 	}
 $rv .= "<tbody>\n";
 my $i;
 for($i=0; $i<@$elements; $i++) {
-  $rv .= "<tr>" if ($i%$cols == 0);
-  $rv .= "<td ".$tds->[$i%$cols]." valign=top>".$elements->[$i]."</td>\n";
+  $rv .= "<tr class='ui_grid_row'>" if ($i%$cols == 0);
+  $rv .= "<td ".$tds->[$i%$cols]." valign=top class='ui_grid_cell'>".
+	 $elements->[$i]."</td>\n";
   $rv .= "</tr>" if ($i%$cols == $cols-1);
   }
 if ($i%$cols) {
   while($i%$cols) {
-    $rv .= "<td ".$tds->[$i%$cols]."><br></td>\n";
+    $rv .= "<td ".$tds->[$i%$cols]." class='ui_grid_cell'><br></td>\n";
     $i++;
     }
   $rv .= "</tr>\n";
@@ -556,7 +466,7 @@ sub theme_select_all_link
 local ($field, $form, $text) = @_;
 $form = int($form);
 $text ||= $text{'ui_selall'};
-return "<a href='#' onClick='f = document.forms[$form]; ff = f.$field; ff.checked = true; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = \"mainsel\" }; for(i=0; i<f.$field.length; i++) { ff = f.${field}[i]; ff.checked = true; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = \"mainsel\" } } return false'>$text</a>";
+return "<a class='select_all' href='#' onClick='f = document.forms[$form]; ff = f.$field; ff.checked = true; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = \"mainsel\" }; for(i=0; i<f.$field.length; i++) { ff = f.${field}[i]; ff.checked = true; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = \"mainsel\" } } return false'>$text</a>";
 }
 
 # theme_select_invert_link(field, form, text)
@@ -566,7 +476,7 @@ sub theme_select_invert_link
 local ($field, $form, $text) = @_;
 $form = int($form);
 $text ||= $text{'ui_selinv'};
-return "<a href='#' onClick='f = document.forms[$form]; ff = f.$field; ff.checked = !f.$field.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody\" }; for(i=0; i<f.$field.length; i++) { ff = f.${field}[i]; ff.checked = !ff.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody row\"+((i+1)%2) } } return false'>$text</a>";
+return "<a class='select_invert' href='#' onClick='f = document.forms[$form]; ff = f.$field; ff.checked = !f.$field.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody\" }; for(i=0; i<f.$field.length; i++) { ff = f.${field}[i]; ff.checked = !ff.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody row\"+((i+1)%2) } } return false'>$text</a>";
 }
 
 # theme_select_status_link(name, form, &folder, &mails, start, end, status, label)
@@ -592,7 +502,7 @@ my $js = "var sel = [ ".join(",", @sel)." ]; ";
 $js .= "var f = document.forms[$formno]; ";
 $js .= "for(var i=0; i<sel.length; i++) { document.forms[$formno].${name}[i].checked = sel[i]; var ff = f.${name}[i]; var r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody row\"+((i+1)%2) } }";
 $js .= "return false;";
-return "<a href='#' onClick='$js'>$label</a>";
+return "<a class='select_status' href='#' onClick='$js'>$label</a>";
 }
 
 sub theme_select_rows_link
@@ -602,7 +512,7 @@ $form = int($form);
 my $js = "var sel = { ".join(",", map { "\"".&quote_escape($_)."\":1" } @$rows)." }; ";
 $js .= "for(var i=0; i<document.forms[$form].${field}.length; i++) { var ff = document.forms[$form].${field}[i]; var r = document.getElementById(\"row_\"+ff.id); ff.checked = sel[ff.value]; if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody row\"+((i+1)%2) } } ";
 $js .= "return false;";
-return "<a href='#' onClick='$js'>$text</a>";
+return "<a class='select_rows' href='#' onClick='$js'>$text</a>";
 }
 
 sub theme_ui_checked_columns_row
@@ -617,9 +527,9 @@ my $mycb = $cb;
 if ($checked) {
 	$mycb =~ s/mainbody/mainsel/g;
 	}
-$mycb =~ s/class='/class='row$theme_ui_columns_row_toggle /;
+$mycb =~ s/class='/class='row$theme_ui_columns_row_toggle ui_checked_columns/;
 $rv .= "<tr id=\"$ridtr\" $mycb onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody row$theme_ui_columns_row_toggle'\">\n";
-$rv .= "<td ".$tdtags->[0].">".
+$rv .= "<td ".$tdtags->[0]." class='ui_checked_checkbox'>".
        &ui_checkbox($checkname, $checkvalue, undef, $checked, "onClick=\"document.getElementById('$rid').className = this.checked ? 'mainhighsel' : 'mainhigh';\"", $disabled).
        "</td>\n";
 my $i;
@@ -651,8 +561,9 @@ if ($checked) {
 	$mycb =~ s/mainbody/mainsel/g;
 	}
 
+$mycb =~ s/class='/class='ui_radio_columns /;
 $rv .= "<tr $mycb id=\"$ridtr\" onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody'\">\n";
-$rv .= "<td ".$tdtags->[0].">".
+$rv .= "<td ".$tdtags->[0]." class='ui_radio_radio'>".
        &ui_oneradio($checkname, $checkvalue, undef, $checked, "onClick=\"for(i=0; i<form.$checkname.length; i++) { ff = form.${checkname}[i]; r = document.getElementById('row_'+ff.id); if (r) { r.className = 'mainbody' } } document.getElementById('$rid').className = this.checked ? 'mainhighsel' : 'mainhigh';\"").
        "</td>\n";
 my $i;
@@ -742,154 +653,6 @@ print "<br>\n";
 if (!$_[$i]) {
 	print "</body></html>\n";
 	}
-}
-
-$right_frame_sections_file = "$config_directory/$current_theme/sections";
-
-# get_right_frame_sections()
-# Returns a hash containg details of visible right-frame sections
-sub get_right_frame_sections
-{
-local %sects;
-&read_file($right_frame_sections_file, \%sects);
-if ($sects{'global'}) {
-	# Force use of global settings
-	return \%sects;
-	}
-else {
-	# Can try personal settings, but fall back to global
-	local %usersects;
-	if (&read_file($right_frame_sections_file.".".$remote_user,
-		       \%usersects)) {
-		return \%usersects;
-		}
-	else {
-		return \%sects;
-		}
-	}
-}
-
-# save_right_frame_sections(&sects)
-sub save_right_frame_sections
-{
-local ($sects) = @_;
-&make_dir("$config_directory/$current_theme", 0700);
-if ($sects->{'global'}) {
-	# Update global settings, for all users
-	&write_file($right_frame_sections_file, $sects);
-	}
-else {
-	# Save own, and turn off global flag (if this is the master admin)
-	if (&foreign_check("virtual-server")) {
-		&foreign_require("virtual-server", "virtual-server-lib.pl");
-		if (&virtual_server::master_admin()) {
-			local %globalsect;
-			&read_file($right_frame_sections_file, \%globalsect);
-			$globalsect{'global'} = 0;
-			&write_file($right_frame_sections_file, \%globalsect);
-			}
-		}
-	&write_file($right_frame_sections_file.".".$remote_user, $sects);
-	}
-}
-
-# list_right_frame_sections()
-# Returns a list of possible sections for the current user, as hash refs
-sub list_right_frame_sections
-{
-local ($hasvirt, $level, $hasvm2) = &get_virtualmin_user_level();
-local @rv;
-if ($level == 0) {
-	# Master admin
-	@rv = ( 'system' );
-	if ($hasvirt) {
-		push(@rv, 'updates', 'status', 'newfeatures', 'virtualmin',
-			  'quotas', 'bw', 'ips', 'sysinfo');
-		}
-	if ($hasvm2) {
-		push(@rv, 'vm2servers');
-		}
-	}
-elsif ($level == 2) {
-	# Domain owner
-	push(@rv, 'virtualmin');
-	}
-elsif ($level == 1) {
-	# Reseller
-	push(@rv, 'reseller', 'quotas', 'bw');
-	}
-elsif ($level == 4) {
-	# VM2 system owner
-	push(@rv, 'owner', 'vm2servers');
-	}
-else {
-	# Usermin
-	push(@rv, 'system');
-	}
-@rv = map { { 'name' => $_, 'title' => $text{'right_'.$_.'header'} } } @rv;
-# Add plugin-defined sections
-if (($level == 0 || $level == 1 || $level == 2) && $hasvirt &&
-    defined(&virtual_server::list_plugin_sections)) {
-	push(@rv, &virtual_server::list_plugin_sections($level));
-	}
-return @rv;
-}
-
-# get_virtualmin_user_level()
-# Returns three numbers - the first being a flag if virtualmin is installed,
-# the second a user type (3=usermin, 2=domain, 1=reseller, 0=master, 4=system
-# owner), the third a flag for VM2
-sub get_virtualmin_user_level
-{
-local ($hasvirt, $hasvm2, $level);
-$hasvm2 = &foreign_available("server-manager");
-$hasvirt = &foreign_available("virtual-server");
-if ($hasvm2) {
-	&foreign_require("server-manager", "server-manager-lib.pl");
-	}
-if ($hasvirt) {
-	&foreign_require("virtual-server", "virtual-server-lib.pl");
-	}
-if ($hasvm2) {
-	$level = $server_manager::access{'owner'} ? 4 : 0;
-	}
-elsif ($hasvirt) {
-	$level = &virtual_server::master_admin() ? 0 :
-		 &virtual_server::reseller_admin() ? 1 : 2;
-	}
-elsif (&get_product_name() eq "usermin") {
-	$level = 3;
-	}
-else {
-	$level = 0;
-	}
-return ($hasvirt, $level, $hasvm2);
-}
-
-# Don't show virtualmin menu
-sub theme_redirect
-{
-local ($orig, $url) = @_;
-if ($module_name eq "virtual-server" && $orig eq "" &&
-    $url =~ /^((http|https):\/\/([^\/]+))\//) {
-	$url = "$1/right.cgi";
-	}
-print "Location: $url\n\n";
-}
-
-sub get_virtualmin_docs
-{
-local ($level) = @_;
-return $level == 0 ? "http://www.virtualmin.com/documentation/id,virtualmin_administrators_guide/" :
-       $level == 1 ? "http://www.virtualmin.com/documentation/id,virtualmin_resellers_guide/" :
-       $level == 2 ? "http://www.virtualmin.com/documentation/id,virtualmin_virtual_server_owners_guide/" :
-		     "http://www.virtualmin.com/documentation/";
-}
-
-sub get_vm2_docs
-{
-local ($level) = @_;
-return "http://www.virtualmin.com/documentation/id,vm2_manual/";
 }
 
 # theme_ui_hidden_javascript()

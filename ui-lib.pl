@@ -20,7 +20,7 @@ my $colspan = 1;
 my $rv;
 $rv .= "<table class='ui_table' border $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
-	$rv .= "<tr $tb>";
+	$rv .= "<tr $tb class='ui_table_head'>";
 	if (defined($heading)) {
 		$rv .= "<td><b>$heading</b></td>"
 		}
@@ -30,7 +30,8 @@ if (defined($heading) || defined($rightheading)) {
 		}
 	$rv .= "</tr>\n";
 	}
-$rv .= "<tr $cb> <td colspan=$colspan><table width=100%>\n";
+$rv .= "<tr $cb class='ui_table_body'> <td colspan=$colspan>".
+       "<table width=100%>\n";
 $main::ui_table_cols = $cols || 4;
 $main::ui_table_pos = 0;
 $main::ui_table_default_tds = $tds;
@@ -71,8 +72,8 @@ my $rv;
 $rv .= "<table".($noborder ? "" : " border").
 		(defined($width) ? " width=$width%" : "")." class='ui_columns'>\n";
 if ($title) {
-	$rv .= "<tr $tb><td colspan=".scalar(@$heads).
-	       " class='ui_columns_heading'><b>$title</b></td></tr>\n";
+	$rv .= "<tr $tb class='ui_columns_heading'>".
+	       "<td colspan=".scalar(@$heads)."><b>$title</b></td></tr>\n";
 	}
 $rv .= "<tr $tb class='ui_columns_heads'>\n";
 my $i;
