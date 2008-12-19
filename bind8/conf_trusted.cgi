@@ -40,6 +40,8 @@ if (&supports_dnssec_client() == 2) {
 			    $text{'default'}, undef);
 	}
 
+print &ui_table_hr();
+
 # Trusted DLVs
 @dtable = ( );
 $i = 0;
