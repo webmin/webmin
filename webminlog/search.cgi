@@ -14,6 +14,7 @@ $in{'uall'} = 1 if (!defined($in{'uall'}));
 $in{'mall'} = 1 if (!defined($in{'mall'}));
 $in{'fall'} = 1 if (!defined($in{'fall'}));
 $in{'dall'} = 1 if (!defined($in{'dall'}));
+$in{'wall'} = 1 if (!defined($in{'wall'}));
 
 # Parse entered time ranges
 if ($in{'tall'} == 2) {
