@@ -12,6 +12,7 @@ compression=Backup compression format,1,0-gzip,1-bzip2,2-None (tar only),3-ZIP
 mysql_replicas=Additional MySQL servers to create users on,3,Just this system
 preload_mode=Preload Virtualmin libraries at startup?,1,2-All libraries,1-Only core,0-No
 collect_interval=Interval between status collection job runs,10,none-Never run,Minutes
+scriptwarn_url=Virtualmin URL for use in email messages,3,Work out automatically
 
 line1.4=User interface settings,11
 display_max=Maximum number of domains to display,3,Unlimited
