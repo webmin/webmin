@@ -2153,6 +2153,7 @@ sub find_body
 {
 local ($a, $body, $textbody, $htmlbody);
 foreach $a (@{$_[0]->{'attach'}}) {
+	next if ($a->{'header'}->{'content-disposition'} =~ /^attachment/i);
 	if ($a->{'type'} =~ /^text\/plain/i || $a->{'type'} eq 'text') {
 		$textbody = $a if (!$textbody && $a->{'data'} =~ /\S/);
 		}
