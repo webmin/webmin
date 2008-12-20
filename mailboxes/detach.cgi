@@ -86,7 +86,7 @@ else {
                         print "Content-type: $attach->{'type'}\n\n";
                         }
 		}
-	if ($attach->{'type'} =~ /^text\/html/i) {
+	if ($attach->{'type'} =~ /^text\/html/i && !$in{'save'}) {
 		print &safe_urls(&filter_javascript($attach->{'data'}));
 		}
 	else {
