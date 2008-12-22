@@ -1272,10 +1272,12 @@ $rv .= "<input type=button onClick='";
 foreach my $m (@$fields) {
 	$rv .= "$m->[0] = form.$m->[1]; ";
 	}
+local $sep = $url =~ /\?/ ? "&" : "?";
 $rv .= "chooser = window.open(\"$url\"";
 foreach my $m (@$fields) {
 	if ($m->[2]) {
-		$rv .= "+\"&$m->[2]=\"+escape($m->[0].value)";
+		$rv .= "+\"$sep$m->[2]=\"+escape($m->[0].value)";
+		$sep = "&";
 		}
 	}
 $rv .= ", \"chooser\", \"toolbar=no,menubar=no,scrollbars=$scrollyn,resizable=yes,width=$w,height=$h\"); ";
