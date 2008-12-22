@@ -1,5 +1,8 @@
-# cron-lib.pl
-# Common crontab functions
+=head1 cron-lib.pl
+
+Common crontab functions
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -23,8 +26,11 @@ $temp_delete_cmd = "$module_config_directory/tempdelete.pl";
 $cron_temp_file = &transname();
 use Time::Local;
 
-# list_cron_jobs()
-# Returns a lists of structures of all cron jobs
+=head2 list_cron_jobs
+
+Returns a lists of structures of all cron jobs
+
+=cut
 sub list_cron_jobs
 {
 local (@rv, $lnum, $f);
@@ -244,8 +250,11 @@ else {
 return join(" ", @c);
 }
 
-# copy_cron_temp(&job)
-# Copies a job's user's current cron configuration to the temp file
+=head2 copy_cron_temp(&job)
+
+Copies a job's user's current cron configuration to the temp file
+
+=cut
 sub copy_cron_temp
 {
 local $fcron = ($config{'cron_dir'} =~ /\/fcron$/);
@@ -264,8 +273,11 @@ else {
 	}
 }
 
-# create_cron_job(&job)
-# Add a Cron job to a user's file
+=head2 create_cron_job(&job)
+
+Add a Cron job to a user's file
+
+=cut
 sub create_cron_job
 {
 &check_cron_config_or_error();
@@ -292,8 +304,11 @@ else {
 	}
 }
 
-# insert_cron_job(&job)
-# Add a Cron job at the top of the user's file
+=head2 insert_cron_job(&job)
+
+Add a Cron job at the top of the user's file
+
+=cut
 sub insert_cron_job
 {
 &check_cron_config_or_error();
@@ -321,9 +336,12 @@ else {
 	}
 }
 
-# renumber(file, line, offset)
-# All jobs in this file whose line is at or after the given one will be
-# incremented by the offset
+=head2 renumber(file, line, offset)
+
+All jobs in this file whose line is at or after the given one will be
+incremented by the offset
+
+=cut
 sub renumber
 {
 local $j;
@@ -335,7 +353,11 @@ foreach $j (@cron_jobs_cache) {
 	}
 }
 
-# renumber_index(index, offset)
+=head2 renumber_index(index, offset)
+
+MISSING DOCUMENTATION
+
+=cut
 sub renumber_index
 {
 local $j;
@@ -346,7 +368,11 @@ foreach $j (@cron_jobs_cache) {
 	}
 }
 
-# change_cron_job(&job)
+=head2 change_cron_job(&job)
+
+MISSING DOCUMENTATION
+
+=cut
 sub change_cron_job
 {
 if ($_[0]->{'type'} == 0) {
@@ -361,7 +387,11 @@ else {
 	}
 }
 
-# delete_cron_job(&job)
+=head2 delete_cron_job(&job)
+
+MISSING DOCUMENTATION
+
+=cut
 sub delete_cron_job
 {
 if ($_[0]->{'type'} == 0) {
@@ -377,8 +407,11 @@ else {
 &renumber_index($_[0]->{'index'}, -1);
 }
 
-# read_crontab(user)
-# Return an array containing the lines of the cron table for some user
+=head2 read_crontab(user)
+
+Return an array containing the lines of the cron table for some user
+
+=cut
 sub read_crontab
 {
 local(@tab);
@@ -393,8 +426,11 @@ return @tab;
 }
 
 
-# copy_crontab(user)
-# Copy the cron temp file to that for this user
+=head2 copy_crontab(user)
+
+Copy the cron temp file to that for this user
+
+=cut
 sub copy_crontab
 {
 if (&is_readonly_mode()) {
@@ -466,9 +502,12 @@ unlink($cron_temp_file);
 }
 
 
-# parse_job(job)
-# Parse a crontab line into an array containing:
-#  active, mins, hrs, days, mons, weekdays, command
+=head2 parse_job(job)
+
+Parse a crontab line into an array containing:
+active, mins, hrs, days, mons, weekdays, command
+
+=cut
 sub parse_job
 {
 local($job, $active) = ($_[0], 1);
@@ -480,8 +519,11 @@ $job =~ /^\s*(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(.*)$/;
 return ($active, $1, $2, $3, $4, $5, $6);
 }
 
-# user_sub(command, user)
-# Replace the string 'USER' in the command with the user name
+=head2 user_sub(command, user)
+
+Replace the string 'USER' in the command with the user name
+
+=cut
 sub user_sub
 {
 local($tmp);
@@ -491,8 +533,11 @@ return $tmp;
 }
 
 
-# list_allowed()
-# Returns a list of all users in the cron allow file
+=head2 list_allowed
+
+Returns a list of all users in the cron allow file
+
+=cut
 sub list_allowed
 {
 local(@rv, $_);
@@ -506,8 +551,11 @@ return @rv;
 }
 
 
-# list_denied()
-# Return a list of users from the cron deny file
+=head2 list_denied
+
+Return a list of users from the cron deny file
+
+=cut
 sub list_denied
 {
 local(@rv, $_);
@@ -521,8 +569,11 @@ return @rv;
 }
 
 
-# save_allowed(user, user, ...)
-# Save the list of allowed users
+=head2 save_allowed(user, user, ...)
+
+Save the list of allowed users
+
+=cut
 sub save_allowed
 {
 local($_);
@@ -535,8 +586,11 @@ chmod(0444, $config{cron_allow_file});
 }
 
 
-# save_denied(user, user, ...)
-# Save the list of denied users
+=head2 save_denied(user, user, ...)
+
+Save the list of denied users
+
+=cut
 sub save_denied
 {
 local($_);
@@ -548,9 +602,12 @@ foreach (@_) {
 chmod(0444, $config{cron_deny_file});
 }
 
-# read_envs(user)
-# Returns an array of name,value pairs containing the environment settings
-# from the crontab for some user
+=head2 read_envs(user)
+
+Returns an array of name,value pairs containing the environment settings
+from the crontab for some user
+
+=cut
 sub read_envs
 {
 local(@tab, @rv, $_);
@@ -562,9 +619,12 @@ foreach (@tab) {
 return @rv;
 }
 
-# save_envs(user, [name, value]*)
-# Updates the cron file for some user with the given list of environment
-# variables. All others in the file are removed
+=head2 save_envs(user, [name, value]*)
+
+Updates the cron file for some user with the given list of environment
+variables. All others in the file are removed
+
+=cut
 sub save_envs
 {
 local($i, @tab, $line);
@@ -581,7 +641,11 @@ close(TAB);
 &copy_crontab($_[0]);
 }
 
-# expand_run_parts(directory)
+=head2 expand_run_parts(directory)
+
+MISSING DOCUMENTATION
+
+=cut
 sub expand_run_parts
 {
 local $dir = $_[0];
@@ -595,14 +659,22 @@ closedir(DIR);
 return @rv;
 }
 
-# is_run_parts(command)
+=head2 is_run_parts(command)
+
+MISSING DOCUMENTATION
+
+=cut
 sub is_run_parts
 {
 local $rp = $config{'run_parts'};
 return $rp && $_[0] =~ /$rp(.*)\s+([a-z0-9\.\-\/_]+)(\s*\))?$/i ? $2 : undef;
 }
 
-# can_edit_user(&access, user)
+=head2 can_edit_user(&access, user)
+
+MISSING DOCUMENTATION
+
+=cut
 sub can_edit_user
 {
 local %umap;
@@ -627,7 +699,11 @@ else {
 	}
 }
 
-# show_times_input(&job, [nospecial])
+=head2 show_times_input(&job, [nospecial])
+
+MISSING DOCUMENTATION
+
+=cut
 sub show_times_input
 {
 return &theme_show_times_input(@_) if (defined(&theme_show_times_input));
@@ -740,7 +816,11 @@ foreach $arr ("mins", "hours", "days", "months", "weekdays") {
 print "</tr> <tr $cb> <td colspan=5>$text{'edit_ctrl'}</td> </tr>\n";
 }
 
-# parse_times_input(&job, &in)
+=head2 parse_times_input(&job, &in)
+
+MISSING DOCUMENTATION
+
+=cut
 sub parse_times_input
 {
 local $job = $_[0];
@@ -799,8 +879,11 @@ else {
 	}
 }
 
-# show_range_input(&job)
-# Given a cron job, prints fields for selecting it's run date range
+=head2 show_range_input(&job)
+
+Given a cron job, prints fields for selecting it's run date range
+
+=cut
 sub show_range_input
 {
 local ($job) = @_;
@@ -821,9 +904,12 @@ print &ui_oneradio("range_def", 1, $text{'range_all'}, !$has_start),
 print &ui_oneradio("range_def", 0, $rng, $has_start),"\n";
 }
 
-# parse_range_input(&job, &in)
-# Updates the job object with the specified date range. May call &error
-# for invalid inputs
+=head2 parse_range_input(&job, &in)
+
+Updates the job object with the specified date range. May call &error
+for invalid inputs
+
+=cut
 sub parse_range_input
 {
 local ($job, $in) = @_;
@@ -852,8 +938,11 @@ else {
 		'jul', 'aug', 'sep', 'oct', 'nov', 'dec' );
 @cron_weekday = ( 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat' );
 
-# fix_names(&cron)
-# Convert day and month names to numbers
+=head2 fix_names(&cron)
+
+Convert day and month names to numbers
+
+=cut
 sub fix_names
 {
 local ($m, $w);
@@ -874,11 +963,14 @@ foreach $w (@wds) {
 $_[0]->{'weekdays'} = join(",", @wds);
 }
 
-# create_wrapper(wrapper-path, module, script)
-# Creates a wrapper script which calls a script in some module's directory
-# with the proper webmin environment variables set. This should always be used
-# when setting up a cron job, instead of attempting to run a command in the
-# module directory directly.
+=head2 create_wrapper(wrapper-path, module, script)
+
+Creates a wrapper script which calls a script in some module's directory
+with the proper webmin environment variables set. This should always be used
+when setting up a cron job, instead of attempting to run a command in the
+module directory directly.
+
+=cut
 sub create_wrapper
 {
 local $perl_path = &get_perl_path();
@@ -911,15 +1003,21 @@ else {
 chmod(0755, $_[0]);
 }
 
-# cron_file(&job)
-# Returns the file that a cron job is in, or would be in
+=head2 cron_file(&job)
+
+Returns the file that a cron job is in, or would be in
+
+=cut
 sub cron_file
 {
 return $_[0]->{'file'} || "$config{'cron_dir'}/$_[0]->{'user'}";
 }
 
-# when_text(&job, [upper-case-first])
-# Returns a text string describing when a cron job is run
+=head2 when_text(&job, [upper-case-first])
+
+Returns a text string describing when a cron job is run
+
+=cut
 sub when_text
 {
 local $pfx = $_[1] ? "uc" : "";
@@ -947,9 +1045,12 @@ else {
 	}
 }
 
-# can_use_cron(user)
-# Returns 1 if some user is allowed to use cron, based on cron.allow and
-# cron.deny files
+=head2 can_use_cron(user)
+
+Returns 1 if some user is allowed to use cron, based on cron.allow and
+cron.deny files
+
+=cut
 sub can_use_cron
 {
 local $err;
@@ -970,8 +1071,11 @@ elsif ($config{cron_deny_all} == 1) {
 return !$err;
 }
 
-# swap_cron_jobs(&job1, &job2)
-# Swaps two Cron jobs, which must be in the same file
+=head2 swap_cron_jobs(&job1, &job2)
+
+Swaps two Cron jobs, which must be in the same file
+
+=cut
 sub swap_cron_jobs
 {
 if ($_[0]->{'type'} == 0) {
@@ -990,10 +1094,13 @@ else {
 	}
 }
 
-# find_cron_process(&job, [&procs])
-# Finds the running process that was launched from a cron job.
-# job - A cron job hash reference
-# procs - An optional array reference of running process hash refs
+=head2 find_cron_process(&job, [&procs])
+
+Finds the running process that was launched from a cron job.
+job - A cron job hash reference
+procs - An optional array reference of running process hash refs
+
+=cut
 sub find_cron_process
 {
 local @procs;
@@ -1029,8 +1136,11 @@ if (!$proc && $cmd =~ /^$config_directory\/(.*\.pl)(.*)$/) {
 return $proc;
 }
 
-# extract_input(command)
-# Given a command line cmd%input , returns the command and input parts
+=head2 extract_input(command)
+
+Given a command line cmd%input , returns the command and input parts
+
+=cut
 sub extract_input
 {
 local ($cmd) = @_;
@@ -1041,9 +1151,12 @@ $input =~ s/\0/%/g;
 return ($cmd, $input);
 }
 
-# convert_range(&job)
-# Given a cron job that uses range.pl , work out the date range and update
-# the job object command
+=head2 convert_range(&job)
+
+Given a cron job that uses range.pl , work out the date range and update
+the job object command
+
+=cut
 sub convert_range
 {
 local ($job) = @_;
@@ -1062,7 +1175,11 @@ if ($cmd =~ /^\Q$range_cmd\E\s+(\d+)\-(\d+)\-(\d+)\s+(\d+)\-(\d+)\-(\d+)\s+(.*)$
 return 0;
 }
 
-# unconvert_range(&job)
+=head2 unconvert_range(&job)
+
+MISSING DOCUMENTATION
+
+=cut
 sub unconvert_range
 {
 local ($job) = @_;
@@ -1084,8 +1201,11 @@ if ($job->{'start'}) {
 return 0;
 }
 
-# convert_comment(&job)
-# Given a cron job with a # command after the command, sets the comment field
+=head2 convert_comment(&job)
+
+Given a cron job with a # command after the command, sets the comment field
+
+=cut
 sub convert_comment
 {
 local ($job) = @_;
@@ -1097,8 +1217,11 @@ if ($job->{'command'} =~ /^(.*)\s*#([^#]*)$/) {
 return 0;
 }
 
-# unconvert_comment(&job)
-# Adds an comment back to the command in a cron job
+=head2 unconvert_comment(&job)
+
+Adds an comment back to the command in a cron job
+
+=cut
 sub unconvert_comment
 {
 local ($job) = @_;
@@ -1109,8 +1232,11 @@ if ($job->{'comment'} =~ /\S/) {
 return 0;
 }
 
-# check_cron_config()
-# Returns an error message if the cron config doesn't look valid
+=head2 check_cron_config
+
+Returns an error message if the cron config doesn't look valid
+
+=cut
 sub check_cron_config
 {
 # Check for single file and getter command
