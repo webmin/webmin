@@ -1,5 +1,15 @@
-# acl-lib.pl
-# Library for editing webmin users, passwords and access rights
+=head1 acl-lib.pl
+
+Library for editing webmin users, passwords and access rights.
+
+ foreign_require("acl", "acl-lib.pl");
+ @users = acl::list_users();
+ $newguy = { 'name' => 'newguy',
+             'pass' => acl::encrypt_password('smeg'),
+             'modules' => [ 'useradmin' ] };
+ acl::create_user($newguy);
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -8,8 +18,15 @@ do 'md5-lib.pl';
 %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
-# list_users()
-# Returns a list of hashes containing user details
+=head2 list_users
+
+Returns a list of hashes containing Webmin user details. Useful keys include :
+name - Login name
+pass - Encrypted password
+modules - Array references of modules
+theme - Custom theme, if any
+
+=cut
 sub list_users
 {
 local(%miniserv, $_, @rv, %acl, %logout);
@@ -65,10 +82,16 @@ close(PWFILE);
 return @rv;
 }
 
-# list_groups()
-# Returns a list of hashes, one per group.
-# Group membership is stored in /etc/webmin/webmin.groups, and other attributes
-# in the config file.
+=head2 list_groups
+
+Returns a list of hashes, one per Webmin group. Group membership is stored in
+/etc/webmin/webmin.groups, and other attributes in the config file. Useful
+keys include :
+name - Group name
+members - Array reference of member users
+modules - Modules to grant to members
+
+=cut
 sub list_groups
 {
 local @rv;
@@ -87,22 +110,36 @@ close(GROUPS);
 return @rv;
 }
 
-# list_modules()
-# Returns a list of the dirs of all modules available on this system
+=head2 list_modules
+
+Returns a list of the dirs of all modules available on this system.
+
+=cut
 sub list_modules
 {
 return map { $_->{'dir'} } &list_module_infos();
 }
 
-# list_module_infos()
-# Returns a list of the details of all  modules available on this system
+=head2 list_module_infos
+
+Returns a list of the details of all modules that can be used on this system,
+each of which is a hash reference in the same format as their module.info files.
+
+=cut
 sub list_module_infos
 {
 local @mods = grep { &check_os_support($_) } &get_all_module_infos();
 return sort { $a->{'desc'} cmp $b->{'desc'} } @mods;
 }
 
-# create_user(&details, clone)
+=head2 create_user(&details, [clone])
+
+Creates a new Webmin user, based on the hash reference in the details parameter.
+This must be in the same format as those returned by list_users. If the clone
+parameter is given, it must be a username to copy detailed access control
+settings from for this new user.
+
+=cut
 sub create_user
 {
 local(%user, %miniserv, @mods);
@@ -192,7 +229,13 @@ if ($_[1]) {
 	}
 }
 
-# modify_user(old-name, &details)
+=head2 modify_user(old-name, &details)
+
+Updates an existing Webmin user, identified by the old-name paramter. The
+details hash must be in the same format as returned by list_users or passed
+to create_user.
+
+=cut
 sub modify_user
 {
 local(%user, %miniserv, @pwfile, @acl, @mods, $_, $m);
@@ -333,8 +376,12 @@ if ($miniserv{'session'} && $_[0] ne $user{'name'}) {
 	}
 }
 
-# delete_user(name)
-# Delete some user from the ACL and password files
+=head2 delete_user(name)
+
+Deletes the named user, including all .acl files for detailed module access
+control settings.
+
+=cut
 sub delete_user
 {
 local($_, @pwfile, @acl, %miniserv);
@@ -393,8 +440,16 @@ if ($miniserv{'session'}) {
 	}
 }
 
-# create_group(&group, [clone])
-# Add a new webmin group
+=head2 create_group(&group, [clone])
+
+Add a new webmin group, based on the details in the group hash. The required
+keys are :
+name - Unique name of the group
+modules - An array reference of module names
+members - An array reference of group member names. Sub-groups must have their
+          names prefixed with an @.
+
+=cut
 sub create_group
 {
 &lock_file("$config_directory/webmin.groups");
@@ -416,8 +471,13 @@ if ($_[1]) {
 	}
 }
 
-# modify_group(name, &group)
-# Update a webmin group
+=head2 modify_group(name, &group)
+
+Update a webmin group, identified by the name parameter. The group's new
+details are in the group hash ref, which must be in the same format as
+returned by list_groups.
+
+=cut
 sub modify_group
 {
 &lock_file("$config_directory/webmin.groups");
@@ -442,8 +502,11 @@ if ($_[0] ne $_[1]->{'name'}) {
 	}
 }
 
-# delete_group(name)
-# Delete a webmin group
+=head2 delete_group(name)
+
+Delete a webmin group, identified by the name parameter.
+
+=cut
 sub delete_group
 {
 &lock_file("$config_directory/webmin.groups");
@@ -454,7 +517,11 @@ local $lref = &read_file_lines("$config_directory/webmin.groups");
 &unlink_file(map { "$config_directory/$_/$_[0].gacl" } &list_modules());
 }
 
-# group_line(&group)
+=head2 group_line(&group)
+
+Internal function to generate a group file line
+
+=cut
 sub group_line
 {
 return join(":", $_[0]->{'name'},
@@ -464,8 +531,11 @@ return join(":", $_[0]->{'name'},
 		 join(" ", @{$_[0]->{'ownmods'}}) );
 }
 
-# acl_line(&user, &allmodules)
-# Internal function to generate an ACL file line
+=head2 acl_line(&user, &allmodules)
+
+Internal function to generate an ACL file line
+
+=cut
 sub acl_line
 {
 local(%user);
@@ -473,7 +543,11 @@ local(%user);
 return "$user{'name'}: ".join(' ', @{$user{'modules'}})."\n";
 }
 
-# can_edit_user(user, [&groups])
+=head2 can_edit_user(user, [&groups])
+
+Returns 1 if the current Webmin user can edit some other user.
+
+=cut
 sub can_edit_user
 {
 return 1 if ($access{'users'} eq '*');
@@ -496,7 +570,13 @@ foreach $u (split(/\s+/, $access{'users'})) {
 return 0;
 }
 
-# open_session_db(\%miniserv)
+=head2 open_session_db(\%miniserv)
+
+Opens the session database, and ties it to the sessiondb hash. Parameters are :
+miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by 
+           get_miniserv_config
+
+=cut
 sub open_session_db
 {
 local $sfile = $_[0]->{'sessiondb'} ? $_[0]->{'sessiondb'} :
@@ -515,8 +595,14 @@ else {
 	}
 }
 
-# delete_session_id(\%miniserv, id)
-# Deletes one session from the database
+=head2 delete_session_id(\%miniserv, id)
+
+Deletes one session from the database. Parameters are :
+miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by 
+           get_miniserv_config
+user - ID of the session to remove
+
+=cut
 sub delete_session_id
 {
 return 1 if (&is_readonly_mode());
@@ -527,8 +613,14 @@ dbmclose(%sessiondb);
 return $ex;
 }
 
-# delete_session_user(\%miniserv, user)
-# Deletes all sessions for some user
+=head2 delete_session_user(\%miniserv, user)
+
+Deletes all sessions for some user. Parameters are :
+miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by 
+           get_miniserv_config
+user - Name of the user whose sessions get removed
+
+=cut
 sub delete_session_user
 {
 return 1 if (&is_readonly_mode());
@@ -542,8 +634,15 @@ foreach my $s (keys %sessiondb) {
 dbmclose(%sessiondb);
 }
 
-# rename_session_user(\%miniserv, olduser, newuser)
-# Changes the username in all sessions for some user
+=head2 rename_session_user(\%miniserv, olduser, newuser)
+
+Changes the username in all sessions for some user. Parameters are :
+miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by 
+           get_miniserv_config
+olduser - The original username
+newuser - The new username
+
+=cut
 sub rename_session_user
 {
 return 1 if (&is_readonly_mode());
@@ -557,8 +656,16 @@ foreach my $s (keys %sessiondb) {
 dbmclose(%sessiondb);
 }
 
-# update_members(&allusers, &allgroups, &modules, &members)
-# Update the members users and groups of some group
+=head2 update_members(&allusers, &allgroups, &modules, &members)
+
+Update the modules for members users and groups of some group. The parameters
+are :
+allusers - An array ref of all Webmin users, as returned by list_users
+allgroups - An array ref of all Webmin groups
+modules - Modules to assign to members
+members - An array ref of member user and group names
+
+=cut
 sub update_members
 {
 local $m;
@@ -585,8 +692,15 @@ foreach $m (@{$_[3]}) {
 	}
 }
 
-# copy_acl_files(from, to, &modules)
-# Copy all .acl files from some user to another in a list of modules
+=head2 copy_acl_files(from, to, &modules)
+
+Copy all .acl files from some user to another user in a list of modules.
+The parameters are :
+from - Source user name
+to - Destination user name
+modules - Array ref of module names
+
+=cut
 sub copy_acl_files
 {
 local $m;
@@ -599,8 +713,15 @@ foreach $m (@{$_[2]}) {
 	}
 }
 
-# copy_group_acl_files(from, to, &modules)
-# Copy all .acl files from some group to another in a list of modules
+=head2 copy_group_acl_files(from, to, &modules)
+
+Copy all .acl files from some group to another in a list of modules. Parameters
+are :
+from - Source group name
+to - Destination group name
+modules - Array ref of module names
+
+=cut
 sub copy_group_acl_files
 {
 local $m;
@@ -612,8 +733,15 @@ foreach $m (@{$_[2]}) {
 		}
 	}
 }
-# copy_group_user_acl_files(from, to, &modules)
-# Copy all .acl files from some group to a user in a list of modules
+=head2 copy_group_user_acl_files(from, to, &modules)
+
+Copy all .acl files from some group to a user in a list of modules. Parameters
+are :
+from - Source group name
+to - Destination user name
+modules - Array ref of module names
+
+=cut
 sub copy_group_user_acl_files
 {
 local $m;
@@ -626,8 +754,17 @@ foreach $m (@{$_[2]}) {
 	}
 }
 
-# set_acl_files(&allusers, &allgroups, module, &members, &access)
-# Recursively update the ACL for all sub-users and groups of a group
+=head2 set_acl_files(&allusers, &allgroups, module, &members, &access)
+
+Recursively update the ACL for all sub-users and groups of a group, by copying
+detailed access control settings from the group down to users. Parameters are :
+allusers - An array ref of Webmin users, as returned by list_users
+allgroups - An array ref of Webmin groups
+module - Name of the module to update ACL for
+members - Names of group members
+access - The module ACL hash ref to copy to users
+
+=cut
 sub set_acl_files
 {
 local $m;
@@ -661,8 +798,11 @@ foreach $m (@{$_[3]}) {
 	}
 }
 
-# get_ssleay()
-# Returns the path to OpenSSL or equivalent
+=head2 get_ssleay
+
+Returns the path to the openssl command (or equivalent)
+
+=cut
 sub get_ssleay
 {
 if (&has_command($config{'ssleay'})) {
@@ -679,8 +819,12 @@ else {
 	}
 }
 
-# encrypt_password(password, [salt])
-# Encrypts a Webmin user password
+=head2 encrypt_password(password, [salt])
+
+Encrypts and returns a Webmin user password. If the optional salt parameter
+is not given, a salt will be selected randomly.
+
+=cut
 sub encrypt_password
 {
 local ($pass, $salt) = @_;
@@ -697,9 +841,12 @@ else {
 	}
 }
 
-# get_unixauth(\%miniserv)
-# Returns a list of Unix users/groups/all and the Webmin user that they
-# authenticate as
+=head2 get_unixauth(\%miniserv)
+
+Returns a list of Unix users/groups/all and the Webmin user that they
+authenticate as, as array references.
+
+=cut
 sub get_unixauth
 {
 local @rv;
@@ -715,8 +862,12 @@ foreach my $ua (@ua) {
 return @rv;
 }
 
-# save_unixauth(\%miniserv, &authlist)
-# Updates %miniserv with the given Unix auth list
+=head2 save_unixauth(\%miniserv, &authlist)
+
+Updates %miniserv with the given Unix auth list, which must be in the format
+returned by get_unixauth.
+
+=cut
 sub save_unixauth
 {
 local @ua;
@@ -731,8 +882,11 @@ foreach my $ua (@{$_[1]}) {
 $_[0]->{'unixauth'} = join(" ", @ua);
 }
 
-# delete_from_groups(user|@group)
-# Removes the specified user from all groups
+=head2 delete_from_groups(user|@group)
+
+Removes the specified user from all groups
+
+=cut
 sub delete_from_groups
 {
 local ($user) = @_;
@@ -747,9 +901,12 @@ foreach my $g (&list_groups()) {
 	}
 }
 
-# check_password_restrictions(username, password)
-# Checks if some new password is valid for a user, and if not returns
-# an error message.
+=head2 check_password_restrictions(username, password)
+
+Checks if some new password is valid for a user, and if not returns
+an error message.
+
+=cut
 sub check_password_restrictions
 {
 local ($name, $pass) = @_;
@@ -813,8 +970,11 @@ if ($miniserv{'pass_oldblock'} && $user) {
 return undef;
 }
 
-# hash_session_id(sid)
-# Returns an MD5 or Unix-crypted session ID
+=head2 hash_session_id(sid)
+
+Returns an MD5 or Unix-crypted session ID
+
+=cut
 sub hash_session_id
 {
 local ($sid) = @_;
@@ -832,8 +992,11 @@ if (!$hash_session_id_cache{$sid}) {
 return $hash_session_id_cache{$sid};
 }
 
-# hash_md5_session(string)
-# Returns a string encrypted in MD5 format
+=head2 hash_md5_session(string)
+
+Returns a string encrypted in MD5 format
+
+=cut
 sub hash_md5_session
 {
 local $passwd = $_[0];
@@ -885,7 +1048,11 @@ $rv .= &to64($l, 2);
 return $rv;
 }
 
-# Returns a Perl module for MD5 hashing, or undef if none
+=head2 md5_perl_module
+
+Returns a Perl module for MD5 hashing, or undef if none
+
+=cut
 sub md5_perl_module
 {
 eval "use MD5";
@@ -900,9 +1067,12 @@ else {
         }
 }
 
-# session_db_key(sid)
-# Returns the session DB key for some session ID. Assumes that open_session_db
-# has already been called.
+=head2 session_db_key(sid)
+
+Returns the session DB key for some session ID. Assumes that open_session_db
+has already been called.
+
+=cut
 sub session_db_key
 {
 local ($sid) = @_;
@@ -910,10 +1080,13 @@ local $hash = &hash_session_id($sid);
 return $sessiondb{$hash} ? $hash : $sid;
 }
 
-# setup_anonymous_access(path, module)
-# Grants anonymous access to some path. By default, the user for other anonymous
-# access will be used, or if there is none, a user named 'anonymous' will be
-# created and granted access to the module.
+=head2 setup_anonymous_access(path, module)
+
+Grants anonymous access to some path. By default, the user for other anonymous
+access will be used, or if there is none, a user named 'anonymous' will be
+created and granted access to the module.
+
+=cut
 sub setup_anonymous_access
 {
 local ($path, $mod) = @_;
