@@ -1,5 +1,19 @@
-# user-lib.pl
-# Common functions for Unix user management
+=head1 user-lib.pl
+
+Functions for Unix user and group management.
+
+ foreign_require("useradmin", "user-lib.pl");
+ @users = useradmin::list_users();
+ @groups = useradmin::list_groups();
+ ($joe) = grep { $_->{'user'} eq 'joe' } @users;
+ if ($joe) {
+   $joe->{'pass'} = useradmin::encrypt_password('smeg');
+   useradmin::making_changes()
+   useradmin::modify_user($joe, $joe);
+   useradmin::made_changes()
+ }
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -22,8 +36,11 @@ $match_modes = [ [ 0, $text{'index_equals'} ], [ 4, $text{'index_contains'} ],
 		 [ 5, $text{'index_ncontains'} ], [ 3, $text{'index_nmatches'}],
 		 [ 6, $text{'index_lower'} ], [ 7, $text{'index_higher'} ] ];
 
-# password_file(file)
-# Returns true if some file looks like a valid Unix password file
+=head2 password_file(file)
+
+Returns true if some file looks like a valid Unix password file
+
+=cut
 sub password_file
 {
 if (!$_[0]) { return 0; }
@@ -36,14 +53,17 @@ elsif (&open_readfile(SHTEST, $_[0])) {
 else { return 0; }
 }
 
-# list_users()
-# Returns an array of hashtable, each containing info about one user. Each hash
-# will always contain the keys
-#  user, pass, uid, gid, real, home, shell
-# In addition, if the system supports shadow passwords it may also have:
-#  change, min, max, warn, inactive, expire
-# Or if it supports FreeBSD master.passwd info, it will also have
-#  class, change, expire
+=head2 list_users
+
+Returns an array of hashtable, each containing info about one user. Each hash
+will always contain the keys
+user, pass, uid, gid, real, home, shell
+In addition, if the system supports shadow passwords it may also have:
+change, min, max, warn, inactive, expire
+Or if it supports FreeBSD master.passwd info, it will also have
+class, change, expire
+
+=cut
 sub list_users
 {
 return @list_users_cache if (defined(@list_users_cache));
@@ -235,8 +255,13 @@ else {
 return @rv;
 }
 
-# create_user(&details)
-# Creates a new user with the given details
+=head2 create_user(&details)
+
+Creates a new user with the given details, supplied in a hash ref. This must
+be in the same format as returned by list_users, and must contain at a minimum
+the user, uid, gid, pass, shell, home and real keys.
+
+=cut
 sub create_user
 {
 local $lref;
@@ -348,9 +373,13 @@ push(@list_users_cache, $_[0]) if (defined(@list_users_cache));
 &refresh_nscd() if (!$batch_mode);
 }
 
-# modify_user(&old, &details)
-# Update an existing Unix user with new details. The user to change must be
-# in &old, and the new values are in &details.
+=head2 modify_user(&old, &details)
+
+Update an existing Unix user with new details. The user to change must be
+in &old, and the new values are in &details. These can be references to the
+same hash if you like.
+
+=cut
 sub modify_user
 {
 $_[0] || &error("Missing parameter to modify_user");
@@ -455,9 +484,12 @@ if (!$batch_mode) {
 	}
 }
 
-# delete_user(&details)
-# Delete an existing user. The &details hash must be user information as
-# returned by list_users
+=head2 delete_user(&details)
+
+Delete an existing user. The &details hash must be user information as
+returned by list_users.
+
+=cut
 sub delete_user
 {
 local $lref;
@@ -512,9 +544,12 @@ if (!$batch_mode) {
 	}
 }
 
-# list_groups()
-# Returns a list of all the local groups as an array of hashtables. Each
-# will contain group, pass, gid, members
+=head2 list_groups
+
+Returns a list of all the local groups as an array of hashes. Each will
+contain the keys : group, pass, gid, members
+
+=cut
 sub list_groups
 {
 return @list_groups_cache if (defined(@list_groups_cache));
@@ -639,12 +674,15 @@ elsif ($gft == 4) {
 return @rv;
 }
 
-# create_group(&details)
-# Create a new Unix group based on the given hash. Required keys are
-# gid - Unix group ID
-# group - Group name
-# pass - Encrypted password
-# members - Comma-separated list of members
+=head2 create_group(&details)
+
+Create a new Unix group based on the given hash. Required keys are
+gid - Unix group ID
+group - Group name
+pass - Encrypted password
+members - Comma-separated list of members
+
+=cut
 sub create_group
 {
 local $gft = &groupfiles_type();
@@ -693,12 +731,16 @@ else {
 push(@list_groups_cache, $_[0]) if (defined(@list_groups_cache));
 }
 
-# modify_group(&old, &details)
-# Update an existing Unix group based on the given hash. Required keys are
-# gid - Unix group ID
-# group - Group name
-# pass - Encrypted password
-# members - Comma-separated list of members
+=head2 modify_group(&old, &details)
+
+Update an existing Unix group specified in old based on the given details hash. 
+These can both be references to the same hash if you like. Required keys are
+gid - Unix group ID
+group - Group name
+pass - Encrypted password
+members - Comma-separated list of members
+
+=cut
 sub modify_group
 {
 $_[0] || &error("Missing parameter to modify_group");
@@ -747,8 +789,11 @@ if ($_[0] ne $_[1] && &indexof($_[0], @list_groups_cache) != -1) {
 &refresh_nscd();
 }
 
-# delete_group(&details)
-# Delete an existing Unix group, whose details are in the hash ref supplied
+=head2 delete_group(&details)
+
+Delete an existing Unix group, whose details are in the hash ref supplied.
+
+=cut
 sub delete_group
 {
 $_[0] || &error("Missing parameter to delete_group");
@@ -784,12 +829,13 @@ else {
 }
 
 
-############################################################################
-# Misc functions
-############################################################################
-# recursive_change(dir, olduid, oldgid, newuid, newgid)
-# Change the UID or GID of a directory and all files in it, if they match the
-# given UID/GID
+=head2 recursive_change(dir, olduid, oldgid, newuid, newgid)
+
+Change the UID or GID of a directory and all files in it, if they match the
+given old UID and/or GID. If either of the old IDs are -1, then they are
+ignored for match purposes.
+
+=cut
 sub recursive_change
 {
 local(@list, $f, @stbuf);
@@ -814,8 +860,11 @@ if (-d $real) {
 	}
 }
 
-# making_changes()
-# Called before changes are made to the password or group file
+=head2 making_changes
+
+Must be called before changes are made to the password or group file.
+
+=cut
 sub making_changes
 {
 if ($config{'pre_command'} =~ /\S/) {
@@ -825,9 +874,12 @@ if ($config{'pre_command'} =~ /\S/) {
 return undef;
 }
 
-# made_changes()
-# Called after the password or group file has been changed, to run the
-# post-changes command.
+=head2 made_changes
+
+Must be called after the password or group file has been changed, to run the
+post-changes command.
+
+=cut
 sub made_changes
 {
 if ($config{'post_command'} =~ /\S/) {
@@ -837,8 +889,12 @@ if ($config{'post_command'} =~ /\S/) {
 return undef;
 }
 
-# other_modules(function, arg, ...)
-# Call some function in the useradmin_update.pl file in other modules
+=head2 other_modules(function, arg, ...)
+
+Call some function in the useradmin_update.pl file in other modules. Should be
+called after creating, deleting or modifying a user.
+
+=cut
 sub other_modules
 {
 return if (&is_readonly_mode());	# don't even try other modules
@@ -859,7 +915,12 @@ foreach $m (&get_all_module_infos()) {
 	}
 }
 
-# can_edit_user(&acl, &user)
+=head2 can_edit_user(&acl, &user)
+
+Returns 1 if the given user hash can be edited by a Webmin user whose access
+control permissions for this module are in the acl parameter.
+
+=cut
 sub can_edit_user
 {
 local $m = $_[0]->{'uedit_mode'};
@@ -897,7 +958,12 @@ elsif ($m == 7) {
 return 0;
 }
 
-# can_edit_group(&acl, &group)
+=head2 can_edit_group(&acl, &group)
+
+Returns 1 if the given group hash can be edited by a Webmin user whose access
+control permissions for this module are in the acl parameter.
+
+=cut
 sub can_edit_group
 {
 local $m = $_[0]->{'gedit_mode'};
@@ -913,7 +979,12 @@ else { return (!$_[0]->{'gedit'} || $_[1]->{'gid'} >= $_[0]->{'gedit'}) &&
 	      (!$_[0]->{'gedit2'} || $_[1]->{'gid'} <= $_[0]->{'gedit2'}); }
 }
 
-# nis_index(&lines)
+=head2 nis_index(&lines)
+
+Internal function to return the line number on which NIS includes start
+in a password or group file.
+
+=cut
 sub nis_index
 {
 local $i;
@@ -923,8 +994,12 @@ for($i=0; $i<@{$_[0]}; $i++) {
 return $i;
 }
 
-# get_skel_directory(&user, groupname)
-# Returns the skeleton files directory for some user
+=head2 get_skel_directory(&user, groupname)
+
+Returns the skeleton files directory for some user. The groupname parameter
+must be the name of his primary group.
+
+=cut
 sub get_skel_directory
 {
 local ($user, $groupname) = @_;
@@ -939,7 +1014,13 @@ $uf =~ s/\$shell/$shell/g;
 return $uf;
 }
 
-# copy_skel_files(source, dest, uid, gid)
+=head2 copy_skel_files(source, dest, uid, gid)
+
+Copies skeleton files from some source directory (such as /etc/skel) to a 
+destination directory, typically a new user's home. The uid and gid are the
+IDs of the new user, which determines file ownership.
+
+=cut
 sub copy_skel_files
 {
 local ($f, $df);
@@ -962,8 +1043,11 @@ foreach $f (split(/\s+/, $_[0])) {
 return @rv;
 }
 
-# copy_file(file, destdir, uid, gid)
-# Copy a file or directory and chown it
+=head2 copy_file(file, destdir, uid, gid)
+
+Copy a file or directory and chown it
+
+=cut
 sub copy_file
 {
 local($base, $subs);
@@ -1007,8 +1091,11 @@ else {
 return @rv;
 }
 
-# lock_user_files()
-# Lock all password, shadow and group files
+=head2 lock_user_files
+
+Lock all password, shadow and group files
+
+=cut
 sub lock_user_files
 {
 &lock_file($config{'passwd_file'});
@@ -1018,8 +1105,11 @@ sub lock_user_files
 &lock_file($config{'master_file'});
 }
 
-# unlock_user_files()
-# Unlock all password, shadow and group files
+=head2 unlock_user_files
+
+Unlock all password, shadow and group files
+
+=cut
 sub unlock_user_files
 {
 &unlock_file($config{'passwd_file'});
@@ -1167,9 +1257,12 @@ return $_[1] ? ( $_[0]->{'group'}, $_[0]->{'pass'}, $_[0]->{'gid'},
 		 $_[0]->{'members'} ) : $_[0]->{$_[2]};
 }
 
-# auto_home_dir(base, username, groupname)
-# Returns an automatically generated home directory, and creates needed
-# parent dirs
+=head2 auto_home_dir(base, username, groupname)
+
+Returns an automatically generated home directory, and creates needed
+parent dirs
+
+=cut
 sub auto_home_dir
 {
 local $pfx = $_[0] eq "/" ? "/" : $_[0]."/";
@@ -1207,8 +1300,11 @@ sub mkdir_if_needed
 -d $_[0] || &make_dir($_[0], 0755);
 }
 
-# set_netinfo(&user)
-# Update a NetInfo user based on a Webmin user hash
+=head2 set_netinfo(&user)
+
+Update a NetInfo user based on a Webmin user hash
+
+=cut
 sub set_netinfo
 {
 local %u = %{$_[0]};
@@ -1223,8 +1319,11 @@ local %u = %{$_[0]};
 &system_logged("niutil -createprop '$netinfo_domain' '/users/$u{'user'}' shell '$u{'shell'}'");
 }
 
-# set_group_netinfo(&group)
-# Update a NetInfo group based on a Webmin group hash
+=head2 set_group_netinfo(&group)
+
+Update a NetInfo group based on a Webmin group hash
+
+=cut
 sub set_group_netinfo
 {
 local %g = %{$_[0]};
@@ -1234,8 +1333,11 @@ local $mems = join(" ", map { "'$_'" } split(/,/, $g{'members'}));
 &system_logged("niutil -createprop '$netinfo_domain' '/groups/$g{'group'}' users $mems");
 }
 
-# set_user_dirinfo(&user)
-# Update a user in OSX directive services based on a Webmin user hash
+=head2 set_user_dirinfo(&user)
+
+Update a user in OSX directive services based on a Webmin user hash
+
+=cut
 sub set_user_dirinfo
 {
 local %u = %{$_[0]};
@@ -1270,8 +1372,11 @@ else {
 	}
 }
 
-# set_group_dirinfo(&group)
-# Update a group in OSX directive services based on a Webmin group hash
+=head2 set_group_dirinfo(&group)
+
+Update a group in OSX directive services based on a Webmin group hash
+
+=cut
 sub set_group_dirinfo
 {
 local %g = %{$_[0]};
@@ -1284,9 +1389,12 @@ foreach my $k (keys %group_properties_map) {
 	}
 }
 
-# check_password_restrictions(pass, username)
-# Returns an error message if the given password fails length and other
-# checks, or undef if it is OK
+=head2 check_password_restrictions(pass, username)
+
+Returns an error message if the given password fails length and other
+checks, or undef if it is OK
+
+=cut
 sub check_password_restrictions
 {
 return &text('usave_epasswd_min', $config{'passwd_min'})
@@ -1347,8 +1455,11 @@ if ($config{'passwd_prog'}) {
 return undef;
 }
 
-# check_username_restrictions(username)
-# Returns an error message if a username fails some restriction, or undef
+=head2 check_username_restrictions(username)
+
+Returns an error message if a username fails some restriction, or undef
+
+=cut
 sub check_username_restrictions
 {
 if ($config{'max_length'} && length($_[0]) > $config{'max_length'}) {
@@ -1360,8 +1471,11 @@ return &text('usave_ere', $re)
 return undef;
 }
 
-# can_use_group(&acl, group)
-# Returns 1 if some group can be used as a primary or secondary, 0 if not
+=head2 can_use_group(&acl, group)
+
+Returns 1 if some group can be used as a primary or secondary, 0 if not
+
+=cut
 sub can_use_group
 {
 return 1 if ($_[0]->{'ugroups'} eq '*');
@@ -1379,8 +1493,11 @@ else {
 	}
 }
 
-# refresh_nscd()
-# Sends a HUP signal to the nscd process, so that any caches are reloaded
+=head2 refresh_nscd
+
+Sends a HUP signal to the nscd process, so that any caches are reloaded
+
+=cut
 sub refresh_nscd
 {
 return if ($nscd_not_running);
@@ -1406,11 +1523,13 @@ else {
 sleep(1);	# Give ncsd time to react
 }
 
-# set_user_envs(&user, action, [plainpass], [secondaries],
-#	        [&olduser], [oldplainpass])
-# Sets up the USERADMIN_ environment variables for a user update of some kind,
-# prior to calling making_changes or made_changes. action must be one of
-# CREATE_USER, MODIFY_USER or DELETE_USER
+=head2 set_user_envs(&user, action, [plainpass], [secondaries], [&olduser], [oldplainpass])
+
+Sets up the USERADMIN_ environment variables for a user update of some kind,
+prior to calling making_changes or made_changes. action must be one of
+CREATE_USER, MODIFY_USER or DELETE_USER
+
+=cut
 sub set_user_envs
 {
 local ($user, $action, $plainpass, $secs, $olduser, $oldpass) = @_;
@@ -1436,10 +1555,13 @@ if ($olduser) {
 	}
 }
 
-# set_group_envs(&group, action, [&oldgroup])
-# Sets up the USERADMIN_ environment variables for a group update of some kind,
-# prior to calling making_changes or made_changes. action must be one of
-# CREATE_GROUP, MODIFY_GROUP or DELETE_GROUP
+=head2 set_group_envs(&group, action, [&oldgroup])
+
+Sets up the USERADMIN_ environment variables for a group update of some kind,
+prior to calling making_changes or made_changes. action must be one of
+CREATE_GROUP, MODIFY_GROUP or DELETE_GROUP
+
+=cut
 sub set_group_envs
 {
 local ($group, $action, $oldgroup) = @_;
@@ -1456,8 +1578,11 @@ if ($oldgroup) {
 	}
 }
 
-# clear_envs()
-# Removes all variables set by set_user_envs and set_group_envs
+=head2 clear_envs
+
+Removes all variables set by set_user_envs and set_group_envs
+
+=cut
 sub clear_envs
 {
 local $e;
@@ -1466,8 +1591,11 @@ foreach $e (keys %ENV) {
 	}
 }
 
-# encrypt_password(password, [salt])
-# Encrypts a password using the encryption format configured for this system
+=head2 encrypt_password(password, [salt])
+
+Encrypts a password using the encryption format configured for this system
+
+=cut
 sub encrypt_password
 {
 local ($pass, $salt) = @_;
@@ -1530,8 +1658,11 @@ else {
 	}
 }
 
-# build_user_used([&uid-hash], [&shell-list], [&username-hash])
-# Fills in a hash with used UIDs and shells
+=head2 build_user_used([&uid-hash], [&shell-list], [&username-hash])
+
+Fills in hashes with used UIDs, shells and usernames, based on existing users.
+
+=cut
 sub build_user_used
 {
 &my_setpwent();
@@ -1550,7 +1681,11 @@ foreach $u (&list_users()) {
 	}
 }
 
-# build_group_used([&uid-hash], [&groupname-hash])
+=head2 build_group_used([&gid-hash], [&groupname-hash])
+
+Fills in hashes with used GIDs and group names, based on existing groups.
+
+=cut
 sub build_group_used
 {
 &my_setgrent();
@@ -1567,7 +1702,11 @@ foreach $g (&list_groups()) {
 	}
 }
 
-# allocate_uid(&uids-used)
+=head2 allocate_uid(&uids-used)
+
+MISSING DOCUMENTATION
+
+=cut
 sub allocate_uid
 {
 local $rv = int($config{'base_uid'} > $access{'lowuid'} ?
@@ -1578,7 +1717,11 @@ while($_[0]->{$rv}) {
 return $rv;
 }
 
-# allocate_gid(&gids-used)
+=head2 allocate_gid(&gids-used)
+
+MISSING DOCUMENTATION
+
+=cut
 sub allocate_gid
 {
 local $rv = int($config{'base_gid'} > $access{'lowgid'} ?
@@ -1589,8 +1732,11 @@ while($_[0]->{$rv}) {
 return $rv;
 }
 
-# list_allowed_users(&access, &allusers)
-# Returns a list of users to whom access is allowed
+=head2 list_allowed_users(&access, &allusers)
+
+Returns a list of users to whom access is allowed
+
+=cut
 sub list_allowed_users
 {
 local %access = %{$_[0]};
@@ -1660,8 +1806,11 @@ else {
 	}
 }
 
-# list_allowed_groups(&access, &allgroups)
-# Returns a list of groups to whom access is allowed
+=head2 list_allowed_groups(&access, &allgroups)
+
+Returns a list of groups to whom access is allowed
+
+=cut
 sub list_allowed_groups
 {
 local %access = %{$_[0]};
@@ -1701,16 +1850,22 @@ else {
 	}
 }
 
-# batch_start()
-# Tells the create/modify/delete functions to only update files in memory,
-# not on disk.
+=head2 batch_start
+
+Tells the create/modify/delete functions to only update files in memory,
+not on disk.
+
+=cut
 sub batch_start
 {
 $batch_mode = 1;
 }
 
-# batch_end()
-# Flushes any user file changes
+=head2 batch_end
+
+Flushes any user file changes
+
+=cut
 sub batch_end
 {
 $batch_mode = 0;
@@ -1908,10 +2063,12 @@ sub berkeley_cksum {
     return sprintf("%lu",${crc});;
 }
 
-# users_table(&users, [form], [no-last], [no-boxes], [&otherlinks],
-#	      [&rightlinks])
-# Prints a table listing full user details, with checkboxes and buttons to
-# delete or disable multiple at once.
+=head2 users_table(&users, [form], [no-last], [no-boxes], [&otherlinks], [&rightlinks])
+
+Prints a table listing full user details, with checkboxes and buttons to
+delete or disable multiple at once.
+
+=cut
 sub users_table
 {
 local ($users, $formno, $nolast, $noboxes, $links, $rightlinks) = @_;
@@ -1996,8 +2153,11 @@ if ($anyedit) {
 	}
 }
 
-# groups_table(&groups, [form], [no-buttons], [&otherlinks], [&rightlinks])
-# Prints a table of groups, possibly with checkboxes and a delete button
+=head2 groups_table(&groups, [form], [no-buttons], [&otherlinks], [&rightlinks])
+
+Prints a table of groups, possibly with checkboxes and a delete button
+
+=cut
 sub groups_table
 {
 local ($groups, $formno, $noboxes, $links, $rightlinks) = @_;
@@ -2056,8 +2216,11 @@ if ($anyedit && $access{'gdelete'}) {
 	}
 }
 
-# date_input(day, month, year, prefix)
-# Returns HTML for selecting a date
+=head2 date_input(day, month, year, prefix)
+
+Returns HTML for selecting a date
+
+=cut
 sub date_input
 {
 local ($d, $m, $y, $prefix) = @_;
@@ -2070,8 +2233,11 @@ $rv .= &date_chooser_button($prefix."d", $prefix."m", $prefix."y");
 return $rv;
 }
 
-# list_last_logins([user], [max])
-# Returns a list of array references, each containing the details of a login
+=head2 list_last_logins([user], [max])
+
+Returns a list of array references, each containing the details of a login
+
+=cut
 sub list_last_logins
 {
 local @rv;
@@ -2086,7 +2252,11 @@ close(LAST);
 return @rv;
 }
 
-# user_link(&user)
+=head2 user_link(&user)
+
+MISSING DOCUMENTATION
+
+=cut
 sub user_link
 {
 if ($_[0]->{'pass'} =~ /^\Q$disable_string\E/) {
@@ -2108,7 +2278,11 @@ else {
 	}
 }
 
-# group_link(&group)
+=head2 group_link(&group)
+
+MISSING DOCUMENTATION
+
+=cut
 sub group_link
 {
 if ($_[0]->{'noedit'}) {
@@ -2124,8 +2298,11 @@ else {
 	}
 }
 
-# sort_users(&users, mode)
-# Sorts a list of users, and returns the results
+=head2 sort_users(&users, mode)
+
+Sorts a list of users, and returns the results
+
+=cut
 sub sort_users
 {
 local ($users, $mode) = @_;
@@ -2153,7 +2330,11 @@ elsif ($mode == 6) {
 return @ulist;
 }
 
-# sort_groups(&groups, mode)
+=head2 sort_groups(&groups, mode)
+
+MISSING DOCUMENTATION
+
+=cut
 sub sort_groups
 {
 local ($groups, $mode) = @_;
@@ -2167,8 +2348,11 @@ elsif ($mode == 1) {
 return @glist;
 }
 
-# create_home_directory(&user, [real-dir])
-# Creates and chmod's the home directory for a user, or calls error on failure
+=head2 create_home_directory(&user, [real-dir])
+
+Creates and chmod's the home directory for a user, or calls error on failure
+
+=cut
 sub create_home_directory
 {
 local ($user, $home) = @_;
@@ -2182,8 +2366,11 @@ $home ||= $user->{'home'};
 &unlock_file($home);
 }
 
-# delete_home_directory(&user)
-# Delete's some users home directory
+=head2 delete_home_directory(&user)
+
+Delete's some users home directory
+
+=cut
 sub delete_home_directory
 {
 local ($user) = @_;
@@ -2202,17 +2389,23 @@ if ($user->{'home'} && -d $user->{'home'}) {
 	}
 }
 
-# supports_temporary_disable()
-# Returns 1 if temporary locking of passwords (with an ! at the start of the
-# hash) is supported.
+=head2 supports_temporary_disable
+
+Returns 1 if temporary locking of passwords (with an ! at the start of the
+hash) is supported.
+
+=cut
 sub supports_temporary_disable
 {
 return &passfiles_type() != 7;    # Not on OSX, which has a fixed-size hash
 }
 
-# change_all_home_groups(old-gid, new-gid, &members)
-# Change the GID on all files in the home directories of users whose GID is the
-# old GID.
+=head2 change_all_home_groups(old-gid, new-gid, &members)
+
+Change the GID on all files in the home directories of users whose GID is the
+old GID.
+
+=cut
 sub change_all_home_groups
 {
 local ($oldgid, $gid, $mems) = @_;
