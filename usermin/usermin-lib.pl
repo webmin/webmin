@@ -1,6 +1,8 @@
-# usermin-lib.pl
-# Common functions for configuring usermin
-# XXX share text with webmin!
+=head1 usermin-lib.pl
+
+Functions for configuring Usermin running on this system.
+
+=cut
 
 do '../web-lib.pl';
 {'usermin_dir'}&init_config();
@@ -25,7 +27,12 @@ $default_key_size = 512;
 
 $cron_cmd = "$module_config_directory/update.pl";
 
-# get_usermin_miniserv_config(&array)
+=head2 get_usermin_miniserv_config(&hash)
+
+Similar to the standard get_miniserv_config function, but this one fills in
+the given hash ref with the contents of the /etc/usermin/miniserv.conf file.
+
+=cut
 sub get_usermin_miniserv_config
 {
 &read_file($usermin_miniserv_config, \%usermin_miniserv_config_cache)
@@ -33,14 +40,22 @@ sub get_usermin_miniserv_config
 %{$_[0]} = %usermin_miniserv_config_cache;
 }
 
-# put_usermin_miniserv_config(&array)
+=head2 put_usermin_miniserv_config(&hash)
+
+Writes out the Usermin miniserv configuration, based on the given hash ref.
+
+=cut
 sub put_usermin_miniserv_config
 {
 %usermin_miniserv_config_cache = %{$_[0]};
 &write_file($usermin_miniserv_config, \%usermin_miniserv_config_cache);
 }
 
-# get_usermin_version()
+=head2 get_usermin_version
+
+Returns the version number of Usermin on this system.
+
+=cut
 sub get_usermin_version
 {
 local %miniserv;
@@ -52,8 +67,12 @@ $version =~ s/\r|\n//g;
 return $version;
 }
 
-# restart_usermin_miniserv()
-# Send a HUP signal to miniserv
+=head2 restart_usermin_miniserv
+
+Send a HUP signal to Usermin's miniserv, telling it to restart and re-read
+all configuration files.
+
+=cut
 sub restart_usermin_miniserv
 {
 return undef if (&is_readonly_mode());
@@ -67,8 +86,12 @@ if (!$pid) { &error("Invalid PID file"); }
 return &kill_logged('HUP', $pid);
 }
 
-# reload_usermin_miniserv()
-# Sends a USR1 signal to the miniserv process
+=head2 reload_usermin_miniserv
+
+Sends a USR1 signal to the miniserv process, telling it to re-read most
+configuration files.
+
+=cut
 sub reload_usermin_miniserv
 {
 return undef if (&is_readonly_mode());
@@ -84,7 +107,12 @@ if (!$pid) { &error("Invalid PID file"); }
 return &kill_logged('USR1', $pid);
 }
 
-# get_usermin_config(&array)
+=head2 get_usermin_config(&hash)
+
+Fills in the given hash ref with the contents of the global Usermin
+configuration file, typically at /etc/usermin/config.
+
+=cut
 sub get_usermin_config
 {
 &read_file($usermin_config, \%usermin_config_cache)
@@ -92,15 +120,22 @@ sub get_usermin_config
 %{$_[0]} = %usermin_config_cache;
 }
 
-# put_usermin_config(&array)
+=head2 put_usermin_config(&hash)
+
+Writes the given hash ref to the global Usermin configuration file.
+
+=cut
 sub put_usermin_config
 {
 %usermin_config_cache = %{$_[0]};
 &write_file($usermin_config, \%usermin_config_cache);
 }
 
-# list_themes()
-# Returns an array of all usermin themes
+=head2 list_themes
+
+Returns an array of all usermin themes
+
+=cut
 sub list_themes
 {
 local @rv;
@@ -118,8 +153,13 @@ closedir(DIR);
 return @rv;
 }
 
-# list_modules()
-# Returns a list of all usermin modules
+=head2 list_modules
+
+Returns a list of all usermin modules installed and supported on this system.
+Each is a hash ref in the same format as returned by Webmin's get_module_info
+function.
+
+=cut
 sub list_modules
 {
 local (@mlist, $m, %miniserv);
@@ -141,8 +181,17 @@ closedir(DIR);
 return @mlist;
 }
 
-# get_usermin_module_info(module, [noclone])
-# Returns a hash containg a module name, desc and os_support
+=head2 get_usermin_module_info(module, [noclone])
+
+Returns a hash contain details of a module, in the same format as 
+Webmin's get_module_info function. Useful keys include :
+dir - The module's relative directory
+desc - The human-readable title
+category - Category the module is in, like login or apps
+depends - Space-separated list of dependent modules
+os_support - List of supported operating systems and versions
+
+=cut
 sub get_usermin_module_info
 {
 return () if ($_[0] =~ /^\./);
@@ -174,7 +223,12 @@ elsif ($descs{$_[0]}) {
 return %rv;
 }
 
-# get_usermin_theme_info(theme)
+=head2 get_usermin_theme_info(theme)
+
+Like get_usermin_module_info, but returns the details of a theme instead.
+This is basically the contents of its theme.info file.
+
+=cut
 sub get_usermin_theme_info
 {
 local (%tinfo, $o);
@@ -188,7 +242,13 @@ $tinfo{'dir'} = $_[0];
 return %tinfo;
 }
 
-# check_usermin_os_support(&minfo)
+=head2 check_usermin_os_support(&minfo)
+
+Given a Usermin module information hash ref (as returned by
+get_usermin_module_info), checks if it is supported on this OS. Returns 1 if
+yes, 0 if no.
+
+=cut
 sub check_usermin_os_support
 {
 local $oss = $_[0]->{'os_support'};
@@ -222,8 +282,12 @@ while(1) {
 return 0;
 }
 
-# read_usermin_acl(&array, &array)
-# Reads the acl file into the given associative arrays
+=head2 read_usermin_acl(&array, &array)
+
+Reads the acl file into the given hashes. The first maps user,module to
+1 where granted, which the second maps a user to an array ref of module dirs.
+
+=cut
 sub read_usermin_acl
 {
 local($user, $_, @mods);
@@ -246,14 +310,21 @@ if ($_[0]) { %{$_[0]} = %usermin_acl_hash_cache; }
 if ($_[1]) { %{$_[1]} = %usermin_acl_array_cache; }
 }
 
-# usermin_acl_filename()
-# Returns the file containing the webmin ACL
+=head2 usermin_acl_filename
+
+Returns the file containing the webmin ACL
+
+=cut
 sub usermin_acl_filename
 {
 return "$config{'usermin_dir'}/webmin.acl";
 }
 
-# save_usermin_acl(user, &modules)
+=head2 save_usermin_acl(user, &modules)
+
+Updates the list of available modules in Usermin.
+
+=cut
 sub save_usermin_acl
 {
 &open_tempfile(ACL, ">".&usermin_acl_filename());
@@ -261,10 +332,13 @@ sub save_usermin_acl
 &close_tempfile(ACL);
 }
 
-# install_usermin_module(file, unlink, nodeps)
-# Installs a usermin module or theme, and returns either an error message
-# or references to three arrays for descriptions, directories and sizes.
-# On success or failure, the file is deleted if the unlink parameter is set.
+=head2 install_usermin_module(file, unlink, nodeps)
+
+Installs a usermin module or theme, and returns either an error message
+or references to three arrays for descriptions, directories and sizes.
+On success or failure, the file is deleted if the unlink parameter is set.
+
+=cut
 sub install_usermin_module
 {
 local ($file, $need_unlink, $nodeps) = @_;
@@ -515,8 +589,16 @@ else {
 return [ \@mdescs, \@mdirs, \@msizes ];
 }
 
-# list_usermin_usermods()
-# Returns the list of additional module restrictions for usermin
+=head2 list_usermin_usermods
+
+Returns the list of additional module restrictions for usermin.
+This is a list of array refs, each element of which contains a username,
+a flag and an array ref of module names. The flag can be one of :
++ - Add the modules to the list available to this user
+- - Take the modules away from this user
+blank - Assign the modules to the list for this user
+
+=cut
 sub list_usermin_usermods
 {
 local @rv;
@@ -530,8 +612,12 @@ close(USERMODS);
 return @rv;
 }
 
-# save_usermin_usermods(&usermods)
-# Saves the list of additional module restrictions
+=head2 save_usermin_usermods(&usermods)
+
+Saves the list of additional module restrictions. This must be an array ref
+in the same format as returned by list_usermin_usermods.
+
+=cut
 sub save_usermin_usermods
 {
 &open_tempfile(USERMODS, ">$config{'usermin_dir'}/usermin.mods");
@@ -542,7 +628,6 @@ foreach $u (@{$_[0]}) {
 &close_tempfile(USERMODS);
 }
 
-# get_usermin_miniserv_users()
 sub get_usermin_miniserv_users
 {
 local %miniserv;
@@ -562,7 +647,11 @@ close(USERS);
 return @rv;
 }
 
-# save_usermin_miniserv_users(user, ...)
+=head2 save_usermin_miniserv_users(user, ...)
+
+MISSING DOCUMENTATION
+
+=cut
 sub save_usermin_miniserv_users
 {
 local %miniserv;
@@ -577,7 +666,11 @@ foreach $u (@_) {
 &close_tempfile(USERS);
 }
 
-# can_use_module(module)
+=head2 can_use_module(module)
+
+MISSING DOCUMENTATION
+
+=cut
 sub can_use_module
 {
 return 1 if ($access{'mods'} eq '*');
@@ -585,21 +678,31 @@ local @mods = split(/\s+/, $access{'mods'});
 return &indexof($_[0], @mods) >= 0;
 }
 
-# get_usermin_base_version()
-# Gets the usermin version, rounded to the nearest .01
+=head2 get_usermin_base_version
+
+Gets the usermin version, rounded to the nearest .01
+
+=cut
 sub get_usermin_base_version
 {
 return &base_version(&get_usermin_version());
 }
 
-# base_version()
-# Rounds a version number to the nearest .01
+=head2 base_version
+
+Rounds a version number to the nearest .01
+
+=cut
 sub base_version
 {
 return sprintf("%.2f0", $_[0]);
 }
 
-# find_cron_job(\@jobs)
+=head2 find_cron_job(\@jobs)
+
+MISSING DOCUMENTATION
+
+=cut
 sub find_cron_job
 {
 local ($job) = grep { $_->{'user'} eq 'root' &&
@@ -607,9 +710,12 @@ local ($job) = grep { $_->{'user'} eq 'root' &&
 return $job;
 }
 
-# delete_usermin_module(module, [delete-acls])
-# Deletes some usermin module, clone or theme, and return a description of
-# the thing deleted.
+=head2 delete_usermin_module(module, [delete-acls])
+
+Deletes some usermin module, clone or theme, and return a description of
+the thing deleted.
+
+=cut
 sub delete_usermin_module
 {
 local $m = $_[0];
@@ -674,16 +780,22 @@ else {
 return $mdesc;
 }
 
-# flush_modules_cache()
-# Forces a rebuild of the Usermin module cache
+=head2 flush_modules_cache
+
+Forces a rebuild of the Usermin module cache
+
+=cut
 sub flush_modules_cache
 {
 &unlink_file("$config{'usermin_dir'}/module.infos.cache");
 }
 
-# stop_usermin()
-# Kills the running Usermin server process, returning undef on sucess or an
-# error message on failure.
+=head2 stop_usermin
+
+Kills the running Usermin server process, returning undef on sucess or an
+error message on failure.
+
+=cut
 sub stop_usermin
 {
 local %miniserv;
@@ -699,17 +811,23 @@ else {
 return undef;
 }
 
-# start_usermin()
-# Starts the Usermin server process
+=head2 start_usermin
+
+Starts the Usermin server process
+
+=cut
 sub start_usermin
 {
 &system_logged("$config{'usermin_dir'}/start >/dev/null 2>&1 </dev/null");
 return undef;
 }
 
-# get_install_type()
-# Returns the package type Usermin was installed form (rpm, deb, solaris-pkg
-# or undef for tar.gz)
+=head2 get_install_type
+
+Returns the package type Usermin was installed form (rpm, deb, solaris-pkg
+or undef for tar.gz)
+
+=cut
 sub get_install_type
 {
 local (%miniserv, $mode);
@@ -732,9 +850,12 @@ else {
 return $mode;
 }
 
-# switch_to_usermin_user(username)
-# Returns a set-cookie header and redirect URL for auto-logging into Usermin
-# as some user.
+=head2 switch_to_usermin_user(username)
+
+Returns a set-cookie header and redirect URL for auto-logging into Usermin
+as some user.
+
+=cut
 sub switch_to_usermin_user
 {
 my ($user) = @_;
