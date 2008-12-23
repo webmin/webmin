@@ -1,6 +1,11 @@
 =head1 usermin-lib.pl
 
-Functions for configuring Usermin running on this system.
+Functions for configuring Usermin running on this system. Example usage :
+
+ foreign_require("usermin", "usermin-lib.pl");
+ @usermods = usermin::list_usermin_usermods();
+ push(@usermods, [ 'joe', '', 'mailbox changepass' ]);
+ usermin::save_usermin_usermods(\@usermods);
 
 =cut
 
@@ -628,6 +633,12 @@ foreach $u (@{$_[0]}) {
 &close_tempfile(USERMODS);
 }
 
+=head2 get_usermin_miniserv_users
+
+Returns a list of Usermin users from miniserv.users. In normal use, there
+is only one, as all authentication is done using Unix users.
+
+=cut
 sub get_usermin_miniserv_users
 {
 local %miniserv;
@@ -647,9 +658,10 @@ close(USERS);
 return @rv;
 }
 
-=head2 save_usermin_miniserv_users(user, ...)
+=head2 save_usermin_miniserv_users(&user, ...)
 
-MISSING DOCUMENTATION
+Updats the list of Usermin miniserv users, each of which is a hash ref
+in the format returned by get_usermin_miniserv_users.
 
 =cut
 sub save_usermin_miniserv_users
@@ -668,7 +680,7 @@ foreach $u (@_) {
 
 =head2 can_use_module(module)
 
-MISSING DOCUMENTATION
+Returns 1 if the current Webmin user can use some function of this module.
 
 =cut
 sub can_use_module
@@ -700,7 +712,8 @@ return sprintf("%.2f0", $_[0]);
 
 =head2 find_cron_job(\@jobs)
 
-MISSING DOCUMENTATION
+Finds the cron job for Usermin updates, given an array ref of cron jobs
+as returned by cron::list_cron_jobs
 
 =cut
 sub find_cron_job
@@ -782,7 +795,7 @@ return $mdesc;
 
 =head2 flush_modules_cache
 
-Forces a rebuild of the Usermin module cache
+Forces a rebuild of the Usermin module cache.
 
 =cut
 sub flush_modules_cache
@@ -813,7 +826,7 @@ return undef;
 
 =head2 start_usermin
 
-Starts the Usermin server process
+Starts the Usermin server process. Return value is always undef.
 
 =cut
 sub start_usermin
@@ -825,7 +838,7 @@ return undef;
 =head2 get_install_type
 
 Returns the package type Usermin was installed form (rpm, deb, solaris-pkg
-or undef for tar.gz)
+or undef for tar.gz).
 
 =cut
 sub get_install_type
