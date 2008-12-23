@@ -1,15 +1,21 @@
-# init-lib.pl
-# Common functions for SYSV-style boot/shutdown sequences.
-# These functions assume that under a directory (like /etc/ or /etc/rc.d/)
-# there is a directory called rcX.d for each runlevel X. In each runlevel
-# directory is a list of files with names like S64foobar or K99smeg, where
-# the first letter is S (for commands run at boot time) or K (shutdown time),
-# the next 2 digits the execution order and the rest the action name.
-#
-# Typically, each runlevel file is linked (hard or soft) to a file in
-# the directory init.d. Each file in init.d may have several links to it from
-# different runlevels (for startup and shutdown). However, some runlevel
-# files may not be links at all.
+=head1 init-lib.pl
+
+Common functions for SYSV-style boot/shutdown sequences, MacOS, FreeBSD
+and Windows. Because each system uses a different format and semantics for
+bootup actions, there are separate functions for listing and managing each
+type. However, some functions like enable_at_boot and disable_at_boot can 
+creation actions regardless of the underlying boot system.
+
+Example code :
+
+ foreign_require('init', 'init-lib.pl');
+ $ok = init::action_status('foo');
+ if ($ok == 0) {
+   init::enable_at_boot('foo', 'Start or stop the Foo server',
+                        '/etc/foo/start', '/etc/foo/stop');
+ }
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -18,7 +24,16 @@ do '../ui-lib.pl';
 		    'stop' );
 %access = &get_module_acl();
 
-# Work out init mode
+=head2 init_mode
+
+This variable is set based on the bootup system in use. Possible values are :
+osx - MacOSX hostconfig files
+rc - FreeBSD 6+ RC files
+init - System V init.d files, seen on Linux and Solaris
+local - A single rc.local file
+win32 - Windows services
+
+=cut
 if ($config{'hostconfig'}) {
 	$init_mode = "osx";
 	}
@@ -35,10 +50,12 @@ elsif ($gconfig{'os_type'} eq 'windows') {
 	$init_mode = "win32";
 	}
 
-# runlevel_actions(level, S|K)
-# Return a list of actions started or stopped in some run-level, each in
-# the format:
-#  number name inode
+=head2 runlevel_actions(level, S|K)
+
+Return a list of init.d actions started or stopped in some run-level, each of
+which is a space-separated string in the format : number name inode
+
+=cut
 sub runlevel_actions
 {
 local($dir, $f, @stbuf, @rv);
@@ -55,8 +72,11 @@ return $_[1] eq "S" ? @rv : reverse(@rv);
 }
 
 
-# list_runlevels()
-# Returns a list of known runlevels
+=head2 list_runlevels
+
+Returns a list of known runlevels, such as : 2 3 5
+
+=cut
 sub list_runlevels
 {
 local(@rv);
@@ -72,8 +92,11 @@ return sort(@rv);
 }
 
 
-# list_actions()
-# List boot time actions from init.d
+=head2 list_actions
+
+List boot time action names from init.d, such as httpd and cron
+
+=cut
 sub list_actions
 {
 local($dir, $f, @stbuf, @rv);
@@ -99,10 +122,13 @@ return @rv;
 }
 
 
-# action_levels(S|K, action)
-# Return a list of run levels in which some action (from init.d) is started
-# or stopped. Each item is in the format:
-#  level order name
+=head2 action_levels(S|K, action)
+
+Return a list of run levels in which some action (from init.d) is started
+or stopped. Each item is a space-separated string in the format :
+level order name
+
+=cut
 sub action_levels
 {
 local(@stbuf, $rl, $dir, $f, @stbuf2, @rv);
@@ -125,15 +151,22 @@ return @rv;
 }
 
 
-# action_filename(name)
-# Returns the name of the file in init.d for some action
+=head2 action_filename(name)
+
+Returns the path to the file in init.d for some action, such as /etc/init.d/foo
+
+=cut
 sub action_filename
 {
 return $_[0] =~ /^\// ? $_[0] : "$config{init_dir}/$_[0]";
 }
 
+=head2 runlevel_filename(level, S|K, order, name)
 
-# runlevel_filename(level, S|K, order, name)
+Returns the path to the actual script run at boot for some action, such as
+/etc/rc3.d/S99foo
+
+=cut
 sub runlevel_filename
 {
 local $n = $_[3];
@@ -142,8 +175,15 @@ return &runlevel_dir($_[0])."/$_[1]$_[2]$n";
 }
 
 
-# add_rl_action(action, runlevel, S|K, order)
-# Add some existing action to a runlevel
+=head2 add_rl_action(action, runlevel, S|K, order)
+
+Add some existing action to a runlevel. The parameters are :
+action - Name of the action, like foo
+runlevel - A runlevel number, like 3
+S|K - Either S for an action to run at boot, or K for shutdown
+order - Numeric boot order, like 99
+
+=cut
 sub add_rl_action
 {
 $file = &runlevel_filename($_[1], $_[2], $_[3], $_[0]);
@@ -162,8 +202,14 @@ else {
 }
 
 
-# delete_rl_action(name, runlevel, S|K)
-# Delete some action from a runlevel
+=head2 delete_rl_action(name, runlevel, S|K)
+
+Delete some action from a runlevel. The parameters are :
+action - Name of the action, like foo
+runlevel - A runlevel number, like 3
+S|K - Either S for an action to run at boot, or K for shutdown
+
+=cut
 sub delete_rl_action
 {
 local(@stbuf, $dir, $f, @stbuf2);
@@ -184,7 +230,15 @@ closedir(DIR);
 }
 
 
-# reorder_rl_action(name, runlevel, S|K, new_order)
+=head2 reorder_rl_action(name, runlevel, S|K, new_order)
+
+Change the boot order of some existing runlevel action. The parameters are :
+action - Name of the action, like foo
+runlevel - A runlevel number, like 3
+S|K - Either S for an action to run at boot, or K for shutdown
+new_order - New numeric boot order to use, like 99
+
+=cut
 sub reorder_rl_action
 {
 local(@stbuf, $dir, $f, @stbuf2);
@@ -211,9 +265,14 @@ closedir(DIR);
 }
 
 
-# rename_action(old, new)
-# Change the name of an action in init.d, and re-direct all soft links
-# to it from the runlevel directories
+=head2 rename_action(old, new)
+
+Change the name of an action in init.d, and re-direct all soft links
+to it from the runlevel directories. Parameters are :
+old - Old action name
+new - New action name
+
+=cut
 sub rename_action
 {
 local($file, $idx, $old);
@@ -253,17 +312,23 @@ foreach (&action_levels('K', $_[0])) {
 }
 
 
-# rename_rl_action(runlevel, S|K, order, old, new)
-# Change the name of a runlevel file
+=head2 rename_rl_action(runlevel, S|K, order, old, new)
+
+Change the name of a runlevel file. For internal use only.
+
+=cut
 sub rename_rl_action
 {
 &rename_logged(&runlevel_dir($_[0])."/$_[1]$_[2]$_[3]",
                &runlevel_dir($_[0])."/$_[1]$_[2]$_[4]");
 }
 
-# get_inittab_runlevel()
-# Returns the runlevels entered at boot time. If more than one is returned,
-# actions from all of them are used!
+=head2 get_inittab_runlevel
+
+Returns the runlevels entered at boot time. If more than one is returned,
+actions from all of them are used.
+
+=cut
 sub get_inittab_runlevel
 {
 local %iconfig = &foreign_config("inittab");
@@ -290,7 +355,13 @@ push(@rv, $config{'inittab_extra'});
 return &unique(@rv);
 }
 
-# init_description(file, \%hasargs)
+=head2 init_description(file, [&hasargs])
+
+Given a full path to an init.d file, returns a description from the comments
+about what it does. If the hasargs hash ref parameter is given, it is filled
+in with supported parameters to the action, like 'start' and 'stop'.
+
+=cut
 sub init_description
 {
 open(FILE, $_[0]);
@@ -358,10 +429,13 @@ else {
 return $desc;
 }
 
-# chkconfig_info(file)
-# If a file has a chkconfig: section specifying the runlevels to start in and
-# the orders to use, return an array containing the levels (as array ref),
-# start order, stop order and description.
+=head2 chkconfig_info(file)
+
+If a file has a chkconfig: section specifying the runlevels to start in and
+the orders to use, return an array containing the levels (as array ref),
+start order, stop order and description.
+
+=cut
 sub chkconfig_info
 {
 local @rv;
@@ -380,9 +454,13 @@ $rv[3] = $desc if ($desc && @rv);
 return @rv;
 }
 
-# action_status(action)
-# Returns 0 if some action doesn't exist, 1 if it does but is not enabled,
-# or 2 if it exists and is enabled
+=head2 action_status(action)
+
+Returns 0 if some action doesn't exist, 1 if it does but is not enabled,
+or 2 if it exists and is enabled. This works for all supported boot systems,
+such as init.d, OSX and FreeBSD.
+
+=cut
 sub action_status
 {
 if ($init_mode eq "init") {
@@ -440,9 +518,20 @@ elsif ($init_mode eq "osx") {
 	}
 }
 
-# enable_at_boot(action, description, startcode, stopcode, statuscode)
-# Makes some action start at boot time, creating the script by copying the
-# specified file if necessary
+=head2 enable_at_boot(action, description, startcode, stopcode, statuscode)
+
+Makes some action start at boot time, creating the script by copying the
+specified file if necessary. The parameters are :
+action - Name of the action to create or enable
+description - A human-readable description for the action
+startcode - Shell commands to run at boot time
+stopcode - Shell commands to run at shutdown time
+statuscode - Shell code to output the action's status
+
+If this is called for a named action that already exists (even if it isn't
+enabled), only the first parameter needs to be given.
+
+=cut
 sub enable_at_boot
 {
 local $st = &action_status($_[0]);
@@ -724,8 +813,13 @@ elsif ($init_mode eq "osx") {
 	}
 }
 
-# disable_at_boot(action)
-# Turns off some action from starting at boot
+=head2 disable_at_boot(action)
+
+Disabled some action from starting at boot, identified by the action
+parameter. The config files that define what commands the action runs are not
+touched, so it can be re-enabled with the enable_at_boot function.
+
+=cut
 sub disable_at_boot
 {
 local $st = &action_status($_[0]);
@@ -814,9 +908,13 @@ elsif ($init_mode eq "osx") {
 	}
 }
 
-# start_action(name)
-# Start the action with the given name, using whatever method is appropriate
-# for this operating system. Returns a status code (0 or 1) and output.
+=head2 start_action(name)
+
+Start the action with the given name, using whatever method is appropriate
+for this operating system. Returns a status code (0 or 1 for failure or 
+success) and all output from the action script.
+
+=cut
 sub start_action
 {
 local ($name) = @_;
@@ -850,9 +948,13 @@ else {
 	}
 }
 
-# stop_action(name)
-# Stop the action with the given name, using whatever method is appropriate
-# for this operating system.
+=head2 stop_action(name)
+
+Stop the action with the given name, using whatever method is appropriate
+for this operating system. Returns a status code (0 or 1 for failure or
+success) and all output from the action script.
+
+=cut
 sub stop_action
 {
 local ($name) = @_;
@@ -886,8 +988,11 @@ else {
 	}
 }
 
-# restart_action(action)
-# Calls a stop then a start
+=head2 restart_action(action)
+
+Calls a stop then a start for some named action.
+
+=cut
 sub restart_action
 {
 local ($name) = @_;
@@ -895,7 +1000,12 @@ local ($name) = @_;
 &start_action($name);
 }
 
-# tab_indent(lines)
+=head2 tab_indent(lines)
+
+Given a string with multiple \n separated lines, returns the same string
+with lines prefixed by tabs.
+
+=cut
 sub tab_indent
 {
 local ($rv, $l);
@@ -905,8 +1015,12 @@ foreach $l (split(/\n/, $_[0])) {
 return $rv;
 }
 
-# get_start_runlevels()
-# Returns a list of runlevels that actions should be started in
+=head2 get_start_runlevels
+
+Returns a list of runlevels that actions should be started in, either based
+on the module configuration or /etc/inittab.
+
+=cut
 sub get_start_runlevels
 {
 if ($config{'boot_levels'}) {
@@ -918,6 +1032,12 @@ else {
 	}
 }
 
+=head2 runlevel_dir(runlevel)
+
+Given a runlevel like 3, returns the directory containing symlinks for it,
+like /etc/rc2.d.
+
+=cut
 sub runlevel_dir
 {
 if ($_[0] eq "boot") {
@@ -928,8 +1048,17 @@ else {
 	}
 }
 
-# list_win32_services([name])
-# Returns a list of known Win32 services
+=head2 list_win32_services([name])
+
+Returns a list of known Win32 services, each of which is a hash ref. If the
+name parameter is given, only details of that service are returned. Useful
+keys for each hash are :
+name - A unique name for the service
+desc - A human-readable description
+boot - Set to 2 if started at boot, 3 if not, 4 if disabled
+state -Set to 4 if running now, 1 if stopped
+
+=cut
 sub list_win32_services
 {
 local ($name) = @_;
@@ -979,8 +1108,11 @@ foreach $svc (@rv) {
 return @rv;
 }
 
-# start_win32_service(name)
-# Attempts to start a service, returning undef on success, or some error message
+=head2 start_win32_service(name)
+
+Attempts to start a service, returning undef on success, or some error message.
+
+=cut
 sub start_win32_service
 {
 local ($name) = @_;
@@ -988,8 +1120,11 @@ local $out = &backquote_command("sc start \"$name\" 2>&1");
 return $? ? $out : undef;
 }
 
-# stop_win32_service(name)
-# Attempts to stop a service, returning undef on success, or some error message
+=head2 stop_win32_service(name)
+
+Attempts to stop a service, returning undef on success, or some error message.
+
+=cut
 sub stop_win32_service
 {
 local ($name) = @_;
@@ -997,8 +1132,12 @@ local $out = &backquote_command("sc stop \"$name\" 2>&1");
 return $? ? $out : undef;
 }
 
-# enable_win32_service(name)
-# Marks some service as starting at boot time
+=head2 enable_win32_service(name)
+
+Marks some service as starting at boot time. Returns undef on success or an
+error message on failure.
+
+=cut
 sub enable_win32_service
 {
 local ($name) = @_;
@@ -1006,8 +1145,12 @@ local $out = &backquote_command("sc config \"$name\" start= auto 2>&1");
 return $? ? $out : undef;
 }
 
-# disable_win32_service(name)
-# Marks some service as disabled at boot time
+=head2 disable_win32_service(name)
+
+Marks some service as disabled at boot time. Returns undef on success or an
+error message on failure.
+
+=cut
 sub disable_win32_service
 {
 local ($name) = @_;
@@ -1015,8 +1158,14 @@ local $out = &backquote_command("sc config \"$name\" start= demand 2>&1");
 return $? ? $out : undef;
 }
 
-# create_win32_service(name, command, desc)
-# Creates a new win32 service, enabled at boot time
+=head2 create_win32_service(name, command, desc)
+
+Creates a new win32 service, enabled at boot time. The required parameters are:
+name - A unique name for the service
+command - The DOS command to run at boot time
+desc - A human-readable description.
+
+=cut
 sub create_win32_service
 {
 local ($name, $cmd, $desc) = @_;
@@ -1024,8 +1173,12 @@ local $out = &backquote_command("sc create \"$name\" DisplayName= \"$desc\" type
 return $? ? $out : undef;
 }
 
-# delete_win32_service(name)
-# Delete some existing service
+=head2 delete_win32_service(name)
+
+Delete some existing service, identified by some name. Returns undef on
+success or an error message on failure.
+
+=cut
 sub delete_win32_service
 {
 local ($name) = @_;
@@ -1033,8 +1186,17 @@ local $out = &backquote_command("sc delete \"$name\" 2>&1");
 return $? ? $out : undef;
 }
 
-# list_rc_scripts()
-# Returns a list of known RC scripts, and their enabled statuses
+=head2 list_rc_scripts
+
+Returns a list of known BSD RC scripts, and their enabled statuses. Each
+element of the return list is a hash ref, with the following keys :
+name - A unique name for the script
+desc - A human-readable description
+enabled - Set to 1 if enabled, 0 if not, 2 if unknown
+file - Full path to the action script file
+standard - Set to 0 for user-defined actions, 1 for those supplied with FreeBSD
+
+=cut
 sub list_rc_scripts
 {
 # Build a list of those that are enabled in the rc.conf files
@@ -1078,7 +1240,12 @@ foreach my $dir (split(/\s+/, $config{'rc_dir'})) {
 return sort { $a->{'name'} cmp $b->{'name'} } @rv;
 }
 
-# save_rc_conf(name, value)
+=head2 save_rc_conf(name, value)
+
+Internal function to modify the value of a single entry in the FreeBSD
+rc.conf file.
+
+=cut
 sub save_rc_conf
 {
 local $found;
@@ -1103,7 +1270,16 @@ if (!$found && @_ > 1) {
 &close_tempfile(CONF);
 }
 
-# get_rc_conf()
+=head2 get_rc_conf
+
+Reads the default and system-specific FreeBSD rc.conf files, and parses
+them into a list of hash refs. Each element in the list has the following keys:
+name - Name of this configuration parameter. May appear more than once, with
+       the later one taking precedence.
+value - Current value.
+cmt - A human-readable comment about the parameter.
+
+=cut
 sub get_rc_conf
 {
 local ($file, @rv);
@@ -1132,8 +1308,11 @@ foreach $file (split(/\s+/, $config{'rc_conf'})) {
 return @rv;
 }
 
-# enable_rc_script(name)
-# Mark some RC script as enabled at boot
+=head2 enable_rc_script(name)
+
+Mark some RC script as enabled at boot.
+
+=cut
 sub enable_rc_script
 {
 local ($name) = @_;
@@ -1141,8 +1320,11 @@ $name =~ s/-/_/g;
 &save_rc_conf($name."_enable", "YES");
 }
 
-# disable_rc_script(name)
-# Mark some RC script as disabled at boot
+=head2 disable_rc_script(name)
+
+Mark some RC script as disabled at boot.
+
+=cut
 sub disable_rc_script
 {
 local ($name) = @_;
@@ -1157,8 +1339,12 @@ foreach my $r (&get_rc_conf()) {
 &save_rc_conf($name."_enable", "NO") if ($enabled);
 }
 
-# start_rc_script(name)
-# Attempt to start some RC script, and returns 1 or 0 and the output
+=head2 start_rc_script(name)
+
+Attempt to start some RC script, and returns 1 or 0 (for success or failure)
+and the output.
+
+=cut
 sub start_rc_script
 {
 local ($name) = @_;
@@ -1169,9 +1355,12 @@ local $out = &backquote_logged("$rc->{'file'} forcestart 2>&1 </dev/null");
 return (!$?, $out);
 }
 
-# stop_rc_script(name)
-# Attempt to stop some RC script, and return either undef on success or an
-# error message on failure.
+=head2 stop_rc_script(name)
+
+Attempts to stop some RC script, and returns 1 or 0 (for success or failure)
+and the output.
+
+=cut
 sub stop_rc_script
 {
 local ($name) = @_;
@@ -1182,6 +1371,11 @@ local $out = &backquote_logged("$rc->{'file'} forcestop 2>&1 </dev/null");
 return (!$?, $out);
 }
 
+=head2 lock_rc_files
+
+Internal function to lock all FreeBSD rc.conf files.
+
+=cut
 sub lock_rc_files
 {
 foreach my $f (split(/\s+/, $config{'rc_conf'})) {
@@ -1189,6 +1383,11 @@ foreach my $f (split(/\s+/, $config{'rc_conf'})) {
 	}
 }
 
+=head2 unlock_rc_files
+
+Internal function to un-lock all FreeBSD rc.conf files.
+
+=cut
 sub unlock_rc_files
 {
 foreach my $f (split(/\s+/, $config{'rc_conf'})) {
@@ -1196,11 +1395,21 @@ foreach my $f (split(/\s+/, $config{'rc_conf'})) {
 	}
 }
 
+=head2 reboot_system
+
+Immediately reboots the system.
+
+=cut
 sub reboot_system
 {
 &system_logged("$config{'reboot_command'} >$null_file 2>$null_file");
 }
 
+=head2 shutdown_system
+
+Immediately shuts down the system.
+
+=cut
 sub shutdown_system
 {
 &system_logged("$config{'shutdown_command'} >$null_file 2>$null_file");
