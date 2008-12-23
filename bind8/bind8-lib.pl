@@ -2469,7 +2469,7 @@ else {
 	}
 local $out = &backquote_command(
 	$config{'checkzone'}." ".quotemeta($zonename)." ".
-	quotemeta(&make_chroot($zonefile))." 2>&1 </dev/null");
+	quotemeta(&make_chroot(&absolute_path($zonefile)))." 2>&1 </dev/null");
 return $? ? split(/\r?\n/, $out) : ( );
 }
 
