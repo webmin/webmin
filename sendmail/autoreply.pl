@@ -208,10 +208,12 @@ if ($rbody =~ /[\177-\377]/) {
 	# High-ascii
 	$enc = "quoted-printable";
 	$encrbody = &quoted_encode($rbody);
+	$type = "text/plain; charset=iso-8859-1";
 	}
 else {
 	$enc = undef;
 	$encrbody = $rbody;
+	$type = "text/plain";
 	}
 
 # run sendmail and feed it the reply
@@ -232,6 +234,9 @@ if (!@attach) {
 	if ($enc) {
 		print MAIL "Content-Transfer-Encoding: $enc\n";
 		}
+	if (!$rheader{'Content-Type'}) {
+		print MAIL "Content-Type: $type\n";
+		}
 	print MAIL "\n";
 	print MAIL $encrbody;
 	}
@@ -242,7 +247,7 @@ else {
 	$ctype = "multipart/mixed";
 	print MAIL "Content-Type: $ctype; boundary=\"$bound\"\n";
 	print MAIL "\n";
-	$bodyattach = { 'headers' => [ [ 'Content-Type', 'text/plain' ], ],
+	$bodyattach = { 'headers' => [ [ 'Content-Type', $type ], ],
 			'data' => $encrbody };
 	if ($enc) {
 		push(@{$bodyattach->{'headers'}},
