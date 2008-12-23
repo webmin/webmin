@@ -1,4 +1,14 @@
-# webminlog-lib.pl
+=head1 webminlog-lib.pl
+
+This module contains functions for parsing the Webmin actions log file.
+
+ foreign_require("webminlog", "webminlog-lib.pl");
+ @actions = webminlog::list_webmin_log(undef, "useradmin", undef, undef);
+ foreach $a (@actions) {
+   print webminlog::get_action_description($a),"\n";
+ }
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -7,6 +17,59 @@ do '../ui-lib.pl';
 %access_mods = map { $_, 1 } split(/\s+/, $access{'mods'});
 %access_users = map { $_, 1 } split(/\s+/, $access{'users'});
 
+=head2 list_webmin_log([only-user], [only-module], [start-time, end-time])
+
+Returns an array of matching Webmin log events, each of which is a hash ref
+in the format returned by parse_logline (see below). By default all actions
+will be returned, but you can limit it to a subset using by setting the
+following parameters :
+only-user - Only return actions by this Webmin user
+only-module - Only actions in this module
+start-time - Limit to actions at or after this Unix time
+end-time - Limit to actions at or before this Unix time
+
+=cut
+sub list_webmin_log
+{
+local ($onlyuser, $onlymodule, $start, $end) = @_;
+local %index;
+&build_log_index(\%index);
+local @rv;
+open(LOG, $webmin_logfile);
+while(($id, $idx) = each %index) {
+	local ($pos, $time, $user, $module, $sid) = split(/\s+/, $idx);
+	next if (defined($onlyuser) && $user ne $onlyuser);
+	next if (defined($onlymodule) && $module ne $onlymodule);
+	next if (defined($start) && $time < $start);
+	next if (defined($end) && $time > $end);
+	seek(LOG, $pos, 0);
+	my $line = <LOG>;
+	my $act = &parse_logline($line);
+	if ($act) {
+		push(@rv, $act);
+		}
+	}
+close(LOG);
+return @rv;
+}
+
+=head2 parse_logline(line)
+
+Converts a line of text in the format used in /var/webmin/webmin.log into
+a hash ref containing the following keys :
+time - Unix time the action happened
+id - A unique ID for the action
+user - The Webmin user who did it
+sid - The user's session ID
+ip - The IP address they were logged in from
+module - The Webmin module name in which the action was performed
+script - Relative filename of the script that performed the action
+action - A short action name, like 'create'
+type - The kind of object being operated on, like 'user'
+object - Name of the object being operated on, like 'joe'
+params - A hash ref of additional information about the action
+
+=cut
 sub parse_logline
 {
 if ($_[0] =~ /^(\d+)\.(\S+)\s+\[.*\]\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+"([^"]+)"\s+"([^"]+)"\s+"([^"]+)"(.*)/ ||
@@ -42,8 +105,16 @@ else {
 	}
 }
 
-# list_diffs(&action)
-# Returns details of file changes made by this action
+=head2 list_diffs(&action)
+
+Returns details of file changes made by this action. Each of which is a
+hash ref with the keys :
+type - The change type, such as create, modify, delete, exec, sql or kill
+object - The file or database the change was made to
+diff - A diff of the file change made
+input - Input to the command run, if available
+
+=cut
 sub list_diffs
 {
 local $i = 0;
@@ -80,8 +151,15 @@ foreach my $file (@files) {
 return @rv;
 }
 
-# list_files(&action)
-# Returns details of original files before this action was taken
+=head2 list_files(&action)
+
+Returns details of original files before this action was taken. Each is a hash
+ref containing keys :
+type - One of create, modify or delete
+file - Full path to the file
+data - Original file contents, if any
+
+=cut
 sub list_files
 {
 local $i = 0;
@@ -114,16 +192,22 @@ foreach my $file (@files) {
 return @rv;
 }
 
-# get_annotation(&action)
-# Returns the text of the log annotation for this action
+=head2 get_annotation(&action)
+
+Returns the text of the log annotation for this action
+
+=cut
 sub get_annotation
 {
 local ($act) = @_;
 return &read_file_contents("$ENV{'WEBMIN_VAR'}/annotations/$act->{'id'}");
 }
 
-# save_annotation(&action, text)
-# Updates the annotation for some action
+=head2 save_annotation(&action, text)
+
+Updates the annotation for some action
+
+=cut
 sub save_annotation
 {
 local ($act, $text) = @_;
@@ -140,8 +224,11 @@ else {
 	}
 }
 
-# expand_base_dir(base)
-# Finds files either under some dir, or starting with some path
+=head2 expand_base_dir(base)
+
+Finds files either under some dir, or starting with some path
+
+=cut
 sub expand_base_dir
 {
 local ($base) = @_;
@@ -164,20 +251,32 @@ else {
 return @files;
 }
 
-# can_user(username)
+=head2 can_user(username)
+
+Returns 1 if the current Webmin user can view log entries for the given user
+
+=cut
 sub can_user
 {
 return $access_users{'*'} || $access_users{$_[0]};
 }
 
-# can_mod(module)
+=head2 can_mod(module)
+
+Returns 1 if the current Webmin user can view log entries for the given module
+
+=cut
 sub can_mod
 {
 return $access_mods{'*'} || $access_mods{$_[0]};
 }
 
-# get_action(id)
-# Returns the structure for some action
+=head2 get_action(id)
+
+Returns the structure for some action identified by an ID, in the same format 
+as returned by parse_logline.
+
+=cut
 sub get_action
 {
 local %index;
@@ -192,8 +291,12 @@ close(LOG);
 return $act->{'id'} eq $_[0] ? $act : undef;
 }
 
-# build_log_index(&index)
-# Updates the given hash with mappings between action IDs and file positions
+=head2 build_log_index(&index)
+
+Updates the given hash with mappings between action IDs and file positions.
+For internal use only really.
+
+=cut
 sub build_log_index
 {
 local ($index) = @_;
@@ -227,8 +330,12 @@ if ($st[9] > $index->{'lastchange'}) {
 	}
 }
 
-# get_action_description(&action, long)
-# Returns a human-readable description of some action
+=head2 get_action_description(&action, long)
+
+Returns a human-readable description of some action. This is done by
+calling the log_parser.pl file in the action's source module.
+
+=cut
 sub get_action_description
 {
 local ($act, $long) = @_;
