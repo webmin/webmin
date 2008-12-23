@@ -1,5 +1,8 @@
-# webmin-lib.pl
-# Common functions for configuring miniserv
+=head1 webmin-lib.pl
+
+Common functions for configuring miniserv and adjusting global Webmin settings.
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -44,6 +47,12 @@ $detect_operating_system_cache = "$module_config_directory/oscache";
 
 @debug_what_events = ( 'start', 'read', 'write', 'ops', 'procs', 'diff', 'cmd', 'net', 'sql' );
 
+=head2 setup_ca
+
+Internal function to create all the configuration files needed for the Webmin
+client SSL certificate CA.
+
+=cut
 sub setup_ca
 {
 local $adir = &module_root_directory("acl");
@@ -78,8 +87,12 @@ chmod(0700, "$acl/newcerts");
 $miniserv{'ca'} = "$acl/ca.pem";
 }
 
-# list_themes()
-# Returns an array of all installed themes
+=head2 list_themes
+
+Returns an array of all installed themes, each of which is a hash ref
+corresponding to the theme.info file.
+
+=cut
 sub list_themes
 {
 local (@rv, $o);
@@ -101,10 +114,13 @@ closedir(DIR);
 return sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) } @rv;
 }
 
-# install_webmin_module(file, unlink, nodeps, &users|groups)
-# Installs a webmin module or theme, and returns either an error message
-# or references to three arrays for descriptions, directories and sizes.
-# On success or failure, the file is deleted if the unlink parameter is set.
+=head2 install_webmin_module(file, unlink, nodeps, &users|groups)
+
+Installs a webmin module or theme, and returns either an error message
+or references to three arrays for descriptions, directories and sizes.
+On success or failure, the file is deleted if the unlink parameter is set.
+
+=cut
 sub install_webmin_module
 {
 local ($file, $need_unlink, $nodeps, $grant) = @_;
@@ -390,7 +406,13 @@ foreach $m (@newmods) {
 return [ \@mdescs, \@mdirs, \@msizes ];
 }
 
-# grant_user_module(&users/groups, &modules)
+=head2 grant_user_module(&users/groups, &modules)
+
+Grants users or groups access to a set of modules. The users parameter must
+be an array ref of usernames or group names, and modules must be an array
+ref of module names.
+
+=cut
 sub grant_user_module
 {
 # Grant to appropriate users
@@ -425,9 +447,13 @@ if ($_[1] && &foreign_check("acl")) {
 	}
 }
 
-# delete_webmin_module(module, [delete-acls])
-# Deletes some webmin module, clone or theme, and return a description of
-# the thing deleted.
+=head2 delete_webmin_module(module, [delete-acls])
+
+Deletes some webmin module, clone or theme, and return a description of
+the thing deleted. If the delete-acls flag is set, all .acl files are
+removed too.
+
+=cut
 sub delete_webmin_module
 {
 local $m = $_[0];
@@ -532,7 +558,11 @@ if (@aclrm) {
 return $mdesc;
 }
 
-# file_basename(name)
+=head2 file_basename(name)
+
+Returns the part of a filename after the last /.
+
+=cut
 sub file_basename
 {
 local $rv = $_[0];
@@ -540,10 +570,13 @@ $rv =~ s/^.*[\/\\]//;
 return $rv;
 }
 
-# gnupg_setup()
-# Setup gnupg so that rpms and .tar.gz files can be verified.
-# Returns 0 if ok, 1 if gnupg is not installed, or 2 if something went wrong
-# Assumes that gnupg-lib.pl is available
+=head2 gnupg_setup
+
+Setup gnupg so that rpms and .tar.gz files can be verified.
+Returns 0 if ok, 1 if gnupg is not installed, or 2 if something went wrong
+Assumes that gnupg-lib.pl is available
+
+=cut
 sub gnupg_setup
 {
 return ( 1, &text('enogpg', "<tt>gpg</tt>") ) if (!&has_command("gpg"));
@@ -564,10 +597,13 @@ if ($?) {
 return 0;
 }
 
-# list_standard_modules()
-# Returns a list containing the short names, URLs and descriptions of the
-# standard Webmin modules from www.webmin.com. If an error occurs, returns the
-# message instead.
+=head2 list_standard_modules
+
+Returns a list containing the short names, URLs and descriptions of the
+standard Webmin modules from www.webmin.com. If an error occurs, returns the
+message instead.
+
+=cut
 sub list_standard_modules
 {
 local $temp = &transname();
@@ -595,17 +631,24 @@ unlink($temp);
 return \@rv;
 }
 
-# standard_chooser_button(input, [form])
+=head2 standard_chooser_button(input, [form])
+
+Returns HTML for a popup button for choosing a standard module
+
+=cut
 sub standard_chooser_button
 {
-local $form = @_ > 1 ? $_[1] : 0;
-return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"standard_chooser.cgi?mod=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=600,height=300\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+return &popup_window_button("standard_chooser.cgi", 800, 500, 1,
+	[ [ "ifield", $_[0], "mod" ] ]);
 }
 
-# list_third_modules()
-# Returns a list containing the names, versions, URLs and descriptions of the
-# third-party Webmin modules from thirdpartymodules.webmin.com. If an error
-# occurs, returns the message instead.
+=head2 list_third_modules
+
+Returns a list containing the names, versions, URLs and descriptions of the
+third-party Webmin modules from thirdpartymodules.webmin.com. If an error
+occurs, returns the message instead.
+
+=cut
 sub list_third_modules
 {
 local $temp = &transname();
@@ -633,22 +676,32 @@ unlink($temp);
 return \@rv;
 }
 
-# third_chooser_button(input, [form])
+=head2 third_chooser_button(input, [form])
+
+Returns HTML for a popup button for choosing a third-party module.
+
+=cut
 sub third_chooser_button
 {
-local $form = @_ > 1 ? $_[1] : 0;
-return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"third_chooser.cgi?mod=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=700,height=300\"); chooser.ifield = ifield; window.ifield = ifield' value=\"$text{'mods_thsel'}\">\n";
+return &popup_window_button("third_chooser.cgi", 800, 500, 1,
+	[ [ "ifield", $_[0], "mod" ] ]);
 }
 
-# get_webmin_base_version()
-# Gets the webmin version, rounded to the nearest .01
+=head2 get_webmin_base_version
+
+Gets the webmin version, rounded to the nearest .01
+
+=cut
 sub get_webmin_base_version
 {
 return &base_version(&get_webmin_version());
 }
 
-# base_version()
-# Rounds a version number down to the nearest .01
+=head2 base_version
+
+Rounds a version number down to the nearest .01
+
+=cut
 sub base_version
 {
 return sprintf("%.2f0", $_[0] - 0.005);
@@ -656,8 +709,11 @@ return sprintf("%.2f0", $_[0] - 0.005);
 
 $newmodule_users_file = "$config_directory/newmodules";
 
-# get_newmodule_users()
-# Returns a ref to an array of users to whom new modules are granted, or undef
+=head2 get_newmodule_users
+
+Returns a ref to an array of users to whom new modules are granted, or undef
+
+=cut
 sub get_newmodule_users
 {
 if (open(NEWMODS, $newmodule_users_file)) {
@@ -674,9 +730,12 @@ else {
 	}
 }
 
-# save_newmodule_users(&users)
-# Saves the list of users to whom new modules are granted. If undef is given,
-# the default behavious is used
+=head2 save_newmodule_users(&users)
+
+Saves the list of users to whom new modules are granted. If undef is given,
+the default behavious is used
+
+=cut
 sub save_newmodule_users
 {
 &lock_file($newmodule_users_file);
@@ -693,7 +752,13 @@ else {
 &unlock_file($newmodule_users_file);
 }
 
-# get_miniserv_sockets(&miniserv)
+=head2 get_miniserv_sockets(&miniserv)
+
+Returns an array of tuple refs, each of which contains an IP address and port
+number that Webmin listens on. The IP can be * (meaning any), and the port can
+be * (meaning the primary port).
+
+=cut
 sub get_miniserv_sockets
 {
 local @sockets;
@@ -715,9 +780,12 @@ foreach $s (split(/\s+/, $_[0]->{'sockets'})) {
 return @sockets;
 }
 
-# fetch_updates(url, [login, pass])
-# Returns a list of updates from some URL, or calls &error.
-# Format is  module version url support description
+=head2 fetch_updates(url, [login, pass])
+
+Returns a list of updates from some URL, or calls &error.
+Format is  module version url support description
+
+=cut
 sub fetch_updates
 {
 local ($host, $port, $page, $ssl) = &parse_http_url($_[0]);
@@ -739,7 +807,12 @@ unlink($temp);
 return ( \@updates, $host, $port, $page, $ssl );
 }
 
-# find_cron_job(\@jobs)
+=head2 find_cron_job(\@jobs)
+
+Finds the cron job for Webmin updates, given an array ref of cron jobs
+as returned by cron::list_cron_jobs
+
+=cut
 sub find_cron_job
 {
 local ($job) = grep { $_->{'user'} eq 'root' &&
@@ -747,8 +820,11 @@ local ($job) = grep { $_->{'user'} eq 'root' &&
 return $job;
 }
 
-# get_ipkeys(&miniserv)
-# Returns a list of IP address to key file mappings from a miniserv.conf entry
+=head2 get_ipkeys(&miniserv)
+
+Returns a list of IP address to key file mappings from a miniserv.conf entry
+
+=cut
 sub get_ipkeys
 {
 local (@rv, $k);
@@ -764,8 +840,11 @@ foreach $k (keys %{$_[0]}) {
 return @rv;
 }
 
-# save_ipkeys(&miniserv, &keys)
-# Updates miniserv.conf entries from the given list of keys
+=head2 save_ipkeys(&miniserv, &keys)
+
+Updates miniserv.conf entries from the given list of keys
+
+=cut
 sub save_ipkeys
 {
 local $k;
@@ -783,8 +862,11 @@ foreach $k (@{$_[1]}) {
 	}
 }
 
-# validate_key_cert(key, [cert])
-# Call &error if some key and cert file don't look correct
+=head2 validate_key_cert(key, [cert])
+
+Call &error if some key and cert file don't look correct
+
+=cut
 sub validate_key_cert
 {
 local $key = &read_file_contents($_[0]);
@@ -798,9 +880,12 @@ else {
 	}
 }
 
-# detect_operating_system([os-list-file], [with-cache])
-# Returns a hash containing os_type, os_version, real_os_type and
-# real_os_version
+=head2 detect_operating_system([os-list-file], [with-cache])
+
+Returns a hash containing os_type, os_version, real_os_type and
+real_os_version, suitable for the current system.
+
+=cut
 sub detect_operating_system
 {
 local $file = $_[0] || "$root_directory/os_list.txt";
@@ -830,8 +915,12 @@ $rv{'time'} = time();
 return %rv;
 }
 
-# show_webmin_notifications([no-updates])
-# Print various notifications for the current user, if needed
+=head2 show_webmin_notifications([no-updates])
+
+Print various notifications for the current user, if any. These can include
+password expiry, Webmin updats and more.
+
+=cut
 sub show_webmin_notifications
 {
 local ($noupdates) = @_;
@@ -841,8 +930,13 @@ if (@notifs) {
 	}
 }
 
-# get_webmin_notifications([no-updates])
-# Returns a list of Webmin notification messages
+=head2 get_webmin_notifications([no-updates])
+
+Returns a list of Webmin notification messages, each of which is a string of
+HTML. If the no-updates flag is set, Webmin version / module updates are
+not included.
+
+=cut
 sub get_webmin_notifications
 {
 local ($noupdates) = @_;
@@ -1011,8 +1105,11 @@ if (&foreign_available($module_name) && !$noupdates) {
 return @notifs;
 }
 
-# get_system_uptime()
-# Returns the number of seconds the system has been up, or undef if un-available
+=head2 get_system_uptime
+
+Returns the number of seconds the system has been up, or undef if un-available
+
+=cut
 sub get_system_uptime
 {
 # Try Linux /proc/uptime first
@@ -1045,8 +1142,16 @@ if ($gconfig{'os_type'} ne 'windows') {
 return undef;
 }
 
-# list_operating_systems([os-list-file])
-# Returns a list of know OS's
+=head2 list_operating_systems([os-list-file])
+
+Returns a list of known OSs, each of which is a hash ref with keys :
+realtype - A human-readable OS name, like Ubuntu Linux
+realversion - A human-readable version, like 8.04
+type - Webmin's internal OS code, like debian-linux
+version - Webmin's internal version number, like 3.1
+code - A fragment of Perl that will return true if evaluated on this OS
+
+=cut
 sub list_operating_systems
 {
 local $file = $_[0] || "$root_directory/os_list.txt";
@@ -1065,10 +1170,13 @@ close(OSLIST);
 return @rv;
 }
 
-# shared_root_directory()
-# Returns 1 if the Webmin root directory is shared with another system, such as
-# via NFS, or in a Solaris zone. If so, updates and module installs are not
-# allowed.
+=head2 shared_root_directory
+
+Returns 1 if the Webmin root directory is shared with another system, such as
+via NFS, or in a Solaris zone. If so, updates and module installs are not
+allowed.
+
+=cut
 sub shared_root_directory
 {
 if ($gconfig{'shared_root'} eq '1') {
@@ -1100,9 +1208,12 @@ if (&running_in_zone()) {
 return 0;
 }
 
-# submit_os_info(id)
-# Send via email a message about this system's OS and Perl version. Returns
-# undef if OK, or an error message
+=head2 submit_os_info(id)
+
+Send via email a message about this system's OS and Perl version. Returns
+undef if OK, or an error message
+
+=cut
 sub submit_os_info
 {
 if (!&foreign_installed("mailboxes", 1)) {
@@ -1126,8 +1237,11 @@ eval { &mailboxes::send_mail($mail); };
 return $@ ? $@ : undef;
 }
 
-# get_webmin_id()
-# Returns a (hopefully) unique ID for this Webmin install
+=head2 get_webmin_id
+
+Returns a (hopefully) unique ID for this Webmin install
+
+=cut
 sub get_webmin_id
 {
 if (!$config{'webminid'}) {
@@ -1138,8 +1252,12 @@ if (!$config{'webminid'}) {
 return $config{'webminid'};
 }
 
-# ip_match(ip, [match]+)
-# Checks an IP address against a list of IPs, networks and networks/masks
+=head2 ip_match(ip, [match]+)
+
+Checks an IP address against a list of IPs, networks and networks/masks, and
+returns 1 if a match is found.
+
+=cut
 sub ip_match
 {
 local(@io, @mo, @ms, $i, $j);
@@ -1188,8 +1306,11 @@ for($i=1; $i<@_; $i++) {
 return 0;
 }
 
-# prefix_to_mask(prefix)
-# Converts a number like 24 to a mask like 255.255.255.0
+=head2 prefix_to_mask(prefix)
+
+Converts a number like 24 to a mask like 255.255.255.0
+
+=cut
 sub prefix_to_mask
 {
 return $_[0] >= 24 ? "255.255.255.".(256-(2 ** (32-$_[0]))) :
@@ -1198,9 +1319,12 @@ return $_[0] >= 24 ? "255.255.255.".(256-(2 ** (32-$_[0]))) :
                      (256-(2 ** (8-$_[0]))).".0.0.0";
 }
 
-# valid_allow(text)
-# Returns undef if some text is a valid IP, hostname or network for use in
-# allowed IPs, or an error message if not
+=head2 valid_allow(text)
+
+Returns undef if some text is a valid IP, hostname or network for use in
+allowed IPs, or an error message if not
+
+=cut
 sub valid_allow
 {
 local ($h) = @_;
@@ -1237,22 +1361,36 @@ else {
 return undef;
 }
 
-# get_preloads(&miniserv)
-# Returns a list of module names and files to pre-load
+=head2 get_preloads(&miniserv)
+
+Returns a list of module names and files to pre-load, based on a Webmin
+miniserv configuration hash. Each is a two-element array ref containing
+a package name and the relative path of the .pl file to pre-load.
+
+=cut
 sub get_preloads
 {
 local @rv = map { [ split(/=/, $_) ] } split(/\s+/, $_[0]->{'preload'});
 return @rv;
 }
 
-# save_preloads(&miniserv, &preloads)
+=head2 save_preloads(&miniserv, &preloads)
+
+Updates a Webmin miniserv configuration hash from a list of preloads, in
+the format returned by get_preloads.
+
+=cut
 sub save_preloads
 {
 $_[0]->{'preload'} = join(" ", map { "$_->[0]=$_->[1]" } @{$_[1]});
 }
 
-# get_tempdirs(&gconfig)
-# Returns a list of per-module temp directories
+=head2 get_tempdirs(&gconfig)
+
+Returns a list of per-module temp directories, each of which is an array
+ref containing a module name and directory.
+
+=cut
 sub get_tempdirs
 {
 local ($gconfig) = @_;
@@ -1265,8 +1403,11 @@ foreach my $k (keys %$gconfig) {
 return sort { $a->[0] cmp $b->[0] } @rv;
 }
 
-# save_tempdirs(&gconfig, &tempdirs)
-# Updates the global config with a list of per-module temp dirs
+=head2 save_tempdirs(&gconfig, &tempdirs)
+
+Updates the global config with a list of per-module temp dirs
+
+=cut
 sub save_tempdirs
 {
 local ($gconfig, $dirs) = @_;
@@ -1280,9 +1421,12 @@ foreach my $d (@$dirs) {
 	}
 }
 
-# get_module_install_type(dir)
-# Returns the installation method used for some module (such as 'rpm'), or undef
-# if it was installed from a .wbm
+=head2 get_module_install_type(dir)
+
+Returns the installation method used for some module (such as 'rpm'), or undef
+if it was installed from a .wbm
+
+=cut
 sub get_module_install_type
 {
 local ($mod) = @_;
@@ -1294,9 +1438,12 @@ close(TYPE);
 return $type;
 }
 
-# get_install_type()
-# Returns the package type Webmin was installed form (rpm, deb, solaris-pkg
-# or undef for tar.gz)
+=head2 get_install_type
+
+Returns the package type Webmin was installed form (rpm, deb, solaris-pkg
+or undef for tar.gz)
+
+=cut
 sub get_install_type
 {
 local $mode;
@@ -1321,8 +1468,12 @@ else {
 return $mode;
 }
 
-# list_cached_files()
-# Returns a list of cached filenames, full paths and urls
+=head2 list_cached_files
+
+Returns a list of cached filenames for downloads made by Webmin, as array refs
+containing a full path and url.
+
+=cut
 sub list_cached_files
 {
 local @rv;
@@ -1337,7 +1488,11 @@ closedir(DIR);
 return @rv;
 }
 
-# show_restart_page([title, msg])
+=head2 show_restart_page([title, msg])
+
+Output a page with header and footer about Webmin needing to restart.
+
+=cut
 sub show_restart_page
 {
 local ($title, $msg) = @_;
@@ -1345,14 +1500,17 @@ $title ||= $text{'restart_title'};
 $msg ||= $text{'restart_done'};
 &ui_print_header(undef, $title, "");
 
-print "<p>$msg<p>\n";
+print "$msg<p>\n";
 
 &ui_print_footer("", $text{'index_return'});
 &restart_miniserv(1);
 }
 
-# cert_info(file)
-# Returns a hash of details of a cert in some file
+=head2 cert_info(file)
+
+Returns a hash of details of a cert in some file.
+
+=cut
 sub cert_info
 {
 local %rv;
@@ -1388,8 +1546,12 @@ $rv{'type'} = $rv{'o'} eq $rv{'issuer_o'} ? $text{'ssl_typeself'}
 return \%rv;
 }
 
-# cert_pem_data(file)
-# Returns a cert in PEM format
+=head2 cert_pem_data(file)
+
+Returns a cert in PEM format, from a file containing the PEM and possibly
+other keys.
+
+=cut
 sub cert_pem_data
 {
 local ($d) = @_;
@@ -1400,8 +1562,11 @@ if ($data =~ /(-----BEGIN\s+CERTIFICATE-----\n([A-Za-z0-9\+\/=\n\r]+)-----END\s+
 return undef;
 }
 
-# cert_pkcs12_data(keyfile, [certfile])
-# Returns a cert in PKCS12 format
+=head2 cert_pkcs12_data(keyfile, [certfile])
+
+Returns a cert in PKCS12 format
+
+=cut
 sub cert_pkcs12_data
 {
 local ($keyfile, $certfile) = @_;
@@ -1421,8 +1586,11 @@ close(OUT);
 return $data;
 }
 
-# get_blocked_users_hosts(&miniserv)
-# Returns a list of blocked users and hosts from the file written by Webmin
+=head2 get_blocked_users_hosts(&miniserv)
+
+Returns a list of blocked users and hosts from the file written by Webmin
+
+=cut
 sub get_blocked_users_hosts
 {
 local ($miniserv) = @_;
@@ -1445,8 +1613,11 @@ close(BLOCKED);
 return @rv;
 }
 
-# show_ssl_key_form([defhost], [defemail], [deforg])
-# Returns HTML for inputs to generate a new self-signed cert
+=head2 show_ssl_key_form([defhost], [defemail], [deforg])
+
+Returns HTML for inputs to generate a new self-signed cert
+
+=cut
 sub show_ssl_key_form
 {
 local ($defhost, $defemail, $deforg) = @_;
@@ -1485,9 +1656,12 @@ $rv .= &ui_table_row($text{'ssl_days'},
 return $rv;
 }
 
-# parse_ssl_key_form(&in, keyfile, [certfile])
-# Parses the key generation form, and creates new key and cert files.
-# Returns undef on success or an error message on failure.
+=head2 parse_ssl_key_form(&in, keyfile, [certfile])
+
+Parses the key generation form, and creates new key and cert files.
+Returns undef on success or an error message on failure.
+
+=cut
 sub parse_ssl_key_form
 {
 local ($in, $keyfile, $certfile) = @_;
@@ -1554,9 +1728,12 @@ else {
 return undef;
 }
 
-# build_installed_modules(force-all, force-mod)
-# Calls each module's install_check function, and updates the cache of
-# modules whose underlying servers are installed.
+=head2 build_installed_modules(force-all, force-mod)
+
+Calls each module's install_check function, and updates the cache of
+modules whose underlying servers are installed.
+
+=cut
 sub build_installed_modules
 {
 local ($force, $mod) = @_;
@@ -1583,9 +1760,12 @@ foreach my $minfo (&get_all_module_infos()) {
 return wantarray ? (\%installed, \@changed) : \%installed;
 }
 
-# get_latest_webmin_version()
-# Returns 1 and the latest version of Webmin available on www.webmin.com, or
-# 0 and an error message
+=head2 get_latest_webmin_version
+
+Returns 1 and the latest version of Webmin available on www.webmin.com, or
+0 and an error message
+
+=cut
 sub get_latest_webmin_version
 {
 local $file = &transname();
@@ -1605,9 +1785,12 @@ return $version ? (1, $version)
 		: (0, "No version number found at $update_host");
 }
 
-# filter_updates(&updates, [version], [include-third], [include-missing])
-# Given a list of updates, filters them to include only those that are
-# suitable for this system.
+=head2 filter_updates(&updates, [version], [include-third], [include-missing])
+
+Given a list of updates, filters them to include only those that are
+suitable for this system.
+
+=cut
 sub filter_updates
 {
 local ($allupdates, $version, $third, $missing) = @_;
