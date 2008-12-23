@@ -21,16 +21,16 @@ else {
 	print "return false;\n";
 	print "}\n";
 	print "</script>\n";
-	print "<table width=100%>\n";
+	@table = ( );
 	foreach $m (@$mods) {
 		local $minfo = { 'os_support' => $m->[3] };
 		next if (!&check_os_support($minfo));
-		print "<tr>\n";
-		print "<td><a href='' onClick='return select(\"$m->[0]\")'>$m->[0]</a></td>\n";
-		print "<td>$m->[4]</td>\n";
-		print "</tr>\n";
+		push(@table, [
+		 "<a href='' onClick='return select(\"$m->[0]\")'>$m->[0]</a>",
+		 &html_escape($m->[4]),
+		 ]);
 		}
-	print "</table>\n";
+	print &ui_columns_table(undef, 100, \@table);
 	}
 &ui_print_footer();
 

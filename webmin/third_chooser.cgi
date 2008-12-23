@@ -19,15 +19,15 @@ else {
 	print "return false;\n";
 	print "}\n";
 	print "</script>\n";
-	print "<table width=100%>\n";
+	@table = ( );
 	foreach $m (@$mods) {
-		print "<tr>\n";
-		print "<td><a href='' onClick='return select(\"$m->[2]\")'>$m->[0]</a></td>\n";
-		print "<td>",$m->[1] eq "NONE" ? "" : $m->[1],"</td>\n";
-		print "<td>$m->[3]</td>\n";
-		print "</tr>\n";
+		push(@table, [
+		 "<a href='' onClick='return select(\"$m->[2]\")'>$m->[0]</a>",
+		 $m->[1] eq "NONE" ? "" : &html_escape($m->[1]),
+		 $m->[3],
+		 ]);
 		}
-	print "</table>\n";
+	print &ui_columns_table(undef, 100, \@table);
 	}
 &popup_footer();
 
