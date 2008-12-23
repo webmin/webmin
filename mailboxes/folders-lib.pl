@@ -280,6 +280,7 @@ elsif ($_[2]->{'type'} == 6) {
 				$mems = [ grep { $_->[0] ne $sf ||
 					 $_->[1] ne $wantids[$i] } @$mems ];
 				$changed = 1;
+				$mail[$wantidxs[$i]] = 'GONE';
 				}
 			}
 		}
@@ -290,7 +291,7 @@ elsif ($_[2]->{'type'} == 6) {
 		}
 
 	# Filter out messages that don't exist anymore
-	@mail = grep { defined($_) } @mail;
+	@mail = grep { $_ ne 'GONE' } @mail;
 	return @mail;
 	}
 }
@@ -667,6 +668,7 @@ elsif ($end < 0) {
 	local $rstart = $count+$_[1]-1;
 	local $rend = $count+$_[0]-1;
 	$rstart = $rstart < 0 ? 0 : $rstart;
+	$rend = $count - 1 if ($rend >= $count);
 	return ($rstart, $rend);
 	}
 else {
