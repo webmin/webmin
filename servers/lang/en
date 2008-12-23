@@ -31,7 +31,9 @@ edit_ssl=SSL server?
 edit_link=Link type
 edit_mode0=Normal link to server
 edit_mode1=Login via Webmin with
-edit_mode2=Login when icon is clicked on
+edmin will be prompted for a username and password
+           when accessing this remote system in this module's UI.
+sameuser dit_mode2=Login when icon is clicked on
 edit_mode3=Login with username and password from this server
 edit_user=username
 edit_luser=Username for remote server

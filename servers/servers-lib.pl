@@ -1,5 +1,20 @@
-# servers-lib.pl
-# Common functions for managing servers
+=head1 servers-lib.pl
+
+Functions for managing remote Webmin servers, which can be monitored or used
+for RPC operations. Example code :
+
+ foreign_require("servers", "servers-lib.pl");
+ $newserv = { 'host' => 'box.foo.com',
+              'port' => 10000,
+              'ssl' => 1,
+              'user' => 'root',
+              'pass' => 'smeg',
+              'fast' => 1 };
+ servers::save_server($newserv);
+ remote_foreign_require($newserv, 'webmin', 'webmin-lib.pl');
+ $ver = remote_foreign_call($newserv, 'webmin', 'get_webmin_version');
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -9,6 +24,26 @@ $cron_cmd = "$module_config_directory/auto.pl";
 
 @cluster_modules = ( "cluster-software" );
 
+=head2 list_servers
+
+Returns a list of registered Webmin servers. Each is a hash ref, with the
+following keys :
+id - A unique ID for this server, separate from the hostname
+host - The full Internet hostname or IP address
+port - Port number that Webmin listens on, such as 10000
+ssl - Set to 1 if Webmin is in SSL mode
+group - A tab-separated list of group names that this server is in
+desc - An optional human-readable description
+fast - Set to 1 if fast RPC mode (using non-HTTP TCP connections on ports
+       10001 and above) is used, 0 for only HTTP
+user - The login used to access Webmin on this system, such as root or admin
+pass - The password for the username above
+autouser - Set to 1 if the admin will be prompted for a username and password
+           when accessing this remote system in this module's UI.
+sameuser - Set to 1 if this current login and password will be used to login
+           to this remote system.
+
+=cut
 sub list_servers
 {
 local ($f, @rv);
@@ -22,8 +57,12 @@ closedir(DIR);
 return @rv;
 }
 
-# list_servers_sorted(applyacl)
-# Returns a list of servers, sorted according to the module configuration
+=head2 list_servers_sorted(applyacl)
+
+Returns a list of servers, sorted according to the module configuration.
+The format is the same as list_servers.
+
+=cut
 sub list_servers_sorted
 {
 local @servers = &list_servers();
@@ -50,7 +89,12 @@ elsif ($config{'sort_mode'} == 5) {
 return @servers;
 }
 
-# get_server(id)
+=head2 get_server(id)
+
+Given a remote server's unique ID, returns the hash reference in the same
+format as list_serves.
+
+=cut
 sub get_server
 {
 local $serv;
@@ -60,9 +104,15 @@ $serv->{'file'} = "$module_config_directory/$_[0].serv";
 return $serv;
 }
 
-# save_server(&server)
+=head2 save_server(&server)
+
+Updates a Webmin server on disk, based on the details in the given hash ref,
+which must be in the same format as list_servers.
+
+=cut
 sub save_server
 {
+$_[0]->{'id'} ||= time().$$;
 &lock_file("$module_config_directory/$_[0]->{'id'}.serv");
 &write_file("$module_config_directory/$_[0]->{'id'}.serv", $_[0]);
 chmod(0600, "$module_config_directory/$_[0]->{'id'}.serv");
@@ -70,7 +120,11 @@ chmod(0600, "$module_config_directory/$_[0]->{'id'}.serv");
 undef(%main::remote_servers_cache);
 }
 
-# delete_server(id)
+=head2 delete_server(id)
+
+Deletes the Webmin server details identified by the given ID.
+
+=cut
 sub delete_server
 {
 &lock_file("$module_config_directory/$_[0].serv");
@@ -79,7 +133,12 @@ unlink("$module_config_directory/$_[0].serv");
 undef(%main::remote_servers_cache);
 }
 
-# can_use_server(&server)
+=head2 can_use_server(&server)
+
+Returns 1 if the current Webmin user can use and edit the server specified
+by the given hash ref.
+
+=cut
 sub can_use_server
 {
 return 1 if ($access{'servers'} eq '*');
@@ -90,8 +149,14 @@ foreach $s (split(/\s+/, $access{'servers'})) {
 return 0;
 }
 
-# list_all_groups([&servers])
-# Returns a list of all webmin and MSC groups and their members
+=head2 list_all_groups([&servers])
+
+Returns a list of all Webmin server groups and their members, each of
+which is a hash ref with the keys :
+name - A unique group name
+members - An array ref of server hostnames
+
+=cut
 sub list_all_groups
 {
 local (@rv, %gmap, $s, $f, $gn);
@@ -155,7 +220,11 @@ while(1) {
 return @rv;
 }
 
-# logged_in(&serv)
+=head2 logged_in(&serv)
+
+For internal use only.
+
+=cut
 sub logged_in
 {
 local $id = $_[0]->{'id'};
@@ -198,8 +267,11 @@ else {
 		  [ 'unknown', $text{'lib_other'} ],
 		);
 
-# this_server()
-# Returns a fake servers-list entry for this server
+=head2 this_server
+
+Returns a fake servers-list entry for this server
+
+=cut
 sub this_server
 {
 local $type = 'unknown';
@@ -213,8 +285,12 @@ foreach my $s (@server_types) {
 return { 'id' => 0, 'desc' => $text{'this_server'}, 'type' => $type };
 }
 
-# get_my_address()
-# Returns the system's IP address, or undef
+=head2 get_my_address
+
+Returns the system's IP address, taken from eth0 or reverse resolution of
+the hostname. Returns undef if this cannot be computed.
+
+=cut
 sub get_my_address
 {
 local $myip;
@@ -238,7 +314,12 @@ if ($myip) {
 return wantarray ? ( ) : undef;
 }
 
-# address_to_broadcast(address, net-mode)
+=head2 address_to_broadcast(address, net-mode)
+
+Given an IP address, converts it to a broadcast by changing the last few
+octets to 255.
+
+=cut
 sub address_to_broadcast
 {
 local $end = $_[1] ? "0" : "255";
@@ -248,8 +329,11 @@ return $ip[0] >= 192 ? "$ip[0].$ip[1].$ip[2].$end" :
 		       "$ip[0].$end.$end.$end";
 }
 
-# test_server(host)
-# Returns undef if some server can be connected to OK, or an error message
+=head2 test_server(host)
+
+Returns undef if some server can be connected to OK, or an error message
+
+=cut
 sub test_server
 {
 local $main::error_must_die = 1;
@@ -264,6 +348,11 @@ $rv =~ s/\s+at\s+(\S+)\s+line\s+\d+.*$//;
 return $rv;
 }
 
+=head2 find_cron_job
+
+Returns the cron job hash ref for the regular scheduled new servers check.
+
+=cut
 sub find_cron_job
 {
 &foreign_require("cron", "cron-lib.pl");
@@ -271,8 +360,12 @@ local ($job) = grep { $_->{'command'} eq $cron_cmd } &cron::list_cron_jobs();
 return $job;
 }
 
-# find_servers(&addresses, limit, no-print, defuser, defpass, deftype,
-#	       &cluster-modules, find-self, port)
+=head2 find_servers(&addresses, limit, no-print, defuser, defpass, deftype, &cluster-modules, find-self, port)
+
+Attempts to find and register Webmin servers by sending out broadcast pings.
+Mainly for internal use.
+
+=cut
 sub find_servers
 {
 local ($broad, $limit, $noprint, $defuser, $defpass, $deftype, $mods, $self,
