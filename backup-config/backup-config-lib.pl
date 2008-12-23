@@ -1,4 +1,14 @@
-# Functions for doing backups
+=head1 backup-config-lib.pl
+
+Functions for creating configuration file backups. Some example code :
+
+ foreign_require('backup-config', 'backup-config-lib.pl');
+ @backups = backup_config::list_backups();
+ ($apache_backup) = grep { $_->{'mods'} eq 'apache' } @backups;
+ $apache_backup->{'dest'} = '/tmp/apache.tar.gz';
+ &backup_config::save_backup($apache_backup);
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -9,8 +19,12 @@ $cron_cmd = "$module_config_directory/backup.pl";
 $backups_dir = "$module_config_directory/backups";
 $manifests_dir = "/tmp/backup-config-manifests";
 
-# list_backup_modules()
-# Returns details of all modules that allow backups
+=head2 list_backup_modules
+
+Returns details of all modules that allow backups, each of which is a hash
+ref in the same format as returned by get_module_info
+
+=cut
 sub list_backup_modules
 {
 local ($m, @rv);
@@ -24,8 +38,21 @@ foreach $m (&get_all_module_infos()) {
 return sort { $a->{'desc'} cmp $b->{'desc'} } @rv;
 }
 
-# list_backups()
-# Returns a list of all configured backups
+=head2 list_backups
+
+Returns a list of all configured backups, each of which is a hash ref with
+at least the following keys :
+mods - Space-separate list of modules to include
+dest - Destination file, FTP or SSH server
+configfile - Set to 1 if /etc/webmin/modulename files are included
+nofiles - Set to 1 if server config files (like httpd.conf) are NOT included
+others - A tab-separated list of other files to include
+email -Email address to notify
+emode - Set to 0 to send email only on failure, 1 to always send
+sched - Set to 1 if regular scheduled backups are enabled
+mins,hours,days,months,weekdays - Cron-style specification of backup time
+
+=cut
 sub list_backups
 {
 local (@rv, $f);
@@ -38,7 +65,12 @@ closedir(DIR);
 return @rv;
 }
 
-# get_backup(id)
+=head2 get_backup(id)
+
+Given a unique backup ID, returns a hash ref containing its details, in the
+same format as list_backups.
+
+=cut
 sub get_backup
 {
 local %backup;
@@ -47,7 +79,13 @@ $backup{'id'} = $_[0];
 return \%backup;
 }
 
-# save_backup(&backup)
+=head2 save_backup(&backup)
+
+Given a hash ref containing backup details, saves them to disk. Must be in
+the same format as returned by list_backups, except for the ID which will be
+randomly assigned if missing.
+
+=cut
 sub save_backup
 {
 $_[0]->{'id'} ||= time().$$;
@@ -57,15 +95,22 @@ mkdir($backups_dir, 0700);
 &unlock_file("$backups_dir/$_[0]->{'id'}.backup");
 }
 
-# delete_backup(&backup)
+=head2 delete_backup(&backup)
+
+Deletes the backup whose details are in the given hash ref.
+
+=cut
 sub delete_backup
 {
 &unlink_logged("$backups_dir/$_[0]->{'id'}.backup");
 }
 
-# parse_backup_url(string)
-# Converts a URL like ftp:// or a filename into its components. These are
-# user, pass, host, page, port (optional)
+=head2 parse_backup_url(string)
+
+Converts a URL like ftp:// or a filename into its components. These are
+user, pass, host, page, port (optional)
+
+=cut
 sub parse_backup_url
 {
 if ($_[0] =~ /^ftp:\/\/([^:]*):([^\@]*)\@([^\/:]+)(:(\d+))?(\/.*)$/) {
@@ -85,8 +130,11 @@ else {
 	}
 }
 
-# show_backup_destination(name, value, [local-mode])
-# Returns HTML for a field for selecting a local or FTP file
+=head2 show_backup_destination(name, value, [local-mode])
+
+Returns HTML for a field for selecting a local or FTP file
+
+=cut
 sub show_backup_destination
 {
 local ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[1]);
@@ -158,8 +206,11 @@ $rv .= "</table>\n";
 return $rv;
 }
 
-# parse_backup_destination(name, &in)
-# Returns a backup destination string, or calls error
+=head2 parse_backup_destination(name, &in)
+
+Returns a backup destination string, or calls error
+
+=cut
 sub parse_backup_destination
 {
 local %in = %{$_[1]};
@@ -205,11 +256,13 @@ elsif ($mode == 4) {
 	}
 }
 
-# execute_backup(&modules, dest, &size, &files, include-webmin, exclude-files,
-#		 &others)
-# Backs up the configuration files for the modules to the selected destination.
-# The backup is simply a tar file of config files. Returns undef on success,
-# or an error message on failure
+=head2 execute_backup(&modules, dest, &size, &files, include-webmin, exclude-files, &others)
+
+Backs up the configuration files for the modules to the selected destination.
+The backup is simply a tar file of config files. Returns undef on success,
+or an error message on failure
+
+=cut
 sub execute_backup
 {
 local @mods = grep { $_ ne '' } @{$_[0]};
@@ -346,9 +399,12 @@ elsif ($mode == 2) {
 return undef;
 }
 
-# execute_restore(&mods, source, &files, apply)
-# Restore configuration files from the specified source for the listed modules.
-# Returns undef on success, or an error message.
+=head2 execute_restore(&mods, source, &files, apply)
+
+Restore configuration files from the specified source for the listed modules.
+Returns undef on success, or an error message.
+
+=cut
 sub execute_restore
 {
 # Fetch file if needed
@@ -502,9 +558,12 @@ if ($_[3]) {
 return undef;
 }
 
-# scp_copy(source, dest, password, &error, [port])
-# Copies a file from some source to a destination. One or the other can be
-# a server, like user@foo:/path/to/bar/
+=head2 scp_copy(source, dest, password, &error, [port])
+
+Copies a file from some source to a destination. One or the other can be
+a server, like user@foo:/path/to/bar/
+
+=cut
 sub scp_copy
 {
 &foreign_require("proc", "proc-lib.pl");
@@ -532,7 +591,11 @@ if ($? || $out =~ /permission\s+denied/i) {
 	}
 }
 
-# find_cron_job(&backup)
+=head2 find_cron_job(&backup)
+
+MISSING DOCUMENTATION
+
+=cut
 sub find_cron_job
 {
 local @jobs = &cron::list_cron_jobs();
@@ -541,8 +604,11 @@ local ($job) = grep { $_->{'user'} eq 'root' &&
 return $job;
 }
 
-# nice_dest(destination, [subdates])
-# Returns a backup filename in a human-readable format, with dates substituted
+=head2 nice_dest(destination, [subdates])
+
+Returns a backup filename in a human-readable format, with dates substituted
+
+=cut
 sub nice_dest
 {
 local ($mode, $user, $pass, $server, $path, $port) = &parse_backup_url($_[0]);
@@ -568,7 +634,12 @@ elsif ($mode == 4) {
 	}
 }
 
-# date_subs(string)
+=head2 date_subs(string)
+
+Given a string with strftime-style format characters in it like %Y and %S, 
+replaces them with the correct values for the current date and time.
+
+=cut
 sub date_subs
 {
 if ($config{'date_subs'}) {
@@ -582,8 +653,11 @@ else {
         }
 }
 
-# show_backup_what(name, webmin?, nofiles?, others)
-# Returns HTML for selecting what gets included in a backup
+=head2 show_backup_what(name, webmin?, nofiles?, others)
+
+Returns HTML for selecting what gets included in a backup
+
+=cut
 sub show_backup_what
 {
 local ($name, $webmin, $nofiles, $others) = @_;
@@ -593,8 +667,12 @@ return &ui_checkbox($name."_webmin", 1, $text{'edit_webmin'}, $webmin)."\n".
        &ui_textarea($name."_files", join("\n", split(/\t+/, $others)), 3, 50);
 }
 
-# parse_backup_what(name, &in)
-# Returns the webmin and nofiles flags
+=head2 parse_backup_what(name, &in)
+
+Returns the webmin and nofiles flags, and a tab-separated list of other
+files to include.
+
+=cut
 sub parse_backup_what
 {
 local ($name, $in) = @_;
@@ -607,8 +685,11 @@ $webmin || !$nofiles || $others || &error($text{'save_ewebmin'});
 return ($webmin, $nofiles, $others);
 }
 
-# expand_directory(directory)
-# Given a directory, return a list of full paths to all files within it
+=head2 expand_directory(directory)
+
+Given a directory, return a list of full paths to all files within it
+
+=cut
 sub expand_directory
 {
 local ($dir) = @_;
