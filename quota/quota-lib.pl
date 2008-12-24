@@ -1,5 +1,16 @@
-# quota-lib.pl
-# Common functions for quota management.
+=head1 quota-lib.pl
+
+Functions for Unix user and group quota management. Some of the functionality
+is implemented in OS-specific library files which get automatically included
+into this one, like linux-lib.pl. Check the documentation on that file for
+more functions.
+
+Example code:
+
+ foreign_require('quota', 'quota-lib.pl');
+ XXX
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
@@ -20,9 +31,24 @@ else {
 
 $email_cmd = "$module_config_directory/email.pl";
 
-# list_filesystems()
-# Returns a list of details of local filesystems on which quotas are supported
-#  directory device type options quotacan quotanow
+=head2 list_filesystems
+
+Returns a list of details of local filesystems on which quotas are supported.
+Each is an array ref whose values are :
+directory - Mount point, like /home
+device - Source device, like /dev/hda1
+type - Filesystem type, like ext3
+options - Mount options, like rw,usrquota,grpquota
+quotacan - Can this filesystem type support quotas?
+quotanow - Are quotas enabled right now?
+
+The values of quotacan and quotanow are :
+0 - No quotas
+1 - User quotas only
+2 - Group quotas only
+3 - User and group quotas
+
+=cut
 sub list_filesystems
 {
 local $f;
@@ -35,9 +61,11 @@ map { $_->[5] = &quota_now($_, $fmap{$_->[0],$_->[1]}) } @mtab;
 return grep { $_->[4] } @mtab;
 }
 
-# parse_options(type, options)
-# Convert an options string for some filesystem into the associative
-# array %options
+=head2 parse_options(type, options)
+
+Convert an options string for some filesystem into the global hash %options.
+
+=cut
 sub parse_options
 {
 local($_);
@@ -50,9 +78,13 @@ if ($_[0] ne "-") {
 	}
 }
 
-# user_quota(user, filesystem)
-# Returns an array of  ublocks, sblocks, hblocks, ufiles, sfiles, hfiles
-# for some user, or an empty array if no quota has been assigned
+=head2 user_quota(user, filesystem)
+
+Returns an array of  ublocks, sblocks, hblocks, ufiles, sfiles, hfiles
+for some user on some filesystem, or an empty array if no quota has been
+assigned.
+
+=cut
 sub user_quota
 {
 local (%user, $n, $i);
@@ -67,9 +99,13 @@ for($i=0; $i<$n; $i++) {
 return ();
 }
 
-# group_quota(group, filesystem)
-# Returns an array of  ublocks, sblocks, hblocks, ufiles, sfiles, hfiles
-# for some group, or an empty array if no quota has been assigned
+=head2 group_quota(group, filesystem)
+
+Returns an array of  ublocks, sblocks, hblocks, ufiles, sfiles, hfiles
+for some group on some filesystem, or an empty array if no quota has been
+assigned.
+
+=cut
 sub group_quota
 {
 local (%group, $n, $i);
@@ -84,8 +120,17 @@ for($i=0; $i<$n; $i++) {
 return ();
 }
 
-# edit_user_quota(user, filesys, sblocks, hblocks, sfiles, hfiles)
-# Sets the disk quota for some user
+=head2 edit_user_quota(user, filesys, sblocks, hblocks, sfiles, hfiles)
+
+Sets the disk quota for some user. The parameters are :
+user - Unix username
+filesys - Filesystem on which to change quotas
+sblocks - Soft block limit
+hblocks - Hard block limit
+sfiles - Sort files limit
+hfiles - Hard files limit
+
+=cut
 sub edit_user_quota
 {
 if ($config{'user_setquota_command'} &&
@@ -127,8 +172,17 @@ else {
 	}
 }
 
-# edit_group_quota(group, filesys, sblocks, hblocks, sfiles, hfiles)
-# Sets the disk quota for some group
+=head2 edit_group_quota(group, filesys, sblocks, hblocks, sfiles, hfiles)
+
+Sets the disk quota for some group The parameters are :
+user - Unix group name
+filesys - Filesystem on which to change quotas
+sblocks - Soft block limit
+hblocks - Hard block limit
+sfiles - Sort files limit
+hfiles - Hard files limit
+
+=cut
 sub edit_group_quota
 {
 if ($config{'group_setquota_command'} &&
@@ -170,8 +224,20 @@ else {
 	}
 }
 
-# edit_user_grace(filesystem, btime, bunits, ftime, funits)
-# Change the grace times for blocks and files on some filesystem
+=head2 edit_user_grace(filesystem, btime, bunits, ftime, funits)
+
+Change the grace times for blocks and files on some filesystem. Parameters are:
+filesystem - Filesystem to change the grace time on
+btime - Number of units after which a user over his soft block limit is turned
+	into a hard limit.
+bunits - Units for the block grace time, such as 'seconds', 'minutes',
+	 'hours' or 'days'
+ftime - Number of units after which a user over his soft file limit is turned
+        into a hard limit.
+funits - Units for the file grace time, such as 'seconds', 'minutes',
+	 'hours' or 'days'
+
+=cut
 sub edit_user_grace
 {
 $ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edgrace.pl";
@@ -183,8 +249,12 @@ $ENV{'QUOTA_FUNITS'} = $_[4];
 &system_logged($config{'user_grace_command'});
 }
 
-# edit_group_grace(filesystem, btime, bunits, ftime, funits)
-# Change the grace times for blocks and files on some filesystem
+=head2 edit_group_grace(filesystem, btime, bunits, ftime, funits)
+
+Change the grace times for groups for blocks and files on some filesystem.
+The parameters are the same as edit_user_grace.
+
+=cut
 sub edit_group_grace
 {
 $ENV{'EDITOR'} = $ENV{'VISUAL'} = "$module_root_directory/edgrace.pl";
@@ -196,8 +266,12 @@ $ENV{'QUOTA_FUNITS'} = $_[4];
 &system_logged($config{'group_grace_command'});
 }
 
-# quota_input(name, value, [blocksize])
-# Prints an input for selecting a quota or unlimited, in a table
+=head2 quota_input(name, value, [blocksize])
+
+Returns an input for selecting a quota or unlimited, in a table. For internal
+use mainly.
+
+=cut
 sub quota_input
 {
 return &ui_radio($_[0]."_def", $_[1] == 0 ? 1 : 0,
@@ -205,8 +279,11 @@ return &ui_radio($_[0]."_def", $_[1] == 0 ? 1 : 0,
        &quota_inputbox(@_);
 }
 
-# quota_inputbox(name, value, [blocksize])
-# Returns an input for selecting a quota
+=head2 quota_inputbox(name, value, [blocksize])
+
+Returns an input for selecting a quota. Mainly for internal use.
+
+=cut
 sub quota_inputbox
 {
 if ($_[2]) {
@@ -237,7 +314,11 @@ else {
 	}
 }
 
-# quota_parse(name, [bsize], [nodef])
+=head2 quota_parse(name, [bsize], [nodef])
+
+Parses inputs from the form generated by quota_input.
+
+=cut
 sub quota_parse
 {
 if ($in{$_[0]."_def"} && !$_[2]) {
@@ -253,7 +334,11 @@ else {
 	}
 }
 
-# can_edit_filesys(filesys)
+=head2 can_edit_filesys(filesys)
+
+Returns 1 if the current Webmin user can manage quotas on some filesystem.
+
+=cut
 sub can_edit_filesys
 {
 local $fs;
@@ -263,7 +348,11 @@ foreach $fs (split(/\s+/, $access{'filesys'})) {
 return 0;
 }
 
-# can_edit_user(user)
+=head2 can_edit_user(user)
+
+Returns 1 if the current Webmin user can manage quotas for some Unix user.
+
+=cut
 sub can_edit_user
 {
 if ($access{'umode'} == 0) {
@@ -286,7 +375,11 @@ else {
 	}
 }
 
-# can_edit_group(group)
+=head2 can_edit_group(group)
+
+Returns 1 if the current Webmin user can manage quotas for some Unix group.
+
+=cut
 sub can_edit_group
 {
 return 1 if ($access{'gmode'} == 0);
@@ -297,7 +390,12 @@ return $access{'gmode'} == 1 && $gcan{$_[0]} ||
        $access{'gmode'} == 2 && !$gcan{$_[0]};
 }
 
-# filesystem_info(filesystem, &hash, count, [blocksize])
+=head2 filesystem_info(filesystem, &hash, count, [blocksize])
+
+Returns two strings containing information about the amount of disk space
+granted and used on some filesystem. For internal use.
+
+=cut
 sub filesystem_info
 {
 local @fs = &free_space($_[0], $_[3]);
@@ -328,8 +426,13 @@ else {
 	}
 }
 
-# block_size(dir, [for-filesys])
-# Returns the size (in bytes) of blocks on some filesystem
+=head2 block_size(dir, [for-filesys])
+
+Returns the size (in bytes) of blocks on some filesystem, if known. All
+quota functions deal with blocks, so they must be multipled by the value
+returned by this function before display to users.
+
+=cut
 sub block_size
 {
 return undef if (!$config{'block_mode'});
@@ -353,7 +456,11 @@ if ($mount) {
 return undef;
 }
 
-# nice_limit(amount, bsize, no-blocks)
+=head2 nice_limit(amount, bsize, no-blocks)
+
+Internal function to show a quota limit nicely formatted.
+
+=cut
 sub nice_limit
 {
 local ($amount, $bsize, $noblocks) = @_;
@@ -361,11 +468,11 @@ return $amount == 0 ? $text{'quota_unlimited'} :
        $bsize && !$noblocks ? &nice_size($amount*$bsize) : $amount;
 }
 
-sub print_grace
-{
-print "<td>",($_[0] || "<br>"),"</td>\n";
-}
+=head2 find_email_job
 
+Returns the cron job hash ref for the quota limit monitoring email job.
+
+=cut
 sub find_email_job
 {
 &foreign_require("cron", "cron-lib.pl");
@@ -374,8 +481,11 @@ local ($job) = grep { $_->{'command'} eq $email_cmd } @jobs;
 return $job;
 }
 
-# create_email_job()
-# Creates the cron job for scheduled emailing
+=head2 create_email_job
+
+Creates the cron job for scheduled emailing, which runs every 10 minutes.
+
+=cut
 sub create_email_job
 {
 &foreign_require("cron", "cron-lib.pl");
@@ -396,8 +506,11 @@ if (!$job) {
 	}
 }
 
-# trunc_space(string)
-# Removes spaces from the start and end of a string
+=head2 trunc_space(string)
+
+Removes spaces from the start and end of a string.
+
+=cut
 sub trunc_space
 {
 local $rv = $_[0];
@@ -406,7 +519,11 @@ $rv =~ s/\s+$//;
 return $rv;
 }
 
-# to_percent(used, total)
+=head2 to_percent(used, total)
+
+Converts an amount used and a total into a percentage.
+
+=cut
 sub to_percent
 {
 if ($_[1]) {
@@ -417,8 +534,11 @@ else {
 	}
 }
 
-# select_grace_units(name, value)
-# Returns a menu for selecting grace time units
+=head2 select_grace_units(name, value)
+
+Returns a menu for selecting grace time units.
+
+=cut
 sub select_grace_units
 {
 local @uarr = &grace_units();

@@ -1,5 +1,9 @@
-# linux-lib.pl
-# Quota functions for all linux version
+=head1 linux-lib.pl
+
+Quota functions for all linux version. See quota-lib.pl for summary
+documentation for this module.
+
+=cut
 
 # Tell the mount module not to check which filesystems are supported,
 # as we don't care for the calls made by this module
@@ -8,7 +12,12 @@ $mount::no_check_support = 1;
 # Pass UIDs and GIDs to edquota instead of names
 $edquota_use_ids = 1;
 
-# quotas_init()
+=head2 quotas_init
+
+Returns an error message if some quota commands or functionality is missing
+on this system, undef otherwise.
+
+=cut
 sub quotas_init
 {
 if (&has_command("quotaon") && &has_command("quotaoff")) {
@@ -20,15 +29,23 @@ else {
 	}
 }
 
-# quotas_supported()
-# Returns 1 for user quotas, 2 for group quotas or 3 for both
+=head2 quotas_supported
+
+Checks what quota types this OS supports. Returns 1 for user quotas,
+2 for group quotas or 3 for both.
+
+=cut
 sub quotas_supported
 {
 return 3;
 }
 
-# free_space(filesystem, [blocksize])
-# Returns an array containing  btotal, bfree, ftotal, ffree
+=head2 free_space(filesystem, [blocksize])
+
+Finds the amount of free disk space on some system. Returns an array
+containing : blocks-total, blocks-free, files-total, files-free
+
+=cut
 sub free_space
 {
 local(@out, @rv);
@@ -46,12 +63,16 @@ push(@rv, $1, $2);
 return @rv;
 }
 
-# quota_can(&mnttab, &fstab)
-# Can this filesystem type support quotas?
-#  0 = No quota support (or not turned on in /etc/fstab)
-#  1 = User quotas only
-#  2 = Group quotas only
-#  3 = User and group quotas
+=head2 quota_can(&mnttab, &fstab)
+
+Can this filesystem type support quotas? Takes array refs from mounted and
+mountable filesystems, and returns one of the following :
+0 = No quota support (or not turned on in /etc/fstab)
+1 = User quotas only
+2 = Group quotas only
+3 = User and group quotas
+
+=cut
 sub quota_can
 {
 return ($_[1]->[3] =~ /usrquota|usrjquota/ ||
@@ -60,13 +81,17 @@ return ($_[1]->[3] =~ /usrquota|usrjquota/ ||
         $_[0]->[3] =~ /grpquota|grpjquota/ ? 2 : 0);
 }
 
-# quota_now(&mnttab, &fstab)
-# Are quotas currently active?
-#  0 = Not active
-#  1 = User quotas active
-#  2 = Group quotas active
-#  3 = Both active
-# Adding 4 means they cannot be turned off (such as for XFS)
+=head2 quota_now(&mnttab, &fstab)
+
+Are quotas currently active? Takes array refs from mounted and mountable
+filesystems, and returns one of the following :
+0 = Not active
+1 = User quotas active
+2 = Group quotas active
+3 = Both active
+Adding 4 means they cannot be turned off (such as for XFS)
+
+=cut
 sub quota_now
 {
 local $rv = 0;
@@ -138,7 +163,11 @@ if ($_[0]->[4] > 1) {
 return $rv;
 }
 
-# supports_status(dir, mode)
+=head2 supports_status(dir, mode)
+
+Internal function to check if the quotaon -p flag is supported.
+
+=cut
 sub supports_status
 {
 if (!defined($supports_status_cache{$_[0],$_[1]})) {
@@ -149,9 +178,15 @@ if (!defined($supports_status_cache{$_[0],$_[1]})) {
 return $supports_status_cache{$_[0],$_[1]};
 }
 
-# quotaon(filesystem, mode)
-# Activate quotas and create quota files for some filesystem. The mode can
-# be 1 for user only, 2 for group only or 3 for user and group
+=head2 quotaon(filesystem, mode)
+
+Activate quotas and create quota files for some filesystem. The mode can
+be one of :
+1 - User only
+2 - Group only
+3 - User and group
+
+=cut
 sub quotaon
 {
 local($out, $qf, @qfile, $flags, $version);
@@ -225,15 +260,25 @@ if ($_[1] > 1) {
 return undef;
 }
 
-# run_quotacheck(filesys, args)
+=head2 run_quotacheck(filesys, args)
+
+Runs the quotacheck command on some filesytem, and returns 1 on success or
+0 on failure.
+
+=cut
 sub run_quotacheck
 {
-local $out =&backquote_logged("$config{'quotacheck_command'} $_[1] $_[0] 2>&1");
+local $out =&backquote_logged(
+	"$config{'quotacheck_command'} $_[1] $_[0] 2>&1");
 return $? || $out =~ /cannot remount|please stop/i ? 0 : 1;
 }
 
-# quotaoff(filesystem, mode)
-# Turn off quotas for some filesystem
+=head2 quotaoff(filesystem, mode)
+
+Turn off quotas for some filesystem. Mode must be 0 for users only, 1 for
+groups only, or 2 for both.
+
+=cut
 sub quotaoff
 {
 return if (&is_readonly_mode());
@@ -249,17 +294,24 @@ if ($_[1] > 1) {
 return undef;
 }
 
-# user_filesystems(user)
-# Fills the array %filesys with details of all filesystem some user has
-# quotas on
+=head2 user_filesystems(user)
+
+Fills the global hash %filesys with details of all filesystem some user has
+quotas on, and returns a count of the number of filesystems. 
+XXX
+
+=cut
 sub user_filesystems
 {
 return &parse_quota_output("$config{'user_quota_command'} ".quotemeta($_[0]));
 }
 
-# group_filesystems(user)
-# Fills the array %filesys with details of all filesystem some group has
-# quotas on
+=head2 group_filesystems(user)
+
+Fills the array %filesys with details of all filesystem some group has
+quotas on
+
+=cut
 sub group_filesystems
 {
 return &parse_quota_output("$config{'group_quota_command'} ".quotemeta($_[0]));
@@ -313,9 +365,12 @@ close(QUOTA);
 return $n;
 }
 
-# filesystem_users(filesystem)
-# Fills the array %user with information about all users with quotas
-# on this filesystem. This may not be all users on the system..
+=head2 filesystem_users(filesystem)
+
+Fills the array %user with information about all users with quotas
+on this filesystem. This may not be all users on the system..
+
+=cut
 sub filesystem_users
 {
 return &parse_repquota_output(
@@ -390,7 +445,11 @@ for($n=0; $n<@rep; $n++) {
 return $nn;
 }
 
-# edit_quota_file(data, filesys, sblocks, hblocks, sfiles, hfiles)
+=head2 edit_quota_file(data, filesys, sblocks, hblocks, sfiles, hfiles)
+
+MISSING DOCUMENTATION
+
+=cut
 sub edit_quota_file
 {
 local($rv, $line, %mtab, @m, @line);
@@ -423,8 +482,11 @@ for(my $i=0; $i<@line; $i++) {
 return $rv;
 }
 
-# quotacheck(filesystem, mode(1=users, 2=group))
-# Runs quotacheck on some filesystem
+=head2 quotacheck(filesystem, mode(1=users, 2=group))
+
+Runs quotacheck on some filesystem
+
+=cut
 sub quotacheck
 {
 local $out;
@@ -444,8 +506,11 @@ if ($?) {
 return undef;
 }
 
-# copy_user_quota(user, [user]+)
-# Copy the quotas for some user to many others
+=head2 copy_user_quota(user, [user]+)
+
+Copy the quotas for some user to many others
+
+=cut
 sub copy_user_quota
 {
 for($i=1; $i<@_; $i++) {
@@ -456,8 +521,11 @@ for($i=1; $i<@_; $i++) {
 return undef;
 }
 
-# copy_group_quota(group, [group]+)
-# Copy the quotas for some group to many others
+=head2 copy_group_quota(group, [group]+)
+
+Copy the quotas for some group to many others
+
+=cut
 sub copy_group_quota
 {
 for($i=1; $i<@_; $i++) {
@@ -468,24 +536,33 @@ for($i=1; $i<@_; $i++) {
 return undef;
 }
 
-# get_user_grace(filesystem)
-# Returns an array containing  btime, bunits, ftime, funits
-# The units can be 0=sec, 1=min, 2=hour, 3=day
+=head2 get_user_grace(filesystem)
+
+Returns an array containing  btime, bunits, ftime, funits
+The units can be 0=sec, 1=min, 2=hour, 3=day
+
+=cut
 sub get_user_grace
 {
 return &parse_grace_output($config{'user_grace_command'}, $_[0]);
 }
 
-# get_group_grace(filesystem)
-# Returns an array containing  btime, bunits, ftime, funits
-# The units can be 0=sec, 1=min, 2=hour, 3=day
+=head2 get_group_grace(filesystem)
+
+Returns an array containing  btime, bunits, ftime, funits
+The units can be 0=sec, 1=min, 2=hour, 3=day
+
+=cut
 sub get_group_grace
 {
 return &parse_grace_output($config{'group_grace_command'}, $_[0]);
 }
 
-# default_grace()
-# Returns 0 if grace time can be 0, 1 if zero grace means default
+=head2 default_grace
+
+Returns 0 if grace time can be 0, 1 if zero grace means default
+
+=cut
 sub default_grace
 {
 return 0;
@@ -515,7 +592,11 @@ close(GRACE);
 return @rv;
 }
 
-# edit_grace_file(data, filesystem, btime, bunits, ftime, funits)
+=head2 edit_grace_file(data, filesystem, btime, bunits, ftime, funits)
+
+MISSING DOCUMENTATION
+
+=cut
 sub edit_grace_file
 {
 local($rv, $line, @m, %mtab, @line);
@@ -542,17 +623,23 @@ for(my $i=0; $i<@line; $i++) {
 return $rv;
 }
 
-# grace_units()
-# Returns an array of possible units for grace periods
+=head2 grace_units
+
+Returns an array of possible units for grace periods
+
+=cut
 sub grace_units
 {
 return ($text{'grace_seconds'}, $text{'grace_minutes'}, $text{'grace_hours'},
 	$text{'grace_days'});
 }
 
-# fs_block_size(dir, device, filesystem)
-# Returns the size of blocks on some filesystem, or undef if unknown.
-# Consult the dumpe2fs command where possible.
+=head2 fs_block_size(dir, device, filesystem)
+
+Returns the size of blocks on some filesystem, or undef if unknown.
+Consult the dumpe2fs command where possible.
+
+=cut
 sub fs_block_size
 {
 if ($_[2] eq "ext2" || $_[2] eq "ext3") {
@@ -581,7 +668,11 @@ foreach $k (keys %name_to_unit) {
 	$unit_to_name{$name_to_unit{$k}} = $k;
 	}
 
-# Returns a hash mapping mount points to devices
+=head2 get_mtab_map
+
+Returns a hash mapping mount points to devices
+
+=cut
 sub get_mtab_map
 {
 local $mm = $module_info{'usermin'} ? "usermount" : "mount";
