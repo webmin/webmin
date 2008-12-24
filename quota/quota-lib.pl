@@ -8,7 +8,13 @@ more functions.
 Example code:
 
  foreign_require('quota', 'quota-lib.pl');
- XXX
+ quota::edit_user_quota('joe', '/home', 1000000, 1200000, 1000, 1200);
+ $n = quota::user_filesystems('joe');
+ for($i=0; $i<$n; $i++) {
+   print "filesystem=",$filesys{$i,'filesys'}," ",
+         "block quota=",$filesys{$i,'hblocks'}," ",
+         "blocks used=",$filesys{$i,'ublocks'},"\n";
+ }
 
 =cut
 

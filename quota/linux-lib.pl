@@ -297,8 +297,16 @@ return undef;
 =head2 user_filesystems(user)
 
 Fills the global hash %filesys with details of all filesystem some user has
-quotas on, and returns a count of the number of filesystems. 
-XXX
+quotas on, and returns a count of the number of filesystems. Some example code
+best demonstrates how this function should be used:
+
+ foreign_require('quota', 'quota-lib.pl');
+ $n = quota::user_filesystems('joe');
+ for($i=0; $i<$n; $i++) {
+   print "filesystem=",$filesys{$i,'filesys'}," ",
+         "block quota=",$filesys{$i,'hblocks'}," ",
+         "blocks used=",$filesys{$i,'ublocks'},"\n";
+ }
 
 =cut
 sub user_filesystems
@@ -309,7 +317,8 @@ return &parse_quota_output("$config{'user_quota_command'} ".quotemeta($_[0]));
 =head2 group_filesystems(user)
 
 Fills the array %filesys with details of all filesystem some group has
-quotas on
+quotas on, and returns the filesystem count. The format of %filesys is the same
+as documented in the user_filesystems function.
 
 =cut
 sub group_filesystems
@@ -317,6 +326,11 @@ sub group_filesystems
 return &parse_quota_output("$config{'group_quota_command'} ".quotemeta($_[0]));
 }
 
+=head2 parse_quota_output(command)
+
+Internal function to parse the output of the quota command.
+
+=cut
 sub parse_quota_output
 {
 local($n, $_, %mtab);
@@ -368,7 +382,16 @@ return $n;
 =head2 filesystem_users(filesystem)
 
 Fills the array %user with information about all users with quotas
-on this filesystem. This may not be all users on the system..
+on this filesystem, and returns the number of users. Some example code shows
+how this can be used :
+
+ foreign_require('quota', 'quota-lib.pl');
+ $n = quota::filesystem_users('/home');
+ for($i=0; $i<$n; $i++) {
+   print "user=",$user{$i,'user'}," ",
+	 "block quota=",$user{$i,'hblocks'}," ",
+	 "blocks used=",$user{$i,'ublocks'},"\n";
+ }
 
 =cut
 sub filesystem_users
@@ -377,12 +400,24 @@ return &parse_repquota_output(
 	"$config{'user_repquota_command'} $_[0]", "user");
 }
 
+=head2 filesystem_groups(filesystem)
+
+Fills the array %group with information about all groups  with quotas on some
+filesystem, and returns the group count. The format of %group is the same as
+documented in the filesystem_users function.
+
+=cut
 sub filesystem_groups
 {
 return &parse_repquota_output(
 	"$config{'group_repquota_command'} $_[0]", "group");
 }
 
+=head2 parse_repquota_output(hashname, command)
+
+Internal function to parse the output of the repquota command.
+
+=cut
 sub parse_repquota_output
 {
 local($rep, @rep, $n, $what, $u, @uinfo);
@@ -447,7 +482,8 @@ return $nn;
 
 =head2 edit_quota_file(data, filesys, sblocks, hblocks, sfiles, hfiles)
 
-MISSING DOCUMENTATION
+Internal function that is called indirectly by the 'edquota' command to
+modify a user's quotas on one filesystem, by editing a file.
 
 =cut
 sub edit_quota_file
@@ -482,9 +518,13 @@ for(my $i=0; $i<@line; $i++) {
 return $rv;
 }
 
-=head2 quotacheck(filesystem, mode(1=users, 2=group))
+=head2 quotacheck(filesystem, mode)
 
-Runs quotacheck on some filesystem
+Runs quotacheck on some filesystem, and returns the output in case of error,
+or undef on failure. The mode must be one of :
+0 - Users and groups
+1 - Users only
+2 - Groups only
 
 =cut
 sub quotacheck
@@ -508,7 +548,9 @@ return undef;
 
 =head2 copy_user_quota(user, [user]+)
 
-Copy the quotas for some user to many others
+Copy the quotas for some user (the first parameter) to many others (named by
+the remaining parameters). Returns undef on success, or an error message on
+failure.
 
 =cut
 sub copy_user_quota
@@ -523,7 +565,9 @@ return undef;
 
 =head2 copy_group_quota(group, [group]+)
 
-Copy the quotas for some group to many others
+Copy the quotas for some group (the first parameter) to many others (named by
+the remaining parameters). Returns undef on success, or an error message on
+failure.
 
 =cut
 sub copy_group_quota
@@ -538,8 +582,13 @@ return undef;
 
 =head2 get_user_grace(filesystem)
 
-Returns an array containing  btime, bunits, ftime, funits
-The units can be 0=sec, 1=min, 2=hour, 3=day
+Returns an array containing information about grace times on some filesystem,
+which is the amount of time a user can exceed his soft quota before it becomes
+hard. The elements of the array are :
+Grace time for block quota, in units below.
+Units for block quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
+Grace time for files quota, in units below.
+Units for files quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
 
 =cut
 sub get_user_grace
@@ -549,8 +598,13 @@ return &parse_grace_output($config{'user_grace_command'}, $_[0]);
 
 =head2 get_group_grace(filesystem)
 
-Returns an array containing  btime, bunits, ftime, funits
-The units can be 0=sec, 1=min, 2=hour, 3=day
+Returns an array containing information about grace times on some filesystem,
+which is the amount of time a group can exceed its soft quota before it becomes
+hard. The elements of the array are :
+Grace time for block quota, in units below.
+Units for block quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
+Grace time for files quota, in units below.
+Units for files quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
 
 =cut
 sub get_group_grace
@@ -560,7 +614,7 @@ return &parse_grace_output($config{'group_grace_command'}, $_[0]);
 
 =head2 default_grace
 
-Returns 0 if grace time can be 0, 1 if zero grace means default
+Returns 0 if grace time can be 0, 1 if zero grace means default.
 
 =cut
 sub default_grace
@@ -568,6 +622,11 @@ sub default_grace
 return 0;
 }
 
+=head2 parse_grace_output(command)
+
+Internal function to parse output from the quota -t command.
+
+=cut
 sub parse_grace_output
 {
 local(@rv, %mtab, @m);
@@ -594,7 +653,8 @@ return @rv;
 
 =head2 edit_grace_file(data, filesystem, btime, bunits, ftime, funits)
 
-MISSING DOCUMENTATION
+Internal function called by edquota -t to set grace times on some filesystem,
+by editing a file.
 
 =cut
 sub edit_grace_file
@@ -625,7 +685,7 @@ return $rv;
 
 =head2 grace_units
 
-Returns an array of possible units for grace periods
+Returns an array of possible units for grace periods, in human-readable format.
 
 =cut
 sub grace_units
@@ -636,7 +696,7 @@ return ($text{'grace_seconds'}, $text{'grace_minutes'}, $text{'grace_hours'},
 
 =head2 fs_block_size(dir, device, filesystem)
 
-Returns the size of blocks on some filesystem, or undef if unknown.
+Returns the size of quota blocks on some filesystem, or undef if unknown.
 Consult the dumpe2fs command where possible.
 
 =cut
@@ -670,7 +730,7 @@ foreach $k (keys %name_to_unit) {
 
 =head2 get_mtab_map
 
-Returns a hash mapping mount points to devices
+Returns a hash mapping mount points to devices. For internal use.
 
 =cut
 sub get_mtab_map
