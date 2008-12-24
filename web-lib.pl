@@ -1,5 +1,17 @@
-# web-lib.pl
-# Common functions and definitions for web admin programs
+=head1 web-lib.pl
+
+This file must be included by all Webmin CGI scripts, either directly or via
+another module-specific .pl file. For example :
+
+ do '../web-lib.pl';
+ init_config();
+ do '../ui-lib.pl';
+ ui_print_header(undef, 'My Module', '');
+
+This file in turn includes web-lib-funcs.pl, which is where the majority of
+the Webmin API functions are defined.
+
+=cut
 
 # Configuration and spool directories
 if (!defined($ENV{'WEBMIN_CONFIG'})) {
@@ -48,8 +60,11 @@ $main::http_cache_directory = $ENV{'WEBMIN_VAR'}."/cache";
 $main::default_debug_log_size = 10*1024*1024;
 $main::default_debug_log_file = $ENV{'WEBMIN_VAR'}."/webmin.debug";
 
-# unique
-# Returns the unique elements of some array
+=head2 unique(string, ...)
+
+Returns the unique elements of some array, passed as its parameters.
+
+=cut
 sub unique
 {
 local(%found, @rv, $e);
