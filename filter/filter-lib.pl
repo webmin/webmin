@@ -10,7 +10,8 @@ do 'autoreply-file-lib.pl';
 if (&get_product_name() eq 'usermin') {
 	# If configured, check if this user has virtualmin spam filtering
 	# enabled before switching away from root
-	if ($config{'virtualmin_spam'} && -x $config{'virtualmin_spam'}) {
+	if ($config{'virtualmin_spam'} && -x $config{'virtualmin_spam'} &&
+	    $< == 0) {
 		local $out = `$config{'virtualmin_spam'} $remote_user </dev/null 2>/dev/null`;
 		$out =~ s/\r|\n//g;
 		if ($out =~ /\d/) {
