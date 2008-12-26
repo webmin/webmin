@@ -1,5 +1,11 @@
-# web-lib.pl
-# Common functions and definitions for web admin programs
+=head1 web-lib-funcs.pl
+
+Common functions for Webmin CGI scripts. This file gets in-directly included
+by all scripts that use web-lib.pl.
+
+XXX
+
+=cut
 
 use Socket;
 
@@ -8,8 +14,17 @@ use vars qw($user_risk_level $loaded_theme_library $wait_for_input
 	    %done_foreign_require $webmin_feedback_address
 	    $user_skill_level $pragma_no_cache $foreign_args);
 
-# read_file(file, &assoc, [&order], [lowercase], [split-char])
-# Fill an associative array with name=value pairs from a file
+=head2 read_file(file, &hash, [&order], [lowercase], [split-char])
+
+Fill the given hash reference with name=value pairs from a file. The required
+parameters are :
+file - The file to head, which must be text with each line like name=value
+hash - The hash reference to add values read from the file to.
+order - If given, an array reference to add names to in the order they were read
+lowercase - If set to 1, names are converted to lower case
+split-char - If set, names and values are split on this character instead of =
+
+=cut
 sub read_file
 {
 local $_;
@@ -36,8 +51,13 @@ if (defined($main::read_file_cache{$realfile})) {
 return 1;
 }
 
-# read_file_cached(file, &assoc)
-# Like read_file, but reads from a cache if the file has already been read
+=head2 read_file_cached(file, &hash, [&order], [lowercase], [split-char])
+
+Like read_file, but reads from an in-memory cache if the file has already been
+read in this Webmin script. Recommended, as it behaves exactly the same as
+read_file, but can be much faster.
+
+=cut
 sub read_file_cached
 {
 local $realfile = &translate_filename($_[0]);
@@ -66,8 +86,14 @@ else {
 	}
 }
  
-# write_file(file, array, [join-char])
-# Write out the contents of an associative array as name=value lines
+=head2 write_file(file, &hash, [join-char])
+
+Write out the contents of a hash as name=value lines. The parameters are :
+file - Full path to write to
+hash - A hash reference containing names and values to output
+join-char - If given, names and values are separated by this instead of =
+
+=cut
 sub write_file
 {
 local(%old, @order);
@@ -96,8 +122,12 @@ if (defined($main::read_file_missing{$realfile})) {
 	}
 }
 
-# html_escape(string)
-# Convert &, < and > codes in text to HTML entities
+=head2 html_escape(string)
+
+Converts &, < and > codes in text to HTML entities, and returns the new string.
+This should be used when including data read from other sources in HTML pages.
+
+=cut
 sub html_escape
 {
 local $tmp = $_[0];
@@ -110,8 +140,12 @@ $tmp =~ s/=/&#61;/g;
 return $tmp;
 }
 
-# quote_escape(string, [only-quote])
-# Converts ' and " characters in a string into HTML entities
+=head2 quote_escape(string, [only-quote])
+
+Converts ' and " characters in a string into HTML entities, and returns it.
+Useful for outputing HTML tag values.
+
+=cut
 sub quote_escape
 {
 local ($tmp, $only) = @_;
@@ -125,8 +159,13 @@ $tmp =~ s/\'/&#39;/g if ($only eq '' || $only eq "'");
 return $tmp;
 }
 
-# tempname([filename])
-# Returns a mostly random temporary file name
+=head2 tempname([filename])
+
+Returns a mostly random temporary file name, typically under the /tmp/.webmin
+directory. If filename is given, this will be the base name used. Otherwise
+a unique name is selected randomly.
+
+=cut
 sub tempname
 {
 local $tmp_base = $gconfig{'tempdir_'.$module_name} ?
@@ -176,8 +215,12 @@ else {
 return $rv;
 }
 
-# transname([filename])
-# Returns a mostly random temporary file name that will be deleted at exit
+=head2 transname([filename])
+
+Behaves exactly like tempname, but records the temp file for deletion when the
+current Webmin script process exits.
+
+=cut
 sub transname
 {
 local $rv = &tempname(@_);
@@ -185,9 +228,12 @@ push(@main::temporary_files, $rv);
 return $rv;
 }
 
-# trunc
-# Truncation a string to the shortest whole word less than or equal to
-# the given width
+=head2 trunc(string, maxlen)
+
+Truncates a string to the shortest whole word less than or equal to the
+given width. Useful for word wrapping.
+
+=cut
 sub trunc {
   local($str,$c);
   if (length($_[0]) <= $_[1])
@@ -200,8 +246,12 @@ sub trunc {
   return $str;
 }
 
-# indexof(string, array)
-# Returns the index of some value in an array, or -1
+=head2 indexof(string, value, ...)
+
+Returns the index of some value in an array of values, or -1 if it was not
+found.
+
+=cut
 sub indexof {
   local($i);
   for($i=1; $i <= $#_; $i++) {
@@ -210,8 +260,11 @@ sub indexof {
   return -1;
 }
 
-# indexoflc(string, array)
-# Like indexof, but does a case-insensitive match
+=head2 indexoflc(string, value, ...)
+
+Like indexof, but does a case-insensitive match
+
+=cut
 sub indexoflc
 {
 local $str = lc(shift(@_));
@@ -219,7 +272,12 @@ local @arr = map { lc($_) } @_;
 return &indexof($str, @arr);
 }
 
-# sysprint(handle, [string]+)
+=head2 sysprint(handle, [string]+)
+
+Outputs some strings to a file handle, but bypassing IO buffering. Can be used
+as a replacement for print when writing to pipes or sockets.
+
+=cut
 sub sysprint
 {
 local($str, $fh);
@@ -229,8 +287,11 @@ syswrite $fh, $str, length($str);
 }
 
 
-# check_ipaddress(ip)
-# Check if some IP address is properly formatted
+=head2 check_ipaddress(ip)
+
+Check if some IPv4 address is properly formatted, returning 1 if so or 0 if not
+
+=cut
 sub check_ipaddress
 {
 return $_[0] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/ &&
@@ -240,8 +301,11 @@ return $_[0] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/ &&
 	$4 >= 0 && $4 <= 255;
 }
 
-# check_ip6address(ip)
-# Check if some IP address is properly formatted for IPv6
+=head2 check_ip6address(ip)
+
+Check if some IPv6 address is properly formatted, and returns 1 if so.
+
+=cut
 sub check_ip6address
 {
   local @blocks = split(/:/, $_[0]);
@@ -276,9 +340,19 @@ sub check_ip6address
 
 
 
-# generate_icon(image, title, link, [href], [width], [height],
-#		[before-title], [after-title])
-# Prints HTML for an icon image
+=head2 generate_icon(image, title, link, [href], [width], [height], [before-title], [after-title])
+
+Prints HTML for an icon image. The parameters are :
+image - URL for the image, like images/foo.gif
+title - Text to appear under the icon
+link - Optional destination for the icon's link
+href - Other HTML attributes to be added to the <a href> for the link
+width - Optional width of the icon
+height - Optional height of the icon
+before-title - HTML to appear before the title link, but which is not actually in the link
+after-title - HTML to appear after the title link, but which is not actually in the link
+
+=cut
 sub generate_icon
 {
 &load_theme_library();
@@ -309,16 +383,23 @@ else {
 	}
 }
 
-# urlize
-# Convert a string to a form ok for putting in a URL
+=head2 urlize
+
+Converts a string to a form ok for putting in a URL, using % escaping.
+
+=cut
 sub urlize {
   local $rv = $_[0];
   $rv =~ s/([^A-Za-z0-9])/sprintf("%%%2.2X", ord($1))/ge;
   return $rv;
 }
 
-# un_urlize(string)
-# Converts a URL-encoded string to the original
+=head2 un_urlize(string)
+
+Converts a URL-encoded string to it's original contents - the reverse of the
+urlize function.
+
+=cut
 sub un_urlize
 {
 local $rv = $_[0];
@@ -327,8 +408,11 @@ $rv =~ s/%(..)/pack("c",hex($1))/ge;
 return $rv;
 }
 
-# include
-# Read and output the named file
+=head2 include(filename)
+
+Read and output the contents of the given file.
+
+=cut
 sub include
 {
 local $_;
@@ -340,8 +424,11 @@ close(INCLUDE);
 return 1;
 }
 
-# copydata
-# Read from one file handle and write to another
+=head2 copydata(in-handle, out-handle)
+
+Read from one file handle and write to another, until there is no more to read.
+
+=cut
 sub copydata
 {
 local ($buf, $out, $in);
@@ -353,8 +440,15 @@ while(read($in, $buf, 1024) > 0) {
 return 1;
 }
 
-# ReadParseMime([maximum], [&cbfunc, &cbargs])
-# Read data submitted via a POST request using the multipart/form-data coding.
+=head2 ReadParseMime([maximum], [&cbfunc, &cbargs])
+
+Read data submitted via a POST request using the multipart/form-data coding,
+and store it in the global %in hash. The optional parameters are :
+maximum - If the number of bytes of input exceeds this number, stop reading and call error.
+cbfunc - A function reference to call after reading each block of data.
+cbargs - Additional parameters to the callback function.
+
+=cut
 sub ReadParseMime
 {
 local ($max, $cbfunc, $cbargs) = @_;
@@ -439,9 +533,15 @@ while(1) {
 &$cbfunc(-1, $ENV{'CONTENT_LENGTH'}, $file, @$cbargs) if ($cbfunc);
 }
 
-# ReadParse([&assoc], [method], [noplus])
-# Fills the given associative array with CGI parameters, or uses the global
-# %in if none is given. Also sets the global variables $in and @in
+=head2 ReadParse([&hash], [method], [noplus])
+
+Fills the given hash reference with CGI parameters, or uses the global hash
+%in if none is given. Also sets the global variables $in and @in. The other
+parameters are :
+method - For use of this HTTP method, such as GET
+noplus - Don't convert + in parameters to spaces.
+
+=cut
 sub ReadParse
 {
 local $a = $_[0] ? $_[0] : \%in;
@@ -471,9 +571,13 @@ foreach $i (@in) {
 	}
 }
 
-# read_fully(fh, &buffer, length)
-# Read data from some file handle up to the given length, even in the face
-# of partial reads. Reads the number of bytes read.
+=head2 read_fully(fh, &buffer, length)
+
+Read data from some file handle up to the given length, even in the face
+of partial reads. Reads the number of bytes read. Stores received data in the
+string pointed to be the buffer reference.
+
+=cut
 sub read_fully
 {
 local ($fh, $buf, $len) = @_;
@@ -486,9 +590,13 @@ while($got < $len) {
 return $got;
 }
 
-# read_parse_mime_callback(size, totalsize, upload-id)
-# Called by ReadParseMime as new data arrives from a form-data POST. Only update
-# the file on every 1% change though.
+=head2 read_parse_mime_callback(size, totalsize, upload-id)
+
+Called by ReadParseMime as new data arrives from a form-data POST. Only updates
+the file on every 1% change though. For internal use by the upload progress
+tracker.
+
+=cut
 sub read_parse_mime_callback
 {
 local ($size, $totalsize, $filename, $id) = @_;
@@ -542,9 +650,12 @@ print UPFILE $filename,"\n";
 &close_tempfile(UPFILE);
 }
 
-# read_parse_mime_javascript(upload-id, [&fields])
-# Returns an onSubmit= Javascript statement to popup a window for tracking
-# an upload with the given ID.
+=head2 read_parse_mime_javascript(upload-id, [&fields])
+
+Returns an onSubmit= Javascript statement to popup a window for tracking
+an upload with the given ID. For internal use by the upload progress tracker.
+
+=cut
 sub read_parse_mime_javascript
 {
 local ($id, $fields) = @_;
@@ -559,8 +670,13 @@ else {
 	}
 }
 
-# PrintHeader(charset)
-# Outputs the HTTP header for HTML
+=head2 PrintHeader(charset)
+
+Outputs the HTTP headers for an HTML page. The optional charset parameter
+can be used to set a character set. Normally this function is not called
+directly, but is rather called by ui_print_header or header.
+
+=cut
 sub PrintHeader
 {
 if ($pragma_no_cache || $gconfig{'pragma_no_cache'}) {
@@ -577,12 +693,17 @@ else {
 	}
 }
 
-# header(title, image, [help], [config], [nomodule], [nowebmin], [rightside],
-#	 [head-stuff], [body-stuff], [below])
-# Output a page header with some title and image. The header may also
-# include a link to help, and a link to the config page.
-# The header will also have a link to to webmin index, and a link to the
-# module menu if there is no config link
+=head2 header(title, image, [help], [config], [nomodule], [nowebmin], [rightside], [head-stuff], [body-stuff], [below])
+
+Outputs a Webmin HTML page header with a title. The parameters are :
+title - XXX
+
+Output a page header with some title and image. The header may also
+include a link to help, and a link to the config page.
+The header will also have a link to to webmin index, and a link to the
+module menu if there is no config link
+
+=cut
 sub header
 {
 return if ($main::done_webmin_header++);
@@ -771,9 +892,12 @@ if (@_ > 1) {
 	}
 }
 
-# popup_header([title], [head-stuff], [body-stuff])
-# Outputs a page header, suitable for a popup window. If no title is given,
-# absolutely no decorations are output (such as for use in a frameset)
+=head2 popup_header([title], [head-stuff], [body-stuff])
+
+Outputs a page header, suitable for a popup window. If no title is given,
+absolutely no decorations are output (such as for use in a frameset)
+
+=cut
 sub popup_header
 {
 return if ($main::done_webmin_header++);
@@ -818,8 +942,11 @@ if (defined(&theme_popup_prebody)) {
 	}
 }
 
-# footer([page, name]+, [noendbody])
-# Output a footer for returning to some page
+=head2 footer([page, name]+, [noendbody])
+
+Output a footer for returning to some page
+
+=cut
 sub footer
 {
 &load_theme_library();
@@ -881,8 +1008,11 @@ if (!$_[$i]) {
 	}
 }
 
-# popup_footer()
-# Outputs html for a footer for a popup window
+=head2 popup_footer
+
+Outputs html for a footer for a popup window
+
+=cut
 sub popup_footer
 {
 &load_theme_library();
@@ -893,8 +1023,11 @@ if (defined(&theme_popup_footer)) {
 print "</body></html>\n";
 }
 
-# load_theme_library()
-# For internal use only
+=head2 load_theme_library
+
+For internal use only
+
+=cut
 sub load_theme_library
 {
 return if (!$current_theme || $loaded_theme_library++);
@@ -906,8 +1039,12 @@ for(my $i=0; $i<@theme_root_directories; $i++) {
 	}
 }
 
-# redirect
-# Output headers to redirect the browser to some page
+=head2 redirect
+
+redirect
+Output headers to redirect the browser to some page
+
+=cut
 sub redirect
 {
 local($port, $prot, $url);
@@ -940,9 +1077,12 @@ else {
 	}
 }
 
-# kill_byname(name, signal)
-# Use the command defined in the global config to find and send a signal
-# to a process matching some name
+=head2 kill_byname(name, signal)
+
+Use the command defined in the global config to find and send a signal
+to a process matching some name
+
+=cut
 sub kill_byname
 {
 local(@pids);
@@ -954,8 +1094,11 @@ if (@pids) { kill($_[1], @pids); return scalar(@pids); }
 else { return 0; }
 }
 
-# kill_byname_logged(name, signal)
-# Like kill_byname, but also logs the killing
+=head2 kill_byname_logged(name, signal)
+
+Like kill_byname, but also logs the killing
+
+=cut
 sub kill_byname_logged
 {
 local(@pids);
@@ -965,8 +1108,11 @@ if (@pids) { &kill_logged($_[1], @pids); return scalar(@pids); }
 else { return 0; }
 }
 
-# find_byname(name)
-# Finds a process by name, and returns a list of matching PIDs
+=head2 find_byname(name)
+
+Finds a process by name, and returns a list of matching PIDs
+
+=cut
 sub find_byname
 {
 if ($gconfig{'os_type'} =~ /-linux$/ && -r "/proc/$$/cmdline") {
@@ -1012,9 +1158,12 @@ $cmd = &translate_command($cmd);
 return @pids;
 }
 
-# error([message]+)
-# Display an error message and exit. The variable $whatfailed must be set
-# to the name of the operation that failed.
+=head2 error([message]+)
+
+Display an error message and exit. The variable $whatfailed must be set
+to the name of the operation that failed.
+
+=cut
 sub error
 {
 if (!$main::error_must_die) {
@@ -1083,8 +1232,11 @@ else {
 exit(1);
 }
 
-# popup_error([message]+)
-# Display an error message in a popup window and exit.
+=head2 popup_error([message]+)
+
+Display an error message in a popup window and exit.
+
+=cut
 sub popup_error
 {
 &load_theme_library();
@@ -1104,15 +1256,21 @@ else {
 exit;
 }
 
-# error_setup(message)
-# Register a message to be prepended to all error strings
+=head2 error_setup(message)
+
+Register a message to be prepended to all error strings
+
+=cut
 sub error_setup
 {
 $main::whatfailed = $_[0];
 }
 
-# wait_for(handle, regexp, regexp, ...)
-# Read from the input stream until one of the regexps matches..
+=head2 wait_for(handle, regexp, regexp, ...)
+
+Read from the input stream until one of the regexps matches..
+
+=cut
 sub wait_for
 {
 local ($c, $i, $sw, $rv, $ha); undef($wait_for_input);
@@ -1145,7 +1303,11 @@ if ($@) {
 return $rv;
 }
 
-# fast_wait_for(handle, string, string, ...)
+=head2 fast_wait_for(handle, string, string, ...)
+
+MISSING DOCUMENTATION
+
+=cut
 sub fast_wait_for
 {
 local($inp, $maxlen, $ha, $i, $c, $inpl);
@@ -1170,8 +1332,11 @@ while(1) {
 	}
 }
 
-# has_command(command)
-# Returns the full path if some command is in the path, undef if not
+=head2 has_command(command)
+
+Returns the full path if some command is in the path, undef if not
+
+=cut
 sub has_command
 {
 local($d);
@@ -1212,8 +1377,11 @@ $main::has_command_cache{$_[0]} = $rv;
 return $rv;
 }
 
-# make_date(seconds, [date-only])
-# Converts a Unix date/time in seconds to a human-readable form
+=head2 make_date(seconds, [date-only])
+
+Converts a Unix date/time in seconds to a human-readable form
+
+=cut
 sub make_date
 {
 local ($secs, $only) = @_;
@@ -1239,9 +1407,12 @@ if (!$only) {
 return $date;
 }
 
-# file_chooser_button(input, type, [form], [chroot], [addmode])
-# Return HTML for a file chooser button, if the browser supports Javascript.
-# Type values are 0 for file or directory, or 1 for directory only
+=head2 file_chooser_button(input, type, [form], [chroot], [addmode])
+
+Return HTML for a file chooser button, if the browser supports Javascript.
+Type values are 0 for file or directory, or 1 for directory only
+
+=cut
 sub file_chooser_button
 {
 return &theme_file_chooser_button(@_)
@@ -1256,12 +1427,15 @@ if ($gconfig{'db_sizefile'}) {
 return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/chooser.cgi?add=$add&type=$_[1]&chroot=$chroot&file=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
-# popup_window_button(url, width, height, scrollbars?, &field-mappings)
-# Returns HTML for a button that will popup a chooser window of some kind. 
-# The field-mappings parameter is an array ref of array refs containing
-#  - Attribute to assign field to in the popup window
-#  - Form field name
-#  - CGI parameter to URL for value, if any
+=head2 popup_window_button(url, width, height, scrollbars?, &field-mappings)
+
+Returns HTML for a button that will popup a chooser window of some kind. 
+The field-mappings parameter is an array ref of array refs containing
+- Attribute to assign field to in the popup window
+- Form field name
+- CGI parameter to URL for value, if any
+
+=cut
 sub popup_window_button
 {
 return &theme_popup_window_button(@_) if (defined(&theme_popup_window_button));
@@ -1289,8 +1463,11 @@ $rv .= "' value=\"...\">";
 return $rv;
 }
 
-# read_acl(&array, &array)
-# Reads the acl file into the given associative arrays
+=head2 read_acl(&array, &array)
+
+Reads the acl file into the given associative arrays
+
+=cut
 sub read_acl
 {
 local($user, $_, @mods);
@@ -1314,38 +1491,53 @@ if ($_[0]) { %{$_[0]} = %main::acl_hash_cache; }
 if ($_[1]) { %{$_[1]} = %main::acl_array_cache; }
 }
 
-# acl_filename()
-# Returns the file containing the webmin ACL
+=head2 acl_filename
+
+Returns the file containing the webmin ACL
+
+=cut
 sub acl_filename
 {
 return "$config_directory/webmin.acl";
 }
 
-# acl_check()
-# Does nothing, but kept around for compatability
+=head2 acl_check
+
+Does nothing, but kept around for compatability
+
+=cut
 sub acl_check
 {
 }
 
-# get_miniserv_config(&array)
-# Store miniserv configuration into the given array
+=head2 get_miniserv_config(&array)
+
+Store miniserv configuration into the given array
+
+=cut
 sub get_miniserv_config
 {
 return &read_file_cached(
 	$ENV{'MINISERV_CONFIG'} || "$config_directory/miniserv.conf", $_[0]);
 }
 
-# put_miniserv_config(&array)
-# Store miniserv configuration from the given array
+=head2 put_miniserv_config(&array)
+
+Store miniserv configuration from the given array
+
+=cut
 sub put_miniserv_config
 {
 &write_file($ENV{'MINISERV_CONFIG'} || "$config_directory/miniserv.conf",
 	    $_[0]);
 }
 
-# restart_miniserv([nowait])
-# Kill the old miniserv process and re-start it, then optionally waits for
-# it to restart.
+=head2 restart_miniserv([nowait])
+
+Kill the old miniserv process and re-start it, then optionally waits for
+it to restart.
+
+=cut
 sub restart_miniserv
 {
 local ($nowait) = @_;
@@ -1402,10 +1594,13 @@ if (!$nowait) {
 	}
 }
 
-# reload_miniserv()
-# Sends a USR1 signal to the miniserv process, telling it to read-read it's
-# configuration files. Not all changes will be applied though, like listening
-# ports.
+=head2 reload_miniserv
+
+Sends a USR1 signal to the miniserv process, telling it to read-read it's
+configuration files. Not all changes will be applied though, like listening
+ports.
+
+=cut
 sub reload_miniserv
 {
 return undef if (&is_readonly_mode());
@@ -1436,9 +1631,12 @@ else {
 	}
 }
 
-# check_os_support(&minfo, [os-type, os-version], [api-only])
-# Returns 1 if some module is supported on the current operating system, or the
-# OS supplies as parameters.
+=head2 check_os_support(&minfo, [os-type, os-version], [api-only])
+
+Returns 1 if some module is supported on the current operating system, or the
+OS supplies as parameters.
+
+=cut
 sub check_os_support
 {
 local $oss = $_[0]->{'os_support'};
@@ -1503,9 +1701,11 @@ while(1) {
 return $anyneg;
 }
 
-# http_download(host, port, page, destfile, [&error], [&callback], [sslmode],
-#		[user, pass], [timeout], [osdn-convert], [no-cache], [&headers])
-# Download data from a HTTP url to a local file
+=head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user, pass], [timeout], [osdn-convert], [no-cache], [&headers])
+
+Download data from a HTTP url to a local file
+
+=cut
 sub http_download
 {
 local ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
@@ -1573,9 +1773,11 @@ if ((!$error || !$$error) && !$nocache) {
 	}
 }
 
-# complete_http_download(handle, destfile, [&error], [&callback], [osdn],
-#			 [oldhost], [oldport], [&send-headers])
-# Do a HTTP download, after the headers have been sent
+=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers])
+
+Do a HTTP download, after the headers have been sent
+
+=cut
 sub complete_http_download
 {
 local($line, %header, @headers, $s);
@@ -1668,9 +1870,11 @@ else {
 }
 
 
-# ftp_download(host, file, destfile, [&error], [&callback], [user, pass],
-#	       [port])
-# Download data from an FTP site to a local file
+=head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port])
+
+Download data from an FTP site to a local file
+
+=cut
 sub ftp_download
 {
 local ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port) = @_;
@@ -1813,8 +2017,11 @@ if (!$connected) {
 return 1;
 }
 
-# ftp_upload(host, file, srcfile, [&error], [&callback], [user, pass], [port])
-# Upload data from a local file to an FTP site
+=head2 ftp_upload(host, file, srcfile, [&error], [&callback], [user, pass], [port])
+
+Upload data from a local file to an FTP site
+
+=cut
 sub ftp_upload
 {
 local($buf, @n);
@@ -1896,8 +2103,11 @@ close(SOCK);
 return 1;
 }
 
-# no_proxy(host)
-# Checks if some host is on the no proxy list
+=head2 no_proxy(host)
+
+Checks if some host is on the no proxy list
+
+=cut
 sub no_proxy
 {
 local $ip = &to_ipaddress($_[0]);
@@ -1908,9 +2118,12 @@ foreach $n (split(/\s+/, $gconfig{'noproxy'})) {
 return 0;
 }
 
-# open_socket(host, port, handle, [&error])
-# Open a TCP connection to some host and port, using a file handle.
-# Either calls error or modifies &error if something goes wrong.
+=head2 open_socket(host, port, handle, [&error])
+
+Open a TCP connection to some host and port, using a file handle.
+Either calls error or modifies &error if something goes wrong.
+
+=cut
 sub open_socket
 {
 local($addr, $h); $h = $_[2];
@@ -1940,16 +2153,22 @@ return 1;
 }
 
 
-# download_timeout()
-# Called when a download times out
+=head2 download_timeout
+
+Called when a download times out
+
+=cut
 sub download_timeout
 {
 $download_timed_out = "Download timed out";
 }
 
 
-# ftp_command(command, expected, [&error])
-# Send an FTP command, and die if the reply is not what was expected
+=head2 ftp_command(command, expected, [&error])
+
+Send an FTP command, and die if the reply is not what was expected
+
+=cut
 sub ftp_command
 {
 local($line, $rcode, $reply, $c);
@@ -1996,8 +2215,11 @@ alarm(0);
 return wantarray ? ($reply, $rcode) : $reply;
 }
 
-# to_ipaddress(hostname)
-# Converts a hostname to an a.b.c.d format IP address
+=head2 to_ipaddress(hostname)
+
+Converts a hostname to an a.b.c.d format IP address
+
+=cut
 sub to_ipaddress
 {
 if (&check_ipaddress($_[0])) {
@@ -2011,9 +2233,12 @@ else {
 	}
 }
 
-# icons_table(&links, &titles, &icons, [columns], [href], [width], [height])
-#	      &befores, &afters)
-# Renders a 4-column table of icons
+=head2 icons_table(&links, &titles, &icons, [columns], [href], [width], [height])
+
+&befores, &afters)
+Renders a 4-column table of icons
+
+=cut
 sub icons_table
 {
 &load_theme_library();
@@ -2039,8 +2264,11 @@ print "</tr>\n" if ($need_tr);
 print "</table>\n";
 }
 
-# replace_file_line(file, line, [newline]*)
-# Replaces one line in some file with 0 or more new lines
+=head2 replace_file_line(file, line, [newline]*)
+
+Replaces one line in some file with 0 or more new lines
+
+=cut
 sub replace_file_line
 {
 local(@lines);
@@ -2055,10 +2283,13 @@ else { splice(@lines, $_[1], 1); }
 &close_tempfile(FILE);
 }
 
-# read_file_lines(file, [readonly])
-# Returns a reference to an array containing the lines from some file. This
-# array can be modified, and will be written out when flush_file_lines()
-# is called.
+=head2 read_file_lines(file, [readonly])
+
+Returns a reference to an array containing the lines from some file. This
+array can be modified, and will be written out when flush_file_lines()
+is called.
+
+=cut
 sub read_file_lines
 {
 if (!$_[0]) {
@@ -2091,9 +2322,12 @@ else {
 return $main::file_cache{$realfile};
 }
 
-# flush_file_lines([file], [eol])
-# Write out to a file previously read by read_file_lines to disk (except
-# for those marked readonly).
+=head2 flush_file_lines([file], [eol])
+
+Write out to a file previously read by read_file_lines to disk (except
+for those marked readonly).
+
+=cut
 sub flush_file_lines
 {
 local $f;
@@ -2123,8 +2357,11 @@ foreach $f (@files) {
         }
 }
 
-# unflush_file_lines(file)
-# Clear the internal cache of some file
+=head2 unflush_file_lines(file)
+
+Clear the internal cache of some file
+
+=cut
 sub unflush_file_lines
 {
 local $realfile = &translate_filename($_[0]);
@@ -2132,23 +2369,33 @@ delete($main::file_cache{$realfile});
 delete($main::file_cache_noflush{$realfile});
 }
 
-# unix_user_input(fieldname, user, [form])
-# Returns HTML for an input to select a Unix user
+=head2 unix_user_input(fieldname, user, [form])
+
+Returns HTML for an input to select a Unix user
+
+=cut
 sub unix_user_input
 {
 return "<input name=$_[0] size=13 value=\"$_[1]\"> ".
        &user_chooser_button($_[0], 0, $_[2] || 0)."\n";
 }
 
-# unix_group_input(fieldname, user, [form])
-# Returns HTML for an input to select a Unix group
+=head2 unix_group_input(fieldname, user, [form])
+
+Returns HTML for an input to select a Unix group
+
+=cut
 sub unix_group_input
 {
 return "<input name=$_[0] size=13 value=\"$_[1]\"> ".
        &group_chooser_button($_[0], 0, $_[2] || 0)."\n";
 }
 
-# hlink(text, page, [module], [width], [height])
+=head2 hlink(text, page, [module], [width], [height])
+
+MISSING DOCUMENTATION
+
+=cut
 sub hlink
 {
 if (defined(&theme_hlink)) {
@@ -2160,8 +2407,11 @@ local $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 3
 return "<a onClick='window.open(\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\">$_[0]</a>";
 }
 
-# user_chooser_button(field, multiple, [form])
-# Returns HTML for a javascript button for choosing a Unix user or users
+=head2 user_chooser_button(field, multiple, [form])
+
+Returns HTML for a javascript button for choosing a Unix user or users
+
+=cut
 sub user_chooser_button
 {
 return undef if (!&supports_users());
@@ -2179,8 +2429,11 @@ elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/user_chooser.cgi?multi=$_[1]&user=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
-# group_chooser_button(field, multiple, [form])
-# Returns HTML for a javascript button for choosing a Unix group or groups
+=head2 group_chooser_button(field, multiple, [form])
+
+Returns HTML for a javascript button for choosing a Unix group or groups
+
+=cut
 sub group_chooser_button
 {
 return undef if (!&supports_users());
@@ -2198,8 +2451,11 @@ elsif (!$_[1] && $gconfig{'db_sizeuser'}) {
 return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/group_chooser.cgi?multi=$_[1]&group=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,resizable=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
-# foreign_check(module, [api-only])
-# Checks if some other module exists and is supported on this OS
+=head2 foreign_check(module, [api-only])
+
+Checks if some other module exists and is supported on this OS
+
+=cut
 sub foreign_check
 {
 local ($mod, $api) = @_;
@@ -2209,16 +2465,22 @@ local $mdir = &module_root_directory($mod);
 return &check_os_support(\%minfo, undef, undef, $api);
 }
 
-# foreign_exists(module)
-# Checks if some other module exists
+=head2 foreign_exists(module)
+
+Checks if some other module exists
+
+=cut
 sub foreign_exists
 {
 local $mdir = &module_root_directory($_[0]);
 return -r "$mdir/module.info";
 }
 
-# foreign_available(module)
-# Returns 1 if some module is installed, and acessible to the current user
+=head2 foreign_available(module)
+
+Returns 1 if some module is installed, and acessible to the current user
+
+=cut
 sub foreign_available
 {
 return 0 if (!&foreign_check($_[0]) &&
@@ -2271,8 +2533,11 @@ if ($main::licence_module) {
 return 1;
 }
 
-# foreign_require(module, file, [package])
-# Brings in functions from another module
+=head2 foreign_require(module, file, [package])
+
+Brings in functions from another module
+
+=cut
 sub foreign_require
 {
 local $pkg = $_[2] || $_[0] || "global";
@@ -2310,8 +2575,11 @@ if ($@) { &error("require $_[0]/$_[1] failed : <pre>$@</pre>"); }
 return 1;
 }
 
-# foreign_call(module, function, [arg]*)
-# Call a function in another module
+=head2 foreign_call(module, function, [arg]*)
+
+Call a function in another module
+
+=cut
 sub foreign_call
 {
 local $pkg = $_[0] ? $_[0] : "global";
@@ -2326,8 +2594,11 @@ if ($@) { &error("$_[0]::$_[1] failed : $@"); }
 return wantarray ? @rv : $rv[0];
 }
 
-# foreign_config(module, [user-config])
-# Get the configuration from another module
+=head2 foreign_config(module, [user-config])
+
+Get the configuration from another module
+
+=cut
 sub foreign_config
 {
 local ($mod, $uc) = @_;
@@ -2343,14 +2614,17 @@ else {
 return %fconfig;
 }
 
-# foreign_installed(module, mode)
-# Checks if the server for some module is installed, and possibly also checks
-# if the module has been configured by Webmin.
-# For mode 1, returns 2 if the server is installed and configured for use by
-# Webmin, 1 if installed but not configured, or 0 otherwise.
-# For mode 0, returns 1 if installed, 0 if not.
-# If the module does not provide an install_check.pl script, assumes that
-# the server is installed.
+=head2 foreign_installed(module, mode)
+
+Checks if the server for some module is installed, and possibly also checks
+if the module has been configured by Webmin.
+For mode 1, returns 2 if the server is installed and configured for use by
+Webmin, 1 if installed but not configured, or 0 otherwise.
+For mode 0, returns 1 if installed, 0 if not.
+If the module does not provide an install_check.pl script, assumes that
+the server is installed.
+
+=cut
 sub foreign_installed
 {
 local ($mod, $configured) = @_;
@@ -2381,8 +2655,11 @@ else {
 	}
 }
 
-# foreign_defined(module, function)
-# Returns 1 if some function is defined in another module
+=head2 foreign_defined(module, function)
+
+Returns 1 if some function is defined in another module
+
+=cut
 sub foreign_defined
 {
 local $pkg = $_[0];
@@ -2391,8 +2668,11 @@ local $func = "${pkg}::$_[1]";
 return defined(&$func);
 }
 
-# get_system_hostname([short])
-# Returns the hostname of this system
+=head2 get_system_hostname([short])
+
+Returns the hostname of this system
+
+=cut
 sub get_system_hostname
 {
 local $m = int($_[0]);
@@ -2485,8 +2765,11 @@ if (!$main::get_system_hostname[$m]) {
 return $main::get_system_hostname[$m];
 }
 
-# get_webmin_version()
-# Returns the version of Webmin currently being run
+=head2 get_webmin_version
+
+Returns the version of Webmin currently being run
+
+=cut
 sub get_webmin_version
 {
 if (!$get_webmin_version) {
@@ -2497,8 +2780,11 @@ if (!$get_webmin_version) {
 return $get_webmin_version;
 }
 
-# get_module_acl([user], [module], [no-rbac], [no-default])
-# Returns a hash  containing access control options for the given user
+=head2 get_module_acl([user], [module], [no-rbac], [no-default])
+
+Returns a hash  containing access control options for the given user
+
+=cut
 sub get_module_acl
 {
 local %rv;
@@ -2551,8 +2837,11 @@ if (defined(&theme_get_module_acl)) {
 return %rv;
 }
 
-# get_group_module_acl(group, [module])
-# Returns the ACL for a Webmin group
+=head2 get_group_module_acl(group, [module])
+
+Returns the ACL for a Webmin group
+
+=cut
 sub get_group_module_acl
 {
 local %rv;
@@ -2567,8 +2856,11 @@ if (defined(&theme_get_module_acl)) {
 return %rv;
 }
 
-# save_module_acl(&acl, [user], [module])
-# Updates the acl hash for some user and module (or the current one)
+=head2 save_module_acl(&acl, [user], [module])
+
+Updates the acl hash for some user and module (or the current one)
+
+=cut
 sub save_module_acl
 {
 local $u = defined($_[1]) ? $_[1] : $base_remote_user;
@@ -2595,8 +2887,11 @@ if (!-d "$config_directory/$m") {
 &write_file("$config_directory/$m/$u.acl", $_[0]);
 }
 
-# save_group_module_acl(&acl, group, [module])
-# Updates the acl hash for some group and module (or the current one)
+=head2 save_group_module_acl(&acl, group, [module])
+
+Updates the acl hash for some group and module (or the current one)
+
+=cut
 sub save_group_module_acl
 {
 local $g = $_[1];
@@ -2623,22 +2918,25 @@ if (!-d "$config_directory/$m") {
 &write_file("$config_directory/$m/$g.gacl", $_[0]);
 }
 
-# init_config()
-# Sets the following variables
-#  %config - Per-module configuration
-#  %gconfig - Global configuration
-#  $tb - Background for table headers
-#  $cb - Background for table bodies
-#  $scriptname - Base name of the current perl script
-#  $module_name - The name of the current module
-#  $module_config_directory - The config directory for this module
-#  $module_config_file - The config file for this module
-#  $webmin_logfile - The detailed logfile for webmin
-#  $remote_user - The actual username used to login to webmin
-#  $base_remote_user - The username whose permissions are in effect
-#  $current_theme - The theme currently in use
-#  $root_directory - The first root directory of this webmin install
-#  @root_directories - All root directories for this webmin install
+=head2 init_config
+
+Sets the following variables
+%config - Per-module configuration
+%gconfig - Global configuration
+$tb - Background for table headers
+$cb - Background for table bodies
+$scriptname - Base name of the current perl script
+$module_name - The name of the current module
+$module_config_directory - The config directory for this module
+$module_config_file - The config file for this module
+$webmin_logfile - The detailed logfile for webmin
+$remote_user - The actual username used to login to webmin
+$base_remote_user - The username whose permissions are in effect
+$current_theme - The theme currently in use
+$root_directory - The first root directory of this webmin install
+@root_directories - All root directories for this webmin install
+
+=cut
 sub init_config
 {
 # Read the webmin global config file. This contains the OS type and version,
@@ -2998,8 +3296,11 @@ return 1;
 
 $default_lang = "en";
 
-# load_language(module, [directory])
-# Returns a hashtable mapping text codes to strings in the appropriate language
+=head2 load_language(module, [directory])
+
+Returns a hashtable mapping text codes to strings in the appropriate language
+
+=cut
 sub load_language
 {
 local %text;
@@ -3061,9 +3362,12 @@ else {
 	}
 }
 
-# text(message, [substitute]+)
-# Returns a translated message from %text, but with $1, $2, etc.. replaced with the
-# substitute parameters.
+=head2 text(message, [substitute]+)
+
+Returns a translated message from %text, but with $1, $2, etc.. replaced with the
+substitute parameters.
+
+=cut
 sub text
 {
 local $rv = $text{$_[0]};
@@ -3074,14 +3378,21 @@ for($i=1; $i<@_; $i++) {
 return $rv;
 }
 
-# terror(text params)
+=head2 terror(text params)
+
+MISSING DOCUMENTATION
+
+=cut
 sub terror
 {
 &error(&text(@_));
 }
 
-# encode_base64(string)
-# Encodes a string into base64 format
+=head2 encode_base64(string)
+
+Encodes a string into base64 format
+
+=cut
 sub encode_base64
 {
     local $res;
@@ -3096,8 +3407,11 @@ sub encode_base64
     return $res;
 }
 
-# decode_base64(string)
-# Converts a base64 string into plain text
+=head2 decode_base64(string)
+
+Converts a base64 string into plain text
+
+=cut
 sub decode_base64
 {
     local $str = $_[0];
@@ -3116,8 +3430,11 @@ sub decode_base64
     return $res;
 }
 
-# get_module_info(module, [noclone], [forcache])
-# Returns a hash containg a module name, desc and os_support
+=head2 get_module_info(module, [noclone], [forcache])
+
+Returns a hash containg a module name, desc and os_support
+
+=cut
 sub get_module_info
 {
 return () if ($_[0] =~ /^\./);
@@ -3177,10 +3494,13 @@ if (defined(&theme_get_module_info)) {
 return %rv;
 }
 
-# get_all_module_infos(cachemode)
-# Returns a vector contains the information on all modules in this webmin
-# install, including clones.
-# Cache mode 0 = read and write, 1 = don't read or write, 2 = read only
+=head2 get_all_module_infos(cachemode)
+
+Returns a vector contains the information on all modules in this webmin
+install, including clones.
+Cache mode 0 = read and write, 1 = don't read or write, 2 = read only
+
+=cut
 sub get_all_module_infos
 {
 local (%cache, $k, $m, $r, @rv);
@@ -3241,20 +3561,21 @@ foreach $m (@rv) {
 		}
 	}
 
-# Apply installed flags, for Webmin
-if (&get_product_name() eq 'webmin') {
-	local %installed;
-	&read_file_cached("$config_directory/installed.cache", \%installed);
-	foreach $m (@rv) {
-		$m->{'installed'} = $installed{$m->{'dir'}};
-		}
+# Apply installed flags
+local %installed;
+&read_file_cached("$config_directory/installed.cache", \%installed);
+foreach $m (@rv) {
+	$m->{'installed'} = $installed{$m->{'dir'}};
 	}
 
 return @rv;
 }
 
-# get_theme_info(theme)
-# Returns a hash containing a theme's details
+=head2 get_theme_info(theme)
+
+Returns a hash containing a theme's details
+
+=cut
 sub get_theme_info
 {
 return () if ($_[0] =~ /^\./);
@@ -3268,8 +3589,11 @@ $rv{"dir"} = $_[0];
 return %rv;
 }
 
-# list_languages()
-# Returns an array of supported languages
+=head2 list_languages
+
+Returns an array of supported languages
+
+=cut
 sub list_languages
 {
 if (!@main::list_languages_cache) {
@@ -3294,7 +3618,11 @@ if (!@main::list_languages_cache) {
 return @main::list_languages_cache;
 }
 
-# read_env_file(file, &array)
+=head2 read_env_file(file, &array)
+
+MISSING DOCUMENTATION
+
+=cut
 sub read_env_file
 {
 local $_;
@@ -3311,9 +3639,12 @@ close(FILE);
 return 1;
 }
 
-# write_env_file(file, &array, export)
-# Writes out a hash to a file in name='value' format, suitable for use in a sh
-# script.
+=head2 write_env_file(file, &array, export)
+
+Writes out a hash to a file in name='value' format, suitable for use in a sh
+script.
+
+=cut
 sub write_env_file
 {
 local $k;
@@ -3331,9 +3662,12 @@ foreach $k (keys %{$_[1]}) {
 &close_tempfile(FILE);
 }
 
-# lock_file(filename, [readonly], [forcefile])
-# Lock a file for exclusive access. If the file is already locked, spin
-# until it is freed. This version uses a .lock file, which is not very reliable.
+=head2 lock_file(filename, [readonly], [forcefile])
+
+Lock a file for exclusive access. If the file is already locked, spin
+until it is freed. This version uses a .lock file, which is not very reliable.
+
+=cut
 sub lock_file
 {
 local $realfile = &translate_filename($_[0]);
@@ -3398,9 +3732,12 @@ tryagain:
 return 1;
 }
 
-# unlock_file(filename)
-# Release a lock on a file. When unlocking a file that was locked in
-# read mode, optionally save the update in RCS
+=head2 unlock_file(filename)
+
+Release a lock on a file. When unlocking a file that was locked in
+read mode, optionally save the update in RCS
+
+=cut
 sub unlock_file
 {
 local $realfile = &translate_filename($_[0]);
@@ -3485,8 +3822,11 @@ if (exists($main::locked_file_data{$realfile})) {
 	}
 }
 
-# test_lock(file)
-# Returns 1 if some file is currently locked
+=head2 test_lock(file)
+
+Returns 1 if some file is currently locked
+
+=cut
 sub test_lock
 {
 local $realfile = &translate_filename($_[0]);
@@ -3502,8 +3842,11 @@ if (open(LOCKING, "$realfile.lock")) {
 return $pid && kill(0, $pid);
 }
 
-# unlock_all_files()
-# Unlocks all files locked by this program
+=head2 unlock_all_files
+
+Unlocks all files locked by this program
+
+=cut
 sub unlock_all_files
 {
 foreach $f (keys %main::locked_file_list) {
@@ -3511,8 +3854,11 @@ foreach $f (keys %main::locked_file_list) {
 	}
 }
 
-# can_lock_file(file)
-# Returns 1 if some file should be locked
+=head2 can_lock_file(file)
+
+Returns 1 if some file should be locked
+
+=cut
 sub can_lock_file
 {
 if (&is_readonly_mode()) {
@@ -3537,9 +3883,11 @@ else {
 	}
 }
 
-# webmin_log(action, type, object, &params, [module],
-#            [host, script-on-host, client-ip])
-# Log some action taken by a user
+=head2 webmin_log(action, type, object, &params, [module], [host, script-on-host, client-ip])
+
+Log some action taken by a user
+
+=cut
 sub webmin_log
 {
 return if (!$gconfig{'log'} || &is_readonly_mode());
@@ -3743,9 +4091,12 @@ if ($gconfig{'logsyslog'}) {
 	}
 }
 
-# additional_log(type, object, data, [input])
-# Records additional log data for an upcoming call to webmin_log, such
-# as command that was run or SQL that was executed.
+=head2 additional_log(type, object, data, [input])
+
+Records additional log data for an upcoming call to webmin_log, such
+as command that was run or SQL that was executed.
+
+=cut
 sub additional_log
 {
 if ($gconfig{'logfiles'}) {
@@ -3755,8 +4106,11 @@ if ($gconfig{'logfiles'}) {
 	}
 }
 
-# webmin_debug_log(type, message)
-# Write something to the Webmin debug log
+=head2 webmin_debug_log(type, message)
+
+Write something to the Webmin debug log
+
+=cut
 sub webmin_debug_log
 {
 local ($type, $msg) = @_;
@@ -3778,8 +4132,11 @@ print main::DEBUGLOG $line."\n";
 return 1;
 }
 
-# system_logged(command)
-# Just calls the system() function, but also logs the command
+=head2 system_logged(command)
+
+Just calls the system() function, but also logs the command
+
+=cut
 sub system_logged
 {
 if (&is_readonly_mode()) {
@@ -3799,8 +4156,11 @@ $cmd .= $and;
 return system(@realcmd);
 }
 
-# backquote_logged(command)
-# Executes a command and returns the output (like `cmd`), but also logs it
+=head2 backquote_logged(command)
+
+Executes a command and returns the output (like `cmd`), but also logs it
+
+=cut
 sub backquote_logged
 {
 if (&is_readonly_mode()) {
@@ -3822,9 +4182,12 @@ $cmd .= $and;
 return `$realcmd`;
 }
 
-# backquote_with_timeout(command, timeout, safe?, [maxlines])
-# Runs some command, waiting at most the given number of seconds for it to
-# complete, and returns the output
+=head2 backquote_with_timeout(command, timeout, safe?, [maxlines])
+
+Runs some command, waiting at most the given number of seconds for it to
+complete, and returns the output
+
+=cut
 sub backquote_with_timeout
 {
 local $realcmd = &translate_command($_[0]);
@@ -3858,9 +4221,12 @@ close(OUT);
 return wantarray ? ($out, $timed_out) : $out;
 }
 
-# backquote_command(command, safe?)
-# Executes a command and returns the output (like `cmd`), subject to
-# command translation
+=head2 backquote_command(command, safe?)
+
+Executes a command and returns the output (like `cmd`), subject to
+command translation
+
+=cut
 sub backquote_command
 {
 if (&is_readonly_mode() && !$_[1]) {
@@ -3873,7 +4239,11 @@ local $realcmd = &translate_command($_[0]);
 return `$realcmd`;
 }
 
-# kill_logged(signal, pid, ...)
+=head2 kill_logged(signal, pid, ...)
+
+MISSING DOCUMENTATION
+
+=cut
 sub kill_logged
 {
 return scalar(@_)-1 if (&is_readonly_mode());
@@ -3904,16 +4274,22 @@ else {
 	}
 }
 
-# rename_logged(old, new)
-# Re-names a file and logs it, if allowed
+=head2 rename_logged(old, new)
+
+Re-names a file and logs it, if allowed
+
+=cut
 sub rename_logged
 {
 &additional_log('rename', $_[0], $_[1]) if ($_[0] ne $_[1]);
 return &rename_file($_[0], $_[1]);
 }
 
-# rename_file(old, new)
-# Renames a file, unless in read-only mode
+=head2 rename_file(old, new)
+
+Renames a file, unless in read-only mode
+
+=cut
 sub rename_file
 {
 if (&is_readonly_mode()) {
@@ -3943,8 +4319,11 @@ if (!$ok && $! !~ /permission/i) {
 return $ok;
 }
 
-# symlink_logged(src, dest)
-# Create a symlink, and logs it
+=head2 symlink_logged(src, dest)
+
+Create a symlink, and logs it
+
+=cut
 sub symlink_logged
 {
 &lock_file($_[1]);
@@ -3953,8 +4332,11 @@ local $rv = &symlink_file($_[0], $_[1]);
 return $rv;
 }
 
-# symlink_file(src, dest)
-# Creates a soft link, unless in read-only mode
+=head2 symlink_file(src, dest)
+
+Creates a soft link, unless in read-only mode
+
+=cut
 sub symlink_file
 {
 if (&is_readonly_mode()) {
@@ -3968,9 +4350,12 @@ local $dst = &translate_filename($_[1]);
 return symlink($src, $dst);
 }
 
-# link_file(src, dest)
-# Creates a hard link, unless in read-only mode. The existing new link
-# will be deleted if necessary.
+=head2 link_file(src, dest)
+
+Creates a hard link, unless in read-only mode. The existing new link
+will be deleted if necessary.
+
+=cut
 sub link_file
 {
 if (&is_readonly_mode()) {
@@ -3985,8 +4370,11 @@ unlink($dst);			# make sure link works
 return link($src, $dst);
 }
 
-# make_dir(dir, perms, recursive)
-# Creates a directory, unless in read-only mode
+=head2 make_dir(dir, perms, recursive)
+
+Creates a directory, unless in read-only mode
+
+=cut
 sub make_dir
 {
 local ($dir, $perms, $recur) = @_;
@@ -4013,8 +4401,11 @@ if (!$exists) {
 return 1;
 }
 
-# set_ownership_permissions(user, group, perms, file, ...)
-# Sets the user, group and permissions on some files
+=head2 set_ownership_permissions(user, group, perms, file, ...)
+
+Sets the user, group and permissions on some files
+
+=cut
 sub set_ownership_permissions
 {
 local ($user, $group, $perms, @files) = @_;
@@ -4048,7 +4439,11 @@ if ($rv && defined($perms)) {
 return $rv;
 }
 
-# unlink_logged(file, ...)
+=head2 unlink_logged(file, ...)
+
+MISSING DOCUMENTATION
+
+=cut
 sub unlink_logged
 {
 local %locked;
@@ -4067,8 +4462,11 @@ foreach my $f (@_) {
 return wantarray ? @rv : $rv[0];
 }
 
-# unlink_file(file, ...)
-# Deletes some files or directories, if allowed
+=head2 unlink_file(file, ...)
+
+Deletes some files or directories, if allowed
+
+=cut
 sub unlink_file
 {
 return 1 if (&is_readonly_mode());
@@ -4109,9 +4507,12 @@ foreach my $f (@_) {
 return wantarray ? ($rv, $err) : $rv;
 }
 
-# copy_source_dest(source, dest)
-# Copy some file or directory to a new location. Returns 1 on success, or 0
-# on failure - also sets $!
+=head2 copy_source_dest(source, dest)
+
+Copy some file or directory to a new location. Returns 1 on success, or 0
+on failure - also sets $!
+
+=cut
 sub copy_source_dest
 {
 return (1, undef) if (&is_readonly_mode());
@@ -4159,10 +4560,13 @@ else {
 return wantarray ? ($ok, $err) : $ok;
 }
 
-# remote_session_name(host|&server)
-# Generates a session ID for some server. For this server, this will always
-# be an empty string. For a server object it will include the hostname and
-# port and PID. For a server name, it will include the hostname and PID.
+=head2 remote_session_name(host|&server)
+
+Generates a session ID for some server. For this server, this will always
+be an empty string. For a server object it will include the hostname and
+port and PID. For a server name, it will include the hostname and PID.
+
+=cut
 sub remote_session_name
 {
 return ref($_[0]) && $_[0]->{'host'} && $_[0]->{'port'} ?
@@ -4171,9 +4575,12 @@ return ref($_[0]) && $_[0]->{'host'} && $_[0]->{'port'} ?
        ref($_[0]) ? "" : "$_[0].$$";
 }
 
-# remote_foreign_require(server, module, file)
-# Connect to rpc.cgi on a remote webmin server and have it open a session
-# to a process that will actually do the require and run functions.
+=head2 remote_foreign_require(server, module, file)
+
+Connect to rpc.cgi on a remote webmin server and have it open a session
+to a process that will actually do the require and run functions.
+
+=cut
 sub remote_foreign_require
 {
 local $call = { 'action' => 'require',
@@ -4193,9 +4600,12 @@ if ($rv->{'session'}) {
 	}
 }
 
-# remote_foreign_call(server, module, function, [arg]*)
-# Call a function on a remote server. Must have been setup first with
-# remote_foreign_require for the same server and module
+=head2 remote_foreign_call(server, module, function, [arg]*)
+
+Call a function on a remote server. Must have been setup first with
+remote_foreign_require for the same server and module
+
+=cut
 sub remote_foreign_call
 {
 return undef if (&is_readonly_mode());
@@ -4207,8 +4617,11 @@ return &remote_rpc_call($_[0], { 'action' => 'call',
 				 'args' => [ @_[3 .. $#_] ] } );
 }
 
-# remote_foreign_check(server, module, [api-only])
-# Checks if some module is installed and supported on a remote server
+=head2 remote_foreign_check(server, module, [api-only])
+
+Checks if some module is installed and supported on a remote server
+
+=cut
 sub remote_foreign_check
 {
 return &remote_rpc_call($_[0], { 'action' => 'check',
@@ -4216,16 +4629,22 @@ return &remote_rpc_call($_[0], { 'action' => 'check',
 				 'api' => $_[2] });
 }
 
-# remote_foreign_config(server, module)
-# Gets the configuration for some module from a remote server
+=head2 remote_foreign_config(server, module)
+
+Gets the configuration for some module from a remote server
+
+=cut
 sub remote_foreign_config
 {
 return &remote_rpc_call($_[0], { 'action' => 'config',
 				 'module' => $_[1] });
 }
 
-# remote_eval(server, module, code)
-# Eval some perl code in the context of a module on a remote webmin server
+=head2 remote_eval(server, module, code)
+
+Eval some perl code in the context of a module on a remote webmin server
+
+=cut
 sub remote_eval
 {
 return undef if (&is_readonly_mode());
@@ -4236,9 +4655,12 @@ return &remote_rpc_call($_[0], { 'action' => 'eval',
 				 'session' => $remote_session{$sn} });
 }
 
-# remote_write(server, localfile, [remotefile], [remotebasename])
-# Transfers some local file to another server, and returns the resulting
-# remote filename.
+=head2 remote_write(server, localfile, [remotefile], [remotebasename])
+
+Transfers some local file to another server, and returns the resulting
+remote filename.
+
+=cut
 sub remote_write
 {
 return undef if (&is_readonly_mode());
@@ -4283,7 +4705,11 @@ else {
 	}
 }
 
-# remote_read(server, localfile, remotefile)
+=head2 remote_read(server, localfile, remotefile)
+
+MISSING DOCUMENTATION
+
+=cut
 sub remote_read
 {
 local $sn = &remote_session_name($_[0]);
@@ -4318,9 +4744,12 @@ else {
 	}
 }
 
-# remote_finished()
-# Close all remote sessions. This happens automatically after a while
-# anyway, but this function should be called to clean things up faster.
+=head2 remote_finished
+
+Close all remote sessions. This happens automatically after a while
+anyway, but this function should be called to clean things up faster.
+
+=cut
 sub remote_finished
 {
 foreach $sn (keys %remote_session) {
@@ -4336,16 +4765,22 @@ foreach $fh (keys %fast_fh_cache) {
 	}
 }
 
-# remote_error_setup(&function)
-# Sets a function to be called instead of &error when a remote RPC fails
+=head2 remote_error_setup(&function)
+
+Sets a function to be called instead of &error when a remote RPC fails
+
+=cut
 sub remote_error_setup
 {
 $remote_error_handler = $_[0] || "error";
 }
 
-# remote_rpc_call(server, structure)
-# Calls rpc.cgi on some server and passes it a perl structure (hash,array,etc)
-# and then reads back a reply structure
+=head2 remote_rpc_call(server, structure)
+
+Calls rpc.cgi on some server and passes it a perl structure (hash,array,etc)
+and then reads back a reply structure
+
+=cut
 sub remote_rpc_call
 {
 local $serv;
@@ -4562,12 +4997,14 @@ else {
 	}
 }
 
-# remote_multi_callback(&servers, parallel, &function, arg|&args,
-#			&returns, &errors, [module, library])
-# Executes some function in parallel on multiple servers at once. Fills in
-# the returns and errors arrays respectively. If the module and library
-# parameters are given, that module is remotely required on the server first,
-# to check if it is connectable.
+=head2 remote_multi_callback(&servers, parallel, &function, arg|&args, &returns, &errors, [module, library])
+
+Executes some function in parallel on multiple servers at once. Fills in
+the returns and errors arrays respectively. If the module and library
+parameters are given, that module is remotely required on the server first,
+to check if it is connectable.
+
+=cut
 sub remote_multi_callback
 {
 local ($servs, $parallel, $func, $args, $rets, $errs, $mod, $lib) = @_;
@@ -4631,9 +5068,12 @@ sub remote_multi_callback_error
 $remote_multi_callback_err = $_[0];
 }
 
-# serialise_variable(variable)
-# Converts some variable (maybe a scalar, hash ref, array ref or scalar ref)
-# into a url-encoded string
+=head2 serialise_variable(variable)
+
+Converts some variable (maybe a scalar, hash ref, array ref or scalar ref)
+into a url-encoded string
+
+=cut
 sub serialise_variable
 {
 if (!defined($_[0])) {
@@ -4668,9 +5108,12 @@ elsif ($r) {
 return ($r ? $r : 'VAL').",".$rv;
 }
 
-# unserialise_variable(string)
-# Converts a string created by serialise_variable() back into the original
-# scalar, hash ref, array ref or scalar ref.
+=head2 unserialise_variable(string)
+
+Converts a string created by serialise_variable() back into the original
+scalar, hash ref, array ref or scalar ref.
+
+=cut
 sub unserialise_variable
 {
 local @v = split(/,/, $_[0]);
@@ -4717,8 +5160,11 @@ elsif ($v[0] =~ /^OBJECT\s+(.*)$/) {
 return $rv;
 }
 
-# other_groups(user)
-# Returns a list of secondary groups a user is a member of
+=head2 other_groups(user)
+
+Returns a list of secondary groups a user is a member of
+
+=cut
 sub other_groups
 {
 local (@rv, @g);
@@ -4731,8 +5177,11 @@ endgrent() if ($gconfig{'os_type'} ne 'hpux');
 return @rv;
 }
 
-# date_chooser_button(dayfield, monthfield, yearfield)
-# Returns HTML for a date-chooser button
+=head2 date_chooser_button(dayfield, monthfield, yearfield)
+
+Returns HTML for a date-chooser button
+
+=cut
 sub date_chooser_button
 {
 return &theme_date_chooser_button(@_)
@@ -4744,8 +5193,11 @@ if ($gconfig{'db_sizedate'}) {
 return "<input type=button onClick='window.dfield = form.$_[0]; window.mfield = form.$_[1]; window.yfield = form.$_[2]; window.open(\"$gconfig{'webprefix'}/date_chooser.cgi?day=\"+escape(dfield.value)+\"&month=\"+escape(mfield.selectedIndex)+\"&year=\"+yfield.value, \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\")' value=\"...\">\n";
 }
 
-# help_file(module, file)
-# Returns the path to a module's help file
+=head2 help_file(module, file)
+
+Returns the path to a module's help file
+
+=cut
 sub help_file
 {
 local $mdir = &module_root_directory($_[0]);
@@ -4757,8 +5209,11 @@ foreach my $o (@lang_order_list) {
 return "$dir/$_[1].html";
 }
 
-# seed_random()
-# Seeds the random number generator, if needed
+=head2 seed_random
+
+Seeds the random number generator, if needed
+
+=cut
 sub seed_random
 {
 if (!$main::done_seed_random) {
@@ -4775,8 +5230,11 @@ if (!$main::done_seed_random) {
 	}
 }
 
-# disk_usage_kb(directory)
-# Returns the number of kb used by some directory and all subdirs
+=head2 disk_usage_kb(directory)
+
+Returns the number of kb used by some directory and all subdirs
+
+=cut
 sub disk_usage_kb
 {
 local $dir = &translate_filename($_[0]);
@@ -4790,8 +5248,11 @@ if ($ex) {
 return $out =~ /^([0-9]+)/ ? $1 : "???";
 }
 
-# recursive_disk_usage(directory)
-# Returns the number of bytes taken up by all files in some directory
+=head2 recursive_disk_usage(directory)
+
+Returns the number of bytes taken up by all files in some directory
+
+=cut
 sub recursive_disk_usage
 {
 local $dir = &translate_filename($_[0]);
@@ -4815,9 +5276,12 @@ else {
 	}
 }
 
-# help_search_link(term, [ section, ... ] )
-# Returns HTML for a link to the man module for searching local and online
-# docs for various search terms
+=head2 help_search_link(term, [ section, ... ] )
+
+Returns HTML for a link to the man module for searching local and online
+docs for various search terms
+
+=cut
 sub help_search_link
 {
 local %acl;
@@ -4833,10 +5297,13 @@ else {
 	}
 }
 
-# make_http_connection(host, port, ssl, method, page, [&headers])
-# Opens a connection to some HTTP server, maybe through a proxy, and returns
-# a handle object. The handle can then be used to send additional headers
-# and read back a response. If anything goes wrong, returns an error string.
+=head2 make_http_connection(host, port, ssl, method, page, [&headers])
+
+Opens a connection to some HTTP server, maybe through a proxy, and returns
+a handle object. The handle can then be used to send additional headers
+and read back a response. If anything goes wrong, returns an error string.
+
+=cut
 sub make_http_connection
 {
 local ($host, $port, $ssl, $method, $page, $headers) = @_;
@@ -4946,8 +5413,11 @@ else {
 return $rv;
 }
 
-# read_http_connection(handle, [amount])
-# Reads either one line or up to the specified amount of data from the handle
+=head2 read_http_connection(handle, [amount])
+
+Reads either one line or up to the specified amount of data from the handle
+
+=cut
 sub read_http_connection
 {
 local $h = $_[0];
@@ -4991,8 +5461,11 @@ $rv = undef if ($rv eq "");
 return $rv;
 }
 
-# write_http_connection(handle, [data+])
-# Writes the given data to the handle
+=head2 write_http_connection(handle, [data+])
+
+Writes the given data to the handle
+
+=cut
 sub write_http_connection
 {
 local $h = shift(@_);
@@ -5007,15 +5480,22 @@ else {
 	}
 }
 
-# close_http_connection(handle)
+=head2 close_http_connection(handle)
+
+MISSING DOCUMENTATION
+
+=cut
 sub close_http_connection
 {
 close($h->{'fh'});
 }
 
-# clean_environment()
-# Deletes any environment variables inherited from miniserv so that they
-# won't be passed to programs started by webmin.
+=head2 clean_environment
+
+Deletes any environment variables inherited from miniserv so that they
+won't be passed to programs started by webmin.
+
+=cut
 sub clean_environment
 {
 local ($k, $e);
@@ -5037,8 +5517,11 @@ foreach $e ('WEBMIN_CONFIG', 'SERVER_NAME', 'CONTENT_TYPE', 'REQUEST_URI',
 	}
 }
 
-# reset_environment()
-# Puts the environment back how it was before &clean_environment
+=head2 reset_environment
+
+Puts the environment back how it was before &clean_environment
+
+=cut
 sub reset_environment
 {
 if (defined(%UNCLEAN_ENV)) {
@@ -5051,8 +5534,11 @@ if (defined(%UNCLEAN_ENV)) {
 
 $webmin_feedback_address = "feedback\@webmin.com";
 
-# progress_callback()
-# Never called directly, but useful for passing to &http_download
+=head2 progress_callback
+
+Never called directly, but useful for passing to &http_download
+
+=cut
 sub progress_callback
 {
 if (defined(&theme_progress_callback)) {
@@ -5111,9 +5597,12 @@ elsif ($_[0] == 6) {
 	}
 }
 
-# switch_to_remote_user()
-# Changes the user and group of the current process to that of the unix user
-# with the same name as the current webmin login, or fails if there is none.
+=head2 switch_to_remote_user
+
+Changes the user and group of the current process to that of the unix user
+with the same name as the current webmin login, or fails if there is none.
+
+=cut
 sub switch_to_remote_user
 {
 @remote_user_info = $remote_user ? getpwnam($remote_user) :
@@ -5130,10 +5619,13 @@ if ($< == 0) {
 	}
 }
 
-# create_user_config_dirs()
-# Creates per-user config directories and sets $user_config_directory and
-# $user_module_config_directory to them. Also reads per-user module configs
-# into %userconfig
+=head2 create_user_config_dirs
+
+Creates per-user config directories and sets $user_config_directory and
+$user_module_config_directory to them. Also reads per-user module configs
+into %userconfig
+
+=cut
 sub create_user_config_dirs
 {
 return if (!$gconfig{'userconfig'});
@@ -5166,8 +5658,11 @@ if ($module_name) {
 	}
 }
 
-# create_missing_homedir(&uinfo)
-# If auto homedir creation is enabled, create one for this user if needed
+=head2 create_missing_homedir(&uinfo)
+
+If auto homedir creation is enabled, create one for this user if needed
+
+=cut
 sub create_missing_homedir
 {
 local ($uinfo) = @_;
@@ -5181,8 +5676,11 @@ if (!-e $uinfo->[7] && $gconfig{'create_homedir'}) {
 	}
 }
 
-# filter_javascript(text)
-# Disables all javascript <script>, onClick= and so on tags in the given HTML
+=head2 filter_javascript(text)
+
+Disables all javascript <script>, onClick= and so on tags in the given HTML
+
+=cut
 sub filter_javascript
 {
 local $rv = $_[0];
@@ -5193,8 +5691,11 @@ $rv =~ s/(vbscript:)/x$1/gi;
 return $rv;
 }
 
-# resolve_links(path)
-# Given a path that may contain symbolic links, returns the real path
+=head2 resolve_links(path)
+
+Given a path that may contain symbolic links, returns the real path
+
+=cut
 sub resolve_links
 {
 local $path = $_[0];
@@ -5218,9 +5719,12 @@ for($i=0; $i<@p; $i++) {
 return $path;
 }
 
-# simplify_path(path, bogus)
-# Given a path, maybe containing stuff like ".." and "." convert it to a
-# clean, absolute form. Returns undef if this is not possible
+=head2 simplify_path(path, bogus)
+
+Given a path, maybe containing stuff like ".." and "." convert it to a
+clean, absolute form. Returns undef if this is not possible
+
+=cut
 sub simplify_path
 {
 local($dir, @bits, @fixedbits, $b);
@@ -5250,8 +5754,11 @@ foreach $b (@bits) {
 return "/" . join('/', @fixedbits);
 }
 
-# same_file(file1, file2)
-# Returns 1 if two files are actually the same
+=head2 same_file(file1, file2)
+
+Returns 1 if two files are actually the same
+
+=cut
 sub same_file
 {
 return 1 if ($_[0] eq $_[1]);
@@ -5264,8 +5771,11 @@ return 0 if (!@stat1 || !@stat2);
 return $stat1[0] == $stat2[0] && $stat1[1] == $stat2[1];
 }
 
-# flush_webmin_caches()
-# Clears all in-memory and on-disk caches used by webmin
+=head2 flush_webmin_caches
+
+Clears all in-memory and on-disk caches used by webmin
+
+=cut
 sub flush_webmin_caches
 {
 undef(%main::read_file_cache);
@@ -5280,9 +5790,12 @@ unlink("$config_directory/module.infos.cache");
 &get_all_module_infos();
 }
 
-# list_usermods()
-# Returns a list of additional module restrictions. For internal use in
-# usermin only.
+=head2 list_usermods
+
+Returns a list of additional module restrictions. For internal use in
+usermin only.
+
+=cut
 sub list_usermods
 {
 if (!$main::got_list_usermods_cache) {
@@ -5301,9 +5814,12 @@ if (!$main::got_list_usermods_cache) {
 return @main::list_usermods_cache;
 }
 
-# available_usermods(&allmods, &usermods)
-# Returns a list of modules that are available to the given user, based
-# on usermod additional/subtractions
+=head2 available_usermods(&allmods, &usermods)
+
+Returns a list of modules that are available to the given user, based
+on usermod additional/subtractions
+
+=cut
 sub available_usermods
 {
 return @{$_[0]} if (!@{$_[1]});
@@ -5359,9 +5875,12 @@ foreach $u (@{$_[1]}) {
 return grep { $mods{$_->{'dir'}} } @{$_[0]};
 }
 
-# get_available_module_infos(nocache)
-# Returns a list of modules available to the current user, based on
-# operating system support, access control and usermod restrictions.
+=head2 get_available_module_infos(nocache)
+
+Returns a list of modules available to the current user, based on
+operating system support, access control and usermod restrictions.
+
+=cut
 sub get_available_module_infos
 {
 local (%acl, %uacl);
@@ -5437,8 +5956,11 @@ else {
 return @licrv;
 }
 
-# get_visible_module_infos(nocache)
-# Like get_available_module_infos, but excludes hidden modules from the list
+=head2 get_visible_module_infos(nocache)
+
+Like get_available_module_infos, but excludes hidden modules from the list
+
+=cut
 sub get_visible_module_infos
 {
 local ($nocache) = @_;
@@ -5447,12 +5969,15 @@ return grep { !$_->{'hidden'} &&
 	      !$_->{$pn.'_hidden'} } &get_available_module_infos($nocache);
 }
 
-# get_visible_modules_categories(nocache)
-# Returns a list of Webmin module categories, each of which is a hash ref
-# with 'code', 'desc' and 'modules' keys. The modules value is an array ref
-# of modules in the category, in the format returned by get_module_info.
-# Un-used modules are automatically assigned to the 'unused' category, and
-# those with no category are put into 'others'.
+=head2 get_visible_modules_categories(nocache)
+
+Returns a list of Webmin module categories, each of which is a hash ref
+with 'code', 'desc' and 'modules' keys. The modules value is an array ref
+of modules in the category, in the format returned by get_module_info.
+Un-used modules are automatically assigned to the 'unused' category, and
+those with no category are put into 'others'.
+
+=cut
 sub get_visible_modules_categories
 {
 local ($nocache) = @_;
@@ -5483,9 +6008,12 @@ if (@unmods) {
 return @rv;
 }
 
-# is_under_directory(directory, file)
-# Returns 1 if the given file is under the specified directory, 0 if not.
-# Symlinks are taken into account in the file to find it's 'real' location
+=head2 is_under_directory(directory, file)
+
+Returns 1 if the given file is under the specified directory, 0 if not.
+Symlinks are taken into account in the file to find it's 'real' location
+
+=cut
 sub is_under_directory
 {
 local ($dir, $file) = @_;
@@ -5505,9 +6033,12 @@ $dir =~ s/\/*$/\//;
 return substr($file, 0, length($dir)) eq $dir;
 }
 
-# parse_http_url(url, [basehost, baseport, basepage, basessl])
-# Given an absolute URL, returns the host, port, page and ssl components.
-# Relative URLs can also be parsed, if the base information is provided
+=head2 parse_http_url(url, [basehost, baseport, basepage, basessl])
+
+Given an absolute URL, returns the host, port, page and ssl components.
+Relative URLs can also be parsed, if the base information is provided
+
+=cut
 sub parse_http_url
 {
 if ($_[0] =~ /^(http|https):\/\/([^:\/]+)(:(\d+))?(\/\S*)?$/) {
@@ -5531,10 +6062,13 @@ else {
 	}
 }
 
-# check_clicks_function()
-# Returns HTML for a JavaScript function called check_clicks that returns
-# true when first called, but false subsequently. Useful on onClick for
-# critical buttons.
+=head2 check_clicks_function
+
+Returns HTML for a JavaScript function called check_clicks that returns
+true when first called, but false subsequently. Useful on onClick for
+critical buttons.
+
+=cut
 sub check_clicks_function
 {
 return <<EOF;
@@ -5557,9 +6091,12 @@ else {
 EOF
 }
 
-# load_entities_map()
-# Returns a hash ref containing mappings between HTML entities (like ouml) and
-# ascii values (like 246)
+=head2 load_entities_map
+
+Returns a hash ref containing mappings between HTML entities (like ouml) and
+ascii values (like 246)
+
+=cut
 sub load_entities_map
 {
 if (!defined(%entities_map_cache)) {
@@ -5575,9 +6112,12 @@ if (!defined(%entities_map_cache)) {
 return \%entities_map_cache;
 }
 
-# entities_to_ascii(string)
-# Given a string containing HTML entities like &ouml; and &#55;, replace them
-# with their ASCII equivalents
+=head2 entities_to_ascii(string)
+
+Given a string containing HTML entities like &ouml; and &#55;, replace them
+with their ASCII equivalents
+
+=cut
 sub entities_to_ascii
 {
 local $str = $_[0];
@@ -5587,8 +6127,11 @@ $str =~ s/&#(\d+);/chr($1)/ge;
 return $str;
 }
 
-# get_product_name()
-# Returns either 'webmin' or 'usermin'
+=head2 get_product_name
+
+Returns either 'webmin' or 'usermin'
+
+=cut
 sub get_product_name
 {
 return $gconfig{'product'} if (defined($gconfig{'product'}));
@@ -5597,8 +6140,11 @@ return defined($gconfig{'userconfig'}) ? 'usermin' : 'webmin';
 
 $default_charset = "iso-8859-1";
 
-# get_charset()
-# Returns the character set for the current language
+=head2 get_charset
+
+Returns the character set for the current language
+
+=cut
 sub get_charset
 {
 local $charset = defined($gconfig{'charset'}) ? $gconfig{'charset'} :
@@ -5607,8 +6153,11 @@ local $charset = defined($gconfig{'charset'}) ? $gconfig{'charset'} :
 return $charset;
 }
 
-# get_display_hostname()
-# Returns the system's hostname for UI display purposes
+=head2 get_display_hostname
+
+Returns the system's hostname for UI display purposes
+
+=cut
 sub get_display_hostname
 {
 if ($gconfig{'hostnamemode'} == 0) {
@@ -5627,8 +6176,11 @@ else {
 	}
 }
 
-# save_module_config([&config], [modulename])
-# Saves the configuration for some module
+=head2 save_module_config([&config], [modulename])
+
+Saves the configuration for some module
+
+=cut
 sub save_module_config
 {
 local $c = $_[0] || \%config;
@@ -5636,8 +6188,11 @@ local $m = defined($_[1]) ? $_[1] : $module_name;
 &write_file("$config_directory/$m/config", $c);
 }
 
-# save_user_module_config([&config], [modulename])
-# Saves the user's Usermin configuration for some module
+=head2 save_user_module_config([&config], [modulename])
+
+Saves the user's Usermin configuration for some module
+
+=cut
 sub save_user_module_config
 {
 local $c = $_[0] || \%userconfig;
@@ -5652,8 +6207,11 @@ if (!$ucd) {
 &write_file("$ucd/$m/config", $c);
 }
 
-# nice_size(bytes, [min])
-# Converts a number of bytes into a number of bytes, kb, mb or gb
+=head2 nice_size(bytes, [min])
+
+Converts a number of bytes into a number of bytes, kb, mb or gb
+
+=cut
 sub nice_size
 {
 local ($units, $uname);
@@ -5682,8 +6240,11 @@ $sz =~ s/\.00$//;
 return $sz." ".$uname;
 }
 
-# get_perl_path()
-# Returns the path to Perl currently in use
+=head2 get_perl_path
+
+Returns the path to Perl currently in use
+
+=cut
 sub get_perl_path
 {
 local $rv;
@@ -5696,9 +6257,12 @@ return $^X if (-x $^X);
 return &has_command("perl");
 }
 
-# get_goto_module([&mods])
-# Returns the details of a module that the current user should be re-directed
-# to after logging in, or undef if none
+=head2 get_goto_module([&mods])
+
+Returns the details of a module that the current user should be re-directed
+to after logging in, or undef if none
+
+=cut
 sub get_goto_module
 {
 local @mods = $_[0] ? @{$_[0]} : &get_visible_module_infos();
@@ -5712,9 +6276,12 @@ if (@mods == 1 && $gconfig{'gotoone'}) {
 return undef;
 }
 
-# select_all_link(field, form, text)
-# Returns HTML for a 'Select all' link that uses Javascript to select
-# multiple checkboxes with the same name
+=head2 select_all_link(field, form, text)
+
+Returns HTML for a 'Select all' link that uses Javascript to select
+multiple checkboxes with the same name
+
+=cut
 sub select_all_link
 {
 return &theme_select_all_link(@_) if (defined(&theme_select_all_link));
@@ -5724,9 +6291,12 @@ $text ||= $text{'ui_selall'};
 return "<a class='select_all' href='#' onClick='document.forms[$form].$field.checked = true; for(i=0; i<document.forms[$form].$field.length; i++) { document.forms[$form].${field}[i].checked = true; } return false'>$text</a>";
 }
 
-# select_invert_link(field, form, text)
-# Returns HTML for a 'Select all' link that uses Javascript to invert the
-# selection on multiple checkboxes with the same name
+=head2 select_invert_link(field, form, text)
+
+Returns HTML for a 'Select all' link that uses Javascript to invert the
+selection on multiple checkboxes with the same name
+
+=cut
 sub select_invert_link
 {
 return &theme_select_invert_link(@_) if (defined(&theme_select_invert_link));
@@ -5736,9 +6306,12 @@ $text ||= $text{'ui_selinv'};
 return "<a class='select_invert' href='#' onClick='document.forms[$form].$field.checked = !document.forms[$form].$field.checked; for(i=0; i<document.forms[$form].$field.length; i++) { document.forms[$form].${field}[i].checked = !document.forms[$form].${field}[i].checked; } return false'>$text</a>";
 }
 
-# select_rows_link(field, form, text, &rows)
-# Returns HTML for a link that uses Javascript to select rows with particular
-# values for their checkboxes
+=head2 select_rows_link(field, form, text, &rows)
+
+Returns HTML for a link that uses Javascript to select rows with particular
+values for their checkboxes
+
+=cut
 sub select_rows_link
 {
 return &theme_select_rows_link(@_) if (defined(&theme_select_rows_link));
@@ -5750,8 +6323,11 @@ $js .= "return false;";
 return "<a href='#' onClick='$js'>$text</a>";
 }
 
-# check_pid_file(file)
-# Given a pid file, returns the PID it contains if the process is running
+=head2 check_pid_file(file)
+
+Given a pid file, returns the PID it contains if the process is running
+
+=cut
 sub check_pid_file
 {
 open(PIDFILE, $_[0]) || return undef;
@@ -5762,9 +6338,13 @@ kill(0, $1) || return undef;
 return $1;
 }
 
-#
-# Return the local os-specific library name to this module
-#
+=head2 get_mod_lib
+
+
+Return the local os-specific library name to this module
+
+
+=cut
 sub get_mod_lib
 {
 local $lib;
@@ -5782,8 +6362,11 @@ else {
 	}
 }
 
-# module_root_directory(module)
-# Given a module name, returns its root directory
+=head2 module_root_directory(module)
+
+Given a module name, returns its root directory
+
+=cut
 sub module_root_directory
 {
 local $d = ref($_[0]) ? $_[0]->{'dir'} : $_[0];
@@ -5798,8 +6381,11 @@ if (@root_directories > 1) {
 return "$root_directories[0]/$d";
 }
 
-# list_mime_types()
-# Returns a list of all known MIME types and their extensions
+=head2 list_mime_types
+
+Returns a list of all known MIME types and their extensions
+
+=cut
 sub list_mime_types
 {
 if (!@list_mime_types_cache) {
@@ -5823,8 +6409,11 @@ if (!@list_mime_types_cache) {
 return @list_mime_types_cache;
 }
 
-# guess_mime_type(filename, [default])
-# Given a file name like xxx.gif or foo.html, returns a guessed MIME type
+=head2 guess_mime_type(filename, [default])
+
+Given a file name like xxx.gif or foo.html, returns a guessed MIME type
+
+=cut
 sub guess_mime_type
 {
 if ($_[0] =~ /\.([A-Za-z0-9\-]+)$/) {
@@ -5839,8 +6428,11 @@ if ($_[0] =~ /\.([A-Za-z0-9\-]+)$/) {
 return @_ > 1 ? $_[1] : "application/octet-stream";
 }
 
-# open_tempfile([handle], file, [no-error], [no-tempfile], [safe?])
-# Returns a temporary file for writing to some actual file
+=head2 open_tempfile([handle], file, [no-error], [no-tempfile], [safe?])
+
+Returns a temporary file for writing to some actual file
+
+=cut
 sub open_tempfile
 {
 if (@_ == 1) {
@@ -5958,9 +6550,12 @@ else {
 	}
 }
 
-# close_tempfile(file|handle)
-# Copies a temp file to the actual file, assuming that all writes were
-# successful.
+=head2 close_tempfile(file|handle)
+
+Copies a temp file to the actual file, assuming that all writes were
+successful.
+
+=cut
 sub close_tempfile
 {
 local $file;
@@ -5974,7 +6569,7 @@ elsif (defined($main::open_tempfiles{$_[0]})) {
 	# Closing a file
 	&webmin_debug_log("CLOSE", $_[0]) if ($gconfig{'debug_what_write'});
 	local @st = stat($_[0]);
-	if ($gconfig{'os_type'} =~ /-linux$/ && &has_command("chcon")) {
+	if (&is_selinux_enabled() && &has_command("chcon")) {
 		# Set original security context
 		system("chcon --reference=".quotemeta($_[0]).
 		       " ".quotemeta($main::open_tempfiles{$_[0]}).
@@ -6003,9 +6598,41 @@ else {
 	}
 }
 
-# get_clear_file_attributes(file)
-# Finds file attributes that may prevent writing, clears them and returns them
-# as a list. May call error.
+=head2 is_selinux_enabled
+
+Returns 1 if SElinux is supported on this system and enabled
+
+=cut
+sub is_selinux_enabled
+{
+if (!defined($main::selinux_enabled_cache)) {
+	local %seconfig;
+	if ($gconfig{'os_type'} !~ /-linux$/) {
+		# Not on linux, so no way
+		$main::selinux_enabled_cache = 0;
+		}
+	elsif (&read_env_file("/etc/selinux/config", \%seconfig)) {
+		# Use global config file
+		$main::selinux_enabled_cache =
+			$seconfig{'SELINUX'} eq 'disabled' ||
+			!$seconfig{'SELINUX'} ? 0 : 1;
+		}
+	else {
+		# Use selinuxenabled command
+		#$selinux_enabled_cache =
+		#	system("selinuxenabled >/dev/null 2>&1") ? 0 : 1;
+		$main::selinux_enabled_cache = 0;
+		}
+	}
+return $main::selinux_enabled_cache;
+}
+
+=head2 get_clear_file_attributes(file)
+
+Finds file attributes that may prevent writing, clears them and returns them
+as a list. May call error.
+
+=cut
 sub get_clear_file_attributes
 {
 my ($file) = @_;
@@ -6030,8 +6657,11 @@ if ($gconfig{'chattr'}) {
 return @old_attributes;
 }
 
-# reset_file_attributes(file, &attributes)
-# Put back cleared attributes on some file. May call error.
+=head2 reset_file_attributes(file, &attributes)
+
+Put back cleared attributes on some file. May call error.
+
+=cut
 sub reset_file_attributes
 {
 local ($file, $old_attributes) = @_;
@@ -6045,8 +6675,11 @@ if (&indexof("i", @$old_attributes) >= 0) {
 	}
 }
 
-# print_tempfile(handle, text, ...)
-# Like the normal print function, but calls &error on failure
+=head2 print_tempfile(handle, text, ...)
+
+Like the normal print function, but calls &error on failure
+
+=cut
 sub print_tempfile
 {
 local ($fh, @args) = @_;
@@ -6054,8 +6687,11 @@ local ($fh, @args) = @_;
 			    $main::open_temphandles{$fh} || $fh, $!));
 }
 
-# cleanup_tempnames()
-# Remove all temporary files
+=head2 cleanup_tempnames
+
+Remove all temporary files
+
+=cut
 sub cleanup_tempnames
 {
 local $t;
@@ -6065,8 +6701,11 @@ foreach $t (@main::temporary_files) {
 @main::temporary_files = ( );
 }
 
-# open_lock_tempfile([handle], file, [no-error])
-# Returns a temporary file for writing to some actual file, and also locks it
+=head2 open_lock_tempfile([handle], file, [no-error])
+
+Returns a temporary file for writing to some actual file, and also locks it
+
+=cut
 sub open_lock_tempfile
 {
 local $file = @_ == 1 ? $_[0] : $_[1];
@@ -6099,24 +6738,33 @@ if ($$ == $main::initial_process_id) {
 	}
 }
 
-# month_to_number(month)
-# Converts a month name like feb to a number like 1
+=head2 month_to_number(month)
+
+Converts a month name like feb to a number like 1
+
+=cut
 sub month_to_number
 {
 return $month_to_number_map{lc(substr($_[0], 0, 3))};
 }
 
-# number_to_month(number)
-# Converts a number like 1 to a month name like Feb
+=head2 number_to_month(number)
+
+Converts a number like 1 to a month name like Feb
+
+=cut
 sub number_to_month
 {
 return ucfirst($number_to_month_map{$_[0]});
 }
 
-# get_rbac_module_acl(user, module)
-# Returns a hash reference of RBAC overrides ACLs for some user and module.
-# May return undef if none exist (indicating access denied), or the string *
-# if full access is granted.
+=head2 get_rbac_module_acl(user, module)
+
+Returns a hash reference of RBAC overrides ACLs for some user and module.
+May return undef if none exist (indicating access denied), or the string *
+if full access is granted.
+
+=cut
 sub get_rbac_module_acl
 {
 local ($user, $mod) = @_;
@@ -6181,8 +6829,11 @@ close(RBAC);
 return !$foundany ? undef : defined(%rv) ? \%rv : undef;
 }
 
-# supports_rbac([module])
-# Returns 1 if RBAC client support is available
+=head2 supports_rbac([module])
+
+Returns 1 if RBAC client support is available
+
+=cut
 sub supports_rbac
 {
 return 0 if ($gconfig{'os_type'} ne 'solaris');
@@ -6205,9 +6856,12 @@ local %access = &get_module_acl($u, $m, 1);
 return $access{'rbac'} ? 1 : 0;
 }
 
-# execute_command(command, stdin, stdout, stderr, translate-files?, safe?)
-# Runs some command, possibly feeding it input and capturing output to the
-# give files or scalar references.
+=head2 execute_command(command, stdin, stdout, stderr, translate-files?, safe?)
+
+Runs some command, possibly feeding it input and capturing output to the
+give files or scalar references.
+
+=cut
 sub execute_command
 {
 local ($cmd, $stdin, $stdout, $stderr, $trans, $safe) = @_;
@@ -6312,8 +6966,11 @@ waitpid($pid, 0);
 return $?;
 }
 
-# open_readfile(handle, file)
-# Opens some file for reading. Returns 1 on success, 0 on failure
+=head2 open_readfile(handle, file)
+
+Opens some file for reading. Returns 1 on success, 0 on failure
+
+=cut
 sub open_readfile
 {
 local ($fh, $file) = @_;
@@ -6322,9 +6979,12 @@ local $realfile = &translate_filename($file);
 return open($fh, "<".$realfile);
 }
 
-# open_execute_command(handle, command, output?, safe?)
-# Runs some command, with the specified filename set to either write to it if
-# in-or-out is set to 0, or read to it if output is set to 1.
+=head2 open_execute_command(handle, command, output?, safe?)
+
+Runs some command, with the specified filename set to either write to it if
+in-or-out is set to 0, or read to it if output is set to 1.
+
+=cut
 sub open_execute_command
 {
 local ($fh, $cmd, $mode, $safe) = @_;
@@ -6354,8 +7014,11 @@ elsif ($mode == 2) {
 	}
 }
 
-# translate_filename(filename)
-# Applies all relevant registered translation functions to a filename
+=head2 translate_filename(filename)
+
+Applies all relevant registered translation functions to a filename
+
+=cut
 sub translate_filename
 {
 local $realfile = $_[0];
@@ -6369,8 +7032,11 @@ foreach $f (@funcs) {
 return $realfile;
 }
 
-# translate_command(filename)
-# Applies all relevant registered translation functions to a command
+=head2 translate_command(filename)
+
+Applies all relevant registered translation functions to a command
+
+=cut
 sub translate_command
 {
 local $realcmd = $_[0];
@@ -6384,28 +7050,37 @@ foreach $f (@funcs) {
 return $realcmd;
 }
 
-# register_filename_callback(module|undef, &function, &args)
-# Registers some function to be called when the specified module (or all
-# modules) tries to open a file for reading and writing. The function must
-# return the actual file to open.
+=head2 register_filename_callback(module|undef, &function, &args)
+
+Registers some function to be called when the specified module (or all
+modules) tries to open a file for reading and writing. The function must
+return the actual file to open.
+
+=cut
 sub register_filename_callback
 {
 local ($mod, $func, $args) = @_;
 push(@main::filename_callbacks, [ $mod, $func, $args ]);
 }
 
-# register_command_callback(module|undef, &function, &args)
-# Registers some function to be called when the specified module (or all
-# modules) tries to execute a command. The function must return the actual
-# command to run.
+=head2 register_command_callback(module|undef, &function, &args)
+
+Registers some function to be called when the specified module (or all
+modules) tries to execute a command. The function must return the actual
+command to run.
+
+=cut
 sub register_command_callback
 {
 local ($mod, $func, $args) = @_;
 push(@main::command_callbacks, [ $mod, $func, $args ]);
 }
 
-# capture_function_output(&function, arg, ...)
-# Captures output that some function prints to STDOUT, and returns it
+=head2 capture_function_output(&function, arg, ...)
+
+Captures output that some function prints to STDOUT, and returns it
+
+=cut
 sub capture_function_output
 {
 local ($func, @args) = @_;
@@ -6423,8 +7098,11 @@ close(SOCKET2);
 return wantarray ? ($out, \@rv) : $out;
 }
 
-# modules_chooser_button(field, multiple, [form])
-# Returns HTML for a button for selecting one or many Webmin modules
+=head2 modules_chooser_button(field, multiple, [form])
+
+Returns HTML for a button for selecting one or many Webmin modules
+
+=cut
 sub modules_chooser_button
 {
 return &theme_modules_chooser_button(@_)
@@ -6441,9 +7119,12 @@ elsif (!$_[1] && $gconfig{'db_sizemodule'}) {
 return "<input type=button onClick='ifield = document.forms[$form].$_[0]; chooser = window.open(\"$gconfig{'webprefix'}/module_chooser.cgi?multi=$_[1]&module=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
 }
 
-# substitute_template(text, &hash)
-# Given some text and a hash reference, for each ocurrance of $FOO or ${FOO} in
-# the text replaces it with the value of the hash key foo
+=head2 substitute_template(text, &hash)
+
+Given some text and a hash reference, for each ocurrance of $FOO or ${FOO} in
+the text replaces it with the value of the hash key foo
+
+=cut
 sub substitute_template
 {
 # Add some extra fixed parameters to the hash
@@ -6523,9 +7204,12 @@ $rv =~ s/\$\{[A-Z]+\}//g;
 return $rv;
 }
 
-# running_in_zone()
-# Returns 1 if the current Webmin instance is running in a Solaris zone. Used to
-# disable module and features that are not appropriate, like filesystems/etc
+=head2 running_in_zone
+
+Returns 1 if the current Webmin instance is running in a Solaris zone. Used to
+disable module and features that are not appropriate, like filesystems/etc
+
+=cut
 sub running_in_zone
 {
 return 0 if ($gconfig{'os_type'} ne 'solaris' ||
@@ -6535,9 +7219,12 @@ chop($zn);
 return $zn && $zn ne "global";
 }
 
-# running_in_vserver()
-# Returns 1 if the current Webmin instance is running in a Linux VServer.
-# Used to disable modules and features that are not appropriate
+=head2 running_in_vserver
+
+Returns 1 if the current Webmin instance is running in a Linux VServer.
+Used to disable modules and features that are not appropriate
+
+=cut
 sub running_in_vserver
 {
 return 0 if ($gconfig{'os_type'} !~ /^\*-linux$/);
@@ -6554,9 +7241,12 @@ close(MTAB);
 return $vserver;
 }
 
-# running_in_xen()
-# Returns 1 if Webmin is running inside a Xen instance, by looking
-# at /proc/xen/capabilities
+=head2 running_in_xen
+
+Returns 1 if Webmin is running inside a Xen instance, by looking
+at /proc/xen/capabilities
+
+=cut
 sub running_in_xen
 {
 return 0 if (!-r "/proc/xen/capabilities");
@@ -6564,8 +7254,11 @@ local $cap = &read_file_contents("/proc/xen/capabilities");
 return $cap =~ /control_d/ ? 0 : 1;
 }
 
-# list_categories(&modules)
-# Returns a hash mapping category codes to names
+=head2 list_categories(&modules)
+
+Returns a hash mapping category codes to names
+
+=cut
 sub list_categories
 {
 local (%cats, %catnames);
@@ -6598,9 +7291,12 @@ foreach $m (@{$_[0]}) {
 return %cats;
 }
 
-# is_readonly_mode()
-# Returns 1 if the current user is in read-only mode, and thus all writes
-# to files and command execution should fail.
+=head2 is_readonly_mode
+
+Returns 1 if the current user is in read-only mode, and thus all writes
+to files and command execution should fail.
+
+=cut
 sub is_readonly_mode
 {
 if (!defined($main::readonly_mode_cache)) {
@@ -6610,8 +7306,11 @@ if (!defined($main::readonly_mode_cache)) {
 return $main::readonly_mode_cache;
 }
 
-# command_as_user(user, with-env?, command, ...)
-# Returns a command to execute some command as the given user
+=head2 command_as_user(user, with-env?, command, ...)
+
+Returns a command to execute some command as the given user
+
+=cut
 sub command_as_user
 {
 local ($user, $env, $cmd, @args) = @_;
@@ -6630,9 +7329,12 @@ return $rv;
 $osdn_download_host = "prdownloads.sourceforge.net";
 $osdn_download_port = 80;
 
-# list_osdn_mirrors(project, file)
-# Given a OSDN project and filename, returns a list of mirror URLs from
-# which it can be downloaded
+=head2 list_osdn_mirrors(project, file)
+
+Given a OSDN project and filename, returns a list of mirror URLs from
+which it can be downloaded
+
+=cut
 sub list_osdn_mirrors
 {
 local ($project, $file) = @_;
@@ -6678,10 +7380,13 @@ if (!@rv) {
 return @rv;
 }
 
-# convert_osdn_url(url)
-# Given a URL like http://osdn.dl.sourceforge.net/sourceforge/project/file.zip
-# or http://prdownloads.sourceforge.net/project/file.zip , convert it
-# to a real URL on the best mirror.
+=head2 convert_osdn_url(url)
+
+Given a URL like http://osdn.dl.sourceforge.net/sourceforge/project/file.zip
+or http://prdownloads.sourceforge.net/project/file.zip , convert it
+to a real URL on the best mirror.
+
+=cut
 sub convert_osdn_url
 {
 local ($url) = @_;
@@ -6703,8 +7408,11 @@ else {
 	}
 }
 
-# get_current_dir()
-# Returns the directory the current process is running in
+=head2 get_current_dir
+
+Returns the directory the current process is running in
+
+=cut
 sub get_current_dir
 {
 local $out;
@@ -6721,23 +7429,32 @@ $out =~ s/\r|\n//g;
 return $out;
 }
 
-# supports_users()
-# Returns 1 if the current OS supports Unix user concepts and functions like
-# su , getpw* and so on
+=head2 supports_users
+
+Returns 1 if the current OS supports Unix user concepts and functions like
+su , getpw* and so on
+
+=cut
 sub supports_users
 {
 return $gconfig{'os_type'} ne 'windows';
 }
 
-# supports_symlinks()
-# Returns 1 if the current OS supports symbolic and hard links
+=head2 supports_symlinks
+
+Returns 1 if the current OS supports symbolic and hard links
+
+=cut
 sub supports_symlinks
 {
 return $gconfig{'os_type'} ne 'windows';
 }
 
-# quote_path(path)
-# Returns a path with safe quoting for the operating system
+=head2 quote_path(path)
+
+Returns a path with safe quoting for the operating system
+
+=cut
 sub quote_path
 {
 local ($path) = @_;
@@ -6750,8 +7467,11 @@ else {
 	}
 }
 
-# get_windows_root()
-# Returns the base windows system directory, like c:/windows
+=head2 get_windows_root
+
+Returns the base windows system directory, like c:/windows
+
+=cut
 sub get_windows_root
 {
 if ($ENV{'SystemRoot'}) {
@@ -6764,8 +7484,11 @@ else {
 	}
 }
 
-# read_file_contents(file)
-# Given a filename, returns its complete contents as a string
+=head2 read_file_contents(file)
+
+Given a filename, returns its complete contents as a string
+
+=cut
 sub read_file_contents
 {
 &open_readfile(FILE, $_[0]) || return undef;
@@ -6775,8 +7498,11 @@ close(FILE);
 return $rv;
 }
 
-# unix_crypt(password, salt)
-# Performs Unix encryption on a password, using crypt() or Crypt::UnixCrypt
+=head2 unix_crypt(password, salt)
+
+Performs Unix encryption on a password, using crypt() or Crypt::UnixCrypt
+
+=cut
 sub unix_crypt
 {
 local ($pass, $salt) = @_;
@@ -6793,9 +7519,12 @@ else {
 	}
 }
 
-# split_quoted_string(string)
-# Given a string like  foo "bar baz" quux
-# returns the array foo, bar baz, quux
+=head2 split_quoted_string(string)
+
+Given a string like  foo "bar baz" quux
+returns the array foo, bar baz, quux
+
+=cut
 sub split_quoted_string
 {
 local $str = $_[0];
@@ -6809,9 +7538,12 @@ while($str =~ /^"([^"]*)"\s*([\000-\377]*)$/ ||
 return @rv;
 }
 
-# write_to_http_cache(url, file|&data)
-# Updates the Webmin cache with the contents of the given file, possibly also
-# clearing out old data
+=head2 write_to_http_cache(url, file|&data)
+
+Updates the Webmin cache with the contents of the given file, possibly also
+clearing out old data
+
+=cut
 sub write_to_http_cache
 {
 local ($url, $file) = @_;
@@ -6892,8 +7624,11 @@ else {
 return 1;
 }
 
-# check_in_http_cache(url)
-# If some URL is in the cache and valid, return the filename for it
+=head2 check_in_http_cache(url)
+
+If some URL is in the cache and valid, return the filename for it
+
+=cut
 sub check_in_http_cache
 {
 local ($url) = @_;
@@ -6926,8 +7661,11 @@ close(TOUCH);
 return $cfile;
 }
 
-# supports_javascript()
-# Returns 1 if the current browser is assumed to support javascript
+=head2 supports_javascript
+
+Returns 1 if the current browser is assumed to support javascript
+
+=cut
 sub supports_javascript
 {
 if (defined(&theme_supports_javascript)) {
