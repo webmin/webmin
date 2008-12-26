@@ -1789,6 +1789,7 @@ else {
 			push(@files, $_[0]."/".$_);
 			}
 		close(CACHE);
+		$main::list_maildir_cache_time{$_[0]} = $cst[9];
 		}
 	else {
 		# Really read
@@ -1824,9 +1825,9 @@ else {
 							   undef, $cachefile);
 				}
 			}
+		$main::list_maildir_cache_time{$_[0]} = $st[9];
 		}
 	$main::list_maildir_cache{$_[0]} = \@files;
-	$main::list_maildir_cache_time{$_[0]} = $st[7];
 	}
 return @files;
 }
