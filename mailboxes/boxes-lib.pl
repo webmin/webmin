@@ -2040,9 +2040,6 @@ foreach $d ("$_[0]/cur", "$_[0]/new") {
 sub get_maildir_cachefile
 {
 local ($dir) = @_;
-local $oldcache = -r "$dir/maildircache" ? "$dir/maildircache"
-			      		 : "$dir/.usermin-maildircache";
-unlink($oldcache); 
 local $cd = $user_module_config_directory || $module_config_directory;
 local $sd = "$cd/maildircache";
 if (!-d $sd) {
