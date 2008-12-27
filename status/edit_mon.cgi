@@ -222,6 +222,7 @@ if ($type =~ /^(\S+)::(\S+)$/) {
 	print "<p>\n";
 	print &ui_table_start($text{'mon_header3'}, "width=100%", 4,
 			      \@tds);
+	&foreign_call($mod, "load_theme_library");
 	print &foreign_call($mod, "status_monitor_dialog", $mtype, $serv);
 	print &ui_table_end();
 	}
