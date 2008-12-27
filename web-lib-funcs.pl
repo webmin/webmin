@@ -695,13 +695,18 @@ else {
 
 =head2 header(title, image, [help], [config], [nomodule], [nowebmin], [rightside], [head-stuff], [body-stuff], [below])
 
-Outputs a Webmin HTML page header with a title. The parameters are :
-title - XXX
-
-Output a page header with some title and image. The header may also
-include a link to help, and a link to the config page.
-The header will also have a link to to webmin index, and a link to the
-module menu if there is no config link
+Outputs a Webmin HTML page header with a title, including HTTP headers. The
+parameters are :
+title - The text to show at the top of the page
+image - An image to show instead of the title text. This is typically left blank.
+help - If set, this is the name of a help page that will be linked to in the title.
+config - If set to 1, the title will contain a link to the module's config page.
+nomodule - If set to 1, there will be no link in the title section to the module's index.
+nowebmin - If set to 1, there will be no link in the title section to the Webmin index.
+rightside - HTML to be shown on the right-hand side of the title. Can contain multiple lines, separated by <br>. Typically this is used for links to stop, start or restart servers.
+head-stuff - HTML to be included in the <head> section of the page.
+body-stuff - HTML attributes to be include in the <body> tag.
+below - HTML to be displayed below the title. Typically this is used for application or server version information.
 
 =cut
 sub header
@@ -895,7 +900,11 @@ if (@_ > 1) {
 =head2 popup_header([title], [head-stuff], [body-stuff])
 
 Outputs a page header, suitable for a popup window. If no title is given,
-absolutely no decorations are output (such as for use in a frameset)
+absolutely no decorations are output. Also useful in framesets. The parameters
+are :
+title - Title text for the popup window.
+head-stuff - HTML to appear in the <head> section.
+body-stuff - HTML attributes to be include in the <body> tag.
 
 =cut
 sub popup_header
@@ -944,7 +953,11 @@ if (defined(&theme_popup_prebody)) {
 
 =head2 footer([page, name]+, [noendbody])
 
-Output a footer for returning to some page
+Outputs the footer for a Webmin HTML page, possibly with links back to other
+pages. The links are specified by pairs of parameters, the first of which is 
+a link destination, and the second the link text. For example :
+
+ footer('/', 'Webmin index', '', 'Module menu');
 
 =cut
 sub footer
@@ -1010,7 +1023,7 @@ if (!$_[$i]) {
 
 =head2 popup_footer
 
-Outputs html for a footer for a popup window
+Outputs html for a footer for a popup window, started by popup_header.
 
 =cut
 sub popup_footer
@@ -1025,7 +1038,8 @@ print "</body></html>\n";
 
 =head2 load_theme_library
 
-For internal use only
+Immediately loads the current theme's theme.pl file. Not generally useful for
+most module developers, as this is called automatically by the header function.
 
 =cut
 sub load_theme_library
@@ -1039,10 +1053,10 @@ for(my $i=0; $i<@theme_root_directories; $i++) {
 	}
 }
 
-=head2 redirect
+=head2 redirect(url)
 
-redirect
-Output headers to redirect the browser to some page
+Output HTTP headers to redirect the browser to some page. The url parameter is
+typically a relative URL like index.cgi or list_users.cgi.
 
 =cut
 sub redirect
@@ -1079,8 +1093,9 @@ else {
 
 =head2 kill_byname(name, signal)
 
-Use the command defined in the global config to find and send a signal
-to a process matching some name
+Finds a process whose command line contains the given name (such as httpd), and
+sends some signal to it. The signal can be numeric (like 9) or named
+(like KILL).
 
 =cut
 sub kill_byname
@@ -1110,7 +1125,8 @@ else { return 0; }
 
 =head2 find_byname(name)
 
-Finds a process by name, and returns a list of matching PIDs
+Finds processes searching for the given name in their command lines, and
+returns a list of matching PIDs.
 
 =cut
 sub find_byname
@@ -1160,8 +1176,10 @@ return @pids;
 
 =head2 error([message]+)
 
-Display an error message and exit. The variable $whatfailed must be set
-to the name of the operation that failed.
+Display an error message and exit. This should be used by CGI scripts that
+encounter a fatal error or invalid user input to notify users of the problem.
+If error_setup has been called, the displayed error message will be prefixed
+by the message setup using that function.
 
 =cut
 sub error
@@ -1234,7 +1252,8 @@ exit(1);
 
 =head2 popup_error([message]+)
 
-Display an error message in a popup window and exit.
+This function is almost identical to error, but displays the message with HTML
+headers suitable for a popup window.
 
 =cut
 sub popup_error
@@ -1258,7 +1277,8 @@ exit;
 
 =head2 error_setup(message)
 
-Register a message to be prepended to all error strings
+Registers a message to be prepended to all error messages displayed by the 
+error function.
 
 =cut
 sub error_setup
@@ -1268,7 +1288,28 @@ $main::whatfailed = $_[0];
 
 =head2 wait_for(handle, regexp, regexp, ...)
 
-Read from the input stream until one of the regexps matches..
+Reads from the input stream until one of the regexps matches, and returns the
+index of the matching regexp, or -1 if input ended before any matched. This is
+very useful for parsing the output of interactive programs, and can be used with
+a two-way pipe to feed input to a program in response to output matched by
+this function.
+
+If the matching regexp contains bracketed sub-expressions, their values will
+be placed in the global array @matches, indexed starting from 1. You cannot
+use the Perl variables $1, $2 and so on to capture matches.
+
+Example code:
+
+ $rv = wait_for($loginfh, "username:");
+ if ($rv == -1) {
+   error("Didn't get username prompt");
+ }
+ print $loginfh "joe\n";
+ $rv = wait_for($loginfh, "password:");
+ if ($rv == -1) {
+   error("Didn't get password prompt");
+ }
+ print $loginfh "smeg\n";
 
 =cut
 sub wait_for
@@ -1305,7 +1346,10 @@ return $rv;
 
 =head2 fast_wait_for(handle, string, string, ...)
 
-MISSING DOCUMENTATION
+This function behaves very similar to wait_for (documented above), but instead
+of taking regular expressions as parameters, it takes strings. As soon as the
+input contains one of them, it will return the index of the matching string.
+If the input ends before any match, it returns -1.
 
 =cut
 sub fast_wait_for
@@ -1334,7 +1378,9 @@ while(1) {
 
 =head2 has_command(command)
 
-Returns the full path if some command is in the path, undef if not
+Returns the full path to the executable if some command is in the path, or
+undef if not found. If the given command is already an absolute path and
+exists, then the same path will be returned.
 
 =cut
 sub has_command
@@ -1379,7 +1425,8 @@ return $rv;
 
 =head2 make_date(seconds, [date-only])
 
-Converts a Unix date/time in seconds to a human-readable form
+Converts a Unix date/time in seconds to a human-readable form, by default
+formatted like dd/mmm/yyyy hh:mm:ss.
 
 =cut
 sub make_date
@@ -1409,8 +1456,13 @@ return $date;
 
 =head2 file_chooser_button(input, type, [form], [chroot], [addmode])
 
-Return HTML for a file chooser button, if the browser supports Javascript.
-Type values are 0 for file or directory, or 1 for directory only
+Return HTML for a button that pops up a file chooser when clicked, and places
+the selected filename into another HTML field. The parameters are :
+input - Name of the form field to store the filename in.
+type - 0 for file or directory chooser, or 1 for directory only.
+form - Index of the form containing the button.
+chroot - If set to 1, the chooser will be limited to this directory.
+addmode - If set to 1, the selected filename will be appended to the text box instead of replacing it's contents.
 
 =cut
 sub file_chooser_button
@@ -1429,7 +1481,12 @@ return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\
 
 =head2 popup_window_button(url, width, height, scrollbars?, &field-mappings)
 
-Returns HTML for a button that will popup a chooser window of some kind. 
+Returns HTML for a button that will popup a chooser window of some kind. The
+parameters are :
+url - Base URL of the popup window's contents
+width - Width of the window in pixels
+height - Height in pixels
+scrollbars - Set to 1 if the window should have scrollbars
 The field-mappings parameter is an array ref of array refs containing
 - Attribute to assign field to in the popup window
 - Form field name
@@ -1463,9 +1520,15 @@ $rv .= "' value=\"...\">";
 return $rv;
 }
 
-=head2 read_acl(&array, &array)
+=head2 read_acl(&user-module-hash, &user-list-hash)
 
-Reads the acl file into the given associative arrays
+Reads the Webmin acl file into the given hash references. The first is indexed
+by a combined key of username,module , with the value being set to 1 when
+the user has access to that module. The second is indexed by username, with
+the value being an array ref of allowed modules.
+
+This function is deprecated in favour of foreign_available, which performs a
+more comprehensive check of module availability.
 
 =cut
 sub read_acl
@@ -1493,7 +1556,8 @@ if ($_[1]) { %{$_[1]} = %main::acl_array_cache; }
 
 =head2 acl_filename
 
-Returns the file containing the webmin ACL
+Returns the file containing the webmin ACL, which is usually
+/etc/webmin/webmin.acl
 
 =cut
 sub acl_filename
@@ -1503,16 +1567,18 @@ return "$config_directory/webmin.acl";
 
 =head2 acl_check
 
-Does nothing, but kept around for compatability
+Does nothing, but kept around for compatability.
 
 =cut
 sub acl_check
 {
 }
 
-=head2 get_miniserv_config(&array)
+=head2 get_miniserv_config(&hash)
 
-Store miniserv configuration into the given array
+Reads the Webmin webserver's (miniserv.pl) configuration file, usually located
+at /etc/webmin/miniserv.conf, and stores its names and values in the given
+hash reference.
 
 =cut
 sub get_miniserv_config
@@ -1521,9 +1587,16 @@ return &read_file_cached(
 	$ENV{'MINISERV_CONFIG'} || "$config_directory/miniserv.conf", $_[0]);
 }
 
-=head2 put_miniserv_config(&array)
+=head2 put_miniserv_config(&hash)
 
-Store miniserv configuration from the given array
+Writes out the Webmin webserver configuration file from the contents of
+the given hash ref. This should be initially populated by get_miniserv_config,
+like so :
+
+ get_miniserv_config(\%miniserv);
+ $miniserv{'port'} = 10005;
+ put_miniserv_config(\%miniserv);
+ restart_miniserv();
 
 =cut
 sub put_miniserv_config
@@ -1535,7 +1608,7 @@ sub put_miniserv_config
 =head2 restart_miniserv([nowait])
 
 Kill the old miniserv process and re-start it, then optionally waits for
-it to restart.
+it to restart. This will apply all configuration settings.
 
 =cut
 sub restart_miniserv
@@ -1597,8 +1670,8 @@ if (!$nowait) {
 =head2 reload_miniserv
 
 Sends a USR1 signal to the miniserv process, telling it to read-read it's
-configuration files. Not all changes will be applied though, like listening
-ports.
+configuration files. Not all changes will be applied though, such as the 
+IP addresses and ports to accept connections on.
 
 =cut
 sub reload_miniserv
@@ -1634,7 +1707,11 @@ else {
 =head2 check_os_support(&minfo, [os-type, os-version], [api-only])
 
 Returns 1 if some module is supported on the current operating system, or the
-OS supplies as parameters.
+OS supplies as parameters. The parameters are :
+minfo - A hash ref of module information, as returned by get_module_info
+os-type - The Webmin OS code to use instead of the system's real OS, such as redhat-linux
+os-version - The Webmin OS version to use, such as 13.0
+api-only - If set to 1, considers a module supported if it provides an API to other modules on this OS, even if the majority of its functionality is not supported.
 
 =cut
 sub check_os_support
@@ -1703,7 +1780,20 @@ return $anyneg;
 
 =head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user, pass], [timeout], [osdn-convert], [no-cache], [&headers])
 
-Download data from a HTTP url to a local file
+Downloads data from a HTTP url to a local file or string. The parameters are :
+host - The hostname part of the URL, such as www.google.com
+port - The HTTP port number, such as 80
+page - The filename part of the URL, like /index.html
+destfile - The local file to save the URL data to, like /tmp/index.html. This can also be a scalar reference, in which case the data will be appended to that scalar.
+error - If set to a scalar ref, the function will store any error message in this scalar and return 0 on failure, or 1 on success. If not set, it will simply call the error function if the download fails.
+callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
+sslmode - If set to 1, an HTTPS connection is used instead of HTTP.
+user - If set, HTTP authentication is done with this username.
+pass - The HTTP password to use with the username above.
+timeout - A timeout in seconds to wait for the TCP connection to be established before failing.
+osdn-convert - If set to 1, URL for downloads from sourceforge are converted to use an appropriate mirror site.
+no-cache - If set to 1, Webmin's internal caching for this URL is disabled.
+headers - If set to a hash ref of additional HTTP headers, they will be added to the request.
 
 =cut
 sub http_download
@@ -1775,7 +1865,8 @@ if ((!$error || !$$error) && !$nocache) {
 
 =head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers])
 
-Do a HTTP download, after the headers have been sent
+Do a HTTP download, after the headers have been sent. For internal use only,
+typically called by http_download.
 
 =cut
 sub complete_http_download
@@ -1872,7 +1963,8 @@ else {
 
 =head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port])
 
-Download data from an FTP site to a local file
+Download data from an FTP site to a local file.
+XXX
 
 =cut
 sub ftp_download
