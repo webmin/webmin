@@ -8,3 +8,4 @@ Added a Module Config option for extra smartctl command-line args, like -d 3ware
 ATA mode is now used by default on CentOS and Redhat Enterprise versions 5 and above.
 ---- Changes since 1.440 ----
 SCSI drives are visible in the System and Server Status module.
+The SMART status monitor now has an option to only alert if the error count on a drive has increased.

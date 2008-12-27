@@ -22,10 +22,13 @@ index_return=module index
 monitor_type=SMART Drive Check
 monitor_drive=Drive to check
 monitor_errors=Check error log too?
+monitor_errorsinc=Yes, but only alert if error count increases
 monitor_other=Other..
 monitor_edrive=Missing or invalid drive to check
 monitor_nosuch=No such drive
 monitor_nosmart=No SMART support
+monitor_errorsfound=Reported $1 errors
+monitor_errorsinced=Errors increased from $2 to $1
 
 short_title=Short Self Test
 short_doing=Starting short self test of $1 ..

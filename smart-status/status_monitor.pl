@@ -18,21 +18,43 @@ else {
 sub status_monitor_status
 {
 if (!-r $_[1]->{'drive'}) {
+	# Could not find device
 	return { 'up' => -1,
 		 'desc' => $text{'monitor_nosuch'} };
 	}
 local $st = &get_drive_status($_[1]->{'drive'});
+
+# Record number of errors since last time
+local %errors;
+local $errors_file = "$module_config_directory/last-errors";
+&read_file($errors_file, \%errors);
+local %lasterrors = %errors;
+$errors{$_[1]->{'drive'}} = $st->{'errors'};
+&write_file($errors_file, \%errors);
+
 if (!$st->{'support'} || !$st->{'enabled'}) {
+	# SMART not enabled on device
 	return { 'up' => -1,
 		 'desc' => $text{'monitor_nosmart'} };
 	}
 elsif (!$st->{'check'}) {
+	# Check failed
 	return { 'up' => 0 };
 	}
-elsif ($st->{'errors'} && $_[1]->{'errors'}) {
-	return { 'up' => 0 };
+elsif ($st->{'errors'} && $_[1]->{'errors'} == 1) {
+	# Errors found, and failing on any errors
+	return { 'up' => 0,
+		 'desc' => &text('monitor_errorsfound', $st->{'errors'}) };
+	}
+elsif ($st->{'errors'} && $_[1]->{'errors'} == 2 &&
+       $st->{'errors'} > $lasterrors{$_[1]->{'drive'}}) {
+	# Errors found and have increased
+	return { 'up' => 0,
+		 'desc' => &text('monitor_errorsinced', $st->{'errors'},
+				 $lasterrors{$_[1]->{'drive'}}) };
 	}
 else {
+	# All OK!
 	return { 'up' => 1 };
 	}
 }
@@ -58,7 +80,8 @@ $rv .= &ui_table_row($text{'monitor_drive'},
 
 $rv .= &ui_table_row($text{'monitor_errors'},
 	&ui_radio("errors", $_[1]->{'errors'} || 0,
-		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
+		[ [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
+		  [ 2, $text{'monitor_errorsinc'} ] ]));
 return $rv;
 }
 
