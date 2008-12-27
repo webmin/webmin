@@ -219,7 +219,6 @@ if ($type =~ /^(\S+)::(\S+)$/) {
 	# From another module
 	($mod, $mtype) = ($1, $2);
 	&foreign_require($mod, "status_monitor.pl");
-	print "<p>\n";
 	print &ui_table_start($text{'mon_header3'}, "width=100%", 4,
 			      \@tds);
 	&foreign_call($mod, "load_theme_library");
@@ -231,7 +230,6 @@ else {
 	do "./${type}-monitor.pl";
 	$func = "show_${type}_dialog";
 	if (defined(&$func)) {
-		print "<p>\n";
 		print &ui_table_start($text{'mon_header3'}, "width=100%", 4,
 				      \@tds);
 		&$func($serv);
