@@ -265,7 +265,13 @@ or an error message on failure
 =cut
 sub execute_backup
 {
-local @mods = grep { $_ ne '' } @{$_[0]};
+# Work out modules we can use
+local @mods;
+foreach my $m (@{$_[0]}) {
+	if ($m && &foreign_check($m)) {
+		push(@mods, $m);
+		}
+	}
 
 # Work out where to write to
 local ($mode, $user, $pass, $host, $path, $port) = &parse_backup_url($_[1]);
