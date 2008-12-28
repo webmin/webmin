@@ -511,12 +511,14 @@ foreach my $m (@{$_[0]}) {
 
 # Call module pre functions
 foreach my $m (@{$_[0]}) {
-	&foreign_require($m, "backup_config.pl");
-	if (&foreign_defined($m, "pre_restore")) {
-		local $err = &foreign_call($m, "pre_restore", \@files);
-		if ($err) {
-			&unlink_file($file) if ($mode != 0);
-			return &text('backup_epre2', $desc{$m}, $err);
+	if ($m && &foreign_check($m)) {
+		&foreign_require($m, "backup_config.pl");
+		if (&foreign_defined($m, "pre_restore")) {
+			local $err = &foreign_call($m, "pre_restore", \@files);
+			if ($err) {
+				&unlink_file($file) if ($mode != 0);
+				return &text('backup_epre2', $desc{$m}, $err);
+				}
 			}
 		}
 	}
