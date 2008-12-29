@@ -193,7 +193,9 @@ if ($section{'man'}) {
 		if (/(([^,\s]+).*)\s*\((\S+)\)\s+-\s+(.*)/ &&
 		    !$done{$2,$3}++) {
 			local ($page, $sect, $desc) = ($1, $3, $4);
-			$page = $1 if ($page =~ /\[(.+)\]/);
+			if ($page =~ /^(\S+)\s*\[(.+)\]/) {
+				$page = "$1 $2";
+				}
 			local @pp = split(/[\s+,]/, $page);
 			map { s/\((\S+)\)//; } @pp;
 
