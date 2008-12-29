@@ -398,7 +398,7 @@ else {
 		     (!&supports_pgpass() ? " -u" : " -U $postgres_login").
 		     " -c ".&quote_path($sql)." $host $_[0]";
 	if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
-		$cmd = "su $postgres_login -c ".quotemeta($cmd);
+		$cmd = &command_as_user($postgres_login, 0, $cmd);
 		}
 	$cmd = &command_with_login($cmd);
 
@@ -419,9 +419,9 @@ else {
 		local ($line, $rv, @data);
 		do {
 			$line = <OUT>;
-			last if (!defined($line));
 			} while($line =~ /^(username|password|user name):/i ||
-				$line =~ /(warning|notice):/i || $line !~ /\S/);
+				$line =~ /(warning|notice):/i ||
+			        $line !~ /\S/ && defined($line));
 		unlink($temp);
 		if ($line =~ /^ERROR:\s+(.*)/ || $line =~ /FATAL.*:\s+(.*)/) {
 			&error(&text('esql', "<tt>$sql</tt>", "<tt>$1</tt>"));
