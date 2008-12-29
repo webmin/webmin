@@ -522,3 +522,5 @@ When submitting a new SSL certificate and key, they are checked to ensure a modu
 Mail files are now included by default in backups made and restored using backup-domain.pl and restore-domain.pl. This can be disabled with the --no-mailfiles parameter.
 Added validation to the configuration check to detect MySQL or disk quota synchronization that conflicts with Virtualmin.
 Dynamic IP, quota and backup emails now contain a link to Virtualmin, using a URL configurable on the Module Config page.
+When alias virtual servers are created, files from /etc/skel are no longer copied into their home directories as they are not needed.
+When a virtual server with a self-signed SSL certificate is renamed, the certificate is re-generated to match the new domain name.
