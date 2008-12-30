@@ -3,9 +3,9 @@
 
 do '../web-lib.pl';
 do '../ui-lib.pl';
-do 'boxes-lib.pl';
-do 'folders-lib.pl';
 &init_config();
+do "$module_root_directory/boxes-lib.pl";
+do "$module_root_directory/folders-lib.pl";
 %access = &get_module_acl();
 $config{'perpage'} ||= 20;
 $config{'column_count'} ||= 4;
