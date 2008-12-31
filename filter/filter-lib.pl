@@ -10,28 +10,35 @@ do 'autoreply-file-lib.pl';
 if (&get_product_name() eq 'usermin') {
 	# If configured, check if this user has virtualmin spam filtering
 	# enabled before switching away from root
-	if ($config{'virtualmin_spam'} && -x $config{'virtualmin_spam'} &&
-	    $< == 0) {
-		local $out = `$config{'virtualmin_spam'} $remote_user </dev/null 2>/dev/null`;
-		$out =~ s/\r|\n//g;
-		if ($out =~ /\d/) {
-			# Yes - we can show the user this
-			$global_spamassassin = 2;
-			$virtualmin_domain_id = $out;
-			}
-		}
-
-	# Copy autoreply.pl to /etc/usermin/forward, while we are still root
-	local $autoreply_src = "$root_directory/forward/autoreply.pl";
 	$autoreply_cmd = "$config_directory/forward/autoreply.pl";
-	local @rst = stat($autoreply_src);
-	local @cst = stat($autoreply_cmd);
-	if (!@cst || $cst[7] != $rst[7]) {
-		&copy_source_dest($autoreply_src, $autoreply_cmd);
-		&set_ownership_permissions(undef, undef, 0755, $autoreply_cmd);
+	if ($< == 0) {
+		if ($config{'virtualmin_spam'} &&
+		    -x $config{'virtualmin_spam'}) {
+			local $out = &backquote_command(
+				"$config{'virtualmin_spam'} $remote_user ".
+				"</dev/null 2>/dev/null");
+			$out =~ s/\r|\n//g;
+			if ($out =~ /\d/) {
+				# Yes - we can show the user this
+				$global_spamassassin = 2;
+				$virtualmin_domain_id = $out;
+				}
+			}
+
+		# Copy autoreply.pl to /etc/usermin/forward, while we
+		# are still root
+		local $autoreply_src = "$root_directory/forward/autoreply.pl";
+		local @rst = stat($autoreply_src);
+		local @cst = stat($autoreply_cmd);
+		if (!@cst || $cst[7] != $rst[7]) {
+			&copy_source_dest($autoreply_src, $autoreply_cmd);
+			&set_ownership_permissions(
+				undef, undef, 0755, $autoreply_cmd);
+			}
+
+		&switch_to_remote_user();
 		}
 
-	&switch_to_remote_user();
 	&create_user_config_dirs();
 	&foreign_require("procmail", "procmail-lib.pl");
 	&foreign_require("mailbox", "mailbox-lib.pl");
