@@ -41,8 +41,6 @@ if (&get_product_name() eq 'usermin') {
 
 	&create_user_config_dirs();
 	&foreign_require("procmail", "procmail-lib.pl");
-	&foreign_require("mailbox", "mailbox-lib.pl");
-	&foreign_require("spam", "spam-lib.pl");
 	}
 else {
 	# Running under Webmin, so different modules are used
@@ -241,6 +239,7 @@ $recipe->{'conds'} = \@conds;
 
 # Set action section
 if ($filter->{'actionspam'}) {
+	&foreign_require("spam", "spam-lib.pl");
 	$recipe->{'type'} = '|';
 	$recipe->{'action'} = &spam::get_procmail_command();
 	push(@flags, "f", "w");
@@ -326,6 +325,7 @@ return $folder;
 sub get_global_spamassassin
 {
 return $global_spamassassin if ($global_spamassassin);
+&foreign_require("spam", "spam-lib.pl");
 local @recipes = &procmail::parse_procmail_file(
 	$spam::config{'global_procmailrc'});
 return &spam::find_spam_recipe(\@recipes) ? 1 : 0;
@@ -336,6 +336,7 @@ return &spam::find_spam_recipe(\@recipes) ? 1 : 0;
 # Virtualmin per-domain procmail file
 sub get_global_spam_path
 {
+&foreign_require("spam", "spam-lib.pl");
 if ($virtualmin_domain_id) {
 	# Read the Virtualmin procmailrc for the domain
 	local $vmpmrc = "$config{'virtualmin_config'}/procmail/".
@@ -363,6 +364,7 @@ else {
 # Virtualmin per-domain procmail file
 sub get_global_spam_delete
 {
+&foreign_require("spam", "spam-lib.pl");
 if ($virtualmin_domain_id) {
 	# Read the Virtualmin procmailrc for the domain
 	local $vmpmrc = "$config{'virtualmin_config'}/procmail/".
@@ -525,6 +527,7 @@ else {
 	local $folder = &file_to_folder($f->{'action'}, $folders, $home);
 	if ($folder) {
 		if (&get_product_name() eq 'usermin') {
+			&foreign_require("mailbox", "mailbox-lib.pl");
 			local $id = &mailbox::folder_name($folder);
 			$action = &text('index_afolder',
 			   "<a href='../mailbox/index.cgi?id=$id'>".
@@ -576,8 +579,9 @@ return 1;	# Always can for now
 # mailbox, which prevents this module from configuring anything useful
 sub no_user_procmailrc
 {
+local $sconfig = &foreign_config("spam");
 local @recipes = &procmail::parse_procmail_file(
-	$spam::config{'global_procmailrc'});
+	$sconfig{'global_procmailrc'});
 local ($force) = grep { $_->{'action'} eq '$DEFAULT' &&
 			!@{$_->{'conds'}} } @recipes;
 return $force;

@@ -2,6 +2,7 @@
 # Create, update or delete a filter
 
 require './filter-lib.pl';
+&foreign_require("mailbox", "mailbox-lib.pl");
 use Time::Local;
 &ReadParse();
 
