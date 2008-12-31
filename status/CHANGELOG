@@ -56,3 +56,5 @@ The process check monitor can now be limited to a particular user.
 ---- Changes since 1.420 ----
 Allow saving of remote Webmin monitors when the remote host is down.
 Added a new monitor type for checking the expiry and validity of SSL certificates in a local file or on any SSL website.
+---- Changes since 1.440 ----
+Added an option to the FTP status monitor to make a TLS encrypted connection. Requires the Net::FTPSSL Perl module though.

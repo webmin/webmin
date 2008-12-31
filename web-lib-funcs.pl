@@ -2067,40 +2067,44 @@ if (!$connected) {
 		}
 	&$cbfunc(1, 0) if ($cbfunc);
 
-	# get the file size and tell the callback
-	&ftp_command("TYPE I", 2, $_[3]) || return 0;
-	local $size = &ftp_command("SIZE $_[1]", 2, $_[3]);
-	defined($size) || return 0;
-	if ($cbfunc) {
-		&$cbfunc(2, int($size));
-		}
+	if ($_[1]) {
+		# get the file size and tell the callback
+		&ftp_command("TYPE I", 2, $_[3]) || return 0;
+		local $size = &ftp_command("SIZE $_[1]", 2, $_[3]);
+		defined($size) || return 0;
+		if ($cbfunc) {
+			&$cbfunc(2, int($size));
+			}
 
-	# request the file
-	local $pasv = &ftp_command("PASV", 2, $_[3]);
-	defined($pasv) || return 0;
-	$pasv =~ /\(([0-9,]+)\)/;
-	@n = split(/,/ , $1);
-	&open_socket("$n[0].$n[1].$n[2].$n[3]", $n[4]*256 + $n[5], "CON", $_[3]) || return 0;
-	&ftp_command("RETR $_[1]", 1, $_[3]) || return 0;
+		# request the file
+		local $pasv = &ftp_command("PASV", 2, $_[3]);
+		defined($pasv) || return 0;
+		$pasv =~ /\(([0-9,]+)\)/;
+		@n = split(/,/ , $1);
+		&open_socket("$n[0].$n[1].$n[2].$n[3]",
+			$n[4]*256 + $n[5], "CON", $_[3]) || return 0;
+		&ftp_command("RETR $_[1]", 1, $_[3]) || return 0;
 
-	# transfer data
-	local $got = 0;
-	open(PFILE, "> $_[2]");
-	while(read(CON, $buf, 1024) > 0) {
-		print PFILE $buf;
-		$got += length($buf);
-		&$cbfunc(3, $got) if ($cbfunc);
+		# transfer data
+		local $got = 0;
+		&open_tempfile(PFILE, ">$_[2]", 1);
+		while(read(CON, $buf, 1024) > 0) {
+			&print_tempfile(PFILE, $buf);
+			$got += length($buf);
+			&$cbfunc(3, $got) if ($cbfunc);
+			}
+		&close_tempfile(PFILE);
+		close(CON);
+		if ($got != $size) {
+			if ($_[3]) { ${$_[3]} = "Download incomplete"; return 0; }
+			else { &error("Download incomplete"); }
+			}
+		&$cbfunc(4) if ($cbfunc);
+
+		&ftp_command("", 2, $_[3]) || return 0;
 		}
-	close(PFILE);
-	close(CON);
-	if ($got != $size) {
-		if ($_[3]) { ${$_[3]} = "Download incomplete"; return 0; }
-		else { &error("Download incomplete"); }
-		}
-	&$cbfunc(4) if ($cbfunc);
 
 	# finish off..
-	&ftp_command("", 2, $_[3]) || return 0;
 	&ftp_command("QUIT", 2, $_[3]) || return 0;
 	close(SOCK);
 	}

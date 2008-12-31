@@ -382,6 +382,12 @@ ftp_none=None (just login)
 ftp_ehost=Missing or invalid FTP server host
 ftp_eport=Missing or invalid FTP server port
 ftp_efile=Missing or invalid file to download
+ftp_tls=Use TLS encryption?
+ftp_etls=TLS cannot be enabled unless the $1 Perl module is installed
+ftp_econn=TLS FTP connection failed
+ftp_econn2=TLS FTP connection failed : $1
+ftp_elogin=TLS FTP login failed
+ftp_efile=TLS FTP download failed
 
 query_driver=SQL database type
 query_db=Database name
