@@ -3,7 +3,7 @@
 Common functions for Webmin CGI scripts. This file gets in-directly included
 by all scripts that use web-lib.pl.
 
-XXX
+XXX example code
 
 =cut
 
@@ -1963,8 +1963,15 @@ else {
 
 =head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port])
 
-Download data from an FTP site to a local file.
-XXX
+Download data from an FTP site to a local file. The parameters are :
+host - FTP server hostname
+file - File on the FTP server to download
+destfile - File on the Webmin system to download data to
+error - If set to a string ref, any error message is written into this string and the function returns 0 on failure, 1 on success. Otherwise, error is called on failure.
+callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
+user - Username to login to the FTP server as. If missing, Webmin will login as anonymous.
+pass - Password for the username above.
+port - FTP server port number, which defaults to 21 if not set.
 
 =cut
 sub ftp_download
@@ -2115,7 +2122,15 @@ return 1;
 
 =head2 ftp_upload(host, file, srcfile, [&error], [&callback], [user, pass], [port])
 
-Upload data from a local file to an FTP site
+Upload data from a local file to an FTP site. The parameters are :
+host - FTP server hostname
+file - File on the FTP server to write to
+srcfile - File on the Webmin system to upload data from
+error - If set to a string ref, any error message is written into this string and the function returns 0 on failure, 1 on success. Otherwise, error is called on failure.
+callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing upload progress.
+user - Username to login to the FTP server as. If missing, Webmin will login as anonymous.
+pass - Password for the username above.
+port - FTP server port number, which defaults to 21 if not set.
 
 =cut
 sub ftp_upload
@@ -2201,7 +2216,8 @@ return 1;
 
 =head2 no_proxy(host)
 
-Checks if some host is on the no proxy list
+Checks if some host is on the no proxy list. For internal use by the 
+http_download and ftp_download functions.
 
 =cut
 sub no_proxy
@@ -2216,8 +2232,12 @@ return 0;
 
 =head2 open_socket(host, port, handle, [&error])
 
-Open a TCP connection to some host and port, using a file handle.
-Either calls error or modifies &error if something goes wrong.
+Open a TCP connection to some host and port, using a file handle. The 
+parameters are :
+host - Hostname or IP address to connect to.
+port - TCP port number.
+handle - A file handle name to use for the connection.
+error - A string reference to write any error message into. If not set, the error function is called on failure.
 
 =cut
 sub open_socket
@@ -2251,7 +2271,7 @@ return 1;
 
 =head2 download_timeout
 
-Called when a download times out
+Called when a download times out. For internal use only.
 
 =cut
 sub download_timeout
@@ -2262,7 +2282,8 @@ $download_timed_out = "Download timed out";
 
 =head2 ftp_command(command, expected, [&error])
 
-Send an FTP command, and die if the reply is not what was expected
+Send an FTP command, and die if the reply is not what was expected. Mainly
+for internal use by the ftp_download and ftp_upload functions.
 
 =cut
 sub ftp_command
@@ -2313,7 +2334,8 @@ return wantarray ? ($reply, $rcode) : $reply;
 
 =head2 to_ipaddress(hostname)
 
-Converts a hostname to an a.b.c.d format IP address
+Converts a hostname to an a.b.c.d format IP address, or returns undef if
+it cannot be resolved.
 
 =cut
 sub to_ipaddress
@@ -2329,10 +2351,13 @@ else {
 	}
 }
 
-=head2 icons_table(&links, &titles, &icons, [columns], [href], [width], [height])
+=head2 icons_table(&links, &titles, &icons, [columns], [href], [width], [height], &befores, &afters)
 
-&befores, &afters)
-Renders a 4-column table of icons
+Renders a 4-column table of icons. The useful parameters are :
+links - An array ref of link destination URLs for the icons.
+titles - An array ref of titles to appear under the icons.
+icons - An array ref of URLs for icon images.
+columns - Number of columns to layout the icons with. Defaults to 4.
 
 =cut
 sub icons_table
@@ -2362,7 +2387,10 @@ print "</table>\n";
 
 =head2 replace_file_line(file, line, [newline]*)
 
-Replaces one line in some file with 0 or more new lines
+Replaces one line in some file with 0 or more new lines. The parameters are :
+file - Full path to some file, like /etc/hosts.
+line - Line number to replace, starting from 0.
+newline - Zero or more lines to put into the file at the given line number. These must be newline-terminated strings.
 
 =cut
 sub replace_file_line
@@ -2383,7 +2411,15 @@ else { splice(@lines, $_[1], 1); }
 
 Returns a reference to an array containing the lines from some file. This
 array can be modified, and will be written out when flush_file_lines()
-is called.
+is called. The parameters are :
+file - Full path to the file to read.
+readonly - Should be set 1 if the caller is only going to read the lines, and never write it out.
+
+Example code :
+
+ $lref = read_file_lines("/etc/hosts");
+ push(@$lref, "127.0.0.1 localhost");
+ flush_file_lines("/etc/hosts");
 
 =cut
 sub read_file_lines
@@ -2421,7 +2457,9 @@ return $main::file_cache{$realfile};
 =head2 flush_file_lines([file], [eol])
 
 Write out to a file previously read by read_file_lines to disk (except
-for those marked readonly).
+for those marked readonly). The parameters are :
+file - The file to flush out.
+eof - End-of-line character for each line. Defaults to \n.
 
 =cut
 sub flush_file_lines
@@ -2455,7 +2493,7 @@ foreach $f (@files) {
 
 =head2 unflush_file_lines(file)
 
-Clear the internal cache of some file
+Clear the internal cache of some given file, previously read by read_file_lines.
 
 =cut
 sub unflush_file_lines
@@ -2467,22 +2505,30 @@ delete($main::file_cache_noflush{$realfile});
 
 =head2 unix_user_input(fieldname, user, [form])
 
-Returns HTML for an input to select a Unix user
+Returns HTML for an input to select a Unix user. By default this is a text
+box with a user popup button next to it.
 
 =cut
 sub unix_user_input
 {
+if (defined(&theme_unix_user_input)) {
+	return &theme_unix_user_input(@_);
+	}
 return "<input name=$_[0] size=13 value=\"$_[1]\"> ".
        &user_chooser_button($_[0], 0, $_[2] || 0)."\n";
 }
 
 =head2 unix_group_input(fieldname, user, [form])
 
-Returns HTML for an input to select a Unix group
+Returns HTML for an input to select a Unix group. By default this is a text
+box with a group popup button next to it.
 
 =cut
 sub unix_group_input
 {
+if (defined(&theme_unix_group_input)) {
+	return &theme_unix_group_input(@_);
+	}
 return "<input name=$_[0] size=13 value=\"$_[1]\"> ".
        &group_chooser_button($_[0], 0, $_[2] || 0)."\n";
 }
@@ -2490,6 +2536,7 @@ return "<input name=$_[0] size=13 value=\"$_[1]\"> ".
 =head2 hlink(text, page, [module], [width], [height])
 
 MISSING DOCUMENTATION
+XXX
 
 =cut
 sub hlink
