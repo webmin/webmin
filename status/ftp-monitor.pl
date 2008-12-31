@@ -36,7 +36,7 @@ eval {
 				     "root\@".&get_system_hostname());
 			}
 		if (!$ok) {
-			$error = $text{'ftp_elogin'};
+			$error = &text('ftp_elogin', $ftps->last_message);
 			return 0;
 			}
 
@@ -44,7 +44,7 @@ eval {
 		if ($_[0]->{'file'}) {
 			$ok = $ftps->get($_[0]->{'file'}, $temp);
 			if (!$ok) {
-				$error = $text{'ftp_efile'};
+				$error = &text('ftp_efile',$ftps->last_message);
 				return 0;
 				}
 			}
