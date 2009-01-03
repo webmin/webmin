@@ -2563,4 +2563,9 @@ local $rv = "From $addr ".strftime("%a %b %e %H:%M:%S %Y", localtime($t));
 return $rv;
 }
 
+sub notes_decode
+{
+# Deprecated - does nothing
+}
+
 1;
