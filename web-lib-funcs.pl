@@ -722,10 +722,6 @@ if (defined(&theme_header)) {
 	}
 print "<!doctype html public \"-//W3C//DTD HTML 3.2 Final//EN\">\n";
 print "<html>\n";
-local $os_type = $gconfig{'real_os_type'} ? $gconfig{'real_os_type'}
-					  : $gconfig{'os_type'};
-local $os_version = $gconfig{'real_os_version'} ? $gconfig{'real_os_version'}
-					        : $gconfig{'os_version'};
 print "<head>\n";
 if (defined(&theme_prehead)) {
 	&theme_prehead(@_);
@@ -735,39 +731,10 @@ if ($charset) {
 	      "content=\"text/html; Charset=$charset\">\n";
 	}
 if (@_ > 0) {
-	local $title;
-	if ($gconfig{'sysinfo'} == 1 && $remote_user) {
-		$title = sprintf "%s : %s on %s (%s %s)\n",
-			$_[0], $remote_user, &get_display_hostname(),
-			$os_type, $os_version;
-		}
-	elsif ($gconfig{'sysinfo'} == 4 && $remote_user) {
-		$title = sprintf "%s on %s (%s %s)\n",
-			$remote_user, &get_display_hostname(),
-			$os_type, $os_version;
-		}
-	else {
-		$title = $_[0];
-		}
-        if ($gconfig{'showlogin'} && $remote_user) {
-            $title = $remote_user." : ".$title;
-            }
+	local $title = &get_html_title($_[0]);
         print "<title>$title</title>\n";
 	print $_[7] if ($_[7]);
-	if ($gconfig{'sysinfo'} == 0 && $remote_user) {
-		print "<script language=JavaScript type=text/javascript>\n";
-		print "defaultStatus=\"".&text('header_statusmsg',
-			    ($ENV{'ANONYMOUS_USER'} ? "Anonymous user"
-						   : $remote_user).
-			    ($ENV{'SSL_USER'} ? " (SSL certified)" :
-			     $ENV{'LOCAL_USER'} ? " (Local user)" : ""),
-			    $text{'programname'},
-			    &get_webmin_version(),
-			    &get_display_hostname(),
-			    $os_type.($os_version eq "*" ? "" :" $os_version")).
-			"\";\n";
-		print "</SCRIPT>\n";
-		}
+	print &get_html_status_line(0);
 	}
 print "$tconfig{'headhtml'}\n" if ($tconfig{'headhtml'});
 if ($tconfig{'headinclude'}) {
@@ -817,13 +784,7 @@ if (@_ > 1) {
 	print "<table class='header' width=100%><tr>\n";
 	if ($gconfig{'sysinfo'} == 2 && $remote_user) {
 		print "<td id='headln1' colspan=3 align=center>\n";
-		printf "%s%s logged into %s %s on %s (%s%s)</td>\n",
-			$ENV{'ANONYMOUS_USER'} ? "Anonymous user" : "<tt>$remote_user</tt>",
-			$ENV{'SSL_USER'} ? " (SSL certified)" :
-			$ENV{'LOCAL_USER'} ? " (Local user)" : "",
-			$text{'programname'},
-			$version, "<tt>$hostname</tt>",
-			$os_type, $os_version eq "*" ? "" : " $os_version";
+		print &get_html_status_line(1);
 		print "</td></tr> <tr>\n";
 		}
 	print "<td id='headln2l' width=15% valign=top align=left>";
@@ -894,6 +855,111 @@ if (@_ > 1) {
 	print $_[6];
 	print "</td></tr></table>\n";
 	print $tconfig{'postheader'};
+	}
+}
+
+=head2 get_html_title(title)
+
+Returns the full string to appear in the HTML <title> block
+
+=cut
+sub get_html_title
+{
+local ($msg) = @_;
+local $title;
+local $os_type = $gconfig{'real_os_type'} ? $gconfig{'real_os_type'}
+					  : $gconfig{'os_type'};
+local $os_version = $gconfig{'real_os_version'} ? $gconfig{'real_os_version'}
+					        : $gconfig{'os_version'};
+if ($gconfig{'sysinfo'} == 1 && $remote_user) {
+	$title = sprintf "%s : %s on %s (%s %s)\n",
+		$msg, $remote_user, &get_display_hostname(),
+		$os_type, $os_version;
+	}
+elsif ($gconfig{'sysinfo'} == 4 && $remote_user) {
+	$title = sprintf "%s on %s (%s %s)\n",
+		$remote_user, &get_display_hostname(),
+		$os_type, $os_version;
+	}
+else {
+	$title = $msg;
+	}
+if ($gconfig{'showlogin'} && $remote_user) {
+	$title = $remote_user." : ".$title;
+	}
+return $title;
+}
+
+=head2 get_html_framed_title
+
+Returns the title text for a framed theme main page
+
+=cut
+sub get_html_framed_title
+{
+local $ostr;
+local $os_type = $gconfig{'real_os_type'} ? $gconfig{'real_os_type'}
+					  : $gconfig{'os_type'};
+local $os_version = $gconfig{'real_os_version'} ? $gconfig{'real_os_version'}
+					        : $gconfig{'os_version'};
+local $title;
+if (($gconfig{'sysinfo'} == 4 || $gconfig{'sysinfo'} == 1) && $remote_user) {
+	# Alternate title mode requested
+	$title = sprintf "%s on %s (%s %s)\n",
+		$remote_user, &get_display_hostname(),
+		$os_type, $os_version;
+	}
+else {
+	# Title like 'Webmin x.yy on hostname (Linux 6)'
+	if ($os_version eq "*") {
+		$ostr = $os_type;
+		}
+	else {
+		$ostr = "$os_type $os_version";
+		}
+	local $host = &get_display_hostname();
+	$title = $gconfig{'nohostname'} ? $text{'main_title2'} :
+		&text('main_title', &get_webmin_version(), $host, $ostr);
+	if ($gconfig{'showlogin'}) {
+		$title = $remote_user." : ".$title;
+		}
+	}
+return $title;
+}
+
+=head2 get_html_status_line(text-only)
+
+Returns HTML for a script block that sets the status line, or if text-only
+is set to 1, just return the status line text.
+
+=cut
+sub get_html_status_line
+{
+local ($textonly) = @_;
+if (($gconfig{'sysinfo'} != 0 || !$remote_user) && !$textonly) {
+	# Disabled in this mode
+	return undef;
+	}
+local $os_type = $gconfig{'real_os_type'} ? $gconfig{'real_os_type'}
+					  : $gconfig{'os_type'};
+local $os_version = $gconfig{'real_os_version'} ? $gconfig{'real_os_version'}
+					        : $gconfig{'os_version'};
+local $line = &text('header_statusmsg',
+		    ($ENV{'ANONYMOUS_USER'} ? "Anonymous user"
+					   : $remote_user).
+		    ($ENV{'SSL_USER'} ? " (SSL certified)" :
+		     $ENV{'LOCAL_USER'} ? " (Local user)" : ""),
+		    $text{'programname'},
+		    &get_webmin_version(),
+		    &get_display_hostname(),
+		    $os_type.($os_version eq "*" ? "" :" $os_version"));
+if ($textonly) {
+	return $line;
+	}
+else {
+	return "<script language=JavaScript type=text/javascript>\n".
+	       "defaultStatus=\"$line\";\n".
+	       "</script>\n";
 	}
 }
 
@@ -2535,8 +2601,15 @@ return "<input name=$_[0] size=13 value=\"$_[1]\"> ".
 
 =head2 hlink(text, page, [module], [width], [height])
 
-MISSING DOCUMENTATION
-XXX
+Returns HTML for a link that when clicked on pops up a window for a Webmin
+help page. The parameters are :
+text - Text for the link.
+page - Help page code, such as 'intro'.
+module - Module the help page is in. Defaults to the current module.
+width - Width of the help popup window. Defaults to 600 pixels.
+height - Height of the help popup window. Defaults to 400 pixels.
+The actual help pages are in each module's help sub-directory, in files with
+.html extensions.
 
 =cut
 sub hlink
@@ -2545,14 +2618,15 @@ if (defined(&theme_hlink)) {
 	return &theme_hlink(@_);
 	}
 local $mod = $_[2] ? $_[2] : $module_name;
-local $width = $_[3] || $tconfig{'help_width'} || $gconfig{'help_width'} || 400;
-local $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 300;
+local $width = $_[3] || $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
+local $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
 return "<a onClick='window.open(\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\">$_[0]</a>";
 }
 
 =head2 user_chooser_button(field, multiple, [form])
 
-Returns HTML for a javascript button for choosing a Unix user or users
+Returns HTML for a javascript button for choosing a Unix user or users.
+XXX
 
 =cut
 sub user_chooser_button

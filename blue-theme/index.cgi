@@ -21,20 +21,8 @@ if ($in{'page'}) {
 	$goto .= "/".$in{'page'};
 	}
 
-if ($gconfig{'os_version'} eq "*") {
-	$ostr = $gconfig{'real_os_type'};
-	}
-else {
-	$ostr = "$gconfig{'real_os_type'} $gconfig{'real_os_version'}";
-	}
-$host = &get_display_hostname();
-$title = $gconfig{'nohostname'} ? $text{'main_title2'} :
-	&text('main_title', &get_webmin_version(), $host, $ostr);
-if ($gconfig{'showlogin'}) {
-	$title = $remote_user." : ".$title;
-	}
-
 # Show frameset
+$title = &get_html_framed_title();
 &PrintHeader();
 $cols = &get_product_name() eq 'usermin' ? 180 : 230;
 print <<EOF;

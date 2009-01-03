@@ -208,38 +208,11 @@ if ($charset) {
     }
 print "<link rel='icon' href='$gconfig{'webprefix'}/images/webmin_icon.png' type='image/png'>\n";
 if (@_ > 0) {
-    local $title;
-    if ($gconfig{'sysinfo'} == 1) {
-        $title = sprintf "%s : %s on %s (%s %s)\n",
-            $_[0], $remote_user, &get_display_hostname(),
-            $os_type, $os_version;
-        }
-    elsif ($gconfig{'sysinfo'} == 4) {
-        $title = sprintf "%s on %s (%s %s)\n",
-            $remote_user, &get_display_hostname(),
-            $os_type, $os_version;
-        }
-    else {
-        $title = $_[0];
-        }
-    if ($gconfig{'showlogin'} && $remote_user) {
-        $title = $remote_user." : ".$title;
-        }
+    local $title = &get_html_title($_[0]);
     print "<title>$title</title>\n";
     print $_[7] if ($_[7]);
     if ($gconfig{'sysinfo'} == 0 && $remote_user) {
-        print "<SCRIPT LANGUAGE=\"JavaScript\">\n";
-	print "defaultStatus=\"".&text('header_statusmsg',
-		    ($ENV{'ANONYMOUS_USER'} ? "Anonymous user"
-					   : $remote_user).
-		    ($ENV{'SSL_USER'} ? " (SSL certified)" :
-		     $ENV{'LOCAL_USER'} ? " (Local user)" : ""),
-		    $text{'programname'},
-		    &get_webmin_version(),
-		    &get_display_hostname(),
-		    $os_type.($os_version eq "*" ? "" :" $os_version")).
-		"\";\n";
-        print "</SCRIPT>\n";
+	print &get_html_status_line(0);
         }
     }
 
@@ -421,13 +394,7 @@ if (@_ > 1 && (!$_[5] || $ENV{'HTTP_WEBMIN_SERVERS'})) {
 
    if ($gconfig{'sysinfo'} == 2 && $remote_user) {
 	&tab_start();
-	printf "%s%s logged into %s %s on %s (%s%s)</td>\n",
-		$ENV{'ANONYMOUS_USER'} ? "Anonymous user" : "<tt>$remote_user</tt>",
-		$ENV{'SSL_USER'} ? " (SSL certified)" :
-		$ENV{'LOCAL_USER'} ? " (Local user)" : "",
-		$text{'programname'},
-		$version, "<tt>".&get_display_hostname()."</tt>",
-		$os_type, $os_version eq "*" ? "" : " $os_version";
+	print &get_html_status_line(1);
 	&tab_end();
 	}
    if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
