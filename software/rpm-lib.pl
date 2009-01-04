@@ -10,7 +10,6 @@ $list = @_ ? join(' ', map { quotemeta($_) } @_) : "-a";
 &open_execute_command(RPM, "rpm -q $list --queryformat \"%{NAME}\\n%{VERSION}-%{RELEASE}\\n%{EPOCH}\\n%{GROUP}\\n%{SUMMARY}\\n\\n\"", 1, 1);
 while($packages{$i,'name'} = <RPM>) {
 	chop($packages{$i,'name'});
-	next if ($packages{$i,'name'} eq 'gpg-pubkey');
 	chop($packages{$i,'version'} = <RPM>);
 	chop($packages{$i,'epoch'} = <RPM>);
 	$packages{$i,'epoch'} = undef if ($packages{$i,'epoch'} eq '(none)');
@@ -19,6 +18,10 @@ while($packages{$i,'name'} = <RPM>) {
 		s/\r|\n/ /g;
 		last if (!/\S/);
 		$packages{$i,'desc'} .= $_;
+		}
+	if (packages{$i,'name'} eq 'gpg-pubkey') {
+		# Bogus pseudo-package we don't want to include
+		$i--;
 		}
 	$i++;
 	}
