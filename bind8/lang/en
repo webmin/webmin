@@ -992,6 +992,11 @@ check_ecannot=You are not allowed to check records
 check_errs=The following errors were found in the records file $1 ..
 check_allok=No errors were found in the records file $1.
 
+ncheck_title=Check BIND Config
+ncheck_ecannot=You are not allowed to check the BIND configuration
+ncheck_errs=The following errors were found in the BIND configuration file $1 or referenced zone files ..
+ncheck_allok=No errors were found in the BIND configuration file $1 or referenced zone files.
+
 links_restart=Apply Configuration
 links_stop=Stop BIND
 links_start=Start BIND

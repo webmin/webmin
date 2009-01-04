@@ -53,3 +53,4 @@ extra_forward=
 slave_dir=
 keygen=dnssec-keygen
 signzone=dnssec-signzone
+checkconf=named-checkconf

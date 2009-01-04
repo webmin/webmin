@@ -43,3 +43,4 @@ master_dir=/var/lib/named/master
 checkzone=named-checkzone
 keygen=dnssec-keygen
 signzone=dnssec-signzone
+checkconf=named-checkconf

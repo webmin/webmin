@@ -1,6 +1,5 @@
 #!/usr/local/bin/perl
-# index.cgi
-# Display a list of domains and links to options
+# Display a list of domains, views, and icons for global options.
 
 require './bind8-lib.pl';
 &ReadParse();
@@ -94,6 +93,7 @@ if ($access{'defaults'}) {
 		   $bind_version >= 9 ? ( "conf_rndc.cgi" ) : ( ),
 		   &supports_dnssec_client() ? ( "conf_trusted.cgi" ) : ( ),
 		   &supports_dnssec() ? ( "conf_dnssec.cgi" ) : ( ),
+		   &supports_check_conf() ? ( "conf_ncheck.cgi" ) : ( ),
 		   "conf_manual.cgi" );
 	@otitles = map { /(conf|list)_(\S+).cgi/; $text{$2."_title"} } @olinks;
 	@oicons = map { /^(conf|list)_(\S+).cgi/; "images/$2.gif"; } @olinks;

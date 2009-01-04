@@ -2473,6 +2473,27 @@ local $out = &backquote_command(
 return $? ? split(/\r?\n/, $out) : ( );
 }
 
+# supports_check_conf()
+# Returns 1 if BIND configuration checking is supported, 0 if not
+sub supports_check_conf
+{
+return $config{'checkconf'} && &has_command($config{'checkconf'});
+}
+
+# check_bind_config([filename])
+# Checks the BIND configuration and returns a list of errors
+sub check_bind_config
+{
+local ($file) = @_;
+$file ||= &make_chroot($config{'named_conf'});
+local $chroot = &get_chroot();
+local $out = &backquote_command(
+        $config{'checkconf'}.
+	($chroot && $chroot ne "/" ? " -t ".quotemeta($chroot) : "").
+	" -z 2>&1 </dev/null");
+return $? ? split(/\r?\n/, $out) : ( );
+}
+
 # delete_records_file(file)
 # Given a file (chroot-relative), delete it with locking, and any associated
 # journal or log files

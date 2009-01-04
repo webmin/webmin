@@ -96,3 +96,4 @@ Moved the apply, stop and start buttons to the top-right corner of every page, s
 Zones can now be signed with DNSSEC, using one or two keys. This can be done automatically at master zone creation time, or later for existing zones. Signatures can also be removed or re-generated at any time. Zones with a key-signing and zone key can have their zone key automatically regenated on a regular interval.
 Added the DNSSEC Verification page for configuring BIND to validate signatures on other zones, and to use DLV until the root zone is signed.
 SPF records can now be added to or updated in multiple zones at once.
+Added an icon to the main page for checking the whole BIND configuration including zone files, with the named-checkconf command.

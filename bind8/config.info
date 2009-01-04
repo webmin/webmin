@@ -52,6 +52,7 @@ rndc_cmd=Full path to rndc command,0
 rndcconf_cmd=Full path to rndc-confgen command,0
 rndc_conf=Full path to the rndc.conf file,0
 checkzone=Full path to named-checkzone command,0
+checkconf=Full path to named-checkconf command,0
 keygen=Full path to dnssec-keygen command,0
 signzone=Full path to dnssec-signzone command,0
 pid_file=Default PID file location(s),3,/var/run/named.pid

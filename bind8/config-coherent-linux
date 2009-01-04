@@ -39,3 +39,4 @@ largezones=0
 checkzone=named-checkzone
 keygen=dnssec-keygen
 signzone=dnssec-signzone
+checkconf=named-checkconf
