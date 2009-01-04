@@ -19,7 +19,7 @@ while($packages{$i,'name'} = <RPM>) {
 		last if (!/\S/);
 		$packages{$i,'desc'} .= $_;
 		}
-	if (packages{$i,'name'} eq 'gpg-pubkey') {
+	if ($packages{$i,'name'} eq 'gpg-pubkey') {
 		# Bogus pseudo-package we don't want to include
 		$i--;
 		}
