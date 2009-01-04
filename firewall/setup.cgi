@@ -28,6 +28,25 @@ else {
 	&backquote_logged("iptables-save >$iptables_save_file 2>&1");
 	}
 
+# Get important variable ports
+&get_miniserv_config(\%miniserv);
+$webmin_port = $miniserv{'port'} || 10000;
+$webmin_port2 = $webmin_port + 10;
+$usermin_port = undef;
+if (&foreign_installed("usermin")) {
+	&foreign_require("usermin", "usermin-lib.pl");
+	&usermin::get_usermin_miniserv_config(\%uminiserv);
+	$usermin_port = $uminiserv{'port'};
+	}
+$usermin_port ||= 20000;
+$ssh_port = undef;
+if (&foreign_installed("sshd")) {
+	&foreign_require("sshd", "sshd-lib.pl");
+	$conf = &sshd::get_sshd_config();
+	$ssh_port = &sshd::find_value("Port", $conf);
+	}
+$ssh_port ||= 2;
+
 if ($in{'auto'}) {
 	@tables = &get_iptables_save();
 	if ($in{'auto'} == 1) {
@@ -115,7 +134,7 @@ if ($in{'auto'}) {
 			     { 'chain' => 'INPUT',
 			       'm' => [ [ "", "tcp" ] ],
 			       'p' => [ "", "tcp" ],
-			       'dport' => [ "", "ssh" ],
+			       'dport' => [ "", $ssh_port ],
 			       'j' => [ "", 'ACCEPT' ],
 			       'cmt' => 'Allow connections to our SSH server' },
 			     { 'chain' => 'INPUT',
@@ -195,7 +214,7 @@ if ($in{'auto'}) {
 			     { 'chain' => 'INPUT',
 			       'm' => [ [ "", "tcp" ] ],
 			       'p' => [ "", "tcp" ],
-			       'dport' => [ "", "25" ],
+			       'dport' => [ "", "25,587" ],
 			       'j' => [ "", 'ACCEPT' ],
 			       'cmt' => 'Allow connections to mail server' },
 			     { 'chain' => 'INPUT',
@@ -207,25 +226,25 @@ if ($in{'auto'}) {
 			     { 'chain' => 'INPUT',
 			       'm' => [ [ "", "tcp" ] ],
 			       'p' => [ "", "tcp" ],
-			       'dport' => [ "", "110" ],
+			       'dport' => [ "", "110,995" ],
 			       'j' => [ "", 'ACCEPT' ],
 			       'cmt' => 'Allow connections to POP3 server' },
 			     { 'chain' => 'INPUT',
 			       'm' => [ [ "", "tcp" ] ],
 			       'p' => [ "", "tcp" ],
-			       'dport' => [ "", "143" ],
+			       'dport' => [ "", "143,220,993" ],
 			       'j' => [ "", 'ACCEPT' ],
 			       'cmt' => 'Allow connections to IMAP server' },
 			     { 'chain' => 'INPUT',
 			       'm' => [ [ "", "tcp" ] ],
 			       'p' => [ "", "tcp" ],
-			       'dport' => [ "", "10000:10010" ],
+			       'dport' => [ "",$webmin_port.":".$webmin_port2 ],
 			       'j' => [ "", 'ACCEPT' ],
 			       'cmt' => 'Allow connections to Webmin' },
 			     { 'chain' => 'INPUT',
 			       'm' => [ [ "", "tcp" ] ],
 			       'p' => [ "", "tcp" ],
-			       'dport' => [ "", "20000" ],
+			       'dport' => [ "", $usermin_port ],
 			       'j' => [ "", 'ACCEPT' ],
 			       'cmt' => 'Allow connections to Usermin' },
 				);
