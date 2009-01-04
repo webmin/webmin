@@ -2626,7 +2626,10 @@ return "<a onClick='window.open(\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\", \
 =head2 user_chooser_button(field, multiple, [form])
 
 Returns HTML for a javascript button for choosing a Unix user or users.
-XXX
+The parameters are :
+field - Name of the HTML field to place the username into.
+multiple - Set to 1 if multiple users can be selected.
+form - Index of the form on the page.
 
 =cut
 sub user_chooser_button
@@ -2649,6 +2652,10 @@ return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\
 =head2 group_chooser_button(field, multiple, [form])
 
 Returns HTML for a javascript button for choosing a Unix group or groups
+The parameters are :
+field - Name of the HTML field to place the group name into.
+multiple - Set to 1 if multiple groups can be selected.
+form - Index of the form on the page.
 
 =cut
 sub group_chooser_button
@@ -2670,7 +2677,10 @@ return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\
 
 =head2 foreign_check(module, [api-only])
 
-Checks if some other module exists and is supported on this OS
+Checks if some other module exists and is supported on this OS. The parameters
+are :
+module - Name of the module to check.
+api-only - Set to 1 if you just want to check if the module provides an API that others can call, instead of the full web UI.
 
 =cut
 sub foreign_check
@@ -2684,7 +2694,8 @@ return &check_os_support(\%minfo, undef, undef, $api);
 
 =head2 foreign_exists(module)
 
-Checks if some other module exists
+Checks if some other module exists. The module parameter is the short module
+name.
 
 =cut
 sub foreign_exists
@@ -2695,7 +2706,8 @@ return -r "$mdir/module.info";
 
 =head2 foreign_available(module)
 
-Returns 1 if some module is installed, and acessible to the current user
+Returns 1 if some module is installed, and acessible to the current user. The
+module parameter is the module directory name.
 
 =cut
 sub foreign_available
@@ -2752,7 +2764,13 @@ return 1;
 
 =head2 foreign_require(module, file, [package])
 
-Brings in functions from another module
+Brings in functions from another module, and places them in the Perl namespace
+with the same name as the module. The parameters are :
+module - The source module's directory name, like sendmail.
+file - The API file in that module, like sendmail-lib.pl.
+package - Perl package to place the module's functions and global variables in. 
+If the original module name contains dashes, they will be replaced with _ in
+the package name.
 
 =cut
 sub foreign_require
@@ -2794,7 +2812,11 @@ return 1;
 
 =head2 foreign_call(module, function, [arg]*)
 
-Call a function in another module
+Call a function in another module. The module parameter is the target module
+directory name, function is the perl sub to call, and the remaining parameters
+are the arguments. However, unless you need to call a function whose name
+is dynamic, it is better to use Perl's cross-module function call syntax
+like module::function(args).
 
 =cut
 sub foreign_call
@@ -2813,7 +2835,9 @@ return wantarray ? @rv : $rv[0];
 
 =head2 foreign_config(module, [user-config])
 
-Get the configuration from another module
+Get the configuration from another module, and return it as a hash. If the
+user-config parameter is set to 1, returns the Usermin user-level preferences
+for the current user instead.
 
 =cut
 sub foreign_config
@@ -2874,7 +2898,8 @@ else {
 
 =head2 foreign_defined(module, function)
 
-Returns 1 if some function is defined in another module
+Returns 1 if some function is defined in another module. In general, it is
+simpler to use the syntax &defined(module::function) instead.
 
 =cut
 sub foreign_defined
@@ -2887,7 +2912,9 @@ return defined(&$func);
 
 =head2 get_system_hostname([short])
 
-Returns the hostname of this system
+Returns the hostname of this system. If the short parameter is set to 1,
+then the domain name is not prepended - otherwise, Webmin will attempt to get
+the fully qualified hostname, like foo.example.com.
 
 =cut
 sub get_system_hostname
@@ -2984,7 +3011,7 @@ return $main::get_system_hostname[$m];
 
 =head2 get_webmin_version
 
-Returns the version of Webmin currently being run
+Returns the version of Webmin currently being run, such as 1.450.
 
 =cut
 sub get_webmin_version
@@ -2999,7 +3026,11 @@ return $get_webmin_version;
 
 =head2 get_module_acl([user], [module], [no-rbac], [no-default])
 
-Returns a hash  containing access control options for the given user
+Returns a hash containing access control options for the given user and module.
+By default the current username and module name are used. If the no-rbac flag
+is given, the permissions will not be updated based on the user's RBAC role
+(as seen on Solaris). If the no-default flag is given, default permissions for
+the module will not be included.
 
 =cut
 sub get_module_acl
@@ -3056,7 +3087,8 @@ return %rv;
 
 =head2 get_group_module_acl(group, [module])
 
-Returns the ACL for a Webmin group
+Returns the ACL for a Webmin group, in an optional module (which defaults to
+the current module).
 
 =cut
 sub get_group_module_acl
@@ -3075,7 +3107,10 @@ return %rv;
 
 =head2 save_module_acl(&acl, [user], [module])
 
-Updates the acl hash for some user and module (or the current one)
+Updates the acl hash for some user and module. The parameters are :
+acl - Hash reference for the new access control options.
+user - User to update, defaulting to the current user.
+module - Module to update, defaulting to the caller.
 
 =cut
 sub save_module_acl
@@ -3106,7 +3141,10 @@ if (!-d "$config_directory/$m") {
 
 =head2 save_group_module_acl(&acl, group, [module])
 
-Updates the acl hash for some group and module (or the current one)
+Updates the acl hash for some group and module. The parameters are :
+acl - Hash reference for the new access control options.
+group - Group name to update.
+module - Module to update, defaulting to the caller.
 
 =cut
 sub save_group_module_acl
@@ -3137,7 +3175,11 @@ if (!-d "$config_directory/$m") {
 
 =head2 init_config
 
-Sets the following variables
+This function must be called by all Webmin CGI scripts, either directly or
+indirectly via a per-module lib.pl file. It performs a number of initialization
+and housekeeping tasks, such as working out the module name, checking that the
+current user has access to the module, and populating global variables. Some
+of the variables set include :
 %config - Per-module configuration
 %gconfig - Global configuration
 $tb - Background for table headers
@@ -3513,9 +3555,18 @@ return 1;
 
 $default_lang = "en";
 
-=head2 load_language(module, [directory])
+=head2 load_language([module], [directory])
 
-Returns a hashtable mapping text codes to strings in the appropriate language
+Returns a hashtable mapping text codes to strings in the appropriate language,
+based on the $current_lang global variable, which is in turn set based on
+the Webmin user's selection. The optional module parameter tells the function
+which module to load strings for, and defaults to the calling module. The
+optional directory parameter can be used to load strings from a directory
+other than lang.
+
+In regular module development you will never need to call this function
+directly, as init_config calls it for you, and places the module's strings
+into the %text hash.
 
 =cut
 sub load_language
@@ -3561,6 +3612,12 @@ if (defined(&theme_load_language)) {
 return %text;
 }
 
+=head2 text_subs(string)
+
+Used internally by load_language to expand $code substitutions in language
+files.
+
+=cut
 sub text_subs
 {
 if (substr($_[0], 0, 8) eq "include:") {
@@ -3581,8 +3638,11 @@ else {
 
 =head2 text(message, [substitute]+)
 
-Returns a translated message from %text, but with $1, $2, etc.. replaced with the
-substitute parameters.
+Returns a translated message from %text, but with $1, $2, etc.. replaced with
+the substitute parameters. This makes it easy to use strings with placeholders
+that get replaced with programmatically generated text. For example :
+
+ print &text('index_hello', $remote_user),"<p>\n";
 
 =cut
 sub text
@@ -3595,19 +3655,10 @@ for($i=1; $i<@_; $i++) {
 return $rv;
 }
 
-=head2 terror(text params)
-
-MISSING DOCUMENTATION
-
-=cut
-sub terror
-{
-&error(&text(@_));
-}
-
 =head2 encode_base64(string)
 
-Encodes a string into base64 format
+Encodes a string into base64 format, for use in MIME email or HTTP
+authorization headers.
 
 =cut
 sub encode_base64
@@ -3626,7 +3677,7 @@ sub encode_base64
 
 =head2 decode_base64(string)
 
-Converts a base64 string into plain text
+Converts a base64-encoded string into plain text. The opposite of encode_base64.
 
 =cut
 sub decode_base64
@@ -3649,7 +3700,12 @@ sub decode_base64
 
 =head2 get_module_info(module, [noclone], [forcache])
 
-Returns a hash containg a module name, desc and os_support
+Returns a hash containg details of the given module. Some useful keys are :
+dir - The module directory, like sendmail.
+desc - Human-readable description, in the current users' language.
+version - Optional module version number.
+os_support - List of supported operating systems and versions.
+category - Category on Webmin's left menu, like net.
 
 =cut
 sub get_module_info
@@ -3713,9 +3769,11 @@ return %rv;
 
 =head2 get_all_module_infos(cachemode)
 
-Returns a vector contains the information on all modules in this webmin
-install, including clones.
-Cache mode 0 = read and write, 1 = don't read or write, 2 = read only
+Returns a list contains the information on all modules in this webmin
+install, including clones. Uses caching to reduce the number of module.info
+files that need to be read. Each element of the array is a hash reference
+in the same format as returned by get_module_info. The cache mode flag can be :
+0 = read and write, 1 = don't read or write, 2 = read only
 
 =cut
 sub get_all_module_infos
@@ -3790,7 +3848,12 @@ return @rv;
 
 =head2 get_theme_info(theme)
 
-Returns a hash containing a theme's details
+Returns a hash containing a theme's details, taken from it's theme.info file.
+Some useful keys are :
+dir - The theme directory, like blue-theme.
+desc - Human-readable description, in the current users' language.
+version - Optional module version number.
+os_support - List of supported operating systems and versions.
 
 =cut
 sub get_theme_info
@@ -3808,7 +3871,13 @@ return %rv;
 
 =head2 list_languages
 
-Returns an array of supported languages
+Returns an array of supported languages, taken from Webmin's os_list.txt file.
+Each is a hash reference with the following keys :
+lang - The short language code, like es for Spanish.
+desc - A human-readable description, in English.
+charset - An optional character set to use when displaying the language.
+titles - Set to 1 only if Webmin has title images for the language.
+fallback - The code for another language to use if a string does not exist in this one. For all languages, English is the ultimate fallback.
 
 =cut
 sub list_languages
@@ -3835,9 +3904,14 @@ if (!@main::list_languages_cache) {
 return @main::list_languages_cache;
 }
 
-=head2 read_env_file(file, &array)
+=head2 read_env_file(file, &hash)
 
-MISSING DOCUMENTATION
+Similar to Webmin's read_file function, but handles files containing shell
+environment variables formatted like :
+export FOO=bar
+SMEG="spod"
+The file parameter is the full path to the file to read, and hash a Perl hash
+ref to read names and values into.
 
 =cut
 sub read_env_file
@@ -3856,10 +3930,13 @@ close(FILE);
 return 1;
 }
 
-=head2 write_env_file(file, &array, export)
+=head2 write_env_file(file, &hash, [export])
 
-Writes out a hash to a file in name='value' format, suitable for use in a sh
-script.
+Writes out a hash to a file in name='value' format, suitable for use in a shell
+script. The parameters are :
+file - Full path for a file to write to
+hash - Hash reference of names and values to write.
+export - If set to 1, preceed each variable setting with the word 'export'.
 
 =cut
 sub write_env_file
@@ -3882,7 +3959,11 @@ foreach $k (keys %{$_[1]}) {
 =head2 lock_file(filename, [readonly], [forcefile])
 
 Lock a file for exclusive access. If the file is already locked, spin
-until it is freed. This version uses a .lock file, which is not very reliable.
+until it is freed. Uses a .lock file, which is not 100% reliable, but seems
+to work OK. The parameters are :
+filename - File or directory to lock.
+readonly - If set, the lock is for reading the file only. More than one script can have a readonly lock, but only one can hold a write lock.
+forcefile - Force the file to be considered as a real file and not a symlink for Webmin actions logging purposes.
 
 =cut
 sub lock_file
@@ -3951,8 +4032,10 @@ return 1;
 
 =head2 unlock_file(filename)
 
-Release a lock on a file. When unlocking a file that was locked in
-read mode, optionally save the update in RCS
+Release a lock on a file taken out by lock_file. If Webmin actions logging of
+file changes is enabled, then at unlock file a diff will be taken between the
+old and new contents, and stored under /var/webmin/diffs when webmin_log is
+called. This can then be viewed in the Webmin Actions Log module.
 
 =cut
 sub unlock_file
@@ -4041,7 +4124,7 @@ if (exists($main::locked_file_data{$realfile})) {
 
 =head2 test_lock(file)
 
-Returns 1 if some file is currently locked
+Returns 1 if some file is currently locked, 0 if not.
 
 =cut
 sub test_lock
@@ -4061,7 +4144,7 @@ return $pid && kill(0, $pid);
 
 =head2 unlock_all_files
 
-Unlocks all files locked by this program
+Unlocks all files locked by the current script.
 
 =cut
 sub unlock_all_files
@@ -4073,7 +4156,8 @@ foreach $f (keys %main::locked_file_list) {
 
 =head2 can_lock_file(file)
 
-Returns 1 if some file should be locked
+Returns 1 if some file should be locked, based on the settings in the 
+Webmin Configuration module. For internal use by lock_file only.
 
 =cut
 sub can_lock_file
@@ -4102,7 +4186,17 @@ else {
 
 =head2 webmin_log(action, type, object, &params, [module], [host, script-on-host, client-ip])
 
-Log some action taken by a user
+Log some action taken by a user. This is typically called at the end of a
+script, once all file changes are complete and all commands run. The 
+parameters are :
+action - A short code for the action being performed, like 'create'.
+type - A code for the type of object the action is performed to, like 'user'.
+object - A short name for the object, like 'joe' if the Unix user 'joe' was just created.
+params - A hash ref of additional information about the action.
+module - Name of the module in which the action was performed, which defaults to the current module.
+host - Remote host on which the action was performed. You should never need to set this (or the following two parameters), as they are used only for remote Webmin logging.
+script-on-host - Script name like create_user.cgi on the host the action was performed on.
+client-ip - IP address of the browser that performed the action.
 
 =cut
 sub webmin_log
@@ -4311,7 +4405,8 @@ if ($gconfig{'logsyslog'}) {
 =head2 additional_log(type, object, data, [input])
 
 Records additional log data for an upcoming call to webmin_log, such
-as command that was run or SQL that was executed.
+as a command that was run or SQL that was executed. Typically you will never
+need to call this function directory.
 
 =cut
 sub additional_log
@@ -4325,7 +4420,7 @@ if ($gconfig{'logfiles'}) {
 
 =head2 webmin_debug_log(type, message)
 
-Write something to the Webmin debug log
+Write something to the Webmin debug log. For internal use only.
 
 =cut
 sub webmin_debug_log
@@ -4351,7 +4446,7 @@ return 1;
 
 =head2 system_logged(command)
 
-Just calls the system() function, but also logs the command
+Just calls the Perl system() function, but also logs the command run.
 
 =cut
 sub system_logged
@@ -4375,7 +4470,7 @@ return system(@realcmd);
 
 =head2 backquote_logged(command)
 
-Executes a command and returns the output (like `cmd`), but also logs it
+Executes a command and returns the output (like `command`), but also logs it.
 
 =cut
 sub backquote_logged
@@ -4402,7 +4497,9 @@ return `$realcmd`;
 =head2 backquote_with_timeout(command, timeout, safe?, [maxlines])
 
 Runs some command, waiting at most the given number of seconds for it to
-complete, and returns the output
+complete, and returns the output. The maxlines parameter sets the number
+of lines of output to capture. The safe parameter should be set to 1 if the
+command is safe for read-only mode users to run.
 
 =cut
 sub backquote_with_timeout
@@ -4440,8 +4537,9 @@ return wantarray ? ($out, $timed_out) : $out;
 
 =head2 backquote_command(command, safe?)
 
-Executes a command and returns the output (like `cmd`), subject to
-command translation
+Executes a command and returns the output (like `command`), subject to
+command translation. The safe parameter should be set to 1 if the command
+is safe for read-only mode users to run.
 
 =cut
 sub backquote_command
@@ -4458,7 +4556,9 @@ return `$realcmd`;
 
 =head2 kill_logged(signal, pid, ...)
 
-MISSING DOCUMENTATION
+Like Perl's built-in kill function, but also logs the fact that some process
+was killed. On Windows, falls back to calling process.exe to terminate a
+process.
 
 =cut
 sub kill_logged
@@ -4493,7 +4593,8 @@ else {
 
 =head2 rename_logged(old, new)
 
-Re-names a file and logs it, if allowed
+Re-names a file and logs the rename. If the old and new files are on different
+filesystems, calls mv or the Windows rename function to do the job.
 
 =cut
 sub rename_logged
@@ -4504,7 +4605,8 @@ return &rename_file($_[0], $_[1]);
 
 =head2 rename_file(old, new)
 
-Renames a file, unless in read-only mode
+Renames a file or directory. If the old and new files are on different
+filesystems, calls mv or the Windows rename function to do the job.
 
 =cut
 sub rename_file
@@ -4538,7 +4640,8 @@ return $ok;
 
 =head2 symlink_logged(src, dest)
 
-Create a symlink, and logs it
+Create a symlink, and logs it. Effectively does the same thing as the Perl
+symlink function.
 
 =cut
 sub symlink_logged
@@ -4551,7 +4654,8 @@ return $rv;
 
 =head2 symlink_file(src, dest)
 
-Creates a soft link, unless in read-only mode
+Creates a soft link, unless in read-only mode. Effectively does the same thing
+as the Perl symlink function.
 
 =cut
 sub symlink_file
@@ -4569,8 +4673,8 @@ return symlink($src, $dst);
 
 =head2 link_file(src, dest)
 
-Creates a hard link, unless in read-only mode. The existing new link
-will be deleted if necessary.
+Creates a hard link, unless in read-only mode. The existing new link file
+will be deleted if necessary. Effectively the same as Perl's link function.
 
 =cut
 sub link_file
@@ -4589,7 +4693,10 @@ return link($src, $dst);
 
 =head2 make_dir(dir, perms, recursive)
 
-Creates a directory, unless in read-only mode
+Creates a directory and sets permissions on it, unless in read-only mode.
+The perms parameter sets the octal permissions to apply, which unlike Perl's
+mkdir will really get set. The recursive flag can be set to 1 to have the
+function create parent directories too.
 
 =cut
 sub make_dir
@@ -4620,7 +4727,11 @@ return 1;
 
 =head2 set_ownership_permissions(user, group, perms, file, ...)
 
-Sets the user, group and permissions on some files
+Sets the user, group owner and permissions on some files. The parameters are :
+user - UID or username to change the file owner to. If undef, then the owner is not changed.
+group - GID or group name to change the file group to. If undef, then the group is not changed.
+perms - Octal permissions set to set on the file. If undef, they are left alone.
+file - One or more files or directories to modify.
 
 =cut
 sub set_ownership_permissions
@@ -4658,7 +4769,8 @@ return $rv;
 
 =head2 unlink_logged(file, ...)
 
-MISSING DOCUMENTATION
+Like Perl's unlink function, but locks the files beforehand and un-locks them
+after so that the deletion is logged by Webmin.
 
 =cut
 sub unlink_logged
@@ -4681,7 +4793,8 @@ return wantarray ? @rv : $rv[0];
 
 =head2 unlink_file(file, ...)
 
-Deletes some files or directories, if allowed
+Deletes some files or directories. Like Perl's unlink function, but also
+recursively deletes directories with the rm command if needed.
 
 =cut
 sub unlink_file
@@ -4727,7 +4840,9 @@ return wantarray ? ($rv, $err) : $rv;
 =head2 copy_source_dest(source, dest)
 
 Copy some file or directory to a new location. Returns 1 on success, or 0
-on failure - also sets $!
+on failure - also sets $! on failure. If the source is a directory, uses
+piped tar commands to copy a whole directory structure including permissions
+and special files.
 
 =cut
 sub copy_source_dest
@@ -4781,7 +4896,8 @@ return wantarray ? ($ok, $err) : $ok;
 
 Generates a session ID for some server. For this server, this will always
 be an empty string. For a server object it will include the hostname and
-port and PID. For a server name, it will include the hostname and PID.
+port and PID. For a server name, it will include the hostname and PID. For
+internal use only.
 
 =cut
 sub remote_session_name
@@ -4794,8 +4910,11 @@ return ref($_[0]) && $_[0]->{'host'} && $_[0]->{'port'} ?
 
 =head2 remote_foreign_require(server, module, file)
 
-Connect to rpc.cgi on a remote webmin server and have it open a session
-to a process that will actually do the require and run functions.
+Connects to rpc.cgi on a remote webmin server and have it open a session
+to a process that will actually do the require and run functions. This is the
+equivalent for foreign_require, but for a remote Webmin system. The server
+parameter can either be a hostname of a system registered in the Webmin
+Servers Index module, or a hash reference for a system from that module.
 
 =cut
 sub remote_foreign_require
@@ -4820,7 +4939,9 @@ if ($rv->{'session'}) {
 =head2 remote_foreign_call(server, module, function, [arg]*)
 
 Call a function on a remote server. Must have been setup first with
-remote_foreign_require for the same server and module
+remote_foreign_require for the same server and module. Equivalent to
+foreign_call, but with the extra server parameter to specify the remote
+system's hostname.
 
 =cut
 sub remote_foreign_call
@@ -4836,7 +4957,9 @@ return &remote_rpc_call($_[0], { 'action' => 'call',
 
 =head2 remote_foreign_check(server, module, [api-only])
 
-Checks if some module is installed and supported on a remote server
+Checks if some module is installed and supported on a remote server. Equivilant
+to foreign_check, but for the remote Webmin system specified by the server
+parameter.
 
 =cut
 sub remote_foreign_check
@@ -4848,7 +4971,8 @@ return &remote_rpc_call($_[0], { 'action' => 'check',
 
 =head2 remote_foreign_config(server, module)
 
-Gets the configuration for some module from a remote server
+Gets the configuration for some module from a remote server, as a hash.
+Equivalent to foreign_config, but for a remote system.
 
 =cut
 sub remote_foreign_config
@@ -4859,7 +4983,10 @@ return &remote_rpc_call($_[0], { 'action' => 'config',
 
 =head2 remote_eval(server, module, code)
 
-Eval some perl code in the context of a module on a remote webmin server
+Evaluates some perl code in the context of a module on a remote webmin server.
+The server parameter must be the hostname of a remote system, module must
+be a module directory name, and code a string of Perl code to run. This can
+only be called after remote_foreign_require for the same server and module.
 
 =cut
 sub remote_eval
@@ -4874,8 +5001,10 @@ return &remote_rpc_call($_[0], { 'action' => 'eval',
 
 =head2 remote_write(server, localfile, [remotefile], [remotebasename])
 
-Transfers some local file to another server, and returns the resulting
-remote filename.
+Transfers some local file to another server via Webmin's RPC protocol, and
+returns the resulting remote filename. If the remotefile parameter is given,
+that is the destination filename which will be used. Otherwise a randomly
+selected temporary filename will be used, and returned by the function.
 
 =cut
 sub remote_write
@@ -4924,7 +5053,10 @@ else {
 
 =head2 remote_read(server, localfile, remotefile)
 
-MISSING DOCUMENTATION
+Transfers a file from a remote server to this system, using Webmin's RPC
+protocol. The server parameter must be the hostname of a system registered
+in the Webmin Servers Index module, localfile is the destination path on this
+system, and remotefile is the file to fetch from the remote server.
 
 =cut
 sub remote_read
@@ -4984,7 +5116,8 @@ foreach $fh (keys %fast_fh_cache) {
 
 =head2 remote_error_setup(&function)
 
-Sets a function to be called instead of &error when a remote RPC fails
+Sets a function to be called instead of &error when a remote RPC operation
+fails. Useful if you want to have more control over your remote operations.
 
 =cut
 sub remote_error_setup
@@ -4995,7 +5128,8 @@ $remote_error_handler = $_[0] || "error";
 =head2 remote_rpc_call(server, structure)
 
 Calls rpc.cgi on some server and passes it a perl structure (hash,array,etc)
-and then reads back a reply structure
+and then reads back a reply structure. This is mainly for internal use only,
+and is called by the other remote_* functions.
 
 =cut
 sub remote_rpc_call
@@ -5288,7 +5422,8 @@ $remote_multi_callback_err = $_[0];
 =head2 serialise_variable(variable)
 
 Converts some variable (maybe a scalar, hash ref, array ref or scalar ref)
-into a url-encoded string
+into a url-encoded string. In the cases of arrays and hashes, it is recursively
+called on each member to serialize the entire object.
 
 =cut
 sub serialise_variable
@@ -5328,7 +5463,8 @@ return ($r ? $r : 'VAL').",".$rv;
 =head2 unserialise_variable(string)
 
 Converts a string created by serialise_variable() back into the original
-scalar, hash ref, array ref or scalar ref.
+scalar, hash ref, array ref or scalar ref. If the original variable was a Perl
+object, the same class is used on this system, if available.
 
 =cut
 sub unserialise_variable
@@ -5379,7 +5515,8 @@ return $rv;
 
 =head2 other_groups(user)
 
-Returns a list of secondary groups a user is a member of
+Returns a list of secondary groups a user is a member of, as a list of
+group names.
 
 =cut
 sub other_groups
@@ -5396,7 +5533,11 @@ return @rv;
 
 =head2 date_chooser_button(dayfield, monthfield, yearfield)
 
-Returns HTML for a date-chooser button
+Returns HTML for a button that pops up a data chooser window. The parameters
+are :
+dayfield - Name of the text field to place the day of the month into.
+monthfield - Name of the select field to select the month of the year in, indexed from 1.
+yearfield - Name of the text field to place the year into.
 
 =cut
 sub date_chooser_button
@@ -5412,7 +5553,8 @@ return "<input type=button onClick='window.dfield = form.$_[0]; window.mfield = 
 
 =head2 help_file(module, file)
 
-Returns the path to a module's help file
+Returns the path to a module's help file of some name, typically under the
+help directory with a .html extension.
 
 =cut
 sub help_file
@@ -5428,7 +5570,9 @@ return "$dir/$_[1].html";
 
 =head2 seed_random
 
-Seeds the random number generator, if needed
+Seeds the random number generator, if not already done in this script. On Linux
+this makes use of the current time, process ID and a read from /dev/urandom.
+On other systems, only the current time and process ID are used.
 
 =cut
 sub seed_random
@@ -5449,7 +5593,8 @@ if (!$main::done_seed_random) {
 
 =head2 disk_usage_kb(directory)
 
-Returns the number of kb used by some directory and all subdirs
+Returns the number of kB used by some directory and all subdirs. Implemented
+by calling the du -k command.
 
 =cut
 sub disk_usage_kb
@@ -5467,7 +5612,10 @@ return $out =~ /^([0-9]+)/ ? $1 : "???";
 
 =head2 recursive_disk_usage(directory)
 
-Returns the number of bytes taken up by all files in some directory
+Returns the number of bytes taken up by all files in some directory and all
+sub-directories, by summing up their lengths. The disk_usage_kb is more
+reflective of reality, as the filesystem typically pads file sizes to 1k or
+4k blocks.
 
 =cut
 sub recursive_disk_usage
@@ -5496,7 +5644,10 @@ else {
 =head2 help_search_link(term, [ section, ... ] )
 
 Returns HTML for a link to the man module for searching local and online
-docs for various search terms
+docs for various search terms. The term parameter can either be a single
+word like 'bind', or a space-separated list of words. This function is typically
+used by modules that want to refer users to additional documentation in man
+pages or local system doc files.
 
 =cut
 sub help_search_link
@@ -5519,6 +5670,13 @@ else {
 Opens a connection to some HTTP server, maybe through a proxy, and returns
 a handle object. The handle can then be used to send additional headers
 and read back a response. If anything goes wrong, returns an error string.
+The parameters are :
+host - Hostname or IP address of the webserver to connect to.
+port - HTTP port number to connect to.
+ssl - Set to 1 to connect in SSL mode.
+method - HTTP method, like GET or POST.
+page - Page to request on the webserver, like /foo/index.html
+headers - Array ref of additional HTTP headers, each of which is a 2-element array ref.
 
 =cut
 sub make_http_connection
@@ -5632,7 +5790,8 @@ return $rv;
 
 =head2 read_http_connection(handle, [amount])
 
-Reads either one line or up to the specified amount of data from the handle
+Reads either one line or up to the specified amount of data from the handle.
+XXX
 
 =cut
 sub read_http_connection
