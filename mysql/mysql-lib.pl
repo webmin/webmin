@@ -249,6 +249,8 @@ if ($driver_handle) {
 	$cstr .= ";host=$config{'host'}" if ($config{'host'});
 	$cstr .= ";port=$config{'port'}" if ($config{'port'});
 	$cstr .= ";mysql_socket=$config{'sock'}" if ($config{'sock'});
+	$cstr .= ";mysql_read_default_file=$config{'my_cnf'}"
+		if (-r $config{'my_cnf'});
 	local $dbh = $driver_handle->connect($cstr, $mysql_login, $mysql_pass,
 					     { });
 	$dbh || &error("DBI connect failed : ",$driver_handle->errstr);
