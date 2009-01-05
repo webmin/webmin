@@ -96,12 +96,14 @@ local $pass = defined($_[1]) ? $_[1] : $mysql_pass;
 local $host = defined($_[2]) ? $_[2] : $config{'host'};
 local $port = defined($_[3]) ? $_[3] : $config{'port'};
 local $sock = defined($_[4]) ? $_[4] : $config{'sock'};
-$ENV{'MYSQL_PWD'} = $pass;
+if (&supports_env_pass()) {
+	$ENV{'MYSQL_PWD'} = $pass;
+	}
 return ($sock ? " -S $sock" : "").
        ($host ? " -h $host" : "").
        ($port ? " -P $port" : "").
        ($login ? " -u ".quotemeta($login) : "").
-       ($mysql_version >= 5.1 ? "" :	# Password comes from environment
+       (&supports_env_pass() ? "" :	# Password comes from environment
         $pass && $mysql_version >= 4.1 ? " --password=".quotemeta($pass) :
         $pass ? " -p".quotemeta($pass) : "");
 }
@@ -619,6 +621,13 @@ elsif ($mysql_version > 4) {
 else {
 	return 0;
 	}
+}
+
+# supports_env_pass()
+# Returns 1 if passing the password via an environment variable is supported
+sub supports_env_pass
+{
+return $mysql_version >= 4.1;
 }
 
 # user_priv_cols()

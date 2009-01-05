@@ -75,3 +75,6 @@ The root password can be more easily change by the new 'Change Administration Pa
 Display the number of tables and records created when executing SQL for a restore.
 ---- Changes since 1.430 ----
 Improved the input for setting the default value for new fields, and added support for CURRENT_TIMESTAMP.
+---- Changes since 1.440 ----
+The correct character set is ready from my.cnf when connecting using DBI mode, thanks to jianxia.
+The password is passed to all MySQL commands using the MYSQL_PWD environment variables on systems running MySQL 4.1 and later, version 5.1 in older Webmin releases.
