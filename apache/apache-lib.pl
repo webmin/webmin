@@ -487,7 +487,8 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 				"file", $change->{'file'},
 				"type", 0,
 				"name", $_[0],
-				"value", $v);
+				"value", $v,
+				"words", &wsplit($v) );
 			$j = &indexof($change, @{$_[2]})+1;
 			&renumber($_[3], $v{'line'}, $v{'file'}, 1);
 			splice(@{$_[2]}, $j, 0, \%v);
@@ -508,7 +509,8 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 				"file", $f,
 				"type", 0,
 				"name", $_[0],
-				"value", $v);
+				"value", $v,
+				"words", &wsplit($v) );
 			&renumber($_[3], $l, $f, 1);
 			splice(@{$_[2]}, $j, 0, \%v);
 			$lref = &read_file_lines($f);
@@ -534,6 +536,7 @@ for($i=0; $i<@old || $i<@{$_[1]}; $i++) {
 		&renumber($_[3], $old[$i]->{'eline'}+1,
 			  $old[$i]->{'file'},1-$len);
 		$old[$i]->{'value'} = $v;
+		$old[$i]->{'words'} = &wsplit($v);
 		$old[$i]->{'eline'} = $old[$i]->{'line'};
 		splice(@$lref, $old[$i]->{'line'}, $len, "$_[0] $v");
 		$change = $old[$i];
