@@ -760,7 +760,7 @@ sub get_zone_file
 local ($z, $abs) = @_;
 local $fn;
 if ($z->{'members'}) {
-	local $file = &bind8::find("file", $z->{'members'});
+	local $file = &find("file", $z->{'members'});
 	return undef if (!$file);
 	$fn = $file->{'values'}->[0];
 	}
