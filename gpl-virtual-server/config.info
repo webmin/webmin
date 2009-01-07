@@ -99,6 +99,8 @@ clam_delivery=Default delivery for viruses,10,/dev/null-Delete,$HOME/mail/virus-
 spam_white=Default spam whitelist option,1,1-Enabled,0-Disabled
 spam_level=Default score to delete spam,3,Don't delete,4
 spam_lock=Only run one spamassasin process at a time?,1,1-Yes,0-No
+spam_trap_black=Adding senders of spam sent to <tt>spamtrap</tt> to blacklist?,1,2-Global,1-Domain level,0-No
+ham_trap_white=Adding senders of non-spam sent to <tt>hamtrap</tt> to whitelist?,1,2-Global,1-Domain level,0-No
 
 line4.8=Quota commands,11
 quota_commands=Use external commands to get and set quotas?,1,1-Yes,0-No

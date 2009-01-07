@@ -527,3 +527,4 @@ When a virtual server with a self-signed SSL certificate is renamed, the certifi
 Domain owners can now be granted permissions to edit the remote MySQL client hosts for the databases they manage.
 Added an option on the Spam and Virus Delivery page to enable spamtrap and hamtrap aliases on a per-domain level, to which spam and non-spam can be forwarded by users for addition to SpamAssassin's learning engine. These can also be enabled for new domains in server templates, and changed using the modify-spam command-line API.
 The delete-domain.pl command-line script now accepts multiple --domain parameters, and can also delete virtual servers by username with the --user parameter.
+For new Virtualmin installs, Apache logs are now stored under /var/log/virtualmin and just linked from the ~/logs directory. This avoids problems with Apache crashing when the logs directory is deleted.
