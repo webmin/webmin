@@ -11,7 +11,11 @@ $heiropen_file = "$module_config_directory/heiropen";
 # we are using.
 do "$config{package_system}-lib.pl";
 
-if ($config{'update_system'}) {
+if ($config{'update_system'} eq '*') {
+	# User specifically doesn't want any
+	$update_system = undef;
+	}
+elsif ($config{'update_system'}) {
 	# User-specified system
 	$update_system = $config{'update_system'};
 	}

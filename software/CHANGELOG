@@ -23,3 +23,5 @@ Fixed several bugs related to finding available updates on Debian and Redhat.
 Added detection of epochs for RPMs and packages from YUM.
 ---- Changes since 1.340 ----
 Added an Upgrade All button for CSW packages.
+---- Changes since 1.440 ----
+Added a Module Config option to not use any update system, even if YUM or APT are installed.
