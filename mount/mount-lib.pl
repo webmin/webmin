@@ -297,7 +297,7 @@ my %donezone;
 foreach $m (@mounted) {
 	if ($m->[2] eq "ext2" || $m->[2] eq "ext3" ||
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
-	    $m->[2] eq "zfs" || $m->[2] eq "simfs" ||
+	    $m->[2] eq "zfs" || $m->[2] eq "simfs" || $m->[2] eq "vzfs" ||
 	    $m->[2] eq "xfs" || $m->[2] eq "jfs" ||
 	    $m->[1] =~ /^\/dev\// ||
 	    &indexof($m->[1], @$always) >= 0) {
@@ -307,6 +307,11 @@ foreach $m (@mounted) {
 			next;
 			}
 		my ($t, $f) = &mount::disk_space($m->[2], $m->[0]);
+		if (($m->[2] eq "simfs" || $m->[2] eq "vzfs") &&
+		    $donevzfs{$t,$f}++) {
+			# Don't double-count VPS filesystems
+			next;
+			}
 		$total += $t*1024;
 		$free += $f*1024;
 		}
