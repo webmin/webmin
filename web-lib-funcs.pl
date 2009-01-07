@@ -5788,10 +5788,10 @@ else {
 return $rv;
 }
 
-=head2 read_http_connection(handle, [amount])
+=head2 read_http_connection(&handle, [bytes])
 
-Reads either one line or up to the specified amount of data from the handle.
-XXX
+Reads either one line or up to the specified number of bytes from the handle,
+originally supplied by make_http_connection. 
 
 =cut
 sub read_http_connection
@@ -5837,9 +5837,9 @@ $rv = undef if ($rv eq "");
 return $rv;
 }
 
-=head2 write_http_connection(handle, [data+])
+=head2 write_http_connection(&handle, [data+])
 
-Writes the given data to the handle
+Writes the given data to the given HTTP connection handle.
 
 =cut
 sub write_http_connection
@@ -5856,9 +5856,9 @@ else {
 	}
 }
 
-=head2 close_http_connection(handle)
+=head2 close_http_connection(&handle)
 
-MISSING DOCUMENTATION
+Closes a connection to an HTTP server, identified by the given handle.
 
 =cut
 sub close_http_connection
@@ -5869,7 +5869,9 @@ close($h->{'fh'});
 =head2 clean_environment
 
 Deletes any environment variables inherited from miniserv so that they
-won't be passed to programs started by webmin.
+won't be passed to programs started by webmin. This is useful when calling
+programs that check for CGI-related environment variables and modify their
+behaviour, and to avoid passing sensitive variables to un-trusted programs.
 
 =cut
 sub clean_environment
@@ -5895,7 +5897,7 @@ foreach $e ('WEBMIN_CONFIG', 'SERVER_NAME', 'CONTENT_TYPE', 'REQUEST_URI',
 
 =head2 reset_environment
 
-Puts the environment back how it was before &clean_environment
+Puts the environment back how it was before clean_environment was callled.
 
 =cut
 sub reset_environment
@@ -5908,11 +5910,10 @@ if (defined(%UNCLEAN_ENV)) {
 	}
 }
 
-$webmin_feedback_address = "feedback\@webmin.com";
-
 =head2 progress_callback
 
-Never called directly, but useful for passing to &http_download
+Never called directly, but useful for passing to &http_download to print
+out progress of an HTTP request.
 
 =cut
 sub progress_callback
@@ -5977,6 +5978,8 @@ elsif ($_[0] == 6) {
 
 Changes the user and group of the current process to that of the unix user
 with the same name as the current webmin login, or fails if there is none.
+This should be called by Usermin module scripts that only need to run with
+limited permissions.
 
 =cut
 sub switch_to_remote_user
@@ -5999,7 +6002,8 @@ if ($< == 0) {
 
 Creates per-user config directories and sets $user_config_directory and
 $user_module_config_directory to them. Also reads per-user module configs
-into %userconfig
+into %userconfig. This should be called by Usermin module scripts that need
+to store per-user preferences or other settings.
 
 =cut
 sub create_user_config_dirs
@@ -6036,7 +6040,8 @@ if ($module_name) {
 
 =head2 create_missing_homedir(&uinfo)
 
-If auto homedir creation is enabled, create one for this user if needed
+If auto homedir creation is enabled, create one for this user if needed.
+For internal use only.
 
 =cut
 sub create_missing_homedir
@@ -6054,7 +6059,8 @@ if (!-e $uinfo->[7] && $gconfig{'create_homedir'}) {
 
 =head2 filter_javascript(text)
 
-Disables all javascript <script>, onClick= and so on tags in the given HTML
+Disables all javascript <script>, onClick= and so on tags in the given HTML,
+and returns the new HTML. Useful for displaying HTML from an un-trusted source.
 
 =cut
 sub filter_javascript
@@ -6069,7 +6075,7 @@ return $rv;
 
 =head2 resolve_links(path)
 
-Given a path that may contain symbolic links, returns the real path
+Given a path that may contain symbolic links, returns the real path.
 
 =cut
 sub resolve_links
@@ -6097,8 +6103,8 @@ return $path;
 
 =head2 simplify_path(path, bogus)
 
-Given a path, maybe containing stuff like ".." and "." convert it to a
-clean, absolute form. Returns undef if this is not possible
+Given a path, maybe containing elements ".." and "." , convert it to a
+clean, absolute form. Returns undef if this is not possible.
 
 =cut
 sub simplify_path
@@ -6149,7 +6155,7 @@ return $stat1[0] == $stat2[0] && $stat1[1] == $stat2[1];
 
 =head2 flush_webmin_caches
 
-Clears all in-memory and on-disk caches used by webmin
+Clears all in-memory and on-disk caches used by Webmin.
 
 =cut
 sub flush_webmin_caches
@@ -6169,7 +6175,7 @@ unlink("$config_directory/module.infos.cache");
 =head2 list_usermods
 
 Returns a list of additional module restrictions. For internal use in
-usermin only.
+Usermin only.
 
 =cut
 sub list_usermods
@@ -6193,7 +6199,7 @@ return @main::list_usermods_cache;
 =head2 available_usermods(&allmods, &usermods)
 
 Returns a list of modules that are available to the given user, based
-on usermod additional/subtractions
+on usermod additional/subtractions. For internal use by Usermin only.
 
 =cut
 sub available_usermods
@@ -6254,7 +6260,10 @@ return grep { $mods{$_->{'dir'}} } @{$_[0]};
 =head2 get_available_module_infos(nocache)
 
 Returns a list of modules available to the current user, based on
-operating system support, access control and usermod restrictions.
+operating system support, access control and usermod restrictions. Useful
+in themes that need to display a list of modules the user can use.
+Each element of the returned array is a hash reference in the same format as
+returned by get_module_info.
 
 =cut
 sub get_available_module_infos
@@ -6334,7 +6343,9 @@ return @licrv;
 
 =head2 get_visible_module_infos(nocache)
 
-Like get_available_module_infos, but excludes hidden modules from the list
+Like get_available_module_infos, but excludes hidden modules from the list.
+Each element of the returned array is a hash reference in the same format as
+returned by get_module_info.
 
 =cut
 sub get_visible_module_infos
@@ -6387,7 +6398,7 @@ return @rv;
 =head2 is_under_directory(directory, file)
 
 Returns 1 if the given file is under the specified directory, 0 if not.
-Symlinks are taken into account in the file to find it's 'real' location
+Symlinks are taken into account in the file to find it's 'real' location.
 
 =cut
 sub is_under_directory
@@ -6411,8 +6422,8 @@ return substr($file, 0, length($dir)) eq $dir;
 
 =head2 parse_http_url(url, [basehost, baseport, basepage, basessl])
 
-Given an absolute URL, returns the host, port, page and ssl components.
-Relative URLs can also be parsed, if the base information is provided
+Given an absolute URL, returns the host, port, page and ssl flag components.
+Relative URLs can also be parsed, if the base information is provided.
 
 =cut
 sub parse_http_url
@@ -6442,7 +6453,8 @@ else {
 
 Returns HTML for a JavaScript function called check_clicks that returns
 true when first called, but false subsequently. Useful on onClick for
-critical buttons.
+critical buttons. Deprecated, as this method of preventing duplicate actions
+is un-reliable.
 
 =cut
 sub check_clicks_function
@@ -6470,7 +6482,7 @@ EOF
 =head2 load_entities_map
 
 Returns a hash ref containing mappings between HTML entities (like ouml) and
-ascii values (like 246)
+ascii values (like 246). Mainly for internal use.
 
 =cut
 sub load_entities_map
@@ -6491,7 +6503,7 @@ return \%entities_map_cache;
 =head2 entities_to_ascii(string)
 
 Given a string containing HTML entities like &ouml; and &#55;, replace them
-with their ASCII equivalents
+with their ASCII equivalents.
 
 =cut
 sub entities_to_ascii
@@ -6505,7 +6517,8 @@ return $str;
 
 =head2 get_product_name
 
-Returns either 'webmin' or 'usermin'
+Returns either 'webmin' or 'usermin', depending on which program the current
+module is in. Useful for modules that can be installed into either.
 
 =cut
 sub get_product_name
@@ -6514,11 +6527,9 @@ return $gconfig{'product'} if (defined($gconfig{'product'}));
 return defined($gconfig{'userconfig'}) ? 'usermin' : 'webmin';
 }
 
-$default_charset = "iso-8859-1";
-
 =head2 get_charset
 
-Returns the character set for the current language
+Returns the character set for the current language, such as iso-8859-1.
 
 =cut
 sub get_charset
@@ -6531,7 +6542,9 @@ return $charset;
 
 =head2 get_display_hostname
 
-Returns the system's hostname for UI display purposes
+Returns the system's hostname for UI display purposes. This may be different
+from the actual hostname if you administrator has configured it so in the
+Webmin Configuration module.
 
 =cut
 sub get_display_hostname
@@ -6554,7 +6567,10 @@ else {
 
 =head2 save_module_config([&config], [modulename])
 
-Saves the configuration for some module
+Saves the configuration for some module. The config parameter is an optional
+hash reference of names and values to save, which defaults to the global
+%config hash. The modulename parameter is the module to update the config
+file, which defaults to the current module.
 
 =cut
 sub save_module_config
@@ -6566,7 +6582,10 @@ local $m = defined($_[1]) ? $_[1] : $module_name;
 
 =head2 save_user_module_config([&config], [modulename])
 
-Saves the user's Usermin configuration for some module
+Saves the user's Usermin preferences for some module. The config parameter is
+an optional hash reference of names and values to save, which defaults to the
+global %userconfig hash. The modulename parameter is the module to update the
+config file, which defaults to the current module.
 
 =cut
 sub save_user_module_config
@@ -6585,7 +6604,8 @@ if (!$ucd) {
 
 =head2 nice_size(bytes, [min])
 
-Converts a number of bytes into a number of bytes, kb, mb or gb
+Converts a number of bytes into a number followed by a suffix like GB, MB
+or kB. Rounding is to two decimal digits.
 
 =cut
 sub nice_size
@@ -6618,7 +6638,7 @@ return $sz." ".$uname;
 
 =head2 get_perl_path
 
-Returns the path to Perl currently in use
+Returns the path to Perl currently in use, such as /usr/bin/perl.
 
 =cut
 sub get_perl_path
@@ -6636,7 +6656,7 @@ return &has_command("perl");
 =head2 get_goto_module([&mods])
 
 Returns the details of a module that the current user should be re-directed
-to after logging in, or undef if none
+to after logging in, or undef if none. Useful for themes.
 
 =cut
 sub get_goto_module
@@ -6652,10 +6672,13 @@ if (@mods == 1 && $gconfig{'gotoone'}) {
 return undef;
 }
 
-=head2 select_all_link(field, form, text)
+=head2 select_all_link(field, form, [text])
 
 Returns HTML for a 'Select all' link that uses Javascript to select
-multiple checkboxes with the same name
+multiple checkboxes with the same name. The parameters are :
+field - Name of the checkbox inputs.
+form - Index of the form on the page.
+text - Message for the link, defaulting to 'Select all'.
 
 =cut
 sub select_all_link
@@ -6669,8 +6692,11 @@ return "<a class='select_all' href='#' onClick='document.forms[$form].$field.che
 
 =head2 select_invert_link(field, form, text)
 
-Returns HTML for a 'Select all' link that uses Javascript to invert the
-selection on multiple checkboxes with the same name
+Returns HTML for an 'Invert selection' link that uses Javascript to invert the
+selection on multiple checkboxes with the same name. The parameters are :
+field - Name of the checkbox inputs.
+form - Index of the form on the page.
+text - Message for the link, defaulting to 'Invert selection'.
 
 =cut
 sub select_invert_link
@@ -6685,7 +6711,11 @@ return "<a class='select_invert' href='#' onClick='document.forms[$form].$field.
 =head2 select_rows_link(field, form, text, &rows)
 
 Returns HTML for a link that uses Javascript to select rows with particular
-values for their checkboxes
+values for their checkboxes. The parameters are :
+field - Name of the checkbox inputs.
+form - Index of the form on the page.
+text - Message for the link, de
+rows - Reference to an array of 1 or 0 values, indicating which rows to check.
 
 =cut
 sub select_rows_link
@@ -6701,7 +6731,7 @@ return "<a href='#' onClick='$js'>$text</a>";
 
 =head2 check_pid_file(file)
 
-Given a pid file, returns the PID it contains if the process is running
+Given a pid file, returns the PID it contains if the process is running.
 
 =cut
 sub check_pid_file
@@ -6716,9 +6746,7 @@ return $1;
 
 =head2 get_mod_lib
 
-
-Return the local os-specific library name to this module
-
+Return the local os-specific library name to this module. For internal use only.
 
 =cut
 sub get_mod_lib
@@ -6740,7 +6768,9 @@ else {
 
 =head2 module_root_directory(module)
 
-Given a module name, returns its root directory
+Given a module name, returns its root directory. On a typical Webmin install,
+all modules are under the same directory - but it is theoretically possible to
+have more than one.
 
 =cut
 sub module_root_directory
@@ -6759,7 +6789,11 @@ return "$root_directories[0]/$d";
 
 =head2 list_mime_types
 
-Returns a list of all known MIME types and their extensions
+Returns a list of all known MIME types and their extensions, as a list of hash
+references with keys :
+type - The MIME type, like text/plain.
+exts - A list of extensions, like .doc and .avi.
+desc - A human-readable description for the MIME type.
 
 =cut
 sub list_mime_types
@@ -6787,7 +6821,9 @@ return @list_mime_types_cache;
 
 =head2 guess_mime_type(filename, [default])
 
-Given a file name like xxx.gif or foo.html, returns a guessed MIME type
+Given a file name like xxx.gif or foo.html, returns a guessed MIME type.
+The optional default parameter sets a default type of use if none is found,
+which defaults to application/octet-stream.
 
 =cut
 sub guess_mime_type
@@ -6806,7 +6842,8 @@ return @_ > 1 ? $_[1] : "application/octet-stream";
 
 =head2 open_tempfile([handle], file, [no-error], [no-tempfile], [safe?])
 
-Returns a temporary file for writing to some actual file
+Returns a temporary file for writing to some actual file.
+XXX
 
 =cut
 sub open_tempfile
