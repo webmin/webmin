@@ -23,3 +23,4 @@ Show SNAT and masquerade inputs in custom NAT chains.
 DNS queries are now allowed when the firewall is setup for web hosting.
 Rule coments using --comment containing spaces or - are now properly parsed.
 When initializing the firewall, the actual ports for Webmin, Usermin and SSHd are used instead of the standard ports.
+Added an option for the UNTRACKED state in rules.

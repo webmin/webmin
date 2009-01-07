@@ -318,7 +318,7 @@ print "<td><table cellpadding=0 cellspacing=0><tr><td valign=top>",
       &print_mode("state", $rule->{'state'}),"</td>\n";
 print "<td>&nbsp;<select name=state multiple size=4>\n";
 %states = map { $_,1 } split(/,/, $rule->{'state'}->[1]);
-foreach $s ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID') {
+foreach $s ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID', 'UNTRACKED') {
 	printf "<option value=%s %s>%s (%s)\n",
 		$s, $states{$s} ? "selected" : "",
 		$text{"edit_state_".lc($s)}, $s;
