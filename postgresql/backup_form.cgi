@@ -39,8 +39,8 @@ print "<p>\n";
 print &ui_form_start("backup.cgi", "post");
 print &ui_hidden("db", $in{'db'});
 print &ui_hidden("all", $in{'all'});
-print &ui_hidden_table_start($text{'backup_header1'}, undef, 2, "main", 1,
-			     [ "width=30%" ]);
+print &ui_hidden_table_start($text{'backup_header1'}, "width=100%", 2, "main",
+			     1, [ "width=30%" ]);
 
 # Destination file or directory
 $p = $c{'backup_'.$in{'db'}} || "$config{'repository'}/";
@@ -79,7 +79,8 @@ print &ui_hidden_table_end("main");
 
 if ($cron) {
 	if ($access{'cmds'}) {
-		print &ui_hidden_table_start($text{'backup_header2'}, undef, 2,
+		print &ui_hidden_table_start($text{'backup_header2'},
+					     "width=100%", 2,
 					     "opts", 0, [ "width=30%" ]);
 
 		$b = $c{'backup_before_'.$in{'db'}};
@@ -102,8 +103,8 @@ if ($cron) {
 		print &ui_hidden_table_end("opts");
                 }
 
-	print &ui_hidden_table_start($text{'backup_header3'}, undef, 2, "sched",
-				     1, [ "width=30%" ]);
+	print &ui_hidden_table_start($text{'backup_header3'}, "width=100%",
+				     2, "sched", 1, [ "width=30%" ]);
 
 	&foreign_require("cron", "cron-lib.pl");
 	@jobs = &cron::list_cron_jobs();

@@ -36,9 +36,13 @@ else {
 		foreach $u (@{$s->{'data'}}) {
 			$umap{$u->[1]} = $u->[0];
 			}
-		@mems = split(/\0/, $in{'mems'});
+		@mems = split(/\r?\n/, $in{'mems'});
 		if ($in{'new'}) {
-			&execute_sql_logged($config{'basedb'}, "create group $in{'name'} sysid $in{'gid'} ".join(" ", map { "user ".$umap{$_} } @mems));
+			$first = shift(@mems);
+			&execute_sql_logged($config{'basedb'}, "create group $in{'name'} sysid $in{'gid'} user ".$umap{$first});
+			if (@mems) {
+				&execute_sql_logged($config{'basedb'}, "alter group $in{'name'} add user ".join(" , ", map { $umap{$_} } @mems));
+				}
 			}
 		else {
 			if ($in{'name'} ne $in{'oldname'}) {

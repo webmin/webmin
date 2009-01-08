@@ -15,49 +15,49 @@ else {
 	@group = @{$s->{'data'}->[0]};
 	}
 
-print "<form action=save_group.cgi>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'group_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of form block
+print &ui_form_start("save_group.cgi");
+print &ui_hidden("new", $in{'new'});
+print &ui_table_start($text{'group_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'group_name'}</b></td>\n";
-print "<td><input name=name size=20 value='$group[0]'></td>\n";
+# Group name
+print &ui_table_row($text{'group_name'},
+	&ui_textbox("name", $group[0], 40));
 
-print "<td><b>$text{'group_id'}</b></td>\n";
+# Group ID, dynamically selected for new ones
 if ($in{'new'}) {
 	$s = &execute_sql($config{'basedb'},
 			  "select max(grosysid) from pg_group");
 	$gid = $s->{'data'}->[0]->[0] + 1;
-	print "<td><input name=gid size=10 value='$gid'></td> </tr>\n";
+	print &ui_table_row($text{'group_id'},
+		&ui_textbox("gid", $gid, 10));
 	}
 else {
-	print "<td>$group[1]</td> </tr>\n";
-	print "<input type=hidden name=gid value='$in{'gid'}'>\n";
-	print "<input type=hidden name=oldname value='$group[0]'>\n";
+	print &ui_table_row($text{'group_id'}, $group[1]);
+	print &ui_hidden("gid", $in{'gid'});
+	print &ui_hidden("oldname", $group[0]);
 	}
 
-map { $mem{$_}++ } &split_array($group[2]) if (!$in{'new'});
-print "<tr> <td valign=top><b>$text{'group_mems'}</b></td>\n";
-print "<td colspan=3><select name=mems multiple size=5 width=200>\n";
+# Group members
 $s = &execute_sql($config{'basedb'}, "select * from pg_shadow");
-foreach $u (@{$s->{'data'}}) {
-	printf "<option value=%s %s>%s\n",
-		$u->[1], $mem{$u->[1]} ? 'selected' : '', $u->[0];
+%uidtouser = map { $_->[1], $_->[0] } @{$s->{'data'}};
+if (!$in{'new'}) {
+	@mems = map { [ $_, $uidtouser{$_} || $_ ] } &split_array($group[2]);
 	}
-print "</select></td> </tr>\n";
+@users = map { [ $_->[1], $_->[0] ] } @{$s->{'data'}};
+print &ui_table_row($text{'group_mems'},
+	&ui_multi_select("mems", \@mems, \@users, 10, 1, 0,
+			 $text{'group_memsopts'}, $text{'group_memsvals'}));
 
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
+# End of the form buttons
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</tr></table>\n";
 
 &ui_print_footer("list_groups.cgi", $text{'group_return'});
 

@@ -30,7 +30,7 @@ if (@{$s->{'data'}}) {
 		push(@cols, $g->[1]);
 		push(@cols, join("&nbsp;|&nbsp;",
 		     map { &html_escape($uid{$_}) } &split_array($g->[2])));
-		print &ui_checked_columns_row(\@cols, \@tds, "d", $g->[1]);
+		print &ui_checked_columns_row(\@cols, \@tds, "d", $g->[0]);
 		}
 	print &ui_columns_end();
 	}

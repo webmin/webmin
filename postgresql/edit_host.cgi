@@ -18,13 +18,13 @@ else {
 	&ui_print_header(undef, $text{"host_edit"}, "");
 	}
 
-print "<form action=save_host.cgi>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'host_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Start of form block
+print &ui_form_start("save_host.cgi", "post");
+print &ui_hidden("idx", $in{'idx'});
+print &ui_hidden("new", $in{'new'});
+print &ui_table_start($text{'host_header'}, "width=100%", 2);
 
+# XXX
 $mode = $type eq 'local' ? 3 :
 	$host->{'cidr'} ne '' ? 4 :
 	$host->{'netmask'} eq '0.0.0.0' ? 0 :

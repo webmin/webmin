@@ -57,15 +57,12 @@ if ($r == 0) {
 	print "<b>$text{'index_notrun'}</b> <p>\n";
 
 	if (&is_postgresql_local()) {
-		if ($access{'stop'} || $access{'users'}) {
-			print &ui_hr();
-			}
+		print &ui_hr();
 		print &ui_buttons_start();
 		if ($access{'stop'}) {
 			# Show start button
 			print &ui_buttons_row("start.cgi", $text{'index_start'},
-			      &text('index_startmsg',
-				    "<tt>$config{'start_cmd'}</tt>"));
+			      		      $text{'index_startmsg2'});
 			}
 		if ($access{'users'}) {
 			print &ui_buttons_row("list_hosts.cgi",
@@ -85,30 +82,24 @@ elsif ($r == -1 && $access{'user'} && 0) {
 elsif ($r == -1) {
 	# Running, but webmin doesn't know the login/password
 	&main_header(1);
-	print "<p> <b>$text{'index_nopass'}</b> <p>\n";
-	print "<form action=login.cgi method=post>\n";
-	print "<center><table border>\n";
-	print "<tr $tb> <td><b>$text{'index_ltitle'}</b></td> </tr>\n";
-	print "<tr $cb> <td><table cellpadding=2>\n";
+	print "<b>$text{'index_nopass'}</b> <p>\n";
 
-	print "<tr> <td><b>$text{'index_login'}</b></td>\n";
-	printf "<td><input name=login size=20 value='%s'></td> </tr>\n",
-		$access{'user'} || $config{'login'};
+	print &ui_form_start("login.cgi", "post");
+	print &ui_table_start($text{'index_ltitle'}, undef, 2);
 
-	if (!$access{'user'}) {
-		print "<tr> <td></td>\n";
-		printf "<td><input type=checkbox name=sameunix value=1 %s> %s</td> </tr>\n",
-			$config{'sameunix'} ? "checked" : "", $text{'index_sameunix'};
-		}
+	print &ui_table_row($text{'index_login'},
+		&ui_textbox("login", $access{'user'} || $config{'login'}, 40));
 
-	print "<tr> <td><b>$text{'index_pass'}</b></td>\n";
-	print "<td><input name=pass size=20 type=password></td> </tr>\n";
+	print &ui_table_row(" ",
+		&ui_checkbox("sameunix", 1, $text{'index_sameunix'},
+			     $config{'sameunix'}));
 
+	print &ui_table_row($text{'index_pass'},
+		&ui_password("pass", undef, 40));
 
-	print "</table></td></tr></table>\n";
-	print "<input type=submit value='$text{'save'}'>\n";
-	print "<input type=reset value='$text{'index_clear'}'>\n";
-	print "</center></form>\n";
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+
 	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
 	}
 elsif ($r == -2) {
@@ -118,7 +109,7 @@ elsif ($r == -2) {
 		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
 	print &text('index_ldpath', "<tt>$ENV{$gconfig{'ld_env'}}</tt>",
 		  "<tt>$config{'psql'}</tt>"),"<br>\n";
-	print "<pre>$out</pre>\n";
+	print "<pre>",&html_escape($out),"</pre>\n";
 	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
 	}
 else {
@@ -255,27 +246,23 @@ else {
 		&icons_table(\@links, \@titles, \@images);
 		}
 
+	print &ui_hr();
+	print &ui_buttons_start();
+
+	# Show stop server button
 	if ($access{'stop'} && &is_postgresql_local()) {
-		print &ui_hr();
-		print "<form action=stop.cgi>\n";
-		print "<table width=100%><tr><td width=25%>\n";
-		print "<input type=submit ",
-		      "value=\"$text{'index_stop'}\"></td>\n";
-		print "<td>$text{'index_stopmsg'}</td> </tr></table>\n";
-		print "</form>\n";
+		print &ui_buttons_row("stop.cgi", $text{'index_stop'},
+				      $text{'index_stopmsg'});
 		}
 
 	# Show backup all button
 	if ($can_all && $access{'backup'}) {
-		print &ui_hr() if (!$access{'stop'});
-		print "<form action=backup_form.cgi>\n";
-		print "<input type=hidden name=all value=1>\n";
-		print "<table width=100%><tr><td width=25%>\n";
-		print "<input type=submit ",
-		      "value=\"$text{'index_backup'}\"></td>\n";
-		print "<td>$text{'index_backupmsg'}</td> </tr></table>\n";
-		print "</form>\n";
+		print &ui_buttons_row("backup_form.cgi", $text{'index_backup'},
+				      $text{'index_backupmsg'},
+				      &ui_hidden("all", 1));
 		}
+
+	print &ui_buttons_end();
 
 	# Check if the optional perl modules are installed
 	if (&foreign_available("cpan")) {

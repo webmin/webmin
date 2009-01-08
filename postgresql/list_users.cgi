@@ -34,16 +34,20 @@ print &ui_form_end([ [ "delete", $text{'user_delete'} ] ]);
 
 if (&get_postgresql_version() >= 7 && &foreign_installed("useradmin")) {
 	print &ui_hr();
+	print "$text{'user_sync'}<p>\n";
 	print &ui_form_start("save_sync.cgi");
-	print "$text{'user_sync'}<br>\n";
+	print &ui_table_start(undef, undef, 2);
 
-	print &ui_checkbox("sync_create", 1, $text{'user_sync_create'},
-			   $config{'sync_create'}),"<br>\n";
-	print &ui_checkbox("sync_modify", 1, $text{'user_sync_modify'},
-			   $config{'sync_modify'}),"<br>\n";
-	print &ui_checkbox("sync_delete", 1, $text{'user_sync_delete'},
-			   $config{'sync_delete'}),"<br>\n";
+	# When to sync
+	print &ui_table_row($text{'user_syncwhen'},
+	      &ui_checkbox("sync_create", 1, $text{'user_sync_create'},
+			   $config{'sync_create'})."<br>\n".
+	      &ui_checkbox("sync_modify", 1, $text{'user_sync_modify'},
+			   $config{'sync_modify'})."<br>\n".
+	      &ui_checkbox("sync_delete", 1, $text{'user_sync_delete'},
+			   $config{'sync_delete'}));
 
+	print &ui_table_end();
 	print &ui_form_end([ [ "save", $text{'save'} ] ]);
 	}
 
