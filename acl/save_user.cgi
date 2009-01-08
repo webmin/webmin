@@ -355,6 +355,7 @@ if ($in{'old'} && $in{'acl_security_form'} && !$group) {
 
 # Log the event
 delete($in{'pass'});
+delete($in{'oldpass'});
 if ($in{'old'}) {
 	&webmin_log("modify", "user", $in{'old'}, \%in);
 	}
