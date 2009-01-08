@@ -21,69 +21,67 @@ foreach $g (@{$s->{'data'}}) {
 		}
 	}
 
-print "<form action=save_grant.cgi>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<input type=hidden name=table value='$in{'table'}'>\n";
-print "<input type=hidden name=ns value='$in{'ns'}'>\n";
-print "<input type=hidden name=type value='$in{'type'}'>\n";
-print "<input type=hidden name=search value='$in{'search'}'>\n";
+# Start of form block
+print &ui_form_start("save_grant.cgi", "post");
+print &ui_hidden("db", $in{'db'});
+print &ui_hidden("table", $in{'table'});
+print &ui_hidden("ns", $in{'ns'});
+print &ui_hidden("type", $in{'type'});
+print &ui_hidden("search", $in{'search'});
+print &ui_table_start($text{'grant_header'}, undef, 2);
 
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'grant_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+# Database name
+print &ui_table_row($text{'grant_db'}, "<tt>$in{'db'}</tt>");
 
-print "<tr> <td><b>$text{'grant_db'}</b></td>\n";
-print "<td><tt>$in{'db'}</tt></td> <td colspan=2 width=50%></td> </tr>\n";
+# Schema name
+print &ui_table_row($text{'grant_ns'}, "<tt>$in{'ns'}</tt>");
 
-print "<tr> <td><b>$text{'grant_ns'}</b></td>\n";
-print "<td><tt>$in{'ns'}</tt></td> <td colspan=2 width=50%></td> </tr>\n";
+# Object name
+print &ui_table_row($text{"grant_$in{'type'}"}, "<tt>$in{'table'}</tt>");
 
-print "<tr> <td><b>",$text{"grant_$in{'type'}"},"</b></td>\n";
-print "<td><tt>$in{'table'}</tt></td> <td colspan=2 width=50%></td> </tr>\n";
-
+# Get users and groups for permissions table
 $u = &execute_sql_safe($config{'basedb'}, "select usename from pg_shadow");
 @users = map { $_->[0] } @{$u->{'data'}};
 
 $r = &execute_sql_safe($config{'basedb'}, "select groname from pg_group");
 @groups = map { $_->[0] } @{$r->{'data'}};
 
-print "<tr> <td colspan=4><b>$text{'grant_users'}</b><br>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'grant_user'}</b></td> ",
-      "<td><b>$text{'grant_what'}</b></td> </tr>\n";
+# Table of users / groups and permissions
 $i = 0;
+@table = ( );
 foreach $g (@grant, [ undef, undef ]) {
-	print "<tr> <td><select name=user_$i>\n";
-	printf "<option %s value=''>&nbsp;\n",
-		defined($g->[0]) ? "" : "selected";
-	printf "<option value=public %s>%s\n",
-		defined($g->[0]) && $g->[0] eq '' ? 'selected' : '',
-		$text{'grant_public'};
-	foreach $r (@groups) {
-		printf "<option value='%s' %s>%s\n",
-			"group $r", $g->[0] eq "group $r" ? 'selected' : '',
-			&text('grant_group', $r);
-		}
-	foreach $u (@users) {
-		printf "<option %s>%s\n",
-			$g->[0] eq $u ? 'selected' : '', $u;
-		}
-	print "</select></td> <td>\n";
+	# User / group selector
+	local @row;
+	push(@row, &ui_select("user_$i", 
+			!defined($g->[0]) ? "" :
+			$g->[0] eq '' ? "public" : $g->[0],
+			[ [ '', '&nbsp;' ],
+			  [ 'public', $text{'grant_public'} ],
+			  (map { [ "group $_", &text('grant_group', $_) ] }
+			       @groups),
+			  (@users) ]));
 
+	# Permissions
 	($acl = $g->[1]) =~ s/\/.*//g;
+	$cbs = "";
 	foreach $p ( [ 'SELECT', 'r' ], [ 'UPDATE', 'w' ],
 		     [ 'INSERT', 'a' ], [ 'DELETE', 'd' ],
 		     [ 'RULE', 'R' ], [ 'REFERENCES', 'x' ],
 		     [ 'TRIGGER', 't' ] ) {
-		printf "<input type=checkbox name=what_$i value=%s %s> %s\n",
-			$p->[0], $acl =~ /$p->[1]/ ? 'checked' : '', $p->[0];
+		$cbs .= &ui_checkbox("what_$i", $p->[0], $p->[0],
+				     $acl =~ /$p->[1]/)."\n";
 		}
-	print "</td> </tr>\n";
+	push(@row, $cbs);
+	push(@table, \@row);
 	$i++;
 	}
-print "</table></td></tr>\n";
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_row($text{'grant_users'},
+	&ui_columns_table([ $text{'grant_user'}, $text{'grant_what'} ],
+			  undef,
+			  \@table));
+
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("list_grants.cgi?search=".&urlize($in{'search'}),
 		 $text{'grant_return'});
