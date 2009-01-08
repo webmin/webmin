@@ -24,122 +24,99 @@ print &ui_hidden("idx", $in{'idx'});
 print &ui_hidden("new", $in{'new'});
 print &ui_table_start($text{'host_header'}, "width=100%", 2);
 
-# XXX
+# Allowed IP address, network or connection type
 $mode = $type eq 'local' ? 3 :
 	$host->{'cidr'} ne '' ? 4 :
 	$host->{'netmask'} eq '0.0.0.0' ? 0 :
 	$host->{'netmask'} eq '255.255.255.255' ? 1 : 2;
-print "<tr> <td valign=top><b>$text{'host_address'}</b></td> <td colspan=2>\n";
-printf "<input type=radio name=addr_mode value=3 %s> %s<br>\n",
-	$mode == 3 ? 'checked' : '', $text{'host_local'};
+print &ui_table_row($text{'host_address'},
+    &ui_radio_table("addr_mode", $mode,
+	[ [ 3, $text{'host_local'} ],
+	  [ 0, $text{'host_any'} ],
+	  [ 1, $text{'host_single'},
+	    &ui_textbox("host", $mode == 1 ? $host->{'address'} : '', 20) ],
+	  [ 2, $text{'host_network'},
+	    &ui_textbox("network", $mode == 2 ? $host->{'address'} : '', 20).
+	    " ".$text{'host_netmask'}." ".
+	    &ui_textbox("netmask", $mode == 2 ? $host->{'netmask'} : '', 20) ],
+	  [ 4, $text{'host_network'},
+	    &ui_textbox("network2", $mode == 4 ? $host->{'address'} : '', 20).
+	    " ".$text{'host_cidr'}." ".
+	    &ui_textbox("cidr", $mode == 4 ? $host->{'cidr'} : '', 5) ],
+	]));
 
-printf "<input type=radio name=addr_mode value=0 %s> %s<br>\n",
-	$mode == 0 ? 'checked' : '', $text{'host_any'};
-
-printf "<input type=radio name=addr_mode value=1 %s> %s\n",
-	$mode == 1 ? 'checked' : '', $text{'host_single'};
-printf "<input name=host size=20 value='%s'><br>\n",
-	$mode == 1 ? $host->{'address'} : '';
-
-printf "<input type=radio name=addr_mode value=2 %s> %s\n",
-	$mode == 2 ? 'checked' : '', $text{'host_network'};
-printf "<input name=network size=20 value='%s'> %s\n",
-	$mode == 2 ? $host->{'address'} : '', $text{'host_netmask'};
-printf "<input name=netmask size=20 value='%s'><br>\n",
-	$mode == 2 ? $host->{'netmask'} : '';
-
-printf "<input type=radio name=addr_mode value=4 %s> %s\n",
-	$mode == 4 ? 'checked' : '', $text{'host_network'};
-printf "<input name=network2 size=20 value='%s'> %s\n",
-	$mode == 4 ? $host->{'address'} : '', $text{'host_cidr'};
-printf "<input name=cidr size=5 value='%s'></td> </tr>\n",
-	$mode == 4 ? $host->{'cidr'} : '';
-
+# Force SSL connection?
 if ($type eq "hostssl" || $v >= 7.3) {
-	print "<tr> <td></td> <td colspan=2>&nbsp;&nbsp;&nbsp;\n";
-	printf "<input type=checkbox name=ssl value=1 %s> %s</td> </tr>\n",
-		$typeq eq "hostssl" ? "checked" : "", $text{'host_ssl'};
+	print &ui_table_row($text{'host_ssl'},
+		&ui_yesno_radio("ssl", $type eq "hostssl"));
 	}
 
+# Allowed databases
 local $found = !$host->{'db'} || $host->{'db'} eq 'all' ||
-	       $host->{'db'} eq 'sameuser';
-print "<tr> <td><b>$text{'host_db'}</b></td>\n";
-print "<td colspan=2><select name=db>\n";
-printf "<option value=all %s>&lt;$text{'host_all'}&gt;\n",
-	$host->{'db'} eq 'all' ? 'selected' : '';
-printf "<option value=sameuser %s>&lt;$text{'host_same'}&gt;\n",
-	$host->{'db'} eq 'sameuser' ? 'selected' : '';
+	       $host->{'db'} eq 'sameuser' ||
+	       $host->{'db'} eq 'samegroup';
+@dbopts = ( [ "all", "&lt;$text{'host_all'}&gt;" ],
+	    [ "sameuser", "&lt;$text{'host_same'}&gt;" ] );
 if ($v >= 7.3) {
-	printf "<option value=samegroup %s>&lt;$text{'host_gsame'}&gt;\n",
-		$host->{'db'} eq 'samegroup' ? 'selected' : '';
-	$found++ if ($host->{'db'} eq 'samegroup');
+	push(@dbopts, [ "samegroup", "&lt;$text{'host_gsame'}&gt;" ]);
 	}
 foreach $d (&list_databases()) {
-	printf "<option %s>%s\n", $host->{'db'} eq $d ? 'selected' : '', $d;
+	push(@dbopts, $d);
 	$found++ if ($host->{'db'} eq $d);
 	}
-printf "<option value='' %s>%s\n",
-	$found ? "" : "selected", $text{'host_other'};
-print "</select>\n";
-printf "<input name=dbother size=20 value='%s'></td> </tr>\n",
-	$found ? "" : join(" ", split(/,/, $host->{'db'}));
+push(@dbopts, [ '', $text{'host_other'} ]);
+print &ui_table_row($text{'host_db'},
+	&ui_select("db", $found ? $host->{'db'} : '', \@dbopts)." ".
+	&ui_textbox("dbother",
+		    $found ? "" : join(" ", split(/,/, $host->{'db'})), 40));
 
+# Allowed users
 if ($v >= 7.3) {
-	print "<tr> <td><b>$text{'host_user'}</b></td> <td colspan=2>\n";
-	printf "<input type=radio name=user_def value=1 %s> %s\n",
-		$host->{'user'} eq 'all' || !$host->{'user'} ? "checked" : "",
-		$text{'host_uall'};
-	printf "<input type=radio name=user_def value=0 %s> %s\n",
-		$host->{'user'} eq 'all' || !$host->{'user'} ? "" : "checked",
-		$text{'host_usel'};
-	printf "<input name=user size=25 value='%s'></td> </tr>\n",
-		$host->{'user'} eq 'all' ? ""
-					 : join(" ", split(/,/, $host->{'user'}));
+	print &ui_table_row($text{'host_user'},
+		&ui_opt_textbox("user",
+			$host->{'user'} eq 'all' ? '' :
+			  join(" ", split(/,/, $host->{'user'})),
+			40, $text{'host_uall'}, $text{'host_usel'}));
 	}
 
-print "<tr> <td valign=top><b>$text{'host_auth'}</b></td> <td valign=top>\n";
+# Authentication type
 foreach $a ('password', 'crypt', ($v >= 7.2 ? ( 'md5' ) : ( )),
 	    'trust', 'reject', 'ident', 'krb4', 'krb5',
 	    ($v >= 7.3 ? ( 'pam' ) : ( )) ) {
-	printf "<input type=radio name=auth value=%s %s> %s\n",
-		$a, $host->{'auth'} eq $a ? 'checked' : '', $text{"host_$a"};
 	$arg = $host->{'auth'} eq $a ? $host->{'arg'} : undef;
+	$extra = undef;
 	if ($a eq 'password') {
-		print "<br>&nbsp;&nbsp;&nbsp;\n";
-		printf "<input type=checkbox name=passwordarg value=1 %s> %s\n",
-			$arg ? 'checked' : '', $text{'host_passwordarg'};
-		print "<input name=password size=20 value='$arg'>\n";
+		# Password file
+		$extra = &ui_checkbox("passwordarg", 1,
+				      $text{'host_passwordarg'}, $arg)." ".
+			 &ui_textbox("password", $arg, 40);
 		}
 	elsif ($a eq 'ident') {
-		print "<br>&nbsp;&nbsp;&nbsp;\n";
-		printf "<input type=checkbox name=identarg value=1 %s> %s\n",
-			$arg ? 'checked' : '', $text{'host_identarg'};
-		print "<input name=ident size=10 value='$arg'>\n";
+		# Ident server
+		$extra = &ui_checkbox("identarg", 1, $text{'host_identarg'},
+				      $arg)." ".
+			 &ui_textbox("ident", $arg, 20);
 		}
 	elsif ($a eq 'pam') {
-		print "<br>&nbsp;&nbsp;&nbsp;\n";
-		printf "<input type=checkbox name=pamarg value=1 %s> %s\n",
-			$arg ? 'checked' : '', $text{'host_pamarg'};
-		print "<input name=pam size=10 value='$arg'>\n";
+		# PAM service
+		$extra = &ui_checkbox("pamarg", 1, $text{'host_pamarg'},
+				      $arg)." ".
+			 &ui_textbox("pam", $arg, 20);
 		}
-	print "<br>\n";
-	if ($a eq 'reject') {
-		print "</td><td valign=top>\n";
-		}
+	push(@auths, [ $a, $text{"host_$a"}, $extra ]);
 	}
-print "</td></tr>\n";
+print &ui_table_row($text{'host_auth'},
+	&ui_radio_table("auth", $host->{'auth'}, \@auths));
 
-print "</table></td></tr></table>\n";
-print "<table width=100%><tr>\n";
+# End of the form
+print &ui_table_end();
 if ($in{'new'}) {
-	print "<td><input type=submit value='$text{'create'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<td><input type=submit value='$text{'save'}'></td>\n";
-	print "<td align=right><input type=submit name=delete ",
-	      "value='$text{'delete'}'></td>\n";
+	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'delete', $text{'delete'} ] ]);
 	}
-print "</tr></table>\n";
 
 &ui_print_footer("list_hosts.cgi", $text{'host_return'});
 

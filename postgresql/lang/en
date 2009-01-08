@@ -13,7 +13,7 @@ index_stop=Stop PostgreSQL Server
 index_stopmsg=Click this button to stop the PostgreSQL database server on your system. This will prevent any users or programs from accessing the database, including this Webmin module.
 index_dbs=PostgreSQL Databases
 index_add=Create a new database.
-index_users=User Options
+index_users=User, Groups and Permissions
 index_return=database list
 index_esql=The PostgreSQL client program $1 was not found on your system. Maybe PostgreSQL is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_ehba=The PostgreSQL host configuration file $1 was not found on your system. Maybe PostgreSQL has not been initialised, or your <a href='$2'>module configuration</a> is incorrect.
