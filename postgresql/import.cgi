@@ -98,5 +98,7 @@ print &text('import_done', scalar(@rv), $skip),"<p>\n";
 failed:
 unlink($file) if ($need_unlink);
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'});
+&ui_print_footer("exec_form.cgi?db=$in{'db'}&mode=import", $text{'exec_return'},
+		 "edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+		 "", $text{'index_return'});
 

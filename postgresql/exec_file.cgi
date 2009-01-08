@@ -36,6 +36,7 @@ print "</pre>\n";
 					    'file' => $in{'file'} });
 unlink($file) if ($in{'mode'});
 
-&ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-	"", $text{'index_return'});
+&ui_print_footer("exec_form.cgi?db=$in{'db'}&mode=file", $text{'exec_return'},
+		 "edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+		 "", $text{'index_return'});
 

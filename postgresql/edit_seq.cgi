@@ -22,7 +22,7 @@ $desc = "<tt>$in{'db'}</tt>";
 print &ui_form_start("save_seq.cgi", "post");
 print &ui_hidden("db", $in{'db'}),"\n";
 print &ui_hidden("old", $in{'seq'}),"\n";
-print &ui_table_start($text{'seq_header1'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'seq_header1'}, undef, 2);
 
 # Sequence name
 print &ui_table_row($text{'seq_name'},

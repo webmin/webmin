@@ -186,71 +186,74 @@ else {
 	&ui_print_footer("", $text{'index_return'});
 	}
 
+# Display buttons for adding tables, views and so on
 sub show_buttons
 {
-# Create table, view and sequence buttons
+print "<table><tr>\n";
 if ($access{'tables'}) {
-	print "<table width=100%> <tr>\n";
-	print "<form action=table_form.cgi>\n";
-	print "<input type=hidden name=db value='$in{'db'}'>\n";
-	print "<td width=33% nowrap><input type=submit value='$text{'dbase_add'}'>\n";
-	print $text{'dbase_fields'},"\n";
-	print "<input name=fields size=4 value='4'></td>\n";
-	print "</form>\n";
+	# Add a new table
+	print &ui_form_start("table_form.cgi");
+	print &ui_hidden("db", $in{'db'});
+	print "<td>",&ui_submit($text{'dbase_add'})." ".$text{'dbase_fields'}.
+		     " ".&ui_textbox("fields", 4, 4),"</td>\n";
+	print &ui_form_end();
+	$form++;
 
+	# Add a new view
 	if (&supports_views() && $access{'views'}) {
-		print "<form action=edit_view.cgi>\n";
-		print "<input type=hidden name=db value='$in{'db'}'>\n";
-		print "<input type=hidden name=new value=1>\n";
-		print "<td width=33% nowrap align=center><input type=submit value='$text{'dbase_vadd'}'></td>\n";
-		print "</form>\n";
+		print &ui_form_start("edit_view.cgi");
+		print &ui_hidden("db", $in{'db'});
+		print &ui_hidden("new", 1);
+		print "<td>",&ui_submit($text{'dbase_vadd'}),"</td>\n";
+		print &ui_form_end();
+		$form++;
 		}
 
+	# Add a new sequence
 	if (&supports_sequences() && $access{'seqs'}) {
-		print "<form action=edit_seq.cgi>\n";
-		print "<input type=hidden name=db value='$in{'db'}'>\n";
-		print "<input type=hidden name=new value=1>\n";
-		print "<td width=33% nowrap align=right><input type=submit value='$text{'dbase_sadd'}'></td>\n";
-		print "</form>\n";
+		print &ui_form_start("edit_seq.cgi");
+		print &ui_hidden("db", $in{'db'});
+		print &ui_hidden("new", 1);
+		print "<td>",&ui_submit($text{'dbase_sadd'}),"</td>\n";
+		print &ui_form_end();
+		$form++;
 		}
-
-	print "</tr></table>\n";
 	}
-print "<table width=100%> <tr>\n";
 
 # Drop database button
 if ($access{'delete'}) {
-	print "<form action=drop_dbase.cgi>\n";
-	print "<input type=hidden name=db value='$in{'db'}'>\n";
-	print "<td align=left valign=top width=20%><input type=submit ",
-	      "value='$text{'dbase_drop'}'></td></form>\n";
-	}
-else {
-	print "<td align=left valign=top width=20%></td>\n";
+	print &ui_form_start("drop_dbase.cgi");
+	print &ui_hidden("db", $in{'db'});
+	print "<td>",&ui_submit($text{'dbase_drop'}),"</td>\n";
+	print &ui_form_end();
+	$form++;
 	}
 
 # Backup and restore buttons
-if ( &get_postgresql_version() >= 7.2 ) {
+if (&get_postgresql_version() >= 7.2) {
 	if ($access{'backup'}) {
-	    print "<form action=backup_form.cgi>\n" ;
-	    print "<input type=hidden name=db value='$in{'db'}'>\n" ;
-	    print "<td align=right valign=top width=20%><input type=submit " ,
-		  "value='$text{'dbase_bkup'}'></td></form>\n"  ;
-	}
-
+		print &ui_form_start("backup_form.cgi");
+		print &ui_hidden("db", $in{'db'});
+		print "<td>",&ui_submit($text{'dbase_bkup'}),"</td>\n";
+		print &ui_form_end();
+		$form++;
+		}
 	if ($access{'restore'}) {
-	    print "<form action=restore_form.cgi>\n" ;
-	    print "<input type=hidden name=db value='$in{'db'}'>\n" ;
-	    print "<td align=left valign=top width=20%><input type=submit " ,
-		  "value='$text{'dbase_rstr'}'></td></form>\n" ;
+		print &ui_form_start("restore_form.cgi");
+		print &ui_hidden("db", $in{'db'});
+		print "<td>",&ui_submit($text{'dbase_rstr'}),"</td>\n";
+		print &ui_form_end();
+		$form++;
+		}
 	}
-}
 
-print "<form action=exec_form.cgi>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<td align=right valign=top width=20%><input type=submit ",
-      "value='$text{'dbase_exec'}'></td>\n";
-print "</form>\n";
-print "</tr> </table></form>\n";
+# Execute SQL form
+print &ui_form_start("exec_form.cgi");
+print &ui_hidden("db", $in{'db'});
+print "<td>",&ui_submit($text{'dbase_exec'}),"</td>\n";
+print &ui_form_end();
+$form++;
+
+print "</tr></table>\n";
 }
 

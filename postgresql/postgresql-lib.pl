@@ -28,6 +28,7 @@ if ($module_info{'usermin'}) {
 		    'tables' => 1,
 		    'cmds' => 1, );
 	$max_dbs = $userconfig{'max_dbs'};
+	$commands_file = "$user_module_config_directory/commands";
 	%displayconfig = %userconfig;
 	}
 else {
@@ -44,6 +45,7 @@ else {
 		$postgres_sameunix = $config{'sameunix'};
 		}
 	$max_dbs = $config{'max_dbs'};
+	$commands_file = "$module_config_directory/commands";
 	%displayconfig = %config;
 	}
 foreach my $hba (split(/\t+/, $config{'hba_conf'})) {
@@ -774,6 +776,9 @@ local $cmd = &quote_path($config{'psql'})." -f ".&quote_path($file).
 	     ($config{'host'} ? " -h $config{'host'}" : "").
 	     ($config{'port'} ? " -h $config{'port'}" : "").
 	     " $db";
+if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
+	$cmd = &command_as_user($postgres_login, 0, $cmd);
+	}
 $cmd = &command_with_login($cmd, $user, $pass);
 local $out = &backquote_logged("$cmd 2>&1");
 return ($out =~ /ERROR/i ? 1 : 0, $out);

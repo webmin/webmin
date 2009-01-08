@@ -124,7 +124,9 @@ field_ekey=Fields that allow nulls cannot be part of the primary key
 
 exec_title=Execute SQL
 exec_header=Enter SQL command to execute on database $1 ..
+exec_old=Or select a previous SQL command :
 exec_exec=Execute
+exec_clear=Clear History
 exec_err=Failed to execute SQL
 exec_out=Output from SQL command $1 ..
 exec_none=No data returned
@@ -139,11 +141,16 @@ exec_noout=No output generated
 exec_import=Table to import data into
 exec_header3=Select a text data file to import into PostgreSQL database $1 ..
 exec_header4=This file must contain one database record per line, with the fields in either tab separated or CSV format.
+exec_importmode=CSV file source
 exec_delete=Delete data in table first?
 exec_filename=From filename
 exec_ignore=Ignore duplicate rows?
 exec_edit=Edit Previous
 exec_format=File format
+exec_tabexec=Execute SQL
+exec_tabfile=Run SQL from file
+exec_tabimport=Import text file
+exec_return=execute SQL form
 
 stop_err=Failed to stop database server
 stop_epidfile=Failed to open PID file $1

@@ -7,44 +7,36 @@ require './postgresql-lib.pl';
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 &ui_print_header(undef, $text{'table_title2'}, "", "table_form");
 
-print "<form action=create_table.cgi method=post>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'table_header2'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+# Start of form block
+print &ui_form_start("create_table.cgi", "post");
+print &ui_hidden("db", $in{'db'});
+print &ui_table_start($text{'table_header2'}, undef, 2);
 
-print "<tr> <td><b>$text{'table_name'}</b></td>\n";
-print "<td><input name=name size=30></td> </tr>\n";
+# Table name
+print &ui_table_row($text{'table_name'},
+	&ui_textbox("name", undef, 40));
 
-print "<tr> <td valign=top><b>$text{'table_initial'}</b></td>\n";
-print "<td><table border>\n";
-print "<tr $tb> <td><b>$text{'field_name'}</b></td> ",
-      "<td><b>$text{'field_type'}</b></td> ",
-      "<td><b>$text{'field_size'}</b></td> ",
-      "<td><b>$text{'table_opts'}</b></td> </tr>\n";
+# Initial fields
 @type_list = &list_types();
 for($i=0; $i<(int($in{'fields'}) || 4); $i++) {
-	print "<tr $cb>\n";
-	print "<td><input name=field_$i size=20></td>\n";
-	print "<td><select name=type_$i>\n";
-	print "<option selected>\n";
-	foreach $t (@type_list) {
-		print "<option>$t\n";
-		}
-	print "</select></td>\n";
-	print "<td><input name=size_$i size=10></td> <td>\n";
-	print "<input name=arr_$i type=checkbox value=1> $text{'table_arr'}\n";
-	print "<input name=null_$i type=checkbox value=1 checked> $text{'field_null'}\n";
-	print "<input name=key_$i type=checkbox value=1> $text{'field_key'}\n";
-	print "<input name=uniq_$i type=checkbox value=1> $text{'field_uniq'}\n";
-	print "</td> </tr>\n";
+	push(@table, [
+		&ui_textbox("field_$i", undef, 30),
+		&ui_select("type_$i", undef,
+			   [ [ undef, '&nbsp;' ], @type_list ]),
+		&ui_textbox("size_$i", undef, 10),
+		&ui_checkbox("arr_$i", 1, $text{'table_arr'}, 0)." ".
+		&ui_checkbox("null_$i", 1, $text{'field_null'}, 1)." ".
+		&ui_checkbox("key_$i", 1, $text{'field_key'}, 0)." ".
+		&ui_checkbox("uniq_$i", 1, $text{'field_uniq'}, 0),
+		]);
 	}
-print "</table></td> </tr>\n";
+print &ui_table_row($text{'table_initial'},
+	&ui_columns_table([ $text{'field_name'}, $text{'field_type'},
+			    $text{'field_size'}, $text{'table_opts'} ],
+			  undef, \@table));
 
-print "<tr> <td colspan=2 align=right><input type=submit ",
-      "value='$text{'create'}'></td> </tr>\n";
-
-print "</table></td></tr></table></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
 &ui_print_footer("edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'});
 

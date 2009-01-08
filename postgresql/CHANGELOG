@@ -66,3 +66,6 @@ Fixed a bug that prevented 'Jump to row' from working properly.
 Added a Module Config option to show databases and tables using just their names.
 ---- Changes since 1.410 ----
 Improve support for PostgreSQL 8.3 on Ubuntu 8.04.
+---- Changes since 1.440 ----
+Re-wrote the entire user interface to use Webmin's new UI library, for a more consistent and themable look.
+Added a history of previous commands to the Execute SQL page.
