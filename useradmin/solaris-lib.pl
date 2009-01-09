@@ -60,7 +60,7 @@ return @rv;
 }
 
 # use_md5()
-# Returns 1 if MD5 encryption should be used
+# Returns 1 if MD5 encryption should be used, 2 if blowfish
 sub use_md5
 {
 local $lref = &read_file_lines("/etc/security/policy.conf");
@@ -70,6 +70,7 @@ foreach $l (@$lref) {
 	    $l =~ /^CRYPT_DEFAULT\s*=\s*'([^']*)'/ ||
 	    $l =~ /^CRYPT_DEFAULT\s*=\s*(\S+)/) {
 		return 1 if ($1 eq "1");
+		return 2 if ($1 eq "2a");
 		}
 	}
 return 0;

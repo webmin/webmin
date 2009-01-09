@@ -144,6 +144,35 @@ return "{SHA}$sh=";
 sub encrypt_sha1_hash
 {
 local ($pass, $salt) = @_;
+# XXX not done yet??
+}
+
+# check_blowfish()
+# Returns an missing Perl module if blowfish is not available, undef if OK
+sub check_blowfish
+{
+eval "use Crypt::Eksblowfish::Bcrypt";
+return $@ ? "Crypt::Eksblowfish::Bcrypt" : undef;
+}
+
+# encrypt_blowfish(password, [salt])
+# Returns a string encrypted in blowfish format, suitable for /etc/shadow
+sub encrypt_blowfish
+{
+local ($passwd, $salt) = @_;
+local ($plain, $base64);
+eval "use Crypt::Eksblowfish::Bcrypt";
+if (!$salt) {
+	# Generate a 22-character base-64 format salt
+	&seed_random();
+	while(length($base64) < 22) {
+		$plain .= chr(int(rand()*96)+32);
+		$base64 = Crypt::Eksblowfish::Bcrypt::en_base64($plain);
+		}
+	$base64 = substr($base64, 0, 22);
+	$salt = '$2$'.'08'.'$'.$base64;
+	}
+return Crypt::Eksblowfish::Bcrypt::bcrypt($passwd, $salt);
 }
 
 1;

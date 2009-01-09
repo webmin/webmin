@@ -1599,7 +1599,7 @@ Encrypts a password using the encryption format configured for this system
 sub encrypt_password
 {
 local ($pass, $salt) = @_;
-local $md5 = 0;
+local $format = 0;
 if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 	# New OSX directory service uses SHA1 for passwords!
 	$salt ||= chr(int(rand(26))+65).chr(int(rand(26))+65). 
@@ -1625,31 +1625,47 @@ if ($gconfig{'os_type'} eq 'macos' && &passfiles_type() == 7) {
 	}
 elsif ($config{'md5'} == 2) {
 	# Always use MD5
-	$md5 = 1;
+	$format = 1;
+	}
+elsif ($config{'md5'} == 3) {
+	# Always use blowfish
+	$format = 2;
 	}
 elsif ($config{'md5'} == 1 && !$config{'skip_md5'}) {
 	# Up to system
-	$md5 = &use_md5() if (defined(&use_md5));
+	$format = &use_md5() if (defined(&use_md5));
 	}
 if ($no_encrypt_password) {
 	# Some operating systems don't do any encryption!
 	return $pass;
 	}
-elsif ($md5) {
+elsif ($format == 1) {
 	# MD5 encryption is selected .. use it if possible
 	local $err = &check_md5();
 	if ($err) {
-		&header($text{'error'}, "");
-		print "<hr><p>\n";
+		&ui_print_header(undef, $text{'error'}, "");
 		print &text('usave_edigestmd5',
 		    "/config.cgi?$module_name",
-		    "/cpan/download.cgi?source=3&cpan=$err"),
+		    "/cpan/download.cgi?source=3&cpan=$err", $err),
 		    "<p>\n";
-		print "<hr>\n";
-		&footer("", $text{'index_return'});
+		&ui_print_footer("", $text{'index_return'});
 		exit;
 		}
 	return &encrypt_md5($pass, $salt);
+	}
+elsif ($format == 2) {
+	# Blowfish is selected .. use it if possible
+	local $err = &check_blowfish();
+	if ($err) {
+		&ui_print_header(undef, $text{'error'}, "");
+		print &text('usave_edigestblowfish',
+		    "/config.cgi?$module_name",
+		    "/cpan/download.cgi?source=3&cpan=$err", $err),
+		    "<p>\n";
+		&ui_print_footer("", $text{'index_return'});
+		exit;
+		}
+	return &encrypt_blowfish($pass, $salt);
 	}
 else {
 	# Just do old-style crypt() DES encryption
