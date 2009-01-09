@@ -3227,11 +3227,12 @@ return %rv;
 =head2 save_module_acl(&acl, [user], [module])
 
 Updates the acl hash for some user and module. The parameters are :
-XXX
 
-acl - Hash reference for the new access control options.
-user - User to update, defaulting to the current user.
-module - Module to update, defaulting to the caller.
+=item acl - Hash reference for the new access control options.
+
+=item user - User to update, defaulting to the current user.
+
+=item module - Module to update, defaulting to the caller.
 
 =cut
 sub save_module_acl
@@ -3263,9 +3264,12 @@ if (!-d "$config_directory/$m") {
 =head2 save_group_module_acl(&acl, group, [module])
 
 Updates the acl hash for some group and module. The parameters are :
-acl - Hash reference for the new access control options.
-group - Group name to update.
-module - Module to update, defaulting to the caller.
+
+=item acl - Hash reference for the new access control options.
+
+=item group - Group name to update.
+
+=item module - Module to update, defaulting to the caller.
 
 =cut
 sub save_group_module_acl
@@ -3301,20 +3305,32 @@ indirectly via a per-module lib.pl file. It performs a number of initialization
 and housekeeping tasks, such as working out the module name, checking that the
 current user has access to the module, and populating global variables. Some
 of the variables set include :
-%config - Per-module configuration
-%gconfig - Global configuration
-$tb - Background for table headers
-$cb - Background for table bodies
-$scriptname - Base name of the current perl script
-$module_name - The name of the current module
-$module_config_directory - The config directory for this module
-$module_config_file - The config file for this module
-$webmin_logfile - The detailed logfile for webmin
-$remote_user - The actual username used to login to webmin
-$base_remote_user - The username whose permissions are in effect
-$current_theme - The theme currently in use
-$root_directory - The first root directory of this webmin install
-@root_directories - All root directories for this webmin install
+
+=item %config - Per-module configuration.
+
+=item %gconfig - Global configuration.
+
+=item $scriptname - Base name of the current perl script.
+
+=item $module_name - The name of the current module.
+
+=item $module_config_directory - The config directory for this module.
+
+=item $module_config_file - The config file for this module.
+
+=item $module_root_directory - This module's code directory.
+
+=item $webmin_logfile - The detailed logfile for webmin.
+
+=item $remote_user - The actual username used to login to webmin.
+
+=item $base_remote_user - The username whose permissions are in effect.
+
+=item $current_theme - The theme currently in use.
+
+=item $root_directory - The first root directory of this webmin install.
+
+=item @root_directories - All root directories for this webmin install.
 
 =cut
 sub init_config
@@ -3822,11 +3838,16 @@ sub decode_base64
 =head2 get_module_info(module, [noclone], [forcache])
 
 Returns a hash containg details of the given module. Some useful keys are :
-dir - The module directory, like sendmail.
-desc - Human-readable description, in the current users' language.
-version - Optional module version number.
-os_support - List of supported operating systems and versions.
-category - Category on Webmin's left menu, like net.
+
+=item dir - The module directory, like sendmail.
+
+=item desc - Human-readable description, in the current users' language.
+
+=item version - Optional module version number.
+
+=item os_support - List of supported operating systems and versions.
+
+=item category - Category on Webmin's left menu, like net.
 
 =cut
 sub get_module_info
@@ -3971,10 +3992,14 @@ return @rv;
 
 Returns a hash containing a theme's details, taken from it's theme.info file.
 Some useful keys are :
-dir - The theme directory, like blue-theme.
-desc - Human-readable description, in the current users' language.
-version - Optional module version number.
-os_support - List of supported operating systems and versions.
+
+=item dir - The theme directory, like blue-theme.
+
+=item desc - Human-readable description, in the current users' language.
+
+=item version - Optional module version number.
+
+=item os_support - List of supported operating systems and versions.
 
 =cut
 sub get_theme_info
@@ -3994,11 +4019,16 @@ return %rv;
 
 Returns an array of supported languages, taken from Webmin's os_list.txt file.
 Each is a hash reference with the following keys :
-lang - The short language code, like es for Spanish.
-desc - A human-readable description, in English.
-charset - An optional character set to use when displaying the language.
-titles - Set to 1 only if Webmin has title images for the language.
-fallback - The code for another language to use if a string does not exist in this one. For all languages, English is the ultimate fallback.
+
+=item lang - The short language code, like es for Spanish.
+
+=item desc - A human-readable description, in English.
+
+=item charset - An optional character set to use when displaying the language.
+
+=item titles - Set to 1 only if Webmin has title images for the language.
+
+=item fallback - The code for another language to use if a string does not exist in this one. For all languages, English is the ultimate fallback.
 
 =cut
 sub list_languages
@@ -4029,8 +4059,10 @@ return @main::list_languages_cache;
 
 Similar to Webmin's read_file function, but handles files containing shell
 environment variables formatted like :
-export FOO=bar
-SMEG="spod"
+
+  export FOO=bar
+  SMEG="spod"
+
 The file parameter is the full path to the file to read, and hash a Perl hash
 ref to read names and values into.
 
@@ -4055,9 +4087,12 @@ return 1;
 
 Writes out a hash to a file in name='value' format, suitable for use in a shell
 script. The parameters are :
-file - Full path for a file to write to
-hash - Hash reference of names and values to write.
-export - If set to 1, preceed each variable setting with the word 'export'.
+
+=item file - Full path for a file to write to
+
+=item hash - Hash reference of names and values to write.
+
+=item export - If set to 1, preceed each variable setting with the word 'export'.
 
 =cut
 sub write_env_file
@@ -4082,9 +4117,12 @@ foreach $k (keys %{$_[1]}) {
 Lock a file for exclusive access. If the file is already locked, spin
 until it is freed. Uses a .lock file, which is not 100% reliable, but seems
 to work OK. The parameters are :
-filename - File or directory to lock.
-readonly - If set, the lock is for reading the file only. More than one script can have a readonly lock, but only one can hold a write lock.
-forcefile - Force the file to be considered as a real file and not a symlink for Webmin actions logging purposes.
+
+=item filename - File or directory to lock.
+
+=item readonly - If set, the lock is for reading the file only. More than one script can have a readonly lock, but only one can hold a write lock.
+
+=item forcefile - Force the file to be considered as a real file and not a symlink for Webmin actions logging purposes.
 
 =cut
 sub lock_file
@@ -4310,14 +4348,22 @@ else {
 Log some action taken by a user. This is typically called at the end of a
 script, once all file changes are complete and all commands run. The 
 parameters are :
-action - A short code for the action being performed, like 'create'.
-type - A code for the type of object the action is performed to, like 'user'.
-object - A short name for the object, like 'joe' if the Unix user 'joe' was just created.
-params - A hash ref of additional information about the action.
-module - Name of the module in which the action was performed, which defaults to the current module.
-host - Remote host on which the action was performed. You should never need to set this (or the following two parameters), as they are used only for remote Webmin logging.
-script-on-host - Script name like create_user.cgi on the host the action was performed on.
-client-ip - IP address of the browser that performed the action.
+
+=item action - A short code for the action being performed, like 'create'.
+
+=item type - A code for the type of object the action is performed to, like 'user'.
+
+=item object - A short name for the object, like 'joe' if the Unix user 'joe' was just created.
+
+=item params - A hash ref of additional information about the action.
+
+=item module - Name of the module in which the action was performed, which defaults to the current module.
+
+=item host - Remote host on which the action was performed. You should never need to set this (or the following two parameters), as they are used only for remote Webmin logging.
+
+=item script-on-host - Script name like create_user.cgi on the host the action was performed on.
+
+=item client-ip - IP address of the browser that performed the action.
 
 =cut
 sub webmin_log
@@ -4851,10 +4897,14 @@ return 1;
 =head2 set_ownership_permissions(user, group, perms, file, ...)
 
 Sets the user, group owner and permissions on some files. The parameters are :
-user - UID or username to change the file owner to. If undef, then the owner is not changed.
-group - GID or group name to change the file group to. If undef, then the group is not changed.
-perms - Octal permissions set to set on the file. If undef, they are left alone.
-file - One or more files or directories to modify.
+
+=item user - UID or username to change the file owner to. If undef, then the owner is not changed.
+
+=item group - GID or group name to change the file group to. If undef, then the group is set to the user's primary group.
+
+=item perms - Octal permissions set to set on the file. If undef, they are left alone.
+
+=item file - One or more files or directories to modify.
 
 =cut
 sub set_ownership_permissions
@@ -5476,7 +5526,23 @@ else {
 Executes some function in parallel on multiple servers at once. Fills in
 the returns and errors arrays respectively. If the module and library
 parameters are given, that module is remotely required on the server first,
-to check if it is connectable.
+to check if it is connectable. The parameters are :
+
+=item servers - A list of Webmin system hash references.
+
+=item parallel - Number of parallel operations to perform.
+
+=item function - Reference to function to call for each system.
+
+=item args - Additional parameters to the function.
+
+=item returns - Array ref to place return values into, in same order as servers.
+
+=item errors - Array ref to place error messages into.
+
+=item module - Optional module to require on the remote system first.
+
+=item library - Optional library to require in the module.
 
 =cut
 sub remote_multi_callback
@@ -5658,9 +5724,12 @@ return @rv;
 
 Returns HTML for a button that pops up a data chooser window. The parameters
 are :
-dayfield - Name of the text field to place the day of the month into.
-monthfield - Name of the select field to select the month of the year in, indexed from 1.
-yearfield - Name of the text field to place the year into.
+
+=item dayfield - Name of the text field to place the day of the month into.
+
+=item monthfield - Name of the select field to select the month of the year in, indexed from 1.
+
+=item yearfield - Name of the text field to place the year into.
 
 =cut
 sub date_chooser_button
@@ -5717,7 +5786,7 @@ if (!$main::done_seed_random) {
 =head2 disk_usage_kb(directory)
 
 Returns the number of kB used by some directory and all subdirs. Implemented
-by calling the du -k command.
+by calling the C<du -k> command.
 
 =cut
 sub disk_usage_kb
@@ -5794,12 +5863,18 @@ Opens a connection to some HTTP server, maybe through a proxy, and returns
 a handle object. The handle can then be used to send additional headers
 and read back a response. If anything goes wrong, returns an error string.
 The parameters are :
-host - Hostname or IP address of the webserver to connect to.
-port - HTTP port number to connect to.
-ssl - Set to 1 to connect in SSL mode.
-method - HTTP method, like GET or POST.
-page - Page to request on the webserver, like /foo/index.html
-headers - Array ref of additional HTTP headers, each of which is a 2-element array ref.
+
+=item host - Hostname or IP address of the webserver to connect to.
+
+=item port - HTTP port number to connect to.
+
+=item ssl - Set to 1 to connect in SSL mode.
+
+=item method - HTTP method, like GET or POST.
+
+=item page - Page to request on the webserver, like /foo/index.html
+
+=item headers - Array ref of additional HTTP headers, each of which is a 2-element array ref.
 
 =cut
 sub make_http_connection
@@ -6728,7 +6803,8 @@ if (!$ucd) {
 =head2 nice_size(bytes, [min])
 
 Converts a number of bytes into a number followed by a suffix like GB, MB
-or kB. Rounding is to two decimal digits.
+or kB. Rounding is to two decimal digits. The optional min parameter sets the
+smallest units to use - so you could pass 1024*1024 to never show bytes or kB.
 
 =cut
 sub nice_size
@@ -6799,9 +6875,12 @@ return undef;
 
 Returns HTML for a 'Select all' link that uses Javascript to select
 multiple checkboxes with the same name. The parameters are :
-field - Name of the checkbox inputs.
-form - Index of the form on the page.
-text - Message for the link, defaulting to 'Select all'.
+
+=item field - Name of the checkbox inputs.
+
+=item form - Index of the form on the page.
+
+=item text - Message for the link, defaulting to 'Select all'.
 
 =cut
 sub select_all_link
@@ -6817,9 +6896,12 @@ return "<a class='select_all' href='#' onClick='document.forms[$form].$field.che
 
 Returns HTML for an 'Invert selection' link that uses Javascript to invert the
 selection on multiple checkboxes with the same name. The parameters are :
-field - Name of the checkbox inputs.
-form - Index of the form on the page.
-text - Message for the link, defaulting to 'Invert selection'.
+
+=item field - Name of the checkbox inputs.
+
+=item form - Index of the form on the page.
+
+=item text - Message for the link, defaulting to 'Invert selection'.
 
 =cut
 sub select_invert_link
@@ -6835,10 +6917,14 @@ return "<a class='select_invert' href='#' onClick='document.forms[$form].$field.
 
 Returns HTML for a link that uses Javascript to select rows with particular
 values for their checkboxes. The parameters are :
-field - Name of the checkbox inputs.
-form - Index of the form on the page.
-text - Message for the link, de
-rows - Reference to an array of 1 or 0 values, indicating which rows to check.
+
+=item field - Name of the checkbox inputs.
+
+=item form - Index of the form on the page.
+
+=item text - Message for the link, de
+
+=item rows - Reference to an array of 1 or 0 values, indicating which rows to check.
 
 =cut
 sub select_rows_link
@@ -6914,9 +7000,12 @@ return "$root_directories[0]/$d";
 
 Returns a list of all known MIME types and their extensions, as a list of hash
 references with keys :
-type - The MIME type, like text/plain.
-exts - A list of extensions, like .doc and .avi.
-desc - A human-readable description for the MIME type.
+
+=item type - The MIME type, like text/plain.
+
+=item exts - A list of extensions, like .doc and .avi.
+
+=item desc - A human-readable description for the MIME type.
 
 =cut
 sub list_mime_types
@@ -6968,13 +7057,17 @@ return @_ > 1 ? $_[1] : "application/octet-stream";
 Opens a file handle for writing to a temporary file, which will only be
 renamed over the real file when the handle is closed. This allows critical
 files like /etc/shadow to be updated safely, even if writing fails part way
-through due to lack of disk space.
-The parameters are :
-handle - File handle to open, as you would use in Perl's open function.
-file - Full path to the file to write, prefixed by > or >> to indicate over-writing or appending. In append mode, no temp file is used.
-no-error - By default, this function will call error if the open fails. Setting this parameter to 1 causes it to return 0 on failure, and set $! with the error code.
-no-tempfile - If set to 1, writing will be direct to the file instead of using a temporary file.
-safe - Indicates to users in read-only mode that this write is safe and non-destructive.
+through due to lack of disk space. The parameters are :
+
+=item handle - File handle to open, as you would use in Perl's open function.
+
+=item file - Full path to the file to write, prefixed by > or >> to indicate over-writing or appending. In append mode, no temp file is used.
+
+=item no-error - By default, this function will call error if the open fails. Setting this parameter to 1 causes it to return 0 on failure, and set $! with the error code.
+
+=item no-tempfile - If set to 1, writing will be direct to the file instead of using a temporary file.
+
+=item safe - Indicates to users in read-only mode that this write is safe and non-destructive.
 
 =cut
 sub open_tempfile
@@ -7144,7 +7237,9 @@ else {
 
 =head2 print_tempfile(handle, text, ...)
 
-Like the normal print function, but calls &error on failure
+Like the normal print function, but calls &error on failure. Useful when
+combined with open_tempfile, to ensure that a criticial file is never
+only partially written.
 
 =cut
 sub print_tempfile
@@ -7412,12 +7507,18 @@ return $access{'rbac'} ? 1 : 0;
 
 Runs some command, possibly feeding it input and capturing output to the
 give files or scalar references. The parameters are :
-command - Full command to run, possibly including shell meta-characters.
-stdin - File to read input from, or a scalar ref containing input, or undef if no input should be given.
-stdout - File to write output to, or a scalar ref into which output should be placed, or undef if the output is to be discarded.
-stderr - File to write error output to, or a scalar ref into which error output should be placed, or undef if the error output is to be discarded.
-translate-files - Set to 1 to apply filename translation to any filenames. Usually has no effect.
-safe - Set to 1 if this command is safe and does not modify the state of the system.
+
+=item command - Full command to run, possibly including shell meta-characters.
+
+=item stdin - File to read input from, or a scalar ref containing input, or undef if no input should be given.
+
+=item stdout - File to write output to, or a scalar ref into which output should be placed, or undef if the output is to be discarded.
+
+=item stderr - File to write error output to, or a scalar ref into which error output should be placed, or undef if the error output is to be discarded.
+
+=item translate-files - Set to 1 to apply filename translation to any filenames. Usually has no effect.
+
+=item safe - Set to 1 if this command is safe and does not modify the state of the system.
 
 =cut
 sub execute_command
@@ -8105,9 +8206,7 @@ else {
 
 =head2 split_quoted_string(string)
 
-Given a string like :
-foo "bar baz" quux
-returns the array :
+Given a string like I<foo "bar baz" quux>, returns the array :
 foo, bar baz, quux
 
 =cut
