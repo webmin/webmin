@@ -24,11 +24,16 @@ use vars qw($user_risk_level $loaded_theme_library $wait_for_input
 
 Fill the given hash reference with name=value pairs from a file. The required
 parameters are :
-file - The file to head, which must be text with each line like name=value
-hash - The hash reference to add values read from the file to.
-order - If given, an array reference to add names to in the order they were read
-lowercase - If set to 1, names are converted to lower case
-split-char - If set, names and values are split on this character instead of =
+
+=item file - The file to head, which must be text with each line like name=value
+
+=item hash - The hash reference to add values read from the file to.
+
+=item order - If given, an array reference to add names to in the order they were read
+
+=item lowercase - If set to 1, names are converted to lower case
+
+=item split-char - If set, names and values are split on this character instead of =
 
 =cut
 sub read_file
@@ -95,9 +100,12 @@ else {
 =head2 write_file(file, &hash, [join-char])
 
 Write out the contents of a hash as name=value lines. The parameters are :
-file - Full path to write to
-hash - A hash reference containing names and values to output
-join-char - If given, names and values are separated by this instead of =
+
+=item file - Full path to write to
+
+=item hash - A hash reference containing names and values to output
+
+=item join-char - If given, names and values are separated by this instead of =
 
 =cut
 sub write_file
@@ -295,7 +303,7 @@ syswrite $fh, $str, length($str);
 
 =head2 check_ipaddress(ip)
 
-Check if some IPv4 address is properly formatted, returning 1 if so or 0 if not
+Check if some IPv4 address is properly formatted, returning 1 if so or 0 if not.
 
 =cut
 sub check_ipaddress
@@ -349,14 +357,22 @@ sub check_ip6address
 =head2 generate_icon(image, title, link, [href], [width], [height], [before-title], [after-title])
 
 Prints HTML for an icon image. The parameters are :
-image - URL for the image, like images/foo.gif
-title - Text to appear under the icon
-link - Optional destination for the icon's link
-href - Other HTML attributes to be added to the <a href> for the link
-width - Optional width of the icon
-height - Optional height of the icon
-before-title - HTML to appear before the title link, but which is not actually in the link
-after-title - HTML to appear after the title link, but which is not actually in the link
+
+=item image - URL for the image, like images/foo.gif
+
+=item title - Text to appear under the icon
+
+=item link - Optional destination for the icon's link
+
+=item href - Other HTML attributes to be added to the <a href> for the link
+
+=item width - Optional width of the icon
+
+=item height - Optional height of the icon
+
+=item before-title - HTML to appear before the title link, but which is not actually in the link
+
+=item after-title - HTML to appear after the title link, but which is not actually in the link
 
 =cut
 sub generate_icon
@@ -450,9 +466,12 @@ return 1;
 
 Read data submitted via a POST request using the multipart/form-data coding,
 and store it in the global %in hash. The optional parameters are :
-maximum - If the number of bytes of input exceeds this number, stop reading and call error.
-cbfunc - A function reference to call after reading each block of data.
-cbargs - Additional parameters to the callback function.
+
+=item maximum - If the number of bytes of input exceeds this number, stop reading and call error.
+
+=item cbfunc - A function reference to call after reading each block of data.
+
+=item cbargs - Additional parameters to the callback function.
 
 =cut
 sub ReadParseMime
@@ -544,8 +563,10 @@ while(1) {
 Fills the given hash reference with CGI parameters, or uses the global hash
 %in if none is given. Also sets the global variables $in and @in. The other
 parameters are :
-method - For use of this HTTP method, such as GET
-noplus - Don't convert + in parameters to spaces.
+
+=item method - For use of this HTTP method, such as GET
+
+=item noplus - Don't convert + in parameters to spaces.
 
 =cut
 sub ReadParse
@@ -703,16 +724,26 @@ else {
 
 Outputs a Webmin HTML page header with a title, including HTTP headers. The
 parameters are :
-title - The text to show at the top of the page
-image - An image to show instead of the title text. This is typically left blank.
-help - If set, this is the name of a help page that will be linked to in the title.
-config - If set to 1, the title will contain a link to the module's config page.
-nomodule - If set to 1, there will be no link in the title section to the module's index.
-nowebmin - If set to 1, there will be no link in the title section to the Webmin index.
-rightside - HTML to be shown on the right-hand side of the title. Can contain multiple lines, separated by <br>. Typically this is used for links to stop, start or restart servers.
-head-stuff - HTML to be included in the <head> section of the page.
-body-stuff - HTML attributes to be include in the <body> tag.
-below - HTML to be displayed below the title. Typically this is used for application or server version information.
+
+=item title - The text to show at the top of the page
+
+=item image - An image to show instead of the title text. This is typically left blank.
+
+=item help - If set, this is the name of a help page that will be linked to in the title.
+
+=item config - If set to 1, the title will contain a link to the module's config page.
+
+=item nomodule - If set to 1, there will be no link in the title section to the module's index.
+
+=item nowebmin - If set to 1, there will be no link in the title section to the Webmin index.
+
+=item rightside - HTML to be shown on the right-hand side of the title. Can contain multiple lines, separated by <br>. Typically this is used for links to stop, start or restart servers.
+
+=item head-stuff - HTML to be included in the <head> section of the page.
+
+=item body-stuff - HTML attributes to be include in the <body> tag.
+
+=item below - HTML to be displayed below the title. Typically this is used for application or server version information.
 
 =cut
 sub header
@@ -866,7 +897,7 @@ if (@_ > 1) {
 
 =head2 get_html_title(title)
 
-Returns the full string to appear in the HTML <title> block
+Returns the full string to appear in the HTML <title> block.
 
 =cut
 sub get_html_title
@@ -898,7 +929,7 @@ return $title;
 
 =head2 get_html_framed_title
 
-Returns the title text for a framed theme main page
+Returns the title text for a framed theme main page.
 
 =cut
 sub get_html_framed_title
@@ -974,9 +1005,12 @@ else {
 Outputs a page header, suitable for a popup window. If no title is given,
 absolutely no decorations are output. Also useful in framesets. The parameters
 are :
-title - Title text for the popup window.
-head-stuff - HTML to appear in the <head> section.
-body-stuff - HTML attributes to be include in the <body> tag.
+
+=item title - Title text for the popup window.
+
+=item head-stuff - HTML to appear in the <head> section.
+
+=item body-stuff - HTML attributes to be include in the <body> tag.
 
 =cut
 sub popup_header
@@ -1183,7 +1217,7 @@ else { return 0; }
 
 =head2 kill_byname_logged(name, signal)
 
-Like kill_byname, but also logs the killing
+Like kill_byname, but also logs the killing.
 
 =cut
 sub kill_byname_logged
@@ -1530,11 +1564,16 @@ return $date;
 
 Return HTML for a button that pops up a file chooser when clicked, and places
 the selected filename into another HTML field. The parameters are :
-input - Name of the form field to store the filename in.
-type - 0 for file or directory chooser, or 1 for directory only.
-form - Index of the form containing the button.
-chroot - If set to 1, the chooser will be limited to this directory.
-addmode - If set to 1, the selected filename will be appended to the text box instead of replacing it's contents.
+
+=item input - Name of the form field to store the filename in.
+
+=item type - 0 for file or directory chooser, or 1 for directory only.
+
+=item form - Index of the form containing the button.
+
+=item chroot - If set to 1, the chooser will be limited to this directory.
+
+=item addmode - If set to 1, the selected filename will be appended to the text box instead of replacing it's contents.
 
 =cut
 sub file_chooser_button
@@ -1555,14 +1594,22 @@ return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\
 
 Returns HTML for a button that will popup a chooser window of some kind. The
 parameters are :
-url - Base URL of the popup window's contents
-width - Width of the window in pixels
-height - Height in pixels
-scrollbars - Set to 1 if the window should have scrollbars
+
+=item url - Base URL of the popup window's contents
+
+=item width - Width of the window in pixels
+
+=item height - Height in pixels
+
+=item scrollbars - Set to 1 if the window should have scrollbars
+
 The field-mappings parameter is an array ref of array refs containing
-- Attribute to assign field to in the popup window
-- Form field name
-- CGI parameter to URL for value, if any
+
+=item - Attribute to assign field to in the popup window
+
+=item - Form field name
+
+=item - CGI parameter to URL for value, if any
 
 =cut
 sub popup_window_button
@@ -1629,7 +1676,7 @@ if ($_[1]) { %{$_[1]} = %main::acl_array_cache; }
 =head2 acl_filename
 
 Returns the file containing the webmin ACL, which is usually
-/etc/webmin/webmin.acl
+/etc/webmin/webmin.acl.
 
 =cut
 sub acl_filename
@@ -1780,10 +1827,14 @@ else {
 
 Returns 1 if some module is supported on the current operating system, or the
 OS supplies as parameters. The parameters are :
-minfo - A hash ref of module information, as returned by get_module_info
-os-type - The Webmin OS code to use instead of the system's real OS, such as redhat-linux
-os-version - The Webmin OS version to use, such as 13.0
-api-only - If set to 1, considers a module supported if it provides an API to other modules on this OS, even if the majority of its functionality is not supported.
+
+=item minfo - A hash ref of module information, as returned by get_module_info
+
+=item os-type - The Webmin OS code to use instead of the system's real OS, such as redhat-linux
+
+=item os-version - The Webmin OS version to use, such as 13.0
+
+=item api-only - If set to 1, considers a module supported if it provides an API to other modules on this OS, even if the majority of its functionality is not supported.
 
 =cut
 sub check_os_support
@@ -1853,19 +1904,32 @@ return $anyneg;
 =head2 http_download(host, port, page, destfile, [&error], [&callback], [sslmode], [user, pass], [timeout], [osdn-convert], [no-cache], [&headers])
 
 Downloads data from a HTTP url to a local file or string. The parameters are :
-host - The hostname part of the URL, such as www.google.com
-port - The HTTP port number, such as 80
-page - The filename part of the URL, like /index.html
-destfile - The local file to save the URL data to, like /tmp/index.html. This can also be a scalar reference, in which case the data will be appended to that scalar.
-error - If set to a scalar ref, the function will store any error message in this scalar and return 0 on failure, or 1 on success. If not set, it will simply call the error function if the download fails.
-callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
-sslmode - If set to 1, an HTTPS connection is used instead of HTTP.
-user - If set, HTTP authentication is done with this username.
-pass - The HTTP password to use with the username above.
-timeout - A timeout in seconds to wait for the TCP connection to be established before failing.
-osdn-convert - If set to 1, URL for downloads from sourceforge are converted to use an appropriate mirror site.
-no-cache - If set to 1, Webmin's internal caching for this URL is disabled.
-headers - If set to a hash ref of additional HTTP headers, they will be added to the request.
+
+=item host - The hostname part of the URL, such as www.google.com
+
+=item port - The HTTP port number, such as 80
+
+=item page - The filename part of the URL, like /index.html
+
+=item destfile - The local file to save the URL data to, like /tmp/index.html. This can also be a scalar reference, in which case the data will be appended to that scalar.
+
+=item error - If set to a scalar ref, the function will store any error message in this scalar and return 0 on failure, or 1 on success. If not set, it will simply call the error function if the download fails.
+
+=item callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
+
+=item sslmode - If set to 1, an HTTPS connection is used instead of HTTP.
+
+=item user - If set, HTTP authentication is done with this username.
+
+=item pass - The HTTP password to use with the username above.
+
+=item timeout - A timeout in seconds to wait for the TCP connection to be established before failing.
+
+=item osdn-convert - If set to 1, URL for downloads from sourceforge are converted to use an appropriate mirror site.
+
+=item no-cache - If set to 1, Webmin's internal caching for this URL is disabled.
+
+=item headers - If set to a hash ref of additional HTTP headers, they will be added to the request.
 
 =cut
 sub http_download
@@ -2036,14 +2100,22 @@ else {
 =head2 ftp_download(host, file, destfile, [&error], [&callback], [user, pass], [port])
 
 Download data from an FTP site to a local file. The parameters are :
-host - FTP server hostname
-file - File on the FTP server to download
-destfile - File on the Webmin system to download data to
-error - If set to a string ref, any error message is written into this string and the function returns 0 on failure, 1 on success. Otherwise, error is called on failure.
-callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
-user - Username to login to the FTP server as. If missing, Webmin will login as anonymous.
-pass - Password for the username above.
-port - FTP server port number, which defaults to 21 if not set.
+
+=item host - FTP server hostname
+
+=item file - File on the FTP server to download
+
+=item destfile - File on the Webmin system to download data to
+
+=item error - If set to a string ref, any error message is written into this string and the function returns 0 on failure, 1 on success. Otherwise, error is called on failure.
+
+=item callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing download progress.
+
+=item user - Username to login to the FTP server as. If missing, Webmin will login as anonymous.
+
+=item pass - Password for the username above.
+
+=item port - FTP server port number, which defaults to 21 if not set.
 
 =cut
 sub ftp_download
@@ -2195,14 +2267,22 @@ return 1;
 =head2 ftp_upload(host, file, srcfile, [&error], [&callback], [user, pass], [port])
 
 Upload data from a local file to an FTP site. The parameters are :
-host - FTP server hostname
-file - File on the FTP server to write to
-srcfile - File on the Webmin system to upload data from
-error - If set to a string ref, any error message is written into this string and the function returns 0 on failure, 1 on success. Otherwise, error is called on failure.
-callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing upload progress.
-user - Username to login to the FTP server as. If missing, Webmin will login as anonymous.
-pass - Password for the username above.
-port - FTP server port number, which defaults to 21 if not set.
+
+=item host - FTP server hostname
+
+=item file - File on the FTP server to write to
+
+=item srcfile - File on the Webmin system to upload data from
+
+=item error - If set to a string ref, any error message is written into this string and the function returns 0 on failure, 1 on success. Otherwise, error is called on failure.
+
+=item callback - If set to a function ref, it will be called after each block of data is received. This is typically set to \&progress_callback, for printing upload progress.
+
+=item user - Username to login to the FTP server as. If missing, Webmin will login as anonymous.
+
+=item pass - Password for the username above.
+
+=item port - FTP server port number, which defaults to 21 if not set.
 
 =cut
 sub ftp_upload
@@ -2306,10 +2386,14 @@ return 0;
 
 Open a TCP connection to some host and port, using a file handle. The 
 parameters are :
-host - Hostname or IP address to connect to.
-port - TCP port number.
-handle - A file handle name to use for the connection.
-error - A string reference to write any error message into. If not set, the error function is called on failure.
+
+=item host - Hostname or IP address to connect to.
+
+=item port - TCP port number.
+
+=item handle - A file handle name to use for the connection.
+
+=item error - A string reference to write any error message into. If not set, the error function is called on failure.
 
 =cut
 sub open_socket
@@ -2426,10 +2510,14 @@ else {
 =head2 icons_table(&links, &titles, &icons, [columns], [href], [width], [height], &befores, &afters)
 
 Renders a 4-column table of icons. The useful parameters are :
-links - An array ref of link destination URLs for the icons.
-titles - An array ref of titles to appear under the icons.
-icons - An array ref of URLs for icon images.
-columns - Number of columns to layout the icons with. Defaults to 4.
+
+=item links - An array ref of link destination URLs for the icons.
+
+=item titles - An array ref of titles to appear under the icons.
+
+=item icons - An array ref of URLs for icon images.
+
+=item columns - Number of columns to layout the icons with. Defaults to 4.
 
 =cut
 sub icons_table
@@ -2460,9 +2548,12 @@ print "</table>\n";
 =head2 replace_file_line(file, line, [newline]*)
 
 Replaces one line in some file with 0 or more new lines. The parameters are :
-file - Full path to some file, like /etc/hosts.
-line - Line number to replace, starting from 0.
-newline - Zero or more lines to put into the file at the given line number. These must be newline-terminated strings.
+
+=item file - Full path to some file, like /etc/hosts.
+
+=item line - Line number to replace, starting from 0.
+
+=item newline - Zero or more lines to put into the file at the given line number. These must be newline-terminated strings.
 
 =cut
 sub replace_file_line
@@ -2484,8 +2575,10 @@ else { splice(@lines, $_[1], 1); }
 Returns a reference to an array containing the lines from some file. This
 array can be modified, and will be written out when flush_file_lines()
 is called. The parameters are :
-file - Full path to the file to read.
-readonly - Should be set 1 if the caller is only going to read the lines, and never write it out.
+
+=item file - Full path to the file to read.
+
+=item readonly - Should be set 1 if the caller is only going to read the lines, and never write it out.
 
 Example code :
 
@@ -2530,8 +2623,10 @@ return $main::file_cache{$realfile};
 
 Write out to a file previously read by read_file_lines to disk (except
 for those marked readonly). The parameters are :
-file - The file to flush out.
-eof - End-of-line character for each line. Defaults to \n.
+
+=item file - The file to flush out.
+
+=item eof - End-of-line character for each line. Defaults to \n.
 
 =cut
 sub flush_file_lines
@@ -2609,11 +2704,17 @@ return "<input name=$_[0] size=13 value=\"$_[1]\"> ".
 
 Returns HTML for a link that when clicked on pops up a window for a Webmin
 help page. The parameters are :
-text - Text for the link.
-page - Help page code, such as 'intro'.
-module - Module the help page is in. Defaults to the current module.
-width - Width of the help popup window. Defaults to 600 pixels.
-height - Height of the help popup window. Defaults to 400 pixels.
+
+=item text - Text for the link.
+
+=item page - Help page code, such as 'intro'.
+
+=item module - Module the help page is in. Defaults to the current module.
+
+=item width - Width of the help popup window. Defaults to 600 pixels.
+
+=item height - Height of the help popup window. Defaults to 400 pixels.
+
 The actual help pages are in each module's help sub-directory, in files with
 .html extensions.
 
@@ -2633,9 +2734,12 @@ return "<a onClick='window.open(\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\", \
 
 Returns HTML for a javascript button for choosing a Unix user or users.
 The parameters are :
-field - Name of the HTML field to place the username into.
-multiple - Set to 1 if multiple users can be selected.
-form - Index of the form on the page.
+
+=item field - Name of the HTML field to place the username into.
+
+=item multiple - Set to 1 if multiple users can be selected.
+
+=item form - Index of the form on the page.
 
 =cut
 sub user_chooser_button
@@ -2659,9 +2763,12 @@ return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\
 
 Returns HTML for a javascript button for choosing a Unix group or groups
 The parameters are :
-field - Name of the HTML field to place the group name into.
-multiple - Set to 1 if multiple groups can be selected.
-form - Index of the form on the page.
+
+=item field - Name of the HTML field to place the group name into.
+
+=item multiple - Set to 1 if multiple groups can be selected.
+
+=item form - Index of the form on the page.
 
 =cut
 sub group_chooser_button
@@ -2685,8 +2792,10 @@ return "<input type=button onClick='ifield = form.$_[0]; chooser = window.open(\
 
 Checks if some other module exists and is supported on this OS. The parameters
 are :
-module - Name of the module to check.
-api-only - Set to 1 if you just want to check if the module provides an API that others can call, instead of the full web UI.
+
+=item module - Name of the module to check.
+
+=item api-only - Set to 1 if you just want to check if the module provides an API that others can call, instead of the full web UI.
 
 =cut
 sub foreign_check
@@ -2772,9 +2881,13 @@ return 1;
 
 Brings in functions from another module, and places them in the Perl namespace
 with the same name as the module. The parameters are :
-module - The source module's directory name, like sendmail.
-file - The API file in that module, like sendmail-lib.pl.
-package - Perl package to place the module's functions and global variables in. 
+
+=item module - The source module's directory name, like sendmail.
+
+=item file - The API file in that module, like sendmail-lib.pl.
+
+=item package - Perl package to place the module's functions and global variables in. 
+
 If the original module name contains dashes, they will be replaced with _ in
 the package name.
 
@@ -3114,6 +3227,8 @@ return %rv;
 =head2 save_module_acl(&acl, [user], [module])
 
 Updates the acl hash for some user and module. The parameters are :
+XXX
+
 acl - Hash reference for the new access control options.
 user - User to update, defaulting to the current user.
 module - Module to update, defaulting to the caller.
