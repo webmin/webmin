@@ -19,72 +19,68 @@ else {
 	$type = $f->{'type'};
 	}
 
-print "<form action=save_field.cgi>\n";
-print "<input type=hidden name=db value='$in{'db'}'>\n";
-print "<input type=hidden name=table value='$in{'table'}'>\n";
-print "<input type=hidden name=new value='$in{'type'}'>\n";
-print "<table border>\n";
-print "<tr $tb> <td><b>$text{'field_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table>\n";
+# Start of form block
+print &ui_form_start("save_field.cgi", "post");
+print &ui_hidden("db", $in{'db'});
+print &ui_hidden("table", $in{'table'});
+print &ui_hidden("new", $in{'type'});
+print &ui_table_start($text{'field_header'}, undef, 2);
 
-print "<tr> <td><b>$text{'field_name'}</b></td>\n";
-print "<td><input name=field size=20 value='$f->{'field'}'></td> </tr>\n";
-print "<input type=hidden name=old value='$f->{'field'}'>\n" if (!$in{'type'});
+# Field name
+print &ui_table_row($text{'field_name'},
+	&ui_textbox("field", $f->{'field'}, 40));
+print &ui_hidden("old", $f->{'field'}) if (!$in{'type'});
 
+# Field type
 if ($type =~ /^(\S+)\((.*)\)/) {
 	$type = $1;
 	$size = $2;
 	}
-print "<input type=hidden name=type value='$type'>\n";
-print "<tr> <td><b>$text{'field_type'}</b></td>\n";
-print "<td>$type</td> </tr>\n";
+print &ui_table_row($text{'field_type'}, $type);
+print &ui_hidden("type", $type);
 
 if ($type eq 'char' || $type eq 'varchar' || $type eq 'numeric' ||
     $type eq 'bit') {
 	if ($in{'type'}) {
 		# Type has a size
-		print "<tr> <td><b>$text{'field_size'}</b></td>\n";
-		print "<td><input name=size size=10 value='$size'></td></tr>\n";
+		print &ui_table_row($text{'field_size'},
+			&ui_textbox("size", $size, 15));
 		}
 	else {
 		# Type cannot be edited
-		print "<tr> <td><b>$text{'field_size'}</b></td>\n";
-		print "<td>$size</td> </tr>\n";
+		print &ui_table_row($text{'field_size'}, $size);
 		}
 	}
 
-print "<tr> <td><b>$text{'field_arr'}</b></td> <td>\n";
 if ($in{'type'}) {
 	# Ask if this is an array
-	print "<input name=arr type=radio value=1> $text{'yes'}\n";
-	print "<input name=arr type=radio value=0 checked> $text{'no'}\n";
+	print &ui_table_row($text{'field_arr'},
+		&ui_yesno_radio("arr", 0));
 	}
 else {
 	# Display if array or not
-	print $f->{'arr'} eq 'YES' ? $text{'yes'} : $text{'no'};
+	print &ui_table_row($text{'field_arr'},
+		$f->{'arr'} eq 'YES' ? $text{'yes'} : $text{'no'});
 	}
-print "</td> </tr>\n";
 
 if (!$in{'type'}) {
 	# Display nulls
-	print "<tr> <td><b>$text{'field_null'}</b></td>\n";
-	print "<td>",$f->{'null'} eq 'YES' ? $text{'yes'}
-					   : $text{'no'},"</td> </tr>\n";
+	print &ui_table_row($text{'field_null'},
+		$f->{'null'} eq 'YES' ? $text{'yes'} : $text{'no'});
 	}
 
-print "</table></td></tr></table>\n";
+print &ui_table_end();
 if ($in{'type'}) {
-	print "<input type=submit value='$text{'create'}'>\n";
+	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print "<input type=submit value='$text{'save'}'>\n";
-	if (&can_drop_fields() && @desc > 1) {
-		print "<input type=submit name=delete value='$text{'delete'}'>\n";
-		}
+	print &ui_form_end([ [ undef, $text{'save'} ],
+		&can_drop_fields() && @desc > 1 ?
+			( [ 'delete', $text{'delete'} ] ) : ( ) ]);
 	}
-print "</form>\n";
 
-&ui_print_footer("edit_table.cgi?db=$in{'db'}&table=$in{'table'}",$text{'table_return'},
-	"edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
-	"", $text{'index_return'});
+&ui_print_footer("edit_table.cgi?db=$in{'db'}&table=$in{'table'}",
+		  $text{'table_return'},
+		 "edit_dbase.cgi?db=$in{'db'}", $text{'dbase_return'},
+		 "", $text{'index_return'});
 

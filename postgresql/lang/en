@@ -102,6 +102,7 @@ table_fielddrop=Drop Field
 table_eblob=No size is needed for BLOB field $1
 table_csv=Export as CSV
 table_index=Create Index
+table_delete=Delete Selected Fields
 
 field_title1=Add Field
 field_title2=Modify Field
@@ -366,6 +367,7 @@ log_tables_delete=Dropped $1 objects from database $2
 log_field_create=Added field $1 $4 to $2 in database $3
 log_field_modify=Modified field $1 $4 in $2 in database $3
 log_field_delete=Deleted field $1 from $2 in database $3
+log_fields_delete=Deleted $1 fields from $1 in database $2
 log_data_create=Added row to table $2 in database $3
 log_data_modify=Modified $1 rows in table $2 in database $3
 log_data_delete=Deleted $1 rows from table $2 in database $3
@@ -418,11 +420,9 @@ acl_views=Can view and manage views?
 acl_indexes=Can view and manage indexes?
 acl_seqs=Can view and manage sequences?
 
-fdrop_err=Error during field drop
-fdrop_header=Drop This One
-fdrop_lose_data=Select box to confirm that you understand that definitions, such as indexes and default values, on all fields may be lost.
-fdrop_perform=Drop Field
-fdrop_title=Drop Field
+fdrop_err=Failed to delete fields
+fdrop_enone=None selected
+fdrop_eall=You cannot delete all fields from a table! 
 
 setup_err=Failed to initialize database
 setup_ecannot=You are not allowed to initialize the database

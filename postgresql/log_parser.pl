@@ -36,6 +36,10 @@ elsif ($type eq 'field') {
 		     "<tt>$p->{'table'}</tt>", "<tt>$p->{'db'}</tt>",
 		     "<tt>$p->{'type'}$p->{'size'}</tt>");
 	}
+elsif ($type eq 'fields') {
+        return &text("log_${type}_${action}", $object,
+                     "<tt>$p->{'table'}</tt>", "<tt>$p->{'db'}</tt>");
+        }
 elsif ($type eq 'data') {
 	return &text("log_${type}_${action}", "<tt>$object</tt>",
 		     "<tt>$p->{'table'}</tt>", "<tt>$p->{'db'}</tt>");
