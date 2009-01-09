@@ -3,9 +3,9 @@
 
 require './mysql-lib.pl';
 &ReadParse();
+&error_setup($text{'fdrop_err'});
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
 $access{'edonly'} && &error($text{'dbase_ecannot'});
-&error_setup($text{'fdrop_err'});
 
 # Validate inputs
 @d = split(/\0/, $in{'d'});

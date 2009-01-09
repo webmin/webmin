@@ -17,8 +17,7 @@ print &ui_hidden("db", $in{'db'}),"\n";
 print &ui_hidden("table", $in{'table'}),"\n";
 @desc = &table_structure($in{'db'}, $in{'table'});
 @tds = ( "width=5" );
-@rowlinks = ( &select_all_link("d"),
-	      &select_invert_link("d") );
+@rowlinks = ( &select_all_link("d"), &select_invert_link("d") );
 print &ui_links_row(\@rowlinks);
 print &ui_columns_start([ "",
 			  $text{'table_field'},

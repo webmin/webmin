@@ -10,16 +10,17 @@ $access{'edonly'} && &error($text{'dbase_ecannot'});
 
 if ($in{'clear'}) {
 	# Delete the history file
-	unlink("$commands_file.$in{'db'}");
+	&unlink_file($commands_file.".".$in{'db'});
 	&redirect("exec_form.cgi?db=$in{'db'}");
 	}
 else {
+	# Run some SQL
 	$in{'cmd'} = join(" ", split(/[\r\n]+/, $in{'cmd'}));
 	$cmd = $in{'cmd'} ? $in{'cmd'} : $in{'old'};
 	$d = &execute_sql_logged($in{'db'}, $cmd);
 
 	&ui_print_header(undef, $text{'exec_title'}, "");
-	print &text('exec_out', "<tt>$cmd</tt>"),"<p>\n";
+	print &text('exec_out', "<tt>".&html_escape($cmd)."</tt>"),"<p>\n";
 	@data = @{$d->{'data'}};
 	if (@data) {
 		print &ui_columns_start($d->{'titles'});
