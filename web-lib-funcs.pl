@@ -2,8 +2,14 @@
 
 Common functions for Webmin CGI scripts. This file gets in-directly included
 by all scripts that use web-lib.pl.
+Example code:
 
-XXX example code
+  require '../web-lib.pl';
+  init_config();
+  require '../ui-lib.pl';
+  ui_print_header(undef, 'My Module', '');
+  print 'This is Webmin version ',get_webmin_version(),'<p>\n';
+  ui_print_footer();
 
 =cut
 
@@ -4218,7 +4224,9 @@ if ($gconfig{'logclear'}) {
 			$write_logtime = 1;
 			}
 		}
-	else { $write_logtime = 1; }
+	else {
+		$write_logtime = 1;
+		}
 	if ($write_logtime) {
 		open(LOGTIME, ">$webmin_logfile.time");
 		print LOGTIME time(),"\n";
@@ -6842,8 +6850,16 @@ return @_ > 1 ? $_[1] : "application/octet-stream";
 
 =head2 open_tempfile([handle], file, [no-error], [no-tempfile], [safe?])
 
-Returns a temporary file for writing to some actual file.
-XXX
+Opens a file handle for writing to a temporary file, which will only be
+renamed over the real file when the handle is closed. This allows critical
+files like /etc/shadow to be updated safely, even if writing fails part way
+through due to lack of disk space.
+The parameters are :
+handle - File handle to open, as you would use in Perl's open function.
+file - Full path to the file to write, prefixed by > or >> to indicate over-writing or appending. In append mode, no temp file is used.
+no-error - By default, this function will call error if the open fails. Setting this parameter to 1 causes it to return 0 on failure, and set $! with the error code.
+no-tempfile - If set to 1, writing will be direct to the file instead of using a temporary file.
+safe - Indicates to users in read-only mode that this write is safe and non-destructive.
 
 =cut
 sub open_tempfile
@@ -6966,7 +6982,7 @@ else {
 =head2 close_tempfile(file|handle)
 
 Copies a temp file to the actual file, assuming that all writes were
-successful.
+successful. The handle must have been one passed to open_tempfile.
 
 =cut
 sub close_tempfile
@@ -7011,9 +7027,21 @@ else {
 	}
 }
 
+=head2 print_tempfile(handle, text, ...)
+
+Like the normal print function, but calls &error on failure
+
+=cut
+sub print_tempfile
+{
+local ($fh, @args) = @_;
+(print $fh @args) || &error(&text("efilewrite",
+			    $main::open_temphandles{$fh} || $fh, $!));
+}
+
 =head2 is_selinux_enabled
 
-Returns 1 if SElinux is supported on this system and enabled
+Returns 1 if SElinux is supported on this system and enabled, 0 if not.
 
 =cut
 sub is_selinux_enabled
@@ -7043,7 +7071,8 @@ return $main::selinux_enabled_cache;
 =head2 get_clear_file_attributes(file)
 
 Finds file attributes that may prevent writing, clears them and returns them
-as a list. May call error.
+as a list. May call error. Mainly for internal use by open_tempfile and
+close_tempfile.
 
 =cut
 sub get_clear_file_attributes
@@ -7072,7 +7101,8 @@ return @old_attributes;
 
 =head2 reset_file_attributes(file, &attributes)
 
-Put back cleared attributes on some file. May call error.
+Put back cleared attributes on some file. May call error. Mainly for internal
+use by close_tempfile.
 
 =cut
 sub reset_file_attributes
@@ -7088,21 +7118,10 @@ if (&indexof("i", @$old_attributes) >= 0) {
 	}
 }
 
-=head2 print_tempfile(handle, text, ...)
-
-Like the normal print function, but calls &error on failure
-
-=cut
-sub print_tempfile
-{
-local ($fh, @args) = @_;
-(print $fh @args) || &error(&text("efilewrite",
-			    $main::open_temphandles{$fh} || $fh, $!));
-}
-
 =head2 cleanup_tempnames
 
-Remove all temporary files
+Remove all temporary files generated using transname. Typically only called
+internally when a Webmin script exits.
 
 =cut
 sub cleanup_tempnames
@@ -7116,7 +7135,9 @@ foreach $t (@main::temporary_files) {
 
 =head2 open_lock_tempfile([handle], file, [no-error])
 
-Returns a temporary file for writing to some actual file, and also locks it
+Returns a temporary file for writing to some actual file, and also locks it.
+Effectively the same as calling lock_file and open_tempfile on the same file,
+but calls the unlock for you automatically when it is closed.
 
 =cut
 sub open_lock_tempfile
@@ -7153,7 +7174,7 @@ if ($$ == $main::initial_process_id) {
 
 =head2 month_to_number(month)
 
-Converts a month name like feb to a number like 1
+Converts a month name like feb to a number like 1.
 
 =cut
 sub month_to_number
@@ -7163,7 +7184,7 @@ return $month_to_number_map{lc(substr($_[0], 0, 3))};
 
 =head2 number_to_month(number)
 
-Converts a number like 1 to a month name like Feb
+Converts a number like 1 to a month name like Feb.
 
 =cut
 sub number_to_month
@@ -7244,7 +7265,7 @@ return !$foundany ? undef : defined(%rv) ? \%rv : undef;
 
 =head2 supports_rbac([module])
 
-Returns 1 if RBAC client support is available
+Returns 1 if RBAC client support is available, such as on Solaris.
 
 =cut
 sub supports_rbac
@@ -7258,8 +7279,11 @@ if ($_[0]) {
 return 1;
 }
 
-# use_rbac_module_acl(user, module)
-# Returns 1 if some user should use RBAC to get permissions for a module
+=head2 use_rbac_module_acl(user, module)
+
+Returns 1 if some user should use RBAC to get permissions for a module
+
+=cut
 sub use_rbac_module_acl(user, module)
 {
 local $u = defined($_[0]) ? $_[0] : $base_remote_user;
@@ -7272,7 +7296,13 @@ return $access{'rbac'} ? 1 : 0;
 =head2 execute_command(command, stdin, stdout, stderr, translate-files?, safe?)
 
 Runs some command, possibly feeding it input and capturing output to the
-give files or scalar references.
+give files or scalar references. The parameters are :
+command - Full command to run, possibly including shell meta-characters.
+stdin - File to read input from, or a scalar ref containing input, or undef if no input should be given.
+stdout - File to write output to, or a scalar ref into which output should be placed, or undef if the output is to be discarded.
+stderr - File to write error output to, or a scalar ref into which error output should be placed, or undef if the error output is to be discarded.
+translate-files - Set to 1 to apply filename translation to any filenames. Usually has no effect.
+safe - Set to 1 if this command is safe and does not modify the state of the system.
 
 =cut
 sub execute_command
@@ -7381,7 +7411,8 @@ return $?;
 
 =head2 open_readfile(handle, file)
 
-Opens some file for reading. Returns 1 on success, 0 on failure
+Opens some file for reading. Returns 1 on success, 0 on failure. Pretty much
+exactly the same as Perl's open function.
 
 =cut
 sub open_readfile
@@ -7394,8 +7425,9 @@ return open($fh, "<".$realfile);
 
 =head2 open_execute_command(handle, command, output?, safe?)
 
-Runs some command, with the specified filename set to either write to it if
-in-or-out is set to 0, or read to it if output is set to 1.
+Runs some command, with the specified file handle set to either write to it if
+in-or-out is set to 0, or read to it if output is set to 1. The safe flag
+indicates if the command modifies the state of the system or not.
 
 =cut
 sub open_execute_command
@@ -7429,7 +7461,8 @@ elsif ($mode == 2) {
 
 =head2 translate_filename(filename)
 
-Applies all relevant registered translation functions to a filename
+Applies all relevant registered translation functions to a filename. Mostly
+for internal use, and typically does nothing.
 
 =cut
 sub translate_filename
@@ -7447,7 +7480,8 @@ return $realfile;
 
 =head2 translate_command(filename)
 
-Applies all relevant registered translation functions to a command
+Applies all relevant registered translation functions to a command. Mostly
+for internal use, and typically does nothing.
 
 =cut
 sub translate_command
@@ -7467,7 +7501,8 @@ return $realcmd;
 
 Registers some function to be called when the specified module (or all
 modules) tries to open a file for reading and writing. The function must
-return the actual file to open.
+return the actual file to open. This allows you to override which files
+other code actually operates on, via the translate_filename function.
 
 =cut
 sub register_filename_callback
@@ -7480,7 +7515,8 @@ push(@main::filename_callbacks, [ $mod, $func, $args ]);
 
 Registers some function to be called when the specified module (or all
 modules) tries to execute a command. The function must return the actual
-command to run.
+command to run. This allows you to override which commands other other code
+actually runs, via the translate_command function.
 
 =cut
 sub register_command_callback
@@ -7491,7 +7527,9 @@ push(@main::command_callbacks, [ $mod, $func, $args ]);
 
 =head2 capture_function_output(&function, arg, ...)
 
-Captures output that some function prints to STDOUT, and returns it
+Captures output that some function prints to STDOUT, and returns it. Useful
+for functions outside your control that print data when you really want to
+manipulate it before output.
 
 =cut
 sub capture_function_output
@@ -7513,7 +7551,10 @@ return wantarray ? ($out, \@rv) : $out;
 
 =head2 modules_chooser_button(field, multiple, [form])
 
-Returns HTML for a button for selecting one or many Webmin modules
+Returns HTML for a button for selecting one or many Webmin modules.
+field - Name of the HTML field to place the module names into.
+multiple - Set to 1 if multiple modules can be selected.
+form - Index of the form on the page.
 
 =cut
 sub modules_chooser_button
@@ -7535,7 +7576,9 @@ return "<input type=button onClick='ifield = document.forms[$form].$_[0]; choose
 =head2 substitute_template(text, &hash)
 
 Given some text and a hash reference, for each ocurrance of $FOO or ${FOO} in
-the text replaces it with the value of the hash key foo
+the text replaces it with the value of the hash key foo. Also supports blocks
+like ${IF-FOO} ... ${ENDIF-FOO}, whose contents are only included if foo is 
+non-zero, and ${IF-FOO} ... ${ELSE-FOO} ... ${ENDIF-FOO}.
 
 =cut
 sub substitute_template
@@ -7620,7 +7663,8 @@ return $rv;
 =head2 running_in_zone
 
 Returns 1 if the current Webmin instance is running in a Solaris zone. Used to
-disable module and features that are not appropriate, like filesystems/etc
+disable module and features that are not appropriate, like those that modify
+mounted filesystems.
 
 =cut
 sub running_in_zone
@@ -7635,7 +7679,7 @@ return $zn && $zn ne "global";
 =head2 running_in_vserver
 
 Returns 1 if the current Webmin instance is running in a Linux VServer.
-Used to disable modules and features that are not appropriate
+Used to disable modules and features that are not appropriate.
 
 =cut
 sub running_in_vserver
@@ -7657,7 +7701,7 @@ return $vserver;
 =head2 running_in_xen
 
 Returns 1 if Webmin is running inside a Xen instance, by looking
-at /proc/xen/capabilities
+at /proc/xen/capabilities.
 
 =cut
 sub running_in_xen
@@ -7669,7 +7713,9 @@ return $cap =~ /control_d/ ? 0 : 1;
 
 =head2 list_categories(&modules)
 
-Returns a hash mapping category codes to names
+Returns a hash mapping category codes to names, including any custom-defined
+categories. The modules parameter must be an array ref of module hash objects,
+as returned by get_all_module_infos.
 
 =cut
 sub list_categories
@@ -7721,7 +7767,10 @@ return $main::readonly_mode_cache;
 
 =head2 command_as_user(user, with-env?, command, ...)
 
-Returns a command to execute some command as the given user
+Returns a command to execute some command as the given user, using the
+su statement. If on Linux, the /bin/sh shell is forced in case the user
+does not have a valid shell. If with-env is set to 1, the -s flag is added
+to the su command to read the user's .profile or .bashrc file.
 
 =cut
 sub command_as_user
@@ -7745,7 +7794,8 @@ $osdn_download_port = 80;
 =head2 list_osdn_mirrors(project, file)
 
 Given a OSDN project and filename, returns a list of mirror URLs from
-which it can be downloaded
+which it can be downloaded. Mainly for internal use by the http_download
+function.
 
 =cut
 sub list_osdn_mirrors
@@ -7823,7 +7873,7 @@ else {
 
 =head2 get_current_dir
 
-Returns the directory the current process is running in
+Returns the directory the current process is running in.
 
 =cut
 sub get_current_dir
@@ -7845,7 +7895,8 @@ return $out;
 =head2 supports_users
 
 Returns 1 if the current OS supports Unix user concepts and functions like
-su , getpw* and so on
+su , getpw* and so on. This will be true on Linux and other Unixes, but false
+on Windows.
 
 =cut
 sub supports_users
@@ -7855,7 +7906,8 @@ return $gconfig{'os_type'} ne 'windows';
 
 =head2 supports_symlinks
 
-Returns 1 if the current OS supports symbolic and hard links
+Returns 1 if the current OS supports symbolic and hard links. This will not
+be the case on Windows.
 
 =cut
 sub supports_symlinks
@@ -7865,7 +7917,7 @@ return $gconfig{'os_type'} ne 'windows';
 
 =head2 quote_path(path)
 
-Returns a path with safe quoting for the operating system
+Returns a path with safe quoting for the current operating system.
 
 =cut
 sub quote_path
@@ -7882,7 +7934,7 @@ else {
 
 =head2 get_windows_root
 
-Returns the base windows system directory, like c:/windows
+Returns the base windows system directory, like c:/windows.
 
 =cut
 sub get_windows_root
@@ -7899,7 +7951,8 @@ else {
 
 =head2 read_file_contents(file)
 
-Given a filename, returns its complete contents as a string
+Given a filename, returns its complete contents as a string. Effectively
+the same as the Perl construct `cat file`.
 
 =cut
 sub read_file_contents
@@ -7913,7 +7966,10 @@ return $rv;
 
 =head2 unix_crypt(password, salt)
 
-Performs Unix encryption on a password, using crypt() or Crypt::UnixCrypt
+Performs Unix encryption on a password, using the built-in crypt function or
+the Crypt::UnixCrypt module if the former does not work. The salt parameter
+must be either an already-hashed password, or a two-character alpha-numeric
+string.
 
 =cut
 sub unix_crypt
@@ -7934,8 +7990,10 @@ else {
 
 =head2 split_quoted_string(string)
 
-Given a string like  foo "bar baz" quux
-returns the array foo, bar baz, quux
+Given a string like :
+foo "bar baz" quux
+returns the array :
+foo, bar baz, quux
 
 =cut
 sub split_quoted_string
@@ -7954,7 +8012,7 @@ return @rv;
 =head2 write_to_http_cache(url, file|&data)
 
 Updates the Webmin cache with the contents of the given file, possibly also
-clearing out old data
+clearing out old data. Mainly for internal use by http_download.
 
 =cut
 sub write_to_http_cache
@@ -8039,7 +8097,8 @@ return 1;
 
 =head2 check_in_http_cache(url)
 
-If some URL is in the cache and valid, return the filename for it
+If some URL is in the cache and valid, return the filename for it. Mainly
+for internal use by http_download.
 
 =cut
 sub check_in_http_cache
@@ -8076,7 +8135,7 @@ return $cfile;
 
 =head2 supports_javascript
 
-Returns 1 if the current browser is assumed to support javascript
+Returns 1 if the current browser is assumed to support javascript.
 
 =cut
 sub supports_javascript
