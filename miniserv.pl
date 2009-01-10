@@ -124,6 +124,9 @@ if (!$config{'no_pam'}) {
 if ($config{'pam_only'} && !$use_pam) {
 	$pam_msg2 = "PAM use is mandatory, but could not be enabled!";
 	}
+elsif ($pam_msg && !$use_pam) {
+	$pam_msg2 = "Continuing without the Authen::PAM perl module";
+	}
 
 # Check if the User::Utmp perl module is installed
 if ($config{'utmp'}) {
@@ -4557,6 +4560,7 @@ local @substrings = (
     "MobileSafari",	  # HTTP client in iPhone
     "Android",		  # gPhone
     "Opera Mini",	  # Opera Mini
+    "HTC_P3700",	  # HTC mobile device
     );
 foreach my $p (@prefixes) {
 	return 1 if ($agent =~ /^\Q$p\E/);
