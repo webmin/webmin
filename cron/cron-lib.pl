@@ -36,7 +36,24 @@ use Time::Local;
 
 =head2 list_cron_jobs
 
-Returns a lists of structures of all cron jobs
+Returns a lists of structures of all cron jobs, each of which is a hash
+reference with the following keys :
+
+=item user - Unix user the job runs as.
+
+=item command - The full command to be run.
+
+=item active - Set to 0 if the job is commented out, 1 if active.
+
+=item mins - Minute or comma-separated list of minutes the job will run, or * for all.
+
+=item hours - Hour or comma-separated list of hours the job will run, or * for all.
+
+=item days - Day or comma-separated list of days of the month the job will run, or * for all.
+
+=item month - Month number or comma-separated list of months (started from 1) the job will run, or * for all.
+
+=item weekday - Day of the week or comma-separated list of days (where 0 is sunday) the job will run, or * for all
 
 =cut
 sub list_cron_jobs
@@ -232,7 +249,7 @@ return @cron_jobs_cache;
 
 =head2 cron_job_line(&job)
 
-Internal function to generate a crontab format line for a cron job
+Internal function to generate a crontab format line for a cron job.
 
 =cut
 sub cron_job_line
@@ -265,7 +282,8 @@ return join(" ", @c);
 
 =head2 copy_cron_temp(&job)
 
-Copies a job's user's current cron configuration to the temp file
+Copies a job's user's current cron configuration to the temp file. For internal
+use only.
 
 =cut
 sub copy_cron_temp
@@ -288,7 +306,8 @@ else {
 
 =head2 create_cron_job(&job)
 
-Add a Cron job to a user's file
+Add a Cron job to a user's file. The job parameter must be a hash reference
+in the same format as returned by list_cron_jobs.
 
 =cut
 sub create_cron_job
@@ -319,7 +338,8 @@ else {
 
 =head2 insert_cron_job(&job)
 
-Add a Cron job at the top of the user's file
+Add a Cron job at the top of the user's file. The job parameter must be a hash
+reference in the same format as returned by list_cron_jobs.
 
 =cut
 sub insert_cron_job
@@ -352,7 +372,7 @@ else {
 =head2 renumber(file, line, offset)
 
 All jobs in this file whose line is at or after the given one will be
-incremented by the offset
+incremented by the offset. For internal use.
 
 =cut
 sub renumber
@@ -369,7 +389,7 @@ foreach $j (@cron_jobs_cache) {
 =head2 renumber_index(index, offset)
 
 Internal function to change the index of all cron jobs in the cache after
-some index by a given offset.
+some index by a given offset. For internal use.
 
 =cut
 sub renumber_index
@@ -425,7 +445,8 @@ else {
 
 =head2 read_crontab(user)
 
-Return an array containing the lines of the cron table for some user
+Return an array containing the lines of the cron table for some user. For
+internal use mainly.
 
 =cut
 sub read_crontab
@@ -453,7 +474,7 @@ if (&is_readonly_mode()) {
 	return undef;
 	}
 local($pwd);
-if (`cat $cron_temp_file` =~ /\S/) {
+if (&read_file_contents($cron_temp_file) =~ /\S/) {
 	local $temp = &transname();
 	local $rv;
 	if ($config{'cron_edit_command'}) {
@@ -496,10 +517,10 @@ if (`cat $cron_temp_file` =~ /\S/) {
 				$cron_temp_file, $temp, $temp);
 			}
 		}
-	local $out = `cat $temp`;
+	local $out = &read_file_contents($temp);
 	unlink($temp);
 	if ($rv || $out =~ /error/i) {
-		local $cronin = `cat $cron_temp_file`;
+		local $cronin = &read_file_contents($cron_temp_file);
 		&error(&text('ecopy', "<pre>$out</pre>", "<pre>$cronin</pre>"));
 		}
 	}
@@ -536,7 +557,8 @@ return ($active, $1, $2, $3, $4, $5, $6);
 
 =head2 user_sub(command, user)
 
-Replace the string 'USER' in the command with the user name
+Replace the string 'USER' in the command with the user name. For internal
+use only.
 
 =cut
 sub user_sub
@@ -550,7 +572,7 @@ return $tmp;
 
 =head2 list_allowed
 
-Returns a list of all users in the cron allow file
+Returns a list of all Unix usernames who are allowed to use Cron.
 
 =cut
 sub list_allowed
@@ -568,7 +590,7 @@ return @rv;
 
 =head2 list_denied
 
-Return a list of users from the cron deny file
+Return a list of all Unix usernames who are not allowed to use Cron.
 
 =cut
 sub list_denied
@@ -586,7 +608,7 @@ return @rv;
 
 =head2 save_allowed(user, user, ...)
 
-Save the list of allowed users
+Save the list of allowed Unix usernames.
 
 =cut
 sub save_allowed
@@ -603,7 +625,7 @@ chmod(0444, $config{cron_allow_file});
 
 =head2 save_denied(user, user, ...)
 
-Save the list of denied users
+Save the list of denied Unix usernames.
 
 =cut
 sub save_denied
@@ -619,7 +641,7 @@ chmod(0444, $config{cron_deny_file});
 
 =head2 read_envs(user)
 
-Returns an array of name,value pairs containing the environment settings
+Returns an array of "name value" strings containing the environment settings
 from the crontab for some user
 
 =cut
@@ -637,7 +659,7 @@ return @rv;
 =head2 save_envs(user, [name, value]*)
 
 Updates the cron file for some user with the given list of environment
-variables. All others in the file are removed
+variables. All others in the file are removed.
 
 =cut
 sub save_envs
@@ -904,7 +926,7 @@ else {
 
 =head2 show_range_input(&job)
 
-Given a cron job, prints fields for selecting it's run date range
+Given a cron job, prints fields for selecting it's run date range.
 
 =cut
 sub show_range_input
@@ -930,7 +952,7 @@ print &ui_oneradio("range_def", 0, $rng, $has_start),"\n";
 =head2 parse_range_input(&job, &in)
 
 Updates the job object with the specified date range. May call &error
-for invalid inputs
+for invalid inputs.
 
 =cut
 sub parse_range_input
@@ -963,7 +985,8 @@ else {
 
 =head2 fix_names(&cron)
 
-Convert day and month names to numbers
+Convert day and month names to numbers. For internal use when parsing
+the crontab file.
 
 =cut
 sub fix_names
@@ -992,6 +1015,14 @@ Creates a wrapper script which calls a script in some module's directory
 with the proper webmin environment variables set. This should always be used
 when setting up a cron job, instead of attempting to run a command in the
 module directory directly.
+
+The parameters are :
+
+=item wrapper-path - Full path to the wrapper to create, like /etc/webmin/yourmodule/foo.pl
+
+=item module - Module containing the real script to call.
+
+=item script - Program within that module for the wrapper to run.
 
 =cut
 sub create_wrapper
@@ -1028,7 +1059,8 @@ chmod(0755, $_[0]);
 
 =head2 cron_file(&job)
 
-Returns the file that a cron job is in, or would be in
+Returns the file that a cron job is in, or will be in when it is created
+based on the username.
 
 =cut
 sub cron_file
@@ -1038,7 +1070,7 @@ return $_[0]->{'file'} || "$config{'cron_dir'}/$_[0]->{'user'}";
 
 =head2 when_text(&job, [upper-case-first])
 
-Returns a text string describing when a cron job is run
+Returns a human-readable text string describing when a cron job is run.
 
 =cut
 sub when_text
@@ -1071,7 +1103,7 @@ else {
 =head2 can_use_cron(user)
 
 Returns 1 if some user is allowed to use cron, based on cron.allow and
-cron.deny files
+cron.deny files.
 
 =cut
 sub can_use_cron
@@ -1096,7 +1128,8 @@ return !$err;
 
 =head2 swap_cron_jobs(&job1, &job2)
 
-Swaps two Cron jobs, which must be in the same file
+Swaps two Cron jobs, which must be in the same file, identified by their
+hash references as returned by list_cron_jobs.
 
 =cut
 sub swap_cron_jobs
@@ -1119,9 +1152,11 @@ else {
 
 =head2 find_cron_process(&job, [&procs])
 
-Finds the running process that was launched from a cron job.
-job - A cron job hash reference
-procs - An optional array reference of running process hash refs
+Finds the running process that was launched from a cron job. The parameters are:
+
+=item job - A cron job hash reference
+
+=item procs - An optional array reference of running process hash refs
 
 =cut
 sub find_cron_process
@@ -1161,7 +1196,8 @@ return $proc;
 
 =head2 extract_input(command)
 
-Given a command line cmd%input , returns the command and input parts
+Given a line formatted like I<command%input>, returns the command and input
+parts, taking any escaping into account.
 
 =cut
 sub extract_input
@@ -1176,8 +1212,8 @@ return ($cmd, $input);
 
 =head2 convert_range(&job)
 
-Given a cron job that uses range.pl , work out the date range and update
-the job object command
+Given a cron job that uses range.pl, work out the date range and update
+the job object command. Mainly for internal use.
 
 =cut
 sub convert_range
@@ -1227,7 +1263,7 @@ return 0;
 
 =head2 convert_comment(&job)
 
-Given a cron job with a # command after the command, sets the comment field
+Given a cron job with a # comment after the command, sets the comment field
 
 =cut
 sub convert_comment
@@ -1243,7 +1279,8 @@ return 0;
 
 =head2 unconvert_comment(&job)
 
-Adds an comment back to the command in a cron job
+Adds an comment back to the command in a cron job, based on the comment field
+of the given hash reference.
 
 =cut
 sub unconvert_comment
@@ -1258,7 +1295,8 @@ return 0;
 
 =head2 check_cron_config
 
-Returns an error message if the cron config doesn't look valid
+Returns an error message if the cron config doesn't look valid, or some needed
+command is missing.
 
 =cut
 sub check_cron_config
