@@ -22,7 +22,7 @@ $manifests_dir = "/tmp/backup-config-manifests";
 =head2 list_backup_modules
 
 Returns details of all modules that allow backups, each of which is a hash
-ref in the same format as returned by get_module_info
+ref in the same format as returned by get_module_info.
 
 =cut
 sub list_backup_modules
@@ -42,15 +42,24 @@ return sort { $a->{'desc'} cmp $b->{'desc'} } @rv;
 
 Returns a list of all configured backups, each of which is a hash ref with
 at least the following keys :
-mods - Space-separate list of modules to include
-dest - Destination file, FTP or SSH server
-configfile - Set to 1 if /etc/webmin/modulename files are included
-nofiles - Set to 1 if server config files (like httpd.conf) are NOT included
-others - A tab-separated list of other files to include
-email -Email address to notify
-emode - Set to 0 to send email only on failure, 1 to always send
-sched - Set to 1 if regular scheduled backups are enabled
-mins,hours,days,months,weekdays - Cron-style specification of backup time
+
+=item mods - Space-separate list of modules to include.
+
+=item dest - Destination file, FTP or SSH server.
+
+=item configfile - Set to 1 if /etc/webmin/modulename files are included.
+
+=item nofiles - Set to 1 if server config files (like httpd.conf) are NOT included.
+
+=item others - A tab-separated list of other files to include.
+
+=item email -Email address to notify.
+
+=item emode - Set to 0 to send email only on failure, 1 to always send.
+
+=item sched - Set to 1 if regular scheduled backups are enabled.
+
+=item mins,hours,days,months,weekdays - Cron-style specification of backup time.
 
 =cut
 sub list_backups
@@ -132,7 +141,7 @@ else {
 
 =head2 show_backup_destination(name, value, [local-mode])
 
-Returns HTML for a field for selecting a local or FTP file
+Returns HTML for a field for selecting a local or FTP file.
 
 =cut
 sub show_backup_destination
@@ -208,7 +217,7 @@ return $rv;
 
 =head2 parse_backup_destination(name, &in)
 
-Returns a backup destination string, or calls error
+Returns a backup destination string, or calls error.
 
 =cut
 sub parse_backup_destination
@@ -260,7 +269,7 @@ elsif ($mode == 4) {
 
 Backs up the configuration files for the modules to the selected destination.
 The backup is simply a tar file of config files. Returns undef on success,
-or an error message on failure
+or an error message on failure.
 
 =cut
 sub execute_backup
@@ -614,7 +623,7 @@ return $job;
 
 =head2 nice_dest(destination, [subdates])
 
-Returns a backup filename in a human-readable format, with dates substituted
+Returns a backup filename in a human-readable format, with dates substituted.
 
 =cut
 sub nice_dest
@@ -663,7 +672,7 @@ else {
 
 =head2 show_backup_what(name, webmin?, nofiles?, others)
 
-Returns HTML for selecting what gets included in a backup
+Returns HTML for selecting what gets included in a backup.
 
 =cut
 sub show_backup_what
@@ -695,7 +704,7 @@ return ($webmin, $nofiles, $others);
 
 =head2 expand_directory(directory)
 
-Given a directory, return a list of full paths to all files within it
+Given a directory, return a list of full paths to all files within it.
 
 =cut
 sub expand_directory
