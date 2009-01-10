@@ -21,10 +21,14 @@ $access{'switch'} = 0 if (&is_readonly_mode());
 =head2 list_users
 
 Returns a list of hashes containing Webmin user details. Useful keys include :
-name - Login name
-pass - Encrypted password
-modules - Array references of modules
-theme - Custom theme, if any
+
+=item name - Login name
+
+=item pass - Encrypted password
+
+=item modules - Array references of modules
+
+=item theme - Custom theme, if any
 
 =cut
 sub list_users
@@ -87,9 +91,12 @@ return @rv;
 Returns a list of hashes, one per Webmin group. Group membership is stored in
 /etc/webmin/webmin.groups, and other attributes in the config file. Useful
 keys include :
-name - Group name
-members - Array reference of member users
-modules - Modules to grant to members
+
+=item name - Group name
+
+=item members - Array reference of member users
+
+=item modules - Modules to grant to members
 
 =cut
 sub list_groups
@@ -444,10 +451,12 @@ if ($miniserv{'session'}) {
 
 Add a new webmin group, based on the details in the group hash. The required
 keys are :
-name - Unique name of the group
-modules - An array reference of module names
-members - An array reference of group member names. Sub-groups must have their
-          names prefixed with an @.
+
+=item name - Unique name of the group
+
+=item modules - An array reference of module names
+
+=item members - An array reference of group member names. Sub-groups must have their names prefixed with an @.
 
 =cut
 sub create_group
@@ -533,7 +542,7 @@ return join(":", $_[0]->{'name'},
 
 =head2 acl_line(&user, &allmodules)
 
-Internal function to generate an ACL file line
+Internal function to generate an ACL file line.
 
 =cut
 sub acl_line
@@ -573,8 +582,8 @@ return 0;
 =head2 open_session_db(\%miniserv)
 
 Opens the session database, and ties it to the sessiondb hash. Parameters are :
-miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by 
-           get_miniserv_config
+
+=item miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by get_miniserv_config
 
 =cut
 sub open_session_db
@@ -598,9 +607,10 @@ else {
 =head2 delete_session_id(\%miniserv, id)
 
 Deletes one session from the database. Parameters are :
-miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by 
-           get_miniserv_config
-user - ID of the session to remove
+
+=item miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by get_miniserv_config.
+
+=item user - ID of the session to remove.
 
 =cut
 sub delete_session_id
@@ -616,9 +626,10 @@ return $ex;
 =head2 delete_session_user(\%miniserv, user)
 
 Deletes all sessions for some user. Parameters are :
-miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by 
-           get_miniserv_config
-user - Name of the user whose sessions get removed
+
+=item miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by get_miniserv_config.
+
+=item user - Name of the user whose sessions get removed.
 
 =cut
 sub delete_session_user
@@ -637,10 +648,12 @@ dbmclose(%sessiondb);
 =head2 rename_session_user(\%miniserv, olduser, newuser)
 
 Changes the username in all sessions for some user. Parameters are :
-miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by 
-           get_miniserv_config
-olduser - The original username
-newuser - The new username
+
+=item miniserv - The Webmin miniserv.conf file as a hash ref, as supplied by get_miniserv_config.
+
+=item olduser - The original username.
+
+=item newuser - The new username.
 
 =cut
 sub rename_session_user
@@ -660,10 +673,14 @@ dbmclose(%sessiondb);
 
 Update the modules for members users and groups of some group. The parameters
 are :
-allusers - An array ref of all Webmin users, as returned by list_users
-allgroups - An array ref of all Webmin groups
-modules - Modules to assign to members
-members - An array ref of member user and group names
+
+=item allusers - An array ref of all Webmin users, as returned by list_users.
+
+=item allgroups - An array ref of all Webmin groups.
+
+=item modules - Modules to assign to members.
+
+=item members - An array ref of member user and group names.
 
 =cut
 sub update_members
@@ -696,9 +713,12 @@ foreach $m (@{$_[3]}) {
 
 Copy all .acl files from some user to another user in a list of modules.
 The parameters are :
-from - Source user name
-to - Destination user name
-modules - Array ref of module names
+
+=item from - Source user name.
+
+=item to - Destination user name.
+
+=item modules - Array ref of module names.
 
 =cut
 sub copy_acl_files
@@ -717,9 +737,12 @@ foreach $m (@{$_[2]}) {
 
 Copy all .acl files from some group to another in a list of modules. Parameters
 are :
-from - Source group name
-to - Destination group name
-modules - Array ref of module names
+
+=item from - Source group name.
+
+=item to - Destination group name.
+
+=item modules - Array ref of module names.
 
 =cut
 sub copy_group_acl_files
@@ -737,9 +760,12 @@ foreach $m (@{$_[2]}) {
 
 Copy all .acl files from some group to a user in a list of modules. Parameters
 are :
-from - Source group name
-to - Destination user name
-modules - Array ref of module names
+
+=item from - Source group name.
+
+=item to - Destination user name.
+
+=item modules - Array ref of module names.
 
 =cut
 sub copy_group_user_acl_files
@@ -758,11 +784,16 @@ foreach $m (@{$_[2]}) {
 
 Recursively update the ACL for all sub-users and groups of a group, by copying
 detailed access control settings from the group down to users. Parameters are :
-allusers - An array ref of Webmin users, as returned by list_users
-allgroups - An array ref of Webmin groups
-module - Name of the module to update ACL for
-members - Names of group members
-access - The module ACL hash ref to copy to users
+
+=item allusers - An array ref of Webmin users, as returned by list_users.
+
+=item allgroups - An array ref of Webmin groups.
+
+=item module - Name of the module to update ACL for.
+
+=item members - Names of group members.
+
+=item access - The module ACL hash ref to copy to users.
 
 =cut
 sub set_acl_files
@@ -800,7 +831,7 @@ foreach $m (@{$_[3]}) {
 
 =head2 get_ssleay
 
-Returns the path to the openssl command (or equivalent)
+Returns the path to the openssl command (or equivalent) on this system.
 
 =cut
 sub get_ssleay
@@ -884,7 +915,7 @@ $_[0]->{'unixauth'} = join(" ", @ua);
 
 =head2 delete_from_groups(user|@group)
 
-Removes the specified user from all groups
+Removes the specified user from all groups.
 
 =cut
 sub delete_from_groups
@@ -972,7 +1003,7 @@ return undef;
 
 =head2 hash_session_id(sid)
 
-Returns an MD5 or Unix-crypted session ID
+Returns an MD5 or Unix-crypted session ID.
 
 =cut
 sub hash_session_id
@@ -994,7 +1025,7 @@ return $hash_session_id_cache{$sid};
 
 =head2 hash_md5_session(string)
 
-Returns a string encrypted in MD5 format
+Returns a string encrypted in MD5 format.
 
 =cut
 sub hash_md5_session
@@ -1050,7 +1081,7 @@ return $rv;
 
 =head2 md5_perl_module
 
-Returns a Perl module for MD5 hashing, or undef if none
+Returns a Perl module for MD5 hashing, or undef if none.
 
 =cut
 sub md5_perl_module
