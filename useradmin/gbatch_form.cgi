@@ -9,6 +9,7 @@ $access{'batch'} || &error($text{'gbatch_ecannot'});
 # Instructions
 print &ui_hidden_start($text{'batch_instr'}, "instr", 0, "batch_form.cgi");
 print "$text{'gbatch_desc'}<p>\n";
+print "<tt>$text{'gbatch_desc2'}</tt><p>\n";
 print "$text{'gbatch_descafter'}<br>\n";
 print "$text{'gbatch_descafter2'}\n";
 print &ui_hidden_end("instr");

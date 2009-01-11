@@ -502,8 +502,8 @@ emass_already=.. already enabled!
 
 gbatch_title=Execute Group Batch File
 gbatch_ecannot=You cannot use the group batch file form
-batch_desc=This form allows you to create, modify or delete many groups at once from an uploaded or local text file. Each line in the file specifies one action to take, depending on its first field. The line formats are :
-gbatch_desc=<b>create</b>:groupname:passwd:gid:member,member,...<p><b>modify</b>:oldgroupname:groupname:passwd:gid:member,member,...<p><b>delete</b>:groupname
+gbatch_desc=This form allows you to create, modify or delete many groups at once from an uploaded or local text file. Each line in the file specifies one action to take, depending on its first field. The line formats are :
+gbatch_desc2=<b>create</b>:groupname:passwd:gid:member,member,...<p><b>modify</b>:oldgroupname:groupname:passwd:gid:member,member,...<p><b>delete</b>:groupname
 gbatch_descafter=In <b>create</b> lines, if the <tt>gid</tt> field is left empty, Webmin will assign a GID automatically.
 gbatch_descafter2=In <b>modify</b> lines, an empty field will be taken to mean that the corresponding group attribute is not to be modified.
 gbatch_header=Batch group creation, update and deletion options
