@@ -23,10 +23,14 @@ Returns an array of matching Webmin log events, each of which is a hash ref
 in the format returned by parse_logline (see below). By default all actions
 will be returned, but you can limit it to a subset using by setting the
 following parameters :
-only-user - Only return actions by this Webmin user
-only-module - Only actions in this module
-start-time - Limit to actions at or after this Unix time
-end-time - Limit to actions at or before this Unix time
+
+=item only-user - Only return actions by this Webmin user.
+
+=item only-module - Only actions in this module.
+
+=item start-time - Limit to actions at or after this Unix time.
+
+=item end-time - Limit to actions at or before this Unix time.
 
 =cut
 sub list_webmin_log
@@ -57,17 +61,28 @@ return @rv;
 
 Converts a line of text in the format used in /var/webmin/webmin.log into
 a hash ref containing the following keys :
-time - Unix time the action happened
-id - A unique ID for the action
-user - The Webmin user who did it
-sid - The user's session ID
-ip - The IP address they were logged in from
-module - The Webmin module name in which the action was performed
-script - Relative filename of the script that performed the action
-action - A short action name, like 'create'
-type - The kind of object being operated on, like 'user'
-object - Name of the object being operated on, like 'joe'
-params - A hash ref of additional information about the action
+
+=item time - Unix time the action happened.
+
+=item id - A unique ID for the action.
+
+=item user - The Webmin user who did it.
+
+=item sid - The user's session ID.
+
+=item ip - The IP address they were logged in from.
+
+=item module - The Webmin module name in which the action was performed.
+
+=item script - Relative filename of the script that performed the action.
+
+=item action - A short action name, like 'create'.
+
+=item type - The kind of object being operated on, like 'user'.
+
+=item object - Name of the object being operated on, like 'joe'.
+
+=item params - A hash ref of additional information about the action.
 
 =cut
 sub parse_logline
@@ -109,10 +124,14 @@ else {
 
 Returns details of file changes made by this action. Each of which is a
 hash ref with the keys :
-type - The change type, such as create, modify, delete, exec, sql or kill
-object - The file or database the change was made to
-diff - A diff of the file change made
-input - Input to the command run, if available
+
+=item type - The change type, such as create, modify, delete, exec, sql or kill.
+
+=item object - The file or database the change was made to.
+
+=item diff - A diff of the file change made.
+
+=item input - Input to the command run, if available.
 
 =cut
 sub list_diffs
@@ -155,9 +174,12 @@ return @rv;
 
 Returns details of original files before this action was taken. Each is a hash
 ref containing keys :
-type - One of create, modify or delete
-file - Full path to the file
-data - Original file contents, if any
+
+=item type - One of create, modify or delete.
+
+=item file - Full path to the file.
+
+=item data - Original file contents, if any.
 
 =cut
 sub list_files
@@ -194,7 +216,7 @@ return @rv;
 
 =head2 get_annotation(&action)
 
-Returns the text of the log annotation for this action
+Returns the text of the log annotation for this action, or undef if none.
 
 =cut
 sub get_annotation
@@ -205,7 +227,7 @@ return &read_file_contents("$ENV{'WEBMIN_VAR'}/annotations/$act->{'id'}");
 
 =head2 save_annotation(&action, text)
 
-Updates the annotation for some action
+Updates the annotation for some action.
 
 =cut
 sub save_annotation
@@ -226,7 +248,8 @@ else {
 
 =head2 expand_base_dir(base)
 
-Finds files either under some dir, or starting with some path
+Finds files either under some dir, or starting with some path in the same
+directory.
 
 =cut
 sub expand_base_dir
@@ -253,7 +276,7 @@ return @files;
 
 =head2 can_user(username)
 
-Returns 1 if the current Webmin user can view log entries for the given user
+Returns 1 if the current Webmin user can view log entries for the given user.
 
 =cut
 sub can_user
@@ -263,7 +286,7 @@ return $access_users{'*'} || $access_users{$_[0]};
 
 =head2 can_mod(module)
 
-Returns 1 if the current Webmin user can view log entries for the given module
+Returns 1 if the current Webmin user can view log entries for the given module.
 
 =cut
 sub can_mod
@@ -330,10 +353,12 @@ if ($st[9] > $index->{'lastchange'}) {
 	}
 }
 
-=head2 get_action_description(&action, long)
+=head2 get_action_description(&action, [long])
 
 Returns a human-readable description of some action. This is done by
-calling the log_parser.pl file in the action's source module.
+calling the log_parser.pl file in the action's source module. If the long
+parameter is set to 1 and the module provides a more detailed description
+for the action, it will be returned.
 
 =cut
 sub get_action_description
