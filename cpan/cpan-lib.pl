@@ -40,7 +40,8 @@ foreach $d (&expand_usr64($Config{'privlib'}),
 	next if (!$d);
 	next if ($donedir{$d});
 	local $f;
-	open(FIND, "find '$d' -name .packlist -print |");
+	open(FIND, "find ".quotemeta($d)." -name .packlist -print |");
+	print STDERR "find ".quotemeta($d)." -name .packlist -print\n";
 	while($f = <FIND>) {
 		chop($f);
 		local @st = stat($f);
@@ -73,7 +74,10 @@ foreach $d (&expand_usr64($Config{'privlib'}),
 			elsif ($l =~ /^([^\/]+)\.pm$/) {
 				# Module name only, with no path! Damn redhat..
 				local @rpath;
-				open(FIND2, "find '$d' -name '$l' -print |");
+				open(FIND2, "find ".quotemeta($d).
+					    " -name '$l' -print |");
+				print STDERR "find ".quotemeta($d).
+                                            " -name '$l' -print\n";
 				while(<FIND2>) {
 					chop;
 					push(@rpath, $_);
@@ -124,12 +128,12 @@ if (&foreign_check("software") && $config{'incpackages'}) {
 			next if ($donemod{$mod->{'name'}}++);
 
 			# Add the files in the RPM
-			local $fn = &software::check_files(
-				$software::packages{$i,'name'},
-				$software::packages{$i,'version'});
-			local $fi;
-			for($fi=0; $fi<$fn; $fi++) {
-				local $l = $software::files{$fi,'path'};
+			# XXX call rpm -ql only, avoid -V step
+			# XXX same for Debian
+			# XXX list_package_files function, returns an array
+			foreach my $l (&software::package_files(
+					$software::packages{$i,'name'},
+					$software::packages{$i,'version'})) {
 				if ($l =~ /\/((([A-Z][^\/]*\/)([^\/]+\/)?)?[^\/]+)\.pm$/) {
 					local $mn = $1;
 					$mn =~ s/\//::/g;
@@ -165,12 +169,8 @@ if (&foreign_check("software") && $config{'incpackages'}) {
 					  $software::packages{$i,'version'} };
 
 			# Add the files in the RPM
-			local $fn = &software::check_files(
-				$software::packages{$i,'name'},
-				$software::packages{$i,'version'});
-			local $fi;
-			for($fi=0; $fi<$fn; $fi++) {
-				local $l = $software::files{$fi,'path'};
+			foreach my $l (&software::package_files(
+					$software::packages{$i,'name'})) {
 				if ($l =~ /\/((([A-Z][^\/]*\/)([^\/]+\/)?)?[^\/]+)\.pm$/) {
 					local $mn = $1;
 					$mn =~ s/\//::/g;

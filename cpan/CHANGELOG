@@ -21,3 +21,6 @@ The module is now available when running Webmin inside a Solaris zone, but only 
 ---- Changes since 1.390 ----
 Converted all code to use the new Webmin UI library, for a more consistent look.
 Modules can be forcibly compiled and install from the latest source instead of APT or YUM, using a new option on the main page.
+---- Changes since 1.440 ----
+Sped up the fetching of Perl modules installed from RPM and Debian packages.
+Switched the install and current modules tabs.

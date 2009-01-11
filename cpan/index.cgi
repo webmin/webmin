@@ -18,14 +18,46 @@ $formno = 0;
 
 # Start tabs
 @mods = &list_perl_modules();
-@tabs = ( [ 'mods', $text{'index_tabmods'}, 'index.cgi?mode=mods' ],
+@tabs = (
 	  [ 'install', $text{'index_tabinstall'}, 'index.cgi?mode=install' ],
+	  [ 'mods', $text{'index_tabmods'}, 'index.cgi?mode=mods' ],
 	  [ 'suggest', $text{'index_tabsuggest'}, 'index.cgi?mode=suggest' ],
 	);
-if (!$in{'mode'}) {
-	$in{'mode'} = @mods ? 'mods' : 'install';
-	}
+$in{'mode'} ||= 'install';
 print &ui_tabs_start(\@tabs, 'mode', $in{'mode'}, 1);
+
+# Display install form
+print &ui_tabs_start_tab('mode', 'install');
+print "$text{'index_installmsg'}<p>\n";
+print &ui_form_start("download.cgi", "form-data");
+
+# Work out of packages should be refreshed
+@st = stat($packages_file);
+if (@st) {
+	$now = time();
+	$refreshopt = "<br>".&ui_checkbox("refresh", 1, $text{'index_refresh'},
+			$st[9]+$config{'refresh_days'}*24*60*60 < $now);
+	}
+if ($config{'incyum'} && &can_list_packaged_modules()) {
+	$cpanopt = "<br>".&ui_checkbox("forcecpan", 1,
+				       $text{'index_forcecpan'}, 0);
+	}
+
+@opts = ( [ 3, $text{'index_cpan'},
+	    &ui_textbox("cpan", undef, 50)." ".
+	    &ui_button("...", undef, 0, "onClick='window.ifield = document.forms[$formno].cpan; chooser = window.open(\"cpan.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=800,height=500\"); chooser.ifield = window.ifield;'").
+	    $refreshopt.$cpanopt ],
+	  [ 0, $text{'index_local'},
+	    &ui_textbox("local", undef, 50)." ".
+	    &file_chooser_button("local", 0) ],
+	  [ 1, $text{'index_uploaded'},
+	    &ui_upload("upload", 50) ],
+	  [ 2, $text{'index_ftp'},
+	    &ui_textbox("url", undef, 50) ]
+	 );
+print &ui_radio_table("source", 3, \@opts);
+print &ui_form_end([ [ undef, $text{'index_installok'} ] ]);
+print &ui_tabs_end_tab();
 
 # Display perl modules
 print &ui_tabs_start_tab('mode', 'mods');
@@ -68,39 +100,6 @@ if (@mods) {
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
 	}
-print &ui_tabs_end_tab();
-
-# Display install form
-print &ui_tabs_start_tab('mode', 'install');
-print "$text{'index_installmsg'}<p>\n";
-print &ui_form_start("download.cgi", "form-data");
-
-# Work out of packages should be refreshed
-@st = stat($packages_file);
-if (@st) {
-	$now = time();
-	$refreshopt = "<br>".&ui_checkbox("refresh", 1, $text{'index_refresh'},
-			$st[9]+$config{'refresh_days'}*24*60*60 < $now);
-	}
-if ($config{'incyum'} && &can_list_packaged_modules()) {
-	$cpanopt = "<br>".&ui_checkbox("forcecpan", 1,
-				       $text{'index_forcecpan'}, 0);
-	}
-
-@opts = ( [ 3, $text{'index_cpan'},
-	    &ui_textbox("cpan", undef, 50)." ".
-	    &ui_button("...", undef, 0, "onClick='window.ifield = document.forms[$formno].cpan; chooser = window.open(\"cpan.cgi\", \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=800,height=500\"); chooser.ifield = window.ifield;'").
-	    $refreshopt.$cpanopt ],
-	  [ 0, $text{'index_local'},
-	    &ui_textbox("local", undef, 50)." ".
-	    &file_chooser_button("local", 0) ],
-	  [ 1, $text{'index_uploaded'},
-	    &ui_upload("upload", 50) ],
-	  [ 2, $text{'index_ftp'},
-	    &ui_textbox("url", undef, 50) ]
-	 );
-print &ui_radio_table("source", 3, \@opts);
-print &ui_form_end([ [ undef, $text{'index_installok'} ] ]);
 print &ui_tabs_end_tab();
 
 # Show button to install recommended Perl modules
