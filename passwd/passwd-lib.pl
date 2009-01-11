@@ -93,9 +93,12 @@ return undef;
 =head2 change_password(&user, pass, do-others)
 
 Updates a user's password. The required parameters are :
-user - A hash ref of user details, in the format supplied by find_user
-pass - The new password, in plain text
-do-others - If set to 1, the password is changed in other Webmin modules too
+
+=item user - A hash ref of user details, in the format supplied by find_user.
+
+=item pass - The new password, in plain text.
+
+=item do-others - If set to 1, the password is changed in other Webmin modules too.
 
 =cut
 sub change_password
