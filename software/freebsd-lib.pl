@@ -70,6 +70,24 @@ while($file = <PKGINFO>) {
 return $i;
 }
 
+# package_files(package)
+# Returns a list of all files in some package
+sub package_files
+{
+local ($pkg) = @_;
+local $qn = quotemeta($pkg);
+local @rv;
+&open_execute_command(RPM, "pkg_info -L $qn", 1, 1);
+while(<RPM>) {
+	s/\r|\n//g;
+	if (/^\//) {
+		push(@rv, $_);
+		}
+	}
+close(RPM);
+return @rv;
+}
+
 # installed_file(file)
 # Given a filename, fills %file with details of the given file and returns 1.
 # If the file is not known to the package system, returns 0

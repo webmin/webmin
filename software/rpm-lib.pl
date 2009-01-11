@@ -285,6 +285,22 @@ close(RPM);
 return $i;
 }
 
+# package_files(package, [version])
+# Returns a list of all files in some package
+sub package_files
+{
+local ($pkg, $version) = @_;
+local $qn = quotemeta($version ? "$pkg-$version" : $pkg);
+local @rv;
+&open_execute_command(RPM, "rpm -q -l $qn", 1, 1);
+while(<RPM>) {
+	s/\r|\n//g;
+	push(@rv, $_);
+	}
+close(RPM);
+return @rv;
+}
+
 # installed_file(file)
 # Given a filename, fills %file with details of the given file and returns 1.
 # If the file is not known to the package system, returns 0

@@ -120,6 +120,26 @@ while($file = <PKG>) {
 return $i;
 }
 
+# package_files(package)
+# Returns a list of all files in some package
+sub package_files
+{
+local ($pkg) = @_;
+local @rv;
+&open_readfile(PKG, "$package_dir/$_[0]");
+while(<PKG>) {
+	last if (/^FILE LIST:/i);
+	}
+while(my $file = <PKG>) {
+	$file =~ s/\r|\n//g;
+	next if ($file eq "./");
+	$file = '/'.$file;
+	push(@rv, $file);
+	}
+close(PKG);
+return @rv;
+}
+
 # installed_file(file)
 # Given a filename, fills %file with details of the given file and returns 1.
 # If the file is not known to the package system, returns 0
