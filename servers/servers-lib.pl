@@ -28,20 +28,28 @@ $cron_cmd = "$module_config_directory/auto.pl";
 
 Returns a list of registered Webmin servers. Each is a hash ref, with the
 following keys :
-id - A unique ID for this server, separate from the hostname
-host - The full Internet hostname or IP address
-port - Port number that Webmin listens on, such as 10000
-ssl - Set to 1 if Webmin is in SSL mode
-group - A tab-separated list of group names that this server is in
-desc - An optional human-readable description
-fast - Set to 1 if fast RPC mode (using non-HTTP TCP connections on ports
-       10001 and above) is used, 0 for only HTTP
-user - The login used to access Webmin on this system, such as root or admin
-pass - The password for the username above
-autouser - Set to 1 if the admin will be prompted for a username and password
-           when accessing this remote system in this module's UI.
-sameuser - Set to 1 if this current login and password will be used to login
-           to this remote system.
+
+=item id - A unique ID for this server, separate from the hostname.
+
+=item host - The full Internet hostname or IP address.
+
+=item port - Port number that Webmin listens on, such as 10000.
+
+=item ssl - Set to 1 if Webmin is in SSL mode.
+
+=item group - A tab-separated list of group names that this server is in.
+
+=item desc - An optional human-readable description.
+
+=item fast - Set to 1 if fast RPC mode (using non-HTTP TCP connections on ports 10001 and above) is used, 0 for only HTTP.
+
+=item user - The login used to access Webmin on this system, such as root or admin.
+
+=item pass - The password for the username above.
+
+=item autouser - Set to 1 if the admin will be prompted for a username and password when accessing this remote system in this module's UI.
+
+=item sameuser - Set to 1 if this current login and password will be used to login to this remote system.
 
 =cut
 sub list_servers
@@ -153,8 +161,10 @@ return 0;
 
 Returns a list of all Webmin server groups and their members, each of
 which is a hash ref with the keys :
-name - A unique group name
-members - An array ref of server hostnames
+
+=item name - A unique group name.
+
+=item members - An array ref of server hostnames.
 
 =cut
 sub list_all_groups
@@ -236,6 +246,20 @@ else {
 	}
 }
 
+=head2 @server_types
+
+This array lists operating system types known to this module. Each element
+is an array ref with the elements :
+
+=item Internal OS code, such as 'centos'.
+
+=item Human-readable OS name, such as 'CentOS Linux'.
+
+=item Webmin OS code for this type, like 'redhat-linux'.
+
+=item Webmin OS name for this type.
+
+=cut
 @server_types = (
 		  # Linux sub-types, which have to come first
 		  [ 'asianux', 'Asianux', undef, 'Asianux' ],
@@ -269,7 +293,7 @@ else {
 
 =head2 this_server
 
-Returns a fake servers-list entry for this server
+Returns a fake servers-list entry for this server.
 
 =cut
 sub this_server
@@ -331,7 +355,7 @@ return $ip[0] >= 192 ? "$ip[0].$ip[1].$ip[2].$end" :
 
 =head2 test_server(host)
 
-Returns undef if some server can be connected to OK, or an error message
+Returns undef if some server can be connected to OK, or an error message.
 
 =cut
 sub test_server
