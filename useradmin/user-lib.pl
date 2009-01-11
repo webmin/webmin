@@ -55,13 +55,44 @@ else { return 0; }
 
 =head2 list_users
 
-Returns an array of hashtable, each containing info about one user. Each hash
-will always contain the keys
-user, pass, uid, gid, real, home, shell
-In addition, if the system supports shadow passwords it may also have:
-change, min, max, warn, inactive, expire
-Or if it supports FreeBSD master.passwd info, it will also have
-class, change, expire
+Returns an array of hash references, each containing info about one user. Each
+hash will always contain the keys :
+
+=item user - The Unix username.
+
+=item pass - Encrypted password, perhaps using MD5 or DES.
+
+=item uid - User's ID.
+
+=item gid - User's primary group's ID.
+
+=item real - Real name for the user. May also contain office phone, home phone and office location, comma-separated.
+
+=item home - User's home directory.
+
+=item shell - Shell command to run when the user logs in.
+
+In addition, if the system supports shadow passwords it may also have the keys :
+
+=item change - Days since 1970 the password was last changed.
+
+=item min - Days before password may be changed.
+
+=item max - Days after which password must be changed.
+
+=item warn - Days before password is to expire that user is warned.
+
+=item inactive - Days after password expires that account is disabled.
+
+=item expire - Days since Jan 1, 1970 that account is disabled.
+
+Or if it supports FreeBSD master.passwd info, it will also have keys :
+
+=item class - User's login class.
+
+=item change - Unix time at which the password was last changed.
+
+=item expire - Unix time at which the password will expire.
 
 =cut
 sub list_users
@@ -547,7 +578,15 @@ if (!$batch_mode) {
 =head2 list_groups
 
 Returns a list of all the local groups as an array of hashes. Each will
-contain the keys : group, pass, gid, members
+contain the keys :
+
+=item group - The group name.
+
+=item pass - Rarely-used encrypted password, in DES or MD5 format.
+
+=item gid - Unix ID for the group.
+
+=item members - A comma-separated list of secondary group members.
 
 =cut
 sub list_groups
@@ -734,11 +773,8 @@ push(@list_groups_cache, $_[0]) if (defined(@list_groups_cache));
 =head2 modify_group(&old, &details)
 
 Update an existing Unix group specified in old based on the given details hash. 
-These can both be references to the same hash if you like. Required keys are
-gid - Unix group ID
-group - Group name
-pass - Encrypted password
-members - Comma-separated list of members
+These can both be references to the same hash if you like. The hash must be
+in the same format as returned by list_groups.
 
 =cut
 sub modify_group
@@ -1045,7 +1081,8 @@ return @rv;
 
 =head2 copy_file(file, destdir, uid, gid)
 
-Copy a file or directory and chown it
+Copy a file or directory and chown it, preserving symlinks and special files.
+Mainly for internal use by copy_skel_files.
 
 =cut
 sub copy_file
@@ -1093,7 +1130,8 @@ return @rv;
 
 =head2 lock_user_files
 
-Lock all password, shadow and group files
+Lock all password, shadow and group files. Should be called before performing
+any user or group operations.
 
 =cut
 sub lock_user_files
@@ -1107,7 +1145,8 @@ sub lock_user_files
 
 =head2 unlock_user_files
 
-Unlock all password, shadow and group files
+Unlock all password, shadow and group files. Should be called after all user
+or group operations are complete.
 
 =cut
 sub unlock_user_files
@@ -1119,9 +1158,11 @@ sub unlock_user_files
 &unlock_file($config{'master_file'});
 }
 
-# Functions similar to the standard password file ones, but which may
-# use webmin's reading of the user/group files instead.
+=head2 my_setpwent
 
+The same as Perl's setpwent function, but may read from /etc/passwd directly.
+
+=cut
 sub my_setpwent
 {
 if ($config{'from_files'}) {
@@ -1131,6 +1172,11 @@ if ($config{'from_files'}) {
 else { return setpwent(); }
 }
 
+=head2 my_getpwent
+
+The same as Perl's getpwent function, but may read from /etc/passwd directly.
+
+=cut
 sub my_getpwent
 {
 if ($config{'from_files'}) {
@@ -1146,6 +1192,11 @@ if ($config{'from_files'}) {
 else { return getpwent(); }
 }
 
+=head2 my_endpwent
+
+Should be called when you are done with my_setpwent and my_getpwent.
+
+=cut
 sub my_endpwent
 {
 if ($config{'from_files'}) {
@@ -1158,6 +1209,12 @@ elsif ($gconfig{'os_type'} eq 'hpux') {
 else { return endpwent(); }
 }
 
+=head2 my_getpwnam(username)
+
+Looks up a user by name, like the getpwnam Perl function, but may read 
+/etc/passwd directly.
+
+=cut
 sub my_getpwnam
 {
 if ($config{'from_files'}) {
@@ -1171,6 +1228,12 @@ if ($config{'from_files'}) {
 else { return getpwnam($_[0]); }
 }
 
+=head2 my_getpwuid(uid)
+
+Looks up a user by ID, like the getpwnam Perl function, but may read 
+/etc/passwd directly.
+
+=cut
 sub my_getpwuid
 {
 if ($config{'from_files'}) {
@@ -1183,13 +1246,24 @@ if ($config{'from_files'}) {
 else { return getpwuid($_[0]); }
 }
 
+=head2 pw_user_rv(&user, want-array, username-field)
+
+Internal function to convert a user hash reference into a list in the format
+return by the getpw* family of functions.
+
+=cut
 sub pw_user_rv
 {
-return $_[0] ? ( $_[0]->{'user'}, $_[0]->{'pass'}, $_[0]->{'uid'},
+return $_[1] ? ( $_[0]->{'user'}, $_[0]->{'pass'}, $_[0]->{'uid'},
 		 $_[0]->{'gid'}, undef, undef, $_[0]->{'real'},
 		 $_[0]->{'home'}, $_[0]->{'shell'}, undef ) : $_[0]->{$_[2]};
 }
 
+=head2 my_setgrent
+
+The same as Perl's setgrent function, but may read from /etc/group directly.
+
+=cut
 sub my_setgrent
 {
 if ($config{'from_files'}) {
@@ -1199,6 +1273,11 @@ if ($config{'from_files'}) {
 else { return setgrent(); }
 }
 
+=head2 my_getgrent
+
+The same as Perl's getgrent function, but may read from /etc/group directly.
+
+=cut
 sub my_getgrent
 {
 if ($config{'from_files'}) {
@@ -1214,6 +1293,11 @@ if ($config{'from_files'}) {
 else { return getgrent(); }
 }
 
+=head2 my_endgrent
+
+Should be called when you are done with my_setgrent and my_getgrent.
+
+=cut
 sub my_endgrent
 {
 if ($config{'from_files'}) {
@@ -1226,6 +1310,11 @@ elsif ($gconfig{'os_type'} eq 'hpux') {
 else { return endgrent(); }
 }
 
+=head2 my_getgrnam(group)
+
+Looks up a group by name, like the Perl getgrnam function.
+
+=cut
 sub my_getgrnam
 {
 if ($config{'from_files'}) {
@@ -1239,6 +1328,11 @@ if ($config{'from_files'}) {
 else { return getgrnam($_[0]); }
 }
 
+=head2 my_getgrgid(gid)
+
+Looks up a group by GID, like the Perl getgrgid function.
+
+=cut
 sub my_getgrgid
 {
 if ($config{'from_files'}) {
@@ -1260,7 +1354,13 @@ return $_[1] ? ( $_[0]->{'group'}, $_[0]->{'pass'}, $_[0]->{'gid'},
 =head2 auto_home_dir(base, username, groupname)
 
 Returns an automatically generated home directory, and creates needed
-parent dirs
+parent dirs. The parameters are :
+
+=item base - Base directory, like /home.
+
+=item username - The user's login name.
+
+=item groupname - The user's primary group name.
 
 =cut
 sub auto_home_dir
@@ -1302,7 +1402,7 @@ sub mkdir_if_needed
 
 =head2 set_netinfo(&user)
 
-Update a NetInfo user based on a Webmin user hash
+Update a NetInfo user based on a Webmin user hash. Mainly for internal use.
 
 =cut
 sub set_netinfo
@@ -1321,7 +1421,7 @@ local %u = %{$_[0]};
 
 =head2 set_group_netinfo(&group)
 
-Update a NetInfo group based on a Webmin group hash
+Update a NetInfo group based on a Webmin group hash. Mainly for internal use.
 
 =cut
 sub set_group_netinfo
@@ -1335,7 +1435,8 @@ local $mems = join(" ", map { "'$_'" } split(/,/, $g{'members'}));
 
 =head2 set_user_dirinfo(&user)
 
-Update a user in OSX directive services based on a Webmin user hash
+Update a user in OSX directive services based on a Webmin user hash.
+Mainly for internal use.
 
 =cut
 sub set_user_dirinfo
@@ -1374,7 +1475,8 @@ else {
 
 =head2 set_group_dirinfo(&group)
 
-Update a group in OSX directive services based on a Webmin group hash
+Update a group in OSX directive services based on a Webmin group hash.
+Mainly for internal use.
 
 =cut
 sub set_group_dirinfo
@@ -1392,7 +1494,7 @@ foreach my $k (keys %group_properties_map) {
 =head2 check_password_restrictions(pass, username)
 
 Returns an error message if the given password fails length and other
-checks, or undef if it is OK
+checks, or undef if it is OK.
 
 =cut
 sub check_password_restrictions
@@ -1457,7 +1559,8 @@ return undef;
 
 =head2 check_username_restrictions(username)
 
-Returns an error message if a username fails some restriction, or undef
+Returns an error message if a username fails some restriction, or undef if
+it is OK.
 
 =cut
 sub check_username_restrictions
@@ -1473,7 +1576,7 @@ return undef;
 
 =head2 can_use_group(&acl, group)
 
-Returns 1 if some group can be used as a primary or secondary, 0 if not
+Returns 1 if some group can be used as a primary or secondary, 0 if not.
 
 =cut
 sub can_use_group
@@ -1495,7 +1598,7 @@ else {
 
 =head2 refresh_nscd
 
-Sends a HUP signal to the nscd process, so that any caches are reloaded
+Sends a HUP signal to the nscd process, so that any caches are reloaded.
 
 =cut
 sub refresh_nscd
@@ -1526,8 +1629,19 @@ sleep(1);	# Give ncsd time to react
 =head2 set_user_envs(&user, action, [plainpass], [secondaries], [&olduser], [oldplainpass])
 
 Sets up the USERADMIN_ environment variables for a user update of some kind,
-prior to calling making_changes or made_changes. action must be one of
-CREATE_USER, MODIFY_USER or DELETE_USER
+prior to calling making_changes or made_changes. The parameters are :
+
+=item user - User details hash reference, in the same format as returned by list_users.
+
+=item action - Must be one of CREATE_USER, MODIFY_USER or DELETE_USER.
+
+=item plainpass - The user's un-encrypted password, if available.
+
+=item secondaries - An array reference of secondary group names the user is a member of.
+
+=item olduser - When modifying a user, the hash reference of it's old details.
+
+=item oldplainpass - When modifying a user, it's old un-encrypted password, if available.
 
 =cut
 sub set_user_envs
@@ -1558,8 +1672,13 @@ if ($olduser) {
 =head2 set_group_envs(&group, action, [&oldgroup])
 
 Sets up the USERADMIN_ environment variables for a group update of some kind,
-prior to calling making_changes or made_changes. action must be one of
-CREATE_GROUP, MODIFY_GROUP or DELETE_GROUP
+prior to calling making_changes or made_changes. The parameters are :
+
+=item group - Group details hash reference, in the same format as returned by list_groups.
+
+=item action - Must be one of CREATE_GROUP, MODIFY_GROUP or DELETE_GROUP.
+
+=item oldgroup - When modifying a group, the hash reference of it's old details.
 
 =cut
 sub set_group_envs
@@ -1580,7 +1699,7 @@ if ($oldgroup) {
 
 =head2 clear_envs
 
-Removes all variables set by set_user_envs and set_group_envs
+Removes all variables set by set_user_envs and set_group_envs.
 
 =cut
 sub clear_envs
@@ -1593,7 +1712,11 @@ foreach $e (keys %ENV) {
 
 =head2 encrypt_password(password, [salt])
 
-Encrypts a password using the encryption format configured for this system
+Encrypts a password using the encryption format configured for this system.
+If the salt parameter is given, it will be used for hashing the password -
+this is typically an already encrypted password, that you want to compare with
+the result of this function to check that passwords match. If missing, a salt
+will be randomly generated.
 
 =cut
 sub encrypt_password
@@ -1677,6 +1800,11 @@ else {
 =head2 build_user_used([&uid-hash], [&shell-list], [&username-hash])
 
 Fills in hashes with used UIDs, shells and usernames, based on existing users.
+Useful for allocating a new UID, with code like :
+
+  my %used;
+  useradmin::build_user_used(\%used);
+  $newuid = useradmin::allocate_uid(\%used);
 
 =cut
 sub build_user_used
@@ -1700,6 +1828,11 @@ foreach $u (&list_users()) {
 =head2 build_group_used([&gid-hash], [&groupname-hash])
 
 Fills in hashes with used GIDs and group names, based on existing groups.
+Useful for allocating a new GID, with code like :
+
+  my %used;
+  useradmin::build_group_used(\%used);
+  $newgid = useradmin::allocate_gid(\%used);
 
 =cut
 sub build_group_used
@@ -1720,7 +1853,8 @@ foreach $g (&list_groups()) {
 
 =head2 allocate_uid(&uids-used)
 
-MISSING DOCUMENTATION
+Given a hash reference whose keys are UIDs already in use, returns a free UID
+suitable for a new user.
 
 =cut
 sub allocate_uid
@@ -1735,7 +1869,8 @@ return $rv;
 
 =head2 allocate_gid(&gids-used)
 
-MISSING DOCUMENTATION
+Given a hash reference whose keys are GIDs already in use, returns a free GID
+suitable for a new group.
 
 =cut
 sub allocate_gid
@@ -1750,7 +1885,11 @@ return $rv;
 
 =head2 list_allowed_users(&access, &allusers)
 
-Returns a list of users to whom access is allowed
+Returns a list of users to whom access is allowed. The parameters are :
+
+=item access - A hash reference of Webmin user permissions, such as returned by get_module_acl.
+
+=item allusers - List of all users to filter down.
 
 =cut
 sub list_allowed_users
@@ -1824,7 +1963,11 @@ else {
 
 =head2 list_allowed_groups(&access, &allgroups)
 
-Returns a list of groups to whom access is allowed
+Returns a list of groups to whom access is allowed. The parameters are :
+
+=item access - A hash reference of Webmin user permissions, such as returned by get_module_acl.
+
+=item allgroups - List of all Unix groups to filter down.
 
 =cut
 sub list_allowed_groups
@@ -2251,7 +2394,7 @@ return $rv;
 
 =head2 list_last_logins([user], [max])
 
-Returns a list of array references, each containing the details of a login
+Returns a list of array references, each containing the details of a login.
 
 =cut
 sub list_last_logins
@@ -2270,7 +2413,7 @@ return @rv;
 
 =head2 user_link(&user)
 
-MISSING DOCUMENTATION
+Returns a link to a user editing form. Mainly for internal use.
 
 =cut
 sub user_link
@@ -2296,7 +2439,7 @@ else {
 
 =head2 group_link(&group)
 
-MISSING DOCUMENTATION
+Returns a link to a group editing form. Mainly for internal use.
 
 =cut
 sub group_link
@@ -2316,7 +2459,8 @@ else {
 
 =head2 sort_users(&users, mode)
 
-Sorts a list of users, and returns the results
+Sorts a list of users according to the user's preference for this module,
+and returns the results.
 
 =cut
 sub sort_users
@@ -2348,7 +2492,8 @@ return @ulist;
 
 =head2 sort_groups(&groups, mode)
 
-MISSING DOCUMENTATION
+Sorts a list of groups according to the user's preference for this module,
+and returns the results.
 
 =cut
 sub sort_groups
@@ -2366,7 +2511,7 @@ return @glist;
 
 =head2 create_home_directory(&user, [real-dir])
 
-Creates and chmod's the home directory for a user, or calls error on failure
+Creates and chmod's the home directory for a user, or calls error on failure.
 
 =cut
 sub create_home_directory
@@ -2384,7 +2529,7 @@ $home ||= $user->{'home'};
 
 =head2 delete_home_directory(&user)
 
-Delete's some users home directory
+Deletes some users home directory.
 
 =cut
 sub delete_home_directory
@@ -2408,7 +2553,7 @@ if ($user->{'home'} && -d $user->{'home'}) {
 =head2 supports_temporary_disable
 
 Returns 1 if temporary locking of passwords (with an ! at the start of the
-hash) is supported.
+hash) is supported on this OS.
 
 =cut
 sub supports_temporary_disable
