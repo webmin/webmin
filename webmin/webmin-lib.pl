@@ -119,6 +119,11 @@ return sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) } @rv;
 Installs a webmin module or theme, and returns either an error message
 or references to three arrays for descriptions, directories and sizes.
 On success or failure, the file is deleted if the unlink parameter is set.
+Unless the nodeps parameter is set to 1, any missing dependencies will cause
+installation to fail. 
+
+Any new modules will be granted to the users and groups named in the fourth
+paramter, which must be an array reference.
 
 =cut
 sub install_webmin_module
@@ -633,7 +638,7 @@ return \@rv;
 
 =head2 standard_chooser_button(input, [form])
 
-Returns HTML for a popup button for choosing a standard module
+Returns HTML for a popup button for choosing a standard module.
 
 =cut
 sub standard_chooser_button
@@ -711,7 +716,8 @@ $newmodule_users_file = "$config_directory/newmodules";
 
 =head2 get_newmodule_users
 
-Returns a ref to an array of users to whom new modules are granted, or undef
+Returns a ref to an array of users to whom new modules are granted by default,
+or undef if the admin hasn't chosen any yet.
 
 =cut
 sub get_newmodule_users
@@ -733,7 +739,7 @@ else {
 =head2 save_newmodule_users(&users)
 
 Saves the list of users to whom new modules are granted. If undef is given,
-the default behavious is used
+the default behaviour (of using root or admin) is used.
 
 =cut
 sub save_newmodule_users
@@ -782,8 +788,18 @@ return @sockets;
 
 =head2 fetch_updates(url, [login, pass])
 
-Returns a list of updates from some URL, or calls &error.
-Format is  module version url support description
+Returns a list of updates from some URL, or calls &error. Each element is an 
+array reference containing :
+
+=item Module directory name.
+
+=item Version number.
+
+=item Absolute or relative download URL.
+
+=item Operating systems the update is relevant for, in the same format as the os_support line in a module.info file.
+
+=item Human-readable description of the update.
 
 =cut
 sub fetch_updates
@@ -822,7 +838,7 @@ return $job;
 
 =head2 get_ipkeys(&miniserv)
 
-Returns a list of IP address to key file mappings from a miniserv.conf entry
+Returns a list of IP address to key file mappings from a miniserv.conf entry.
 
 =cut
 sub get_ipkeys
@@ -842,7 +858,7 @@ return @rv;
 
 =head2 save_ipkeys(&miniserv, &keys)
 
-Updates miniserv.conf entries from the given list of keys
+Updates miniserv.conf entries from the given list of keys.
 
 =cut
 sub save_ipkeys
@@ -864,7 +880,8 @@ foreach $k (@{$_[1]}) {
 
 =head2 validate_key_cert(key, [cert])
 
-Call &error if some key and cert file don't look correct
+Call &error if some key and cert file don't look correct, based on the BEGIN
+line.
 
 =cut
 sub validate_key_cert
@@ -918,7 +935,7 @@ return %rv;
 =head2 show_webmin_notifications([no-updates])
 
 Print various notifications for the current user, if any. These can include
-password expiry, Webmin updats and more.
+password expiry, Webmin updates and more.
 
 =cut
 sub show_webmin_notifications
@@ -1107,7 +1124,7 @@ return @notifs;
 
 =head2 get_system_uptime
 
-Returns the number of seconds the system has been up, or undef if un-available
+Returns the number of seconds the system has been up, or undef if un-available.
 
 =cut
 sub get_system_uptime
@@ -1145,11 +1162,16 @@ return undef;
 =head2 list_operating_systems([os-list-file])
 
 Returns a list of known OSs, each of which is a hash ref with keys :
-realtype - A human-readable OS name, like Ubuntu Linux
-realversion - A human-readable version, like 8.04
-type - Webmin's internal OS code, like debian-linux
-version - Webmin's internal version number, like 3.1
-code - A fragment of Perl that will return true if evaluated on this OS
+
+=item realtype - A human-readable OS name, like Ubuntu Linux.
+
+=item realversion - A human-readable version, like 8.04.
+
+=item type - Webmin's internal OS code, like debian-linux.
+
+=item version - Webmin's internal version number, like 3.1.
+
+=item code - A fragment of Perl that will return true if evaluated on this OS.
 
 =cut
 sub list_operating_systems
@@ -1211,7 +1233,7 @@ return 0;
 =head2 submit_os_info(id)
 
 Send via email a message about this system's OS and Perl version. Returns
-undef if OK, or an error message
+undef if OK, or an error message.
 
 =cut
 sub submit_os_info
@@ -1239,7 +1261,7 @@ return $@ ? $@ : undef;
 
 =head2 get_webmin_id
 
-Returns a (hopefully) unique ID for this Webmin install
+Returns a (hopefully) unique ID for this Webmin install.
 
 =cut
 sub get_webmin_id
@@ -1308,7 +1330,7 @@ return 0;
 
 =head2 prefix_to_mask(prefix)
 
-Converts a number like 24 to a mask like 255.255.255.0
+Converts a number like 24 to a mask like 255.255.255.0.
 
 =cut
 sub prefix_to_mask
@@ -1424,7 +1446,7 @@ foreach my $d (@$dirs) {
 =head2 get_module_install_type(dir)
 
 Returns the installation method used for some module (such as 'rpm'), or undef
-if it was installed from a .wbm
+if it was installed from a .wbm.
 
 =cut
 sub get_module_install_type
@@ -1441,7 +1463,7 @@ return $type;
 =head2 get_install_type
 
 Returns the package type Webmin was installed form (rpm, deb, solaris-pkg
-or undef for tar.gz)
+or undef for tar.gz).
 
 =cut
 sub get_install_type
@@ -1564,7 +1586,7 @@ return undef;
 
 =head2 cert_pkcs12_data(keyfile, [certfile])
 
-Returns a cert in PKCS12 format
+Returns a cert in PKCS12 format.
 
 =cut
 sub cert_pkcs12_data
@@ -1589,6 +1611,7 @@ return $data;
 =head2 get_blocked_users_hosts(&miniserv)
 
 Returns a list of blocked users and hosts from the file written by Webmin
+at run-time.
 
 =cut
 sub get_blocked_users_hosts
@@ -1615,7 +1638,7 @@ return @rv;
 
 =head2 show_ssl_key_form([defhost], [defemail], [deforg])
 
-Returns HTML for inputs to generate a new self-signed cert
+Returns HTML for inputs to generate a new self-signed cert.
 
 =cut
 sub show_ssl_key_form
@@ -1788,7 +1811,15 @@ return $version ? (1, $version)
 =head2 filter_updates(&updates, [version], [include-third], [include-missing])
 
 Given a list of updates, filters them to include only those that are
-suitable for this system.
+suitable for this system. The parameters are :
+
+=item updates - Array ref of updates, as returned by fetch_updates.
+
+=item version - Webmin version number to use in comparisons.
+
+=item include-third - Set to 1 to include non-core modules in the results.
+
+=item include-missing - Set to 1 to include modules not currently installed.
 
 =cut
 sub filter_updates
