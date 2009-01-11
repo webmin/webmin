@@ -10,7 +10,7 @@ Functions for configuring Usermin running on this system. Example usage :
 =cut
 
 do '../web-lib.pl';
-{'usermin_dir'}&init_config();
+&init_config();
 do '../ui-lib.pl';
 %access = &get_module_acl();
 $access{'upgrade'} = 0 if (&is_readonly_mode());	# too hard to fake
@@ -138,7 +138,8 @@ sub put_usermin_config
 
 =head2 list_themes
 
-Returns an array of all usermin themes
+Returns an array of all usermin themes. The format is the same as the 
+webmin::list_themes function.
 
 =cut
 sub list_themes
@@ -190,11 +191,16 @@ return @mlist;
 
 Returns a hash contain details of a module, in the same format as 
 Webmin's get_module_info function. Useful keys include :
-dir - The module's relative directory
-desc - The human-readable title
-category - Category the module is in, like login or apps
-depends - Space-separated list of dependent modules
-os_support - List of supported operating systems and versions
+
+=item dir - The module's relative directory.
+
+=item desc - The human-readable title.
+
+=item category - Category the module is in, like login or apps.
+
+=item depends - Space-separated list of dependent modules.
+
+=item os_support - List of supported operating systems and versions.
 
 =cut
 sub get_usermin_module_info
@@ -317,7 +323,7 @@ if ($_[1]) { %{$_[1]} = %usermin_acl_array_cache; }
 
 =head2 usermin_acl_filename
 
-Returns the file containing the webmin ACL
+Returns the file containing the webmin ACL.
 
 =cut
 sub usermin_acl_filename
@@ -599,9 +605,12 @@ return [ \@mdescs, \@mdirs, \@msizes ];
 Returns the list of additional module restrictions for usermin.
 This is a list of array refs, each element of which contains a username,
 a flag and an array ref of module names. The flag can be one of :
-+ - Add the modules to the list available to this user
-- - Take the modules away from this user
-blank - Assign the modules to the list for this user
+
+=item + - Add the modules to the list available to this user.
+
+=item - - Take the modules away from this user.
+
+=item blank - Assign the modules to the list for this user.
 
 =cut
 sub list_usermin_usermods
@@ -713,7 +722,7 @@ return sprintf("%.2f0", $_[0]);
 =head2 find_cron_job(\@jobs)
 
 Finds the cron job for Usermin updates, given an array ref of cron jobs
-as returned by cron::list_cron_jobs
+as returned by cron::list_cron_jobs.
 
 =cut
 sub find_cron_job
