@@ -107,3 +107,4 @@ Many Japanese translation updates, thanks to Kazuya Masuda.
 ---- Changes since 1.440 ----
 Russian translation updates, thanks to Anton Statutov.
 Webmin's serialization functions can now handle objects, which allows them to be passed as parameters to remote function calls. Both caller and recipient must have the object's class installed though.
+Converted commands in the core web-lib-funcs.pl API file to POD format, and added more details about each function.

@@ -84,3 +84,4 @@ Added a field to the SSL Encryption page for setting allowed ciphers.
 Added an advanced option to have Webmin turn off the immutable bit on files before writing to them, and turn it back on when done.
 Re-designed the Webmin Themes page to use tabs.
 Added support for overlay themes, which can be selected in addition to a regular theme. An overlay typically just modifies the CSS or images in the real theme, making simple design changes easier.
+Converted commands in the module's API file to POD format, and added more details about each function.

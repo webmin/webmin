@@ -55,3 +55,4 @@ Added a Module Config option to use a text box for entering secondary group memb
 Created a page for exporting groups to a batch file, for importing on other systems.
 Added support for creating, deleting and modifying groups from a batch file. This is similar to the long-standing batch user management functionality.
 Added support for Blowfish password hashing, which can be enabled on the Module Config page. On Solaris systems, it will be used if enabled in /etc/security/policy.conf. Requires the Crypt::Eksblowfish::Bcrypt Perl module though.
+Converted commands in the module's API file to POD format, and added more details about each function.

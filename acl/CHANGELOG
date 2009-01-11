@@ -54,3 +54,4 @@ Removed the Hide Unused button and associated functionality, as un-available mod
 Moved the 'global ACL' fields to the Edit User and Edit Group pages, so that restrictions applying to all modules can be more easily found and edited.
 Added a per-user option to not grant that user new module permissions when Webmin is upgraded.
 If any theme overlays are installed, users' overlays can be selected on the Edit User page.
+Converted commands in the module's API file to POD format, and added more details about each function.

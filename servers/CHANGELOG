@@ -15,3 +15,5 @@ Fixed return link when using a framed theme.
 Added several new operating systems and distributions to the server type list.
 ---- Changes since 1.420 ----
 Allow the Backup Configuration Files module to save and restore Webmin server details.
+---- Changes since 1.440 ----
+Converted commands in the module's API file to POD format, and added more details about each function.

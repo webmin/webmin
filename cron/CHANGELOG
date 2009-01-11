@@ -34,3 +34,4 @@ Added an access control option to prevent individual Webmin users from creating 
 Disable time and day lists when 'All' is selected, to indicate that they are un-usable.
 ---- Changes since 1.440 ----
 The search form for jobs is always visible, even when there are not too many jobs to show.
+Converted commands in the module's API file to POD format, and added more details about each function.

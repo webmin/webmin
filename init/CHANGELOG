@@ -18,3 +18,5 @@ Added start_action and stop_action functions for starting and stopping services 
 Re-wrote all user interface code to use the new Webmin UI library, for a more consistent look.
 ---- Changes since 1.400 ----
 Updated the API used by other modules to allow new actions to be created on MacOS X systems, such as the firewall startup script.
+---- Changes since 1.440 ----
+Converted commands in the module's API file to POD format, and added more details about each function.

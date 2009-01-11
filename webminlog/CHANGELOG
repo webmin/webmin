@@ -21,3 +21,6 @@ When viewing the details of a logged action, an annotation can be entered to exp
 Added a section to the Action Details page for viewing raw log data, which can show more detail.
 ---- Changes since 1.410 ----
 Added an option to search for actions by non-Webmin users (such as those authenticating via sudo).
+---- Changes since 1.440 ----
+Added the list_webmin_log function, for other modules wanting to search the Webmin log.
+Converted commands in the module's API file to POD format, and added more details about each function.
