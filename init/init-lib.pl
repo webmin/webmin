@@ -27,11 +27,16 @@ do '../ui-lib.pl';
 =head2 init_mode
 
 This variable is set based on the bootup system in use. Possible values are :
-osx - MacOSX hostconfig files
-rc - FreeBSD 6+ RC files
-init - System V init.d files, seen on Linux and Solaris
-local - A single rc.local file
-win32 - Windows services
+
+=item osx - MacOSX hostconfig files
+
+=item rc - FreeBSD 6+ RC files
+
+=item init - System V init.d files, seen on Linux and Solaris
+
+=item local - A single rc.local file
+
+=item win32 - Windows services
 
 =cut
 if ($config{'hostconfig'}) {
@@ -74,7 +79,7 @@ return $_[1] eq "S" ? @rv : reverse(@rv);
 
 =head2 list_runlevels
 
-Returns a list of known runlevels, such as : 2 3 5
+Returns a list of known runlevels, such as : 2 3 5.
 
 =cut
 sub list_runlevels
@@ -94,7 +99,7 @@ return sort(@rv);
 
 =head2 list_actions
 
-List boot time action names from init.d, such as httpd and cron
+List boot time action names from init.d, such as httpd and cron.
 
 =cut
 sub list_actions
@@ -125,8 +130,7 @@ return @rv;
 =head2 action_levels(S|K, action)
 
 Return a list of run levels in which some action (from init.d) is started
-or stopped. Each item is a space-separated string in the format :
-level order name
+or stopped. Each item is a space-separated string in the format : level order name
 
 =cut
 sub action_levels
@@ -153,7 +157,7 @@ return @rv;
 
 =head2 action_filename(name)
 
-Returns the path to the file in init.d for some action, such as /etc/init.d/foo
+Returns the path to the file in init.d for some action, such as /etc/init.d/foo.
 
 =cut
 sub action_filename
@@ -164,7 +168,7 @@ return $_[0] =~ /^\// ? $_[0] : "$config{init_dir}/$_[0]";
 =head2 runlevel_filename(level, S|K, order, name)
 
 Returns the path to the actual script run at boot for some action, such as
-/etc/rc3.d/S99foo
+/etc/rc3.d/S99foo.
 
 =cut
 sub runlevel_filename
@@ -178,10 +182,14 @@ return &runlevel_dir($_[0])."/$_[1]$_[2]$n";
 =head2 add_rl_action(action, runlevel, S|K, order)
 
 Add some existing action to a runlevel. The parameters are :
-action - Name of the action, like foo
-runlevel - A runlevel number, like 3
-S|K - Either S for an action to run at boot, or K for shutdown
-order - Numeric boot order, like 99
+
+=item action - Name of the action, like foo
+
+=item runlevel - A runlevel number, like 3
+
+=item S|K - Either S for an action to run at boot, or K for shutdown
+
+=item order - Numeric boot order, like 99
 
 =cut
 sub add_rl_action
@@ -205,9 +213,12 @@ else {
 =head2 delete_rl_action(name, runlevel, S|K)
 
 Delete some action from a runlevel. The parameters are :
-action - Name of the action, like foo
-runlevel - A runlevel number, like 3
-S|K - Either S for an action to run at boot, or K for shutdown
+
+=item action - Name of the action, like foo.
+
+=item runlevel - A runlevel number, like 3.
+
+=item S|K - Either S for an action to run at boot, or K for shutdown.
 
 =cut
 sub delete_rl_action
@@ -233,10 +244,14 @@ closedir(DIR);
 =head2 reorder_rl_action(name, runlevel, S|K, new_order)
 
 Change the boot order of some existing runlevel action. The parameters are :
-action - Name of the action, like foo
-runlevel - A runlevel number, like 3
-S|K - Either S for an action to run at boot, or K for shutdown
-new_order - New numeric boot order to use, like 99
+
+=item action - Name of the action, like foo.
+
+=item runlevel - A runlevel number, like 3.
+
+=item S|K - Either S for an action to run at boot, or K for shutdown.
+
+=item new_order - New numeric boot order to use, like 99.
 
 =cut
 sub reorder_rl_action
@@ -269,8 +284,10 @@ closedir(DIR);
 
 Change the name of an action in init.d, and re-direct all soft links
 to it from the runlevel directories. Parameters are :
-old - Old action name
-new - New action name
+
+=item old - Old action name.
+
+=item new - New action name.
 
 =cut
 sub rename_action
@@ -522,11 +539,16 @@ elsif ($init_mode eq "osx") {
 
 Makes some action start at boot time, creating the script by copying the
 specified file if necessary. The parameters are :
-action - Name of the action to create or enable
-description - A human-readable description for the action
-startcode - Shell commands to run at boot time
-stopcode - Shell commands to run at shutdown time
-statuscode - Shell code to output the action's status
+
+=item action - Name of the action to create or enable.
+
+=item description - A human-readable description for the action.
+
+=item startcode - Shell commands to run at boot time.
+
+=item stopcode - Shell commands to run at shutdown time.
+
+=item statuscode - Shell code to output the action's status.
 
 If this is called for a named action that already exists (even if it isn't
 enabled), only the first parameter needs to be given.
@@ -1053,10 +1075,14 @@ else {
 Returns a list of known Win32 services, each of which is a hash ref. If the
 name parameter is given, only details of that service are returned. Useful
 keys for each hash are :
-name - A unique name for the service
-desc - A human-readable description
-boot - Set to 2 if started at boot, 3 if not, 4 if disabled
-state -Set to 4 if running now, 1 if stopped
+
+=item name - A unique name for the service.
+
+=item desc - A human-readable description.
+
+=item boot - Set to 2 if started at boot, 3 if not, 4 if disabled.
+
+=item state -Set to 4 if running now, 1 if stopped.
 
 =cut
 sub list_win32_services
@@ -1190,11 +1216,16 @@ return $? ? $out : undef;
 
 Returns a list of known BSD RC scripts, and their enabled statuses. Each
 element of the return list is a hash ref, with the following keys :
-name - A unique name for the script
-desc - A human-readable description
-enabled - Set to 1 if enabled, 0 if not, 2 if unknown
-file - Full path to the action script file
-standard - Set to 0 for user-defined actions, 1 for those supplied with FreeBSD
+
+=item name - A unique name for the script.
+
+=item desc - A human-readable description.
+
+=item enabled - Set to 1 if enabled, 0 if not, 2 if unknown.
+
+=item file - Full path to the action script file.
+
+=item standard - Set to 0 for user-defined actions, 1 for those supplied with FreeBSD.
 
 =cut
 sub list_rc_scripts
@@ -1274,10 +1305,12 @@ if (!$found && @_ > 1) {
 
 Reads the default and system-specific FreeBSD rc.conf files, and parses
 them into a list of hash refs. Each element in the list has the following keys:
-name - Name of this configuration parameter. May appear more than once, with
-       the later one taking precedence.
-value - Current value.
-cmt - A human-readable comment about the parameter.
+
+=item name - Name of this configuration parameter. May appear more than once, with the later one taking precedence.
+
+=item value - Current value.
+
+=item cmt - A human-readable comment about the parameter.
 
 =cut
 sub get_rc_conf
