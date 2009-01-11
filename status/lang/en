@@ -387,7 +387,7 @@ ftp_etls=TLS cannot be enabled unless the $1 Perl module is installed
 ftp_econn=TLS FTP connection failed
 ftp_econn2=TLS FTP connection failed : $1
 ftp_elogin=TLS FTP login failed : $1
-ftp_efile=TLS FTP download failed : $1
+ftp_etlsfile=TLS FTP download failed : $1
 
 query_driver=SQL database type
 query_db=Database name
