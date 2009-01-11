@@ -41,18 +41,28 @@ $email_cmd = "$module_config_directory/email.pl";
 
 Returns a list of details of local filesystems on which quotas are supported.
 Each is an array ref whose values are :
-directory - Mount point, like /home
-device - Source device, like /dev/hda1
-type - Filesystem type, like ext3
-options - Mount options, like rw,usrquota,grpquota
-quotacan - Can this filesystem type support quotas?
-quotanow - Are quotas enabled right now?
+
+=item directory - Mount point, like /home
+
+=item device - Source device, like /dev/hda1
+
+=item type - Filesystem type, like ext3
+
+=item options - Mount options, like rw,usrquota,grpquota
+
+=item quotacan - Can this filesystem type support quotas?
+
+=item quotanow - Are quotas enabled right now?
 
 The values of quotacan and quotanow are :
-0 - No quotas
-1 - User quotas only
-2 - Group quotas only
-3 - User and group quotas
+
+=item 0 - No quotas
+
+=item 1 - User quotas only
+
+=item 2 - Group quotas only
+
+=item 3 - User and group quotas
 
 =cut
 sub list_filesystems
@@ -86,9 +96,21 @@ if ($_[0] ne "-") {
 
 =head2 user_quota(user, filesystem)
 
-Returns an array of  ublocks, sblocks, hblocks, ufiles, sfiles, hfiles
-for some user on some filesystem, or an empty array if no quota has been
-assigned.
+Returns an array of quotas and usage information for some user on some
+filesystem, or an empty array if no quota has been assigned. The array
+elements are :
+
+=item Number of blocks used.
+
+=item Soft block quota.
+
+=item Hard block quota.
+
+=item Number of files used.
+
+=item Soft file quota.
+
+=item Hard file quota.
 
 =cut
 sub user_quota
@@ -129,12 +151,18 @@ return ();
 =head2 edit_user_quota(user, filesys, sblocks, hblocks, sfiles, hfiles)
 
 Sets the disk quota for some user. The parameters are :
-user - Unix username
-filesys - Filesystem on which to change quotas
-sblocks - Soft block limit
-hblocks - Hard block limit
-sfiles - Sort files limit
-hfiles - Hard files limit
+
+=item user - Unix username.
+
+=item filesys - Filesystem on which to change quotas.
+
+=item sblocks - Soft block limit.
+
+=item hblocks - Hard block limit.
+
+=item sfiles - Sort files limit.
+
+=item hfiles - Hard files limit.
 
 =cut
 sub edit_user_quota
@@ -181,12 +209,18 @@ else {
 =head2 edit_group_quota(group, filesys, sblocks, hblocks, sfiles, hfiles)
 
 Sets the disk quota for some group The parameters are :
-user - Unix group name
-filesys - Filesystem on which to change quotas
-sblocks - Soft block limit
-hblocks - Hard block limit
-sfiles - Sort files limit
-hfiles - Hard files limit
+
+=item user - Unix group name.
+
+=item filesys - Filesystem on which to change quotas.
+
+=item sblocks - Soft block limit.
+
+=item hblocks - Hard block limit.
+
+=item sfiles - Sort files limit.
+
+=item hfiles - Hard files limit.
 
 =cut
 sub edit_group_quota
@@ -233,15 +267,16 @@ else {
 =head2 edit_user_grace(filesystem, btime, bunits, ftime, funits)
 
 Change the grace times for blocks and files on some filesystem. Parameters are:
-filesystem - Filesystem to change the grace time on
-btime - Number of units after which a user over his soft block limit is turned
-	into a hard limit.
-bunits - Units for the block grace time, such as 'seconds', 'minutes',
-	 'hours' or 'days'
-ftime - Number of units after which a user over his soft file limit is turned
-        into a hard limit.
-funits - Units for the file grace time, such as 'seconds', 'minutes',
-	 'hours' or 'days'
+
+=item filesystem - Filesystem to change the grace time on.
+
+=item btime - Number of units after which a user over his soft block limit is turned into a hard limit.
+
+=item bunits - Units for the block grace time, such as 'seconds', 'minutes', 'hours' or 'days'.
+
+=item ftime - Number of units after which a user over his soft file limit is turned into a hard limit.
+
+=item funits - Units for the file grace time, such as 'seconds', 'minutes', 'hours' or 'days'.
 
 =cut
 sub edit_user_grace

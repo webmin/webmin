@@ -67,10 +67,14 @@ return @rv;
 
 Can this filesystem type support quotas? Takes array refs from mounted and
 mountable filesystems, and returns one of the following :
-0 = No quota support (or not turned on in /etc/fstab)
-1 = User quotas only
-2 = Group quotas only
-3 = User and group quotas
+
+=item 0 - No quota support (or not turned on in /etc/fstab).
+
+=item 1 - User quotas only.
+
+=item 2 - Group quotas only.
+
+=item 3 - User and group quotas.
 
 =cut
 sub quota_can
@@ -85,10 +89,12 @@ return ($_[1]->[3] =~ /usrquota|usrjquota/ ||
 
 Are quotas currently active? Takes array refs from mounted and mountable
 filesystems, and returns one of the following :
-0 = Not active
-1 = User quotas active
-2 = Group quotas active
-3 = Both active
+
+=item 0 - Not active.
+=item 1 - User quotas active.
+=item 2 - Group quotas active.
+=item 3 - Both active.
+
 Adding 4 means they cannot be turned off (such as for XFS)
 
 =cut
@@ -182,9 +188,12 @@ return $supports_status_cache{$_[0],$_[1]};
 
 Activate quotas and create quota files for some filesystem. The mode can
 be one of :
-1 - User only
-2 - Group only
-3 - User and group
+
+=item 1 - User only.
+
+=item 2 - Group only.
+
+=item 3 - User and group.
 
 =cut
 sub quotaon
@@ -263,7 +272,7 @@ return undef;
 =head2 run_quotacheck(filesys, args)
 
 Runs the quotacheck command on some filesytem, and returns 1 on success or
-0 on failure.
+0 on failure. Mainly for internal use when enabling quotas.
 
 =cut
 sub run_quotacheck
@@ -522,9 +531,12 @@ return $rv;
 
 Runs quotacheck on some filesystem, and returns the output in case of error,
 or undef on failure. The mode must be one of :
-0 - Users and groups
-1 - Users only
-2 - Groups only
+
+=item 0 - Users and groups.
+
+=item 1 - Users only.
+
+=item 2 - Groups only.
 
 =cut
 sub quotacheck
@@ -585,10 +597,14 @@ return undef;
 Returns an array containing information about grace times on some filesystem,
 which is the amount of time a user can exceed his soft quota before it becomes
 hard. The elements of the array are :
-Grace time for block quota, in units below.
-Units for block quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
-Grace time for files quota, in units below.
-Units for files quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
+
+=item Grace time for block quota, in units below.
+
+=item Units for block quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
+
+=item Grace time for files quota, in units below.
+
+=item Units for files quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
 
 =cut
 sub get_user_grace
@@ -601,10 +617,14 @@ return &parse_grace_output($config{'user_grace_command'}, $_[0]);
 Returns an array containing information about grace times on some filesystem,
 which is the amount of time a group can exceed its soft quota before it becomes
 hard. The elements of the array are :
-Grace time for block quota, in units below.
-Units for block quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
-Grace time for files quota, in units below.
-Units for files quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
+
+=item Grace time for block quota, in units below.
+
+=item Units for block quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
+
+=item Grace time for files quota, in units below.
+
+=item Units for files quota grace time, where 0=sec, 1=min, 2=hour, 3=day.
 
 =cut
 sub get_group_grace
