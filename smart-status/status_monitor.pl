@@ -30,7 +30,7 @@ if (!$d) {
 	return { 'up' => -1,
 		 'desc' => $text{'monitor_nosuch'} };
 	}
-local $st = &get_drive_status($d->{'drive'}, $d);
+local $st = &get_drive_status($d->{'device'}, $d);
 
 # Record number of errors since last time
 local %errors;
