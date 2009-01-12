@@ -9,7 +9,9 @@ require './logrotate-lib.pl';
 $SIG{'TERM'} = 'IGNORE';
 
 print $text{'force_doing'},"\n";
+&clean_environment();
 $out = &backquote_logged("$config{'logrotate'} -f $config{'logrotate_conf'} 2>&1");
+&reset_environment();
 print "<pre>$out</pre>";
 if ($?) {
 	print $text{'force_failed'},"<br>\n";
