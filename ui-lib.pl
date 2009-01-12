@@ -263,8 +263,19 @@ return $rv;
 =head2 ui_checked_columns_row(&columns, &tdtags, checkname, checkvalue, [checked?], [disabled])
 
 Returns HTML for a row in a multi-column table, in which the first column 
-contains a checkbox.
-XXX
+contains a checkbox. The parameters are :
+
+=item columns - Reference to an array containing the HTML to show in the columns for this row.
+
+=item tdtags - An optional array reference containing HTML attributes for the row's <td> tags.
+
+=item checkname - Name for the checkbox input. Should be the same for all rows.
+
+=item checkvalue - Value for this checkbox input.
+
+=item checked - Set to 1 if it should be checked by default.
+
+=item disabled - Set to 1 if the checkbox should be disabled and thus un-clickable.
 
 =cut
 sub ui_checked_columns_row
@@ -296,7 +307,19 @@ return $rv;
 =head2 ui_radio_columns_row(&columns, &tdtags, checkname, checkvalue, [checked], [disabled])
 
 Returns HTML for a row in a multi-column table, in which the first
-column is a radio button
+column is a radio button. The parameters are :
+
+=item columns - Reference to an array containing the HTML to show in the columns for this row.
+
+=item tdtags - An optional array reference containing HTML attributes for the row's <td> tags.
+
+=item checkname - Name for the radio button input. Should be the same for all rows.
+
+=item checkvalue - Value for this radio button option.
+
+=item checked - Set to 1 if it should be checked by default.
+
+=item disabled - Set to 1 if the radio button should be disabled and thus un-clickable.
 
 =cut
 sub ui_radio_columns_row
@@ -326,7 +349,7 @@ return $rv;
 
 =head2 ui_columns_end
 
-Returns HTML to end a table started by ui_columns_start
+Returns HTML to end a table started by ui_columns_start.
 
 =cut
 sub ui_columns_end
@@ -337,22 +360,29 @@ return "</table>\n";
 
 =head2 ui_columns_table(&headings, width-percent, &data, &types, no-sort, title, empty-msg)
 
-Returns HTML for a complete table.
-headings - An array ref of heading HTML
-width-percent - Preferred total width
-data - A 2x2 array ref of table contents. Each can either be a simple string,
-or a hash ref like :
-{ 'type' => 'group', 'desc' => 'Some section title' }
-{ 'type' => 'string', 'value' => 'Foo', 'colums' => 3,
-'nowrap' => 1 }
-{ 'type' => 'checkbox', 'name' => 'd', 'value' => 'foo',
-'label' => 'Yes', 'checked' => 1, 'disabled' => 1 }
-{ 'type' => 'radio', 'name' => 'd', 'value' => 'foo', ... }
-types - An array ref of data types, such as 'string', 'number', 'bytes'
-or 'date'
-no-sort - Set to 1 to disable sorting by theme
-title - Text to appear above the table
-empty-msg - Message to display if no data
+Returns HTML for a complete table, typically generated internally by
+ui_columns_start, ui_columns_row and ui_columns_end. The parameters are :
+
+=item headings - An array ref of heading HTML.
+
+=item width-percent - Preferred total width
+
+=item data - A 2x2 array ref of table contents. Each can either be a simple string, or a hash ref like :
+
+  { 'type' => 'group', 'desc' => 'Some section title' }
+  { 'type' => 'string', 'value' => 'Foo', 'colums' => 3,
+    'nowrap' => 1 }
+  { 'type' => 'checkbox', 'name' => 'd', 'value' => 'foo',
+    'label' => 'Yes', 'checked' => 1, 'disabled' => 1 }
+  { 'type' => 'radio', 'name' => 'd', 'value' => 'foo', ... }
+
+=item types - An array ref of data types, such as 'string', 'number', 'bytes' or 'date'
+
+=item no-sort - Set to 1 to disable sorting by theme.
+
+=item title - Text to appear above the table.
+
+=item empty-msg - Message to display if no data.
 
 =cut
 sub ui_columns_table
@@ -456,17 +486,19 @@ return $rv;
 
 =head2 ui_form_columns_table(cgi, &buttons, select-all, &otherlinks, &hiddens, &headings, width-percent, &data, &types, no-sort, title, empty-msg)
 
-Similar to ui_columns_table, but wrapped in a form. Args are :
-cgi - URL to submit the form to
-buttons - An array ref of buttons at the end of the form, similar to
-that taken by ui_form_end
-select-all - If set to 1, include select all / invert links
-otherslinks - An array ref of other links to put at the top of the table,
-each of which is a 3-element hash ref of url, text and
-alignment (left or right)
-hiddens - An array ref of hidden fields, each of which is a 2-element array
-ref containing the name and value
-All other parameters are the same as ui_columns_table
+Similar to ui_columns_table, but wrapped in a form. Parameters are :
+
+=item cgi - URL to submit the form to.
+
+=item buttons - An array ref of buttons at the end of the form, similar to that taken by ui_form_end.
+
+=item select-all - If set to 1, include select all / invert links.
+
+=item otherslinks - An array ref of other links to put at the top of the table, each of which is a 3-element hash ref of url, text and alignment (left or right).
+
+=item hiddens - An array ref of hidden fields, each of which is a 2-element array ref containing the name and value.
+
+All other parameters are the same as ui_columns_table.
 
 =cut
 sub ui_form_columns_table
@@ -539,7 +571,16 @@ return $rv;
 
 =head2 ui_form_start(script, method, [target], [tags])
 
-Returns HTML for a form that submits to some script
+Returns HTML for the start of a a form that submits to some script. The
+parameters are :
+
+=item script - CGI script to submit to, like save.cgi.
+
+=item method - HTTP method, which must be one of 'get', 'post' or 'form-data'. If form-data is used, the target CGI must call ReadParseMime to parse parameters.
+
+=item target - Optional target window or frame for the form.
+
+=item tags - Additional HTML attributes for the form tag.
 
 =cut
 sub ui_form_start
@@ -560,7 +601,19 @@ return $rv;
 
 =head2 ui_form_end([&buttons], [width])
 
-Returns HTML for the end of a form, optionally with a row of submit buttons
+Returns HTML for the end of a form, optionally with a row of submit buttons.
+These are specified by the buttons parameter, which is an array reference
+of array refs, with the following elements :
+
+=item HTML value for the submit input for the button, or undef for none.
+
+=item Text to appear on the button.
+
+=item HTML or other inputs to appear after the button.
+
+=item Set to 1 if the button should be disabled.
+
+=item Additional HTML attributes to appear inside the button's input tag.
 
 =cut
 sub ui_form_end
@@ -595,7 +648,19 @@ return $rv;
 
 =head2 ui_textbox(name, value, size, [disabled?], [maxlength], [tags])
 
-Returns HTML for a text input
+Returns HTML for a text input box. The parameters are :
+
+=item name - Name for this input.
+
+=item value - Initial contents for the text box.
+
+=item size - Desired width in characters.
+
+=item disabled - Set to 1 if this text box should be disabled by default.
+
+=item maxlength - Maximum length of the string the user is allowed to input.
+
+=item tags - Additional HTML attributes for the <input> tag.
 
 =cut
 sub ui_textbox
@@ -613,7 +678,9 @@ return "<input class='ui_textbox' name=\"".&quote_escape($name)."\" ".
 
 =head2 ui_filebox(name, value, size, [disabled?], [maxlength], [tags], [dir-only])
 
-Returns HTML for a text box for choosing a file
+Returns HTML for a text box for choosing a file. Parameters are the same
+as ui_textbox, except for the extra dir-only option which limits the chooser
+to directories.
 
 =cut
 sub ui_filebox
@@ -627,7 +694,15 @@ return &ui_textbox($name, $value, $size, $dis, $max, $tags)."&nbsp;".
 =head2 ui_bytesbox(name, bytes, [size], [disabled?])
 
 Returns HTML for entering a number of bytes, but with friendly kB/MB/GB
-options. May truncate values to 2 decimal points!
+options. May truncate values to 2 decimal points! The parameters are :
+
+=item name - Name for this input.
+
+=item bytes - Initial number of bytes to show.
+
+=item size - Desired width of the text box part.
+
+=item disabled - Set to 1 if this text box should be disabled by default.
 
 =cut
 sub ui_bytesbox
@@ -665,7 +740,16 @@ return &ui_textbox($name, $bytes, $size, $dis)." ".
 
 =head2 ui_upload(name, size, [disabled?], [tags])
 
-Returns HTML for a file upload input
+Returns HTML for a file upload input, for use in a form with the form-data
+method. The parameters are :
+
+=item name - Name for this input.
+
+=item size - Desired width in characters.
+
+=item disabled - Set to 1 if this text box should be disabled by default.
+
+=item tags - Additional HTML attributes for the <input> tag.
 
 =cut
 sub ui_upload
@@ -681,7 +765,8 @@ return "<input class='ui_upload' type=file name=\"".&quote_escape($name)."\" ".
 
 =head2 ui_password(name, value, size, [disabled?], [maxlength])
 
-Returns HTML for a password text input
+Returns HTML for a password text input. Parameters are the same as ui_textbox,
+and behaviour is identical except that the user's input is not visible.
 
 =cut
 sub ui_password
@@ -699,7 +784,7 @@ return "<input class='ui_password' ".
 
 =head2 ui_hidden(name, value)
 
-Returns HTML for a hidden field
+Returns HTML for a hidden field with the given name and value.
 
 =cut
 sub ui_hidden
@@ -713,7 +798,24 @@ return "<input class='ui_hidden' type=hidden ".
 
 =head2 ui_select(name, value|&values, &options, [size], [multiple], [add-if-missing], [disabled?], [javascript])
 
-Returns HTML for a drop-down menu or multiple selection list
+Returns HTML for a drop-down menu or multiple selection list. The parameters
+are :
+
+=item name - Name for this input.
+
+=item value - Either a single initial value, or an array reference of values if this is a multi-select list.
+
+=item options - An array reference of possible options. Each element can either be a scalar, or a two-element array ref containing a submitted value and displayed text.
+
+=item size - Desired vertical size in rows, which defaults to 1. For multi-select lists, this must be set to something larger.
+
+=item multiple - Set to 1 for a multi-select list, 0 for single.
+
+=item add-if-missing - If set to 1, any value that is not in the list of options will be automatically added (and selected).
+
+=item disabled - Set to 1 to disable this input.
+
+=item javascript - Additional HTML attributes for the <select> input.
 
 =cut
 sub ui_select
@@ -749,6 +851,8 @@ return $rv;
 Returns HTML for selecting many of many from a list. By default, this is
 implemented using two <select> lists and Javascript buttons to move elements
 between them. The resulting input value is \n separated.
+
+XXX
 
 =cut
 sub ui_multi_select
