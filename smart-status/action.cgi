@@ -7,17 +7,18 @@ $mode = $in{'short'} ? "short" :
 	$in{'ext'} ? "ext" : "data";
 &ui_print_header(undef, $text{$mode.'_title'}, "");
 
-@drives = &fdisk::list_disks_partitions();
-($d) = grep { $_->{'device'} eq $in{'drive'} } @drives;
+@drives = &list_smart_disks_partitions();
+($d) = grep { $_->{'device'} eq $in{'drive'} &&
+	      $_->{'3ware'} == $in{'3ware'} } @drives;
 print &text($mode."_doing", $d->{'desc'}),"\n";
 if ($mode eq "short") {
-	($ok, $out) = &short_test($in{'drive'});
+	($ok, $out) = &short_test($in{'drive'}, $d);
 	}
 elsif ($mode eq "ext") {
-	($ok, $out) = &ext_test($in{'drive'});
+	($ok, $out) = &ext_test($in{'drive'}, $d);
 	}
 elsif ($mode eq "data") {
-	($ok, $out) = &data_test($in{'drive'});
+	($ok, $out) = &data_test($in{'drive'}, $d);
 	}
 print "<pre>$out</pre>\n";
 if ($ok) {

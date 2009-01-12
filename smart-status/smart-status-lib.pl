@@ -1,15 +1,19 @@
-# Functions for getting SMART status
+=head1 smart-status-lib.pl
+
+Functions for getting SMART status
+
+=cut
 
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
 &foreign_require("fdisk", "fdisk-lib.pl");
-$extra_args = $config{'extra'};
-if ($config{'ata'}) {
-	$extra_args .= " -d ata";
-	}
 
-# get_smart_version()
+=head2 get_smart_version()
+
+Returns the version number of the SMART tools on this system
+
+=cut
 sub get_smart_version
 {
 if (!defined($smartctl_version_cache)) {
@@ -21,12 +25,62 @@ if (!defined($smartctl_version_cache)) {
 return $smartctl_version_cache;
 }
 
-# get_drive_status(device)
-# Returns a hash reference containing the status of some drive
+=head2 list_smart_disks_partitions
+
+Returns a sorted list of disks that can support SMART.
+May include faked-up 3ware devices
+
+=cut
+sub list_smart_disks_partitions
+{
+local @drives = grep { $_->{'type'} eq 'ide' ||
+		       $_->{'type'} eq 'scsi' } &fdisk::list_disks_partitions();
+local @rv;
+local $threecount = 0;
+foreach my $d (@drives) {
+	if ($d->{'type'} eq 'scsi' && $d->{'model'} =~ /3ware/i) {
+		# Actually a 3ware RAID device .. but we want to probe the
+		# underlying real disks, so add fake devices for them
+		my $count = &count_3ware_disks($d);
+		for(my $i=0; $i<$count; $i++) {
+			push(@rv, { 'device' => '/dev/twe'.$threecount,
+				    'prefix' => '/dev/twe'.$threecount,
+				    'desc' => '3ware physical disk '.$i,
+				    'type' => 'scsi',
+				    '3ware' => $i,
+				  });
+			}
+		$threecount++;
+		}
+	else {
+		push(@rv, $d);
+		}
+	}
+return sort { $a->{'device'} cmp $b->{'device'} ||
+	      $a->{'3ware'} <=> $b->{'3ware'} } @rv;
+}
+
+=head2 count_3ware_disks(&drive)
+
+Returns the number of physical disks on some 3ware RAID device.
+
+=cut
+sub count_3ware_disks
+{
+return 4;	# XXX
+}
+
+=head2 get_drive_status(device-name, [&drive])
+
+Returns a hash reference containing the status of some drive
+
+=cut
 sub get_drive_status
 {
+local ($device, $drive) = @_;
 local %rv;
-local $qd = quotemeta($_[0]);
+local $qd = quotemeta($device);
+local $extra_args = &get_extra_args($device, $drive);
 if (&get_smart_version() > 5.0) {
 	# Use new command format
 
@@ -141,13 +195,16 @@ if ($config{'attribs'}) {
 return \%rv;
 }
 
-# short_test(drive)
+# short_test(device, [&drive])
 # Starts a short drive test, and returns 1 for success or 0 for failure, plus
 # any output.
 sub short_test
 {
+local ($device, $drive) = @_;
+local $qm = quotemeta($device);
+local $extra_args = &get_extra_args($device, $drive);
 if (&get_smart_version() > 5.0) {
-	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t short $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t short $qm 2>&1");
 	if ($? || $out !~ /testing has begun/i) {
 		return (0, $out);
 		}
@@ -156,7 +213,7 @@ if (&get_smart_version() > 5.0) {
 		}
 	}
 else {
-	local $out = &backquote_logged("$config{'smartctl'} $extra_args -S $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -S $qm 2>&1");
 	if ($? || $out !~ /test has begun/i) {
 		return (0, $out);
 		}
@@ -166,13 +223,16 @@ else {
 	}
 }
 
-# ext_test(drive)
+# ext_test(device, [&drive])
 # Starts an extended drive test, and returns 1 for success or 0 for failure,
 # plus any output.
 sub ext_test
 {
+local ($device, $drive) = @_;
+local $qm = quotemeta($device);
+local $extra_args = &get_extra_args($device, $drive);
 if (&get_smart_version() > 5.0) {
-	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t long $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t long $qm 2>&1");
 	if ($? || $out !~ /testing has begun/i) {
 		return (0, $out);
 		}
@@ -181,7 +241,7 @@ if (&get_smart_version() > 5.0) {
 		}
 	}
 else {
-	local $out = &backquote_logged("$config{'smartctl'} $extra_args -X $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -X $qm 2>&1");
 	if ($? || $out !~ /test has begun/i) {
 		return (0, $out);
 		}
@@ -191,13 +251,16 @@ else {
 	}
 }
 
-# data_test(drive)
+# data_test(device, [&drive])
 # Starts offline data collection, and returns 1 for success or 0 for failure,
 # plus any output.
 sub data_test
 {
+local ($device, $drive) = @_;
+local $qm = quotemeta($device);
+local $extra_args = &get_extra_args($device, $drive);
 if (&get_smart_version() > 5.0) {
-	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t offline $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -t offline $qm 2>&1");
 	if ($? || $out !~ /testing has begun/i) {
 		return (0, $out);
 		}
@@ -206,7 +269,7 @@ if (&get_smart_version() > 5.0) {
 		}
 	}
 else {
-	local $out = &backquote_logged("$config{'smartctl'} $extra_args -O $_[0] 2>&1");
+	local $out = &backquote_logged("$config{'smartctl'} $extra_args -O $qm 2>&1");
 	if ($? || $out !~ /test has begun/i) {
 		return (0, $out);
 		}
@@ -214,6 +277,28 @@ else {
 		return (1, $out);
 		}
 	}
+}
+
+=head2 get_extra_args(device, [&drive])
+
+Returns extra command-line args to smartctl, needed for some drive type.
+
+=cut
+sub get_extra_args
+{
+local ($device, $drive) = @_;
+if (!$drive) {
+	($drive) = grep { $_->{'device'} eq $device }
+			&list_smart_disks_partitions();
+	}
+local $extra_args = $config{'extra'};
+if ($drive && defined($drive->{'3ware'})) {
+	$extra_args .= " -d 3ware,$drive->{'3ware'}";
+	}
+elsif ($config{'ata'}) {
+	$extra_args .= " -d ata";
+	}
+return $extra_args;
 }
 
 1;

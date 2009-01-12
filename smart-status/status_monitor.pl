@@ -22,7 +22,15 @@ if (!-r $_[1]->{'drive'}) {
 	return { 'up' => -1,
 		 'desc' => $text{'monitor_nosuch'} };
 	}
-local $st = &get_drive_status($_[1]->{'drive'});
+local @drives = &list_smart_disks_partitions();
+local ($d) = grep { $_->{'device'} eq $_[1]->{'drive'} &&
+		    $_->{'3ware'} eq $_[1]->{'3ware'} } @drives;
+if (!$d) {
+	# Not in list?!
+	return { 'up' => -1,
+		 'desc' => $text{'monitor_nosuch'} };
+	}
+local $st = &get_drive_status($d->{'drive'}, $d);
 
 # Record number of errors since last time
 local %errors;
@@ -64,15 +72,15 @@ else {
 sub status_monitor_dialog
 {
 local $rv;
-local @drives = grep { $_->{'type'} eq 'ide' ||
-		       $_->{'type'} eq 'scsi' } &fdisk::list_disks_partitions();
-@drives = sort { $a->{'device'} cmp $b->{'device'} } @drives;
-local ($inlist) = grep { $_->{'device'} eq $_[1]->{'drive'} } @drives;
+local @drives = &list_smart_disks_partitions();
+local ($inlist) = grep { $_->{'device'} eq $_[1]->{'drive'} &&
+		         $_->{'3ware'} eq $_[1]->{'3ware'} } @drives;
 $inlist = 1 if (!$_[1]->{'drive'});
 $rv .= &ui_table_row($text{'monitor_drive'},
       &ui_select("drive", !$_[1]->{'drive'} ? $drives[0]->{'device'} :
-			   $inlist ? $_[1]->{'drive'} : undef,
-		 [ (map { [ $_->{'device'},
+			   $inlist ? $inlist->{'drive'}.':'.$inlist->{'3ware'} :
+				     undef,
+		 [ (map { [ $_->{'device'}.':'.$_->{'3ware'},
 			   $_->{'desc'}.($_->{'model'} ?
 				" ($_->{'model'})" : "") ] } @drives),
 		   [ "", $text{'monitor_other'} ] ]).
@@ -89,8 +97,14 @@ return $rv;
 # Parse form for selecting a rule
 sub status_monitor_parse
 {
-$_[1]->{'drive'} = $_[2]->{'drive'} || $_[2]->{'other'};
-$_[1]->{'drive'} =~ /^\S+$/ || &error($text{'monitor_edrive'});
+if ($_[2]->{'drive'}) {
+	($_[1]->{'drive'}, $_[1]->{'3ware'}) = split(/:/, $_[2]->{'drive'});
+	}
+else {
+	$_[1]->{'drive'} = $_[2]->{'other'};
+	$_[1]->{'3ware'} = undef;
+	$_[1]->{'drive'} =~ /^\S+$/ || &error($text{'monitor_edrive'});
+	}
 $_[1]->{'errors'} = $_[2]->{'errors'};
 }
 

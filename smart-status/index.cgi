@@ -26,9 +26,7 @@ if (!$ver) {
 		 &text('index_version', $ver));
 
 # Get list of drives
-@drives = grep { $_->{'type'} eq 'ide' ||
-		 $_->{'type'} eq 'scsi' } &fdisk::list_disks_partitions();
-@drives = sort { $a->{'device'} cmp $b->{'device'} } @drives;
+@drives = &list_smart_disks_partitions();
 if (!@drives) {
 	&ui_print_endpage($text{'index_eidescsi'});
 	}
@@ -63,9 +61,10 @@ sub show_drive
 {
 print &ui_form_start("action.cgi");
 print &ui_hidden("drive", $_[0]->{'device'});
+print &ui_hidden("3ware", $_[0]->{'3ware'});
 print &ui_table_start(&text('index_drive', "<tt>$_[0]->{'device'}</tt>"),
 		      undef, 2);
-local $st = &get_drive_status($_[0]->{'device'});
+local $st = &get_drive_status($_[0]->{'device'}, $_[0]);
 print &ui_table_row($text{'index_desc'},
 		    $_[0]->{'desc'});
 if ($_[0]->{'cylsize'}) {
