@@ -2240,9 +2240,12 @@ foreach $slave (@slaves) {
 		}
 
 	# Work out other slave IPs
-	local @otherslaves = grep { $_ ne '' }
+	local @otherslaves;
+	if ($config{'other_slaves'}) {
+		@otherslaves = grep { $_ ne '' }
 				  map { &to_ipaddress($_->{'host'}) }
 				      grep { $_ ne $slave } @slaves;
+		}
 
 	# Work out the view
 	my $view;

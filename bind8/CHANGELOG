@@ -97,3 +97,4 @@ Zones can now be signed with DNSSEC, using one or two keys. This can be done aut
 Added the DNSSEC Verification page for configuring BIND to validate signatures on other zones, and to use DLV until the root zone is signed.
 SPF records can now be added to or updated in multiple zones at once.
 Added an icon to the main page for checking the whole BIND configuration including zone files, with the named-checkconf command.
+Added a Module Config option to prevent inclusion of other slave's IP addresses in the master IP list for remote slaves.

@@ -37,6 +37,7 @@ file_perms=Permissions for zone files (in octal),3,Default
 default_prins=Default master server for master zones,0,System's hostname
 default_master=Default master server(s) for slave zones,0
 this_ip=Default master server IP for remote slave zones,3,IP address of hostname
+other_slaves=Add other slave IP addresses to masters on slaves?,1,1-Yes,0-No
 updserial_on=Automatically update serial numbers,1,1-Yes,0-No
 ipv6_mode=Domain for reverse IPv6 addresses,1,1-ip6.arpa,0-ip6.int
 confirm_zone=Confirm before deleting zones?,1,1-Yes,0-No
