@@ -23,11 +23,8 @@ elsif ($action eq 'create') {
 elsif ($action eq 'delete') {
 	return &text('log_delete', "<tt>$object</tt>");
 	}
-elsif ($action eq 'start') {
-	return &text('log_start', "<tt>$object</tt>");
-	}
-elsif ($action eq 'stop') {
-	return &text('log_stop', "<tt>$object</tt>");
+elsif ($type eq 'action') {
+	return &text('log_'.$action, "<tt>$object</tt>");
 	}
 elsif ($action eq 'reboot') {
 	return $text{'log_reboot'};
