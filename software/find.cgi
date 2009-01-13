@@ -25,8 +25,12 @@ print &ui_form_end();
 
 # Show results, if any
 $search = $in{'search'};
-if ($search) {
-	if (defined(&update_system_search)) {
+if (defined($search)) {
+	if (!$search) {
+		# List them all
+		@avail = &update_system_available();
+		}
+	elsif (defined(&update_system_search)) {
 		# Call the search function
 		@avail = &update_system_search($search);
 		}
