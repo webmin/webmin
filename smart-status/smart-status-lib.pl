@@ -206,7 +206,14 @@ if ($config{'attribs'}) {
 			}
 		elsif (/^\s+(\S.*)/ && @attribs && !$doneknown) {
 			# Continuation of a known attribute description
-			$attribs[$#attribs]->[2] .= "<br>".$1;
+			local $cont = $1;
+			local $ls = $attribs[$#attribs];
+			if ($ls->[2] =~ /\.\s*$/) {
+				$ls->[2] .= "<br>".$cont;
+				}
+			else {
+				$ls->[2] .= " ".$cont;
+				}
 			}
 		elsif (/ATA\s+Error\s+Count:\s+(\d+)/i) {
 			# An error line!
