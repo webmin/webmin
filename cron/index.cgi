@@ -88,7 +88,6 @@ foreach $u (@ulist) {
 		local @exp = @{$plist[$i]->[1]};
 		local $idx = $job->{'index'};
 		local @cols;
-		print "<tr $cb>\n";
 		push(@cols, $idx);
 		$useridx = 0;
 		$cmdidx = 0;
