@@ -33,41 +33,65 @@ May include faked-up 3ware devices
 =cut
 sub list_smart_disks_partitions
 {
-local @drives = grep { $_->{'type'} eq 'ide' ||
-		       $_->{'type'} eq 'scsi' } &fdisk::list_disks_partitions();
 local @rv;
 local $threecount = 0;
-foreach my $d (@drives) {
-	if ($d->{'type'} eq 'scsi' && $d->{'model'} =~ /3ware/i) {
+foreach my $d (&fdisk::list_disks_partitions()) {
+	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
+	    $d->{'model'} =~ /3ware/i) {
 		# Actually a 3ware RAID device .. but we want to probe the
 		# underlying real disks, so add fake devices for them
-		my $count = &count_3ware_disks($d);
+		my $count = &count_subdisks($d, "3ware");
 		for(my $i=0; $i<$count; $i++) {
 			push(@rv, { 'device' => '/dev/twe'.$threecount,
 				    'prefix' => '/dev/twe'.$threecount,
 				    'desc' => '3ware physical disk '.$i,
 				    'type' => 'scsi',
-				    '3ware' => $i,
+				    'subtype' => '3ware',
+				    'subdisk' => $i,
 				  });
 			}
 		$threecount++;
 		}
-	else {
+	elsif ($d->{'device'} =~ /^\/dev\/cciss\/(.*)$/) {
+		# HP Smart Array .. add underlying disks
+		my $count = &count_subdisks($d, "cciss");
+		for(my $i=0; $i<$count; $i++) {
+			push(@rv, { 'device' => $d->{'device'},
+				    'prefix' => $d->{'device'},
+				    'desc' => 'HP Smart Array physical disk '.$i,
+				    'type' => 'scsi',
+				    'subtype' => 'cciss',
+				    'subdisk' => $i,
+				  });
+			}
+		}
+	elsif ($d->{'type'} eq 'scsi' || $d->{'type'} eq 'ide') {
+		# Some other disk
 		push(@rv, $d);
 		}
 	}
 return sort { $a->{'device'} cmp $b->{'device'} ||
-	      $a->{'3ware'} <=> $b->{'3ware'} } @rv;
+	      $a->{'subdisk'} <=> $b->{'subdisk'} } @rv;
 }
 
-=head2 count_3ware_disks(&drive)
+=head2 count_subdisks(&drive, type)
 
-Returns the number of physical disks on some 3ware RAID device.
+Returns the number of sub-disks for a hardware RAID device, by calling
+smartctl on them until failure.
 
 =cut
-sub count_3ware_disks
+sub count_subdisks
 {
-return 4;	# XXX
+local ($d, $type) = @_;
+local $count = 0;
+while(1) {
+	local $cmd = "$config{'smartctl'} -d $type,$count ".
+		     quotemeta($d->{'device'});
+	&execute_command($cmd);
+	last if ($?);
+	$count++;
+	}
+return $count;
 }
 
 =head2 get_drive_status(device-name, [&drive])
@@ -157,6 +181,7 @@ if ($config{'attribs'}) {
 	# Fetch other attributes
 	local ($lastline, @attribs);
 	local $doneknown = 0;
+	$rv{'raw'} = "";
 	open(OUT, "$config{'smartctl'} $extra_args -a $qd |");
 	while(<OUT>) {
 		s/\r|\n//g;
@@ -188,6 +213,7 @@ if ($config{'attribs'}) {
 			$rv{'errors'} = $1;
 			}
 		$lastline = $_;
+		$rv{'raw'} .= $_."\n";
 		}
 	close(OUT);
 	$rv{'attribs'} = \@attribs;
@@ -292,8 +318,8 @@ if (!$drive) {
 			&list_smart_disks_partitions();
 	}
 local $extra_args = $config{'extra'};
-if ($drive && defined($drive->{'3ware'})) {
-	$extra_args .= " -d 3ware,$drive->{'3ware'}";
+if ($drive && defined($drive->{'subdisk'})) {
+	$extra_args .= " -d $drive->{'subtype'},$drive->{'subdisk'}";
 	}
 elsif ($config{'ata'}) {
 	$extra_args .= " -d ata";

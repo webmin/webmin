@@ -6,6 +6,7 @@ index_show=Show status of drive:
 index_ok=Show
 index_eidescsi=No IDE or SCSI drives were found on your system.
 index_drive=Status of drive $1
+index_drivesub=Status of drive $1, disk $2
 index_desc=Location
 index_size=Drive size
 index_model=Make and model
@@ -17,6 +18,8 @@ index_ext=Extended Self Test
 index_data=Data Collection Test
 index_errors=Errors logged
 index_ecount=$1 errors detected
+index_attrs=Additional SMART attributes
+index_raw=Full SMART status report
 index_return=module index
 
 monitor_type=SMART Drive Check

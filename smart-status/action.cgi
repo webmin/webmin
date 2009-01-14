@@ -9,7 +9,7 @@ $mode = $in{'short'} ? "short" :
 
 @drives = &list_smart_disks_partitions();
 ($d) = grep { $_->{'device'} eq $in{'drive'} &&
-	      $_->{'3ware'} == $in{'3ware'} } @drives;
+	      $_->{'subdisk'} == $in{'subdisk'} } @drives;
 print &text($mode."_doing", $d->{'desc'}),"\n";
 if ($mode eq "short") {
 	($ok, $out) = &short_test($in{'drive'}, $d);

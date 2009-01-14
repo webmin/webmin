@@ -24,7 +24,7 @@ if (!-r $_[1]->{'drive'}) {
 	}
 local @drives = &list_smart_disks_partitions();
 local ($d) = grep { $_->{'device'} eq $_[1]->{'drive'} &&
-		    $_->{'3ware'} eq $_[1]->{'3ware'} } @drives;
+		    $_->{'subdisk'} eq $_[1]->{'subdisk'} } @drives;
 if (!$d) {
 	# Not in list?!
 	return { 'up' => -1,
@@ -74,13 +74,13 @@ sub status_monitor_dialog
 local $rv;
 local @drives = &list_smart_disks_partitions();
 local ($inlist) = grep { $_->{'device'} eq $_[1]->{'drive'} &&
-		         $_->{'3ware'} eq $_[1]->{'3ware'} } @drives;
+		         $_->{'subdisk'} eq $_[1]->{'subdisk'} } @drives;
 $inlist = 1 if (!$_[1]->{'drive'});
 $rv .= &ui_table_row($text{'monitor_drive'},
       &ui_select("drive", !$_[1]->{'drive'} ? $drives[0]->{'device'} :
-			   $inlist ? $inlist->{'drive'}.':'.$inlist->{'3ware'} :
+			   $inlist ? $inlist->{'drive'}.':'.$inlist->{'subdisk'} :
 				     undef,
-		 [ (map { [ $_->{'device'}.':'.$_->{'3ware'},
+		 [ (map { [ $_->{'device'}.':'.$_->{'subdisk'},
 			   $_->{'desc'}.($_->{'model'} ?
 				" ($_->{'model'})" : "") ] } @drives),
 		   [ "", $text{'monitor_other'} ] ]).
@@ -98,11 +98,11 @@ return $rv;
 sub status_monitor_parse
 {
 if ($_[2]->{'drive'}) {
-	($_[1]->{'drive'}, $_[1]->{'3ware'}) = split(/:/, $_[2]->{'drive'});
+	($_[1]->{'drive'}, $_[1]->{'subdisk'}) = split(/:/, $_[2]->{'drive'});
 	}
 else {
 	$_[1]->{'drive'} = $_[2]->{'other'};
-	$_[1]->{'3ware'} = undef;
+	$_[1]->{'subdisk'} = undef;
 	$_[1]->{'drive'} =~ /^\S+$/ || &error($text{'monitor_edrive'});
 	}
 $_[1]->{'errors'} = $_[2]->{'errors'};

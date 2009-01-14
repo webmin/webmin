@@ -36,14 +36,16 @@ if ($config{'mode'} == 1 || $in{'drive'}) {
 	print &ui_form_start("index.cgi");
 	print "<b>$text{'index_show'}</b>\n";
 	print &ui_select("drive", $in{'drive'},
-			 [ map { [ $_->{'device'},
+			 [ map { [ $_->{'device'}.":".$_->{'subdisk'},
 				   $_->{'desc'}.($_->{'model'} ? " ($_->{'model'})" : "") ] } @drives ],
 			 1, 0, 0, 0, "onChange='form.submit()'");
 	print &ui_submit($text{'index_ok'}),"\n";
 	print &ui_form_end();
 
 	if ($in{'drive'}) {
-		($d) = grep { $_->{'device'} eq $in{'drive'} } @drives;
+		($device, $subdisk) = split(/:/, $in{'drive'});
+		($d) = grep { $_->{'device'} eq $device &&
+			      $_->{'subdisk'} == $subdisk } @drives;
 		&show_drive($d);
 		}
 	}
@@ -61,9 +63,13 @@ sub show_drive
 {
 print &ui_form_start("action.cgi");
 print &ui_hidden("drive", $_[0]->{'device'});
-print &ui_hidden("3ware", $_[0]->{'3ware'});
-print &ui_table_start(&text('index_drive', "<tt>$_[0]->{'device'}</tt>"),
-		      undef, 2);
+print &ui_hidden("subdisk", $_[0]->{'subdisk'});
+local $h = defined($_[0]->{'subdisk'}) ?
+	&text('index_drivesub', "<tt>$_[0]->{'device'}</tt>",
+				$_[0]->{'subdisk'}) :
+	&text('index_drive', "<tt>$_[0]->{'device'}</tt>");
+print &ui_table_start($h, "width=100%", 4,
+		      [ "width=30%", undef, "width=30%", undef ]);
 local $st = &get_drive_status($_[0]->{'device'}, $_[0]);
 print &ui_table_row($text{'index_desc'},
 		    $_[0]->{'desc'});
@@ -87,18 +93,32 @@ if ($st->{'support'} && $st->{'enabled'}) {
 				    "</font>");
 		}
 	print &ui_table_row($text{'index_check'},
-			    $st->{'check'} ? $text{'yes'} : "<font color=#ff0000>$text{'no'}</font>");
-	if ($config{'attribs'}) {
-		print &ui_table_hr();
-		local $a;
-		foreach $a (@{$st->{'attribs'}}) {
-			next if ($a->[0] =~ /UDMA CRC Error Count/i); # too long
-			print &ui_table_row($a->[0],
-				$a->[2] =~ /^\s*(seconds|minutes|hours|days|months|years|weeks)\s*/i || !$a->[2] ? $a->[1]." ".$a->[2] : $a->[2]);
-			}
-		}
+			    $st->{'check'} ? $text{'yes'} :
+				"<font color=#ff0000>$text{'no'}</font>");
 	}
 print &ui_table_end();
+
+# Show extra attributes
+if ($config{'attribs'} && @{$st->{'attribs'}}) {
+	print &ui_hidden_table_start($text{'index_attrs'}, "width=100%", 2,
+				     "attrs", 1, [ "width=30%" ]);
+	foreach my $a (@{$st->{'attribs'}}) {
+		next if ($a->[0] =~ /UDMA CRC Error Count/i); # too long
+		print &ui_table_row($a->[0],
+			$a->[2] =~ /^\s*(seconds|minutes|hours|days|months|years|weeks)\s*/i || !$a->[2] ? $a->[1]." ".$a->[2] : $a->[2]);
+		}
+	print &ui_hidden_table_end();
+	}
+
+# Show raw data from smartctl
+if ($config{'attribs'} && $st->{'raw'}) {
+	print &ui_hidden_table_start($text{'index_raw'}, "width=100%", 2,
+				     "raw", @{$st->{'attribs'}} ? 0 : 1);
+	print &ui_table_row(undef,
+		"<pre>".&html_escape($st->{'raw'})."</pre>", 2);
+	print &ui_hidden_table_end();
+	}
+
 if ($st->{'support'} && $st->{'enabled'}) {
 	print &ui_form_end([ [ "short", $text{'index_short'} ],
 			     [ "ext", $text{'index_ext'} ],
