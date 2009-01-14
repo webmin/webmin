@@ -29,6 +29,7 @@ else {
 	&error("$text{'eacl_np'} $text{'eacl_puh'}")
 		unless &can('rw', \%access, $host) &&
 			(!$npar || &can('rw', \%access, $npar));
+	$oldname = $host->{'values'}->[0];
 	}
 
 # save
@@ -139,6 +140,10 @@ else {
 	elsif ($par eq $npar) {
 		# Update host
 		&save_directive($par, [ $host ], [ $host ], $indent);
+		if ($oldname ne $in{'name'}) {
+			&drop_dhcpd_acl('hst', \%access, $oldname);
+			&save_dhcpd_acl('rw', 'hst', \%access, $in{'name'});
+			}
 		}
 	else {
 		# Move this host

@@ -67,6 +67,7 @@ else {
 			&error("'$in{'network'}' $text{'ssub_invalidsubaddr'}");
 		&check_ipaddress($in{'netmask'}) ||
 			&error("'$in{'netmask'}' $text{'ssub_invalidnmask'}");
+		$oldnetwork = $sub->{'values'}->[0];
 		$sub->{'values'} = [ $in{'network'}, "netmask", $in{'netmask'} ];
 		}
 
@@ -177,8 +178,14 @@ else {
 			&save_directive($npar, [ ], [ $sub ], $nindent);
 			}
 		elsif ($par eq $npar) {
-			# Update the subnet
+			# Update the subnet in the current parent
 			&save_directive($par, [ $sub ], [ $sub ], $nindent);
+			if ($in{'network'} ne $oldnetwork) {
+				# Fix the ACL
+				&drop_dhcpd_acl('sub', \%access, $oldnetwork);
+				&save_dhcpd_acl('rw','sub',\%access,
+						$in{'network'});
+				}
 			}
 		else {
 			# Move the subnet
