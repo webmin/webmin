@@ -1758,6 +1758,7 @@ elsif ($config{'md5'} == 1 && !$config{'skip_md5'}) {
 	# Up to system
 	$format = &use_md5() if (defined(&use_md5));
 	}
+
 if ($no_encrypt_password) {
 	# Some operating systems don't do any encryption!
 	return $pass;
@@ -1766,13 +1767,9 @@ elsif ($format == 1) {
 	# MD5 encryption is selected .. use it if possible
 	local $err = &check_md5();
 	if ($err) {
-		&ui_print_header(undef, $text{'error'}, "");
-		print &text('usave_edigestmd5',
+		&error(&text('usave_edigestmd5',
 		    "/config.cgi?$module_name",
-		    "/cpan/download.cgi?source=3&cpan=$err", $err),
-		    "<p>\n";
-		&ui_print_footer("", $text{'index_return'});
-		exit;
+		    "/cpan/download.cgi?source=3&cpan=$err", $err));
 		}
 	return &encrypt_md5($pass, $salt);
 	}
@@ -1780,13 +1777,9 @@ elsif ($format == 2) {
 	# Blowfish is selected .. use it if possible
 	local $err = &check_blowfish();
 	if ($err) {
-		&ui_print_header(undef, $text{'error'}, "");
-		print &text('usave_edigestblowfish',
+		&error(&text('usave_edigestblowfish',
 		    "/config.cgi?$module_name",
-		    "/cpan/download.cgi?source=3&cpan=$err", $err),
-		    "<p>\n";
-		&ui_print_footer("", $text{'index_return'});
-		exit;
+		    "/cpan/download.cgi?source=3&cpan=$err", $err));
 		}
 	return &encrypt_blowfish($pass, $salt);
 	}
