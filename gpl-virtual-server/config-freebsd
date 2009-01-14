@@ -168,3 +168,4 @@ web_admin=1
 spam_lock=0
 spam_trap_black=0
 ham_trap_white=0
+collect_restart=0

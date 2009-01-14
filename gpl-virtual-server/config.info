@@ -11,7 +11,6 @@ ldap=Store users and groups,1,1-In LDAP database,0-In local files
 compression=Backup compression format,1,0-gzip,1-bzip2,2-None (tar only),3-ZIP
 mysql_replicas=Additional MySQL servers to create users on,3,Just this system
 preload_mode=Preload Virtualmin libraries at startup?,1,2-All libraries,1-Only core,0-No
-collect_interval=Interval between status collection job runs,10,none-Never run,Minutes
 scriptwarn_url=Virtualmin URL for use in email messages,3,Work out automatically
 
 line1.4=User interface settings,11
@@ -134,6 +133,10 @@ avail_mailboxes=Read User Mail (users' mailboxes),1,1-Yes,0-No
 avail_custom=Custom Commands,1,1-Yes,0-No
 avail_shell=Command Shell (run commands as admin),1,1-Yes,0-No
 avail_syslog=System Logs (view Apache logs),1,1-Yes,0-No
+
+line7=Status collection,11
+collect_interval=Interval between status collection job runs,10,none-Never run,Minutes
+collect_restart=Restart services that are detected as down?,1,1-Yes,0-No
 
 line6=Advanced options,11
 iface_base=Base number for virtual interfaces,3,Automatic

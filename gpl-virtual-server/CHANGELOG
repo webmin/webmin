@@ -529,3 +529,4 @@ Added an option on the Spam and Virus Delivery page to enable spamtrap and hamtr
 The delete-domain.pl command-line script now accepts multiple --domain parameters, and can also delete virtual servers by username with the --user parameter.
 For new Virtualmin installs, Apache logs are now stored under /var/log/virtualmin and just linked from the ~/logs directory. This avoids problems with Apache crashing when the logs directory is deleted.
 Added the 'View website via Webmin' link on the left menu, for viewing a domain's website before it has been registered in DNS.
+Added a Module Config option to have down services automatically restarted by the regular status collection job.
