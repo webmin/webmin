@@ -852,7 +852,25 @@ Returns HTML for selecting many of many from a list. By default, this is
 implemented using two <select> lists and Javascript buttons to move elements
 between them. The resulting input value is \n separated.
 
-XXX
+Parameters are :
+
+=item name - HTML name for this input.
+
+=item values - An array reference of two-element array refs, containing the submitted values and descriptions of items that are selected by default.
+
+=item options - An array reference of two-element array refs, containing the submitted values and descriptions of items that the user can select from.
+
+=item size - Vertical size in rows.
+
+=item add-if-missing - If set to 1, any entries that are in values but not in options will be added automatically.
+
+=item disabled - Set to 1 to disable this input by default.
+
+=item options-title - Optional text to appear above the list of options.
+
+=item values-title - Optional text to appear above the list of selected values.
+
+=item width - Optional width of the two lists in pixels.
 
 =cut
 sub ui_multi_select
@@ -897,7 +915,7 @@ return $rv;
 
 =head2 ui_multi_select_javascript
 
-Returns <script> section for left/right select boxes
+Returns <script> section for left/right select boxes. For internal use only.
 
 =cut
 sub ui_multi_select_javascript
@@ -941,7 +959,16 @@ EOF
 
 =head2 ui_radio(name, value, &options, [disabled?])
 
-Returns HTML for a series of radio buttons
+Returns HTML for a series of radio buttons, of which one can be selected. The
+parameters are :
+
+=item name - HTML name for the radio buttons.
+
+=item value - Value of the button that is selected by default.
+
+=item options - Array ref of radio button options, each of which is an array ref containing the submitted value and description for each button.
+
+=item disabled - Set to 1 to disable all radio buttons by default.
 
 =cut
 sub ui_radio
@@ -972,7 +999,18 @@ return $rv;
 
 =head2 ui_yesno_radio(name, value, [yes], [no], [disabled?])
 
-Like ui_yesno, but always displays just two inputs (yes and no)
+Like ui_radio, but always displays just two inputs (yes and no). The parameters
+are :
+
+=item name - HTML name of the inputs.
+
+=item value - Option selected by default, typically 1 or 0.
+
+=item yes - The value for the yes option, defaulting to 1.
+
+=item no - The value for the no option, defaulting to 0.
+
+=item disabled - Set to 1 to disable all radio buttons by default.
 
 =cut
 sub ui_yesno_radio
@@ -988,7 +1026,19 @@ return &ui_radio($name, $value, [ [ $yes, $text{'yes'} ],
 
 =head2 ui_checkbox(name, value, label, selected?, [tags], [disabled?])
 
-Returns HTML for a single checkbox
+Returns HTML for a single checkbox. Parameters are :
+
+=item name - HTML name of the checkbox.
+
+=item value - Value that will be submitted if it is checked.
+
+=item label - Text to appear next to the checkbox.
+
+=item selected - Set to 1 for it to be checked by default.
+
+=item tags - Additional HTML attributes for the <input> tag.
+
+=item disabled - Set to 1 to disable the checkbox by default.
 
 =cut
 sub ui_checkbox
@@ -1013,7 +1063,19 @@ return "<input class='ui_checkbox' type=checkbox ".
 
 =head2 ui_oneradio(name, value, label, selected?, [tags], [disabled?])
 
-Returns HTML for a single radio button
+Returns HTML for a single radio button. The parameters are :
+
+=item name - HTML name of the radio button.
+
+=item value - Value that will be submitted if it is selected.
+
+=item label - Text to appear next to the button.
+
+=item selected - Set to 1 for it to be selected by default.
+
+=item tags - Additional HTML attributes for the <input> tag.
+
+=item disabled - Set to 1 to disable the radio button by default.
 
 =cut
 sub ui_oneradio
@@ -1035,7 +1097,21 @@ return "<input class='ui_radio' type=radio name=\"".&quote_escape($name)."\" ".
 
 =head2 ui_textarea(name, value, rows, cols, [wrap], [disabled?], [tags])
 
-Returns HTML for a multi-line text input
+Returns HTML for a multi-line text input. The function parameters are :
+
+=item name - Name for this HTML <textarea>.
+
+=item value - Default value. Multiple lines must be separated by \n.
+
+=item rows - Number of rows, in lines.
+
+=item cols - Number of columns, in characters.
+
+=item wrap - Wrapping mode. Can be one of soft, hard or off.
+
+=item disabled - Set to 1 to disable this text area by default.
+
+=item tags - Additional HTML attributes for the <textarea> tag.
 
 =cut
 sub ui_textarea
@@ -1053,7 +1129,8 @@ return "<textarea class='ui_textarea' name=\"".&quote_escape($name)."\" ".
 
 =head2 ui_user_textbox(name, value, [form], [disabled?], [tags])
 
-Returns HTML for a Unix user input
+Returns HTML for an input for selecting a Unix user. Parameters are the
+same as ui_textbox.
 
 =cut
 sub ui_user_textbox
@@ -1065,7 +1142,8 @@ return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
 
 =head2 ui_group_textbox(name, value, [form], [disabled?], [tags])
 
-Returns HTML for a Unix group input
+Returns HTML for an input for selecting a Unix group. Parameters are the
+same as ui_textbox.
 
 =cut
 sub ui_group_textbox
@@ -1077,7 +1155,24 @@ return &ui_textbox($_[0], $_[1], 13, $_[3], undef, $_[4])." ".
 
 =head2 ui_opt_textbox(name, value, size, option1, [option2], [disabled?], [&extra-fields], [max])
 
-Returns HTML for a text field that is optional
+Returns HTML for a text field that is optional, implemented by default as
+a field with radio buttons next to it. The parameters are :
+
+=item name - HTML name for the text box. The radio buttons will have the same name, but with _def appended.
+
+=item value - Initial value, or undef if you want the default radio button selected initially.
+
+=item size - Width of the text box in characters.
+
+=item option1 - Text for the radio button for selecting that no input is being given, such as 'Default'.
+
+=item option2 - Text for the radio button for selecting that you will provide input.
+
+=item disabled - Set to 1 to disable this input by default.
+
+=item extra-fields - An optional array ref of field names that should be disabled by Javascript when this field is disabled.
+
+=item max - Optional maximum allowed input length, in characters.
 
 =cut
 sub ui_opt_textbox
@@ -1100,7 +1195,15 @@ return $rv;
 
 =head2 ui_submit(label, [name], [disabled?], [tags])
 
-Returns HTML for a form submit button
+Returns HTML for a form submit button. Parameters are :
+
+=item label - Text to appear on the button.
+
+=item name - Optional HTML name for the button. Useful if the CGI it submits to needs to know which of several buttons was clicked.
+
+=item disabled - Set to 1 if this button should be disabled by default.
+
+=item tags - Additional HTML attributes for the <input> tag.
 
 =cut
 sub ui_submit
@@ -1117,7 +1220,12 @@ return "<input class='ui_submit' type=submit".
 
 =head2 ui_reset(label, [disabled?])
 
-Returns HTML for a form reset button
+Returns HTML for a form reset button, which clears all fields when clicked.
+Parameters are :
+
+=item label - Text to appear on the button.
+
+=item disabled - Set to 1 if this button should be disabled by default.
 
 =cut
 sub ui_reset
@@ -1131,7 +1239,16 @@ return "<input type=reset value=\"".&quote_escape($label)."\"".
 
 =head2 ui_button(label, [name], [disabled?], [tags])
 
-Returns HTML for a form button
+Returns HTML for a form button, which doesn't do anything when clicked unless
+you add some Javascript to it. The parameters are :
+
+=item label - Text to appear on the button.
+
+=item name - HTML name for this input.
+
+=item disabled - Set to 1 if this button should be disabled by default.
+
+=item tags - Additional HTML attributes for the <input> tag, typically Javascript inside an onClick attribute.
 
 =cut
 sub ui_button
@@ -1147,7 +1264,8 @@ return "<input type=button".
 
 =head2 ui_date_input(day, month, year, day-name, month-name, year-name, [disabled?])
 
-Returns HTML for a date-selection field
+Returns HTML for a date-selection field, with day, month and year inputs.
+XXX
 
 =cut
 sub ui_date_input
