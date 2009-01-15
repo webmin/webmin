@@ -72,7 +72,9 @@ if (&foreign_check("pam")) {
 	LOOP:
 	foreach my $m (@{$svc->{'mods'}}) {
 		if ($m->{'type'} eq 'password') {
-			if ($m->{'args'} =~ /md5/) { $md5++; }
+			if ($m->{'args'} =~ /md5/) {
+				$md5 = 1;
+				}
 			elsif ($m->{'module'} =~ /pam_stack\.so/ &&
 			       $m->{'args'} =~ /service=(\S+)/) {
 				# Referred to another service!
@@ -100,7 +102,7 @@ elsif (&open_readfile(PAM, "/etc/pam.d/passwd")) {
 	# Otherwise try to check the PAM file directly
 	while(<PAM>) {
 		s/#.*$//g;
-		$md5++ if (/^password.*md5/);
+		$md5 = 1 if (/^password.*md5/);
 		}
 	close(PAM);
 	}
@@ -108,7 +110,7 @@ if (&open_readfile(DEFS, "/etc/login.defs")) {
 	# The login.defs file is used on debian sometimes
 	while(<DEFS>) {
 		s/#.*$//g;
-		$md5++ if (/MD5_CRYPT_ENAB\s+yes/i);
+		$md5 = 1 if (/MD5_CRYPT_ENAB\s+yes/i);
 		}
 	close(DEFS);
 	}

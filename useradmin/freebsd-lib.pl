@@ -53,14 +53,14 @@ local $md5 = 0;
 while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//;
-	$md5++ if (/passwd_format\s*=\s*md5/);
+	$md5 = 1 if (/passwd_format\s*=\s*md5/);
 	}
 close(CONF);
 &open_readfile(CONF, "/etc/auth.conf");
 while(<CONF>) {
 	s/\r|\n//g;
 	s/#.*$//;
-	$md5++ if (/crypt_default\s*=\s*md5/);
+	$md5 = 1 if (/crypt_default\s*=\s*md5/);
 	}
 close(CONF);
 return $md5;
