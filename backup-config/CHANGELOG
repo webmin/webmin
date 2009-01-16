@@ -15,3 +15,4 @@ When a directory is entered as an additional path to backup, it will be expanded
 When backing up or restoring from an FTP or SSH server, an optional port number can be entered if the remote server is using a non-standard port.
 ---- Changes since 1.440 ----
 Converted commands in the module's API file to POD format, and added more details about each function.
+Backup files are now given 600 permissions, to prevent reading by non-root users.

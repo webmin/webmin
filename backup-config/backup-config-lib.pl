@@ -385,6 +385,7 @@ if ($?) {
 local @st = stat($file);
 ${$_[2]} = $st[7] if ($_[2]);
 @{$_[3]} = &unique(@files) if ($_[3]);
+&set_ownership_permissions(undef, undef, 0600, $file);
 
 if (!$_[5]) {
 	# Call all module post functions
