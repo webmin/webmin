@@ -78,6 +78,7 @@ if ($in{'file_def'} == 0) {
 		&error(&text('create_efile2', $file));
 	}
 elsif ($in{'file_def'} == 2) {
+	# Automatically choose a filename
 	$file = &automatic_filename($in{'zone'}, $in{'rev'}, $base,
 				    $view ? $view->{'value'} : undef);
 	}

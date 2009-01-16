@@ -39,7 +39,7 @@ if (@views) {
 print &ui_table_row($text{'slave_file'},
 	&ui_radio("file_def", 2, [ [ 1, $text{'slave_none'} ],
 				   [ 2, $text{'slave_auto'} ],
-				   [ 3, &ui_filebox("file", undef, 30) ] ]), 3);
+				   [ 0, &ui_filebox("file", undef, 30) ] ]), 3);
 
 # Master servers
 print &ui_table_row($text{'slave_masters'},
