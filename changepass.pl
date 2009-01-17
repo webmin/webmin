@@ -52,9 +52,18 @@ print "Updated password of Webmin user $user\n";
 
 # Send a signal to have miniserv reload it's config
 if (open(PID, $config{'pidfile'})) {
-	<PID> =~ /(\d+)/; $pid = $1;
+	$pid = <PID>;
+	$pid =~ s/\r|\n//;
 	close(PID);
-	kill('USR1', $pid);
+	if (!$pid) {
+		print STDERR "Webmin is not running - cannot refresh configuration\n";
+		}
+	elsif (!kill('USR1', $pid)) {
+		print STDERR "Failed to signal process $pid - cannot refresh configuration\n";
+		}
+	}
+else {
+	print STDERR "Webmin is not running - cannot refresh configuration\n";
 	}
 
 sub usage
