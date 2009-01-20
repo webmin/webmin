@@ -344,7 +344,8 @@ if (@get_config_cache) {
 # read primary config file
 ($conf) = &find_httpd_conf();
 return undef if (!$conf);
-@get_config_cache = &get_config_file($conf);
+local %seenfiles;
+@get_config_cache = &get_config_file($conf, \%seenfiles);
 
 # Read main resource and access config files
 $lnum = 0;
@@ -354,7 +355,7 @@ if (!$res) { $res = "$config{'httpd_dir'}/conf/srm.conf"; }
 if (!-r &translate_filename($res)) {
 	$res = "$config{'httpd_dir'}/etc/srm.conf";
 	}
-push(@get_config_cache, &get_config_file($res));
+push(@get_config_cache, &get_config_file($res, \%seenfiles));
 
 $lnum = 0;
 $acc = &find_directive("AccessConfig", \@get_config_cache);
@@ -363,7 +364,7 @@ if (!$acc) { $acc = "$config{'httpd_dir'}/conf/access.conf"; }
 if (!-r &translate_filename($acc)) {
 	$acc = "$config{'httpd_dir'}/etc/access.conf";
 	}
-push(@get_config_cache, &get_config_file($acc));
+push(@get_config_cache, &get_config_file($acc, \%seenfiles));
 
 # Read extra config files in VirtualHost sections
 @virt = &find_directive_struct("VirtualHost", \@get_config_cache);
@@ -374,7 +375,7 @@ foreach $v (@virt) {
 		next if (!$inc);
 		local @incs = &expand_apache_include($inc->{'words'}->[0]);
 		foreach my $ginc (@incs) {
-			push(@$mref, &get_config_file($ginc));
+			push(@$mref, &get_config_file($ginc, \%seenfiles));
 			}
 		}
 	}
@@ -382,12 +383,15 @@ foreach $v (@virt) {
 return \@get_config_cache;
 }
 
-# get_config_file(filename)
+# get_config_file(filename, [&seen-files])
+# Returns a list of config hash refs from some file
 sub get_config_file
 {
-local ($file) = @_;
+local ($file, $seen) = @_;
+
 # Convert sites-enabled to real path in sites-available
 $file = &simplify_path(&resolve_links($file));
+return ( ) if ($seen && $seen->{$file}++);
 local @rv;
 if (opendir(DIR, $file)) {
 	# Is a directory .. parse all files!
