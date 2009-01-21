@@ -1965,10 +1965,13 @@ return $max && $w > $max ? $max : $w;
 =head2 ui_radio_selector(&opts, name, selected)
 
 Returns HTML for a set of radio buttons, each of which shows a different
-block of HTML when selected. &opts is an array ref to arrays containing
-[ value, label, html ]
+block of HTML when selected. The parameters are :
 
-XXX
+=item opts - An array ref to arrays containing [ value, label, html ]
+
+=item name - HTML name for the radio buttons
+
+=item selected - Value for the initially selected button.
 
 =cut
 sub ui_radio_selector
@@ -2015,11 +2018,23 @@ EOF
 
 ####################### grid layout functions
 
-=head2 ui_grid_table(&elements, columns, [width-percent], [tds], [tabletags], [title])
+=head2 ui_grid_table(&elements, columns, [width-percent], [&tds], [tabletags], [title])
 
 Given a list of HTML elements, formats them into a table with the given
 number of columns. However, themes are free to override this to use fewer
-columns where space is limited.
+columns where space is limited. Parameters are :
+
+=item elements - An array reference of table elements, each of which can be any HTML you like.
+
+=item columns - Desired number of columns in the grid.
+
+=item width-percent - Optional desired width as a percentage.
+
+=item tds - Array ref of HTML attributes for <td> tags in the tables.
+
+=item tabletags - HTML attributes for the <table> tag.
+
+=item title - Optional title to add to the top of the grid.
 
 =cut
 sub ui_grid_table
@@ -2060,7 +2075,13 @@ return $rv;
 =head2 ui_radio_table(name, selected, &rows)
 
 Returns HTML for a table of radio buttons, each of which has a label and
-some associated inputs to the right.
+some associated inputs to the right. The parameters are :
+
+=item name - Unique name for this table, which is also the radio buttons' name.
+
+=item selected - Value for the initially selected radio button.
+
+=item rows - Array ref of array refs, one per button. The elements of each are the value for this option, a label, and option additional HTML to appear next to it.
 
 =cut
 sub ui_radio_table
@@ -2086,7 +2107,15 @@ return $rv;
 
 =head2 ui_up_down_arrows(uplink, downlink, up-show, down-show)
 
-Returns HTML for moving some objects in a table up or down
+Returns HTML for moving some objects in a table up or down. The parameters are :
+
+=item uplink - URL for the up-arrow link.
+
+=item downlink - URL for the down-arrow link.
+
+=item up-show - Set to 1 if the up-arrow should be shown, 0 if not.
+
+=item down-show - Set to 1 if the down-arrow should be shown, 0 if not.
 
 =cut
 sub ui_up_down_arrows
@@ -2114,7 +2143,7 @@ return $mover;
 
 =head2 ui_hr
 
-Returns a horizontal row tag
+Returns a horizontal row tag, typically just an <hr>
 
 =cut
 sub ui_hr
@@ -2125,7 +2154,7 @@ return "<hr>\n";
 
 =head2 ui_nav_link(direction, url, disabled)
 
-Returns an arrow icon linking to provided url
+Returns an arrow icon linking to the provided url.
 
 =cut
 sub ui_nav_link
@@ -2143,10 +2172,22 @@ else {
 	}
 }
 
-=head2 ui_confirmation_form(cgi, message, &hiddens, [&buttons], [&otherinputs], [extra-warning])
+=head2 ui_confirmation_form(cgi, message, &hiddens, [&buttons], [otherinputs], [extra-warning])
 
 Returns HTML for a form asking for confirmation before performing some
-action, such as deleting a user.
+action, such as deleting a user. The parameters are :
+
+=item cgi - Script to which the confirmation form submits, like delete.cgi.
+
+=item message - Warning message for the user to see.
+
+=item hiddens - Array ref of two-element array refs, containing hidden form field names and values.
+
+=item buttons - Array ref of two-element array refs, containing form button names and labels.
+
+=item otherinputs - HTML for extra inputs to include in ther form.
+
+=item extra-warning - An additional separate warning message to show.
 
 =cut
 sub ui_confirmation_form
@@ -2172,10 +2213,10 @@ return $rv;
 
 ####################### javascript functions
 
-=head2 js_disable_inputs
+=head2 js_disable_inputs(&disable-inputs, &enable-inputs, [tag])
 
-js_disable_input(&disable-inputs, &enable-inputs, [tag])
-Returns Javascript to disable some form elements and enable others
+Returns Javascript to disable some form elements and enable others. Mainly
+for internal use.
 
 =cut
 sub js_disable_inputs
@@ -2205,7 +2246,23 @@ return $_[2] ? "$_[2]='$rv'" : $rv;
 
 Returns HTML for moving left and right in some large list, such as an inbox
 or database table. If only 5 parameters are given, no far links are included.
-If any link is undef, that array will be greyed out.
+If any link is undef, that array will be greyed out. The parameters are :
+
+=item message - Text or display between arrows.
+
+=item inputs - Additional HTML inputs to show after message.
+
+=item cgi - Optional CGI for form wrapping arrows to submit to.
+
+=item left-link - Link for left-facing arrow.
+
+=item right-link - Link for right-facing arrow.
+
+=item far-left-link - Link for far left-facing arrow, optional.
+
+=item far-right-link - Link for far right-facing arrow, optional.
+
+=item below - HTML to display below the arrows.
 
 =cut
 sub ui_page_flipper
@@ -2271,7 +2328,7 @@ return $rv;
 
 =head2 js_checkbox_disable(name, &checked-disable, &checked-enable, [tag])
 
-MISSING DOCUMENTATION
+For internal use only.
 
 =cut
 sub js_checkbox_disable
@@ -2289,7 +2346,7 @@ return $_[3] ? "$_[3]='$rv'" : $rv;
 
 =head2 js_redirect(url, [window-object])
 
-Returns HTML to trigger a redirect to some URL
+Returns HTML to trigger a redirect to some URL.
 
 =cut
 sub js_redirect
