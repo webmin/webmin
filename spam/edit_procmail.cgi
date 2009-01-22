@@ -2,6 +2,8 @@
 # Allow changing of the rule for delivering spam
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("procmail");
 &ui_print_header(undef, $text{'procmail_title'}, "");
 
@@ -41,6 +43,7 @@ else {
 	}
 
 print "<form action=save_procmail.cgi>\n";
+print $form_hiddens;
 print "<table>\n";
 
 # Spam destination inputs
@@ -84,5 +87,5 @@ print "$text{'setup_head'}<p>\n";
 
 print "<input type=submit value='$text{'procmail_ok'}'></form>\n";
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 

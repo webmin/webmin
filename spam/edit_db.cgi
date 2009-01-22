@@ -2,8 +2,10 @@
 # Show form for SpamAssassin DB options
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("db");
-&ui_print_header(undef, $text{'db_title'}, "");
+&ui_print_header($header_subtext, $text{'db_title'}, "");
 $conf = &get_config();
 
 print "$text{'db_desc'}<p>\n";
@@ -100,8 +102,6 @@ $pass = &find("user_scores_ldap_password", $conf);
 &opt_field("user_scores_ldap_password", $pass, 20, undef);
 print "</td> </tr>\n";
 
-
-
 &end_form(undef, $text{'save'});
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 

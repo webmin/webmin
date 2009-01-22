@@ -3,8 +3,9 @@
 
 require './spam-lib.pl';
 &error_setup($text{'procmail_err'});
-&can_use_check("procmail");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("procmail");
 
 # Validate inputs
 $type = undef;
@@ -70,5 +71,5 @@ if ($module_info{'usermin'} && $file ne "/dev/null") {
 
 # All done!
 &webmin_log("procmail");
-&redirect("");
+&redirect($redirect_url);
 

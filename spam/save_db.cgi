@@ -3,8 +3,9 @@
 
 require './spam-lib.pl';
 &error_setup($text{'db_err'});
-&can_use_check("db");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("db");
 &execute_before("db");
 &lock_spam_files();
 $conf = &get_config();
@@ -53,7 +54,7 @@ else {
 &unlock_spam_files();
 &execute_after("db");
 &webmin_log("db");
-&redirect("");
+&redirect($redirect_url);
 
 sub username_check
 {
