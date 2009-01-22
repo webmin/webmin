@@ -531,3 +531,5 @@ For new Virtualmin installs, Apache logs are now stored under /var/log/virtualmi
 Added the 'View website via Webmin' link on the left menu, for viewing a domain's website before it has been registered in DNS.
 Added a Module Config option to have down services automatically restarted by the regular status collection job.
 Directories containing initial files for virtual servers (like /etc/skel) are now included in Virtualmin template backups.
+---- Changes since 3.65 ----
+Added the info.pl command line script, for dumping general information about Virtualmin.
