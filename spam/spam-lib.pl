@@ -6,17 +6,20 @@ do '../web-lib.pl';
 do '../ui-lib.pl';
 use Fcntl;
 
-$local_cf = $config{'local_cf'};
 $warn_procmail = $config{'warn_procmail'};
 if ($module_info{'usermin'}) {
 	# Running under Usermin, editing user's personal config file
 	&switch_to_remote_user();
 	&create_user_config_dirs();
-	if ($local_cf !~ /^\//) {
-		$local_cf = "$remote_user_info[7]/$local_cf";
+	if ($config{'local_cf'} !~ /^\//) {
+		# Path is relative to home dir
+		&set_config_file("$remote_user_info[7]/$config{'local_cf'}");
 		if ($local_cf =~ /^(.*)\// && !-d $1) {
 			mkdir($1, 0700);
 			}
+		}
+	else {
+		&set_config_file($config{'local_cf'});
 		}
 	$database_userpref_name = $remote_user;
 	$include_config_files = !$config{'mode'} || $config{'readfiles'};
@@ -27,7 +30,10 @@ else {
 	# Running under Webmin, typically editing global config file
 	%access = &get_module_acl();
 	if ($access{'file'}) {
-		$local_cf = $access{'file'};
+		&set_config_file($access{'file'});
+		}
+	else {
+		&set_config_file($config{'local_cf'});
 		}
 	if ($access{'nocheck'}) {
 		$warn_procmail = 0;
@@ -39,9 +45,38 @@ else {
 	}
 $ldap_spamassassin_attr = $config{'attr'} || 'spamassassin';
 $ldap_username_attr = $config{'uid'} || 'uid';
+
+# set_config_file(file)
+# Change the default file read by get_config. Under Webmin, checks if this file
+# is accessible to the current user
+sub set_config_file
+{
+local ($file) = @_;
+if (!$module_info{'usermin'}) {
+	# Check for valid file
+	local %cans;
+	$cans{$access{'file'}} = 1 if ($access{'file'});
+	foreach my $f (split(/\s+/, $access{'file'})) {
+		$cans{$f} = 1;
+		}
+	if (keys %cans) {
+		$cans{$file} || &error(&text('index_ecannot',
+					"<tt>".&html_escape($file)."</tt>"));
+		}
+	}
+$local_cf = $file;
 $add_cf = !-d $local_cf ? $local_cf :
 	  $module_info{'usermin'} ? "$local_cf/user_prefs" :
 				    "$local_cf/local.cf";
+}
+
+sub set_config_file_in
+{
+local ($in) = @_;
+if (!$module_info{'usermin'} && $in{'file'}) {
+	&set_config_file($in{'file'});
+	}
+}
 
 # get_config([file], [for-global])
 # Return a structure containing the contents of the spamassassin config file

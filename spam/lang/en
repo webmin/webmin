@@ -11,6 +11,7 @@ index_apply=Apply Changes
 index_applydesc=Click this button to apply the current SpamAssassin configuration by sending a HUP signal to all running $1 processes.
 index_cpan=Because SpamAssassin is a Perl module, you can also install it automatically using Webmin's <a href='$2'>Perl Modules</a> module to download $1 from CPAN.
 index_spamassassin=SpamAssassin
+index_ecannot=You are not allowed to manage the SpamAssassin configuration file $1
 
 white_title=Allowed and Denied Addresses
 white_desc=The tables on this page allow you to specify From: and To: addresses for email that is always or never categorized as spam. Any other email will be processed as normal by SpamAssassin's rules. All email addresses can contain wildcards, like *@foo.com or *.foo.com to match entire domains.
