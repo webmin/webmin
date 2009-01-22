@@ -533,3 +533,4 @@ Added a Module Config option to have down services automatically restarted by th
 Directories containing initial files for virtual servers (like /etc/skel) are now included in Virtualmin template backups.
 ---- Changes since 3.65 ----
 Added the info.pl command line script, for dumping general information about Virtualmin.
+Links to per-domain SpamAssassin configurations now include the domain's config file, which allows each domain's settings to be separately managed.
