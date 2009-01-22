@@ -4,8 +4,9 @@
 
 require './spam-lib.pl';
 &error_setup($text{'priv_err'});
-&can_use_check("priv");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("priv");
 &execute_before("priv");
 &lock_spam_files();
 $conf = &get_config();
@@ -20,7 +21,7 @@ $conf = &get_config();
 &unlock_spam_files();
 &execute_after("priv");
 &webmin_log("priv");
-&redirect("");
+&redirect($redirect_url);
 
 sub check_path
 {

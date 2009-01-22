@@ -17,3 +17,4 @@ Auto-whitelists can now be viewed, deleted from and cleared for all users on the
 Added buttons to the auto-whitelist page for permanently allowing or denying selected addresses.
 ---- Changes since 1.440 ----
 Corrected the columns on the auto-whitelist page, to show the message count and score.
+Improved support for multiple SpamAssassin config files, which can be specified by links into the module from other modules like Virtualmin.

@@ -56,7 +56,7 @@ if (!$module_info{'usermin'}) {
 	# Check for valid file
 	local %cans;
 	$cans{$access{'file'}} = 1 if ($access{'file'});
-	foreach my $f (split(/\s+/, $access{'file'})) {
+	foreach my $f (split(/\s+/, $access{'files'})) {
 		$cans{$f} = 1;
 		}
 	if (keys %cans) {
@@ -73,8 +73,17 @@ $add_cf = !-d $local_cf ? $local_cf :
 sub set_config_file_in
 {
 local ($in) = @_;
+$header_subtext = undef;
+$redirect_url = "";
+$form_hiddens = "";
 if (!$module_info{'usermin'} && $in{'file'}) {
 	&set_config_file($in{'file'});
+	$header_subtext = $in{'title'} || "<tt>$in{'file'}</tt>";
+	$redirect_url = "index.cgi?file=".&urlize($in{'file'}).
+			"&title=".&urlize($in{'title'});
+	$form_hiddens = &ui_hidden("file", $in{'file'}).
+			&ui_hidden("title", $in{'title'});
+	$module_index_link = $redirect_url;
 	}
 }
 
@@ -417,6 +426,7 @@ print "<form action=$_[0] method=post>\n";
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$_[1]</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
+print $form_hiddens;
 }
 
 # end_form(buttonname, buttonvalue, ...)

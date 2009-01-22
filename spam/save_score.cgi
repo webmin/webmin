@@ -4,8 +4,9 @@
 
 require './spam-lib.pl';
 &error_setup($text{'score_err'});
-&can_use_check("score");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("score");
 &execute_before("score");
 &lock_spam_files();
 $conf = &get_config();
@@ -46,7 +47,7 @@ else {
 &unlock_spam_files();
 &execute_after("score");
 &webmin_log("score");
-&redirect("");
+&redirect($redirect_url);
 
 sub hits_check
 {

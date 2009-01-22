@@ -3,8 +3,10 @@
 # Display other misc user-level options
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("user");
-&ui_print_header(undef, $text{'user_title'}, "");
+&ui_print_header($header_subtext, $text{'user_title'}, "");
 $conf = &get_config();
 
 print "$text{'user_desc'}<p>\n";
@@ -92,6 +94,6 @@ $pheader = &find("pyzor_add_header", $conf);
 print "</td> </tr>\n";
 
 &end_form(undef, $text{'save'});
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 
 

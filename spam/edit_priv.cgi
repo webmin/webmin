@@ -3,8 +3,10 @@
 # Display various privileged settings
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("priv");
-&ui_print_header(undef, $text{'priv_title'}, "");
+&ui_print_header($header_subtext, $text{'priv_title'}, "");
 $conf = &get_config();
 
 print "$text{'priv_desc'}<p>\n";
@@ -33,6 +35,6 @@ print "<tr> <td><b>$text{'priv_razor'}</b></td> <td colspan=3 nowrap>";
 print "</td> </tr>\n";
 
 &end_form(undef, $text{'save'});
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 
 

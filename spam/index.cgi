@@ -3,13 +3,15 @@
 # Display a menu of spamassassin config category icons
 
 require './spam-lib.pl';
+&ReadParse();
 $hsl = $module_info{'usermin'} ? undef :
 		&help_search_link("spamassassin", "perl", "google");
+&set_config_file_in(\%in);
 
 if (!&has_command($config{'spamassassin'}) ||
     (!$module_info{'usermin'} && !($vers = &get_spamassassin_version(\$out)))) {
 	# Program not found
-	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1,
+	&ui_print_header($header_subtext, $text{'index_title'}, "", undef, 1, 1,
 			 undef, $hsl);
 
 	if ($module_info{'usermin'}) {
@@ -39,8 +41,8 @@ if (!&has_command($config{'spamassassin'}) ||
 else {
 	$vtext = $module_info{'usermin'} ? undef :
 			&text('index_version', $vers);
-	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, undef,
-			 $hsl, undef, undef, $vtext);
+	&ui_print_header($header_subtext, $text{'index_title'}, "", undef,
+			 1, 1, undef, $hsl, undef, undef, $vtext);
 
 	if (!-r $local_cf && !-d $local_cf && !$module_info{'usermin'}) {
 		# Config not found
@@ -138,6 +140,14 @@ else {
 			@pages = grep { $_ ne 'mail' } @pages;
 			}
 		@links = map { $_ eq "mail" ? "../mailbox/index.cgi?folder=$sfolder->{'index'}" : "edit_${_}.cgi" } @pages;
+		if ($in{'file'}) {
+			foreach my $l (@links) {
+				if ($l !~ /\//) {
+					$l .= "?file=".&urlize($in{'file'}).
+					      "&title=".&urlize($in{'title'});
+					}
+				}
+			}
 		@icons = map { "images/${_}.gif" } @pages;
 		@titles = map { $text{"${_}_title"} } @pages;
 		&icons_table(\@links, \@titles, \@icons);

@@ -4,8 +4,9 @@
 
 require './spam-lib.pl';
 &error_setup($text{'user_err'});
-&can_use_check("user");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("user");
 &execute_before("user");
 &lock_spam_files();
 $conf = &get_config();
@@ -52,7 +53,7 @@ if (!&version_atleast(3)) {
 &unlock_spam_files();
 &execute_after("user");
 &webmin_log("user");
-&redirect("");
+&redirect($redirect_url);
 
 sub check_timeout
 {

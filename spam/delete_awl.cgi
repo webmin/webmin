@@ -3,8 +3,9 @@
 
 require './spam-lib.pl';
 &error_setup($text{'dawl_err'});
-&can_use_check("awl");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("awl");
 &can_edit_awl($in{'user'}) || &error($text{'dawl_ecannot'});
 $conf = &get_config();
 
@@ -39,5 +40,7 @@ else {
 
 &close_auto_whitelist_dbm();
 &redirect("edit_awl.cgi?search=".&urlize($in{'search'}).
-	  "&user=".&urlize($in{'user'}));
+	  "&user=".&urlize($in{'user'}).
+	  "&file=".&urlize($in{'file'}).
+	  "&title=".&urlize($in{'title'}));
 

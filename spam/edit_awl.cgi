@@ -2,14 +2,16 @@
 # Display entries in the auto-whitelist
 
 require './spam-lib.pl';
-&can_use_check("awl");
-&ui_print_header(undef, $text{'awl_title'}, "");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("awl");
+&ui_print_header($header_subtext, $text{'awl_title'}, "");
 $formno = 0;
 
 # Check if we need a username
 if (&supports_auto_whitelist() == 2) {
 	print &ui_form_start("edit_awl.cgi");
+	print $form_hiddens;
 	print "<b>$text{'awl_user'}</b>\n";
 	print &ui_user_textbox("user", $in{'user'}),"\n",
 	      &ui_submit($text{'awl_uok'});
@@ -49,6 +51,7 @@ elsif ($ok < 0) {
 @keys = sort { $a cmp $b } keys %awl;
 @keys = grep { !/\|totscore/ } @keys;
 print &ui_form_start("edit_awl.cgi");
+print $form_hiddens;
 print "<b>$text{'awl_search'}</b>\n";
 print &ui_textbox("search", $in{'search'}, 30),"\n",
       &ui_submit($text{'awl_ok'});
@@ -69,6 +72,7 @@ if (@keys > $max_awl_keys && !$in{'search'}) {
 else {
 	# Show table
 	print &ui_form_start("delete_awl.cgi", "post");
+	print $form_hiddens;
 	print &ui_hidden("search", $in{'search'});
 	print &ui_hidden("user", $in{'user'});
 	@links = ( &select_all_link("d", $formno),
@@ -111,12 +115,14 @@ if ($in{'user'} || &supports_auto_whitelist() == 1) {
 	print &ui_buttons_row("deleteone_awl.cgi",
 		      $text{'awl_deleteone'}, &text('awl_deleteonedesc',
 				"<tt>".&html_escape($in{'user'})."</tt>"),
-		      &ui_hidden("user", $in{'user'}));
+		      &ui_hidden("user", $in{'user'}).
+		      $form_hiddens);
 	}
 if (&supports_auto_whitelist() == 2) {
 	# Delete for all users
 	print &ui_buttons_row("deleteall_awl.cgi",
-		      $text{'awl_deleteall'}, $text{'awl_deletealldesc'});
+		      $text{'awl_deleteall'}, $text{'awl_deletealldesc'},
+		      $form_hiddens);
 	}
 print &ui_buttons_end();
 

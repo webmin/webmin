@@ -2,10 +2,11 @@
 # Update simple tests
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("header");
 $conf = &get_config();
 &error_setup($text{'simple_err'});
-&ReadParse();
 &execute_before("simple");
 
 # Get existing rules
@@ -88,5 +89,5 @@ for($i=0; defined($name = $in{"name_$i"}); $i++) {
 &unlock_spam_files();
 &execute_after("header");
 &webmin_log("header");
-&redirect("");
+&redirect($redirect_url);
 

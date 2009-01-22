@@ -2,8 +2,10 @@
 # Show simple body tests
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("header");
-&ui_print_header(undef, $text{'simple_title'}, "");
+&ui_print_header($header_subtext, $text{'simple_title'}, "");
 $conf = &get_config();
 
 print "$text{'simple_desc'}<p>\n";
@@ -44,5 +46,5 @@ print &ui_columns_end();
 
 print "</td> </tr>\n";
 &end_form(undef, $text{'save'});
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 

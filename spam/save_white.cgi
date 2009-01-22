@@ -4,8 +4,9 @@
 
 require './spam-lib.pl';
 &error_setup($text{'white_err'});
-&can_use_check("white");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("white");
 &execute_before("white");
 &lock_spam_files();
 $conf = &get_config();
@@ -35,7 +36,7 @@ if (!$config{'show_global'}) {
 &unlock_spam_files();
 &execute_after("white");
 &webmin_log("white");
-&redirect("");
+&redirect($redirect_url);
 
 sub from_parser
 {

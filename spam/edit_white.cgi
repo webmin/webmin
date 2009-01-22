@@ -3,8 +3,10 @@
 # Display white and black lists of to and from addresses
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("white");
-&ui_print_header(undef, $text{'white_title'}, "");
+&ui_print_header($header_subtext, $text{'white_title'}, "");
 $conf = &get_config();
 
 print "$text{'white_desc'}<p>\n";
@@ -101,7 +103,7 @@ print "<input type=radio name=sort value=0 checked> $text{'no'}</td> </tr>\n";
 print "</table>\n";
 print "<input type=submit value='$text{'white_importok'}'></form>\n";
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 
 # whitelist_to_conv(col, name, size, value)
 sub whitelist_to_conv

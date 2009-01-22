@@ -4,8 +4,9 @@
 
 require './spam-lib.pl';
 &error_setup($text{'report_err'});
-&can_use_check("report");
 &ReadParse();
+&set_config_file_in(\%in);
+&can_use_check("report");
 &execute_before("report");
 &lock_spam_files();
 $conf = &get_config();
@@ -62,7 +63,7 @@ if (&version_atleast(3)) {
 &unlock_spam_files();
 &webmin_log("report");
 &execute_after("report");
-&redirect("");
+&redirect($redirect_url);
 
 sub char_check
 {

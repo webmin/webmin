@@ -3,8 +3,10 @@
 # Display a form for editing spam scoring options
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("score");
-&ui_print_header(undef, $text{'score_title'}, "");
+&ui_print_header($header_subtext, $text{'score_title'}, "");
 $conf = &get_config();
 
 print "$text{'score_desc'}<p>\n";
@@ -96,5 +98,5 @@ close(LANGS);
 print "</select></td> </tr>\n";
 
 &end_form(undef, $text{'save'});
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 

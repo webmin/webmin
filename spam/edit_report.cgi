@@ -3,8 +3,10 @@
 # Display a form for editing the spam report text
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("report");
-&ui_print_header(undef, $text{'report_title'}, "");
+&ui_print_header($header_subtext, $text{'report_title'}, "");
 $conf = &get_config();
 
 print "$text{'report_desc'}<p>\n";
@@ -131,5 +133,5 @@ print "<textarea name=terse rows=5 cols=80>",
 print "</tr>\n";
 
 &end_form(undef, $text{'save'});
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 

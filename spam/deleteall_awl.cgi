@@ -3,6 +3,8 @@
 
 require './spam-lib.pl';
 &error_setup($text{'dawl_err'});
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("awl");
 &ReadParse();
 
@@ -26,5 +28,5 @@ while(@uinfo = getpwent()) {
 endpwent();
 print &text('dawl_done', $ucount, $count),"<p>\n";
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 
