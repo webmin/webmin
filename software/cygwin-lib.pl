@@ -4,6 +4,11 @@
 use vars '$hasrpm'; $hasrpm = (-f "/usr/bin/rpm.exe");
 use vars '$db'; $db = "/etc/setup/installed.db";
 
+sub validate_package_system
+{
+return -r $db ? undef : &text('cygwin_edb', "<tt>$db</tt>");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with all or listed packages
 sub list_packages

@@ -6,6 +6,16 @@ $pkg_dir = "/var/db/pkg";
 $portage_bin = "/usr/lib/portage/bin";
 $ENV{'TERM'} = "dumb";
 
+sub list_package_system_commands
+{
+return ("$portage_bin/pkglist");
+}
+
+sub list_update_system_commands
+{
+return ("emerge");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with all or listed packages
 sub list_packages

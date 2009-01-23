@@ -1,6 +1,11 @@
 # hpux-lib.pl
 # Functions for HP-UX package management
 
+sub list_package_system_commands
+{
+return ("swlist", "swinstall");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with all or listed packages
 sub list_packages

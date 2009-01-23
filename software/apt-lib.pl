@@ -4,6 +4,11 @@
 $apt_get_command = $config{'apt_mode'} ? "aptitude" : "apt-get";
 $apt_search_command = $config{'apt_mode'} ? "aptitude" : "apt-cache";
 
+sub list_update_system_commands
+{
+return ($apt_get_command, $apt_search_command);
+}
+
 # update_system_install([package])
 # Install some package with apt
 sub update_system_install

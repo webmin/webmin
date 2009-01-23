@@ -1,6 +1,11 @@
 # urpmi-lib.pl
 # Functions for installing packages with Mandrake urpmi
 
+sub list_update_system_commands
+{
+return ("urpmi");
+}
+
 # update_system_install([package])
 # Install some package with urpmi
 sub update_system_install

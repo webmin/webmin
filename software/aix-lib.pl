@@ -1,6 +1,11 @@
 # aix-lib.pl
 # Functions for aix package management
 
+sub list_package_system_commands
+{
+return ("lslpp", "geninstall", "installp");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
 sub list_packages

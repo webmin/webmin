@@ -1,6 +1,11 @@
 # rpm-lib.pl
 # Functions for redhat linux package management
 
+sub list_package_system_commands
+{
+return ("rpm");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with all or listed packages
 sub list_packages

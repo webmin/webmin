@@ -7,6 +7,18 @@ require './software-lib.pl';
 	&help_search_link(defined(&package_help) ? ( &package_help() ) : ( ),
 			  "man", "doc"));
 
+# Validate the package and update systems
+$err = &check_package_system();
+if ($err) {
+	&ui_print_endpage(&text('index_epackagecheck', $err,
+				"../config.cgi?$module_name"));
+	}
+$err = &check_update_system();
+if ($err) {
+	&ui_print_endpage(&text('index_eupdatecheck', $err,
+				"../config.cgi?$module_name"));
+	}
+
 # Show package search and list forms
 print &ui_subheading($text{'index_installed'});
 print "<table width=100%><tr>\n";

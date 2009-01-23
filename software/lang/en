@@ -16,6 +16,10 @@ index_all=All Packages
 index_return=module index
 index_treturn=package tree
 index_tree=Package Tree
+index_epackagecmd=The $1 package system requires the $2 command
+index_eupdatecmd=The $1 update system requires the $2 command
+index_epackagecheck=The selected package management system is not valid : $1.<br>You may need to select a different system on the <a href='$2'>module configuration</a> page.
+index_eupdatecheck=The selected update system is not valid : $1.<br>You may need to select a different update method on the <a href='$2'>module configuration</a> page.
 
 search_title=Package Search
 search_nomatch=No packages matched $1
@@ -145,6 +149,7 @@ slack_missing=Missing
 slack_root=Root directory
 slack_eroot=Missing or invalid root directory
 slack_manager=Slackware Package Manager
+slack_edir=Missing Slackware packages directory $1
 
 debian_unknown=Unknown
 debian_depends=Ignore dependancy problems?
@@ -323,6 +328,7 @@ cygwin_elstat=Failed to stat symlink: $1
 cygwin_badpostscript=Warning: this script does not appear to have been run
 cygwin_pkgexists=Package $1 already exists.
 cygwin_warnuse=Warning: This is not an official interface for managing Cygwin software.  Use at your own risk.
+cygwin_edb=Missing Cygwin packages database $1
 
 deletes_err=Failed to delete packages
 deletes_enone=No packages selected

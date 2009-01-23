@@ -4,6 +4,11 @@
 $up2date_config = "/etc/sysconfig/rhn/up2date";
 $rhn_sysconfig = "/etc/sysconfig/rhn/rhnsd";
 
+sub list_update_system_commands
+{
+return ("up2date");
+}
+
 # update_system_install([package])
 # Install some package with up2date
 sub update_system_install

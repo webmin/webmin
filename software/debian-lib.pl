@@ -1,6 +1,11 @@
 # debian-lib.pl
 # Functions for debian DPKG package management
 
+sub list_package_system_commands
+{
+return ("dpkg");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
 sub list_packages

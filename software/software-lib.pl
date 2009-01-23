@@ -1,6 +1,5 @@
 # software-lib.pl
 # A generalized system for package management on solaris, linux, etc..
-# XXX cluster-software module
 
 do '../web-lib.pl';
 &init_config();
@@ -216,6 +215,48 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 	return $comp if ($comp);
 	}
 return 0;
+}
+
+# check_package_system()
+# Returns an error message if some command needed by the selected package
+# management system is missing.
+sub check_package_system
+{
+local $err;
+if (defined(&validate_package_system)) {
+	$err = &validate_package_system();
+	}
+if (defined(&list_package_system_commands)) {
+	foreach my $c (&list_package_system_commands()) {
+		if (!&has_command($c)) {
+			$err ||= &text('index_epackagecmd', &package_system(),
+				       "<tt>$c</tt>");
+			}
+		}
+	}
+return $err;
+}
+
+# check_update_system()
+# Returns an error message if some command needed by the selected update
+# system is missing.
+sub check_update_system
+{
+return undef if (!$update_system);
+local $err;
+if (defined(&validate_update_system)) {
+	$err = &validate_update_system();
+	}
+if (defined(&list_update_system_commands)) {
+	foreach my $c (&list_update_system_commands()) {
+		if (!&has_command($c)) {
+			$err ||= &text('index_eupdatecmd',
+			    $text{$update_system.'_name'} || uc($update_system),
+			    "<tt>$c</tt>");
+			}
+		}
+	}
+return $err;
 }
 
 1;

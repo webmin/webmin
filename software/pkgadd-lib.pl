@@ -3,6 +3,11 @@
 
 &foreign_require("proc", "proc-lib.pl");
 
+sub list_package_system_commands
+{
+return ("pkginfo", "pkgadd", "pkgrm");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
 sub list_packages

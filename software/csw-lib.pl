@@ -4,6 +4,11 @@
 $pkg_get = -x "/opt/csw/bin/pkg-get" ? "/opt/csw/bin/pkg-get"
 				     : &has_command("pkg-get");
 
+sub list_update_system_commands
+{
+return ($pkg_get);
+}
+
 # update_system_install([file])
 # Install some package with pkg-get
 sub update_system_install

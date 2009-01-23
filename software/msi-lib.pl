@@ -6,6 +6,11 @@ $sw_discovery_cmd = "$root_directory/SW_Discovery/SW_Discovery.exe";
 $has_sw_discovery = -x $sw_discovery_cmd;
 $no_package_filesearch = 1;
 
+sub list_package_system_commands
+{
+return ($sw_discovery_cmd);
+}
+
 # list_packages([package]*)
 # Fills the array %packages with all or listed packages
 sub list_packages

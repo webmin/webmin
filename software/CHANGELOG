@@ -26,3 +26,4 @@ Added an Upgrade All button for CSW packages.
 ---- Changes since 1.440 ----
 Added a Module Config option to not use any update system, even if YUM or APT are installed.
 Added the function package_files for other modules to call, when only a list of files in some package is needed.
+The selected package and update systems are now checked when the module is opened, and an error message displayed if any needed commands are missing.

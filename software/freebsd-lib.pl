@@ -5,6 +5,11 @@ use POSIX;
 chop($system_arch = `uname -m`);
 $package_dir = "/var/db/pkg";
 
+sub list_package_system_commands
+{
+return ("pkg_info", "pkg_add");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
 sub list_packages

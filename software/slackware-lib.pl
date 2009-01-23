@@ -21,6 +21,12 @@ $package_dir = "/var/log/packages";
 use POSIX;
 chop($system_arch = `uname -m`);
 
+sub validate_package_system
+{
+return -d &translate_filename($package_dir) ? undef :
+	&text('slack_edir', "<tt>$package_dir</tt>");
+}
+
 # list_packages([package]*)
 # Fills the array %packages with a list of all packages
 sub list_packages

@@ -3,6 +3,11 @@
 
 $yum_config = $config{'yum_config'} || "/etc/yum.conf";
 
+sub list_update_system_commands
+{
+return ("yum");
+}
+
 # update_system_install([package], [&in])
 # Install some package with yum
 sub update_system_install
