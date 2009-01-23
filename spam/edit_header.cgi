@@ -3,13 +3,17 @@
 # Display extra header and body test
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("header");
 &ui_print_header(undef, $text{'header_title'}, "");
 $conf = &get_config();
 
 print "$text{'header_desc'}<p>\n";
 &start_form("save_header.cgi", $text{'header_header'}."\n".
-		       "(<a href=edit_simple.cgi>$text{'header_switch'}</a>)");
+	    "<a href='edit_simple.cgi?file=".&urlize($in{'file'}).
+	    "&title=".&urlize($in{'title'}).
+	    "'>$text{'header_switch'}</a>");
 
 if (!$module_info{'usermin'}) {
 	print "<tr> <td><b>$text{'header_allow'}</b></td> <td nowrap colspan=3>";
@@ -73,7 +77,7 @@ print "<tr> <td valign=top><b>$text{'score_describe'}</b></td> <td colspan=3>\n"
 print "</td> </tr>\n";
 
 &end_form(undef, $text{'save'});
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer($redirect_url, $text{'index_return'});
 
 # header_conv(col, name, size, value, &values)
 sub header_conv

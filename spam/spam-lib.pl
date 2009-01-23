@@ -419,12 +419,12 @@ sub default_parsefunc
 return $_[1] ? join(" ", @_[1..$#_]) : undef;
 }
 
-# start_form(cgi, header)
+# start_form(cgi, header, [right-header])
 sub start_form
 {
-local ($cgi, $header) = @_;
+local ($cgi, $header, $right) = @_;
 print &ui_form_start($cgi, "post");
-print &ui_table_start($header, "width=100%", 2);
+print &ui_table_start($header, "width=100%", 2, undef, $right);
 print $form_hiddens;
 }
 

@@ -9,21 +9,22 @@ require './spam-lib.pl';
 $conf = &get_config();
 
 print "$text{'simple_desc'}<p>\n";
-&start_form("save_simple.cgi", $text{'simple_header'}."\n".
-		       "(<a href=edit_header.cgi>$text{'simple_switch'}</a>)");
-print "<tr> <td>\n";
+&start_form("save_simple.cgi", "post",
+	    "<a href='edit_header.cgi?file=".&urlize($in{'file'}).
+	    "&title=".&urlize($in{'title'}).
+	    "'>$text{'simple_switch'}</a>");
 
 # Find the tests we can handle
 @simples = &get_simple_tests($conf);
 
-print &ui_columns_start([ $text{'simple_name'},
+$table = &ui_columns_start([ $text{'simple_name'},
 			  $text{'simple_for'},
 			  $text{'simple_regexp'},
 			  $text{'simple_score'},
-			  $text{'simple_describe'} ], "100");
+			  $text{'simple_describe'} ], 100);
 $i = 0;
 foreach $s (@simples, { }, { }, { }) {
-	print &ui_columns_row([
+	$table .= &ui_columns_row([
 		&ui_textbox("name_$i", $s->{'name'}, 20),
 		&ui_select("header_$i", $s->{'header'},
 			[ [ "subject", "Subject: header" ],
@@ -42,9 +43,9 @@ foreach $s (@simples, { }, { }, { }) {
 		]);
 	$i++;
 	}
-print &ui_columns_end();
+$table .= &ui_columns_end();
+print &ui_table_row(undef, $table, 2);
 
-print "</td> </tr>\n";
 &end_form(undef, $text{'save'});
 &ui_print_footer($redirect_url, $text{'index_return'});
 
