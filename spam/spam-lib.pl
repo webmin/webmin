@@ -422,31 +422,23 @@ return $_[1] ? join(" ", @_[1..$#_]) : undef;
 # start_form(cgi, header)
 sub start_form
 {
-print "<form action=$_[0] method=post>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$_[1]</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+local ($cgi, $header) = @_;
+print &ui_form_start($cgi, "post");
+print &ui_table_start($header, "width=100%", 2);
 print $form_hiddens;
 }
 
 # end_form(buttonname, buttonvalue, ...)
 sub end_form
 {
-print "</table></td></tr></table>\n";
-if (@_) {
-	local $p = int(200 / scalar(@_));
-	print "<table width=100%><tr>\n";
-	local $i;
-	for($i=0; $i<@_; $i+=2 ) {
-		local $al = $i == 0 ? "align=left" :
-			    $i == @_-2 ? "align=right" : "align=center";
-		local $n = $_[$i] ? "name='$_[$i]'" : "";
-		local $v = &html_escape($_[$i+1]);
-		print "<td width=$p% $al><input type=submit $n value='$v'></td>\n";
-		}
-	print "</table>\n";
+print &ui_table_end();
+local @buts;
+for(my $i=0; $i<@_; $i+=2 ) {
+	local $al = $i == 0 ? "align=left" :
+		    $i == @_-2 ? "align=right" : "align=center";
+	push(@buts, [ $_[$i], $_[$i+1] ]);
 	}
-print "</form>\n";
+print &ui_form_end(\@buts);
 }
 
 # yes_no_field(name, value, default)
@@ -454,12 +446,9 @@ sub yes_no_field
 {
 local $v = !$_[1] ? -1 : $_[1]->{'value'};
 local $def = &find_default($_[0], $_[2]) ? $text{'yes'} : $text{'no'};
-printf "<input type=radio name=$_[0] value=1 %s> %s\n",
-	$v == 1 ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=$_[0] value=0 %s> %s\n",
-	$v == 0 ? "checked" : "", $text{'no'};
-printf "<input type=radio name=$_[0] value=-1 %s> %s (%s)\n",
-	$v == -1 ? "checked" : "", $text{'default'}, $def;
+return &ui_radio($_[0], $v,
+		 [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
+		   [ -1, $text{'default'}." (".$def.")" ] ]);
 }
 
 # parse_yes_no(&config, name)
@@ -475,8 +464,8 @@ sub option_field
 local $v = !$_[1] ? -1 : $_[1]->{'value'};
 local $def = &find_default($_[0], $_[2]);
 local ($defopt) = grep { $_->[0] eq $def } @{$_[3]};
-print &ui_radio($_[0], $v,
-		[ @{$_[3]}, [ -1, "$text{'default'} ($defopt->[1])" ] ]);
+return &ui_radio($_[0], $v,
+		 [ @{$_[3]}, [ -1, "$text{'default'} ($defopt->[1])" ] ]);
 }
 
 sub parse_option
@@ -488,12 +477,9 @@ sub parse_option
 sub opt_field
 {
 local $def = &find_default($_[0], $_[3]) if ($_[3]);
-printf "<input type=radio name=$_[0]_def value=1 %s> %s %s\n",
-	$_[1] ? "" : "checked", $text{'default'}, $_[3] ? " ($def)" : "";
-printf "<input type=radio name=$_[0]_def value=0 %s>\n",
-	$_[1] ? "checked" : "";
-printf "<input name=$_[0] size=$_[2] value='%s'>\n",
-	$_[1] ? &html_escape(ref($_[1]) ? $_[1]->{'value'} : $_[1]) : "";
+return &ui_opt_textbox($_[0],
+	!$_[1] ? undef : ref($_[1]) ? $_[1]->{'value'} : $_[1],
+	$_[2], $text{'default'}.($_[3] ? " ($def)" : ""));
 }
 
 # parse_opt(&config, name, [&checkfunc])
@@ -512,11 +498,7 @@ else {
 # edit_textbox(name, &values, width, height)
 sub edit_textbox
 {
-print "<textarea name=$_[0] cols=$_[2] rows=$_[3]>";
-foreach $v (@{$_[1]}) {
-	print "$v\n";
-	}
-print "</textarea>\n";
+return &ui_textarea($_[0], join("\n", @{$_[1]}), $_[3], $_[2]);
 }
 
 # parse_textbox(&config, name)
@@ -1076,6 +1058,36 @@ else {
 	# No restrictions
 	return 1;
 	}
+}
+
+# list_spamassassin_languages()
+# Returns a list of language codes and descriptions
+sub list_spamassassin_languages
+{
+local @rv;
+open(LANGS, "$module_root_directory/langs");
+while(<LANGS>) {
+	if (/^(\S+)\s+(.*)/) {
+		push(@rv, [ $1, $2 ]);
+		}
+	}
+close(LANGS);
+return @rv;
+}
+
+# list_spamassassin_locales()
+# Returns a list of locale codes and descriptions
+sub list_spamassassin_locales
+{
+local @rv;
+open(LANGS, "$module_root_directory/locales");
+while(<LANGS>) {
+	if (/^(\S+)\s+(.*)/) {
+		push(@rv, [ $1, $2 ]);
+		}
+	}
+close(LANGS);
+return @rv;
 }
 
 1;
