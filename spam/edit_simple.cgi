@@ -9,7 +9,7 @@ require './spam-lib.pl';
 $conf = &get_config();
 
 print "$text{'simple_desc'}<p>\n";
-&start_form("save_simple.cgi", "post",
+&start_form("save_simple.cgi", $text{'simple_header'},
 	    "<a href='edit_header.cgi?file=".&urlize($in{'file'}).
 	    "&title=".&urlize($in{'title'}).
 	    "'>$text{'simple_switch'}</a>");

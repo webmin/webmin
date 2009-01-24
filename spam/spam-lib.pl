@@ -368,25 +368,21 @@ return map { { 'name' => $_[0],
 sub edit_table
 {
 local ($h, $v);
-print "<table border>\n";
-print "<tr $tb>\n";
-foreach $h (@{$_[1]}) {
-	print "<td><b>$h</b></td>\n";
-	}
-print "</tr>\n";
+local $rv = &ui_columns_start($_[1]);
 local $i = 0;
 local $cfunc = $_[4] || \&default_convfunc;
 local $blanks = $_[5] || 1;
 foreach $v (@{$_[2]}, map { [ ] } (1 .. $blanks)) {
-	print "<tr $cb>\n";
+	local @cols;
 	for($j=0; $j<@{$_[1]}; $j++) {
-		print "<td>",&$cfunc($j, "$_[0]_${i}_${j}", $_[3]->[$j],
-				     $v->[$j], $v),"</td>";
+		push(@cols, &$cfunc($j, "$_[0]_${i}_${j}", $_[3]->[$j],
+				     $v->[$j], $v));
 		}
-	print "</tr>\n";
+	$rv .= &ui_columns_row(\@cols);
 	$i++;
 	}
-print "</table>\n";
+$rv .= &ui_columns_end();
+return $rv;
 }
 
 # default_convfunc(column, name, size, value)
