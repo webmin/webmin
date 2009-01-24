@@ -65,42 +65,37 @@ $ldaptable .= &ui_table_end();
 
 
 # Show backend type selector
-print "<tr> <td valign=top><b>$text{'db_dsn'}</b></td> <td nowrap>";
-print &ui_radio_table("mode", $mode,
+print &ui_table_row($text{'db_dsn'},
+   &ui_radio_table("mode", $mode,
 	[ [ 0, $text{'db_mode0'} ],
 	  [ 1, $text{'db_mode1'}, $dbtable ],
 	  [ 3, $text{'db_mode3'}, $ldaptable ],
 	  [ 4, $text{'db_mode4'},
-	       &ui_textbox("dsn", $dsn, 60) ] ]);
-print "</td> </tr>\n";
+	       &ui_textbox("dsn", $dsn, 60) ] ]));
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+print &ui_table_hr();
 
 # DB login
-print "<tr> <td><b>$text{'db_user'}</b></td> <td nowrap>";
 $user = &find("user_scores_sql_username", $conf);
-&opt_field("user_scores_sql_username", $user, 20, undef);
-print "</td> </tr>\n";
+print &ui_table_row($text{'db_user'},
+	&opt_field("user_scores_sql_username", $user, 20, undef));
 
 # DB password
-print "<tr> <td><b>$text{'db_pass'}</b></td> <td nowrap>";
 $pass = &find("user_scores_sql_password", $conf);
-&opt_field("user_scores_sql_password", $pass, 20, undef);
-print "</td> </tr>\n";
+print &ui_table_row($text{'db_pass'},
+	&opt_field("user_scores_sql_password", $pass, 20, undef));
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+print &ui_table_hr();
 
 # LDAP login
-print "<tr> <td><b>$text{'db_luser'}</b></td> <td nowrap>";
 $user = &find("user_scores_ldap_username", $conf);
-&opt_field("user_scores_ldap_username", $user, 40, undef);
-print "</td> </tr>\n";
+print &ui_table_row($text{'db_luser'},
+	&opt_field("user_scores_ldap_username", $user, 40, undef));
 
 # LDAP password
-print "<tr> <td><b>$text{'db_lpass'}</b></td> <td nowrap>";
 $pass = &find("user_scores_ldap_password", $conf);
-&opt_field("user_scores_ldap_password", $pass, 20, undef);
-print "</td> </tr>\n";
+print &ui_table_row($text{'db_lpass'},
+	&opt_field("user_scores_ldap_password", $pass, 20, undef));
 
 &end_form(undef, $text{'save'});
 &ui_print_footer($redirect_url, $text{'index_return'});

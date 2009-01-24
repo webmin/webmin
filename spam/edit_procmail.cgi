@@ -42,50 +42,36 @@ else {
 	$file = $spamrec->{'action'};
 	}
 
-print "<form action=save_procmail.cgi>\n";
+print &ui_form_start("save_procmail.cgi", "post");
+print &ui_table_start(undef, undef, 2);
 print $form_hiddens;
-print "<table>\n";
 
 # Spam destination inputs
-print "<tr> <td rowspan=6 valign=top><b>$text{'setup_to'}</b></td>\n";
+print &ui_table_row($text{'setup_to'},
+	&ui_radio_table("to", $mode,
+	  [ [ 0, $text{'setup_null'} ],
+	    [ 4, $text{'setup_default'} ],
+	    [ 1, $text{'setup_file'},
+		 &ui_textbox("mbox", $mode == 1 ? $file : "", 40) ],
+	    [ 2, $text{'setup_maildir'},
+		 &ui_textbox("maildir", $mode == 2 ? $file : "", 40) ],
+	    [ 3, $text{'setup_mhdir'},
+		 &ui_textbox("mhdir", $mode == 3 ? $file : "", 40) ],
+	    [ 5, $text{'setup_email'},
+		 &ui_textbox("email", $mode == 5 ? $email : "", 40) ] ]));
 
-printf "<td><input type=radio name=to value=0 %s> %s</td> </tr>\n",
-	$mode == 0 ? "checked" : "", $text{'setup_null'};
-
-printf "<td><input type=radio name=to value=4 %s> %s</td> </tr>\n",
-	$mode == 4 ? "checked" : "", $text{'setup_default'};
-
-printf "<td><input type=radio name=to value=1 %s> %s</td>\n",
-	$mode == 1 ? "checked" : "", $text{'setup_file'};
-printf "<td><input name=file size=30 value='%s'></td> </tr>\n",
-	$mode == 1 ? $file : undef;
-
-printf "<td><input type=radio name=to value=2 %s> %s</td>\n",
-	$mode == 2 ? "checked" : "", $text{'setup_maildir'};
-printf "<td><input name=maildir size=30 value='%s'></td> </tr>\n",
-	$mode == 2 ? $file : undef;
-
-printf "<td><input type=radio name=to value=3 %s> %s</td>\n",
-	$mode == 3 ? "checked" : "", $text{'setup_mhdir'};
-printf "<td><input name=mhdir size=30 value='%s'></td> </tr>\n",
-	$mode == 3 ? $file : undef;
-
-printf "<td><input type=radio name=to value=5 %s> %s</td>\n",
-	$mode == 5 ? "checked" : "", $text{'setup_email'};
-printf "<td><input name=email size=30 value='%s'></td> </tr>\n",
-	$mode == 5 ? $email : undef;
-
-print "</td></tr></table><br>\n";
-
+# Message about path
 if ($module_info{'usermin'}) {
-	print "$text{'setup_rel'}<p>\n";
+	$msg = "$text{'setup_rel'}<p>\n";
 	}
 else {
-	print "$text{'setup_home'}<p>\n";
+	$msg = "$text{'setup_home'}<p>\n";
 	}
-print "$text{'setup_head'}<p>\n";
+$msg .= "$text{'setup_head'}<p>\n";
+print &ui_table_row(undef, $msg, 2);
 
-print "<input type=submit value='$text{'procmail_ok'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'procmail_ok'} ] ]);
 
 &ui_print_footer($redirect_url, $text{'index_return'});
 

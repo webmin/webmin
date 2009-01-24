@@ -3,9 +3,10 @@
 # Save custom header and body tests
 
 require './spam-lib.pl';
+&ReadParse();
+&set_config_file_in(\%in);
 &can_use_check("header");
 &error_setup($text{'header_err'});
-&ReadParse();
 &execute_before("header");
 &lock_spam_files();
 $conf = &get_config();
@@ -40,7 +41,7 @@ if (!$module_info{'usermin'}) {
 &unlock_spam_files();
 &execute_after("header");
 &webmin_log("header");
-&redirect("");
+&redirect($redirect_url);
 
 # header_parser(rowname, value, ...)
 sub header_parser

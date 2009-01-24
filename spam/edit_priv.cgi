@@ -12,27 +12,31 @@ $conf = &get_config();
 print "$text{'priv_desc'}<p>\n";
 &start_form("save_priv.cgi", $text{'priv_header'});
 
-print "<tr> <td><b>$text{'priv_white'}</b></td> <td colspan=3 nowrap>";
-&opt_field("auto_whitelist_path", $x=&find("auto_whitelist_path", $conf), 40,
-	   "~/.spamassassin/auto-whitelist");
-print "</td> </tr>\n";
+# Whitelist file path
+$path = &find("auto_whitelist_path", $conf);
+print &ui_table_row($text{'priv_white'},
+	&opt_field("auto_whitelist_path", $path, 40,
+		   "~/.spamassassin/auto-whitelist"));
 
-print "<tr> <td><b>$text{'priv_mode'}</b></td> <td nowrap>";
-&opt_field("auto_whitelist_file_mode", $x=&find("auto_whitelist_file_mode", $conf), 4,
-	   "0700");
-print "</td> </tr>\n";
+# Whitelist file mode
+$mode = &find("auto_whitelist_file_mode", $conf);
+print &ui_table_row($text{'priv_mode'},
+	&opt_field("auto_whitelist_file_mode", $mode, 4, "0700"));
 
-print "<tr> <td><b>$text{'priv_dcc'}</b></td> <td nowrap>";
-&opt_field("dcc_options", $x=&find("dcc_options", $conf), 10, "-R");
-print "</td> </tr>\n";
+# DCC options
+$dcc = &find("dcc_options", $conf);
+print &ui_table_row($text{'priv_dcc'},
+	&opt_field("dcc_options", $dcc, 10, "-R"));
 
-print "<tr> <td><b>$text{'priv_log'}</b></td> <td colspan=3 nowrap>";
-&opt_field("timelog_path", $x=&find("timelog_path", $conf), 40, "NULL");
-print "</td> </tr>\n";
+# Timing log file
+$log = &find("timelog_path", $conf);
+print &ui_table_row($text{'priv_log'},
+	&opt_field("timelog_path", $log, 40, "NULL"));
 
-print "<tr> <td><b>$text{'priv_razor'}</b></td> <td colspan=3 nowrap>";
-&opt_field("razor_config", $x=&find("razor_config", $conf), 40, "~/razor.conf");
-print "</td> </tr>\n";
+# Razor config file
+$razor = &find("razor_config", $conf);
+print &ui_table_row($text{'priv_razor'},
+	&opt_field("razor_config", $razor, 40, "~/razor.conf"));
 
 &end_form(undef, $text{'save'});
 &ui_print_footer($redirect_url, $text{'index_return'});

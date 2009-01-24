@@ -6,7 +6,7 @@ require './spam-lib.pl';
 &ReadParse();
 &set_config_file_in(\%in);
 &can_use_check("header");
-&ui_print_header(undef, $text{'header_title'}, "");
+&ui_print_header($header_subtext, $text{'header_title'}, "");
 $conf = &get_config();
 
 print "$text{'header_desc'}<p>\n";
