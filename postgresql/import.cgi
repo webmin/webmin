@@ -79,14 +79,15 @@ while(<FILE>) {
 
 # Empty the table, if requested
 if ($in{'delete'}) {
-	&execute_sql_logged($in{'db'}, "delete from ".&quotestr($in{'table'}));
+	&execute_sql_logged($in{'db'}, "delete from ".
+				       &quote_table($in{'table'}));
 	}
 
 # Add the rows
 @str = &table_structure($in{'db'}, $in{'table'});
 foreach $r (@rv) {
 	@sets = map { "?" } @str;
-	$cmd = "insert into ".&quotestr($in{'table'})." values (".
+	$cmd = "insert into ".&quote_table($in{'table'})." values (".
 	       join(",", @sets).")";
 	&execute_sql_logged($in{'db'}, $cmd, @$r);
 	}
