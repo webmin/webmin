@@ -64,11 +64,6 @@ openssl_cnf=Location of OpenSSL configuration file,3,Work out automatically
 
 line4=Actions upon server and user creation,11
 from_addr=From: address for email sent by Virtualmin,3,Default
-user_template=Template file for email to new mailboxes,10,none-None,default-Default
-update_template=Template file for email to updated mailboxes,10,default-Default
-local_template=Template file for email to new local users,10,none-None,default-Default
-bw_template=Template file for email to servers over bandwidth limit,10,default-Default
-warnbw_template=Template file for email to servers approaching bandwidth limit,10,default-Default
 pre_command=Command to run before making changes to a server,0
 post_command=Command to run after making changes to a server,0
 other_users=Notify other modules when updating server administrator Unix users?,1,1-Yes,0-No
