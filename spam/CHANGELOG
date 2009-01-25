@@ -18,3 +18,5 @@ Added buttons to the auto-whitelist page for permanently allowing or denying sel
 ---- Changes since 1.440 ----
 Corrected the columns on the auto-whitelist page, to show the message count and score.
 Improved support for multiple SpamAssassin config files, which can be specified by links into the module from other modules like Virtualmin.
+Converted all pages to use the new Webmin UI library, for a more consistent look.
+Cleaned up the layout of all pages to improve formatted, in particular the Allowed and Denied Addresses page which now uses tabs.

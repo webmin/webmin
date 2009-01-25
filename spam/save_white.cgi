@@ -4,7 +4,7 @@
 
 require './spam-lib.pl';
 &error_setup($text{'white_err'});
-&ReadParse();
+&ReadParseMime();
 &set_config_file_in(\%in);
 &can_use_check("white");
 &execute_before("white");
@@ -15,21 +15,39 @@ $conf = &get_config();
 
 &parse_textbox($conf, 'unwhitelist_from');
 
-if (!$config{'show_global'}) {
-	@rcvd = &parse_table("whitelist_from_rcvd", \&rcvd_parser);
-	&save_directives($conf, 'whitelist_from_rcvd', \@rcvd, 1);
-	}
+@rcvd = &parse_table("whitelist_from_rcvd", \&rcvd_parser);
+&save_directives($conf, 'whitelist_from_rcvd', \@rcvd, 1);
 
 &parse_textbox($conf, 'blacklist_from');
 
 &parse_textbox($conf, 'unblacklist_from');
 
-if (!$config{'show_global'}) {
-	@to = &parse_table("whitelist_to", \&to_parser);
-	@oldto = ( &find("whitelist_to", $conf),
-		   &find("more_spam_to", $conf),
-		   &find("all_spam_to", $conf) );
-	&save_directives($conf, \@oldto, \@to, 0);
+@to = &parse_table("whitelist_to", \&to_parser);
+@oldto = ( &find("whitelist_to", $conf),
+	   &find("more_spam_to", $conf),
+	   &find("all_spam_to", $conf) );
+&save_directives($conf, \@oldto, \@to, 0);
+
+# Add any imported addresses
+if ($in{'import'}) {
+	@addrs = ( );
+	while($in{'import'} =~ s/((([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+([a-zA-Z]{2,})+)))//) {
+		push(@addrs, $1);
+		}
+	@addrs || &error($text{'import_enone'});
+	@addrs = &unique(@addrs);
+
+	@from = map { @{$_->{'words'}} } &find("whitelist_from", $conf);
+	%already = map { lc($_), 1 } @from;
+	@newaddrs = grep { !$already{lc($_)} } @addrs;
+	push(@from, @newaddrs);
+	if ($in{'sort'}) {
+		@from = sort { ($ua, $da) = split(/\@/, $a);
+			       ($ub, $db) = split(/\@/, $b);
+			       lc($da) cmp lc($db) || lc($ua) cmp lc($ub) }
+			     @from;
+		}
+	&save_directives($conf, 'whitelist_from', \@from, 1);
 	}
 
 &flush_file_lines();

@@ -39,6 +39,10 @@ white_import=Import addresses from file
 white_sort=Sort allowed addresses after import?
 white_importok=Import Now
 white_return=allowed and denied addresses
+white_tabham=Allowed addresses
+white_tabspam=Denied addresses
+white_tabsome=Destination addresses
+white_tabimport=Import addresses
 
 score_title=Spam Classification
 score_desc=SpamAssassin assigns a score to each message based on its content and headers. The options on this page determine the score above which a message is considered spam, and some of the methods via which that score is calculated.
