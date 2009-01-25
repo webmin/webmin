@@ -491,10 +491,10 @@ else {
 	}
 }
 
-# edit_textbox(name, &values, width, height)
+# edit_textbox(name, &values, width, height, [disabled])
 sub edit_textbox
 {
-return &ui_textarea($_[0], join("\n", @{$_[1]}), $_[3], $_[2]);
+return &ui_textarea($_[0], join("\n", @{$_[1]}), $_[3], $_[2], undef, $_[4]);
 }
 
 # parse_textbox(&config, name)

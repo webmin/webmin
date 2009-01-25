@@ -10,45 +10,55 @@ require './spam-lib.pl';
 $conf = &get_config();
 
 print "$text{'white_desc'}<p>\n";
-&start_form("save_white.cgi", $text{'white_header'});
+print &ui_form_start("save_white.cgi", "post");
+print $form_hiddens;
 
-print "<tr> <td width=50%><b>$text{'white_from'}</b></td> ",
-      "<td width=50%><b>$text{'white_unfrom'}</b></td> </tr>\n";
-print "<tr> <td width=50%>\n";
+# Start of tabs
+$url = "edit_white.cgi?file=".&urlize($in{'file'}).
+       "&title=".&urlize($in{'title'});
+print &ui_tabs_start("mode", $in{'mode'} || "ham",
+	map { [ $_, $text{'white_tab'.$_}, $url."&mode=$_" ] }
+	    ( 'ham', 'spam', 'some', 'import' ));
+
+# Start of ham addresses tab
+print &ui_tabs_start_tab("mode", "ham");
+print $text{'white_hamdesc'},"<p>\n";
+print &ui_table_start(undef, undef, 2);
+
+# Addresses to always whitelist
 @from = &find("whitelist_from", $conf);
-&edit_textbox("whitelist_from", [ map { @{$_->{'words'}} } @from ], 40, 5);
-print "</td> <td width=50%>\n";
+print &ui_table_row($text{'white_from'},
+	&edit_textbox("whitelist_from",
+		      [ map { @{$_->{'words'}} } @from ], 60, 10));
+
+# Exceptions to whitelist
 @un = &find("unwhitelist_from", $conf);
-&edit_textbox("unwhitelist_from", [ map { @{$_->{'words'}} } @un ], 40, 5);
-print "</td> </tr>\n";
+print &ui_table_row($text{'white_unfrom'},
+	&edit_textbox("unwhitelist_from",
+		      [ map { @{$_->{'words'}} } @un ], 60, 5));
 
 if ($config{'show_global'}) {
-	print "<tr> <td width=50%><b>$text{'white_gfrom'}</b></td> ",
-	      "<td width=50%><b>$text{'white_gunfrom'}</b></td> </tr>\n";
+	# Global white and blacklists
 	$gconf = &get_config($config{'global_cf'}, 1);
-	print "<tr> <td width=50%>\n";
 	@gfrom = &find("whitelist_from", $gconf);
-	&edit_textbox("gwhitelist_from", [ map { @{$_->{'words'}} } @gfrom ], 40, 5);
-	print "</td> <td width=50%>\n";
+	print &ui_table_row($text{'white_gfrom'},
+		&edit_textbox("gwhitelist_from",
+			      [ map { @{$_->{'words'}} } @gfrom ], 40, 5, 1));
+
 	@gun = &find("unwhitelist_from", $gconf);
-	&edit_textbox("gunwhitelist_from", [ map { @{$_->{'words'}} } @gun ], 40, 5);
-	print "</td> </tr>\n";
-	print "<script>\n";
-	print "document.forms[0].gwhitelist_from.disabled = true;\n";
-	print "document.forms[0].gunwhitelist_from.disabled = true;\n";
-	print "</script>\n";
-	}
-else {
-	print "<tr> <td colspan=2><b>$text{'white_rcvd'}</b></td> </tr>\n";
-	print "<tr> <td colspan=2>\n";
-	@rcvd = &find("whitelist_from_rcvd", $conf);
-	&edit_table("whitelist_from_rcvd",
-		    [ $text{'white_addr'}, $text{'white_rcvdhost'} ],
-		    [ map { $_->{'words'} } @rcvd ], [ 40, 30 ], undef, 3);
-	print "</td> </tr>\n";
+	print &ui_table_row($text{'white_gunfrom'},
+		&edit_textbox("gunwhitelist_from",
+			      [ map { @{$_->{'words'}} } @gun ], 40, 5));
 	}
 
-print "<tr> <td colspan=2><hr></td> </tr>\n";
+# Whitelist by received header
+@rcvd = &find("whitelist_from_rcvd", $conf);
+print &ui_table_row($text{'white_rcvd2'},
+	&edit_table("whitelist_from_rcvd",
+		[ $text{'white_addr'}, $text{'white_rcvdhost'} ],
+		[ map { $_->{'words'} } @rcvd ], [ 40, 30 ], undef, 3));
+
+print &ui_tabs_end_tab("mode", "ham");
 
 print "<tr> <td><b>$text{'white_black'}</b></td> ",
       "<td><b>$text{'white_unblack'}</b></td> </tr>\n";

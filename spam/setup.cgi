@@ -13,8 +13,8 @@ if ($in{'to'} == 0) {
 	$file = "/dev/null";
 	}
 elsif ($in{'to'} == 1) {
-	$in{'file'} =~ /^\S+$/ || &error($text{'setup_efile'});
-	$file = $in{'file'};
+	$in{'mbox'} =~ /^\S+$/ || &error($text{'setup_efile'});
+	$file = $in{'mbox'};
 	}
 elsif ($in{'to'} == 2) {
 	$in{'maildir'} =~ /^\S+$/ || &error($text{'setup_emaildir'});

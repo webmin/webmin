@@ -16,49 +16,44 @@ else {
 	print &text('setup_desc_webmin', "<tt>$pmrc</tt>"),"<p>\n";
 	}
 
-print "<form action=setup.cgi>\n";
-print "<table>\n";
+print &ui_form_start("setup.cgi", "post");
+print &ui_table_start(undef, undef, 2);
+print $form_hiddens;
 
 # Spam destination inputs
-print "<tr> <td rowspan=6 valign=top><b>$text{'setup_to'}</b></td>\n";
-
-print "<td><input type=radio name=to value=0> $text{'setup_null'}</td> </tr>\n";
-
-print "<td><input type=radio name=to value=4> $text{'setup_default'}</td> </tr>\n";
-
-print "<td><input type=radio name=to value=1 checked> $text{'setup_file'}</td>\n";
-printf "<td><input name=file size=30 value='%s'></td> </tr>\n",
-	$module_info{'usermin'} ? "mail/spam" : "\$HOME/spam";
-
-print "<td><input type=radio name=to value=2> $text{'setup_maildir'}</td>\n";
-print "<td><input name=maildir size=30></td> </tr>\n";
-
-print "<td><input type=radio name=to value=3> $text{'setup_mhdir'}</td>\n";
-print "<td><input name=mhdir size=30></td> </tr>\n";
-
-print "<td><input type=radio name=to value=5> $text{'setup_email'}</td>\n";
-print "<td><input name=email size=30></td> </tr>\n";
+$mbox = $module_info{'usermin'} ? "mail/spam" : "\$HOME/spam";
+print &ui_table_row($text{'setup_to'},
+	&ui_radio_table("to", 1,
+	  [ [ 0, $text{'setup_null'} ],
+	    [ 4, $text{'setup_default'} ],
+	    [ 1, $text{'setup_file'},
+		 &ui_textbox("mbox", $mbox, 40) ],
+	    [ 2, $text{'setup_maildir'},
+		 &ui_textbox("maildir", "", 40) ],
+	    [ 3, $text{'setup_mhdir'},
+		 &ui_textbox("mhdir", "", 40) ],
+	    [ 5, $text{'setup_email'},
+		 &ui_textbox("email", "", 40) ] ]));
 
 # Run mode input
 if (!$module_info{'usermin'}) {
-	print "<tr> <td valign=top><b>$text{'setup_drop'}</b></td> <td>\n";
-	print "<input type=radio name=drop value=1 checked> ",
-	      "$text{'setup_drop1'}\n";
-	print "<input type=radio name=drop value=0> ",
-	      "$text{'setup_drop0'}</td> </tr>\n";
+	print &ui_table_row($text{'setup_drop'},
+		&ui_radio("drop", 1, [ [ 1, $text{'setup_drop1'} ],
+				       [ 0, $text{'setup_drop0'} ] ]));
 	}
 
-print "</td></tr></table><br>\n";
-
+# Message about path
 if ($module_info{'usermin'}) {
-	print "$text{'setup_rel'}<p>\n";
+	$msg = "$text{'setup_rel'}<p>\n";
 	}
 else {
-	print "$text{'setup_home'}<p>\n";
+	$msg = "$text{'setup_home'}<p>\n";
 	}
-print "$text{'setup_head'}<p>\n";
+$msg .= "$text{'setup_head'}<p>\n";
+print &ui_table_row(undef, $msg, 2);
 
-print "<input type=submit value='$text{'setup_ok'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'setup_ok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
