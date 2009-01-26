@@ -982,10 +982,10 @@ return ( $in{'log'} ? "$in{'action'}:$in{'log'}" : $in{'action'},
 	  ($in{'sinzone_def'} ? ":$in{'sinzone'}" : ""),
 	 ($in{'dest'} || $in{'dother'}).
 	  ($in{'dinzone_def'} ? ":$in{'dinzone'}" : ""),
-	 $in{'proto'} || $in{'pother'},
+	 $in{'proto'} || $in{'pother'} || '-',
 	 $in{'dport_def'} ? "-" : $in{'dport'},
 	 $in{'sport_def'} ? "-" : $in{'sport'},
-	 $in{'dnat_def'} ? ( "-" ) : ( $in{'dnat'} ),
+	 $in{'dnat_def'} ? "-" : $in{'dnat'},
 	 &version_atleast(1, 4, 7) ? (
 		( $in{'rate_def'} ? "-" : $in{'rate'} ),
 		( $in{'set_def'} ? "-" : $in{'set'} )
