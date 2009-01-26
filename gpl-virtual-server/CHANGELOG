@@ -536,5 +536,4 @@ Added the info.pl command line script, for dumping general information about Vir
 Links to per-domain SpamAssassin configurations now include the domain's config file, which allows each domain's settings to be separately managed.
 Automatic spam and virus folder clearing now respects custom folder names.
 When a domain is restore on a system with a different Apache log file location, its virtualhost is updated to use the target system's paths.
-Ported the modify-dns.pl, modify-web.pl, modify-mail.pl and modify-limits.pl API scripts from Virtualmin Pro, to allow more domain attributes to be changed on the command line.
-
+Ported all API scripts for functions supported by Virtualmin GPL to the Pro version, to allow almost any action that can be performed via the web UI to be done on the command line or via an HTTP request.

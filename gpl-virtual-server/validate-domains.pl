@@ -1,0 +1,1 @@
+../virtual-server/validate-domains.pl
