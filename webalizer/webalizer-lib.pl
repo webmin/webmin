@@ -251,16 +251,18 @@ return 0;
 }
 
 # get_webalizer_version(&out)
+# Returns the Webalizer version number, and puts output into the given scalar
+# reference.
 sub get_webalizer_version
 {
-local $out = `$config{'webalizer'} -v 2>&1`;
+local $out = `$config{'webalizer'} -v 2>&1 </dev/null`;
 if ($out =~ /awffull +(\S+)/) {
 	# AWfull version
 	return $1;
 	}
 if ($? || $out !~ /\sV(\S+)/) {
 	# Try -V
-	$out = `$config{'webalizer'} -V 2>&1`;
+	$out = `$config{'webalizer'} -V 2>&1 </dev/null`;
 	}
 ${$_[0]} = $out;
 return $out =~ /\sV(\S+)/ ? $1 : undef;
