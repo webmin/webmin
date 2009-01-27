@@ -6,3 +6,4 @@ snmp_trap=1.3.6.1.4.1.10000.1.1
 subject_mode=0
 columns=2
 pinger=linux
+sched_offset=0
