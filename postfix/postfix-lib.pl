@@ -2145,6 +2145,5 @@ sub rebuild_map_cmd
 return 0;
 }
 
-
 1;
 
