@@ -537,3 +537,5 @@ Links to per-domain SpamAssassin configurations now include the domain's config 
 Automatic spam and virus folder clearing now respects custom folder names.
 When a domain is restore on a system with a different Apache log file location, its virtualhost is updated to use the target system's paths.
 Ported all API scripts for functions supported by Virtualmin GPL to the Pro version, to allow almost any action that can be performed via the web UI to be done on the command line or via an HTTP request.
+Add parameters to the modify-dns.pl command-line API to add and remove DNS records for multiple domains at once.
+Added the get-dns.pl command-line script to dump DNS records for a virtual server.
