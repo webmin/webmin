@@ -318,7 +318,7 @@ if ($access{'views'} && $bind_version >= 9) {
 	print &ui_subheading($text{'index_views'});
 
 	# Show a warning if any zones are not in a view
-	@notinview = grep { !$_->{'viewidx'} } @zones;
+	@notinview = grep { $_->{'viewindex'} eq '' } @zones;
 	if (@notinview && @views) {
 		print "<b>",&text('index_viewwarn',
 		  join(" , ", map { "<tt>".&ip6int_to_net(
