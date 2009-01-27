@@ -2139,6 +2139,11 @@ for(my $i=0; $i<@$props; $i++) {
 return undef;
 }
 
+# For calling from aliases-lib only
+sub rebuild_map_cmd
+{
+return 0;
+}
 
 
 1;
