@@ -46,11 +46,16 @@ $currgfile = &foreign_call($apachemod, "find_directive",
 			   $agf, $conf, 1);
 &lock_file($currfile) if ($currfile);
 
-# Make sure it is allowed
+# Make sure it is allowed, and create new file if needed
 &switch_user();
 &can_access_dir($htaccess) || &error($text{'dir_ecannot'});
+$missing = !-r $htaccess;
 &open_tempfile(TEST, ">>$htaccess", 1) || &error(&text('dir_ehtaccess', $htaccess, $!));
 &close_tempfile(TEST);
+if ($missing) {
+	&set_ownership_permissions(
+		undef, undef, oct($config{'perms'}) || 0644, $htaccess);
+	}
 
 if ($in{'delete'} || $in{'remove'}) {
 	if ($in{'remove'}) {
@@ -250,6 +255,8 @@ else {
 		&close_tempfile(FILE) ||
 			&error(&text('dir_ehtpasswd', $file, $!));
 		&unlock_file($file);
+		&set_ownership_permissions(
+			undef, undef, oct($config{'perms'}) || 0644, $file);
 		}
 
 	# Create an empty groups file if needed
@@ -260,6 +267,8 @@ else {
 		&close_tempfile(FILE) ||
 			&error(&text('dir_ehtgroup', $gfile, $!));
 		&unlock_file($gfile);
+		&set_ownership_permissions(
+			undef, undef, oct($config{'perms'}) || 0644, $gfile);
 		}
 	}
 

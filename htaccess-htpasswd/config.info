@@ -6,3 +6,4 @@ md5=Offer MD5 encryption option?,1,1-Yes,0-No
 sha1=Offer SHA1 encryption option?,1,1-Yes,0-No
 digest=Offer digest encryption option?,1,1-Yes,0-No
 extra_directives=Extra directives to include in .htaccess,9,0,0,\t
+perms=Permissions for created files,3,Default (644)

@@ -18,8 +18,7 @@ else {
 
 print &ui_form_start("save_dir.cgi");
 print &ui_hidden("new", $in{'new'});
-print &ui_hidden_table_start($text{'dir_header'}, undef, 2, "main", 1,
-			     [ "width=30%" ]);
+print &ui_hidden_table_start($text{'dir_header'}, "width=100%", 2, "main", 1, [ "width=30%" ]);
 
 # Directory to protect
 if ($in{'new'}) {
@@ -114,8 +113,7 @@ print &ui_hidden_table_end();
 
 # Webmin synchronization mode
 if ($can_sync) {
-	print &ui_hidden_table_start($text{'dir_header2'}, undef, 2, "sync", 0,
-				     [ "width=30%" ]);
+	print &ui_hidden_table_start($text{'dir_header2'}, "width=100%", 2, "sync", 0, [ "width=30%" ]);
 
 	%sync = map { $_, 1 } split(/,/, $dir->[3]);
 	foreach $s ('create', 'update', 'delete') {
