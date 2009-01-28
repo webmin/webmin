@@ -51,17 +51,29 @@ elsif ($in{'source'} == 2) {
 			&inst_error(&text('upgrade_eversion', $version));
 			}
 		}
+
+	# Work out the current Usermin type (webmail or regular)
+	$product = "usermin";
+	if (&has_command("rpm") && $in{'mode'} eq 'rpm' &&
+	    &execute_command("rpm -q usermin-webmail") == 0) {
+		$product = "usermin-webmail";
+		}
+	elsif (&has_command("dpkg") && $in{'mode'} eq 'deb' &&
+	       &execute_command("dpkg --list usermin-webmail") == 0) {
+		$product = "usermin-webmail";
+		}
+
 	if ($in{'mode'} eq 'rpm') {
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/usermin-$version-1.noarch.rpm");
+		    "http://$webmin::osdn_host/webadmin/${product}-${version}-1.noarch.rpm");
 		}
 	elsif ($in{'mode'} eq 'deb') {
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/usermin_${version}_all.deb");
+		    "http://$webmin::osdn_host/webadmin/${product}_${version}_all.deb");
 		}
 	else {
 		$progress_callback_url = &convert_osdn_url(
-		    "http://$webmin::osdn_host/webadmin/usermin-$version.tar.gz");
+		    "http://$webmin::osdn_host/webadmin/${product}-${version}.tar.gz");
 		}
 	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 	&http_download($host, $port, $page, $file, \$error,
