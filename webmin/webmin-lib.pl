@@ -1051,12 +1051,13 @@ if (&foreign_available($module_name) && !$noupdates) {
 		}
 	if ($config{'last_version_number'} > &get_webmin_version()) {
 		# New version is out there .. offer to upgrade
+		$mode = &get_install_type();
 		push(@notifs,
 		     &ui_form_start("$gconfig{'webprefix'}/webmin/upgrade.cgi",
 				    "form-data").
 		     &ui_hidden("source", 2).
-		     &ui_hidden("sig", 1).
-		     &ui_hidden("mode", &get_install_type()).
+		     &ui_hidden("sig", $mode ? 0 : 1).
+		     &ui_hidden("mode", $mode).
 		     &text('notif_upgrade', $config{'last_version_number'},
 			   &get_webmin_version())."<p>\n".
 		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
