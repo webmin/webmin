@@ -1056,7 +1056,7 @@ if (&foreign_available($module_name) && !$noupdates) {
 				    "form-data").
 		     &ui_hidden("source", 2).
 		     &ui_hidden("sig", 1).
-		     &ui_hidden("mode", $mode).
+		     &ui_hidden("mode", &get_install_type()).
 		     &text('notif_upgrade', $config{'last_version_number'},
 			   &get_webmin_version())."<p>\n".
 		     &ui_form_end([ [ undef, $text{'notif_upgradeok'} ] ]));
