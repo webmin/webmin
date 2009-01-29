@@ -414,7 +414,7 @@ local @tm = localtime($now);
 return sprintf "%4.4d%2.2d%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
 }
 
-# get_zone_defaults(&array)
+# get_zone_defaults(&hash)
 sub get_zone_defaults
 {
 if (!&read_file("$module_config_directory/zonedef", $_[0])) {
