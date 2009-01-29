@@ -40,7 +40,8 @@ foreach my $d (&fdisk::list_disks_partitions()) {
 	    $d->{'model'} =~ /3ware/i) {
 		# Actually a 3ware RAID device .. but we want to probe the
 		# underlying real disks, so add fake devices for them
-		my $count = &count_subdisks($d, "3ware");
+		my $count = &count_subdisks($d, "3ware",
+					    "/dev/twe".$threecount);
 		for(my $i=0; $i<$count; $i++) {
 			push(@rv, { 'device' => '/dev/twe'.$threecount,
 				    'prefix' => '/dev/twe'.$threecount,
@@ -74,7 +75,7 @@ return sort { $a->{'device'} cmp $b->{'device'} ||
 	      $a->{'subdisk'} <=> $b->{'subdisk'} } @rv;
 }
 
-=head2 count_subdisks(&drive, type)
+=head2 count_subdisks(&drive, type, [device])
 
 Returns the number of sub-disks for a hardware RAID device, by calling
 smartctl on them until failure.
@@ -82,11 +83,11 @@ smartctl on them until failure.
 =cut
 sub count_subdisks
 {
-local ($d, $type) = @_;
+local ($d, $type, $device) = @_;
+$device ||= $d->{'device'};
 local $count = 0;
 while(1) {
-	local $cmd = "$config{'smartctl'} -d $type,$count ".
-		     quotemeta($d->{'device'});
+	local $cmd = "$config{'smartctl'} -d $type,$count ".quotemeta($device);
 	&execute_command($cmd);
 	last if ($?);
 	$count++;
