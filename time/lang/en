@@ -44,7 +44,9 @@ month=Month
 date=Date
 hour=Hour
 year=Year
-hourminsec=Hour, minute and second
+hour=Hour
+minute=Minute
+second=Second
 
 error_cnf=Error : $1 command not found
 error_hw=Can't set the hardware time : $1

@@ -186,42 +186,42 @@ print &ui_tabs_end(1);
 &ui_print_footer( "/", $text{ 'index' } );
 
 # tabletime(label, read-only, &time)
+# Output a table for setting the date and time
 sub tabletime
 {
   my ( $label, $ro, %src ) = @_,
   %assoc_day = ( "Mon", $text{ 'day_1' }, "Tue", $text{ 'day_2' }, "Wed", $text{ 'day_3' }, "Thu", $text{ 'day_4' }, "Fri", $text{ 'day_5' }, "Sat", $text{ 'day_6' }, "Sun", $text{ 'day_0' } ),
   %assoc_month = ( "Jan", $text{ 'month_1' }, "Feb", $text{ 'month_2' }, "Mar", $text{ 'month_3' }, "Apr", $text{ 'month_4' }, "May", $text{ 'month_5' }, "Jun", $text{ 'month_6' }, "Jul", $text{ 'month_7' }, "Aug", $text{ 'month_8' }, "Sep", $text{ 'month_9' }, "Oct", $text{ 'month_10' }, "Nov", $text{ 'month_11' }, "Dec", $text{ 'month_12' } );
 
-$rv = &ui_table_start($label, "width=100%", 2);
-local @grid;
-push(@grid, "<b>$text{'day'}</b>", "<b>$text{'date'}</b>",
-	    "<b>$text{'month'}</b>", "<b>$text{'year'}</b>",
-	    "<b>$text{'hourminsec'}</b>" );
-
+$rv = &ui_table_start($label, "width=100%", 6);
 if (!$ro) {
-	push(@grid,
-	    ($assoc_day{ $src{ 'day' } } || $src{'day'}),
-	    &ui_select("date", $src{'date'}, [ 1 .. 31 ]),
-	    &ui_select("month", &zeropad(&month_to_number($src{'month'})+1, 2),
-		       [ map { [ &zeropad($_, 2), $text{'month_'.$_} ] }
-			     ( 1 .. 12 ) ]),
-	    &ui_select("year", $src{'year'}, [ 1969 .. 2037 ]),
+	$rv .= &ui_table_row($text{'date'},
+	    &ui_select("date", $src{'date'}, [ 1 .. 31 ]));
+	$rv .= &ui_table_row($text{'month'},
+	    &ui_select("month",
+		       &zeropad(&month_to_number($src{'month'})+1, 2),
+                       [ map { [ &zeropad($_, 2), $text{'month_'.$_} ] }
+                             ( 1 .. 12 ) ]));
+	$rv .= &ui_table_row($text{'year'},
+	    &ui_select("year", $src{'year'}, [ 1969 .. 2037 ]));
+	$rv .= &ui_table_row($text{'hour'},
 	    &ui_select("hour", &zeropad($src{'hour'}, 2),
-		       [ map { &zeropad($_, 2) } (00 .. 23) ]).":".
-	    &ui_select("minute", &zeropad($src{'minute'}, 2),
-		       [ map { &zeropad($_, 2) } (00 .. 59) ]).":".
-	    &ui_select("second", &zeropad($src{'second'}, 2),
-		       [ map { &zeropad($_, 2) } (00 .. 59) ]),
-	    );
+		       [ map { &zeropad($_, 2) } (00 .. 23) ]));
+	$rv .= &ui_table_row($text{'minute'},
+		&ui_select("minute", &zeropad($src{'minute'}, 2),
+                       [ map { &zeropad($_, 2) } (00 .. 59) ]));
+	$rv .= &ui_table_row($text{'second'},
+		&ui_select("second", &zeropad($src{'second'}, 2),
+                       [ map { &zeropad($_, 2) } (00 .. 59) ]));
 	}
 else {
-	push(@grid, ($assoc_day{ $src{ 'day' } } || $src{'day'}),
-	       	    $src{'date'},
-		    $src{'month'},
-		    $src{'year'},
-	            $src{'hour'}.":".$src{'minute'}.":".$src{'second'});
+	$rv .= &ui_table_row($text{'date'}, $src{'date'});
+	$rv .= &ui_table_row($text{'month'}, $src{'month'});
+	$rv .= &ui_table_row($text{'year'}, $src{'year'});
+	$rv .= &ui_table_row($text{'hour'}, $src{'hour'});
+	$rv .= &ui_table_row($text{'minute'}, $src{'minute'});
+	$rv .= &ui_table_row($text{'second'}, $src{'second'});
 	}
-$rv .= &ui_table_row(undef, &ui_grid_table(\@grid, 5, 100), 2);
 $rv .= &ui_table_end();
 return $rv;
 }
