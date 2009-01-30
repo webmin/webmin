@@ -563,9 +563,9 @@ EOF
 	afile=$config_dir/webmin.acl
 	rm -f $afile
 	if [ "$defaultmods" = "" ]; then
-		echo $login: $defaultallmods >> $afile
+		echo "$login: $defaultallmods" >> $afile
 	else
-		echo $login: $defaultmods >> $afile
+		echo "$login: $defaultmods" >> $afile
 	fi
 	chmod 600 $afile
 	echo "..done"
