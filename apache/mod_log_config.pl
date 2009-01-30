@@ -78,7 +78,10 @@ for($i=0; $i<=@all; $i++) {
 		$format = $d->{'words'}->[1];
 		$dest = $d->{'words'}->[0];
 		}
-	else { $format = ""; $dest = $d->{'value'}; }
+	else {
+		$format = "";
+		$dest = $d->{'words'}->[0];
+		}
 	$rv .= "<tr $cb>\n";
 	$rv .= "<td><input type=radio name=Log_def_$i value=1 ".
               ($format ? "" : "checked")."> $text{'mod_log_config_default'}&nbsp;\n";
