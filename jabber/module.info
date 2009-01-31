@@ -9,6 +9,5 @@ desc_ru_RU=Сервер сообщений Jabber
 longdesc=Configure the multi-protocol Jabber messaging server.
 cpan=1
 os_support=!windows
-nondefault=1
 desc_cz=Jabber IM server
 desc_nl=Jabber IM Server

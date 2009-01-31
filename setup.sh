@@ -77,10 +77,6 @@ fi
 
 # Validate source directory
 allmods=`cd "$srcdir"; echo */module.info | sed -e 's/\/module.info//g'`
-defaultallmods=`cd "$srcdir"; echo */module.info | xargs grep -L nondefault=1 2>/dev/null | sed -e 's/\/module.info//g'`
-if [ "$defaultallmods" = "" ]; then
-	defaultallmods="$allmods"
-fi
 if [ "$allmods" = "" ]; then
 	echo "ERROR: Failed to get module list"
 	echo ""
@@ -563,7 +559,7 @@ EOF
 	afile=$config_dir/webmin.acl
 	rm -f $afile
 	if [ "$defaultmods" = "" ]; then
-		echo "$login: $defaultallmods" >> $afile
+		echo "$login: $allmods" >> $afile
 	else
 		echo "$login: $defaultmods" >> $afile
 	fi
