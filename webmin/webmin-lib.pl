@@ -7,6 +7,7 @@ Common functions for configuring miniserv and adjusting global Webmin settings.
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
+do './gnupg-lib.pl';
 
 @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );
 @cs_names = map { $text{$_} } @cs_codes;
@@ -786,7 +787,7 @@ foreach $s (split(/\s+/, $_[0]->{'sockets'})) {
 return @sockets;
 }
 
-=head2 fetch_updates(url, [login, pass])
+=head2 fetch_updates(url, [login, pass], [sig-mode])
 
 Returns a list of updates from some URL, or calls &error. Each element is an 
 array reference containing :
@@ -801,15 +802,48 @@ array reference containing :
 
 =item Human-readable description of the update.
 
+The parameters are :
+
+=item url - Full URL to download updates from.
+
+=item login - Optional login for the URL.
+
+=item pass - Optional password for the URL.
+
+=item sig-mode - 0=No check, 1=Check if possible, 2=Must check
+
 =cut
 sub fetch_updates
 {
-local ($host, $port, $page, $ssl) = &parse_http_url($_[0]);
+local ($url, $user, $pass, $sigmode) = @_;
+local ($host, $port, $page, $ssl) = &parse_http_url($url);
 $host || &error($text{'update_eurl'});
 
+# Download the file
 local $temp = &transname();
+&http_download($host, $port, $page, $temp, undef, undef, $ssl, $user, $pass);
+
+# Download the signature, if we can check it
+local ($ec, $emsg) = &gnupg_setup();
+if (!$ec && $sigmode) {
+	local $err;
+	local $sig;
+	&http_download($host, $port, $page."-sig.asc", \$sig,
+		       \$err, undef, $ssl, $user, $pass);
+	if ($err) {
+		$sigmode == 2 && &error(&text('update_enosig', $err));
+		}
+	else {
+		local $data = &read_file_contents($temp);
+		local ($vc, $vmsg) = &verify_data($data, $sig);
+		if ($vc > 1) {
+			&error(&text('update_ebadsig',
+				&text('upgrade_everify'.$vc, $vmsg)));
+			}
+		}
+	}
+
 local @updates;
-&http_download($host, $port, $page, $temp, undef, undef, $ssl, $_[1], $_[2]);
 open(UPDATES, $temp);
 while(<UPDATES>) {
 	if (/^([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+([^\t]+)\t+(.*)/) {

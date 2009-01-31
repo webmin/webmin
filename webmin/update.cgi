@@ -19,7 +19,8 @@ $count = 0;
 foreach $url (@urls) {
 	# Get updates from this URL, and filter to those for this system
 	($updates, $host, $port, $page, $ssl) =
-		&fetch_updates($url, $in{'upuser'}, $in{'uppass'});
+		&fetch_updates($url, $in{'upuser'}, $in{'uppass'},
+			       $url eq $update_url ? 2 : 1);
 	$count += scalar(@$updates);
 	$updates = &filter_updates($updates, undef,
 				   $in{'third'}, $in{'missing'});

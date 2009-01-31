@@ -197,7 +197,7 @@ mods_cloneok=Clone Module
 mods_desc3=Existing modules and clones of modules can be deleted, they will also be removed. Once a module has been deleted it must be reinstalled before you can use it again. A module cannot be deleted if other modules depend on it.
 mods_delete=Delete Modules
 mods_deleteok=Delete Selected Modules
-mods_eroot=Webmin module cannot be installed or managed when the Webmin code is shared with another system, such as when it is running inside a Zone or mounted via NFS.
+mods_eroot=Webmin modules cannot be installed or managed when the Webmin code is shared with another system, such as when it is running inside a Zone or mounted via NFS.
 mods_desc4=Installed modules can be exported as a wbm.gz file using the form below. A module file can then be installed onto another system running Webmin.
 mods_header4=Module export options
 mods_exportmods=Modules to export
@@ -470,6 +470,8 @@ update_sched2=Update modules at $1:$2 every $3 days
 update_none=No Webmin updates for this version.
 update_failed=Failed to install module : $1
 update_desc2=This form is for scheduling the automatic update of Webmin modules containing bugs or security holes from the <a href=http://www.webmin.com/updates.html>Webmin Updates</a> page or from another source. While this service is useful, you should be careful using it as it may allow attackers to take over your system if the update server was ever compromised.
+update_enosig=Could not download signature file for updates : $1
+update_ebadsig=Updates signature check failed : $1
 
 ca_title=Certificate Authority
 ca_old=Existing certificate

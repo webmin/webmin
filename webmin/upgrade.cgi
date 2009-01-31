@@ -3,7 +3,6 @@
 # Upgrade webmin if possible
 
 require './webmin-lib.pl';
-do './gnupg-lib.pl';
 &foreign_require("proc", "proc-lib.pl");
 &foreign_require("acl", "acl-lib.pl");
 &ReadParseMime();
@@ -157,7 +156,7 @@ if ($in{'sig'}) {
 						      $sigerror);
 					}
 				else {
-					local $data = `cat $qfile`;
+					local $data =&read_file_contents($file);
 					local ($vc, $vmsg) =
 					    &verify_data($data, $sigtemp);
 					if ($vc > 1) {

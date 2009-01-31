@@ -10,7 +10,9 @@ require './webmin-lib.pl';
 			    : ( $update_url );
 foreach $url (@urls) {
 	# Get updates from this URL, and filter to those for this system
-	($updates, $host, $port, $page, $ssl) = &fetch_updates($url, $config{'upuser'}, $config{'uppass'});
+	($updates, $host, $port, $page, $ssl) =
+		&fetch_updates($url, $config{'upuser'}, $config{'uppass'},
+			       $url eq $update_url ? 2 : 1);
 	$updates = &filter_updates($updates, undef, $config{'upthird'},
 				   $config{'upmissing'});
 
