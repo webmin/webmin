@@ -857,6 +857,53 @@ unlink($temp);
 return ( \@updates, $host, $port, $page, $ssl );
 }
 
+=head2 check_update_signature(host, port, page, ssl, user, pass, file, sig-mode)
+
+Given a downloaded module update file, fetch the signature from the same URL
+with -sig.asc appended, and check that it is valid. Parameters are :
+
+=item host - Module download host
+
+=item port - Module download port
+
+=item page - Module download URL path
+
+=item ssl - Use SSL to download?
+
+=item user - Login for module download
+
+=item pass - Password for module download
+
+=item file - File containing module to check
+
+=item sig-mode - 0=No check, 1=Check if possible, 2=Must check
+
+=cut
+sub check_update_signature
+{
+local ($host, $port, $page, $ssl, $user, $pass, $file, $sigmode) = @_;
+
+local ($ec, $emsg) = &gnupg_setup();
+if (!$ec && $sigmode) {
+	local $err;
+	local $sig;
+	&http_download($host, $port, $page."-sig.asc", \$sig,
+		       \$err, undef, $ssl, $user, $pass);
+	if ($err) {
+                $sigmode == 2 && return &text('update_enomodsig', $err);
+                }
+	else {
+		local $data = &read_file_contents($file);
+		local ($vc, $vmsg) = &verify_data($data, $sig);
+		if ($vc > 1) {
+			return &text('update_ebadmodsig',
+				&text('upgrade_everify'.$vc, $vmsg));
+			}
+		}
+	}
+return undef;
+}
+
 =head2 find_cron_job(\@jobs)
 
 Finds the cron job for Webmin updates, given an array ref of cron jobs

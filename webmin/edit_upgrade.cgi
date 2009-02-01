@@ -7,7 +7,7 @@ require './webmin-lib.pl';
 &ui_print_header(undef, $text{'upgrade_title'}, "");
 
 if (&shared_root_directory()) {
-	#&ui_print_endpage($text{'upgrade_eroot'});
+	&ui_print_endpage($text{'upgrade_eroot'});
 	}
 
 # what kind of install was this?

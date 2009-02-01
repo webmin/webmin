@@ -472,6 +472,8 @@ update_failed=Failed to install module : $1
 update_desc2=This form is for scheduling the automatic update of Webmin modules containing bugs or security holes from the <a href=http://www.webmin.com/updates.html>Webmin Updates</a> page or from another source. While this service is useful, you should be careful using it as it may allow attackers to take over your system if the update server was ever compromised.
 update_enosig=Could not download signature file for updates : $1
 update_ebadsig=Updates signature check failed : $1
+update_enomodsig=Could not download signature file for module : $1
+update_ebadmodsig=Module signature check failed : $1
 
 ca_title=Certificate Authority
 ca_old=Existing certificate

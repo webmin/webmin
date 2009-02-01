@@ -47,8 +47,12 @@ foreach $url (@urls) {
 				last;
 				}
 			else {
-				$irv = &install_webmin_module($mtemp, 1, 0,
-							      [ "admin", "root" ]);
+				$irv = &check_update_signature(
+				  $mhost, $mport, $mpage,
+				  $mssl, $config{'upuser'}, $config{'uppass'},
+				  $mtemp, $url eq $update_url ? 2 : 1);
+				$irv ||= &install_webmin_module($mtemp, 1, 0,
+						      [ "admin", "root" ]);
 				if (!ref($irv)) {
 					$irv =~ s/<[^>]*>//g;
 					$rv .= &text('update_failed', $irv)."\n\n";

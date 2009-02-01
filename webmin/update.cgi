@@ -56,8 +56,11 @@ foreach $url (@urls) {
 			&http_download($mhost, $mport, $mpage, $mtemp, undef,
 				       \&progress_callback, $mssl,
 				       $in{'upuser'}, $in{'uppass'});
-			$irv = &install_webmin_module($mtemp, 1, 0,
-						      [ $base_remote_user ]);
+			$irv = &check_update_signature($mhost, $mport, $mpage,
+					$mssl, $in{'upuser'}, $in{'uppass'},
+					$mtemp, $url eq $update_url ? 2 : 1);
+			$irv ||= &install_webmin_module($mtemp, 1, 0,
+					      [ $base_remote_user ]);
 			print "&nbsp;" x 10;
 			if (!ref($irv)) {
 				print &text('update_failed', $irv),"<p>\n";

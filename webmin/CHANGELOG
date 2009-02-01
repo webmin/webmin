@@ -85,3 +85,5 @@ Added an advanced option to have Webmin turn off the immutable bit on files befo
 Re-designed the Webmin Themes page to use tabs.
 Added support for overlay themes, which can be selected in addition to a regular theme. An overlay typically just modifies the CSS or images in the real theme, making simple design changes easier.
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.450 ----
+Added GPG verification of the updates list and modules from the Webmin update repository, when the gpg command is installed.
