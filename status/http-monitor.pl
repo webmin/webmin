@@ -4,8 +4,9 @@
 sub get_http_status
 {
 # Connect to the server
-local $up=0;
+local $up = 0;
 local $st = time();
+local $desc;
 eval {
 	local $SIG{ALRM} = sub { die "alarm\n" }; # NB: \n required
 	alarm($_[0]->{'alarm'} ? $_[0]->{'alarm'} : 10);
@@ -15,7 +16,8 @@ eval {
 	local $con = &make_http_connection($_[0]->{'host'}, $_[0]->{'port'},
 				   $_[0]->{'ssl'}, $method, $_[0]->{'page'});
 	if (!ref($con)) {
-		return { 'up' => 0 };
+		return { 'up' => 0,
+			 'desc' => $con };
 		}
 	&write_http_connection($con, "Host: $_[0]->{'host'}\r\n");
 	&write_http_connection($con, "User-agent: Webmin\r\n");
@@ -26,7 +28,7 @@ eval {
 		}
 	&write_http_connection($con, "\r\n");
 	local $line = &read_http_connection($con);
-	$up = $line =~ /^HTTP\/1\..\s+(200|301|302)\s+/ ? 1 : 0;
+	$up = $line =~ /^HTTP\/1\..\s+(200|301|302|303)\s+/ ? 1 : 0;
 	if ($re && $up) {
 		# Read the headers
 		local %header;
@@ -47,9 +49,13 @@ eval {
 			eval {
 				if ($data !~ /$re/i) {
 					$up = 0;
+					$desc = "No match on : $re";
 					}
 				};
 			};
+		}
+	elsif (!$up) {
+		$desc = $line;
 		}
 
 	&close_http_connection($con);
@@ -58,10 +64,13 @@ eval {
 
 if ($@) {
 	die unless $@ eq "alarm\n";   # propagate unexpected errors
-	return { 'up' => 0 };
+	return { 'up' => 0,
+		 'desc' => $desc };
 	}
 else { 
-	return { 'up' => $up, 'time' => time() - $st};
+	return { 'up' => $up,
+		 'time' => time() - $st,
+		 'desc' => $desc };
 	}
 }
 
