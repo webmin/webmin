@@ -459,6 +459,7 @@ update_other=Update from other sources ..
 update_show=Only show which modules would be updated
 update_missing=Install modules that are not currently installed
 update_third=Update non-core modules as well
+update_checksig=Check signatures on non-Webmin repositories
 update_quiet=Only report when an update is done
 update_ok=Update Modules
 update_email=Email update report to

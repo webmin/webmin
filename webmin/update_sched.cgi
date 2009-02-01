@@ -38,6 +38,7 @@ $config{'upshow'} = $in{'show'};
 $config{'upmissing'} = $in{'missing'};
 $config{'upthird'} = $in{'third'};
 $config{'upquiet'} = $in{'quiet'};
+$config{'upchecksig'} = $in{'checksig'};
 $config{'upemail'} = $in{'email'};
 $config{'upuser'} = $in{'upuser'};
 $config{'uppass'} = $in{'uppass'};

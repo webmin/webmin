@@ -127,6 +127,8 @@ printf "<input type=checkbox name=missing value=1 %s> %s<br>\n",
 	$config{'upmissing'} ? "checked" : "", $text{'update_missing'};
 printf "<input type=checkbox name=third value=1 %s> %s<br>\n",
 	$config{'upthird'} ? "checked" : "", $text{'update_third'};
+printf "<input type=checkbox name=checksig value=1 %s> %s<br>\n",
+        $config{'upchecksig'} ? 'checked' : '', $text{'update_checksig'};
 
 print "<table>\n";
 print "<tr> <td>$text{'update_user'}</td>\n";
@@ -186,6 +188,8 @@ printf "<input type=checkbox name=third value=1 %s> %s<br>\n",
 	$config{'upthird'} ? "checked" : "", $text{'update_third'};
 printf "<input type=checkbox name=quiet value=1 %s> %s<br>\n",
       $config{'upquiet'} ? 'checked' : '', $text{'update_quiet'};
+printf "<input type=checkbox name=checksig value=1 %s> %s<br>\n",
+      $config{'upchecksig'} ? 'checked' : '', $text{'update_checksig'};
 
 print "<table>\n";
 print "<tr> <td>$text{'update_email'}</td>\n";

@@ -18,9 +18,9 @@ print "<b>",&text('update_info'),"</b><p>\n";
 $count = 0;
 foreach $url (@urls) {
 	# Get updates from this URL, and filter to those for this system
+	$checksig = $in{'checksig'} ? 2 : $url eq $update_url ? 2 : 1;
 	($updates, $host, $port, $page, $ssl) =
-		&fetch_updates($url, $in{'upuser'}, $in{'uppass'},
-			       $url eq $update_url ? 2 : 1);
+		&fetch_updates($url, $in{'upuser'}, $in{'uppass'}, $checksig);
 	$count += scalar(@$updates);
 	$updates = &filter_updates($updates, undef,
 				   $in{'third'}, $in{'missing'});
@@ -58,7 +58,7 @@ foreach $url (@urls) {
 				       $in{'upuser'}, $in{'uppass'});
 			$irv = &check_update_signature($mhost, $mport, $mpage,
 					$mssl, $in{'upuser'}, $in{'uppass'},
-					$mtemp, $url eq $update_url ? 2 : 1);
+					$mtemp, $checksig);
 			$irv ||= &install_webmin_module($mtemp, 1, 0,
 					      [ $base_remote_user ]);
 			print "&nbsp;" x 10;
