@@ -21,9 +21,9 @@ foreach $url (@urls) {
 	$checksig = $in{'checksig'} ? 2 : $url eq $update_url ? 2 : 1;
 	($updates, $host, $port, $page, $ssl) =
 		&fetch_updates($url, $in{'upuser'}, $in{'uppass'}, $checksig);
-	$count += scalar(@$updates);
 	$updates = &filter_updates($updates, undef,
 				   $in{'third'}, $in{'missing'});
+	$count += scalar(@$updates);
 	foreach $u (@$updates) {
 		# Get module or theme's details
 		local %minfo = &get_module_info($u->[0]);

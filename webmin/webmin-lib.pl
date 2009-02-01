@@ -1154,10 +1154,13 @@ if (&foreign_available($module_name) && !$noupdates) {
 	if (!@st || $now - $st[9] > 24*60*60) {
 		# Need to re-fetch cache
 		foreach my $url (@urls) {
+			$checksig = $config{'upchecksig'} ? 2 :
+				    $url eq $update_url ? 2 : 1;
 			eval {
 				local $main::error_must_die = 1;
 				local ($updates) = &fetch_updates($url,
-					$config{'upuser'}, $config{'uppass'});
+					$config{'upuser'}, $config{'uppass'},
+					$checksig);
 				push(@$allupdates, @$updates);
 				};
 			}
@@ -1196,6 +1199,7 @@ if (&foreign_available($module_name) && !$noupdates) {
 		$msg .= &ui_hidden("upuser", $config{'upuser'});
 		$msg .= &ui_hidden("uppass", $config{'uppass'});
 		$msg .= &ui_hidden("third", $config{'upthird'});
+		$msg .= &ui_hidden("checksig", $config{'upchecksig'});
 		$msg .= &ui_form_end([ [ undef, $text{'notif_updateok'} ] ]);
 		push(@notifs, $msg);
 		}
