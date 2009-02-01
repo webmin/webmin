@@ -2587,23 +2587,29 @@ sub restart_links
 {
 local ($zone) = @_;
 local @rv;
-if (!$access{'ro'} && ($access{'apply'} == 1 || $access{'apply'} == 3)) {
+if (!$access{'ro'} && $access{'apply'}) {
 	local $r = $ENV{'REQUEST_METHOD'} eq 'POST' ? 0 : 1;
 	if (&is_bind_running()) {
-		if ($zone) {
+		if ($zone && ($access{'apply'} == 1 || $access{'apply'} == 2)) {
+			# Apply this zone
 			push(@rv, "<a href='restart_zone.cgi?return=$r&".
 				  "view=$zone->{'viewindex'}&".
 				  "index=$zone->{'index'}'>".
 				  "$text{'links_apply'}</a>");
 			}
-		push(@rv, "<a href='restart.cgi?return=$r'>".
-			  "$text{'links_restart'}</a>");
+		# Apply whole config
+		if ($access{'apply'} == 1 || $access{'apply'} == 3) {
+			push(@rv, "<a href='restart.cgi?return=$r'>".
+				  "$text{'links_restart'}</a>");
+			}
 		if ($access{'apply'} == 1) {
+			# Stop BIND
 			push(@rv, "<a href='stop.cgi?return=$r'>".
 				  "$text{'links_stop'}</a>");
 			}
 		}
 	elsif ($access{'apply'} == 1) {
+		# Start BIND
 		push(@rv, "<a href='start.cgi?return=$r'>".
 			  "$text{'links_start'}</a>");
 		}
