@@ -2494,7 +2494,7 @@ local $out = &backquote_command(
         $config{'checkconf'}.
 	($chroot && $chroot ne "/" ? " -t ".quotemeta($chroot) : "").
 	" -z 2>&1 </dev/null");
-return $? ? split(/\r?\n/, $out) : ( );
+return $? ? grep { !/loaded\s+serial/ } split(/\r?\n/, $out) : ( );
 }
 
 # delete_records_file(file)
