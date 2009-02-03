@@ -15,6 +15,8 @@ Caldera OpenLinux		3.1	open-linux	3.1e	$etc_issue =~ /OpenLinux.*3\.1/i
 Caldera OpenLinux		3.2	open-linux	3.2e	$etc_issue =~ /OpenLinux.*3\.2/i
 
 # Redhat enterprise clones
+Asianux Server			$1	redhat-linux	$1+10.0	`cat /etc/asianux-release 2>/dev/null` =~ /Asianux\s+Server\s+(\d+)/i
+Asianux				$1	redhat-linux	$1+10.0	`cat /etc/asianux-release 2>/dev/null` =~ /Asianux\s+release\s+(\d+\.\d+)/i
 Whitebox Linux			$1	redhat-linux	10.0	`cat /etc/whitebox-release 2>/dev/null` =~ /White\s+Box\s+Enterprise\s+Linux\s+release\s+(\S+)/i
 Tao Linux			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null` =~ /Tao\s+Linux\s+release\s+(\S+)/i
 CentOS Linux			$1	redhat-linux	10.0	`cat /etc/centos-release /etc/redhat-release 2>/dev/null` =~ /CentOS\s+release\s+(\S+)/i && $1 < 4
@@ -41,7 +43,6 @@ Redhat Linux Desktop			$1	redhat-linux	10.0	`cat /etc/redhat-release 2>/dev/null
 # Redhat clones
 AlphaCore Linux			$1	redhat-linux	11.0	`cat /etc/alphacore-release 2>/dev/null` =~ /Alpha\s*Core\s+release\s+(\S+)\s/i
 X/OS Linux			$1	redhat-linux	sprintf("%.1f", 9.0+$1)		`cat /etc/redhat-release /etc/fedora-release 2>/dev/null` =~ /X\/OS.*release\s(\S+)\s/i
-Asianux				$1	redhat-linux	10.0	`cat /etc/release /etc/asianux-release 2>/dev/null` =~ /Asianux\s+release\s+(\S+)/i
 Haansoft Linux			$1	redhat-linux	10.0	`cat /etc/Haansoft-release 2>/dev/null` =~ /Haansoft\s+Linux\s+OS\s+release\s+(\S+)/i
 cAos Linux			$1	redhat-linux	sprintf("%.1f", 10.0+$1)	`cat /etc/caos-release 2>/dev/null` =~ /release\s+(\S+)/i
 
