@@ -1038,6 +1038,7 @@ not included.
 sub get_webmin_notifications
 {
 local ($noupdates) = @_;
+$noupdates = 1 if (&shared_root_directory());
 local @notifs;
 local %miniserv;
 &get_miniserv_config(\%miniserv);
