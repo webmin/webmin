@@ -65,10 +65,16 @@ if ($level == 0) {
 		# up 198 days,  2:06
 		$uptime = &text('right_updays', int($1), int($2), int($3));
 		}
+	elsif ($out =~ /up\s+(\d+)\s+days,\s+(\d+)\s+min/) {
+		# up 198 days,  10 mins
+		$uptime = &text('right_updays', int($1), 0, int($2));
+		}
 	elsif ($out =~ /up\s+(\d+):(\d+)/) {
+		# up 3:10
 		$uptime = &text('right_uphours', int($1), int($2));
 		}
 	elsif ($out =~ /up\s+(\d+)\s+mins/) {
+		# up 45 mins
 		$uptime = &text('right_upmins', int($1));
 		}
 	if ($uptime) {
