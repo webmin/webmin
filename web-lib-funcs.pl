@@ -2012,13 +2012,13 @@ local $cbfunc = $_[3];
 # read headers
 alarm(60);
 ($line = &read_http_connection($_[0])) =~ tr/\r\n//d;
-if ($line !~ /^HTTP\/1\..\s+(200|303|302|301)(\s+|$)/) {
+if ($line !~ /^HTTP\/1\..\s+(200|30[0-9])(\s+|$)/) {
 	alarm(0);
 	if ($_[2]) { ${$_[2]} = $line; return; }
 	else { &error("Download failed : $line"); }
 	}
 local $rcode = $1;
-&$cbfunc(1, $rcode == 303 || $rcode == 302 || $rcode == 301 ? 1 : 0)
+&$cbfunc(1, $rcode >= 300 && $rcode < 400 ? 1 : 0)
 	if ($cbfunc);
 while(1) {
 	$line = &read_http_connection($_[0]);
@@ -2033,7 +2033,7 @@ if ($download_timed_out) {
 	else { &error($download_timed_out); }
 	}
 &$cbfunc(2, $header{'content-length'}) if ($cbfunc);
-if ($rcode == 303 || $rcode == 302 || $rcode == 301) {
+if ($rcode >= 300 && $rcode < 400) {
 	# follow the redirect
 	&$cbfunc(5, $header{'location'}) if ($cbfunc);
 	local ($host, $port, $page, $ssl);
@@ -6046,14 +6046,18 @@ sub write_http_connection
 {
 local $h = shift(@_);
 local $fh = $h->{'fh'};
+local $allok = 1;
 if ($h->{'ssl_ctx'}) {
 	foreach (@_) {
-		Net::SSLeay::write($h->{'ssl_con'}, $_);
+		my $ok = Net::SSLeay::write($h->{'ssl_con'}, $_);
+		$allok = 0 if (!$ok);
 		}
 	}
 else {
-	print $fh @_;
+	my $ok = (print $fh @_);
+	$allok = 0 if (!$ok);
 	}
+return $allok;
 }
 
 =head2 close_http_connection(&handle)
