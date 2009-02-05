@@ -33,12 +33,13 @@ return $get_config_parent_cache;
 # Returns a list of logrotate config file entries
 sub get_config
 {
-if (!$_[0] && $get_config_cache) {
-	return wantarray ? ( $get_config_cache, $get_config_lnum_cache,
-			     $get_config_files_cache )
-			 : $get_config_cache;
-	}
 local $file = $_[0] || $config{'logrotate_conf'};
+if (!$_[0] && $get_config_cache{$file}) {
+	return wantarray ? ( $get_config_cache{$file},
+			     $get_config_lnum_cache{$file},
+			     $get_config_files_cache{$file} )
+			 : $get_config_cache{$file};
+	}
 local @files = ( $file );
 local @rv;
 local $addto = \@rv;
@@ -127,9 +128,9 @@ while(<$fh>) {
 	}
 close($fh);
 if (!$_[0]) {
-	$get_config_cache = \@rv;
-	$get_config_lnum_cache = $lnum;
-	$get_config_files_cache = \@files;
+	$get_config_cache{$file} = \@rv;
+	$get_config_lnum_cache{$file} = $lnum;
+	$get_config_files_cache{$file} = \@files;
 	}
 return wantarray ? (\@rv, $lnum, \@files) : \@rv;
 }
