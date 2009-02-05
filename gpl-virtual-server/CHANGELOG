@@ -542,3 +542,4 @@ Added the get-dns.pl command-line script to dump DNS records for a virtual serve
 Moved the field for setting the external IP address (typically for use in DNS records) from the DNS Options page to Edit Virtual Server.
 Moved the --dns-ip and --no-dns-ip options from the modify-dns.pl API script to modify-domain.pl and create-domain.pl.
 The default TTL for DNS domains (set using the $ttl line in the zone file) can now be configured in server templates.
+Added commands to be run before and after scheduled backups, settable on the Edit Scheduled Backup page.
