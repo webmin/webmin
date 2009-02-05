@@ -26,8 +26,6 @@ $title = &get_html_framed_title();
 &PrintHeader();
 $cols = &get_product_name() eq 'usermin' ? 180 : 230;
 print <<EOF;
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-
 <html>
 <head> <title>$title</title> </head>
 
