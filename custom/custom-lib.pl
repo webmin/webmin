@@ -69,10 +69,12 @@ while($f = readdir(DIR)) {
 		while(<FILE>) {
 			s/\r|\n//g;
 			local @a = split(/:/, $_, 5);
+			local ($quote, $must) = split(/,/, $a[3]);
 			push(@{$cmd{'args'}}, { 'name' => $a[0],
 						'type' => $a[1],
 						'opts' => $a[2],
-						'quote' => $a[3],
+						'quote' => int($quote),
+						'must' => int($must),
 						'desc' => $a[4] });
 			}
 		close(FILE);
@@ -161,7 +163,8 @@ else {
 # Save parameters
 foreach $a (@{$c->{'args'}}) {
 	&print_tempfile(FILE, $a->{'name'},":",$a->{'type'},":",
-	   $a->{'opts'},":",$a->{'quote'},":",$a->{'desc'},"\n");
+	   $a->{'opts'},":",int($a->{'quote'}),",",int($a->{'must'}),":",
+	   $a->{'desc'},"\n");
 	}
 &close_tempfile(FILE);
 
@@ -311,6 +314,7 @@ local ($cmd, $noquote, $editor) = @_;
 local $ptable = &ui_columns_start([
 	$text{'edit_name'}, $text{'edit_desc'}, $text{'edit_type'},
 	$noquote ? ( ) : ( $text{'edit_quote'} ),
+	$text{'edit_must'},
 	], 100, 0, undef, undef);
 local @a = (@{$cmd->{'args'}}, { });
 for(my $i=0; $i<@a; $i++) {
@@ -329,6 +333,8 @@ for(my $i=0; $i<@a; $i++) {
 		push(@cols, &ui_yesno_radio("quote_$i",
 					    int($a[$i]->{'quote'})));
 		}
+	push(@cols, &ui_yesno_radio("must_$i",
+                                    int($a[$i]->{'must'})));
 	$ptable .= &ui_columns_row(\@cols);
 	}
 
@@ -348,6 +354,7 @@ for($i=0; defined($name = $in{"name_$i"}); $i++) {
 					  'desc' => $in{"desc_$i"},
 					  'type' => $in{"type_$i"},
 					  'quote' => int($in{"quote_$i"}),
+					  'must' => int($in{"must_$i"}),
 					  'opts' => $in{"opts_$i"} });
 		}
 	}
@@ -406,6 +413,9 @@ foreach my $a (@{$cmd->{'args'}}) {
 		&close_tempfile(TEMP);
 		chown($uinfo->[2], $uinfo->[3], $rv);
 		push(@unlink, $rv);
+		}
+	if ($rv eq '' && $a->{'must'} && $a->{'type'} != 7) {
+		&error(&text('run_emust', $a->{'desc'}));
 		}
 	$ENV{$n} = $rv;
 	$env .= "$n='$rv'\n";
