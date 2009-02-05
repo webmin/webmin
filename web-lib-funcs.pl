@@ -300,7 +300,6 @@ $fh = $_[0];
 syswrite $fh, $str, length($str);
 }
 
-
 =head2 check_ipaddress(ip)
 
 Check if some IPv4 address is properly formatted, returning 1 if so or 0 if not.
@@ -1993,13 +1992,13 @@ if (!ref($h)) {
 	else { &error($h); }
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
-			$headers);
+			$headers, $ssl);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
 }
 
-=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers])
+=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl])
 
 Do a HTTP download, after the headers have been sent. For internal use only,
 typically called by http_download.
@@ -2037,21 +2036,24 @@ if ($download_timed_out) {
 if ($rcode == 303 || $rcode == 302 || $rcode == 301) {
 	# follow the redirect
 	&$cbfunc(5, $header{'location'}) if ($cbfunc);
-	local ($host, $port, $page);
-	if ($header{'location'} =~ /^http:\/\/([^:]+):(\d+)(\/.*)?$/) {
-		$host = $1; $port = $2; $page = $3 || "/";
+	local ($host, $port, $page, $ssl);
+	if ($header{'location'} =~ /^(http|https):\/\/([^:]+):(\d+)(\/.*)?$/) {
+		$ssl = $1 eq 'https' ? 1 : 0;
+		$host = $2; $port = $3; $page = $4 || "/";
 		}
-	elsif ($header{'location'} =~ /^http:\/\/([^:\/]+)(\/.*)?$/) {
-		$host = $1; $port = 80; $page = $2 || "/";
+	elsif ($header{'location'} =~ /^(http|https):\/\/([^:\/]+)(\/.*)?$/) {
+		$ssl = $1 eq 'https' ? 1 : 0;
+		$host = $2; $port = 80; $page = $3 || "/";
 		}
 	elsif ($header{'location'} =~ /^\// && $_[5]) {
 		# Relative to same server
 		$host = $_[5];
 		$port = $_[6];
+		$ssl = $_[8];
 		$page = $header{'location'};
 		}
 	elsif ($header{'location'}) {
-		# Assume relative to same dir
+		# Assume relative to same dir .. not handled
 		if ($_[2]) { ${$_[2]} = "Invalid Location header $header{'location'}"; return; }
 		else { &error("Invalid Location header $header{'location'}"); }
 		}
@@ -2059,7 +2061,7 @@ if ($rcode == 303 || $rcode == 302 || $rcode == 301) {
 		if ($_[2]) { ${$_[2]} = "Missing Location header"; return; }
 		else { &error("Missing Location header"); }
 		}
-	&http_download($host, $port, $page, $_[1], $_[2], $cbfunc, undef,
+	&http_download($host, $port, $page, $_[1], $_[2], $cbfunc, $ssl,
 		       undef, undef, undef, $_[4], 0, $_[7]);
 	}
 else {
