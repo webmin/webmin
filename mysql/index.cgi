@@ -32,7 +32,7 @@ if ($mysql_version < 0) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("mysql", "man", "doc", "google"));
 	print &text('index_elibrary', "<tt>$config{'mysql'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "../config.cgi?$module_name"),"<p>\n";
 	print &text('index_mysqlver', "$config{'mysql'} -V"),"\n";
 	print "<pre>$out</pre>\n";
 	&ui_print_footer("/", $text{'index'});
@@ -42,7 +42,7 @@ elsif (!$mysql_version) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("mysql", "man", "doc", "google"));
 	print &text('index_ever', "<tt>$config{'mysql'}</tt>",
-		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+		  "../config.cgi?$module_name"),"<p>\n";
 	print &text('index_mysqlver', "$config{'mysql'} -V"),"\n";
 	print "<pre>$out</pre>\n";
 	&ui_print_footer("/", $text{'index'});
@@ -52,7 +52,17 @@ open(VERSION, ">$module_config_directory/version");
 print VERSION $mysql_version,"\n";
 close(VERSION);
 
+# Check if MYSQL_PWD works
 ($r, $rout) = &is_mysql_running();
+if ($r > 0 && !&working_env_pass()) {
+	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
+		&help_search_link("mysql", "man", "doc", "google"));
+	print &text('index_eenvpass', "<tt>$config{'mysql'}</tt>",
+		    "../config.cgi?$module_name"),"<p>\n";
+	&ui_print_footer("/", $text{'index'});
+	exit;
+	}
+
 if ($r == 0) {
 	# Not running .. need to start it
 	&main_header();
@@ -68,13 +78,6 @@ if ($r == 0) {
 		      "<tt>$config{'start_cmd'}</tt>"),"</td> </tr></table>\n";
 		print "</form>\n";
 		}
-	}
-elsif ($r == -1 && $access{'user'} && 0) {
-	# Running, but the user's password is wrong
-	&main_header();
-	print "<b>",&text('index_nouser', "<tt>$access{'user'}</tt>"),
-	      "</b><p>\n";
-	print &text('index_emsg', "<tt>$rout</tt>"),"<p>\n";
 	}
 elsif ($r == -1) {
 	# Running, but webmin doesn't know the root (or user's) password!

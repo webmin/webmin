@@ -115,7 +115,7 @@ return ($sock ? " -S $sock" : "").
 sub is_mysql_running
 {
 # First type regular connection
-if ($driver_handle) {
+if ($driver_handle && !$config{'nodbi'}) {
 	local $main::error_must_die = 1;
 	local ($data, $rv);
 	eval { $data = &execute_sql_safe(undef, "select version()") };
@@ -245,7 +245,7 @@ if ($gconfig{'debug_what_sql'}) {
 	&webmin_debug_log('SQL', "db=$_[0] sql=$sql".$params);
 	}
 $sql =~ s/\\/\\\\/g;
-if ($driver_handle) {
+if ($driver_handle && !$config{'nodbi'}) {
 	# Use the DBI interface
 	local $cstr = "database=$_[0]";
 	$cstr .= ";host=$config{'host'}" if ($config{'host'});
@@ -627,7 +627,19 @@ else {
 # Returns 1 if passing the password via an environment variable is supported
 sub supports_env_pass
 {
-return $mysql_version >= 4.1;
+return $mysql_version >= 4.1 && !$config{'nopwd'};
+}
+
+# working_env_pass()
+# Returns 1 if MYSQL_PWD can be used to pass the password to mysql
+sub working_env_pass
+{
+return 1 if (!&supports_env_pass());	# Not even used
+local $config{'nodbi'} = 1;
+local $data;
+local $main::error_must_die = 1;
+eval { $data = &execute_sql_safe(undef, "select version()") };
+return $@ || !$data ? 0 : 1;
 }
 
 # user_priv_cols()

@@ -22,3 +22,4 @@ mysql_data=/var/lib/mysql
 max_dbs=50
 my_cnf=/etc/my.cnf
 max_text=1000
+nopwd=0
