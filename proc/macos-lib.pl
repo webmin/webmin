@@ -5,7 +5,7 @@ sub list_processes
 {
 local($pcmd, $line, $i, %pidmap, @plist);
 if (@_) {
-	open(PS, "ps axlwwwwp $_[0] |");
+	open(PS, "ps xlwwwwp $_[0] |");
 	}
 else {
 	open(PS, "ps axlwwww |");
@@ -34,6 +34,10 @@ for($i=0; $line=<PS>; $i++) {
 		$plist[$i]->{"_tty"} = $11 eq '??' ? $text{'edit_none'} : "/dev/tty$11";
 		$plist[$i]->{"args"} = $13;
 		$pidmap{$2} = $plist[$i];
+		}
+	else {
+		# Unknown line?
+		$i--;
 		}
 	}
 close(PS);
