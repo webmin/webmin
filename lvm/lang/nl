@@ -15,6 +15,7 @@ index_lvs=Logische Volumes
 index_lvsdesc=Een logische volume is een virtuele partitie die gemaakt is van gecombineerde disk ruimte van een volume groep. Ieder kan een filesysteem hebben en dan gemount zijn aan opgeslagen files.
 index_lvsize=Grote
 index_lvuse=Gebruikt voor
+index_lvused=Gebruikte ruimte
 index_lvvg=Volume groep
 index_nolvs=Deze volume groep heeft<br> nog geen logische volumes.
 index_nolvs2=Er zijn nog geen logische volumes gemaakt van een volume groep.
