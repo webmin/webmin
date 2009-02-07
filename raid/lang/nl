@@ -51,6 +51,7 @@ index_program=Opdracht om uit te voeren indien er problemen ondekt worden
 index_programnone=Geen enkele uitvoeren
 index_raidtools=Gebruik RaidTools
 index_return=RAID apparaten
+index_size=Bruikbare grote
 index_title=Linux RAID
 linear=Aaneengeschakeld (Linear)
 log_add=Toegevoegde partitie $2 aan RAID apparaat $1
