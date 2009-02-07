@@ -891,6 +891,7 @@ mod_ssl_cfile=Certificaat/prive sleutel bestand
 mod_ssl_clcert=Cli&#235;nt SSL certificaat
 mod_ssl_default=Standaard
 mod_ssl_ecdepth=Certificaat diepte moet een integer zijn
+mod_ssl_ecerton=Wanneer SSL aanstaat moet er een certificaat geselecteerd zijn
 mod_ssl_ecfile=Ontbrekend certificaat/prive sleutel bestand
 mod_ssl_ekfile=Ontbrekend prive sleutel file
 mod_ssl_elog=Ontbrekend SSL rapport file
