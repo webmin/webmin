@@ -3,7 +3,7 @@ conn_cmd=Een PPTP verbinding opbouwen met de opdracht $1 ..
 conn_egone=Tunnel bestaat niet langer
 conn_einvalid=Ontbrekende server IP adres in configuratie file
 conn_err=Mislukt te verbinden met de tunnel
-conn_mppe=Het MPPE protocol voor VPN encryptie vereist een PPP deamon en kernel ondersteuning. Echter de fouten hierboven suggereren dan &#233;&#233;n of beide niet beschikbaar zijn op uw systeem. Wanneer de PPTP server geen MPPE nodig heeft, probeert U dan alle opties uit te zetten die hiermee gerelateerd zijn op de <a href='$1'>global PPP opties</a> pagina.
+conn_mppe=Het MPPE protocol voor VPN encryptie vereist een PPP deamon en kernel ondersteuning. Echter de fouten hierboven suggereren dan &#233;&#233;n of beide niet beschikbaar zijn op uw systeem. Wanneer de PPTP server geen MPPE nodig heeft, probeert U dan alle opties uit te zetten die hiermee gerelateerd zijn op de <a href='$1'>globale PPP opties</a> pagina.
 conn_ok=.. verbinding is succesvol geactiveerd en gebruikt interface $1. Uw locale adres is $2 en het remote adres is $3.
 conn_routes=Routes toevoegen met de opdrachten ..
 conn_timeout=.. verbinding mislukt! Controleer het log bericht hieronder voor meer informatie.
@@ -44,11 +44,11 @@ index_add=Toevoegen van een nieuwe PPTP VPN tunnel.
 index_boot=Verbinden tijdens booten:
 index_bootdesc=Verander deze optie om te configureren of de geselecteerde PPTP VPN connectie word gestart tijdens booten of niet.
 index_conn=Verbinden met:
-index_conndesc=Klik op deze knop om te verbinden met de geselecteerde PPTP VPN tunnel met gebruik van zin huidige configuratie.
+index_conndesc=Klik op deze knop om te verbinden met de geselecteerde PPTP VPN tunnel met gebruik van zijn huidige configuratie.
 index_disc=Verbreken van:
 index_discdesc=Klik op deze knop om de geselecteerde actieve PPTP VPN tunnel te verbreken en verwijder alle routes ernaar toe.
 index_eoptions=De globale PPTP PPP opties file $1 bestaat niet. Of U moet deze maken, of bewerk de <a href='$2'>module configuratie</a> om een andere file te gebruiken, of geen &#233;&#233;n file te gebruiken.
-index_eppp=Het PPP server programa $1 is niet geinstalleerd op uw systeem. Terwijl de PPTP dit nodig heeft om te kunnen werken.
+index_eppp=Het PPP server programma $1 is niet geinstalleerd op uw systeem. Terwijl de PPTP dit nodig heeft om te kunnen werken.
 index_epptp=Het PPTP client programma $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd of uw <a href='$2'>module configuratie</a> is niet correct.
 index_header=Gedefinieerde Tunnels
 index_noboot=&lt;Niet verbinden&gt;
@@ -99,7 +99,7 @@ save_emask=Ongeldige netmask in route $1
 save_emask2=Geen netmask nodig voor host route $1
 save_ename=Ontbrekende tunnel naam
 save_enet=Ongeldig netwerk adres in route $1
-save_eremote=Ontbrekende of ongeldige remote server's naam 
+save_eremote=Ontbrekende of ongeldige remote server's naam
 save_erename=Mislukt om de tunnel file te hernoemen
 save_err=Mislukt om de tunnel op te slaan
 save_eserver=Ontbrekende of ongeldige server om mee te verbinden
