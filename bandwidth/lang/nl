@@ -1,4 +1,4 @@
-acl_setup=Kan monitor uitschakelen en setup maken?
+acl_setup=Mag monitor uitschakelen en setup maken?
 index_all=&lt;alles&gt;
 index_by=Laat verkeer zien met
 index_edir=De directory om de bandbreedte data $1 op te slaan bestaat niet, of is geen directory. Verander de <a href='$2'>module configuratie</a> om het pad te wijzigen.
@@ -47,7 +47,7 @@ index_proto=protocol
 index_resolv=Resolve hostnamen?
 index_return=rapport formulier
 index_rotate=Update Statistieken
-index_rotatedesc=Klik op deze knop om al het gelogde netwerk verkeer tot op dit moment af te uit te werken, en het onmiddellijk beschikbaar te maken voor een rapport.
+index_rotatedesc=Klik op deze knop om al het gelogde netwerk verkeer tot op dit moment uit te werken, en het onmiddellijk beschikbaar te maken voor een rapport.
 index_search=Genereer Rapport
 index_setup=Setup Nu
 index_setupcannot=Nochtans heeft U geen permissie om dit op te zetten!
@@ -58,7 +58,7 @@ index_to=Voor verkeer voordat
 index_turnoff=Uitschakelen Monitoren
 index_turnoffdesc=Klik op deze knop om alle firewall regels te verwijderen, inclusief syslog configuratie en Cronjob's die gebruikt worden voor Bandbreedte Monitoring. Alle bestaande data die verzameld is zal onaangeroerd blijven.
 index_usage=Netwerk verkeer <font color=#ff0000>gedownload</font> en <font color=#0000ff>geupload</font>
-log_rotate=Geupdaten statistieken
+log_rotate=Ge&#252;pdate statistieken
 log_setup=Setup Bandbreedte Monitoring op interface $1
 log_turnoff=Uitschakelen bandbreedte monitoring
 rotate_doing=Uitwerken gelogd netwerk verkeer ..
