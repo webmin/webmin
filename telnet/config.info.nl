@@ -1,0 +1,9 @@
+host=Hostnaam om mee te verbinden&#44;3&#44;Automatisch
+port=Poort om mee te verbinden&#44;3&#44;Standaard
+proxy=Gebruik een proxy om te verbinden met een andere hosts?&#44;1&#44;1&#45;Ja&#44;0&#45;Nee
+mode=Verbindings type&#44;1&#44;0&#45;Telnet&#44;1&#45;Beveiligde Shell (aanbevolen)
+sizemode=Applet grote&#44;1&#44;0&#45;80x24 karakters (in standaard letter) &#44;1&#45;Maximum&#44;2&#45;Custom grote
+size=Custom breedte x hoogte&#44;0
+fontsize=Letter grote in punten&#44;3&#44;Standaard
+detach=Scheiden van window mode&#44;1&#44;1&#45;Ja&#44;0&#45;Nee
+no_test=Test de telnet of SSH server?&#44;1&#44;0&#45;Ja&#44;1&#45;Nee
