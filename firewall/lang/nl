@@ -141,6 +141,7 @@ edit_state_established=Bestaande verbinding
 edit_state_invalid=Geen onderdeel van een verbinding
 edit_state_new=Nieuwe verbinding
 edit_state_related=Verwant aan bestaande
+edit_state_untracked=Niet gevolgd
 edit_tcpflags=TCP flags set
 edit_tcpoption=TCP optie nummer is set
 edit_title1=Toevoegen Regel
