@@ -26,6 +26,9 @@ if (!ref($ldap)) {
 	goto END;
 	}
 else {
+	local $ldaphost;
+	eval { $ldaphost = $ldap->host(); };
+	$ldaphost ||= &get_ldap_host();
 	print &text('check_connected', $ldap->host()),"<p>\n";
 	}
 

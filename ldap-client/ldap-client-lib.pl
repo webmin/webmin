@@ -199,7 +199,7 @@ if ($ldap_hosts) {
 	local $port = $ldap_port ||
 		      &find_svalue("port", $conf) ||
 		      ($use_ssl == 1 ? 636 : 389);
-	foreach $host (@hosts) {
+	foreach my $host (@hosts) {
 		$ldap = Net::LDAP->new($host, port => $port,
 				scheme => $use_ssl == 1 ? 'ldaps' : 'ldap');
 		if (!$ldap) {
@@ -214,7 +214,7 @@ if ($ldap_hosts) {
 	}
 elsif ($uri) {
 	# Using uri directive
-	foreach $u (split(/\s+/, $uri)) {
+	foreach my $u (split(/\s+/, $uri)) {
 		if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/) {
 			($proto, $host, $port) = ($1, $2, $4);
 			if (!$port && $proto eq "ldap") {
@@ -324,6 +324,37 @@ if ($gconfig{'db_sizeusers'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeusers'});
 	}
 return "<input type=button onClick='ifield = document.forms[$form].$field; chooser = window.open(\"popup_browser.cgi?node=$node&base=\"+escape(ifield.value), \"chooser\", \"toolbar=no,menubar=no,scrollbars=yes,width=$w,height=$h\"); chooser.ifield = ifield; window.ifield = ifield' value=\"...\">\n";
+}
+
+# get_ldap_host()
+# Returns the hostname probably used for connecting
+sub get_ldap_host
+{
+local @hosts;
+if ($config{'ldap_hosts'}) {
+	@hosts = split(/\s+/, $config{'ldap_hosts'});
+	}
+elsif (!-r $config{'auth_ldap'}) {
+	@hosts = ( );
+	}
+else {
+	local $conf = &get_config();
+	local $uri = &find_svalue("uri", $conf);
+	if ($uri) {
+		foreach my $u (split(/\s+/, $uri)) {
+			if ($u =~ /^(ldap|ldaps|ldapi):\/\/([a-z0-9\_\-\.]+)(:(\d+))?/) {
+				push(@hosts, $2);
+				}
+			}
+		}
+	else {
+		@hosts = split(/[ ,]+/, &find_svalue("host", $conf));
+		}
+	if (!@hosts) {
+		@hosts = ( "localhost" );
+		}
+	}
+return wantarray ? @hosts : $hosts[0];
 }
 
 1;

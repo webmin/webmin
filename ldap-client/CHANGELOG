@@ -9,3 +9,5 @@ On Debian/Ubuntu systems with separate PAM and NSS LDAP config files, offer to l
 Handle new LDAP config config file path seen on Ubuntu 8.04.
 ---- Changes since 1.440 ----
 Changed the LDAP client connection code to handle both pure-SSL and TLS modes, thanks to a patch from Paul R. Ganci.
+---- Changes since 1.450 ----
+Improved support for older versions of Net::LDAP without the hosts() function.
