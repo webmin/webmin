@@ -247,7 +247,7 @@ else {
 		   $ssl eq 'start_tls' ? 2 : 0;
 	local @hosts = split(/[ ,]+/, &find_svalue("host", $conf));
 	local $port = &find_svalue("port", $conf) ||
-		      $use_ssl ? 636 : 389;
+		      ($use_ssl == 1 ? 636 : 389);
 	@hosts = ( "localhost" ) if (!@hosts);
 
 	foreach $host (@hosts) {
