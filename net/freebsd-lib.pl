@@ -328,13 +328,15 @@ while(<RESOLV>) {
 	}
 close(RESOLV);
 
+local @order;
 &open_readfile(HOST, "/etc/host.conf");
 while(<HOST>) {
 	s/\r|\n//g;
 	s/#.*$//;
-	push(@{$dns->{'order'}}, $_) if (/\S/);
+	push(@order, $_) if (/\S/);
 	}
 close(HOST);
+$dns->{'order'} = join(" ", @order);
 $dns->{'files'} = [ "/etc/resolv.conf", "/etc/host.conf" ];
 return $dns;
 }
@@ -366,8 +368,8 @@ foreach (@resolv) {
 &unlock_file("/etc/resolv.conf");
 
 &open_lock_tempfile(HOST, ">/etc/host.conf");
-foreach (@{$_[0]->{'order'}}) {
-	&print_tempfile(HOST, $_,"\n");
+foreach my $o (split(/\s+/, $_[0]->{'order'})) {
+	&print_tempfile(HOST, $o,"\n");
 	}
 &close_tempfile(HOST);
 }
@@ -386,11 +388,17 @@ return &common_order_input("order", $_[0]->{'order'},
 # Parses the form created by order_input()
 sub parse_order
 {
-local($i, @order);
-for($i=0; defined($in{"order_$i"}); $i++) {
-	push(@order, $in{"order_$i"}) if ($in{"order_$i"});
-	}
-$_[0]->{'order'} = \@order;
+if (defined($in{'order'})) {
+        $in{'order'} =~ /\S/ || &error($text{'dns_eorder'});
+        $_[0]->{'order'} = $in{'order'};
+        }
+else {
+        local($i, @order);
+        for($i=0; defined($in{"order_$i"}); $i++) {
+                push(@order, $in{"order_$i"}) if ($in{"order_$i"});
+                }
+        $_[0]->{'order'} = join(" ", @order);
+        }
 }
 
 # get_hostname()
