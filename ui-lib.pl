@@ -2355,6 +2355,7 @@ my ($url, $window) = @_;
 if (defined(&theme_js_redirect)) {
 	return &theme_js_redirect(@_);
 	}
+$window ||= "window";
 return "<script>${window}.location = '".&quote_escape($url)."';</script>\n";
 }
 
