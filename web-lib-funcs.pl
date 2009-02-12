@@ -214,7 +214,10 @@ else {
 		chown($<, $(, $tmp_dir);
 		chmod(0755, $tmp_dir);
 		}
-	&error("Failed to create temp directory $tmp_dir") if ($tries >= 10);
+	if ($tries >= 10) {
+		local @st = lstat($tmp_dir);
+		&error("Failed to create temp directory $tmp_dir : uid=$st[4] mode=$st[2]");
+		}
 	}
 local $rv;
 if (defined($_[0]) && $_[0] !~ /\.\./) {
