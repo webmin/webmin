@@ -1,4 +1,5 @@
-lang=en,titles=1	English
+lang=en,titles=1	English (US)
+lang=en_GB,titles=1,fallback=en	English (UK)
 lang=de,titles=1	German
 lang=ru_SU,charset=koi8-r,titles=0	Russian KOI8
 lang=ru_RU,charset=windows-1251,titles=0	Russian CP1251

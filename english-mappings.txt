@@ -1,0 +1,14 @@
+# US		UK
+color		colour
+colors		colours
+colored		coloured
+coloring	colouring
+license		licence
+licenses	licences
+licensed	licenced
+licensing	licencing
+gray		grey
+grays		greys
+center		centre
+centered	centred
+centers		centres
