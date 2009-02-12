@@ -45,7 +45,7 @@ if ($access{'theme'}) {
 		}
 
 	# Overlay
-	if ($in{'overlay_def'} || !defined($in{'overlay'})) {
+	if (!$in{'overlay'}) {
 		$newoverlay = undef;
 		}
 	else {
