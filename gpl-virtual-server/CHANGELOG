@@ -543,3 +543,5 @@ Moved the field for setting the external IP address (typically for use in DNS re
 Moved the --dns-ip and --no-dns-ip options from the modify-dns.pl API script to modify-domain.pl and create-domain.pl.
 The default TTL for DNS domains (set using the $ttl line in the zone file) can now be configured in server templates.
 Added commands to be run before and after scheduled backups, settable on the Edit Scheduled Backup page.
+Added a Module Config field under Advanced options for specifying the path to an alternate tar command.
+Extracted all settings related to default quotas and limits from templates, and moved them into the new Account Plan objects. These can be created by both the master admin and resellers, and selected for new or existing virtual servers. Also added a command-line API for plan management.
