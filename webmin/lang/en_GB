@@ -1,0 +1,3 @@
+ui_err=Failed to save colours
+ui_rgb=<font color=#ff0000>RR</font><font color=#00ff00>GG</font><font color=#0000ff>BB</font> hex colour
+ui_ergb=Invalid hexidecimal colour value for '$1'
