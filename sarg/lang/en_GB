@@ -1,0 +1,10 @@
+style_header=HTML report style and colour options
+style_header_bgcolor=Header background colour
+style_title_color=Title colour
+style_ecolour=Missing or invalid colour name or RRGGBB code
+style_header_color=Header colour
+style_logo_text_color=Text colour for logo
+report_privacy_string_color=Colour for replacement text
+style_background_color=Background colour
+style_text_color=Text colour
+style_text_bgcolor=Text background colour
