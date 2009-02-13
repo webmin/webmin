@@ -1012,7 +1012,10 @@ if ($_[0]) {
 								  : $n);
 		}
 	else {
-		return &html_escape($_[0]->{'value'});
+		return &html_escape(
+			$_[0]->{'value'} =~ /^\[(\S+)\]$/ ? $1 :
+			$_[0]->{'value'} =~ /^\[(\S+)\]:(\d+)$/ ? "$1:$2" :
+				$_[0]->{'value'});
 		}
 	}
 else { return $_[1] ? "*" : $text{'default_serv'}; }
@@ -1859,12 +1862,6 @@ if ($gconfig{'os_type'} eq 'debian-linux') {
 else {
 	return "Operating system does not support Apache modules";
 	}
-}
-
-sub check_apache_ip6address
-{
-local ($ip) = @_;
-return $ip =~ /^\[(\S+)\]$/ && &check_ip6address("$1");
 }
 
 1;

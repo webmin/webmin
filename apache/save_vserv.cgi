@@ -40,6 +40,7 @@ else {
 
 	# Check address
 	if (defined($in{'addrs'})) {
+		# Multiple addresses
 		local @addrs = split(/\s+/, $in{'addrs'});
 		@addrs || &error($text{'vserv_eaddrs'});
 		foreach $a (@addrs) {
@@ -52,6 +53,7 @@ else {
 		$addr = join(" ", @addrs);
 		}
 	else {
+		# One address
 		if ($in{'addr_def'} == 1) {
 			if ($httpd_modules{'core'} >= 1.2)
 				{ $addr = "_default_"; }
@@ -63,10 +65,17 @@ else {
 		elsif ($in{'addr'} !~ /\S/) {
 			&error($text{'vserv_eaddr1'});
 			}
-		elsif (!gethostbyname($in{'addr'})) {
+		elsif (!gethostbyname($in{'addr'}) &&
+		       !&check_ipaddress($in{'addr'}) &&
+		       !&check_ip6address($in{'addr'})) {
 			&error(&text('vserv_eaddr2', $in{'addr'}));
 			}
+		elsif (&check_ip6address($in{'addr'})) {
+			# IPv6 address
+			$addr = "[$in{'addr'}]";
+			}
 		else {
+			# IPv4 address or hostname
 			$addr = $in{'addr'};
 			}
 		}

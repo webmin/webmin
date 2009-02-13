@@ -29,13 +29,13 @@ elsif ($in{'addr'} !~ /\S/) {
 	&error($text{'cvirt_eaddr1'});
 	}
 else {
-	@addrs = split(/\s+/, $in{'addr'});
-	foreach $a (@addrs) {
+	foreach $a (split(/\s+/, $in{'addr'})) {
 		gethostbyname($a) || &check_ipaddress($a) ||
-		    &check_apache_ip6address($a) ||
+		    &check_ip6address($a) ||
 			&error(&text('cvirt_eaddr2', $a));
+		push(@addrs, &check_ip6address($a) ? "[$a]" : $a);
 		}
-	$addr = $in{'addr'};
+	$addr = join(" ", @addrs);
 	}
 
 # Parse and find the specified port

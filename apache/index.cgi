@@ -131,12 +131,20 @@ elsif ($config{'show_order'} == 2) {
 	}
 foreach $v (@virt) {
 	$vm = $v->{'members'};
-	if ($v->{'words'}->[0] =~ /^(\S+):(\S+)$/) {
+	if ($v->{'words'}->[0] =~ /^\[(\S+)\]:(\d+)$/) {
+		# IPv6 address and port
+		$addr = $1;
+		$port = $2;
+		}
+	elsif ($v->{'words'}->[0] =~ /^(\S+):(\d+)$/) {
+		# IPv4 address and port
 		$addr = $1;
 		$port = $2;
 		}
 	else {
+		# Address, perhaps v6, with default port
 		$addr = $v->{'words'}->[0];
+		$addr = $1 if ($addr =~ /^\[(\S+)\]$/);
 		if ($httpd_modules{'core'} < 2.0) {
 			$port = &def(&find_directive("Port", $conf), 80);
 			}
@@ -393,7 +401,7 @@ if ($access{'create'}) {
 		  [ [ 1, "$text{'index_any1'}<br>" ],
 		    [ 2, "$text{'index_any2'}<br>" ],
 		    [ 0, $text{'index_any0'}." ".
-			 &ui_textbox("addr", undef, 20) ] ])."<br>\n".
+			 &ui_textbox("addr", undef, 40) ] ])."<br>\n".
 		&ui_checkbox("nv", 1, $text{'index_nv'}, 1)."<br>".
 		&ui_checkbox("listen", 1, $text{'index_listen'}, 1));
 
@@ -453,7 +461,7 @@ local $addr = $_[0]->{'words'}->[0] =~ /^(\S+):(\S+)/ ? $1 :
 		$_[0]->{'words'}->[0];
 return $addr eq '_default_' || $addr eq '*' ? undef :
        &check_ipaddress($addr) ? $addr :
-       &check_apache_ip6address($addr) ? $addr :
+       $addr =~ /^\[(\S+)\]$/ && &check_ip6address($1) ? $1 :
 			         &to_ipaddress($addr);
 }
 

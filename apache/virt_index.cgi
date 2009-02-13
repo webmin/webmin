@@ -96,10 +96,22 @@ if ($in{'virt'} && $access{'vaddr'}) {
 	if ($val =~ /\s/) {
 		$addrs = $val;
 		}
-	if ($val =~ /^(\S+):(\S+)$/) {
+	if ($val =~ /^\[(\S+)\]:(\d+)$/) {
+		# IPv6 address and port
 		$addr = $1; $port = $2;
 		}
-	else { $addr = $val; }
+	elsif ($val =~ /^\[(\S+)\]$/) {
+		# IPv6 address
+		$addr = $1;
+		}
+	elsif ($val =~ /^(\S+):(\d+)$/) {
+		# IPv4 address or hostname and port
+		$addr = $1; $port = $2;
+		}
+	else {
+		# IPv4 address or hostname
+		$addr = $val;
+		}
 
 	if ($addrs) {
 		# Multiple addresses and ports
@@ -116,7 +128,7 @@ if ($in{'virt'} && $access{'vaddr'}) {
 			    [ 2, $text{'vserv_any'} ],
 			    [ 0, &ui_textbox("addr",
 					$addr eq "*" || $addr eq "_default_" ?
-						"" : $addr, 20) ] ]));
+						"" : $addr, 40) ] ]));
 
 		print &ui_table_row($text{'vserv_port'},
 		     &choice_input($port eq "*" ? 1 : $port > 0 ? 2 : 0,

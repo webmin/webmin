@@ -251,13 +251,24 @@ $bref = $_[0]; $lref = $_[1]; $pref = $_[2];
 if (@$lref) {
 	# listen directives in use.. so BindAddress and Port are unused
 	foreach $l (@$lref) {
-		if ($l->{'value'} =~ /^(\S+):(\d+)$/) {
+		if ($l->{'value'} =~ /^\[(\S+)\]:(\d+)$/) {
+			# IPv6 address and port
+			push(@blist, $1); push(@plist, $2);
+			}
+		elsif ($l->{'value'} =~ /^\[(\S+)\]$/) {
+			# IPv6 address only
+			push(@blist, $1); push(@plist, undef);
+			}
+		elsif ($l->{'value'} =~ /^(\S+):(\d+)$/) {
+			# IPv4 address and port
 			push(@blist, $1); push(@plist, $2);
 			}
 		elsif ($l->{'value'} =~ /^(\d+)$/) {
+			# Port only
 			push(@blist, "*"); push(@plist, $1);
 			}
 		elsif ($l->{'value'} =~ /^(\S+)$/) {
+			# IPv4 address or hostname only
 			push(@blist, $1); push(@plist, undef);
 			}
 		}
@@ -305,7 +316,9 @@ for($i=0; defined($in{"Port_$i"}); $i++) {
 	if ($bdef == 2) { next; }
 
 	if ($bdef) { push(@blist, "*"); }
-	elsif ($b =~ /^\S+$/ && gethostbyname($b)) { push(@blist, $b); }
+	elsif ($b =~ /^\S+$/ &&
+	       (gethostbyname($b) || &check_ipaddress($b) ||
+		&check_ip6address($b))) { push(@blist, $b); }
 	else { &error(&text('core_eaddress', $b)); }
 
 	if ($pdef) { push(@plist, undef); }
@@ -339,6 +352,9 @@ if ($_[0]->{'version'} < 2.0) {
 else {
 	# Apache 2.0 just uses Listen directives
 	for($i=0; $i<@blist; $i++) {
+		if (&check_ip6address($blist[$i])) {
+			$blist[$i] = "[".$blist[$i]."]";
+			}
 		if ($blist[$i] ne "*" && $plist[$i]) {
 			push(@l, "$blist[$i]:$plist[$i]");
 			}
@@ -539,6 +555,7 @@ sub edit_NameVirtualHost
 local(@nv, $nv, $star);
 foreach $nv (@{$_[0]}) {
 	if ($nv->{'value'} eq "*" && $_[1]->{'version'} >= 1.312) { $star++; }
+	elsif ($nv->{'value'} =~ /^\[(\S+)\]$/) { push(@nv, $1); }
 	else { push(@nv, $nv->{'value'}); }
 	}
 if ($_[1]->{'version'} >= 1.312) {
@@ -559,8 +576,15 @@ local(@nv, $nv, $addr);
 foreach $nv (@nv) {
 	if ($nv =~ /^(\S+):(\d+|\*)$/) { $addr = $1; }
 	else { $addr = $nv; }
-	if (!gethostbyname($addr) && $addr ne '*') {
+	if (!gethostbyname($addr) && !&check_ipaddress($addr) &&
+	    !&check_ip6address($addr) && $addr ne '*') {
 		&error(&text('core_evirtaddr', $addr));
+		}
+	if ($nv =~ /^(\S+):(\d+|\*)$/ && &check_ip6address($1)) {
+		$nv = "[$1]:$2";
+		}
+	elsif (&check_ip6address($nv)) {
+		$nv = "[$nv]";
 		}
 	}
 if (@nv) { return ( \@nv ); }

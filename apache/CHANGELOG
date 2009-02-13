@@ -42,3 +42,5 @@ Added support for the funny ${APACHE_RUN_USER} and ${APACHE_PID_FILE} variables 
 ---- Changes since 1.430 ----
 When a virtual host's base directory is changed, all <directory> blocks under it are updated too.
 When stopping and re-starting Apache, give it time to fully stop before continuing.
+---- Changes since 1.450 ----
+Fixed handling of IPv6 addresses so that Apache's [address] format is now fully supported.
