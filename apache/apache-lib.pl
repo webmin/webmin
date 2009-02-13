@@ -1861,5 +1861,11 @@ else {
 	}
 }
 
+sub check_apache_ip6address
+{
+local ($ip) = @_;
+return $ip =~ /^\[(\S+)\]$/ && &check_ip6address("$1");
+}
+
 1;
 

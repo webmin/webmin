@@ -32,7 +32,7 @@ else {
 	@addrs = split(/\s+/, $in{'addr'});
 	foreach $a (@addrs) {
 		gethostbyname($a) || &check_ipaddress($a) ||
-		    &check_ip6address($a) ||
+		    &check_apache_ip6address($a) ||
 			&error(&text('cvirt_eaddr2', $a));
 		}
 	$addr = $in{'addr'};

@@ -453,7 +453,7 @@ local $addr = $_[0]->{'words'}->[0] =~ /^(\S+):(\S+)/ ? $1 :
 		$_[0]->{'words'}->[0];
 return $addr eq '_default_' || $addr eq '*' ? undef :
        &check_ipaddress($addr) ? $addr :
-       &check_ip6address($addr) ? $addr :
+       &check_apache_ip6address($addr) ? $addr :
 			         &to_ipaddress($addr);
 }
 
