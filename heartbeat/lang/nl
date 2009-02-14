@@ -2,18 +2,18 @@ apply_epid=Proces werkt niet langer
 apply_err=Mislukt om veranderingen toe te voegen
 auth_crc=CRC (Geen Veiligheid)
 auth_emd5=Ontbrekende of ongeldige MD5 Wachtwoord
-auth_err=Mislukt om identificatie sleutels op te slaan
+auth_err=Mislukt om identificatie key's op te slaan
 auth_esha1=Ontbrekende of ongeldige SHA1 wachtwoord
 auth_header=Cluster node identificatie
 auth_md5=MD5 met wachtwoord
 auth_mode=Identificatie mode
 auth_sha1=SHA1 met wachtwoord
-auth_title=Identificatie Sleutels
+auth_title=Identificatie Keys
 conf_auto_=${standaard}
 conf_auto_legacy=Legacy mode
 conf_auto_off=${conf_uitgeschakeld}
 conf_auto_on=${conf_aangeschakeld}
-conf_baud=Baud rate voor seri&#235;le poort
+conf_baud=Baud rate voor serieele poort
 conf_bcasts=Ethernet hartslag interfaces
 conf_deadtime=Tijd voordat node als dood word beschouwt
 conf_disabled=Uitgeschakeld
@@ -25,8 +25,8 @@ conf_einitdead=Ontbrekende of ongeldige aanvankelijk dood tijd
 conf_einitdead2=Aanvankelijk dood tijd moet minimaal 2x groter zijn dan de tijd waarbij een node word dood verklaard
 conf_ekeepalive=Ontbrekende of ongeldige tijd tussen hartslagen
 conf_elogfile=Ontbrekende of ongeldige log filenaam
-conf_emcast_dev=Ontbrekende of ongeldig multicast apparaat
-conf_emcast_ip=Ontbrekende of ongeldig multicast groep adres
+conf_emcast_dev=Ontbrekende of ongeldige multicast apparaat
+conf_emcast_ip=Ontbrekende of ongeldige multicast groep adres
 conf_emcast_port=Ontbrekende of ongeldige multicast poort nummer
 conf_emcast_ttl=Ontbrekende of ongeldige multicast tijd-om-te-leven
 conf_enabled=Aangezet
@@ -41,24 +41,24 @@ conf_keepalive=Tijd tussen hartslagen
 conf_logfacility=Syslog log faciliteiten
 conf_logfile=Hartslag log file
 conf_mcast=Multicast hartslag apparaat
-conf_mcastv=Apparaat $1, groep $2, poort $3, TTL $4, terugloop $5
-conf_nice_failback=Goed Terugval Gedrag
+conf_mcastv=Apparaat $1, groep $2, poort $3, TTL $4, loopback $5
+conf_nice_failback=Goed Failback Gedrag
 conf_node=Hosts in cluster
 conf_none=Niets
 conf_ok=Opties opslaan
 conf_secs=seconden
-conf_serials=Seri&#235;le hartslag poorten
+conf_serials=Serieele heartbeat poorten
 conf_title=Configuratie Opties
 conf_udpport=UDP hartslag poort
 conf_watchdog=Watchdog apparaat file
 index_apply=Veranderingen Toevoegen
 index_applymsg=Klik op deze knop om geforceerd het lopende hartslag monitor proces de huidige configuratie te herladen.
-index_eauthkeys=De Identificatie sleutel file $1 is niet gevonden op uw systeem. Misschien is het nog niet naar de juiste plaats gekopieerd of de <a href='$2'>module configuratie</a> is niet correct.
+index_eauthkeys=De Identificatie keys file $1 is niet gevonden op uw systeem. Misschien is het nog niet naar de juiste plaats gekopieerd of de <a href='$2'>module configuratie</a> is niet correct.
 index_edir=De hartslag config directory $1 bestaat niet. Misschien is Hartslag nog niet geinstalleerd, of uw <a href='$2'>module configuratie</a> is niet correct.
 index_eha_cf=De hartslag configuratie file $1 is niet gevonden op uw systeem. Misschien is het nog niet naar de juiste plaats gekopieerd of de <a href='$2'>module configuratie</a> is niet correct.
 index_eharesources=De resources file $1 is niet gevonden op uw systeem. Misschien is het nog niet naar de juiste plaats gekopieerd of de <a href='$2'>module configuratie</a> is niet correct.
 index_ereq_resource_cmd=Het script om van de resources een aanvraag te doen van de andere node ($1) is niet gevonden op uw systeem. Misschien is het nog niet naar de juiste plaats gekopieerd of de <a href='$2'>module configuratie</a> is niet correct.
-index_noversion=Waarschuwing - De versie van Hartslag die ge&#239;nstalleerd is op uw systeem kon niet automatisch gedetecteerd worden. U moet dit goed zetten op de <a href='$1'>module configuratie</a> pagina.
+index_noversion=Waarschuwing - De versie van Harslag die geinstalleer is op uw systeem kon niet automatisch gedetecteerd worden. U moet dit goed zetten op de <a href='$1'>module confguratie</a> pagina.
 index_return=hartslag monitor
 index_start=Start Hartslag Monitor
 index_startmsg=Klik op deze knop om het Hartslag monitor proces te starten. Dit wil automatisch de service failover aan zetten op uw systeem met de huidige configuratie.
@@ -82,10 +82,10 @@ node_node=Primaire node voor resource
 node_serv=Service
 node_servs=Services voor resource
 res_active=Resource Status
-res_add=Cluster resources toevoegen
+res_add=Cluste resources toevoegen
 res_down=UIT
 res_getserv=Pak Resource
-res_hbdown=Hartslag staat uit
+res_hbdown=Harslag staat uit
 res_ips=IP Adressen
 res_node=Primaire Node
 res_none=Niets
@@ -94,4 +94,4 @@ res_return=resources lijst
 res_servs=Node Services
 res_title=Cluster Resources
 res_up=AAN
-start_err=Mislukt om hartslag te starten
+start_err=Mislukt om heartbeat te starten
