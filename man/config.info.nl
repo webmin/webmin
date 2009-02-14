@@ -1,0 +1,14 @@
+line2=Systeem configuratie,11
+man_cmd=Opdracht om handleiding pagina te laten zien,0
+man_cmd_sect=Opdracht om handleiding pagina te laten zien van een sectie,0
+search_cmd=Opdracht voor de zoek pagina,0
+man_dir=Handleidingen pagina directory's (MANPATH),9,50,3,:
+list_cmd=Opdracht om de handleiding file pad te laten zien,0
+list_cmd_sect=Opdracht om de handleiding file pad te laten zien van een sectie,0
+man2html_path=Pad naar man2html,3,Gebruik geen man2html
+doc_dir=Pakketten documentatie directory,3,Geen
+howto_dir=HOWTO documenten directory,3,Geen
+kernel_dir=Kernel documentatie directory,3,Geen
+kde_dir=KDE documentatie directory,3,Geen
+custom_dir=Eigen documentatie directory,3,Geen
+custom_desc=Eigen documentatie naam,3,Standaard
