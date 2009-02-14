@@ -1,0 +1,10 @@
+line2=Systeem configuratie,11
+cfengine_dir=Pad naar configuratie files directory,0
+cfengine=Pad naar cfengine programma,0
+cfengine_conf=Pad naar cfengine.conf file,3,Automatisch
+cfrun=Pad naar cfrun programma,0
+cfrun_hosts=Pad naar server opties file,3,Automatisch
+cfd=Pad naar cfd programma,0
+cfd_conf=Pad naar cfd.conf file,3,Automatisch
+start_cmd=Opdracht om cfd te starten,3,Alleen de deamon
+stop_cmd=Opdracht om cfd te stoppen,3,Alleen proces killen
