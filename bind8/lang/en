@@ -1004,7 +1004,7 @@ links_apply=Apply Zone
 
 dnssec_title=DNSSEC Key Re-Signing
 dnssec_ecannot=You are not allowed to configure DNSSEC
-dnssec_header=Key re-signing optioins
+dnssec_header=Key re-signing options
 dnssec_enabled=Automatic key re-signing enabled?
 dnssec_period=Period between re-signs?
 dnssec_days=days
