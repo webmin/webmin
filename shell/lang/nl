@@ -1,8 +1,8 @@
 acl_user=Uitvoeren opdrachten als gebruiker
-acl_user_def=Huidige Webmin gebruiker
-index_clear=Historie wissen
+acl_user_def=Huidige Webmin gebuiker
+index_clear=History wissen
 index_clearcmds=Wissen opdrachten
-index_desc=Typ een shell opdracht om uit te voeren in het tekstveld hieronder. De <tt>cd</tt> opdracht kan gebruikt worden om te wisselen van directory of verdere opdrachten
+index_desc=Typ een shell opdracht om uit te voeren in het tekstved hieronder. De <tt>cd</tt> opdracht kan gebruikt worden om te wisselen van directorie of verdere opdrachten
 index_edit=Bewerk vorige
 index_history=Opdracht historie
 index_ok=Uitvoeren opdracht:
