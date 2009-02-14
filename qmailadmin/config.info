@@ -1,7 +1,7 @@
 line1=Configurable options,11
 sort_mode=Sort tables by,1,0-Order in file,1-Name
 columns=Columns for aliases and other tables,1,2-2,1-1
-max_records=Maxiumum number of records to show in tables,0,6
+max_records=Maximum number of records to show in tables,0,6
 perpage=Mail messages to display per page,0,6
 send_mode=Send mail via connection to,3,qmail-inject executable
 index_min=Minimum mail file size to index,3,Always index
