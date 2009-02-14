@@ -1,0 +1,9 @@
+line2=Systeem configuratie,11
+ftpd_path=Volledig pad naar wuftpd,0
+ftpaccess=Volledig pad naar de ftpaccess file,0
+ftpconversions=Volledig pad naar de ftpconversie file,0
+ftpgroups=Volledig pad naar de ftpgroupen file,0
+ftphosts=Volledig pad naar de ftphosts file,0
+ftpusers=Volledig pad naar de ftpusers file,0
+pid_file=FTP server PID file,0
+log_file=FTP server log file,0
