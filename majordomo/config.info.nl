@@ -1,0 +1,10 @@
+line1=Configureerbare opties,11
+dynamic=Gebruik wisselend nummer voor alias lijst?,1,1-Ja,0-Nee
+sort_mode=Sorteer mail lijst op,1,1-Naam,0-Gemaakte volgorde
+perms=Permissies voor de majordomo files,1,1-Gebruiker beschrijfbaar,0-Gebruiker en groep beschrijfbaar
+line2=Systeem configuratie,11
+majordomo_cf=Volledig pad naar de majordomo config file,0
+program_dir=Directory waarin de majordomo programma's zitten,0
+wrapper_path=Pad naar de majordomo wrapper,3,In programma directory
+aliases_file=Pad naar de aliassen file,10,postfix-Krijg van Postfix,-Krijg van Sendmail,Andere file
+smrsh_program_dir=Directory waarin de Sendmail veilige programma's zitten,3,Overal
