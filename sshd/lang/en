@@ -227,6 +227,6 @@ manual_file=Edit config file:
 manual_edata=Nothing entered!
 manual_err=Failed to save config file
 
-dknown_err=Failed to delete knwon hosts
+dknown_err=Failed to delete known hosts
 dknown_enone=None selected
 
