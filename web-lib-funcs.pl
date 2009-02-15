@@ -5644,6 +5644,10 @@ elsif ($r eq 'HASH') {
 elsif ($r eq 'REF') {
 	$rv = &serialise_variable(${$_[0]});
 	}
+elsif ($r eq 'CODE') {
+	# Code not handled
+	$rv = undef;
+	}
 elsif ($r) {
 	# An object - treat as a hash
 	$r = "OBJECT ".&urlize($r);
