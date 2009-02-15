@@ -478,8 +478,8 @@ elsif ($f->{'condlevel'}) {
 	}
 elsif ($f->{'condheader'}) {
 	$cond = &text('index_cheader',
-		"<tt>$f->{'condheader'}</tt>",
-		"<tt>$f->{'condvalue'}</tt>");
+		"<tt>".&html_escape($f->{'condheader'})."</tt>",
+		"<tt>".&html_escape($f->{'condvalue'})."</tt>");
 	}
 elsif ($f->{'condtype'} eq '<' || $f->{'condtype'} eq '>') {
 	$cond = &text('index_csize'.$f->{'condtype'},
@@ -487,7 +487,7 @@ elsif ($f->{'condtype'} eq '<' || $f->{'condtype'} eq '>') {
 	}
 elsif ($f->{'cond'}) {
 	$cond = &text($f->{'body'} ? 'index_cre2' : 'index_cre',
-		       "<tt>$f->{'cond'}</tt>");
+		       "<tt>".&html_escape($f->{'cond'})."</tt>");
 	}
 else {
 	$cond = $text{'index_calways'};
