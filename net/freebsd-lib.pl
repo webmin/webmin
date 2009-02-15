@@ -329,15 +329,32 @@ while(<RESOLV>) {
 close(RESOLV);
 
 local @order;
-&open_readfile(HOST, "/etc/host.conf");
-while(<HOST>) {
-	s/\r|\n//g;
-	s/#.*$//;
-	push(@order, $_) if (/\S/);
+local $orderfile;
+if (-r "/etc/nsswitch.conf") {
+	# FreeBSD 5.0 and later use nsswitch.conf
+	$orderfile = "/etc/nsswitch.conf";
+	&open_readfile(SWITCH, $orderfile);
+	while(<SWITCH>) {
+		s/\r|\n//g;
+		if (/^\s*hosts:\s+(.*)/) {
+			$dns->{'order'} = $1;
+			}
+		}
+	close(SWITCH);
 	}
-close(HOST);
-$dns->{'order'} = join(" ", @order);
-$dns->{'files'} = [ "/etc/resolv.conf", "/etc/host.conf" ];
+else {
+	# Older versions use host.conf
+	$orderfile = "/etc/host.conf";
+	&open_readfile(HOST, $orderfile);
+	while(<HOST>) {
+		s/\r|\n//g;
+		s/#.*$//;
+		push(@order, $_) if (/\S/);
+		}
+	close(HOST);
+	$dns->{'order'} = join(" ", @order);
+	}
+$dns->{'files'} = [ "/etc/resolv.conf", $orderfile ];
 return $dns;
 }
 
@@ -367,11 +384,32 @@ foreach (@resolv) {
 &close_tempfile(RESOLV);
 &unlock_file("/etc/resolv.conf");
 
-&open_lock_tempfile(HOST, ">/etc/host.conf");
-foreach my $o (split(/\s+/, $_[0]->{'order'})) {
-	&print_tempfile(HOST, $o,"\n");
+if (-r "/etc/nsswitch.conf") {
+	# Save to new nsswitch.conf, for FreeBSD 5.0 and later
+	&lock_file("/etc/nsswitch.conf");
+	&open_readfile(SWITCH, "/etc/nsswitch.conf");
+	local @switch = <SWITCH>;
+	close(SWITCH);
+	&open_tempfile(SWITCH, ">/etc/nsswitch.conf");
+	foreach (@switch) {
+		if (/^\s*hosts:\s+/) {
+			&print_tempfile(SWITCH, "hosts:\t$_[0]->{'order'}\n");
+			}
+		else {
+			&print_tempfile(SWITCH, $_);
+			}
+		}
+	&close_tempfile(SWITCH);
+	&unlock_file("/etc/nsswitch.conf");
 	}
-&close_tempfile(HOST);
+else {
+	# Save to older host.conf
+	&open_lock_tempfile(HOST, ">/etc/host.conf");
+	foreach my $o (split(/\s+/, $_[0]->{'order'})) {
+		&print_tempfile(HOST, $o,"\n");
+		}
+	&close_tempfile(HOST);
+	}
 }
 
 $max_dns_servers = 3;
@@ -380,8 +418,18 @@ $max_dns_servers = 3;
 # Returns HTML for selecting the name resolution order
 sub order_input
 {
-return &common_order_input("order", $_[0]->{'order'},
-	[ [ "hosts", "Hosts" ], [ "bind", "DNS" ], [ "nis", "NIS" ] ]);
+if (-r "/etc/nsswitch.conf") {
+	# FreeBSD 5.0 and later use nsswitch.conf with more options
+	return &common_order_input("order", $_[0]->{'order'},
+		[ [ "files", "Files" ], [ "dns", "DNS" ],
+		  [ "nis", "NIS" ], [ "cache", "NSCD" ] ]);
+	}
+else {
+	# Older FreeBSD's have fewer options
+	local $dnsopt = $_[0]->{'order'} =~ /dns/ ? 'dns' : 'bind';
+	return &common_order_input("order", $_[0]->{'order'},
+		[ [ "hosts", "Hosts" ], [ $dnsopt, "DNS" ], [ "nis", "NIS" ] ]);
+	}
 }
 
 # parse_order(&dns)
