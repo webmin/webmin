@@ -23,38 +23,8 @@ if (!&has_command($config{'sshd_path'})) {
 	}
 
 # Check if sshd is the right version
-$out = &backquote_command(&quote_path($config{'sshd_path'})." -h 2>&1");
-if ($config{'sshd_version'}) {
-	# Forced version
-	$version{'type'} = 'openssh';
-	$version{'number'} = $version{'full'} = $config{'sshd_version'};
-	}
-elsif ($out =~ /(sshd\s+version\s+([0-9\.]+))/i ||
-    $out =~ /(ssh\s+secure\s+shell\s+([0-9\.]+))/i) {
-	# Classic commercial SSH
-	$version{'type'} = 'ssh';
-	$version{'number'} = $2;
-	$version{'full'} = $1;
-	}
-elsif ($out =~ /(OpenSSH.([0-9\.]+))/i) {
-	# OpenSSH .. assume all versions are supported
-	$version{'type'} = 'openssh';
-	$version{'number'} = $2;
-	$version{'full'} = $1;
-	}
-elsif ($out =~ /(Sun_SSH_([0-9\.]+))/i) {
-	# Solaris 9 SSH is actually OpenSSH 2.x
-	$version{'type'} = 'openssh';
-	$version{'number'} = 2.0;
-	$version{'full'} = $1;
-	}
-elsif (($out = $config{'sshd_version'}) && ($out =~ /(Sun_SSH_([0-9\.]+))/i)) {
-	# Probably Solaris 10 SSHD that didn't display version.  Use it.
-	$version{'type'} = 'openssh';
-	$version{'number'} = 2.0;
-	$version{'full'} = $1;
-	}
-else {
+%version = &get_sshd_version();
+if (!%version) {
 	# Unknown version
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 	print &text('index_eversion', "<tt>$config{'sshd_path'}</tt>",

@@ -6,64 +6,40 @@ require './sshd-lib.pl';
 &ui_print_header(undef, $text{'misc_title'}, "", "misc");
 $conf = &get_sshd_config();
 
-print "<form action=save_misc.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'misc_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_misc.cgi");
+print &ui_table_start($text{'misc_header'}, "width=100%", 2);
 
-&scmd();
+# X11 port forwarding
 $x11 = &find_value("X11Forwarding", $conf);
-print "<td><b>$text{'misc_x11'}</b></td> <td nowrap>\n";
-if ($version{'type'} eq 'ssh') {
-	printf "<input type=radio name=x11 value=1 %s> %s\n",
-		lc($x11) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=x11 value=0 %s> %s</td>\n",
-		lc($x11) eq 'no' ? "checked" : "", $text{'no'};
-	}
-else {
-	printf "<input type=radio name=x11 value=1 %s> %s\n",
-		lc($x11) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=x11 value=0 %s> %s</td>\n",
-		lc($x11) eq 'yes' ? "" : "checked", $text{'no'};
-	}
-&ecmd();
+print &ui_table_row($text{'misc_x11'},
+	&ui_yesno_radio("x11", lc($x11) eq 'no' ? 0 :
+			       lc($x11) eq 'yes' ? 1 :
+			       $version{'type'} eq 'ssh' ? 1 : 0));
 
 if ($version{'type'} ne 'ssh' || $version{'number'} < 2) {
-	&scmd();
+	# X display offset
 	$xoff = &find_value("X11DisplayOffset", $conf);
-	print "<td><b>$text{'misc_xoff'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=xoff_def value=1 %s> %s\n",
-		$xoff ? "" : "checked", $text{'default'};
-	printf "<input type=radio name=xoff_def value=0 %s>\n",
-		$xoff ? "checked" : "";
-	print "<input name=xoff size=4 value='$xoff'></td>\n";
-	&ecmd();
+	print &ui_table_row($text{'misc_xoff'},
+		&ui_opt_textbox("xoff", $xoff, 6, $text{'default'}));
 
 	if ($version{'type'} eq 'ssh' || $version{'number'} >= 2) {
-		&scmd(1);
+		# Path to xauth
 		$xauth = &find_value("XAuthLocation", $conf);
-		print "<td><b>$text{'misc_xauth'}</b></td> <td colspan=3>\n";
-		printf "<input type=radio name=xauth_def value=1 %s> %s\n",
-			$xauth ? "" : "checked", $text{'default'};
-		printf "<input type=radio name=xauth_def value=0 %s>\n",
-			$xauth ? "checked" : "";
-		print "<input name=xauth size=50 value='$xauth'></td>\n";
-		&ecmd();
+		print &ui_table_row($text{'misc_xauth'},
+			&ui_opt_textbox("xauth", $xauth, 40, $text{'default'}).
+			" ".&file_chooser_button("xauth"));
 		}
 	}
 
 if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
-	&scmd();
+	# Default umask
 	$umask = &find_value("Umask", $conf);
-	print "<td><b>$text{'misc_umask'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=umask_def value=1 %s> %s\n",
-		$umask ? "" : "checked", $text{'misc_umask_def'};
-	printf "<input type=radio name=umask_def value=0 %s>\n",
-		$umask ? "checked" : "";
-	print "<input name=umask size=4 value='$umask'></td>\n";
-	&ecmd();
+	print &ui_table_row($text{'misc_umask'},
+		&ui_opt_textbox("umask", $umask, 4, $text{'misc_umask_def'}));
 	}
 
+# Syslog facility
+# XXX
 &scmd();
 $syslog = &find_value("SyslogFacility", $conf);
 print "<td><b>$text{'misc_syslog'}</b></td> <td nowrap>\n";

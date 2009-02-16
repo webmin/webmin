@@ -7,7 +7,49 @@ do '../web-lib.pl';
 do '../ui-lib.pl';
 
 # Get version information
-&read_file("$module_config_directory/version", \%version);
+if (!&read_file("$module_config_directory/version", \%version)) {
+	%version = &get_sshd_version();
+	}
+
+# get_sshd_version()
+# Returns a hash containing the version type, number and full version
+sub get_sshd_version
+{
+local %version;
+local $out = &backquote_command(
+	&quote_path($config{'sshd_path'})." -h 2>&1 </dev/null");
+if ($config{'sshd_version'}) {
+	# Forced version
+	$version{'type'} = 'openssh';
+	$version{'number'} = $version{'full'} = $config{'sshd_version'};
+	}
+elsif ($out =~ /(sshd\s+version\s+([0-9\.]+))/i ||
+    $out =~ /(ssh\s+secure\s+shell\s+([0-9\.]+))/i) {
+	# Classic commercial SSH
+	$version{'type'} = 'ssh';
+	$version{'number'} = $2;
+	$version{'full'} = $1;
+	}
+elsif ($out =~ /(OpenSSH.([0-9\.]+))/i) {
+	# OpenSSH .. assume all versions are supported
+	$version{'type'} = 'openssh';
+	$version{'number'} = $2;
+	$version{'full'} = $1;
+	}
+elsif ($out =~ /(Sun_SSH_([0-9\.]+))/i) {
+	# Solaris 9 SSH is actually OpenSSH 2.x
+	$version{'type'} = 'openssh';
+	$version{'number'} = 2.0;
+	$version{'full'} = $1;
+	}
+elsif (($out = $config{'sshd_version'}) && ($out =~ /(Sun_SSH_([0-9\.]+))/i)) {
+	# Probably Solaris 10 SSHD that didn't display version.  Use it.
+	$version{'type'} = 'openssh';
+	$version{'number'} = 2.0;
+	$version{'full'} = $1;
+	}
+return %version;
+}
 
 # get_sshd_config()
 # Returns a reference to an array of SSHD config file options

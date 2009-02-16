@@ -14,14 +14,16 @@ foreach $h (@$hconf) {
 		}
 	$i++;
 	}
-print &ui_subheading($text{'hosts_header'});
+$addlink = &ui_links_row(
+	[ "<a href='edit_host.cgi?new=1'>$text{'hosts_add'}</a>" ]);
 if (@links) {
-	print "<a href='edit_host.cgi?new=1'>$text{'hosts_add'}</a> <br>\n";
+	print $addlink;
 	&icons_table(\@links, \@titles, \@icons);
 	}
 else {
 	print "<b>$text{'hosts_none'}</b><p>\n";
 	}
-print "<a href='edit_host.cgi?new=1'>$text{'hosts_add'}</a> <p>\n";
+print $addlink;
+
 &ui_print_footer("", $text{'index_return'});
 

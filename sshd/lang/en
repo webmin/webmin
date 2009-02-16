@@ -208,9 +208,9 @@ log_manual=Manually editing config file $1
 
 sync_title=User SSH Key Setup
 sync_desc=This page allows you to configure the automatic setup of SSH for new Unix users created on your system. If configured, new users will not have to run <tt>ssh-keygen</tt> before using SSH.
-sync_create=Setup SSH key for new Unix users.
-sync_auth=Copy new <tt>identify.pub</tt> to <tt>authorized_keys</tt>.
-sync_pass=Use password as key passphrase.
+sync_create=Setup SSH key for new Unix users?
+sync_auth=Copy new <tt>identify.pub</tt> to <tt>authorized_keys</tt>?
+sync_pass=Use password as key passphrase?
 sync_gnupg=Setup GNUPG key for new Unix users.
 sync_type=Key type
 sync_auto=&lt;Automatic&gt;

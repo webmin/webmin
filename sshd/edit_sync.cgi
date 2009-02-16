@@ -5,22 +5,30 @@
 require './sshd-lib.pl';
 &ui_print_header(undef, $text{'sync_title'}, "");
 
-print "<form action=save_sync.cgi>\n";
 print "$text{'sync_desc'}<p>\n";
+print &ui_form_start("save_sync.cgi");
+print &ui_table_start(undef, 2, 2);
 
-$sp = "&nbsp;" x 5;
+# Create keys for new users
+print &ui_table_row($text{'sync_create'},
+	&ui_yesno_radio("create", $config{'sync_create'}));
 
-print &ui_checkbox("create", 1, $text{'sync_create'}, $config{'sync_create'}),
-      "<br>\n";
-print $sp,&ui_checkbox("auth", 1, $text{'sync_auth'}, $config{'sync_auth'}),
-      "<br>\n";
-print $sp,&ui_checkbox("pass", 1, $text{'sync_pass'}, $config{'sync_pass'}),
-      "<br>\n";
-print $sp,$text{'sync_type'}," ",
+# Authorize own key
+print &ui_table_row($text{'sync_auth'},
+	&ui_yesno_radio("auth", $config{'sync_auth'}));
+
+# Use password as passphrase
+print &ui_table_row($text{'sync_pass'},
+	&ui_yesno_radio("pass", $config{'sync_pass'}));
+
+# Key type
+print &ui_table_row($text{'sync_type'},
       &ui_select("type", $config{'sync_type'},
 		 [ [ "", $text{'sync_auto'} ],
-		   [ "rsa" ], [ "dsa" ], [ "rsa1" ] ]),"<br>\n";
+		   [ "rsa" ], [ "dsa" ], [ "rsa1" ] ]));
 
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
+
 &ui_print_footer("", $text{'index_return'});
 
