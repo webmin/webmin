@@ -116,9 +116,9 @@ else {
 			}
 
 		# Check if razor is set up
-		if ($module_info{'usermin'}) {
-			$razor = 1
-				if (-r "$remote_user_info[7]/.razor/identity");
+		if ($module_info{'usermin'} &&
+		    -r "$remote_user_info[7]/.razor/identity") {
+			$razor = 1;
 			}
 
 		# Show icons
