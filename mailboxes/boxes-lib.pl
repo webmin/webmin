@@ -2458,7 +2458,7 @@ my $rv = eval {
 				      $7 < 50 ? $7+100 : $7 < 1000 ? $7 : $7-1900);
 		return $tm;
 		}
-	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)/) {
+	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d{1,2})\s+(\d+):(\d+):(\d+)/) {
 		# Format like Tue Dec  7 12:58:52
 		local @now = localtime(time());
 		local $tm = timelocal($6, $5, $4, $3, &month_to_number($2),
@@ -2481,6 +2481,7 @@ my $rv = eval {
 		# Format like 2004-12-07 12:53
 		local $tm = timelocal(0, $4, $4, $3, $2-1,
 				      $1 < 50 ? $1+100 : $1 < 1000 ? $1 : $1-1900);
+		return $tm;
 		}
 	elsif ($str =~ /^(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\S+)/) {
 		# Format like 30 Jun 2005 21:01:01 -0000
@@ -2507,6 +2508,7 @@ my $rv = eval {
 open(STDERR, ">&OLDSTDERR");
 close(OLDSTDERR);
 if ($@) {
+	print STDERR "parsing of $str failed : $@\n";
 	return undef;
 	}
 return $rv;
