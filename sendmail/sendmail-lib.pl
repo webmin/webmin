@@ -611,7 +611,7 @@ foreach my $f (@$qfiles) {
 	else {
 		push(@cols, $n);
 		}
-	push(@cols, "<font size=1>$mail->{'header'}->{'date'}</font>") if ($show{'Date'});
+	push(@cols, "<font size=1>".&simplify_date($mail->{'header'}->{'date'}, "ymd")."</font>") if ($show{'Date'});
 	push(@cols, "<font size=1>$mail->{'header'}->{'from'}</font>") if ($show{'From'});
 	push(@cols, "<font size=1>$mail->{'header'}->{'to'}</font>") if ($show{'To'});
 	push(@cols, "<font size=1>$mail->{'header'}->{'cc'}</font>") if ($show{'Cc'});

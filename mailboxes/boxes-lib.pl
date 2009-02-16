@@ -1310,25 +1310,26 @@ while($lines[++$l]) {
 return $data;
 }
 
-# simplify_date(datestring)
+# simplify_date(datestring, [format])
 # Given a date from an email header, convert to the user's preferred format
 sub simplify_date
 {
-local $u = &parse_mail_date($_[0]);
+local ($date, $fmt) = @_;
+local $u = &parse_mail_date($date);
 if ($u) {
-	local $fmt = $userconfig{'date_fmt'} || $config{'date_fmt'} || "dmy";
+	$fmt ||= $userconfig{'date_fmt'} || $config{'date_fmt'} || "dmy";
 	local $strf = $fmt eq "dmy" ? "%d/%m/%Y" :
 		      $fmt eq "mdy" ? "%m/%d/%Y" :
 				      "%Y/%m/%d";
 	return strftime("$strf %H:%M", localtime($u));
         }
-elsif ($_[0] =~ /^(\S+),\s+0*(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+)/) {
+elsif ($date =~ /^(\S+),\s+0*(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+)/) {
 	return "$2/$3/$4 $5:$6";
 	}
-elsif ($_[0] =~ /^0*(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+)/) {
+elsif ($date =~ /^0*(\d+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+)/) {
 	return "$1/$2/$3 $4:$5";
 	}
-return $_[0];
+return $date;
 }
 
 # simplify_from(from)
@@ -2455,6 +2456,13 @@ my $rv = eval {
 		# Format like Tue Dec  7 12:58:52 2004
 		local $tm = timelocal($6, $5, $4, $3, &month_to_number($2),
 				      $7 < 50 ? $7+100 : $7 < 1000 ? $7 : $7-1900);
+		return $tm;
+		}
+	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)/) {
+		# Format like Tue Dec  7 12:58:52
+		local @now = localtime(time());
+		local $tm = timelocal($6, $5, $4, $3, &month_to_number($2),
+				      $now[5]);
 		return $tm;
 		}
 	elsif ($str =~ /^(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+(\S+)/) {
