@@ -9,6 +9,7 @@ require './boxes-lib.pl';
 $access{'mailq'} || &error($text{'mailq_ecannot'});
 &ui_print_header(undef, $text{'mailq_title'}, "");
 
+# Get queued messages and sort
 @qfiles = &list_queue();
 if ($config{'mailq_sort'} == 0) {
 	@qfiles = sort { $a->{'id'} cmp $b->{'id'} } @qfiles;
@@ -24,6 +25,9 @@ elsif ($config{'mailq_sort'} == 4) {
 	}
 elsif ($config{'mailq_sort'} == 5) {
 	@qfiles = sort { $b->{'size'} <=> $a->{'size'} } @qfiles;
+	}
+elsif ($config{'mailq_sort'} == 6) {
+	@qfiles = sort { $b->{'time'} <=> $a->{'time'} } @qfiles;
 	}
 
 if (@qfiles) {

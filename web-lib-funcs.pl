@@ -1531,18 +1531,26 @@ $main::has_command_cache{$_[0]} = $rv;
 return $rv;
 }
 
-=head2 make_date(seconds, [date-only])
+=head2 make_date(seconds, [date-only], [fmt])
 
 Converts a Unix date/time in seconds to a human-readable form, by default
-formatted like dd/mmm/yyyy hh:mm:ss.
+formatted like dd/mmm/yyyy hh:mm:ss. Parameters are :
+
+=item seconds - Unix time is seconds to convert.
+
+=item date-only - If set to 1, exclude the time from the returned string.
+
+=item fmt - Optional, one of dd/mon/yyyy, dd/mm/yyyy, mm/dd/yyyy or yyyy/mm/dd
 
 =cut
 sub make_date
 {
-local ($secs, $only) = @_;
+local ($secs, $only, $fmt) = @_;
 local @tm = localtime($secs);
 local $date;
-local $fmt = $gconfig{'dateformat'} || 'dd/mon/yyyy';
+if (!$fmt) {
+	$fmt = $gconfig{'dateformat'} || 'dd/mon/yyyy';
+	}
 if ($fmt eq 'dd/mon/yyyy') {
 	$date = sprintf "%2.2d/%s/%4.4d",
 			$tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900;

@@ -1224,15 +1224,13 @@ if (!$rv || $rv->code || !$rv->all_entries) {
 # gives a new number of mapping
 sub init_new_mapping
 {
-$maps = &get_maps($_[0]);
-
+my $maps = &get_maps($_[0]);
 my $max_number = 0;
-
-foreach $trans (@{$maps})
-{
-if ($trans->{'number'} > $max_number) { $max_number = $trans->{'number'}; }
-}
-
+foreach $trans (@{$maps}) {
+	if ($trans->{'number'} > $max_number) {
+		$max_number = $trans->{'number'};
+		}
+	}
 return $max_number+1;
 }
 
@@ -1241,15 +1239,15 @@ sub postfix_mail_file
 {
 local @s = &postfix_mail_system();
 if ($s[0] == 0) {
-return "$s[1]/$_[0]";
-}
+	return "$s[1]/$_[0]";
+	}
 elsif (@_ > 1) {
-return "$_[7]/$s[1]";
-}
+	return "$_[7]/$s[1]";
+	}
 else {
-local @u = getpwnam($_[0]);
-return "$u[7]/$s[1]";
-}
+	local @u = getpwnam($_[0]);
+	return "$u[7]/$s[1]";
+	}
 }
 
 # postfix_mail_system()
@@ -1259,17 +1257,17 @@ return "$u[7]/$s[1]";
 sub postfix_mail_system
 {
 if (!defined(@mail_system_cache)) {
-local $home_mailbox = &get_current_value("home_mailbox");
-if ($home_mailbox) {
-@mail_system_cache = $home_mailbox =~ /^(.*)\/$/ ?
-	(2, $1) : (1, $home_mailbox);
-}
-else {
-local $mail_spool_directory =
-	&get_current_value("mail_spool_directory");
-@mail_system_cache = (0, $mail_spool_directory);
-}
-}
+	local $home_mailbox = &get_current_value("home_mailbox");
+	if ($home_mailbox) {
+		@mail_system_cache = $home_mailbox =~ /^(.*)\/$/ ?
+			(2, $1) : (1, $home_mailbox);
+		}
+	else {
+		local $mail_spool_directory =
+			&get_current_value("mail_spool_directory");
+		@mail_system_cache = (0, $mail_spool_directory);
+		}
+	}
 return wantarray ? @mail_system_cache : $mail_system_cache[0];
 }
 
@@ -1280,20 +1278,26 @@ sub list_queue
 local @qfiles;
 &open_execute_command(MAILQ, $config{'mailq_cmd'}, 1, 1);
 while(<MAILQ>) {
-next if (/^(\S+)\s+is\s+empty/i || /^\s+Total\s+requests:/i);
-if (/^([^\s\*\!]+)[\*\!]?\s*(\d+)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+)\s+(.*)/) {
-push(@qfiles, { 'id' => $1,
-		'size' => $2,
-		'date' => $3,
-		'from' => $4 });
-}
-elsif (/\((.*)\)/ && @qfiles) {
-$qfiles[$#qfiles]->{'status'} = $1;
-}
-elsif (/^\s+(\S+)/ && @qfiles) {
-$qfiles[$#qfiles]->{'to'} .= "$1 ";
-}
-}
+	next if (/^(\S+)\s+is\s+empty/i || /^\s+Total\s+requests:/i);
+	if (/^([^\s\*\!]+)[\*\!]?\s*(\d+)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+)\s+(.*)/) {
+		local $q = { 'id' => $1, 'size' => $2,
+                             'date' => $3, 'from' => $4 };
+		if (defined(&parse_mail_date)) {
+			local $t = &parse_mail_date($q->{'date'});
+			if ($t) {
+				$q->{'date'} = &make_date($t, 0, 'yyyy/mm/dd');
+				$q->{'time'} = $t;
+				}
+			}
+		push(@qfiles, $q);
+		}
+	elsif (/\((.*)\)/ && @qfiles) {
+		$qfiles[$#qfiles]->{'status'} = $1;
+		}
+	elsif (/^\s+(\S+)/ && @qfiles) {
+		$qfiles[$#qfiles]->{'to'} .= "$1 ";
+		}
+	}
 close(MAILQ);
 return @qfiles;
 }
@@ -1303,10 +1307,10 @@ return @qfiles;
 sub parse_queue_file
 {
 local @qfiles = ( &recurse_files("$config{'mailq_dir'}/active"),
-  &recurse_files("$config{'mailq_dir'}/incoming"),
-  &recurse_files("$config{'mailq_dir'}/deferred"),
-  &recurse_files("$config{'mailq_dir'}/corrupt"),
-  &recurse_files("$config{'mailq_dir'}/hold"),
+		  &recurse_files("$config{'mailq_dir'}/incoming"),
+		  &recurse_files("$config{'mailq_dir'}/deferred"),
+		  &recurse_files("$config{'mailq_dir'}/corrupt"),
+		  &recurse_files("$config{'mailq_dir'}/hold"),
 );
 local $f = $_[0];
 local ($file) = grep { $_ =~ /\/$f$/ } @qfiles;
@@ -1315,31 +1319,31 @@ local $mode = 0;
 local ($mail, @headers);
 &open_execute_command(QUEUE, "$config{'postcat_cmd'} ".quotemeta($file), 1, 1);
 while(<QUEUE>) {
-if (/^\*\*\*\s+MESSAGE\s+CONTENTS/ && !$mode) {	   # Start of headers
-$mode = 1;
-}
-elsif (/^\*\*\*\s+HEADER\s+EXTRACTED/ && $mode) {  # End of email
-	last;
+	if (/^\*\*\*\s+MESSAGE\s+CONTENTS/ && !$mode) {	   # Start of headers
+		$mode = 1;
+		}
+	elsif (/^\*\*\*\s+HEADER\s+EXTRACTED/ && $mode) {  # End of email
+		last;
+		}
+	elsif ($mode == 1 && /^\s*$/) {			   # End of headers
+		$mode = 2;
+		}
+	elsif ($mode == 1 && /^(\S+):\s*(.*)/) {	   # Found a header
+		push(@headers, [ $1, $2 ]);
+		}
+	elsif ($mode == 1 && /^(\s+.*)/) {		   # Header continuation
+		$headers[$#headers]->[1] .= $1 unless($#headers < 0);
+		}
+	elsif ($mode == 2) {				   # Part of body
+		$mail->{'size'} += length($_);
+		$mail->{'body'} .= $_;
+		}
 	}
-elsif ($mode == 1 && /^\s*$/) {			   # End of headers
-	$mode = 2;
-	}
-elsif ($mode == 1 && /^(\S+):\s*(.*)/) {	   # Found a header
-	push(@headers, [ $1, $2 ]);
-	}
-elsif ($mode == 1 && /^(\s+.*)/) {		   # Header continuation
-	$headers[$#headers]->[1] .= $1 unless($#headers < 0);
-	}
-elsif ($mode == 2) {				   # Part of body
-	$mail->{'size'} += length($_);
-	$mail->{'body'} .= $_;
-	}
-}
 close(QUEUE);
 $mail->{'headers'} = \@headers;
 foreach $h (@headers) {
-$mail->{'header'}->{lc($h->[0])} = $h->[1];
-}
+	$mail->{'header'}->{lc($h->[0])} = $h->[1];
+	}
 return $mail;
 }
 
