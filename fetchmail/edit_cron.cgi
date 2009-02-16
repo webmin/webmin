@@ -62,13 +62,12 @@ print &ui_table_row($text{'cron_enabled'},
 		    &ui_radio("enabled", $job ? 1 : 0,
 			      [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
-print "<tr> <td colspan=2><table border width=100%>\n";
 $job ||= { 'special' => 'hourly' };
-&cron::show_times_input($job);
-print "</table></td> </tr>\n";
+print &ui_table_row(undef,
+	&capture_function_output(\&cron::show_times_input, $job));
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
