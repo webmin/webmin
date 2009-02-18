@@ -39,113 +39,71 @@ if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
 	}
 
 # Syslog facility
-# XXX
-&scmd();
 $syslog = &find_value("SyslogFacility", $conf);
-print "<td><b>$text{'misc_syslog'}</b></td> <td nowrap>\n";
-printf "<input type=radio name=syslog_def value=1 %s> %s\n",
-	$syslog ? "" : "checked", $text{'default'};
-printf "<input type=radio name=syslog_def value=0 %s>\n",
-	$syslog ? "checked" : "";
-print "<select name=syslog>\n";
-foreach $s (DAEMON, USER, AUTH, LOCAL0,  LOCAL1,  LOCAL2,  LOCAL3,
-            LOCAL4,  LOCAL5,  LOCAL6,  LOCAL7) {
-	printf "<option %s>%s\n",
-		lc($s) eq lc($syslog) ? 'selected' : '', $s;
-	}
-print "</select></td>\n";
-&ecmd();
+print &ui_table_row($text{'misc_syslog'},
+	&ui_radio("syslog_def", $syslog ? 0 : 1,
+		  [ [ 1, $text{'default'} ],
+		    [ 0, &ui_select("syslog", uc($syslog),
+				[ &list_syslog_facilities() ], 1, 0,
+				$syslog ? 1 : 0) ] ]));
 
 if ($version{'type'} eq 'openssh') {
-	&scmd();
+	# Logging level
 	$loglevel = &find_value("LogLevel", $conf);
-	print "<td><b>$text{'misc_loglevel'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=loglevel_def value=1 %s> %s\n",
-		$loglevel ? "" : "checked", $text{'default'};
-	printf "<input type=radio name=loglevel_def value=0 %s>\n",
-		$loglevel ? "checked" : "";
-	print "<select name=loglevel>\n";
-	foreach $s (QUIET, FATAL, ERROR, INFO, VERBOSE, DEBUG) {
-		printf "<option %s>%s\n",
-			lc($s) eq lc($loglevel) ? 'selected' : '', $s;
-		}
-	print "</select></td>\n";
-	&ecmd();
+	print &ui_table_row($text{'misc_loglevel'},
+		&ui_radio("loglevel_def", $loglevel ? 0 : 1,
+			[ [ 1, $text{'default'} ],
+			  [ 0, &ui_select("loglevel", uc($loglevel),
+				[ &list_logging_levels() ], 1, 0,
+				$loglevel ? 1 : 0) ] ]));
 	}
 
 if ($version{'type'} ne 'ssh' || $version{'number'} < 2) {
-	&scmd();
+	# Bits in key
 	$bits = &find_value("ServerKeyBits", $conf);
-	print "<td><b>$text{'misc_bits'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=bits_def value=1 %s> %s\n",
-		$bits ? "" : "checked", $text{'default'};
-	printf "<input type=radio name=bits_def value=0 %s>\n",
-		$bits ? "checked" : "";
-	print "<input name=bits size=4 value='$bits'> $text{'bits'}</td>\n";
-	&ecmd();
+	print &ui_table_row($text{'misc_bits'},
+		&ui_opt_textbox("bits", $bits, 4, $text{'default'})." ".
+		$text{'bits'});
 	}
 
 if ($version{'type'} eq 'ssh') {
-	&scmd();
+	# Quite mode
 	$quiet = &find_value("QuietMode", $conf);
-	print "<td><b>$text{'misc_quiet'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=quiet value=1 %s> %s\n",
-		lc($quiet) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=quiet value=0 %s> %s</td>\n",
-		lc($quiet) eq 'no' ? "checked" : "", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'misc_quiet'},
+		&ui_yesno_radio("quiet", lc($quiet) ne 'no'));
 	}
 
 if ($version{'type'} ne 'ssh' || $version{'number'} < 2) {
-	&scmd();
+	# Interval between key re-generation
 	$regen = &find_value("KeyRegenerationInterval", $conf);
-	print "<td><b>$text{'misc_regen'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=regen_def value=1 %s> %s\n",
-		$regen ? "" : "checked", $text{'misc_regen_def'};
-	printf "<input type=radio name=regen_def value=0 %s>\n",
-		$regen ? "checked" : "";
-	print "<input name=regen size=6 value='$regen'> $text{'secs'}</td>\n";
-	&ecmd();
+	print &ui_table_row($text{'misc_regen'},
+		&ui_opt_textbox("regen", $regen, 6, $text{'misc_regen_def'}).
+		" ".$text{'secs'});
 	}
 
 if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
-	&scmd();
+	# Detailed logging
 	$fascist = &find_value("FascistLogging", $conf);
-	print "<td><b>$text{'misc_fascist'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=fascist value=1 %s> %s\n",
-		lc($fascist) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=fascist value=0 %s> %s</td>\n",
-		lc($fascist) eq 'yes' ? "" : "checked", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'misc_fascist'},
+		&ui_yesno_radio("fascist", lc($fascist) eq 'yes'));
 	}
 
-if ($version{'type'} ne 'ssh' || $version{'number'} < 2) {
-	if ($version{'type'} eq 'ssh' || $version{'number'} >= 2) {
-		&scmd(1);
-		$pid = &find_value("PidFile", $conf);
-		print "<td><b>$text{'misc_pid'}</b></td> <td colspan=3>\n";
-		printf "<input type=radio name=pid_def value=1 %s> %s\n",
-			$pid ? "" : "checked", $text{'default'};
-		printf "<input type=radio name=pid_def value=0 %s>\n",
-			$pid ? "checked" : "";
-		print "<input name=pid size=50 value='$pid'></td>\n";
-		&ecmd();
-		}
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
+	# PID file
+	$pid = &find_value("PidFile", $conf);
+	print &ui_table_row($text{'misc_pid'},
+		&ui_opt_textbox("pid", $pid, 50, $text{'default'}));
 	}
 
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 3.2) {
-	&scmd();
+	# Use separate users
 	$separ = &find_value("UsePrivilegeSeparation", $conf);
-	print "<td><b>$text{'misc_separ'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=separ value=1 %s> %s\n",
-		lc($separ) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=separ value=0 %s> %s</td>\n",
-		lc($separ) eq 'no' ? "checked" : "", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'misc_separ'},
+		&ui_yesno_radio("separ", lc($separ) ne 'no'));
 	}
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

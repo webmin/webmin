@@ -42,7 +42,7 @@ if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
 	}
 
 &save_directive("SyslogFacility", $conf,
-		$in{'syslog_def'} ? undef : $in{'syslog'});
+		$in{'syslog_def'} ? undef : uc($in{'syslog'}));
 
 if ($version{'type'} eq 'openssh') {
 	&save_directive("LogLevel", $conf,
@@ -77,15 +77,13 @@ if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
 	&save_directive("FascistLogging", $conf, $in{'fascist'} ? 'yes' : 'no');
 	}
 
-if ($version{'type'} ne 'ssh' || $version{'number'} < 2) {
-	if ($version{'type'} eq 'ssh' || $version{'number'} >= 2) {
-		if ($in{'pid_def'}) {
-			&save_directive("PidFile", $conf);
-			}
-		else {
-			$in{'pid'} =~ /^\S+$/ || &error($text{'misc_epid'});
-			&save_directive("PidFile", $conf, $in{'pid'});
-			}
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
+	if ($in{'pid_def'}) {
+		&save_directive("PidFile", $conf);
+		}
+	else {
+		$in{'pid'} =~ /^\S+$/ || &error($text{'misc_epid'});
+		&save_directive("PidFile", $conf, $in{'pid'});
 		}
 	}
 

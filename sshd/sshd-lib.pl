@@ -343,6 +343,26 @@ close(ARFILE);
 return @rv;
 }
 
+# list_syslog_facilities()
+# Returns an upper-case list of syslog facility names
+sub list_syslog_facilities
+{
+local @facils;
+if (&foreign_check("syslog")) {
+	local %sconfig = &foreign_config("syslog");
+	@facils = map { uc($_) } split(/\s+/, $sconfig{'facilities'});
+	}
+if (!@facils) {
+	@facils = ( 'DAEMON', 'USER', 'AUTH', 'LOCAL0', 'LOCAL1', 'LOCAL2',
+		    'LOCAL3', 'LOCAL4', 'LOCAL5', 'LOCAL6', 'LOCAL7' );
+	}
+return @facils;
+}
+
+sub list_logging_levels
+{
+return ('QUIET', 'FATAL', 'ERROR', 'INFO', 'VERBOSE', 'DEBUG');
+}
 
 1;
 
