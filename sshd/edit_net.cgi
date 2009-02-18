@@ -6,13 +6,12 @@ require './sshd-lib.pl';
 &ui_print_header(undef, $text{'net_title'}, "", "net");
 $conf = &get_sshd_config();
 
-print "<form action=save_net.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'net_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_net.cgi", "post");
+print &ui_table_start($text{'net_header'}, "width=100%", 2);
 
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 	# Multiple listen addresses supported
+	# XXX
 	&scmd(1);
 	@listens = &find("ListenAddress", $conf);
 	print "<td valign=top><b>$text{'net_listen2'}</b></td>\n";
@@ -43,86 +42,59 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 	}
 else {
 	# Just one listen address
-	&scmd();
 	$listen = &find_value("ListenAddress", $conf);
 	$listen = "" if ($listen eq "0.0.0.0");
-	print "<td><b>$text{'net_listen'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=listen_def value=1 %s> %s\n",
-		$listen ? "" : "checked", $text{'net_listen_def'};
-	printf "<input type=radio name=listen_def value=0 %s>\n",
-		$listen ? "checked" : "";
-	print "<input name=listen size=15 value='$listen'></td>\n";
-	&ecmd();
+	print &ui_table_row($text{'net_listen'},
+		&ui_opt_textbox("listen", $listen, 20,$text{'net_listen_def'}));
 	}
 
-&scmd();
+# Default port(s)
 @ports = &find("Port", $conf);
 $port = join(" ", map { $_->{'values'}->[0] } @ports);
-print "<td><b>$text{'net_port'}</b></td> <td nowrap>\n";
-printf "<input type=radio name=port_def value=1 %s> %s (22)\n",
-	$port ? "" : "checked", $text{'default'};
-printf "<input type=radio name=port_def value=0 %s>\n",
-	$port ? "checked" : "";
-print "<input name=port size=6 value='$port'></td>\n";
-&ecmd();
+print &ui_table_row($text{'net_port'},
+	&ui_opt_textbox("port", $port, 15, $text{'default'}." (22)"));
 
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
-	&scmd();
+	# Protocols
 	$prots = &find_value("Protocol", $conf);
 	@prots = $prots ? split(/,/, $prots) :
 		 $version{'number'} >= 2.9 ? (1, 2) : (1);
-	print "<td><b>$text{'net_prots'}</b></td> <td>\n";
+	$cbs = "";
 	foreach $p (1, 2) {
-		printf "<input type=checkbox name=prots value=%s %s> %s\n",
-			$p, &indexof($p, @prots) >= 0 ? "checked" : "",
-			$text{"net_prots_$p"};
+		$cbs .= &ui_checkbox("prots", $p, &indexof($p, @prots) >= 0,
+				     $text{"net_prots_$p"})." ";
 		}
-	print "</td>\n";
-	&ecmd();
+	print &ui_table_row($text{'net_prots'}, $cbs);
 	}
 
 if ($version{'type'} eq 'ssh' &&
     ($version{'number'} < 2 || $version{'number'} >= 3)) {
-	&scmd();
+	# Idle connection timeout
 	$idle = &find_value("IdleTimeout", $conf);
 	if ($idle =~ /^(\d+)([smhdw])$/i) {
 		$idle = $1; $units = $2;
 		}
-	print "<td><b>$text{'net_idle'}</b></td> <td>\n";
-	printf "<input type=radio name=idle_def value=1 %s> %s\n",
-		$idle ? "" : "checked", $text{'default'};
-	printf "<input type=radio name=idle_def value=0 %s>\n",
-		$idle ? "checked" : "";
-	print "<input name=idle size=6 value='$idle'>\n";
-	print "<select name=idle_units>\n";
-	foreach $u ('s', 'm', 'h', 'd', 'w') {
-		printf "<option value=%s %s>%s\n",
-			$u, $units eq $u ? 'selected' : '',
-			$text{"net_idle_$u"};
-		}
-	print "</select></td>\n";
-	&ecmd();
+	print &ui_table_row($text{'net_idle'},
+		&ui_radio("idle_def", $idle ? 0 : 1,
+		  [ [ 1, $text{'default'} ],
+		    [ 0, &ui_textbox("idle", $idle", 6)." ".
+			 &ui_select("idle_units", $units,
+				[ map { [ $_, $text{"net_idle_".$_} ] }
+				      ('s', 'm', 'h', 'd', 'w') ]) ] ]));
 	}
 
-&scmd();
+# Send keepalive packets?
 $keep = &find_value("KeepAlive", $conf);
-print "<td><b>$text{'net_keep'}</b></td> <td>\n";
-printf "<input type=radio name=keep value=1 %s> %s\n",
-	lc($keep) eq 'no' ? "" : "checked", $text{'yes'};
-printf "<input type=radio name=keep value=0 %s> %s</td>\n",
-	lc($keep) eq 'no' ? "checked" : "", $text{'no'};
-&ecmd();
+print &ui_table_row($text{'net_keep'},
+	&ui_yesno_radio("keep", lc($keep) ne 'no'));
 
-&scmd();
+# Grace time for logins
 $grace = &find_value("LoginGraceTime", $conf);
-print "<td><b>$text{'net_grace'}</b></td> <td>\n";
-printf "<input type=radio name=grace_def value=1 %s> %s\n",
-	$grace ? "" : "checked", $text{'net_grace_def'};
-printf "<input type=radio name=grace_def value=0 %s>\n",
-	$grace ? "checked" : "";
-print "<input name=grace size=6 value='$grace'> $text{'net_grace_s'}</td>\n";
-&ecmd();
+print &ui_table_row($text{'net_grace'},
+	&ui_opt_textbox("grace", $grace, 6, $text{'net_grace_def'})." ".
+	$text{'net_grace_s'});
 
+# XXX
 if ($version{'type'} ne 'openssh' || $version{'number'} >= 2) {
 	&scmd();
 	$tcp = &find_value("AllowTcpForwarding", $conf);
