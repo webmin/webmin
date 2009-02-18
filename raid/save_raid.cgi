@@ -71,6 +71,14 @@ elsif ($in{'add'}) {
 	&webmin_log("add", undef, $old->{'value'}, { 'disk' => $in{'disk'} } );
 	&redirect("");
 	}
+elsif ($in{'grow'}) {
+	# Grow the array
+	&lock_raid_files();
+	&grow($old, $in{'ndisk'});
+	&unlock_raid_files();
+	&webmin_log("grow", undef, $old->{'value'}, { 'disk' => $in{'ndisk'} } );
+	&redirect("");
+	}
 elsif ($in{'remove'}) {
 	# Remove a disk from a RAID set
 	&lock_raid_files();

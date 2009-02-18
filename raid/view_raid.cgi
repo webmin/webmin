@@ -87,7 +87,8 @@ if ($raid->{'rebuild'}) {
 
 # Display partitions in RAID
 $rp = undef;
-foreach $d (&find('device', $raid->{'members'})) {
+@devs = &find('device', $raid->{'members'});
+foreach $d (@devs) {
 	if (&find('raid-disk', $d->{'members'}) ||
             &find('parity-disk', $d->{'members'})) {
 		local $name = &mount::device_name($d->{'value'});
@@ -104,11 +105,17 @@ print &ui_table_row($text{'view_disks'}, $rp);
 
 # Display spare partitions
 $sp = undef;
-foreach $d (&find('device', $raid->{'members'})) {
+$sparescnt = 0;
+$newdisks = @rdisks;
+@spares = ( );
+foreach $d (@devs) {
 	if (&find('spare-disk', $d->{'members'})) {
 		local $name = &mount::device_name($d->{'value'});
 		$sp .= "$name<br>\n";
 		push(@rdisks, [ $d->{'value'}, $name ]);
+		$sparescnt++;
+		$newdisks++;
+		push(@spares, [ "$newdisks", "+ $sparescnt" ]);
 		}
 	}
 if ($sp) {
@@ -138,6 +145,11 @@ if ($raid_mode eq "mdadm") {
 		push(@grid, &ui_submit($text{'view_remove'}, "remove")." ".
 			    &ui_select("rdisk", undef, \@rdisks),
 			    $text{'view_removedesc'});
+		}
+	if ($sparescnt>0) {
+		push(@grid, &ui_submit($text{'view_grow'}, "grow")." ".
+			    &ui_select("ndisk", undef, \@spares),
+			    $text{'view_growdesc'});
 		}
 	}
 

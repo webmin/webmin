@@ -15,3 +15,5 @@ Added a section for configuring RAID problem notification when using MDADM.
 Converted all pages to use the new Webmin UI library, for a more consistent look.
 Added a confirmation page before deleting a RAID array.
 Create /dev/md* device file if missing when creating a RAID set.
+---- Changes since 1.450 ----
+Added a button for changing the number of active devices in a RAID 5 or 6 set, thanks to Diego Zuccato.

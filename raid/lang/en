@@ -84,6 +84,8 @@ view_delete=Delete RAID array
 view_deletedesc=Click this button to totally remove this RAID device. Any data that it contains will almost certainly be lost!
 view_remove=Remove partition:
 view_removedesc=Select a partition that is part of the RAID device and click this button to remove it. This may cause data to be lost!
+view_grow=Grow RAID:
+view_growdesc=Grow array (convert hot spares to active members)
 view_state=RAID status
 view_rebuild=Rebuilding progress
 view_newmount=Mount RAID on:
@@ -107,6 +109,7 @@ eforce=You must force the initialisation of this RAID : $1
 emdadmstop=<tt>mdadm</tt> in <tt>--stop</tt> mode failed : $1
 emdadmcreate=<tt>mdadm</tt> in <tt>--create</tt> mode failed : $1
 emdadmadd=<tt>mdadm</tt> in <tt>--manage --add</tt> mode failed : $1
+emdadmgrow=<tt>mdadm</tt> in <tt>--grow</tt> mode failed : $1
 emdadmremove=<tt>mdadm</tt> in <tt>--manage --remove</tt> mode failed : $1
 emdadmfail=<tt>mdadm</tt> in <tt>--manage --fail</tt> mode failed : $1
 

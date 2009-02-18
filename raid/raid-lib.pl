@@ -382,6 +382,19 @@ if ($raid_mode eq "mdadm") {
 	}
 }
 
+# grow(&raid, totaldisks)
+# Grows a RAID set to contain totaldisks active partitions
+sub grow
+{
+if ($raid_mode eq "mdadm") {
+	# Call mdadm command to add
+	$cmd="mdadm --grow $_[0]->{'value'} -n $_[1] 2>&1";
+	local $out = &backquote_logged(
+		$cmd);
+	&error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);
+	}
+}
+
 # remove_partition(&raid, device)
 # Removes a device from some RAID set, both in the config file and for real
 sub remove_partition
