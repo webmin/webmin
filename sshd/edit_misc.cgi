@@ -26,7 +26,7 @@ if ($version{'type'} ne 'ssh' || $version{'number'} < 2) {
 		# Path to xauth
 		$xauth = &find_value("XAuthLocation", $conf);
 		print &ui_table_row($text{'misc_xauth'},
-			&ui_opt_textbox("xauth", $xauth, 40, $text{'default'}).
+			&ui_opt_textbox("xauth", $xauth, 60, $text{'default'}).
 			" ".&file_chooser_button("xauth"));
 		}
 	}
@@ -92,7 +92,7 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 2) {
 	# PID file
 	$pid = &find_value("PidFile", $conf);
 	print &ui_table_row($text{'misc_pid'},
-		&ui_opt_textbox("pid", $pid, 50, $text{'default'}));
+		&ui_opt_textbox("pid", $pid, 60, $text{'default'}));
 	}
 
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 3.2) {

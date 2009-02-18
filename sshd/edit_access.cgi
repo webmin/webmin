@@ -6,110 +6,69 @@ require './sshd-lib.pl';
 &ui_print_header(undef, $text{'access_title'}, "", "access");
 $conf = &get_sshd_config();
 
-print "<form action=save_access.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'access_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_access.cgi", "post");
+print &ui_table_start($text{'access_header'}, "width=100%", 2);
 
 if ($version{'type'} eq 'ssh') {
-	&scmd(1);
+	# Allowed and denied hosts
 	@allowh = &find_value("AllowHosts", $conf);
-	print "<td><b>$text{'access_allowh'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=allowh_def value=1 %s> %s\n",
-		@allowh ? "" : "checked", $text{'access_all'};
-	printf "<input type=radio name=allowh_def value=0 %s>\n",
-		@allowh ? "checked" : "";
-	printf "<input name=allowh size=50 value='%s'></td>\n",
-		join(" ", @allowh);
-	&ecmd();
+	print &ui_table_row($text{'access_allowh'},
+		&ui_opt_textbox("allowh", join(" ", @allowh), 60,
+				$text{'access_all'}));
 
-	&scmd(1);
 	@denyh = &find_value("DenyHosts", $conf);
-	print "<td><b>$text{'access_denyh'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=denyh_def value=1 %s> %s\n",
-		@denyh ? "" : "checked", $text{'access_none'};
-	printf "<input type=radio name=denyh_def value=0 %s>\n",
-		@denyh ? "checked" : "";
-	printf "<input name=denyh size=50 value='%s'></td>\n",
-		join(" ", @denyh);
-	&ecmd();
+	print &ui_table_row($text{'access_denyh'},
+		&ui_opt_textbox("denyh", join(" ", @denyh), 60,
+				$text{'access_all'}));
 
-	&scmd(1);
-	print "<td colspan=4><hr></td>\n";
-	&ecmd();
+	print &ui_table_hr();
 	}
 
 $commas = $version{'type'} eq 'ssh' && $version{'number'} >= 3.2;
 
-&scmd(1);
+# Allowed users
 @allowu = &find_value("AllowUsers", $conf);
 $allowu = $commas ? join(" ", split(/,/, $allowu[0]))
 		  : join(" ", @allowu);
-print "<td><b>$text{'access_allowu'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=allowu_def value=1 %s> %s\n",
-	$allowu ? "" : "checked", $text{'access_all'};
-printf "<input type=radio name=allowu_def value=0 %s>\n",
-	$allowu ? "checked" : "";
-printf "<input name=allowu size=50 value='%s'> %s</td>\n",
-	$allowu, &user_chooser_button("allowu", 1);
-&ecmd();
+print &ui_table_row($text{'access_allowu'},
+	&ui_opt_textbox("allowu", $allowu, 60, $text{'access_all'})." ".
+	&user_chooser_button("allowu", 1));
 
-&scmd(1);
+# Allowed groups
 @allowg = &find_value("AllowGroups", $conf);
 $allowg = $commas ? join(" ", split(/,/, $allowg[0]))
 		  : join(" ", @allowg);
-print "<td><b>$text{'access_allowg'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=allowg_def value=1 %s> %s\n",
-	$allowg ? "" : "checked", $text{'access_all'};
-printf "<input type=radio name=allowg_def value=0 %s>\n",
-	$allowg ? "checked" : "";
-printf "<input name=allowg size=50 value='%s'> %s</td>\n",
-	$allowg, &group_chooser_button("allowg", 1);
-&ecmd();
+print &ui_table_row($text{'access_allowg'},
+	&ui_opt_textbox("allowg", $allowg, 60, $text{'access_all'})." ".
+	&user_chooser_button("allowg", 1));
 
-&scmd(1);
+# Denied users
 @denyu = &find_value("DenyUsers", $conf);
 $denyu = $commas ? join(" ", split(/,/, $denyu[0]))
 		 : join(" ", @denyu);
-print "<td><b>$text{'access_denyu'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=denyu_def value=1 %s> %s\n",
-	$denyu ? "" : "checked", $text{'access_none'};
-printf "<input type=radio name=denyu_def value=0 %s>\n",
-	$denyu ? "checked" : "";
-printf "<input name=denyu size=50 value='%s'> %s</td>\n",
-	$denyu, &user_chooser_button("denyu", 1);
-&ecmd();
+print &ui_table_row($text{'access_denyu'},
+	&ui_opt_textbox("denyu", $denyu, 60, $text{'access_all'})." ".
+	&user_chooser_button("denyu", 1));
 
-&scmd(1);
+# Denied groups
 @denyg = &find_value("DenyGroups", $conf);
 $denyg = $commas ? join(" ", split(/,/, $denyg[0]))
 		 : join(" ", @denyg);
-print "<td><b>$text{'access_denyg'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=denyg_def value=1 %s> %s\n",
-	$denyg ? "" : "checked", $text{'access_none'};
-printf "<input type=radio name=denyg_def value=0 %s>\n",
-	$denyg ? "checked" : "";
-printf "<input name=denyg size=50 value='%s'> %s</td>\n",
-	$denyg, &group_chooser_button("denyg", 1);
-&ecmd();
+print &ui_table_row($text{'access_denyg'},
+	&ui_opt_textbox("denyg", $denyg, 60, $text{'access_all'})." ".
+	&user_chooser_button("denyg", 1));
 
 if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
-	&scmd(1);
-	print "<td colspan=4><hr></td>\n";
-	&ecmd();
+	print &ui_table_hr();
 
-	&scmd();
+	# Silently deny users
 	$silent = &find_value("SilentDeny", $conf);
-	print "<td><b>$text{'access_silent'}</b></td> <td>\n";
-	printf "<input type=radio name=silent value=1 %s> %s\n",
-		lc($silent) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=silent value=0 %s> %s</td>\n",
-		lc($silent) eq 'yes' ? "" : "checked", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'access_silent'},
+		&ui_yesno_radio("silent", lc($silent) eq 'yes'));
 	}
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
