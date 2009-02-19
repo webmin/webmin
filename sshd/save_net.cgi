@@ -18,7 +18,7 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 			next if (!$a);
 			&check_ipaddress($a) || gethostbyname($a) ||
 				&error(&text('net_eladdress', $a));
-			if ($in{"port_def_$i"}) {
+			if ($in{"port_${i}_def"}) {
 				push(@listens, $a);
 				}
 			else {

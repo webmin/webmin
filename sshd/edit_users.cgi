@@ -6,167 +6,98 @@ require './sshd-lib.pl';
 &ui_print_header(undef, $text{'users_title'}, "", "users");
 $conf = &get_sshd_config();
 
-print "<form action=save_users.cgi>\n";
-print "<table border width=100%>\n";
-print "<tr $tb> <td><b>$text{'users_header'}</b></td> </tr>\n";
-print "<tr $cb> <td><table width=100%>\n";
+print &ui_form_start("save_users.cgi", "post");
+print &ui_table_start($text{'users_header'}, "width=100%", 2);
 
 if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
-	&scmd();
+	# Days before account expires to warn
 	$expire = &find_value("AccountExpireWarningDays", $conf);
-	print "<td><b>$text{'users_expire'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=expire_def value=1 %s> %s\n",
-		$expire ? "" : "checked", $text{'users_expire_def'};
-	printf "<input type=radio name=expire_def value=0 %s>\n",
-		$expire ? "checked" : "";
-	print "<input name=expire size=3 value='$expire'></td>\n";
-	&ecmd();
+	print &ui_table_row($text{'users_expire'},
+		&ui_opt_textbox("expire", $expire, 5,
+				$text{'users_expire_def'}));
 	}
 
+# Notify users of new email
 $mail = &find_value("CheckMail", $conf);
 if ($version{'type'} eq 'ssh') {
-	&scmd();
-	print "<td><b>$text{'users_mail'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=mail value=1 %s> %s\n",
-		lc($mail) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=mail value=0 %s> %s</td>\n",
-		lc($mail) eq 'no' ? "checked" : "", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'users_mail'},
+		&ui_yesno_radio("mail", lc($mail) ne 'no'));
 	}
 elsif ($version{'number'} < 3.1) {
-	&scmd();
-	print "<td><b>$text{'users_mail'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=mail value=1 %s> %s\n",
-		lc($mail) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=mail value=0 %s> %s</td>\n",
-		lc($mail) eq 'yes' ? "" : "checked", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'users_mail'},
+		&ui_yesno_radio("mail", lc($mail) eq 'yes'));
 	}
 
-# XXX are these supported?
-#$empty = &find_value("ForcedEmptyPasswdChange", $conf);
-#print "<tr> <td><b>$text{'users_empty'}</b></td> <td>\n";
-#printf "<input type=radio name=empty value=1 %s> %s\n",
-#	lc($empty) eq 'yes' ? "checked" : "", $text{'yes'};
-#printf "<input type=radio name=empty value=0 %s> %s</td>\n",
-#	lc($empty) eq 'yes' ? "" : "checked", $text{'no'};
-
-#$passwd = &find_value("ForcedPasswdChange", $conf);
-#print "<td><b>$text{'users_passwd'}</b></td> <td>\n";
-#printf "<input type=radio name=passwd value=1 %s> %s\n",
-#	lc($passwd) eq 'no' ? "" : "checked", $text{'yes'};
-#printf "<input type=radio name=passwd value=0 %s> %s</td> </tr>\n",
-#	lc($passwd) eq 'no' ? "checked" : "", $text{'no'};
-
 if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
-	&scmd();
+	# Days before password expires to warn
 	$pexpire = &find_value("PasswordExpireWarningDays", $conf);
-	print "<td><b>$text{'users_pexpire'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=pexpire_def value=1 %s> %s\n",
-		$pexpire ? "" : "checked", $text{'users_pexpire_def'};
-	printf "<input type=radio name=pexpire_def value=0 %s>\n",
-		$pexpire ? "checked" : "";
-	print "<input name=pexpire size=3 value='$pexpire'></td>\n";
-	&ecmd();
+	print &ui_table_row($text{'users_pexpire'},
+		&ui_opt_textbox("pexpire", $pexpire, 5,
+				$text{'users_pexpire_def'}));
 	}
 
 if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
-	&scmd();
+	# Allow password authentication?
 	$auth = &find_value("PasswordAuthentication", $conf);
-	print "<td><b>$text{'users_auth'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=auth value=1 %s> %s\n",
-		lc($auth) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=auth value=0 %s> %s</td>\n",
-		lc($auth) eq 'no' ? "checked" : "", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'users_auth'},
+		&ui_yesno_radio("auth", lc($auth) ne 'no'));
 	}
 
-&scmd();
+# Allow empty passwords?
 $pempty = &find_value("PermitEmptyPasswords", $conf);
-print "<td><b>$text{'users_pempty'}</b></td> <td nowrap>\n";
 if ($version{'type'} eq 'ssh') {
-	printf "<input type=radio name=pempty value=1 %s> %s\n",
-		lc($pempty) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=pempty value=0 %s> %s</td>\n",
-		lc($pempty) eq 'no' ? "checked" : "", $text{'no'};
+	print &ui_table_row($text{'users_pempty'},
+		&ui_yesno_radio("pempty", lc($pempty) ne 'no'));
 	}
 else {
-	printf "<input type=radio name=pempty value=1 %s> %s\n",
-		lc($pempty) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=pempty value=0 %s> %s</td>\n",
-		lc($pempty) eq 'yes' ? "" : "checked", $text{'no'};
+	print &ui_table_row($text{'users_pempty'},
+		&ui_yesno_radio("pempty", lc($pempty) eq 'yes'));
 	}
-&ecmd();
 
-&scmd();
+# Allow logins by root
 $root = &find_value("PermitRootLogin", $conf);
 if (!$root) {
 	# Default ways seems to be 'yes'
 	$root = "yes";
 	}
-print "<td><b>$text{'users_root'}</b></td> <td nowrap><select name=root>\n";
-printf "<option value=yes %s> %s\n",
-	lc($root) eq 'yes' || !$root ? "selected" : "", $text{'yes'};
-printf "<option value=no %s> %s\n",
-	lc($root) eq 'no' ? "selected" : "", $text{'no'};
+@opts = ( [ 'yes', $text{'yes'} ],
+	  [ 'no', $text{'no'} ] );
 if ($version{'type'} eq 'ssh') {
-	printf "<option value=nopwd %s> %s\n",
-		lc($root) eq 'nopwd' ? "selected" : "", $text{'users_nopwd'};
+	push(@opts, [ 'nopwd', $text{'users_nopwd'} ]);
 	}
 else {
-	printf "<option value=without-password %s> %s\n",
-		lc($root) eq 'without-password' ? "selected" : "",
-		$text{'users_nopwd'};
+	push(@opts, [ 'without-password', $text{'users_nopwd'} ]);
 	if ($version{'number'} >= 2) {
-		printf "<option value=forced-commands-only %s> %s\n",
-			lc($root) eq 'forced-commands-only' ? "selected" : "",
-			$text{'users_fcmd'};
+		push(@opts, [ 'forced-commands-only', $text{'users_fcmd'} ]);
 		}
 	}
 print "</select></td>\n";
-&ecmd();
+print &ui_table_row($text{'users_root'},
+	&ui_select("root", lc($root), \@opts));
 
 # SSH 1 RSA authentication
 if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
-	&scmd();
 	$rsa = &find_value("RSAAuthentication", $conf);
-	print "<td><b>$text{'users_rsa'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=rsa value=1 %s> %s\n",
-		lc($rsa) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=rsa value=0 %s> %s</td>\n",
-		lc($rsa) eq 'no' ? "checked" : "", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'users_rsa'},
+		&ui_yesno_radio('rsa', lc($rsa) ne 'no'));
 	}
 
 # SSH 2 DSA authentication
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
-	&scmd();
 	$rsa = &find_value("PubkeyAuthentication", $conf);
-	print "<td><b>$text{'users_dsa'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=dsa value=1 %s> %s\n",
-		lc($rsa) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=dsa value=0 %s> %s</td>\n",
-		lc($rsa) eq 'no' ? "checked" : "", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'users_dsa'},
+		&ui_yesno_radio('dsa', lc($dsa) ne 'no'));
 	}
 
-&scmd();
+# Strictly check permissions
 $strict = &find_value("StrictModes", $conf);
-print "<td><b>$text{'users_strict'}</b></td> <td nowrap>\n";
-printf "<input type=radio name=strict value=1 %s> %s\n",
-	lc($strict) eq 'no' ? "" : "checked", $text{'yes'};
-printf "<input type=radio name=strict value=0 %s> %s</td>\n",
-	lc($strict) eq 'no' ? "checked" : "", $text{'no'};
-&ecmd();
+print &ui_table_row($text{'users_strict'},
+	&ui_yesno_radio('strict', lc($strict) ne 'no'));
 
-&scmd();
+# Show message of the day
 $motd = &find_value("PrintMotd", $conf);
-print "<td><b>$text{'users_motd'}</b></td> <td nowrap>\n";
-printf "<input type=radio name=motd value=1 %s> %s\n",
-	lc($motd) eq 'no' ? "" : "checked", $text{'yes'};
-printf "<input type=radio name=motd value=0 %s> %s</td>\n",
-	lc($motd) eq 'no' ? "checked" : "", $text{'no'};
-&ecmd();
+print &ui_table_row($text{'users_motd'},
+	&ui_yesno_radio('motd', lc($motd) ne 'no'));
 
 if ($version{'type'} eq 'openssh') {
 	&scmd();
