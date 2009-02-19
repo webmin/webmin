@@ -17,8 +17,8 @@ print FILE "[General]\n";
 print FILE "Pipefs-Directory = $in{'pipefsdir'}\n";
 print FILE "Domain = $in{'domain'}\n";
 print FILE "\n[Mapping]\n";
-print FILE "Nobody_User = $in{'nobody_user'}\n";
-print FILE "Nobody_Group = $in{'nobody_group'}\n";
+print FILE "Nobody-User = $in{'nobody_user'}\n";
+print FILE "Nobody-Group = $in{'nobody_group'}\n";
 close(FILE);
 &unlock_file($config{'idmapd_conf'});
 
