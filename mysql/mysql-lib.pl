@@ -150,6 +150,7 @@ sub list_databases
 open(DBS, "\"$config{'mysqlshow'}\" $authstr |");
 local $t = &parse_mysql_table(DBS);
 close(DBS);
+ref($t) && &error("Failed to list databases : $t");
 return map { $_->[0] } @{$t->{'data'}};
 }
 
