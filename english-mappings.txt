@@ -1,14 +1,24 @@
 # US		UK
-color		colour
-colors		colours
-colored		coloured
-coloring	colouring
-license		licence
-licenses	licences
-licensed	licenced
-licensing	licencing
-gray		grey
-grays		greys
+analyse		analyze
+analysing	analyzing
+cancelled	canceled
+cancelling	canceling
 center		centre
 centered	centred
 centers		centres
+color		colour
+colored		coloured
+coloring	colouring
+colors		colours
+favorite	favourite
+gray		grey
+grays		greys
+labelled	labeled
+labelling	labeling
+licensed	licenced
+license		licence
+licenses	licences
+licensing	licencing
+signalled	signaled
+standardise	standardize
+
