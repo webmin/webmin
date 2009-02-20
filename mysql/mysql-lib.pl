@@ -147,11 +147,21 @@ return wantarray ? ($rv, $out) : $rv;
 # Returns a list of all databases
 sub list_databases
 {
-open(DBS, "\"$config{'mysqlshow'}\" $authstr |");
-local $t = &parse_mysql_table(DBS);
-close(DBS);
-ref($t) && &error("Failed to list databases : $t");
-return map { $_->[0] } @{$t->{'data'}};
+local @rv;
+eval {
+	# First try using SQL
+	local $t = &execute_sql_safe($master_db, "show databases");
+	@rv = map { $_->[0] } @{$t->{'data'}};
+	};
+if (!@rv || $@) {
+	# Fall back to mysqlshow command
+	open(DBS, "\"$config{'mysqlshow'}\" $authstr |");
+	local $t = &parse_mysql_table(DBS);
+	close(DBS);
+	ref($t) && &error("Failed to list databases : $t");
+	@rv = map { $_->[0] } @{$t->{'data'}};
+	}
+return @rv;
 }
 
 # list_tables(database, [empty-if-denied], [no-filter-views])
@@ -159,6 +169,7 @@ return map { $_->[0] } @{$t->{'data'}};
 sub list_tables
 {
 local ($db, $empty_denied, $include_views) = @_;
+# XXX use SQL first
 if ($db =~ /_/) {
 	open(DBS, "\"$config{'mysqlshow'}\" $authstr ".quotemeta($db)." % 2>&1 |");
 	}
