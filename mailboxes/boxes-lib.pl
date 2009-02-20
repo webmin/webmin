@@ -2578,4 +2578,18 @@ sub notes_decode
 # Deprecated - does nothing
 }
 
+# add_mailer_ip_headers(&headers)
+# Add X-Mailer and X-Originating-IP headers, if enabled
+sub add_mailer_ip_headers
+{
+local ($headers) = @_;
+if (!$config{'no_orig_ip'}) {
+	push(@$headers, [ 'X-Originating-IP', $ENV{'REMOTE_ADDR'} ]);
+	}
+if (!$config{'no_mailer'}) {
+	push(@$headers, [ 'X-Mailer', ucfirst(&get_product_name())." ".
+				      &get_webmin_version() ]);
+	}
+}
+
 1;
