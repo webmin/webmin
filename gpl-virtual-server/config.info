@@ -66,6 +66,9 @@ line4=Actions upon server and user creation,11
 from_addr=From: address for email sent by Virtualmin,3,Default
 pre_command=Command to run before making changes to a server,0
 post_command=Command to run after making changes to a server,0
+move_command=Command to run to move a domain's home directory,3,Just use <tt>mv</tt>
+alias_pre_command=Command to run before making changes to an alias,0
+alias_post_command=Command to run after making changes to an alias,0
 other_users=Notify other modules when updating server administrator Unix users?,1,1-Yes,0-No
 other_doms=Notify other modules when updating mailbox Unix users?,1,1-Yes,0-No
 

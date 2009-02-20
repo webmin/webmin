@@ -545,3 +545,7 @@ The default TTL for DNS domains (set using the $ttl line in the zone file) can n
 Added commands to be run before and after scheduled backups, settable on the Edit Scheduled Backup page.
 Added a Module Config field under Advanced options for specifying the path to an alternate tar command.
 Extracted all settings related to default quotas and limits from templates, and moved them into the new Account Plan objects. These can be created by both the master admin and resellers, and selected for new or existing virtual servers. Also added a command-line API for plan management.
+---- Changes since 3.66 ----
+The bandwidth limit and using variables in all email templates (BW_LIMIT and BW_USAGE) are now formatted in MB or GB, instead of just being a number of bytes.
+Added a Module Config option for an alternate command to use when moving a virtual server's home directory, instead of mv.
+Added Module Config options for commands to be run before and after creating, deleting or modifying an email alias.
