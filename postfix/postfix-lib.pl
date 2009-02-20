@@ -2109,7 +2109,6 @@ return ( "permit_mynetworks",
 	 $postfix_version < 2.3 ? "reject_unknown_client"
 				: "reject_unknown_reverse_client_hostname",
 	 "permit_tls_all_clientcerts",
-	 "reject_unauth_pipelining",
 	);
 }
 
