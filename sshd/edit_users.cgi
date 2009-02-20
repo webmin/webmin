@@ -100,118 +100,82 @@ print &ui_table_row($text{'users_motd'},
 	&ui_yesno_radio('motd', lc($motd) ne 'no'));
 
 if ($version{'type'} eq 'openssh') {
-	&scmd();
+	# Ignore known_hosts files
 	$known = &find_value("IgnoreUserKnownHosts", $conf);
-	print "<td><b>$text{'users_known'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=known value=1 %s> %s\n",
-		lc($known) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=known value=0 %s> %s</td>\n",
-		lc($known) eq 'yes' ? "" : "checked", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'users_known'},
+		&ui_yesno_radio("known", lc($known) eq 'yes'));
 
 	if ($version{'number'} > 2.3) {
-		&scmd(1);
+		# Show login banner from file
 		$banner = &find_value("Banner", $conf);
-		print "<td><b>$text{'users_banner'}</b></td> <td colspan=3>\n";
-		printf "<input type=radio name=banner_def value=1 %s> %s\n",
-			$banner ? "" : "checked", $text{'users_banner_def'};
-		printf "<input type=radio name=banner_def value=0 %s>\n",
-			$banner ? "checked" : "";
-		print "<input name=banner size=40 value='$banner'>\n",
-		      &file_chooser_button("banner"),"</td>\n";
-		&ecmd();
+		print &ui_table_row($text{'users_banner'},
+			&ui_opt_textbox("banner", $banner, 50,
+					$text{'users_banner_def'})." ".
+			&file_chooser_button("banner"));
 		}
 	}
 elsif ($version{'type'} eq 'ssh' && $version{'number'} >= 2) {
-	&scmd(1);
+	# Show login banner from file
 	$banner = &find_value("BannerMessageFile", $conf);
-	print "<td><b>$text{'users_banner'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=banner_def value=1 %s> %s\n",
-		$banner ? "" : "checked", $text{'users_banner_def'};
-	printf "<input type=radio name=banner_def value=0 %s>\n",
-		$banner ? "checked" : "";
-	print "<input name=banner size=40 value='$banner'>\n",
-	      &file_chooser_button("banner"),"</td>\n";
-	&ecmd();
+	print &ui_table_row($text{'users_banner'},
+		&ui_opt_textbox("banner", $banner, 50,
+				$text{'users_banner_def'})." ".
+		&file_chooser_button("banner"));
 	}
 
 if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
-	&scmd(1);
+	# Authorized keys file (under home)
 	$authkeys = &find_value("AuthorizedKeysFile", $conf);
-	print "<td><b>$text{'users_authkeys'}</b></td> <td colspan=3>\n";
-	printf "<input type=radio name=authkeys_def value=1 %s> %s\n",
-		$authkeys ? "" : "checked", $text{'users_authkeys_def'};
-	printf "<input type=radio name=authkeys_def value=0 %s>\n",
-		$authkeys ? "checked" : "";
-	print "<input name=authkeys size=40 value='$authkeys'></td>\n";
-	&ecmd();
+	print &ui_table_row($text{'users_authkeys'},
+		&ui_opt_textbox("authkeys", $authkeys, 20,
+				$text{'users_authkeys_def'},
+				$text{'users_authkeys_set'}));
 	}
 
-&scmd(1);
-print "<td colspan=4><hr></td>\n";
-&ecmd();
+print &ui_table_hr();
 
 if ($version{'type'} eq 'openssh' && $version{'number'} < 3.7 ||
     $version{'type'} eq 'ssh' && $version{'number'} < 2) {
-	&scmd();
+	# Allow rhosts file authentication?
 	$rhostsauth = &find_value("RhostsAuthentication", $conf);
-	print "<td><b>$text{'users_rhostsauth'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=rhostsauth value=1 %s> %s\n",
-		lc($rhostsauth) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=rhostsauth value=0 %s> %s</td>\n",
-		lc($rhostsauth) eq 'yes' ? "" : "checked", $text{'no'};
-	&ecmd();
+	print &ui_table_row($text{'users_rhostsauth'},
+		&ui_yesno_radio("rhostsauth", lc($rhostsauth) eq 'yes'));
 
-	&scmd();
+	# Allow RSA rhosts file authentication?
 	$rhostsrsa = &find_value("RhostsRSAAuthentication", $conf);
-	print "<td><b>$text{'users_rhostsrsa'}</b></td> <td nowrap>\n";
 	if ($version{'type'} eq 'ssh') {
-		printf "<input type=radio name=rhostsrsa value=1 %s> %s\n",
-			lc($rhostsrsa) eq 'no' ? "" : "checked", $text{'yes'};
-		printf "<input type=radio name=rhostsrsa value=0 %s> %s</td>\n",
-			lc($rhostsrsa) eq 'no' ? "checked" : "", $text{'no'};
+		print &ui_table_row($text{'users_rhostsrsa'},
+			&ui_yesno_radio("rhostsrsa", lc($rhostsrsa) ne 'no'));
 		}
 	else {
-		printf "<input type=radio name=rhostsrsa value=1 %s> %s\n",
-			lc($rhostsrsa) eq 'yes' ? "checked" : "", $text{'yes'};
-		printf "<input type=radio name=rhostsrsa value=0 %s> %s</td>\n",
-			lc($rhostsrsa) eq 'yes' ? "" : "checked", $text{'no'};
+		print &ui_table_row($text{'users_rhostsrsa'},
+			&ui_yesno_radio("rhostsrsa", lc($rhostsrsa) eq 'yes'));
 		}
-	&ecmd();
 	}
 
-&scmd();
+# Ignore rhosts files?
 $rhosts = &find_value("IgnoreRhosts", $conf);
-print "<td><b>$text{'users_rhosts'}</b></td> <td nowrap>\n";
 if ($version{'type'} eq 'ssh') {
-	printf "<input type=radio name=rhosts value=1 %s> %s\n",
-		lc($rhosts) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=rhosts value=0 %s> %s</td>\n",
-		lc($rhosts) eq 'yes' ? "" : "checked", $text{'no'};
+	print &ui_table_row($text{'users_rhosts'},
+		&ui_yesno_radio("rhosts", lc($rhosts) eq 'yes'));
 	}
 else {
-	printf "<input type=radio name=rhosts value=1 %s> %s\n",
-		lc($rhosts) eq 'no' ? "" : "checked", $text{'yes'};
-	printf "<input type=radio name=rhosts value=0 %s> %s</td>\n",
-		lc($rhosts) eq 'no' ? "checked" : "", $text{'no'};
+	print &ui_table_row($text{'users_rhosts'},
+		&ui_yesno_radio("rhosts", lc($rhosts) ne 'no'));
 	}
-&ecmd();
 
+# Ignore root's rhosts file?
 if ($version{'type'} eq 'ssh') {
-	&scmd(1);
 	$rrhosts = &find_value("IgnoreRootRhosts", $conf);
-	print "<td><b>$text{'users_rrhosts'}</b></td> <td nowrap>\n";
-	printf "<input type=radio name=rrhosts value=1 %s> %s\n",
-		lc($rrhosts) eq 'yes' ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=rrhosts value=0 %s> %s\n",
-		lc($rrhosts) eq 'no' ? "checked" : "", $text{'no'};
-	printf "<input type=radio name=rrhosts value=-1 %s> %s</td>\n",
-		$rrhosts ? "" : "checked", $text{'users_rrdef'};
-	&ecmd();
+	print &ui_table_row($text{'users_rrhosts'},
+		&ui_radio("rrhosts", lc($rrhosts) eq 'yes' ? 1 :
+				     lc($rrhosts) eq 'no' ? 0 : -1,
+			  [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ],
+			    [ -1, $text{'users_rrdef'} ] ]));
 	}
 
-print "</table></td></tr></table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -51,6 +51,7 @@ users_eexpire=Missing or invalid expiry warning days
 users_ebanner=Missing or invalid pre-login message file
 users_authkeys=User authorized keys file
 users_authkeys_def=Default (~/.ssh/authorized_keys)
+users_authkeys_set=File under home
 
 net_title=Networking
 net_header=Networking options
