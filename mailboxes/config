@@ -48,3 +48,5 @@ arrows=1
 open_mode=0
 show_unread=0
 maildir_deleted=0
+no_orig_ip=0
+no_mailer=0

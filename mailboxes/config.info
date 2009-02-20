@@ -50,6 +50,8 @@ from_addr=From: address to use when sending email manually,3,From mailbox userna
 webmin_from=From: address to use when Webmin sends email,3,Default (webmin@<i>yourhost</i>)
 from_virtualmin=Get From: address from Virtualmin?,1,1-Yes,0-No
 from_dom=Domain to use in From: address,3,System hostname
+no_orig_ip=Include browser IP in X-Originating-IP header?,1,0-Yes,1-No
+no_mailer=Include Webmin version in X-Mailer header?,1,0-Yes,1-No
 
 line1=System configuration,11
 mail_system=Mail server installed,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Detect automatically

@@ -52,9 +52,15 @@ $mail->{'headers'} = [ [ 'From', $in{'from'} ],
 		       [ 'To', &encode_mimewords($in{'to'}) ],
 		       [ 'Cc', &encode_mimewords($in{'cc'}) ],
 		       [ 'Bcc', &encode_mimewords($in{'bcc'}) ],
-		       [ 'X-Originating-IP', $ENV{'REMOTE_ADDR'} ],
-		       [ 'X-Mailer', "Webmin ".&get_webmin_version() ],
 		       [ 'Message-Id', $newmid ] ];
+if (!$config{'no_orig_ip'}) {
+	push(@{$mail->{'headers'}},
+	     [ 'X-Originating-IP', $ENV{'REMOTE_ADDR'} ]);
+	}
+if (!$config{'no_mailer'}) {
+	push(@{$mail->{'headers'}},
+	     [ 'X-Mailer', "Webmin ".&get_webmin_version() ]);
+	}
 push(@{$mail->{'headers'}}, [ 'X-Priority', $in{'pri'} ]) if ($in{'pri'});
 $in{'body'} =~ s/\r//g;
 if ($in{'body'} =~ /\S/) {
