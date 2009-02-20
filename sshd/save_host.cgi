@@ -126,14 +126,7 @@ else {
 		&save_directive("CheckHostIP", $conf,
 		  $in{'checkip'} == 2 ? undef : $in{'checkip'} ? 'yes' : 'no');
 
-		if ($in{'prots_def'}) {
-			&save_directive("Protocol", $conf);
-			}
-		else {
-			@prots = split(/\0/, $in{'prots'});
-			@prots || &error($text{'host_prots'});
-			&save_directive("Protocol", $conf, join(",", @prots));
-			}
+		&save_directive("Protocol", $conf, $in{'prots'} || undef);
 		}
 
 	for($i=0; defined($in{"llport_$i"}); $i++) {
