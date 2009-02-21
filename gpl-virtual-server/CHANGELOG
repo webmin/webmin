@@ -549,3 +549,4 @@ Extracted all settings related to default quotas and limits from templates, and 
 The bandwidth limit and using variables in all email templates (BW_LIMIT and BW_USAGE) are now formatted in MB or GB, instead of just being a number of bytes.
 Added a Module Config option for an alternate command to use when moving a virtual server's home directory, instead of mv.
 Added Module Config options for commands to be run before and after creating, deleting or modifying an email alias.
+Mail files are now always included in backups and restores, even when under /var/mail.
