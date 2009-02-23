@@ -2,7 +2,7 @@
 # edit_host.cgi
 # Display options for a new or existing host config
 
-require './sshd-lib.pl';
+require (-r 'sshd-lib.pl' ? './sshd-lib.pl' : './ssh-lib.pl');
 &ReadParse();
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'host_create'}, "", "chost");
@@ -12,6 +12,16 @@ else {
 	$hconf = &get_client_config();
 	$host = $hconf->[$in{'idx'}];
 	$conf = $host->{'members'};
+	}
+
+# Get version and type
+if (&get_product_name() eq 'usermin') {
+	$version_type = &get_ssh_type();
+	$version_number = &get_ssh_version();
+	}
+else {
+	$version_type = $version{'type'};
+	$version_number = $version{'number'};
 	}
 
 print &ui_form_start("save_host.cgi", "post");
@@ -65,7 +75,7 @@ print &ui_table_row($text{'host_escape'},
 		    [ 0, &ui_textbox("escape",
 				$escape eq "none" ? "" : $escape, 4) ] ]));
 
-if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
+if ($version_type ne 'ssh' || $version_number < 3) {
 	# SSH compression level
 	$clevel = &find_value("CompressionLevel", $conf);
 	print &ui_table_row($text{'host_clevel'},
@@ -115,7 +125,7 @@ print &ui_table_row($text{'host_strict'},
 		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ],
 		    [ 3, $text{'host_ask'} ], [ 2, $text{'default'} ] ]));
 
-if ($version{'type'} eq 'openssh') {
+if ($version_type eq 'openssh') {
 	# Double-check remote host IP?
 	$checkip = &find_value("CheckHostIP", $conf);
 	print &ui_table_row($text{'host_checkip'},
@@ -149,7 +159,7 @@ foreach $l (@lforward, { }) {
 print &ui_table_row($text{'host_lforward'},
 	&ui_columns_table([ $text{'host_llport'}, $text{'host_lrhost'},
 			    $text{'host_lrport'} ],
-			  100, \@ltable));
+			  50, \@ltable));
 
 print &ui_table_hr();
 
@@ -168,7 +178,7 @@ foreach $r (@rforward, { }) {
 print &ui_table_row($text{'host_rforward'},
         &ui_columns_table([ $text{'host_rrport'}, $text{'host_rlhost'},
                             $text{'host_rlport'} ],
-                          100, \@rtable));
+                          50, \@rtable));
 
 print &ui_table_end();
 if ($in{'new'}) {

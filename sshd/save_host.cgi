@@ -2,11 +2,21 @@
 # save_host.cgi
 # Create, update or delete a client host
 
-require './sshd-lib.pl';
+require (-r 'sshd-lib.pl' ? './sshd-lib.pl' : './ssh-lib.pl');
 &ReadParse();
 &lock_file($config{'client_config'});
 $hconf = &get_client_config();
 &error_setup($text{'host_err'});
+
+# Get version and type
+if (&get_product_name() eq 'usermin') {
+	$version_type = &get_ssh_type();
+	$version_number = &get_ssh_version();
+	}
+else {
+	$version_type = $version{'type'};
+	$version_number = $version{'number'};
+	}
 
 if ($in{'delete'}) {
 	# Just delete the host
@@ -65,7 +75,7 @@ else {
 		&save_directive("Port", $conf, $in{'port'});
 		}
 
-	if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
+	if ($version_type ne 'ssh' || $version_number < 3) {
 		&save_directive("Compression", $conf,
 			$in{'comp'} == 2 ? undef : $in{'comp'} ? 'yes' : 'no');
 		}
@@ -83,7 +93,7 @@ else {
 		}
 
 	
-	if ($version{'type'} ne 'ssh' || $version{'number'} < 3) {
+	if ($version_type ne 'ssh' || $version_number < 3) {
 		if ($in{'clevel_def'}) {
 			&save_directive("CompressionLevel", $conf);
 			}
@@ -122,7 +132,7 @@ else {
 		$in{'strict'} == 2 ? undef : $in{'strict'} == 1 ? 'yes' :
 		$in{'strict'} == 0 ? 'no' : 'ask');
 
-	if ($version{'type'} eq 'openssh') {
+	if ($version_type eq 'openssh') {
 		&save_directive("CheckHostIP", $conf,
 		  $in{'checkip'} == 2 ? undef : $in{'checkip'} ? 'yes' : 'no');
 
@@ -154,7 +164,9 @@ else {
 
 &flush_file_lines();
 &unlock_file($config{'client_config'});
-&webmin_log($in{'new'} ? "create" : $in{'delete'} ? "delete" : "update",
-	    "host", $host->{'values'}->[0]);
+if (&get_product_name() ne 'usermin') {
+	&webmin_log($in{'new'} ? "create" : $in{'delete'} ? "delete" : "update",
+		    "host", $host->{'values'}->[0]);
+	}
 &redirect("list_hosts.cgi");
 
