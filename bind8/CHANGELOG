@@ -98,3 +98,5 @@ Added the DNSSEC Verification page for configuring BIND to validate signatures o
 SPF records can now be added to or updated in multiple zones at once.
 Added an icon to the main page for checking the whole BIND configuration including zone files, with the named-checkconf command.
 Added a Module Config option to prevent inclusion of other slave's IP addresses in the master IP list for remote slaves.
+---- Changes since 1.450 ----
+Fixed the 'Directory for DNSSEC keys' option on the Module Config page so that it is actually used.

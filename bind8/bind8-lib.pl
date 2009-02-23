@@ -2651,15 +2651,29 @@ sub list_dnssec_algorithms
 return ("DSA", "RSAMD5", "RSASHA1", "DH", "HMAC-MD5");
 }
 
+# get_keys_dir(&zone|&zone-name)
+# Returns the directory in which to find DNSSEC keys for some zone
+sub get_keys_dir
+{
+local ($z) = @_;
+if ($config{'keys_dir'}) {
+	return $config{'keys_dir'};
+	}
+else {
+	local $fn = &get_zone_file($z, 2);
+	$fn =~ s/\/[^\/]+$//;
+	return $fn;
+	}
+}
+
 # create_dnssec_key(&zone|&zone-name, algorithm, size, single-key)
 # Creates a new DNSSEC key for some zone, and places it in the same directory
 # as the zone file. Returns undef on success or an error message on failure.
 sub create_dnssec_key
 {
 local ($z, $alg, $size, $single) = @_;
-local $fn = &get_zone_file($z, 2);
-$fn || return "Could not work out records file!";
-$fn =~ s/\/[^\/]+$//;
+local $fn = &get_keys_dir($z);
+$fn || return "Could not work keys directory!";
 
 # Remove all keys for the same zone
 opendir(ZONEDIR, $fn);
@@ -2748,8 +2762,8 @@ sub resign_dnssec_key
 local ($z) = @_;
 local $fn = &get_zone_file($z);
 $fn || return "Could not work out records file!";
-local $dir = $fn;
-$dir =~ s/\/[^\/]+$//;
+local $dir = &get_keys_dir($z);
+$dir || return "Could not work out keys directory!";
 local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 
 # Get the old zone key record
@@ -2843,8 +2857,7 @@ sub sign_dnssec_zone
 local ($z, $bump) = @_;
 local $chrootfn = &get_zone_file($z, 2);
 $chrootfn || return "Could not work out records file!";
-$chrootfn =~ /^(.*)\/([^\/]+$)/;
-local ($dir, $zf) = ($1, $2);
+local $dir = &get_keys_dir($z);
 local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 local $signed = $chrootfn.".webmin-signed";
 
@@ -2866,7 +2879,7 @@ while($tries++ < 10) {
 		"cd ".quotemeta($dir)." && ".
 		"$config{'signzone'} -o ".quotemeta($dom).
 		" -f ".quotemeta($signed)." ".
-		quotemeta($zf)." 2>&1");
+		quotemeta($chrootfn)." 2>&1");
 	last if (!$?);
 	}
 return $out if ($tries >= 10);
@@ -2910,11 +2923,7 @@ if ($keyrec) {
 sub get_dnssec_key
 {
 local ($z) = @_;
-local $fn = &get_zone_file($z, 1);
-$fn || return ("Could not work out records file!");
-$fn =~ /^(.*)\/([^\/]+$)/;
-local ($chrootdir, $zf) = ($1, $2);
-local $dir = &make_chroot($chrootdir);
+local $dir = &get_keys_dir($z);
 local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 local %keymap;
 opendir(ZONEDIR, $dir);
@@ -2927,7 +2936,7 @@ foreach my $f (readdir(ZONEDIR)) {
 		$rv->{'algorithmid'} = $1;
 		$rv->{'keyid'} = $2;
 		local $config{'short_names'} = 0;	# Force canonicalization
-		local ($pub) = &read_zone_file("$chrootdir/$f", $dom);
+		local ($pub) = &read_zone_file("$dir/$f", $dom);
 		$pub || return "Public key file $dir/$f does not contain ".
 			       "any records";
 		$pub->{'name'} eq $dom."." ||

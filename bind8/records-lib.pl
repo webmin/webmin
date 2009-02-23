@@ -754,7 +754,7 @@ return $rv;
 
 # get_zone_file(&zone|&zonename, [absolute])
 # Returns the relative-to-chroot path to a domain's zone file.
-# If absolute is 1, the path is make absolute. If 2, it is almost un-chrooted
+# If absolute is 1, the path is made absolute. If 2, it is also un-chrooted
 sub get_zone_file
 {
 local ($z, $abs) = @_;
