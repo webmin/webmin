@@ -168,7 +168,7 @@ if ($in{'bond'} || &iface_type($b->{'name'}) eq 'Bonded') {
 	print &ui_table_row($text{'bonding_teammode'},
 		&ui_select("bondmode",
 			   $b->{'mode'} ? &indexof($b->{'mode'}, @mode) : 0,
-			   map { [ $_, $mode[$_] ] } (0 .. $#mode)));
+			   [ map { [ $_, $mode[$_] ] } (0 .. $#mode) ]));
 
 	# Select mii Monitoring Interval
 	print &ui_table_row($text{'bonding_miimon'},
