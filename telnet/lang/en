@@ -1,4 +1,4 @@
-index_title=SSH/Telnet Login
+index_title=SSH Login
 index_warn=Warning! This telnet session is <b>not</b> encrypted.
 index_nojava=This module requires java to function, but your browser does not support java
 index_credits=Applet developed under GPL by <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Meiﬂner</a>.
