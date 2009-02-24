@@ -9,18 +9,19 @@ sub list_update_system_commands
 return ($apt_get_command, $apt_search_command);
 }
 
-# update_system_install([package])
+# update_system_install([package], [&in], [no-force])
 # Install some package with apt
 sub update_system_install
 {
+local $update = $_[0] || $in{'update'};
+local $force = !$_[2];
 local (@rv, @newpacks);
 
 # Build the command to run
-local $update = $_[0] || $in{'update'};
 $ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
 local $cmd = $apt_get_command eq "apt-get" ?
-	"$apt_get_command -y --force-yes -f install $update" :
-	"$apt_get_command -y -f install $update";
+  "$apt_get_command -y ".($force ? " --force-yes -f" : "")." install $update" :
+  "$apt_get_command -y".($force ? " -f" : "")." install $update";
 $update = join(" ", map { quotemeta($_) } split(/\s+/, $update));
 print "<b>",&text('apt_install', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
