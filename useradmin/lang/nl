@@ -136,6 +136,7 @@ expire=Vervaldatum
 expire2=Account expiratie tijd
 export_desc=Met dit formulier kunt U een batch file maken met een paar of alle gebruikers op dit systeem. Deze file kan gebruikt worden op een "Exporteer Batch file pagina" van een ander systeem, om de ge-exporteerde gebruikers opnieuw aan te maken, ervanuit gaande dat dit systeem hetzelfde batch file formaat gebruikt.
 export_done=Succesvol ge-exporteerd $1 gebruikers naar de file $2 ($3).
+export_ecannot=U bent niet bevoegd gebruikers te exporteren
 export_efile=File om naar te schrijven ontbreekt
 export_efile2=File om naar te schrijven staat niet in een geldige directory
 export_egid=Ongeldige eerste GID in de range
@@ -155,6 +156,34 @@ export_to=Batch file bestemming
 export_who=Exporteer gebruiker
 extra=Extra opties
 flags=Account flags
+gbatch_batch=Alleen de groepen file updaten wanneer de batch compleet is?
+gbatch_chgid=GID veranderen op de files van gemodificeerde groepen?
+gbatch_created=Gemaakte groep $1
+gbatch_deleted=Verwijderde groep $1
+gbatch_desc=Met dit formulier kunt U vele groepen in 1 keer modificeren, maken of verwijderen vis een geuploaden of locale tekst file. Iedere regel in de file moet 1 specifieke taak hebben voor een actie, afhankelijk van het eerste veld. De regel formaten zijn :
+gbatch_desc2=<b>Originele regel hoe het in de file moet staan.</b>
+<b>create</b>:groupname:passwd:gid:member,member,...
+<p><b>modify</b>:oldgroupname:groupname:passwd:gid:member,member,...<p><b>delete</b>:groupname
+<br>
+<p><b>Vertaald</b>
+<p><b>Maak</b>:groepsnaam:wachtwoord:gid:leden,leden,...
+<p><b>modificeer</b>:oudegroepsnaam:groepsnaam:wachtwoord:gid:leden,leden,...
+<p><b>verwijder</b>:groepsnaam
+gbatch_descafter=In de <b>maken</b> regels, wanneer het <tt>gid</tt> veld leeg is zal Webmin automatisch een GID toekennen. 
+gbatch_descafter2=In de <b>modificeer</b> regels, zal een leeg veld ervoor zorgen dat de overeenkomende groep attribuut niet word gemodificeerd.
+gbatch_ecaccess=U bent niet bevoegd een groep te maken op regel $1 : $2
+gbatch_ecannot=U kunt de groep batch file formulier niet gebruiken
+gbatch_edaccess=U bent niet bevoegd om een groep te verwijderen op regel $1 : $2
+gbatch_egroup=Dupliceer groep naam op regel $1 : $2
+gbatch_egroupname=Ongeldige groep naam op regel $1
+gbatch_emaccess=U bent niet bevoegd om de groep te modificeren op regel $1 : $2
+gbatch_enogroup=Groep bestaat niet op regel $1 : $2
+gbatch_eprimary=Groep op regel $1`kan niet worden verwijdert, omdat het de primaire groep is van gebruiker $2
+gbatch_erename=U bent niet bevoegd om groepen te hernoemen op regel $1 : $2
+gbatch_header=Batch groep maken, updaten en verwijder opties
+gbatch_modified=Modificeer groep $1
+gbatch_others=Maken, modificeren of verwijderen van groepen in andere modules?
+gbatch_title=Uitvoeren Groep Batch File
 gdel_del=Groep Verwijderen
 gdel_done=.. Klaar
 gdel_dothers=Weggooien groepen in andere modules?
@@ -181,9 +210,20 @@ gedit_group=Groepsnaam
 gedit_homedirs=Home directory's
 gedit_members=Leden
 gedit_mothers=Wijzig groep in andere modules?
+gedit_oneperline=(1 per regel)
+gedit_pri=Primaire groep leden
+gedit_prinone=Geen gebruikers hebben deze groep zijnde hun primaire
 gedit_selu=Gebruikers in groep
 gedit_title=Bewerk Groep
 gedit_title2=Groep Aanmaken
+gexport_desc=Met dit formulier kunt U een batch file maken waarin sommige of alle beschikbare groepen zitten van dit systeem. De file kan gebruikt worden op de <b>Uitvoeren Groep Batch File</b> pagina op een andere systeem om de ge&#235;xporteerde groepen opnieuw te maken.
+gexport_ecannot=U bent niet bevoegd om groepen te exporteren
+gexport_egid=Ongeldige eerste GID in range
+gexport_egid2=Ongeldige tweede GID in range
+gexport_err=Mislukt om groep batch file te exporteren
+gexport_header=Batch groep export opties
+gexport_title=Export Groepen Batch File
+gexport_who=Groepen om te exporteren
 gid=Groep
 gidnum=Groep ID
 gmass_del=Weggooien Groepen
@@ -257,6 +297,8 @@ index_whodesc=Laat gebruikers zien die op dit moment ingelogd zijn via SSH of Us
 lastlogin=Laatste login
 log_batch=Batch bestand $1 uitgevoerd
 log_batch_l=Batch bestand $1 uitgevoerd ($2 aangemaakt, $3 gewijzigd, $4 verwijderd)
+log_gbatch=Uitgevoerde groep batch file $1
+log_gbatch_l=Uitgevoerde groep batch file $1 ($2 gemaakt, $3 gemodificeerd, $4 verwijdert)
 log_gcreate=Groep $1 veranderd
 log_gdelete=Groep $1 verwijderd
 log_gmodify=Groep $1 gewijzigd
@@ -265,6 +307,8 @@ log_ubatch_l=Ge-uploaden Batch bestand uitgevoerd ($2 aangemaakt, $3 gewijzigd, 
 log_ucreate=Gebruiker $1 aangemaakt
 log_udelete=Gebruiker $1 verwijderd
 log_udeletehome=Gebruiker $1 en map $2 verwijderd
+log_ugbatch=Uitgevoerde groep batch file die ge-upload is
+log_ugbatch_l=Uitgevoerd van ge-uploaden groep batch file ($1 gemaakt, $2 gemodificeerd, $3 verwijdert)
 log_umodify=Gebruiker $1 veranderd
 log_urename=Gebruiker $1 hernoemd naar $2
 logins_elist=U bent niet bevoegd om login's te bekijken
@@ -406,6 +450,7 @@ usave_echmod=Kon home directory: $1 niet chmod'en
 usave_echown=Kon home directory: $1 niet chown'en
 usave_eclass='$1' is een ongeldige inlog klasse
 usave_ecreate=U kunt geen gebruikers toevoegen
+usave_edigestblowfish=Uw systeem heeft MD5 wachtwoord aanstaan, maar de Perl <tt>$3</tt> module is niet geinstalleerd.<p>Om het gebruik van versleutelde wachtwoorden te forceren moet U de <a href='$1'>module configuratie</a> aanpassen.<p>Of laat U Webmin <a href='$2'>downloaden en installeren</a> van de <tt>$3</tt> module.
 usave_edigestmd5=Op uw systeem is MD5 wachtwoord encryptie aangezet, maar noch de perl MD5 of de Digest::MD5 module zijn niet geinstalleerd.<p>Om gebruik van normale encryptie wachtwoorden te forceren, wijzig dan uw <a href='$1'>module configuratie</a>.<p>Of laat Webmin de Digest::MD5 module <a href='$2'>downloaden en installeren</a> voor U.
 usave_eedit=U kunt deze gebruiker niet aanpassen
 usave_eexpire=Ongeldige vervaldatum
