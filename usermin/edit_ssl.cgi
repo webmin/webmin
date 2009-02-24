@@ -51,6 +51,11 @@ else {
 	print "<td>",&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
 				     $webmin::text{'ssl_auto'}),"</td> </tr>\n";
 
+	print "<tr> <td><b>$webmin::text{'ssl_cipher_list'}</b></td>\n";
+	print "<td>",&ui_opt_textbox("cipher_list",
+			$miniserv{'ssl_cipher_list'}, 30,
+			$webmin::text{'ssl_auto'})."</td> </tr>\n";
+
 	print "<tr> <td valign=top><b>$webmin::text{'ssl_extracas'}</b></td>\n";
 	print "<td><textarea name=extracas rows=3 cols=40>";
 	foreach $e (split(/\s+/, $miniserv{'extracas'})) {

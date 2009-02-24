@@ -40,3 +40,5 @@ The format for dates displayed by Webmin can be changed by a new option on the U
 Added the Mobule Device Options page, for setting a theme specifically for small-screen browsers.
 ---- Changes since 1.440 ----
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.450 ----
+Added a field for allowed SSL cipher types.
