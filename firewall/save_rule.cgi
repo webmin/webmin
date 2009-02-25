@@ -177,6 +177,7 @@ else {
 				&error($text{'save_esport'});
 			if ($in{"sport"} =~ /,/) {
 				$rule->{'sports'}->[1] = $in{"sport"};
+				$rule->{'sports'}->[0] = $rule->{'sport'}->[0];
 				push(@mods, "multiport");
 				delete($rule->{'sport'});
 				}
@@ -208,6 +209,7 @@ else {
 				&error($text{'save_edport'});
 			if ($in{"dport"} =~ /,/) {
 				$rule->{'dports'}->[1] = $in{"dport"};
+				$rule->{'dports'}->[0] = $rule->{'dport'}->[0];
 				push(@mods, "multiport");
 				delete($rule->{'dport'});
 				}
