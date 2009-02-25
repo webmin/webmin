@@ -128,6 +128,15 @@ else {
 	&unlock_file($miniserv{'passwd_file'});
 	}
 
+# Change password in Usermin too
+if (&get_product_name() eq 'usermin' &&
+    &foreign_check("changepass")) {
+	# XXX remote user??
+	&foreign_require("changepass", "changepass-lib.pl");
+	&changepass::change_mailbox_passwords(
+		$in{'user'}, $in{'old'}, $in{'new1'});
+	}
+
 # Show ok page
 &header(undef, undef, undef, undef, 1, 1);
 
