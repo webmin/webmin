@@ -78,6 +78,8 @@ else {
 		$dump->{'beforefok'} = !$in{'beforefok'};
 		$dump->{'afterfok'} = !$in{'afterfok'};
 		}
+	$in{'file'} =~ s/^\s+//; $in{'file'} =~ s/\s+$//;
+	$in{'hfile'} =~ s/^\s+//; $in{'hfile'} =~ s/\s+$//;
 	&parse_dump($dump);
 	$dump->{'reverify'} = $in{'reverify'} if (defined(&verify_dump));
 	$dump->{'enabled'} = $in{'enabled'};
