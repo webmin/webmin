@@ -8,7 +8,6 @@ defip=Default virtual server IP address,3,From network interface
 dns_ip=Default IP address for DNS records,10,*-Automatically detect external address,-Same as virtual server IP,Other address
 disable=Features to deactivate when disabling,13,unix-Unix user (lock account),mail-Mail (stop accepting email for domain),web-Website (replace site with error page),dns-DNS (stop serving domain),mysql-MySQL (disallow login by MySQL user),postgres-PostgreSQL (disallow login by PostgreSQL user),ftp-ProFTPD (deny access)
 ldap=Store users and groups,1,1-In LDAP database,0-In local files
-compression=Backup compression format,1,0-gzip,1-bzip2,2-None (tar only),3-ZIP
 mysql_replicas=Additional MySQL servers to create users on,3,Just this system
 preload_mode=Preload Virtualmin libraries at startup?,1,2-All libraries,1-Only core,0-No
 scriptwarn_url=Virtualmin URL for use in email messages,3,Work out automatically
@@ -135,6 +134,10 @@ avail_syslog=System Logs (view Apache logs),1,1-Yes,0-No
 line7=Status collection,11
 collect_interval=Interval between status collection job runs,10,none-Never run,Minutes
 collect_restart=Restart services that are detected as down?,1,1-Yes,0-No
+
+line8=Backup and restore,11
+compression=Backup compression format,1,0-gzip,1-bzip2,2-None (tar only),3-ZIP
+zip_args=Extra command-line parameters for compression command,3,None
 
 line6=Advanced options,11
 iface_base=Base number for virtual interfaces,3,Automatic

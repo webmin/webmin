@@ -553,3 +553,4 @@ Mail files are now always included in backups and restores, even when under /var
 If a plan specifies features to be granted to domain owners, those features will be enabled on the Create Virtual Server page when the plan is selected. Otherwise, defaults set on the Features and Plugins page will be used.
 Added --email-only flags to the list-users.pl and list-domains.pl API scripts.
 Added a button to the Edit Account Plan page to create a new plan cloned from an existing one.
+Added a Module Config option for additional gzip command-line parameters, like --best or --rsyncable.
