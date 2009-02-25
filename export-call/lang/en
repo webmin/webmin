@@ -1,0 +1,2 @@
+my_msg=This is from the other module
+my_subs=Your name in the other module is $1
