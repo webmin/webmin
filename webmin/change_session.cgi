@@ -73,6 +73,14 @@ else {
 	delete($miniserv{'passwd_pindex'});
 	}
 $miniserv{'pam_conv'} = $in{'pam_conv'};
+if ($in{'cmd_def'}) {
+	delete($gconfig{'passwd_cmd'});
+	}
+else {
+	$in{'cmd'} =~ /\S/ && &has_command($in{'cmd'}) ||
+		&error($text{'session_ecmd'});
+	$gconfig{'passwd_cmd'} = $in{'cmd'};
+	}
 if ($in{'extauth'}) {
 	$in{'extauth'} =~ /^(\S+)/ && -x $1 ||
 		&error($text{'session_eextauth'});

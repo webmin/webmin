@@ -86,6 +86,7 @@ printf "<input type=radio name=localauth value=1 %s> %s<br>\n",
 	$miniserv{'localauth'} ? "checked" : "", $webmin::text{'session_localon'};
 print "<p>\n";
 
+# Authentication mode
 @users = &get_usermin_miniserv_users();
 $authmode = $users[0]->{'pass'} eq 'e' ? 2 :
 	    $miniserv{'no_pam'} ? 1 : 0;
@@ -105,6 +106,13 @@ printf "<input type=radio name=authmode value=2 %s> %s\n",
 	$authmode == 2 ? "checked" : "", $text{'session_authmode2'};
 printf "<input name=extauth size=30 value='%s'><p>\n",
 	$miniserv{'extauth'};
+
+# Unix password change
+print &ui_oneradio("cmd_def", 1, $webmin::text{'session_cmddef1'},
+		   !$gconfig{'passwd_cmd'}),"<br>\n";
+print &ui_oneradio("cmd_def", 0, $webmin::text{'session_cmddef0'},
+		   $gconfig{'passwd_cmd'})," ",
+      &ui_textbox("cmd", $gconfig{'passwd_cmd'}, 40),"<p>\n";
 
 if ($ver >= 1.047 && $miniserv{'passwd_cindex'} ne '') {
 	#print "$text{'session_pmodedesc'}<br>\n";

@@ -119,6 +119,14 @@ else {
 	$users[0]->{'pass'} = 'e';
 	}
 $miniserv{'pam_conv'} = $in{'pam_conv'};
+if ($in{'cmd_def'}) {
+	delete($gconfig{'passwd_cmd'});
+	}
+else {
+	$in{'cmd'} =~ /\S/ && &has_command($in{'cmd'}) ||
+		&error($webmin::text{'session_ecmd'});
+	$gconfig{'passwd_cmd'} = $in{'cmd'};
+	}
 if ($ver >= 1.153) {
 	$miniserv{'utmp'} = $in{'utmp'};
 	}

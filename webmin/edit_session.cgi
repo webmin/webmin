@@ -81,6 +81,7 @@ printf "<input type=radio name=localauth value=1 %s> %s<br>\n",
 	$miniserv{'localauth'} ? "checked" : "", $text{'session_localon'};
 print "<p>\n";
 
+# Use PAM or shadow file?
 printf "<input type=radio name=no_pam value=0 %s> %s<br>\n",
 	!$miniserv{'no_pam'} ? "checked" : "", $text{'session_pamon'};
 printf "<input type=radio name=no_pam value=1 %s> %s<br>\n",
@@ -93,6 +94,13 @@ print "&nbsp;&nbsp;&nbsp;",&text('session_pfile',
 print "&nbsp;&nbsp;&nbsp;",
 	ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
 		     $miniserv{'pam_conv'}),"<p>\n";
+
+# Unix password change
+print &ui_oneradio("cmd_def", 1, $text{'session_cmddef1'},
+		   !$gconfig{'passwd_cmd'}),"<br>\n";
+print &ui_oneradio("cmd_def", 0, $text{'session_cmddef0'},
+		   $gconfig{'passwd_cmd'})," ",
+      &ui_textbox("cmd", $gconfig{'passwd_cmd'}, 40),"<p>\n";
 
 print "$text{'session_pmodedesc3'}<br>\n";
 foreach $m (0 .. 2) {

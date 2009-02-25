@@ -44,6 +44,64 @@ if ($wuser) {
 	&acl::modify_user($wuser->{'name'}, $wuser);
 	&reload_miniserv();
 	}
+elsif ($gconfig{'passwd_cmd'}) {
+	# Use some configured command
+	$passwd_cmd = &has_command($gconfig{'passwd_cmd'});
+	$passwd_cmd || &pass_error("The password change command <tt>$gconfig{'passwd_cmd'}</tt> was not found");
+
+	&foreign_require("proc", "proc-lib.pl");
+	&clean_environment();
+	$ENV{'REMOTE_USER'} = $in{'user'};	# some programs need this
+	$passwd_cmd .= " ".quotemeta($in{'user'});
+	($fh, $fpid) = &proc::pty_process_exec($passwd_cmd, 0, 0);
+	&reset_environment();
+	while(1) {
+		local $rv = &wait_for($fh,
+			   '(new|re-enter).*:',
+			   '(old|current|login).*:',
+			   'pick a password',
+			   'too\s+many\s+failures',
+			   'attributes\s+changed\s+on|successfully\s+changed',
+			   'pick your passwords');
+		$out .= $wait_for_input;
+		sleep(1);
+		if ($rv == 0) {
+			# Prompt for the new password
+			syswrite($fh, $in{'new1'}."\n", length($in{'new1'})+1);
+			}
+		elsif ($rv == 1) {
+			# Prompt for the old password
+			syswrite($fh, $in{'old'}."\n", length($in{'old'})+1);
+			}
+		elsif ($rv == 2) {
+			# Request for a menu option (SCO?)
+			syswrite($fh, "1\n", 2);
+			}
+		elsif ($rv == 3) {
+			# Failed too many times
+			last;
+			}
+		elsif ($rv == 4) {
+			# All done
+			last;
+			}
+		elsif ($rv == 5) {
+			# Request for a menu option (HP/UX)
+			syswrite($fh, "p\n", 2);
+			}
+		else {
+			last;
+			}
+		last if (++$count > 10);
+		}
+	$crv = close($fh);
+	sleep(1);
+	waitpid($fpid, 1);
+	if ($? || $count > 10 ||
+	    $out =~ /error|failed/i || $out =~ /bad\s+password/i) {
+		&pass_error("<tt>".&html_escape($out)."</tt>");
+		}
+	}
 elsif ($in{'pam'}) {
 	# Use PAM to make the change..
 	eval "use Authen::PAM;";
