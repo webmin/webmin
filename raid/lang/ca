@@ -9,6 +9,7 @@ index_raidtools=Fent servir RaidTools
 index_name=Nom de dispositiu
 index_active=Actiu
 index_level=Nivell RAID
+index_size=Mida utilitzable
 index_members=Dispositius de disc del member
 index_header=Opcions de notificació de problemes RAID
 index_mailaddr=Envia les notificacions a
