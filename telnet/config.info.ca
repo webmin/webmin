@@ -7,4 +7,3 @@ size=Amplada x alçada personalitzada,0
 fontsize=Mida de la lletra en punts,3,Defecte
 detach=Mode de finestra separada,1,1-Sí,0-No
 no_test=Prova el servidor telnet o SSH,1,0-Sí,1-No
-applet=Applet SSH a utilitzar,1,1-Versió nova (SSH 1 i 2),0-Versió vella (Només SSH 1)
