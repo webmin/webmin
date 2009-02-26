@@ -50,6 +50,7 @@ ndc_cmd=ndcコマンドへのフルパス,0
 rndc_cmd=rndcコマンドへのフルパス,0
 rndcconf_cmd=rndc-confgenコマンドへのフルパス,0
 rndc_conf=rndc.confファイルへのフルパス,0
+checkzone=named-checkzoneコマンドへのフルパス,0
 pid_file=デフォルトのPIDファイルの場所,3,/var/run/named.pid
 no_pid_chroot=PIDファイルはchrootディレクトリの下にありますか?,1,0-はい,1-いいえ
 start_cmd=BINDの起動コマンド,3,デフォルト
