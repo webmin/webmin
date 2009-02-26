@@ -35,6 +35,7 @@ index_lvsdesc=Un volum lògic és una partició virtual creada amb l'espai combinat
 index_lvname=Volum lògic
 index_lvvg=Grup de volums
 index_lvsize=Mida
+index_lvused=Espai utilitzat
 index_lvuse=Utilitzat per a
 index_snapof=(Instantània de $1)
 
