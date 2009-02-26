@@ -42,8 +42,8 @@ print "<p>\n";
 print &ui_form_start("backup_db.cgi", "post");
 print &ui_hidden("db", $in{'db'});
 print &ui_hidden("all", $in{'all'});
-print &ui_hidden_table_start($text{'backup_header1'}, undef, 2, "main", 1,
-			     [ "width=30%" ]);
+print &ui_hidden_table_start($text{'backup_header1'}, "width=100%", 2, "main",
+			     1, [ "width=30%" ]);
 
 # Destination file or directory
 print &ui_table_row($in{'all'} ? $text{'backup_file2'}
@@ -70,8 +70,8 @@ if (!$in{'all'}) {
 	}
 
 print &ui_hidden_table_end("main");
-print &ui_hidden_table_start($text{'backup_header2'}, undef, 2, "opts", 0,
-			     [ "width=30%" ]);
+print &ui_hidden_table_start($text{'backup_header2'}, "width=100%", 2, "opts",
+			     0, [ "width=30%" ]);
 
 # Show input for where clause
 $w = $c{'backup_where_'.$in{'db'}};
@@ -141,8 +141,8 @@ if ($cron) {
 		}
 
 	print &ui_hidden_table_end("opts");
-	print &ui_hidden_table_start($text{'backup_header3'}, undef, 2, "sched",
-				     1, [ "width=30%" ]);
+	print &ui_hidden_table_start($text{'backup_header3'}, "width=100%", 2,
+				     "sched", 1, [ "width=30%" ]);
 
 	# Show cron time
 	&foreign_require("cron", "cron-lib.pl");
