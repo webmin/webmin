@@ -382,6 +382,12 @@ ftp_none=Cap (només entra)
 ftp_ehost=Hi falta el host servidor FTP o bé és invàlid
 ftp_eport=Hi falta el port del servidor FTP o bé és invàlid
 ftp_efile=Hi falta el fitxer a descarregar o bé és invàlid
+ftp_tls=Utilitza xifratge TLS
+ftp_etls=No es pot activar TLS si el mòdul Perl $1 no està instal·lat
+ftp_econn=La connexió FTP TLS FTP ha fallat
+ftp_econn2=La connexió FTP TLS ha fallat: $1
+ftp_elogin=L'entrada FTP FTP ha fallat: $1
+ftp_etlsfile=La descàrrega FTP TLS ha fallat: $1
 
 query_driver=Tipus de base de dades SQL
 query_db=Nom de la base de dades
