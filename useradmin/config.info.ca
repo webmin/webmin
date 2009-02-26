@@ -14,7 +14,7 @@ uid_calc=Mètode de càlcul del UID,4,0-Suma de comprovació Berkeley,1-Programa mk
 gid_calc=Mètode de càlcul del GID,4,0-Suma de comprovació Berkeley,1-Programa mkgid personalitzat
 new_user_group=Crea un grup nou per als usuaris nous,1,1-Sí,0-No
 new_user_gid=Assigna el mateix al nou usuari i al grup,1,1-Sí,0-No
-md5=Mètode de xifratge de contrasenyes,1,2-MD5,1-Determinat automàticament,0-DES crypt
+md5=Mètode de xifratge de contrasenyes,1,2-MD5,1-Determinat automàticament,0-DES crypt,3-Blowfish
 alias_check=Comprova duplicats amb els àlies de sendmail,1,1-Sí,0-No
 delete_only=Esborra només els fitxers propietat de l'usuari,1,1-Sí,0-No
 max_length=Llargària màxima dels noms d'usuaris i grups,3,Il·limitada
@@ -44,6 +44,7 @@ random_password=Genera contrasenya per als nous usuaris,1,1-Sí,0-No
 extra_real=Mostra els detalls del despatx i el telèfon,1,1-Sí,0-No
 delete_root=Permet la supressió d'usuaris i grups de sistema,1,1-Sí,0-No
 secmode=Mostra els grups secundaris al formulari de l'usuari,1,0-Sí,1-No,2-Com a caixa de text
+membox=Edita els membres dels grups utilitzant,1,1-Una caixa de text,0-Selector d'usuaris
 
 line5=Restriccions de les contrasenyes,11
 passwd_min=Llargària mínima de la contrasenya,3,Sense mínims
