@@ -1,10 +1,9 @@
 index_title=Usuaris i Grups LDAP
-index_econfig=No s'ha trobat al sistema el fitxer de configuració $1 del NSS de LDAP. Hauràs de retocar la <a href='$2'>configuració del mòdul</a> per tal d'utilitzar el camí correcte.
-index_econfig2=Sembla que el fitxer de configuració NSS $1 de LDAP és el fitxer de configuració del <i>servidor</i> LDAP. Hauràs d'ajustar la <a href='$2'>configuració del mòdul</a> per utilitzar el camí del fitxer de configuració NSS <i>client</i>.
-index_ehost=Si no s'estableix cap fitxer de configuració NSS LDAP a la <a href='$1'>configuració del mòdul</a>, cal establir un servidor LDAP, usuari, contrasenya, DN d'usuari base i DN de grup base.
+index_ebase=No s'ha trobat al sistema cap fitxer de configuració LDAP, així que les bases d'usuari i grup s'han d'establir a la pàgina de <a href='$1'>configuració del mòdul</a>.
 index_eperl=El mòdul Perl $1 que necessita aquest mòdul no està instal·lat o no funciona adequadament. Fes clic <a href='$2'>aquí</a> per descarregar-lo i instal·lar-lo ara.
 index_eperl2=L'error donat per Perl en provar de carregar el mòdul és:
-index_eldap=$1. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_eldap=$1. Fes clic aquí per ajustar la <a href='$2'>configuració del mòdul</a>.
+index_eschema=Webmin s'ha connectat amb el servidor LDAP, però no ha pogut obtenir l'esquema. Assegura't que l'accés no hagi estat denegat al mòdul del <a href='$1'>Servidor LDAP</a>.
 index_eimap=$1. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_emd5=Aquest mòdul s'ha <a href='$1'>configurat</a> per utilitzar xifratge MD5 amb les contrasenyes, però el mòdul Perl $2 no està instal·lat. Fes clic <a href='$3'>aquí</a> per tal de descarregar i instal·Lar el mòdul $2.
 index_eslappasswd=Aquest mòdul s'ha <a href='$1'>configurat</a> per utilitzar xifratge LDAP MD5 amb les contrasenyes, però el programa <tt>$2</tt> utilitzat per xifrar les contrasenyes no està instal·lat
@@ -14,15 +13,15 @@ index_gadd=Afegeix un nou grup LDAP.
 index_unone=No he trobat cap usuari LDAP a $1.
 index_gnone=No he trobat cap grup LDAP a $1.
 index_return=a la llista d'usuaris
+index_greturn=a la llista de grups
 index_egsearch=No he pogut buscar grups a $1: $2
 index_samba=Samba
 index_cyrus=IMAP
 index_users=Usuaris LDAP
 index_groups=Grups LDAP
 
-conn_econn=No he pogut connectar amb el servidor LDAP $1 port $2
-conn_essl=No he pogut iniciar SSL per al servidor LDAP $1 port $2: $3
-conn_elogin=No he pogut lligar el servidor LDAP $1 com a $2: $3
+conn_eldap_host=No s'ha trobat cap fitxer de configuració del client LDAP al sistema, així que el servidor LDAP s'ha de configurar a la pàgina de configuració del mòdul
+conn_elogin=No s'ha trobat cap fitxer de configuració del client LDAP al sistema, així que l'entrada a LDAP s'ha de configurar a la pàgina de configuració del mòdul
 imap_econn=No he pogut connectar amb el servidor IMAP $1
 imap_elogin=No he pogut entrar al servidor IMAP $1 com a $2: $3
 
