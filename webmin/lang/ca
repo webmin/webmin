@@ -602,12 +602,20 @@ log_clearcache=He eliminat tots els URLs del cau
 log_lock=he canviat el blocatge de fitxers
 
 themes_title=Temes Webmin
-themes_desc=Temes controla l'aparença de la interfície d'usuari de Webmin, incloent-hi les icones, els colors, els fons i possiblement la disposició de les pàgines. La caixa de selecció de sota es pot utilitzar per triar un dels temes instal·lats al sistema.
+themes_desc=Temes controla l'aparença de la interfície d'usuari de Webmin, incloent-hi les icones, els colors, els fons i la disposició de les pàgines. La caixa de selecció de sota es pot utilitzar per triar un dels temes instal·lats al sistema.
 themes_sel=Tema actual:
 themes_default=Tema antic de Webmin
+themes_none=Cap - deixa que el tema decideixi
 themes_change=Canvia'l
+themes_overdesc=Les capes modifiquen l'aparença del tema, canviant-ne els colors, el fons i les icones. No en canvien la disposició.
+themes_overlay=Capa actual:
 themes_installdesc=Fes servir el formulari de sota per instal·lar un tema Webmin nou al sistema. Els temes es distribueixen típicament com a fitxers <tt>.wbt</tt>, però també es poden instal·lar a partir de fitxers RPM si estan suportats pel sistema operatiu.
 themes_installok=Instal·la un Tema
+themes_tabchange=Canvia el tema
+themes_taboverlay=Canvia la capa
+themes_tabinstall=Instal·la un tema
+themes_tabdelete=Suprimeix temes
+themes_tabexport=Exporta temes
 
 themes_err1=No he pogut instal·lar el tema de $1
 themes_efile=El fitxer no existeix
@@ -628,9 +636,12 @@ themes_egzip2=No he pogut descomprimir (gunzip): $1
 themes_erpm=No és un RPM de temes Webmin
 themes_eirpm=L'instal·lació del RPM ha fallat: $1
 themes_ok=Tema canviat amb èxit... redireccionant a la pàgina índex de Webmin.
+themes_ok2=La capa del tema s'ha canviat correctament... redirecconant a la pàgina índex de Webmin.
 themes_delete=Aquest formulari es pot utilitzar per suprimir un dels temes instal·lats al sistema que no es faci servir.
 themes_delok=Tema per suprimir:
 themes_return=a la llista de temes
+themes_err4=No he pogut canviar la capa del tema
+themes_eoverlay=La cap seleccionada no és compatible amb el tema global actual
 
 themes_desc4=Els temes instal·lats es poden exportar com un fitxer wbt.gz utilitzant el formulari de sota. Llavors, el fitxer de tema es pot instal·lar en un altre sistema que executi Webmin.
 themes_exportmods=Temes a exportar
@@ -750,6 +761,7 @@ advanced_tdir=Directori
 advanced_stack=Mostra el rastreig de pila per als missatges d'error
 advanced_showstderr=Mostra els errors de Perl al navegador
 advanced_umask=Umask (bits de permisos) dels fitxers creats
+advanced_chattr=Permet la modificació de fitxers immutables
 advanced_eumask=L'umask ha de ser un número octal de 3 dígits
 advanced_etempdelete=Hi falta l'edat màxima dels fitxers temporals o bé és invàñida
 advanced_nice=Prioritat de CPU dels treballs planificats
@@ -843,4 +855,11 @@ notif_passlock=La teva contrasenya de Webmin es va canviar per darrer cop el $1,
 notif_changenow=Pots <a href='$1'>canviar la teva contrasenya ara</a> al mòdul de Canvi d'Idioma i Tema.
 notif_unixwarn=La teva contrasenya Unix es va canviar per darrer cop el $1, i cal tornar-la a canviar abans de $2 dies.
 notif_unixexpired=La teva contrasenya Unix ha expirat! Se t'obligarà a canviar-la a la propera connexió.
+> notif_upgrade=Webmin version $1 is now available, but you are running version $2.
+notif_upgradeok=Actualitza Webmin Ara
+notif_updatemsg=Estan disponibles les $1 següents actualitzacions de mòduls de Webmin...
+notify_updatemod=Mòdul
+notify_updatever=Versió
+notify_updatedesc=Arranja el problema
+notif_updateok=Instal·la Ara les Actualitzacions
 
