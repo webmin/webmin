@@ -20,6 +20,7 @@ server_same=La mateixa que per a no-<tt>root</tt>
 server_none=Cap
 server_anon=Anònim
 server_ssl=Fes servir connexió xifrada
+server_tls=Sí, utilitzant TLS
 server_peer=Verificació del certificat SSL de LDAP
 server_def=Per defecte (normalment $1)
 server_cacert=Fitxer de certificats CA
@@ -104,12 +105,15 @@ switch_title=Serveis que Utilitzen LDAP
 switch_service=Servei
 switch_srcs=Origen de les dades
 switch_return=als serveis que utilitzen LDAP
+ldap_emodule2=El mòdul Perl $1 necessari per parlar amb el servidor LDAP no està instal·lat.
+ldap_econf=No s'ha trobat al sistema el fitxer $1 de configuració del client LDAP
 
 ldap_emodule=El mòdul Perl $1 necessari per parlar amb el servidor LDAP no està instal·lat. Fes clic <a href='$2'>aquí</a> per fer que Webmin el descarregui i l'instal·li ara.
 ldap_econn=No he pogut connectar amb el servidor LDAP $1 al port $2
 ldap_elogin=No he pogut lligar el servidor LDAP $1 com a $2: $3
 ldap_anon=anònim
 ldap_eparse=No he pogut analitzar l'URI $1 del servidor LDAP
+ldap_etls=No he pogut canviar al mode TLS: $1
 
 browser_title=Explorador LDAP
 browser_econn=No es pot utilitzar l'explorador LDAP: $1
