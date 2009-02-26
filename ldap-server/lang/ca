@@ -73,6 +73,10 @@ slapd_gencert=Genera el Certificat SSL
 slapd_gencertdesc=Per executar el servidor LDAP en mode TLS, cal genera primer un certificat SSL i una clau privada. Fes clic sobre aquest botó per crear un certificat autosignat per a aquest sistema.
 slapd_gencertwarn=Atenció - el teu certificat existent ja no s'utilitzarà més.
 slapd_ecannot=No tens permís per configurar el servidor LDAP
+slapd_protos=Connexions LDAP a acceptar
+slapd_ldap=LDAP sobre xarxa
+slapd_ldaps=LDAP sobre SSL
+slapd_ldapi=Fitxer de sòcol Unix
 
 schema_title=Gestió de l'Esquema
 schema_file=Nom
