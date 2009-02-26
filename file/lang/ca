@@ -426,3 +426,6 @@ extract_rusure=Segur que vols extreure el fitxer comprimit:
 extract_rusure2=Els fitxers existents al mateix directori es reescriuran.
 extract_err=No he pogut extreure el fitxer: $1
 extract_yes=Sí, després suprimeix-lo
+extract_show=Mostra el contingut
+extract_err2=No he pogut obtenir el contingut del fitxer: $1
+extract_shown=Contingut del fitxer comprimit
