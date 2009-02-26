@@ -1,11 +1,12 @@
 line0=Camins de BIND,11
 chroot=Directori chroot sota el qual s'executa BIND,3,Cap
 no_chroot=named.conf està sota el directori chroot,1,0-Sí,1-No
-auto_chrootOrdre per trobar el directori chroot,3,Utilitza el directori fixat a sobre
+auto_chroot=Ordre per trobar el directori chroot,3,Utilitza el directori fixat a sobre
 named_user=Usuari sota el qual s'executa BIND,3,Defecte
 named_group=Grup sota el qual s'executa BIND,3,Defecte
 zones_file=Afegeix les zones noves al fitxer,3,named.conf
 relative_paths=Fes servir camins relatius de fitxer de zona a <tt>named.conf</tt>,1,1-Sí,0-No
+keys_dir=Directorsi de claus DNSSEC,3,EL mateix que els fitxers de zones
 
 line1=Opcions de presentació,11
 show_list=Mostra els dominis com a,1,0-Icones,1-Llista,2-Jerarquia
@@ -36,6 +37,7 @@ file_perms=Permisos dels fitxers de zones (en octal),3,Defecte
 default_prins=Servidor mestre de les zones mestres per defecte,0,Nom de host del sistema
 default_master=Servidor(s) mestre(s) per defecte de les zones esclaves,0
 this_ip=IP del servidor mestre per defecte per a les zones esclaves remotes,3,Adreça IP o nom de host
+other_slaves=Afegeix altres adreces IP esclaves als mestres dels esclaus,1,1-Sí,0-No
 updserial_on=Actualitza automàticament els números de sèrie,1,1-Sí,0-No
 ipv6_mode=Domini de les adreces IPv6 inverses,1,1-ip6.arpa,0-ip6.int
 confirm_zone=Confirmació abans de suprimir zones,1,1-Sí,0-No
@@ -51,6 +53,9 @@ rndc_cmd=Full path to rndc command,0
 rndcconf_cmd=Camí complet de l'ordre rndc-confgen,0
 rndc_conf=Camí complet de l'ordre rndc.conf,0
 checkzone=Camí complet de l'ordre named-checkzone,0
+checkconf=Camí complet de l'ordre named-checkconf,0
+keygen=Camí complet de l'ordre dnssec-keygen,0
+signzone=Camí complet de l'ordre dnssec-signzone,0
 pid_file=Ubicacio(ns) per defecte del fitxer de PID,3,/var/run/named.pid
 no_pid_chroot=El fitxer de PID està sota el directori chroot,1,0-Sí,1-No
 start_cmd=Ordre per iniciar BIND,3,Defecte
