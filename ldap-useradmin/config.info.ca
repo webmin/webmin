@@ -1,8 +1,7 @@
 line1=Opcions del servidor LDAP,11
-auth_ldap=Fitxer de configuració de la llibreria LDAP NSS de Linux,3,Cap (utilitza els valors de sota),40,,,Utilitza els valors del fitxer
 ldap_host=Servidor LDAP,3,Del fitxer de configuració NSS
 ldap_port=Port del servidor LDAP,3,Per defecte o del fitxer de configuració NSS
-ldap_tls=El servidor LDAP utilitza TLS,1,1-Sí,0-No
+ldap_tls=El servidor LDAP utilitza xifratge,1,1-Sí SSL,2-Sí TSL,0-No
 login=Lliga't al servidor LDAP com a,3,Nom de lligam del fitxer de configiració NSS
 pass=Credencials per al nom de lligam anterior,12
 user_base=Base dels usuaris,3,Del fitxer de configuració NSS 
@@ -54,6 +53,7 @@ passwd_stars=Amaga la contrasenya en text planer,1,1-Sí,0-No,-Del mòdul d'Usuari
 random_password=Genera la contrasenya dels usuaris nous,1,1-Sí,0-No,-Del mòdul d'Usuaris i Grups
 charset=Joc de caràcters per editar els usuaris i els grups,3,De l'idioma de Webmin
 secmode=Mostra els grups secundaris al formulari de l'usuari,1,0-Sí,1-No,2-Com una finestra de text
+membox=Edita els membres del grup utilitzant,1,1-Una caixa de text,0-Selector d'usuaris
 
 line2=Opcions de compte Samba,11
 samba_class=Classe d'objecte LDAP per a usuaris de Samba,10,sambaAccount-sambaAccount (Samba 2),sambaSamAccount-sambaSamAccount (Samba 3),Altres
@@ -72,6 +72,7 @@ imap_pass=Contrasenya d'administració del servidor IMAP,0
 imap_props=Propietats LDAP per als nous usuaris IMAP,9,40,5,\t
 imap_folders=Carpetes a crear per als nous usuaris IMAP,9,30,3,\t
 imap_folderalt=Camí de les carpetes,1,1-usuari.$user.$folder,0-$folder
+imap_foldersep=Separador de carrpetes,1,.-.,/-/
 domain=Domini de correu de l'atribut de correu,3,No afegeixis atributs de correu
 mailfmt=Format de l'adreá de correu,1,0-cognom.nom@domini,1-usuari@domini
 quota=Quota per defecte dels nous usuaris de Cyrus,3,Cap
