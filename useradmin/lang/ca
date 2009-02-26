@@ -167,7 +167,8 @@ usave_echmod=No he pogut canviar els permisos del directori arrel: $1
 usave_eoffice=El despatx no pot contenir un caràcter ':'
 usave_eworkph=El telèfon de la feina no pot contenir un caràcter ':'
 usave_ehomeph=El telèfon particular no pot contenir un caràcter ':'
-usave_edigestmd5=El teu sistema té contrasenyes MD5 activades, però no hi ha instal·lat l'MD5 de perl MD5 ni el mòdul Digest::MD5.<p> Per forçar l'us de contrasenyes xifrades normalment, ajusta la <a href='$1'>configuració del mòdul</a>.<p>Si no, fes que Webmin <a href='$2'>descarregui i instal·li el mòdul</a> Digest::MD5 per tu.  
+usave_edigestmd5=El teu sistema té contrasenyes MD5 activades, però el mòdul Perl <tt>$3</tt> no està instal·lat.<p> Per forçar l'us de contrasenyes xifrades normalment, ajusta la <a href='$1'>configuració del mòdul</a>.<p>Si no, fes que Webmin <a href='$2'>descarregui i instal·li el mòdul</a> <tt>$3</tt> per tu.  
+usave_edigestblowfish=El teu sistema té contrasenyes MD5 activades, però el mòdul Perl <tt>$3</tt> no està instal·lat.<p> Per forçar l'us de contrasenyes xifrades normalment, ajusta la <a href='$1'>configuració del mòdul</a>.<p>Si no, fes que Webmin <a href='$2'>descarregui i instal·li el mòdul</a> <tt>$3</tt> per tu.
 usave_emaking=L'ordre a executar abans de l'actualització ha fallat: $1
 usave_epasswd_min=La contrasenya ha de tenir almenys $1 lletres
 usave_epasswd_re=La contrasenya no coincideix amb l'expressió $1
@@ -181,6 +182,7 @@ gedit_details=Detalls del Grup
 gedit_group=Nom del grup
 gedit_gid=ID del grup
 gedit_members=Membres
+gedit_oneperline=(Un per línia)
 gedit_homedirs=Directoris arrel
 gedit_allfiles=Tots els fitxers
 gedit_ecreate=No pots crear nous grups
@@ -191,6 +193,8 @@ gedit_gid_calc=Calculat
 gedit_gid_def=Automàtic
 gedit_allu=Tots els usuaris
 gedit_selu=Els usuaris del grup
+gedit_pri=Membres del grup primari
+gedit_prinone=No hi ha cap usuari que tingui aquest grup com a primari
 
 gsave_err=No he pogut desar el grup
 gsave_eedit=No pots editar aquest grup
@@ -354,6 +358,10 @@ log_batch=He executat el fitxer batch $1
 log_batch_l=He executat el fitxer batch $1 ($2 creats, $3 modificats, $4 suprimits)
 log_ubatch=He executat el fitxer batch pujat
 log_ubatch_l=He executat el fitxer batch pujat ($1 creats, $2 modificats, $3 suprimits)
+log_gbatch=He executat el fitxer de batch de grups $1
+log_gbatch_l=He executat el fitxer de batch de grups $1 ($2 de creats, $3 de modificats, $4 de suprimits)
+log_ugbatch=He executat el fitxer de de batch de grups pujat
+log_ugbatch_l=He executat el fitxer de de batch de grups pujat ($1 de creats, $2 de modificats, $3 de suprimits)
 
 batch_title=Execució de Fitxer Batch
 batch_ecannot=No pots utilitzar el formulari de fitxer <i>batch</i>
@@ -422,7 +430,7 @@ who_from=Connectat des de
 who_none=Actualment no hi ha cap usuari connectat.
 
 export_title=Exportació de Fitxer Batch
-export_desc=Aquest formulari permet crear un fitxer batch que conté alguns o tots els usuaris disponibles del sistema. El fitxer es pot fer servir a la pàgina Exportació de Fitxer Batch d'un altre sistema per recrear els usuaris exportats, assumint que fa servir el format de fitxer batch seleccionat.
+export_desc=Aquest formulari permet crear un fitxer batch que conté alguns o tots els usuaris disponibles del sistema. El fitxer es pot fer servir a la pàgina Execució de Fitxer Batch d'un altre sistema per recrear els usuaris exportats, assumint que fa servir el format de fitxer batch seleccionat.
 export_header=Opcions d'exportació batch d'usuaris
 export_to=Destinació del fitxer batch
 export_show=Mostra'l al navegador
@@ -440,6 +448,16 @@ export_egid2=Segon GID invàlid en el rang
 export_done=He exportat correctament $1 usuaris al fitxer $2 ($3).
 export_pft=Format del fitxer batch
 export_who=Usuaris a exportar
+export_ecannot=No tens permís per exportar usuaris
+
+gexport_title=Exportació de Fitxer de Batch de Grups
+gexport_desc=Aquest formulari permet crear un fitxer batch que conté alguns o tots els grups disponibles del sistema. El fitxer es pot fer servir a la pàgina Execució de Fitxer Batch de Grups d'un altre sistema per recrear els grups exportats.
+gexport_header=Opcions d'exportació del batch de grups
+gexport_who=Grups a exportar
+gexport_ecannot=No tens permís per exportar grups
+gexport_err=No he pogut exportar el fitxer de batch de grups
+gexport_egid=El primer GID del rang és invàlid
+gexport_egid2=El segon GID del rang és invàlid
 
 pft_0=Només el fitxer <tt>passwd</tt> clàssic
 pft_1=Fitxer<tt>master.passwd</tt> de BSD
@@ -482,3 +500,24 @@ emass_pass=Desbloquejant la contrasenya...
 emass_doing=Activant l'usuari $1...
 emass_already=...ja estava activat!
 
+gbatch_title=Execució de Fitxer Batch de Grups
+gbatch_ecannot=No pots utilitzar el formulari de fitxers batch de grups
+gbatch_desc=Aquest formulari permet crear, modificar o suprimir diversos grups de cop a partir d'un fitxer de text pujat o local. Cata línia del fitxer especifica una acció a prendre, depenent del primer camp. Els formats de línia són:
+gbatch_desc2=<b>create</b>:nomgrup:contrasenya:gid:membre,membre,...<p><b>modify</b>:nomgrupvell:nomgrup:contrasenya:gid:membre,membre,...<p><b>delete</b>:nomgrup
+gbatch_descafter=A les línies <b>create</b>, Si es deixa el camp <tt>gid</tt> buit, Webmin li assignarà un GID automàticament.
+gbatch_descafter2=A les línies <b>modify</b>, un camp buit es prendrà com a senyal que l'atribut corresponent del grup no s'ha de modificar.
+gbatch_header=Creació, actualització i supressió batch de grups
+gbatch_others=Crea, modifica o suprimeix grups als altres mòduls
+gbatch_batch=Actualitza el fitxer de grups només quan s'hagi completat el batch
+gbatch_chgid=Canvia el GID dels fitxers dels grups modificats
+gbatch_ecaccess=No tens permís per crear el grup a la línia $1: $2
+gbatch_emaccess=No tens permís per modificar el grup a la línia $1: $2
+gbatch_edaccess=No tens permís per suprimit el grup a la línia $1: $2
+gbatch_created=He creat el grup $1
+gbatch_deleted=Ha suprimit grup $1
+gbatch_modified=He modificat el grup $1
+gbatch_enogroup=El grup no existeix a la línia $1: $2
+gbatch_eprimary=El grup de la línia $1 no es pot suprimir, ja que és el grup primari de l'usuari $2.
+gbatch_egroup=Nom de grup duplicat a la línia $1: $2
+gbatch_egroupname=Nom de grup invàlid a la línia $1
+gbatch_erename=No tens permís per renomenar els grups a la línia $1: $2
