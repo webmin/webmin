@@ -905,6 +905,7 @@ mod_ssl_builtin=Demana-la a l'inici
 mod_ssl_passsc=Executa el script $1
 mod_ssl_epassph=No has introduït cap contrasenya SSL
 mod_ssl_epasssc=Hi falta el script de contrasenya SSL o bé és invàlid
+mod_ssl_ecerton=Quan SSL està activat, cal seleccionar un fitxer de certificat
 
 # nodo50 v0.1 - Change 000003 - New Script. Define Editors for mod_apachessl directives (Apache-ssl not use mod_ssl)
 # nodo50 v0.1 - Change 000003 - Nou Script. Defineix edició de directives mod_apachessl (Apache-ssl no utilitza mod_ssl)
