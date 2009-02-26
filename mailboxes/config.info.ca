@@ -63,7 +63,7 @@ mail_dir=Directori del fitxer de correu de l'usuari,3,Cap
 mail_style=Estil del directori del fitxer de correu,4,0-mail/usuari,1-mail/u/usuari,2-mail/u/us/usuari,3-mail/u/s/usuari
 mail_file=Fitxer de correu en els directoris arrel dels usuaris,3,Cap
 mail_sub=Directori de correu en els directoris arrel dels usuaris,3,Cap
-mail_usermin=SUbdirectori de carpetes estil Usermin al directori arrel,3,Cap
+mail_usermin=Subdirectori de carpetes al directori arrel,3,Cap
 mailbox_user=Directori de configuració de Correu Llegit Usermin al directori arrel,3,Cap
 
 line2=Sincronització d'usuaris,11
