@@ -12,6 +12,8 @@ mailq_show=Capçaleres a mostrar a la cua de correu,2,Date-Date,From-From,To-To,S
 mailq_sort=Ordena la cua de correu per,1,0-ID de cua,1-Adreça 'From',2-Adreça 'To',3-Tema,4-Estat,5-Mida
 mailq_count=Mostra la mida de de la cua de correu a la pàgina principal,1,0-Sí,1-No 
 mailq_order=Ordenació en buidar la cua de correu,1,-Per defecte,priority-Prioritat,host-Nom de host,time-Data de recepció
+delete_confirm=Demana confirmació abans de suprimir,1,1-Sí,0-No
+
 line2=Configuració del sistema,11
 sendmail_cf=Camí complet de sendmail.cf,8
 sendmail_features=Directori base del M4 de sendmail,7
@@ -36,3 +38,4 @@ mail_style=Estil de directoris dels fitxers de correu,4,0-mail/usuari,1-mail/u/u
 mail_sync=Sincronització del fitxer de correu de l'usuari,2,creació-Crea'l amb l'usuari,supressió-Suprimeix amb l'usuari,modificació-Renomena'l amb l'usuari
 smrsh_dir=Directori SMRSH,3,Cap
 queue_dirs=Directoris extra de cues de correu,3,Cap
+rebuild_cmd=Ordre per reconstruir tots els mapes,3,Utilitza l'ordre makemap
