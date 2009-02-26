@@ -167,7 +167,9 @@ acl_rpc=Pot acceptar crides RPC
 acl_rpc2=Només per a <tt>root</tt> o <tt>admin</tt>
 acl_rpc1=Sí
 acl_rpc0=No
-acl_readonly=L'usuari està en mode demo?<br>(Alguns mòduls poden no estar disponibles)
+acl_readonly2=L'usuari està en mode demo?
+acl_readonlyyes=Sí (Alguns mòduls poden no estar disponibles)
+acl_negative=Concedeix permisos del nou mòdul a l'usuari
 acl_fileunix=Fulleja els fitxers com a Usuari Unix
 acl_sameunix=El mateix que l'usuari Webmin
 
