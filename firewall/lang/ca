@@ -170,6 +170,7 @@ edit_state_new=Connexió nova
 edit_state_established=Connexió existent
 edit_state_related=Relacionada amb l'existent
 edit_state_invalid=No és part de cap connexió
+edit_state_untracked=No traçada
 edit_tos=Tipus de servei
 edit_rtoports=Ports objectiu per a redireccionar
 edit_prange=Rang del port $1 a $2
