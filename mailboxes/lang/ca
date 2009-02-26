@@ -70,9 +70,12 @@ mail_black=Denega els Remitents
 mail_white=Permet els Remitents
 mail_whitemove=Permet els Remitents i l'Entrada
 mail_efile=El fitxer de correu no existeix
-mail_fromsrch=El mateix remitent...
-mail_subsrch=El mateix assumpte...
-mail_tosrch=El mateix destinatari...
+mail_fromsrch=Busca missatges amb el mateix remitent
+mail_subsrch=Busca missatges amb el mateix assumpte
+mail_tosrch=Busca missatges amb el mateix destinatari
+mail_fromfilter=Crea un filtre per remitent
+mail_tofilter=Crea un filtre per destinatari
+mail_subfilter=Crea un filtre per assumpte
 mail_unknown=Desconegut/da
 
 mail_sign=Signa amb la clau
