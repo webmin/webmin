@@ -21,6 +21,6 @@ desc_sk=SSH prihl�senie
 readonly=1
 desc_zh_TW.UTF-8=Telnet 登入
 desc_zh_CN.UTF-8=SSH 登录
-desc_ja_JP.UTF-8=SSH ログイン
+desc_ja_JP.UTF-8=SSH/Telnet ログイン
 desc_ko_KR.UTF-8=SSH/텔넷 로그인
 desc_it=Login SSH
