@@ -7259,7 +7259,7 @@ successful. The handle must have been one passed to open_tempfile.
 sub close_tempfile
 {
 my $file;
-my $fh = &callers_package($fh);
+my $fh = &callers_package($_[0]);
 
 if (defined($file = $main::open_temphandles{$fh})) {
 	# Closing a handle

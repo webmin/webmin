@@ -1,9 +1,9 @@
 # at-lib.pl
 # Functions for listing and creating at jobs
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 
 do "$config{'at_style'}-lib.pl";
@@ -84,8 +84,8 @@ sub save_allowed
 if (@_) {
 	local($_);
 	&open_tempfile(ALLOW, ">$config{allow_file}");
-	foreach (@_) {
-		&print_tempfile(ALLOW, $_,"\n");
+	foreach my $u (@_) {
+		&print_tempfile(ALLOW, $u,"\n");
 		}
 	&close_tempfile(ALLOW);
 	chmod(0444, $config{allow_file});
@@ -102,11 +102,10 @@ else {
 sub save_denied
 {
 &lock_file($config{deny_file});
-if (@_) {
-	local($_);
-	&open_tempfile(DENY, "> $config{deny_file}");
-	foreach (@_) {
-		&print_tempfile(DENY, $_,"\n");
+if (@_ || !-r $config{'allow_file'}) {
+	&open_tempfile(DENY, ">$config{deny_file}");
+	foreach my $u (@_) {
+		&print_tempfile(DENY, $u,"\n");
 		}
 	&close_tempfile(DENY);
 	chmod(0444, $config{deny_file});
