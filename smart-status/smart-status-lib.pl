@@ -4,10 +4,10 @@ Functions for getting SMART status
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
-&foreign_require("fdisk", "fdisk-lib.pl");
+&foreign_require("fdisk");
 
 =head2 get_smart_version()
 
