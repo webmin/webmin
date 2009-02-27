@@ -118,6 +118,7 @@ EOF
 
 sub theme_prebody
 {
+my $module_name = &get_module_name();
 if ($script_name =~ /session_login.cgi/) {
 	# Generate CSS link
 	print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/style.css'>\n";
@@ -605,6 +606,8 @@ sub theme_footer
 {
 my $i;
 my $count = 0;
+my $module_name = &get_module_name();
+my %module_info = &get_module_info($module_name);
 for($i=0; $i+1<@_; $i+=2) {
 	local $url = $_[$i];
 	if ($url ne '/' || !$tconfig{'noindex'}) {

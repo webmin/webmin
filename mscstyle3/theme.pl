@@ -191,6 +191,8 @@
 sub theme_header {
 
 local @available = ("webmin", "system", "servers", "cluster", "hardware", "", "net", "kororaweb");
+my $module_name = &get_module_name();
+my %module_info = &get_module_info($module_name);
 
 local $ll;
 local %access = &get_module_acl();
@@ -499,6 +501,8 @@ else {
 
 sub theme_footer {
 local $i;
+my $module_name = &get_module_name();
+my %module_info = &get_module_info($module_name);
 
 if ($theme_no_table) {
 	print "</ul>\n";
