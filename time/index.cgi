@@ -15,7 +15,7 @@ else {
 	$arr = "0";
 	}
 &ui_print_header(undef,  $text{ 'index_title' }, "", "index", 1, 1, undef,
-	&help_search_link("date hwclock", "man"),
+	&help_search_link("date hwclock ntpdate", "man"),
 	qq(<script src="time.js"></script>\n),
 	qq(onLoad="F=[$arr];timeInit(F); setTimeout('timeUpdate(F)', 5000);"));
 

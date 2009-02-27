@@ -1,8 +1,8 @@
 #!/usr/local/bin/perl
 
-do "../web-lib.pl";
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 $cron_cmd = "$module_config_directory/sync.pl";
 if ($config{'zone_style'}) {
