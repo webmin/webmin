@@ -107,7 +107,10 @@ if ($config{'date_subs'}) {
 	eval "use POSIX";
 	eval "use posix" if ($@);
 	local @tm = localtime(time());
-	return strftime($_[0], @tm);
+	&clear_time_locale();
+	local $rv = strftime($_[0], @tm);
+	&reset_time_locale();
+	return $rv;
 	}
 else {
 	return $_[0];
