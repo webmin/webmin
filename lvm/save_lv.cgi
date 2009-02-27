@@ -3,7 +3,6 @@
 # Create, update or delete a logical volume
 
 require './lvm-lib.pl';
-&foreign_require("fdisk", "fdisk-lib.pl");
 &ReadParse();
 
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();

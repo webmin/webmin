@@ -1,9 +1,9 @@
 # fdisk-lib.pl
 # Functions for disk management under linux
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("mount", "mount-lib.pl");
 if (&foreign_check("raid")) {
 	&foreign_require("raid", "raid-lib.pl");

@@ -3,7 +3,6 @@
 # Display a form for editing or creating a physical volume
 
 require './lvm-lib.pl';
-&foreign_require("fdisk", "fdisk-lib.pl");
 &ReadParse();
 ($vg) = grep { $_->{'name'} eq $in{'vg'} } &list_volume_groups();
 

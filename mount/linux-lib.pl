@@ -603,15 +603,28 @@ if ($_[2] eq "bind") {
 	}
 $opts = @opts ? "-o ".quotemeta(join(",", @opts)) : "";
 &parse_options($_[2], $_[3]);
+
+# Work out args for label or UUID
+local $devargs;
+if ($_[1] =~ /LABEL=(.*)/) {
+	$devargs = "-L ".quotemeta($1);
+	}
+elsif ($_[1] =~ /UUID=(\S+)/) {
+	$devargs = "-U ".quotemeta($1);
+	}
+else {
+	$devargs = quotemeta($_[1]);
+	}
+
 if ($_[2] eq "swap") {
 	# Use swapon to add the swap space..
 	local $priarg = $options{'pri'} ne "" ? "-p $options{'pri'}" : "";
-	$out = &backquote_logged("swapon $priarg $_[1] 2>&1");
+	$out = &backquote_logged("swapon $priarg $devargs 2>&1");
 	if ($out =~ /Invalid argument/) {
 		# looks like this swap partition isn't ready yet.. set it up
-		$out = &backquote_logged("mkswap $_[1] 2>&1");
+		$out = &backquote_logged("mkswap $devargs 2>&1");
 		if ($?) { return "mkswap failed : <pre>$out</pre>"; }
-		$out = &backquote_logged("swapon $_[1] 2>&1");
+		$out = &backquote_logged("swapon $devargs 2>&1");
 		}
 	if ($?) { return "<pre>$out</pre>"; }
 	}
@@ -653,9 +666,8 @@ elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 		    ($options{'workgroup'} ? "-W $options{'workgroup'} " : "").
 		    ($options{'clientname'} ? "-n $options{'clientname'} " : "").
 		    ($options{'machinename'} ? "-I $options{'machinename'} " : "");
-		&foreign_require("proc", "proc-lib.pl");
-		local ($fh, $fpid) = &foreign_call(
-			"proc", "pty_process_exec_logged",
+		&foreign_require("proc");
+		local ($fh, $fpid) = &proc::pty_process_exec_logged(
 			"sh -c 'smbmount $shar $_[0] -d 0 $opts'");
 		if ($options{'passwd'}) {
 			local $w = &wait_for($fh, "word:");
@@ -704,15 +716,7 @@ elsif ($_[2] eq $smbfs_fs || $_[2] eq "cifs") {
 else {
 	# some filesystem supported by mount
 	local $fs = $_[2] eq "*" ? "auto" : $_[2];
-	if ($_[1] =~ /LABEL=(.*)/) {
-		$cmd = "mount -t $fs -L ".quotemeta($1)." $opts ".quotemeta($_[0]);
-		}
-	elsif ($_[1] =~ /UUID=(\S+)/) {
-		$cmd = "mount -t $fs -U ".quotemeta($1)." $opts ".quotemeta($_[0]);
-		}
-	else {
-		$cmd = "mount -t $fs $opts ".quotemeta($_[1])." ".quotemeta($_[0]);
-		}
+	$cmd = "mount -t $fs $opts $devargs ".quotemeta($_[0]);
 	$out = &backquote_logged("$cmd 2>&1 </dev/null");
 	if ($?) { return "<pre>$out</pre>"; }
 	}
@@ -983,21 +987,20 @@ elsif ($_[0] eq "autofs") {
 	}
 elsif ($_[0] eq "swap") {
 	# Swap file or device
-	&foreign_require("fdisk", "fdisk-lib.pl");
+	&foreign_require("fdisk");
 	printf "<tr> <td valign=top><b>$text{'linux_swapfile'}</b></td>\n";
 	print "<td colspan=3>\n";
 	local ($found, $ufound);
 
 	# Show partitions input
-	local $sel = &foreign_call("fdisk", "partition_select", "lnx_disk",
-				   $_[1], 3, \$found);
+	local $sel = &fdisk::partition_select("lnx_disk", $_[1], 3, \$found);
 	printf "<input type=radio name=lnx_dev value=0 %s> %s %s<br>\n",
 		$found ? "checked" : "", $text{'linux_disk'}, $sel;
 
 	# Show UUID input
 	if ($has_volid || -d $uuid_directory) {
 		local $u = $_[1] =~ /UUID=(\S+)/ ? $1 : undef;
-		local $usel = &fdisk::volid_select("lnx_volid", $u, \$ufound);
+		local $usel = &fdisk::volid_select("lnx_uuid", $u, \$ufound);
 		if ($usel) {
 			printf "<input type=radio name=lnx_dev value=5 %s> %s %s<br>\n", $ufound ? "checked" : "", $text{'linux_usel'}, $usel;
 			}
@@ -1035,21 +1038,20 @@ elsif ($_[0] eq "bind") {
 	}
 else {
 	# This is some linux disk-based filesystem
-	&foreign_require("fdisk", "fdisk-lib.pl");
+	&foreign_require("fdisk");
 	printf "<tr> <td valign=top><b>%s</b></td>\n", &fstype_name($_[0]);
 	print "<td colspan=3>\n";
 	local ($found, $rfound, $lfound, $vfound, $ufound, $rsel, $c);
 
 	# Show regular partition input
-	local $sel = &foreign_call("fdisk", "partition_select", "lnx_disk",
-				   $_[1], 0, \$found);
+	local $sel = &fdisk::partition_select("lnx_disk", $_[1], 0, \$found);
 	printf "<input type=radio name=lnx_dev value=0 %s> %s %s<br>\n",
 		$found ? "checked" : "", $text{'linux_disk'}, $sel;
 
 	# Show RAID input
 	if (&foreign_check("raid")) {
-		&foreign_require("raid", "raid-lib.pl");
-		local $conf = &foreign_call("raid", "get_raidtab");
+		&foreign_require("raid");
+		local $conf = &raid::get_raidtab();
 		foreach $c (@$conf) {
 			if ($c->{'active'}) {
 				$rsel .= sprintf "<option value=%s %s>%s\n",
@@ -1068,12 +1070,11 @@ else {
 
 	# Show LVM input
 	if (&foreign_check("lvm")) {
-		&foreign_require("lvm", "lvm-lib.pl");
-		local @vgs = &foreign_call("lvm", "list_volume_groups");
+		&foreign_require("lvm");
+		local @vgs = &lvm::list_volume_groups();
 		local @lvs;
 		foreach $v (@vgs) {
-			push(@lvs, &foreign_call("lvm",
-					"list_logical_volumes", $v->{'name'}));
+			push(@lvs, &lvm::list_logical_volumes($v->{'name'}));
 			}
 		if (@lvs) {
 			local $lsel;

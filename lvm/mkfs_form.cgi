@@ -5,10 +5,9 @@
 require './lvm-lib.pl';
 &ReadParse();
 &ui_print_header(undef, $text{'mkfs_title'}, "");
-&foreign_require("fdisk", "fdisk-lib.pl");
 
 print "<b>",&text('mkfs_desc', "<tt>$in{'fs'}</tt>",
-	&foreign_call("fdisk", "fstype_name", $in{'fs'}),
+	&fdisk::fstype_name($in{'fs'}),
 	"<tt>$in{'dev'}</tt>"),"</b><br>\n";
 
 print &ui_form_start("mkfs.cgi");

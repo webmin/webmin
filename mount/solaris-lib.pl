@@ -469,7 +469,7 @@ elsif ($_[0] eq "ufs") {
 	# somewhere else
 	print "<tr> <td valign=top><b>$text{'solaris_ufs'}</b></td>\n";
 	print "<td colspan=3>\n";
-	&foreign_require("format", "format-lib.pl");
+	&foreign_require("format");
 
 	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/ ||
 	    $_[1] =~ /^\/dev\/dsk\/c([0-9]+)d([0-9]+)s([0-9]+)$/) {
@@ -486,9 +486,8 @@ elsif ($_[0] eq "ufs") {
 		}
 
 	local $found;
-	local $sel = &foreign_call("format", "partition_select",
-				   "ufs_disk", $_[1], 0,
-				   $ufs_dev ? \$found : undef);
+	local $sel = &format::partition_select("ufs_disk", $_[1], 0,
+					       $ufs_dev ? \$found : undef);
 	printf "<input type=radio name=ufs_dev value=0 %s> %s : %s<br>\n",
 		$ufs_dev == 0 ? "checked" : "", $text{'solaris_scsi'}, $sel;
 
@@ -509,7 +508,7 @@ elsif ($_[0] eq "swap") {
 	# Swapping to a disk partition or a file
 	print "<tr> <td valign=top><b>$text{'solaris_swapfile'}</b></td>\n";
 	print "<td colspan=3>\n";
-	&foreign_require("format", "format-lib.pl");
+	&foreign_require("format");
 
 	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/ ||
 	    $_[1] =~ /^\/dev\/dsk\/c([0-9]+)d([0-9]+)s([0-9]+)$/) {
@@ -523,9 +522,8 @@ elsif ($_[0] eq "swap") {
 		}
 
 	local $found;
-	local $sel = &foreign_call("format", "partition_select",
-				   "swap_disk", $_[1], 0,
-				   $swap_dev ? \$found : undef);
+	local $sel = &format::partition_select("swap_disk", $_[1], 0,
+					       $swap_dev ? \$found : undef);
 	printf "<input type=radio name=swap_dev value=0 %s> %s : %s<br>\n",
 		$swap_dev == 0 ? "checked" : "", $text{'solaris_scsi'}, $sel;
 
@@ -571,7 +569,7 @@ elsif ($_[0] eq "pcfs") {
 	# Mounting a SCSI msdos filesystem
 	print "<tr> <td valign=top><b>$text{'solaris_msdos'}</b></td>\n";
 	print "<td colspan=3>\n";
-	&foreign_require("format", "format-lib.pl");
+	&foreign_require("format");
 
 	if ($_[1] =~ /^\/dev\/dsk\/c([0-9]+)t([0-9]+)d([0-9]+)s([0-9]+)$/ ||
 	    $_[1] =~ /^\/dev\/dsk\/c([0-9]+)d([0-9]+)s([0-9]+)$/) {
@@ -585,9 +583,8 @@ elsif ($_[0] eq "pcfs") {
 		}
 
 	local $found;
-	local $sel = &foreign_call("format", "partition_select",
-				   "ufs_disk", $_[1], 0,
-				   $pcfs_dev ? \$found : undef);
+	local $sel = &format::partition_select("ufs_disk", $_[1], 0,
+					       $pcfs_dev ? \$found : undef);
 	printf "<input type=radio name=ufs_dev value=0 %s> %s : %s<br>\n",
 		$pcfs_dev == 0 ? "checked" : "", $text{'solaris_scsi'}, $sel;
 

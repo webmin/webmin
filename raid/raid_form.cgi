@@ -3,8 +3,8 @@
 # Display a form for creating a raid device
 
 require './raid-lib.pl';
-&foreign_require("mount", "mount-lib.pl");
-&foreign_require("lvm", "lvm-lib.pl");
+&foreign_require("mount");
+&foreign_require("lvm");
 &ReadParse();
 $conf = &get_raidtab();
 

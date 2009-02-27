@@ -3,7 +3,6 @@
 # Display a form for editing or creating a volume group
 
 require './lvm-lib.pl';
-&foreign_require("fdisk", "fdisk-lib.pl");
 &ReadParse();
 
 if ($in{'vg'}) {

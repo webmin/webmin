@@ -1,10 +1,10 @@
 # raid-lib.pl
 # Functions for managing RAID
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
-&foreign_require("fdisk", "fdisk-lib.pl");
+&foreign_require("fdisk");
 
 open(MODE, "$module_config_directory/mode");
 chop($raid_mode = <MODE>);
@@ -468,8 +468,8 @@ else { return $v[0]->{'value'}; }
 # Returns an array of  directory, type, mounted
 sub device_status
 {
-@mounted = &foreign_call("mount", "list_mounted") if (!@mounted);
-@mounts = &foreign_call("mount", "list_mounts") if (!@mounts);
+@mounted = &mount::list_mounted() if (!@mounted);
+@mounts = &mount::list_mounts() if (!@mounts);
 local $label = &fdisk::get_label($_[0]);
 local $volid = &fdisk::get_volid($_[0]);
 
@@ -486,10 +486,9 @@ elsif ($mount) { return ($mount->[0], $mount->[2], 0,
 			 &indexof($mount, @mounts)); }
 if (!defined(@physical_volumes)) {
 	@physical_volumes = ();
-	foreach $vg (&foreign_call("lvm", "list_volume_groups")) {
+	foreach $vg (&lvm::list_volume_groups()) {
 		push(@physical_volumes,
-			&foreign_call("lvm", "list_physical_volumes",
-					     $vg->{'name'}));
+			&lvm::list_physical_volumes($vg->{'name'}));
 		}
 	}
 foreach $pv (@physical_volumes) {
@@ -503,9 +502,9 @@ return ();
 # Returns a list of options, suitable for ui_select
 sub find_free_partitions
 {
-&foreign_require("fdisk", "fdisk-lib.pl");
-&foreign_require("mount", "mount-lib.pl");
-&foreign_require("lvm", "lvm-lib.pl");
+&foreign_require("fdisk");
+&foreign_require("mount");
+&foreign_require("lvm");
 local %skip = map { $_, 1 } @{$_[0]};
 local %used;
 local $c;
@@ -523,7 +522,7 @@ foreach $d (&fdisk::list_disks_partitions()) {
 			 $skip{$p->{'device'}});
 		local @st = &device_status($p->{'device'});
 		next if (@st);
-		$tag = &foreign_call("fdisk", "tag_name", $p->{'type'});
+		$tag = &fdisk::tag_name($p->{'type'});
 		$p->{'blocks'} =~ s/\+$//;
 		push(@disks, [ $p->{'device'},
 			       $p->{'desc'}.
@@ -544,8 +543,7 @@ foreach $c (@$conf) {
 local $vg;
 foreach $vg (&lvm::list_volume_groups()) {
 	local $lv;
-	foreach $lv (&foreign_call("lvm", "list_logical_volumes",
-				   $vg->{'name'})) {
+	foreach $lv (&lvm::list_logical_volumes($vg->{'name'})) {
 		next if ($lv->{'perm'} ne 'rw' || $used{$lv->{'device'}} ||
 			 $skip->{$lv->{'device'}});
 		local @st = &device_status($lv->{'device'});
@@ -624,7 +622,7 @@ foreach my $k (grep { !$done{$_} && defined($notif->{$_}) } keys %$notif) {
 sub get_mdadm_action
 {
 if (&foreign_installed("init")) {
-	&foreign_require("init", "init-lib.pl");
+	&foreign_require("init");
 	foreach my $a ("mdmonitor", "mdadm", "mdadmd") {
 		local $st = &init::action_status($a);
 		return $a if ($st);
@@ -639,7 +637,7 @@ sub get_mdadm_monitoring
 {
 local $act = &get_mdadm_action();
 if ($act) {
-	&foreign_require("init", "init-lib.pl");
+	&foreign_require("init");
 	local $st = &init::action_status($act);
 	return $st == 2;
 	}
@@ -654,7 +652,7 @@ sub save_mdadm_monitoring
 local ($enabled) = @_;
 local $act = &get_mdadm_action();
 if ($act) {
-	&foreign_require("init", "init-lib.pl");
+	&foreign_require("init");
 	if ($enabled) {
 		&init::enable_at_boot($act);
 		&init::stop_action($act);

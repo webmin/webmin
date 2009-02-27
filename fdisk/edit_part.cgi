@@ -239,9 +239,6 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 	@types = &conv_type($pinfo->{'type'});
 	if (!$in{'new'} && !@stat && @types) {
 		# Show form to mount filesystem
-		print "<tr> <form action=../mount/edit_mount.cgi>\n";
-		print "<input type=hidden name=newdev value=$dev>\n";
-		print "<td valign=top>\n";
 		if ($types[0] eq "swap") {
 			# Swap partition
 			print &ui_buttons_row("../mount/edit_mount.cgi",
@@ -265,7 +262,6 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 		}
 
 	print &ui_buttons_end();
-	print "<p>\n";
 	}
 
 &ui_print_footer("", $text{'index_return'});

@@ -2,9 +2,9 @@
 # Functions for handling the /etc/[v]fstab file. Some functions are defined in
 # here, and some in OS-specific files named <os_type>-lib.pl
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 $filesystem_users_file = "$module_config_directory/filesystem-users";
 @access_fs = split(/\s+/, $access{'fs'});

@@ -65,7 +65,7 @@ if (@parts) {
 				  $text{'disk_end'},
 				  $text{'disk_use'},
 				  $anyfree ? ( $text{'disk_free'} ) : ( ),
-			         ], 100, 1, \@tds);
+			         ], 100, 0, \@tds);
 	foreach $p (@parts) {
 		$url = "edit_part.cgi?disk=$d->{'index'}&part=$p->{'index'}";
 

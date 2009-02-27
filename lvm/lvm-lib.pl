@@ -1,14 +1,15 @@
 # lvm-lib.pl
 # Common functions for managing VGs, PVs and LVs
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
-&foreign_require("mount", "mount-lib.pl");
+&foreign_require("mount");
 if (&foreign_check("raid")) {
-	&foreign_require("raid", "raid-lib.pl");
+	&foreign_require("raid");
 	$has_raid++;
 	}
+&foreign_require("fdisk");
 
 $lvm_proc = "/proc/lvm";
 $lvm_tab = "/etc/lvmtab";
@@ -447,11 +448,11 @@ else {
 sub resize_filesystem
 {
 if ($_[1] eq "ext2" || $_[1] eq "ext3") {
-	&foreign_require("proc", "proc-lib.pl");
+	&foreign_require("proc");
 	if (&has_command("e2fsadm")) {
 		# The e2fsadm command can re-size an LVM and filesystem together
 		local $cmd = "e2fsadm -v -L $_[2]k '$_[0]->{'device'}'";
-		local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+		local ($fh, $fpid) = &proc::pty_process_exec($cmd);
 		print $fh "yes\n";
 		local $out;
 		while(<$fh>) {
@@ -571,13 +572,13 @@ return %rv;
 # Returns an array of  directory, type, mounted
 sub device_status
 {
-@mounted = &foreign_call("mount", "list_mounted") if (!@mounted);
-@mounts = &foreign_call("mount", "list_mounts") if (!@mounts);
-local $label = &fdisk::get_label($_[0]);
+@mounted = &mount::list_mounted() if (!@mounted);
+@mounts = &mount::list_mounts() if (!@mounts);
+my $label = &fdisk::get_label($_[0]);
 
-local ($mounted) = grep { &same_file($_->[1], $_[0]) ||
+my ($mounted) = grep { &same_file($_->[1], $_[0]) ||
 			  $_->[1] eq "LABEL=$label" } @mounted;
-local ($mount) = grep { &same_file($_->[1], $_[0]) ||
+my ($mount) = grep { &same_file($_->[1], $_[0]) ||
 			$_->[1] eq "LABEL=$label" } @mounts;
 if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
 			&indexof($mount, @mounts),
@@ -585,9 +586,9 @@ if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
 elsif ($mount) { return ($mount->[0], $mount->[2], 0,
 			 &indexof($mount, @mounts)); }
 elsif ($has_raid) {
-	$raidconf = &foreign_call("raid", "get_raidtab") if (!$raidconf);
-	foreach $c (@$raidconf) {
-		foreach $d (raid::find_value('device', $c->{'members'})) {
+	$raidconf = &raid::get_raidtab() if (!$raidconf);
+	foreach my $c (@$raidconf) {
+		foreach my $d (&raid::find_value('device', $c->{'members'})) {
 			return ( $c->{'value'}, "raid", 1 ) if ($d eq $_[0]);
 			}
 		}
@@ -634,7 +635,7 @@ foreach $vg (&list_volume_groups()) {
 
 # Show available partitions
 local @opts;
-foreach $d (&foreign_call("fdisk", "list_disks_partitions")) {
+foreach $d (&fdisk::list_disks_partitions()) {
 	foreach $p (@{$d->{'parts'}}) {
 		next if ($used{$p->{'device'}} || $p->{'extended'});
 		local @ds = &device_status($p->{'device'});
@@ -643,7 +644,7 @@ foreach $d (&foreign_call("fdisk", "list_disks_partitions")) {
 			local $label = &fdisk::get_label($p->{'device'});
 			next if ($used{"LABEL=$label"});
 			}
-		local $tag = &foreign_call("fdisk", "tag_name", $p->{'type'});
+		local $tag = &fdisk::tag_name($p->{'type'});
 		push(@opts, [ $p->{'device'},
 			$p->{'desc'}.
 			($tag ? " ($tag)" : "").
@@ -653,7 +654,7 @@ foreach $d (&foreign_call("fdisk", "list_disks_partitions")) {
 	}
 
 # Show available RAID devices
-local $conf = &foreign_call("raid", "get_raidtab");
+local $conf = &fdisk::get_raidtab();
 foreach $c (@$conf) {
 	next if ($used{$c->{'value'}});
 	local @ds = &device_status($c->{'value'});

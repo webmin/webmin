@@ -237,7 +237,7 @@ elsif ($_[2] eq "smbfs") {
 	delete($roptions->{'user'});
 	local $opts = &join_options($_[2], $roptions);
 	$opts = $opts ne "-" ? " -o $opts" : "";
-	&foreign_require("proc", "proc-lib.pl");
+	&foreign_require("proc");
 	local ($fh, $fpid) = &proc::pty_process_exec_logged(
 		"mount -t $_[2] $opts $share $_[0]");
 	local $got;

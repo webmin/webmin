@@ -757,6 +757,7 @@ my $charset = defined($force_charset) ? $force_charset : &get_charset();
 &PrintHeader($charset);
 &load_theme_library();
 if (defined(&theme_header)) {
+	$module_name = &get_module_name();
 	&theme_header(@_);
 	return;
 	}
@@ -1069,11 +1070,13 @@ a link destination, and the second the link text. For example :
 sub footer
 {
 &load_theme_library();
+my %this_module_info = &get_module_info(&get_module_name());
 if (defined(&theme_footer)) {
+	$module_name = &get_module_name();	# Old themes use these
+	%module_info = %this_module_info;
 	&theme_footer(@_);
 	return;
 	}
-my %this_module_info = &get_module_info(&get_module_name());
 for(my $i=0; $i+1<@_; $i+=2) {
 	my $url = $_[$i];
 	if ($url ne '/' || !$tconfig{'noindex'}) {

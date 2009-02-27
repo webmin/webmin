@@ -3,8 +3,8 @@
 # Display information about a raid device
 
 require './raid-lib.pl';
-&foreign_require("mount", "mount-lib.pl");
-&foreign_require("lvm", "lvm-lib.pl");
+&foreign_require("mount");
+&foreign_require("lvm");
 &ReadParse();
 
 print "Refresh: $config{'refresh'}\r\n"
