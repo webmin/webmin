@@ -299,7 +299,7 @@ as a replacement for print when writing to pipes or sockets.
 =cut
 sub sysprint
 {
-my $fh = $_[0];
+my $fh = &callers_package($_[0]);
 my $str = join('', @_[1..$#_]);
 syswrite $fh, $str, length($str);
 }
@@ -610,6 +610,7 @@ string pointed to be the buffer reference.
 sub read_fully
 {
 my ($fh, $buf, $len) = @_;
+$fh = &callers_package($fh);
 my $got = 0;
 while($got < $len) {
 	my $r = read(STDIN, $$buf, $len-$got, $got);
@@ -2405,40 +2406,34 @@ parameters are :
 =cut
 sub open_socket
 {
-
-# Force file handle into caller's package
-my $h = $_[2];
-my $callpkg = (caller(0))[0];
-if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
-	$h = $callpkg."::".$h;
-	}
+my ($host, $port, $fh, $err) = @_;
+$fh = &callers_package($fh);
 
 if ($gconfig{'debug_what_net'}) {
-	&webmin_debug_log('TCP', "host=$_[0] port=$_[1]");
+	&webmin_debug_log('TCP', "host=$host port=$port");
 	}
-if (!socket($h, PF_INET, SOCK_STREAM, getprotobyname("tcp"))) {
-	if ($_[3]) { ${$_[3]} = "Failed to create socket : $!"; return 0; }
+if (!socket($fh, PF_INET, SOCK_STREAM, getprotobyname("tcp"))) {
+	if ($err) { $$err = "Failed to create socket : $!"; return 0; }
 	else { &error("Failed to create socket : $!"); }
 	}
 my $addr;
-if (!($addr = inet_aton($_[0]))) {
-	if ($_[3]) { ${$_[3]} = "Failed to lookup IP address for $_[0]"; return 0; }
-	else { &error("Failed to lookup IP address for $_[0]"); }
+if (!($addr = inet_aton($host))) {
+	if ($err) { $$err = "Failed to lookup IP address for $host"; return 0; }
+	else { &error("Failed to lookup IP address for $host"); }
 	}
 if ($gconfig{'bind_proxy'}) {
-	if (!bind($h, pack_sockaddr_in(0, inet_aton($gconfig{'bind_proxy'})))) {
-		if ($_[3]) { ${$_[3]} = "Failed to bind to source address : $!"; return 0; }
+	if (!bind($fh,pack_sockaddr_in(0, inet_aton($gconfig{'bind_proxy'})))) {
+		if ($err) { $$err = "Failed to bind to source address : $!"; return 0; }
 		else { &error("Failed to bind to source address : $!"); }
 		}
 	}
-if (!connect($h, pack_sockaddr_in($_[1], $addr))) {
-	if ($_[3]) { ${$_[3]} = "Failed to connect to $_[0]:$_[1] : $!"; return 0; }
-	else { &error("Failed to connect to $_[0]:$_[1] : $!"); }
+if (!connect($fh, pack_sockaddr_in($port, $addr))) {
+	if ($err) { $$err = "Failed to connect to $host:$port : $!"; return 0; }
+	else { &error("Failed to connect to $host:$port : $!"); }
 	}
-my $old = select($h); $| =1; select($old);
+my $old = select($fh); $| =1; select($old);
 return 1;
 }
-
 
 =head2 download_timeout
 
@@ -2450,8 +2445,7 @@ sub download_timeout
 $download_timed_out = "Download timed out";
 }
 
-
-=head2 ftp_command(command, expected, [&error])
+=head2 ftp_command(command, expected, [&error], [filehandle])
 
 Send an FTP command, and die if the reply is not what was expected. Mainly
 for internal use by the ftp_download and ftp_upload functions.
@@ -2460,16 +2454,11 @@ for internal use by the ftp_download and ftp_upload functions.
 sub ftp_command
 {
 my ($cmd, $expect, $err, $fh) = @_;
-
-# Work out file handle, and force into caller's package
 $fh ||= "SOCK";
-my $callpkg = (caller(0))[0];
-if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
-	$fh = $callpkg."::".$fh;
-	}
+$fh = &callers_package($fh);
 
 my $line;
-my $what = $cmd ne "" ? "<i>$cmd/i>" : "initial connection";
+my $what = $cmd ne "" ? "<i>$cmd</i>" : "initial connection";
 if ($cmd ne "") {
         print $fh "$cmd\r\n";
         }
@@ -7139,12 +7128,7 @@ if (@_ == 1) {
 else {
 	# Actually opening
 	my ($fh, $file, $noerror, $notemp, $safe) = @_;
-
-	# Force file handler into caller's package
-	my $callpkg = (caller(0))[0];
-	if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
-		$fh = $callpkg."::".$fh;
-		}
+	$fh = &callers_package($fh);
 
 	my %gaccess = &get_module_acl(undef, "");
 	my $db = $gconfig{'debug_what_write'};
@@ -7255,13 +7239,7 @@ successful. The handle must have been one passed to open_tempfile.
 sub close_tempfile
 {
 my $file;
-
-# Force file handle into caller's package
-my $fh = $_[0];
-my $callpkg = (caller(0))[0];
-if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
-	$fh = $callpkg."::".$fh;
-	}
+my $fh = &callers_package($fh);
 
 if (defined($file = $main::open_temphandles{$fh})) {
 	# Closing a handle
@@ -7312,10 +7290,7 @@ only partially written.
 sub print_tempfile
 {
 my ($fh, @args) = @_;
-my $callpkg = (caller(0))[0];
-if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
-	$fh = $callpkg."::".$fh;
-	}
+$fh = &callers_package($fh);
 (print $fh @args) || &error(&text("efilewrite",
 			    $main::open_temphandles{$fh} || $fh, $!));
 }
@@ -7702,6 +7677,7 @@ exactly the same as Perl's open function.
 sub open_readfile
 {
 my ($fh, $file) = @_;
+$fh = &callers_package($fh);
 my $realfile = &translate_filename($file);
 &webmin_debug_log('READ', $file) if ($gconfig{'debug_what_read'});
 return open($fh, "<".$realfile);
@@ -7717,6 +7693,7 @@ indicates if the command modifies the state of the system or not.
 sub open_execute_command
 {
 my ($fh, $cmd, $mode, $safe) = @_;
+$fh = &callers_package($fh);
 my $realcmd = &translate_command($cmd);
 if (&is_readonly_mode() && !$safe) {
 	# Don't actually run it
@@ -8481,6 +8458,20 @@ if ($main::clear_time_locale_count == 1) {
 		};
 	}
 $main::clear_time_locale_count--;
+}
+
+# callers_package(filehandle)
+# Convert a non-module filehandle like FOO to one qualified with the 
+# caller's caller's package, like fsdump::FOO
+sub callers_package
+{
+my ($fh) = @_;
+my $callpkg = (caller(1))[0];
+if (!ref($fh) && $fh !~ /::/ &&
+    $callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
+        $fh = $callpkg."::".$fh;
+        }
+return $fh;
 }
 
 $done_web_lib_funcs = 1;
