@@ -12,7 +12,7 @@ require Exporter;
 
 # Add global variables in web-lib.pl
 push(@EXPORT, qw(&unique));
-push(@EXPORT, qw($config_directory $var_directory $remote_error_handler %month_to_number_map %number_to_month_map $webmin_feedback_address $default_lang $default_charset $module_index_name $module_index_link %in $in @in $progress_callback_prefix $progress_callback_url));
+push(@EXPORT, qw($config_directory $var_directory $remote_error_handler %month_to_number_map %number_to_month_map $webmin_feedback_address $default_lang $default_charset $module_index_name $module_index_link %in $in @in $progress_callback_prefix $progress_callback_url $wait_for_debug $wait_for_input @matches));
 
 require "web-lib.pl";
 require "ui-lib.pl";
