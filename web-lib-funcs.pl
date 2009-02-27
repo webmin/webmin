@@ -1072,7 +1072,7 @@ if (defined(&theme_footer)) {
 	&theme_footer(@_);
 	return;
 	}
-local %this_module_info = &get_module_info(&get_module_name());
+my %this_module_info = &get_module_info(&get_module_name());
 for(my $i=0; $i+1<@_; $i+=2) {
 	my $url = $_[$i];
 	if ($url ne '/' || !$tconfig{'noindex'}) {
@@ -1242,7 +1242,7 @@ if ($gconfig{'os_type'} =~ /-linux$/ && -r "/proc/$$/cmdline") {
 	opendir(PROCDIR, "/proc");
 	foreach my $f (readdir(PROCDIR)) {
 		if ($f eq int($f) && $f != $$) {
-			local $line = &read_file_contents("/proc/$f/cmdline");
+			my $line = &read_file_contents("/proc/$f/cmdline");
 			if ($line =~ /$_[0]/) {
 				push(@pids, $f);
 				}
@@ -1498,23 +1498,23 @@ my $rv = undef;
 my $slash = $gconfig{'os_type'} eq 'windows' ? '\\' : '/';
 if ($_[0] =~ /^\// || $_[0] =~ /^[a-z]:[\\\/]/i) {
 	# Absolute path given - just use it
-	local $t = &translate_filename($_[0]);
+	my $t = &translate_filename($_[0]);
 	$rv = (-x $t && !-d _) ? $_[0] : undef;
 	}
 else {
 	# Check each directory in the path
-	local %donedir;
+	my %donedir;
 	foreach my $d (split($path_separator, $ENV{'PATH'})) {
 		next if ($donedir{$d}++);
 		$d =~ s/$slash$// if ($d ne $slash);
-		local $t = &translate_filename("$d/$_[0]");
+		my $t = &translate_filename("$d/$_[0]");
 		if (-x $t && !-d _) {
 			$rv = $d.$slash.$_[0];
 			last;
 			}
 		if ($gconfig{'os_type'} eq 'windows') {
 			foreach my $sfx (".exe", ".com", ".bat") {
-				local $t = &translate_filename("$d/$_[0]").$sfx;
+				my $t = &translate_filename("$d/$_[0]").$sfx;
 				if (-r $t && !-d _) {
 					$rv = $d.$slash.$_[0].$sfx;
 					last;
@@ -1937,8 +1937,8 @@ Downloads data from a HTTP url to a local file or string. The parameters are :
 =cut
 sub http_download
 {
-local ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
-       $timeout, $osdn, $nocache, $headers) = @_;
+my ($host, $port, $page, $dest, $error, $cbfunc, $ssl, $user, $pass,
+    $timeout, $osdn, $nocache, $headers) = @_;
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('HTTP', "host=$host port=$port page=$page ssl=$ssl".
 				  ($user ? " user=$user pass=$pass" : "").
@@ -1946,16 +1946,16 @@ if ($gconfig{'debug_what_net'}) {
 	}
 if ($osdn) {
 	# Convert OSDN URL first
-	local $prot = $ssl ? "https://" : "http://";
-	local $portstr = $ssl && $port == 443 ||
+	my $prot = $ssl ? "https://" : "http://";
+	my $portstr = $ssl && $port == 443 ||
 			 !$ssl && $port == 80 ? "" : ":$port";
 	($host, $port, $page, $ssl) = &parse_http_url(
 		&convert_osdn_url($prot.$host.$portstr.$page));
 	}
 
 # Check if we already have cached the URL
-local $url = ($ssl ? "https://" : "http://").$host.":".$port.$page;
-local $cfile = &check_in_http_cache($url);
+my $url = ($ssl ? "https://" : "http://").$host.":".$port.$page;
+my $cfile = &check_in_http_cache($url);
 if ($cfile && !$nocache) {
 	# Yes! Copy to dest file or variable
 	&$cbfunc(6, $url) if ($cbfunc);
@@ -1972,11 +1972,11 @@ if ($cfile && !$nocache) {
 	}
 
 # Build headers
-local @headers;
+my @headers;
 push(@headers, [ "Host", $host ]);
 push(@headers, [ "User-agent", "Webmin" ]);
 if ($user) {
-	local $auth = &encode_base64("$user:$pass");
+	my $auth = &encode_base64("$user:$pass");
 	$auth =~ tr/\r\n//d;
 	push(@headers, [ "Authorization", "Basic $auth" ]);
 	}
@@ -1988,7 +1988,7 @@ foreach my $hname (keys %$headers) {
 $download_timed_out = undef;
 local $SIG{ALRM} = "download_timeout";
 alarm($timeout || 60);
-local $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
+my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
 alarm(0);
 $h = $download_timed_out if ($download_timed_out);
 if (!ref($h)) {
@@ -2010,8 +2010,9 @@ typically called by http_download.
 =cut
 sub complete_http_download
 {
-local($line, %header, @headers, $s);
-local $cbfunc = $_[3];
+local ($line, %header, @headers, $s);  # Kept local so that callback funcs
+				       # can access them.
+my $cbfunc = $_[3];
 
 # read headers
 alarm(60);
@@ -2021,7 +2022,7 @@ if ($line !~ /^HTTP\/1\..\s+(200|30[0-9])(\s+|$)/) {
 	if ($_[2]) { ${$_[2]} = $line; return; }
 	else { &error("Download failed : $line"); }
 	}
-local $rcode = $1;
+my $rcode = $1;
 &$cbfunc(1, $rcode >= 300 && $rcode < 400 ? 1 : 0)
 	if ($cbfunc);
 while(1) {
@@ -2040,7 +2041,7 @@ if ($download_timed_out) {
 if ($rcode >= 300 && $rcode < 400) {
 	# follow the redirect
 	&$cbfunc(5, $header{'location'}) if ($cbfunc);
-	local ($host, $port, $page, $ssl);
+	my ($host, $port, $page, $ssl);
 	if ($header{'location'} =~ /^(http|https):\/\/([^:]+):(\d+)(\/.*)?$/) {
 		$ssl = $1 eq 'https' ? 1 : 0;
 		$host = $2; $port = $3; $page = $4 || "/";
@@ -2079,7 +2080,7 @@ else {
 		}
 	else {
 		# Write to a file
-		local $got = 0;
+		my $got = 0;
 		if (!&open_tempfile(PFILE, ">$_[1]", 1)) {
 			if ($_[2]) { ${$_[2]} = "Failed to write to $_[1] : $!"; return; }
 			else { &error("Failed to write to $_[1] : $!"); }
@@ -2126,15 +2127,15 @@ Download data from an FTP site to a local file. The parameters are :
 =cut
 sub ftp_download
 {
-local ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port) = @_;
+my ($host, $file, $dest, $error, $cbfunc, $user, $pass, $port) = @_;
 $port ||= 21;
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('FTP', "host=$host port=$port file=$file".
 				 ($user ? " user=$user pass=$pass" : "").
 				 (ref($dest) ? "" : " dest=$dest"));
 	}
-local($buf, @n);
-local $cbfunc = $_[4];
+my ($buf, @n);
+my $cbfunc = $_[4];
 if (&is_readonly_mode()) {
 	if ($_[3]) { ${$_[3]} = "FTP connections not allowed in readonly mode";
 		     return 0; }
@@ -2142,8 +2143,8 @@ if (&is_readonly_mode()) {
 	}
 
 # Check if we already have cached the URL
-local $url = "ftp://".$host.$file;
-local $cfile = &check_in_http_cache($url);
+my $url = "ftp://".$host.$file;
+my $cfile = &check_in_http_cache($url);
 if ($cfile) {
 	# Yes! Copy to dest file or variable
 	&$cbfunc(6, $url) if ($cbfunc);
@@ -2163,10 +2164,10 @@ if ($cfile) {
 $download_timed_out = undef;
 local $SIG{ALRM} = "download_timeout";
 alarm(60);
-local $connected;
+my $connected;
 if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 	# download through http-style proxy
-	local $error;
+	my $error;
 	if (&open_socket($1, $2, "SOCK", \$error)) {
 		# Connected OK
 		if ($download_timed_out) {
@@ -2174,13 +2175,13 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 			if ($_[3]) { ${$_[3]} = $download_timed_out; return 0; }
 			else { &error($download_timed_out); }
 			}
-		local $esc = $_[1]; $esc =~ s/ /%20/g;
-		local $up = "$_[5]:$_[6]\@" if ($_[5]);
-		local $portstr = $port == 21 ? "" : ":$port";
+		my $esc = $_[1]; $esc =~ s/ /%20/g;
+		my $up = "$_[5]:$_[6]\@" if ($_[5]);
+		my $portstr = $port == 21 ? "" : ":$port";
 		print SOCK "GET ftp://$up$_[0]$portstr$esc HTTP/1.0\r\n";
 		print SOCK "User-agent: Webmin\r\n";
 		if ($gconfig{'proxy_user'}) {
-			local $auth = &encode_base64(
+			my $auth = &encode_base64(
 			   "$gconfig{'proxy_user'}:$gconfig{'proxy_pass'}");
 			$auth =~ tr/\r\n//d;
 			print SOCK "Proxy-Authorization: Basic $auth\r\n";
@@ -2207,7 +2208,7 @@ if (!$connected) {
 	&ftp_command("", 2, $_[3]) || return 0;
 	if ($_[5]) {
 		# Login as supplied user
-		local @urv = &ftp_command("USER $_[5]", [ 2, 3 ], $_[3]);
+		my @urv = &ftp_command("USER $_[5]", [ 2, 3 ], $_[3]);
 		@urv || return 0;
 		if (int($urv[1]/100) == 3) {
 			&ftp_command("PASS $_[6]", 2, $_[3]) || return 0;
@@ -2215,7 +2216,7 @@ if (!$connected) {
 		}
 	else {
 		# Login as anonymous
-		local @urv = &ftp_command("USER anonymous", [ 2, 3 ], $_[3]);
+		my @urv = &ftp_command("USER anonymous", [ 2, 3 ], $_[3]);
 		@urv || return 0;
 		if (int($urv[1]/100) == 3) {
 			&ftp_command("PASS root\@".&get_system_hostname(), 2,
@@ -2227,14 +2228,14 @@ if (!$connected) {
 	if ($_[1]) {
 		# get the file size and tell the callback
 		&ftp_command("TYPE I", 2, $_[3]) || return 0;
-		local $size = &ftp_command("SIZE $_[1]", 2, $_[3]);
+		my $size = &ftp_command("SIZE $_[1]", 2, $_[3]);
 		defined($size) || return 0;
 		if ($cbfunc) {
 			&$cbfunc(2, int($size));
 			}
 
 		# request the file
-		local $pasv = &ftp_command("PASV", 2, $_[3]);
+		my $pasv = &ftp_command("PASV", 2, $_[3]);
 		defined($pasv) || return 0;
 		$pasv =~ /\(([0-9,]+)\)/;
 		@n = split(/,/ , $1);
@@ -2243,7 +2244,7 @@ if (!$connected) {
 		&ftp_command("RETR $_[1]", 1, $_[3]) || return 0;
 
 		# transfer data
-		local $got = 0;
+		my $got = 0;
 		&open_tempfile(PFILE, ">$_[2]", 1);
 		while(read(CON, $buf, 1024) > 0) {
 			&print_tempfile(PFILE, $buf);
@@ -2293,8 +2294,8 @@ Upload data from a local file to an FTP site. The parameters are :
 =cut
 sub ftp_upload
 {
-local($buf, @n);
-local $cbfunc = $_[4];
+my ($buf, @n);
+my $cbfunc = $_[4];
 if (&is_readonly_mode()) {
 	if ($_[3]) { ${$_[3]} = "FTP connections not allowed in readonly mode";
 		     return 0; }
@@ -2315,7 +2316,7 @@ if ($download_timed_out) {
 &ftp_command("", 2, $_[3]) || return 0;
 if ($_[5]) {
 	# Login as supplied user
-	local @urv = &ftp_command("USER $_[5]", [ 2, 3 ], $_[3]);
+	my @urv = &ftp_command("USER $_[5]", [ 2, 3 ], $_[3]);
 	@urv || return 0;
 	if (int($urv[1]/100) == 3) {
 		&ftp_command("PASS $_[6]", 2, $_[3]) || return 0;
@@ -2323,7 +2324,7 @@ if ($_[5]) {
 	}
 else {
 	# Login as anonymous
-	local @urv = &ftp_command("USER anonymous", [ 2, 3 ], $_[3]);
+	my @urv = &ftp_command("USER anonymous", [ 2, 3 ], $_[3]);
 	@urv || return 0;
 	if (int($urv[1]/100) == 3) {
 		&ftp_command("PASS root\@".&get_system_hostname(), 2,
@@ -2335,13 +2336,13 @@ else {
 &ftp_command("TYPE I", 2, $_[3]) || return 0;
 
 # get the file size and tell the callback
-local @st = stat($_[2]);
+my @st = stat($_[2]);
 if ($cbfunc) {
 	&$cbfunc(2, $st[7]);
 	}
 
 # send the file
-local $pasv = &ftp_command("PASV", 2, $_[3]);
+my $pasv = &ftp_command("PASV", 2, $_[3]);
 defined($pasv) || return 0;
 $pasv =~ /\(([0-9,]+)\)/;
 @n = split(/,/ , $1);
@@ -2349,7 +2350,7 @@ $pasv =~ /\(([0-9,]+)\)/;
 &ftp_command("STOR $_[1]", 1, $_[3]) || return 0;
 
 # transfer data
-local $got;
+my $got;
 open(PFILE, $_[2]);
 while(read(PFILE, $buf, 1024) > 0) {
 	print CON $buf;
@@ -2380,8 +2381,8 @@ http_download and ftp_download functions.
 =cut
 sub no_proxy
 {
-local $ip = &to_ipaddress($_[0]);
-foreach $n (split(/\s+/, $gconfig{'noproxy'})) {
+my $ip = &to_ipaddress($_[0]);
+foreach my $n (split(/\s+/, $gconfig{'noproxy'})) {
 	return 1 if ($_[0] =~ /\Q$n\E/ ||
 		     $ip =~ /\Q$n\E/);
 	}
@@ -2404,7 +2405,7 @@ parameters are :
 =cut
 sub open_socket
 {
-local($addr, $h); $h = $_[2];
+my ($addr, $h); $h = $_[2];
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('TCP', "host=$_[0] port=$_[1]");
 	}
@@ -2426,7 +2427,7 @@ if (!connect($h, pack_sockaddr_in($_[1], $addr))) {
 	if ($_[3]) { ${$_[3]} = "Failed to connect to $_[0]:$_[1] : $!"; return 0; }
 	else { &error("Failed to connect to $_[0]:$_[1] : $!"); }
 	}
-local $old = select($h); $| =1; select($old);
+my $old = select($h); $| =1; select($old);
 return 1;
 }
 
@@ -2450,7 +2451,7 @@ for internal use by the ftp_download and ftp_upload functions.
 =cut
 sub ftp_command
 {
-local($line, $rcode, $reply, $c);
+my ($line, $rcode, $reply, $c);
 $what = $_[0] ne "" ? "<i>$_[0]</i>" : "initial connection";
 if ($_[0] ne "") {
         print SOCK "$_[0]\r\n";
@@ -2462,7 +2463,7 @@ if (!($line = <SOCK>)) {
 	else { &error("Failed to read reply to $what"); }
         }
 $line =~ /^(...)(.)(.*)$/;
-local $found = 0;
+my $found = 0;
 if (ref($_[1])) {
 	foreach $c (@{$_[1]}) {
 		$found++ if (int($1/100) == $c);
@@ -2506,7 +2507,7 @@ if (&check_ipaddress($_[0])) {
 	return $_[0];
 	}
 else {
-	local $hn = gethostbyname($_[0]);
+	my $hn = gethostbyname($_[0]);
 	return undef if (!$hn);
 	local @ip = unpack("CCCC", $hn);
 	return join("." , @ip);
@@ -2533,11 +2534,11 @@ if (defined(&theme_icons_table)) {
 	&theme_icons_table(@_);
 	return;
 	}
-local ($i, $need_tr);
-local $cols = $_[3] ? $_[3] : 4;
-local $per = int(100.0 / $cols);
+my $need_tr;
+my $cols = $_[3] ? $_[3] : 4;
+my $per = int(100.0 / $cols);
 print "<table class='icons_table' width=100% cellpadding=5>\n";
-for($i=0; $i<@{$_[0]}; $i++) {
+for(my $i=0; $i<@{$_[0]}; $i++) {
 	if ($i%$cols == 0) { print "<tr>\n"; }
 	print "<td width=$per% align=center valign=top>\n";
 	&generate_icon($_[2]->[$i], $_[1]->[$i], $_[0]->[$i],
@@ -2564,8 +2565,8 @@ Replaces one line in some file with 0 or more new lines. The parameters are :
 =cut
 sub replace_file_line
 {
-local(@lines);
-local $realfile = &translate_filename($_[0]);
+my @lines;
+my $realfile = &translate_filename($_[0]);
 open(FILE, $realfile);
 @lines = <FILE>;
 close(FILE);
@@ -2596,12 +2597,13 @@ Example code :
 sub read_file_lines
 {
 if (!$_[0]) {
-	local ($package, $filename, $line) = caller;
+	my ($package, $filename, $line) = caller;
 	print STDERR "Missing file to read at ${package}::${filename} line $line\n";
 	}
-local $realfile = &translate_filename($_[0]);
+my $realfile = &translate_filename($_[0]);
 if (!$main::file_cache{$realfile}) {
-        local(@lines, $_, $eol);
+        my (@lines, $eol);
+	local $_;
 	&webmin_debug_log('READ', $_[0]) if ($gconfig{'debug_what_read'});
         open(READFILE, $realfile);
         while(<READFILE>) {
@@ -2637,8 +2639,7 @@ for those marked readonly). The parameters are :
 =cut
 sub flush_file_lines
 {
-local $f;
-local @files;
+my @files;
 if ($_[0]) {
 	local $trans = &translate_filename($_[0]);
 	$main::file_cache{$trans} ||
@@ -2648,12 +2649,11 @@ if ($_[0]) {
 else {
 	@files = ( keys %main::file_cache );
 	}
-foreach $f (@files) {
-	local $eol = $_[1] || $main::file_cache_eol{$f} || "\n";
+foreach my $f (@files) {
+	my $eol = $_[1] || $main::file_cache_eol{$f} || "\n";
 	if (!$main::file_cache_noflush{$f}) {
 		&open_tempfile(FLUSHFILE, ">$f");
-		local $line;
-		foreach $line (@{$main::file_cache{$f}}) {
+		foreach my $line (@{$main::file_cache{$f}}) {
 			(print FLUSHFILE $line,$eol) ||
 				&error(&text("efilewrite", $f, $!));
 			}
@@ -2671,7 +2671,7 @@ Clear the internal cache of some given file, previously read by read_file_lines.
 =cut
 sub unflush_file_lines
 {
-local $realfile = &translate_filename($_[0]);
+my $realfile = &translate_filename($_[0]);
 delete($main::file_cache{$realfile});
 delete($main::file_cache_noflush{$realfile});
 }
@@ -2730,9 +2730,9 @@ sub hlink
 if (defined(&theme_hlink)) {
 	return &theme_hlink(@_);
 	}
-local $mod = $_[2] ? $_[2] : &get_module_name();
-local $width = $_[3] || $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
-local $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
+my $mod = $_[2] ? $_[2] : &get_module_name();
+my $width = $_[3] || $tconfig{'help_width'} || $gconfig{'help_width'} || 600;
+my $height = $_[4] || $tconfig{'help_height'} || $gconfig{'help_height'} || 400;
 return "<a onClick='window.open(\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\", \"help\", \"toolbar=no,menubar=no,scrollbars=yes,width=$width,height=$height,resizable=yes\"); return false' href=\"$gconfig{'webprefix'}/help.cgi/$mod/$_[1]\">$_[0]</a>";
 }
 
@@ -2753,9 +2753,9 @@ sub user_chooser_button
 return undef if (!&supports_users());
 return &theme_user_chooser_button(@_)
 	if (defined(&theme_user_chooser_button));
-local $form = defined($_[2]) ? $_[2] : 0;
-local $w = $_[1] ? 500 : 300;
-local $h = 200;
+my $form = defined($_[2]) ? $_[2] : 0;
+my $w = $_[1] ? 500 : 300;
+my $h = 200;
 if ($_[1] && $gconfig{'db_sizeusers'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeusers'});
 	}
@@ -2782,9 +2782,9 @@ sub group_chooser_button
 return undef if (!&supports_users());
 return &theme_group_chooser_button(@_)
 	if (defined(&theme_group_chooser_button));
-local $form = defined($_[2]) ? $_[2] : 0;
-local $w = $_[1] ? 500 : 300;
-local $h = 200;
+my $form = defined($_[2]) ? $_[2] : 0;
+my $w = $_[1] ? 500 : 300;
+my $h = 200;
 if ($_[1] && $gconfig{'db_sizeusers'}) {
 	($w, $h) = split(/x/, $gconfig{'db_sizeusers'});
 	}
