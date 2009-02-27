@@ -52,8 +52,8 @@ else {
 print &ui_form_start("save_dump.cgi", "post");
 print &ui_hidden("id", $in{'id'}),"\n";
 print &ui_hidden("fs", $dump->{'fs'}),"\n";
-print &ui_table_start(&text('edit_header', uc($dump->{'fs'})),
-		      "width=100%", 2);
+print &ui_hidden_table_start(&text('edit_header', uc($dump->{'fs'})),
+		             "width=100%", 2, "source", 1);
 
 print &ui_table_row($text{'dump_format'},
 	$dump->{'fs'} eq 'tar' ? $text{'dump_tar'}
@@ -76,9 +76,9 @@ else {
 	}
 
 &dump_form($dump, \@tds);
-print &ui_table_end();
+print &ui_hidden_table_end();
 
-print &ui_table_start($text{'edit_header3'}, "width=100%", 4);
+print &ui_hidden_table_start($text{'edit_header3'}, "width=100%", 4, "opts", 0);
 if (defined(&dump_options_form)) {
 	&dump_options_form($dump, \@tds);
 	}
@@ -112,9 +112,10 @@ if ($access{'cmds'}) {
 					 !$dump->{'afterfok'}),
 			    3, \@tds);
 	}
-print &ui_table_end();
+print &ui_hidden_table_end();
 
-print &ui_table_start($text{'edit_header2'}, "width=100%", 4);
+print &ui_hidden_table_start($text{'edit_header2'}, "width=100%", 4,
+			     "sched", 0);
 
 # Show input for selecting when to run a dump, which can be never, on schedule
 # or after some other dump
@@ -157,7 +158,7 @@ else {
 			  ('hourly', 'daily', 'weekly', 'monthly', 'yearly') ]),
 		3, \@tds);
 	}
-print &ui_table_end();
+print &ui_hidden_table_end();
 
 if ($in{'id'}) {
 	print &ui_form_end([ [ "save", $text{'save'} ],

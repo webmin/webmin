@@ -1,11 +1,12 @@
 #!/usr/local/bin/perl
 # fsdump-lib.pl
 # Common functions for doing filesystem backups with dump
-# XXX multi-volume tar restore
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+#do '../web-lib.pl';
+#do '../ui-lib.pl';
 &init_config();
-do '../ui-lib.pl';
 if ($gconfig{'os_type'} =~ /^\S+\-linux$/) {
 	do "linux-lib.pl";
 	}
@@ -241,6 +242,7 @@ local ($cmd, $fh, $fhmode, $pass) = @_;
 local ($cfh, $fpid) = &proc::pty_process_exec_logged($cmd);
 local ($wrong_password, $got_login, $connect_failed);
 local $out;
+$main::wait_for_debug = 1;
 while(1) {
 	local $rv = &wait_for($cfh, "password:", "yes\\/no", "(^|\\n)\\s*Permission denied.*\n", "ssh: connect.*\n", ".*\n");
 	if ($wait_for_input !~ /^\s*DUMP:\s+ACLs\s+in\s+inode/i) {

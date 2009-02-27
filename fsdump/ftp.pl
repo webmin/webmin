@@ -69,11 +69,11 @@ while(1) {
 		}
 	elsif ($line =~ /^W(\d+)/) {
 		# Write to FTP server
+		$len = $1;
 		if ($opened != 1) {
 			&open_ftp_file($mode);
 			}
 		#$opened || &error_exit("FTP connection not opened yet");
-		$len = $1;
 		read(STDIN, $buf, $len);
 		$wrote = (print CON $buf);
 		print "A".($wrote ? $len : 0)."\n";
@@ -148,7 +148,7 @@ $pasv || &error_exit("FTP port failed : $err");
 $pasv =~ /\(([0-9,]+)\)/;
 local @n = split(/,/ , $1);
 &open_socket("$n[0].$n[1].$n[2].$n[3]", $n[4]*256 + $n[5],
-	     "CON", \$err) ||
+	     CON, \$err) ||
 	&error_exit("FTP port failed : $err");
 
 if ($mode == 0) {

@@ -2405,7 +2405,14 @@ parameters are :
 =cut
 sub open_socket
 {
-my ($addr, $h); $h = $_[2];
+
+# Force file handle into caller's package
+my $h = $_[2];
+my $callpkg = (caller(0))[0];
+if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
+	$h = $callpkg."::".$h;
+	}
+
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('TCP', "host=$_[0] port=$_[1]");
 	}
@@ -2413,6 +2420,7 @@ if (!socket($h, PF_INET, SOCK_STREAM, getprotobyname("tcp"))) {
 	if ($_[3]) { ${$_[3]} = "Failed to create socket : $!"; return 0; }
 	else { &error("Failed to create socket : $!"); }
 	}
+my $addr;
 if (!($addr = inet_aton($_[0]))) {
 	if ($_[3]) { ${$_[3]} = "Failed to lookup IP address for $_[0]"; return 0; }
 	else { &error("Failed to lookup IP address for $_[0]"); }
@@ -2451,21 +2459,30 @@ for internal use by the ftp_download and ftp_upload functions.
 =cut
 sub ftp_command
 {
-my ($line, $rcode, $reply, $c);
-$what = $_[0] ne "" ? "<i>$_[0]</i>" : "initial connection";
-if ($_[0] ne "") {
-        print SOCK "$_[0]\r\n";
+my ($cmd, $expect, $err, $fh) = @_;
+
+# Work out file handle, and force into caller's package
+$fh ||= "SOCK";
+my $callpkg = (caller(0))[0];
+if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
+	$fh = $callpkg."::".$fh;
+	}
+
+my $line;
+my $what = $cmd ne "" ? "<i>$cmd/i>" : "initial connection";
+if ($cmd ne "") {
+        print $fh "$cmd\r\n";
         }
 alarm(60);
-if (!($line = <SOCK>)) {
+if (!($line = <$fh>)) {
 	alarm(0);
-	if ($_[2]) { ${$_[2]} = "Failed to read reply to $what"; return undef; }
+	if ($err) { $$err = "Failed to read reply to $what"; return undef; }
 	else { &error("Failed to read reply to $what"); }
         }
 $line =~ /^(...)(.)(.*)$/;
 my $found = 0;
-if (ref($_[1])) {
-	foreach $c (@{$_[1]}) {
+if (ref($expect)) {
+	foreach my $c (@$expect) {
 		$found++ if (int($1/100) == $c);
 		}
 	}
@@ -2474,16 +2491,17 @@ else {
 	}
 if (!$found) {
 	alarm(0);
-	if ($_[2]) { ${$_[2]} = "$what failed : $3"; return undef; }
+	if ($err) { $$err = "$what failed : $3"; return undef; }
 	else { &error("$what failed : $3"); }
 	}
-$rcode = $1; $reply = $3;
+my $rcode = $1;
+my $reply = $3;
 if ($2 eq "-") {
         # Need to skip extra stuff..
         while(1) {
-                if (!($line = <SOCK>)) {
+                if (!($line = <$fh>)) {
 			alarm(0);
-			if ($_[2]) { ${$_[2]} = "Failed to read reply to $what";
+			if ($$err) { $$err = "Failed to read reply to $what";
 				     return undef; }
 			else { &error("Failed to read reply to $what"); }
                         }
@@ -7121,6 +7139,13 @@ if (@_ == 1) {
 else {
 	# Actually opening
 	my ($fh, $file, $noerror, $notemp, $safe) = @_;
+
+	# Force file handler into caller's package
+	my $callpkg = (caller(0))[0];
+	if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
+		$fh = $callpkg."::".$fh;
+		}
+
 	my %gaccess = &get_module_acl(undef, "");
 	my $db = $gconfig{'debug_what_write'};
 	if ($file =~ /\r|\n|\0/) {
@@ -7230,10 +7255,18 @@ successful. The handle must have been one passed to open_tempfile.
 sub close_tempfile
 {
 my $file;
-if (defined($file = $main::open_temphandles{$_[0]})) {
+
+# Force file handle into caller's package
+my $fh = $_[0];
+my $callpkg = (caller(0))[0];
+if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
+	$fh = $callpkg."::".$fh;
+	}
+
+if (defined($file = $main::open_temphandles{$fh})) {
 	# Closing a handle
-	close($_[0]) || &error(&text("efileclose", $file, $!));
-	delete($main::open_temphandles{$_[0]});
+	close($fh) || &error(&text("efileclose", $file, $!));
+	delete($main::open_temphandles{$fh});
 	return &close_tempfile($file);
 	}
 elsif (defined($main::open_tempfiles{$_[0]})) {
@@ -7279,6 +7312,10 @@ only partially written.
 sub print_tempfile
 {
 my ($fh, @args) = @_;
+my $callpkg = (caller(0))[0];
+if ($callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
+	$fh = $callpkg."::".$fh;
+	}
 (print $fh @args) || &error(&text("efilewrite",
 			    $main::open_temphandles{$fh} || $fh, $!));
 }
