@@ -71,15 +71,15 @@ Returns the unique elements of some array, passed as its parameters.
 =cut
 sub unique
 {
-local(%found, @rv, $e);
-foreach $e (@_) {
+my (%found, @rv);
+foreach my $e (@_) {
 	if (!$found{$e}++) { push(@rv, $e); }
 	}
 return @rv;
 }
 
 if (!$done_web_lib_funcs) {
-	local $script = -r '../web-lib-funcs.pl' ? '../web-lib-funcs.pl'
+	my $script = -r '../web-lib-funcs.pl' ? '../web-lib-funcs.pl'
 						 : 'web-lib-funcs.pl';
 	do $script;
 	}
