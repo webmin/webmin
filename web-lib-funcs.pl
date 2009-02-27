@@ -2890,14 +2890,14 @@ if ($main::licence_module) {
 return 1;
 }
 
-=head2 foreign_require(module, file, [package])
+=head2 foreign_require(module, [file], [package])
 
 Brings in functions from another module, and places them in the Perl namespace
 with the same name as the module. The parameters are :
 
 =item module - The source module's directory name, like sendmail.
 
-=item file - The API file in that module, like sendmail-lib.pl.
+=item file - The API file in that module, like sendmail-lib.pl. If missing, all API files are loaded.
 
 =item package - Perl package to place the module's functions and global variables in. 
 
@@ -2907,24 +2907,44 @@ the package name.
 =cut
 sub foreign_require
 {
-my $pkg = $_[2] || $_[0] || "global";
+my ($mod, $file, $pkg) = @_;
+$pkg ||= $mod || "global";
 $pkg =~ s/[^A-Za-z0-9]/_/g;
-return 1 if ($main::done_foreign_require{$pkg,$_[1]}++);
+my @files;
+if ($file) {
+	push(@files, $file);
+	}
+else {
+	# Auto-detect files
+	my %minfo = &get_module_info($mod);
+	if ($minfo{'library'}) {
+		@files = split(/\s+/, $minfo{'library'});
+		}
+	else {
+		@files = ( $mod."-lib.pl" );
+		}
+	}
+my @files = grep { !$main::done_foreign_require{$pkg,$_} } @files;
+return 1 if (!@files);
+foreach my $f (@files) {
+	$main::done_foreign_require{$pkg,$f}++;
+	}
 my @OLDINC = @INC;
-my $mdir = &module_root_directory($_[0]);
+my $mdir = &module_root_directory($mod);
 @INC = &unique($mdir, @INC);
--d $mdir || &error("module $_[0] does not exist");
-if (!&get_module_name() && $_[0]) {
+-d $mdir || &error("Module $mod does not exist");
+if (!&get_module_name() && $mod) {
 	chdir($mdir);
 	}
 my $old_fmn = $ENV{'FOREIGN_MODULE_NAME'};
 my $old_frd = $ENV{'FOREIGN_ROOT_DIRECTORY'};
-eval <<EOF;
-package $pkg;
-\$ENV{'FOREIGN_MODULE_NAME'} = '$_[0]';
-\$ENV{'FOREIGN_ROOT_DIRECTORY'} = '$root_directory';
-do "$mdir/$_[1]" || die \$@;
-EOF
+my $code = "package $pkg; ".
+	   "\$ENV{'FOREIGN_MODULE_NAME'} = '$mod'; ".
+	   "\$ENV{'FOREIGN_ROOT_DIRECTORY'} = '$root_directory'; ";
+foreach my $f (@files) {
+	$code .= "do '$mdir/$f' || die \$@; ";
+	}
+eval $code;
 if (defined($old_fmn)) {
 	$ENV{'FOREIGN_MODULE_NAME'} = $old_fmn;
 	}
@@ -2938,7 +2958,7 @@ else {
 	delete($ENV{'FOREIGN_ROOT_DIRECTORY'});
 	}
 @INC = @OLDINC;
-if ($@) { &error("require $_[0]/$_[1] failed : <pre>$@</pre>"); }
+if ($@) { &error("Require $mod/$files[0] failed : <pre>$@</pre>"); }
 return 1;
 }
 

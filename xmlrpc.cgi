@@ -99,19 +99,11 @@ foreach my $mc (&find_xmls("methodCall", $xml)) {
 				&error_exit(5,
 					"Webmin module $mod does not exist");
 				}
-			my %minfo = &get_module_info($mod);
-			my @libs = split(/\s+/, $minfo{'library'});
-			if (!@libs) {
-				push(@libs, "$mod-lib.pl");
-				}
-			foreach my $lib (@libs) {
-				eval { &foreign_require($mod, $lib); };
-				if ($@) {
-					$xmlrv .= &make_error_xml(6,
-						"Failed to load library ".
-						"$mod/$lib : $@");
-					last;
-					}
+			eval { &foreign_require($mod, $lib); };
+			if ($@) {
+				$xmlrv .= &make_error_xml(6,
+					"Failed to load module $mod : $@");
+				last;
 				}
 			}
 		}
