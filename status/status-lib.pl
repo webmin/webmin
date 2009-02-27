@@ -1,9 +1,9 @@
 # status-lib.pl
 # Functions for getting the status of services
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 
 $services_dir = "$module_config_directory/services";
@@ -91,7 +91,7 @@ local @remote;
 push(@remote, split(/\s+/, $_[0]->{'remote'}));
 local @groupnames = split(/\s+/, $_[0]->{'groups'});
 if (@groupnames) {
-	&foreign_require("servers", "servers-lib.pl");
+	&foreign_require("servers");
 	local @groups = &servers::list_all_groups();
 	foreach my $g (@groupnames) {
 		local ($group) = grep { $_->{'name'} eq $g } @groups;
@@ -243,7 +243,7 @@ else {
 # find_named_process(regexp)
 sub find_named_process
 {
-foreach $p (&foreign_call("proc", "list_processes")) {
+foreach $p (&proc::list_processes()) {
 	$p->{'args'} =~ s/\s.*$//; $p->{'args'} =~ s/[\[\]]//g;
 	if ($p->{'args'} =~ /$_[0]/) {
 		return $p;
@@ -268,14 +268,14 @@ if ($r !~ /^[23]\d+/) {
 sub setup_cron_job
 {
 &lock_file($cron_cmd);
-&foreign_require("cron", "cron-lib.pl");
+&foreign_require("cron");
 local ($j, $job);
-foreach $j (&foreign_call("cron", "list_cron_jobs")) {
+foreach $j (&cron::list_cron_jobs()) {
 	$job = $j if ($j->{'user'} eq 'root' && $j->{'command'} eq $cron_cmd);
 	}
 if ($job) {
 	&lock_file(&cron::cron_file($job));
-	&foreign_call("cron", "delete_cron_job", $job);
+	&cron::delete_cron_job($job);
 	&unlock_file(&cron::cron_file($job));
 	unlink($cron_cmd);
 	}
@@ -306,7 +306,7 @@ if ($config{'sched_mode'}) {
 		$njob->{'hours'} = $njob->{'mins'} = 0;
 		}
 	&lock_file(&cron::cron_file($njob));
-	&foreign_call("cron", "create_cron_job", $njob);
+	&cron::create_cron_job($njob);
 	&unlock_file(&cron::cron_file($njob));
 	}
 &unlock_file($cron_cmd);

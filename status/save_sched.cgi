@@ -31,7 +31,7 @@ else {
 	}
 if ($in{'smtp_def'}) {
 	if (!$in{'from_def'}) {
-		&foreign_require("mailboxes", "mailboxes-lib.pl");
+		&foreign_require("mailboxes");
 		$err = &mailboxes::test_mail_system();
 		$err && &error(&text('sched_eemailserver', $err));
 		}

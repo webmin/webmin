@@ -45,7 +45,7 @@ local $info = &backquote_command("openssl x509 -in ".quotemeta($certfile).
 				 " </dev/null 2>&1");
 
 # Check dates
-&foreign_require("mailboxes", "mailboxes-lib.pl");
+&foreign_require("mailboxes");
 local ($start, $end);
 if ($info =~ /Not\s*Before\s*:\s*(.*)/i) {
 	$start = &mailboxes::parse_mail_date("$1");

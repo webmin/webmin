@@ -7,7 +7,7 @@ sub module_uninstall
 {
 if ($config{'sched_mode'}) {
 	# Scheduled checking is enabled .. remove the cron job
-	&foreign_require("cron", "cron-lib.pl");
+	&foreign_require("cron");
 	$cron_cmd = "$module_config_directory/monitor.pl";
 	foreach $j (&cron::list_cron_jobs()) {
 		if ($j->{'user'} eq 'root' &&
