@@ -72,8 +72,13 @@ while(<PWFILE>) {
 		$user{'skill'} = $gconfig{"skill_$user[0]"};
 		$user{'risk'} = $gconfig{"risk_$user[0]"};
 		$user{'rbacdeny'} = $gconfig{"rbacdeny_$user[0]"};
-		($user{'theme'}, $user{'overlay'}) =
-			split(/\s+/, $gconfig{"theme_$user[0]"});
+		if ($gconfig{"theme_$user[0]"}) {
+			($user{'theme'}, $user{'overlay'}) =
+				split(/\s+/, $gconfig{"theme_$user[0]"});
+			}
+		elsif (defined($gconfig{"theme_$user[0]"})) {
+			$user{'theme'} = "";
+			}
 		$user{'readonly'} = $gconfig{"readonly_$user[0]"};
 		$user{'ownmods'} = [ split(/\s+/,
 					   $gconfig{"ownmods_$user[0]"}) ];
