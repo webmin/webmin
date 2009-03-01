@@ -2,9 +2,9 @@
 # sshd-lib.pl
 # Common functions for the ssh daemon config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # Get version information
 if (!&read_file("$module_config_directory/version", \%version)) {
