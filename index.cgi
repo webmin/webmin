@@ -1,7 +1,9 @@
 #!/usr/local/bin/perl
 # Display all Webmin modules visible to the current user
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 &init_config();
 $hostname = &get_display_hostname();
 $ver = &get_webmin_version();
