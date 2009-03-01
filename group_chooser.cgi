@@ -2,8 +2,10 @@
 # group_chooser.cgi
 # This CGI generated the HTML for choosing a group or list of groups.
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 $trust_unknown_referers = 1;
-require './web-lib.pl';
 &init_config();
 &ReadParse(undef, undef, 2);
 %access = &get_module_acl();
