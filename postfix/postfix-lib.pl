@@ -25,10 +25,9 @@ $POSTFIX_MODULE_VERSION = 5;
 #
 # -------------------------------------------------------------------------
 
-
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 $access{'postfinger'} = 0 if (&is_readonly_mode());
 do 'aliases-lib.pl';
