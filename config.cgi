@@ -2,9 +2,9 @@
 # config.cgi
 # Display a form for editing the configuration of a module.
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 require './config-lib.pl';
-require './ui-lib.pl';
 &init_config();
 $m = $in{'module'} || $ARGV[0];
 &foreign_available($m) || &error($text{'config_eaccess'});
