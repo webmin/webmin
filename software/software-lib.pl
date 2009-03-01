@@ -1,9 +1,9 @@
 # software-lib.pl
 # A generalized system for package management on solaris, linux, etc..
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 $heiropen_file = "$module_config_directory/heiropen";
 
 # Use the appropriate function set for whatever package management system
