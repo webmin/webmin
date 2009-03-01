@@ -13,7 +13,7 @@ $dump->{'id'} || die "Dump $ARGV[0] does not exist!";
 # Find the status file
 opendir(DIR, $module_config_directory);
 foreach $f (readdir(DIR)) {
-	if ($f =~ /^(\d+)\.(\d+)\.status$/ && $1 == $dump->{'id'}) {
+	if ($f =~ /^(\d+)\.(\d+)\.status$/ && $1 eq $dump->{'id'}) {
 		# Got it!
 		$sfile = "$module_config_directory/$f";
 		}

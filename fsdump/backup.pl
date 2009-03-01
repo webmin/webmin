@@ -127,7 +127,7 @@ if ($out && $dump->{'email'} && &foreign_check("mailboxes")) {
 
 # Check for any dumps scheduled to run after this one
 foreach $follow (&list_dumps()) {
-	if ($follow->{'follow'} == $dump->{'id'} && $follow->{'enabled'} == 2) {
+	if ($follow->{'follow'} eq $dump->{'id'} && $follow->{'enabled'} == 2) {
 		system("$cron_cmd $follow->{'id'}");
 		}
 	}

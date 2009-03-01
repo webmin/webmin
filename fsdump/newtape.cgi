@@ -10,7 +10,7 @@ require './fsdump-lib.pl';
 @procs = &proc::list_processes();
 @running = &running_dumps(\@procs);
 
-($job) = grep { $_->{'id'} == $in{'id'} &&
+($job) = grep { $_->{'id'} eq $in{'id'} &&
 		$_->{'pid'} == $in{'pid'} } @running;
 $job || &error($text{'newtape_egone'});
 &can_edit_dir($job) || &error($text{'newtape_ecannot'});

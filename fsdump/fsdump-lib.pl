@@ -4,8 +4,6 @@
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
-#do '../web-lib.pl';
-#do '../ui-lib.pl';
 &init_config();
 if ($gconfig{'os_type'} =~ /^\S+\-linux$/) {
 	do "linux-lib.pl";
