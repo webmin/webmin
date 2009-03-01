@@ -1,10 +1,10 @@
 # spam-lib.pl
 # Common functions for parsing and editing the spamassassin config file
 
-do '../web-lib.pl';
-&init_config();
-do '../ui-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 use Fcntl;
+&init_config();
 
 $warn_procmail = $config{'warn_procmail'};
 if ($module_info{'usermin'}) {
