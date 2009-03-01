@@ -2,9 +2,9 @@
 # index.cgi
 # Display the SSH applet
 
-require '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &ui_print_header(undef, "SSH Login", "", undef, 1, 1);
 
 $addr = $config{'host'} ? $config{'host'}
