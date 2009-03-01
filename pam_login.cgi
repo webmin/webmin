@@ -1,10 +1,11 @@
 #!/usr/local/bin/perl
 # Ask one PAM question
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 $pragma_no_cache = 1;
 #$ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
-require './web-lib.pl';
-require './ui-lib.pl';
 &init_config();
 &ReadParse();
 if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
