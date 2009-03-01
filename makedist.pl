@@ -155,7 +155,6 @@ if (!$min && -d $zipdir) {
 	system("cp -rp $tardir/$dir/* $zipdir/webmin");
 	system("rm -rf $zipdir/webmin/{fdisk,exports,bsdexports,hpuxexports,sgiexports,zones,rbac,Webmin}");
 	system("rm -rf $zipdir/webmin/acl/Authen-SolarisRBAC-0.1/*");
-	system("rm -f $zipdir/webmin/software/msi-lib.pl");
 	system("echo zip >$zipdir/webmin/install-type");
 	open(FIND, "find $zipdir/webmin -name '*\\**' |");
 	while(<FIND>) {
