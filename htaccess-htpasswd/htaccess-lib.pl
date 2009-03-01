@@ -1,11 +1,9 @@
 # htaccess-lib.pl
 # Common functions for the htaccess and htpasswd file management module
-# XXX check if MD5 is installed, if offered
-# XXX same for SHA1
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do 'htpasswd-file-lib.pl';
 
 @accessdirs = ( );
