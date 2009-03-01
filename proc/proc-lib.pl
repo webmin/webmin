@@ -1,15 +1,16 @@
 # proc-lib.pl
 # Functions for managing processes
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+use POSIX;
+use Config;
+
 &init_config();
-do '../ui-lib.pl';
 if ($module_info{'usermin'} && !$ENV{'FOREIGN_MODULE_NAME'}) {
 	&switch_to_remote_user();
 	}
 do "$config{ps_style}-lib.pl";
-use POSIX;
-use Config;
 if ($module_info{'usermin'}) {
 	%access = ( 'edit' => 1,
 		    'run' => 1,
