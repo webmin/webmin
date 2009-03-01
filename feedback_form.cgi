@@ -2,9 +2,10 @@
 # feedback_form.cgi
 # Display a form so that the user can send in a webmin bug report
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 &init_config();
-require './ui-lib.pl';
 &ReadParse();
 &error_setup($text{'feedback_err'});
 %access = &get_module_acl();
