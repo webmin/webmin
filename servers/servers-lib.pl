@@ -16,9 +16,9 @@ for RPC operations. Example code :
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 $cron_cmd = "$module_config_directory/auto.pl";
 
