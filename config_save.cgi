@@ -2,7 +2,8 @@
 # config_save.cgi
 # Save inputs from config.cgi
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 require './config-lib.pl';
 &init_config();
 &ReadParse();
