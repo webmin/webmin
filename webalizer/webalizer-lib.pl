@@ -1,9 +1,9 @@
 # webalizer-lib.pl
 # Common functions for editing the webalizer config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 $cron_cmd = "$module_config_directory/webalizer.pl";
 $custom_logs_file = "$module_config_directory/custom-logs";
