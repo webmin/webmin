@@ -3342,6 +3342,10 @@ and housekeeping tasks, such as working out the module name, checking that the
 current user has access to the module, and populating global variables. Some
 of the variables set include :
 
+=item $config_directory - Base Webmin config directory, typically /etc/webmin
+
+=item $var_directory - Base logs directory, typically /var/webmin
+
 =item %config - Per-module configuration.
 
 =item %gconfig - Global configuration.
@@ -3371,6 +3375,38 @@ of the variables set include :
 =cut
 sub init_config
 {
+# Configuration and spool directories
+if (!defined($ENV{'WEBMIN_CONFIG'})) {
+	die "WEBMIN_CONFIG not set";
+	}
+$config_directory = $ENV{'WEBMIN_CONFIG'};
+if (!defined($ENV{'WEBMIN_VAR'})) {
+	open(VARPATH, "$config_directory/var-path");
+	chop($var_directory = <VARPATH>);
+	close(VARPATH);
+	}
+else {
+	$var_directory = $ENV{'WEBMIN_VAR'};
+	}
+
+if ($ENV{'SESSION_ID'}) {
+	# Hide this variable from called programs, but keep it for internal use
+	$main::session_id = $ENV{'SESSION_ID'};
+	delete($ENV{'SESSION_ID'});
+	}
+if ($ENV{'REMOTE_PASS'}) {
+	# Hide the password too
+	$main::remote_pass = $ENV{'REMOTE_PASS'};
+	delete($ENV{'REMOTE_PASS'});
+	}
+
+if ($> == 0 && $< != 0 && !$ENV{'FOREIGN_MODULE_NAME'}) {
+	# Looks like we are running setuid, but the real UID hasn't been set.
+	# Do so now, so that executed programs don't get confused
+	$( = $);
+	$< = $>;
+	}
+
 # Read the webmin global config file. This contains the OS type and version,
 # OS specific configuration and global options such as proxy servers
 $config_file = "$config_directory/config";
