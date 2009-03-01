@@ -1,9 +1,10 @@
 #!/usr/local/bin/perl
 # Search Webmin modules and help pages and text and config.info
 
-do './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 &init_config();
-do './ui-lib.pl';
 &ReadParse();
 
 $prod = &get_product_name();
