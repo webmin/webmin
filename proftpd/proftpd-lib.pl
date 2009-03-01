@@ -1,9 +1,9 @@
 # proftpd-lib.pl
 # Common functions for the proftpd server config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # Load the site-specific information on the server executable
 &read_file("$module_config_directory/site", \%site);
