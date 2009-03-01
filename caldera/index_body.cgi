@@ -2,7 +2,8 @@
 # index_body.cgi
 # Display an empty page
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 &header();
 

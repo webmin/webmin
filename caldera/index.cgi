@@ -3,7 +3,8 @@
 # Webmin index page for Caldera's theme. Contains two frames, with the
 # categories and modules always at the top and the CGIs at the bottom
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 $hostname = &get_display_hostname();
 $ver = &get_webmin_version();
