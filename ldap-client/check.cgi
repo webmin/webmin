@@ -73,8 +73,14 @@ else {
 # Make sure one of the users is a valid Unix user
 $first = $rv->entry(0);
 print &text('check_match', "<tt>".$first->get_value("uid")."</tt>"),"<br>\n";
-@uinfo = getpwnam($first->get_value("uid"));
-if (!@uinfo) {
+$uid = getpwnam($first->get_value("uid"));
+if (!$uid) {
+	# Sometimes this fails due to nsswitch.conf caching .. so try forking
+	# a separate command
+	$uid = &backquote_command(
+		"id -a ".$first->get_value("uid")." 2>/dev/null");
+	}
+if (!$uid) {
 	&print_problem($text{'check_ematch'});
 	goto END;
 	}
