@@ -1,10 +1,11 @@
 #!/usr/local/bin/perl
 # Output Javascript in a loop to track an upload
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 $trust_unknown_referers = 1;
-require './web-lib.pl';
 &init_config();
-do './ui-lib.pl';
 &ReadParse();
 $id = $in{'id'};
 $id || &error($text{'uptracker_eid'});
