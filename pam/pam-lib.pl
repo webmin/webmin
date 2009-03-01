@@ -1,9 +1,9 @@
 # pam-lib.pl
 # Functions for manipulating the PAM services file(s)
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # get_pam_config()
 # Returns a list of services and their modules
