@@ -1,8 +1,8 @@
 # Functions for parsing and updating the LDAP config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 @base_types = ("passwd", "shadow", "group", "hosts", "networks", "netmasks",
 	       "services", "protocols", "aliases", "netgroup");
@@ -237,7 +237,7 @@ elsif ($uri) {
 				}
 			}
 		}
-	if (!$ldap) {
+	if (!$ldap && !$err) {
 		$err = &text('ldap_eparse', $uri);
 		}
 	}

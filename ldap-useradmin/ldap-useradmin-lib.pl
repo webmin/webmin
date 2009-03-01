@@ -3,11 +3,11 @@
 # Sanitaetsbetrieb Brixen  - Azienda Sanitaria di Bressanone
 # www.sb-brixen.it         - www.as-bressanone.it
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
-&foreign_require("useradmin", "user-lib.pl");
-&foreign_require("ldap-client", "ldap-client-lib.pl");
+&foreign_require("useradmin");
+&foreign_require("ldap-client");
 %access = &get_module_acl();
 $useradmin::access{'udelete'} = 1;	# needed for users_table / groups_table
 $useradmin::access{'gdelete'} = 1;
