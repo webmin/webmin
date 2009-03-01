@@ -1,8 +1,8 @@
 # mailboxes-lib.pl
 # Common functions for reading user mailboxes
 
-do '../web-lib.pl';
-do '../ui-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 do "$module_root_directory/boxes-lib.pl";
 do "$module_root_directory/folders-lib.pl";

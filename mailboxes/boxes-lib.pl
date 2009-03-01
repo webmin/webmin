@@ -2535,32 +2535,6 @@ local $mail = { 'headers' =>
 return &send_mail($mail, undef, 1, 0, $smtp);
 }
 
-# clear_time_locale()
-# Temporarily force the locale to C, until reset_time_locale is called
-sub clear_time_locale
-{
-if ($main::clear_time_locale_count == 0) {
-	eval {
-		$main::clear_time_locale_old = POSIX::setlocale(POSIX::LC_TIME);
-		POSIX::setlocale(POSIX::LC_TIME, "C");
-		};
-	}
-$main::clear_time_locale_count++;
-}
-
-# reset_time_locale()
-# Revert the locale to whatever it was before clear_time_locale was called
-sub reset_time_locale
-{
-if ($main::clear_time_locale_count == 1) {
-	eval {
-		POSIX::setlocale(POSIX::LC_TIME, $main::clear_time_locale_old);
-		$main::clear_time_locale_old = undef;
-		};
-	}
-$main::clear_time_locale_count--;
-}
-
 # make_from_line(address, [time])
 # Returns a From line for mbox emails, based on the current time
 sub make_from_line
