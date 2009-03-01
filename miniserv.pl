@@ -2109,12 +2109,10 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		$doing_eval = 1;
 		$main_process_id = $$;
 		$pkg = "main";
-		if ($config{'eval_package'}) {
+		if ($full =~ /^\Q$foundroot\E\/([^\/]+)\//) {
 			# Eval in package from Webmin module name
-			if ($full =~ /^\Q$foundroot\E\/([^\/]+)\//) {
-				$pkg = $1;
-				$pkg =~ s/[^A-Za-z0-9]/_/g;
-				}
+			$pkg = $1;
+			$pkg =~ s/[^A-Za-z0-9]/_/g;
 			}
 		eval "
 			\%pkg::ENV = \%ENV;
