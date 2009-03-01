@@ -12,9 +12,9 @@ Functions for listing, creating and managing Unix users' cron jobs.
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 $env_support = $config{'vixie_cron'};
 if ($module_info{'usermin'}) {
