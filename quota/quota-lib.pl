@@ -18,9 +18,9 @@ Example code:
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 if ($gconfig{'os_type'} =~ /^\S+\-linux$/) {
 	do "linux-lib.pl";
 	}
