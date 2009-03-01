@@ -1,0 +1,55 @@
+index_title=Manage HTPasswd File
+index_econfig=This module cannot be used until a password file has been set on the <a href='$1'>module configuration</a> page.
+index_emd5=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the $2 Perl module is not installed. <a href='$3'>Click here</a> to have the $2 module downloaded and installed.
+index_header=Password file users
+index_none=No users exist in the configured password file.
+index_add=Add a new user to the password file.
+index_file=Users in Password File $1
+index_sync=Unix User Synchronization
+index_return=user list
+index_eversion=This module has been <a href='$1'>configured</a> to use MD5 encryption for passwords, but the version of the Users and Groups module installed on your system does not include the needed MD5 functions. Upgrade to version 1.114 or later.
+index_synccreate=Add a user when a Unix user is created?
+index_syncmodify=Re-name or change the password of a user when the corresponding Unix user is modified?
+index_syncdelete=Delete a user when the corresponding Unix user is deleted?
+index_ssave=Save and Apply
+
+edit_title1=Create User
+edit_title2=Edit User
+edit_header=Password file user details
+edit_user=Username
+edit_enabled=Enabled?
+edit_pass=Password
+edit_pass1=Leave unchanged
+edit_pass0=Set to
+edit_passfrom=Change from
+edit_passto=to new password
+edit_single=User to change
+edit_return=password change form
+
+save_err=Failed to save user
+save_euser1=Missing username
+save_euser2=Username cannot contain the : character
+save_epass=Password cannot contain the : character
+save_eclash=A user with the same name already exists
+save_eoldpass=Old password is not correct
+save_ecreate=You are not allowed to create users
+save_edelete=You are not allowed to delete users
+save_euser=User does not exist
+save_title=User Saved
+save_done=The user $1 has been updated.
+
+acl_repeat=Must enter old password when changing?
+acl_create=Can create new users?
+acl_rename=Can rename users?
+acl_delete=Can delete users?
+acl_sync=Can configure synchronization?
+acl_enable=Can enable and disable users?
+acl_single=Skip user list and go direct to password change form?
+
+sync_ecannot=You are not allowed to configure synchronization
+
+log_sync=Changed synchronization options
+log_create=Created user $1
+log_delete=Deleted user $1
+log_modify=Modified user $1
+

@@ -1,0 +1,5 @@
+name=HTPasswdFile
+desc=Manage HTPasswd File
+category=servers
+depends=useradmin
+version=1.4
