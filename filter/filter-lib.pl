@@ -1,9 +1,9 @@
 # Functions for creating simple mail filtering rules
 # XXX use same virtualmin spam detection trick for spam module
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do 'aliases-lib.pl';
 do 'autoreply-file-lib.pl';
 
