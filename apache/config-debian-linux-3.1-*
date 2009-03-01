@@ -19,3 +19,4 @@ auto_mods=1
 defines_file=/etc/apache2/envvars
 apachectl_path=/usr/sbin/apache2ctl
 show_names=0
+apply_cmd=/usr/sbin/apache2ctl graceful

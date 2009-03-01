@@ -2,12 +2,12 @@
 # Common functions for apache configuration
 
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 $directive_type_count = 20;
 
 if ($module_name ne 'htaccess') {
-	do '../web-lib.pl';
 	&init_config();
-	do '../ui-lib.pl';
 	%access = &get_module_acl();
 	@access_types = $access{'types'} eq '*' ? (0 .. $directive_type_count)
 					: split(/\s+/, $access{'types'});
