@@ -1,11 +1,10 @@
 # postgresql-lib.pl
 # Common PostgreSQL functions
 # XXX updating date field
-# XXX access control and schema tables
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 if ($config{'plib'}) {
 	$ENV{$gconfig{'ld_env'}} .= ':' if ($ENV{$gconfig{'ld_env'}});
 	$ENV{$gconfig{'ld_env'}} .= $config{'plib'};
