@@ -1,9 +1,10 @@
 #!/usr/local/bin/perl
 # Send the webmin feedback form
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 &init_config();
-require './ui-lib.pl';
 &ReadParseMime();
 &error_setup($text{'feedback_err'});
 %access = &get_module_acl();
