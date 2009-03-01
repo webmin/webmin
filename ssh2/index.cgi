@@ -1,11 +1,11 @@
 #!/usr/local/bin/perl
 # Show the SSH 2 applet
-# XXX SSH1 vs 2 mode
 
-require '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 use Socket;
+
 &init_config();
-require '../ui-lib.pl';
 $theme_no_table = 1 if ($config{'sizemode'} == 1);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
