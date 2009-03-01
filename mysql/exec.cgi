@@ -33,7 +33,7 @@ else {
 		print "<b>$text{'exec_none'}</b> <p>\n";
 		}
 
-	open(OLD, "$commands_file.$in{'db'}");
+	&open_readfile(OLD, "$commands_file.$in{'db'}");
 	while(<OLD>) {
 		s/\r|\n//g;
 		$already++ if ($_ eq $in{'cmd'});

@@ -1,9 +1,9 @@
 # mysql-lib.pl
 # Common MySQL functions
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 if ($config{'mysql_libs'}) {
 	$ENV{$gconfig{'ld_env'}} .= ':' if ($ENV{$gconfig{'ld_env'}});
 	$ENV{$gconfig{'ld_env'}} .= $config{'mysql_libs'};
@@ -150,6 +150,7 @@ sub list_databases
 local @rv;
 eval {
 	# First try using SQL
+	local $main::error_must_die = 1;
 	local $t = &execute_sql_safe($master_db, "show databases");
 	@rv = map { $_->[0] } @{$t->{'data'}};
 	};
@@ -168,35 +169,43 @@ return @rv;
 # Returns a list of tables in some database
 sub list_tables
 {
-local ($db, $empty_denied, $include_views) = @_;
-# XXX use SQL first
-if ($db =~ /_/) {
-	open(DBS, "\"$config{'mysqlshow'}\" $authstr ".quotemeta($db)." % 2>&1 |");
-	}
-else {
-	open(DBS, "\"$config{'mysqlshow'}\" $authstr ".quotemeta($db)." 2>&1 |");
-	}
-local $t = &parse_mysql_table(DBS);
-close(DBS);
-if ($t =~ /access denied/i) {
-	if ($empty_denied) {
-		return ( );
+my ($db, $empty_denied, $include_views) = @_;
+my @rv;
+eval {
+	# First try using SQL
+	local $main::error_must_die = 1;
+        local $t = &execute_sql_safe($db, "show tables");
+        @rv = map { $_->[0] } @{$t->{'data'}};
+	};
+if ($@) {
+	# Fall back to mysqlshow command
+	local $tspec = $db =~ /_/ ? "%" : "";
+	open(DBS, "\"$config{'mysqlshow'}\" $authstr ".
+		  quotemeta($db)." $tspec 2>&1 |");
+	local $t = &parse_mysql_table(DBS);
+	close(DBS);
+	if ($t =~ /access denied/i) {
+		if ($empty_denied) {
+			return ( );
+			}
+		else {
+			&error($text{'edenied'});
+			}
 		}
-	else {
-		&error($text{'edenied'});
+	elsif (!ref($t)) {
+		&error("<tt>".&html_escape($t)."</tt>");
 		}
+	@rv = map { $_->[0] } @{$t->{'data'}};
 	}
-elsif (!ref($t)) {
-	&error("<tt>$t</tt>");
-	}
-local %views;
+
+# Filter out views
 if (!$include_views) {
-	# Filter out views
 	if (&supports_views()) {
-		%views = map { $_, 1 } &list_views($_[0]);
+		my %views = map { $_, 1 } &list_views($db);
+		@rv = grep { !$views{$_} } @rv;
 		}
 	}
-return grep { !$views{$_} } map { $_->[0] } @{$t->{'data'}};
+return @rv;
 }
 
 # table_structure(database, table)

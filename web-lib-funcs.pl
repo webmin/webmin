@@ -7456,12 +7456,14 @@ but calls the unlock for you automatically when it is closed.
 =cut
 sub open_lock_tempfile
 {
-my $file = @_ == 1 ? $_[0] : $_[1];
-$file =~ s/^[^\/]*//;
-if ($file =~ /^\//) {
-	$main::open_templocks{$file} = &lock_file($file);
+my ($fh, $file, $noerror, $notemp, $safe) = @_;
+$fh = &callers_package($fh);
+my $lockfile = $file;
+$lockfile =~ s/^[^\/]*//;
+if ($lockfile =~ /^\//) {
+	$main::open_templocks{$lockfile} = &lock_file($lockfile);
 	}
-return &open_tempfile(@_);
+return &open_tempfile($fh, $file, $noerror, $notemp, $safe);
 }
 
 sub END
