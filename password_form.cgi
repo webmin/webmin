@@ -2,10 +2,11 @@
 # password_form.cgi
 # Display the form that allows users to change their passwords at login time
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 $ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
-require './web-lib.pl';
 &init_config();
-require './ui-lib.pl';
 &ReadParse();
 &header(undef, undef, undef, undef, 1, 1);
 
