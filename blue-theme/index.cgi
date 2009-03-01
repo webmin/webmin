@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 
-do './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &ReadParse();
 &init_config();
 %text = &load_language($current_theme);

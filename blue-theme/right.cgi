@@ -1,9 +1,9 @@
 #!/usr/local/bin/perl
 # Show server or domain information
 
-do './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do './ui-lib.pl';
 &ReadParse();
 &load_theme_library();
 if (&get_product_name() eq "usermin") {
@@ -19,7 +19,7 @@ foreach $o (split(/\0/, $in{'open'})) {
 	$open{$o} = 1;
 	}
 
-&popup_header(undef, &capture_function_output(\&theme_prehead));
+&popup_header(undef, &capture_function_output(\&WebminCore::theme_prehead));
 print "<center>\n";
 
 # Webmin logo

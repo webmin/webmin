@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 # Show the left-side menu of Virtualmin domains, plus modules
 
-do './web-lib.pl';
-do './ui-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 &ReadParse();
 %text = &load_language($current_theme);
