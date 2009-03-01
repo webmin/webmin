@@ -1,9 +1,9 @@
 # procmail-lib.pl
 # Functions for parsing the .procmailrc file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %minfo = &get_module_info($module_name);
 if ($minfo{'usermin'}) {
 	&switch_to_remote_user();
