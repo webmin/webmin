@@ -2,12 +2,15 @@
 # Convert Webmin function comments to POD format
 
 # Parse command line
-@ARGV || die "usage: webmin-to-pod.pl --svn 'comment' <file> ...";
+@ARGV || die "usage: webmin-to-pod.pl [--svn 'comment'] [--overwrite] <file> ...";
 while(@ARGV) {
 	$a = shift(@ARGV);
 	if ($a eq "--svn") {
 		$svn = shift(@ARGV);
 		$svn || die "--svn must be followed by a commit comment";
+		}
+	elsif ($a eq "--overwrite") {
+		$overwrite = 1;
 		}
 	else {
 		push(@files, $a);
@@ -25,6 +28,9 @@ foreach $f (@files) {
 		}
 	chomp(@lines = <SRC>);
 	close(SRC);
+
+	$basef = $f;
+	$basef =~ s/^.*\///;
 
 	# Scan line by line, looking for top-level subs with comments before
 	# them.
@@ -71,6 +77,22 @@ foreach $f (@files) {
 			# Comments - add to temporary list
 			push(@cmts, $lines[$i]);
 			}
+		elsif (scalar(@cmts) == $i && @cmts) {
+			# End of first comments block - convert to head1
+			push(@out, "=head1 $basef");
+			push(@out, "");
+			if ($cmts[0] =~ /\Q$basef\E/) {
+				shift(@cmts);
+				}
+			foreach my $c (@cmts) {
+				$c =~ s/^\s*#\s*//;
+				push(@out, $c);
+				}
+			push(@out, "");
+			push(@out, "=cut");
+			push(@out, "");
+			@cmts = ( );
+			}
 		else {
 			# Some other line - write out, and flush comments
 			push(@out, @cmts, $lines[$i]);
@@ -81,8 +103,6 @@ foreach $f (@files) {
 	print "  Fixed $count functions\n";
 
 	# Write out the file to a temp location
-	$basef = $f;
-	$basef =~ s/^.*\///;
 	$temp = "$tempdir/$basef";
 	print "  Writing to $temp\n";
 	open(TEMP, ">$temp");
@@ -103,6 +123,24 @@ foreach $f (@files) {
 	# XXX
 	
 	# Copy over original file (with cat)
-	# XXX
+	if ($overwrite) {
+		$out = `cat $temp 2>&1 >$f`;
+		if ($?) {
+			print "  Save FAILED : $out\n";
+			}
+		else {
+			print "  Save OK\n";
+			}
+		}
+	if ($overwrite && $svn) {
+		($dirf = $f) =~ s/\/[^\/]+$//;
+		$out = `cd $dirf && svn commit -m "$svn" $basef 2>&1`;
+		if ($?) {
+			print "  SVN FAILED : $out\n";
+			}
+		else {
+			print "  SVN OK\n";
+			}
+		}
 	}
 
