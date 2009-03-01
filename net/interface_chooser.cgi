@@ -16,7 +16,6 @@
 # 
 # This CGI generated the HTML for choosing an interface or a list of interfaces.
 
-require './../web-lib.pl';
 require './net-lib.pl';
 &init_config();
 &ReadParse();
