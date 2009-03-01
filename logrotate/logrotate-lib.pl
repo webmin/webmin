@@ -1,10 +1,9 @@
 # logrotate-lib.pl
 # Common functions for parsing the logrotate configuration file
-# XXX help
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 if (open(VERSION, "$module_config_directory/version")) {
 	chop($logrotate_version = <VERSION>);
