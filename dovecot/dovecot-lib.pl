@@ -1,8 +1,8 @@
 # Functions for parsing the dovecot config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 @supported_protocols = ( "imap", "pop3", "imaps", "pop3s" );
 @supported_auths = ( "anonymous", "plain", "digest-md5", "cram-md5", "apop" );
