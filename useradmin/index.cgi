@@ -175,6 +175,7 @@ print &ui_tabs_end(1);
 
 # Buttons to show recent logins and logged-in users
 if ($access{'logins'}) {
+	print &ui_hr();
 	print &ui_buttons_start();
 
 	# Show recent logins

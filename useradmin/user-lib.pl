@@ -15,9 +15,9 @@ Functions for Unix user and group management.
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 if ($gconfig{'os_type'} =~ /-linux$/) {
 	do "linux-lib.pl";
 	}
