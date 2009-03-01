@@ -11,9 +11,9 @@ Library for editing webmin users, passwords and access rights.
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do 'md5-lib.pl';
 %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
