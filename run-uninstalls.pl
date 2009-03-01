@@ -3,7 +3,7 @@
 # Run all the uninstall.pl scripts in module directories
 
 $no_acl_check++;
-do './web-lib.pl';
+use WebminCore;
 &init_config();
 
 if (@ARGV > 0) {

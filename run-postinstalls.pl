@@ -3,7 +3,7 @@
 # Run all the postinstall.pl scripts in module and theme directories
 
 $no_acl_check++;
-do './web-lib.pl';
+use WebminCore;
 &init_config();
 &foreign_require("webmin", "webmin-lib.pl");
 @themes = &webmin::list_themes();
