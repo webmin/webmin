@@ -2,6 +2,9 @@
 # chooser.cgi
 # Outputs HTML for a frame-based file chooser 
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 @icon_map = (	"c", "text.gif",
 		"txt", "text.gif",
 		"pl", "text.gif",
@@ -14,8 +17,6 @@
 		);
 
 $trust_unknown_referers = 1;
-require (-r './web-lib.pl' ? './web-lib.pl' : '../web-lib.pl');
-require (-r './ui-lib.pl' ? './ui-lib.pl' : '../ui-lib.pl');
 &init_config();
 %access = &get_module_acl();
 
