@@ -2,7 +2,9 @@
 # switch_user.cgi
 # Force the webserver to re-authenticate
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 &init_config();
 &get_miniserv_config(\%miniserv);
 $id = $$.time();
