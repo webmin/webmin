@@ -2,10 +2,11 @@
 # password_change.cgi
 # Actually update a user's password by directly modifying /etc/shadow
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 $ENV{'MINISERV_INTERNAL'} || die "Can only be called by miniserv.pl";
-require './web-lib.pl';
 &init_config();
-require './ui-lib.pl';
 &ReadParse();
 &get_miniserv_config(\%miniserv);
 $miniserv{'passwd_mode'} == 2 || die "Password changing is not enabled!";
