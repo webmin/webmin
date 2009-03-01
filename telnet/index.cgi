@@ -2,10 +2,11 @@
 # index.cgi
 # Display the telnet applet
 
-require '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 use Socket;
+
 &init_config();
-do '../ui-lib.pl';
 $theme_no_table = 1 if ($config{'sizemode'} == 1);
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
