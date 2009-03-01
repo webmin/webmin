@@ -17,7 +17,8 @@ if (!$ENV{'GATEWAY_INTERFACE'}) {
 	$command_line = 1;
 	$< == 0 || die "xmlrpc.pl must be run as root";
 	}
-do './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 use POSIX;
 use Socket;
 $force_lang = $default_lang;
