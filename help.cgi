@@ -2,10 +2,11 @@
 # help.cgi
 # Displays help HTML for some module, with substitutions
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+
 $trust_unknown_referers = 1;
-require './web-lib.pl';
 &init_config();
-require './ui-lib.pl';
 &error_setup($text{'help_err'});
 $ENV{'PATH_INFO'} !~ /[\\\&\;\`\'\"\|\*\?\~\<\>\^\(\)\[\]\{\}\$\n\r]/ ||
 	&error($text{'help_epath'});
