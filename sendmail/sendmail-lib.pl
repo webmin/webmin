@@ -2,9 +2,9 @@
 # Functions for managing sendmail aliases, domains and mappings.
 # Only sendmail versions 8.8 and above are supported
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 $features_access = $access{'opts'} && $access{'ports'} && $access{'cws'} && $access{'masq'} && $access{'trusts'} && $access{'vmode'} && $access{'amode'} && $access{'omode'} && $access{'cgs'} && $access{'relay'} && $access{'mailers'} && $access{'access'} && $access{'domains'};
 $config{'perpage'} ||= 20;	# a value of 0 can cause problems
