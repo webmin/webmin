@@ -5,7 +5,7 @@ $module_index_name = "Click me";
 &ui_print_header(undef, "Export Test", "");
 
 print "First module $module_name<p>\n";
-&foreign_require("export-call", "export-call-lib.pl");
+&foreign_require("export-call");
 &export_call::print_stuff();
 print "Back in $module_name<p>\n";
 
