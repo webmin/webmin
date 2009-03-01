@@ -2,10 +2,10 @@
 # index.cgi
 # Display the vnc applet
 
-require '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 use Socket;
 &init_config();
-require '../ui-lib.pl';
 
 &ui_print_header(undef, $text{'index_title'}, "", undef, &get_product_name() eq 'webmin', 1);
 
