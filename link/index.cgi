@@ -2,9 +2,9 @@
 # index.cgi
 # Redirect to another URL
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 $url = $access{'link'} || $config{'link'};
 $host = $ENV{'HTTP_HOST'};
