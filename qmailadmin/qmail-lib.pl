@@ -1,9 +1,9 @@
 # qmail-lib.pl
 # Common functions for parsing qmail config files
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do 'boxes-lib.pl';
 
 $qmail_alias_dir = "$config{'qmail_dir'}/alias";
