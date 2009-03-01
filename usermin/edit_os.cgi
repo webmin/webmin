@@ -13,7 +13,7 @@ print $text{'os_desc2'},"<br>\n";
 &get_usermin_miniserv_config(\%miniserv);
 
 print &ui_form_start("change_os.cgi", "post");
-print &ui_table_start($webmin::text{'os_header'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'os_header'}, undef, 2, [ "width=30%" ]);
 
 # OS according to Usermin
 $osfile = "$miniserv{'root'}/os_list.txt";
@@ -34,30 +34,30 @@ print &ui_table_row($text{'os_iusermin'},
 %osinfo = &webmin::detect_operating_system($osfile);
 if ($osinfo{'real_os_type'}) {
 	print &ui_table_row(
-	        $webmin::text{'os_detect'},
+	        $text{'os_detect'},
 	        "$osinfo{'real_os_type'} $osinfo{'real_os_version'}\n".
                 ($osinfo{'os_type'} ne $uconfig{'os_type'} ||
                  $osinfo{'os_version'} ne $uconfig{'os_version'} ?
-                 "<br>".&ui_checkbox("update", 1, $webmin::text{'os_update'}) :
+                 "<br>".&ui_checkbox("update", 1, $text{'os_update'}) :
                  ""));
 	}
 else {
 	print &ui_table_row($text{'os_detect'},
-	                    "<i>$webmin::text{'os_cannot'}</i>");
+	                    "<i>$text{'os_cannot'}</i>");
 	}
 print &ui_table_hr();
 
 # Search path
-print &ui_table_row($webmin::text{'os_path'},
+print &ui_table_row($text{'os_path'},
 	&ui_textarea("path",
 	  join("\n", split($path_separator, $uconfig{'path'})),
 	  5, 30)."<br>".
 	&ui_checkbox(
-	  "syspath", 1, $webmin::text{'os_syspath'}, !$uconfig{'syspath'}));
+	  "syspath", 1, $text{'os_syspath'}, !$uconfig{'syspath'}));
 
 # Shared library path
 if ($uconfig{'ld_env'}) {
-	print &ui_table_row($webmin::text{'os_ld_path'},
+	print &ui_table_row($text{'os_ld_path'},
 	        &ui_textarea("ld_path",
 	          join("\n", split($path_separator, $uconfig{'ld_path'})),
 	          5, 30));
@@ -65,8 +65,8 @@ if ($uconfig{'ld_env'}) {
 
 # Global environment variables
 &get_miniserv_config(\%miniserv);
-$atable = &ui_columns_start([ $webmin::text{'os_name'},
-                              $webmin::text{'os_value'} ]);
+$atable = &ui_columns_start([ $text{'os_name'},
+                              $text{'os_value'} ]);
 $i = 0;
 foreach $e (keys %miniserv) {
         if ($e =~ /^env_(\S+)$/ &&
@@ -81,10 +81,10 @@ foreach $e (keys %miniserv) {
 $atable .= &ui_columns_row([ &ui_textbox("name_$i", undef, 20),
                              &ui_textbox("value_$i", undef, 30) ]);
 $atable .= &ui_columns_end();
-print &ui_table_row($webmin::text{'os_envs'}, $atable);
+print &ui_table_row($text{'os_envs'}, $atable);
 
 print &ui_table_end();
-print &ui_form_end([ [ "", $webmin::text{'save'} ] ]);
+print &ui_form_end([ [ "", $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

@@ -18,13 +18,13 @@ if ($in{'delete'}) {
 	}
 else {
 	# Validate inputs
-	&error_setup($webmin::text{'ipkey_err'});
+	&error_setup($text{'ipkey_err'});
 	@ips = split(/\s+/, $in{'ips'});
 	foreach $i (@ips) {
 		&check_ipaddress($i) ||
-			&error(&webmin::text('ipkey_eip', $i));
+			&error(&text('ipkey_eip', $i));
 		}
-	@ips || &error(&webmin::text('ipkey_eips'));
+	@ips || &error(&text('ipkey_eips'));
 	$ipkey->{'ips'} = \@ips;
 	&webmin::validate_key_cert($in{'key'}, $in{'cert_def'} ? undef : $in{'cert'});
 	$ipkey->{'key'} = $in{'key'};

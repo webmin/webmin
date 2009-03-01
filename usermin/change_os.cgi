@@ -24,12 +24,12 @@ elsif ($in{'type'} ne $uconfig{'real_os_type'} ||
        $in{'iversion'} ne $uconfig{'os_version'}) {
 	# Manually change
 	$uconfig{'real_os_type'} = $in{'type'};
-	$in{'version'} || &error($webmin::text{'os_eversion'});
+	$in{'version'} || &error($text{'os_eversion'});
 	$uconfig{'real_os_version'} = $in{'version'};
 	($os) = grep { $_->{'realtype'} eq $in{'type'} }
 		     &webmin::list_operating_systems($osfile);
 	$uconfig{'os_type'} = $in{'itype'};
-	$in{'iversion'} || &error($webmin::text{'os_eiversion'});
+	$in{'iversion'} || &error($text{'os_eiversion'});
 	$uconfig{'os_version'} = $in{'iversion'};
 	}
 $uconfig{'path'} = join(":", split(/[\r\n]+/, $in{'path'}));

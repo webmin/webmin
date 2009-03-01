@@ -9,13 +9,14 @@ Functions for configuring Usermin running on this system. Example usage :
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 $access{'upgrade'} = 0 if (&is_readonly_mode());	# too hard to fake
-&foreign_require("webmin", "webmin-lib.pl");
-&foreign_require("acl", "acl-lib.pl");
+&foreign_require("webmin");
+&foreign_require("acl");
+%text = ( %webmin::text, %text );
 
 $usermin_miniserv_config = "$config{'usermin_dir'}/miniserv.conf";
 $usermin_config = "$config{'usermin_dir'}/config";
@@ -762,7 +763,7 @@ if ($minfo{'clone'}) {
 	if ($ugconfig{'theme'}) {
 		&unlink_logged("$miniserv{'root'}/$ugconfig{'theme'}/$m");
 		}
-	$mdesc = &webmin::text('delete_desc1', $minfo{'desc'}, $minfo{'clone'});
+	$mdesc = &text('delete_desc1', $minfo{'desc'}, $minfo{'clone'});
 	}
 else {
 	# Delete any clones of this module
@@ -786,7 +787,7 @@ else {
 
 	# Deleting the real module
 	local $size = &disk_usage_kb($mdir);
-	$mdesc = &webmin::text('delete_desc2', "<b>$minfo{'desc'}</b>",
+	$mdesc = &text('delete_desc2', "<b>$minfo{'desc'}</b>",
 			   "<tt>$mdir</tt>", $size);
 	if ($type eq 'rpm') {
 		# This module was installed from an RPM .. rpm -e it

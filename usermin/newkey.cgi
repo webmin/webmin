@@ -9,18 +9,18 @@ $access{'ssl'} || &error($text{'acl_ecannot'});
 # Validate inputs
 &error_setup($text{'newkey_err'});
 $in{'commonName_def'} || $in{'commonName'} =~ /^[A-Za-z0-9\.\-\*]+$/ ||
-	&error($webmin::text{'newkey_ecn'});
-$in{'newfile'} || &error($webmin::text{'newkey_efile'});
+	&error($text{'newkey_ecn'});
+$in{'newfile'} || &error($text{'newkey_efile'});
 $in{'size_def'} || $in{'size'} =~ /^\d+$/ ||
-	&error($webmin::text{'newkey_esize'});
-$in{'days'} =~ /^\d+$/ || &error($webmin::text{'newkey_edays'});
+	&error($text{'newkey_esize'});
+$in{'days'} =~ /^\d+$/ || &error($text{'newkey_edays'});
 
-&ui_print_header(undef, $webmin::text{'newkey_title'}, "");
+&ui_print_header(undef, $text{'newkey_title'}, "");
 
 %aclconfig = &foreign_config('acl');
 &foreign_require("acl", "acl-lib.pl");
 if (!($cmd = &acl::get_ssleay())) {
-	print "<p>",&webmin::text('newkey_ecmd',
+	print "<p>",&text('newkey_ecmd',
 			"<tt>$aclconfig{'ssleay'}</tt>",
 			"$gconfig{'webprefix'}/config.cgi?acl"),"<p>\n";
 	&ui_print_footer("", $text{'index_return'});
@@ -45,7 +45,7 @@ $rv = $?;
 $out = `cat $outtemp`;
 &unlink_file($outtemp);
 if (!-r $ctemp || !-r $ktemp || $?) {
-	print "<p>$webmin::text{'newkey_essl'}<br>\n";
+	print "<p>$text{'newkey_essl'}<br>\n";
 	print "<pre>$out</pre>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;
@@ -55,7 +55,7 @@ if (!-r $ctemp || !-r $ktemp || $?) {
 &unlink_file($ctemp);
 &unlink_file($ktemp);
 if ($catout || $?) {
-	print "<p>$webmin::text{'newkey_ecat'}<br>\n";
+	print "<p>$text{'newkey_ecat'}<br>\n";
 	print "<pre>$catout</pre>\n";
 	&ui_print_footer("", $text{'index_return'});
 	exit;

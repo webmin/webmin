@@ -15,9 +15,9 @@ $miniserv{'passdelay'} = $in{'passdelay'};
 # Save blocked hosts
 if ($in{'blockhost_on'}) {
 	$in{'blockhost_time'} =~ /^\d+$/ && $in{'blockhost_time'} > 0 ||
-		&error($webmin::text{'session_eblockhost_time'});
+		&error($text{'session_eblockhost_time'});
 	$in{'blockhost_failures'} =~ /^\d+$/ && $in{'blockhost_failures'} > 0 ||
-		&error($webmin::text{'session_eblockhost_failures'});
+		&error($text{'session_eblockhost_failures'});
 	$miniserv{'blockhost_time'} = $in{'blockhost_time'};
 	$miniserv{'blockhost_failures'} = $in{'blockhost_failures'};
 	}
@@ -28,9 +28,9 @@ else {
 # Save blocked users
 if ($in{'blockuser_on'}) {
 	$in{'blockuser_time'} =~ /^\d+$/ && $in{'blockuser_time'} > 0 ||
-		&error($webmin::text{'session_eblockuser_time'});
+		&error($text{'session_eblockuser_time'});
 	$in{'blockuser_failures'} =~ /^\d+$/ && $in{'blockuser_failures'} > 0 ||
-		&error($webmin::text{'session_eblockuser_failures'});
+		&error($text{'session_eblockuser_failures'});
 	$miniserv{'blockuser_time'} = $in{'blockuser_time'};
 	$miniserv{'blockuser_failures'} = $in{'blockuser_failures'};
 	}
@@ -40,17 +40,17 @@ else {
 
 $miniserv{'syslog'} = $in{'syslog'};
 if ($in{'session'} && $ENV{'HTTP_COOKIE'} !~ /sessiontest=1/i) {
-	&error($webmin::text{'session_ecookie'});
+	&error($text{'session_ecookie'});
 	}
 $miniserv{'session'} = $in{'session'};
 if ($in{'logouttime_on'}) {
 	$in{'logouttime'} =~ /^\d+$/ && $in{'logouttime'} > 0 ||
-		&error($webmin::text{'session_elogouttime'});
+		&error($text{'session_elogouttime'});
 	}
 $miniserv{'logouttime'} = $in{'logouttime_on'} ? $in{'logouttime'} : undef;
 if ($in{'localauth'}) {
 	$lsof = &has_command("lsof");
-	&error($webmin::text{'session_elsof'}) if (!$lsof);
+	&error($text{'session_elsof'}) if (!$lsof);
 	$miniserv{'localauth'} = $lsof;
 	}
 else {
@@ -58,11 +58,11 @@ else {
 	}
 if ($in{'passwd_file'}) {
 	$in{'passwd_file'} =~ /\|$/ || -r $in{'passwd_file'} ||
-		&error($webmin::text{'session_epasswd_file'});
+		&error($text{'session_epasswd_file'});
 	$in{'passwd_uindex'} =~ /^\d+$/ ||
-		&error($webmin::text{'session_epasswd_uindex'});
+		&error($text{'session_epasswd_uindex'});
 	$in{'passwd_pindex'} =~ /^\d+$/ ||
-		&error($webmin::text{'session_epasswd_pindex'});
+		&error($text{'session_epasswd_pindex'});
 	$miniserv{'passwd_file'} = $in{'passwd_file'};
 	$miniserv{'passwd_uindex'} = $in{'passwd_uindex'};
 	$miniserv{'passwd_pindex'} = $in{'passwd_pindex'};
@@ -124,7 +124,7 @@ if ($in{'cmd_def'}) {
 	}
 else {
 	$in{'cmd'} =~ /\S/ && &has_command($in{'cmd'}) ||
-		&error($webmin::text{'session_ecmd'});
+		&error($text{'session_ecmd'});
 	$gconfig{'passwd_cmd'} = $in{'cmd'};
 	}
 if ($ver >= 1.153) {
@@ -154,7 +154,7 @@ if ($in{'banner_def'}) {
 	delete($uconfig{'loginbanner'});
 	}
 else {
-	-r $in{'banner'} || &error($webmin::text{'session_ebanner'});
+	-r $in{'banner'} || &error($text{'session_ebanner'});
 	$uconfig{'loginbanner'} = $in{'banner'};
 	}
 $uconfig{'create_homedir'} = $in{'create_homedir'};

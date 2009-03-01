@@ -8,7 +8,7 @@ use Socket;
 &ReadParse();
 &get_usermin_miniserv_config(\%miniserv);
 %oldminiserv = %miniserv;
-&error_setup($webmin::text{'bind_err'});
+&error_setup($text{'bind_err'});
 
 # Validate inputs
 for($i=0; defined($in{"ip_def_$i"}); $i++) {
@@ -18,21 +18,21 @@ for($i=0; defined($in{"ip_def_$i"}); $i++) {
 		}
 	else {
 		$ip = $in{"ip_$i"};
-		&check_ipaddress($ip) || &error(&webmin::text('bind_eip2', $ip));
+		&check_ipaddress($ip) || &error(&text('bind_eip2', $ip));
 		}
 	if ($in{"port_def_$i"} == 1) {
 		$port = $in{"port_$i"};
 		$port =~ /^\d+$/ && $port < 65536 ||
-			&error(&webmin::text('bind_eport2', $port));
+			&error(&text('bind_eport2', $port));
 		}
 	else {
 		$port = "*";
 		}
 	push(@sockets, [ $ip, $port ]);
 	}
-@sockets || &error($webmin::text{'bind_enone'});
+@sockets || &error($text{'bind_enone'});
 $in{'hostname_def'} || $in{'hostname'} =~ /^[a-z0-9\.\-]+$/i ||
-	&error($webmin::text{'bind_ehostname'});
+	&error($text{'bind_ehostname'});
 
 # Update config file
 &lock_file($usermin_miniserv_config);

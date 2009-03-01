@@ -7,8 +7,8 @@ print "$text{'descs_info'}<p>\n";
 
 &read_file("$config{'usermin_dir'}/webmin.descs", \%descs);
 print &ui_form_start("save_descs.cgi");
-print &ui_columns_start([ $webmin::text{'descs_mod'},
-			  $webmin::text{'descs_desc'} ]);
+print &ui_columns_start([ $text{'descs_mod'},
+			  $text{'descs_desc'} ]);
 $i = 0;
 @mods = sort { $a->{'realdesc'} cmp $b->{'realdesc'} } &list_modules();
 foreach $d ((sort { $a cmp $b } (keys %descs)), undef, undef, undef) {

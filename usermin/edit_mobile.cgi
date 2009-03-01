@@ -7,28 +7,28 @@ require './usermin-lib.pl';
 &get_usermin_miniserv_config(\%miniserv);
 
 print &ui_form_start("change_mobile.cgi");
-print &ui_table_start($webmin::text{'mobile_header'}, undef, 2);
+print &ui_table_start($text{'mobile_header'}, undef, 2);
 
 # Custom theme for mobile devices
 @themes = &list_themes();
 $m = $miniserv{'mobile_preroot'};
-print &ui_table_row($webmin::text{'mobile_theme'},
+print &ui_table_row($text{'mobile_theme'},
 	    &ui_select("theme", defined($m) ? $m : "*",
-		       [ [ "*", $webmin::text{'mobile_themeglob'} ],
-			 [ "", $webmin::text{'themes_default'} ],
+		       [ [ "*", $text{'mobile_themeglob'} ],
+			 [ "", $text{'themes_default'} ],
 			 map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ]));
 
 # Skip session login for mobile devices
-print &ui_table_row($webmin::text{'mobile_nosession'},
+print &ui_table_row($text{'mobile_nosession'},
 	    &ui_yesno_radio("nosession", int($miniserv{'mobile_nosession'})));
 
 # Extra user agents
-print &ui_table_row($webmin::text{'mobile_agents'},
+print &ui_table_row($text{'mobile_agents'},
 	    &ui_textarea("agents",
 		join("\n", split(/\t+/, $miniserv{'mobile_agents'})), 5, 50));
 
 # Hostname prefixes for mobile
-print &ui_table_row($webmin::text{'mobile_prefixes'},
+print &ui_table_row($text{'mobile_prefixes'},
 	    &ui_textbox("prefixes", $miniserv{'mobile_prefixes'}, 50));
 
 print &ui_table_end();

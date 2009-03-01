@@ -66,19 +66,19 @@ print "$text{'themes_desc4'}<p>\n";
 print &ui_form_start("export_mod.cgi/theme.ubt.gz");
 print "<table>\n";
 
-print "<tr> <td valign=top><b>$webmin::text{'themes_exportmods'}</b></td>\n";
+print "<tr> <td valign=top><b>$text{'themes_exportmods'}</b></td>\n";
 print "<td>",&ui_select("mod", undef,
 	[ map { [ $_->{'dir'}, $_->{'desc'} ] } @themes ], 5, 1),
 	"</td> </tr>\n";
 
-print "<tr> <td valign=top><b>$webmin::text{'mods_exportto'}</b></td>\n";
+print "<tr> <td valign=top><b>$text{'mods_exportto'}</b></td>\n";
 print "<td>",&ui_radio("to", 0,
-	[ [ 0, $webmin::text{'mods_exportshow'}."<br>" ],
-	  [ 1, &webmin::text('mods_exportfile',
+	[ [ 0, $text{'mods_exportshow'}."<br>" ],
+	  [ 1, &text('mods_exportfile',
 		     &ui_textbox("file", undef, 40)) ] ]),"</td> </tr>\n";
 
 print "</table>\n";
-print &ui_form_end([ [ "ok", $webmin::text{'themes_exportok'} ] ]);
+print &ui_form_end([ [ "ok", $text{'themes_exportok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

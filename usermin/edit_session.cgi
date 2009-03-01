@@ -15,26 +15,26 @@ print "$text{'session_desc2'}<p>\n";
 
 print "<form action=change_session.cgi>\n";
 print "<table border>\n";
-print "<tr $tb> <td><b>$webmin::text{'session_header'}</b></td> </tr>\n";
+print "<tr $tb> <td><b>$text{'session_header'}</b></td> </tr>\n";
 print "<tr $cb> <td nowrap>\n";
 
 # Bad password delay
 printf "<input type=radio name=passdelay value=0 %s> %s<br>\n",
-	$miniserv{'passdelay'} ? '' : 'checked', $webmin::text{'session_pdisable'};
+	$miniserv{'passdelay'} ? '' : 'checked', $text{'session_pdisable'};
 printf "<input type=radio name=passdelay value=1 %s> %s<br>\n",
-	$miniserv{'passdelay'} ? 'checked' : '', $webmin::text{'session_penable'};
+	$miniserv{'passdelay'} ? 'checked' : '', $text{'session_penable'};
 
 # Block hosts
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=blockhost_on value=1 %s>\n",
 	$miniserv{'blockhost_failures'} ? "checked" : "";
-print &webmin::text('session_blockhost',
+print &text('session_blockhost',
     &ui_textbox("blockhost_failures", $miniserv{'blockhost_failures'}, 4),
     &ui_textbox("blockhost_time", $miniserv{'blockhost_time'}, 4)),"<br>\n";
 
 # Block users
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=blockuser_on value=1 %s>\n",
 	$miniserv{'blockuser_failures'} ? "checked" : "";
-print &webmin::text('session_blockuser',
+print &text('session_blockuser',
     &ui_textbox("blockuser_failures", $miniserv{'blockuser_failures'}, 4),
     &ui_textbox("blockuser_time", $miniserv{'blockuser_time'}, 4)),"<br>\n";
 
@@ -42,7 +42,7 @@ print &webmin::text('session_blockuser',
 eval "use Sys::Syslog qw(:DEFAULT setlogsock)";
 if (!$@) {
 	printf "<input type=checkbox name=syslog value=1 %s> %s\n",
-		$miniserv{'syslog'} ? "checked" : "", $webmin::text{'session_syslog2'};
+		$miniserv{'syslog'} ? "checked" : "", $text{'session_syslog2'};
 	}
 else {
 	print "<input type=hidden name=syslog value='$miniserv{'syslog'}'>\n";
@@ -50,40 +50,40 @@ else {
 print "<p>\n";
 
 printf "<input type=radio name=session value=0 %s> %s<br>\n",
-	!$miniserv{'session'} ? "checked" : "", $webmin::text{'session_disable'};
+	!$miniserv{'session'} ? "checked" : "", $text{'session_disable'};
 printf "<input type=radio name=session value=1 %s> %s<br>\n",
-	$miniserv{'session'} ? "checked" : "", $webmin::text{'session_enable'};
+	$miniserv{'session'} ? "checked" : "", $text{'session_enable'};
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=logouttime_on value=1 %s>\n",
 	$miniserv{'logouttime'} ? "checked" : "";
-print &webmin::text('session_logout',
+print &text('session_logout',
 	"<input name=logouttime value='$miniserv{'logouttime'}' size=10>"),"<br>\n";
 #printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=locking value=1 %s>\n",
 #	$gconfig{'locking'} ? "checked" : "";
-#print "$webmin::text{'session_locking'}<br>\n";
+#print "$text{'session_locking'}<br>\n";
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=remember value=1 %s>\n",
 	$uconfig{'noremember'} ? "" : "checked";
-print "$webmin::text{'session_remember'}<br>\n";
+print "$text{'session_remember'}<br>\n";
 print "&nbsp;&nbsp;&nbsp;";
 printf "<input type=checkbox name=realname value=1 %s>\n",
 	$uconfig{'realname'} ? "checked" : "";
-print "$webmin::text{'session_realname'}<br>\n";
+print "$text{'session_realname'}<br>\n";
 if ($ver >= 1.153) {
 	printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=utmp value=1 %s>\n",
 		$miniserv{'utmp'} ? "checked" : "";
-	print "$webmin::text{'session_utmp'}<br>\n";
+	print "$text{'session_utmp'}<br>\n";
 	}
 printf "&nbsp;&nbsp;&nbsp;<input type=radio name=banner_def value=1 %s> %s\n",
-	$uconfig{'loginbanner'} ? "" : "checked", $webmin::text{'session_banner1'};
+	$uconfig{'loginbanner'} ? "" : "checked", $text{'session_banner1'};
 printf "<input type=radio name=banner_def value=0 %s> %s\n",
-	$uconfig{'loginbanner'} ? "checked" : "", $webmin::text{'session_banner0'};
+	$uconfig{'loginbanner'} ? "checked" : "", $text{'session_banner0'};
 printf "<input name=banner size=30 value='%s'> %s<br>\n",
 	$uconfig{'loginbanner'}, &file_chooser_button("banner");
 print "<p>\n";
 
 printf "<input type=radio name=localauth value=0 %s> %s<br>\n",
-	!$miniserv{'localauth'} ? "checked" : "", $webmin::text{'session_localoff'};
+	!$miniserv{'localauth'} ? "checked" : "", $text{'session_localoff'};
 printf "<input type=radio name=localauth value=1 %s> %s<br>\n",
-	$miniserv{'localauth'} ? "checked" : "", $webmin::text{'session_localon'};
+	$miniserv{'localauth'} ? "checked" : "", $text{'session_localon'};
 print "<p>\n";
 
 # Authentication mode
@@ -93,7 +93,7 @@ $authmode = $users[0]->{'pass'} eq 'e' ? 2 :
 printf "<input type=radio name=authmode value=0 %s> %s<br>\n",
 	$authmode == 0 ? "checked" : "", $text{'session_authmode0'};
 print "&nbsp;&nbsp;&nbsp;",
-	&ui_checkbox("pam_conv", 1, $webmin::text{'session_pamconv'},
+	&ui_checkbox("pam_conv", 1, $text{'session_pamconv'},
 		     $miniserv{'pam_conv'}),"<br>\n";
 printf "<input type=radio name=authmode value=1 %s>\n",
 	$authmode == 1 ? "checked" : "";
@@ -108,9 +108,9 @@ printf "<input name=extauth size=30 value='%s'><p>\n",
 	$miniserv{'extauth'};
 
 # Unix password change
-print &ui_oneradio("cmd_def", 1, $webmin::text{'session_cmddef1'},
+print &ui_oneradio("cmd_def", 1, $text{'session_cmddef1'},
 		   !$gconfig{'passwd_cmd'}),"<br>\n";
-print &ui_oneradio("cmd_def", 0, $webmin::text{'session_cmddef0'},
+print &ui_oneradio("cmd_def", 0, $text{'session_cmddef0'},
 		   $gconfig{'passwd_cmd'})," ",
       &ui_textbox("cmd", $gconfig{'passwd_cmd'}, 40),"<p>\n";
 
@@ -119,7 +119,7 @@ if ($ver >= 1.047 && $miniserv{'passwd_cindex'} ne '') {
 	foreach $m (0 .. 2) {
 		printf "<input type=radio name=passwd_mode value=%d %s> %s\n",
 			$m, $miniserv{'passwd_mode'} == $m ? "checked" : "",
-			$webmin::text{'session_pmode'.$m};
+			$text{'session_pmode'.$m};
 		print $m == 2 ? "<p>\n" : "<br>\n";
 		}
 	}

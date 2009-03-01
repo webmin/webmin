@@ -6,7 +6,7 @@ require './usermin-lib.pl';
 $access{'access'} || &error($text{'acl_ecannot'});
 use Socket;
 &ReadParse();
-&error_setup($webmin::text{'access_err'});
+&error_setup($text{'access_err'});
 
 @hosts = split(/\s+/, $in{"ip"});
 &lock_file($usermin_miniserv_config);

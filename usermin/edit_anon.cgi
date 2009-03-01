@@ -3,10 +3,10 @@
 # Display anonymous access form
 
 require './usermin-lib.pl';
-&ui_print_header(undef, $webmin::text{'anon_title'}, "");
+&ui_print_header(undef, $text{'anon_title'}, "");
 &get_usermin_miniserv_config(\%miniserv);
 
-print $webmin::text{'anon_desc'},"<p>\n";
+print $text{'anon_desc'},"<p>\n";
 foreach $a (split(/\s+/, $miniserv{'anonymous'})) {
 	if ($a =~ /^([^=]+)=(\S+)$/) {
 		push(@anon, [ $1, $2 ]);
@@ -14,7 +14,7 @@ foreach $a (split(/\s+/, $miniserv{'anonymous'})) {
 	}
 
 print &ui_form_start("change_anon.cgi");
-print &ui_columns_start([ $webmin::text{'anon_url'},
+print &ui_columns_start([ $text{'anon_url'},
                           $text{'anon_user'} ]);
 
 push(@anon, scalar(@anon)%2 == 0 ? ( [ ], [ ] ) : ( [ ] ));

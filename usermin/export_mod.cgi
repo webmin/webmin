@@ -3,14 +3,14 @@
 
 require './usermin-lib.pl';
 &ReadParse();
-&error_setup($webmin::text{'export_err'});
+&error_setup($text{'export_err'});
 @mods = split(/\0/, $in{'mod'});
-@mods || &error($webmin::text{'delete_enone'});
+@mods || &error($text{'delete_enone'});
 
 # Make sure we have the needed commands
-&has_command("tar") || &error(&webmin::text('export_ecmd', "<tt>tar</tt>"));
+&has_command("tar") || &error(&text('export_ecmd', "<tt>tar</tt>"));
 &has_command("gzip") || &error(&twebmin::ext('export_ecmd', "<tt>gzip</tt>"));
-$in{'to'} == 0 || $in{'file'} =~ /^\// || &error($webmin::text{'export_efile'});
+$in{'to'} == 0 || $in{'file'} =~ /^\// || &error($text{'export_efile'});
 
 # Make the tar.gz file
 $temp = $in{'to'} ? $in{'file'} : &transname();
@@ -37,11 +37,11 @@ if ($in{'to'} == 0) {
 	}
 else {
 	# Tell the user
-	&ui_print_header(undef, $webmin::text{'export_title'}, "");
+	&ui_print_header(undef, $text{'export_title'}, "");
 
-	print &webmin::text('export_done', "<tt>$in{'file'}</tt>"),"<p>\n";
+	print &text('export_done', "<tt>$in{'file'}</tt>"),"<p>\n";
 
-	&ui_print_footer("/$module_name/edit_mods.cgi", $webmin::text{'mods_return'},
+	&ui_print_footer("/$module_name/edit_mods.cgi", $text{'mods_return'},
 			 "", $text{'index_return'});
 	}
 

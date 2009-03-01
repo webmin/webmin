@@ -3,7 +3,7 @@
 
 require './usermin-lib.pl';
 &ReadParse();
-&error_setup($webmin::text{'mobile_err'});
+&error_setup($text{'mobile_err'});
 
 &lock_file($usermin_miniserv_config);
 &lock_file("$config{'usermin_dir'}/config");

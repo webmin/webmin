@@ -7,10 +7,10 @@ require './usermin-lib.pl';
 @blocked = &webmin::get_blocked_users_hosts(\%miniserv);
 
 if (@blocked) {
-	print &ui_columns_start([ $webmin::text{'blocked_type'},
+	print &ui_columns_start([ $text{'blocked_type'},
 				  $text{'blocked_who'},
-				  $webmin::text{'blocked_fails'},
-				  $webmin::text{'blocked_when'},
+				  $text{'blocked_fails'},
+				  $text{'blocked_when'},
 				]);
 	foreach $b (@blocked) {
 		print &ui_columns_row([
@@ -24,7 +24,7 @@ if (@blocked) {
 	print &ui_hr();
 	print &ui_buttons_start();
 	print &ui_buttons_row("clear_blocked.cgi",
-			      $webmin::text{'blocked_clear'},
+			      $text{'blocked_clear'},
 			      $text{'blocked_cleardesc'});
 	print &ui_buttons_end();
 	}

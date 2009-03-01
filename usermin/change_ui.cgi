@@ -18,7 +18,7 @@ for($i=0; $i<@webmin::cs_names; $i++) {
 	$cd = $webmin::cs_codes[$i];
 	if ($in{"${cd}_def"}) { delete($uconfig{$cd}); }
 	elsif ($in{"${cd}"} !~ /^[0-9a-fA-F]{6}$/) {
-		&error(&webmin::text('ui_ergb', $webmin::cs_names[$i] . $in{"${cd}_rgb"}));
+		&error(&text('ui_ergb', $webmin::cs_names[$i] . $in{"${cd}_rgb"}));
 		}
 	else { $uconfig{$cd} = $in{"${cd}"}; }
 	}

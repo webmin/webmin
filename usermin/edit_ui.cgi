@@ -16,36 +16,36 @@ print &ui_table_start($text{'ui_header'}, undef, 2, [ "width=30%" ]);
 for($i=0; $i<@webmin::cs_names; $i++) {
 	$cd = $webmin::cs_codes[$i];
 	print &ui_table_row($webmin::cs_names[$i],
-	        &ui_opt_textbox($cd, $uconfig{$cd}, 8, $webmin::text{'ui_default'},
-	          $webmin::text{'ui_rgb'}));
+	        &ui_opt_textbox($cd, $uconfig{$cd}, 8, $text{'ui_default'},
+	          $text{'ui_rgb'}));
 	}
 
-print &ui_table_row($webmin::text{'ui_texttitles'},
+print &ui_table_row($text{'ui_texttitles'},
       &ui_yesno_radio("texttitles", int($uconfig{'texttitles'})));
 
-print &ui_table_row($webmin::text{'ui_sysinfo'},
+print &ui_table_row($text{'ui_sysinfo'},
       &ui_select("sysinfo", int($uconfig{'sysinfo'}),
-      [ map { [ $_, $webmin::text{'ui_sysinfo'.$_} ] } (0, 1, 4, 2, 3) ]));
+      [ map { [ $_, $text{'ui_sysinfo'.$_} ] } (0, 1, 4, 2, 3) ]));
 
 print &ui_table_row($text{'ui_hostnamemode'},
       &ui_select("hostnamemode", int($uconfig{'hostnamemode'}),
       [ map { [ $_, $text{'ui_hnm'.$_} ] } (0 .. 3) ]).
       " ".&ui_textbox("hostnamedisplay", $uconfig{'hostnamedisplay'}, 20));
 
-print &ui_table_row($webmin::text{'ui_showlogin'},
+print &ui_table_row($text{'ui_showlogin'},
       &ui_yesno_radio("showlogin", $uconfig{'showlogin'}));
 
-print &ui_table_row($webmin::text{'startpage_nohost'},
+print &ui_table_row($text{'startpage_nohost'},
       &ui_radio("nohostname", $uconfig{'nohostname'} ? 1 : 0,
 		  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print &ui_table_row($webmin::text{'startpage_gotoone'},
+print &ui_table_row($text{'startpage_gotoone'},
       &ui_yesno_radio("gotoone", int($uconfig{'gotoone'})));
 
 @modules = &list_modules();
-print &ui_table_row($webmin::text{'startpage_gotomodule'},
+print &ui_table_row($text{'startpage_gotomodule'},
       &ui_select("gotomodule", $uconfig{'gotomodule'},
-      [ [ "", $webmin::text{'startpage_gotonone'} ],
+      [ [ "", $text{'startpage_gotonone'} ],
       map { [ $_->{'dir'}, $_->{'desc'} ] }
           sort { $a->{'desc'} cmp $b->{'desc'} } @modules ]));
 
@@ -71,7 +71,7 @@ print &ui_table_row($text{'ui_tabs'},
 	&ui_radio("notabs", $uconfig{'notabs'} ? 1 : 0,
 	  [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]));
 
-print &ui_table_row($webmin::text{'ui_dateformat'},
+print &ui_table_row($text{'ui_dateformat'},
 	&ui_select("dateformat", $uconfig{'dateformat'} || "dd/mon/yyyy",
 	  [ map { [ $_, $text{'ui_dateformat_'.$_} ] }
 	    @webmin::webmin_date_formats ]));

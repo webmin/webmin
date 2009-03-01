@@ -35,7 +35,7 @@ if (!$mode && !$dir) {
 		"$text{'upgrade_delete'}<br>\n";
 	}
 print "<input type=checkbox name=force value=1> ",
-	"$webmin::text{'upgrade_force'}<br>\n";
+	"$text{'upgrade_force'}<br>\n";
 print ui_table_end();
 print ui_form_end([ [ "upgrade", $text{'upgrade_ok'} ] ]);
 
@@ -80,7 +80,7 @@ printf "<input name=other size=30 value='%s'><br>\n",
 
 if ($config{'cron_mode'} == 0) {
 	$upmins = sprintf "%2.2d", $config{'upmins'};
-	print &webmin::text('update_sched2',
+	print &text('update_sched2',
 		    "<input name=hour size=2 value='$config{'uphour'}'>",
 		    "<input name=mins size=2 value='$upmins'>",
 		    "<input name=days size=3 value='$config{'updays'}'>"),"<br>\n";

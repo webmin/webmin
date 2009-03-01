@@ -101,20 +101,20 @@ print &ui_hr();
 print "$text{'mods_desc4'}<p>\n";
 
 print &ui_form_start("export_mod.cgi/module.wbm.gz");
-print &ui_table_start($webmin::text{'mods_header4'}, undef, 2);
+print &ui_table_start($text{'mods_header4'}, undef, 2);
 
-print &ui_table_row($webmin::text{'mods_exportmods'},
+print &ui_table_row($text{'mods_exportmods'},
    	  &ui_select("mod", undef,
 		[ map { [ $_->{'dir'}, $_->{'desc'} ] } @mlist ], 10, 1));
 
-print &ui_table_row($webmin::text{'mods_exportto'},
+print &ui_table_row($text{'mods_exportto'},
 	  &ui_radio("to", 0,
-		[ [ 0, $webmin::text{'mods_exportshow'}."<br>" ],
-		  [ 1, &webmin::text('mods_exportfile',
+		[ [ 0, $text{'mods_exportshow'}."<br>" ],
+		  [ 1, &text('mods_exportfile',
 			     &ui_textbox("file", undef, 40)) ] ]));
 
 print &ui_table_end();
-print &ui_form_end([ [ "ok", $webmin::text{'mods_exportok'} ] ]);
+print &ui_form_end([ [ "ok", $text{'mods_exportok'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

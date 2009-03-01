@@ -3,7 +3,7 @@
 
 require './usermin-lib.pl';
 &ReadParse();
-&error_setup($webmin::text{'advanced_err'});
+&error_setup($text{'advanced_err'});
 &get_usermin_miniserv_config(\%miniserv);
 &get_usermin_config(\%uconfig);
 
@@ -12,7 +12,7 @@ if ($in{'tempdir_def'}) {
 	delete($uconfig{'tempdir'});
 	}
 else {
-	-d $in{'tempdir'} || &error($webmin::text{'advanced_etemp'});
+	-d $in{'tempdir'} || &error($text{'advanced_etemp'});
 	$uconfig{'tempdir'} = $in{'tempdir'};
 	}
 
@@ -21,7 +21,7 @@ for($i=0; defined($tmod = $in{'tmod_'.$i}); $i++) {
 	next if (!$tmod);
 	$tdir = $in{'tdir_'.$i};
 	%minfo = &get_usermin_module_info($tmod);
-	-d $tdir || &error(&webmin::text('advanced_etdir', $minfo{'desc'}));
+	-d $tdir || &error(&text('advanced_etdir', $minfo{'desc'}));
 	push(@tdirs, [ $tmod, $tdir ]);
 	}
 &webmin::save_tempdirs(\%uconfig, \@tdirs);
@@ -35,7 +35,7 @@ if ($in{'umask_def'}) {
 	}
 else {
 	$in{'umask'} =~ /^[0-7]{3}$/ ||
-		&error($webmin::text{'advanced_eumask'});
+		&error($text{'advanced_eumask'});
 	$uconfig{'umask'} = $in{'umask'};
 	}
 
