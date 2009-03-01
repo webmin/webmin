@@ -17,9 +17,9 @@ Example code :
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 @action_buttons = ( 'start', 'restart', 'condrestart', 'reload', 'status',
 		    'stop' );
 %access = &get_module_acl();
