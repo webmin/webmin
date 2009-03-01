@@ -2,9 +2,11 @@
 # date_chooser.cgi
 # Display a table of days in the current month
 
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+use Time::Local;
+
 $trust_unknown_referers = 1;
-require './web-lib.pl';
-require 'timelocal.pl';
 &init_config();
 &ReadParse();
 
