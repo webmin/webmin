@@ -132,7 +132,8 @@ else {
 # MTU
 if (&can_edit("mtu", $b) && $access{'mtu'}) {
 	$mtufield = &ui_opt_textbox(
-		"mtu", $b ? $b->{'mtu'} : $config{'def_mtu'}, 8);
+		"mtu", $b ? $b->{'mtu'} : $config{'def_mtu'}, 8,
+		$text{'default'});
 	}
 else {
 	$mtufield = $b && $b->{'mtu'} ? $b->{'mtu'} : undef;
