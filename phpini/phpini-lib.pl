@@ -1,10 +1,8 @@
 # Functions for managing the PHP configuration file
-# XXX install_check.pl
-# XXX backup_config.pl
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 
 # get_config([file])
