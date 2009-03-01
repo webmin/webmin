@@ -4,9 +4,9 @@ Common functions for configuring miniserv and adjusting global Webmin settings.
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do './gnupg-lib.pl';
 
 @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );
