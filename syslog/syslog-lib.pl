@@ -1,9 +1,9 @@
 # syslog-lib.pl
 # Functions for the syslog module
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 
 # get_config()
