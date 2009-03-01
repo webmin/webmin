@@ -1,10 +1,10 @@
 # bind8-lib.pl
 # Common functions for bind8 config files
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 do 'records-lib.pl';
-do '../ui-lib.pl';
 @extra_forward = split(/\s+/, $config{'extra_forward'});
 @extra_reverse = split(/\s+/, $config{'extra_reverse'});
 %is_extra = map { $_, 1 } (@extra_forward, @extra_reverse);
