@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 
-require './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 @available = ("webmin", "system", "servers", "cluster", "hardware", "", "net");
 &init_config();
 $hostname = &get_display_hostname();
