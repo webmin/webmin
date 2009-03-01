@@ -6,8 +6,10 @@
 # seconds of inactivity)
 # access{'rpc'}  0=not allowed 1=allowed 2=allowed if root or admin
 
-do './web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 use POSIX;
+
 &init_config();
 if ($ENV{'REQUEST_METHOD'} eq 'POST') {
 	local $got;
