@@ -666,17 +666,22 @@ sub regenerate_transport_table
 
 
 # regenerate_any_table($parameter_where_to_find_the_table_names,
-#		       [ &force-files ])
+#		       [ &force-files ], [ after-tag ])
 #
 sub regenerate_any_table
 {
-    local @files;
-    if ($_[1]) {
-	@files = map { [ "hash", $_ ] } @{$_[1]};
-    } elsif (&get_current_value($_[0]) ne "") {
-	@files = &get_maps_types_files(&get_real_value($_[0]));
+    my ($name, $force, $after) = @_;
+    my @files;
+    if ($force) {
+	@files = map { [ "hash", $_ ] } @$force;
+    } elsif (&get_current_value($name) ne "") {
+	my $value = &get_real_value($name);
+	if ($after) {
+		$value =~ s/^.*\Q$after\E\s+(\S+).*$/$1/ || return;
+		}
+	@files = &get_maps_types_files($value);
     }
-    foreach $map (@files)
+    foreach my $map (@files)
     {
         next unless $map;
 	if (&file_map_type($map->[0]) &&
@@ -1631,6 +1636,10 @@ if ($map_name =~ /transport/) { &regenerate_transport_table(); }
 if ($map_name =~ /sender_access/) { &regenerate_any_table($map_name); }
 if ($map_name =~ /sender_bcc/) { &regenerate_bcc_table(); }
 if ($map_name =~ /recipient_bcc/) { &regenerate_recipient_bcc_table(); }
+if ($map_name =~ /smtpd_client_restrictions:(\S+)/) {
+	&regenerate_any_table("smtpd_client_restrictions",
+			      undef, $1);
+	}
 }
 
 # mailq_table(&qfiles)
