@@ -1,9 +1,9 @@
 # inetd-lib.pl
 # Common functions for managing inetd.conf and services files
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 $lib = &get_mod_lib();
 if ($lib) {
