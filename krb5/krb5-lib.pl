@@ -1,9 +1,9 @@
 # krb5-lib.pl
 # Common functions for the krb5 config
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # get_config()
 # Returns the krb5 config
