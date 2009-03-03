@@ -75,9 +75,14 @@ if (defined($in{'sclass'})) {
 &unlock_file("$config_directory/config");
 
 if (defined($in{'preload'})) {
-	# Save preload option
-	@preload = $in{'preload'} ? ( [ "main", "web-lib-funcs.pl" ] ) : ( );
-	&save_preloads(\%miniserv, \@preload);
+	# Save preload option, forcing new mode
+	if ($in{'preload'}) {
+		$miniserv{'premodules'} = 'WebminCore';
+		}
+	else {
+		delete($miniserv{'premodules'});
+		}
+	&save_preloads(\%miniserv, [ ]);
 	}
 
 # Save password pass option
