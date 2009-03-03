@@ -2,9 +2,9 @@
 # burner-lib.pl
 # Common functions for managing the CD burning profiles
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 &foreign_require("fdisk", "fdisk-lib.pl");
 
