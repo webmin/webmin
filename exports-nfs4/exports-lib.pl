@@ -1,10 +1,10 @@
 # export-lib.pl
 # Common functions for the linux exports file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 %access = &get_module_acl();
-do '../ui-lib.pl';
 &foreign_require("mount", "mount-lib.pl");
 our $nfsv4_root;
 
