@@ -5,9 +5,9 @@ say here.
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("acl", "acl-lib.pl");
 &foreign_require("webmin", "webmin-lib.pl");
 %access = &get_module_acl();
