@@ -1,9 +1,9 @@
 # cpan-lib.pl
 # Functions for getting information about perl modules
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 use Config;
 $packages_file = "$module_config_directory/packages.txt.gz";
 $available_packages_cache = "$module_config_directory/available-cache";
