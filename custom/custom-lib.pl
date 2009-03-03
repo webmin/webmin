@@ -1,10 +1,10 @@
 # custom-lib.pl
 # Functions for storing custom commands
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 %access = &get_module_acl();
-do '../ui-lib.pl';
 
 # list_commands()
 # Returns a list of all custom commands
