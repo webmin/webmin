@@ -1,9 +1,9 @@
 # adsl-client-lib.pl
 # Common functions for parsing the rp-pppoe config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do 'secrets-lib.pl';
 
 # get_config()
