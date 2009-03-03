@@ -2,9 +2,9 @@
 # Common functions for PPTP server configuration
 # XXX help pages
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do 'secrets-lib.pl';
 %access = &get_module_acl();
 
