@@ -1,9 +1,9 @@
 # lpadmin-lib.pl
 # Functions for configuring and adding printers
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do "$config{'print_style'}-lib.pl";
 if ($config{'driver_style'}) {
 	do "$config{'driver_style'}-driver.pl";
