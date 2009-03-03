@@ -3078,37 +3078,43 @@ my $m = int($_[0]);
 if (!$main::get_system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
 		# Try some common Linux hostname files first
+		my $fromfile;
 		if ($gconfig{'os_type'} eq 'redhat-linux') {
 			my %nc;
 			&read_env_file("/etc/sysconfig/network", \%nc);
 			if ($nc{'HOSTNAME'}) {
-				$main::get_system_hostname[$m] =$nc{'HOSTNAME'};
-				return $nc{'HOSTNAME'};
+				$fromfile = $nc{'HOSTNAME'};
 				}
 			}
 		elsif ($gconfig{'os_type'} eq 'debian-linux') {
 			my $hn = &read_file_contents("/etc/hostname");
 			if ($hn) {
 				$hn =~ s/\r|\n//g;
-				$main::get_system_hostname[$m] = $hn;
-				return $hn;
+				$fromfile = $hn;
 				}
 			}
 		elsif ($gconfig{'os_type'} eq 'open-linux') {
 			my $hn = &read_file_contents("/etc/HOSTNAME");
 			if ($hn) {
 				$hn =~ s/\r|\n//g;
-				$main::get_system_hostname[$m] = $hn;
-				return $hn;
+				$fromfile = $hn;
 				}
 			}
 		elsif ($gconfig{'os_type'} eq 'solaris') {
 			my $hn = &read_file_contents("/etc/nodename");
 			if ($hn) {
 				$hn =~ s/\r|\n//g;
-				$main::get_system_hostname[$m] = $hn;
-				return $hn;
+				$fromfile = $hn;
 				}
+			}
+
+		# If we found a hostname, use it if value
+		if ($fromfile && ($m || $fromfile =~ /\./)) {
+			if ($m) {
+				$fromfile =~ s/\..*$//;
+				}
+			$main::get_system_hostname[$m] = $fromfile;
+			return $fromfile;
 			}
 
 		# Can use hostname command on Unix
