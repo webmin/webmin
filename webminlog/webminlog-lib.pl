@@ -10,9 +10,9 @@ This module contains functions for parsing the Webmin actions log file.
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 %access_mods = map { $_, 1 } split(/\s+/, $access{'mods'});
 %access_users = map { $_, 1 } split(/\s+/, $access{'users'});
