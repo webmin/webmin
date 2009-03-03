@@ -4,9 +4,9 @@
 # XXX DTMF command shells http://vocp.sourceforge.net/
 # XXX DTMF terminals http://telephonectld.sourceforge.net/
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # vgetty_inittabs()
 # Returns a list of inittab entries for mgetty, with options parsed
