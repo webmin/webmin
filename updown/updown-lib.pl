@@ -1,8 +1,8 @@
 # updown-lib.pl
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 if ($module_info{'usermin'}) {
 	# Running under Usermin
