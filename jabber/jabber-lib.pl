@@ -5,9 +5,9 @@
 #     - XML::Parser  XML::Generator
 # XXX - admin <read> and <write> - what do they mean?
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 if ($config{'jabber_lib'}) {
 	$ENV{$gconfig{'ld_env'}} .= ':' if ($ENV{$gconfig{'ld_env'}});
