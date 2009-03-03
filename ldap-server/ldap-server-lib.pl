@@ -1,9 +1,9 @@
 # Functions for configuring and talking to an LDAP server
 # XXX make sure ACLs work!
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 
 eval "use Net::LDAP";
