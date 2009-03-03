@@ -1,8 +1,8 @@
 # pserver-lib.pl
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 $cvs_path = &has_command($config{'cvs'});
 $cvs_port = 2401;
