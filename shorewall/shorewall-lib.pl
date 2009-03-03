@@ -4,9 +4,9 @@
 # - rule sections
 # - read_shorewall_config & standard_parser do not allow quoted comment characters
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # Get the version
 $shorewall_version = &get_shorewall_version(0);
