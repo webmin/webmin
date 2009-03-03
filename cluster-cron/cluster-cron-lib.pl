@@ -2,9 +2,9 @@
 # XXX environment variables??
 #	XXX create script to run, which sets vars and includes input as << ?
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
 &foreign_require("servers", "servers-lib.pl");
 
