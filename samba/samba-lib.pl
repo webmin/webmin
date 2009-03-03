@@ -2,9 +2,9 @@
 # Common functions for editing the samba config file
 # XXX privileges for groups with 'net' command
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # Get the samba version
 if (open(VERSION, "$module_config_directory/version")) {
