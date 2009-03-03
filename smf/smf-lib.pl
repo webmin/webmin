@@ -1,10 +1,9 @@
 #!/usr/local/bin/perl
-#
 # Common functions for managing smf services
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 require '../javascript-lib.pl';
 
 do 'wizard.pl';
