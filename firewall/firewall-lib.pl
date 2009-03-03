@@ -2,9 +2,9 @@
 # Functions for parsing iptables-save format files
 # - help pages
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 if ($config{'save_file'}) {
 	# Force use of a different save file, and webmin's functions
 	$iptables_save_file = $config{'save_file'};
