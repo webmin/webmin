@@ -1,9 +1,9 @@
 # dfs-lib.pl
 # Common functions for managing dfstab files
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 
 $default_type = 'nfs';
