@@ -10,9 +10,9 @@ Functions to support the change passwords module. Some example code :
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 
 =head2 can_edit_passwd(&user)
