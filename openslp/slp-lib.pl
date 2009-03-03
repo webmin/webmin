@@ -10,9 +10,9 @@
 # See the GNU General Public License for more details.
 #
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 #$config_file = "./config-$gconfig{'os_type'}";
 $config_file = "$module_config_directory/config";
