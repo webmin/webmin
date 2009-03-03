@@ -1,9 +1,9 @@
 # sentry-lib.pl
 # Functions for configuring portsentry, hostsentry and logcheck
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # get_portsentry_config()
 # Parses the portsentry.conf file
