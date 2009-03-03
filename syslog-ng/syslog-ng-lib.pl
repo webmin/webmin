@@ -1,8 +1,8 @@
 # Functions for parsing the syslog-ng config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 @log_flags = ( "final", "fallback", "catchall" );
 
