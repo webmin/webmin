@@ -1,8 +1,8 @@
 # dnsadmin common functions
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("bind8", "bind8-lib.pl");
 do "$bind8::module_root_directory/records-lib.pl";
 
