@@ -1,9 +1,9 @@
 # lilo-lib.pl
 # Common functions for lilo.conf
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 map { $member{$_}++ } ('range', 'loader', 'table', 'unsafe', 'label',
 		       'alias', 'lock', 'optional', 'password', 'restricted',
