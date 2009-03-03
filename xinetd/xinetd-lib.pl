@@ -1,9 +1,9 @@
 # xinetd-lib.pl
 # Functions for parsing xinetd config files
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # get_xinetd_config()
 sub get_xinetd_config
