@@ -1,7 +1,8 @@
 # sgiexports-lib.pl
 # Functions for reading and editing the SGI NFS exports file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 
 # get_exports()
