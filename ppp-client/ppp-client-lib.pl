@@ -3,9 +3,9 @@
 # XXX what about redhat connect process?
 # XXX what about SuSE connect process?
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 $details_file = "$module_config_directory/connect";
 $resolv_conf = "/etc/resolv.conf";
 $ppp_resolv_conf = "/etc/ppp/resolv.conf";
