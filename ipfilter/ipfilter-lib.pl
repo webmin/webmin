@@ -1,8 +1,8 @@
 # Functions for parsing ipf.conf
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("net", "net-lib.pl");
 
 # Get the detected ipf version
