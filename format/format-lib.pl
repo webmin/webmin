@@ -1,9 +1,9 @@
 # format-lib.pl
 # Common functions for partitioning and formatting disks under solaris
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("mount", "mount-lib.pl");
 &foreign_require("proc", "proc-lib.pl");
 
