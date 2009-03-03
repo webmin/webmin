@@ -1,9 +1,9 @@
 # cluster-copy-lib.pl
 # XXX add to released modules list
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
 &foreign_require("servers", "servers-lib.pl");
 &foreign_require("mailboxes", "mailboxes-lib.pl");
