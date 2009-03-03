@@ -1,9 +1,9 @@
 # dhcpd-lib.pl
 # Functions for parsing the DHCPD config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # get_parent_config()
 # Returns a dummy parent structure for the DHCP config
