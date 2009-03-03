@@ -1,8 +1,8 @@
 # cluster-passwd-lib.pl
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 &foreign_require("cluster-useradmin", "cluster-useradmin-lib.pl");
 &foreign_require("passwd", "passwd-lib.pl");
