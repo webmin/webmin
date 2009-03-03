@@ -5,9 +5,9 @@
 #	XXX option to make ports without names not server ports
 #	XXX use is_server_port function
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 if (&foreign_installed("syslog-ng")) {
 	&foreign_require("syslog-ng", "syslog-ng-lib.pl");
 	$syslog_module = "syslog-ng";
