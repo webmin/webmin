@@ -286,10 +286,26 @@ foreach $pl (split(/\s+/, $config{'preload'})) {
 	$pkg =~ s/[^A-Za-z0-9]/_/g;
 	eval "package $pkg; do '$config{'root'}/$lib'";
 	if ($@) {
-		print STDERR "Failed to pre-load $pkg/$lib : $@\n";
+		print STDERR "Failed to pre-load $lib in $pkg : $@\n";
 		}
 	else {
-		print STDERR "Pre-loading $pkg/$lib\n";
+		print STDERR "Pre-loaded $lib in $pkg\n";
+		}
+	}
+foreach $pl (split(/\s+/, $config{'premodules'})) {
+	if ($pl =~ /\//) {
+		($dir, $mod) = split(/\//, $pl);
+		}
+	else {
+		($dir, $mod) = (undef, $pl);
+		}
+	push(@INC, "$config{'root'}/$dir");
+	eval "use $mod";
+	if ($@) {
+		print STDERR "Failed to pre-load $mod : $@\n";
+		}
+	else {
+		print STDERR "Pre-loaded $mod\n";
 		}
 	}
 
@@ -1069,7 +1085,7 @@ if ($use_libwrap) {
 	# Check address with TCP-wrappers
 	if (!hosts_ctl($config{'pam'}, STRING_UNKNOWN,
 		       $acptip, STRING_UNKNOWN)) {
-		&http_error(403, "Access denied for $acptip");
+		&http_error(403, "Access denied for $acptip by TCP wrappers");
 		return 0;
 		}
 	}
@@ -1752,7 +1768,7 @@ if (%users) {
 
 	# Check per-user IP access control
 	if (!&check_user_ip($baseauthuser)) {
-		&http_error(403, "Access denied for $acptip");
+		&http_error(403, "Access denied for $acptip for $baseauthuser");
 		return 0;
 		}
 
