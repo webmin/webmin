@@ -10,9 +10,9 @@ Functions for creating configuration file backups. Some example code :
 
 =cut
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("cron", "cron-lib.pl");
 
 $cron_cmd = "$module_config_directory/backup.pl";
