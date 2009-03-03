@@ -1,9 +1,9 @@
 # squid-lib.pl
 # Functions for configuring squid.conf
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do 'parser-lib.pl';
 %access = &get_module_acl();
 $auth_program = "$module_config_directory/squid-auth.pl";
