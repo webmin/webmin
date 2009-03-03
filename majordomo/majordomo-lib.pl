@@ -1,9 +1,9 @@
 # majordomo-lib.pl
 # Common majordomo functions
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 %MAJOR_ENV = ( 'HOME', $config{'program_dir'} );
 
