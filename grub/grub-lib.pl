@@ -1,9 +1,9 @@
 # grub-lib.pl
 # Functions for parsing and editing a grub menu file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 %title_order = ( 'lock', 10,
 		 'root', 5,
