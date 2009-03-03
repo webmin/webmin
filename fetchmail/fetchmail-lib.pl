@@ -1,10 +1,10 @@
 # fetchmail-lib.pl
 # Functions for parsing fetchmail config files
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 %access = &get_module_acl();
-do '../ui-lib.pl';
 
 if ($module_info{'usermin'}) {
 	if ($no_switch_user) {
