@@ -1,9 +1,9 @@
 # Common functions for the bacula config file
 # XXX schedule chooser on IE
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 use Time::Local;
 if (&foreign_check("node-groups")) {
 	&foreign_require("node-groups", "node-groups-lib.pl");
