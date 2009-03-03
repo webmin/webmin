@@ -1,8 +1,8 @@
 # Common functions for editing the Frox config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 @ui_tds = ( undef, "nowrap" );
 
 # get_config()
