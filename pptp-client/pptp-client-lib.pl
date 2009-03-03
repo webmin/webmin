@@ -1,9 +1,9 @@
 # pptp-client-lib.pl
 # XXX help page
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 do 'secrets-lib.pl';
 
 # list_tunnels()
