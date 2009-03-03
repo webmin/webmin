@@ -1,9 +1,9 @@
 # wuftpd-lib.pl
 # Functions for configuring wuftpd
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # get_ftpaccess()
 # Returns a list of wuftpd config options
