@@ -1,9 +1,9 @@
 # stunnel-lib.pl
 # Common functions for accessing inetd or xinetd
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 if ($config{'stunnel_path'} =~ /([^\/]+)$/) {
 	$stunnel_shortname = $1;
