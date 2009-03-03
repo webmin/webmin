@@ -1,9 +1,9 @@
 # Functions for viewing and managing zones
 # XXX proper pool selection field
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("net", "net-lib.pl");
 &foreign_require("mount", "mount-lib.pl");
 
