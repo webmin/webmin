@@ -2,9 +2,9 @@
 # common functions for installing packages across a cluster
 # XXX refresh all packages after installing
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("servers", "servers-lib.pl");
 &foreign_require("software", "software-lib.pl");
 $parallel_max = 20;
