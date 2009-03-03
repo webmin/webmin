@@ -4,9 +4,9 @@
 # XXX option to download connection as .conf file, and upload an existing
 #     .conf file for addition
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # get_config([file])
 # Returns an array of configured connections
