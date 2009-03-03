@@ -1,9 +1,9 @@
 # heartbeat-lib.pl
 # Common functions for heartbeat tool configuration
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 $ha_cf = $config{'ha_cf'} ? $config{'ha_cf'} : "$config{'ha_dir'}/ha.cf";
 $haresources = $config{'haresources'} ? $config{'haresources'}
