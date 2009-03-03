@@ -1,9 +1,9 @@
 # idmapd-lib.pl
 # Common functions for the idmapd config
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # get_config()
 # Returns the idmapd config
