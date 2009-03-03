@@ -1,9 +1,9 @@
 # bsdexports-lib.pl
 # Functions for managing the FreeBSD exports file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # list_exports()
 # Returns the current exports list
