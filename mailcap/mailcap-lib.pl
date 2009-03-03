@@ -1,8 +1,8 @@
 # Functions for editing /etc/mailcap
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 if ($module_info{'usermin'}) {
 	&switch_to_remote_user();
