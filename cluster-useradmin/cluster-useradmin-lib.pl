@@ -1,9 +1,9 @@
 # cluster-useradmin-lib.pl
 # common functions for managing users across a cluster
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("servers", "servers-lib.pl");
 %useradmin_text = &load_language("useradmin");
 %text = ( %useradmin_text, %text );
