@@ -1,8 +1,8 @@
 #!/usr/local/bin/perl
 
-do "../web-lib.pl";
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # parse_inittab()
 # Returns a list of entries from the /etc/inittab file
