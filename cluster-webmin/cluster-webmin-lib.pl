@@ -1,9 +1,9 @@
 # cluster-webmin-lib.pl
 # Common functions for managing webmin installs across a cluster
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("servers", "servers-lib.pl");
 
 # list_webmin_hosts()
