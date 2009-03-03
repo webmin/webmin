@@ -1,9 +1,9 @@
 # cluster-usermin-lib.pl
 # Common functions for managing usermin installs across a cluster
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 &foreign_require("servers", "servers-lib.pl");
 &foreign_require("usermin", "usermin-lib.pl");
 
