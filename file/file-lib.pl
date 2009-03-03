@@ -1,7 +1,8 @@
 # file-lib.pl
 # Common functions for file manager CGIs
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &ReadParse(\%prein, 'GET');
 if ($prein{'trust'}) {
 	&open_trust_db();
@@ -12,7 +13,6 @@ if ($prein{'trust'}) {
 	dbmclose(%trustdb);
 	}
 &init_config();
-do '../ui-lib.pl';
 
 @file_buttons = ( "save", "preview", "edit", "info", "acl", "attr", "ext",
 		  "search", "delete", "new", "upload", "mkdir", "makelink",
