@@ -8493,14 +8493,6 @@ if (__PACKAGE__ eq 'WebminCore') {
 return eval "${slash}${v}";
 }
 
-# set_module_variable(name, value)
-# Sets some variable in the calling module's package
-sub set_module_variable
-{
-my ($v, $value) = @_;
-# XXX
-}
-
 # clear_time_locale()
 # Temporarily force the locale to C, until reset_time_locale is called
 sub clear_time_locale
