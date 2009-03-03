@@ -1,9 +1,9 @@
 # mon-lib.pl
 # Common functions for mon 
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 $mon_config_file = "$config{'cfbasedir'}/mon.cf";
 $under = { '' => [ 'authtype', 'hostgroup', 'watch', 'use', 'period',
