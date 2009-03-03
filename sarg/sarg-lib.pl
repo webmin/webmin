@@ -1,8 +1,8 @@
 # Functions for reading and writing sarg.conf
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 $cron_cmd = "$module_config_directory/generate.pl";
 %needs_quotes = map { $_, 1 } ("title", "logo_text", "user_invalid_char",
