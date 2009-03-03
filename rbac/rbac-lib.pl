@@ -1,8 +1,8 @@
 #, $in{'mode'} == 1 Functions for parsing the various RBAC configuration files
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 %access = &get_module_acl();
 
 ####################### functions for users #######################
