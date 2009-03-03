@@ -1,9 +1,9 @@
 # nis-lib.pl
 # Common functions for NIS client and server management
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 if (-r "$module_root_directory/$gconfig{'os_type'}-$gconfig{'os_version'}-lib.pl") {
 	do "$gconfig{'os_type'}-$gconfig{'os_version'}-lib.pl";
 	}
