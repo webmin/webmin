@@ -3,9 +3,9 @@
 # rather than a script.
 # XXX some thing are not supported by ipfw1
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 if (&foreign_check("net")) {
 	&foreign_require("net", "net-lib.pl");
 	if (defined(&net::get_rc_conf)) {
