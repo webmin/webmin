@@ -1,9 +1,9 @@
 # cfengine-lib.pl
 # Functions for parsing the cfengine config file
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 @known_sections = ( 'groups', 'control', 'homeservers', 'binservers',
 		    'mailserver', 'mountables', 'broadcast', 'resolve',
