@@ -1,9 +1,9 @@
 # tcpwrappers-lib.pl
 # Library for TCP Wrappers
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
-do '../ui-lib.pl';
 
 # list_rules($filename)
 # Parse rules from /etc/hosts.*
