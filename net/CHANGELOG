@@ -43,3 +43,4 @@ Added support for IPv6 interfaces on Debian, thanks to Sébastien Ducloux.
 Converted all pages to use the Webmin user interface library, for a more consistent look and better theming.
 ---- Changes since 1.450 ----
 Fixed the Hostname and DNS Client page on FreeBSD to edit /etc/nsswitch.conf instead of the older host.conf, when available.
+When changing the hostname on Debian or Ubuntu, update /etc/mailname too.

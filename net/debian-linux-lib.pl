@@ -353,7 +353,7 @@ sub save_hostname
 {
 local (%conf, $f);
 &system_logged("hostname $_[0] >/dev/null 2>&1");
-foreach $f ("/etc/hostname", "/etc/HOSTNAME") {
+foreach $f ("/etc/hostname", "/etc/HOSTNAME", "/etc/mailname") {
 	if (-r $f) {
 		&open_lock_tempfile(HOST, ">$f");
 		&print_tempfile(HOST, $_[0],"\n");
