@@ -554,3 +554,4 @@ If a plan specifies features to be granted to domain owners, those features will
 Added --email-only flags to the list-users.pl and list-domains.pl API scripts.
 Added a button to the Edit Account Plan page to create a new plan cloned from an existing one.
 Added a Module Config option for additional gzip command-line parameters, like --best or --rsyncable.
+Converted libraries to use Webmin's new WebminCore module, where available. This leads to a signficant improvement in memory use and speed.
