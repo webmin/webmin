@@ -27,6 +27,8 @@ $main::default_debug_log_file = $ENV{'WEBMIN_VAR'}."/webmin.debug";
 $webmin_feedback_address = "feedback\@webmin.com";
 $default_lang = "en";
 $default_charset = "iso-8859-1";
+$osdn_download_host = "prdownloads.sourceforge.net";
+$osdn_download_port = 80;
 
 =head2 unique(string, ...)
 

@@ -8121,9 +8121,6 @@ my $rv = "su".($env ? " -" : "").$shellarg.
 return $rv;
 }
 
-$osdn_download_host = "prdownloads.sourceforge.net";
-$osdn_download_port = 80;
-
 =head2 list_osdn_mirrors(project, file)
 
 Given a OSDN project and filename, returns a list of mirror URLs from
