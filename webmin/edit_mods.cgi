@@ -78,11 +78,12 @@ print &ui_table_row($text{'mods_cnew'},
 	&ui_textbox("desc", undef, 40));
 
 # New category
-%cats = &list_categories(\@mlist);
+%cats = &list_categories(\@mlist, 1);
 print &ui_table_row($text{'mods_ccat'},
 	&ui_select("cat", "*",
 		[ [ "*", $text{'mods_csame'} ],
-		  map { [ $_, $cats{$_} ] } keys %cats ]));
+		  map { [ $_, $cats{$_} ] }
+		      sort { lc($a) cmp lc($b) } (keys %cats) ]));
 
 print &ui_table_row($text{'mods_creset'},
 	&ui_yesno_radio("creset", 0));

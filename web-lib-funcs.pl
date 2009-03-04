@@ -8037,7 +8037,7 @@ my $cap = &read_file_contents("/proc/xen/capabilities");
 return $cap =~ /control_d/ ? 0 : 1;
 }
 
-=head2 list_categories(&modules)
+=head2 list_categories(&modules, [include-empty])
 
 Returns a hash mapping category codes to names, including any custom-defined
 categories. The modules parameter must be an array ref of module hash objects,
@@ -8046,12 +8046,16 @@ as returned by get_all_module_infos.
 =cut
 sub list_categories
 {
+my ($mods, $empty) = @_;
 my (%cats, %catnames);
 &read_file("$config_directory/webmin.catnames", \%catnames);
 foreach my $o (@lang_order_list) {
 	&read_file("$config_directory/webmin.catnames.$o", \%catnames);
 	}
-foreach my $m (@{$_[0]}) {
+if ($empty) {
+	%cats = %catnames;
+	}
+foreach my $m (@$mods) {
 	my $c = $m->{'category'};
 	next if ($cats{$c});
 	if (defined($catnames{$c})) {
