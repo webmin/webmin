@@ -3880,7 +3880,7 @@ that get replaced with programmatically generated text. For example :
 sub text
 {
 my $t = &get_module_variable('%text', 1);
-my $rv = $t->{$_[0]};
+my $rv = exists($t->{$_[0]}) ? $t->{$_[0]} : $text{$_[0]};
 for(my $i=1; $i<@_; $i++) {
 	$rv =~ s/\$$i/$_[$i]/g;
 	}
