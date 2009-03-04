@@ -112,3 +112,4 @@ Converted commands in the core web-lib-funcs.pl API file to POD format, and adde
 Added a language option for UK english, and converted words in the default Webmin language to US english.
 Major Dutch translation updates, thanks to Gandyman.
 Catalan translation updates by Jaume Badiella.
+Converted all core modules to use the new WebminCore perl module instead of web-lib.pl. This significantly improves memory use and load time in code that uses functions from multiple modules, asssuming they have all been converted.

@@ -504,6 +504,7 @@ else
 	if [ "$pam" != "" ]; then
 		echo "pam=$pam" >> $cfile
 	fi
+	echo premodules=WebminCore >> $cfile
 
 	# Append package-specific info to config file
 	if [ -r "$wadir/miniserv-conf" ]; then
