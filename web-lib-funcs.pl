@@ -1292,13 +1292,15 @@ by the message setup using that function.
 =cut
 sub error
 {
+my $msg = join("", @_);
+$msg =~ s/<[^>]*>//;
 if (!$main::error_must_die) {
-	print STDERR "Error: ",@_,"\n";
+	print STDERR "Error: ",$msg,"\n";
 	}
 &load_theme_library();
 if ($main::error_must_die) {
 	if ($gconfig{'error_stack'}) {
-		print STDERR "Error: ",@_,"\n";
+		print STDERR "Error: ",$msg,"\n";
 		for(my $i=0; my @stack = caller($i); $i++) {
 			print STDERR "File: $stack[1] Line: $stack[2] ",
 				     "Function: $stack[3]\n";
@@ -1310,7 +1312,8 @@ elsif (!$ENV{'REQUEST_METHOD'}) {
 	# Show text-only error
 	print STDERR "$text{'error'}\n";
 	print STDERR "-----\n";
-	print STDERR ($main::whatfailed ? "$main::whatfailed : " : ""),@_,"\n";
+	print STDERR ($main::whatfailed ? "$main::whatfailed : " : ""),
+		     $msg,"\n";
 	print STDERR "-----\n";
 	if ($gconfig{'error_stack'}) {
 		# Show call stack
@@ -1328,7 +1331,8 @@ elsif (defined(&theme_error)) {
 else {
 	&header($text{'error'}, "");
 	print "<hr>\n";
-	print "<h3>",($main::whatfailed ? "$main::whatfailed : " : ""),@_,"</h3>\n";
+	print "<h3>",($main::whatfailed ? "$main::whatfailed : " : ""),
+		     @_,"</h3>\n";
 	if ($gconfig{'error_stack'}) {
 		# Show call stack
 		print "<h3>$text{'error_stack'}</h3>\n";
