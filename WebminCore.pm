@@ -1,4 +1,16 @@
-# XXX comments here
+=head1 WebminCore.pm
+
+Perl module that exports Webmin API functions. Example code :
+
+  use WebminCore;
+  init_config();
+  ui_print_header(undef, 'My Module', '');
+  print 'This is Webmin version ',get_webmin_version(),'<p>\n';
+  ui_print_footer();
+
+Full function documentation is in web-lib-funcs.pl.
+
+=cut
 
 $main::export_to_caller = 1;
 package WebminCore;
@@ -13,6 +25,9 @@ require Exporter;
 # Add global variables in web-lib.pl
 push(@EXPORT, qw(&unique));
 push(@EXPORT, qw($config_directory $var_directory $remote_error_handler %month_to_number_map %number_to_month_map $webmin_feedback_address $default_lang $default_charset $module_index_name $module_index_link %in $in @in $progress_callback_prefix $progress_callback_url $wait_for_debug $wait_for_input @matches));
+
+# Functions defined in themes
+push(@EXPORT, qw(&theme_post_save_domain &theme_post_save_domains &theme_post_save_server &theme_select_server &theme_select_domain &theme_post_save_folder &theme_post_change_modules));
 
 require "web-lib.pl";
 require "ui-lib.pl";
