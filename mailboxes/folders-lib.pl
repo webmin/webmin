@@ -1921,10 +1921,12 @@ local $h = $imap_login_handle{$_[0]->{'id'}};
 local @rv;
 if (!$h) {
 	# Need to open socket
-	$h = time().++$imap_login_count;
+	$h = "IMAP".time().++$imap_login_count;
 	local $error;
+	print DEBUG "Connecting to IMAP server $_[0]->{'server'}:$_[0]->{'port'}\n";
 	&open_socket($_[0]->{'server'}, $_[0]->{'port'} || $imap_port,
 		     $h, \$error);
+	print DEBUG "IMAP error=$error\n" if ($error);
 	return (0, $error) if ($error);
 	local $os = select($h); $| = 1; select($os);
 
