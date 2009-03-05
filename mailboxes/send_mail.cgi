@@ -97,14 +97,14 @@ if ($in{'body'} =~ /\S/) {
 		# Add the plain-text body
 		local $mt = "text/plain";
 		if ($plainbody =~ /[\177-\377]/) {
-			push(@attach,
+			unshift(@attach,
 			  { 'headers' => [ [ 'Content-Type', $mt ],
 					   [ 'Content-Transfer-Encoding',
 					     'quoted-printable' ] ],
 			    'data' => quoted_encode($plainbody) });
 			}
 		else {
-			push(@attach,
+			unshift(@attach,
 			  { 'headers' => [ [ 'Content-Type', $mt ],
 					   [ 'Content-Transfer-Encoding',
 					     '7bit' ] ],
