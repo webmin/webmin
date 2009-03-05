@@ -8487,11 +8487,12 @@ sub get_module_variable
 {
 my ($v, $wantref) = @_;
 my $slash = $wantref ? "\\" : "";
-if (__PACKAGE__ eq 'WebminCore') {
+my $thispkg = &web_libs_package();
+if ($thispkg eq 'WebminCore') {
 	my ($vt, $vn) = split('', $v, 2);
 	my $callpkg;
 	for(my $i=0; ($callpkg) = caller($i); $i++) {
-		last if ($callpkg ne __PACKAGE__);
+		last if ($callpkg ne $thispkg);
 		}
 	return eval "${slash}${vt}${callpkg}::${vn}";
 	}
@@ -8531,11 +8532,22 @@ sub callers_package
 {
 my ($fh) = @_;
 my $callpkg = (caller(1))[0];
+my $thispkg = &web_libs_package();
 if (!ref($fh) && $fh !~ /::/ &&
-    $callpkg ne __PACKAGE__ && __PACKAGE__ eq 'WebminCore') {
+    $callpkg ne $thispkg && $thispkg eq 'WebminCore') {
         $fh = $callpkg."::".$fh;
         }
 return $fh;
+}
+
+# web_libs_package()
+# Returns the package this code is in. We can't always trust __PACKAGE__
+sub web_libs_package
+{
+if ($called_from_webmin_core) {
+	return "WebminCore";
+	}
+return __PACKAGE__;
 }
 
 $done_web_lib_funcs = 1;

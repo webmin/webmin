@@ -32,6 +32,7 @@ push(@EXPORT, qw(&theme_post_save_domain &theme_post_save_domains &theme_post_sa
 if ($] <= 5.008004) {
 	print STDERR "WARNING: Webmin needs Perl version 5.008004 or later!\n";
 	}
+$called_from_webmin_core = 1;
 require "web-lib.pl";
 require "ui-lib.pl";
 
