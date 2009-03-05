@@ -300,7 +300,7 @@ foreach $pl (split(/\s+/, $config{'premodules'})) {
 		($dir, $mod) = (undef, $pl);
 		}
 	push(@INC, "$config{'root'}/$dir");
-	eval "package main; use $mod ()";
+	eval "package $mod; use $mod ()";
 	if ($@) {
 		print STDERR "Failed to pre-load $mod : $@\n";
 		}
