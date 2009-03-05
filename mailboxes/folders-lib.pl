@@ -2194,7 +2194,7 @@ sub safe_html
 {
 local $html = $_[0];
 local $bodystuff;
-if ($html =~ s/^[\000-\377]*<BODY([^>]*)>//i) {
+if ($html =~ s/^[\000-\377]*?<BODY([^>]*)>//i) {
 	$bodystuff = $1;
 	}
 $html =~ s/<\/BODY>[\000-\377]*$//i;
