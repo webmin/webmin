@@ -1431,7 +1431,10 @@ undef($wait_for_input);
 if ($wait_for_debug) {
 	print STDERR "wait_for(",join(",", @_),")\n";
 	}
-$ha = $_[0];
+$ha = &callers_package($_[0]);
+if ($wait_for_debug) {
+	print STDERR "File handle=$ha fd=",fileno($ha),"\n";
+	}
 $codes =
 "my \$hit;\n".
 "while(1) {\n".

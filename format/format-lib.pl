@@ -22,7 +22,7 @@ close(TEMP);
 open(FORMAT, "format -f $temp |");
 while(1) {
 	local $rv = &wait_for(FORMAT, 'Specify', '\s+\d+\. (\S+) <(.*) cyl (\d+) alt (\d+) hd (\d+) sec (\d+)>\s*(\S*)', '\s+\d+\. (\S+) <drive type unknown>', 'space for more');
-	if ($rv == 0) { last; }
+	if ($rv <= 0) { last; }
 	elsif ($rv == 1) {
 		local $disk = { 'device' => "/dev/dsk/$matches[1]",
 			    	'type' => $matches[2] eq 'DEFAULT' ?
