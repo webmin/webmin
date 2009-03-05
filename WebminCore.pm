@@ -29,9 +29,6 @@ push(@EXPORT, qw($config_directory $var_directory $remote_error_handler %month_t
 # Functions defined in themes
 push(@EXPORT, qw(&theme_post_save_domain &theme_post_save_domains &theme_post_save_server &theme_select_server &theme_select_domain &theme_post_save_folder &theme_post_change_modules));
 
-if ($] <= 5.008004) {
-	print STDERR "WARNING: Webmin needs Perl version 5.008004 or later!\n";
-	}
 $called_from_webmin_core = 1;
 require "web-lib.pl";
 require "ui-lib.pl";
