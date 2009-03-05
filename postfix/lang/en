@@ -261,7 +261,7 @@ opts_relocated_maps_default=Default (disabled)
 opts_sun_mailtool_compatibility=Disable kernel file lock on mailboxes
 opts_trigger_timeout=Max time to send a trigger to a daemon
 opts_delay_warning_time=Time in hours before sending a warning for no delivery
-opts_delay_warning_time_default=Disabled
+opts_delay_warning_time_default2=Postfix default
 opts_content_filter_default=None
 
 smtpd_title=SMTP Server Options

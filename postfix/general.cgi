@@ -55,7 +55,7 @@ print &ui_table_start($text{'general_title_others'}, "width=100%", 4);
 &option_freefield("hash_queue_names", 15);
 
 &option_freefield("hopcount_limit", 15);
-&option_radios_freefield("delay_warning_time", 15, $text{'opts_delay_warning_time_default'});
+&option_radios_freefield("delay_warning_time", 15, $text{'opts_delay_warning_time_default2'});
 
 &option_radios_freefield("inet_interfaces", 40, $text{'opts_all_interfaces'});
 

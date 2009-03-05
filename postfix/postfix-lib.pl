@@ -397,13 +397,9 @@ sub option_select
     my $v = &get_current_value($name);
     my $key = 'opts_'.$name;
 
-    defined($_[2]) ?
-	print "<td>".&hlink("<b>$text{$key}</b>", "opt_".$name)."</td> <td nowrap>\n"
-    :
-	print "<td><b>$text{$key}</b></td> <td nowrap>\n";
-    
-    print &ui_select($name."_def", lc($v), $_[1]);
-    print "</td>\n";
+    print &ui_table_row(defined($_[2]) ? &hlink($text{$key}, "opt_".$name)
+				       : $text{$key},
+    			&ui_select($name."_def", lc($v), $_[1]));
 }
 
 
