@@ -1,7 +1,7 @@
 name=Virtualmin
 desc=Virtualmin Virtual Servers (GPL)
 category=servers
-depends=net useradmin quota acl cron mailboxes 1.420
+depends=net useradmin quota webmin mount init acl cron mailboxes phpini procmail 1.440
 os_support=*-linux macos freebsd openbsd solaris
 version=3.66.gpl
 desc_de=Virtualmin Virtuelle Server
