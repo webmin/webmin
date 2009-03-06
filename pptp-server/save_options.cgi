@@ -52,7 +52,6 @@ else {
 					    'value' => $in{'name'} });
 
 &foreign_require("pptp-client", "pptp-client-lib.pl");
-%pptp_client::in = %in;
 &pptp_client::parse_mppe_options(\@opts, $option);
 
 if (&pptp_client::mppe_support() == 1) {
