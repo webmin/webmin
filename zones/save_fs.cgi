@@ -34,7 +34,6 @@ else {
 	$fs->{'dir'} = $form->get_value("dir");
 	if (&indexof($fs->{'type'}, &mount::list_fstypes()) >= 0) {
 		# Parse friendly filesystem forms
-		%mount::in = %in;
 		$fs->{'special'} = &mount::check_location($fs->{'type'});
 		&mount::check_options($fs->{'type'});
 		$fs->{'options'} = &mount::join_options($fs->{'type'});
