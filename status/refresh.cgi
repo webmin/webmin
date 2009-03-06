@@ -11,7 +11,7 @@ print $text{'refresh_doing'},"<br>\n";
 &system_logged("$cron_cmd --force >/dev/null 2>&1 </dev/null");
 &webmin_log("refresh");
 print $text{'refresh_done'},"<p>\n";
-print &js_redirect("/");
+print &js_redirect("index.cgi");
 
 &ui_print_footer("", $text{'index_return'});
 
