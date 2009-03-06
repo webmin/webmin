@@ -40,14 +40,6 @@ else {
 		# Use user inputs
 		$maccess{'rbac'} = 0 if (defined($in{'rbac'}));
 		&foreign_require($in{'_acl_mod'}, "acl_security.pl");
-		if ($in{'_acl_mod'}) {
-			local $pkg = $in{'_acl_mod'};
-			$pkg =~ s/[^A-Za-z0-9]/_/g;
-			eval "\%${pkg}::in = \%in";
-			}
-		else {
-			%global::in = %in;
-			}
 		&foreign_call($in{'_acl_mod'}, "acl_security_save",
 			      \%maccess, \%in);
 		}

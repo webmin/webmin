@@ -118,9 +118,7 @@ else {
 if ($in{'old'} && $in{'acl_security_form'}) {
 	# Update group's global ACL
 	&foreign_require("", "acl_security.pl");
-	%global::in = %in;
-	&foreign_call("", "acl_security_save",
-		      \%uaccess, \%in);
+	&foreign_call("", "acl_security_save", \%uaccess, \%in);
 	$aclfile = "$config_directory/$in{'name'}.gacl";
 	&lock_file($aclfile);
 	&write_file($aclfile, \%uaccess);
