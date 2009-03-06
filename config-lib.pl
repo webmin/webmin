@@ -32,11 +32,11 @@
 # Prints HTML for 
 sub generate_config
 {
-local ($configref, $file, $module, $canconfig, $cbox, $section) = @_;
-local %config = %$configref;
+my ($configref, $file, $module, $canconfig, $cbox, $section) = @_;
+my %config = %$configref;
 
 # Read the .info file in the right language
-local (%info, @info_order, %einfo, $o);
+my (%info, @info_order, %einfo, $o);
 &read_file($file, \%info, \@info_order);
 %einfo = %info;
 foreach $o (@lang_order_list) {
@@ -50,9 +50,8 @@ if ($section) {
 	}
 
 # Show the parameter editors
-local $c;
-foreach $c (@info_order) {
-	local $checkhtml;
+foreach my $c (@info_order) {
+	my $checkhtml;
 	if ($cbox) {
 		# Show checkbox to allow configuring
 		$checkhtml = &ui_checkbox($cbox, $c, "",
@@ -62,15 +61,15 @@ foreach $c (@info_order) {
 		# Skip those not allowed to be configured
 		next if ($canconfig && !$canconfig->{$c});
 		}
-	local @p = split(/,/, $info{$c});
-	local @ep = split(/,/, $einfo{$c});
+	my @p = split(/,/, $info{$c});
+	my @ep = split(/,/, $einfo{$c});
 	if (scalar(@ep) > scalar(@p)) {
 		push(@p, @ep[scalar(@p) .. @ep-1]);
 		}
 	if ($p[1] == 14) {
 		$module || &error($text{'config_ewebmin'});
 		&foreign_require($module, "config_info.pl");
-		local @newp = &foreign_call($module, $p[2], @p);
+		my @newp = &foreign_call($module, $p[2], @p);
 		$newp[0] ||= $p[0];
 		@p = @newp;
 		}
@@ -83,7 +82,7 @@ foreach $c (@info_order) {
 		# Don't allow mode 16
 		$p[1] = 12;
 		}
-	local $label;
+	my $label;
 	if ($module && -r &help_file($module, "config_$c")) {
 		$label = $checkhtml." ".
 		         &hlink($p[0], "config_$c", $module);
@@ -91,7 +90,7 @@ foreach $c (@info_order) {
 	else {
 		$label = $checkhtml." ".$p[0];
 		}
-	local $field;
+	my $field;
 	if ($p[1] == 0) {
 		# Text value
 		$field = &ui_textbox($c, $config{$c}, $p[2] || 40, 0, $p[3]).
@@ -99,12 +98,12 @@ foreach $c (@info_order) {
 		}
 	elsif ($p[1] == 1) {
 		# One of many
-		local $len = 0;
-		for($i=2; $i<@p; $i++) {
+		my $len = 0;
+		for(my $i=2; $i<@p; $i++) {
 			$p[$i] =~ /^(\S*)\-(.*)$/;
 			$len += length($2);
 			}
-		local @opts;
+		my @opts;
 		for($i=2; $i<@p; $i++) {
 			$p[$i] =~ /^(\S*)\-(.*)$/;
 			push(@opts, [ $1, $2.($len > 50 ? "<br>" : "") ]);
@@ -113,7 +112,7 @@ foreach $c (@info_order) {
 		}
 	elsif ($p[1] == 2) {
 		# Many of many
-		local %sel;
+		my %sel;
 		map { $sel{$_}++ } split(/,/, $config{$c});
 		for($i=2; $i<@p; $i++) {
 			$p[$i] =~ /^(\S*)\-(.*)$/;
@@ -122,13 +121,13 @@ foreach $c (@info_order) {
 		}
 	elsif ($p[1] == 3) {
 		# Optional value
-		local $none = $p[2] || $text{'config_none'};
+		my $none = $p[2] || $text{'config_none'};
 		$field = &ui_opt_textbox($c, $config{$c}, $p[3] || 20, $none,
 					 $p[6], 0, undef, $p[4])." ".$p[5];
 		}
 	elsif ($p[1] == 4) {
 		# One of many menu
-		local @opts;
+		my @opts;
 		for($i=2; $i<@p; $i++) {
 			$p[$i] =~ /^(\S*)\-(.*)$/;
 			push(@opts, [ $1, $2 ]);
@@ -175,16 +174,16 @@ foreach $c (@info_order) {
 		}
 	elsif ($p[1] == 9) {
 		# Text area
-		local $cols = $p[2] || 40;
-		local $rows = $p[3] || 5;
-		local $sp = $p[4] ? eval "\"$p[4]\"" : " ";
+		my $cols = $p[2] || 40;
+		my $rows = $p[3] || 5;
+		my $sp = $p[4] ? eval "\"$p[4]\"" : " ";
 		$field = &ui_textarea($c, join("\n", split(/$sp/, $config{$c})),
 				      $rows, $cols);
 		}
 	elsif ($p[1] == 10) {
 		# Radios with freetext option
-		local $len = 20;
-		for($i=2; $i<@p; $i++) {
+		my $len = 20;
+		for(my $i=2; $i<@p; $i++) {
 			if ($p[$i] =~ /^(\S*)\-(.*)$/) {
 				$len += length($2);
 				}
@@ -192,9 +191,9 @@ foreach $c (@info_order) {
 				$len += length($p[$i]);
 				}
 			}
-		local $fv = $config{$c};
-		local @opts;
-		for($i=2; $i<@p; $i++) {
+		my $fv = $config{$c};
+		my @opts;
+		for(my $i=2; $i<@p; $i++) {
 			($p[$i] =~ /^(\S*)\-(.*)$/) || next;
 			push(@opts, [ $1, $2.($len > 50 ? "<br>" : "") ]);
 			$fv = undef if ($config{$c} eq $1);
@@ -213,8 +212,8 @@ foreach $c (@info_order) {
 		}
 	elsif ($p[1] == 13) {
 		# Multiple selections from menu
-		local @sel = split(/,/, $config{$c});
-		local @opts;
+		my @sel = split(/,/, $config{$c});
+		my @opts;
 		for($i=2; $i<@p; $i++) {
 			$p[$i] =~ /^(\S*)\-(.*)$/;
 			push(@opts, [ $1, $2 ]);
@@ -241,10 +240,10 @@ foreach $c (@info_order) {
 # Updates the specified configuration with values from %in
 sub parse_config
 {
-local ($config, $file, $module, $canconfig, $section) = @_;
+my ($config, $file, $module, $canconfig, $section) = @_;
 
 # Read the .info file
-local (%info, @info_order, $o);
+my (%info, @info_order, $o);
 &read_file($file, \%info, \@info_order);
 foreach $o (@lang_order_list) {
 	&read_file("$file.$o", \%info, \@info_order);
@@ -257,14 +256,13 @@ if ($section) {
 	}
 
 # Actually parse the inputs
-local $c;
-foreach $c (@info_order) {
+foreach my $c (@info_order) {
 	next if ($canconfig && !$canconfig->{$c});
-	local @p = split(/,/, $info{$c});
+	my @p = split(/,/, $info{$c});
 	if ($p[1] == 14) {
 		$_[2] || &error($text{'config_ewebmin'});
 		&foreign_require($_[2], "config_info.pl");
-		local @newp = &foreign_call($_[2], $p[2]);
+		my @newp = &foreign_call($_[2], $p[2]);
 		$newp[0] ||= $p[0];
 		@p = @newp;
 		}
@@ -296,7 +294,7 @@ foreach $c (@info_order) {
 		}
 	elsif ($p[1] == 9) {
 		# Multilines of free text
-		local $sp = $p[4] ? eval "\"$p[4]\"" : " ";
+		my $sp = $p[4] ? eval "\"$p[4]\"" : " ";
 		$in{$c} =~ s/\r//g;
 		$in{$c} =~ s/\n/$sp/g;
 		$in{$c} =~ s/\s+$//;
@@ -321,9 +319,6 @@ foreach $c (@info_order) {
 		# Parse custom HTML field
 		$_[2] || &error($text{'config_ewebmin'});
 		&foreign_require($_[2], "config_info.pl");
-		local $pkg = $_[2];
-		$pkg =~ s/[^A-Za-z0-9]/_/g;
-		eval "\%${pkg}::in = \%in";
 		$config->{$c} = &foreign_call($_[2], "parse_".$p[2],
 					    $config->{$c}, @p);
 		}
@@ -334,11 +329,11 @@ foreach $c (@info_order) {
 # Returns a list of config names that are in some section
 sub config_in_section
 {
-local ($section, $info_order, $info) = @_;
+my ($section, $info_order, $info) = @_;
 my @new_order = ( );
 my $in_section = 0;
 foreach my $c (@$info_order) {
-	local @p = split(/,/, $info->{$c});
+	my @p = split(/,/, $info->{$c});
 	if ($p[1] == 11 && $c eq $section) {
 		$in_section = 1;
 		}

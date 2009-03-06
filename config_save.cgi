@@ -15,8 +15,8 @@ $access{'noconfig'} && &error($text{'config_ecannot'});
 
 mkdir("$config_directory/$m", 0700);
 &lock_file("$config_directory/$m/config");
-&read_file("$config_directory/$m/config", \%config);
-%oldconfig = %config;
+&read_file("$config_directory/$m/config", \%newconfig);
+%oldconfig = %newconfig;
 
 $mdir = &module_root_directory($m);
 if (-r "$mdir/config_info.pl") {
@@ -28,20 +28,20 @@ if (-r "$mdir/config_info.pl") {
 		$pkg =~ s/[^A-Za-z0-9]/_/g;
 		eval "\%${pkg}::in = \%in";
 		$func++;
-		&foreign_call($m, "config_save", \%config);
+		&foreign_call($m, "config_save", \%newconfig);
 		}
 	}
 if (!$func) {
 	# Use config.info to parse config inputs
-	&parse_config(\%config, "$mdir/config.info", $m);
+	&parse_config(\%newconfig, "$mdir/config.info", $m);
 	}
-&write_file("$config_directory/$m/config", \%config);
+&write_file("$config_directory/$m/config", \%newconfig);
 &unlock_file("$config_directory/$m/config");
 
 # Call any post-config save function
 local $pfn = "${m}::config_post_save";
 if (defined(&$pfn)) {
-	&foreign_call($m, "config_post_save", \%config, \%oldconfig);
+	&foreign_call($m, "config_post_save", \%newconfig, \%oldconfig);
 	}
 
 # Refresh installed modules
