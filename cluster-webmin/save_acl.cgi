@@ -11,12 +11,6 @@ $who = $in{'_acl_user'} ? $in{'_acl_user'} : $in{'_acl_group'};
 $maccess{'noconfig'} = $in{'noconfig'};
 if (-r "../$in{'_acl_mod'}/acl_security.pl") {
 	&foreign_require($in{'_acl_mod'}, "acl_security.pl");
-	if ($in{'_acl_mod'}) {
-		eval "\%$in{'_acl_mod'}::in = \%in";
-		}
-	else {
-		%global::in = %in;
-		}
 	&foreign_call($in{'_acl_mod'}, "acl_security_save", \%maccess, \%in);
 	}
 
