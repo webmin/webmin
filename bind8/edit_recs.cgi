@@ -208,10 +208,17 @@ for($i=0; $i<@_; $i++) {
 		else {
 			$v = &convert_illegal($r->{'values'}->[$j]);
 			}
+		if (length($v) > 80) {
+			$v = substr($v, 0, 80)." ...";
+			}
 		push(@cols, $v);
 		}
 	if ($in{'type'} eq "ALL" || $is_extra{$in{'type'}}) {
-		push(@cols, join(" ", @{$r->{'values'}}));
+		$joined = join(" ", @{$r->{'values'}});
+		if (length($joined) > 80) {
+			$joined = substr($joined, 0, 80)." ...";
+			}
+		push(@cols, $joined);
 		}
 	if ($config{'allow_comments'} && $in{'type'} ne "WKS") {
 		push(@cols, &html_escape($r->{'comment'}));

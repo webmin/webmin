@@ -1026,7 +1026,7 @@ elsif ($type eq "KEY") {
 elsif ($type eq "SPF") {
 	# SPF records are complex, as they have several attributes encoded
 	# in the TXT value
-	local $spf = &parse_spf($v[0]);
+	local $spf = &parse_spf(@v);
 	print &ui_table_row($text{'value_spfa'},
 		&ui_yesno_radio("spfa", $spf->{'a'} ? 1 : 0), 3);
 

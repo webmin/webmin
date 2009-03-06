@@ -282,7 +282,7 @@ else {
 		}
 	elsif ($in{'type'} eq 'SPF') {
 		# For SPF records, build the SPF string from the inputs
-		$spf = $r ? &parse_spf($r->{'values'}->[0]) : { };
+		$spf = $r ? &parse_spf(@{$r->{'values'}}) : { };
 		$spf->{'a'} = $in{'spfa'};
 		$spf->{'mx'} = $in{'spfmx'};
 		$spf->{'ptr'} = $in{'spfptr'};

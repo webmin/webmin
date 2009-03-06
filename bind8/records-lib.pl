@@ -265,7 +265,7 @@ while($i < @tok) {
 		# If this is an SPF record .. adjust the class
 		local $spf;
 		if ($dir{'type'} eq 'TXT' &&
-		    ($spf=&parse_spf($dir{'values'}->[0]))) {
+		    ($spf=&parse_spf(@{$dir{'values'}}))) {
 			if (!@{$spf->{'other'}}) {
 				$dir{'type'} = 'SPF';
 				}
@@ -639,11 +639,11 @@ if ($_[0] =~ /^([a-zA-Z]:)?\//) { return $_[0]; }
 return &base_directory()."/".$_[0];
 }
 
-# parse_spf(text)
+# parse_spf(text, ...)
 # If some text looks like an SPF TXT record, return a parsed hash ref
 sub parse_spf
 {
-local ($txt) = @_;
+my $txt = join(" ", @_);
 if ($txt =~ /^v=spf1/) {
 	local @w = split(/\s+/, $txt);
 	local $spf = { };
@@ -680,7 +680,9 @@ return undef;
 }
 
 # join_spf(&spf)
-# Converts an SPF record structure to a string
+# Converts an SPF record structure to a string, designed to be inserted into
+# quotes in a TXT record. If it is longer than 255 bytes, it will be split
+# into multiple quoted strings.
 sub join_spf
 {
 local ($spf) = @_;
@@ -698,7 +700,19 @@ if ($spf->{'all'} == 3) { push(@rv, "-all"); }
 elsif ($spf->{'all'} == 2) { push(@rv, "~all"); }
 elsif ($spf->{'all'} == 1) { push(@rv, "?all"); }
 elsif ($spf->{'all'} eq '0') { push(@rv, "all"); }
-return join(" ", @rv);
+local @rvwords;
+local $rvword;
+while(@rv) {
+	my $w = shift(@rv);
+	if (length($rvword)+length($w)+1 >= 255) {
+		push(@rvwords, $rvword);
+		$rvword = "";
+		}
+	$rvword .= " " if ($rvword);
+	$rvword .= $w;
+	}
+push(@rvwords, $rvword);
+return join("\" \"", @rvwords);
 }
 
 # compute_serial(old)

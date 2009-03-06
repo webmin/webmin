@@ -100,3 +100,4 @@ Added an icon to the main page for checking the whole BIND configuration includi
 Added a Module Config option to prevent inclusion of other slave's IP addresses in the master IP list for remote slaves.
 ---- Changes since 1.450 ----
 Fixed the 'Directory for DNSSEC keys' option on the Module Config page so that it is actually used.
+SPF records longer than 255 bytes are automatically split into separate fields in the underlying TXT record.
