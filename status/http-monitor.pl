@@ -16,8 +16,9 @@ eval {
 	local $con = &make_http_connection($_[0]->{'host'}, $_[0]->{'port'},
 				   $_[0]->{'ssl'}, $method, $_[0]->{'page'});
 	if (!ref($con)) {
-		return { 'up' => 0,
-			 'desc' => $con };
+		$up = 0;
+		$desc = $con;
+		return;
 		}
 	&write_http_connection($con, "Host: $_[0]->{'host'}\r\n");
 	&write_http_connection($con, "User-agent: Webmin\r\n");
