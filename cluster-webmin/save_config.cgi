@@ -21,9 +21,6 @@ if (-r "$mdir/config_info.pl") {
 	# Module has a custom config editor
 	&foreign_require($in{'mod'}, "config_info.pl");
 	if (&foreign_defined($in{'mod'}, "config_save")) {
-		local $pkg = $in{'mod'};
-		$pkg =~ s/[^A-Za-z0-9]/_/g;
-		eval "\%${pkg}::in = \%in";
 		$func++;
 		&foreign_call($in{'mod'}, "config_save", \%fconfig);
 		}
