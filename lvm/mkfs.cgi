@@ -7,7 +7,6 @@ require './lvm-lib.pl';
 
 &ReadParse();
 &error_setup($text{'mkfs_err'});
-&fdisk::ReadParse();
 $cmd = &fdisk::mkfs_parse($in{'fs'}, $in{'dev'});
 
 &ui_print_unbuffered_header(undef, $text{'mkfs_title'}, "");

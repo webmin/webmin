@@ -7,7 +7,6 @@ require './raid-lib.pl';
 
 &ReadParse();
 &error_setup($text{'mkfs_err'});
-&fdisk::ReadParse();
 $conf = &get_raidtab();
 $raid = $conf->[$in{'idx'}];
 $cmd = &fdisk::mkfs_parse($in{'fs'}, $raid->{'value'});
