@@ -260,6 +260,7 @@ log_tmpl_create=Created email template $1
 log_tmpl_modify=Modified email template $1
 log_tmpl_delete=Deleted email template $1
 log_tmpl_deletes=Deleted $1 email templates
+log_refresh=Refreshed monitor statuses
 
 acl_edit=Can edit and create monitors?
 acl_sched=Can change scheduled monitoring?

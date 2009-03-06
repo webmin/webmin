@@ -8,8 +8,10 @@ require './status-lib.pl';
 print $text{'refresh_doing'},"<br>\n";
 &foreign_require("cron", "cron-lib.pl");
 &cron::create_wrapper($cron_cmd, $module_name, "monitor.pl");
-system("$cron_cmd --force >/dev/null 2>&1 </dev/null");
+&system_logged("$cron_cmd --force >/dev/null 2>&1 </dev/null");
+&webmin_log("refresh");
 print $text{'refresh_done'},"<p>\n";
+print &js_redirect("/");
 
 &ui_print_footer("", $text{'index_return'});
 
