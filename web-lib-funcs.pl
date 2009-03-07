@@ -3401,6 +3401,8 @@ if (!defined($ENV{'WEBMIN_VAR'})) {
 else {
 	$var_directory = $ENV{'WEBMIN_VAR'};
 	}
+$main::http_cache_directory = $ENV{'WEBMIN_VAR'}."/cache";
+$main::default_debug_log_file = $ENV{'WEBMIN_VAR'}."/webmin.debug";
 
 if ($ENV{'SESSION_ID'}) {
 	# Hide this variable from called programs, but keep it for internal use

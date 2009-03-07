@@ -20,9 +20,7 @@ $remote_error_handler = "error";
                 	 'sep' => 8, 'oct' => 9, 'nov' =>10, 'dec' =>11 );
 %number_to_month_map = reverse(%month_to_number_map);
 $main::initial_process_id ||= $$;
-$main::http_cache_directory = $ENV{'WEBMIN_VAR'}."/cache";
 $main::default_debug_log_size = 10*1024*1024;
-$main::default_debug_log_file = $ENV{'WEBMIN_VAR'}."/webmin.debug";
 
 $webmin_feedback_address = "feedback\@webmin.com";
 $default_lang = "en";
