@@ -9,7 +9,7 @@ sub useradmin_create_user
 {
 if ($config{'sync_create'}) {
 	local $version = &get_postgresql_version();
-	local $sql = "create user $_[0]->{'user'}";
+	local $sql = "create user \"$_[0]->{'user'}\"";
 	if ($_[0]->{'passmode'} == 3) {
 		$sql .= " with password '$_[0]->{'plainpass'}'";
 		}
@@ -26,7 +26,7 @@ if ($config{'sync_delete'}) {
 	local $s = &execute_sql($config{'basedb'},
 		"select * from pg_shadow where usename = '$_[0]->{'user'}'");
 	return if (!@{$s->{'data'}});
-	&execute_sql_logged($config{'basedb'}, "drop user $_[0]->{'user'}");
+	&execute_sql_logged($config{'basedb'}, "drop user \"$_[0]->{'user'}\"");
 	}
 }
 
@@ -43,8 +43,8 @@ if ($config{'sync_modify'}) {
 		# Need to delete and re-create to rename :(
 		local @user = @{$s->{'data'}->[0]};
 		&execute_sql_logged($config{'basedb'},
-				    "drop user $_[0]->{'olduser'}");
-		local $sql = "create user $_[0]->{'user'}";
+				    "drop user \"$_[0]->{'olduser'}\"");
+		local $sql = "create user \"$_[0]->{'user'}\"";
 		if ($_[0]->{'passmode'} == 3) {
 			$sql .= " with password '$_[0]->{'plainpass'}'";
 			}
@@ -55,7 +55,7 @@ if ($config{'sync_modify'}) {
 		}
 	elsif ($_[0]->{'passmode'} != 4) {
 		# Just change password
-		local $sql = "alter user $_[0]->{'user'}";
+		local $sql = "alter user \"$_[0]->{'user'}\"";
 		if ($_[0]->{'passmode'} == 3) {
 			$sql .= " with password '$_[0]->{'plainpass'}'";
 			}
