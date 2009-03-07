@@ -3430,6 +3430,26 @@ $config_file = "$config_directory/config";
 $null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 $path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 
+# If debugging is enabled, open the debug log
+if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
+	my $dlog = $gconfig{'debug_file'} || $main::default_debug_log_file;
+	if ($gconfig{'debug_size'}) {
+		my @st = stat($dlog);
+		if ($st[7] > $gconfig{'debug_size'}) {
+			rename($dlog, $dlog.".0");
+			}
+		}
+	open(main::DEBUGLOG, ">>$dlog");
+	$main::opened_debug_log = 1;
+
+	if ($gconfig{'debug_what_start'}) {
+		my $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
+		$main::debug_log_start_time = time();
+		&webmin_debug_log("START", "script=$script_name");
+		$main::debug_log_start_module = $module_name;
+		}
+	}
+
 # Set PATH and LD_LIBRARY_PATH
 if ($gconfig{'path'}) {
 	if ($gconfig{'syspath'}) {
@@ -3586,26 +3606,6 @@ if ($module_name) {
 			my $root = &get_windows_root();
 			$config{$k} =~ s/\$\{systemroot\}/$root/g;
 			}
-		}
-	}
-
-# If debugging is enabled, open the debug log
-if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
-	my $dlog = $gconfig{'debug_file'} || $main::default_debug_log_file;
-	if ($gconfig{'debug_size'}) {
-		my @st = stat($dlog);
-		if ($st[7] > $gconfig{'debug_size'}) {
-			rename($dlog, $dlog.".0");
-			}
-		}
-	open(main::DEBUGLOG, ">>$dlog");
-	$main::opened_debug_log = 1;
-
-	if ($gconfig{'debug_what_start'}) {
-		my $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
-		$main::debug_log_start_time = time();
-		&webmin_debug_log("START", "script=$script_name");
-		$main::debug_log_start_module = $module_name;
 		}
 	}
 
