@@ -2508,7 +2508,7 @@ my $rv = eval {
 open(STDERR, ">&OLDSTDERR");
 close(OLDSTDERR);
 if ($@) {
-	print STDERR "parsing of $str failed : $@\n";
+	#print STDERR "parsing of $str failed : $@\n";
 	return undef;
 	}
 return $rv;
