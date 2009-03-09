@@ -555,3 +555,4 @@ Added --email-only flags to the list-users.pl and list-domains.pl API scripts.
 Added a button to the Edit Account Plan page to create a new plan cloned from an existing one.
 Added a Module Config option for additional gzip command-line parameters, like --best or --rsyncable.
 Converted libraries to use Webmin's new WebminCore module, where available. This leads to a signficant improvement in memory use and speed.
+Added support for migrating Plesk 9 backups, which have a different format to Plesk 7 and 8.
