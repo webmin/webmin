@@ -114,12 +114,18 @@ print &ui_table_row($text{'field_null'},
 		  [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 
 # Default value
-$defmode = $f->{'default'} eq 'NULL' ? 0 :
+$defmode = $f->{'default'} eq 'NULL' || !defined($f->{'default'}) ? 0 :
 	   $f->{'default'} eq 'CURRENT_TIMESTAMP' ? 2 :
 	   $f->{'default'} eq '' ? 3 : 1;
-@defs = ( [ 3, $in{'type'} ? $text{'field_defnone'}
-			   : $text{'field_defleave'} ],
-	  [ 0, 'NULL' ] );
+@defs = ( [ 0, 'NULL' ] );
+if ($in{'type'}) {
+	# Let MySQL decide
+	push(@defs, [ 3, $text{'field_defdef'} ]);
+	}
+elsif ($type eq 'char' || $type eq 'varchar') {
+	# Empty string
+	push(@defs, [ 3, $text{'field_defempty'} ]);
+	}
 if ($type eq "timestamp") {
 	push(@defs, [ 2, $text{'field_current'} ]);
 	}

@@ -38,7 +38,8 @@ foreach $r (@desc) {
 		$r->{'key'} eq 'PRI' ? $text{'table_pri'} :
 		$r->{'key'} eq 'MUL' ? $text{'table_mul'} :
 				       $text{'table_none'});
-	push(@cols, &html_escape($r->{'default'}));
+	push(@cols, &html_escape(defined($r->{'default'}) ? $r->{'default'}
+							  : 'NULL'));
 	push(@cols, &html_escape($r->{'extra'}));
 	print &ui_checked_columns_row(\@cols, \@tds, "d", $r->{'field'});
 	$i++;

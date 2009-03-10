@@ -212,6 +212,7 @@ return @rv;
 # Returns a list of hashes detailing the structure of a table
 sub table_structure
 {
+#local $config{'nodbi'} = 1;
 local $s = &execute_sql_safe($_[0], "desc ".&quotestr($_[1]));
 local (@rv, $r);
 local (%tp, $i);

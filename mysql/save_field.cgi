@@ -16,7 +16,7 @@ elsif ($in{'default_def'} == 2) {
 	$default = "default CURRENT_TIMESTAMP";
 	}
 elsif ($in{'default_def'} == 3) {
-	$default = $in{'new'} ? "" : "default none";
+	$default = $in{'new'} ? "" : "default ''";
 	}
 else {
 	$default = "default '$in{'default'}'";
