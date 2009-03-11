@@ -79,13 +79,14 @@ Debian Linux			$1	debian-linux	2.2	`cat /etc/debian_version 2>/dev/null` =~ /^(p
 Debian Linux			$1	debian-linux	3.0	`cat /etc/debian_version 2>/dev/null` =~ /^(woody)/i
 Debian Linux			$1	debian-linux	3.1	`cat /etc/debian_version 2>/dev/null` =~ /^(sarge)/i
 Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(etch)/i
-# These change sometimes...
-Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
-# These don't have a version number yet, so we use the one from "stable"
-Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(testing)/i
 Debian Linux			$1	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(lenny)/i
-Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(unstable)/i
-Debian Linux			$1	debian-linux	4.0	`cat /etc/debian_version 2>/dev/null` =~ /^(sid)/i
+Debian Linux			$1	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(squeeze)/i
+# These change sometimes...
+Debian Linux			$1	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(stable)/i
+# These don't have a version number yet, so we use the one from "stable"
+Debian Linux			$1	debian-linux	5.0	`cat /etc/debian_version 2>/dev/null` =~ /^(testing)/i
+Debian Linux			$1	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(unstable)/i
+Debian Linux			$1	debian-linux	6.0	`cat /etc/debian_version 2>/dev/null` =~ /^(sid)/i
 
 # SuSE enterprise versions
 SuSE OpenExchange Linux		$1	suse-linux	8.2	`cat /etc/SLOX-release 2>/dev/null` =~ /VERSION\s+=\s+(\S+)/i
