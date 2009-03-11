@@ -1,7 +1,6 @@
 
-do 'web-lib.pl';
+use WebminCore;
 &init_config();
-do 'ui-lib.pl';
 
 # acl_security_form(&options)
 # Output HTML for editing global security options
