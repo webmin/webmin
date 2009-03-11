@@ -13,13 +13,11 @@ the Webmin API functions are defined.
 
 =cut
 
-$remote_error_handler = "error";
 @INC = &unique(@INC, ".");
 %month_to_number_map = ( 'jan' => 0, 'feb' => 1, 'mar' => 2, 'apr' => 3,
                 	 'may' => 4, 'jun' => 5, 'jul' => 6, 'aug' => 7,
                 	 'sep' => 8, 'oct' => 9, 'nov' =>10, 'dec' =>11 );
 %number_to_month_map = reverse(%month_to_number_map);
-$main::initial_process_id ||= $$;
 $main::default_debug_log_size = 10*1024*1024;
 
 $webmin_feedback_address = "feedback\@webmin.com";
@@ -47,6 +45,9 @@ if (!$done_web_lib_funcs) {
 						 : 'web-lib-funcs.pl';
 	do $script;
 	}
+
+# Has to be set after error is defined
+$remote_error_handler = \&error;
 
 1;
 

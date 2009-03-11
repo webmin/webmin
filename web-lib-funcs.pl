@@ -1996,12 +1996,12 @@ foreach my $hname (keys %$headers) {
 	}
 
 # Actually download it
-$download_timed_out = undef;
-local $SIG{ALRM} = "download_timeout";
+$main::download_timed_out = undef;
+local $SIG{ALRM} = \&download_timeout;
 alarm($timeout || 60);
 my $h = &make_http_connection($host, $port, $ssl, "GET", $page, \@headers);
 alarm(0);
-$h = $download_timed_out if ($download_timed_out);
+$h = $main::download_timed_out if ($main::download_timed_out);
 if (!ref($h)) {
 	if ($error) { $$error = $h; return; }
 	else { &error($h); }
@@ -2044,9 +2044,9 @@ while(1) {
 	push(@headers, [ lc($1), $2 ]);
 	}
 alarm(0);
-if ($download_timed_out) {
-	if ($_[2]) { ${$_[2]} = $download_timed_out; return 0; }
-	else { &error($download_timed_out); }
+if ($main::download_timed_out) {
+	if ($_[2]) { ${$_[2]} = $main::download_timed_out; return 0; }
+	else { &error($main::download_timed_out); }
 	}
 &$cbfunc(2, $header{'content-length'}) if ($cbfunc);
 if ($rcode >= 300 && $rcode < 400) {
@@ -2172,8 +2172,8 @@ if ($cfile) {
 	}
 
 # Actually download it
-$download_timed_out = undef;
-local $SIG{ALRM} = "download_timeout";
+$main::download_timed_out = undef;
+local $SIG{ALRM} = \&download_timeout;
 alarm(60);
 my $connected;
 if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
@@ -2181,10 +2181,10 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 	my $error;
 	if (&open_socket($1, $2, "SOCK", \$error)) {
 		# Connected OK
-		if ($download_timed_out) {
+		if ($main::download_timed_out) {
 			alarm(0);
-			if ($_[3]) { ${$_[3]} = $download_timed_out; return 0; }
-			else { &error($download_timed_out); }
+			if ($_[3]) { ${$_[3]} = $main::download_timed_out; return 0; }
+			else { &error($main::download_timed_out); }
 			}
 		my $esc = $_[1]; $esc =~ s/ /%20/g;
 		my $up = "$_[5]:$_[6]\@" if ($_[5]);
@@ -2203,8 +2203,8 @@ if ($gconfig{'ftp_proxy'} =~ /^http:\/\/(\S+):(\d+)/ && !&no_proxy($_[0])) {
 		}
 	elsif (!$gconfig{'proxy_fallback'}) {
 		alarm(0);
-		if ($error) { $$error = $download_timed_out; return 0; }
-		else { &error($download_timed_out); }
+		if ($error) { $$error = $main::download_timed_out; return 0; }
+		else { &error($main::download_timed_out); }
 		}
 	}
 
@@ -2212,9 +2212,9 @@ if (!$connected) {
 	# connect to host and login with real FTP protocol
 	&open_socket($_[0], $port, "SOCK", $_[3]) || return 0;
 	alarm(0);
-	if ($download_timed_out) {
-		if ($_[3]) { ${$_[3]} = $download_timed_out; return 0; }
-		else { &error($download_timed_out); }
+	if ($main::download_timed_out) {
+		if ($_[3]) { ${$_[3]} = $main::download_timed_out; return 0; }
+		else { &error($main::download_timed_out); }
 		}
 	&ftp_command("", 2, $_[3]) || return 0;
 	if ($_[5]) {
@@ -2313,16 +2313,16 @@ if (&is_readonly_mode()) {
 	else { &error("FTP connections not allowed in readonly mode"); }
 	}
 
-$download_timed_out = undef;
-local $SIG{ALRM} = "download_timeout";
+$main::download_timed_out = undef;
+local $SIG{ALRM} = \&download_timeout;
 alarm(60);
 
 # connect to host and login
 &open_socket($_[0], $_[7] || 21, "SOCK", $_[3]) || return 0;
 alarm(0);
-if ($download_timed_out) {
-	if ($_[3]) { ${$_[3]} = $download_timed_out; return 0; }
-	else { &error($download_timed_out); }
+if ($main::download_timed_out) {
+	if ($_[3]) { ${$_[3]} = $main::download_timed_out; return 0; }
+	else { &error($main::download_timed_out); }
 	}
 &ftp_command("", 2, $_[3]) || return 0;
 if ($_[5]) {
@@ -2452,7 +2452,7 @@ Called when a download times out. For internal use only.
 =cut
 sub download_timeout
 {
-$download_timed_out = "Download timed out";
+$main::download_timed_out = "Download timed out";
 }
 
 =head2 ftp_command(command, expected, [&error], [filehandle])
@@ -3388,6 +3388,10 @@ of the variables set include :
 =cut
 sub init_config
 {
+# Record first process ID that called this, so we know when it exited to clean
+# up temp files
+$main::initial_process_id ||= $$;
+
 # Configuration and spool directories
 if (!defined($ENV{'WEBMIN_CONFIG'})) {
 	die "WEBMIN_CONFIG not set";
@@ -5291,7 +5295,7 @@ if (!$_[0] || $remote_server_version{$sn} >= 0.966) {
 	my $error;
 	my $serv = ref($_[0]) ? $_[0]->{'host'} : $_[0];
 	&open_socket($serv || "localhost", $rv->[1], TWRITE, \$error);
-	return &$remote_error_handler("Failed to transfer file : $error")
+	return &$main::remote_error_handler("Failed to transfer file : $error")
 		if ($error);
 	open(FILE, $_[1]);
 	while(read(FILE, $got, 1024) > 0) {
@@ -5302,7 +5306,7 @@ if (!$_[0] || $remote_server_version{$sn} >= 0.966) {
 	$error = <TWRITE>;
 	if ($error && $error !~ /^OK/) {
 		# Got back an error!
-		return &$remote_error_handler("Failed to transfer file : $error");
+		return &$main::remote_error_handler("Failed to transfer file : $error");
 		}
 	close(TWRITE);
 	return $rv->[0];
@@ -5337,12 +5341,12 @@ if (!$_[0] || $remote_server_version{$sn} >= 0.966) {
 	my $rv = &remote_rpc_call($_[0], { 'action' => 'tcpread',
 					   'file' => $_[2] } );
 	if (!$rv->[0]) {
-		return &$remote_error_handler("Failed to transfer file : $rv->[1]");
+		return &$main::remote_error_handler("Failed to transfer file : $rv->[1]");
 		}
 	my $error;
 	my $serv = ref($_[0]) ? $_[0]->{'host'} : $_[0];
 	&open_socket($serv || "localhost", $rv->[1], TREAD, \$error);
-	return &$remote_error_handler("Failed to transfer file : $error")
+	return &$main::remote_error_handler("Failed to transfer file : $error")
 		if ($error);
 	my $got;
 	open(FILE, ">$_[1]");
@@ -5392,7 +5396,7 @@ fails. Useful if you want to have more control over your remote operations.
 =cut
 sub remote_error_setup
 {
-$remote_error_handler = $_[0] || "error";
+$main::remote_error_handler = $_[0] || \&error;
 }
 
 =head2 remote_rpc_call(server, structure)
@@ -5409,7 +5413,7 @@ my $sn = &remote_session_name($_[0]);
 if (ref($_[0])) {
 	# Server structure was given
 	$serv = $_[0];
-	$serv->{'user'} || !$sn || return &$remote_error_handler(
+	$serv->{'user'} || !$sn || return &$main::remote_error_handler(
 					"No login set for server");
 	}
 elsif ($_[0]) {
@@ -5422,9 +5426,9 @@ elsif ($_[0]) {
 			}
 		}
 	$serv = $main::remote_servers_cache{$_[0]};
-	$serv || return &$remote_error_handler(
+	$serv || return &$main::remote_error_handler(
 				"No Webmin Servers entry for $_[0]");
-	$serv->{'user'} || return &$remote_error_handler(
+	$serv->{'user'} || return &$main::remote_error_handler(
 				"No login set for server $_[0]");
 	}
 
@@ -5432,7 +5436,7 @@ elsif ($_[0]) {
 my ($user, $pass);
 if ($serv->{'sameuser'}) {
 	$user = $remote_user;
-	defined($remote_pass) || return &$remote_error_handler(
+	defined($remote_pass) || return &$main::remote_error_handler(
 				   "Password for this server is not available");
 	$pass = $remote_pass;
 	}
@@ -5448,7 +5452,7 @@ if ($serv->{'fast'} || !$sn) {
 		my $con = &make_http_connection(
 			$serv->{'host'}, $serv->{'port'}, $serv->{'ssl'},
 			"POST", "/fastrpc.cgi");
-		return &$remote_error_handler(
+		return &$main::remote_error_handler(
 		    "Failed to connect to $serv->{'host'} : $con")
 			if (!ref($con));
 		&write_http_connection($con, "Host: $serv->{'host'}\r\n");
@@ -5465,17 +5469,17 @@ if ($serv->{'fast'} || !$sn) {
 		my $line = &read_http_connection($con);
 		$line =~ tr/\r\n//d;
 		if ($line =~ /^HTTP\/1\..\s+401\s+/) {
-			return &$remote_error_handler("Login to RPC server as $user rejected");
+			return &$main::remote_error_handler("Login to RPC server as $user rejected");
 			}
 		$line =~ /^HTTP\/1\..\s+200\s+/ ||
-			return &$remote_error_handler("HTTP error : $line");
+			return &$main::remote_error_handler("HTTP error : $line");
 		do {
 			$line = &read_http_connection($con);
 			$line =~ tr/\r\n//d;
 			} while($line);
 		$line = &read_http_connection($con);
 		if ($line =~ /^0\s+(.*)/) {
-			return &$remote_error_handler("RPC error : $1");
+			return &$main::remote_error_handler("RPC error : $1");
 			}
 		elsif ($line =~ /^1\s+(\S+)\s+(\S+)\s+(\S+)/ ||
 		       $line =~ /^1\s+(\S+)\s+(\S+)/) {
@@ -5483,7 +5487,7 @@ if ($serv->{'fast'} || !$sn) {
 			&close_http_connection($con);
 			my ($port, $sid, $version, $error) = ($1, $2, $3);
 			&open_socket($serv->{'host'}, $port, $sid, \$error);
-			return &$remote_error_handler("Failed to connect to fastrpc.cgi : $error")
+			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error")
 				if ($error);
 			$fast_fh_cache{$sn} = $sid;
 			$remote_server_version{$sn} = $version;
@@ -5492,7 +5496,7 @@ if ($serv->{'fast'} || !$sn) {
 			while($stuff = &read_http_connection($con)) {
 				$line .= $stuff;
 				}
-			return &$remote_error_handler("Bad response from fastrpc.cgi : $line");
+			return &$main::remote_error_handler("Bad response from fastrpc.cgi : $line");
 			}
 		}
 	elsif (!$fast_fh_cache{$sn}) {
@@ -5533,14 +5537,14 @@ if ($serv->{'fast'} || !$sn) {
 		$line = <RPCOUTr>;
 		#close(RPCOUTr);
 		if ($line =~ /^0\s+(.*)/) {
-			return &$remote_error_handler("RPC error : $2");
+			return &$main::remote_error_handler("RPC error : $2");
 			}
 		elsif ($line =~ /^1\s+(\S+)\s+(\S+)/) {
 			# Started ok .. connect and save SID
 			close(SOCK);
 			my ($port, $sid, $error) = ($1, $2, undef);
 			&open_socket("localhost", $port, $sid, \$error);
-			return &$remote_error_handler("Failed to connect to fastrpc.cgi : $error") if ($error);
+			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error") if ($error);
 			$fast_fh_cache{$sn} = $sid;
 			}
 		else {
@@ -5559,13 +5563,13 @@ if ($serv->{'fast'} || !$sn) {
 	my $rlen = int(<$fh>);
 	my ($fromstr, $got);
 	while(length($fromstr) < $rlen) {
-		return &$remote_error_handler("Failed to read from fastrpc.cgi")
+		return &$main::remote_error_handler("Failed to read from fastrpc.cgi")
 			if (read($fh, $got, $rlen - length($fromstr)) <= 0);
 		$fromstr .= $got;
 		}
 	my $from = &unserialise_variable($fromstr);
 	if (!$from) {
-		return &$remote_error_handler("Remote Webmin error");
+		return &$main::remote_error_handler("Remote Webmin error");
 		}
 	if (defined($from->{'arv'})) {
 		return @{$from->{'arv'}};
@@ -5580,7 +5584,7 @@ else {
 	my $error = 0;
 	my $con = &make_http_connection($serv->{'host'}, $serv->{'port'},
 					$serv->{'ssl'}, "POST", "/rpc.cgi");
-	return &$remote_error_handler("Failed to connect to $serv->{'host'} : $con") if (!ref($con));
+	return &$main::remote_error_handler("Failed to connect to $serv->{'host'} : $con") if (!ref($con));
 
 	&write_http_connection($con, "Host: $serv->{'host'}\r\n");
 	&write_http_connection($con, "User-agent: Webmin\r\n");
@@ -5595,9 +5599,9 @@ else {
 	my $line = &read_http_connection($con);
 	$line =~ tr/\r\n//d;
 	if ($line =~ /^HTTP\/1\..\s+401\s+/) {
-		return &$remote_error_handler("Login to RPC server as $user rejected");
+		return &$main::remote_error_handler("Login to RPC server as $user rejected");
 		}
-	$line =~ /^HTTP\/1\..\s+200\s+/ || return &$remote_error_handler("RPC HTTP error : $line");
+	$line =~ /^HTTP\/1\..\s+200\s+/ || return &$main::remote_error_handler("RPC HTTP error : $line");
 	do {
 		$line = &read_http_connection($con);
 		$line =~ tr/\r\n//d;
@@ -5608,7 +5612,7 @@ else {
 		}
 	close(SOCK);
 	my $from = &unserialise_variable($fromstr);
-	return &$remote_error_handler("Invalid RPC login to $serv->{'host'}") if (!$from->{'status'});
+	return &$main::remote_error_handler("Invalid RPC login to $serv->{'host'}") if (!$from->{'status'});
 	if (defined($from->{'arv'})) {
 		return @{$from->{'arv'}};
 		}
