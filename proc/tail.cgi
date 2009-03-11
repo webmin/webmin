@@ -7,7 +7,7 @@ if ($in{'id'}) {
 	open(IDFILE, ">$idfile");
 	print IDFILE $$,"\n";
 	close(IDFILE);
-	$SIG{'HUP'} = "hup_handler";
+	$SIG{'HUP'} = \&hup_handler;
 	}
 $| = 1;
 print "Content-type: text/plain\n\n";
