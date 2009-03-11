@@ -325,8 +325,8 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 	&proc::safe_process_exec_logged(
 		"$config_directory/stop", 0, 0, STDOUT, undef, 1,1);
 
-	$software::in{'root'} = '/';
-	$software::in{'adminfile'} = '$module_root_directory/adminupgrade';
+	$in{'root'} = '/';
+	$in{'adminfile'} = '$module_root_directory/adminupgrade';
 	$rv = &foreign_call("software", "install_package", $file, $pkg);
 	unlink($file) if ($need_unlink);
 	$ENV{'config_dir'} = $config_directory;
