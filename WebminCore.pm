@@ -16,6 +16,7 @@ $main::export_to_caller = 1;
 package WebminCore;
 require Exporter;
 @ISA = qw(Exporter);
+use Socket;
 
 # Add functions in web-lib-funcs.pl
 # Generated with :
