@@ -91,9 +91,7 @@ sub theme_post_change_modules
 print <<EOF;
 <script>
 var url = '' + top.left.location;
-if (url.indexOf('mode=webmin') > 0) {
-    top.left.location = url;
-    }
+top.left.location = url;
 </script>
 EOF
 }
