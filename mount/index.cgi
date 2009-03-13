@@ -84,7 +84,7 @@ if (@visible) {
 		if ($config{'show_used'}) {
 			# Add disk space used column
 			($total, $free) = &disk_space($minfo[2],$minfo[0]);
-			if ($total) {
+			if ($total && $total > $free) {
 				$pc = int(100*($total-$free) / $total);
 				push(@cols,
 				 $pc >= 99 ? "<font color=red>$pc %</font>" :
