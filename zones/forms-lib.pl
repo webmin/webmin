@@ -1,4 +1,5 @@
 use Webmin::All;
+use Socket;
 
 # get_zone_form(&in, &zinfo)
 # Returns a form for editing a zone

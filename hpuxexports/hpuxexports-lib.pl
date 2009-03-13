@@ -4,6 +4,7 @@
 do '../web-lib.pl';
 &init_config();
 do '../ui-lib.pl';
+use Socket;
 
 # list_exports()
 # Return a list of all the directories currently being exported

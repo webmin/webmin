@@ -5,7 +5,6 @@
 require './servers-lib.pl';
 &ReadParse();
 $access{'find'} || &error($text{'find_ecannot'});
-use Socket;
 
 if (defined($in{'scan'})) {
 	# send to all addresses on the given network

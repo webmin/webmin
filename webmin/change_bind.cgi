@@ -3,7 +3,6 @@
 # Update the binding IP address and port for miniserv
 
 require './webmin-lib.pl';
-use Socket;
 &ReadParse();
 &get_miniserv_config(\%miniserv);
 %oldminiserv = %miniserv;

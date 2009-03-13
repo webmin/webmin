@@ -3,7 +3,6 @@
 # Update IP allow and deny parameters
 
 require './webmin-lib.pl';
-use Socket;
 &ReadParse();
 &error_setup($text{'access_err'});
 

@@ -5,6 +5,7 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 %access = &get_module_acl();
+use Socket;
 
 $services_dir = "$module_config_directory/services";
 $cron_cmd = "$module_config_directory/monitor.pl";

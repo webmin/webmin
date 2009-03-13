@@ -3,7 +3,6 @@
 
 $no_acl_check++;
 require './servers-lib.pl';
-use Socket;
 &foreign_require("mailboxes", "mailboxes-lib.pl");
 &foreign_require("net", "net-lib.pl");
 

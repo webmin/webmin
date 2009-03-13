@@ -18,6 +18,7 @@ for RPC operations. Example code :
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+use Socket;
 &init_config();
 %access = &get_module_acl();
 $cron_cmd = "$module_config_directory/auto.pl";

@@ -8,6 +8,7 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 do './gnupg-lib.pl';
+use Socket;
 
 @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );
 @cs_names = map { $text{$_} } @cs_codes;
