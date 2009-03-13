@@ -40,11 +40,13 @@ foreach my $d (&fdisk::list_disks_partitions()) {
 	    $d->{'model'} =~ /3ware/i) {
 		# Actually a 3ware RAID device .. but we want to probe the
 		# underlying real disks, so add fake devices for them
+		my $twdev = -r "/dev/twe0" ? "/dev/twe" :
+			    -r "/dev/twa0" ? "/dev/twa" : "/dev/twe";
 		my $count = &count_subdisks($d, "3ware",
-					    "/dev/twe".$threecount);
+					    $twdev.$threecount);
 		for(my $i=0; $i<$count; $i++) {
-			push(@rv, { 'device' => '/dev/twe'.$threecount,
-				    'prefix' => '/dev/twe'.$threecount,
+			push(@rv, { 'device' => $twdev.$threecount,
+				    'prefix' => $twdev.$threecount,
 				    'desc' => '3ware physical disk '.$i,
 				    'type' => 'scsi',
 				    'subtype' => '3ware',
