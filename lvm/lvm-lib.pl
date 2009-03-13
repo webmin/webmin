@@ -654,7 +654,7 @@ foreach $d (&fdisk::list_disks_partitions()) {
 	}
 
 # Show available RAID devices
-local $conf = &fdisk::get_raidtab();
+local $conf = &raid::get_raidtab();
 foreach $c (@$conf) {
 	next if ($used{$c->{'value'}});
 	local @ds = &device_status($c->{'value'});
