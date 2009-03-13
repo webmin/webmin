@@ -86,24 +86,6 @@ else {
 	}
 }
 
-# theme_post_save_domain(&domain, action)
-# Called by Virtualmin after a domain is updated, to refresh the left menu
-sub theme_post_save_domain
-{
-local ($d, $action) = @_;
-# Refresh left side, in case options have changed
-print "<script>\n";
-if ($action eq 'create') {
-	# Select the new domain
-	print "top.left.location = '$gconfig{'webprefix'}/left.cgi?dom=$d->{'id'}';\n";
-	}
-else {
-	# Just refresh left
-	print "top.left.location = top.left.location;\n";
-	}
-print "</script>\n";
-}
-
 sub theme_post_change_modules
 {
 print <<EOF;
