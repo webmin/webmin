@@ -2,6 +2,7 @@
 # show.cgi
 # Output some file for the browser
 
+$WebminCore::trust_unknown_referers = 1;
 $trust_unknown_referers = 1;
 require './file-lib.pl';
 &ReadParse();

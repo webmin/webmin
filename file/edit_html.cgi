@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # Show an HTML editor window
 
+$WebminCore::trust_unknown_referers = 1;
 $trust_unknown_referers = 1;
 require './file-lib.pl';
 do '../ui-lib.pl';

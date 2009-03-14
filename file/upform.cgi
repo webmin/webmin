@@ -2,6 +2,7 @@
 # upform.cgi
 # Display the upload form
 
+$WebminCore::trust_unknown_referers = 1;
 $trust_unknown_referers = 1;
 require './file-lib.pl';
 $disallowed_buttons{'upload'} && &error($text{'ebutton'});
