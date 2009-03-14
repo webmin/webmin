@@ -822,7 +822,8 @@ $host || &error($text{'update_eurl'});
 
 # Download the file
 local $temp = &transname();
-&http_download($host, $port, $page, $temp, undef, undef, $ssl, $user, $pass);
+&http_download($host, $port, $page, $temp, undef, undef, $ssl, $user, $pass,
+	       0, 0, 1);
 
 # Download the signature, if we can check it
 local ($ec, $emsg) = &gnupg_setup();
@@ -830,7 +831,7 @@ if (!$ec && $sigmode) {
 	local $err;
 	local $sig;
 	&http_download($host, $port, $page."-sig.asc", \$sig,
-		       \$err, undef, $ssl, $user, $pass);
+		       \$err, undef, $ssl, $user, $pass, 0, 0, 1);
 	if ($err) {
 		$sigmode == 2 && &error(&text('update_enosig', $err));
 		}
