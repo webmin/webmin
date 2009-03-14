@@ -159,7 +159,7 @@ if (!@rv || $@) {
 	open(DBS, "\"$config{'mysqlshow'}\" $authstr |");
 	local $t = &parse_mysql_table(DBS);
 	close(DBS);
-	ref($t) && &error("Failed to list databases : $t");
+	ref($t) || &error("Failed to list databases : $t");
 	@rv = map { $_->[0] } @{$t->{'data'}};
 	}
 return @rv;
