@@ -55,7 +55,7 @@ printf "<input type=radio name=session value=1 %s> %s<br>\n",
 	$miniserv{'session'} ? "checked" : "", $text{'session_enable'};
 printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=logouttime_on value=1 %s>\n",
 	$miniserv{'logouttime'} ? "checked" : "";
-print &text('session_logout',
+print &text('session_logouttime',
 	"<input name=logouttime value='$miniserv{'logouttime'}' size=10>"),"<br>\n";
 #printf "&nbsp;&nbsp;&nbsp;<input type=checkbox name=locking value=1 %s>\n",
 #	$gconfig{'locking'} ? "checked" : "";
