@@ -7,7 +7,7 @@ Common functions for configuring miniserv and adjusting global Webmin settings.
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
-do './gnupg-lib.pl';
+do "gnupg-lib.pl";
 use Socket;
 
 @cs_codes = ( 'cs_page', 'cs_text', 'cs_table', 'cs_header', 'cs_link' );
