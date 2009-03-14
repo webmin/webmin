@@ -2,7 +2,6 @@
 # filesystems.cgi
 # List all filesystems and their types
 
-$WebminCore::trust_unknown_referers = 1;
 $trust_unknown_referers = 1;
 require './file-lib.pl';
 print "Content-type: text/plain\n\n";
