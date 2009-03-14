@@ -268,15 +268,16 @@ if (!$supports_dev_routes) {
 	push(@rv, $static_route_config);
 	}
 else {
-	local $f;
-	opendir(DIR, &translate_filename($devices_dir));
-	while($f = readdir(DIR)) {
-		if ($f =~ /^([a-z]+\d*(\.\d+)?(:\d+)?)\.route$/ ||
-		    $f =~ /^route\-([a-z]+\d*(\.\d+)?(:\d+)?)$/) {
-			push(@rv, "$devices_dir/$f");
+	foreach my $dir ($devices_dir, $net_scripts_dir) {
+		opendir(DIR, &translate_filename($dir));
+		while(my $f = readdir(DIR)) {
+			if ($f =~ /^([a-z]+\d*(\.\d+)?(:\d+)?)\.route$/ ||
+			    $f =~ /^route\-([a-z]+\d*(\.\d+)?(:\d+)?)$/) {
+				push(@rv, "$dir/$f");
+				}
 			}
+		closedir(DIR);
 		}
-	closedir(DIR);
 	}
 return @rv;
 }
