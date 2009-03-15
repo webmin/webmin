@@ -90,7 +90,7 @@ else {
 # Show a confirmation message
 &ui_print_header(undef, $text{'passwd_title'}, "");
 if (($user->{'user'} eq $remote_user || $user->{'user'} eq $base_remote_user) &&
-    !$session_id) {
+    !$main::session_id) {
 	print "<p>",&text('passwd_ok', "<tt>$user->{'user'}</tt>"),"<p>\n";
 	}
 else {
