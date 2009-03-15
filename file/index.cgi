@@ -53,8 +53,8 @@ $mounting = !$access{'uid'} && &foreign_check("mount") ? 1 : 0;
 if ($in{'open'}) {
 	$open = "<param name=open value=\"".&html_escape($in{'open'})."\">";
 	}
-if ($session_id) {
-	$session = "<param name=session value=\"sid=$session_id\">";
+if ($main::session_id) {
+	$session = "<param name=session value=\"sid=$main::session_id\">";
 	}
 if (!$access{'noconfig'}) {
 	$config = "<param name=config value=\"$gconfig{'webprefix'}/config.cgi?$module_name\">";
