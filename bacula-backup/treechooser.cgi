@@ -7,8 +7,8 @@ require './bacula-backup-lib.pl';
 &ReadParse();
 
 $shortest = "/";
-if ($session_id) {
-	$session = "<param name=session value=\"sid=$session_id\">";
+if ($main::session_id) {
+	$session = "<param name=session value=\"sid=$main::session_id\">";
 	}
 
 $in{'job'} =~ s/^(.*)_(\d+)$/$2/g;
