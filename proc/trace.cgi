@@ -37,8 +37,8 @@ if ($config{'trace_java'}) {
 	print "<param name=url value='tail.cgi?pid=$in{'pid'}&id=$id&syscalls=",
 	      $in{'all'} ? "" : &urlize($in{'syscalls'}),"'>\n";
 	print "<param name=killurl value='killtail.cgi?id=$id'>\n";
-	if ($session_id) {
-		print "<param name=session value=\"sid=$session_id\">\n";
+	if ($main::session_id) {
+		print "<param name=session value=\"sid=$main::session_id\">\n";
 		}
 	print "$text{'trace_sorry'}<p>\n";
 	print "</applet>\n";
