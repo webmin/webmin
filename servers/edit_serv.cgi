@@ -95,7 +95,7 @@ else {
 		  [ 2, "$text{'edit_mode2'}<br>" ],
 		  ($access{'pass'} && !$main::session_id || $mode == 3 ?
 		    ( [ 3, "$text{'edit_mode3'}<br>".
-			   (defined($remote_pass) ? "" :
+			   (defined($main::remote_pass) ? "" :
 			    "<font size=-1>($text{'edit_same'})</font><br>") ] )
 		    : ( ) ) ]);
 	print &ui_table_row($text{'edit_link'}, $linksel);

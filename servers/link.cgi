@@ -53,8 +53,8 @@ if ($s->{'autouser'}) {
 elsif ($s->{'sameuser'}) {
 	# Login comes from this server
 	$user = $remote_user;
-	defined($remote_pass) || &error($text{'login_esame'});
-	$pass = $remote_pass;
+	defined($main::remote_pass) || &error($text{'login_esame'});
+	$pass = $main::remote_pass;
 	}
 else {
 	# Login is fixed
