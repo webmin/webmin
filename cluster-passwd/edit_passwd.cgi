@@ -7,6 +7,7 @@ require './cluster-passwd-lib.pl';
 
 @ulist = &get_all_users();
 ($user) = grep { $_->{'user'} eq $in{'user'} } @ulist;
+$user || &error($text{'passwd_euser'});
 
 &can_edit_passwd($user) || &error($passwd::text{'passwd_ecannot'});
 

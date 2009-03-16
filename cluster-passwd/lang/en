@@ -5,4 +5,4 @@ index_hosts=All password changes made using this module will be done on all $1 h
 passwd_err=Failed to change password
 passwd_title=Changing Password
 passwd_on=Changing password on $1 ..
-
+passwd_euser=User does not exist!
