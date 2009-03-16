@@ -45,3 +45,5 @@ Use of the Preview button can now be controlled on the access control page.
 POSIX ACLs can now be edited on FreeBSD, if the setfacl and getfacl commands are installed.
 ---- Changes since 1.440 ----
 Added a button to the compressed file extraction dialog to show the contents of a ZIP or tar file, instead of extracting it.
+---- Changes since 1.460 ----
+Fixed bugs that broke the file manager under the new Webmin API module.
