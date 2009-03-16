@@ -1862,7 +1862,16 @@ foreach my $minfo (&get_all_module_infos()) {
 	local $pid = fork();
 	if (!$pid) {
 		# Check in a sub-process
-		exit(&foreign_installed($minfo->{'dir'}, 0) ? 1 : 0);
+		local $rv;
+		eval {
+			local $main::error_must_die = 1;
+			$rv = &foreign_installed($minfo->{'dir'}, 0) ? 1 : 0;
+			};
+		if ($@) {
+			# Install check failed .. but assume the module is OK
+			$rv = 1;
+			}
+		exit($rv);
 		}
 	waitpid($pid, 0);
 	$installed{$minfo->{'dir'}} = $? / 256;
