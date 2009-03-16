@@ -123,6 +123,23 @@ $dir = { 'name' => 'zone',
 			  'values' => [ $in{'file'} ] } ]
 	};
 
+# Add also-notify for slaves
+if ($in{'onslave'}) {
+	@slaves = &list_slave_servers();
+	if (@slaves) {
+		$also = { 'name' => 'also-notify',
+			  'type' => 1,
+			  'members' => [ ] };
+		foreach $s (@slaves) {
+			push(@{$also->{'members'}},
+                             { 'name' => &to_ipaddress($s->{'host'}) });
+			}
+		push(@{$dir->{'members'}}, $also);
+		push(@{$dir->{'members'}}, { 'name' => 'notify',
+					     'values' => [ 'yes' ] });
+		}
+	}
+
 # create the zone
 &create_zone($dir, $conf, $in{'view'});
 &set_ownership(&make_chroot($config{'named_conf'}));

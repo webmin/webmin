@@ -101,3 +101,5 @@ Added a Module Config option to prevent inclusion of other slave's IP addresses 
 ---- Changes since 1.450 ----
 Fixed the 'Directory for DNSSEC keys' option on the Module Config page so that it is actually used.
 SPF records longer than 255 bytes are automatically split into separate fields in the underlying TXT record.
+---- Changes since 1.460 ----
+When adding a master zone with automatically created slaves, add an also-notify block to the master configuration to update the slaves.
