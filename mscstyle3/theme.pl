@@ -281,7 +281,7 @@ if (@_ > 1 && !$one && $remote_user && !$notabs) {
     $cats = @cats;
     $per = $cats ? 100.0 / $cats : 100;
 
-    if ($theme_index_page) {
+    if ($main::theme_index_page) {
 	    if (!defined($in{'cat'})) {
 	       
 		# Use default category

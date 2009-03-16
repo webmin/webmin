@@ -35,7 +35,7 @@ if (!defined($in{'cat'})) {
 
 # Show standard header
 $gconfig{'sysinfo'} = 0 if ($gconfig{'sysinfo'} == 1);
-$theme_index_page = 1;
+$main::theme_index_page = 1;
 $title = $gconfig{'nohostname'} ? $text{'main_title2'} :
         &text('main_title', $ver, $hostname, $ostr);
 &header($title, "",
