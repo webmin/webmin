@@ -1194,6 +1194,8 @@ else {
 	}
 &load_theme_library();
 if (defined(&theme_redirect)) {
+	$module_name = &get_module_name();	# Old themes use these
+	%module_info = &get_module_info($module_name);
 	&theme_redirect($_[0], $url);
 	}
 else {
