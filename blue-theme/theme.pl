@@ -460,32 +460,6 @@ $text ||= $text{'ui_selinv'};
 return "<a class='select_invert' href='#' onClick='f = document.forms[$form]; ff = f.$field; ff.checked = !f.$field.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody\" }; for(i=0; i<f.$field.length; i++) { ff = f.${field}[i]; ff.checked = !ff.checked; r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody row\"+((i+1)%2) } } return false'>$text</a>";
 }
 
-# theme_select_status_link(name, form, &folder, &mails, start, end, status, label)
-# Adds support for row highlighting to read mail module selector
-sub theme_select_status_link
-{
-local ($name, $formno, $folder, $mail, $start, $end, $status, $label) = @_;
-$formno = int($formno);
-local @sel;
-for(my $i=$start; $i<=$end; $i++) {
-	local $read = &get_mail_read($folder, $mail->[$i]);
-	if ($status == 0) {
-		push(@sel, ($read&1) ? 0 : 1);
-		}
-	elsif ($status == 1) {
-		push(@sel, ($read&1) ? 1 : 0);
-		}
-	elsif ($status == 2) {
-		push(@sel, ($read&2) ? 1 : 0);
-		}
-	}
-my $js = "var sel = [ ".join(",", @sel)." ]; ";
-$js .= "var f = document.forms[$formno]; ";
-$js .= "for(var i=0; i<sel.length; i++) { document.forms[$formno].${name}[i].checked = sel[i]; var ff = f.${name}[i]; var r = document.getElementById(\"row_\"+ff.id); if (r) { r.className = ff.checked ? \"mainsel\" : \"mainbody row\"+((i+1)%2) } }";
-$js .= "return false;";
-return "<a class='select_status' href='#' onClick='$js'>$label</a>";
-}
-
 sub theme_select_rows_link
 {
 local ($field, $form, $text, $rows) = @_;
