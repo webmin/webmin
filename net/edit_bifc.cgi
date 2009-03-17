@@ -123,7 +123,7 @@ if (@opts > 1) {
 		&ui_radio_table("mode", $b && $b->{'dhcp'} ? "dhcp" :
 					$b && $b->{'bootp'} ? "bootp" :
 							      "address",
-				\@opts));
+				\@opts), 3);
 	}
 else {
 	print &ui_table_row($opts[0]->[1], $opts[0]->[2]);
@@ -167,8 +167,7 @@ if ($in{'bond'} || &iface_type($b->{'name'}) eq 'Bonded') {
 	# Select teaming mode
 	@mode = ("balance-rr", "activebackup", "balance-xor", "broadcast", "802.3ad", "balance-tlb", "balance-alb");
 	print &ui_table_row($text{'bonding_teammode'},
-		&ui_select("bondmode",
-			   $b->{'mode'} ? &indexof($b->{'mode'}, @mode) : 0,
+		&ui_select("bondmode", int($b->{'mode'}),
 			   [ map { [ $_, $mode[$_] ] } (0 .. $#mode) ]));
 
 	# Select mii Monitoring Interval

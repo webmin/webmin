@@ -206,8 +206,13 @@ sub modify_module_def
 		chomp($line);
 		@splitted_line = split(" ", $line);
 		if($splitted_line[0] eq 'alias' && $splitted_line[1] eq $name) {
+			# Found start of block we are changing
 			$modify_block = 1;		
+			if (!$delete) {
+				&print_tempfile(NEWCFGFILE, $line . "\n");
+				}
 		} elsif ($splitted_line[0] eq 'alias' && !($splitted_line[1] eq $name)){
+			# Found start of another block
 			$modify_block = 0;
 		}
 		
@@ -288,25 +293,25 @@ sub get_module_defs
 # Parameters should be (name, mode, miimon, downdelay, updelay)
 sub new_module_def
 {
+	local ($name, $mode, $miimon, $downdelay, $updelay) = @_;
         return if (!$modules_config);
 	copy("$modules_config", "$modules_config~");
 	local *CFGFILE;
 	&open_lock_tempfile(CFGFILE, ">> $modules_config") ||
 		error("Unable to open $modules_config");
-	local ($name, $mode, $miimon, $downdelay, $updelay) = @_;
-	&print_tempfile(CFGFILE, "\nalias " . $name . " bonding");
+	&print_tempfile(CFGFILE, "alias " . $name . " bonding");
 	&print_tempfile(CFGFILE, "\noptions bonding");
 	
-	if($mode) {
+	if($mode ne '') {
 		&print_tempfile(CFGFILE, " mode=" . $mode);
 	}
-	if($miimon) {
+	if($miimon ne '') {
 		&print_tempfile(CFGFILE, " miimon=" . $miimon);
 	}
-	if($downdelay) {
+	if($downdelay ne '') {
 		&print_tempfile(CFGFILE, " downdelay=" . $downdelay);
 	}
-	if($updelay) {
+	if($updelay ne '') {
 		&print_tempfile(CFGFILE, " updelay=" . $updelay);
 	}
 	# Add Newline
@@ -785,6 +790,16 @@ sub get_teaming_partner
 	}
 	chop $return;
 	return $return;
+}
+
+sub supports_bonding
+{
+return $gconfig{'os_type'} eq 'debian-linux' && &has_command("ifenslave");
+}
+
+sub supports_vlans
+{
+return $gconfig{'os_type'} eq 'debian-linux' && &has_command("vconfig");
 }
 
 1;

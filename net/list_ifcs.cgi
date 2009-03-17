@@ -104,10 +104,10 @@ print &ui_form_start("delete_bifcs.cgi", "post");
 	   &select_invert_link("b", 1) );
 if ($allow_add) {
 	push(@links, "<a href='edit_bifc.cgi?new=1'>$text{'ifcs_add'}</a>");
-	if (($gconfig{'os_type'} eq 'debian-linux') && (&has_command("ifenslave")))  {
+	if (defined(&supports_bonding) && &supports_bonding()) {
 		push(@links, "<a href='edit_bifc.cgi?new=1&bond=1'>$text{'bonding_add'}</a>");
 	}
-	if (($gconfig{'os_type'} eq 'debian-linux') && (&has_command("vconfig")))  {
+	if (defined(&supports_vlans) && &supports_vlans()) {
 		push(@links, "<a href='edit_bifc.cgi?new=1&vlan=1'>$text{'vlan_add'}</a>");
 	}
 	}

@@ -189,17 +189,17 @@ else {
 		if ($in{'partner'}) {
 			$b->{'partner'} = $in{'partner'};
 		}
-		if ($in{'bondmode'}){
+		if ($in{'bondmode'} ne ''){
 			$mode = $in{'bondmode'};
 			$b->{'mode'} = $mode;
 		}
-		if ($in{'miimon'}){
+		if ($in{'miimon'} ne ''){
 			$b->{'miimon'} = $in{'miimon'};
 		}
-		if ($in{'updelay'}){
+		if ($in{'updelay'} ne ''){
 			$b->{'updelay'} = $in{'updelay'};
 		}
-		if ($in{'downdelay'}){
+		if ($in{'downdelay'} ne ''){
 			$b->{'downdelay'} = $in{'downdelay'};
 		}
 	}
