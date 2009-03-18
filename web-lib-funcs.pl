@@ -3789,7 +3789,7 @@ if ($main::export_to_caller) {
 		       '$module_config_directory', '$module_config_file',
 		       '%config', '@current_themes', '$current_theme',
 		       '@theme_root_directories', '$theme_root_directory',
-		       '@theme_configs', '$tb', '$cb', '$scriptname',
+		       '%tconfig','@theme_configs', '$tb', '$cb', '$scriptname',
 		       '$webmin_logfile', '$current_lang',
 		       '$current_lang_info', '@lang_order_list', '%text',
 		       '%module_info', '$module_root_directory') {
