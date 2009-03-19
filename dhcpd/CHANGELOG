@@ -28,3 +28,5 @@ Fixed bug that can cause option definitions and values to be incorrectly ordered
 Custom option types defined at a higher level (such as in a subnet) can be used in the Edit Options page at lower levels (such as in a host).
 ---- Changes since 1.440 ----
 When a subnet or host is renamed, the user's ACL is updated to match.
+---- Changes since 1.470 ----
+Added a Module Config option to specify an alternate file to add new top-level objects (like subnets) to. This must be referenced by an include directive in the main dhcpd.conf though.

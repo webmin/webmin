@@ -6,7 +6,7 @@ require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
 &lock_file($config{'dhcpd_conf'});
-($par, $group, $indent, $npar, $nindent) = get_branch('grp');
+($par, $group, $indent, $npar, $nindent) = get_branch('grp', $in{'new'});
 $parconf = $par->{'members'};
 
 # check acls

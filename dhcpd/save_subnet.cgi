@@ -6,7 +6,7 @@ require './dhcpd-lib.pl';
 require './params-lib.pl';
 &ReadParse();
 &lock_file($config{'dhcpd_conf'});
-($par, $sub, $indent, $npar, $nindent) = get_branch('sub');
+($par, $sub, $indent, $npar, $nindent) = get_branch('sub', $in{'new'});
 $parconf = $par->{'members'};
 
 # check acls
@@ -160,14 +160,6 @@ else {
 		$sub->{'comment'} = $in{'desc'};
 		&parse_params($sub, 0);
 
-#		$npar = &get_parent_config();
-#		$nindent = 0;
-#		if ($in{'parent'} ne "") {
-#			$nindent = 1;
-#			if ($in{'parent'} < @{$npar->{'members'}}) {
-#				$npar = $npar->{'members'}->[$in{'parent'}];
-#				}
-#			}
 		if (!npar || $in{'assign'} > 0 && $npar->{'name'} ne "shared-network") {
 			&error($text{'sgroup_echanged'});
 			}

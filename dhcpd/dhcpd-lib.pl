@@ -5,27 +5,31 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
 
-# get_parent_config()
+# get_parent_config([file])
 # Returns a dummy parent structure for the DHCP config
 sub get_parent_config
 { 
-return $get_parent_config_cache if ($get_parent_config_cache);
-return $get_parent_config_cache = {
-	 'file' => $config{'dhcpd_conf'},
-	 'members' => &get_config(),
+local ($file) = @_;
+$file ||= $config{'dhcpd_conf'};
+return $get_parent_config_cache{$file} if ($get_parent_config_cache{$file});
+return $get_parent_config_cache{$file} = {
+	 'file' => $file,
+	 'members' => &get_config($file),
 	 'line' => -1,
 	 'fline' => -1,
 	 'eline' => $get_config_lines };
 }
 
-# get_config()
+# get_config([file])
 # Parses the DHCPD config file into a data structure
 sub get_config
 {
-return \@get_config_cache if (@get_config_cache);
-local @rv = &get_config_file($config{'dhcpd_conf'}, \$get_config_lines);
-@get_config_cache = @rv;
-return \@get_config_cache;
+local ($file) = @_;
+$file ||= $config{'dhcpd_conf'};
+return $get_config_cache{$file} if ($get_config_cache{$file});
+local @rv = &get_config_file($file, \$get_config_lines);
+$get_config_cache{$file} = \@rv;
+return $get_config_cache{$file};
 }
 
 # get_config_file(file, [&lines])
@@ -591,7 +595,7 @@ return @{$hr};
 # hash that links objtypes shortcuts with object names
 %obj_names2types = qw(host hst group grp subnet sub shared-network sha);
 
-# get_branch($objtype) 
+# get_branch(objtype, [addmode]) 
 # usefull for edit_*.cgi and save_*.cgi scripts
 # $objtype = one of 'hst' 'grp' 'sub' 'sha'
 sub get_branch
@@ -599,7 +603,9 @@ sub get_branch
 local %obj_types2names = reverse %obj_names2types;
 local $name = $obj_types2names{$_[0]};
 local ($parnode, $nparnode, $node, $indent, $nindent);
-$parnode = $nparnode = &get_parent_config();
+$parnode = $nparnode = &get_parent_config(
+	$_[1] && $in{'sidx'} eq '' && $in{'uidx'} eq '' && $in{'gidx'} eq '' &&
+	$in{'parent'} eq '' ? $config{'add_file'} : undef);
 $indent = $nindent = 0;
 foreach ($in{'sidx'}, $in{'uidx'}, $in{'gidx'}) {
     if ($_ ne '') {
@@ -671,7 +677,8 @@ local $acl;
 local ($perm, $acc, $node, $smode) = @_;
 local @perm = split(//, $perm);
 
-if ($node ne get_parent_config()) {
+if ($node ne get_parent_config() &&
+    $node ne get_parent_config($config{'add_file'})) {
 	foreach (@perm) { 
 		next if ($_ ne 'c') &&  ($_ ne 'r') && ($_ ne 'w');
 		return 0 unless $acc->{$_ . '_' . $obj_names2types{$node->{'name'}} };
