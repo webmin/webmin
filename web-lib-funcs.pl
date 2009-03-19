@@ -5440,9 +5440,9 @@ elsif ($_[0]) {
 my ($user, $pass);
 if ($serv->{'sameuser'}) {
 	$user = $remote_user;
-	defined($remote_pass) || return &$main::remote_error_handler(
+	defined($main::remote_pass) || return &$main::remote_error_handler(
 				   "Password for this server is not available");
-	$pass = $remote_pass;
+	$pass = $main::remote_pass;
 	}
 else {
 	$user = $serv->{'user'};
