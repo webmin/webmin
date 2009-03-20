@@ -47,6 +47,7 @@ for($i=0; defined($n = $in{"name_$i"}); $i++) {
 	$miniserv{'env_'.$n} = $in{"value_$i"}
 		if ($n ne "WEBMIN_CONFIG" && $n ne "WEBMIN_VAR");
 	}
+$miniserv{'perllib'} = join(':', split(/\r?\n/, $in{'perllib'}));
 &put_usermin_miniserv_config(\%miniserv);
 &unlock_file($usermin_miniserv_config);
 &restart_usermin_miniserv();

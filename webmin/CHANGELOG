@@ -90,3 +90,5 @@ Added GPG verification of the updates list and modules from the Webmin update re
 Expired Unix passwords can now be changed using an external command, instead of PAM or directly updating /etc/shadow. This is set on the Authentication page.
 ---- Changes since 1.460 ----
 Detect and ignore failures when checking if other modules are installed.
+---- Changes since 1.470 ----
+Added a field to the Operating System and Environment page for additional Perl module directories.

@@ -4,6 +4,7 @@
 
 require './webmin-lib.pl';
 &ui_print_header(undef, $text{'os_title'}, "");
+&get_miniserv_config(\%miniserv);
 
 print $text{'os_desc3'},"<br>\n";
 print $text{'os_desc2'},"<p>\n";
@@ -57,8 +58,12 @@ if ($gconfig{'ld_env'}) {
 		     5, 30));
 	}
 
+# Perl search path
+print &ui_table_row($text{'os_perllib'},
+	&ui_textarea("perllib",
+	     join("\n", split(":", $miniserv{'perllib'})), 3, 30));
+
 # Global environment variables
-&get_miniserv_config(\%miniserv);
 $atable = &ui_columns_start([ $text{'os_name'}, $text{'os_value'} ]);
 $i = 0;
 foreach $e (keys %miniserv) {

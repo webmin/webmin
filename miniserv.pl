@@ -21,6 +21,10 @@ else {
 	$config_file = "$pwd/$ARGV[0]";
 	}
 %config = &read_config_file($config_file);
+if ($config{'perllib'}) {
+	push(@INC, split(/:/, $config{'perllib'}));
+	$ENV{'PERLLIB'} .= ':'.$config{'perllib'};
+	}
 
 # Check is SSL is enabled and available
 if ($config{'ssl'}) {
@@ -2020,6 +2024,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$envpath = $ENV{"PATH"};
 	$envlang = $ENV{"LANG"};
 	$envroot = $ENV{"SystemRoot"};
+	$envperllib = $ENV{'PERLLIB'};
 	foreach my $k (keys %ENV) {
 		delete($ENV{$k});
 		}
@@ -2028,6 +2033,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"USER"} = $envuser if ($envuser);
 	$ENV{"OLD_LANG"} = $envlang if ($envlang);
 	$ENV{"SystemRoot"} = $envroot if ($envroot);
+	$ENV{'PERLLIB'} = $envperllib if ($envperllib);
 	$ENV{"HOME"} = $user_homedir;
 	$ENV{"SERVER_SOFTWARE"} = $config{"server"};
 	$ENV{"SERVER_NAME"} = $host;

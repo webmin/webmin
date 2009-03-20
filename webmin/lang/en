@@ -276,6 +276,7 @@ os_new=New operating system
 os_path=Program search path
 os_syspath=Include system's own search path?
 os_ld_path=Library search path
+os_perllib=Extra Perl library paths
 os_envs=Additional environment variables
 os_name=Variable name
 os_value=Value
