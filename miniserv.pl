@@ -1547,7 +1547,9 @@ if (%users) {
 		if ($rv == 0) {
 			# Cannot login!
 			local $hrv = &handle_login(
-				$in{'answer'} || "unknown", 0, 0, 1, undef);
+				!$in{'cid'} && $in{'answer'} ? $in{'answer'}
+							     : "unknown",
+				0, 0, 1, undef);
 			return $hrv if (defined($hrv));
 			}
 		elsif ($rv == 1 || $rv == 3) {
