@@ -126,7 +126,9 @@ if (!$config{'no_pam'}) {
 		}
 	}
 if ($config{'pam_only'} && !$use_pam) {
-	$pam_msg2 = "PAM use is mandatory, but could not be enabled!";
+	print STDERR $pam_msg;
+	print STDERR "PAM use is mandatory, but could not be enabled!\n";
+	exit(1);
 	}
 elsif ($pam_msg && !$use_pam) {
 	$pam_msg2 = "Continuing without the Authen::PAM perl module";
