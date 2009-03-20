@@ -37,6 +37,7 @@ $preuninstall_file = "$debian_dir/prerm";
 $postuninstall_file = "$debian_dir/postrm";
 $copyright_file = "$debian_dir/copyright";
 $changelog_file = "$debian_dir/changelog";
+$conffiles_file = "$debian_dir/conffiles";
 
 -d "tarballs" || die "makedebian.pl must be run in the $ucproduct root directory";
 -r "/etc/debian_version" || die "makedebian.pl must be run on Debian";
@@ -144,6 +145,11 @@ while(<BSD>) {
 	}
 close(BSD);
 close(COPY);
+
+# Create the config files file, for those we don't want to replace
+open(CONF, ">$conffiles_file");
+print CONF $pam_file,"\n";
+close(CONF);
 
 # Get the changes for each module and version
 $changes = { };
