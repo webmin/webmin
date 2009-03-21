@@ -33,21 +33,21 @@ else {
 			}
 		&print_tempfile(TEMP, $in{'file'});
 		&close_tempfile(TEMP);
-		print "<form action=upload2.cgi>\n";
+		print "<center>\n";
+		print &ui_form_start("upload2.cgi");
 		foreach $i (keys %prein) {
-			print "<input type=hidden name=$i value='",
-				&html_escape($prein{$i}),"'>\n";
+			print &ui_hidden($i, $prein{$i});
 			}
 		print &ui_hidden("dir", $in{'dir'});
 		print &ui_hidden("path", $path);
 		print &ui_hidden("temp", $temp);
 		print &ui_hidden("zip", $in{'zip'});
 		print &ui_hidden("user", $in{'user'});
-		print "<center>\n";
 		print &text('upload_already', "<tt>$path</tt>"),"<p>\n";
-		print "<input type=submit name=yes value='$text{'yes'}'>\n";
-		print "<input type=submit name=no value='$text{'no'}'>\n";
+		print &ui_form_end([ [ "yes", $text{'yes'} ],
+				     [ "no", $text{'no'} ] ]);
 		print "</form>\n";
+		print "</center>\n";
 		}
 	else {
 		# Go ahread and do it!
