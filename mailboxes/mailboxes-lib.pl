@@ -9,8 +9,7 @@ do "$module_root_directory/folders-lib.pl";
 %access = &get_module_acl();
 $config{'perpage'} ||= 20;
 $config{'column_count'} ||= 4;
-$gconfig{'logfiles'} = 0;	# file change logging never needs to be done
-$gconfig{'logfullfiles'} = 0;
+$no_log_file_changes = 1;	# Turn off file change logging for this module
 
 # Always detect the mail system if not set
 if ($config{'mail_system'} == 3) {

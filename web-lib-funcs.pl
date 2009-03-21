@@ -458,6 +458,8 @@ Read from one file handle and write to another, until there is no more to read.
 sub copydata
 {
 my ($in, $out) = @_;
+$in = &callers_package($in);
+$out = &callers_package($out);
 my $buf;
 while(read($in, $buf, 1024) > 0) {
 	(print $out $buf) || return 0;
@@ -4262,6 +4264,7 @@ while(1) {
 		$main::locked_file_list{$realfile} = int($_[1]);
 		push(@main::temporary_files, "$realfile.lock");
 		if (($gconfig{'logfiles'} || $gconfig{'logfullfiles'}) &&
+		    !&get_module_variable('$no_log_file_changes') &&
 		    !$_[1]) {
 			# Grab a copy of this file for later diffing
 			my $lnk;
@@ -4588,7 +4591,7 @@ else {
 	chmod(0600, $webmin_logfile);
 	}
 
-if ($gconfig{'logfiles'}) {
+if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
 	# Find and record the changes made to any locked files, or commands run
 	my $i = 0;
 	mkdir("$ENV{'WEBMIN_VAR'}/diffs", 0700);
@@ -4684,7 +4687,7 @@ need to call this function directory.
 =cut
 sub additional_log
 {
-if ($gconfig{'logfiles'}) {
+if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
 	push(@main::locked_file_diff,
 	     { 'type' => $_[0], 'object' => $_[1], 'data' => $_[2],
 	       'input' => $_[3] } );
