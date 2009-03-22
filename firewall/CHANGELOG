@@ -26,3 +26,5 @@ When initializing the firewall, the actual ports for Webmin, Usermin and SSHd ar
 Added an option for the UNTRACKED state in rules.
 ---- Changes since 1.450 ----
 Fixed 'Does not equal' option for multiple ports.
+---- Changes since 1.470 ----
+Disallow rules on virtual interfaces, as they don't work.

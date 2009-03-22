@@ -51,7 +51,8 @@ if ($in{'auto'}) {
 	@tables = &get_iptables_save();
 	if ($in{'auto'} == 1) {
 		# Add a single rule to the nat table for masquerading
-		$iface = $in{'iface1'} || $in{'iface1_other'};
+		$iface = $in{'iface1'} eq 'other' ? $in{'iface1_other'}
+						  : $in{'iface1'};
 		$iface || &error($text{'setup_eiface'});
 		($table) = grep { $_->{'name'} eq 'nat' } @tables;
 		push(@{$table->{'rules'}},
@@ -64,8 +65,9 @@ if ($in{'auto'}) {
 		# connections, DNS replies and safe ICMP types
 		# In mode 3 allow ssh and ident too
 		# In mode 4 allow ftp, echo-request and high ports too
-		$iface = $in{'iface'.$in{'auto'}} ||
-			 $in{'iface'.$in{'auto'}.'_other'};
+		$iface = $in{'iface'.$in{'auto'}} eq 'other' ?
+				 $in{'iface'.$in{'auto'}.'_other'} :
+				 $in{'iface'.$in{'auto'}};
 		$iface || &error($text{'setup_eiface'});
 		($table) = grep { $_->{'name'} eq 'filter' } @tables;
 		$table->{'defaults'}->{'INPUT'} = 'DROP';

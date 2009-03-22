@@ -250,7 +250,7 @@ sub interface_choice
 local @ifaces;
 if (&foreign_check("net")) {
 	&foreign_require("net", "net-lib.pl");
-	return &net::interface_choice($_[0], $_[1]);
+	return &net::interface_choice($_[0], $_[1], undef, 0, 1);
 	}
 else {
 	return "<input name=$_[0] size=6 value='$_[1]'>";

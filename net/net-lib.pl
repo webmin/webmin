@@ -269,31 +269,32 @@ sub can_create_iface
 return $access{'ifcs'} == 2;
 }
 
-# interface_choice(name, value, blankmode-text, [disabled?])
+# interface_choice(name, value, blankmode-text, [disabled?], [non-virt-only])
 # Returns HTML for an interface chooser menu
 sub interface_choice
 {
-local @ifaces = map { $_->{'fullname'} } (&net::active_interfaces(), &net::boot_interfaces());
+my ($name, $value, $blanktext, $disabled, $nonvirt) = @_;
+my @ifacestrs = grep { $_->{'fullname'} }
+		     ( &active_interfaces(), &boot_interfaces() );
+if ($nonvirt) {
+	@ifacestrs = grep { $_->{'virtual'} eq '' } @ifacestrs;
+	}
+my @ifaces = map { $_->{'fullname'} } @ifacestrs;
 @ifaces = sort { $a cmp $b } &unique(@ifaces);
-local $rv = "<select name=$_[0] ".($_[3] ? " disabled=true" : "").">\n";
-local ($i, $found);
-if ($_[2]) {
-	$rv .= sprintf "<option value='' %s> %s\n",
-			$_[1] eq "" ? "checked" : "", $_[2];
+my @opts;
+my $found;
+if ($blanktext) {
+	push(@opts, [ '', $blanktext ]);
 	}
-$found++ if ($_[1] eq "");
-foreach $i (@ifaces) {
-	$rv .= sprintf "<option value=%s %s>%s\n",
-		$i, $_[1] eq $i ? "selected" : "", $i;
-	$found++ if ($_[1] eq $i);
+$found++ if ($value eq "");
+foreach my $i (@ifaces) {
+	push(@opts, [ $i, $i ]);
+	$found++ if ($value eq $i);
 	}
-#$rv .= "<option value=$_[1] selected>$_[1]\n" if (!$found && $_[1]);
-$rv .= sprintf "<option value=other %s> %s\n",
-		!$found && $_[1] ? "selected" : "", $text{'chooser_other'};
-$rv .= "</select>";
-$rv .= sprintf "<input name=$_[0]_other size=6 value='%s' %s>\n",
-		!$found ? $_[1] : "", $_[3] ? " disabled=true" : "";
-return $rv;
+push(@opts, [ 'other', $text{'chooser_other'} ]);
+return &ui_select($name, !$found && $value ? 'other' : $value,
+		  \@opts, 1, 0, 0, $disabled)." ".
+       &ui_textbox($name."_other", $found ? "" : $value, $disabled);
 }
 
 # compute_broadcast(ip, netmask)
