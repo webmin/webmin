@@ -73,7 +73,7 @@ else {
 		&text('gdel_sure', $group->{'group'}),
 		[ [ "num", $in{'num'} ],
 		  [ "group", $group->{'group'} ] ],
-		[ [ "confirm", $text{'gdel_del'} ] ],
+		[ [ "confirmed", $text{'gdel_del'} ] ],
 		ui_checkbox("others", 1, $text{'gdel_dothers'},
                            $config{'default_other'}),
 		);

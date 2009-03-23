@@ -86,7 +86,8 @@ else {
 		[ [ "confirmed", 1 ],
 		  map { [ "gd", $_->{'group'} ] } @dlist ],
 		[ [ undef, $text{'gdel_del'} ] ],
-		&ui_checkbox("others", 1, $text{'gdel_dothers'}, 1),
+		&ui_checkbox("others", 1, $text{'gdel_dothers'},
+			     $config{'default_other'}),
 		);
 
 	&ui_print_footer("", $text{'index_return'});
