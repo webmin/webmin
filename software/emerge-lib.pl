@@ -5,10 +5,15 @@ chop($system_arch = `uname -m`);
 $pkg_dir = "/var/db/pkg";
 $portage_bin = "/usr/lib/portage/bin";
 $ENV{'TERM'} = "dumb";
+$package_list_binary = $package_list_command = "$portage_bin/pkglist";
+if (!-x $package_list_binary) {
+	$package_list_binary = &has_command("qlist");
+	$package_list_command = $package_list_binary." --nocolor -Iv";
+	}
 
 sub list_package_system_commands
 {
-return ("$portage_bin/pkglist");
+return ( $package_list_binary );
 }
 
 sub list_update_system_commands
@@ -21,7 +26,7 @@ return ("emerge");
 sub list_packages
 {
 local $i = 0;
-&open_execute_command(LIST, "$portage_bin/pkglist", 1, 1);
+&open_execute_command(LIST, $package_list_command, 1, 1);
 while(<LIST>) {
 	if (/^([^\/]+)\/([^0-9]+)-(\d\S+)$/ &&
 	    !@_ || &indexof($2, @_) >= 0) {
