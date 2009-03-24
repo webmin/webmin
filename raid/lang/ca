@@ -84,6 +84,8 @@ view_delete=Suprimeix la matriu RAID
 view_deletedesc=Fes clic sobre aquest botó per eliminar totalment aquest dispositiu RAID. Totes les dades que conté es perdran del tot!
 view_remove=Elimina la partició:
 view_removedesc=Selecciona una partició que és part del dispositiu RAID i fes clic sobre aquest botó per eliminar-la. Això pot provocar que es perdin dades!
+view_grow=Grow RAID:
+view_growdesc=Grow array (converteix esgrunats a membres actius)
 view_state=Estat del RAID
 view_rebuild=Progrés de la reconstrucció
 view_newmount=Munta el RAID a:
@@ -107,6 +109,7 @@ eforce=Has de forçar l'inicialització d'aquest RAID: $1
 emdadmstop=<tt>mdadm</tt> en mode <tt>--stop</tt> ha fallat: $1
 emdadmcreate=<tt>mdadm</tt> en mode <tt>--create</tt> ha fallat: $1
 emdadmadd=<tt>mdadm</tt> en mode <tt>--manage --add</tt> ha fallat: $1
+emdadmgrow=<tt>mdadm</tt> en mode <tt>--grow</tt> ha fallat: $1
 emdadmremove=<tt>mdadm</tt> en mode <tt>--manage --remove</tt> ha fallat: $1
 emdadmfail=<tt>mdadm</tt> en mode <tt>--manage --fail</tt> ha fallat: $1
 
