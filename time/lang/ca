@@ -44,7 +44,8 @@ month=Mes
 date=Data
 hour=Hora
 year=Any
-hourminsec=Hora, minuts i segons
+minute=Minut
+second=Segon
 
 error_cnf=Error: no s'ha trobat l'ordre $1
 error_hw=No puc establir l'hora del maquinari: $1
