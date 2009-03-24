@@ -50,6 +50,8 @@ from_addr=Adreça From: a utilitzar quan s'envia correu manualmen,3,Del nom d'usu
 webmin_from=Adreça From: a utilitzar quan el Webmin envia correu,3,per defecte (webmin@<i>elteuhost</i>)
 from_virtualmin=Obtingues l'adreça From: de Virtualmin,1,1-Sí,0-No
 from_dom=Domini a utilitzar a les adreces From:,3,Nom de host del sistema
+no_orig_ip=Inclou la IP del navegador a la capçalera X-Originating-IP,1,0-Sí,1-No
+no_mailer=Inclou la versió de Webmin a la capçalera X-Mailer?,1,0-Sí,1-No
 
 line1=Configuració del sistema,11
 mail_system=Servidor de correu instal·lat,1,1-Sendmail,0-Postfix,2-Qmail,3-Detecta'l automàticament,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Detecta'l automàticament
