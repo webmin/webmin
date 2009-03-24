@@ -78,15 +78,15 @@ exit;
 sub update
 {
 local $perms = $in{'perms'};
+if (defined($uid)) {
+	chown($uid, $gid, $_[0]) || &failure(&text('chmod_echown', $!));
+	}
 if (defined($perms)) {
 	if ($_[1]) {
 		@st = stat($_[0]);
-		$perms = ($perms & 0777) | ($st[2] & 037777777000);
+		$perms = ($perms & 07777) | ($st[2] & 037777770000);
 		}
 	chmod($perms, $_[0]) || &failure(&text('chmod_echmod', $!));
-	}
-if (defined($uid)) {
-	chown($uid, $gid, $_[0]) || &failure(&text('chmod_echown', $!));
 	}
 }
 

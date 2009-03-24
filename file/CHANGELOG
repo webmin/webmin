@@ -47,3 +47,5 @@ POSIX ACLs can now be edited on FreeBSD, if the setfacl and getfacl commands are
 Added a button to the compressed file extraction dialog to show the contents of a ZIP or tar file, instead of extracting it.
 ---- Changes since 1.460 ----
 Fixed bugs that broke the file manager under the new Webmin API module.
+---- Changes since 1.470 ----
+Fixed a bug that prevented setuid and setgid permissions from being changed.
