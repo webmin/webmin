@@ -56,3 +56,5 @@ Created a page for exporting groups to a batch file, for importing on other syst
 Added support for creating, deleting and modifying groups from a batch file. This is similar to the long-standing batch user management functionality.
 Added support for Blowfish password hashing, which can be enabled on the Module Config page. On Solaris systems, it will be used if enabled in /etc/security/policy.conf. Requires the Crypt::Eksblowfish::Bcrypt Perl module though.
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.470 ----
+Fixed a bug that caused an empty shell to appear in the shells list for new users.

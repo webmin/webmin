@@ -140,16 +140,16 @@ print &ui_table_row(&hlink($text{'home'}, "home"),
 	$homefield);
 
 # Show shell drop-down
-push(@shlist, $uinfo{'shell'}) if (%uinfo && $uinfo{'shell'});
+push(@shlist, $uinfo{'shell'}) if ($n ne "" && $uinfo{'shell'});
 if ($access{'shells'} ne "*") {
 	# Limit to shells from ACL
-	@shlist = %uinfo ? ($uinfo{'shell'}) : ();
+	@shlist = $n ne "" ? ($uinfo{'shell'}) : ();
 	push(@shlist, split(/\s+/, $access{'shells'}));
 	$shells = 1;
 	}
 $shells = 1 if ($access{'noother'});
 @shlist = &unique(@shlist);
-if (%uinfo && !$uinfo{'shell'}) {
+if ($n ne "" && !$uinfo{'shell'}) {
 	# No shell!
 	push(@shlist, [ "", "&lt;None&gt;" ]);
 	}
@@ -163,8 +163,8 @@ print &ui_table_row(&hlink($text{'shell'}, "shell"),
 	   ($shells ? "" : &ui_filebox("othersh", undef, 40, 1)));
 
 # Get the password, generate random if needed
-$pass = %uinfo ? $uinfo{'pass'} : $config{'lock_string'};
-if (!%uinfo && $config{'random_password'}) {
+$pass = $n ne "" ? $uinfo{'pass'} : $config{'lock_string'};
+if ($n eq "" && $config{'random_password'}) {
 	&seed_random();
 	foreach (1 .. 15) {
 		$random_password .= $random_password_chars[
@@ -174,7 +174,7 @@ if (!%uinfo && $config{'random_password'}) {
 
 # Check if temporary locking is supported
 if (&supports_temporary_disable()) {
-	if (%uinfo && $pass ne $config{'lock_string'} && $pass ne "") {
+	if ($n ne "" && $pass ne $config{'lock_string'} && $pass ne "") {
 		# Can disable if not already locked, or if a new account
 		$can_disable = 1;
 		if ($pass =~ /^\Q$disable_string\E/) {
@@ -182,7 +182,7 @@ if (&supports_temporary_disable()) {
 			$pass =~ s/^\Q$disable_string\E//;
 			}
 		}
-	elsif (!%uinfo) {
+	elsif ($n eq "") {
 		$can_disable = 1;
 		}
 	}
