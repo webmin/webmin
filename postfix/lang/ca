@@ -261,7 +261,7 @@ opts_relocated_maps_default=Defecte (desactivat)
 opts_sun_mailtool_compatibility=Desactiva bloqueigs de fitxer del kernel sobre les bústies
 opts_trigger_timeout=Temps màxim abans de disparar un dimoni
 opts_delay_warning_time=Temps en hores abans d'enviar un avís per no lliurament
-opts_delay_warning_time_default=Desactivat
+opts_delay_warning_time_default=Per defecte de Postfix
 opts_content_filter_default=Cap
 
 smtpd_title=Opcions del Servidor SMTP
