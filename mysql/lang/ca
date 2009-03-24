@@ -24,6 +24,7 @@ index_version=Versió MySQL $1
 index_nomod=Atenció: El mòdul perl $1 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades MySQL. <a href='$2'>Fes clic aquí</a> per instal·lar-lo ara.
 index_nomods=Atenció: Els mòduls Perl $1 i $2 no està instal·lat al sistema, de manera que Webmin no podrà accedir de forma fiable a la base de dades MySQL. <a href='$3'>Fes clic aquí</a> per instal·lar-lo ara.
 index_mysqlver=L'ordre <tt>$1</tt> ha retornat:
+index_eenvpass=El programa client MySQL $1 no accepta contrasenyes passades utilitzant la variable d'entorn <tt>MYSQL_PWD</tt>. Per assegurar que Webmin és capaç de comunicar-se de forma completa amb MySQL, caldria desactivar aquesta opció a la pàgina de <a href='$2'>configuració del mòdul</a>.
 index_nodbs=No tens accés a cap base de dades MySQL.
 index_nodbs2=No s'ha trobat cap base de dades MySQL al sistema.
 index_backup=Aboca les Bases de Dades
@@ -166,7 +167,9 @@ field_null=Permet nuls
 field_default=Valor per defecte
 field_current=Hora actual
 field_defval=Valor
+field_defdef=Per defecte de MySQL
 field_defnone=Sense valor per defecte
+field_defempty=Cadena buida
 field_defleave=No ho canviïs
 field_dmode0=Cap
 field_dmode1=Nul
