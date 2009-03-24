@@ -1,4 +1,4 @@
-index_title=Connexió Telnet/SSH
+index_title=Connexió SSH
 index_warn=Atenció! Aquesta sessió telnet <b>no</b> està xifrada.
 index_nojava=Aquest mòdul necessita java per funcionar, però el teu fullejador no suporta java
 index_credits=Applet desenvolupat sota GPL per <a href='$1' target=_top>Matthias L. Jugel &amp; Marcus Meißner</a>.
