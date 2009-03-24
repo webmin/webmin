@@ -260,6 +260,7 @@ log_tmpl_create=He creat la plantilla de correu $1
 log_tmpl_modify=He modificat la plantilla de correu $1
 log_tmpl_delete=He suprimit la plantilla de correu $1
 log_tmpl_deletes=He suprimit $1 plantilles de correu
+log_refresh=He refrescat els estats del monitor
 
 acl_edit=Pot editar i crear monitors
 acl_sched=Pot canviar la monitorització planificada
