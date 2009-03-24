@@ -6,3 +6,4 @@ md5=Ofereix l'opció de xifratge MD5,1,1-Sí,0-No
 sha1=Ofereix l'opció de xifratge SHA1,1,1-Sí,0-No
 digest=Ofereix l'opció de resum de xifratges,1,1-Sí,0-No
 extra_directives=Directives extra per incloure a .htaccess,9,0,0,\t
+perms=Permisos dels fitxers creats,3,Per defecte (644)
