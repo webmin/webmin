@@ -33,6 +33,7 @@ edit_params=Paràmetres de l'ordre
 edit_name=Nom del paràmetre
 edit_type=Tipus
 edit_quote=Entre cometes
+edit_must=Requerit
 edit_type0=Text
 edit_type1=Usuari
 edit_type2=UID
@@ -77,6 +78,7 @@ run_noout=No s'ha generat cap sortida
 run_ecmduser=L'usuari '$1' sota el qual s'ha d'executar l'ordre no existeix
 run_eopt=Has seleccionat una opció invàlida
 run_eupload=No has seleccionat cap fitxer per pujar
+run_emust=Hi falta el valor del paràmetre '$1'
 run_timeout=L'ordre s'ha tallat després d'un temps màxim d'espera de $1 segons.
 
 log_modify=He modificat l'ordre $1
