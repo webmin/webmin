@@ -262,6 +262,11 @@ elsif ($filter->{'actionreply'}) {
 else {
 	$recipe->{'type'} = $filter->{'actiontype'};
 	$recipe->{'action'} = $filter->{'action'};
+	local $folder = &file_to_folder($filter->{'action'}, [ ], undef, 1);
+	if ($recipe->{'type'} eq '' && $folder->{'type'} == 1) {
+		# Enable locking for file delivery
+		$recipe->{'lockfile'} ||= "";
+		}
 	}
 
 # Set flags
