@@ -8489,16 +8489,23 @@ if (defined(&theme_supports_javascript)) {
 return $ENV{'MOBILE_DEVICE'} ? 0 : 1;
 }
 
-# get_module_name()
-# Returns the name of the Webmin module that called this function
+=head2 get_module_name
+
+Returns the name of the Webmin module that called this function. For internal
+use only by other API functions.
+
+=cut
 sub get_module_name
 {
 return &get_module_variable('$module_name');
 }
 
-# get_module_variable(name, [ref])
-# Returns the value of some variable which is set in the caller's context, if
-# using the new WebminCore package.
+=head2 get_module_variable(name, [ref])
+
+Returns the value of some variable which is set in the caller's context, if
+using the new WebminCore package. For internal use only.
+
+=cut
 sub get_module_variable
 {
 my ($v, $wantref) = @_;
@@ -8515,8 +8522,13 @@ if ($thispkg eq 'WebminCore') {
 return eval "${slash}${v}";
 }
 
-# clear_time_locale()
-# Temporarily force the locale to C, until reset_time_locale is called
+=head2 clear_time_locale()
+
+Temporarily force the locale to C, until reset_time_locale is called. This is
+useful if your code is going to call C<strftime> from the POSIX package, and
+you want to ensure that the output is in a consistent format.
+
+=cut
 sub clear_time_locale
 {
 if ($main::clear_time_locale_count == 0) {
@@ -8528,8 +8540,11 @@ if ($main::clear_time_locale_count == 0) {
 $main::clear_time_locale_count++;
 }
 
-# reset_time_locale()
-# Revert the locale to whatever it was before clear_time_locale was called
+=head2 reset_time_locale()
+
+Revert the locale to whatever it was before clear_time_locale was called
+
+=cut
 sub reset_time_locale
 {
 if ($main::clear_time_locale_count == 1) {
@@ -8541,9 +8556,12 @@ if ($main::clear_time_locale_count == 1) {
 $main::clear_time_locale_count--;
 }
 
-# callers_package(filehandle)
-# Convert a non-module filehandle like FOO to one qualified with the 
-# caller's caller's package, like fsdump::FOO
+=head2 callers_package(filehandle)
+
+Convert a non-module filehandle like FOO to one qualified with the 
+caller's caller's package, like fsdump::FOO. For internal use only.
+
+=cut
 sub callers_package
 {
 my ($fh) = @_;
@@ -8556,8 +8574,12 @@ if (!ref($fh) && $fh !~ /::/ &&
 return $fh;
 }
 
-# web_libs_package()
-# Returns the package this code is in. We can't always trust __PACKAGE__
+=head2 web_libs_package()
+
+Returns the package this code is in. We can't always trust __PACKAGE__. For
+internal use only.
+
+=cut
 sub web_libs_package
 {
 if ($called_from_webmin_core) {
