@@ -170,7 +170,7 @@ if (!$salt) {
 		$base64 = Crypt::Eksblowfish::Bcrypt::en_base64($plain);
 		}
 	$base64 = substr($base64, 0, 22);
-	$salt = '$2$'.'08'.'$'.$base64;
+	$salt = '$2a$'.'08'.'$'.$base64;
 	}
 return Crypt::Eksblowfish::Bcrypt::bcrypt($passwd, $salt);
 }
