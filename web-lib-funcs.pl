@@ -4,9 +4,8 @@ Common functions for Webmin CGI scripts. This file gets in-directly included
 by all scripts that use web-lib.pl.
 Example code:
 
-  require '../web-lib.pl';
+  use WebminCore;
   init_config();
-  require '../ui-lib.pl';
   ui_print_header(undef, 'My Module', '');
   print 'This is Webmin version ',get_webmin_version(),'<p>\n';
   ui_print_footer();

@@ -3,7 +3,8 @@
 Common functions for generating HTML for Webmin user interface elements.
 Some example code :
 
- require '../ui-lib.pl';
+ use WebminCore;
+ init_config();
  ui_print_header(undef, 'My Module', '');
 
  print ui_form_start('save.cgi');

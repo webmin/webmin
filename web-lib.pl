@@ -1,17 +1,3 @@
-=head1 web-lib.pl
-
-This file must be included by all Webmin CGI scripts, either directly or via
-another module-specific .pl file. For example :
-
- do '../web-lib.pl';
- init_config();
- do '../ui-lib.pl';
- ui_print_header(undef, 'My Module', '');
-
-This file in turn includes web-lib-funcs.pl, which is where the majority of
-the Webmin API functions are defined.
-
-=cut
 
 @INC = &unique(@INC, ".");
 %month_to_number_map = ( 'jan' => 0, 'feb' => 1, 'mar' => 2, 'apr' => 3,
