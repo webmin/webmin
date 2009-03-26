@@ -771,7 +771,7 @@ if (defined(&theme_prehead)) {
 	}
 if ($charset) {
 	print "<meta http-equiv=\"Content-Type\" ",
-	      "content=\"text/html; Charset=$charset\">\n";
+	      "content=\"text/html; Charset=".&quote_escape($charset)."\">\n";
 	}
 if (@_ > 0) {
 	my $title = &get_html_title($_[0]);
