@@ -51,7 +51,7 @@ print &ui_table_row(
 	&ui_textbox("condlevel", $filter->{'condlevel'}, 4), undef, \@tds);
 
 # Check some header
-@headers = ( "From", "To", "Subject", "Cc" );
+@headers = ( "From", "To", "Subject", "Cc", "Reply-To" );
 $common = &indexoflc($filter->{'condheader'}, @headers) >= 0;
 print &ui_table_row(
 	&ui_oneradio("cmode", 4, $text{'edit_cmode4'}, $cmode == 4),
