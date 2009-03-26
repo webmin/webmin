@@ -8,19 +8,15 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 
 &read_usermin_acl(\%acl);
 print "$text{'acl_desc'}<p>\n";
-print "<form action=save_acl.cgi>\n";
-print "<table width=100%>\n";
+print &ui_form_start("save_acl.cgi");
 @mods = &list_modules();
+@grid = ( );
 foreach $m (@mods) {
-	print "<tr>\n" if ($i % 3 == 0);
-	printf "<td width=33%%><input type=checkbox name=mod value=%s %s> %s</td>\n",
-		$m->{'dir'}, $acl{'user',$m->{'dir'}} ? 'checked' : '',
-		$m->{'desc'};
-	print "</tr>\n" if ($i % 3 == 2);
-	$i++;
+	push(@grid, &ui_checkbox("mod", $m->{'dir'}, $m->{'desc'},
+				 $acl{'user',$m->{'dir'}}));
 	}
-print "</table>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_grid_table(\@grid, 3, 100, [ "width=33%", "width=33%", "width=33%" ]);
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
