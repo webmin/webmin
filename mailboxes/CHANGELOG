@@ -58,3 +58,6 @@ Re-wrote the entire user interface to use the new Webmin UI library, and to brin
 HTML messages now have a converted plain-text attachment automatically added, for mail clients that only support text.
 ---- Changes since 1.450 ----
 Added Module Config options to not include the X-Mailer and X-Originating-IP headers in sent mail.
+---- Changes since 1.470 ----
+When replying to a message, the original character set is used. Also, a bug that prevented the character set from being displayed when viewing a message is fixed.
+Messages with alternate HTML and text bodies are now send with the multipart/alternative content type, which fixes the problem of Gmail showing the body twice.

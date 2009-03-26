@@ -53,6 +53,11 @@ else {
 	&check_modification($folder) if ($in{'delete'});
 	$mail || &error($text{'mail_eexists'});
 
+	# Find the body parts and set the character set
+	($textbody, $htmlbody, $body) =
+		&find_body($mail, $config{'view_html'});
+	$main::force_charset = &get_mail_charset($mail, $body);
+
 	if ($in{'delete'}) {
 		# Just delete the email
 		if (!$in{'confirm'} && &need_delete_warn($folder)) {
@@ -87,8 +92,6 @@ else {
 	elsif ($in{'print'}) {
 		# Show email for printing
 		&decode_and_sub();
-		($textbody, $htmlbody, $body) =
-			&find_body($mail, $config{'view_html'});
                 &ui_print_header(undef, &decode_mimewords(
                                         $mail->{'header'}->{'subject'}));
                 &show_mail_printable($mail, $body, $textbody, $htmlbody);
@@ -339,6 +342,7 @@ print &ui_hidden("enew", $in{'enew'});
 foreach $s (@sub) {
 	print &ui_hidden("sub", $s);
 	}
+print &ui_hidden("charset", $main::force_charset);
 
 # Start tabs for from / to / cc / bcc
 # Subject is separate

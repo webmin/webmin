@@ -76,6 +76,9 @@ if ($in{'body'} =~ /\S/) {
 			}
 		}
 	local $mt = $in{'html_edit'} ? "text/html" : "text/plain";
+	if ($in{'charset'}) {
+		$mt .= "; charset=$in{'charset'}";
+		}
 	if ($in{'body'} =~ /[\177-\377]/) {
 		# Contains 8-bit characters .. need to make quoted-printable
 		$quoted_printable++;

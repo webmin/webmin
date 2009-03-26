@@ -3,7 +3,6 @@
 # View a single email message 
 
 require './mailboxes-lib.pl';
-$main::force_charset = '';
 &ReadParse();
 &can_user($in{'user'}) || &error($text{'mail_ecannot'});
 if (&is_user($in{'user'})) {
@@ -61,6 +60,9 @@ $body = $textbody if ($in{'body'} == 1);
 if ($body && $body eq $htmlbody) {
 	$headstuff = &head_html($body->{'data'});
 	}
+
+# Set the character set for the page to match email
+$main::force_charset = &get_mail_charset($mail, $body);
 
 &mail_page_header($text{'view_title'}, $headstuff, undef,
 		  &folder_link($in{'user'}, $folder));
