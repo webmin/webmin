@@ -3512,5 +3512,34 @@ close(OUTr);
 return @errs;
 }
 
+# get_mail_charset(&mail, &body)
+# Returns the character set to use for the HTML page for some email
+sub get_mail_charset
+{
+my ($mail, $body) = @_;
+my $ctype;
+if ($body) {
+	$ctype = $body->{'header'}->{'content-type'};
+	}
+$ctype ||= $mail->{'header'}->{'content-type'};
+if ($ctype =~ /charset="([a-z0-9\-]+)"/i ||
+    $ctype =~ /charset='([a-z0-9\-]+)'/i ||
+    $ctype =~ /charset=([a-z0-9\-]+)/i) {
+	$charset = $1;
+	}
+}
+## Special handling of HTML header charset ($force_charset):
+## For japanese text(ISO-2022-JP/EUC=JP/SJIS), the HTML output and
+## text contents ($bodycontents) are already converted to EUC,
+## so overriding HTML charset to that in the mail header ($charset)
+## is generally wrong. (cf. mailbox/boxes-lib.pl:eucconv())
+if ( &get_charset() =~ /^EUC/i ) {	# EUC-JP,EUC-KR
+	return undef;
+	}
+else {
+	return $charset;
+	}
+}
+
 1;
 

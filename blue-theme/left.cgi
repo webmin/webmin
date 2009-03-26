@@ -11,7 +11,6 @@ use WebminCore;
 @cats = &get_visible_modules_categories();
 @modules = map { @{$_->{'modules'}} } @cats;
 
-$charset = defined($force_charset) ? $force_charset : &get_charset();
 print &popup_header();
 print <<EOF;
 <link rel="stylesheet" type="text/css" href="left.css" />

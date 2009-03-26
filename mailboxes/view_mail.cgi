@@ -3,7 +3,7 @@
 # View a single email message 
 
 require './mailboxes-lib.pl';
-$force_charset = '';
+$main::force_charset = '';
 &ReadParse();
 &can_user($in{'user'}) || &error($text{'mail_ecannot'});
 if (&is_user($in{'user'})) {

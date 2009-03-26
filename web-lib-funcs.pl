@@ -754,7 +754,8 @@ sub header
 {
 return if ($main::done_webmin_header++);
 my $ll;
-my $charset = defined($force_charset) ? $force_charset : &get_charset();
+my $charset = defined($main::force_charset) ? $main::force_charset
+					    : &get_charset();
 &PrintHeader($charset);
 &load_theme_library();
 if (defined(&theme_header)) {
@@ -1019,7 +1020,8 @@ sub popup_header
 {
 return if ($main::done_webmin_header++);
 my $ll;
-my $charset = defined($force_charset) ? $force_charset : &get_charset();
+my $charset = defined($main::force_charset) ? $main::force_charset
+					    : &get_charset();
 &PrintHeader($charset);
 &load_theme_library();
 if (defined(&theme_popup_header)) {
