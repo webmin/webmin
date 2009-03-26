@@ -3527,7 +3527,6 @@ if ($ctype =~ /charset="([a-z0-9\-]+)"/i ||
     $ctype =~ /charset=([a-z0-9\-]+)/i) {
 	$charset = $1;
 	}
-}
 ## Special handling of HTML header charset ($force_charset):
 ## For japanese text(ISO-2022-JP/EUC=JP/SJIS), the HTML output and
 ## text contents ($bodycontents) are already converted to EUC,
