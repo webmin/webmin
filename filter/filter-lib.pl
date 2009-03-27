@@ -482,9 +482,23 @@ elsif ($f->{'condlevel'}) {
 	$cond = &text('index_clevel', $f->{'condlevel'});
 	}
 elsif ($f->{'condheader'}) {
-	$cond = &text('index_cheader',
-		"<tt>".&html_escape($f->{'condheader'})."</tt>",
-		"<tt>".&html_escape($f->{'condvalue'})."</tt>");
+	if ($f->{'condvalue'} =~ /^\.\*(.*)\$$/) {
+		$cond = &text('index_cheader2',
+			"<tt>".&html_escape($f->{'condheader'})."</tt>",
+			"<tt>".&html_escape($1)."</tt>");
+		}
+	elsif ($f->{'condvalue'} =~ /^\.\*(.*)\.\*$/ ||
+	       $f->{'condvalue'} =~ /^\.\*(.*)$/) {
+		$cond = &text('index_cheader1',
+			"<tt>".&html_escape($f->{'condheader'})."</tt>",
+			"<tt>".&html_escape($1)."</tt>");
+		}
+	elsif ($f->{'condvalue'} =~ /^(.*)\.\*$/ ||
+	       $f->{'condvalue'} =~ /^(.*)$/) {
+		$cond = &text('index_cheader0',
+			"<tt>".&html_escape($f->{'condheader'})."</tt>",
+			"<tt>".&html_escape($1)."</tt>");
+		}
 	}
 elsif ($f->{'condtype'} eq '<' || $f->{'condtype'} eq '>') {
 	$cond = &text('index_csize'.$f->{'condtype'},

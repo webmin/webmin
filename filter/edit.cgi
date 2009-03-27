@@ -51,11 +51,28 @@ print &ui_table_row(
 	&ui_textbox("condlevel", $filter->{'condlevel'}, 4), undef, \@tds);
 
 # Check some header
-@headers = ( "From", "To", "Subject", "Cc", "Reply-To" );
+@headers = ( "From", "To", "Subject", "Cc", "Reply-To", "List-Id" );
 $common = &indexoflc($filter->{'condheader'}, @headers) >= 0;
+if ($filter->{'condvalue'} =~ /^\.\*(.*)\$$/) {
+	# Ends with
+	$condvalue = $1;
+	$condmode = 2;
+	}
+elsif ($filter->{'condvalue'} =~ /^\.\*(.*)\.\*$/ ||
+       $filter->{'condvalue'} =~ /^\.\*(.*)$/) {
+	# Contains
+	$condvalue = $1;
+	$condmode = 1;
+	}
+elsif ($filter->{'condvalue'} =~ /^(.*)\.\*$/ ||
+       $filter->{'condvalue'} =~ /^(.*)$/) {
+	# Starts with
+	$condvalue = $1;
+	$condmode = 0;
+	}
 print &ui_table_row(
 	&ui_oneradio("cmode", 4, $text{'edit_cmode4'}, $cmode == 4),
-	&text('edit_cheader',
+	&text('edit_cheader2',
 	      &ui_select("condmenu", $cmode != 4 ? "From" :
 				     $common ? $filter->{'condheader'} : "",
 			 [ (map { [ $_ ] } @headers),
@@ -65,8 +82,11 @@ print &ui_table_row(
 	      &ui_textbox("condheader",
 			  $common ? "" : $filter->{'condheader'}, 20,
 			  $cmode != 4 || $common),
-	      &ui_textbox("condvalue",
-			  $filter->{'condvalue'}, 40)),
+	      &ui_select("condmode", $condmode,
+			 [ [ 0, $text{'edit_modestart'} ],
+			   [ 1, $text{'edit_modecont'} ],
+			   [ 2, $text{'edit_modeend'} ] ]),
+	      &ui_textbox("condvalue", $condvalue, 40)),
 	undef, \@tds);
 
 # Smaller

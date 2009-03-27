@@ -24,7 +24,6 @@ edit_amode5=F&#252;hre Spam Klassifizierung durch
 edit_amode6=Sende automatische Antwort
 edit_amode7=Speichere in neuem Ordner mit dem Namen
 edit_cbody=Anwenden auf Nachrichten Body
-edit_cheader=Header $1$2 muss mit $3 &#252;bereinstimmen
 edit_cmode0=Alle E-Mail
 edit_cmode1=Basierend auf regul&#228;rem Ausdruck
 edit_cmode2=E-Mail gr&#246;sser als

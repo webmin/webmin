@@ -35,7 +35,6 @@ edit_title2=Muokkaa suodatinta
 edit_header1=Suodattimen ehto
 edit_cmode0=Kaikki sähköpostit
 edit_cmode4=Täsmäävä otsake
-edit_cheader=Otsakkeen $1$2 täytyy täsmätä $3
 edit_cmode3=Sähköposti pienempi kuin
 edit_cmode2=Sähköposti suurempi kuin
 edit_cmode5=Sähköposti luokiteltu roskapostiksi

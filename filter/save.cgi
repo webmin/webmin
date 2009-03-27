@@ -49,7 +49,15 @@ else {
 		$filter->{'condheader'} = $in{'condmenu'} || $in{'condheader'};
 		$filter->{'condheader'} =~ /^[a-zA-Z0-9\-]+$/ ||
 			&error($text{'save_econdheader'});
-		$filter->{'condvalue'} = $in{'condvalue'};
+		if ($in{'condmode'} == 0) {
+			$filter->{'condvalue'} = $in{'condvalue'};
+			}
+		elsif ($in{'condmode'} == 1) {
+			$filter->{'condvalue'} = ".*".$in{'condvalue'}.".*";
+			}
+		else {
+			$filter->{'condvalue'} = ".*".$in{'condvalue'}."\$";
+			}
 		}
 	elsif ($in{'cmode'} == 3) {
 		# Smaller than some size

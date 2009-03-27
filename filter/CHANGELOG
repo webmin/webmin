@@ -21,3 +21,4 @@ If spam deletion above some level level is configured globally or for the user's
 Autoreply messages containing non-ASCII characters are now properly quoted-printable encoded.
 ---- Changes since 1.400 ----
 Filters that deliver to mbox-format folders now have locking enabled.
+Creation of filters that match headers is now less error-prone, due to a new menu for selecting if it should match the start, end or any part of the header.

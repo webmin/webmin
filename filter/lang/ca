@@ -41,7 +41,6 @@ edit_title2=Edició de Filtre
 edit_header1=Condició del filtre
 edit_cmode0=Tot el correu
 edit_cmode4=Basat en la capçalera
-edit_cheader=La capçalera $1$2 ha de coincidir $3
 edit_cmode3=El correu és més petit de
 edit_cmode2=El correu és més gran de
 edit_cmode5=Correu classificat com a spam

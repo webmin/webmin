@@ -35,7 +35,6 @@ edit_title2=Τροποποίηση φίλτρου
 edit_header1=Συνθήκη για φίλτρο
 edit_cmode0=Όλα τα email
 edit_cmode4=Βάση της επικεφαλίδας
-edit_cheader=Η επικεφαλίδα $1$2 θα πρέπει να ταιριάζει με $3
 edit_cmode3=Το μέγεθος του email είναι μικρότερο από
 edit_cmode2=Το μέγεθος του email είναι μεγαλύτερο από
 edit_cmode5=Κατάταξη email ως spam

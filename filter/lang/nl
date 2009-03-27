@@ -24,7 +24,6 @@ edit_amode5=Maak een spam classificatie
 edit_amode6=Stuur automatisch antwoord
 edit_amode7=Opslaan naar nieuw folder genaamd
 edit_cbody=Toevoegen aan berichten body
-edit_cheader=Header $1$2 moet overeenkomen met $3
 edit_cmode0=Alle email
 edit_cmode1=Gebaseerd op regulaire expressies
 edit_cmode2=Email groter dan
