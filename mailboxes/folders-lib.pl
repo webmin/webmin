@@ -2629,8 +2629,14 @@ local ($plainbody, $htmlbody) = &find_body($mail, $mode);
 local ($quote, $html_edit, $body);
 local $cfg = defined(%userconfig) ? \%userconfig : \%config;
 local @writers = &split_addresses($mail->{'header'}->{'from'});
-local $writer = &decode_mimewords($writers[0]->[1] || $writers[0]->[0]).
-		" wrote ..";
+local $writer;
+if ($writers[0]->[1]) {
+	$writer = &decode_mimewords($writers[0]->[1])." <".
+		  &decode_mimewords($writers[0]->[0])."> wrote ..";
+	}
+else {
+	$writer = &decode_mimewords($writers[0]->[0])." wrote ..";
+	}
 local $tm;
 if ($cfg->{'reply_date'} &&
     ($tm = &parse_mail_date($_[0]->{'header'}->{'date'}))) {

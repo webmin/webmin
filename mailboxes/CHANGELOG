@@ -61,3 +61,4 @@ Added Module Config options to not include the X-Mailer and X-Originating-IP hea
 ---- Changes since 1.470 ----
 When replying to a message, the original character set is used. Also, a bug that prevented the character set from being displayed when viewing a message is fixed.
 Messages with alternate HTML and text bodies are now send with the multipart/alternative content type, which fixes the problem of Gmail showing the body twice.
+The original sender's email address is now included in the 'wrote' line when replying to or forwarding a message.
