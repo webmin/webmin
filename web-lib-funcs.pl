@@ -6735,7 +6735,7 @@ return 1 if ($dir eq "/");
 return 0 if ($file =~ /\.\./);
 my $ld = &resolve_links($dir);
 if ($ld ne $dir) {
-	return &resolve_links($ld, $file);
+	return &is_under_directory($ld, $file);
 	}
 my $lp = &resolve_links($file);
 if ($lp ne $file) {
