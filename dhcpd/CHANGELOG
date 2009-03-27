@@ -30,3 +30,4 @@ Custom option types defined at a higher level (such as in a subnet) can be used 
 When a subnet or host is renamed, the user's ACL is updated to match.
 ---- Changes since 1.470 ----
 Added a Module Config option to specify an alternate file to add new top-level objects (like subnets) to. This must be referenced by an include directive in the main dhcpd.conf though.
+String custom options are now always quoted.

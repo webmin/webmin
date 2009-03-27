@@ -132,11 +132,15 @@ if ($config{'dhcpd_version'} >= 3) {
 		       @{$client->{'members'}};
 	for($i=0; defined($in{"cname_$i"}); $i++) {
 		next if ($in{"cname_$i"} eq "");
+		local $o = $optdef{$in{"cname_$i"}};
 		local $cv = $in{"cval_$i"};
 		$cv =~ /\S/ || &error(&text('sopt_ecval', $in{"cname_$i"}));
-		$cv = "\"$cv\""
-			if ($cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
-			    !&check_ipaddress($cv));
+		if ($o && $o->{'values'}->[4] eq 'string' ||
+		    $cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
+		    !&check_ipaddress($cv)) {
+			# Quote if type is a string, or unknown and not an IP
+			$cv = "\"$cv\"";
+			}
 		push(@newcustom, { 'name' => 'option',
 				   'values' => [ $in{"cname_$i"}, $cv ] } );
 		}
