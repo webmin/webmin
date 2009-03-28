@@ -10,3 +10,5 @@ ATA mode is now used by default on CentOS and Redhat Enterprise versions 5 and a
 SCSI drives are visible in the System and Server Status module.
 The SMART status monitor now has an option to only alert if the error count on a drive has increased.
 Improved support for 3ware and HP RAID devices, so that the underlying disks are now detected and can be reported on separately.
+---- Changes since 1.470 ----
+Added support for systems with both old and new 3ware cards.

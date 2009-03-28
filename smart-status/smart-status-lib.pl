@@ -34,26 +34,28 @@ May include faked-up 3ware devices
 sub list_smart_disks_partitions
 {
 local @rv;
-local $threecount = 0;
+local %tcount = ( "/dev/twe", 0, "/dev/twa", 0 );
 foreach my $d (&fdisk::list_disks_partitions()) {
 	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
 	    $d->{'model'} =~ /3ware/i) {
 		# Actually a 3ware RAID device .. but we want to probe the
 		# underlying real disks, so add fake devices for them
-		my $twdev = -r "/dev/twe0" ? "/dev/twe" :
-			    -r "/dev/twa0" ? "/dev/twa" : "/dev/twe";
-		my $count = &count_subdisks($d, "3ware",
-					    $twdev.$threecount);
-		for(my $i=0; $i<$count; $i++) {
-			push(@rv, { 'device' => $twdev.$threecount,
-				    'prefix' => $twdev.$threecount,
-				    'desc' => '3ware physical disk '.$i,
-				    'type' => 'scsi',
-				    'subtype' => '3ware',
-				    'subdisk' => $i,
-				  });
+		foreach my $twdev (keys %tcount) {
+			next if (!-r $twdev.$tcount{$twdev});
+			my $count = &count_subdisks($d, "3ware",
+						    $twdev.$tcount{$twdev});
+			next if (!$count);
+			for(my $i=0; $i<$count; $i++) {
+				push(@rv, { 'device' => $twdev.$tcount{$twdev},
+					    'prefix' => $twdev.$tcount{$twdev},
+					    'desc' => '3ware physical disk '.$i,
+					    'type' => 'scsi',
+					    'subtype' => '3ware',
+					    'subdisk' => $i,
+					  });
+				}
+			$tcount{$twdev}++;
 			}
-		$threecount++;
 		}
 	elsif ($d->{'device'} =~ /^\/dev\/cciss\/(.*)$/) {
 		# HP Smart Array .. add underlying disks
