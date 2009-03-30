@@ -1,0 +1,67 @@
+<header>Firewall Linuxu</header>
+
+<h3>Úvod k modulu</h3>
+
+Tento modul umo¾òuje nakonfigurova» funkcie IP tabuliek firewallu, ktoré 
+sa nachádzajú v Linuxových jadrach rady 2.4. Na rozdiel od niektorých iných 
+programov na konfiguráciu firewallu namiesto vytvárania scriptu pre shell, 
+ktorý nastaví firewall, tento modul preèíta a edituje pravidlá z ulo¾eného 
+súboru vo formáte, ktorý je naèítavaný a zapisovaný programami
+<tt>iptables-restore</tt> a <tt>iptables-save</tt>. <p>
+
+Ak u¾ máte vo Va¹om systéme firewall, ktorý bol nastavený ruène alebo pomocou
+scriptu, modul ponúka aj jeho konverziu na IP tabuµky ulo¾ené v súbore a vytvorí 
+script, ktorý aktivuje pravidlá zo súboru pri zavádzaní systému. Av¹ak ak to urobíte 
+a nebudete chcie» pravidlá firewallu na dlh¹í èas pou¾íva», mô¾ete tie¾ aktiváciu 
+pravidiel pri zavádzaní vypnú». <p>
+
+<h3>Prehµad IP tabuliek</h3>
+
+Ka¾dý sie»ový paket, ktorý prichádza dnu, odchádza von alebo je presmerovaný Va¹ím 
+systémom, je skontrolovaný jedným alebo viacerými zre»azeniami, ktoré urèia, èo sa 
+s ním má sta». Ka¾dé zre»azenie obsahuje nula alebo viac pravidiel, z ktorých ka¾dé 
+má podmienku (urèujúcu, pre ktoré pakety bude plati») a akciu (urèujúcu, èo sa má sta» 
+s paketmi splòujúcimi podmienku). Ka¾dé zre»azenie má tie¾ predvolenú akciu, ktorá hovorí 
+èo sa má sta» s paketmi, ktoré nespåòajú ani jednu z uvedených podmienok. <p>
+	
+Ka¾dé zre»azenie je súèas»ou jednej z troch tabuliek:
+<ul>
+<li><b>Filtrovanie paketov (<tt>filter</tt>)</b><br>
+    Zre»azenia v tejto tabuµke mô¾u by» pou¾ité na ovládanie dát prichádzajúcich do 
+    systému z iných staníc siete, dát odoslaných z Vá¹ho systému pou¾ívateµmi a procesmi
+    a dát presmerovaných va¹ím systémom, ak funguje ako router. <p>
+<li><b>Preklad sie»ovej adresy (<tt>nat</tt>)</b><br>
+    Táto tabuµka mô¾e by» pou¾itá na nastavenie NAT alebo ma¹karády, èo je u¾itoèné, ak chcete 
+    z celej va¹ej siete pristupova» do internetu iba s jednou skutoènou IP adresou. <p>
+<li><b>Zmena paketov (<tt>mangle</tt>)</b><br>
+    Toto zre»azenie slú¾i na úpravu paketov presmerovaných alebo odoslaných Va¹im systémom. <p>
+</ul>
+
+Ako dodatok ku ¹tandardným zre»azeniam, ktoré sú súèas»ou ka¾dej tabuµky, mô¾ete tie¾ vytvori» 
+Va¹e vlastné zre»azenie, ktoré mô¾e by» spustené pravidlami zo zabudovaných zre»azení. To mô¾e by» 
+u¾itoèné pri skupinových a zdielaných pravidlách, ktoré by bolo inak potrebné pou¾i» na viacerých 
+miestach. <p>
+
+<h3>Hlavná stránka</h3>
+
+Hlavná stránka tohto modulu zobrazuje v¹etky zre»azenia a pravidlá jednej 
+z dostupných tabuliek, vybranej zo zoznamu vµavo hore. Ni¾¹ie sú èasti pre 
+ka¾dé zre»azenie v aktuálnej tabuµke so v¹etkými pravidlami a ich podmienkami, 
+ktoré najlep¹ie opisujú schopnosti modulu. Pre ka¾dé zre»azenie, ktoré je 
+zabudované v tabuµke, mô¾ete definova» predvolenú akciu prostredníctvom 
+rozbaµovacieho poµa. Vlastnoruène zadefinované zre»azenia mô¾ete odstráni» 
+pomocou tlaèidla Odstráni» zre»azenie. <p>
+
+Mô¾ete kliknú» na µubovoµné pravidlo v zre»azení a upravi» ho, kliknú» na ¹ipku 
+vpravo a presunú» ho vy¹¹ie alebo ni¾¹ie alebo kliknú» na tlaèítko prida» a 
+zadefinova» nové pravidlo. Pridávanie alebo úprava pravidla Vás presunie na stránku, 
+na ktorej mô¾ete vybra» pre pravidlo akciu a podmienku, pri ktorej sa má akcia vykona». <p>
+
+V spodnej èasti stránky je tlaèidlo na aktivovanie aktuálnej konfigurácie, ktoré ju nahrá 
+do jadra pomocou <tt>iptables-restore</tt>. Pod ním je tlaèidlo na vykonanie obnovy -
+vezme konfiguráciu, ktorá je nahraná v jadre a umo¾ní ju upravova». Ak to va¹a distribúcia 
+podporuje, je tu e¹te tlaèidlo, ktoré nastaví, èi sa má firewall aktivova» pri zavádzaní 
+systému alebo nie. <p>
+
+<hr>
+
