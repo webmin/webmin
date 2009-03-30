@@ -8225,9 +8225,17 @@ if ($url =~ /^http:\/\/[^\.]+.dl.sourceforge.net\/sourceforge\/([^\/]+)\/(.*)$/ 
 	# Find best site
 	my ($project, $file) = ($1, $2);
 	my @mirrors = &list_osdn_mirrors($project, $file);
-	my $pref = $gconfig{'osdn_mirror'} || "unc";
-	my ($site) = grep { $_->{'mirror'} eq $pref } @mirrors;
-	$site ||= $mirrors[0];
+	my $pref = $gconfig{'osdn_mirror'};
+	my $site;
+	if ($pref) {
+		($site) = grep { $_->{'mirror'} eq $pref } @mirrors;
+		}
+	if (!$site) {
+		# Fall back to automatic mirror selection via Sourceforge
+		# redirect
+		$site = { 'url' => "http://prdownloads.sourceforge.net/sourceforge/$project/$file",
+			  'default' => 0 };
+		}
 	return wantarray ? ( $site->{'url'}, $site->{'default'} )
 			 : $site->{'url'};
 	}
