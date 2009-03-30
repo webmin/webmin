@@ -1,0 +1,11 @@
+index_domain=Website domain
+index_directory=Serve pages from directory
+index_none=No websites have been created yet.
+index_add=Add a new website.
+index_return=website list
+
+edit_title=Edit Website
+create_title=Create Website
+edit_header=Foobar Webserver website details
+edit_domain=Website domain name
+edit_directory=Directory containing website contents
