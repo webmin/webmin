@@ -277,6 +277,7 @@ else {
 	# Use the lvdisplay command
 	local $lv;
 	local $_;
+	local ($vg) = grep { $_->{'name'} eq $_[0] } &list_volume_groups();
 	open(DISPLAY, "lvdisplay |");
 	while(<DISPLAY>) {
 		s/\r|\n//g;
@@ -291,6 +292,9 @@ else {
 			}
 		elsif (/LV\s+Size\s+(\S+)\s+(\S+)/i) {
 			$lv->{'size'} = &mult_units($1, $2);
+			}
+		elsif (/Current\s+LE\s+(\d+)/ && $vg) {
+			$lv->{'size'} = $1 * $vg->{'pe_size'};
 			}
 		elsif (/LV\s+Write\s+Access\s+(\S+)/i) {
 			$lv->{'perm'} = $1 eq 'read/write' ? 'rw' : 'r';
@@ -361,7 +365,18 @@ return @rv;
 # create_logical_volume(&lv)
 sub create_logical_volume
 {
-local $cmd = "lvcreate -n$_[0]->{'name'} -L$_[0]->{'size'}k";
+local $cmd = "lvcreate -n$_[0]->{'name'} ";
+local $suffix;
+if ($_[0]->{'size_of'} eq 'VG' || $_[0]->{'size_of'} eq 'FREE') {
+	$cmd .= "-l $_[0]->{'size'}%$_[0]->{'size_of'}";
+	}
+elsif ($_[0]->{'size_of'}) {
+	$cmd .= "-l $_[0]->{'size'}%PVS";
+	$suffix = " /dev/".$_[0]->{'size_of'};
+	}
+else {
+	$cmd .= "-L$_[0]->{'size'}k";
+	}
 if ($_[0]->{'is_snap'}) {
 	$cmd .= " -s '/dev/$_[0]->{'vg'}/$_[0]->{'snapof'}'";
 	}
@@ -371,6 +386,7 @@ else {
 	$cmd .= " -i $_[0]->{'stripe'}" if ($_[0]->{'stripe'});
 	$cmd .= " $_[0]->{'vg'}";
 	}
+$cmd .= $suffix;
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }

@@ -38,11 +38,40 @@ else {
 		       &list_logical_volumes($in{'vg'});
 	$same && (!$in{'lv'} || $in{'lv'} ne $in{'name'}) &&
 		&error($text{'lv_esame'});
-	$in{'size'} =~ /^\d+$/ || &error($text{'lv_esize'});
-	if (defined($in{'size_units'})) {
-		# Convert selected units to kB
-		$in{'size'} = $in{'size'}*$in{'size_units'}/1024;
-		delete($in{'size_units'});
+	if ($in{'size_mode'} == 0) {
+		# Absolute size
+		$in{'size'} =~ /^\d+$/ || &error($text{'lv_esize'});
+		$size = $in{'size'};
+		if (defined($in{'size_units'})) {
+			# Convert selected units to kB
+			$size *= $in{'size_units'}/1024;
+			delete($in{'size_units'});
+			}
+		$sizeof = undef;
+		}
+	elsif ($in{'size_mode'} == 1) {
+		# Size of VG
+		$in{'vgsize'} =~ /^\d+$/ &&
+			$in{'vgsize'} > 0 &&
+			$in{'vgsize'} <= 100 || &error($text{'lv_evgsize'});
+		$size = $in{'vgsize'};
+		$sizeof = 'VG';
+		}
+	elsif ($in{'size_mode'} == 2) {
+		# Size of free space
+		$in{'freesize'} =~ /^\d+$/ &&
+			$in{'freesize'} > 0 &&
+			$in{'freesize'} <= 100 || &error($text{'lv_efreesize'});
+		$size = $in{'freesize'};
+		$sizeof = 'FREE';
+		}
+	else {
+		# Size of some PV
+		$in{'pvsize'} =~ /^\d+$/ &&
+			$in{'pvsize'} > 0 &&
+			$in{'pvsize'} <= 100 || &error($text{'lv_epvsize'});
+		$size = $in{'pvsize'};
+		$sizeof = $in{'pvof'};
 		}
 	$in{'snap'} || $in{'lv'} || $in{'stripe_def'} ||
 		$in{'stripe'} =~ /^[1-9]\d*$/ || &error($text{'lv_estripe'});
@@ -51,7 +80,8 @@ else {
 		# Just create the logical volume
 		$lv->{'vg'} = $in{'vg'};
 		$lv->{'name'} = $in{'name'};
-		$lv->{'size'} = $in{'size'};
+		$lv->{'size'} = $size;
+		$lv->{'size_of'} = $sizeof;
 		if ($in{'snap'}) {
 			$lv->{'is_snap'} = 1;
 			$lv->{'snapof'} = $in{'snapof'};

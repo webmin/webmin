@@ -41,9 +41,22 @@ else {
 		&ui_textbox("name", $lv->{'name'}, 20));
 
 	if (!$in{'lv'}) {
-		# Can show nice size chooser
+		# Can show nice size chooser for absolute or relative size
+		@pvopts = map { $_->{'name'} }
+			      &list_physical_volumes($in{'vg'});
 		print &ui_table_row($text{'lv_size'},
-			&ui_bytesbox("size", $lv->{'size'}*1024, 8));
+			&ui_radio_table("size_mode", 0,
+			  [ [ 0, $text{'lv_size0'},
+			      &ui_bytesbox("size", $lv->{'size'}*1024, 8) ],
+			    [ 1, $text{'lv_size1'},
+			      &ui_textbox("vgsize", undef, 4)."%" ],
+			    [ 2, $text{'lv_size2'},
+			      &ui_textbox("freesize", undef, 4)."%" ],
+			    [ 3, $text{'lv_size3'},
+			      &text('lv_size3a',
+			      	&ui_textbox("pvsize", undef, 4)."%",
+				&ui_select("pvof", undef, \@pvopts)) ],
+			  ]), 3);
 		}
 	else {
 		# Show in exactly kB
