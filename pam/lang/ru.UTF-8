@@ -1,0 +1,243 @@
+index_title=Аутентификация PAM
+index_name=Служба
+index_desc=Описание
+index_add=Добавить новую службу PAM
+index_return=списку служб
+index_none=Файлы настройки PAM в каталоге $1 вашей системы не обнаружены. Либо PAM не поддерживается, либо <a href='$2'>настройка модуля</a> выполнена неправильно.
+
+desc_su=Смена пользователя
+desc_login=Локальный или удаленный вход в систему
+desc_samba=Файловый сервер для Windows Samba 
+desc_imap=Почтовый сервер IMAP
+desc_pop=Почтовый сервер POP
+desc_kde=Вход в KDE
+desc_rexec=Сервер удаленного запуска
+desc_rlogin=Сервер удаленного входа
+desc_rsh=Сервер удаленной оболочки
+desc_passwd=Изменение пароля
+desc_chfn=Изменение информации finger
+desc_chsh=Изменение оболочки
+desc_ftp=Сервер передачи файлов
+desc_ftpd=Сервер передачи файлов
+desc_wu-ftpd=Сервер передачи файлов WuFTPd
+desc_xscreensaver=Хранитель экрана
+desc_other=Другие службы
+desc_netatalk.pamd=$desc_netatalk
+desc_netatalk=Файловый сервер для Apple Netatalk
+desc_webmin=Веб-сервер Webmin
+desc_xdm=Локальный или удаленный вход в X
+desc_gdm=Вход в X через Gnome
+desc_linuxconf=Вход в LinuxConf
+desc_linuxconf-pair=Дополнительный вход в LinuxConf
+desc_linuxconf-auth=Аутентификация LinuxConf
+desc_xlock=Блокировка экрана
+desc_vlock=Блокировка виртуальной консоли
+desc_kbdrate=Управление скоростью клавиатуры
+desc_halt=Остановка системы
+desc_poweroff=Выключение системы
+desc_reboot=Перезагрузка системы
+desc_shutdown=Завершение работы системы
+desc_mcserv=Сервер Midnight commander
+desc_kppp=Утилита KDE клиента PPP
+desc_xserver=Сервер X11
+desc_gnorpm-auth=Утилита RPM для Gnome
+desc_kpackage=Утилита RPM для KDE
+desc_ppp=Вход сервера PPP
+desc_rp3-config=Утилита Redhat клиента PPP
+desc_up2date=Службы обновлений Redhat Linux
+desc_up2date-config=Настройка обновлений Redhat Linux
+desc_sudo=Ограниченно выполнение команд от root
+desc_httpd=Веб-сервер
+desc_qpop=Почтовый сервер POP
+desc_sshd=Вход по SSH
+desc_squid=Прокси-сервер Squid
+desc_bindconf=Утилита Redhat настройки BIND
+desc_apacheconf=Утилита Redhat настройки Apache
+desc_adsl-config=Утилита Redhat настройки ADSL
+desc_internet-config=Утилита Redhat настройки Интернет
+desc_isdn-config=Утилита Redhat настройки ISDN
+desc_kontrol-panel=Панель управление KDE для RedHat
+desc_kscreensaver=Хранитель экрана KDE
+desc_printconf-gui=Утилита Redhat настройки принтеров
+desc_rhn_register=Регистрация в Redhat Network
+desc_system-auth=Общая аутентификация
+desc_cups=Система печати CUPS
+
+edit_title=Изменение службы PAM
+edit_header=Подробности о службе PAM
+edit_name=Название службы
+edit_header_auth=Аутентификация
+edit_header_account=Проверка учетной записи
+edit_header_session=Настройка сеанса
+edit_header_password=Изменение пароля
+edit_mod=Модуль PAM
+edit_desc=Описание
+edit_args=Параметры
+edit_addmod=Добавить модуль:
+edit_control=Влияние модуля
+edit_none=Модули PAM не указаны
+edit_delete=Удалить службу PAM
+edit_move=Переместить
+edit_return=службам PAM
+
+pam_pwdb.so=Аутентификация паролей Unix
+pam_securetty.so=Проверка безопасности TTY для root
+pam_nologin.so=Проверка файла <tt>/etc/nologin</tt>
+pam_mail.so=Уведомление о наличии новой почты
+pam_lastlog.so=Уведомление о последнем входе
+pam_rootok.so=Проверка на пользователя <tt>root</tt>
+pam_cracklib.so=Усиленная проверка пароля
+pam_access.so=Проверка файла управления доступом
+pam_deny.so=Всегда запрещает доступ
+pam_env.so=Настройка переменных окружения
+pam_ftp.so=Аутентификация FTP
+pam_time.so=Проверка времени входа
+pam_group.so=Установка членства в группе
+pam_listfile.so=Проверка содержимого файла
+pam_limits.so=Установка ограничений по ресурсам
+pam_mkhomedir.so=Создание домашнего каталога
+pam_motd.so=Вывод файла с сообщением дня
+pam_permit.so=Всегда разрешает доступ
+pam_radius.so=Аутентификация через сервер RADIUS
+pam_rhosts.so=Проверка файлов <tt>.rhosts</tt>
+pam_rhosts_auth.so=Проверка файлов <tt>.rhosts</tt>
+pam_shells.so=Проверка на правильность оболочки
+pam_unix.so=Старая аутентификация паролей Unix
+pam_userdb.so=Аутентификация паролей из файла DBM
+pam_warn.so=Занесение сообщения в системный журнал
+pam_wheel.so=Проверка группы <tt>wheel</tt>
+pam_issue.so=Вывод файла <tt>/etc/issue</tt>
+pam_ldap.so=Аутентификация через сервер LDAP
+pam_unix_auth.so=Аутентификация паролей Unix
+pam_unix_sess.so=Настройка сеанса Unix
+pam_unix_session.so=Настройка сеанса Unix
+pam_unix_acct.so=Проверка учетных записей Unix
+pam_unix_passwd.so=Изменение пароля Unix
+pam_stress.so=Application stress test
+pam_tally.so=Слежение за неудачными попытками входа
+pam_passwd+.so=Проверка сложности пароля
+pam_filter.so=Фильтр ввода/вывода
+pam_desgold.so=Аутентификация через смарт-карту DESGold
+pam_console.so=Проверка на консоль
+pam_xauth.so=Аутентификация X
+pam_stack.so=Вызов другой службы PAM
+
+control_requisite=Обязателен
+control_required=Необходим
+control_sufficient=Достаточен
+control_optional=Необязателен
+control_desc_requisite=В случае неудачи возвращать ошибку аутентификации немедленно
+control_desc_required=В случае неудачи возвращать ошибку аутентификации в конце
+control_desc_sufficient=В случае успеха сообщать об успешной аутентификации немедленно
+control_desc_optional=Ошибка или успех игнорируется
+
+create_title=Создание службы PAM
+create_header=Настройка службы PAM
+create_name=Название службы
+create_desc=Описание
+create_mods=Начальные модули PAM
+create_0=Нет
+create_1=Аутентификация Unix
+create_2=Запретить доступ всем
+
+mod_edit=Изменение модуля PAM
+mod_create=Добавление модуля PAM
+mod_header=Настройка модуля PAM
+mod_name=Название службы
+mod_mod=Модуль PAM
+mod_type=Использовать при
+mod_type_auth=Аутентификации
+mod_type_account=Проверке учетной записи
+mod_type_session=Настройке сеанса
+mod_type_password=Изменении пароля
+mod_control=Влияние модуля
+mod_args=Аргументы модуля
+mod_err=Не удалось сохранить модуль
+
+pwdb_shadow=Использовать теневые пароли?
+pwdb_nullok=Принимать пустые пароли?
+pwdb_md5=Использовать шифрование паролей через MD5?
+pwdb_nodelay=Задержка после неудачной попытки входа?
+
+listfile_item=Искать в файле
+listfile_item_user=Имя пользователя
+listfile_item_tty=TTY (терминал)
+listfile_item_rhost=Имя удаленного компьютера
+listfile_item_ruser=Имя удаленного пользователя
+listfile_item_group=Группу
+listfile_item_shell=Оболочку
+listfile_sense=При успешном поиске возвращать
+listfile_file=Файл в котором производить поиск
+listfile_onerr=При ошибке работы с файлом возвращать
+listfile_fail=Ошибку
+listfile_succeed=Успех
+listfile_apply=Проверять
+listfile_all=Всех пользователей
+listfile_user=Только пользователя
+listfile_group=Только группу
+
+cracklib_type=Строка в приглашении о вводе пароля
+cracklib_retry=Максимальное количество попыток
+cracklib_eretry=Количество попыток не указано или указано неверно
+cracklib_etype=Строка в приглашении не указана или указана неверно
+
+rhosts_equiv=Считывать файл <tt>/etc/hosts.equiv</tt>?
+rhosts_rhosts=Считывать файлы пользователей <tt>.rhosts</tt>?
+rhosts_promiscuous=Использовать <tt>+</tt> для совпадения со всем именами компьютеров ?
+rhosts_suppress=Заносить в журнал запись о неудачных попытках аутентификации?
+
+env_var=Имя переменной
+env_def=Значение по умолчанию
+env_over=Заменяющее значение
+env_evar=Имена переменных не могут содержать пробелы
+
+securetty_ttys=Безопасные TTY (терминалы)
+
+shells_shells=Разрешенные оболочки пользователя
+
+tally_deny=Количество неудачных попыток перед запретом доступа
+tally_reset=Сбрасывать счетчик неудачных попыток при успешном входе
+tally_edeny=Количество неудачных попыток не указано или указано неверно
+tally_magic=Подсчитывать количество неудачных попыток для <tt>root</tt>?
+tally_root=Можно ли запретить учетную запись <tt>root</tt>?
+
+time_services=Службы
+time_ttys=TTY (терминалы)
+time_users=Пользователи
+time_times=Время доступа
+time_info=Все поля могут содержать несколько значений, разделенных |. Значения могут содержать *, как символ соответствия любому, или ! как отрицание.
+
+group_services=Службы
+group_ttys=TTY (терминалы)
+group_users=Пользователи
+group_times=Время доступа
+group_groups=Все группы
+group_info=Все поля могут содержать несколько значений, разделенных |. Значения могут содержать *, как символ соответствия любому, или ! как отрицание.
+
+wheel_group=Проверять членство в группе
+wheel_group_def=По умолчанию (<tt>wheel</tt> или GID 0)
+wheel_trust=Члены группы не нуждаются в дальнейшей аутентификации?
+wheel_deny=Запрещать доступ членам группы, вместо того, чтобы разрешать?
+wheel_egroup=Имя группы не указано или указано неверно
+
+motd_file=Выводимый файл
+motd_file_def=По умолчанию (<tt>/etc/motd</tt>)
+motd_efile=Имя файла не указано или указано неверно
+
+mail_nopen=Выводить уведомления о наличии почты при входе?
+mail_close=Выводить уведомления о наличии почты при выходе?
+mail_empty=Уведомлять если почты нет?
+mail_noenv=Устанавливать переменную окружения $MAIL?
+mail_dir=Каталог почтового спула
+mail_edir=Каталог спула не указан или указан неверно
+
+stack_service=Вызывать указанную службу PAM для дальнейшей проверки
+
+log_pam_create=Создана служба PAM $1
+log_pam_delete=Удалена служба PAM $1
+log_mod_create=В службу $2 добавлен модуль PAM $1
+log_mod_modify=В службе $2 изменен модуль PAM $1
+log_mod_delete=В службе $2 удален модуль $1
+log_mod_move=В службе PAM $3 изменена очередность модулей PAM
+log_mod_move_l=В службе PAM $3 изменена очередность модулей PAM $1 и $2
+
