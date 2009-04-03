@@ -1,0 +1,156 @@
+index_title=Запущенные процессы
+index_display=Вид
+index_tree=PID
+index_user=Пользователи
+index_size=Память
+index_cpu=CPU
+index_search=Искать
+index_run=Выполнить..
+index_return=списку процессов
+index_mem=<b>Физическая память:</b> всего $1 Кб / свободно $2 Кб
+index_swap=<b>Область подкачки:</b> всего $1 Кб / свободно $2 Кб
+index_load=<b>Средняя загрузка CPU:</b> $1 (1 мин) , $2 (5 мин) , $3 (15 мин)
+
+pid=PID
+owner=Владелец
+command=Command
+cpu=CPU
+size=Размер
+parent=Родительский процесс
+runtime=Время выполнения
+nice=Приоритет (nice)
+
+search_user=Владелец
+search_match=Имя
+search_cpupc=Загружающий CPU более, чем на $1%
+search_fs=Использующий файловую систему
+search_files=Использующий файл
+search_submit=Искать
+search_none=Процессов, соответствующих критерию поиска, не найдено.
+search_kill=Послать сигнал
+search_ignore=Пропускать процессы, выполняющие поиск
+search_return=к поиску
+search_sigterm=Завершить процесс
+search_sigkill=Снять процесс
+search_port=Использующий порт
+search_protocol=протокол
+
+run_command=Команда для выполнения
+run_submit=Выполнить
+run_mode=Режим выполнения
+run_bg=В фоновом режиме
+run_fg=Ожидать завершения
+run_input=Стандартный поток ввода для команды
+run_title=Вывод команды
+run_output=Вывод от $1 ..
+run_none=Команда ничего не вывела
+run_ecannot=У вас недостаточно прав для выполнения команд
+
+edit_title=Информация о процессе
+edit_gone=Процесс более не выполняется
+edit_sub=Дочерние процессы
+edit_kill=Послать сигнал
+edit_change=Изменить
+edit_prilow=Низкий приоритет
+edit_prihigh=Высоки приоритет
+edit_pridef=По умолчанию
+edit_none=Нет
+edit_ecannot=У вас недостаточно прав для изменения процессов
+edit_sigterm=Завершить процесс
+edit_sigkill=Снять процесс
+edit_open=Файлы и соединения
+
+kill_err=Не удалось послать сигнал $1 процессу $2
+kill_title=Посылка сигнал
+kill_sent=послан
+kill_ecannot=У вас недостаточно прав для снятия процесса
+
+renice_err=Не удалось изменить приоритет процесса $1
+renice_ecannot=У вас недостаточно прав для изменения приоритета процессов
+
+linux_pri=Приоритет
+linux_tty=TTY (терминал)
+linux_status=Состояние
+linux_wchan=Ожидание
+linux_mem=Память
+linux_group=Группа
+linux_ruser=Реальный пользователь
+linux_rgroup=Реальная группа
+linux_pgid=ID группы процессов
+
+linuxstat_R=Выполняется
+linuxstat_S=Спит (ожидает)
+linuxstat_D=Глубоко спит
+linuxstat_T=Приостановлен
+linuxstat_Z=Зомби
+
+freebsd_ruser=Реальный пользователь
+freebsd_rgroup=Реальная группа
+freebsd_tty=TTY (терминал)
+freebsd_pgid=Группа процессов
+freebsd_lstart=Время запуска
+freebsd_lim=Ограничение памяти
+
+hpux_pri=Приоритет
+hpux_tty=TTY (терминал)
+hpux_status=Состояние
+hpux_wchan=Ожидание
+
+hpuxstat_0=Не существует
+hpuxstat_S=Спит
+hpuxstat_W=Ожидает
+hpuxstat_R=Выполняется
+hpuxstat_I=Промежуточное
+hpuxstat_Z=Зомби
+hpuxstat_T=Приостановлен
+hpuxstat_G=Растет
+
+macos_tty=TTY (терминал)
+
+sysv_group=Группа
+sysv_ruser=Реальный пользователь
+sysv_rgroup=Реальная группа
+sysv_pgid=ID группы процессов
+sysv_tty=TTY (терминал)
+
+log_run=Выполнена команда "$1"
+log_kill=Процессу $2 послан сигнал $1
+log_kills=Посылка сигнала $1 процессам $2
+log_kill_l=Процессам $2 послан сигнал $1
+log_kills_l=Сигнал $1 послан процессам<br>$2
+
+acl_manage=Управлять процессами под именем 
+acl_manage_def=Текущего пользователя Webmin
+acl_edit=Может снимать процессы и менять их приоритет?
+acl_run=Может выполнять команды?
+
+kill_kill=Снять процесс
+kill_term=&nbsp;Завершить&nbsp;&nbsp;
+kill_hup=&nbsp;&nbsp;Перезапустить&nbsp;&nbsp;&nbsp;
+kill_stop=&nbsp;&nbsp;&nbsp;&nbsp;Приостановить&nbsp;&nbsp;&nbsp;&nbsp;
+kill_cont=&nbsp;&nbsp;Возобновить&nbsp;&nbsp;
+
+open_title=Открытые файлы и соединения
+open_proc=Для процесса $1 (PID $2)
+open_header1=Открытые файлы
+open_header2=Открытые сетевые соединения
+open_type=Тип
+open_proto=Протокол
+open_desc=Подробности
+open_fd=Файловый дескриптор
+open_listen1=Слушает порт $1
+open_listen2=Слушает порт $2 по адресу $1
+open_recv=Принимает $1:$2
+open_conn=Установлено соединение от $1 к $2, состояние $3
+open_cwd=Текущий каталог
+open_rtd=Корневой каталог
+open_txt=Код программы
+open_mem=Разделяемая библиотека
+open_dir=Каталог
+open_reg=Обычный файл
+open_chr=Символьное устройство
+open_blk=Блочное устройство
+open_size=Размер файла
+open_inode=Inode
+open_file=Путь
+
