@@ -1,0 +1,13 @@
+start_cmd=Команда для запуска серверов Samba,3,None
+samba_server=Полный путь к smbd,0
+samba_status_program=Полный путь к smbstatus,0
+name_server=Полный путь к nmbd,0
+smb_passwd=Расположение файла паролей Samba,3
+line1=Настраиваемые параметры,11
+line2=Системные параметры,11
+stop_cmd=Команда для остановки серверов Samba,3,None
+swat_path=Полный путь к swat,3,None
+samba_password_program=Полный путь к smbpasswd,0
+sort_mode=Упорядочить пользователей и группы по имени,1,1-Да,0-Нет
+smb_conf=Расположение файла настроек Samba,0
+dont_convert=Список пользователей Unix, не включаемых в список паролей samba,0
