@@ -1,0 +1,47 @@
+inittab_title=Процесс инициализации SySV
+inittab_new=Создать новый процесс
+inittab_id=Имя
+inittab_active=Включен?
+inittab_runlevels=Режим работы
+inittab_action=Действие
+inittab_process=Процесс
+inittab_none=Нет
+inittab_respawn=Перезапускать
+inittab_wait=Ожидать завершения
+inittab_once=Один раз при входе в режим
+inittab_boot=При загрузке
+inittab_bootwait=При загрузке, ожидать завершения
+inittab_off=Ничего не делать
+inittab_ondemand=По требованию (режимы запуска A, B и C)
+inittab_initdefault=Задает режим работы системы по умолчанию
+inittab_sysinit=При загрузке системы
+inittab_powerwait=При потере питания
+inittab_powerfail=При потере питания, без ожидания
+inittab_powerokwait=При восстановлении питания
+inittab_powerfailnow=При полной потере питания
+inittab_ctrlaltdel=Ctrl-Alt-Del
+inittab_kbdrequest=Специальная комбинация клавиш
+inittab_return=списку процессов
+inittab_apply=Применить изменения
+inittab_applymsg=Нажатие на эту кнопку приведет к выполнению команды <tt>telinit q</tt>, после чего сделанные изменения вступят в действие. Помните о том, что после выполнения этой команды, ошибки в настройке могут перевести систему в неработоспособное состояние.
+
+edit_inittab_err=У вас недостаточно прав для изменения процесса
+edit_inittab_title=Изменение процесса $1
+edit_inittab_details=Подробная информация о процессе
+edit_inittab_del=Удалить
+edit_inittab_save=Сохранить
+
+new_inittab_err=У вас недостаточно прав для создания процесса
+new_inittab_title=Новый процесс
+
+save_inittab_err=У вас недостаточно прав для сохранения процесса
+save_inittab_noid=Ошибка, не указано имя процесса
+save_inittab_already=Ошибка, процесс с таким именем уже существует
+
+log_modify=Процесс init $1 изменен
+log_rename=Процесс init  $1 переименован в $2
+log_create=Создан процесс init $1
+log_delete=Удален процесс init $1
+log_apply=Изменения применены
+
+apply_err=Не удалось применить изменения
