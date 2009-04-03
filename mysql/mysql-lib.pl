@@ -648,7 +648,22 @@ else {
 # Returns 1 if passing the password via an environment variable is supported
 sub supports_env_pass
 {
-return $mysql_version >= 4.1 && !$config{'nopwd'};
+if ($mysql_version >= 4.1 && !$config{'nopwd'}) {
+	# Theortically possible .. but don't do this if ~/.my.cnf contains
+	# a [client] block with password= in it
+	my @uinfo = getpwuid($<);
+	foreach my $cf ($config{'my_cnf'}, "$uinfo[7]/.my.cnf",
+			"$ENV{'HOME'}/.my.cnf") {
+		next if (!$cf || !-r $cf);
+		local @cf = &parse_mysql_config($cf);
+		local $client = &find("client", \@cf);
+		next if (!$client);
+		local $password = &find("password", $client->{'members'});
+		return 0 if ($password ne '');
+		}
+	return 1;
+	}
+return 0;
 }
 
 # working_env_pass()
@@ -945,41 +960,57 @@ return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
 sub get_mysql_config
 {
 if (!defined(@mysql_config_cache)) {
-	local $sect;
-	local $lnum = 0;
-	open(CONF, $config{'my_cnf'}) || return undef;
-	while(<CONF>) {
-		s/\r|\n//g;
-		s/#.*$//;
-		s/\s+$//;
-		if (/^\s*\[(\S+)\]$/) {
-			# Start of a section
-			$sect = { 'name' => $1,
-				  'members' => [ ],
-				  'line' => $lnum,
-				  'eline' => $lnum };
-			push(@mysql_config_cache, $sect);
-			}
-		elsif (/^\s*(\S+)\s*=\s*(.*)$/ && $sect) {
-			# Variable in a section
-			push(@{$sect->{'members'}},
-			     { 'name' => $1,
-			       'value' => $2,
-			       'line' => $lnum });
-			$sect->{'eline'} = $lnum;
-			}
-		elsif (/^\s*(\S+)$/ && $sect) {
-			# Single directive in a section
-			push(@{$sect->{'members'}},
-			     { 'name' => $1,
-			       'line' => $lnum });
-			$sect->{'eline'} = $lnum;
-			}
-		$lnum++;
+	if (!-r $config{'my_cnf'}) {
+		return undef;
 		}
-	close(CONF);
+	@mysql_config_cache = &parse_mysql_config($config{'my_cnf'});
 	}
 return \@mysql_config_cache;
+}
+
+# parse_mysql_config(file)
+# Reads one MySQL config file
+sub parse_mysql_config
+{
+local ($file) = @_;
+local @rv;
+local $sect;
+local $lnum = 0;
+local $lref = &read_file_lines($file, 1);
+local $_;
+foreach (@$lref) {
+	s/\r|\n//g;
+	s/#.*$//;
+	s/\s+$//;
+	if (/^\s*\[(\S+)\]$/) {
+		# Start of a section
+		$sect = { 'name' => $1,
+			  'members' => [ ],
+			  'file' => $file,
+			  'line' => $lnum,
+			  'eline' => $lnum };
+		push(@rv, $sect);
+		}
+	elsif (/^\s*(\S+)\s*=\s*(.*)$/ && $sect) {
+		# Variable in a section
+		push(@{$sect->{'members'}},
+		     { 'name' => $1,
+		       'value' => $2,
+		       'file' => $file,
+		       'line' => $lnum });
+		$sect->{'eline'} = $lnum;
+		}
+	elsif (/^\s*(\S+)$/ && $sect) {
+		# Single directive in a section
+		push(@{$sect->{'members'}},
+		     { 'name' => $1,
+		       'file' => $file,
+		       'line' => $lnum });
+		$sect->{'eline'} = $lnum;
+		}
+	$lnum++;
+	}
+return @rv;
 }
 
 # find(name, &conf)

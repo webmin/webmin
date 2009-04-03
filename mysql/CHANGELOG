@@ -81,3 +81,5 @@ The password is passed to all MySQL commands using the MYSQL_PWD environment var
 ---- Changes since 1.450 ----
 Use DBI for listing databases and tables, to reduce dependency on the un-reliable MYSQL_PWD environment variable.
 Fixed the input for setting the default value for fields.
+---- Changes since 1.470 ----
+Added code to detect a password in /root/.my.cnf which overrides the MYSQL_PWD variable, and thus causes login failures.
