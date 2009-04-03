@@ -1,0 +1,74 @@
+index_title=Документация по системе
+index_header=Поиск документации по системе
+index_for=Что искать
+index_where=Где искать
+index_alldoc=Вся документация
+index_man=Страницы руководства
+index_doc=Документация пакетов
+index_kernel=Документация ядра
+index_info=Страницы info
+index_howto=Документы HOWTO
+index_kde=Документация KDE
+index_perl=Документация модулей Perl
+index_custom=Дополнительная документация
+index_help=Справка Webmin
+index_reset=Сбросить
+index_search=Искать
+index_return=к поиску
+index_type=Совпадение
+index_name=Только названия
+index_data=Названия и содержания
+index_google=Системе поиска Google
+index_others=При поиске документации из другого модуля позволять искать в ..
+index_other_man=Страницах руководства
+index_other_help=Справке Webmin
+index_other_doc=Документации пакетов
+index_other_kernel=Документации ядра
+index_other_howto=Документах HOWTO
+index_other_perl=Документации модулей Perl
+index_other_google=В системе поиска Google
+index_other_kde=Документации KDE
+index_and=Полное совпадение
+index_or=Совпадение любой из частей
+
+search_efor=Не указана искомая страница руководства
+search_title=Результаты поиска
+search_desc=Описание
+search_type=Тип
+search_file=Страница или файл
+search_man=Страница руководства
+search_howto=Документ HOWTO
+search_doc=Документация пакета
+search_kernel=Документация ядра
+search_kde=Документация KDE
+search_perl=Модуль Perl
+search_help=Справка Webmin
+search_custom=Дополнительная документация
+search_none=Документа, соответствующего $1 не найдено.
+search_for=$1
+search_google=Результат поиска в Google
+
+howto_title=Документ HOWTO
+howto_header=Файл документа HOWTO $1
+howto_epath=Неверный путь к документам HOWTO
+
+doc_title=Документация пакета
+doc_header=Файл документации пакета $1
+doc_epath=Неверный путь к документации пакетов
+
+man_title=Страница руководства
+man_header=Страница руководства по $1($2)
+man_noentry=Страницы руководства по $1 не существует!
+
+kernel_title=Документация ядра
+kernel_header=Файл документации ядра $1
+kernel_epath=Неверный путь к документации ядра
+
+kde_title=Документация KDE
+kde_header=Файл документации KDE $1
+kde_epath=Неверный путь к документации KDE
+
+perl_title=Модуль Perl
+perl_header=Документация к модулю $1 Perl
+perl_emod=Неверное имя модуля Perl
+
