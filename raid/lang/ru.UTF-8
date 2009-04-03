@@ -1,0 +1,77 @@
+index_title=Linux RAID
+index_none=Устройства RAID не настроены.
+index_add=Создать устройство RAID:
+index_return=устройствам RAID
+index_emdstat=Файл состояния RAID ядра $1 в вашей системе не обнаружен. Возможно ваше ядро не поддерживает RAID.
+index_emkraid=Пакет с утилитами RAID в вашей системе не установлен.
+
+linear=Сцепленный (линейный)
+raid0=Разнесенный (RAID0)
+raid1=Зеркалированный (RAID1)
+raid4=С контрольными суммами (RAID4)
+raid5=C резервированием (RAID5)
+
+create_title=Создание устройства RAID
+create_header=Настройка устройства RAID
+create_device=Файл устройства
+create_level=Уровень RAID
+create_disks=Разделов в RAID
+create_spares=Резервные разделы
+create_pdisk=Раздел с контрольными суммами
+create_pauto=Автоматически
+create_nodisks=Нет свободных разделов для создания RAID.
+create_super=Постоянный суперблок?
+create_parity=Алгоритм контрольной суммы
+create_chunk=Размер частей
+create_force=Принудительная инициализация RAID?
+create_rdev=Устройство RAID $1
+create_lvm=LVM ГТ $1, ЛТ $2
+create_err=Не удалось создать RAID
+create_edisks=Не выбраны разделы
+create_edisks2=Для зеркалирования должно быть выбрано хотя бы 2 раздела
+create_espare=Резервный раздел $1 не могут быть также и разделом RAID
+create_epdisk=Разделы с контрольной суммами не может быть также и разделом RAID
+
+view_title=Устройство RAID
+view_header=Настройка устройства RAID
+view_device=Файл устройства
+view_level=Уровень RAID
+view_status=Состояние
+view_mounted=Включен и подмонтирован к $1
+view_mount=Настроен для монтирования к $1
+view_lvm=Включен и используется в ГТ LVM $1
+view_active=Включен
+view_inactive=Выключен
+view_super=Постоянный суперблок?
+view_parity=Алгоритм контрольной суммы
+view_chunk=Размер частей
+view_stop=Отключить
+view_start=Включить
+view_disks=Разделы в RAID
+view_spares=Резервные разделы
+view_size=Полезный размер
+view_resync=Выполненный процент синхронизации
+view_down=(Down)
+view_cannot=Это устройство RAID не может быть изменено, так как в данный момент оно подмонтировано.
+view_mkfs2=Создать файловую систему:
+view_mkfsdesc=Выберите тип файловой системы и нажмите на эту кнопку для создания файловой системы на этом логическом томе. Это приведет к стиранию всех существующих в данный момент на томе данных.
+
+mkfs_title=Создание файловой системы
+mkfs_header2=Вы можете создать на $1 новую файловую систему $2. <b>Все</b> существующие данные будут стерты!
+mkfs_options=Настройка новой файловой системы Linux
+mkfs_err=Не удалось создать новую файловую систему
+mkfs_exec=Выполнение команды $1 ..
+mkfs_failed=.. произошла ошибка!
+mkfs_ok=.. команда успешно выполнена.
+
+emkraid=Ошибка <tt>mkraid</tt> : $1
+eraidstop=Ошибка <tt>raidstop</tt> : $1
+eraidstart=Ошибка <tt>raidstart</tt> : $1
+eforce=Необходимо принудительно проинициализировать этот RAID : $1
+
+log_create=Создано $1 устройство RAID $2
+log_stop=Устройство RAID $1 отключено
+log_start=Устройство RAID $1 включено
+log_delete=Устройство RAID $1 удалено
+log_mkfs=На $2 создана файловая система $1
+
