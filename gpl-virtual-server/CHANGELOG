@@ -561,3 +561,4 @@ Added the --random-pass flag to create-user.pl, to generate a password randomly.
 Added a Module Config option to disallow switching to Usermin as a mailbox user by domain owners.
 ---- Changes since 3.67 ----
 Added the SSH server status to the System Information page, including the ability to stop and start it.
+Added a Module Config option to control if default features come from plan or Features and Plugins page.
