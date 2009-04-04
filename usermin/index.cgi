@@ -43,6 +43,7 @@ $ver = &get_usermin_version();
 	&help_search_link("usermin", "google"), undef, undef,
 	&text('index_version', $ver));
 
+&get_usermin_miniserv_config(\%miniserv);
 @links = ( "edit_access.cgi",
 	   "edit_bind.cgi",
 	   "edit_ui.cgi",
@@ -65,7 +66,7 @@ $ver = &get_usermin_version();
 			         "edit_defacl.cgi" ),
 	   $ver < 1.164 ? ( ) : ( "edit_logout.cgi" ),
 	   $ver < 1.181 ? ( ) : ( "edit_dav.cgi" ),
-	   "list_sessions.cgi",
+	   $miniserv{'session'} ? ( "list_sessions.cgi" ) : ( ),
 	   "edit_blocked.cgi",
 	   "edit_mobile.cgi",
 	   "edit_advanced.cgi" );
