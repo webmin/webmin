@@ -30,3 +30,4 @@ syslog=1
 desc_ko_KR.UTF-8=Webmin 구성
 desc_it=Configurazione di Webmin
 desc_cz=Konfigurace Webminu
+desc_ru.UTF-8=Настройка Webmin
