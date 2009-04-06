@@ -5,4 +5,4 @@ index_hosts=Tots els canvis de contrasenya fets emprant aquest mòdul es faran a 
 passwd_err=No he pogut canviar la contrasenya
 passwd_title=Canviant la Contrasenya
 passwd_on=Canviant la contrasenya a $1...
-
+passwd_euser=L'usuari no existeix!
