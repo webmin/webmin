@@ -11,4 +11,3 @@ snmp_community=SNMP 커뮤니티,0
 columns=서비스 테이블 컬럼,1,2-2,1-1
 subject_mode=이메일 제목 방식,1,0-새 스타일,1-이전 스타일
 index_status=리스트 출력 상태,1,1-현재 상태,0-최종 검사
-def_tmpl=
