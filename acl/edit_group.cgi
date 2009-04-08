@@ -114,7 +114,7 @@ print &ui_hidden_table_end("mods");
 if ($access{'acl'} && $in{'group'}) {
 	print &ui_hidden_table_start($text{'edit_global'}, "width=100%", 2,
 				     "global", 0, [ "width=30%" ]);
-	%uaccess = &get_module_acl($in{'group'}, "", 1);
+	%uaccess = &get_group_module_acl($in{'group'}, "");
 	print &ui_hidden("acl_security_form", 1);
 	&foreign_require("", "acl_security.pl");
 	&foreign_call("", "acl_security_form", \%uaccess);
