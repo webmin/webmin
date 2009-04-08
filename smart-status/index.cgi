@@ -100,8 +100,9 @@ print &ui_table_end();
 
 # Show extra attributes
 if ($config{'attribs'} && @{$st->{'attribs'}}) {
+	$attrs_count++;
 	print &ui_hidden_table_start($text{'index_attrs'}, "width=100%", 2,
-				     "attrs", 1, [ "width=30%" ]);
+				     "attrs".$attrs_count, 1, [ "width=30%" ]);
 	foreach my $a (@{$st->{'attribs'}}) {
 		next if ($a->[0] =~ /UDMA CRC Error Count/i); # too long
 		print &ui_table_row($a->[0],
