@@ -37,7 +37,7 @@ local @rv;
 local %tcount = ( "/dev/twe", 0, "/dev/twa", 0 );
 foreach my $d (&fdisk::list_disks_partitions()) {
 	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
-	    $d->{'model'} =~ /3ware/i) {
+	    $d->{'model'} =~ /3ware|amcc/i) {
 		# Actually a 3ware RAID device .. but we want to probe the
 		# underlying real disks, so add fake devices for them
 		foreach my $twdev (keys %tcount) {
