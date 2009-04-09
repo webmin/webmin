@@ -21,3 +21,4 @@ desc_ko_KR.UTF-8= GRUB 부트 로더
 desc_fr=GRUB - Gestionnaire de d&#233;marrage
 desc_cz=Zavad�� syst�mu GRUB
 desc_it=Boot loader GRUB
+desc_ru.UTF-8=Загрузчик Linux (GRUB)
