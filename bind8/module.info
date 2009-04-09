@@ -29,3 +29,4 @@ desc_ja_JP.UTF-8=BIND DNS サーバ
 desc_ko_KR.UTF-8=BIND DNS 서버 
 desc_cz=DNS BIND Server
 desc_nl=BIND DNS-server
+desc_ru.UTF-8=Сервер DNS BIND
