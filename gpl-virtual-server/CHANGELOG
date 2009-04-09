@@ -564,3 +564,4 @@ Added the SSH server status to the System Information page, including the abilit
 Added a Module Config option to control if default features come from plan or Features and Plugins page.
 Added the --no-alias flag to list-domains.pl, to show non-alias domains.
 Made the Website Options page available to domain owners, although only with limited fields available.
+When creating a sub-server that is a sub-domain of it's parent, DNS records for the new domain will be added to the parent's zone.
