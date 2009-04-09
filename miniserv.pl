@@ -3944,7 +3944,7 @@ my %vital = ("port", 80,
 	  "maxconns", 50,
 	  "pam", "webmin",
 	  "sidname", "sid",
-	  "unauth", "^/unauthenticated/ ^[A-Za-z0-9\\-/]+\\.jar\$ ^[A-Za-z0-9\\-/]+\\.class\$ ^[A-Za-z0-9\\-/]+\\.gif\$ ^[A-Za-z0-9\\-/]+\\.conf\$ ^[A-Za-z0-9\\-/]+\\.ico\$",
+	  "unauth", "^/unauthenticated/ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$",
 	  "max_post", 10000,
 	  "expires", 7*24*60*60,
 	 );
