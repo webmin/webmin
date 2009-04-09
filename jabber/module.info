@@ -11,3 +11,4 @@ cpan=1
 os_support=!windows
 desc_cz=Jabber IM server
 desc_nl=Jabber IM Server
+desc_ru.UTF-8=Сервер сообщений Jabber
