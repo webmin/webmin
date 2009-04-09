@@ -26,3 +26,4 @@ desc_zh_CN.UTF-8=Linux 启动管理
 desc_ja_JP.UTF-8=Linux の起動設定
 desc_ko_KR.UTF-8=리눅스 부트 구성 
 desc_nl=Linux Bootup Configuratie
+desc_ru.UTF-8=Загрузчик Linux (LILO)
