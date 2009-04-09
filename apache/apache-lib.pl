@@ -394,10 +394,9 @@ return ( ) if ($seen && $seen->{$file}++);
 local @rv;
 if (opendir(DIR, $file)) {
 	# Is a directory .. parse all files!
-	local $f;
 	local @files = readdir(DIR);
 	closedir(DIR);
-	foreach $f (@files) {
+	foreach my $f (sort { $a cmp $b } @files) {
 		next if ($f =~ /^\./);
 		push(@rv, &get_config_file("$file/$f"));
 		}
