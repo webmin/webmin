@@ -29,3 +29,4 @@ desc_ko_KR.UTF-8=사용자 및 그룹
 cpan=1
 library=user-lib.pl
 desc_da=Brugere og grupper
+desc_ru.UTF-8=Пользователи и группы
