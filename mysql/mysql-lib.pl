@@ -895,7 +895,9 @@ local $authstr = &make_authstr($user, $pass);
 local $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." <".quotemeta($file);
 -r $file || return (1, "$file does not exist");
 local $out = &backquote_logged("$cmd 2>&1");
-return ($?, $? ? $out || "$cmd failed" : $out);
+local @rv = ($?, $? ? $out || "$cmd failed" : $out);
+&make_authstr();	# Put back old password environment variable
+return @rv;
 }
 
 # start_mysql()
