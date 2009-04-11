@@ -565,3 +565,4 @@ Added a Module Config option to control if default features come from plan or Fe
 Added the --no-alias flag to list-domains.pl, to show non-alias domains.
 Made the Website Options page available to domain owners, although only with limited fields available.
 When creating a sub-server that is a sub-domain of it's parent, DNS records for the new domain will be added to the parent's zone.
+Parent virtual server details are now available in sub-server post-creation scripts in the $PARENT_VIRTUALSERVER_ environment variables.
