@@ -3,14 +3,18 @@ mail_system=Mail server to configure,4,1-Sendmail,0-Postfix,2-Qmail,4-Qmail+LDAP
 generics=Also update outgoing addresses for mailboxes?,1,1-Yes,0-No
 bccs=Allow automatic BCCing of outgoing email?,1,1-Yes,0-No
 quotas=Quota setup for domain and mail users?,1,1-Yes (if enabled),0-No
-iface=Network interface for virtual addresses,3,Detect automatically
-defip=Default virtual server IP address,3,From network interface
-dns_ip=Default IP address for DNS records,10,*-Automatically detect external address,-Same as virtual server IP,Other address
 disable=Features to deactivate when disabling,13,unix-Unix user (lock account),mail-Mail (stop accepting email for domain),web-Website (replace site with error page),dns-DNS (stop serving domain),mysql-MySQL (disallow login by MySQL user),postgres-PostgreSQL (disallow login by PostgreSQL user),ftp-ProFTPD (deny access)
 ldap=Store users and groups,1,1-In LDAP database,0-In local files
 mysql_replicas=Additional MySQL servers to create users on,3,Just this system
 preload_mode=Preload Virtualmin libraries at startup?,1,2-All libraries,1-Only core,0-No
 scriptwarn_url=Virtualmin URL for use in email messages,3,Work out automatically
+
+line1.3=Networking settings,11
+iface=Network interface for virtual addresses,3,Detect automatically
+defip=Default virtual server IP address,3,From network interface
+dns_ip=Default IP address for DNS records,10,*-Automatically detect external address,-Same as virtual server IP,Other address
+iface6=Network interface for IPv6 addresses,3,Same as IPv4
+netmask6=Netmask size for IPv6 addresses,3,Default (64)
 
 line1.4=User interface settings,11
 display_max=Maximum number of domains to display,3,Unlimited
