@@ -396,6 +396,7 @@ recs_KEY=Public Key
 recs_delete=Delete Selected
 
 value_A1=Address
+value_AAAA1=IPv6 Address
 value_NS1=Name Server
 value_CNAME1=Real Name
 value_MX1=Priority
