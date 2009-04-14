@@ -1565,7 +1565,7 @@ elsif ($_[1]->{'type'} == 4) {
 	local $text = &read_file_contents($temp);
 	unlink($temp);
 	$text =~ s/^From.*\r?\n//;	# Not part of IMAP format
-	@rv = &imap_command($h, sprintf "APPEND %s {%d}\r\n%s",
+	@rv = &imap_command($h, sprintf "APPEND \"%s\" {%d}\r\n%s",
 			$_[1]->{'mailbox'} || "INBOX", length($text), $text);
 	&error(&text('save_eappend', $rv[3])) if (!$rv[0]); 
 	$needid = 1;
@@ -1944,7 +1944,7 @@ if (!$h) {
 	}
 
 # Select the right folder (if one was given)
-@rv = &imap_command($h, "select ".($_[0]->{'mailbox'} || "INBOX"));
+@rv = &imap_command($h, "select \"".($_[0]->{'mailbox'} || "INBOX")."\"");
 return (3, $rv[3]) if (!$rv[0]);
 local $count = $rv[2] =~ /\*\s+(\d+)\s+EXISTS/i ? $1 : undef;
 local $uidnext = $rv[2] =~ /UIDNEXT\s+(\d+)/ ? $1 : undef;
