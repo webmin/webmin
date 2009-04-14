@@ -4662,17 +4662,18 @@ if ($gconfig{'logsyslog'}) {
 					$params{$k} = $v;
 					}
 				}
-			$msg = &parse_webmin_log($remote_user, $script_name,
-						 $_[0], $_[1], $_[2], \%params);
-			$msg =~ s/<[^>]*>//g;	# Remove tags
+			if (defined(&parse_webmin_log)) {
+				$msg = &parse_webmin_log(
+					$remote_user, $script_name,
+					$_[0], $_[1], $_[2], \%params);
+				$msg =~ s/<[^>]*>//g;	# Remove tags
+				}
 			}
 		elsif ($_[0] eq "_config_") {
 			my %wtext = &load_language("webminlog");
 			$msg = $wtext{'search_config'};
 			}
-		else {
-			$msg = "$_[0] $_[1] $_[2]";
-			}
+		$msg ||= "$_[0] $_[1] $_[2]";
 		my %info = &get_module_info($m);
 		eval { syslog("info", "%s", "[$info{'desc'}] $msg"); };
 		}
