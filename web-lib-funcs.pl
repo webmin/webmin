@@ -4650,8 +4650,10 @@ if ($gconfig{'logsyslog'}) {
 		# Syslog module is installed .. try to convert to a
 		# human-readable form
 		my $msg;
-		if (-r "$module_root_directory/log_parser.pl") {
-			do "$module_root_directory/log_parser.pl";
+		my $mod = &get_module_name();
+		my $mdir = module_root_directory($mod);
+		if (-r "$mdir/log_parser.pl") {
+			&foreign_require($mod, "log_parser.pl");
 			my %params;
 			foreach my $k (keys %{$_[3]}) {
 				my $v = $_[3]->{$k};
@@ -4662,12 +4664,10 @@ if ($gconfig{'logsyslog'}) {
 					$params{$k} = $v;
 					}
 				}
-			if (defined(&parse_webmin_log)) {
-				$msg = &parse_webmin_log(
-					$remote_user, $script_name,
-					$_[0], $_[1], $_[2], \%params);
-				$msg =~ s/<[^>]*>//g;	# Remove tags
-				}
+			$msg = &foreign_call($mod, "parse_webmin_log",
+				$remote_user, $script_name,
+				$_[0], $_[1], $_[2], \%params);
+			$msg =~ s/<[^>]*>//g;	# Remove tags
 			}
 		elsif ($_[0] eq "_config_") {
 			my %wtext = &load_language("webminlog");
