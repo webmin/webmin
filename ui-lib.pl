@@ -2073,7 +2073,7 @@ if (defined($title)) {
 return $rv;
 }
 
-=head2 ui_radio_table(name, selected, &rows)
+=head2 ui_radio_table(name, selected, &rows, [no-bold])
 
 Returns HTML for a table of radio buttons, each of which has a label and
 some associated inputs to the right. The parameters are :
@@ -2084,19 +2084,22 @@ some associated inputs to the right. The parameters are :
 
 =item rows - Array ref of array refs, one per button. The elements of each are the value for this option, a label, and option additional HTML to appear next to it.
 
+=item no-bold - When set to 1, labels in the table will not be bolded
+
 =cut
 sub ui_radio_table
 {
 return &theme_ui_radio_table(@_) if (defined(&theme_ui_radio_table));
-my ($name, $sel, $rows) = @_;
+my ($name, $sel, $rows, $nobold) = @_;
 return "" if (!@$rows);
 my $rv = "<table class='ui_radio_table'>\n";
 foreach my $r (@$rows) {
 	$rv .= "<tr>\n";
-	$rv .= "<td valign=top".(defined($r->[2]) ? "" : " colspan=2").
-	       "><b>".
+	$rv .= "<td valign=top".(defined($r->[2]) ? "" : " colspan=2").">".
+	       ($nobold ? "" : "<b>").
 	       &ui_oneradio($name, $r->[0], $r->[1], $r->[0] eq $sel).
-	       "</b></td>\n";
+	       ($nobold ? "" : "</b>").
+	       "</td>\n";
 	if (defined($r->[2])) {
 		$rv .= "<td valign=top>".$r->[2]."</td>\n";
 		}
