@@ -405,6 +405,7 @@ else {
 foreach $m (@newmods) {
 	next if (!-r &module_root_directory($m)."/postinstall.pl");
 	eval {
+		local $main::error_must_die = 1;
 		&foreign_require($m, "postinstall.pl");
 		&foreign_call($m, "module_install");
 		};
