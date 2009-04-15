@@ -354,6 +354,7 @@ else {
 	while(<RESOLV>) {
 		s/\r|\n//g;
 		s/#.*$//;
+		s/;.*$//;
 		if (/nameserver\s+(.*)/) {
 			push(@{$dns->{'nameserver'}}, split(/\s+/, $1));
 			}
