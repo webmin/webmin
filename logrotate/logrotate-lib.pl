@@ -84,7 +84,11 @@ while(<$fh>) {
 			local @dirs = sort { $a cmp $b } readdir(DIR);
 			closedir(DIR);
 			foreach $f (@dirs) {
-				next if ($f =~ /^\./ || $f =~ /\.rpmsave$/ ||
+				next if ($f =~ /^\./ ||
+					 $f =~ /\.rpm(save|orig|new)$/ ||
+					 $f =~ /\~$/ ||
+					 $f =~ /,v$/ ||
+					 $f =~ /\.swp$/ ||
 					 $f =~ /\.lock$/);
 				local ($inc, $ilnum, $ifiles) =
 					&get_config("$incfile/$f");
