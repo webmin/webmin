@@ -100,6 +100,11 @@ if ($groups) {
 		    &ui_textbox("gcannot",
 			$_[0]->{'gmode'} == 2 ? $_[0]->{'groups'} : "", 40)." ".
 		    &group_chooser_button("gcannot", 1) ],
+		  [ 4, $text{'acl_ggid'},
+		    &ui_textbox("gmin",
+			$_[0]->{'gmode'} == 4 ? $_[0]->{'gmin'} : "", 6)." - ".
+		    &ui_textbox("gmax",
+			$_[0]->{'gmode'} == 4 ? $_[0]->{'gmax'} : "", 6) ]
 		]), 3);
 	}
 }
@@ -124,7 +129,10 @@ $_[0]->{'umin'} = $in{'umin'};
 $_[0]->{'umax'} = $in{'umax'};
 $_[0]->{'gmode'} = $in{'gmode'};
 $_[0]->{'groups'} = $in{'gmode'} == 0 ? "" :
-		    $in{'gmode'} == 1 ? $in{'gcan'} : $in{'gcannot'};
+		    $in{'gmode'} == 1 ? $in{'gcan'} :
+		    $in{'gmode'} == 2 ? $in{'gcannot'} : "";
+$_[0]->{'gmin'} = $in{'gmin'};
+$_[0]->{'gmax'} = $in{'gmax'};
 $_[0]->{'enable'} = $in{'enable'};
 $_[0]->{'default'} = $in{'default'};
 $_[0]->{'email'} = $in{'email'};

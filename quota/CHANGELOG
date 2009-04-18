@@ -37,3 +37,5 @@ Email to users and groups who are over quota on some filesystem can also be Cc'd
 ---- Changes since 1.440 ----
 Converted all pages to use the new Webmin UI library, for a more consistent look. Also split the Filesystem Quotas page into tabs.
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.480 ----
+Added a module access control option to restrict allowed groups by GID range.

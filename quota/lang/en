@@ -20,6 +20,7 @@ acl_gnone= No groups
 acl_gonly= Only groups
 acl_gexcept= All except groups
 acl_uuid=Users with UID in range
+acl_ggid=Groups with GID in range
 acl_maxblocks=Maximum grantable block quota
 acl_maxfiles=Maximum grantable file quota
 acl_unlimited=Unlimited

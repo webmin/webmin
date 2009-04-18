@@ -409,8 +409,7 @@ elsif ($access{'umode'} == 4) {
 	       (!$access{'umax'} || $u[2] <= $access{'umax'});
 	}
 else {
-	local ($u, %ucan);
-	map { $ucan{$_}++ } split(/\s+/, $access{'users'});
+	local %ucan = map { $_, 1 } split(/\s+/, $access{'users'});
 	return $access{'umode'} == 1 && $ucan{$_[0]} ||
 	       $access{'umode'} == 2 && !$ucan{$_[0]};
 	}
@@ -423,12 +422,22 @@ Returns 1 if the current Webmin user can manage quotas for some Unix group.
 =cut
 sub can_edit_group
 {
-return 1 if ($access{'gmode'} == 0);
-return 0 if ($access{'gmode'} == 3);
-local ($g, %gcan);
-map { $gcan{$_}++ } split(/\s+/, $access{'groups'});
-return $access{'gmode'} == 1 && $gcan{$_[0]} ||
-       $access{'gmode'} == 2 && !$gcan{$_[0]};
+if ($access{'gmode'} == 0) {
+	return 1;
+	}
+elsif ($access{'gmode'} == 3) {
+	return 0;
+	}
+elsif ($access{'gmode'} == 4) {
+	local @g = getgrnam($_[0]);
+	return (!$access{'gmin'} || $g[2] >= $access{'gmin'}) &&
+	       (!$access{'gmax'} || $g[2] <= $access{'gmax'});
+	}
+else {
+	local %gcan = map { $_, 1 } split(/\s+/, $access{'groups'});
+	return $access{'gmode'} == 1 && $gcan{$_[0]} ||
+	       $access{'gmode'} == 2 && !$gcan{$_[0]};
+	}
 }
 
 =head2 filesystem_info(filesystem, &hash, count, [blocksize])
