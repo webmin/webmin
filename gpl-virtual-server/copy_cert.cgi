@@ -1,0 +1,1 @@
+../virtual-server/copy_cert.cgi
