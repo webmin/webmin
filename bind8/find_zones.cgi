@@ -66,7 +66,9 @@ if ($len) {
 		print &ui_grid_table(\@grid, 2, 100,
 				     [ "width=50%", "width=50%" ]);
 		print &ui_links_row(\@links);
-		print &ui_form_end([ [ "delete", $text{'index_massdelete'} ] ]);
+		print &ui_form_end([ [ "delete", $text{'index_massdelete'} ],
+				     [ "update", $text{'index_massupdate'} ],
+				     [ "create", $text{'index_masscreate'} ] ]);
 		}
 	else {
 		# display as icons

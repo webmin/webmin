@@ -103,3 +103,5 @@ Fixed the 'Directory for DNSSEC keys' option on the Module Config page so that i
 SPF records longer than 255 bytes are automatically split into separate fields in the underlying TXT record.
 ---- Changes since 1.460 ----
 When adding a master zone with automatically created slaves, add an also-notify block to the master configuration to update the slaves.
+---- Changes since 1.480 ----
+Added mass record change and creation buttons to the zone search results page.
