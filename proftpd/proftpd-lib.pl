@@ -690,7 +690,7 @@ if ($config{'test_always'}) {
 		local $f;
 		foreach $f (keys %before_changing) {
 			&open_tempfile(AFTER, ">$f");
-			&print_tempfie(AFTER, $before_changing{$f});
+			&print_tempfile(AFTER, $before_changing{$f});
 			&close_tempfile(AFTER);
 			}
 		&error(&text('eafter', "<pre>$err</pre>"));
