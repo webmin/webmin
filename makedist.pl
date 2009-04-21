@@ -25,7 +25,7 @@ $zipdir = "zips";
 	  "config-openserver", "switch_user.cgi", "lang", "lang_list.txt",
 	  "webmin-init", "webmin-caldera-init", "webmin-daemon",
 	  "config-openbsd",
-	  "config-macos", "LICENCE", "PATENTS",
+	  "config-macos", "LICENCE",
 	  "session_login.cgi", "acl_security.pl",
 	  "defaultacl", "rpc.cgi", "date_chooser.cgi", "switch_skill.cgi",
 	  "install-module.pl", "LICENCE.ja", 
