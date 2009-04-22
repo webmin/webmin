@@ -269,7 +269,7 @@ else {
 	}
 }
 
-# make_raid(&raid, force)
+# make_raid(&raid, force, [missing])
 # Call mkraid or mdadm to make a raid set for real
 sub make_raid
 {
@@ -307,6 +307,9 @@ else {
 			}
 		}
 	local $cmd = "mdadm --$mode --level $lvl --chunk $chunk";
+	if ($_[2]) {
+		push(@devices, "missing");
+		}
 	$cmd .= " --parity $parity" if ($parity);
 	$cmd .= " --raid-devices ".scalar(@devices);
 	$cmd .= " --spare-devices ".scalar(@spares) if (@spares);

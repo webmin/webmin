@@ -17,3 +17,5 @@ Added a confirmation page before deleting a RAID array.
 Create /dev/md* device file if missing when creating a RAID set.
 ---- Changes since 1.450 ----
 Added a button for changing the number of active devices in a RAID 5 or 6 set, thanks to Diego Zuccato.
+---- Changes since 1.480 ----
+Added an option to the RAID 1 creation form to mark one of the disks as missing initially.

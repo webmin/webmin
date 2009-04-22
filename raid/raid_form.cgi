@@ -81,6 +81,12 @@ if ($lvl == 4 && $raid_mode ne 'mdadm') {
 					  @disks ], 4, 1));
 	}
 
+# Missing disk option
+if ($lvl == 1 && $raid_mode eq 'mdadm') {
+	print &ui_table_row($text{'create_missing'},
+		&ui_yesno_radio("missing", 0));
+	}
+
 # Force creation
 print &ui_table_row($text{'create_force'},
 	&ui_yesno_radio("force", 0));

@@ -36,6 +36,7 @@ create_level=RAID level
 create_disks=Partitions in RAID
 create_spares=Spare partitions
 create_pdisk=Parity partition
+create_missing=Include currently missing disk?
 create_pauto=Automatic
 create_nodisks=No free partitions are available for RAID.
 create_super=Persistent superblock?

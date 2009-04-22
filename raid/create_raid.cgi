@@ -28,7 +28,7 @@ if ($in{'parity'}) {
 if (!@disks) {
 	&error($text{'create_edisks'});
 	}
-elsif ($in{'level'} == 1 && @disks < 2) {
+elsif ($in{'level'} == 1 && scalar(@disks)+$in{'missing'} < 2) {
 	&error($text{'create_edisks2'});
 	}
 push(@members, { 'name' => 'nr-raid-disks',
@@ -67,7 +67,7 @@ if ($in{'pdisk'}) {
 
 &create_raid($raid);
 &unlock_raid_files();
-if ($err = &make_raid($raid, $in{'force'})) {
+if ($err = &make_raid($raid, $in{'force'}, $in{'missing'})) {
 	&delete_raid($raid);
 	&error($err);
 	}
