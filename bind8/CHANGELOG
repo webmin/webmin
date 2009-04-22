@@ -105,3 +105,4 @@ SPF records longer than 255 bytes are automatically split into separate fields i
 When adding a master zone with automatically created slaves, add an also-notify block to the master configuration to update the slaves.
 ---- Changes since 1.480 ----
 Added mass record change and creation buttons to the zone search results page.
+Made the manual config file editor textboxes full-width.

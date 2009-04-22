@@ -22,8 +22,11 @@ print &ui_form_end();
 # Show the file contents
 print &ui_form_start("save_manual.cgi", "form-data");
 print &ui_hidden("file", $in{'file'}),"\n";
+print &ui_table_start(undef, "width=100%", 2);
 $data = &read_file_contents(&make_chroot($in{'file'}));
-print &ui_textarea("data", $data, 20, 80),"\n";
+print &ui_table_row(undef,
+	&ui_textarea("data", $data, 20, 80, undef, 0, "style='width:100%'"), 2);
+print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
