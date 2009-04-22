@@ -18,7 +18,7 @@ if ($in{'network'}) {
 	}
 &ui_print_header($desc, $text{'listl_header'}, "");
 
-# Work out how many IPs we have in our pools
+# Work out how many IPs we have in our subnet ranges
 %ranges = ( );
 $conf = &get_config();
 @subnets = &find("subnet", $conf);
@@ -38,11 +38,11 @@ foreach $subnet (@subnets) {
 	}
 
 if (!-r $config{'lease_file'}) {
-	print "<b>";
-	print(&text('listl_lfnotexist',$config{'lease_file'}));
-	print "</b><p>\n";
+	# No leases file
+	print "<b>".&text('listl_lfnotexist',$config{'lease_file'})."</b><p>\n";
 	}
 elsif (!&tokenize_file($config{'lease_file'}, \@tok)) {
+	# Leases file is not valid or empty
 	print "<b>",&text('listl_lfnotcont',$config{'lease_file'}),"</b><p>\n";
 	}
 else {
@@ -66,6 +66,7 @@ else {
 		push(@leases, $lease);
 		}
 	if (@leases) {
+		# Sort leases by selected type
 		if ($in{'sort'} eq 'ipaddr') {
 			@leases = sort { &ip_compare($a, $b) } @leases;
 			}
@@ -94,7 +95,8 @@ else {
 		$leased = 0;
 		foreach $lease (@leases) {
 			$ip = $lease->{'values'}->[0];
-			if ($ranges{$ip} && !$donelease{$ip}++) {
+			if ($ranges{$ip} && !$donelease{$ip}++ &&
+			    !$lease->{'expired'}) {
 				$leased++;
 				}
 			}
@@ -157,12 +159,11 @@ else {
 		      "</b><p>\n";
 		}
 	if (!$in{'all'}) {
-		print "<form action=list_leases.cgi>\n";
-		print "<input type=hidden name=all value=1>\n";
-		print "<input type=hidden name=network value='$in{'network'}'>\n";
-		print "<input type=hidden name=netmask value='$in{'netmask'}'>\n";
-		print "<input type=submit value='$text{'listl_all'}'>\n";
-		print "</form>\n";
+		print &ui_form_start("list_leases.cgi");
+		print &ui_hidden("all", 1);
+		print &ui_hidden("network", $in{'network'});
+		print &ui_hidden("netmask", $in{'netmask'});
+		print &ui_form_end([ [ undef, $text{'listl_all'} ] ]);
 		}
 	}
 

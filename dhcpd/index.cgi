@@ -474,73 +474,55 @@ if ($config{'dhcpd_version'} >= 3) {
 	print &ui_hr();
 
 }
-############ END ZONES #####
 
-print "<table>\n";
+# Buttons for global actions
+print &ui_buttons_start();
+
 if ($access{'global'}) {
-	print "<form action=edit_options.cgi>\n";
-	print "<input type=hidden name=global value=1>\n";
-	print "<tr> <td><input type=submit value=\"$text{'index_buttego'}\"></td>\n";
-	print "<td>$text{'index_ego'} \n";
-	print "</td> </tr>\n";
-	print "</form>\n";
+	# Edit global client options
+	print &ui_buttons_row("edit_options.cgi",
+		$text{'index_buttego'}, $text{'index_ego'},
+		&ui_hidden("global", 1));
 	}
-if ($config{'dhcpd_version'} >= 3) {
-	if ($access{'global'}) {
-		print "<form action=edit_keys.cgi>\n";
-		print "<tr> <td><input type=submit value=\"$text{'index_buttekey'}\"></td>\n";
-		print "<td>$text{'index_key'} \n";
-		print "</td> </tr>\n";
-		print "</form>\n";
-		}
-}
-if (!$access{'noconfig'}) {
-	print "<form action=edit_text.cgi>\n";
-	print "<tr> <td><input type=submit value=\"$text{'index_buttetext'}\"></td>\n";
-	print "<td>$text{'index_text'} \n";
-	print "</td> </tr>\n";
-	print "</form>\n";
+
+if ($config{'dhcpd_version'} >= 3 && $access{'global'}) {
+	# TSIG keys
+	print &ui_buttons_row("edit_keys.cgi",
+		$text{'index_buttekey'}, $text{'index_key'});
 	}
 if (!$access{'noconfig'}) {
-	print "<form action=edit_iface.cgi>\n";
-	print "<tr> <td><input type=submit value=\"$text{'index_buttiface'}\"></td>\n";
-	print "<td>$text{'index_iface'} \n";
-	print "</td> </tr>\n";
-	print "</form>\n";
+	# Manually edit config file
+	print &ui_buttons_row("edit_text.cgi",
+		$text{'index_buttetext'}, $text{'index_text'});
+	}
+if (!$access{'noconfig'}) {
+	# Select network interfaces
+	print &ui_buttons_row("edit_iface.cgi",
+		$text{'index_buttiface'}, $text{'index_iface'});
 	}
 if ($access{'r_leases'}) {
-	print "<form action=list_leases.cgi>\n";
-	print "<tr> <td><input type=submit value=\"$text{'index_buttlal'}\"></td>\n";
-	print "<td>$text{'index_lal'} \n";
-	print "</td> </tr>\n";
-	print "</form>\n";
+	# Show active leases
+	print &ui_buttons_row("list_leases.cgi",
+		$text{'index_buttlal'}, $text{'index_lal'});
 	}
 if ($access{'apply'}) {
 	$pid = &is_dhcpd_running();
 	if ($pid) {
-		print "<form action=restart.cgi>\n";
-		print "<input type=hidden name=pid value=$pid>\n";
-		print "<tr> <td><input type=submit value=\"$text{'index_buttapply'}\"></td>\n";
-		print "<td>$text{'index_apply'} \n";
-		print "</td></tr>\n";
-		print "</form>\n";
-
-		print "<form action=stop.cgi>\n";
-		print "<input type=hidden name=pid value=$pid>\n";
-		print "<tr> <td><input type=submit value=\"$text{'index_stop'}\"></td>\n";
-		print "<td>$text{'index_stopdesc'} \n";
-		print "</td></tr>\n";
-		print "</form>\n";
+		# Apply and stop buttons
+		print &ui_buttons_row("restart.cgi",
+			$text{'index_buttapply'}, $text{'index_apply'},
+			&ui_hidden("pid", $pid));
+		print &ui_buttons_row("stop.cgi",
+			$text{'index_stop'}, $text{'index_stopdesc'},
+			&ui_hidden("pid", $pid));
 		}
 	else {
-		print "<form action=start.cgi>\n";
-		print "<tr> <td><input type=submit value=\"$text{'index_buttstart'}\"></td>\n";
-		print "<td>$text{'index_start'} \n";
-		print "</td> </tr>\n";
-		print "</form>\n";
+		# Start button
+		print &ui_buttons_row("start.cgi",
+			$text{'index_buttstart'}, $text{'index_start'});
 		}
 	}
-print "</table>\n";
+print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index_return'});
 
