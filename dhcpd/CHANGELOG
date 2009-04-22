@@ -34,3 +34,4 @@ String custom options are now always quoted.
 ---- Changes since 1.480 ----
 Converted buttons on the module's main page to use the Webmin UI library.
 Expired leases are no longer counted towards usage on the DHCP Leases page.
+Added a mode to the DHCP Leases page to show usage by subnet, thanks to a suggestion by Coles.

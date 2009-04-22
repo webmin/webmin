@@ -26,13 +26,15 @@ foreach $shared (&find("shared-network", $conf)) {
 	push(@subnets, &find("subnet", $shared->{'members'}));
 	}
 foreach $subnet (@subnets) {
+	$subnet->{'ips'} = 0;
 	foreach $range (&find("range", $subnet->{'members'})) {
 		local @rv = @{$range->{'values'}};
 		shift(@rv) if ($rv[0] eq "dynamic-bootp");
 		foreach $ip (&expand_ip_range($rv[0], $rv[1])) {
 			if (&within_network($ip)) {
-				$ranges{$ip}++;
+				$ranges{$ip} = $subnet;
 				}
+			$subnet->{'ips'}++;
 			}
 		}
 	}
@@ -46,6 +48,7 @@ elsif (!&tokenize_file($config{'lease_file'}, \@tok)) {
 	print "<b>",&text('listl_lfnotcont',$config{'lease_file'}),"</b><p>\n";
 	}
 else {
+	# Parse lease file
 	$i = $j = 0;
 	local @nw = split(/\./, $in{'network'});
 	local @nm = split(/\./, $in{'netmask'});
@@ -65,7 +68,48 @@ else {
 		next if (!&within_network($lease->{'values'}->[0]));
 		push(@leases, $lease);
 		}
-	if (@leases) {
+
+	# Show links to select mode, if not showing a single subnet
+	if (!$in{'network'}) {
+		@links = ( );
+		foreach $m (0, 1) {
+			$msg = $text{'listl_mode_'.$m};
+			if ($m != $in{'bysubnet'}) {
+				$msg = "<a href='list_leases.cgi?bysubnet=$m'>".
+				       "$msg</a>";
+				}
+			push(@links, $msg);
+			}
+		print "<b>$text{'listl_mode'}</b> ",
+		      &ui_links_row(\@links),"<br>\n";
+		}
+
+	if ($in{'bysubnet'}) {
+		# Show table of subnets, with lease usage
+		print &ui_columns_start([
+			$text{'index_net'}, $text{'index_desc'},
+			$text{'listl_size'}, $text{'listl_used'}, 
+			$text{'listl_pc'} ], 100);
+		foreach $subnet (@subnets) {
+			%used = ( );
+			foreach $lease (@leases) {
+				$r = $ranges{$lease->{'values'}->[0]};
+				if ($r eq $subnet && !$lease->{'expired'}) {
+					$used{$lease->{'values'}->[0]}++;
+					}
+				}
+			$used = scalar(keys %used);
+			print &ui_columns_row([
+				$subnet->{'values'}->[0],
+				&html_escape($subnet->{'comment'}),
+				$subnet->{'ips'},
+				$used,
+				int(100*$used / $subnet->{'ips'})."%",
+				]);
+			}
+		print &ui_columns_end();
+		}
+	elsif (@leases) {
 		# Sort leases by selected type
 		if ($in{'sort'} eq 'ipaddr') {
 			@leases = sort { &ip_compare($a, $b) } @leases;
@@ -158,7 +202,7 @@ else {
 				  'listl_lfnotcont2', $config{'lease_file'}),
 		      "</b><p>\n";
 		}
-	if (!$in{'all'}) {
+	if (!$in{'all'} && !$in{'bysubnet'}) {
 		print &ui_form_start("list_leases.cgi");
 		print &ui_hidden("all", 1);
 		print &ui_hidden("network", $in{'network'});
