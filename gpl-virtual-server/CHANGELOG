@@ -570,3 +570,4 @@ Virtual servers can now have IPv6 addresses in addition to v4, on Debian, Ubuntu
 Added the --purge and --strftime flags to backup-domain.pl, to allow automatic deletion of old backups and date-based backup destinations.
 ---- Changes since 3.68 ----
 Added buttons to the Manage SSL Certificate page to copy a domain's cert and key to Webmin or Usermin.
+SpamAssassin's server filter spamd can now be activated from within Virtualmin, using a new button on the Spam and Virus Scanning page. You can also turn it on with the --enable-spamd flag to the set-spam API script.
