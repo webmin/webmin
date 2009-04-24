@@ -537,7 +537,6 @@ $SIG{'USR1'} = 'miniserv::trigger_reload';
 $SIG{'PIPE'} = 'IGNORE';
 local $remove_session_count = 0;
 $need_pipes = $config{'passdelay'} || $config{'session'};
-$last_pid_time = time();
 while(1) {
 	# wait for a new connection, or a message from a child process
 	local ($i, $rmask);
@@ -583,12 +582,6 @@ while(1) {
 		&reload_config_file();
 		}
 	local $time_now = time();
-
-	# Write the PID every 10 seconds
-	if ($time_now - $last_pid_time > 10) {
-		&write_pid_file();
-		$last_pid_time = $time_now;
-		}
 
 	# Clean up finished processes
 	local $pid;
