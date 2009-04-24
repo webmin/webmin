@@ -1,8 +1,10 @@
 # csw-lib.pl
 # Functions for installing packages from Blastwave
 
-$pkg_get = -x "/opt/csw/bin/pkg-get" ? "/opt/csw/bin/pkg-get"
-				     : &has_command("pkg-get");
+$pkg_get = -x "/opt/csw/bin/pkgutil" ? "/opt/csw/bin/pkgutil" :
+	   -x "/opt/csw/bin/pkg-get" ? "/opt/csw/bin/pkg-get" :
+	   &has_command("pkgutil") ? &has_command("pkgutil") :
+				     &has_command("pkg-get");
 
 sub list_update_system_commands
 {
@@ -28,12 +30,14 @@ do {
 		# Don't try the same update twice
 		last;
 		}
+	local $flag = $pkg_get =~ /pkgutil$/ ? "-y" : "-f";
 	print "<b>",&text('csw_install',
-			"<tt>$pkg_get -i -f $update</tt>"),"</b><p>\n";
+			"<tt>$pkg_get -i $flag $update</tt>"),"</b><p>\n";
 	$failed = 0;
 	$retry = 0;
 	print "<pre>";
-	&open_execute_command(PKGGET, "$pkg_get -i -f ".quotemeta($update), 2);
+	&open_execute_command(PKGGET,
+		"$pkg_get -i $flag ".quotemeta($update), 2);
 	while(<PKGGET>) {
 		if (!/^\s*\d+\%\s+\[/) {
 			# Output everything except download lines
@@ -95,7 +99,13 @@ while(<PKG>) {
 	s/\r|\n//g;
 	s/#.*$//;
 	next if (/^\s*WARNING:/);
-	if (/^\s*(\S+)\s+(\S+)/) {
+	if (/^\s*(\S+)\s+(\S+)\s+(\d\S+)\s+([0-9\.]+)\s+(KB|MB|GB)/i) {
+		# New pkgutil format
+		push(@rv, { 'name' => $1, 'version' => $3,
+			    'select' => "$1-$3" });
+		}
+	elsif (/^\s*(\S+)\s+(\S+)/) {
+		# Old pkg-get format
 		push(@rv, { 'name' => $1, 'version' => $2,
 			    'select' => "$1-$2" });
 		}
