@@ -48,6 +48,7 @@ else {
 			$ac =~ s/:(\d+)$//;
 			$ac eq '*' || $ac eq '_default_' ||
 			    gethostbyname($ac) ||
+			    $ac =~ /^\[(\S+)\]$/ && &check_ip6address("$1") ||
 				&error(&text('vserv_eaddr2', $ac));
 			}
 		$addr = join(" ", @addrs);
