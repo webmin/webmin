@@ -88,25 +88,27 @@ sub activate_interface
 {
 local $a = $_[0];
 if($a->{'vlan'} == 1) {
-	local $vconfigCMD = "vconfig add " . $a->{'physical'} . " " . $a->{'vlanid'};
+	local $vconfigCMD = "vconfig add " .
+			    $a->{'physical'} . " " . $a->{'vlanid'};
 	local $vconfigout = &backquote_logged("$vconfigCMD 2>&1");
-if ($?) { &error($vonconfigout); }
-}
+	if ($?) { &error($vonconfigout); }
+	}
 
+local $cmd;
 if($a->{'vlan'} == 1) {
 	$cmd .= "ifconfig $a->{'physical'}.$a->{'vlanid'}";
-} else {
+	}
+else {
 	$cmd .= "ifconfig $a->{'name'}";
 	if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
-	if (&is_ipv6_address($a->{'address'}) ) { 
-	  $cmd .= " inet6 add ";
-     
-	  if($a->{'netmask'} ){
-		  $a->{'address'} .= "/$a->{'netmask'}";
-		  $a->{'netmask'} = ''; 
-    }
-  } 
-}
+	if (&is_ipv6_address($a->{'address'})) { 
+		$cmd .= " inet6 add ";
+		if ($a->{'netmask'}) {
+			  $a->{'address'} .= "/$a->{'netmask'}";
+			  $a->{'netmask'} = ''; 
+			}
+		} 
+	}
 $cmd .= " $a->{'address'}";
 if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
 if ($a->{'broadcast'}) { $cmd .= " broadcast $a->{'broadcast'}"; }
