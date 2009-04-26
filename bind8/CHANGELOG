@@ -106,3 +106,4 @@ When adding a master zone with automatically created slaves, add an also-notify 
 ---- Changes since 1.480 ----
 Added mass record change and creation buttons to the zone search results page.
 Made the manual config file editor textboxes full-width.
+Fixed a bug that cause blocks like sortlist not be parsed properly, and possible cause Webmin to corrupt other parts of the named.conf file.

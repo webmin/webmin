@@ -197,8 +197,15 @@ sub parse_struct
 {
 local (%str, $i, $j, $t, @vals);
 $i = ${$_[2]};
-$str{'name'} = lc($_[0]->[$i]);
 $str{'line'} = $_[1]->[$i];
+if ($_[0]->[$i] ne '{') {
+	# Has a name
+	$str{'name'} = lc($_[0]->[$i]);
+	}
+else {
+	# No name, so need to move token pointer back one
+	$i--;
+	}
 $str{'index'} = $_[3];
 $str{'file'} = $_[4];
 if ($str{'name'} eq 'inet') {
