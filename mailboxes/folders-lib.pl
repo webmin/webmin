@@ -3039,8 +3039,9 @@ local @rv = map { undef } @$mails;
 local @needbody;
 for(my $i=0; $i<scalar(@rv); $i++) {
 	local $mail = $mails->[$i];
-	local $mid = $mail->{'header'}->{'message-id'};
-	if (defined($hasattach{$mid})) {
+	local $mid = $mail->{'header'}->{'message-id'} ||
+		     $mail->{'id'};
+	if ($mid && defined($hasattach{$mid})) {
 		# Already cached .. use it
 		$rv[$i] = $hasattach{$mid};
 		}
@@ -3076,8 +3077,6 @@ for(my $i=0; $i<scalar(@rv); $i++) {
 		$rv[$i] = 0;
 		next;
 		}
-	local $mid = $mail->{'header'}->{'message-id'};
-
 	if (!@{$mail->{'attach'}}) {
 		# Parse out attachments
 		&parse_mail($mail, undef, 0);
@@ -3104,8 +3103,9 @@ for(my $i=0; $i<scalar(@rv); $i++) {
 # Update the cache
 for(my $i=0; $i<scalar(@rv); $i++) {
 	local $mail = $mails->[$i];
-	local $mid = $mail->{'header'}->{'message-id'};
-	if (!defined($hasattach{$mid})) {
+	local $mid = $mail->{'header'}->{'message-id'} ||
+		     $mail->{'id'};
+	if ($mid && !defined($hasattach{$mid})) {
 		$hasattach{$mid} = $rv[$i]
 		}
 	}
