@@ -115,6 +115,8 @@ Mandrake Linux Corporate Server	1.0	redhat-linux	6.2	$etc_issue =~ /Mandrake\s+C
 pclinuxos Linux			2005	mandrake-linux	10.0	`cat /etc/mandrake-release 2>/dev/null` =~ /pclinuxos\s+Linux\s+release\s+2005/i
 pclinuxos Linux			2006	mandrake-linux	10.2	`cat /etc/mandrake-release 2>/dev/null` =~ /pclinuxos\s+Linux\s+release\s+2006/i
 pclinuxos Linux			2007	mandrake-linux	10.3	`cat /etc/mandrake-release 2>/dev/null` =~ /PCLinuxOS\s+release\s+2007/i
+pclinuxos Linux			2008	mandrake-linux	10.4	`cat /etc/mandrake-release 2>/dev/null` =~ /PCLinuxOS\s+release\s+2008/i
+pclinuxos Linux			2009	mandrake-linux	10.5	`cat /etc/mandrake-release 2>/dev/null` =~ /PCLinuxOS\s+release\s+2009/i
 
 # Mandrake Linux
 Mandrake Linux			5.3	redhat-linux	5.0	$etc_issue =~ /Mandrake\s+release\s+5\.3/i
