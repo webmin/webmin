@@ -314,7 +314,14 @@ sub create_cron_job
 {
 &check_cron_config_or_error();
 &list_cron_jobs();	# init cache
-if ($config{'single_file'} && !$config{'cron_dir'}) {
+if ($config{'add_file'}) {
+	# Add to a specific file, typically something like /etc/cron.d/webmin
+	$_[0]->{'type'} = 1;
+	local $lref = &read_file_lines($config{'add_file'});
+	push(@$lref, &cron_job_line($_[0]));
+	&flush_file_lines($config{'add_file'});
+	}
+elsif ($config{'single_file'} && !$config{'cron_dir'}) {
 	# Add to the single file
 	$_[0]->{'type'} = 3;
 	local $lref = &read_file_lines($config{'single_file'});
@@ -1065,7 +1072,8 @@ based on the username.
 =cut
 sub cron_file
 {
-return $_[0]->{'file'} || "$config{'cron_dir'}/$_[0]->{'user'}";
+return $_[0]->{'file'} || $config{'add_file'} ||
+       "$config{'cron_dir'}/$_[0]->{'user'}";
 }
 
 =head2 when_text(&job, [upper-case-first])

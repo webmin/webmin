@@ -8,6 +8,7 @@ match_mode=Find job processes by,1,1-Command only,0-Command and arguments
 match_user=Match usernames when finding job processes?,1,1-Yes,0-No
 kill_subs=Kill sub-processes when terminating jobs?,1,1-Yes,0-No
 hourly_only=Only allow jobs to be at most hourly?,1,0-No,1-Yes
+add_file=Add new jobs to file,3,User's regular crontab file
 line2=System configuration,11
 cron_dir=Crontab Directory,0
 cron_get_command=Command to read a user's cron job,0
