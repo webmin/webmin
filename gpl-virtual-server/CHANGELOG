@@ -571,3 +571,5 @@ Added the --purge and --strftime flags to backup-domain.pl, to allow automatic d
 ---- Changes since 3.68 ----
 Added buttons to the Manage SSL Certificate page to copy a domain's cert and key to Webmin or Usermin.
 SpamAssassin's server filter spamd can now be activated from within Virtualmin, using a new button on the Spam and Virus Scanning page. You can also turn it on with the --enable-spamd flag to the set-spam API script.
+After Virtualmin is installed and the master administrator logs in for the first time, a wizard allowing basic configuration of memory and speed tradeoffs will be displayed. This allows the system to be tuned for web, mail or database hosting, depending on how the admin intends it to be used.
+ClamAV's server scanner clamd can now be enabled on FreeBSD from within Virtualmin.
