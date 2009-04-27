@@ -8,7 +8,8 @@ do 'fsdump-lib.pl';
 sub parse_webmin_log
 {
 local ($user, $script, $action, $type, $object, $p) = @_;
-if ($action eq 'create' || $action eq 'modify' || $action eq 'delete') {
+if ($action eq 'create' || $action eq 'modify' ||
+    $action eq 'delete' || $action eq 'kill') {
 	return &text("log_$action", "<tt>".&html_escape($p->{'dir'})."</tt>");
 	}
 elsif ($action eq 'backup' || $action eq 'bgbackup') {

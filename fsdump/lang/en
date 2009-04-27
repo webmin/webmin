@@ -195,6 +195,7 @@ log_delete=Deleted backup config for $1
 log_backup=Backed up $1 to $2
 log_bgbackup=Started backup of $1 to $2
 log_restore=Restored backup from $1
+log_kill=Terminated backup for $1
 
 kill_err=Failed to terminate backup
 kill_egone=No longer running!
