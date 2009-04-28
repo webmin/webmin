@@ -21,9 +21,9 @@ if ($config{'start_cmd'}) {
 	if ($rv) { &error(&text('start_fail', $config{'start_cmd'})); }
 	}
 else {
-	$rv = &system_logged("$config{samba_server} -D </dev/null");
+	$rv = &system_logged("$config{samba_server} -D >/dev/null 2>&1 </dev/null");
 	if ($rv) { &error(&text('start_fail', $config{samba_server})); }
-	$rv = &system_logged("$config{name_server} -D </dev/null");
+	$rv = &system_logged("$config{name_server} -D >/dev/null 2>&1 </dev/null");
 	if ($rv) { &error(&text('start_fail', $config{samba_server})); }
 	}
 &webmin_log("apply");
