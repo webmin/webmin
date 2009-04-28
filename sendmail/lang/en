@@ -319,7 +319,7 @@ gdelete_ecannot=You are not allowed to delete the mapping for $1
 cgs_title=Outgoing Domains
 cgs_ecannot=You are not allowed to edit outgoing domains
 cgs_header=Outgoing address domains
-cgs_desc=Apart from mail sent by local users, sendmail will only perform <a href='$1'>outgoing address</a> mapping for mail from hosts or domains listed in the text box to the right. Thus for an outgoing address entry to work the domain in the from address must be included in this list.
+cgs_desc=Apart from mail sent by local users, sendmail will only perform <a href='$1'>outgoing address</a> mapping for mail from hosts or domains listed in the text box below. Thus for an outgoing address entry to work the domain in the from address must be included in this list.
 cgs_err=Failed to save outgoing domains
 cgs_ehost='$1' is not a valid host or domain name
 cgs_eip='$1' is an IP address, not a domain
@@ -400,7 +400,7 @@ relay_title=Relay Domains
 relay_ecannot=You are not allowed to edit relay domains
 relay_eversion=Only sendmail versions 8.9 and above support the relay domains feature.
 relay_domains=Domains to which relaying is allowed
-relay_desc1=Unless allowed by the <a href='$1'>spam control</a> rules, sendmail will only permit relaying to domains listed in the text box to the left. Incoming mail messages that are not for a local user and not for one of the listed domains will be rejected.
+relay_desc1=Unless allowed by the <a href='$1'>spam control</a> rules, sendmail will only permit relaying to domains listed in the text box below. Incoming mail messages that are not for a local user and not for one of the listed domains will be rejected.
 relay_desc2=If your system is serving as a gateway for several domains that are not directly accessible from outside your network (using the <a href='$1'>domain routing</a> feature), then all those domains should be listed here.
 relay_err=Failed to save relay domains
 relay_edomain='$1' is not a valid domain name

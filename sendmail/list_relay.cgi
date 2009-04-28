@@ -17,18 +17,15 @@ if ($ver->{'value'} !~ /^(\d+)/ || $1 < 8) {
 
 @dlist = &get_file_or_config($conf, "R");
 
-print "<form method=post action=save_relay.cgi enctype=multipart/form-data>\n";
-print "<table cellpadding=5 width=100%><tr><td valign=top nowrap>\n";
-print "<b>$text{'relay_domains'}</b><br>\n";
-print "<textarea name=dlist rows=15 cols=65>",
-	join("\n", @dlist),"</textarea><br>\n";
-print "<input type=submit value=\"$text{'save'}\">\n";
-
-print "</td><td valign=top>\n";
 print &text('relay_desc1', "list_access.cgi"),"<p>\n";
-print &text('relay_desc2', "list_mailers.cgi"),"<br>\n";
-print "</td></tr></table>\n";
-print "</form>\n";
+print &text('relay_desc2', "list_mailers.cgi"),"<p>\n";
+
+print &ui_form_start("save_relay.cgi", "form-data");
+print &ui_table_start(undef, undef, 2);
+print &ui_table_row(undef,
+	&ui_textarea("dlist", join("\n", @dlist), 15, 80), 2);
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 

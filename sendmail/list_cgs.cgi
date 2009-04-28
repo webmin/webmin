@@ -9,17 +9,14 @@ $access{'cgs'} || &error($text{'cgs_ecannot'});
 $conf = &get_sendmailcf();
 @dlist = &get_file_or_config($conf, "G");
 
-print "<form method=post action=save_cgs.cgi enctype=multipart/form-data>\n";
-print "<table cellpadding=5 width=100%><tr><td valign=top nowrap>\n";
-print "<b>$text{'cgs_header'}</b><br>\n";
-print "<textarea name=dlist rows=15 cols=65>",
-	join("\n", @dlist),"</textarea><br>\n";
-print "<input type=submit value=\"$text{'save'}\">\n";
-
-print "</td><td valign=top>\n";
 print &text('cgs_desc', "list_generics.cgi"),"<p>\n";
-print "</td></tr></table>\n";
-print "</form>\n";
+
+print &ui_form_start("save_cgs.cgi", "form-data");
+print &ui_table_start(undef, undef, 2);
+print &ui_table_row(undef,
+	&ui_textarea("dlist", join("\n", @dlist), 15, 80), 2);
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
