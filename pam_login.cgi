@@ -9,7 +9,7 @@ $pragma_no_cache = 1;
 &init_config();
 &ReadParse();
 if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
-    $in{'initial'}) {
+    !$in{'logout'} && $in{'initial'}) {
 	# Show pre-login HTML page
 	print "Set-Cookie: banner=1; path=/\r\n";
 	&PrintHeader();
@@ -24,7 +24,9 @@ if ($gconfig{'loginbanner'} && $ENV{'HTTP_COOKIE'} !~ /banner=1/ &&
 	}
 $sec = uc($ENV{'HTTPS'}) eq 'ON' ? "; secure" : "";
 &get_miniserv_config(\%miniserv);
+$sidname = $miniserv{'sidname'} || "sid";
 print "Set-Cookie: banner=0; path=/$sec\r\n" if ($gconfig{'loginbanner'});
+print "Set-Cookie: $sidname=x; path=/$sec\r\n" if ($in{'logout'});
 print "Set-Cookie: testing=1; path=/$sec\r\n";
 &ui_print_unbuffered_header(undef, undef, undef, undef, undef, 1, 1, undef,
 			    undef, "onLoad='document.forms[0].answer.focus()'");
@@ -41,12 +43,13 @@ elsif ($in{'timed_out'}) {
 	}
 
 print "$text{'pam_prefix'}\n";
-print "<form action=$gconfig{'webprefix'}/pam_login.cgi method=post>\n";
-print "<input type=hidden name=cid value='",&quote_escape($in{'cid'}),"'>\n";
 
-print "<table border width=40%>\n";
-print "<tr $tb> <td><b>$text{'pam_header'}</b></td> </tr>\n";
-print "<tr $cb> <td align=center><table cellpadding=3>\n";
+print &ui_form_start("$gconfig{'webprefix'}/pam_login.cgi", "post");
+print &ui_hidden("cid", $in{'cid'});
+
+print &ui_table_start($text{'pam_header'},
+		      "width=40% class='loginform'", 2);
+
 if ($gconfig{'realname'}) {
 	$host = &get_system_hostname();
 	}
@@ -58,32 +61,30 @@ else {
 
 if ($in{'message'}) {
 	# Showing a message
-	print "<tr> <td colspan=2 align=center>",
-	      &html_escape($in{'message'}),"</td> </tr>\n";
-	print "<input type=hidden name=message value=1>\n";
+	pirnt &ui_table_row(undef,
+	      &html_escape($in{'message'}), 2);
+	print &ui_hidden("message", 1);
 	}
 else {
 	# Asking a question
-	print "<tr> <td colspan=2 align=center>",
+	print &ui_table_row(undef,
 	      &text($gconfig{'nohostname'} ? 'pam_mesg2' : 'pam_mesg',
-		    "<tt>$host</tt>"),"</td> </tr>\n";
+		    "<tt>$host</tt>"), 2, [ "align=center", "align=center" ]);
 
-	$pass = "type=password" if ($in{'password'});
-	print "<tr> <td><b>",&html_escape($in{'question'}),"</b></td>\n";
-	print "<td><input name=answer $pass size=20></td> </tr>\n";
+	print &ui_table_row(&html_escape($in{'question'}),
+		$in{'password'} ? &ui_password("answer", undef, 20)
+				: &ui_textbox("answer", undef, 20));
 	}
 
-print "<tr> <td colspan=2 align=center>\n";
-print "<input type=submit value='$text{'pam_login'}'>\n";
-print "<input type=reset value='$text{'session_clear'}'>\n";
+print &ui_table_end(),"\n";
+print &ui_submit($text{'pam_login'});
+print &ui_reset($text{'session_clear'});
 if (!$in{'initial'}) {
-	print "<input type=submit name=restart value='$text{'pam_restart'}'>\n";
+	print &ui_submit($text{'pam_restart'}, 'restart');
 	}
-print "<br>\n";
+print &ui_form_end();
+print "</center>\n";
 
-print "</td> </tr>\n";
-print "</table></td></tr></table><p>\n";
-print "</form></center>\n";
 print "$text{'pam_postfix'}\n";
 
 # Output frame-detection Javascript, if theme uses frames
