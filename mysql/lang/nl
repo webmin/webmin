@@ -313,6 +313,8 @@ field_auto=Autoinc?
 field_binary=Letter gevoelig
 field_current=Huidige  tijd
 field_default=Standaard waarde
+field_defdef=MySQL standaard
+field_defempty=Lege string
 field_defleave=Niet veranderen
 field_defnone=Niet standaard
 field_defval=Waarde
@@ -409,6 +411,7 @@ index_eadmin=Het MySQL admin programma $1 is niet gevonden op uw systeem. Missch
 index_ecannot=U bent niet bevoegd om indexen te beheren
 index_eclash=Een index met dezelfde naam bestaat al
 index_ecols=Geen velden geselecteerd
+index_eenvpass=Het MySQL client programma $1 accepteert geen wachtwoorden die gebruik maken van de <tt>MYSQL_PWD</tt> omgevings variabelen. Om er zeker van te zijn dat Webmin volledig kan communiceren met MySQL moet U deze optie uitzetten op de <a href='$2'>module configuratie</a> pagina.
 index_elibrary=Het MySQL cli&#235;nt programma $1 kan niet werken omdat het de MySQL gedeelde libraries niet kon vinden. Controleer de <a href='$2'>module configuratie</a> en let op dat het <i>Pad naar MySQL gedeelde libraries</i> er goed in staat.
 index_emsg=De volledige MySQL foutmelding was : $1
 index_ename=Ontbrekende of verkeerde index naam
