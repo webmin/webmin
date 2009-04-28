@@ -104,7 +104,9 @@ else {
 				&html_escape($subnet->{'comment'}),
 				$subnet->{'ips'},
 				$used,
-				int(100*$used / $subnet->{'ips'})."%",
+				$subnet->{'ips'} ?
+					int(100*$used / $subnet->{'ips'})."%" :
+					"",
 				]);
 			}
 		print &ui_columns_end();
