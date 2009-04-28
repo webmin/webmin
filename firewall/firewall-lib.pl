@@ -45,7 +45,7 @@ sub get_iptables_save
 {
 local (@rv, $table, %got);
 local $lnum = 0;
-open(FILE, $_[0] || ($config{'direct'} ? "iptables-save |"
+open(FILE, $_[0] || ($config{'direct'} ? "iptables-save 2>/dev/null |"
 				       : $iptables_save_file));
 local $cmt;
 while(<FILE>) {
@@ -127,7 +127,7 @@ sub save_table
 local $lref;
 if ($config{'direct'}) {
 	# Read in the current iptables-save output
-	$lref = &read_file_lines("iptables-save |");
+	$lref = &read_file_lines("iptables-save 2>/dev/null |");
 	}
 else {
 	# Updating the save file

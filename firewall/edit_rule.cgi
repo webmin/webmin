@@ -420,7 +420,7 @@ if ($_[2]) {
 	@types = @{$_[2]};
 	}
 else {
-	open(IPTABLES, "iptables -p icmp -h |");
+	open(IPTABLES, "iptables -p icmp -h 2>/dev/null |");
 	while(<IPTABLES>) {
 		if (/valid\s+icmp\s+types:/i) {
 			$started = 1;
@@ -481,7 +481,7 @@ return $rv;
 sub tos_input
 {
 local ($started, @opts);
-open(IPTABLES, "iptables -m tos -h |");
+open(IPTABLES, "iptables -m tos -h 2>/dev/null |");
 while(<IPTABLES>) {
 	if (/TOS.*options:/i) {
 		$started = 1;
