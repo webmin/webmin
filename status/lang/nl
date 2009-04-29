@@ -93,6 +93,7 @@ log_create=Maak monitor $1
 log_delete=Verwijder monitor $1
 log_deletes=Verwijderde $1 monitors
 log_modify=Gemodificeerde monitor $1
+log_refresh=Vernieuwde monitor status
 log_sched=Veranderde geplande monitoren
 log_tmpl_create=Gemaakte email template $1
 log_tmpl_delete=Verwijderde email template $1
