@@ -46,3 +46,5 @@ Fixed the Hostname and DNS Client page on FreeBSD to edit /etc/nsswitch.conf ins
 When changing the hostname on Debian or Ubuntu, update /etc/mailname too.
 ---- Changes since 1.460 ----
 Fixed editing of bonding network interfaces on Debian Linux.
+---- Changes since 1.480 ----
+Fixed network interface management on SuSE 10.2.

@@ -15,14 +15,28 @@ local(@rv, $f);
 local @active = &active_interfaces();
 opendir(CONF, &translate_filename($net_scripts_dir));
 while($f = readdir(CONF)) {
-	if ($f =~ /^ifcfg-eth-id-([a-f0-9:]+)$/i) {
-		# An interface identified by MAC address!
+	if ($f =~ /^ifcfg-eth-id-([a-f0-9:]+)$/i ||
+	    $f =~ /^ifcfg-eth-bus-(\S+)\-(\S+)$/) {
+		# An interface identified by MAC or PCI bus address!
 		local (%conf, $b);
-		$b->{'mac'} = $1;
-		local ($a) = grep { lc($_->{'ether'}) eq lc($b->{'mac'}) }
-				  @active;
-		next if (!$a);
 		&read_env_file("$net_scripts_dir/$f", \%conf);
+		if ($2) {
+			$b->{'bus'} = $1;
+			$b->{'busid'} = $2;
+			}
+		else {
+			$b->{'mac'} = $1;
+			}
+		local $a;
+		if ($b->{'mac'}) {
+			($a) = grep { lc($_->{'ether'}) eq lc($b->{'mac'}) }
+				    @active;
+			}
+		else {
+			($a) = grep { $_->{'address'} eq $conf{'IPADDR'} }
+				    @active;
+			}
+		next if (!$a);
 		$b->{'fullname'} = $a->{'fullname'};
 		$b->{'name'} = $a->{'name'};
 		$b->{'up'} = ($conf{'STARTMODE'} eq 'onboot' ||
@@ -52,7 +66,7 @@ while($f = readdir(CONF)) {
 
 		# Also find aliases in same file
 		foreach my $k (keys %conf) {
-			if ($k =~ /^IPADDR_(.*)$/) {
+			if ($k =~ /^IPADDR_(\d+)$/) {
 				# Found one
 				local $n = $1;
 				local $label = $conf{"LABEL_$n"};
