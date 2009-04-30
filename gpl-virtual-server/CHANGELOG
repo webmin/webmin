@@ -574,3 +574,4 @@ SpamAssassin's server filter spamd can now be activated from within Virtualmin, 
 After Virtualmin is installed and the master administrator logs in for the first time, a wizard allowing basic configuration of memory and speed tradeoffs will be displayed. This allows the system to be tuned for web, mail or database hosting, depending on how the admin intends it to be used.
 ClamAV's server scanner clamd can now be enabled on FreeBSD from within Virtualmin.
 Netmasks can now be optionally specified for IP allocation ranges, rather than being always inherited from the primary interface's netmask.
+All backups made manually, on schedule or from the command line are now logged, and can be viewed using the new Backup Logs page.
