@@ -1115,7 +1115,17 @@ elsif (-l $_[0] && !$config{'copy_symlinks'}) {
 elsif (-d $_[0]) {
 	# A directory .. copy it recursively
 	&system_logged("cp -Rp ".quotemeta($_[0])." ".quotemeta("$_[1]/$base")." >/dev/null 2>/dev/null");
-	@rv = glob("$_[1]/$base/*");
+	local $glob = "$_[1]/$base/*";
+	while(1) {
+		local @g = glob($glob);
+		if (@g) {
+			push(@rv, @g);
+			$glob .= "/*";
+			}
+		else {
+			last;
+			}
+		}
 	}
 else {
 	# Just a normal file .. copy it
