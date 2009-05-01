@@ -212,11 +212,19 @@ else {
 	}
 }
 
-# can_edit(what)
+# can_edit(what, [iface])
 # Can some boot-time interface parameter be edited?
 sub can_edit
 {
-return $_[0] ne "bootp";
+if ($_[0] eq "bootp") {
+	# SuSE doesn't support bootp
+	return 0;
+	}
+elsif ($_[1] && $_[0] eq "up" && $_[1]->{'virtual'} ne '' && $_[1]->{'file'}) {
+	# Virtual interfaces are always activated at boot
+	return 0;
+	}
+return 1;
 }
 
 # valid_boot_address(address)
