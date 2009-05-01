@@ -1,5 +1,4 @@
 # Functions for configuring and talking to an LDAP server
-# XXX make sure ACLs work!
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
@@ -50,15 +49,25 @@ if ($config{'server'}) {
 	}
 else {
 	# Get from slapd.conf
-	-r $config{'config_file'} || return &text('connect_efile',
+	-e $config{'config_file'} || return &text('connect_efile',
 					"<tt>$config{'config_file'}</tt>");
-	local $conf = &get_config();
 	$server = "127.0.0.1";
-	$port = $config{'port'} || &find_value("port", $conf);
-	$user = $config{'user'} || &find_value("rootdn", $conf);
+	$port = $config{'port'};
+	$user = $config{'user'};
+	$pass = $config{'pass'};
+	if (&get_config_type() == 1) {
+		# Find defaults from slapd.conf
+		local $conf = &get_config();
+		$port ||= &find_value("port", $conf);
+		$user ||= &find_value("rootdn", $conf);
+		$pass ||= &find_value("rootpw", $conf);
+		}
+	else {
+		# Find defaults from LDIF-format data
+		local $conf = &get_ldif_config();
+		# XXX which database?
+		}
 	$user || return $text{'connect_euser2'};
-	$pass = $config{'pass'} || &find_value("rootpw", $conf);
-	#$pass || return $text{'connect_epass2'};
 	$pass =~ /^\{/ && return $text{'connect_epass3'};
 	}
 $ssl = $config{'ssl'};
@@ -98,7 +107,7 @@ if (!$config{'server'} || &to_ipaddress($config{'server'}) eq '127.0.0.1' ||
 				  $config{'config_file'});
 		}
 	return !&has_command($config{'slapd'}) ? -1 :
-	       !-r $config{'config_file'} ? -2 : 1;
+	       !&get_config_type() ? -2 : 1;
 	}
 return 0;
 }
@@ -120,6 +129,21 @@ if ($out =~ /slapd\s+([0-9\.]+)/) {
 	return $1;
 	}
 return undef;
+}
+
+# get_config_type()
+# Returns 2 for new-style LDIF format directory, 1 for slapd.conf, 0 if unknown
+sub get_config_type
+{
+if (-d $config{'config_file'} && -r "$config{'config_file'}/cn=config.ldif") {
+	return 2;
+	}
+elsif (-r $config{'config_file'}) {
+	return 1;
+	}
+else {
+	return 0;
+	}
 }
 
 # get_config([file])
@@ -175,6 +199,40 @@ sub find_value
 local ($name, $conf) = @_;
 local @rv = map { $_->{'values'}->[0] } &find(@_);
 return wantarray ? @rv : $rv[0];
+}
+
+# get_ldif_config()
+# Parses the new LDIF-format config files into a list ref
+sub get_ldif_config
+{
+if (defined($get_ldif_config_cache)) {
+	return $get_ldif_config_cache;
+	}
+local @rv;
+foreach my $file (&recursive_find_ldif($config{'config_file'})) {
+	local $lnum = 0;
+	local $cls = $file;
+	$cls =~ s/^\Q$config{'config_file'}\/\E//;
+	$cls =~ s/\.ldif$//;
+	open(CONFIG, $file);
+	while(<CONFIG>) {
+		s/\r|\n//g;
+		s/^#.*$//;
+		if (/^(\S+):\s*(.*)/) {
+			local $dir = { 'file' => $file,
+				       'line' => $lnum,
+				       'class' => $cls,
+				       'name' => $1 };
+			local $value = $2;
+			$dir->{'values'} = [ &split_quoted_string($value) ];
+			push(@rv, $dir);
+			}
+		$lnum++;
+		}
+	close(CONFIG);
+	}
+$get_ldif_config_cache = \@rv;
+return $get_ldif_config_cache;
 }
 
 # save_directive(&config, name, value|&values|&directive, ...)

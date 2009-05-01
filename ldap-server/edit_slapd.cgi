@@ -10,7 +10,8 @@ $conf = &get_config();
 @tds = ( "width=30%" );
 
 print &ui_form_start("save_slapd.cgi", "post");
-print &ui_hidden_table_start($text{'slapd_header'}, undef, 2, "basic", 1,\@tds);
+print &ui_hidden_table_start($text{'slapd_header'}, "width=100%", 2,
+			     "basic", 1,\@tds);
 
 # Top-level DN
 $suffix = &find_value('suffix', $conf);
@@ -84,7 +85,8 @@ print &ui_table_row($text{'slapd_timelimit'},
 print &ui_hidden_table_end("basic");
 
 # SSL section
-print &ui_hidden_table_start($text{'slapd_header2'}, undef, 2, "ssl", 0, \@tds);
+print &ui_hidden_table_start($text{'slapd_header2'}, "width=100%", 2,
+			     "ssl", 0, \@tds);
 
 # Protocols to serve
 if (&can_get_ldap_protocols()) {
