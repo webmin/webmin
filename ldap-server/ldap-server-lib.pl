@@ -65,7 +65,10 @@ else {
 	else {
 		# Find defaults from LDIF-format data
 		local $conf = &get_ldif_config();
-		# XXX which database?
+		$defdb = &get_default_db();
+		$port ||= &find_ldif_value("olcPort", $conf, $defdb);
+		$user ||= &find_ldif_value("olcRootDN", $conf, $defdb);
+		$pass ||= &find_ldif_value("olcRootPW", $conf, $defdb);
 		}
 	$user || return $text{'connect_euser2'};
 	$pass =~ /^\{/ && return $text{'connect_epass3'};
@@ -91,6 +94,14 @@ $ldap || return "This can't happen!";
 
 $connect_ldap_db = $ldap;
 return $ldap;
+}
+
+# get_default_db()
+# For LDIF format configs, returns the config DN for the default database
+sub get_default_db
+{
+# XXX make configurable
+return "cn=config,olcDatabase={1}hdb";
 }
 
 # local_ldap_server()
@@ -192,12 +203,35 @@ local @rv = grep { lc($_->{'name'}) eq lc($name) } @$conf;
 return wantarray ? @rv : $rv[0];
 }
 
-# find(name, &config)
+# find_value(name, &config)
 # Returns the directive values with some name
 sub find_value
 {
 local ($name, $conf) = @_;
 local @rv = map { $_->{'values'}->[0] } &find(@_);
+return wantarray ? @rv : $rv[0];
+}
+
+# find_ldif(name, &config, [class])
+# Returns the structures with some name and optionally class in the LDIF
+# configuration array ref
+sub find_ldif
+{
+local ($name, $conf, $cls) = @_;
+local @rv = grep { lc($_->{'name'}) eq lc($name) } @$conf;
+if ($cls) {
+	@rv = grep { lc($_->{'class'}) eq lc($cls) } @rv;
+	}
+return wantarray ? @rv : $rv[0];
+}
+
+# find_ldif_value(name, &config, [class])
+# Returns the values with some name and optionally class in the LDIF
+# configuration array ref
+sub find_ldif_value
+{
+local ($name, $conf, $cls) = @_;
+local @rv = map { $_->{'values'}->[0] } &find_ldif(@_);
 return wantarray ? @rv : $rv[0];
 }
 
@@ -214,6 +248,7 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 	local $cls = $file;
 	$cls =~ s/^\Q$config{'config_file'}\/\E//;
 	$cls =~ s/\.ldif$//;
+	$cls =~ s/\//,/g;
 	open(CONFIG, $file);
 	while(<CONFIG>) {
 		s/\r|\n//g;
@@ -233,6 +268,28 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 	}
 $get_ldif_config_cache = \@rv;
 return $get_ldif_config_cache;
+}
+
+# recursive_find_ldif(dir)
+# Find all .ldif files under some directory
+sub recursive_find_ldif
+{
+local ($dir) = @_;
+local @rv;
+opendir(LDIFDIR, $dir);
+local @files = readdir(LDIFDIR);
+closedir(LDIFDIR);
+foreach my $f (@files) {
+	next if ($f eq "." || $f eq "..");
+	local $path = "$dir/$f";
+	if (-r $path && $path =~ /\.ldif$/) {
+		push(@rv, $path);
+		}
+	elsif (-d $path) {
+		push(@rv, &recursive_find_ldif($path));
+		}
+	}
+return @rv;
 }
 
 # save_directive(&config, name, value|&values|&directive, ...)
@@ -647,6 +704,21 @@ elsif ($gconfig{'os_type'} eq 'debian-linux') {
 	&write_env_file("/etc/default/slapd", \%ldap);
 	&unlock_file("/etc/default/slapd");
 	}
+}
+
+sub get_ldap_base
+{
+if (&get_config_type() == 1) {
+	my $conf = &get_config();
+	my $base = &find_value("suffix", $conf);
+	return $base;
+	}
+elsif (&get_config_type() == 2) {
+	my $conf = &get_ldif_config();
+	my $base = &find_ldif_value("olcSuffix", $conf, &get_default_db());
+	return $base;
+	}
+return undef;
 }
 
 1;

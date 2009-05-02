@@ -19,8 +19,7 @@ if ($in{'goparent'}) {
 	$base = $in{'parent'};
 	}
 elsif (!$in{'base'}) {
-	$conf = &get_config();
-	$base = &find_value("suffix", $conf);
+	$base = &get_ldap_base();
 	}
 else {
 	$base = $in{'base'};
