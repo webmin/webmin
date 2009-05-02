@@ -110,6 +110,7 @@ ldap_emodule=The $1 Perl module needed for talking to the LDAP server is not ins
 ldap_emodule2=The $1 Perl module needed for talking to the LDAP server is not installed.
 ldap_econf=The LDAP client configuration file $1 was not found on your system
 ldap_econn=Failed to connect to LDAP server $1 port $2
+ldap_econn2=Failed to connect to LDAP server $1 port $2 : $3
 ldap_elogin=Failed to bind to LDAP server $1 as $2 : $3
 ldap_anon=anonymous
 ldap_eparse=Could not parse the LDAP server URI $1

@@ -200,9 +200,16 @@ if ($ldap_hosts) {
 		      &find_svalue("port", $conf) ||
 		      ($use_ssl == 1 ? 636 : 389);
 	foreach my $host (@hosts) {
-		$ldap = Net::LDAP->new($host, port => $port,
+		eval {
+			$ldap = Net::LDAP->new($host, port => $port,
 				scheme => $use_ssl == 1 ? 'ldaps' : 'ldap');
-		if (!$ldap) {
+			};
+		if ($@) {
+			$err = &text('ldap_econn2',
+				     "<tt>$host</tt>", "<tt>$port</tt>",
+				     &html_escape($@));
+			}
+		elsif (!$ldap) {
 			$err = &text('ldap_econn',
 				     "<tt>$host</tt>", "<tt>$port</tt>");
 			}
