@@ -11,7 +11,7 @@ $old_hostname = &get_system_hostname();
 $in{'hostname'} =~ /^[A-z0-9\.\-]+$/ ||
 	&error(&text('dns_ehost', $in{'hostname'}));
 $dns = { };
-for($i=0; $i<$max_dns_servers; $i++) {
+for($i=0; defined($ns = $in{"nameserver_$i"}); $i++) {
 	$ns = $in{"nameserver_$i"};
 	$ns =~ s/^\s+//; $ns =~ s/\s+$//;
 	if ($ns) {
