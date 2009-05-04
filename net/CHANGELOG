@@ -48,3 +48,4 @@ When changing the hostname on Debian or Ubuntu, update /etc/mailname too.
 Fixed editing of bonding network interfaces on Debian Linux.
 ---- Changes since 1.480 ----
 Fixed network interface management on SuSE 10.2.
+Updated the Hostname and DNS Client page to always show the hostname from config files, rather than the system's short hostname.

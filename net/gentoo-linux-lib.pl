@@ -261,6 +261,11 @@ return &check_ipaddress($_[0]);
 # get_hostname()
 sub get_hostname
 {
+local %host;
+&read_env_file("/etc/conf.d/hostname", \%host);
+if ($host{'HOSTNAME'}) {
+	return $host{'HOSTNAME'};
+	}
 return &get_system_hostname(1);
 }
 

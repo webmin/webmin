@@ -389,9 +389,14 @@ sub parse_order
 
 # get_hostname()
 sub get_hostname
-  {
-      return &get_system_hostname();
-  }
+{
+local $hn = &read_file_contents("/etc/myname");
+$hn =~ s/\r|\n//g;
+if ($hn) {
+	return $hn;
+	}
+return &get_system_hostname();
+}
 
 # save_hostname(name)
 sub save_hostname

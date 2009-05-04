@@ -452,6 +452,10 @@ else {
 # get_hostname()
 sub get_hostname
 {
+local %rc = &get_rc_conf();
+if ($rc{'hostname'}) {
+	return $rc{'hostname'};
+	}
 return &get_system_hostname();
 }
 

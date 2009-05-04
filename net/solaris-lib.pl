@@ -296,6 +296,11 @@ else {
 # get_hostname()
 sub get_hostname
 {
+local $hn = &read_file_contents("/etc/nodename");
+$hn =~ s/\r|\n//g;
+if ($hn) {
+	return $hn;
+	}
 return &get_system_hostname();
 }
 

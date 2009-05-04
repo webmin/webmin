@@ -350,6 +350,11 @@ return &check_ipaddress_any($_[0]);
 # get_hostname()
 sub get_hostname
 {
+local $hn = &read_file_contents("/etc/hostname");
+$hn =~ s/\r|\n//g;
+if ($hn) {
+	return $hn;
+	}
 return &get_system_hostname(1);
 }
 

@@ -370,6 +370,10 @@ return undef;
 # get_hostname()
 sub get_hostname
 {
+local $hc = &read_hostconfig();
+if ($hc->{'HOSTNAME'}) {
+	return $hc->{'HOSTNAME'};
+	}
 return &get_system_hostname();
 }
 

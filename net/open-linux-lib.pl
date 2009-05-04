@@ -105,6 +105,11 @@ return &check_ipaddress($_[0]);
 
 sub get_hostname
 {
+local %conf;
+&read_env_file($network_config, \%conf);
+if ($conf{'HOSTNAME'}) {
+	return $conf{'HOSTNAME'};
+	}
 return &get_system_hostname(1);
 }
 
