@@ -100,8 +100,12 @@ return $ldap;
 # For LDIF format configs, returns the config DN for the default database
 sub get_default_db
 {
-# XXX make configurable
-return "cn=config,olcDatabase={1}hdb";
+return "olcDatabase={1}hdb,cn=config";
+}
+
+sub get_config_db
+{
+return "cn=config";
 }
 
 # local_ldap_server()
@@ -248,7 +252,7 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 	local $cls = $file;
 	$cls =~ s/^\Q$config{'config_file'}\/\E//;
 	$cls =~ s/\.ldif$//;
-	$cls =~ s/\//,/g;
+	$cls = join(",", reverse(split(/\//, $cls)));
 	open(CONFIG, $file);
 	while(<CONFIG>) {
 		s/\r|\n//g;
@@ -396,6 +400,21 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 	}
 }
 
+# save_ldif_directive(&config, name, class, value|&values|&directive, ...)
+# Update the value(s) of some entry in the LDIF format config file
+sub save_ldif_directive
+{
+local ($conf, $name, $cls, @values) = @_;
+local @old = &find_ldif($name, $conf, $cls);
+local $file;
+if (@old) {
+	$file = $old[0]->{'file'};
+	}
+else {
+	# XXX file for first directive of that class
+	}
+}
+
 # start_ldap_server()
 # Attempts to start the LDAP server process. Returns undef on success or an
 # error message on failure.
@@ -441,12 +460,25 @@ else {
 	}
 }
 
+# get_ldap_server_pidfile()
+# Returns the LDAP server's PID file, or undef if not found
+sub get_ldap_server_pidfile
+{
+if (&get_config_type() == 1) {
+	local $conf = &get_config();
+	return &find_value("pidfile", $conf);
+	}
+else {
+	local $conf = &get_ldif_config();
+	return &find_value("olcPidFile", $conf);
+	}
+}
+
 # is_ldap_server_running()
 # Returns the process ID of the running LDAP server, or undef
 sub is_ldap_server_running
 {
-local $conf = &get_config();
-local $pidfile = &find_value("pidfile", $conf);
+local $pidfile = &get_ldap_server_pidfile();
 if ($pidfile) {
 	return &check_pid_file($pidfile);
 	}
@@ -486,6 +518,9 @@ else {
 
 sub get_config_dir
 {
+if (-d $config{'config_file'}) {
+	return $config{'config_file'};
+	}
 if ($config{'config_file'} =~ /^(\S+)\/([^\/]+)$/) {
 	return $1;
 	}

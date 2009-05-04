@@ -18,8 +18,14 @@ print &webmin::show_ssl_key_form(
 	"LDAP server on ".&get_display_hostname());
 
 # Destination files
-$conf = &get_config();
-$cert = &find_value("TLSCertificateFile", $conf);
+if (&get_config_type() == 1) {
+	$conf = &get_config();
+	$cert = &find_value("TLSCertificateFile", $conf);
+	}
+else {
+	$conf = &get_ldif_config();
+	$cert = &find_ldif_value($s->[0], $conf, &get_config_db());
+	}
 if ($cert) {
 	print &ui_table_row($text{'gencert_dest'},
 		&ui_opt_textbox("dest", undef, 40, $text{'gencert_same'},

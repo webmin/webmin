@@ -10,8 +10,7 @@ print &ui_form_start("create.cgi", "post");
 print &ui_table_start($text{'create_header'}, undef, 2);
 
 # Domain or DN
-$conf = &get_config();
-$dn = &find_value('suffix', $conf);
+$dn = &get_ldap_base();
 $dom = &get_system_hostname();
 if ($dom =~ /^([^\.]+)\.([^\.]+\.\S+)$/) {
 	$dom = $2;	# Just domain name

@@ -78,10 +78,11 @@ if ($p && ref($ldap) && $access{'browser'}) {
 # Work out icons
 if ($local) {
 	# All local server icons
-	@pages = ( "slapd", "schema", "acl", "browser", "create" );
+	@pages = ( &get_config_type() == 1 ? "slapd" : "ldif",
+		   "schema", "acl", "browser", "create" );
 	}
 else {
-	# Just browser and DN creator?
+	# Just browser and DN creator
 	@pages = ( "browser", "create" );
 	}
 @pages = grep { $access{$_} } @pages;

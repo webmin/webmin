@@ -10,8 +10,7 @@ $access{'start'} || &error($text{'bootup_ecannot'});
 &foreign_require("init", "init-lib.pl");
 $iname = $config{'init_name'} || $module_name;
 if ($in{'boot'}) {
-	$conf = &get_config();
-	$pidfile = &find_value("pidfile", $conf);
+	$pidfile = &get_ldap_server_pidfile();
 	&init::enable_at_boot($iname, "Start OpenLDAP server",
 			      "$config{'slapd'} 2>&1 </dev/null",
 			      "kill `cat $pidfile`");
