@@ -135,6 +135,11 @@ if ($config{'dhcpd_version'} >= 3) {
 		local $o = $optdef{$in{"cname_$i"}};
 		local $cv = $in{"cval_$i"};
 		$cv =~ /\S/ || &error(&text('sopt_ecval', $in{"cname_$i"}));
+		if ($o && $o->{'values'}->[4] eq 'ip-address') {
+			&check_ipaddress($cv) ||
+			  &check_ip6address($cv) ||
+			    &error(&text('sopt_ecip', $in{"cname_$i"}));
+			}
 		if ($o && $o->{'values'}->[4] eq 'string' ||
 		    $cv !~ /^([0-9a-fA-F]{1,2}:)*[0-9a-fA-F]{1,2}$/ &&
 		    !&check_ipaddress($cv)) {

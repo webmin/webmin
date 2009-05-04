@@ -186,6 +186,7 @@ sopt_edname='$1' is not a valid option name
 sopt_ednum='$1' is not a valid option number
 sopt_edtype='$1' is not a valid option type
 sopt_ecval=Missing value for custom option '$1'
+sopt_ecip=Value for custom option '$1' must be an IP address
 
 sshared_faildel=Failed to delete shared network
 sshared_failsave=Failed to save shared network
