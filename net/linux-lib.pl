@@ -389,10 +389,12 @@ sub save_dns_config
 local $rc;
 &lock_file($rc_config) if ($suse_dns_config);
 if ($use_suse_dns && ($rc = &parse_rc_config()) && $rc->{'NAMESERVER'}) {
+	# Update SuSE config file
 	&save_rc_config($rc, "NAMESERVER", join(" ", @{$_[0]->{'nameserver'}}));
 	&save_rc_config($rc, "SEARCHLIST", join(" ", @{$_[0]->{'domain'}}));
 	}
 else {
+	# Update standard resolv.conf file
 	&lock_file("/etc/resolv.conf");
 	&open_readfile(RESOLV, "/etc/resolv.conf");
 	local @resolv = <RESOLV>;
@@ -403,19 +405,36 @@ else {
 		}
 	if ($_[0]->{'domain'}) {
 		if ($_[0]->{'domain'}->[1]) {
-			&print_tempfile(RESOLV, "search ",join(" ", @{$_[0]->{'domain'}}),"\n");
+			&print_tempfile(RESOLV,
+				"search ",join(" ", @{$_[0]->{'domain'}}),"\n");
 			}
 		else {
-			&print_tempfile(RESOLV, "domain $_[0]->{'domain'}->[0]\n");
+			&print_tempfile(RESOLV,
+				"domain $_[0]->{'domain'}->[0]\n");
 			}
 		}
 	foreach (@resolv) {
-		&print_tempfile(RESOLV, $_) if (!/^\s*(nameserver|domain|search)\s+/);
+		&print_tempfile(RESOLV, $_)
+			if (!/^\s*(nameserver|domain|search)\s+/);
 		}
 	&close_tempfile(RESOLV);
 	&unlock_file("/etc/resolv.conf");
 	}
 
+# On Debian, if dns-nameservers are defined in interfaces, update them too
+if ($gconfig{'os_type'} eq 'debian-linux' && defined(&get_interface_defs)) {
+	local @ifaces = &get_interface_defs();
+	foreach my $i (@ifaces) {
+		local ($dns) = grep { $_->[0] eq 'dns-nameservers' } @{$i->[3]};
+		if ($dns) {
+			$dns->[1] = join(' ', @{$_[0]->{'nameserver'}});
+			&modify_interface_def($i->[0], $i->[1], $i->[2],
+					      $i->[3], 0);
+			}
+		}
+	}
+
+# Update resolution order in nsswitch.conf
 &lock_file("/etc/nsswitch.conf");
 &open_readfile(SWITCH, "/etc/nsswitch.conf");
 local @switch = <SWITCH>;
@@ -431,6 +450,8 @@ foreach (@switch) {
 	}
 &close_tempfile(SWITCH);
 &unlock_file("/etc/nsswitch.conf");
+
+# Update SuSE config file
 if ($suse_dns_config && $rc->{'USE_NIS_FOR_RESOLVING'}) {
 	if ($_[0]->{'order'} =~ /nis/) {
 		&save_rc_config($rc, "USE_NIS_FOR_RESOLVING", "yes");
