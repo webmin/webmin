@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Actually generate the cert
+# Actually generate the cert, and update the LDIF format config file
 
 require './ldap-server-lib.pl';
 &local_ldap_server() == 1 || &error($text{'slapd_elocal'});
@@ -7,12 +7,13 @@ $access{'slapd'} || &error($text{'slapd_ecannot'});
 &foreign_require("webmin", "webmin-lib.pl");
 &ReadParse();
 &error_setup($text{'gencert_err'});
-$conf = &get_config();
+$conf = &get_ldif_config();
+$confdb = &get_config_db();
 
 # Work out dest files
 if ($in{'dest_def'}) {
-	$keyfile = &find_value("TLSCertificateKeyFile", $conf);
-	$certfile = &find_value("TLSCertificateFile", $conf);
+	$keyfile = &find_ldif_value("olcTLSCertificateKeyFile", $conf, $confdb);
+	$certfile = &find_ldif_value("olcTLSCertificateFile", $conf, $confdb);
 	}
 else {
 	# In some dir
@@ -32,9 +33,9 @@ $err = &webmin::parse_ssl_key_form(\%in, $keyfile,
 
 # Update config to use them
 &lock_slapd_files();
-&save_directive($conf, "TLSCertificateFile", $certfile);
-&save_directive($conf, "TLSCertificateKeyFile", $keyfile);
-&flush_file_lines($config{'config_file'});
+&save_ldif_directive($conf, "olcTLSCertificateFile", $confdb, $certfile);
+&save_ldif_directive($conf, "olcTLSCertificateKeyFile", $confdb, $keyfile);
+&flush_file_lines();
 &unlock_slapd_files();
 
 &webmin_log("gencert");

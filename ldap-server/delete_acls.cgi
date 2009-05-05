@@ -8,7 +8,7 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 
 # Filter out un-wanted rules
-&lock_file($config{'config_file'});
+&lock_slapd_files();
 $conf = &get_config();
 @access = &find("access", $conf);
 %d = map { $_, 1 } split(/\0/, $in{'d'});
@@ -20,7 +20,7 @@ for($i=0; $i<@access; $i++) {
 # Save them
 &save_directive($conf, "access", @newaccess);
 &flush_file_lines($config{'config_file'});
-&unlock_file($config{'config_file'});
+&unlock_slapd_files();
 
 &webmin_log("delete", "accesses", scalar(keys(%d)));
 &redirect("edit_acl.cgi");

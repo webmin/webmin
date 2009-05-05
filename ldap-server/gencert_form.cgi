@@ -9,7 +9,8 @@ $access{'slapd'} || &error($text{'slapd_ecannot'});
 &ui_print_header(undef, $text{'gencert_title'}, "");
 
 print $text{'gencert_desc'},"<p>\n";
-print &ui_form_start("gencert.cgi", "post");
+print &ui_form_start(&get_config_type() == 1 ? "gencert.cgi"
+					     : "gencert_ldif.cgi", "post");
 print &ui_table_start($text{'gencert_header'}, undef, 2, [ "width=30%" ]);
 
 # Generic key options
@@ -24,7 +25,8 @@ if (&get_config_type() == 1) {
 	}
 else {
 	$conf = &get_ldif_config();
-	$cert = &find_ldif_value($s->[0], $conf, &get_config_db());
+	$cert = &find_ldif_value(
+		"olcTLSCertificateFile", $conf, &get_config_db());
 	}
 if ($cert) {
 	print &ui_table_row($text{'gencert_dest'},

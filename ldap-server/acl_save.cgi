@@ -8,7 +8,7 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 
 # Get the current rule
-&lock_file($config{'config_file'});
+&lock_slapd_files();
 $conf = &get_config();
 @access = &find("access", $conf);
 if (!$in{'new'}) {
@@ -85,7 +85,7 @@ else {
 # Write out access directives
 &save_directive($conf, "access", @access);
 &flush_file_lines($config{'config_file'});
-&unlock_file($config{'config_file'});
+&unlock_slapd_files();
 
 # Log and return
 &webmin_log($in{'delete'} ? "delete" : $in{'new'} ? "create" : "modify",

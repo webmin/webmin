@@ -1,5 +1,5 @@
 #!/usr/local/bin/perl
-# Update local LDAP server configuration options
+# Update local LDAP server LDIF file configuration options
 
 require './ldap-server-lib.pl';
 &error_setup($text{'slapd_err'});
@@ -8,61 +8,45 @@ $access{'slapd'} || &error($text{'slapd_ecannot'});
 &ReadParse();
 
 &lock_slapd_files();
-$conf = &get_config();
+$conf = &get_ldif_config();
 
 # Validate and store inputs
 
 # Top-level DN
+$defdb = &get_default_db();
 $in{'suffix'} =~ /=/ || &error($text{'slapd_esuffix'});
-&save_directive($conf, 'suffix', $in{'suffix'});
+&save_ldif_directive($conf, 'olcSuffix', $defdb, $in{'suffix'});
 
 # Admin login
 $in{'rootdn'} =~ /=/ || &error($text{'slapd_erootdn'});
-&save_directive($conf, 'rootdn', $in{'rootdn'});
+&save_ldif_directive($conf, 'olcRootDN', $defdb, $in{'rootdn'});
 
 # Admin password
 if (!$in{'rootchange_def'}) {
 	$in{'rootchange'} =~ /\S/ || &error($text{'slapd_erootpw'});
 	$crypt = &unix_crypt($in{'rootchange'}, substr(time(), -2));
-	&save_directive($conf, 'rootpw', "{crypt}".$crypt);
+	&save_ldif_directive($conf, 'olcRootPW', $defdb, "{crypt}".$crypt);
 	$config{'pass'} = $in{'rootchange'};
 	$save_config = 1;
 	}
 
 # Cache sizes
-if (!$in{'cachesize_def'}) {
-	$in{'cachesize'} =~ /^\d+$/ || &error($text{'slapd_ecachesize'});
-	&save_directive($conf, 'cachesize', $in{'cachesize'});
-	}
-else {
-	&save_directive($conf, 'cachesize', undef);
-	}
 if (!$in{'dbcachesize_def'}) {
 	$in{'dbcachesize'} =~ /^\d+$/ || &error($text{'slapd_edbcachesize'});
-	&save_directive($conf, 'dbcachesize', $in{'dbcachesize'});
+	&save_ldif_directive($conf, 'olcDbCachesize', $defdb,
+			     $in{'dbcachesize'});
 	}
 else {
-	&save_directive($conf, 'dbcachesize', undef);
+	&save_ldif_directive($conf, 'olcDbCachesize', $defdb, undef);
 	}
 
-# Access control options
-@allow = split(/\0/, $in{'allow'});
-&save_directive($conf, 'allow', @allow ? \@allow : undef);
-
-# Size and time limits
+# Size limit
 if ($in{'sizelimit_def'}) {
-	&save_directive($conf, 'sizelimit', undef);
+	&save_ldif_directive($conf, 'olcSizeLimit', $defdb, undef);
 	}
 else {
 	$in{'sizelimit'} =~ /^[1-9]\d*$/ || &error($text{'slapd_esizelimit'});
-	&save_directive($conf, 'sizelimit', $in{'sizelimit'});
-	}
-if ($in{'timelimit_def'}) {
-	&save_directive($conf, 'timelimit', undef);
-	}
-else {
-	$in{'timelimit'} =~ /^[1-9]\d*$/ || &error($text{'slapd_etimelimit'});
-	&save_directive($conf, 'timelimit', $in{'timelimit'});
+	&save_ldif_directive($conf, 'olcSizeLimit', $defdb, $in{'sizelimit'});
 	}
 
 # LDAP protocols
@@ -72,21 +56,22 @@ if (&can_get_ldap_protocols()) {
 	}
 
 # SSL file options
-foreach $s ([ 'TLSCertificateFile', 'cert' ],
-	    [ 'TLSCertificateKeyFile', 'key' ],
-	    [ 'TLSCACertificateFile', 'ca' ]) {
+$confdb = &get_config_db();
+foreach $s ([ 'olcTLSCertificateFile', 'cert' ],
+	    [ 'olcTLSCertificateKeyFile', 'key' ],
+	    [ 'olcTLSCACertificateFile', 'ca' ]) {
 	if ($in{$s->[1].'_def'}) {
-		&save_directive($conf, $s->[0], undef);
+		&save_ldif_directive($conf, $s->[0], $confdb, undef);
 		}
 	else {
 		&valid_pem_file($in{$s->[1]}, $s->[1]) ||
 			&error($text{'slapd_e'.$s->[1]});
-		&save_directive($conf, $s->[0], $in{$s->[1]});
+		&save_ldif_directive($conf, $s->[0], $confdb, $in{$s->[1]});
 		}
 	}
 
 # Write out the files
-&flush_file_lines($config{'config_file'});
+&flush_file_lines();
 &unlock_slapd_files();
 if ($save_config) {
 	&lock_file($module_config_file);

@@ -7,7 +7,7 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 
 # Find it
-&lock_file($config{'config_file'});
+&lock_slapd_files();
 $conf = &get_config();
 @access = &find("access", $conf);
 $p = &parse_ldap_access($access[$in{'idx'}]);
@@ -17,7 +17,7 @@ $p = &parse_ldap_access($access[$in{'idx'}]);
 	($access[$in{'idx'}], $access[$in{'idx'}-1]);
 &save_directive($conf, "access", @access);
 &flush_file_lines($config{'config_file'});
-&unlock_file($config{'config_file'});
+&unlock_slapd_files();
 
 &webmin_log("up", "access", $p->{'what'});
 &redirect("edit_acl.cgi");

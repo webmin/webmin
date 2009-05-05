@@ -21,10 +21,10 @@ push(@incs, split(/\0/, $in{'d'}));
 @incs = &unique(@incs);
 
 # Write out
-&lock_file($config{'config_file'});
+&lock_slapd_files();
 &save_directive($conf, "include", @incs);
 &flush_file_lines($config{'config_file'});
-&unlock_file($config{'config_file'});
+&unlock_slapd_files();
 
 &webmin_log("schema");
 &redirect("");

@@ -411,7 +411,49 @@ if (@old) {
 	$file = $old[0]->{'file'};
 	}
 else {
-	# XXX file for first directive of that class
+	local ($first) = grep { lc($_->{'class'}) eq lc($cls) } @$conf;
+	$first || &error("No LDIF-format config file found for $cls");
+	$file = $first->{'file'};
+	}
+local $lref = &read_file_lines($file);
+for(my $i=0; $i<@old || $i<@values; $i++) {
+	local ($line, @unqvalues, @qvalues, $len);
+	if (defined($values[$i])) {
+		# Work out new line
+		@unqvalues = ref($values[$i]) eq 'ARRAY' ?
+                                @{$values[$i]} :
+                             ref($values[$i]) eq 'HASH' ?
+                                @{$values[$i]->{'values'}} :
+                                ( $values[$i] );
+		$line = $name.": ".join(" ", @unqvalues);
+		}
+	if (defined($old[$i]) && defined($values[$i])) {
+		# Update some directive
+		$lref->[$old[$i]->{'line'}] = $line;
+		if (&indexof($values[$i], @$conf) < 0) {
+			$old[$i]->{'values'} = \@unqvalues;
+			}
+		}
+	elsif (defined($old[$i]) && !defined($values[$i])) {
+		# Remove some directive (from cache too)
+		splice(@$lref, $old[$i]->{'line'}, 1);
+		local $idx = &indexof($old[$i], @$conf);
+                splice(@$conf, $idx, 1) if ($idx >= 0);
+	        foreach my $c (@$conf) {
+                        if ($c->{'line'} > $old[$i]->{'line'}) {
+                                $c->{'line'} --;
+                                }
+                        }
+		}
+	elsif (!defined($old[$i]) && defined($values[$i])) {
+		# Add some directive
+		local $newdir = { 'name' => $name,
+				  'line' => scalar(@$lref),
+				  'file' => $file,
+				  'values' => \@unqvalues };
+		push(@$lref, $line);
+		push(@$conf, $newdir);
+		}
 	}
 }
 
@@ -754,6 +796,31 @@ elsif (&get_config_type() == 2) {
 	return $base;
 	}
 return undef;
+}
+
+# lock_slapd_files()
+# Lock all LDAP config file(s)
+sub lock_slapd_files
+{
+if (&get_config_type() == 2) {
+	@ldap_lock_files = &recursive_find_ldif($config{'config_file'});
+	}
+else {
+	@ldap_lock_files = ( $config{'config_file'} );
+	}
+foreach my $f (@ldap_lock_files) {
+	&lock_file($f);
+	}
+}
+
+# unlock_slapd_files()
+# Un-lock all LDAP config file(s)
+sub unlock_slapd_files
+{
+foreach my $f (@ldap_lock_files) {
+	&lock_file($f);
+	}
+@ldap_lock_files = ( );
 }
 
 1;
