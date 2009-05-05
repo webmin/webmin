@@ -823,7 +823,6 @@ local $out;
 if ($config{'restart_cmd'}) {
 	# Run the restart script
 	$out = &backquote_logged("$config{'restart_cmd'} 2>&1");
-	return "<pre>$out</pre>" if ($?);
 	}
 else {
 	# Kill and re-run the server
@@ -836,9 +835,29 @@ else {
 	else {
 		$out = &backquote_logged("$config{'dhcpd_path'} -cf $config{'dhcpd_conf'} -lf $config{'lease_file'} $config{'interfaces'} 2>&1");
 		}
-	return "<pre>$out</pre>" if ($?);
+	}
+if ($?) {
+	return &parse_error_out($out);
 	}
 return undef;
+}
+
+# Find and add config file lines around those in an error message
+sub parse_error_out
+{
+local ($out) = @_;
+local $conftext;
+if ($out =~ /(\S+)\s+line\s+(\d+):/) {
+	local ($file, $line) = ($1, $2);
+	local $lref = &read_file_lines($file, 1);
+	local $start = $line - 5;
+	local $end = $line + 5;
+	$start = 0 if ($start < 0);
+	$end = @$lref-1 if ($end > @$lref-1);
+	$conftext = &text('restart_conftext', $line, $file)."<br>".
+	    "<pre>".&html_escape(join("\n", @$lref[$start .. $end]))."</pre>";
+	}
+return "<pre>".&html_escape($out)."</pre>".$conftext;
 }
 
 # stop_dhcpd()
@@ -881,7 +900,7 @@ else {
 	$out = &backquote_logged("$config{'dhcpd_path'} -cf $config{'dhcpd_conf'} -lf $config{'lease_file'} $config{'interfaces'} 2>&1");
 	}
 if ($? || $out =~ /error|failed/i) {
-	return "<pre>$out</pre>";
+	return &parse_error_out($out);
 	}
 else {
 	return undef;

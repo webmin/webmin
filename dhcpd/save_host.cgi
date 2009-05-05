@@ -10,7 +10,7 @@ require './params-lib.pl';
 
 # check acls
 %access = &get_module_acl();
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 if ($in{'delete'}) {
 	&error("$text{'eacl_np'} $text{'eacl_pdh'}")
 		if !&can('rw', \%access, $host, 1);
@@ -35,7 +35,7 @@ else {
 # save
 if ($in{'delete'}) {
 	# Delete this host
-	$whatfailed = $text{'shost_faildel'};
+	&error_setup($text{'shost_faildel'});
 	&save_directive($par, [ $host ], [ ], 0);
 	&drop_dhcpd_acl('hst', \%access, $host->{'values'}->[0]);
 	}

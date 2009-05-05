@@ -164,7 +164,6 @@ sub acl_security_save
 {
 if ($in{'r_sub'} < $in{'w_sub'} || $in{'r_sha'} < $in{'w_sha'} ||
     $in{'r_hst'} < $in{'w_hst'} || $in{'r_grp'} < $in{'w_grp'}) {
-	$whatfailed = $text{'acl_err'};
 	&error($text{'acl_ernow'});
 	}
 $_[0]->{'apply'}=$in{'apply'};

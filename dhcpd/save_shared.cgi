@@ -11,7 +11,7 @@ $parconf = $par->{'members'};
 
 # check acls
 %access = &get_module_acl();
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 if ($in{'delete'}) {
 	&error("$text{'eacl_np'} $text{'eacl_pdn'}")
 		if !&can('rw', \%access, $sha, 1);
@@ -44,10 +44,10 @@ if ($in{'options'}) {
 	}
 else {
 	if ($in{'delete'}) {
-		$whatfailed = $text{'sshared_faildel'};
+		&error_setup($text{'sshared_faildel'});
 		}
 	else {
-		$whatfailed = $text{'sshared_failsave'};
+		&error_setup($text{'sshared_failsave'});
 		$in{'name'} =~ /^\S+$/ ||
 			&error($text{'sshared_invalidsname'});
 		$sha->{'values'} = [ $in{'name'} ];
@@ -101,7 +101,7 @@ else {
 			}
 		}
 
-	$whatfailed = "<blink><font color=red>$text{'eacl_aviol'}</font></blink>";
+	&error_setup($text{'eacl_aviol'});
 	foreach $h (&unique(@wasin, @nowin)) {
 		$was = &indexof($h, @wasin) != -1;
 		$now = &indexof($h, @nowin) != -1;
@@ -205,7 +205,7 @@ sub check_subnets
 local(@subnets);
 @subnets = &find("subnet", $_[0]->{'members'});
 if (@subnets == 0) {
-	$whatfailed = $text{'sshared_failsave'};
+	&error_setup($text{'sshared_failsave'});
 	&error(&text('sshared_nosubnet', $_[0]->{'values'}->[0]));
 	}
 }

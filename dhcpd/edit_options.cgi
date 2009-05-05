@@ -8,7 +8,7 @@ require './params-lib.pl';
 $conf = &get_config();
 
 %access = &get_module_acl();
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 
 $client = &get_parent_config();
 push(@parents, $client);

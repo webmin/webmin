@@ -165,6 +165,7 @@ listl_pc=Percentage
 restart_errmsg1=Failed to restart dhcpd
 restart_errmsg2=Failed to signal process
 start_failstart=Failed to start dhcpd
+restart_conftext=Lines around $1 in $2 :
 
 sgroup_faildel=Failed to delete group
 sgroup_failsave=Failed to save group

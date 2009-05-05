@@ -9,7 +9,7 @@ require 'timelocal.pl';
 $timenow = time();
 
 %access = &get_module_acl();
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 &error("$text{'eacl_np'} $text{'eacl_psl'}") unless $access{'r_leases'};
 
 if ($in{'network'}) {

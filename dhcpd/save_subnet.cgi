@@ -11,7 +11,7 @@ $parconf = $par->{'members'};
 
 # check acls
 %access = &get_module_acl();
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 if ($in{'delete'}) {
 	&error("$text{'eacl_np'} $text{'eacl_pds'}")
 		if !&can('rw', \%access, $sub, 1);
@@ -52,7 +52,7 @@ elsif ($in{'leases'}) {
 	}
 else {
 	if ($in{'delete'}) {
-		$whatfailed = $text{'ssub_faildel'};
+		&error_setup($text{'ssub_faildel'});
 		if ($par->{'name'} eq "shared-network") {
 			@subnets = &find("subnet", $par->{'members'});
 			if (@subnets < 2) {
@@ -61,7 +61,7 @@ else {
 			}
 		}
 	else {
-		$whatfailed = $text{'ssub_failsave'};
+		&error_setup($text{'ssub_failsave'});
 		# Validate and save inputs
 		gethostbyname($in{'network'}) || &check_ipaddress($in{'network'}) ||
 			&error("'$in{'network'}' $text{'ssub_invalidsubaddr'}");
@@ -102,7 +102,7 @@ else {
 			}
 		}
 
-	$whatfailed = "<blink><font color=red>$text{'eacl_aviol'}</font></blink>";
+	&error_setup($text{'eacl_aviol'});
 	foreach $h (&unique(@wasin, @nowin)) {
 		$was = &indexof($h, @wasin) != -1;
 		$now = &indexof($h, @nowin) != -1;
@@ -143,7 +143,7 @@ else {
 		}
 
 	if (!$in{'delete'}) {
-		$whatfailed = $text{'ssub_failsave'};
+		&error_setup($text{'ssub_failsave'});
 		for($i=0; defined($low = $in{"range_low_$i"}); $i++) {
 			next if (!$low);
 			$hi = $in{"range_hi_$i"}; $dyn = $in{"range_dyn_$i"};

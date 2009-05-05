@@ -27,7 +27,7 @@ else {
 
 # check acls
 %access = &get_module_acl();
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 &error("$text{'eacl_np'} $text{'eacl_pus'}") if !&can('rw', \%access, $sub);
 
 # save

@@ -11,7 +11,7 @@ $parconf = $par->{'members'};
 
 # check acls
 %access = &get_module_acl();
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 if ($in{'delete'}) {
 	&error("$text{'eacl_np'} $text{'eacl_pdg'}")
 		if !&can('rw', \%access, $group, 1);
@@ -38,8 +38,8 @@ if ($in{'options'}) {
 	exit;
 	}
 else {
-	$whatfailed = $in{'delete'} ? $text{'sgroup_faildel'} :
-				      $text{'sgroup_failsave'};
+	&error_setup($in{'delete'} ? $text{'sgroup_faildel'} :
+				      $text{'sgroup_failsave'});
 
 	# Move hosts into or out of this group
 	@wasin = &find("host", $group->{'members'});
@@ -58,7 +58,7 @@ else {
 			}
 		}
 
-	$whatfailed = "<blink><font color=red>$text{'eacl_aviol'}</font></blink>";
+	&error_setup($text{'eacl_aviol'});
 	foreach $h (&unique(@wasin, @nowin)) {
 		$was = &indexof($h, @wasin) != -1;
 		$now = &indexof($h, @nowin) != -1;
@@ -85,7 +85,7 @@ else {
 		$group->{'comment'} = $in{'desc'};
 		&parse_params($group, $indent+1);
 
-		$whatfailed = $text{'sgroup_failsave'};
+		&error_setup($text{'sgroup_failsave'});
 		@partypes = ( "", "shared-network", "subnet" );
 		if (!$npar || $in{'assign'} > 0 && $npar->{'name'} ne $partypes[$in{'assign'}]) {
 			if ($in{'jsquirk'}) {

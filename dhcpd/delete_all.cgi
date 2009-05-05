@@ -24,7 +24,7 @@ $to_del = $parconf->[$in{'idx'}];
 
 # check acls
 %access = &get_module_acl();
-&error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
+&error_setup($text{'eacl_aviol'});
 if ($to_del->{'name'} eq "group") {
 	&error("$text{'eacl_np'} $text{'eacl_pdg'}")
 		if !&can('rw', \%access, $to_del, 1);
