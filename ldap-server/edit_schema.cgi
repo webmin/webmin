@@ -8,22 +8,27 @@ $access{'schema'} || &error($text{'schema_ecannot'});
 &ReadParse();
 
 # Get included schemas
-$conf = &get_config();
-foreach $i (&find_value("include", $conf)) {
-	if ($i =~ /^(.*)\// && $1 eq $config{'schema_dir'}) {
-		$incs{$i} = ++$n;
+if (&get_config_type() == 1) {
+	$conf = &get_config();
+	foreach $i (&find_value("include", $conf)) {
+		if ($i =~ /^(.*)\// && $1 eq $config{'schema_dir'}) {
+			$incs{$i} = ++$n;
+			}
 		}
+	$editable = 1;
 	}
 
 # Show a table of all known schema files, with checkboxes
 print $text{'schema_pagedesc'},"<p>\n";
-@tds = ( "width=5", "width=20%", "width=65%", "width=10%", "width=5% nowrap" );
+@tds = ( $editable ? ( "width=5" ) : ( ),
+	 "width=20%", "width=65%", "width=10%", "width=5% nowrap" );
 print &ui_form_start("save_schema.cgi", "post");
-print &ui_columns_start([ "",
+print &ui_columns_start([ $editable ? ( "" ) : ( ),
 			  $text{'schema_file'},
 			  $text{'schema_desc'},
 			  $text{'schema_act'},
-			  $text{'schema_move'} ], 100, 0, \@tds);
+			  $editable ? ( $text{'schema_move'} ) : ( ) ],
+			100, 0, \@tds);
 @files = sort { &schema_sorter } &list_schema_files();
 for($i=0; $i<@files; $i++) {
 	$s = $files[$i];
@@ -41,17 +46,27 @@ for($i=0; $i<@files; $i++) {
 	else {
 		$mover = "";
 		}
-	print &ui_checked_columns_row(
-		[ $s->{'name'},
-		  $s->{'desc'} || $s->{'file'},
-		  &ui_links_row(\@acts),
-		  $mover,
-		],
-		\@tds, "d", $s->{'file'}, $incs{$s->{'file'}},
-		$s->{'name'} eq 'core');
+	if ($editable) {
+		# With move / enable checkbox
+		print &ui_checked_columns_row(
+			[ $s->{'name'},
+			  $s->{'desc'} || $s->{'file'},
+			  &ui_links_row(\@acts),
+			  $mover,
+			],
+			\@tds, "d", $s->{'file'}, $incs{$s->{'file'}},
+			$s->{'name'} eq 'core');
+		}
+	else {
+		# View files only
+		print &ui_columns_row(
+			[ $s->{'name'},
+                          $s->{'desc'} || $s->{'file'},
+                          &ui_links_row(\@acts) ], \@tds);
+		}
 	}
 print &ui_columns_end();
-print &ui_form_end([ [ undef, $text{'save'} ] ]);
+print &ui_form_end($editable ? [ [ undef, $text{'save'} ] ] : [ ]);
 
 &ui_print_footer("", $text{'index_return'});
 

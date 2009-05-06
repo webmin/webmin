@@ -581,7 +581,7 @@ foreach my $f (readdir(SCHEMA)) {
 		local $lref = &read_file_lines("$config{'schema_dir'}/$f", 1);
 		local $desc;
 		foreach my $l (@$lref) {
-			if ($l !~ /^\#+\s*\$/ && $l =~ /^\#+\s*(\S.*)/) {
+			if ($l !~ /^\#+\s*\$/ && $l =~ /^\#+\s*([^#]\S.*)/) {
 				$desc .= $1." ";	# Comment
 				}
 			elsif ($l !~ /\S/) {

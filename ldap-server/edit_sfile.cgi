@@ -14,7 +14,7 @@ print $text{'schema_edesc'},"<p>\n";
 
 print &ui_form_start("save_sfile.cgi", "form-data");
 print &ui_hidden("file", $in{'file'});
-print &ui_table_start($text{'schema_eheader'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'schema_eheader'}, "width=100%", 2);
 
 # Filename
 print &ui_table_row($text{'schema_path'},
@@ -22,7 +22,8 @@ print &ui_table_row($text{'schema_path'},
 
 # Contents
 print &ui_table_row(undef,
-	&ui_textarea("data", &read_file_contents($in{'file'}), 20, 80), 2);
+	&ui_textarea("data", &read_file_contents($in{'file'}), 20, 80,
+		     undef, 0, "style='width:100%'"), 2);
 
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'save'} ] ]);

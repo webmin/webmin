@@ -1,5 +1,5 @@
 config_file=/etc/ldap/slapd.d
-schema_dir=/etc/ldap/slapd.d/cn=config/cn=schema
+schema_dir=/etc/ldap/schema
 slapd=slapd
 ldap_user=openldap
 browse_max=100

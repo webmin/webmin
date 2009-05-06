@@ -79,8 +79,7 @@ if ($p && ref($ldap) && $access{'browser'}) {
 if ($local) {
 	# All local server icons
 	@pages = ( &get_config_type() == 1 ? "slapd" : "ldif",
-		   &get_config_type() == 1 ? ( "schema" ) : ( ),
-		   "acl", "browser", "create" );
+		   "schema", "acl", "browser", "create" );
 	}
 else {
 	# Just browser and DN creator
