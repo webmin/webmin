@@ -83,3 +83,5 @@ Use DBI for listing databases and tables, to reduce dependency on the un-reliabl
 Fixed the input for setting the default value for fields.
 ---- Changes since 1.470 ----
 Added code to detect a password in /root/.my.cnf which overrides the MYSQL_PWD variable, and thus causes login failures.
+---- Changes since 1.480 ----
+MySQL stored procedures are now included in backups, where supported.

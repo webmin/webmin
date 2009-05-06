@@ -600,6 +600,14 @@ else {
 	}
 }
 
+# supports_routines()
+# Returns 1 if mysqldump supports routines
+sub supports_routines
+{
+local $out = &backquote_command("$config{'mysqldump'} --help 2>&1 </dev/null");
+return $out =~ /--routines/ ? 1 : 0;
+}
+
 # supports_views()
 # Returns 1 if this MySQL install supports views
 sub supports_views
@@ -1314,8 +1322,9 @@ local $charsetsql = $charset ?
 local $compatiblesql = @$compatible ?
 	"--compatible=".join(",", @$compatible) : "";
 local $quotingsql = &supports_quoting() ? "--quote-names" : "";
+local $routinessql = &supports_routines() ? "--routines" : "";
 local $tablessql = join(" ", map { quotemeta($_) } @$tables);
-local $cmd = "$config{'mysqldump'} $authstr $dropsql $wheresql $charsetsql $compatiblesql $quotingsql ".quotemeta($db)." $tablessql 2>&1 $writer";
+local $cmd = "$config{'mysqldump'} $authstr $dropsql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql 2>&1 $writer";
 if ($user && $user ne "root") {
 	$cmd = &command_as_user($user, undef, $cmd);
 	}
