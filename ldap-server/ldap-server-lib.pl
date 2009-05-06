@@ -633,8 +633,11 @@ sub parse_ldap_access
 local ($a) = @_;
 local @v = @{$a->{'values'}};
 local $p = { };
-shift(@v);			# Remove to
-$p->{'what'} = shift(@v);	# Object
+print STDERR "v=",join("/", @v),"\n";
+shift(@v);			# Remove to or {x}to
+if ($v[0] !~ /^(filter|attrs)=/) {
+	$p->{'what'} = shift(@v);	# Object
+	}
 if ($v[0] =~ /^filter=(\S+)/) {
 	# Filter added to what
 	$p->{'filter'} = $1;
@@ -665,11 +668,12 @@ while(@v) {
 	push(@{$p->{'by'}}, $by);
 	}
 $p->{'bydesc'} = join(", ", @descs);
-if ($p->{'what'} eq '*') {
+if ($p->{'what'} eq '*' || $p->{'what'} eq '') {
 	$p->{'whatdesc'} = $text{'access_any'};
 	}
-elsif ($p->{'what'} =~ /^dn(\.[^=]+)?=(.*)$/) {
-	$p->{'whatdesc'} = "<tt>$2</tt>";
+elsif ($p->{'what'} =~ /^dn(\.[^=]+)?="(.*)"$/ ||
+       $p->{'what'} =~ /^dn(\.[^=]+)?=(.*)$/) {
+	$p->{'whatdesc'} = $2 ne '' ? "<tt>$2</tt>" : $text{'access_nodn'};
 	}
 else {
 	$p->{'whatdesc'} = $p->{'what'};

@@ -6,8 +6,17 @@ require './ldap-server-lib.pl';
 $access{'acl'} || &error($text{'acl_ecannot'});
 &ui_print_header(undef, $text{'acl_title'}, "", "acl");
 
-$conf = &get_config();
-@access = &find("access", $conf);
+# Get ACLs
+if (&get_config_type() == 1) {
+	$conf = &get_config();
+	@access = &find("access", $conf);
+	}
+else {
+	$defdb = &get_default_db();
+	$conf = &get_ldif_config();
+	@access = &find_ldif("olcAccess", $conf, $defdb);
+	}
+
 @crlinks = ( "<a href='acl_form.cgi?new=1'>$text{'acl_add'}</a>" );
 if (@access) {
 	# Show table of ACLs

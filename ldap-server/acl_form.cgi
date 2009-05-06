@@ -6,9 +6,18 @@ require './ldap-server-lib.pl';
 $access{'acl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 
+# Get ACLs
+if (&get_config_type() == 1) {
+	$conf = &get_config();
+	@access = &find("access", $conf);
+	}
+else {
+	$defdb = &get_default_db();
+	$conf = &get_ldif_config();
+	@access = &find_ldif("olcAccess", $conf, $defdb);
+	}
+
 # Page header
-$conf = &get_config();
-@access = &find("access", $conf);
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'eacl_title1'}, "", "eacl");
 	$p = { 'what' => '*',
@@ -27,8 +36,9 @@ print &ui_hidden("idx", $in{'idx'});
 print &ui_table_start($text{'eacl_header'}, undef, 2);
 
 # Granting to what object
-$what = $p->{'what'} eq '*' ? 1 : 0;
-if ($p->{'what'} =~ /^dn(\.([^=]+))?=(.*)$/i) {
+$what = $p->{'what'} eq '*' || $p->{'what'} eq '' ? 1 : 0;
+if ($p->{'what'} =~ /^dn(\.([^=]+))?="(.*)"$/i ||
+    $p->{'what'} =~ /^dn(\.([^=]+))?=(.*)$/i) {
 	$dn = $3;
 	$style = $2;
 	}
@@ -72,7 +82,7 @@ foreach $b (@{$p->{'by'}}, { }, { }, { }) {
 			     [ 'other', $text{'eacl_other'} ] ],
 			   1, 0, 0, 0,
 			   "style='width:45%' onChange='form.who_$i.disabled = (form.wmode_$i.value != \"other\")'").
-		&ui_textbox("who_$i", $kwho ? "" : $b->{'who'}, 30,
+		&ui_textbox("who_$i", $kwho ? "" : $b->{'who'}, 50,
 			    $kwho, undef, "style='width:45%'"),
 
 		# What access level? Show textbox if complex

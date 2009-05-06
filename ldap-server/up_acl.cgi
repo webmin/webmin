@@ -6,17 +6,36 @@ require './ldap-server-lib.pl';
 $access{'acl'} || &error($text{'acl_ecannot'});
 &ReadParse();
 
-# Find it
 &lock_slapd_files();
-$conf = &get_config();
-@access = &find("access", $conf);
-$p = &parse_ldap_access($access[$in{'idx'}]);
 
-# Move up
-($access[$in{'idx'}-1], $access[$in{'idx'}]) =
-	($access[$in{'idx'}], $access[$in{'idx'}-1]);
-&save_directive($conf, "access", @access);
-&flush_file_lines($config{'config_file'});
+if (&get_config_type() == 1) {
+	# Move up in old-style config
+	$conf = &get_config();
+	@access = &find("access", $conf);
+	($access[$in{'idx'}-1], $access[$in{'idx'}]) =
+		($access[$in{'idx'}], $access[$in{'idx'}-1]);
+	&save_directive($conf, "access", @access);
+	&flush_file_lines($config{'config_file'});
+	}
+else {
+	# Move up in LDIF config
+	$defdb = &get_default_db();
+	$conf = &get_ldif_config();
+	@access = &find_ldif("olcAccess", $conf, $defdb);
+	($access[$in{'idx'}-1], $access[$in{'idx'}]) =
+		($access[$in{'idx'}], $access[$in{'idx'}-1]);
+	if ($access[$in{'idx'}]->{'values'}->[0] =~ /^\{\d+\}to/ &&
+	    $access[$in{'idx'}-1]->{'values'}->[0] =~ /^\{\d+\}to/) {
+		# Swap indexes too
+		($access[$in{'idx'}]->{'values'}->[0],
+		 $access[$in{'idx'}-1]->{'values'}->[0]) = 
+			($access[$in{'idx'}-1]->{'values'}->[0],
+			 $access[$in{'idx'}]->{'values'}->[0]);
+		}
+	&save_ldif_directive($conf, "olcAccess", $defdb, @access);
+	&flush_file_lines();
+	}
+
 &unlock_slapd_files();
 
 &webmin_log("up", "access", $p->{'what'});

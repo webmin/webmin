@@ -284,6 +284,7 @@ access_read=read
 access_write=write
 access_all=anyone
 access_any=All objects
+access_nodn=Objects with no DN
 access_lnone=No access
 access_lauth=Authenticate
 access_lcompare=Compare
