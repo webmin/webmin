@@ -770,7 +770,8 @@ sub get_maps
 				       "select ".$conf->{'where_field'}.
 				       ",".$conf->{'select_field'}.
 				       " from ".$conf->{'table'}.
-				       " ".$conf->{'additional_conditions'});
+				       " where 1 = 1 ".
+				       $conf->{'additional_conditions'});
 		    if (!$cmd || !$cmd->execute()) {
 			&error(&text('mysql_elist',
 			     "<tt>".&html_escape($dbh->errstr)."</tt>"));
