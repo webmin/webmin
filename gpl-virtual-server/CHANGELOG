@@ -575,3 +575,4 @@ After Virtualmin is installed and the master administrator logs in for the first
 ClamAV's server scanner clamd can now be enabled on FreeBSD from within Virtualmin.
 Netmasks can now be optionally specified for IP allocation ranges, rather than being always inherited from the primary interface's netmask.
 All backups made manually, on schedule or from the command line are now logged, and can be viewed using the new Backup Logs page.
+Moved the option for a secondary group for domain owners to the template level.

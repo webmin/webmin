@@ -42,7 +42,6 @@ alias_types=Allowed alias types,13,1-Address,2-Addresses in file,3-File,4-Progra
 post_check=Update all Webmin users after configuration changes?,1,1-Yes,0-No
 webmin_modules=Extra Webmin modules for server administrators,15,modules,webmin_modules
 webmin_theme=Webmin theme for server administrators,15,theme,webmin_theme
-domains_group=Add all server administrations to Unix group,3,None
 usermin_switch=Allow logins to Usermin as mailboxes?,1,1-Yes,0-No
 
 line2=Defaults for new domains,11
