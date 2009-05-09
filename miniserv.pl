@@ -1602,23 +1602,30 @@ if (%users) {
 			}
 		elsif (!$deny_authentication &&
 		       $header{'cookie'} =~ /(^|\s)$sidname=([a-f0-9]+)/) {
-			$session_id = $2;
-			local $notimeout = $in{'webmin_notimeout'} ? 1 : 0;
-			print $PASSINw "verify $session_id $notimeout\n";
-			<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
-			if ($1 == 2) {
-				# Valid session continuation
-				$validated = 1;
-				$authuser = $2;
-				#$already_session_id = $session_id;
-				$already_authuser = $authuser;
-				}
-			elsif ($1 == 1) {
-				# Session timed out
-				$timed_out = $2;
-				}
-			else {
-				# Invalid session ID .. don't set verified
+			# Try all session cookies
+			local $cookie = $header{'cookie'};
+			while($cookie =~ s/(^|\s)$sidname=([a-f0-9]+)//) {
+				$session_id = $2;
+				local $notimeout =
+					$in{'webmin_notimeout'} ? 1 : 0;
+				print $PASSINw "verify $session_id $notimeout\n";
+				<$PASSOUTr> =~ /(\d+)\s+(\S+)/;
+				if ($1 == 2) {
+					# Valid session continuation
+					$validated = 1;
+					$authuser = $2;
+					$already_authuser = $authuser;
+					$timed_out = undef;
+					last;
+					}
+				elsif ($1 == 1) {
+					# Session timed out
+					$timed_out = $2;
+					}
+				else {
+					# Invalid session ID .. don't set
+					# verified flag
+					}
 				}
 			}
 		}
