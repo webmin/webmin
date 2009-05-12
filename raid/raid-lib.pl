@@ -225,6 +225,7 @@ else {
 	push(@$lref, "ARRAY $_[0]->{'value'} level=$lvl devices=".
 		     join(",", @devices));
 	&flush_file_lines();
+	&update_initramfs();
 	}
 }
 
@@ -266,6 +267,7 @@ else {
 			}
 		}
 	&flush_file_lines($config{'mdadm'});
+	&update_initramfs();
 	}
 }
 
@@ -382,6 +384,7 @@ if ($raid_mode eq "mdadm") {
 			}
 		}
 	&flush_file_lines();
+	&update_initramfs();
 	}
 }
 
@@ -431,6 +434,7 @@ if ($raid_mode eq "mdadm") {
 			}
 		}
 	&flush_file_lines();
+	&update_initramfs();
 	}
 }
 
@@ -669,6 +673,16 @@ if ($act) {
 		}
 	}
 return undef;
+}
+
+# update_initramfs()
+# If the update-initramfs command is installed, run it to update mdadm.conf
+# in the ramdisk
+sub update_initramfs
+{
+if (&has_command("update-initramfs")) {
+	&system_logged("update-initramfs -u >/dev/null 2>&1 </dev/null");
+	}
 }
 
 1;
