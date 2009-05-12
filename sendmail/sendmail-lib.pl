@@ -535,10 +535,11 @@ else {
 }
 
 # mailq_table(&qfiles)
-# Print a table showing queued emails
+# Print a table showing queued emails. Returns the number quarantined.
 sub mailq_table
 {
 local ($qfiles, $qmails) = @_;
+local $quarcount;
 
 # Show buttons to flush and delete
 print "<form action=del_mailqs.cgi method=post>\n";
@@ -638,6 +639,7 @@ if ($access{'mailq'} == 2) {
 	print "<p>\n";
 	}
 print "</form>\n";
+return $quarcount;
 }
 
 # is_table_comment(line, [force-prefix])

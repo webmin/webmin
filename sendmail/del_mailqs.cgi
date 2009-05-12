@@ -13,20 +13,32 @@ if ($in{'flush'}) {
 	$access{'flushq'} || &error($text{'flushq_ecannot'});
 	&ui_print_unbuffered_header(undef, $text{'flushq_title'}, "");
 
-	$cmd = "$config{'sendmail_path'} -v -C$config{'sendmail_cf'}";
-	foreach $file (@files) {
-		$file =~ s/^.*\///;
-		$cmd .= " -qI$file";
+	# Split into quarantined and non-quarantined messages
+	local @mails = map { &mail_from_queue($_) } @files;
+	local @quar = grep { $_->{'quar'} } @mails;
+	local @nonquar = grep { !$_->{'quar'} } @mails;
+
+	foreach $ml (\@quar, \@nonquar) {
+		next if (!@$ml);
+		@files = map { $_->{'file'} } @$ml;
+		$cmd = "$config{'sendmail_path'} -v -C$config{'sendmail_cf'}";
+		if ($ml->[0]->{'quar'}) {
+			$cmd .= " -qQ";
+			}
+		foreach $file (@files) {
+			$file =~ s/^.*\///;
+			$cmd .= " -qI$file";
+			}
+		if ($config{'mailq_order'}) {
+			$cmd .= " -O QueueSortOrder=$config{'mailq_order'}";
+			}
+		print &text('flushq_desc2', scalar(@files)),"\n";
+		print "<pre>";
+		&foreign_require("proc", "proc-lib.pl");
+		&foreign_call("proc", "safe_process_exec_logged", $cmd, 0, 0,
+			      STDOUT, undef, 1);
+		print "</pre>\n";
 		}
-	if ($config{'mailq_order'}) {
-		$cmd .= " -O QueueSortOrder=$config{'mailq_order'}";
-		}
-	print &text('flushq_desc2', scalar(@files)),"\n";
-	print "<pre>";
-	&foreign_require("proc", "proc-lib.pl");
-	&foreign_call("proc", "safe_process_exec_logged", $cmd, 0, 0,
-		      STDOUT, undef, 1);
-	print "</pre>\n";
 	&webmin_log("flushq", undef, scalar(@files));
 	}
 else {

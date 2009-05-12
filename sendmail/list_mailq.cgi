@@ -82,7 +82,7 @@ if (@qfiles) {
 		}
 
 	# Show the queued mails
-	&mailq_table([ @qfiles[$s .. $e] ], \%qmails);
+	$quarcount = &mailq_table([ @qfiles[$s .. $e] ], \%qmails);
 
 	# Show queue search form
 	print "<form action=mailq_search.cgi>\n";
