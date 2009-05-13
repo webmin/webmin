@@ -3,4 +3,4 @@ hwtime=0
 seconds=2
 timeserver_hardware=1
 zone_style=freebsd
-ntp_only=0
+ntp_only=1
