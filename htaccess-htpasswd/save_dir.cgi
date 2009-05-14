@@ -63,14 +63,13 @@ if ($in{'delete'} || $in{'remove'}) {
 		&unlink_logged($htaccess);
 		&unlink_logged($currfile) if ($currfile && !-d $currfile);
 		&unlink_logged($currgfile) if ($currgfile && !-d $currgfile);
-		@dirs = grep { $_ ne $dir } @dirs;
 		}
 	else {
-		# Take the authentication directives out of the .htaccess
-		@dirs = grep { $_ ne $dir } @dirs;
+		# Take the authentication directives out of .htaccess
 		&foreign_call($apachemod, "save_directive",
 			      "require", [ ], $conf, $conf);
 		}
+	@dirs = grep { $_ ne $dir } @dirs;
 	}
 else {
 	# Validate inputs

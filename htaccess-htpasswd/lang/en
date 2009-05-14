@@ -15,6 +15,7 @@ index_sha1=SHA1 encryption is enabled in the module configuration, but the $1 Pe
 index_digest2=Digest encryption is enabled in the module configuration, but the $1 command or $2 Perl module needed for it is not installed.
 index_cpan=<a href='$1'>Click here</a> to download and install it now.
 index_delete=Un-Protect Selected Directories
+index_remove=Un-Protect and Remove Files
 
 dir_title1=Add Protected Directory
 dir_title2=Edit Protected Directory

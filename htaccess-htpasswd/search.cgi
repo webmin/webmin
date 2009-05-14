@@ -37,7 +37,9 @@ while($f = <FIND>) {
 		$conf = &foreign_call($apachemod, "get_htaccess_config", $f);
 		$currfile = &foreign_call($apachemod, "find_directive",
 					  "AuthUserFile", $conf, 1);
-		if ($currfile) {
+		$require = &foreign_call($apachemod, "find_directive",
+					 "require", $conf, 1);
+		if ($currfile && $require) {
 			print &text('search_found', "<tt>$f</tt>",
 				    "<tt>$currfile</tt>"),"<br>\n";
 			local $d = $f;

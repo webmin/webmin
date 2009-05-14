@@ -143,7 +143,8 @@ if (@dirs) {
 	print &ui_columns_end();
 	if ($can_create) {
 		print &ui_links_row(\@links);
-		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		print &ui_form_end([ [ "delete", $text{'index_delete'} ],
+				     [ "remove", $text{'index_remove'} ] ]);
 		}
 	}
 else {
