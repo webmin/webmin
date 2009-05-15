@@ -61,7 +61,7 @@ foreach $m (@mods) {
 			    $p[0],
 			    1,
 			    );
-			}
+			$cgis[0]}
 		}
 	}
 
@@ -120,14 +120,26 @@ MODULE: foreach $m (@mods) {
 	%mtext = &load_language($m->{'dir'});
 	foreach $k (keys %mtext) {
 		if ($mtext{$k} =~ /\Q$re\E/i) {
+			@cgis = &find_cgi_text(
+				[ "\$text{'$k'}",
+				  "\$text{\"$k\"}",
+				  "\$text{$k}" ], $m);
+			if (@cgis == 0) {
+				$link = "<a href='$m->{'dir'}/'>$m->{'desc'}</a>";
+				}
+			else {
+				$link = &ui_links_row([
+				    map { "<a href='$_'>$_</a>" } @cgis ]);
+				$link =~ s/<br>//;
+				}
 			&match_row(
 			    $m,
-			    "<a href='$m->{'dir'}/'>$m->{'desc'}</a>",
+			    $link,
 			    $text{'wsearch_text'},
 			    $mtext{$k},
-			    0,
+			    @cgis ? 1 : 0,
 			    );
-			next MODULE;
+			#next MODULE;
 			}
 		}
 	}
@@ -172,5 +184,34 @@ if ($text) {
 	}
 print "<font color=#4EBF37>$m->{'desc'} - $what</font><br>&nbsp;<br>\n";
 $count++;
+}
+
+# find_cgi_text(&regexps, module)
+# Returns the relative URLs of CGIs that matches some regexps, in the given
+# module.
+sub find_cgi_text
+{
+local ($res, $m) = @_;
+local $mdir = &module_root_directory($m);
+local @rv;
+foreach my $f (glob("$mdir/*.cgi")) {
+	local $found = 0;
+	open(CGI, $f);
+	LINE: while(my $line = <CGI>) {
+		foreach my $r (@$res) {
+			if (index($line, $r) >= 0) {
+				$found++;
+				last LINE;
+				}
+			}
+		}
+	close(CGI);
+	if ($found) {
+		local $url = $f;
+		$url =~ s/^\Q$root_directory\E\///;
+		push(@rv, $url);
+		}
+	}
+return @rv;
 }
 
