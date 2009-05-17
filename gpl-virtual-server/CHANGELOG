@@ -579,3 +579,4 @@ Moved the option for a secondary group for domain owners to the template level.
 Greylisting using Postgrey can now be setup using Virtualmin, via the new Email Greylisting page. In addition, whitelists for SMTP servers and email recipents can be managed. This feature was ported from the Pro version.
 ---- Changes since 3.69 ----
 Bandwidth usage by date or month can now be graphed for sub-servers.
+Partially completed backups (where only some domains failed) are now shown in the backup logs.
