@@ -102,9 +102,30 @@ foreach $m (@mods) {
 			$data =~ s/<br>/\n/gi;
 			$data =~ s/<[^>]+>//g;
 			if ($data =~ /\Q$re\E/i) {
+				@cgis = &find_cgi_text(
+					[ "hlink\\(.*'$page'",
+					  "hlink\\(.*\"$page\"",
+					], $m, 1);
+				if ($page =~ /^config_(\S+)$/) {
+					# Special config.info page link
+					# XXX where?
+					}
+				elsif (@cgis == 0) {
+					$link = "";
+					}
+				else {
+					$link = &ui_links_row([
+					    map { my $s = $_;
+						  $s =~ s/^\Q$m->{'dir'}\E\///;
+						  "<a href='$_'>$s</a>" } @cgis
+					    ]);
+					$link =~ s/<br>//;
+					$link = &text('wsearch_on', $link);
+					}
 				&match_row(
 				    $m,
-				    &hlink($title, $page, $m->{'dir'}),
+				    &hlink($title, $page, $m->{'dir'}).
+				      " ".$link,
 				    $text{'wsearch_help'},
 				    $data,
 				    1,
@@ -129,7 +150,9 @@ MODULE: foreach $m (@mods) {
 				}
 			else {
 				$link = &ui_links_row([
-				    map { "<a href='$_'>$_</a>" } @cgis ]);
+				    map { my $s = $_;
+					  $s =~ s/^\Q$m->{'dir'}\E\///;
+					  "<a href='$_'>$s</a>" } @cgis ]);
 				$link =~ s/<br>//;
 				}
 			&match_row(
@@ -157,6 +180,7 @@ sub highlight_text
 local ($str, $len) = @_;
 $len ||= 90;
 local $hlen = $len / 2;
+$str =~ s/<[^>]*>//g;
 if ($str =~ /(.*)(\Q$re\E)(.*)/i) {
 	local ($before, $match, $after) = ($1, $2, $3);
 	if (length($before) > $hlen) {
@@ -186,12 +210,12 @@ print "<font color=#4EBF37>$m->{'desc'} - $what</font><br>&nbsp;<br>\n";
 $count++;
 }
 
-# find_cgi_text(&regexps, module)
+# find_cgi_text(&regexps, module, re-mode)
 # Returns the relative URLs of CGIs that matches some regexps, in the given
 # module.
 sub find_cgi_text
 {
-local ($res, $m) = @_;
+local ($res, $m, $remode) = @_;
 local $mdir = &module_root_directory($m);
 local @rv;
 foreach my $f (glob("$mdir/*.cgi")) {
@@ -199,7 +223,8 @@ foreach my $f (glob("$mdir/*.cgi")) {
 	open(CGI, $f);
 	LINE: while(my $line = <CGI>) {
 		foreach my $r (@$res) {
-			if (index($line, $r) >= 0) {
+			if (!$remode && index($line, $r) >= 0 ||
+			    $remode && $line =~ /$r/) {
 				$found++;
 				last LINE;
 				}
