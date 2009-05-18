@@ -1,0 +1,7 @@
+db_port=Port par d&#233;faut du serveur MySQL
+db_s=secondes
+db_title=Param&#234;tres de La Base De Donn&#233;es
+db_unlimited=Illimit&#233;e
+dirs_upload=Autoriser le t&#233;l&#233;versement de fichier?
+session_title=Options de La Session
+vars_title=Variables PHP
