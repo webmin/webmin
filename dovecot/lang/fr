@@ -1,0 +1,10 @@
+imap_title=Options IMAP
+index_apply=Appliquer la configuration
+index_boot=Lancer au d&#233;marrage?
+index_dovecot=Dovecot
+manual_title=Edition du Fichier de Configuration
+misc_title=Autres Options
+net_imap=IMAP
+net_listen0=D&#233;faut
+ssl_hours=heures
+ssl_title=Configuration SSL
