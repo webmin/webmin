@@ -26,6 +26,12 @@ foreach $shared (&find("shared-network", $conf)) {
 	push(@subnets, &find("subnet", $shared->{'members'}));
 	}
 foreach $subnet (@subnets) {
+	if ($in{'network'}) {
+		# Only count ranges in specified subnet
+		if ($subnet->{'values'}->[0] ne $in{'network'}) {
+			next;
+			}
+		}
 	$subnet->{'ips'} = 0;
 	foreach $range (&find("range", $subnet->{'members'})) {
 		local @rv = @{$range->{'values'}};
