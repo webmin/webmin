@@ -5,6 +5,7 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 
 &init_config();
+&ReadParse();
 $hostname = &get_display_hostname();
 $ver = &get_webmin_version();
 &get_miniserv_config(\%miniserv);
