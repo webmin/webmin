@@ -51,7 +51,6 @@ if ($ARGV[0]) {
 else {
 	print "Installing Webmin in $wadir ...\n"
 	}
-chdir($wadir);
 
 # Work out perl library path
 $ENV{'PERLLIB'} = $wadir;
@@ -66,6 +65,8 @@ if (!@allmods) {
 	}
 $allmods = join(" ", @allmods);
 print "\n";
+
+chdir($wadir);
 
 # Load package-defined variable overrides
 if (-r "$srcdir/setup-pre.pl") {
