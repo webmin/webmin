@@ -277,6 +277,8 @@ edit_espfa='$1' is not a valid host to allow sending from
 edit_espfmx='$1' is not a valid domain name to allow MX sending from
 edit_espfip='$1' is not a valid IP address or IP/prefix to allow sending from
 edit_espfinclude='$1' is not a valid additional domain from which mail is sent
+edit_espfredirect='$1' is not a valid alternate domain name
+edit_espfexp='$1' is a valid record name for a rejection message
 
 text_title=Edit Records File
 text_title2=View Records File
@@ -434,6 +436,10 @@ value_spfall2=Discourage (~all)
 value_spfall1=Neutral (?all)
 value_spfall0=Allow (+all)
 value_spfalldef=Default
+value_spfredirect=Use SPF record from alternate domain
+value_spfnoredirect=Use this domain's record
+value_spfexp=TXT record for rejection reason
+value_spfnoexp=None
 
 warn=Warn
 fail=Fail

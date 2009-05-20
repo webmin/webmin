@@ -305,6 +305,17 @@ else {
 			&valname($i) || &error(&text('edit_espfinclude', $i));
 			}
 		$spf->{'all'} = $in{'spfall'};
+		foreach my $m ('redirect', 'exp') {
+			if ($in{'spf'.$m.'_def'}) {
+				delete($spf->{$m});
+				}
+			else {
+				&valname($in{'spf'.$m}) || 
+					&error(&text('edit_espf'.$m, 
+						     $in{'spf'.$m}));
+				$spf->{$m} = $in{'spf'.$m};
+				}
+			}
 		$vals = "\"".&join_spf($spf)."\"";
 		}
 	else {

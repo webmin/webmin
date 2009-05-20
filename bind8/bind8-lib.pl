@@ -1064,6 +1064,14 @@ elsif ($type eq "SPF") {
 			  [ 1, $text{'value_spfall1'} ],
 			  [ 0, $text{'value_spfall0'} ],
 			  [ undef, $text{'value_spfalldef'} ] ]), 3);
+
+	print &ui_table_row($text{'value_spfredirect'},
+		&ui_opt_textbox("spfredirect", $spf->{'redirect'}, 40,
+			    $text{'value_spfnoredirect'}), 3);
+
+	print &ui_table_row($text{'value_spfexp'},
+		&ui_opt_textbox("spfexp", $spf->{'exp'}, 40,
+			    $text{'value_spfnoexp'}), 3);
 	}
 else {
 	# All other types just have a text box

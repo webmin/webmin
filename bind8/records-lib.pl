@@ -670,6 +670,10 @@ if ($txt =~ /^v=spf1/) {
 		elsif ($w eq "v=spf1") {
 			# Ignore this
 			}
+		elsif ($w =~ /^(redirect|exp)=(\S+)$/) {
+			# Modifier for domain redirect or expansion
+			$spf->{$1} = $2;
+			}
 		else {
 			push(@{$spf->{'other'}}, $w);
 			}
@@ -700,6 +704,11 @@ if ($spf->{'all'} == 3) { push(@rv, "-all"); }
 elsif ($spf->{'all'} == 2) { push(@rv, "~all"); }
 elsif ($spf->{'all'} == 1) { push(@rv, "?all"); }
 elsif ($spf->{'all'} eq '0') { push(@rv, "all"); }
+foreach my $m ("redirect", "exp") {
+	if ($spf->{$m}) {
+		push(@rv, $m."=".$spf->{$m});
+		}
+	}
 local @rvwords;
 local $rvword;
 while(@rv) {
