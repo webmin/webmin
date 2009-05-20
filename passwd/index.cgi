@@ -84,7 +84,6 @@ elsif (@ulist) {
 	# Show as table of users
 	@grid = ( );
 	for($i=0; $i<@ulist; $i++) {
-		if ($i%4 == 0) { print "<tr>\n"; }
 		push(@grid, "<a href=\"edit_passwd.cgi?".
 			    "user=$ulist[$i]->[0]\">".
 			    &html_escape($ulist[$i]->[0])."</a>");
