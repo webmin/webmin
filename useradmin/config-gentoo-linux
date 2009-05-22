@@ -38,3 +38,4 @@ last_show=0
 config-aix
 passwd_progmode=0
 membox=0
+selinux_con=user_u:object_r:user_home_dir_t

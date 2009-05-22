@@ -59,3 +59,4 @@ Converted commands in the module's API file to POD format, and added more detail
 ---- Changes since 1.470 ----
 Fixed a bug that caused an empty shell to appear in the shells list for new users.
 Fixed the hashing format for Blowfish passwords, to put $2a$ at the start instead of $2$.
+On Linux systems with SElinux enabled, the context user_u:object_r:user_home_dir_t is set on new home directories by default.

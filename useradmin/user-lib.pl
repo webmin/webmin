@@ -2527,6 +2527,10 @@ $home ||= $user->{'home'};
 &set_ownership_permissions($user->{'uid'}, $user->{'gid'},
 			   oct($config{'homedir_perms'}), $home) ||
 	&error(&text('usave_echmod', $!));
+if ($config{'selinux_con'} && &is_selinux_enabled() && &has_command("chcon")) {
+	&system_logged("chcon ".quotemeta($config{'selinux_con'}).
+		       " ".quotemeta($home)." >/dev/null 2>&1");
+	}
 &unlock_file($home);
 }
 
