@@ -29,7 +29,8 @@ else {
 	elsif (&has_command("up2date") && &has_command("rhn_check")) {
 		$update_system = "rhn";
 		}
-	elsif (-x "/opt/csw/bin/pkg-get" || &has_command("pkg-get")) {
+	elsif (-x "/opt/csw/bin/pkg-get" || &has_command("pkg-get") ||
+	       -x "/opt/csw/bin/pkgutil" || &has_command("pkgutil")) {
 		$update_system = "csw";
 		}
 	elsif (&has_command("urpmi")) {
