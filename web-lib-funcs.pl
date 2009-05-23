@@ -6334,7 +6334,7 @@ return if (!@uinfo || !$uinfo[7]);
 &create_missing_homedir(\@uinfo);
 $user_config_directory = "$uinfo[7]/$gconfig{'userconfig'}";
 if (!-d $user_config_directory) {
-	mkdir($user_config_directory, 0755) ||
+	mkdir($user_config_directory, 0700) ||
 		&error("Failed to create $user_config_directory : $!");
 	if ($< == 0 && $uinfo[2]) {
 		chown($uinfo[2], $uinfo[3], $user_config_directory);
@@ -6344,7 +6344,7 @@ if (&get_module_name()) {
 	$user_module_config_directory = $user_config_directory."/".
 					&get_module_name();
 	if (!-d $user_module_config_directory) {
-		mkdir($user_module_config_directory, 0755) ||
+		mkdir($user_module_config_directory, 0700) ||
 			&error("Failed to create $user_module_config_directory : $!");
 		if ($< == 0 && $uinfo[2]) {
 			chown($uinfo[2], $uinfo[3], $user_config_directory);
