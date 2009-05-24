@@ -1,0 +1,17 @@
+log_start=Serveur PPTP d&#233;marr&#233;
+log_stop=Serveur PPTP arr&#234;t&#233;
+options_auth=Authentification requise?
+options_auth1=Jamais
+options_auth2=Toujours
+options_chap=Authentification CHAP
+options_ecannot=Vous n'&#234;tes pas autoris&#233;s &#224; &#233;diter les options PPP
+options_header=Options de la connexion PPP
+options_mschap=Authentication MS-CHAP
+options_mschap-v2=Authentication MS-CHAP version 2
+options_pap=Authentification PAP
+options_title=Options PPP
+options_version=PPPd version $1
+secrets_create=Cr&#233;er un nouveau compte PPP.
+secrets_ecannot=Vous n'&#234;tes pas autoris&#233;s &#224; &#233;diter les comptes PPP
+secrets_ips=Adresses IP
+secrets_title=Comptes PPP
