@@ -1,0 +1,7 @@
+edit_auto=Automatique
+edit_remote=Nom du serveur
+edit_title2=Edition du tunnel PPTP
+edit_type=Type
+index_title=Client VPN PPTP
+index_tunnel=Tunnel $1
+index_version=PPPd version $1
