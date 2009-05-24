@@ -397,6 +397,7 @@ euser_pud=Details d'un utilsateurs proxy
 euser_return=liste des utilisateurs
 euser_u=Nom de connection
 euser_u1=Non modifi&#233;
+header_name=Ent&#234;te HTTP
 icache_ftic=Erreur lors de l'initialisation du cache
 icache_itscwtc=Initialisation du cache de Squid &#224; l'aide de la commande <tt>$1</tt> ..
 icache_return=index de squid
