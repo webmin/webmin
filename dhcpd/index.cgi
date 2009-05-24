@@ -306,7 +306,7 @@ if ($horder == 0) {
 	}
 elsif ($horder == 1) {
 	@host = (@host, @group);
-	@host = sort { $a->{'order'} <=> $b->{'order'} } @host;
+	@host = sort { $a->{'line'} <=> $b->{'line'} } @host;
 	}
 elsif ($horder == 2) {
 	@host = sort { $a->{'values'}->[0] cmp $b->{'values'}->[0] } @host;
