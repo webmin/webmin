@@ -5,7 +5,17 @@
 require './proc-lib.pl';
 &ReadParse();
 $access{'run'} || &error($text{'run_ecannot'});
-&switch_acl_uid();
+
+# Force run as user from ACL. This is done instead of calling
+# switch_acl_uid, so that commands can be run with su
+if (!$module_info{'usermin'}) {
+	if ($access{'uid'} < 0) {
+		$in{'user'} = $remote_user;
+		}
+	elsif ($access{'uid'}) {
+		$in{'user'} = getpwuid($access{'uid'});
+		}
+	}
 
 $in{'input'} =~ s/\r//g;
 $cmd = $in{'cmd'};
