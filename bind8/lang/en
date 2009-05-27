@@ -883,6 +883,7 @@ add_echeck=Server $1 does not have the BIND DNS Server module.
 add_emissing=Server $1 does not have BIND setup properly.
 add_eversion=Server $1 is not running Webmin version $2 or above.
 add_eversion2=Server $1 is not running Webmin version $2 or above, which is needed to add zones to more than one view
+add_eipaddr=Server $1 has an IP address instead of a hostname
 add_ok=Added $1, with $2 existing zones.
 add_eview=Missing view names
 add_createerr=Setup $1 with $2 new slave zones, but encountered $3 errors :

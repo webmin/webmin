@@ -73,6 +73,17 @@ foreach $s (@add) {
 	if ($s->{'bind8_view'} && $s->{'bind8_view'} =~ /\s/ &&
 	    $rver < 1.422) {
 		print &text('add_eversion2', $s->{'host'}, 1.422),"<p>\n";
+		next;
+		}
+
+	# Check for non-IP name
+	if (&check_ipaddress($s->{'host'}) && $in{'name_def'}) {
+		print &text('add_eipaddr', $s->{'host'}),"<p>\n";
+		next;
+		}
+	if (!$in{'name_def'} && &check_ipaddress($in{'name'})) {
+		print &text('add_eipaddr', $s->{'host'}),"<p>\n";
+		next;
 		}
 
 	@rzones = grep { $_->{'type'} ne 'view' }
