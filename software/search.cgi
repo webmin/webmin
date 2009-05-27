@@ -47,11 +47,12 @@ if (@match) {
 				  $text{'search_desc'} ], 100, 0, \@tds);
 	foreach $i (@match) {
 		local @cols;
+		local $v = $packages{$i,'shortversion'} ||
+			   $packages{$i,'version'};
 		push(@cols, "<a href=\"edit_pack.cgi?search=$s&package=".
 		      &urlize($packages{$i,'name'})."&version=".
 		      &urlize($packages{$i,'version'})."\">".&html_escape(
-			$packages{$i,'name'}.($packages{$i,'version'} ?
-			   " $packages{$i,'version'}" : ""))."</a>");
+			$packages{$i,'name'}.($v ?  " $v" : ""))."</a>");
 		$c = $packages{$i,'class'};
 		push(@cols, $c ? &html_escape($c)
 				: $text{'search_none'});

@@ -12,6 +12,8 @@ $n = &list_packages();
 for($i=0; $i<$n; $i++) {
 	push(@pack, $packages{$i,'name'});
 	push(@vers, $packages{$i,'version'});
+	push(@svers, $packages{$i,'shortversion'} ||
+		     $packages{$i,'version'});
 	push(@class, $packages{$i,'class'});
 	push(@desc, $packages{$i,'desc'});
 	}
@@ -75,7 +77,7 @@ if ($heiropen{$_[0]}) {
 			print "<a href=\"edit_pack.cgi?package=",
 			      &urlize($pack[$i]),"&version=",
 			      &urlize($vers[$i]),"\">",&html_escape($pack[$i].
-			      ($vers[$i] ? " $vers[$i]" : "")),"</a></td>\n";
+			      ($svers[$i] ? " $svers[$i]" : "")),"</a></td>\n";
 			print "<td>",&html_escape($desc[$i]),"</td>\n";
 			print "</tr>\n";
 			}
