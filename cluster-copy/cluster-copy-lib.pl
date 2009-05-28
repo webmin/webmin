@@ -185,7 +185,8 @@ foreach $s (@run) {
 				push(@errs, [ $f, "Source file not found" ]);
 				next;
 				}
-			if ($f eq $dest && $s->{'id'} == 0) {
+			if (&simplify_path($f) eq &simplify_path($dest) &&
+			    $s->{'id'} == 0) {
 				push(@errs, [ $f, "Cannot overwrite same file on this server" ]);
 				next;
 				}

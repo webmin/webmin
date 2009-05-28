@@ -13,3 +13,5 @@ Made the backup email contents translatable.
 Added checkboxes and a button for deleting multiple cluster copies at once.
 ---- Changes since 1.430 ----
 Added a Module Config setting to control the default sort order.
+---- Changes since 1.470 ----
+Fixed check to prevent over-writing a file when copying to this host.
