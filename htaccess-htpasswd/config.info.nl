@@ -6,3 +6,4 @@ md5=Mogelijkheid tot MD5 encryptie optie?,1,1-Ja,0-Nee
 sha1=Mogelijkheid tot SHA1 encryptie optie?,1,1-Ja,0-Nee
 digest=Diverse encryptie opties geven?,1,1-Ja,0-Nee
 extra_directives=Extra richtlijnen invoegen in .htaccess,9,0,0,\t
+perms=Permissies voor aanmaken van files,3,Standaard (644)
