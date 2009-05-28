@@ -8,7 +8,7 @@ require './software-lib.pl';
 &ui_print_unbuffered_header(undef, $text{'yum_upgrade'}, "");
 
 &clean_environment();
-$cmd = "yum -y update";
+$cmd = "yum clean all ; yum -y update";
 print "<b>",&text('yum_upgradedesc', "<tt>$cmd</tt>"),"</b><p>\n";
 print "<pre>";
 &additional_log("exec", undef, $cmd);
