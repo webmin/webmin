@@ -116,3 +116,4 @@ Converted all core modules to use the new WebminCore perl module instead of web-
 ---- Changes since 1.470 ----
 Catalan translation updates by Jaume Badiella.
 Added an UTF-8 encoding of the Russian translation, thanks to shavlukov@gmail.com.
+French translation updates by ButterflyOfFire.
