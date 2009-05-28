@@ -2,5 +2,6 @@ index_hosts=Alle wachtwoord wijzigingen die worden gedaan met deze module zullen
 index_noservers=Er zijn servers voor beheer van gebruikers gedefini&euml;erd in de <a href='$1'>Cluster Gebruikers en Groepen</a> module.
 index_title=Cluster Wachtwoord Wijzigen
 passwd_err=Fout bij het wijzigen van het wachtwoord
+passwd_euser=Gebruiker bestaat niet!
 passwd_on=Wijzigen van wachtwoord op $1 ..
 passwd_title=Wijzigen van wachtwoord
