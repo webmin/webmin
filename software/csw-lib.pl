@@ -39,7 +39,7 @@ do {
 	&open_execute_command(PKGGET,
 		"$pkg_get -i $flag ".quotemeta($update), 2);
 	while(<PKGGET>) {
-		if (!/^\s*\d+\%\s+\[/) {
+		if (!/\s*\d+\%\s+\[/) {
 			# Output everything except download lines
 			print &html_escape($_);
 			}
