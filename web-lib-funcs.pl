@@ -7897,6 +7897,26 @@ close(SOCKET2);
 return wantarray ? ($out, \@rv) : $out;
 }
 
+=head2 capture_function_output_tempfile(&function, arg, ...)
+
+Behaves the same as capture_function_output, but uses a temporary file
+to avoid buffer full problems.
+
+=cut
+sub capture_function_output_tempfile
+{
+my ($func, @args) = @_;
+my $temp = &transname();
+open(BUFFER, ">$temp");
+my $old = select(BUFFER);
+my @rv = &$func(@args);
+select($old);
+close(BUFFER);
+my $out = &read_file_contents($temp);
+&unlink_file($temp);
+return wantarray ? ($out, \@rv) : $out;
+}
+
 =head2 modules_chooser_button(field, multiple, [form])
 
 Returns HTML for a button for selecting one or many Webmin modules.
