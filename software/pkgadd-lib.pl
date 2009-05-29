@@ -15,43 +15,38 @@ sub list_packages
 local $i = 0;
 local $list = join(' ', map { quotemeta($_) } @_);
 local $_;
-&open_execute_command(PKGINFO, "pkginfo -l $list", 1, 1);
+local %indexmap;
+&open_execute_command(PKGINFO, "pkginfo -x $list", 1, 1);
 while(<PKGINFO>) {
-	if (/^\s*PKGINST:\s*(\S+)/) {
-		# Start of new package
+	if (/^(\S+)\s*(.*)/) {
+		# Package name and description
 		$packages{$i,'name'} = $1;
-		$i++;
+		$packages{$i,'desc'} = $2;
+		$indexmap{$1} = $i;
+                $i++;
 		}
-	elsif (/^\s*NAME:\s*(\S.*)/) {
-		$packages{($i-1),'desc'} = $1;
-		}
-	elsif (/^\s*CATEGORY:\s*([^\s,]+)/) {
-		$packages{($i-1),'class'} = $1;
-		}
-	elsif (/^\s*ARCH:\s*(\S+)/) {
+	elsif (/^\s+\((\S+)\)\s*(\S+)/) {
+		# Arch and version
 		$packages{($i-1),'arch'} = $1;
-		}
-	elsif (/^\s*VERSION:\s*(\S+)/) {
-		$packages{($i-1),'version'} = $1;
-		$packages{($i-1),'shortversion'} = $1;
+		$packages{($i-1),'version'} = $2;
+		$packages{($i-1),'shortversion'} = $2;
 		$packages{($i-1),'shortversion'} =~ s/,REV=.*//;
 		}
 	}
 close(PKGINFO);
-if (!$i) {
-	# Failed .. fall back to without -l
-	&open_execute_command(PKGINFO, "pkginfo $list", 1, 1);
-	while(<PKGINFO>) {
-		last if (/The following software/i);
-		if (/^(\S+)\s+(\S+)\s+(.*)$/) {
-			$packages{$i,'name'} = $2;
-			$packages{$i,'class'} = $1;
-			$packages{$i,'desc'} = $3;
-			$i++;
+
+# Call pkginfo to get classes
+&open_execute_command(PKGINFO, "pkginfo $list", 1, 1);
+while(<PKGINFO>) {
+	last if (/The following software/i);
+	if (/^(\S+)\s+(\S+)\s+(.*)$/) {
+		local $idx = $indexmap{$2};
+		if (defined($idx)) {
+			$packages{$idx,'class'} = $1;
 			}
 		}
-	close(PKGINFO);
 	}
+close(PKGINFO);
 return $i;
 }
 
