@@ -1,5 +1,5 @@
 cron_deny_file=/var/cron/deny
-cron_dir=/usr/lib/cron
+cron_dir=/usr/lib/cron/tabs
 cron_input=1
 cron_delete_command=crontab -u USER -r
 cron_user_delete_command=crontab -r

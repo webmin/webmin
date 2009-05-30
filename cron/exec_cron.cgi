@@ -37,16 +37,13 @@ foreach $e (&read_envs($job->{'user'})) {
 	$ENV{$1} = $2 if ($e =~ /^(\S+)\s+(.*)$/);
 	}
 
-$cmd = $lines[0];
 if (&supports_users()) {
-	# Make command run as the user
+	# Get command and switch uid/gid
 	@uinfo = getpwnam($job->{'user'});
 	$ENV{"HOME"} = $uinfo[7];
 	$ENV{"SHELL"} = "/bin/sh";
 	$ENV{"LOGNAME"} = $ENV{"USER"} = $job->{'user'};
-	if ($< == 0) {
-		$cmd = &command_as_user($job->{'user'}, 0, $lines[0]);
-		}
+	&switch_to_unix_user(\@uinfo);
 	}
 
 if ($in{'bg'}) {
@@ -58,20 +55,20 @@ if ($in{'bg'}) {
 		&open_tempfile(TEMP, ">$temp");
 		&print_tempfile(TEMP, $input);
 		&close_tempfile(TEMP);
-		&set_ownership_permissions($job->{'user'}, undef, undef, $temp);
-		&execute_command("(($cmd) <$temp ; rm -f $temp) &",
-				 undef, undef, undef);
+		&execute_command("(($lines[0]) ; rm -f $temp) &", $temp,
+				 undef, undef);
 		}
 	else {
-		&execute_command("($cmd) &", undef, undef, undef);
+		&execute_command("($lines[0]) &", undef, undef, undef);
 		}
 	}
 else {
 	# Execute cron command and display output..
-	print &text('exec_cmd', "<tt>".&html_escape($lines[0])."</tt>"),"<p>\n";
+	print &text('exec_cmd',
+		    "<tt>".&html_escape($lines[0])."</tt>"),"<p>\n";
 	print "<pre>";
 	$got = &foreign_call("proc", "safe_process_exec",
-			     $cmd, 0, 0, STDOUT, $input, 1);
+			     $lines[0], 0, 0, STDOUT, $input, 1);
 	print "<i>$text{'exec_none'}</i>\n" if (!$got);
 	print "</pre>\n";
 	}
