@@ -100,13 +100,11 @@ return if ($module_info{'usermin'});	# already switched!
 if ($access{'uid'} < 0) {
 	local @u = getpwnam($remote_user);
 	@u || &error("Failed to find user $remote_user");
-	($(, $)) = ($u[3], "$u[3] $u[3]");
-	($>, $<) = ($u[2], $u[2]);
+	&switch_to_unix_user(\@u);
 	}
 elsif ($access{'uid'}) {
 	local @u = getpwuid($access{'uid'});
-	($(, $)) = ($u[3], "$u[3] $u[3]");
-	($>, $<) = ($u[2], $u[2]);
+	&switch_to_unix_user(\@u);
 	}
 }
 
@@ -164,14 +162,13 @@ else {
 		if ($_[1]) {
 			if (defined($_[2])) {
 				# switch to given UID and GID
-				($(, $)) = ($_[2], "$_[2] $_[2]");
-				($>, $<) = ($_[1], $_[1]);
+				&switch_to_unix_user(
+					[ undef, undef, $_[1], $_[2] ]);
 				}
 			else {
 				# switch to UID and all GIDs
 				local @u = getpwuid($_[1]);
-				($(, $)) = ($u[3], "$u[3] ".join(" ", $u[3], &other_groups($u[0])));
-				($>, $<) = ($u[2], $u[2]);
+				&switch_to_unix_user(\@u);
 				}
 			}
 

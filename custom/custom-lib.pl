@@ -482,15 +482,15 @@ if ($cmd->{'su'}) {
 	&print_tempfile(TEMP, "$str\n");
 	&close_tempfile(TEMP);
 	chmod(0755, $temp);
-	$got = &foreign_call("proc", "safe_process_exec",
+	$got = &proc::safe_process_exec(
 			     &command_as_user($user, 1, $temp), 0, 0,
 			     $fh, undef, !$cmd->{'raw'}, 0,
 			     $cmd->{'timeout'});
 	unlink($temp);
 	}
 else {
-	$got = &foreign_call("proc", "safe_process_exec", $str,
-			     $user_info[2], undef, $fh, undef,
+	$got = &proc::safe_process_exec(
+			     $str, $user_info[2], undef, $fh, undef,
 			     !$cmd->{'raw'}, 0, $cmd->{'timeout'});
 	}
 &reset_environment() if ($cmd->{'clear'});

@@ -13,6 +13,7 @@ Example code:
 =cut
 
 use Socket;
+use POSIX;
 
 use vars qw($user_risk_level $loaded_theme_library $wait_for_input
 	    $done_webmin_header $trust_unknown_referers $unsafe_index_cgi
@@ -3565,7 +3566,7 @@ if ($gconfig{'umask'} && !$main::umask_already++) {
 if (!$main::nice_already && $main::webmin_script_type eq 'cron') {
 	# Set nice level
 	if ($gconfig{'nice'}) {
-		eval 'use POSIX; POSIX::nice($gconfig{\'nice\'});';
+		eval 'POSIX::nice($gconfig{\'nice\'});';
 		}
 
 	# Set IO scheduling class and priority
@@ -6324,10 +6325,22 @@ of user details, which must be in the format returned by getpwnam.
 sub switch_to_unix_user
 {
 my ($uinfo) = @_;
-($(, $)) = ( $uinfo->[3],
-	     "$uinfo->[3] ".join(" ", $uinfo->[3],
-			         &other_groups($uinfo->[0])) );
-($>, $<) = ( $uinfo->[2], $uinfo->[2] );
+if (!defined($uinfo->[0])) {
+	# No username given, so just use given GID
+	($(, $)) = ( $uinfo->[3], "$uinfo->[3] $uinfo->[3]" );
+	}
+else {
+	# Use all groups from user
+	($(, $)) = ( $uinfo->[3],
+		     "$uinfo->[3] ".join(" ", $uinfo->[3],
+					 &other_groups($uinfo->[0])) );
+	}
+eval {
+	POSIX::setuid($uinfo->[2]);
+	};
+if ($< != $uinfo->[2] || $> != $uinfo->[2]) {
+	($>, $<) = ( $uinfo->[2], $uinfo->[2] );
+	}
 }
 
 =head2 create_user_config_dirs
@@ -8595,6 +8608,7 @@ sub clear_time_locale
 {
 if ($main::clear_time_locale_count == 0) {
 	eval {
+		use POSIX;
 		$main::clear_time_locale_old = POSIX::setlocale(POSIX::LC_TIME);
 		POSIX::setlocale(POSIX::LC_TIME, "C");
 		};
