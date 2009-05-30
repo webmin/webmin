@@ -40,10 +40,7 @@ if (&supports_users()) {
 		$fileunix = $access{'fileunix'} || $remote_user;
 		@uinfo = getpwnam($fileunix);
 		if (@uinfo) {
-			($(, $)) = ( $uinfo[3],
-				     "$uinfo[3] ".join(" ", $uinfo[3],
-						   &other_groups($uinfo[0])) );
-			($>, $<) = ( $uinfo[2], $uinfo[2] );
+			&switch_to_unix_user(\@uinfo);
 			}
 		}
 	}
