@@ -184,8 +184,7 @@ if (!$module_info{'usermin'} && $access{'uid'}) {
 	@u || &error($text{'switch_euser'});
 	local @other = &other_groups($u[0]);
 	&go_chroot();
-	($(, $)) = ($u[3], "$u[3] ".join(" ", $u[3], @other));
-	($>, $<) = ($u[2], $u[2]);
+	&switch_to_unix_user(\@u);
 	umask(oct($access{'umask'}));
 	}
 else {
