@@ -169,8 +169,7 @@ local @u = $user ? getpwnam($user) :
 				getpwuid($access{'uid'});
 if ($u[2]) {
 	@u || &error($text{'switch_euser'});
-	($(, $)) = ($u[3], "$u[3] ".join(" ", $u[3], &other_groups($u[0])));
-	($>, $<) = ($u[2], $u[2]);
+	&switch_to_unix_user(\@u);
 	umask(oct($access{'umask'}));
 	}
 }
