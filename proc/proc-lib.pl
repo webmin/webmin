@@ -341,8 +341,7 @@ else {
 		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
 		#setpgrp(0, $$);
 		if ($_[1]) {
-			$( = $_[2]; $) = "$_[2] $_[2]";
-			($>, $<) = ($_[1], $_[1]);
+			&switch_to_unix_user([ undef, undef, $_[1], $_[2] ]);
 			}
 
 		open(STDIN, "<$tty");
