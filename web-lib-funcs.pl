@@ -6304,10 +6304,7 @@ sub switch_to_remote_user
 @remote_user_info || &error(&text('switch_remote_euser', $remote_user));
 &create_missing_homedir(\@remote_user_info);
 if ($< == 0) {
-	($(, $)) = ( $remote_user_info[3],
-		     "$remote_user_info[3] ".join(" ", $remote_user_info[3],
-				       &other_groups($remote_user_info[0])) );
-	($>, $<) = ( $remote_user_info[2], $remote_user_info[2] );
+	&switch_to_unix_user(\@remote_user_info);
 	$ENV{'USER'} = $ENV{'LOGNAME'} = $remote_user;
 	$ENV{'HOME'} = $remote_user_info[7];
 	}
@@ -6316,6 +6313,21 @@ if ($main::export_to_caller) {
 	my ($callpkg) = caller();
 	eval "\@${callpkg}::remote_user_info = \@remote_user_info";
 	}
+}
+
+=head2 switch_to_unix_user(&user-details)
+
+Switches the current process to the UID and group ID from the given list
+of user details, which must be in the format returned by getpwnam.
+
+=cut
+sub switch_to_unix_user
+{
+my ($uinfo) = @_;
+($(, $)) = ( $uinfo->[3],
+	     "$uinfo->[3] ".join(" ", $uinfo->[3],
+			         &other_groups($uinfo->[0])) );
+($>, $<) = ( $uinfo->[2], $uinfo->[2] );
 }
 
 =head2 create_user_config_dirs
