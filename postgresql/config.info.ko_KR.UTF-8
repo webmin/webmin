@@ -25,4 +25,3 @@ max_text=텍스트 필ㄷ의 최대 출력 길이,3,제한없음
 pid_file=postmaster PID 파일 경로,8
 login=관리자 로그인,0
 add_mode=종단 편집 인터페이스 사용여부,1,1-예,0-아니오
-hba_conf=

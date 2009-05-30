@@ -292,8 +292,7 @@ if ($driver_handle &&
 		# DBI call which must run in subprocess
 		pipe(OUTr, OUTw);
 		if (!($pid = fork())) {
-			($(, $)) = ( $uinfo[3], $uinfo[3] );
-			($>, $<) = ( $uinfo[2], $uinfo[2] );
+			&switch_to_unix_user(\@uinfo);
 			close(OUTr);
 			local $dbh = $driver_handle->connect($cstr,
 					$postgres_login, $postgres_pass);
