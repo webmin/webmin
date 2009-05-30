@@ -290,8 +290,7 @@ if (!$@) {
 		close(STDIN); close(STDOUT); close(STDERR);
 		untie(*STDIN); untie(*STDOUT); untie(*STDERR);
 		if ($_[1]) {
-			$( = $_[2]; $) = "$_[2] $_[2]";
-			($>, $<) = ($_[1], $_[1]);
+			&switch_to_unix_user([ undef, undef, $_[1], $_[2] ]);
 			}
 
 		close($ptyfh);		# Used by other side only
