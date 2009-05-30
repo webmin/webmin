@@ -36,13 +36,16 @@ file_owner=Owner for zone files (user:group),3,Default
 file_perms=Permissions for zone files (in octal),3,Default
 default_prins=Default master server for master zones,0,System's hostname
 default_master=Default master server(s) for slave zones,0
-this_ip=Default master server IP for remote slave zones,3,IP address of hostname
-other_slaves=Add other slave IP addresses to masters on slaves?,1,1-Yes,0-No
 updserial_on=Automatically update serial numbers,1,1-Yes,0-No
 ipv6_mode=Domain for reverse IPv6 addresses,1,1-ip6.arpa,0-ip6.int
 confirm_zone=Confirm before deleting zones?,1,1-Yes,0-No
 confirm_rec=Confirm before deleting records?,1,1-Yes,0-No
 free_nets=IP networks for free addresses,3,Automatic
+
+line2.5=Cluster slave servers,11
+this_ip=Default master server IP for remote slave zones,3,IP address of hostname
+other_slaves=Add other slave IP addresses to list of masters on slaves?,1,1-Yes,0-No
+extra_slaves=Additional master IP addresses for slave zones,3,None
 
 line3=System configuration,11
 named_conf=Full path to the named.conf file,0

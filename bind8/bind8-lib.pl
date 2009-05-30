@@ -1532,7 +1532,7 @@ local ($z) = grep { $_->{'value'} eq $_[0] } @zones;
 return 2 if ($z);
 
 # Create it
-local @mips = ( $_[1], @{$_[4]} );
+local @mips = &unique($_[1], @{$_[4]});
 local $masters = { 'name' => 'masters',
                    'type' => 1,
                    'members' => [ map { { 'name' => $_ } } @mips ] };
@@ -2261,6 +2261,7 @@ foreach $slave (@slaves) {
 				  map { &to_ipaddress($_->{'host'}) }
 				      grep { $_ ne $slave } @slaves;
 		}
+	push(@otherslaves, split(/\s+/, $config{'extra_slaves'}));
 
 	# Work out the view
 	my $view;
