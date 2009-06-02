@@ -124,11 +124,12 @@ sub list_smart_disks_partitions_fstab
 &foreign_require("mount");
 my @rv;
 foreach my $m (&mount::list_mounted(1)) {
-	if ($m->[1] =~ /^(\/dev\/(da|ad)[0-9])/ &&
+	if ($m->[1] =~ /^(\/dev\/(da|ad)([0-9]+))/ &&
 	    $m->[2] ne 'cd9660') {
 		# FreeBSD-style disk name
 		push(@rv, { 'device' => $1,
-			    'desc' => $1 });
+			    'desc' => ($2 eq 'ad' ? 'IDE' : 'SCSI').
+				      ' disk '.$3 });
 		}
 	elsif ($m->[1] =~ /^(\/dev\/disk\d+)/ &&
 	       ($m->[2] eq 'ufs' || $m->[2] eq 'hfs')) {
