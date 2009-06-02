@@ -23,113 +23,78 @@ $tar_command = &has_command("gtar") || &has_command("tar");
 sub dump_form
 {
 # Display common options
-print "<tr> <td valign=top><b>",&hlink($text{'dump_dest'}, "dest"),
-      "</b></td> <td colspan=3>\n";
-printf "<input type=radio name=mode value=0 %s> %s\n",
-	$_[0]->{'host'} ? '' : 'checked', $text{'dump_file'};
-printf "<input name=file size=50 value='%s'> %s<br>\n",
-	$_[0]->{'host'} ? '' : $_[0]->{'file'},
-	&file_chooser_button("file");
-printf "<input type=radio name=mode value=1 %s>\n",
-	$_[0]->{'host'} ? 'checked' : '';
-print &text('dump_host',
-	    "<input name=host size=15 value='$_[0]->{'host'}'>",
-	    "<input name=huser size=8 value='$_[0]->{'huser'}'>",
-	    "<input name=hfile size=20 value='$_[0]->{'hfile'}'>"),
-      "</td> </tr>\n";
+print &ui_table_row(&hlink($text{'dump_dest'}, "dest"),
+   &ui_radio("mode", $_[0]->{'host'} ? 1 : 0,
+	[ [ 0, $text{'dump_file'}." ".
+	       &ui_textbox("file", $_[0]->{'file'}, 50).
+	       " ".&file_chooser_button("file")."<br>" ],
+	  [ 1, &text('dump_host',
+		     &ui_textbox("host", $_[0]->{'host'}, 15),
+		     &ui_textbox("huser", $_[0]->{'huser'}, 8),
+		     &ui_textbox("hfile", $_[0]->{'hfile'}, 20)) ] ]), 3);
 
 if ($_[0]->{'fs'} eq 'tar') {
 	# Display gnutar options
-	print "<tr> <td><b>",&hlink($text{'dump_rsh'},"rsh"),
-	      "</b></td>\n";
-	print "<td colspan=3>",
-	      &rsh_command_input("rsh_def", "rsh", $_[0]->{'rsh'}),
-	      "</td> </tr>\n";
+	print &ui_table_row(&hlink($text{'dump_rsh'},"rsh"),
+		&rsh_command_input("rsh_def", "rsh", $_[0]->{'rsh'}), 3);
 
 	# Password option for SSH
-	print "<tr> <td><b>",&hlink($text{'dump_pass'},"pass"),
-	      "</b></td>\n";
-	print "<td colspan=3>",&ui_password("pass", $_[0]->{'pass'}, 20),
-	      "</td> </tr>\n";
+	print &ui_table_row(&hlink($text{'dump_pass'},"pass"),
+		&ui_password("pass", $_[0]->{'pass'}, 20), 3);
 	}
 }
 
 sub dump_options_form
 {
+local ($dump, $tds) = @_;
 if ($_[0]->{'fs'} eq 'tar') {
 	# Display gnutar options
-	print "<tr> <td><b>",&hlink($text{'dump_label'},"label"),"</b></td>\n";
-	printf "<td><input name=label size=15 value='%s'></td> </tr>\n",
-		$_[0]->{'label'};
+	print &ui_table_row(&hlink($text{'dump_label'},"label"),
+			    &ui_textbox("label", $_[0]->{'label'}, 15),
+			    1, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'dump_blocks'},"blocks"),
-	      "</b></td> <td colspan=3>\n";
-	printf "<input name=blocks_def type=radio value=1 %s> %s\n",
-		$_[0]->{'blocks'} ? '' : 'checked', $text{'dump_auto'};
-	printf "<input name=blocks_def type=radio value=0 %s>\n",
-		$_[0]->{'blocks'} ? 'checked' : '';
-	printf "<input name=blocks size=8 value='%s'> kB</td> </tr>\n",
-		$_[0]->{'blocks'};
+	print &ui_table_row(&hlink($text{'dump_blocks'},"blocks"),
+			    &ui_opt_textbox("blocks", $_[0]->{'blocks'}, 8,
+					    $text{'dump_auto'})." kB",
+			    3, $tds);
 
-	print "<tr><td><b>",&hlink($text{'dump_gzip'},"gzip"),"</b></td>\n";
-	printf "<td><input name=gzip type=radio value=1 %s> %s\n",
-		$_[0]->{'gzip'} ? 'checked' : '', $text{'yes'};
-	printf "<input name=gzip type=radio value=0 %s> %s</td>\n",
-		$_[0]->{'gzip'} ? '' : 'checked', $text{'no'};
+	print &ui_table_row(&hlink($text{'dump_gzip'},"gzip"),
+			    &ui_select("gzip", int($_[0]->{'gzip'}),
+				[ [ 0, $text{'no'} ],
+				  [ 1, $text{'dump_gzip1'} ] ]), 1, $tds);
 
-	print "<td><b>",&hlink($text{'dump_multi'},"multi"),"</b></td>\n";
-	printf "<td><input name=multi type=radio value=1 %s> %s\n",
-		$_[0]->{'multi'} ? 'checked' : '', $text{'yes'};
-	printf "<input name=multi type=radio value=0 %s> %s</td> </tr>\n",
-		$_[0]->{'multi'} ? '' : 'checked', $text{'no'};
+	print &ui_table_row(&hlink($text{'dump_multi'},"multi"),
+			    &ui_yesno_radio("multi", int($_[0]->{'multi'})),
+			    1, $tds);
 
-	print "<tr><td><b>",&hlink($text{'dump_links'},"links"),"</b></td>\n";
-	printf "<td><input name=links type=radio value=1 %s> %s\n",
-		$_[0]->{'links'} ? 'checked' : '', $text{'yes'};
-	printf "<input name=links type=radio value=0 %s> %s</td>\n",
-		$_[0]->{'links'} ? '' : 'checked', $text{'no'};
+	print &ui_table_row(&hlink($text{'dump_links'},"links"),
+			    &ui_yesno_radio("links", int($_[0]->{'links'})),
+			    1, $tds);
 
-	print "<td><b>",&hlink($text{'dump_xdev'},"xdev"),"</b></td>\n";
-	printf "<td><input name=xdev type=radio value=1 %s> %s\n",
-		$_[0]->{'xdev'} ? 'checked' : '', $text{'yes'};
-	printf "<input name=xdev type=radio value=0 %s> %s</td> </tr>\n",
-		$_[0]->{'xdev'} ? '' : 'checked', $text{'no'};
+	print &ui_table_row(&hlink($text{'dump_xdev'},"xdev"),
+			    &ui_yesno_radio("xdev", int($_[0]->{'xdev'})),
+			    1, $tds);
 	}
 else {
 	# Display ufs backup options
-	print "<tr> <td><b>",&hlink($text{'dump_update'},"update"),
-	      "</b></td>\n";
-	printf "<td><input name=update type=radio value=1 %s> %s\n",
-		$_[0]->{'update'} ? 'checked' : '', $text{'yes'};
-	printf "<input name=update type=radio value=0 %s> %s</td>\n",
-		$_[0]->{'update'} ? '' : 'checked', $text{'no'};
+	print &ui_table_row(&hlink($text{'dump_update'},"update"),
+			    &ui_yesno_radio("update", int($_[0]->{'update'})),
+			    1, $tds);
 
-	print "<td><b>",&hlink($text{'dump_level'},"level"),"</b></td>\n";
-	print "<td><select name=level>\n";
-	foreach $l (0 .. 9) {
-		printf "<option value=%d %s>%d %s\n",
-			$l, $_[0]->{'level'} == $l ? "selected" : "", $l,
-			$text{'dump_level_'.$l};
-		}
-	print "</select></td> </tr>\n";
+	print &ui_table_row(&hlink($text{'dump_level'},"level"),
+			    &ui_select("level", int($_[0]->{'level'}),
+				[ map { [ $_, $text{'dump_level_'.$_} ] }
+				      (0 .. 9) ]), 1, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'dump_blocks'},"blocks"),
-	      "</b></td> <td colspan=3>\n";
-	printf "<input name=blocks_def type=radio value=1 %s> %s\n",
-		$_[0]->{'blocks'} ? '' : 'checked', $text{'dump_auto'};
-	printf "<input name=blocks_def type=radio value=0 %s>\n",
-		$_[0]->{'blocks'} ? 'checked' : '';
-	printf "<input name=blocks size=8 value='%s'> kB</td> </tr>\n",
-		$_[0]->{'blocks'};
+	print &ui_table_row(&hlink($text{'dump_blocks'},"blocks"),
+			    &ui_opt_textbox("blocks", $_[0]->{'blocks'}, 8,
+					    $text{'dump_auto'})." kB",
+			    3, $tds);
 
-	print "<tr><td><b>",&hlink($text{'dump_honour'},"honour"),"</b></td>\n";
-	printf "<td><input name=honour type=radio value=1 %s> %s\n",
-		$_[0]->{'honour'} ? 'checked' : '', $text{'yes'};
-	printf "<input name=honour type=radio value=0 %s> %s</td>\n",
-		$_[0]->{'honour'} ? '' : 'checked', $text{'no'};
+	print &ui_table_row(&hlink($text{'dump_honour'},"honour"),
+			    &ui_yesno_radio("honour", int($_[0]->{'honour'})),
+			    1, $tds);
 	}
-
-print "</tr>\n";
 }
 
 # parse_dump(&dump)
@@ -284,90 +249,75 @@ return &has_command("restore") ? undef : $cmd;
 # restore_form(filesystem, [&dump])
 sub restore_form
 {
+local ($fs, $dump, $tds) = @_;
+
 # common options
-print "<tr> <td valign=top><b>",&hlink($text{'restore_src'}, "rsrc"),
-      "</b></td>\n";
-printf "<td colspan=3><input type=radio name=mode value=0 %s> %s\n",
-	$_[1]->{'host'} ? "" : "checked", $text{'dump_file'};
-printf "<input name=file size=50 value='%s'> %s<br>\n",
-	$_[1]->{'host'} ? "" : $_[1]->{'file'}, &file_chooser_button("file");
-printf "<input type=radio name=mode value=1 %s>\n",
-	$_[1]->{'host'} ? "checked" : "";
-print &text('dump_host',
-	    "<input name=host size=15 value='$_[1]->{'host'}'>",
-	    "<input name=huser size=8 value='$_[1]->{'huser'}'>",
-	    "<input name=hfile size=20 value='$_[1]->{'hfile'}'>"),
-      "</td> </tr>\n";
+print &ui_table_row(&hlink($text{'restore_src'}, "rsrc"),
+   &ui_radio("mode", $_[1]->{'host'} ? 1 : 0,
+	[ [ 0, $text{'dump_file'}." ".
+	       &ui_textbox("file", $_[1]->{'file'}, 50).
+	       " ".&file_chooser_button("file")."<br>" ],
+	  [ 1, &text('dump_host',
+		     &ui_textbox("host", $_[1]->{'host'}, 15),
+		     &ui_textbox("huser", $_[1]->{'huser'}, 8),
+		     &ui_textbox("hfile", $_[1]->{'hfile'}, 20)) ] ]), 3, $tds);
 
 if ($_[0] eq 'tar') {
 	# tar restore options
-	print "<tr> <td><b>",&hlink($text{'restore_rsh'},"rrsh"),
-	      "</b></td>\n";
-	print "<td colspan=3>",
-	      &rsh_command_input("rsh_def", "rsh", $_[1]->{'rsh'}),
-	      "</td> </tr>\n";
+	print &ui_table_row(&hlink($text{'restore_rsh'},"rrsh"),
+		      &rsh_command_input("rsh_def", "rsh", $_[1]->{'rsh'}),
+		      3, $tds);
 
 	# Password option for SSH
-	print "<tr> <td><b>",&hlink($text{'dump_pass'},"pass"),
-	      "</b></td>\n";
-	print "<td colspan=3>",&ui_password("pass", $_[0]->{'pass'}, 20),
-	      "</td> </tr>\n";
+	print &ui_table_row(&hlink($text{'dump_pass2'},"passs"),
+		      &ui_password("pass", $_[1]->{'pass'}, 20),
+		      3, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_files'},"rfiles"),
-	      "</b></td>\n";
-	print "<td colspan=3><input type=radio name=files_def value=1 checked> ",
-	      "$text{'restore_all'}\n";
-	print "<input type=radio name=files_def value=0> $text{'restore_sel'}\n";
-	print "<input name=files size=40></td> </tr>\n";
+	# Files to restore
+	print &ui_table_row(&hlink($text{'restore_files'},"rfiles"),
+		      &ui_opt_textbox("files", undef, 40, $text{'restore_all'},
+				      $text{'restore_sel'}), 3, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_dir'},"rdir"),
-	      "</b></td> <td colspan=3>\n";
-	print "<input name=dir size=50> ",&file_chooser_button("dir", 1),
-	      "</td> </tr>\n";
+	# Target dir
+	print &ui_table_row(&hlink($text{'restore_dir'},"rdir"),
+		      &ui_textbox("dir", undef, 50)." ".
+		      &file_chooser_button("dir", 1), 3, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_perms'},"perms"),"</td>\n";
-	print "<td><input type=radio name=perms value=1> $text{'yes'}\n";
-	print "<input type=radio name=perms value=0 checked> $text{'no'}</td>\n";
+	# Restore permissions?
+	print &ui_table_row(&hlink($text{'restore_perms'},"perms"),
+		      &ui_yesno_radio("perms", 1), 1, $tds);
 
-	print "<td><b>",&hlink($text{'restore_gzip'},"rgzip"),"</td>\n";
-	print "<td><input type=radio name=gzip value=1> $text{'yes'}\n";
-	print "<input type=radio name=gzip value=0 checked> $text{'no'}</td> </tr>\n";
+	# Uncompress?
+	print &ui_table_row(&hlink($text{'restore_gzip'},"rgzip"),
+		      &ui_select("gzip", $_[1]->{'gzip'},
+				[ [ 0, $text{'no'} ],
+				  [ 1, $text{'dump_gzip1'} ] ]), 1, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_keep'},"keep"),"</td>\n";
-	print "<td><input type=radio name=keep value=1> $text{'yes'}\n";
-	print "<input type=radio name=keep value=0 checked> $text{'no'}</td>\n";
+	print &ui_table_row(&hlink($text{'restore_keep'},"keep"),
+		      &ui_yesno_radio("keep", 0), 1, $tds);
 
-	print "<td><b>",&hlink($text{'restore_multi'},"rmulti"),
-	      "</b></td>\n";
-	print "<td><input type=radio name=multi value=1> $text{'yes'}\n";
-	print "<input type=radio name=multi value=0 checked> $text{'no'}</td> </tr>\n";
+	# Multiple files
+	print &ui_table_row(&hlink($text{'restore_multi'},"rmulti"),
+		      &ui_yesno_radio("multi", 0), 1, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_test'},"rtest"),"</td>\n";
-	print "<td><input type=radio name=test value=1> $text{'yes'}\n";
-	print "<input type=radio name=test value=0 checked> $text{'no'}</td> </tr>\n";
-
+	# Show only
+	print &ui_table_row(&hlink($text{'restore_test'},"rtest"),
+		      &ui_yesno_radio("test", 1), 1, $tds);
 	}
 else {
-	# ufs restore options
-	print "<tr> <td><b>",&hlink($text{'restore_files'},"rfiles"),
-	      "</b></td>\n";
-	print "<td colspan=3><input type=radio name=files_def value=1 checked> ",
-	      "$text{'restore_all'}\n";
-	print "<input type=radio name=files_def value=0> $text{'restore_sel'}\n";
-	print "<input name=files size=40></td> </tr>\n";
+	# ufs restore options, files to restore
+	print &ui_table_row(&hlink($text{'restore_files'},"rfiles"),
+		      &ui_opt_textbox("files", undef, 40, $text{'restore_all'},
+				      $text{'restore_sel'}), 3, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_dir'},"rdir"),"</td>\n";
-	print "<td colspan=3><input name=dir size=40> ",
-		&file_chooser_button("dir", 1),"</td> </tr>\n";
+	# Target dir
+	print &ui_table_row(&hlink($text{'restore_dir'},"rdir"),
+		      &ui_textbox("dir", undef, 50)." ".
+		      &file_chooser_button("dir", 1), 3, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_nothing'},"rnothing"),
-	      "</b></td>\n";
-	print "<td><input type=radio name=nothing value=1> $text{'yes'}\n";
-	print "<input type=radio name=nothing value=0 checked> $text{'no'}</td>\n";
-
-	print "<td><b>",&hlink($text{'restore_test'},"rtest"),"</td>\n";
-	print "<td><input type=radio name=test value=1> $text{'yes'}\n";
-	print "<input type=radio name=test value=0 checked> $text{'no'}</td> </tr>\n";
+	# Show only
+	print &ui_table_row(&hlink($text{'restore_nothing'},"rnothing"),
+		      &ui_yesno_radio("nothing", 1), 1, $tds);
 	}
 }
 

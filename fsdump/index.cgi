@@ -88,23 +88,27 @@ print "</form>\n";
 if ($access{'restore'}) {
 	# Display restore button
 	print &ui_hr();
-	print "<form action=restore_form.cgi>\n";
-	print "<table width=100%><tr><td nowrap>\n";
+	print &ui_buttons_start();
+
 	@fstypes = ( );
 	push(@fstypes, &supported_filesystems()) if (!$config{'always_tar'});
 	push(@fstypes, "tar") if ($supports_tar);
 	if (@fstypes > 1) {
-		print &ui_submit($text{'index_restore'});
-		print &ui_select("fs", undef,
-			[ map { [ $_, uc($_) ] } @fstypes ]),"</td>\n";
-		print "<td>$text{'index_restoremsg'}</td>\n";
+		print &ui_buttons_row("restore_form.cgi",
+				      $text{'index_restore'},
+				      $text{'index_restoremsg'},
+				      undef,
+				      &ui_select("fs", undef,
+					[ map { [ $_, uc($_) ] } @fstypes ]));
 		}
 	else {
-		print &ui_submit($text{'index_restore2'});
-		print &ui_hidden("fs", $fstypes[0]),"</td>\n";
-		print "<td>$text{'index_restoremsg2'}</td>\n";
+		print &ui_buttons_row("restore_form.cgi",
+				      $text{'index_restore2'},
+				      $text{'index_restoremsg'},
+				      &ui_hidden("fs", $fstypes[0]));
 		}
-	print "</tr></table></form>\n";
+
+	print &ui_buttons_end();
 	}
 
 # Display running backup jobs list, if any

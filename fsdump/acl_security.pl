@@ -5,40 +5,25 @@ do 'fsdump-lib.pl';
 # Output HTML for editing security options for the acl module
 sub acl_security_form
 {
-print "<tr> <td valign=top><b>$text{'acl_edit'}</b></td> <td valign=top>\n";
-printf "<input type=radio name=edit value=1 %s> %s\n",
-	$_[0]->{'edit'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=edit value=0 %s> %s</td>\n",
-	$_[0]->{'edit'} ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'acl_edit'},
+		      &ui_yesno_radio('edit', $_[0]->{'edit'}));
 
-print "<td valign=top><b>$text{'acl_restore'}</b></td> <td valign=top>\n";
-printf "<input type=radio name=restore value=1 %s> %s\n",
-	$_[0]->{'restore'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=restore value=0 %s> %s</td> </tr>\n",
-	$_[0]->{'restore'} ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'acl_restore'},
+		      &ui_yesno_radio('restore', $_[0]->{'restore'}));
 
-print "<tr> <td valign=top><b>$text{'acl_cmds'}</b></td> <td valign=top>\n";
-printf "<input type=radio name=cmds value=1 %s> %s\n",
-	$_[0]->{'cmds'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=cmds value=0 %s> %s</td>\n",
-	$_[0]->{'cmds'} ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'acl_cmds'},
+		      &ui_yesno_radio('cmds', $_[0]->{'cmds'}));
 
-print "<td valign=top><b>$text{'acl_extra'}</b></td> <td valign=top>\n";
-printf "<input type=radio name=extra value=1 %s> %s\n",
-	$_[0]->{'extra'} ? "checked" : "", $text{'yes'};
-printf "<input type=radio name=extra value=0 %s> %s</td> </tr>\n",
-	$_[0]->{'extra'} ? "" : "checked", $text{'no'};
+print &ui_table_row($text{'acl_extra'},
+		      &ui_yesno_radio('extra', $_[0]->{'extra'}));
 
-print "<tr> <td valign=top><b>$text{'acl_dirs'}</b></td> <td colspan=3>\n";
-printf "<input type=radio name=dirs_def value=1 %s> %s\n",
-	$_[0]->{'dirs'} eq "*" ? "checked" : "", $text{'acl_all'};
-printf "<input type=radio name=dirs_def value=0 %s> %s<br>\n",
-	$_[0]->{'dirs'} eq "*" ? "" : "checked", $text{'acl_list'};
-print "<textarea name=dirs rows=5 cols=30>",
-	$_[0]->{'dirs'} eq "*" ? "" :
-	join("\n", split(/\t/, $_[0]->{'dirs'})),"</textarea></td> </tr>\n";
-
-
+print &ui_table_row($text{'acl_dirs'},
+		      &ui_radio("dirs_def", $_[0]->{'dirs'} eq "*" ? 1 : 0,
+			        [ [ 1, $text{'acl_all'} ],
+				  [ 0, $text{'acl_list'} ] ])."<br>\n".
+		      &ui_textarea("dirs", $_[0]->{'dirs'} eq "*" ? "" :
+				      join("\n", split(/\t/, $_[0]->{'dirs'})),
+				   5, 50), 3);
 }
 
 # acl_security_save(&options)
