@@ -1251,6 +1251,7 @@ foreach my $dir (split(/\s+/, $config{'rc_dir'})) {
 	opendir(DIR, $dir);
 	foreach my $f (readdir(DIR)) {
 		next if ($f =~ /^\./ || $f =~ /\.(bak|tmp)/i);
+		next if (uc($f) eq $f);		# Dummy actions are upper-case
 		local $name = $f;
 		$name =~ s/\.sh$//;
 		local $data = &read_file_contents("$dir/$f");
