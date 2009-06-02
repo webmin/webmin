@@ -42,5 +42,5 @@ Added a Module Config option to control if the user is prompted for confirmation
 A custom command to rebuild all maps can be specified on the Module Config page, to be used instead of makemap or newaliases.
 ---- Changes since 1.450 ----
 Changed the mail queue date format to yyyy/mm/dd, for easier sorting.
----- Changes since 1.480 ----
+---- Changes since 1.470 ----
 When flushing selected queued quarantined messages, the -qQ flag is added so that it actually works.

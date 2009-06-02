@@ -22,5 +22,5 @@ Fixed a bug that prevented a groups file from being added to an existing directo
 Added a button to link to the Apache module (if accessible) for editing all settings in the .htaccess file.
 ---- Changes since 1.450 ----
 Added a Module Config option to set permissions on created .htaccess and .htpasswd files, which defaults to 644.
----- Changes since 1.480 ----
+---- Changes since 1.470 ----
 Added a button to remove protection from multiple directories, without removing the .htaccess file.

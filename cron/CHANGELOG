@@ -35,5 +35,5 @@ Disable time and day lists when 'All' is selected, to indicate that they are un-
 ---- Changes since 1.440 ----
 The search form for jobs is always visible, even when there are not too many jobs to show.
 Converted commands in the module's API file to POD format, and added more details about each function.
----- Changes since 1.480 ----
+---- Changes since 1.470 ----
 Added a Module Config option to add new cron jobs to a specific file, like /etc/cron.d/webmin, instead of users' personal crontab files.

@@ -60,5 +60,5 @@ Added a new monitor type for checking the expiry and validity of SSL certificate
 Added an option to the FTP status monitor to make a TLS encrypted connection. Requires the Net::FTPSSL Perl module though.
 ---- Changes since 1.450 ----
 Added a tooltip to status icons to show the hostname.
----- Changes since 1.480 ----
+---- Changes since 1.470 ----
 Corrected the domain for AT&T SMS emails.
