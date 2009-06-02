@@ -12,3 +12,4 @@ The SMART status monitor now has an option to only alert if the error count on a
 Improved support for 3ware and HP RAID devices, so that the underlying disks are now detected and can be reported on separately.
 ---- Changes since 1.470 ----
 Added support for systems with both old and new 3ware cards.
+Added support for FreeBSD and OSX systems, if they have the smartctl package installed.

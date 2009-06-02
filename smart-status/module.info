@@ -1,6 +1,5 @@
 desc=SMART Drive Status
-os_support=*-linux
-depends=fdisk
+os_support=*-linux freebsd macos
 category=hardware
 longdesc=Check the status of IDE drives to detect problems and potential failures.
 desc_sk=SMART stav diskov

@@ -7,8 +7,6 @@ Functions for getting SMART status
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
-&foreign_require("fdisk");
-
 =head2 get_smart_version()
 
 Returns the version number of the SMART tools on this system
@@ -28,11 +26,28 @@ return $smartctl_version_cache;
 =head2 list_smart_disks_partitions
 
 Returns a sorted list of disks that can support SMART.
-May include faked-up 3ware devices
 
 =cut
 sub list_smart_disks_partitions
 {
+if (&foreign_check("fdisk")) {
+	return &list_smart_disks_partitions_fdisk();
+	}
+elsif (&foreign_check("mount")) {
+	return &list_smart_disks_partitions_fstab();
+	}
+return ( );
+}
+
+=head2 list_smart_disks_partitions_fdisk
+
+Returns a sorted list of disks that can support SMART, using the Linux fdisk
+module. May include faked-up 3ware devices.
+
+=cut
+sub list_smart_disks_partitions_fdisk
+{
+&foreign_require("fdisk");
 local @rv;
 local %tcount = ( "/dev/twe", 0, "/dev/twa", 0 );
 foreach my $d (&fdisk::list_disks_partitions()) {
@@ -97,6 +112,41 @@ while(1) {
 	$count++;
 	}
 return $count;
+}
+
+=head2 list_smart_disks_partitions_fstab
+
+Returns a list of disks on which we can use SMART, taken from /etc/fstab.
+
+=cut
+sub list_smart_disks_partitions_fstab
+{
+&foreign_require("mount");
+my @rv;
+foreach my $m (&mount::list_mounted(1)) {
+	if ($m->[1] =~ /^(\/dev\/(da|ad)[0-9])/ &&
+	    $m->[2] ne 'cd9660') {
+		# FreeBSD-style disk name
+		push(@rv, { 'device' => $1,
+			    'desc' => $1 });
+		}
+	elsif ($m->[1] =~ /^(\/dev\/disk\d+)/ &&
+	       ($m->[2] eq 'ufs' || $m->[2] eq 'hfs')) {
+		# MacOS disk name
+		push(@rv, { 'device' => $1,
+			    'desc' => $1 });
+		}
+	elsif ($m->[1] =~ /^(\/dev\/([hs])d([a-z]))/ &&
+	       $m->[2] ne 'iso9660') {
+		# Linux disk name
+		push(@rv, { 'device' => $1,
+			    'desc' => ($2 eq 'h' ? 'IDE' : 'SCSI').
+				      ' disk '.uc($3) });
+		}
+	}
+my %done;
+@rv = grep { !$done{$_->{'device'}}++ } @rv;
+return @rv;
 }
 
 =head2 get_drive_status(device-name, [&drive])
