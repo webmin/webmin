@@ -11,6 +11,7 @@ $prod = &get_product_name();
 $ucprod = ucfirst($prod);
 &ui_print_header(undef, &text('wsearch_title', $ucprod), "", undef, 0, 1);
 
+# Validate search text
 $re = $in{'search'};
 if ($re !~ /\S/) {
 	&error($text{'wsearch_esearch'});
@@ -18,23 +19,21 @@ if ($re !~ /\S/) {
 $re =~ s/^\s+//;
 $re =~ s/\s+$//;
 
-# Search module names first
-$count = 0;
+# Search module names and add to results list
+@rv = ( );
 @mods = sort { $b->{'longdesc'} cmp $a->{'longdesc'} }
 	     grep { !$_->{'clone'} } &get_available_module_infos();
 foreach $m (@mods) {
-	if ($m->{'desc'} =~ /\Q$re\E/i || $m->{'dir'} =~ /\Q$re\E/i) {
-		&match_row(
-			$m,
-			"<a href='$m->{'dir'}/'>$m->{'desc'}</a>",
-			$text{'wsearch_mtitle'},
-			undef,
-			0,
-			);
+	if ($m->{'desc'} =~ /\Q$re\E/i) {
+		push(@rv, { 'mod' => $m,
+			    'rank' => 10,
+			    'type' => 'mod',
+			    'link' => $m->{'dir'}.'/',
+			    'text' => $m->{'desc'} });
 		}
 	}
 
-# Then do module configs
+# Search module configs and their help pages
 foreach $m (@mods) {
 	%access = &get_module_acl(undef, $m);
 	next if ($access{'noconfig'});
@@ -53,25 +52,38 @@ foreach $m (@mods) {
 			$section = $c;
 			}
 		if ($p[0] =~ /\Q$re\E/i) {
-			&match_row(
-			    $m,
-			    "<a href='config.cgi?module=$m->{'dir'}&".
-			     "section=".&urlize($section)."#$c'>$p[0]</a>",
-			    $text{'wsearch_config_'.$prod},
-			    $p[0],
-			    1,
-			    );
-			$cgis[0]}
+			# Config description matches
+			push(@rv, { 'mod' => $m,
+				    'rank' => 8,
+				    'type' => 'config',
+				    'link' => "config.cgi?module=$m->{'dir'}&".
+					     "section=".&urlize($section)."#$c",
+				    'text' => $p[0] });
+			}
+		$hfl = &help_file($mod->{'dir'}, "config_".$c);
+		($title, $help) = &help_file_match($hfl);
+		if ($help) {
+			# Config help matches
+			push(@rv, { 'mod' => $m,
+                                    'rank' => 6,
+				    'type' => 'help',
+				    'link' => "help.cgi/$m->{'dir'}/config_$c",
+				    'desc' => &text('wsearch_helpfor', $p[0]),
+				    'text' => $help,
+				   });
+			}
 		}
 	}
 
-# Then do help pages
+# Search other help pages
 %lang_order_list = map { $_, 1 } @lang_order_list;
 foreach $m (@mods) {
 	$helpdir = &module_root_directory($m->{'dir'})."/help";
 	%donepage = ( );
 	opendir(DIR, $helpdir);
 	foreach $f (sort { length($b) <=> length($a) } readdir(DIR)) {
+		next if ($f =~ /^config_/);	# For config help, already done
+
 		# Work out if we should grep this help page - don't do the same
 		# page twice for different languages
 		$grep = 0;
@@ -90,27 +102,14 @@ foreach $m (@mods) {
 
 		# If yes, search it
 		if ($grep) {
-			$data = &read_file_contents("$helpdir/$f");
-			if ($data =~ /<header>([^<]*)<\/header>/) {
-				$title = $1;
-				}
-			else {
-				$title = $f;
-				}
-			$data =~ s/\s+/ /g;
-			$data =~ s/<p>/\n\n/gi;
-			$data =~ s/<br>/\n/gi;
-			$data =~ s/<[^>]+>//g;
-			if ($data =~ /\Q$re\E/i) {
+			($title, $help) = &help_file_match("$helpdir/$f");
+			if ($title) {
 				@cgis = &find_cgi_text(
 					[ "hlink\\(.*'$page'",
 					  "hlink\\(.*\"$page\"",
 					], $m, 1);
-				if ($page =~ /^config_(\S+)$/) {
-					# Special config.info page link
-					# XXX where?
-					}
-				elsif (@cgis == 0) {
+				# XXX delete this block
+				if (@cgis == 0) {
 					$link = "";
 					}
 				else {
@@ -122,14 +121,13 @@ foreach $m (@mods) {
 					$link =~ s/<br>//;
 					$link = &text('wsearch_on', $link);
 					}
-				&match_row(
-				    $m,
-				    &hlink($title, $page, $m->{'dir'}).
-				      " ".$link,
-				    $text{'wsearch_help'},
-				    $data,
-				    1,
-				    );
+				push(@rv, { 'mod' => $m,
+					    'rank' => 6,
+					    'type' => 'help',
+					    'link' => "help.cgi/$m->{'dir'}/config_$c",
+					    'desc' => $title,
+					    'text' => $help,
+					    'cgis' => \@cgis });
 				}
 			}
 		}
@@ -145,6 +143,7 @@ MODULE: foreach $m (@mods) {
 				[ "\$text{'$k'}",
 				  "\$text{\"$k\"}",
 				  "\$text{$k}" ], $m);
+			# XXX delete this block
 			if (@cgis == 0) {
 				$link = "<a href='$m->{'dir'}/'>$m->{'desc'}</a>";
 				}
@@ -155,19 +154,32 @@ MODULE: foreach $m (@mods) {
 					  "<a href='$_'>$s</a>" } @cgis ]);
 				$link =~ s/<br>//;
 				}
-			&match_row(
-			    $m,
-			    $link,
-			    $text{'wsearch_text'},
-			    $mtext{$k},
-			    @cgis ? 1 : 0,
-			    );
-			#next MODULE;
+			push(@rv, { 'mod' => $m,
+				    'rank' => 4,
+				    'type' => 'text',
+				    'desc' => $pagetitle,	# XXX
+				    'text' => $mtext{$k},
+				    'cgis' => \@cgis });
 			}
 		}
 	}
 
-if (!$count) {
+# Sort results by relevancy
+# XXX
+@rv = sort { $a->{'rank'} <=> $b->{'rank'} } @rv;
+
+# Show in table
+if (@rv) {
+	# XXX next page link?
+	print &ui_columns_start(
+		[ $text{'wsearch_htext'}, $text{'wsearch_htype'},
+		  $text{'wsearch_hcgis'} ], 100);
+	foreach my $r (@rv) {
+		# XXX
+		}
+	print &ui_columns_end();
+	}
+else {
 	print "<b>",&text('wsearch_enone',
 		"<tt>".&html_escape($re)."</tt>"),"</b><p>\n";
 	}
@@ -240,3 +252,25 @@ foreach my $f (glob("$mdir/*.cgi")) {
 return @rv;
 }
 
+# help_file_match(file)
+# Returns the title if some help file matches the current search
+sub help_file_match
+{
+local ($f) = @_;
+local $data = &read_file_contents($f);
+local $title;
+if ($data =~ /<header>([^<]*)<\/header>/) {
+	$title = $1;
+	}
+else {
+	$title = $f;
+	}
+$data =~ s/\s+/ /g;
+$data =~ s/<p>/\n\n/gi;
+$data =~ s/<br>/\n/gi;
+$data =~ s/<[^>]+>//g;
+if ($data =~ /\Q$re\E/i) {
+	return $title;
+	}
+return undef;
+}
