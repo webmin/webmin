@@ -19,52 +19,38 @@ return $_[0] eq "ufs";
 # dump_form(&dump)
 sub dump_form
 {
-# Display common options
-print "<tr> <td valign=top><b>",&hlink($text{'dump_dest'}, "dest"),
-      "</b></td> <td colspan=3>\n";
-printf "<input type=radio name=mode value=0 %s> %s\n",
-	$_[0]->{'host'} ? '' : 'checked', $text{'dump_file'};
-printf "<input name=file size=50 value='%s'> %s<br>\n",
-	$_[0]->{'host'} ? '' : $_[0]->{'file'},
-	&file_chooser_button("file");
-printf "<input type=radio name=mode value=1 %s>\n",
-	$_[0]->{'host'} ? 'checked' : '';
-print &text('dump_host',
-	    "<input name=host size=15 value='$_[0]->{'host'}'>",
-	    "<input name=huser size=8 value='$_[0]->{'huser'}'>",
-	    "<input name=hfile size=20 value='$_[0]->{'hfile'}'>"),
-      "</td> </tr>\n";
+# Display destination options
+print &ui_table_row(&hlink($text{'dump_dest'}, "dest"),
+   &ui_radio("mode", $_[0]->{'host'} ? 1 : 0,
+	[ [ 0, $text{'dump_file'}." ".
+	       &ui_textbox("file", $_[0]->{'file'}, 50).
+	       " ".&file_chooser_button("file")."<br>" ],
+	  [ 1, &text('dump_host',
+		     &ui_textbox("host", $_[0]->{'host'}, 15),
+		     &ui_textbox("huser", $_[0]->{'huser'}, 8),
+		     &ui_textbox("hfile", $_[0]->{'hfile'}, 20)) ] ]), 3);
 }
 
 sub dump_options_form
 {
-print "<tr> <td><b>",&hlink($text{'dump_update'},"update"),
-      "</b></td>\n";
-printf "<td><input name=update type=radio value=1 %s> %s\n",
-	$_[0]->{'update'} ? 'checked' : '', $text{'yes'};
-printf "<input name=update type=radio value=0 %s> %s</td>\n",
-	$_[0]->{'update'} ? '' : 'checked', $text{'no'};
+local ($dump, $tds) = @_;
 
-print "<td><b>",&hlink($text{'dump_verify'},"verify"),"</b></td>\n";
-printf "<td><input name=verify type=radio value=1 %s> %s\n",
-	$_[0]->{'verify'} ? 'checked' : '', $text{'yes'};
-printf "<input name=verify type=radio value=0 %s> %s</td> </tr>\n",
-	$_[0]->{'verify'} ? '' : 'checked', $text{'no'};
+print &ui_table_row(&hlink($text{'dump_update'},"update"),
+		    &ui_yesno_radio("update", int($_[0]->{'update'})),
+		    1, $tds);
 
-print "<tr> <td><b>",&hlink($text{'dump_level'},"level"),"</b></td>\n";
-print "<td><select name=level>\n";
-foreach $l (0 .. 9) {
-	printf "<option value=%d %s>%d %s\n",
-		$l, $_[0]->{'level'} == $l ? "selected" : "", $l,
-		$text{'dump_level_'.$l};
-	}
-print "</select></td>\n";
+print &ui_table_row(&hlink($text{'dump_verify'},"verify"),
+		    &ui_yesno_radio("verify", int($_[0]->{'verify'})),
+		    1, $tds);
 
-print "<td><b>",&hlink($text{'dump_offline'},"offline"),"</b></td>\n";
-printf "<td><input name=offline type=radio value=1 %s> %s\n",
-	$_[0]->{'offline'} ? 'checked' : '', $text{'yes'};
-printf "<input name=offline type=radio value=0 %s> %s</td> </tr>\n",
-	$_[0]->{'offline'} ? '' : 'checked', $text{'no'};
+print &ui_table_row(&hlink($text{'dump_level'},"level"),
+		    &ui_select("level", int($_[0]->{'level'}),
+			[ map { [ $_, $text{'dump_level_'.$_} ] }
+			      (0 .. 9) ]), 1, $tds);
+
+print &ui_table_row(&hlink($text{'dump_offline'},"offline"),
+		    &ui_yesno_radio("offline", int($_[0]->{'offline'})),
+		    1, $tds);
 }
 
 # parse_dump(&dump)
@@ -158,35 +144,30 @@ return &has_command("ufsrestore") ? undef : "ufsrestore";
 # restore_form(filesystem)
 sub restore_form
 {
-# common options
-print "<tr> <td valign=top><b>",&hlink($text{'restore_src'}, "rsrc"),
-      "</b></td>\n";
-printf "<td colspan=3><input type=radio name=mode value=0 %s> %s\n",
-        $_[1]->{'host'} ? "" : "checked", $text{'dump_file'};
-printf "<input name=file size=50 value='%s'> %s<br>\n",
-        $_[1]->{'host'} ? "" : $_[0]->{'file'}, &file_chooser_button("file");
-printf "<input type=radio name=mode value=1 %s>\n",
-        $_[1]->{'host'} ? "checked" : "";
-print &text('dump_host',
-            "<input name=host size=15 value='$_[1]->{'host'}'>",
-            "<input name=huser size=8 value='$_[1]->{'huser'}'>",
-            "<input name=hfile size=20 value='$_[1]->{'hfile'}'>"),
-      "</td> </tr>\n";
+# Restore from
+print &ui_table_row(&hlink($text{'restore_src'}, "rsrc"),
+   &ui_radio("mode", $_[1]->{'host'} ? 1 : 0,
+	[ [ 0, $text{'dump_file'}." ".
+	       &ui_textbox("file", $_[1]->{'file'}, 50).
+	       " ".&file_chooser_button("file")."<br>" ],
+	  [ 1, &text('dump_host',
+		     &ui_textbox("host", $_[1]->{'host'}, 15),
+		     &ui_textbox("huser", $_[1]->{'huser'}, 8),
+		     &ui_textbox("hfile", $_[1]->{'hfile'}, 20)) ] ]), 3, $tds);
 
-print "<tr> <td><b>",&hlink($text{'restore_files'},"rfiles"),
-      "</b></td>\n";
-print "<td colspan=3><input type=radio name=files_def value=1 checked> ",
-      "$text{'restore_all'}\n";
-print "<input type=radio name=files_def value=0> $text{'restore_sel'}\n";
-print "<input name=files size=40></td> </tr>\n";
+# Files to restore
+print &ui_table_row(&hlink($text{'restore_files'},"rfiles"),
+	      &ui_opt_textbox("files", undef, 40, $text{'restore_all'},
+			      $text{'restore_sel'}), 3, $tds);
 
-print "<tr> <td><b>",&hlink($text{'restore_dir'},"rdir"),"</td>\n";
-print "<td><input name=dir size=40> ",&file_chooser_button("dir", 1),
-      "</td> </tr>\n";
+# Target dir
+print &ui_table_row(&hlink($text{'restore_dir'},"rdir"),
+	      &ui_textbox("dir", undef, 50)." ".
+	      &file_chooser_button("dir", 1), 3, $tds);
 
-print "<tr> <td><b>",&hlink($text{'restore_test'},"rtest"),"</td>\n";
-print "<td><input type=radio name=test value=1> $text{'yes'}\n";
-print "<input type=radio name=test value=0 checked> $text{'no'}</td> </tr>\n";
+# Show only
+print &ui_table_row(&hlink($text{'restore_test'},"rtest"),
+	      &ui_yesno_radio("test", 1), 1, $tds);
 }
 
 # parse_restore(filesystem)

@@ -519,7 +519,7 @@ sub restore_form
 {
 local ($fs, $dump, $tds) = @_;
 
-# common options
+# Restore from
 print &ui_table_row(&hlink($text{'restore_src'}, "rsrc"),
    &ui_radio("mode", $_[1]->{'host'} ? 1 : 0,
 	[ [ 0, $text{'dump_file'}." ".
