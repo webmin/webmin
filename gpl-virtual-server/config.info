@@ -112,30 +112,6 @@ quota_list_groups_command=Command to list group quotas,3,Use standard programs
 quota_get_user_command=Command to get a user's quota,3,Use standard programs
 quota_get_group_command=Command to get a group's quota,3,Use standard programs
 
-line5=Webmin modules available to server administrators,11
-avail_dns=BIND DNS Server (for DNS domain),1,1-Yes,0-No
-avail_mail=Virtual Email (for mailboxes and aliases),1,1-Yes,0-No
-avail_web=Apache Webserver (for virtual host),1,1-Yes,0-No
-avail_webalizer=Webalizer Logfile Analysis (for website's logs),1,1-Yes,0-No
-avail_mysql=MySQL Database Server (for database),1,1-Yes,0-No
-avail_postgres=PostgreSQL Database Server (for database),1,1-Yes,0-No
-avail_spam=SpamAssassin Mail Filter (for domains config file),1,1-Yes,0-No
-
-line3=Extra modules available to server administrators,11
-avail_file=File Manager (home directory only),1,1-Yes,0-No
-avail_passwd=Change Password,1,2-User and mailbox passwords,1-User password,0-No
-avail_proc=Running Processes (user's processes only),1,2-See own processes,1-See all processes,0-No
-avail_cron=Scheduled Cron Jobs (user's Cron jobs),1,1-Yes,0-No
-avail_at=Scheduled Commands (user's commands),1,1-Yes,0-No
-avail_telnet=SSH/Telnet Login,1,1-Yes,0-No
-avail_updown=Upload and Download (as user),1,1-Yes,0-No
-avail_change-user=Change Language and Theme,1,1-Yes,0-No
-avail_htaccess-htpasswd=Protected Web Directories (under home directory),1,1-Yes,0-No
-avail_mailboxes=Read User Mail (users' mailboxes),1,1-Yes,0-No
-avail_custom=Custom Commands,1,1-Yes,0-No
-avail_shell=Command Shell (run commands as admin),1,1-Yes,0-No
-avail_syslog=System Logs (view Apache logs),1,1-Yes,0-No
-
 line7=Status collection,11
 collect_interval=Interval between status collection job runs,10,none-Never run,Minutes
 collect_restart=Restart services that are detected as down?,1,1-Yes,0-No

@@ -580,3 +580,5 @@ Greylisting using Postgrey can now be setup using Virtualmin, via the new Email 
 ---- Changes since 3.69 ----
 Bandwidth usage by date or month can now be graphed for sub-servers.
 Partially completed backups (where only some domains failed) are now shown in the backup logs.
+Added the Convert Alias Server page to change an existing alias virtual server into a sub-server.
+Moved the settings for which Webmin modules are available to virtual server owners from the Module Config page to a new section in server templates, so that it can be adjusted on a per-template basis.
