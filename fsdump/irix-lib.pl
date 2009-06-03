@@ -19,127 +19,54 @@ return 0;
 # dump_form(&dump)
 sub dump_form
 {
-# Display common options
-print "<tr> <td valign=top><b>",&hlink($text{'dump_dest'}, "dest"),
-      "</b></td> <td colspan=3>\n";
-printf "<input type=radio name=mode value=0 %s> %s\n",
-	$_[0]->{'host'} ? '' : 'checked', $text{'dump_file'};
-printf "<input name=file size=50 value='%s'> %s<br>\n",
-	$_[0]->{'host'} ? '' : $_[0]->{'file'},
-	&file_chooser_button("file");
-printf "<input type=radio name=mode value=1 %s>\n",
-	$_[0]->{'host'} ? 'checked' : '';
-print &text('dump_host',
-	    "<input name=host size=15 value='$_[0]->{'host'}'>",
-	    "<input name=huser size=8 value='$_[0]->{'huser'}'>",
-	    "<input name=hfile size=20 value='$_[0]->{'hfile'}'>"),
-      "</td> </tr>\n";
+# Display destination options
+print &ui_table_row(&hlink($text{'dump_dest'}, "dest"),
+   &ui_radio("mode", $_[0]->{'host'} ? 1 : 0,
+	[ [ 0, $text{'dump_file'}." ".
+	       &ui_textbox("file", $_[0]->{'file'}, 50).
+	       " ".&file_chooser_button("file")."<br>" ],
+	  [ 1, &text('dump_host',
+		     &ui_textbox("host", $_[0]->{'host'}, 15),
+		     &ui_textbox("huser", $_[0]->{'huser'}, 8),
+		     &ui_textbox("hfile", $_[0]->{'hfile'}, 20)) ] ]), 3);
 }
 
 sub dump_options_form
 {
-if ($_[0]->{'fs'} eq 'xfs') {
-	# Display xfs dump options
-	print "<tr> <td><b>",&hlink($text{'dump_level'},"level"),"</b></td>\n";
-	print "<td><select name=level>\n";
-	foreach $l (0 .. 9) {
-		printf "<option value=%d %s>%d %s\n",
-			$l, $_[0]->{'level'} == $l ? "selected" : "", $l,
-			$text{'dump_level_'.$l};
-		}
-	print "</select></td>\n";
+# Display xfs dump options
+print &ui_table_row(&hlink($text{'dump_level'},"level"),
+		    &ui_select("level", int($_[0]->{'level'}),
+			[ map { [ $_, $text{'dump_level_'.$_} ] }
+			      (0 .. 9) ]), 1, $tds);
 
-	print "<td><b>",&hlink($text{'dump_label'},"label"),"</b></td>\n";
-	printf "<td><input name=label size=15 value='%s'></td> </tr>\n",
-		$_[0]->{'label'};
+print &ui_table_row(&hlink($text{'dump_label'},"label"),
+		    &ui_textbox("label", $_[0]->{'label'}, 15),
+		    1, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'dump_max'},"max"),"</b></td>\n";
-	printf "<td><input type=radio name=max_def value=1 %s> %s\n",
-		$_[0]->{'max'} ? '' : 'checked', $text{'dump_unlimited'};
-	printf "<input type=radio name=max_def value=0 %s>\n",
-		$_[0]->{'max'} ? 'checked' : '';
-	printf "<input name=max size=8 value='%s'> kB</td>\n", $_[0]->{'max'};
+print &ui_table_row(&hlink($text{'dump_max'},"max"),
+    &ui_opt_textbox("max", $_[0]->{'max'}, 8,
+		    $text{'dump_unlimited'})." kB", 1, $tds);
 
-	print "<td><b>",&hlink($text{'dump_attribs'},"attribs"),"</b></td>\n";
-	printf "<td><input type=radio name=noattribs value=0 %s> %s\n",
-		$_[0]->{'noattribs'} ? '' : 'checked', $text{'yes'};
-	printf "<input type=radio name=noattribs value=1 %s> %s</td> </tr>\n",
-		$_[0]->{'noattribs'} ? 'checked' : '', $text{'no'};
+print &ui_table_row(&hlink($text{'dump_attribs'},"attribs"),
+		    &ui_yesno_radio("attribs", int($_[0]->{'attribs'})),
+		    1, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'dump_over'},"over"),"</b></td>\n";
-	printf "<td><input type=radio name=over value=0 %s> %s\n",
-		$_[0]->{'over'} ? '' : 'checked', $text{'yes'};
-	printf "<input type=radio name=over value=1 %s> %s</td>\n",
-		$_[0]->{'over'} ? 'checked' : '', $text{'no'};
+print &ui_table_row(&hlink($text{'dump_over'},"over"),
+		    &ui_yesno_radio("over", int($_[0]->{'over'})),
+		    1, $tds);
 
-	print "<td><b>",&hlink($text{'dump_invent'},"invent"),"</b></td>\n";
-	printf "<td><input type=radio name=noinvent value=0 %s> %s\n",
-		$_[0]->{'noinvent'} ? '' : 'checked', $text{'yes'};
-	printf "<input type=radio name=noinvent value=1 %s> %s</td> </tr>\n",
-		$_[0]->{'noinvent'} ? 'checked' : '', $text{'no'};
+print &ui_table_row(&hlink($text{'dump_invent'},"invent"),
+		    &ui_radio("noinvent", int($_[0]->{'noinvent'}),
+		      [ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]),
+		    1, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'dump_overwrite'},"overwrite"),
-	      "</b></td>\n";
-	printf "<td><input type=radio name=overwrite value=1 %s> %s\n",
-		$_[0]->{'overwrite'} ? 'checked' : '', $text{'yes'};
-	printf "<input type=radio name=overwrite value=0 %s> %s</td>\n",
-		$_[0]->{'overwrite'} ? '' : 'checked', $text{'no'};
+print &ui_table_row(&hlink($text{'dump_overwrite'},"overwrite"),
+	    &ui_yesno_radio("overwrite", int($_[0]->{'overwrite'})),
+	    1, $tds);
 
-	print "<td><b>",&hlink($text{'dump_erase'},"erase"),"</b></td>\n";
-	printf "<td><input type=radio name=erase value=1 %s> %s\n",
-		$_[0]->{'erase'} ? 'checked' : '', $text{'yes'};
-	printf "<input type=radio name=erase value=0 %s> %s</td> </tr>\n",
-		$_[0]->{'erase'} ? '' : 'checked', $text{'no'};
-	}
-else {
-	# Display efs filesystem dump options
-	# XXX not done!
-	print "<tr> <td><b>",&hlink($text{'dump_update'},"update"),
-	      "</b></td>\n";
-	printf "<td><input name=update type=radio value=1 %s> %s\n",
-		$_[0]->{'update'} ? 'checked' : '', $text{'yes'};
-	printf "<input name=update type=radio value=0 %s> %s</td>\n",
-		$_[0]->{'update'} ? '' : 'checked', $text{'no'};
-
-	print "<td><b>",&hlink($text{'dump_multi'},"multi"),"</b></td>\n";
-	printf "<td><input name=multi type=radio value=1 %s> %s\n",
-		$_[0]->{'multi'} ? 'checked' : '', $text{'yes'};
-	printf "<input name=multi type=radio value=0 %s> %s</td> </tr>\n",
-		$_[0]->{'multi'} ? '' : 'checked', $text{'no'};
-
-	print "<tr> <td><b>",&hlink($text{'dump_level'},"level"),"</b></td>\n";
-	print "<td><select name=level>\n";
-	foreach $l (0 .. 9) {
-		printf "<option value=%d %s>%d %s\n",
-			$l, $_[0]->{'level'} == $l ? "selected" : "", $l,
-			$text{'dump_level_'.$l};
-		}
-	print "</select></td>\n";
-
-	print "<td><b>",&hlink($text{'dump_label'},"label"),"</b></td>\n";
-	printf "<td><input name=label size=15 value='%s'></td> </tr>\n",
-		$_[0]->{'label'};
-
-	print "<tr> <td><b>",&hlink($text{'dump_blocks'},"blocks"),
-	      "</b></td> <td colspan=3>\n";
-	printf "<input name=blocks_def type=radio value=1 %s> %s\n",
-		$_[0]->{'blocks'} ? '' : 'checked', $text{'dump_auto'};
-	printf "<input name=blocks_def type=radio value=0 %s>\n",
-		$_[0]->{'blocks'} ? 'checked' : '';
-	printf "<input name=blocks size=8 value='%s'> kB</td>\n",
-		$_[0]->{'blocks'};
-
-	if ($dump_version >= 0.424) {
-		print "<tr> <td><b>",&hlink($text{'dump_comp'},"comp"),
-		      "</b></td> <td colspan=3>\n";
-		printf "<input name=comp_def type=radio value=1 %s> %s\n",
-			$_[0]->{'comp'} ? '' : 'checked', $text{'no'};
-		printf "<input name=comp_def type=radio value=0 %s> %s\n",
-			$_[0]->{'comp'} ? 'checked' : '',$text{'dump_complvl'};
-		printf "<input name=comp size=4 value='%s'></td>\n",
-			$_[0]->{'comp'} || 2;
-		}
-	}
+print &ui_table_row(&hlink($text{'dump_erase'},"erase"),
+		    &ui_yesno_radio("erase", int($_[0]->{'erase'})),
+		    1, $tds);
 }
 
 # parse_dump(&dump)
@@ -164,51 +91,24 @@ else {
 	delete($_[0]->{'file'});
 	}
 
-if ($_[0]->{'fs'} eq 'xfs') {
-	# Parse xfs options
-	&is_mount_point($in{'dir'}) || &error($text{'dump_emp'});
-	$in{'label'} =~ /^\S*$/ && length($in{'label'}) < 256 ||
-		&error($text{'dump_elabel2'});
-	$_[0]->{'label'} = $in{'label'};
-	$_[0]->{'level'} = $in{'level'};
-	if ($in{'max_def'}) {
-		delete($_[0]->{'max'});
-		}
-	else {
-		$in{'max'} =~ /^\d+$/ || &error($text{'dump_emax'});
-		$_[0]->{'max'} = $in{'max'};
-		}
-	$_[0]->{'noattribs'} = $in{'noattribs'};
-	$_[0]->{'over'} = $in{'over'};
-	$_[0]->{'noinvent'} = $in{'noinvent'};
-	$_[0]->{'overwrite'} = $in{'overwrite'};
-	$_[0]->{'erase'} = $in{'erase'};
+# Parse xfs options
+&is_mount_point($in{'dir'}) || &error($text{'dump_emp'});
+$in{'label'} =~ /^\S*$/ && length($in{'label'}) < 256 ||
+	&error($text{'dump_elabel2'});
+$_[0]->{'label'} = $in{'label'};
+$_[0]->{'level'} = $in{'level'};
+if ($in{'max_def'}) {
+	delete($_[0]->{'max'});
 	}
 else {
-	# Parse efs options
-	# XXX not done!
-	$_[0]->{'update'} = $in{'update'};
-	$_[0]->{'multi'} = $in{'multi'};
-	$_[0]->{'level'} = $in{'level'};
-	$in{'label'} =~ /^\S*$/ && length($in{'label'}) < 16 ||
-		&error($text{'dump_elabel'});
-	$_[0]->{'label'} = $in{'label'};
-	if ($in{'blocks_def'}) {
-		delete($_[0]->{'blocks'});
-		}
-	else {
-		$in{'blocks'} =~ /^\d+$/ || &error($text{'dump_eblocks'});
-		$_[0]->{'blocks'} = $in{'blocks'};
-		}
-	if ($in{'comp_def'} || !defined($in{'comp'})) {
-		delete($_[0]->{'comp'});
-		}
-	else {
-		$in{'comp'} =~ /^[1-9]\d*$/ || &error($text{'dump_ecomp'});
-		$_[0]->{'comp'} = $in{'comp'};
-		}
+	$in{'max'} =~ /^\d+$/ || &error($text{'dump_emax'});
+	$_[0]->{'max'} = $in{'max'};
 	}
-
+$_[0]->{'noattribs'} = $in{'noattribs'};
+$_[0]->{'over'} = $in{'over'};
+$_[0]->{'noinvent'} = $in{'noinvent'};
+$_[0]->{'overwrite'} = $in{'overwrite'};
+$_[0]->{'erase'} = $in{'erase'};
 }
 
 # execute_dump(&dump, filehandle, escape)
@@ -227,35 +127,19 @@ elsif ($_[0]->{'host'}) {
 else {
 	$flag = " -f '".&date_subs($_[0]->{'file'})."'";
 	}
-if ($_[0]->{'fs'} eq 'xfs') {
-	# xfs backup
-	$cmd = "xfsdump -l $_[0]->{'level'}";
-	$cmd .= $flag;
-	$cmd .= " -L '$_[0]->{'label'}'" if ($_[0]->{'label'});
-	$cmd .= " -M '$_[0]->{'label'}'" if ($_[0]->{'label'});
-	$cmd .= " -z '$_[0]->{'max'}'" if ($_[0]->{'max'});
-	$cmd .= " -A" if ($_[0]->{'noattribs'});
-	$cmd .= " -F" if ($_[0]->{'over'});
-	$cmd .= " -J" if ($_[0]->{'noinvent'});
-	$cmd .= " -o" if ($_[0]->{'overwrite'});
-	$cmd .= " -c \"$_[3] $_[0]->{'id'}\"" if ($_[3]);
-	$cmd .= " -E -F" if ($_[0]->{'erase'});
-	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " '$_[0]->{'dir'}'";
-	}
-else {
-	# efs backup
-	# XXX not done!
-	$cmd = "dump -$_[0]->{'level'}";
-	$cmd .= $flag;
-	$cmd .= " -u" if ($_[0]->{'update'});
-	$cmd .= " -M" if ($_[0]->{'multi'});
-	$cmd .= " -L '$_[0]->{'label'}'" if ($_[0]->{'label'});
-	$cmd .= " -B $_[0]->{'blocks'}" if ($_[0]->{'blocks'});
-	$cmd .= " -j$_[0]->{'comp'}" if ($_[0]->{'comp'});
-	$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
-	$cmd .= " '$_[0]->{'dir'}'";
-	}
+$cmd = "xfsdump -l $_[0]->{'level'}";
+$cmd .= $flag;
+$cmd .= " -L '$_[0]->{'label'}'" if ($_[0]->{'label'});
+$cmd .= " -M '$_[0]->{'label'}'" if ($_[0]->{'label'});
+$cmd .= " -z '$_[0]->{'max'}'" if ($_[0]->{'max'});
+$cmd .= " -A" if ($_[0]->{'noattribs'});
+$cmd .= " -F" if ($_[0]->{'over'});
+$cmd .= " -J" if ($_[0]->{'noinvent'});
+$cmd .= " -o" if ($_[0]->{'overwrite'});
+$cmd .= " -c \"$_[3] $_[0]->{'id'}\"" if ($_[3]);
+$cmd .= " -E -F" if ($_[0]->{'erase'});
+$cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
+$cmd .= " '$_[0]->{'dir'}'";
 
 &system_logged("sync");
 sleep(1);
@@ -297,71 +181,40 @@ return &has_command($cmd) ? undef : $cmd;
 # restore_form(filesystem)
 sub restore_form
 {
-# common options
-print "<tr> <td valign=top><b>",&hlink($text{'restore_src'}, "rsrc"),
-      "</b></td>\n";
-printf "<td colspan=3><input type=radio name=mode value=0 %s> %s\n",
-        $_[1]->{'host'} ? "" : "checked", $text{'dump_file'};
-printf "<input name=file size=50 value='%s'> %s<br>\n",
-        $_[1]->{'host'} ? "" : $_[0]->{'file'}, &file_chooser_button("file");
-printf "<input type=radio name=mode value=1 %s>\n",
-        $_[1]->{'host'} ? "checked" : "";
-print &text('dump_host',
-            "<input name=host size=15 value='$_[1]->{'host'}'>",
-            "<input name=huser size=8 value='$_[1]->{'huser'}'>",
-            "<input name=hfile size=20 value='$_[1]->{'hfile'}'>"),
-      "</td> </tr>\n";
+# Restore from
+print &ui_table_row(&hlink($text{'restore_src'}, "rsrc"),
+   &ui_radio("mode", $_[1]->{'host'} ? 1 : 0,
+	[ [ 0, $text{'dump_file'}." ".
+	       &ui_textbox("file", $_[1]->{'file'}, 50).
+	       " ".&file_chooser_button("file")."<br>" ],
+	  [ 1, &text('dump_host',
+		     &ui_textbox("host", $_[1]->{'host'}, 15),
+		     &ui_textbox("huser", $_[1]->{'huser'}, 8),
+		     &ui_textbox("hfile", $_[1]->{'hfile'}, 20)) ] ]), 3, $tds);
 
-if ($_[0] eq 'xfs') {
-	# xfs restore options
-	print "<tr> <td><b>",&hlink($text{'restore_dir'},"rdir"),
-	      "</b></td> <td colspan=3>\n";
-	print "<input name=dir size=50> ",&file_chooser_button("dir", 1),
-	      "</td> </tr>\n";
+# Target dir
+print &ui_table_row(&hlink($text{'restore_dir'},"rdir"),
+	      &ui_textbox("dir", undef, 50)." ".
+	      &file_chooser_button("dir", 1), 3, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_over'},"rover"),
-	      "</b></td>\n";
-	print "<td colspan=3><input type=radio name=over value=0 checked> ",
-	      "$text{'restore_over0'}\n";
-	print "<input type=radio name=over value=1> $text{'restore_over1'}\n";
-	print "<input type=radio name=over value=2> ",
-	      "$text{'restore_over2'}</td> </tr>\n";
+# Overwrite
+print &ui_table_row(&hlink($text{'restore_over'},"rover"),
+	&ui_radio("over", 0, [ [ 0, $text{'restore_over0'} ],
+			       [ 1, $text{'restore_over1'} ],
+			       [ 2, $text{'restore_over2'} ] ]), 3, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_noattribs'},"rnoattribs"),
-	      "</b></td> <td>\n";
-	print "<input type=radio name=noattribs value=0 checked> $text{'yes'}\n";
-	print "<input type=radio name=noattribs value=1> $text{'no'}</td>\n";
+# Attributes?
+print &ui_table_row(&hlink($text{'restore_noattribs'},"rnoattribs"),
+	&ui_radio("noattribs", 0, [ [ 0, $text{'yes'} ],
+				    [ 1, $text{'no'} ] ]), 1, $tds);
 
-	print "<td><b>",&hlink($text{'restore_label'},"rlabel"),"</b></td>\n";
-	print "<td><input name=label size=20></td> </tr>\n";
+# Label to restore from
+print &ui_table_row(&hlink($text{'restore_label'},"rlabel"),
+	&ui_textbox("label", undef, 20), 1, $tds);
 
-	print "<tr> <td><b>",&hlink($text{'restore_test'},"rtest"),"</td>\n";
-	print "<td><input type=radio name=test value=1> $text{'yes'}\n";
-	print "<input type=radio name=test value=0 checked> $text{'no'}</td> </tr>\n";
-	}
-else {
-	# efs restore options
-	# XXX not done!
-	print "<tr> <td><b>",&hlink($text{'restore_files'},"rfiles"),
-	      "</b></td>\n";
-	print "<td colspan=3><input type=radio name=files_def value=1 checked> ",
-	      "$text{'restore_all'}\n";
-	print "<input type=radio name=files_def value=0> $text{'restore_sel'}\n";
-	print "<input name=files size=40></td> </tr>\n";
-
-	print "<tr> <td><b>",&hlink($text{'restore_dir'},"rdir"),"</td>\n";
-	print "<td colspan=3><input name=dir size=40> ",
-		&file_chooser_button("dir", 1),"</td> </tr>\n";
-
-	print "<tr> <td><b>",&hlink($text{'restore_multi'},"rmulti"),
-	      "</b></td>\n";
-	print "<td><input type=radio name=multi value=1> $text{'yes'}\n";
-	print "<input type=radio name=multi value=0 checked> $text{'no'}</td>\n";
-
-	print "<td><b>",&hlink($text{'restore_test'},"rtest"),"</td>\n";
-	print "<td><input type=radio name=test value=1> $text{'yes'}\n";
-	print "<input type=radio name=test value=0 checked> $text{'no'}</td> </tr>\n";
-	}
+# Show only
+print &ui_table_row(&hlink($text{'restore_test'},"rtest"),
+	      &ui_yesno_radio("test", 1), 1, $tds);
 }
 
 # parse_restore(filesystem)
@@ -369,15 +222,8 @@ else {
 # restore_backup()
 sub parse_restore
 {
-local $cmd;
-if ($_[0] eq 'xfs') {
-	$cmd = "xfsrestore";
-	$cmd .= " -t" if ($in{'test'});
-	}
-else {
-	$cmd = "restore";
-	$cmd .= ($in{'test'} ? " -t" : " -x");
-	}
+local $cmd = "xfsrestore";
+$cmd .= " -t" if ($in{'test'});
 if ($in{'mode'} == 0) {
 	$in{'file'} || &error($text{'restore_efile'});
 	$cmd .= " -f '$in{'file'}'";
@@ -394,29 +240,15 @@ else {
 		$cmd .= " -f '$in{'host'}:$in{'hfile'}'";
 		}
 	}
-if ($_[0] eq 'xfs') {
-	# parse xfs options
-	$cmd .= " -E" if ($in{'over'} == 1);
-	$cmd .= " -e" if ($in{'over'} == 2);
-	$cmd .= " -A" if ($in{'noattribs'});
-	$cmd .= " -L '$in{'label'}'" if ($in{'label'});
-	$cmd .= " -F";
-	$cmd .= " $in{'extra'}" if ($in{'extra'});
-	if (!$in{'test'}) {
-		-d $in{'dir'} || &error($text{'restore_edir'});
-		$cmd .= " '$in{'dir'}'";
-		}
-	}
-else {
-	# parse efs options
-	# XXX not done!
-	$cmd .= " -M" if ($in{'multi'});
-	$cmd .= " $in{'extra'}" if ($in{'extra'});
-	if (!$in{'files_def'}) {
-		$in{'files'} || &error($text{'restore_efiles'});
-		$cmd .= " $in{'files'}";
-		}
+$cmd .= " -E" if ($in{'over'} == 1);
+$cmd .= " -e" if ($in{'over'} == 2);
+$cmd .= " -A" if ($in{'noattribs'});
+$cmd .= " -L '$in{'label'}'" if ($in{'label'});
+$cmd .= " -F";
+$cmd .= " $in{'extra'}" if ($in{'extra'});
+if (!$in{'test'}) {
 	-d $in{'dir'} || &error($text{'restore_edir'});
+	$cmd .= " '$in{'dir'}'";
 	}
 return $cmd;
 }
