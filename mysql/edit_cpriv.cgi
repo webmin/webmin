@@ -6,13 +6,13 @@ require './mysql-lib.pl';
 &ReadParse();
 $access{'perms'} || &error($text{'perms_ecannot'});
 if (defined($in{'table'})) {
-	$in{'db'} =~ /^\S+$/ || &error($text{'cpriv_edb'});
-	$in{'table'} =~ /^\S+$/ || &error($text{'cpriv_etable'});
 	&ui_print_header(undef, $text{'cpriv_title1'}, "", "create_cpriv");
 	if (defined($in{'db'})) {
 		# From two fields
 		$d = $in{'db'};
 		$t = $in{'table'};
+		$in{'db'} =~ /^\S+$/ || &error($text{'cpriv_edb'});
+		$in{'table'} =~ /^\S+$/ || &error($text{'cpriv_etable'});
 		}
 	else {
 		# From selector
