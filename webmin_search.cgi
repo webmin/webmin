@@ -9,7 +9,8 @@ use WebminCore;
 
 $prod = &get_product_name();
 $ucprod = ucfirst($prod);
-&ui_print_header(undef, &text('wsearch_title', $ucprod), "", undef, 0, 1);
+&ui_print_unbuffered_header(
+	undef, &text('wsearch_title', $ucprod), "", undef, 0, 1);
 
 # Validate search text
 $re = $in{'search'};
@@ -19,8 +20,15 @@ if ($re !~ /\S/) {
 $re =~ s/^\s+//;
 $re =~ s/\s+$//;
 
-$urlbase = ($ENV{'HTTPS'} eq 'ON' ? 'https://' : 'http://').
-	   $ENV{'HTTP_HOST'};
+# Work out this Webmin's URL base
+$urlhost = $ENV{'HTTP_HOST'};
+if ($urlhost !~ /:/) {
+	$urlhost .= ":".$ENV{'SERVER_PORT'};
+	}
+$urlbase = ($ENV{'HTTPS'} eq 'ON' ? 'https://' : 'http://').$urlhost;
+
+# Start printing dots 
+print &text('wsearch_searching', "<i>".&html_escape($re)."</i>"),"\n";
 
 # Search module names and add to results list
 @rv = ( );
@@ -43,6 +51,7 @@ foreach $m (@mods) {
 			    'link' => $m->{'dir'}.'/',
 			    'text' => $urlbase."/".$m->{'dir'}."/" });
 		}
+	&print_search_dot();
 	}
 
 # Search module configs and their help pages
@@ -89,6 +98,7 @@ foreach $m (@mods) {
 				   });
 			}
 		}
+	&print_search_dot();
 	}
 
 # Search other help pages
@@ -133,6 +143,7 @@ foreach $m (@mods) {
 					    'cgis' => \@cgis });
 				}
 			}
+		&print_search_dot();
 		}
 	closedir(DIR);
 	}
@@ -161,7 +172,10 @@ MODULE: foreach $m (@mods) {
 				}
 			}
 		}
+	&print_search_dot();
 	}
+
+print &text('wsearch_found', scalar(@rv)),"<p>\n";
 
 # Sort results by relevancy
 # XXX can do better?
@@ -328,7 +342,7 @@ if (-r "$mroot/cgi_args.pl") {
 	# Module can tell us what args to use
 	&foreign_require($m, "cgi_args.pl");
 	$args = &foreign_call($m, "cgi_args", $cgi);
-	if ($args) {
+	if (defined($args)) {
 		return $args;
 		}
 	}
@@ -341,5 +355,16 @@ if ($data =~ /ReadParse\(/) {
 	return "none";
 	}
 return undef;
+}
+
+# print_search_dot()
+# Print one dot per second
+sub print_search_dot
+{
+local $now = time();
+if ($now > $last_print_search_dot) {
+	print ". ";
+	$last_print_search_dot = $now;
+	}
 }
 
