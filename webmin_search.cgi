@@ -19,17 +19,29 @@ if ($re !~ /\S/) {
 $re =~ s/^\s+//;
 $re =~ s/\s+$//;
 
+$urlbase = ($ENV{'HTTPS'} eq 'ON' ? 'https://' : 'http://').
+	   $ENV{'HTTP_HOST'};
+
 # Search module names and add to results list
 @rv = ( );
 @mods = sort { $b->{'longdesc'} cmp $a->{'longdesc'} }
 	     grep { !$_->{'clone'} } &get_available_module_infos();
 foreach $m (@mods) {
 	if ($m->{'desc'} =~ /\Q$re\E/i) {
+		# Module description match
 		push(@rv, { 'mod' => $m,
 			    'rank' => 10,
 			    'type' => 'mod',
 			    'link' => $m->{'dir'}.'/',
 			    'text' => $m->{'desc'} });
+		}
+	elsif ($m->{'dir'} =~ /\Q$re\E/i) {
+		# Module directory match
+		push(@rv, { 'mod' => $m,
+			    'rank' => 12,
+			    'type' => 'dir',
+			    'link' => $m->{'dir'}.'/',
+			    'text' => $urlbase."/".$m->{'dir'}."/" });
 		}
 	}
 
@@ -131,27 +143,32 @@ MODULE: foreach $m (@mods) {
 	%mtext = &load_language($m->{'dir'});
 	foreach $k (keys %mtext) {
 		next if ($gtext{$k});	# Skip repeated global strings
+		$mtext{$k} =~ s/\$[0-9]//g;
 		if ($mtext{$k} =~ /\Q$re\E/i) {
+			# Find CGIs that use this text
 			my @cgis = &find_cgi_text(
 				[ "\$text{'$k'}",
 				  "\$text{\"$k\"}",
-				  "\$text{$k}" ], $m);
-			push(@rv, { 'mod' => $m,
-				    'rank' => 4,
-				    'type' => 'text',
-				    'text' => $mtext{$k},
-				    'cgis' => \@cgis });
+				  "\$text{$k}",
+				  "&text('$k'",
+				  "&text(\"$k\"" ], $m);
+			if (@cgis) {
+				push(@rv, { 'mod' => $m,
+					    'rank' => 4,
+					    'type' => 'text',
+					    'text' => $mtext{$k},
+					    'cgis' => \@cgis });
+				}
 			}
 		}
 	}
 
 # Sort results by relevancy
-# XXX
+# XXX can do better?
 @rv = sort { $b->{'rank'} <=> $a->{'rank'} } @rv;
 
 # Show in table
 if (@rv) {
-	# XXX next page link?
 	print &ui_columns_start(
 		[ $text{'wsearch_htext'}, $text{'wsearch_htype'},
 		  $text{'wsearch_hmod'}, $text{'wsearch_hcgis'} ], 100);
@@ -165,7 +182,21 @@ if (@rv) {
 			($cmod, $cpage) = split(/\//, $c);
 			($cpage, $cargs) = split(/\?/, $cpage);
 			$ctitle = &cgi_page_title($cmod, $cpage) || $cpage;
-			push(@links, "<a href='$c'>$ctitle</a>");
+			if ($r->{'mod'}->{'installed'}) {
+				$cargs ||= &cgi_page_args($cmod, $cpage);
+				}
+			else {
+				# For modules that aren't installed, linking
+				# to a CGI is likely useless
+				$cargs ||= "none";
+				}
+			if ($cargs eq "none") {
+				push(@links, $ctitle);
+				}
+			else {
+				push(@links,
+				   "<a href='$cmod/$cpage?$cargs'>$ctitle</a>");
+				}
 			}
 		if (@links > 2) {
 			@links = ( @links[0..1], "..." );
@@ -209,7 +240,8 @@ return $str;
 
 # find_cgi_text(&regexps, module, re-mode)
 # Returns the relative URLs of CGIs that matches some regexps, in the given
-# module.
+# module. Does not include those that don't call some header function, as
+# they cannot be linked to normally
 sub find_cgi_text
 {
 local ($res, $m, $remode) = @_;
@@ -217,8 +249,12 @@ local $mdir = &module_root_directory($m);
 local @rv;
 foreach my $f (glob("$mdir/*.cgi")) {
 	local $found = 0;
+	local $header = 0;
 	open(CGI, $f);
 	LINE: while(my $line = <CGI>) {
+		if ($line =~ /(header|ui_print_header|ui_print_unbuffered_header)\(/) {
+			$header++;
+			}
 		foreach my $r (@$res) {
 			if (!$remode && index($line, $r) >= 0 ||
 			    $remode && $line =~ /$r/) {
@@ -228,7 +264,7 @@ foreach my $f (glob("$mdir/*.cgi")) {
 			}
 		}
 	close(CGI);
-	if ($found) {
+	if ($found && $header) {
 		local $url = $f;
 		$url =~ s/^\Q$root_directory\E\///;
 		push(@rv, $url);
@@ -279,3 +315,31 @@ if ($cgi eq "index.cgi" && !$rv) {
 	}
 return $rv;
 }
+
+# cgi_page_args(module, cgi)
+# Given a module and CGI name, returns a string of URL parameters that can be
+# used for linking to it. Returns "none" if parameters are needed, but cannot
+# be determined.
+sub cgi_page_args
+{
+local ($m, $cgi) = @_;
+local $mroot = &module_root_directory($m);
+if (-r "$mroot/cgi_args.pl") {
+	# Module can tell us what args to use
+	&foreign_require($m, "cgi_args.pl");
+	$args = &foreign_call($m, "cgi_args", $cgi);
+	if ($args) {
+		return $args;
+		}
+	}
+# Guess if any are needed
+if ($cgi eq "index.cgi") {
+	return undef;
+	}
+local $data = &read_file_contents($mroot."/".$cgi);
+if ($data =~ /ReadParse\(/) {
+	return "none";
+	}
+return undef;
+}
+
