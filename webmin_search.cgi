@@ -346,10 +346,11 @@ if (-r "$mroot/cgi_args.pl") {
 		return $args;
 		}
 	}
-# Guess if any are needed
 if ($cgi eq "index.cgi") {
+	# Index page is always safe to link to
 	return undef;
 	}
+# Otherwise check if it appears to parse any args
 local $data = &read_file_contents($mroot."/".$cgi);
 if ($data =~ /ReadParse\(/) {
 	return "none";
