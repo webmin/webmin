@@ -58,7 +58,8 @@ foreach $m (@mods) {
 				    'type' => 'config',
 				    'link' => "config.cgi?module=$m->{'dir'}&".
 					     "section=".&urlize($section)."#$c",
-				    'text' => $p[0] });
+				    'text' => $p[0],
+				  });
 			}
 		$hfl = &help_file($mod->{'dir'}, "config_".$c);
 		($title, $help) = &help_file_match($hfl);
@@ -67,9 +68,12 @@ foreach $m (@mods) {
 			push(@rv, { 'mod' => $m,
                                     'rank' => 6,
 				    'type' => 'help',
-				    'link' => "help.cgi/$m->{'dir'}/config_$c",
+				    'link' => "help.cgi/$m->{'dir'}/config_".$c,
 				    'desc' => &text('wsearch_helpfor', $p[0]),
 				    'text' => $help,
+				    'cgis' => [ "/config.cgi?".
+					        "module=$m->{'dir'}&section=".
+						&urlize($section)."#$c" ],
 				   });
 			}
 		}
@@ -104,27 +108,14 @@ foreach $m (@mods) {
 		if ($grep) {
 			($title, $help) = &help_file_match("$helpdir/$f");
 			if ($title) {
-				@cgis = &find_cgi_text(
+				my @cgis = &find_cgi_text(
 					[ "hlink\\(.*'$page'",
 					  "hlink\\(.*\"$page\"",
 					], $m, 1);
-				# XXX delete this block
-				if (@cgis == 0) {
-					$link = "";
-					}
-				else {
-					$link = &ui_links_row([
-					    map { my $s = $_;
-						  $s =~ s/^\Q$m->{'dir'}\E\///;
-						  "<a href='$_'>$s</a>" } @cgis
-					    ]);
-					$link =~ s/<br>//;
-					$link = &text('wsearch_on', $link);
-					}
 				push(@rv, { 'mod' => $m,
 					    'rank' => 6,
 					    'type' => 'help',
-					    'link' => "help.cgi/$m->{'dir'}/config_$c",
+					    'link' => "help.cgi/$m->{'dir'}/$page",
 					    'desc' => $title,
 					    'text' => $help,
 					    'cgis' => \@cgis });
@@ -135,29 +126,19 @@ foreach $m (@mods) {
 	}
 
 # Then do text strings
+%gtext = &load_language("");
 MODULE: foreach $m (@mods) {
 	%mtext = &load_language($m->{'dir'});
 	foreach $k (keys %mtext) {
+		next if ($gtext{$k});	# Skip repeated global strings
 		if ($mtext{$k} =~ /\Q$re\E/i) {
-			@cgis = &find_cgi_text(
+			my @cgis = &find_cgi_text(
 				[ "\$text{'$k'}",
 				  "\$text{\"$k\"}",
 				  "\$text{$k}" ], $m);
-			# XXX delete this block
-			if (@cgis == 0) {
-				$link = "<a href='$m->{'dir'}/'>$m->{'desc'}</a>";
-				}
-			else {
-				$link = &ui_links_row([
-				    map { my $s = $_;
-					  $s =~ s/^\Q$m->{'dir'}\E\///;
-					  "<a href='$_'>$s</a>" } @cgis ]);
-				$link =~ s/<br>//;
-				}
 			push(@rv, { 'mod' => $m,
 				    'rank' => 4,
 				    'type' => 'text',
-				    'desc' => $pagetitle,	# XXX
 				    'text' => $mtext{$k},
 				    'cgis' => \@cgis });
 			}
@@ -166,16 +147,35 @@ MODULE: foreach $m (@mods) {
 
 # Sort results by relevancy
 # XXX
-@rv = sort { $a->{'rank'} <=> $b->{'rank'} } @rv;
+@rv = sort { $b->{'rank'} <=> $a->{'rank'} } @rv;
 
 # Show in table
 if (@rv) {
 	# XXX next page link?
 	print &ui_columns_start(
 		[ $text{'wsearch_htext'}, $text{'wsearch_htype'},
-		  $text{'wsearch_hcgis'} ], 100);
+		  $text{'wsearch_hmod'}, $text{'wsearch_hcgis'} ], 100);
 	foreach my $r (@rv) {
-		# XXX
+		$hi = &highlight_text($r->{'text'});
+		if ($r->{'link'}) {
+			$hi = "<a href='$r->{'link'}'>$hi</a>";
+			}
+		@links = ( );
+		foreach my $c (@{$r->{'cgis'}}) {
+			($cmod, $cpage) = split(/\//, $c);
+			($cpage, $cargs) = split(/\?/, $cpage);
+			$ctitle = &cgi_page_title($cmod, $cpage) || $cpage;
+			push(@links, "<a href='$c'>$ctitle</a>");
+			}
+		if (@links > 2) {
+			@links = ( @links[0..1], "..." );
+			}
+		print &ui_columns_row([
+			$hi,
+			$text{'wsearch_type_'.$r->{'type'}},
+			"<a href='$r->{'mod'}->{'dir'}/'>$r->{'mod'}->{'desc'}</a>",
+			&ui_links_row(\@links),
+			]);
 		}
 	print &ui_columns_end();
 	}
@@ -186,11 +186,12 @@ else {
 
 &ui_print_footer();
 
+# highlight_text(text, [length])
 # Returns text with the search term bolded, and truncated to 60 characters
 sub highlight_text
 {
 local ($str, $len) = @_;
-$len ||= 90;
+$len ||= 50;
 local $hlen = $len / 2;
 $str =~ s/<[^>]*>//g;
 if ($str =~ /(.*)(\Q$re\E)(.*)/i) {
@@ -204,22 +205,6 @@ if ($str =~ /(.*)(\Q$re\E)(.*)/i) {
 	$str = $before."<b>".&html_escape($match)."</b>".$after;
 	}
 return $str;
-}
-
-sub match_row
-{
-local ($m, $link, $what, $text, $module_link) = @_;
-print "<font size=+1>$link</font>\n";
-if ($module_link) {
-	print " (".&text('wsearch_inmod',
-		    	 "<a href='$m->{'dir'}/'>$m->{'desc'}</a>").")";
-	}
-print "<br>\n";
-if ($text) {
-	print &highlight_text($text),"<br>\n";
-	}
-print "<font color=#4EBF37>$m->{'desc'} - $what</font><br>&nbsp;<br>\n";
-$count++;
 }
 
 # find_cgi_text(&regexps, module, re-mode)
@@ -270,7 +255,27 @@ $data =~ s/<p>/\n\n/gi;
 $data =~ s/<br>/\n/gi;
 $data =~ s/<[^>]+>//g;
 if ($data =~ /\Q$re\E/i) {
-	return $title;
+	return ($title, $data);
 	}
-return undef;
+return ( );
+}
+
+# cgi_page_title(module, cgi)
+# Given a CGI, return the text for its page title, if possible
+sub cgi_page_title
+{
+local ($m, $cgi) = @_;
+local $data = &read_file_contents(&module_root_directory($m)."/".$cgi);
+local $rv;
+if ($data =~ /(header|ui_print_header|ui_print_unbuffered_header)\([^,]+,\s*(\$text{'([^']+)'|\$text{"([^"]+)"|\&text\('([^']+)'|\&text\("([^"]+)")/) {
+	local $msg = $3 || $4 || $5 || $6;
+	local %mtext = &load_language($m);
+	$rv = $mtext{$msg};
+	}
+if ($cgi eq "index.cgi" && !$rv) {
+	# If no title was found for an index.cgi, use module title
+	local %minfo = &get_module_info($m);
+	$rv = $minfo{'desc'};
+	}
+return $rv;
 }
