@@ -62,3 +62,4 @@ Added an option to the FTP status monitor to make a TLS encrypted connection. Re
 Added a tooltip to status icons to show the hostname.
 ---- Changes since 1.470 ----
 Corrected the domain for AT&T SMS emails.
+Added a new monitor type for Dovecot.

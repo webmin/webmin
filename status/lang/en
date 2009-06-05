@@ -56,6 +56,7 @@ type_webmin=Webmin Webserver
 type_cfengine=Configuration Engine Daemon
 type_memory=Free Memory
 type_proftpd=ProFTPD Server
+type_dovecot=Dovecot IMAP/POP3 Server
 type_mailserver=Mailserver Response
 type_sshd=SSH Server
 type_raid=RAID Device Status
