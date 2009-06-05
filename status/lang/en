@@ -429,6 +429,9 @@ rssh_eproc=The Running Processes module is not supported on your system
 rssh_wrongpass=Incorrect login
 rssh_failed=Connection failed
 rssh_error=SSH error
+rssh_haspass=Password
+rssh_port=SSH server port
+rssh_eport=Missing or invalid port number
 
 tmpls_title=Email Templates
 tmpls_ecannot=You are not allowed to edit email templates
