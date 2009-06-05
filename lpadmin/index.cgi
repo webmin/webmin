@@ -38,37 +38,36 @@ if (@plist) {
 	if ($config{'display_mode'}) {
 		# Just show printer names
 		print &ui_links_row(\@links);
-		print "<table border width=100%>\n";
-		print "<tr $tb> <td><b>$text{'index_header'}</b></td> </tr>\n";
-		print "<tr $cb> <td><table width=100%>\n";
+		@grid = ( );
 		$i = 0;
 		foreach $p (@plist) {
 			local $ed = &can_edit_printer($p);
 			local $jb = &can_edit_jobs($p);
 			next if (!$ed && !$jb && !$access{'view'});
-			print "<tr>\n" if ($i%4 == 0);
-			print "<td width=25%>";
+			local $l;
 			if ($ed) {
-				print "<a href='edit_printer.cgi?name=$p'>",
-				      "$p</a>\n";
+				$l = "<a href='edit_printer.cgi?name=$p'>".
+				     "$p</a>\n";
 				}
 			else {
-				print "$p\n";
+				$l = $p."\n";
 				}
 			if ($config{'show_jobs'}) {
 				local @jobs = &get_jobs($p->{'name'});
-				print "&nbsp;<a href='list_jobs.cgi?name=$p'>",
-				      "(",&text('index_jcount', scalar(@jobs)),
-				      ")</a></td>\n";
+				$l .= "&nbsp;<a href='list_jobs.cgi?name=$p'>".
+				      "(".&text('index_jcount', scalar(@jobs)).
+				      ")</a>";
 				}
 			else {
-				print "&nbsp;<a href='list_jobs.cgi?name=$p'>",
-				      "($text{'index_jlist'})</a></td>\n";
+				$l .= "&nbsp;<a href='list_jobs.cgi?name=$p'>".
+				      "($text{'index_jlist'})</a>";
 				}
-			print "</tr>\n" if ($i%4 == 3);
-			$i++;
+			push(@grid, $l);
 			}
-		print "</table></td></tr></table>\n";
+		print &ui_grid_table(\@grid, 4, 100,
+			[ "width=25%", "width=25%", "width=25%", "width=25%" ],
+			undef,
+			$text{'index_header'});
 		print &ui_links_row(\@links);
 		}
 	else {
