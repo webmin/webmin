@@ -8,7 +8,7 @@ require './ppp-client-lib.pl';
 # Check if wvdial is installed
 if (!&has_command($config{'wvdial'}) ||
     ($out = &proc::pty_backquote("$config{'wvdial'} --version")) !~
-     /WvDial\s+([^: ]+)/i) {
+     /WvDial\s+([^: \n\r]+)/i) {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 	print "<p>",&text('index_ewvdial', "<tt>$config{'wvdial'}</tt>",
 		  "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
