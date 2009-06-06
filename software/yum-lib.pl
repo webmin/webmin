@@ -141,6 +141,21 @@ while(<PKG>) {
 		}
 	}
 close(PKG);
+
+# Also run list-sec to find out which are security updates
+&open_execute_command(PKG, "yum list-sec", 1, 1);
+while(<PKG>) {
+	s/\r|\n//g;
+	if (/^\S+\s+security\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
+		local ($name, $ver) = ($1, $2);
+		if ($done{$name}) {
+			$done{$name}->{'source'} = 'security';
+			$done{$name}->{'security'} = 1;
+			}
+		}
+	}
+close(PKG);
+
 return @rv;
 }
 
