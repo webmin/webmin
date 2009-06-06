@@ -8171,16 +8171,24 @@ to the su command to read the user's .profile or .bashrc file.
 =cut
 sub command_as_user
 {
-my ($user, $env, $cmd, @args) = @_;
-if ($gconfig{'os_type'} =~ /-linux$/) {
-	# In case user doesn't have a valid shell
-	my @uinfo = getpwnam($user);
-	if ($uinfo[8] ne "/bin/sh" && $uinfo[8] !~ /\/bash$/) {
+my ($user, $env, @args) = @_;
+my @uinfo = getpwnam($user);
+if ($uinfo[8] ne "/bin/sh" && $uinfo[8] !~ /\/bash$/) {
+	# User shell doesn't appear to be valid
+	if ($gconfig{'os_type'} =~ /-linux$/) {
+		# Use -s /bin/sh to force it
 		$shellarg = " -s /bin/sh";
+		}
+	elsif ($gconfig{'os_type'} eq 'freebsd' ||
+	       $gconfig{'os_type'} eq 'solaris' ||
+	       $gconfig{'os_type'} eq 'macos') {
+		# Use -m and force /bin/sh
+		@args = ( "/bin/sh", "-c", quotemeta(join(" ", @args)) );
+		$shellarg = " -m";
 		}
 	}
 my $rv = "su".($env ? " -" : "").$shellarg.
-	 " ".quotemeta($user)." -c ".quotemeta(join(" ", $cmd, @args));
+	 " ".quotemeta($user)." -c ".quotemeta(join(" ", @args));
 return $rv;
 }
 
