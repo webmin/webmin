@@ -11,8 +11,8 @@ $whatfailed = $text{'lgroups_failed'};
 $form = 0;
 
 # List quotas
-&ui_print_header(&text('lgroups_quotas', $f),
-		 $text{'lgroups_title'}, "", "list_groups");
+&ui_print_header(&text('lgroups_quotas', $f), $text{'lgroups_title'}, "",
+		 "list_groups");
 
 # Build and show tabs
 $prog = "list_groups.cgi?dir=".&urlize($f);

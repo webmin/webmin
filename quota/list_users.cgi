@@ -11,8 +11,8 @@ $whatfailed = $text{'lusers_failed'};
 $form = 0;
 
 # List quotas
-&ui_print_header(&text('lusers_qoutas', $f),
-		 $text{'lusers_title'}, "", "list_users");
+&ui_print_header(&text('lusers_qoutas', $f), $text{'lusers_title'},
+		 "", "list_users");
 
 # Build and show tabs
 $prog = "list_users.cgi?dir=".&urlize($f);
