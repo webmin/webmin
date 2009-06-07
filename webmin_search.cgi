@@ -359,7 +359,7 @@ if ($cgi eq "index.cgi") {
 	}
 # Otherwise check if it appears to parse any args
 local $data = &read_file_contents($mroot."/".$cgi);
-if ($data =~ /ReadParse\(/) {
+if ($data =~ /(ReadParse|ReadParseMime)\(/) {
 	return "none";
 	}
 return undef;
