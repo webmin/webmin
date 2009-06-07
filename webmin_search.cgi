@@ -133,6 +133,8 @@ foreach $m (@mods) {
 				my @cgis = &find_cgi_text(
 					[ "hlink\\(.*'$page'",
 					  "hlink\\(.*\"$page\"",
+					  "header\\([^,]+,[^,]+,[^,]+,\\s*\"$page\"",
+					  "header\\([^,]+,[^,]+,[^,]+,\\s*'$page'",
 					], $m, 1);
 				push(@rv, { 'mod' => $m,
 					    'rank' => 6,
@@ -296,9 +298,6 @@ local $data = &read_file_contents($f);
 local $title;
 if ($data =~ /<header>([^<]*)<\/header>/) {
 	$title = $1;
-	}
-else {
-	$title = $f;
 	}
 $data =~ s/\s+/ /g;
 $data =~ s/<p>/\n\n/gi;
