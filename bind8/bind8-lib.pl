@@ -1721,6 +1721,7 @@ else {
 		return &text('restart_esig', $pid, $!);
 		}
 	}
+&refresh_nscd();
 return undef;
 }
 
@@ -3030,6 +3031,22 @@ local ($job) = grep { $_->{'user'} eq 'root' &&
 		      $_->{'command'} =~ /^\Q$dnssec_cron_cmd\E/ }
 		    &cron::list_cron_jobs();
 return $job;
+}
+
+# refresh_nscd()
+# Signal nscd to re-read cached DNS info
+sub refresh_nscd
+{
+if (&find_byname("nscd")) {
+	if (&has_command("nscd")) {
+		# Use nscd -i to reload
+		&system_logged("nscd -i hosts >/dev/null 2>&1 </dev/null");
+		}
+	else {
+		# Send HUP signal
+		&kill_byname_logged("nscd", "HUP");
+		}
+	}
 }
 
 1;

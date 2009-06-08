@@ -38,6 +38,7 @@ if ($out =~ /not found/i) {
 elsif ($? || $out =~ /failed|not found|error/i) {
 	&error(&text('restart_endc', "<tt>$out</tt>"));
 	}
+&refresh_nscd();
 &webmin_log("apply", $dom);
 
 $tv = $zone->{'type'};
