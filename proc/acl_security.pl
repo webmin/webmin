@@ -32,7 +32,7 @@ print &ui_radio("who", $who,
 
 # Can do stuff to processes?
 print "<tr> <td><b>$text{'acl_edit'}</b></td>\n";
-printf "<td><input type=radio name=edit value=1 %s> %s\n",
+printf "<td colspan=3><input type=radio name=edit value=1 %s> %s\n",
 	$_[0]->{'edit'} ? 'checked' : '', $text{'yes'};
 printf "<input type=radio name=edit value=0 %s> %s</td> </tr>\n",
 	$_[0]->{'edit'} ? '' : 'checked', $text{'no'};
