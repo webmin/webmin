@@ -86,13 +86,13 @@ printf "<input name=attach size=5 value='%s'> kB\n",
 print "</td> </tr>\n";
 
 print "<tr> <td><b>$text{'acl_canattach'}</b></td>\n";
-printf "<td><input type=radio name=canattach value=1 %s> %s\n",
+printf "<td colspan=3><input type=radio name=canattach value=1 %s> %s\n",
 	$_[0]->{'canattach'} ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=canattach value=0 %s> %s</td>\n",
+printf "<input type=radio name=canattach value=0 %s> %s</td> </tr>\n",
 	$_[0]->{'canattach'} ? '' : 'checked', $text{'no'};
 
-print "<td><b>$text{'acl_candetach'}</b></td>\n";
-printf "<td><input type=radio name=candetach value=1 %s> %s\n",
+print "<tr> <td><b>$text{'acl_candetach'}</b></td>\n";
+printf "<td colspan=3><input type=radio name=candetach value=1 %s> %s\n",
 	$_[0]->{'candetach'} ? 'checked' : '', $text{'yes'};
 printf "<input type=radio name=candetach value=0 %s> %s</td> </tr>\n",
 	$_[0]->{'candetach'} ? '' : 'checked', $text{'no'};
