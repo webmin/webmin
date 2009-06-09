@@ -211,8 +211,10 @@ if (@rv) {
 				push(@links, $ctitle);
 				}
 			else {
+				$cargs = "?".$cargs if ($cargs ne '' &&
+							$cargs !~ /^(\/|%2F)/);
 				push(@links,
-				   "<a href='$cmod/$cpage?$cargs'>$ctitle</a>");
+				   "<a href='$cmod/$cpage$cargs'>$ctitle</a>");
 				}
 			}
 		if (@links > 2) {
