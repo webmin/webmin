@@ -31,7 +31,7 @@ print &ui_hidden("idx", $in{'idx'});
 print &ui_hidden("midx", $in{'midx'});
 print &ui_hidden("_module", $in{'module'});
 print &ui_hidden("_type", $in{'type'});
-print &ui_table_start($text{'mod_header'}, undef, 2);
+print &ui_table_start($text{'mod_header'}, "width=100%", 2);
 
 # PAM service name
 $t = $text{'desc_'.$pam->{'name'}};
