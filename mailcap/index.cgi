@@ -7,9 +7,10 @@ require './mailcap-lib.pl';
 @mailcap = &list_mailcap();
 if (@mailcap) {
 	print &ui_form_start("delete.cgi", "post");
-	print &select_all_link("d"),"\n";
-	print &select_invert_link("d"),"\n";
-	print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><br>\n";
+	@links = ( &select_all_link("d"),
+		   &select_invert_link("d"),
+		   "<a href='edit.cgi?new=1'>$text{'index_add'}</a>" );
+	print &ui_links_row(\@links);
 
 	@tds = ( "width=5" );
 	print &ui_columns_start([
@@ -18,7 +19,7 @@ if (@mailcap) {
 		$text{'index_program'},
 		$text{'index_cmt'},
 		$text{'index_enabled'},
-		], "width=100%", 0, \@tds);
+		], 100, 0, \@tds);
 	foreach $m (@mailcap) {
 		print &ui_checked_columns_row([
 			"<a href='edit.cgi?index=$m->{'index'}'>$m->{'type'}</a>",
@@ -30,9 +31,7 @@ if (@mailcap) {
 		}
 	print &ui_columns_end();
 
-	print &select_all_link("d"),"\n";
-	print &select_invert_link("d"),"\n";
-	print "<a href='edit.cgi?new=1'>$text{'index_add'}</a><br>\n";
+	print &ui_links_row(\@links);
 	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
 			     undef,
 			     [ "disable", $text{'index_disable'} ],
