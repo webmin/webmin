@@ -48,13 +48,13 @@ printf "<input type=radio name=mode value=6 %s> %s\n",
 printf "<input name=match size=15 value='%s'></td> </tr>\n",
 	$_[0]->{'mode'} == 6 ? $_[0]->{'users'} : '';
 
-print "<tr> <td><b>$text{'acl_repeat'}</b></td> <td>\n";
+print "<tr> <td><b>$text{'acl_repeat'}</b></td> <td colspan=3>\n";
 printf "<input type=radio name=repeat value=1 %s> $text{'yes'}\n",
 	$_[0]->{'repeat'} ? "checked" : "";
-printf "<input type=radio name=repeat value=0 %s> $text{'no'}</td>\n",
+printf "<input type=radio name=repeat value=0 %s> $text{'no'}</td> </tr>\n",
 	$_[0]->{'repeat'} ? "" : "checked";
 
-print "<td><b>$text{'acl_expire'}</b></td> <td>\n";
+print "<tr> <td><b>$text{'acl_expire'}</b></td> <td colspan=3>\n";
 printf "<input type=radio name=expire value=1 %s> $text{'yes'}\n",
 	$_[0]->{'expire'} ? "checked" : "";
 printf "<input type=radio name=expire value=0 %s> $text{'no'}</td> </tr>\n",
