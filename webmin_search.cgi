@@ -181,7 +181,8 @@ print &text('wsearch_found', scalar(@rv)),"<p>\n";
 
 # Sort results by relevancy
 # XXX can do better?
-@rv = sort { $b->{'rank'} <=> $a->{'rank'} } @rv;
+@rv = sort { $b->{'rank'} <=> $a->{'rank'} ||
+	     lc($a->{'mod'}->{'desc'}) cmp lc($b->{'mod'}->{'desc'}) } @rv;
 
 # Show in table
 if (@rv) {
