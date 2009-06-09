@@ -34,24 +34,22 @@ print &ui_radio("who", $who,
 print "<tr> <td><b>$text{'acl_edit'}</b></td>\n";
 printf "<td><input type=radio name=edit value=1 %s> %s\n",
 	$_[0]->{'edit'} ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=edit value=0 %s> %s</td>\n",
+printf "<input type=radio name=edit value=0 %s> %s</td> </tr>\n",
 	$_[0]->{'edit'} ? '' : 'checked', $text{'no'};
 
 # Can run commands?
-print "<td><b>$text{'acl_run'}</b></td>\n";
-printf "<td><input type=radio name=run value=1 %s> %s\n",
+print "<tr> <td><b>$text{'acl_run'}</b></td>\n";
+printf "<td colspan=3><input type=radio name=run value=1 %s> %s\n",
 	$_[0]->{'run'} ? 'checked' : '', $text{'yes'};
 printf "<input type=radio name=run value=0 %s> %s</td> </tr>\n",
 	$_[0]->{'run'} ? '' : 'checked', $text{'no'};
 
 # Can see other processes?
 print "<tr> <td><b>$text{'acl_only'}</b></td>\n";
-printf "<td><input type=radio name=only value=1 %s> %s\n",
+printf "<td colspan=3><input type=radio name=only value=1 %s> %s\n",
 	$_[0]->{'only'} ? 'checked' : '', $text{'yes'};
-printf "<input type=radio name=only value=0 %s> %s</td>\n",
+printf "<input type=radio name=only value=0 %s> %s</td> </tr>\n",
 	$_[0]->{'only'} ? '' : 'checked', $text{'no'};
-
-print "</tr>\n";
 }
 
 # acl_security_save(&options)
