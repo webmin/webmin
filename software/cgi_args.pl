@@ -6,7 +6,7 @@ sub cgi_args
 my ($cgi) = @_;
 if ($cgi eq 'search.cgi') {
 	# Example search
-	return 'search=net';
+	return 'search=ssh';
 	}
 elsif ($cgi eq 'edit_pack.cgi' || $cgi eq 'list_pack.cgi') {
 	# Package for /bin/ls
