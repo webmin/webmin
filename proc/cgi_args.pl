@@ -10,5 +10,9 @@ if ($cgi eq 'edit_proc.cgi') {
 elsif ($cgi eq 'open_files.cgi' || $cgi eq 'trace.cgi') {
 	return 'pid=1';
 	}
+elsif ($cgi =~ /^index_/) {
+	# All index pages are valid
+	return '';
+	}
 return undef;
 }
