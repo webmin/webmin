@@ -6,6 +6,7 @@ longdesc=Create rules to filter and forward incoming email.
 usermin=1
 webmin=1
 webmin_hidden=1
+webmin_noui=1
 desc_ca=Filtres i Reenviaments de Correu
 desc_cz=Filtrování a pøeposílání po¹ty
 desc_nl=Filter en Mail Doorsturen

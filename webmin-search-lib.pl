@@ -30,8 +30,11 @@ my $urlbase = ($ENV{'HTTPS'} eq 'ON' ? 'https://' : 'http://').$urlhost;
 
 # Search module names and add to results list
 my @rv = ( );
+my $pn = &get_product_name();
 my @mods = sort { $b->{'longdesc'} cmp $a->{'longdesc'} }
-	     grep { !$_->{'clone'} } &get_available_module_infos();
+	     grep { !$_->{'clone'} }
+	       grep { !$_->{'noui'} && !$_->{$pn.'_noui'} }
+		 &get_available_module_infos();
 foreach my $m (@mods) {
 	if ($m->{'desc'} =~ /\Q$re\E/i) {
 		# Module description match
