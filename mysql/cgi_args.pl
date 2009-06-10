@@ -19,7 +19,7 @@ elsif ($cgi eq 'table_form.cgi') {
 elsif ($cgi eq 'edit_view.cgi') {
 	return 'db=mysql&new=1';
 	}
-elsif ($cgi eq 'edit_table.cgi') {
+elsif ($cgi eq 'edit_table.cgi' || $cgi eq 'view_table.cgi') {
 	return 'db=mysql&table=user';
 	}
 elsif ($cgi eq 'edit_field.cgi') {
