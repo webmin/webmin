@@ -5,7 +5,6 @@ require './ldap-server-lib.pl';
 &local_ldap_server() == 1 || &error($text{'slapd_elocal'});
 $access{'schema'} || &error($text{'schema_ecannot'});
 &ui_print_header(undef, $text{'schema_title'}, "", "schema");
-&ReadParse();
 
 # Get included schemas
 if (&get_config_type() == 1) {
