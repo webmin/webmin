@@ -7,3 +7,4 @@ longdesc=Set up your system as a PPTP server so that Linux or Windows VPN client
 desc_ca=Servidor VPN PPTP
 desc_es=Servidor VPN PPTP
 desc_cz=PPTP VPN server
+desc_nl=PPTP VPN Server
