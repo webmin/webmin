@@ -6,7 +6,6 @@
 # * Display form to manually edit dhcpd.conf file (pass to save_text.cgi)
 
 require './dhcpd-lib.pl';
-&ReadParse();
 $access{'noconfig'} && &error($text{'text_ecannot'});
 $conf = &get_config();
 &ui_print_header($text{'text_editor'}, $text{'text_title'}, "");
