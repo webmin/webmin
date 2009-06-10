@@ -6,7 +6,7 @@ require './samba-lib.pl';
 &ReadParse();
 $s = $in{'share'};
 # check acls
-%access = &get_module_acl();
+
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 if(!$s) {
 	&error("$text{'eacl_np'} $text{'eacl_pcps'}")

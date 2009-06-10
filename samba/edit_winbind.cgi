@@ -3,7 +3,7 @@
 # Show form for binding to a domain
 
 require './samba-lib.pl';
-%access = &get_module_acl();
+
 $access{'winbind'} || &error($text{'winbind_ecannot'});
 &ui_print_header(undef, $text{'winbind_title'}, "");
 

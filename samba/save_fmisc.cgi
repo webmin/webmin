@@ -8,7 +8,7 @@ require './samba-lib.pl';
 &get_share($in{old_name});
 
 # check acls
-%access = &get_module_acl();
+
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_pufmisc'}")
             unless &can('rwoO', \%access, $in{old_name});

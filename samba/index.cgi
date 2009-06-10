@@ -4,7 +4,6 @@
 # [printers]) are included as well.
 
 require './samba-lib.pl';
-%access = &get_module_acl();
 
 # Check for Samba executable
 if (!-x $config{'samba_server'}) {

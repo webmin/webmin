@@ -3,7 +3,7 @@
 # Show a form for editing an existing groups
 
 require './samba-lib.pl';
-%access = &get_module_acl();
+
 $access{'maint_groups'} || &error($text{'groups_ecannot'});
 &ReadParse();
 if ($in{'new'}) {

@@ -3,7 +3,7 @@
 # Kill all smbd and nmdb processes and re-start them
 
 require './samba-lib.pl';
-%access = &get_module_acl();
+
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_papply'}") unless $access{'apply'};
  

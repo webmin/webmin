@@ -5,7 +5,7 @@
 require './samba-lib.pl';
 
 # check acls
-%access = &get_module_acl();
+
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_pcn'}") unless $access{'conf_net'};
 

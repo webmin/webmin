@@ -3,7 +3,7 @@
 # Save unix-samba group synchronisation options
 
 require './samba-lib.pl';
-%access = &get_module_acl();
+
 $access{'maint_gsync'} || &error($text{'gsync_ecannot'});
 &ReadParse();
 

@@ -4,7 +4,7 @@
 require './samba-lib.pl';
 &ReadParse();
 &error_setup($text{'delete_err'});
-%access = &get_module_acl();
+
 
 @d = split(/\0/, $in{'d'});
 @d || &error($text{'delete_enone'});

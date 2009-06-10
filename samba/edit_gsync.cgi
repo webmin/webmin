@@ -3,7 +3,7 @@
 # Allow the user to edit auto updating of Samba groups by useradmin
 
 require './samba-lib.pl';
-%access = &get_module_acl();
+
 $access{'maint_gsync'} || &error($text{'gsync_ecannot'});
 &ui_print_header(undef, $text{'gsync_title'}, "");
 

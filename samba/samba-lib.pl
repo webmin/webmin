@@ -5,6 +5,7 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+%access = &get_module_acl();
 
 # Get the samba version
 if (open(VERSION, "$module_config_directory/version")) {

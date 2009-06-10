@@ -3,7 +3,7 @@
 # Update or delete a Samba group
 
 require './samba-lib.pl';
-%access = &get_module_acl();
+
 $access{'maint_groups'} || &error($text{'groups_ecannot'});
 &ReadParse();
 @groups = &list_groups();

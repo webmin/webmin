@@ -3,7 +3,7 @@
 # List all existing Samba groups
 
 require './samba-lib.pl';
-%access = &get_module_acl();
+
 $access{'maint_groups'} || &error($text{'groups_ecannot'});
 &ui_print_header(undef, $text{'groups_title'}, "");
 
