@@ -256,7 +256,7 @@ else {
 # get_fetchmail_version([&out])
 sub get_fetchmail_version
 {
-local $out = `$config{'fetchmail_path'} -V 2>&1 </dev/null`;
+local $out = &backquote_command("$config{'fetchmail_path'} -V 2>&1 </dev/null");
 ${$_[0]} = $out if ($_[0]);
 return $out =~ /fetchmail\s+release\s+(\S+)/ ? $1 : undef;
 }
