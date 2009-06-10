@@ -202,8 +202,8 @@ virtusers_toomany=There are too many address mappings on your system to display 
 virtusers_go=Find address mappings matching:
 virtusers_delete=Delete Selected Address Mappings
 
-vform_edit=Edit Mapping
-vform_create=Create Mapping
+vform_edit=Edit Address Mapping
+vform_create=Create Address Mapping
 vform_for=Mail for
 vform_address=Address
 vform_domain=Domain
