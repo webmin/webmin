@@ -44,7 +44,7 @@ foreach my $m (@mods) {
 	elsif ($m->{'dir'} =~ /\Q$re\E/i) {
 		# Module directory match
 		push(@rv, { 'mod' => $m,
-			    'rank' => 12,
+			    'rank' => 9,
 			    'type' => 'dir',
 			    'link' => $m->{'dir'}.'/',
 			    'text' => $urlbase."/".$m->{'dir'}."/" });
@@ -75,7 +75,7 @@ foreach my $m (@mods) {
 			push(@rv, { 'mod' => $m,
 				    'rank' => 8,
 				    'type' => 'config',
-				    'link' => "config.cgi?module=$m->{'dir'}&".
+				    'link' => "/config.cgi?module=$m->{'dir'}&".
 					     "section=".&urlize($section)."#$c",
 				    'text' => $p[0],
 				  });
@@ -87,7 +87,7 @@ foreach my $m (@mods) {
 			push(@rv, { 'mod' => $m,
                                     'rank' => 6,
 				    'type' => 'help',
-				    'link' => "help.cgi/$m->{'dir'}/config_".$c,
+				    'link' => "/help.cgi/$m->{'dir'}/config_".$c,
 				    'desc' => &text('wsearch_helpfor', $p[0]),
 				    'text' => $help,
 				    'cgis' => [ "/config.cgi?".
@@ -111,14 +111,15 @@ foreach my $m (@mods) {
 		# Work out if we should grep this help page - don't do the same
 		# page twice for different languages
 		my $grep = 0;
+		my ($page, $lang);
 		if ($f =~ /^(\S+)\.([^\.]+)\.html$/) {
-			my ($page, $lang) = ($1, $2);
+			($page, $lang) = ($1, $2);
 			if ($lang_order_list{$lang} && !$donepage{$page}++) {
 				$grep = 1;
 				}
 			}
 		elsif ($f =~ /^(\S+)\.html$/) {
-			my $page = $1;
+			$page = $1;
 			if (!$donepage{$page}++) {
 				$grep = 1;
 				}
@@ -137,7 +138,7 @@ foreach my $m (@mods) {
 				push(@rv, { 'mod' => $m,
 					    'rank' => 6,
 					    'type' => 'help',
-					    'link' => "help.cgi/$m->{'dir'}/$page",
+					    'link' => "/help.cgi/$m->{'dir'}/$page",
 					    'desc' => $title,
 					    'text' => $help,
 					    'cgis' => \@cgis });
