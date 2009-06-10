@@ -11,13 +11,14 @@ else {
 	&can_edit_user($in{'user'}) || &error($text{'poll_ecannot'});
 	@uinfo = getpwnam($in{'user'});
 	$file = "$uinfo[7]/.fetchmailrc";
+	$uheader = &text('poll_foruser', "<tt>$in{'user'}</tt>");
 	}
 
 if ($in{'new'}) {
-	&ui_print_header(undef, $text{'poll_create'}, "");
+	&ui_print_header($uheader, $text{'poll_create'}, "");
 	}
 else {
-	&ui_print_header(undef, $text{'poll_edit'}, "");
+	&ui_print_header($uheader, $text{'poll_edit'}, "");
 	@conf = &parse_config_file($file);
 	$poll = $conf[$in{'idx'}];
 	}

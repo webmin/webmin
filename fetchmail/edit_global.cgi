@@ -4,7 +4,6 @@
 
 require './fetchmail-lib.pl';
 &ReadParse();
-&ui_print_header(undef, $text{'global_title'}, "");
 
 if ($config{'config_file'}) {
 	$file = $config{'config_file'};
@@ -13,7 +12,11 @@ else {
 	&can_edit_user($in{'user'}) || &error($text{'poll_ecannot'});
 	@uinfo = getpwnam($in{'user'});
 	$file = "$uinfo[7]/.fetchmailrc";
+	$uheader = &text('poll_foruser', "<tt>$in{'user'}</tt>");
 	}
+
+&ui_print_header($uheader, $text{'global_title'}, "");
+
 @conf = &parse_config_file($file);
 foreach $c (@conf) {
 	$poll = $c if ($c->{'defaults'});

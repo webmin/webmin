@@ -64,6 +64,7 @@ poll_postconnect=Command to run after disconnecting
 poll_ecannot=You are not allowed to edit this user's fetchmail config
 poll_efile=Only users' fetchmail config files can be edited
 poll_eusername=User does not exist!
+poll_foruser=For user $1
 
 stop_err=Failed to stop fetchmail
 stop_ecannot=You are not allowed to stop fetchmail
