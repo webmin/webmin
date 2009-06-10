@@ -2,7 +2,6 @@
 # Show a page for manually editing dovecot.conf
 
 require './dovecot-lib.pl';
-&ReadParse();
 &ui_print_header(undef, $text{'manual_title'}, "");
 
 # Show the file contents
