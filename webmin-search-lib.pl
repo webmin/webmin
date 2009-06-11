@@ -44,6 +44,14 @@ foreach my $m (@mods) {
 			    'link' => $m->{'dir'}.'/',
 			    'text' => $m->{'desc'} });
 		}
+	elsif ($m->{'longdesc'} =~ /\Q$re\E/i) {
+		# Module long description match
+		push(@rv, { 'mod' => $m,
+			    'rank' => 9.5,
+			    'type' => 'mod',
+			    'link' => $m->{'dir'}.'/',
+			    'text' => $m->{'longdesc'} });
+		}
 	elsif ($m->{'dir'} =~ /\Q$re\E/i) {
 		# Module directory match
 		push(@rv, { 'mod' => $m,
