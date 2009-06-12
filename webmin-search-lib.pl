@@ -34,14 +34,14 @@ my $pn = &get_product_name();
 my @mods;
 if ($onlymods) {
 	# Modules specified by caller
-	@mods = @$onlymods;
+	@mods = grep { &foreign_available($_->{'dir'}) } @$onlymods;
 	}
 else {
-	# All reasonabel modules
-	@mods = grep { !$_->{'clone'} }
-		  grep { !$_->{'noui'} && !$_->{$pn.'_noui'} }
-		    &get_available_module_infos();
+	# All reasonable modules
+	@mods = &get_available_module_infos();
 	}
+@mods = grep { !$_->{'clone'} }
+	  grep { !$_->{'noui'} && !$_->{$pn.'_noui'} } @mods;
 @mods = sort { $b->{'longdesc'} cmp $a->{'longdesc'} } @mods;
 foreach my $m (@mods) {
 	if ($m->{'desc'} =~ /\Q$re\E/i) {

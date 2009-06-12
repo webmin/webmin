@@ -11,8 +11,8 @@ do 'webmin-search-lib.pl';
 
 $prod = &get_product_name();
 $ucprod = ucfirst($prod);
-&ui_print_unbuffered_header(
-	undef, &text('wsearch_title', $ucprod), "", undef, 0, 1);
+&ui_print_unbuffered_header(undef,
+	$in{'title'} || &text('wsearch_title', $ucprod), "", undef, 0, 1);
 
 # Validate search text
 $re = $in{'search'};
@@ -22,10 +22,20 @@ if ($re !~ /\S/) {
 $re =~ s/^\s+//;
 $re =~ s/\s+$//;
 
+# Find modules to search
+$mods = undef;
+if ($in{'mod'}) {
+	$mods = [ ];
+	my %infos = map { $_->{'dir'}, $_ } &get_all_module_infos();
+	foreach my $mn (split(/\0/, $in{'mod'})) {
+		my $minfo = $infos{$mn};
+		push(@$mods, $minfo) if ($minfo);
+		}
+	}
+
 # Do the search
 print &text('wsearch_searching', "<i>".&html_escape($re)."</i>"),"\n";
-@rv = &search_webmin($re, \&print_search_dot,
-		     $in{'mod'} ? [ split(/\0/, $in{'mod'}) ] : undef);
+@rv = &search_webmin($re, \&print_search_dot, $mods);
 print &text('wsearch_found', scalar(@rv)),"<p>\n";
 
 # Show in table
