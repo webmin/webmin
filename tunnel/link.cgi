@@ -20,8 +20,8 @@ if ($ENV{'QUERY_STRING'}) {
 elsif (@ARGV) {
 	$path .= '?'.join('+', @ARGV);
 	}
-$linkurl = "/$module_name/link.cgi/";
-$url = "/$module_name/link.cgi/$openurl";
+$linkurl = $gconfig{'webprefix'}."/$module_name/link.cgi/";
+$url = $gconfig{'webprefix'}."/$module_name/link.cgi/$openurl";
 $| = 1;
 $meth = $ENV{'REQUEST_METHOD'};
 if ($config{'url'}) {
