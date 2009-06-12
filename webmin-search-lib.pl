@@ -1,6 +1,6 @@
 # Functions for searching the webmin docs and UI
 
-=head2 search_webmin(phrase, [callback-function])
+=head2 search_webmin(phrase, [callback-function], [&modules])
 
 Searches all Webmin help pages, UI text, module names and config.info files
 for entries matching the given phrase or word. Returns them sorted by relevance
@@ -19,7 +19,7 @@ order, each as a hash ref with the following keys :
 =cut
 sub search_webmin
 {
-my ($re, $cbfunc) = @_;
+my ($re, $cbfunc, $onlymods) = @_;
 
 # Work out this Webmin's URL base
 my $urlhost = $ENV{'HTTP_HOST'};
@@ -31,10 +31,18 @@ my $urlbase = ($ENV{'HTTPS'} eq 'ON' ? 'https://' : 'http://').$urlhost;
 # Search module names and add to results list
 my @rv = ( );
 my $pn = &get_product_name();
-my @mods = sort { $b->{'longdesc'} cmp $a->{'longdesc'} }
-	     grep { !$_->{'clone'} }
-	       grep { !$_->{'noui'} && !$_->{$pn.'_noui'} }
-		 &get_available_module_infos();
+my @mods;
+if ($onlymods) {
+	# Modules specified by caller
+	@mods = @$onlymods;
+	}
+else {
+	# All reasonabel modules
+	@mods = grep { !$_->{'clone'} }
+		  grep { !$_->{'noui'} && !$_->{$pn.'_noui'} }
+		    &get_available_module_infos();
+	}
+@mods = sort { $b->{'longdesc'} cmp $a->{'longdesc'} } @mods;
 foreach my $m (@mods) {
 	if ($m->{'desc'} =~ /\Q$re\E/i) {
 		# Module description match

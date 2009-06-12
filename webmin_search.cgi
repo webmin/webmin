@@ -1,6 +1,7 @@
 #!/usr/local/bin/perl
 # Search Webmin modules and help pages and text and config.info
 
+$trust_unknown_referers = 1;
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 
@@ -23,7 +24,8 @@ $re =~ s/\s+$//;
 
 # Do the search
 print &text('wsearch_searching', "<i>".&html_escape($re)."</i>"),"\n";
-@rv = &search_webmin($re, \&print_search_dot);
+@rv = &search_webmin($re, \&print_search_dot,
+		     $in{'mod'} ? [ split(/\0/, $in{'mod'}) ] : undef);
 print &text('wsearch_found', scalar(@rv)),"<p>\n";
 
 # Show in table
