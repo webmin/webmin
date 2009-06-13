@@ -40,7 +40,7 @@ $allowg = $commas ? join(" ", split(/,/, $allowg[0]))
 		  : join(" ", @allowg);
 print &ui_table_row($text{'access_allowg'},
 	&ui_opt_textbox("allowg", $allowg, 60, $text{'access_all'})." ".
-	&user_chooser_button("allowg", 1));
+	&group_chooser_button("allowg", 1));
 
 # Denied users
 @denyu = &find_value("DenyUsers", $conf);
@@ -56,7 +56,7 @@ $denyg = $commas ? join(" ", split(/,/, $denyg[0]))
 		 : join(" ", @denyg);
 print &ui_table_row($text{'access_denyg'},
 	&ui_opt_textbox("denyg", $denyg, 60, $text{'access_all'})." ".
-	&user_chooser_button("denyg", 1));
+	&group_chooser_button("denyg", 1));
 
 if ($version{'type'} eq 'ssh' && $version{'number'} < 2) {
 	print &ui_table_hr();
