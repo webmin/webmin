@@ -957,8 +957,24 @@ sub create_mapping
 my @maps_files = $_[2] ? (map { [ "hash", $_ ] } @{$_[2]}) :
 		 $_[3] ? &get_maps_types_files($_[3]) :
 		         &get_maps_types_files(&get_real_value($_[0]));
-my $last_map = $maps_files[$#maps_files];
+
+# If multiple maps, find a good one to add to .. avoid regexp if we can
+my $last_map;
+if (@maps_files == 1) {
+	$last_map = $maps_files[0];
+	}
+else {
+	for(my $i=$#maps_files; $i>=0; $i--) {
+		if ($maps_files[$i]->[0] ne 'regexp' &&
+	 	    $maps_files[$i]->[0] ne 'pcre') {
+			$last_map = $maps_files[$i];
+			last;
+			}
+		}
+	$last_map ||= $maps_files[$#maps_files];	# Fall back to last one
+	}
 my ($maps_type, $maps_file) = @$last_map;
+
 if (&file_map_type($maps_type)) {
 	# Adding to a regular file
 	local $lref = &read_file_lines($maps_file);
