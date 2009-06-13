@@ -2888,8 +2888,7 @@ if (&get_product_name() eq "webmin") {
 
 # Check readonly support
 if (&is_readonly_mode()) {
-	my %this_module_info = &get_module_info(&get_module_name());
-	return 0 if (!$this_module_info{'readonly'});
+	return 0 if (!$foreign_module_info{'readonly'});
 	}
 
 # Check if theme vetos
