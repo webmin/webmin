@@ -6,7 +6,7 @@ mon_global_title=Global Varibles Configuration
 mon_conf_title=Basic Configuration
 mon_status_title=Operational Status
 hostgroups_title=MON Configuration-Hostgroups
-services_title=Watchgroups-Sevice Definitions
+services_title=Watchgroups-Service Definitions
 
 HEADERS:
 head_hostgroups=Hostgroups and Services
