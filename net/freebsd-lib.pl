@@ -282,7 +282,7 @@ return	$_[0] =~ /^tun/ ? "Loopback tunnel" :
 	$_[0] =~ /^ar/ ? "Arnet" :
 	$_[0] =~ /^(wlan|athi|ral)/ ? "Wireless ethernet" :
 	$_[0] =~ /^(bge|em|myk)/ ? "Gigabit ethernet" :
-	$_[0] =~ /^(ax|mx|nve|pn|rl|tx|wb|nfe)/ ? "Fast ethernet" :
+	$_[0] =~ /^(ax|mx|nve|pn|rl|tx|wb|nfe|sis)/ ? "Fast ethernet" :
 	$_[0] =~ /^(cs|dc|de|ed|el|ex|fe|fxp|ie|le|lnc|tl|vr|vx|xl|ze|zp)/ ? "Ethernet" : $text{'ifcs_unknown'};
 }
 
