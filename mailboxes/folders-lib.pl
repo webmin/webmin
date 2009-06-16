@@ -20,7 +20,7 @@ if ($_[2]->{'type'} == 0) {
 elsif ($_[2]->{'type'} == 1) {
 	# List a qmail maildir
 	local $md = $_[2]->{'file'};
-	return &list_maildir($md, $_[0], $_[1]);
+	return &list_maildir($md, $_[0], $_[1], $_[3]);
 	}
 elsif ($_[2]->{'type'} == 2) {
 	# Get mail headers/body from a remote POP3 server
@@ -136,7 +136,7 @@ elsif ($_[2]->{'type'} == 2) {
 elsif ($_[2]->{'type'} == 3) {
 	# List an MH directory
 	local $md = $_[2]->{'file'};
-	return &list_mhdir($md, $_[0], $_[1]);
+	return &list_mhdir($md, $_[0], $_[1], $_[3]);
 	}
 elsif ($_[2]->{'type'} == 4) {
 	# Get headers and possibly bodies from an IMAP server
