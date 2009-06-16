@@ -8179,7 +8179,8 @@ if ($uinfo[8] ne "/bin/sh" && $uinfo[8] !~ /\/bash$/) {
 		$shellarg = " -s /bin/sh";
 		}
 	elsif ($gconfig{'os_type'} eq 'freebsd' ||
-	       $gconfig{'os_type'} eq 'solaris' ||
+	       $gconfig{'os_type'} eq 'solaris' &&
+		$gconfig{'os_version'} >= 11 ||
 	       $gconfig{'os_type'} eq 'macos') {
 		# Use -m and force /bin/sh
 		@args = ( "/bin/sh", "-c", quotemeta(join(" ", @args)) );
