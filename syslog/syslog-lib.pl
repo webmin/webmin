@@ -35,6 +35,9 @@ while($line = <CONF>) {
 	if ($line =~ /^\$(\S+)\s*(\S*)/) {
 		# rsyslog special directive - ignored for now
 		}
+	elsif ($line =~ /^if\s+/) {
+		# rsyslog if statement .. ignored too
+		}
 	elsif ($line =~ /^(#*)\s*([^#\s]+\.\S+)\s+(\S+)$/ ||
 	       $line =~ /^(#*)\s*([^#\s]+\.\S+)\s+(\|.*)$/) {
 		# Regular log destination
@@ -69,6 +72,11 @@ while($line = <CONF>) {
 		$log->{'index'} = scalar(@rv);
 		$log->{'section'} = $tag;
 		$tag->{'eline'} = $lnum;
+		if ($log->{'file'} =~ s/^(\/\S+);(\S+)$/$1/ ||
+                    $log->{'pipe'} =~ s/^(\/\S+);(\S+)$/$1/) {
+			# rsyslog file format
+			$log->{'format'} = $2;
+			}
 		push(@rv, $log);
 		}
 	elsif ($line =~ /^(#?)!(\S+)$/) {
@@ -151,6 +159,10 @@ elsif ($_[0]->{'socket'}) {
 	}
 else {
 	$d = '*';
+	}
+if ($_[0]->{'format'}) {
+	# Add rsyslog format
+	$d .= ";".$_[0]->{'format'};
 	}
 return ($_[0]->{'active'} ? "" : "#").join(";", @{$_[0]->{'sel'}})."\t".$d;
 }

@@ -209,6 +209,7 @@ else {
 	else {
 		&can_edit_log($log) || &error($text{'save_ecannot4'});
 		$old = $conf->[$in{'idx'}];
+		$log->{'format'} = $old->{'format'};	# Copy for now
 		&can_edit_log($old) || &error($text{'save_ecannot5'});
 		&update_log($old, $log);
 		}
