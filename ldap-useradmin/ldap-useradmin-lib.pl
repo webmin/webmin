@@ -337,10 +337,6 @@ local $ldap = &ldap_connect();
 local $base = &get_group_base();
 local @attrs = &group_to_dn($_[1]);
 push(@attrs, @{$_[0]->{'ldap_attrs'}});
-local $rv = $ldap->modify($_[0]->{'dn'}, replace => { @attrs });
-if ($rv->code) {
-	&error(&text('gsave_emod', $rv->error));
-	}
 local $newdn = "cn=$_[1]->{'group'},$base";
 if (!&same_dn($newdn, $_[0]->{'dn'})) {
 	# Re-named too!
@@ -349,6 +345,10 @@ if (!&same_dn($newdn, $_[0]->{'dn'})) {
 		&error(&text('gsave_emoddn', $rv->error));
 		}
 	$_[1]->{'dn'} = $newdn;
+	}
+local $rv = $ldap->modify($_[1]->{'dn'}, replace => { @attrs });
+if ($rv->code) {
+	&error(&text('gsave_emod', $rv->error));
 	}
 if ($_[0] ne $_[1] && &indexof($_[0], @list_groups_cache) != -1) {
 	# Update old object in cache
