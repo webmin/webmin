@@ -90,11 +90,8 @@ else {
 	} else {
 		$out =~ s/.\010//g;
 		$out =~ s/^(man:\s*)?(re)?formatting.*//i;
-		$out =~ s/&/&amp;/g;
-		$out =~ s/</&lt;/g;
-		$out =~ s/>/&gt;/g;
 		&show_view_table(&text('man_header', $in{'page'}, $in{'sec'}),
-				 "<pre>$out</pre>");
+				 "<pre>".&html_escape($out)."</pre>");
 		}
 	}
 
