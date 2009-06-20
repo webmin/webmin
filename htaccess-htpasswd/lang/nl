@@ -79,6 +79,7 @@ index_md5=MD5 Encryptie is aangezet in de module configuratie, maar de Perl modu
 index_nogroups=Er zijn nog geen groepen gedefinieerd.
 index_none=Er zijn nog geen beschermde directory's gedefinieerd.
 index_nousers=Er zijn nog geen gebruikers gedefinieerd.
+index_remove=Beveiliging Weghalen en Verwijder Files
 index_return=gebruikers en directory's lijst
 index_search=Vind bestaande beschermde directory's onder:
 index_sha1=SHA1 Encryptie is aangezet in de module configuratie, maar de Perl module $1 die hiervoor nodig is, is niet geinstalleerd
