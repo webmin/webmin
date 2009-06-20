@@ -11,6 +11,7 @@ create_force=Forceer initialisatie van RAID?
 create_header=RAID apparaat opties
 create_level=RAID level
 create_lvm=LVM VG $1, LV $2
+create_missing=Huidig ontbrekende disk toevoegen ?
 create_nodisks=Er zijn geen vrije partities beschikbaar voor RAID.
 create_parity=Parity algorithme
 create_pauto=Automatisch
