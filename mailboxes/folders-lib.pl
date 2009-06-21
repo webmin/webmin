@@ -2654,7 +2654,7 @@ if (($cfg->{'html_edit'} == 2 ||
 		$sig =~ s/\n/<br>\n/g;
 		if ($qu && $qm == 0) {
 			# Quoted HTML as cite
-			$quote = "$writer\n".
+			$quote = &html_escape($writer)."\n".
 				 "<blockquote type=cite>\n".
 				 &safe_html($htmlbody->{'data'}).
 				 "</blockquote>".$sig."<br>\n";
@@ -2662,7 +2662,7 @@ if (($cfg->{'html_edit'} == 2 ||
 		elsif ($qu && $qm == 1) {
 			# Quoted HTML below line
 			$quote = "<br>$sig<hr>".
-			         "$writer<br>\n".
+			         &html_escape($writer)."<br>\n".
 				 &safe_html($htmlbody->{'data'});
 			}
 		else {
@@ -2678,7 +2678,7 @@ if (($cfg->{'html_edit'} == 2 ||
 		$pd =~ s/\s+$//g;
 		if ($qu && $qm == 0) {
 			# Quoted plain text as HTML as cite
-			$quote = "$writer\n".
+			$quote = &html_escape($writer)."\n".
 				 "<blockquote type=cite>\n".
 				 "<pre>$pd</pre>".
 				 "</blockquote>".$sig."<br>\n";
@@ -2686,7 +2686,7 @@ if (($cfg->{'html_edit'} == 2 ||
 		elsif ($qu && $qm == 1) {
 			# Quoted plain text as HTML below line
 			$quote = "<br>$sig<hr>".
-				 "$writer<br>\n".
+				 &html_escape($writer)."<br>\n".
 				 "<pre>$pd</pre><br>\n";
 			}
 		else {
