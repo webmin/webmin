@@ -584,3 +584,4 @@ Added the Convert Alias Server page to change an existing alias virtual server i
 Moved the settings for which Webmin modules are available to virtual server owners from the Module Config page to a new section in server templates, so that it can be adjusted on a per-template basis.
 Email to domain owners on virtual server creation can now include variables like $PLAN_NAME, $RESELLER_NAME and $PARENT_DOM.
 When a virtual server is disabled for exceeding its bandwidth limits, all sub-servers will be too. Similarly, they will be re-enabled if the server falls below its limit.
+Added support for migrating cPanel addon domains properly.
