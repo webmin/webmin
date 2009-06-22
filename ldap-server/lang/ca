@@ -31,6 +31,7 @@ connect_elogin=No he pogut entrar al servidor LDAP $1 amb l'usuari $2: $3
 connect_cpan=Pots fer que el mòdul Perl <tt>$1</tt> <a href='$2'>s'instal·li automàticament</a> des de CPAN.
 
 slapd_title=Configuració del Servidor OpenLDAP
+ldif_title=$slapd_title
 slapd_header=Opcions globals del servidor LDAP
 slapd_suffix=DN arrel de la base de dades LDAP
 slapd_rootdn=DN de l'usuari d'administració
@@ -263,6 +264,7 @@ gencert_edest=El directori de destinació no existeix
 perms_err=No he pogut corregit el propietari
 
 acl_slapd=Pot configurar el servidor LDAP
+acl_ldif=$acl_slapd
 acl_schema=Pot gestionar l'esquema
 acl_acl=Pot editar el control d'accés
 acl_browser=Pot explorar i editar la base de dades
@@ -282,6 +284,7 @@ access_read=lectura
 access_write=escriptura
 access_all=tothom
 access_any=Tots els objectes
+access_nodn=Objectes sense DN
 access_lnone=Sense accés
 access_lauth=Autenticació
 access_lcompare=Comparació
