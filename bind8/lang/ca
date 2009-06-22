@@ -277,6 +277,8 @@ edit_espfa='$1' no és un host vàlid per permetre'n l'emissió
 edit_espfmx='$1' no és un nom de domini vàlid per permetre'n l'emissió
 edit_espfip='$1' no és una adreça IP o IP/prefix vàlida per permetre'n l'emissió
 edit_espfinclude='$1' no és un domini addicional vàlid des del qual es pugui enviar correu
+edit_espfredirect='$1' no és un nom de domini alternatiu vàlid
+edit_espfexp='$1' és un nom de registre vàlid per a un missatge de rebuig
 
 text_title=Edició del Fitxer de Registres
 text_title2=Visualització del Fitxer de Registres
@@ -396,6 +398,7 @@ recs_KEY=Clau Pública
 recs_delete=Suprimeix els Seleccionats
 
 value_A1=Adreça
+value_AAAA1=Adreça IPv6
 value_NS1=Servidor de Noms
 value_CNAME1=Nom Real
 value_MX1=Prioritat
@@ -433,6 +436,10 @@ value_spfall2=Desaconsella (~all)
 value_spfall1=Neutral (?all)
 value_spfall0=Permet (+all)
 value_spfalldef=Per defecte
+value_spfredirect=Utilitza un registre SPF d'un domini alternatiu
+value_spfnoredirect=Utilitza el registre d'aquest domini
+value_spfexp=Registre TXT pel al motiu del rebuig
+value_spfnoexp=Cap
 
 warn=Avisa
 fail=Falla
@@ -876,6 +883,7 @@ add_echeck=El servidor $1 no té el mòdul del Servidor DNS BIND.
 add_emissing=El servidor $1 no té BIND configurat adequadament.
 add_eversion=El servidor $1 no està executant la versió de Webmin $2 o superior.
 add_eversion2=El servidor $1 no està executant la versió $2 de Webmin o superior, necessària per afegir zones a més d'una vista
+add_eipaddr=El servidor $1 té una adreça IP en lloc d'un nom de host
 add_ok=He afegit $1, amb $2 zones existents.
 add_eview=Hi falten els noms de la vista
 add_createerr=He configurat $1 amb $2 noves zones esclaves, però he trobat $3 errors :
