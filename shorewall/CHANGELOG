@@ -37,3 +37,5 @@ Comments can now be created and edited in the rules table (and a few others), wh
 Added logging so that changes made using the module show up in the Webmin Actions Log module.
 ---- Changes since 1.390 ----
 Blacklist rules can now match any host.
+---- Changes since 1.480 ----
+Added a button to create a shorewall dump, thanks to a patch by Paul Gear.

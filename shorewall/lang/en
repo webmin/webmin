@@ -15,6 +15,8 @@ index_stop=Stop Firewall
 index_stopdesc=Click this button to shut down Shorewall with the <tt>shorewall stop</tt> command. This will block access from all hosts except those in the When Stopped table.
 index_status=Show Status
 index_statusdesc=Click this button to view Shorewall's tables and rules from the <tt>shorewall status</tt> command.
+index_dump=Show Dump
+index_dumpdesc=Click this button to view Shorewall tracing information from the <tt>shorewall dump</tt> command.
 index_check=Check Firewall
 index_checkdesc=Click this button to have Shorewall validate your firewall configuration with the <tt>shorewall check</tt> command.
 
@@ -36,6 +38,7 @@ start_err=Failed to start firewall
 clear_err=Failed to clear firewall
 stop_err=Failed to shut down firewall
 status_title=Firewall Status
+dump_title=Firewall Dump
 check_title=Check Firewall
 check_ok=.. your firewall configuration looks OK.
 check_failed=.. an error was found in your firewall configuration!

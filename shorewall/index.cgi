@@ -38,7 +38,7 @@ else {
 		# chain in the filter table
 		print &ui_hr();
 		print "<table width=100%>\n";
-		system("iptables -t filter -L shorewall -n >/dev/null 2>&1");
+		system("$config{'shorewall'} status 2>&1");
 		if ($?) {
 		  # Down .. offer to start
 		  # unless no permissions
@@ -90,6 +90,12 @@ else {
 		print "<tr> <td><input type=submit ",
 		      "value='$text{'index_check'}'></td>\n";
 		print "<td>$text{'index_checkdesc'}</td> </tr>\n";
+		print "</form>\n";
+		print "<form action=dump.cgi>\n";
+		print "<tr> <td><input type=submit ",
+		  "value='$text{'index_dump'}'></td>\n";
+		print "<td>$text{'index_dumpdesc'}</td> </tr>\n";
+		print "</form>\n";
 		print "</table>\n";
 		}
 	}
