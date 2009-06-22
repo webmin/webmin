@@ -64,6 +64,7 @@ poll_postconnect=Ordre a executar després de connectar
 poll_ecannot=No tens permís per editar la configuració fetchmail d'aquest usuari
 poll_efile=Només es poden editar fitxers de configuració fetchmail d'usuaris
 poll_eusername=L'usuari no existeix!
+poll_foruser=Per a l'usuari $1
 
 stop_err=No he pogut aturar el fetchmail
 stop_ecannot=No tens permís per aturar fetchmail
