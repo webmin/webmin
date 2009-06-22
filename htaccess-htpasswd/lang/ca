@@ -15,6 +15,7 @@ index_sha1=El xifratge SHA1 està activat a la configuració del mòdul, però el mò
 index_digest2=El xifratge de resums està activat a la configuració del mòdul, però l'ordre $1 o el mòdul Perl $2 necessaris no estan instal·lats.
 index_cpan=Fes clic <a href='$1'>aquí</a> per descarregar-lo i instal·lar-lo ara.
 index_delete=Desprotegeix els Directoris Seleccionats
+index_remove=Desprotegeix i Elimina els Fitxers
 
 dir_title1=Addició de Directori Protegit
 dir_title2=Edició de Directori Protegit
