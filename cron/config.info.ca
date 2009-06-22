@@ -8,6 +8,7 @@ match_mode=Busca els processos dels treballs per,1,1-Només l'ordre,0-L'ordre i e
 match_user=Fes coincidir els noms d'usuaris en buscar processos de treballs,1,1-Sí,0-No
 kill_subs=Mata els subprocessos en matar els treballs,1,1-Sí,0-No
 hourly_only=Permet només que els treballs siguin com a molt per hores,1,0-No,1-Sí
+add_file=Afegeix treballs nous al fitxer,3,Fitxer <tt>crontab</tt> regular de l'usuari
 line2=Configuració del sistema,11
 cron_dir=Directori de crontab,0
 cron_get_command=Ordre per llegir el treball cron d'un usuari,0
