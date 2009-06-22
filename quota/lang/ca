@@ -20,6 +20,7 @@ acl_gnone=Cap grup
 acl_gonly=Només els grups
 acl_gexcept=Tots excepte els grups
 acl_uuid=Usuaris amb UID en el rang
+acl_ggid=Grups amb GID en el rang
 acl_maxblocks=Quota màxima de blocs concedible
 acl_maxfiles=Quota màxima de fitxers concedible
 acl_unlimited=Il·limitada
