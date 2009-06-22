@@ -16,6 +16,7 @@ index_mailaddr=Envia les notificacions a
 index_mailaddrnone=No enviïs
 index_mailfrom=Adreça From: de les notificacions
 index_mailfromnone=Per defecte (<tt>root</tt>)
+create_missing=Inclou el disc que falta actualment
 index_program=Ordre a executar quen es detecta un problema
 index_programnone=No n'executis cap
 index_monitor=Monitorització activada
