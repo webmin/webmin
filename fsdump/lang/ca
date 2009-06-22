@@ -195,6 +195,7 @@ log_delete=He suprimit la configuració de còpia de $1
 log_backup=He copiat $1 a $2
 log_bgbackup=He iniciat la còpia de $1 a $2
 log_restore=He restaurat la còpia de $1
+log_kill=He acabat la còpia de $1
 
 kill_err=No he pogut acabar la còpia
 kill_egone=Ja no està en execució!
