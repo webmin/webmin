@@ -119,3 +119,5 @@ Added an UTF-8 encoding of the Russian translation, thanks to shavlukov@gmail.co
 French translation updates by ButterflyOfFire.
 Dutch translation updates by Gandyman.
 Dramatically improved Webmin's search function, to include links to pages that help or UI text comes from. Also changed the layout of results to a more Webmin-ish style.
+---- Changes since 1.480 ----
+Catalan translation updates by Jaume Badiella.
