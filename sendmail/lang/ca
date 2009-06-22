@@ -159,7 +159,7 @@ adelete_ecannot=No tens permís per suprimir l'àlies $1
 cws_title=Dominis Locals
 cws_ecannot=No tens permís per editar els dominis locals
 cws_domains=Dominis gestionats per aquest servidor
-cws_desc1=Apart del correu a $1, sendmail només acceptarà el lliurament local per als dominis i noms de host llistats a la caixa de text de l'esquerra. Si vols que el servidor de correu gestioni dominis de correu múltiples, han d'estar tots llistats en aquest formulari.
+cws_desc1=Apart del correu a $1, sendmail només acceptarà el lliurament local per als dominis i noms de host llistats a la caixa de text de sota. Si vols que el servidor de correu gestioni dominis de correu múltiples, han d'estar tots llistats en aquest formulari.
 cws_desc2=Tingues en compte que el sol fet d'incloure un domini a la llista, normalment no n'hi ha prou. Has d'assegurar també que hi ha algun registre DNS d'aquest domini, i que apunta al teu sistema.
 cws_err=No he pogut desar els dominis locals
 cws_ehost='$1' no és un nom de host o de domini vàlid
@@ -170,7 +170,7 @@ masq_ecannot=No tens permís per configurar l'emmascarament
 masq_domain=Emmascara com a domini
 masq_domains=Dominis per emmascarar
 masq_ndomains=Dominis que no s'han d'emmascarar
-masq_desc1=Si es dóna un domini aquí sobre, el sendmail alterarà l'adreça <tt>From</tt> de tots els missatges sortints de manera que sembli que provenen d'aquest domini. A més a més, tots els missatges que passin a través del sistema des d'un dels hosts o dominis llistats a l'esquerra, també tindran la seva adreça <tt>From</tt> modificada de la mateixa forma. Tingues en compte que tot emmascarament de dominis definida aquí es pot redefinir per a usuaris específics fent servir la pàgina <a href='$1'>Adreces de Sortida</a>.
+masq_desc1=Si es dóna un domini aquí sobre, el sendmail alterarà l'adreça <tt>From</tt> de tots els missatges sortints de manera que sembli que provenen d'aquest domini. A més a més, tots els missatges que passin a través del sistema des d'un dels hosts o dominis llistats a sota, també tindran la seva adreça <tt>From</tt> modificada de la mateixa forma. Tingues en compte que tot emmascarament de dominis definida aquí es pot redefinir per a usuaris específics fent servir la pàgina <a href='$1'>Adreces de Sortida</a>.
 masq_desc2=Aquesta característica pot ser útil si vols que el correu del teu sistema aparenti venir del nom del domini, més que no pas del nom del host, o bé si el teu sistema és el concentrador de correu d'un cert nombre d'altres hosts que executen els seus propis servidors de correu.
 masq_err=No he pogut desar l'emmascarament del domini
 masq_edomain='$1' no és un nom de domini vàlid per a un emmascarament
@@ -180,7 +180,7 @@ masq_eip='$1' és una adreça IP, no un domini
 trusts_title=Usuaris Fiables
 trusts_ecannot=No tens permís per editar els usuaris fiables
 trusts_users=Usuaris locals fiables de sendmail
-trusts_desc=Si un usuari local prova d'enviar correu, el sendmail només li permetrà de donar una adreça <tt>From:</tt> diferent si l'usuari és a la llista de l'esquerra. Aquesta restricció existeix per evitar que els usuaris falsifiquin correu amb adreces <tt>From:</tt> simulades des del teu sistema.
+trusts_desc=Si un usuari local prova d'enviar correu, el sendmail només li permetrà de donar una adreça <tt>From:</tt> diferent si l'usuari és a la llista de sota. Aquesta restricció existeix per evitar que els usuaris falsifiquin correu amb adreces <tt>From:</tt> simulades des del teu sistema.
 trusts_err=No he pogut desar els usuaris fiables
 trusts_euser='$1' no és un usuari vàlid
 
@@ -202,8 +202,8 @@ virtusers_toomany=Hi ha massa mapejats d'adreces al sistema com per mostrar-los 
 virtusers_go=Busca mapejats d'adreces que coincideixin amb:
 virtusers_delete=Suprimeix els Mapejats d'Adreces Seleccionats
 
-vform_edit=Edició de Mapejat
-vform_create=Creació de Mapejat
+vform_edit=Edició de Mapejat d'Adreces
+vform_create=Creació de Mapejat d'Adreces
 vform_for=Correu de
 vform_address=Adreça
 vform_domain=Domini
@@ -319,7 +319,7 @@ gdelete_ecannot=No tens permís per suprimir el mapejat de $1
 cgs_title=Dominis de Sortida
 cgs_ecannot=No tens permís per editar dominis de sortida
 cgs_header=Adreces de sortida de dominis
-cgs_desc=A part del correu enviat pels usuaris locals, el sendmail mapejarà les <a href='$1'>adreces de sortida</a> només per al correu provinent dels hosts i dominis llistats a la caixa de text de la dreta. Així, per tal que una entrada d'adreça de sortida funcioni, el domini de l'adreça origen ha d'estar inclòs en aquesta llista.
+cgs_desc=A part del correu enviat pels usuaris locals, el sendmail mapejarà les <a href='$1'>adreces de sortida</a> només per al correu provinent dels hosts i dominis llistats a la caixa de text de sota. Així, per tal que una entrada d'adreça de sortida funcioni, el domini de l'adreça origen ha d'estar inclòs en aquesta llista.
 cgs_err=No he pogut desar els dominis de sortida
 cgs_ehost='$1' no és un nom vàlid de host ni de domini
 cgs_eip='$1' és una adreça IP, no un domini
@@ -400,7 +400,7 @@ relay_title=Dominis de Reemissió
 relay_ecannot=No tens permís per editar dominis de reemissió
 relay_eversion=La característica de dominis de reemissió només està suportada pel sendmail versió 8.9 i posteriors.
 relay_domains=Dominis pels quals la reemissió està permesa
-relay_desc1=A menys que estigui permès per les regles de <a href='$1'>control de <i>spam</i></a>, el sendmail només permetrà la reemissió dels dominis llistats a la caixa de text de l'esquerra. Els missatges d'entrada que no són per a un usuari local ni per a un dels dominis llistats, serà rebutjat.
+relay_desc1=A menys que estigui permès per les regles de <a href='$1'>control de <i>spam</i></a>, el sendmail només permetrà la reemissió dels dominis llistats a la caixa de text de sota. Els missatges d'entrada que no són per a un usuari local ni per a un dels dominis llistats, serà rebutjat.
 relay_desc2=Si el sistema està fent de portal de diferents dominis que no són directament accessibles des de fora de la xarxa local (fent servir la característica d'<a href='$1'>encaminament de dominis</a>), llavors tots aquests dominis haurien d'estar llistats aquí.
 relay_err=No he pogut desar els dominis de reemissió
 relay_edomain='$1' no és un nom de domini vàlid
