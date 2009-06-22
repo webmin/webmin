@@ -110,6 +110,7 @@ ldap_econf=No s'ha trobat al sistema el fitxer $1 de configuració del client LDA
 
 ldap_emodule=El mòdul Perl $1 necessari per parlar amb el servidor LDAP no està instal·lat. Fes clic <a href='$2'>aquí</a> per fer que Webmin el descarregui i l'instal·li ara.
 ldap_econn=No he pogut connectar amb el servidor LDAP $1 al port $2
+ldap_econn2=iNo he pogut connectar amb el servidor LDAP $1 al port $2: $3
 ldap_elogin=No he pogut lligar el servidor LDAP $1 com a $2: $3
 ldap_anon=anònim
 ldap_eparse=No he pogut analitzar l'URI $1 del servidor LDAP
