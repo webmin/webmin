@@ -870,6 +870,7 @@ mysql_equery=No he pogut consultar la taula $1: $2
 mysql_eadd=La inserció SQL ha fallat: $1
 mysql_edelete=La supressió SQL ha fallat: $1
 mysql_eupdate=L'actualització SQL ha fallat: $1
+mysql_elist=La consulta SQL ha fallat: $1
 mysql_esource=No s'ha trobat cap origen MySQL anomenat $1
 mysql_eneed=No s'ha trobat el paràmetre de configuració $1 de MySQL. Webmin  el necessita per saber quina taula i quins camps cal consultar.
  
