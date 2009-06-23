@@ -2,7 +2,6 @@
 # dump.cgi
 # Show a shorewall dump
 
-
 require './shorewall-lib.pl';
 &ui_print_header(undef, $text{'dump_title'}, "");
 print "<font size=-1><pre>";
