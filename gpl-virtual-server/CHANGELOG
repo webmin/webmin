@@ -585,3 +585,5 @@ Moved the settings for which Webmin modules are available to virtual server owne
 Email to domain owners on virtual server creation can now include variables like $PLAN_NAME, $RESELLER_NAME and $PARENT_DOM.
 When a virtual server is disabled for exceeding its bandwidth limits, all sub-servers will be too. Similarly, they will be re-enabled if the server falls below its limit.
 Added support for migrating cPanel addon domains properly.
+Added a template option to disable addition of also-notify and allow-transfer blocks to new DNS domains.
+LXadmin backups can now be migrated into Virtualmin servers, preserving web content, databases, mailboxes and mail aliases.
