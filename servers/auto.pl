@@ -44,7 +44,7 @@ if ($debug) {
 if ($debug) {
 	foreach $f (@$found) {
 		$added = $addmods->{$f->{'id'}};
-		print "On $f->{'host'} added $added->[0] ",
+		print "On $f->{'host'} added $added->[0]->{'host'} ",
 		      ($added->[1] ? "OK" : "FAILED")," ",
 		      $added->[2],"\n";
 		}
@@ -95,6 +95,7 @@ if ($config{'auto_remove'}) {
 
 sub send_auto_email
 {
+local ($subject, $body) = @_;
 &mailboxes::send_text_mail(&mailboxes::get_from_address(),
 			   $config{'auto_email'},
 			   undef,
