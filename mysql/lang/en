@@ -562,6 +562,7 @@ acl_edonly=Can only edit table data?
 acl_bnone=Disallow backups
 acl_indexes=Can view and manage indexes?
 acl_views=Can view and manage views?
+acl_files=Can execute SQL from local files?
 
 log_start=Started MySQL server
 log_stop=Stopped MySQL server

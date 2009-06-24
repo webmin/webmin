@@ -891,7 +891,7 @@ if (@auto) {
 return @sql;
 }
 
-# execute_sql_file(database, file, [user, pass])
+# execute_sql_file(database, file, [user, pass], [unix-user])
 # Executes some file of SQL commands, and returns the exit status and output
 sub execute_sql_file
 {
@@ -902,6 +902,10 @@ local ($db, $file, $user, $pass) = @_;
 local $authstr = &make_authstr($user, $pass);
 local $cmd = "$config{'mysql'} $authstr -t ".quotemeta($db)." <".quotemeta($file);
 -r $file || return (1, "$file does not exist");
+if ($_[4] && $_[4] ne 'root' && $< == 0) {
+	# Restoring as a Unix user
+	$cmd = &command_as_user($_[4], 0, $cmd);
+	}
 local $out = &backquote_logged("$cmd 2>&1");
 local @rv = ($?, $? ? $out || "$cmd failed" : $out);
 &make_authstr();	# Put back old password environment variable

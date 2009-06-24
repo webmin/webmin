@@ -64,7 +64,8 @@ while(<SQL>) {
 close(SQL);
 
 print "<pre>";
-($ex, $out) = &execute_sql_file($in{'db'}, $file);
+($ex, $out) = &execute_sql_file($in{'db'}, $file,
+				undef, undef, $access{'buser'});
 print &html_escape($out);
 $got++ if ($out =~ /\S/);
 print "<i>$text{'exec_noout'}</i>\n" if (!$got);

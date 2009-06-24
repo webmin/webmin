@@ -29,10 +29,10 @@ else {
 	print &text('import_fileout', "<tt>$in{'file'}</tt>"),"<p>\n";
 	}
 
-# Execute the import command ..
+# Build the import command
 if ($in{'table'}) {
 	$nfile = &transname("$in{'table'}.txt");
-	system("cp $file $nfile");
+	&copy_source_dest($file, $nfile);
 	unlink($file) if ($need_unlink);
 	$file = $nfile;
 	$need_unlink = 1;
@@ -45,9 +45,15 @@ if ($in{'format'} == 0) {
 elsif ($in{'format'} == 1) {
 	$format = "--fields-terminated-by ,";
 	}
+
+# Execute the import command ..
 print "<pre>";
 &additional_log('exec', undef, "$config{'mysqlimport'} $authstr $delete $ignore $format $in{'db'} $file");
-&open_execute_command(SQL, "$config{'mysqlimport'} $authstr $delete $ignore $format ".quotemeta($in{'db'})." $file 2>&1", 1, 0);
+$cmd = "$config{'mysqlimport'} $authstr $delete $ignore $format ".quotemeta($in{'db'})." ".quotemeta($file);
+if ($access{'buser'} && $access{'buser'} ne 'root' && $< == 0) {
+	$cmd = &command_as_user($access{'buser'}, 0, $cmd);
+	}
+&open_execute_command(SQL, $cmd, 2, 0);
 while(<SQL>) {
 	print &html_escape($_);
 	$got++ if (/\S/);
