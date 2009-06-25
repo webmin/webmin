@@ -20,8 +20,7 @@ if (&supports_auto_whitelist() == 2) {
 
 	if (!$in{'user'}) {
 		# Can't do any more
-		&ui_print_footer("", $text{'index_return'});
-		return;
+		goto BUTTONS;
 		}
 	}
 
@@ -108,6 +107,7 @@ else {
 &close_auto_whitelist_dbm();
 
 # Show delete buttons
+BUTTONS:
 print &ui_hr();
 print &ui_buttons_start();
 if ($in{'user'} || &supports_auto_whitelist() == 1) {
