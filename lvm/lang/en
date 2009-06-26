@@ -123,6 +123,7 @@ pv_header=Physical volume details
 pv_device=Disk device
 pv_other=Other device..
 pv_alloc=Enabled for allocation?
+pv_force=Force addition of volume?
 pv_size=Disk size
 pv_petotal=Blocks allocated
 pv_petotal2=Size allocated

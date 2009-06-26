@@ -43,7 +43,7 @@ else {
 			-r $in{'other'} || &error($text{'pv_eother'});
 			$pv->{'device'} = $in{'other'};
 			}
-		$err = &create_physical_volume($pv);
+		$err = &create_physical_volume($pv, $in{'force'});
 		&error("<pre>$err</pre>") if ($err);
 		}
 

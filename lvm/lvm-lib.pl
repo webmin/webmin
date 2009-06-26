@@ -85,7 +85,7 @@ return @rv;
 sub get_physical_volume_usage
 {
 local @rv;
-open(DISPLAY, "pvdisplay -v $_[0]->{'device'} |");
+open(DISPLAY, "pvdisplay -v ".quotemeta($_[0]->{'device'})." |");
 local $started;
 while(<DISPLAY>) {
 	if (/^\s*LV\s+Name/i) {
@@ -102,13 +102,14 @@ close(DISPLAY);
 return @rv;
 }
 
-# create_physical_volume(&pv)
+# create_physical_volume(&pv, [force])
 sub create_physical_volume
 {
-local $cmd = "pvcreate -f -y '$_[0]->{'device'}'";
+local $cmd = "pvcreate -y ".($_[1] ? "-ff " : "-f ");
+$cmd .= quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $out if ($?);
-$cmd = "vgextend '$_[0]->{'vg'}' '$_[0]->{'device'}'";
+$cmd = "vgextend ".quotemeta($_[0]->{'vg'})." ".quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -116,7 +117,8 @@ return $? ? $out : undef;
 # change_physical_volume(&pv)
 sub change_physical_volume
 {
-local $cmd = "pvchange -x $_[0]->{'alloc'} '$_[0]->{'device'}'";
+local $cmd = "pvchange -x ".quotemeta($_[0]->{'alloc'}).
+	     " ".quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -127,15 +129,16 @@ sub delete_physical_volume
 if ($_[0]->{'pe_alloc'}) {
 	local $cmd;
 	if (&get_lvm_version() >= 2) {
-		$cmd = "yes | pvmove '$_[0]->{'device'}'";
+		$cmd = "yes | pvmove ".quotemeta($_[0]->{'device'});
 		}
 	else {
-		$cmd = "pvmove -f '$_[0]->{'device'}'";
+		$cmd = "pvmove -f ".quotemeta($_[0]->{'device'});
 		}
 	local $out = &backquote_logged("$cmd 2>&1");
 	return $out if ($? && $out !~ /\-\-\s+f/);
 	}
-local $cmd = "vgreduce '$_[0]->{'vg'}' '$_[0]->{'device'}'";
+local $cmd = "vgreduce ".quotemeta($_[0]->{'vg'})." ".
+	     quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -202,10 +205,10 @@ return $n*(uc($u) eq "KB" ? 1 :
 # delete_volume_group(&vg)
 sub delete_volume_group
 {
-local $cmd = "vgchange -a n '$_[0]->{'name'}'";
+local $cmd = "vgchange -a n ".quotemeta($_[0]->{'name'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $out if ($?);
-$cmd = "vgremove '$_[0]->{'name'}'";
+$cmd = "vgremove ".quotemeta($_[0]->{'name'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -214,12 +217,12 @@ return $? ? $out : undef;
 sub create_volume_group
 {
 &system_logged("vgscan >/dev/null 2>&1 </dev/null");
-local $cmd = "pvcreate -f -y '$_[1]'";
+local $cmd = "pvcreate -f -y ".quotemeta($_[1]);
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $out if ($?);
 $cmd = "vgcreate";
-$cmd .= " -s $_[0]->{'pe_size'}k" if ($_[0]->{'pe_size'});
-$cmd .= " '$_[0]->{'name'}' '$_[1]'";
+$cmd .= " -s ".quotemeta($_[0]->{'pe_size'})."k" if ($_[0]->{'pe_size'});
+$cmd .= " ".quotemeta($_[0]->{'name'})." ".quotemeta($_[1]);
 $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -227,13 +230,13 @@ return $? ? $out : undef;
 # rename_volume_group(&vg, name)
 sub rename_volume_group
 {
-local $cmd = "vgrename '$_[0]->{'name'}' '$_[1]'";
+local $cmd = "vgrename ".quotemeta($_[0]->{'name'})." ".quotemeta($_[1]);
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $out if ($?);
-$cmd = "vgchange -a n '$_[1]'";
+$cmd = "vgchange -a n ".quotemeta($_[1]);
 $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $out if ($?);
-$cmd = "vgchange -a y '$_[1]'";
+$cmd = "vgchange -a y ".quotemeta($_[1]);
 $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -331,7 +334,7 @@ sub get_logical_volume_usage
 local @rv;
 if (&get_lvm_version() >= 2) {
 	# LVdisplay has new format in version 2
-	open(DISPLAY, "lvdisplay -m $_[0]->{'device'} |");
+	open(DISPLAY, "lvdisplay -m ".quotemeta($_[0]->{'device'})." |");
 	while(<DISPLAY>) {
 		if (/\s+Physical\s+volume\s+\/dev\/(\S+)/) {
 			push(@rv, [ $1, undef ]);
@@ -344,7 +347,7 @@ if (&get_lvm_version() >= 2) {
 	}
 else {
 	# Old version 1 format
-	open(DISPLAY, "lvdisplay -v $_[0]->{'device'} |");
+	open(DISPLAY, "lvdisplay -v ".quotemeta($_[0]->{'device'})." |");
 	local $started;
 	while(<DISPLAY>) {
 		if (/^\s*PV\s+Name/i) {
@@ -365,26 +368,26 @@ return @rv;
 # create_logical_volume(&lv)
 sub create_logical_volume
 {
-local $cmd = "lvcreate -n$_[0]->{'name'} ";
+local $cmd = "lvcreate -n".quotemeta($_[0]->{'name'})." ";
 local $suffix;
 if ($_[0]->{'size_of'} eq 'VG' || $_[0]->{'size_of'} eq 'FREE') {
-	$cmd .= "-l $_[0]->{'size'}%$_[0]->{'size_of'}";
+	$cmd .= "-l ".quotemeta("$_[0]->{'size'}%$_[0]->{'size_of'}");
 	}
 elsif ($_[0]->{'size_of'}) {
 	$cmd .= "-l $_[0]->{'size'}%PVS";
-	$suffix = " /dev/".$_[0]->{'size_of'};
+	$suffix = " ".quotemeta("/dev/".$_[0]->{'size_of'});
 	}
 else {
 	$cmd .= "-L$_[0]->{'size'}k";
 	}
 if ($_[0]->{'is_snap'}) {
-	$cmd .= " -s '/dev/$_[0]->{'vg'}/$_[0]->{'snapof'}'";
+	$cmd .= " -s ".quotemeta("/dev/$_[0]->{'vg'}/$_[0]->{'snapof'}");
 	}
 else {
-	$cmd .= " -p $_[0]->{'perm'}";
-	$cmd .= " -C $_[0]->{'alloc'}";
-	$cmd .= " -i $_[0]->{'stripe'}" if ($_[0]->{'stripe'});
-	$cmd .= " $_[0]->{'vg'}";
+	$cmd .= " -p ".quotemeta($_[0]->{'perm'});
+	$cmd .= " -C ".quotemeta($_[0]->{'alloc'});
+	$cmd .= " -i ".quotemeta($_[0]->{'stripe'}) if ($_[0]->{'stripe'});
+	$cmd .= " ".quotemeta($_[0]->{'vg'});
 	}
 $cmd .= $suffix;
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
@@ -394,7 +397,7 @@ return $? ? $out : undef;
 # delete_logical_volume(&lv)
 sub delete_logical_volume
 {
-local $cmd = "lvremove -f '$_[0]->{'device'}'";
+local $cmd = "lvremove -f ".quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -403,8 +406,8 @@ return $? ? $out : undef;
 sub resize_logical_volume
 {
 local $cmd = $_[1] > $_[0]->{'size'} ? "lvextend" : "lvreduce -f";
-$cmd .= " -L$_[1]k";
-$cmd .= " '$_[0]->{'device'}'";
+$cmd .= " -L".quotemeta($_[1])."k";
+$cmd .= " ".quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -413,9 +416,9 @@ return $? ? $out : undef;
 sub change_logical_volume
 {
 local $cmd = "lvchange ";
-$cmd .= " -p $_[0]->{'perm'}";
-$cmd .= " -C $_[0]->{'alloc'}";
-$cmd .= " '$_[0]->{'device'}'";
+$cmd .= " -p ".quotemeta($_[0]->{'perm'});
+$cmd .= " -C ".quotemeta($_[0]->{'alloc'});
+$cmd .= " ".quotemeta($_[0]->{'device'});
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -423,7 +426,8 @@ return $? ? $out : undef;
 # rename_logical_volume(&lv, name)
 sub rename_logical_volume
 {
-local $cmd = "lvrename '$_[0]->{'device'}' '/dev/$_[0]->{'vg'}/$_[1]'";
+local $cmd = "lvrename ".quotemeta($_[0]->{'device'})." ".
+	     quotemeta("/dev/$_[0]->{'vg'}/$_[1]");
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
@@ -467,7 +471,8 @@ if ($_[1] eq "ext2" || $_[1] eq "ext3") {
 	&foreign_require("proc");
 	if (&has_command("e2fsadm")) {
 		# The e2fsadm command can re-size an LVM and filesystem together
-		local $cmd = "e2fsadm -v -L $_[2]k '$_[0]->{'device'}'";
+		local $cmd = "e2fsadm -v -L ".quotemeta($_[2])."k ".
+			     quotemeta($_[0]->{'device'});
 		local ($fh, $fpid) = &proc::pty_process_exec($cmd);
 		print $fh "yes\n";
 		local $out;
@@ -485,13 +490,16 @@ if ($_[1] eq "ext2" || $_[1] eq "ext3") {
 			local $err = &resize_logical_volume($_[0], $_[2]);
 			return $err if ($err);
 
-			local $cmd = "resize2fs -f '$_[0]->{'device'}'";
+			local $cmd = "resize2fs -f ".
+				     quotemeta($_[0]->{'device'});
 			local $out = &backquote_logged("$cmd 2>&1");
 			return $? ? $out : undef;
 			}
 		else {
 			# Need to shrink filesystem first, then LV
-			local $cmd = "resize2fs -f '$_[0]->{'device'}' $_[2]k";
+			local $cmd = "resize2fs -f ".
+				     quotemeta($_[0]->{'device'})." ".
+				     quotemeta($_[2])."k";
 			local $out = &backquote_logged("$cmd 2>&1");
 			return $out if ($?);
 
@@ -515,7 +523,7 @@ elsif ($_[1] eq "xfs") {
 		}
 	$mount || return "Mount not found";
 	&mount::mount_dir(@$mount);
-	local $cmd = "xfs_growfs '$mount->[0]'";
+	local $cmd = "xfs_growfs ".quotemeta($mount->[0]);
 	local $out = &backquote_logged("$cmd 2>&1");
 	local $q = $?;
 	&mount::unmount_dir(@$mount);
@@ -528,13 +536,14 @@ elsif ($_[1] eq "reiserfs") {
 		return $err if ($err);
 
 		# Now enlarge the reiserfs filesystem
-		local $cmd = "resize_reiserfs '$_[0]->{'device'}'";
+		local $cmd = "resize_reiserfs ".quotemeta($_[0]->{'device'});
 		local $out = &backquote_logged("$cmd 2>&1");
 		return $? ? $out : undef;
 		}
 	else {
 		# Try to shrink the filesystem
-		local $cmd = "yes | resize_reiserfs -s $_[2]K '$_[0]->{'device'}'";
+		local $cmd = "yes | resize_reiserfs -s ".
+			     quotemeta($_[2])."K ".quotemeta($_[0]->{'device'});
 		local $out = &backquote_logged("$cmd 2>&1");
 		return $out if ($?);
 

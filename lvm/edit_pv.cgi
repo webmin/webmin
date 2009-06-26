@@ -61,6 +61,11 @@ if ($in{'pv'}) {
 		print &ui_table_row($text{'pv_lvs'}, join(" , ", @lvlist), 3);
 		}
 	}
+else {
+	# Force creation?
+	print &ui_table_row($text{'pv_force'},
+		&ui_yesno_radio('force', 0), 3);
+	}
 
 print &ui_table_end();
 if ($in{'pv'}) {

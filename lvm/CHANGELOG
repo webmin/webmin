@@ -17,3 +17,6 @@ Filesystem space used is show on the logical volume list, and the field for a ne
 When using newer versions of the resize2fs command, EXT filesystems can be shrunk as well as enlarged.
 ---- Changes since 1.470 ----
 When creating a logical volume, size can now be specified as a fraction of the volume group size, free space, or free space on some physical volume.
+---- Changes since 1.480 ----
+Added an option to force addition of a physical volume to a group.
+Cleaned up code to use quotemeta instead of manual quoting.
