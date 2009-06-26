@@ -22,3 +22,5 @@ Autoreply messages containing non-ASCII characters are now properly quoted-print
 ---- Changes since 1.400 ----
 Filters that deliver to mbox-format folders now have locking enabled.
 Creation of filters that match headers is now less error-prone, due to a new menu for selecting if it should match the start, end or any part of the header.
+---- Changes since 1.410 ----
+When an autoreply is deleted, the underlying message file is deleted too.

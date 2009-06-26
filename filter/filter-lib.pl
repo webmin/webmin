@@ -282,6 +282,9 @@ sub delete_filter
 local ($filter) = @_;
 &procmail::delete_recipe($filter->{'recipe'});
 &setup_forward_procmail();
+if ($filter->{'actionreply'} && !-d $filter->{'actionreply'}) {
+	&unlink_file($filter->{'actionreply'});
+	}
 }
 
 # swap_filters(&filter1, &filter2)
