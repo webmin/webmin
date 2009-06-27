@@ -8,6 +8,7 @@ match_mode=Zoek job processen met,1,1-Alleen opdracht,0-Opdracht en argumenten
 match_user=Zoek op gebruikersnaam bij het zoeken naar job processen?,1,1-Ja,0-Nee
 kill_subs=Subprocessen Killen bij het beeindigen van jobs?,1,1-Ja,0-Nee
 hourly_only=Alleen jobs toestaan die per uur lopen?,1,0-Nee,1-Ja
+add_file=Voeg nieuwe jobs toe aan file,3,Gebruikers regulaire crontab file
 line2=Systeem configuratie,11
 cron_dir=Crontab Directory,0
 cron_get_command=Opdracht voor het lezen van een gebruikers cron job,0
