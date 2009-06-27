@@ -45,7 +45,7 @@ if (&foreign_installed("sshd")) {
 	$conf = &sshd::get_sshd_config();
 	$ssh_port = &sshd::find_value("Port", $conf);
 	}
-$ssh_port ||= 2;
+$ssh_port ||= 22;
 
 if ($in{'auto'}) {
 	@tables = &get_iptables_save();
