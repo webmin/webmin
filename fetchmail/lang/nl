@@ -95,6 +95,7 @@ poll_euser=Ontbrekende of ongeldige niet locale gebruikersnaam
 poll_eusername=Gebruiker bestaat niet!
 poll_evia=Ongeldige mail server naam
 poll_fetchall=Altijd alle berichten ophalen?
+poll_foruser=Voor gebruiker $1
 poll_header=Mail server opties
 poll_interface=Kontroleer conditie
 poll_interface_def=Altijd kontroleren
