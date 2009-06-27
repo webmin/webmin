@@ -492,6 +492,7 @@ match_to=Naar: komt overeen
 mysql_eadd=SQL invoegen mislukt : $1
 mysql_ecfile=MySQL configuratie file $1 is niet gevonden
 mysql_edelete=SQL verwijderen mislukt : $1
+mysql_elist=SQL wachtrij mislukte : $1
 mysql_elogin=Mislukt in te loggen bij de database $1 : $2.
 mysql_emysql=Mislukt om de database driver $1 te laden
 mysql_eneed=De MySQL configuratie parameter $1 is niet gevonden. Webmin heeft dit nodig om uit te zoeken welke tabel en veld in de wachtrij moeten.
