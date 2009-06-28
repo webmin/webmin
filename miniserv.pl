@@ -287,31 +287,33 @@ if ($config{'extauth'}) {
 	}
 
 # Pre-load any libraries
-foreach $pl (split(/\s+/, $config{'preload'})) {
-	($pkg, $lib) = split(/=/, $pl);
-	$pkg =~ s/[^A-Za-z0-9]/_/g;
-	eval "package $pkg; do '$config{'root'}/$lib'";
-	if ($@) {
-		print STDERR "Failed to pre-load $lib in $pkg : $@\n";
+if (!$config{'inetd'}) {
+	foreach $pl (split(/\s+/, $config{'preload'})) {
+		($pkg, $lib) = split(/=/, $pl);
+		$pkg =~ s/[^A-Za-z0-9]/_/g;
+		eval "package $pkg; do '$config{'root'}/$lib'";
+		if ($@) {
+			print STDERR "Failed to pre-load $lib in $pkg : $@\n";
+			}
+		else {
+			print STDERR "Pre-loaded $lib in $pkg\n";
+			}
 		}
-	else {
-		print STDERR "Pre-loaded $lib in $pkg\n";
-		}
-	}
-foreach $pl (split(/\s+/, $config{'premodules'})) {
-	if ($pl =~ /\//) {
-		($dir, $mod) = split(/\//, $pl);
-		}
-	else {
-		($dir, $mod) = (undef, $pl);
-		}
-	push(@INC, "$config{'root'}/$dir");
-	eval "package $mod; use $mod ()";
-	if ($@) {
-		print STDERR "Failed to pre-load $mod : $@\n";
-		}
-	else {
-		print STDERR "Pre-loaded $mod\n";
+	foreach $pl (split(/\s+/, $config{'premodules'})) {
+		if ($pl =~ /\//) {
+			($dir, $mod) = split(/\//, $pl);
+			}
+		else {
+			($dir, $mod) = (undef, $pl);
+			}
+		push(@INC, "$config{'root'}/$dir");
+		eval "package $mod; use $mod ()";
+		if ($@) {
+			print STDERR "Failed to pre-load $mod : $@\n";
+			}
+		else {
+			print STDERR "Pre-loaded $mod\n";
+			}
 		}
 	}
 
