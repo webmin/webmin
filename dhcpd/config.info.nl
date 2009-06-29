@@ -8,6 +8,7 @@ show_mac=Laat MAC adressen zien voor hosts?,1,1-Ja,0-Nee
 group_name=Laat groep namen zien als,1,1-<tt>domein&#45;naam</tt> optie,0-Naam of Lid van,2-Omschrijving
 desc_name=Laat andere object omschrijvingen zien in plaats van namen?,1,1-Ja,0-Nee
 display_max=Maximum aantal subnets en hosts om te laten zien,3,Ongelimiteerd
+add_file=Toevoegen nieuwe subnetten&#44; host en groepen aan file,3,Hoofd configuratie file
 line2=Systeem configuratie,11
 dhcpd_conf=DHCP server config file,0
 dhcpd_path=DHCP server executable,0
