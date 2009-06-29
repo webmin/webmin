@@ -4,6 +4,7 @@ user_files=Kopieer files in de nieuwe home directory's van,9,40,3
 home_base=Automatische home directory basis,3,Niet ingesteld
 real_base=Echte home directory basis,3,Zelfde als hierboven
 home_style=Automatische home directory stijl,4,0-home/gebruikersnaam,1-home/u/gebruikersnaam,2-home/u/us/gebruikersnaam,3-home/u/s/gebruikersnaam,4-Alleen basis directory,5-home/primaire groep/gebruikersnaam
+selinux_con=SELinux inhoud voor nieuwe home directory's,3,Geen
 line2=Nieuwe gebruiker opties,11
 base_uid=Laagste UID voor nieuwe gebruikers,0,5
 base_gid=Laagste GID voor nieuwe groepen,0,5
