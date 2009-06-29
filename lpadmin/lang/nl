@@ -124,9 +124,9 @@ index_enabled=Ingeschakeld?
 index_esystem=Installeer de software voor uw gekozen afdruk systeem, of gebruik de <a href='$1'>module configuratie</a> om het systeem te wijzigen.
 index_header=Beschikbare printers
 index_jcount=$1 taken..
-index_jlist=taken..
+index_jlist=Taken..
 index_jobs=Taken
-index_list=lijst..
+index_list=Lijst..
 index_name=Printer
 index_none=Geen printers op dit systeem ge&#239;nstalleerd
 index_restart=Herstart Scheduler
