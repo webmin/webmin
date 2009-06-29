@@ -125,6 +125,7 @@ index_return=module index
 ldap_anon=anoniem
 ldap_econf=De LDAP client configuratie file $1is niet gevonden op uw systeem
 ldap_econn=Mislukt om te verbinden met de LDAP server $1 poort $2
+ldap_econn2=Mislukt om te verbinden met de LDAP server $1 poort $2 : $3
 ldap_elogin=Bind is mislukt aan LDAP server $1 als $2 : $3
 ldap_emodule=De $1 Perl module die nodig is om met de LDAP server te communiceren is niet geinstalleerd. <a href='$2'>Klik hier</a> zodat Webmin het nu kan downloaden en installeren.
 ldap_emodule2=De $1 Perl module die nodig is om de communiceren met de LDAP server is niet geinstalleerd.
