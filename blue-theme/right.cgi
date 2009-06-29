@@ -59,7 +59,7 @@ if ($level == 0) {
 	print "<td>",&text('right_kernelon', $o, $r, $m),"</td> </tr>\n";
 
 	# System uptime
-	$out = &backquote_command("uptime");
+	$out = &backquote_command("LC_ALL='' LANG='' uptime");
 	$uptime = undef;
 	if ($out =~ /up\s+(\d+)\s+days,\s+(\d+):(\d+)/) {
 		# up 198 days,  2:06
