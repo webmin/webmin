@@ -28,7 +28,12 @@ foreach $s (@sub) {
 $attach = $mail->{'attach'}->[$in{'attach'}];
 
 print "X-no-links: 1\n";
-print "Content-type: $attach->{'type'}\n\n";
+if ($attach->{'type'} eq 'message/delivery-status') {
+	print "Content-type: text/plain\n\n";
+	}
+else {
+	print "Content-type: $attach->{'type'}\n\n";
+	}
 if ($attach->{'type'} =~ /^text\/html/i) {
 	print &filter_javascript($attach->{'data'});
 	}
