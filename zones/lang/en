@@ -57,6 +57,9 @@ edit_attrvalue=Attribute value
 edit_attrnone=No generic attributes have been defined yet.
 edit_attradd=Add a new generic attribute.
 edit_webmin=Open Webmin
+edit_brand=Brand
+
+ui_cancel=Cancel
 
 save_err=Failed to save zone
 save_epool=Missing or invalid pool
@@ -112,6 +115,10 @@ pkg_egone=Directory no longer exists!
 pkg_err=Failed to save package directory
 pkg_edir=Invalid or non-existant directory
 pkg_eclash=The package directory already exists in this zone
+pkg_inherit=Inherit packages from global zone
+pkg_inherit_yes=Yes (sparse root zone)
+pkg_inherit_no=No (whole root zone)
+
 
 fs_title1=Create Filesystem
 fs_title2=Edit Filesystem
@@ -248,6 +255,9 @@ create_eservers=No DNS or NIS name servers entered
 create_eresolvname=The zone's hostname could not be resolved, which will cause automatic configuration to fail. You should add it to the DNS before creating this zone
 create_router=Default router
 create_erouter=Missing or invalid default router IP address
+create_removingpkgs=removing inherited package directories ...
+create_brand=Brand
+create_brandmsg=Branding zone
 
 log_create_zone=Created zone $1
 log_delete_zone=Deleted zone $1

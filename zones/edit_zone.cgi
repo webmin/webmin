@@ -140,7 +140,7 @@ $gtable->set_emptymsg($text{'edit_attrnone'});
 $gtable->add_link("edit_attr.cgi?zone=$in{'zone'}&new=1",
 		  $text{'edit_attradd'});
 
-$p->add_footer("", $text{'index_return'});
+$p->add_footer("index.cgi", $text{'index_return'});
 $p->print();
 
 

@@ -21,6 +21,7 @@ local $auto = new Webmin::Select("autoboot", $zinfo->{'autoboot'},
 $section->add_input($text{'edit_autoboot'}, $auto);
 local $pool = &pool_object("pool", $zinfo->{'pool'});
 $section->add_input($text{'edit_pool'}, $pool);
+$section->add_row($text{'edit_brand'}, "$zinfo->{'brand'}");
 
 local @actions = &zone_status_actions($zinfo, 1);
 $form->add_button(new Webmin::Submit($text{'save'}, "save"));
@@ -48,9 +49,9 @@ local ($in, $action, $zinfo, $list) = @_;
 local $p = new Webmin::ConfirmPage(&zone_title($zinfo->{'name'}),
 		   $text{$action.'_title'},
 		   &text($action.'_rusure', "<tt>$zinfo->{'name'}</tt>"),
-		   "save_zone.cgi", $in, $text{'edit_'.$action});
+		   "save_zone.cgi", $in, $text{'edit_'.$action}, $text{'ui_cancel'});
 if ($list) {
-	$p->add_footer("", $text{'index_return'});
+	$p->add_footer("index.cgi", $text{'index_return'});
 	}
 else {
 	$p->add_footer("edit_zone.cgi?zone=$zinfo->{'name'}",
@@ -70,7 +71,7 @@ $p->add_form($d);
 $d->set_message($text{$action.'_doing'});
 $d->set_wait(1);
 if ($list || $action eq "delete") {
-	$p->add_footer("", $text{'index_return'});
+	$p->add_footer("index.cgi", $text{'index_return'});
 	}
 else {
 	$p->add_footer("edit_zone.cgi?zone=$zinfo->{'name'}",
@@ -466,6 +467,9 @@ local $path = new Webmin::OptTextbox("path", undef, 30,
 $path->set_validation_func(\&validate_zone_path);
 $section->add_input($text{'create_path'}, $path);
 
+local $brand = new Webmin::Select("brand",undef, [ &list_brands() ], 0, 0, $value ? 1 : 0);
+$section->add_input($text{'create_brand'}, $brand);
+
 local $address = new Webmin::OptTextbox("address", undef, 20,
 					$text{'create_noaddress'});
 $address->set_validation_func(\&validate_address);
@@ -481,6 +485,11 @@ $section->add_input($text{'create_install'}, $install);
 local $webmin = new Webmin::Radios("webmin", 0, [ [ 1, $text{'yes'} ],
 						    [ 0, $text{'no'} ] ]);
 $section->add_input($text{'create_webmin'}, $webmin);
+
+local $inherit = new Webmin::Radios("inherit", 1, [ [ 1, $text{'pkg_inherit_yes'} ],
+						    [ 0, $text{'pkg_inherit_no'} ] ]);
+$section->add_input($text{'pkg_inherit'}, $inherit);
+
 
 local $pkgs = new Webmin::Multiline("pkgs", undef, 5, 50);
 $section->add_input($text{'create_pkgs'}, $pkgs);

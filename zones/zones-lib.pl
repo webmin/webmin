@@ -56,7 +56,7 @@ $zinfo->{'id'} = $status->{'id'};
 
 # Add zone-level variables
 local ($p, $r);
-foreach $p ("zonepath", "autoboot", "pool") {
+foreach $p ("zonepath", "autoboot", "pool", "brand") {
 	local @lines = &get_zonecfg_output($zone, "info $p");
 	if ($lines[0] =~ /^$p:\s*(.*)/) {
 		$zinfo->{$p} = $1;
@@ -170,7 +170,12 @@ push(@{$zinfo->{$thing->{'keytype'}}}, $thing);
 sub delete_zone_object
 {
 local ($zinfo, $thing) = @_;
-&get_zonecfg_output($zinfo->{'name'}, "remove $thing->{'keytype'} $thing->{'keyfield'}=$thing->{'key'}", 1);
+if ( !$thing->{'keyfield'}) {
+	&get_zonecfg_output($zinfo->{'name'}, "remove -F $thing->{'keytype'}", 1);
+	}
+  else {
+	&get_zonecfg_output($zinfo->{'name'}, "remove $thing->{'keytype'} $thing->{'keyfield'}=$thing->{'key'}", 1);
+	}
 }
 
 # create_zone(name, path)
@@ -313,7 +318,7 @@ return &text('zone_in', "<tt>$_[0]</tt>");
 sub run_zone_command
 {
 local ($zinfo, $cmd, $re) = @_;
-local $out = &backquote_logged("ctrun zoneadm -z $zinfo->{'name'} $cmd 2>&1");
+local $out = &backquote_logged("ctrun -l child zoneadm -z $zinfo->{'name'} $cmd 2>&1");
 if ($? && !$re) {
 	&error("<tt>zoneadm</tt> failed : <tt>$out</tt>");
 	}
@@ -416,6 +421,22 @@ foreach (readdir(FS)) {
 close(FS);
 return @rv;
 }
+
+#list_brands()
+#returns a list of valid brands
+sub list_brands
+{
+	local @rv;
+	opendir(BRND, "/usr/lib/brand");
+	foreach (readdir(BRND)) {
+		if ($_ !~ /^\./){
+			push(@rv, $_);
+		}
+	}
+	close(BRND);
+return @rv;
+}
+
 
 # run_in_zone(&zinfo, command)
 # Runs some command within a zone, and returns the output

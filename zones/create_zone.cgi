@@ -112,19 +112,32 @@ if (!$in{'address_def'}) {
 	  }
 	}
 
-# Add extra package directories
-if (@pkgs) {
-	$d3 = new Webmin::DynamicHTML(\&execute_pkgs, undef, $text{'create_addingpkgs'});
-	$p->add_form($d3);
-	  sub execute_pkgs
-	  {
-	  foreach $p (@pkgs) {
-		$pkg = { 'keytype' => 'inherit-pkg-dir',
-			 'dir' => $p };
-		&create_zone_object($zinfo, $pkg);
+# Add or remove extra package directories
+# add for sparse root zone and remove for whole root zone
+if ($in{'inherit'} eq '0' ) {
+	$d3 = new Webmin::DynamicHTML(\&remove_pkgs, undef, $text{'create_removingpkgs'});
+		$p->add_form($d3);
+	sub remove_pkgs
+	{
+		$pkg = { 'keytype' => 'inherit-pkg-dir' };
+		&delete_zone_object($zinfo,$pkg);
+		$p->add_message_after($d3, $text{'create_done'});
+	}
+}
+  else {
+	if (@pkgs) {
+		$d3 = new Webmin::DynamicHTML(\&execute_pkgs, undef, $text{'create_addingpkgs'});
+		$p->add_form($d3);
+		  sub execute_pkgs
+		  {
+		  foreach $p (@pkgs) {
+			$pkg = { 'keytype' => 'inherit-pkg-dir',
+				 'dir' => $p };
+			&create_zone_object($zinfo, $pkg);
+			}
+		  $p->add_message_after($d3, $text{'create_done'});
+		  }
 		}
-	  $p->add_message_after($d3, $text{'create_done'});
-	  }
 	}
 
 if ($in{'install'}) {
@@ -187,7 +200,19 @@ if ($in{'install'} && $in{'webmin'}) {
 	}
 	}
 
-$p->add_footer("", $text{'index_return'});
+#set the brand
+if ($in{'brand'}) {
+	$d6 = new Webmin::DynamicHTML(\&create_brand,undef, $text{'create_brandmsg'});
+	$p->add_form($d6);
+	
+	sub create_brand
+	{
+		&set_zone_variable($zinfo,"brand",$form->get_value("brand"));
+		$p->add_message_after($d6, $text{'create_done'});
+	}
+}
+
+$p->add_footer("index.cgi", $text{'index_return'});
 $p->print();
 &webmin_log("create", "zone", $in{'name'});
 

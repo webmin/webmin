@@ -25,6 +25,9 @@ print &ui_table_row($text{'create_path'},
 			&text('create_auto', $config{'base_dir'}),
 			$text{'create_sel'})."\n".
 		    &file_chooser_button("path", 1));
+		    
+print &ui_table_row($text{'create_brand'},
+			&ui_select("brand",undef, [ &list_brands() ], 0, 0, $value ? 1 : 0));
 
 print &ui_table_row($text{'create_address'},
 		    &ui_opt_textbox("address", undef, 20,
@@ -38,6 +41,9 @@ print &ui_table_row($text{'create_install'},
 
 print &ui_table_row($text{'create_webmin'},
 		    &ui_yesno_radio("webmin", 0));
+		    
+print &ui_table_row($text{'pkg_inherit'},
+			&ui_yesno_radio("inherit", 0));
 
 print &ui_table_row($text{'create_pkgs'},
 		    &ui_textarea("pkgs", undef, 5, 50));
@@ -111,5 +117,5 @@ print &ui_table_row($text{'create_router'},
 print &ui_table_end();
 print &ui_form_end([ [ "ok", $text{'create_ok'} ] ]);
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("index.cgi", $text{'index_return'});
 
