@@ -1822,9 +1822,10 @@ sub pop3_login
 {
 local $h = $pop3_login_handle{$_[0]->{'id'}};
 return (1, $h) if ($h);
-$h = time().++$pop3_login_count;
+$h = "POP3".time().++$pop3_login_count;
 local $error;
 &open_socket($_[0]->{'server'}, $_[0]->{'port'} || 110, $h, \$error);
+print DEBUG "pop3 open_socket to $_[0]->{'server'} : $error\n";
 return (0, $error) if ($error);
 local $os = select($h); $| = 1; select($os);
 local @rv = &pop3_command($h);
