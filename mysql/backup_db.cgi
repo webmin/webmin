@@ -129,15 +129,6 @@ if (!$in{'save'}) {
 				}
 			}
 		unlink($file);
-		if ($in{'compress'} == 0) {
-			$writer = ">$file";
-			}
-		elsif ($in{'compress'} == 1) {
-			$writer = "| gzip -c >$file";
-			}
-		elsif ($in{'compress'} == 2) {
-			$writer = "| bzip2 -c >$file";
-			}
 		local $err = &backup_database($db, $file, $in{'compress'},
 			$in{'drop'}, $in{'where_def'} ? undef : $in{'where'},
 			$in{'charset_def'} ? undef : $in{'charset'},
