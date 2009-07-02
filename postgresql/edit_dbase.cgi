@@ -103,8 +103,13 @@ elsif (@titles || @indexes || @views || @seqs) {
 	if ($displayconfig{'style'} == 1) {
 		# Show as table
 		foreach $t (@titles) {
-			local $c = &execute_sql($in{'db'},
-				"select count(*) from ".quote_table($t));
+			local $c;
+			eval {
+				local $main::error_must_die = 1;
+				$c = &execute_sql($in{'db'},
+				    "select count(*) from ".quote_table($t));
+				};
+			$c ||= { 'data' => [ [ "-" ] ] };
 			push(@rows, $c->{'data'}->[0]->[0]);
 			local @str = &table_structure($in{'db'}, $t);
 			push(@fields, scalar(@str));

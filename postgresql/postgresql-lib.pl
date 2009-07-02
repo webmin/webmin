@@ -760,14 +760,14 @@ sub quotestr
 return "\"$_[0]\"";
 }
 
-# execute_sql_file(database, file, [user, pass])
+# execute_sql_file(database, file, [user, pass], [unix-user])
 # Executes some file of SQL statements, and returns the exit status and output
 sub execute_sql_file
 {
+local ($db, $file, $user, $pass, $unixuser) = @_;
 if (&is_readonly_mode()) {
 	return (0, undef);
 	}
-local ($db, $file, $user, $pass) = @_;
 if (!defined($user)) {
 	$user = $postgres_login;
 	$pass = $postgres_pass;
@@ -779,6 +779,9 @@ local $cmd = &quote_path($config{'psql'})." -f ".&quote_path($file).
 	     " $db";
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	$cmd = &command_as_user($postgres_login, 0, $cmd);
+	}
+elsif ($unixuser && $unixuser ne 'root' && $< == 0) {
+	$cmd = &command_as_user($unixuser, 0, $cmd);
 	}
 $cmd = &command_with_login($cmd, $user, $pass);
 local $out = &backquote_logged("$cmd 2>&1");
