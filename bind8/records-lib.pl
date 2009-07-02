@@ -1,6 +1,6 @@
 # Functions for managing BIND 4 and 8/9 records files
 
-# read_zone_file(file, origin, [previous], [only-soa])
+# read_zone_file(file, origin, [previous], [only-soa], [no-chroot])
 # Reads a DNS zone file and returns a data structure of records. The origin
 # must be a domain without the trailing dot, or just .
 sub read_zone_file
@@ -14,7 +14,7 @@ if ($origin ne ".") {
 	$origin =~ s/\.*$//;
 	}
 $file = &absolute_path($_[0]);
-local $rootfile = &make_chroot($file);
+local $rootfile = $_[4] ? $file : &make_chroot($file);
 open(FILE, $rootfile);
 $lnum = 0;
 local ($gotsoa, $aftersoa);

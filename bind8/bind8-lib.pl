@@ -2953,7 +2953,7 @@ foreach my $f (readdir(ZONEDIR)) {
 		$rv->{'algorithmid'} = $1;
 		$rv->{'keyid'} = $2;
 		local $config{'short_names'} = 0;	# Force canonicalization
-		local ($pub) = &read_zone_file("$dir/$f", $dom);
+		local ($pub) = &read_zone_file("$dir/$f", $dom, undef, 0, 1);
 		$pub || return "Public key file $dir/$f does not contain ".
 			       "any records";
 		$pub->{'name'} eq $dom."." ||
