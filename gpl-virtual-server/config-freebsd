@@ -26,7 +26,6 @@ avail_telnet=1
 avail_custom=0
 avail_updown=0
 avail_mailboxes=1
-avail_htaccess-htpasswd=1
 avail_shell=0
 avail_webminlog=0
 avail_syslog=1
