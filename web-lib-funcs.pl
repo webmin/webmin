@@ -6342,6 +6342,35 @@ if ($< != $uinfo->[2] || $> != $uinfo->[2]) {
 	}
 }
 
+=head2 eval_as_unix_user(username, &code)
+
+Runs some code fragment with the effective UID and GID switch to that
+of the given Unix user, so that file IO takes place with his permissions.
+
+=cut
+
+sub eval_as_unix_user
+{
+my ($user, $code) = @_;
+my @uinfo = getpwnam($user);
+defined(@uinfo) || &error("eval_as_unix_user called with invalid user $user");
+$) = $uinfo[3]." ".join(" ", $uinfo[3], &other_groups($user));
+$> = $uinfo[2];
+my @rv;
+eval {
+	local $main::error_must_die = 1;
+	@rv = &$code();
+	};
+my $err = $@;
+$) = 0;
+$> = 0;
+if ($err) {
+	$err =~ s/\s+at\s+(\/\S+)\s+line\s+(\d+)\.?//;
+	&error($err);
+	}
+return wantarray ? @rv : $rv[0];
+}
+
 =head2 create_user_config_dirs
 
 Creates per-user config directories and sets $user_config_directory and

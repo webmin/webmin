@@ -15,7 +15,7 @@ if (!defined($get_config_cache{$file})) {
 	local @rv = ( );
 	local $lnum = 0;
 	local $section;
-	open(CONFIG, $file);
+	open(CONFIG, $file) || return undef;
 	while(<CONFIG>) {
 		s/\r|\n//g;
 		s/\s+$//;
@@ -191,6 +191,38 @@ if (&foreign_installed("apache")) {
 		&system_logged("$apache::config{'apachectl_path'} graceful >/dev/null 2>&1");
 		&reset_environment();
 		}
+	}
+}
+
+# get_config_as_user([file])
+# Like get_config, but reads with permissions of the ACL user
+sub get_config_as_user
+{
+local ($file) = @_;
+if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+	local $rv = &eval_as_unix_user(
+		$access{'user'}, sub { &get_config($file) });
+	if ((!$rv || !@$rv) && $!) {
+		&error(&text('file_eread', &html_escape($file), $!));
+		}
+	return $rv;
+	}
+else {
+	return &get_config($file);
+	}
+}
+
+# flush_file_lines_as_user(file)
+# Writes out a file as the Unix user configured in this module's ACL
+sub flush_file_lines_as_user
+{
+local ($file) = @_;
+if ($access{'user'} && $access{'user'} ne 'root' && $< == 0) {
+	&eval_as_unix_user($access{'user'}, 
+		sub { &flush_file_lines($file) });
+	}
+else {
+	&flush_file_lines($file);
 	}
 }
 

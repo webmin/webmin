@@ -41,7 +41,7 @@ $in{"max_input_time_def"} || $in{"max_input_time"} =~ /^\d+$/ ||
 &save_directive($conf, "max_input_time",
 	$in{"max_input_time_def"} ? undef : $in{"max_input_time"});
 
-&flush_file_lines($in{'file'});
+&flush_file_lines_as_user($in{'file'});
 &unlock_file($in{'file'});
 &graceful_apache_restart();
 &webmin_log("limits", undef, $in{'file'});

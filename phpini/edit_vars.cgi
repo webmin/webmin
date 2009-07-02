@@ -4,7 +4,7 @@
 require './phpini-lib.pl';
 &ReadParse();
 &can_php_config($in{'file'}) || &error($text{'list_ecannot'});
-$conf = &get_config($in{'file'});
+$conf = &get_config_as_user($in{'file'});
 
 &ui_print_header("<tt>$in{'file'}</tt>", $text{'vars_title'}, "");
 

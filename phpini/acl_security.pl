@@ -17,6 +17,9 @@ print &ui_table_row($text{'acl_manual'},
 print &ui_table_row($text{'acl_inis'},
 	    &ui_textarea("inis", join("\n", split(/\t+/, $o->{'php_inis'})),
 			 5, 70), 3);
+
+print &ui_table_row($text{'acl_user'},
+		    &ui_user_textbox("user", $o->{'user'}));
 }
 
 # acl_security_save(&options)
@@ -28,5 +31,6 @@ $o->{'global'} = $in{'global'};
 $o->{'anyfile'} = $in{'anyfile'};
 $o->{'manual'} = $in{'manual'};
 $o->{'php_inis'} = join("\t", split(/\n/, $in{'inis'}));
+$o->{'user'} = $in{'user'};
 }
 

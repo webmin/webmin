@@ -11,6 +11,7 @@ index_anyfile=Edit other PHP configuration file:
 index_return=configuration files
 
 file_global=Global PHP configuration
+file_eread=Failed to read $1 : $2
 
 manual_title=Edit Configuration Manually
 manual_desc=This page can be used to manually edit a PHP configuration file. This should be done carefully, as no syntax or other validity checking will be performed on your changes.
@@ -166,3 +167,4 @@ acl_global=Can edit global PHP configuration?
 acl_anyfile=Can edit any file as a PHP configuration?
 acl_manual=Can manually edit configuration files?
 acl_inis=Additional configuration files<br>(In <i>filename</i>=<i>description</i> format)
+acl_user=Read and write files as user

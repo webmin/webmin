@@ -45,7 +45,7 @@ else {
 	&save_directive($conf, "sendmail_path", $in{"sendmail_path"});
 	}
 
-&flush_file_lines($in{'file'});
+&flush_file_lines_as_user($in{'file'});
 &unlock_file($in{'file'});
 &graceful_apache_restart();
 &webmin_log("misc", undef, $in{'file'});

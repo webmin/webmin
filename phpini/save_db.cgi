@@ -89,7 +89,7 @@ else {
 			$in{"pgsql.max_links"});
 	}
 
-&flush_file_lines($in{'file'});
+&flush_file_lines_as_user($in{'file'});
 &unlock_file($in{'file'});
 &graceful_apache_restart();
 &webmin_log("db", undef, $in{'file'});

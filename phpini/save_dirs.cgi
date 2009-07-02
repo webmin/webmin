@@ -27,7 +27,7 @@ $in{'ext_def'} || $in{'ext'} =~ /\S/ || &error($text{'dirs_eext'});
 $in{'utmp_def'} || -d $in{'utmp'} || &error($text{'dirs_eutmp'});
 &save_directive($conf, "upload_tmp_dir", $in{'utmp_def'} ? undef : $in{'utmp'});
 
-&flush_file_lines($in{'file'});
+&flush_file_lines_as_user($in{'file'});
 &unlock_file($in{'file'});
 &graceful_apache_restart();
 &webmin_log("dirs", undef, $in{'file'});

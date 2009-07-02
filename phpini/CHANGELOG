@@ -1,2 +1,4 @@
 ---- Changes since 1.310 ----
 First version of this module, which can edit the global PHP configuration file and other per-domain files.
+---- Changes since 1.480 ----
+Added an access control option to limit file IO to a particular Unix user.
