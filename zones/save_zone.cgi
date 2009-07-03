@@ -52,7 +52,7 @@ elsif ($in{'install'}) {
 	$d->set_message($text{'install_doing'});
 	$d->set_wait(1);
 	if ($in{'list'}) {
-		$p->add_footer("", $text{'index_return'});
+		$p->add_footer("index.cgi", $text{'index_return'});
 		}
 	else {
 		$p->add_footer("edit_zone.cgi?zone=$zinfo->{'name'}",
@@ -129,8 +129,11 @@ if ($ok) {
 	$p->add_message($text{'create_done'});
 	$sysidcfg = &zone_sysidcfg_file($in{'zone'});
 	if (-r $sysidcfg) {
-		# Move sysidcfg into place, for later boot
-		&system_logged("mv $sysidcfg $zinfo->{'zonepath'}/root/etc/sysidcfg");
+		# Copy sysidcfg into place, for later boot
+		# We Copy instead of Move just incase we
+		# uninstall the zone but want to reinstall it
+		# at a later time.
+		&system_logged("cp $sysidcfg $zinfo->{'zonepath'}/root/etc/sysidcfg");
 		}
 	&config_zone_nfs($zinfo);
 	&webmin_log("install", "zone", $in{'zone'});

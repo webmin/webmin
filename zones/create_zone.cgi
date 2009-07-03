@@ -63,6 +63,10 @@ if ($in{'cfg'}) {
 			}
 		}
 	push(@sysidcfg, [ 'name_service' => $ns ]);
+	
+	# Set the NFS4 Domain as dynamic so that
+    # upon first boot we don't get asked
+	push(@sysidcfg, ['nfs4_domain' => "dynamic"]);
 
 	# Setup network interface config
 	push(@sysidcfg, [ 'security_policy' => 'NONE' ]);
@@ -140,26 +144,42 @@ if ($in{'inherit'} eq '0' ) {
 		}
 	}
 
+#set the brand
+if ($in{'brand'}) {
+	$d4 = new Webmin::DynamicHTML(\&create_brand,undef, $text{'create_brandmsg'});
+	$p->add_form($d4);
+	
+	sub create_brand
+	{
+		&set_zone_variable($zinfo,"brand",$form->get_value("brand"));
+		$p->add_message_after($d4, $text{'create_done'});
+	}
+}
+
 if ($in{'install'}) {
 	# Install software
-	$d4 = new Webmin::DynamicText(\&execute_install);
-	$p->add_form($d4);
-	$d4->set_message($text{'create_installing'});
-	$d4->set_wait(1);
+	$d5 = new Webmin::DynamicText(\&execute_install);
+	$p->add_form($d5);
+	$d5->set_message($text{'create_installing'});
+	$d5->set_wait(1);
 	  sub execute_install
 	  {
 	  local $ok = &callback_zone_command($zinfo, "install",
-				\&Webmin::DynamicText::add_line, [ $d4 ]);
+				\&Webmin::DynamicText::add_line, [ $d5 ]);
 	  if ($ok) {
-		$p->add_message_after($d4, $text{'create_done'});
+		$p->add_message_after($d5, $text{'create_done'});
 		}
 	  else {
-		$p->add_error_after($d4, $text{'create_failed'});
+		$p->add_error_after($d5, $text{'create_failed'});
 		}
 
 	  if (@sysidcfg) {
 		# Save the sysidcfg file
 		&save_sysidcfg(\@sysidcfg, "$path/root/etc/sysidcfg");
+		}
+		if (-e "$path/root/etc/.UNCONFIGURED") {
+		# If the file .UNCONFIGURED is there remove it
+			&system_logged("rm -f $path/root/etc/.UNCONFIGUREED");
 		}
 	  &config_zone_nfs($zinfo);
 	  &run_zone_command($zinfo, "boot");
@@ -174,17 +194,17 @@ else {
 
 if ($in{'install'} && $in{'webmin'}) {
 	# Create a Webmin setup script and run it
-	$d5 = new Webmin::DynamicText(\&execute_webmin);
-	$p->add_form($d5);
-	$d5->set_message($text{'create_webmining'});
-	$d5->set_wait(1);
+	$d6 = new Webmin::DynamicText(\&execute_webmin);
+	$p->add_form($d6);
+	$d6->set_message($text{'create_webmining'});
+	$d6->set_wait(1);
 
 	sub execute_webmin
 	{
 	$script = &get_zone_root($zinfo)."/tmp/install-webmin";
 	$err = &create_webmin_install_script($zinfo, $script);
 	if ($err) {
-		$p->add_error_after($d5, &text('created_wfailed', $err));
+		$p->add_error_after($d6, &text('created_wfailed', $err));
 		}
 	else {
 		$ex = &run_in_zone_callback($zinfo, "/tmp/install-webmin",
@@ -199,18 +219,6 @@ if ($in{'install'} && $in{'webmin'}) {
 		}
 	}
 	}
-
-#set the brand
-if ($in{'brand'}) {
-	$d6 = new Webmin::DynamicHTML(\&create_brand,undef, $text{'create_brandmsg'});
-	$p->add_form($d6);
-	
-	sub create_brand
-	{
-		&set_zone_variable($zinfo,"brand",$form->get_value("brand"));
-		$p->add_message_after($d6, $text{'create_done'});
-	}
-}
 
 $p->add_footer("index.cgi", $text{'index_return'});
 $p->print();

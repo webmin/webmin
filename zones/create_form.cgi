@@ -7,7 +7,7 @@ use Socket;
 &ReadParse();
 $p = new Webmin::Page(undef, $text{'create_title'}, "create");
 $p->add_form(&get_create_form(\%in));
-$p->add_footer("", $text{'index_return'});
+$p->add_footer("index.cgi", $text{'index_return'});
 $p->print();
 exit;
 
