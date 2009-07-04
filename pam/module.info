@@ -21,3 +21,4 @@ cpan=1
 desc_ko_KR.UTF-8=PAM 인증
 desc_cz=PAM Autentikace
 desc_ru.UTF-8=Аутентификация PAM
+desc_nl=PAM Authenticatie
