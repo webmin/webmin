@@ -639,10 +639,16 @@ else {
 	else {
 		$body = $_[0]->{'body'};
 		}
-	$_[0]->{'attach'} = [ { 'type' => lc($type),
-				'idx' => 0,
-				'parent' => $_[1],
-				'data' => $body } ];
+	if ($body =~ /\S/) {
+		$_[0]->{'attach'} = [ { 'type' => lc($type),
+					'idx' => 0,
+					'parent' => $_[1],
+					'data' => $body } ];
+		}
+	else {
+		# Body is completely empty
+		$_[0]->{'attach'} = [ ];
+		}
 	}
 delete($_[0]->{'body'}) if (!$_[2]);
 }
@@ -995,6 +1001,12 @@ if (defined($_[0]->{'body'})) {
 	$_[0]->{'body'} .= $eol if ($_[0]->{'body'} !~ /\n$/);
 	(print MAIL $_[0]->{'body'}) || &error("Write failed : $!");
 	$lnum += ($_[0]->{'body'} =~ tr/\n/\n/);
+	}
+elsif (!@{$_[0]->{'attach'}}) {
+	# No content, so just send empty email
+	print MAIL "Content-Type: text/plain",$eol;
+	print MAIL $eol;
+	$lnum += 2;
 	}
 elsif (!$_[2] || $ftype !~ /text\/plain/i ||
        $fenc =~ /quoted-printable|base64/) {
