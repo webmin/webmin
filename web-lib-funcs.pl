@@ -1299,7 +1299,7 @@ by the message setup using that function.
 sub error
 {
 my $msg = join("", @_);
-$msg =~ s/<[^>]*>//;
+$msg =~ s/<[^>]*>//g;
 if (!$main::error_must_die) {
 	print STDERR "Error: ",$msg,"\n";
 	}
