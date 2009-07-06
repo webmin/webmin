@@ -67,14 +67,15 @@ if ($user && $user ne "root") {
 	}
 
 # Run it
-local $out = `($cmd) 2>&1 </dev/null`;
+local $out = &backquote_command("($cmd) 2>&1 </dev/null");
+$ex = $? / 256;
 
 # Handle the output
 if ($owner) {
 	# Force mailing to user
 	$mail = $user."\@".&get_system_hostname();
 	}
-if ($errors && $?/256 <= 1) {
+if ($errors && $ex <= 1) {
 	# No error occurred, so do nothing
 	}
 elsif ($file) {
@@ -98,8 +99,8 @@ elsif ($mail) {
 			$fr = &foreign_call($mm, "get_from_address");
 			}
 		&foreign_call($mm, "send_text_mail", $fr, $mail, undef,
-			      $?/256 <= 1 ? $text{'email_ok'}
-					  : $text{'email_failed'},
+			      $ex <= 1 ? $text{'email_ok'}
+				       : $text{'email_failed'},
 			      $out);
 		}
 	else {
