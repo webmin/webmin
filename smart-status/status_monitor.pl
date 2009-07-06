@@ -78,7 +78,7 @@ local ($inlist) = grep { $_->{'device'} eq $_[1]->{'drive'} &&
 $inlist = 1 if (!$_[1]->{'drive'});
 $rv .= &ui_table_row($text{'monitor_drive'},
       &ui_select("drive", !$_[1]->{'drive'} ? $drives[0]->{'device'} :
-			   $inlist ? $inlist->{'drive'}.':'.$inlist->{'subdisk'} :
+			   $inlist ? $inlist->{'device'}.':'.$inlist->{'subdisk'} :
 				     undef,
 		 [ (map { [ $_->{'device'}.':'.$_->{'subdisk'},
 			   $_->{'desc'}.($_->{'model'} ?
