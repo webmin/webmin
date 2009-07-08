@@ -49,8 +49,8 @@ elsif ($in{ptype} == 3) {
 
 # Call password change program if necessary
 if ($set_passwd) {
-	&set_password($u->{'name'}, $in{'pass'}) ||
-		&error(&text('saveuser_pass', $error));
+	&set_password($u->{'name'}, $in{'pass'}, \$err) ||
+		&error(&text('saveuser_pass', $err));
 	}
 &unlock_file($config{'smb_passwd'});
 &webmin_log("save", "euser", $u->{'name'}, $u);

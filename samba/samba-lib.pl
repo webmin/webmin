@@ -651,7 +651,7 @@ else {
 return join(":", @u)."\n";
 }
 
-# set_password(user, password)
+# set_password(user, password, [&output])
 # Changes the password of a user in the encrypted password file
 sub set_password
 {
@@ -659,10 +659,11 @@ local $qu = quotemeta($_[0]);
 local $qp = quotemeta($_[1]);
 if ($samba_version >= 2) {
 	local $passin = "$_[1]\n$_[1]\n";
-	local $ex = &execute_command("$config{'samba_password_program'} -c $config{'smb_conf'} -s $qu", \$passin, undef, undef);
+	local $ex = &execute_command("$config{'samba_password_program'} -c $config{'smb_conf'} -s $qu", \$passin, $_[1], $_[1]);
 	if ($ex) {
 		# Try without -c 
-		$rv = &execute_command("$config{'samba_password_program'} -s $qu", \$passin, undef, undef);
+		${$_[1]} = '' if ($_[1]);
+		$rv = &execute_command("$config{'samba_password_program'} -s $qu", \$passin, $_[1], $_[1]);
 		}
 	unlink($temp);
 	return !$rv;
@@ -670,7 +671,7 @@ if ($samba_version >= 2) {
 else {
 	local $out;
 	&execute_command("$config{'samba_password_program'} $qu $qp",
-			 undef, \$out, \$out);
+			 undef, $_[1], $_[1]);
 	return $out =~ /changed/i;
 	}
 }
