@@ -998,8 +998,9 @@ if ($textonly) {
 	return $line;
 	}
 else {
+	$line =~ s/\r|\n//g;
 	return "<script language=JavaScript type=text/javascript>\n".
-	       "defaultStatus=\"$line\";\n".
+	       "defaultStatus=\"".&quote_escape($line)."\";\n".
 	       "</script>\n";
 	}
 }
