@@ -812,6 +812,7 @@ ${$_[0]} = $out;
 return $config{'version'} if ($config{'version'});
 return undef if ($out !~ /DHCP/ || $out =~ /V1/);
 return $out =~ /\sV([0-9\.]+)/ ? $1 :
+       $out =~ /\sDHCP\s+Server\s+([0-9\.]+)/ ? $1 :
        $out =~ /-T/ ? 3 : 2;
 }
 
