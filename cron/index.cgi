@@ -184,15 +184,17 @@ foreach $u (@ulist) {
 				 ($job->{'type'} == 0 || $job->{'type'} == 3)
 			        ));
 			}
+
+		# Add search colume
+		push(@cols, $job->{'command'}.' '.$job->{'name'}.' '.
+			    $job->{'comment'});
 		push(@rows, \@cols);
 		}
 	}
 
 # Limit to search
 if ($in{'search'}) {
-	@rows = grep { $useridx && $_->[$useridx] =~ /\Q$in{'search'}\E/i ||
-		       $cmdidx && $_->[$cmdidx] =~ /\Q$in{'search'}\E/i }
-		     @rows;
+	@rows = grep { $_->[@$_-1] =~ /\Q$in{'search'}\E/i } @rows;
 	}
 
 # Show search form
@@ -230,7 +232,7 @@ elsif (@rows) {
 		$access{'move'} ? ( $text{'index_move'} ) : ( ),
 		], 100, 0, \@tds);
 	foreach my $r (@rows) {
-		print &ui_checked_columns_row([ @$r[1..(@$r-1)] ],
+		print &ui_checked_columns_row([ @$r[1..(@$r-2)] ],
 					      \@tds, "d", $r->[0]);
 		}
 	print &ui_columns_end();
