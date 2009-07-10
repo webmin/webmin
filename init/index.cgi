@@ -179,7 +179,7 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 					\@cols, undef, "idx", $order[$i]);
 				}
 			else {
-				print &ui_columns_row(\@cols);
+				print &ui_columns_row([ undef, @cols ]);
 				}
 			}
 		print &ui_columns_end();
