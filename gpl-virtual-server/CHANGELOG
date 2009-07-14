@@ -588,3 +588,6 @@ Added support for migrating cPanel addon domains properly.
 Added a template option to disable addition of also-notify and allow-transfer blocks to new DNS domains.
 LXadmin backups can now be migrated into Virtualmin servers, preserving web content, databases, mailboxes and mail aliases.
 Updated all code that reads or writes to files in a virtual server's home directory to operate with the user's permissions, which prevents use of malicious links to access root-owned files.
+---- Changes since 3.70 ----
+Added an option to the backup form for selecting virtual servers by plan. Also added the --plan flag to the backup-domains command.
+Corrected a mis-feature that prevented alias virtual servers with no home directory from being backed up in the new format.
