@@ -111,8 +111,9 @@ for($i=0; defined($in{"$_[0]_from_$i"}); $i++) {
 			&error(&text('mod_alias_edest2', $to, $_[1]));
 		}
 	else { $to = ""; }
-	if ($stat) { push(@rv, "$stat $from \"$to\""); }
-	else { push(@rv, "$from \"$to\""); }
+	$to = "\"$to\"" if ($to);
+	if ($stat) { push(@rv, "$stat $from $to"); }
+	else { push(@rv, "$from $to"); }
 	}
 return ( \@rv );
 }
