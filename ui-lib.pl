@@ -764,7 +764,7 @@ return "<input class='ui_upload' type=file name=\"".&quote_escape($name)."\" ".
        ($tags ? " ".$tags : "").">";
 }
 
-=head2 ui_password(name, value, size, [disabled?], [maxlength])
+=head2 ui_password(name, value, size, [disabled?], [maxlength], [tags])
 
 Returns HTML for a password text input. Parameters are the same as ui_textbox,
 and behaviour is identical except that the user's input is not visible.
@@ -773,13 +773,14 @@ and behaviour is identical except that the user's input is not visible.
 sub ui_password
 {
 return &theme_ui_password(@_) if (defined(&theme_ui_password));
-my ($name, $value, $size, $dis, $max) = @_;
+my ($name, $value, $size, $dis, $max, $tags) = @_;
 $size = &ui_max_text_width($size);
 return "<input class='ui_password' ".
        "type=password name=\"".&quote_escape($name)."\" ".
        "value=\"".&quote_escape($value)."\" ".
        "size=$size ".($dis ? "disabled=true" : "").
        ($max ? " maxlength=$max" : "").
+       " ".$tags.
        ">";
 }
 
@@ -1175,11 +1176,13 @@ a field with radio buttons next to it. The parameters are :
 
 =item max - Optional maximum allowed input length, in characters.
 
+=item tags - Additional HTML attributes for the text box
+
 =cut
 sub ui_opt_textbox
 {
 return &theme_ui_opt_textbox(@_) if (defined(&theme_ui_opt_textbox));
-my ($name, $value, $size, $opt1, $opt2, $dis, $extra, $max) = @_;
+my ($name, $value, $size, $opt1, $opt2, $dis, $extra, $max, $tags) = @_;
 my $dis1 = &js_disable_inputs([ $name, @$extra ], [ ]);
 my $dis2 = &js_disable_inputs([ ], [ $name, @$extra ]);
 my $rv;
@@ -1190,7 +1193,9 @@ $rv .= &ui_radio($name."_def", $value eq '' ? 1 : 0,
 $rv .= "<input class='ui_opt_textbox' name=\"".&quote_escape($name)."\" ".
        "size=$size value=\"".&quote_escape($value)."\" ".
        ($value eq "" || $dis ? "disabled=true" : "").
-       ($max ? " maxlength=$max" : "").">\n";
+       ($max ? " maxlength=$max" : "").
+       " ".$tags.
+       ">\n";
 return $rv;
 }
 
