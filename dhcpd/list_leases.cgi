@@ -60,7 +60,7 @@ else {
 	local @nm = split(/\./, $in{'netmask'});
 	LEASE: while($i < @tok) {
 		$lease = &parse_struct(\@tok, \$i, $j++, $config{'lease_file'});
-		next if (!$lease);
+		next if (!$lease || $lease->{'name'} ne 'lease');
 		local $mems = $lease->{'members'};
 		local $starts = &find('starts', $mems);
 		local $ends = &find('ends', $mems);
