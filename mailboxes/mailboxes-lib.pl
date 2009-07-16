@@ -11,13 +11,22 @@ $config{'perpage'} ||= 20;
 $config{'column_count'} ||= 4;
 $no_log_file_changes = 1;	# Turn off file change logging for this module
 
+@mail_system_modules = (
+			 [ undef, 4, \&check_qmail_ldap, \&test_qmail_ldap ],
+			 [ undef, 5, \&check_vpopmail ],
+			 [ "qmailadmin", 2 ],
+			 [ "postfix", 0 ],
+			 [ "sendmail", 1 ],
+ 			 [undef, 6, \&check_exim ]
+			);
+
+@ignore_users_list = &split_quoted_string($config{'ignore_users'});
+
 # Always detect the mail system if not set
 if ($config{'mail_system'} == 3) {
 	$config{'mail_system'} = &detect_mail_system();
 	&save_module_config() if ($config{'mail_system'} != 3);
 	}
-
-@ignore_users_list = &split_quoted_string($config{'ignore_users'});
 
 # send_mail_program(from, to)
 # Returns the command for injecting email, based on the mail system in use
@@ -351,20 +360,11 @@ return $_[0]->{'type'} == 0 &&
        &disk_usage_kb($mf)*1024 > $config{'delete_warn'};
 }
 
-@mail_system_modules = (
-			 [ undef, 4, \&check_qmail_ldap, \&test_qmail_ldap ],
-			 [ undef, 5, \&check_vpopmail ],
-			 [ "qmailadmin", 2 ],
-			 [ "postfix", 0 ],
-			 [ "sendmail", 1 ],
- 			 [undef, 6, \&check_exim ]
-			);
-
 # detect_mail_system()
 # Works out which mail server is installed
 sub detect_mail_system
 {
-foreach $m (@mail_system_modules) {
+foreach my $m (@mail_system_modules) {
 	return $m->[1] if (&check_mail_system($m));
 	}
 return 3;
