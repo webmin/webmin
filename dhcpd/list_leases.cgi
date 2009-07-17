@@ -159,6 +159,7 @@ else {
 			}
 
 		# Table header, with sorting
+		print "<b>$text{'listl_delete2'}</b><br>\n";
 		print &ui_columns_start([
 			&sort_link("ipaddr"),
 			&sort_link("ether"),
@@ -203,7 +204,6 @@ else {
 			print &ui_columns_row(\@cols);
 			}
 		print &ui_columns_end();
-		print "$text{'listl_delete'}<p>\n";
 		}
 	else {
 		print "<b>",&text($in{'all'} ? 'listl_lfnotcont' :
