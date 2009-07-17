@@ -6,7 +6,7 @@ require './qmail-lib.pl';
 &ReadParseMime();
 
 $in{'bads'} =~ s/\r//g;
-@bads = split(/\s+/, $in{'bads'});
+@bads = split(/\n+/, $in{'bads'});
 if (@bads) {
 	&save_control_file("badmailfrom", \@bads);
 	}
