@@ -178,6 +178,7 @@ return "CIPE" if ($_[0] =~ /^cip/);
 return "VmWare" if ($_[0] =~ /^vmnet/);
 return "Wireless" if ($_[0] =~ /^wlan/);
 return "Bonded" if ($_[0] =~ /^bond/);
+return "OpenVZ" if ($_[0] =~ /^venet/);
 return $text{'ifcs_unknown'};
 }
 

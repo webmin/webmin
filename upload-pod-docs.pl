@@ -14,9 +14,9 @@ chop($pwd = `pwd`);
 
 # Build list of modules
 @mods = ( [ "WebminCore", ".",
-	    [ "web-lib-funcs.pl", "web-lib.pl", "ui-lib.pl" ] ] );
+	    [ "web-lib-funcs.pl", "web-lib.pl", "ui-lib.pl" ],
+	    "Core Webmin API" ] );
 foreach my $mi (glob("*/module.info")) {
-	# XXX add non-core modules
 	my $mod;
 	($mod = $mi) =~ s/\/module.info//;
 	next if (-l $mod);
@@ -28,6 +28,8 @@ foreach my $mi (glob("*/module.info")) {
 	else {
 		@modlibs = ( $mod."-lib.pl" );
 		}
+	my $desc = $midata =~ /desc=(.*)/ ? $1 : $mod;
+	$desc .= " module";
 	my @podlibs;
 	foreach my $f (@modlibs) {
 		if (-r "$mod/$f") {
@@ -38,7 +40,7 @@ foreach my $mi (glob("*/module.info")) {
 			}
 		}
 	if (@podlibs) {
-		push(@mods, [ "Module $mod", $mod, \@podlibs ]);
+		push(@mods, [ "Module $mod", $mod, \@podlibs, $desc ]);
 		}
 	}
 
@@ -46,25 +48,17 @@ foreach my $mi (glob("*/module.info")) {
 system("rm -rf $temp_pod_dir ; mkdir $temp_pod_dir");
 foreach $m (@mods) {
 	print STDERR "Doing module $m->[0]\n";
-	my $parser = Pod::Simple::Wiki->new('twiki');
 	my $wikiname = $m->[1] eq "." ? "ApiWebminCore"
 				      : "Api".join("", map { ucfirst($_) }
 						split(/\-/, $m->[1]));
-	my $outfile = "$temp_pod_dir/$wikiname.txt";
-	open(OUTFILE, ">$outfile");
-	if ($m->[1] eq ".") {
-		print OUTFILE "---+ Core Webmin API\n\n";
-		}
-	else {
-		print OUTFILE "---+ Functions from module $m->[1]\n\n";
-		}
+	push(@$m, $wikiname);
+	my $infile = "/tmp/pod2twiki.in";
+	open(INFILE, ">$infile");
 	foreach $f (@{$m->[2]}) {
 		# Replace un-decorated =item with =item *
 		# This is kosher according to the POD docs, but Pod2wiki doesn't
 		# seem to like it
 		print STDERR "Doing file $f\n";
-		my $infile = "/tmp/pod2twiki.in";
-		open(INFILE, ">$infile");
 		open(ORIGFILE, "$m->[1]/$f");
 		while(<ORIGFILE>) {
 			if (/^=item\s+([^\*].*)/) {
@@ -75,14 +69,24 @@ foreach $m (@mods) {
 				}
 			}
 		close(ORIGFILE);
-		close(INFILE);
-
-		# Do the conversion
-		open(INFILE, $infile);
-		$parser->output_fh(*OUTFILE);
-		$parser->parse_file(*INFILE);
-		close(INFILE);
 		}
+	close(INFILE);
+
+	# Do the conversion
+	my $outfile = "$temp_pod_dir/$wikiname.txt";
+	open(OUTFILE, ">$outfile");
+	print OUTFILE "%TOC%\n\n";
+	if ($m->[1] eq ".") {
+		print OUTFILE "---+ Core Webmin API\n\n";
+		}
+	else {
+		print OUTFILE "---+ Functions from module $m->[1]\n\n";
+		}
+	open(INFILE, $infile);
+	my $parser = Pod::Simple::Wiki->new('twiki');
+	$parser->output_fh(*OUTFILE);
+	$parser->parse_file(*INFILE);
+	close(INFILE);
 	close(OUTFILE);
 
 	# Remove errors block
@@ -90,14 +94,52 @@ foreach $m (@mods) {
 	my @lines = <OUT>;
 	close(OUT);
 	open(OUT, ">$outfile");
+	my $verbatim = 0;
 	foreach my $l (@lines) {
 		last if ($l =~ /POD\s+ERRORS/);
+		if ($l =~ /<verbatim>/) {
+			$verbatim = 1;
+			}
+		elsif ($l =~ /<\/verbatim>/) {
+			$verbatim = 0;
+			}
+		elsif (!$verbatim) {
+			$l = &html_escape($l);
+			}
 		print OUT $l;
 		}
 	close(OUT);
 	}
 
+# Create summary page
+open(SUMM, ">$temp_pod_dir/TheWebminAPI.txt");
+print SUMM "---+ The Webmin API\n\n";
+print SUMM <<EOF;
+The Webmin API has a set of core functions that are available to all modules,
+and functions exported by other modules that yours can optionally use. The APIs
+for which documentation is available are linked to below :
+
+EOF
+foreach my $m (@mods) {
+	print SUMM "   * [[$m->[4]][$m->[3]]]\n";
+	}
+close(SUMM);
+
 # Upload to doxfer
 print STDERR "Uploading to $doxfer_host\n";
 system("scp $temp_pod_dir/*.txt doxfer\@$doxfer_host:/home/doxfer/public_html/twiki/data/Webmin/");
 print STDERR "done\n";
+
+sub html_escape
+{
+my ($tmp) = @_;
+$tmp =~ s/&/&amp;/g;
+$tmp =~ s/</&lt;/g;
+$tmp =~ s/>/&gt;/g;
+$tmp =~ s/\"/&quot;/g;
+$tmp =~ s/\'/&#39;/g;
+$tmp =~ s/=/&#61;/g;
+return $tmp;
+}
+
+

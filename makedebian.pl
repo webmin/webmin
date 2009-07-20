@@ -148,7 +148,7 @@ close(COPY);
 
 # Create the config files file, for those we don't want to replace
 open(CONF, ">$conffiles_file");
-print CONF $pam_file,"\n";
+print CONF "/etc/pam.d/$baseproduct\n";
 close(CONF);
 
 # Get the changes for each module and version
@@ -415,7 +415,7 @@ system("gpg --output deb/${product}_$ver.dsc --clearsign deb/${product}_$ver.pla
 unlink("deb/${product}_$ver.plain");
 print "Wrote source deb/${product}_$ver.dsc\n";
 
-if (!$webmail && -d "/usr/local/webadmin/deb/repository") {
+if (-d "/usr/local/webadmin/deb/repository") {
 	# Add to our repository
 	chdir("/usr/local/webadmin/deb/repository");
 	system("reprepro -Vb . remove sarge $product");
