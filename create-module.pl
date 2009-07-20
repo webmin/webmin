@@ -8,9 +8,18 @@
 chop($pwd = `pwd`);
 
 # Parse command-line options
-if ($ARGV[0] eq "--dir") {
-	shift(@ARGV);
-	$forcedir = shift(@ARGV);
+while(@ARGV) {
+	if ($ARGV[0] eq "--dir") {
+		shift(@ARGV);
+		$forcedir = shift(@ARGV);
+		}
+	elsif ($ARGV[0] eq "--sign") {
+		shift(@ARGV);
+		$createsig = 1;
+		}
+	else {
+		last;
+		}
 	}
 
 $file = shift(@ARGV);
@@ -67,6 +76,10 @@ if ($file =~ /^(.*)\.gz$/i) {
 	system("mv $file $1");
 	system("gzip -c $1 >$file");
 	unlink("$1");
+	}
+if ($createsig) {
+	system("rm -f $file-sig.asc");
+	system("gpg --armor --output $file-sig.asc --detach-sig $file");
 	}
 
 # read_file(file, &assoc, [&order], [lowercase])
