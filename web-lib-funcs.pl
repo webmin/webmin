@@ -5419,12 +5419,13 @@ and is called by the other remote_* functions.
 sub remote_rpc_call
 {
 my $serv;
-my $sn = &remote_session_name($_[0]);
+my $sn = &remote_session_name($_[0]);	# Will be undef for local connection
 if (ref($_[0])) {
 	# Server structure was given
 	$serv = $_[0];
-	$serv->{'user'} || !$sn || return &$main::remote_error_handler(
-					"No login set for server");
+	$serv->{'user'} || $serv->{'id'} == 0 ||
+		return &$main::remote_error_handler(
+			"No Webmin login set for server");
 	}
 elsif ($_[0]) {
 	# lookup the server in the webmin servers module if needed
