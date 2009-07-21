@@ -15,12 +15,14 @@ print &ui_table_row($text{'net_protocols'},
 		[ map { [ $_, $text{'net_'.$_} ] } @supported_protocols ],
 		scalar(@supported_protocols), 1, 1));
 
-$dis = &find_value("ssl_disable", $conf);
+# SSL supported?
+$sslopt = &find("ssl_disable", $conf, 2) ? "ssl_disable" : "ssl";
+$dis = &find_value($sslopt, $conf);
 @opts = ( [ "no", $text{'yes'} ], [ "yes", $text{'no'} ] );
 print &ui_table_row($text{'net_ssl_disable'},
-	    &ui_radio("ssl_disable", $dis,
+	    &ui_radio($sslopt, $dis,
 		      [ @opts,
-			[ "", &getdef("ssl_disable", \@opts) ] ]));
+			[ "", &getdef($sslopt, \@opts) ] ]));
 
 @listens = &find("imap_listen", $conf, 2) ?
 		("imap_listen", "pop3_listen", "imaps_listen", "pop3s_listen") :

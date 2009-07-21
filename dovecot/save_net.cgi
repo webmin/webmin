@@ -8,7 +8,8 @@ require './dovecot-lib.pl';
 $conf = &get_config();
 
 &save_directive($conf, "protocols", join(" ", split(/\0/, $in{'protocols'})));
-&save_directive($conf, "ssl_disable", $in{'ssl_disable'} eq '' ? undef : $in{'ssl_disable'});
+$sslopt = &find("ssl_disable", $conf, 2) ? "ssl_disable" : "ssl";
+&save_directive($conf, $sslopt, $in{$sslopt} eq '' ? undef : $in{$sslopt});
 @listens = &find("imap_listen", $conf, 2) ?
 		("imap_listen", "pop3_listen", "imaps_listen", "pop3s_listen") :
 		("listen", "ssl_listen");
