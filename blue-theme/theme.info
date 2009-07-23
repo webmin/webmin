@@ -1,6 +1,12 @@
-depends=1.336
-longdesc=A simple theme with minimal graphics, which uses a categorized layout.
-desc=Blue Framed Theme
-version=1.336
-usermin=1
 webmin=1
+usermin=1
+version=1.480
+desc=Blue Framed Theme
+longdesc=A simple theme with minimal graphics, which uses a categorized layout.
+depends=1.336 1.480
+desc_nl=Blauw Frame Theme
+longdesc_ja_JP.euc=
+longdesc_nl=Een eenvoudig grafish theme, welke catagorie layout gebruikt 
+desc_fr=
+longdesc_fr=
+desc_ja_JP.euc=
