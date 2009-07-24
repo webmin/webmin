@@ -402,7 +402,8 @@ if ($in{'drv'} == 0) {
 	return { 'mode' => 0 };
 	}
 elsif ($in{'drv'} == 2) {
-	(-x $in{'iface'}) || &error(&text('webmin_edriver', $in{'iface'}));
+	my @iface = split(/\s+/, $in{'iface'});
+	-x $iface[0] || &error(&text('webmin_edriver', $iface[0]));
 	return { 'mode' => 2,
 		 'program' => $in{'iface'} };
 	}
