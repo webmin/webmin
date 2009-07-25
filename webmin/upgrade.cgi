@@ -79,8 +79,6 @@ elsif ($in{'source'} == 2) {
 		$progress_callback_url = &convert_osdn_url(
 			"http://$osdn_host/webadmin/webmin-$version.tar.gz");
 		}
-	$progress_callback_url = $redirect_url."/upgrade/".
-				 $progress_callback_url;
 	($host, $port, $page, $ssl) = &parse_http_url($progress_callback_url);
 	$file = &transname();
 	&http_download($host, $port, $page, $file, \$error,
