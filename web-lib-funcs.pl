@@ -2084,6 +2084,10 @@ if ($rcode >= 300 && $rcode < 400) {
 		if ($_[2]) { ${$_[2]} = "Missing Location header"; return; }
 		else { &error("Missing Location header"); }
 		}
+	my $params;
+	($page, $params) = split(/\?/, $page);
+	$page =~ s/ /%20/g;
+	$page .= "?".$params if (defined($params));
 	&http_download($host, $port, $page, $_[1], $_[2], $cbfunc, $ssl,
 		       undef, undef, undef, $_[4], 0, $_[7]);
 	}
