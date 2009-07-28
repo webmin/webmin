@@ -592,3 +592,5 @@ Updated all code that reads or writes to files in a virtual server's home direct
 Added an option to the backup form for selecting virtual servers by plan. Also added the --plan flag to the backup-domains command.
 Corrected a mis-feature that prevented alias virtual servers with no home directory from being backed up in the new format.
 When a virtual server is restored from a backup, the pre and post-change commands are called with $VIRTUALSERVER_ACTION set to RESTORE_DOMAIN.
+---- Changes since 3.71 ----
+Added support for JSON, XML and Perl output to the remote API, enabled with the json=1, xml=1 or perl=1 URL parameters.
