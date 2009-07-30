@@ -157,7 +157,12 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				if ($actsl[$i] =~ /^0/) {
 					local $out = $has{'status'} ?
 						`$actsf[$i] status` : '';
-					if ($out =~ /running/i) {
+					if ($out =~ /not\s+running/i) {
+						push(@cols,
+							"<font color=#ff0000>".
+							"$text{'no'}</font>");
+						}
+					elsif ($out =~ /running/i) {
 						push(@cols, $text{'yes'});
 						}
 					elsif ($out =~ /stopped/i) {
