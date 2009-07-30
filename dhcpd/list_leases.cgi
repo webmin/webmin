@@ -33,7 +33,11 @@ foreach $subnet (@subnets) {
 			}
 		}
 	$subnet->{'ips'} = 0;
-	foreach $range (&find("range", $subnet->{'members'})) {
+	@ranges = &find("range", $subnet->{'members'});
+	foreach $pool (&find("pool", $subnet->{'members'})) {
+		push(@ranges, &find("range", $pool->{'members'}));
+		}
+	foreach $range (@ranges) {
 		local @rv = @{$range->{'values'}};
 		shift(@rv) if ($rv[0] eq "dynamic-bootp");
 		foreach $ip (&expand_ip_range($rv[0], $rv[1])) {
