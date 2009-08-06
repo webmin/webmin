@@ -28,6 +28,9 @@ if (!$no_check_support) {
 		$ext3_support = 1;
 		$no_mount_check = 1;
 		$bind_support = 1;	# XXX which version?
+		if ($1 >= 2.6) {
+			$ext4_support = 1;
+			}
 		}
 	if (&has_command("mkfs.xfs")) {
 		$xfs_support = 1;
@@ -847,7 +850,7 @@ elsif ($_[0] eq "auto" || $_[0] eq "autofs")
 elsif ($_[0] eq $smbfs_fs)
 	{ return ($smbfs_support >= 3 ? 2 : 0, 1, 0, 0); }
 elsif ($_[0] eq "cifs") { return (2, 1, 0, 0); }
-elsif ($_[0] eq "ext2" || $_[0] eq "ext3" || $_[0] eq "minix" ||
+elsif ($_[0] =~ /^ext\d+$/ || $_[0] eq "minix" ||
        $_[0] eq "xiafs" || $_[0] eq "xfs")
 	{ return (2, 1, 1, 0); }
 else
@@ -897,6 +900,7 @@ push(@sup, "auto") if ($amd_support);
 push(@sup, "autofs") if ($autofs_support);
 push(@sup, "tmpfs") if ($tmpfs_support);
 push(@sup, "ext3") if ($ext3_support);
+push(@sup, "ext4") if ($ext4_support);
 push(@sup, "xfs") if ($xfs_support);
 push(@sup, "jfs") if ($jfs_support);
 push(@sup, "bind") if ($bind_support);
@@ -912,6 +916,7 @@ sub fstype_name
 local(%fsmap);
 %fsmap = ("ext2","Old Linux Native Filesystem",
 	  "ext3","Linux Native Filesystem",
+	  "ext4","New Linux Native Filesystem",
 	  "minix","Minix Filesystem",
 	  "msdos","MS-DOS Filesystem",
 	  "nfs","Network Filesystem",
@@ -1176,7 +1181,7 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 		defined($options{"user"}) ? "" : "checked";
 	}
 	
-if ($_[0] eq "ext2" || $_[0] eq "ext3") {
+if ($_[0] =~ /^ext\d+$/) {
 	# Ext2 has lots more options..
         print "<tr $tb> <td colspan=4><b>$text{'edit_ext_opt'}</b></td> </tr>\n";
 	if ($no_mount_check) {
@@ -1968,7 +1973,7 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	    if ($in{nfs_sec} == 2) { $options{"sec"} = "krb5p"; }
 	}
     }
-elsif ($_[0] eq "ext2" || $_[0] eq "ext3") {
+elsif ($_[0] =~ /^ext\d+$/) {
 	# More options for ext2..
 	if ($no_mount_check) {
 		delete($options{"bsddf"}); delete($options{"minixdf"});
