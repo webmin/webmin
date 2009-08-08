@@ -21,7 +21,7 @@ $desc = &ip6int_to_net(&arpa_to_ip($dom));
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Start of the form
-print &ui_form_start("save_slave.cgi");
+print &ui_form_start("save_slave.cgi", "post");
 print &ui_hidden("index", $in{'index'});
 print &ui_hidden("view", $in{'view'});
 print &ui_hidden("slave_stub", $scriptname);

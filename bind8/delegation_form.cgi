@@ -9,7 +9,7 @@ $access{'ro'} && &error($text{'master_ero'});
 		 undef, undef, undef, undef, &restart_links());
 
 # Form start
-print &ui_form_start("create_delegation.cgi");
+print &ui_form_start("create_delegation.cgi", "post");
 print &ui_table_start($text{'dcreate_opts'}, "width=100%", 4);
 
 # Forward or reverse?

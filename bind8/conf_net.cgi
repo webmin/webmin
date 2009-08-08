@@ -12,7 +12,7 @@ $options = &find("options", $conf);
 $mems = $options->{'members'};
 
 # Start of form
-print &ui_form_start("save_net.cgi");
+print &ui_form_start("save_net.cgi", "post");
 print &ui_table_start($text{'net_header'}, "width=100%", 4);
 
 # Ports and addresses to listen on

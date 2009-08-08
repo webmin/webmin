@@ -8,7 +8,7 @@ $access{'defaults'} || &error($text{'zonedef_ecannot'});
 		 undef, undef, undef, undef, &restart_links());
 
 # Start of defaults for new zones form
-print &ui_form_start("save_zonedef.cgi");
+print &ui_form_start("save_zonedef.cgi", "post");
 print &ui_table_start($text{'zonedef_msg'}, "width=100%", 4);
 &get_zone_defaults(\%zd);
 

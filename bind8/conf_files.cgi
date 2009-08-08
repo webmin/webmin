@@ -13,7 +13,7 @@ $options = &find("options", $conf);
 $mems = $options->{'members'};
 
 # Start of the form
-print &ui_form_start("save_files.cgi");
+print &ui_form_start("save_files.cgi", "post");
 print &ui_table_start($text{'files_header'}, "width=100%", 4);
 
 print &opt_input($text{'files_stats'}, "statistics-file", $mems,

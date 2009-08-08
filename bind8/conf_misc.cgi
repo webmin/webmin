@@ -13,7 +13,7 @@ $options = &find("options", $conf);
 $mems = $options->{'members'};
 
 # Start of the form
-print &ui_form_start("save_misc.cgi");
+print &ui_form_start("save_misc.cgi", "post");
 print &ui_table_start($text{'misc_header'}, "width=100%", 4);
 
 print &opt_input($text{'misc_core'}, 'coresize', $mems, $text{'default'}, 8);

@@ -9,7 +9,7 @@ $access{'defaults'} || &error($text{'dnssec_ecannot'});
 
 print $text{'dnssec_desc'},"<p>\n";
 
-print &ui_form_start("save_dnssec.cgi");
+print &ui_form_start("save_dnssec.cgi", "post");
 print &ui_table_start($text{'dnssec_header'}, undef, 2);
 
 # Rotation enabled?

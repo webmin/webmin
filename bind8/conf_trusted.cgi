@@ -17,7 +17,7 @@ $tkeys ||= { 'members' => [ ] };
 # Check if not setup at all
 if (!@dlv && !@{$tkeys->{'members'}}) {
 	print "<center>\n";
-	print &ui_form_start("setup_trusted.cgi");
+	print &ui_form_start("setup_trusted.cgi", "post");
 
 	print &text('trusted_setup', "<tt>$dnssec_dlv_zone</tt>"),"<p>\n";
 
@@ -26,7 +26,7 @@ if (!@dlv && !@{$tkeys->{'members'}}) {
 	print "<hr>\n";
 	}
 
-print &ui_form_start("save_trusted.cgi");
+print &ui_form_start("save_trusted.cgi", "post");
 print &ui_table_start($text{'trusted_header'}, undef, 4);
 
 # DNSSEC enabled?

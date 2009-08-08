@@ -12,7 +12,7 @@ $conf = &get_config();
 		 undef, undef, undef, undef, &restart_links());
 
 # Start of the form
-print &ui_form_start("create_slave.cgi");
+print &ui_form_start("create_slave.cgi", "post");
 print &ui_hidden("type", $type);
 print &ui_table_start($type ? $text{'screate_header1'}
 			    : $text{'screate_header2'}, "width=100%", 4);

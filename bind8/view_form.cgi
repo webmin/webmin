@@ -12,7 +12,7 @@ $access{'ro'} && &error($text{'vcreate_ecannot'});
 		 undef, undef, undef, undef, &restart_links());
 
 # Form header
-print &ui_form_start("create_view.cgi");
+print &ui_form_start("create_view.cgi", "post");
 print &ui_table_start($text{'view_opts'}, "width=100%", 4);
 
 # View name

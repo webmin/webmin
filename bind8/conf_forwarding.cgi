@@ -12,7 +12,7 @@ $options = &find("options", $conf);
 $mems = $options->{'members'};
 
 # Start of the form
-print &ui_form_start("save_forwarding.cgi");
+print &ui_form_start("save_forwarding.cgi", "post");
 print &ui_table_start($text{'forwarding_header'}, "width=100%", 4);
 
 print &forwarders_input($text{'forwarding_fwders'}, 'forwarders', $mems);

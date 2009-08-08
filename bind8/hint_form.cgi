@@ -26,7 +26,7 @@ foreach $z (@zones) {
 
 # Form start
 print $text{'hcreate_desc'},"<p>\n";
-print &ui_form_start("create_hint.cgi");
+print &ui_form_start("create_hint.cgi", "post");
 print &ui_table_start($text{'hcreate_header'}, "width=100%", 4);
 
 # File for root data

@@ -21,7 +21,7 @@ foreach $r (@recs) {
 $v = $soa->{'values'};
 
 # form for editing SOA record
-print &ui_form_start("save_soa.cgi");
+print &ui_form_start("save_soa.cgi", "post");
 print &ui_hidden("num", $soa->{'num'});
 print &ui_hidden("origin", $dom);
 print &ui_hidden("index", $in{'index'});

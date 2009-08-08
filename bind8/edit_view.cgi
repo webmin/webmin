@@ -14,7 +14,7 @@ $access{'views'} || &error($text{'view_ecannot'});
 		 undef, undef, undef, undef, &restart_links());
 
 # Form header
-print &ui_form_start("save_view.cgi");
+print &ui_form_start("save_view.cgi", "post");
 print &ui_hidden("index", $in{'index'});
 print &ui_table_start($text{'view_opts'}, "width=100%", 4,
 		      [ "width=30%", undef, "width=30%", undef ]);

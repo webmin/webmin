@@ -8,7 +8,7 @@ $access{'master'} || &error($text{'mcreate_ecannot'});
 &ui_print_header(undef, $text{'mcreate_title'}, "",
 		 undef, undef, undef, undef, &restart_links());
 
-print &ui_form_start("create_master.cgi");
+print &ui_form_start("create_master.cgi", "post");
 print &ui_table_start($text{'mcreate_opts'}, "width=100%", 4);
 
 # Forward or reverse?

@@ -20,7 +20,7 @@ $desc = &ip6int_to_net(&arpa_to_ip($dom));
 		 undef, undef, undef, undef, &restart_links($zone));
 
 # Start of form for editing zone options
-print &ui_form_start("save_master.cgi");
+print &ui_form_start("save_master.cgi", "post");
 print &ui_hidden("index", $in{'index'});
 print &ui_hidden("view", $in{'view'});
 print &ui_table_start($text{'master_opts'}, "width=100%", 4);

@@ -11,7 +11,7 @@ $controls = &find("controls", $conf);
 $inet = &find("inet", $controls->{'members'});
 $unix = &find("unix", $controls->{'members'});
 
-print &ui_form_start("save_controls.cgi");
+print &ui_form_start("save_controls.cgi", "post");
 print &ui_table_start($text{'controls_header'}, undef, 2);
 
 # Show options for inet control
