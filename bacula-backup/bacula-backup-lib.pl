@@ -734,7 +734,9 @@ sub console_cmd
 {
 local ($h, $cmd) = @_;
 &sysprint($h->{'infh'}, $cmd."\n");
-&sysprint($h->{'infh'}, "time\n");
+if ($cmd ne "quit") {
+	&sysprint($h->{'infh'}, "time\n");
+	}
 local $rv = &wait_for($h->{'outfh'}, 'time\n(\d+\-\S+\-\d+ \d+:\d+:\d+)\n',
 				     'Unable to connect to Director');
 return undef if ($rv == 1);
