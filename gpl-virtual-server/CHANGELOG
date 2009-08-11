@@ -596,3 +596,5 @@ When a virtual server is restored from a backup, the pre and post-change command
 Added support for JSON, XML and Perl output to the remote API, enabled with the json=1, xml=1 or perl=1 URL parameters.
 Deprecated the feature to write logs via a program, as logging to /var/log/virtualmin is now the default.
 Added validation for incorrect SuExec Apache directives.
+If a single database backup for a virtual server fails, others will still be backed up.
+Added a bandwidth monitoring option to include relayed email, thanks to Collin from Bisnet.
