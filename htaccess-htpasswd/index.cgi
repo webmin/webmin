@@ -58,6 +58,7 @@ if (@dirs) {
 	print &ui_columns_start([ $can_create ? ( "" ) : ( ),
 				  $text{'index_dir'},
 				  $text{'index_usersgroups'} ], 100, 0, \@tds);
+	&switch_user();
 	foreach $d (@dirs) {
 		local @cols;
 		if ($can_create) {
@@ -140,6 +141,7 @@ if (@dirs) {
 			print &ui_columns_row(\@cols, \@tds);
 			}
 		}
+	&switch_back();
 	print &ui_columns_end();
 	if ($can_create) {
 		print &ui_links_row(\@links);

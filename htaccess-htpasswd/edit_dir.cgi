@@ -82,8 +82,10 @@ else {
 
 # Authentication realm
 if (!$in{'new'}) {
+	&switch_user();
 	$conf = &foreign_call($apachemod, "get_htaccess_config",
 			      "$dir->[0]/$config{'htaccess'}");
+	&switch_back();
 	$realm = &foreign_call($apachemod, "find_directive",
 			       "AuthName", $conf, 1);
 	}
