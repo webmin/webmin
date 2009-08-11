@@ -20,3 +20,5 @@ Added a button for changing the number of active devices in a RAID 5 or 6 set, t
 ---- Changes since 1.470 ----
 Added an option to the RAID 1 creation form to mark one of the disks as missing initially.
 Run the update-initramfs -u command after changing mdadm.conf, to sync it into any ramdisk for use at boot time.
+---- Changes since 1.480 ----
+Raw disks with no partitions can now also be used as RAID members.

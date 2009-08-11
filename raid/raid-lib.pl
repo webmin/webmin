@@ -538,6 +538,13 @@ foreach $d (&fdisk::list_disks_partitions()) {
 				$d->{'cylsize'} ? " (".&nice_size($d->{'cylsize'}*($p->{'end'} - $p->{'start'} + 1)).")" :
 				" ($p->{'blocks'} $text{'blocks'})") ]);
 		}
+	if (!@{$d->{'parts'}} &&
+	    !$used{$d->{'device'}} && !$skip{$d->{'device'}}) {
+		# Raw disk has no partitions - add it as an option
+		push(@disks, [ $d->{'device'},
+			       $d->{'desc'}.
+			       ($d->{'cylsize'} ? " (".&nice_size($d->{'cylsize'}*$d->{'cylinders'}).")" : "") ]);
+		}
 	}
 foreach $c (@$conf) {
 	next if (!$c->{'active'} || $used{$c->{'value'}});
