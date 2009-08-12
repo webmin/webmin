@@ -119,9 +119,11 @@ else {
 	}
 
 $_[0]->{'tls'} = $in{'tls'};
-eval "use Net::FTPSSL";
-if ($@) {
-	&error(&text('ftp_etls', '<tt>Net::FTPSSL</tt>'));
+if ($in{'tls'}) {
+	eval "use Net::FTPSSL";
+	if ($@) {
+		&error(&text('ftp_etls', '<tt>Net::FTPSSL</tt>'));
+		}
 	}
 }
 
