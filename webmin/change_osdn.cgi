@@ -28,26 +28,6 @@ if ($in{'clear'}) {
 	}
 
 &lock_file("$config_directory/config");
-if ($config{'osdn'}) {
-	# Parse mirror selection from list
-	if ($in{'mirror'} eq "*") {
-		$in{'other'} =~ /^\S+$/ || &error($text{'proxy_eother'});
-		$gconfig{'osdn_mirror'} = $in{'other'};
-		}
-	else {
-		$gconfig{'osdn_mirror'} = $in{'mirror'};
-		}
-	}
-else {
-	# Use manually entered mirror
-	if ($in{'mirror_def'}) {
-		$gconfig{'osdn_mirror'} = undef;
-		}
-	else {
-		$in{'mirror'} =~ /^\S+$/ || &error($text{'proxy_eother'});
-		$gconfig{'osdn_mirror'} = $in{'mirror'};
-		}
-	}
 
 # Save cache size
 if ($in{'cache_def'}) {

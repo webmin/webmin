@@ -92,3 +92,5 @@ Expired Unix passwords can now be changed using an external command, instead of 
 Detect and ignore failures when checking if other modules are installed.
 ---- Changes since 1.470 ----
 Added a field to the Operating System and Environment page for additional Perl module directories.
+---- Changes since 1.480 ----
+Removed the option to select an OSDN mirror, as Sourceforge now does sensible location-based redirects automatically.

@@ -54,29 +54,6 @@ print $text{'proxy_desc2'},"<p>\n";
 print &ui_form_start("change_osdn.cgi");
 print &ui_table_start($text{'proxy_header2'}, undef, 2, [ "width=30%" ]);
 
-if ($config{'osdn'}) {
-	# Show list of mirrors to choose from
-	$base = &get_webmin_base_version();
-	@mirrors = &list_osdn_mirrors("webadmin", "webmin-$base.tar.gz");
-	@codes = map { $_->{'mirror'} } @mirrors;
-	$inlist = !$gconfig{'osdn_mirror'} ||
-		  &indexof($gconfig{'osdn_mirror'}, @codes) >= 0;
-	print &ui_table_row($text{'proxy_osdn'},
-	   &ui_select("mirror", $inlist ? $gconfig{'osdn_mirror'} : "*",
-			[ [ "", $text{'proxy_mirrordef'} ],
-			  (map { [ $_->{'mirror'},
-				   $_->{'country'} ? "$_->{'mirror'} ($_->{'country'})" : $_->{'mirror'} ] } @mirrors),
-			  [ "*", $text{'proxy_other'} ] ])." ".
-		     &ui_textbox("other",
-			$inlist ? "" : $gconfig{'osdn_mirror'}, 10));
-	}
-else {
-	# Just show text field for mirror code
-	print &ui_table_row($text{'proxy_osdn'},
-	   &ui_opt_textbox("mirror", $gconfig{'osdn_mirror'}, 10,
-			      $text{'proxy_mirrordef2'}));
-	}
-
 # Cache size
 print &ui_table_row($text{'proxy_cache'},
 		    &ui_radio("cache_def", $gconfig{'cache_size'} ? 0 : 1,

@@ -587,7 +587,7 @@ Assumes that gnupg-lib.pl is available
 =cut
 sub gnupg_setup
 {
-return ( 1, &text('enogpg', "<tt>gpg</tt>") ) if (!&has_command("gpg"));
+return ( 1, &text('enogpg', "<tt>gpg</tt>") ) if (!&has_command($gpgpath));
 
 # Check if we already have the key
 local @keys = &list_keys();
@@ -598,7 +598,7 @@ foreach $k (@keys) {
 
 # Import it if not
 &list_keys();
-$out = `gpg --import $module_root_directory/jcameron-key.asc 2>&1`;
+$out = `$gpgpath --import $module_root_directory/jcameron-key.asc 2>&1`;
 if ($?) {
 	return (2, $out);
 	}

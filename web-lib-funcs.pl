@@ -8303,7 +8303,7 @@ return @rv;
 
 Given a URL like http://osdn.dl.sourceforge.net/sourceforge/project/file.zip
 or http://prdownloads.sourceforge.net/project/file.zip , convert it
-to a real URL on the best mirror.
+to a real URL on the sourceforge download redirector.
 
 =cut
 sub convert_osdn_url
@@ -8311,22 +8311,12 @@ sub convert_osdn_url
 my ($url) = @_;
 if ($url =~ /^http:\/\/[^\.]+.dl.sourceforge.net\/sourceforge\/([^\/]+)\/(.*)$/ ||
     $url =~ /^http:\/\/prdownloads.sourceforge.net\/([^\/]+)\/(.*)$/) {
-	# Find best site
+	# Always use the Sourceforge mail download URL, which does
+	# a location-based redirect for us
 	my ($project, $file) = ($1, $2);
-	my @mirrors = &list_osdn_mirrors($project, $file);
-	my $pref = $gconfig{'osdn_mirror'};
-	my $site;
-	if ($pref) {
-		($site) = grep { $_->{'mirror'} eq $pref } @mirrors;
-		}
-	if (!$site) {
-		# Fall back to automatic mirror selection via Sourceforge
-		# redirect
-		$site = { 'url' => "http://prdownloads.sourceforge.net/sourceforge/$project/$file",
-			  'default' => 0 };
-		}
-	return wantarray ? ( $site->{'url'}, $site->{'default'} )
-			 : $site->{'url'};
+	local $url = "http://prdownloads.sourceforge.net/sourceforge/".
+		     "$project/$file";
+	return wantarray ? ( $url, 0 ) : $url;
 	}
 else {
 	# Some other source .. don't change
