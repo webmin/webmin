@@ -65,6 +65,18 @@ if ($in{'pdisk'}) {
 					  'value' => 0 } ] } );
 	}
 
+# Parse spare group
+if ($in{'group_mode'} == 1) {
+	push(@members, { 'name' => 'spare-group',
+			 'value' => $in{'group'} });
+	}
+elsif ($in{'group_mode'} == 2) {
+	$in{'newgroup'} =~ /^[a-z0-9\_]+$/i ||
+		&error($text{'create_enewgroup'});
+	push(@members, { 'name' => 'spare-group',
+			 'value' => $in{'newgroup'} });
+	}
+
 &create_raid($raid);
 &unlock_raid_files();
 if ($err = &make_raid($raid, $in{'force'}, $in{'missing'})) {

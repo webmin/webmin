@@ -170,6 +170,23 @@ else {
 		close(MDSTAT);
 		push(@get_raidtab_cache, $md);
 		}
+
+	# Merge in info from mdadm.conf
+	local $lref = &read_file_lines($config{'mdadm'});
+	foreach my $l (@$lref) {
+		if ($l =~ /^ARRAY\s+(\S+)\s*(.*)/) {
+			local $dev = $1;
+			local %opts = map { split(/=/, $_, 2) }
+					  split(/\s+/, $2);
+			local ($md) = grep { $_->{'value'} eq $dev }
+					   @get_raidtab_cache;
+			if ($md) {
+				push(@{$md->{'members'}},
+					{ 'name' => 'spare-group',
+					  'value' => $opts{'spare-group'} });
+				}
+			}
+		}
 	}
 return \@get_raidtab_cache;
 }
@@ -218,12 +235,14 @@ else {
 	foreach $d (&find("device", $_[0]->{'members'})) {
 		push(@devices, $d->{'value'});
 		}
+	local $sg = &find_value("spare-group", $_[0]->{'members'});
 	local $lref = &read_file_lines($config{'mdadm'});
 	local $lvl = &find_value('raid-level', $_[0]->{'members'});
 	$lvl = $lvl =~ /^\d+$/ ? "raid$lvl" : $lvl;
 	push(@$lref, "DEVICE ".join(" ", @devices));
 	push(@$lref, "ARRAY $_[0]->{'value'} level=$lvl devices=".
-		     join(",", @devices));
+		     join(",", @devices).
+		     ($sg ? " spare-group=$sg" : ""));
 	&flush_file_lines();
 	&update_initramfs();
 	}

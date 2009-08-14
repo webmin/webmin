@@ -50,6 +50,11 @@ create_edisks=No partitions selected
 create_edisks2=At least 2 partitions must be selected for mirroring
 create_espare=Spare partition $1 cannot also be a RAID partition
 create_epdisk=Parity partition cannot also be a RAID partition
+create_group=Member of spare group
+create_nogroup=None (use own spares only)
+create_oldgroup=Existing group
+create_newgroup=New group
+create_enewgroup=Missing or non-alphnumeric spare group name
 
 view_title=RAID Device
 view_header=RAID device options
@@ -94,6 +99,7 @@ view_newmount2=Mount RAID as Virtual Memory
 view_mountmsg=Enter a directory and click this button to go to a form for mounting the RAID device, which must already contain a filesystem.
 view_mountmsg2=Click this button to use this RAID device for virtual memory on your system.
 view_blocks=$1 blocks
+view_sparegroup=Spare group
 
 mkfs_title=Create Filesystem
 mkfs_header2=This form allows you to build a new $2 filesystem on $1. <b>All</b> existing data will be erased!

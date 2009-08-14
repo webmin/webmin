@@ -87,6 +87,24 @@ if ($lvl == 1 && $raid_mode eq 'mdadm') {
 		&ui_yesno_radio("missing", 0));
 	}
 
+# Spare-group name option
+if ($raid_mode eq 'mdadm') {
+	@opts = ( [ 0, $text{'create_nogroup'} ] );
+	@groups = ( );
+	foreach $c (@$conf) {
+		$sg = &find_value("spare-group", $c->{'members'});
+		push(@groups, $sg) if ($sg);
+		}
+	if (@groups) {
+		push(@opts, [ 1, $text{'create_oldgroup'},
+			      &ui_select("group", undef, \@groups) ]);
+		}
+	push(@opts, [ 2, $text{'create_newgroup'},
+		      &ui_textbox("newgroup", undef, 30) ]);
+	print &ui_table_row($text{'create_group'},
+		&ui_radio_table("group_mode", 0, \@opts, 1));
+	}
+
 # Force creation
 print &ui_table_row($text{'create_force'},
 	&ui_yesno_radio("force", 0));

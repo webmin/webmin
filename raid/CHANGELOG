@@ -22,3 +22,4 @@ Added an option to the RAID 1 creation form to mark one of the disks as missing 
 Run the update-initramfs -u command after changing mdadm.conf, to sync it into any ramdisk for use at boot time.
 ---- Changes since 1.480 ----
 Raw disks with no partitions can now also be used as RAID members.
+Spare groups can now be created and used when creating a RAID device.

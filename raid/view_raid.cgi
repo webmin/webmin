@@ -121,6 +121,13 @@ foreach $d (@devs) {
 if ($sp) {
 	print &ui_table_row($text{'view_spares'}, $sp);
 	}
+
+# Display spare group, if any
+$sg = &find_value("spare-group", $raid->{'members'});
+if ($sg) {
+	print &ui_table_row($text{'view_sparegroup'}, "<tt>$sg</tt>");
+	}
+
 print &ui_table_end();
 
 print &ui_hr();

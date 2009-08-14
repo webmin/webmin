@@ -1,5 +1,4 @@
 #!/usr/local/bin/perl
-# index.cgi
 # Display all RAID devices
 
 require './raid-lib.pl';
