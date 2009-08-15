@@ -165,7 +165,7 @@ if ($raid->{'active'} && !$st[2]) {
 	$fstype = $st[1] || "ext3";
 	push(@grid, &ui_submit($text{'view_mkfs2'}, "mkfs")." ".
 	    &ui_select("fs", $fstype,
-			[ map { [ $_, $fdisk::text{"fs_".$_} ] }
+			[ map { [ $_, $fdisk::text{"fs_".$_}." ($_)" ] }
 			      &fdisk::supported_filesystems() ]),
 	    $text{'view_mkfsdesc'});
 	}
