@@ -70,7 +70,7 @@ print &ui_table_row($text{'create_chunk'},
 print &ui_table_row($text{'create_disks'},
 	&ui_select("disks", undef, \@disks, 4, 1));
 
-if ($lvl >= 4 && $lvl != 10) {
+if ($lvl == 1 || $lvl == 4 || $lvl == 5 || $lvl == 10) {
 	print &ui_table_row($text{'create_spares'},
 		&ui_select("spares", undef, \@disks, 4, 1));
 	}
