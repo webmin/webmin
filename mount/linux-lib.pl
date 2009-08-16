@@ -955,8 +955,8 @@ return $config{long_fstypes} && $fsmap{$_[0]} ? $fsmap{$_[0]} : uc($_[0]);
 # Returns 1 if filesystems of this type can be mounted multiple times, 0 if not
 sub multiple_mount
 {
-return ($_[0] eq "nfs" || $_[0] eq "nfs4" || $_[0] eq "auto" || $_[0] eq "autofs" ||
-	$_[0] eq "bind");
+return ($_[0] eq "nfs" || $_[0] eq "nfs4" || $_[0] eq "auto" ||
+	$_[0] eq "autofs" || $_[0] eq "bind" || $_[0] eq "tmpfs");
 }
 
 
