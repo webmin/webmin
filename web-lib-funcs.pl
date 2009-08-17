@@ -8229,74 +8229,16 @@ return $rv;
 
 =head2 list_osdn_mirrors(project, file)
 
-Given a OSDN project and filename, returns a list of mirror URLs from
-which it can be downloaded. Mainly for internal use by the http_download
-function.
+This function is now deprecated in favor of letting sourceforge just
+redirect to the best mirror, and now just returns their primary download URL.
 
 =cut
 sub list_osdn_mirrors
 {
 my ($project, $file) = @_;
-
-# Convert the sourceforge project name to a group ID
-my ($idpage, $iderror);
-&http_download($osdn_download_host, $osdn_download_port,
-	       "/$project/", \$idpage, \$iderror,
-	       undef, 0, undef, undef, 0, 0, 1);
-my $group_id;
-if ($idpage =~ /showfiles.php\?group_id=(\d+)/) {
-	$group_id = $1;
-	}
-
-# Query the mirror picker page
-my ($page, $error, @rv);
-if ($group_id) {
-	&http_download($osdn_download_host, $osdn_download_port,
-		       "/project/mirror_picker.php?group_id=".&urlize($group_id).
-			"&filename=".&urlize($file),
-		       \$page, \$error, undef, 0, undef, undef, 0, 0, 1,
-		       \%headers);
-	while($page =~ /<input[^>]*name="use_mirror"\s+value="(\S+)"[^>]*>([^,]+),\s*([^<]*)<([\000-\377]*)/i) {
-		# Got a country and city
-		push(@rv, { 'country' => $3,
-			    'city' => $2,
-			    'mirror' => $1,
-			    'url' => "http://$1.dl.sourceforge.net/sourceforge/$project/$file" });
-		$page = $4;
-		}
-	}
-
-if (!@rv) {
-	# None found! Try some known mirrors
-	foreach my $m ("superb-east", "superb-west", "osdn", "downloads") {
-		my $url = $m eq "downloads" ?
-		    "http://downloads.sourceforge.net/$project/$file" :
-		    "http://$m.dl.sourceforge.net/sourceforge/$project/$file";
-		$main::download_timed_out = undef;
-		local $SIG{ALRM} = \&download_timeout;
-		alarm(10);
-		my ($host, $port, $page, $ssl) = &parse_http_url($url);
-		my $h = &make_http_connection(
-			$host, $port, $ssl, "HEAD", $page);
-		alarm(0);
-		next if (!ref($h) || $main::download_timed_out);
-
-		# Make a HEAD request
-		&write_http_connection($h, "Host: $host\r\n");
-		&write_http_connection($h, "User-agent: Webmin\r\n");
-		&write_http_connection($h, "\r\n");
-		$line = &read_http_connection($h);
-		$line =~ s/\r|\n//g;
-		&close_http_connection($h);
-		if ($line =~ /^HTTP\/1\..\s+(200)\s+/) {
-			push(@rv, { 'mirror' => $m,
-				    'default' => $m eq 'osdn',
-				    'url' => $url });
-			last;
-			}
-		}
-	}
-return @rv;
+return ( { 'url' => "http://downloads.sourceforge.net/$project/$file",
+	   'default' => 0,
+	   'mirror' => 'downloads' } );
 }
 
 =head2 convert_osdn_url(url)
@@ -8314,8 +8256,8 @@ if ($url =~ /^http:\/\/[^\.]+.dl.sourceforge.net\/sourceforge\/([^\/]+)\/(.*)$/ 
 	# Always use the Sourceforge mail download URL, which does
 	# a location-based redirect for us
 	my ($project, $file) = ($1, $2);
-	local $url = "http://prdownloads.sourceforge.net/sourceforge/".
-		     "$project/$file";
+	$url = "http://prdownloads.sourceforge.net/sourceforge/".
+	       "$project/$file";
 	return wantarray ? ( $url, 0 ) : $url;
 	}
 else {
