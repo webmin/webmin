@@ -6,6 +6,7 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 require './config-lib.pl';
 &init_config();
+&ReadParse();
 $m = $in{'module'} || $ARGV[0];
 &foreign_available($m) || &error($text{'config_eaccess'});
 %access = &get_module_acl(undef, $m);
