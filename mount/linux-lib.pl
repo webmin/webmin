@@ -851,7 +851,7 @@ elsif ($_[0] eq $smbfs_fs)
 	{ return ($smbfs_support >= 3 ? 2 : 0, 1, 0, 0); }
 elsif ($_[0] eq "cifs") { return (2, 1, 0, 0); }
 elsif ($_[0] =~ /^ext\d+$/ || $_[0] eq "minix" ||
-       $_[0] eq "xiafs" || $_[0] eq "xfs")
+       $_[0] eq "xiafs" || $_[0] eq "xfs" || $_[0] eq "jfs")
 	{ return (2, 1, 1, 0); }
 else
 	{ return (2, 1, 0, 0); }
