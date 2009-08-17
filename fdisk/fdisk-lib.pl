@@ -717,6 +717,9 @@ elsif ($_[0] eq "jfs") {
 elsif ($_[0] eq "fatx") {
 	$cmd = "mkfs -t $_[0] $_[1]";
 	}
+if (&has_command("partprobe")) {
+	$cmd .= " ; partprobe";
+	}
 return $cmd;
 }
 
