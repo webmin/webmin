@@ -598,3 +598,6 @@ Deprecated the feature to write logs via a program, as logging to /var/log/virtu
 Added validation for incorrect SuExec Apache directives.
 If a single database backup for a virtual server fails, others will still be backed up.
 Added a bandwidth monitoring option to include relayed email, thanks to Collin from Bisnet.
+---- Changes since 3.72 ----
+On Sendmail systems with outgoing address mapping enabled, the generic domains file is now correctly updated.
+Added a domain-owner leven restriction to prevent changing of a virtual server's password.
