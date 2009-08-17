@@ -1919,15 +1919,12 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 
 	delete($options{"dev"}); delete($options{"nodev"});
 	if ($in{lnx_nodev}) { $options{"nodev"} = ""; }
-	else { $options{"dev"} = ""; }
 
 	delete($options{"exec"}); delete($options{"noexec"});
 	if ($in{lnx_noexec}) { $options{"noexec"} = ""; }
-	else { $options{"exec"} = ""; }
 
 	delete($options{"suid"}); delete($options{"nosuid"});
 	if ($in{lnx_nosuid}) { $options{"nosuid"} = ""; }
-	else { $options{"suid"} = ""; }
 
 	delete($options{"user"}); delete($options{"nouser"});
 	if ($in{lnx_user}) { $options{"user"} = ""; }
