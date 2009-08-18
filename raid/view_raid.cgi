@@ -153,7 +153,7 @@ if ($raid_mode eq "mdadm") {
 			    &ui_select("rdisk", undef, \@rdisks),
 			    $text{'view_removedesc'});
 		}
-	if ($sparescnt>0) {
+	if ($sparescnt>0 && $lvl != 10) {
 		push(@grid, &ui_submit($text{'view_grow'}, "grow")." ".
 			    &ui_select("ndisk", undef, \@spares),
 			    $text{'view_growdesc'});
