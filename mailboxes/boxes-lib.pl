@@ -1087,6 +1087,44 @@ if (!close(MAIL)) {
 return $lnum;
 }
 
+# unparse_mail(&attachments, eol, boundary)
+# Convert an array of attachments into MIME format, and return them as an
+# array of lines.
+sub unparse_mail
+{
+local ($attach, $eol, $bound) = @_;
+local @rv;
+foreach my $a (@$attach) {
+	push(@rv, $eol);
+	push(@rv, "--".$bound.$eol);
+	local $enc;
+	foreach my $h (@{$a->{'headers'}}) {
+		push(@rv, $h->[0].": ".$h->[1].$eol);
+		$enc = $h->[1]
+			if (lc($h->[0]) eq 'content-transfer-encoding');
+		}
+	push(@rv, $eol);
+	if (lc($enc) eq 'base64') {
+		local $enc = &encode_base64($a->{'data'});
+		$enc =~ s/\r//g;
+		foreach my $l (split(/\n/, $enc)) {
+			push(@rv, $l.$eol);
+			}
+		}
+	else {
+		$a->{'data'} =~ s/\r//g;
+		$a->{'data'} =~ s/\n\.\n/\n\. \n/g;
+		foreach my $l (split(/\n/, $a->{'data'})) {
+			push(@rv, $l.$eol);
+			}
+		}
+	}
+push(@rv, $eol);
+push(@rv, "--".$bound."--".$eol);
+push(@rv, $eol);
+return @rv;
+}
+
 # mail_size(&mail, [textonly])
 # Returns the size of an email message in bytes
 sub mail_size

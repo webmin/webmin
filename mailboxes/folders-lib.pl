@@ -3094,7 +3094,7 @@ for(my $i=0; $i<scalar(@rv); $i++) {
 				$rv[$i] = 1;
 				}
 			}
-		else {
+		elsif ($a->{'type'} !~ /^multipart\/(mixed|alternative)/) {
 			# Non-text .. assume this means we have an attachment
 			$rv[$i] = 1;
 			}

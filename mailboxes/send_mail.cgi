@@ -97,17 +97,19 @@ if ($in{'body'} =~ /\S/) {
 	$bodyattach = $attach[0];
 
 	if ($in{'html_edit'}) {
-		# Add the plain-text body
-		local $mt = "text/plain";
+		# Create an attachment which contains both the HTML and plain
+		# bodies as alternatives
+		local @alts = ( $attach[0] );
+		local $mt = "text/plain; charset=$charset";
 		if ($plainbody =~ /[\177-\377]/) {
-			unshift(@attach,
+			push(@alts,
 			  { 'headers' => [ [ 'Content-Type', $mt ],
 					   [ 'Content-Transfer-Encoding',
 					     'quoted-printable' ] ],
 			    'data' => quoted_encode($plainbody) });
 			}
 		else {
-			unshift(@attach,
+			push(@alts,
 			  { 'headers' => [ [ 'Content-Type', $mt ],
 					   [ 'Content-Transfer-Encoding',
 					     '7bit' ] ],
@@ -116,8 +118,15 @@ if ($in{'body'} =~ /\S/) {
 
 		# Set content type to multipart/alternative, to tell mail
 		# clients about the optional body
-		push(@{$mail->{'headers'}}, [ 'Content-Type',
-					      'multipart/alternative' ]);
+		local $bound = "altsbound".time();
+		$attach[0] = {
+			'headers' => [ [ 'Content-Type',
+					 'multipart/alternative; '.
+					 'boundary="'.$bound.'"' ],
+				       [ 'Content-Transfer-Encoding',
+					 '7bit' ] ],
+			'data' => join("", &unparse_mail(\@alts, "\n", $bound))
+			};
 		}
 	}
 $attachsize = 0;
