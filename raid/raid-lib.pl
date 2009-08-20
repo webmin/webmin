@@ -260,8 +260,19 @@ if ($raid_mode eq "raidtools") {
 	}
 else {
 	# Zero out the RAID
-	&system_logged(
-		"mdadm --zero-superblock $_[0]->{'value'} >/dev/null 2>&1");
+	&system_logged("mdadm --zero-superblock ".
+		       "$_[0]->{'value'} >/dev/null 2>&1");
+
+	# Zero out component superblocks
+	my @devs = &find('device', $_[0]->{'members'});
+	foreach $d (@devs) {
+		if (&find('raid-disk', $d->{'members'}) ||
+		    &find('parity-disk', $d->{'members'}) ||
+		    &find('spare-disk', $d->{'members'})) {
+			&system_logged("mdadm --zero-superblock ".
+				       "$d->{'value'} >/dev/null 2>&1");
+			}
+		}
 
 	# Remove from /etc/mdadm.conf
 	local ($d, %devices);
