@@ -8,20 +8,24 @@ require './raid-lib.pl';
 &ReadParse();
 $conf = &get_raidtab();
 
-# Display headers
-$max = 0;
+# Create initial object
 foreach $c (@$conf) {
-	if ($c->{'value'} =~ /md(\d+)$/ && $1 >= $max) {
-		$max = $1+1;
+	if ($c->{'value'} =~ /md(\d+)$/) {
+		$taken{$1} = 1;
 		}
 	}
-&ui_print_header(undef, $text{'create_title'}, "");
+$max = 0;
+while($taken{$max}) {
+	$max++;
+	}
 $raid = { 'value' => "/dev/md$max",
 	  'members' => [ { 'name' => 'raid-level',
 			   'value' => $in{'level'} },
 			 { 'name' => 'persistent-superblock',
 			   'value' => 1 }
 		       ] };
+
+&ui_print_header(undef, $text{'create_title'}, "");
 
 # Find available partitions
 @disks = &find_free_partitions(undef, 1, 1);
