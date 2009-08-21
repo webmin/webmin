@@ -79,7 +79,7 @@ elsif ($in{'group_mode'} == 2) {
 
 &create_raid($raid);
 &unlock_raid_files();
-if ($err = &make_raid($raid, $in{'force'}, $in{'missing'})) {
+if ($err = &make_raid($raid, $in{'force'}, $in{'missing'}, $in{'assume'})) {
 	&delete_raid($raid);
 	&error($err);
 	}

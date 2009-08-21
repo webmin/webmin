@@ -43,6 +43,7 @@ create_super=Persistent superblock?
 create_parity=Parity algorithm
 create_chunk=Chunk size
 create_force=Force initialisation of RAID?
+create_assume=Skip initialization of devices?
 create_rdev=RAID device $1
 create_lvm=LVM VG $1, LV $2
 create_err=Failed to create RAID

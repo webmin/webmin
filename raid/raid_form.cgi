@@ -113,6 +113,12 @@ if ($raid_mode eq 'mdadm') {
 print &ui_table_row($text{'create_force'},
 	&ui_yesno_radio("force", 0));
 
+# Assume clean
+if ($raid_mode eq 'mdadm') {
+	print &ui_table_row($text{'create_assume'},
+		&ui_yesno_radio("assume", 0));
+	}
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'create'} ] ]);
 

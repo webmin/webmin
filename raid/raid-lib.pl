@@ -301,7 +301,7 @@ else {
 	}
 }
 
-# make_raid(&raid, force, [missing])
+# make_raid(&raid, force, [missing], [assume-clean])
 # Call mkraid or mdadm to make a raid set for real
 sub make_raid
 {
@@ -334,7 +334,6 @@ else {
 			push(@spares, $d->{'value'});
 			}
 		elsif (&find("parity-disk", $d->{'members'})) {
-			# XXX how to handle?
 			push(@parities, $d->{'value'});
 			}
 		}
@@ -346,6 +345,7 @@ else {
 	$cmd .= " --raid-devices ".scalar(@devices);
 	$cmd .= " --spare-devices ".scalar(@spares) if (@spares);
 	$cmd .= " --force" if ($_[1]);
+	$cmd .= " --assume-clean" if ($_[3]);
 	$cmd .= " --run";
 	$cmd .= " $_[0]->{'value'}";
 	foreach $d (@devices, @parities, @spares) {

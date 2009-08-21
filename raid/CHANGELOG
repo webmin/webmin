@@ -24,3 +24,4 @@ Run the update-initramfs -u command after changing mdadm.conf, to sync it into a
 Raw disks with no partitions can now also be used as RAID members.
 Spare groups can now be created and used when creating a RAID device.
 When a RAID set is deleted, the superblocks on component devices are cleared in order to remove metadata about the old RAID set.
+Added an option to skip initialization of metadata when creating a RAID device.
