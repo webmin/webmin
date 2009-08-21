@@ -1118,7 +1118,7 @@ elsif (-d $_[0]) {
 	local $glob = "$_[1]/$base/*";
 	while(1) {
 		local @g = glob($glob);
-		if (@g) {
+		if (@g && -r $g[0]) {
 			push(@rv, @g);
 			$glob .= "/*";
 			}
@@ -1134,7 +1134,8 @@ else {
 	&set_ownership_permissions($_[2], $_[3], $st[2], "$_[1]/$base");
 	$nochown++;
 	}
-&system_logged("chown $opts -R $_[2]:$_[3] \"$_[1]/$base\" >/dev/null 2>/dev/null") if (!$nochown);
+&system_logged("chown $opts -R $_[2]:$_[3] ".quotemeta("$_[1]/$base").
+	       " >/dev/null 2>/dev/null") if (!$nochown);
 return @rv;
 }
 
