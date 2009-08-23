@@ -340,7 +340,7 @@ while(<FDISK>) {
 				'extended' => $6 eq '5' || $6 eq 'f' ? 1 : 0,
 				'index' => scalar(@{$disk->{'parts'}}) };
 		$part->{'desc'} =
-			$part->{'device'} =~ /(.)d(\S)(\d+)$/ ?
+			$part->{'device'} =~ /(.)d([a-z]+)(\d+)$/ ?
 			 &text('select_part', $1 eq 's' ? 'SCSI' : 'IDE', uc($2), "$3") :
 			$part->{'device'} =~ /scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/part(\d+)/ ?
 			 &text('select_spart', "$1", "$2", "$3", "$4", "$5") :
