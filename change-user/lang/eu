@@ -1,0 +1,35 @@
+index_title=Hizkuntza eta gaia aldatu
+index_lang=Webminen UI hizkuntza
+index_langglobal=Hizkuntza orokorra ($1)
+index_langset=Aukera pertsonala ..
+index_theme=Webminen UI gaia
+index_overlay=Gai gainjarria
+index_overlaydef=baterez - defektuzko gaia erabili
+index_themeglobal=Gai orokorra ($1)
+index_themeset=Aukera pertsonala ..
+index_pass=Webminen sartzeko pasahitza
+index_passleave=Ez aldatu
+index_passet=
+index_ok=Aldaketak egin
+index_themedef=Webminen gai zaharrak
+index_desc2=
+index_d3=$1, $2 eta $3
+index_d2=$1 eta $2
+index_d1=$1
+index_dlang=
+index_dtheme=
+index_dpass=
+
+change_title=Konfigurazio aldaketa
+change_user=Webminera sartzeko aldaketak
+change_done=.. egina
+change_restart=Webmin kargatu ..
+change_redirect=Haserako menura joan ..
+change_ecolon=Zure pasahitzak ezin du ondorengo hau eduki: karakterea
+change_epass=Pasahitz berria ez du balio: $1
+change_eoverlay=
+change_eoverlay2=
+
+acl_lang=Hizkuntza aldatu dezakezu?
+acl_theme=Gaia aldatu dezakezu?
+acl_pass=Pasahitza aldatu dezakezu (Webmin aukeratzean)?

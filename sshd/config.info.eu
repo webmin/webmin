@@ -1,0 +1,10 @@
+line2=Sistemaren konfigurazioa,11
+sshd_path=sshd programarentzako helbide osoa,0
+sshd_config=sshd-ren konfigurazio fitxategiaren helbide osoa,0
+client_config=ssh bezeroaren konfigurazio fitxategirako helbide osoa,0
+pid_file=sshd-ren PID fitxategirako helbide osoa,3,Ezer ez
+start_cmd=sshd abiatzeko komandoa,3,Zerbitzaria jarri martxan eta kitto
+restart_cmd=sshd konfigurazioa aplikatzeko komandoa,3,HUP seinale bat bidali
+stop_cmd=sshd geditzeko komandoa,3,prozesua hil eta kitto
+keygen_path=ssh-keygen programaren helbide osoa,0
+sshd_version=SSH zerbitzariaren bertsioa,3,Automatikoki detektatu

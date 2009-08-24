@@ -1,0 +1,51 @@
+index_title=NFS Exportatu
+index_add=Beste exportazio bat gehitu.
+index_dirs=Direktorioak
+index_clients=Bezeroak
+index_everyone=Denak
+index_none=Exportazioak ez dira oraindik definitu.
+index_delete=Aukeratutako exportazioak ezabatu
+index_apply=Aldaketak aplikatu
+index_applydesc=
+index_return=Exportazioen listatua
+
+delete_err=Ezin izan dira exportazioak ezabatu
+delete_enone=Ez dago batere aukeratua
+
+edit_title1=Exportazioa editatu
+edit_title2=Exportazioa sortu
+edit_header1=Exportazioaren aukerak
+edit_dirs=Exportaziorako direktorioak
+edit_alldirs=Azpidirektorioak exportatu?
+edit_ro=Irakurketa soilik?
+edit_kerb=Kerberos erabili?
+edit_header2=
+edit_moproot=Root erabiltzailearen ingurunea
+edit_mapusers=Erabiltzaile guztien ingurunea
+edit_unpriv=Sarbiderik gabeko erabiltzailea
+edit_uid=Erabiltzailea / UID
+edit_gids=Taldeak / GID
+edt_mapall=Erabiltzaile guztien ingurunea
+edit_header3=Exportazio honen bezeroak
+edit_clients=Erabiltzailea
+edit_hosts=
+edit_network=Sarea
+edit_mask=Maskara
+
+save_err=Exportazioak kale egin du
+save_edit=$1 ez da direktorioa edo ez da existitzen
+save_enone=Exportatzeko directorio bat gehitu behar dizu gutxienez
+save_esub=
+save_eroot=<b> exportaziorako azpidirektorioa </b> erabilia izaten denean, 
+exportatua izan den direktorioa <i> local <i/> artxiboaren erroa izan behar du
+save_euser=$1 erabiltzailea baliogabea da edo UID
+save_egroup=$1 baliogabea da edo GID taldea
+save_ekerb=Erabiltzaileen ingurunea, erabiltzaile guztien ingurunea eta 
+save_ehosts=
+save_enetwork=$1 sarea baliogabea da
+save_enetmask=$1 maskara baliogabea da sarearentzat
+save_esame1=
+save_esame2=<tt>$1</tt> direktorioa <tt>$2</tt> direktoriora exportatzen hari da.
+
+
+restart_err=Aldaketak ezin izan dira aplikatu

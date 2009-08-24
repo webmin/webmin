@@ -1,0 +1,325 @@
+main_homepage=Hasierako Orria
+main_feedback=Feedback..
+main_switch=Aldatu erabiltzailea..
+main_logout=Amaitu saioa
+main_version=$1 bertsioa $2 -n ($3)
+main_title=Webmin $1  $2 -n ($3)
+main_title2=Webmin
+main_none=Ez daukazu Webminen moduluetarako atzipenik.
+main_skill=Skill level
+main_readonly=(Read-only modua)
+main_return=Itzuli $1 -era
+main_unused=Erabili gabeko moduluak
+main_refreshmos=Freskatu Moduluak
+
+link_essl=The Net::SSLeay Perl module needed to make HTTPS connections is not installed on your system.
+
+category_servers=Zerbitzariak
+category_hardware=Hardwarea
+category_system=Sistema
+category_webmin=Webmin
+category_net=Sareratzea
+category_syslet=Syslets
+category_cluster=Cluster
+category_info=Informazioa
+category_=Besteak
+
+longcategory_servers=Posta, FTP, web-a eta beste zerbitzariak konfiguratzeko moduluak
+longcategory_hardware=Imprimagailu, diska eta beste hardwarea konfiguratzeko moduluak
+longcategory_system=Erabiltzaileak, fitxategi sistema, Cron lanak eta beste sistemaren ezarpenen moduluak
+longcategory_webmin=Webmin bere baitan konfiguratzeko moduluak
+longcategory_net=Sareratzea eta sareko zerbitzuak konfiguratzeko moduluak
+longcategory_cluster=Zerbitzari bat baino gehiago interfaze bakarretik kudeatzeko moduluak
+longcategory_info=Zure sistemaren gaineko informazioa erakusten duten moduluak
+longcategory_=Beste inongo kategorietan aurkitzen ez diren moduluak
+
+header_webmin=Webmin Aurkibidea
+header_module=Modulu Aurkibidea
+header_help=Laguntza..
+header_config=Moduluen Konfigurazioa
+header_servers=Webmin Zerbitzariak
+
+index=aurkibidea
+yes=Bai
+no=Ez
+save=Gorde
+create=Sortu
+delete=Ezabatu
+find=Bilatu
+error=Errorea
+error_previous=aurreko orria
+error_stack=Call Stack Trace
+error_file=Fitxategia
+error_line=Lerroa
+error_sub=Funtzioa
+error_stackline=$1 fitxategian $2 lerroan $2 ri deia
+efilewrite=Akatsa $1 en idaztean : $2
+efileclose=Akatsa $1 en idaztean 
+Failed to write to $1 when closing : $2
+efileopen=Akatsa $1 idazketarako irekitzean : $2
+default=Defektuzkoa
+modify=Aldatu
+reset=Reset
+ok=OK
+cancel=Ezeztatu
+helpsearch=Bilatu dokumentuak..
+switch_remote_euser=$1 Unix erabiltzailea ez da existitzen.
+programname=Webmin
+
+chooser_title1=Aukeratu Fitxategia..
+chooser_title2=Aukeratu Katalogoa..
+chooser_dir=$1 en katalogoa
+chooser_ok=Ok
+chooser_date=Aukeratu Data
+chooser_eopen=Akatsa zerrendatzean : $1
+
+users_title1=Aukeratu Erabiltzaileak..
+users_title2=Aukeratu Erabiltzailea..
+users_sel=Aukeratutako Erabiltzaileak
+users_all=Erabiltzaile guztiak
+users_ok=Ok
+users_cancel=Ezeztatu
+users_clear=Garbitu
+
+groups_title1=Aukeratu Taldeak..
+groups_title2=Aukeratu Taldea..
+groups_all=Talde Guztiak
+groups_sel=Aukeratutako Taldeak
+groups_ok=Ok
+groups_cancel=Ezeztatu
+groups_clear=Garbitu
+
+modules_title1=Aukeratu Moduluak..
+modules_title2=Aukeratu Modulua..
+modules_sel=Aukeratutako Moduluak
+modules_all=Modulu guztiak
+modules_ok=Ok
+modules_cancel=Ezeztatu
+modules_clear=Garbitu
+
+config_ecannot=Ez zaude modulu hau konfiguratzeko baimendua
+config_title=Konfigurazioa
+config_dir=$1 moduluarentzat
+config_header=$1 entzat konfiguragarri diren aukerak
+config_none=Ezer ez
+config_eaccess=Ez zaude modulu hau atzitzeko baimendua
+config_err=Akatsa konfigurazioa gordetzean
+config_nochange=Ez aldatu
+config_setto=Ezarri
+config_ewebmin=14 motako parametroak soilik Webminekin egiten du lan
+
+help_err=Akatsa laguntza bistaratzean
+help_epath=Laguntza helbidea falta da edo ez da zuzena
+help_efile=Akatsa $1 laguntza fitxategia irakurtzean 
+help_eheader=&lt;goiburuko&gt; atala falta da
+help_einclude=Aktsa $1 sartzean
+help_eif=Akatsa $1  : $2
+help_eexec=Aktsa $1  : $2
+
+referer_title=Segurtasun Abisua
+referer_warn=s 
+<b>Warning!</b> Webmin has detected that the program $2 was linked to from the URL $1, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_warn_unknown=<b>Warning!</b> Webmin has detected that the program $1 was linked to from an unknown URL, which appears to be outside the Webmin server. This may be an attempt to trick your server into executing a dangerous command.
+referer_fix1=If this is a legitimate link, you can allow links from this URL as follows :<ul><li>Login to Webmin normally.<li>Go to the <b>Webmin Configuration</b> module.<li>Click on the Trusted Referrers icon.<li>Enter the hostname $1 into the <b>Trusted websites</b> field, and click <b>Save</b>.</ul>
+referer_fix2=Alternately, you can configure Webmin to allow this link from the command line by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.<li>Add the line <tt>referers=$1</tt> at the end, or if a <tt>referers</tt> line already exists add <tt>$1</tt> to it.<li>Save the file.</ul>
+referer_fix1u=If your browser does not send the <tt>Referer</tt> header needed, you can turn off this check as follows :<ul><li>Login to Webmin normally.<li>Go to the <b>Webmin Configuration</b> module.<li>Click on the Trusted Referrers icon.<li>Check the <b>Trust links from unknown referrers</b> box, and click <b>Save</b>.</ul>
+referer_fix2u=Alternately, you can configure Webmin to allow links from unknown referers by :<ul><li>Login as <tt>root</tt>, and edit the <tt>/etc/webmin/config</tt> file.<li>Find the line <tt>referers_none=1</tt> and change it to <tt>referers_none=0</tt>.<li>Save the file.</ul>
+
+session_header=Hasi Webmin saioa
+session_mesg=Erabiltzaile izen eta pasahitz bat sartu behar dituzu $1 Webmin zerbitzarian saio hasteko.
+session_mesg2=Erabiltzaile izen eta pasahitza sartu behar duzu saioa hasteko.
+session_user=Erabiltzaile izena
+session_pass=Pasahitza
+session_login=Login
+session_clear=Garbitu
+session_failed=Akatsa login egitean. Saiatu berriro mesedez.
+session_logout=Saio amaiera arrakastatsua. Beheko formulario erabili berriro saioa hasteko.
+session_timed_out=Saio amaiera $1 minutu aktibitate gabe eman ostean
+session_save=Gorde saioa betirako?
+
+pam_header=Webminen saioa hasi
+pam_mesg=Behean agertzen den galdera erantzun behar duzu $1 en dagoen Webmin zerbitzarira login egiteko.
+pam_mesg2=Beheko galdera erantzun behar duzu saioa hasi ahal izateko.
+pam_login=Jarraitu
+pam_restart=Berrabiatu
+
+acl_root=Fitxategien hautatzailerako erro katalogoa
+acl_otherdirs=Ikusgai dauden fitxategi hautatzaileko beste katalogoak
+acl_nodot=Fitxategi hautatzailean ezkutatu puntu fitxategiak?
+acl_home=Erabiltzailearen home katalogoa
+acl_uedit=Erabiltzaileak ikusgai erabiltzaileen hautatzailean
+acl_uedit_all=Erabiltzaile guztiak
+acl_uedit_none=Erabiltzailerik ez
+acl_uedit_only=Soilik erabiltzaileak
+acl_uedit_except=Guztiak erabiltzaileak izan ezik
+acl_uedit_uid=UID balio tarte honetan duten erabiltzaileak
+acl_uedit_group=Taldea duten erabiltzaileak
+acl_gedit=Talde hautatzailean ikusgai dauden taldeak
+acl_gedit_all=Talde guztiak
+acl_gedit_none=Talderik ez
+acl_gedit_only=Taldeak soilik
+acl_gedit_except=Guztiak taldeak ezik
+acl_gedit_gid=GID balio tarte hau duten taldeak
+acl_feedback=Feedback posta bidal daiteke?
+acl_feedback2=Bai
+acl_feedback1=Bai, baina ez konfigurazio fitxategiekin
+acl_feedback0=Ez
+acl_feedback3=Bai, konfigurazio fitxategiekin
+acl_rpc=RPC deiak onar daitezke?
+acl_rpc2=Soilik <tt>root</tt> edo <tt>admin</tt> entzat
+acl_rpc1=Bai
+acl_rpc0=Ez
+acl_readonly2=Erabiltzailea demo eran dago?
+acl_readonlyyes=Bai (Modulu batzuk beharbada ez dira eskuragarri egongo)
+acl_negative=Modulu berrien baimena esleitu erabiltzaileari
+acl_fileunix=Araktu fitxategiak Unix erabiltzaile gisa
+acl_sameunix=Webmineko login berdina
+
+month_1=Urtarrila
+month_2=Otsaila
+month_3=Martxoa
+month_4=Apirila
+month_5=Maiatza
+month_6=Ekaina
+month_7=Uztaila
+month_8=Abuztua
+month_9=Iraila
+month_10=Urria
+month_11=Azaroa
+month_12=Abendua
+
+day_0=Igandea
+day_1=Astelehena
+day_2=Asteartea
+day_3=Asteazkena
+day_4=Osteguna
+day_5=Ostirala
+day_6=Larunbata
+
+smonth_1=Urt
+smonth_2=Ots
+smonth_3=Mar
+smonth_4=Api
+smonth_5=Mai
+smonth_6=Eka
+smonth_7=Uzt
+smonth_8=Abu
+smonth_9=Ira
+smonth_10=Urr
+smonth_11=Aza
+smonth_12=Abe
+
+sday_0=Ig
+sday_1=Al
+sday_2=Ar
+sday_3=Az
+sday_4=Og
+sday_5=Ol
+sday_6=Lr
+
+emodule=Atzipena debekatuta : $1 erabiltzailea ez dago $2 modulua erabiltzeko baimendua
+emodulecheck=$1 modulua ez dago eskuragarri zure sisteman
+elock_tries=Akatsa $1 fitxategia blokeatzean $2 minutu eta gero
+
+skill_high=Aditua
+skill_medium=Bitartekoa
+skill_low=Hasi berria
+
+feedback_title=Webmin Feedback-a
+feedback_desc=This form allows you to report bugs on make suggestions to the Webmin developers regarding any problems or missing features that you have found. When the Send button is clicked, the details entered into the form will be emailed to $1.
+feedback_desc2=This feedback will be sent to the developer of Webmin, not your system administrator, ISP or hosting company. Please write your feedback in english, even if you are currently running Webmin in another language.
+feedback_header=Feedback zehaztapenak
+feedback_name=Zure izena
+feedback_email=Zure posta helbidea
+feedback_module=Regarding module
+feedback_all=Modulu guztiak
+feedback_text=Description of problem or suggestion
+feedback_os=Sistema eragilearen zehaztapenak sartu emailetan?
+feedback_osdesc=Aukera hau egin bada, emailen feedback automatikoak zure sistema eragilearen izen eta bertsioa sartuko ditu.
+feedback_config=Moduluen konfigurazioa sartu emailetan?
+feedback_configdesc=Aukera hau egin bada, emailean sartuko da moduluarekin lotutako konfigurazioa eta moduluak erabiltzen dituen konfigurazio fitxategien edukia. Adibidez, feedback-a <i>Erabiltzaileak eta Taldeak</i> moduluarekin lotuta bazegoen, zure <tt>/etc/passwd</tt> eta <tt>/etc/passwd</tt> fitxategiak bidaliak izango dira.
+feedback_attach=Atxikitzeko fitxategi gehigarriak
+feedback_send=Bidali feedback-a
+feedback_mailserver=Bidali SMTP zerbitzari bidez
+feedback_mailserver_def=Posta lokalki bidaltzeko programa
+feedback_err=Akatsa feedback-a bidaltzean
+feedback_emodule=Moduluen konfigurazioa postan gehitzeko aukera egin duzu, baina ez duzu modulurik aukeratu.
+feedback_emodule2=Aukeratutako modulua ez da existitzen
+feedback_econfig=Ez daukazu atzipen osoa aukeratutako modulura.
+feedback_via=Bidali feedback-a $1 i $2 SMTP zerbitzari bidez
+feedback_prog=Bidali feedback-a $1 i mezuak bidaltzeko $2 programa erabiliz
+feedback_esend=Akatsa feedback-a bidaltzean SMTP zerbitzari bidez edo posta bidaltzeko programa bidez.
+feedback_to=Bidali feedback-a helbide hauetara
+feedback_enoto=Feedback-a bidaltzeko helburu helbiderik ez da sartu
+feedback_ecannot=Ez zaude feedback-a bidaltzeko baimendua
+feedback_ecannot2=Ez zaude  konfigurazio fitxategiak dituen feedback mezuak bidaltzeko baimendua
+
+
+progress_size=$1 deskargatzen ($2 byte) ..
+progress_nosize=$1 deskargatzen ..
+progress_data=$1 byte jaso dira (% $2 )
+progress_data2=$1 byte jaso dira
+progress_done=.. deskarga amaitu da.
+progress_incache=$1 aurkitu da katxean ..
+
+readparse_cdheader=Missing Content-Disposition header
+readparse_enc=Expecting form-data encoding, but got normal encoding
+readparse_max=Data exceeded maximum size of $1 bytes
+
+password_expired=Zure pasahitza iraungitu da eta berri bat aukeratu beharko duzu.
+password_temp=Pasahitz berri bat aukeratu beharko duzu behin-behinekoa ordezkatzeko.
+password_header=Aukeratu Pasahitz Berria
+password_user=Erabiltzaile izena
+password_old=Uneko pasahitza
+password_new1=Pasahitz berria
+password_new2=Pasahitz berria berriro
+password_ok=Aldatu
+password_clear=Garbitu
+password_done=Zure pasahitza arrakastaz aldatu da. <a href='$1'>Berriro login</a> egin beharko zenuke pasahitz berriarekin
+password_err=Akatsa pasahitza aldatzean
+password_euser=Zure login izena ez da aurkitu pasahitzen fitxategian!
+password_eold=Zure uneko pasahitza ez da zuzena
+password_enew1=Ez da pasahitz berririk sartu
+password_enew2=Pasahitz berriak ez datoz bat
+password_epam=PAM errorea : $1
+password_emodpam=Authen::PAM perl moduluak pasahitzak aldatzeko behar duen modulua ez dago instalatua!
+password_enewpass=Pasahitz berria ez dago baimendua : $1
+
+ui_mandatory=Eremu hau derrigorrezkoa da
+ui_checkmandatory=Ez da ezer aukeratu
+ui_errors=Hainbat errore aurkitu dira : 
+ui_nothing=Ez da ezer sartu
+ui_searchcol=Bilatu lerroak non
+ui_searchfor=
+Contains the text
+ui_searchok=Bilatu
+ui_selall=Aukeratu dena.
+ui_selinv=Alderantzikatu hautapena.
+ui_edate=Data ez da baliozkoa
+ui_etime=Denbora ez da baliozkoa
+ui_paging=$3 ren lerroak erakusten $1 etik $2 ra
+ui_rowlabel=$2  $1 lerroan :
+
+header_statusmsg=$1 logged into $2 $3 on $4 ($5)
+
+uptracker_title=Fitxategia kargatzen
+uptracker_file=Fitxategi izena
+uptracker_size=Tamaina
+uptracker_pc=Aurrerapena
+uptracker_eid=Kargatzeko IDrik ez da zehaztu
+uptracker_eid2=Kargatzeko IDa ez da baliozkoa
+uptracker_of=$1 of $2
+
+wsearch_title=Bilatu $1
+wsearch_modt=Modulua
+wsearch_mtitle=Modulu izena
+wsearch_what=Matching page
+wsearch_type=Match type
+wsearch_mod=$1  modulua
+wsearch_config_webmin=Webmin modulu konfigurazioa
+wsearch_config_usermin=Usermin preferences
+wsearch_help=Laguntza orria
+wsearch_inmod=In $1
+wsearch_text=User interface text
+wsearch_esearch=Ez da bilatzeko ezer sartu.
+wsearch_enone=No Webmin modules or pages matching $1 were found.

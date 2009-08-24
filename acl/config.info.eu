@@ -1,0 +1,7 @@
+line1=Konfiguragarri diren aukerak, 11
+display=Erabiltzaile eta taldea erakusteko modua, 1,1-Izenak soilik, 0-Izenak eta moduluak
+select=Erabiltzaile moduluak erakutsi,1,0-Taulan, 1-
+Display user modules in,1,0-Table,1-Pulldown menu
+order=Ordenatu erabiltzaile eta taldeak,1,0-Fitxategian ordenatu,1-Izena
+line2=Sistemaren konfigurazioa,11
+ssleay=Openssl edo ssleay programaren helbidea,3,Automatikoa
