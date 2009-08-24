@@ -50,3 +50,5 @@ Fixed editing of bonding network interfaces on Debian Linux.
 Fixed network interface management on SuSE 10.2.
 Updated the Hostname and DNS Client page to always show the hostname from config files, rather than the system's short hostname.
 On Debian systems, if the dns-nameservers option is defined in /etc/network/interfaces, it will be updated when changing nameservers.
+---- Changes since 1.480 ----
+Updated bonding support to use the new format in Debian 5.0, thanks to Caspar Smit.

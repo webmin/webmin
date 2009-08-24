@@ -60,6 +60,21 @@ foreach $iface (@ifaces) {
 				$cfg->{'downdelay'} = $options{'downdelay'};
 				$cfg->{'updelay'} = $options{'updelay'};
 			}
+			elsif($param eq 'bond_mode') { 
+				$cfg->{'mode'} = $value;
+			}
+			elsif($param eq 'bond_miimon') { 
+				$cfg->{'miimon'} = $value;
+			}
+			elsif($param eq 'bond_downdelay') { 
+				$cfg->{'downdelay'} = $value;
+			}
+			elsif($param eq 'bond_updelay') { 
+				$cfg->{'updelay'} = $value;
+			}
+			elsif($param eq 'slaves') { 
+				$cfg->{'partner'} = $value;
+			}
 			else { $cfg->{$param} = $value; }
 			}
 		$cfg->{'dhcp'} = ($method eq 'dhcp');
@@ -109,7 +124,14 @@ my $amode = $gconfig{'os_version'} > 3 || scalar(@autos);
 if (!$cfg->{'up'} && !$amode) { push(@options, ['noauto', '']); }
 
 # Set bonding parameters
-if($cfg->{'bond'} == 1) {
+if(($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {
+	push(@options, ['bond_mode ' . $cfg->{'mode'}]);
+	push(@options, ['bond_miimon ' . $cfg->{'miimon'}]);
+	push(@options, ['bond_updelay ' . $cfg->{'updelay'}]);
+	push(@options, ['bond_downdelay ' . $cfg->{'downdelay'}]);
+	push(@options, ['slaves ' . $cfg->{'partner'}]);
+}
+elsif($cfg->{'bond'} == 1) {
 	push(@options, ['up', '/sbin/ifenslave ' . $cfg->{'name'} . " " . $cfg->{'partner'}]);
 	push(@options, ['down', '/sbin/ifenslave -d ' . $cfg->{'name'} . " " . $cfg->{'partner'}]);
 }
@@ -150,7 +172,8 @@ if ($changeit == 0) {
 	else{
 		new_interface_def($cfg->{'fullname'}, 'inet', $method, \@options);
 	}
-	if($cfg->{'bond'} == 1) {
+	if (($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {}
+	elsif ($cfg->{'bond'} == 1) {
 		new_module_def($cfg->{'fullname'}, $cfg->{'mode'}, $cfg->{'miimon'}, $cfg->{'downdelay'}, $cfg->{'updelay'});
 	}
 } 
@@ -163,7 +186,8 @@ else {
 	else{
 		modify_interface_def($cfg->{'fullname'}, 'inet', $method, \@options, 0);
 	}
-	if($cfg->{'bond'} == 1) {
+	if (($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {}
+        elsif ($cfg->{'bond'} == 1) {
 		modify_module_def($cfg->{'fullname'}, 0, $cfg->{'mode'}, $cfg->{'miimon'}, $cfg->{'downdelay'}, $cfg->{'updelay'});
 	}
 }

@@ -95,6 +95,14 @@ if($a->{'vlan'} == 1) {
 	}
 
 local $cmd;
+if (($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5)) {
+	if ($a->{'up'}) { $cmd .= "ifup $a->{'name'}"; }
+	else { $cmd .= "ifdown $a->{'name'}"; }
+	local $out = &backquote_logged("$cmd 2>&1");
+	if ($?) { &error($out); }
+}
+else {
+
 if($a->{'vlan'} == 1) {
 	$cmd .= "ifconfig $a->{'physical'}.$a->{'vlanid'}";
 	}
@@ -123,6 +131,7 @@ if ($a->{'ether'}) {
 	if ($?) { &error($out); }
 	}
 }
+}
 
 # deactivate_interface(&details)
 # Shutdown some active interface
@@ -144,15 +153,20 @@ if ($_[0]->{'virtual'} ne "") {
 local ($still) = grep { $_->{'fullname'} eq $name } &active_interfaces();
 if ($still && !&is_ipv6_address($address)) {
 	# Old version of ifconfig or non-virtual interface.. down it
-	local $out = &backquote_logged("ifconfig $name down 2>&1");	
+	if (($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5)) {
+		local $out = &backquote_logged("ifdown $name 2>&1");	
+	}
+	else {
+		local $out = &backquote_logged("ifconfig $name down 2>&1");
+		local ($still) = grep { $_->{'fullname'} eq $name }
+			      &active_interfaces();
+		if ($still) {
+			&error("<pre>$out</pre>");
+		}
+	}
 	if(&iface_type($name) =~ /^(.*) (VLAN)$/) {
 		$out = &backquote_logged("vconfig rem $name 2>&1");
 	}
-	local ($still) = grep { $_->{'fullname'} eq $name }
-			      &active_interfaces();
-	if ($still) {
-		&error("<pre>$out</pre>");
-		}
 	}
 }
 

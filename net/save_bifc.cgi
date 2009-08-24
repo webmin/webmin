@@ -232,7 +232,10 @@ else {
 			$err && &error("<pre>$err</pre>");
 			}
 		else {
-			if($in{'bond'}) {&load_module($b);}
+			if ($in{'bond'}) {
+				if (($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5)) {}
+				else {&load_module($b);}
+			}
 			&activate_interface($b);
 			}
 		}
