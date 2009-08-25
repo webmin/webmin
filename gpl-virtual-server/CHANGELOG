@@ -601,3 +601,6 @@ Added a bandwidth monitoring option to include relayed email, thanks to Collin f
 ---- Changes since 3.72 ----
 On Sendmail systems with outgoing address mapping enabled, the generic domains file is now correctly updated.
 Added a domain-owner leven restriction to prevent changing of a virtual server's password.
+---- Changes since 3.73 ----
+If Postfix relay domains are stored in a hash, update it instead of adding to relay_domains in /etc/postfix/main.cf.
+Additional allowed MySQL client hosts are now included in backups.
