@@ -18,9 +18,9 @@ push(@members, { 'name' => 'persistent-superblock',
 		 'value' => $in{'super'} } );
 push(@members, { 'name' => 'chunk-size',
 		 'value' => $in{'chunk'} } );
-if ($in{'parity'}) {
+if ($in{'layout'}) {
 	push(@members, { 'name' => 'parity-algorithm',
-			 'value' => $in{'parity'} } );
+			 'value' => $in{'layout'} } );
 	}
 
 # Add RAID disks

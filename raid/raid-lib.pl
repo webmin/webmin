@@ -324,7 +324,7 @@ else {
 	$lvl =~ s/^raid//;
 	local $chunk = &find_value("chunk-size", $_[0]->{'members'});
 	local $mode = &find_value("persistent-superblock", $_[0]->{'members'}) ? "create" : "build";
-	local $parity = &find_value("parity-algorithm", $_[0]->{'members'});
+	local $layout = &find_value("parity-algorithm", $_[0]->{'members'});
 	local ($d, @devices, @spares, @parities);
 	foreach $d (&find("device", $_[0]->{'members'})) {
 		if (&find("raid-disk", $d->{'members'})) {
@@ -341,7 +341,7 @@ else {
 	if ($_[2]) {
 		push(@devices, "missing");
 		}
-	$cmd .= " --parity $parity" if ($parity);
+	$cmd .= " --layout $layout" if ($layout);
 	$cmd .= " --raid-devices ".scalar(@devices);
 	$cmd .= " --spare-devices ".scalar(@spares) if (@spares);
 	$cmd .= " --force" if ($_[1]);

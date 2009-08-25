@@ -54,14 +54,23 @@ $super = &find_value('persistent-superblock', $raid->{'members'});
 print &ui_table_row($text{'create_super'},
 	&ui_yesno_radio("super", $super ? 1 : 0));
 
-# Parity algorithm
-if ($lvl >= 5) {
-	$parity = &find_value('parity-algorithm', $raid->{'members'});
+# Layout
+if ($lvl == 5 || $lvl == 6) {
+	$layout = &find_value('parity-algorithm', $raid->{'members'});
 	print &ui_table_row($text{'create_parity'},
-		&ui_select("parity", $parity,
+		&ui_select("layout", $layout,
 			[ [ '', $text{'default'} ],
 			  'left-asymmetric', 'right-asymmetric',
-			  'left-symmetric', 'right-symmetric' ]));
+			  'left-symmetric', 'right-symmetric',
+			  'parity-first', 'parity-last' ]));
+	}
+
+if ($lvl == 10) {
+	$layout = &find_value('parity-algorithm', $raid->{'members'});
+	print &ui_table_row($text{'create_parity'},
+		&ui_select("layout", $layout,
+			[ [ '', $text{'default'} ],
+			  'n2', 'o2', 'f2' ]));
 	}
 
 # Chunk size

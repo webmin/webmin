@@ -50,8 +50,8 @@ print &ui_table_row($text{'view_super'},
 
 # Parity method
 if ($lvl eq '5') {
-	$parity = &find_value('parity-algorithm', $raid->{'members'});
-	print &ui_table_row($text{'view_parity'}, $parity || $text{'default'});
+	$layout = &find_value('parity-algorithm', $raid->{'members'});
+	print &ui_table_row($text{'view_parity'}, $layout || $text{'default'});
 	}
 
 # Chunk size
