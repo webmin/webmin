@@ -314,6 +314,11 @@ elsif ($in{'lock'} && $user{'pass'} !~ /^\!/ && $in{'pass_def'} <= 1) {
 
 # Check for force change
 $user{'temppass'} = $in{'temp'};
+if ($in{'temp'}) {
+	&get_miniserv_config(\%miniserv);
+	$miniserv{'passwd_mode'} == 2 ||
+		&error(&text('save_etemp', '../webmin/edit_session.cgi'));
+	}
 
 if ($in{'old'}) {
 	# update user and all ACLs

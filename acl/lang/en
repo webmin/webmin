@@ -125,6 +125,7 @@ save_eminsize=Missing or non-numeric minimum password length
 save_edays=No days to allow selected
 save_ehours=Missing or invalid times to allow
 save_ehours2=Start time to allow must be before end
+save_etemp=The option to force a password change at next login cannot be used unless <a href='$1'>prompting users to enter new passwords</a> is enabled
 
 delete_err=Failed to delete user
 delete_eself=You cannot delete yourself
