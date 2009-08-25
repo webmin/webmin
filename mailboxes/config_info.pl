@@ -1,4 +1,4 @@
-do '../web-lib-funcs.pl';
+require './mailboxes-lib.pl';
 
 sub show_userIgnoreList
 {
@@ -18,5 +18,5 @@ sub show_userIgnoreList
 sub parse_userIgnoreList
 {
   $in{'ignore_users'} =~ s/\r?\n/\t/g;
-  return $in{'ignore_users'};
+  return $main::in{'ignore_users'};
 }
