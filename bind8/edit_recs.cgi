@@ -137,7 +137,7 @@ if (!$access{'ro'} && $type eq 'master') {
 	push(@tds, "width=5");
 	}
 push(@hcols, "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=1'>".($in{'type'} eq "PTR" ? $text{'recs_addr'} : $text{'recs_name'})."</a>");
-push(@hcols, $text{'recs_type'}) if ($in{'type'} eq "ALL");
+push(@hcols, "<a href='edit_recs.cgi?index=$in{'index'}&view=$in{'view'}&type=$in{'type'}&sort=5'>$text{'recs_type'}</a>") if ($in{'type'} eq "ALL");
 push(@hcols, $text{'recs_ttl'});
 @hmap = @{$hmap{$in{'type'}}};
 foreach $h (@hmap) {

@@ -110,3 +110,5 @@ Fixed a bug that cause blocks like sortlist not be parsed properly, and possible
 Redirect and explanation modifiers can be viewed and edited in SPF records.
 Added a Module Config option for additional master IP addresses for remote slave zones.
 If nscd is running when BIND is restarted or a zone is applied, it will be signalled to re-read DNS caches too.
+---- Changes since 1.480 ----
+When all DNS records in a zone are shown, the Type column can be clicked on to sort them.

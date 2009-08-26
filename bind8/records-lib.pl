@@ -489,7 +489,11 @@ elsif ($s == 3) {
 	}
 elsif ($s == 4) {
 	# Sort by comment
-		return sort { $b->{'comment'} cmp $a->{'comment'} } @_;
+	return sort { $b->{'comment'} cmp $a->{'comment'} } @_;
+	}
+elsif ($s == 5) {
+	# Sort by type
+	return sort { $a->{'type'} cmp $b->{'type'} } @_;
 	}
 else {
 	return @_;
