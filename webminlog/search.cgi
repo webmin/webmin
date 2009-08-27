@@ -144,7 +144,9 @@ if (@match) {
 		local @tm = localtime($act->{'time'});
 		local $m = $act->{'module'};
 		local $d;
-		$minfo = $minfo_cache{$m};
+		$minfo = $m eq "global" ? 
+				{ 'desc' => $text{'search_global'} } :
+				$minfo_cache{$m};
 		if (!$minfo) {
 			# first time seeing module ..
 			local %minfo = &get_module_info($m);

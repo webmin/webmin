@@ -376,10 +376,15 @@ if (!defined($parser_cache{$act->{'module'}})) {
 	}
 local $d;
 if ($parser_cache{$act->{'module'}}) {
+	# Module can return string
 	$d = &foreign_call($act->{'module'}, "parse_webmin_log",
 			   $act->{'user'}, $act->{'script'},
 			   $act->{'action'}, $act->{'type'},
 			   $act->{'object'}, $act->{'param'}, $long);
+	}
+elsif ($act->{'module'} eq 'global') {
+	# This module converts global actions
+	$d = $text{'search_global_'.$act->{'action'}};
 	}
 return $d ? $d :
        $act->{'action'} eq '_config_' ? $text{'search_config'} :

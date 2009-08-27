@@ -40,6 +40,9 @@ else {
 	}
 
 # Modules to search
+if (&can_mod("global")) {
+	push(@mods, [ "global", $text{'index_global'} ]);
+	}
 foreach $m (sort { $a->{'desc'} cmp $b->{'desc'} } &get_all_module_infos()) {
 	next if (!&can_mod($m->{'dir'}));
 	$mdir = &module_root_directory($m->{'dir'});

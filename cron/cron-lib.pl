@@ -1057,8 +1057,14 @@ if ($gconfig{'os_type'} eq 'windows') {
 	}
 else {
 	# Can use exec on Unix systems
-	&print_tempfile(CMD, "chdir(\"\$root/$_[1]\");\n");
-	&print_tempfile(CMD, "exec(\"\$root/$_[1]/$_[2]\", \@ARGV) || die \"Failed to run \$root/$_[1]/$_[2] : \$!\";\n");
+	if ($_[1]) {
+		&print_tempfile(CMD, "chdir(\"\$root/$_[1]\");\n");
+		&print_tempfile(CMD, "exec(\"\$root/$_[1]/$_[2]\", \@ARGV) || die \"Failed to run \$root/$_[1]/$_[2] : \$!\";\n");
+		}
+	else {
+		&print_tempfile(CMD, "chdir(\"\$root\");\n");
+		&print_tempfile(CMD, "exec(\"\$root/$_[2]\", \@ARGV) || die \"Failed to run \$root/$_[2] : \$!\";\n");
+		}
 	}
 &close_tempfile(CMD);
 chmod(0755, $_[0]);

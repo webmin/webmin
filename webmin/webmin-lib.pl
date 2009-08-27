@@ -49,6 +49,9 @@ $detect_operating_system_cache = "$module_config_directory/oscache";
 
 @debug_what_events = ( 'start', 'read', 'write', 'ops', 'procs', 'diff', 'cmd', 'net', 'sql' );
 
+$record_login_cmd = "$config_directory/login.pl";
+$record_logout_cmd = "$config_directory/logout.pl";
+
 =head2 setup_ca
 
 Internal function to create all the configuration files needed for the Webmin

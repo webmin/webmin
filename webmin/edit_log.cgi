@@ -57,6 +57,14 @@ print &ui_table_row($text{'log_inmods'},
 				   &get_all_module_infos() ],
 		   5, 1));
 
+# Log logins and logouts?
+if (!$miniserv{'login_script'} ||
+    $miniserv{'login_script'} eq $record_login_cmd) {
+	print &ui_table_row($text{'log_login'},
+		&ui_yesno_radio("login",
+		    $miniserv{'login_script'} eq $record_login_cmd));
+	}
+
 print &ui_table_row($text{'log_files'},
 	&ui_yesno_radio("logfiles", int($gconfig{'logfiles'})));
 

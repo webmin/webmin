@@ -25,12 +25,19 @@ print &ui_hidden_table_start(&text('view_header', $act->{'id'}),
 print &ui_table_row($text{'view_action'}."",
 		    &get_action_description($act, 1), 3);
 
-%minfo = &get_module_info($act->{'module'});
+%minfo = $act->{'module'} eq 'global' ?
+		( 'desc' => $text{'search_global'} ) :
+		&get_module_info($act->{'module'});
 print &ui_table_row($text{'view_module'},
 		    $minfo{'desc'});
 
-print &ui_table_row($text{'view_script'},
-		    "<tt>$act->{'module'}/$act->{'script'}</tt>");
+if ($act->{'module'} ne 'global') {
+	print &ui_table_row($text{'view_script'},
+			    "<tt>$act->{'module'}/$act->{'script'}</tt>");
+	}
+else {
+	print &ui_table_row($text{'view_script'}, "<tt>$act->{'script'}</tt>");
+	}
 
 print &ui_table_row($text{'view_user'},
 		    $act->{'user'});

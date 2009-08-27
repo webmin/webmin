@@ -22,6 +22,21 @@ else {
 	$in{'perms'} =~ /^[0-7]{3,4}$/ || &error($text{'log_eperms'});
 	$miniserv{'logperms'} = $in{'perms'};
 	}
+if (defined($in{'login'})) {
+	if ($in{'login'}) {
+		# Create and user login wrapper scripts
+		&foreign_require("cron");
+		&cron::create_wrapper($record_login_cmd,"","record-login.pl");
+		&cron::create_wrapper($record_logout_cmd,"","record-logout.pl");
+		$miniserv{'login_script'} = $record_login_cmd;
+		$miniserv{'logout_script'} = $record_logout_cmd;
+		}
+	else {
+		# Stop using
+		delete($miniserv{'login_script'});
+		delete($miniserv{'logout_script'});
+		}
+	}
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
 

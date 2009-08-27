@@ -94,3 +94,4 @@ Detect and ignore failures when checking if other modules are installed.
 Added a field to the Operating System and Environment page for additional Perl module directories.
 ---- Changes since 1.480 ----
 Removed the option to select an OSDN mirror, as Sourceforge now does sensible location-based redirects automatically.
+Added an option on the Logging page to record logins and logouts from Webmin, for display in the Webmin Actions Log module.

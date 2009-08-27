@@ -78,6 +78,7 @@ log_ediff=Your system does not have the command $1 needed for logging file chang
 log_perms=Permissions for log files
 log_eperms=Missing or invalid octal permissions (like 755)
 log_syslog=Also log to syslog?
+log_login=Include Webmin logins and logouts in actions log?
 
 proxy_title=Proxy Servers and Downloads
 proxy_desc=If the host on which Webmin is running is behind a firewall of some kind, you may need to set the proxy server to use for accessing web and FTP sites. Certain modules, such as <tt>Software Packages</tt>, will use these proxies when downloading files or programs.
