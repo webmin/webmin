@@ -6478,7 +6478,11 @@ shift(@p);
 for(my $i=0; $i<@p; $i++) {
 	my $sofar = "/".join("/", @p[0..$i]);
 	my $lnk = readlink($sofar);
-	if ($lnk =~ /^\//) {
+	if ($lnk eq $sofar) {
+		# Link to itself! Cannot do anything more really ..
+		last;
+		}
+	elsif ($lnk =~ /^\//) {
 		# Link is absolute..
 		return &resolve_links($lnk."/".join("/", @p[$i+1 .. $#p]));
 		}
