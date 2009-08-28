@@ -286,7 +286,7 @@ is an array ref with the elements :
 		  [ 'solaris', 'Solaris', 'solaris' ],
 		  [ 'hpux', 'HP/UX', 'hpux' ],
 		  [ 'sco', 'SCO', '(openserver|unixware)' ],
-		  [ 'mac', 'Macintosh', 'macos' ],
+		  [ 'mac', 'Mac OS X', 'macos' ],
 		  [ 'irix', 'IRIX', 'irix' ],
 		  [ 'windows', 'Windows', 'windows' ],
 		  [ 'unknown', $text{'lib_other'} ],
