@@ -1,0 +1,27 @@
+#!/sbin/runscript
+
+# AjaxTerm Gentoo script, 08 May 2006 Mark Gillespie 
+
+DAEMON=%(bin)s/ajaxterm
+PORT=%(port)s
+PIDFILE=/var/run/ajaxterm.pid 
+
+depend()
+{
+    need net
+}
+
+start()
+{
+    ebegin "Starting AjaxTerm on port $PORT"
+    start-stop-daemon --start --pidfile $PIDFILE --exec $DAEMON -- --daemon --port=$PORT --uid=nobody
+    eend $?
+}
+
+stop()
+{
+    ebegin "Stopping AjaxTerm"
+    start-stop-daemon  --stop --pidfile $PIDFILE 
+    rm -f $PIDFILE 
+    eend $?
+}

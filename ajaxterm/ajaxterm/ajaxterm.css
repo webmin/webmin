@@ -1,0 +1,64 @@
+pre.stat {
+	margin: 0px;
+	padding: 4px;
+	display: block;
+	font-family: monospace;
+	white-space: pre;
+	background-color: black;
+	border-top: 1px solid black;
+	color: white;
+}
+pre.stat span {
+	padding: 0px;
+}
+pre.stat .on {
+	background-color: #080;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+pre.stat .off {
+	background-color: #888;
+	font-weight: bold;
+	color: white;
+	cursor: pointer;
+}
+pre.term {
+	margin: 0px;
+	padding: 4px;
+	display: block;
+	font-family: monospace;
+	white-space: pre;
+	background-color: black;
+	border-top: 1px solid white;
+	color: #eee;
+}
+pre.term span.f0  { color: #000; }
+pre.term span.f1  { color: #b00; }
+pre.term span.f2  { color: #0b0; }
+pre.term span.f3  { color: #bb0; }
+pre.term span.f4  { color: #00b; }
+pre.term span.f5  { color: #b0b; }
+pre.term span.f6  { color: #0bb; }
+pre.term span.f7  { color: #bbb; }
+pre.term span.f8  { color: #666; }
+pre.term span.f9  { color: #f00; }
+pre.term span.f10 { color: #0f0; }
+pre.term span.f11 { color: #ff0; }
+pre.term span.f12 { color: #00f; }
+pre.term span.f13 { color: #f0f; }
+pre.term span.f14 { color: #0ff; }
+pre.term span.f15 { color: #fff; }
+pre.term span.b0  { background-color: #000; }
+pre.term span.b1  { background-color: #b00; }
+pre.term span.b2  { background-color: #0b0; }
+pre.term span.b3  { background-color: #bb0; }
+pre.term span.b4  { background-color: #00b; }
+pre.term span.b5  { background-color: #b0b; }
+pre.term span.b6  { background-color: #0bb; }
+pre.term span.b7  { background-color: #bbb; }
+
+body { background-color: #888; }
+#term {
+	float: left;
+}

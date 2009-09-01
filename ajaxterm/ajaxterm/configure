@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+import optparse,os
+
+parser = optparse.OptionParser()
+parser.add_option("", "--prefix", dest="prefix",default="/usr/local",help="installation prefix (default: /usr/local)")
+parser.add_option("", "--confdir", dest="confdir", default="/etc",help="configuration files directory prefix (default: /etc)")
+parser.add_option("", "--port", dest="port", default="8022", help="set the listening TCP port (default: 8022)")
+parser.add_option("", "--command", dest="cmd", default=None,help="set the command (default: /bin/login or ssh localhost)")
+(o, a) = parser.parse_args()
+
+print "Configuring prefix=",o.prefix," port=",o.port
+
+etc=o.confdir
+port=o.port
+cmd=o.cmd
+bin=os.path.join(o.prefix,"bin")
+lib=os.path.join(o.prefix,"share/ajaxterm")
+man=os.path.join(o.prefix,"share/man/man1")
+
+file("ajaxterm.bin","w").write(file("configure.ajaxterm.bin").read()%locals())
+file("Makefile","w").write(file("configure.makefile").read()%locals())
+
+if os.path.isfile("/etc/gentoo-release"):
+	file("ajaxterm.initd","w").write(file("configure.initd.gentoo").read()%locals())
+elif os.path.isfile("/etc/fedora-release") or os.path.isfile("/etc/redhat-release"):
+	file("ajaxterm.initd","w").write(file("configure.initd.redhat").read()%locals())
+else:
+	file("ajaxterm.initd","w").write(file("configure.initd.debian").read()%locals())
+
+os.system("chmod a+x ajaxterm.bin")
+os.system("chmod a+x ajaxterm.initd")

@@ -1,0 +1,75 @@
+#
+# ajaxterm     Startup script for ajaxterm
+#
+# chkconfig: - 99 99
+# description: Ajaxterm is a yadda yadda yadda
+# processname: ajaxterm
+# pidfile: /var/run/ajaxterm.pid
+# version: 1.0 Kevin Reichhart - ajaxterminit at lastname dot org
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+if [ -f /etc/sysconfig/ajaxterm ]; then
+    . /etc/sysconfig/ajaxterm
+fi
+
+ajaxterm=/usr/local/bin/ajaxterm
+prog=ajaxterm
+pidfile=${PIDFILE-/var/run/ajaxterm.pid}
+lockfile=${LOCKFILE-/var/lock/subsys/ajaxterm}
+port=${PORT-8022}
+user=${xUSER-nobody}
+RETVAL=0
+
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $ajaxterm --daemon --port=$port --uid=$user $OPTIONS
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && touch ${lockfile}
+    return $RETVAL
+}
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $ajaxterm
+    RETVAL=$?
+    echo
+    [ $RETVAL = 0 ] && rm -f ${lockfile} ${pidfile}
+}
+reload() {
+    echo -n $"Reloading $prog: "
+    killproc $ajaxterm -HUP
+    RETVAL=$?
+    echo
+}
+
+# See how we were called.
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status python ajaxterm
+        RETVAL=$?
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    condrestart)
+        if [ -f ${pidfile} ] ; then
+            stop
+            start
+        fi
+        ;;
+    *)
+    echo $"Usage: $prog {start|stop|restart|condrestart}"
+    exit 1
+esac
+
+exit $RETVAL

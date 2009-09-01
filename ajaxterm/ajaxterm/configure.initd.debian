@@ -1,0 +1,33 @@
+#!/bin/sh
+
+PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+DAEMON=%(bin)s/ajaxterm
+PORT=%(port)s
+PIDFILE=/var/run/ajaxterm.pid
+
+[ -x "$DAEMON" ] || exit 0
+
+#. /lib/lsb/init-functions
+
+case "$1" in
+	start)
+		echo "Starting ajaxterm on port $PORT"
+		start-stop-daemon --start --pidfile $PIDFILE --exec $DAEMON -- --daemon --port=$PORT --uid=nobody || return 2
+	;;
+	stop)
+		echo "Stopping ajaxterm"
+		start-stop-daemon  --stop --pidfile $PIDFILE
+		rm -f $PIDFILE
+	;;
+	restart|force-reload)
+		$0 stop
+		sleep 1
+		$0 start
+	;;
+	*)
+		echo "Usage: $SCRIPTNAME {start|stop|restart|force-reload}" >&2
+		exit 3
+	;;
+esac
+
+:
