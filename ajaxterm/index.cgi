@@ -10,7 +10,8 @@ use Socket;
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
 # Check for python
-if (!&has_command("python")) {
+$python = &has_command("python");
+if (!$python) {
 	&ui_print_endpage(&text('index_epython', "<tt>python</tt>"));
 	}
 
@@ -28,14 +29,24 @@ while(1) {
 close(TEST);
 
 # Run the Ajaxterm webserver
-system("cd $module_root_directory/ajaxterm ; python ajaxterm.py --port $port --log >/tmp/ajaxterm.out 2>&1 </dev/null &");
+$pid = fork();
+if (!$pid) {
+	chdir("$module_root_directory/ajaxterm");
+	untie(*STDIN); open(STDIN, "</dev/null");
+	#untie(*STDOUT); open(STDOUT, ">/dev/null");
+	#untie(*STDERR); open(STDERR, ">/dev/null");
+	untie(*STDOUT); open(STDOUT, ">/tmp/ajaxterm.out");
+	untie(*STDERR); open(STDERR, ">/tmp/ajaxterm.out");
+	exec($python, "ajaxterm.py", "--port", $port, "--log");
+	exit(1);
+	}
 
 # Wait for it to come up
 $try = 0;
 while(1) {
 	my $err;
 	&open_socket("localhost", $port, TEST2, \$err);
-	last if ($err);
+	last if (!$err);
 	$try++;
 	if ($try > 30) {
 		&error(&text('index_estart', 30, $port));
@@ -45,8 +56,34 @@ while(1) {
 close(TEST2);
 
 # Show the iframe
+print "<center>\n";
 print "<iframe src=$gconfig{'webprefix'}/$module_name/proxy.cgi/$port/ ",
-      "width=100% height=90%></iframe>\n";
+      "width=580 height=420 frameborder=0></iframe><br>\n";
+print "<input type=button onClick='window.open(\"proxy.cgi/$port/\", \"ajaxterm\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=580,height=420\")' value='$text{'index_popup'}'>\n";
+print "</center>\n";
+
+# Fork process that checks for inactivity
+if (!fork()) {
+	untie(*STDIN); close(STDIN);
+	untie(*STDOUT); close(STDOUT);
+	untie(*STDERR); close(STDERR);
+	$statfile = "$ENV{'WEBMIN_VAR'}/$module_name/$port";
+	while(1) {
+		my @st = stat($statfile);
+		if (@st && time() - $st[9] > $config{'timeout'}) {
+			# No activity
+			last;
+			}
+		if (!kill(0, $pid)) {
+			# Dead
+			last;
+			}
+		sleep(10);
+		}
+	unlink($statfile);
+	kill('KILL', $pid);
+	exit(0);
+	}
 
 &ui_print_footer("/", $text{'index'});
 

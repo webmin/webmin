@@ -45,3 +45,11 @@ while($buf = &read_http_connection($con, 1024)) {
         }
 &close_http_connection($con);
 
+# Touch status file to indicate it is still running
+$statusdir = $ENV{'WEBMIN_VAR'}."/".$module_name;
+if (!-d $statusdir) {
+	&make_dir($statusdir, 0700);
+	}
+&open_tempfile(TOUCH, ">$statusdir/$port", 0, 1);
+&close_tempfile(TOUCH);
+

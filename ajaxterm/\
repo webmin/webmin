@@ -1,0 +1,23 @@
+#!/usr/local/bin/perl
+# Start the Ajaxterm webserver on a random port, then print an iframe for
+# a URL that proxies to it
+
+BEGIN { push(@INC, ".."); };
+use WebminCore;
+use Socket;
+&init_config();
+
+&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+
+# Check for python
+if (!&has_command("python")) {
+	&ui_print_endpage(&text('index_epython', "<tt>python</tt>"));
+	}
+
+# Pick a free port
+&get_miniserv_config(\%miniserv);
+
+# Show the iframe
+
+&ui_print_footer("/", $text{'index'});
+
