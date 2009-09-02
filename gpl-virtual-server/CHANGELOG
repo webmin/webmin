@@ -604,3 +604,4 @@ Added a domain-owner leven restriction to prevent changing of a virtual server's
 ---- Changes since 3.73 ----
 If Postfix relay domains are stored in a hash, update it instead of adding to relay_domains in /etc/postfix/main.cf.
 Additional allowed MySQL client hosts are now included in backups.
+Added a warning to the configuration check for systems behind a NAT gateway with an incorrectly configured DNS IP address.
