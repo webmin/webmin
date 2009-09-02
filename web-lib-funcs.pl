@@ -7294,7 +7294,7 @@ else {
 	elsif ($file =~ /^(>|>>|)nul$/i) {
 		# Write to Windows null device
 		&webmin_debug_log($1 eq ">" ? "WRITE" :
-			  $l eq ">>" ? "APPEND" : "READ", "nul") if ($db);
+			  $1 eq ">>" ? "APPEND" : "READ", "nul") if ($db);
 		}
 	elsif ($file =~ /^(>|>>)(\/dev\/.*)/ || lc($file) eq "nul") {
 		# Writes to /dev/null or TTYs don't need to be handled
