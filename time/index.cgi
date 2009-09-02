@@ -8,7 +8,7 @@ $txt = "";
 
 &error( $text{ 'acl_error' } ) if( $access{ 'sysdate' } && $access{ 'hwdate' } );
 
-if (!$access{'sysdate'} && !$access{'hwdate'} && $config{'hwtime'}) {
+if (!$access{'sysdate'} && !$access{'hwdate'} && &support_hwtime()) {
 	$arr = "0,1";
 	}
 else {
@@ -24,7 +24,7 @@ if (!$access{'sysdate'} && !&has_command("date")) {
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
-if (!$access{'hwdate'} && $config{'hwtime'} && !&has_command("hwclock")) {
+if (!$access{'hwdate'} && $config{'hwtime'} == 1 && !&has_command("hwclock")) {
 	print &text( 'error_cnf', "<tt>hwclock</tt>"),"<p>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
@@ -60,7 +60,7 @@ if( !$access{'sysdate'} )
   print &ui_form_start("apply.cgi");
   print &tabletime(&hlink($text{'sys_title'}, "system_time"), 0, %system_date);
   print &ui_submit($text{'action_apply'}, "action");
-  if ($config{'hwtime'}) {
+  if (&support_hwtime()) {
 	print &ui_submit($text{'action_sync'}, "action");
   }
   print &ui_form_end();
@@ -72,7 +72,7 @@ else
 }
 
 # Get the hardware time
-if ($config{'hwtime'}) {
+if (&support_hwtime()) {
 	local @tm = &get_hardware_time();
 	@tm || &error($get_hardware_time_error || $text{'index_eformat'});
 	$hw_date{ 'second' } = $tm[0];
@@ -93,7 +93,7 @@ if ($config{'hwtime'}) {
 		print &tabletime(&hlink($text{'hw_title'}, "hardware_time"),
 				 0, %hw_date);
 		print &ui_submit($text{'action_save'}, "action");
-		if ($config{'hwtime'}) {
+		if (support_hwtime()) {
 			print &ui_submit($text{'action_sync_s'}, "action");
 			}
 		print &ui_form_end();
@@ -154,7 +154,7 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 		&ui_textbox("timeserver", $config{'timeserver'}, 60));
 
 	# Show hardware time checkbox
-	if ($config{'hwtime'}) {
+	if (&support_hwtime()) {
 		print &ui_table_row(" ",
 			&ui_checkbox("hardware", 1, $text{'index_hardware2'},
 				     $config{'timeserver_hardware'}));
