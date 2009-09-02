@@ -6185,6 +6185,7 @@ Closes a connection to an HTTP server, identified by the given handle.
 =cut
 sub close_http_connection
 {
+my ($h) = @_;
 close($h->{'fh'});
 }
 
