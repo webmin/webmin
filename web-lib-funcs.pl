@@ -1871,7 +1871,11 @@ if ($_[0]->{'nozone'} && &running_in_zone()) {
 	return 0;
 	}
 if ($_[0]->{'novserver'} && &running_in_vserver()) {
-	# Not supported in a Linux vserver
+	# Not supported in a Linux Vserver
+	return 0;
+	}
+if ($_[0]->{'noopenvz'} && &running_in_openvz()) {
+	# Not supported in an OpenVZ container
 	return 0;
 	}
 return 1 if (!$oss || $oss eq '*');
@@ -8144,6 +8148,25 @@ sub running_in_xen
 return 0 if (!-r "/proc/xen/capabilities");
 my $cap = &read_file_contents("/proc/xen/capabilities");
 return $cap =~ /control_d/ ? 0 : 1;
+}
+
+=head2 running_in_openvz
+
+Returns 1 if Webmin is running inside an OpenVZ container, by looking
+at /proc/vz/veinfo for a non-zero line.
+
+=cut
+sub running_in_openvz
+{
+return 0 if (!-r "/proc/vz/veinfo");
+my $lref = &read_file_lines("/proc/vz/veinfo", 1);
+return 0 if (!$lref || !@$lref);
+foreach my $l (@$lref) {
+	$l =~ s/^\s+//;
+	my @ll = split(/\s+/, $l);
+	return 0 if ($ll[0] eq '0');
+	}
+return 1;
 }
 
 =head2 list_categories(&modules, [include-empty])

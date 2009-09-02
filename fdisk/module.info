@@ -24,6 +24,7 @@ desc_zh_CN.UTF-8=本地磁盘分区
 desc_ja_JP.UTF-8=ローカル ディスクのパーティション
 desc_ko_KR.UTF-8=지역 디스크 파티션 
 novserver=1
+noopenvz=1
 desc_cz=Odd�ly na lok�ln�ch disc�ch
 desc_nl=Partities op Locale Hard Disken
 desc_ru.UTF-8=Разделы на локальных дисках

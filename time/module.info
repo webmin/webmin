@@ -28,6 +28,7 @@ desc_zh_CN.UTF-8=系统时间
 desc_ja_JP.UTF-8=システム時間
 desc_ko_KR.UTF-8=시스템 시간
 novserver=1
+noopenvz=1
 desc_it=Ora di sistema
 desc_nl=Systeem Tijd
 desc_ru.UTF-8=Системное время
