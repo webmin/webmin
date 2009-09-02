@@ -12,6 +12,7 @@ Example code:
 
 =cut
 
+use warnings;
 use Socket;
 use POSIX;
 
@@ -2157,7 +2158,7 @@ if ($gconfig{'debug_what_net'}) {
 				 (ref($dest) ? "" : " dest=$dest"));
 	}
 my ($buf, @n);
-my $cbfunc = $_[4];
+$cbfunc = $_[4];
 if (&is_readonly_mode()) {
 	if ($_[3]) { ${$_[3]} = "FTP connections not allowed in readonly mode";
 		     return 0; }
@@ -2884,7 +2885,7 @@ if (&get_product_name() eq "webmin") {
 		my $rbacs = &get_rbac_module_acl($remote_user, $_[0]);
 		return 0 if (!$rbacs);
 		}
-	elsif ($gconfig{'rbacdeny_'.$u}) {
+	elsif ($gconfig{'rbacdeny_'.$base_remote_user}) {
 		# If denying access to modules not specifically allowed by
 		# RBAC, then prevent access
 		return 0;
@@ -2944,7 +2945,7 @@ else {
 		@files = ( $mod."-lib.pl" );
 		}
 	}
-my @files = grep { !$main::done_foreign_require{$pkg,$_} } @files;
+@files = grep { !$main::done_foreign_require{$pkg,$_} } @files;
 return 1 if (!@files);
 foreach my $f (@files) {
 	$main::done_foreign_require{$pkg,$f}++;
@@ -6360,7 +6361,9 @@ sub eval_as_unix_user
 {
 my ($user, $code) = @_;
 my @uinfo = getpwnam($user);
-defined(@uinfo) || &error("eval_as_unix_user called with invalid user $user");
+if (!scalar(@uinfo)) {
+	&error("eval_as_unix_user called with invalid user $user");
+	}
 $) = $uinfo[3]." ".join(" ", $uinfo[3], &other_groups($user));
 $> = $uinfo[2];
 my @rv;
@@ -7666,7 +7669,7 @@ while(<RBAC>) {
 		}
 	}
 close(RBAC);
-return !$foundany ? undef : defined(%rv) ? \%rv : undef;
+return !$foundany ? undef : %rv ? \%rv : undef;
 }
 
 =head2 supports_rbac([module])
@@ -7725,7 +7728,7 @@ if (&is_readonly_mode() && !$safe) {
 	$? = 0;
 	return 0;
 	}
-my $cmd = &translate_command($cmd);
+$cmd = &translate_command($cmd);
 
 # Use ` operator where possible
 if (!$stdin && ref($stdout) && !$stderr) {
@@ -8044,33 +8047,33 @@ foreach my $s (keys %hash) {
 	if ($sv) {
 		# Replace ${IF}..${ELSE}..${ENDIF} block with first value,
 		# and ${IF}..${ENDIF} with value
-		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ELSE-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/\2/g;
-		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/\2/g;
+		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ELSE-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/$2/g;
+		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/$2/g;
 
 		# Replace $IF..$ELSE..$ENDIF block with first value,
 		# and $IF..$ENDIF with value
-		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ELSE-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/\2/g;
-		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/\2/g;
+		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ELSE-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/$2/g;
+		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/$2/g;
 
 		# Replace ${IFEQ}..${ENDIFEQ} block with first value if
 		# matching, nothing if not
-		$rv =~ s/\$\{IFEQ-\Q$us\E-\Q$sv\E\}(\n?)([\000-\377]*?)\$\{ENDIFEQ-\Q$us\E-\Q$sv\E\}(\n?)/\2/g;
+		$rv =~ s/\$\{IFEQ-\Q$us\E-\Q$sv\E\}(\n?)([\000-\377]*?)\$\{ENDIFEQ-\Q$us\E-\Q$sv\E\}(\n?)/$2/g;
 		$rv =~ s/\$\{IFEQ-\Q$us\E-[^\}]+}(\n?)([\000-\377]*?)\$\{ENDIFEQ-\Q$us\E-[^\}]+\}(\n?)//g;
 
 		# Replace $IFEQ..$ENDIFEQ block with first value if
 		# matching, nothing if not
-		$rv =~ s/\$IFEQ-\Q$us\E-\Q$sv\E(\n?)([\000-\377]*?)\$ENDIFEQ-\Q$us\E-\Q$sv\E(\n?)/\2/g;
+		$rv =~ s/\$IFEQ-\Q$us\E-\Q$sv\E(\n?)([\000-\377]*?)\$ENDIFEQ-\Q$us\E-\Q$sv\E(\n?)/$2/g;
 		$rv =~ s/\$IFEQ-\Q$us\E-\S+(\n?)([\000-\377]*?)\$ENDIFEQ-\Q$us\E-\S+(\n?)//g;
 		}
 	else {
 		# Replace ${IF}..${ELSE}..${ENDIF} block with second value,
 		# and ${IF}..${ENDIF} with nothing
-		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ELSE-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/\4/g;
+		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ELSE-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)/$4/g;
 		$rv =~ s/\$\{IF-\Q$us\E\}(\n?)([\000-\377]*?)\$\{ENDIF-\Q$us\E\}(\n?)//g;
 
 		# Replace $IF..$ELSE..$ENDIF block with second value,
 		# and $IF..$ENDIF with nothing
-		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ELSE-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/\4/g;
+		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ELSE-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)/$4/g;
 		$rv =~ s/\$IF-\Q$us\E(\n?)([\000-\377]*?)\$ENDIF-\Q$us\E(\n?)//g;
 
 		# Replace ${IFEQ}..${ENDIFEQ} block with nothing
