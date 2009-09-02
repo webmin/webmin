@@ -31,7 +31,7 @@ else {
 		 '--pid-owner', '--sid-owner', '--state', '--tos', '-j',
 		 '--to-ports', '--to-destination', '--to-source',
 		 '--reject-with', '--dports', '--sports',
-		 '--comment');
+		 '--comment', '--physdev-is-bridged');
 
 # get_iptables_save([file])
 # Parse the iptables save file into a list of tables 
