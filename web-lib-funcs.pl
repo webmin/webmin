@@ -12,7 +12,7 @@ Example code:
 
 =cut
 
-use warnings;
+#use warnings;
 use Socket;
 use POSIX;
 
