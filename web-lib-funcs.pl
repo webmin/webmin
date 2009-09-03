@@ -20,6 +20,12 @@ use vars qw($user_risk_level $loaded_theme_library $wait_for_input
 	    $done_webmin_header $trust_unknown_referers $unsafe_index_cgi
 	    %done_foreign_require $webmin_feedback_address
 	    $user_skill_level $pragma_no_cache $foreign_args);
+# Globals
+use vars qw($module_index_name $number_to_month_map $month_to_number_map
+	    $umask_already $default_charset $licence_status $os_type
+	    $licence_message $script_name $loaded_theme_oo_library
+	    $done_web_lib_funcs $os_version $module_index_link
+	    $called_from_webmin_core);
 
 =head2 read_file(file, &hash, [&order], [lowercase], [split-char])
 
@@ -5101,6 +5107,7 @@ foreach my $f (@_) {
 	&webmin_debug_log('UNLINK', $realf) if ($gconfig{'debug_what_ops'});
 	if (-d $realf) {
 		if (!rmdir($realf)) {
+			my $out;
 			if ($gconfig{'os_type'} eq 'windows') {
 				# Call del and rmdir commands
 				my $qm = $realf;
@@ -5113,7 +5120,7 @@ foreach my $f (@_) {
 			else {
 				# Use rm command
 				my $qm = quotemeta($realf);
-				my $out = `rm -rf $qm 2>&1`;
+				$out = `rm -rf $qm 2>&1`;
 				}
 			if ($?) {
 				$rv = 0;
