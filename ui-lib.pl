@@ -1,3 +1,6 @@
+use vars qw($theme_no_table $ui_radio_selector_donejs $module_name 
+	    $ui_multi_select_donejs);
+
 =head1 ui-lib.pl
 
 Common functions for generating HTML for Webmin user interface elements.
@@ -2195,7 +2198,7 @@ Returns the HTML for an image with the $alt text.  If $absolute is set,
 include protocol and hostname.  $cls is for optional CSS classes.
 
 =cut
-ui_image
+sub ui_image
 {
 return;
 }
