@@ -67,7 +67,7 @@ system("gunzip -c tarballs/$product-$ver.tar.gz | (cd $tmp_dir ; tar xf -)") &&
 	die "un-tar failed!";
 system("mv $tmp_dir/$product-$ver/* $usr_dir");
 rmdir("$tmp_dir/$product-$ver");
-system("mv $usr_dir/$baseproduct-pam $pam_file");
+system("mv $usr_dir/$baseproduct-debian-pam $pam_file");
 system("cd $usr_dir && (find . -name '*.cgi' ; find . -name '*.pl') | perl perlpath.pl /usr/bin/perl -");
 system("cd $usr_dir && rm -f mount/freebsd-mounts*");
 system("cd $usr_dir && rm -f mount/openbsd-mounts*");

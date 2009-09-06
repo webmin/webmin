@@ -31,7 +31,7 @@ $zipdir = "zips";
 	  "install-module.pl", "LICENCE.ja", 
 	  "favicon.ico", "config-netbsd", "fastrpc.cgi",
 	  "defaulttheme", "feedback.cgi", "feedback_form.cgi",
-	  "javascript-lib.pl", "webmin-pam", "maketemp.pl",
+	  "javascript-lib.pl", "webmin-pam", "webmin-debian-pam", "maketemp.pl",
 	  "run-uninstalls.pl",
 	  "webmin-gentoo-init", "run-postinstalls.pl",
 	  "config-lib.pl", "entities_map.txt", "ui-lib.pl",
