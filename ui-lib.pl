@@ -1,3 +1,6 @@
+use vars qw($theme_no_table $ui_radio_selector_donejs $module_name 
+	    $ui_multi_select_donejs);
+
 =head1 ui-lib.pl
 
 Common functions for generating HTML for Webmin user interface elements.
