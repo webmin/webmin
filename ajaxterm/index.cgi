@@ -57,7 +57,9 @@ close(TEST2);
 print "<center>\n";
 print "<iframe src=$gconfig{'webprefix'}/$module_name/proxy.cgi/$port/ ",
       "width=580 height=420 frameborder=0></iframe><br>\n";
-print "<input type=button onClick='window.open(\"proxy.cgi/$port/\", \"ajaxterm\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=580,height=420\")' value='$text{'index_popup'}'>\n";
+print "<input type=button onClick='window.open(\"proxy.cgi/$port/\", \"ajaxterm\", \"toolbar=no,menubar=no,scrollbars=no,resizable=yes,width=580,height=420\")' value='$text{'index_popup'}'><p>\n";
+print &text('index_credits', 'http://antony.lesuisse.org/software/ajaxterm/'),
+      "<p>\n";
 print "</center>\n";
 
 # Fork process that checks for inactivity

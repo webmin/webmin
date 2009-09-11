@@ -689,6 +689,7 @@ else {
 			&useradmin::other_modules("useradmin_create_user",
 						  \%user);
 			}
+		$ldap = &ldap_connect();
 		}
 	}
 $ldap->unbind();
