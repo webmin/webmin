@@ -3393,7 +3393,7 @@ sub run_login_script
 {
 if ($config{'login_script'}) {
 	system($config{'login_script'}.
-	       " ".join(" ", map { quotemeta($_) } @_).
+	       " ".join(" ", map { quotemeta($_) || '""' } @_).
 	       " >/dev/null 2>&1 </dev/null");
 	}
 }
@@ -3403,7 +3403,7 @@ sub run_logout_script
 {
 if ($config{'logout_script'}) {
 	system($config{'logout_script'}.
-	       " ".join(" ", map { quotemeta($_) } @_).
+	       " ".join(" ", map { quotemeta($_) || '""' } @_).
 	       " >/dev/null 2>&1 </dev/null");
 	}
 }
