@@ -2164,45 +2164,6 @@ return &theme_ui_hr() if (defined(&theme_ui_hr));
 return "<hr>\n";
 }
 
-=head2 ui_url($url, $absolute)
-
-Returns a normalized URL.
-
-If $absolute is true, include full protocol and hostname.
-
-=cut
-sub ui_url
-{
-return;
-}
-
-=head2 ui_link($text, $url, $cls, $absolute)
-
-Returns the HTML for a link, with label $text and link of $url.
-
-If defined, $cls is added to the "class=" field.
-
-If $absolute is true, return the absolute URL (starting with https:) rather 
-than relative; useful for links that must resolve from outside of the 
-application, such as SSL login redirects.
-
-=cut
-sub ui_link
-{
-return;
-}
-
-=head2 ui_image($image, $alt, $cls, $absolute)
-
-Returns the HTML for an image with the $alt text.  If $absolute is set, 
-include protocol and hostname.  $cls is for optional CSS classes.
-
-=cut
-sub ui_image
-{
-return;
-}
-
 =head2 ui_nav_link(direction, url, disabled)
 
 Returns an arrow icon linking to the provided url.
