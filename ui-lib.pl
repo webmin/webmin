@@ -1831,7 +1831,7 @@ $rv .= "</td></tr>\n";
 $rv .= "<tr>\n";
 $rv .= "<td bgcolor=#ffffff width=1><img src=$imgdir/1x1.gif></td>\n";
 foreach my $t (@$tabs) {
-	if ($t ne $tabs[0]) {
+	if ($t ne $$tabs[0]) {
 		# Spacer
 		$rv .= "<td width=2 bgcolor=#ffffff class='ui_tab_spacer'>".
 		       "<img src=$imgdir/1x1.gif></td>\n";

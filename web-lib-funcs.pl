@@ -2691,6 +2691,7 @@ else {
 foreach my $f (@files) {
 	my $eol = $_[1] || $main::file_cache_eol{$f} || "\n";
 	if (!$main::file_cache_noflush{$f}) {
+		no warnings; # XXX Bareword file handles should go away
 		&open_tempfile(FLUSHFILE, ">$f");
 		foreach my $line (@{$main::file_cache{$f}}) {
 			(print FLUSHFILE $line,$eol) ||
