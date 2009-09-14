@@ -1428,9 +1428,10 @@ if ($src->{'type'} == $dst->{'type'} && !$src->{'remote'}) {
 		&mailbox_fix_permissions($dst, \@st);
 		}
 	}
-elsif ($src->{'type'} == 1 && $dst->{'type'} == 0) {
-	# For Maildir to mbox moves, just append files
-	local @files = &get_maildir_files($src->{'file'});
+elsif (($src->{'type'} == 1 || $src->{'type'} == 3) && $dst->{'type'} == 0) {
+	# For Maildir or MH to mbox moves, just append files
+	local @files = $src->{'type'} == 1 ? &get_maildir_files($src->{'file'})
+					   : &get_mhdir_files($src->{'file'});
 	&open_tempfile(DEST, ">>$dst->{'file'}");
 	local $fromline = &make_from_line("webmin\@example.com");
 	foreach my $f (@files) {

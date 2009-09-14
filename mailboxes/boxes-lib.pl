@@ -2160,14 +2160,23 @@ foreach $f (@files) {
 return @rv;
 }
 
-# idlist_mhdir(file)
+# idlist_mhdir(directory)
 # Returns a list of files in an MH directory, which are the IDs
 sub idlist_mhdir
 {
-opendir(DIR, $file);
+local ($dir) = @_;
+opendir(DIR, $dir);
 local @files = grep { /^\d+$/ } readdir(DIR);
 closedir(DIR);
 return @files;
+}
+
+# get_mhdir_files(directory)
+# Returns a list of full paths to files in an MH directory
+sub get_mhdir_files
+{
+local ($dir) = @_;
+return map { "$dir/$_" } &idlist_mhdir($dir);
 }
 
 # select_mhdir(file, &ids, headersonly)
