@@ -5459,6 +5459,7 @@ elsif ($_[0]) {
 	$serv->{'user'} || return &$main::remote_error_handler(
 				"No login set for server $_[0]");
 	}
+my $ip = $serv->{'ip'} || $serv->{'host'};
 
 # Work out the username and password
 my ($user, $pass);
@@ -5478,7 +5479,7 @@ if ($serv->{'fast'} || !$sn) {
 	if (!$fast_fh_cache{$sn} && $sn) {
 		# Need to open the connection
 		my $con = &make_http_connection(
-			$serv->{'host'}, $serv->{'port'}, $serv->{'ssl'},
+			$ip, $serv->{'port'}, $serv->{'ssl'},
 			"POST", "/fastrpc.cgi");
 		return &$main::remote_error_handler(
 		    "Failed to connect to $serv->{'host'} : $con")
@@ -5514,7 +5515,7 @@ if ($serv->{'fast'} || !$sn) {
 			# Started ok .. connect and save SID
 			&close_http_connection($con);
 			my ($port, $sid, $version, $error) = ($1, $2, $3);
-			&open_socket($serv->{'host'}, $port, $sid, \$error);
+			&open_socket($ip, $port, $sid, \$error);
 			return &$main::remote_error_handler("Failed to connect to fastrpc.cgi : $error")
 				if ($error);
 			$fast_fh_cache{$sn} = $sid;
@@ -5610,7 +5611,7 @@ else {
 	# Call rpc.cgi on remote server
 	my $tostr = &serialise_variable($_[1]);
 	my $error = 0;
-	my $con = &make_http_connection($serv->{'host'}, $serv->{'port'},
+	my $con = &make_http_connection($ip, $serv->{'port'},
 					$serv->{'ssl'}, "POST", "/rpc.cgi");
 	return &$main::remote_error_handler("Failed to connect to $serv->{'host'} : $con") if (!ref($con));
 
