@@ -63,8 +63,8 @@ else {
 	}
 
 # Connect to the server
-$con = &make_http_connection($s->{'host'}, $s->{'port'}, $s->{'ssl'},
-			     $meth, $path);
+$con = &make_http_connection($s->{'ip'} || $s->{'host'}, $s->{'port'},
+			     $s->{'ssl'}, $meth, $path);
 &error($con) if (!ref($con));
 
 # Send request headers
