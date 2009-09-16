@@ -359,7 +359,7 @@ if (&running_in_zone()) {
 push(@fs, $smbmount) if ($smbmount);
 push(@fs, "udfs") if ($gconfig{'os_version'} >= 8);
 push(@fs, "xmemfs") if ($gconfig{'os_version'} >= 8 &&
-			gconfig{'os_version'} <= 10);
+			$gconfig{'os_version'} <= 10);
 return @fs;
 }
 
