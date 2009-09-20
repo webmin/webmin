@@ -35,7 +35,16 @@ while(<STDIN>) {
 	elsif (!$_) { last; }
 	}
 while(<STDIN>) {
-	$body .= $_;
+	if ($_ eq ".\n") {
+		# Single line with a . confuses SMTP
+		$body .= ". \n";
+		}
+	elsif ($_ eq ".\r\n") {
+		$body .= ". \r\n";
+		}
+	else {
+		$body .= $_;
+		}
 	}
 
 # read the filter file
