@@ -429,7 +429,7 @@ ldap_euser=No LDAP login set in module configuration
 ldap_ebase=No LDAP base DN set in module configuration
 
 delall_title=Delete All Mail
-delall_rusure=Are you sure you want to delete all email from $1? $2 messages totalling $3 will be deleted forever.
+delall_rusure=Are you sure you want to delete all email from $1? $2 messages totaling $3 will be deleted forever.
 delall_ok=Delete Now
 
 slide_title=Attached Images
