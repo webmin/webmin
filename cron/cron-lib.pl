@@ -1043,6 +1043,7 @@ while(<CONF>) {
         \$root = \$1 if (/^root=(.*)/);
         }
 close(CONF);
+\$ENV{'PERLLIB'} = "\$root";
 \$ENV{'WEBMIN_CONFIG'} = "$ENV{'WEBMIN_CONFIG'}";
 \$ENV{'WEBMIN_VAR'} = "$ENV{'WEBMIN_VAR'}";
 EOF
