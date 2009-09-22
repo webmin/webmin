@@ -27,11 +27,11 @@ if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
 	$data =~ s/^[\000-\377]*<BODY[^>]*>//i;
 	$data =~ s/<\/BODY>[\000-\377]*$//i;
 
-	&header($title || $text{'view_title'}, "");
+	&ui_print_header(undef, $title || $text{'view_title'}, "");
 	print "<div id=sarg-report>\n";
 	print $data;
 	print "</div>\n";
-	&footer("", $text{'index_return'});
+	&ui_print_footer("", $text{'index_return'});
 	}
 else {
 	print "Content-type: ",$full =~ /\.png$/i ? "image/png" :
