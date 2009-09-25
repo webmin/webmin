@@ -4266,8 +4266,6 @@ if (!$posted_data) {
 		if (!length($buf)) {
 			&http_error(500, "Failed to read POST request");
 			}
-		chomp($posted_data);
-		#$posted_data =~ s/\015$//mg;
 		$posted_data .= $buf;
 		}
 	}
