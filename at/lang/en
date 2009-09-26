@@ -58,3 +58,9 @@ allow_eusers=No users entered
 
 deletes_err=Failed to cancel commands
 deletes_enone=None selected
+
+log_allow=Changed allowed users
+log_create_job=Created scheduled command for $1
+log_delete_job=Cancelled scheduled command for $1
+log_exec_job=Executed scheduled command for $1
+log_delete_jobs=Cancelled $1 scheduled commands

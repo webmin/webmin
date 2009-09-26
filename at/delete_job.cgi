@@ -24,11 +24,13 @@ if ($in{'run'}) {
 	print &text('run_output'),"<p>\n";
 	@uinfo = getpwnam($job->{'user'});
 	print "<pre>";
-	$got = &proc::safe_process_exec_logged($temp, $uinfo[2], $uinfo[3],
-					 STDOUT, undef, 1);
+	&additional_log('exec', undef, $job->{'cmd'});
+	$got = &proc::safe_process_exec($temp, $uinfo[2], $uinfo[3],
+					STDOUT, undef, 1);
 	if (!$got) { print "<i>$text{'run_none'}</i>\n"; }
 	unlink($temp);
 	print "</pre>\n";
+	&webmin_log("exec", "job", $job->{'user'}, $job);
 
 	&ui_print_footer("", $text{'index_return'});
 	}

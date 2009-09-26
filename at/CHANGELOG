@@ -7,3 +7,5 @@ Added checkboxes and a button for deleting multiple scheduled commands at once.
 ---- Changes since 1.390 ----
 Converted all user interface code to use the new Webmin UI library.
 When editing a job, only the actual command entered is shown by default - the full command can be displayed using a new link.
+---- Changes since 1.490 ----
+Added action logging for scheduled commands created and deleted using this module.
