@@ -113,8 +113,9 @@ if ($config{'attribs'} && @{$st->{'attribs'}}) {
 
 # Show raw data from smartctl
 if ($config{'attribs'} && $st->{'raw'}) {
+	$raw_count++;
 	print &ui_hidden_table_start($text{'index_raw'}, "width=100%", 2,
-				     "raw", @{$st->{'attribs'}} ? 0 : 1);
+			     "raw".$raw_count, @{$st->{'attribs'}} ? 0 : 1);
 	print &ui_table_row(undef,
 		"<pre>".&html_escape($st->{'raw'})."</pre>", 2);
 	print &ui_hidden_table_end();
