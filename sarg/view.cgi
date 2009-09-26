@@ -13,10 +13,16 @@ $odir = &find_value("output_dir", $conf);
 $odir ||= &find_value("output_dir", $conf, 1);
 $odir || &error($text{'view_eodir'});
 $full = "$odir$file";
-open(FILE, $full) || &error($text{'view_eopen'}." : $full");
+&is_under_directory($odir, $full) || &error($text{'view_efile'});
+
+# Show index page
+if (-d $full && -r "$full/index.html") {
+	$full = "$full/index.html";
+	}
 
 # Display file contents
 if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
+	open(FILE, $full) || &error($text{'view_eopen'}." : $full");
 	while(read(FILE, $buf, 1024)) {
 		$data .= $buf;
 		}
@@ -33,12 +39,23 @@ if ($full =~ /\.(html|htm)$/i && !$config{'naked'}) {
 	print "</div>\n";
 	&ui_print_footer("", $text{'index_return'});
 	}
+elsif (-d $full) {
+	# Show directory listing
+	&ui_print_header(undef, $text{'view_title'}, "");
+	print "<ul>\n";
+	opendir(DIR, $full);
+	foreach $f (sort { lc($a) cmp lc($b) } readdir(DIR)) {
+		next if ($f eq "." || $f eq "..");
+		print "<li><a href='$f/'>$f</a>\n";
+		}
+	closedir(DIR);
+	print "</ul>\n";
+	&ui_print_footer("", $text{'index_return'});
+	}
 else {
-	print "Content-type: ",$full =~ /\.png$/i ? "image/png" :
-			       $full =~ /\.gif$/i ? "image/gif" :
-			       $full =~ /\.(jpg|jpeg)$/i ? "image/jpeg" :
-			       $full =~ /\.(html|htm)$/i ? "text/html" :
-							   "text/plain","\n";
+	# Show RAW file contents
+	open(FILE, $full) || &error($text{'view_eopen'}." : $full");
+	print "Content-type: ",&guess_mime_type($full, "text/plain"),"\n";
 	print "\n";
 	while(read(FILE, $buf, 1024)) {
 		print $buf;

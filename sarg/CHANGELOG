@@ -2,3 +2,5 @@
 First version of this module, which can configure, run and schedule the Sarg Squid log report generation tool. Thanks to Omar Armas for sponsoring the development of this module.
 ---- Changes since 1.250 ----
 Added a Module Config option to prevent the Webmin header and footer from being added when viewing a SARG report.
+---- Changes since 1.490 ----
+SARG reports that use daily subdirectories can now be viewed from within Webmin, even if they are missing an index.html file.
