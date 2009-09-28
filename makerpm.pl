@@ -92,6 +92,7 @@ rm -f mount/openbsd-mounts*
 rm -f mount/macos-mounts*
 rm -f webmin-gentoo-init
 rm -rf format bsdexports hpuxexports sgiexports zones rbac
+rm -rf acl/Authen-SolarisRBAC-0.1*
 chmod -R og-w .
 
 %install
