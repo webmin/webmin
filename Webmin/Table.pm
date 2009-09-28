@@ -162,14 +162,14 @@ foreach my $h (@{$self->get_headings()}) {
 			# Not sorting on this column .. show grey button
 			my $url = $self->make_url($i, 0, undef, undef);
 			$hh .= "<a href='$url'>".
-			       "<img src=/images/nosort.gif border=0></a>";
+			       "<img src=$gconfig{'webprefix'}/images/nosort.gif border=0></a>";
 			}
 		else {
 			# Sorting .. show button to switch mode
 			my $notsort = !$sortdir;
 			my $url = $self->make_url($i, $sortdir ? 0 : 1, undef, undef);
 			$hh .= "<a href='$url'>".
-			       "<img src=/images/sort.gif border=0></a>";
+			       "<img src=$gconfig{'webprefix'}/images/sort.gif border=0></a>";
 			}
 		$hh .= "</td></tr></table>";
 		push(@sheadings, $hh);
@@ -218,27 +218,27 @@ if ($self->get_paging() && $origsize) {
 	if ($page != 0) {
 		# Add start and left arrows
 		my $surl = $self->make_url(undef, undef, undef, 0);
-		$rv .= "<a href='$surl'><img src=/images/first.gif border=0 align=middle></a>\n";
+		$rv .= "<a href='$surl'><img src=$gconfig{'webprefix'}/images/first.gif border=0 align=middle></a>\n";
 		my $lurl = $self->make_url(undef, undef, undef, $page-1);
-		$rv .= "<a href='$lurl'><img src=/images/left.gif border=0 align=middle></a>\n";
+		$rv .= "<a href='$lurl'><img src=$gconfig{'webprefix'}/images/left.gif border=0 align=middle></a>\n";
 		}
 	else {
 		# Start and left are disabled
-		$rv .= "<img src=/images/first-grey.gif border=0 align=middle>\n";
-		$rv .= "<img src=/images/left-grey.gif border=0 align=middle>\n";
+		$rv .= "<img src=$gconfig{'webprefix'}/images/first-grey.gif border=0 align=middle>\n";
+		$rv .= "<img src=$gconfig{'webprefix'}/images/left-grey.gif border=0 align=middle>\n";
 		}
 	$rv .= &text('ui_paging', $start+1, $end+1, $origsize);
 	if ($end < $origsize-1) {
 		# Add right and end arrows
 		my $rurl = $self->make_url(undef, undef, undef, $page+1);
-		$rv .= "<a href='$rurl'><img src=/images/right.gif border=0 align=middle></a>\n";
+		$rv .= "<a href='$rurl'><img src=$gconfig{'webprefix'}/images/right.gif border=0 align=middle></a>\n";
 		my $eurl = $self->make_url(undef, undef, undef, $lastpage);
-		$rv .= "<a href='$eurl'><img src=/images/last.gif border=0 align=middle></a>\n";
+		$rv .= "<a href='$eurl'><img src=$gconfig{'webprefix'}/images/last.gif border=0 align=middle></a>\n";
 		}
 	else {
 		# Right and end are disabled
-		$rv .= "<img src=/images/right-grey.gif border=0 align=middle>\n";
-		$rv .= "<img src=/images/last-grey.gif border=0 align=middle>\n";
+		$rv .= "<img src=$gconfig{'webprefix'}/images/right-grey.gif border=0 align=middle>\n";
+		$rv .= "<img src=$gconfig{'webprefix'}/images/last-grey.gif border=0 align=middle>\n";
 		}
 	$rv .= "</center>\n";
 	}

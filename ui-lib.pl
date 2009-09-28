@@ -2287,22 +2287,24 @@ $rv .= &ui_form_start($cgi) if ($cgi);
 # Far left link, if needed
 if (@_ > 5) {
 	if ($farleft) {
-		$rv .= "<a href='$farleft'><img src=/images/first.gif ".
+		$rv .= "<a href='$farleft'>".
+		       "<img src=$gconfig{'webprefix'}/images/first.gif ".
 		       "border=0 align=middle></a>\n";
 		}
 	else {
-		$rv .= "<img src=/images/first-grey.gif ".
+		$rv .= "<img src=$gconfig{'webprefix'}/images/first-grey.gif ".
 		       "border=0 align=middle></a>\n";
 		}
 	}
 
 # Left link
 if ($left) {
-	$rv .= "<a href='$left'><img src=/images/left.gif ".
+	$rv .= "<a href='$left'>".
+	       "<img src=$gconfig{'webprefix'}/images/left.gif ".
 	       "border=0 align=middle></a>\n";
 	}
 else {
-	$rv .= "<img src=/images/left-grey.gif ".
+	$rv .= "<img src=$gconfig{'webprefix'}/images/left-grey.gif ".
 	       "border=0 align=middle></a>\n";
 	}
 
@@ -2312,22 +2314,24 @@ $rv .= " ".$inputs if ($inputs);
 
 # Right link
 if ($right) {
-	$rv .= "<a href='$right'><img src=/images/right.gif ".
+	$rv .= "<a href='$right'>".
+	       "<img src=$gconfig{'webprefix'}/images/right.gif ".
 	       "border=0 align=middle></a>\n";
 	}
 else {
-	$rv .= "<img src=/images/right-grey.gif ".
+	$rv .= "<img src=$gconfig{'webprefix'}/images/right-grey.gif ".
 	       "border=0 align=middle></a>\n";
 	}
 
 # Far right link, if needed
 if (@_ > 5) {
 	if ($farright) {
-		$rv .= "<a href='$farright'><img src=/images/last.gif ".
+		$rv .= "<a href='$farright'>".
+		       "<img src=$gconfig{'webprefix'}/images/last.gif ".
 		       "border=0 align=middle></a>\n";
 		}
 	else {
-		$rv .= "<img src=/images/last-grey.gif ".
+		$rv .= "<img src=$gconfig{'webprefix'}/images/last-grey.gif ".
 		       "border=0 align=middle></a>\n";
 		}
 	}
