@@ -1,0 +1,11 @@
+apache		apache-base
+spamassassin	spamassassin spamassassin-spamc spamassassin-spamd
+mysql		MySQL MySQL-client MySQL-common perl-DBD-mysql
+postgresql	postgresql postgresql-server perl-DBD-Pg
+clamav		clamav clamav-db clamd
+php4		php4 php4-cgi ph4-cli
+php5		php php-cgi php-cgi php-pear
+ruby		ruby ruby-RubyGems
+perl		perl apache-mod_perl
+fcgid		mod_fcgid
+virtualmin-modules	wbm-.* wbt-.* usm-.* ust-.*

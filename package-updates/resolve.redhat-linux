@@ -1,0 +1,8 @@
+postgresql	postgresql postgresql-server rh-postgresql rh-postgresql-server perl-DBD-Pg
+mysql		mysql mysql-server perl-DBD-MySQL
+perl		perl mod_perl perl-libwww-perl perl-Digest-HMAC perl-Digest-SHA1 perl-XML-Simple
+openssl		openssl perl-Net-SSLeay perl-Crypt-SSLeay
+php4		php php-cli
+php5		php5 php5-cli
+fcgid		mod_fcgid
+virtualmin-modules	wbm-.* wbt-.* usm-.* ust-.*

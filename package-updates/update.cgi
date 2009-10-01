@@ -1,0 +1,56 @@
+#!/usr/local/bin/perl
+# Update selected packages
+
+require './package-updates-lib.pl';
+&ReadParse();
+$redir = "index.cgi?mode=".&urlize($in{'mode'})."&all=".&urlize($in{'all'});
+
+if ($in{'refresh'}) {
+	&ui_print_unbuffered_header(undef, $text{'refresh_title'}, "");
+
+	# Clear all caches
+	print $text{'refresh_clearing'},"<br>\n";
+	&flush_package_caches();
+	&clear_repository_cache();
+	print $text{'refresh_done'},"<p>\n";
+
+	# Force re-fetch
+	print $text{'refresh_available'},"<br>\n";
+	@avail = &list_available();
+	print &text('refresh_done2', scalar(@avail)),"<p>\n";
+
+	&webmin_log("refresh");
+	&ui_print_footer($redir, $text{'index_return'});
+	}
+else {
+	# Upgrade some packages
+	my @pkgs = split(/\0/, $in{'u'});
+	@pkgs || &error($text{'update_enone'});
+	&ui_print_unbuffered_header(undef, $text{'update_title'}, "");
+
+	foreach my $ps (@pkgs) {
+		($p, $s) = split(/\//, $ps);
+		print &text('update_pkg', "<tt>$p</tt>"),"<br>\n";
+		print "<ul>\n";
+		push(@got, &package_install($p, $s, $in{'all'}));
+		print "</ul><br>\n";
+		}
+	if (@got) {
+		print &text('update_ok', scalar(@got)),"<p>\n";
+		}
+	else {
+		print $text{'update_failed'},"<p>\n";
+		}
+
+	# Refresh collected package info
+	if (&foreign_check("virtual-server") && @got) {
+		&foreign_require("virtual-server", "virtual-server-lib.pl");
+		if (defined(&virtual_server::refresh_possible_packages)) {
+			&virtual_server::refresh_possible_packages(\@got);
+			}
+		}
+
+	&webmin_log("update", "packages", scalar(@got),
+		    { 'got' => \@got });
+	&ui_print_footer($redir, $text{'index_return'});
+	}

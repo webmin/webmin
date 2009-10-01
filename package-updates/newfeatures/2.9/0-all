@@ -1,0 +1,3 @@
+desc=Update any package
+html=On systems using YUM or APT, all packages available for update can be displayed, rather than just those related to Virtualmin.
+master=1

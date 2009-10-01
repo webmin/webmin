@@ -1,0 +1,9 @@
+apache		apache
+postfix		postfix
+sendmail	sendmail sendmail-cf
+bind		bind bind-utils
+procmail	procmail
+logrotate	logrotate
+webalizer	webalizer
+mysql		mysql mysql-client mysql-server
+proftpd		proftpd proftpd-inetd

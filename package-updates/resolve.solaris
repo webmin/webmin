@@ -1,0 +1,9 @@
+apache		apache2
+mysql		mysql4
+clamav		clamav libclamav
+subversion	subversion ap2_subversion
+ruby		ruby rubygems
+rdoc		rubydoc
+openssl		openssl pm_netssleay pm_cryptssleay
+perl		perl pm_libwww pm_digesthmac pm_digestsha1 pm_xmlsimple
+php5		php5 ap2_modphp5

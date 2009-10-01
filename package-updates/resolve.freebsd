@@ -1,0 +1,5 @@
+bind		bind9
+spamassassin	p5-Mail-SpamAssassin
+mysql		mysql-client mysql-server p5-Class-DBI-mysql
+postgresql	postgresql-client postgresql-server postgresql-contrib p5-Class-DBI-Pg
+*
