@@ -282,7 +282,11 @@ noperlpath=1
 nouninstall=1
 nostart=1
 export config_dir var_dir perl autoos port login crypt host ssl nochown autothird noperlpath nouninstall nostart allow atboot
-./setup.sh >/tmp/.webmin/$product-setup.out 2>&1
+tempdir=/tmp/.webmin
+if [ ! -d \$tempdir ]; then
+	tempdir=/tmp
+fi
+./setup.sh >$tempdir/$product-setup.out 2>&1
 if [ "$product" = "webmin" ]; then
 	grep sudo= /etc/$product/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 1 ]; then
