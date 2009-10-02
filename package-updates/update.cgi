@@ -29,29 +29,77 @@ else {
 	@pkgs || &error($text{'update_enone'});
 	&ui_print_unbuffered_header(undef, $text{'update_title'}, "");
 
-	foreach my $ps (@pkgs) {
-		($p, $s) = split(/\//, $ps);
-		print &text('update_pkg', "<tt>$p</tt>"),"<br>\n";
-		print "<ul>\n";
-		push(@got, &package_install($p, $s, $in{'all'}));
-		print "</ul><br>\n";
-		}
-	if (@got) {
-		print &text('update_ok', scalar(@got)),"<p>\n";
-		}
-	else {
-		print $text{'update_failed'},"<p>\n";
-		}
-
-	# Refresh collected package info
-	if (&foreign_check("virtual-server") && @got) {
-		&foreign_require("virtual-server", "virtual-server-lib.pl");
-		if (defined(&virtual_server::refresh_possible_packages)) {
-			&virtual_server::refresh_possible_packages(\@got);
+	# Work out what will be done, if possible
+	@ops = ( );
+	if (!$in{'confirm'}) {
+		foreach my $ps (@pkgs) {
+			($p, $s) = split(/\//, $ps);
+			push(@ops, &list_package_operations($p, $s));
 			}
 		}
 
-	&webmin_log("update", "packages", scalar(@got),
-		    { 'got' => \@got });
+	if (@ops) {
+		# Ask first
+		print &ui_form_start("update.cgi", "post");
+		print &ui_hidden("all", $in{'all'});
+		print &ui_hidden("mode", $in{'mode'});
+		print &ui_hidden("search", $in{'search'});
+		foreach $ps (@pkgs) {
+			print &ui_hidden("u", $ps);
+			}
+		print &text('update_rusure', scalar(@ops)),"<p>\n";
+		print &ui_form_end([ [ "confirm", $text{'update_confirm'} ] ]);
+
+		# Show table of all depends
+		@current = $in{'all'} ? &list_all_current(1)
+				      : &list_current(1);
+		print &ui_columns_start([ $text{'index_name'},
+					  $text{'update_oldver'},
+					  $text{'update_newver'},
+					  $text{'index_desc'},
+					], 100);
+		foreach $p (@ops) {
+			($c) = grep { $_->{'name'} eq $p->{'name'} &&
+				    $_->{'system'} eq $p->{'system'} } @current;
+			if (!$c && !@avail) {
+				# Only get available if needed
+				@avail = &list_available(0, $in{'all'});
+				}
+			($a) = grep { $_->{'name'} eq $p->{'name'} &&
+				    $_->{'system'} eq $p->{'system'} } @avail;
+			print &ui_columns_row([
+				$p->{'name'},
+				$c ? $c->{'version'}
+				   : "<i>$text{'update_none'}</i>",
+				$p->{'version'},
+				$c ? $c->{'desc'} :
+				  $a ? $a->{'desc'} : '',
+				]);
+			}
+		print &ui_columns_end();
+		}
+	else {
+		# Do it
+		foreach my $ps (@pkgs) {
+			($p, $s) = split(/\//, $ps);
+			print &text('update_pkg', "<tt>$p</tt>"),"<br>\n";
+			print "<ul>\n";
+			push(@got, &package_install($p, $s, $in{'all'}));
+			print "</ul><br>\n";
+			}
+		if (@got) {
+			print &text('update_ok', scalar(@got)),"<p>\n";
+			}
+		else {
+			print $text{'update_failed'},"<p>\n";
+			}
+
+		# Refresh collected package info
+		# XXX call webmin
+
+		&webmin_log("update", "packages", scalar(@got),
+			    { 'got' => \@got });
+		}
+
 	&ui_print_footer($redir, $text{'index_return'});
 	}

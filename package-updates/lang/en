@@ -71,6 +71,11 @@ update_tgzuntardone=.. done
 update_tgzsetup=Running setup script ..
 update_tgzsetupdone=.. upgrade complete
 update_etgzsetup=.. upgrade failed! See the error message above for the reason why
+update_rusure=Are you sure you wish to install the $1 packages listed below? This may include dependencies of packages that you selected.
+update_oldver=Current version
+update_newver=New version
+update_confirm=Install Now
+update_none=None
 
 sched_title=Scheduled Update
 sched_yes=Scheduled checking for updates is now active.

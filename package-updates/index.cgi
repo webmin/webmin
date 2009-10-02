@@ -31,7 +31,9 @@ foreach $m ('all', 'updates', 'new', 'both',
 push(@grid, $text{'index_mode'}, &ui_links_row(\@mlinks));
 
 # Show all selector
-if (&show_all_option()) {
+$showall = &show_all_option();
+if ($showall == 1) {
+	# Can show all, or just virtualmin
 	$in{'all'} ||= 0;
 	foreach $a (0, 1) {
 		$amsg = $text{'index_all_'.$a};
@@ -46,13 +48,17 @@ if (&show_all_option()) {
 		}
 	push(@grid, $text{'index_allsel'}, &ui_links_row(\@alinks));
 	}
+elsif ($showall == 2) {
+	# Always showing all
+	$in{'all'} = 2;
+	}
 
 # Show search box
 push(@grid, $text{'index_search'}, &ui_textbox("search", $in{'search'}, 30)." ".
 				   &ui_submit($text{'index_searchok'}));
 
 print &ui_form_start("index.cgi");
-print &ui_hidden("all", &show_all_option() ? 1 : 0);
+print &ui_hidden("all", $showall ? 1 : 0);
 print &ui_hidden("mode", $in{'mode'});
 print &ui_grid_table(\@grid, 2),"<p>\n";
 print &ui_form_end();
@@ -128,7 +134,8 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 		  'checked' => $need },
 		"<a href='view.cgi?all=$in{'all'}&mode=$in{'mode'}&name=".
 		  &urlize($p->{'name'})."&system=".
-		  &urlize($p->{'system'})."'>$p->{'name'}</a>",
+		  &urlize($p->{'system'})."&search=".
+		  &urlize($in{'search'})."'>$p->{'name'}</a>",
 		$p->{'desc'},
 		$msg,
 		$source ? ( $source ) : $anysource ? ( "") : ( ),

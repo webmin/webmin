@@ -2,8 +2,9 @@
 # update system.
 #
 # XXX cron job to collect .. actually use webmin module collector
-# XXX confirmation form, showing all dependencies
+#	XXX re-check after package update
 # XXX test automatic notification
+# XXX test on debian
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
@@ -475,6 +476,21 @@ unlink($current_all_cache_file);
 return @rv;
 }
 
+# list_package_operations(package, system)
+# Given a package, returns a list of all dependencies that will be installed
+sub list_package_operations
+{
+my ($name, $system) = @_;
+if (defined(&software::update_system_operations)) {
+	my @rv = &software::update_system_operations($name);
+	foreach my $p (@rv) {
+		$p->{'system'} = $system;
+		}
+	return @rv;
+	}
+return ( );
+}
+
 # list_possible_updates([nocache])
 # Returns a list of updates that are available. Each element in the array
 # is a hash ref containing a name, version, description and severity flag.
@@ -832,11 +848,13 @@ if ($pkg->{'system'} eq 'yum') {
 return undef;
 }
 
-# Returns 1 if an option should be shown to list all packages. Only true for
-# YUM and APT at the moment
+# Returns 1 if an option should be shown to list all packages, 2 if all
+# packages is the only option, or 0 if only virtualmin.
 sub show_all_option
 {
-return $software::update_system eq 'apt' || $software::update_system eq 'yum';
+return !&foreign_check("virtual-server") ? 2 :
+       $software::update_system eq 'apt' ||
+       $software::update_system eq 'yum' ? 1 : 0;
 }
 
 sub flush_package_caches

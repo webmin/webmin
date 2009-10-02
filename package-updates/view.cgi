@@ -73,6 +73,7 @@ elsif ($a && !$c) {
 	}
 print &ui_form_end(\@buts);
 
-&ui_print_footer("index.cgi?all=$in{'all'}&mode=$in{'mode'}",
+&ui_print_footer("index.cgi?all=$in{'all'}&mode=$in{'mode'}&search=".
+	          &urlize($in{'search'}),
 		 $text{'index_return'});
 
