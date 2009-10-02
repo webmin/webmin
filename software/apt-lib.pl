@@ -110,13 +110,16 @@ return $name eq "dhcpd" ? "dhcp3-server" :
 # Returns a list of package names and versions that are available from YUM
 sub update_system_available
 {
-local (@rv, $pkg);
+local (@rv, $pkg, %done);
+
+# Use dump to get versions
 &execute_command("$apt_get_command update");
-&open_execute_command(DUMP, "apt-cache dump", 1, 1);
+&open_execute_command(DUMP, "LANG='' LC_ALL='' apt-cache dump", 1, 1);
 while(<DUMP>) {
 	if (/^\s*Package:\s*(\S+)/) {
 		$pkg = { 'name' => $1 };
 		push(@rv, $pkg);
+		$done{$1} = $pkg;
 		}
 	elsif (/^\s*Version:\s*(\S+)/ && $pkg && !$pkg->{'version'}) {
 		$pkg->{'version'} = $1;
@@ -130,6 +133,15 @@ while(<DUMP>) {
 		}
 	}
 close(DUMP);
+
+# Use search to get descriptions
+foreach my $s (&update_system_search('.*')) {
+	my $pkg = $done{$s->{'name'}};
+	if ($pkg) {
+		$pkg->{'desc'} = $s->{'desc'};
+		}
+	}
+
 return @rv;
 }
 
@@ -138,7 +150,8 @@ return @rv;
 sub update_system_search
 {
 local (@rv, $pkg);
-&open_execute_command(DUMP, "$apt_search_command search ".quotemeta($_[0]), 1, 1);
+&open_execute_command(DUMP, "LANG='' LC_ALL='' $apt_search_command search ".
+			    quotemeta($_[0]), 1, 1);
 while(<DUMP>) {
 	if (/^(\S+)\s*-\s*(.*)/) {
 		push(@rv, { 'name' => $1, 'desc' => $2 });
