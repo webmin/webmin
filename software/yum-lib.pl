@@ -56,6 +56,37 @@ else {
 	}
 }
 
+# update_system_operations(packages)
+# Given a list of packages, returns a list containing packages that will
+# actually get installed, each of which is a hash ref with name and version.
+sub update_system_operations
+{
+my ($packages) = @_;
+my $temp = &transname();
+&open_tempfile(SHELL, ">$temp", 0, 1);
+&print_tempfile(SHELL, "install $packages\n");
+&print_tempfile(SHELL, "transaction solve\n");
+&close_tempfile(SHELL);
+my @rv;
+open(SHELL, "yum shell $temp |");
+while(<SHELL>) {
+	if (/Package\s+(\S+)\s+(\S+)\s+set/i) {
+		my $pkg = { 'name' => $1,
+			    'version' => $2 };
+		if ($pkg->{'name'} =~ s/\.([^\.]+)$//) {
+			$pkg->{'arch'} = $1;
+			}
+		if ($pkg->{'version'} =~ s/^(\S+)://) {
+			$pkg->{'epoch'} = $1;
+			}
+		push(@rv, $pkg);
+		}
+	}
+close(SHELL);
+&unlink_file($temp);
+return @rv;
+}
+
 # show_update_system_opts()
 # Returns HTML for enabling a repository, if any are disabled
 sub show_update_system_opts
@@ -109,8 +140,6 @@ sub update_system_available
 {
 local @rv;
 local %done;
-# XXX use yum info
-# XXX include newest version only
 &open_execute_command(PKG, "yum info", 1, 1);
 while(<PKG>) {
 	s/\r|\n//g;
