@@ -109,35 +109,40 @@ sub update_system_available
 {
 local @rv;
 local %done;
-&open_execute_command(PKG, "yum list", 1, 1);
+# XXX use yum info
+# XXX include newest version only
+&open_execute_command(PKG, "yum info", 1, 1);
 while(<PKG>) {
-	next if (/^Setting\s+up/i);
-	if (/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s*$/ ||
-	    /^(\S+)\.(\S+)\s+(\S+)\s+(\S+)\s*$/) {
-		local $name = $1;
-		if ($done{$name}) {
-			# Seen twice - assume second is better
-			$done{$name}->{'version'} = $3;
-			$done{$name}->{'source'} = $4;
-			if ($done{$name}->{'version'} =~ s/^(\S+)://) {
-				$done{$name}->{'epoch'} = $1;
-				}
-			else {
-				$done{$name}->{'epoch'} = undef;
-				}
+	s/\r|\n//g;
+	if (/^Name\s*:\s*(\S+)/) {
+		if ($done{$1}) {
+			# Start of a new package
+			$pkg = $done{$1};
 			}
 		else {
-			# First occurrance
-			local $pkg = { 'name' => $1,
-				       'arch' => $2,
-				       'version' => $3,
-				       'source' => $4 };
-			if ($pkg->{'version'} =~ s/^(\S+)://) {
-				$pkg->{'epoch'} = $1;
-				}
-			push(@rv, $pkg);
+			# Seen before .. update with newer info
+			$pkg = { 'name' => $1 };
 			$done{$pkg->{'name'}} = $pkg;
+			push(@rv, $pkg);
 			}
+		}
+	elsif (/^Arch\s*:\s*(\S+)/) {
+		$pkg->{'arch'} = $1;
+		}
+	elsif (/^Version\s*:\s*(\S+)/) {
+		$pkg->{'version'} = $1;
+		if ($pkg->{'version'} =~ s/^(\S+)://) {
+			$pkg->{'epoch'} = $1;
+			}
+		}
+	elsif (/^Release\s*:\s*(\S+)/) {
+		$pkg->{'version'} .= "-".$1;
+		}
+	elsif (/^Repo\s*:\s*(\S+)/) {
+		$pkg->{'source'} = $1;
+		}
+	elsif (/^Summary\s*:\s*(\S.*)/) {
+		$pkg->{'desc'} = $1;
 		}
 	}
 close(PKG);
