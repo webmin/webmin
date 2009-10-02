@@ -24,7 +24,8 @@ foreach $m ('all', 'updates', 'new', 'both',
 		}
 	else {
 		push(@mlinks, "<a href='index.cgi?mode=$m&all=".
-			      &urlize($in{'all'})."'>$mmsg</a>");
+			      &urlize($in{'all'})."&search=".
+			      &urlize($in{'search'})."'>$mmsg</a>");
 		}
 	}
 push(@grid, $text{'index_mode'}, &ui_links_row(\@mlinks));
@@ -39,7 +40,8 @@ if (&show_all_option()) {
 			}
 		else {
 			push(@alinks, "<a href='index.cgi?mode=".
-				&urlize($in{'mode'})."&all=$a'>$amsg</a>");
+				&urlize($in{'mode'})."&all=$a&search=".
+				&urlize($in{'search'})."'>$amsg</a>");
 			}
 		}
 	push(@grid, $text{'index_allsel'}, &ui_links_row(\@alinks));
@@ -51,7 +53,7 @@ push(@grid, $text{'index_search'}, &ui_textbox("search", $in{'search'}, 30)." ".
 
 print &ui_form_start("index.cgi");
 print &ui_hidden("all", &show_all_option() ? 1 : 0);
-print &ui_hidden("mode", "both");
+print &ui_hidden("mode", $in{'mode'});
 print &ui_grid_table(\@grid, 2),"<p>\n";
 print &ui_form_end();
 
@@ -146,7 +148,9 @@ print &ui_form_columns_table(
           [ "refresh", $text{'index_refresh'} ] ],
 	1,
 	undef,
-	[ [ "mode", $in{'mode'} ], [ "all", $in{'all'} ] ],
+	[ [ "mode", $in{'mode'} ],
+	  [ "all", $in{'all'} ],
+	  [ "search", $in{'search'} ] ],
 	[ "", $text{'index_name'}, $text{'index_desc'}, $text{'index_status'},
 	  $anysource ? ( $text{'index_source'} ) : ( ), ],
 	100,

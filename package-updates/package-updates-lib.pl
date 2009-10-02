@@ -1,11 +1,9 @@
 # Functions for checking for updates to packages from YUM, APT or some other
 # update system.
 #
-# XXX don't show virtualmin-specific mode ever
-# XXX offer to install packages?
 # XXX cron job to collect .. actually use webmin module collector
 # XXX confirmation form, showing all dependencies
-# XXX call yum info to get full package list, from software module
+# XXX test automatic notification
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";

@@ -3,7 +3,8 @@
 
 require './package-updates-lib.pl';
 &ReadParse();
-$redir = "index.cgi?mode=".&urlize($in{'mode'})."&all=".&urlize($in{'all'});
+$redir = "index.cgi?mode=".&urlize($in{'mode'})."&all=".&urlize($in{'all'}).
+	 "&search=".&urlize($in{'search'});
 
 if ($in{'refresh'}) {
 	&ui_print_unbuffered_header(undef, $text{'refresh_title'}, "");
