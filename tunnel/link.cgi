@@ -25,7 +25,7 @@ $url = $gconfig{'webprefix'}."/$module_name/link.cgi/$openurl";
 $| = 1;
 $meth = $ENV{'REQUEST_METHOD'};
 if ($config{'url'}) {
-	$openurl eq $config{'url'} ||
+	$openurl =~ /^\Q$config{'url'}\E/ ||
 		&error(&text('link_ebadurl', $openurl));
 	}
 
