@@ -1,1 +1,0 @@
-../virtual-server/save_newsharedips.cgi

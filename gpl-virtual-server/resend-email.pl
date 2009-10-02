@@ -1,1 +1,0 @@
-../virtual-server/resend-email.pl

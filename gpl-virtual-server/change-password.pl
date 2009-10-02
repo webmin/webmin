@@ -1,1 +1,0 @@
-../virtual-server/change-password.pl

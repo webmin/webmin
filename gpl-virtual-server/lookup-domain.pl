@@ -1,1 +1,0 @@
-../virtual-server/lookup-domain.pl

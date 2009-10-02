@@ -1,1 +1,0 @@
-../virtual-server/info.pl

@@ -1,1 +1,0 @@
-../virtual-server/run-all-webalizer.pl

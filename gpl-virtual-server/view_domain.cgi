@@ -1,1 +1,0 @@
-../virtual-server/view_domain.cgi

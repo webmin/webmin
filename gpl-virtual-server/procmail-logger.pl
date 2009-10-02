@@ -1,1 +1,0 @@
-../virtual-server/procmail-logger.pl

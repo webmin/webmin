@@ -1,1 +1,0 @@
-../virtual-server/disable-domain.pl

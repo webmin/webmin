@@ -1,1 +1,0 @@
-../virtual-server/move_form.cgi

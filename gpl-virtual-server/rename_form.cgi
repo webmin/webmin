@@ -1,1 +1,0 @@
-../virtual-server/rename_form.cgi

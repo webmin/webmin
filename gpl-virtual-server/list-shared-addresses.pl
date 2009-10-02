@@ -1,1 +1,0 @@
-../virtual-server/list-shared-addresses.pl

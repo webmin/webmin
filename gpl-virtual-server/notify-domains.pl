@@ -1,1 +1,0 @@
-../virtual-server/notify-domains.pl

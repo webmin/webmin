@@ -1,1 +1,0 @@
-../virtual-server/edit_pass.cgi

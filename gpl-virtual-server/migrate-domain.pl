@@ -1,1 +1,0 @@
-../virtual-server/migrate-domain.pl

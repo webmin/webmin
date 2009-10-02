@@ -1,1 +1,0 @@
-../virtual-server/frame_form.cgi

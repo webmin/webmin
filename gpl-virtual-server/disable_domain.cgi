@@ -1,1 +1,0 @@
-../virtual-server/disable_domain.cgi

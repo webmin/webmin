@@ -1,1 +1,0 @@
-../virtual-server/install_postgrey.cgi

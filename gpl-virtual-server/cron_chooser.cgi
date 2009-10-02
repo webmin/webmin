@@ -1,1 +1,0 @@
-../virtual-server/cron_chooser.cgi

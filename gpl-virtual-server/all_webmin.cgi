@@ -1,1 +1,0 @@
-../virtual-server/all_webmin.cgi

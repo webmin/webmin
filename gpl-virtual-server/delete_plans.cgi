@@ -1,1 +1,0 @@
-../virtual-server/delete_plans.cgi

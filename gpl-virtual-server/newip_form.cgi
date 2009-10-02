@@ -1,1 +1,0 @@
-../virtual-server/newip_form.cgi

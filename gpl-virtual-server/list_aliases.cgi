@@ -1,1 +1,0 @@
-../virtual-server/list_aliases.cgi

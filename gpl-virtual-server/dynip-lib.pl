@@ -1,1 +1,0 @@
-../virtual-server/dynip-lib.pl

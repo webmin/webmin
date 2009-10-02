@@ -1,1 +1,0 @@
-../virtual-server/mass_ucreate.cgi
