@@ -28,7 +28,8 @@ print &ui_table_row($text{'rmass_type'},
 
 # Record name
 print &ui_table_row($text{'rmass_name'},
-		    &ui_textbox("name", undef, 30));
+		    &ui_textbox("name", undef, 30)." ".
+		    $text{'rmass_name2'});
 
 # Record value
 print &ui_table_row($text{'rmass_value'},

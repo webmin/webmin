@@ -984,6 +984,7 @@ rmass_title=Add Record to Zones
 rmass_header=Mass record addition details
 rmass_type=Record type to add
 rmass_name=New record name
+rmass_name2=(Enter <tt>@</tt> for domain name)
 rmass_value=New record value
 rmass_ok=Add Record
 rmass_ttl=New record time-to-live
