@@ -77,6 +77,7 @@ update_oldver=Current version
 update_newver=New version
 update_confirm=Install Now
 update_none=None
+update_ops=Building complete list of updates ..
 
 sched_title=Scheduled Update
 sched_yes=Scheduled checking for updates is now active.
