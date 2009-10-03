@@ -4,8 +4,7 @@
 # XXX cron job to collect .. actually use webmin module collector
 #	XXX re-check after package update
 # XXX test automatic notification
-# XXX test on debian
-#	XXX show what will be done
+# XXX show on system information page?
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";

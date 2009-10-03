@@ -66,6 +66,31 @@ else { print "<b>$text{'apt_ok'}</b><p>\n"; }
 return @rv;
 }
 
+# update_system_operations(packages)
+# Given a list of packages, returns a list containing packages that will
+# actually get installed, each of which is a hash ref with name and version.
+sub update_system_operations
+{
+my ($packages) = @_;
+$ENV{'DEBIAN_FRONTEND'} = 'noninteractive';
+my $cmd = "apt-get -s install ".
+	  join(" ", map { quotemeta($_) } split(/\s+/, $packages)).
+	  " </dev/null 2>&1";
+my $out = &backquote_command($cmd);
+my @rv;
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /Inst\s+(\S+)\s+\[(\S+)\]/) {
+		my $pkg = { 'name' => $1,
+			    'version' => $2 };
+		if ($pkg->{'version'} =~ s/^(\S+)://) {
+			$pkg->{'epoch'} = $1;
+			}
+		push(@rv, $pkg);
+		}
+	}
+return @rv;
+}
+
 # update_system_form()
 # Shows a form for updating all packages on the system
 sub update_system_form
