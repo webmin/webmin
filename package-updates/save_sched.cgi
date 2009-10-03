@@ -26,16 +26,16 @@ else {
 	$job->{'mins'} = $job->{'hours'} = $job->{'days'} =
 		$job->{'months'} = $job->{'weekdays'} = '*';
 	if ($in{'sched'} eq 'h') {
-		$job->{'mins'} = '0';
+		$job->{'mins'} = int(rand()*60);
 		}
 	elsif ($in{'sched'} eq 'd') {
-		$job->{'mins'} = '0';
-		$job->{'hours'} = '0';
+		$job->{'mins'} = int(rand()*60);
+		$job->{'hours'} = int(rand()*24);
 		}
 	elsif ($in{'sched'} eq 'w') {
-		$job->{'mins'} = '0';
-		$job->{'hours'} = '0';
-		$job->{'weekdays'} = '0';
+		$job->{'mins'} = int(rand()*60);
+		$job->{'hours'} = int(rand()*24);
+		$job->{'weekdays'} = int(rand()*7);
 		}
 	&lock_file(&cron::cron_file($job));
 	if ($oldjob) {
@@ -56,6 +56,7 @@ else {
 
 print "$msg<p>\n";
 
-&ui_print_footer("", $text{'index_return'});
 &webmin_log("sched", undef, $in{'sched_def'} ? 0 : 1);
+&ui_print_footer("index.cgi?all=$in{'all'}&mode=$in{'mode'}&search=".
+		 &urlize($in{'search'}), $text{'index_return'});
 

@@ -3,7 +3,6 @@
 #
 # XXX cron job to collect .. actually use webmin module collector
 #	XXX re-check after package update
-# XXX test automatic notification
 # XXX show on system information page?
 
 BEGIN { push(@INC, ".."); };
@@ -79,66 +78,6 @@ if ($nocache || &cache_expired($current_cache_file)) {
 
 	# Filter out dupes and sort by name
 	@rv = &filter_duplicates(\@rv);
-
-	local $incwebmin = &include_webmin_modules();
-	if ($incwebmin) {
-		# Add installed Webmin modules
-		foreach my $minfo (&get_all_module_infos()) {
-			push(@rv, { 'name' => $minfo->{'dir'},
-				    'update' => $minfo->{'dir'},
-				    'desc' => &text('index_webmin',
-						    $minfo->{'desc'}),
-				    'version' => $minfo->{'version'},
-				    'system' => 'webmin',
-				    'updateonly' => 1,
-				  });
-			}
-
-		# Add installed Webmin themes
-		foreach my $tinfo (&webmin::list_themes()) {
-			push(@rv, { 'name' => $tinfo->{'dir'},
-				    'update' => $tinfo->{'dir'},
-				    'desc' => &text('index_webmintheme',
-						    $tinfo->{'desc'}),
-				    'version' => $tinfo->{'version'},
-				    'system' => 'webmin',
-				    'updateonly' => 1,
-				  });
-			}
-
-		# Add an entry for Webmin itself, but only if this was
-		# a tar.gz install
-		if ($incwebmin != 2) {
-			push(@rv, { 'name' => 'webmin',
-				    'update' => 'webmin',
-				    'desc' => 'Webmin Package',
-				    'version' => &get_webmin_version(),
-				    'system' => 'tgz',
-				    'updateonly' => 1,
-				  });
-			}
-		else {
-			# Remove Webmin from the list, as YUM sometimes
-			# includes it in the 'yum list' output even though
-			# it cannot actual do an update!
-			@rv = grep { $_->{'name'} ne 'webmin' } @rv;
-			}
-
-		# If Usermin is installed from a tgz, add it too
-		if (&include_usermin_modules() == 1) {
-			push(@rv, { 'name' => 'usermin',
-				    'update' => 'usermin',
-				    'desc' => 'Usermin Package',
-				    'version' =>
-					&usermin::get_usermin_version(),
-				    'system' => 'tgz',
-				    'updateonly' => 1,
-				  });
-			}
-		else {
-			@rv = grep { $_->{'name'} ne 'usermin' } @rv;
-			}
-		}
 
 	&write_cache_file($current_cache_file, \@rv);
 	return @rv;
@@ -573,63 +512,6 @@ if ($gconfig{'os_type'} eq 'solaris') {
 		}
 	}
 $pkg->{'desc'} =~ s/^\Q$pkg->{'update'}\E\s+\-\s+//;
-}
-
-# include_webmin_modules()
-# Returns 1 if we should include all Webmin modules and the program itself in
-# the list of updates. Returns 2 if only non-core modules should be included.
-# The first case is selected when you have a tar.gz install, while the second
-# corresponds to a rpm or deb install with Virtualmin modules added.
-sub include_webmin_modules
-{
-return 0 if (&webmin::shared_root_directory());
-local $type = &read_file_contents("$root_directory/install-type");
-chop($type);
-if (!$type) {
-	# Webmin tar.gz install
-	return 1;
-	}
-else {
-	# How was virtual-server installed?
-	return 0 if (!&foreign_check("virtual-server"));
-	local $vtype = &read_file_contents(
-		&module_root_directory("virtual-server")."/install-type");
-	chop($vtype);
-	if (!$vtype) {
-		# A tar.gz install ... which we may be able to update
-		return 2;
-		}
-	return 0;
-	}
-}
-
-# include_usermin_modules()
-# Returns 1 if Usermin was installed from a tar.gz, 2 if installed from an
-# RPM but virtualmin-specific modules were from a tar.gz
-sub include_usermin_modules
-{
-if (&foreign_installed("usermin")) {
-	&foreign_require("usermin", "usermin-lib.pl");
-	local $type = &usermin::get_install_type();
-	if (!$type) {
-		# Usermin tar.gz install
-		return 1;
-		}
-	else {
-		# How was virtual-server-theme installed?
-		local %miniserv;
-		&usermin::get_usermin_miniserv_config(\%miniserv);
-		local $vtype = &read_file_contents(
-			"$miniserv{'root'}/virtual-server-theme/install-type");
-		chop($vtype);
-		if (!$vtype) {
-			# A tar.gz install ... which we may be able to update
-			return 2;
-			}
-		return 0;
-		}
-	}
-return 0;
 }
 
 # installation_candiate(&package)

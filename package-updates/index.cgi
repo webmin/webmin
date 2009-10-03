@@ -176,18 +176,23 @@ print &ui_form_columns_table(
 # Show scheduled report form
 print "<hr>\n";
 print &ui_form_start("save_sched.cgi");
+print &ui_hidden("all", $in{'all'});
+print &ui_hidden("mode", $in{'mode'});
+print &ui_hidden("search", $in{'search'});
 print &ui_table_start($text{'index_header'}, undef, 2);
 
 $job = &find_cron_job();
 if ($job) {
 	$sched = $job->{'hours'} eq '*' ? 'h' :
 		 $job->{'days'} eq '*' && $job->{'weekdays'} eq '*' ? 'd' :
-		 $job->{'days'} eq '*' && $job->{'weekdays'} eq '0' ? 'w' :
-								      undef;
+		 $job->{'days'} eq '*' && $job->{'months'} eq '*' ? 'w' :
+								    undef;
 	}
 else {
 	$sched = "d";
 	}
+
+# When to run
 print &ui_table_row($text{'index_sched'},
 		    &ui_radio("sched_def", $job ? 0 : 1,
 			      [ [ 1, $text{'index_sched1'} ],
@@ -197,9 +202,11 @@ print &ui_table_row($text{'index_sched'},
 			         [ 'd', $text{'index_schedd'} ],
 			         [ 'w', $text{'index_schedw'} ] ]));
 
+# Send email to
 print &ui_table_row($text{'index_email'},
 		    &ui_textbox("email", $config{'sched_email'}, 40));
 
+# Install or just notify?
 print &ui_table_row($text{'index_action'},
 		    &ui_radio("action", int($config{'sched_action'}),
 			       [ [ 0, $text{'index_action0'} ],
