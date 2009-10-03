@@ -488,7 +488,7 @@ $rv .= &ui_columns_end();
 return $rv;
 }
 
-=head2 ui_form_columns_table(cgi, &buttons, select-all, &otherlinks, &hiddens, &headings, width-percent, &data, &types, no-sort, title, empty-msg)
+=head2 ui_form_columns_table(cgi, &buttons, select-all, &otherlinks, &hiddens, &headings, width-percent, &data, &types, no-sort, title, empty-msg, form-no)
 
 Similar to ui_columns_table, but wrapped in a form. Parameters are :
 
@@ -510,7 +510,7 @@ sub ui_form_columns_table
 return &theme_ui_form_columns_table(@_)
 	if (defined(&theme_ui_form_columns_table));
 my ($cgi, $buttons, $selectall, $others, $hiddens,
-       $heads, $width, $data, $types, $nosort, $title, $emptymsg) = @_;
+       $heads, $width, $data, $types, $nosort, $title, $emptymsg, $formno) = @_;
 my $rv;
 
 # Build links
@@ -533,8 +533,8 @@ if (@$data) {
 				}
 			}
 		if ($cbname) {
-			unshift(@leftlinks, &select_all_link($cbname),
-					    &select_invert_link($cbname));
+			unshift(@leftlinks, &select_all_link($cbname, $formno),
+				    &select_invert_link($cbname, $formno));
 			}
 		}
 	}

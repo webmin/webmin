@@ -5,6 +5,9 @@ require './package-updates-lib.pl';
 &ui_print_header(undef, $module_info{'desc'}, "", undef, 1, 1);
 &error_setup($text{'index_err'});
 &ReadParse();
+if ($in{'clear'}) {
+	$in{'search'} = '';
+	}
 
 # See if any security updates exist
 $in{'mode'} ||= 'updates';
@@ -55,7 +58,8 @@ elsif ($showall == 2) {
 
 # Show search box
 push(@grid, $text{'index_search'}, &ui_textbox("search", $in{'search'}, 30)." ".
-				   &ui_submit($text{'index_searchok'}));
+				   &ui_submit($text{'index_searchok'})." ".
+				   &ui_submit($text{'index_clear'}, 'clear'));
 
 print &ui_form_start("index.cgi");
 print &ui_hidden("all", $showall ? 1 : 0);
@@ -165,7 +169,8 @@ print &ui_form_columns_table(
 	undef,
 	0,
 	undef,
-	$text{'index_none_'.$in{'mode'}}
+	$text{'index_none_'.$in{'mode'}},
+	1
 	);
 
 # Show scheduled report form

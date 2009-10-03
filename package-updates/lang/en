@@ -44,6 +44,7 @@ index_none_new=No new packages for installation were found.
 index_count=Found $1 matching packages ..
 index_search=Find packages matching:
 index_searchok=Search
+index_clear=Show All
 
 update_title=Update Packages
 update_pkg=Now updating $1 ..

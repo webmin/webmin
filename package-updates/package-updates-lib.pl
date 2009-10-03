@@ -5,6 +5,7 @@
 #	XXX re-check after package update
 # XXX test automatic notification
 # XXX test on debian
+#	XXX show what will be done
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
@@ -212,7 +213,6 @@ if ($nocache || &cache_expired($available_cache_file.int($all))) {
 					$avail->{'name'} =
 					    &csw_to_pkgadd($avail->{'name'});
 					$avail->{'package'} = $p;
-					&set_pinned_version($avail);
 					push(@rv, $avail);
 					}
 				}
@@ -223,17 +223,12 @@ if ($nocache || &cache_expired($available_cache_file.int($all))) {
 		foreach my $avail (@avail) {
 			$avail->{'update'} = $avail->{'name'};
 			$avail->{'name'} = &csw_to_pkgadd($avail->{'name'});
-			&set_pinned_version($avail);
 			push(@rv, $avail);
 			}
 		}
 
-	# Set descriptions if needed
-	foreach my $avail (@rv) {
-		if (&installation_candiate($avail)) {
-			$avail->{'desc'} ||= &generate_description($avail);
-			}
-		}
+	# Set pinned versions
+	&set_pinned_versions(\@rv);
 
 	# Filter out dupes and sort by name
 	@rv = &filter_duplicates(\@rv);
@@ -647,77 +642,6 @@ local ($p) = @_;
 return 1;
 }
 
-# generate_description(package)
-# Fakes up a description for a Webmin/Usermin module/theme package
-sub generate_description
-{
-local ($p) = @_;
-local $name = $p->{'name'};
-if ($p->{'system'} eq 'yum') {
-	# Use yum info to get the description, and cache it
-	local %yumcache;
-	&read_file_cached($yum_cache_file, \%yumcache);
-	if ($yumcache{$p->{'name'}."-".$p->{'version'}}) {
-		return $yumcache{$p->{'name'}."-".$p->{'version'}};
-		}
-	local ($desc, $started_desc);
-	open(YUM, "yum info ".quotemeta($name)." |");
-	while(<YUM>) {
-		s/\r|\n//g;
-		if (/^Description:\s*(.*)$/) {
-			$desc = $1;
-			$started_desc = 1;
-			}
-		elsif (/\S/ && $started_desc) {
-			$desc .= " ".$_;
-			}
-		}
-	close(YUM);
-	$desc =~ s/^\s+//;
-	$yumcache{$p->{'name'}."-".$p->{'version'}} = $desc;
-	&write_file($yum_cache_file, \%yumcache);
-	return $desc if ($desc =~ /\S/);
-	}
-elsif ($p->{'system'} eq 'apt') {
-	# Use APT to get description
-	local %aptcache;
-	&read_file_cached($apt_cache_file, \%aptcache);
-	if ($aptcache{$p->{'name'}."-".$p->{'version'}}) {
-		return $aptcache{$p->{'name'}."-".$p->{'version'}};
-		}
-	local ($desc, $started_desc);
-	open(YUM, "apt-cache show ".quotemeta($name)." |");
-	while(<YUM>) {
-		s/\r|\n//g;
-		if (/^Description:\s*(.*)$/) {
-			$desc = $1;
-			}
-		}
-	close(YUM);
-	$aptcache{$p->{'name'}."-".$p->{'version'}} = $desc;
-	&write_file($apt_cache_file, \%aptcache);
-	return $desc if ($desc =~ /\S/);
-	}
-
-return # RPM names
-       $name =~ /^wbm-virtualmin-/ ? "Virtualmin plugin" :
-       $name =~ /^wbm-vm2-/ ? "Cloudmin plugin" :
-       $name =~ /^wbm-/ ? "Webmin module" :
-       $name =~ /^wbt-virtualmin-/ ? "Virtualmin theme" :
-       $name =~ /^wbt-/ ? "Webmin theme" :
-       $name =~ /^usm-/ ? "Usermin module" :
-       $name =~ /^ust-/ ? "Usermin theme" :
-
-       # Debian names
-       $name =~ /^webmin-virtualmin-/ ? "Virtualmin plugin or theme" :
-       $name =~ /^webmin-vm2-/ ? "Cloudmin plugin" :
-       $name =~ /^webmin-/ ? "Webmin module" :
-       $name =~ /^usermin-virtualmin-/ ? "Usermin theme" :
-       $name =~ /^usermin-/ ? "Usermin module" :
-
-       undef;
-}
-
 # clear_repository_cache()
 # Clear any YUM or APT caches
 sub clear_repository_cache
@@ -730,70 +654,26 @@ elsif ($software::update_system eq "apt") {
 	}
 }
 
-# set_pinned_version(&package)
-# Given an APT package from the available, use apt-cache policy to check if it
-# should have the version number reduced to the pinned version.
-sub set_pinned_version
+# set_pinned_versions(&packages)
+# If on Debian, set available package versions based on APT pinning
+sub set_pinned_versions
 {
-local ($pkg) = @_;
-return 0 if ($pkg->{'system'} ne 'apt');
-local $rv = 0;
-local $qp = quotemeta($pkg->{'name'});
-local $out = &backquote_command("LANG='' LC_ALL='' apt-cache policy $qp 2>/dev/null");
-local $installed = $out =~ /Installed:\s+(\S+)/ ? $1 : undef;
-local $candidate = $out =~ /Candidate:\s+(\S+)/ ? $1 : undef;
-$candidate = "" if ($candidate eq "(none)");
-if ($installed && $candidate) {
-	# An installation candidate is defined .. use it
-	local $cepoch;
-	if ($candidate =~ s/^(\d+)://) {
-		$cepoch = $1;
-		}
-	if ($pkg->{'version'} ne $candidate) {
-		$pkg->{'version'} = $candidate;
-		$pkg->{'epoch'} = $cepoch;
-		}
-	$rv = 1;
-	}
-if ($installed && $candidate &&
-    $gconfig{'os_type'} eq 'debian-linux' && $gconfig{'os_version'} eq '4.0') {
-	# Don't offer to upgrade to Lenny packages .. first work out which
-	# versions apt-get knows about.
-	local @lines = split(/\r?\n/, $out);
-	local $found_versions;
-	local @versions;
-	for(my $i=0; $i<@lines; $i++) {
-		if ($lines[$i] =~ /\s*Version\s+table:/i) {
-			$found_versions = 1;
-			next;
-			}
-		next if (!$found_versions);
-		if ($lines[$i] =~ /^[ \*]+(\S+)/) {
-			# Found a version number
-			local $ver = $1;
-			$i++;
-			if ($lines[$i] =~ /^\s+(\d+)\s+(\S.*)$/) {
-				push(@versions, { 'version' => $ver,
-						  'pri' => $1,
-						  'url' => $2 });
+my ($avail) = @_;
+my @davail = grep { $_->{'system'} eq 'apt' } @$avail;
+return 0 if (!@davail);
+my $out = &backquote_command("LANG='' LC_ALL='' apt-cache policy 2>/dev/null");
+my $rv;
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /\s+(\S+)\s+\-\>\s+(\S+)/) {
+		my ($name, $pin) = ($1, $2);
+		my ($pkg) = grep { $_->{'name'} eq $name } @davail;
+		if ($pkg) {
+			$pkg->{'version'} = $pin;
+			if ($pkg->{'version'} =~ s/^(\d+)://) {
+				$pkg->{'epoch'} = $1;
 				}
+			$rv++;
 			}
-		}
-	# If the latest version is from stable, don't use it
-	@versions = sort { &compare_versions($b, $a) } @versions;
-	local ($nv) = grep { $_->{'version'} eq $pkg->{'version'} ||
-			     $_->{'version'} eq $pkg->{'epoch'}.':'.
-					     $pkg->{'version'} } @versions;
-	if ($nv && $nv->{'url'} =~ /stable/ && $nv->{'url'} !~ /virtualmin/) {
-		shift(@versions);
-		local $safever = @versions ? $versions[0]->{'version'}
-					   : $installed;
-		local $sepoch;
-		if ($safever =~ s/^(\d+)://) {
-			$sepoch = $1;
-			}
-		$pkg->{'version'} = $safever;
-		$pkg->{'epoch'} = $sepoch;
 		}
 	}
 return $rv;
