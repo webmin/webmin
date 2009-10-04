@@ -12,7 +12,7 @@ if ($in{'clear'}) {
 # See if any security updates exist
 $in{'mode'} ||= 'updates';
 if (!defined($in{'all'})) {
-	$in{'all'} = &foreign_check("virtual-server") ? 1 : 0;
+	$in{'all'} = &foreign_available("virtual-server") ? 1 : 0;
 	}
 @avail = &list_available(0, $in{'all'});
 ($sec) = grep { $_->{'security'} } @avail;

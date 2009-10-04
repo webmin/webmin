@@ -613,7 +613,7 @@ return undef;
 # packages is the only option, or 0 if only virtualmin.
 sub show_all_option
 {
-return !&foreign_check("virtual-server") ? 2 :
+return !&foreign_available("virtual-server") ? 2 :
        $software::update_system eq 'apt' ||
        $software::update_system eq 'yum' ? 1 : 0;
 }
