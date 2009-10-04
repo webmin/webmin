@@ -1209,6 +1209,23 @@ if (!$proc && $cmd =~ /^$config_directory\/(.*\.pl)(.*)$/) {
 return $proc;
 }
 
+=head2 find_virtualmin_cron_job(command, [&jobs], [user])
+
+Returns the cron job object that runs some command (perhaps with redirection)
+
+=cut
+sub find_virtualmin_cron_job
+{
+my ($cmd, $jobs, $user) = @_;
+if (!$jobs) {
+	$jobs = [ &list_cron_jobs() ];
+	}
+$user ||= "root";
+my @rv = grep { $_->{'user'} eq $user &&
+	     $_->{'command'} =~ /(^|[ \|\&;\/])\Q$cmd\E($|[ \|\&><;])/ } @$jobs;
+return wantarray ? @rv : $rv[0];
+}
+
 =head2 extract_input(command)
 
 Given a line formatted like I<command%input>, returns the command and input

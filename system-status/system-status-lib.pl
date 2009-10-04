@@ -9,6 +9,8 @@
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
 &init_config();
+$systeminfo_cron_cmd = "$module_config_directory/systeminfo.pl";
+&foreign_require("cron", "cron-lib.pl");
 
 # collect_system_info()
 # Returns a hash reference containing system information
@@ -421,7 +423,7 @@ return @rv;
 }
 
 # setup_collectinfo_job()
-# Creates or updates the collectinfo.pl cron job, based on the schedule
+# Creates or updates the systeminfo.pl cron job, based on the schedule
 # set in the module config.
 sub setup_collectinfo_job
 {
@@ -433,7 +435,8 @@ local @mins;
 for(my $i=$offset; $i<60; $i+= $step) {
 	push(@mins, $i);
 	}
-local $job = &find_virtualmin_cron_job($collect_cron_cmd);
+local $job = &cron::find_cron_job($systeminfo_cron_cmd);
+
 if (!$job && $config{'collect_interval'} ne 'none') {
 	# Create, and run for the first time
 	$job = { 'mins' => join(',', @mins),
@@ -443,7 +446,7 @@ if (!$job && $config{'collect_interval'} ne 'none') {
 		 'weekdays' => '*',
 		 'user' => 'root',
 		 'active' => 1,
-		 'command' => $collect_cron_cmd };
+		 'command' => $systeminfo_cron_cmd };
 	&cron::create_cron_job($job);
 	}
 elsif ($job && $config{'collect_interval'} ne 'none') {
@@ -461,7 +464,7 @@ elsif ($job && $config{'collect_interval'} eq 'none') {
 	# No longer wanted, so delete
 	&cron::delete_cron_job($job);
 	}
-&cron::create_wrapper($collect_cron_cmd, $module_name, "collectinfo.pl");
+&cron::create_wrapper($systeminfo_cron_cmd, $module_name, "systeminfo.pl");
 }
 
 # get_current_drive_temps()
@@ -469,7 +472,7 @@ elsif ($job && $config{'collect_interval'} eq 'none') {
 sub get_current_drive_temps
 {
 local @rv;
-if (!$config{'collect_notemp'} && $virtualmin_pro &&
+if (!$config{'collect_notemp'} &&
     &foreign_installed("smart-status")) {
 	&foreign_require("smart-status");
 	foreach my $d (&smart_status::list_smart_disks_partitions()) {
@@ -491,7 +494,7 @@ return @rv;
 sub get_current_cpu_temps
 {
 local @rv;
-if (!$config{'collect_notemp'} && $virtualmin_pro &&
+if (!$config{'collect_notemp'} &&
     $gconfig{'os_type'} =~ /-linux$/ && &has_command("sensors")) {
 	&open_execute_command(SENSORS, "sensors </dev/null 2>/dev/null", 1);
 	while(<SENSORS>) {
