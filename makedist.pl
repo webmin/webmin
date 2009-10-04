@@ -71,7 +71,7 @@ else {
 	  "tunnel", "zones", "cluster-usermin", "dovecot", "syslog-ng",
 	  "mailcap", "blue-theme", "ldap-client", "phpini", "filter",
 	  "bacula-backup", "ldap-server", "exim", "tcpwrappers",
-	  "package-updates",
+	  "package-updates", "system-status",
 	  );
 	}
 @dirlist = ( "Webmin" );
