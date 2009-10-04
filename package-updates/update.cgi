@@ -33,10 +33,12 @@ else {
 	@ops = ( );
 	if (!$in{'confirm'}) {
 		print $text{'update_ops'},"<p>\n";
+		@pkgnames = ( );
 		foreach my $ps (@pkgs) {
 			($p, $s) = split(/\//, $ps);
-			push(@ops, &list_package_operations($p, $s));
+			push(@pkgnames, $p);
 			}
+		@ops = &list_package_operations(join(" ", @pkgnames), $s);
 		}
 
 	if (@ops) {

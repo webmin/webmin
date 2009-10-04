@@ -409,8 +409,9 @@ unlink($current_all_cache_file);
 return @rv;
 }
 
-# list_package_operations(package, system)
-# Given a package, returns a list of all dependencies that will be installed
+# list_package_operations(package|packages, system)
+# Given a package (or space-separate package list), returns a list of all
+# dependencies that will be installed
 sub list_package_operations
 {
 my ($name, $system) = @_;
