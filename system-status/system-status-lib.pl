@@ -1,16 +1,16 @@
 # Functions for collecting general system info
 #
-# XXX Webmin module page to enable background collection
 # XXX Use on main page of blue theme
 # XXX Show package updates on blue theme main page
 # XXX Collect from Cloudmin
 # XXX Cloudmin should enable background collection
+# XXX Check new Webmin version and module updates too?
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
 &init_config();
 $systeminfo_cron_cmd = "$module_config_directory/systeminfo.pl";
-&foreign_require("cron", "cron-lib.pl");
+$collected_info_file = "$module_config_directory/info";
 
 # collect_system_info()
 # Returns a hash reference containing system information
@@ -27,13 +27,7 @@ if (&foreign_check("proc")) {
 		}
 	local @procs = &proc::list_processes();
 	$info->{'procs'} = scalar(@procs);
-	if ($config{'mem_cmd'}) {
-		# Get from custom command
-		local $out = &backquote_command($config{'mem_cmd'});
-		local @lines = split(/\r?\n/, $out);
-		$info->{'mem'} = [ map { $_/1024 } @lines ];
-		}
-	elsif (defined(&proc::get_memory_info)) {
+	if (defined(&proc::get_memory_info)) {
 		local @m = &proc::get_memory_info();
 		$info->{'mem'} = \@m;
 		if ($m[0] > 128*1024*1024 && $gconfig{'os_type'} eq 'freebsd') {
@@ -44,35 +38,9 @@ if (&foreign_check("proc")) {
 			}
 		}
 	if (&foreign_check("mount")) {
-		&require_useradmin();
-		&foreign_require("mount", "mount-lib.pl");
-		local @mounted = &mount::list_mounted();
-		local $total = 0;
-		local $free = 0;
-		local $donezone;
-		foreach my $m (@mounted) {
-			if ($m->[2] =~ /^ext/ ||
-			    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
-			    $m->[2] eq "zfs" || $m->[2] eq "simfs" ||
-			    $m->[2] eq "xfs" || $m->[2] eq "jfs" ||
-			    $m->[1] =~ /^\/dev\// || $m->[1] eq $home_base) {
-				if ($m->[1] =~ /^(zones|zonas)\/([^\/]+)/ &&
-				    $m->[2] eq "zfs" &&
-				    $donezone{$2}++) {
-					# Only count each zone once, as there
-					# may be mounts from zones/foo/bar
-					# and zones/foo/smeg that really refer
-					# to the zone source.
-					next;
-					}
-				local ($t, $f) =
-					&mount::disk_space($m->[2], $m->[0]);
-				$total += $t*1024;
-				$free += $f*1024;
-				}
-			}
-		$info->{'disk_total'} = $total;
-		$info->{'disk_free'} = $free;
+		&foreign_require("mount");
+		($info->{'disk_total'}, $info->{'disk_free'}) =
+			&mount::local_disk_space();
 		}
 	}
 
@@ -85,8 +53,8 @@ $info->{'kernel'} = { 'version' => $r,
 		      'os' => $o };
 
 # Available package updates
-if (&foreign_check("package-updates")) {
-	&foreign_require("package-updates"):
+if (&foreign_check("package-updates") && $config{'collect_pkgs'}) {
+	&foreign_require("package-updates");
 	local @poss = &package_updates::list_possible_updates(2);
 	$info->{'poss'} = \@poss;
 	}
@@ -141,9 +109,9 @@ sub refresh_possible_packages
 local ($pkgs) = @_;
 local %pkgs = map { $_, 1 } @$pkgs;
 local $info = &get_collected_info();
-if ($info->{'poss'} && &foreign_check("security-updates")) {
-	&foreign_require("security-updates", "security-updates-lib.pl");
-	local @poss = &security_updates::list_possible_updates(2);
+if ($info->{'poss'} && &foreign_check("package-updates")) {
+	&foreign_require("package-updates");
+	local @poss = &package_updates::list_possible_updates(2);
 	$info->{'poss'} = \@poss;
 	}
 &save_collected_info($info);
@@ -178,68 +146,6 @@ if ($info->{'disk_total'}) {
 		       $info->{'disk_total'}-$info->{'disk_free'},
 		       $info->{'disk_total'} ]);
 	}
-push(@stats, [ "doms", $info->{'fcount'}->{'doms'} ]);
-push(@stats, [ "users", $info->{'fcount'}->{'users'} ]);
-push(@stats, [ "aliases", $info->{'fcount'}->{'aliases'} ]);
-local $qlimit = 0;
-local $qused = 0;
-foreach my $q (@{$info->{'quota'}}) {
-	$qlimit += $q->[2];
-	$qused += $q->[1]+$q->[3];
-	}
-push(@stats, [ "quotalimit", $qlimit ]);
-push(@stats, [ "quotaused", $qused ]);
-
-# Get mail since the last collection time
-local $now = time();
-if (-r $procmail_log_file) {
-	# Get last seek position
-	local $lastinfo = &read_file_contents("$historic_info_dir/procmailpos");
-	local @st = stat($procmail_log_file);
-	local ($lastpos, $lastinode, $lasttime);
-	if (defined($lastinfo)) {
-		($lastpos, $lastinode, $lasttime) = split(/\s+/, $lastinfo);
-		}
-	else {
-		# For the first run, start at the end of the file
-		$lastpos = $st[7];
-		$lastinode = $st[1];
-		$lasttime = time();
-		}
-
-	open(PROCMAILLOG, $procmail_log_file);
-	if ($st[1] == $lastinode && $lastpos) {
-		seek(PROCMAILLOG, $lastpos, 0);
-		}
-	else {
-		$lastpos = 0;
-		}
-	local ($mailcount, $spamcount, $viruscount) = (0, 0, 0);
-	while(<PROCMAILLOG>) {
-		$lastpos += length($_);
-		s/\r|\n//g;
-		local %log = map { split(/:/, $_, 2) } split(/\s+/, $_);
-		if ($log{'User'}) {
-			$mailcount++;
-			if ($log{'Mode'} eq 'Spam') {
-				$spamcount++;
-				}
-			elsif ($log{'Mode'} eq 'Virus') {
-				$viruscount++;
-				}
-			}
-		}
-	close(PROCMAILLOG);
-	local $mins = ($now - $lasttime) / 60.0;
-	push(@stats, [ "mailcount", $mins ? $mailcount / $mins : 0 ]);
-	push(@stats, [ "spamcount", $mins ? $spamcount / $mins : 0 ]);
-	push(@stats, [ "viruscount", $mins ? $viruscount / $mins : 0 ]);
-
-	# Save last seek
-	&open_tempfile(PROCMAILPOS, ">$historic_info_dir/procmailpos");
-	&print_tempfile(PROCMAILPOS, $lastpos," ",$st[1]," ",$now."\n");
-	&close_tempfile(PROCMAILPOS);
-	}
 
 # Get network traffic counts since last run
 if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
@@ -252,7 +158,7 @@ if (&foreign_check("net") && $gconfig{'os_type'} =~ /-linux$/) {
 		}
 	else {
 		# Get list from net module
-		&foreign_require("net", "net-lib.pl");
+		&foreign_require("net");
 		foreach my $i (&net::active_interfaces()) {
 			if ($i->{'virtual'} eq '' &&
 			    $i->{'name'} =~ /^(eth|ppp|wlan|ath|wlan)/) {
@@ -427,6 +333,8 @@ return @rv;
 # set in the module config.
 sub setup_collectinfo_job
 {
+&foreign_require("cron");
+
 # Work out correct steps
 local $step = $config{'collect_interval'};
 $step = 5 if (!$step || $step eq 'none');

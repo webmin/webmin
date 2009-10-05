@@ -44,7 +44,7 @@ $zipdir = "zips";
 if ($min) {
 	# Only those required by others
 	@mlist = ("cron", "init", "inittab", "proc", "webmin", "acl", "servers",
-		  "man", "webminlog");
+		  "man", "webminlog", "system-status");
 	}
 else {
 	# All the modules

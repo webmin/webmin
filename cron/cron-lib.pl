@@ -1209,12 +1209,12 @@ if (!$proc && $cmd =~ /^$config_directory\/(.*\.pl)(.*)$/) {
 return $proc;
 }
 
-=head2 find_virtualmin_cron_job(command, [&jobs], [user])
+=head2 find_cron_job(command, [&jobs], [user])
 
 Returns the cron job object that runs some command (perhaps with redirection)
 
 =cut
-sub find_virtualmin_cron_job
+sub find_cron_job
 {
 my ($cmd, $jobs, $user) = @_;
 if (!$jobs) {

@@ -872,3 +872,11 @@ notify_updatemod=Module
 notify_updatever=Version
 notify_updatedesc=Fixes problem
 notif_updateok=Install Updates Now
+
+status_title=Background Status Collection
+status_header=Status collection job settings
+status_interval=Collect system status in background?
+status_interval1=Never
+status_interval0=Every
+status_mins=minutes
+status_pkgs=Collect available package updates?
