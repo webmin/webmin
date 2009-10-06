@@ -1,0 +1,2 @@
+---- Changes since 1.490 ----
+First version of this module, for collecting system information using a background Cron job.

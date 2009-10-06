@@ -98,7 +98,10 @@ else {
 			}
 
 		# Refresh collected package info
-		# XXX call webmin
+		if (&foreign_checked("system-status")) {
+			&foreign_require("system-status");
+			&system_status::refresh_possible_packages(\@got));
+			}
 
 		&webmin_log("update", "packages", scalar(@got),
 			    { 'got' => \@got });

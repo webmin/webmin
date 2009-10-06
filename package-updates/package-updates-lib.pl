@@ -1,9 +1,5 @@
 # Functions for checking for updates to packages from YUM, APT or some other
 # update system.
-#
-# XXX cron job to collect .. actually use webmin module collector
-#	XXX re-check after package update
-# XXX show on system information page?
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";

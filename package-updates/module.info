@@ -1,5 +1,5 @@
 desc=Software Package Updates
 longdesc=Displays available package updates from YUM, APT or other update systems
 category=system
-depends=software cron mailboxes 1.420
+depends=software cron mailboxes
 os_support=redhat-linux debian-linux mandrake-linux/10.2-* solaris

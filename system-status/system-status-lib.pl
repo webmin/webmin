@@ -1,10 +1,8 @@
 # Functions for collecting general system info
 #
-# XXX Use on main page of blue theme
-# XXX Show package updates on blue theme main page
 # XXX Collect from Cloudmin
 # XXX Cloudmin should enable background collection
-# XXX Check new Webmin version and module updates too?
+# XXX Cloudmin should install using YUM
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
@@ -54,7 +52,7 @@ if (&foreign_check("mount")) {
 	}
 
 # Available package updates
-if (&foreign_check("package-updates") && $config{'collect_pkgs'}) {
+if (&foreign_installed("package-updates") && $config{'collect_pkgs'}) {
 	&foreign_require("package-updates");
 	my @poss = &package_updates::list_possible_updates(2, 1);
 	$info->{'poss'} = \@poss;
@@ -94,15 +92,6 @@ my ($info) = @_;
 &close_tempfile(INFO);
 }
 
-# refresh_startstop_status()
-# Refresh regularly collected info on status of services
-sub refresh_startstop_status
-{
-my $info = &get_collected_info();
-$info->{'startstop'} = [ &get_startstop_links() ];
-&save_collected_info($info);
-}
-
 # refresh_possible_packages(&newpackages)
 # Refresh regularly collected info on available packages
 sub refresh_possible_packages
@@ -110,7 +99,7 @@ sub refresh_possible_packages
 my ($pkgs) = @_;
 my %pkgs = map { $_, 1 } @$pkgs;
 my $info = &get_collected_info();
-if ($info->{'poss'} && &foreign_check("package-updates")) {
+if ($info->{'poss'} && &foreign_installed("package-updates")) {
 	&foreign_require("package-updates");
 	my @poss = &package_updates::list_possible_updates(2);
 	$info->{'poss'} = \@poss;
