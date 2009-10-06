@@ -11,7 +11,7 @@ local @rv;
 local $conf = &get_config();
 push(@rv, map { $_->{'file'} } @$conf);
 
-# Add all master zone files
+# Add all master and hint zone files
 local @views = &find("view", $conf);
 local ($v, @zones);
 foreach $v (@views) {
@@ -22,7 +22,7 @@ push(@zones, &find("zone", $conf));
 local $z;
 foreach $z (@zones) {
 	local $tv = &find_value("type", $z->{'members'});
-	next if ($tv ne "master");
+	next if ($tv ne "master" && $tv ne "hint");
 	local $file = &find_value("file", $z->{'members'});
 	next if (!$file);
 	local @recs = &read_zone_file($file, $z->{'value'});

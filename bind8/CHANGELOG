@@ -112,3 +112,5 @@ Added a Module Config option for additional master IP addresses for remote slave
 If nscd is running when BIND is restarted or a zone is applied, it will be signalled to re-read DNS caches too.
 ---- Changes since 1.480 ----
 When all DNS records in a zone are shown, the Type column can be clicked on to sort them.
+---- Changes since 1.490 ----
+Root zone records files are now included in Webmin backups.
