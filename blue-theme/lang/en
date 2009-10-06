@@ -33,4 +33,7 @@ right_uphours=$1 hours, $2 minutes
 right_upmins=$1 minutes
 right_kernel=Kernel and CPU
 right_kernelon=$1 $2 on $3
-
+right_updates=Package updates
+right_upok=All installed packages are up to date
+right_upneed=$1 package updates are available
+right_upsec=$1 package updates are available, of which $2 are security updates

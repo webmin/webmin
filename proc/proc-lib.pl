@@ -599,5 +599,45 @@ return &ui_select($name, $value,
 						    "") ] } @nice_range ]);
 }
 
+# get_kernel_info()
+# Returns the system's kernel version, architecture and OS
+sub get_kernel_info
+{
+if (defined(&os_get_kernel_info)) {
+	return &os_get_kernel_info();
+	}
+else {
+	my $out = &backquote_command(
+	  "uname -r 2>/dev/null ; uname -m 2>/dev/null ; uname -s 2>/dev/null");
+	return split(/\r?\n/, $out);
+	}
+}
+
+# get_system_uptime()
+# Returns uptime in days, minutes and hours
+sub get_system_uptime
+{
+my $out = &backquote_command("LC_ALL='' LANG='' uptime");
+if ($out =~ /up\s+(\d+)\s+(day|days),\s+(\d+):(\d+)/) {
+	# up 198 days,  2:06
+	return ( $1, $3, $4 );
+	}
+elsif ($out =~ /up\s+(\d+)\s+(day|days),\s+(\d+)\s+min/) {
+	# up 198 days,  10 mins
+	return ( $1, 0, $3 );
+	}
+elsif ($out =~ /up\s+(\d+):(\d+)/) {
+	# up 3:10
+	return ( 0, $1, $2 );
+	}
+elsif ($out =~ /up\s+(\d+)\s+min/) {
+	# up 45 mins
+	return ( 0, 0, $1 );
+	}
+else {
+	return ( );
+	}
+}
+
 1;
 

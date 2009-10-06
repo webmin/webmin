@@ -425,17 +425,18 @@ if (defined(&software::update_system_operations)) {
 return ( );
 }
 
-# list_possible_updates([nocache])
+# list_possible_updates([nocache], [all])
 # Returns a list of updates that are available. Each element in the array
 # is a hash ref containing a name, version, description and severity flag.
 # Intended for calling from themes. Nocache 0=cache everything, 1=flush all
 # caches, 2=flush only current
 sub list_possible_updates
 {
-local ($nocache) = @_;
+local ($nocache, $all) = @_;
 local @rv;
-local @current = &list_current($nocache);
-local @avail = &list_available($nocache == 1);
+local @current = $all ? &list_all_current($nocache) 
+		      : &list_current($nocache);
+local @avail = &list_available($nocache == 1, $all);
 @avail = sort { &compare_versions($b, $a) } @avail;
 local ($a, $c, $u);
 foreach $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
@@ -449,6 +450,7 @@ foreach $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
 			    'system' => $a->{'system'},
 			    'version' => $a->{'version'},
 			    'epoch' => $a->{'epoch'},
+			    'security' => $a->{'security'},
 			    'desc' => $c->{'desc'} || $a->{'desc'},
 			    'severity' => 0 });
 		}

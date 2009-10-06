@@ -31,10 +31,11 @@ if ($level == 0) {
 	# Show general system information
 	print "<table width=70%>\n";
 
-	# Host and login info
+	# Hostname
 	print "<tr> <td><b>$text{'right_host'}</b></td>\n";
 	print "<td>",&get_system_hostname(),"</td> </tr>\n";
 
+	# Operating system
 	print "<tr> <td><b>$text{'right_os'}</b></td>\n";
 	if ($gconfig{'os_version'} eq '*') {
 		print "<td>$gconfig{'real_os_type'}</td> </tr>\n";
@@ -43,6 +44,7 @@ if ($level == 0) {
 		print "<td>$gconfig{'real_os_type'} $gconfig{'real_os_version'}</td> </tr>\n";
 		}
 
+	# Webmin version
 	print "<tr> <td><b>$text{'right_webmin'}</b></td>\n";
 	print "<td>",&get_webmin_version(),"</td> </tr>\n";
 
@@ -51,31 +53,31 @@ if ($level == 0) {
 	print "<tr> <td><b>$text{'right_time'}</b></td>\n";
 	print "<td>$tm</td> </tr>\n";
 
+	# Ask status module for more
+	&foreign_require("system-status");
+	$info = &system_status::get_collected_info();
+
 	# Kernel and CPU
-	$out = &backquote_command(
-	  "uname -r 2>/dev/null ; uname -m 2>/dev/null ; uname -s 2>/dev/null");
-	local ($r, $m, $o) = split(/\r?\n/, $out);
-	print "<tr> <td><b>$text{'right_kernel'}</b></td>\n";
-	print "<td>",&text('right_kernelon', $o, $r, $m),"</td> </tr>\n";
+	if ($info->{'kernel'}) {
+		print "<tr> <td><b>$text{'right_kernel'}</b></td>\n";
+		print "<td>",&text('right_kernelon',
+				   $info->{'kernel'}->{'os'},
+				   $info->{'kernel'}->{'version'},
+				   $info->{'kernel'}->{'arch'}),"</td> </tr>\n";
+		}
 
 	# System uptime
-	$out = &backquote_command("LC_ALL='' LANG='' uptime");
-	$uptime = undef;
-	if ($out =~ /up\s+(\d+)\s+(day|days),\s+(\d+):(\d+)/) {
-		# up 198 days,  2:06
-		$uptime = &text('right_updays', int($1), int($3), int($4));
+	&foreign_require("proc");
+	my $uptime;
+	my ($d, $h, $m) = &proc::get_system_uptime();
+	if ($d) {
+		$uptime = &text('right_updays', $d, $h, $m);
 		}
-	elsif ($out =~ /up\s+(\d+)\s+(day|days),\s+(\d+)\s+min/) {
-		# up 198 days,  10 mins
-		$uptime = &text('right_updays', int($1), 0, int($3));
+	elsif ($m) {
+		$uptime = &text('right_uphours', $h, $m);
 		}
-	elsif ($out =~ /up\s+(\d+):(\d+)/) {
-		# up 3:10
-		$uptime = &text('right_uphours', int($1), int($2));
-		}
-	elsif ($out =~ /up\s+(\d+)\s+min/) {
-		# up 45 mins
-		$uptime = &text('right_upmins', int($1));
+	elsif ($m) {
+		$uptime = &text('right_upmins', $m);
 		}
 	if ($uptime) {
 		print "<tr> <td><b>$text{'right_uptime'}</b></td>\n";
@@ -83,58 +85,67 @@ if ($level == 0) {
 		}
 
 	# Load and memory info
-	if (&foreign_check("proc")) {
-		&foreign_require("proc", "proc-lib.pl");
-		if (defined(&proc::get_cpu_info)) {
-			@c = &proc::get_cpu_info();
-			if (@c) {
-				print "<tr> <td><b>$text{'right_cpu'}</b></td>\n";
-				print "<td>",&text('right_load', @c),"</td> </tr>\n";
-				}
+	if ($info->{'load'}) {
+		@c = @{$info->{'load'}};
+		if (@c) {
+			print "<tr> <td><b>$text{'right_cpu'}</b></td>\n";
+			print "<td>",&text('right_load', @c),"</td> </tr>\n";
 			}
-		if (defined(&proc::get_memory_info)) {
-			@m = &proc::get_memory_info();
-			if (@m && $m[0]) {
-				print "<tr> <td><b>$text{'right_real'}</b></td>\n";
-				print "<td>",&text('right_used',
-					&nice_size($m[0]*1024),
-				        &nice_size(($m[0]-$m[1])*1024)),
-				      "</td> </tr>\n";
-				print "<tr> <td></td>\n";
-				print "<td>",&bar_chart($m[0], $m[0]-$m[1], 1),
-				      "</td> </tr>\n";
-				}
-
-			if (@m && $m[2]) {
-				print "<tr> <td><b>$text{'right_virt'}</b></td>\n";
-				print "<td>",&text('right_used',
-					&nice_size($m[2]*1024),
-				        &nice_size(($m[2]-$m[3])*1024)),
-				      "</td> </tr>\n";
-				print "<tr> <td></td>\n";
-				print "<td>",&bar_chart($m[2], $m[2]-$m[3], 1),
-				      "</td> </tr>\n";
-				}
+		@m = @{$info->{'mem'}};
+		if (@m && $m[0]) {
+			print "<tr> <td><b>$text{'right_real'}</b></td>\n";
+			print "<td>",&text('right_used',
+				&nice_size($m[0]*1024),
+				&nice_size(($m[0]-$m[1])*1024)),
+			      "</td> </tr>\n";
+			print "<tr> <td></td>\n";
+			print "<td>",&bar_chart($m[0], $m[0]-$m[1], 1),
+			      "</td> </tr>\n";
 			}
 
-		#@procs = &proc::list_processes();
-		#print "<tr> <td><b>$text{'right_procs'}</b></td>\n";
-		#print "<td>",scalar(@procs),"</td> </tr>\n";
+		if (@m && $m[2]) {
+			print "<tr> <td><b>$text{'right_virt'}</b></td>\n";
+			print "<td>",&text('right_used',
+				&nice_size($m[2]*1024),
+				&nice_size(($m[2]-$m[3])*1024)),
+			      "</td> </tr>\n";
+			print "<tr> <td></td>\n";
+			print "<td>",&bar_chart($m[2], $m[2]-$m[3], 1),
+			      "</td> </tr>\n";
+			}
 		}
 
 	# Disk space on local drives
-	if (&foreign_check("mount")) {
-		&foreign_require("mount", "mount-lib.pl");
-		($total, $free) = &mount::local_disk_space();
-		if ($total) {
-			print "<tr> <td><b>$text{'right_disk'}</b></td>\n";
-			print "<td>",&text('right_used',
-				   &nice_size($total),
-				   &nice_size($total-$free)),"</td> </tr>\n";
-			print "<tr> <td></td>\n";
-			print "<td>",&bar_chart($total, $total-$free, 1),
-			      "</td> </tr>\n";
+	if ($info->{'disk_total'}) {
+		($total, $free) = ($info->{'disk_total'}, $info->{'disk_free'});
+		print "<tr> <td><b>$text{'right_disk'}</b></td>\n";
+		print "<td>",&text('right_used',
+			   &nice_size($total),
+			   &nice_size($total-$free)),"</td> </tr>\n";
+		print "<tr> <td></td>\n";
+		print "<td>",&bar_chart($total, $total-$free, 1),
+		      "</td> </tr>\n";
+		}
+
+	# Package updates
+	if ($info->{'poss'}) {
+		print "<tr> <td><b>$text{'right_updates'}</b></td>\n";
+		@poss = @{$info->{'poss'}};
+		@secs = grep { $_->{'security'} } @poss;
+		if (@poss && @secs) {
+			$msg = &text('right_upsec', scalar(@poss),
+						    scalar(@secs));
 			}
+		elsif (@poss) {
+			$msg = &text('right_upneed', scalar(@poss));
+			}
+		else {
+			$msg = $text{'right_upok'};
+			}
+		if (&foreign_available("package-updates")) {
+			$msg = "<a href='../package-updates/index.cgi?all=1&mode=updates'>$msg</a>";
+			}
+		print "<td>$msg</td> </tr>\n";
 		}
 
 	print "</table>\n";
