@@ -7,7 +7,7 @@ require './mysql-lib.pl';
 
 if ($ARGV[0] eq "--all") {
 	$all = 1;
-	@dbs = &list_databases();
+	@dbs = grep { &supports_backup_db($_) } &list_databases();
 	$cmode = $config{'backup_cmode_'};
 	}
 else {

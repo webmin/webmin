@@ -86,3 +86,5 @@ Added code to detect a password in /root/.my.cnf which overrides the MYSQL_PWD v
 MySQL stored procedures are now included in backups, where supported.
 ---- Changes since 1.480 ----
 Restores and imports from local files are now run as the Unix user configured for backups, rather than root.
+---- Changes since 1.490 ----
+The information_schema database is no longer included when backing up all databases, as it really just contains metadata.

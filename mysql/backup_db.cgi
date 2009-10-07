@@ -5,7 +5,7 @@
 require './mysql-lib.pl';
 &ReadParse();
 if ($in{'all'}) {
-	@alldbs = &list_databases();
+	@alldbs = grep { &supports_backup_db($_) } &list_databases();
 	@dbs = grep { &can_edit_db($_) } @alldbs;
 	@alldbs == @dbs || &error($text{'dbase_ecannot'});
 	}

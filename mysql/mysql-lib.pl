@@ -468,6 +468,13 @@ else {
 	}
 }
 
+# supports_backup_db(name)
+# Returns 1 if some database can be backed up
+sub supports_backup_db
+{
+return $_[0] ne "information_schema";
+}
+
 # list_accessible_databases()
 # Returns a list of databases that the current user may access to. Returns
 # an empty list if he has all of them.
