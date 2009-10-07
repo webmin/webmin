@@ -100,7 +100,7 @@ my %pkgs = map { $_, 1 } @$pkgs;
 my $info = &get_collected_info();
 if ($info->{'poss'} && &foreign_installed("package-updates")) {
 	&foreign_require("package-updates");
-	my @poss = &package_updates::list_possible_updates(2);
+	my @poss = &package_updates::list_possible_updates(2, 1);
 	$info->{'poss'} = \@poss;
 	}
 &save_collected_info($info);

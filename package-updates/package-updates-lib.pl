@@ -28,8 +28,8 @@ $apt_cache_file = "$module_config_directory/aptcache";
 $yum_changelog_cache_dir = "$module_config_directory/yumchangelog";
 
 # list_current(nocache)
-# Returns a list of packages and versions for the core packages managed
-# by this module. Return keys are :
+# Returns a list of packages and versions for Virtualmin-related packages
+# managed by this module. Return keys are :
 #  name - The local package name (ie. CSWapache2)
 #  update - Name used to refer to it by the updates system (ie. apache2)
 #  version - Version number
@@ -347,37 +347,7 @@ if (!$pkg) {
 	print &text('update_efindpkg', $name),"<p>\n";
 	return ( );
 	}
-if ($pkg->{'system'} eq 'webmin') {
-	# Webmin module, which we can download and install 
-	local ($host, $port, $page, $ssh) =
-		&parse_http_url($pkg->{'updatesurl'});
-	local ($mhost, $mport, $mpage, $mssl) =
-		&parse_http_url($pkg->{'url'}, $host, $port, $page, $ssl);
-	local $mfile;
-	($mfile = $mpage) =~ s/^(.*)\///;
-	local $mtemp = &transname($mfile);
-	local $error;
-	print &text('update_wdownload', $pkg->{'name'}),"<br>\n";
-	&http_download($mhost, $mport, $mpage, $mtemp, \$error, undef, $mssl,
-		       $webmin::config{'upuser'}, $webmin::config{'uppass'});
-	if ($error) {
-		print &text('update_ewdownload', $error),"<p>\n";
-		return ( );
-		}
-	print $text{'update_wdownloaded'},"<p>\n";
-
-	# Install the module
-	print &text('update_winstall', $pkg->{'name'}),"<br>\n";
-	local $irv = &webmin::install_webmin_module($mtemp, 1, 0);
-	if (!ref($irv)) {
-		print &text('update_ewinstall', $irv),"<p>\n";
-		}
-	else {
-		print $text{'update_winstalled'},"<p>\n";
-		@rv = map { /([^\/]+)$/; $1 } @{$irv->[1]};
-		}
-	}
-elsif (defined(&software::update_system_install)) {
+if (defined(&software::update_system_install)) {
 	# Using some update system, like YUM or APT
 	&clean_environment();
 	if ($software::update_system eq $pkg->{'system'}) {
