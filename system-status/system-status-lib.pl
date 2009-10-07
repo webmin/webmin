@@ -2,7 +2,6 @@
 #
 # XXX Collect from Cloudmin
 # XXX Cloudmin should enable background collection
-# XXX Cloudmin should install using YUM
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
