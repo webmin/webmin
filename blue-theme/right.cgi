@@ -51,6 +51,9 @@ if ($level == 0) {
 	# System time
 	$tm = localtime(time());
 	print "<tr> <td><b>$text{'right_time'}</b></td>\n";
+	if (&foreign_available("time")) {
+		$tm = "<a href=time/>$tm</a>";
+		}
 	print "<td>$tm</td> </tr>\n";
 
 	# Ask status module for more
@@ -82,6 +85,17 @@ if ($level == 0) {
 	if ($uptime) {
 		print "<tr> <td><b>$text{'right_uptime'}</b></td>\n";
 		print "<td>$uptime</td> </tr>\n";
+		}
+
+	# Running processes
+	if (&foreign_check("proc")) {
+		@procs = &proc::list_processes();
+		$pr = scalar(@procs);
+		print "<tr> <td><b>$text{'right_procs'}</b></td>\n";
+		if (&foreign_available("proc")) {
+			$pr = "<a href=proc/>$pr</a>";
+			}
+		print "<td>$pr</td> </tr>\n";
 		}
 
 	# Load and memory info
