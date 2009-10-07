@@ -103,10 +103,6 @@ if ($script_name =~ /session_login.cgi/) {
 	# Generate CSS link
 	print "<link rel='stylesheet' type='text/css' href='$gconfig{'webprefix'}/unauthenticated/style.css'>\n";
 	}
-if ($module_name eq "virtual-server") {
-	# No need for Module Index link, as we have the left-side frame
-	$tconfig{'nomoduleindex'} = 1;
-	}
 }
 
 sub theme_prehead
@@ -567,28 +563,6 @@ for($i=0; $i+1<@_; $i+=2) {
 	if ($url ne '/' || !$tconfig{'noindex'}) {
 		if ($url eq '/') {
 			$url = "/?cat=$module_info{'category'}";
-			}
-		elsif ($url eq '' && $module_name eq 'virtual-server' ||
-		       $url eq '/virtual-server/') {
-			# Don't bother with virtualmin menu
-			next;
-			}
-		elsif ($url eq '' && $module_name eq 'server-manager' ||
-		       $url eq '/server-manager/') {
-			# Don't bother with vm2 menu
-			next;
-			}
-		elsif ($url =~ /(view|edit)_domain.cgi/ &&
-		       $module_name eq 'virtual-server' ||
-		       $url =~ /^\/virtual-server\/(view|edit)_domain.cgi/) {
-			# Don't bother with link to domain details
-			next;
-			}
-		elsif ($url =~ /edit_serv.cgi/ &&
-		       $module_name eq 'server-manager' ||
-		       $url =~ /^\/virtual-server\/edit_serv.cgi/) {
-			# Don't bother with link to system details
-			next;
 			}
 		elsif ($url eq '' && $module_name) {
 			$url = "/$module_name/$module_info{'index_link'}";
