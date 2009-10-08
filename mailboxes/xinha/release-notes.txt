@@ -1,0 +1,299 @@
+Xinha - The Community-Built Online HTML Editor
+
+For bug reports, forum, and updates go to 
+http://xinha.org
+
+Release History
+
+Xinha 0.96beta2
+Bugs Fixed
+ * #1376 [IE6 & IE7 Quirksmode] Dialogs are invisible
+ * #1381 [IE] QuirksMode dialog background rendered in wrong position when panel is detached
+ * #1383 [IE7] Secure and Nonsecure Warning
+ * #1382 [IE] QuirksMode dialog background falsely non-grey with modal dialogs, grey when dragging modeless dialogs
+ * #1389 [IE6] selection lost when clicking toolbar button
+ * #1386 [Safari] Setting default checkbox settings in dialogs does not work
+ * #1394 fullpage puts metas/ title all on the same line
+ * #1390 PreserveScripts shorthand php tags
+ * #1392 too much recursion when setting HTML in fullPage mode using onGenerate/onGenerateOnce
+ * #1407 [IE8] window resize causes infinite loop
+ * #1408 PHP5 IIS file upload problem
+ * #1374 [IE8] Table insert not work
+ * #1379 [Firefox] no longer corrupts image data from broken images
+
+Translation
+ * [SmartReplace] Added French translation
+ * #1406 [FullScreen] Added Spanish translation
+
+Xinha 0.96beta
+Bugs Fixed
+ * #314 Status bar should wrap
+ * #741 ContextMenu should not overflow window boundaries
+ * #961 baseHref not correctly treated when stripping
+ * #1160 Safari puts selected HTML near bottom if edited
+ * #1166 TableOperations dialogs do not resize properly in Safari 3
+ * #1173 IE8 beta toolbars broken
+ * #1174 IE8 beta no text cursor in wysiwyg
+ * #1187 ExtendedFileManager "imgManager.changeDir is not a function" error
+ * #1193 Stylist bug when formatting selected text
+ * #1213 Would be nice to protect unsaved changes from accidental loss when navigating away
+ * #1221 Selecting heading normal on nothing throws exception alert
+ * #1224 sevenbitclean? / ghost cursor error with html mode toggle (Firefox)
+ * #1227 No CSS rules load when using @import in external stylesheet
+ * #1230 CSS width attribute breaks select display in IE
+ * #1240 Linker: trim spaces from URL
+ * #1247 CharCounter problems with Silva skin
+ * #1257 Error if url query string included '/'
+ * #1258 Event object is not handed over to event handlers installed on textarea
+ * #1261 Dutch translation for Fullscreen module
+ * #1280 restoreSelection doesn't always work in internet explorer
+ * #1281 selectNodeContents is borken in IE when the node is a text node
+ * #1284 _editor_url is still used in a couple of plugins.
+ * #1286 use callbacks as criteria for getFirstAncestor
+ * #1288 [DefinitionList] list items restricted to small width and one line by CSS
+ * #1290 Improved support for pasting from Microsoft Word
+ * #1291 Xinha.removeFromParent() does not return correct reference
+ * #1292 change naming scheme of plugin files
+ * #1293 [Gecko] Window scrolls to top of editing area when switching from text to WYSIWYG
+ * #1294 Editor higher in HTML mode
+ * #1295 Textarea not aligned under toolbar
+ * #1298 CSS styling gets inserted into table cell after viewing source (Safari only)
+ * #1300 create namespace for plugins within Xinha namespace
+ * #1301 loading should not fail if plugin omits _pluginInfo
+ * #1302 add Array.prototype.forEach for Browser that doesn't support it
+ * #1303 add getElementsByClassName()
+ * #1306 Toolbar actions need access to the click event
+ * #1309 Xinha chokes on anchors
+ * #1315 Xinha's _addEvent uses event capturing
+ * #1316 In InternetExplorer, the cursor is lost when switching into source mode
+ * #1317 Xinha's postback and getback should allow for failure handlers
+ * #1319 make event hooks like onKeyPress accesible from the config object
+ * #1320 make it possible to use png images as icons in IE6
+ * #1321 [SaveSubmit] icon is in "changed" state initially
+ * #1322 [SaveSubmit] error when form action is empty
+ * #1332 Panel classes are very generic, and risk conflict with users embedding it in their site
+ * #1337 GetHTML truncates hyperlinks
+ * #1346 statusbar shows b, i, strike instead of strong, em, and del
+ * #1357 safari form submit has empty form field names in POST data, causes failure with perl CGI
+
+ 
+Enhancements
+ * #1176 Completely revamped dialog system, which uses inline lightbox-style dialogs instead of separate popup windows 
+ * #326 Added support for customizable icon sets
+ * #1318 Added icon set from the Tango Project
+ * #1287 New InsertNote plugin for handling footnotes, with automatic note numbering and ordering, linking, and support for repeated references
+ * #1289 New InsertSnippet2 plugin, with categorization of snippets, search by name, and an XML data format
+ * #58 Additional settings for Linker plugin (link types and targets can be configured)
+ * #1219 Configuration option to autofocus editor
+ * #1285 Configuration option to set document body class
+ * #1323 Allow skins to have meta information (author, etc.)
+ * #1338 _editor_url is now automatically detected
+ * #1345 Add a static function that saves the contents of all Xinhas to their respective textareas
+
+
+Xinha 0.95
+Bugs Fixed
+ * fixed #1040 htmlRemoveTags doesn't work in IE 
+ * fixed #645 IE Save as function only saves the original html 
+ * fixed #1136 FF3 Linux select boxes in toolbar are too small 
+ * fixed #1100 Extended File Manager - Error after opening window
+ * fixed #1103 [TransformInnerHTML] IE breaks singlet attributes starting with "no"
+ * fixed #1086 Repeated javascript insertion in onclick attributes
+ * fixed #1094 IE throws error in Xinha.loadStyle function
+ * fixed  #1117 IE returns javascript error -1072896658
+ * fixed #993 PageStyle to override styles in PageStylesheets
+ * #1112 switching between modes leaves strange characters in source 
+ * fixed #1128 loading fails when Fullscreen tried to load as plugin
+ * fixed #1126 Percent (%) in URL prevent stripSelfNamedAnchors from working  
+ * fixed #1120 HTML select overlaps color picker in IE6
+ * #1115 + #1127 fixed compatibility issues with Firefox 3
+ * #961 +  #1130 changed behaviour of xinha_config.baseHref
+ * fixed #645 Save as function only saves the original html
+ * fixed #1040 htmlRemoveTags doesn't work in IE
+ * fixed #1015 Mozilla shows scrollbars on click in Stylist 
+ * #918 removed mozParaHandler dirty as it had been broken for a long time
+ * fixed #1015 Mozilla shows scrollbars on click in Stylist 
+ * fixed #1148 HTML entities break when cursor is inside when switching from HTML to WYSIWYG 
+ * fixed #1151 form action always made absolute
+ * fixed #1155 InsertAnchor broken in IE 7
+ * fixed #1158 [ImageManager] in Japanese environment, an error occurs by reading of lang/ja.js in IE6/7 
+ * fixed #1152 Plugins using surroundHTML (EditTag, LangMarks) no longer work in IE7
+ * fixed #1161 permission error from ColorPicker.js
+ * fixed #1181 [TableOperations] Table Options dialog first entry for border style faulty
+ * fixed #1185 [TableOperations] IE: style float broken
+ * fixed #1197 [Linker] IE shows bug in line 262
+ * fixed #1200 [Linker] Dialog does not show if scanned folder empty
+ 
+Enhancements
+ * #1143 add Safari support
+ * #938  add Opera support
+ * #1138 added API functions Xinha.getEditor(), Xinha.prototype.getPluginInstance(), Xinha.addOnloadHandler() 
+ * #1137 [Equation] FF3 fixes & improved way of avoiding formula changes in editor
+ * #1150 synchronize "Remove Format" between browsers
+ * added plugin PreserveScripts for enhanced editing of pages containing PHP and/or JavaScript ()
+ * Loading message facelift
+ * added XinhaLoader.js for enhanced user experience through early loading message
+ * made Xinha.makeEditors accept a DOM reference to the textarea instead of the id as part of xinha_editors array (#1105)
+ * #1123 Allow return of PHP array from xinha_pass_to_php_backend
+ * [Linker] scan.php: Allow specification of base url to use (so that a subdirectory can be used as $dir and return appropriate urls to the files (prefixing the url
+ * [ExtendedFileManager] new Version
+ * #961 +  #1130 changed behaviour of xinha_config.baseHref
+ * #1137 [Equation] improved way of avoiding formula changes in editor
+ * #442 removed alert "Your Document is not well formed..."
+ * #1119 disabled Firefox 2 spell check when ContextMenu is enabled 
+ * added a plugin "GenericPlugin" as a democase for plugin event handlers
+ * #1171 [SmartReplace] now also replaces three dots with an ellipsis
+ * #1119 [ContextMenu] optionally switch of Firefox Spell check
+ * #1172 [LangMarks] make available languages configurable
+ * enhanced behaviour when xinha_config.baseHref is set to another server
+ * #1195 Allow to specify an external url to load a plugin from
+ * #1201 Add inwardHtml/outwardHtml functions to Config object
+ 
+I18n
+ * #1109 Spanish language extended
+ * #1116 [ExtendedFileManager] added French translation
+ * #853 updated Translation for farsi
+ * fixed wrong encoding in Spanish language file 
+ * fixed no bold/italic/underline button images in Spanish
+ *  #1194 [ExtendedFileManager] updated French translation
+
+ 
+Xinha 0.94
+ * Ticket #1093 [InsertSmiley] remove smiley gifs from trunk
+ * fixed Ticket #1019 Cusor not jumping to editable part of window when clicked in IE
+ * [TableOperations] Add config option to not dispaly toolbar buttons
+ * fixed Ticket #1021  Prevent ExtendedFileManager from masking ImageManager
+ * fixed Ticket #1023 [ImageManager] Add config item to allow the advanced image options to be hidden from the user
+ * fixed Ticket #1026 fix problems with loading skins
+ * fixed Tickets #1030 & #1031: slow loading large pages in IE
+ * fixed Ticket #1034 [ExtendedFileManager] Color pickers shown when use_color_pickers is false
+ * fixed Ticket #1035 [TransformInnerHTML] tags corruptedunder certain circumstances
+ * fixed Ticket #1036 [ExtendedFileManager] window is only resized after all thumbnails have benn loaded, which can take quite some time
+ * fixed Ticket #1039 Firefox full page adds multiple paragraphs after view source
+ * fixed Ticket #1019 Cusor not jumping to editable part of window when clicked in IE7
+ * fixed Ticket #1046 Error in IE 6 when switching from text to wysiwyg
+ * [DOMwalk] linebreaks inserted before <br />s
+ * catch error in IE when trying to restore selection on non-displayed area
+ * fixed Ticket #973 Error switching wysiwyg/html including javascript file on the code
+ * fixed Ticket #1028  - [Linker] automatically (attempt to) work around an issue with mod_security being triggered because of the charset on our POST requests
+ * fixed Ticket #1055 [Stylist] Inappropriate styles (for other tags) are shown
+ * added Dutch language files
+ * added new hook 'onBeforeSubmit' for firePluginEvent()
+ * added new hook 'onBeforeUnload' for firePluginEvent()
+ * fixed Ticket #1048 Full Screen plugin doesn't load if many editors on page
+ * fixed Ticket #1053 ListType plugin doesn't work in panel config with multiple editors
+ * fixed Ticket #1026 Skins referenced with <link>-tags don't work anymore
+ * fixed Ticket #1059 [Equation] loosing formula onsubmit
+ * fixed Ticket #1060 [Equation] various updates
+ * [Equation] preserve formula on reload in Mozilla
+ * [Equation] updated ASCIIMathML.js
+ * [Skin:silva] padding and border on textarea make the textmode too wide 
+ * fixed Ticket#1001 Editor loads a bunch of null urls in ie
+ * fixed Ticket #1068 [TranformInnerHTML] newlines added after </script>
+ * fixed Ticket#1069 Editor document URL prefixed to any href that only consists of URL parameters
+ * added Thai translation for core
+ * added complete Portuguese Brazilian translation
+ * updated lc_parse script
+ * fixed Ticket #1071 [ExtendedFileManager] external image URL image inserted with width/height 0, amking it invisible
+ * fixed Ticket #1074 [SuperClean] throws warnings in PHP 5
+ * fixed Ticket #1079 [DynamicCSS] lists Xinha internal CSS
+ * fixed Ticket #1080 Some plugins leave behind stylesheet links in fullpage mode
+ * fixed Ticket #1083 Convert URLs to links - Error
+ * fixed Ticket #1084 URL auto-linking (Gecko): URLs with user:password@domain.tld falsely recognized as email address
+ * fixed Ticket #1085 URL auto-linking (Gecko): IP numbers don't work
+ * fixed Ticket #1081 Control character is not being removed inside SCRIPT tags or HEAD when switching from textmode to htmlmode
+ * fixed Ticket #1078 [InsertImage] spacing attributes: inconsistent behaviour when editing image
+ * fixed Ticket #1089 [Color Picker] Localize OK Label
+ * fixed Ticket #1091 [SaveSubmit] does not correctly submit value of checkboxes and radio buttons
+
+Xinha 0.93
+ - fixed Ticket #967 Font Color Picker stops working after using one of ImageManager, ExtendedFileManager, FullPage, or HorizontalRule
+ - fixed Ticket #965 When switching between Xinhas in the same page, in textmode toolbar stays disabled
+ - fixwd Ticket #963 DOMwalk IE: head tag attributes without quotes and closing slash
+ - Ticket #962 DOMwalk Mozilla: improved source indentation
+ - fixed Ticket #957 If item in in xinha_editors is not a textarea: skip gracefully
+ - fixed Ticket #900: catch an fatal error that occured sometimes when switching between modes in fullpage mode in Mozilla
+ - fixed Ticket #969 DOMwalk Gecko: line breaks rendered as <br>s inside <pre> blocks
+ - fixed Ticket #976 Loading message misplaced in IE7
+ - fixed Ticket #977 TableOperations toolbar off-place in ext_example.html
+ - fixed Ticket #978 defining a padding for <td>s in global css affects Xinha framework
+ - Ticket #979 improve checking for non-supported browsers
+ - fixed Ticket #934 SuperClean plugin returns just quotation when executed on localhost
+ - Ticket #929 Save changes on page unload fixed for Mozilla 
+ - fixed Ticket #980 ImageManager color format bug
+ - fixed Ticket #981 No doctype in iframe content document/ editor always in quirks mode
+ - fixed Ticket #543 Stylist Panel overflow broken
+ - Ticket #983 added id for iframe
+ - fixed Ticket #984 !ExtendedFileManager produces php warning
+ - optimized icon file size
+ - fixed !JavaScript error in !ImageManager/!ExtendedFileManager image editor
+ - Ticket #908* Prompts broken in IE7: fixed for EFM, !ImageManager & !TableOperations
+ - Fixes for TableOperations, tickets #82, #908*, #912 and #947
+ - fixed Ticket #998* whitespace added before and/or after content (in non-fullpage mode)
+ - fixed slow unloading in Mozilla
+ - Fix focus problem when switching from html to wysiwyg in Gecko. See ticket #900.
+ - fixed toolbar floating issue
+ - fixed #1003 HTML length limited to 1024 characters with plugin CharCounter
+ - Ticket #1000 new public methods for getting/setting editor content
+ - fixed #735 - IE eating scripts and comments at the beginning of pages.
+ - Added new config variables to set iframe width if less than editor width (ticket:322) and set alignment of toolbar buttons.
+ - added Basque translation for XinhaCore
+ - prevent an error if server is set to parse .js files as PHP
+ - Ticket #127 plugin HtmlEntities: Entities.js  file corrupt
+
+Xinha 0.92beta
+ - fixed Ticket #831 stop empty anchors from being removed
+ - Make htmlarea.js just load XinhaCore.js instead of being a copy of it.
+ - fixed Ticket #445 Toggle TableBorder doesn't work if this.fullpage=true or using FullPage plugin
+ - fixed Ticket #551 shape and coord attributes of area element are ignored by IE
+ - fixed Ticket #650 SpellChecker is not compatible with FullPage plugin
+ - fixed Ticket #816 CharacterMap and ListType panel modes make editor jump to top in IE
+ - fixed Ticket #570 change behaviour of justify when an image is selected to make the image float left/right, 
+   click the justify button again to undo it
+ - fixed Ticket #891 noscript content got escaped
+ - fixed Ticket #857 Firefox fails to load in fullpage mode when <link ..> tag in wrong place.
+ - fixed Ticket #841 Spell Checker - Won't return to xinha.
+ - fixed Ticket #914 All buttons stay grey & this.getParentElement is not a function message when not calling
+   Xinha.loadPlugins() in xinha_init function
+ - fixed Ticket #911 Background color does not work in Firefox
+ - fixed Ticket #912 an error is thrown in Mozilla when clicking merge cells button and fewer than 2 cells are selected
+ - fixed Ticket #816 CharacterMap and ListType panel modes make editor jump to top in IE
+ - fixed Ticket #917 getHTMLWrapper in IE renders attributes like _stylist_usedtobe="[object Object]"
+ - fixed Ticket #556 stripBaseHref didn't work without baseHref defined explicitly.
+ - Update InsertPicture plugin Update
+ - fixed Ticket #921 EFM extended file manager - iframe height problem (IE)
+ - Ticket #923 colorPicker face lift & localisation
+ - fixed Ticket #924 EFM + ImageManager re-transforming of url to original image after automatic resize broken
+ - Ticket #900- retain editing position position between modes
+ - fixed Ticket #928 ImageManager fails if (another) Files.php exists in include path
+ - fixed Ticket #935 EFM demo_images php upload allowed: possible security risk
+ - Ticket #939 Japanese langage support 
+ - fixed Ticket #3 Horizontal Rule Selection
+ - Plugin ExtendedFileManager: added doc to allowed upload extensions
+ - Plugin PasteText update
+ - Plugin HtmlEntities: default preset iso-8859-1
+ - fixed Ticket #948 IE: inline styles are not rendered by DOMwalk getHTML()
+ - Plugin HorizontalRule update
+ - Plugin SaveSubmit update
+ - Plugin Linker update
+ - fixed Ticket #823 editor contents was not submitted when using JavaScript form.submit() without prior form.onsubmit()
+ - fixed Ticket #459 all body attributes removed in full page mode in FireFox
+ - _editor_url is now converted to absolute if it is relative. 
+ - fixed Ticket #594 IE: insertHTML() inserts HTML outside editor when editor is not focussed
+ - Ticket #954 FullScreen mode can now be called programmatically or on startup with or without button
+ - fixed Ticket #321 FullScreen : select elements show through in IE6 
+ - fixed Ticket #953 Statusbar has ugly white gap at the bottom when switching back from full screen in IE 
+ - fixed Ticket #952 FullScreen: scrollbars don't disappear in IE in QuirksMode
+ - fixed Ticket #603 Popop Dialog Height problems
+ - fixed Ticket #955 DOMwalk getHTML outputs empty attribute with value "true" instead of attribute name and some are skipped at all
+ 
+Xinha 0.91beta
+ - changed namespace from HTMLArea to Xinha
+ - the core file is now named XinhaCore.js instead of htmlarea.js,
+   please change your pages accordingly (the htmlarea.js will be removed!)
+ - the color picker script is now loaded on demand to reduce initial loading time
+ 
+Xinha 0.9beta
+This equals Xinha revision 635 of Jan 11 2007
+ - All JavaScript files over 2kb have been compressed using the dojo JavaScript compressor
+ - All gifs have been optimized using Trout's GIF Optimizer version 2.3

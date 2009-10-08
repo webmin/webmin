@@ -1,0 +1,157 @@
+<html>
+
+<head>
+  <title>Insert Table</title>
+
+<script type="text/javascript" src="../../popups/popup.js"></script>
+<link rel="stylesheet" type="text/css" href="../../popups/popup.css" />
+
+<script type="text/javascript">
+
+window.resizeTo(425, 250);
+
+Xinha = window.opener.Xinha;
+function i18n(str) {
+  return (Xinha._lc(str, 'Xinha'));
+}
+
+function Init() {
+  Xinha = window.opener.Xinha; // load the Xinha plugin and lang file
+  __dlg_translate('Xinha');
+  __dlg_init(null, Xinha.is_ie ? null : {width:425,height:250});
+  // Make sure the translated string appears in the drop down. (for gecko)
+  document.getElementById("f_unit").selectedIndex = 1;
+  document.getElementById("f_unit").selectedIndex = 0;
+  document.getElementById("f_align").selectedIndex = 1;
+  document.getElementById("f_align").selectedIndex = 0;
+  document.getElementById("f_rows").focus();
+}
+
+function onOK() {
+  var required = {
+    "f_rows": i18n("You must enter a number of rows"),
+    "f_cols": i18n("You must enter a number of columns")
+  };
+  for (var i in required) {
+    var el = document.getElementById(i);
+    if (!el.value) {
+      alert(required[i]);
+      el.focus();
+      return false;
+    }
+  }
+  var fields = ["f_rows", "f_cols", "f_width", "f_unit", "f_fixed",
+                "f_align", "f_border", "f_spacing", "f_padding"];
+  var param = new Object();
+  for (var i in fields) {
+    var id = fields[i];
+    var el = document.getElementById(id);
+    param[id] = (el.type == "checkbox") ? el.checked : el.value;
+  }
+  __dlg_close(param);
+  return false;
+}
+
+function onCancel() {
+  __dlg_close(null);
+  return false;
+}
+
+</script>
+
+</head>
+
+<body class="dialog" onload="Init()">
+
+<div class="title">Insert Table</div>
+
+<form action="" method="get">
+<table border="0" style="padding: 0px; margin: 0px">
+  <tbody>
+
+  <tr>
+    <td style="width: 4em; text-align: right">Rows:</td>
+    <td><input type="text" name="rows" id="f_rows" size="5" title="Number of rows" value="2" /></td>
+    <td style="width: 4em; text-align: right">Width:</td>
+    <td><input type="text" name="width" id="f_width" size="5" title="Width of the table" value="100" /></td>
+    <td><select size="1" name="unit" id="f_unit" title="Width unit">
+      <option value="%" selected="selected"  >Percent</option>
+      <option value="px"              >Pixels</option>
+      <option value="em"              >Em</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td style="width: 4em; text-align: right">Cols:</td>
+    <td><input type="text" name="cols" id="f_cols" size="5" title="Number of columns" value="4" /></td>
+    <td style="text-align: right"><input type="checkbox" checked="checked" name="fixed" id="f_fixed" value="on" /></td>
+    <td colspan="2"><label for="f_fixed"
+    >Fixed width columns</label></td>
+  </tr>
+  </tbody>
+</table>
+
+<p />
+
+<fieldset style="float: left; margin-left: 5px;">
+<legend>Layout</legend>
+
+<div class="space"></div>
+
+<div class="fl">Alignment:</div>
+<select size="1" name="align" id="f_align"
+  title="Positioning of this table">
+  <option value="" selected="selected"         >Not set</option>
+  <option value="left"                         >Left</option>
+  <option value="right"                        >Right</option>
+  <option value="texttop"                      >Texttop</option>
+  <option value="absmiddle"                    >Absmiddle</option>
+  <option value="baseline"                     >Baseline</option>
+  <option value="absbottom"                    >Absbottom</option>
+  <option value="bottom"                       >Bottom</option>
+  <option value="middle"                       >Middle</option>
+  <option value="top"                          >Top</option>
+</select>
+
+<p />
+
+<div class="fl">Border thickness:</div>
+<input type="text" name="border" id="f_border" size="5" value="1"
+title="Leave empty for no border" />
+<!--
+<p />
+
+<div class="fl">Collapse borders:</div>
+<input type="checkbox" name="collapse" id="f_collapse" />
+-->
+<div class="space"></div>
+
+</fieldset>
+
+<fieldset style="float:right; margin-right: 5px;">
+<legend>Spacing</legend>
+
+<div class="space"></div>
+
+<div class="fr">Cell spacing:</div>
+<input type="text" name="spacing" id="f_spacing" size="5" value="1"
+title="Space between adjacent cells" />
+
+<p />
+
+<div class="fr">Cell padding:</div>
+<input type="text" name="padding" id="f_padding" size="5" value="1"
+title="Space between content and border in cell" />
+
+<div class="space"></div>
+
+</fieldset>
+
+<div style="margin-top: 85px; border-top: 1px solid #999; padding: 2px; text-align: right;">
+<button type="button" name="ok" onclick="return onOK();">OK</button>
+<button type="button" name="cancel" onclick="return onCancel();">Cancel</button>
+</div>
+
+</form>
+
+</body>
+</html>

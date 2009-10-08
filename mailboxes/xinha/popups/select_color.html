@@ -1,0 +1,359 @@
+<!--<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">-->
+<html><head><title>Select Color</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="popup.js"></script>
+<script type="text/javascript">
+window.resizeTo(240, 182);
+// run on page load
+function Init()
+{
+  __dlg_translate('Xinha');
+  __dlg_init();
+  Xinha.addDom0Event(document, 'keypress', __dlg_close_on_esc);
+
+  var color = window.dialogArguments;
+  color = ValidateColor(color) || '000000';
+  View(color);
+}
+// preview color
+function View(color)
+{
+  document.getElementById("ColorPreview").style.backgroundColor = '#' + color;
+  document.getElementById("ColorHex").value = '#' + color;
+}
+// select color
+function Set(string)
+{
+  var color = ValidateColor(string);
+  if (color == null)
+  {
+    alert("Invalid color code: " + string);
+  }
+  else
+  {
+    View(color);
+    __dlg_close(color);
+  }
+}
+// return valid color code
+function ValidateColor(string)
+{
+  string = string || '';
+  string = string + "";
+  string = string.toUpperCase();
+  var chars = '0123456789ABCDEF';
+  var out   = '';
+  // remove invalid color chars
+  for (var i=0; i<string.length; i++)
+  {
+    var schar = string.charAt(i);
+    if (chars.indexOf(schar) != -1) out += schar;
+  }
+  // check length
+  if (out.length != 6) return null;
+  return out;
+}
+</script>
+<style type="text/css">
+body { background:buttonface; margin:0; padding:0; }
+form { margin:0; padding:0; }
+#containerpreview td { background:buttonface; }
+#preview { background-color:#000000; padding:1px; height:21px; width:50px; }
+#ColorPreview { height:100%; width:100%; }
+#ColorHex { font-size:12px; background:buttonface; border:0; }
+#palettecolor { cursor:pointer; }
+#palettecolor td { width:10px; height:10px; }
+</style>
+</head>
+<body class="dialog" onload="Init()">
+
+<form action="#" method="get" onsubmit="Set(document.getElementById('ColorHex').value); return false;">
+<table border="0" cellspacing="0" cellpadding="4" width="100%" id="containerpreview">
+ <tr>
+  <td style="vertical-align: middle;"><div id="preview"><div id="ColorPreview"></div></div></td>
+  <td style="vertical-align: middle;" width="100%"><input type="text" name="ColorHex"
+    id="ColorHex" value="" size=15></td>
+ </tr>
+</table>
+</form>
+
+<table id="palettecolor" border="0" cellspacing="1" cellpadding="0" width="100%" bgcolor="#000000">
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#003300" onmouseover="View('003300')" onclick="Set('003300')"></td>
+<td bgcolor="#006600" onmouseover="View('006600')" onclick="Set('006600')"></td>
+<td bgcolor="#009900" onmouseover="View('009900')" onclick="Set('009900')"></td>
+<td bgcolor="#00CC00" onmouseover="View('00CC00')" onclick="Set('00CC00')"></td>
+<td bgcolor="#00FF00" onmouseover="View('00FF00')" onclick="Set('00FF00')"></td>
+<td bgcolor="#330000" onmouseover="View('330000')" onclick="Set('330000')"></td>
+<td bgcolor="#333300" onmouseover="View('333300')" onclick="Set('333300')"></td>
+<td bgcolor="#336600" onmouseover="View('336600')" onclick="Set('336600')"></td>
+<td bgcolor="#339900" onmouseover="View('339900')" onclick="Set('339900')"></td>
+<td bgcolor="#33CC00" onmouseover="View('33CC00')" onclick="Set('33CC00')"></td>
+<td bgcolor="#33FF00" onmouseover="View('33FF00')" onclick="Set('33FF00')"></td>
+<td bgcolor="#660000" onmouseover="View('660000')" onclick="Set('660000')"></td>
+<td bgcolor="#663300" onmouseover="View('663300')" onclick="Set('663300')"></td>
+<td bgcolor="#666600" onmouseover="View('666600')" onclick="Set('666600')"></td>
+<td bgcolor="#669900" onmouseover="View('669900')" onclick="Set('669900')"></td>
+<td bgcolor="#66CC00" onmouseover="View('66CC00')" onclick="Set('66CC00')"></td>
+<td bgcolor="#66FF00" onmouseover="View('66FF00')" onclick="Set('66FF00')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#333333" onmouseover="View('333333')" onclick="Set('333333')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#000033" onmouseover="View('000033')" onclick="Set('000033')"></td>
+<td bgcolor="#003333" onmouseover="View('003333')" onclick="Set('003333')"></td>
+<td bgcolor="#006633" onmouseover="View('006633')" onclick="Set('006633')"></td>
+<td bgcolor="#009933" onmouseover="View('009933')" onclick="Set('009933')"></td>
+<td bgcolor="#00CC33" onmouseover="View('00CC33')" onclick="Set('00CC33')"></td>
+<td bgcolor="#00FF33" onmouseover="View('00FF33')" onclick="Set('00FF33')"></td>
+<td bgcolor="#330033" onmouseover="View('330033')" onclick="Set('330033')"></td>
+<td bgcolor="#333333" onmouseover="View('333333')" onclick="Set('333333')"></td>
+<td bgcolor="#336633" onmouseover="View('336633')" onclick="Set('336633')"></td>
+<td bgcolor="#339933" onmouseover="View('339933')" onclick="Set('339933')"></td>
+<td bgcolor="#33CC33" onmouseover="View('33CC33')" onclick="Set('33CC33')"></td>
+<td bgcolor="#33FF33" onmouseover="View('33FF33')" onclick="Set('33FF33')"></td>
+<td bgcolor="#660033" onmouseover="View('660033')" onclick="Set('660033')"></td>
+<td bgcolor="#663333" onmouseover="View('663333')" onclick="Set('663333')"></td>
+<td bgcolor="#666633" onmouseover="View('666633')" onclick="Set('666633')"></td>
+<td bgcolor="#669933" onmouseover="View('669933')" onclick="Set('669933')"></td>
+<td bgcolor="#66CC33" onmouseover="View('66CC33')" onclick="Set('66CC33')"></td>
+<td bgcolor="#66FF33" onmouseover="View('66FF33')" onclick="Set('66FF33')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#666666" onmouseover="View('666666')" onclick="Set('666666')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#000066" onmouseover="View('000066')" onclick="Set('000066')"></td>
+<td bgcolor="#003366" onmouseover="View('003366')" onclick="Set('003366')"></td>
+<td bgcolor="#006666" onmouseover="View('006666')" onclick="Set('006666')"></td>
+<td bgcolor="#009966" onmouseover="View('009966')" onclick="Set('009966')"></td>
+<td bgcolor="#00CC66" onmouseover="View('00CC66')" onclick="Set('00CC66')"></td>
+<td bgcolor="#00FF66" onmouseover="View('00FF66')" onclick="Set('00FF66')"></td>
+<td bgcolor="#330066" onmouseover="View('330066')" onclick="Set('330066')"></td>
+<td bgcolor="#333366" onmouseover="View('333366')" onclick="Set('333366')"></td>
+<td bgcolor="#336666" onmouseover="View('336666')" onclick="Set('336666')"></td>
+<td bgcolor="#339966" onmouseover="View('339966')" onclick="Set('339966')"></td>
+<td bgcolor="#33CC66" onmouseover="View('33CC66')" onclick="Set('33CC66')"></td>
+<td bgcolor="#33FF66" onmouseover="View('33FF66')" onclick="Set('33FF66')"></td>
+<td bgcolor="#660066" onmouseover="View('660066')" onclick="Set('660066')"></td>
+<td bgcolor="#663366" onmouseover="View('663366')" onclick="Set('663366')"></td>
+<td bgcolor="#666666" onmouseover="View('666666')" onclick="Set('666666')"></td>
+<td bgcolor="#669966" onmouseover="View('669966')" onclick="Set('669966')"></td>
+<td bgcolor="#66CC66" onmouseover="View('66CC66')" onclick="Set('66CC66')"></td>
+<td bgcolor="#66FF66" onmouseover="View('66FF66')" onclick="Set('66FF66')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#999999" onmouseover="View('999999')" onclick="Set('999999')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#000099" onmouseover="View('000099')" onclick="Set('000099')"></td>
+<td bgcolor="#003399" onmouseover="View('003399')" onclick="Set('003399')"></td>
+<td bgcolor="#006699" onmouseover="View('006699')" onclick="Set('006699')"></td>
+<td bgcolor="#009999" onmouseover="View('009999')" onclick="Set('009999')"></td>
+<td bgcolor="#00CC99" onmouseover="View('00CC99')" onclick="Set('00CC99')"></td>
+<td bgcolor="#00FF99" onmouseover="View('00FF99')" onclick="Set('00FF99')"></td>
+<td bgcolor="#330099" onmouseover="View('330099')" onclick="Set('330099')"></td>
+<td bgcolor="#333399" onmouseover="View('333399')" onclick="Set('333399')"></td>
+<td bgcolor="#336699" onmouseover="View('336699')" onclick="Set('336699')"></td>
+<td bgcolor="#339999" onmouseover="View('339999')" onclick="Set('339999')"></td>
+<td bgcolor="#33CC99" onmouseover="View('33CC99')" onclick="Set('33CC99')"></td>
+<td bgcolor="#33FF99" onmouseover="View('33FF99')" onclick="Set('33FF99')"></td>
+<td bgcolor="#660099" onmouseover="View('660099')" onclick="Set('660099')"></td>
+<td bgcolor="#663399" onmouseover="View('663399')" onclick="Set('663399')"></td>
+<td bgcolor="#666699" onmouseover="View('666699')" onclick="Set('666699')"></td>
+<td bgcolor="#669999" onmouseover="View('669999')" onclick="Set('669999')"></td>
+<td bgcolor="#66CC99" onmouseover="View('66CC99')" onclick="Set('66CC99')"></td>
+<td bgcolor="#66FF99" onmouseover="View('66FF99')" onclick="Set('66FF99')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#CCCCCC" onmouseover="View('CCCCCC')" onclick="Set('CCCCCC')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#0000CC" onmouseover="View('0000CC')" onclick="Set('0000CC')"></td>
+<td bgcolor="#0033CC" onmouseover="View('0033CC')" onclick="Set('0033CC')"></td>
+<td bgcolor="#0066CC" onmouseover="View('0066CC')" onclick="Set('0066CC')"></td>
+<td bgcolor="#0099CC" onmouseover="View('0099CC')" onclick="Set('0099CC')"></td>
+<td bgcolor="#00CCCC" onmouseover="View('00CCCC')" onclick="Set('00CCCC')"></td>
+<td bgcolor="#00FFCC" onmouseover="View('00FFCC')" onclick="Set('00FFCC')"></td>
+<td bgcolor="#3300CC" onmouseover="View('3300CC')" onclick="Set('3300CC')"></td>
+<td bgcolor="#3333CC" onmouseover="View('3333CC')" onclick="Set('3333CC')"></td>
+<td bgcolor="#3366CC" onmouseover="View('3366CC')" onclick="Set('3366CC')"></td>
+<td bgcolor="#3399CC" onmouseover="View('3399CC')" onclick="Set('3399CC')"></td>
+<td bgcolor="#33CCCC" onmouseover="View('33CCCC')" onclick="Set('33CCCC')"></td>
+<td bgcolor="#33FFCC" onmouseover="View('33FFCC')" onclick="Set('33FFCC')"></td>
+<td bgcolor="#6600CC" onmouseover="View('6600CC')" onclick="Set('6600CC')"></td>
+<td bgcolor="#6633CC" onmouseover="View('6633CC')" onclick="Set('6633CC')"></td>
+<td bgcolor="#6666CC" onmouseover="View('6666CC')" onclick="Set('6666CC')"></td>
+<td bgcolor="#6699CC" onmouseover="View('6699CC')" onclick="Set('6699CC')"></td>
+<td bgcolor="#66CCCC" onmouseover="View('66CCCC')" onclick="Set('66CCCC')"></td>
+<td bgcolor="#66FFCC" onmouseover="View('66FFCC')" onclick="Set('66FFCC')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#FFFFFF" onmouseover="View('FFFFFF')" onclick="Set('FFFFFF')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#0000FF" onmouseover="View('0000FF')" onclick="Set('0000FF')"></td>
+<td bgcolor="#0033FF" onmouseover="View('0033FF')" onclick="Set('0033FF')"></td>
+<td bgcolor="#0066FF" onmouseover="View('0066FF')" onclick="Set('0066FF')"></td>
+<td bgcolor="#0099FF" onmouseover="View('0099FF')" onclick="Set('0099FF')"></td>
+<td bgcolor="#00CCFF" onmouseover="View('00CCFF')" onclick="Set('00CCFF')"></td>
+<td bgcolor="#00FFFF" onmouseover="View('00FFFF')" onclick="Set('00FFFF')"></td>
+<td bgcolor="#3300FF" onmouseover="View('3300FF')" onclick="Set('3300FF')"></td>
+<td bgcolor="#3333FF" onmouseover="View('3333FF')" onclick="Set('3333FF')"></td>
+<td bgcolor="#3366FF" onmouseover="View('3366FF')" onclick="Set('3366FF')"></td>
+<td bgcolor="#3399FF" onmouseover="View('3399FF')" onclick="Set('3399FF')"></td>
+<td bgcolor="#33CCFF" onmouseover="View('33CCFF')" onclick="Set('33CCFF')"></td>
+<td bgcolor="#33FFFF" onmouseover="View('33FFFF')" onclick="Set('33FFFF')"></td>
+<td bgcolor="#6600FF" onmouseover="View('6600FF')" onclick="Set('6600FF')"></td>
+<td bgcolor="#6633FF" onmouseover="View('6633FF')" onclick="Set('6633FF')"></td>
+<td bgcolor="#6666FF" onmouseover="View('6666FF')" onclick="Set('6666FF')"></td>
+<td bgcolor="#6699FF" onmouseover="View('6699FF')" onclick="Set('6699FF')"></td>
+<td bgcolor="#66CCFF" onmouseover="View('66CCFF')" onclick="Set('66CCFF')"></td>
+<td bgcolor="#66FFFF" onmouseover="View('66FFFF')" onclick="Set('66FFFF')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#FF0000" onmouseover="View('FF0000')" onclick="Set('FF0000')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#990000" onmouseover="View('990000')" onclick="Set('990000')"></td>
+<td bgcolor="#993300" onmouseover="View('993300')" onclick="Set('993300')"></td>
+<td bgcolor="#996600" onmouseover="View('996600')" onclick="Set('996600')"></td>
+<td bgcolor="#999900" onmouseover="View('999900')" onclick="Set('999900')"></td>
+<td bgcolor="#99CC00" onmouseover="View('99CC00')" onclick="Set('99CC00')"></td>
+<td bgcolor="#99FF00" onmouseover="View('99FF00')" onclick="Set('99FF00')"></td>
+<td bgcolor="#CC0000" onmouseover="View('CC0000')" onclick="Set('CC0000')"></td>
+<td bgcolor="#CC3300" onmouseover="View('CC3300')" onclick="Set('CC3300')"></td>
+<td bgcolor="#CC6600" onmouseover="View('CC6600')" onclick="Set('CC6600')"></td>
+<td bgcolor="#CC9900" onmouseover="View('CC9900')" onclick="Set('CC9900')"></td>
+<td bgcolor="#CCCC00" onmouseover="View('CCCC00')" onclick="Set('CCCC00')"></td>
+<td bgcolor="#CCFF00" onmouseover="View('CCFF00')" onclick="Set('CCFF00')"></td>
+<td bgcolor="#FF0000" onmouseover="View('FF0000')" onclick="Set('FF0000')"></td>
+<td bgcolor="#FF3300" onmouseover="View('FF3300')" onclick="Set('FF3300')"></td>
+<td bgcolor="#FF6600" onmouseover="View('FF6600')" onclick="Set('FF6600')"></td>
+<td bgcolor="#FF9900" onmouseover="View('FF9900')" onclick="Set('FF9900')"></td>
+<td bgcolor="#FFCC00" onmouseover="View('FFCC00')" onclick="Set('FFCC00')"></td>
+<td bgcolor="#FFFF00" onmouseover="View('FFFF00')" onclick="Set('FFFF00')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#00FF00" onmouseover="View('00FF00')" onclick="Set('00FF00')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#990033" onmouseover="View('990033')" onclick="Set('990033')"></td>
+<td bgcolor="#993333" onmouseover="View('993333')" onclick="Set('993333')"></td>
+<td bgcolor="#996633" onmouseover="View('996633')" onclick="Set('996633')"></td>
+<td bgcolor="#999933" onmouseover="View('999933')" onclick="Set('999933')"></td>
+<td bgcolor="#99CC33" onmouseover="View('99CC33')" onclick="Set('99CC33')"></td>
+<td bgcolor="#99FF33" onmouseover="View('99FF33')" onclick="Set('99FF33')"></td>
+<td bgcolor="#CC0033" onmouseover="View('CC0033')" onclick="Set('CC0033')"></td>
+<td bgcolor="#CC3333" onmouseover="View('CC3333')" onclick="Set('CC3333')"></td>
+<td bgcolor="#CC6633" onmouseover="View('CC6633')" onclick="Set('CC6633')"></td>
+<td bgcolor="#CC9933" onmouseover="View('CC9933')" onclick="Set('CC9933')"></td>
+<td bgcolor="#CCCC33" onmouseover="View('CCCC33')" onclick="Set('CCCC33')"></td>
+<td bgcolor="#CCFF33" onmouseover="View('CCFF33')" onclick="Set('CCFF33')"></td>
+<td bgcolor="#FF0033" onmouseover="View('FF0033')" onclick="Set('FF0033')"></td>
+<td bgcolor="#FF3333" onmouseover="View('FF3333')" onclick="Set('FF3333')"></td>
+<td bgcolor="#FF6633" onmouseover="View('FF6633')" onclick="Set('FF6633')"></td>
+<td bgcolor="#FF9933" onmouseover="View('FF9933')" onclick="Set('FF9933')"></td>
+<td bgcolor="#FFCC33" onmouseover="View('FFCC33')" onclick="Set('FFCC33')"></td>
+<td bgcolor="#FFFF33" onmouseover="View('FFFF33')" onclick="Set('FFFF33')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#0000FF" onmouseover="View('0000FF')" onclick="Set('0000FF')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#990066" onmouseover="View('990066')" onclick="Set('990066')"></td>
+<td bgcolor="#993366" onmouseover="View('993366')" onclick="Set('993366')"></td>
+<td bgcolor="#996666" onmouseover="View('996666')" onclick="Set('996666')"></td>
+<td bgcolor="#999966" onmouseover="View('999966')" onclick="Set('999966')"></td>
+<td bgcolor="#99CC66" onmouseover="View('99CC66')" onclick="Set('99CC66')"></td>
+<td bgcolor="#99FF66" onmouseover="View('99FF66')" onclick="Set('99FF66')"></td>
+<td bgcolor="#CC0066" onmouseover="View('CC0066')" onclick="Set('CC0066')"></td>
+<td bgcolor="#CC3366" onmouseover="View('CC3366')" onclick="Set('CC3366')"></td>
+<td bgcolor="#CC6666" onmouseover="View('CC6666')" onclick="Set('CC6666')"></td>
+<td bgcolor="#CC9966" onmouseover="View('CC9966')" onclick="Set('CC9966')"></td>
+<td bgcolor="#CCCC66" onmouseover="View('CCCC66')" onclick="Set('CCCC66')"></td>
+<td bgcolor="#CCFF66" onmouseover="View('CCFF66')" onclick="Set('CCFF66')"></td>
+<td bgcolor="#FF0066" onmouseover="View('FF0066')" onclick="Set('FF0066')"></td>
+<td bgcolor="#FF3366" onmouseover="View('FF3366')" onclick="Set('FF3366')"></td>
+<td bgcolor="#FF6666" onmouseover="View('FF6666')" onclick="Set('FF6666')"></td>
+<td bgcolor="#FF9966" onmouseover="View('FF9966')" onclick="Set('FF9966')"></td>
+<td bgcolor="#FFCC66" onmouseover="View('FFCC66')" onclick="Set('FFCC66')"></td>
+<td bgcolor="#FFFF66" onmouseover="View('FFFF66')" onclick="Set('FFFF66')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#FFFF00" onmouseover="View('FFFF00')" onclick="Set('FFFF00')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#990099" onmouseover="View('990099')" onclick="Set('990099')"></td>
+<td bgcolor="#993399" onmouseover="View('993399')" onclick="Set('993399')"></td>
+<td bgcolor="#996699" onmouseover="View('996699')" onclick="Set('996699')"></td>
+<td bgcolor="#999999" onmouseover="View('999999')" onclick="Set('999999')"></td>
+<td bgcolor="#99CC99" onmouseover="View('99CC99')" onclick="Set('99CC99')"></td>
+<td bgcolor="#99FF99" onmouseover="View('99FF99')" onclick="Set('99FF99')"></td>
+<td bgcolor="#CC0099" onmouseover="View('CC0099')" onclick="Set('CC0099')"></td>
+<td bgcolor="#CC3399" onmouseover="View('CC3399')" onclick="Set('CC3399')"></td>
+<td bgcolor="#CC6699" onmouseover="View('CC6699')" onclick="Set('CC6699')"></td>
+<td bgcolor="#CC9999" onmouseover="View('CC9999')" onclick="Set('CC9999')"></td>
+<td bgcolor="#CCCC99" onmouseover="View('CCCC99')" onclick="Set('CCCC99')"></td>
+<td bgcolor="#CCFF99" onmouseover="View('CCFF99')" onclick="Set('CCFF99')"></td>
+<td bgcolor="#FF0099" onmouseover="View('FF0099')" onclick="Set('FF0099')"></td>
+<td bgcolor="#FF3399" onmouseover="View('FF3399')" onclick="Set('FF3399')"></td>
+<td bgcolor="#FF6699" onmouseover="View('FF6699')" onclick="Set('FF6699')"></td>
+<td bgcolor="#FF9999" onmouseover="View('FF9999')" onclick="Set('FF9999')"></td>
+<td bgcolor="#FFCC99" onmouseover="View('FFCC99')" onclick="Set('FFCC99')"></td>
+<td bgcolor="#FFFF99" onmouseover="View('FFFF99')" onclick="Set('FFFF99')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#00FFFF" onmouseover="View('00FFFF')" onclick="Set('00FFFF')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#9900CC" onmouseover="View('9900CC')" onclick="Set('9900CC')"></td>
+<td bgcolor="#9933CC" onmouseover="View('9933CC')" onclick="Set('9933CC')"></td>
+<td bgcolor="#9966CC" onmouseover="View('9966CC')" onclick="Set('9966CC')"></td>
+<td bgcolor="#9999CC" onmouseover="View('9999CC')" onclick="Set('9999CC')"></td>
+<td bgcolor="#99CCCC" onmouseover="View('99CCCC')" onclick="Set('99CCCC')"></td>
+<td bgcolor="#99FFCC" onmouseover="View('99FFCC')" onclick="Set('99FFCC')"></td>
+<td bgcolor="#CC00CC" onmouseover="View('CC00CC')" onclick="Set('CC00CC')"></td>
+<td bgcolor="#CC33CC" onmouseover="View('CC33CC')" onclick="Set('CC33CC')"></td>
+<td bgcolor="#CC66CC" onmouseover="View('CC66CC')" onclick="Set('CC66CC')"></td>
+<td bgcolor="#CC99CC" onmouseover="View('CC99CC')" onclick="Set('CC99CC')"></td>
+<td bgcolor="#CCCCCC" onmouseover="View('CCCCCC')" onclick="Set('CCCCCC')"></td>
+<td bgcolor="#CCFFCC" onmouseover="View('CCFFCC')" onclick="Set('CCFFCC')"></td>
+<td bgcolor="#FF00CC" onmouseover="View('FF00CC')" onclick="Set('FF00CC')"></td>
+<td bgcolor="#FF33CC" onmouseover="View('FF33CC')" onclick="Set('FF33CC')"></td>
+<td bgcolor="#FF66CC" onmouseover="View('FF66CC')" onclick="Set('FF66CC')"></td>
+<td bgcolor="#FF99CC" onmouseover="View('FF99CC')" onclick="Set('FF99CC')"></td>
+<td bgcolor="#FFCCCC" onmouseover="View('FFCCCC')" onclick="Set('FFCCCC')"></td>
+<td bgcolor="#FFFFCC" onmouseover="View('FFFFCC')" onclick="Set('FFFFCC')"></td>
+</tr>
+<tr>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#FF00FF" onmouseover="View('FF00FF')" onclick="Set('FF00FF')"></td>
+<td bgcolor="#000000" onmouseover="View('000000')" onclick="Set('000000')"></td>
+<td bgcolor="#9900FF" onmouseover="View('9900FF')" onclick="Set('9900FF')"></td>
+<td bgcolor="#9933FF" onmouseover="View('9933FF')" onclick="Set('9933FF')"></td>
+<td bgcolor="#9966FF" onmouseover="View('9966FF')" onclick="Set('9966FF')"></td>
+<td bgcolor="#9999FF" onmouseover="View('9999FF')" onclick="Set('9999FF')"></td>
+<td bgcolor="#99CCFF" onmouseover="View('99CCFF')" onclick="Set('99CCFF')"></td>
+<td bgcolor="#99FFFF" onmouseover="View('99FFFF')" onclick="Set('99FFFF')"></td>
+<td bgcolor="#CC00FF" onmouseover="View('CC00FF')" onclick="Set('CC00FF')"></td>
+<td bgcolor="#CC33FF" onmouseover="View('CC33FF')" onclick="Set('CC33FF')"></td>
+<td bgcolor="#CC66FF" onmouseover="View('CC66FF')" onclick="Set('CC66FF')"></td>
+<td bgcolor="#CC99FF" onmouseover="View('CC99FF')" onclick="Set('CC99FF')"></td>
+<td bgcolor="#CCCCFF" onmouseover="View('CCCCFF')" onclick="Set('CCCCFF')"></td>
+<td bgcolor="#CCFFFF" onmouseover="View('CCFFFF')" onclick="Set('CCFFFF')"></td>
+<td bgcolor="#FF00FF" onmouseover="View('FF00FF')" onclick="Set('FF00FF')"></td>
+<td bgcolor="#FF33FF" onmouseover="View('FF33FF')" onclick="Set('FF33FF')"></td>
+<td bgcolor="#FF66FF" onmouseover="View('FF66FF')" onclick="Set('FF66FF')"></td>
+<td bgcolor="#FF99FF" onmouseover="View('FF99FF')" onclick="Set('FF99FF')"></td>
+<td bgcolor="#FFCCFF" onmouseover="View('FFCCFF')" onclick="Set('FFCCFF')"></td>
+<td bgcolor="#FFFFFF" onmouseover="View('FFFFFF')" onclick="Set('FFFFFF')"></td>
+</tr>
+</table>
+
+</body></html>

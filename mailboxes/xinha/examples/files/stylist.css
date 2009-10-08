@@ -1,0 +1,31 @@
+  /*--------------------------------------:noTabs=true:tabSize=2:indentSize=2:--
+    --  Stylist plugin example CSS file.  Used by full_example.js
+    --  when the Stylist plugin is included in an auto-generated example.
+    --
+    --  $HeadURL:http://svn.xinha.webfactional.com/trunk/examples/files/stylist.css $
+    --  $LastChangedDate:2008-02-04 01:43:21 +0100 (Mo, 04 Feb 2008) $
+    --  $LastChangedRevision:962 $
+    --  $LastChangedBy:ray $
+    --------------------------------------------------------------------------*/
+
+.bluetext
+{
+  color:blue;
+}
+
+p.blue_paragraph
+{
+  color:darkblue;
+}
+
+li.green_list_item
+{
+  color:green;
+}
+
+h1.webdings_lvl_1
+{
+  font-family:webdings;
+}
+
+img.polaroid { border:1px solid black; background-color:white; padding:10px; padding-bottom:30px; }

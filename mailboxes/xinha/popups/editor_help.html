@@ -1,0 +1,62 @@
+<html>
+ <head>
+  <title>Editor Help</title>
+  <script type="text/javascript" src="popup.js"></script>
+  <link rel="stylesheet" type="text/css" href="popup.css" />
+
+<script type="text/javascript">
+  window.resizeTo(400, 480);
+Xinha = window.opener.Xinha;
+function Init() {
+  __dlg_translate('Xinha');
+  __dlg_init();
+
+}
+
+
+function onCancel() {
+  __dlg_close(null);
+  return false;
+}
+
+</script>
+</head>
+
+<body class="dialog" onload="Init()">
+<div class="title">Xinha Help</div>
+<table width="100%" style="background: white none repeat scroll 0%;">
+  <thead style="border: 1px solid gray; background: silver none repeat scroll 0%;">
+  <tr>
+    <th colspan="2"> 
+      <span style="text-align:center">Keyboard shortcuts</span><br />
+      <span>The editor provides the following key combinations:</span>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr><td>ENTER</td><td><span>new paragraph</span>(&lt;P&gt;)</td></tr>
+  <tr><td>SHIFT-ENTER</td><td><span>insert linebreak</span>(&lt;BR&gt;)</td></tr>
+  <tr><td>CTRL-A</td><td><span>Select all</span></td></tr>
+  <tr><td>CTRL-B</td><td><span>Bold</span></td></tr>
+  <tr><td>CTRL-I</td><td><span>Italic</span></td></tr>
+  <tr><td>CTRL-U</td><td><span>Underline</span></td></tr>
+  <tr><td>CTRL-S</td><td><span>Strikethrough</span></td></tr>
+  <tr><td>CTRL-L</td><td><span>Justify Left</span></td></tr>
+  <tr><td>CTRL-E</td><td><span>Justify Center</span></td></tr>
+  <tr><td>CTRL-R</td><td><span>Justify Right</span></td></tr>
+  <tr><td>CTRL-J</td><td><span>Justify Full</span></td></tr>
+  <tr><td>CTRL-Z</td><td><span>Undoes your last action</span></td></tr>
+  <tr><td>CTRL-Y</td><td><span>Redoes your last action</span></td></tr>
+  <tr><td>CTRL-N</td><td><span>Set format to paragraph</span></td></tr>
+  <tr><td>CTRL-0 (zero)</td><td><span>Clean content pasted from Word</span></td></tr>
+  <tr><td>CTRL-1 .. CTRL-6</td><td><span>Headings</span> (&lt;h1&gt; .. &lt;h6&gt;)</td></tr>
+  <tr><td>CTRL-X</td><td><span>Cut selection</span></td></tr>
+  <tr><td>CTRL-C</td><td><span>Copy selection</span></td></tr>
+  <tr><td>CTRL-V</td><td><span>Paste from clipboard</span></td></tr>
+  </tbody>
+</table>
+<div id="buttons">
+  <button type="button" name="cancel" onclick="return onCancel();">Close</button>
+</div>
+</body>
+</html>

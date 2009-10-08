@@ -1,0 +1,39 @@
+html, body, .dialog {
+  background: ButtonFace;
+  color: ButtonText;
+  font: 11px Tahoma,Verdana,sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+body { padding: 5px; }
+form { padding: 0px; margin: 0px; }
+form p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+table {
+  font: 11px Tahoma,Verdana,sans-serif;
+}
+select, input, button { font: 11px Tahoma,Verdana,sans-serif; }
+button { width: 70px; }
+table .label { text-align: right; width: 8em; }
+
+.fl { width: 9em; float: left; padding: 2px 5px; text-align: right; }
+.fr { width: 7em; float: left; padding: 2px 5px; text-align: right; }
+fieldset { padding: 0px 10px 5px 5px; }
+.space { padding: 2px; }
+.title { background: #ddf; color: #000; font-weight: bold; font-size: 120%; padding: 3px 10px; margin-bottom: 10px;
+border-bottom: 1px solid black; letter-spacing: 2px;
+}
+.buttonColor {
+  padding: 1px;
+  cursor: default;
+  border: 1px solid;
+  border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
+}
+#buttons {
+      margin-top: 1em; 
+      border-top: 1px solid #999;
+      padding: 1em; 
+      text-align: right;
+}
