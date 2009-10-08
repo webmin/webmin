@@ -323,7 +323,7 @@ else {
 		$in{'forward'} || @mailforward ? $text{'forward_title'} :
 		$in{'enew'} ? $text{'enew_title'} :
 			      $text{'reply_title'}, undef,
-		$html_edit ? "onload='initEditor()'" : "",
+		$html_edit ? "onload='xinha_init()'" : "",
 		&folder_link($in{'user'}, $folder));
 	}
 
