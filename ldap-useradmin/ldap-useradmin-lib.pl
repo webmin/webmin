@@ -251,14 +251,20 @@ for(my $i=0; $i<@attrs; $i+=2) {
 	local $v = $attrs[$i+1];
 	push(@{$replace{$attrs[$i]}}, ref($v) ? @$v : $v);
 	}
-local $newdn = "uid=$_[1]->{'user'},$base";
-if (!&same_dn($newdn, $_[0]->{'dn'})) {
-	# Re-named, so use new DN first
-	$rv = $ldap->moddn($_[0]->{'dn'}, newrdn => "uid=$_[1]->{'user'}");
-	if ($rv->code) {
-		&error(&text('usave_emoddn', $rv->error));
+# Do rename to new DN first
+if ($_[0]->{'user'} ne $_[1]->{'user'}) {
+	local $newdn = $_[0]->{'dn'};
+	if ($newdn !~ s/^uid=$_[0]->{'user'},/uid=$_[1]->{'user'},/) {
+		$newdn = "uid=$_[1]->{'user'},$base";
 		}
-	$_[1]->{'dn'} = $newdn;
+	if (!&same_dn($newdn, $_[0]->{'dn'})) {
+		$rv = $ldap->moddn($_[0]->{'dn'},
+				   newrdn => "uid=$_[1]->{'user'}");
+		if ($rv->code) {
+			&error(&text('usave_emoddn', $rv->error));
+			}
+		$_[1]->{'dn'} = $newdn;
+		}
 	}
 local $rv = $ldap->modify($_[1]->{'dn'}, replace => \%replace);
 if ($rv->code) {
@@ -337,14 +343,19 @@ local $ldap = &ldap_connect();
 local $base = &get_group_base();
 local @attrs = &group_to_dn($_[1]);
 push(@attrs, @{$_[0]->{'ldap_attrs'}});
-local $newdn = "cn=$_[1]->{'group'},$base";
-if (!&same_dn($newdn, $_[0]->{'dn'})) {
-	# Re-named too!
-	$rv = $ldap->moddn($_[0]->{'dn'}, newrdn => "cn=$_[1]->{'group'}");
-	if ($rv->code) {
-		&error(&text('gsave_emoddn', $rv->error));
+# Do rename to new DN first
+if ($_[0]->{'group'} ne $_[1]->{'group'}) {
+	local $newdn = $_[0]->{'dn'};
+	if ($newdn !~ s/^cn=$_[0]->{'group'},/cn=$_[1]->{'group'},/) {
+		$newdn = "cn=$_[1]->{'group'},$base";
 		}
-	$_[1]->{'dn'} = $newdn;
+	if (!&same_dn($newdn, $_[0]->{'dn'})) {
+		$rv = $ldap->moddn($_[0]->{'dn'}, newrdn => "cn=$_[1]->{'group'}");
+		if ($rv->code) {
+			&error(&text('gsave_emoddn', $rv->error));
+			}
+		$_[1]->{'dn'} = $newdn;
+		}
 	}
 local $rv = $ldap->modify($_[1]->{'dn'}, replace => { @attrs });
 if ($rv->code) {
