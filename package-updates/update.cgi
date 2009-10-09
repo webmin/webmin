@@ -3,7 +3,7 @@
 
 require './package-updates-lib.pl';
 &ReadParse();
-$redir = "index.cgi?mode=".&urlize($in{'mode'})."&all=".&urlize($in{'all'}).
+$redir = "index.cgi?mode=".&urlize($in{'mode'}).
 	 "&search=".&urlize($in{'search'});
 
 if ($in{'refresh'}) {
@@ -44,7 +44,6 @@ else {
 	if (@ops) {
 		# Ask first
 		print &ui_form_start("update.cgi", "post");
-		print &ui_hidden("all", $in{'all'});
 		print &ui_hidden("mode", $in{'mode'});
 		print &ui_hidden("search", $in{'search'});
 		foreach $ps (@pkgs) {
@@ -54,8 +53,7 @@ else {
 		print &ui_form_end([ [ "confirm", $text{'update_confirm'} ] ]);
 
 		# Show table of all depends
-		@current = $in{'all'} ? &list_all_current(1)
-				      : &list_current(1);
+		@current = &list_current(1);
 		print &ui_columns_start([ $text{'index_name'},
 					  $text{'update_oldver'},
 					  $text{'update_newver'},
@@ -66,7 +64,7 @@ else {
 				    $_->{'system'} eq $p->{'system'} } @current;
 			if (!$c && !@avail) {
 				# Only get available if needed
-				@avail = &list_available(0, $in{'all'});
+				@avail = &list_available(0);
 				}
 			($a) = grep { $_->{'name'} eq $p->{'name'} &&
 				    $_->{'system'} eq $p->{'system'} } @avail;
@@ -87,7 +85,7 @@ else {
 			($p, $s) = split(/\//, $ps);
 			print &text('update_pkg', "<tt>$p</tt>"),"<br>\n";
 			print "<ul>\n";
-			push(@got, &package_install($p, $s, $in{'all'}));
+			push(@got, &package_install($p, $s));
 			print "</ul><br>\n";
 			}
 		if (@got) {
@@ -98,7 +96,7 @@ else {
 			}
 
 		# Refresh collected package info
-		if (&foreign_checked("system-status")) {
+		if (&foreign_check("system-status")) {
 			&foreign_require("system-status");
 			&system_status::refresh_possible_packages(\@got);
 			}

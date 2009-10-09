@@ -6,10 +6,10 @@ require './package-updates-lib.pl';
 &ReadParse();
 
 # Get the package
-@avail = &list_available(0, $in{'all'});
+@avail = &list_available(0);
 ($a) = grep { $_->{'name'} eq $in{'name'} &&
 	      $_->{'system'} eq $in{'system'} } @avail;
-@current = $in{'all'} ? &list_all_current(0) : &list_current(0);
+@current = &list_current(0);
 ($c) = grep { $_->{'name'} eq $in{'name'} &&
               $_->{'system'} eq $in{'system'} } @current;
 $p = $a || $c;
@@ -18,7 +18,6 @@ print &ui_form_start("save_view.cgi");
 print &ui_hidden("name", $p->{'name'});
 print &ui_hidden("system", $p->{'system'});
 print &ui_hidden("version", $p->{'version'});
-print &ui_hidden("all", $in{'all'});
 print &ui_hidden("mode", $in{'mode'});
 print &ui_table_start($text{'view_header'}, undef, 2);
 
@@ -73,7 +72,7 @@ elsif ($a && !$c) {
 	}
 print &ui_form_end(\@buts);
 
-&ui_print_footer("index.cgi?all=$in{'all'}&mode=$in{'mode'}&search=".
+&ui_print_footer("index.cgi?mode=$in{'mode'}&search=".
 	          &urlize($in{'search'}),
 		 $text{'index_return'});
 

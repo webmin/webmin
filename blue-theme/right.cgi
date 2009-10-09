@@ -157,7 +157,7 @@ if ($level == 0) {
 			$msg = $text{'right_upok'};
 			}
 		if (&foreign_available("package-updates")) {
-			$msg = "<a href='package-updates/index.cgi?all=1&mode=updates'>$msg</a>";
+			$msg = "<a href='package-updates/index.cgi?mode=updates'>$msg</a>";
 			}
 		print "<td>$msg</td> </tr>\n";
 		}

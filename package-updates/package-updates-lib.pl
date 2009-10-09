@@ -1,5 +1,7 @@
 # Functions for checking for updates to packages from YUM, APT or some other
 # update system.
+#
+# XXX no need for virtualmin support
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
@@ -9,18 +11,8 @@ eval "use WebminCore;";
 &foreign_require("webmin", "webmin-lib.pl");
 use Data::Dumper;
 
-@update_packages = ( "apache", "postfix", "sendmail", "bind", "procmail",
-		     "spamassassin", "logrotate", "webalizer", "mysql",
-		     "postgresql", "proftpd", "clamav", "php4", "mailman",
-		     "subversion", "python", "ruby", "irb", "rdoc", "rubygems",
-		     "openssl", "perl", "php5", "webmin", "usermin",
-		     "fcgid", "awstats", "dovecot", "postgrey",
-		     "virtualmin-modules",
-		   ); 
-
 $available_cache_file = "$module_config_directory/available.cache";
 $current_cache_file = "$module_config_directory/current.cache";
-$current_all_cache_file = "$module_config_directory/current-all.cache";
 $cron_cmd = "$module_config_directory/update.pl";
 
 $yum_cache_file = "$module_config_directory/yumcache";
@@ -28,48 +20,30 @@ $apt_cache_file = "$module_config_directory/aptcache";
 $yum_changelog_cache_dir = "$module_config_directory/yumchangelog";
 
 # list_current(nocache)
-# Returns a list of packages and versions for Virtualmin-related packages
-# managed by this module. Return keys are :
+# Returns a list of packages and versions for installed software. Keys are :
 #  name - The local package name (ie. CSWapache2)
 #  update - Name used to refer to it by the updates system (ie. apache2)
 #  version - Version number
 #  epoch - Epoch part of the version
 #  desc - Human-readable description
-#  package - Original generic program, like apache
 sub list_current
 {
 local ($nocache) = @_;
 if ($nocache || &cache_expired($current_cache_file)) {
 	local $n = &software::list_packages();
 	local @rv;
-	foreach my $p (@update_packages) {
-		local @pkgs = split(/\s+/, &package_resolve($p));
-		foreach my $pn (@pkgs) {
-			my $updatepn = $pn;
-			$pn = &csw_to_pkgadd($pn);
-			for(my $i=0; $i<$n; $i++) {
-				next if ($software::packages{$i,'name'}
-					 !~ /^$pn$/);
-				push(@rv, {
-				  'update' =>
-				    $updatepn eq $pn ? 
-					$software::packages{$i,'name'} :
-					$updatepn,
-				  'name' =>
-				    $software::packages{$i,'name'},
-				  'version' =>
-				    $software::packages{$i,'version'},
-				  'epoch' =>
-				    $software::packages{$i,'epoch'},
-				  'desc' =>
-				    $software::packages{$i,'desc'},
-				  'package' => $p,
-				  'system' => $software::update_system,
-				  'software' => 1,
-				  });
-				&fix_pkgadd_version($rv[$#rv]);
-				}
-			}
+	for(my $i=0; $i<$n; $i++) {
+		push(@rv, { 'name' => $software::packages{$i,'name'},
+			    'update' => $software::packages{$i,'name'},
+			    'version' =>
+			      $software::packages{$i,'version'},
+			    'epoch' =>
+			      $software::packages{$i,'epoch'},
+			    'desc' =>
+			      $software::packages{$i,'desc'},
+			    'system' => $software::update_system,
+			});
+		&fix_pkgadd_version($rv[$#rv]);
 		}
 
 	# Filter out dupes and sort by name
@@ -83,82 +57,19 @@ else {
 	}
 }
 
-# list_all_current(nocache)
-# Returns a list of all installed packages, in the same format as list_current
-sub list_all_current
-{
-local ($nocache) = @_;
-local ($nocache) = @_;
-if ($nocache || &cache_expired($current_all_cache_file)) {
-	local $n = &software::list_packages();
-	local @rv;
-	local %pkgmap;
-	foreach my $p (@update_packages) {
-		local @pkgs = split(/\s+/, &package_resolve($p));
-		foreach my $pn (@pkgs) {
-			$pkgmap{$pn} = $p;
-			}
-		}
-	for(my $i=0; $i<$n; $i++) {
-		push(@rv, { 'name' => $software::packages{$i,'name'},
-			    'update' => $software::packages{$i,'name'},
-			    'version' =>
-			      $software::packages{$i,'version'},
-			    'epoch' =>
-			      $software::packages{$i,'epoch'},
-			    'desc' =>
-			      $software::packages{$i,'desc'},
-			    'package' => $pkgmap{$software::packages{$i,'name'}},
-			    'system' => $software::update_system,
-			});
-		&fix_pkgadd_version($rv[$#rv]);
-		}
-
-	# Filter out dupes and sort by name
-	@rv = &filter_duplicates(\@rv);
-
-	&write_cache_file($current_all_cache_file, \@rv);
-	return @rv;
-	}
-else {
-	return &read_cache_file($current_all_cache_file);
-	}
-}
-
-# list_available(nocache, all)
-# Returns the names and versions of packages available from the update
-# system, that we are interested in.
+# list_available(nocache)
+# Returns the names and versions of packages available from the update system
 sub list_available
 {
-local ($nocache, $all) = @_;
-if ($nocache || &cache_expired($available_cache_file.int($all))) {
+local ($nocache) = @_;
+if ($nocache || &cache_expired($available_cache_file)) {
 	# Get from update system
 	local @rv;
 	local @avail = &packages_available();
-	if (!$all) {
-		# Limit to packages Virtualmin cares about
-		foreach my $p (@update_packages) {
-			local @pkgs = split(/\s+/, &package_resolve($p));
-			foreach my $pn (@pkgs) {
-				local @mavail = grep { $_->{'name'} =~ /^$pn$/ }
-						     @avail;
-				foreach my $avail (@mavail) {
-					$avail->{'update'} = $avail->{'name'};
-					$avail->{'name'} =
-					    &csw_to_pkgadd($avail->{'name'});
-					$avail->{'package'} = $p;
-					push(@rv, $avail);
-					}
-				}
-			}
-		}
-	else {
-		# All on system
-		foreach my $avail (@avail) {
-			$avail->{'update'} = $avail->{'name'};
-			$avail->{'name'} = &csw_to_pkgadd($avail->{'name'});
-			push(@rv, $avail);
-			}
+	foreach my $avail (@avail) {
+		$avail->{'update'} = $avail->{'name'};
+		$avail->{'name'} = &csw_to_pkgadd($avail->{'name'});
+		push(@rv, $avail);
 		}
 
 	# Set pinned versions
@@ -169,13 +80,13 @@ if ($nocache || &cache_expired($available_cache_file.int($all))) {
 
 	if (!@rv) {
 		# Failed .. fall back to cache
-		@rv = &read_cache_file($available_cache_file.int($all));
+		@rv = &read_cache_file($available_cache_file);
 		}
-	&write_cache_file($available_cache_file.int($all), \@rv);
+	&write_cache_file($available_cache_file, \@rv);
 	return @rv;
 	}
 else {
-	return &read_cache_file($available_cache_file.int($all));
+	return &read_cache_file($available_cache_file);
 	}
 }
 
@@ -246,40 +157,6 @@ local ($job) = grep { $_->{'user'} eq 'root' &&
 return $job;
 }
 
-# package_resolve(name)
-# Given a package code name from @update_packages, returns a string of the
-# underlying packages that implement it. This may come from the update system
-# if the OS has one (YUM or APT, or from Virtualmin's built-in list)
-sub package_resolve
-{
-local ($name) = @_;
-local $realos = $gconfig{'real_os_type'};
-$realos =~ s/ /-/g;
-local $realver = $gconfig{'real_os_version'};
-$realver =~ s/ /-/g;
-if (open(RESOLV, "$module_root_directory/resolve.$realos-$realver") ||
-    open(RESOLV, "$module_root_directory/resolve.$realos") ||
-    open(RESOLV, "$module_root_directory/resolve.$gconfig{'os_type'}-$gconfig{'os_version'}") ||
-    open(RESOLV, "$module_root_directory/resolve.$gconfig{'os_type'}")) {
-	local $rv;
-	while(<RESOLV>) {
-		if (/^(\S+)\s+(.*)/ && $1 eq $name) {
-			$rv = $2;
-			}
-		elsif (/^\*/) {
-			# All other packages have the same name as their code
-			$rv = $name;
-			}
-		}
-	close(RESOLV);
-	return $rv if ($rv);
-	}
-if (defined(&software::update_system_resolve)) {
-	return &software::update_system_resolve($name);
-	}
-return $name;
-}
-
 # packages_available()
 # Returns a list of all available packages, as hash references with name and
 # version keys. These come from the APT, YUM or CSW update system, if available.
@@ -332,17 +209,17 @@ if (defined(&software::update_system_available)) {
 return ( );
 }
 
-# package_install(package, [system], [check-all])
+# package_install(package, [system])
 # Install some package, either from an update system or from Webmin. Returns
 # a list of updated package names.
 sub package_install
 {
-local ($name, $system, $all) = @_;
+local ($name, $system) = @_;
 local @rv;
 local ($pkg) = grep { $_->{'update'} eq $name &&
 		      ($_->{'system'} eq $system || !$system) }
 		    sort { &compare_versions($b, $a) }
-		         &list_available(0, $all);
+		         &list_available(0);
 if (!$pkg) {
 	print &text('update_efindpkg', $name),"<p>\n";
 	return ( );
@@ -371,7 +248,6 @@ else {
 	}
 # Flush installed cache
 unlink($current_cache_file);
-unlink($current_all_cache_file);
 return @rv;
 }
 
@@ -391,18 +267,17 @@ if (defined(&software::update_system_operations)) {
 return ( );
 }
 
-# list_possible_updates([nocache], [all])
+# list_possible_updates([nocache])
 # Returns a list of updates that are available. Each element in the array
 # is a hash ref containing a name, version, description and severity flag.
 # Intended for calling from themes. Nocache 0=cache everything, 1=flush all
 # caches, 2=flush only current
 sub list_possible_updates
 {
-local ($nocache, $all) = @_;
+local ($nocache) = @_;
 local @rv;
-local @current = $all ? &list_all_current($nocache) 
-		      : &list_current($nocache);
-local @avail = &list_available($nocache == 1, $all);
+local @current = &list_current($nocache);
+local @avail = &list_available($nocache == 1);
 @avail = sort { &compare_versions($b, $a) } @avail;
 local ($a, $c, $u);
 foreach $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
@@ -578,19 +453,9 @@ if ($pkg->{'system'} eq 'yum') {
 return undef;
 }
 
-# Returns 1 if an option should be shown to list all packages, 2 if all
-# packages is the only option, or 0 if only virtualmin.
-sub show_all_option
-{
-return !&foreign_available("virtual-server") ? 2 :
-       $software::update_system eq 'apt' ||
-       $software::update_system eq 'yum' ? 1 : 0;
-}
-
 sub flush_package_caches
 {
 unlink($current_cache_file);
-unlink($current_all_cache_file);
 unlink($updates_cache_file);
 unlink($available_cache_file);
 unlink($available_cache_file.'0');

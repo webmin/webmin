@@ -1,5 +1,0 @@
-mysql		mysql DBD-mysql
-postgresql	postgresql DBD-Pg
-php4		php
-openssl		openssl Net-SSLeay
-*

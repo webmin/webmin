@@ -1,7 +1,4 @@
 # Functions for collecting general system info
-#
-# XXX Collect from Cloudmin
-# XXX Cloudmin should enable background collection
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
@@ -100,7 +97,7 @@ my %pkgs = map { $_, 1 } @$pkgs;
 my $info = &get_collected_info();
 if ($info->{'poss'} && &foreign_installed("package-updates")) {
 	&foreign_require("package-updates");
-	my @poss = &package_updates::list_possible_updates(2, 1);
+	my @poss = &package_updates::list_possible_updates(2);
 	$info->{'poss'} = \@poss;
 	}
 &save_collected_info($info);

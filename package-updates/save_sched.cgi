@@ -57,6 +57,6 @@ else {
 print "$msg<p>\n";
 
 &webmin_log("sched", undef, $in{'sched_def'} ? 0 : 1);
-&ui_print_footer("index.cgi?all=$in{'all'}&mode=$in{'mode'}&search=".
+&ui_print_footer("index.cgi?mode=$in{'mode'}&search=".
 		 &urlize($in{'search'}), $text{'index_return'});
 

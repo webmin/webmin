@@ -11,10 +11,7 @@ if ($in{'clear'}) {
 
 # See if any security updates exist
 $in{'mode'} ||= 'updates';
-if (!defined($in{'all'})) {
-	$in{'all'} = &foreign_available("virtual-server") ? 1 : 0;
-	}
-@avail = &list_available(0, $in{'all'});
+@avail = &list_available(0);
 ($sec) = grep { $_->{'security'} } @avail;
 
 # Show mode selector (all, updates only, updates and new)
@@ -33,42 +30,18 @@ foreach $m ('all', 'updates', 'new', 'both',
 	}
 push(@grid, $text{'index_mode'}, &ui_links_row(\@mlinks));
 
-# Show all selector
-$showall = &show_all_option();
-if ($showall == 1) {
-	# Can show all, or just virtualmin
-	$in{'all'} ||= 0;
-	foreach $a (0, 1) {
-		$amsg = $text{'index_all_'.$a};
-		if ($in{'all'} eq $a) {
-			push(@alinks, "<b>$amsg</b>");
-			}
-		else {
-			push(@alinks, "<a href='index.cgi?mode=".
-				&urlize($in{'mode'})."&all=$a&search=".
-				&urlize($in{'search'})."'>$amsg</a>");
-			}
-		}
-	push(@grid, $text{'index_allsel'}, &ui_links_row(\@alinks));
-	}
-elsif ($showall == 2) {
-	# Always showing all
-	$in{'all'} = 2;
-	}
-
 # Show search box
 push(@grid, $text{'index_search'}, &ui_textbox("search", $in{'search'}, 30)." ".
 				   &ui_submit($text{'index_searchok'})." ".
 				   &ui_submit($text{'index_clear'}, 'clear'));
 
 print &ui_form_start("index.cgi");
-print &ui_hidden("all", $showall ? 1 : 0);
 print &ui_hidden("mode", $in{'mode'});
 print &ui_grid_table(\@grid, 2),"<p>\n";
 print &ui_form_end();
 
 # Work out what packages to show
-@current = $in{'all'} ? &list_all_current(1) : &list_current(1);
+@current = &list_current(1);
 
 # Make lookup hashes
 %current = map { $_->{'name'}."/".$_->{'system'}, $_ } @current;
@@ -136,7 +109,7 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 		{ 'type' => 'checkbox', 'name' => 'u',
 		  'value' => $p->{'update'}."/".$p->{'system'},
 		  'checked' => $need },
-		"<a href='view.cgi?all=$in{'all'}&mode=$in{'mode'}&name=".
+		"<a href='view.cgi?mode=$in{'mode'}&name=".
 		  &urlize($p->{'name'})."&system=".
 		  &urlize($p->{'system'})."&search=".
 		  &urlize($in{'search'})."'>$p->{'name'}</a>",
@@ -160,7 +133,6 @@ print &ui_form_columns_table(
 	1,
 	undef,
 	[ [ "mode", $in{'mode'} ],
-	  [ "all", $in{'all'} ],
 	  [ "search", $in{'search'} ] ],
 	[ "", $text{'index_name'}, $text{'index_desc'}, $text{'index_status'},
 	  $anysource ? ( $text{'index_source'} ) : ( ), ],
@@ -176,7 +148,6 @@ print &ui_form_columns_table(
 # Show scheduled report form
 print "<hr>\n";
 print &ui_form_start("save_sched.cgi");
-print &ui_hidden("all", $in{'all'});
 print &ui_hidden("mode", $in{'mode'});
 print &ui_hidden("search", $in{'search'});
 print &ui_table_start($text{'index_header'}, undef, 2);
