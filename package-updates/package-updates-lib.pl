@@ -290,6 +290,7 @@ foreach $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
 			    'update' => $a->{'update'},
 			    'system' => $a->{'system'},
 			    'version' => $a->{'version'},
+			    'oldversion' => $c->{'version'},
 			    'epoch' => $a->{'epoch'},
 			    'security' => $a->{'security'},
 			    'desc' => $c->{'desc'} || $a->{'desc'},
