@@ -478,7 +478,7 @@ my $mycb = $cb;
 if ($checked) {
 	$mycb =~ s/mainbody/mainsel/g;
 	}
-$mycb =~ s/class='/class='row$theme_ui_columns_row_toggle ui_checked_columns/;
+$mycb =~ s/class='/class='row$theme_ui_columns_row_toggle ui_checked_columns /;
 $rv .= "<tr id=\"$ridtr\" $mycb onMouseOver=\"this.className = document.getElementById('$cbid').checked ? 'mainhighsel' : 'mainhigh'\" onMouseOut=\"this.className = document.getElementById('$cbid').checked ? 'mainsel' : 'mainbody row$theme_ui_columns_row_toggle'\">\n";
 $rv .= "<td ".$tdtags->[0]." class='ui_checked_checkbox'>".
        &ui_checkbox($checkname, $checkvalue, undef, $checked, "onClick=\"document.getElementById('$rid').className = this.checked ? 'mainhighsel' : 'mainhigh';\"", $disabled).
