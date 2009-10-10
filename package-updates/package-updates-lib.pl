@@ -1,7 +1,5 @@
 # Functions for checking for updates to packages from YUM, APT or some other
 # update system.
-#
-# XXX no need for virtualmin support
 
 BEGIN { push(@INC, ".."); };
 eval "use WebminCore;";
