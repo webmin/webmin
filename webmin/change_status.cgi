@@ -13,6 +13,7 @@ if ($in{'interval_def'}) {
 else {
 	$in{'interval'} =~ /^\d+$/ && $in{'interval'} > 0 &&
 	   $in{'interval'} <= 60 || &error($text{'status_einterval'});
+	$system_status::config{'collect_interval'} = $in{'interval'};
 	}
 
 # Save package collection option
