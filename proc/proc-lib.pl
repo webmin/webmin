@@ -618,11 +618,11 @@ else {
 sub get_system_uptime
 {
 my $out = &backquote_command("LC_ALL='' LANG='' uptime");
-if ($out =~ /up\s+(\d+)\s+(day|days),\s+(\d+):(\d+)/) {
+if ($out =~ /up\s+(\d+)\s+(day|days),?\s+(\d+):(\d+)/) {
 	# up 198 days,  2:06
 	return ( $1, $3, $4 );
 	}
-elsif ($out =~ /up\s+(\d+)\s+(day|days),\s+(\d+)\s+min/) {
+elsif ($out =~ /up\s+(\d+)\s+(day|days),?\s+(\d+)\s+min/) {
 	# up 198 days,  10 mins
 	return ( $1, 0, $3 );
 	}
