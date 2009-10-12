@@ -27,6 +27,7 @@ index_dall=Qualsevol canvi
 index_diff=Canvis que contenen
 index_stimes=Accions en les dates
 index_shost=Servidor Webmin origen
+index_global=&lt;A cap mòdul&gt;
 
 search_title=Resultats de la Recerca
 search_date=Data
@@ -49,6 +50,9 @@ search_critt2=a $1
 search_config=S'ha canviat la configuració del mòdul
 search_etime=Temps inicial o final invàlid
 search_err=La recerca ha fallat
+search_global=Cap
+search_global_login=Ha entrat a Webmin
+search_global_logout=Ha sortit de Webmin
 
 view_title=Detalls de l'Acció
 view_header=Detalls de l'acció registrada $1
