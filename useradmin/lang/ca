@@ -168,7 +168,7 @@ usave_eoffice=El despatx no pot contenir un caràcter ':'
 usave_eworkph=El telèfon de la feina no pot contenir un caràcter ':'
 usave_ehomeph=El telèfon particular no pot contenir un caràcter ':'
 usave_edigestmd5=El teu sistema té contrasenyes MD5 activades, però el mòdul Perl <tt>$3</tt> no està instal·lat.<p> Per forçar l'us de contrasenyes xifrades normalment, ajusta la <a href='$1'>configuració del mòdul</a>.<p>Si no, fes que Webmin <a href='$2'>descarregui i instal·li el mòdul</a> <tt>$3</tt> per tu.  
-usave_edigestblowfish=El teu sistema té contrasenyes MD5 activades, però el mòdul Perl <tt>$3</tt> no està instal·lat.<p> Per forçar l'us de contrasenyes xifrades normalment, ajusta la <a href='$1'>configuració del mòdul</a>.<p>Si no, fes que Webmin <a href='$2'>descarregui i instal·li el mòdul</a> <tt>$3</tt> per tu.
+usave_edigestblowfish=El teu sistema té contrasenyes Blowfish activades, però el mòdul Perl <tt>$3</tt> no està instal·lat.<p> Per forçar l'us de contrasenyes xifrades normalment, ajusta la <a href='$1'>configuració del mòdul</a>.<p>Si no, fes que Webmin <a href='$2'>descarregui i instal·li el mòdul</a> <tt>$3</tt> per tu.
 usave_emaking=L'ordre a executar abans de l'actualització ha fallat: $1
 usave_epasswd_min=La contrasenya ha de tenir almenys $1 lletres
 usave_epasswd_re=La contrasenya no coincideix amb l'expressió $1
