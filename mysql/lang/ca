@@ -562,6 +562,7 @@ acl_edonly=Només pot editar les dades de la taula
 acl_bnone=Prohibeix còpies de seguretat
 acl_indexes=Pot veure i gestionar índexs
 acl_views=Pot veure i gestionar vistes
+acl_files=Pot executar SQL a partir de fitxers locals
 
 log_start=Servidor MySQL engegat
 log_stop=Servidor MySQL aturat
