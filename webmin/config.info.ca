@@ -1,5 +1,4 @@
 standard_url=URL de la llista de mòduls estàndard,3,A www.webmin.com
 third_url=URL de la llista de mòduls de tercers,3,A www.webmin.com
 cron_mode=Mostra els temps d'actualització com,1,0-Interfície simple,1-Selector de temps cron
-osdn=Obtingues la llista dels llocs mirall OSDN de Webmin,1,1-Sí,0-No
 warn_days=Dies abans de l'expiració de la contrasenya per avisar els usuaris,0,5
