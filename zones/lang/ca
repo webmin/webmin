@@ -57,6 +57,9 @@ edit_attrvalue=Valor de l'atribut
 edit_attrnone=Encara no s'ha definit cap atribut genèric.
 edit_attradd=Afegeix un atribut genèric.
 edit_webmin=Obre el Webmin
+edit_brand=Reinicia
+
+ui_cancel=Cancel·la
 
 save_err=No he pogut desar la zona
 save_epool=Hi falta el pool o bé és invàlid
@@ -112,6 +115,10 @@ pkg_egone=El directori ja no existeix!
 pkg_err=No he pogut desar el directori de paquets
 pkg_edir=Directori invàlid o inexistent
 pkg_eclash=Ja existeix aquest directori de paquets en aquesta zona
+pkg_inherit=Hereta els paquets de la zona global
+pkg_inherit_yes=Sí (zona arrel dispersa)
+pkg_inherit_no=No (tota la zona arrel)
+
 
 fs_title1=Creació de Sistema de Fitxers
 fs_title2=Edició de Sistema de Fitxers
@@ -248,6 +255,9 @@ create_eservers=No has introduït cap servidor de noms DNS o NIS
 create_eresolvname=No puc resoldre el nom de host de la zona, cosa que provocarà que la configuració automàtica falli. L'has d'afegir al DNS abans de crear aquesta zona
 create_router=Encaminador per defecte
 create_erouter=Hi falta l'adreça IP de l'encaminador per defecte o bé és invàlida
+create_removingpkgs=eliminant els directoris de paquets heretats...
+create_brand=Reinicia
+create_brandmsg=Reinici de Zona
 
 log_create_zone=He creat la zona $1
 log_delete_zone=He suprimit la zona $1
