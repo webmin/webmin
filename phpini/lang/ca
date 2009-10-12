@@ -11,6 +11,7 @@ index_anyfile=Edita un altre fitxer de configuració de PHP:
 index_return=als fitxers de configuració
 
 file_global=Configuració global de PHP
+file_eread=No he pogut llegir $1: $2
 
 manual_title=Edició Manual de Configuració
 manual_desc=Aquesta pàgina es pot utilitzar per editar manualment un fitxer de configuració de PHP. Això s'ha de fer amb compte, ja que no es durà a terme cap comprovació de sintaxi ni cap altra validació dels canvis.
@@ -166,3 +167,4 @@ acl_global=Pot editar la configuració global de PHP
 acl_anyfile=Pot editar qualsevol fitxer com a configuració de PHP
 acl_manual=Pot editar manualment els fitxers de configuració
 acl_inis=Fitxers addicionals de configuració<br>(En format <i>nomfitxer</i>=<i>descripcio</i>)
+acl_user=Llegeix i escriu els fitxers com a usuari
