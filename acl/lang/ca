@@ -89,7 +89,7 @@ edit_temppass=Força el canvi a la pròxima entrada
 edit_days=Dies de la setmana permesos
 edit_alldays=Cada dia
 edit_seldays=Només els dies seleccionats
-edit_hours=Hores del die permeses
+edit_hours=Hores del dia permeses
 edit_allhours=Qualsevol
 edit_selhours=De $1:$2 a $3:$4
 edit_ui=Opcions de la interfície d'usuari
@@ -125,6 +125,7 @@ save_eminsize=Hi falta la llargada mínima de la contrasenya o bé no és numèrica
 save_edays=No has seleccionat cap dia permès
 save_ehours=Hi falten les hores permeses o bé són invàlides
 save_ehours2=L'hora permesa inicial ha de ser anterior a la final
+save_etemp=L'opció de forçar el canvi de contrasenya a la pròxima entrada no es pot utilitzar si no actives la <a href='$1'>petició als usuaris de nova contrasenya</a>
 
 delete_err=No he pogut suprimir l'usuari
 delete_eself=No et pots esborrar a tu mateix
