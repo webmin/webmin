@@ -78,6 +78,7 @@ log_ediff=El sistema no té l'ordre $1 necessària per a registrar els canvis de f
 log_perms=Permisos dels fitxers de registre
 log_eperms=Hi falten els permisos octals (com ara (755) o bé són invàlids
 log_syslog=Registra també a syslog
+log_login=Inclou les entrades i sortides de Webmin al registre d'accions
 
 proxy_title=Servidors Proxy i Descàrregues
 proxy_desc=Si el host on s'està executant el Webmin està darrere d'alguna mena de tallafocs, pot ser necessari configurar l'ús del servidor proxy per accedir a llocs Web i FTP. Alguns mòduls, com ara els <tt>Paquets de Programari</tt>, faran servir aquestes proxys per descarregar fitxers o programes.
