@@ -17,7 +17,9 @@ eval {
 			 'hours' => int(rand()*24),
 			 'days' => '*',
 			 'months' => '*',
-			 'weekdays' => '*', };
+			 'weekdays' => '*',
+			 'comment' => 'Delete Webmin temporary files' };
+		&unconvert_comment($job);
 		&create_cron_job($job);
 		&create_wrapper($temp_delete_cmd, $module_name,"tempdelete.pl");
 		}
