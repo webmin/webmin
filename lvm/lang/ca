@@ -123,6 +123,7 @@ pv_header=Detalls del volum físic
 pv_device=Dispositiu de disc
 pv_other=Altres dispositius...
 pv_alloc=Activat per a allotjament
+pv_force=Força l'afegit del volum
 pv_size=Mida del disc
 pv_petotal=Blocs allotjats
 pv_petotal2=Mida allotjada
