@@ -14,3 +14,5 @@ On Fedora 8, use rsyslog by default instead of syslog.
 Added support for rsyslogd, as seen by default on Debian 5.0.
 ---- Changes since 1.480 ----
 Rsyslog format tags in the config file are now recogized and preserved, rather than being included in the log filename.
+---- Changes since 1.490 ----
+Added support for rsyslog IncludeConfig directives, which are used to split the config into multiple files, as seen on Ubuntu 9.

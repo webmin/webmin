@@ -9,13 +9,13 @@ $conf = &get_config();
 
 if ($in{'delete'}) {
 	# Deleting a log 
-	&lock_file($config{'syslog_conf'});
 	$access{'noedit'} && &error($text{'edit_ecannot'});
 	$access{'syslog'} || &error($text{'edit_ecannot'});
 	$log = $conf->[$in{'idx'}];
+	&lock_file($log->{'cfile'});
 	&can_edit_log($log) || &error($text{'save_ecannot1'});
 	&delete_log($log);
-	&unlock_file($config{'syslog_conf'});
+	&unlock_file($log->{'cfile'});
 	&redirect("");
 	}
 elsif ($in{'view'}) {
@@ -128,7 +128,6 @@ elsif ($in{'view'}) {
 	}
 else {
 	# saving or updating a log
-	&lock_file($config{'syslog_conf'});
 	$access{'noedit'} && &error($text{'edit_ecannot'});
 	$access{'syslog'} || &error($text{'edit_ecannot'});
 	&error_setup($text{'save_err'});
@@ -204,16 +203,21 @@ else {
 	$log->{'sel'} = \@sel;
 	if ($in{'new'}) {
 		&can_edit_log($log) || &error($text{'save_ecannot3'});
+		&lock_file($log->{'cfile'});
+		$log->{'cfile'} = $config{'syslog_conf'};
 		&create_log($log);
+		&unlock_file($log->{'cfile'});
 		}
 	else {
 		&can_edit_log($log) || &error($text{'save_ecannot4'});
 		$old = $conf->[$in{'idx'}];
+		$log->{'cfile'} = $old->{'cfile'};
+		&lock_file($old->{'cfile'});
 		$log->{'format'} = $old->{'format'};	# Copy for now
 		&can_edit_log($old) || &error($text{'save_ecannot5'});
 		&update_log($old, $log);
+		&unlock_file($old->{'cfile'});
 		}
-	&unlock_file($config{'syslog_conf'});
 	&redirect("");
 	}
 &log_line($log) =~ /(\S+)$/;

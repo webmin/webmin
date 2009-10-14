@@ -6,19 +6,23 @@ use WebminCore;
 &init_config();
 %access = &get_module_acl();
 
-# get_config()
+# get_config([file])
 # Parses the syslog configuration file into an array ref of hash refs, one
 # for each log file or destination
 sub get_config
 {
+local ($cfile) = @_;
+$cfile ||= $config{'syslog_conf'};
 local $lnum = 0;
 local ($line, $cont, @rv);
 local $tag = { 'tag' => '*',
 	       'index' => 0,
 	       'line' => 0 };
 push(@rv, $tag);
-&open_readfile(CONF, $config{'syslog_conf'});
-while($line = <CONF>) {
+&open_readfile(CONF, $cfile);
+local @lines = <CONF>;
+close(CONF);
+foreach my $line (@lines) {
 	local $slnum = $lnum;
 	$line =~ s/\r|\n//g;
 	if ($line =~ /\\$/) {
@@ -32,7 +36,19 @@ while($line = <CONF>) {
 			last if ($line !~ s/\\$//);
 			}
 		}
-	if ($line =~ /^\$(\S+)\s*(\S*)/) {
+	if ($line =~ /^\$IncludeConfig\s+(\S+)/) {
+		# rsyslog include statement .. follow the money
+		foreach my $icfile (glob($1)) {
+			my $ic = &get_config($icfile);
+			if ($ic) {
+				foreach my $c (@$ic) {
+					$c->{'index'} += scalar(@rv);
+					}
+				push(@rv, @$ic);
+				}
+			}
+		}
+	elsif ($line =~ /^\$(\S+)\s*(\S*)/) {
 		# rsyslog special directive - ignored for now
 		}
 	elsif ($line =~ /^if\s+/) {
@@ -44,6 +60,7 @@ while($line = <CONF>) {
 		local $act = $3;
 		local $log = { 'active' => !$1,
 			       'sel' => [ split(/;/, $2) ],
+			       'cfile' => $cfile,
 			       'line' => $slnum,
 			       'eline' => $lnum };
 		if ($act =~ /^\-(\/\S+)$/) {
@@ -83,13 +100,13 @@ while($line = <CONF>) {
 		# Start of tagged section, as seen on BSD
 		push(@rv, { 'tag' => $2,
 			    'index' => scalar(@rv),
+			    'cfile' => $cfile,
 			    'line' => $lnum,
 			    'eline' => $lnum });
 		$tag = $rv[@rv-1];
 		}
 	$lnum++;
 	}
-close(CONF);
 return \@rv;
 }
 
@@ -109,7 +126,7 @@ else {
 # update_log(&old, &log)
 sub update_log
 {
-local $lref = &read_file_lines($config{'syslog_conf'});
+local $lref = &read_file_lines($_[0]->{'cfile'} || $config{'syslog_conf'});
 if ($config{'tags'} && $_[0]->{'section'} ne $_[1]->{'section'}) {
 	if ($_[0]->{'section'}->{'line'} < $_[1]->{'section'}->{'line'}) {
 		splice(@$lref, $_[1]->{'section'}->{'eline'}+1, 0,
@@ -134,7 +151,7 @@ else {
 # delete_log(&log)
 sub delete_log
 {
-local $lref = &read_file_lines($config{'syslog_conf'});
+local $lref = &read_file_lines($_[0]->{'cfile'} || $config{'syslog_conf'});
 splice(@$lref, $_[0]->{'line'}, $_[0]->{'eline'} - $_[0]->{'line'} + 1);
 &flush_file_lines();
 }
