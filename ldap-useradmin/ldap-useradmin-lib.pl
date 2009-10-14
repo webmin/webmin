@@ -245,6 +245,11 @@ push(@attrs, @{$_[1]->{'ldap_attrs'}});
 if (defined($_[1]->{'ldap_class'})) {
 	push(@attrs, "objectClass" => $_[1]->{'ldap_class'});
 	}
+if (&indexoflc("person", @{$_[1]->{'ldap_class'}}) >= 0 &&
+    !&in_props(\@attrs, "sn")) {
+	# Person needs 'sn'
+	push(@attrs, "sn", &in_props(\@attrs, "cn"));
+	}
 local %replace;
 for(my $i=0; $i<@attrs; $i+=2) {
 	$replace{$attrs[$i]} ||= [ ];
