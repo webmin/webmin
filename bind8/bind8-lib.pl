@@ -672,7 +672,7 @@ else {
 }
 
 # directives that need their value to be quoted
-@need_quote = ( "file", "zone", "pid-file", "statistics-file",
+@need_quote = ( "file", "zone", "view", "pid-file", "statistics-file",
 	        "dump-file", "named-xfer", "secret" );
 foreach $need (@need_quote) {
 	$need_quote{$need}++;
