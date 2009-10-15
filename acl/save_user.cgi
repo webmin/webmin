@@ -55,6 +55,16 @@ if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
 !$access{'minsize'} || $in{'minsize_def'} ||
 	$in{'minsize'} =~ /^\d+$/ || &error($text{'save_eminsize'});
 
+# Validate password
+if ($in{'pass_def'} == 0) {
+	$in{'pass'} =~ /:/ && &error($text{'save_ecolon'});
+	if (!$in{'temp'}) {
+		# Check password quality, unless this is a temp password
+		$perr = &check_password_restrictions($in{'name'}, $in{'pass'});
+		$perr && &error(&text('save_epass', $perr));
+		}
+	}
+
 # Find logged-in webmin user
 foreach $u (@ulist) {
 	if ($u->{'name'} eq $base_remote_user) {
@@ -234,14 +244,8 @@ else {
 	}
 if ($in{'pass_def'} == 0) {
 	# New password
-	$in{'pass'} =~ /:/ && &error($text{'save_ecolon'});
 	$user{'pass'} = &encrypt_password($in{'pass'});
 	$user{'sync'} = 0;
-	if (!$in{'temp'}) {
-		# Check password quality, unless this is a temp password
-		$perr = &check_password_restrictions($in{'name'}, $in{'pass'});
-		$perr && &error(&text('save_epass', $perr));
-		}
 	}
 elsif ($in{'pass_def'} == 1) {
 	# No change in password
