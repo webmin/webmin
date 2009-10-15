@@ -5890,7 +5890,7 @@ sub help_file
 my $mdir = &module_root_directory($_[0]);
 my $dir = "$mdir/help";
 foreach my $o (@lang_order_list) {
-	my $lang = "$dir/$_[1].$current_lang.html";
+	my $lang = "$dir/$_[1].$o.html";
 	return $lang if (-r $lang);
 	}
 return "$dir/$_[1].html";
