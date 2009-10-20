@@ -94,10 +94,12 @@ foreach $serv (@services) {
 			}
 
 		# If the number of fails before warning is > 1, then the status
-		# map still be considered OK even if it is down right now
+		# may still be considered OK even if it is down right now
 		local $up = $stat->{'up'};
 		local $fid = $serv->{'id'}."-".$r;
 		if ($up != 1 && $serv->{'fails'} > 1) {
+			# Not up, but more than one failure is needed for it to
+			# be considered down for alerting purposes.
 			$fails{$fid}++;
 			if ($fails{$fid} < $serv->{'fails'}) {
 				# Not really down yet
