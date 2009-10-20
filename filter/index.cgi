@@ -30,7 +30,7 @@ if ($alias) {
 	else {
 		$msg = 'index_alias';
 		}
-	print $text{$msg},"<br>\n";
+	print "<b>$text{$msg}</b><br>\n";
 	print "<ul>\n";
 	foreach $dest (&describe_alias_dest(\@values)) {
 		print "<li>$dest\n";
@@ -40,7 +40,7 @@ if ($alias) {
 
 # Check if /etc/procmailrc forces local delivery
 if (&no_user_procmailrc()) {
-	print $text{'index_force'},"<p>\n";
+	print "<b>",$text{'index_force'},"</b><p>\n";
 	}
 
 @filters = &list_filters();

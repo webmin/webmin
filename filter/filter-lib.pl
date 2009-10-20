@@ -601,7 +601,7 @@ return 1;	# Always can for now
 # mailbox, which prevents this module from configuring anything useful
 sub no_user_procmailrc
 {
-local $sconfig = &foreign_config("spam");
+local %sconfig = &foreign_config("spam");
 local @recipes = &procmail::parse_procmail_file(
 	$sconfig{'global_procmailrc'});
 local ($force) = grep { $_->{'action'} eq '$DEFAULT' &&
