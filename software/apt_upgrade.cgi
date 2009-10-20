@@ -30,7 +30,8 @@ if ($in{'update'}) {
 
 if ($in{'mode'}) {
 	$opts = $in{'sim'} ? "-s -y -f" : "-y -f";
-	$cmd = $in{'mode'} == 2 ? "dist-upgrade" : "upgrade";
+	$cmd = $in{'mode'} == 2 ? "dist-upgrade" :
+	       $apt_get_command =~ /aptitude/ ? "safe-upgrade" : "upgrade";
 	print "<b>",&text($in{'sim'} ? 'apt_upgradedescsim' : 'apt_upgradedesc', "<tt>$apt_get_command $opts $cmd</tt>"),"</b><p>\n";
 	print "<pre>";
 	&additional_log("exec", undef, "$apt_get_command $opts $cmd");
