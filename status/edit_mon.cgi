@@ -74,7 +74,9 @@ if (!$in{'type'}) {
 			$stable .= "<td>:</td>\n";
 			}
 		$stable .= "<td>".
-		      ($stat->{'desc'} ? $stat->{'desc'} :
+		      ($stat->{'desc'} && $stat->{'up'} == 0 ?
+			 "<font color=#ff0000>$stat->{'desc'}</font>" :
+		       $stat->{'desc'} ? $stat->{'desc'} :
 		       $stat->{'up'} == 1 ? $text{'mon_up'} :
 		       $stat->{'up'} == -1 ? $text{'mon_not'} :
 		       $stat->{'up'} == -2 ? $text{'mon_webmin'} :

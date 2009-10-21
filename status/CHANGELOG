@@ -64,3 +64,5 @@ Added a tooltip to status icons to show the hostname.
 Corrected the domain for AT&T SMS emails.
 Added a new monitor type for Dovecot.
 Added an option to the SSH monitor type for a port number.
+---- Changes since 1.490 ----
+Added a new monitor type for detecting large directories.
