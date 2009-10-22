@@ -415,7 +415,7 @@ elsif ($mode == 2) {
 return undef;
 }
 
-=head2 execute_restore(&mods, source, &files, apply)
+=head2 execute_restore(&mods, source, &files, apply, [show-only])
 
 Restore configuration files from the specified source for the listed modules.
 Returns undef on success, or an error message.
@@ -521,7 +521,7 @@ foreach my $m (@{$_[0]}) {
 
 # Call module pre functions
 foreach my $m (@{$_[0]}) {
-	if ($m && &foreign_check($m)) {
+	if ($m && &foreign_check($m) && !$_[4]) {
 		&foreign_require($m, "backup_config.pl");
 		if (&foreign_defined($m, "pre_restore")) {
 			local $err = &foreign_call($m, "pre_restore", \@files);
@@ -534,27 +534,33 @@ foreach my $m (@{$_[0]}) {
 	}
 
 # Lock all files being extracted
-local $f;
-foreach $f (@files) {
-	&lock_file($f);
+if (!$_[4]) {
+	local $f;
+	foreach $f (@files) {
+		&lock_file($f);
+		}
 	}
 
 # Extract contents (only files specified by manifests)
+local $flag = $_[4] ? "t" : "x";
 local $qfiles = join(" ", map { s/^\///; quotemeta($_) }
 				&unique(@files));
 if ($gzipped) {
-	&execute_command("cd / ; gunzip -c $qfile | tar xf - $qfiles",
+	&execute_command("cd / ; gunzip -c $qfile | tar ${flag}f - $qfiles",
 			 undef, \$out, \$out);
 	}
 else {
-	&execute_command("cd / ; tar xf $qfile $qfiles", undef, \$out, \$out);
+	&execute_command("cd / ; tar ${flag}f $qfile $qfiles",
+			 undef, \$out, \$out);
 	}
 local $ex = $?;
 
 # Un-lock all files being extracted
-local $f;
-foreach $f (@files) {
-	&unlock_file($f);
+if (!$_[4]) {
+	local $f;
+	foreach $f (@files) {
+		&unlock_file($f);
+		}
 	}
 
 # Check for tar error
@@ -563,7 +569,7 @@ if ($ex) {
 	return &text('backup_euntar', "<pre>$out</pre>");
 	}
 
-if ($_[3]) {
+if ($_[3] && !$_[4]) {
 	# Call all module apply functions
 	foreach $m (@{$_[0]}) {
 		if (&foreign_defined($m, "post_restore")) {

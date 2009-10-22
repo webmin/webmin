@@ -21,11 +21,19 @@ if ($mode == 3) {
 	$src = $temp;
 	}
 &ui_print_header(undef, $text{'restore_title'}, "");
-print &text('restore_doing', &nice_dest($src)),"<p>\n";
-$err = &execute_restore(\@mods, $src, \@files, $in{'apply'});
+print &text($in{'test'} ? 'restore_testing' : 'restore_doing',
+	    &nice_dest($src)),"<p>\n";
+$err = &execute_restore(\@mods, $src, \@files, $in{'apply'}, $in{'test'});
 &unlink_file($temp) if ($mode == 3);
 if ($err) {
 	print &text('restore_failed', $err),"<p>\n";
+	}
+elsif ($in{'test'}) {
+	print $text{'restore_done2'},"<p>\n";
+	print &ui_table_start(undef, "width=100%", 2);
+	print &ui_table_row(undef,
+	    "<pre>".join("\n", map { &html_escape($_) } @files)."</pre>", 2);
+	print &ui_table_end();
 	}
 else {
 	print &text('restore_done', scalar(@files)),"<p>\n";

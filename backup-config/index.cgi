@@ -87,9 +87,10 @@ print &ui_table_row($text{'edit_dest2'},
 		    &show_backup_destination("src", $config{'dest'}, 1));
 
 print &ui_table_row($text{'index_apply'},
-		    &ui_radio("apply", $config{'apply'} ? 1 : 0,
-			      [ [ 1, $text{'yes'} ],
-				[ 0, $text{'no'} ] ]));
+		    &ui_yesno_radio("apply", $config{'apply'} ? 1 : 0));
+
+print &ui_table_row($text{'index_test'},
+		    &ui_yesno_radio("test", 0));
 
 print &ui_table_end();
 print &ui_form_end([ [ 'restore', $text{'index_now2'} ] ]);

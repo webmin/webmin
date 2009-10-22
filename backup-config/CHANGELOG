@@ -16,3 +16,5 @@ When backing up or restoring from an FTP or SSH server, an optional port number 
 ---- Changes since 1.440 ----
 Converted commands in the module's API file to POD format, and added more details about each function.
 Backup files are now given 600 permissions, to prevent reading by non-root users.
+---- Changes since 1.490 ----
+Added an option on the restore form to just show the contents of a backup.
