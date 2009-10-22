@@ -26,6 +26,7 @@ return ("emerge");
 sub list_packages
 {
 local $i = 0;
+%packages = ( );
 &open_execute_command(LIST, $package_list_command, 1, 1);
 while(<LIST>) {
 	if (/^([^\/]+)\/([^0-9]+)-(\d\S+)$/ &&

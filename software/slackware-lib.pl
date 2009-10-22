@@ -32,6 +32,7 @@ return -d &translate_filename($package_dir) ? undef :
 sub list_packages
 {
 local ($i, $f, @list);
+%packages = ( );
 opendir(DIR, &translate_filename($package_dir));
 local @list = @_ ? @_ : grep { !/^\./ } readdir(DIR);
 $i = 0;

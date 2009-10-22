@@ -14,6 +14,7 @@ local($i, $name, $class, @contents, $products, $title_flag);
 $i = 0;
 $products = join(' ', @_);
 $name = "";
+%packages = ( );
 
 open(SW, "swlist -v -a title -a contents |");
 while(<SW>) {

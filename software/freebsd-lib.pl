@@ -16,6 +16,7 @@ sub list_packages
 {
 local $i = 0;
 local $arg = @_ ? join(" ", map { quotemeta($_) } @_) : "-a";
+%packages = ( );
 &open_execute_command(PKGINFO, "pkg_info -I $arg", 1, 1);
 while(<PKGINFO>) {
 	if (/^(\S+)\s+(.*)/) {

@@ -13,6 +13,7 @@ sub list_packages
 	local($_, $list, $i, $file, %fileset);
 	$i = 0;
 	$list = join(' ', @_);
+	%packages = ( );
 	&open_execute_command(LSLPP, "lslpp -L -c $list 2>&1 | grep -v '#'", 1, 1);
 	while($file = <LSLPP>) {
                 %fileset = &fileset_info($file); 

@@ -12,6 +12,7 @@ sub list_packages
 {
 local($i, $list); $i = 0;
 $list = @_ ? join(' ', map { quotemeta($_) } @_) : "-a";
+%packages = ( );
 &open_execute_command(RPM, "rpm -q $list --queryformat \"%{NAME}\\n%{VERSION}-%{RELEASE}\\n%{EPOCH}\\n%{GROUP}\\n%{SUMMARY}\\n\\n\"", 1, 1);
 while($packages{$i,'name'} = <RPM>) {
 	chop($packages{$i,'name'});

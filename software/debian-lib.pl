@@ -12,6 +12,7 @@ sub list_packages
 {
 local $i = 0;
 local $arg = @_ ? join(" ", map { quotemeta($_) } @_) : "";
+%packages = ( );
 &open_execute_command(PKGINFO, "COLUMNS=200 dpkg --list $arg", 1, 1);
 while(<PKGINFO>) {
 	next if (/^\|/ || /^\+/);

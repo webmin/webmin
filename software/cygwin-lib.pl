@@ -16,6 +16,7 @@ sub list_packages
 my (@pkgs) = @_;
 my $allpkgs = (@_ == 0);
 local($i, $list); $i = 0;
+%packages = ( );
 if (&open_tempfile(DB, $db)) {
     while (<DB>) {
 	#suppress packages that begin with an underscore

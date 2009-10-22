@@ -15,6 +15,7 @@ return ($sw_discovery_cmd);
 # Fills the array %packages with all or listed packages
 sub list_packages
 {
+%packages = ( );
 if ($has_sw_discovery) {
 	local %want = map { $_, 1 } @_;
 	open(OUT, "$sw_discovery_cmd |");

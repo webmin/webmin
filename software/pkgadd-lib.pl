@@ -16,6 +16,7 @@ local $i = 0;
 local $list = join(' ', map { quotemeta($_) } @_);
 local $_;
 local %indexmap;
+%packages = ( );
 &open_execute_command(PKGINFO, "pkginfo -x $list", 1, 1);
 while(<PKGINFO>) {
 	if (/^(\S+)\s*(.*)/) {
