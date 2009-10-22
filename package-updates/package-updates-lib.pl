@@ -17,6 +17,18 @@ $yum_cache_file = "$module_config_directory/yumcache";
 $apt_cache_file = "$module_config_directory/aptcache";
 $yum_changelog_cache_dir = "$module_config_directory/yumchangelog";
 
+# get_software_packages()
+# Fills in software::packages with list of installed packages (if missing),
+# returns count.
+sub get_software_packages
+{
+if (!$get_software_packages_cache) {
+        %software::packages = ( );
+        $get_software_packages_cache = &software::list_packages();
+        }
+return $get_software_packages_cache;
+}
+
 # list_current(nocache)
 # Returns a list of packages and versions for installed software. Keys are :
 #  name - The local package name (ie. CSWapache2)
@@ -28,7 +40,7 @@ sub list_current
 {
 local ($nocache) = @_;
 if ($nocache || &cache_expired($current_cache_file)) {
-	local $n = &software::list_packages();
+	local $n = &get_software_packages();
 	local @rv;
 	for(my $i=0; $i<$n; $i++) {
 		push(@rv, { 'name' => $software::packages{$i,'name'},
@@ -176,6 +188,9 @@ return $job;
 # If not, nothing is returned.
 sub packages_available
 {
+if (@packages_available_cache) {
+        return @packages_available_cache;
+        }
 if (defined(&software::update_system_available)) {
 	# From a decent package system
 	local @rv = software::update_system_available();
@@ -217,6 +232,7 @@ if (defined(&software::update_system_available)) {
 				}
 			}
 		}
+	@packages_available_cache = @rv;
 	return @rv;
 	}
 return ( );
@@ -474,6 +490,7 @@ unlink($updates_cache_file);
 unlink($available_cache_file);
 unlink($available_cache_file.'0');
 unlink($available_cache_file.'1');
+@packages_available_cache = ( );
 }
 
 1;
