@@ -33,7 +33,7 @@ elsif ($access{'mode'} == 5) {
 		@g = getgrnam($g);
 		$gcan{$g[2]}++;
 		if ($access{'sec'}) {
-			foreach $m (split(/,/, $g[3])) {
+			foreach $m (split(/\s+/, $g[3])) {
 				$insec{$m}++;
 				}
 			}

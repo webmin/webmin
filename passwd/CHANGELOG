@@ -6,3 +6,5 @@ Added an access control option to exclude users from the list of those whose pas
 Re-wrote the user interface code to use the new Webmin UI library, for a more consistent look.
 ---- Changes since 1.440 ----
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.490 ----
+Fixed restrictions based on secondary group membership.

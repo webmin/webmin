@@ -48,7 +48,7 @@ elsif ($access{'mode'} == 5) {
 		foreach $gname (split(/\s+/, $access{'users'})) {
 			local @g = getgrnam($gname);
 			return 1 if (&indexof($_[0]->[0],
-					      split(/,/, $g[3])) >= 0);
+					      split(/\s+/, $g[3])) >= 0);
 			}
 		}
 	return 0;
