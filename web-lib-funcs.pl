@@ -3738,10 +3738,12 @@ if ($ENV{'HTTP_REFERER'} =~/^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?([^\/:@]+)/
 	}
 my $http_host = $ENV{'HTTP_HOST'};
 $http_host =~ s/:\d+$//;
+my $unsafe_index = $unsafe_index_cgi ||
+		   &get_module_variable('$unsafe_index_cgi');
 if ($0 &&
-    ($ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ || $unsafe_index_cgi) &&
+    ($ENV{'SCRIPT_NAME'} !~ /^\/(index.cgi)?$/ || $unsafe_index) &&
     ($ENV{'SCRIPT_NAME'} !~ /^\/([a-z0-9\_\-]+)\/(index.cgi)?$/i ||
-     $unsafe_index_cgi) &&
+     $unsafe_index) &&
     $0 !~ /(session_login|pam_login)\.cgi$/ && !$gconfig{'referer'} &&
     $ENV{'MINISERV_CONFIG'} && !$main::no_referers_check &&
     $ENV{'HTTP_USER_AGENT'} !~ /^Webmin/i &&
