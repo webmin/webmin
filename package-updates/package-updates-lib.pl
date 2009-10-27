@@ -330,7 +330,6 @@ foreach my $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
 			    'severity' => 0 });
 		}
 	}
-print STDERR "done\n";
 return @rv;
 }
 
