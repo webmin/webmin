@@ -31,17 +31,17 @@ return $get_software_packages_cache;
 
 # list_current(nocache)
 # Returns a list of packages and versions for installed software. Keys are :
-#  name - The local package name (ie. CSWapache2)
+#  name - The my package name (ie. CSWapache2)
 #  update - Name used to refer to it by the updates system (ie. apache2)
 #  version - Version number
 #  epoch - Epoch part of the version
 #  desc - Human-readable description
 sub list_current
 {
-local ($nocache) = @_;
+my ($nocache) = @_;
 if ($nocache || &cache_expired($current_cache_file)) {
-	local $n = &get_software_packages();
-	local @rv;
+	my $n = &get_software_packages();
+	my @rv;
 	for(my $i=0; $i<$n; $i++) {
 		push(@rv, { 'name' => $software::packages{$i,'name'},
 			    'update' => $software::packages{$i,'name'},
@@ -71,13 +71,13 @@ else {
 # Returns the names and versions of packages available from the update system
 sub list_available
 {
-local ($nocache) = @_;
-local $expired = &cache_expired($available_cache_file);
+my ($nocache) = @_;
+my $expired = &cache_expired($available_cache_file);
 if ($nocache || $expired == 2 ||
     $expired == 1 && !&check_available_lock()) {
 	# Get from update system
-	local @rv;
-	local @avail = &packages_available();
+	my @rv;
+	my @avail = &packages_available();
 	foreach my $avail (@avail) {
 		$avail->{'update'} = $avail->{'name'};
 		$avail->{'name'} = &csw_to_pkgadd($avail->{'name'});
@@ -117,10 +117,10 @@ return 0;
 # and removes dupes with the same name
 sub filter_duplicates
 {
-local ($pkgs) = @_;
-local @rv = sort { $a->{'name'} cmp $b->{'name'} ||
+my ($pkgs) = @_;
+my @rv = sort { $a->{'name'} cmp $b->{'name'} ||
 	         &compare_versions($b, $a) } @$pkgs;
-local %done;
+my %done;
 return grep { !$done{$_->{'name'},$_->{'system'}}++ } @rv;
 }
 
@@ -129,8 +129,8 @@ return grep { !$done{$_->{'name'},$_->{'system'}}++ } @rv;
 # totally missing.
 sub cache_expired 
 {
-local ($file) = @_;
-local @st = stat($file);
+my ($file) = @_;
+my @st = stat($file);
 return 2 if (!@st);
 if (!$config{'cache_time'} || time()-$st[9] > $config{'cache_time'}*60*60) {
         return 1;
@@ -140,7 +140,7 @@ return 0;
 
 sub write_cache_file
 {
-local ($file, $arr) = @_;
+my ($file, $arr) = @_;
 &open_tempfile(FILE, ">$file");
 &print_tempfile(FILE, Dumper($arr));
 &close_tempfile(FILE);
@@ -148,8 +148,8 @@ local ($file, $arr) = @_;
 
 sub read_cache_file
 {
-local ($file) = @_;
-local $dump = &read_file_contents($file);
+my ($file) = @_;
+my $dump = &read_file_contents($file);
 return () if (!$dump);
 my $arr = eval $dump;
 return @$arr;
@@ -159,15 +159,15 @@ return @$arr;
 # Returns -1 if the version of pkg1 is older than pkg2, 1 if newer, 0 if same.
 sub compare_versions
 {
-local ($pkg1, $pkg2) = @_;
+my ($pkg1, $pkg2) = @_;
 if ($pkg1->{'system'} eq 'webmin' && $pkg2->{'system'} eq 'webmin') {
 	# Webmin module version compares are always numeric
 	return $pkg1->{'version'} <=> $pkg2->{'version'};
 	}
-local $ec = $pkg1->{'epoch'} <=> $pkg2->{'epoch'};
+my $ec = $pkg1->{'epoch'} <=> $pkg2->{'epoch'};
 if ($ec && ($pkg1->{'epoch'} eq '' || $pkg2->{'epoch'} eq '') &&
     $pkg1->{'system'} eq 'apt') {
-	# On some Debian systems, we don't have a local epoch
+	# On some Debian systems, we don't have a my epoch
 	$ec = undef;
 	}
 return $ec ||
@@ -176,8 +176,8 @@ return $ec ||
 
 sub find_cron_job
 {
-local @jobs = &cron::list_cron_jobs();
-local ($job) = grep { $_->{'user'} eq 'root' &&
+my @jobs = &cron::list_cron_jobs();
+my ($job) = grep { $_->{'user'} eq 'root' &&
 		      $_->{'command'} eq $cron_cmd } @jobs;
 return $job;
 }
@@ -193,8 +193,8 @@ if (@packages_available_cache) {
         }
 if (defined(&software::update_system_available)) {
 	# From a decent package system
-	local @rv = software::update_system_available();
-	local %done;
+	my @rv = software::update_system_available();
+	my %done;
 	foreach my $p (@rv) {
 		$p->{'system'} = $software::update_system;
 		$p->{'version'} =~ s/,REV=.*//i;		# For CSW
@@ -213,10 +213,10 @@ if (defined(&software::update_system_available)) {
 		if (!$done_rhn_lib++) {
 			do "../software/rhn-lib.pl";
 			}
-		local @rhnrv = &update_system_available();
+		my @rhnrv = &update_system_available();
 		foreach my $p (@rhnrv) {
 			$p->{'system'} = "rhn";
-			local $d = $done{$p->{'name'}};
+			my $d = $done{$p->{'name'}};
 			if ($d) {
 				# Seen already .. but is this better?
 				if (&compare_versions($p, $d) > 0) {
@@ -243,9 +243,9 @@ return ( );
 # a list of updated package names.
 sub package_install
 {
-local ($name, $system) = @_;
-local @rv;
-local ($pkg) = grep { $_->{'update'} eq $name &&
+my ($name, $system) = @_;
+my @rv;
+my ($pkg) = grep { $_->{'update'} eq $name &&
 		      ($_->{'system'} eq $system || !$system) }
 		    sort { &compare_versions($b, $a) }
 		         &list_available(0);
@@ -303,16 +303,20 @@ return ( );
 # caches, 2=flush only current
 sub list_possible_updates
 {
-local ($nocache) = @_;
-local @rv;
-local @current = &list_current($nocache);
-local @avail = &list_available($nocache == 1);
-@avail = sort { &compare_versions($b, $a) } @avail;
-local ($a, $c, $u);
-foreach $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
+my ($nocache) = @_;
+my @rv;
+my @current = &list_current($nocache);
+my @avail = &list_available($nocache == 1);
+my %availmap;
+foreach my $a (@avail) {
+	my $oa = $availmap{$a->{'name'},$a->{'system'}};
+	if (!$oa || &compare_versions($a, $oa) > 0) {
+		$availmap{$a->{'name'},$a->{'system'}} = $a;
+		}
+	}
+foreach my $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
 	# Work out the status
-	($a) = grep { $_->{'name'} eq $c->{'name'} &&
-		      $_->{'system'} eq $c->{'system'} } @avail;
+	my $a = $availmap{$c->{'name'},$c->{'system'}};
 	if ($a->{'version'} && &compare_versions($a, $c) > 0) {
 		# A regular update is available
 		push(@rv, { 'name' => $a->{'name'},
@@ -326,6 +330,7 @@ foreach $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
 			    'severity' => 0 });
 		}
 	}
+print STDERR "done\n";
 return @rv;
 }
 
@@ -333,12 +338,11 @@ return @rv;
 # Returns a list of packages that could be installed, but are not yet
 sub list_possible_installs
 {
-local ($nocache) = @_;
-local @rv;
-local @current = &list_current($nocache);
-local @avail = &list_available($nocache == 1);
-local ($a, $c);
-foreach $a (sort { $a->{'name'} cmp $b->{'name'} } @avail) {
+my ($nocache) = @_;
+my @rv;
+my @current = &list_current($nocache);
+my @avail = &list_available($nocache == 1);
+foreach my $a (sort { $a->{'name'} cmp $b->{'name'} } @avail) {
 	($c) = grep { $_->{'name'} eq $a->{'name'} &&
 		      $_->{'system'} eq $a->{'system'} } @current;
 	if (!$c && &installation_candiate($a)) {
@@ -359,7 +363,7 @@ return @rv;
 # real package name like CSWap2modphp5
 sub csw_to_pkgadd
 {
-local ($pn) = @_;
+my ($pn) = @_;
 if ($gconfig{'os_type'} eq 'solaris') {
 	$pn =~ s/[_\-]//g;
 	$pn = "CSW$pn";
@@ -372,11 +376,11 @@ return $pn;
 # a separate pkginfo call to get it.
 sub fix_pkgadd_version
 {
-local ($pkg) = @_;
+my ($pkg) = @_;
 if ($gconfig{'os_type'} eq 'solaris') {
 	if (!$pkg->{'version'}) {
 		# Make an extra call to get the version
-		local @pinfo = &software::package_info($pkg->{'name'});
+		my @pinfo = &software::package_info($pkg->{'name'});
 		$pinfo[4] =~ s/,REV=.*//i;
 		$pkg->{'version'} = $pinfo[4];
 		}
@@ -393,7 +397,7 @@ $pkg->{'desc'} =~ s/^\Q$pkg->{'update'}\E\s+\-\s+//;
 # Always true for now.
 sub installation_candiate
 {
-local ($p) = @_;
+my ($p) = @_;
 return 1;
 }
 
@@ -438,22 +442,22 @@ return $rv;
 # If possible, returns information about what has changed in some update
 sub get_changelog
 {
-local ($pkg) = @_;
+my ($pkg) = @_;
 if ($pkg->{'system'} eq 'yum') {
 	# See if yum supports changelog
 	if (!defined($supports_yum_changelog)) {
-		local $out = &backquote_command("yum -h 2>&1 </dev/null");
+		my $out = &backquote_command("yum -h 2>&1 </dev/null");
 		$supports_yum_changelog = $out =~ /changelog/ ? 1 : 0;
 		}
 	return undef if (!$supports_yum_changelog);
 
 	# Check if we have this info cached
-	local $cfile = $yum_changelog_cache_dir."/".
+	my $cfile = $yum_changelog_cache_dir."/".
 		       $pkg->{'name'}."-".$pkg->{'version'};
-	local $cl = &read_file_contents($cfile);
+	my $cl = &read_file_contents($cfile);
 	if (!$cl) {
 		# Run it for this package and version
-		local $started = 0;
+		my $started = 0;
 		&open_execute_command(YUMCL, "yum changelog all ".
 					     quotemeta($pkg->{'name'}), 1, 1);
 		while(<YUMCL>) {

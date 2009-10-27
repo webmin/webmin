@@ -58,8 +58,8 @@ if ($tellcount) {
 # Email the admin
 if ($config{'sched_email'} && $body) {
 	&foreign_require("mailboxes", "mailboxes-lib.pl");
-	local $from = &mailboxes::get_from_address();
-	local $mail = { 'headers' =>
+	my $from = &mailboxes::get_from_address();
+	my $mail = { 'headers' =>
 			[ [ 'From', $from ],
 			  [ 'To', $config{'sched_email'} ],
 			  [ 'Subject', "Package updates on ".
