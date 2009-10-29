@@ -131,15 +131,10 @@ else {
 	# Saving a normal interface
 	$conf{'DEVICE'} = $name;
 	$conf{'IPADDR'} = $_[0]->{'address'};
-	local($ip1, $ip2, $ip3, $ip4) = split(/\./, $_[0]->{'address'});
 	$conf{'NETMASK'} = $_[0]->{'netmask'};
-	local($nm1, $nm2, $nm3, $nm4) = split(/\./, $_[0]->{'netmask'});
 	if ($_[0]->{'address'} && $_[0]->{'netmask'}) {
-		$conf{'NETWORK'} = sprintf "%d.%d.%d.%d",
-					($ip1 & int($nm1))&0xff,
-					($ip2 & int($nm2))&0xff,
-					($ip3 & int($nm3))&0xff,
-					($ip4 & int($nm4))&0xff;
+		$conf{'NETWORK'} = &compute_network($_[0]->{'address'},
+						    $_[0]->{'netmask'});
 		}
 	else {
 		$conf{'NETWORK'} = '';
