@@ -796,6 +796,9 @@ sasl_err=Failed to save SMTP authentication and encryption
 sasl_ecert=Missing or invalid TLS certificate file
 sasl_ekey=Missing or invalid TLS key file
 sasl_eca=Missing or invalid TLS certificate authority file
+sasl_level_none=Never
+sasl_level_may=If requested by client
+sasl_level_encrypt=Always
 
 client_title=SMTP Client Restrictions
 client_ecannot=You are not allowed to edit SMTP client restrictions

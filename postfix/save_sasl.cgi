@@ -40,6 +40,12 @@ foreach $o (&list_smtpd_restrictions()) {
 	}
 &set_current_value("smtpd_recipient_restrictions", join(" ", &unique(@recip)));
 
+# Save SSL options
+if ($postfix_version >= 2.3) {
+	&set_current_value("smtpd_tls_security_level",
+			   $in{'smtpd_tls_security_level'});
+	}
+
 &unlock_postfix_files();
 
 &reload_postfix();

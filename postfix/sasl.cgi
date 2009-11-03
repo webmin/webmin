@@ -43,7 +43,18 @@ print &ui_table_row($text{'sasl_recip'}, join("<br>\n", @cbs), 3);
 print &ui_table_hr();
 
 # SMTP TLS options
-&option_yesno("smtpd_use_tls");
+if ($postfix_version >= 2.3) {
+	$level = &get_current_value("smtpd_tls_security_level");
+	print &ui_table_row($text{'opts_smtpd_use_tls'},
+		&ui_select("smtpd_tls_security_level", $level, 
+			   [ [ "", $text{'default'} ],
+			     [ "none", $text{'sasl_level_none'} ],
+			     [ "may", $text{'sasl_level_may'} ],
+			     [ "encrypt", $text{'sasl_level_encrypt'} ] ]));
+	}
+else {
+	&option_yesno("smtpd_use_tls");
+	}
 
 &option_radios_freefield("smtpd_tls_cert_file", 60, $none);
 

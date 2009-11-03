@@ -64,3 +64,5 @@ Autoreply messages containing non-ASCII characters are now properly quoted-print
 Added a module config option to control if the user is prompted for confirmation before deleting queued messages.
 ---- Changes since 1.450 ----
 Changed the mail queue date format to yyyy/mm/dd, for easier sorting.
+---- Changes since 1.490 ----
+Added support for the Postfix 2.3 smtpd_tls_security_level option.
