@@ -839,7 +839,7 @@ sub generate_map_edit
     # Make sure the user is allowed to edit them
     foreach my $f (&get_maps_types_files(&get_current_value($_[0]))) {
       if (&file_map_type($f->[0])) {
-	  &is_under_directory($access{'dir'}, $f) ||
+	  &is_under_directory($access{'dir'}, $f->[1]) ||
 		&error(&text('mapping_ecannot', $access{'dir'}));
       }
     }
