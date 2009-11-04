@@ -101,8 +101,9 @@ if (!$config{'no_pam'}) {
 		# check if the PAM authentication can be used by opening a
 		# PAM handle
 		local $pamh;
-		if (ref($pamh = new Authen::PAM($config{'pam'}, "root",
-						  \&pam_conv_func))) {
+		if (ref($pamh = new Authen::PAM($config{'pam'},
+						$config{'pam_test_user'},
+						\&pam_conv_func))) {
 			# Now test a login to see if /etc/pam.d/XXX is set
 			# up properly.
 			$pam_conv_func_called = 0;
@@ -3949,6 +3950,7 @@ my %vital = ("port", 80,
 	  "unauth", "^/unauthenticated/ ^[A-Za-z0-9\\-/_]+\\.jar\$ ^[A-Za-z0-9\\-/_]+\\.class\$ ^[A-Za-z0-9\\-/_]+\\.gif\$ ^[A-Za-z0-9\\-/_]+\\.conf\$ ^[A-Za-z0-9\\-/_]+\\.ico\$",
 	  "max_post", 10000,
 	  "expires", 7*24*60*60,
+	  "pam_test_user", "root",
 	 );
 foreach my $v (keys %vital) {
 	if (!$config{$v}) {
