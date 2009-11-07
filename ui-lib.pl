@@ -2105,7 +2105,7 @@ foreach my $r (@$rows) {
 	$rv .= "<tr>\n";
 	$rv .= "<td valign=top".(defined($r->[2]) ? "" : " colspan=2").">".
 	       ($nobold ? "" : "<b>").
-	       &ui_oneradio($name, $r->[0], $r->[1], $r->[0] eq $sel).
+	       &ui_oneradio($name, $r->[0], $r->[1], $r->[0] eq $sel, $r->[3]).
 	       ($nobold ? "" : "</b>").
 	       "</td>\n";
 	if (defined($r->[2])) {
