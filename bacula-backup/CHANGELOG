@@ -7,3 +7,5 @@ Added a field to the mount/un-mount page for entering an auto-loader slot number
 Backup schedules with Level= and Pool= tags are now properly displayed and editable.
 ---- Changes since 1.440 ----
 Added a missing program so that mass deletion of storage devices works.
+---- Changes since 1.490 ----
+Fixed fileset exlude list and 'Run at times' display, thanks to a patch by Joe Zhou.

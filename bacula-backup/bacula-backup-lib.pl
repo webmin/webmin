@@ -354,7 +354,7 @@ foreach my $c (@$conf) {
 	$c->{'eline'} += $offset if ($c->{'eline'} > $line &&
 				     $c->{'file'} eq $file);
 	if ($c->{'type'}) {
-		&renumber($c->{'members'}, $line, $offset);
+		&renumber($c->{'members'}, $line, $offset, $file);
 		}
 	}
 local $parent = $config_file_parent_cache{$file};
@@ -1595,7 +1595,7 @@ return undef;
 sub extract_schedule
 {
 local ($run) = @_;
-local $tags;
+local %tags;
 while($run =~ s/^(\S+)=(\S+)\s+//) {
 	$tags{$1} = $2;
 	}
