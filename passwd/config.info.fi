@@ -1,0 +1,4 @@
+max_users=N‰ytett‰vien k‰ytt‰jien maksimim‰‰r‰,0
+input_type=K‰ytt‰j‰n valintatapa,1,1-Lista,0-Tekstikentt‰
+sort_mode=J‰rjest‰ k‰ytt‰j‰t,1,0-Tiedoston mukaan,1-Nimen mukaan
+passwd_cmd=Salasanan vaihtokomento,3,P‰ivit‰ systeemitiedostot suoraan
