@@ -57,6 +57,7 @@ return undef;
 # Called after the files are restored from a backup
 sub post_restore
 {
+&flush_zone_names();
 local $pidfile = &get_pid_file();
 if (&check_pid_file(&make_chroot($pidfile, 1))) {
 	return &restart_bind();
