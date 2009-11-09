@@ -114,8 +114,17 @@ else {
 	$newa{'values'} = \@values;
 	$newa{'enabled'} = $in{'enabled'};
 	$newa{'cmt'} = $in{'cmt'};
-	if ($in{'new'}) { &create_alias(\%newa, $afile); }
-	else { &modify_alias($a, \%newa); }
+	if ($in{'new'}) {
+		$newa{'file'} = $in{'afile'};
+		}
+
+	# Actually create or update
+	if ($in{'new'}) {
+		&create_alias(\%newa, $afile);
+		}
+	else {
+		&modify_alias($a, \%newa);
+		}
 	$loga = \%newa;
 	}
 &unlock_alias_files($afile);

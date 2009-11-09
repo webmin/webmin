@@ -25,7 +25,7 @@ elsif ($access{'amode'} == 3) {
 		  $rv;
 		} @aliases;
 
-&alias_form();
+&alias_form(undef, undef, $afile);
 
 if ($in{'search'}) {
 	# Restrict to search results

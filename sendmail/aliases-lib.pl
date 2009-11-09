@@ -96,7 +96,7 @@ return @$c;
 # 1 or more programs, files, lists or users
 sub alias_form
 {
-local ($a, $nocmt) = @_;
+local ($a, $nocmt, $afile) = @_;
 local (@values, $v, $type, $val, @typenames);
 if ($a) { @values = @{$a->{'values'}}; }
 @typenames = map { $text{"aform_type$_"} } (0 .. 6);
@@ -127,6 +127,12 @@ print &ui_table_row(&hlink($text{'aform_name'},"alias_name"),
 # Enabled flag
 print &ui_table_row(&hlink($text{'aform_enabled'}, "alias_enabled"),
 		    &ui_yesno_radio("enabled", !$a || $a->{'enabled'} ? 1 : 0));
+
+# Alias file, if more than one possible
+if ($afile && @$afile > 1) {
+	print &ui_table_row(&hlink($text{'aform_file'}, "alias_file"),
+		&ui_select("afile", undef, $afile));
+	}
 
 # Destinations
 local @typeopts;
@@ -176,16 +182,17 @@ sub create_alias
 
 # Update the config file
 local(%aliases);
-local $lref = &read_file_lines($_[1]->[0]);
+$_[0]->{'file'} ||= $_[1]->[0];
+local $lref = &read_file_lines($_[0]->{'file'});
 $_[0]->{'line'} = scalar(@$lref);
 push(@$lref, &make_table_comment($_[0]->{'cmt'}, 1));
 local $str = ($_[0]->{'enabled'} ? "" : "# ") . $_[0]->{'name'} . ": " .
 	     join(',', map { /\s/ ? "\"$_\"" : $_ } @{$_[0]->{'values'}});
 push(@$lref, $str);
 $_[0]->{'eline'} = scalar(@$lref)-1;
-&flush_file_lines($_[1]->[0]);
+&flush_file_lines($_[0]->{'file'});
 if (!$_[2]) {
-	if (!&rebuild_map_cmd($_[1]->[0])) {
+	if (!&rebuild_map_cmd($_[0]->{'file'})) {
 		&system_logged("newaliases >/dev/null 2>&1");
 		}
 	}
@@ -193,7 +200,6 @@ if (!$_[2]) {
 # Add to the cache
 local $jfiles = join(",", @{$_[1]});
 local $c = $list_aliases_cache{$jfiles};
-$_[0]->{'file'} = $_[1]->[0];
 $_[0]->{'num'} = scalar(@$c);
 push(@$c, $_[0]);
 }

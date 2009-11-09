@@ -88,6 +88,7 @@ aform_edit=Edit Alias
 aform_create=Create Alias
 aform_name=Address
 aform_enabled=Enabled?
+aform_file=Add to aliases file
 aform_val=Alias to
 aform_afile=Edit..
 aform_return=alias

@@ -44,3 +44,5 @@ A custom command to rebuild all maps can be specified on the Module Config page,
 Changed the mail queue date format to yyyy/mm/dd, for easier sorting.
 ---- Changes since 1.470 ----
 When flushing selected queued quarantined messages, the -qQ flag is added so that it actually works.
+---- Changes since 1.490 ----
+If multiple alias files are defined, one can be selected when adding a new alias.
