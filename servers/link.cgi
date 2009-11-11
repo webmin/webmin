@@ -34,7 +34,8 @@ if ($s->{'autouser'}) {
 
 		print &text('login_desc', "<tt>$s->{'host'}</tt>"),"<p>\n";
 
-		print &ui_form_start("/$module_name/login.cgi", "post");
+		print &ui_form_start(
+			"$gconfig{'webprefix'}/$module_name/login.cgi", "post");
 		print &ui_hidden("id", $id);
 
 		print &ui_table_start($text{'login_header'}, undef, 2);
