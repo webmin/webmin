@@ -11,7 +11,8 @@ print "<b>",&text('csw_updatedesc',
 print "<pre>";
 &additional_log("exec", undef, "$pkg_get upgrade");
 &clean_environment();
-open(CMD, "yes y | $pkg_get upgrade 2>&1 </dev/null |");
+$flag = $pkg_get =~ /pkgutil/ ? "--upgrade" : "upgrade";
+open(CMD, "yes y | $pkg_get $flag 2>&1 </dev/null |");
 while(<CMD>) {
 	print &html_escape($_);
 	}
