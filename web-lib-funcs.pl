@@ -5938,7 +5938,7 @@ if ($ex) {
 return $out =~ /^([0-9]+)/ ? $1 : "???";
 }
 
-=head2 recursive_disk_usage(directory)
+=head2 recursive_disk_usage(directory, [skip-regexp], [only-regexp])
 
 Returns the number of bytes taken up by all files in some directory and all
 sub-directories, by summing up their lengths. The disk_usage_kb is more
@@ -5949,6 +5949,8 @@ reflective of reality, as the filesystem typically pads file sizes to 1k or
 sub recursive_disk_usage
 {
 my $dir = &translate_filename($_[0]);
+my $skip = $_[1];
+my $only = $_[2];
 if (-l $dir) {
 	return 0;
 	}
@@ -5963,7 +5965,9 @@ else {
 	closedir(DIR);
 	foreach my $f (@files) {
 		next if ($f eq "." || $f eq "..");
-		$rv += &recursive_disk_usage("$dir/$f");
+		next if ($skip && $f =~ /$skip/);
+		next if ($only && $f !~ /$only/);
+		$rv += &recursive_disk_usage("$dir/$f", $skip, $only);
 		}
 	return $rv;
 	}

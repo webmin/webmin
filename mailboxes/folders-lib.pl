@@ -2356,8 +2356,9 @@ foreach $f (@_) {
 		$f->{'size'} = $st[7];
 		}
 	elsif ($f->{'type'} == 1) {
-		# Maildir folder size is that of all files in it
-		$f->{'size'} = &recursive_disk_usage($f->{'file'});
+		# Maildir folder size is that of all files in it, except
+		# sub-folders.
+		$f->{'size'} = &recursive_disk_usage($f->{'file'}, '^\\.');
 		}
 	elsif ($f->{'type'} == 3) {
 		# MH folder size is that of all mail files
