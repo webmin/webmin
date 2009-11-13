@@ -101,10 +101,11 @@ if (`rpm -qp $file 2>&1` =~ /(^|\n)webmin-(\d+\.\d+)/) {
 	$mode = "rpm";
 	$version = $2;
 	}
-elsif (`dpkg --info $file 2>&1` =~ /Package:\s+webmin-(\d+\.\d+)/) {
+elsif (`dpkg --info $file 2>&1` =~ /Package:\s+webmin/) {
 	# Looks like a Webmin Debian package
 	$mode = "deb";
-	$version = $2;
+	`dpkg --info $file 2>&1` =~ /Version:\s+(\S+)/;
+	$version = $1;
 	}
 else {
         # Check if it is a webmin tar.gz file
