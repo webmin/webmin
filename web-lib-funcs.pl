@@ -4725,6 +4725,10 @@ sub webmin_debug_log
 my ($type, $msg) = @_;
 return 0 if (!$main::opened_debug_log);
 return 0 if ($gconfig{'debug_no'.$main::webmin_script_type});
+if ($gconfig{'debug_modules'}) {
+	my @dmods = split(/\s+/, $gconfig{'debug_modules'});
+	return 0 if (&indexof($main::initial_module_name, @dmods) < 0);
+	}
 my $now = time();
 my @tm = localtime($now);
 my $line = sprintf

@@ -855,9 +855,12 @@ debug_efile=Debug log file must be an absolute path
 debug_edir=Directory '$1' for debug log file does not exist
 debug_esize=Maximum size must be a number
 debug_procs=Script types to debug
+debug_modules=Limit debugging to modules
 debug_web=Web interface CGIs
 debug_cmd=Command line
 debug_cron=Background jobs
+debug_inmods=Modules to write debug logs for
+debug_emodules=No modules to debug for selected
 
 notif_passexpired=Your Webmin password has expired! You will be forced to change it at the next login.
 notif_passchange=Your Webmin password was last changed on $1, and must be changed in $2 days.

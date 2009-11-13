@@ -41,6 +41,17 @@ print &ui_table_row($text{'debug_procs'},
 	&ui_checkbox("debug_cron", 1, $text{'debug_cron'},
 		     !$gconfig{'debug_nocron'}));
 
+# Modules to debug
+# Modules to log in
+print &ui_table_row($text{'debug_inmods'},
+	&ui_radio("mall", $gconfig{'debug_modules'} ? 0 : 1,
+		  [ [ 1, $text{'log_mall'} ], [ 0, $text{'log_modules'} ] ]).
+	"<br>\n".
+	&ui_select("modules", [ split(/\s+/, $gconfig{'debug_modules'}) ],
+		   [ map { [ $_->{'dir'}, $_->{'desc'} ] }
+			 sort { $a->{'desc'} cmp $b->{'desc'} }
+			      &get_all_module_infos() ], 5, 1));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

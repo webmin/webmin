@@ -42,6 +42,15 @@ $gconfig{'debug_noweb'} = !$in{'debug_web'};
 $gconfig{'debug_nocmd'} = !$in{'debug_cmd'};
 $gconfig{'debug_nocron'} = !$in{'debug_cron'};
 
+# Modules
+if ($in{'mall'}) {
+	delete($gconfig{'debug_modules'});
+	}
+else {
+	$in{'modules'} || &error($text{'debug_emodules'});
+	$gconfig{'debug_modules'} = join(' ', split(/\0/, $in{'modules'}));
+	}
+
 # Write out
 &write_file("$config_directory/config", \%gconfig);
 &unlock_file("$config_directory/config");

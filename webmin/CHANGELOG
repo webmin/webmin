@@ -95,3 +95,5 @@ Added a field to the Operating System and Environment page for additional Perl m
 ---- Changes since 1.480 ----
 Removed the option to select an OSDN mirror, as Sourceforge now does sensible location-based redirects automatically.
 Added an option on the Logging page to record logins and logouts from Webmin, for display in the Webmin Actions Log module.
+---- Changes since 1.490 ----
+Added a field to the Debugging Log File page to select modules to debug for.
