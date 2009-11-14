@@ -9,7 +9,7 @@ ref($ldap) || &error($ldap);
 
 # Validate inputs
 $in{'dn1'} =~ /^\S+$/ || &error($text{'oadd_edn1'});
-$in{'dn2'} =~ /^\S+$/ || &error($text{'oadd_edn2'});
+$in{'dn2'} =~ /\S/ || &error($text{'oadd_edn2'});
 @classes = split(/\r?\n/, $in{'classes'});
 @classes || &error($text{'oadd_eclasses'});
 foreach $c (@classes) {

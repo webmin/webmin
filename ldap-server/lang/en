@@ -179,6 +179,7 @@ oadd_eget=Failed to get object $1 : $2
 oadd_eget2=Failed to check for clash with $1 : $2
 oadd_eclash=An object with the DN $1 already exists
 oadd_eadd=LDAP add of $1 failed : $2
+oadd_err=Failed to create new object
 
 create_title=Create Tree
 create_ecannot=You are not allowed to create a new tree
