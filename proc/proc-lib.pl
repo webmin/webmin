@@ -492,7 +492,8 @@ return &pty_backquote(@_);
 }
 
 # get_cpu_info()
-# Returns a list containing the 5, 10 and 15 minute load averages
+# Returns a list containing the 5, 10 and 15 minute load averages, and possibly
+# the CPU mhz, model, vendor, cache and count
 sub get_cpu_info
 {
 if (defined(&os_get_cpu_info)) {

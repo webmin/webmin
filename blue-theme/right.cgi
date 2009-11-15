@@ -69,6 +69,15 @@ if ($level == 0) {
 				   $info->{'kernel'}->{'arch'}),"</td> </tr>\n";
 		}
 
+	# CPU type and cores
+	if ($info->{'load'}) {
+		@c = @{$info->{'load'}};
+		if (@c > 3) {
+			print "<tr> <td><b>$text{'right_cpuinfo'}</b></td>\n";
+			print "<td>",&text('right_cputype', @c),"</td> </tr>\n";
+			}
+		}
+
 	# System uptime
 	&foreign_require("proc");
 	my $uptime;
