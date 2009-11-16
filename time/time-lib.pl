@@ -147,7 +147,8 @@ sub set_hardware_time
 local ($second, $minute, $hour, $date, $month, $year) = @_;
 $month++;
 $year += 1900;
-local $format = "--set --date=\"".quotemeta("$month/$date/$year $hour:$minute:$second")."\"";
+local $format = "--set --date=".
+		quotemeta("$month/$date/$year $hour:$minute:$second");
 local $flags = &get_hwclock_flags();
 local $out = &backquote_logged("hwclock $flags $format 2>&1");
 return $? ? $out : undef;
