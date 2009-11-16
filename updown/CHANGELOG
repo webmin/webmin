@@ -10,3 +10,5 @@ Converted all user interface code to use the new Webmin UI library.
 The download from server form can be used to fetch an entire directory, which is then returned as a ZIP file.
 ---- Changes since 1.410 ----
 Added fields for sending an email notification when a background download or file upload completes.
+---- Changes since 1.490 ----
+Added support for extracting LHArc format files when uploading.

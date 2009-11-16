@@ -78,6 +78,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 		local @files;
 		&switch_uid_back();
 		if ($path =~ /\.zip$/i) {
+			# ZIP file
 			if (!&has_command("unzip")) {
 				$err = &text('upload_ecmd', "unzip");
 				}
@@ -95,6 +96,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 			$fmt = "zip";
 			}
 		elsif ($path =~ /\.tar$/i) {
+			# Un-compressed tar file
 			if (!&has_command("tar")) {
 				$err = &text('upload_ecmd', "tar");
 				}
@@ -111,7 +113,26 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				}
 			$fmt = "tar";
 			}
+		elsif ($path =~ /\.(lha|lhz)$/i) {
+			# LHAarc file
+			if (!&has_command("lha")) {
+				$err = &text('upload_ecmd', "lha");
+				}
+			else {
+				open(OUT, &command_as_user($uinfo[0], 0, "(cd $qdir && lha xf $qpath)")." 2>&1 </dev/null |");
+				while(<OUT>) {
+					$out .= $_;
+					if (/(\S[^\t]*\S)\s+\-\s+/) {
+						push(@files, "/".$1);
+						}
+					}
+				close(OUT);
+				$err = $out if ($?);
+				}
+			$fmt = "lha";
+			}
 		elsif ($path =~ /\.(tar\.gz|tgz|tar\.bz|tbz|tar\.bz2|tbz2)$/i) {
+			# Compressed tar file
 			local $zipper = $path =~ /bz(2?)$/i ? "bunzip2"
 							    : "gunzip";
 			if (!&has_command("tar")) {
