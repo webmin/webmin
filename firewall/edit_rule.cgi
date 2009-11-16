@@ -271,7 +271,7 @@ print "<tr> <td colspan=2><hr></td> </tr>\n";
 
 print "<tr> <td><b>$text{'edit_limit'}</b></td>\n";
 print "<td>",&print_mode("limit", $rule->{'limit'},
-			 $text{'edit_below'}, $text{'edit_above'}),"\n";
+			 $text{'edit_below'}, $text{'edit_above'}, 1),"\n";
 ($n, $u) = $rule->{'limit'}->[1] =~ /^(\d+)\/(\S+)$/ ? ($1, $2) : ();
 print "<input name=limit0 size=6 value='$n'>\n";
 print "/ <select name=limit1>\n";
@@ -283,7 +283,7 @@ print "</select></td> </tr>\n";
 
 print "<tr> <td><b>$text{'edit_limitburst'}</b></td>\n";
 print "<td>",&print_mode("limitburst", $rule->{'limit-burst'},
-			 $text{'edit_below'}, $text{'edit_above'}),"\n";
+			 $text{'edit_below'}, $text{'edit_above'}, 1),"\n";
 printf "<input name=limitburst size=6 value='%s'></td> </tr>\n",
 	$rule->{'limit-burst'}->[1];
 
@@ -360,7 +360,7 @@ print "</tr></table>\n";
 
 &ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
 
-# print_mode(name, &value)
+# print_mode(name, &value, [yes-option, no-option], [no-no-option])
 sub print_mode
 {
 local $m = !$_[1] ? 0 :
@@ -370,8 +370,10 @@ $rv .= sprintf "<option value=0 %s> &lt;%s&gt;\n",
 	$m == 0 ? "selected" : "", $text{'edit_ignore'};
 $rv .= sprintf "<option value=1 %s> %s\n",
 	$m == 1 ? "selected" : "", $_[2] || $text{'edit_is'};
-$rv .= sprintf "<option value=2 %s> %s\n",
-	$m == 2 ? "selected" : "", $_[3] || $text{'edit_not'};
+if (!$_[4] || $m == 2) {
+	$rv .= sprintf "<option value=2 %s> %s\n",
+		$m == 2 ? "selected" : "", $_[3] || $text{'edit_not'};
+	}
 $rv .= "</select>\n";
 return $rv;
 }

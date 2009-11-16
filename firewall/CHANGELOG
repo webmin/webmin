@@ -28,3 +28,5 @@ Added an option for the UNTRACKED state in rules.
 Fixed 'Does not equal' option for multiple ports.
 ---- Changes since 1.470 ----
 Disallow rules on virtual interfaces, as they don't work.
+---- Changes since 1.490 ----
+Removed invalid "Above" options for packet flow rate.
