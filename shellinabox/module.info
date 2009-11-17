@@ -1,0 +1,5 @@
+name=Shell
+desc=Shell In A Box
+os_support=*-linux
+version=0.3
+depends=1.480
