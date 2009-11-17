@@ -468,6 +468,18 @@ if ($raid_mode eq "mdadm") {
 	}
 }
 
+# remove_detached(&raid)
+# Removes detached device(s) from some RAID set
+sub remove_detached
+{
+if ($raid_mode eq "mdadm") {
+	# Call mdadm commands to remove
+	local $out = &backquote_logged(
+		"mdadm --manage $_[0]->{'value'} --remove detached 2>&1");
+	&error(&text('emdadremove', "<tt>$out</tt>")) if ($?);
+	}
+}
+
 # directive_lines(&directive, indent)
 sub directive_lines
 {

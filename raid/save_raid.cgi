@@ -87,6 +87,13 @@ elsif ($in{'remove'}) {
 	&webmin_log("remove", undef, $old->{'value'}, { 'disk' => $in{'rdisk'} } );
 	&redirect("");
 	}
+elsif ($in{'remove_det'}) {
+	# Remove detached disk(s) from a RAID set
+	&lock_raid_files();
+	&remove_detached($old);
+	&unlock_raid_files();
+	&redirect("");
+	}
 elsif ($in{'mount'} || $in{'mountswap'}) {
 	# Re-direct to mount module
 	$type = $in{'mountswap'} ? "swap" :
