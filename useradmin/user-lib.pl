@@ -1796,6 +1796,10 @@ elsif ($format == 2) {
 	}
 else {
 	# Just do old-style crypt() DES encryption
+	if ($salt !~ /^[a-z0-9]{2}/i) {
+		# Un-usable non-DES salt
+		$salt = undef;
+		}
 	$salt ||= chr(int(rand(26))+65) . chr(int(rand(26))+65);
 	return &unix_crypt($pass, $salt);
 	}

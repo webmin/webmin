@@ -24,12 +24,17 @@ return undef;
 sub encrypt_md5
 {
 local $passwd = $_[0];
+local $salt = $_[1];
 local $magic = '$1$';
-local $salt = $_[1] || substr(time(), -8);
 if ($salt =~ /^\$1\$([^\$]+)/) {
 	# Extract actual salt from already encrypted password
 	$salt = $1;
 	}
+if ($salt !~ /^[a-z0-9\/]{8}$/i) {
+	# Non-MD5 salt
+	$salt = undef;
+	}
+$salt ||= substr(time(), -8);
 
 # Use built-in crypt support for MD5, if we can
 if (&unix_crypt_supports_md5()) {
@@ -162,6 +167,10 @@ sub encrypt_blowfish
 local ($passwd, $salt) = @_;
 local ($plain, $base64);
 eval "use Crypt::Eksblowfish::Bcrypt";
+if ($salt !~ /^\$2a\$/) {
+	# Invalid salt for Blowfish
+	$salt = undef;
+	}
 if (!$salt) {
 	# Generate a 22-character base-64 format salt
 	&seed_random();
