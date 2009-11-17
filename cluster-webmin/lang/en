@@ -164,6 +164,7 @@ user_default=Server default
 user_themedef=Default Webmin theme
 user_ips=IP access control
 user_allips=Allow from all addresses
+user_notabs=Categorise modules?
 user_allow=Only allow from listed addresses
 user_deny=Deny from listed addresses
 user_mods=Modules

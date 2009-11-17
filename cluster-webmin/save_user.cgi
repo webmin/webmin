@@ -99,6 +99,9 @@ foreach $h (@hosts) {
 			$user->{'sync'} = 0;
 			}
 
+		# Save module categorization setting
+		$user->{'notabs'} = $in{'notabs'};
+
 		# Work out which modules the user has
 		local @selmods = ( split(/\0/, $in{'mods1'}),
 				   split(/\0/, $in{'mods2'}),

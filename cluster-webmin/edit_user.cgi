@@ -104,6 +104,12 @@ foreach $t ( { 'desc' => $text{'user_themedef'} }, @themes) {
 	}
 print "</select></td> </tr>\n";
 
+print "<tr> <td valign=top><b>$text{'user_notabs'}</b></td>\n";
+print "<td>",ui_radio("notabs", int($user->{'notabs'}),
+                          [ [ 1, $text{'yes'} ],
+                            [ 2, $text{'no'} ],
+                            [ 0, $text{'default'} ] ]),"</td> </tr>\n";
+
 print "<tr> <td valign=top><b>$text{'user_ips'}</b></td>\n";
 print "<td>\n";
 print "<input name=ipmode type=radio value=-1 checked> $text{'user_leave'}\n";
