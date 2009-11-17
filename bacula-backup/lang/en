@@ -342,6 +342,8 @@ pool_echild=This client cannot be deleted as it is used by $1
 pool_emax=Missing or invalid maximum number of jobs per volume
 pool_ereten=Missing or invalid retention period
 pool_status=Show Volumes
+pool_autolabel=Automatically label volumes prefix
+pool_maxvolsize=Maximum volume size (e.g. 5G for 5 Gigabytes)
 
 poolstatus_title=Volumes In Pool
 poolstatus_show=Show volumes in pool:

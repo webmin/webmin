@@ -68,6 +68,11 @@ if (&get_bacula_version_cached() < 2) {
 	print &ui_table_row($text{'pool_any'},
 			    &bacula_yesno("any", "Accept Any Volume", $mems));
 	}
+print &ui_table_row($text{'pool_autolabel'},
+	&ui_textbox("autolabel", $name=&find_value("LabelFormat", $mems), 20), 3);
+print &ui_table_row($text{'pool_maxvolsize'},
+	&ui_textbox("maxvolsize", $name=&find_value("Maximum Volume Bytes", $mems), 10), 3);
+
 
 # All done
 print &ui_table_end();

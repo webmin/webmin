@@ -64,6 +64,9 @@ else {
 		&save_directive($conf, $pool, "Accept Any Volume",
 				$in{'any'} || undef, 1);
 		}
+ 	&save_directive($conf, $pool, "LabelFormat", $in{'autolabel'} || undef, 1);
+	&save_directive($conf, $pool, "Maximum Volume Bytes", $in{'maxvolsize'} || undef, 1);
+
 
 	# Create or update
 	if ($in{'new'}) {

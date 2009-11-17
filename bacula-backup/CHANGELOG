@@ -9,3 +9,4 @@ Backup schedules with Level= and Pool= tags are now properly displayed and edita
 Added a missing program so that mass deletion of storage devices works.
 ---- Changes since 1.490 ----
 Fixed fileset exlude list and 'Run at times' display, thanks to a patch by Joe Zhou.
+Added support for automatic volume labelling and max volume size, thanks to Caspar Smit.
