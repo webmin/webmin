@@ -31,6 +31,13 @@ while(<CMD>) {
 		}
 	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated):\s+(.*)/) {
 		local @pkgs = split(/\s+/, $2);
+		if (!@pkgs) {
+			# Wrapped to next line
+			local $pkgs = <CMD>;
+			$pkgs =~ s/^\s+//;
+			$pkgs =~ s/\s+$//;
+			@pkgs = split(/\s+/, $_);
+			}
 		foreach my $p (@pkgs) {
 			if ($p !~ /:/ && $p =~ /^(\S+)\.(\S+)$/) {
 				my $pname = $1;
