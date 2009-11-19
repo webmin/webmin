@@ -36,7 +36,7 @@ print &ui_table_row($text{'file_test'},
 		  [ 2, $text{'file_test_2'}.
 		       &ui_textbox("greater", $_[0]->{'greater'}, 10)." ".
 		       $text{'file_bytes'}."<br>" ],
-		  [ 2, $text{'file_test_3'}.
+		  [ 3, $text{'file_test_3'}.
 		       &ui_textbox("lesser", $_[0]->{'lesser'}, 10)." ".
 		       $text{'file_bytes'}."<br>" ] ]), 3);
 }
