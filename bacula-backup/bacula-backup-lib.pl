@@ -540,14 +540,14 @@ local ($proc) = @_;
 if (&has_command($bacula_cmd)) {
 	# Get status from bacula status command
 	$bacula_status_cache ||= `$bacula_cmd status 2>&1 </dev/null`;
-	return $bacula_status_cache =~ /\Q$proc\E\s+\(pid\s+([0-9 ]+)\)\s+is\s+running/i ||
-	       $bacula_status_cache =~ /\Q$proc\E\s+is\s+running/i;
+	if ($bacula_status_cache =~ /\Q$proc\E\s+\(pid\s+([0-9 ]+)\)\s+is\s+running/i ||
+	    $bacula_status_cache =~ /\Q$proc\E\s+is\s+running/i) {
+		return 1;
+		}
 	}
-else {
-	# Look for running process
-	local @pids = &find_byname($proc);
-	return @pids ? 1 : 0;
-	}
+# Look for running process
+local @pids = &find_byname($proc);
+return @pids ? 1 : 0;
 }
 
 # start_bacula()
