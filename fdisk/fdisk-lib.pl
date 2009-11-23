@@ -212,6 +212,7 @@ while(<FDISK>) {
 			}
 		$disk->{'index'} = scalar(@disks);
 		$disk->{'parts'} = [ ];
+
 		local @st = stat($disk->{'device'});
 		next if (@cdstat && $st[1] == $cdstat[1]);
 		if ($disk->{'device'} =~ /\/sd([a-z]+)$/) {
@@ -321,6 +322,20 @@ while(<FDISK>) {
 			$disk->{'type'} = 'raid';
 			$disk->{'prefix'} =~ s/disc$/part/g;
 			}
+
+		# Work out short name, like sda
+		local $short;
+		if (defined($disk->{'host'})) {
+			$short = &hbt_to_device($disk->{'host'},
+						$disk->{'bus'},
+						$disk->{'target'});
+			}
+		else {
+			$short = $disk->{'device'};
+			$short =~ s/^.*\///g;
+			}
+		$disk->{'short'} = $short;
+
 		push(@disks, $disk);
 		}
 	elsif (/^Units\s+=\s+cylinders\s+of\s+(\d+)\s+\*\s+(\d+)/) {
@@ -363,24 +378,11 @@ close(FDISK);
 # Check /proc/ide for IDE disk models
 foreach $d (@disks) {
 	if ($d->{'type'} eq 'ide') {
-		local $short;
-		if (defined($d->{'host'})) {
-			$short = &hbt_to_device($d->{'host'},
-						$d->{'bus'},
-						$d->{'target'});
-			}
-		else {
-			$short = $d->{'device'};
-			$short =~ s/^.*\///g;
-			}
-		if (open(MODEL, "/proc/ide/$short/model")) {
-			($d->{'model'} = <MODEL>) =~ s/\r|\n//g;
-			close(MODEL);
-			}
-		if (open(MEDIA, "/proc/ide/$short/media")) {
-			($d->{'media'} = <MEDIA>) =~ s/\r|\n//g;
-			close(MEDIA);
-			}
+		local $short = $d->{'short'};
+		$d->{'model'} = &read_file_contents("/proc/ide/$short/model");
+		$d->{'model'} =~ s/\r|\n//g;
+		$d->{'media'} = &read_file_contents("/proc/ide/$short/media");
+		$d->{'media'} =~ s/\r|\n//g;
 		}
 	}
 
@@ -388,7 +390,17 @@ foreach $d (@disks) {
 foreach $d (@disks) {
 	if ($d->{'type'} eq 'scsi') {
 		local $s = $d->{'scsi'};
-		if ($dscsi_mode) {
+		local $sysdir = "/sys/block/$d->{'short'}/model";
+		if (-d $sysdir) {
+			# From kernel 2.6.30+ sys directory
+			$d->{'model'} = &read_file_contents("$sysdir/vendor").
+					" ".
+					&read_file_contents("$sysdir/model");
+			$d->{'model'} =~ s/\r|\n//g;
+			$d->{'media'} = &read_file_contents("$sysdir/media");
+			$d->{'media'} =~ s/\r|\n//g;
+			}
+		elsif ($dscsi_mode) {
 			# From other scsi files
 			$d->{'model'} = "$dscsi[$s]->{'make'} $dscsi[$s]->{'model'}";
 			$d->{'controller'} = $dscsi[$s]->{'host'};
