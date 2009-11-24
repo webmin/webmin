@@ -1046,10 +1046,25 @@ sub delete_mapping
 if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 	# Deleting from a file
 	local $lref = &read_file_lines($_[1]->{'map_file'});
+	local $dl = $lref->[$_[1]->{'line'}];
 	local $len = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
-	splice(@$lref, $_[1]->{'line'}, $len);
+	if (($dl =~ /^\s*(\/[^\/]*\/[a-z]*)\s+([^#]*)/ ||
+	     $dl =~ /^\s*([^\s]+)\s+([^#]*)/) &&
+	    $1 eq $_[1]->{'name'}) {
+		# Found a valid line to remove
+		splice(@$lref, $_[1]->{'line'}, $len);
+		}
+	else {
+		print STDERR "Not deleting line $_[1]->{'line'} for key ",
+			     "$_[1]->{'name'} which actually contains $dl\n";
+		}
 	&flush_file_lines($_[1]->{'map_file'});
 	&renumber_list($maps_cache{$_[0]}, $_[1], -$len);
+	local $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
+	if ($idx >= 0) {
+		# Take out of cache
+		splice(@{$maps_cache{$_[0]}}, $idx, 1);
+		}
 	}
 elsif ($_[1]->{'map_type'} eq 'mysql') {
 	# Deleting from MySQL
@@ -1097,6 +1112,15 @@ if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 	splice(@$lref, $_[1]->{'line'}, $oldlen, @newlines);
 	&flush_file_lines($_[1]->{'map_file'});
 	&renumber_list($maps_cache{$_[0]}, $_[1], scalar(@newlines)-$oldlen);
+	local $idx = &indexof($_[1], @{$maps_cache{$_[0]}});
+	if ($idx >= 0) {
+		# Update in cache
+		$_[2]->{'map_file'} = $_[1]->{'map_file'};
+		$_[2]->{'map_type'} = $_[1]->{'map_type'};
+		$_[2]->{'line'} = $_[1]->{'line'};
+		$_[2]->{'eline'} = $_[1]->{'eline'};
+		$maps_cache{$_[0]}->[$idx] = $_[2];
+		}
 	}
 elsif ($_[1]->{'map_type'} eq 'mysql') {
 	# Updating in MySQL
