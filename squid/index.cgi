@@ -35,7 +35,7 @@ if ($ver =~ /version\s+(\S+)/i) {
 	$ver = $1;
 	}
 if ($ver =~ /(1\.1)\.\d+/ || $ver =~ /(1)\.NOVM/ ||
-    $ver =~ /(2\.[01234567])\./ || $ver =~ /(3\.0)/) {
+    $ver =~ /(2\.[01234567])\./ || $ver =~ /(3\.[01])/) {
 	# Save version number
 	open(VERSION, ">$module_config_directory/version");
 	print VERSION $1,"\n";
