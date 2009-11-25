@@ -542,6 +542,12 @@ or undef on failure. The mode must be one of :
 sub quotacheck
 {
 local $out;
+if ($_[1] == 0 || $_[1] == 1) {
+	&unlink_file("$_[0]/aquota.user.new");
+	}
+if ($_[1] == 0 || $_[1] == 2) {
+	&unlink_file("$_[0]/aquota.group.new");
+	}
 local $cmd = $config{'quotacheck_command'};
 $cmd =~ s/\s+-[ug]//g;
 local $flag = $_[1] == 1 ? "-u" : $_[1] == 2 ? "-g" : "-u -g";
