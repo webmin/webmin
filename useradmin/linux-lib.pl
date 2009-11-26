@@ -63,6 +63,10 @@ return @rv;
 # Returns 1 if pam is set up to use MD5 encryption
 sub use_md5
 {
+if (defined($use_md5_cache)) {
+	# Don't re-look this up
+	return $use_md5_cache;
+	}
 local $md5 = 0;
 if (&foreign_check("pam")) {
 	# Use the PAM module if we can
@@ -114,6 +118,7 @@ if (&open_readfile(DEFS, "/etc/login.defs")) {
 		}
 	close(DEFS);
 	}
+$use_md5_cache = $md5;
 return $md5;
 }
 
