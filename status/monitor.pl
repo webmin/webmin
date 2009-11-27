@@ -11,11 +11,15 @@ require './status-lib.pl';
 # Check if the monitor should be run now
 @tm = localtime(time());
 if ($ARGV[0] ne "--force") {
+	shift(@ARGV);
 	@hours = split(/\s+/, $config{'sched_hours'});
 	!@hours || &indexof($tm[2], @hours) >= 0 || exit;
 	@days = split(/\s+/, $config{'sched_days'});
 	!@days || &indexof($tm[6], @days) >= 0 || exit;
 	}
+
+# Check for list of monitors to limit refresh to
+%onlycheck = map { $_, 1 } @ARGV;
 
 # Open status and number of fails files
 &lock_file($oldstatus_file);
@@ -26,6 +30,9 @@ if ($ARGV[0] ne "--force") {
 # Get the list of services, ordered so that those with dependencies are first
 @services = &list_services();
 @services = sort { &sort_func($a, $b) } @services;
+if (keys %onlycheck) {
+	@services = grep { $onlycheck{$_->{'id'}} } @services;
+	}
 
 # Check for services that are down
 $nowunix = time();

@@ -15,6 +15,7 @@ index_esnmp=The module is configured to send SNMP traps on the <a href='$3'>Modu
 index_refresh=Refresh Status
 index_refreshdesc=Perform an immediate refresh of all monitor statuses, instead of waiting for the next scheduled update.
 index_delete=Delete Selected
+index_refsel=Refresh Selected
 index_group=Members of $1
 index_tmpls=Edit Email Templates
 index_tmplsdesc=View and edit templates used to construct email messages sent when monitored services go down.
@@ -301,6 +302,7 @@ iface_iface=Interface to check
 
 refresh_title=Refresh Status
 refresh_doing=Refreshing the status of all monitors ..
+refresh_doing2=Refreshing the status of $1 selected monitors ..
 refresh_done=.. done.
 
 sensors_name=Sensor to check
@@ -374,6 +376,7 @@ monitor_run2=Running $1 ..
 monitor_runerr=Failed to run $1 on $2 : $3
 
 deletes_egone=One of the selected monitors no longer exists
+deletes_enone=No monitors selected
 
 ftp_host=FTP server host
 ftp_port=FTP port

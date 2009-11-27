@@ -65,7 +65,8 @@ if (@serv) {
 		}
 	print &ui_links_row(\@links);
 	if ($access{'edit'}) {
-		print &ui_form_end([ [ "delete", $text{'index_delete'} ] ]);
+		print &ui_form_end([ [ "delete", $text{'index_delete'} ],
+				     [ "refresh", $text{'index_refsel'} ] ]);
 		}
 	}
 else {
