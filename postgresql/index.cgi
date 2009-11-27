@@ -23,13 +23,13 @@ if (!-x $config{'psql'} || -d $config{'psql'}) {
 	}
 
 # Check for alternate config file, and use
-if (!$hba_conf_file && -r $config{'alt_hba_conf'}) {
+if (!$hba_conf_file && -r $config{'alt_hba_conf'} && &is_postgresql_local()) {
 	($hba_conf_file) = split(/\t+/, $config{'hba_conf'});
 	&copy_source_dest($config{'alt_hba_conf'}, $hba_conf_file);
 	}
 
 # Check for the config file
-if (!$hba_conf_file) {
+if (!$hba_conf_file && &is_postgresql_local()) {
 	&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1, 0,
 		&help_search_link("postgresql", "man", "doc", "google"));
 	($hba_conf_file) = split(/\t+/, $config{'hba_conf'});
