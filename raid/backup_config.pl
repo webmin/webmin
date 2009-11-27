@@ -8,6 +8,9 @@ sub backup_config_files
 if ($raid_mode eq "raidtools") {
 	return ( $config{'raidtab'} );
 	}
+elsif ($raid_mode eq "mdadm") {
+        return ( $config{'mdadm'} );
+        }
 else {
 	return ( );
 	}
