@@ -64,3 +64,6 @@ Messages with alternate HTML and text bodies are now send with the multipart/alt
 The original sender's email address is now included in the 'wrote' line when replying to or forwarding a message.
 ---- Changes since 1.480 ----
 Mail with HTML and text bodies now uses a multipart/alternative sub-attachment, so that other attachments are shown properly in mail clients like Hotmail and Yahoo.
+---- Changes since 1.490 ----
+Put text/plain alternative body part before text/html, to be compliant with RFC
+2046.

@@ -102,14 +102,14 @@ if ($in{'body'} =~ /\S/) {
 		local @alts = ( $attach[0] );
 		local $mt = "text/plain; charset=$charset";
 		if ($plainbody =~ /[\177-\377]/) {
-			push(@alts,
+			unshift(@alts,
 			  { 'headers' => [ [ 'Content-Type', $mt ],
 					   [ 'Content-Transfer-Encoding',
 					     'quoted-printable' ] ],
 			    'data' => quoted_encode($plainbody) });
 			}
 		else {
-			push(@alts,
+			unshift(@alts,
 			  { 'headers' => [ [ 'Content-Type', $mt ],
 					   [ 'Content-Transfer-Encoding',
 					     '7bit' ] ],
