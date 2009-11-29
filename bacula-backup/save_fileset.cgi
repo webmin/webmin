@@ -20,8 +20,8 @@ else {
 &lock_file($parent->{'file'});
 if ($in{'delete'}) {
 	# Just delete this one
-	$name = &find_value("Name", $client->{'members'});
-	$child = &find_dependency("Client", $name, [ "Job", "JobDefs" ], $conf);
+	$name = &find_value("Name", $fileset->{'members'});
+	$child = &find_dependency("FileSet", $name, [ "Job", "JobDefs" ], $conf);
 	$child && &error(&text('fileset_echild', $child));
 	&save_directive($conf, $parent, $fileset, undef, 0);
 	}

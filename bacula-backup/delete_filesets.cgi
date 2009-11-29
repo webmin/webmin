@@ -15,7 +15,7 @@ $parent = &get_director_config_parent();
 foreach $d (@d) {
 	$fileset = &find_by("Name", $d, \@filesets);
 	if ($fileset) {
-		$child = &find_dependency("Client", $d, [ "Job", "JobDefs" ], $conf);
+		$child = &find_dependency("FileSet", $d, [ "Job", "JobDefs" ], $conf);
 		$child && &error(&text('fileset_echild', $child));
 		&save_directive($conf, $parent, $fileset, undef, 0);
 		}
