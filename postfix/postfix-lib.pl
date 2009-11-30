@@ -1055,7 +1055,8 @@ if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 		splice(@$lref, $_[1]->{'line'}, $len);
 		}
 	else {
-		print STDERR "Not deleting line $_[1]->{'line'} for key ",
+		print STDERR "Not deleting line $_[1]->{'line'} ",
+			     "from $_[1]->{'file'} for key ",
 			     "$_[1]->{'name'} which actually contains $dl\n";
 		}
 	&flush_file_lines($_[1]->{'map_file'});
