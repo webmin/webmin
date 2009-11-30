@@ -95,29 +95,38 @@ if($a->{'vlan'} == 1) {
 	}
 
 local $cmd;
-if($a->{'vlan'} == 1) {
-	$cmd .= "ifconfig $a->{'physical'}.$a->{'vlanid'}";
+if (&use_ifup_command($a)) {
+	# Use Debian ifup command
+        if ($a->{'up'}) { $cmd .= "ifup $a->{'name'}"; }
+        else { $cmd .= "ifdown $a->{'name'}"; }
 	}
 else {
-	$cmd .= "ifconfig $a->{'name'}";
-	if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
-	if (&is_ipv6_address($a->{'address'})) { 
-		$cmd .= " inet6 add ";
-		if ($a->{'netmask'}) {
-			  $a->{'address'} .= "/$a->{'netmask'}";
-			  $a->{'netmask'} = ''; 
-			}
-		} 
+	# Build ifconfig command manually
+	if($a->{'vlan'} == 1) {
+		$cmd .= "ifconfig $a->{'physical'}.$a->{'vlanid'}";
+		}
+	else {
+		$cmd .= "ifconfig $a->{'name'}";
+		if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
+		if (&is_ipv6_address($a->{'address'})) { 
+			$cmd .= " inet6 add ";
+			if ($a->{'netmask'}) {
+				  $a->{'address'} .= "/$a->{'netmask'}";
+				  $a->{'netmask'} = ''; 
+				}
+			} 
+		}
+	$cmd .= " $a->{'address'}";
+	if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
+	if ($a->{'broadcast'}) { $cmd .= " broadcast $a->{'broadcast'}"; }
+	if ($a->{'mtu'} && $a->{'virtual'} eq "") { $cmd .= " mtu $a->{'mtu'}";}
+	if ($a->{'up'}) { $cmd .= " up"; }
+	else { $cmd .= " down"; }
 	}
-$cmd .= " $a->{'address'}";
-if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
-if ($a->{'broadcast'}) { $cmd .= " broadcast $a->{'broadcast'}"; }
-if ($a->{'mtu'} && $a->{'virtual'} eq "") { $cmd .= " mtu $a->{'mtu'}"; }
-if ($a->{'up'}) { $cmd .= " up"; }
-else { $cmd .= " down"; }
 local $out = &backquote_logged("$cmd 2>&1");
 if ($?) { &error($out); }
-if ($a->{'ether'}) {
+if ($a->{'ether'} && !&use_ifup_command($a)) {
+	# Apply ethernet address
 	$out = &backquote_logged(
 		"ifconfig $a->{'name'} hw ether $a->{'ether'} 2>&1");
 	if ($?) { &error($out); }
@@ -144,16 +153,33 @@ elsif (&is_ipv6_address($address)){
 local ($still) = grep { $_->{'fullname'} eq $name } &active_interfaces();
 if ($still && !&is_ipv6_address($address)) {
 	# Old version of ifconfig or non-virtual interface.. down it
-	local $out = &backquote_logged("ifconfig $name down 2>&1");
+	local $out;
+	if (&use_ifup_command($_[0])) {
+		$out = &backquote_logged("ifdown $name 2>&1");
+		}
+	else {
+		$out = &backquote_logged("ifconfig $name down 2>&1");
+		}
 	local ($still) = grep { $_->{'fullname'} eq $name }
 		      &active_interfaces();
 	if ($still) {
 		&error("<pre>$out</pre>");
-	}
-	if(&iface_type($name) =~ /^(.*) (VLAN)$/) {
+		}
+	if (&iface_type($name) =~ /^(.*) (VLAN)$/) {
 		$out = &backquote_logged("vconfig rem $name 2>&1");
 		}
 	}
+}
+
+# use_ifup_command(&iface)
+# Returns 1 if the ifup command must be used to bring up some interface.
+# True on Debian 5.0+ for non-ethernet, typically bonding ifaces.
+sub use_ifup_command
+{
+local ($iface) = @_;
+return $gconfig{'os_type'} eq 'debian-linux' &&
+       $gconfig{'os_version'} >= 5 &&
+       $iface->{'name'} !~ /^(eth|lo)/;
 }
 
 # iface_type(name)
