@@ -97,8 +97,8 @@ if($a->{'vlan'} == 1) {
 local $cmd;
 if (&use_ifup_command($a)) {
 	# Use Debian ifup command
-        if ($a->{'up'}) { $cmd .= "ifup $a->{'name'}"; }
-        else { $cmd .= "ifdown $a->{'name'}"; }
+        if ($a->{'up'}) { $cmd .= "ifup $a->{'fullname'}"; }
+        else { $cmd .= "ifdown $a->{'fullname'}"; }
 	}
 else {
 	# Build ifconfig command manually
@@ -179,7 +179,8 @@ sub use_ifup_command
 local ($iface) = @_;
 return $gconfig{'os_type'} eq 'debian-linux' &&
        $gconfig{'os_version'} >= 5 &&
-       $iface->{'name'} !~ /^(eth|lo)/;
+       $iface->{'name'} !~ /^(eth|lo)/ &&
+       $iface->{'virtual'} eq '';
 }
 
 # iface_type(name)
