@@ -203,17 +203,17 @@ foreach $f (@files) {
 			'data' => $data });
 	}
 
-# Work out the encoding
+# Work out the content type and encoding
+$type = $rbody =~ /<html[^>]*>|<body[^>]*>/i ? "text/html" : "text/plain";
 if ($rbody =~ /[\177-\377]/) {
 	# High-ascii
 	$enc = "quoted-printable";
 	$encrbody = &quoted_encode($rbody);
-	$type = "text/plain; charset=iso-8859-1";
+	$type .= "; charset=iso-8859-1";
 	}
 else {
 	$enc = undef;
 	$encrbody = $rbody;
-	$type = "text/plain";
 	}
 
 # run sendmail and feed it the reply

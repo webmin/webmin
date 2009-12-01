@@ -9,3 +9,6 @@ When creating an autoreply alias, you can enter regexps that the headers will be
 ---- Changes since 1.250 ----
 Added a Module Config option to display aliases and other tables in one column instead of two, to increase readability when long aliases or domain names exist.
 Added checkboxes and Delete Selected buttons on the aliases, virtual mappings, domain routing and mail users pages for deleting multiple entries at once.
+---- Changes since 1.490 ----
+Autoreply messages starting with <html> or <body> will now be sent using the tex
+t/html MIME type.

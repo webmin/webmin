@@ -68,3 +68,5 @@ Changed the mail queue date format to yyyy/mm/dd, for easier sorting.
 Added support for the Postfix 2.3 smtpd_tls_security_level option.
 Improved Postfix main.cf file parser to skip indented blank lines.
 Changed map deletion function to not remove expected line, which can otherwise cause file corruption.
+Autoreply messages starting with <html> or <body> will now be sent using the tex
+t/html MIME type.
