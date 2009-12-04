@@ -293,6 +293,7 @@ save_epam2=U kunt Webmin's Perl Modules module gebruiken om <a href='$1'> Authen
 save_epass=Wachtwoord is niet geldig : $1
 save_err=Fout bij het opslaan van de gebruiker
 save_eself=Uw huidige IP adres ($1) zou worden geweigerd
+save_etemp=De optie om gebruikers geforceerd hun wachtwoord te laten veranderen bij de volgende inlog kan niet worden gebruikt voordat de <a href='$1'>gebruikers prompt voor een nieuw wachtwoord</a> is aangezet
 save_eunix=De Unix gebruiker '$1' bestaat niet
 save_euser=U bent niet bevoegd om deze gebruikers te bewerken
 sessions_desc=De actieve Webmin sessies worden hieronder weergegeven. Klik op de sessie ID om een actieve sessie te beeindigen en de gebruiker te dwingen zich opnieuw aan te melden.
