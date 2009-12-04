@@ -302,6 +302,7 @@ log_install=Module $1 geinstalleerd
 log_lang=Globale taal gewijzigd
 log_lock=Veranderde file slot
 log_log=Rapportage opties gewijzigd
+log_login=Van Webmin het inloggen en uitloggen toevoegen aan de actie-log?
 log_mall=Rapporteer acties in alle modules
 log_mobile=Veranderde mobile apparaat opties
 log_modules=Rapporteer alleen acties in ..
