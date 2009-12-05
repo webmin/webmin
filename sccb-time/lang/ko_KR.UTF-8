@@ -1,0 +1,44 @@
+index_title=시스템 시간
+index_timeserver=시간 서버
+index_address=호스트/주소
+index_zone=표준 시간대
+index_tz=현재 위치
+
+action_save=저장
+action_apply=적용
+action_sync=하드웨어 시간에 맞춰 시스템 시간 동기화
+action_sync_s=시스템 시간에 맞춰 하드웨어 시간 동기화
+action_timeserver_sys=시스템 시간 동기화
+action_timeserver_hw=하드웨어 시간 동기화
+action_savezone=표준 시간대 변경
+
+acl_sys=사용자가 시스템 시간을 편집할 수 있습니다
+acl_hw=사용자가 하드웨어 시간을 편집할 수 있습니다
+acl_yes=예
+acl_no=아니오
+acl_error=시스템 시간 모듈에 대한 액세스 권한이 있지만 시스템 시간이나 하드웨어 시간을 편집할 수 없습니다
+acl_nosys=시스템 시간을 편집할 수 없습니다
+acl_nohw=하드웨어 시간을 편집할 수 없습니다
+
+sys_title=시스템 시간
+hw_title=하드웨어 시간
+
+day=일
+month=월
+date=날짜
+hour=시
+year=년
+
+error_cnf=오류: $1 명령이 없습니다
+error_hw=하드웨어 시간을 설정할 수 없습니다: $1
+error_sync=시스템 시간에 동기화할 수 없습니다: $1
+
+log_set_date=$1(으)로 시스템 시간 설정됨
+log_set_hwclock=$1(으)로 하드웨어 시계 설정됨
+log_remote_date=$2에서 시스템 시간 반입됨
+log_remote_hwclock=$2에서 하드웨어 시간 반입됨
+log_remote_date_l=$2에서 시스템 시간 $1 반입됨
+log_remote_hwclock_l=$2에서 하드웨어 시간 $1 반입됨
+log_sync=시스템 시간이 하드웨어 시간에 맞춰 동기화됨
+log_sync_s=하드웨어 시간이 시스템 시간에 맞춰 동기화됨
+
