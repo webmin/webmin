@@ -1323,6 +1323,7 @@ return wantarray ? @rv : $rv[0];
 }
 
 # link_urls(text, separate)
+# Converts URLs into HTML links
 sub link_urls
 {
 local $r = $_[0];
@@ -1345,6 +1346,23 @@ while($l =~ /^(.*?)((http|ftp|https|mailto):[^><"'\s]+[^><"'\s\.\)])(.*)/) {
 	$l = $after;
 	}
 $rv .= &eucconv_and_escape($l);
+return $rv;
+}
+
+# links_urls_new_target(html)
+# Converts any links without targets to open in a new window
+sub links_urls_new_target
+{
+local $l = $_[0];
+local $rv;
+while($l =~ s/^([\0-\377]*?)<\s*a\s+([^>]*href[^>]*)>//i) {
+	local ($before, $a) = ($1, $2);
+	if ($a !~ /target\s*=/i) {
+		$a .= " target=link".int(rand()*100000);
+		}
+	$rv .= $before."<a ".$a.">";
+	}
+$rv .= $l;
 return $rv;
 }
 
