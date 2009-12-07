@@ -144,13 +144,20 @@ my ($file, $arr) = @_;
 &open_tempfile(FILE, ">$file");
 &print_tempfile(FILE, Dumper($arr));
 &close_tempfile(FILE);
+$read_cache_file_cache{$file} = $arr;
 }
 
+# read_cache_file(file)
+# Returns the contents of some cache file, as an array ref
 sub read_cache_file
 {
 my ($file) = @_;
+if (defined($read_cache_file_cache{$file})) {
+	return @{$read_cache_file_cache{$file}};
+	}
 if (-r $file) {
 	do $file;
+	$read_cache_file_cache{$file} = $VAR1;
 	return @$VAR1;
 	}
 return ( );
