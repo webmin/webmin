@@ -633,3 +633,8 @@ sub validate_zone_router
 return &check_ipaddress($_[0]) ? undef : $text{'create_erouter'};
 }
 
+sub validate_zone_terminal
+{
+return $_[0] =~ /^\S+$/ ? undef : $text{'create_eterminal'};
+}
+
