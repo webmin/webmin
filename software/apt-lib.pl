@@ -154,7 +154,7 @@ while(<DUMP>) {
 			}
 		}
 	elsif (/^\s*File:\s*(\S+)/ && $pkg) {
-		$pkg->{'file'} = $1;
+		$pkg->{'file'} ||= $1;
 		}
 	}
 close(DUMP);
