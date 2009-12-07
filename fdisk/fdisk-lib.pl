@@ -390,7 +390,7 @@ foreach $d (@disks) {
 foreach $d (@disks) {
 	if ($d->{'type'} eq 'scsi') {
 		local $s = $d->{'scsi'};
-		local $sysdir = "/sys/block/$d->{'short'}/model";
+		local $sysdir = "/sys/block/$d->{'short'}/device";
 		if (-d $sysdir) {
 			# From kernel 2.6.30+ sys directory
 			$d->{'model'} = &read_file_contents("$sysdir/vendor").
