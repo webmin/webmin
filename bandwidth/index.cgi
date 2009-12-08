@@ -102,9 +102,10 @@ if (($missingrule || !$sysconf) && $access{'setup'}) {
 	print &ui_form_start("setup.cgi");
 	print "<b>$text{'index_iface'}</b>\n";
 	foreach $i (&net::active_interfaces(), &net::boot_interfaces()) {
-		push(@ifaces, $i->{'fullname'}) if ($i->{'virtual'} eq '');
+		push(@ifaces, $i->{'fullname'}) if ($i->{'virtual'} eq '' &&
+						    $i->{'fullname'});
 		}
-	print &ui_select("iface", $config{'iface'},
+	print &ui_select("iface", $config{'iface'} || $ifaces[0],
 			 [ (map { [ $_, $_ ] } &unique(@ifaces)),
 			   [ '', $text{'index_other'} ] ],
 			 1, 0, $config{'iface'} ? 1 : 0)." ".
