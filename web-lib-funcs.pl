@@ -923,14 +923,15 @@ my ($msg) = @_;
 my $title;
 my $os_type = $gconfig{'real_os_type'} || $gconfig{'os_type'};
 my $os_version = $gconfig{'real_os_version'} || $gconfig{'os_version'};
+my $host = &get_display_hostname();
 if ($gconfig{'sysinfo'} == 1 && $remote_user) {
 	$title = sprintf "%s : %s on %s (%s %s)\n",
-		$msg, $remote_user, &get_display_hostname(),
+		$msg, $remote_user, $host,
 		$os_type, $os_version;
 	}
 elsif ($gconfig{'sysinfo'} == 4 && $remote_user) {
 	$title = sprintf "%s on %s (%s %s)\n",
-		$remote_user, &get_display_hostname(),
+		$remote_user, $host,
 		$os_type, $os_version;
 	}
 else {
@@ -938,6 +939,9 @@ else {
 	}
 if ($gconfig{'showlogin'} && $remote_user) {
 	$title = $remote_user." : ".$title;
+	}
+if ($gconfig{'showhost'}) {
+	$title = $host." : ".$title;
 	}
 return $title;
 }
@@ -968,10 +972,15 @@ else {
 		$ostr = "$os_type $os_version";
 		}
 	my $host = &get_display_hostname();
+	my $ver = &get_webmin_version();
 	$title = $gconfig{'nohostname'} ? $text{'main_title2'} :
-		&text('main_title', &get_webmin_version(), $host, $ostr);
+		 $gconfig{'showhost'} ? &text('main_title3', $ver, $ostr) :
+					&text('main_title', $ver, $host, $ostr);
 	if ($gconfig{'showlogin'}) {
 		$title = $remote_user." : ".$title;
+		}
+	if ($gconfig{'showhost'}) {
+		$title = $host." : ".$title;
 		}
 	}
 return $title;

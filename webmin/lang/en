@@ -164,6 +164,7 @@ ui_sizemodules=Multiple modules chooser size
 ui_edbwidth=Missing or invalid chooser window width
 ui_edbheight=Missing or invalid chooser window height
 ui_showlogin=Prepend username to page titles?
+ui_showhost=Prepend hostname to page titles?
 ui_dateformat=Format for displayed dates
 ui_dateformat_dd/mon/yyyy=dd/mon/yyyy (ie. 16/Sep/2001)
 ui_dateformat_dd/mm/yyyy=dd/mm/yyyy (ie. 16/09/2001)

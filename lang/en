@@ -5,6 +5,7 @@ main_logout=Logout
 main_version=Version $1 on $2 ($3)
 main_title=Webmin $1 on $2 ($3)
 main_title2=Webmin
+main_title3=Webmin $1 ($2)
 main_none=You do not have access to any Webmin modules.
 main_skill=Skill level
 main_readonly=(Read-only mode)

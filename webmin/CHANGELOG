@@ -97,3 +97,5 @@ Removed the option to select an OSDN mirror, as Sourceforge now does sensible lo
 Added an option on the Logging page to record logins and logouts from Webmin, for display in the Webmin Actions Log module.
 ---- Changes since 1.490 ----
 Added a field to the Debugging Log File page to select modules to debug for.
+---- Changes since 1.500 ----
+Added an option to the User Interface page to always put the hostname before the page title.

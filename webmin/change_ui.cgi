@@ -19,6 +19,7 @@ for($i=0; $i<@cs_names; $i++) {
 $gconfig{'texttitles'} = $in{'texttitles'};
 $gconfig{'sysinfo'} = $in{'sysinfo'};
 $gconfig{'showlogin'} = $in{'showlogin'};
+$gconfig{'showhost'} = $in{'showhost'};
 $gconfig{'hostnamemode'} = $in{'hostnamemode'};
 $gconfig{'hostnamedisplay'} = $in{'hostnamedisplay'};
 $gconfig{'feedback_to'} = $in{'feedback_def'} ? undef : $in{'feedback'};

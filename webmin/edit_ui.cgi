@@ -8,7 +8,7 @@ require './webmin-lib.pl';
 print $text{'ui_desc'},"<p>\n";
 
 print &ui_form_start("change_ui.cgi", "post");
-print &ui_table_start($text{'ui_header'}, undef, 2, [ "width=30%" ]);
+print &ui_table_start($text{'ui_header'}, undef, 2);
 
 for($i=0; $i<@cs_names; $i++) {
 	$cd = $cs_codes[$i];
@@ -31,6 +31,9 @@ print &ui_table_row($text{'ui_hostnamemode'},
 
 print &ui_table_row($text{'ui_showlogin'},
 	&ui_yesno_radio("showlogin", int($gconfig{'showlogin'})));
+
+print &ui_table_row($text{'ui_showhost'},
+	&ui_yesno_radio("showhost", int($gconfig{'showhost'})));
 
 print &ui_table_row($text{'ui_feedback'},
 	&ui_opt_textbox("feedback", $gconfig{'feedback_to'}, 20,
