@@ -546,7 +546,7 @@ local $rule1 = &find_shorewall_rule($lref, "INPUT", "-i", $config{'iface'});
 local $rule2 = &find_shorewall_rule($lref, "FORWARD", "-i", $config{'iface'});
 local $rule3 = &find_shorewall_rule($lref, "FORWARD", "-o", $config{'iface'});
 local $rule4 = &find_shorewall_rule($lref, "OUTPUT", "-o", $config{'iface'});
-return $rule1 && $rule2 && $rule3 && $rule4;
+return defined($rule1) && defined($rule2) && defined($rule3) && defined($rule4);
 }
 
 # setup_shorewall_rules(iface)
@@ -559,17 +559,18 @@ local $rule1 = &find_shorewall_rule($lref, "INPUT", "-i", $_[0]);
 local $rule2 = &find_shorewall_rule($lref, "FORWARD", "-i", $_[0]);
 local $rule3 = &find_shorewall_rule($lref, "FORWARD", "-o", $_[0]);
 local $rule4 = &find_shorewall_rule($lref, "OUTPUT", "-o", $_[0]);
-local $gotall = $rule1 && $rule2 && $rule3 && $rule4;
-if (!$rule1) {
+local $gotall = defined($rule1) && defined($rule2) &&
+		defined($rule3) && defined($rule4);
+if (!defined($rule1)) {
 	push(@$lref, "run_iptables -I INPUT -i $_[0] -j LOG --log-prefix BANDWIDTH_IN: --log-level debug");
 	}
-if (!$rule2) {
+if (!defined($rule2)) {
 	push(@$lref, "run_iptables -I FORWARD -i $_[0] -j LOG --log-prefix BANDWIDTH_IN: --log-level debug");
 	}
-if (!$rule3) {
+if (!defined($rule3)) {
 	push(@$lref, "run_iptables -I FORWARD -o $_[0] -j LOG --log-prefix BANDWIDTH_OUT: --log-level debug");
 	}
-if (!$rule4) {
+if (!defined($rule4)) {
 	push(@$lref, "run_iptables -I OUTPUT -o $_[0] -j LOG --log-prefix BANDWIDTH_OUT: --log-level debug");
 	}
 &flush_file_lines();
@@ -589,16 +590,16 @@ sub delete_shorewall_rules
 &foreign_require("shorewall", "shorewall-lib.pl");
 local $lref = &read_file_lines("$shorewall::config{'config_dir'}/start");
 local $rule1 = &find_shorewall_rule($lref, "INPUT", "-i", $config{'iface'});
-splice(@$lref, $rule1, 1) if ($rule1);
+splice(@$lref, $rule1, 1) if (defined($rule1));
 local $rule2 = &find_shorewall_rule($lref, "FORWARD", "-i", $config{'iface'});
-splice(@$lref, $rule2, 1) if ($rule2);
+splice(@$lref, $rule2, 1) if (defined($rule2));
 local $rule3 = &find_shorewall_rule($lref, "FORWARD", "-o", $config{'iface'});
-splice(@$lref, $rule3, 1) if ($rule3);
+splice(@$lref, $rule3, 1) if (defined($rule3));
 local $rule4 = &find_shorewall_rule($lref, "OUTPUT", "-o", $config{'iface'});
-splice(@$lref, $rule4, 1) if ($rule4);
+splice(@$lref, $rule4, 1) if (defined($rule4));
 &flush_file_lines();
 
-if ($rule1 || $rule2 || $rule3 || $rule4) {
+if (defined($rule1) || defined($rule2) || defined($rule3) || defined($rule4)) {
 	# Apply config with a shorewall restart
 	&shorewall::run_before_apply_command();
 	local $out = &backquote_logged("$shorewall::config{'shorewall'} restart 2>&1");
