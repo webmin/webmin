@@ -907,9 +907,9 @@ if (defined($opts_title)) {
 $rv .= "<tr class='ui_multi_select_row'>";
 $rv .= "<td>".&ui_select($name."_opts", [ ], $leftover,
 			 $size, 0, 0, $dis, $wstyle)."</td>\n";
-$rv .= "<td>".&ui_button("->", undef, $dis,
+$rv .= "<td>".&ui_button("->", $name."_add", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 1)'")."<br>".
-	      &ui_button("<-", undef, $dis,
+	      &ui_button("<-", $name."_remove", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 0)'")."</td>\n";
 $rv .= "<td>".&ui_select($name."_vals", [ ], $values,
 			 $size, 0, 0, $dis, $wstyle)."</td>\n";
