@@ -502,6 +502,7 @@ unlink($available_cache_file);
 unlink($available_cache_file.'0');
 unlink($available_cache_file.'1');
 @packages_available_cache = ( );
+%read_cache_file_cache = ( );
 }
 
 1;
