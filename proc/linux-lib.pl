@@ -14,7 +14,7 @@ if ($out =~ /version\s+([0-9\.]+)\./ && $1 >= 2 || $out =~ /version\s+\./) {
 		# Use width format character if allowed
 		$width = ":80";
 		}
-	open(PS, "ps --cols 500 -eo user$width,ruser$width,group$width,rgroup$width,pid,ppid,pgid,pcpu,vsz,nice,etime,time,stime,tty,args 2>/dev/null |");
+	open(PS, "ps --cols 2048 -eo user$width,ruser$width,group$width,rgroup$width,pid,ppid,pgid,pcpu,vsz,nice,etime,time,stime,tty,args 2>/dev/null |");
 	$dummy = <PS>;
 	for($i=0; $line=<PS>; $i++) {
 		chop($line);
