@@ -9,8 +9,8 @@ if ($ARGV[0] eq "--debug" || $ARGV[0] eq "-debug") {
 	}
 
 # See what needs doing
-@current = &list_all_current(1);
-@avail = &list_available(1, 1);
+@current = &list_current(1);
+@avail = &list_available(0);
 foreach $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
 	($a) = grep { $_->{'name'} eq $c->{'name'} &&
 		      $_->{'system'} eq $c->{'system'} } @avail;
