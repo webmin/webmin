@@ -67,3 +67,5 @@ Added an option to the SSH monitor type for a port number.
 ---- Changes since 1.490 ----
 Added a new monitor type for detecting large directories.
 Added a button to the main page for refreshing only selected monitors, thanks to Michael Mansour.
+---- Changes since 1.500 ----
+Added an option to the Disk Space monitor to alert based on percentage free, as an alternative to a threshold in bytes.

@@ -11,8 +11,21 @@ foreach $f (&mount::list_mounted()) {
 	}
 if ($m) {
 	local @sp = &mount::disk_space($m->[2], $m->[0]);
-	if ($sp[1] < $_[0]->{'min'}) {
-		return { 'up' => 0 };
+	if ($_[0]->{'min'} =~ /^(\S+)%/) {
+		# Compare percentage
+		local $pc = $sp[1] * 100.0 / $sp[0];
+		if ($pc < $1) {
+			return { 'up' => 0,
+				 'desc' => &text('space_perr', int($pc)) };
+			}
+		}
+	else {
+		# Compare absolute size
+		if ($sp[1] < $_[0]->{'min'}) {
+			return { 'up' => 0,
+				 'desc' => &text('space_merr',
+						 &nice_size($sp[1]*1024)) };
+			}
 		}
 
 	if ($_[0]->{'inode'} && defined(&mount::inode_space)) {
@@ -54,9 +67,17 @@ else {
 		&ui_textbox("other", $_[0]->{'fs'}, 30));
 	}
 
+# Minumum free space
+local $min = $_[0]->{'min'};
+local $pc = ($min =~ s/\%$// ? 1 : 0);
 print &ui_table_row($text{'space_min2'},
-	&ui_bytesbox("min", $_[0]->{'min'}*1024));
+	&ui_radio_table("min_mode", $pc,
+		[ [ 0, $text{'space_mode0'},
+		    &ui_bytesbox("min", $pc ? undef : $min*1024) ],
+		  [ 1, $text{'space_mode1'},
+		    &ui_textbox("pc", $pc ? $min : undef, 4)."%" ] ]), 3);
 
+# Minimum free inodes
 if (defined(&mount::inode_space)) {
 	print &ui_table_row($text{'space_inode'},
 		&ui_textbox("inode", $_[0]->{'inode'}, 10));
@@ -66,8 +87,15 @@ if (defined(&mount::inode_space)) {
 sub parse_space_dialog
 {
 &depends_check($_[0], "mount");
-$in{'min'} =~ /^[0-9\.]+$/ || &error($text{'space_emin'});
-$_[0]->{'min'} = $in{'min'}*$in{'min_units'}/1024;
+if ($in{'min_mode'} == 0) {
+	$in{'min'} =~ /^[0-9\.]+$/ || &error($text{'space_emin'});
+	$_[0]->{'min'} = $in{'min'}*$in{'min_units'}/1024;
+	}
+else {
+	$in{'pc'} =~ /^[0-9\.]+$/ && $in{'pc'} >= 0 && $in{'pc'} <= 100 ||
+		&error($text{'space_epc'});
+	$_[0]->{'min'} = $in{'pc'}."%";
+	}
 if ($in{'fs'}) {
 	$_[0]->{'fs'} = $in{'fs'};
 	}

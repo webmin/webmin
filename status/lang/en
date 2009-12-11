@@ -237,13 +237,18 @@ traffic_ebytes=Missing or invalid number of bytes/second
 
 space_fs=Filesystem to check
 space_min2=Minimum free space
+space_mode0=Absolute size
+space_mode1=Percentage of total
 space_desc=$1 free
 space_nofs=Filesystem not mounted
 space_other=Other..
 space_emin=Missing or invalid free space
+space_epc=Missing or invalid free space percentage
 space_eother=Missing or invalid filesystem
 space_inode=Minimum free Inodes
 space_ierr=Only $1 inodes free
+space_merr=Only $1 space free
+space_perr=Only $1% free
 
 load_time=Load average to check
 load_1=1 minute
