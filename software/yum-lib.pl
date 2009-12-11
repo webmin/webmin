@@ -29,7 +29,7 @@ while(<CMD>) {
 	if (/^\[(update|install|deps):\s+(\S+)\s+/) {
 		push(@rv, $2);
 		}
-	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated):\s+(.*)/) {
+	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated):\s*(.*)/) {
 		local @pkgs = split(/\s+/, $2);
 		if (!@pkgs) {
 			# Wrapped to next line
