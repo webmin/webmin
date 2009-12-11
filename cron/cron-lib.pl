@@ -1342,7 +1342,8 @@ if ($config{'cron_get_command'} =~ /^(\S+)/ && !&has_command("$1")) {
 	}
 # Check for directory
 local $fcron = ($config{'cron_dir'} =~ /\/fcron$/);
-if (!$single_user && !$fcron && !-d $config{'cron_dir'}) {
+if (!$single_user && !$config{'single_file'} &&
+    !$fcron && !-d $config{'cron_dir'}) {
 	return &text('index_ecrondir', "<tt>$config{'cron_dir'}</tt>");
 	}
 return undef;
