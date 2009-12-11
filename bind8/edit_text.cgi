@@ -15,7 +15,7 @@ $access{'file'} || &error($text{'text_ecannot'});
 
 $text = &read_file_contents(&make_chroot($file));
 if (!$access{'ro'}) {
-	print &text('text_desc', "<tt>$file</tt>"),"<p>\n";
+	print &text('text_desc3', "<tt>$file</tt>"),"<p>\n";
 	}
 
 print &ui_form_start("save_text.cgi", "form-data");

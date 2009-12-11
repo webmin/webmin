@@ -282,7 +282,7 @@ edit_espfexp='$1' is a valid record name for a rejection message
 
 text_title=Edit Records File
 text_title2=View Records File
-text_desc=This form allows you to manually edit the DNS records file $1. No syntax checking will be done by Webmin, and the zone serial number will not be automatically incremented.
+text_desc3=This form allows you to manually edit the DNS records file $1. No syntax checking will be done by Webmin.
 text_desc2=This page shows the DNS records file $1, created by BIND when the zone was transferred from the master server.
 text_undo=Undo
 text_ecannot=You are not allowed to edit record files
