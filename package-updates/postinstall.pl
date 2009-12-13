@@ -6,7 +6,8 @@ sub module_install
 # Force clear all caches, as collected information may have changed
 &flush_package_caches();
 
-if ($software::update_system ne 'yum') {
+if ($software::update_system ne 'yum' &&
+    !&foreign_check("security-updates")) {
 	# Re-generate cache of available packages
 	&list_available();
 	}
