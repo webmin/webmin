@@ -24,3 +24,5 @@ Added a popup progress tracker to commands with file upload fields.
 All links to commands are via an ID number rather than an index, which makes them easier to link to from other web pages.
 ---- Changes since 1.450 ----
 Added a parameter-level option to make the parameter mandatory.
+---- Changes since 1.500 ----
+Added a button to clone an existing command when editing.

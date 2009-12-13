@@ -54,6 +54,7 @@ edit_secs=seconds
 edit_clear=Clear environment variables?
 edit_servers=Run on Webmin servers
 edit_this=this server
+edit_clone=Clone
 
 save_err=Failed to save command
 save_ecannot=You are not allowed to edit commands
