@@ -10,6 +10,10 @@ if ($in{'delete'}) {
 	$edit = &get_command($in{'id'}, $in{'idx'});
 	&delete_command($edit);
 	&webmin_log("delete", "edit", $edit->{'id'}, $edit);
+	&redirect("");
+	}
+elsif ($in{'clone'}) {
+	&redirect("edit_file.cgi?id=$in{'id'}&idx=$in{'idx'}&clone=1&new=1");
 	}
 else {
 	&error_setup($text{'file_err'});
@@ -58,6 +62,6 @@ else {
 		$access{'cmds'} .= " ".$edit->{'id'};
 		&save_module_acl(\%access);
 		}
+	&redirect("");
 	}
-&redirect("");
 

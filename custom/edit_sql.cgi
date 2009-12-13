@@ -23,6 +23,9 @@ if (!@drivers) {
 $access{'edit'} || &error($text{'edit_ecannot'});
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'sql_title1'}, "");
+	if ($in{'clone'}) {
+		$cmd = &get_command($in{'id'}, $in{'idx'});
+		}
 	}
 else {
 	&ui_print_header(undef, $text{'sql_title2'}, "");
@@ -75,6 +78,7 @@ if ($in{'new'}) {
 	}
 else {
 	print &ui_form_end([ [ "save", $text{'save'} ],
+			     [ 'clone', $text{'edit_clone'} ],
 			     [ "delete", $text{'delete'} ] ]);
 	}
 

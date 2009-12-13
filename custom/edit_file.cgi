@@ -8,6 +8,9 @@ require './custom-lib.pl';
 $access{'edit'} || &error($text{'file_ecannot'});
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'fcreate_title'}, "", "fcreate");
+	if ($in{'clone'}) {
+		$edit = &get_command($in{'id'}, $in{'idx'});
+		}
 	}
 else {
 	&ui_print_header(undef, $text{'fedit_title'}, "", "fedit");
@@ -73,6 +76,7 @@ if ($in{'new'}) {
 	}
 else {
 	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'clone', $text{'edit_clone'} ],
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 
