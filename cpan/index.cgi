@@ -63,8 +63,8 @@ print &ui_tabs_end_tab();
 print &ui_tabs_start_tab('mode', 'mods');
 if (@mods) {
 	print &ui_form_start("uninstall_mods.cgi", "post");
-	print &select_all_link("d", 0),"\n";
-	print &select_invert_link("d", 0),"<br>\n";
+	print &select_all_link("d", 1),"\n";
+	print &select_invert_link("d", 1),"<br>\n";
 	@tds = ( "width=5", undef, undef, undef, undef, "nowrap" );
 	print &ui_columns_start([ "",
 				  $text{'index_name'},
@@ -91,8 +91,8 @@ if (@mods) {
 		print &ui_checked_columns_row(\@cols, \@tds, "d", $m->{'name'});
 		}
 	print &ui_columns_end();
-	print &select_all_link("d", 0),"\n";
-	print &select_invert_link("d", 0),"<br>\n";
+	print &select_all_link("d", 1),"\n";
+	print &select_invert_link("d", 1),"<br>\n";
 	print &ui_form_end([ [ "delete", $text{'index_delete'} ],
 			     [ "upgrade", $text{'index_upgrade'} ] ]);
 	$formno++;
