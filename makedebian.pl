@@ -54,11 +54,9 @@ mkdir($tmp_dir, 0755);
 chmod(0755, $tmp_dir);
 mkdir($debian_dir, 0755);
 system("mkdir -p $pam_dir");
-if ($baseproduct eq "usermin") {
-	system("mkdir -p $init_dir");
-	foreach $d (@rc_dirs) {
-		system("mkdir -p $d");
-		}
+system("mkdir -p $init_dir");
+foreach $d (@rc_dirs) {
+	system("mkdir -p $d");
 	}
 system("mkdir -p $usr_dir");
 
@@ -76,12 +74,11 @@ if ($product eq "webmin") {
 	system("cd $usr_dir && rm -f webmin-gentoo-init");
 	system("cd $usr_dir && rm -rf format bsdexports hpuxexports sgiexports zones rbac");
 	}
-else {
-	# Need to create init script
-	system("mv $usr_dir/$baseproduct-init $init_dir/$baseproduct");
-	foreach $d (@rc_dirs) {
-		system("ln -s ../init.d/$baseproduct $d/S99$baseproduct");
-		}
+
+# Create init script
+system("mv $usr_dir/$baseproduct-init $init_dir/$baseproduct");
+foreach $d (@rc_dirs) {
+	system("ln -s ../init.d/$baseproduct $d/S99$baseproduct");
 	}
 system("echo deb >$usr_dir/install-type");
 system("echo $product >$usr_dir/deb-name");
