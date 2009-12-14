@@ -26,3 +26,4 @@ All links to commands are via an ID number rather than an index, which makes the
 Added a parameter-level option to make the parameter mandatory.
 ---- Changes since 1.500 ----
 Added a button to clone an existing command when editing.
+The sort order of commands can now be set on the Module Config page, and is respected in the Webmin Users module.

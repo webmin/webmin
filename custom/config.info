@@ -4,4 +4,4 @@ width=Width of file editor window,3,Default (80 chars)
 height=Height of file editor window,3,Default (20 chars)
 wrap=File editor wrap mode,1,-Default (Soft),hard-Hard,off-Off
 columns=Columns to display commands in,1,2-2,1-1
-line2=System configuration,11
+sort=Sort commands by,1,desc-Command name,html-Description,-Command ordering

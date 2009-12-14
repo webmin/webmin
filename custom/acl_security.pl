@@ -14,8 +14,8 @@ printf "<input type=radio name=cmds_def value=0 %s> %s\n",
 	$mode == 0 ? 'checked' : '', $text{'acl_csel'};
 printf "<input type=radio name=cmds_def value=2 %s> %s<br>\n",
 	$mode == 2 ? 'checked' : '', $text{'acl_cexcept'};
-print "<select name=cmds size=5 multiple width=200>\n";
-local @cmds = &list_commands();
+print "<select name=cmds size=10 multiple width=200>\n";
+local @cmds = &sort_commands(&list_commands());
 local ($c, %ccan);
 map { $ccan{$_}++ } split(/\s+/, $_[0]->{'cmds'});
 foreach $c (@cmds) {

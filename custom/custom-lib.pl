@@ -100,6 +100,22 @@ closedir(DIR);
 return @rv;
 }
 
+# sort_commands(&command, ...)
+# Sorts a list of custom commands by the user-defined order
+sub sort_commands
+{
+local @cust = @_;
+if ($config{'sort'}) {
+	@cust = sort { lc($a->{$config{'sort'}}) cmp
+		       lc($b->{$config{'sort'}}) } @cust;
+	}
+else {
+	@cust = sort { local $o = $b->{'order'} <=> $a->{'order'};
+		       $o ? $o : $a->{'id'} <=> $b->{'id'} } @cust;
+	}
+return @cust;
+}
+
 # get_command(id)
 # Returns the command with some ID
 sub get_command
