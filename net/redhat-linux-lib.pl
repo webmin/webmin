@@ -97,7 +97,7 @@ while($f = readdir(CONF)) {
 		$b->{'broadcast'} = $conf{'BROADCAST'};
 		$b->{'gateway'} = $conf{'GATEWAY'};
 		$b->{'mtu'} = $conf{'MTU'};
-		$b->{'ether'} = $conf{'HWADDR'};
+		$b->{'ether'} = $conf{'MACADDR'};
 		$b->{'dhcp'} = ($conf{'BOOTPROTO'} eq 'dhcp');
 		$b->{'bootp'} = ($conf{'BOOTPROTO'} eq 'bootp');
 		$b->{'edit'} = ($b->{'name'} !~ /^ppp|irlan/);
@@ -148,7 +148,7 @@ else {
 		delete($conf{'GATEWAY'});
 		}
 	$conf{'MTU'} = $_[0]->{'mtu'};
-	$conf{'HWADDR'} = $_[0]->{'ether'};
+	$conf{'MACADDR'} = $_[0]->{'ether'};
 	$conf{'ONBOOT'} = $_[0]->{'up'} ? "yes" : "no";
 	$conf{'ONPARENT'} = $_[0]->{'up'} ? "yes" : "no"
 		if ($_[0]->{'virtual'} ne '');

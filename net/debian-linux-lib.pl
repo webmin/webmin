@@ -75,6 +75,11 @@ foreach $iface (@ifaces) {
 			elsif($param eq 'slaves') { 
 				$cfg->{'partner'} = $value;
 			}
+			elsif($param eq 'hwaddr') {
+				local @v = split(/\s+/, $value);
+				$cfg->{'ether_type'} = $v[0];
+				$cfg->{'ether'} = $v[1];
+			}
 			else { $cfg->{$param} = $value; }
 			}
 		$cfg->{'dhcp'} = ($method eq 'dhcp');
@@ -122,6 +127,10 @@ else {
 my @autos = get_auto_defs();
 my $amode = $gconfig{'os_version'} > 3 || scalar(@autos);
 if (!$cfg->{'up'} && !$amode) { push(@options, ['noauto', '']); }
+if ($cfg->{'ether'}) {
+	push(@options, [ 'hwaddr', ($cfg->{'ether_type'} || 'ether').' '.
+				   $cfg->{'ether'} ]);
+	}
 
 # Set bonding parameters
 if(($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {
@@ -829,6 +838,11 @@ return $gconfig{'os_type'} eq 'debian-linux' && &has_command("ifenslave");
 sub supports_vlans
 {
 return $gconfig{'os_type'} eq 'debian-linux' && &has_command("vconfig");
+}
+
+sub boot_iface_hardware
+{
+return $_[0] =~ /^eth/;
 }
 
 1;

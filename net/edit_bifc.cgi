@@ -203,8 +203,8 @@ if(($in{'vlan'}) or (&iface_type($b->{'name'}) =~ /^(.*) (VLAN)$/)) {
 	}
 
 # Hardware address, if non-virtual
-if ((!$b && $in{'virtual'} eq "") ||
-    ($b && $b->{'virtual'} eq "" &&
+if (($in{'new'} && $in{'virtual'} eq "") ||
+    (!$in{'new'} && $b->{'virtual'} eq "" &&
      defined(&boot_iface_hardware) &&
      &boot_iface_hardware($b->{'name'}))) {
 	$hardfield = &ui_opt_textbox("ether", $b->{'ether'}, 18,
