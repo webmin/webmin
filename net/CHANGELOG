@@ -52,3 +52,5 @@ Updated the Hostname and DNS Client page to always show the hostname from config
 On Debian systems, if the dns-nameservers option is defined in /etc/network/interfaces, it will be updated when changing nameservers.
 ---- Changes since 1.480 ----
 Updated bonding support to use the new format in Debian 5.0, thanks to Caspar Smit.
+---- Changes since 1.500 ----
+Added a field for editing the MAC address to apply at boot time on Redhat-based systems.

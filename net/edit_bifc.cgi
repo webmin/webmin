@@ -200,7 +200,17 @@ if(($in{'vlan'}) or (&iface_type($b->{'name'}) =~ /^(.*) (VLAN)$/)) {
 	print &ui_table_row($text{'vlan_id'},
 		$in{'new'} ? &ui_textbox("vlanid", $vlanid, 10)
 			   : $vlanid.&ui_hidden("vlanid", $vlanid));
-}
+	}
+
+# Hardware address, if non-virtual
+if ((!$b && $in{'virtual'} eq "") ||
+    ($b && $b->{'virtual'} eq "" &&
+     defined(&boot_iface_hardware) &&
+     &boot_iface_hardware($b->{'name'}))) {
+	$hardfield = &ui_opt_textbox("ether", $b->{'ether'}, 18,
+				     $text{'aifc_default'});
+	print &ui_table_row($text{'aifc_hard'}, $hardfield);
+	}
 
 print &ui_table_end();
      

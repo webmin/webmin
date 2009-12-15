@@ -97,6 +97,7 @@ while($f = readdir(CONF)) {
 		$b->{'broadcast'} = $conf{'BROADCAST'};
 		$b->{'gateway'} = $conf{'GATEWAY'};
 		$b->{'mtu'} = $conf{'MTU'};
+		$b->{'ether'} = $conf{'HWADDR'};
 		$b->{'dhcp'} = ($conf{'BOOTPROTO'} eq 'dhcp');
 		$b->{'bootp'} = ($conf{'BOOTPROTO'} eq 'bootp');
 		$b->{'edit'} = ($b->{'name'} !~ /^ppp|irlan/);
@@ -147,6 +148,7 @@ else {
 		delete($conf{'GATEWAY'});
 		}
 	$conf{'MTU'} = $_[0]->{'mtu'};
+	$conf{'HWADDR'} = $_[0]->{'ether'};
 	$conf{'ONBOOT'} = $_[0]->{'up'} ? "yes" : "no";
 	$conf{'ONPARENT'} = $_[0]->{'up'} ? "yes" : "no"
 		if ($_[0]->{'virtual'} ne '');
@@ -748,6 +750,11 @@ return $eth{'DHCP_HOSTNAME'} ne &get_system_hostname();
 # DHCP. If called with 1, the hostname is chosen by DHCP.
 sub save_dhcp_hostname
 {
+}
+
+sub boot_iface_hardware
+{
+return $_[0] =~ /^eth/;
 }
 
 1;

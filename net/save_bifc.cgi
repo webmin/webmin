@@ -176,6 +176,13 @@ else {
 		$b->{'mtu'} = $in{'mtu_def'} ? undef : $in{'mtu'};
 		}
 
+	# MAC address
+	if (defined($in{'ether'}) && !$in{'ether_def'}) {
+		$in{'ether'} =~ /^[A-Fa-f0-9:]+$/ ||
+			&error(&text('aifc_ehard', $in{'ether'}));
+		$b->{'ether'} = $in{'ether'};
+		}
+
 	if ($in{'new'} && !$access{'up'} ||
 	    &can_edit("up", $b) && $in{'up'} && $access{'up'}) {
 		$b->{'up'}++;
