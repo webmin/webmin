@@ -69,3 +69,4 @@ Added a new monitor type for detecting large directories.
 Added a button to the main page for refreshing only selected monitors, thanks to Michael Mansour.
 ---- Changes since 1.500 ----
 Added an option to the Disk Space monitor to alert based on percentage free, as an alternative to a threshold in bytes.
+Put back the option to use Cingular as an SMS carrier.

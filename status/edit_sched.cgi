@@ -78,7 +78,9 @@ print &ui_table_row($text{'sched_sms'},
 		  [ [ 1, $text{'sched_smsno'} ],
 		    [ 0, $text{'sched_smscarrier'} ] ])."\n".
 	&ui_select("carrier", $config{'sched_carrier'},
-	   [ map { [ $_->{'id'}, $_->{'desc'} ] } &list_sms_carriers() ])."\n".
+	   [ map { [ $_->{'id'}, $_->{'desc'} ] }
+		 sort { lc($a->{'desc'}) cmp lc($b->{'desc'}) }
+		      &list_sms_carriers() ])."\n".
 	$text{'sched_smsnumber'}." ".
 	&ui_textbox("sms", $config{'sched_sms'}, 15), 3);
 

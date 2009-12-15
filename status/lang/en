@@ -166,6 +166,7 @@ sched_smsno=Nobody
 sched_smscarrier=Phone on carrier
 sched_smsnumber=with number
 sched_esmsnumber=Missing or non-numeric SMS number
+sched_esmsname=Missing or invalid-looking SMS number
 
 up_since=Up since $1
 depends_mod=The module $1 is not installed on your system

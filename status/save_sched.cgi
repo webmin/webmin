@@ -19,7 +19,14 @@ if ($in{'sms_def'}) {
 	}
 else {
 	$config{'sched_carrier'} = $in{'carrier'};
-	$in{'sms'} =~ /^\d+$/ || &error($text{'sched_esmsnumber'});
+	($carrier) = grep { $_->{'id'} eq $in{'carrier'} }
+			  &list_sms_carriers();
+	if ($carrier->{'alpha'}) {
+		$in{'sms'} =~ /^\S+$/ || &error($text{'sched_esmsname'});
+		}
+	else {
+		$in{'sms'} =~ /^\d+$/ || &error($text{'sched_esmsnumber'});
+		}
 	$config{'sched_sms'} = $in{'sms'};
 	}
 if ($in{'from_def'}) {
