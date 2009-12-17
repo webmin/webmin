@@ -36,9 +36,16 @@ foreach $trans (@{$maps})
 }
 
 my @maps_files = &get_maps_files(&get_current_value($in{'map_name'}));
-foreach my $f (@maps_files) {
-      &is_under_directory($access{'dir'}, $f) ||
-	&error(&text('mapping_ecannot', $access{'dir'}));
+if ($add) {
+	# Last file must editable
+	!@maps_files ||
+	    &is_under_directory($access{'dir'}, $maps_files[$#maps_files]) ||
+	        &error(&text('mapping_ecannot', $access{'dir'}));
+} else {
+	# Map must be in an editable file
+	!$map{'map_file'} ||
+	    &is_under_directory($access{'dir'}, $map{'map_file'}) ||
+		&error(&text('mapping_ecannot', $access{'dir'}));
 }
 
 defined($maps_files[0]) || &error($text{'mapps_no_map_file'});
