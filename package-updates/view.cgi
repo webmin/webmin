@@ -39,10 +39,12 @@ print &ui_table_row($text{'view_state'},
 
 # Version(s) available
 if ($c) {
-	print &ui_table_row($text{'view_cversion'}, $c->{'version'});
+	print &ui_table_row($text{'view_cversion'},
+		($c->{'epoch'} ? $c->{'epoch'}.":" : "").$c->{'version'});
 	}
 if ($a) {
-	print &ui_table_row($text{'view_aversion'}, $a->{'version'});
+	print &ui_table_row($text{'view_aversion'},
+		($a->{'epoch'} ? $a->{'epoch'}.":" : "").$a->{'version'});
 	}
 
 # Source, if available
