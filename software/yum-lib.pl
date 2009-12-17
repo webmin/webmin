@@ -180,6 +180,9 @@ while(<PKG>) {
 	elsif (/^Summary\s*:\s*(\S.*)/) {
 		$pkg->{'desc'} = $1;
 		}
+	elsif (/^Epoch\s*:\s*(\S.*)/) {
+		$pkg->{'epoch'} = $1;
+		}
 	}
 close(PKG);
 
