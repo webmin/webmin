@@ -5,6 +5,7 @@
 require './quota-lib.pl';
 &ReadParse();
 $u = $in{'user'};
+$u =~ /\S/ || &error($text{'ufilesys_enone'});
 &can_edit_user($u) ||
 	&error(&text('ufilesys_ecannot', $u));
 &ui_print_header(undef, $text{'ufilesys_title'}, "", "user_filesys");

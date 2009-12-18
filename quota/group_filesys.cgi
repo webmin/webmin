@@ -5,6 +5,7 @@
 require './quota-lib.pl';
 &ReadParse();
 $u = $in{'group'};
+$u =~ /\S/ || &error($text{'gfilesys_enone'});
 &can_edit_group($u) ||
 	&error(&text('gfilesys_ecannot', $u));
 &ui_print_header(undef, $text{'gfilesys_title'}, "", "group_filesys");

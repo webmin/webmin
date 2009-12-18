@@ -129,6 +129,7 @@ gfilesys_edit=Edit Quota On:
 gfilesys_copy=Copy Quotas
 gfilesys_editdesc=View and edit the quotas for this group on some other filesystem that it currently does not have quotas on.
 gfilesys_copydesc=Copy quota limits for this group on all filesystems to some or all other groups.
+gfilesys_enone=No group name entered
 
 ggracef_title=Grace Times
 ggracef_return=group list
@@ -222,6 +223,7 @@ ufilesys_editdesc=View and edit the quotas for this user on some other filesyste
 ufilesys_copydesc=Copy quota limits for this user on all filesystems to some or all other users.
 ufilesys_copy=Copy Quotas
 ufilesys_grace=Grace
+ufilesys_enone=No username entered
 
 ugracef_title=Grace Times
 ugracef_return=user list
