@@ -6283,8 +6283,8 @@ if ($_[0] == 2) {
 	if ($_[1]) {
 		$progress_size = $_[1];
 		$progress_step = int($_[1] / 10);
-		print &text('progress_size', $progress_callback_url,
-			    $progress_size),"<br>\n";
+		print &text('progress_size2', $progress_callback_url,
+			    &nice_size($progress_size)),"<br>\n";
 		}
 	else {
 		print &text('progress_nosize', $progress_callback_url),"<br>\n";

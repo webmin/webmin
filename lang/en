@@ -253,7 +253,7 @@ feedback_enoto=No addresses were entered to send feedback to
 feedback_ecannot=You are not allowed to send feedback
 feedback_ecannot2=You are not allowed to send feedback containing config files
 
-progress_size=Downloading $1 ($2 bytes) ..
+progress_size2=Downloading $1 ($2) ..
 progress_nosize=Downloading $1 ..
 progress_data=Received $1 bytes ($2 %)
 progress_data2=Received $1 bytes
