@@ -984,6 +984,7 @@ rmass_title=Afegeix el Registre a les Zones
 rmass_header=Detalls de l'addició massiva de registres
 rmass_type=Tipus de registre a afegir
 rmass_name=Nom del nou regitre
+rmass_name2=(Introdueix <tt>@</tt> com a nom de domini)
 rmass_value=Valor del nou registre
 rmass_ok=Afegeix el Registre
 rmass_ttl=Temps de vida del nou registre

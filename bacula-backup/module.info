@@ -2,6 +2,6 @@ desc=Bacula Backup System
 category=system
 depends=proc cron 1.250
 longdesc=Configure Bacula to perform backups and restores manually or on schedule, for one or many systems.
-desc_ca=Sistem de Còpies de Seguretat Bacula
+desc_ca=Sistema de Còpies de Seguretat Bacula
 desc_nl=Bacula Backup Systeem
 desc_de=Bacula Backup System 

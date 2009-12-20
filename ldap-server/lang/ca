@@ -179,6 +179,7 @@ oadd_eget=No he pogut obtenir l'objecte $1: $2
 oadd_eget2=No he pogut comprovar les contradiccions amb $1: $2
 oadd_eclash=Ja existeix un objecte amb el DN $1
 oadd_eadd=L'addició LDAP de $1 ha fallat: $2
+oadd_err=No he pogut crear el nou objecte
 
 create_title=Creació d'Arbre
 create_ecannot=No tens permís per crear un nou arbre

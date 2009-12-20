@@ -58,3 +58,9 @@ allow_eusers=No has introduït cap usuari
 
 deletes_err=No he pogut cancel·lar les ordres
 deletes_enone=No has seleccionat cap ordre
+
+log_allow=He canviat els usuaris permesos
+log_create_job=He creat l'ordre planificada per a $1
+log_delete_job=He cancel·lat l'ordre planificada per a $1
+log_exec_job=He executat l'ordre planificada per a $1
+log_delete_jobs=He cancel·lat $1 ordres planificades

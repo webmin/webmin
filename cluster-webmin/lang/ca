@@ -164,6 +164,7 @@ user_default=Valor per defecte del servidor
 user_themedef=Tema de Webmin per defecte
 user_ips=Control d'accés IP
 user_allips=Permet des de totes les adreces
+user_notabs=Categoritza els mòduls
 user_allow=Permet només des de les adreces llistades
 user_deny=Denega des de les adreces llistades
 user_mods=Mòduls

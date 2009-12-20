@@ -342,6 +342,8 @@ pool_echild=No es pot suprimir aquest client, ja que $1 l'està utilitzant
 pool_emax=Hi falta el nombre màxim de treballs per volum o bé és invàlid
 pool_ereten=Hi el període de retenció o bé és invàlid
 pool_status=Mostra els Volums
+pool_autolabel=Prefix per etiquetar els volums automàticament
+pool_maxvolsize=Mida màxima de volum (p.ex., 5G per a 5 Gigabytes)
 
 poolstatus_title=Volums del Pool
 poolstatus_show=Mostra els volums del pool:
