@@ -1,3 +1,3 @@
 package_system=Sistema de gestió de paquets,1,rpm-RPM,pkgadd-Solaris,hpux-HPUX,freebsd-FreeBSD,slackware-Slackware,debian-Debian,aix-AIX,emerge-Gentoo,cygwin-Cygwin,msi-Instal·lador Microsoft
 update_system=Sistema d'actualització de paquets,1,-Detecta'l automàticament,apt-APT,yum-YUM,rhn-Xarxa de Redhat,csw-CSW Blastwave,urpmi-URPMI,emerge-Emerge,*-Cap
-apt_mode=Ordre a utilitzar per a les instal·lacions APT,1,0-apt&#45;get,1-aptitute
+apt_mode=Ordre a utilitzar per a les instal·lacions APT,1,0-apt&#45;get,1-aptitude

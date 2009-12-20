@@ -3,3 +3,4 @@ longdesc=Background system status collection libraries
 hidden=1
 category=system
 depends=proc cron
+desc_ca=Estat del Sistema

@@ -3,3 +3,4 @@ longdesc=Displays available package updates from YUM, APT or other update system
 category=system
 depends=software cron mailboxes
 os_support=redhat-linux debian-linux mandrake-linux/10.2-* solaris
+desc_ca=Actualitzacions de Paquets de Programes

@@ -796,6 +796,9 @@ sasl_err=No hi he pogut desar l'autenticació i el xifratge de SMTP
 sasl_ecert=Hi falta el fitxer de certificat o bé és invàlid
 sasl_ekey=Hi falta el fitxer de clau o bé és invàlid
 sasl_eca=Hi falta el fitxer d'autoritat certificadora o bé és invàlid
+sasl_level_none=Mai
+sasl_level_may=Si el client ho demana
+sasl_level_encrypt=Sempre
 
 client_title=Restriccions del Client SMTP
 client_ecannot=No tens permís per editar les restriccions del client SMTP

@@ -88,6 +88,7 @@ aform_edit=Edició d'Àlies
 aform_create=Creació d'Àlies
 aform_name=Adreça
 aform_enabled=Activada
+aform_file=Afegeix al fitxer d'àlies
 aform_val=Àlies de
 aform_afile=Edita...
 aform_return=a l'àlies

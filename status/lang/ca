@@ -15,6 +15,7 @@ index_esnmp=El mòdul està configurat per enviar trampes SNMP a la pàgina de <a h
 index_refresh=Refresca l'Estat
 index_refreshdesc=Executa un refresc immediat de tots els estats dels monitors, en lloc d'esperar a la següent actualització planificada.
 index_delete=Supressió dels Seleccionats
+index_refsel=Refresc dels Seleccionats
 index_group=Membres de $1
 index_tmpls=Edita les Plantilla de Correu
 index_tmplsdesc=Visualitza i edita les plantilles utilitzades per construir els missatges de correu enviats quan es tanquen els serveis monitoritzats.
@@ -42,6 +43,7 @@ type_exec=Execució d'Ordres
 type_file=Verificació de Fitxer o Directori
 type_traffic=Trànsit de Xarxa
 type_space=Espai al Disc
+type_du=Mida del Directori
 type_consume=Consum de l'Espai de Disc
 type_load=Càrrega Mitjana
 type_change=Canvi de Fitxer o Directori
@@ -300,6 +302,7 @@ iface_iface=Interfície a comprovar
 
 refresh_title=Estat del Refresc
 refresh_doing=Refrescant l'estat de tots els monitors...
+refresh_doing2=Refrescant l'estat dels $1 monitors seleccionats...
 refresh_done=...fet.
 
 sensors_name=Sensor a comprovar
@@ -373,6 +376,7 @@ monitor_run2=Executant $1...
 monitor_runerr=No he pogut executar $1 a $2: $3
 
 deletes_egone=Un dels monitors seleccionats ja no existeix
+deletes_enone=No has seleccionat cap monitor
 
 ftp_host=Host servidor FTP
 ftp_port=Port FTP
@@ -487,3 +491,10 @@ sslcert_eend=No és vàlid després del $1
 sslcert_left=Actiu - $1 dies abans de la caducitat
 sslcert_ematch=El nom de host $1 no coincideix amb el certificat $2
 sslcert_emismatch=La comprovació de noms de host dels certificats només es pot utilitzar quan es comprova un URL
+
+du_dir=Directori a monitoritzar
+du_max=Mida màxima
+du_edir=Hi falta el camí del directori o bé no és absolut
+du_emax=Hi falta la mida màxima o bé no és numèrica
+du_over=La mida és $1
+du_under=La mida només és $1

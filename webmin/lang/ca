@@ -855,9 +855,12 @@ debug_efile=El fitxer de registre de depuració ha de ser un camí absolut
 debug_edir=El directori '$1' per al fitxer de registre de depuració no existeix
 debug_esize=La mida màxima ha de ser un número
 debug_procs=Tipus de scripts a depurar
+debug_modules=Limita la depuració als mòduls
 debug_web=CGIs d'interfície Web
 debug_cmd=Línia d'ordres
 debug_cron=Treballs en segon pla
+debug_inmods=Mòduls per als quals s'han de gravar registres de depuració
+debug_emodules=No has seleccionat cap mòdul per depurar
 
 notif_passexpired=La teva contrasenya de Webmin ha expirat! Se t'obligarà a canviar-la a la propera connexió.
 notif_passchange=La teva contrasenya de Webmin es va canviar per darrer cop el $1, i cal tornar-la a canviar abans de $2 dies.
@@ -873,3 +876,10 @@ notify_updatever=Versió
 notify_updatedesc=Arranja el problema
 notif_updateok=Instal·la Ara les Actualitzacions
 
+status_title=Recol·lecció d'Estats en Segon Pla
+status_header=Configuració del treball de recol·lecció d'estats
+status_interval=Recol·lecta l'estat del sistema en segon pla
+status_interval1=Mai
+status_interval0=Cada
+status_mins=minuts
+status_pkgs=Recol·lecta les actualitzacions de paquets disponibles
