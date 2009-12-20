@@ -99,7 +99,7 @@ while(<PKG>) {
 	s/\r|\n//g;
 	s/#.*$//;
 	next if (/^\s*WARNING:/);
-	if (/^\s*(\S+)\s+(\S+)\s+(\d\S+)\s+([0-9\.]+)\s+(KB|MB|GB)/i) {
+	if (/^\s*(\S+)\s+(\S+)\s+(\d\S+)\s+([0-9\.]+)\s+(KB|MB|GB|B)/i) {
 		# New pkgutil format
 		push(@rv, { 'name' => $1, 'version' => $3,
 			    'select' => "$1-$3" });
