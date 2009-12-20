@@ -3554,6 +3554,10 @@ if ($ok && (!$expired ||
 		$prot = $ssl ? "https" : "http";
 		local $sec = $ssl ? "; secure" : "";
 		#$sec .= "; httpOnly";
+		if ($in{'page'} !~ /^\/[A-Za-z0-9\/\.\-\_]+$/) {
+			# Make redirect URL safe
+			$in{'page'} = "/";
+			}
 		if ($in{'save'}) {
 			&write_data("Set-Cookie: $sidname=$sid; path=/; expires=\"Thu, 31-Dec-2037 00:00:00\"$sec\r\n");
 			}
