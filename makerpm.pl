@@ -168,6 +168,10 @@ if [ "\$1" != 1 ]; then
 	rm -rf /etc/.webmin-backup
 	cp -r /etc/webmin /etc/.webmin-backup
 fi
+# Put back old /etc/webmin saved when an RPM was removed
+if [ "\$1" != 1 -a ! -d /etc/webmin ]; then
+	mv /etc/webmin-rpmsave /etc/webmin
+fi
 /bin/true
 
 %post
@@ -265,8 +269,9 @@ if [ "\$1" = 0 ]; then
 	grep root=/usr/libexec/webmin /etc/webmin/miniserv.conf >/dev/null 2>&1
 	if [ "\$?" = 0 ]; then
 		# RPM is being removed, and no new version of webmin
-		# has taken it's place. Delete the config files
-		rm -rf /etc/webmin /var/webmin
+		# has taken it's place. Rename away the /etc/webmin directory
+		mv /etc/webmin /etc/webmin.rpmsave
+		rm -rf /var/webmin
 	fi
 fi
 /bin/true
