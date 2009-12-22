@@ -18,7 +18,12 @@ print &ui_table_row($text{'net_protocols'},
 # SSL supported?
 $sslopt = &find("ssl_disable", $conf, 2) ? "ssl_disable" : "ssl";
 $dis = &find_value($sslopt, $conf);
-@opts = ( [ "no", $text{'yes'} ], [ "yes", $text{'no'} ] );
+if ($sslopt eq "ssl") {
+	@opts = ( [ "yes", $text{'yes'} ], [ "no", $text{'no'} ] );
+	}
+else {
+	@opts = ( [ "no", $text{'yes'} ], [ "yes", $text{'no'} ] );
+	}
 print &ui_table_row($text{'net_ssl_disable'},
 	    &ui_radio($sslopt, $dis,
 		      [ @opts,
