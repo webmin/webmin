@@ -169,8 +169,8 @@ if [ "\$1" != 1 ]; then
 	cp -r /etc/webmin /etc/.webmin-backup
 fi
 # Put back old /etc/webmin saved when an RPM was removed
-if [ "\$1" != 1 -a ! -d /etc/webmin ]; then
-	mv /etc/webmin-rpmsave /etc/webmin
+if [ "\$1" = 1 -a ! -d /etc/webmin -a -d /etc/webmin.rpmsave ]; then
+	mv /etc/webmin.rpmsave /etc/webmin
 fi
 /bin/true
 
@@ -270,6 +270,7 @@ if [ "\$1" = 0 ]; then
 	if [ "\$?" = 0 ]; then
 		# RPM is being removed, and no new version of webmin
 		# has taken it's place. Rename away the /etc/webmin directory
+		rm -rf /etc/webmin.rpmsave
 		mv /etc/webmin /etc/webmin.rpmsave
 		rm -rf /var/webmin
 	fi

@@ -125,3 +125,4 @@ Dutch translation updates, thanks to Gandyman.
 Beginnings of a Basque translation, thanks to Mireia Lezea.
 ---- Changes since 1.500 ----
 Czech translation updates, thanks to Karel Hudan.
+The Webmin RPM now preserves the /etc/webmin directory when un-installed and then re-installed.
