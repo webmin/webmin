@@ -30,6 +30,9 @@ while(<CMD>) {
 		push(@rv, $2);
 		}
 	elsif (/^(Installed|Dependency Installed|Updated|Dependency Updated):\s*(.*)/) {
+		# Line like :
+		# Updated:
+		#   wbt-virtual-server-theme.x86
 		local @pkgs = split(/\s+/, $2);
 		if (!@pkgs) {
 			# Wrapped to next line
@@ -46,6 +49,11 @@ while(<CMD>) {
 					}
 				}
 			}
+		}
+	elsif (/^\s+Updating\s+:\s+(\S+)/) {
+		# Line like :
+		#   Updating       : wbt-virtual-server-theme       1/2 
+		push(@rv, $1);
 		}
 	if (!/ETA/ && !/\%\s+done\s+\d+\/\d+\s*$/) {
 		print &html_escape($_."\n");
