@@ -26,6 +26,7 @@ $none = $text{'opts_none'};
 $no_ = $text{'opts_no'};
 
 print &ui_form_start("save_opts.cgi");
+print &ui_hidden("_log_form", "opts");
 print &ui_table_start($text{'address_rewriting_title'}, "width=100%", 4);
 
 &option_yesno("allow_percent_hack");

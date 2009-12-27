@@ -38,7 +38,7 @@ if (defined($in{"debug_peer_level_def"})) {
 
 &reload_postfix();
 
-&webmin_log("opts");
+&webmin_log($in{'_log_form'} || "opts");
 &redirect("");
 
 

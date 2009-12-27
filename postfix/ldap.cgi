@@ -35,6 +35,7 @@ if (!(&is_existing_parameter($ldap_timeout)))
 
 
 print "<form action=save_opts.cgi>\n";
+print &ui_hidden("_log_form", "ldap");
 print "<table border width=100%>\n";
 print "<tr $tb> <td><b>$text{'ldap_title'}</b></td></tr>\n";
 print "<tr $cb> <td><table width=100%>\n";

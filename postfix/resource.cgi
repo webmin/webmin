@@ -28,6 +28,7 @@ $no_ = $text{'opts_no'};
 
 # Form start
 print &ui_form_start("save_opts.cgi");
+print &ui_hidden("_log_form", "resource");
 print &ui_table_start($text{'resource_title'}, "width=100%", 4);
 
 &option_freefield("bounce_size_limit", 15);

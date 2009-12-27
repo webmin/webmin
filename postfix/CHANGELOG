@@ -72,3 +72,4 @@ Autoreply messages starting with <html> or <body> will now be sent using the tex
 t/html MIME type.
 ---- Changes since 1.500 ----
 If a map is made up of files in multiple directories and a Webmin user has a directory restriction defined, he will be able to edit map entries in files under that directory.
+Fixed the descriptions of logged events as shown in the Webmin Actions Log module.

@@ -28,6 +28,7 @@ $no_ = $text{'opts_no'};
 
 # Form start
 print &ui_form_start("save_opts.cgi");
+print &ui_hidden("_log_form", "rate");
 print &ui_table_start($text{'rate_title'}, "width=100%", 4);
 
 &option_freefield("default_destination_concurrency_limit", 15);

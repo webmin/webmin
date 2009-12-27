@@ -28,6 +28,7 @@ $no_ = $text{'opts_no'};
 
 # Start of form
 print &ui_form_start("save_opts.cgi");
+print &ui_hidden("_log_form", "local");
 print &ui_table_start($text{'local_delivery_title'}, "width=100%", 4);
 
 &option_radios_freefield("local_transport", 30, $text{'opts_local_transport_local'});

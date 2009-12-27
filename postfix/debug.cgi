@@ -28,6 +28,7 @@ $no_ = $text{'opts_no'};
 
 # Start of form
 print &ui_form_start("save_opts.cgi");
+print &ui_hidden("_log_form", "debug");
 print &ui_table_start($text{'debug_title'}, "width=100%", 4);
 
 &option_freefield("debug_peer_list", 65);
