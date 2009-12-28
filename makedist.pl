@@ -39,7 +39,7 @@ $zipdir = "zips";
 	  "module_chooser.cgi", "config-windows", "xmlrpc.cgi",
 	  "uptracker.cgi", "create-module.pl", "webmin_search.cgi",
 	  "webmin-search-lib.pl", "WebminCore.pm",
-	  "record-login.pl", "record-logout.pl",
+	  "record-login.pl", "record-logout.pl", "robots.txt",
 	 );
 if ($min) {
 	# Only those required by others
