@@ -173,6 +173,7 @@ acl_readonlyyes=Yes (Some modules may not be available)
 acl_negative=Grant new module permissions to user?
 acl_fileunix=Browse files as Unix user
 acl_sameunix=Same as Webmin login
+acl_webminsearch=Show Webmin search field?
 
 month_1=January
 month_2=February

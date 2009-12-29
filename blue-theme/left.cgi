@@ -6,6 +6,7 @@ use WebminCore;
 &init_config();
 &ReadParse();
 %text = &load_language($current_theme);
+%gaccess = &get_module_acl(undef, "");
 
 # Work out what modules and categories we have
 @cats = &get_visible_modules_categories();
@@ -89,7 +90,8 @@ else {
 	}
 
 # Show module/help search form
-if (-r "$root_directory/webmin_search.cgi") {
+if (-r "$root_directory/webmin_search.cgi" &&
+    $gaccess{'webminsearch'}) {
 	print "<form action=webmin_search.cgi target=right>\n";
 	print $text{'left_search'},"&nbsp;";
 	print &ui_textbox("search", undef, 15);

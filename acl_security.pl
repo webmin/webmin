@@ -99,6 +99,11 @@ print &ui_table_row($text{'acl_readonly2'},
 	&ui_radio("readonly", int($o->{'readonly'}),
 		  [ [ 1, $text{'acl_readonlyyes'} ],
 		    [ 0, $text{'no'} ] ]));
+
+# Allow use of search field
+print &ui_table_row($text{'acl_webminsearch'},
+	&ui_radio("webminsearch", int($o->{'webminsearch'}),
+		  [ [ 1, $text{'yes'} ], [ 0, $text{'no'} ] ]));
 }
 
 # acl_security_save(&options)
@@ -126,5 +131,6 @@ $_[0]->{'rpc'} = $in{'rpc'};
 $_[0]->{'negative'} = $in{'negative'};
 $_[0]->{'readonly'} = $in{'readonly'};
 $_[0]->{'fileunix'} = $in{'fileunix_def'} ? undef : $in{'fileunix'};
+$_[0]->{'webminsearch'} = $in{'webminsearch'};
 }
 
