@@ -19,6 +19,8 @@ if ($in{'new'}) {
 		    'value' => &get_system_hostname() },
 		  { 'name' => 'Media Type',
 		    'value' => 'File' },
+		  { 'name' => 'Maximum Concurrent Jobs',
+		    'value' => '20' },
 		  { 'name' => 'Device',
 		    'value' => $devices[0] },
 		];
@@ -76,6 +78,10 @@ else {
 # Media type
 print &ui_table_row($text{'storage_media'},
 	&ui_textbox("media", $media=&find_value("Media Type", $mems), 20));
+
+# Maximum Concurrent Jobs
+print &ui_table_row($text{'storage_maxjobs'},
+	&ui_textbox("maxjobs", $maxjobs=&find_value("Maximum Concurrent Jobs", $mems), 5));
 
 # SSL options
 &show_tls_directives($storage);

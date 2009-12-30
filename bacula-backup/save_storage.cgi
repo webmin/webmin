@@ -59,6 +59,9 @@ else {
 	$in{'media'} =~ /\S/ || &error($text{'storage_emedia'});
 	&save_directive($conf, $storage, "Media Type", $in{'media'}, 1);
 
+	$in{'maxjobs'} =~ /\S/ || &error($text{'storage_emaxjobs'});
+	&save_directive($conf, $storage, "Maximum Concurrent Jobs", $in{'maxjobs'}, 1);
+
 	# SSL directives
 	&parse_tls_directives($conf, $storage, 1);
 

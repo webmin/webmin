@@ -250,6 +250,7 @@ storage_port=Bacula SD port
 storage_pass=Bacula SD password
 storage_device=Storage device name
 storage_media=Media type name
+storage_maxjobs=Maximum concurrent jobs
 storage_other=Other..
 storage_err=Failed to save storage daemon
 storage_ename=Missing storage daemon name
@@ -259,6 +260,7 @@ storage_eaddress=Missing or invalid hostname or address
 storage_eport=Missing or invalid SD port
 storage_edevice=Missing storage device name
 storage_emedia=Missing media type name
+storage_emaxjobs=Missing maximum concurrent jobs
 storage_echild=This client cannot be deleted as it is used by $1
 storage_status=Show Status
 

@@ -10,3 +10,5 @@ Added a missing program so that mass deletion of storage devices works.
 ---- Changes since 1.490 ----
 Fixed fileset exlude list and 'Run at times' display, thanks to a patch by Joe Zhou.
 Added support for automatic volume labelling and max volume size, thanks to Caspar Smit.
+---- Changes since 1.500 ----
+Add support for setting the Maximum concurrent jobs on a storage daemon, thanks to Caspar Smit.
