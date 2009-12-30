@@ -57,7 +57,9 @@ foreach my $d (&fdisk::list_disks_partitions()) {
 		# underlying real disks, so add fake devices for them
 		foreach my $twdev (keys %tcount) {
 			next if (!-r $twdev.$tcount{$twdev});
-			my $count = &count_subdisks($d, "3ware",
+			my $count = &count_3ware_subdisks($d, $tcount{$twdev})
+				    ||
+				    &count_subdisks($d, "3ware",
 						    $twdev.$tcount{$twdev});
 			next if (!$count);
 			for(my $i=0; $i<$count; $i++) {
@@ -92,6 +94,26 @@ foreach my $d (&fdisk::list_disks_partitions()) {
 	}
 return sort { $a->{'device'} cmp $b->{'device'} ||
 	      $a->{'subdisk'} <=> $b->{'subdisk'} } @rv;
+}
+
+=head2 count_3ware_subdisks(&drive, number)
+
+Returns the number of underlying hard drives in a 3ware device, or undef
+if we can't work this out.
+
+=cut
+sub count_3ware_subdisks
+{
+local ($d, $n) = @_;
+local $out = &backquote_command("tw_cli info c$n");
+return undef if ($?);
+local $max_disk;
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^p(\d+)\s+/ && $1 >= $max_disk) {
+		$max_disk = $1;
+		}
+	}
+return $max_disk;
 }
 
 =head2 count_subdisks(&drive, type, [device])
