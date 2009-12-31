@@ -325,7 +325,8 @@ elsif ($in{'mode'} eq 'solaris-pkg' || $in{'mode'} eq 'sun-pkg') {
 
 	$in{'root'} = '/';
 	$in{'adminfile'} = '$module_root_directory/adminupgrade';
-	$rv = &foreign_call("software", "install_package", $file, $pkg);
+	$rv = &software::install_package($file, $pkg);
+	&error($rv) if ($rv);
 	unlink($file) if ($need_unlink);
 	$ENV{'config_dir'} = $config_directory;
 	$ENV{'webmin_upgrade'} = 1;
