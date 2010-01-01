@@ -9,7 +9,7 @@ require './filter-lib.pl';
 # Find existing autoreply filter object
 &lock_file($procmail::procmailrc);
 @filters = &list_filters();
-($old) = grep { $_->{'actionreply'} } @filters;
+($old) = grep { $_->{'actionreply'} && $_->{'nocond'} } @filters;
 $filter = $old;
 
 if ($filter && !$in{'enabled'}) {

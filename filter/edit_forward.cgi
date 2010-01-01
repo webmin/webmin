@@ -8,7 +8,7 @@ require './filter-lib.pl';
 
 # Get the forwarding filter, if any
 @filters = &list_filters();
-($filter) = grep { $_->{'actiontype'} eq '!' } @filters;
+($filter) = grep { $_->{'actiontype'} eq '!' && $_->{'nocond'} } @filters;
 $dis = !$filter;
 
 print &ui_form_start("save_forward.cgi", "post");

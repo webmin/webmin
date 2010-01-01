@@ -8,7 +8,7 @@ require './filter-lib.pl';
 
 # Get the autoreply filter, if any
 @filters = &list_filters();
-($filter) = grep { $_->{'actionreply'} } @filters;
+($filter) = grep { $_->{'actionreply'} && $_->{'nocond'} } @filters;
 $dis = !$filter;
 
 print &ui_form_start("save_auto.cgi", "post");

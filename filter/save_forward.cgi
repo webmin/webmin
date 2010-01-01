@@ -8,7 +8,7 @@ require './filter-lib.pl';
 # Find existing forwarding filter object
 &lock_file($procmail::procmailrc);
 @filters = &list_filters();
-($old) = grep { $_->{'actiontype'} eq '!' } @filters;
+($old) = grep { $_->{'actiontype'} eq '!' && $_->{'nocond'} } @filters;
 $filter = $old;
 
 if ($filter && !$in{'enabled'}) {

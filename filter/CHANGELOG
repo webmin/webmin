@@ -26,3 +26,5 @@ Creation of filters that match headers is now less error-prone, due to a new men
 When an autoreply is deleted, the underlying message file is deleted too.
 ---- Changes since 1.420 ----
 Autoreply messages starting with <html> or <body> will now be sent using the text/html MIME type.
+---- Changes since 1.430 ----
+Quick autoreply and forward setup pages now only show un-conditional rules.
