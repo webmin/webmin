@@ -1,2 +1,4 @@
 ---- Changes since 1.490 ----
 First version of this module.
+---- Changes since 1.500 ----
+Debian backport versions are no longer falsely suggested for upgrading, if the apt-show-versions command is installed.

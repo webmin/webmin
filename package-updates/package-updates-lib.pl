@@ -427,22 +427,65 @@ sub set_pinned_versions
 my ($avail) = @_;
 my @davail = grep { $_->{'system'} eq 'apt' } @$avail;
 return 0 if (!@davail);
-my $out = &backquote_command("LANG='' LC_ALL='' apt-cache policy 2>/dev/null");
+my %namemap = map { $_->{'name'}, $_ } @davail;
 my $rv;
-foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /\s+(\S+)\s+\-\>\s+(\S+)/) {
-		my ($name, $pin) = ($1, $2);
-		my ($pkg) = grep { $_->{'name'} eq $name } @davail;
-		if ($pkg) {
-			$pkg->{'version'} = $pin;
-			if ($pkg->{'version'} =~ s/^(\d+)://) {
-				$pkg->{'epoch'} = $1;
+if (&has_command("apt-show-versions")) {
+	# Use apt-show-versions to find possible upgrades, including backports
+	# and pinned versions.
+	my $out = &backquote_command(
+			"LANG='' LC_ALL='' apt-show-versions 2>/dev/null");
+	foreach my $l (split(/\r?\n/, $out)) {
+		if ($l =~ /^(\S+)\/\S+\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/) {
+			# Possible upgrade shown .. apply new version to
+			# avail object
+			my ($name, $oldver, $newver) = ($1, $2, $3);
+			my $pkg = $namemap{$name};
+			if ($pkg) {
+				($pkg->{'epoch'}, $pkg->{'version'}) =
+					&split_epoch($newver);
+				$rv++;
 				}
-			$rv++;
+			}
+		elsif ($l =~ /^(\S+)\/\S+\s+uptodate\s+(\S+)/) {
+			# Package shown to be up to date
+			my ($name, $newver) = ($1, $2);
+			my $pkg = $namemap{$name};
+			if ($pkg) {
+				($pkg->{'epoch'}, $pkg->{'version'}) =
+					&split_epoch($newver);
+				$rv++;
+				}
+			}
+		}
+	}
+if (&has_command("apt-cache")) {
+	# Use apt-cache to see pinned versions. This excludes backports though.
+	my $out = &backquote_command(
+			"LANG='' LC_ALL='' apt-cache policy 2>/dev/null");
+	foreach my $l (split(/\r?\n/, $out)) {
+		if ($l =~ /\s+(\S+)\s+\-\>\s+(\S+)/) {
+			my ($name, $pin) = ($1, $2);
+			my $pkg = $namemap{$name};
+			if ($pkg) {
+				($pkg->{'epoch'}, $pkg->{'version'}) =
+					&split_epoch($ver);
+				$rv++;
+				}
 			}
 		}
 	}
 return $rv;
+}
+
+# split_epoch(version)
+# Splits a version formatted like 5:x.yy into an epoch and real version
+sub split_epoch
+{
+my ($ver) = @_;
+if ($ver =~ /^(\d+):(\S+)$/) {
+	return ($1, $2);
+	}
+return (undef, $ver);
 }
 
 # get_changelog(&pacakge)
