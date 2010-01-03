@@ -208,9 +208,31 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 	local $v2 = $sp2[$i];
 	local $comp;
 	if ($v1 =~ /^\d+$/ && $v2 =~ /^\d+$/) {
+		# Full numeric compare
 		$comp = $v1 <=> $v2;
 		}
+	elsif ($v1 =~ /^\d+\S*$/ && $v2 =~ /^\d+\S*$/) {
+		# Numeric followed by string
+		$v1 =~ /^(\d+)(\S*)$/;
+		local ($v1n, $v1s) = ($1, $2);
+		$v2 =~ /^(\d+)(\S*)$/;
+		local ($v2n, $v2s) = ($1, $2);
+		$comp = $v1n <=> $v2n;
+		if (!$comp) {
+			# X.rcN is always older than X
+			if ($v1s =~ /^rc\d+$/i && $v2s =~ /^\d*$/) {
+				$comp = -1;
+				}
+			elsif ($v1s =~ /^\d*$/ && $v2s =~ /^rc\d+$/i) {
+				$comp = 1;
+				}
+			else {
+				$comp = $v1s cmp $v2s;
+				}
+			}
+		}
 	else {
+		# String compare only
 		$comp = $v1 cmp $v2;
 		}
 	return $comp if ($comp);
