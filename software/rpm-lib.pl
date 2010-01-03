@@ -27,6 +27,7 @@ while($packages{$i,'name'} = <RPM>) {
 		}
 	if ($packages{$i,'name'} eq 'gpg-pubkey') {
 		# Bogus pseudo-package we don't want to include
+		$packages{$i,'desc'} = undef;
 		$i--;
 		}
 	$i++;
