@@ -36,7 +36,7 @@ $third_port = $update_port;
 $third_page = "/cgi-bin/third.cgi";
 $third_ssl = 0;
 
-$default_key_size = "512";
+$default_key_size = "2048";
 
 $cron_cmd = "$module_config_directory/update.pl";
 
