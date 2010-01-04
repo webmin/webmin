@@ -196,21 +196,53 @@ while(<PKG>) {
 		}
 	}
 close(PKG);
+&set_yum_security_field(\%done);
+return @rv;
+}
 
-# Also run list-sec to find out which are security updates
-&open_execute_command(PKG, "yum list-sec", 1, 1);
+# set_yum_security_field(&package-hash)
+# Set security field on packages which are security updates
+sub set_yum_security_field
+{
+local ($done) = @_;
+&open_execute_command(PKG, "yum list-sec 2>/dev/null", 1, 1);
 while(<PKG>) {
 	s/\r|\n//g;
 	if (/^\S+\s+security\s+(\S+?)\-([0-9]\S+)\.([^\.]+)$/) {
 		local ($name, $ver) = ($1, $2);
-		if ($done{$name}) {
-			$done{$name}->{'source'} = 'security';
-			$done{$name}->{'security'} = 1;
+		if ($done->{$name}) {
+			$done->{$name}->{'source'} = 'security';
+			$done->{$name}->{'security'} = 1;
 			}
 		}
 	}
 close(PKG);
+}
 
+# update_system_updates()
+# Returns a list of package updates available from yum
+sub update_system_updates
+{
+local @rv;
+local %done;
+&open_execute_command(PKG, "yum check-update 2>/dev/null", 1, 1);
+while(<PKG>) {
+        s/\r|\n//g;
+	if (/^(\S+)\.([^\.]+)\s+(\S+)\s+(\S+)/) {
+		local $pkg = { 'name' => $1,
+			       'arch' => $2,
+			       'version' => $3,
+			       'source' => $4 };
+		$pkg->{'version'} = $1;
+		if ($pkg->{'version'} =~ s/^(\S+)://) {
+			$pkg->{'epoch'} = $1;
+			}
+		$done{$pkg} = $pkg->{'name'};
+		push(@rv, $pkg);
+		}
+	}
+close(PKG);
+&set_yum_security_field(\%done);
 return @rv;
 }
 

@@ -11,6 +11,7 @@ use Data::Dumper;
 
 $available_cache_file = "$module_config_directory/available.cache";
 $current_cache_file = "$module_config_directory/current.cache";
+$updates_cache_file = "$module_config_directory/updates.cache";
 $cron_cmd = "$module_config_directory/update.pl";
 
 $yum_cache_file = "$module_config_directory/yumcache";
@@ -246,6 +247,37 @@ if (defined(&software::update_system_available)) {
 return ( );
 }
 
+sub supports_updates_available
+{
+return defined(&software::update_system_updates);
+}
+
+# updates_available(no-cache)
+# Returns an array of hash refs of package updates available, according to
+# the update system, with caching.
+sub updates_available
+{
+my ($nocache) = @_;
+if (!defined(@updates_available_cache)) {
+	if ($nocache || &cache_expired($updates_cache_file)) {
+		# Get from original source
+		@updates_available_cache = &software::update_system_updates();
+		foreach my $a (@updates_available_cache) {
+			$a->{'update'} = $a->{'name'};
+			$a->{'system'} = $software::update_system;
+			}
+		&write_cache_file($updates_cache_file,
+				  \@updates_available_cache);
+		}
+	else {
+		# Use on-disk cache
+		@updates_available_cache =
+			&read_cache_file($updates_cache_file);
+		}
+	}
+return @updates_available_cache;
+}
+
 # package_install(package, [system])
 # Install some package, either from an update system or from Webmin. Returns
 # a list of updated package names.
@@ -314,28 +346,52 @@ sub list_possible_updates
 my ($nocache) = @_;
 my @rv;
 my @current = &list_current($nocache);
-my @avail = &list_available($nocache == 1);
-my %availmap;
-foreach my $a (@avail) {
-	my $oa = $availmap{$a->{'name'},$a->{'system'}};
-	if (!$oa || &compare_versions($a, $oa) > 0) {
-		$availmap{$a->{'name'},$a->{'system'}} = $a;
+if (&supports_updates_available()) {
+	my %currentmap;
+	foreach my $c (@current) {
+		$currentmap{$c->{'name'},$c->{'system'}} ||= $c;
 		}
-	}
-foreach my $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
-	# Work out the status
-	my $a = $availmap{$c->{'name'},$c->{'system'}};
-	if ($a->{'version'} && &compare_versions($a, $c) > 0) {
-		# A regular update is available
+	foreach my $a (&updates_available($nocache == 1)) {
+		my $c = $currentmap{$a->{'name'},$a->{'system'}};
+		next if (!$c);
+		next if ($a->{'version'} eq $c->{'version'});
 		push(@rv, { 'name' => $a->{'name'},
 			    'update' => $a->{'update'},
 			    'system' => $a->{'system'},
 			    'version' => $a->{'version'},
 			    'oldversion' => $c->{'version'},
 			    'epoch' => $a->{'epoch'},
+			    'oldepoch' => $c->{'epoch'},
 			    'security' => $a->{'security'},
-			    'desc' => $c->{'desc'} || $a->{'desc'},
-			    'severity' => 0 });
+			    'desc' => $c->{'desc'} || $a->{'desc'} });
+		}
+	}
+else {
+	# Compute from current and available list
+	my @avail = &list_available($nocache == 1);
+	my %availmap;
+	foreach my $a (@avail) {
+		my $oa = $availmap{$a->{'name'},$a->{'system'}};
+		if (!$oa || &compare_versions($a, $oa) > 0) {
+			$availmap{$a->{'name'},$a->{'system'}} = $a;
+			}
+		}
+	foreach my $c (sort { $a->{'name'} cmp $b->{'name'} } @current) {
+		# Work out the status
+		my $a = $availmap{$c->{'name'},$c->{'system'}};
+		if ($a->{'version'} && &compare_versions($a, $c) > 0) {
+			# A regular update is available
+			push(@rv, { 'name' => $a->{'name'},
+				    'update' => $a->{'update'},
+				    'system' => $a->{'system'},
+				    'version' => $a->{'version'},
+				    'oldversion' => $c->{'version'},
+				    'epoch' => $a->{'epoch'},
+				    'oldepoch' => $c->{'epoch'},
+				    'security' => $a->{'security'},
+				    'desc' => $c->{'desc'} || $a->{'desc'},
+				    'severity' => 0 });
+			}
 		}
 	}
 return @rv;
