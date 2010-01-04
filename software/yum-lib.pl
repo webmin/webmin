@@ -160,11 +160,14 @@ while(<PKG>) {
 	s/\r|\n//g;
 	if (/^Name\s*:\s*(\S+)/) {
 		if ($done{$1}) {
-			# Start of a new package
+			# Seen before .. update with newer info. This can happen
+			# when YUM shows the installed version first.
 			$pkg = $done{$1};
+			delete($pkg->{'epoch'});
+			delete($pkg->{'version'});
 			}
 		else {
-			# Seen before .. update with newer info
+			# Start of a new package
 			$pkg = { 'name' => $1 };
 			$done{$pkg->{'name'}} = $pkg;
 			push(@rv, $pkg);
