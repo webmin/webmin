@@ -48,6 +48,7 @@ index_clear=Show All
 
 update_title=Update Packages
 update_pkg=Now updating $1 ..
+update_pkg2=Now installing $1 ..
 update_done=Installed package $1 $2.
 update_ok=Successfully installed $1 packages.
 update_failed=No packages were installed. Check the messages above for the cause of the error.

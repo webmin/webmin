@@ -189,4 +189,80 @@ close(DUMP);
 return @rv;
 }
 
+# update_system_updates()
+# Returns a list of available package updates
+sub update_system_updates
+{
+if (&has_command("apt-show-versions")) {
+	# This awesome command can give us all updates in one hit
+	local @rv;
+	&open_execute_command(PKGS,
+		"LANG='' LC_ALL='' apt-show-versions", 1, 1);
+	while(<PKGS>) {
+		if (/^(\S+)\/(\S+)\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/) {
+			local $pkg = { 'name' => $1,
+				       'source' => $2,
+				       'version' => $4 };
+			if ($pkg->{'version'} =~ s/^(\S+)://) {
+				$pkg->{'epoch'} = $1;
+				}
+			push(@rv, $pkg);
+			}
+		}
+	close(PKGS);
+	return @rv;
+	}
+else {
+	# Need to manually compose by calling dpkg and apt-cache showpkg ..
+	local %packages;
+	local $n = &list_packages();
+	local %currentmap;
+	for(my $i=0; $i<$n; $i++) {
+		local $pkg = { 'name' => $packages{$i,'name'},
+			       'oldversion' => $packages{$i,'version'},
+			       'desc' => $packages{$i,'desc'},
+			       'oldepoch' => $packages{$i,'epoch'} };
+		$currentmap{$pkg->{'name'}} ||= $pkg;
+		}
+	local @rv;
+	local @names = keys %currentmap;
+	while(scalar(@names)) {
+		local @somenames;
+		if (scalar(@names) > 100) {
+			# Do 100 at a time
+			@somenames = @names[0..99];
+			@names = @names[100..$#names];
+			}
+		else {
+			# Do the rest
+			@somenames = @names;
+			@names = ( );
+			}
+		&open_execute_command(PKGS,
+			"LANG='' LC_ALL='' apt-cache showpkg ".
+			join(" ", @somenames), 1, 1);
+		local $pkg = undef;
+		while(<PKGS>) {
+			s/\r|\n//g;
+			if (/^\s*Package:\s*(\S+)/) {
+				$pkg = $currentmap{$1};
+				}
+			elsif (/^Versions:\s*$/ && $pkg && !$pkg->{'version'}) {
+				# Newest version is on next line
+				local $ver = <PKGS>;
+				$ver =~ s/\s.*\r?\n//;
+				local $epoch;
+				if ($ver =~ s/^(\d+)://) {
+					$epoch = $1;
+					}
+				$pkg->{'version'} = $ver;
+				$pkg->{'epoch'} = $epoch;
+				push(@rv, $pkg);
+				}
+			}
+		close(PKGS);
+		}
+	return @rv;
+	}
+}
 

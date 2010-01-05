@@ -81,10 +81,11 @@ else {
 		}
 	else {
 		# Do it
+		$msg = $in{'mode'} eq 'new' ? 'update_pkg2' : 'update_pkg';
 		foreach my $ps (@pkgs) {
 			($p, $s) = split(/\//, $ps);
 			next if ($donedep{$p});
-			print &text('update_pkg', "<tt>$p</tt>"),"<br>\n";
+			print &text($msg, "<tt>$p</tt>"),"<br>\n";
 			print "<ul>\n";
 			@pgot = &package_install($p, $s);
 			foreach $g (@pgot) {

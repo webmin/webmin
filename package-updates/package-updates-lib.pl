@@ -285,10 +285,19 @@ sub package_install
 {
 my ($name, $system) = @_;
 my @rv;
-my ($pkg) = grep { $_->{'update'} eq $name &&
-		      ($_->{'system'} eq $system || !$system) }
-		    sort { &compare_versions($b, $a) }
-		         &list_available(0);
+my $pkg;
+# First get from list of updates
+($pkg) = grep { $_->{'update'} eq $name &&
+		($_->{'system'} eq $system || !$system) }
+	      sort { &compare_versions($b, $a) }
+		   &list_possible_updates(0);
+if (!$pkg) {
+	# Then try list of all available packages
+	($pkg) = grep { $_->{'update'} eq $name &&
+			($_->{'system'} eq $system || !$system) }
+		      sort { &compare_versions($b, $a) }
+			   &list_available(0);
+	}
 if (!$pkg) {
 	print &text('update_efindpkg', $name),"<p>\n";
 	return ( );
@@ -363,6 +372,7 @@ if (&supports_updates_available()) {
 			    'epoch' => $a->{'epoch'},
 			    'oldepoch' => $c->{'epoch'},
 			    'security' => $a->{'security'},
+			    'source' => $a->{'source'},
 			    'desc' => $c->{'desc'} || $a->{'desc'} });
 		}
 	}
@@ -389,6 +399,7 @@ else {
 				    'epoch' => $a->{'epoch'},
 				    'oldepoch' => $c->{'epoch'},
 				    'security' => $a->{'security'},
+				    'source' => $a->{'source'},
 				    'desc' => $c->{'desc'} || $a->{'desc'},
 				    'severity' => 0 });
 			}

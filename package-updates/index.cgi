@@ -11,7 +11,12 @@ if ($in{'clear'}) {
 
 # See if any security updates exist
 $in{'mode'} ||= 'updates';
-@avail = &list_available(0);
+if ($in{'mode'} eq 'updates') {
+	@avail = &list_possible_updates(0);
+	}
+else {
+	@avail = &list_available(0);
+	}
 ($sec) = grep { $_->{'security'} } @avail;
 
 # Show mode selector (all, updates only, updates and new)

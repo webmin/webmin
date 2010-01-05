@@ -6,7 +6,8 @@ require './package-updates-lib.pl';
 &ReadParse();
 
 # Get the package
-@avail = &list_available(0);
+@avail = $in{'mode'} eq 'updates' ? &list_possible_updates(0)
+				  : &list_available(0);
 ($a) = grep { $_->{'name'} eq $in{'name'} &&
 	      $_->{'system'} eq $in{'system'} } @avail;
 @current = &list_current(0);
@@ -48,7 +49,9 @@ if ($a) {
 	}
 
 # Source, if available
-print &ui_table_row($text{'view_source'}, ucfirst($a->{'source'}));
+if ($a->{'source'}) {
+	print &ui_table_row($text{'view_source'}, ucfirst($a->{'source'}));
+	}
 
 # Change log, if possible
 if ($a) {

@@ -233,7 +233,6 @@ while(<PKG>) {
 			       'arch' => $2,
 			       'version' => $3,
 			       'source' => $4 };
-		$pkg->{'version'} = $1;
 		if ($pkg->{'version'} =~ s/^(\S+)://) {
 			$pkg->{'epoch'} = $1;
 			}
