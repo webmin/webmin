@@ -6,8 +6,7 @@ require './package-updates-lib.pl';
 &ReadParse();
 
 # Get the package
-@avail = $in{'mode'} eq 'updates' ? &list_possible_updates(0)
-				  : &list_available(0);
+@avail = &list_for_mode($in{'mode'}, 0);
 ($a) = grep { $_->{'name'} eq $in{'name'} &&
 	      $_->{'system'} eq $in{'system'} } @avail;
 @current = &list_current(0);

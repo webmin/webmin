@@ -555,5 +555,15 @@ unlink($available_cache_file.'1');
 %read_cache_file_cache = ( );
 }
 
+# list_for_mode(mode, nocache)
+# If not is 'updates' or 'security', return just updates. Othewise, return
+# all available packages.
+sub list_for_mode
+{
+my ($mode, $nocache) = @_;
+return $mode eq 'updates' || $mode eq 'security' ?
+	&list_possible_updates($nocache) : &list_available($nocache);
+}
+
 1;
 
