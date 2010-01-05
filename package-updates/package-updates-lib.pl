@@ -85,9 +85,6 @@ if ($nocache || $expired == 2 ||
 		push(@rv, $avail);
 		}
 
-	# Set pinned versions
-	&set_pinned_versions(\@rv);
-
 	# Filter out dupes and sort by name
 	@rv = &filter_duplicates(\@rv);
 
@@ -485,63 +482,6 @@ if ($software::update_system eq "yum") {
 elsif ($software::update_system eq "apt") {
 	&execute_command("apt-get update");
 	}
-}
-
-# set_pinned_versions(&packages)
-# If on Debian, set available package versions based on APT pinning
-sub set_pinned_versions
-{
-my ($avail) = @_;
-my @davail = grep { $_->{'system'} eq 'apt' } @$avail;
-return 0 if (!@davail);
-my %namemap = map { $_->{'name'}, $_ } @davail;
-my $rv;
-if (&has_command("apt-show-versions")) {
-	# Use apt-show-versions to find possible upgrades, including backports
-	# and pinned versions.
-	my $out = &backquote_command(
-			"LANG='' LC_ALL='' apt-show-versions 2>/dev/null");
-	foreach my $l (split(/\r?\n/, $out)) {
-		if ($l =~ /^(\S+)\/\S+\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/) {
-			# Possible upgrade shown .. apply new version to
-			# avail object
-			my ($name, $oldver, $newver) = ($1, $2, $3);
-			my $pkg = $namemap{$name};
-			if ($pkg) {
-				($pkg->{'epoch'}, $pkg->{'version'}) =
-					&split_epoch($newver);
-				$rv++;
-				}
-			}
-		elsif ($l =~ /^(\S+)\/\S+\s+uptodate\s+(\S+)/) {
-			# Package shown to be up to date
-			my ($name, $newver) = ($1, $2);
-			my $pkg = $namemap{$name};
-			if ($pkg) {
-				($pkg->{'epoch'}, $pkg->{'version'}) =
-					&split_epoch($newver);
-				$rv++;
-				}
-			}
-		}
-	}
-if (&has_command("apt-cache")) {
-	# Use apt-cache to see pinned versions. This excludes backports though.
-	my $out = &backquote_command(
-			"LANG='' LC_ALL='' apt-cache policy 2>/dev/null");
-	foreach my $l (split(/\r?\n/, $out)) {
-		if ($l =~ /\s+(\S+)\s+\-\>\s+(\S+)/) {
-			my ($name, $pin) = ($1, $2);
-			my $pkg = $namemap{$name};
-			if ($pkg) {
-				($pkg->{'epoch'}, $pkg->{'version'}) =
-					&split_epoch($ver);
-				$rv++;
-				}
-			}
-		}
-	}
-return $rv;
 }
 
 # split_epoch(version)

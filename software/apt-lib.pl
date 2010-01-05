@@ -167,6 +167,7 @@ foreach my $s (&update_system_search('.*')) {
 		}
 	}
 
+&set_pinned_versions(\@rv);
 return @rv;
 }
 
@@ -194,7 +195,8 @@ return @rv;
 sub update_system_updates
 {
 if (&has_command("apt-show-versions")) {
-	# This awesome command can give us all updates in one hit
+	# This awesome command can give us all updates in one hit, and takes
+	# pinned versions and backports into account
 	local @rv;
 	&open_execute_command(PKGS,
 		"LANG='' LC_ALL='' apt-show-versions", 1, 1);
@@ -213,7 +215,7 @@ if (&has_command("apt-show-versions")) {
 	return @rv;
 	}
 else {
-	# Need to manually compose by calling dpkg and apt-cache showpkg ..
+	# Need to manually compose by calling dpkg and apt-cache showpkg
 	local %packages;
 	local $n = &list_packages();
 	local %currentmap;
@@ -257,12 +259,45 @@ else {
 					}
 				$pkg->{'version'} = $ver;
 				$pkg->{'epoch'} = $epoch;
-				push(@rv, $pkg);
+				local $newer =
+				    $pkg->{'epoch'} <=> $pkg->{'oldepoch'} ||
+				    &compare_versions($pkg->{'version'},
+						      $pkg->{'oldversion'});
+				if ($newer > 0) {
+					push(@rv, $pkg);
+					}
 				}
 			}
 		close(PKGS);
 		}
+	&set_pinned_versions(\@rv);
 	return @rv;
 	}
+}
+
+# set_pinned_versions(&package-list)
+# Updates the version and epoch fields in a list of available packages based
+# on pinning.
+sub set_pinned_versions
+{
+local ($pkgs) = @_;
+local %pkgmap = map { $_->{'name'}, $_ } @$pkgs;
+&open_execute_command(PKGS,
+	"LANG='' LC_ALL='' apt-cache policy", 1, 1);
+while(<PKGS>) { 
+	s/\r|\n//g;
+	if (/\s+(\S+)\s+\-\>\s+(\S+)/) {
+		my ($name, $pin) = ($1, $2);
+		my $pkg = $pkgmap{$name};
+		if ($pkg) {
+			$pkg->{'version'} = $pin;
+			$pkg->{'epoch'} = undef;
+			if ($pkg->{'version'} =~ s/^(\S+)://) {
+				$pkg->{'epoch'} = $1;
+				}
+			}
+		}
+	}
+close(PKGS);
 }
 
