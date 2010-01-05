@@ -8,8 +8,8 @@ sub module_install
 
 if ($software::update_system ne 'yum' &&
     !&foreign_check("security-updates")) {
-	# Re-generate cache of available packages
-	&list_available();
+	# Re-generate cache of possible packages
+	&list_possible_updates();
 	}
 }
 
