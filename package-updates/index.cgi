@@ -21,7 +21,7 @@ else {
 
 # Show mode selector (all, updates only, updates and new)
 @grid = ( );
-foreach $m ('all', 'updates', 'new', 'both',
+foreach $m ('current', 'updates', 'new',
 	    $sec ? ( 'security' ) : ( )) {
 	$mmsg = $text{'index_mode_'.$m};
 	if ($in{'mode'} eq $m) {
@@ -67,16 +67,16 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 		       &text('index_new', $a->{'version'})."</font></b>";
 		$need = 1;
 		next if ($in{'mode'} eq 'security' && !$a->{'security'});
-		next if ($in{'mode'} ne 'both' && $in{'mode'} ne 'updates' &&
-			 $in{'mode'} ne 'all' && $in{'mode'} ne 'security');
+		next if ($in{'mode'} ne 'updates' &&
+			 $in{'mode'} ne 'current' &&
+			 $in{'mode'} ne 'security');
 		}
 	elsif ($a && !$c) {
 		# Could be installed, but isn't currently
 		next if (!&installation_candiate($a));
 		$msg = "<font color=#00aa00>$text{'index_caninstall'}</font>";
 		$need = 0;
-		next if ($in{'mode'} ne 'both' && $in{'mode'} ne 'new' &&
-			 $in{'mode'} ne 'all');
+		next if ($in{'mode'} ne 'new');
 		}
 	elsif (!$a->{'version'} && $c->{'updateonly'}) {
 		# No update exists, and we don't care unless there is one
@@ -87,13 +87,13 @@ foreach $p (sort { $a->{'name'} cmp $b->{'name'} } (@current, @avail)) {
 		$msg = "<font color=#ffaa00><b>".
 			&text('index_noupdate', $c->{'version'})."</b></font>";
 		$need = 0;
-		next if ($in{'mode'} ne 'all');
+		next if ($in{'mode'} ne 'current');
 		}
 	else {
 		# We have the latest
 		$msg = &text('index_ok', $c->{'version'});
 		$need = 0;
-		next if ($in{'mode'} ne 'all');
+		next if ($in{'mode'} ne 'current');
 		}
 	$source = ucfirst($a->{'source'});
 	if ($a->{'security'}) {
@@ -149,6 +149,12 @@ print &ui_form_columns_table(
 	$text{'index_none_'.$in{'mode'}},
 	1
 	);
+if (!@rows) {
+	print &ui_form_start("update.cgi");
+	print &ui_hidden("mode", $in{'mode'});
+	print &ui_hidden("search", $in{'search'});
+	print &ui_form_end([ [ "refresh", $text{'index_refresh'} ] ]);
+	}
 
 # Show scheduled report form
 print "<hr>\n";

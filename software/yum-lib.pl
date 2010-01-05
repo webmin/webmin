@@ -236,7 +236,7 @@ while(<PKG>) {
 		if ($pkg->{'version'} =~ s/^(\S+)://) {
 			$pkg->{'epoch'} = $1;
 			}
-		$done{$pkg} = $pkg->{'name'};
+		$done{$pkg->{'name'}} = $pkg;
 		push(@rv, $pkg);
 		}
 	}
