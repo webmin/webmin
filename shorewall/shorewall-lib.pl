@@ -189,6 +189,10 @@ for($i=0; $i<@$lref; $i++) {
 		$idx = $i;
 		last;
 		}
+	elsif ($lref->[$i] =~ /^SECTION\s+NEW/) {
+		$idx = $i+1;
+		last;
+		}
 	}
 if (defined($_[3])) {
 	local $lnum = &find_line_num($lref, $_[1], $_[3]);

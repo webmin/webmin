@@ -39,3 +39,5 @@ Added logging so that changes made using the module show up in the Webmin Action
 Blacklist rules can now match any host.
 ---- Changes since 1.480 ----
 Added a button to create a shorewall dump, thanks to a patch by Paul Gear.
+---- Changes since 1.500 ----
+New rules are added after the SECTION NEW line, if there is one.
