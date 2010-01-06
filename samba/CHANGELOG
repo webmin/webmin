@@ -21,3 +21,5 @@ Added fields to set the permissions and group ownership of new shared directorie
 ---- Changes since 1.430 ----
 The 'Password never expires' flag can be set for user accounts, thanks to a patch from Juan Miguel Corral.
 Allow the server description to be set to explicitly nothing.
+---- Changes since 1.500 ----
+Show the real Samba version number on the main page.

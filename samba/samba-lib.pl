@@ -879,7 +879,8 @@ else {
 	}
 }
 
-# get_samba_version(&out)
+# get_samba_version(&out, [keep-original-format])
+# Returns the Samba version
 sub get_samba_version
 {
 local $flag;
@@ -888,7 +889,9 @@ foreach $flag ("-V", "-v") {
 	if (${$_[0]} =~ /(Version|Samba)\s+(CVS\s+)?[^0-9 ]*(\d+)\.(\S+)/i) {
 		local $v1 = $3;
 		local $v2 = $4;
-		$v2 =~ s/[^0-9]//g;
+		if (!$_[1]) {
+			$v2 =~ s/[^0-9]//g;
+			}
 		return "$v1.$v2";
 		}
 	}

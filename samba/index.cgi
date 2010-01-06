@@ -21,7 +21,7 @@ if (!-x $config{'samba_server'}) {
 	}
 
 # Check the samba version
-if ($samba_version = &get_samba_version(\$out)) {
+if ($samba_version = &get_samba_version(\$out, 0)) {
 	# Save version number
 	&open_tempfile(VERSION, ">$module_config_directory/version");
 	&print_tempfile(VERSION, $samba_version,"\n");
@@ -30,14 +30,15 @@ if ($samba_version = &get_samba_version(\$out)) {
 else {
 	&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 		&help_search_link("samba", "man", "doc", "google"));
-	print &text('error_version', $config{'samba_server'}, "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
+	print &text('error_version', $config{'samba_server'},
+		    "$gconfig{'webprefix'}/config.cgi?$module_name"),"<p>\n";
 	print "<pre>$out</pre>\n";
 	&ui_print_footer("/", $text{'index'});
 	exit;
 	}
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("samba", "man", "doc", "google"), undef, undef,
-	&text('index_version', $samba_version));
+	&text('index_version', &get_samba_version(\$out, 1)));
 
 @empty = &list_shares();
 if (!@empty && (-r $config{alt_smb_conf})) {
