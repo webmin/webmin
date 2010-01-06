@@ -283,6 +283,7 @@ sub package_install
 my ($name, $system) = @_;
 my @rv;
 my $pkg;
+
 # First get from list of updates
 ($pkg) = grep { $_->{'update'} eq $name &&
 		($_->{'system'} eq $system || !$system) }
@@ -353,6 +354,8 @@ my ($nocache) = @_;
 my @rv;
 my @current = &list_current($nocache);
 if (&supports_updates_available()) {
+	# Software module supplies a function that can list just packages
+	# that need updating
 	my %currentmap;
 	foreach my $c (@current) {
 		$currentmap{$c->{'name'},$c->{'system'}} ||= $c;
