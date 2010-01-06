@@ -10,6 +10,8 @@ use WebminCore;
 %thing_key_map = ( "net" => "address",
 		   "fs" => "dir",
 		   "inherit-pkg-dir" => "dir",
+		   "capped-cpu" => "ncpus",
+		   "capped-memory" => "physical",
 		   "rctl" => "name",
 		   "attr" => "name",
 		   "device" => "match" );
@@ -64,7 +66,8 @@ foreach $p ("zonepath", "autoboot", "pool", "brand") {
 	}
 
 # Add lists of things
-foreach $r ("fs", "inherit-pkg-dir", "net", "device", "rctl", "attr") {
+foreach $r ("fs", "inherit-pkg-dir", "net", "device", "rctl", "attr",
+	    "capped-cpu", "capped-memory") {
 	local @lines = &get_zonecfg_output($zone, "info $r");
 	local ($l, $thing);
 	foreach $l (@lines) {
@@ -75,9 +78,11 @@ foreach $r ("fs", "inherit-pkg-dir", "net", "device", "rctl", "attr") {
 				   'keyzone' => $zone };
 			push(@{$zinfo->{$r}}, $thing);
 			}
-		elsif ($l =~ /^\s+([^:]+):\s*\[(.*)\]/ ||
-		       $l =~ /^\s+([^:]+):\s*"(.*)"/ ||
-		       $l =~ /^\s+([^:]+):\s*(.*)/) {
+                elsif ($l =~ /^\s+\[([^:]+):\s*"(.*)"\]/ ||
+                       $l =~ /^\s+\[([^:]+):\s*(.*)\]/ ||
+                       $l =~ /^\s+([^:]+):\s*\[(.*)\]/ ||
+                       $l =~ /^\s+([^:]+):\s*"(.*)"/ ||
+                       $l =~ /^\s+([^:]+):\s*(.*)/) {
 			# An attribute of a thing
 			if (defined($thing->{$1})) {
 				# Multiple values!
