@@ -8,7 +8,7 @@ do 'phpini-lib.pl';
 # For mode 0, returns 1 if installed, 0 if not
 sub is_installed
 {
-return -r $config{'php_ini'} ||
+return &get_default_php_ini() ||
        &has_command("php") ||
        &has_command("php4") ||
        &has_command("php5") ||

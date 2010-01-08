@@ -10,7 +10,7 @@ use WebminCore;
 sub get_config
 {
 local ($file) = @_;
-$file ||= $config{'php_ini'};
+$file ||= &get_default_php_ini();
 if (!defined($get_config_cache{$file})) {
 	local @rv = ( );
 	local $lnum = 0;
@@ -147,8 +147,19 @@ return &indexof($file, map { $_->[0] } &list_php_configs()) >= 0 ||
        $access{'anyfile'};
 }
 
+# get_default_php_ini()
+# Returns the first php.ini that exists
+sub get_default_php_ini
+{
+foreach my $ai (split(/\t+/, $config{'php_ini'})) {
+	local ($f, $d) = split(/=/, $ai);
+	return $f if (-r $f);
+	}
+return undef;
+}
+
 # list_php_configs()
-# Returns 1 list of allowed config files and descriptions
+# Returns a list of allowed config files and descriptions
 sub list_php_configs
 {
 local @rv;
