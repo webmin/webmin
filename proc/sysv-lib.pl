@@ -219,7 +219,7 @@ if (!&has_command("kstat")) {
 	return ( );
 	}
 local %stat;
-foreach my $s ("physmem", "freemem", "swap_alloc", "swap_avail") {
+foreach my $s ("physmem", "freemem") {
 	local $out = &backquote_command("kstat -p -m unix -s $s");
 	if ($out =~ /\s+(\d+)/) {
 		$stat{$s} = $1;
@@ -234,7 +234,7 @@ while(<SWAP>) {
 		}
 	}
 close(SWAP);
-local $pagesize = `pagesize 2>/dev/null`;
+local $pagesize = &backquote_command("pagesize 2>/dev/null");
 $pagesize = int($pagesize)/1024;
 $pagesize ||= 8;	# Fallback
 return ($stat{'physmem'}*$pagesize, $stat{'freemem'}*$pagesize,
