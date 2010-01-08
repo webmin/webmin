@@ -36,7 +36,8 @@ foreach $s (&foreign_call("samba", "list_shares")) {
 		printf "%s:%s:%s:%s:%s\n",
 			$samba::share{'path'},
 			$samba::share{'available'} =~ /no|false/i ? 0 : 1,
-			$samba::share{'writable'} =~ /yes|true/i ? 1 : 0,
+			$samba::share{'writable'} =~ /yes|true/i ||
+			 $samba::share{'writeable'} =~ /yes|true/i ? 1 : 0,
 			$samba::share{'guest only'} =~ /yes|true/i ? 2 :
 			$samba::share{'public'} =~ /yes|true/i ? 1 : 0,
 			$samba::share{'comment'};

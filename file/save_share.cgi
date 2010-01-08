@@ -53,7 +53,7 @@ elsif ($in{'new'}) {
 		}
 	$samba::share{'path'} = $in{'path'};
 	$samba::share{'available'} = $in{'available'} ? 'yes' : 'no';
-	$samba::share{'writable'} = $in{'writable'} ? 'yes' : 'no';
+	$samba::share{'writeable'} = $in{'writable'} ? 'yes' : 'no';
 	$samba::share{'comment'} = $in{'comment'};
 	if ($in{'guest'} == 2) {
 		$samba::share{'public'} = 'yes';
@@ -74,7 +74,7 @@ else {
 			# found the share to update
 			$samba::share{'available'} = $in{'available'} ? 'yes'
 								      : 'no';
-			$samba::share{'writable'} = $in{'writable'} ? 'yes'
+			$samba::share{'writeable'} = $in{'writable'} ? 'yes'
 								    : 'no';
 			$samba::share{'comment'} = $in{'comment'};
 			if ($in{'guest'} == 2) {
