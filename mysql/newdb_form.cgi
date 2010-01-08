@@ -15,10 +15,22 @@ print &ui_table_row($text{'newdb_db'},
 
 if ($mysql_version >= 4.1) {
 	# Character set option
+	@charsets = &list_character_sets();
+	%csmap = map { $_->[0], $_->[1] } @charsets;
 	print &ui_table_row($text{'newdb_charset'},
 		     &ui_select("charset", undef,
 				[ [ undef, "&lt;$text{'default'}&gt;" ],
-				  &list_character_sets() ]));
+				  @charsets ]));
+	}
+
+@coll = &list_collation_orders();
+if (@coll) {
+	# Collation order option
+	print &ui_table_row($text{'newdb_collation'},
+		     &ui_select("collation", undef,
+			[ [ undef, "&lt;$text{'default'}&gt;" ],
+			  map { [ $_->[0], $_->[0]." (".$csmap{$_->[1]}.")" ] }
+			      &list_collation_orders() ]));
 	}
 
 # Initial table name

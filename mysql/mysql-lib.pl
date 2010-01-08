@@ -1234,6 +1234,20 @@ else {
 return sort { lc($a) cmp lc($b) } @rv;
 }
 
+# list_collation_orders([db])
+# Returns a list of supported collation orders. Each row is an array ref of
+# a code and character set it can work with.
+sub list_collation_orders
+{
+local @rv;
+local $db = $_[0] || $master_db;
+if ($mysql_version >= 5) {
+	local $d = &execute_sql($db, "show collation");
+	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
+	}
+return sort { lc($a) cmp lc($b) } @rv;
+}
+
 # list_system_variables()
 # Returns a list of all system variables, and their default values
 sub list_system_variables

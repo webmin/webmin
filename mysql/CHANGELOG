@@ -88,3 +88,5 @@ MySQL stored procedures are now included in backups, where supported.
 Restores and imports from local files are now run as the Unix user configured for backups, rather than root.
 ---- Changes since 1.490 ----
 The information_schema database is no longer included when backing up all databases, as it really just contains metadata.
+---- Changes since 1.500 ----
+Added a collation order field to the database creation form.

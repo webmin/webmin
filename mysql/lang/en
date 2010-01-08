@@ -428,6 +428,7 @@ newdb_table=Initial table
 newdb_none=None
 newdb_tname=Named
 newdb_charset=Character set
+newdb_collation=Collation order
 newdb_str=with fields below
 newdb_err=Failed to create database
 newdb_edb=Missing or invalid database name

@@ -19,7 +19,8 @@ if (!$in{'table_def'}) {
 	@sql = &parse_table_form([ ], $in{'table'});
 	}
 &execute_sql_logged($master_db, "create database ".&quotestr($in{'db'}).
-		    ($in{'charset'} ? " character set $in{'charset'}" : ""));
+		    ($in{'charset'} ? " character set $in{'charset'}" : "").
+		    ($in{'collation'} ? " collate $in{'collation'}" : ""));
 &webmin_log("create", "db", $in{'db'});
 if (@sql) {
 	foreach $sql (@sql) {
