@@ -1231,7 +1231,7 @@ else {
 	local $d = &execute_sql($db, "show character set");
 	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
 	}
-return sort { lc($a) cmp lc($b) } @rv;
+return sort { lc($a->[1]) cmp lc($b->[1]) } @rv;
 }
 
 # list_collation_orders([db])
@@ -1245,7 +1245,7 @@ if ($mysql_version >= 5) {
 	local $d = &execute_sql($db, "show collation");
 	@rv = map { [ $_->[0], $_->[1] ] } @{$d->{'data'}};
 	}
-return sort { lc($a) cmp lc($b) } @rv;
+return sort { lc($a->[0]) cmp lc($b->[0]) } @rv;
 }
 
 # list_system_variables()
