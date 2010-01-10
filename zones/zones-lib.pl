@@ -56,19 +56,27 @@ return undef if (!$status);
 $zinfo->{'status'} = $status->{'status'};
 $zinfo->{'id'} = $status->{'id'};
 
-# Add zone-level variables
+# Add zone-level variables. Failure is possible in some cases (like brand)
+# if not supported on this Solaris version.
 local ($p, $r);
 foreach $p ("zonepath", "autoboot", "pool", "brand") {
-	local @lines = &get_zonecfg_output($zone, "info $p");
-	if ($lines[0] =~ /^$p:\s*(.*)/) {
-		$zinfo->{$p} = $1;
-		}
+	eval {
+		$main::error_must_die = 1;
+		local @lines = &get_zonecfg_output($zone, "info $p");
+		if ($lines[0] =~ /^$p:\s*(.*)/) {
+			$zinfo->{$p} = $1;
+			}
+		};
 	}
 
 # Add lists of things
 foreach $r ("fs", "inherit-pkg-dir", "net", "device", "rctl", "attr",
 	    "capped-cpu", "capped-memory") {
-	local @lines = &get_zonecfg_output($zone, "info $r");
+	local @lines;
+	eval {
+		$main::error_must_die = 1;
+		@lines = &get_zonecfg_output($zone, "info $r");
+		};
 	local ($l, $thing);
 	foreach $l (@lines) {
 		if ($l =~ /^$r:/) {
