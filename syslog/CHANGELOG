@@ -16,3 +16,5 @@ Added support for rsyslogd, as seen by default on Debian 5.0.
 Rsyslog format tags in the config file are now recogized and preserved, rather than being included in the log filename.
 ---- Changes since 1.490 ----
 Added support for rsyslog IncludeConfig directives, which are used to split the config into multiple files, as seen on Ubuntu 9.
+---- Changes since 1.500 ----
+Speed up the un-filtered display of the last N lines of a log file, by just running tail on it directly.

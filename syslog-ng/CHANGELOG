@@ -2,3 +2,5 @@
 First version of this module.
 ---- Changes since 1.270 ----
 Error logs from Webmin and Usermin, and kernel messages are now viewable in this module.
+---- Changes since 1.500 ----
+Speed up the un-filtered display of the last N lines of a log file, by just running tail on it directly.

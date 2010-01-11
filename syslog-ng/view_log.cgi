@@ -64,11 +64,13 @@ if ($filter ne "") {
 else {
 	# Not filtering .. so cat the most recent non-empty file
 	if ($cmd) {
-		$catter = $cmd;
+                # Getting output from a command
+                $fullcmd = $cmd." | ".$tailcmd;
 		}
-	else {
+	elsif ($config{'compressed'}) {
+		# Find the first non-empty file, newest first
 		$catter = "cat ".quotemeta($file);
-		if (!-s $file && $config{'compressed'}) {
+		if (!-s $file) {
 			foreach $l (&all_log_files($file)) {
 				next if (!-s $l);
 				$c = &catter_command($l);
@@ -78,10 +80,14 @@ else {
 					}
 				}
 			}
+		$fullcmd = $catter." | ".$tailcmd;
+		}
+	else {
+		# Just run tail on the file
+		$fullcmd = $tailcmd." ".quotemeta($file);
 		}
 	$got = &foreign_call("proc", "safe_process_exec",
-		$catter." | $tailcmd", 
-		0, 0, STDOUT, undef, 1, 0, undef, 1);
+		$fullcmd, 0, 0, STDOUT, undef, 1, 0, undef, 1);
 	}
 print "<i>$text{'view_empty'}</i>\n" if (!$got);
 print "</pre>\n";
