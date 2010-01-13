@@ -1046,7 +1046,7 @@ sub delete_mapping
 if (&file_map_type($_[1]->{'map_type'}) || !$_[1]->{'map_type'}) {
 	# Deleting from a file
 	local $lref = &read_file_lines($_[1]->{'map_file'});
-	local $dl = $lref->[$_[1]->{'line'}];
+	local $dl = $lref->[$_[1]->{'eline'}];
 	local $len = $_[1]->{'eline'} - $_[1]->{'line'} + 1;
 	if (($dl =~ /^\s*(\/[^\/]*\/[a-z]*)\s+([^#]*)/ ||
 	     $dl =~ /^\s*([^\s]+)\s+([^#]*)/) &&
