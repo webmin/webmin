@@ -15,8 +15,8 @@ Returns the version number of the SMART tools on this system
 sub get_smart_version
 {
 if (!defined($smartctl_version_cache)) {
-	local $out = `$config{'smartctl'} -h 2>&1 </dev/null`;
-	if ($out =~ /version\s+(\S+)/i) {
+	local $out = `$config{'smartctl'} --version 2>&1 </dev/null`;
+	if ($out =~ /smartmontools release\s+(\S+)/i) {
 		$smartctl_version_cache = $1;
 		}
 	}
