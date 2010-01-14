@@ -256,8 +256,8 @@ feedback_ecannot2=You are not allowed to send feedback containing config files
 
 progress_size2=Downloading $1 ($2) ..
 progress_nosize=Downloading $1 ..
-progress_data=Received $1 bytes ($2 %)
-progress_data2=Received $1 bytes
+progress_datan=Received $1 ($2 %)
+progress_data2n=Received $1
 progress_done=.. download complete.
 progress_incache=Found $1 in cache ..
 

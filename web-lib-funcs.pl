@@ -6301,7 +6301,7 @@ elsif ($_[0] == 3) {
 		if ($st != $progress_step ||
 		    $time_now - $last_progress_time > 60) {
 			# Show progress every 10% or 60 seconds
-			print $sp,&text('progress_data', &nice_size($_[1]),
+			print $sp,&text('progress_datan', &nice_size($_[1]),
 				        int($_[1]*100/$progress_size)),"<br>\n";
 			$last_progress_time = $time_now;
 			}
@@ -6310,7 +6310,7 @@ elsif ($_[0] == 3) {
 	else {
 		# No total size .. so only show in 100k jumps
 		if ($_[1] > $last_progress_size+100*1024) {
-			print $sp,&text('progress_data2',
+			print $sp,&text('progress_data2n',
 					&nice_size($_[1])),"<br>\n";
 			$last_progress_size = $_[1];
 			}
