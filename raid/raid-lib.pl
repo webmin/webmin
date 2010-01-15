@@ -613,7 +613,7 @@ foreach $vg (&lvm::list_volume_groups()) {
 			      &text('create_lvm', $lv->{'vg'}, $lv->{'name'}) ]);
 		}
 	}
-return @disks;
+return sort { $a->[0] cmp $b->[0] } @disks;
 }
 
 # convert_to_hd(device)

@@ -87,7 +87,8 @@ if ($raid->{'rebuild'}) {
 
 # Display partitions in RAID
 $rp = undef;
-@devs = &find('device', $raid->{'members'});
+@devs = sort { $a->{'value'} cmp $b->{'value'} }
+	     &find('device', $raid->{'members'});
 foreach $d (@devs) {
 	if (&find('raid-disk', $d->{'members'}) ||
             &find('parity-disk', $d->{'members'})) {
@@ -149,6 +150,7 @@ if ($raid_mode eq "mdadm") {
 			    $text{'view_adddesc'});
 		}
 	if (@rdisks > 1) {
+		@rdisks = sort { $a->[0] cmp $b->[0] } @rdisks;
 		push(@grid, &ui_submit($text{'view_remove'}, "remove")." ".
 			    &ui_select("rdisk", undef, \@rdisks),
 			    $text{'view_removedesc'});
@@ -156,6 +158,7 @@ if ($raid_mode eq "mdadm") {
 			    $text{'view_remove_detdesc'});
 		}
 	if ($sparescnt>0 && $lvl != 10) {
+		@spares = sort { $a->[0] cmp $b->[0] } @spares;
 		push(@grid, &ui_submit($text{'view_grow'}, "grow")." ".
 			    &ui_select("ndisk", undef, \@spares),
 			    $text{'view_growdesc'});
