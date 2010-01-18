@@ -427,6 +427,11 @@ sub routing_config_files
 return ( $network_interfaces_config );
 }
 
+sub network_config_files
+{
+return ( "/etc/hostname", "/etc/HOSTNAME", "/etc/mailname" );
+}
+
 # show default router and device
 sub routing_input
 {

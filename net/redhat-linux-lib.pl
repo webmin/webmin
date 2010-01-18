@@ -285,6 +285,11 @@ else {
 return @rv;
 }
 
+sub network_config_files
+{
+return ( "/etc/HOSTNAME", $network_config );
+}
+
 sub routing_input
 {
 local (%conf, @st, @hr, %sysctl);

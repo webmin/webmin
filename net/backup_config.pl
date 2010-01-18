@@ -6,10 +6,16 @@ do 'net-lib.pl';
 sub backup_config_files
 {
 local @rv = ( $config{'hosts_file'} );
+if ($config{'ipnodes_file'}) {
+	push(@rv, $config{'ipnodes_file'});
+	}
 local $dns = &get_dns_config();
 push(@rv, @{$dns->{'files'}});
 if (defined(&routing_config_files)) {
 	push(@rv, &routing_config_files());
+	}
+if (defined(&network_config_files)) {
+	push(@rv, &network_config_files());
 	}
 push(@rv, map { $_->{'file'} } &boot_interfaces());
 return &unique(@rv);

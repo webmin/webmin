@@ -346,6 +346,11 @@ sub routing_config_files
 return ( "/etc/defaultrouter", "/etc/notrouter", "/etc/gateways" );
 }
 
+sub network_config_files
+{
+return ( "/etc/nodename" );
+}
+
 # get_defaultrouters()
 # Returns a list of all default routers
 sub get_defaultrouters

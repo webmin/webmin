@@ -54,3 +54,4 @@ On Debian systems, if the dns-nameservers option is defined in /etc/network/inte
 Updated bonding support to use the new format in Debian 5.0, thanks to Caspar Smit.
 ---- Changes since 1.500 ----
 Added a field for editing the MAC address to apply at boot time on Redhat and Debian-based systems.
+Include hostname configuration files in backups, thanks to Caspar Smit.
