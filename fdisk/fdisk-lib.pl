@@ -187,6 +187,19 @@ if (!-d "/proc/ide") {
 		}
 	}
 
+# Get Linux disk ID mapping
+local %id_map;
+local $id_dir = "/dev/disk/by-id";
+opendir(IDS, $id_dir);
+foreach my $id (readdir(IDS)) {
+	local $id_link = readlink("$id_dir/$id");
+	if ($id_link) {
+		local $id_real = &simplify_path(&resolve_links("$id_dir/$id"));
+		$id_map{$id_real} = $id;
+		}
+	}
+closedir(IDS);
+
 # Call fdisk to get partition and geometry information
 local $devs = join(" ", @devs);
 local ($disk, $m2);
@@ -335,6 +348,9 @@ while(<FDISK>) {
 			$short =~ s/^.*\///g;
 			}
 		$disk->{'short'} = $short;
+
+		$disk->{'id'} = $id_map{$disk->{'device'}} ||
+				$id_map{"/dev/$short"};
 
 		push(@disks, $disk);
 		}
