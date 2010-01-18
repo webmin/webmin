@@ -1665,6 +1665,10 @@ $ENV{'USERADMIN_REAL'} = $user->{'real'};
 $ENV{'USERADMIN_SHELL'} = $user->{'shell'};
 $ENV{'USERADMIN_HOME'} = $user->{'home'};
 $ENV{'USERADMIN_GID'} = $user->{'gid'};
+local $group = &my_getgrgid($user->{'gid'});
+if ($group) {
+	$ENV{'USERADMIN_GROUP'} = $group;
+	}
 $ENV{'USERADMIN_PASS'} = $plainpass if (defined($plainpass));
 $ENV{'USERADMIN_SECONDARY'} = join(",", @{$secs}) if (defined($secs));
 $ENV{'USERADMIN_ACTION'} = $action;
