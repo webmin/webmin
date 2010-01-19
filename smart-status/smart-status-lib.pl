@@ -69,6 +69,7 @@ foreach my $d (&fdisk::list_disks_partitions()) {
 					    'type' => 'scsi',
 					    'subtype' => '3ware',
 					    'subdisk' => $i,
+					    'id' => $d->{'id'},
 					  });
 				}
 			$tcount{$twdev}++;
@@ -84,6 +85,7 @@ foreach my $d (&fdisk::list_disks_partitions()) {
 				    'type' => 'scsi',
 				    'subtype' => 'cciss',
 				    'subdisk' => $i,
+				    'id' => $d->{'id'},
 				  });
 			}
 		}

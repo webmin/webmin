@@ -17,13 +17,9 @@ else {
 # Check the drive status
 sub status_monitor_status
 {
-if (!-r $_[1]->{'drive'}) {
-	# Could not find device
-	return { 'up' => -1,
-		 'desc' => $text{'monitor_nosuch'} };
-	}
 local @drives = &list_smart_disks_partitions();
-local ($d) = grep { $_->{'device'} eq $_[1]->{'drive'} &&
+local ($d) = grep { ($_->{'device'} eq $_[1]->{'drive'} ||
+		     $_->{'id'} eq $_[1]->{'drive'}) &&
 		    $_->{'subdisk'} eq $_[1]->{'subdisk'} } @drives;
 if (!$d) {
 	# Not in list?!
@@ -73,14 +69,17 @@ sub status_monitor_dialog
 {
 local $rv;
 local @drives = &list_smart_disks_partitions();
-local ($inlist) = grep { $_->{'device'} eq $_[1]->{'drive'} &&
+local ($inlist) = grep { ($_->{'device'} eq $_[1]->{'drive'} ||
+			  $_->{'id'} eq $_[1]->{'drive'}) &&
 		         $_->{'subdisk'} eq $_[1]->{'subdisk'} } @drives;
 $inlist = 1 if (!$_[1]->{'drive'});
 $rv .= &ui_table_row($text{'monitor_drive'},
-      &ui_select("drive", !$_[1]->{'drive'} ? $drives[0]->{'device'} :
-			   $inlist ? $inlist->{'device'}.':'.$inlist->{'subdisk'} :
-				     undef,
-		 [ (map { [ $_->{'device'}.':'.$_->{'subdisk'},
+      &ui_select("drive",
+		 !$_[1]->{'drive'} ? $drives[0]->{'device'} :
+		 $inlist ? ($inlist->{'id'} || $inlist->{'device'}).':'.
+			     $inlist->{'subdisk'} :
+			   undef,
+		 [ (map { [ ($_->{'id'} || $_->{'device'}).':'.$_->{'subdisk'},
 			   $_->{'desc'}.($_->{'model'} ?
 				" ($_->{'model'})" : "") ] } @drives),
 		   [ "", $text{'monitor_other'} ] ]).

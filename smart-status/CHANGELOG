@@ -15,3 +15,5 @@ Added support for systems with both old and new 3ware cards.
 Added support for FreeBSD and OSX systems, if they have the smartctl package installed.
 ---- Changes since 1.490 ----
 Fixed the collapsible section showing raw SMART status output.
+---- Changes since 1.500 ----
+Use disk IDs for SMART monitoring instead of device names, which may change.
