@@ -277,7 +277,8 @@ sub execute_backup
 # Work out modules we can use
 local @mods;
 foreach my $m (@{$_[0]}) {
-	if ($m && &foreign_check($m)) {
+	my $mdir = &module_root_directory($m);
+	if ($m && &foreign_check($m) && -r "$mdir/backup_config.pl") {
 		push(@mods, $m);
 		}
 	}
@@ -521,7 +522,9 @@ foreach my $m (@{$_[0]}) {
 
 # Call module pre functions
 foreach my $m (@{$_[0]}) {
-	if ($m && &foreign_check($m) && !$_[4]) {
+	my $mdir = &module_root_directory($m);
+	if ($m && &foreign_check($m) && !$_[4] &&
+	    -r "$mdir/backup_config.pl") {
 		&foreign_require($m, "backup_config.pl");
 		if (&foreign_defined($m, "pre_restore")) {
 			local $err = &foreign_call($m, "pre_restore", \@files);
