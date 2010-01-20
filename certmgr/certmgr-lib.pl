@@ -1,7 +1,7 @@
 # certmgr-lib.pl
 
-do '../web-lib.pl';
-&init_config();
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 %access = &get_module_acl();
 
 @pages = ( "gencert", "gencsr", "signcsr", "import", "view", "manual" );
