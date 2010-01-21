@@ -2,6 +2,7 @@
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
+&init_config();
 %access = &get_module_acl();
 
 @pages = ( "gencert", "gencsr", "signcsr", "import", "view", "manual" );
