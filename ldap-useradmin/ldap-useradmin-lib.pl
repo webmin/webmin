@@ -242,7 +242,8 @@ local $base = &get_user_base();
 local @attrs = &user_to_dn($_[1]);
 push(@attrs, &split_props($config{'mod_props'}, $_[1]));
 push(@attrs, @{$_[1]->{'ldap_attrs'}});
-if (defined($_[1]->{'ldap_class'})) {
+if ($_[1]->{'ldap_class'} &&
+    (!ref($_[1]->{'ldap_class'}) || @{$_[1]->{'ldap_class'}})) {
 	push(@attrs, "objectClass" => $_[1]->{'ldap_class'});
 	}
 if (&indexoflc("person", @{$_[1]->{'ldap_class'}}) >= 0 &&
