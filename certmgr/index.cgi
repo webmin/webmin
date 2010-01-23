@@ -8,10 +8,9 @@ if (! -d $config{'ssl_cert_dir'} ) { system("mkdir -p -m 0755 $config{'ssl_cert_
 if (! -d $config{'ssl_csr_dir'} ) { system("mkdir -p -m 0755 $config{'ssl_csr_dir'}"); }
 if (! -d $config{'ssl_key_dir'} ) { system("mkdir -p -m 0700 $config{'ssl_key_dir'}"); }
 
-&header($text{'index_title'}, "", "intro", 1, 1);
+&ui_print_header(undef, $text{'index_title'}, "", "intro", 1, 1);
 
 print <<EOF;
-<hr>
 <table border>
 <tr $tb> <td align=center><b>$text{'index_header'}</b></td> </tr>
 <tr $cb> <td><table width=100%><tr>
@@ -23,6 +22,5 @@ foreach $p (@pages) {
 	print "</td><td><a href=$p.cgi>$txt</a></td></tr>\n";
 	}
 print "</table></td></tr></table>\n";
-print &ui_hr();
 
-&footer("/", $text{'index_index'});
+&ui_print_footer("/", $text{'index_index'});
