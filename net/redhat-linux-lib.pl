@@ -94,8 +94,11 @@ while($f = readdir(CONF)) {
 				($conf{'ONBOOT'} eq 'yes');
 		$b->{'address'} = $conf{'IPADDR'};
 		$b->{'netmask'} = $conf{'NETMASK'};
-		$b->{'broadcast'} = $conf{'BROADCAST'} ||
-		    &compute_broadcast($b->{'address'}, $b->{'netmask'});
+		$b->{'broadcast'} = $conf{'BROADCAST'};
+		if (!$b->{'broadcast'} && $b->{'address'} && $b->{'netmask'}) {
+			$b->{'broadcast'} = &compute_broadcast($b->{'address'},
+							       $b->{'netmask'});
+			}
 		$b->{'gateway'} = $conf{'GATEWAY'};
 		$b->{'mtu'} = $conf{'MTU'};
 		$b->{'ether'} = $conf{'MACADDR'};
