@@ -239,7 +239,8 @@ else {
 	local $lref = &read_file_lines($config{'mdadm'});
 	local $lvl = &find_value('raid-level', $_[0]->{'members'});
 	$lvl = $lvl =~ /^\d+$/ ? "raid$lvl" : $lvl;
-	push(@$lref, "DEVICE ".join(" ", @devices));
+	push(@$lref, "DEVICE ".
+		     join(" ", map { &device_to_volid($_) } @devices));
 	push(@$lref, "ARRAY $_[0]->{'value'} level=$lvl devices=".
 		     join(",", @devices).
 		     ($sg ? " spare-group=$sg" : ""));
@@ -299,6 +300,16 @@ else {
 	&flush_file_lines($config{'mdadm'});
 	&update_initramfs();
 	}
+}
+
+# device_to_volid(device)
+# Given a device name like /dev/sda1, convert it to a volume ID if possible.
+# Otherwise return the device name.
+sub device_to_volid
+{
+local ($dev) = @_;
+return $dev;
+#return &fdisk::get_volid($dev) || $dev;
 }
 
 # make_raid(&raid, force, [missing], [assume-clean])

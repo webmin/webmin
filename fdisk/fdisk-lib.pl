@@ -572,7 +572,7 @@ local @rv;
 if ($_[0] eq "4" || $_[0] eq "6" ||
     $_[0] eq "1" || $_[0] eq "e") { @rv = ( "msdos" ); }
 elsif ($_[0] eq "b" || $_[0] eq "c") { @rv = ( "vfat" ); }
-elsif ($_[0] eq "83") { @rv = ( "ext3", "ext2" ); }
+elsif ($_[0] eq "83") { @rv = ( "ext3", "ext4", "ext2" ); }
 elsif ($_[0] eq "82") { @rv = ( "swap" ); }
 elsif ($_[0] eq "81") { @rv = ( "minix" ); }
 else { return ( ); }
@@ -630,7 +630,7 @@ elsif ($_[0] eq "reiserfs") {
 			   [ [ "", $text{'default'} ],
 			     [ "rupasov", "tea" ] ]));
 	}
-elsif ($_[0] eq "ext3") {
+elsif ($_[0] =~ /^ext\d+$/) {
 	&opt_input("ext2_b", $text{'bytes'}, 1);
 	&opt_input("ext2_f", $text{'bytes'}, 0);
 	&opt_input("ext2_i", "", 1);
@@ -705,13 +705,17 @@ elsif ($_[0] eq "reiserfs") {
 	$cmd .= " -h $in{'reiserfs_h'}" if ($in{'reiserfs_h'});
 	$cmd .= " $_[1]";
 	}
-elsif ($_[0] eq "ext3") {
-	if (&has_command("mkfs.ext3")) {
-		$cmd = "mkfs -t ext3";
+elsif ($_[0] =~ /^ext\d+$/) {
+	if (&has_command("mkfs.$_[0]")) {
+		$cmd = "mkfs -t $_[0]";
 		$cmd .= &opt_check("ext3_j", '\d+', "-j");
 		}
-	elsif (&has_command("mke3fs")) {
+	elsif ($_[0] eq "ext3" && &has_command("mke3fs")) {
 		$cmd = "mke3fs";
+		$cmd .= &opt_check("ext3_j", '\d+', "-j");
+		}
+	elsif ($_[0] eq "ext4" && &has_command("mke4fs")) {
+		$cmd = "mke4fs";
 		$cmd .= &opt_check("ext3_j", '\d+', "-j");
 		}
 	else {
@@ -755,14 +759,14 @@ return $cmd;
 # Returns 1 if this filesystem type can be tuned
 sub can_tune
 {
-return $_[0] eq "ext2" || $_[0] eq "ext3";
+return $_[0] =~ /^ext\d+$/;
 }
 
 # tunefs_options(type)
 # Output HTML for tuning options for some filesystem type
 sub tunefs_options
 {
-if ($_[0] eq "ext2" || $_[0] eq "ext3") {
+if ($_[0] =~ /^ext\d+$/) {
 	# Gaps between checks
 	&opt_input("tunefs_c", "", 1);
 
@@ -801,7 +805,7 @@ if ($_[0] eq "ext2" || $_[0] eq "ext3") {
 # Returns the tuning command based on user inputs
 sub tunefs_parse
 {
-if ($_[0] eq "ext2" || $_[0] eq "ext3") {
+if ($_[0] =~ /^ext\d+$/) {
 	$cmd = "tune2fs";
 	$cmd .= &opt_check("tunefs_c", '\d+', "-c");
 	$cmd .= $in{'tunefs_e_def'} ? "" : " -e$in{'tunefs_e'}";
@@ -872,8 +876,7 @@ return ();
 # Returns 1 if some filesystem type can fsck'd
 sub can_fsck
 {
-return ($_[0] eq "ext2" && &has_command("fsck.ext2") ||
-	$_[0] eq "ext3" && &has_command("fsck.ext3") ||
+return ($_[0] =~ /^ext\d+$/ && &has_command("fsck.$_[0]") ||
 	$_[0] eq "minix" && &has_command("fsck.minix"));
 }
 
@@ -881,7 +884,7 @@ return ($_[0] eq "ext2" && &has_command("fsck.ext2") ||
 # Returns the fsck command to unconditionally check a filesystem
 sub fsck_command
 {
-if ($_[0] eq "ext2" || $_[0] eq "ext3") {
+if ($_[0] =~ /^ext\d+$/) {
 	return "fsck -t $_[0] -p $_[1]";
 	}
 elsif ($_[0] eq "minix") {
@@ -1172,6 +1175,8 @@ local @fstypes = ( "ext2" );
 push(@fstypes, "ext3") if (&has_command("mkfs.ext3") ||
 			   &has_command("mke3fs") ||
 			   `mkfs.ext2 -h 2>&1` =~ /\[-j\]/);
+push(@fstypes, "ext4") if (&has_command("mkfs.ext4") ||
+			   &has_command("mke4fs"));
 push(@fstypes, "reiserfs") if (&has_command("mkreiserfs"));
 push(@fstypes, "xfs") if (&has_command("mkfs.xfs"));
 push(@fstypes, "jfs") if (&has_command("mkfs.jfs"));

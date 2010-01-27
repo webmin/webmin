@@ -20,3 +20,5 @@ When creating a logical volume, size can now be specified as a fraction of the v
 ---- Changes since 1.480 ----
 Added an option to force addition of a physical volume to a group.
 Cleaned up code to use quotemeta instead of manual quoting.
+---- Changes since 1.500 ----
+Added support for creating EXT4 filesystems.

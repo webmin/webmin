@@ -436,7 +436,7 @@ return $? ? $out : undef;
 # 0 = no, 1 = enlarge only, 2 = enlarge or shrink
 sub can_resize_filesystem
 {
-if ($_[0] eq "ext2" || $_[0] eq "ext3") {
+if ($_[0] =~ /^ext\d+$/) {
 	if (&has_command("e2fsadm")) {
 		return 2;	# Can extend and reduce
 		}

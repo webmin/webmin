@@ -28,3 +28,5 @@ Added an option to skip initialization of metadata when creating a RAID device.
 RAID 6 devices can now have spares, thanks to Caspar Smit.
 ---- Changes since 1.490 ----
 Added a button to remove a detached partition, thanks to Caspar Smit.
+---- Changes since 1.500 ----
+Added support for creating EXT4 filesystems.

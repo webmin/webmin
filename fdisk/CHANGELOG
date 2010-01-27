@@ -23,3 +23,5 @@ Changed the module's main page so that it only lists disks, with links to a sepa
 Re-wrote all code to use the new Webmin user interface library, for a more consistent look.
 ---- Changes since 1.490 ----
 Added support for new SCSI device information files under /sys, as seen in 2.6.30+ kernels.
+---- Changes since 1.500 ----
+Added support for creating EXT4 filesystems.
