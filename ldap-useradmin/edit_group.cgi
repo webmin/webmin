@@ -17,6 +17,7 @@ else {
 	$group = $ginfo->get_value('cn');
 	$gid = $ginfo->get_value('gidNumber');
 	$pass = $ginfo->get_value('userPassword');
+	$desc = $ginfo->get_value('description');
 	@members = $ginfo->get_value('memberUid');
 	foreach $oc ($ginfo->get_value('objectClass')) {
 		$oclass{$oc} = 1;
@@ -65,6 +66,10 @@ else {
 	}
 print &ui_table_row($text{'gedit_gid'},
 	$gidfield);
+
+# Description
+print &ui_table_row($text{'gedit_desc'},
+	&ui_textbox("desc", $desc, 40));
 
 # Group password (rarely used, but..)
 print &ui_table_row($text{'pass'},

@@ -69,3 +69,5 @@ Added a Module Config option to use a text box for entering secondary group memb
 ---- Changes since 1.490 ----
 Improve the user and group rename code to not move the DN to be under the global base if not needed.
 Modifying a user now correctly changes the sn attribute too.
+---- Changes since 1.500 ----
+Added a field for editing the description for LDAP groups.

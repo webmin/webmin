@@ -120,6 +120,7 @@ else {
 	}
 $in{'gid'} =~ /^[0-9]+$/ || &error(&text('gsave_egid', $in{'gid'}));
 $gid = $in{'gid'};
+$desc = $in{'desc'} || undef;
 @members = split(/\r?\n/, $in{members});
 if ($in{'new'} || $oldgroup ne $group) {
 	# Check for collision
@@ -232,6 +233,14 @@ if (!$in{'new'}) {
 		$newdn = $in{'dn'};
 		}
 
+	# Add or remove description
+	if ($desc) {
+		push(@props, "description" => $desc);
+		}
+	else {
+		push(@rprops, "description");
+		}
+
 	# Update group properties
 	$rv = $ldap->modify($newdn, replace =>
 			    { "gidNumber" => $gid,
@@ -284,6 +293,9 @@ else {
 		push(@props, "sambaGrouptype", 2)
 			if (&in_schema($schema, "sambaGrouptype") &&
 			    $samba_group_schema == 3);
+		}
+	if ($desc) {
+		push(@props, "description" => $desc);
 		}
 	$rv = $ldap->add($newdn, attr =>
 			 [ "cn" => $group,
