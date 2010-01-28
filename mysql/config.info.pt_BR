@@ -1,0 +1,60 @@
+line1=Op&#231;&#245;es configur&#225;veis,11
+
+login=Login de administra&#231;&#227;o,3,Autom&#225;tico
+
+pass=Senha de administra&#231;&#227;o,12
+
+perpage=N&#250;mero de linhas para exibir por p&#225;gina,0,5
+
+style=Exibir base de dados e tabelas como,1,1-Lista,0-&#205;cone,2-Somente nomes
+
+add_mode=Usar linha vertical ao editar interface,1,1-Sim,0-N&#227;o
+
+blob_mode=Exibir  blob e campos texto como,1,0-Dados na tabela,1-Links para baixar
+
+nodbi=Usar DBI para conectar se dispon&#237;vel?,1,0-Sim,1-N&#227;o
+
+nopwd=Usar as vari&#225;veis MYSQL_PWD para passar a senha?,1,0-Sim,1-N&#227;o
+
+date_subs=Fazer substitui&#231;&#227;o <tt>strftime</tt> dos destinos do backup??,1,1-Sim,0-N&#227;o
+
+passwd_mode=Senha no modo hashing,1,1-Velho,0-Padr&#227;o
+
+encoding=Codifica&#231;&#227;o para conte&#250;do ba base de dados,3,Padr&#227;o (para a linguagem atual)
+
+max_dbs=N&#250;mero m&#225;ximo de base de dados e tabelas para exibir,0,5
+
+max_text=Exibi&#231;&#227;o m&#225;xima de comprimento de campos texto,3,Ilimitado
+
+charset=Defini&#231;&#227;o de caracteres para dados do MySQL,15,codifica&#231;&#227;o
+
+line2=Configura&#231;&#227;o do Sistema,11
+
+mysqlshow=Caminho para o comando mysqlshow,0
+
+mysqladmin=Caminho para o comando mysqladmin,0
+
+mysql=Caminho para o comando mysql,0
+
+mysqldump=Caminho para o comando mysqldump,0
+
+mysqlimport=Caminho para o comando mysqlimport,0
+
+mysqld=Caminho para o comando mysqld,3,Autom&#225;tico
+
+start_cmd=Comando para iniciar o servidor MySQL,0
+
+stop_cmd=Comando para parar o servidor MySQL,3,Autom&#225;tico
+
+mysql_libs=Caminho para o diret&#243;rio das bibliotecas compartilhadas do MySQL,3,Nenhum
+
+mysql_data=Caminho para o diret&#243;rio das bases de dados do MySQL,3,Nenhum
+
+host=Host para conectar no MySQL,3,localhost
+
+port=Porta para conectar no MySQL,3,Padr&#227;o
+
+sock=Arquivo de socket,3,Padr&#227;o
+
+my_cnf=Arquivo de configura&#231;&#227;o,0
+
