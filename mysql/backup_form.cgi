@@ -121,6 +121,11 @@ print &ui_table_row($text{'backup_compress'},
 		  [ 1, $text{'backup_gzip'} ],
 		  [ 2, $text{'backup_bzip2'} ] ]));
 
+# Show single-transaction option
+$s = $c{'backup_single_'.$in{'db'}};
+print &ui_table_row($text{'backup_single'},
+	&ui_yesno_radio("single", $s ? 1 : 0));
+
 if ($cron) {
 	# Show before/after commands
 	$b = $c{'backup_before_'.$in{'db'}};

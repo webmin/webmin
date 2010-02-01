@@ -1324,13 +1324,14 @@ return $two eq "\037\213" ? 1 :
 }
 
 # backup_database(db, dest-file, compress-mode, drop-flag, where-clause,
-#                 charset, &compatible, &only-tables, run-as-user)
+#                 charset, &compatible, &only-tables, run-as-user,
+#                 single-transaction-flag)
 # Backs up a database to the given file, optionally with compression. Returns
 # undef on success, or an error message on failure.
 sub backup_database
 {
 local ($db, $file, $compress, $drop, $where, $charset, $compatible,
-       $tables, $user) = @_;
+       $tables, $user, $single) = @_;
 if ($compress == 0) {
 	$writer = ">$file";
 	}
@@ -1341,6 +1342,7 @@ elsif ($compress == 2) {
 	$writer = "| bzip2 -c >$file";
 	}
 local $dropsql = $drop ? "--add-drop-table" : "";
+local $singlesql = $single ? "--single-transaction" : "";
 local $wheresql = $where ? "\"--where=$in{'where'}\"" : "";
 local $charsetsql = $charset ?
 	"--default-character-set=".quotemeta($charset) : "";
@@ -1349,7 +1351,7 @@ local $compatiblesql = @$compatible ?
 local $quotingsql = &supports_quoting() ? "--quote-names" : "";
 local $routinessql = &supports_routines() ? "--routines" : "";
 local $tablessql = join(" ", map { quotemeta($_) } @$tables);
-local $cmd = "$config{'mysqldump'} $authstr $dropsql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql 2>&1 $writer";
+local $cmd = "$config{'mysqldump'} $authstr $dropsql $singlesql $wheresql $charsetsql $compatiblesql $quotingsql $routinessql ".quotemeta($db)." $tablessql 2>&1 $writer";
 if ($user && $user ne "root") {
 	$cmd = &command_as_user($user, undef, $cmd);
 	}

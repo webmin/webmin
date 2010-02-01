@@ -75,7 +75,8 @@ foreach $db (@dbs) {
 				$config{'backup_charset_'.$sf},
 				\@compat,
 				\@tables,
-				"root");
+				"root",
+				$config{'backup_single_'.$sf});
 	if ($err) {
 		print "Backup of database $db to file $file failed:\n";
 		print $out;
