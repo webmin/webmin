@@ -148,16 +148,16 @@ else {
 		$b->{'netmask'} = $in{'netmask'};
 		}
 
-	if (!$access{'broadcast'}) {
+	if (!$access{'broadcast'} || $in{'broadcast_def'}) {
 		# Work out broadcast
 		$b->{'broadcast'} = $in{'new'} ? 
 			&compute_broadcast($b->{'address'}, $b->{'netmask'}) :
 			$oldb->{'broadcast'};
 		}
 	elsif (&can_edit("broadcast", $b)) {
-
+		# Manually entered broadcast
 		&is_ipv6_address($in{'address'}) || 
-		($auto && !$in{'broadcast'}) ||
+		    ($auto && !$in{'broadcast'}) ||
 			&check_ipaddress($in{'broadcast'}) ||
 			&error(&text('bifc_ebroad', $in{'broadcast'}));
 		$b->{'broadcast'} = $in{'broadcast'};

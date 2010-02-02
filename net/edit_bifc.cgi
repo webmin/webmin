@@ -107,8 +107,9 @@ if (!$b || !&is_ipv6_address($b->{'address'})){
 	if (&can_edit("broadcast", $b) && $access{'broadcast'}) {
 		# Can edit broadcast address
 		push(@grid, $text{'ifcs_broad'},
-		    &ui_textbox("broadcast", $b ? $b->{'broadcast'}
-						: $config{'def_broadcast'},15));
+		    &ui_opt_textbox("broadcast",
+			$b ? $b->{'broadcast'} : $config{'def_broadcast'},
+			15, $text{'ifcs_auto'}));
 		}
 	elsif ($b && $b->{'broadcast'}) {
 		# Broadcast is fixed
