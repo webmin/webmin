@@ -1425,12 +1425,35 @@ if (!$tconfig{'nohr'} && !$tconfig{'nobottomhr'}) {
 return $rv;
 }
 
-=head2 ui_print_header(subtext, args...)
+=head2 ui_print_header(subtext, image, [help], [config], [nomodule], [nowebmin], [rightside], [head-stuff], [body-stuff], [below])
 
 Print HTML for a header with the post-header line. The args are the same
-as those passed to header(), defined in web-lib-funcs.pl. The exception is
-the additional subtext parameter, which is for optional HTML to display
-just below the header.
+as those passed to header(), defined in web-lib-funcs.pl, with the addition
+of the subtext parameter :
+
+=item subtext - Text to display below the title
+
+=item title - The text to show at the top of the page
+
+=item image - An image to show instead of the title text. This is typically left blank.
+
+=item help - If set, this is the name of a help page that will be linked to in the title.
+
+=item config - If set to 1, the title will contain a link to the module's config page.
+
+=item nomodule - If set to 1, there will be no link in the title section to the module's index.
+
+=item nowebmin - If set to 1, there will be no link in the title section to the Webmin index.
+
+=item rightside - HTML to be shown on the right-hand side of the title. Can contain multiple lines, separated by <br>. Typically this is used for links to stop, start or restart servers.
+
+=item head-stuff - HTML to be included in the <head> section of the page.
+
+=item body-stuff - HTML attributes to be include in the <body> tag.
+
+=item below - HTML to be displayed below the title. Typically this is used for application or server version information.
+
+
 
 =cut
 sub ui_print_header
