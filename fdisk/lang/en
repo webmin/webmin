@@ -242,6 +242,7 @@ fs_msdos=MS-DOS
 fs_vfat=Windows
 fs_reiserfs=ReiserFS
 fs_ext3=Linux Native
+fs_ext4=New Linux Native
 fs_xfs=SGI
 fs_jfs=IBM Journalling
 
