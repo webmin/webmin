@@ -13,7 +13,7 @@ $cmd = &fdisk::mkfs_parse($in{'fs'}, $raid->{'value'});
 
 $lvl = &find_value('raid-level', $raid->{'members'});
 $chunk = &find_value('chunk-size', $raid->{'members'});
-if ($lvl >= 4 && $in{'fs'} =~ /^ext\d+$/ {
+if ($lvl >= 4 && $in{'fs'} =~ /^ext\d+$/) {
 	$bs = $in{'ext2_b_def'} ? 4096 : $in{'ext2_b'};
 	}
 
