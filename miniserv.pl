@@ -1466,7 +1466,7 @@ if (%users) {
 				    "Password contains invalid characters");
 			}
 
-		if ($config{'passdelay'} && !$config{'inetd'}) {
+		if ($config{'passdelay'} && !$config{'inetd'} && $authuser) {
 			# check with main process for delay
 			print DEBUG "handle_request: about to ask for password delay\n";
 			print $PASSINw "delay $authuser $acptip $validated\n";
