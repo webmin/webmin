@@ -32,9 +32,10 @@ close(TEST);
 $pid = fork();
 if (!$pid) {
 	chdir("$module_root_directory/ajaxterm");
+	$logfile = $ENV{'WEBMIN_VAR'}.'/ajaxterm.log';
 	untie(*STDIN); open(STDIN, "</dev/null");
-	untie(*STDOUT); open(STDOUT, ">/dev/null");
-	untie(*STDERR); open(STDERR, ">/dev/null");
+	untie(*STDOUT); open(STDOUT, ">$logfile");
+	untie(*STDERR); open(STDERR, ">$logfile");
 	exec($python, "ajaxterm.py", "--port", $port, "--log");
 	exit(1);
 	}
