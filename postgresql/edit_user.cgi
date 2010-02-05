@@ -54,6 +54,7 @@ print &ui_table_row($text{'user_other'},
 	&ui_yesno_radio("other", $user[4] =~ /t|1/));
 
 # Valid until
+$user[6] = '' if ($user[6] !~ /\S/);
 print &ui_table_row($text{'user_until'},
 	$user[6] ? &ui_textbox("until", $user[6], 40) :
 		&ui_opt_textbox("until", $user[6], 40, $text{'user_forever'}));
