@@ -20,7 +20,8 @@ if ($mysql_version >= 4.1) {
 	print &ui_table_row($text{'newdb_charset'},
 		     &ui_select("charset", undef,
 				[ [ undef, "&lt;$text{'default'}&gt;" ],
-				  @charsets ]));
+				  map { [ $_->[0], $_->[0]." (".$_->[1].")" ] }
+				      @charsets ]));
 	}
 
 @coll = &list_collation_orders();
