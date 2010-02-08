@@ -222,10 +222,15 @@ sub list_locks
 {
 local($l, $started, @rv);
 local $out;
-&execute_command("$config{samba_status_program} -L", undef, \$out, undef);
+&execute_command("LANG=C $config{samba_status_program} -L", undef, \$out, undef);
 foreach $l (split(/\n/, $out)) {
 	if ($l =~ /^----/) { $started = 1; }
-	if ($started && $l =~ /^(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(.*)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)/) {
+	if ($started && $l =~ /^(\d+)\s+(\d+)\s+(\S+)\s+(0x\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S.*)\s\s((Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s.*)/i) {
+		# New-style line
+		push(@rv, [ $1, $3, $5, $6, $7.'/'.$8, $9 ]);
+		}
+	elsif ($started && $l =~ /^(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(.*)\s+(\S+\s+\S+\s+\d+\s+\d+:\d+:\d+\s+\d+)/) {
+		# Old-style line
 		push(@rv, [ $1, $2, $3, $4, $5, $6 ]);
 		}
 	}

@@ -61,12 +61,19 @@ if (@cons) {
 		if (!$in{'share'}) {
 			push(@cols, &html_escape($c->[0]));
 			}
+		$p = undef;
+		&get_share($c->[0]);
+		$p = &getval("path");
 		push(@cols, &html_escape($c->[1]));
 		push(@cols, &html_escape($c->[2]));
 		push(@cols, &html_escape($c->[4]));
 		push(@cols, &html_escape($c->[5]));
 		local $ulocks;
 		@ulocks = grep { $_->[0] == $c->[3] } @locks;
+		if ($p) {
+			# Limit to files under share
+			@ulocks = grep { $_->[4] =~ /^\Q$p\E\// } @ulocks;
+			}
 		foreach $l (@ulocks) {
 			$ulocks .= &html_escape($l->[4])." (".
 			      	   &html_escape($l->[1]).")<br>\n";
