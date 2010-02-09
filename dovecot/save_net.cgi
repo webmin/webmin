@@ -15,7 +15,7 @@ $sslopt = &find("ssl_disable", $conf, 2) ? "ssl_disable" : "ssl";
 		("listen", "ssl_listen");
 foreach $l (@listens) {
 	if ($in{$l."_mode"} == 0) {
-		$listen = "";
+		$listen = undef;
 		}
 	elsif ($in{$l."_mode"} == 1) {
 		$listen = "[::]";
