@@ -26,13 +26,14 @@ closedir(DIR);
 return @rv;
 }
 
-# create_atjob(user, time, commands, directory)
+# create_atjob(user, time, commands, directory, send-mail)
 sub create_atjob
 {
 local @tm = localtime($_[1]);
 local $date = sprintf "%2.2d:%2.2d %d.%d.%d",
 		$tm[2], $tm[1], $tm[3], $tm[4]+1, $tm[5]+1900;
-local $cmd = "cd ".quotemeta($_[3])." ; at $date";
+local $mailflag = $_[4] ? "-m" : "";
+local $cmd = "cd ".quotemeta($_[3])." ; at $mailflag $date";
 local @uinfo = getpwnam($_[0]);
 if ($uinfo[2] != $<) {
 	# Only SU if we are not already the user

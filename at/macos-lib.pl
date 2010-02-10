@@ -26,16 +26,17 @@ closedir(DIR);
 return @rv;
 }
 
-# create_atjob(user, time, commands, directory)
+# create_atjob(user, time, commands, directory, send-email)
 sub create_atjob
 {
 local @tm = localtime($_[1]);
 local $date = sprintf "%2.2d:%2.2d %d.%d.%d",
 		$tm[2], $tm[1], $tm[3], $tm[4]+1, $tm[5]+1900;
-&open_execute_command(AT, "su \"$_[0]\" -c \"cd $_[3] ; at $date\" >/dev/null 2>&1", 0); 
+local $mailflag = $_[4] ? "-m" : "";
+&open_execute_command(AT, "su \"$_[0]\" -c \"cd $_[3] ; at $mailflag $date\" >/dev/null 2>&1", 0); 
 print AT $_[2];
 close(AT);
-&additional_log('exec', undef, "su \"$_[0]\" -c \"cd $_[3] ; at $date\"");
+&additional_log('exec', undef, "su \"$_[0]\" -c \"cd $_[3] ; at $mailflag $date\"");
 }
 
 # delete_atjob(id)

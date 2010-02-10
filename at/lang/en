@@ -4,6 +4,7 @@ index_user=Run as user
 index_date=Run on date
 index_time=Run at time
 index_cmd=Commands to execute
+index_mail=Send email on completion?
 index_id=Job ID
 index_exec=Run at
 index_created=Created on

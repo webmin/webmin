@@ -24,7 +24,7 @@ $in{'cmd'} =~ /\S/ || &error($text{'create_ecmd'});
 -d $in{'dir'} || &error($text{'create_edir'});
 
 # Create the job
-&create_atjob($in{'user'}, $date, $in{'cmd'}, $in{'dir'});
+&create_atjob($in{'user'}, $date, $in{'cmd'}, $in{'dir'}, $in{'mail'});
 &webmin_log("create", "job", $in{'user'}, \%in);
 &redirect("");
 

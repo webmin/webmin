@@ -100,6 +100,10 @@ print &ui_table_row($text{'index_dir'},
 print &ui_table_row($text{'index_cmd'},
 		    &ui_textarea("cmd", $in{'ext_cmd'}, 5, 50));
 
+# Send email on completion
+print &ui_table_row($text{'index_mail'},
+		    &ui_yesno_radio("mail", 0));
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'create'} ] ]);
 
