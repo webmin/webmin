@@ -25,3 +25,4 @@ desc_ko_KR.UTF-8=Sendmail 구성
 library=sendmail-lib.pl access-lib.pl aliases-lib.pl boxes-lib.pl domain-lib.pl features-lib.pl generics-lib.pl mailers-lib.pl virtusers-lib.pl
 desc_cz=Konfigurace Sendmailu
 desc_ru.UTF-8=Конфигурация Sendmail
+desc_pt_BR=Servidor de E-mail Sendmail

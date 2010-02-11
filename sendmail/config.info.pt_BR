@@ -11,8 +11,7 @@ max_records=N&#250;mero m&#225;ximo de registros pra exibir nas tabelas,0,6
 mailq_show=Para,Assunto-Assunto,Cc-Cc,Tamanho-Tamanho,Status-Status,Dir-Diret&#243;rio
 mailq_sort=Ordena&#231;&#227;o da lista de e-mail por,1,0-ID da Lista,1-Por endere&#231;o,2-Para endere&#231;o,3-Assunto,4-Status,5-Tamanho
 mailq_count=Mostrar tamanho da lista de e-mail na p&#225;gina principal?,1,0-Sim,0-N&#227;o
-
-mailq_order=Ordena&#231;&#227;o quando estiver descarregando a lista de email,1,-Padr&#227;o,prioridade-Prioridade,host-Nome do computador,data-Data de recebimento
+mailq_order=Ordena&#231;&#227;o quando estiver descarregando a lista de e-mail,1,-Padr&#227;o,prioridade-Prioridade,host-Nome do computador,data-Data de recebimento
 delete_confirm=Perguntar antes de confirmar exclus&#227;o?,1,0-Sim,0-N&#227;o
 line2=Configura&#231;&#227;o do sistema,11
 sendmail_cf=Caminho completo para sendmail.cf,8
