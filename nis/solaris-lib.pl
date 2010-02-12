@@ -310,6 +310,12 @@ splice(@$lref, $_[0]->{'line'}, $_[0]->{'eline'} - $_[0]->{'line'} + 1, @n);
 # the NIS server
 sub apply_table_changes
 {
+if ($0 =~ /save_(\S+).cgi/) {
+	# Try to make just one table
+	local $table = $1;
+	local $ex = &system_logged("(cd /var/yp ; /usr/ccs/bin/make $table) >/dev/null 2>&1 </dev/null");
+	return if (!$ex);
+	}
 &system_logged("(cd /var/yp ; /usr/ccs/bin/make) >/dev/null 2>&1 </dev/null");
 }
 
