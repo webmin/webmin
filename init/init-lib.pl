@@ -863,7 +863,7 @@ if ($init_mode eq "init") {
 		}
 	elsif (&has_command("chkconfig") && !$config{'no_chkconfig'} && @chk) {
 		# Call chkconfig to remove the links
-		&system_logged("chkconfig --del ".quotemeta($_[0]));
+		&system_logged("chkconfig ".quotemeta($_[0])." off");
 		}
 	else {
 		# Just unlink the S links
