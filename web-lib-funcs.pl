@@ -938,10 +938,10 @@ else {
 	$title = $msg;
 	}
 if ($gconfig{'showlogin'} && $remote_user) {
-	$title = $remote_user." : ".$title;
+	$title = $remote_user.($title ? " : ".$title : "");
 	}
 if ($gconfig{'showhost'}) {
-	$title = $host." : ".$title;
+	$title = $host.($title ? " : ".$title : "");
 	}
 return $title;
 }
@@ -977,10 +977,10 @@ else {
 		 $gconfig{'showhost'} ? &text('main_title3', $ver, $ostr) :
 					&text('main_title', $ver, $host, $ostr);
 	if ($gconfig{'showlogin'}) {
-		$title = $remote_user." : ".$title;
+		$title = $remote_user.($title ? " : ".$title : "");
 		}
 	if ($gconfig{'showhost'}) {
-		$title = $host." : ".$title;
+		$title = $host.($title ? " : ".$title : "");
 		}
 	}
 return $title;
