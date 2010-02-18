@@ -11,8 +11,24 @@ local $ip = inet_aton($_[0]->{'host'});
 return { 'up' => 0 } if (!$ip);
 if ($config{'pinger'}) {
 	# Call a ping command
-	local $cmd = $config{'pinger'} eq "linux" ?
-			"ping -c 1 -w $wait" : $config{'pinger'};
+	local $cmd;
+	if ($config{'pinger'} eq "linux" &&
+	    $gconfig{'os_type'} =~ /-linux$/) {
+		# Use linux command
+		$cmd = "ping -c 1 -w $wait";
+		}
+	elsif ($config{'pinger'} eq "linux" &&
+	       $gconfig{'os_type'} eq 'freebsd') {
+		# Use FreeBSD command
+		$cmd = "ping -c 1 -W ".($wait * 1000);
+		}
+	elsif ($config{'pinger'} eq "linux") {
+		# Don't know command for this OS
+		return { 'up' => - 1 };
+		}
+	else {
+		$cmd = $config{'pinger'};
+		}
 	local $rv = system("$cmd ".quotemeta($_[0]->{'host'}).
 			   " >/dev/null 2>&1 </dev/null");
 	return { 'up' => $rv ? 0 : 1 };
