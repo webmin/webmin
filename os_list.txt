@@ -128,10 +128,17 @@ Mandrake Linux			6.1	redhat-linux	6.0	$etc_issue =~ /Mandrake\s+release\s+6\.1/i
 Mandrake Linux			7.0	redhat-linux	6.1	$etc_issue =~ /Mandrake\s+release\s+7\.0/i
 Mandrake Linux			7.1	redhat-linux	6.2	$etc_issue =~ /Mandrake\s+release\s+7\.1/i
 Mandrake Linux			$1	mandrake-linux	$1	`cat /etc/mandrake-release 2>/dev/null` =~ /Mandrake.*?([0-9\.]+)/i || $etc_issue =~ /Mandrake\s+release\s+([0-9\.]+)/i || $etc_issue =~ /Mandrakelinux\s+release\s+([0-9\.]+)/i
+
+# Mandriva Linux
 Mandriva Linux			$2	mandrake-linux	10.2	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2006\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i
 Mandriva Linux			$2	mandrake-linux	10.3	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2007\.\d+)/i
 Mandriva Linux			$2	mandrake-linux	10.4	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2008\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2008\.\d+)/i
 Mandriva Linux			$2	mandrake-linux	10.5	$etc_issue =~ /(Mandrakelinux|Mandriva).*(2009\.\d+)/i || `cat /etc/mandrake-release 2>/dev/null` =~ /(Mandrakelinux|Mandriva).*(2009\.\d+)/i
+Mandriva Linux			$2	mandrake-linux	$2	$etc_issue =~ /(Mandriva).*(20\d\d\.\d+)/i || `cat /etc/mandriva-release 2>/dev/null` =~ /(Mandriva).*(20\d\d\.\d+)/i
+
+# Mandriva Corporate
+Mandrake Linux Corporate Server	$i	mandrake-linux	$i	$etc_issue =~ /Mandrake\s+Linux\s+Corporate\s+Server\s+release\s+([0-9\.]+)/i
+Mandriva Linux Enterprise Server	5.0	mandrake-linux	2009	$etc_issue =~ /Mandriva\s+Linux\s+Enterprise\s+Server\s+release\s+5\.0\s+\(Official\)\s+for\s+(i586|x86_64)/i
 
 # Conectiva Linux (now subsumed into Mandrake?)
 Conectiva Linux			3.0	redhat-linux	5.2	$etc_issue =~ /Conectiva.*Linux.*3\.0/i

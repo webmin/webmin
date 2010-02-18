@@ -1,4 +1,4 @@
-sendmail_cf=/etc/sendmail.cf
+sendmail_cf=/etc/mail/sendmail.cf
 sendmail_pid=/var/run/sendmail.pid
 makemap_path=makemap
 sendmail_command=/etc/rc.d/init.d/sendmail start
@@ -20,6 +20,7 @@ sendmail_mc=/etc/mail/sendmail.mc
 mail_style=0
 mailq_show=Date,From,To,Size,Status
 index_min=1000000
+queue_dirs=/var/spool/clientmqueue
 fwd_mode=0
 mailq_sort=0
 mailq_count=0
