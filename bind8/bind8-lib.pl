@@ -2667,7 +2667,7 @@ return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ? ( 512, 2048 ) :
 
 sub list_dnssec_algorithms
 {
-return ("DSA", "RSAMD5", "RSASHA1", "DH", "HMAC-MD5",
+return ("RSASHA1", "RSAMD5", "DSA", "DH", "HMAC-MD5",
 	"NSEC3RSASHA1", "NSEC3DSA");
 }
 

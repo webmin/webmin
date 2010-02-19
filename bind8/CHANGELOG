@@ -116,3 +116,4 @@ When all DNS records in a zone are shown, the Type column can be clicked on to s
 Root zone records files are now included in Webmin backups.
 ---- Changes since 1.500 ----
 Added new NSEC3 algorithms for DNSSEC.
+Changed the default DNSSEC algorithm from DSA to the stronger RSASHA1.
