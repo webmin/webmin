@@ -25,3 +25,4 @@ Re-wrote all code to use the new Webmin user interface library, for a more consi
 Added support for new SCSI device information files under /sys, as seen in 2.6.30+ kernels.
 ---- Changes since 1.500 ----
 Added support for creating EXT4 filesystems.
+SATA devices using SCSI emulution now show up with SATA as the description.
