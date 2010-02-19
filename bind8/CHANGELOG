@@ -114,3 +114,5 @@ If nscd is running when BIND is restarted or a zone is applied, it will be signa
 When all DNS records in a zone are shown, the Type column can be clicked on to sort them.
 ---- Changes since 1.490 ----
 Root zone records files are now included in Webmin backups.
+---- Changes since 1.500 ----
+Added new NSEC3 algorithms for DNSSEC.

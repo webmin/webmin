@@ -2660,12 +2660,15 @@ local ($alg) = @_;
 return $alg eq 'RSAMD5' || $alg eq 'RSASHA1' ? ( 512, 2048 ) :
        $alg eq 'DH' ? ( 128, 4096 ) :
        $alg eq 'DSA' ? ( 512, 1024, 64 ) :
-       $alg eq 'HMAC-MD5' ? ( 1, 512 ) : ( );
+       $alg eq 'HMAC-MD5' ? ( 1, 512 ) :
+       $alg eq 'NSEC3RSASHA1' ? ( 512, 4096 ) :
+       $alg eq 'NSEC3DSA' ? ( 512, 1024, 64 ) : ( );
 }
 
 sub list_dnssec_algorithms
 {
-return ("DSA", "RSAMD5", "RSASHA1", "DH", "HMAC-MD5");
+return ("DSA", "RSAMD5", "RSASHA1", "DH", "HMAC-MD5",
+	"NSEC3RSASHA1", "NSEC3DSA");
 }
 
 # get_keys_dir(&zone|&zone-name)
