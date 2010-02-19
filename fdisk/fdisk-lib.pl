@@ -230,7 +230,8 @@ while(<FDISK>) {
 		next if (@cdstat && $st[1] == $cdstat[1]);
 		if ($disk->{'device'} =~ /\/sd([a-z]+)$/) {
 			# Old-style SCSI disk
-			$disk->{'desc'} = &text('select_device', 'SCSI',uc($1));
+			$disk->{'desc'} = &text('select_device', 'SCSI',
+						uc($1));
 			local ($dscsi) = grep { $_->{'dev'} eq "sd$1" } @dscsi;
 			$disk->{'scsi'} = $dscsi ? &indexof($dscsi, @dscsi)
 						 : ord(uc($1))-65;
@@ -430,6 +431,14 @@ foreach $d (@disks) {
 			if ($pscsi[$s] =~ /Host:\s+scsi(\d+).*Id:\s+(\d+)/i) {
 				$d->{'controller'} = int($1);
 				$d->{'scsiid'} = int($2);
+				}
+			}
+		if ($d->{'model'} =~ /ATA/) {
+			# Fake SCSI disk, actually IDE
+			$d->{'scsi'} = 0;
+			$d->{'desc'} =~ s/SCSI/SATA/g;
+			foreach my $p (@{$d->{'parts'}}) {
+				$p->{'desc'} =~ s/SCSI/SATA/g;
 				}
 			}
 		}

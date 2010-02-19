@@ -2504,6 +2504,23 @@ return @rv;
 # Converts a device name to a human-readable form
 sub device_name
 {
+# First try to get name from fdisk module, as it knowns better about IDE
+# and SCSI devices
+if (&foreign_check("fdisk")) {
+	&foreign_require("fdisk");
+	my @disks = &fdisk::list_disks_partitions();
+	foreach my $d (@disks) {
+		if ($d->{'device'} eq $_[0]) {
+			return $d->{'desc'};
+			}
+		foreach my $p (@{$d->{'parts'}}) {
+			if ($p->{'device'} eq $_[0]) {
+				return $p->{'desc'};
+				}
+			}
+		}
+	}
+
 if (!$text{'select_part'}) {
 	local %flang = &load_language('fdisk');
 	foreach $k (keys %flang) {
