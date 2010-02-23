@@ -45,7 +45,6 @@ else {
 		if (defined($in{'size_units'})) {
 			# Convert selected units to kB
 			$size *= $in{'size_units'}/1024;
-			delete($in{'size_units'});
 			}
 		$sizeof = undef;
 		}
@@ -97,10 +96,10 @@ else {
 		}
 	elsif ($lv->{'is_snap'}) {
 		# Modifying a snapshot
-		if ($lv->{'size'} != $in{'size'}) {
-			$err = &resize_logical_volume($lv, $in{'size'});
+		if ($lv->{'size'} != $size) {
+			$err = &resize_logical_volume($lv, $size);
 			&error("<pre>$err</pre>") if ($err);
-			$lv->{'size'} = $in{'size'};
+			$lv->{'size'} = $size;
 			}
 		if ($lv->{'name'} ne $in{'name'}) {
 			# Need to rename
@@ -112,10 +111,12 @@ else {
 	else {
 		# Modifying the logical volume
 		@stat = &device_status($lv->{'device'});
-		if ($lv->{'size'} != $in{'size'}) {
+		if ($lv->{'size'} != $size) {
 			# Is the new size too big?
-			local $nblocks = int($in{'size'} / $vg->{'pe_size'})+1;
-			local $oblocks = int($lv->{'size'} / $vg->{'pe_size'})+1;
+			local $nblocks = &round_up(
+				$size * 1.0 / $vg->{'pe_size'});
+			local $oblocks = &round_up(
+				$lv->{'size'} * 1.0 / $vg->{'pe_size'});
 			if ($vg->{'pe_alloc'} - $oblocks + $nblocks > $vg->{'pe_total'}) {
 				#&error(&text('lv_toobig', $nblocks, "$vg->{'pe_size'} kB", $vg->{'pe_total'} - $vg->{'pe_alloc'}));
 				}
@@ -177,3 +178,11 @@ else {
 	&redirect("index.cgi?mode=lvs");
 	}
 
+sub round_up
+{
+local ($n) = @_;
+if (int($n) != $n) {
+	return int($n)+1;
+	}
+return $n;
+}

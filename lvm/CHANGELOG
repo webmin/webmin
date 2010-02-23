@@ -22,3 +22,4 @@ Added an option to force addition of a physical volume to a group.
 Cleaned up code to use quotemeta instead of manual quoting.
 ---- Changes since 1.500 ----
 Added support for creating EXT4 filesystems.
+When editing a logical volume, the size is shown in GB or TB where possible.

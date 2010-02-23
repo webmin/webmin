@@ -59,9 +59,29 @@ else {
 			  ]), 3);
 		}
 	else {
-		# Show in exactly kB
-		print &ui_table_row($text{'lv_size'},
-			&ui_textbox("size", $lv->{'size'}, 8)." kB");
+		# Check if size is exactly some number of TB, GB or MB, less
+		# than 1024
+		$div = 1024*1024*1024;
+		$size = $lv->{'size'}*1024;
+		$nice = 0;
+		while($div >= 1024) {
+			$frac = $size*1.0 / $div;
+			if ($frac == int($frac) && $frac < 1024) {
+				$nice = 1;
+				last;
+				}
+			$div /= 1024;
+			}
+		if ($nice) {
+			# Show nicely
+			print &ui_table_row($text{'lv_size'},
+				&ui_bytesbox("size", $size, 8));
+			}
+		else {
+			# Show in exactly kB
+			print &ui_table_row($text{'lv_size'},
+				&ui_textbox("size", $lv->{'size'}, 8)." kB");
+			}
 		}
 	}
 
