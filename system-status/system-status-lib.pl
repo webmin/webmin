@@ -60,6 +60,23 @@ $info->{'cputemps'} = \@cpu if (@cpu);
 my @drive = &get_current_drive_temps();
 $info->{'drivetemps'} = \@drive if (@drive);
 
+# IO input and output
+if ($gconfig{'os_type'} =~ /-linux$/) {
+	local $out = &backquote_command("vmstat 1 2");
+	if (!$?) {
+		local @lines = split(/\r?\n/, $out);
+		local @w = split(/\s+/, $lines[$#lines]);
+		shift(@w) if ($w[0] eq '');
+		if ($w[8] =~ /^\d+$/ && $w[9] =~ /^\d+$/) {
+			# Blocks in and out
+			$info->{'io'} = [ $w[8], $w[9] ];
+
+			# CPU user, kernel, idle, io, vm
+			$info->{'cpu'} = [ @w[12..16] ];
+			}
+		}
+	}
+
 return $info;
 }
 
@@ -210,6 +227,20 @@ foreach my $t (@{$info->{'cputemps'}}) {
 	}
 if ($temptotal) {
 	push(@stats, [ "cputemp", $temptotal / $tempcount ]);
+	}
+
+# Get IO blocks
+if ($info->{'io'}) {
+	push(@stats, [ "bin", $info->{'io'}->[0] ]);
+	push(@stats, [ "bout", $info->{'io'}->[1] ]);
+	}
+
+# Get CPU user and IO time
+if ($info->{'cpu'}) {
+	push(@stats, [ "cpuuser", $info->{'cpu'}->[0] ]);
+	push(@stats, [ "cpukernel", $info->{'cpu'}->[1] ]);
+	push(@stats, [ "cpuidle", $info->{'cpu'}->[2] ]);
+	push(@stats, [ "cpuio", $info->{'cpu'}->[3] ]);
 	}
 
 # Write to the file
