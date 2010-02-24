@@ -93,6 +93,17 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 		}
 	}
 
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 5) {
+	if ($in{'maxauthtries_def'}) {
+		&save_directive("MaxAuthTries", $conf);
+		}
+	else {
+		$in{'maxauthtries'} =~ /^\d+$/ && $in{'maxauthtries'} > 0 ||
+			&error($text{'users_emaxauthtries'});
+		&save_directive("MaxAuthTries", $conf, $in{'maxauthtries'});
+		}
+	}
+
 if ($version{'type'} eq 'openssh' && $version{'number'} < 3.7 ||
     $version{'type'} eq 'ssh' && $version{'number'} < 2) {
 	&save_directive("RhostsAuthentication", $conf,

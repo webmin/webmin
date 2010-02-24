@@ -52,6 +52,9 @@ users_ebanner=Missing or invalid pre-login message file
 users_authkeys=User authorized keys file
 users_authkeys_def=Default (~/.ssh/authorized_keys)
 users_authkeys_set=File under home
+users_eauthkeys=Missing or invalid-looking authorized keys file
+users_maxauthtries=Maximum login attempts per connection
+users_emaxauthtries=Missing or non-numeric number of login attempts per connection
 
 net_title=Networking
 net_header=Networking options

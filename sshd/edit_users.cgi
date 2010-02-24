@@ -132,6 +132,14 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 				$text{'users_authkeys_set'}));
 	}
 
+if ($version{'type'} eq 'openssh' && $version{'number'} >= 5) {
+	# Max login attempts
+	$maxauthtries = &find_value("MaxAuthTries", $conf);
+	print &ui_table_row($text{'users_maxauthtries'},
+		&ui_opt_textbox("maxauthtries", $maxauthtries, 5,
+				$text{'default'}." (6)"));
+	}
+
 print &ui_table_hr();
 
 if ($version{'type'} eq 'openssh' && $version{'number'} < 3.7 ||

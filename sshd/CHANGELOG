@@ -13,3 +13,5 @@ Added a button on the module's main page for viewing the public side of the host
 Added a field to allow or deny SSH 2 public key authentication.
 ---- Changes since 1.450 ----
 Converted all pages the use the new Webmin UI library, for a more consistent look and layout.
+---- Changes since 1.500 ----
+Added a field for editing the maximum login attempts per connection.
