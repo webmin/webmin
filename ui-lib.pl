@@ -708,10 +708,12 @@ options. May truncate values to 2 decimal points! The parameters are :
 
 =item disabled - Set to 1 if this text box should be disabled by default.
 
+=item tags - Additional HTML attributes for the <input> tag.
+
 =cut
 sub ui_bytesbox
 {
-my ($name, $bytes, $size, $dis) = @_;
+my ($name, $bytes, $size, $dis, $tags) = @_;
 my $units = 1;
 if ($bytes >= 10*1024*1024*1024*1024) {
 	$units = 1024*1024*1024*1024;
@@ -733,7 +735,7 @@ if ($bytes ne "") {
 	$bytes =~ s/\.00$//;
 	}
 $size = &ui_max_text_width($size || 8);
-return &ui_textbox($name, $bytes, $size, $dis)." ".
+return &ui_textbox($name, $bytes, $size, $dis, undef, $tags)." ".
        &ui_select($name."_units", $units,
 		 [ [ 1, "bytes" ],
 		   [ 1024, "kB" ],
