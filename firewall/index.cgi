@@ -306,6 +306,10 @@ else {
 				# Delete selected button
 				print &ui_submit($text{'index_cdeletesel'},
 						 "delsel"),"\n";
+
+				# Move selected button
+				print &ui_submit($text{'index_cmovesel'},
+						 "movesel"),"\n";
 				}
 			print "</td>\n";
 			}
@@ -318,13 +322,19 @@ else {
 				}
 			print "<td align=center width=33%>\n";
 			if (@rules) {
+				# Delete chain button
 				if ($access{'delchain'}) {
 					print &ui_submit($text{'index_cclear'},
 							 "clear"),"\n";
-					print "&nbsp;" x 5;
 					}
+
+				# Delete rules button
 				print &ui_submit($text{'index_cdeletesel'},
 						 "delsel"),"\n";
+
+				# Move selected button
+				print &ui_submit($text{'index_cmovesel'},
+						 "movesel"),"\n";
 				}
 			print "</td>\n";
 			}

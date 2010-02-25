@@ -37,6 +37,7 @@ index_radd=Add Rule
 index_cdelete=Delete Chain
 index_cclear=Clear All Rules
 index_cdeletesel=Delete Selected
+index_cmovesel=Move Selected
 index_cadd=Add a new chain named:
 index_apply=Apply Configuration
 index_applydesc=Click this button to make the firewall configuration listed above active. Any firewall rules currently in effect will be flushed and replaced 
@@ -261,6 +262,7 @@ log_clear_chain=Cleared chain $1 in table $2
 log_create_chain=Created chain $1 in table $2
 log_modify_chain=Set default action for chain $1 in table $2
 log_delsel_chain=Deleted $3 rules from chain $1 in table $2
+log_movesel_chain=Moved $3 rules from chain $1 in table $2
 log_apply=Applied configuration
 log_unapply=Reverted configuration
 log_setup=Set up firewall
@@ -313,3 +315,9 @@ add_ok=Added $1, with $2 active firewall rules.
 
 policy_ecannot=You are not allowed to change the default policy for this chain
 
+move_title=Move Rules
+move_count=Rules selected
+move_chain=Current change
+move_dest=Destination chain
+move_ok=Move Now
+move_header=Rule move options
