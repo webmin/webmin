@@ -107,13 +107,24 @@ if ($level == 0) {
 		print "<td>$pr</td> </tr>\n";
 		}
 
-	# Load and memory info
+	# Load averages
 	if ($info->{'load'}) {
 		@c = @{$info->{'load'}};
 		if (@c) {
 			print "<tr> <td><b>$text{'right_cpu'}</b></td>\n";
 			print "<td>",&text('right_load', @c),"</td> </tr>\n";
 			}
+		}
+
+	# CPU usage
+	if ($info->{'cpu'}) {
+		@c = @{$info->{'cpu'}};
+		print "<tr> <td><b>$text{'right_cpuuse'}</b></td>\n";
+		print "<td>",&text('right_cpustats', @c),"</td> </tr>\n";
+		}
+
+	# Memory usage
+	if ($info->{'mem'}) {
 		@m = @{$info->{'mem'}};
 		if (@m && $m[0]) {
 			print "<tr> <td><b>$text{'right_real'}</b></td>\n";
