@@ -696,8 +696,21 @@ fi
 oldthemeline=`grep "^theme=" $config_dir/config`
 oldtheme=`echo $oldthemeline | sed -e 's/theme=//g'`
 if [ "$theme" != "" ] && [ "$oldthemeline" = "" ] && [ -d "$wadir/$theme" ]; then
-	echo "theme=$theme" >> $config_dir/config
-	echo "preroot=$theme" >> $config_dir/miniserv.conf
+	themelist=$theme
+fi
+
+# Set a special overlay if none was set before
+if [ "$overlay" = "" ]; then
+	overlay=`cat "$wadir/defaultoverlay" 2>/dev/null`
+fi
+if [ "$overlay" != "" ] && [ "$theme" != "" ] && [ -d "$wadir/$overlay" ]; then
+	themelist="$themelist $overlay"
+fi
+
+# Apply the theme and maybe overlay
+if [ "$themelist" != "" ]; then
+	echo "theme=$themelist" >> $config_dir/config
+	echo "preroot=$themelist" >> $config_dir/miniserv.conf
 fi
 
 # Set the product field in the global config
