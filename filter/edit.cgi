@@ -48,7 +48,8 @@ print &ui_table_row(
 # Spam level is at or above
 print &ui_table_row(
 	&ui_oneradio("cmode", 6, $text{'edit_cmode6'}, $cmode == 6),
-	&ui_textbox("condlevel", $filter->{'condlevel'}, 4), undef, \@tds);
+	&ui_textbox("condlevel", $filter->{'condlevel'}, 4, 0, undef,
+		    "onFocus='form.cmode[2].checked = true'"), undef, \@tds);
 
 # Check some header
 @headers = ( "From", "To", "Subject", "Cc", "Reply-To", "List-Id" );
@@ -86,25 +87,29 @@ print &ui_table_row(
 			 [ [ 0, $text{'edit_modestart'} ],
 			   [ 1, $text{'edit_modecont'} ],
 			   [ 2, $text{'edit_modeend'} ] ]),
-	      &ui_textbox("condvalue", $condvalue, 40)),
+	      &ui_textbox("condvalue", $condvalue, 40, 0, undef,
+			  "onFocus='form.cmode[3].checked = true'")),
 	undef, \@tds);
 
 # Smaller
 print &ui_table_row(
 	&ui_oneradio("cmode", 3, $text{'edit_cmode3'}, $cmode == 3),
-	&ui_bytesbox("condsmall", $cmode == 3 ? $filter->{'cond'} : ""),
+	&ui_bytesbox("condsmall", $cmode == 3 ? $filter->{'cond'} : "",
+		     undef, 0, "onFocus='form.cmode[4].checked = true'"),
 	undef, \@tds);
 
 # Larger
 print &ui_table_row(
 	&ui_oneradio("cmode", 2, $text{'edit_cmode2'}, $cmode == 2),
-	&ui_bytesbox("condlarge", $cmode == 2 ? $filter->{'cond'} : ""),
+	&ui_bytesbox("condlarge", $cmode == 2 ? $filter->{'cond'} : "",
+		     undef, 0, "onFocus='form.cmode[5].checked = true'"),
 	undef, \@tds);
 
 # Matches regexp
 print &ui_table_row(
 	&ui_oneradio("cmode", 1, $text{'edit_cmode1'}, $cmode == 1),
-	&ui_textbox("cond", $cmode == 1 ? $filter->{'cond'} : "", 70)."<br>".
+	&ui_textbox("cond", $cmode == 1 ? $filter->{'cond'} : "", 70, 0, undef,
+		    "onFocus='form.cmode[6].checked = true'")."<br>".
 	&ui_checkbox("body", 1, $text{'edit_cbody'}, $filter->{'body'}),
 	undef, \@tds);
 
