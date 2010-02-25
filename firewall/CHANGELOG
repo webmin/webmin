@@ -32,3 +32,4 @@ Disallow rules on virtual interfaces, as they don't work.
 Removed invalid "Above" options for packet flow rate.
 ---- Changes since 1.500 ----
 Added a button to move rules to another chain.
+Added a button to rename an existing custom chain.

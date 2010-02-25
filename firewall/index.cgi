@@ -286,6 +286,7 @@ else {
 		print "<table width=100%><tr>\n";
 		local $d = $table->{'defaults'}->{$c};
 		if ($d ne '-') {
+			# Built-in chain
 			if ($access{'policy'}) {
 				# Change default button
 				print "<td width=33% nowrap>",
@@ -314,15 +315,18 @@ else {
 			print "</td>\n";
 			}
 		else {
-			# Delete chain and delete selected buttons
+			# Custom chain
 			if ($access{'delchain'}) {
+				# Delete and rename chain buttons
 				print "<td width=33%>",
 				   &ui_submit($text{'index_cdelete'}, "delete"),
+				   "\n",
+				   &ui_submit($text{'index_crename'}, "rename"),
 				   "</td>\n";
 				}
 			print "<td align=center width=33%>\n";
 			if (@rules) {
-				# Delete chain button
+				# Clear chain button
 				if ($access{'delchain'}) {
 					print &ui_submit($text{'index_cclear'},
 							 "clear"),"\n";

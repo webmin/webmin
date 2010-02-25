@@ -62,6 +62,71 @@ elsif ($in{'delete'} || $in{'clear'}) {
 
 	&ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
 	}
+elsif ($in{'rename'} && $in{'newname'}) {
+	# Rename a chain
+	&lock_file($iptables_save_file);
+	$access{'delchain'} || &error($text{'rename_ecannot'});
+	$in{'newname'} =~ /^\S+$/ || &error($text{'new_ename'});
+
+	# Change the chain on each rule
+	foreach $r (@{$table->{'rules'}}) {
+		if ($r->{'chain'} eq $in{'chain'}) {
+			$r->{'chain'} = $in{'newname'};
+			}
+		}
+
+	# Rename the default
+	$table->{'defaults'}->{$in{'newname'}} =
+		$table->{'defaults'}->{$in{'chain'}};
+	delete($table->{'defaults'}->{$in{'chain'}});
+
+	# Adjust any other rules
+	if ($in{'adjust'}) {
+		foreach $r (@{$table->{'rules'}}) {
+			if ($r->{'j'} && $r->{'j'}->[1] eq $in{'chain'}) {
+				$r->{'j'}->[1] = $in{'newname'};
+				}
+			}
+		}
+
+	&run_before_command();
+	&save_table($table);
+	&run_after_command();
+	&copy_to_cluster();
+	&unlock_file($iptables_save_file);
+	&webmin_log("rename", "chain", undef, { 'chain' => $in{'chain'},
+						'table' => $table->{'name'} });
+	&redirect("index.cgi?table=$in{'table'}");
+	}
+elsif ($in{'rename'}) {
+	# Show chain rename form
+	&ui_print_header(undef, $text{'rename_title'}, "");
+
+	print &ui_form_start("save_policy.cgi");
+	print &ui_hidden("table", $in{'table'});
+	print &ui_hidden("chain", $in{'chain'});
+	print &ui_hidden("rename", 1);
+	print &ui_table_start($text{'rename_header'}, undef, 2);
+
+	# Number of rules and old name
+	@rules = grep { $_->{'chain'} eq $in{'chain'} } @{$table->{'rules'}};
+	print &ui_table_row($text{'rename_chain'}, $in{'chain'});
+	print &ui_table_row($text{'rename_count'},
+		scalar(@rules) || $text{'rename_none'});
+
+	# Destination chain
+	print &ui_table_row($text{'rename_name'},
+		&ui_textbox("newname", undef, 20));
+
+	# Adjust other rules?
+	print &ui_table_row(" ",
+		&ui_checkbox("adjust", 1, $text{'rename_adjust'}, 1));
+
+	print &ui_table_end();
+	print &ui_form_end([ [ undef, $text{'rename_ok'} ] ]);
+
+	&ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
+	}
 elsif ($in{'delsel'}) {
 	# Just delete selected rules
 	%idxs = map { $_, 1 } @d;
