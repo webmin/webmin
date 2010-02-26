@@ -14,15 +14,19 @@ require './spam-lib.pl';
 print $text{'dawl_doing'},"<br>\n";
 $count = $ucount = 0;
 setpwent();
-while(@uinfo = getpwent()) {
-	next if (!&can_edit_awl($uinfo[0]));
-	&open_auto_whitelist_dbm($uinfo[0]) || next;
+while($u = getpwent()) {
+	push(@users, $u);
+	}
+endpwent();
+foreach $u (@users) {
+	next if (!&can_edit_awl($u));
+	print "doing $u<br>\n";
+	&open_auto_whitelist_dbm($u) || next;
 	foreach $k (keys %awl) {
 		delete($awl{$k});
 		$count++;
 		}
 	&close_auto_whitelist_dbm();
-	print "doing $uinfo[0]<br>\n";
 	$ucount++;
 	}
 endpwent();
