@@ -2034,13 +2034,13 @@ if (!ref($h)) {
 	else { &error($h); }
 	}
 &complete_http_download($h, $dest, $error, $cbfunc, $osdn, $host, $port,
-			$headers, $ssl);
+			$headers, $ssl, $nocache);
 if ((!$error || !$$error) && !$nocache) {
 	&write_to_http_cache($url, $dest);
 	}
 }
 
-=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl])
+=head2 complete_http_download(handle, destfile, [&error], [&callback], [osdn], [oldhost], [oldport], [&send-headers], [old-ssl], [no-cache])
 
 Do a HTTP download, after the headers have been sent. For internal use only,
 typically called by http_download.
@@ -2109,7 +2109,7 @@ if ($rcode >= 300 && $rcode < 400) {
 	$page =~ s/ /%20/g;
 	$page .= "?".$params if (defined($params));
 	&http_download($host, $port, $page, $_[1], $_[2], $cbfunc, $ssl,
-		       undef, undef, undef, $_[4], 0, $_[7]);
+		       undef, undef, undef, $_[4], $_[9], $_[7]);
 	}
 else {
 	# read data
