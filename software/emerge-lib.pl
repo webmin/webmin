@@ -13,7 +13,7 @@ if (!-x $package_list_binary) {
 
 sub list_package_system_commands
 {
-return ( $package_list_binary );
+return ( $package_list_binary || "pkglist" );
 }
 
 sub list_update_system_commands
