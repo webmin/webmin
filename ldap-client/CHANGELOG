@@ -11,3 +11,5 @@ Handle new LDAP config config file path seen on Ubuntu 8.04.
 Changed the LDAP client connection code to handle both pure-SSL and TLS modes, thanks to a patch from Paul R. Ganci.
 ---- Changes since 1.450 ----
 Improved support for older versions of Net::LDAP without the hosts() function.
+---- Changes since 1.500 ----
+If a TLS certificate and key are defined in the LDAP client configuration file, they will be used by Webmin when connecting to the LDAP database.

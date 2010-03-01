@@ -186,6 +186,10 @@ local $conf = &get_config();
 local $uri = &find_svalue("uri", $conf);
 local ($ldap, $use_ssl, $err);
 local $ssl = &find_svalue("ssl", $conf);
+local $cafile = &find_svalue("tls_cacertfile", $conf);
+local $certfile = &find_svalue("tls_cert", $conf);
+local $keyfile = &find_svalue("tls_key", $conf);
+local $ciphers = &find_svalue("tls_ciphers", $conf);
 if ($ldap_hosts) {
 	# Using hosts from parameter
 	local @hosts = split(/[ \t,]+/, $ldap_hosts);
@@ -274,7 +278,19 @@ else {
 # Start TLS if configured
 if ($use_ssl == 2 && !$err) {
 	local $mesg;
-	eval { $mesg = $ldap->start_tls; };
+	if ($certfile) {
+		# Use cert to connect
+		eval { $mesg = $ldap->start_tls(
+					cafile     => $cafile,
+                                        clientcert => $certfile,
+                                        clientkey  => $keyfile,
+                                        ciphers    => $ciphers
+					); };
+
+		}
+	else {
+		eval { $mesg = $ldap->start_tls(); };
+		}
 	if ($@ || !$mesg || $mesg->code) {
 		$err = &text('ldap_etls', $@ ? $@ : $mesg ? $mesg->error :
 					  "Unknown error");
