@@ -723,6 +723,7 @@ cnf_bind=MySQL server listening address
 cnf_all=Any
 cnf_socket=MySQL Unix socket
 cnf_datadir=Databases files directory
+cnf_stor=Default table storage engine
 cnf_big-tables=Allow big tables?
 cnf_skip-locking=Skip locking of table files?
 cnf_emysqld=Could not find [mysqld] section in my.cnf
@@ -745,6 +746,7 @@ cnf_esort_buffer=Missing or invalid sort buffer size
 cnf_enet_buffer_length=Missing or invalid network buffer size
 cnf_emyisam_sort_buffer_size=Missing or invalid MyISAM sort buffer size
 cnf_emax_connections=Missing or invalid maximum number of connections
+cnf_restart=Save and Restart MySQL
 
 index_title1=Create Index
 index_header1=Index options

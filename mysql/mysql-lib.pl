@@ -1070,7 +1070,7 @@ for(my $i=0; $i<@old || $i<@$values; $i++) {
 	elsif (!$old && defined($values->[$i])) {
 		# Adding
 		splice(@$lref, $sect->{'eline'}+1, 0, $line);
-		&renumber($conf, $sect->{'eline'}, 1);
+		&renumber($conf, $sect->{'eline'}+1, 1);
 		push(@{$sect->{'members'}},
 			{ 'name' => $name,
 			  'value' => $values->[$i],

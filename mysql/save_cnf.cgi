@@ -48,6 +48,9 @@ else {
 	&save_directive($conf, $mysqld, "datadir", [ $in{'datadir'} ]);
 	}
 
+&save_directive($conf, $mysqld, "default-storage-engine",
+		$in{'stor'} ? [ $in{'stor'} ] : [ ]);
+
 &save_directive($conf, $mysqld, "skip-locking",
 		$in{'skip-locking'} ? [ "" ] : [ ]);
 
@@ -72,8 +75,13 @@ foreach $v (keys %vars) {
 &save_directive($conf, $mysqld, "set-variable", \@sets);
 
 # Write out file
-&flush_file_lines();
+&flush_file_lines($config{'my_cnf'});
 &unlock_file($config{'my_cnf'});
+if ($in{'restart'} && &is_mysql_running() > 0) {
+	&stop_mysql();
+	$err = &start_mysql();
+	&error($err) if ($err);
+	}
 &webmin_log("cnf");
 &redirect("");
 

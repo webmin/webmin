@@ -45,6 +45,14 @@ print &ui_table_row($text{'cnf_datadir'},
 		    &ui_opt_textbox("datadir", $datadir, 50, $text{'default'}).
 		    " ".&file_chooser_button("datadir"), 3);
 
+$stor = &find_value("default-storage-engine", $mems);
+print &ui_table_row($text{'cnf_stor'},
+		    &ui_select("stor", $stor,
+			       [ [ '', $text{'default'} ],
+			         'MyISAM', 'InnoDB', 'MERGE',
+				 'NDB', 'ARCHIVE', 'CSV',
+				 'BLACKHOLE' ], 1, 0, 1));
+
 # Show set variables
 print &ui_table_hr();
 
@@ -63,7 +71,8 @@ foreach $v (@mysql_number_variables) {
 	}
 
 print &ui_table_end();
-print &ui_form_end([ [ "save", $text{'save'} ] ]);
+print &ui_form_end([ [ "save", $text{'save'} ],
+		     [ "restart", $text{'cnf_restart'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
