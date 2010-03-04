@@ -1,0 +1,5 @@
+hosts_file=Arquivo com lista de m&#225;quinas e endere&#231;os,0
+ipnodes_file=Arquivo com lista de m&#225;quinas e endere&#231;os IPv6,0
+def_netmask=M&#225;scara de rede padr&#227;o,0
+def_broadcast=Endere&#231;o de broadcast padr&#227;o,0
+def_mtu=MTU padr&#227;o,0
