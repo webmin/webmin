@@ -10,10 +10,11 @@ sub useradmin_create_user
 if ($config{'sync_create'}) {
 	local %privs;
 	map { $privs{$_}++ } split(/\s+/, $config{'sync_privs'});
+	local @yesno;
 	for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
 		push(@yesno, $privs{$i} ? "'Y'" : "'N'");
 		}
-	@desc = &table_structure($master_db, 'user');
+	local @desc = &table_structure($master_db, 'user');
 	local $sql = sprintf "insert into user (%s) values ('%s', '%s', %s, %s)",
 		join(",", map { $desc[$_]->{'field'} } (0 .. &user_priv_cols()+3-1)),
 		$config{'sync_host'},
