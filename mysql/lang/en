@@ -747,6 +747,7 @@ cnf_enet_buffer_length=Missing or invalid network buffer size
 cnf_emyisam_sort_buffer_size=Missing or invalid MyISAM sort buffer size
 cnf_emax_connections=Missing or invalid maximum number of connections
 cnf_restart=Save and Restart MySQL
+cnf_fpt=Separate file for each InnoDB table?
 
 index_title1=Create Index
 index_header1=Index options

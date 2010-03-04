@@ -53,6 +53,10 @@ print &ui_table_row($text{'cnf_stor'},
 				 'NDB', 'ARCHIVE', 'CSV',
 				 'BLACKHOLE' ], 1, 0, 1));
 
+$fpt = &find_value("innodb_file_per_table", $mems);
+print &ui_table_row($text{'cnf_fpt'},
+		    &ui_yesno_radio("fpt", $fpt));
+
 # Show set variables
 print &ui_table_hr();
 
