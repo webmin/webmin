@@ -1,0 +1,16 @@
+line1=Op&#231;&#245;es configur&#225;veis&#44;11
+dont_convert=Lista os usu&#225;rios Unix para n&#227;o adicionar na lista de senhas do samba&#44;0
+sort_mode=Organizar usu&#225;rios e grupos por nome?&#44;1&#44;1&#45;Sim&#44;0&#45;N&#227;o
+line2=Configura&#231;&#227;o do sistema&#44;11
+smb_conf=Local do arquivo de configura&#231;&#227;o do Samba&#44;0
+smb_passwd=Local do arquivo de senha do Samba&#44;3&#44;Nenhum
+samba_status_program=Caminho completo para o smbstatus&#44;0
+samba_password_program=Caminho completo para smbpasswd&#44;0
+samba_server=Caminho completo para o smbd&#44;0
+name_server=Caminho completo para o nmbd&#44;0
+swat_path=Caminho completo para swat&#44;3&#44;Nenhum
+smbgroupedit=Caminho completo para o smbgroupedit&#44;3&#44;Nenhum
+pdbedit=Caminho completo para o pdbedit&#44;3&#44;Nenhum
+net=Caminho completo para o comando net&#44;3&#44;Nenhum
+start_cmd=Comando para iniciar os servidores Samba&#44;3&#44;Autom&#225;tico
+stop_cmd=Comando para parar os servidores Samba,&#44;3&#44;S&#243; matar o processo
