@@ -33,6 +33,10 @@ $dnssec_cron_cmd = "$module_config_directory/resign.pl";
 $dnssec_dlv_zone = "dlv.isc.org.";
 @dnssec_dlv_key = ( 257, 3, 5, '"BEAAAAPHMu/5onzrEE7z1egmhg/WPO0+juoZrW3euWEn4MxDCE1+lLy2brhQv5rN32RKtMzX6Mj70jdzeND4XknW58dnJNPCxn8+jAGl2FZLK8t+1uq4W+nnA3qO2+DL+k6BD4mewMLbIYFwe0PG73Te9fZ2kJb56dhgMde5ymX4BI/oQ+cAK50/xvJv00Frf8kw6ucMTwFlgPe+jnGxPPEmHAte/URkY62ZfkLoBAADLHQ9IrS2tryAe7mbBZVcOwIeU/Rw/mRx/vwwMCTgNboMQKtUdvNXDrYJDSHZws3xiRXF1Rf+al9UmZfSav/4NWLKjHzpT59k/VStTDN0YUuWrBNh"' );
 
+if ($gconfig{'os_type'} =~ /-linux$/ && -r "/dev/urandom") {
+	$rand_flag = "-r /dev/urandom";
+	}
+
 # get_bind_version()
 # Returns the BIND verison number, or undef if unknown
 sub get_bind_version
@@ -2725,7 +2729,7 @@ local $dom = $z->{'members'} ? $z->{'values'}->[0] : $z->{'name'};
 local $out = &backquote_logged(
 	"cd ".quotemeta($fn)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
-	" -n ZONE $dom 2>&1");
+	" -n ZONE $rand_flag $dom 2>&1");
 if ($?) {
 	kill('KILL', $pid);
 	return $out;
@@ -2736,7 +2740,7 @@ if (!$single) {
 	$out = &backquote_logged(
 		"cd ".quotemeta($fn)." && ".
 		"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($size).
-		" -n ZONE -f KSK $dom 2>&1");
+		" -n ZONE -f KSK $rand_flag $dom 2>&1");
 	kill('KILL', $pid);
 	if ($?) {
 		return $out;
@@ -2816,7 +2820,7 @@ local $alg = $zonekey->{'algorithm'};
 local $out = &backquote_logged(
 	"cd ".quotemeta($dir)." && ".
 	"$config{'keygen'} -a ".quotemeta($alg)." -b ".quotemeta($zonesize).
-	" -n ZONE $dom 2>&1");
+	" -n ZONE $rand_flag $dom 2>&1");
 kill('KILL', $pid);
 if ($?) {
 	return "Failed to generate new zone key : $out";
