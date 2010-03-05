@@ -117,3 +117,5 @@ Root zone records files are now included in Webmin backups.
 ---- Changes since 1.500 ----
 Added new NSEC3 algorithms for DNSSEC.
 Changed the default DNSSEC algorithm from DSA to the stronger RSASHA1.
+---- Changes since 1.510 ----
+On Linux systems, /dev/urandom is used for generating entropy for DNSSEC.
