@@ -26,8 +26,8 @@ my @rv;
 local $index_ip_v6 =1;
 foreach $iface (@ifaces) {
 	my ($name, $addrfam, $method, $options) = @$iface;
-	my $cfg;
 	if ($addrfam eq 'inet' || $addrfam eq 'inet6') {
+		my $cfg = { };
 		$cfg->{'fullname'} = $name;
 		if ($cfg->{'fullname'} =~ /(\S+):(\d+)/) {
 			$cfg->{'name'} = $1;
@@ -87,6 +87,11 @@ foreach $iface (@ifaces) {
 		$cfg->{'edit'} = ($cfg->{'name'} !~ /^ppp|lo/);
 		$cfg->{'index'} = scalar(@rv);	
 		$cfg->{'file'} = $network_interfaces_config;
+		if (!$cfg->{'broadcast'} &&
+		    $cfg->{'address'} && $cfg->{'netmask'}) {
+			$cfg->{'broadcast'} = &compute_broadcast(
+				$cfg->{'address'}, $cfg->{'netmask'});
+			}
 		push(@rv, $cfg);
 		}
 	}
@@ -109,7 +114,8 @@ else {
 	$method = 'static';
 	push(@options, ['address', $cfg->{'address'}]);
 	push(@options, ['netmask', $cfg->{'netmask'}]);
-	push(@options, ['broadcast', $cfg->{'broadcast'}]) if !&is_ipv6_address($cfg->{'address'});
+	push(@options, ['broadcast', $cfg->{'broadcast'}])
+	    if ($cfg->{'broadcast'} && !&is_ipv6_address($cfg->{'address'}));
 	my ($ip1, $ip2, $ip3, $ip4) = split(/\./, $cfg->{'address'});
 	my ($nm1, $nm2, $nm3, $nm4) = split(/\./, $cfg->{'netmask'});
 	if ($cfg->{'address'} && $cfg->{'netmask'} && !&is_ipv6_address($cfg->{'address'})) {
