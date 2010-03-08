@@ -238,6 +238,11 @@ elsif (-r "$dbm.txt") {
 	# Database is like /etc/virtusertable, text is /etc/virtusertable.txt
 	return "$dbm.txt";
 	}
+elsif ($dbm =~ /^(.*)\.(db|dbm|pag|dir|hash)$/i) {
+	# Database is like /etc/virtusertable.db, text is /etc/virtusertable,
+	# but doesn't exist yet.
+	return $1;
+	}
 else {
 	# Text and database have same name
 	return $dbm;
