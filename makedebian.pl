@@ -97,7 +97,7 @@ Section: admin
 Priority: optional
 Architecture: all
 Essential: no
-Depends: bash, perl, libnet-ssleay-perl, openssl, libauthen-pam-perl, libpam-runtime, libio-pty-perl, libmd5-perl
+Depends: bash, perl, libnet-ssleay-perl, openssl, libauthen-pam-perl, libpam-runtime, libio-pty-perl, libmd5-perl, apt-show-versions
 Pre-Depends: bash, perl
 Installed-Size: $size
 Maintainer: Jamie Cameron <jcameron\@webmin.com>
