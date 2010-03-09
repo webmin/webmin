@@ -65,15 +65,19 @@ else {
 		print "<param name=sepframe value='true'>\n";
 		}
 	if ($config{'foreground'}) {
-		print "<param name=Terminal.foreground ",
-		      "value='#$config{'foreground'}'>\n";
+		print "<param name=fg-color ",
+		      "value='$config{'foreground'}'>\n";
 		}
 	if ($config{'background'}) {
-		print "<param name=Terminal.background ",
-		      "value='#$config{'background'}'>\n";
+		print "<param name=bg-color ",
+		      "value='$config{'background'}'>\n";
 		}
 	if ($config{'term'}) {
-		print "<param name=Terminal.id value='$config{'term'}'>\n";
+		print "<param name=term-type value='$config{'term'}'>\n";
+		}
+	if ($config{'encoding'}) {
+		print "<param name=encoding ",
+		      "value='$config{'encoding'}'>\n";
 		}
 	print "$text{'index_nojava'} <p>\n";
 	print "</applet><br>\n";

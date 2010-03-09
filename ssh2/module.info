@@ -1,5 +1,5 @@
 name=SSH2
 desc=SSH2 Login
-version=1.4
+version=1.5
 webmin=1
 usermin=1
