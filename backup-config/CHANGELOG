@@ -18,3 +18,5 @@ Converted commands in the module's API file to POD format, and added more detail
 Backup files are now given 600 permissions, to prevent reading by non-root users.
 ---- Changes since 1.490 ----
 Added an option on the restore form to just show the contents of a backup.
+---- Changes since 1.510 ----
+Added fields to the scheduled backup page for pre and post backup commands.

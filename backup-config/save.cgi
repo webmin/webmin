@@ -31,6 +31,8 @@ else {
 	&cron::parse_times_input($backup, \%in);
 	$backup->{'emode'} = $in{'emode'};
 	$backup->{'email'} = $in{'email'};
+	$backup->{'pre'} = $in{'pre'};
+	$backup->{'post'} = $in{'post'};
 	$backup->{'sched'} = $in{'sched'};
 	($backup->{'configfile'}, $backup->{'nofiles'}, $backup->{'others'}) =
 		&parse_backup_what("what", \%in);

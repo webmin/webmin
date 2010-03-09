@@ -24,6 +24,8 @@ index_tabrestore=Restore now
 edit_title1=Create Scheduled Backup
 edit_title2=Edit Scheduled Backup
 edit_header=Scheduled backup options
+edit_header2=Pre and post backup commands
+edit_header3=Backup schedule
 edit_email=Email result to address
 edit_emode=When to send email
 edit_emode0=Always
@@ -40,6 +42,8 @@ edit_nofiles=Server configuration files
 edit_run=Save and Backup Now
 edit_return=backup form
 edit_other=Other listed files ..
+edit_pre=Pre-backup command
+edit_post=Post-backup command
 
 save_err=Failed to save backup
 save_emods=No modules selected
@@ -111,3 +115,7 @@ email_ok=to $1 succeeded.
 email_sfailed=Configuration backup on $1 failed
 email_sok=Configuration backup on $1 succeeded
 email_final=Final backup file size was $1
+email_pre=Running pre-backup command $1 ..
+email_post=Running post-backup command $1 ..
+email_prefailed=Pre-backup command failed!
+

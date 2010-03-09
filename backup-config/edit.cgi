@@ -21,7 +21,10 @@ else {
 print &ui_form_start("save.cgi", "post");
 print &ui_hidden("new", $in{'new'});
 print &ui_hidden("id", $in{'id'});
-print &ui_table_start($text{'edit_header'}, "width=100%", 2);
+
+@tds = ( "width=30%" );
+print &ui_hidden_table_start($text{'edit_header'}, "width=100%", 2,
+			     "main", 1, \@tds);
 
 # Show modules to backup
 @mods = &list_backup_modules();
@@ -41,6 +44,24 @@ print &ui_table_row($text{'edit_what'},
 					      $backup->{'nofiles'},
 					      $backup->{'others'}));
 
+print &ui_hidden_table_end();
+
+print &ui_hidden_table_start($text{'edit_header2'}, "width=100%", 2,
+			     "prepost", 0, \@tds);
+
+# Show pre-backup command
+print &ui_table_row($text{'edit_pre'},
+		    &ui_textbox("pre", $backup->{'pre'}, 60));
+
+# Show post-backup command
+print &ui_table_row($text{'edit_post'},
+		    &ui_textbox("post", $backup->{'post'}, 60));
+
+print &ui_hidden_table_end();
+
+print &ui_hidden_table_start($text{'edit_header3'}, "width=100%", 2,
+			     "sched", 0, \@tds);
+
 # Show email address
 print &ui_table_row($text{'edit_email'},
 		    &ui_textbox("email", $backup->{'email'}, 40));
@@ -59,12 +80,12 @@ print &ui_table_row($text{'edit_sched'},
 		    &ui_radio("sched", $job || $in{'new'} ? 1 : 0,
 			      [ [ 0, $text{'no'} ],
 				[ 1, $text{'edit_schedyes'} ] ]));
+print &ui_table_row(undef,
+	"<tr> <td colspan=2><table border width=100%>\n".
+	&capture_function_output(\&cron::show_times_input, $backup).
+	"</table></td> </tr>\n");
 
-print "<tr> <td colspan=2><table border width=100%>\n";
-&cron::show_times_input($backup);
-print "</table></td> </tr>\n";
-
-print &ui_table_end();
+print &ui_hidden_table_end();
 if ($in{'new'}) {
 	print &ui_form_end([ [ 'create', $text{'create'} ] ], "100%");
 	}
