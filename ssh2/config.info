@@ -4,3 +4,6 @@ size=Custom width x height,0
 fontsize=Font size in points,3,Default
 detach=Separate window mode,1,1-Yes,0-No
 no_test=Test SSH server?,1,0-Yes,1-No
+foreground=Text foreground color (6 hex digits),3,Default
+background=Text background color (6 hex digits),3,Default
+term=Terminal type,3,Default

@@ -64,6 +64,17 @@ else {
 	if ($config{'detach'}) {
 		print "<param name=sepframe value='true'>\n";
 		}
+	if ($config{'foreground'}) {
+		print "<param name=Terminal.foreground ",
+		      "value='#$config{'foreground'}'>\n";
+		}
+	if ($config{'background'}) {
+		print "<param name=Terminal.background ",
+		      "value='#$config{'background'}'>\n";
+		}
+	if ($config{'term'}) {
+		print "<param name=Terminal.id value='$config{'term'}'>\n";
+		}
 	print "$text{'index_nojava'} <p>\n";
 	print "</applet><br>\n";
 
