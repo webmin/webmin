@@ -5,6 +5,7 @@ main_logout=Surt
 main_version=Versió $1 a $2 ($3)
 main_title=Webmin $1 a $2 ($3)
 main_title2=Webmin
+main_title3=Webmin $1 ($2)
 main_none=No tens accés a cap mòdul Webmin.
 main_skill=Nivell de Coneixements
 main_readonly=(Mode només lectura)
@@ -172,6 +173,7 @@ acl_readonlyyes=Sí (Alguns mòduls poden no estar disponibles)
 acl_negative=Concedeix permisos del nou mòdul a l'usuari
 acl_fileunix=Fulleja els fitxers com a Usuari Unix
 acl_sameunix=El mateix que l'usuari Webmin
+acl_webminsearch=Mostra el camp de cerca de Webmin
 
 month_1=Gener
 month_2=Febrer
@@ -252,10 +254,10 @@ feedback_enoto=No has introduït cap adreça per enviar l'informe
 feedback_ecannot=No tens permís per enviar informes
 feedback_ecannot2=No tens permís per enviar informes que contenen fitxers de configuració
 
-progress_size=Descarregant $1 ($2 bytes)...
+progress_size=Descarregant $1 ($2)...
 progress_nosize=Descarregant $1...
-progress_data=S'han rebut $1 bytes ($2 %)
-progress_data2=S'han rebut $1 bytes
+progress_data=S'han rebut $1 ($2 %)
+progress_data2=S'han rebut $1
 progress_done=...descàrrega completa.
 progress_incache=N'he trobat $1 al cau...
 

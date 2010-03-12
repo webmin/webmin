@@ -1,9 +1,10 @@
 htaccess=Nom del fitxer d'opcions d'Apache,0
 htpasswd=Nom del fitxer d'usuaris,0
 htgroups=Nom del fitxer de grups,0
-sort=Ordena els usuaris per,1,1-Nom d'usuari,0-Ordre del fitxer
-md5=Ofereix l'opció de xifratge MD5,1,1-Sí,0-No
-sha1=Ofereix l'opció de xifratge SHA1,1,1-Sí,0-No
-digest=Ofereix l'opció de resum de xifratges,1,1-Sí,0-No
-extra_directives=Directives extra per incloure a .htaccess,9,0,0,\t
+can_htpasswd=Permet triar el fitxer d'usuaris,1,1-Sí,0-No
+can_htgroups=Permet la creació de fitxers de grups,1,1-Sí,0-No
+dirs=Directoris permesos pels fitxers d'opcions,9,0,0,\t
+home=Inclou el directori arrel a la llista de directoris permesos,1,1-Sí,0-No
+extra_directives=Directives extra a incloure en el .htaccess,9,0,0,\t
+nocreate=Pot afegir i editar directoris protegits,1,0-Sí,1-No
 perms=Permisos dels fitxers creats,3,Per defecte (644)

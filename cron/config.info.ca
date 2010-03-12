@@ -1,14 +1,11 @@
 line1=Opcions configurables,11
 max_len=Llargària màxima de l'ordre a mostrar,3,Il·limitada
-max_jobs=Nombre màxim de treballs cron a mostrar,3,Il·limitat
 show_time=Mostra la planificació dels treballs,1,1-Sí,0-No
 show_comment=Mostra els comentaris dels treballs,1,1-Sí,0-No
 show_run=Mostra l'estat actual dels treballs,1,2-Sí&#44; i permet l'inici i l'aturada,1-Sí,0-No
 match_mode=Busca els processos dels treballs per,1,1-Només l'ordre,0-L'ordre i els arguments
 match_user=Fes coincidir els noms d'usuaris en buscar processos de treballs,1,1-Sí,0-No
 kill_subs=Mata els subprocessos en matar els treballs,1,1-Sí,0-No
-hourly_only=Permet només que els treballs siguin com a molt per hores,1,0-No,1-Sí
-add_file=Afegeix treballs nous al fitxer,3,Fitxer <tt>crontab</tt> regular de l'usuari
 line2=Configuració del sistema,11
 cron_dir=Directori de crontab,0
 cron_get_command=Ordre per llegir el treball cron d'un usuari,0

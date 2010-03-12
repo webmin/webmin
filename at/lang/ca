@@ -4,6 +4,7 @@ index_user=Executa com a usuari
 index_date=Executa el dia
 index_time=Executa a l'hora
 index_cmd=Ordres per executar
+index_mail=Envia un correu en completar-se
 index_id=ID del treball
 index_exec=Executa a
 index_created=Creat el
