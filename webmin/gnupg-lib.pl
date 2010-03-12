@@ -384,5 +384,89 @@ if (&foreign_check("mailbox")) {
 return undef;
 }
 
+# fetch_gpg_key(id)
+# Imports a key by ID from the configured keyserver. Returns 0 on success,
+# 1 on failure, 2 if there was no change, 3 if the import appeared to success
+# but the key isn't visible.
+sub fetch_gpg_key
+{
+local ($id) = @_;
+local $out = &backquote_command(
+	"$gpgpath --keyserver ".quotemeta($config{'keyserver'}).
+	" --recv-key ".quotemeta($id)." 2>&1 </dev/null");
+local @keys = &list_keys();
+local ($key) = grep { lc($_->{'key'}) eq lc($id) } @keys;
+if ($?) {
+	return wantarray ? (1, $out) : 1;
+	}
+elsif ($out =~ /not\s+changed/) {
+	return wantarray ? (2, $key) : 2;
+	}
+else {
+	if ($key) {
+		return (0, $key);
+		}
+	else {
+		return (3, $out);
+		}
+	}
+}
+
+# search_gpg_keys(word)
+# Searches the configured keyserver for GPG keys matching some name or email
+# address, and returns them as a list of hash refs
+sub search_gpg_keys
+{
+local ($word) = @_;
+local $cmd = "$gpgpath --keyserver ".quotemeta($config{'keyserver'}).
+	     " --search-keys ".quotemeta($word);
+local ($fh, $fpid) = &foreign_call("proc", "pty_process_exec", $cmd);
+local @rv;
+while(1) {
+	$wait_for_input = undef;
+	local $rv = &wait_for($fh, "N.ext, or Q.uit");
+	if ($rv < 0) { last; }
+	local $count = 0;
+	local $key;
+	foreach my $l (split(/\r?\n/, $wait_for_input)) {
+		if ($l =~ /^\(\d+\)\s+(\d+)\s+bit\s+(\S+)\s+key\s+(\S+)/) {
+			# Key with no name .. skip!
+			}
+		elsif ($l =~ /^\(\d+\)\s+(\S.*)\s+<(\S+)>/ ||
+		       $l =~ /^\(\d+\)\s+(\S.*)/) {
+			# First name and email for a key
+			$key = { 'name' => [ $1 ],
+				 'email' => [ $2 ] };
+			$key->{'name'} =~ s/\s+$//;
+			push(@rv, $key);
+			$count++;
+			}
+		elsif ($l =~ /^\s+(\S.*)\s+<(\S+)>/ && $key) {
+			# Additional name and email
+			push(@{$key->{'name'}}, $1);
+			push(@{$key->{'email'}}, $2);
+			}
+		elsif ($l =~ /\s+(\d+)\s+bit\s+(\S+)\s+key\s+(\S+),\s+created:\s+(\S+)/ && $key) {
+			# Size and ID
+			$key->{'size'} = $1;
+			$key->{'key'} = $3;
+			$key->{'date'} = $4;
+			if ($l =~ /revoked/) {
+				$key->{'revoked'} = 1;
+				}
+			$key = undef;
+			}
+		}
+	if ($count) {
+		&sysprint($fh, "N\n");
+		}
+	else {
+		last;
+		}
+	}
+close($fh);
+return @rv;
+}
+
 1;
 
