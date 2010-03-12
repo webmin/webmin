@@ -52,6 +52,9 @@ users_ebanner=Hi falta el fitxer de missatge previ o bé és invàlid
 users_authkeys=Fitxer de claus autoritzades d'usuari
 users_authkeys_def=Defecte (~/.ssh/authorized_keys)
 users_authkeys_set=Fitxer al directori arrel
+users_eauthkeys=Hi falta el fitxer de claus d'autorització o bé no sembla vàlid
+users_maxauthtries=Nombre màxim d'intents de connexió
+users_emaxauthtries=Hi falta el nombre d'intents d'entrada per connexió o bé no és numèric
 
 net_title=Xarxa
 net_header=Opcions de Xarxa

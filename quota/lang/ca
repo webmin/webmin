@@ -129,6 +129,7 @@ gfilesys_edit=Edita la Quota a:
 gfilesys_copy=Copia les Quotes
 gfilesys_editdesc=Visualitza i edita les quotes d'aquest grup en algun altre sistema de fitxers en el qual actualment no hi tingui quotes.
 gfilesys_copydesc=Copia els límits de quota d'aquest grup a tots els sistemes de fitxers a algun o a tots els altres grups.
+gfilesys_enone=No has introduït cap nom de grup
 
 ggracef_title=Períodes de Gràcia
 ggracef_return=a la llista de grups
@@ -222,6 +223,7 @@ ufilesys_editdesc=Visualitza i edita les quotes d'aquest usuari en algun altre s
 ufilesys_copydesc=Copia els límits de quota d'aquest usuari a tots els sistemes de fitxers a algun o a tots els altres usuaris.
 ufilesys_copy=Copia les Quotes
 ufilesys_grace=Gràcia
+ufilesys_enone=No has introduït cap nom d'usuari
 
 ugracef_title=Períodes de Gràcia
 ugracef_return=a la llista d'usuaris

@@ -164,6 +164,7 @@ ui_sizemodules=Mida del triador de mòduls múltiple
 ui_edbwidth=Hi falta l'amplada de finestra del triador o bé és invàlida
 ui_edbheight=Hi falta l'alçada de finestra del triador o bé és invàlida
 ui_showlogin=Prefixa els títols de les pàgines amb el nom d'usuari
+ui_showhost=Prefixa els títols de les pàgines amb el nom del host
 ui_dateformat=Format de les dates mostrades
 ui_dateformat_dd/mon/yyyy=dd/mes/aaaa (p. ex. 16/Set/2001)
 ui_dateformat_dd/mm/yyyy=dd/mm/aaaa (p. ex. 16/09/2001)

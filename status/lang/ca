@@ -166,6 +166,7 @@ sched_smsno=Ningú
 sched_smscarrier=Telèfon de la portadora
 sched_smsnumber=amb el número
 sched_esmsnumber=Hi falta el número del SMS o bé és no és numèric
+sched_esmsname=Hi falta el número del SMS o bé sembla invàlid
 
 up_since=Actiu des de $1
 depends_mod=El mòdul $1 no està instal·lat al sistema
@@ -237,13 +238,18 @@ traffic_ebytes=Hi falta el nombre de bytes/segon o bé no és vàlid
 
 space_fs=Sistema de fitxers a verificar
 space_min2=Espai lliure mínim
+space_mode0=Mida absoluta
+space_mode1=Percentatge del total
 space_desc=$1 lliures
 space_nofs=Sistema de fitxers no muntat
 space_other=Altres...
 space_emin=Hi falta l'espai lliure o bé no és vàlid
+space_epc=Hi falta el percentatge d'espai lliure o bé és invàlid
 space_eother=Hi falta el sistema de fitxers o bé no és vàlid
 space_inode=Inodes mínims Lliures
 space_ierr=Només hi ha $1 inodes lliures
+space_merr=Només $1 d'espai lliure
+space_perr=Nomé un $1% lliure
 
 load_time=Comprovació de la càrrega mitjana
 load_1=1 minut
