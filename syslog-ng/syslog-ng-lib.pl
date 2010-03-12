@@ -42,9 +42,10 @@ local $cmode;
 while($line = <CONF>) {
 	# strip comments
 	$line =~ s/\r|\n//g;
-	$line =~ s/#.*$//g;
+	$line =~ s/#.*$//g;		# Remove hash comment
 	$line =~ s/\/\/.*$//g if ($line !~ /".*\/\/.*"/);
-	$line =~ s/\/\*.*\*\///g;
+	$line =~ s/\/\*.*\*\///g;	# Remove multi-line comment
+	$line =~ s/^\s*@.*$//g;		# Remove @version line
 	while(1) {
 		if (!$cmode && $line =~ /\/\*/) {
 			# start of a C-style comment
