@@ -20,8 +20,11 @@ else {
 	$in{'version'} =~ /^\d+$/ || &error($text{'ssl_eversion'});
 	$miniserv{'ssl_version'} = $in{'version'};
 	}
-if ($in{'cipher_list_def'}) {
+if ($in{'cipher_list_def'} == 1) {
 	delete($miniserv{'ssl_cipher_list'});
+	}
+elsif ($in{'cipher_list_def'} == 2) {
+	$miniserv{'ssl_cipher_list'} = $strong_ssl_ciphers;
 	}
 else {
 	$in{'cipher_list'} =~ /^\S+$/ || &error($text{'ssl_ecipher_list'});

@@ -99,3 +99,5 @@ Added an option on the Logging page to record logins and logouts from Webmin, fo
 Added a field to the Debugging Log File page to select modules to debug for.
 ---- Changes since 1.500 ----
 Added an option to the User Interface page to always put the hostname before the page title.
+---- Changes since 1.510 ----
+Strong PCI-compliant ciphers can now be selected on the SSL Encryption page.

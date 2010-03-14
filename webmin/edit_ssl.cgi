@@ -54,9 +54,16 @@ print &ui_table_row($text{'ssl_version'},
 	&ui_opt_textbox("version", $miniserv{'ssl_version'}, 4,
 			$text{'ssl_auto'}));
 
+$clist = $miniserv{'ssl_cipher_list'};
+$cmode = !$clist ? 1 :
+	 $clist eq $strong_ssl_ciphers ? 2 : 0;
 print &ui_table_row($text{'ssl_cipher_list'},
-	&ui_opt_textbox("cipher_list", $miniserv{'ssl_cipher_list'}, 30,
-			$text{'ssl_auto'}));
+	&ui_radio("cipher_list_def", $cmode,
+		  [ [ 1, $text{'ssl_auto'}."<br>" ],
+		    [ 2, $text{'ssl_strong'}."<br>" ],
+		    [ 0, $text{'ssl_clist'}." ".
+			 &ui_textbox("cipher_list",
+				     $cmode == 0 ? $clist : "", 30) ] ]));
 
 print &ui_table_row($text{'ssl_extracas'},
 	&ui_textarea("extracas", join("\n",split(/\s+/, $miniserv{'extracas'})),

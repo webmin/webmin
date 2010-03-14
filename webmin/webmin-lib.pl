@@ -52,6 +52,8 @@ $detect_operating_system_cache = "$module_config_directory/oscache";
 $record_login_cmd = "$config_directory/login.pl";
 $record_logout_cmd = "$config_directory/logout.pl";
 
+$strong_ssl_ciphers = "ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM";
+
 =head2 setup_ca
 
 Internal function to create all the configuration files needed for the Webmin
