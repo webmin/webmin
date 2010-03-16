@@ -29,7 +29,7 @@ print &ui_hidden("lv", $in{'lv'});
 print &ui_hidden("snap", $in{'snap'});
 print &ui_table_start($text{'lv_header'}, "width=100%", 4);
 
-if ($stat[2]) {
+if (!&can_resize_lv_stat(@stat)) {
 	# Current status
 	print &ui_table_row($text{'lv_name'}, $lv->{'name'});
 
@@ -37,8 +37,14 @@ if ($stat[2]) {
 	}
 else {
 	# Details for new LV
-	print &ui_table_row($text{'lv_name'}, 
-		&ui_textbox("name", $lv->{'name'}, 20));
+	if ($stat[2]) {
+		print &ui_table_row($text{'lv_name'}, $lv->{'name'});
+		print &ui_hidden("name", $lv->{'name'});
+		}
+	else {
+		print &ui_table_row($text{'lv_name'},
+				    &ui_textbox("name", $lv->{'name'}, 20));
+		}
 
 	if (!$in{'lv'}) {
 		# Can show nice size chooser for absolute or relative size
@@ -126,7 +132,7 @@ if ($lv->{'is_snap'}) {
 			$lv->{'snapusage'}."%");
 		}
 	}
-elsif ($stat[2]) {
+elsif (!&can_resize_lv_stat(@stat)) {
 	# Display current permissons and allocation method
 	print &ui_table_row($text{'lv_perm'},
 		$text{"lv_perm".$lv->{'perm'}});
@@ -185,16 +191,22 @@ if ($in{'lv'}) {
 	}
 
 print &ui_table_end();
-if ($stat[2]) {
+if (!&can_resize_lv_stat(@stat)) {
 	# In use - cannot be edited
 	print &ui_form_end();
 	print "<b>$text{'lv_cannot'}</b><p>\n";
 	}
+elsif ($stat[2]) {
+	# Mounted, but can be resized
+	print &ui_form_end([ [ undef, $text{'save'} ] ]);
+	}
 elsif ($in{'lv'}) {
+	# Can be resized or deleted
 	print &ui_form_end([ [ undef, $text{'save'} ],
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 else {
+	# Can be created
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 

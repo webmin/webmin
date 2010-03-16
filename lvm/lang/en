@@ -112,6 +112,8 @@ resize_mesg=The $1 filesystem on this logical volume cannot be resized. If you r
 resize_mesg2=Webmin does not know what kind of filesystem is on this logical volume, if any. If you resize the logical volume, you must re-create the filesystem, which will erase all data in it.
 resize_fs=There was an error resizing the $1 filesystem on this logical volume : $2  If you resize just the logical volume, you must re-create the filesystem, which will erase all data in it.
 resize_ok=Resize Logical Volume
+resize_emounted=The filesystem on this logical volume cannot be resized while it is mounted
+resize_emounted2=The filesystem on this logical volume cannot be shrunk while it is mounted
 
 init_title=Activate LVM
 init_cmd=Running command $1 ..

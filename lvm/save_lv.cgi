@@ -128,14 +128,25 @@ else {
 				&error("<pre>$err</pre>") if ($err);
 				}
 			else {
-				local $can = &can_resize_filesystem($stat[1]);
-				if ($can == 2 ||
-				    $can == 1 && $realsize > $lv->{'size'}) {
-					# Attempt to resize properly
-					$err = &resize_filesystem($lv, $stat[1], $realsize);
+				local $can = &can_resize_lv_stat(@stat);
+				if (($can == 2 ||
+				     $can == 1 && $realsize > $lv->{'size'}) &&
+				    $stat[1]) {
+					# Attempt to resize FS properly
+					$err = &resize_filesystem($lv, $stat[1],
+								  $realsize);
 					if ($err) {
-						$err = &text('resize_fs', $stat[1], "</center><pre>$err</pre><center>");
+						$err = &text('resize_fs',
+							$stat[1],
+							"</center><pre>$err".
+							 "</pre><center>");
 						}
+					}
+				elsif ($stat[2]) {
+					# Cannot resize while mounted
+					&error($can == 1 ? 
+						$text{'resize_emounted2'} :
+						$text{'resize_emounted'});
 					}
 				else {
 					# Cannot resize .. ask for confirmation

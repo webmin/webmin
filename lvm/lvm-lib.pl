@@ -464,6 +464,37 @@ else {
 	}
 }
 
+# can_resize_lv_stat(dir, type, mounted)
+# Returns 1 if some LV can be enlarged, 2 if enlarged or shrunk, or 0
+# if neither, based on the details provided by device_status
+sub can_resize_lv_stat
+{
+local ($dir, $type, $mounted) = @_;
+if (!$type) {
+	# No FS known, assume can resize safely
+	return 2;
+	}
+else {
+	my $can = &can_resize_filesystem($type);
+	if ($can && $mounted) {
+		# If currently mounted, check if resizing is possible
+		if ($dir eq "/") {
+			# Cannot resize root
+			$can = 0;
+			}
+		elsif ($type =~ /^ext\d+$/) {
+			# ext* can be resized up
+			$can = 1;
+			}
+		else {
+			# Nothing else can
+			$can = 0;
+			}
+		}
+	return $can;
+	}
+}
+
 # resize_filesystem(&lv, type, size)
 sub resize_filesystem
 {
