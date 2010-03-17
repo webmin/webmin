@@ -449,10 +449,9 @@ if ($_[0] =~ /^ext\d+$/) {
 		return 0;
 		}
 	}
-# This is supposed to work, but doesn't for me!
-#elsif ($_[0] eq "xfs") {
-#	return &has_command("xfs_growfs") ? 1 : 0;
-#	}
+elsif ($_[0] eq "xfs") {
+	return &has_command("xfs_growfs") ? 1 : 0;
+	}
 elsif ($_[0] eq "reiserfs") {
 	return &has_command("resize_reiserfs") ? 2 : 0;
 	}
@@ -482,8 +481,8 @@ else {
 			# Cannot resize root
 			$can = 0;
 			}
-		elsif ($type =~ /^ext\d+$/) {
-			# ext* can be resized up
+		elsif ($type =~ /^ext\d+$/ || $type eq "xfs") {
+			# ext* and xfs can be resized up
 			$can = 1;
 			}
 		else {
@@ -498,7 +497,7 @@ else {
 # resize_filesystem(&lv, type, size)
 sub resize_filesystem
 {
-if ($_[1] eq "ext2" || $_[1] eq "ext3") {
+if ($_[1] =~ /^ext\d+$/) {
 	&foreign_require("proc");
 	if (&has_command("e2fsadm")) {
 		# The e2fsadm command can re-size an LVM and filesystem together
@@ -545,7 +544,6 @@ elsif ($_[1] eq "xfs") {
 	return $err if ($err);
 
 	# Resize the filesystem .. which must be mounted!
-	# XXX doesn't work on LVMs!
 	local ($m, $mount);
 	foreach $m (&mount::list_mounts()) {
 		if ($m->[1] eq $_[0]->{'device'}) {
