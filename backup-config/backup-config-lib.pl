@@ -368,18 +368,27 @@ if (!$_[5]) {
 	}
 
 # Make the tar (possibly .gz) file
-local $qfiles = join(" ", map { s/^\///; quotemeta($_) }
-				&unique(@files), @manifests);
+local $filestemp = &transname();
+&open_tempfile(FILESTEMP, ">$filestemp");
+foreach my $f (&unique(@files), @manifests) {
+	my $frel = $f;
+	$frel =~ s/^\///;
+	&print_tempfile(FILESTEMP, $frel."\n");
+	}
+&close_tempfile(FILESTEMP);
 local $qfile = quotemeta($file);
 local $out;
 if (&has_command("gzip")) {
-	&execute_command("cd / ; tar cf - $qfiles | gzip -c >$qfile",
+	&execute_command("cd / ; tar cfT - $filestemp | gzip -c >$qfile",
 			 undef, \$out, \$out);
 	}
 else {
-	&execute_command("cd / ; tar cf $qfile $qfiles", undef, \$out, \$out);
+	&execute_command("cd / ; tar cfT $qfile $filestemp",
+			 undef, \$out, \$out);
 	}
-if ($?) {
+my $ex = $?;
+&unlink_file($filestemp);
+if ($ex) {
 	&unlink_file($file) if ($mode != 0);
 	return &text('backup_etar', "<pre>$out</pre>");
 	}
