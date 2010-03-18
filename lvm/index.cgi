@@ -188,7 +188,7 @@ if (@vgs) {
 					$stat[1], $stat[0]);
 				$usedmsg = &text('lv_petotals',
 					&nice_size(($total-$free)*1024),
-					&nice_size($total)*1024);
+					&nice_size($total*1024));
 				}
 			print &ui_columns_row([
 			  "<a href='edit_lv.cgi?vg=".&urlize($v->{'name'}).
