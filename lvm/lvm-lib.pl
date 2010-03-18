@@ -546,16 +546,16 @@ elsif ($_[1] eq "xfs") {
 	# Resize the filesystem .. which must be mounted!
 	local @stat = &device_status($_[0]->{'device'});
 	local ($m, $mount);
-	if (!$stat[2]) {
-		foreach $m (&mount::list_mounts()) {
-			if ($m->[1] eq $_[0]->{'device'}) {
-				$mount = $m;
-				}
+	foreach $m (&mount::list_mounts()) {
+		if ($m->[1] eq $_[0]->{'device'}) {
+			$mount = $m;
 			}
+		}
+	if (!$stat[2]) {
 		$mount || return "Mount not found";
 		&mount::mount_dir(@$mount);
 		}
-	local $cmd = "xfs_growfs ".quotemeta($mount->[0]);
+	local $cmd = "xfs_growfs ".quotemeta($stat[0] || $mount->[0]);
 	local $out = &backquote_logged("$cmd 2>&1");
 	local $q = $?;
 	if (!$stat[2]) {
