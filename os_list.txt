@@ -28,6 +28,7 @@ NeoShine Linux			$1	redhat-linux	$1+10	`cat /etc/neoshine-release 2>/dev/null` =
 Endian Firewall Linux		$1	redhat-linux	$1+10.0	`cat /etc/endian-release 2>/dev/null` =~ /release\s+(\S+)/
 Oracle Enterprise Linux			$2	redhat-linux	$2+8.0	`cat /etc/enterprise-release 2>/dev/null` =~ /Enterprise.*Linux\s+Enterprise\s+Linux\s+Server\s+release\s+(\d+)/i
 Oracle VM			$2	redhat-linux	$2+8.0	`cat /etc/ovs-release 2>/dev/null` =~ /Oracle.*VM\s+server\s+release\s+(\d+)/i
+XenServer Linux			$1	redhat-linux	13.0	`cat /etc/redhat-release` =~ /XenServer\s+release\s+5\./
 
 # Redhat enterprise versions
 Redhat Enterprise Linux			2.1AS	redhat-linux	7.3	`cat /etc/redhat-release 2>/dev/null` =~ /(Advanced\s+Server.*2\.1)|(AS.*2\.1)/i
