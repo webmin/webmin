@@ -2893,6 +2893,11 @@ if ($bump) {
 	&bump_soa_record($fn, \@recs);
 	}
 
+# Get the zone algorithm
+local @keys = &get_dnssec_key($z);
+local ($zonekey) = grep { !$_->{'ksk'} } @keys;
+local $alg = $zonekey ? $zonekey->{'algorithm'} : "";
+
 # Create the signed file. Sometimes this fails with an error like :
 # task.c:310: REQUIRE(task->references > 0) failed
 # But re-trying works!?!
@@ -2902,6 +2907,7 @@ while($tries++ < 10) {
 	$out = &backquote_logged(
 		"cd ".quotemeta($dir)." && ".
 		"$config{'signzone'} -o ".quotemeta($dom).
+		($alg =~ /^NSEC3/ ? " -3 -" : "").
 		" -f ".quotemeta($signed)." ".
 		quotemeta($chrootfn)." 2>&1");
 	last if (!$?);
@@ -2912,6 +2918,7 @@ return $out if ($tries >= 10);
 # and then copying over
 for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'NSEC' ||
+	    $recs[$i]->{'type'} eq 'NSEC3' ||
 	    $recs[$i]->{'type'} eq 'RRSIG') {
 		&delete_record($fn, $recs[$i]);
 		}
@@ -2919,6 +2926,7 @@ for(my $i=$#recs; $i>=0; $i--) {
 local @signedrecs = &read_zone_file($fn.".webmin-signed", $dom);
 foreach my $r (@signedrecs) {
 	if ($r->{'type'} eq 'NSEC' ||
+	    $r->{'type'} eq 'NSEC3' ||
 	    $r->{'type'} eq 'RRSIG') {
 		&create_record($fn, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
 			       $r->{'type'}, join(" ", @{$r->{'values'}}),
