@@ -481,8 +481,9 @@ else {
 			# Cannot resize root
 			$can = 0;
 			}
-		elsif ($type =~ /^ext\d+$/ || $type eq "xfs") {
-			# ext* and xfs can be resized up
+		elsif ($type =~ /^ext\d+$/ || $type eq "xfs" ||
+		       $type eq "reiserfs" || $type eq "jfs") {
+			# ext*, xfs, jfs and reiserfs can be resized up
 			$can = 1;
 			}
 		else {
@@ -591,20 +592,25 @@ elsif ($_[1] eq "jfs") {
 	local $err = &resize_logical_volume($_[0], $_[2]);
 	return $err if ($err);
 
-	# Now enlarge the jfs filesystem with a remount
+	# Now enlarge the jfs filesystem with a remount - must be mounted first
+	local @stat = &device_status($_[0]->{'device'});
 	local ($m, $mount);
 	foreach $m (&mount::list_mounts()) {
 		if ($m->[1] eq $_[0]->{'device'}) {
 			$mount = $m;
 			}
 		}
-	$mount || return "Mount not found";
-	&mount::mount_dir(@$mount);
+	if (!$stat[2]) {
+		$mount || return "Mount not found";
+		&mount::mount_dir(@$mount);
+		}
 	local $ropts = $mount->[3];
 	$ropts = $ropts eq "-" ? "resize,remount" : "$ropts,resize,remount";
 	local $err = &mount::mount_dir($mount->[0], $mount->[1],
 				       $mount->[2], $ropts);
-	&mount::unmount_dir(@$mount);
+	if (!$stat[2]) {
+		&mount::unmount_dir(@$mount);
+		}
 	return $err ? $err : undef;
 	}
 else {
