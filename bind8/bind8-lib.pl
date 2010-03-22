@@ -2866,6 +2866,7 @@ foreach my $key (@keys) {
 local @recs = &read_zone_file($fn, $dom);
 for(my $i=$#recs; $i>=0; $i--) {
 	if ($recs[$i]->{'type'} eq 'NSEC' ||
+	    $recs[$i]->{'type'} eq 'NSEC3' ||
 	    $recs[$i]->{'type'} eq 'RRSIG' ||
 	    $recs[$i]->{'type'} eq 'DNSKEY') {
 		&delete_record($fn, $recs[$i]);
