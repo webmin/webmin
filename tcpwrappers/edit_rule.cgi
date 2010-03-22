@@ -54,7 +54,7 @@ print &ui_hidden($in{'allow'} ? 'allow' : 'deny', 1),"\n";
 print &ui_table_start($text{'edit_header'}, "", 2);
 
 # Services
-if (@xservices) {
+if (@xservices && $config{'inetd_services'}) {
 	# listed from (x)inetd
 	print &ui_table_row($text{'edit_service'},
 		&ui_select("service", \@services, \@xservices, 5, 1));
