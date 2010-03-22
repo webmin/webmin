@@ -789,12 +789,8 @@ if (@_ > 0) {
 	}
 print "$tconfig{'headhtml'}\n" if ($tconfig{'headhtml'});
 if ($tconfig{'headinclude'}) {
-	local $_;
-	open(INC, "$theme_root_directory/$tconfig{'headinclude'}");
-	while(<INC>) {
-		print;
-		}
-	close(INC);
+	print &read_file_contents(
+		"$theme_root_directory/$tconfig{'headinclude'}");
 	}
 print "</head>\n";
 my $bgcolor = defined($tconfig{'cs_page'}) ? $tconfig{'cs_page'} :
@@ -1021,7 +1017,7 @@ else {
 	}
 }
 
-=head2 popup_header([title], [head-stuff], [body-stuff])
+=head2 popup_header([title], [head-stuff], [body-stuff], [no-body])
 
 Outputs a page header, suitable for a popup window. If no title is given,
 absolutely no decorations are output. Also useful in framesets. The parameters
@@ -1032,6 +1028,8 @@ are :
 =item head-stuff - HTML to appear in the <head> section.
 
 =item body-stuff - HTML attributes to be include in the <body> tag.
+
+=item no-body - If set to 1, don't generate a body tag
 
 =cut
 sub popup_header
@@ -1056,12 +1054,8 @@ print "<title>$_[0]</title>\n";
 print $_[1];
 print "$tconfig{'headhtml'}\n" if ($tconfig{'headhtml'});
 if ($tconfig{'headinclude'}) {
-	local $_;
-	open(INC, "$theme_root_directory/$tconfig{'headinclude'}");
-	while(<INC>) {
-		print;
-		}
-	close(INC);
+	print &read_file_contents(
+		"$theme_root_directory/$tconfig{'headinclude'}");
 	}
 print "</head>\n";
 my $bgcolor = defined($tconfig{'cs_page'}) ? $tconfig{'cs_page'} :
@@ -1072,10 +1066,12 @@ my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
 	      defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 my $bgimage = defined($tconfig{'bgimage'}) ? "background=$tconfig{'bgimage'}"
 					      : "";
-print "<body id='popup' bgcolor=#$bgcolor link=#$link vlink=#$link ",
-      "text=#$text $bgimage $tconfig{'inbody'} $_[2]>\n";
-if (defined(&theme_popup_prebody)) {
-	&theme_popup_prebody(@_);
+if (!$_[3]) {
+	print "<body id='popup' bgcolor=#$bgcolor link=#$link vlink=#$link ",
+	      "text=#$text $bgimage $tconfig{'inbody'} $_[2]>\n";
+	if (defined(&theme_popup_prebody)) {
+		&theme_popup_prebody(@_);
+		}
 	}
 }
 
@@ -1152,7 +1148,7 @@ if (!$_[$i]) {
 	}
 }
 
-=head2 popup_footer
+=head2 popup_footer([no-body])
 
 Outputs html for a footer for a popup window, started by popup_header.
 
@@ -1164,7 +1160,10 @@ if (defined(&theme_popup_footer)) {
 	&theme_popup_footer(@_);
 	return;
 	}
-print "</body></html>\n";
+if (!$_[0]) {
+	print "</body>\n";
+	}
+print "</html>\n";
 }
 
 =head2 load_theme_library

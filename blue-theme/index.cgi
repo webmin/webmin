@@ -26,21 +26,18 @@ if ($in{'page'}) {
 $title = &get_html_framed_title();
 &PrintHeader();
 $cols = &get_product_name() eq 'usermin' ? 180 : 230;
-print <<EOF;
-<html>
-<head> <title>$title</title> </head>
+&popup_header($title, undef, undef, 1);
 
+print <<EOF;
 <frameset cols="$cols,*" border=0>
 	<frame name="left" src="left.cgi$cat" scrolling="auto">
 	<frame name="right" src="$goto" noresize>
 <noframes>
 <body>
-
 <p>This page uses frames, but your browser doesn't support them.</p>
-
 </body>
 </noframes>
 </frameset>
-</html>
 EOF
+&popup_footer();
 
