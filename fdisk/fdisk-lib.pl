@@ -741,6 +741,7 @@ elsif ($_[0] =~ /^ext\d+$/) {
 	$cmd .= &opt_check("ext2_i", '\d{4,}', "-i");
 	$cmd .= &opt_check("ext2_m", '\d+', "-m");
 	$cmd .= $in{'ext2_c'} ? " -c" : "";
+	$cmd .= " -q";
 	$cmd .= " $_[1]";
 	}
 elsif ($_[0] eq "xfs") {
