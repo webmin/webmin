@@ -194,6 +194,7 @@ return @rv;
 # Returns a list of available package updates
 sub update_system_updates
 {
+&execute_command("$apt_get_command update");
 if (&has_command("apt-show-versions")) {
 	# This awesome command can give us all updates in one hit, and takes
 	# pinned versions and backports into account
