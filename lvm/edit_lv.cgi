@@ -215,13 +215,22 @@ if ($in{'lv'} && !$stat[2] && !$lv->{'is_snap'}) {
 	print &ui_hr();
 	print &ui_buttons_start();
 
-	$fstype = $stat[1] || "ext3";
-	print &ui_buttons_row("mkfs_form.cgi", $text{'lv_mkfs'},
+	if ($stat[1]) {
+		# Use FS from fstab
+		print &ui_buttons_row("mkfs_form.cgi", $text{'lv_mkfs2'},
+			      &text('lv_mkfsdesc2', uc($stat[1])),
+			      &ui_hidden("dev", $lv->{'device'}),
+			      &ui_hidden("fs", $stat[1]));
+		}
+	else {
+		# Can select FS
+		print &ui_buttons_row("mkfs_form.cgi", $text{'lv_mkfs'},
 			      $text{'lv_mkfsdesc'},
 			      &ui_hidden("dev", $lv->{'device'}),
-			      &ui_select("fs", $fstype,
+			      &ui_select("fs", "ext3",
 				[ map { [ $_, $fdisk::text{"fs_".$_}." ($_)" ] }
 				      &fdisk::supported_filesystems() ]));
+		}
 
 	if (!@stat) {
 		# Show button for mounting
