@@ -1,46 +1,23 @@
-line1=Op&#231;&#245;es configur&#225;veis,11
-
-cal_all=Gerar todos relat&#243;rios do Calamaris?,1,1-Sim,0-N&#227;o
-
-cal_fmt=Formato de sa&#237;da do Calamaris,1,w-HTML,m-Texto
-
-cal_extra=Par&#226;metros extra de configura&#231;&#227;o de linha de comando do Calamaris,0
-
-cal_max=M&#225;ximo de linhas de registro para passar para calamaris,3,Ilimitado
-
-crypt_conf=M&#233;todo de criptografia para senhas de proxy,1,0-crypt,1-md5base64
-
-sort_conf=Ordenar usu&#225;rios proxy,1,1-Sim,0-N&#227;o
-
-restart_pos=Exibir bot&#245;es parar/iniciar/aplicar,1,2-Na p&#225;gina principal,1-No cabe&#231;alho,0-Ambos
-
-sync_create=Criar usu&#225;rios proxy quando criar usu&#225;rios do sistema,1,1-Sim,0-N&#227;o
-
-sync_modify=Atualizar usu&#225;rios proxy quando atualizar usu&#225;rios do sistema,1,1-Sim,0-N&#227;o
-
-sync_delete=Apagar usu&#225;rios proxy quando apagar usu&#225;rios do sistema,1,1-Sim,0-N&#227;o
-
-line2=Configura&#231;&#227;o do sistema,11
-
-squid_conf=Caminho completo para arquivo de configura&#231;&#227;o do Squid,0
-
-squid_start=Comando para iniciar o Squid,3,Autom&#225;tico
-
-squid_stop=Comando para parar o Squid,3,Autom&#225;tico
-
-squid_restart=Comando para aplicar altera&#231;&#245;es,3,Autom&#225;tico
-
-squid_path=Execut&#225;vel do Squid,0
-
+line1=Opções configuráveis,11
+cal_all=Gerar todos relatórios do Calamaris?,1,1-Sim,0-Não
+cal_fmt=Formato de saída do Calamaris,1,w-HTML,m-Texto
+cal_extra=Parâmetros extra de configuração de linha de comando do Calamaris,0
+cal_max=Máximo de linhas de registro para passar para calamaris,3,Ilimitado
+crypt_conf=Método de criptografia para senhas de proxy,1,0-crypt,1-md5base64
+sort_conf=Ordenar usuários proxy,1,1-Sim,0-Não
+restart_pos=Exibir botões parar/iniciar/aplicar,1,2-Na página principal,1-No cabeçalho,0-Ambos
+sync_create=Criar usuários proxy quando criar usuários do sistema,1,1-Sim,0-Não
+sync_modify=Atualizar usuários proxy quando atualizar usuários do sistema,1,1-Sim,0-Não
+sync_delete=Apagar usuários proxy quando apagar usuários do sistema,1,1-Sim,0-Não
+line2=Configuração do sistema,11
+squid_conf=Caminho completo para arquivo de configuração do Squid,0
+squid_start=Comando para iniciar o Squid,3,Automático
+squid_stop=Comando para parar o Squid,3,Automático
+squid_restart=Comando para aplicar alterações,3,Automático
+squid_path=Executável do Squid,0
 pid_file=Caminho completo para o arquivo PID,0
-
-cache_dir=Caminho completo para o diret&#243;rio de cache do Squid,0
-
-cachemgr_path=Execut&#225;vel do Squid cachemgr.cgi,0
-
-log_dir=Caminho completo para o diret&#243;rio de log do Squid,0
-
-calamaris=Caminho para o programa de an&#225;lise de registo Calamaris,3,N&#227;o instalado
-
-squidclient=Caminho para o programa squidclient,3,N&#227;o instalado
-
+cache_dir=Caminho completo para o diretório de cache do Squid,0
+cachemgr_path=Executável do Squid cachemgr.cgi,0
+log_dir=Caminho completo para o diretório de log do Squid,0
+calamaris=Caminho para o programa de análise de registo Calamaris,3,Não instalado
+squidclient=Caminho para o programa squidclient,3,Não instalado

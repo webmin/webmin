@@ -17,3 +17,6 @@ restart_cmd=Comando para aplicar configurações,3,Matar e reinicar
 pid_file=Caminho para o arquivo PID do servidor DHCP,0
 lease_file=Arquivo de lease do servidor DHCP,0
 interfaces_type=Tipo de arquivo de Interfaces,4,redhat-Redhat,mandrake-Mandrake,suse-SuSE,debian-Debian,caldera-Caldera,-Webmin
+add_file=Acrescentar novas subredes&#44; hosts e grupos para arquivo,3,Arquivo principal de configuração
+stop_cmd=Comando para interromper servidor DHCP,3,Matar processo
+version=Versão do servidor DHCP,3,Resolver automaticamente

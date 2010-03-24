@@ -515,6 +515,7 @@ share_title1=Padr&#245;es de Compartilhamento de Arquivo
 share_title2=Editar Compartilhamento de Arquivo
 share_title3=Criar Compartilhamento de Arquivo
 share_view=Ver Conex&#245;es
+smb_add_machine_script=Script para adicionar m&#225;quina ao dom&#237;nio
 smb_ads=Active directory
 smb_aliase=Aliases do Servidor
 smb_announce=An&#250;ncio remoto para
@@ -592,3 +593,6 @@ winbind_pass=Senha do usu&#225;rio
 winbind_save=Amarrar Agora
 winbind_title=Amarrar para Dom&#237;nio
 winbind_user=Amarrar como usu&#225;rio
+
+domain_logons=Permitir logons no dom&#237;nio
+local_master=Controlador local

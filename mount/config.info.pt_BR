@@ -1,0 +1,12 @@
+line1=Opções configuráveis,11
+browse_server=Servidor do qual requisitar lista de navegação,3,localhost
+long_fstypes=Exibir nomes de filesystem longos,1,1-Sim,0-Não
+sort_mode=Ordenar filesystems por,1,2-Ponto de montagem,1-Tipo,0-Ordem nos arquivos
+show_used=Exibir espaço em disco utilizado na lista de filesystems,1,1-Sim,0-Não
+delete_under=Remover diretório ao desmontar se abaixo de,3,Nunca remover
+line2=Configuração do sistema,11
+fstab_file=Arquivo que lista os filesystems montados durante boot,0
+auto_file=Arquivo de automontagens NFS,3
+autofs_file=Arquivo de automontagens kernel,3
+smbclient_path=Endereço completo do smbclient,3
+nmblookup_path=Endereço completo para nmblookup,3

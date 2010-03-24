@@ -6,3 +6,4 @@ perldepends=Net::LDAP
 desc_ca=Servidor LDAP
 desc_nl=LDAP Server
 desc_ru_RU=Сервер LDAP
+desc_pt_BR=Servidor LDAP

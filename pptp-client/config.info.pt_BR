@@ -1,0 +1,7 @@
+line1=Opções configuráveis,11
+timeout=Tempo de espera para conexão do túnel,0,5
+line2=Configuração do sistema,11
+pptp=Endereço completo do programa de cliente PPTP,0
+peers_dir=Diretório com os arquivos de conexão PPP,0
+pap_file=Arquivo de contas PPP,0
+pptp_options=Arquivo de opções globais de PPP do PPTP,0

@@ -1,0 +1,6 @@
+line1=Op&#231;&#245;es configur&#225;veis,11
+default_mode=Estilo de lista de processo padr&#227;o,4,last-&#218;ltimo escolhido,tree-&#193;rvore de processos,user-Ordenar por usu&#225;rio,size-Ordenar por tamanho,cpu-Ordenar por CPU,search-Formato de busca,run-Formato de execu&#231;&#227;o
+cut_length=Caracteres aos quais truncar comandos,3,Ilimitado
+trace_java=Exibir
+line2=Configura&#231;&#227;o do sistema,11
+ps_style=Estilo da sa&#237;da do comando PS,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS,openbsd-OpenBSD

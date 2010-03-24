@@ -3,3 +3,4 @@ select=Exibir m&#243;dulos de usu&#225;rios em,1,0-Tabela,1-Menus
 order=Ordenar usu&#225;rios e grupos por,1,0-Ordem no arquivo,1-Nome
 line2=Configura&#231;&#227;o do sistema,11
 ssleay=Caminho para o programa openssl ou ssleay,0
+display=Modo de exibição de usuário e grupo, 1, 1-Somente nomes, 0-Nomes e módulos

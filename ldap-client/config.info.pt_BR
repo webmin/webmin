@@ -1,0 +1,9 @@
+auth_ldap=Arquivo de configura&#231;&#227;o do cliente LDAP,8
+pam_ldap=Arquivo de configura&#231;&#227;o PAM LDAP,3,Mesmo que o arquivo de configura&#231;&#227;o de cliente LDAP
+secret=Arquivo do cliente LDAP com a senha root,8
+line0=Navegador LDAP e valida&#231;&#227;o de configura&#231;&#245;es,11
+ldap_hosts=Servidores LDAP,3,Do arquivo de configura&#231;&#227;o,50
+ldap_port=Porta do servidor LDAP,3,Do arquivo de configura&#231;&#227;o,5
+ldap_tls=Usar conex&#227;o SSL,1,-Do arquivo de configura&#231;&#227;o,1-Sim,2-Sim com TLS,0-N&#227;o
+ldap_user=Login com nome de usu&#225;rio,3,Do arquivo de configura&#231;&#227;o
+ldap_pass=Login com senha,3,Do arquivo de configura&#231;&#227;o

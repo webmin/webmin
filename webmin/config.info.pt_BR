@@ -1,4 +1,5 @@
 standard_url=URL da lista de m&#243;dulos padr&#245;es&#44;3&#44;No www.webmin.com
 third_url=URL da lista de m&#243;dulos de terceiros&#44;3&#44;No www.webmin.com
 cron_mode=Exibir horas das atualiza&#231;&#245;es como&#44;1&#44;0&#45;Interface Simples&#44;1&#45;Seletor de hora do Cron
+osdn=Obter lista de espelhos OSDN do Webmin?,1,1-Yes,0-No
 warn_days=Dias antes de avisar usu&#225;rios da expira&#231;&#227;o da senha&#44;0&#44;5

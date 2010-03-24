@@ -1,0 +1,10 @@
+line2=Configuração do sistema,11
+pptpd=Endereço completo do programa de daemon,0
+file=Arquivo de configuração PPTP,0
+pid_file=Endereço completo do arquivo PID do PPTP,0
+pap_file=Arquivo de contas PPP,0
+ppp_options=Arquivo de opções padrão PPP,0
+pptp_ppp_options=Arquivo de opções do PPP do PPTP,3,Padrão (/etc/ppp/options.pptp)
+start_cmd=Comando para iniciar o daemon de PPTP,3,Executar o programa
+stop_cmd=Comando para interromper o daemon de PPTP,3,Finalizar o programa
+log_file=Arquivo de log das mensagens PPP,0

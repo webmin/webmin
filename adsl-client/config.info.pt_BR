@@ -1,0 +1,8 @@
+line2=Configura&#231;&#227;o do sistema,11
+pppoe_conf=Arquivo de configura&#231;&#227;o ADSL PPPoE,0
+conf_style=Formato do arquivo de configura&#231;&#227;o,1,0-Configura&#231;&#227;o padr&#227;o RP-PPPoE,1-Arquivo de rede Redhat
+pap_file=Arquivo de contas PPP,0
+pppoe_cmd=Caminho completo para o comando pppoe,0
+start_cmd=Comando para iniciar uma conex&#227;o ADSL,0
+stop_cmd=Comando para desativar uma conex&#227;o ADSL,0
+status_cmd=Comando para identificar o status de uma conex&#227;o ADSL,0

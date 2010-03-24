@@ -1,0 +1,7 @@
+date_subs=Fazer substituição <tt>strftime</tt> dos destinos de backup?,1,1-Sim,0-Não
+smtp_server=Enviar e-mail via servidor SMTP,3,Ler módulo de Correio do Usuário
+run_mode=Executar backups em,1,0-Primeiro plano,1-Plano de fundo
+nonewtape=Pedir nova fita se cheio?,1,1-Sim,0-Não
+always_tar=Sempre usar formato TAR para backups?,1,1-Sim,0-Não
+error_email=Enviar e-mail de backup,1,0-Sempre,1-Só se ocorrerem erros
+simple_sched=Formato do seletor de agendamento,1,1-Simples,0-Complexo

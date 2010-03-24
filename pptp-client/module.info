@@ -7,3 +7,4 @@ longdesc=Configure and establish connections to a VPN server using the PPTP prot
 desc_ca=Client VPN PPTP
 desc_cz=PPTP VPN klient
 desc_nl=PPTP VPN Client
+desc_pt_BR=Cliente VPN PPTP
