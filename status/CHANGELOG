@@ -70,3 +70,5 @@ Added a button to the main page for refreshing only selected monitors, thanks to
 ---- Changes since 1.500 ----
 Added an option to the Disk Space monitor to alert based on percentage free, as an alternative to a threshold in bytes.
 Put back the option to use Cingular as an SMS carrier.
+---- Changes since 1.510 ----
+The Check File or Directory monitor can now use a pattern like /tmp/* to check sizes for all files in a directory.

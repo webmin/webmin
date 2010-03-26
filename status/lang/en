@@ -216,7 +216,7 @@ proc_easuser=User for process to run as does not exist
 exec_cmd=Command to check exit status of
 exec_ecmd=Missing command
 
-file_file=File or directory to check
+file_file=File, directory or pattern to check
 file_test=Test to perform
 file_test_0=Must exist
 file_test_1=Must not exist
@@ -225,6 +225,8 @@ file_test_3=Size must be smaller than
 file_bytes=bytes
 file_efile=Missing file or directory name to check
 file_esize=Invalid file size
+file_elarge=Files too large : $1
+file_esmall=Files too small : $1
 
 traffic_iface=Interface to monitor
 traffic_bytes=Maximum bytes/second
