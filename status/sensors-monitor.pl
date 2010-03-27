@@ -77,12 +77,20 @@ if (!defined(@get_sensors_cache)) {
 			$rv[$#rv]->{'alarm'} = 1 if (/ALARM/);
 			}
 		elsif (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\(min\s+=\s+([0-9\.\+\-]+)\s*(\S+),\s+div\s+=\s+([0-9\.\+\-]+)/) {
-			# Value with min only
+			# Value with min and div
 			push(@rv, { 'name' => $1,
 				    'value' => $2,
 				    'units' => $3,
 				    'min' => $4,
 				    'div' => $6 });
+			$rv[$#rv]->{'alarm'} = 1 if (/ALARM/);
+			}
+		elsif (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\(min\s+=\s+([0-9\.\+\-]+)\s*(\S+)/) {
+			# Value with min only
+			push(@rv, { 'name' => $1,
+				    'value' => $2,
+				    'units' => $3,
+				    'min' => $4 });
 			$rv[$#rv]->{'alarm'} = 1 if (/ALARM/);
 			}
 		elsif (/^([^:]+):\s+([0-9\.\+\-]+)\s*(\S+)\s+\((limit|high)\s+=\s+([0-9\.\+\-]+)\s*(\S+)/) {
