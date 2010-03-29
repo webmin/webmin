@@ -152,11 +152,16 @@ if (!defined($out)) {
 	chop($out);
 	}
 if ($key) {
-	my @res=();
-	foreach (split /,/,$out)
-	    { push @res, $1 if /$key\s+(.+)/; }
-	if ($#res>0) {$out=join ", ",@res}
-	else {$out=$res[0]}
+	# If the value asked for was like foo:bar, extract from the value
+	# the parts after bar
+	my @res = ( );
+        while($out =~ /^(.*?)\Q$key\E\s+(\S+)(.*)$/) {
+		my $v = $2;
+		$out = $3;
+		$v =~ s/,$//;
+		push(@res, $v);
+		}
+	return join(" ", @res);
 	}
 return $out;
 }
@@ -2172,7 +2177,7 @@ sub file_map_type
 {
 local ($type) = @_;
 return 1 if ($type eq 'hash' || $type eq 'regexp' || $type eq 'pcre' ||
-	     $type eq 'btree' || $type eq 'dbm');
+	     $type eq 'btree' || $type eq 'dbm' || $type eq 'cidr');
 }
 
 # in_props(&props, name)

@@ -39,7 +39,7 @@ foreach $r (&list_multi_client_restrictions()) {
 		}
 	push(@grid, &ui_checkbox("client", $r, $text{'sasl_'.$r},
 				 scalar(@v)),
-		    &ui_textbox("value_$r", $vals, 40).
+		    &ui_textbox("value_$r", $vals, 60).
 		    ($r eq "check_client_access" ?
 			" ".&map_chooser_button("value_$r", $r) : ""));
 	$done{$r} = 1;
