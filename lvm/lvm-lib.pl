@@ -481,7 +481,7 @@ else {
 			# Cannot resize root
 			$can = 0;
 			}
-		elsif ($type =~ /^ext\d+$/ || $type eq "xfs" ||
+		elsif ($type =~ /^ext[3-9]$/ || $type eq "xfs" ||
 		       $type eq "reiserfs" || $type eq "jfs") {
 			# ext*, xfs, jfs and reiserfs can be resized up
 			$can = 1;
