@@ -65,6 +65,7 @@ foreach $zi (@zones) {
 			$in{'name'}.".".$zi->{'name'}.".";
 	@recs = &read_zone_file($zi->{'file'}, $zi->{'name'});
 	if ($in{'type'} eq 'CNAME' || $in{'clash'}) {
+		# Check if a record with the same name exists
 		($clash) = grep { $_->{'name'} eq $fullname &&
 				  $_->{'type'} eq $in{'type'} } @recs;
 		if ($clash) {
@@ -73,6 +74,15 @@ foreach $zi (@zones) {
 			    "<p>\n";
 			next;
 			}
+		}
+	# Check if a record with the same name and value exists
+	($clash) = grep { $_->{'name'} eq $fullname &&
+			  $_->{'type'} eq $in{'type'} &&
+			  join(" ", @{$_->{'values'}} eq $in{'value'} } @recs;
+	if ($clash) {
+		print &text('rmass_eclash2',
+		    "<tt>".join(" ", @{$clash->{'values'}})."</tt>"),"<p>\n";
+		next;
 		}
 	&create_record($zi->{'file'}, $in{'name'}, $in{'ttl'}, "IN",
 		       $in{'type'}, $in{'value'});

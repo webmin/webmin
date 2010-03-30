@@ -994,6 +994,7 @@ rmass_ettl=Missing or invalid time-to-live
 rmass_doing=Adding record to zone $1 ..
 rmass_done=.. done
 rmass_eclash=.. a record with the same name and value $1 already exists.
+rmass_eclash2=.. a record with the same name and the same value $1 already exists.
 rmass_clash=Create even if record already exists?
 
 check_title=Check Records
