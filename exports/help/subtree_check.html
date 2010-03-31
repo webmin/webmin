@@ -1,0 +1,14 @@
+<header>Disable subtree checking?</header>
+
+This option disables subtree  checking,  which  has  mild
+security  implications,  but  can  improve reliability in
+some circumstances. <p>
+
+If a subdirectory of a filesystem is  exported,  but  the
+whole  filesystem  isn't then  whenever  a  NFS  request
+arrives, the server must check not only that the accessed
+file is in the appropriate filesystem (which is easy) but
+also that it is in the exported tree (which  is  harder). <p>
+
+<footer>
+
