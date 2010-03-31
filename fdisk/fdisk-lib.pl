@@ -678,6 +678,7 @@ if ($_[0] eq "ext2") {
 	$cmd .= &opt_check("ext2_m", '\d+', "-m");
 	$cmd .= &opt_check("ext2_g", '\d+', "-g");
 	$cmd .= $in{'ext2_c'} ? " -c" : "";
+	$cmd .= " -q";
 	$cmd .= " $_[1]";
 	}
 elsif ($_[0] eq "msdos" || $_[0] eq "vfat") {
