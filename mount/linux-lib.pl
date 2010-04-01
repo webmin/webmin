@@ -1179,6 +1179,14 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 		defined($options{"user"}) ? "checked" : "";
 	printf "<input type=radio name=lnx_user value=0 %s> $text{'no'}</td> </tr>\n",
 		defined($options{"user"}) ? "" : "checked";
+
+	print "<td>", &hlink("<b>$text{'linux_noatime'}</b>", "linux_noatime"), "</td>\n";
+	printf "<td><input type=radio name=lnx_noatime value=1 %s> %s\n",
+	    defined($options{"noatime"}) ? "checked" : "", $text{'yes'};
+	printf "<input type=radio name=lnx_noatime value=0 %s> %s</td>\n",
+	    defined($options{"noatime"}) ? "" : "checked", $text{'no'};
+
+	print "</tr>\n";
 	}
 	
 if ($_[0] =~ /^ext\d+$/) {
@@ -1254,12 +1262,6 @@ if ($_[0] =~ /^ext\d+$/) {
 	printf "<td><input name=ext2_resgid size=8 value=\"%s\">\n",
 		defined($options{"resgid"}) ? getgrgid($options{"resgid"}) : "";
 	print &group_chooser_button("ext2_resgid", 0),"</td> </tr>\n";
-
-	print "<tr> <td><b>$text{'linux_noatime'}</b></td>\n";
-	printf "<td><input type=radio name=ext2_noatime value=1 %s> %s\n",
-	    defined($options{"noatime"}) ? "checked" : "", $text{'yes'};
-	printf "<input type=radio name=ext2_noatime value=0 %s> %s</td>\n",
-	    defined($options{"noatime"}) ? "" : "checked", $text{'no'};
 	}
 elsif (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	# Linux nfs has some more options...
@@ -1928,6 +1930,9 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 
 	delete($options{"user"}); delete($options{"nouser"});
 	if ($in{lnx_user}) { $options{"user"} = ""; }
+
+	delete($options{"noatime"});
+	$options{"noatime"} = "" if ($in{'lnx_noatime'});
 	}
 
 if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
@@ -2006,9 +2011,6 @@ elsif ($_[0] =~ /^ext\d+$/) {
 	elsif ($in{'ext2_quota'} == 2) { $options{'grpquota'} = ""; }
 	elsif ($in{'ext2_quota'} == 3)
 		{ $options{'usrquota'} = $options{'grpquota'} = ""; }
-
-	delete($options{"noatime"});
-	$options{"noatime"} = "" if ($in{'ext2_noatime'});
 	}
 elsif ($_[0] eq "fat" || $_[0] eq "vfat" ||
        $_[0] eq "msdos" || $_[0] eq "umsdos" || $_[0] eq "fatx") {
