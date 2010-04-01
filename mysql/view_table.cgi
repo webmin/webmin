@@ -184,20 +184,20 @@ if ($in{'start'} || $total > $displayconfig{'perpage'}) {
 	print "<center>\n";
 	if ($in{'start'}) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
-		       "<img src=/images/left.gif border=0 align=middle></a>\n",
-			$in{'db'}, $in{'table'},
-			$in{'start'} - $displayconfig{'perpage'},
-			$searchargs, $sortargs;
+		     "<img src=../images/left.gif border=0 align=middle></a>\n",
+		     $in{'db'}, $in{'table'},
+		     $in{'start'} - $displayconfig{'perpage'},
+		     $searchargs, $sortargs;
 		}
 	print "<font size=+1>",&text('view_pos', $in{'start'}+1,
 	      $in{'start'}+$displayconfig{'perpage'} > $total ? $total :
 	      $in{'start'}+$displayconfig{'perpage'}, $total),"</font>\n";
 	if ($in{'start'}+$displayconfig{'perpage'} < $total) {
 		printf "<a href='view_table.cgi?db=%s&table=%s&start=%s%s%s'>".
-		       "<img src=/images/right.gif border=0 align=middle></a> ",
-			$in{'db'}, $in{'table'},
-			$in{'start'} + $displayconfig{'perpage'},
-			$searchargs, $sortargs;
+		     "<img src=../images/right.gif border=0 align=middle></a> ",
+		     $in{'db'}, $in{'table'},
+		     $in{'start'} + $displayconfig{'perpage'},
+		     $searchargs, $sortargs;
 		}
 	print "</center>\n";
 	}
