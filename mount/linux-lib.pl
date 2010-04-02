@@ -1313,10 +1313,11 @@ elsif (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 		defined($options{"intr"}) ? "" : "checked";
 
 	local $proto = defined($options{"udp"}) ? "udp" :
-		       defined($options{"tcp"}) ? "tcp" :
-		       $_[0] eq "nfs" ? "udp" : "tcp";
+		       defined($options{"tcp"}) ? "tcp" : "";
 	print "<td>", &hlink("<b>$text{'linux_transfert'}</b>", "linux_transfert"), "</td>\n";
 	print "<td nowrap><select name=nfs_transfert>\n";
+	printf "<option value='' %s>Default</option>\n",
+		$proto eq "" ? "selected" : "";
 	printf "<option value=tcp %s>TCP</option>\n",
 		$proto eq "tcp" ? "selected" : "";
 	printf "<option value=udp %s %s>UDP</option>\n",
@@ -1954,11 +1955,10 @@ if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
 	if ($in{nfs_intr}) { $options{"intr"} = ""; }
 
 	delete($options{"tcp"}); delete($options{"udp"});
-	local $dproto = $_[0] eq "nfs" ? "udp" : "tcp";
-	if ($in{nfs_transfert} eq "tcp" && $dproto ne "tcp") {
+	if ($in{nfs_transfert} eq "tcp") {
 		$options{"tcp"} = "";
 		}
-	elsif ($in{nfs_transfert} eq "udp" && $dproto ne "udp" && $_[0] ne "nfs4") {
+	elsif ($in{nfs_transfert} eq "udp") {
 		$options{"udp"} = "";
 		}
 
