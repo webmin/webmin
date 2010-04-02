@@ -1933,6 +1933,7 @@ if ($_[0] ne "swap" && $_[0] ne "auto" &&
 
 	delete($options{"noatime"});
 	$options{"noatime"} = "" if ($in{'lnx_noatime'});
+	delete($options{"relatime"}) if ($in{'lnx_noatime'});
 	}
 
 if (($_[0] eq "nfs") || ($_[0] eq "nfs4")) {
