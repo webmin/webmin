@@ -261,8 +261,14 @@ if ($c{'cache size'} =~ /^(\d+)\s+KB/i) {
 elsif ($c{'cache size'} =~ /^(\d+)\s+MB/i) {
 	$c{'cache size'} = $1*1024*1024;
 	}
-return ( $load[0], $load[1], $load[2], int($c{'cpu mhz'}), $c{'model name'},
-	 $c{'vendor_id'}, $c{'cache size'}, $c{'processor'}+1 );
+if ($c{'cpu mhz'}) {
+	return ( $load[0], $load[1], $load[2],
+		 int($c{'cpu mhz'}), $c{'model name'}, $c{'vendor_id'},
+		 $c{'cache size'}, $c{'processor'}+1 );
+	}
+else {
+	return ( $load[0], $load[1], $load[2] );
+	}
 }
 
 $has_trace_command = &has_command("strace");
