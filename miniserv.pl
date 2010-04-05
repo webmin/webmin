@@ -4593,6 +4593,7 @@ local @substrings = (
     "HTC_P3700",	  # HTC mobile device
     "Pre/",		  # Palm Pre
     "webOS/",		  # Palm WebOS
+    "Nintendo DS",	  # DSi / DSi-XL
     );
 foreach my $p (@prefixes) {
 	return 1 if ($agent =~ /^\Q$p\E/);
