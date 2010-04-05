@@ -2397,6 +2397,10 @@ if (defined(&theme_js_redirect)) {
 	return &theme_js_redirect(@_);
 	}
 $window ||= "window";
+if ($url =~ /^\//) {
+	# If the URL is like /foo , add webprefix
+	$url = $gconfig{'webprefix'}.$url;
+	}
 return "<script>${window}.location = '".&quote_escape($url)."';</script>\n";
 }
 
