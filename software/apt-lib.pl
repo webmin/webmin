@@ -132,7 +132,7 @@ return $name eq "dhcpd" ? "dhcp3-server" :
 }
 
 # update_system_available()
-# Returns a list of package names and versions that are available from YUM
+# Returns a list of package names and versions that are available from APT
 sub update_system_available
 {
 local (@rv, $pkg, %done);
