@@ -59,8 +59,8 @@ if ($config{cron_allow_file} && $config{cron_deny_file} && $access{'allow'}) {
 
 # Build a list of cron job rows to show
 $single_user = !&supports_users() || @ulist == 1;
-@links = ( &select_all_link("d"),
-	   &select_invert_link("d"),
+@links = ( &select_all_link("d", 1),
+	   &select_invert_link("d", 1),
 	   @crlinks );
 @rows = ( );
 foreach $u (@ulist) {
