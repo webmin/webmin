@@ -43,12 +43,16 @@ $conffiles_file = "$debian_dir/conffiles";
 -r "/etc/debian_version" || die "makedebian.pl must be run on Debian";
 chop($webmin_dir = `pwd`);
 
-@ARGV == 1 || die "usage: makedebian.pl [--webmail] <version>";
+@ARGV == 1 || @ARGV == 2 ||
+	die "usage: makedebian.pl [--webmail] <version> [release]";
 $ver = $ARGV[0];
+if ($ARGV[1]) {
+	$rel = "-".$ARGV[1];
+	}
 -r "tarballs/$product-$ver.tar.gz" || die "tarballs/$product-$ver.tar.gz not found";
 
 # Create the base directories
-print "Creating Debian package of ",ucfirst($product)," ",$ver," ...\n";
+print "Creating Debian package of ",ucfirst($product)," ",$ver,$rel," ...\n";
 system("rm -rf $tmp_dir");
 mkdir($tmp_dir, 0755);
 chmod(0755, $tmp_dir);
@@ -92,7 +96,7 @@ $size = int(`du -sk $tmp_dir`);
 open(CONTROL, ">$control_file");
 print CONTROL <<EOF;
 Package: $product
-Version: $ver
+Version: $ver$rel
 Section: admin
 Priority: optional
 Architecture: all
@@ -374,11 +378,11 @@ close(SCRIPT);
 system("chmod 755 $postuninstall_file");
 
 # Run the actual build command
-system("fakeroot dpkg --build $tmp_dir deb/${product}_${ver}_all.deb") &&
+system("fakeroot dpkg --build $tmp_dir deb/${product}_${ver}${rel}_all.deb") &&
 	die "dpkg failed";
 #system("rm -rf $tmp_dir");
-print "Wrote deb/${product}_${ver}_all.deb\n";
-$md5 = `md5sum tarballs/$product-$ver.tar.gz`;
+print "Wrote deb/${product}_${ver}${rel}_all.deb\n";
+$md5 = `md5sum tarballs/$product-$ver$rel.tar.gz`;
 $md5 =~ s/\s+.*\n//g;
 @st = stat("tarballs/$product-$ver.tar.gz");
 
@@ -388,17 +392,17 @@ $diff_new_dir = "$tmp_dir/$product-$ver";
 mkdir($diff_orig_dir, 0755);
 mkdir($diff_new_dir, 0755);
 system("cp -r $debian_dir $diff_new_dir");
-system("cd $tmp_dir && diff -r -N -u $product-$ver-orig $product-$ver >$webmin_dir/deb/${product}_${ver}.diff");
-$diffmd5 = `md5sum deb/${product}_${ver}.diff`;
+system("cd $tmp_dir && diff -r -N -u $product-$ver-orig $product-$ver >$webmin_dir/deb/${product}_${ver}${rel}.diff");
+$diffmd5 = `md5sum deb/${product}_${ver}${rel}.diff`;
 $diffmd5 =~ s/\s+.*\n//g;
-@diffst = stat("deb/${product}_${ver}.diff");
+@diffst = stat("deb/${product}_${ver}${rel}.diff");
 
 # Create the .dsc file
-open(DSC, ">deb/${product}_$ver.plain");
+open(DSC, ">deb/${product}_$ver$rel.plain");
 print DSC <<EOF;
 Format: 1.0
 Source: $product
-Version: $ver
+Version: $ver$rel
 Binary: $product
 Maintainer: Jamie Cameron <jcameron\@webmin.com>
 Architecture: all
@@ -411,22 +415,22 @@ Files:
 
 EOF
 close(DSC);
-unlink("deb/${product}_$ver.dsc");
-system("gpg --output deb/${product}_$ver.dsc --clearsign deb/${product}_$ver.plain");
-unlink("deb/${product}_$ver.plain");
-print "Wrote source deb/${product}_$ver.dsc\n";
+unlink("deb/${product}_$ver$rel.dsc");
+system("gpg --output deb/${product}_$ver$rel.dsc --clearsign deb/${product}_$ver$rel.plain");
+unlink("deb/${product}_$ver$rel.plain");
+print "Wrote source deb/${product}_$ver$rel.dsc\n";
 
 if (-d "/usr/local/webadmin/deb/repository") {
 	# Add to our repository
 	chdir("/usr/local/webadmin/deb/repository");
 	system("reprepro -Vb . remove sarge $product");
-	system("reprepro -Vb . includedeb sarge ../${product}_${ver}_all.deb");
+	system("reprepro -Vb . includedeb sarge ../${product}_${ver}${rel}_all.deb");
 	chdir("/usr/local/webadmin");
 	}
 
 # Create PGP signature
-unlink("sigs/${product}_${ver}_all.deb-sig.asc");
-system("gpg --armor --output sigs/${product}_${ver}_all.deb-sig.asc --default-key jcameron\@webmin.com --detach-sig deb/${product}_${ver}_all.deb");
+unlink("sigs/${product}_${ver}${rel}_all.deb-sig.asc");
+system("gpg --armor --output sigs/${product}_${ver}${rel}_all.deb-sig.asc --default-key jcameron\@webmin.com --detach-sig deb/${product}_${ver}${rel}_all.deb");
 
 # read_file(file, &assoc, [&order], [lowercase])
 # Fill an associative array with name=value pairs from a file
