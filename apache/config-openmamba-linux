@@ -1,6 +1,9 @@
 show_list=0
-httpd_dir=/etc/httpd
+httpd_dir=/var/www/html
+httpd_conf=/etc/httpd/httpd.conf
 httpd_path=/usr/sbin/httpd
+srm_conf=/etc/httpd/srm.conf
+access_conf=/etc/httpd/access.conf
 mime_types=/etc/httpd/mime.types
 start_cmd=/etc/rc.d/init.d/httpd start
 stop_cmd=/etc/rc.d/init.d/httpd stop
