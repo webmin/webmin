@@ -443,12 +443,7 @@ sub grow
 local ($raid, $newdisk) = @_;
 if ($raid_mode eq "mdadm") {
 	# Call mdadm command to add
-	if ($newdisk =~ /^\d+$/) {
-		$cmd = "mdadm --grow $raid->{'value'} -n + $newdisk 2>&1";
-		}
-	else {
-		$cmd = "mdadm --grow $raid->{'value'} -n $newdisk 2>&1";
-		}
+	$cmd = "mdadm --grow $raid->{'value'} -n $newdisk 2>&1";
 	local $out = &backquote_logged(
 		$cmd);
 	&error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);

@@ -78,6 +78,7 @@ view_start=Activate
 view_startdesc=Click this button to re-activate this RAID device.
 view_disks=Partitions in RAID
 view_spares=Spare partitions
+view_addspare=Add $1
 view_size=Usable size
 view_resync=Percent of resync done
 view_down=(Down)

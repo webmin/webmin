@@ -116,7 +116,8 @@ foreach $d (@devs) {
 		push(@rdisks, [ $d->{'value'}, $name ]);
 		$sparescnt++;
 		$newdisks++;
-		push(@spares, [ $newdisks, $sparescnt ]);
+		push(@spares, [ $newdisks,
+				&text('view_addspare', $sparescnt) ]);
 		}
 	}
 if ($sp) {
