@@ -437,7 +437,7 @@ if (!$in{'field'} && $total > $displayconfig{'perpage'}) {
 	$sel = &ui_select("field", undef,
 			[ map { [ $_->{'field'}, $_->{'field'} ] } @str ]);
 	$match = &ui_select("match", 0,
-			[ map { [ $_, $text{'view_match'.$_} ] } (0.. 3) ]);
+			[ map { [ $_, $text{'view_match'.$_} ] } (0.. 5) ]);
 	print "<td>",&text('view_search2', "<input name=for size=20>", $sel,
 			   $match);
 	print "&nbsp;&nbsp;",

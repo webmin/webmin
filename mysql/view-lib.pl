@@ -86,7 +86,10 @@ local $qu = $module_name eq "mysql" ? '"' : "'";
 return $match == 0 ? "like $qu%$for%$qu" :
        $match == 1 ? "like $qu$for$qu" :
        $match == 2 ? "not like $qu%$for%$qu" :
-       $match == 3 ? "not like $qu$for$qu" : " = \"\"";
+       $match == 3 ? "not like $qu$for$qu" :
+       $match == 4 ? "> $for" :
+       $match == 5 ? "< $for" :
+		     " = \"\"";
 }
 
 1;

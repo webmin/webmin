@@ -69,3 +69,5 @@ Improve support for PostgreSQL 8.3 on Ubuntu 8.04.
 ---- Changes since 1.440 ----
 Re-wrote the entire user interface to use Webmin's new UI library, for a more consistent and themable look.
 Added a history of previous commands to the Execute SQL page.
+---- Changes since 1.510 ----
+Added greater than / less than selectors to the table data search form.

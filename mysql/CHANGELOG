@@ -92,3 +92,5 @@ The information_schema database is no longer included when backing up all databa
 Added a collation order field to the database creation form.
 Added an option to the backup form to do backup in a single transaction, for InnoDB tables.
 The default MySQL table type can now be set on the MySQL Server Configuration page.
+---- Changes since 1.510 ----
+Added greater than / less than selectors to the table data search form.
