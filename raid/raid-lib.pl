@@ -440,9 +440,15 @@ if ($raid_mode eq "mdadm") {
 # Grows a RAID set to contain totaldisks active partitions
 sub grow
 {
+local ($raid, $newdisk) = @_;
 if ($raid_mode eq "mdadm") {
 	# Call mdadm command to add
-	$cmd="mdadm --grow $_[0]->{'value'} -n $_[1] 2>&1";
+	if ($newdisk =~ /^\d+$/) {
+		$cmd = "mdadm --grow $raid->{'value'} -n + $newdisk 2>&1";
+		}
+	else {
+		$cmd = "mdadm --grow $raid->{'value'} -n $newdisk 2>&1";
+		}
 	local $out = &backquote_logged(
 		$cmd);
 	&error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);

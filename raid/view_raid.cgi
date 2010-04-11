@@ -116,7 +116,7 @@ foreach $d (@devs) {
 		push(@rdisks, [ $d->{'value'}, $name ]);
 		$sparescnt++;
 		$newdisks++;
-		push(@spares, [ "$newdisks", "+ $sparescnt" ]);
+		push(@spares, [ $newdisks, $sparescnt ]);
 		}
 	}
 if ($sp) {
@@ -157,7 +157,7 @@ if ($raid_mode eq "mdadm") {
 		push(@grid, &ui_submit($text{'view_remove_det'}, "remove_det"),
 			    $text{'view_remove_detdesc'});
 		}
-	if ($sparescnt>0 && $lvl != 10) {
+	if ($sparescnt > 0 && $lvl != 10) {
 		@spares = sort { $a->[0] cmp $b->[0] } @spares;
 		push(@grid, &ui_submit($text{'view_grow'}, "grow")." ".
 			    &ui_select("ndisk", undef, \@spares),
