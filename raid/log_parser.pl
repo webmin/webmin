@@ -30,6 +30,15 @@ elsif ($action eq 'add') {
 elsif ($action eq 'remove') {
 	return &text('log_remove', "<tt>$object</tt>", "<tt>$p->{'disk'}</tt>");
 	}
+elsif ($action eq 'grow') {
+	return &text('log_grow', "<tt>$object</tt>", "<tt>$p->{'disk'}</tt>");
+	}
+elsif ($action eq 'convert_to_raid6') {
+	return &text('log_convert_to_raid6', "<tt>$object</tt>", "<tt>$p->{'disk'}</tt>");
+	}
+elsif ($action eq 'convert_to_raid5') {
+	return &text('log_convert_to_raid5', "<tt>$object</tt>", "<tt>$p->{'disk'}</tt>");
+	}
 else {
 	return undef;
 	}

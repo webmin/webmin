@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # view_raid.cgi
 # Display information about a raid device
 
@@ -102,6 +102,9 @@ foreach $d (@devs) {
 		push(@rdisks, [ $d->{'value'}, $name ]);
 		}
 	}
+
+$raidcnt = @rdisks;
+
 print &ui_table_row($text{'view_disks'}, $rp);
 
 # Display spare partitions
@@ -116,8 +119,7 @@ foreach $d (@devs) {
 		push(@rdisks, [ $d->{'value'}, $name ]);
 		$sparescnt++;
 		$newdisks++;
-		push(@spares, [ $newdisks,
-				&text('view_addspare', $sparescnt) ]);
+		push(@spares, [ "$newdisks", "+ $sparescnt" ]);
 		}
 	}
 if ($sp) {
@@ -161,8 +163,17 @@ if ($raid_mode eq "mdadm") {
 	if ($sparescnt > 0 && $lvl != 10) {
 		@spares = sort { $a->[0] cmp $b->[0] } @spares;
 		push(@grid, &ui_submit($text{'view_grow'}, "grow")." ".
-			    &ui_select("ndisk", undef, \@spares),
+			    &ui_select("ndisk_grow", undef, \@spares),
 			    $text{'view_growdesc'});
+		if ($lvl == 5 && &get_mdadm_version() >= 3.1) {
+			push(@grid, &ui_submit($text{'view_convert_to_raid6'}, "convert_to_raid6")." ".
+                        &ui_select("ndisk_convert", undef, \@spares)." ".&ui_hidden("oldcount", $raidcnt),
+                        $text{'view_convert_to_raid6desc'});
+			}
+		}
+	if ($lvl == 6 && &get_mdadm_version() >= 3.1) {
+		push(@grid, &ui_submit($text{'view_convert_to_raid5'}, "convert_to_raid5")." ".&ui_hidden("oldcount", $raidcnt),
+                       	$text{'view_convert_to_raid5desc'});
 		}
 	}
 

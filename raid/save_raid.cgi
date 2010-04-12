@@ -1,4 +1,4 @@
-#!/usr/local/bin/perl
+#!/usr/bin/perl
 # save_raid.cgi
 # Activate, deactivate, delete or make a filesystem on a raid set
 
@@ -74,9 +74,9 @@ elsif ($in{'add'}) {
 elsif ($in{'grow'}) {
 	# Grow the array
 	&lock_raid_files();
-	&grow($old, $in{'ndisk'});
+	&grow($old, $in{'ndisk_grow'});
 	&unlock_raid_files();
-	&webmin_log("grow", undef, $old->{'value'}, { 'disk' => $in{'ndisk'} } );
+	&webmin_log("grow", undef, $old->{'value'}, { 'disk' => $in{'ndisk_grow'} } );
 	&redirect("");
 	}
 elsif ($in{'remove'}) {
@@ -92,6 +92,22 @@ elsif ($in{'remove_det'}) {
 	&lock_raid_files();
 	&remove_detached($old);
 	&unlock_raid_files();
+	&redirect("");
+	}
+elsif ($in{'convert_to_raid6'}) {
+	# Convert RAID level to RAID6
+	&lock_raid_files();
+	&convert_raid($old, $in{'oldcount'}, $in{'ndisk_convert'}, 6);
+	&unlock_raid_files();
+	&webmin_log("convert_to_raid6", undef, $old->{'value'}, { 'disk' => $in{'ndisk_convert'} } );
+	&redirect("");
+	}
+elsif ($in{'convert_to_raid5'}) {
+	# Convert RAID level to RAID5
+	&lock_raid_files();
+	&convert_raid($old, $in{'oldcount'}, undef, 5);
+	&unlock_raid_files();
+	&webmin_log("convert_to_raid5", undef, $old->{'value'}, undef );
 	&redirect("");
 	}
 elsif ($in{'mount'} || $in{'mountswap'}) {

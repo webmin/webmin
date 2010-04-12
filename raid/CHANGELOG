@@ -30,3 +30,5 @@ RAID 6 devices can now have spares, thanks to Caspar Smit.
 Added a button to remove a detached partition, thanks to Caspar Smit.
 ---- Changes since 1.500 ----
 Added support for creating EXT4 filesystems.
+---- Changes since 1.510 ----
+Conversion from RAID 5 to 6 and vice versa is now possible, thanks to Caspar Smit.

@@ -440,13 +440,49 @@ if ($raid_mode eq "mdadm") {
 # Grows a RAID set to contain totaldisks active partitions
 sub grow
 {
-local ($raid, $newdisk) = @_;
 if ($raid_mode eq "mdadm") {
 	# Call mdadm command to add
-	$cmd = "mdadm --grow $raid->{'value'} -n $newdisk 2>&1";
+	$cmd="mdadm --grow $_[0]->{'value'} -n $_[1] 2>&1";
 	local $out = &backquote_logged(
 		$cmd);
 	&error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);
+	}
+}
+
+# convert_raid(&raid, oldcount, newcount, level)
+# Converts a RAID set to a defferent level RAID set
+sub convert_raid
+{
+if ($raid_mode eq "mdadm") {
+	if ($_[2]) {
+		# Call mdadm command to convert
+		$cmd="mdadm --grow $_[0]->{'value'} --level $_[3]";
+		$grow_by = $_[2] - $_[1];
+		if ($grow_by == 1) {
+			$raid_device_short = $_[0]->{'value'};
+        		$raid_device_short =~ s/\/dev\///;
+			$date = `date \+\%Y\%m\%d-\%H\%M`;
+			chomp($date);
+			$cmd .= " --backup-file /tmp/convert-$raid_device_short-$date";
+		}
+		$cmd .= " -n $_[2]  2>&1";
+        
+		local $out = &backquote_logged(
+			$cmd);
+		&error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);
+		}
+	else {
+		$newcount = $_[1] - 1;
+		$cmd="mdadm --grow $_[0]->{'value'} --level $_[3] -n $newcount";
+		$raid_device_short = $_[0]->{'value'};
+                $raid_device_short =~ s/\/dev\///;
+                $date = `date \+\%Y\%m\%d-\%H\%M`;
+                chomp($date);
+                $cmd .= " --backup-file /tmp/convert-$raid_device_short-$date";
+		local $out = &backquote_logged(
+                        $cmd);
+                &error(&text('emdadmgrow', "<tt>'$cmd' -> $out</tt>")) if ($?);
+		}
 	}
 }
 
@@ -751,6 +787,15 @@ sub update_initramfs
 if (&has_command("update-initramfs")) {
 	&system_logged("update-initramfs -u >/dev/null 2>&1 </dev/null");
 	}
+}
+
+# get_mdadm_version()
+# Returns the mdadm version number
+sub get_mdadm_version
+{
+local $out = `mdadm --version 2>&1`;
+local $ver = $out =~ /\s+v([0-9\.]+)/ ? $1 : undef;
+return wantarray ? ( $ver, $out ) : $ver;
 }
 
 1;
