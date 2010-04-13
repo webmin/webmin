@@ -9,9 +9,11 @@ $access{'master'} || &error($text{'hcreate_ecannot'});
 $access{'ro'} && &error($text{'master_ero'});
 
 # Validate inputs
-&allowed_zone_file(\%access, $in{'file'}) || &error($text{'hcreate_efile'});
+&allowed_zone_file(\%access, $in{'file'}) ||
+	&error(&text('hcreate_efile', $in{'file'}));
 &lock_file(&make_chroot($in{'file'}));
-open(FILE, ">>".&make_chroot($in{'file'})) || &error($text{'hcreate_efile2'});
+open(FILE, ">>".&make_chroot($in{'file'})) ||
+	&error($text{'hcreate_efile2'});
 close(FILE);
 
 # Get the root server information
