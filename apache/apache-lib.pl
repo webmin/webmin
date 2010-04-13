@@ -1728,7 +1728,7 @@ if ($config{'link_dir'}) {
 
 # delete_webfile_link(file)
 # If the given path is in a directory like /etc/apache2/sites-available, delete
-# the link to it from /etc/apache2/enabled-available
+# the link to it from /etc/apache2/sites-enabled
 sub delete_webfile_link
 {
 local ($file) = @_;
