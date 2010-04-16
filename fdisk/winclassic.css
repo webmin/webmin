@@ -71,7 +71,6 @@
 
 .dynamic-slider-control .line {
 	
-	behavior:			url("css/boxsizing.htc"); /* ie path bug */
 	box-sizing:			content-box;
 	-moz-box-sizing:	content-box;
 		
