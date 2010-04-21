@@ -83,6 +83,10 @@ if ($err = &make_raid($raid, $in{'force'}, $in{'missing'}, $in{'assume'})) {
 	&delete_raid($raid);
 	&error($err);
 	}
+elsif ($in{'level'} != 0) {
+	  # Set RAID to read/write mode after creation except for RAID0 which is automatically set to read/write.
+	  &readwrite_raid($raid);
+}
 &webmin_log("create", undef, $in{'device'}, \%in);
 &redirect("");
 

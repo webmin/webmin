@@ -364,14 +364,17 @@ else {
 		}
 	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 	
-	# After creating a RAID set mode to read/write.
-	if ($lvl ne '0') {
-		local $cmd = "mdadm --readwrite $_[0]->{'value'}";
-		local $out = &backquote_logged("$cmd 2>&1 </dev/null");
-		}
-
 	return $? ? &text('emdadmcreate', "<pre>$out</pre>") : undef;
 	}
+}
+
+# readwrite_raid(&raid)
+# Set RAID mode to read/write.
+sub readwrite_raid
+{
+	local $cmd = "mdadm --readwrite $_[0]->{'value'}";
+	local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+	return;
 }
 
 # unmake_raid(&raid)
