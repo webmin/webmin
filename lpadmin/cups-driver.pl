@@ -135,15 +135,17 @@ local (@ppds, $d, $f, $ppd, %cache, $outofdate, @files, %donefile);
 local $findver = &backquote_command("find --version 2>&1", 1);
 local $flag = $findver =~ /GNU\s+find\s+version\s+([0-9\.]+)/i && $1 >= 4.2 ?
 		"-L" : "";
-&open_execute_command(FIND, "find $flag ".quotemeta($config{'model_path'}).
-			    " -type f -print", 1, 1);
-while(<FIND>) {
-	chop;
-	/([^\/]+)$/;
-	next if ($donefile{$1}++);
-	push(@files, $_);
+foreach my $mp (split(/\s+/, $config{'model_path'})) {
+	&open_execute_command(FIND, "find $flag ".quotemeta($mp).
+				    " -type f -print", 1, 1);
+	while(<FIND>) {
+		chop;
+		/([^\/]+)$/;
+		next if ($donefile{$1}++);
+		push(@files, $_);
+		}
+	close(FIND);
 	}
-close(FIND);
 &read_file("$module_config_directory/ppd-cache", \%cache);
 foreach $f (@files) {
 	if (!defined($cache{$f})) {

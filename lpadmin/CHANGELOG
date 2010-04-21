@@ -15,3 +15,5 @@ Fixed a bug that stopped SMB printer usernames and passwords from being displaye
 Re-designed the print jobs page to allow several to be cancelled at once, using the standard Webmin table with checkboxes.
 ---- Changes since 1.440 ----
 Show the date and time a job was submitted on systems using CUPS.
+---- Changes since 1.510 ----
+Changed the default PPD driver directory on Debian to include /usr/share/ppd as well.
