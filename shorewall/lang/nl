@@ -38,6 +38,7 @@ comment_header=Tabel commentaar details
 comment_msg=Bericht
 delete_enone=Geen rijden geselecteerd
 delete_err=Mislukt om rijen te verwijderen
+dump_title=Firewall Dump
 edit_after=Na ingang $1
 edit_before=Voor ingang $1
 hosts_0=Zone
@@ -63,6 +64,8 @@ index_check=Controleer Firewall
 index_checkdesc=Klik op deze knop om Shorewall uw firewall configuratie te laten valideren met de <tt>shorewall check</tt> opdracht.
 index_clear=Opschonen Firewall
 index_cleardesc=Klik op deze knop om de Shorewall firewall op te schonen met de <tt>shorewall clear</tt> opdracht. Hiermee krijg je toegang van alle hosts zonder beperkingen.
+index_dump=Bekijk Dump
+index_dumpdesc=Klik op deze knop om de Shorewall tracing informatie te bekijken met de <tt>shorewall dump</tt> opdracht.
 index_ecmd=De opdracht $1 is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet correct.
 index_edir=De Shorewall configuratie directory $1is niet gevonden op uw systeem. Misschien is het niet geinstalleerd, of de <a href='$2'>module configuratie</a> is niet correct.
 index_refresh=Ververs Configuratie
