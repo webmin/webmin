@@ -212,6 +212,7 @@ oadd_edn2=Ontbrekende of ongeldige waarde voor DN
 oadd_eget=Pakken mislukt van object $1 : $2
 oadd_eget2=Mislukt om te controleren voor class met $1 : $2
 oadd_ename=Ongeldig lijkende naam voor attributen $1
+oadd_err=Nieuw object maken is mislukt
 oadd_header=Nieuwe LDAP object details
 oadd_title=Maak Object
 perms_err=Mislukt om de eigenaars file te repareren
