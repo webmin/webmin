@@ -20,8 +20,7 @@ print &ui_table_start($text{'index_header'}, undef, 2);
 @canulist = grep { &can_user($_->{'name'}) } @ulist;
 if (@canulist == 1) {
 	# Can only show one user, so skip this field
-	print &ui_hidden("uall", 0),"\n";
-	print &ui_hidden("user", $canulist[0]->{'name'}),"\n";
+	print &ui_hidden("uall", 1),"\n";
 	}
 else {
 	# Show user selectors
