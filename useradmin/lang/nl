@@ -443,7 +443,7 @@ usave_echmod=Kon home directory: $1 niet chmod'en
 usave_echown=Kon home directory: $1 niet chown'en
 usave_eclass='$1' is een ongeldige inlog class
 usave_ecreate=U kunt geen gebruikers toevoegen
-usave_edigestblowfish=Uw systeem heeft MD5 wachtwoord aanstaan, maar de Perl <tt>$3</tt> module is niet geinstalleerd.<p>Om het gebruik van versleutelde wachtwoorden te forceren moet U de <a href='$1'>module configuratie</a> aanpassen.<p>Of laat U Webmin <a href='$2'>downloaden en installeren</a> van de <tt>$3</tt> module.
+usave_edigestblowfish=Uw systeem heeft Blowfish wachtwoorden aanstaan, maar de Perl <tt>$3</tt> module is niet geinstalleerd.<p>Om het gebruik van versleutelde wachtwoorden te forceren moet U de <a href='$1'>module configuratie</a> aanpassen.<p>Of laat U Webmin <a href='$2'>downloaden en installeren</a> van de <tt>$3</tt> module.
 usave_edigestmd5=Op uw systeem is MD5 wachtwoord encryptie aangezet, maar noch de perl MD5 of de Digest::MD5 module zijn niet geinstalleerd.<p>Om gebruik van normale encryptie wachtwoorden te forceren, wijzig dan uw <a href='$1'>module configuratie</a>.<p>Of laat Webmin de Digest::MD5 module <a href='$2'>downloaden en installeren</a> voor U.
 usave_eedit=U kunt deze gebruiker niet aanpassen
 usave_eexpire=Ongeldige vervaldatum
