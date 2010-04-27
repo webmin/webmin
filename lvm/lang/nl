@@ -128,6 +128,7 @@ pv_edit=Bewerk Fysiek Volume
 pv_eother=Ontbrekende of ongeldig disk apparaat
 pv_err=Mislukt om fysiek volume op te slaan
 pv_err2=Mislukt om fysiek volume te verwijderen
+pv_force=Volume geforceerd bijvoegen?
 pv_header=Fysieke volume details
 pv_lvs=Toegewezen door logische volumes
 pv_other=Ander apparaat..
