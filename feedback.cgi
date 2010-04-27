@@ -5,6 +5,9 @@ BEGIN { push(@INC, ".."); };
 use WebminCore;
 
 &init_config();
+if (&get_product_name() eq 'usermin') {
+	&switch_to_remote_user();
+	}
 &ReadParseMime();
 &error_setup($text{'feedback_err'});
 %access = &get_module_acl();

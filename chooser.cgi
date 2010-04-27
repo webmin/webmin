@@ -18,6 +18,9 @@ use WebminCore;
 
 $trust_unknown_referers = 1;
 &init_config();
+if (&get_product_name() eq 'usermin') {
+	&switch_to_remote_user();
+	}
 %access = &get_module_acl();
 
 # Work out root directory
