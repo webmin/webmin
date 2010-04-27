@@ -1,0 +1,106 @@
+<header>Wykonaæ zastêpowanie strftime miejsc docelowych kopii zapasowej?</header>
+
+Je¶li ta opcja jest ustawiona na <b>Tak</b>, w nazwach plików miejsc docelowych
+kopii zapasowej mo¿na u¿ywaæ kodów takich jak %d, %m, %Y i %u. Zostan± one 
+zast±pione przez dzieñ, miesi±c rok i dzieñ tygodnia w momencie wykonywania kopii
+zapasowej. Jest to u¿yteczne je¶li wykonujesz codziennie inn± kopiê zapasow±,
+zw³aszcza gdy chcesz przywróciæ stan systemu do poprzedniej daty. <p>
+
+Niektóre z pozosta³ych kodów, których mo¿na u¿yæ:<br>
+
+<pre><font size=3px>
+ %a     Skórcona nazwa tygodnia w zale¿no¶ci od bie¿±cych ustawieñ jêzykowych.
+
+ %A     Pe³na nazwa tygodnia w zale¿no¶ci od bie¿±cych ustawieñ jêzykowych.
+
+ %b     Skrócona nazwa miesi±ca w zale¿no¶ci od bie¿±cych ustawieñ jêzykowych.
+
+ %B     Pe³na nazwa miesi±ca w zale¿no¶ci od bie¿±cych ustawieñ jêzykowych.
+
+ %c     Preferowana reprezentacja daty i czasu w zale¿no¶ci od bie¿±cych ustawieñ jêzykowych.
+
+ %C     Numer wieku (rok/100) jako ca³kowita liczba 2-cyfrowa.
+
+ %d     Dzieñ miesi±ca dziesiêtnie (zakres od 01 do 31).
+
+ %e     Tak jak %d, dzieñ miesi±ca jako liczba dziesiêtna, ale zero na pocz±tku jest zastêpowane przez spacjê.
+
+ %E     Modyfikator: u¿ywa alternatywnego formatowania, spójrz poni¿ej.
+
+ %G     Rok wed³ug ISO 8601 z wiekiem jako liczb± dziesiêtn±.4-cyfrowy rok koresponduje z numerem tygodnia
+        wed³ug ISO (zobacz %V).  Posiada ten sam format i warto¶æ co %y, za wyj±tkiem sytuacji je¿eli numer
+        tygodnia ISO nale¿y do poprzedniego lub nastêpnego roku, wówczas u¿ywany jest ten rok.
+
+ %g     Tak jak %G, ale bez wieku, n.p., z 2-cyfrowym rokiem (00-99).
+
+ %h     Zamiennik %b.
+
+ %H     Godzina jako liczba dziesiêtna z u¿yciem zegara 24-godzinnego(zakres od 00 do 23).
+
+ %I     Godzina jako liczba dziesiêtna z u¿yciem zegara 24-godzinnego(zakres od 01 do 12).
+
+ %j     Dzieñ roku jako liczba dziesiêtna (zakres od 001 do 366).
+
+ %k     Godzina (zegar 24-godzinny) jako liczba dziesiêtna (zakres od 0 do 23); pojedyncze cyfry s±
+        zastêpowane przez pusty znak.(Zobacz tak¿e %H.)
+
+ %l     Godzina (zegar 12-godzinny) jako liczba dziesiêtna (zakres od 1 do 12); pojedyncze cyfry s± 
+        zastêpowane przez pusty znak.(Zobacz tak¿e %I.)
+
+ %m     Miesi±c jako liczba dziesiêtna (zakres od 01 do 12).
+
+ %M     Minuta jako liczba dziesiêtna (zakres od 00 do 59).
+
+ %n     Znak nowego wiersza.
+
+ %O     Modyfikator: u¿ywa alternatywnego formatowania, zobacz poni¿ej.
+
+ %p     Dodaje `AM' lub `PM' w zale¿no¶ci od warto¶ci czasu lub powi±zanych ci±gów dla bie¿±cej lokalizacji.
+        Po³udnie jest poprzedzane `pm' a pó³noc `am'.
+
+ %P     Tak jak %p ale ma³ymi literami: `am' lub `pm' lub powi±zany ci±g dla bie¿±cej lokalizacji.
+
+ %r     Czas w notacji a.m. lub p.m.. W lokalizacji POSIX jest zamiennikiem `%I:%M:%S %p'.
+
+ %R     Czas w notacji 24-godzinnej (%H:%M). Dla wersji zawieraj±cej sekundy zobacz %T.
+
+ %s     Liczba sekund od pocz±tku epoki, np: od 1970-01-01 00:00:00 UTC.
+
+ %S     Sekunda jako liczba dziesiêtna (zakres od 00 do 61).
+
+ %t     Znak tabulatora.
+
+ %T     Czas w notacji 24-godzinnej (%H:%M:%S).
+
+ %u     Dzieñ tygodnia jako liczba dziesiêtna,  zakres od 1 do 7, Poniedzia³ek to 1. Zobacz tak¿e %w.
+
+ %U     Numer tygodnia w bie¿±cym roku jako liczba dziesiêtna, zakres od 00 do 53, rozpoczêcie od 
+        pierwszej niedzieli jako pierwszego dnia w tygodniu 01. Zobacz tak¿e %V i %W.
+
+ %V     Numer tygodnia w bie¿±cym roku wed³ug ISO 8601:1988 jako liczba dziesiêtna, zakres od 01 do 53,
+        gdzie tydzieñ 1 jest pierwszym tygodniem, który ma co najmniej 4 dni w bie¿±cym roku, Ponidzia³ek
+        jest pocz±tkiem tygodnia. Zobacz tak¿e %U i %W.
+
+ %w     Dzieñ tygodnia jako liczba dziesiêtna, zakres od 0 do 6, Niedziela to 0. Zobacz tak¿e %u.
+
+ %W     Numer tygodnia w bie¿±cym roku jako liczba dziesiêtna, zakres od 00 do 53, rozpoczyna siê 
+        Poniedzia³kiem jako pierwszym dniem tygodnia 01.
+
+ %x     Preferowana reprezentacja daty dla bie¿±cej lokalizacji bez czasu.
+
+ %X     Preferowana reprezentacja czasu dla bie¿±cej lokalizacji bez daty.
+
+ %y     Rok jako liczba dziesiêtna bez wieku (zakres od 00 do 99).
+
+ %Y     Rok jako liczba dziesiêtna z wiekiem.
+
+ %z     Przesuniêcie strefy czasowej w stosunku do GMT. Wymagane do u¿ywania dat zgodnych z RFC822 (u¿ywa
+        "%a, %d  %b  %Y %H:%M:%S %z").
+
+ %Z     Strefa czasowa lub nazwa lub skrót.
+
+ %%     Znak `%'.
+</font></pre>
+
+<footer>
+
