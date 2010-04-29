@@ -2000,7 +2000,7 @@ while(1) {
 			while($got < $size) {
 				local $buf;
 				local $r = read($h, $buf, $size-$got);
-				return (0, [ $err ], $err, $err) if ($r < 0);
+				return (0, [ $err ], $err, $err) if ($r <= 0);
 				$rv[$#rv] .= $buf;
 				$got += $r;
 				}
