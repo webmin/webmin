@@ -399,6 +399,8 @@ savesmb_server=You must enter a password server
 start_err=Failed to start Samba servers
 start_fail=$1 failed
 
+restart_err=Failed to restart Samba servers
+
 swats_fail=Failed to save username
 swats_user=Missing SWAT username
 

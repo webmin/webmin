@@ -6,6 +6,8 @@ require './samba-lib.pl';
 
 &error_setup("<blink><font color=red>$text{'eacl_aviol'}</font></blink>");
 &error("$text{'eacl_np'} $text{'eacl_papply'}") unless $access{'apply'};
+
+&error_setup($text{'restart_err'});
  
 if ($config{'stop_cmd'}) {
 	&system_logged("$config{'stop_cmd'} >/dev/null 2>&1 </dev/null");
@@ -26,6 +28,7 @@ else {
 	$rv = &system_logged("$config{name_server} -D >/dev/null 2>&1 </dev/null");
 	if ($rv) { &error(&text('start_fail', $config{samba_server})); }
 	}
+
 &webmin_log("apply");
 &redirect("");
 
