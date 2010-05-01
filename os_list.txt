@@ -71,6 +71,7 @@ Ubuntu Linux			$1	debian-linux	4.0	$etc_issue =~ /Ubuntu.*\sgutsy/i
 Ubuntu Linux			$1	debian-linux	4.0	$etc_issue =~ /Ubuntu.*\s(7\.[0-9\.]+)\s/i
 Ubuntu Linux			$1	debian-linux	4.0	$etc_issue =~ /Ubuntu.*\s(8\.[0-9\.]+)\s/i
 Ubuntu Linux			$1	debian-linux	5.0	$etc_issue =~ /Ubuntu.*\s(9\.[0-9\.]+)\s/i
+Ubuntu Linux			$1	debian-linux	5.0	$etc_issue =~ /Ubuntu.*\s(10\.[0-9\.]+)\s/i
 Ubuntu Linux			$1	debian-linux	3.1	$etc_issue =~ /Ubuntu.*\s([0-9\.]+)\s/i
 Mepis Linux			$1	debian-linux	$1	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /([0-9\.]+)/
 Mepis Linux			$1	debian-linux	4.0	$etc_issue =~ /MEPIS/ && `cat /etc/debian_version 2>/dev/null` =~ /(stable)/
