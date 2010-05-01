@@ -1,11 +1,11 @@
 batch_descafter3=In <b>gemaakte</b> en <b>gemodificeerde</b> regels, is het optioneel om extra velden toe te voegen met LDAP atttributen in <i>naam</i>=<i>waarde</i> formaat, om dit toe te wijzen aan de nieuwe of gemodificeerde gebruiker.
-batch_eattr=Ongeldige LDAP attribute op regel $1 : $2
+batch_eattr=Ongeldige LDAP attributen op regel $1 : $2
 batch_samba=Maak Samba account voor nieuwe gebruiker?
-conn_econn=Mislukt om te verbinden met LDAP server $1 poort $2
+conn_eldap_host=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de LDAP server aangevinkt staat op de  Module Configuratie pagina.
 conn_elogin=Bind mislukt naar LDAP server $1 als $2 : $3
-conn_essl=Starten van SSL voor LDAP mislukt bij server $1 poort $2 : $3
 gdel_group=Verwijderen LDAP groep ingang ..
 gedit_cap=Groep mogelijkheden
+gedit_desc=Omschrijving
 gedit_dn=Groepen LDAP DN
 gedit_return=groep details
 gedit_samba=Samba groep?
@@ -17,19 +17,19 @@ gsave_emoddn=Mislukt om groep te hernoemen in LDAP database : $1
 imap_econn=Mislukt te verbinden met IMAP server $1
 imap_elogin=Mislukt in te loggen bij IMAP server $1 als $2 : $3
 index_cyrus=IMAP?
-index_econfig=De LDAP NSS configuratie file $1 is niet gevonden op uw systeem. U moet de <a href='$2'>module configuratie</a> veranderen om het juiste pad te gebruiken.
-index_econfig2=De LDAP NSS configuratie file $1 lijkt de LDAP <i>server</i> configuratie file te zijn. U moet de <a href='$2'>module configuratie</a> veranderen om het juiste pad te gebruiken naar de NSS <i>client</i> config file.
+index_ebase=Er is geen LDAP client configuratie file gevonden op uw systeem, controleer of de "gebruik en groep basis" aanstaat op de <a href='$1'>module configuratie</a> pagina.
 index_egsearch=Zoeken naar groepen mislukt in $1 : $2
-index_ehost=Als er geen LDAP NSS configuratie file is gezet in de <a href='$1'>module configuratie</a>, moet er hiervoor in de plaats een LDAP server, login, wachtwoord, basis gebruiker DN en basis groep DN zijn
 index_eimap=$1. Misschien is uw <a href='$2'>module configuratie</a> is niet correct.
 index_eldap=$1. Misschien is uw <a href='$2'>module configuratie</a> is niet correct.
 index_emd5=Deze module is <a href='$1'>geconfigureerd</a> om gebruik te maken van MD5 encryptie voor wachtwoorden, maar de $2 Perl module is niet geinstalleerd. <a href='$3'>Klik hier</a> om de $2 module te downloaden en te installeren.
 index_eperl=De $1 Perl module die deze module nodig heeft is niet geinstalleerd of werkt niet goed. <a href='$3'>Klik hier</a> om hem te downloaden en nu te installeren.
 index_eperl2=De fout die Perl rapporteerde toen de module geladen werd was :
+index_eschema=Webmin is verbonden met de LDAP server, maar opvragen van het schema is mislukt. Controleer of de toegang niet word geweigerd in de <a href='$1'>LDAP Server</a> module.
 index_eslappasswd=Deze module is <a href='$1'>geconfigureerd</a> om gebruik te maken van MD5 encryptie voor wachtwoorden, maar het programma <tt>$2</tt> wat gebruikt word voor wachtwoord encryptie is niet geinstalleerd.
 index_eusearch=Mislukt te zoeken naar gebruikers in $1 : $2
 index_gadd=Toevoegen nieuwe LDAP groep.
 index_gnone=Geen LDAP groepen zijn gevonden in $1.
+index_greturn=groepen lijst
 index_groups=LDAP Groepen
 index_return=gebruikers lijst
 index_samba=Samba?
@@ -47,9 +47,9 @@ udel_failed=.. mislukt! : $1
 udel_imap=Verwijderen IMAP folder ..
 udel_pass=Verwijderen LDAP gebruiker ingang ..
 udel_warnimap=De bestaande mail postbox zal gewist worden wanneer U de home directorie verwijdert!
-uedit_alias=Mail aliasen
+uedit_alias=Mail aliassen
 uedit_cap=Gebruiker mogelijkheden
-uedit_classes=LDAP object classen
+uedit_classes=LDAP object klassen
 uedit_cyrus=IMAP server login?
 uedit_dn=Gebruikers LDAP DN
 uedit_fields=Toegevoegde LDAP velden
@@ -70,7 +70,7 @@ usave_ecyruspass=De gebruikers moeten hun wachtwoorden invullen of de "Geen wach
 usave_edelete=Mislukt gebruiker te verwijderen van LDAP database : $1
 usave_egone=Gebruiker bestaat niet langer!
 usave_egroupmod=Modificeren mislukt van groep $1 in LDAP database : $2
-usave_eiacl=Mislukt om recht toe te kennen aan de admin
+usave_eiacl=Mislukt om recht toe te kennen aan de administrator
 usave_eicreate=Mislukt om gebruiker te maken
 usave_eifolder=Mislukt om folder $1 te maken
 usave_eilogin=Mislukt om in te loggen als nieuwe gebruiker
@@ -83,5 +83,5 @@ usave_emodbookdn=Mislukt om adresboek ingang te hernoemen : $1
 usave_emoddn=Mislukt om gebruiker te hernoemen in LDAP database : $1
 usave_equota=Ontbrekende of ongeldige IMAP quota
 usave_ereal=Ontbrekende echte naam
-usave_esamba=Deze module kan niet gebruikt worden om het wachtwoord te zetten voor een Samba gebruiker, omdat de Samba Windows File Sharing module niet is geinstalleerd.
+usave_esamba=Deze module kan niet gebruikt worden om het wachtwoord te zetten voor een Samba gebruiker, omdat de Samba Windows File Delen module niet is geinstalleerd.
 usave_ex86=Deze module kan niet gebruikt worden om het wachtwoord te zetten voor een Samba gebruiker op niet-Intel systemen, omdat het afhankelijk is van een gecompileerd x86 programma.
