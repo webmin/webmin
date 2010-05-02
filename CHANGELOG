@@ -129,3 +129,5 @@ The Webmin RPM now preserves the /etc/webmin directory when un-installed and the
 Added a robots.txt file to block indexing of Webmin by search engines.
 The Webmin search box can now be disabled in the Webmin Users module, under "Permissions for all modules".
 Brazillian Portuguese translation updates for several modules, thanks to Djavan Fagundes.
+---- Changes since 1.510 ----
+Dutch translation updates, thanks to Gandyman.
