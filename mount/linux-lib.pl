@@ -2503,13 +2503,13 @@ foreach $f (split(/\s+/, $config{'auto_file'})) {
 return @rv;
 }
 
-# device_name(device)
+# device_name(device, [non-local])
 # Converts a device name to a human-readable form
 sub device_name
 {
 # First try to get name from fdisk module, as it knowns better about IDE
 # and SCSI devices
-if (&foreign_check("fdisk")) {
+if (&foreign_check("fdisk") && !$_[1]) {
 	&foreign_require("fdisk");
 	my @disks = &fdisk::list_disks_partitions();
 	foreach my $d (@disks) {
