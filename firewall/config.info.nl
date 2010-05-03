@@ -1,12 +1,12 @@
 line0=Configureerbare opties,11
-view_condition=Laat de conditie zien in de rules lijst?,1,1-Ja,0-Nee
-view_comment=Laat commentaar in rules lijst zien?,1,1-Ja,0-Nee
-comment_mod=Opdrachten opslaan als,1,0-# opdrachten in save file,1-&#45;&#45;commentaar optie
+view_condition=Laat de conditie zien in de regel lijst?,1,1-Ja,0-Nee
+view_comment=Laat commentaar in regel lijst zien?,1,1-Ja,0-Nee
+comment_mod=Commentaar opslaan als,1,0-# commentaar in opgeslagen file,1-&#45;&#45;commentaar optie
 cluster_mode=Update cluster servers,1,0-Wanneer een verandering is gemaakt,1-Wanneer de configuratie word toegevoegd
 before_cmd=Opdracht om uit te voeren voor veranderen van de regels,3,Niets
 after_cmd=Opdracht om uit te voeren na verandering van de regels,3,Niets
 before_apply_cmd=Opdracht om uit te voeren voordat de configuratie word toegevoegd,3,Niets
 after_apply_cmd=Opdracht om uit te voeren nadat de configuratie is toegevoegd,3,Niets
 line1=Systeem configuratie,11
-save_file=IPtables save file om te bewerken,3,Gebruik operating systeem of Webmin standaard
-direct=Bewerk direct de Firewall regels in plaat van de save file?,1,1-Ja,0-Nee
+save_file=IPtables opgeslagen file om te bewerken,3,Gebruik Operating Systeem of Webmin standaard
+direct=Bewerk direct de Firewall regels in plaats van de opgeslagen file?,1,1-Ja,0-Nee
