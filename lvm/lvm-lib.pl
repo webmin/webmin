@@ -196,10 +196,11 @@ return @rv;
 sub mult_units
 {
 local ($n, $u) = @_;
-return $n*(uc($u) eq "KB" ? 1 :
-	   uc($u) eq "MB" ? 1024 :
-	   uc($u) eq "GB" ? 1024*1024 :
-	   uc($u) eq "TB" ? 1024*1024*1024 : 1);
+return $n*(uc($u) eq "KB" || uc($u) eq "KIB" ? 1 :
+	   uc($u) eq "MB" || uc($u) eq "MIB" ? 1024 :
+	   uc($u) eq "GB" || uc($u) eq "GIB" ? 1024*1024 :
+	   uc($u) eq "TB" || uc($u) eq "TIB" ? 1024*1024*1024 :
+	   uc($u) eq "PB" || uc($u) eq "PIB" ? 1024*1024*1024 : 1);
 }
 
 # delete_volume_group(&vg)
