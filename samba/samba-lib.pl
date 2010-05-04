@@ -664,11 +664,11 @@ local $qu = quotemeta($_[0]);
 local $qp = quotemeta($_[1]);
 if ($samba_version >= 2) {
 	local $passin = "$_[1]\n$_[1]\n";
-	local $ex = &execute_command("$config{'samba_password_program'} -c $config{'smb_conf'} -s $qu", \$passin, $_[1], $_[1]);
+	local $ex = &execute_command("$config{'samba_password_program'} -c $config{'smb_conf'} -s $qu", \$passin, $_[2], $_[2]);
 	if ($ex) {
 		# Try without -c 
-		${$_[1]} = '' if ($_[1]);
-		$rv = &execute_command("$config{'samba_password_program'} -s $qu", \$passin, $_[1], $_[1]);
+		${$_[2]} = '' if ($_[2]);
+		$rv = &execute_command("$config{'samba_password_program'} -s $qu", \$passin, $_[2], $_[2]);
 		}
 	unlink($temp);
 	return !$rv;
@@ -676,7 +676,7 @@ if ($samba_version >= 2) {
 else {
 	local $out;
 	&execute_command("$config{'samba_password_program'} $qu $qp",
-			 undef, $_[1], $_[1]);
+			 undef, $_[2], $_[2]);
 	return $out =~ /changed/i;
 	}
 }
