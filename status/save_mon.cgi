@@ -73,6 +73,7 @@ else {
 	$serv->{'notify'} = join(" ", split(/\0/, $in{'notify'}));
 	$serv->{'ondown'} = $in{'ondown'};
 	$serv->{'onup'} = $in{'onup'};
+	$serv->{'ontimeout'} = $in{'ontimeout'};
 	$serv->{'runon'} = $in{'runon'};
 	$serv->{'clone'} = $in{'clone'};
 	$in{'fails'} =~ /^\d+$/ || &error($text{'mon_efails'});

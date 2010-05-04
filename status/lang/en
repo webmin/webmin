@@ -95,6 +95,7 @@ mon_timeout=Timed out
 mon_not=Not installed
 mon_ondown=If monitor goes down, run command
 mon_onup=If monitor comes up, run command
+mon_ontimeout=If monitor times out, run command
 mon_clone=Module to monitor
 mon_err=Failed to save monitor
 mon_edesc=Missing description

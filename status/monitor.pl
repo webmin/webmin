@@ -150,6 +150,8 @@ foreach $serv (@services) {
 			elsif ($up == -3) {
 				# Monitor function timed out
 				$suffix = "timed";
+				$out = &run_on_command($serv,
+						       $serv->{'ontimeout'});
 				}
 			}
 		elsif ($warn == 2 && $up == 0) {

@@ -204,6 +204,10 @@ print &ui_table_row($text{'mon_onup'},
 		    &ui_textbox("onup", $serv->{'onup'}, 60),
 		    undef, \@tds);
 
+print &ui_table_row($text{'mon_ontimeout'},
+		    &ui_textbox("ontimeout", $serv->{'ontimeout'}, 60),
+		    undef, \@tds);
+
 print &ui_table_row(" ", "<font size=-1>$text{'mon_oninfo'}</font>",
 		    undef, \@tds);
 
