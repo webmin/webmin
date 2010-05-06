@@ -47,7 +47,7 @@ foreach $m (@masters) {
 #	&error($text{'create_enone'});
 #	}
 foreach $z (&find("zone", $vconf)) {
-	if ($z->{'value'} eq $in{'zone'}) {
+	if (lc($z->{'value'}) eq lc($in{'zone'})) {
 		&error($text{'master_etaken'});
 		}
 	}
