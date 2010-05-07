@@ -35,3 +35,5 @@ Converted buttons on the module's main page to use the Webmin UI library.
 Expired leases are no longer counted towards usage on the DHCP Leases page.
 Added a mode to the DHCP Leases page to show usage by subnet, thanks to a suggestion by Coles.
 When applying the configuration fails with an error mentioning a line in the config file, 10 lines around that will also be displayed by Webmin in the error.
+---- Changes since 1.510 ----
+Added support for multi-value options, thanks to a patch from Luke Suchocki.

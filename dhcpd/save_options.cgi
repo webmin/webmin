@@ -98,7 +98,7 @@ if ($config{'dhcpd_version'} >= 3) {
 			&error(&text('sopt_edname', $in{"dname_$i"}));
 		$in{"dnum_$i"} =~ /^\d+$/ ||
 			&error(&text('sopt_ednum', $in{"dnum_$i"}));
-		$in{"dtype_$i"} =~ /^[a-z0-9\.\-\_]+$/i ||
+		$in{"dtype_$i"} =~ /^[a-z0-9\s\.\-\_]+$/i ||
 			&error(&text('sopt_edtype', $in{"dtype_$i"}));
 		push(@newdefs, { 'name' => 'option',
 				 'values' => [ $in{"dname_$i"}, "code",
