@@ -16,6 +16,7 @@ if (!$in{'new'}) {
 			    filter => '(&(objectClass=posixGroup))');
 	($ginfo) = $rv->all_entries;
 	$ginfo || &error($text{'gsave_egone'});
+	$olddesc = $ginfo->get_value('description');
 	%ogroup = &dn_to_hash($ginfo);
 	&can_edit_group(\%ogroup) || &error($text{'gedit_eedit'});
 	}
@@ -237,7 +238,7 @@ if (!$in{'new'}) {
 	if ($desc) {
 		push(@props, "description" => $desc);
 		}
-	else {
+	elsif ($olddesc) {
 		push(@rprops, "description");
 		}
 
