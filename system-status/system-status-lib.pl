@@ -62,7 +62,7 @@ $info->{'drivetemps'} = \@drive if (@drive);
 
 # IO input and output
 if ($gconfig{'os_type'} =~ /-linux$/) {
-	local $out = &backquote_command("vmstat 1 2");
+	local $out = &backquote_command("vmstat 1 2 2>/dev/null");
 	if (!$?) {
 		local @lines = split(/\r?\n/, $out);
 		local @w = split(/\s+/, $lines[$#lines]);
