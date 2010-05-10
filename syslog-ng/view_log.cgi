@@ -93,7 +93,8 @@ print "<i>$text{'view_empty'}</i>\n" if (!$got);
 print "</pre>\n";
 &filter_form();
 
-&ui_print_footer("", $text{'index_return'});
+&ui_print_footer("list_destinations.cgi", $text{'destinations_return'},
+		 "", $text{'index_return'});
 
 sub filter_form
 {
