@@ -752,7 +752,9 @@ if ($config{'soa_style'} == 1 && $old =~ /^(\d{8})(\d\d)$/) {
 elsif ($config{'soa_style'} == 2) {
 	# Unix time
 	local $rv = time();
-	while($rv <= $old) { $rv++; }
+	while($rv <= $old) {
+		$rv = $old + 1;
+		}
 	return $rv;
 	}
 else {
