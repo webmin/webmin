@@ -271,6 +271,11 @@ if ($config{'log'}) {
 # Build various maps from the config files
 &build_config_mappings();
 
+# Initially read webmin cron functions and last execution times
+&read_webmin_crons();
+%webmincron_last = ( );
+&read_file($config{'webmincron_last'}, \%webmincron_last);
+
 # start up external authentication program, if needed
 if ($config{'extauth'}) {
 	socketpair(EXTAUTH, EXTAUTH2, AF_UNIX, SOCK_STREAM, PF_UNSPEC);
@@ -630,6 +635,9 @@ while(1) {
 	if ($unblocked) {
 		&write_blocked_file();
 		}
+
+	# Check if any webmin cron jobs are ready to run
+	&execute_ready_webmin_crons();
 
 	if ($config{'session'} && (++$remove_session_count%50) == 0) {
 		# Remove sessions with more than 7 days of inactivity,
@@ -3905,6 +3913,7 @@ sub reload_config_file
 &read_users_file();
 &read_mime_types();
 &build_config_mappings();
+&read_webmin_crons();
 if ($config{'session'}) {
 	dbmclose(%sessiondb);
 	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
@@ -3979,6 +3988,13 @@ if (!$config{'tempbase'}) {
 if (!$config{'blockedfile'}) {
 	$config{'pidfile'} =~ /^(.*)\/[^\/]+$/;
 	$config{'blockedfile'} = "$1/blocked";
+	}
+if (!$config{'webmincron_dir'}) {
+	$config{'webmincron_dir'} = "$config_dir/webmincron/crons";
+	}
+if (!$config{'webmincron_last'}) {
+	$config{'logfile'} =~ /^(.*)\/[^\/]+$/;
+	$config{'webmincron_last'} = "$1/miniserv.lastcrons";
 	}
 }
 
@@ -4767,3 +4783,83 @@ while(--$n >= 0) {
 return $r;
 }
 
+# read_file(file, &assoc, [&order], [lowercase])
+# Fill an associative array with name=value pairs from a file
+sub read_file
+{
+open(ARFILE, $_[0]) || return 0;
+while(<ARFILE>) {
+	s/\r|\n//g;
+        if (!/^#/ && /^([^=]*)=(.*)$/) {
+		$_[1]->{$_[3] ? lc($1) : $1} = $2;
+		push(@{$_[2]}, $1) if ($_[2]);
+        	}
+        }
+close(ARFILE);
+return 1;
+}
+ 
+# write_file(file, array)
+# Write out the contents of an associative array as name=value lines
+sub write_file
+{
+local(%old, @order);
+&read_file($_[0], \%old, \@order);
+open(ARFILE, ">$_[0]");
+foreach $k (@order) {
+        print ARFILE $k,"=",$_[1]->{$k},"\n" if (exists($_[1]->{$k}));
+	}
+foreach $k (keys %{$_[1]}) {
+        print ARFILE $k,"=",$_[1]->{$k},"\n" if (!exists($old{$k}));
+        }
+close(ARFILE);
+}
+
+# execute_ready_webmin_crons()
+# Find and run any cron jobs that are due, based on their last run time and
+# execution interval
+sub execute_ready_webmin_crons
+{
+my $now = time();
+my $changed = 0;
+foreach my $cron (@webmincrons) {
+	if (!$webmincron_last{$cron->{'id'}}) {
+		# If not ever run before, don't run right away
+		$webmincron_last{$cron->{'id'}} = $now;
+		$changed = 1;
+		}
+	elsif ($webmincron_last{$cron->{'id'}} < $now - $cron{'interval'}) {
+		# Older than interval .. time to run
+		print DEBUG "Running cron id=$cron->{'id'} module=$cron->{'module'} func=$cron->{'func'}\n";
+		$webmincron_last{$cron->{'id'}} = $now;
+		}
+	}
+if ($changed) {
+	# Write out file containing last run times
+	&write_file($config{'webmincron_last'}, \%webmincron_last);
+	}
+}
+
+# read_webmin_crons()
+# Read all scheduled webmin cron functions and store them in the @webmincrons
+# global list
+sub read_webmin_crons
+{
+@webmincrons = ( );
+opendir(CRONS, $config{'webmincron_dir'});
+foreach my $f (readdir(CRONS)) {
+	if ($f =~ /^(\d+)\.cron$/) {
+		my %cron;
+		&read_file("$config{'webmincron_dir'}/$f", \%cron);
+		$cron{'id'} = $1;
+		my $broken = 0;
+		foreach my $n ('interval', 'module', 'func') {
+			if (!$cron{$n}) {
+				print STDERR "Cron $1 missing interval\n";
+				$broken = 1;
+				}
+			}
+		push(@webmincrons, \%cron) if (!$broken);
+		}
+	}
+}

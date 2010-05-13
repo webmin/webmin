@@ -4,6 +4,11 @@ Functions for creating and listing Webmin scheduled functions.
 
 =cut
 
+# XXX actually call in miniserv.pl
+# XXX keep track of last call time
+# XXX UI
+# XXX support cron-style time specs
+
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
