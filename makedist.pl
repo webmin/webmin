@@ -44,7 +44,7 @@ $zipdir = "zips";
 if ($min) {
 	# Only those required by others
 	@mlist = ("cron", "init", "inittab", "proc", "webmin", "acl", "servers",
-		  "man", "webminlog", "system-status");
+		  "man", "webminlog", "system-status", "webmincron");
 	}
 else {
 	# All the modules
@@ -71,7 +71,7 @@ else {
 	  "tunnel", "zones", "cluster-usermin", "dovecot", "syslog-ng",
 	  "mailcap", "blue-theme", "ldap-client", "phpini", "filter",
 	  "bacula-backup", "ldap-server", "exim", "tcpwrappers",
-	  "package-updates", "system-status",
+	  "package-updates", "system-status", "webmincron",
 	  );
 	}
 @dirlist = ( "Webmin" );
