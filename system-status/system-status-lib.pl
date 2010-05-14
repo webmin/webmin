@@ -439,5 +439,33 @@ if (!$config{'collect_notemp'} &&
 return @rv;
 }
 
+# scheduled_collect_system_info()
+# Called by Webmin Cron to collect system info
+sub scheduled_collect_system_info
+{
+my $start = time();
+
+# Make sure we are not already running
+if (&test_lock($collected_info_file)) {
+	print STDERR "scheduled_collect_system_info : Already running\n";
+	return;
+	}
+
+# Don't diff collected file
+$gconfig{'logfiles'} = 0;
+$gconfig{'logfullfiles'} = 0;
+$WebminCore::gconfig{'logfiles'} = 0;
+$WebminCore::gconfig{'logfullfiles'} = 0;
+$no_log_file_changes = 1;
+&lock_file($collected_info_file);
+
+$info = &collect_system_info();
+if ($info) {
+	&save_collected_info($info);
+	&add_historic_collected_info($info, $start);
+	}
+&unlock_file($collected_info_file);
+}
+
 1;
 

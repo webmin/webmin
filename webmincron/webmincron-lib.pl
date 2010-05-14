@@ -4,10 +4,10 @@ Functions for creating and listing Webmin scheduled functions.
 
 =cut
 
-# XXX actually call in miniserv.pl
-# XXX keep track of last call time
 # XXX UI
 # XXX support cron-style time specs
+# XXX make sure temp files are cleaned up
+# XXX switch all cron jobs at install time
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
