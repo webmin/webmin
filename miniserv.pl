@@ -271,11 +271,6 @@ if ($config{'log'}) {
 # Build various maps from the config files
 &build_config_mappings();
 
-# Initially read webmin cron functions and last execution times
-&read_webmin_crons();
-%webmincron_last = ( );
-&read_file($config{'webmincron_last'}, \%webmincron_last);
-
 # start up external authentication program, if needed
 if ($config{'extauth'}) {
 	socketpair(EXTAUTH, EXTAUTH2, AF_UNIX, SOCK_STREAM, PF_UNSPEC);
@@ -333,6 +328,11 @@ if ($config{'debuglog'}) {
 
 # Write out (empty) blocked hosts file
 &write_blocked_file();
+
+# Initially read webmin cron functions and last execution times
+&read_webmin_crons();
+%webmincron_last = ( );
+&read_file($config{'webmincron_last'}, \%webmincron_last);
 
 # Re-direct STDERR to a log file
 if ($config{'errorlog'} ne '-') {
@@ -2143,7 +2143,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 				chmod(0600, $config{'logfile'});
 				}
 			}
-		$doing_eval = 1;
+		$doing_cgi_eval = 1;
 		$main_process_id = $$;
 		$pkg = "main";
 		if ($full =~ /^\Q$foundroot\E\/([^\/]+)\//) {
@@ -2159,7 +2159,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 			do \$miniserv::full;
 			die \$@ if (\$@);
 			";
-		$doing_eval = 0;
+		$doing_cgi_eval = 0;
 		if ($@) {
 			# Error in perl!
 			&http_error(500, "Perl execution failed",
@@ -2966,7 +2966,7 @@ return 1;
 
 sub END
 {
-if ($doing_eval && $$ == $main_process_id) {
+if ($doing_cgi_eval && $$ == $main_process_id) {
 	# A CGI program called exit! This is a horrible hack to 
 	# finish up before really exiting
 	shutdown(SOCK, 1);
@@ -3990,11 +3990,16 @@ if (!$config{'blockedfile'}) {
 	$config{'blockedfile'} = "$1/blocked";
 	}
 if (!$config{'webmincron_dir'}) {
-	$config{'webmincron_dir'} = "$config_dir/webmincron/crons";
+	$config_file =~ /^(.*)\/[^\/]+$/;
+	$config{'webmincron_dir'} = "$1/webmincron/crons";
 	}
 if (!$config{'webmincron_last'}) {
 	$config{'logfile'} =~ /^(.*)\/[^\/]+$/;
 	$config{'webmincron_last'} = "$1/miniserv.lastcrons";
+	}
+if (!$config{'webmincron_wrapper'}) {
+	$config{'webmincron_wrapper'} = $config{'root'}.
+					"/webmincron/webmincron.pl";
 	}
 }
 
@@ -4830,8 +4835,79 @@ foreach my $cron (@webmincrons) {
 		}
 	elsif ($webmincron_last{$cron->{'id'}} < $now - $cron{'interval'}) {
 		# Older than interval .. time to run
-		print DEBUG "Running cron id=$cron->{'id'} module=$cron->{'module'} func=$cron->{'func'}\n";
+		print DEBUG "Running cron id=$cron->{'id'} ".
+			    "module=$cron->{'module'} func=$cron->{'func'}\n";
 		$webmincron_last{$cron->{'id'}} = $now;
+		$changed = 1;
+		my $pid = fork();
+		if (!$pid) {
+			# Run via a wrapper command, which we run like a CGI
+
+			# Setup CGI-like environment
+			$envtz = $ENV{"TZ"};
+			$envuser = $ENV{"USER"};
+			$envpath = $ENV{"PATH"};
+			$envlang = $ENV{"LANG"};
+			$envroot = $ENV{"SystemRoot"};
+			$envperllib = $ENV{'PERLLIB'};
+			foreach my $k (keys %ENV) {
+				delete($ENV{$k});
+				}
+			$ENV{"PATH"} = $envpath if ($envpath);
+			$ENV{"TZ"} = $envtz if ($envtz);
+			$ENV{"USER"} = $envuser if ($envuser);
+			$ENV{"OLD_LANG"} = $envlang if ($envlang);
+			$ENV{"SystemRoot"} = $envroot if ($envroot);
+			$ENV{'PERLLIB'} = $envperllib if ($envperllib);
+			$ENV{"HOME"} = $user_homedir;
+			$ENV{"SERVER_SOFTWARE"} = $config{"server"};
+			$ENV{"SERVER_ADMIN"} = $config{"email"};
+			$root0 = $roots[0];
+			$ENV{"SERVER_ROOT"} = $root0;
+			$ENV{"SERVER_REALROOT"} = $root0;
+			$ENV{"SERVER_PORT"} = $config{'port'};
+			$ENV{"WEBMIN_CRON"} = 1;
+			$ENV{"DOCUMENT_ROOT"} = $root0;
+			$ENV{"DOCUMENT_REALROOT"} = $root0;
+			$ENV{"MINISERV_CONFIG"} = $config_file;
+			$ENV{"HTTPS"} = "ON" if ($use_ssl);
+			$ENV{"SCRIPT_FILENAME"} = $config{'webmincron_wrapper'};
+			if ($ENV{"SCRIPT_FILENAME"} =~ /^\Q$root0\E(\/.*)$/) {
+				$ENV{"SCRIPT_NAME"} = $1;
+				}
+			$config{'webmincron_wrapper'} =~ /^(.*)\//;
+			$ENV{"PWD"} = $1;
+			foreach $k (keys %config) {
+				if ($k =~ /^env_(\S+)$/) {
+					$ENV{$1} = $config{$k};
+					}
+				}
+			chdir($ENV{"PWD"});
+			$SIG{'CHLD'} = 'DEFAULT';
+			eval {
+				# Have SOCK closed if the perl exec's something
+				use Fcntl;
+				fcntl(SOCK, F_SETFD, FD_CLOEXEC);
+				};
+
+			# Run the wrapper script by evaling it
+			$pkg = "webmincron";	# XXX
+			$0 = $config{'webmincron_wrapper'};
+			@ARGV = ( $cron );
+			$main_process_id = $$;
+			eval "
+				\%pkg::ENV = \%ENV;
+				package $pkg;
+				do \$miniserv::config{'webmincron_wrapper'};
+				die \$@ if (\$@);
+				";
+			if ($@) {
+				print STDERR "Perl cron failure : $@\n";
+				}
+
+			exit(0);
+			}
+		push(@childpids, $pid);
 		}
 	}
 if ($changed) {
@@ -4847,6 +4923,7 @@ sub read_webmin_crons
 {
 @webmincrons = ( );
 opendir(CRONS, $config{'webmincron_dir'});
+print DEBUG "Reading crons from $config{'webmincron_dir'}\n";
 foreach my $f (readdir(CRONS)) {
 	if ($f =~ /^(\d+)\.cron$/) {
 		my %cron;
@@ -4859,6 +4936,7 @@ foreach my $f (readdir(CRONS)) {
 				$broken = 1;
 				}
 			}
+		print DEBUG "adding cron id=$cron{'id'} module=$cron{'module'} func=$cron{'func'}\n";
 		push(@webmincrons, \%cron) if (!$broken);
 		}
 	}
