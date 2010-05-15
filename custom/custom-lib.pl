@@ -376,13 +376,14 @@ for($i=0; defined($name = $in{"name_$i"}); $i++) {
 	}
 }
 
-# set_parameter_envs(&command, command-str, &uinfo)
+# set_parameter_envs(&command, command-str, &uinfo, [set-in])
 # Sets $ENV variables based on parameter inputs, and returns the list of
 # environment variable commands, the export commands, the command string,
 # and the command string to display.
 sub set_parameter_envs
 {
-local ($cmd, $str, $uinfo) = @_;
+local ($cmd, $str, $uinfo, $setin) = @_;
+$setin ||= \%in;
 local $displaystr = $str;
 local ($env, $export, @vals);
 foreach my $a (@{$cmd->{'args'}}) {
@@ -390,42 +391,42 @@ foreach my $a (@{$cmd->{'args'}}) {
 	my $rv;
 	if ($a->{'type'} == 0 || $a->{'type'} == 5 ||
 	    $a->{'type'} == 6 || $a->{'type'} == 8) {
-		$rv = $in{$n};
+		$rv = $setin->{$n};
 		}
 	elsif ($a->{'type'} == 11) {
-		$rv = $in{$n};
+		$rv = $setin->{$n};
 		$rv =~ s/\r//g;
 		$rv =~ s/\n/ /g;
 		}
 	elsif ($a->{'type'} == 1 || $a->{'type'} == 2) {
-		(@u = getpwnam($in{$n})) || &error($text{'run_euser'});
-		$rv = $a->{'type'} == 1 ? $in{$n} : $u[2];
+		(@u = getpwnam($setin->{$n})) || &error($text{'run_euser'});
+		$rv = $a->{'type'} == 1 ? $setin->{$n} : $u[2];
 		}
 	elsif ($a->{'type'} == 3 || $a->{'type'} == 4) {
-		(@g = getgrnam($in{$n})) || &error($text{'run_egroup'});
-		$rv = $a->{'type'} == 3 ? $in{$n} : $g[2];
+		(@g = getgrnam($setin->{$n})) || &error($text{'run_egroup'});
+		$rv = $a->{'type'} == 3 ? $setin->{$n} : $g[2];
 		}
 	elsif ($a->{'type'} == 7) {
-		$rv = $in{$n} ? $a->{'opts'} : "";
+		$rv = $setin->{$n} ? $a->{'opts'} : "";
 		}
 	elsif ($a->{'type'} == 9) {
 		local $found;
 		foreach my $l (&read_opts_file($a->{'opts'})) {
-			$found++ if ($l->[0] eq $in{$n});
+			$found++ if ($l->[0] eq $setin->{$n});
 			}
 		$found || &error($text{'run_eopt'});
-		$rv = $in{$n};
+		$rv = $setin->{$n};
 		}
 	elsif ($a->{'type'} == 10) {
-		$in{$n} || &error($text{'run_eupload'});
-		if ($in{$n."_filename"} =~ /([^\/\\]+$)/ && $1) {
+		$setin->{$n} || &error($text{'run_eupload'});
+		if ($setin->{$n."_filename"} =~ /([^\/\\]+$)/ && $1) {
 			$rv = &transname("$1");
 			}
 		else {
 			$rv = &transname();
 			}
 		&open_tempfile(TEMP, ">$rv");
-		&print_tempfile(TEMP, $in{$n});
+		&print_tempfile(TEMP, $setin->{$n});
 		&close_tempfile(TEMP);
 		chown($uinfo->[2], $uinfo->[3], $rv);
 		push(@unlink, $rv);
@@ -483,6 +484,7 @@ sub execute_custom_command
 {
 local ($cmd, $env, $export, $str, $print) = @_;
 &foreign_require("proc", "proc-lib.pl");
+print STDERR "running $str\n";
 
 &clean_environment() if ($cmd->{'clear'});
 local $got;

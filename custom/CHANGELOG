@@ -27,3 +27,5 @@ Added a parameter-level option to make the parameter mandatory.
 ---- Changes since 1.500 ----
 Added a button to clone an existing command when editing.
 The sort order of commands can now be set on the Module Config page, and is respected in the Webmin Users module.
+---- Changes since 1.510 ----
+Fixed a bug that broke remote command execution with parameters.

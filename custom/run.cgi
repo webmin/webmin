@@ -51,12 +51,19 @@ foreach $h (@hosts) {
 	$remote_custom_error = undef;
 	if ($h == 0) {
 		# Run locally
-		($got, $out, $timeout) = &execute_custom_command($cmd, $env, $export, $str, 1);
+		($got, $out, $timeout) = &execute_custom_command(
+					$cmd, $env, $export, $str, 1);
 		}
 	else {
 		# Foreign call
-		&remote_foreign_require($server->{'host'}, "custom", "custom-lib.pl");
-		($got, $out, $timeout) = &remote_foreign_call($server->{'host'}, "custom", "execute_custom_command", $cmd, $env, $export, $str);
+		&remote_foreign_require($server->{'host'}, "custom",
+					"custom-lib.pl");
+		&remote_foreign_call($server->{'host'}, "custom",
+				     "set_parameter_envs", $cmd, $cmd->{'cmd'},
+				     \@user_info, \%in);
+		($got, $out, $timeout) = &remote_foreign_call(
+			$server->{'host'}, "custom", "execute_custom_command",
+			$cmd, $env, $export, $str);
 		}
 	if ($h == 0) {
 		&additional_log('exec', undef, $displaystr);
