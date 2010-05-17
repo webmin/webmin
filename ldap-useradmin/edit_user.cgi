@@ -277,11 +277,13 @@ if ($config{'secmode'} != 1) {
 	foreach $g (sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries) {
 		$group = $g->get_value("cn");
 		@mems = $g->get_value("memberUid");
+		$desc = $g->get_value("description");
 		local $ismem = &indexof($user, @mems) >= 0;
 		if ($n eq "") {
 			$ismem = 1 if (&indexof($group, @defsecs) >= 0);
 			}
 		$ingroups{$group} = $ismem;
+		$descgroups{$group} = " ($desc)";
 		}
 	}
 
@@ -291,7 +293,7 @@ if ($config{'secmode'} == 0) {
 		$group = $g->get_value("cn");
 		push(@canglist, [ $group, $group ]);
 		}
-	@ingroups = map { [ $_, $_ ] } sort { $a cmp $b }
+	@ingroups = map { [ $_, $_.$descgroups{$_} ] } sort { $a cmp $b }
                         grep { $ingroups{$_} } (keys %ingroups);
 	$groupfield = &ui_multi_select("sgid", \@ingroups, \@canglist, 5, 1, 0,
 			     $text{'uedit_allg'}, $text{'uedit_ing'});
