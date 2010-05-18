@@ -4833,7 +4833,7 @@ foreach my $cron (@webmincrons) {
 		$webmincron_last{$cron->{'id'}} = $now;
 		$changed = 1;
 		}
-	elsif ($webmincron_last{$cron->{'id'}} < $now - $cron{'interval'}) {
+	elsif ($now - $webmincron_last{$cron->{'id'}} > $cron->{'interval'}) {
 		# Older than interval .. time to run
 		print DEBUG "Running cron id=$cron->{'id'} ".
 			    "module=$cron->{'module'} func=$cron->{'func'}\n";

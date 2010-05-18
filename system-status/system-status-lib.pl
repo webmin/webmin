@@ -348,50 +348,18 @@ return @rv;
 }
 
 # setup_collectinfo_job()
-# Creates or updates the systeminfo.pl cron job, based on the schedule
-# set in the module config.
+# Creates or updates the Webmin function cron job, based on the interval
+# set in the module config
 sub setup_collectinfo_job
 {
-&foreign_require("cron");
-
-# Work out correct steps
+&foreign_require("webmincron");
 my $step = $config{'collect_interval'};
 $step = 5 if (!$step || $step eq 'none');
-my $offset = int(rand()*$step);
-my @mins;
-for(my $i=$offset; $i<60; $i+= $step) {
-	push(@mins, $i);
-	}
-my $job = &cron::find_cron_job($systeminfo_cron_cmd);
-
-if (!$job && $config{'collect_interval'} ne 'none') {
-	# Create, and run for the first time
-	$job = { 'mins' => join(',', @mins),
-		 'hours' => '*',
-		 'days' => '*',
-		 'months' => '*',
-		 'weekdays' => '*',
-		 'user' => 'root',
-		 'active' => 1,
-		 'command' => $systeminfo_cron_cmd };
-	&cron::create_cron_job($job);
-	}
-elsif ($job && $config{'collect_interval'} ne 'none') {
-	# Update existing job, if step has changed
-	my @oldmins = split(/,/, $job->{'mins'});
-	my $oldstep = $oldmins[0] eq '*' ? 1 :
-			 @oldmins == 1 ? 60 :
-			 $oldmins[1]-$oldmins[0];
-	if ($step != $oldstep) {
-		$job->{'mins'} = join(',', @mins);
-		&cron::change_cron_job($job);
-		}
-	}
-elsif ($job && $config{'collect_interval'} eq 'none') {
-	# No longer wanted, so delete
-	&cron::delete_cron_job($job);
-	}
-&cron::create_wrapper($systeminfo_cron_cmd, $module_name, "systeminfo.pl");
+my $cron = { 'module' => $module_name,
+	     'func' => 'scheduled_collect_system_info',
+	     'interval' => $step * 60,
+	   };
+&webmincron::create_webmin_cron($cron, $systeminfo_cron_cmd);
 }
 
 # get_current_drive_temps()

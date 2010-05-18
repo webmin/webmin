@@ -8,6 +8,7 @@ Functions for creating and listing Webmin scheduled functions.
 # XXX support cron-style time specs
 # XXX make sure temp files are cleaned up
 # XXX switch all cron jobs at install time
+# XXX delete jobs when un-installing modules
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
@@ -81,11 +82,48 @@ my $file = "$webmin_crons_directory/$cron->{'id'}.cron";
 &unlock_file($file);
 }
 
-=head2 create_webmin_cron(module, function, interval, &args)
+=head2 create_webmin_cron(&cron, [old-cron-command])
+
+Create or update a webmin cron job that calls some function.
+If the old-cron parameter is given, find and replace the regular cron job
+of that name.
 
 =cut
 sub create_webmin_cron
 {
+my ($cron, $old_cmd) = @_;
+
+# Find and replace existing cron with same module, function and args
+my @crons = &list_webmin_crons();
+my $already;
+foreach my $oc (@crons) {
+	next if ($oc->{'module'} ne $cron->{'module'});
+	next if ($oc->{'func'} ne $cron->{'func'});
+	for(my $i=0; defined($oc->{'arg'.$i}) ||
+		     defined($cron->{'arg'.$i}); $i++) { }
+	$already = $c;
+	last;
+	}
+if ($already) {
+	# Update existing, possibly with new interval
+	$cron->{'id'} = $already->{'id'};
+	}
+&save_webmin_cron($cron);
+
+# Find and delete any Unix cron job that this is replacing
+if ($old_cmd && &foreign_installed("cron")) {
+	&foreign_require("cron");
+	my @jobs = &cron::list_cron_jobs();
+	my ($job) = grep {
+	     $_->{'user'} eq 'root' &&
+	     $_->{'command'} =~ /(^|[ \|\&;\/])\Q$old_cmd\E($|[ \|\&><;])/
+	     } @jobs;
+	if ($job) {
+		&lock_file(&cron::cron_file($job));
+		&cron::delete_cron_job($job);
+		&unlock_file(&cron::cron_file($job));
+		}
+	}
 }
 
 1;
