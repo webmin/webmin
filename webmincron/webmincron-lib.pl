@@ -66,6 +66,7 @@ my $file = "$webmin_crons_directory/$cron->{'id'}.cron";
 &lock_file($file);
 &write_file($file, $cron);
 &unlock_file($file);
+&reload_miniserv();
 }
 
 =head2 delete_webmin_cron(&cron)
@@ -80,6 +81,7 @@ my $file = "$webmin_crons_directory/$cron->{'id'}.cron";
 &lock_file($file);
 &unlink_file($file);
 &unlock_file($file);
+&reload_miniserv();
 }
 
 =head2 create_webmin_cron(&cron, [old-cron-command])
@@ -99,9 +101,13 @@ my $already;
 foreach my $oc (@crons) {
 	next if ($oc->{'module'} ne $cron->{'module'});
 	next if ($oc->{'func'} ne $cron->{'func'});
+	my $sameargs = 1;
 	for(my $i=0; defined($oc->{'arg'.$i}) ||
-		     defined($cron->{'arg'.$i}); $i++) { }
-	$already = $c;
+		     defined($cron->{'arg'.$i}); $i++) {
+		$sameargs = 0 if ($oc->{'arg'.$i} ne $cron->{'arg'.$i});
+		}
+	next if (!$sameargs);
+	$already = $oc;
 	last;
 	}
 if ($already) {

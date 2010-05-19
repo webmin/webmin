@@ -1362,5 +1362,40 @@ if ($err) {
 	}
 }
 
+=head2 cleanup_temp_files
+
+Called from cron to delete old files in the Webmin /tmp directory
+
+=cut
+sub cleanup_temp_files
+{
+# Don't run if disabled
+if (!$gconfig{'tempdelete_days'}) {
+	print STDERR "Temp file clearing is disabled\n";
+	return;
+	}
+if ($gconfig{'tempdir'} && !$gconfig{'tempdirdelete'}) {
+	print STDERR "Temp file clearing is not done for the custom directory $gconfig{'tempdir'}\n";
+	return;
+	}
+
+local $tempdir = &transname();
+$tempdir =~ s/\/([^\/]+)$//;
+if (!$tempdir || $tempdir eq "/") {
+	$tempdir = "/tmp/.webmin";
+	}
+
+local $cutoff = time() - $gconfig{'tempdelete_days'}*24*60*60;
+opendir(DIR, $tempdir);
+foreach my $f (readdir(DIR)) {
+	next if ($f eq "." || $f eq "..");
+	local @st = lstat("$tempdir/$f");
+	if ($st[9] < $cutoff) {
+		&unlink_file("$tempdir/$f");
+		}
+	}
+closedir(DIR);
+}
+
 1;
 
