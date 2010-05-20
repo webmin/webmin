@@ -409,6 +409,7 @@ else {
 			 'gid' => $_[0]->get_value("gidNumber"),
 			 'pass' => $_[0]->get_value("userPassword") || "",
 			 'members' => join(",", @members) || "",
+			 'desc' => $_[0]->get_value("description"),
 			);
 	return %group;
 	}
@@ -456,7 +457,9 @@ local @members = split(/,/, $_[0]->{'members'});
 return ( "cn" => $_[0]->{'group'},
 	 "gidNumber" => $_[0]->{'gid'},
 	 "userPassword" => $_[0]->{'pass'},
-	 @members ? ( "memberUid" => \@members ) : ( ) );
+	 @members ? ( "memberUid" => \@members ) : ( ),
+	 defined($_[0]->{'desc'}) ? ( "description" => $_[0]->{'desc'} ) : ( ),
+       );
 }
 
 # making_changes()

@@ -181,6 +181,7 @@ gedit_title2=Create Group
 gedit_details=Group Details
 gedit_group=Group name
 gedit_gid=Group ID
+gedit_desc=Description
 gedit_members=Members
 gedit_oneperline=(One per line)
 gedit_homedirs=Home directories

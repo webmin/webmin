@@ -2333,12 +2333,15 @@ sub groups_table
 {
 local ($groups, $formno, $noboxes, $links, $rightlinks) = @_;
 
-# Work out if any groups can be edited
+# Work out if any groups can be edited or have descriptions
 local $anyedit;
+local $anydesc;
 foreach my $g (@$groups) {
 	if (!$g->{'noedit'}) {
 		$anyedit = 1;
-		last;
+		}
+	if ($g->{'desc'}) {
+		$anydesc = 1;
 		}
 	}
 $anyedit = 0 if ($noboxes);
@@ -2359,6 +2362,7 @@ print &ui_columns_start([
 	$anyedit ? ( "" ) : ( ),
 	$text{'gedit_group'},
 	$text{'gedit_gid'},
+	$anydesc ? ( $text{'gedit_desc'} ) : ( ),
 	$text{'gedit_members'} ], 100, 0, \@tds);
 local $g;
 foreach $g (@$groups) {
@@ -2370,6 +2374,9 @@ foreach $g (@$groups) {
 		}
 	push(@cols, &group_link($g));
 	push(@cols, $g->{'gid'});
+	if ($anydesc) {
+		push(@cols, $g->{'desc'});
+		}
 	push(@cols, &html_escape($members));
 	if ($g->{'noedit'} || !$access{'gdelete'}) {
 		print &ui_columns_row(\@cols, \@tds);

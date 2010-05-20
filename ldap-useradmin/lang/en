@@ -71,7 +71,6 @@ gedit_dn=Group's LDAP DN
 gedit_return=group details
 gedit_cap=Group capabilities
 gedit_samba=Samba group?
-gedit_desc=Description
 
 gsave_egone=Group no longer exists!
 gsave_edelete=Failed to delete group from LDAP database : $1
