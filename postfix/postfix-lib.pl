@@ -1,29 +1,9 @@
 # postfix-lib.pl
-
 #
 # postfix-module by Guillaume Cottenceau <gc@mandrakesoft.com>,
 # for webmin by Jamie Cameron
-#
-# Copyright (c) 2000 by Mandrakesoft
-#
-# Permission to use, copy, modify, and distribute this software and its
-# documentation under the terms of the GNU General Public License is hereby 
-# granted. No representations are made about the suitability of this software 
-# for any purpose. It is provided "as is" without express or implied warranty.
-# See the GNU General Public License for more details.
-#
-#
-# Functions for managing the postfix module for Webmin.
-#
-# Written by G. Cottenceau for MandrakeSoft <gc@mandrakesoft.com>
-# This is free software under GPL license.
-#
 
 $POSTFIX_MODULE_VERSION = 5;
-
-#
-#
-# -------------------------------------------------------------------------
 
 BEGIN { push(@INC, ".."); };
 use WebminCore;
