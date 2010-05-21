@@ -49,3 +49,5 @@ Added a button to the compressed file extraction dialog to show the contents of 
 Fixed bugs that broke the file manager under the new Webmin API module.
 ---- Changes since 1.470 ----
 Fixed a bug that prevented setuid and setgid permissions from being changed.
+---- Changes since 1.510 ----
+Bug fixes to allow the File Manager module to be used via Webmin Servers Index or Cloudmin.

@@ -2,6 +2,11 @@
 # link.cgi
 # Forward the URL from path_info on to another webmin server
 
+if ($ENV{'PATH_INFO'} =~ /^\/(\d+)\/([a-zA-Z0-9\-\/]+)\.(jar|class|gif|png)$/) {
+	# Allow fetches of Java classes and images without a referer header,
+	# as Java sometimes doesn't provide these
+	$trust_unknown_referers = 1;
+	}
 require './servers-lib.pl';
 $ENV{'PATH_INFO'} =~ /^\/(\d+)(.*)$/ ||
 	&error("Bad PATH_INFO : $ENV{'PATH_INFO'}");

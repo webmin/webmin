@@ -65,6 +65,9 @@ public class FileManager extends Applet
 	// Full session cookie
 	String session;
 
+	// HTTP referer
+	String referer;
+
 	// Archive parameter
 	String archive;
 
@@ -110,6 +113,7 @@ public class FileManager extends Applet
 		}
 	trust = getParameter("trust");
 	session = getParameter("session");
+	referer = getDocumentBase().toString();
 	extra = getParameter("extra");
 	if (extra == null) extra = "";
 	images = getParameter("images");
@@ -443,6 +447,7 @@ public class FileManager extends Applet
 	{
 	if (session != null)
 		conn.setRequestProperty("Cookie", session);
+	conn.setRequestProperty("Referer", referer);
 	}
 
 	// Fill the multicolumn list with files from some directory
