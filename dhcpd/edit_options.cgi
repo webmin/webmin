@@ -148,7 +148,7 @@ if ($config{'dhcpd_version'} >= 3) {
 			$o->{'values'}->[2];
 		print "$text{'eopt_dtype'}\n";
 		my $a=scalar(@{$o->{'values'}})-1;
-		printf "<input name=dtype_$i size=10 value='%s'>\n",
+		printf "<input name=dtype_$i size=40 value='%s'>\n",
 			join(" ",@{$o->{'values'}}[4..$a]);
 		print "</td> </tr>\n";
 		}

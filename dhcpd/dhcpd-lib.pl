@@ -136,7 +136,8 @@ if ($str{'line'} && $lref->[$str{'line'}-1] =~ /^\s*(#|\/\/)\s*(.*)/) {
 while(1) {
 	# Add values between directive name and { or ;
 	$t = $_[0]->[++$i];
-	if ($t->[0] eq "{" || $t->[0] eq ";") { last; }
+	if (($t->[0] eq "{" && $str{'name'} ne 'option') ||
+	    $t->[0] eq ";") { last; }
 	elsif (!defined($t->[0])) { ${$_[1]} = $i; return undef; }
 	else { push(@vals, $t->[0]); push(@quotes, $t->[1]); }
 	push(@text, $t->[1] ? "\"$t->[0]\"" : $t->[0]);

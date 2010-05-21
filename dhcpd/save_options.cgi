@@ -98,12 +98,19 @@ if ($config{'dhcpd_version'} >= 3) {
 			&error(&text('sopt_edname', $in{"dname_$i"}));
 		$in{"dnum_$i"} =~ /^\d+$/ ||
 			&error(&text('sopt_ednum', $in{"dnum_$i"}));
-		$in{"dtype_$i"} =~ /^[a-z0-9\s\.\-\_]+$/i ||
+		if ($in{"dtype_$i"} =~ /^[a-z0-9\s\.\-\_]+$/i) {
+			@dtypes = ( $in{"dtype_$i"} );
+			}
+		elsif ($in{"dtype_$i"} =~ /^\{.*\}$/) {
+			@dtypes = split(/\s+/, $in{"dtype_$i"});
+			}
+		else {
 			&error(&text('sopt_edtype', $in{"dtype_$i"}));
+			}
 		push(@newdefs, { 'name' => 'option',
 				 'values' => [ $in{"dname_$i"}, "code",
 					       $in{"dnum_$i"}, "=",
-					       $in{"dtype_$i"}
+					       @dtypes,
 					     ] } );
 		}
 	&save_directive($client, \@defs, \@newdefs, $indent, 1);
