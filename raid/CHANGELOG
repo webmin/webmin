@@ -32,3 +32,4 @@ Added a button to remove a detached partition, thanks to Caspar Smit.
 Added support for creating EXT4 filesystems.
 ---- Changes since 1.510 ----
 Conversion from RAID 5 to 6 and vice versa is now possible, thanks to Caspar Smit.
+When a RAID array is being rebuilt, show the speed and time remaining, thanks to Farid Benamrouche.

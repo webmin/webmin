@@ -81,7 +81,9 @@ if ($raid->{'state'}) {
 
 # Rebuild percent
 if ($raid->{'rebuild'}) {
-	print &ui_table_row($text{'view_rebuild'}, $raid->{'rebuild'}." \%");
+	print &ui_table_row($text{'view_rebuild'},
+		$raid->{'rebuild'}." \% (".$raid->{'remain'}." min, ".
+		$raid->{'speed'}." KBytes/s)");
 	}
 
 

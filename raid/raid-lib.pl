@@ -168,6 +168,16 @@ else {
 				}
 			}
 		close(MDSTAT);
+		open(MDSTAT, $config{'mdstat'});
+		while(<MDSTAT>){
+			if (/^.*finish=(\S+)min/){
+				$md->{'remain'} = $1;
+				}
+			if (/^.*speed=(\S+)K/){
+				$md->{'speed'} = $1;
+				}
+			}
+		close(MDSTAT);
 		push(@get_raidtab_cache, $md);
 		}
 
