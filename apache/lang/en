@@ -633,6 +633,7 @@ mod_log_config_deflog=Default log format
 mod_log_config_default=Default
 mod_log_config_write=Write to
 mod_log_config_filprog=File or program
+mod_log_config_ifset=If set
 mod_log_config_file=File..
 mod_log_config_program=Program..
 mod_log_config_log=Access log files

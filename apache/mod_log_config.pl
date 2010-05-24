@@ -67,7 +67,7 @@ $rv = "<table border>\n".
       "<tr $tb> <td><b>$text{'mod_log_config_format'}</b></td> <td><b>$text{'mod_log_config_write'}</b></td> ".
       "<td><b>$text{'mod_log_config_filprog'}</b></td> ";
 if ($_[2]->{'version'} >= 1.305) {
-	$rv .= "<td><b>If set</b></td> ";
+	$rv .= "<td><b>$text{'mod_log_config_ifset'}</b></td> ";
 	}
 $rv .= "</tr>\n";
 @all = (@{$_[0]}, @{$_[1]});
