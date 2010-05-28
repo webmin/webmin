@@ -61,16 +61,13 @@ open(FILE, $file);
 @lines = <FILE>;
 close(FILE);
 
-print "<b>",&text('file_desc', "<tt>$file</tt>"),"</b><p>\n";
+print &text('file_desc', "<tt>$file</tt>"),"<p>\n";
 
-print "<form action=save_file.cgi method=post enctype=multipart/form-data>\n";
-print "<input type=hidden name=mode value=\"$in{'mode'}\">\n";
-print "<input type=hidden name=idx value=\"$in{'idx'}\">\n";
-print "<textarea name=text rows=20 cols=80>",
-	join("", @lines),"</textarea><p>\n";
-print "<input type=submit value=\"$text{'save'}\"> ",
-      "<input type=reset value=\"$text{'file_undo'}\">\n";
-print "</form>\n";
+print &ui_form_start("save_file.cgi", "form-data");
+print &ui_hidden("mode", $in{'mode'});
+print &ui_hidden("idx", $in{'idx'});
+print &ui_textarea("text", join("", @lines), 20, 80);
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer($return, $rmsg);
 

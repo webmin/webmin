@@ -17,6 +17,7 @@ if ($in{'mode'} eq 'aliases') {
 	    $access{'amax'} == 0 && $access{'apath'} eq '/' ||
 	    &error($text{'file_ealiases'});
 	$log = "alias";
+	$fmt = "alias";
 	}
 elsif ($in{'mode'} eq 'virtusers') {
 	require './virtusers-lib.pl';
@@ -28,6 +29,7 @@ elsif ($in{'mode'} eq 'virtusers') {
 	    $access{'vedit_2'} && $access{'vmax'} == 0 ||
 	    &error($text{'file_evirtusers'});
 	$log = "virtuser";
+	$fmt = "tab";
 	}
 elsif ($in{'mode'} eq 'mailers') {
 	require './mailers-lib.pl';
@@ -37,6 +39,7 @@ elsif ($in{'mode'} eq 'mailers') {
 	$post = "$config{'makemap_path'} $mdbmtype $mdbm <$file";
 	$access{'mailers'} || &error($text{'file_emailers'});
 	$log = "mailer";
+	$fmt = "tab";
 	}
 elsif ($in{'mode'} eq 'generics') {
 	require './generics-lib.pl';
@@ -46,6 +49,7 @@ elsif ($in{'mode'} eq 'generics') {
 	$post = "$config{'makemap_path'} $gdbmtype $gdbm <$file";
 	$access{'omode'} == 1 || &error($text{'file_egenerics'});
 	$log = "generic";
+	$fmt = "tab";
 	}
 elsif ($in{'mode'} eq 'domains') {
 	require './domain-lib.pl';
@@ -55,6 +59,7 @@ elsif ($in{'mode'} eq 'domains') {
 	$post = "$config{'makemap_path'} $ddbmtype $ddbm <$file";
 	$access{'domains'} || &error($text{'file_edomains'});
 	$log = "domain";
+	$fmt = "tab";
 	}
 elsif ($in{'mode'} eq 'access') {
 	require './access-lib.pl';
@@ -64,10 +69,29 @@ elsif ($in{'mode'} eq 'access') {
 	$post = "$config{'makemap_path'} $adbmtype $adbm <$file";
 	$access{'access'} || &error($text{'file_eaccess'});
 	$log = "access";
+	$fmt = "tab";
 	}
 else { &error($text{'file_emode'}); }
 
+# Validate format
 $in{'text'} =~ s/\r//g;
+@lines = split(/\n+/, $in{'text'});
+foreach my $l (@lines) {
+	$l =~ s/#.*$//;
+	next if ($l !~ /\S/);
+	if ($fmt eq "alias") {
+		$l =~ /^\s*(\S+):\s*(\S.*)$/ ||
+			&error(&text('file_ealias',
+				     "<tt>".&html_escape($l)."</tt>"));
+		}
+	elsif ($fmt eq "tab") {
+		$l =~ /^\s*(\S+)\s+(\S.*)$/ ||
+			&error(&text('file_etab',
+				     "<tt>".&html_escape($l)."</tt>"));
+		}
+	}
+
+# Write out the file
 &open_lock_tempfile(FILE, ">$file");
 &print_tempfile(FILE, $in{'text'});
 &close_tempfile(FILE);

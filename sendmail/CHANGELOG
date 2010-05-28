@@ -47,3 +47,5 @@ When flushing selected queued quarantined messages, the -qQ flag is added so tha
 ---- Changes since 1.490 ----
 If multiple alias files are defined, one can be selected when adding a new alias.
 Autoreply messages starting with <html> or <body> will now be sent using the text/html MIME type.
+---- Changes since 1.510 ----
+Added validation when manually editing the aliases and other map files.

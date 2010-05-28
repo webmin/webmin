@@ -602,6 +602,8 @@ file_eaccess=You are not allowed to edit the spam control file.
 file_ecannot=You are not allowed to edit this file
 file_emode=Unknown mode!
 file_err=Failed to edit file
+file_ealias=Invalid format for aliases file line : $1
+file_etab=Invalid format for map file line : $1
 
 acl_opts=Can edit sendmail options?
 acl_ports=Can edit network ports?
