@@ -4840,8 +4840,17 @@ foreach my $cron (@webmincrons) {
 		$run = 1;
 		}
 	elsif ($cron->{'mins'}) {
-		# Check if current time matches spec
+		# Check if current time matches spec, and we haven't run in the
+		# last minute
 		my @tm = localtime($now);
+		if (&matches_cron($cron->{'mins'}, $tm[1]) &&
+		    &matches_cron($cron->{'hours'}, $tm[2]) &&
+		    &matches_cron($cron->{'days'}, $tm[3]) &&
+		    &matches_cron($cron->{'months'}, $tm[4]+1) &&
+		    &matches_cron($cron->{'weekdays'}, $tm[6]) &&
+		    $now - $webmincron_last{$cron->{'id'}} > 60) {
+			$run = 1;
+			}
 		}
 
 	if ($run) {
@@ -4926,6 +4935,26 @@ if ($changed) {
 	}
 }
 
+# matches_cron(cron-spec, time)
+# Checks if some minute or hour matches some cron spec, which can be * or a list
+# of numbers.
+sub matches_cron
+{
+my ($spec, $tm) = @_;
+if ($spec eq '*') {
+	return 1;
+	}
+else {
+	foreach my $s (split(/,/, $spec)) {
+		if ($s == $tm ||
+		    $s =~ /^(\d+)\-(\d+)$/ && $tm >= $1 && $tm <= $2) {
+			return 1;
+			}
+		}
+	return 0;
+	}
+}
+
 # read_webmin_crons()
 # Read all scheduled webmin cron functions and store them in the @webmincrons
 # global list
@@ -4991,7 +5020,7 @@ foreach my $f (readdir(CRONS)) {
 			$cron{'months'} = '1';
 			$cron{'weekdays'} = '*';
 			}
-		else {
+		elsif ($cron{'special'}) {
 			print STDERR "Cron $1 invalid special time $cron{'special'}\n";
 			$broken = 1;
 			}
