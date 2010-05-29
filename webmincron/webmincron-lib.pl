@@ -30,7 +30,19 @@ with keys :
 
 =item arg0,arg1,etc.. - Strings to pass to the function as parameters
 
-=item interval - Number of seconds between runs
+=item interval - Number of seconds between runs (optional)
+
+=item mins - Minutes on which to run. Can be * or a comma-separated list
+
+=item hours - Hours on which to run
+
+=item days - Days of the month on which to run
+
+=item months - Months of the year on which to run
+
+=item weekdays - Days of week on which to run
+
+=item special - Can be 'hourly', 'daily', 'weekly' or 'monthly'
 
 =cut
 sub list_webmin_crons

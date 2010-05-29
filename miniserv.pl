@@ -4828,13 +4828,23 @@ sub execute_ready_webmin_crons
 my $now = time();
 my $changed = 0;
 foreach my $cron (@webmincrons) {
+	my $run = 0;
 	if (!$webmincron_last{$cron->{'id'}}) {
 		# If not ever run before, don't run right away
 		$webmincron_last{$cron->{'id'}} = $now;
 		$changed = 1;
 		}
-	elsif ($now - $webmincron_last{$cron->{'id'}} > $cron->{'interval'}) {
+	elsif ($cron->{'interval'} &&
+	       $now - $webmincron_last{$cron->{'id'}} > $cron->{'interval'}) {
 		# Older than interval .. time to run
+		$run = 1;
+		}
+	elsif ($cron->{'mins'}) {
+		# Check if current time matches spec
+		my @tm = localtime($now);
+		}
+
+	if ($run) {
 		print DEBUG "Running cron id=$cron->{'id'} ".
 			    "module=$cron->{'module'} func=$cron->{'func'}\n";
 		$webmincron_last{$cron->{'id'}} = $now;
@@ -4930,14 +4940,68 @@ foreach my $f (readdir(CRONS)) {
 		&read_file("$config{'webmincron_dir'}/$f", \%cron);
 		$cron{'id'} = $1;
 		my $broken = 0;
-		foreach my $n ('interval', 'module', 'func') {
+		foreach my $n ('module', 'func') {
 			if (!$cron{$n}) {
-				print STDERR "Cron $1 missing interval\n";
+				print STDERR "Cron $1 missing $n\n";
 				$broken = 1;
 				}
 			}
-		print DEBUG "adding cron id=$cron{'id'} module=$cron{'module'} func=$cron{'func'}\n";
-		push(@webmincrons, \%cron) if (!$broken);
+		if (!$cron{'interval'} && !$cron{'mins'} && !$cron{'special'}) {
+			print STDERR "Cron $1 missing any time spec\n";
+			$broken = 1;
+			}
+		if ($cron{'special'} eq 'hourly') {
+			# Run every hour on the hour
+			$cron{'mins'} = 0;
+			$cron{'hours'} = '*';
+			$cron{'days'} = '*';
+			$cron{'months'} = '*';
+			$cron{'weekdays'} = '*';
+			}
+		elsif ($cron{'special'} eq 'daily') {
+			# Run every day at midnight
+			$cron{'mins'} = 0;
+			$cron{'hours'} = '0';
+			$cron{'days'} = '*';
+			$cron{'months'} = '*';
+			$cron{'weekdays'} = '*';
+			}
+		elsif ($cron{'special'} eq 'monthly') {
+			# Run every month on the 1st
+			$cron{'mins'} = 0;
+			$cron{'hours'} = '0';
+			$cron{'days'} = '1';
+			$cron{'months'} = '*';
+			$cron{'weekdays'} = '*';
+			}
+		elsif ($cron{'special'} eq 'weekly') {
+			# Run every month on the 1st
+			$cron{'mins'} = 0;
+			$cron{'hours'} = '0';
+			$cron{'days'} = '*';
+			$cron{'months'} = '*';
+			$cron{'weekdays'} = '0';
+			}
+		elsif ($cron{'special'} eq 'yearly' ||
+		       $cron{'special'} eq 'annually') {
+			# Run every year on 1st january
+			$cron{'mins'} = 0;
+			$cron{'hours'} = '0';
+			$cron{'days'} = '1';
+			$cron{'months'} = '1';
+			$cron{'weekdays'} = '*';
+			}
+		else {
+			print STDERR "Cron $1 invalid special time $cron{'special'}\n";
+			$broken = 1;
+			}
+		if ($cron{'special'}) {
+			delete($cron{'special'});
+			}
+		if (!$broken) {
+			print DEBUG "adding cron id=$cron{'id'} module=$cron{'module'} func=$cron{'func'}\n";
+			push(@webmincrons, \%cron);
+			}
 		}
 	}
 }

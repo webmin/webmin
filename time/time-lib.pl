@@ -67,6 +67,14 @@ if ($_[1]) {
 return undef;
 }
 
+# sync_time_cron()
+# Called from webmin cron to sync from the configured server
+sub sync_time_cron
+{
+my $err = &sync_time($config{'timeserver'}, $config{'timeserver_hardware'});
+print STDERR $err;
+}
+
 sub has_timezone
 {
 return 0 if (!defined(&list_timezones));
