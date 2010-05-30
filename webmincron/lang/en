@@ -1,0 +1,18 @@
+edit_mins=Minutes
+edit_hours=Hours
+edit_days=Days
+edit_months=Months
+edit_weekdays=Weekdays
+edit_all=All
+edit_selected=Selected ..
+edit_run=Run Now
+edit_clone=Clone Job
+edit_return=cron job
+edit_special1=Simple schedule ..
+edit_special0=Times and dates selected below ..
+edit_special_hourly=Hourly
+edit_special_daily=Daily (at midnight)
+edit_special_weekly=Weekly (on Sunday)
+edit_special_monthly=Monthly (on the 1st)
+edit_special_yearly=Yearly (on 1st Jan)
+

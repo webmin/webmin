@@ -63,28 +63,16 @@ if( $in{ 'action' } eq $text{ 'action_apply' } )
   &unlock_file($module_config_file);
 
   # Create, update or delete the syncing cron job
-  &foreign_require("cron", "cron-lib.pl");
-  $oldjob = $job = &find_cron_job();
-  $job ||= { 'command' => $cron_cmd,
-	     'active' => 1,
-	     'user' => 'root' };
-  &cron::parse_times_input($job, \%in) if ($in{'sched'});
-  &lock_file(&cron::cron_file($job));
-  &cron::create_wrapper($cron_cmd, $module_name, "sync.pl");
-  if ($in{'sched'} && $oldjob) {
-	# Update job
-	&cron::change_cron_job($job);
+  $job = &find_webmin_cron_job();
+  if ($in{'sched'}) {
+	$job ||= { 'module' => $module_name,
+		     'func' => 'sync_time_cron' };
+	&webmincron::parse_times_input($job, \%in);
+	&webmincron::create_webmin_cron($job);
 	}
-  elsif ($in{'sched'} && !$oldjob) {
-	# Create wrapper script and job
-	&cron::create_cron_job($job);
+  elsif ($job) {
+	&webmincron::delete_webmin_cron($job);
 	}
-  elsif (!$in{'sched'} && $oldjob) {
-	# Delete job
-	&cron::delete_cron_job($job);
-	}
-  &unlock_file(&cron::cron_file($job));
-
   &webmin_log("remote", $in{'action'} eq $text{'action_timeserver_sys'} ?  "date" : "hwclock", $rawtime, \%in);
   $mode = "sync";
 }

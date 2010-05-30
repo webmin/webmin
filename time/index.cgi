@@ -161,8 +161,7 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 		}
 
 	# Show schedule input
-	&foreign_require("cron", "cron-lib.pl");
-	$job = &find_cron_job();
+	$job = &find_webmin_cron_job();
 	print &ui_table_row($text{'index_sched'},
 		&ui_radio("sched", $job ? 1 : 0,
 		  [ [ 0, $text{'no'} ], [ 1, $text{'index_schedyes'} ] ]));
@@ -172,9 +171,8 @@ if ( ( !$access{ 'sysdate' } && &has_command( "date" ) || !$access{ 'hwdate' } &
 		   'days' => '*',
 		   'months' => '*',
 		   'weekdays' => '*' };
-	print &ui_table_row(undef, "<table border width=100%>".
-		&capture_function_output(\&cron::show_times_input, $job).
-		"</table>", 2);
+	print &ui_table_row(undef,
+		&webmincron::show_times_input($job), 2);
 
 	print &ui_table_end();
 	print &ui_form_end([ [ "action", $text{'index_sync'} ] ]);

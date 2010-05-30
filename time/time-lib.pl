@@ -8,6 +8,7 @@ $cron_cmd = "$module_config_directory/sync.pl";
 if ($config{'zone_style'}) {
 	do "$config{'zone_style'}-lib.pl";
 	}
+&foreign_require("webmincron");
 
 sub find_cron_job
 {
@@ -16,6 +17,11 @@ local @jobs = &cron::list_cron_jobs();
 local ($job) = grep { $_->{'command'} eq $cron_cmd &&
 		      $_->{'user'} eq 'root' } @jobs;
 return $job;
+}
+
+sub find_webmin_cron_job
+{
+return &webmincron::find_webmin_cron($module_name, 'sync_time_cron');
 }
 
 # sync_time(server, hardware-too)
