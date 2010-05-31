@@ -20,3 +20,5 @@ Re-wrote all user interface code to use Webmin's new UI library.
 The default NTP sync time is now set randomly instead of at midnight, and any existing automatic sync done at midnight is changed to a random time. This reduces load on public NTP servers.
 ---- Changes since 1.480 ----
 Support for setting the hardware clock is now detected automatically on Linux.
+---- Changes since 1.510 ----
+Switched background time syncing to use the new Webmin Cron service.

@@ -5,7 +5,6 @@ Functions for creating and listing Webmin scheduled functions.
 =cut
 
 # XXX UI
-# XXX support cron-style time specs
 # XXX make sure temp files are cleaned up
 # XXX switch all cron jobs at install time
 # XXX delete jobs when un-installing modules
