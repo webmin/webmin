@@ -327,13 +327,13 @@ else {
 $_[0]->{'remount'} = $in{'remount'};
 }
 
-# execute_dump(&dump, filehandle, escape, background-mode)
+# execute_dump(&dump, filehandle, escape, background-mode, [time])
 # Executes a dump and displays the output
 sub execute_dump
 {
 local $fh = $_[1];
 local ($cmd);
-($flag, $hfile) = &dump_flag($_[0]);
+($flag, $hfile) = &dump_flag($_[0], $_[4]);
 local $tapecmd = $_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar' ? $multi_cmd :
 		 $_[0]->{'notape'} ? undef :
 		 $_[0]->{'multi'} ? undef :
@@ -456,14 +456,14 @@ else {
 return ($flag, $hfile);
 }
 
-# verify_dump(&dump, filehandle, escape, background-mode)
+# verify_dump(&dump, filehandle, escape, background-mode, [time])
 # Verifies a dump, returning 1 if OK and 0 if not
 sub verify_dump
 {
 # Build verify command
 local $fh = $_[1];
 local $vcmd;
-local ($flag, $hfile) = &dump_flag($_[0]);
+local ($flag, $hfile) = &dump_flag($_[0], $_[4]);
 if ($_[0]->{'fs'} eq "tar") {
 	$vcmd = "tar -t -v";
 	$vcmd .= " -z" if ($_[0]->{'gzip'} == 1);

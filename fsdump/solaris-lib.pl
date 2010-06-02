@@ -81,7 +81,7 @@ $_[0]->{'level'} = $in{'level'};
 $_[0]->{'offline'} = $in{'offline'};
 }
 
-# execute_dump(&dump, filehandle, escape)
+# execute_dump(&dump, filehandle, escape, background-mode, [time])
 # Executes a dump and displays the output
 sub execute_dump
 {
@@ -92,13 +92,13 @@ $cmd .= "v" if ($_[0]->{'verify'});
 $cmd .= "o" if ($_[0]->{'offline'});
 if ($_[0]->{'huser'}) {
 	$cmd .= "f '$_[0]->{'huser'}\@$_[0]->{'host'}:".
-		&date_subs($_[0]->{'hfile'})."'";
+		&date_subs($_[0]->{'hfile'}, $_[4])."'";
 	}
 elsif ($_[0]->{'host'}) {
-	$cmd .= "f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'})."'";
+	$cmd .= "f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'}, $_[4])."'";
 	}
 else {
-	$cmd .= "f '".&date_subs($_[0]->{'file'})."'";
+	$cmd .= "f '".&date_subs($_[0]->{'file'}, $_[4])."'";
 	}
 $cmd .= " $_[0]->{'extra'}" if ($_[0]->{'extra'});
 local @dirs = $_[0]->{'tabs'} ? split(/\t+/, $_[0]->{'dir'})

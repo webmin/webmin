@@ -111,7 +111,7 @@ $_[0]->{'overwrite'} = $in{'overwrite'};
 $_[0]->{'erase'} = $in{'erase'};
 }
 
-# execute_dump(&dump, filehandle, escape)
+# execute_dump(&dump, filehandle, escape, background-mode, [time])
 # Executes a dump and displays the output
 sub execute_dump
 {
@@ -119,13 +119,13 @@ local $fh = $_[1];
 local ($cmd, $flag);
 if ($_[0]->{'huser'}) {
 	$flag = " -f '$_[0]->{'huser'}\@$_[0]->{'host'}:".
-		&date_subs($_[0]->{'hfile'})."'";
+		&date_subs($_[0]->{'hfile'}, $_[4])."'";
 	}
 elsif ($_[0]->{'host'}) {
-	$flag = " -f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'})."'";
+	$flag = " -f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'}, $_[4])."'";
 	}
 else {
-	$flag = " -f '".&date_subs($_[0]->{'file'})."'";
+	$flag = " -f '".&date_subs($_[0]->{'file'}, $_[4])."'";
 	}
 $cmd = "xfsdump -l $_[0]->{'level'}";
 $cmd .= $flag;

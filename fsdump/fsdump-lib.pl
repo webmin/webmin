@@ -99,13 +99,13 @@ $fs2 = "ext2" if ($fs2 eq "ext3");
 return lc($fs1) eq lc($fs2);
 }
 
-# date_subs(string)
+# date_subs(string, [time])
 sub date_subs
 {
 if ($config{'date_subs'}) {
 	eval "use POSIX";
 	eval "use posix" if ($@);
-	local @tm = localtime(time());
+	local @tm = localtime($_[1] || time());
 	&clear_time_locale();
 	local $rv = strftime($_[0], @tm);
 	&reset_time_locale();

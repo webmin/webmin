@@ -166,7 +166,7 @@ else {
 	}
 }
 
-# execute_dump(&dump, filehandle, escape)
+# execute_dump(&dump, filehandle, escape, background-mode, [time])
 # Executes a dump and displays the output
 sub execute_dump
 {
@@ -175,13 +175,13 @@ local ($cmd, $flags);
 
 if ($_[0]->{'huser'}) {
 	$flags = "-f '$_[0]->{'huser'}\@$_[0]->{'host'}:".
-		&date_subs($_[0]->{'hfile'})."'";
+		&date_subs($_[0]->{'hfile'}, $_[4])."'";
 	}
 elsif ($_[0]->{'host'}) {
-	$flags = "-f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'})."'";
+	$flags = "-f '$_[0]->{'host'}:".&date_subs($_[0]->{'hfile'}, $_[4])."'";
 	}
 else {
-	$flags = "-f '".&date_subs($_[0]->{'file'})."'";
+	$flags = "-f '".&date_subs($_[0]->{'file'}, $_[4])."'";
 	}
 local $tapecmd = $_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar' ? $multi_cmd :
 		 $_[0]->{'multi'} ? undef :

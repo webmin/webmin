@@ -42,7 +42,8 @@ else {
 		}
 	else {
 		# Do the dump
-		$ok = &execute_dump($dump, STDOUT, 1, 0);
+		$now = time();
+		$ok = &execute_dump($dump, STDOUT, 1, 0, $now);
 		print "</pre>\n";
 		if (!$bok) {
 			print "<b>$text{'backup_afterfailed'}</b><p>\n";
@@ -52,7 +53,7 @@ else {
 			if ($dump->{'reverify'}) {
 				print "<b>$text{'backup_reverify'}</b><p>\n";
 				print "<pre>";
-				$ok = &verify_dump($dump, STDOUT, 1, 0);
+				$ok = &verify_dump($dump, STDOUT, 1, 0, $now);
 				print "</pre>";
 				}
 			if ($ok) {

@@ -48,14 +48,15 @@ else {
 		}
 	else {
 		# Do the backup
-		$ok = &execute_dump($dump, OUT, 0, 1);
+		$now = time();
+		$ok = &execute_dump($dump, OUT, 0, 1, $now);
 
 		# Re-update the status file
 		if ($ok) {
 			# Worked .. but verify if asked
 			if ($dump->{'reverify'}) {
 				print OUT "\n$text{'email_verify'}\n";
-				$ok = &verify_dump($dump, OUT, 0, 1);
+				$ok = &verify_dump($dump, OUT, 0, 1, $now);
 				}
 			if ($ok) {
 				$status{'status'} = 'complete';
