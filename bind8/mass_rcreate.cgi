@@ -78,7 +78,7 @@ foreach $zi (@zones) {
 	# Check if a record with the same name and value exists
 	($clash) = grep { $_->{'name'} eq $fullname &&
 			  $_->{'type'} eq $in{'type'} &&
-			  join(" ", @{$_->{'values'}} eq $in{'value'} } @recs;
+			  join(" ", @{$_->{'values'}}) eq $in{'value'} } @recs;
 	if ($clash) {
 		print &text('rmass_eclash2',
 		    "<tt>".join(" ", @{$clash->{'values'}})."</tt>"),"<p>\n";
