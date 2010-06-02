@@ -808,6 +808,14 @@ if [ "$nopostinstall" = "" ]; then
 	echo ""
 fi
 
+# Enable background collection
+if [ "$upgrading" != 1 ]; then
+	echo "Enabling background status collection .."
+	$config_dir/system-status/enable-collection.pl 5
+	echo "..done"
+	echo ""
+fi
+
 # Run package-defined post-install script
 if [ -r "$srcdir/setup-post.sh" ]; then
 	. "$srcdir/setup-post.sh"
