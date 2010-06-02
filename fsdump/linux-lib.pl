@@ -350,9 +350,12 @@ if ($_[0]->{'fs'} eq 'tar') {
 	$cmd .= " -M" if ($_[0]->{'multi'});
 	$cmd .= " -h" if ($_[0]->{'links'});
 	$cmd .= " --one-file-system" if ($_[0]->{'xdev'});
-	$cmd .= " -F \"$tapecmd $_[0]->{'id'}\"" if (!$_[0]->{'gzip'} && $tapecmd);
-	$cmd .= " --rsh-command=".quotemeta($_[0]->{'rsh'}) if ($_[0]->{'rsh'});
-	$cmd .= " --rmt-command=".quotemeta($_[0]->{'rmt'}) if ($_[0]->{'rmt'});
+	$cmd .= " -F \"$tapecmd $_[0]->{'id'}\""
+		if (!$_[0]->{'gzip'} && $tapecmd);
+	$cmd .= " --rsh-command=".quotemeta($_[0]->{'rsh'})
+		if ($_[0]->{'rsh'} && $_[0]->{'host'});
+	$cmd .= " --rmt-command=".quotemeta($_[0]->{'rmt'})
+		if ($_[0]->{'rmt'});
 	if ($_[0]->{'exclude'}) {
 		foreach my $e (&split_quoted_string($_[0]->{'exclude'})) {
 			$cmd .= " --exclude ".quotemeta($e);
@@ -479,7 +482,8 @@ else {
 	}
 $vcmd .= $flag;
 if ($_[0]->{'fs'} eq "tar") {
-	$vcmd .= " --rsh-command=$_[0]->{'rsh'}" if ($_[0]->{'rsh'});
+	$vcmd .= " --rsh-command=$_[0]->{'rsh'}"
+		if ($_[0]->{'rsh'} && $_[0]->{'host'});
 	}
 elsif ($_[0]->{'fs'} ne "xfs") {
 	if ($_[0]->{'rsh'}) {
