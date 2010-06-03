@@ -1689,6 +1689,7 @@ sub split_addresses
 {
 local (@rv, $str = $_[0]);
 while(1) {
+	$str =~ s/\\"/\0/g;
 	if ($str =~ /^[\s,]*(([^<>\(\)\s]+)\s+\(([^\(\)]+)\))(.*)$/) {
 		# An address like  foo@bar.com (Fooey Bar)
 		push(@rv, [ $2, $3, $1 ]);
@@ -1707,8 +1708,11 @@ while(1) {
 		#		  <foo@bar.com>
 		#		  <group name>
 		#		  foo@bar.com
-		push(@rv, [ $3, $2 eq "," ? "" : $2, $1 ]);
-		$str = $4;
+		my ($all, $name, $email, $rest) = ($1, $2, $3, $4);
+		$all =~ s/\0/\\"/g;
+		$name =~ s/\0/"/g;
+		push(@rv, [ $email, $name eq "," ? "" : $name, $all ]);
+		$str = $rest;
 		}
 	else {
 		last;
