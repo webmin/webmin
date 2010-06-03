@@ -14,3 +14,5 @@ test_always=0
 test_apachectl=1
 auto_mods=1
 show_names=0
+defines_file=/etc/conf.d/apache2
+defines_name=APACHE2_OPTS
