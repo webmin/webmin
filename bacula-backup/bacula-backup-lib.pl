@@ -1373,10 +1373,10 @@ if ($in{'tls_enable'} eq 'yes' &&
 	&error($text{'tls_ecerts'});
 	}
 
-if (!$in{'tls_cert_def'}) {
+if (!$in{'tls_key_def'}) {
 	&foreign_require("webmin", "webmin-lib.pl");
-	&webmin::validate_key_cert($in{'tls_cert'},
-			$in{'tls_key_def'} ? undef : $in{'tls_key'});
+	&webmin::validate_key_cert($in{'tls_key'},
+			$in{'tls_cert_def'} ? undef : $in{'tls_cert'});
 	}
 
 }
