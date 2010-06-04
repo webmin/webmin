@@ -301,6 +301,10 @@ user_priv28=Create User
 user_err=Failed to save user
 user_euser=Missing or invalid username
 user_ehost=Missing or invalid allow host(s)
+user_ssl=Required certificate type
+user_ssl_none=None needed
+user_ssl_ssl=SSL
+user_ssl_x509=X509
 
 dbs_title=Database Permissions
 dbs_db=Databases

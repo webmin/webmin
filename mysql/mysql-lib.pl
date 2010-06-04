@@ -218,13 +218,15 @@ local (%tp, $i);
 for($i=0; $i<@{$s->{'titles'}}; $i++) {
 	$tp{lc($s->{'titles'}->[$i])} = $i;
 	}
+my $i = 0;
 foreach $r (@{$s->{'data'}}) {
 	push(@rv, { 'field' => $r->[$tp{'field'}],
 		    'type' => $r->[$tp{'type'}],
 		    'null' => $r->[$tp{'null'}],
 		    'key' => $r->[$tp{'key'}],
 		    'default' => $r->[$tp{'default'}],
-		    'extra' => $r->[$tp{'extra'}] });
+		    'extra' => $r->[$tp{'extra'}],
+		    'index' => $i++ });
 	}
 return @rv;
 }

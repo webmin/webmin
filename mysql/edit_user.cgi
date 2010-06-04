@@ -35,6 +35,8 @@ else {
 	}
 print &ui_table_start($text{'user_header'}, undef, 2);
 %sizes = &table_field_sizes($master_db, "user");
+%fieldmap = map { $_->{'field'}, $_->{'index'} }
+		&table_structure($master_db, "user");
 
 # Username field
 print &ui_table_row($text{'user_user'},
@@ -61,6 +63,16 @@ for($i=3; $i<=&user_priv_cols()+3-1; $i++) {
 	}
 print &ui_table_row($text{'user_perms'},
 	&ui_select("perms", \@sel, \@opts, 10, 1, 1));
+
+# SSL needed?
+if ($mysql_version >= 5 && $fieldmap{'ssl_type'}) {
+	print &ui_table_row($text{'user_ssl'},
+		&ui_select("ssl_type", $u->[$fieldmap{'ssl_type'}],
+			[ [ '', $text{'user_ssl_none'} ],
+			  [ 'ANY', $text{'user_ssl_ssl'} ],
+			  [ 'X509', $text{'user_ssl_x509'} ] ],
+			1, 0, 1));
+	}
 
 print &ui_table_end();
 print &ui_form_end([ $in{'new'} ? ( [ undef, $text{'create'} ] )

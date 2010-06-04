@@ -57,6 +57,13 @@ else {
 			"update user set password = NULL ".
 			"where user = '$user' and host = '$host'");
 		}
+
+	# Set SSL fields
+	if ($mysql_version >= 5 && defined($in{'ssl_type'})) {
+		&execute_sql_logged($master_db,
+			"update user set ssl_type = '$in{'ssl_type'}' ".
+			"where user = '$user' and host = '$host'");
+		}
 	}
 &execute_sql_logged($master_db, 'flush privileges');
 if (!$in{'delete'} && !$in{'new'} &&
