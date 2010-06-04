@@ -16,8 +16,11 @@ print &ui_columns_start([ "",
 			  $text{'users_user'},
 			  $text{'users_host'},
 			  $text{'users_pass'},
+			  $mysql_version >= 5 ? ( $text{'users_ssl'} ) : ( ),
 			  $text{'users_perms'} ], 100, 0, \@tds);
 $d = &execute_sql_safe($master_db, "select * from user order by user");
+%fieldmap = map { $_->{'field'}, $_->{'index'} }
+		&table_structure($master_db, "user");
 $i = 0;
 foreach $u (@{$d->{'data'}}) {
 	local @cols;
@@ -27,6 +30,10 @@ foreach $u (@{$d->{'data'}}) {
 	push(@cols, $u->[0] eq '' || $u->[0] eq '%' ?
 		      $text{'user_any'} : &html_escape($u->[0]));
 	push(@cols, &html_escape($u->[2]));
+	if ($mysql_version >= 5) {
+		$ssl = $u->[$fieldmap{'ssl_type'}];
+		push(@cols, $text{'user_ssl_'.lc($ssl)} || $ssl);
+		}
 	local @priv;
 	for($j=3; $j<=&user_priv_cols()+3-1; $j++) {
 		push(@priv, $text{"users_priv$j"}) if ($u->[$j] eq 'Y');

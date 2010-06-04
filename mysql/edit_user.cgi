@@ -67,9 +67,9 @@ print &ui_table_row($text{'user_perms'},
 # SSL needed?
 if ($mysql_version >= 5 && $fieldmap{'ssl_type'}) {
 	print &ui_table_row($text{'user_ssl'},
-		&ui_select("ssl_type", $u->[$fieldmap{'ssl_type'}],
-			[ [ '', $text{'user_ssl_none'} ],
-			  [ 'ANY', $text{'user_ssl_ssl'} ],
+		&ui_select("ssl_type", uc($u->[$fieldmap{'ssl_type'}]),
+			[ [ '', $text{'user_ssl_'} ],
+			  [ 'ANY', $text{'user_ssl_any'} ],
 			  [ 'X509', $text{'user_ssl_x509'} ] ],
 			1, 0, 1));
 	}

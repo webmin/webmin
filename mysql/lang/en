@@ -259,6 +259,7 @@ users_sync_sel=Specific host
 users_delete=Delete Selected
 users_derr=Failed to delete users
 users_enone=No users selected
+users_ssl=Certificate
 
 user_title1=Create User
 user_title2=Edit User
@@ -302,8 +303,8 @@ user_err=Failed to save user
 user_euser=Missing or invalid username
 user_ehost=Missing or invalid allow host(s)
 user_ssl=Required certificate type
-user_ssl_none=None needed
-user_ssl_ssl=SSL
+user_ssl_=None
+user_ssl_any=SSL
 user_ssl_x509=X509
 
 dbs_title=Database Permissions
