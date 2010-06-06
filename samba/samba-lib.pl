@@ -629,7 +629,7 @@ if ($has_pdbedit) {
 		}
 	}
 else {
-	if (!$_[0]->{'oldname'} || _[0]->{'oldname'} eq $_[0]->{'name'}) {
+	if (!$_[0]->{'oldname'} || $_[0]->{'oldname'} eq $_[0]->{'name'}) {
 		# Try using smbpasswd command
 		local $out = &backquote_logged(
 			"cd / && $config{'samba_password_program'} ".
