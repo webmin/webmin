@@ -363,6 +363,8 @@ log_gbatch=Executed group batch file $1
 log_gbatch_l=Executed group batch file $1 ($2 created, $3 modified, $4 deleted)
 log_ugbatch=Executed uploaded group batch file
 log_ugbatch_l=Executed uploaded group batch file ($1 created, $2 modified, $3 deleted)
+log_delete_users=Deleted $1 users
+log_delete_groups=Deleted $1 groups
 
 batch_title=Execute Batch File
 batch_ecannot=You cannot use the batch file form

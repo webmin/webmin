@@ -51,5 +51,8 @@ elsif ($action eq 'batch' || $action eq 'gbatch') {
 			     $p->{'created'}, $p->{'modified'},$p->{'deleted'});
 		}
 	}
+elsif ($type eq 'users' || $type eq 'groups') {
+	return &text('log_'.$action.'_'.$type, $object);
+	}
 return undef;
 }
