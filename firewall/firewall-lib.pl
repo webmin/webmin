@@ -73,15 +73,20 @@ while(<FILE>) {
 		# New chain definition
 		$table->{'defaults'}->{$2} = '-';
 		}
-	elsif (/^(\[[^\]]*\]\s+)?-A\s+(\S+)(.*)/) {
+	elsif (/^(\[[^\]]*\]\s+)?-(AI)\s+(\S+)(.*)/) {
 		# Rule definition
 		local $rule = { 'line' => $lnum,
 				'eline' => $lnum,
 				'index' => scalar(@{$table->{'rules'}}),
 				'cmt' => $cmt,
-				'chain' => $2,
-				'args' => $3 };
-		push(@{$table->{'rules'}}, $rule);
+				'chain' => $3,
+				'args' => $4 };
+		if ($2 eq "I") {
+			unshift(@{$table->{'rules'}}, $rule);
+			}
+		else {
+			push(@{$table->{'rules'}}, $rule);
+			}
 
 		# Parse arguments
 		foreach $a (@known_args) {
