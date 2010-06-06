@@ -584,12 +584,22 @@ if ($has_pdbedit) {
 	$? && &error("$config{'pdbedit'} failed : <pre>$out</pre>");
 	}
 else {
-	# Add direct to Samba password file
-	&open_tempfile(PASS, ">>$config{'smb_passwd'}");
-	&print_tempfile(PASS, &user_string($_[0]));
-	&close_tempfile(PASS);
-	chown(0, 0, $config{'smb_passwd'});
-	chmod(0600, $config{'smb_passwd'});
+	# Try using smbpasswd -a
+	local $out = &backquote_logged(
+		"cd / && $config{'samba_password_program'} ".
+		"-s $config{'smb_conf'} -a ".
+		(&indexof("D", @{$_[0]->{'opts'}}) >= 0 ? "-d " : "").
+		(&indexof("N", @{$_[0]->{'opts'}}) >= 0 ? "-n " : "").
+		(&indexof("W", @{$_[0]->{'opts'}}) >= 0 ? "-m " : "").
+		quotemeta($_[0]->{'name'}));
+	if ($?) {
+		# Add direct to Samba password file
+		&open_tempfile(PASS, ">>$config{'smb_passwd'}");
+		&print_tempfile(PASS, &user_string($_[0]));
+		&close_tempfile(PASS);
+		chown(0, 0, $config{'smb_passwd'});
+		chmod(0600, $config{'smb_passwd'});
+		}
 	}
 }
 
@@ -619,8 +629,19 @@ if ($has_pdbedit) {
 		}
 	}
 else {
-	# Directly update the Samba password file
-	&replace_file_line($config{'smb_passwd'}, $_[0]->{'line'}, &user_string($_[0]));
+	if (!$_[0]->{'oldname'} || _[0]->{'oldname'} eq $_[0]->{'name'}) {
+		# Try using smbpasswd command
+		local $out = &backquote_logged(
+			"cd / && $config{'samba_password_program'} ".
+			"-s $config{'smb_conf'} ".
+			(&indexof("D", @{$_[0]->{'opts'}}) >= 0 ? "-d "
+								: "-e ").
+			quotemeta($_[0]->{'name'}));
+		}
+
+	# Also directly update the Samba password file
+	&replace_file_line($config{'smb_passwd'}, $_[0]->{'line'},
+			   &user_string($_[0]));
 	}
 }
 
@@ -636,8 +657,14 @@ if ($has_pdbedit) {
 	$? && &error("$config{'pdbedit'} failed : <pre>$out</pre>");
 	}
 else {
-	# Just remove from the Samba password file
-	&replace_file_line($config{'smb_passwd'}, $_[0]->{'line'});
+	# Try the smbpasswd command
+	local $out = &backquote_logged(
+		"cd / && $config{'samba_password_program'} ".
+		"-s $config{'smb_conf'} -x ".quotemeta($_[0]->{'name'}));
+	if ($?) {
+		# Just remove from the Samba password file
+		&replace_file_line($config{'smb_passwd'}, $_[0]->{'line'});
+		}
 	}
 }
 
