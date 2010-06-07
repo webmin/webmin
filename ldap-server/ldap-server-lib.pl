@@ -633,7 +633,6 @@ sub parse_ldap_access
 local ($a) = @_;
 local @v = @{$a->{'values'}};
 local $p = { };
-print STDERR "v=",join("/", @v),"\n";
 shift(@v);			# Remove to or {x}to
 if ($v[0] !~ /^(filter|attrs)=/) {
 	$p->{'what'} = shift(@v);	# Object
