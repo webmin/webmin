@@ -1736,9 +1736,7 @@ if ($config{'link_dir'}) {
 	local $short = $file;
 	$short =~ s/^.*\///;
 	local $linksrc = "$config{'link_dir'}/$short";
-	&lock_file($linksrc);
-	unlink($linksrc);
-	&unlock_file($linksrc);
+	&unlink_logged($linksrc);
 	}
 }
 

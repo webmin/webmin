@@ -5118,6 +5118,7 @@ return 1 if (&is_readonly_mode());
 my $rv = 1;
 my $err;
 foreach my $f (@_) {
+	&unflush_file_lines($f);
 	my $realf = &translate_filename($f);
 	&webmin_debug_log('UNLINK', $realf) if ($gconfig{'debug_what_ops'});
 	if (-d $realf) {
