@@ -2530,10 +2530,12 @@ if (!$text{'select_part'}) {
 		$text{$k} = $flang{$k} if ($k =~ /^select_/);
 		}
 	}
-return $_[0] =~ /^\/dev\/(s|h)d([a-z]+)(\d+)$/ ?
-	&text('select_part', $1 eq 's' ? 'SCSI' : 'IDE', uc($2), "$3") :
-       $_[0] =~ /^\/dev\/(s|h)d([a-z]+)$/ ?
-	&text('select_device', $1 eq 's' ? 'SCSI' : 'IDE', uc($2)) :
+return $_[0] =~ /^\/dev\/(s|h|xv)d([a-z]+)(\d+)$/ ?
+	&text('select_part', $1 eq 's' ? 'SCSI' : $1 eq 'xv' ? 'Xen' : 'IDE',
+			     uc($2), "$3") :
+       $_[0] =~ /^\/dev\/(s|h|xv)d([a-z]+)$/ ?
+	&text('select_device', $1 eq 's' ? 'SCSI' : $1 eq 'xv' ? 'Xen' : 'IDE',
+			       uc($2)) :
        $_[0] =~ /rd\/c(\d+)d(\d+)p(\d+)$/ ?
 	&text('select_mpart', "$1", "$2", "$3") :
        $_[0] =~ /ida\/c(\d+)d(\d+)p(\d+)$/ ?

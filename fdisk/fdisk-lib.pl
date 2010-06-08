@@ -242,6 +242,11 @@ while(<FDISK>) {
 			$disk->{'desc'} = &text('select_device', 'IDE', uc($1));
 			$disk->{'type'} = 'ide';
 			}
+		elsif ($disk->{'device'} =~ /\/xvd([a-z]+)$/) {
+			# Xen virtual disk
+			$disk->{'desc'} = &text('select_device', 'Xen', uc($1));
+			$disk->{'type'} = 'ide';
+			}
 		elsif ($disk->{'device'} =~ /\/(scsi\/host(\d+)\/bus(\d+)\/target(\d+)\/lun(\d+)\/disc)/) {
 			# New complete SCSI disk specification
 			$disk->{'host'} = $2;
