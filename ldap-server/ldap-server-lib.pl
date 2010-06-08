@@ -258,13 +258,24 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 		s/\r|\n//g;
 		s/^#.*$//;
 		if (/^(\S+):\s*(.*)/) {
+			# Start of a directive
 			local $dir = { 'file' => $file,
 				       'line' => $lnum,
+				       'eline' => $lnum,
 				       'class' => $cls,
 				       'name' => $1 };
 			local $value = $2;
 			$dir->{'values'} = [ &split_quoted_string($value) ];
+			$dir->{'value'} = $value;
 			push(@rv, $dir);
+			}
+		elsif (/^(\s+\S.*)$/ && @rv) {
+			# Continuation line
+			local $dir = $rv[$#rv];
+			$dir->{'value'} .= $1;
+			$dir->{'values'} =
+				[ &split_quoted_string($dir->{'value'}) ];
+			$dir->{'eline'} = $lnum;
 			}
 		$lnum++;
 		}
@@ -418,6 +429,8 @@ else {
 local $lref = &read_file_lines($file);
 for(my $i=0; $i<@old || $i<@values; $i++) {
 	local ($line, @unqvalues, @qvalues, $len);
+	local $oldlen = defined($old[$i]) ?
+		$old[$i]->{'eline'} - $old[$i]->{'line'} + 1 : undef;
 	if (defined($values[$i])) {
 		# Work out new line
 		@unqvalues = ref($values[$i]) eq 'ARRAY' ?
@@ -433,15 +446,25 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 		if (&indexof($values[$i], @$conf) < 0) {
 			$old[$i]->{'values'} = \@unqvalues;
 			}
+		$old[$i]->{'eline'} = $old[$i]->{'line'};
+		if ($oldlen > 1) {
+			# Remove extra old lines
+			splice(@$lref, $old[$i]->{'line'}+1, $oldlen-1);
+			foreach my $c (@$conf) {
+				if ($c->{'line'} > $old[$i]->{'line'}) {
+					$c->{'line'} -= $oldlen - 1;
+					}
+				}
+			}
 		}
 	elsif (defined($old[$i]) && !defined($values[$i])) {
 		# Remove some directive (from cache too)
-		splice(@$lref, $old[$i]->{'line'}, 1);
+		splice(@$lref, $old[$i]->{'line'}, $oldlen);
 		local $idx = &indexof($old[$i], @$conf);
                 splice(@$conf, $idx, 1) if ($idx >= 0);
 	        foreach my $c (@$conf) {
                         if ($c->{'line'} > $old[$i]->{'line'}) {
-                                $c->{'line'} --;
+                                $c->{'line'} -= $oldlen;
                                 }
                         }
 		}
@@ -449,6 +472,7 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 		# Add some directive
 		local $newdir = { 'name' => $name,
 				  'line' => scalar(@$lref),
+				  'eline' => scalar(@$lref),
 				  'file' => $file,
 				  'values' => \@unqvalues };
 		push(@$lref, $line);
