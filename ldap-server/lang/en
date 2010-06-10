@@ -298,6 +298,7 @@ eacl_title2=Edit Access Control Rule
 eacl_header=LDAP database access control rule details
 eacl_what=Objects being granted
 eacl_what1=All objects
+eacl_what2=Objects with no DN
 eacl_what0=Object with DN
 eacl_mtype=match type
 eacl_regex=regular expression

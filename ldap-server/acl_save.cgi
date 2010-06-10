@@ -9,11 +9,23 @@ $access{'acl'} || &error($text{'acl_ecannot'});
 
 # Get the current rule
 &lock_slapd_files();
-$conf = &get_config();
-@access = &find("access", $conf);
+if (&get_config_type() == 1) {
+	$conf = &get_config();
+	@access = &find("access", $conf);
+	}
+else {
+	$defdb = &get_default_db();
+	$conf = &get_ldif_config();
+	@access = &find_ldif("olcAccess", $conf, $defdb);
+	}
+
+# Get the ACL object
 if (!$in{'new'}) {
 	$acl = $access[$in{'idx'}];
 	$p = &parse_ldap_access($acl);
+	}
+else {
+	$p = { };
 	}
 
 if ($in{'delete'}) {
@@ -24,6 +36,11 @@ else {
 	# Validate and store inputs, starting with object
 	if ($in{'what'} == 1) {
 		$p->{'what'} = '*';
+		}
+	elsif ($in{'what'} == 2) {
+		$p->{'what'} =
+			'dn'.($in{'what_style'} ? '.'.$in{'what_style'} : '').
+			'=""';
 		}
 	else {
 		$in{'what_dn'} =~ /^\S+=\S.*$/ || &error($text{'eacl_edn'});
@@ -83,8 +100,13 @@ else {
 	}
 
 # Write out access directives
-&save_directive($conf, "access", @access);
-&flush_file_lines($config{'config_file'});
+if (&get_config_type() == 1) {
+	&save_directive($conf, "access", @access);
+	}
+else {
+	&save_ldif_directive($conf, "olcAccess", $defdb, @access);
+	}
+&flush_file_lines();
 &unlock_slapd_files();
 
 # Log and return

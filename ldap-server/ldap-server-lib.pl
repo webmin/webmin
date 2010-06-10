@@ -269,7 +269,7 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 			$dir->{'value'} = $value;
 			push(@rv, $dir);
 			}
-		elsif (/^(\s+\S.*)$/ && @rv) {
+		elsif (/^(\s+\S.*)$/ && @rv && $rv[$#rv]->{'file'} eq $file) {
 			# Continuation line
 			local $dir = $rv[$#rv];
 			$dir->{'value'} .= $1;
@@ -453,6 +453,7 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 			foreach my $c (@$conf) {
 				if ($c->{'line'} > $old[$i]->{'line'}) {
 					$c->{'line'} -= $oldlen - 1;
+					$c->{'eline'} -= $oldlen - 1;
 					}
 				}
 			}
@@ -465,6 +466,7 @@ for(my $i=0; $i<@old || $i<@values; $i++) {
 	        foreach my $c (@$conf) {
                         if ($c->{'line'} > $old[$i]->{'line'}) {
                                 $c->{'line'} -= $oldlen;
+                                $c->{'eline'} -= $oldlen;
                                 }
                         }
 		}

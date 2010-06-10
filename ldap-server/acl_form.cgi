@@ -41,10 +41,14 @@ if ($p->{'what'} =~ /^dn(\.([^=]+))?="(.*)"$/i ||
     $p->{'what'} =~ /^dn(\.([^=]+))?=(.*)$/i) {
 	$dn = $3;
 	$style = $2;
+	if ($dn eq "") {
+		$what = 2;
+		}
 	}
 print &ui_table_row($text{'eacl_what'},
 	&ui_radio_table("what", $what,
 		[ [ 1, $text{'eacl_what1'} ],
+		  [ 2, $text{'eacl_what2'} ],
 		  [ 0, $text{'eacl_what0'},
 		    &ui_textbox("what_dn", $dn, 30)." ".
 		    $text{'eacl_mtype'}." ".
@@ -97,7 +101,6 @@ foreach $b (@{$p->{'by'}}, { }, { }, { }) {
 		&ui_textbox("control_$i", join(" ", @{$b->{'control'}}), 30,
 			    0, undef, "style='width:90%'"),
 		], \@tds);
-	# XXX http://www.openldap.org/faq/data/cache/452.html
 	$i++;
 	}
 $wtable .= &ui_columns_end();

@@ -7,3 +7,5 @@ The protocols served by the LDAP server, such as SSL and non-encrypted, can now 
 Fixed a bug that prevented browsing of the LDAP database in SSL mode, thanks to Paul R. Ganci.
 ---- Changes since 1.470 ----
 Updated the module to support the new OpenLDAP LDIF-format configuration files, as seen on Ubuntu 8.10.
+---- Changes since 1.510 ----
+Fixed numerous bugs in editing the new LDIF-format access control rules.
