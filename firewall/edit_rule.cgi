@@ -24,12 +24,9 @@ else {
 	}
 
 print "<form action=save_rule.cgi method=post>\n";
-print "<input type=hidden name=table value='$in{'table'}'>\n";
-print "<input type=hidden name=idx value='$in{'idx'}'>\n";
-print "<input type=hidden name=new value='$in{'new'}'>\n";
-print "<input type=hidden name=chain value='$in{'chain'}'>\n";
-print "<input type=hidden name=before value='$in{'before'}'>\n";
-print "<input type=hidden name=after value='$in{'after'}'>\n";
+foreach $f ('table', 'idx', 'new', 'chain', 'before', 'after') {
+	print &ui_hidden($f, $in{$f});
+	}
 
 # Display action section
 print "<table border width=100%>\n";

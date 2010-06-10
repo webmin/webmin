@@ -17,7 +17,9 @@ else {
 	}
 if ($in{'clone'}) {
 	# Go back to the editing page
-	&redirect("edit_rule.cgi?new=1&clone=$in{'idx'}&table=$in{'table'}&chain=$rule->{'chain'}");
+	&redirect("edit_rule.cgi?new=1&clone=$in{'idx'}&".
+		  "table=".&urlize($in{'table'})."&".
+		  "chain=".&urlize($rule->{'chain'}));
 	}
 
 &lock_file($iptables_save_file);

@@ -184,7 +184,7 @@ else {
 			    &text('index_chain', "<tt>$c</tt>"),"</b><br>\n";
 		print "<form action=save_policy.cgi>\n";
 		print &ui_hidden("table", $in{'table'});
-		print "<input type=hidden name=chain value='$c'>\n";
+		print &ui_hidden("chain", $c);
 		if (@rules) {
 			@links = ( &select_all_link("d", $form),
 				   &select_invert_link("d", $form) );
@@ -256,12 +256,12 @@ else {
 				local $adder;
 				$adder .= "<a href='edit_rule.cgi?table=".
 				      &urlize($in{'table'}).
-				      "&chain=$c&new=1&".
+				      "&chain=".&urlize($c)."&new=1&".
 				      "after=$r->{'index'}'><img src=".
 				      "images/after.gif border=0></a>";
 				$adder .= "<a href='edit_rule.cgi?table=".
 				      &urlize($in{'table'}).
-				      "&chain=$c&new=1&".
+				      "&chain=".&urlize($c)."&new=1&".
 				      "before=$r->{'index'}'><img src=".
 				      "images/before.gif border=0></a>";
 				push(@cols, $adder);
