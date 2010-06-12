@@ -94,7 +94,11 @@ if ($wcron{'args'}) {
 &lock_file($file);
 &write_file($file, \%wcron);
 &unlock_file($file);
-&reload_miniserv();
+eval {
+	# Reload may fail in Webmin isn't running
+	$main::error_must_die = 1;
+	&reload_miniserv();
+	};
 }
 
 =head2 delete_webmin_cron(&cron)
