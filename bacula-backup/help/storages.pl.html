@@ -1,0 +1,31 @@
+<header>Us³ugi magazynu</header>
+
+Ka¿dy wpis na tej stronie okre¶la po³±czenie do urz±dzenia w us³udze magazynu 
+Bacula. Zazwyczaj us³uga uruchamiana jest na tym samym systemie, ale mo¿liwe jest
+zdefiniowanie wiêcej ni¿ jednej us³ugi, które mog± znajdowaæ siê na zdalnych hostach
+z ró¿nymi rodzajami tasiemek lub dysków twardych. <p>
+
+Najwa¿niejsze atrybuty dla ka¿dej us³ugi:<br>
+<dl>
+<dt>Nazwa us³ugi magazynu
+<dd>Unikalna nazwa u¿ywana przez ten system do identyfikacji us³ugi.
+<dt>Has³o Bacula SD
+<dd>Pole to musi zawieraæ has³o u¿ywane przez us³ugê magazynu na zdalnym systemie, has³o mo¿na znale¼æ w pliku <tt>/etc/bacula/bacula-sd.conf</tt>.
+<dt>Nazwa hosta lub adres IP
+<dd>Pe³na nazwa hosta lub IP systemu z uruchomion± us³ug± magazynu.
+<dt>Nazwa urz±dzenia magazynuj±cego
+<dd>Ka¿da us³uga magazynu mo¿e okre¶laæ jedno lub wiêcej urz±dzeñ, z których ka¿de mo¿e korespondowaæ z innym katalogiem na tasiemce. Pole to okre¶la, którego urz±dzenia us³uga ma u¿ywaæ.
+<dt>Nazwa rodzaju no¶nika
+<dd>Pole to musi zawieraæ krótk± nazwê rodzaju no¶nika u¿ywanego jako urz±dzenie magazynuj±ce - np. <i>Plik</i> lub <i>DDS-2</i>. Musi byæ taka sama jak rodzaj no¶nika w sekcji <strong>Urz±dzenia magazynuj±ce</strong> na serwerze magazynuj±cym.
+</dl>
+
+Czêsto u¿ytecznym jest posiadanie wiêcej ni¿ jednego wpisu na tym samym ho¶cie,
+który odwo³uje siê do innego urz±dzenia magazynuj±cego. Umo¿liwia to tworzenie
+ró¿nych katalogów lub tasiemek. <p>
+
+Je¶li opcja TLS jest widoczna w formularzu us³ugi magazynu, mo¿na go u¿yæ do zabezpieczenia
+komunikacji pomiêdzy mened¿erem i zdalnym serwerem magazynu. Zazwyczaj nie
+jest to wymagane w prostej konfiguracji Bacula, gdy us³ugi magazynu lub mened¿era uruchomione
+s± na tym samym systemie. <p>
+
+<footer>

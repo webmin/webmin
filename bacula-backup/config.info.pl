@@ -1,0 +1,16 @@
+line0=Opcje konfigurowalne,11
+wait=Domy¶lny tryb oczekiwania na kopiê zapasow±,1,1-Czekaj na zakoñczenie,0-Uruchom w tle
+apply=Automatycznie stosowaæ konfiguracjê mened¿era?,1,1-Tak,0-Nie
+groupmode=Pobieraæ informacje o grupie wêz³ów z,1,webmin-Modu³u Indeksu Serwerów Webmina,oc-Mened¿era bazy danych OCM,-Nik±d
+showdirs=Zawsze wy¶wietlaæ zdalnych mened¿erów?,1,1-Tak,0-Nie
+line1=Ustawienia bazy danych Bacula,11
+driver=Typ bazy danych,1,Pg-PostgreSQL,mysql-MySQL,SQLite-SQLite
+user=U¿ytkownik do zalogowania w bazie danych,0
+pass=Has³o do zalogowania,0
+host=Serwer bazy danych Bacula,3,Ten system
+db=Baza danych lub plik zawieraj±cy informacjê Bacula,0
+line2=Ustawienia pliku,11
+bacula_dir=Katalog konfiguracyjny Bacula,0
+bextract=Pe³na ¶cie¿ka do komendy <tt>bextract</tt>,0
+bls=Pe³na ¶cie¿ka do komendy <tt>bls</tt>,0
+btape=Pe³na ¶cie¿ka do komendy <tt>btape</tt>,0

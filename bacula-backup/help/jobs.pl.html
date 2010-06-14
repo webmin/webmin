@@ -1,0 +1,26 @@
+<header>Zadania kopii zapasowej</header>
+
+Zadanie jest najwa¿niejszym obiektem w Bacula, ³±czy klienta, zestaw plików i inne ustawienia pozwalaj±ce dok³adnie kontrolowaæ co jest kopiowane. Z tego powodu najlepiej jest rozpocz±æ od zdefiniowania zestawów plików i klientów, a potem utworzyæ zadanie. <p>
+
+Ka¿de zadanie posiada nastêpuj±ce atrybuty:<br>
+
+<dl>
+<dt>Nazwê zadania
+<dd>Unikalna nazwa dla tego zadania.
+<dt>Rodzaj zadania
+<dd>Okre¶la jakiego rodzaju akcjê zadanie bêdzie wykonywaæ. W wiêkszo¶ci przypadków powinno byæ ustawione na <strong>Kopia zapasowa</strong>.
+<dt>Rodzaj kopii
+<dd>Okre¶la czy zadanie wykona pe³n± czy czê¶ciow± kopiê zapasow± wybranych plików.
+<dt>Klient do skopiowania
+<dd>Je¶li twój system Bacula posiada wielu klientów, opcja ta okre¶la, który z plików bêdzie odczytywany przez zadanie kopii zapasowej.
+<dt>Zestaw plików do skopiowania
+<dd>Wybrany zestaw plików okre¶la, które pliki i katalogi zawarte s± w kopii zapasowej.
+<dt>Harmonogram kopii zapasowej
+<dd>Opcja okre¶la, czy zadanie bêdzie automatycznie wykonywane w wyznaczonym czasie.
+<dt>Urz±dzenie magazynuj±ce
+<dd>Je¶li konfiguracja Bacula jest ustawiona na wiêcej ni¿ jedn± us³ugê magazynu, opcja ta okre¶la, do której us³ugi kopia zapasowa bêdzie zapisywana.
+</dl><p>
+
+Aby upro¶ciæ proces tworzenia zadania, Bacula umo¿liwia utworzenia <strong>Domy¶lnej definicji</strong> zadañ, które nie s± uruchomione, ale okre¶laj± ustawienia dziedziczone przez rzeczywiste zadania. Podczas edytowania zadania, pole <strong>Domy¶lny rodzaj</strong> okre¶la czy zadanie jest domy¶ln± definicj±, czy dziedziczy ustawienia z innej domy¶lnej definicji. <p>
+
+<footer>
