@@ -11,3 +11,4 @@ os_support=!windows
 desc_cz=Bandwidth Monitoring
 desc_nl=Bandbreedte Monitor
 desc_ru_RU=Мониторинг сетевого трафика
+desc_pl=Monitorowanie pasma
