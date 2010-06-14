@@ -73,7 +73,7 @@ while(<FILE>) {
 		# New chain definition
 		$table->{'defaults'}->{$2} = '-';
 		}
-	elsif (/^(\[[^\]]*\]\s+)?-(AI)\s+(\S+)(.*)/) {
+	elsif (/^(\[[^\]]*\]\s+)?-(A|I)\s+(\S+)(.*)/) {
 		# Rule definition
 		local $rule = { 'line' => $lnum,
 				'eline' => $lnum,
