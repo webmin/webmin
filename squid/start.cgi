@@ -13,7 +13,7 @@ if ($config{'squid_start'}) {
 	# Use a start script
 	$rv = &system_logged("$config{'squid_start'} >$temp 2>&1 </dev/null");
 	sleep(5);
-	$errs = `cat $temp`;
+	$errs = &read_file_contents($temp);
 	unlink($temp);
 	&reset_environment();
 	if ($errs && $errs =~ /\d+\/\d+\/\d+/) {
