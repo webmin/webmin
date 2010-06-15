@@ -40,7 +40,7 @@ $group || &error($text{'convert_ewgroup'});
 if ($in{'conv'} == 3) {
 	# Find secondary members of group
 	@ginfo = getgrnam($in{'group'});
-	@members = split(/,/, $ginfo[3]);
+	@members = split(/\s+/, $ginfo[3]);
 	}
 
 # Convert matching users
