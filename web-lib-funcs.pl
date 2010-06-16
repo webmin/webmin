@@ -2012,6 +2012,7 @@ if ($cfile && !$nocache) {
 my @headers;
 push(@headers, [ "Host", $host ]);
 push(@headers, [ "User-agent", "Webmin" ]);
+push(@headers, [ "Accept-language", "en" ]);
 if ($user) {
 	my $auth = &encode_base64("$user:$pass");
 	$auth =~ tr/\r\n//d;
