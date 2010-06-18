@@ -244,6 +244,7 @@ ec_2dirs=2nd level dirs
 ec_u=UFS
 ec_ua=Async UFS
 ec_diskd=DISKD
+ec_coss=COSS
 ec_1dirs1=First level directories
 ec_2dirs2=Second level directories
 ec_aos=Average object size

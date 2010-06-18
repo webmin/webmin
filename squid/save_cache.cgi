@@ -20,7 +20,9 @@ else {
 			$type = $in{"cache_type_$i"};
 			$opts = $in{"cache_opts_$i"};
 			next if (!$dir && !$lv1 && !$lv2 && !$size);
-			&check_error(\&check_dir, $dir);
+			if ($type ne "coss") {
+				&check_error(\&check_dir, $dir);
+				}
 			&check_error(\&check_dirsize, $size);
 			&check_error(\&check_dircount, $lv1);
 			&check_error(\&check_dircount, $lv2);

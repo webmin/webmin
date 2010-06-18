@@ -30,3 +30,5 @@ Added a page for editing cache manager passwords and the actions that they apply
 Comments at the end of lines are now preserved when Webmin changes directives in squid.conf.
 ---- Changes since 1.420 ----
 Fixed the Calamaris page for newer versions.
+---- Changes since 1.510 ----
+Improved support for COSS format (single file) Squid caches.

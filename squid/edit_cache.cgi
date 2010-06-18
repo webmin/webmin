@@ -46,6 +46,8 @@ for($i=0; $i<=@dirs; $i++) {
 			$dv[0] eq 'diskd' ? 'selected' : '';
 		printf "<option value=aufs %s>$text{'ec_ua'}\n",
 			$dv[0] eq 'aufs' ? 'selected' : '';
+		printf "<option value=coss %s>$text{'ec_coss'}\n",
+			$dv[0] eq 'coss' ? 'selected' : '';
 		print "</select></td>\n";
 		print "<td><input name=cache_size_$i size=8 ",
 		      "value=\"$dv[2]\"></td>\n";

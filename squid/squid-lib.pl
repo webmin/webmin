@@ -491,7 +491,7 @@ return $rv;
 # caches list
 sub check_cache
 {
-local (@cachestruct, @caches, $c);
+local (@cachestruct, @caches, $c, $coss);
 if (@cachestruct = &find_config("cache_dir", $_[0])) {
 	if ($squid_version >= 2.3) {
 		@caches = map { $_->{'values'}->[1] } @cachestruct;
@@ -499,13 +499,23 @@ if (@cachestruct = &find_config("cache_dir", $_[0])) {
 	else {
 		@caches = map { $_->{'values'}->[0] } @cachestruct;
 		}
+	($coss) = grep { $_->{'values'}->[0] eq "coss" } @cachestruct;
 	}
 else {
 	@caches = ( $config{'cache_dir'} );
 	}
 @{$_[1]} = @caches;
-foreach $c (@caches) {
-	return 0 if (!-d $c || !-d "$c/00");
+if ($coss) {
+	# Allow COSS files too
+	foreach $c (@caches) {
+		return 0 if (!-f $c && (!-d $c || !-d "$c/00"));
+		}
+	}
+else {
+	# Check for dirs only
+	foreach $c (@caches) {
+		return 0 if (!-d $c || !-d "$c/00");
+		}
 	}
 return 1;
 }
