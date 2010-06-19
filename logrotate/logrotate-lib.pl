@@ -174,7 +174,8 @@ sub get_logrotate_version
 {
 local $out = &backquote_command("$config{'logrotate'} -v 2>&1", 1);
 ${$_[0]} = $out if ($_[0]);
-return $out =~ /logrotate\s+([0-9\.]+)\s/ ? $1 : undef;
+return $out =~ /logrotate\s+([0-9\.]+)\s/ ||
+       $out =~ /logrotate\-([0-9\.]+)\s/ ? $1 : undef;
 }
 
 # get_period(&conf)
