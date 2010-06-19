@@ -65,17 +65,17 @@ local @rv = map { $_->{'value'} } &find(@_);
 return $rv[0];
 }
 
-# save_directive(&config, name, [value], [newsection])
+# save_directive(&config, name, [value], [newsection], [neverquote])
 # Updates a single entry in the PHP config file
 sub save_directive
 {
-local ($conf, $name, $value, $newsection) = @_;
+local ($conf, $name, $value, $newsection, $noquote) = @_;
 $newsection ||= "PHP";
 local $old = &find($name, $conf, 0);
 local $cmt = &find($name, $conf, 1);
 local $lref;
 local $newline = $name." = ".
-		 ($value !~ /\s/ ? $value :
+		 ($value !~ /\s/ || $noquote ? $value :
 		  $value =~ /"/ ? "'$value'" : "\"$value\"");
 if (defined($value) && $old) {
 	# Update existing value

@@ -24,7 +24,7 @@ if (defined($in{"error_reporting"})) {
 		$in{"error_reporting"} =~ /\S/ ||
 			&error($text{'errors_ereporting'});
 		&save_directive($conf, "error_reporting",
-				$in{"error_reporting"});
+				$in{"error_reporting"}, undef, 1);
 		}
 	}
 else {
