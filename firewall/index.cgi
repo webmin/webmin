@@ -223,7 +223,8 @@ else {
 					push(@cols, &describe_rule($r));
 					}
 				if ($config{'view_comment'}) {
-					$cmt = $config{'comment_mod'} ?
+					$cmt = $config{'comment_mod'} ||
+					       $r->{'comment'} ?
 					    $r->{'comment'}->[1] : $r->{'cmt'};
 					push(@cols, $cmt);
 					}
