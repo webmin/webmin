@@ -40,6 +40,8 @@ else {
 		}
 	else {
 		$rule->{'cmt'} = $in{'cmt'};
+		delete($rule->{'comment'});
+		@mods = grep { $_ ne "comment" } @mods;
 		}
 	if ($in{'jump'} eq '*') {
 		$in{'other'} =~ /^\S+$/ || &error($text{'save_echain'});

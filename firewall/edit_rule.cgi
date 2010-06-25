@@ -38,7 +38,7 @@ print "<td>",$text{"index_chain_".lc($rule->{'chain'})} ||
 	     &text('index_chain', "<tt>$rule->{'chain'}</tt>"),"</td> </tr>\n";
 
 print "<tr> <td><b>$text{'edit_cmt'}</b></td>\n";
-if ($config{'comment_mod'}) {
+if ($config{'comment_mod'} || $rule->{'comment'}) {
 	# Get comment from --comment option
 	printf "<td><input name=cmt size=50 value='%s'></td> </tr>\n",
 		&html_escape($rule->{'comment'}->[1]);
