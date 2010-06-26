@@ -31,7 +31,12 @@ else {
 		 '--pid-owner', '--sid-owner', '--state', '--tos', '-j',
 		 '--to-ports', '--to-destination', '--to-source',
 		 '--reject-with', '--dports', '--sports',
-		 '--comment', '--physdev-is-bridged');
+		 '--comment',
+		 '--physdev-is-bridged',
+		 '--physdev-is-in',
+		 '--physdev-is-out',
+		 '--physdev-in',
+		 '--physdev-out');
 
 # get_iptables_save([file])
 # Parse the iptables save file into a list of tables 
@@ -186,6 +191,7 @@ else {
 }
 
 # describe_rule(&rule)
+# Returns a human-readable description of some rule conditions
 sub describe_rule
 {
 local (@c, $d);
@@ -194,7 +200,7 @@ foreach $d ('p', 's', 'd', 'i', 'o', 'f', 'dport',
 	    'icmp-type', 'mac-source', 'limit', 'limit-burst',
 	    'ports', 'uid-owner', 'gid-owner',
 	    'pid-owner', 'sid-owner', 'state', 'tos',
-	    'dports', 'sports') {
+	    'dports', 'sports', 'physdev-in', 'physdev-out') {
 	if ($_[0]->{$d}) {
 		local ($n, @v) = @{$_[0]->{$d}};
 		@v = map { uc($_) } @v if ($d eq 'p');

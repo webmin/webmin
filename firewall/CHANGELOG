@@ -35,3 +35,4 @@ Added a button to move rules to another chain.
 Added a button to rename an existing custom chain.
 ---- Changes since 1.510 ----
 Better handle the case where a rule has a --comment format description, but # format comments are enabled.
+Added support for physdev module options, for matching based on the bridged interface.

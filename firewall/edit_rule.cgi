@@ -310,6 +310,7 @@ if ($rule->{'chain'} eq 'OUTPUT') {
 
 print "<tr> <td colspan=2><hr></td> </tr>\n";
 
+# Connection states
 print "<tr> <td valign=top><b>$text{'edit_state'}</b></td>\n";
 print "<td><table cellpadding=0 cellspacing=0><tr><td valign=top>",
       &print_mode("state", $rule->{'state'}),"</td>\n";
@@ -322,14 +323,40 @@ foreach $s ('NEW', 'ESTABLISHED', 'RELATED', 'INVALID', 'UNTRACKED') {
 	}
 print "</select></td></tr></table></td> </tr>\n";
 
+# Type of service
 print "<tr> <td><b>$text{'edit_tos'}</b></td>\n";
 print "<td>",&print_mode("tos", $rule->{'tos'}),"\n";
 print &tos_input("tos", $rule->{'tos'}->[1]),"</td> </tr>\n";
 
 print "<tr> <td colspan=2><hr></td> </tr>\n";
 
+# Input physical device
+print "<tr> <td><b>$text{'edit_physdevin'}</b></td>\n";
+print "<td>",&print_mode("physdevin", $rule->{'physdev-in'}),"\n";
+print &interface_choice("physdevin", $rule->{'physdev-in'}->[1]);
+print "</td> </tr>\n";
+
+# Output physical device
+print "<tr> <td><b>$text{'edit_physdevout'}</b></td>\n";
+print "<td>",&print_mode("physdevout", $rule->{'physdev-out'}),"\n";
+print &interface_choice("physdevout", $rule->{'physdev-out'}->[1]);
+print "</td> </tr>\n";
+
+# Physdev match modes
+print "<tr> <td><b>$text{'edit_physdevisin'}</b></td>\n";
+print "<td>",&print_mode("physdevisin", $rule->{'physdev-is-in'},
+			 $text{'yes'}, $text{'no'}),"</td> </tr>\n";
+print "<tr> <td><b>$text{'edit_physdevisout'}</b></td>\n";
+print "<td>",&print_mode("physdevisout", $rule->{'physdev-is-out'},
+			 $text{'yes'}, $text{'no'}),"</td> </tr>\n";
+print "<tr> <td><b>$text{'edit_physdevisbridged'}</b></td>\n";
+print "<td>",&print_mode("physdevisbridged", $rule->{'physdev-is-bridged'},
+			 $text{'yes'}, $text{'no'}),"</td> </tr>\n";
+
+print "<tr> <td colspan=2><hr></td> </tr>\n";
+
 # Show unknown modules
-@mods = grep { !/^(tcp|udp|icmp|multiport|mac|limit|owner|state|tos|comment)$/ } map { $_->[1] } @{$rule->{'m'}};
+@mods = grep { !/^(tcp|udp|icmp|multiport|mac|limit|owner|state|tos|comment|physdev)$/ } map { $_->[1] } @{$rule->{'m'}};
 print "<tr> <td><b>$text{'edit_mods'}</b></td>\n";
 printf "<td colspan=3><input name=mods size=50 value='%s'></td> </tr>\n",
 	join(" ", @mods);

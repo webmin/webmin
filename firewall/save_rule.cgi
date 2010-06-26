@@ -308,6 +308,7 @@ else {
 			}
 		}
 
+	# Save connection states and TOS
 	if (&parse_mode("state", $rule, "state")) {
 		@states = split(/\0/, $in{'state'});
 		@states || &error($text{'save_estates'});
@@ -317,6 +318,35 @@ else {
 	if (&parse_mode("tos", $rule, "tos")) {
 		$rule->{'tos'}->[1] = $in{'tos'};
 		push(@mods, "tos");
+		}
+
+	# Parse physical input and output interfaces
+	if (&parse_mode("physdevin", $rule, "physdev-in")) {
+		$in{'physdevin'} ne '' || $in{'physdevin_other'} =~ /^\S+$/ ||
+			&error($text{'save_ephysdevin'});
+		$rule->{'physdev-in'}->[1] =
+		  $in{'physdevin'} eq '' || $in{'physdevin'} eq 'other' ?
+			$in{'physdevin_other'} : $in{'physdevin'};
+		push(@mods, "physdev");
+		}
+	if (&parse_mode("physdevout", $rule, "physdev-out")) {
+		$in{'physdevout'} ne '' || $in{'physdevout_other'} =~ /^\S+$/ ||
+			&error($text{'save_ephysdevout'});
+		$rule->{'physdev-out'}->[1] =
+		  $in{'physdevout'} eq '' || $in{'physdevout'} eq 'other' ?
+			$in{'physdevout_other'} : $in{'physdevout'};
+		push(@mods, "physdev");
+		}
+
+	# Parse physdev match modes
+	if (&parse_mode("physdevisin", $rule, "physdev-is-in")) {
+		push(@mods, "physdev");
+		}
+	if (&parse_mode("physdevisout", $rule, "physdev-is-out")) {
+		push(@mods, "physdev");
+		}
+	if (&parse_mode("physdevisbridged", $rule, "physdev-is-bridged")) {
+		push(@mods, "physdev");
 		}
 
 	# Add custom paramters and modules
