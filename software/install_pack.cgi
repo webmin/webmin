@@ -73,6 +73,7 @@ elsif ($in{source} == 2) {
 elsif ($in{'source'} == 3) {
 	# installing from some update system
 	&clean_environment();
+	$in{'update'} =~ /\S/ || &error($text{'install_eupdate'});
 	@packs = &update_system_install($in{'update'}, \%in);
 	&reset_environment();
 

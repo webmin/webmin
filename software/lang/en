@@ -90,6 +90,7 @@ install_elocal=No local file given
 install_elocal2='$1' does not exist
 install_eupload=Your browser does not support file uploads
 install_eurl=Incomprehensible URL '$1'
+install_eupdate=No package to install entered
 install_edir=Not a valid $1 directory
 install_ezip=Not a valid compressed or gzipped $1 file
 install_efile=Not a valid $1 file
