@@ -70,6 +70,7 @@ else {
 print &ui_table_end();
 if ($in{'pv'}) {
 	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'resize', $text{'pv_resize'} ],
 			     @pvs > 1 ? ( [ 'delete', $text{'pv_delete2'} ] )
 				      : ( ) ]);
 	}

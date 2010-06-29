@@ -135,8 +135,10 @@ pv_pesize=Allocation block size
 pv_warn=Warning! All data on the selected device will be erased.
 pv_create2=Add to volume group
 pv_delete2=Remove from volume group
+pv_resize=Resize To Match Device
 pv_err=Failed to save physical volume
 pv_err2=Failed to remove physical volume
+pv_err3=Failed to resize physical volume
 pv_delete=Remove Physical Volume
 pv_rusure=Are you sure you want to remove physical volume device $1 from its volume group? This will result in any data being shifted to other physical volumes within the group.
 pv_deleteok=Remove Volume
@@ -172,6 +174,7 @@ log_mkfs_lv=Created $1 filesystem on $2
 log_create_pv=Added physical volume $1 to VG $1
 log_modify_pv=Modified physical volume $1 in VG $2
 log_delete_pv=Removed physical volume $1 from VG $2
+log_resize_pv=Resized physical volume $1 in VG $2
 
 blocks=blocks
 

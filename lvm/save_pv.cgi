@@ -10,7 +10,7 @@ require './lvm-lib.pl';
 	if ($in{'pv'});
 
 if ($in{'confirm'}) {
-	# Delete the logical volume
+	# Delete the physical volume
 	&error_setup($text{'pv_err2'});
 	$err = &delete_physical_volume($pv);
 	&error("<pre>$err</pre>") if ($err);
@@ -29,6 +29,14 @@ elsif ($in{'delete'}) {
 	print &ui_form_end([ [ 'confirm', $text{'pv_deleteok'} ] ]);
 	print "</center>\n";
 	&ui_print_footer("index.cgi?mode=pvs", $text{'index_return'});
+	}
+elsif ($in{'resize'}) {
+	# Scale up to match device
+	&error_setup($text{'pv_err3'});
+	$err = &resize_physical_volume($pv);
+	&error("<pre>$err</pre>") if ($err);
+	&webmin_log("resize", "pv", $in{'pv'}, $pv);
+	&redirect("index.cgi?mode=pvs");
 	}
 else {
 	&error_setup($text{'pv_err'});

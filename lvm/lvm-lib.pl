@@ -103,6 +103,7 @@ return @rv;
 }
 
 # create_physical_volume(&pv, [force])
+# Add a new physical volume to a volume group
 sub create_physical_volume
 {
 local $cmd = "pvcreate -y ".($_[1] ? "-ff " : "-f ");
@@ -115,6 +116,7 @@ return $? ? $out : undef;
 }
 
 # change_physical_volume(&pv)
+# Change the allocation flag for a physical volume
 sub change_physical_volume
 {
 local $cmd = "pvchange -x ".quotemeta($_[0]->{'alloc'}).
@@ -124,6 +126,7 @@ return $? ? $out : undef;
 }
 
 # delete_physical_volume(&pv)
+# Remove a physical volume from a volume group
 sub delete_physical_volume
 {
 if ($_[0]->{'pe_alloc'}) {
@@ -143,6 +146,14 @@ local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? $out : undef;
 }
 
+# resize_physical_volume(&pv)
+# Set the size of a physical volume to match the underlying device
+sub resize_physical_volume
+{
+local $cmd = "pvresize ".quotemeta($_[0]->{'device'});
+local $out = &backquote_logged("$cmd 2>&1");
+return $? ? $out : undef;
+}
 
 # list_volume_groups()
 # Returns a list of all volume groups

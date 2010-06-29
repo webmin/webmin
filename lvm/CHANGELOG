@@ -26,3 +26,4 @@ When editing a logical volume, the size is shown in GB or TB where possible.
 ---- Changes since 1.510 ----
 Mounted ext3+, reiser, xfs and jfs logical volumes can now have their filesystem size increased, without needing an un-mount. Thanks to Caspar Smit for the suggestions and patches to implement this.
 When editing a logical volume that is already in /etc/fstab, don't allow the filesystem to format it as to be changed, to prevent a mismatch.
+When editing a physical volume, its size can be increased to match the underlying device, such as a partition that has been grown.
