@@ -28,8 +28,8 @@ $below = &text($in{'group'} ? 'acl_title3' : 'acl_title2', "<tt>$who</tt>",
 &ui_print_header($below, $text{'acl_title'}, "",
 		 -r &help_file($in{'mod'}, "acl_info") ?
 			[ "acl_info", $in{'mod'} ] : undef);
-%access = $in{'group'} ? &get_group_module_acl($who, $in{'mod'})
-		       : &get_module_acl($who, $in{'mod'}, 1);
+%maccess = $in{'group'} ? &get_group_module_acl($who, $in{'mod'})
+		        : &get_module_acl($who, $in{'mod'}, 1);
 
 # display the form
 print &ui_form_start("save_acl.cgi", "post");
@@ -63,7 +63,7 @@ if (-r "$mdir/acl_security.pl") {
 	print &ui_table_hr() if ($in{'mod'});
 	&foreign_require($in{'mod'}, "acl_security.pl");
 	&foreign_call($in{'mod'}, "load_theme_library");
-	&foreign_call($in{'mod'}, "acl_security_form", \%access);
+	&foreign_call($in{'mod'}, "acl_security_form", \%maccess);
 	}
 
 print &ui_table_end();
