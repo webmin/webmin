@@ -710,12 +710,17 @@ options. May truncate values to 2 decimal points! The parameters are :
 
 =item tags - Additional HTML attributes for the <input> tag.
 
+=item defaultunits - Units mode selected by default
+
 =cut
 sub ui_bytesbox
 {
-my ($name, $bytes, $size, $dis, $tags) = @_;
+my ($name, $bytes, $size, $dis, $tags, $defaultunits) = @_;
 my $units = 1;
-if ($bytes >= 10*1024*1024*1024*1024) {
+if ($bytes eq '' && $defaultunits) {
+	$units = $defaultunits;
+	}
+elsif ($bytes >= 10*1024*1024*1024*1024) {
 	$units = 1024*1024*1024*1024;
 	}
 elsif ($bytes >= 10*1024*1024*1024) {
