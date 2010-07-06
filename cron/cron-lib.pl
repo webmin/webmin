@@ -68,6 +68,9 @@ if ($config{'system_crontab'}) {
 	$lnum = 0;
 	&open_readfile(TAB, $config{'system_crontab'});
 	while(<TAB>) {
+		# Comment line in Fedora 13
+		next if (/^#+\s+\*\s+\*\s+\*\s+\*\s+\*\s+command\s+to\s+be\s+executed/);
+
 		if (/^(#+)?[\s\&]*(-)?\s*([0-9\-\*\/,]+)\s+([0-9\-\*\/,]+)\s+([0-9\-\*\/,]+)\s+(([0-9\-\*\/]+|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|,)+)\s+(([0-9\-\*\/]+|sun|mon|tue|wed|thu|fri|sat|,)+)\s+(\S+)\s+(.*)/i) {
 			# A normal h m s d w time
 			push(@rv, { 'file' => $config{'system_crontab'},
