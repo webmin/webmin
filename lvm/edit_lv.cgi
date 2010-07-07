@@ -66,13 +66,13 @@ else {
 		}
 	else {
 		# Check if size is exactly some number of TB, GB or MB, less
-		# than 1024
+		# than 10240
 		$div = 1024*1024*1024;
 		$size = $lv->{'size'}*1024;
 		$nice = 0;
 		while($div >= 1024) {
 			$frac = $size*1.0 / $div;
-			if ($frac == int($frac) && $frac < 1024) {
+			if ($frac == int($frac) && $frac < 1024*10) {
 				$nice = 1;
 				last;
 				}
