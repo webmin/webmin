@@ -16,6 +16,8 @@ if (!defined($oldtheme)) {
 # Validate the password
 if ($access{'pass'} && &can_change_pass($user) && !$in{'pass_def'}) {
 	$in{'pass'} =~ /:/ && &error($text{'change_ecolon'});
+	$in{'pass'} eq $in{'pass2'} ||
+		&error($text{'change_epass2'});
 	$perr = &acl::check_password_restrictions(
 		$user->{'name'}, $in{'pass'});
 	&error(&text('change_epass', $perr)) if ($perr);

@@ -73,7 +73,9 @@ if ($access{'pass'} && &can_change_pass($user)) {
 		&ui_radio("pass_def", 1,
 			  [ [ 1, $text{'index_passleave'}."<br>" ],
 			    [ 0, $text{'index_passset'} ] ])." ".
-		&ui_password("pass", undef, 20));
+		&ui_password("pass", undef, 20)." ".
+		$text{'index_passagain'}." ".
+		&ui_password("pass2", undef, 20));
 	}
 
 print &ui_table_end();

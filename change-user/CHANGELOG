@@ -3,3 +3,5 @@ Converted the UI to use the new Webmin user interface functions, for a more cons
 ---- Changes since 1.440 ----
 If any theme overlays are installed, one can be selected in this module to modify the appearance of the underlying theme.
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.510 ----
+Added a password confirmation field for password changes.
