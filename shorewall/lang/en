@@ -153,6 +153,7 @@ tos_2=Protocol
 tos_3=Source ports
 tos_4=Destination ports
 tos_5=Type of service
+tos_6=Test
 tos_return=types of service list
 tos_edit=Edit Type of Service
 tos_create=Create Type of Service

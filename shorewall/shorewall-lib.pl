@@ -1024,7 +1024,8 @@ return ( &is_fw($_[0]) ? $text{'list_fw'} :
 	 uc($_[2]),
 	 $_[3] eq '-' || $_[3] eq '' ? $text{'list_any'} : $_[3],
 	 $_[4] eq '-' || $_[4] eq '' ? $text{'list_any'} : $_[4],
-	 $tos_map{$_[5]} || $_[5] );
+	 $tos_map{$_[5]} || $_[5],
+	 $_[6] eq '-' ? $text{'list_none'} : $_[6] );
 }
 
 sub tos_form
@@ -1095,6 +1096,10 @@ foreach $t (sort { $a <=> $b } keys %tos_map) {
 	}
 print "<option value=$_[5] selected>$_[5]\n" if (!$found);
 print "</select></td> </tr>\n";
+
+print "<tr> <td><b>$text{'tos_6'}</b></td>\n";
+printf "<td><input name=mark size=50 value='%s'></td> </tr>\n",
+	$_[6] eq "-" ? "" : $_[6];
 }
 
 sub tos_validate
@@ -1113,7 +1118,8 @@ return ( ($in{'source'} || $in{'sother'}).
 	 $in{'proto'} || $in{'pother'},
 	 $in{'sport_def'} ? "-" : join(",", split(/\s+/, $in{'sport'})),
 	 $in{'dport_def'} ? "-" : join(",", split(/\s+/, $in{'dport'})),
-	 $in{'tos'} );
+	 $in{'tos'},
+	 $in{'mark'} || "-" );
 }
 
 ################################# masq #########################################
