@@ -679,6 +679,9 @@ local $tmpf = $< == 0 ? "$f.del" :
 	      $_[0] =~ /^\/.*\/([^\/]+)$/ ?
 	   	"$user_module_config_directory/$1.del" :
 	      "$user_module_config_directory/$_[0].del";
+if (-l $f) {
+	$f = &resolve_links($f);
+	}
 open(SOURCE, $f) || &error("Read failed : $!");
 open(DEST, ">$tmpf") || &error("Open of $tmpf failed : $!");
 while(<SOURCE>) {
@@ -750,6 +753,9 @@ local $tmpf = $< == 0 ? "$f.del" :
 	      $_[0] =~ /^\/.*\/([^\/]+)$/ ?
 		"$user_module_config_directory/$1.del" :
 	      "$user_module_config_directory/$_[0].del";
+if (-l $f) {
+	$f = &resolve_links($f);
+	}
 open(SOURCE, $f);
 open(DEST, ">$tmpf");
 while(<SOURCE>) {
