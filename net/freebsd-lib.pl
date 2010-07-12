@@ -535,7 +535,9 @@ if (!$found && @_ > 1) {
 sub get_rc_conf
 {
 local ($file, %rv);
-foreach $file ("/etc/defaults/rc.conf", "/etc/rc.conf") {
+foreach $file ("/etc/defaults/rc.conf",
+	       glob("/etc/rc.conf.d/*"),
+	       "/etc/rc.conf") {
 	&open_readfile(FILE, $file);
 	while(<FILE>) {
 		s/\r|\n//g;
