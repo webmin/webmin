@@ -7,4 +7,4 @@ order=0
 sort_mode=0
 no_chkconfig=0
 rc_dir=/etc/rc.d /usr/local/etc/rc.d
-rc_conf=/etc/defaults/rc.conf /etc/rc.conf
+rc_conf=/etc/defaults/rc.conf /etc/rc.conf.d/* /etc/rc.conf

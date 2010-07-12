@@ -1,4 +1,4 @@
-=head1 init-lib.pl
+chead1 init-lib.pl
 
 Common functions for SYSV-style boot/shutdown sequences, MacOS, FreeBSD
 and Windows. Because each system uses a different format and semantics for
@@ -1317,7 +1317,7 @@ them into a list of hash refs. Each element in the list has the following keys:
 sub get_rc_conf
 {
 local ($file, @rv);
-foreach $file (split(/\s+/, $config{'rc_conf'})) {
+foreach $file (map { glob($_) } split(/\s+/, $config{'rc_conf'})) {
 	local $lnum = 0;
 	&open_readfile(FILE, $file);
 	while(<FILE>) {
