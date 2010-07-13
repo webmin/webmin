@@ -46,6 +46,7 @@ edit_type8=Password
 edit_type9=Menu..
 edit_type10=Upload
 edit_type11=Text box
+edit_type12=Multi menu..
 edit_noshow=Hide command when executing?
 edit_usermin=Available in Usermin?
 edit_timeout=Maximum time to wait for command?

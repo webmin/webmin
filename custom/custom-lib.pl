@@ -431,6 +431,18 @@ foreach my $a (@{$cmd->{'args'}}) {
 		chown($uinfo->[2], $uinfo->[3], $rv);
 		push(@unlink, $rv);
 		}
+	elsif ($a->{'type'} == 12) {
+		local @vals = split(/\0/, $setin->{$n});
+		local @opts = &read_opts_file($a->{'opts'});
+		foreach my $v (@vals) {
+			local $found;
+			foreach my $l (@opts) {
+				$found++ if ($l->[0] eq $v);
+				}
+			$found || &error($text{'run_eopt'});
+			}
+		$rv = join(" ", @vals);
+		}
 	if ($rv eq '' && $a->{'must'} && $a->{'type'} != 7) {
 		&error(&text('run_emust', $a->{'desc'}));
 		}
@@ -551,6 +563,10 @@ elsif ($a->{'type'} == 10) {
 	}
 elsif ($a->{'type'} == 11) {
 	return &ui_textarea($n, undef, 4, 30);
+	}
+elsif ($a->{'type'} == 12) {
+	return &ui_select($n, undef, [ &read_opts_file($a->{'opts'}) ],
+			  5, 1);
 	}
 else {
 	return "Unknown parameter type $a->{'type'}";
