@@ -1,0 +1,2 @@
+auth_ldap=/etc/ldap/ldap.conf
+secret=/etc/ldap.secret
