@@ -728,7 +728,7 @@ Consult the dumpe2fs command where possible.
 =cut
 sub fs_block_size
 {
-if ($_[2] eq "ext2" || $_[2] eq "ext3") {
+if ($_[2] =~ /^ext\d+$/) {
 	return 1024;
 	# This code isn't needed, because the quota block size is
 	# not the same as the filesystem block size!!
