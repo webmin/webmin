@@ -1,4 +1,4 @@
-chead1 init-lib.pl
+=head1 init-lib.pl
 
 Common functions for SYSV-style boot/shutdown sequences, MacOS, FreeBSD
 and Windows. Because each system uses a different format and semantics for
