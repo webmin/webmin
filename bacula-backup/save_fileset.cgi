@@ -66,6 +66,16 @@ else {
 		&save_directives($conf, $exc, "File", \@exclude, 2);
 		}
 
+	# Save compression level
+	if ($in{'comp'}) {
+		&save_directive($conf, $fileset, "Compression", $in{'comp'}, 1);
+		}
+	else {
+		&save_directive($conf, $fileset, "Compression", undef);
+		}
+
+	&save_directive($conf, $device, "OneFS", $in{'onefs'} || undef, 1);
+
 	# Create or update
 	if ($in{'new'}) {
 		&save_directive($conf, $parent, undef, $fileset, 0);

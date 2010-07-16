@@ -49,6 +49,18 @@ print &ui_table_row($text{'fileset_exclude'},
 		    &ui_textarea("exclude", join("\n", @files), 5, 60)."\n".
 		    &file_chooser_button("exclude", 0, 0, undef, 1), 3);
 
+# Compression level
+$comp = &find_value("Compression", $mems);
+print &ui_table_row($text{'fileset_comp'},
+	&ui_select("comp", $comp,
+		[ [ '', $text{'fileset_gzipdef'} ],
+		  map { [ "GZIP".$_, &text('fileset_gzip', $_) ] }
+		      (1..9) ]));
+
+# Single filesystem?
+print &ui_table_row($text{'fileset_onefs'},
+	&bacula_yesno("onefs", "OneFS", $mems));
+
 # All done
 print &ui_table_end();
 if ($in{'new'}) {

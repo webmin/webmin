@@ -12,3 +12,5 @@ Fixed fileset exlude list and 'Run at times' display, thanks to a patch by Joe Z
 Added support for automatic volume labelling and max volume size, thanks to Caspar Smit.
 ---- Changes since 1.500 ----
 Add support for setting the Maximum concurrent jobs on a storage daemon, thanks to Caspar Smit.
+---- Changes since 1.510 ----
+Added a field for setting the compression level for a fileset.

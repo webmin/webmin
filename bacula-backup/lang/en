@@ -95,6 +95,10 @@ fileset_err=Failed to save file set
 fileset_ename=Missing file set name
 fileset_eclash=A file set with the same name already exists
 fileset_echild=This file set cannot be deleted as it is used by $1
+fileset_comp=Compression type
+fileset_gzipdef=&lt;Default compression level&gt;
+fileset_gzip=Gzip level $1
+fileset_onefs=Limit backup to one filesystem?
 
 clients_title=Backup Clients
 clients_none=No backup clients have been defined yet.
