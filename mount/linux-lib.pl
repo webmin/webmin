@@ -457,7 +457,7 @@ while(<MTAB>) {
 		# The source for proc mounts is always proc
 		$p[0] = "proc";
 		}
-	if (!$_[0] && ($p[2] =~ /^ext[23]$/ && $has_e2label ||
+	if (!$_[0] && ($p[2] =~ /^ext\d+$/ && $has_e2label ||
 	    	       $p[2] eq "xfs" && $has_xfs_db ||
 		       $p[2] eq "reiserfs" && $has_reiserfstune)) {
 		# Check for a label on this partition, and there is one
