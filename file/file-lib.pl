@@ -130,9 +130,9 @@ if (!@st) {
 	return undef if ($?);
 	$out =~ /^(.*)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)/;
 	local $type = defined($icon_map{$ext}) ? $icon_map{$ext} : 4;
-	local $user = defined(%uid_to_user) ? $uid_to_user{$5} : getpwuid($5);
+	local $user = %uid_to_user ? $uid_to_user{$5} : getpwuid($5);
 	$user = $5 if (!$user);
-	local $group = defined(%gid_to_group) ? $gid_to_group{$6} :getgrgid($6);
+	local $group = %gid_to_group ? $gid_to_group{$6} :getgrgid($6);
 	$group = $6 if (!$group);
 	local $size = $2;
 	local $mtime = $13;
@@ -147,10 +147,10 @@ local $type = $islink && !$f ? 5 :
 	      -p _ ? 7 :
 	      -S _ ? 7 : defined($icon_map{$ext}) ? $icon_map{$ext} : 4;
 local $user = !&supports_users() ? "root" :
-	      defined(%uid_to_user) ? $uid_to_user{$st[4]} : getpwuid($st[4]);
+	      %uid_to_user ? $uid_to_user{$st[4]} : getpwuid($st[4]);
 $user = $st[4] if (!$user);
 local $group = !&supports_users() ? "root" :
-	       defined(%gid_to_group) ? $gid_to_group{$st[5]} :getgrgid($st[5]);
+	       %gid_to_group ? $gid_to_group{$st[5]} :getgrgid($st[5]);
 $group = $st[5] if (!$group);
 local $rl = readlink($_[0]);
 return join("\t", $dp, $type,

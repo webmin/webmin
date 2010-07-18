@@ -1280,7 +1280,7 @@ return $job;
 # Returns a link for editing some job, if possible
 sub joblink
 {
-if (!defined(%joblink_jobs)) {
+if (!%joblink_jobs) {
 	local $conf = &get_director_config();
 	%joblink_jobs = map { $n=&find_value("Name", $_->{'members'}), 1 }
 			&find("Job", $conf);

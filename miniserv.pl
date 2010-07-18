@@ -3237,7 +3237,7 @@ if (!$users{$_[0]}) {
 		push(@doms, $2);
 		}
 
-	if ($config{'user_mapping'} && !defined(%user_mapping)) {
+	if ($config{'user_mapping'} && !%user_mapping) {
 		# Read the user mapping file
 		%user_mapping = ();
 		open(MAPPING, $config{'user_mapping'});

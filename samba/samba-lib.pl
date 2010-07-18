@@ -772,7 +772,7 @@ return 1;
 sub save_samba_acl
 {
 local ($p, $a, $s)=@_;
-defined(%share) || &get_share($s); # use global %share
+%share || &get_share($s); # use global %share
 local $t=&istrue('printable') ? 'ps' : 'fs';
 $a->{'ACL'. $t .'_'. $s} = $p;
 #undef($can_cache);
@@ -783,7 +783,7 @@ return &save_module_acl($a);
 sub drop_samba_acl
 {
 local ($a, $s)=@_;
-defined(%share) || &get_share($s); # use global %share
+%share || &get_share($s); # use global %share
 local $t=&istrue('printable') ? 'ps' : 'fs';
 delete($a->{'ACL'. $t .'_' . $s});
 #undef($can_cache);

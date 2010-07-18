@@ -49,7 +49,7 @@ return &unique(@rv);
 # Returns a reference to an associative array of printer details
 sub get_printer
 {
-if (!defined(%enabled_cache)) {
+if (!%enabled_cache) {
 	%enabled_cache = &get_enabled();
 	}
 

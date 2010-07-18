@@ -303,7 +303,7 @@ Reads the acl file into the given hashes. The first maps user,module to
 sub read_usermin_acl
 {
 local($user, $_, @mods);
-if (!defined(%usermin_acl_hash_cache)) {
+if (!%usermin_acl_hash_cache) {
 	open(ACL, &usermin_acl_filename());
 	while(<ACL>) {
 		if (/^(\S+):\s*(.*)/) {

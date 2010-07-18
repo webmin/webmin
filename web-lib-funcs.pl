@@ -1690,7 +1690,7 @@ more comprehensive check of module availability.
 =cut
 sub read_acl
 {
-if (!defined(%main::acl_hash_cache)) {
+if (!%main::acl_hash_cache) {
 	local $_;
 	open(ACL, &acl_filename());
 	while(<ACL>) {
@@ -5462,7 +5462,7 @@ if (ref($_[0])) {
 	}
 elsif ($_[0]) {
 	# lookup the server in the webmin servers module if needed
-	if (!defined(%main::remote_servers_cache)) {
+	if (!%main::remote_servers_cache) {
 		&foreign_require("servers", "servers-lib.pl");
 		foreach $s (&foreign_call("servers", "list_servers")) {
 			$main::remote_servers_cache{$s->{'host'}} = $s;
@@ -6258,7 +6258,7 @@ Puts the environment back how it was before clean_environment was callled.
 =cut
 sub reset_environment
 {
-if (defined(%UNCLEAN_ENV)) {
+if (%UNCLEAN_ENV) {
 	foreach my $k (keys %UNCLEAN_ENV) {
 		$ENV{$k} = $UNCLEAN_ENV{$k};
 		}
@@ -6917,7 +6917,7 @@ ascii values (like 246). Mainly for internal use.
 =cut
 sub load_entities_map
 {
-if (!defined(%entities_map_cache)) {
+if (!%entities_map_cache) {
 	local $_;
 	open(EMAP, "$root_directory/entities_map.txt");
 	while(<EMAP>) {

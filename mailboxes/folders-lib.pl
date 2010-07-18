@@ -2627,11 +2627,11 @@ sub quoted_message
 local ($mail, $qu, $sig, $bodymode) = @_;
 local $mode = $bodymode == 1 ? 1 :
 	      $bodymode == 2 ? 2 :
-	      defined(%userconfig) ? $userconfig{'view_html'} :
-				     $config{'view_html'};
+	      %userconfig ? $userconfig{'view_html'} :
+			    $config{'view_html'};
 local ($plainbody, $htmlbody) = &find_body($mail, $mode);
 local ($quote, $html_edit, $body);
-local $cfg = defined(%userconfig) ? \%userconfig : \%config;
+local $cfg = %userconfig ? \%userconfig : \%config;
 local @writers = &split_addresses($mail->{'header'}->{'from'});
 local $writer;
 if ($writers[0]->[1]) {
@@ -2647,8 +2647,7 @@ if ($cfg->{'reply_date'} &&
 	local $tmstr = &make_date($tm);
 	$writer = "On $tmstr $writer";
 	}
-local $qm = defined(%userconfig) ? $userconfig{'html_quote'}
-				 : $config{'html_quote'};
+local $qm = %userconfig ? $userconfig{'html_quote'} : $config{'html_quote'};
 if (($cfg->{'html_edit'} == 2 ||
      $cfg->{'html_edit'} == 1 && $htmlbody) &&
      $bodymode != 1) {
@@ -3031,7 +3030,7 @@ if (ref($mails) ne 'ARRAY') {
 	}
 
 # Open cache DBM
-if (!defined(%hasattach)) {
+if (!%hasattach) {
 	local $hasattach_file = $module_info{'usermin'} ?
 		"$user_module_config_directory/attach" :
 		"$module_config_directory/attach";

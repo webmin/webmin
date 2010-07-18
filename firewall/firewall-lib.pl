@@ -330,7 +330,7 @@ return $access{$_[0]};
 sub can_jump
 {
 return 1 if (!$access{'jumps'});
-if (!defined(%can_jumps_cache)) {
+if (!%can_jumps_cache) {
 	%can_jumps_cache = map { lc($_), 1 } split(/\s+/, $access{'jumps'});
 	}
 local $j = ref($_[0]) ? $_[0]->{'j'}->[1] : $_[0];
