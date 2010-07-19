@@ -9,6 +9,10 @@ $heartbeat_version = undef;
 if ($config{'version'}) {
 	$heartbeat_version = $config{'version'};
 	}
+elsif (&backquote_command("($config{'heartbeat'} -V) </dev/null 2>&1") =~
+       /(\S+)/) {
+	$heartbeat_version = $1;
+	}
 elsif (&foreign_check("software")) {
 	&foreign_require("software", "software-lib.pl");
 	local @pinfo = &software::package_info("heartbeat");
