@@ -10,7 +10,7 @@ $backup = &get_backup($ARGV[0]);
 $backup || die "Failed to find backup $ARGV[0]";
 
 # Run the pre-backup command, if any
-if ($backup->{'pre'}) {
+if ($backup->{'pre'} =~ /\S/) {
 	$preout = &backquote_command("($backup->{'pre'}) 2>&1 </dev/null");
 	$premsg = &text('email_pre', $backup->{'pre'})."\n".
 		  $preout."\n";
@@ -28,7 +28,7 @@ if (!$err) {
 	}
 
 # Run the post-backup command, if any
-if (!$err) {
+if (!$err && $backup->{'post'} =~ /\S/) {
 	$postout = &backquote_command("($backup->{'post'}) 2>&1 </dev/null");
 	$postmsg = "\n".
 		  &text('email_post', $backup->{'post'})."\n".
