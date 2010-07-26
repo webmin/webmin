@@ -269,5 +269,19 @@ else {
 	}
 }
 
+# webmin_command_as_user(user, env, command)
+# Return a command as some user with su if this is webmin, or un-changed for
+# usermin
+sub webmin_command_as_user
+{
+my ($user, $env, @args) = @_;
+if ($module_info{'usermin'}) {
+	return join(" ", @args);
+	}
+else {
+	return &command_as_user($user, $env, @args);
+	}
+}
+
 1;
 

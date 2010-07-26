@@ -83,7 +83,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				$err = &text('upload_ecmd', "unzip");
 				}
 			else {
-				open(OUT, &command_as_user($uinfo[0], 0, "(cd $qdir && unzip -o $qpath)")." 2>&1 </dev/null |");
+				open(OUT, &webmin_command_as_user($uinfo[0], 0, "(cd $qdir && unzip -o $qpath)")." 2>&1 </dev/null |");
 				while(<OUT>) {
 					$out .= $_;
 					if (/^\s*[a-z]+:\s+(.*)/) {
@@ -101,7 +101,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				$err = &text('upload_ecmd', "tar");
 				}
 			else {
-				open(OUT, &command_as_user($uinfo[0], 0, "(cd $qdir && tar xvf $qpath)")." 2>&1 </dev/null |");
+				open(OUT, &webmin_command_as_user($uinfo[0], 0, "(cd $qdir && tar xvf $qpath)")." 2>&1 </dev/null |");
 				while(<OUT>) {
 					$out .= $_;
 					if (/^(.*)/) {
@@ -119,7 +119,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				$err = &text('upload_ecmd', "lha");
 				}
 			else {
-				open(OUT, &command_as_user($uinfo[0], 0, "(cd $qdir && lha xf $qpath)")." 2>&1 </dev/null |");
+				open(OUT, &webmin_command_as_user($uinfo[0], 0, "(cd $qdir && lha xf $qpath)")." 2>&1 </dev/null |");
 				while(<OUT>) {
 					$out .= $_;
 					if (/(\S[^\t]*\S)\s+\-\s+/) {
@@ -142,7 +142,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 				$err = &text('upload_ecmd', $zipper);
 				}
 			else {
-				open(OUT, &command_as_user($uinfo[0], 0, "(cd $qdir && $zipper -c $qpath | tar xvf -)")." 2>&1 </dev/null |");
+				open(OUT, &webmin_command_as_user($uinfo[0], 0, "(cd $qdir && $zipper -c $qpath | tar xvf -)")." 2>&1 </dev/null |");
 				while(<OUT>) {
 					$out .= $_;
 					if (/^(.*)/) {
