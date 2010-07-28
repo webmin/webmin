@@ -10,6 +10,7 @@ if (!-r $config{'mdstat'}) {
 if (&has_command("mdadm")) {
 	# Using mdadm commands
 	$raid_mode = "mdadm";
+	$raid_ver = &get_mdadm_version();
 	}
 elsif (&has_command('mkraid') && &has_command('raidstart')) {
 	# Using raid tools commands
@@ -24,7 +25,7 @@ else {
 
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1, 0,
 	&help_search_link("raid", "man", "doc"),
-	undef, undef, &text('index_'.$raid_mode));
+	undef, undef, &text('index_'.$raid_mode, $raid_ver));
 
 # Display configured raid devices
 $conf = &get_raidtab();
