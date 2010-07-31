@@ -142,10 +142,18 @@ if ($config{'given'}) {
 print &ui_table_row($text{'real'},
 	&ui_textbox("real", $real, 40));
 
+# Work out group name
+if ($in{'new'}) {
+	$grp = $mconfig{'default_group'};
+	}
+else {
+	$grp = &all_getgrgid($gid);
+	}
+
 # Show home directory input, with an 'automatic' option
 if ($mconfig{'home_base'}) {
 	local $hb = $in{'new'} ||
-	    &auto_home_dir($mconfig{'home_base'}, $user) eq $home;
+	    &auto_home_dir($mconfig{'home_base'}, $user, $grp) eq $home;
 	$homefield = &ui_radio("home_base", $hb ? 1 : 0,
 			       [ [ 1, $text{'uedit_auto'} ],
 				 [ 0, &ui_filebox("home", $hb ? "" : $home,
@@ -263,8 +271,7 @@ print &ui_table_start($text{'uedit_gmem'}, "width=100%", 4, \@tds);
 
 # Primary group
 print &ui_table_row($text{'group'},
-	&ui_textbox("gid", $in{'new'} ? $mconfig{'default_group'}
-				      : ($x=&all_getgrgid($gid)) || $gid, 13).
+	&ui_textbox("gid", $grp || $gid, 13).
 	" ".&group_chooser_button("gid"), 3);
 
 if ($config{'secmode'} != 1) {

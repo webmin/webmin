@@ -265,6 +265,7 @@ else {
 		$gid = &all_getgrnam($in{'gid'});
 		defined($gid) || &error(&text('usave_egid', $in{'gid'}));
 		}
+	$grp = &all_getgrgid($gid);
 
 	# Build useradmin-style hash of user details
 	local %uhash = ( 'user' => $user,
