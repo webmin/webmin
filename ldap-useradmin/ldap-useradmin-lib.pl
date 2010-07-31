@@ -754,19 +754,19 @@ if ($mconfig{'home_style'} == 0) {
 	return $pfx.$_[1];
 	}
 elsif ($mconfig{'home_style'} == 1) {
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1));
+	&useradmin::mkdir_if_needed($pfx.substr($_[1], 0, 1));
 	return $pfx.substr($_[1], 0, 1)."/".$_[1];
 	}
 elsif ($mconfig{'home_style'} == 2) {
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1));
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1)."/".
+	&useradmin::mkdir_if_needed($pfx.substr($_[1], 0, 1));
+	&useradmin::mkdir_if_needed($pfx.substr($_[1], 0, 1)."/".
 			 substr($_[1], 0, 2));
 	return $pfx.substr($_[1], 0, 1)."/".
 	       substr($_[1], 0, 2)."/".$_[1];
 	}
 elsif ($mconfig{'home_style'} == 3) {
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1));
-	&mkdir_if_needed($pfx.substr($_[1], 0, 1)."/".
+	&useradmin::mkdir_if_needed($pfx.substr($_[1], 0, 1));
+	&useradmin::mkdir_if_needed($pfx.substr($_[1], 0, 1)."/".
 			 substr($_[1], 1, 1));
 	return $pfx.substr($_[1], 0, 1)."/".
 	       substr($_[1], 1, 1)."/".$_[1];
