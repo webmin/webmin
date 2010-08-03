@@ -265,7 +265,9 @@ else{ /* end IE initialization, try to deal with real browsers now ;-) */
             * <li>3 == INTERACTIVE,</li>
             * <li>4 == COMPLETED</li></ul>
             */
+	    /* Doesn't work in Firefox 3.6
             XMLDocument.prototype.readyState = 0;
+	    */
             /**
             * <p>Emulate IE's parseError attribute</p>
             */
