@@ -593,6 +593,32 @@ local ($sr, $hr) = &get_subnets_and_hosts();
 return @{$hr};
 }
 
+sub get_host_shared_network
+{
+local ($h) = @_;
+local $shar;
+while($h) {
+	if ($h->{'name'} eq 'shared-network') {
+		return $h;
+		}
+	$h = $h->{'parent'};
+	}
+return undef;
+}
+
+sub get_my_shared_network_hosts
+{
+local ($h) = @_;
+local $shar = &get_host_shared_network($h);
+local @rv;
+foreach my $oh (&get_hosts()) {
+	if (&get_host_shared_network($oh) eq $shar) {
+		push(@rv, $oh);
+		}
+	}
+return @rv;
+}
+
 # hash that links objtypes shortcuts with object names
 %obj_names2types = qw(host hst group grp subnet sub shared-network sha);
 

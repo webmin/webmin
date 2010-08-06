@@ -55,7 +55,7 @@ else {
 	# Check for a hostname clash
 	if (($in{'new'} || $in{'name'} ne $host->{'values'}->[0]) &&
 	    $access{'uniq_hst'}) {
-		foreach $h (&get_hosts()) {
+		foreach $h (&get_my_shared_network_hosts($npar)) {
                         &error("$text{'eacl_np'} $text{'eacl_uniq'}")
                                 if (lc($h->{'values'}->[0]) eq lc($in{'name'}));
                         }
@@ -68,7 +68,7 @@ else {
 				      : &find("hardware", $host->{'members'});
 		if ((!$oldhard || $in{'hardware'} ne $oldhard->{'values'}->[1])
 		    && $access{'uniq_hst'}) {
-			foreach $h (&get_hosts()) {
+			foreach $h (&get_my_shared_network_hosts($npar)) {
 				$chard = &find("hardware", $h->{'members'});
 				&error("$text{'eacl_np'} $text{'eacl_uniqh'}")
 					if ($chard && lc($chard->{'values'}->[1]) eq lc($in{'hardware'}));
@@ -96,7 +96,7 @@ else {
 		if ((!$oldfixed ||
 		    $in{'fixed-address'} ne $oldfixed->{'values'}->[0])
 		    && $access{'uniq_hst'}) {
-			foreach $h (&get_hosts()) {
+			foreach $h (&get_my_shared_network_hosts($npar)) {
 				$cfixed = &find("fixed-address",
 						$h->{'members'});
 				&error("$text{'eacl_np'} $text{'eacl_uniqi'}")

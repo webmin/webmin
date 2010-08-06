@@ -38,3 +38,4 @@ When applying the configuration fails with an error mentioning a line in the con
 ---- Changes since 1.510 ----
 Added support for multi-value options, thanks to a patch from Luke Suchocki.
 Also added support for multi-value options within a bracketed expression.
+Hostname, IP address and MAC address clashes are now only checked for in the same shared network.
