@@ -12,3 +12,5 @@ Added checkboxes and Delete Selected buttons on the aliases, virtual mappings, d
 ---- Changes since 1.490 ----
 Autoreply messages starting with <html> or <body> will now be sent using the tex
 t/html MIME type.
+---- Changes since 1.510 ----
+Added spam checking to the autoreply script, if spamassassin is installed.

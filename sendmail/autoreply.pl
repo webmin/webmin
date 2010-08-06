@@ -38,6 +38,7 @@ if (!$config{'sendmail_path'} || !-x $config{'sendmail_path'}) {
 # read headers and body
 $lnum = 0;
 while(<STDIN>) {
+	$headers .= $_;
 	s/\r|\n//g;
 	if (/^From\s+(\S+)/ && $lnum == 0) {
 		# Magic From line
@@ -72,6 +73,32 @@ if ($header{'from'} =~ /postmaster|mailer-daemon/i ||
     $fromline =~ /postmaster|mailer-daemon|<>/ ) {
 	# Do nothing if post is a bounce
 	exit 0;
+	}
+
+# if spamassassin is installed, feed the email to it
+$spam = &has_command("spamassassin");
+if ($spam) {
+	$temp = "/tmp/autoreply.spam.$$";
+	unlink($temp);
+	open(SPAM, "| $spam >$temp 2>/dev/null");
+	print SPAM $headers;
+	print SPAM $body;
+	close(SPAM);
+	$isspam = undef;
+	open(SPAMOUT, $temp);
+	while(<SPAMOUT>) {
+		if (/^X-Spam-Status:\s+(\S+)/i) {
+			$isspam = lc($1) eq 'yes' ? 1 : 0;
+			last;
+			}
+		last if (!/\S/);
+		}
+	close(SPAMOUT);
+	unlink($temp);
+	if ($isspam) {
+		print STDERR "Not autoreplying to spam\n";
+		exit 0;
+		}
 	}
 
 # work out the correct to address
@@ -382,3 +409,16 @@ $t =~ s/([=\177-\377])/sprintf("=%2.2X",ord($1))/ge;
 return $t;
 }
 
+sub has_command
+{
+local ($cmd) = @_;
+if ($cmd =~ /^\//) {
+	return -x $cmd ? $cmd : undef;
+	}
+else {
+	foreach my $d (split(":", $ENV{'PATH'}), "/usr/bin", "/usr/local/bin") {
+		return "$d/$cmd" if (-x "$d/$cmd");
+		}
+	return undef;
+	}
+}

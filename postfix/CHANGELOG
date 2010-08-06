@@ -75,3 +75,4 @@ If a map is made up of files in multiple directories and a Webmin user has a dir
 Fixed the descriptions of logged events as shown in the Webmin Actions Log module.
 ---- Changes since 1.510 ----
 Added support for CIDR maps and multiple SMTP client restriction maps.
+Added spam checking to the autoreply script, if spamassassin is installed.
