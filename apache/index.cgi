@@ -111,9 +111,13 @@ if ($httpd_modules{'core'} >= 1.3) {
 	# build list of name-based virtual host IP addresses
 	@nv = &find_directive("NameVirtualHost", $conf);
 	foreach $nv (@nv) {
+		if ($nv =~ /:(\d+)$/) {
+			push(@nvports, $1);
+			}
 		$nv =~ s/:\d+$//;
 		$nv{$nv =~ /^\*/ ? "*" : &to_ipaddress($nv)}++;
 		}
+	@nvports = &unique(@nvports);
 	}
 elsif ($httpd_modules{'core'} >= 1.2) {
 	# only one name-based virtual host IP address - the default address
@@ -405,12 +409,15 @@ if ($access{'create'}) {
 		&ui_checkbox("nv", 1, $text{'index_nv'}, 1)."<br>".
 		&ui_checkbox("listen", 1, $text{'index_listen'}, 1));
 
+	# Work out sensible default port
+
 	# Port
 	print &ui_table_row($text{'index_port'},
-		&choice_input("0", "port_mode", "0",
-				   "$text{'index_default'},0",
-				   "$text{'index_any'},1", ",2").
-		&ui_textbox("port", undef, 5));
+		&choice_input(@nvports ? 2 : 0,
+			      "port_mode", "0",
+			      "$text{'index_default'},0",
+				"$text{'index_any'},1", ",2").
+		&ui_textbox("port", @nvports ? $nvports[0] : undef, 5));
 
 	# Document root
 	print &ui_table_row($text{'index_root'},

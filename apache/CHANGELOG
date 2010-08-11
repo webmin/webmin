@@ -47,3 +47,5 @@ Fixed handling of IPv6 addresses so that Apache's [address] format is now fully 
 ---- Changes since 1.470 ----
 Fixed bug that preventing saving of virtual hosts with multiple addresses, one of which is IPv6.
 Full Bulgarian translation, thanks to King.
+---- Changes since 1.510 ----
+The default port on the Create virtual host tab is now set to better match the name-based virtual host ports.
