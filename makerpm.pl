@@ -176,11 +176,18 @@ fi
 
 %post
 inetd=`grep "^inetd=" /etc/webmin/miniserv.conf 2>/dev/null | sed -e 's/inetd=//g'`
+startafter=0
 if [ "\$1" != 1 ]; then
 	# Upgrading the RPM, so stop the old webmin properly
 	if [ "\$inetd" != "1" ]; then
+		kill -0 `cat /var/webmin/miniserv.pid 2>/dev/null` 2>/dev/null
+		if [ "\$?" = 0 ]; then
+		  startafter=1
+		fi
 		/etc/init.d/webmin stop >/dev/null 2>&1 </dev/null
 	fi
+else
+  startafter=1
 fi
 cd /usr/libexec/webmin
 config_dir=/etc/webmin
@@ -214,7 +221,7 @@ export config_dir var_dir perl autoos port login crypt host ssl nochown autothir
 ./setup.sh >\$tempdir/webmin-setup.out 2>&1
 chmod 600 \$tempdir/webmin-setup.out
 rm -f /var/lock/subsys/webmin
-if [ "$inetd" != "1" ]; then
+if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
 	/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
 fi
 cat >/etc/webmin/uninstall.sh <<EOFF
