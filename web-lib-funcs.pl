@@ -1593,6 +1593,16 @@ elsif ($fmt eq 'mm/dd/yyyy') {
 elsif ($fmt eq 'yyyy/mm/dd') {
 	$date = sprintf "%4.4d/%2.2d/%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
 	}
+elsif ($fmt eq 'd. mon yyyy') {
+	$date = sprintf "%d. %s %4.4d",
+			$tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900;
+	}
+elsif ($fmt eq 'dd.mm.yyyy') {
+	$date = sprintf "%2.2d.%2.2d.%4.4d", $tm[3], $tm[4]+1, $tm[5]+1900;
+	}
+elsif ($fmt eq 'yyyy-mm-dd') {
+	$date = sprintf "%4.4d-%2.2d-%2.2d", $tm[5]+1900, $tm[4]+1, $tm[3];
+	}
 if (!$only) {
 	$date .= sprintf " %2.2d:%2.2d", $tm[2], $tm[1];
 	}
