@@ -294,6 +294,7 @@ my ($always) = @_;
 my ($total, $free) = (0, 0);
 my @mounted = &mount::list_mounted();
 my %donezone;
+my %donevzfs;
 foreach $m (@mounted) {
 	if ($m->[2] =~ /^ext/ ||
 	    $m->[2] eq "reiserfs" || $m->[2] eq "ufs" ||
