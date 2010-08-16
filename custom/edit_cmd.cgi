@@ -87,9 +87,11 @@ if (@servers > 1) {
 	@hosts = ( 0 ) if (!@hosts);
 	print &ui_table_row(&hlink($text{'edit_servers'}, "servers"),
 	 &ui_select("hosts", \@hosts,
-		 [ sort { lc($a->[1]) cmp lc($b->[1]) }
-			map { [ $_->{'id'}, ($_->{'desc'} || $_->{'host'}) ] }
-		            @servers ],
+		 [ map { [ $_->{'id'},
+			   !$_->{'host'} ? $_->{'desc'} :
+			     $_->{'host'}.
+			     ($_->{'desc'} ? ' ('.$_->{'desc'}.')' : '') ] }
+		       sort { lc($a->{'host'}) cmp lc($b->{'host'}) } @servers],
 		 5, 1), 3);
 	}
 

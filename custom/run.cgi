@@ -55,7 +55,7 @@ foreach $h (@hosts) {
 					$cmd, $env, $export, $str, 1);
 		}
 	else {
-		# Foreign call
+		# Remote foreign call
 		&remote_foreign_require($server->{'host'}, "custom",
 					"custom-lib.pl");
 		&remote_foreign_call($server->{'host'}, "custom",
