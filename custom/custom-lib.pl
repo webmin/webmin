@@ -376,13 +376,13 @@ for($i=0; defined($name = $in{"name_$i"}); $i++) {
 	}
 }
 
-# set_parameter_envs(&command, command-str, &uinfo, [set-in])
+# set_parameter_envs(&command, command-str, &uinfo, [set-in], [skip-menu-check])
 # Sets $ENV variables based on parameter inputs, and returns the list of
 # environment variable commands, the export commands, the command string,
 # and the command string to display.
 sub set_parameter_envs
 {
-local ($cmd, $str, $uinfo, $setin) = @_;
+local ($cmd, $str, $uinfo, $setin, $skipfound) = @_;
 $setin ||= \%in;
 local $displaystr = $str;
 local ($env, $export, @vals);
@@ -414,7 +414,7 @@ foreach my $a (@{$cmd->{'args'}}) {
 		foreach my $l (&read_opts_file($a->{'opts'})) {
 			$found++ if ($l->[0] eq $setin->{$n});
 			}
-		$found || &error($text{'run_eopt'});
+		$found || $skipfound || &error($text{'run_eopt'});
 		$rv = $setin->{$n};
 		}
 	elsif ($a->{'type'} == 10) {
@@ -439,7 +439,7 @@ foreach my $a (@{$cmd->{'args'}}) {
 			foreach my $l (@opts) {
 				$found++ if ($l->[0] eq $v);
 				}
-			$found || &error($text{'run_eopt'});
+			$found || $skipfound || &error($text{'run_eopt'});
 			}
 		$rv = join(" ", @vals);
 		}

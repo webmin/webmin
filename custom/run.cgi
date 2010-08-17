@@ -60,7 +60,7 @@ foreach $h (@hosts) {
 					"custom-lib.pl");
 		&remote_foreign_call($server->{'host'}, "custom",
 				     "set_parameter_envs", $cmd, $cmd->{'cmd'},
-				     \@user_info, \%in);
+				     \@user_info, \%in, 1);
 		($got, $out, $timeout) = &remote_foreign_call(
 			$server->{'host'}, "custom", "execute_custom_command",
 			$cmd, $env, $export, $str);
