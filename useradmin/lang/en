@@ -237,6 +237,7 @@ udel_echanged=Password file has changed. Please return to the user list and sele
 udel_other=Deleting from other modules ..
 udel_pass=Deleting password file entry ..
 udel_groups=Removing from groups ..
+udel_ugroupother=Deleting this user's group in other modules ..
 udel_ugroup=Deleting this user's group ..
 udel_home=Deleting home directory ..
 udel_done=.. done

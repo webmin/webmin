@@ -39,11 +39,13 @@ if ($in{'confirmed'}) {
 			push(@secs, $g->{'gid'});
 			}
 		}
+
+	# Go ahead and do it!
 	&set_user_envs($user, 'DELETE_USER', undef, \@secs);
 	$merr = &making_changes();
 	&error(&text('usave_emaking', "<tt>$merr</tt>")) if (defined($merr));
 
-	# Go ahead and do it!
+	# Delete in other modules first
 	$in{'others'} = !$access{'dothers'} if ($access{'dothers'} != 1);
 	if ($in{'others'}) {
 		print "$text{'udel_other'}<br>\n";
@@ -57,10 +59,12 @@ if ($in{'confirmed'}) {
 			}
 		}
 	
+	# Delete the user
 	print "$text{'udel_pass'}<br>\n";
 	&delete_user($user);
 	print "$text{'udel_done'}<p>\n";
 
+	# Delete the user from other groups
 	print "$text{'udel_groups'}<br>\n";
 	foreach $g (&list_groups()) {
 		@mems = split(/,/, $g->{'members'});
@@ -75,10 +79,23 @@ if ($in{'confirmed'}) {
 		}
 	print "$text{'udel_done'}<p>\n";
 
+	# Delete the user's personal group, if it has no other members
 	if ($mygroup && !$mygroup->{'members'}) {
 		local $another;
 		foreach $ou (&list_users()) {
 			$another = $ou if ($ou->{'gid'} == $mygroup->{'gid'});
+			}
+		if (!$another && $in{'others'}) {
+			print "$text{'udel_ugroupother'}<br>\n";
+			local $error_must_die = 1;
+			eval { &other_modules("useradmin_delete_group",
+					      $mygroup); };
+			if ($@) {
+				print &text('udel_failed', $@),"<p>\n";
+				}
+			else {
+				print "$text{'gdel_done'}<p>\n";
+				}
 			}
 		if (!$another) {
 			print "$text{'udel_ugroup'}<br>\n";
@@ -88,7 +105,8 @@ if ($in{'confirmed'}) {
 		}
 	&unlock_user_files();
 
-	if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ && $access{'delhome'} != 0) {
+	if ($in{'delhome'} && $user->{'home'} !~ /^\/+$/ &&
+	    $access{'delhome'} != 0) {
 		# Delete home directory
 		print "$text{'udel_home'}<br>\n";
 		&lock_file($user->{'home'});
