@@ -522,7 +522,8 @@ if (%ouser) {
 
 	# Rename group if needed and if possible
 	if ($user{'user'} ne $ouser{'user'} &&
-	    $user{'gid'} == $ouser{'gid'}) {
+	    $user{'gid'} == $ouser{'gid'} &&
+	    $in{'grename'}) {
 		($group) = grep { $_->{'gid'} == $user{'gid'} } &list_groups();
 		if ($group->{'group'} eq $ouser{'user'} &&
 		    &can_edit_group(\%access, $group)) {
