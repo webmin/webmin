@@ -148,7 +148,7 @@ else {
 if ($in{'others'}) {
 	local $error_must_die = 1;
 	eval {
-		if (%ouser) {
+		if (%ogroup) {
 			&other_modules("useradmin_modify_group",
 				       \%group, \%ogroup);
 			}
