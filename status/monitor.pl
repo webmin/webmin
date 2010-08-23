@@ -11,11 +11,13 @@ require './status-lib.pl';
 # Check if the monitor should be run now
 @tm = localtime(time());
 if ($ARGV[0] ne "--force") {
-	shift(@ARGV);
 	@hours = split(/\s+/, $config{'sched_hours'});
 	!@hours || &indexof($tm[2], @hours) >= 0 || exit;
 	@days = split(/\s+/, $config{'sched_days'});
 	!@days || &indexof($tm[6], @days) >= 0 || exit;
+	}
+else {
+	shift(@ARGV);
 	}
 
 # Check for list of monitors to limit refresh to
