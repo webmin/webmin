@@ -4,11 +4,6 @@ Functions for creating and listing Webmin scheduled functions.
 
 =cut
 
-# XXX UI
-# XXX make sure temp files are cleaned up
-# XXX switch all cron jobs at install time
-# XXX delete jobs when un-installing modules
-
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
@@ -177,10 +172,29 @@ if ($old_cmd && &foreign_installed("cron")) {
 	}
 }
 
+=head2 delete_webmin_module_crons(module)
+
+Remove all Webmin cron jobs for some module
+
+=cut
+sub delete_webmin_module_crons
+{
+my ($mod) = @_;
+foreach my $cron (&list_webmin_crons()) {
+	if ($cron->{'module'} eq $mod) {
+		&delete_webmin_cron($cron);
+		}
+	}
+}
+
 =head2 show_times_input(&job, [special])
 
 Returns HTML for inputs for selecting the schedule for a cron job, defined
 by the first parameter which must be a hash ref returned by list_cron_jobs.
+
+=item job - Hash ref for a webmincron object
+
+=item special - 0=don't allow special times (like @hourly), 1=allow
 
 =cut
 sub show_times_input
