@@ -120,7 +120,7 @@ configs_prefs=Users can edit preferences?
 configs_sels=Only selected ..
 configs_global=Global module configuration
 configs_globaldesc=The settings in this form apply to all users of the module, and generally set options related to the programs and files that it uses.
-configs_user=Default users preferences
+configs_user=Default user preferences
 configs_userdesc=The settings in this form define the defaults for user-editable preferences for this module. Unless you specify otherwise, they can be over-ridden by individual users.
 
 acl_title=Available Modules
