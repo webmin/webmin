@@ -22,7 +22,7 @@ else {
 
 	map { $perms[$_]++ } split(/\0/, $in{'perms'});
 	@desc = &table_structure($master_db, 'user');
-	$host = $in{'host_def'} ? '' : $in{'host'};
+	$host = $in{'host_def'} ? '%' : $in{'host'};
 	$user = $in{'mysqluser_def'} ? '' : $in{'mysqluser'};
 	if ($in{'new'}) {
 		# Create a new user

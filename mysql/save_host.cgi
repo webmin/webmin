@@ -42,7 +42,7 @@ else {
 			}
 		$sql = sprintf "insert into host (%s) values ('%s', '%s', %s)",
 			join(",", map { $desc[$_]->{'field'} } (0 .. &host_priv_cols()+2-1)),
-			$in{'host_def'} ? '' : $in{'host'}, $db,
+			$in{'host_def'} ? '%' : $in{'host'}, $db,
 			join(",", @yesno);
 		}
 	else {
@@ -53,7 +53,7 @@ else {
 			}
 		$sql = sprintf "update host set host = '%s', db = '%s', %s ".
 			       "where host = '%s' and db = '%s'",
-			$in{'host_def'} ? '' : $in{'host'}, $db,
+			$in{'host_def'} ? '%' : $in{'host'}, $db,
 			join(" , ", @yesno), $in{'oldhost'}, $in{'olddb'};
 		}
 	&execute_sql_logged($master_db, $sql);
