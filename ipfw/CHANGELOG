@@ -8,3 +8,5 @@ The firewall configuration can now be copied automatically to multiple hosts in 
 When creating a firewall rule, the rule number can be optionally manually entered.
 ---- Changes since 1.380 ----
 On FreeBSD systems, the firewall is now enabled at boot using /etc/rc.conf, and the IPFW config file specified in rc.conf is now used automatically.
+---- Changes since 1.510 ----
+Added support for the firewall_script directive in /etc/rc.conf, as seen on FreeBSD 8.
