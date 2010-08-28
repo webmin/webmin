@@ -105,12 +105,6 @@ cp -rp * %{buildroot}/usr/libexec/webmin
 cp webmin-daemon %{buildroot}/etc/sysconfig/daemons/webmin
 cp webmin-init %{buildroot}/etc/init.d/webmin
 cp webmin-pam %{buildroot}/etc/pam.d/webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc2.d/S99webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc3.d/S99webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc5.d/S99webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc0.d/K10webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc1.d/K10webmin
-ln -s /etc/init.d/webmin %{buildroot}/etc/rc.d/rc6.d/K10webmin
 echo rpm >%{buildroot}/usr/libexec/webmin/install-type
 
 %clean
@@ -122,12 +116,6 @@ echo rpm >%{buildroot}/usr/libexec/webmin/install-type
 /usr/libexec/webmin
 %config /etc/sysconfig/daemons/webmin
 /etc/init.d/webmin
-/etc/rc.d/rc2.d/S99webmin
-/etc/rc.d/rc3.d/S99webmin
-/etc/rc.d/rc5.d/S99webmin
-/etc/rc.d/rc0.d/K10webmin
-/etc/rc.d/rc1.d/K10webmin
-/etc/rc.d/rc6.d/K10webmin
 %config /etc/pam.d/webmin
 
 %pre
@@ -224,6 +212,8 @@ rm -f /var/lock/subsys/webmin
 if [ "\$inetd" != "1" -a "\$startafter" = "1" ]; then
 	/etc/init.d/webmin start >/dev/null 2>&1 </dev/null
 fi
+chkconfig --add webmin
+chkconfig webmin on
 cat >/etc/webmin/uninstall.sh <<EOFF
 #!/bin/sh
 printf "Are you sure you want to uninstall Webmin? (y/n) : "
