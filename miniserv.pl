@@ -2081,6 +2081,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"QUERY_STRING"} = $querystring;
 	$ENV{"MINISERV_CONFIG"} = $config_file;
 	$ENV{"HTTPS"} = "ON" if ($use_ssl || $config{'inetd_ssl'});
+	$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 	$ENV{"SESSION_ID"} = $session_id if ($session_id);
 	$ENV{"LOCAL_USER"} = $localauth_user if ($localauth_user);
 	$ENV{"MINISERV_INTERNAL"} = $miniserv_internal if ($miniserv_internal);
@@ -4645,6 +4646,7 @@ sub write_pid_file
 open(PIDFILE, ">$config{'pidfile'}");
 printf PIDFILE "%d\n", getpid();
 close(PIDFILE);
+$miniserv_main_pid = getpid();
 }
 
 # lock_user_password(user)
@@ -4890,6 +4892,7 @@ foreach my $cron (@webmincrons) {
 			$ENV{"DOCUMENT_REALROOT"} = $root0;
 			$ENV{"MINISERV_CONFIG"} = $config_file;
 			$ENV{"HTTPS"} = "ON" if ($use_ssl);
+			$ENV{"MINISERV_PID"} = $miniserv_main_pid;
 			$ENV{"SCRIPT_FILENAME"} = $config{'webmincron_wrapper'};
 			if ($ENV{"SCRIPT_FILENAME"} =~ /^\Q$root0\E(\/.*)$/) {
 				$ENV{"SCRIPT_NAME"} = $1;
@@ -4910,7 +4913,7 @@ foreach my $cron (@webmincrons) {
 				};
 
 			# Run the wrapper script by evaling it
-			$pkg = "webmincron";	# XXX
+			$pkg = "webmincron";
 			$0 = $config{'webmincron_wrapper'};
 			@ARGV = ( $cron );
 			$main_process_id = $$;

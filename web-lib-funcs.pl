@@ -1789,10 +1789,14 @@ if ($gconfig{'os_type'} ne 'windows') {
 	my ($pid, $addr, $i);
 	$miniserv{'inetd'} && return;
 	my @oldst = stat($miniserv{'pidfile'});
-	open(PID, $miniserv{'pidfile'}) || &error("Failed to open PID file");
-	chop($pid = <PID>);
-	close(PID);
-	if (!$pid) { &error("Invalid PID file"); }
+	$pid = $ENV{'MINISERV_PID'};
+	if (!$pid) {
+		open(PID, $miniserv{'pidfile'}) ||
+			&error("Failed to open PID file $miniserv{'pidfile'}");
+		chop($pid = <PID>);
+		close(PID);
+		$pid || &error("Invalid PID file $miniserv{'pidfile'}");
+		}
 
 	# Just signal miniserv to restart
 	&kill_logged('HUP', $pid) || &error("Incorrect Webmin PID $pid");
@@ -1849,10 +1853,14 @@ if ($gconfig{'os_type'} ne 'windows') {
 	# Send a USR1 signal to re-read the config
 	my ($pid, $addr, $i);
 	$miniserv{'inetd'} && return;
-	open(PID, $miniserv{'pidfile'}) || &error("Failed to open PID file");
-	chop($pid = <PID>);
-	close(PID);
-	if (!$pid) { &error("Invalid PID file"); }
+	$pid = $ENV{'MINISERV_PID'};
+	if (!$pid) {
+		open(PID, $miniserv{'pidfile'}) ||
+			&error("Failed to open PID file $miniserv{'pidfile'}");
+		chop($pid = <PID>);
+		close(PID);
+		$pid || &error("Invalid PID file $miniserv{'pidfile'}");
+		}
 	&kill_logged('USR1', $pid) || &error("Incorrect Webmin PID $pid");
 
 	# Make sure this didn't kill Webmin!
@@ -6256,7 +6264,8 @@ foreach my $e ('WEBMIN_CONFIG', 'SERVER_NAME', 'CONTENT_TYPE', 'REQUEST_URI',
 	    'MINISERV_CONFIG', 'SCRIPT_NAME', 'SERVER_ADMIN', 'CONTENT_LENGTH',
 	    'HTTPS', 'FOREIGN_MODULE_NAME', 'FOREIGN_ROOT_DIRECTORY',
 	    'SCRIPT_FILENAME', 'PATH_TRANSLATED', 'BASE_REMOTE_USER',
-	    'DOCUMENT_REALROOT', 'MINISERV_CONFIG', 'MYSQL_PWD') {
+	    'DOCUMENT_REALROOT', 'MINISERV_CONFIG', 'MYSQL_PWD',
+	    'MINISERV_PID') {
 	delete($ENV{$e});
 	}
 }
