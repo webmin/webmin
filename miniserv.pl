@@ -95,7 +95,13 @@ die "Session authentication cannot be used in inetd mode"
 	if ($config{'inetd'} && $config{'session'});
 
 # check if the PAM module is available to authenticate
-if (!$config{'no_pam'}) {
+if ($config{'assume_pam'}) {
+	# Just assume that it will work. This can also be used to work around
+	# a Solaris bug in which using PAM before forking caused it to fail
+	# later!
+	$use_pam = 1;
+	}
+elsif (!$config{'no_pam'}) {
 	eval "use Authen::PAM;";
 	if (!$@) {
 		# check if the PAM authentication can be used by opening a
@@ -3080,6 +3086,7 @@ if ($use_pam) {
 	# Check with PAM
 	$pam_username = $_[0];
 	$pam_password = $_[1];
+	eval "use Authen::PAM;";
 	local $pamh = new Authen::PAM($config{'pam'}, $pam_username,
 				      \&pam_conv_func);
 	if (ref($pamh)) {
@@ -3669,6 +3676,7 @@ sub pam_conversation_process
 local ($user, $writer, $reader) = @_;
 $miniserv::pam_conversation_process_writer = $writer;
 $miniserv::pam_conversation_process_reader = $reader;
+eval "use Authen::PAM;";
 local $convh = new Authen::PAM(
 	$config{'pam'}, $user, \&miniserv::pam_conversation_process_func);
 local $pam_ret = $convh->pam_authenticate();
