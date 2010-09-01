@@ -24,9 +24,6 @@ elsif ($has_net_lib) {
 	if ($rc{'firewall_type'} =~ /^\//) {
 		$ipfw_file = $rc{'firewall_type'};
 		}
-	elsif ($rc{'firewall_script'} =~ /^\//) {
-		$ipfw_file = $rc{'firewall_script'};
-		}
 	}
 
 @actions = ( "allow", "deny", "reject", "reset", "skipto", "fwd", "check-state",
@@ -628,11 +625,10 @@ if ($has_net_lib && defined(&net::get_rc_conf)) {
 		# Disabled
 		return 0;
 		}
-	elsif ($rc{'firewall_type'} eq $ipfw_file ||
-	       $rc{'firewall_script'} eq $ipfw_file) {
+	elsif ($rc{'firewall_type'} eq $ipfw_file) {
 		return 2;
 		}
-	elsif ($rc{'firewall_type'} || $rc{'firewall_script'}) {
+	elsif ($rc{'firewall_type'}) {
 		# A *different* file is enabled
 		return -1;
 		}
@@ -649,12 +645,7 @@ if ($has_net_lib && defined(&net::get_rc_conf) && &get_ipfw_format() == 1) {
 	# Add to rc.conf
 	local %rc = &net::get_rc_conf();
 	&lock_file("/etc/rc.conf");
-	if ($rc{'firewall_script'}) {
-		&net::save_rc_conf('firewall_script', $ipfw_file);
-		}
-	else {
-		&net::save_rc_conf('firewall_type', $ipfw_file);
-		}
+	&net::save_rc_conf('firewall_type', $ipfw_file);
 	&net::save_rc_conf('firewall_enable', 'YES');
 	&net::save_rc_conf('firewall_quiet', 'YES');
 	&unlock_file("/etc/rc.conf");
