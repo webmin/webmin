@@ -160,11 +160,11 @@ if ($already) {
 if ($old_cmd && &foreign_installed("cron")) {
 	&foreign_require("cron");
 	my @jobs = &cron::list_cron_jobs();
-	my ($job) = grep {
+	@jobs = grep {
 	     $_->{'user'} eq 'root' &&
 	     $_->{'command'} =~ /(^|[ \|\&;\/])\Q$old_cmd\E($|[ \|\&><;])/
 	     } @jobs;
-	if ($job) {
+	foreach my $job (reverse(@jobs)) {
 		&lock_file(&cron::cron_file($job));
 		&cron::delete_cron_job($job);
 		&unlock_file(&cron::cron_file($job));
