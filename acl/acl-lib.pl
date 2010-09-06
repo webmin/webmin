@@ -1195,5 +1195,114 @@ if (keys %$args) {
 return $proto."://".$user.":".$pass."\@".$host."/".$prefix.$argstr;
 }
 
+# validate_userdb(string)
+# Checks if some user database is usable, and if not returns an error message
+sub validate_userdb
+{
+my ($str) = @_;
+my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
+if ($proto eq "mysql" || $proto eq "postgresql") {
+	# Load DBI driver
+	eval 'use DBI;';
+	return &text('sql_emod', 'DBI') if ($@);
+	if ($proto eq "mysql") {
+		eval 'use DBD::mysql;';
+		return &text('sql_emod', 'DBD::mysql') if ($@);
+		my $drh = DBI->install_driver("mysql");
+		return $text{'sql_emysqldriver'} if (!$drh);
+		}
+	else {
+		eval 'use DBD::Pg;';
+		return &text('sql_emod', 'DBD::Pg') if ($@);
+		my $drh = DBI->install_driver("Pg");
+		return $text{'sql_epostgresqldriver'} if (!$drh);
+		}
+
+	# Connect to the database
+	my $dbh = &connect_userdb($str);
+	ref($dbh) || return $dbh;
+
+	# Validate critical tables
+	my %tables = ( "webmin_user" => [ "id", "name", "pass" ],
+		       "webmin_group" => [ "id", "name", "desc" ],
+		       "webmin_user_attr" => [ "id", "attr", "value" ],
+		       "webmin_group_attr" => [ "id", "attr", "value" ],
+		       "webmin_user_acl" => [ "id", "module", "attr", "value" ],
+		       "webmin_group_acl" => [ "id", "module", "attr", "value"],
+		     );
+	foreach my $t (keys %tables) {
+		my @cols = @{$tables{$t}};
+		my $sql = "select ".join(",", @cols)." from $t limit 1";
+		my $cmd = $dbh->prepare($sql);
+		if (!$cmd || !$cmd->execute()) {
+			return &text('sql_etable', $t,
+				     &html_escape($dbh->errstr));
+			}
+		$cmd->finish();
+		}
+	&disconnect_userdb($str, $dbh);
+	return undef;
+	}
+elsif ($proto eq "ldap") {
+	# XXX
+	}
+else {
+	return "Unknown user database type $proto";
+	}
+}
+
+# connect_userdb(string)
+# Returns a handle for talking to a user database - may be a DBI or LDAP handle.
+# On failure returns an error message string.
+sub connect_userdb
+{
+my ($str) = @_;
+my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
+if ($proto eq "mysql") {
+	# Connect to MySQL with DBI
+	my $drh = eval "use DBI; DBI->install_driver('mysql');";
+	$drh || return $text{'sql_emysqldriver'};
+	my ($host, $port) = split(/:/, $host);
+	my $cstr = "database=$prefix;host=$host";
+	$cstr .= ";port=$port" if ($port);
+	my $dbh = $drh->connect($cstr, $user, $pass, { });
+	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
+	return $dbh;
+	}
+elsif ($proto eq "postgresql") {
+	# Connect to PostgreSQL with DBI
+	my $drh = eval "use DBI; DBI->install_driver('Pg');";
+	$drh || return $text{'sql_epostgresqldriver'};
+	my ($host, $port) = split(/:/, $host);
+	my $cstr = "dbname=$prefix;host=$host";
+	$cstr .= ";port=$port" if ($port);
+	my $dbh = $drh->connect($cstr, $user, $pass);
+	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
+	return $dbh;
+	}
+elsif ($proto eq "ldap") {
+	# XXX
+	return "LDAP not done yet";
+	}
+else {
+	return "Unknown protocol $proto";
+	}
+}
+
+# disconnect_userdb(string, &handle)
+# Closes a handle opened by connect_userdb
+sub disconnect_userdb
+{
+my ($str, $h) = @_;
+if ($str =~ /^(mysql|postgresql):/) {
+	# DBI disconnnect
+	$h->disconnect();
+	}
+elsif ($str =~ /^ldap:/) {
+	# LDAP disconnect
+	$h->disconnect();
+	}
+}
+
 1;
 
