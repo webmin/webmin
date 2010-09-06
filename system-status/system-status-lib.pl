@@ -354,12 +354,23 @@ sub setup_collectinfo_job
 {
 &foreign_require("webmincron");
 my $step = $config{'collect_interval'};
-$step = 5 if (!$step || $step eq 'none');
-my $cron = { 'module' => $module_name,
-	     'func' => 'scheduled_collect_system_info',
-	     'interval' => $step * 60,
-	   };
-&webmincron::create_webmin_cron($cron, $systeminfo_cron_cmd);
+if ($step ne 'none') {
+	# Setup webmin cron
+	$step ||= 5;
+	my $cron = { 'module' => $module_name,
+		     'func' => 'scheduled_collect_system_info',
+		     'interval' => $step * 60,
+		   };
+	&webmincron::create_webmin_cron($cron, $systeminfo_cron_cmd);
+	}
+else {
+	# Delete webmin cron
+	my $cron = &webmincron::find_webmin_cron($module_name,
+					 'scheduled_collect_system_info');
+	if ($cron) {
+		&webmincron::delete_webmin_cron($cron);
+		}
+	}
 }
 
 # get_current_drive_temps()
