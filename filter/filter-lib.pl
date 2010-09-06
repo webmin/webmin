@@ -224,10 +224,10 @@ if ($filter->{'condspam'}) {
 	}
 elsif ($filter->{'condlevel'}) {
 	local $stars = join("", map { "\\*" } (1..$filter->{'condlevel'}));
-	@conds = ( [ "", "X-Spam-Level: $stars" ] );
+	@conds = ( [ "", "^"."X-Spam-Level: $stars" ] );
 	}
 elsif ($filter->{'condheader'}) {
-	@conds = ( [ "", $filter->{'condheader'}.": ".
+	@conds = ( [ "", "^".$filter->{'condheader'}.": ".
 			 $filter->{'condvalue'} ] );
 	}
 elsif ($filter->{'condtype'} eq '<' || $filter->{'condtype'} eq '>') {
