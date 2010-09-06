@@ -355,7 +355,7 @@ sub setup_collectinfo_job
 &foreign_require("webmincron");
 my $step = $config{'collect_interval'};
 if ($step ne 'none') {
-	# Setup webmin cron
+	# Setup webmin cron (removing old classic cron job)
 	$step ||= 5;
 	my $cron = { 'module' => $module_name,
 		     'func' => 'scheduled_collect_system_info',

@@ -27,7 +27,7 @@ if ($in{'interval_def'}) {
 	&unlink_file($system_status::collected_info_file);
 	}
 else {
-	&system_logged($system_status::systeminfo_cron_cmd);
+	&system_status::scheduled_collect_system_info();
 	}
 
 &webmin_log("status");
