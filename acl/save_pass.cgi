@@ -2,6 +2,7 @@
 # Save password quality and change restrictions
 
 require './acl-lib.pl';
+$access{'pass'} || &error($text{'pass_ecannot'});
 &get_miniserv_config(\%miniserv);
 &ReadParse();
 &error_setup($text{'pass_err'});

@@ -2,6 +2,7 @@
 # Show password quality and change restrictions
 
 require './acl-lib.pl';
+$access{'pass'} || &error($text{'pass_ecannot'});
 &ui_print_header(undef, $text{'pass_title'}, "");
 &get_miniserv_config(\%miniserv);
 

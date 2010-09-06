@@ -186,13 +186,20 @@ if ($access{'rbacenable'}) {
 	push(@links, "edit_rbac.cgi");
 	push(@titles, $text{'index_rbac'});
 	}
-push(@icons, "images/pass.gif");
-push(@links, "edit_pass.cgi");
-push(@titles, $text{'pass_title'});
+if ($access{'pass'}) {
+	push(@icons, "images/pass.gif");
+	push(@links, "edit_pass.cgi");
+	push(@titles, $text{'pass_title'});
+	}
+if ($access{'sql'}) {
+	push(@icons, "images/sql.gif");
+	push(@links, "edit_sql.cgi");
+	push(@titles, $text{'sql_title'});
+	}
 
 if (@icons) {
 	print &ui_hr();
-	&icons_table(\@links, \@titles, \@icons, scalar(@links));
+	&icons_table(\@links, \@titles, \@icons);
 	}
 
 &ui_print_footer("/", $text{'index'});

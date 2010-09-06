@@ -149,6 +149,18 @@ printf "<input type=radio name=times value=1 %s> $text{'yes'}\n",
 printf "<input type=radio name=times value=0 %s> $text{'no'}</td>\n",
 	$o->{'times'} ? '' : 'checked';
 
+print "<td><b>$text{'acl_pass'}</b></td> <td>\n";
+printf "<input type=radio name=pass value=1 %s> $text{'yes'}\n",
+	$o->{'pass'} ? 'checked' : '';
+printf "<input type=radio name=pass value=0 %s> $text{'no'}</td> </tr>\n",
+	$o->{'pass'} ? '' : 'checked';
+
+print "<tr> <td><b>$text{'acl_sqls'}</b></td> <td>\n";
+printf "<input type=radio name=sqls value=1 %s> $text{'yes'}\n",
+	$o->{'sqls'} ? 'checked' : '';
+printf "<input type=radio name=sqls value=0 %s> $text{'no'}</td>\n",
+	$o->{'sqls'} ? '' : 'checked';
+
 print "</tr>\n";
 
 print "<tr> <td colspan=4><hr></td> </tr>\n";
@@ -211,5 +223,7 @@ $_[0]->{'cats'} = $in{'cats'};
 $_[0]->{'theme'} = $in{'theme'};
 $_[0]->{'ips'} = $in{'ips'};
 $_[0]->{'times'} = $in{'times'};
+$_[0]->{'pass'} = $in{'pass'};
+$_[0]->{'sql'} = $in{'sql'};
 }
 

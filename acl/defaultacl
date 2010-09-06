@@ -23,3 +23,5 @@ logouttime=1
 times=1
 minsize=1
 nochange=1
+pass=1
+sql=1

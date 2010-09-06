@@ -1168,5 +1168,32 @@ $miniserv{'anonymous'} = join(" ", @anon);
 &reload_miniserv();
 }
 
+# split_userdb_string(string)
+# Converts a string like mysql://user:pass@host/db into separate parts
+sub split_userdb_string
+{
+my ($str) = @_;
+if ($str =~ /^([a-z]+):\/\/([^:]+):([^\@]+)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))?$/) {
+	my ($proto, $user, $pass, $host, $prefix, $argstr) =
+		($1, $2, $3, $3, $5, $7);
+	my %args = map { split(/=/, $_, 2) } split(/\&/, $argstr);
+	return ($proto, $user, $pass, $host, $prefix, \%args);
+	}
+return ( );
+}
+
+# join_userdb_string(proto, user, pass, host, prefix, &args)
+# Creates a string in the format accepted by split_userdb_string
+sub join_userdb_string
+{
+my ($proto, $user, $pass, $host, $prefix, $args) = @_;
+return "" if (!$proto);
+my $argstr;
+if (keys %$args) {
+	$argstr = "?".map { $_."=".$args->{$_} } (keys %$args);
+	}
+return $proto."://".$user.":".$pass."\@".$host."/".$prefix.$argstr;
+}
+
 1;
 
