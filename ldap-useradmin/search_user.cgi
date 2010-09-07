@@ -22,7 +22,7 @@ elsif ($in{'match'} == 3) {
 	$search = "(!($in{'field'}=*$in{'what'}*))";
 	}
 $rv = $ldap->search(base => $base,
-		    filter => "(&(objectClass=posixAccount)$search)");
+		    filter => "(&".&user_filter().$search.")");
 if ($rv->code) {
 	&error(&text('search_err', "<tt>$search</tt>",
 		     "<tt>$base</tt>", $rv->error));

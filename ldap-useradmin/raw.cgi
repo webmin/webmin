@@ -8,12 +8,12 @@ $schema = $ldap->schema();
 if ($in{'user'}) {
 	$rv = $ldap->search(base => $in{'dn'},
 			    scope => 'base',
-			    filter => '(objectClass=posixAccount)');
+			    filter => &user_filter());
 	}
 else {
 	$rv = $ldap->search(base => $in{'dn'},
 			    scope => 'base',
-			    filter => '(objectClass=posixGroup)');
+			    filter => &group_filter());
 	}
 ($what) = $rv->all_entries;
 

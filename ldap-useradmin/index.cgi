@@ -101,12 +101,12 @@ elsif ($config{'md5'} == 3 || $config{'md5'} == 4) {
 # Count the number of users and groups
 $base = &get_user_base();
 $rv = $ldap->search(base => $base,
-		    filter => '(objectClass=posixAccount)',
+		    filter => &user_filter(),
 		    sizelimit => $mconfig{'display_max'}+1);
 $ucount = $rv->count;
 $base = &get_group_base();
 $rv = $ldap->search(base => $base,
-		    filter => '(objectClass=posixGroup)',
+		    filter => &group_filter(),
 		    sizelimit => $mconfig{'display_max'}+1);
 $gcount = $rv->count;
 

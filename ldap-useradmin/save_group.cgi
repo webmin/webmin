@@ -13,7 +13,7 @@ if (!$in{'new'}) {
 	# Get existing group
 	$rv = $ldap->search(base => $in{'dn'},
 			    scope => 'base',
-			    filter => '(&(objectClass=posixGroup))');
+			    filter => &group_filter());
 	($ginfo) = $rv->all_entries;
 	$ginfo || &error($text{'gsave_egone'});
 	$olddesc = $ginfo->get_value('description');

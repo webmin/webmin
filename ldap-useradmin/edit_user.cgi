@@ -36,7 +36,7 @@ else {
 	# Get values from current user
 	$rv = $ldap->search(base => $in{'dn'},
 			    scope => 'base',
-			    filter => '(objectClass=posixAccount)');
+			    filter => &user_filter());
 	($uinfo) = $rv->all_entries;
 	@users = $uinfo->get_value('uid');
 	$user = $users[0];
@@ -279,7 +279,7 @@ if ($config{'secmode'} != 1) {
 	@defsecs = &split_quoted_string($mconfig{'default_secs'});
 	$base = &get_group_base();
 	$rv = $ldap->search(base => $base,
-			    filter => '(objectClass=posixGroup)');
+			    filter => &group_filter());
 	%ingroups = ( );
 	foreach $g (sort { lc($a->dn()) cmp lc($b->dn()) } $rv->all_entries) {
 		$group = $g->get_value("cn");

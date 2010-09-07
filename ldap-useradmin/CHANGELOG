@@ -73,3 +73,5 @@ Modifying a user now correctly changes the sn attribute too.
 Added a field for editing the description for LDAP groups.
 ---- Changes since 1.510 ----
 The list of groups now includes descriptions, if any are set.
+---- Changes since 1.520 ----
+Added Module Config options for additional LDAP filters to find users and groups, in addition to the posixAccount / posixGroup object class filters.

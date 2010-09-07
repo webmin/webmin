@@ -12,7 +12,7 @@ if (!$in{'new'}) {
 	# Get existing user
 	$rv = $ldap->search(base => $in{'dn'},
 			    scope => 'base',
-			    filter => '(&(objectClass=posixAccount))');
+			    filter => &user_filter());
 	($uinfo) = $rv->all_entries;
 	$uinfo || &error($text{'usave_egone'});
 	%ouser = &dn_to_hash($uinfo);
@@ -63,7 +63,7 @@ elsif ($in{'delete'}) {
 		print "$text{'udel_groups'}<br>\n";
 		$base = &get_group_base();
 		$rv = $ldap->search(base => $base,
-				    filter => '(&(objectClass=posixGroup))');
+				    filter => &group_filter());
 		foreach $g ($rv->all_entries) {
 			local @mems = $g->get_value("memberUid");
 			local $idx = &indexof($user, @mems);
@@ -617,7 +617,7 @@ else {
 			}
 		$base = &get_group_base();
 		$rv = $ldap->search(base => $base,
-				    filter => '(&(objectClass=posixGroup))');
+				    filter => &group_filter());
 		foreach $g ($rv->all_entries) {
 			local @mems = $g->get_value("memberUid");
 			local $gname = $g->get_value("cn");
@@ -663,7 +663,7 @@ else {
 	# Get the updated user object
 	$rv = $ldap->search(base => $newdn,
 			    scope => 'base',
-			    filter => '(&(objectClass=posixAccount))');
+			    filter => &user_filter());
 	($uinfo) = $rv->all_entries;
 	%user = &dn_to_hash($uinfo);
 

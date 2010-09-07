@@ -242,7 +242,7 @@ LINE: foreach $line (split(/[\r\n]+/, $data)) {
 		$newdn = "uid=$user{'user'},$base";
 		$rv = $ldap->search(base => $newdn,
 				    scope => 'base',
-				    filter => '(&(objectClass=posixAccount))');
+				    filter => &user_filter());
 		($uinfo) = $rv->all_entries;
 		%user = &dn_to_hash($uinfo);
 

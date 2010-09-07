@@ -12,7 +12,7 @@ if ($in{'new'}) {
 else {
 	$rv = $ldap->search(base => $in{'dn'},
 			    scope => 'base',
-			    filter => '(objectClass=posixGroup)');
+			    filter => &group_filter());
 	($ginfo) = $rv->all_entries;
 	$group = $ginfo->get_value('cn');
 	$gid = $ginfo->get_value('gidNumber');

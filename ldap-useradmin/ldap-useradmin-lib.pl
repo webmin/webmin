@@ -173,7 +173,7 @@ if (!defined(@list_users_cache)) {
 	local $ldap = &ldap_connect();
 	local $base = &get_user_base();
 	local $rv = $ldap->search(base => $base,
-			    filter => '(objectClass=posixAccount)');
+				  filter => &user_filter());
 	local $u;
 	foreach $u ($rv->all_entries) {
 		local %uinfo = &dn_to_hash($u);
@@ -292,7 +292,7 @@ if (!defined(@list_groups_cache)) {
 	local $ldap = &ldap_connect();
 	local $base = &get_group_base();
 	local $rv = $ldap->search(base => $base,
-			    filter => '(objectClass=posixGroup)');
+				  filter => &group_filter());
 	local $g;
 	foreach $g ($rv->all_entries) {
 		local %ginfo = &dn_to_hash($g);
@@ -1070,7 +1070,8 @@ if ($new) {
 			# Find existing group with the same GID
 			local $base = &get_group_base();
 			local $rv = $ldap->search(base => $base,
-			    filter => "(&(objectClass=posixGroup)(gidNumber=$user->{'gid'}))");
+			    filter => "(&".&group_filter().
+				      "(gidNumber=$user->{'gid'}))");
 			local ($ginfo) = $rv->all_entries;
 			if ($ginfo && $ginfo->get_value("sambaSID")) {
 				# We can get the SID from the actual group
@@ -1197,6 +1198,28 @@ for(my $i=0; $i<@$props; $i++) {
 		}
 	}
 return undef;
+}
+
+# user_filter()
+# Returns an LDAP filter expression to find users
+sub user_filter
+{
+my $rv = "(objectClass=posixAccount)";
+if ($config{'user_filter'}) {
+	$rv = "(&".$rv."(".$config{'user_filter'}."))";
+	}
+return $rv;
+}
+
+# group_filter()
+# Returns an LDAP filter expression to find groups
+sub group_filter
+{
+my $rv = "(objectClass=posixGroup)";
+if ($config{'group_filter'}) {
+	$rv = "(&".$rv."(".$config{'group_filter'}."))";
+	}
+return $rv;
 }
 
 1;
