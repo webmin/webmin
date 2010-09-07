@@ -1173,9 +1173,9 @@ $miniserv{'anonymous'} = join(" ", @anon);
 sub split_userdb_string
 {
 my ($str) = @_;
-if ($str =~ /^([a-z]+):\/\/([^:]+):([^\@]+)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))?$/) {
+if ($str =~ /^([a-z]+):\/\/([^:]*):([^\@]*)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))?$/) {
 	my ($proto, $user, $pass, $host, $prefix, $argstr) =
-		($1, $2, $3, $3, $5, $7);
+		($1, $2, $3, $4, $5, $7);
 	my %args = map { split(/=/, $_, 2) } split(/\&/, $argstr);
 	return ($proto, $user, $pass, $host, $prefix, \%args);
 	}
@@ -1195,11 +1195,11 @@ if (keys %$args) {
 return $proto."://".$user.":".$pass."\@".$host."/".$prefix.$argstr;
 }
 
-# validate_userdb(string)
+# validate_userdb(string, [no-table-check])
 # Checks if some user database is usable, and if not returns an error message
 sub validate_userdb
 {
-my ($str) = @_;
+my ($str, $notablecheck) = @_;
 my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
 if ($proto eq "mysql" || $proto eq "postgresql") {
 	# Load DBI driver
@@ -1223,22 +1223,25 @@ if ($proto eq "mysql" || $proto eq "postgresql") {
 	ref($dbh) || return $dbh;
 
 	# Validate critical tables
-	my %tables = ( "webmin_user" => [ "id", "name", "pass" ],
-		       "webmin_group" => [ "id", "name", "desc" ],
-		       "webmin_user_attr" => [ "id", "attr", "value" ],
-		       "webmin_group_attr" => [ "id", "attr", "value" ],
-		       "webmin_user_acl" => [ "id", "module", "attr", "value" ],
-		       "webmin_group_acl" => [ "id", "module", "attr", "value"],
-		     );
-	foreach my $t (keys %tables) {
-		my @cols = @{$tables{$t}};
-		my $sql = "select ".join(",", @cols)." from $t limit 1";
-		my $cmd = $dbh->prepare($sql);
-		if (!$cmd || !$cmd->execute()) {
-			return &text('sql_etable', $t,
-				     &html_escape($dbh->errstr));
+	if (!$notablecheck) {
+		my %tables =
+		  ( "webmin_user" => [ "id", "name", "pass" ],
+		    "webmin_group" => [ "id", "name", "desc" ],
+		    "webmin_user_attr" => [ "id", "attr", "value" ],
+		    "webmin_group_attr" => [ "id", "attr", "value" ],
+		    "webmin_user_acl" => [ "id", "module", "attr", "value" ],
+		    "webmin_group_acl" => [ "id", "module", "attr", "value"],
+		  );
+		foreach my $t (keys %tables) {
+			my @cols = @{$tables{$t}};
+			my $sql = "select ".join(",", @cols)." from $t limit 1";
+			my $cmd = $dbh->prepare($sql);
+			if (!$cmd || !$cmd->execute()) {
+				return &text('sql_etable', $t,
+					     &html_escape($dbh->errstr));
+				}
+			$cmd->finish();
 			}
-		$cmd->finish();
 		}
 	&disconnect_userdb($str, $dbh);
 	return undef;
@@ -1302,6 +1305,20 @@ elsif ($str =~ /^ldap:/) {
 	# LDAP disconnect
 	$h->disconnect();
 	}
+}
+
+# userdb_table_sql(string)
+# Returns SQL statements needed to create all required tables
+sub userdb_table_sql
+{
+my ($str) = @_;
+return ( "create table webmin_user (id int(20), name varchar(255), pass varchar(255))",
+	 "create table webmin_group (id init(20), name varchar(255), desc varchar(255))",
+	 "create table webmin_user_attr (id int(20), attr varchar(32), value varchar(255))",
+	 "create table webmin_group_attr (id int(20), attr varchar(32), value varchar(255))",
+         "create table webmin_user_acl (id int(20), module varchar(32), attr varchar(32), value varchar(255))",
+         "create table webmin_group_acl (id int(20), module varchar(32), attr varchar(32), value varchar(255))",
+        );
 }
 
 1;

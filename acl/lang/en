@@ -218,6 +218,7 @@ log_delete_groups=Deleted $1 Webmin groups
 log_pass=Changed password restrictions
 log_unix=Changed unix user authentication
 log_sync=Changed unix user synchronization
+log_sql=Changed user and group database
 
 gedit_ecannot=You are not allowed to edit groups
 gedit_title=Edit Webmin Group
@@ -396,3 +397,14 @@ sql_emysqlconnect=Failed to connect to MySQL database : $1
 sql_epostgresqldriver=Failed to load PostgreSQL DBI driver
 sql_epostgresqlconnect=Failed to connect to PostgreSQL database : $1
 sql_etable=Failed to query required table $1 : $2
+sql_err=Failed to save user and group database settings
+sql_ehost=Missing or un-resolvable hostname
+sql_euser=Missing or invalid username (no spaces allowed)
+sql_epass=Invalid password (no spaces allowed)
+sql_edb=Invalid database name (no spaces allowed)
+sql_eprefix=Missing or invalid base DN (no spaces allowed)
+sql_eprefix2=Invalid-looking base DN - should be like <tt>dc=mydomain,dc=com</tt>
+sql_title2=Create Missing Tables
+sql_tableerr=User and group database settings were successfully saved, but some tables needed by Webmin are missing : $1
+sql_tableerr2=Click the <b>Create Tables</b> to have them created automatically, or manually run the SQL below.
+sql_make=Create Tables
