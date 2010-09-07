@@ -46,7 +46,7 @@ if ($in{'mod'} && $in{'user'} && &supports_rbac($in{'mod'}) &&
     !$gconfig{'rbacdeny_'.$who}) {
 	# Show RBAC option
 	print &ui_table_row($text{'acl_rbac'},
-		&ui_radio("rbac", $access{'rbac'} ? 1 : 0,
+		&ui_radio("rbac", $maccess{'rbac'} ? 1 : 0,
 			[ [ 1, $text{'acl_rbacyes'} ],
 			  [ 0, $text{'no'} ] ]), 3);
 	}
@@ -54,7 +54,7 @@ if ($in{'mod'} && $in{'user'} && &supports_rbac($in{'mod'}) &&
 if ($in{'mod'}) {
 	# Show module config editing option
 	print &ui_table_row($text{'acl_config'},
-		&ui_radio("noconfig", $access{'noconfig'} ? 1 : 0,
+		&ui_radio("noconfig", $maccess{'noconfig'} ? 1 : 0,
 			[ [ 0, $text{'yes'} ], [ 1, $text{'no'} ] ]), 3);
 	}
 
