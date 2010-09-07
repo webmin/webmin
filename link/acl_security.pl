@@ -1,12 +1,12 @@
 
-do '../web-lib.pl';
+BEGIN { push(@INC, ".."); };
+use WebminCore;
 &init_config();
 
 sub acl_security_form
 {
-print "<tr> <td><b>$text{'acl_link'}</b></td>\n";
-printf "<td colspan=3><input name=link size=50 value='%s'></td> </tr>\n",
-	$_[0]->{'link'};
+print &ui_table_row($text{'acl_link'},
+	&ui_textbox("link", $_[0]->{'link'}, 50));
 }
 
 sub acl_security_save
