@@ -1226,7 +1226,7 @@ if ($proto eq "mysql" || $proto eq "postgresql") {
 	if (!$notablecheck) {
 		my %tables =
 		  ( "webmin_user" => [ "id", "name", "pass" ],
-		    "webmin_group" => [ "id", "name", "desc" ],
+		    "webmin_group" => [ "id", "name", "description" ],
 		    "webmin_user_attr" => [ "id", "attr", "value" ],
 		    "webmin_group_attr" => [ "id", "attr", "value" ],
 		    "webmin_user_acl" => [ "id", "module", "attr", "value" ],
@@ -1312,12 +1312,17 @@ elsif ($str =~ /^ldap:/) {
 sub userdb_table_sql
 {
 my ($str) = @_;
-return ( "create table webmin_user (id int(20), name varchar(255), pass varchar(255))",
-	 "create table webmin_group (id init(20), name varchar(255), desc varchar(255))",
-	 "create table webmin_user_attr (id int(20), attr varchar(32), value varchar(255))",
-	 "create table webmin_group_attr (id int(20), attr varchar(32), value varchar(255))",
-         "create table webmin_user_acl (id int(20), module varchar(32), attr varchar(32), value varchar(255))",
-         "create table webmin_group_acl (id int(20), module varchar(32), attr varchar(32), value varchar(255))",
+my $key;
+if ($str =~ /^(mysql|postgresql):/) {
+	$key = "not null primary key";
+	}
+# XXX will this work on postgresql?
+return ( "create table webmin_user (id int(20) $key, name varchar(255), pass varchar(255))",
+	 "create table webmin_group (id int(20) $key, name varchar(255), description varchar(255))",
+	 "create table webmin_user_attr (id int(20) $key, attr varchar(32), value varchar(255))",
+	 "create table webmin_group_attr (id int(20) $key, attr varchar(32), value varchar(255))",
+         "create table webmin_user_acl (id int(20) $key, module varchar(32), attr varchar(32), value varchar(255))",
+         "create table webmin_group_acl (id int(20) $key, module varchar(32), attr varchar(32), value varchar(255))",
         );
 }
 

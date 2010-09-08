@@ -52,7 +52,7 @@ if ($err) {
 
 	print &text('sql_tableerr', $err),"<p>\n";
 	print $text{'sql_tableerr2'},"<p>\n";
-	print &ui_form_start("maketables.sql");
+	print &ui_form_start("maketables.cgi");
 	print &ui_form_end([ [ undef, $text{'sql_make'} ] ]);
 
 	print &ui_table_start(undef, undef, 2);

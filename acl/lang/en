@@ -408,3 +408,10 @@ sql_title2=Create Missing Tables
 sql_tableerr=User and group database settings were successfully saved, but some tables needed by Webmin are missing : $1
 sql_tableerr2=Click the <b>Create Tables</b> to have them created automatically, or manually run the SQL below.
 sql_make=Create Tables
+
+make_title=Create User and Group Tables
+make_err=Failed to create user and group tables
+make_exec=Executing SQL $1 ..
+make_failed=.. creation failed : $1
+make_done=.. done
+
