@@ -9,8 +9,7 @@ $rv = [ [ 'CacheDefaultExpire', 0, 13.1, 'virtual', 2.0 ],
 #	[ 'CacheIgnoreCacheControl', 0, 13.1, 'virtual', 2.0 ],
 #	[ 'CacheIgnoreNoLastMod', 0, 13.1, 'virtual', 2.0 ],
         [ 'CacheLastModifiedFactor', 0, 13.1, 'virtual', 2.0 ],
-	[ 'CacheMaxExpire', 0, 13.1, 'virtual', 2.0 ],
-	[ 'CacheOn', 0, 13.1, 'virtual', 2.0, 10 ] ];
+	[ 'CacheMaxExpire', 0, 13.1, 'virtual', 2.0 ] ];
 return &make_directives($rv, $_[0], "mod_cache");
 }
 
@@ -85,16 +84,5 @@ return (1, $text{'cache_lastmod'},
 sub save_CacheIgnoreNoLastMod
 {
 return &parse_choice("CacheIgnoreNoLastMod", "off");
-}
-
-sub edit_CacheOn
-{
-return (1, $text{'cache_on'},
-        &choice_input($_[0]->{'value'}, "CacheOn", "off",
-                      "$text{'yes'},on", "$text{'no'},off"));
-}
-sub save_CacheOn
-{
-return &parse_choice("CacheOn", "off");
 }
 
