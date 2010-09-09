@@ -209,6 +209,12 @@ if ($access{'theme'} && @overlays) {
 				    ) ] ]));
 	}
 
+# Storage type
+if ($in{'user'}) {
+	print &ui_table_row($text{'edit_proto'},
+		$text{'edit_proto'.$user{'proto'}});
+	}
+
 if ($showui) {
 	print &ui_hidden_table_end("ui");
 	}

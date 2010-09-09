@@ -88,6 +88,48 @@ while(<PWFILE>) {
 		}
 	}
 close(PWFILE);
+
+# If a user DB is enabled, get users from it too
+if ($miniserv{'userdb'}) {
+	my ($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	my $dbh = &connect_userdb($miniserv{'userdb'});
+	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Fetch users with SQL
+		my %userid;
+		my $cmd = $dbh->prepare("select id,name,pass from webmin_user");
+		$cmd && $cmd->execute() ||
+			&error("Failed to query users : ".$dbh->errstr);
+		while(my ($id, $name, $pass) = $cmd->fetchrow()) {
+			my $u = { 'name' => $pass, 'pass' => $pass,
+				  'proto' => $proto };
+			push(@rv, $u);
+			$userid{$id} = $u;
+			}
+		$cmd->finish();
+
+		# Add user attributes
+		my $cmd = $dbh->prepare(
+			"select id,attr,value from webmin_user_attr");
+		$cmd && $cmd->execute() ||
+			&error("Failed to query user attrs : ".$dbh->errstr);
+		while(my ($id, $attr, $value) = $cmd->fetchrow()) {
+			if ($attr eq "olds" || $attr eq "modules" ||
+			    $attr eq "ownmods") {
+				$value = [ split(/\s+/, $value) ];
+				}
+			$userid{$id}->{$attr} = $value;
+			}
+		$cmd->finish();
+		}
+	elsif ($proto eq "ldap") {
+		# Find users with LDAP query
+		# XXX
+		}
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
+	}
+
 return @rv;
 }
 
@@ -154,86 +196,131 @@ settings from for this new user.
 =cut
 sub create_user
 {
-local(%user, %miniserv, @mods);
-%user = %{$_[0]};
+my (%miniserv, @mods);
+my %user = %{$_[0]};
+my $clone = $_[1];
 
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
-if ($user{'theme'}) {
-	$miniserv{"preroot_".$user{'name'}} =
-		$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
-	}
-elsif (defined($user{'theme'})) {
-	$miniserv{"preroot_".$user{'name'}} = "";
-	}
-if (defined($user{'logouttime'})) {
-	local @logout = split(/\s+/, $miniserv{'logouttimes'});
-	push(@logout, "$user{'name'}=$user{'logouttime'}");
-	$miniserv{'logouttimes'} = join(" ", @logout);
-	}
-&put_miniserv_config(\%miniserv);
-&unlock_file($ENV{'MINISERV_CONFIG'});
 
-local @times;
-push(@times, "days", $user{'days'}) if ($user{'days'} ne '');
-push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
-	if ($user{'hoursfrom'});
-&lock_file($miniserv{'userfile'});
-&open_tempfile(PWFILE, ">>$miniserv{'userfile'}");
-&print_tempfile(PWFILE,
-	"$user{'name'}:$user{'pass'}:$user{'sync'}:$user{'cert'}:",
-	($user{'allow'} ? "allow $user{'allow'}" :
-	 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
-	join(" ", @times),":",
-	$user{'lastchange'},":",
-	join(" ", @{$user{'olds'}}),":",
-	$user{'minsize'},":",
-	$user{'nochange'},":",
-	$user{'temppass'},
-	"\n");
-&close_tempfile(PWFILE);
-&unlock_file($miniserv{'userfile'});
+if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
+	# Adding to user database
+	my ($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	my $dbh = &connect_userdb($miniserv{'userdb'});
+        &error("Failed to connect to user database : $dbh") if (!ref($dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Add user with SQL
+		my $cmd = $dbh->prepare("insert into webmin_user (name,pass) values (?, ?)");
+		$cmd && $cmd->execute($user{'name'}, $user{'pass'}) ||
+			&error("Failed to add user : ".$dbh->errstr);
+		$cmd->finish();
+		my $cmd = $dbh->prepare("select last_insert_id()");
+		$cmd->execute();
+		my ($id) = $cmd->fetchrow();
+		$cmd->finish();
 
-&lock_file(&acl_filename());
-@mods = &list_modules();
-&open_tempfile(ACL, ">>".&acl_filename());
-&print_tempfile(ACL, &acl_line(\%user, \@mods));
-&close_tempfile(ACL);
-&unlock_file(&acl_filename());
-
-delete($gconfig{"lang_".$user{'name'}});
-$gconfig{"lang_".$user{'name'}} = $user{'lang'} if ($user{'lang'});
-delete($gconfig{"notabs_".$user{'name'}});
-$gconfig{"notabs_".$user{'name'}} = $user{'notabs'} if ($user{'notabs'});
-delete($gconfig{"skill_".$user{'name'}});
-$gconfig{"skill_".$user{'name'}} = $user{'skill'} if ($user{'skill'});
-delete($gconfig{"risk_".$user{'name'}});
-$gconfig{"risk_".$user{'name'}} = $user{'risk'} if ($user{'risk'});
-delete($gconfig{"rbacdeny_".$user{'name'}});
-$gconfig{"rbacdeny_".$user{'name'}} = $user{'rbacdeny'} if ($user{'rbacdeny'});
-delete($gconfig{"ownmods_".$user{'name'}});
-$gconfig{"ownmods_".$user{'name'}} = join(" ", @{$user{'ownmods'}})
-	if (@{$user{'ownmods'}});
-delete($gconfig{"theme_".$user{'name'}});
-if ($user{'theme'}) {
-	$gconfig{"theme_".$user{'name'}} =
-		$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+		# Add other attributes
+		my $cmd = $dbh->prepare("insert into webmin_user_attr (id,attr,value) values (?, ?, ?)");
+		foreach my $attr (keys %user) {
+			next if ($attr eq "name" || $attr eq "pass");
+			my $value = $user{$attr};
+			if ($attr eq "olds" || $attr eq "modules" ||
+			    $attr eq "ownmods") {
+				$value = join(" ", @$value);
+				}
+			$cmd->execute($id, $attr, $value) ||
+				&error("Failed to add user attribute : ".
+					$dbh->errstr);
+			$cmd->finish();
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# Add user to LDAP
+		# XXX
+		}
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
+	$user{'proto'} = $proto;
 	}
-elsif (defined($user{'theme'})) {
-	$gconfig{"theme_".$user{'name'}} = '';
-	}
-$gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
-	if (defined($user{'readonly'}));
-$gconfig{"realname_".$user{'name'}} = $user{'real'}
-	if (defined($user{'real'}));
-&write_file("$config_directory/config", \%gconfig);
+else {
+	# Adding to local files
+	if ($user{'theme'}) {
+		$miniserv{"preroot_".$user{'name'}} =
+			$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+		}
+	elsif (defined($user{'theme'})) {
+		$miniserv{"preroot_".$user{'name'}} = "";
+		}
+	if (defined($user{'logouttime'})) {
+		my @logout = split(/\s+/, $miniserv{'logouttimes'});
+		push(@logout, "$user{'name'}=$user{'logouttime'}");
+		$miniserv{'logouttimes'} = join(" ", @logout);
+		}
+	&put_miniserv_config(\%miniserv);
+	&unlock_file($ENV{'MINISERV_CONFIG'});
 
-if ($_[1]) {
+	my @times;
+	push(@times, "days", $user{'days'}) if ($user{'days'} ne '');
+	push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
+		if ($user{'hoursfrom'});
+	&lock_file($miniserv{'userfile'});
+	&open_tempfile(PWFILE, ">>$miniserv{'userfile'}");
+	&print_tempfile(PWFILE,
+		"$user{'name'}:$user{'pass'}:$user{'sync'}:$user{'cert'}:",
+		($user{'allow'} ? "allow $user{'allow'}" :
+		 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
+		join(" ", @times),":",
+		$user{'lastchange'},":",
+		join(" ", @{$user{'olds'}}),":",
+		$user{'minsize'},":",
+		$user{'nochange'},":",
+		$user{'temppass'},
+		"\n");
+	&close_tempfile(PWFILE);
+	&unlock_file($miniserv{'userfile'});
+
+	&lock_file(&acl_filename());
+	@mods = &list_modules();
+	&open_tempfile(ACL, ">>".&acl_filename());
+	&print_tempfile(ACL, &acl_line(\%user, \@mods));
+	&close_tempfile(ACL);
+	&unlock_file(&acl_filename());
+
+	delete($gconfig{"lang_".$user{'name'}});
+	$gconfig{"lang_".$user{'name'}} = $user{'lang'} if ($user{'lang'});
+	delete($gconfig{"notabs_".$user{'name'}});
+	$gconfig{"notabs_".$user{'name'}} = $user{'notabs'} if ($user{'notabs'});
+	delete($gconfig{"skill_".$user{'name'}});
+	$gconfig{"skill_".$user{'name'}} = $user{'skill'} if ($user{'skill'});
+	delete($gconfig{"risk_".$user{'name'}});
+	$gconfig{"risk_".$user{'name'}} = $user{'risk'} if ($user{'risk'});
+	delete($gconfig{"rbacdeny_".$user{'name'}});
+	$gconfig{"rbacdeny_".$user{'name'}} = $user{'rbacdeny'} if ($user{'rbacdeny'});
+	delete($gconfig{"ownmods_".$user{'name'}});
+	$gconfig{"ownmods_".$user{'name'}} = join(" ", @{$user{'ownmods'}})
+		if (@{$user{'ownmods'}});
+	delete($gconfig{"theme_".$user{'name'}});
+	if ($user{'theme'}) {
+		$gconfig{"theme_".$user{'name'}} =
+			$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+		}
+	elsif (defined($user{'theme'})) {
+		$gconfig{"theme_".$user{'name'}} = '';
+		}
+	$gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
+		if (defined($user{'readonly'}));
+	$gconfig{"realname_".$user{'name'}} = $user{'real'}
+		if (defined($user{'real'}));
+	&write_file("$config_directory/config", \%gconfig);
+	}
+
+if ($clone) {
+	# XXX clone
 	foreach $m ("", @mods) {
-		local $file = "$config_directory/$m/$_[1].acl";
-		local $dest = "$config_directory/$m/$user{'name'}.acl";
+		my $file = "$config_directory/$m/$clone.acl";
+		my $dest = "$config_directory/$m/$user{'name'}.acl";
 		if (-r $file) {
-			local %macl;
+			my %macl;
 			&read_file($file, \%macl);
 			&write_file($dest, \%macl);
 			}
@@ -396,13 +483,15 @@ control settings.
 =cut
 sub delete_user
 {
-local($_, @pwfile, @acl, %miniserv);
+my ($username) = @_;
+my (@pwfile, @acl, %miniserv);
+local $_;
 
 &lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
-delete($miniserv{"preroot_".$_[0]});
-local @logout = split(/\s+/, $miniserv{'logouttimes'});
-@logout = grep { $_ !~ /^$_[0]=/ } @logout;
+delete($miniserv{"preroot_".$username});
+my @logout = split(/\s+/, $miniserv{'logouttimes'});
+@logout = grep { $_ !~ /^$username=/ } @logout;
 $miniserv{'logouttimes'} = join(" ", @logout);
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
@@ -413,7 +502,7 @@ open(PWFILE, $miniserv{'userfile'});
 close(PWFILE);
 &open_tempfile(PWFILE, ">$miniserv{'userfile'}");
 foreach (@pwfile) {
-	if (!/^([^:]+):/ || $1 ne $_[0]) {
+	if (!/^([^:]+):/ || $1 ne $username) {
 		&print_tempfile(PWFILE, $_);
 		}
 	}
@@ -426,29 +515,76 @@ open(ACL, &acl_filename());
 close(ACL);
 &open_tempfile(ACL, ">".&acl_filename());
 foreach (@acl) {
-	if (!/^([^:]+):/ || $1 ne $_[0]) {
+	if (!/^([^:]+):/ || $1 ne $username) {
 		&print_tempfile(ACL, $_);
 		}
 	}
 &close_tempfile(ACL);
 &unlock_file(&acl_filename());
 
-delete($gconfig{"lang_".$_[0]});
-delete($gconfig{"notabs_".$_[0]});
-delete($gconfig{"skill_".$_[0]});
-delete($gconfig{"risk_".$_[0]});
-delete($gconfig{"ownmods_".$_[0]});
-delete($gconfig{"theme_".$_[0]});
-delete($gconfig{"readonly_".$_[0]});
+delete($gconfig{"lang_".$username});
+delete($gconfig{"notabs_".$username});
+delete($gconfig{"skill_".$username});
+delete($gconfig{"risk_".$username});
+delete($gconfig{"ownmods_".$username});
+delete($gconfig{"theme_".$username});
+delete($gconfig{"readonly_".$username});
 &write_file("$config_directory/config", \%gconfig);
 
 # Delete all module .acl files
-&unlink_file(map { "$config_directory/$_/$_[0].acl" } &list_modules());
-&unlink_file("$config_directory/$_[0].acl");
+&unlink_file(map { "$config_directory/$_/$username.acl" } &list_modules());
+&unlink_file("$config_directory/$username.acl");
 
 if ($miniserv{'session'}) {
 	# Delete all sessions for the deleted user
-	&delete_session_user(\%miniserv, $_[0]);
+	&delete_session_user(\%miniserv, $username);
+	}
+
+if ($miniserv{'userdb'}) {
+	# Also delete from user database
+	my ($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	my $dbh = &connect_userdb($miniserv{'userdb'});
+	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Find the user with SQL query
+		my $cmd = $dbh->prepare(
+			"select id from webmin_user where name = ?");
+		$cmd && $cmd->execute($username) ||
+			&error("Failed to find user : ".$dbh->errstr);
+		my ($id) = $cmd->fetchrow();
+		$cmd->finish();
+
+		if ($id) {
+			# Delete the user
+			my $cmd = $dbh->prepare(
+				"delete from webmin_user where id = ?");
+			$cmd && $cmd->execute($id) ||
+				&error("Failed to delete user : ".$dbh->errstr);
+			$cmd->finish();
+
+			# Delete attributes
+			my $cmd = $dbh->prepare(
+				"delete from webmin_user_attr where id = ?");
+			$cmd && $cmd->execute($id) ||
+				&error("Failed to delete user attrs : ".
+				       $dbh->errstr);
+			$cmd->finish();
+
+			# Delete ACLs
+			my $cmd = $dbh->prepare(
+				"delete from webmin_user_acl where id = ?");
+			$cmd && $cmd->execute($id) ||
+				&error("Failed to delete user acls : ".
+				       $dbh->errstr);
+			$cmd->finish();
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# Find user with LDAP query
+		# XXX
+		}
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
 }
 
@@ -1312,13 +1448,16 @@ elsif ($str =~ /^ldap:/) {
 sub userdb_table_sql
 {
 my ($str) = @_;
-my $key;
+my ($key, $auto);
 if ($str =~ /^(mysql|postgresql):/) {
 	$key = "not null primary key";
 	}
+if ($str =~ /^mysql:/) {
+	$auto = "autoincrement";
+	}
 # XXX will this work on postgresql?
-return ( "create table webmin_user (id int(20) $key, name varchar(255), pass varchar(255))",
-	 "create table webmin_group (id int(20) $key, name varchar(255), description varchar(255))",
+return ( "create table webmin_user (id int(20) $key $auto, name varchar(255), pass varchar(255))",
+	 "create table webmin_group (id int(20) $key $auto, name varchar(255), description varchar(255))",
 	 "create table webmin_user_attr (id int(20) $key, attr varchar(32), value varchar(255))",
 	 "create table webmin_group_attr (id int(20) $key, attr varchar(32), value varchar(255))",
          "create table webmin_user_acl (id int(20) $key, module varchar(32), attr varchar(32), value varchar(255))",

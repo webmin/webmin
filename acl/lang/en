@@ -96,6 +96,10 @@ edit_ui=User interface options
 edit_security=Security and limits options
 edit_mods=Available Webmin modules
 edit_modsg=Available Webmin modules (in addition to those from group)
+edit_proto=Storage type
+edit_protomysql=MySQL database
+edit_protopostgresql=PostgreSQL database
+edit_protoldap=LDAP server
 
 save_err=Failed to save user
 save_ename='$1' is not a valid username
