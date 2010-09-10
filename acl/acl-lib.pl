@@ -33,7 +33,8 @@ Returns a list of hashes containing Webmin user details. Useful keys include :
 =cut
 sub list_users
 {
-local(%miniserv, $_, @rv, %acl, %logout);
+my (%miniserv, $_, @rv, %acl, %logout);
+local %_;
 &read_acl(undef, \%acl);
 &get_miniserv_config(\%miniserv);
 foreach my $a (split(/\s+/, $miniserv{'logouttimes'})) {
@@ -148,7 +149,9 @@ keys include :
 =cut
 sub list_groups
 {
-local @rv;
+my @rv;
+
+# Add groups from local files
 open(GROUPS, "$config_directory/webmin.groups");
 while(<GROUPS>) {
 	s/\r|\n//g;
@@ -161,6 +164,49 @@ while(<GROUPS>) {
 	push(@rv, $group);
 	}
 close(GROUPS);
+
+# If a user DB is enabled, get groups from it too
+if ($miniserv{'userdb'}) {
+	my ($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	my $dbh = &connect_userdb($miniserv{'userdb'});
+	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Fetch groups with SQL
+		my %groupid;
+		my $cmd = $dbh->prepare(
+			"select id,name,description from webmin_group");
+		$cmd && $cmd->execute() ||
+			&error("Failed to query groups : ".$dbh->errstr);
+		while(my ($id, $name, $desc) = $cmd->fetchrow()) {
+			my $g = { 'name' => $pass, 'desc' => $desc,
+				  'proto' => $proto };
+			push(@rv, $g);
+			$groupid{$id} = $g;
+			}
+		$cmd->finish();
+
+		# Add group attributes
+		my $cmd = $dbh->prepare(
+			"select id,attr,value from webmin_group_attr");
+		$cmd && $cmd->execute() ||
+			&error("Failed to query group attrs : ".$dbh->errstr);
+		while(my ($id, $attr, $value) = $cmd->fetchrow()) {
+			if ($attr eq "members" || $attr eq "modules" ||
+			    $attr eq "ownmods") {
+				$value = [ split(/\s+/, $value) ];
+				}
+			$groupid{$id}->{$attr} = $value;
+			}
+		$cmd->finish();
+		}
+	elsif ($proto eq "ldap") {
+		# Find groups with LDAP query
+		# XXX
+		}
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
+	}
+
 return @rv;
 }
 
@@ -196,11 +242,11 @@ settings from for this new user.
 =cut
 sub create_user
 {
-my (%miniserv, @mods);
 my %user = %{$_[0]};
 my $clone = $_[1];
+my %miniserv;
+my @mods = &list_modules();
 
-&lock_file($ENV{'MINISERV_CONFIG'});
 &get_miniserv_config(\%miniserv);
 
 if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
@@ -244,6 +290,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 	}
 else {
 	# Adding to local files
+	&lock_file($ENV{'MINISERV_CONFIG'});
 	if ($user{'theme'}) {
 		$miniserv{"preroot_".$user{'name'}} =
 			$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
@@ -280,7 +327,6 @@ else {
 	&unlock_file($miniserv{'userfile'});
 
 	&lock_file(&acl_filename());
-	@mods = &list_modules();
 	&open_tempfile(ACL, ">>".&acl_filename());
 	&print_tempfile(ACL, &acl_line(\%user, \@mods));
 	&close_tempfile(ACL);
@@ -314,17 +360,9 @@ else {
 	&write_file("$config_directory/config", \%gconfig);
 	}
 
+# Copy ACLs from user being cloned
 if ($clone) {
-	# XXX clone
-	foreach $m ("", @mods) {
-		my $file = "$config_directory/$m/$clone.acl";
-		my $dest = "$config_directory/$m/$user{'name'}.acl";
-		if (-r $file) {
-			my %macl;
-			&read_file($file, \%macl);
-			&write_file($dest, \%macl);
-			}
-		}
+	&copy_acl_files($clone, $user{'name'}, [ "", @mods ]);
 	}
 }
 
@@ -555,7 +593,7 @@ if ($miniserv{'userdb'}) {
 		my ($id) = $cmd->fetchrow();
 		$cmd->finish();
 
-		if ($id) {
+		if (defined($id)) {
 			# Delete the user
 			my $cmd = $dbh->prepare(
 				"delete from webmin_user where id = ?");
@@ -602,16 +640,65 @@ keys are :
 =cut
 sub create_group
 {
-&lock_file("$config_directory/webmin.groups");
-open(GROUP, ">>$config_directory/webmin.groups");
-print GROUP &group_line($_[0]),"\n";
-close(GROUP);
-&unlock_file("$config_directory/webmin.groups");
+my %group = %{$_[0]};
+my $clone = $_[1];
+my %miniserv;
+&get_miniserv_config(\%miniserv);
 
-if ($_[1]) {
+if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
+	# Adding to group database
+	my ($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	my $dbh = &connect_userdb($miniserv{'userdb'});
+        &error("Failed to connect to group database : $dbh") if (!ref($dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Add group with SQL
+		my $cmd = $dbh->prepare("insert into webmin_group (name,description) values (?, ?)");
+		$cmd && $cmd->execute($group{'name'}, $group{'desc'}) ||
+			&error("Failed to add group : ".$dbh->errstr);
+		$cmd->finish();
+		my $cmd = $dbh->prepare("select last_insert_id()");
+		$cmd->execute();
+		my ($id) = $cmd->fetchrow();
+		$cmd->finish();
+
+		# Add other attributes
+		my $cmd = $dbh->prepare("insert into webmin_group_attr (id,attr,value) values (?, ?, ?)");
+		foreach my $attr (keys %group) {
+			next if ($attr eq "name" || $attr eq "desc");
+			my $value = $group{$attr};
+			if ($attr eq "members" || $attr eq "modules" ||
+			    $attr eq "ownmods") {
+				$value = join(" ", @$value);
+				}
+			$cmd->execute($id, $attr, $value) ||
+				&error("Failed to add group attribute : ".
+					$dbh->errstr);
+			$cmd->finish();
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# Add user to LDAP
+		# XXX
+		}
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
+	$group{'proto'} = $proto;
+	}
+else {
+	# Adding to local files
+	&lock_file("$config_directory/webmin.groups");
+	open(GROUP, ">>$config_directory/webmin.groups");
+	print GROUP &group_line(\%group),"\n";
+	close(GROUP);
+	&unlock_file("$config_directory/webmin.groups");
+	}
+
+if ($clone) {
+	# Clone ACLs
+	# XXX
 	foreach $m ("", &list_modules()) {
-		local $file = "$config_directory/$m/$_[1].gacl";
-		local $dest = "$config_directory/$m/$_[0]->{'name'}.gacl";
+		local $file = "$config_directory/$m/$clone.gacl";
+		local $dest = "$config_directory/$m/$group{'name'}.gacl";
 		if (-r $file) {
 			local %macl;
 			&read_file($file, \%macl);
@@ -659,12 +746,63 @@ Delete a webmin group, identified by the name parameter.
 =cut
 sub delete_group
 {
+my ($groupname) = @_;
+
+# Delete from local files
 &lock_file("$config_directory/webmin.groups");
 local $lref = &read_file_lines("$config_directory/webmin.groups");
-@$lref = grep { !/^([^:]+):/ || $1 ne $_[0] } @$lref;
+@$lref = grep { !/^([^:]+):/ || $1 ne $groupname } @$lref;
 &flush_file_lines();
 &unlock_file("$config_directory/webmin.groups");
-&unlink_file(map { "$config_directory/$_/$_[0].gacl" } &list_modules());
+&unlink_file(map { "$config_directory/$_/$groupname.gacl" } &list_modules());
+
+if ($miniserv{'userdb'}) {
+	# Also delete from group database
+	my ($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	my $dbh = &connect_userdb($miniserv{'userdb'});
+	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Find the group with SQL query
+		my $cmd = $dbh->prepare(
+			"select id from webmin_group where name = ?");
+		$cmd && $cmd->execute($groupname) ||
+			&error("Failed to find group : ".$dbh->errstr);
+		my ($id) = $cmd->fetchrow();
+		$cmd->finish();
+
+		if (defined($id)) {
+			# Delete the group
+			my $cmd = $dbh->prepare(
+				"delete from webmin_group where id = ?");
+			$cmd && $cmd->execute($id) ||
+			    &error("Failed to delete group : ".$dbh->errstr);
+			$cmd->finish();
+
+			# Delete attributes
+			my $cmd = $dbh->prepare(
+				"delete from webmin_group_attr where id = ?");
+			$cmd && $cmd->execute($id) ||
+				&error("Failed to delete group attrs : ".
+				       $dbh->errstr);
+			$cmd->finish();
+
+			# Delete ACLs
+			my $cmd = $dbh->prepare(
+				"delete from webmin_group_acl where id = ?");
+			$cmd && $cmd->execute($id) ||
+				&error("Failed to delete group acls : ".
+				       $dbh->errstr);
+			$cmd->finish();
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# Find group with LDAP query
+		# XXX
+		}
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
+	}
+
 }
 
 =head2 group_line(&group)
@@ -864,13 +1002,62 @@ The parameters are :
 =cut
 sub copy_acl_files
 {
-local $m;
-foreach $m (@{$_[2]}) {
-	&unlink_file("$config_directory/$m/$_[1].acl");
-	local %acl;
-	if (&read_file("$config_directory/$m/$_[0].acl", \%acl)) {
-		&write_file("$config_directory/$m/$_[1].acl", \%acl);
+my ($from, $to, $mods) = @_;
+my ($dbh, $fromid, $toid);
+my ($proto, $user, $pass, $host, $prefix, $args);
+
+# Check if the user is in a DB
+&get_miniserv_config(\%miniserv);
+if ($miniserv{'userdb'}) {
+	$dbh = &connect_userdb($miniserv{'userdb'});
+	&error($dbh) if (!ref($dbh));
+	($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Search in SQL DB
+		my $cmd = $dbh->prepare(
+			"select id from webmin_user where name = ?");
+		$cmd->execute($from);
+		($fromid) = $cmd->fetchrow();
+		$cmd->finish();
+		$cmd->execute($to);
+		($toid) = $cmd->fetchrow();
+		$cmd->finish();
 		}
+	elsif ($proto eq "ldap") {
+		# Search in LDAP
+		# XXX
+		}
+	}
+
+if (defined($fromid) && defined($toid)) {
+	# Copy from database to database
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		my $cmd = $dbh->prepare("insert into webmin_user_acl select ?,attr,value from webmin_user_acl where id = ?");
+		$cmd && $cmd->execute($toid, $fromid) ||
+			&error("Failed to copy ACLs : ".$dbh->errstr);
+		$cmd->finish();
+		}
+	elsif ($proto eq "ldap") {
+		# XXX
+		}
+	}
+elsif (!defined($fromid) && !defined($toid)) {
+	# Copy files
+	foreach my $m (@$mods) {
+		&unlink_file("$config_directory/$m/$to.acl");
+		my %acl;
+		if (&read_file("$config_directory/$m/$from.acl", \%acl)) {
+			&write_file("$config_directory/$m/$to.acl", \%acl);
+			}
+		}
+	}
+else {
+	# Source and dest use different storage types
+	# XXX
+	}
+if ($dbh) {
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
 }
 
@@ -888,12 +1075,12 @@ are :
 =cut
 sub copy_group_acl_files
 {
-local $m;
-foreach $m (@{$_[2]}) {
-	&unlink_file("$config_directory/$m/$_[1].gacl");
+my ($from, $to, $mods) = @_;
+foreach my $m (@$mods) {
+	&unlink_file("$config_directory/$m/$to.gacl");
 	local %acl;
-	if (&read_file("$config_directory/$m/$_[0].gacl", \%acl)) {
-		&write_file("$config_directory/$m/$_[1].gacl", \%acl);
+	if (&read_file("$config_directory/$m/$from.gacl", \%acl)) {
+		&write_file("$config_directory/$m/$to.gacl", \%acl);
 		}
 	}
 }
