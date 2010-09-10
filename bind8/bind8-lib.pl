@@ -1768,7 +1768,7 @@ else {
 
 local $temp = &transname();
 local $rv = &system_logged("$cmd </dev/null >$temp 2>&1");
-local $out = `cat $temp`;
+local $out = &read_file_contents($temp);
 unlink($temp);
 if ($rv || $out =~ /chroot.*not available/i) {
 	return &text('start_error', $out ? "<tt>$out</tt>" : "Unknown error");
