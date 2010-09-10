@@ -103,7 +103,7 @@ if ($miniserv{'userdb'}) {
 		$cmd && $cmd->execute() ||
 			&error("Failed to query users : ".$dbh->errstr);
 		while(my ($id, $name, $pass) = $cmd->fetchrow()) {
-			my $u = { 'name' => $pass, 'pass' => $pass,
+			my $u = { 'name' => $name, 'pass' => $pass,
 				  'proto' => $proto };
 			push(@rv, $u);
 			$userid{$id} = $u;
@@ -150,6 +150,8 @@ keys include :
 sub list_groups
 {
 my @rv;
+my %miniserv;
+&get_miniserv_config(\%miniserv);
 
 # Add groups from local files
 open(GROUPS, "$config_directory/webmin.groups");
@@ -179,7 +181,7 @@ if ($miniserv{'userdb'}) {
 		$cmd && $cmd->execute() ||
 			&error("Failed to query groups : ".$dbh->errstr);
 		while(my ($id, $name, $desc) = $cmd->fetchrow()) {
-			my $g = { 'name' => $pass, 'desc' => $desc,
+			my $g = { 'name' => $name, 'desc' => $desc,
 				  'proto' => $proto };
 			push(@rv, $g);
 			$groupid{$id} = $g;
@@ -747,6 +749,8 @@ Delete a webmin group, identified by the name parameter.
 sub delete_group
 {
 my ($groupname) = @_;
+my %miniserv;
+&get_miniserv_config(\%miniserv);
 
 # Delete from local files
 &lock_file("$config_directory/webmin.groups");
@@ -1033,7 +1037,7 @@ if ($miniserv{'userdb'}) {
 if (defined($fromid) && defined($toid)) {
 	# Copy from database to database
 	if ($proto eq "mysql" || $proto eq "postgresql") {
-		my $cmd = $dbh->prepare("insert into webmin_user_acl select ?,attr,value from webmin_user_acl where id = ?");
+		my $cmd = $dbh->prepare("insert into webmin_user_acl select ?,module,attr,value from webmin_user_acl where id = ?");
 		$cmd && $cmd->execute($toid, $fromid) ||
 			&error("Failed to copy ACLs : ".$dbh->errstr);
 		$cmd->finish();
@@ -1635,20 +1639,21 @@ elsif ($str =~ /^ldap:/) {
 sub userdb_table_sql
 {
 my ($str) = @_;
-my ($key, $auto);
+my ($key, $auto, $index);
 if ($str =~ /^(mysql|postgresql):/) {
 	$key = "not null primary key";
 	}
 if ($str =~ /^mysql:/) {
-	$auto = "autoincrement";
+	$auto = "auto_increment";
+	$index = ", index(id)";
 	}
 # XXX will this work on postgresql?
-return ( "create table webmin_user (id int(20) $key $auto, name varchar(255), pass varchar(255))",
-	 "create table webmin_group (id int(20) $key $auto, name varchar(255), description varchar(255))",
-	 "create table webmin_user_attr (id int(20) $key, attr varchar(32), value varchar(255))",
-	 "create table webmin_group_attr (id int(20) $key, attr varchar(32), value varchar(255))",
-         "create table webmin_user_acl (id int(20) $key, module varchar(32), attr varchar(32), value varchar(255))",
-         "create table webmin_group_acl (id int(20) $key, module varchar(32), attr varchar(32), value varchar(255))",
+return ( "create table webmin_user (id int(20) $key $auto, name varchar(255) not null, pass varchar(255))",
+	 "create table webmin_group (id int(20) $key $auto, name varchar(255) not null, description varchar(255))",
+	 "create table webmin_user_attr (id int(20) $index, attr varchar(32) not null, value varchar(255))",
+	 "create table webmin_group_attr (id int(20) $index, attr varchar(32) not null, value varchar(255))",
+         "create table webmin_user_acl (id int(20) $index, module varchar(32), attr varchar(32) not null, value varchar(255))",
+         "create table webmin_group_acl (id int(20) $index, module varchar(32), attr varchar(32) not null, value varchar(255))",
         );
 }
 

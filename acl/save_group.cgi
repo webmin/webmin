@@ -36,6 +36,7 @@ if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
 			}
 		}
 	}
+$in{'desc'} !~ /:/ || &error($text{'gsave_edesc'});
 
 # Find the current group
 if ($in{'old'}) {
@@ -101,6 +102,7 @@ if ($group) {
 # Store group options
 $group{'modules'} = \@mods;
 $group{'name'} = $in{'name'};
+$group{'desc'} = $in{'desc'};
 
 if ($in{'old'}) {
 	# update group

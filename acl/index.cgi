@@ -5,14 +5,21 @@
 require './acl-lib.pl';
 &ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
 
-@glist = &list_groups();
-foreach $g (@glist) {
-	foreach $gm (@{$g->{'members'}}) {
-		$ingroup{$gm} = $g;
+# Fetch user and group lists, if possible
+eval {
+	$main::error_must_die = 1;
+	@glist = &list_groups();
+	foreach $g (@glist) {
+		foreach $gm (@{$g->{'members'}}) {
+			$ingroup{$gm} = $g;
+			}
 		}
+	@ulist = &list_users();
+	};
+if ($@) {
+	print "<b>",&text('index_eulist', "$@"),"</b><p>\n";
 	}
 
-@ulist = &list_users();
 foreach $u (@ulist) {
 	$me = $u if ($u->{'name'} eq $base_remote_user);
 	}

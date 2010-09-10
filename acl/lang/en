@@ -23,6 +23,8 @@ index_unix=Configure Unix user Authentication
 index_sessions=View Login Sessions
 index_rbac=Setup RBAC
 index_delete=Delete Selected
+index_eulist=Failed to list users : $1
+index_eglist=Failed to list groups : $1
 
 edit_title=Edit Webmin User
 edit_title2=Create Webmin User
@@ -231,6 +233,7 @@ gedit_group=Group name
 gedit_rights=Webmin group access rights
 gedit_modules=Members' modules
 gedit_members=Member users and groups
+gedit_desc=Group description
 
 gdelete_err=Failed to delete group
 gdelete_ecannot=You are not allowed to delete groups
@@ -244,6 +247,7 @@ gsave_err=Failed to save group
 gsave_ename=Missing or invalid group name
 gsave_enamewebmin=The group name 'webmin' is reserved for internal use
 gsave_edup=Group name is already in use
+gsave_edesc=Invalid description - the : character is not allowed
 
 convert_title=Convert Users
 convert_ecannot=You are not allowed to convert Unix user

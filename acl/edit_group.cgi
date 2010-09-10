@@ -36,6 +36,10 @@ print &ui_hidden_table_start($text{'gedit_rights'}, "width=100%", 2, "rights",
 print &ui_table_row($text{'gedit_group'},
 	&ui_textbox("name", $group{'name'}, 30));
 
+# Show group description
+print &ui_table_row($text{'gedit_desc'},
+	&ui_textbox("desc", $group{'desc'}, 60));
+
 # Find and show the parent group
 @glist = grep { $_->{'name'} ne $group{'name'} } &list_groups();
 @mcan = $access{'gassign'} eq '*' ?
