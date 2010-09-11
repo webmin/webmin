@@ -18,10 +18,13 @@ elsif ($in{'but_delete'}) {
 @glist = &list_groups();
 @ulist = &list_users();
 if ($in{'old'}) {
+	%group = ( );
 	foreach $g (@glist) {
 		$old = $g if ($g->{'name'} eq $in{'old'});
 		}
 	$group{'members'} = $old->{'members'};
+	$group{'proto'} = $old->{'proto'};
+	$group{'id'} = $old->{'id'};
 	}
 &error_setup($text{'gsave_err'});
 

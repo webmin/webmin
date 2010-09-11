@@ -28,11 +28,14 @@ elsif ($in{'but_delete'}) {
 # Get the user object
 @ulist = &list_users();
 if ($in{'old'}) {
+	%user = ( );
 	$in{'name'} = $in{'old'} if (!$access{'rename'});
 	&can_edit_user($in{'old'}) || &error($text{'save_euser'});
 	foreach $u (@ulist) {
 		$old = $u if ($u->{'name'} eq $in{'old'});
 		}
+	$user{'proto'} = $old->{'proto'};
+	$user{'id'} = $old->{'id'};
 	}
 else {
 	$access{'create'} || &error($text{'save_ecreate'});

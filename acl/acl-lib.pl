@@ -103,8 +103,10 @@ if ($miniserv{'userdb'}) {
 		$cmd && $cmd->execute() ||
 			&error("Failed to query users : ".$dbh->errstr);
 		while(my ($id, $name, $pass) = $cmd->fetchrow()) {
-			my $u = { 'name' => $name, 'pass' => $pass,
-				  'proto' => $proto };
+			my $u = { 'name' => $name,
+				  'pass' => $pass,
+				  'proto' => $proto,
+				  'id' => $id };
 			push(@rv, $u);
 			$userid{$id} = $u;
 			}
@@ -181,8 +183,10 @@ if ($miniserv{'userdb'}) {
 		$cmd && $cmd->execute() ||
 			&error("Failed to query groups : ".$dbh->errstr);
 		while(my ($id, $name, $desc) = $cmd->fetchrow()) {
-			my $g = { 'name' => $name, 'desc' => $desc,
-				  'proto' => $proto };
+			my $g = { 'name' => $name,
+				  'desc' => $desc,
+				  'proto' => $proto,
+				  'id' => $id };
 			push(@rv, $g);
 			$groupid{$id} = $g;
 			}
@@ -710,7 +714,7 @@ if ($clone) {
 	}
 }
 
-=head2 modify_group(name, &group)
+=head2 modify_group(old-name, &group)
 
 Update a webmin group, identified by the name parameter. The group's new
 details are in the group hash ref, which must be in the same format as
@@ -719,23 +723,70 @@ returned by list_groups.
 =cut
 sub modify_group
 {
-&lock_file("$config_directory/webmin.groups");
-local $lref = &read_file_lines("$config_directory/webmin.groups");
-foreach $l (@$lref) {
-	if ($l =~ /^([^:]+):/ && $1 eq $_[0]) {
-		$l = &group_line($_[1]);
+my $groupname = $_[0];
+my %group = %{$_[1]};
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+
+if ($group{'proto'}) {
+	# In users and groups DB
+	my ($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	my $dbh = &connect_userdb($miniserv{'userdb'});
+	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Update primary details
+		my $cmd = $dbh->prepare("update webmin_group set name = ?, ".
+				        "description = ? where id = ?");
+		$cmd && $cmd->execute($group{'name'}, $group{'desc'},
+				      $group{'id'}) ||
+			&error("Failed to update group : ".$dbh->errstr);
+		$cmd->finish();
+
+		# Re-save attributes
+		my $cmd = $dbh->prepare("delete from webmin_group_attr ".
+					"where id = ?");
+		$cmd && $cmd->execute($group{'id'}) ||
+			&error("Failed to delete attrs : ".$dbh->errstr);
+		my $cmd = $dbh->prepare("insert into webmin_group_attr ".
+					"(id,attr,value) values (?, ?, ?)");
+		foreach my $attr (keys %group) {
+			next if ($attr eq "name" || $attr eq "desc");
+			my $value = $group{$attr};
+			if ($attr eq "members" || $attr eq "modules" ||
+			    $attr eq "ownmods") {
+				$value = join(" ", @$value);
+				}
+			$cmd->execute($group{'id'}, $attr, $value) ||
+				&error("Failed to add group attribute : ".
+					$dbh->errstr);
+			$cmd->finish();
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# XXX update in ldap
 		}
 	}
-&flush_file_lines();
-&unlock_file("$config_directory/webmin.groups");
+else {
+	# Update local file
+	&lock_file("$config_directory/webmin.groups");
+	local $lref = &read_file_lines("$config_directory/webmin.groups");
+	foreach $l (@$lref) {
+		if ($l =~ /^([^:]+):/ && $1 eq $groupname) {
+			$l = &group_line(\%group);
+			}
+		}
+	&flush_file_lines("$config_directory/webmin.groups");
+	&unlock_file("$config_directory/webmin.groups");
+	}
 
-if ($_[0] ne $_[1]->{'name'}) {
+if ($groupname ne $group{'name'} && !$group{'proto'}) {
 	# Rename all .gacl files if group renamed
-	foreach $m (@{$_[1]->{'modules'}}, "") {
-		local $file = "$config_directory/$m/$_[0].gacl";
+	foreach my $m (@{$group{'modules'}}, "") {
+		local $file = "$config_directory/$m/$groupname.gacl";
 		if (-r $file) {
 			&rename_file($file,
-				     "$config_directory/$m/$_[1]->{'name'}.gacl");
+			     "$config_directory/$m/$group{'name'}.gacl");
 			}
 		}
 	}
@@ -1639,21 +1690,22 @@ elsif ($str =~ /^ldap:/) {
 sub userdb_table_sql
 {
 my ($str) = @_;
-my ($key, $auto, $index);
+my ($key, $auto, $idattrkey);
 if ($str =~ /^(mysql|postgresql):/) {
-	$key = "not null primary key";
+	$key = "primary key";
 	}
 if ($str =~ /^mysql:/) {
 	$auto = "auto_increment";
-	$index = ", index(id)";
+	$idattrkey = ", primary key(id, attr)";
+	$idattrmodulekey = ", primary key(id, module, attr)";
 	}
 # XXX will this work on postgresql?
-return ( "create table webmin_user (id int(20) $key $auto, name varchar(255) not null, pass varchar(255))",
-	 "create table webmin_group (id int(20) $key $auto, name varchar(255) not null, description varchar(255))",
-	 "create table webmin_user_attr (id int(20) $index, attr varchar(32) not null, value varchar(255))",
-	 "create table webmin_group_attr (id int(20) $index, attr varchar(32) not null, value varchar(255))",
-         "create table webmin_user_acl (id int(20) $index, module varchar(32), attr varchar(32) not null, value varchar(255))",
-         "create table webmin_group_acl (id int(20) $index, module varchar(32), attr varchar(32) not null, value varchar(255))",
+return ( "create table webmin_user (id int(20) not null $key $auto, name varchar(255) not null, pass varchar(255))",
+	 "create table webmin_group (id int(20) not null $key $auto, name varchar(255) not null, description varchar(255))",
+	 "create table webmin_user_attr (id int(20) not null, attr varchar(32) not null, value varchar(255) $idattrkey)",
+	 "create table webmin_group_attr (id int(20) not null, attr varchar(32) not null, value varchar(255) $idattrkey)",
+         "create table webmin_user_acl (id int(20) not null, module varchar(32) not null, attr varchar(32) not null, value varchar(255) $idattrmodulekey)",
+         "create table webmin_group_acl (id int(20) not null, module varchar(32) not null, attr varchar(32) not null, value varchar(255) $idattrmodulekey)",
         );
 }
 

@@ -269,7 +269,8 @@ local @links;
 for(my $i=0; $i<@{$_[0]}; $i++) {
 	push(@links, &user_link($_[0]->[$i], $_[1], $_[4]));
 	}
-print &ui_grid_table(\@links, 4, 100, undef, undef, $_[3]);
+print &ui_grid_table(\@links, 4, 100,
+	[ "width=25%", "width=25%", "width=25%", "width=25%" ], undef, $_[3]);
 print &ui_links_row(\@rowlinks);
 }
 
