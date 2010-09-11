@@ -3288,6 +3288,12 @@ elsif ($gconfig{"risk_$u"} && $m) {
 	}
 elsif ($u ne '') {
 	# Use normal Webmin ACL, if a user is set
+	my %miniserv;
+	&get_miniserv_config(\%miniserv);
+	if ($miniserv{'userdb'}) {
+		# Look for this user in the user/group DB
+		# XXX
+		}
 	&read_file_cached("$config_directory/$m/$u.acl", \%rv);
 	if ($remote_user ne $base_remote_user && !defined($_[0])) {
 		&read_file_cached("$config_directory/$m/$remote_user.acl",\%rv);
@@ -8718,6 +8724,94 @@ if ($called_from_webmin_core) {
 	return "WebminCore";
 	}
 return __PACKAGE__;
+}
+
+=head2 get_userdb_string
+
+Returns the URL-style string for connecting to the users and groups database
+
+=cut
+sub get_userdb_string
+{
+my %miniserv;
+&get_miniserv_config(\%miniserv);
+return $miniserv{'userdb'};
+}
+
+=head2 connect_userdb(string)
+
+Returns a handle for talking to a user database - may be a DBI or LDAP handle.
+On failure returns an error message string.
+
+=cut
+sub connect_userdb
+{
+my ($str) = @_;
+my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
+if ($proto eq "mysql") {
+	# Connect to MySQL with DBI
+	my $drh = eval "use DBI; DBI->install_driver('mysql');";
+	$drh || return $text{'sql_emysqldriver'};
+	my ($host, $port) = split(/:/, $host);
+	my $cstr = "database=$prefix;host=$host";
+	$cstr .= ";port=$port" if ($port);
+	my $dbh = $drh->connect($cstr, $user, $pass, { });
+	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
+	return $dbh;
+	}
+elsif ($proto eq "postgresql") {
+	# Connect to PostgreSQL with DBI
+	my $drh = eval "use DBI; DBI->install_driver('Pg');";
+	$drh || return $text{'sql_epostgresqldriver'};
+	my ($host, $port) = split(/:/, $host);
+	my $cstr = "dbname=$prefix;host=$host";
+	$cstr .= ";port=$port" if ($port);
+	my $dbh = $drh->connect($cstr, $user, $pass);
+	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
+	return $dbh;
+	}
+elsif ($proto eq "ldap") {
+	# XXX
+	return "LDAP not done yet";
+	}
+else {
+	return "Unknown protocol $proto";
+	}
+}
+
+=head2 disconnect_userdb(string, &handle)
+
+Closes a handle opened by connect_userdb
+
+=cut
+sub disconnect_userdb
+{
+my ($str, $h) = @_;
+if ($str =~ /^(mysql|postgresql):/) {
+	# DBI disconnnect
+	$h->disconnect();
+	}
+elsif ($str =~ /^ldap:/) {
+	# LDAP disconnect
+	$h->disconnect();
+	}
+}
+
+=head2 split_userdb_string(string)
+
+Converts a string like mysql://user:pass@host/db into separate parts
+
+=cut
+sub split_userdb_string
+{
+my ($str) = @_;
+if ($str =~ /^([a-z]+):\/\/([^:]*):([^\@]*)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))?$/) {
+	my ($proto, $user, $pass, $host, $prefix, $argstr) =
+		($1, $2, $3, $4, $5, $7);
+	my %args = map { split(/=/, $_, 2) } split(/\&/, $argstr);
+	return ($proto, $user, $pass, $host, $prefix, \%args);
+	}
+return ( );
 }
 
 $done_web_lib_funcs = 1;

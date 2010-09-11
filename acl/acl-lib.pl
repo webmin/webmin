@@ -1506,7 +1506,7 @@ sub setup_anonymous_access
 local ($path, $mod) = @_;
 
 # Find out what users and paths we grant access to currently
-local %miniserv;
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 local @anon = split(/\s+/, $miniserv{'anonymous'});
 local $found = 0;
@@ -1544,20 +1544,6 @@ push(@anon, "$path=$user");
 $miniserv{'anonymous'} = join(" ", @anon);
 &put_miniserv_config(\%miniserv);
 &reload_miniserv();
-}
-
-# split_userdb_string(string)
-# Converts a string like mysql://user:pass@host/db into separate parts
-sub split_userdb_string
-{
-my ($str) = @_;
-if ($str =~ /^([a-z]+):\/\/([^:]*):([^\@]*)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))?$/) {
-	my ($proto, $user, $pass, $host, $prefix, $argstr) =
-		($1, $2, $3, $4, $5, $7);
-	my %args = map { split(/=/, $_, 2) } split(/\&/, $argstr);
-	return ($proto, $user, $pass, $host, $prefix, \%args);
-	}
-return ( );
 }
 
 # join_userdb_string(proto, user, pass, host, prefix, &args)
@@ -1629,59 +1615,6 @@ elsif ($proto eq "ldap") {
 	}
 else {
 	return "Unknown user database type $proto";
-	}
-}
-
-# connect_userdb(string)
-# Returns a handle for talking to a user database - may be a DBI or LDAP handle.
-# On failure returns an error message string.
-sub connect_userdb
-{
-my ($str) = @_;
-my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
-if ($proto eq "mysql") {
-	# Connect to MySQL with DBI
-	my $drh = eval "use DBI; DBI->install_driver('mysql');";
-	$drh || return $text{'sql_emysqldriver'};
-	my ($host, $port) = split(/:/, $host);
-	my $cstr = "database=$prefix;host=$host";
-	$cstr .= ";port=$port" if ($port);
-	my $dbh = $drh->connect($cstr, $user, $pass, { });
-	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
-	return $dbh;
-	}
-elsif ($proto eq "postgresql") {
-	# Connect to PostgreSQL with DBI
-	my $drh = eval "use DBI; DBI->install_driver('Pg');";
-	$drh || return $text{'sql_epostgresqldriver'};
-	my ($host, $port) = split(/:/, $host);
-	my $cstr = "dbname=$prefix;host=$host";
-	$cstr .= ";port=$port" if ($port);
-	my $dbh = $drh->connect($cstr, $user, $pass);
-	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
-	return $dbh;
-	}
-elsif ($proto eq "ldap") {
-	# XXX
-	return "LDAP not done yet";
-	}
-else {
-	return "Unknown protocol $proto";
-	}
-}
-
-# disconnect_userdb(string, &handle)
-# Closes a handle opened by connect_userdb
-sub disconnect_userdb
-{
-my ($str, $h) = @_;
-if ($str =~ /^(mysql|postgresql):/) {
-	# DBI disconnnect
-	$h->disconnect();
-	}
-elsif ($str =~ /^ldap:/) {
-	# LDAP disconnect
-	$h->disconnect();
 	}
 }
 
