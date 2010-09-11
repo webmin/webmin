@@ -1766,10 +1766,8 @@ else {
 	$cmd = "chroot $chroot $config{'named_path'} -c $config{'named_conf'} $user </dev/null 2>&1";
 	}
 
-local $temp = &transname();
-local $rv = &system_logged("$cmd </dev/null >$temp 2>&1");
-local $out = &read_file_contents($temp);
-unlink($temp);
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
+local $rv = $?;
 if ($rv || $out =~ /chroot.*not available/i) {
 	return &text('start_error', $out ? "<tt>$out</tt>" : "Unknown error");
 	}
