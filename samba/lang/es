@@ -114,6 +114,7 @@ euser_name=Nombre de usuario
 euser_newpw=Nueva clave de acceso
 euser_noaccess=Sin acceso
 euser_noexpire=La clave no caduca
+euser_locked=Cuenta bloqueada
 euser_nopw=Sin clave de acceso
 euser_nopwrequired=No se requiere clave de acceso
 euser_normal=Usuario normal

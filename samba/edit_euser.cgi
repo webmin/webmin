@@ -67,7 +67,7 @@ else {
 	map { $opt{uc($_)}++ } @{$u->{'opts'}};
 	print "<tr> <td valign=top align=right><b>$text{'euser_option'}</b></td> <td colspan=3>\n";
 	@ol = ($text{'euser_normal'}, "U", $text{'euser_nopwrequired'}, "N",
-	       $text{'euser_disable'}, "D", $text{'euser_noexpire'}, "X", $text{'euser_trust'}, "W");
+	       $text{'euser_disable'}, "D", $text{'euser_locked'}, "L" ,$text{'euser_noexpire'}, "X", $text{'euser_trust'}, "W");
 	for($i=0; $i<@ol; $i+=2) {
 		printf "<input type=checkbox name=opts value=%s %s> %s<br>\n",
 			$ol[$i+1], $opt{$ol[$i+1]} ? "checked" : "", $ol[$i];
