@@ -72,6 +72,13 @@ if ($in{'group'}) {
 				    &ui_links_row(\@grid));
 		}
 	}
+
+# Storage type
+if ($in{'group'}) {
+	print &ui_table_row($text{'edit_proto'},
+		$text{'edit_proto'.$user{'proto'}});
+	}
+
 print &ui_hidden_table_end("basic");
 
 # Start of modules section

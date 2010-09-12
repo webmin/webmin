@@ -145,6 +145,12 @@ print &ui_table_row($text{'edit_pass'},
 print &ui_table_row($text{'edit_real'},
 	&ui_textbox("real", $user{'real'}, 60));
 
+# Storage type
+if ($in{'user'}) {
+	print &ui_table_row($text{'edit_proto'},
+		$text{'edit_proto'.$user{'proto'}});
+	}
+
 print &ui_hidden_table_end("rights");
 
 # Start of UI options section
@@ -207,12 +213,6 @@ if ($access{'theme'} && @overlays) {
 		    [ 0, &ui_select("overlay", $user{'overlay'},
 			   [ map { [ $_->{'dir'}, $_->{'desc'} ] } @overlays ]
 				    ) ] ]));
-	}
-
-# Storage type
-if ($in{'user'}) {
-	print &ui_table_row($text{'edit_proto'},
-		$text{'edit_proto'.$user{'proto'}});
 	}
 
 if ($showui) {

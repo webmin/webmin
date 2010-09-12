@@ -381,141 +381,207 @@ to create_user.
 =cut
 sub modify_user
 {
-local(%user, %miniserv, @pwfile, @acl, @mods, $_, $m);
-%user = %{$_[1]};
-
-&lock_file($ENV{'MINISERV_CONFIG'});
+my $username = $_[0];
+my %user = %{$_[1]};
+my (%miniserv, @pwfile, @acl, @mods, $_, $m);
 &get_miniserv_config(\%miniserv);
-delete($miniserv{"preroot_".$_[0]});
-if ($user{'theme'}) {
-	$miniserv{"preroot_".$user{'name'}} =
-		$user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
-	}
-elsif (defined($user{'theme'})) {
-	$miniserv{"preroot_".$user{'name'}} = "";
-	}
-local @logout = split(/\s+/, $miniserv{'logouttimes'});
-@logout = grep { $_ !~ /^$_[0]=/ } @logout;
-if (defined($user{'logouttime'})) {
-	push(@logout, "$user{'name'}=$user{'logouttime'}");
-	}
-$miniserv{'logouttimes'} = join(" ", @logout);
-&put_miniserv_config(\%miniserv);
-&unlock_file($ENV{'MINISERV_CONFIG'});
 
-local @times;
-push(@times, "days", $user{'days'}) if ($user{'days'} ne '');
-push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
-	if ($user{'hoursfrom'});
-&lock_file($miniserv{'userfile'});
-open(PWFILE, $miniserv{'userfile'});
-@pwfile = <PWFILE>;
-close(PWFILE);
-&open_tempfile(PWFILE, ">$miniserv{'userfile'}");
-foreach (@pwfile) {
-	if (/^([^:]+):([^:]*)/ && $1 eq $_[0]) {
-		if ($2 ne $user{'pass'} &&
-		    "!".$2 ne $user{'pass'} &&
-		    $2 ne "!".$user{'pass'} &&
-		    $user{'pass'} ne 'x' &&
-		    $user{'pass'} ne 'e' &&
-		    $user{'pass'} ne '*LK*') {
-			# Password change detected .. update change time, and
-			# save the old one
-			local $nolock = $2;
-			$nolock =~ s/^\!//;
-			unshift(@{$user{'olds'}}, $nolock);
-			if ($miniserv{'pass_oldblock'}) {
-				while(scalar(@{$user{'olds'}}) >
-				      $miniserv{'pass_oldblock'}) {
-					pop(@{$user{'olds'}});
-					}
+if ($user{'proto'}) {
+	# In users and groups DB
+	my ($proto, $user, $pass, $host, $prefix, $args) =
+		&split_userdb_string($miniserv{'userdb'});
+	my $dbh = &connect_userdb($miniserv{'userdb'});
+	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Get old password, for change detection
+		my $cmd = $dbh->prepare(
+			"select pass from webmin_user where id = ?");
+		$cmd && $cmd->execute($user{'id'}) ||
+			&error("Failed to get old password : ".$dbh->errstr);
+		my ($oldpass) = $cmd->fetchrow();
+		$cmd->finish();
+		&add_old_password(\%user, $oldpass, \%miniserv);
+
+		# Update primary details
+		my $cmd = $dbh->prepare("update webmin_user set name = ?, ".
+				        "pass = ? where id = ?");
+		$cmd && $cmd->execute($user{'name'}, $user{'pass'},
+				      $user{'id'}) ||
+			&error("Failed to update user : ".$dbh->errstr);
+		$cmd->finish();
+
+		# Re-save attributes
+		my $cmd = $dbh->prepare("delete from webmin_user_attr ".
+					"where id = ?");
+		$cmd && $cmd->execute($user{'id'}) ||
+			&error("Failed to delete attrs : ".$dbh->errstr);
+		my $cmd = $dbh->prepare("insert into webmin_user_attr ".
+					"(id,attr,value) values (?, ?, ?)");
+		foreach my $attr (keys %user) {
+			next if ($attr eq "name" || $attr eq "pass");
+			my $value = $user{$attr};
+			if ($attr eq "olds" || $attr eq "modules" ||
+			    $attr eq "ownmods") {
+				$value = join(" ", @$value);
 				}
-			$user{'lastchange'} = time();
+			$cmd->execute($user{'id'}, $attr, $value) ||
+				&error("Failed to add user attribute : ".
+					$dbh->errstr);
+			$cmd->finish();
 			}
-		&print_tempfile(PWFILE,
-			"$user{'name'}:$user{'pass'}:",
-			"$user{'sync'}:$user{'cert'}:",
-			($user{'allow'} ? "allow $user{'allow'}" :
-			 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
-			join(" ", @times),":",
-			$user{'lastchange'},":",
-			join(" ", @{$user{'olds'}}),":",
-			$user{'minsize'},":",
-			$user{'nochange'},":",
-			$user{'temppass'},
-			"\n");
 		}
-	else {
-		&print_tempfile(PWFILE, $_);
+	elsif ($proto eq "ldap") {
+		# XXX update in ldap
 		}
 	}
-&close_tempfile(PWFILE);
-&unlock_file($miniserv{'userfile'});
+else {
+	# In local files
+	&lock_file($ENV{'MINISERV_CONFIG'});
+	delete($miniserv{"preroot_".$username});
+	if ($user{'theme'}) {
+		$miniserv{"preroot_".$user{'name'}} =
+		  $user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+		}
+	elsif (defined($user{'theme'})) {
+		$miniserv{"preroot_".$user{'name'}} = "";
+		}
+	local @logout = split(/\s+/, $miniserv{'logouttimes'});
+	@logout = grep { $_ !~ /^$username=/ } @logout;
+	if (defined($user{'logouttime'})) {
+		push(@logout, "$user{'name'}=$user{'logouttime'}");
+		}
+	$miniserv{'logouttimes'} = join(" ", @logout);
+	&put_miniserv_config(\%miniserv);
+	&unlock_file($ENV{'MINISERV_CONFIG'});
 
-&lock_file(&acl_filename());
-@mods = &list_modules();
-open(ACL, &acl_filename());
-@acl = <ACL>;
-close(ACL);
-&open_tempfile(ACL, ">".&acl_filename());
-foreach (@acl) {
-	if (/^(\S+):/ && $1 eq $_[0]) {
-		&print_tempfile(ACL, &acl_line($_[1], \@mods));
+	local @times;
+	push(@times, "days", $user{'days'}) if ($user{'days'} ne '');
+	push(@times, "hours", $user{'hoursfrom'}."-".$user{'hoursto'})
+		if ($user{'hoursfrom'});
+	&lock_file($miniserv{'userfile'});
+	open(PWFILE, $miniserv{'userfile'});
+	@pwfile = <PWFILE>;
+	close(PWFILE);
+	&open_tempfile(PWFILE, ">$miniserv{'userfile'}");
+	foreach (@pwfile) {
+		if (/^([^:]+):([^:]*)/ && $1 eq $username) {
+			&add_old_password(\%user, "$2", \%miniserv);
+			&print_tempfile(PWFILE,
+				"$user{'name'}:$user{'pass'}:",
+				"$user{'sync'}:$user{'cert'}:",
+				($user{'allow'} ? "allow $user{'allow'}" :
+				 $user{'deny'} ? "deny $user{'deny'}" : ""),":",
+				join(" ", @times),":",
+				$user{'lastchange'},":",
+				join(" ", @{$user{'olds'}}),":",
+				$user{'minsize'},":",
+				$user{'nochange'},":",
+				$user{'temppass'},
+				"\n");
+			}
+		else {
+			&print_tempfile(PWFILE, $_);
+			}
 		}
-	else {
-		&print_tempfile(ACL, $_);
+	&close_tempfile(PWFILE);
+	&unlock_file($miniserv{'userfile'});
+
+	&lock_file(&acl_filename());
+	@mods = &list_modules();
+	open(ACL, &acl_filename());
+	@acl = <ACL>;
+	close(ACL);
+	&open_tempfile(ACL, ">".&acl_filename());
+	foreach (@acl) {
+		if (/^(\S+):/ && $1 eq $username) {
+			&print_tempfile(ACL, &acl_line($_[1], \@mods));
+			}
+		else {
+			&print_tempfile(ACL, $_);
+			}
 		}
+	&close_tempfile(ACL);
+	&unlock_file(&acl_filename());
+
+	delete($gconfig{"lang_".$username});
+	$gconfig{"lang_".$user{'name'}} = $user{'lang'} if ($user{'lang'});
+	delete($gconfig{"notabs_".$username});
+	$gconfig{"notabs_".$user{'name'}} = $user{'notabs'}
+		if ($user{'notabs'});
+	delete($gconfig{"skill_".$username});
+	$gconfig{"skill_".$user{'name'}} = $user{'skill'} if ($user{'skill'});
+	delete($gconfig{"risk_".$username});
+	$gconfig{"risk_".$user{'name'}} = $user{'risk'} if ($user{'risk'});
+	delete($gconfig{"rbacdeny_".$username});
+	$gconfig{"rbacdeny_".$user{'name'}} = $user{'rbacdeny'}
+		if ($user{'rbacdeny'});
+	delete($gconfig{"ownmods_".$username});
+	$gconfig{"ownmods_".$user{'name'}} = join(" ", @{$user{'ownmods'}})
+		if (@{$user{'ownmods'}});
+	delete($gconfig{"theme_".$username});
+	if ($user{'theme'}) {
+		$gconfig{"theme_".$user{'name'}} =
+		  $user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
+		}
+	elsif (defined($user{'theme'})) {
+		$gconfig{"theme_".$user{'name'}} = '';
+		}
+	delete($gconfig{"readonly_".$username});
+	$gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
+		if (defined($user{'readonly'}));
+	delete($gconfig{"realname_".$username});
+	$gconfig{"realname_".$user{'name'}} = $user{'real'}
+		if (defined($user{'real'}));
+	&write_file("$config_directory/config", \%gconfig);
 	}
-&close_tempfile(ACL);
-&unlock_file(&acl_filename());
 
-delete($gconfig{"lang_".$_[0]});
-$gconfig{"lang_".$user{'name'}} = $user{'lang'} if ($user{'lang'});
-delete($gconfig{"notabs_".$_[0]});
-$gconfig{"notabs_".$user{'name'}} = $user{'notabs'} if ($user{'notabs'});
-delete($gconfig{"skill_".$_[0]});
-$gconfig{"skill_".$user{'name'}} = $user{'skill'} if ($user{'skill'});
-delete($gconfig{"risk_".$_[0]});
-$gconfig{"risk_".$user{'name'}} = $user{'risk'} if ($user{'risk'});
-delete($gconfig{"rbacdeny_".$_[0]});
-$gconfig{"rbacdeny_".$user{'name'}} = $user{'rbacdeny'} if ($user{'rbacdeny'});
-delete($gconfig{"ownmods_".$_[0]});
-$gconfig{"ownmods_".$user{'name'}} = join(" ", @{$user{'ownmods'}})
-	if (@{$user{'ownmods'}});
-delete($gconfig{"theme_".$_[0]});
-if ($user{'theme'}) {
-        $gconfig{"theme_".$user{'name'}} =
-                $user{'theme'}.($user{'overlay'} ? " ".$user{'overlay'} : "");
-        }
-elsif (defined($user{'theme'})) {
-        $gconfig{"theme_".$user{'name'}} = '';
-        }
-delete($gconfig{"readonly_".$_[0]});
-$gconfig{"readonly_".$user{'name'}} = $user{'readonly'}
-	if (defined($user{'readonly'}));
-delete($gconfig{"realname_".$_[0]});
-$gconfig{"realname_".$user{'name'}} = $user{'real'}
-	if (defined($user{'real'}));
-&write_file("$config_directory/config", \%gconfig);
-
-if ($_[0] ne $user{'name'}) {
+if ($username ne $user{'name'} && !$user{'proto'}) {
 	# Rename all .acl files if user renamed
 	foreach $m (@mods, "") {
-		local $file = "$config_directory/$m/$_[0].acl";
+		local $file = "$config_directory/$m/$username.acl";
 		if (-r $file) {
-			&rename_file($file, "$config_directory/$m/$user{'name'}.acl");
+			&rename_file($file,
+				"$config_directory/$m/$user{'name'}.acl");
 			}
 		}
-	local $file = "$config_directory/$_[0].acl";
+	local $file = "$config_directory/$username.acl";
 	if (-r $file) {
 		&rename_file($file, "$config_directory/$user{'name'}.acl");
 		}
 	}
 
-if ($miniserv{'session'} && $_[0] ne $user{'name'}) {
+if ($miniserv{'session'} && $username ne $user{'name'}) {
 	# Modify all sessions for the renamed user
-	&rename_session_user(\&miniserv, $_[0], $user{'name'});
+	&rename_session_user(\&miniserv, $username, $user{'name'});
+	}
+}
+
+=head2 add_old_password(&user, oldpass, &miniserv)
+
+Internal function to update the olds list of old passwords for a user
+
+=cut
+sub add_old_password
+{
+my ($user, $oldpass, $miniserv) = @_;
+if ($oldpass ne $user->{'pass'} &&
+    "!".$oldpass ne $user->{'pass'} &&
+    $oldpass ne "!".$user->{'pass'} &&
+    $user->{'pass'} ne 'x' &&
+    $user->{'pass'} ne 'e' &&
+    $user->{'pass'} ne '*LK*') {
+	# Password change detected .. update change time
+	# and save the old one
+	local $nolock = $oldpass;
+	$nolock =~ s/^\!//;
+	unshift(@{$user->{'olds'}}, $nolock);
+	if ($miniserv->{'pass_oldblock'}) {
+		while(scalar(@{$user->{'olds'}}) >
+		      $miniserv->{'pass_oldblock'}) {
+			pop(@{$user->{'olds'}});
+			}
+		}
+	$user->{'lastchange'} = time();
 	}
 }
 
@@ -1546,8 +1612,11 @@ $miniserv{'anonymous'} = join(" ", @anon);
 &reload_miniserv();
 }
 
-# join_userdb_string(proto, user, pass, host, prefix, &args)
-# Creates a string in the format accepted by split_userdb_string
+=head2 join_userdb_string(proto, user, pass, host, prefix, &args)
+
+Creates a string in the format accepted by split_userdb_string
+
+=cut
 sub join_userdb_string
 {
 my ($proto, $user, $pass, $host, $prefix, $args) = @_;
@@ -1559,8 +1628,11 @@ if (keys %$args) {
 return $proto."://".$user.":".$pass."\@".$host."/".$prefix.$argstr;
 }
 
-# validate_userdb(string, [no-table-check])
-# Checks if some user database is usable, and if not returns an error message
+=head2 validate_userdb(string, [no-table-check])
+
+Checks if some user database is usable, and if not returns an error message
+
+=cut
 sub validate_userdb
 {
 my ($str, $notablecheck) = @_;
@@ -1618,8 +1690,12 @@ else {
 	}
 }
 
-# userdb_table_sql(string)
-# Returns SQL statements needed to create all required tables
+=head2 userdb_table_sql(string)
+
+Returns SQL statements needed to create all required tables. Mainly for
+internal use.
+
+=cut
 sub userdb_table_sql
 {
 my ($str) = @_;
