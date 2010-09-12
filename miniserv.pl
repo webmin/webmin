@@ -110,7 +110,7 @@ elsif (!$config{'no_pam'}) {
 		if (ref($pamh = new Authen::PAM($config{'pam'},
 						$config{'pam_test_user'},
 						\&pam_conv_func))) {
-			# Now test a login to see if /etc/pam.d/XXX is set
+			# Now test a login to see if /etc/pam.d/webmin is set
 			# up properly.
 			$pam_conv_func_called = 0;
 			$pam_username = "test";
@@ -1412,23 +1412,16 @@ if ($config{'userfile'}) {
 		$config{'session'} = 0;
 		}
 
-	# check for SSL authentication
+	# Check for SSL authentication
 	if ($use_ssl && $verified_client) {
 		$peername = Net::SSLeay::X509_NAME_oneline(
 				Net::SSLeay::X509_get_subject_name(
 					Net::SSLeay::get_peer_certificate(
 						$ssl_con)));
-		local $peername2 = $peername;
-		$peername2 =~ s/Email=/emailAddress=/ ||
-			$peername2 =~ s/emailAddress=/Email=/;
-		foreach $u (keys %certs) {
-			if ($certs{$u} eq $peername ||
-			    $certs{$u} eq $peername2) {
-				$authuser = $u;
-				$validated = 2;
-				#syslog("info", "%s", "SSL login as $authuser from $acpthost") if ($use_syslog);
-				last;
-				}
+		$u = &find_user_by_cert($peername);
+		if ($u) {
+			$authuser = $u;
+			$validated = 2;
 			}
 		if ($use_syslog && !$validated) {
 			syslog("crit", "%s",
@@ -3024,10 +3017,10 @@ elsif ($canmode == 1) {
 	my $uinfo = &get_user_details($webminuser);
 	if ($uinfo && &password_crypt($pass, $uinfo->{'pass'})) {
 		# Password is valid .. but check for expiry
-		local $lc = $lastchanges{$user};
-		if ($config{'pass_maxdays'} && $lc && !$nochange{$user}) {
+		local $lc = $uinfo->{'lastchanges'};
+		if ($config{'pass_maxdays'} && $lc && !$uinfo->{'nochange'}) {
 			local $daysold = (time() - $lc)/(24*60*60);
-			print DEBUG "maxdays=$config{'pass_maxdays'} daysold=$daysold temppass=$temppass{$user}\n";
+			print DEBUG "maxdays=$config{'pass_maxdays'} daysold=$daysold temppass=$uinfo->{'temppass'}\n";
 			if ($config{'pass_lockdays'} &&
 			    $daysold > $config{'pass_lockdays'}) {
 				# So old that the account is locked
@@ -3038,7 +3031,7 @@ elsif ($canmode == 1) {
 				return ( $user, 1, 0 );
 				}
 			}
-		if ($temppass{$user}) {
+		if ($uinfo->{'temppass'}) {
 			# Temporary password - force change now
 			return ( $user, 2, 0 );
 			}
@@ -3457,10 +3450,13 @@ foreach $p (values %conversations) {
 # Returns 1 if some user is allowed to login from the accepting IP, 0 if not
 sub check_user_ip
 {
-if ($deny{$_[0]} &&
-    &ip_match($acptip, $localip, @{$deny{$_[0]}}) ||
-    $allow{$_[0]} &&
-    !&ip_match($acptip, $localip, @{$allow{$_[0]}})) {
+local ($username) = @_;
+local $uinfo = &get_user_details($username);
+return 1 if (!$uinfo);
+if ($uinfo->{'deny'} &&
+    &ip_match($acptip, $localip, @{$uinfo->{'deny'}}) ||
+    $uinfo->{'allow'} &&
+    !&ip_match($acptip, $localip, @{$uinfo->{'allow'}})) {
 	return 0;
 	}
 return 1;
@@ -3470,17 +3466,19 @@ return 1;
 # Returns 1 if some user is allowed to login at the current date and time
 sub check_user_time
 {
-return 1 if (!$allowdays{$_[0]} && !$allowhours{$_[0]});
+local ($username) = @_;
+local $uinfo = &get_user_details($username);
+return 1 if (!$uinfo || !$uinfo->{'allowdays'} && !$uinfo->{'allowhours'});
 local @tm = localtime(time());
-if ($allowdays{$_[0]}) {
+if ($uinfo->{'allowdays'}) {
 	# Make sure day is allowed
-	return 0 if (&indexof($tm[6], @{$allowdays{$_[0]}}) < 0);
+	return 0 if (&indexof($tm[6], @{$uinfo->{'allowdays'}}) < 0);
 	}
-if ($allowhours{$_[0]}) {
+if ($uinfo->{'allowhours'}) {
 	# Make sure time is allowed
 	local $m = $tm[2]*60+$tm[1];
-	return 0 if ($m < $allowhours{$_[0]}->[0] ||
-		     $m > $allowhours{$_[0]}->[1]);
+	return 0 if ($m < $uinfo->{'allowhours'}->[0] ||
+		     $m > $uinfo->{'allowhours'}->[1]);
 	}
 return 1;
 }
@@ -4061,7 +4059,6 @@ if ($config{'userfile'}) {
 
 # get_user_details(username)
 # Returns a hash ref of user details, either from config files or the user DB
-# XXX fix all other user of %allow / etc to use this function
 sub get_user_details
 {
 my ($username) = @_;
@@ -4081,6 +4078,10 @@ if (exists($users{$username})) {
 	}
 if ($config{'userdb'}) {
 	# Try querying user database
+	if (exists($get_user_details_cache{$username})) {
+		# Cached already
+		return $get_user_details_cache{$username};
+		}
 	print DEBUG "get_user_details: Connecting to user database\n";
 	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
 	my $user;
@@ -4102,6 +4103,7 @@ if ($config{'userdb'}) {
 		$cmd->finish();
 		if (!$id) {
 			&disconnect_userdb($config{'userdb'}, $dbh);
+			$get_user_details_cache{$username} = undef;
 			print DEBUG "get_user_details: User not found\n";
 			return undef;
 			}
@@ -4138,24 +4140,68 @@ if ($config{'userdb'}) {
 				[ split(/\s+/, $attrs{'deny'}) ] :
 				[ &to_ipaddress(split(/\s+/,$attrs{'deny'})) ];
 			}
-		if ($attr{'days'}) {
-			$user->{'allowdays'} = [ split(/,/, $attr{'days'}) ];
+		if ($attrs{'days'}) {
+			$user->{'allowdays'} = [ split(/,/, $attrs{'days'}) ];
 			}
-		if ($attr{'hoursfrom'} && $attr{'hoursto'}) {
-			my ($hf, $mf) = split(/\./, $attr{'hoursfrom'});
-			my ($ht, $mt) = split(/\./, $attr{'hoursto'});
+		if ($attrs{'hoursfrom'} && $attrs{'hoursto'}) {
+			my ($hf, $mf) = split(/\./, $attrs{'hoursfrom'});
+			my ($ht, $mt) = split(/\./, $attrs{'hoursto'});
 			$user->{'allowhours'} = [ $hf*60+$ht, $ht*60+$mt ];
 			}
-		$user->{'lastchanges'} = $attr{'lastchange'};
-		$user->{'nochange'} = $attr{'nochange'};
-		$user->{'temppass'} = $attr{'temppass'};
+		$user->{'lastchanges'} = $attrs{'lastchange'};
+		$user->{'nochange'} = $attrs{'nochange'};
+		$user->{'temppass'} = $attrs{'temppass'};
 		}
 	elsif ($proto eq "ldap") {
 		# Fetch with LDAP
 		# XXX
 		}
 	&disconnect_userdb($config{'userdb'}, $dbh);
+	$get_user_details_cache{$user->{'name'}} = $user;
 	return $user;
+	}
+return undef;
+}
+
+# find_user_by_cert(cert)
+# Returns a username looked up by certificate
+sub find_user_by_cert
+{
+my ($peername) = @_;
+my $peername2 = $peername;
+$peername2 =~ s/Email=/emailAddress=/ || $peername2 =~ s/emailAddress=/Email=/;
+
+# First check users in local files
+foreach my $username (keys %certs) {
+	if ($certs{$username} eq $peername ||
+	    $certs{$username} eq $peername2) {
+		return $username;
+		}
+	}
+
+# Check user DB
+if ($config{'userdb'}) {
+	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
+	if (!ref($dbh)) {
+		return undef;
+		}
+	elsif ($proto eq "mysql" || $proto eq "postgresql") {
+		# Query with SQL
+		my $cmd = $dbh->prepare("select webmin_user.name from webmin_user,webmin_user_attr where webmin_user.id = webmin_user_attr.id and webmin_user_attr.attr = 'cert' and webmin_user_attr.value = ?");
+		return undef if (!$cmd);
+		foreach my $p ($peername, $peername2) {
+			my $username;
+			if ($cmd->execute($p)) {
+				($username) = $cmd->fetchrow();
+				}
+			$cmd->finish();
+			return $username if ($username);
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# Lookup in LDAP
+		# XXX
+		}
 	}
 return undef;
 }
@@ -4839,29 +4885,61 @@ $miniserv_main_pid = getpid();
 sub lock_user_password
 {
 local ($user) = @_;
-if ($users{$user}) {
-	if ($users{$user} !~ /^\!/) {
-		# Lock the password
-		# XXX update user DB
-		$users{$user} = "!".$users{$user};
-		open(USERS, $config{'userfile'});
-		local @ufile = <USERS>;
-		close(USERS);
-		foreach my $u (@ufile) {
-			local @uinfo = split(/:/, $u);
-			if ($uinfo[0] eq $user) {
-				$uinfo[1] = $users{$user};
-				}
-			$u = join(":", @uinfo);
-			}
-		open(USERS, ">$config{'userfile'}");
-		print USERS @ufile;
-		close(USERS);
-		return 1;
-		}
+local $uinfo = &get_user_details($user);
+if (!$uinfo) {
+	# No such user!
+	return -1;
+	}
+if ($uinfo->{'pass'} =~ /^\!/) {
+	# Already locked
 	return 0;
 	}
-return -1;
+if (!$uinfo->{'proto'}) {
+	# Write to users file
+	$users{$user} = "!".$users{$user};
+	open(USERS, $config{'userfile'});
+	local @ufile = <USERS>;
+	close(USERS);
+	foreach my $u (@ufile) {
+		local @uinfo = split(/:/, $u);
+		if ($uinfo[0] eq $user) {
+			$uinfo[1] = $users{$user};
+			}
+		$u = join(":", @uinfo);
+		}
+	open(USERS, ">$config{'userfile'}");
+	print USERS @ufile;
+	close(USERS);
+	return 0;
+	}
+
+if ($config{'userdb'}) {
+	# Update user DB
+	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
+	if (!$dbh) {
+		return -1;
+		}
+	elsif ($proto eq "mysql" || $proto eq "postgresql") {
+		# Update user attribute
+		my $cmd = $dbh->prepare(
+			"update webmin_user set pass = ? where id = ?");
+		if (!$cmd || !$cmd->execute("!".$uinfo->{'pass'},
+					    $uinfo->{'id'})) {
+			# Update failed
+			print STDERR "Failed to lock password : ",
+				     $dbh->errstr,"\n";
+			return -1;
+			}
+		$cmd->finish() if ($cmd);
+		}
+	elsif ($proto eq "ldap") {
+		# XXX update in LDAP
+		}
+	&disconnect_userdb($config{'userdb'}, $dbh);
+	return 0;
+	}
+
+return -1;	# This should never be reached
 }
 
 # hash_session_id(sid)
