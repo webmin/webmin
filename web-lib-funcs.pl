@@ -1701,6 +1701,7 @@ more comprehensive check of module availability.
 sub read_acl
 {
 if (!%main::acl_hash_cache) {
+	# Read from local files
 	local $_;
 	open(ACL, &acl_filename());
 	while(<ACL>) {
@@ -1714,6 +1715,31 @@ if (!%main::acl_hash_cache) {
 			}
 		}
 	close(ACL);
+
+	# Read from user DB
+	my $userdb = &get_userdb_string();
+	my ($dbh, $proto) = $userdb ? &connect_userdb($userdb) : ( );
+	if (ref($dbh)) {
+		if ($proto eq "mysql" || $proto eq "postgresql") {
+			# Select usernames and modules from SQL DB
+			my $cmd = $dbh->prepare("select webmin_user.name,webmin_user_attr.value from webmin_user,webmin_user_attr where webmin_user.id = webmin_user_attr.id and webmin_user_attr.attr = 'modules'");
+			if ($cmd && $cmd->execute()) {
+				while(my ($user, $mods) = $cmd->fetchrow()) {
+					my @mods = split(/\s+/, $mods);
+					foreach my $m (@mods) {
+						$main::acl_hash_cache{$user,
+								      $m}++;
+						}
+					$main::acl_array_cache{$user} = \@mods;
+					}
+				}
+			$cmd->finish();
+			}
+		elsif ($proto eq "ldap") {
+			# XXX read from LDAP
+			}
+		&disconnect_userdb($userdb, $dbh);
+		}
 	}
 if ($_[0]) { %{$_[0]} = %main::acl_hash_cache; }
 if ($_[1]) { %{$_[1]} = %main::acl_array_cache; }
@@ -8741,7 +8767,8 @@ return $miniserv{'userdb'};
 =head2 connect_userdb(string)
 
 Returns a handle for talking to a user database - may be a DBI or LDAP handle.
-On failure returns an error message string.
+On failure returns an error message string. In an array context, returns the
+protocol type too.
 
 =cut
 sub connect_userdb
@@ -8757,7 +8784,7 @@ if ($proto eq "mysql") {
 	$cstr .= ";port=$port" if ($port);
 	my $dbh = $drh->connect($cstr, $user, $pass, { });
 	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
-	return $dbh;
+	return wantarray ? ($dbh, $proto) : $dbh;
 	}
 elsif ($proto eq "postgresql") {
 	# Connect to PostgreSQL with DBI
@@ -8768,7 +8795,7 @@ elsif ($proto eq "postgresql") {
 	$cstr .= ";port=$port" if ($port);
 	my $dbh = $drh->connect($cstr, $user, $pass);
 	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
-	return $dbh;
+	return wantarray ? ($dbh, $proto) : $dbh;
 	}
 elsif ($proto eq "ldap") {
 	# XXX

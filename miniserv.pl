@@ -1394,7 +1394,7 @@ if (!$davpath && ($method eq "SEARCH" || $method eq "PUT")) {
 	}
 
 # Check for password if needed
-if (%users) {
+if ($config{'userfile'}) {
 	print DEBUG "handle_request: Need authentication\n";
 	$validated = 0;
 	$blocked = 0;
@@ -1649,7 +1649,8 @@ if (%users) {
 
 	# Check for local authentication
 	if ($localauth_user && !$header{'x-forwarded-for'} && !$header{'via'}) {
-		if (defined($users{$localauth_user})) {
+		my $luser = &get_user_details($localauth_user);
+		if ($luser) {
 			# Local user exists in webmin users file
 			$validated = 1;
 			$authuser = $localauth_user;
@@ -3020,8 +3021,8 @@ elsif ($canmode == 0) {
 	}
 elsif ($canmode == 1) {
 	# Attempt Webmin authentication
-	if ($users{$webminuser} eq
-	    &password_crypt($pass, $users{$webminuser})) {
+	my $uinfo = &get_user_details($webminuser);
+	if ($uinfo && &password_crypt($pass, $uinfo->{'pass'})) {
 		# Password is valid .. but check for expiry
 		local $lc = $lastchanges{$user};
 		if ($config{'pass_maxdays'} && $lc && !$nochange{$user}) {
@@ -3196,7 +3197,8 @@ return $resp =~ /^OK/i ? 1 : 0;
 # Fifth is a flag indicating if a sudo check is needed.
 sub can_user_login
 {
-if (!$users{$_[0]}) {
+local $uinfo = &get_user_details($_[0]);
+if (!$uinfo) {
 	# See if this user exists in Unix and can be validated by the same
 	# method as the unixauth webmin user
 	local $realuser = $unixauth{$_[0]};
@@ -3236,8 +3238,9 @@ if (!$users{$_[0]}) {
 		$realuser = $unixauth{"*"};
 		}
 	return (undef, 0, 1, undef) if (!$realuser);
-	local $up = $users{$realuser};
-	return (undef, 0, 1, undef) if (!defined($up));
+	local $uinfo = &get_user_details($realuser);
+	return (undef, 0, 1, undef) if (!$uinfo);
+	local $up = $uinfo{'pass'};
 
 	# Work out possible domain names from the hostname
 	local @doms = ( $_[2] );
@@ -3345,11 +3348,11 @@ if (!$users{$_[0]}) {
 		return ( $_[0], 1, 0, $realuser, $sudo );
 		}
 	}
-elsif ($users{$_[0]} eq 'x') {
+elsif ($uinfo->{'pass'} eq 'x') {
 	# Webmin user authenticated via PAM or password file
 	return ( $_[0], $use_pam ? 2 : 3, 0, $_[0] );
 	}
-elsif ($users{$_[0]} eq 'e') {
+elsif ($uinfo->{'pass'} eq 'e') {
 	# Webmin user authenticated externally
 	return ( $_[0], 4, 0, $_[0] );
 	}
@@ -4056,6 +4059,179 @@ if ($config{'userfile'}) {
 	}
 }
 
+# get_user_details(username)
+# Returns a hash ref of user details, either from config files or the user DB
+# XXX fix all other user of %allow / etc to use this function
+sub get_user_details
+{
+my ($username) = @_;
+if (exists($users{$username})) {
+	# In local files
+	return { 'name' => $username,
+		 'pass' => $users{$username},
+		 'certs' => $certs{$username},
+		 'allow' => $allow{$username},
+		 'deny' => $deny{$username},
+		 'allowdays' => $allowdays{$username},
+		 'allowhours' => $allowhours{$username},
+		 'lastchanges' => $lastchanges{$username},
+		 'nochange' => $nochange{$username},
+		 'temppass' => $temppass{$username},
+	       };
+	}
+if ($config{'userdb'}) {
+	# Try querying user database
+	print DEBUG "get_user_details: Connecting to user database\n";
+	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
+	my $user;
+	if (!ref($dbh)) {
+		print DEBUG "get_user_details: Failed : $dbh\n";
+		print STDERR "Failed to connect to user database : $dbh\n";
+		}
+	elsif ($proto eq "mysql" || $proto eq "postgresql") {
+		# Fetch user ID and password with SQL
+		print DEBUG "get_user_details: Looking for $username\n";
+		my $cmd = $dbh->prepare(
+			"select id,pass from webmin_user where name = ?");
+		if (!$cmd || !$cmd->execute($username)) {
+			print STDERR "Failed to lookup user : ",
+				     $dbh->errstr,"\n";
+			return undef;
+			}
+		my ($id, $pass) = $cmd->fetchrow();
+		$cmd->finish();
+		if (!$id) {
+			&disconnect_userdb($config{'userdb'}, $dbh);
+			print DEBUG "get_user_details: User not found\n";
+			return undef;
+			}
+		print DEBUG "get_user_details: id=$id pass=$pass\n";
+
+		# Fetch attributes and add to user object
+		print DEBUG "get_user_details: finding user attributes\n";
+		my $cmd = $dbh->prepare(
+			"select attr,value from webmin_user_attr where id = ?");
+		if (!$cmd || !$cmd->execute($id)) {
+			print STDERR "Failed to lookup user attrs : ",
+				     $dbh->errstr,"\n";
+			return undef;
+			}
+		$user = { 'name' => $username,
+			  'id' => $id,
+			  'pass' => $pass,
+			  'proto' => $proto };
+		my %attrs;
+		while(my ($attr, $value) = $cmd->fetchrow()) {
+			$attrs{$attr} = $value;
+			}
+		print DEBUG "get_user_details: got ",scalar(keys %attrs),
+			    " attributes\n";
+		$cmd->finish();
+		$user->{'certs'} = $attrs{'cert'};
+		if ($attrs{'allow'}) {
+			$user->{'allow'} = $config{'alwaysresolve'} ?
+				[ split(/\s+/, $attrs{'allow'}) ] :
+				[ &to_ipaddress(split(/\s+/,$attrs{'allow'})) ];
+			}
+		if ($attrs{'deny'}) {
+			$user->{'deny'} = $config{'alwaysresolve'} ?
+				[ split(/\s+/, $attrs{'deny'}) ] :
+				[ &to_ipaddress(split(/\s+/,$attrs{'deny'})) ];
+			}
+		if ($attr{'days'}) {
+			$user->{'allowdays'} = [ split(/,/, $attr{'days'}) ];
+			}
+		if ($attr{'hoursfrom'} && $attr{'hoursto'}) {
+			my ($hf, $mf) = split(/\./, $attr{'hoursfrom'});
+			my ($ht, $mt) = split(/\./, $attr{'hoursto'});
+			$user->{'allowhours'} = [ $hf*60+$ht, $ht*60+$mt ];
+			}
+		$user->{'lastchanges'} = $attr{'lastchange'};
+		$user->{'nochange'} = $attr{'nochange'};
+		$user->{'temppass'} = $attr{'temppass'};
+		}
+	elsif ($proto eq "ldap") {
+		# Fetch with LDAP
+		# XXX
+		}
+	&disconnect_userdb($config{'userdb'}, $dbh);
+	return $user;
+	}
+return undef;
+}
+
+# connect_userdb(string)
+# Returns a handle for talking to a user database - may be a DBI or LDAP handle.
+# On failure returns an error message string. In an array context, returns the
+# protocol type too.
+sub connect_userdb
+{
+my ($str) = @_;
+my ($proto, $user, $pass, $host, $prefix, $args) = &split_userdb_string($str);
+if ($proto eq "mysql") {
+	# Connect to MySQL with DBI
+	my $drh = eval "use DBI; DBI->install_driver('mysql');";
+	$drh || return $text{'sql_emysqldriver'};
+	my ($host, $port) = split(/:/, $host);
+	my $cstr = "database=$prefix;host=$host";
+	$cstr .= ";port=$port" if ($port);
+	print DEBUG "connect_userdb: Connecting to MySQL $cstr as $user\n";
+	my $dbh = $drh->connect($cstr, $user, $pass, { });
+	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
+	print DEBUG "connect_userdb: Connected OK\n";
+	return wantarray ? ($dbh, $proto) : $dbh;
+	}
+elsif ($proto eq "postgresql") {
+	# Connect to PostgreSQL with DBI
+	my $drh = eval "use DBI; DBI->install_driver('Pg');";
+	$drh || return $text{'sql_epostgresqldriver'};
+	my ($host, $port) = split(/:/, $host);
+	my $cstr = "dbname=$prefix;host=$host";
+	$cstr .= ";port=$port" if ($port);
+	print DEBUG "connect_userdb: Connecting to PostgreSQL $cstr as $user\n";
+	my $dbh = $drh->connect($cstr, $user, $pass);
+	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
+	print DEBUG "connect_userdb: Connected OK\n";
+	return wantarray ? ($dbh, $proto) : $dbh;
+	}
+elsif ($proto eq "ldap") {
+	# XXX
+	return "LDAP not done yet";
+	}
+else {
+	return "Unknown protocol $proto";
+	}
+}
+
+# split_userdb_string(string)
+# Converts a string like mysql://user:pass@host/db into separate parts
+sub split_userdb_string
+{
+my ($str) = @_;
+if ($str =~ /^([a-z]+):\/\/([^:]*):([^\@]*)\@([a-z0-9\.\-\_]+)\/([^\?]+)(\?(.*))?$/) {
+	my ($proto, $user, $pass, $host, $prefix, $argstr) =
+		($1, $2, $3, $4, $5, $7);
+	my %args = map { split(/=/, $_, 2) } split(/\&/, $argstr);
+	return ($proto, $user, $pass, $host, $prefix, \%args);
+	}
+return ( );
+}
+
+# disconnect_userdb(string, &handle)
+# Closes a handle opened by connect_userdb
+sub disconnect_userdb
+{
+my ($str, $h) = @_;
+if ($str =~ /^(mysql|postgresql):/) {
+	# DBI disconnnect
+	$h->disconnect();
+	}
+elsif ($str =~ /^ldap:/) {
+	# LDAP disconnect
+	$h->disconnect();
+	}
+}
+
 # read_mime_types()
 # Fills %mime with entries from file in %config and extra settings in %config
 sub read_mime_types
@@ -4666,6 +4842,7 @@ local ($user) = @_;
 if ($users{$user}) {
 	if ($users{$user} !~ /^\!/) {
 		# Lock the password
+		# XXX update user DB
 		$users{$user} = "!".$users{$user};
 		open(USERS, $config{'userfile'});
 		local @ufile = <USERS>;
