@@ -1733,7 +1733,7 @@ if (!%main::acl_hash_cache) {
 					$main::acl_array_cache{$user} = \@mods;
 					}
 				}
-			$cmd->finish();
+			$cmd->finish() if ($cmd);
 			}
 		elsif ($proto eq "ldap") {
 			# XXX read from LDAP
@@ -3314,15 +3314,49 @@ elsif ($gconfig{"risk_$u"} && $m) {
 	}
 elsif ($u ne '') {
 	# Use normal Webmin ACL, if a user is set
-	my %miniserv;
-	&get_miniserv_config(\%miniserv);
-	if ($miniserv{'userdb'}) {
+	my $userdb = &get_userdb_string();
+	my $foundindb = 0;
+	if ($userdb) {
 		# Look for this user in the user/group DB
-		# XXX
+		my ($dbh, $proto) = &connect_userdb($userdb);
+		ref($dbh) || &error(&text('euserdbacl', $dbh));
+		if ($proto eq "mysql" || $proto eq "postgresql") {
+			# Find the user in the SQL DB
+			my $cmd = $dbh->prepare(
+				"select id from webmin_user where name = ?");
+			$cmd && $cmd->execute($u) ||
+				&error(&text('euserdbacl', $dbh->errstr));
+			my ($id) = $cmd->fetchrow();
+			$foundindb = 1 if (defined($id));
+			$cmd->finish();
+
+			# Fetch ACLs with SQL
+			if ($foundindb) {
+				my $cmd = $dbh->prepare(
+				    "select attr,value from webmin_user_acl ".
+				    "where id = ? and module = ?");
+				$cmd && $cmd->execute($id, $m) ||
+				    &error(&text('euserdbacl', $dbh->errstr));
+				while(my ($a, $v) = $cmd->fetchrow()) {
+					$rv{$a} = $v;
+					}
+				$cmd->finish();
+				}
+			}
+		elsif ($proto eq "ldap") {
+			# Fetch ACLs from LDAP
+			# XXX
+			}
+		&disconnect_userdb($userdb, $dbh);
 		}
-	&read_file_cached("$config_directory/$m/$u.acl", \%rv);
-	if ($remote_user ne $base_remote_user && !defined($_[0])) {
-		&read_file_cached("$config_directory/$m/$remote_user.acl",\%rv);
+
+	if (!$foundindb) {
+		# Read from local files
+		&read_file_cached("$config_directory/$m/$u.acl", \%rv);
+		if ($remote_user ne $base_remote_user && !defined($_[0])) {
+			&read_file_cached(
+				"$config_directory/$m/$remote_user.acl",\%rv);
+			}
 		}
 	}
 if ($tconfig{'preload_functions'}) {
@@ -3354,22 +3388,24 @@ if (defined(&theme_get_module_acl)) {
 return %rv;
 }
 
-=head2 save_module_acl(&acl, [user], [module])
+=head2 save_module_acl(&acl, [user], [module], [never-update-group])
 
 Updates the acl hash for some user and module. The parameters are :
 
-=item acl - Hash reference for the new access control options.
+=item acl - Hash reference for the new access control options, or undef to clear
 
 =item user - User to update, defaulting to the current user.
 
 =item module - Module to update, defaulting to the caller.
+
+=item never-update-group - Never update the user's group's ACL
 
 =cut
 sub save_module_acl
 {
 my $u = defined($_[1]) ? $_[1] : $base_remote_user;
 my $m = defined($_[2]) ? $_[2] : &get_module_name();
-if (&foreign_check("acl")) {
+if (!$_[3] && &foreign_check("acl")) {
 	# Check if this user is a member of a group, and if he gets the
 	# module from a group. If so, update its ACL as well
 	&foreign_require("acl", "acl-lib.pl");
@@ -3385,13 +3421,67 @@ if (&foreign_check("acl")) {
 		&save_group_module_acl($_[0], $group->{'name'}, $m);
 		}
 	}
-if (!-d "$config_directory/$m") {
-	mkdir("$config_directory/$m", 0755);
+
+my $userdb = &get_userdb_string();
+my $foundindb = 0;
+if ($userdb) {
+	# Look for this user in the user/group DB
+	my ($dbh, $proto) = &connect_userdb($userdb);
+	ref($dbh) || &error(&text('euserdbacl', $dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Find the user in the SQL DB
+		my $cmd = $dbh->prepare(
+			"select id from webmin_user where name = ?");
+		$cmd && $cmd->execute($u) ||
+			&error(&text('euserdbacl2', $dbh->errstr));
+		my ($id) = $cmd->fetchrow();
+		$foundindb = 1 if (defined($id));
+		$cmd->finish();
+
+		# Replace ACLs for user
+		if ($foundindb) {
+			my $cmd = $dbh->prepare("delete from webmin_user_acl ".
+						"where id = ? and module = ?");
+			$cmd && $cmd->execute($id, $m) ||
+			    &error(&text('euserdbacl', $dbh->errstr));
+			$cmd->finish();
+			if ($_[0]) {
+				my $cmd = $dbh->prepare(
+				    "insert into webmin_user_acl ".
+				    "(id,module,attr,value) values (?,?,?,?)");
+				$cmd || &error(&text('euserdbacl2',
+						     $dbh->errstr));
+				foreach my $a (keys %{$_[0]}) {
+					$cmd->execute($id,$m,$a,$_[0]->{$a}) ||
+					    &error(&text('euserdbacl2',
+							 $dbh->errstr));
+					$cmd->finish();
+					}
+				}
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# Update ACLs in LDAP
+		# XXX
+		}
+	&disconnect_userdb($userdb, $dbh);
 	}
-&write_file("$config_directory/$m/$u.acl", $_[0]);
+
+if (!$foundindb) {
+	# Save ACL to local file
+	if (!-d "$config_directory/$m") {
+		mkdir("$config_directory/$m", 0755);
+		}
+	if ($_[0]) {
+		&write_file("$config_directory/$m/$u.acl", $_[0]);
+		}
+	else {
+		&unlink_file("$config_directory/$m/$u.acl");
+		}
+	}
 }
 
-=head2 save_group_module_acl(&acl, group, [module])
+=head2 save_group_module_acl(&acl, group, [module], [never-update-group])
 
 Updates the acl hash for some group and module. The parameters are :
 
@@ -3401,12 +3491,14 @@ Updates the acl hash for some group and module. The parameters are :
 
 =item module - Module to update, defaulting to the caller.
 
+=item never-update-group - Never update the parent group's ACL
+
 =cut
 sub save_group_module_acl
 {
 my $g = $_[1];
 my $m = defined($_[2]) ? $_[2] : &get_module_name();
-if (&foreign_check("acl")) {
+if (!$_[3] && &foreign_check("acl")) {
 	# Check if this group is a member of a group, and if it gets the
 	# module from a group. If so, update the parent ACL as well
 	&foreign_require("acl", "acl-lib.pl");
@@ -3422,10 +3514,66 @@ if (&foreign_check("acl")) {
 		&save_group_module_acl($_[0], $group->{'name'}, $m);
 		}
 	}
-if (!-d "$config_directory/$m") {
-	mkdir("$config_directory/$m", 0755);
+
+my $userdb = &get_userdb_string();
+my $foundindb = 0;
+if ($userdb) {
+	# Look for this group in the user/group DB
+	my ($dbh, $proto) = &connect_userdb($userdb);
+	ref($dbh) || &error(&text('egroupdbacl', $dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Find the group in the SQL DB
+		my $cmd = $dbh->prepare(
+			"select id from webmin_group where name = ?");
+		$cmd && $cmd->execute($u) ||
+			&error(&text('egroupdbacl2', $dbh->errstr));
+		my ($id) = $cmd->fetchrow();
+		$foundindb = 1 if (defined($id));
+		$cmd->finish();
+
+		# Replace ACLs for group
+		if ($foundindb) {
+			my $cmd = $dbh->prepare("delete from webmin_group_acl ".
+						"where id = ? and module = ?");
+			$cmd && $cmd->execute($id, $m) ||
+			    &error(&text('egroupdbacl', $dbh->errstr));
+			$cmd->finish();
+			if ($_[0]) {
+				my $cmd = $dbh->prepare(
+				    "insert into webmin_group_acl ".
+				    "(id,module,attr,value) values (?,?,?,?)");
+				$cmd || &error(&text('egroupdbacl2',
+						     $dbh->errstr));
+				foreach my $a (keys %{$_[0]}) {
+					$cmd->execute($id,$m,$a,$_[0]->{$a}) ||
+					    &error(&text('egroupdbacl2',
+							 $dbh->errstr));
+					$cmd->finish();
+					}
+				}
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# Update ACLs in LDAP
+		# XXX
+		}
+	&disconnect_userdb($userdb, $dbh);
 	}
-&write_file("$config_directory/$m/$g.gacl", $_[0]);
+
+
+
+if (!$foundindb) {
+	# Save ACL to local file
+	if (!-d "$config_directory/$m") {
+		mkdir("$config_directory/$m", 0755);
+		}
+	if ($_[0]) {
+		&write_file("$config_directory/$m/$g.gacl", $_[0]);
+		}
+	else {
+		&unlink_file("$config_directory/$m/$g.gacl");
+		}
+	}
 }
 
 =head2 init_config

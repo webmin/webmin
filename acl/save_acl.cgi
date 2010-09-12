@@ -24,7 +24,18 @@ $aclfile = $in{'_acl_group'} ? "$config_directory/$in{'_acl_mod'}/$who.gacl"
 			     : "$config_directory/$in{'_acl_mod'}/$who.acl";
 if ($in{'reset'}) {
 	# Just remove the .acl file
-	&unlink_logged($aclfile);
+	&lock_file($aclfile);
+	if ($in{'_acl_group'}) {
+		# For a group
+		&save_group_module_acl(undef, $in{'_acl_group'},
+				       $in{'_acl_mod'}, 1);
+		}
+	else {
+		# For a user
+		&save_module_acl(undef, $in{'_acl_user'},
+				 $in{'_acl_mod'},1);
+		}
+	&unlock_file($aclfile);
 	$in{'moddesc'} = $minfo{'desc'};
 	&webmin_log("reset", undef, $who, \%in);
 	}
@@ -43,15 +54,28 @@ else {
 		&foreign_call($in{'_acl_mod'}, "acl_security_save",
 			      \%maccess, \%in);
 		}
+
+	# Write out the ACL
 	&lock_file($aclfile);
-	&write_file($aclfile, \%maccess);
-	chmod(0640, $aclfile);
+	if ($in{'_acl_group'}) {
+		# For a group
+		&save_group_module_acl(\%maccess, $in{'_acl_group'},
+				       $in{'_acl_mod'}, 1);
+		}
+	else {
+		# For a user
+		&save_module_acl(\%maccess, $in{'_acl_user'},
+				 $in{'_acl_mod'},1);
+		}
+	chmod(0640, $aclfile) if (-r $aclfile);
 	&unlock_file($aclfile);
+
 	%minfo = $in{'_acl_mod'} ? &get_module_info($in{'_acl_mod'})
 				 : ( 'desc' => $text{'index_global'} );
 
 	if ($in{'_acl_group'}) {
 		# Recursively update the ACL for all member users and groups
+		# XXX ACL in DB?
 		@ulist = &list_users();
 		@glist = &list_groups();
 		($group) = grep { $_->{'name'} eq $in{'_acl_group'} } @glist;

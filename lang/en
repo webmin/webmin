@@ -65,6 +65,10 @@ cancel=Cancel
 helpsearch=Search Docs..
 switch_remote_euser=The Unix user $1 does not exist.
 programname=Webmin
+euserdbacl=Failed to fetch user ACL : $1
+euserdbacl2=Failed to update user ACL : $1
+egroupdbacl=Failed to fetch group ACL : $1
+egroupdbacl2=Failed to update group ACL : $1
 
 chooser_title1=Choose File..
 chooser_title2=Choose Directory..

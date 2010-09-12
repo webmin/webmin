@@ -4055,6 +4055,17 @@ if ($config{'userfile'}) {
 		}
 	close(USERS);
 	}
+
+# Test user DB, if configured
+if ($config{'userdb'}) {
+	my $dbh = &connect_userdb($config{'userdb'});
+	if (!ref($dbh)) {
+		print STDERR "Failed to open users database : $dbh\n"
+		}
+	else {
+		&disconnect_userdb($config{'userdb'}, $dbh);
+		}
+	}
 }
 
 # get_user_details(username)
