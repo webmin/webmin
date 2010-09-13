@@ -1109,21 +1109,27 @@ foreach $m (@{$_[3]}) {
 	}
 }
 
-=head2 copy_acl_files(from, to, &modules)
+=head2 copy_acl_files(from, to, &modules, [from-type], [to-type])
 
 Copy all .acl files from some user to another user in a list of modules.
 The parameters are :
 
-=item from - Source user name.
+=item from - Source user or group name.
 
-=item to - Destination user name.
+=item to - Destination user or group name.
 
 =item modules - Array ref of module names.
+
+=item from-type - Either "user" or "group", defaults to "user"
+
+=item to-type - Either "user" or "group", defaults to "user"
 
 =cut
 sub copy_acl_files
 {
-my ($from, $to, $mods) = @_;
+my ($from, $to, $mods, $fromtype, $totype) = @_;
+$fromtype ||= "user";
+$totype ||= "user";
 my ($dbh, $proto, $fromid, $toid);
 
 # Check if the user is in a DB
@@ -1134,11 +1140,13 @@ if ($userdb) {
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Search in SQL DB
 		my $cmd = $dbh->prepare(
-			"select id from webmin_user where name = ?");
-		$cmd->execute($from);
+			"select id from webmin_${fromtype} where name = ?");
+		$cmd && $cmd->execute($from) || &error($dbh->errstr);
 		($fromid) = $cmd->fetchrow();
 		$cmd->finish();
-		$cmd->execute($to);
+		my $cmd = $dbh->prepare(
+			"select id from webmin_${totype} where name = ?");
+		$cmd && $cmd->execute($to) || &error($dbh->errstr);
 		($toid) = $cmd->fetchrow();
 		$cmd->finish();
 		}
@@ -1151,7 +1159,7 @@ if ($userdb) {
 if (defined($fromid) && defined($toid)) {
 	# Copy from database to database
 	if ($proto eq "mysql" || $proto eq "postgresql") {
-		my $cmd = $dbh->prepare("insert into webmin_user_acl select ?,module,attr,value from webmin_user_acl where id = ? and module = ?");
+		my $cmd = $dbh->prepare("insert into webmin_${fromtype}_acl select ?,module,attr,value from webmin_${fromtype}_acl where id = ? and module = ?");
 		foreach my $m (@$mods) {
 			$cmd && $cmd->execute($toid, $fromid, $m) ||
 				&error("Failed to copy ACLs : ".$dbh->errstr);
@@ -1164,20 +1172,35 @@ if (defined($fromid) && defined($toid)) {
 	}
 elsif (!defined($fromid) && !defined($toid)) {
 	# Copy files
+	my $fromsuffix = $fromtype eq "user" ? "acl" : "gacl";
+	my $tosuffix = $totype eq "user" ? "acl" : "gacl";
 	foreach my $m (@$mods) {
-		&unlink_file("$config_directory/$m/$to.acl");
+		&unlink_file("$config_directory/$m/$to.$tosuffix");
 		my %acl;
-		if (&read_file("$config_directory/$m/$from.acl", \%acl)) {
-			&write_file("$config_directory/$m/$to.acl", \%acl);
+		if (&read_file("$config_directory/$m/$from.$fromsuffix",
+			       \%acl)) {
+			&write_file("$config_directory/$m/$to.$tosuffix",
+				    \%acl);
 			}
 		}
 	}
 else {
 	# Source and dest use different storage types
 	foreach my $m (@$mods) {
-		my %caccess = &get_module_acl($from, $m, 1, 1);
+		my %caccess;
+		if ($fromtype eq "user") {
+			%caccess = &get_module_acl($from, $m, 1, 1);
+			}
+		else {
+			%caccess = &get_group_module_acl($from, $m, 1);
+			}
 		if (%caccess) {
-			&save_module_acl(\%caccess, $to, $m, 1);
+			if ($totype eq "user") {
+				&save_module_acl(\%caccess, $to, $m, 1);
+				}
+			else {
+				&save_group_module_acl(\%caccess, $to, $m, 1);
+				}
 			}
 		}
 	}
@@ -1188,7 +1211,7 @@ if ($dbh) {
 
 =head2 copy_group_acl_files(from, to, &modules)
 
-Copy all .acl files from some group to another in a list of modules. Parameters
+Copy all .gacl files from some group to another in a list of modules. Parameters
 are :
 
 =item from - Source group name.
@@ -1201,14 +1224,9 @@ are :
 sub copy_group_acl_files
 {
 my ($from, $to, $mods) = @_;
-foreach my $m (@$mods) {
-	&unlink_file("$config_directory/$m/$to.gacl");
-	local %acl;
-	if (&read_file("$config_directory/$m/$from.gacl", \%acl)) {
-		&write_file("$config_directory/$m/$to.gacl", \%acl);
-		}
-	}
+&copy_acl_files($from, $to, $mods, "group", "group");
 }
+
 =head2 copy_group_user_acl_files(from, to, &modules)
 
 Copy all .acl files from some group to a user in a list of modules. Parameters
@@ -1223,15 +1241,8 @@ are :
 =cut
 sub copy_group_user_acl_files
 {
-# XXX deal with user DB!
-local $m;
-foreach $m (@{$_[2]}) {
-	&unlink_file("$config_directory/$m/$_[1].acl");
-	local %acl;
-	if (&read_file("$config_directory/$m/$_[0].gacl", \%acl)) {
-		&write_file("$config_directory/$m/$_[1].acl", \%acl);
-		}
-	}
+my ($from, $to, $mods) = @_;
+&copy_acl_files($from, $to, $mods, "group", "user");
 }
 
 =head2 set_acl_files(&allusers, &allgroups, module, &members, &access)

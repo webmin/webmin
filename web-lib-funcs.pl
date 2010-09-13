@@ -3368,7 +3368,7 @@ if (defined(&theme_get_module_acl)) {
 return %rv;
 }
 
-=head2 get_group_module_acl(group, [module])
+=head2 get_group_module_acl(group, [module], [no-default])
 
 Returns the ACL for a Webmin group, in an optional module (which defaults to
 the current module).
@@ -3380,7 +3380,9 @@ my $g = $_[0];
 my $m = defined($_[1]) ? $_[1] : &get_module_name();
 my $mdir = &module_root_directory($m);
 my %rv;
-&read_file_cached("$mdir/defaultacl", \%rv);
+if (!$_[2]) {
+	&read_file_cached("$mdir/defaultacl", \%rv);
+	}
 
 my $userdb = &get_userdb_string();
 my $foundindb = 0;
