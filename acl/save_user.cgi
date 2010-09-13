@@ -348,8 +348,6 @@ else {
 		$access{'users'} .= " ".$in{'name'};
 		&save_module_acl(\%access);
 		}
-	#%aclacl = &get_module_acl();
-	#&save_module_acl(\%aclacl, $in{'name'});
 	}
 
 if ($in{'old'} && $in{'acl_security_form'} && !$group) {
@@ -358,8 +356,8 @@ if ($in{'old'} && $in{'acl_security_form'} && !$group) {
 	&foreign_call("", "acl_security_save", \%uaccess, \%in);
 	$aclfile = "$config_directory/$in{'name'}.acl";
 	&lock_file($aclfile);
-	&write_file($aclfile, \%uaccess);
-	chmod(0640, $aclfile);
+	&save_module_acl(\%uaccess, $in{'name'}, "", 1);
+	chmod(0640, $aclfile) if (-r $aclfile);
 	&unlock_file($aclfile);
 	}
 

@@ -3381,7 +3381,46 @@ my $m = defined($_[1]) ? $_[1] : &get_module_name();
 my $mdir = &module_root_directory($m);
 my %rv;
 &read_file_cached("$mdir/defaultacl", \%rv);
-&read_file_cached("$config_directory/$m/$g.gacl", \%rv);
+
+my $userdb = &get_userdb_string();
+my $foundindb = 0;
+if ($userdb) {
+	# Look for this group in the user/group DB
+	my ($dbh, $proto) = &connect_userdb($userdb);
+	ref($dbh) || &error(&text('egroupdbacl', $dbh));
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Find the group in the SQL DB
+		my $cmd = $dbh->prepare(
+			"select id from webmin_group where name = ?");
+		$cmd && $cmd->execute($g) ||
+			&error(&text('egroupdbacl', $dbh->errstr));
+		my ($id) = $cmd->fetchrow();
+		$foundindb = 1 if (defined($id));
+		$cmd->finish();
+
+		# Fetch ACLs with SQL
+		if ($foundindb) {
+			my $cmd = $dbh->prepare(
+			    "select attr,value from webmin_group_acl ".
+			    "where id = ? and module = ?");
+			$cmd && $cmd->execute($id, $m) ||
+			    &error(&text('egroupdbacl', $dbh->errstr));
+			while(my ($a, $v) = $cmd->fetchrow()) {
+				$rv{$a} = $v;
+				}
+			$cmd->finish();
+			}
+		}
+	elsif ($proto eq "ldap") {
+		# Fetch ACLs from LDAP
+		# XXX
+		}
+	&disconnect_userdb($userdb, $dbh);
+	}
+if (!$foundindb) {
+	# Read from local files
+	&read_file_cached("$config_directory/$m/$g.gacl", \%rv);
+	}
 if (defined(&theme_get_module_acl)) {
 	%rv = &theme_get_module_acl($g, $m, \%rv);
 	}
@@ -3525,7 +3564,7 @@ if ($userdb) {
 		# Find the group in the SQL DB
 		my $cmd = $dbh->prepare(
 			"select id from webmin_group where name = ?");
-		$cmd && $cmd->execute($u) ||
+		$cmd && $cmd->execute($g) ||
 			&error(&text('egroupdbacl2', $dbh->errstr));
 		my ($id) = $cmd->fetchrow();
 		$foundindb = 1 if (defined($id));
@@ -3559,8 +3598,6 @@ if ($userdb) {
 		}
 	&disconnect_userdb($userdb, $dbh);
 	}
-
-
 
 if (!$foundindb) {
 	# Save ACL to local file

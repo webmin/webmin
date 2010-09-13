@@ -76,14 +76,14 @@ if ($in{'group'}) {
 # Storage type
 if ($in{'group'}) {
 	print &ui_table_row($text{'edit_proto'},
-		$text{'edit_proto'.$user{'proto'}});
+		$text{'edit_proto_'.$group{'proto'}});
 	}
 
 print &ui_hidden_table_end("basic");
 
 # Start of modules section
 print &ui_hidden_table_start(@groups ? $text{'edit_modsg'} : $text{'edit_mods'},
-			     "width=100%", 2, "mods", 1);
+			     "width=100%", 2, "mods");
 
 # Show available modules, under categories
 @mlist = &list_module_infos();

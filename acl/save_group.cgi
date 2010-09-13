@@ -126,8 +126,8 @@ if ($in{'old'} && $in{'acl_security_form'}) {
 	&foreign_call("", "acl_security_save", \%uaccess, \%in);
 	$aclfile = "$config_directory/$in{'name'}.gacl";
 	&lock_file($aclfile);
-	&write_file($aclfile, \%uaccess);
-	chmod(0640, $aclfile);
+	&save_group_module_acl(\%uaccess, $in{'name'}, "", 1);
+	chmod(0640, $aclfile) if (-r $aclfile);
 	&unlock_file($aclfile);
 	}
 

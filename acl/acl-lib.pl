@@ -1124,16 +1124,13 @@ The parameters are :
 sub copy_acl_files
 {
 my ($from, $to, $mods) = @_;
-my ($dbh, $fromid, $toid);
-my ($proto, $user, $pass, $host, $prefix, $args);
+my ($dbh, $proto, $fromid, $toid);
 
 # Check if the user is in a DB
-&get_miniserv_config(\%miniserv);
-if ($miniserv{'userdb'}) {
-	$dbh = &connect_userdb($miniserv{'userdb'});
+my $userdb = &get_userdb_string();
+if ($userdb) {
+	($dbh, $proto) = &connect_userdb($userdb);
 	&error($dbh) if (!ref($dbh));
-	($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Search in SQL DB
 		my $cmd = $dbh->prepare(
@@ -1154,10 +1151,12 @@ if ($miniserv{'userdb'}) {
 if (defined($fromid) && defined($toid)) {
 	# Copy from database to database
 	if ($proto eq "mysql" || $proto eq "postgresql") {
-		my $cmd = $dbh->prepare("insert into webmin_user_acl select ?,module,attr,value from webmin_user_acl where id = ?");
-		$cmd && $cmd->execute($toid, $fromid) ||
-			&error("Failed to copy ACLs : ".$dbh->errstr);
-		$cmd->finish();
+		my $cmd = $dbh->prepare("insert into webmin_user_acl select ?,module,attr,value from webmin_user_acl where id = ? and module = ?");
+		foreach my $m (@$mods) {
+			$cmd && $cmd->execute($toid, $fromid, $m) ||
+				&error("Failed to copy ACLs : ".$dbh->errstr);
+			$cmd->finish();
+			}
 		}
 	elsif ($proto eq "ldap") {
 		# XXX
@@ -1175,10 +1174,15 @@ elsif (!defined($fromid) && !defined($toid)) {
 	}
 else {
 	# Source and dest use different storage types
-	# XXX
+	foreach my $m (@$mods) {
+		my %caccess = &get_module_acl($from, $m, 1, 1);
+		if (%caccess) {
+			&save_module_acl(\%caccess, $to, $m, 1);
+			}
+		}
 	}
 if ($dbh) {
-	&disconnect_userdb($miniserv{'userdb'}, $dbh);
+	&disconnect_userdb($userdb, $dbh);
 	}
 }
 
@@ -1219,6 +1223,7 @@ are :
 =cut
 sub copy_group_user_acl_files
 {
+# XXX deal with user DB!
 local $m;
 foreach $m (@{$_[2]}) {
 	&unlink_file("$config_directory/$m/$_[1].acl");
@@ -1247,32 +1252,33 @@ detailed access control settings from the group down to users. Parameters are :
 =cut
 sub set_acl_files
 {
-local $m;
-foreach $m (@{$_[3]}) {
+my ($allusers, $allgroups, $mod, $members, $access) = @_;
+foreach my $m (@$members) {
 	if ($m !~ /^\@(.*)$/) {
 		# Member is a user
-		local ($u) = grep { $_->{'name'} eq $m } @{$_[0]};
+		local ($u) = grep { $_->{'name'} eq $m } @$allusers;
 		if ($u) {
 			local $aclfile =
-				"$config_directory/$_[2]/$u->{'name'}.acl";
+				"$config_directory/$mod/$u->{'name'}.acl";
 			&lock_file($aclfile);
-			&write_file($aclfile, $_[4]);
-			chmod(0640, $aclfile);
+			&save_module_acl($access, $u->{'name'}, $mod, 1);
+			chmod(0640, $aclfile) if (-r $aclfile);
 			&unlock_file($aclfile);
 			}
 		}
 	else {
 		# Member is a group
 		local $gname = substr($m, 1);
-		local ($g) = grep { $_->{'name'} eq $gname } @{$_[1]};
+		local ($g) = grep { $_->{'name'} eq $gname } @$allgroups;
 		if ($g) {
 			local $aclfile =
-				"$config_directory/$_[2]/$g->{'name'}.gacl";
+				"$config_directory/$mod/$g->{'name'}.gacl";
 			&lock_file($aclfile);
-			&write_file($aclfile, $_[4]);
-			chmod(0640, $aclfile);
+			&save_group_module_acl($access, $g->{'name'}, $mod, 1);
+			chmod(0640, $aclfile) if (-r $aclfile);
 			&unlock_file($aclfile);
-			&set_acl_files($_[0], $_[1], $_[2], $g->{'members'}, $_[4]);
+			&set_acl_files($allusers, $allgroups, $mod,
+				       $g->{'members'}, $access);
 			}
 		}
 	}
