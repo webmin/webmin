@@ -63,7 +63,6 @@ else {
 			    &ui_textbox("name", $ac, 30));
 	}
 
-$fs = "<font size=-1>"; $fe = "</font>";
 if ($ty == 2) {
 	# Display fields for a template for a new action
 	print &ui_table_row($text{'edit_desc'},
@@ -86,7 +85,8 @@ if ($ty == 2) {
 elsif ($access{'bootup'} == 2) {
 	# Just show current script
 	print &ui_table_row($text{'edit_script'},
-		"$fs<pre>".&html_escape($data)."</pre>$fe");
+		&ui_textarea("data", $data, 15, 80, undef, undef,
+			     "readonly=true"));
 	}
 else {
 	# Allow direct editing of the script
