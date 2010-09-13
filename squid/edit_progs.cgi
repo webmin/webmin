@@ -56,15 +56,28 @@ print &opt_input($text{'eprogs_spp'}, "pinger_program", $conf,
 		 $text{'default'}, 40, &file_chooser_button("pinger_program"));
 print "</tr>\n";
 
-print "<tr>\n";
-print &opt_input($text{'eprogs_crp'}, "redirect_program", $conf,
-		 $text{'none'}, 40, &file_chooser_button("redirect_program"));
-print "</tr>\n";
+if ($squid_version >= 2.6) {
+	print "<tr>\n";
+        print &opt_input($text{'eprogs_crp'}, "url_rewrite_program", $conf,
+                         $text{'none'}, 40, &file_chooser_button("url_rewrite_program"));
+        print "</tr>\n";
 
-print "<tr>\n";
-print &opt_input($text{'eprogs_norp'}, "redirect_children", $conf,
-		 $text{'default'}, 6);
-print "</tr>\n";
+        print "<tr>\n";
+        print &opt_input($text{'eprogs_norp'}, "url_rewrite_children", $conf,
+                         $text{'default'}, 6);
+        print "</tr>\n";
+	}
+else {
+	print "<tr>\n";
+	print &opt_input($text{'eprogs_crp'}, "redirect_program", $conf,
+			 $text{'none'}, 40, &file_chooser_button("redirect_program"));
+	print "</tr>\n";
+
+	print "<tr>\n";
+	print &opt_input($text{'eprogs_norp'}, "redirect_children", $conf,
+			 $text{'default'}, 6);
+	print "</tr>\n";
+	}
 
 print "</table></td></tr></table>\n";
 print "<input type=submit value='$text{'buttsave'}'></form>\n";

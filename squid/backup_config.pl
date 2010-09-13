@@ -17,7 +17,7 @@ push(@rv, $file) if ($file);
 local @acl = &find_config("acl", $conf);
 local $a;
 foreach $a (@acl) {
-	if ($a->{'values'}->[2] =~ /^"(.*)"$/) {
+	if ($a->{'values'}->[2] =~ /^"(.*)"$/ || $a->{'values'}->[3] =~ /^"(.*)"$/) {
 		push(@rv, $1);
 		}
 	}

@@ -25,8 +25,14 @@ if ($squid_version >= 2) {
 	}
 &save_opt("unlinkd_program", \&check_prog, $conf);
 &save_opt("pinger_program", \&check_prog, $conf);
-&save_opt("redirect_program", \&check_prog, $conf);
-&save_opt("redirect_children", \&check_children, $conf);
+if ($squid_version >= 2.6) {
+	&save_opt("url_rewrite_program", \&check_prog, $conf);
+        &save_opt("url_rewrite_children", \&check_children, $conf);
+	}
+else {
+	&save_opt("redirect_program", \&check_prog, $conf);
+	&save_opt("redirect_children", \&check_children, $conf);
+	}
 
 &flush_file_lines();
 &unlock_file($config{'squid_conf'});
