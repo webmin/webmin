@@ -18,6 +18,9 @@ do 'md5-lib.pl';
 %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
+# XXX test with postgresql
+# XXX LDAP support
+
 =head2 list_users
 
 Returns a list of hashes containing Webmin user details. Useful keys include :
@@ -766,17 +769,9 @@ else {
 	}
 
 if ($clone) {
-	# Clone ACLs
-	# XXX
-	foreach $m ("", &list_modules()) {
-		local $file = "$config_directory/$m/$clone.gacl";
-		local $dest = "$config_directory/$m/$group{'name'}.gacl";
-		if (-r $file) {
-			local %macl;
-			&read_file($file, \%macl);
-			&write_file($dest, \%macl);
-			}
-		}
+	# Clone ACLs from original group
+	&copy_acl_files($clone, $group{'name'}, [ "", &list_modules() ],
+			"group", "group");
 	}
 }
 
@@ -1132,7 +1127,7 @@ $fromtype ||= "user";
 $totype ||= "user";
 my ($dbh, $proto, $fromid, $toid);
 
-# Check if the user is in a DB
+# Check if the source user/group is in a DB
 my $userdb = &get_userdb_string();
 if ($userdb) {
 	($dbh, $proto) = &connect_userdb($userdb);
@@ -1159,8 +1154,12 @@ if ($userdb) {
 if (defined($fromid) && defined($toid)) {
 	# Copy from database to database
 	if ($proto eq "mysql" || $proto eq "postgresql") {
-		my $cmd = $dbh->prepare("insert into webmin_${fromtype}_acl select ?,module,attr,value from webmin_${fromtype}_acl where id = ? and module = ?");
+		my $delcmd = $dbh->prepare("delete from webmin_${totype}_acl where id = ? and module = ?");
+		my $cmd = $dbh->prepare("insert into webmin_${totype}_acl select ?,module,attr,value from webmin_${fromtype}_acl where id = ? and module = ?");
 		foreach my $m (@$mods) {
+			$delcmd && $delcmd->execute($toid, $m) ||
+				&error("Failed to clear ACLs : ".$dbh->errstr);
+			$delcmd->finish();
 			$cmd && $cmd->execute($toid, $fromid, $m) ||
 				&error("Failed to copy ACLs : ".$dbh->errstr);
 			$cmd->finish();
@@ -1725,7 +1724,6 @@ if ($str =~ /^mysql:/) {
 	$idattrkey = ", primary key(id, attr)";
 	$idattrmodulekey = ", primary key(id, module, attr)";
 	}
-# XXX will this work on postgresql?
 return ( "create table webmin_user (id int(20) not null $key $auto, name varchar(255) not null, pass varchar(255))",
 	 "create table webmin_group (id int(20) not null $key $auto, name varchar(255) not null, description varchar(255))",
 	 "create table webmin_user_attr (id int(20) not null, attr varchar(32) not null, value varchar(255) $idattrkey)",
