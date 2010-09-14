@@ -3852,8 +3852,29 @@ my $u = $ENV{'BASE_REMOTE_USER'} || $ENV{'REMOTE_USER'};
 $base_remote_user = $u;
 $remote_user = $ENV{'REMOTE_USER'};
 
-# Work out if user is definitely in the DB
+# Work out if user is definitely in the DB, and if so get his attrs
 $remote_user_proto = $ENV{"REMOTE_USER_PROTO"};
+%remote_user_attrs = ( );
+if ($remote_user_proto) {
+	my $userdb = &get_userdb_string();
+	my ($dbh, $proto) = $userdb ? &connect_userdb($userdb) : ( );
+	if (ref($dbh)) {
+		if ($proto eq "mysql" || $proto eq "postgresql") {
+			# Read attrs from SQL
+			my $cmd = $dbh->prepare("select webmin_user_attr.attr,webmin_user_attr.value from webmin_user_attr,webmin_user where webmin_user_attr.id = webmin_user.id and webmin_user.name = ?");
+			if ($cmd && $cmd->execute($base_remote_user)) {
+				while(my ($attr, $value) = $cmd->fetchrow()) {
+					$remote_user_attrs{$attr} = $value;
+					}
+				$cmd->finish();
+				}
+			}
+		elsif ($proto eq "ldap") {
+			# XXX read attrs from LDAP
+			}
+		&disconnect_userdb($userdb, $dbh);
+		}
+	}
 
 if ($module_name) {
 	# Find and load the configuration file for this module
@@ -3894,6 +3915,8 @@ $main::initial_module_name ||= $module_name;
 my $current_themes;
 $current_themes = $ENV{'MOBILE_DEVICE'} && defined($gconfig{'mobile_theme'}) ?
 		    $gconfig{'mobile_theme'} :
+		  defined($remote_user_attrs{'theme'}) ?
+		    $remote_user_attrs{'theme'} :
 		  defined($gconfig{'theme_'.$remote_user}) ?
 		    $gconfig{'theme_'.$remote_user} :
 		  defined($gconfig{'theme_'.$base_remote_user}) ?
@@ -3946,6 +3969,7 @@ if ($gconfig{'acceptlang'}) {
 	}
 $current_lang = $force_lang ? $force_lang :
     $accepted_lang ? $accepted_lang :
+    $remote_user_attrs{'lang'} ? $remote_user_attrs{'lang'} :
     $gconfig{"lang_$remote_user"} ? $gconfig{"lang_$remote_user"} :
     $gconfig{"lang_$base_remote_user"} ? $gconfig{"lang_$base_remote_user"} :
     $gconfig{"lang"} ? $gconfig{"lang"} : $default_lang;
@@ -4060,6 +4084,7 @@ if ($main::export_to_caller) {
 		       '$path_separator', '@root_directories',
 		       '$root_directory', '$module_name',
 		       '$base_remote_user', '$remote_user',
+		       '$remote_user_proto', '%remote_user_attrs',
 		       '$module_config_directory', '$module_config_file',
 		       '%config', '@current_themes', '$current_theme',
 		       '@theme_root_directories', '$theme_root_directory',

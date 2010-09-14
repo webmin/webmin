@@ -1797,6 +1797,7 @@ if ($config{'userfile'}) {
 		return 0;
 		}
 	}
+$uinfo = &get_user_details($baseauthuser);
 
 # Validate the path, and convert to canonical form
 rerun:
@@ -1816,9 +1817,8 @@ local $preroots = $mobile_device && defined($config{'mobile_preroot'}) ?
 			$config{'mobile_preroot'} :
 		 $authuser && defined($config{'preroot_'.$authuser}) ?
 			$config{'preroot_'.$authuser} :
-		 $authuser && $baseauthuser &&
-		     defined($config{'preroot_'.$baseauthuser}) ?
-		 	$config{'preroot_'.$baseauthuser} :
+	         $uinfo && defined($uinfo->{'preroot'}) ?
+			$uinfo->{'preroot'} :
 			$config{'preroot'};
 local @preroots = reverse(split(/\s+/, $preroots));
 
@@ -2061,7 +2061,6 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 					$baseauthuser : undef;
 	$ENV{"REMOTE_PASS"} = $authpass if (defined($authpass) &&
 					    $config{'pass_password'});
-	$uinfo = &get_user_details($baseauthuser);
 	if ($uinfo && $uinfo->{'proto'}) {
 		$ENV{"REMOTE_USER_PROTO"} = $uinfo->{'proto'};
 		$ENV{"REMOTE_USER_ID"} = $uinfo->{'id'};
@@ -4090,6 +4089,7 @@ if (exists($users{$username})) {
 		 'lastchanges' => $lastchanges{$username},
 		 'nochange' => $nochange{$username},
 		 'temppass' => $temppass{$username},
+		 'preroot' => $config{'preroot_'.$username},
 	       };
 	}
 if ($config{'userdb'}) {
@@ -4167,6 +4167,7 @@ if ($config{'userdb'}) {
 		$user->{'lastchanges'} = $attrs{'lastchange'};
 		$user->{'nochange'} = $attrs{'nochange'};
 		$user->{'temppass'} = $attrs{'temppass'};
+		$user->{'preroot'} = $attrs{'theme'};
 		}
 	elsif ($proto eq "ldap") {
 		# Fetch with LDAP
