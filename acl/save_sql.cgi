@@ -37,22 +37,19 @@ if ($p) {
 	&error($err) if ($err);
 	}
 
-&lock_file($ENV{'MINISERV_CONFIG'});
-$miniserv{'userdb'} = $str;
-$miniserv{'userdb_addto'} = $in{'addto'};
-&put_miniserv_config(\%miniserv);
-&unlock_file($ENV{'MINISERV_CONFIG'});
-&reload_miniserv();
 &webmin_log("sql");
 
 # Make sure tables exist
 $err = &validate_userdb($str, 0);
 if ($err) {
+	# Tables are missing, need to create first
 	&ui_print_header(undef, $text{'sql_title2'}, "");
 
 	print &text('sql_tableerr', $err),"<p>\n";
 	print $text{'sql_tableerr2'},"<p>\n";
 	print &ui_form_start("maketables.cgi");
+	print &ui_hidden("userdb", $str);
+	print &ui_hidden("userdb_addto", $in{'addto'});
 	print &ui_form_end([ [ undef, $text{'sql_make'} ] ]);
 
 	print &ui_table_start(undef, undef, 2);
@@ -65,6 +62,13 @@ if ($err) {
 	&ui_print_footer("", $text{'index_return'});
 	}
 else {
+	# Tables are OK, can save now
+	&lock_file($ENV{'MINISERV_CONFIG'});
+	$miniserv{'userdb'} = $str;
+	$miniserv{'userdb_addto'} = $in{'addto'};
+	&put_miniserv_config(\%miniserv);
+	&unlock_file($ENV{'MINISERV_CONFIG'});
+	&reload_miniserv();
 	&redirect("");
 	}
 

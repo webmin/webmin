@@ -414,7 +414,7 @@ sql_edb=Invalid database name (no spaces allowed)
 sql_eprefix=Missing or invalid base DN (no spaces allowed)
 sql_eprefix2=Invalid-looking base DN - should be like <tt>dc=mydomain,dc=com</tt>
 sql_title2=Create Missing Tables
-sql_tableerr=User and group database settings were successfully saved, but some tables needed by Webmin are missing : $1
+sql_tableerr=User and group database settings are valid, but some tables needed by Webmin are missing : $1
 sql_tableerr2=Click the <b>Create Tables</b> to have them created automatically, or manually run the SQL below.
 sql_make=Create Tables
 
@@ -423,4 +423,4 @@ make_err=Failed to create user and group tables
 make_exec=Executing SQL $1 ..
 make_failed=.. creation failed : $1
 make_done=.. done
-
+make_still=Some problems were found even after table creation : $1

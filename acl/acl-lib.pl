@@ -20,6 +20,7 @@ $access{'switch'} = 0 if (&is_readonly_mode());
 
 # XXX test with postgresql
 # XXX LDAP support
+# XXX infinite loop on failure
 
 =head2 list_users
 
@@ -1716,21 +1717,71 @@ sub userdb_table_sql
 {
 my ($str) = @_;
 my ($key, $auto, $idattrkey);
-if ($str =~ /^(mysql|postgresql):/) {
-	$key = "primary key";
-	}
 if ($str =~ /^mysql:/) {
-	$auto = "auto_increment";
-	$idattrkey = ", primary key(id, attr)";
-	$idattrmodulekey = ", primary key(id, module, attr)";
+	return ( "create table webmin_user ".
+		   "(id int(20) not null primary key auto_increment, ".
+		   "name varchar(255) not null, pass varchar(255))",
+		 "create table webmin_group ".
+		   "(id int(20) not null primary key auto_increment, ".
+		   "name varchar(255) not null, ".
+		   "description varchar(255))",
+		 "create table webmin_user_attr ".
+		   "(id int(20) not null, ".
+		   "attr varchar(32) not null, ".
+		   "value varchar(255), ".
+		   "primary key(id, attr))",
+		 "create table webmin_group_attr ".
+		   "(id int(20) not null, ".
+		   "attr varchar(32) not null, ".
+		   "value varchar(255), ".
+		   "primary key(id, attr))",
+		 "create table webmin_user_acl ".
+		   "(id int(20) not null, ".
+		   "module varchar(32) not null, ".
+		   "attr varchar(32) not null, ".
+		   "value varchar(255), ".
+		   "primary key(id, module, attr))",
+		 "create table webmin_group_acl ".
+		   "(id int(20) not null, ".
+		   "module varchar(32) not null, ".
+		   "attr varchar(32) not null, ".
+		   "value varchar(255), ".
+		   "primary key(id, module, attr))",
+		);
 	}
-return ( "create table webmin_user (id int(20) not null $key $auto, name varchar(255) not null, pass varchar(255))",
-	 "create table webmin_group (id int(20) not null $key $auto, name varchar(255) not null, description varchar(255))",
-	 "create table webmin_user_attr (id int(20) not null, attr varchar(32) not null, value varchar(255) $idattrkey)",
-	 "create table webmin_group_attr (id int(20) not null, attr varchar(32) not null, value varchar(255) $idattrkey)",
-         "create table webmin_user_acl (id int(20) not null, module varchar(32) not null, attr varchar(32) not null, value varchar(255) $idattrmodulekey)",
-         "create table webmin_group_acl (id int(20) not null, module varchar(32) not null, attr varchar(32) not null, value varchar(255) $idattrmodulekey)",
-        );
+elsif ($str =~ /^postgresql:/) {
+	return ( "create table webmin_user ".
+		   "(id int8 not null primary key, ".
+		   "name varchar(255), ".
+		   "pass varchar(255))",
+		 "create table webmin_group ".
+		   "(id int8 not null primary key, ".
+		   "name varchar(255), ".
+		   "description varchar(255))",
+		 "create table webmin_user_attr ".
+		   "(id int8 not null, ".
+		   "attr varchar(255) not null, ".
+		   "value varchar(255), ".
+		   "primary key(id, attr))",
+		 "create table webmin_group_attr ".
+		   "(id int8 not null, ".
+		   "attr varchar(255) not null, ".
+		   "value varchar(255), ".
+		   "primary key(id, attr))",
+		 "create table webmin_user_acl ".
+		   "(id int8 not null, ".
+		   "module varchar(255) not null, ".
+		   "attr varchar(255) not null, ".
+		   "value varchar(255), ".
+		   "primary key(id, module, attr))",
+		 "create table webmin_group_acl ".
+		   "(id int8 not null, ".
+		   "module varchar(255) not null, ".
+		   "attr varchar(255) not null, ".
+		   "value varchar(255), ".
+		   "primary key(id, module, attr))",
+	       );
+	}
 }
 
 1;

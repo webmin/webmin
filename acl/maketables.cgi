@@ -7,13 +7,13 @@ $access{'pass'} || &error($text{'sql_ecannot'});
 &ReadParse();
 &error_setup($text{'make_err'});
 
-$str = $miniserv{'userdb'};
-$dbh = &connect_userdb($str);
+$dbh = &connect_userdb($in{'userdb'});
 ref($dbh) || &error($dbh);
 
 &ui_print_unbuffered_header(undef, $text{'make_title'}, "");
 
-foreach $sql (&userdb_table_sql($str)) {
+# Create the tables
+foreach $sql (&userdb_table_sql($in{'userdb'})) {
 	print &text('make_exec', "<tt>".&html_escape($sql)."</tt>"),"<br>\n";
 	$cmd = $dbh->prepare($sql);
 	if (!$cmd || !$cmd->execute()) {
@@ -22,6 +22,20 @@ foreach $sql (&userdb_table_sql($str)) {
 	else {
 		print $text{'make_done'},"<p>\n";
 		}
+	}
+
+# Check again if OK
+$err = &validate_userdb($in{'userdb'}, 0);
+if ($err) {
+	print "<b>",&text('make_still', $err),"</b><p>\n";
+	}
+else {
+	&lock_file($ENV{'MINISERV_CONFIG'});
+	$miniserv{'userdb'} = $in{'userdb'};
+	$miniserv{'userdb_addto'} = $in{'addto'};
+	&put_miniserv_config(\%miniserv);
+	&unlock_file($ENV{'MINISERV_CONFIG'});
+	&reload_miniserv();
 	}
 
 &ui_print_footer("", $text{'index_return'});
