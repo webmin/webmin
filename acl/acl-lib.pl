@@ -19,6 +19,8 @@ do 'md5-lib.pl';
 $access{'switch'} = 0 if (&is_readonly_mode());
 
 # XXX LDAP support
+# XXX CHANGELOG / docs
+# XXX test with Virtualmin
 
 =head2 list_users
 
@@ -35,7 +37,7 @@ Returns a list of hashes containing Webmin user details. Useful keys include :
 =cut
 sub list_users
 {
-my (%miniserv, $_, @rv, %acl, %logout);
+my (%miniserv, @rv, %acl, %logout);
 local %_;
 &read_acl(undef, \%acl);
 &get_miniserv_config(\%miniserv);
@@ -385,7 +387,8 @@ sub modify_user
 {
 my $username = $_[0];
 my %user = %{$_[1]};
-my (%miniserv, @pwfile, @acl, @mods, $_, $m);
+my (%miniserv, @pwfile, @acl, @mods, $m);
+local $_;
 &get_miniserv_config(\%miniserv);
 
 if ($user{'proto'}) {
