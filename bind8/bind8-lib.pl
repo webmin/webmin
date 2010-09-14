@@ -2509,10 +2509,12 @@ sub check_bind_config
 local ($file) = @_;
 $file ||= &make_chroot($config{'named_conf'});
 local $chroot = &get_chroot();
+local $out = &backquote_command("$config{'checkconf'} -h 2>&1 </dev/null");
+local $zflag = $out =~ /\[-z\]/ ? "-z" : "";
 local $out = &backquote_command(
         $config{'checkconf'}.
 	($chroot && $chroot ne "/" ? " -t ".quotemeta($chroot) : "").
-	" -z 2>&1 </dev/null");
+	" $zflag 2>&1 </dev/null");
 return $? ? grep { !/loaded\s+serial/ } split(/\r?\n/, $out) : ( );
 }
 
