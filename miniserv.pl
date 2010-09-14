@@ -2061,6 +2061,11 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 					$baseauthuser : undef;
 	$ENV{"REMOTE_PASS"} = $authpass if (defined($authpass) &&
 					    $config{'pass_password'});
+	$uinfo = &get_user_details($baseauthuser);
+	if ($uinfo && $uinfo->{'proto'}) {
+		$ENV{"REMOTE_USER_PROTO"} = $uinfo->{'proto'};
+		$ENV{"REMOTE_USER_ID"} = $uinfo->{'id'};
+		}
 	print DEBUG "REMOTE_USER = ",$ENV{"REMOTE_USER"},"\n";
 	print DEBUG "BASE_REMOTE_USER = ",$ENV{"BASE_REMOTE_USER"},"\n";
 	$ENV{"SSL_USER"} = $peername if ($validated == 2);

@@ -1314,6 +1314,7 @@ by the message setup using that function.
 =cut
 sub error
 {
+$main::no_miniserv_userdb = 1;
 my $msg = join("", @_);
 $msg =~ s/<[^>]*>//g;
 if (!$main::error_must_die) {
@@ -1392,6 +1393,7 @@ headers suitable for a popup window.
 =cut
 sub popup_error
 {
+$main::no_miniserv_userdb = 1;
 &load_theme_library();
 if ($main::error_must_die) {
 	die @_;
@@ -3316,8 +3318,9 @@ elsif ($u ne '') {
 	# Use normal Webmin ACL, if a user is set
 	my $userdb = &get_userdb_string();
 	my $foundindb = 0;
-	if ($userdb) {
-		# Look for this user in the user/group DB
+	if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
+		# Look for this user in the user/group DB, if one is defined
+		# and if the user might be in the DB
 		my ($dbh, $proto) = &connect_userdb($userdb);
 		ref($dbh) || &error(&text('euserdbacl', $dbh));
 		if ($proto eq "mysql" || $proto eq "postgresql") {
@@ -3465,7 +3468,7 @@ if (!$_[3] && &foreign_check("acl")) {
 
 my $userdb = &get_userdb_string();
 my $foundindb = 0;
-if ($userdb) {
+if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 	# Look for this user in the user/group DB
 	my ($dbh, $proto) = &connect_userdb($userdb);
 	ref($dbh) || &error(&text('euserdbacl', $dbh));
@@ -3848,6 +3851,9 @@ $main::nice_already++;
 my $u = $ENV{'BASE_REMOTE_USER'} || $ENV{'REMOTE_USER'};
 $base_remote_user = $u;
 $remote_user = $ENV{'REMOTE_USER'};
+
+# Work out if user is definitely in the DB
+$remote_user_proto = $ENV{"REMOTE_USER_PROTO"};
 
 if ($module_name) {
 	# Find and load the configuration file for this module
@@ -8946,6 +8952,7 @@ Returns the URL-style string for connecting to the users and groups database
 =cut
 sub get_userdb_string
 {
+return undef if ($main::no_miniserv_userdb);
 my %miniserv;
 &get_miniserv_config(\%miniserv);
 return $miniserv{'userdb'};
@@ -8971,6 +8978,7 @@ if ($proto eq "mysql") {
 	$cstr .= ";port=$port" if ($port);
 	my $dbh = $drh->connect($cstr, $user, $pass, { });
 	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
+	$dbh->{'AutoCommit'} = 1;
 	return wantarray ? ($dbh, $proto) : $dbh;
 	}
 elsif ($proto eq "postgresql") {
@@ -8982,6 +8990,7 @@ elsif ($proto eq "postgresql") {
 	$cstr .= ";port=$port" if ($port);
 	my $dbh = $drh->connect($cstr, $user, $pass);
 	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
+	$dbh->{'AutoCommit'} = 1;
 	return wantarray ? ($dbh, $proto) : $dbh;
 	}
 elsif ($proto eq "ldap") {
@@ -9003,6 +9012,7 @@ sub disconnect_userdb
 my ($str, $h) = @_;
 if ($str =~ /^(mysql|postgresql):/) {
 	# DBI disconnnect
+	$h->commit();
 	$h->disconnect();
 	}
 elsif ($str =~ /^ldap:/) {

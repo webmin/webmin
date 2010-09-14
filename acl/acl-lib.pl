@@ -18,9 +18,7 @@ do 'md5-lib.pl';
 %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
-# XXX test with postgresql
 # XXX LDAP support
-# XXX infinite loop on failure
 
 =head2 list_users
 
@@ -271,7 +269,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		$cmd && $cmd->execute($user{'name'}, $user{'pass'}) ||
 			&error("Failed to add user : ".$dbh->errstr);
 		$cmd->finish();
-		my $cmd = $dbh->prepare("select last_insert_id()");
+		my $cmd = $dbh->prepare("select max(id) from webmin_user");
 		$cmd->execute();
 		my ($id) = $cmd->fetchrow();
 		$cmd->finish();
@@ -733,7 +731,7 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		$cmd && $cmd->execute($group{'name'}, $group{'desc'}) ||
 			&error("Failed to add group : ".$dbh->errstr);
 		$cmd->finish();
-		my $cmd = $dbh->prepare("select last_insert_id()");
+		my $cmd = $dbh->prepare("select max(id) from webmin_group");
 		$cmd->execute();
 		my ($id) = $cmd->fetchrow();
 		$cmd->finish();
@@ -1751,11 +1749,11 @@ if ($str =~ /^mysql:/) {
 	}
 elsif ($str =~ /^postgresql:/) {
 	return ( "create table webmin_user ".
-		   "(id int8 not null primary key, ".
+		   "(id serial not null primary key, ".
 		   "name varchar(255), ".
 		   "pass varchar(255))",
 		 "create table webmin_group ".
-		   "(id int8 not null primary key, ".
+		   "(id serial not null primary key, ".
 		   "name varchar(255), ".
 		   "description varchar(255))",
 		 "create table webmin_user_attr ".

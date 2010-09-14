@@ -20,9 +20,16 @@ foreach $sql (&userdb_table_sql($in{'userdb'})) {
 		print &text('make_failed', &html_escape($dbh->errstr)),"<p>\n";
 		}
 	else {
+		$cmd->finish();
 		print $text{'make_done'},"<p>\n";
 		}
 	}
+&disconnect_userdb($in{'userdb'}, $dbh);
+
+# XXX create table fails for postgresql!!
+#$dbh = &connect_userdb($in{'userdb'});
+#$cmd = $dbh->prepare("select * from webmin_user");
+#$cmd && $cmd->execute() || &error("select failed : ".$dbh->errstr);
 
 # Check again if OK
 $err = &validate_userdb($in{'userdb'}, 0);
