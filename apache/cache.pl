@@ -40,7 +40,7 @@ sub edit_CacheMaxExpire
 {
 return (1, $text{'mod_proxy_maxexp'},
         &opt_input($_[0]->{'value'}, "CacheMaxExpire", $text{'mod_proxy_default'}, 6).
-	$text{'mod_proxy_hours'});
+	$text{'mod_proxy_seconds'});
 }
 sub save_CacheMaxExpire
 {
@@ -85,7 +85,7 @@ sub edit_CacheDefaultExpire
 {
 return (1, $text{'mod_proxy_defexp'},
         &opt_input($_[0]->{'value'}, "CacheDefaultExpire", $text{'mod_proxy_default'}, 6).
-	$text{'mod_proxy_hours'});
+	$text{'mod_proxy_seconds'});
 }
 sub save_CacheDefaultExpire
 {

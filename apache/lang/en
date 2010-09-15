@@ -576,6 +576,7 @@ mod_proxy_esize=Invalid cache size
 mod_proxy_garbage=Cache garbage collection interval
 mod_proxy_nogc=Never
 mod_proxy_hours=hours
+mod_proxy_seconds=seconds
 mod_proxy_egarbage=Invalid cache garbage collection interval
 mod_proxy_maxexp=Cached file maximum expiry time
 mod_proxy_emaxexp=Invalid cached file maximum expiry time
