@@ -58,7 +58,7 @@ if ($p) {
 
 # Make sure tables exist
 $err = &validate_userdb($str, 0);
-if ($err) {
+if ($err && ($p eq "mysql" || $p eq "postgresql")) {
 	# Tables are missing, need to create first
 	&ui_print_header(undef, $text{'sql_title2'}, "");
 
@@ -75,6 +75,19 @@ if ($err) {
 			"<pre>".&html_escape($sql)."</pre>", 2);
 		}
 	print &ui_table_end();
+
+	&ui_print_footer("", $text{'index_return'});
+	}
+elsif ($err && $p eq "ldap") {
+	# LDAP DN is missing
+	&ui_print_header(undef, $text{'sql_title3'}, "");
+
+	print &text('sql_dnerr', $err),"<p>\n";
+	print $text{'sql_dnerr2'},"<p>\n";
+	print &ui_form_start("makedn.cgi");
+	print &ui_hidden("userdb", $str);
+	print &ui_hidden("userdb_addto", $in{'addto'});
+	print &ui_form_end([ [ undef, $text{'sql_makedn'} ] ]);
 
 	&ui_print_footer("", $text{'index_return'});
 	}

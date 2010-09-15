@@ -420,8 +420,12 @@ sql_eprefix=Missing or invalid base DN (no spaces allowed)
 sql_eprefix2=Invalid-looking base DN - should be like <tt>dc=mydomain,dc=com</tt>
 sql_title2=Create Missing Tables
 sql_tableerr=User and group database settings are valid, but some tables needed by Webmin are missing : $1
-sql_tableerr2=Click the <b>Create Tables</b> to have them created automatically, or manually run the SQL below.
+sql_tableerr2=Click the <b>Create Tables</b> button below to have them created automatically, or manually run the SQL below.
 sql_make=Create Tables
+sql_title3=Create Missing DN
+sql_dnerr=User and group database settings are valid, but the LDAP DN needed by Webmin is missing : $1
+sql_dnerr2=Click the <b>Create DN</b> button below to have it create automatically, or add it to your LDAP server manually.
+sql_makedn=Create DN
 
 make_title=Create User and Group Tables
 make_err=Failed to create user and group tables
