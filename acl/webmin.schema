@@ -1,0 +1,40 @@
+# Object and attribute classes for Webmin users and groups
+#
+# OID Base is    : 1.3.6.1.4.1.9999.4	# Fix later
+# Attributes     : 1.3.6.1.4.1.9999.4.1.x
+# Object classes : 1.3.6.1.4.1.9999.4.2.x
+
+attributetype ( 1.3.6.1.4.1.9999.4.1.1 NAME 'webminName'
+	DESC 'Webmin username'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.9999.4.1.2 NAME 'webminPass'
+	DESC 'Webmin password'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.9999.4.1.3 NAME 'webminAttr'
+	DESC 'Webmin user attribute name=value format'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} COLLECTIVE )
+
+attributetype ( 1.3.6.1.4.1.9999.4.1.4 NAME 'webminAcl'
+	DESC 'Webmin user ACL module=name=value format'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} COLLECTIVE )
+
+attributetype ( 1.3.6.1.4.1.9999.4.1.5 NAME 'webminDesc'
+	DESC 'Webmin group description'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} SINGLE-VALUE )
+
+attributetype ( 1.3.6.1.4.1.9999.4.1.6 NAME 'webminModule'
+	DESC 'Webmin module name'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} COLLECTIVE )
+
+objectclass ( 1.3.6.1.4.1.9999.4.2.1 NAME 'webminUser' SUP top AUXILIARY
+	DESC 'Webmin user account'
+	MUST ( webminName $ webminPass )
+	MAY ( webminAttr $ webminAcl $ webminModule ))
+
+objectclass ( 1.3.6.1.4.1.9999.4.2.2 NAME 'webminGroup' SUP top AUXILIARY
+	DESC 'Webmin group account'
+	MUST ( webminName $ webminDesc )
+	MAY ( webminAttr $ webminAcl $ webminModule ))
+

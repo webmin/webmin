@@ -411,6 +411,7 @@ sql_addto1=Add new users to local files
 sql_emod=Missing required Perl module <tt>$1</tt>
 sql_etable=Failed to query required table $1 : $2
 sql_eldapdn=Base LDAP DN $1 was not found
+sql_eclass=LDAP object class $1 does not exist in the server's schema
 sql_err=Failed to save user and group database settings
 sql_ehost=Missing or un-resolvable hostname
 sql_euser=Missing or invalid username (no spaces allowed)
@@ -433,3 +434,11 @@ make_exec=Executing SQL $1 ..
 make_failed=.. creation failed : $1
 make_done=.. done
 make_still=Some problems were found even after table creation : $1
+
+makedn_title=Create LDAP DN
+makedn_eoc=No structural object classes found!
+makedn_exec=Creating parent DN $1 ..
+makedn_failed=.. creation failed : $1
+makedn_done=.. done
+makedn_still=Some problems were found even after DN creation : $1
+

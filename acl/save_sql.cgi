@@ -63,7 +63,7 @@ if ($err && ($p eq "mysql" || $p eq "postgresql")) {
 	&ui_print_header(undef, $text{'sql_title2'}, "");
 
 	print &text('sql_tableerr', $err),"<p>\n";
-	print $text{'sql_tableerr2'},"<p>\n";
+	print $text{'sql_tableerr2'},"<br>\n";
 	print &ui_form_start("maketables.cgi");
 	print &ui_hidden("userdb", $str);
 	print &ui_hidden("userdb_addto", $in{'addto'});
@@ -83,7 +83,7 @@ elsif ($err && $p eq "ldap") {
 	&ui_print_header(undef, $text{'sql_title3'}, "");
 
 	print &text('sql_dnerr', $err),"<p>\n";
-	print $text{'sql_dnerr2'},"<p>\n";
+	print $text{'sql_dnerr2'},"<br>\n";
 	print &ui_form_start("makedn.cgi");
 	print &ui_hidden("userdb", $str);
 	print &ui_hidden("userdb_addto", $in{'addto'});

@@ -19,6 +19,7 @@ do 'md5-lib.pl';
 $access{'switch'} = 0 if (&is_readonly_mode());
 
 # XXX LDAP support
+#	XXX schema test / creation?
 # XXX CHANGELOG / docs
 # XXX test with Virtualmin
 
@@ -1625,7 +1626,7 @@ my ($proto, $user, $pass, $host, $prefix, $args) = @_;
 return "" if (!$proto);
 my $argstr;
 if (keys %$args) {
-	$argstr = "?".map { $_."=".$args->{$_} } (keys %$args);
+	$argstr = "?".join("&", map { $_."=".$args->{$_} } (keys %$args));
 	}
 return $proto."://".$user.":".$pass."\@".$host."/".$prefix.$argstr;
 }
@@ -1693,11 +1694,21 @@ elsif ($proto eq "ldap") {
 	my $dbh = &connect_userdb($str);
 	ref($dbh) || return $dbh;
 
+	# Check for Webmin object classes
+	my $schema = $dbh->schema();
+	my @allocs = map { $_->{'name'} }
+			$schema->all_objectclasses();
+	&indexof($args->{'userclass'}, @allocs) >= 0 ||
+		return &text('sql_eclass', $args->{'userclass'});
+	&indexof($args->{'groupclass'}, @allocs) >= 0 ||
+		return &text('sql_eclass', $args->{'groupclass'});
+
 	# Check that base DN exists
 	if (!$notablecheck) {
 		my $superprefix = $prefix;
 		$superprefix =~ s/^[^,]+,//;	# Make parent DN
 		my $rv = $dbh->search(base => $superprefix,
+				      filter => '(objectClass=*)',
 				      scope => 'one');
 		my $niceprefix = lc($prefix);
 		$niceprefix =~ s/\s//g;

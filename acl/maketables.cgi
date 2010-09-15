@@ -26,11 +26,6 @@ foreach $sql (&userdb_table_sql($in{'userdb'})) {
 	}
 &disconnect_userdb($in{'userdb'}, $dbh);
 
-# XXX create table fails for postgresql!!
-#$dbh = &connect_userdb($in{'userdb'});
-#$cmd = $dbh->prepare("select * from webmin_user");
-#$cmd && $cmd->execute() || &error("select failed : ".$dbh->errstr);
-
 # Check again if OK
 $err = &validate_userdb($in{'userdb'}, 0);
 if ($err) {
