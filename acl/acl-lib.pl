@@ -715,7 +715,7 @@ my %miniserv;
 
 if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 	# Adding to group database
-	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto, $prefix, $args) =&connect_userdb($miniserv{'userdb'});
         &error("Failed to connect to group database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Add group with SQL
@@ -744,8 +744,32 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 			}
 		}
 	elsif ($proto eq "ldap") {
-		# Add user to LDAP
-		# XXX
+		# Add group to LDAP
+		my $dn = "cn=".$group{'name'}.",".$prefix;
+		my @attrs = ( "objectClass", $args->{'groupclass'},
+			      "cn", $group{'name'},
+			      "webminDesc", $group{'desc'} );
+		my @webminattrs;
+		foreach my $attr (keys %group) {
+			next if ($attr eq "name" || $attr eq "desc" ||
+				 $attr eq "modules");
+			my $value = $group{$attr};
+			if ($attr eq "members" || $attr eq "ownmods") {
+				$value = join(" ", @$value);
+				}
+			push(@webminattrs, $attr."=".$value);
+			}
+		if (@webminattrs) {
+			push(@attrs, "webminAttr", \@webminattrs);
+			}
+		if (@{$group{'modules'}}) {
+			push(@attrs, "webminModule", $group{'modules'});
+			}
+		my $rv = $dbh->add($dn, attr => \@attrs);
+		if (!$rv || $rv->code) {
+			&error("Failed to add group to LDAP : ".
+			       ($rv ? $rv->error : "Unknown error"));
+			}
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	$group{'proto'} = $proto;

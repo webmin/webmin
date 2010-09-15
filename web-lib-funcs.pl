@@ -9004,7 +9004,7 @@ if ($proto eq "mysql") {
 	my $dbh = $drh->connect($cstr, $user, $pass, { });
 	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
 	$dbh->{'AutoCommit'} = 1;
-	return wantarray ? ($dbh, $proto) : $dbh;
+	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
 	}
 elsif ($proto eq "postgresql") {
 	# Connect to PostgreSQL with DBI
@@ -9016,7 +9016,7 @@ elsif ($proto eq "postgresql") {
 	my $dbh = $drh->connect($cstr, $user, $pass);
 	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
 	$dbh->{'AutoCommit'} = 1;
-	return wantarray ? ($dbh, $proto) : $dbh;
+	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
 	}
 elsif ($proto eq "ldap") {
 	# Connect with perl LDAP module
@@ -9051,7 +9051,7 @@ elsif ($proto eq "ldap") {
 		return &text('sql_eldaplogin', $user,
 			     $mesg ? $mesg->error : "Unknown error");
 		}
-	return wantarray ? ($ldap, $proto) : $ldap;
+	return wantarray ? ($ldap, $proto, $prefix, $args) : $ldap;
 	}
 else {
 	return "Unknown protocol $proto";
