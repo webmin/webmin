@@ -339,3 +339,13 @@ wsearch_hmod=Module
 wsearch_moddir=URL path /$1/
 wsearch_searching=Searching for $1 . .
 wsearch_found=found $1 results :
+
+sql_emysqldriver=Failed to load MySQL DBI driver
+sql_emysqlconnect=Failed to connect to MySQL database : $1
+sql_epostgresqldriver=Failed to load PostgreSQL DBI driver
+sql_epostgresqlconnect=Failed to connect to PostgreSQL database : $1
+sql_eldapdriver=Failed to load LDAP perl module
+sql_eldapconnect=Failed to connect to LDAP server $1
+sql_eldaptls=Failed to start TLS encryption for LDAP : $1
+sql_eldaplogin=Failed to login to LDAP server as $1 : $2
+

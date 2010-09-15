@@ -50,6 +50,13 @@ push(@ldapgrid,
      $text{'sql_host'},
      &ui_textbox("ldap_host", $proto eq "ldap" ? $host : "", 30));
 push(@ldapgrid,
+     $text{'sql_ssl'},
+     &ui_radio("ldap_ssl", $args->{'scheme'} eq 'ldaps' ? 1 :
+			   $args->{'tls'} ? 2 : 0,
+	       [ [ 0, $text{'sql_ssl0'} ],
+	         [ 1, $text{'sql_ssl1'} ],
+	         [ 2, $text{'sql_ssl2'} ] ]));
+push(@ldapgrid,
      $text{'sql_user'},
      &ui_textbox("ldap_user", $proto eq "ldap" ? $user : "", 30));
 push(@ldapgrid,
@@ -58,7 +65,14 @@ push(@ldapgrid,
 push(@ldapgrid,
      $text{'sql_prefix'},
      &ui_textbox("ldap_prefix", $proto eq "ldap" ? $prefix : "", 30));
-# XXX object classes?
+push(@ldapgrid,
+     $text{'sql_userclass'},
+     &ui_textbox("ldap_userclass", $proto eq "ldap" && $args->{'userclass'} ?
+				     $args->{'userclass'} : "webminUser", 30));
+push(@ldapgrid,
+     $text{'sql_groupclass'},
+     &ui_textbox("ldap_groupclass", $proto eq "ldap" && $args->{'groupclass'} ?
+				     $args->{'groupclass'} : "webminGroup",30));
 $ldapgrid = &ui_grid_table(\@ldapgrid, 2, 100);
 
 print &ui_table_row(undef,

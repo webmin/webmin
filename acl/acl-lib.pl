@@ -96,9 +96,7 @@ close(PWFILE);
 
 # If a user DB is enabled, get users from it too
 if ($miniserv{'userdb'}) {
-	my ($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
-	my $dbh = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Fetch users with SQL
@@ -175,9 +173,7 @@ close(GROUPS);
 
 # If a user DB is enabled, get groups from it too
 if ($miniserv{'userdb'}) {
-	my ($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
-	my $dbh = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Fetch groups with SQL
@@ -261,9 +257,7 @@ my @mods = &list_modules();
 
 if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 	# Adding to user database
-	my ($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
-	my $dbh = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
         &error("Failed to connect to user database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Add user with SQL
@@ -393,9 +387,7 @@ local $_;
 
 if ($user{'proto'}) {
 	# In users and groups DB
-	my ($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
-	my $dbh = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Get old password, for change detection
@@ -657,9 +649,7 @@ if ($miniserv{'session'}) {
 
 if ($miniserv{'userdb'}) {
 	# Also delete from user database
-	my ($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
-	my $dbh = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Find the user with SQL query
@@ -724,9 +714,7 @@ my %miniserv;
 
 if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 	# Adding to group database
-	my ($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
-	my $dbh = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
         &error("Failed to connect to group database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Add group with SQL
@@ -793,9 +781,7 @@ my %miniserv;
 
 if ($group{'proto'}) {
 	# In users and groups DB
-	my ($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
-	my $dbh = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Update primary details
@@ -876,9 +862,7 @@ local $lref = &read_file_lines("$config_directory/webmin.groups");
 
 if ($miniserv{'userdb'}) {
 	# Also delete from group database
-	my ($proto, $user, $pass, $host, $prefix, $args) =
-		&split_userdb_string($miniserv{'userdb'});
-	my $dbh = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Find the group with SQL query
@@ -1701,7 +1685,32 @@ if ($proto eq "mysql" || $proto eq "postgresql") {
 	return undef;
 	}
 elsif ($proto eq "ldap") {
-	# XXX
+	# Load LDAP module
+	eval 'use Net::LDAP;';
+	return &text('sql_emod', 'Net::LDAP') if ($@);
+
+	# Try to connect
+	my $dbh = &connect_userdb($str);
+	ref($dbh) || return $dbh;
+
+	# Check that base DN exists
+	if (!$notablecheck) {
+		my $superprefix = $prefix;
+		$superprefix =~ s/^[^,]+,//;	# Make parent DN
+		my $rv = $dbh->search(base => $superprefix,
+				      scope => 'one');
+		my $niceprefix = lc($prefix);
+		$niceprefix =~ s/\s//g;
+		my $found = 0;
+		foreach my $d ($rv->all_entries) {
+			my $niced = lc($d->dn());
+			$niced =~ s/\s//g;
+			$found++ if ($niced eq $niceprefix);
+			}
+		$found || return &text('sql_eldapdn', $prefix);
+		}
+	&disconnect_userdb($str, $dbh);
+	return undef;
 	}
 else {
 	return "Unknown user database type $proto";

@@ -9019,8 +9019,39 @@ elsif ($proto eq "postgresql") {
 	return wantarray ? ($dbh, $proto) : $dbh;
 	}
 elsif ($proto eq "ldap") {
-	# XXX
-	return "LDAP not done yet";
+	# Connect with perl LDAP module
+	eval "use Net::LDAP";
+	$@ && return $text{'sql_eldapdriver'};
+	my ($host, $port) = split(/:/, $host);
+	my $scheme = $args->{'scheme'} || 'ldap';
+	if (!$port) {
+		$port = $scheme eq 'ldaps' ? 636 : 389;
+		}
+	my $ldap = Net::LDAP->new($host,
+				  port => $port,
+				  'scheme' => $scheme);
+	$ldap || return &text('sql_eldapconnect', $host);
+	my $mesg;
+	if ($args->{'tls'}) {
+		# Switch to TLS mode
+		eval { $mesg = $ldap->start_tls(); };
+		if ($@ || !$mesg || $mesg->code) {
+			return &text('sql_eldaptls',
+			    $@ ? $@ : $mesg ? $mesg->error : "Unknown error");
+			}
+		}
+	# Login to the server
+	if ($pass) {
+		$mesg = $ldap->bind(dn => $user, password => $pass);
+		}
+	else {
+		$mesg = $ldap->bind(dn => $user, anonymous => 1);
+		}
+	if (!$mesg || $mesg->code) {
+		return &text('sql_eldaplogin', $user,
+			     $mesg ? $mesg->error : "Unknown error");
+		}
+	return wantarray ? ($ldap, $proto) : $ldap;
 	}
 else {
 	return "Unknown protocol $proto";

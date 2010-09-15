@@ -27,6 +27,23 @@ elsif ($p eq 'ldap') {
 	$in{$p."_prefix"} =~ /^\S+$/ || &error($text{'sql_eprefix'});
 	$in{$p."_prefix"} =~ /=/ || &error($text{'sql_eprefix2'});
 	$prefix = $in{$p."_prefix"};
+	$args = { };
+	if ($in{'ldap_ssl'} == 0) {
+		$args->{'scheme'} = 'ldap';
+		}
+	elsif ($in{'ldap_ssl'} == 1) {
+		$args->{'scheme'} = 'ldaps';
+		}
+	elsif ($in{'ldap_ssl'} == 2) {
+		$args->{'scheme'} = 'ldap';
+		$args->{'tls'} = 1;
+		}
+	$in{'ldap_userclass'} =~ /^[a-z0-9]+$/i ||
+		&error($text{'sql_euserclass'});
+	$args->{'userclass'} = $in{'ldap_userclass'};
+	$in{'ldap_groupclass'} =~ /^[a-z0-9]+$/i ||
+		&error($text{'sql_egroupclass'});
+	$args->{'groupclass'} = $in{'ldap_groupclass'};
 	}
 
 # Create and test connection string
