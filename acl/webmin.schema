@@ -23,12 +23,12 @@ attributetype ( 1.3.6.1.4.1.9999.4.1.6 NAME 'webminModule'
 objectclass ( 1.3.6.1.4.1.9999.4.2.1 NAME 'webminUser' SUP top STRUCTURAL
 	DESC 'Webmin user account'
 	MUST ( cn $ webminPass )
-	MAY ( webminAttr $ webminAcl $ webminModule ))
+	MAY ( webminAttr $ webminModule ))
 
 objectclass ( 1.3.6.1.4.1.9999.4.2.2 NAME 'webminGroup' SUP top STRUCTURAL
 	DESC 'Webmin group account'
 	MUST ( cn $ webminDesc )
-	MAY ( webminAttr $ webminAcl $ webminModule ))
+	MAY ( webminAttr $ webminModule ))
 
 
 attributetype ( 1.3.6.1.4.1.9999.4.1.4 NAME 'webminAclEntry'
