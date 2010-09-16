@@ -9073,6 +9073,7 @@ if ($str =~ /^(mysql|postgresql):/) {
 	}
 elsif ($str =~ /^ldap:/) {
 	# LDAP disconnect
+	$h->unbind();
 	$h->disconnect();
 	}
 }

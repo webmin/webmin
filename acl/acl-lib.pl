@@ -174,7 +174,7 @@ close(GROUPS);
 
 # If a user DB is enabled, get groups from it too
 if ($miniserv{'userdb'}) {
-	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto, $prefix, $args) =&connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Fetch groups with SQL
@@ -209,7 +209,28 @@ if ($miniserv{'userdb'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Find groups with LDAP query
-		# XXX
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(objectClass='.$args->{'groupclass'}.')',
+			scope => 'one');
+		if (!$rv || $rv->code) {
+			&error("Failed to search groups : ".
+				($rv ? $rv->error : "Unknown error"));
+			}
+		foreach my $l ($rv->all_entries) {
+			my $g = { 'name' => $l->get_value('cn'),
+				  'desc' => $l->get_value('webminDesc'),
+				  'proto' => $proto,
+				  'id' => $l->dn() };
+			foreach my $la ($l->get_value('webminAttr')) {
+				my ($attr, $value) = split(/=/, $la, 2);
+				if ($attr eq "members" || $attr eq "ownmods") {
+					$value = [ split(/\s+/, $value) ];
+					}
+				}
+			$g->{'modules'} = [ $l->get_value('webminModule') ];
+			push(@rv, $g);
+			}
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
@@ -838,7 +859,39 @@ if ($group{'proto'}) {
 			}
 		}
 	elsif ($proto eq "ldap") {
-		# XXX update in ldap
+		# Rename in LDAP if needed
+		if ($group{'name'} ne $groupname) {
+			my $newdn = $group{'id'};
+			$newdn =~ s/^cn=\Q$groupname\E,/cn=$group{'name'},/;
+			my $rv = $dbh->moddn($group{'id'},
+					     newrdn => "cn=$group{'name'}");
+			if (!$rv || $rv->code) {
+				&error("Failed to rename group : ".
+				       ($rv ? $rv->error : "Unknown error"));
+				}
+			$group{'id'} = $newdn;
+			}
+
+		# Re-save all the attributes
+		my @attrs = ( "cn", $group{'name'},
+			      "webminDesc", $group{'desc'} );
+		my @webminattrs;
+		foreach my $attr (keys %group) {
+			next if ($attr eq "name" || $attr eq "desc" ||
+				 $attr eq "modules");
+			my $value = $group{$attr};
+			if ($attr eq "members" || $attr eq "ownmods") {
+				$value = join(" ", @$value);
+				}
+			push(@webminattrs, $attr."=".$value);
+			}
+		push(@attrs, "webminAttr", \@webminattrs);
+		push(@attrs, "webminModule", $group{'modules'});
+		my $rv = $dbh->modify($group{'id'}, replace => { @attrs });
+		if (!$rv || $rv->code) {
+			&error("Failed to modify group : ".
+			       ($rv ? $rv->error : "Unknown error"));
+			}
 		}
 	}
 else {
@@ -887,7 +940,7 @@ local $lref = &read_file_lines("$config_directory/webmin.groups");
 
 if ($miniserv{'userdb'}) {
 	# Also delete from group database
-	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto, $prefix, $args) =&connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to group database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Find the group with SQL query
@@ -925,7 +978,24 @@ if ($miniserv{'userdb'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Find group with LDAP query
-		# XXX
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(cn='.$groupname.')',
+			scope => 'one');
+		if (!$rv || $rv->code) {
+			&error("Failed to find group : ".
+			       ($rv ? $rv->error : "Unknown error"));
+			}
+		my ($group) = $rv->all_entries;
+
+		if ($group) {
+			# Delete the group from LDAP
+			my $rv = $dbh->delete($group->dn());
+			if (!$rv || $rv->code) {
+				&error("Failed to delete group : ".
+				       ($rv ? $rv->error : "Unknown error"));
+				}
+			}
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
