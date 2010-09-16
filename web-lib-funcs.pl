@@ -3590,7 +3590,7 @@ my $userdb = &get_userdb_string();
 my $foundindb = 0;
 if ($userdb) {
 	# Look for this group in the user/group DB
-	my ($dbh, $proto) = &connect_userdb($userdb);
+	my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
 	ref($dbh) || &error(&text('egroupdbacl', $dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Find the group in the SQL DB
@@ -3625,8 +3625,51 @@ if ($userdb) {
 			}
 		}
 	elsif ($proto eq "ldap") {
-		# Update ACLs in LDAP
-		# XXX
+		# Find the group in LDAP
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(cn='.$g.')',
+			scope => 'one');
+		if (!$rv || $rv->code) {
+			&error(&text('egroupdbacl',
+				     $rv ? $rv->error : "Unknown error"));
+			}
+		my ($group) = $rv->all_entries;
+
+		if ($group) {
+			# Find the ACL sub-object for the module
+			my $rv = $dbh->search(
+				base => $group->dn(),
+				filter => '(cn='.$m.')',
+				scope => 'one');
+			if (!$rv || $rv->code) {
+				&error(&text('egroupdbacl',
+				     $rv ? $rv->error : "Unknown error"));
+				}
+			my ($acl) = $rv->all_entries;
+
+			my @attrs;
+			foreach my $a (keys %{$_[0]}) {
+				push(@attrs, "webminAclEntry",
+					     $a."=".$_[0]->{$a});
+				}
+			if ($acl) {
+				# Update attributes
+				$rv = $dbh->modify($acl->dn(),
+						   replace => { @attrs });
+				}
+			else {
+				# Add a sub-object
+				push(@attrs, "cn", $m,
+					     "objectClass", "webminAcl");
+				$rv = $dbh->add("cn=".$m.",".$group->dn(),
+						attr => \@attrs);
+				}
+			if (!$rv || $rv->code) {
+				&error(&text('egroupdbacl2',
+				     $rv ? $rv->error : "Unknown error"));
+				}
+			}
 		}
 	&disconnect_userdb($userdb, $dbh);
 	}
