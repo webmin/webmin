@@ -12,10 +12,6 @@ attributetype ( 1.3.6.1.4.1.9999.4.1.3 NAME 'webminAttr'
 	DESC 'Webmin user attribute name=value format'
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} )
 
-attributetype ( 1.3.6.1.4.1.9999.4.1.4 NAME 'webminAcl'
-	DESC 'Webmin user ACL module=name=value format'
-	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} )
-
 attributetype ( 1.3.6.1.4.1.9999.4.1.5 NAME 'webminDesc'
 	DESC 'Webmin group description'
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} )
@@ -33,4 +29,14 @@ objectclass ( 1.3.6.1.4.1.9999.4.2.2 NAME 'webminGroup' SUP top STRUCTURAL
 	DESC 'Webmin group account'
 	MUST ( cn $ webminDesc )
 	MAY ( webminAttr $ webminAcl $ webminModule ))
+
+
+attributetype ( 1.3.6.1.4.1.9999.4.1.4 NAME 'webminAclEntry'
+	DESC 'Webmin ACL entry in name=value format'
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{255} )
+
+objectclass ( 1.3.6.1.4.1.9999.4.2.3 NAME 'webminAcl'
+	DESC 'Webmin user or group module ACL'
+	MUST ( cn )
+	MAY ( webminAclEntry ))
 

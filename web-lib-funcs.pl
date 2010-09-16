@@ -3391,7 +3391,7 @@ my $userdb = &get_userdb_string();
 my $foundindb = 0;
 if ($userdb) {
 	# Look for this group in the user/group DB
-	my ($dbh, $proto) = &connect_userdb($userdb);
+	my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
 	ref($dbh) || &error(&text('egroupdbacl', $dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Find the group in the SQL DB
@@ -3417,8 +3417,35 @@ if ($userdb) {
 			}
 		}
 	elsif ($proto eq "ldap") {
-		# Fetch ACLs from LDAP
-		# XXX
+		# Find group in LDAP
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(cn='.$g.')',
+			scope => 'one');
+		if (!$rv || $rv->code) {
+			&error(&text('egroupdbacl',
+				     $rv ? $rv->error : "Unknown error"));
+			}
+		my ($group) = $rv->all_entries;
+
+		# Find ACL sub-object for the module
+		if ($group) {
+			my $rv = $dbh->search(
+				base => $group->dn(),
+				filter => '(cn='.$m.')',
+				scope => 'one');
+			if (!$rv || $rv->code) {
+				&error(&text('egroupdbacl',
+				     $rv ? $rv->error : "Unknown error"));
+				}
+			my ($acl) = $rv->all_entries;
+			if ($acl) {
+				foreach my $av ($acl->get_value('webminAcl')) {
+					my ($a, $v) = split(/=/, $av, 2);
+					$rv{$a} = $v;
+					}
+				}
+			}
 		}
 	&disconnect_userdb($userdb, $dbh);
 	}
