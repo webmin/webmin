@@ -134,7 +134,7 @@ if ($miniserv{'userdb'}) {
 		my $rv = $dbh->search(
 			base => $prefix,
 			filter => '(objectClass='.$args->{'userclass'}.')',
-			scope => 'one');
+			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error("Failed to search users : ".
 				($rv ? $rv->error : "Unknown error"));
@@ -234,7 +234,7 @@ if ($miniserv{'userdb'}) {
 		my $rv = $dbh->search(
 			base => $prefix,
 			filter => '(objectClass='.$args->{'groupclass'}.')',
-			scope => 'one');
+			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error("Failed to search groups : ".
 				($rv ? $rv->error : "Unknown error"));
@@ -795,7 +795,7 @@ if ($miniserv{'userdb'}) {
 			base => $prefix,
 			filter => '(&(cn='.$username.')(objectClass='.
 				  $args->{'userclass'}.'))',
-			scope => 'one');
+			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error("Failed to find user : ".
 			       ($rv ? $rv->error : "Unknown error"));
@@ -803,10 +803,28 @@ if ($miniserv{'userdb'}) {
 		my ($user) = $rv->all_entries;
 
 		if ($user) {
+			# Delete sub-objects
+			my $rv = $dbh->search(
+				base => $user->dn(),
+				filter => '(objectClass=*)',
+				scope => 'sub');
+			if (!$rv || $rv->code) {
+				&error("Failed to delete LDAP user : ".
+				       ($rv ? $rv->error : "Unknown error"));
+				}
+			foreach my $so ($rv->all_entries) {
+				next if ($so->dn() eq $user->dn());
+				my $drv = $dbh->delete($so->dn());
+				if ($drv->code) {
+					&error("Failed to delete LDAP ".
+					       "sub-object : ".$drv->error);
+					}
+				}
+
 			# Delete the user from LDAP
 			my $rv = $dbh->delete($user->dn());
 			if (!$rv || $rv->code) {
-				&error("Failed to delete user : ".
+				&error("Failed to delete LDAP user : ".
 				       ($rv ? $rv->error : "Unknown error"));
 				}
 			}
@@ -1082,7 +1100,7 @@ if ($miniserv{'userdb'}) {
 			base => $prefix,
 			filter => '(&(cn='.$groupname.')(objectClass='.
                                   $args->{'groupclass'}.'))',
-			scope => 'one');
+			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error("Failed to find group : ".
 			       ($rv ? $rv->error : "Unknown error"));
@@ -1090,10 +1108,28 @@ if ($miniserv{'userdb'}) {
 		my ($group) = $rv->all_entries;
 
 		if ($group) {
+			# Delete sub-objects
+			my $rv = $dbh->search(
+				base => $group->dn(),
+				filter => '(objectClass=*)',
+				scope => 'sub');
+			if (!$rv || $rv->code) {
+				&error("Failed to delete LDAP group : ".
+				       ($rv ? $rv->error : "Unknown error"));
+				}
+			foreach my $so ($rv->all_entries) {
+				next if ($so->dn() eq $group->dn());
+				my $drv = $dbh->delete($so->dn());
+				if ($drv->code) {
+					&error("Failed to delete LDAP ".
+					       "sub-object : ".$drv->error);
+					}
+				}
+
 			# Delete the group from LDAP
 			my $rv = $dbh->delete($group->dn());
 			if (!$rv || $rv->code) {
-				&error("Failed to delete group : ".
+				&error("Failed to delete LDAP group : ".
 				       ($rv ? $rv->error : "Unknown error"));
 				}
 			}

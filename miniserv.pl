@@ -4151,7 +4151,7 @@ if ($config{'userdb'}) {
 			base => $prefix,
 			filter => '(&(cn='.$username.')(objectClass='.
                                   $args->{'userclass'}.'))',
-			scope => 'one');
+			scope => 'sub');
 		if (!$rv || $rv->code) {
 			print STDERR "Failed to lookup user : ",
 				     ($rv ? $rv->error : "Unknown error"),"\n";
@@ -4249,7 +4249,25 @@ if ($config{'userdb'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Lookup in LDAP
-		# XXX
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(objectClass='.
+				  $args->{'userclass'}.')',
+			scope => 'sub',
+			attrs => [ 'cn', 'webminAttr' ]);
+		if ($rv && !$rv->code) {
+			foreach my $u ($rv->all_entries) {
+				my @attrs = $u->get_value('webminAttr');
+				foreach my $la (@attrs) {
+					my ($attr, $value) = split(/=/, $la, 2);
+					if ($attr eq "cert" &&
+					    ($value eq $peername ||
+					     $value eq $peername2)) {
+						return $u->get_value('cn');
+						}
+					}
+				}
+			}
 		}
 	}
 return undef;
@@ -4995,7 +5013,7 @@ if (!$uinfo->{'proto'}) {
 
 if ($config{'userdb'}) {
 	# Update user DB
-	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
+	my ($dbh, $proto, $prefix, $args) = &connect_userdb($config{'userdb'});
 	if (!$dbh) {
 		return -1;
 		}
@@ -5013,7 +5031,14 @@ if ($config{'userdb'}) {
 		$cmd->finish() if ($cmd);
 		}
 	elsif ($proto eq "ldap") {
-		# XXX update in LDAP
+		# Update LDAP object
+		my $rv = $dbh->modify($uinfo->{'id'},
+		      replace => { 'webminPass' => '!'.$uinfo->{'pass'} });
+		if (!$rv || $rv->code) {
+			print STDERR "Failed to lock password : ",
+				     ($rv ? $rv->error : "Unknown error"),"\n";
+			return -1;
+			}
 		}
 	&disconnect_userdb($config{'userdb'}, $dbh);
 	return 0;

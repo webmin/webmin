@@ -1740,12 +1740,12 @@ if (!%main::acl_hash_cache) {
 			}
 		elsif ($proto eq "ldap") {
 			# Find users in LDAP
-			# XXX limit attrs?
 			my $rv = $dbh->search(
 				base => $prefix,
 				filter => '(objectClass='.
 					  $args->{'userclass'}.')',
-				scope => 'one');
+				scope => 'sub',
+				attrs => [ 'cn', 'webminModule' ]);
 			if ($rv && !$rv->code) {
 				foreach my $u ($rv->all_entries) {
 					my $user = $u->get_value('cn');
@@ -3370,7 +3370,7 @@ elsif ($u ne '') {
 				base => $prefix,
 				filter => '(&(cn='.$u.')(objectClass='.
 					  $args->{'userclass'}.'))',
-				scope => 'one');
+				scope => 'sub');
 			if (!$rv || $rv->code) {
 				&error(&text('euserdbacl',
 				     $rv ? $rv->error : "Unknown error"));
@@ -3470,7 +3470,7 @@ if ($userdb) {
 			base => $prefix,
 			filter => '(&(cn='.$g.')(objectClass='.
                                   $args->{'groupclass'}.'))',
-			scope => 'one');
+			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error(&text('egroupdbacl',
 				     $rv ? $rv->error : "Unknown error"));
@@ -3587,7 +3587,7 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 			base => $prefix,
 			filter => '(&(cn='.$u.')(objectClass='.
                                   $args->{'userclass'}.'))',
-			scope => 'one');
+			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error(&text('euserdbacl',
 				     $rv ? $rv->error : "Unknown error"));
@@ -3725,7 +3725,7 @@ if ($userdb) {
 			base => $prefix,
 			filter => '(&(cn='.$g.')(objectClass='.
                                   $args->{'groupclass'}.'))',
-			scope => 'one');
+			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error(&text('egroupdbacl',
 				     $rv ? $rv->error : "Unknown error"));
@@ -4024,7 +4024,8 @@ $remote_user_proto = $ENV{"REMOTE_USER_PROTO"};
 %remote_user_attrs = ( );
 if ($remote_user_proto) {
 	my $userdb = &get_userdb_string();
-	my ($dbh, $proto) = $userdb ? &connect_userdb($userdb) : ( );
+	my ($dbh, $proto, $prefix, $args) =
+		$userdb ? &connect_userdb($userdb) : ( );
 	if (ref($dbh)) {
 		if ($proto eq "mysql" || $proto eq "postgresql") {
 			# Read attrs from SQL
@@ -4037,7 +4038,20 @@ if ($remote_user_proto) {
 				}
 			}
 		elsif ($proto eq "ldap") {
-			# XXX read attrs from LDAP
+			# Read attrs from LDAP
+			my $rv = $dbh->search(
+				base => $prefix,
+				filter => '(&(cn='.$base_remote_user.')'.
+					  '(objectClass='.
+					  $args->{'userclass'}.'))',
+				scope => 'sub');
+			my ($u) = $rv && !$rv->code ? $rv->all_entries : ( );
+			if ($u) {
+				foreach $la ($u->get_value('webminAttr')) {
+					my ($attr, $value) = split(/=/, $la, 2);
+					$remote_user_attrs{$attr} = $value;
+					}
+				}
 			}
 		&disconnect_userdb($userdb, $dbh);
 		}
