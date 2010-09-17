@@ -97,7 +97,7 @@ close(PWFILE);
 
 # If a user DB is enabled, get users from it too
 if ($miniserv{'userdb'}) {
-	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto, $prefix, $args) =&connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Fetch users with SQL
@@ -131,7 +131,29 @@ if ($miniserv{'userdb'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Find users with LDAP query
-		# XXX
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(objectClass='.$args->{'userclass'}.')',
+			scope => 'one');
+		if (!$rv || $rv->code) {
+			&error("Failed to search users : ".
+				($rv ? $rv->error : "Unknown error"));
+			}
+		foreach my $l ($rv->all_entries) {
+			my $u = { 'name' => $l->get_value('cn'),
+				  'pass' => $l->get_value('webminPass'),
+				  'proto' => $proto,
+				  'id' => $l->dn() };
+			foreach my $la ($l->get_value('webminAttr')) {
+				my ($attr, $value) = split(/=/, $la, 2);
+				if ($attr eq "olds" || $attr eq "ownmods") {
+					$value = [ split(/\s+/, $value) ];
+					}
+				$u->{$attr} = $value;
+				}
+			$u->{'modules'} = [ $l->get_value('webminModule') ];
+			push(@rv, $u);
+			}
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
@@ -227,6 +249,7 @@ if ($miniserv{'userdb'}) {
 				if ($attr eq "members" || $attr eq "ownmods") {
 					$value = [ split(/\s+/, $value) ];
 					}
+				$g->{$attr} = $value;
 				}
 			$g->{'modules'} = [ $l->get_value('webminModule') ];
 			push(@rv, $g);
@@ -279,7 +302,7 @@ my @mods = &list_modules();
 
 if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 	# Adding to user database
-	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto, $prefix, $args) =&connect_userdb($miniserv{'userdb'});
         &error("Failed to connect to user database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Add user with SQL
@@ -309,7 +332,33 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Add user to LDAP
-		# XXX
+		my $dn = "cn=".$user{'name'}.",".$prefix;
+		my @attrs = ( "objectClass", $args->{'userclass'},
+			      "cn", $user{'name'},
+			      "webminPass", $user{'pass'} );
+		my @webminattrs;
+		foreach my $attr (keys %user) {
+			next if ($attr eq "name" || $attr eq "pass" ||
+				 $attr eq "modules");
+			my $value = $user{$attr};
+			if ($attr eq "olds" || $attr eq "ownmods") {
+				$value = join(" ", @$value);
+				}
+			push(@webminattrs,
+			     defined($value) ? $attr."=".$value : $attr);
+			}
+		if (@webminattrs) {
+			push(@attrs, "webminAttr", \@webminattrs);
+			}
+		if (@{$user{'modules'}}) {
+			push(@attrs, "webminModule", $user{'modules'});
+			}
+		my $rv = $dbh->add($dn, attr => \@attrs);
+		if (!$rv || $rv->code) {
+			&error("Failed to add user to LDAP : ".
+			       ($rv ? $rv->error : "Unknown error"));
+			}
+
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	$user{'proto'} = $proto;
@@ -450,7 +499,40 @@ if ($user{'proto'}) {
 			}
 		}
 	elsif ($proto eq "ldap") {
-		# XXX update in ldap
+		# Rename in LDAP if needed
+		if ($user{'name'} ne $username) {
+			my $newdn = $user{'id'};
+			$newdn =~ s/^cn=\Q$username\E,/cn=$user{'name'},/;
+			my $rv = $dbh->moddn($user{'id'},
+					     newrdn => "cn=$user{'name'}");
+			if (!$rv || $rv->code) {
+				&error("Failed to rename user : ".
+				       ($rv ? $rv->error : "Unknown error"));
+				}
+			$user{'id'} = $newdn;
+			}
+
+		# Re-save all the attributes
+		my @attrs = ( "cn", $user{'name'},
+			      "webminPass", $user{'pass'} );
+		my @webminattrs;
+		foreach my $attr (keys %user) {
+			next if ($attr eq "name" || $attr eq "desc" ||
+				 $attr eq "modules");
+			my $value = $user{$attr};
+			if ($attr eq "olds" || $attr eq "ownmods") {
+				$value = join(" ", @$value);
+				}
+			push(@webminattrs,
+			     defined($value) ? $attr."=".$value : $attr);
+			}
+		push(@attrs, "webminAttr", \@webminattrs);
+		push(@attrs, "webminModule", $user{'modules'});
+		my $rv = $dbh->modify($user{'id'}, replace => { @attrs });
+		if (!$rv || $rv->code) {
+			&error("Failed to modify user : ".
+			       ($rv ? $rv->error : "Unknown error"));
+			}
 		}
 	}
 else {
@@ -671,7 +753,7 @@ if ($miniserv{'session'}) {
 
 if ($miniserv{'userdb'}) {
 	# Also delete from user database
-	my ($dbh, $proto) = &connect_userdb($miniserv{'userdb'});
+	my ($dbh, $proto, $prefix, $args) =&connect_userdb($miniserv{'userdb'});
 	&error("Failed to connect to user database : $dbh") if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Find the user with SQL query
@@ -709,7 +791,25 @@ if ($miniserv{'userdb'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Find user with LDAP query
-		# XXX
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(&(cn='.$username.')(objectClass='.
+				  $args->{'userclass'}.'))',
+			scope => 'one');
+		if (!$rv || $rv->code) {
+			&error("Failed to find user : ".
+			       ($rv ? $rv->error : "Unknown error"));
+			}
+		my ($user) = $rv->all_entries;
+
+		if ($user) {
+			# Delete the user from LDAP
+			my $rv = $dbh->delete($user->dn());
+			if (!$rv || $rv->code) {
+				&error("Failed to delete user : ".
+				       ($rv ? $rv->error : "Unknown error"));
+				}
+			}
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
@@ -980,7 +1080,8 @@ if ($miniserv{'userdb'}) {
 		# Find group with LDAP query
 		my $rv = $dbh->search(
 			base => $prefix,
-			filter => '(cn='.$groupname.')',
+			filter => '(&(cn='.$groupname.')(objectClass='.
+                                  $args->{'groupclass'}.'))',
 			scope => 'one');
 		if (!$rv || $rv->code) {
 			&error("Failed to find group : ".

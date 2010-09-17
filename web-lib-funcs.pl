@@ -1720,7 +1720,8 @@ if (!%main::acl_hash_cache) {
 
 	# Read from user DB
 	my $userdb = &get_userdb_string();
-	my ($dbh, $proto) = $userdb ? &connect_userdb($userdb) : ( );
+	my ($dbh, $proto, $prefix, $args) =
+		$userdb ? &connect_userdb($userdb) : ( );
 	if (ref($dbh)) {
 		if ($proto eq "mysql" || $proto eq "postgresql") {
 			# Select usernames and modules from SQL DB
@@ -1738,7 +1739,24 @@ if (!%main::acl_hash_cache) {
 			$cmd->finish() if ($cmd);
 			}
 		elsif ($proto eq "ldap") {
-			# XXX read from LDAP
+			# Find users in LDAP
+			# XXX limit attrs?
+			my $rv = $dbh->search(
+				base => $prefix,
+				filter => '(objectClass='.
+					  $args->{'userclass'}.')',
+				scope => 'one');
+			if ($rv && !$rv->code) {
+				foreach my $u ($rv->all_entries) {
+					my $user = $u->get_value('cn');
+					my @mods =$u->get_value('webminModule');
+					foreach my $m (@mods) {
+						$main::acl_hash_cache{$user,
+								      $m}++;
+						}
+					$main::acl_array_cache{$user} = \@mods;
+					}
+				}
 			}
 		&disconnect_userdb($userdb, $dbh);
 		}
@@ -3321,7 +3339,7 @@ elsif ($u ne '') {
 	if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 		# Look for this user in the user/group DB, if one is defined
 		# and if the user might be in the DB
-		my ($dbh, $proto) = &connect_userdb($userdb);
+		my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
 		ref($dbh) || &error(&text('euserdbacl', $dbh));
 		if ($proto eq "mysql" || $proto eq "postgresql") {
 			# Find the user in the SQL DB
@@ -3347,8 +3365,38 @@ elsif ($u ne '') {
 				}
 			}
 		elsif ($proto eq "ldap") {
-			# Fetch ACLs from LDAP
-			# XXX
+			# Find user in LDAP
+			my $rv = $dbh->search(
+				base => $prefix,
+				filter => '(&(cn='.$u.')(objectClass='.
+					  $args->{'userclass'}.'))',
+				scope => 'one');
+			if (!$rv || $rv->code) {
+				&error(&text('euserdbacl',
+				     $rv ? $rv->error : "Unknown error"));
+				}
+			my ($user) = $rv->all_entries;
+
+			# Find ACL sub-object for the module
+			my $ldapm = $m || "global";
+			if ($user) {
+				my $rv = $dbh->search(
+					base => $user->dn(),
+					filter => '(cn='.$ldapm.')',
+					scope => 'one');
+				if (!$rv || $rv->code) {
+					&error(&text('euserdbacl',
+					   $rv ? $rv->error : "Unknown error"));
+					}
+				my ($acl) = $rv->all_entries;
+				if ($acl) {
+					foreach my $av ($acl->get_value(
+								'webminAcl')) {
+						my ($a, $v) = split(/=/, $av,2);
+						$rv{$a} = $v;
+						}
+					}
+				}
 			}
 		&disconnect_userdb($userdb, $dbh);
 		}
@@ -3420,7 +3468,8 @@ if ($userdb) {
 		# Find group in LDAP
 		my $rv = $dbh->search(
 			base => $prefix,
-			filter => '(cn='.$g.')',
+			filter => '(&(cn='.$g.')(objectClass='.
+                                  $args->{'groupclass'}.'))',
 			scope => 'one');
 		if (!$rv || $rv->code) {
 			&error(&text('egroupdbacl',
@@ -3429,10 +3478,11 @@ if ($userdb) {
 		my ($group) = $rv->all_entries;
 
 		# Find ACL sub-object for the module
+		my $ldapm = $m;
 		if ($group) {
 			my $rv = $dbh->search(
 				base => $group->dn(),
-				filter => '(cn='.$m.')',
+				filter => '(cn='.$ldapm.')',
 				scope => 'one');
 			if (!$rv || $rv->code) {
 				&error(&text('egroupdbacl',
@@ -3497,7 +3547,7 @@ my $userdb = &get_userdb_string();
 my $foundindb = 0;
 if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 	# Look for this user in the user/group DB
-	my ($dbh, $proto) = &connect_userdb($userdb);
+	my ($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
 	ref($dbh) || &error(&text('euserdbacl', $dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Find the user in the SQL DB
@@ -3532,8 +3582,53 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 			}
 		}
 	elsif ($proto eq "ldap") {
-		# Update ACLs in LDAP
-		# XXX
+		# Find the user in LDAP
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(&(cn='.$u.')(objectClass='.
+                                  $args->{'userclass'}.'))',
+			scope => 'one');
+		if (!$rv || $rv->code) {
+			&error(&text('euserdbacl',
+				     $rv ? $rv->error : "Unknown error"));
+			}
+		my ($user) = $rv->all_entries;
+
+		if ($user) {
+			# Find the ACL sub-object for the module
+			my $ldapm = $m || "global";
+			my $rv = $dbh->search(
+				base => $user->dn(),
+				filter => '(cn='.$ldapm.')',
+				scope => 'one');
+			if (!$rv || $rv->code) {
+				&error(&text('euserdbacl',
+				     $rv ? $rv->error : "Unknown error"));
+				}
+			my ($acl) = $rv->all_entries;
+
+			my @attrs;
+			foreach my $a (keys %{$_[0]}) {
+				push(@attrs, "webminAclEntry",
+					     $a."=".$_[0]->{$a});
+				}
+			if ($acl) {
+				# Update attributes
+				$rv = $dbh->modify($acl->dn(),
+						   replace => { @attrs });
+				}
+			else {
+				# Add a sub-object
+				push(@attrs, "cn", $ldapm,
+					     "objectClass", "webminAcl");
+				$rv = $dbh->add("cn=".$ldapm.",".$user->dn(),
+						attr => \@attrs);
+				}
+			if (!$rv || $rv->code) {
+				&error(&text('euserdbacl2',
+				     $rv ? $rv->error : "Unknown error"));
+				}
+			}
 		}
 	&disconnect_userdb($userdb, $dbh);
 	}
@@ -3628,7 +3723,8 @@ if ($userdb) {
 		# Find the group in LDAP
 		my $rv = $dbh->search(
 			base => $prefix,
-			filter => '(cn='.$g.')',
+			filter => '(&(cn='.$g.')(objectClass='.
+                                  $args->{'groupclass'}.'))',
 			scope => 'one');
 		if (!$rv || $rv->code) {
 			&error(&text('egroupdbacl',
@@ -3636,11 +3732,12 @@ if ($userdb) {
 			}
 		my ($group) = $rv->all_entries;
 
+		my $ldapm = $m;
 		if ($group) {
 			# Find the ACL sub-object for the module
 			my $rv = $dbh->search(
 				base => $group->dn(),
-				filter => '(cn='.$m.')',
+				filter => '(cn='.$ldapm.')',
 				scope => 'one');
 			if (!$rv || $rv->code) {
 				&error(&text('egroupdbacl',
@@ -3660,9 +3757,9 @@ if ($userdb) {
 				}
 			else {
 				# Add a sub-object
-				push(@attrs, "cn", $m,
+				push(@attrs, "cn", $ldapm,
 					     "objectClass", "webminAcl");
-				$rv = $dbh->add("cn=".$m.",".$group->dn(),
+				$rv = $dbh->add("cn=".$ldapm.",".$group->dn(),
 						attr => \@attrs);
 				}
 			if (!$rv || $rv->code) {

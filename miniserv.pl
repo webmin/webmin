@@ -4099,15 +4099,16 @@ if ($config{'userdb'}) {
 		return $get_user_details_cache{$username};
 		}
 	print DEBUG "get_user_details: Connecting to user database\n";
-	my ($dbh, $proto) = &connect_userdb($config{'userdb'});
+	my ($dbh, $proto, $prefix, $args) = &connect_userdb($config{'userdb'});
 	my $user;
+	my %attrs;
 	if (!ref($dbh)) {
 		print DEBUG "get_user_details: Failed : $dbh\n";
 		print STDERR "Failed to connect to user database : $dbh\n";
 		}
 	elsif ($proto eq "mysql" || $proto eq "postgresql") {
 		# Fetch user ID and password with SQL
-		print DEBUG "get_user_details: Looking for $username\n";
+		print DEBUG "get_user_details: Looking for $username in SQL\n";
 		my $cmd = $dbh->prepare(
 			"select id,pass from webmin_user where name = ?");
 		if (!$cmd || !$cmd->execute($username)) {
@@ -4138,13 +4139,48 @@ if ($config{'userdb'}) {
 			  'id' => $id,
 			  'pass' => $pass,
 			  'proto' => $proto };
-		my %attrs;
 		while(my ($attr, $value) = $cmd->fetchrow()) {
 			$attrs{$attr} = $value;
 			}
+		$cmd->finish();
+		}
+	elsif ($proto eq "ldap") {
+		# Fetch user DN with LDAP
+		print DEBUG "get_user_details: Looking for $username in LDAP\n";
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(&(cn='.$username.')(objectClass='.
+                                  $args->{'userclass'}.'))',
+			scope => 'one');
+		if (!$rv || $rv->code) {
+			print STDERR "Failed to lookup user : ",
+				     ($rv ? $rv->error : "Unknown error"),"\n";
+			return undef;
+			}
+		my ($u) = $rv->all_entries();
+		if (!$u) {
+			&disconnect_userdb($config{'userdb'}, $dbh);
+                        $get_user_details_cache{$username} = undef;
+			print DEBUG "get_user_details: User not found\n";
+                        return undef;
+			}
+
+		# Extract attributes
+		$user = { 'name' => $username,
+			  'id' => $u->dn(),
+			  'pass' => $u->get_value('pass'),
+			  'proto' => $proto };
+		my %attrs;
+		foreach my $la ($u->get_value('webminAttr')) {
+			my ($attr, $value) = split(/=/, $la, 2);
+			$attrs{$attr} = $value;
+			}
+		}
+
+	# Convert DB attributes into user object fields
+	if ($user) {
 		print DEBUG "get_user_details: got ",scalar(keys %attrs),
 			    " attributes\n";
-		$cmd->finish();
 		$user->{'certs'} = $attrs{'cert'};
 		if ($attrs{'allow'}) {
 			$user->{'allow'} = $config{'alwaysresolve'} ?
@@ -4168,10 +4204,6 @@ if ($config{'userdb'}) {
 		$user->{'nochange'} = $attrs{'nochange'};
 		$user->{'temppass'} = $attrs{'temppass'};
 		$user->{'preroot'} = $attrs{'theme'};
-		}
-	elsif ($proto eq "ldap") {
-		# Fetch with LDAP
-		# XXX
 		}
 	&disconnect_userdb($config{'userdb'}, $dbh);
 	$get_user_details_cache{$user->{'name'}} = $user;
@@ -4242,7 +4274,7 @@ if ($proto eq "mysql") {
 	my $dbh = $drh->connect($cstr, $user, $pass, { });
 	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
 	print DEBUG "connect_userdb: Connected OK\n";
-	return wantarray ? ($dbh, $proto) : $dbh;
+	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
 	}
 elsif ($proto eq "postgresql") {
 	# Connect to PostgreSQL with DBI
@@ -4255,7 +4287,7 @@ elsif ($proto eq "postgresql") {
 	my $dbh = $drh->connect($cstr, $user, $pass);
 	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
 	print DEBUG "connect_userdb: Connected OK\n";
-	return wantarray ? ($dbh, $proto) : $dbh;
+	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
 	}
 elsif ($proto eq "ldap") {
 	# Connect with perl LDAP module
@@ -4290,7 +4322,7 @@ elsif ($proto eq "ldap") {
 		return &text('sql_eldaplogin', $user,
 			     $mesg ? $mesg->error : "Unknown error");
 		}
-	return wantarray ? ($ldap, $proto) : $ldap;
+	return wantarray ? ($ldap, $proto, $prefix, $args) : $ldap;
 	}
 else {
 	return "Unknown protocol $proto";
