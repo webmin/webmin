@@ -427,6 +427,7 @@ sql_title3=Create Missing DN
 sql_dnerr=User and group database settings are valid, but the LDAP DN needed by Webmin is missing : $1
 sql_dnerr2=Click the <b>Create DN</b> button below to have it create automatically, or add it to your LDAP server manually.
 sql_makedn=Create DN
+sql_schema=Download LDAP Schema
 
 make_title=Create User and Group Tables
 make_err=Failed to create user and group tables
@@ -442,3 +443,6 @@ makedn_failed=.. creation failed : $1
 makedn_done=.. done
 makedn_still=Some problems were found even after DN creation : $1
 
+schema_title=Download LDAP Schema
+schema_desc=Before Webmin can use an LDAP server to store users and groups it must be configured to use the schema below. This can typically be done by saving the schema definition in <tt>/etc/ldap/schema</tt> or <tt>/etc/openldap/schema</tt> as <tt>webmin.schema</tt>, then configuring the server to load that schema file.
+schema_download=Download schema file : <a href=$1>$1</a>

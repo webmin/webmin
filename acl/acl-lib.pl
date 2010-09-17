@@ -18,8 +18,6 @@ do 'md5-lib.pl';
 %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
-# XXX LDAP support
-#	XXX schema test / creation?
 # XXX CHANGELOG / docs
 # XXX test with Virtualmin
 
