@@ -2067,6 +2067,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		}
 	print DEBUG "REMOTE_USER = ",$ENV{"REMOTE_USER"},"\n";
 	print DEBUG "BASE_REMOTE_USER = ",$ENV{"BASE_REMOTE_USER"},"\n";
+	print DEBUG "proto=$uinfo->{'proto'} id=$uinfo->{'id'}\n" if ($uinfo);
 	$ENV{"SSL_USER"} = $peername if ($validated == 2);
 	$ENV{"ANONYMOUS_USER"} = "1" if ($validated == 3 || $validated == 4);
 	$ENV{"DOCUMENT_ROOT"} = $roots[0];
@@ -4166,11 +4167,11 @@ if ($config{'userdb'}) {
 			}
 
 		# Extract attributes
+		my $pass = $u->get_value('pass');
 		$user = { 'name' => $username,
 			  'id' => $u->dn(),
-			  'pass' => $u->get_value('pass'),
+			  'pass' => $pass,
 			  'proto' => $proto };
-		my %attrs;
 		foreach my $la ($u->get_value('webminAttr')) {
 			my ($attr, $value) = split(/=/, $la, 2);
 			$attrs{$attr} = $value;

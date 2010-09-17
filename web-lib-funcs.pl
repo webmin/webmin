@@ -3391,7 +3391,7 @@ elsif ($u ne '') {
 				my ($acl) = $rv->all_entries;
 				if ($acl) {
 					foreach my $av ($acl->get_value(
-								'webminAcl')) {
+							'webminAclEntry')) {
 						my ($a, $v) = split(/=/, $av,2);
 						$rv{$a} = $v;
 						}
@@ -3478,7 +3478,7 @@ if ($userdb) {
 		my ($group) = $rv->all_entries;
 
 		# Find ACL sub-object for the module
-		my $ldapm = $m;
+		my $ldapm = $m || "global";
 		if ($group) {
 			my $rv = $dbh->search(
 				base => $group->dn(),
@@ -3490,7 +3490,8 @@ if ($userdb) {
 				}
 			my ($acl) = $rv->all_entries;
 			if ($acl) {
-				foreach my $av ($acl->get_value('webminAcl')) {
+				foreach my $av ($acl->get_value(
+						'webminAclEntry')) {
 					my ($a, $v) = split(/=/, $av, 2);
 					$rv{$a} = $v;
 					}
@@ -3596,6 +3597,7 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 
 		if ($user) {
 			# Find the ACL sub-object for the module
+			$foundindb = 1;
 			my $ldapm = $m || "global";
 			my $rv = $dbh->search(
 				base => $user->dn(),
@@ -3607,20 +3609,20 @@ if ($userdb && ($u ne $base_remote_user || $remote_user_proto)) {
 				}
 			my ($acl) = $rv->all_entries;
 
-			my @attrs;
+			my @al;
 			foreach my $a (keys %{$_[0]}) {
-				push(@attrs, "webminAclEntry",
-					     $a."=".$_[0]->{$a});
+				push(@al, $a."=".$_[0]->{$a});
 				}
 			if ($acl) {
 				# Update attributes
 				$rv = $dbh->modify($acl->dn(),
-						   replace => { @attrs });
+				  replace => { "webminAclEntry", \@al });
 				}
 			else {
 				# Add a sub-object
-				push(@attrs, "cn", $ldapm,
-					     "objectClass", "webminAcl");
+				my @attrs = ( "cn", $ldapm,
+					      "objectClass", "webminAcl",
+					      "webminAclEntry", \@al );
 				$rv = $dbh->add("cn=".$ldapm.",".$user->dn(),
 						attr => \@attrs);
 				}
@@ -3732,9 +3734,10 @@ if ($userdb) {
 			}
 		my ($group) = $rv->all_entries;
 
-		my $ldapm = $m;
+		my $ldapm = $m || "global";
 		if ($group) {
 			# Find the ACL sub-object for the module
+			$foundindb = 1;
 			my $rv = $dbh->search(
 				base => $group->dn(),
 				filter => '(cn='.$ldapm.')',
@@ -3745,20 +3748,20 @@ if ($userdb) {
 				}
 			my ($acl) = $rv->all_entries;
 
-			my @attrs;
+			my @al;
 			foreach my $a (keys %{$_[0]}) {
-				push(@attrs, "webminAclEntry",
-					     $a."=".$_[0]->{$a});
+				push(@al, $a."=".$_[0]->{$a});
 				}
 			if ($acl) {
 				# Update attributes
 				$rv = $dbh->modify($acl->dn(),
-						   replace => { @attrs });
+			   		replace => { "webminAclEntry", \@al });
 				}
 			else {
 				# Add a sub-object
-				push(@attrs, "cn", $ldapm,
-					     "objectClass", "webminAcl");
+				my @attrs = ( "cn", $ldapm,
+					      "objectClass", "webminAcl",
+					      "webminAclEntry", \@al );
 				$rv = $dbh->add("cn=".$ldapm.",".$group->dn(),
 						attr => \@attrs);
 				}

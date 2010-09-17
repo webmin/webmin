@@ -1348,7 +1348,7 @@ my ($dbh, $proto, $fromid, $toid);
 # Check if the source user/group is in a DB
 my $userdb = &get_userdb_string();
 if ($userdb) {
-	($dbh, $proto) = &connect_userdb($userdb);
+	($dbh, $proto, $prefix, $args) = &connect_userdb($userdb);
 	&error($dbh) if (!ref($dbh));
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Search in SQL DB
@@ -1365,26 +1365,41 @@ if ($userdb) {
 		}
 	elsif ($proto eq "ldap") {
 		# Search in LDAP
-		# XXX
+		my $fromclass = $fromtype eq "user" ? "userclass"
+						    : "groupclass";
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(&(cn='.$from.')(objectClass='.
+				  $fromclass.'))',
+			scope => 'sub');
+		$rv->code && &error($rv->error);
+		my ($fromobj) = $rv->all_entries;
+		$fromid = $fromobj ? $fromobj->dn() : undef;
+		my $toclass = $totype eq "user" ? "userclass"
+						: "groupclass";
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => '(&(cn='.$to.')(objectClass='.
+				  $toclass.'))',
+			scope => 'sub');
+		$rv->code && &error($rv->error);
+		my ($toobj) = $rv->all_entries;
+		$toid = $toobj ? $toobj->dn() : undef;
 		}
 	}
 
-if (defined($fromid) && defined($toid)) {
+if (defined($fromid) && defined($toid) &&
+    ($proto eq "mysql" || $proto eq "postgresql")) {
 	# Copy from database to database
-	if ($proto eq "mysql" || $proto eq "postgresql") {
-		my $delcmd = $dbh->prepare("delete from webmin_${totype}_acl where id = ? and module = ?");
-		my $cmd = $dbh->prepare("insert into webmin_${totype}_acl select ?,module,attr,value from webmin_${fromtype}_acl where id = ? and module = ?");
-		foreach my $m (@$mods) {
-			$delcmd && $delcmd->execute($toid, $m) ||
-				&error("Failed to clear ACLs : ".$dbh->errstr);
-			$delcmd->finish();
-			$cmd && $cmd->execute($toid, $fromid, $m) ||
-				&error("Failed to copy ACLs : ".$dbh->errstr);
-			$cmd->finish();
-			}
-		}
-	elsif ($proto eq "ldap") {
-		# XXX
+	my $delcmd = $dbh->prepare("delete from webmin_${totype}_acl where id = ? and module = ?");
+	my $cmd = $dbh->prepare("insert into webmin_${totype}_acl select ?,module,attr,value from webmin_${fromtype}_acl where id = ? and module = ?");
+	foreach my $m (@$mods) {
+		$delcmd && $delcmd->execute($toid, $m) ||
+			&error("Failed to clear ACLs : ".$dbh->errstr);
+		$delcmd->finish();
+		$cmd && $cmd->execute($toid, $fromid, $m) ||
+			&error("Failed to copy ACLs : ".$dbh->errstr);
+		$cmd->finish();
 		}
 	}
 elsif (!defined($fromid) && !defined($toid)) {
