@@ -18,9 +18,6 @@ do 'md5-lib.pl';
 %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
-# XXX CHANGELOG / docs
-# XXX test with Virtualmin
-
 =head2 list_users
 
 Returns a list of hashes containing Webmin user details. Useful keys include :
@@ -277,7 +274,7 @@ each of which is a hash reference in the same format as their module.info files.
 =cut
 sub list_module_infos
 {
-local @mods = grep { &check_os_support($_) } &get_all_module_infos();
+my @mods = grep { &check_os_support($_) } &get_all_module_infos();
 return sort { $a->{'desc'} cmp $b->{'desc'} } @mods;
 }
 
@@ -1055,7 +1052,7 @@ my %miniserv;
 
 # Delete from local files
 &lock_file("$config_directory/webmin.groups");
-local $lref = &read_file_lines("$config_directory/webmin.groups");
+my $lref = &read_file_lines("$config_directory/webmin.groups");
 @$lref = grep { !/^([^:]+):/ || $1 ne $groupname } @$lref;
 &flush_file_lines();
 &unlock_file("$config_directory/webmin.groups");
@@ -1165,8 +1162,7 @@ Internal function to generate an ACL file line.
 =cut
 sub acl_line
 {
-local(%user);
-%user = %{$_[0]};
+my %user = %{$_[0]};
 return "$user{'name'}: ".join(' ', @{$user{'modules'}})."\n";
 }
 
@@ -1181,11 +1177,10 @@ return 1 if ($access{'users'} eq '*');
 if ($access{'users'} eq '~') {
 	return $base_remote_user eq $_[0];
 	}
-local $u;
-local $glist = $_[1] ? $_[1] : [ &list_groups() ];
-foreach $u (split(/\s+/, $access{'users'})) {
+my $glist = $_[1] ? $_[1] : [ &list_groups() ];
+foreach my $u (split(/\s+/, $access{'users'})) {
 	if ($u =~ /^_(\S+)$/) {
-		foreach $g (@$glist) {
+		foreach my $g (@$glist) {
 			return 1 if ($g->{'name'} eq $1 &&
 				     &indexof($_[0], @{$g->{'members'}}) >= 0);
 			}
@@ -1206,9 +1201,9 @@ Opens the session database, and ties it to the sessiondb hash. Parameters are :
 =cut
 sub open_session_db
 {
-local $sfile = $_[0]->{'sessiondb'} ? $_[0]->{'sessiondb'} :
-	       $_[0]->{'pidfile'} =~ /^(.*)\/[^\/]+$/ ? "$1/sessiondb"
-						      : return;
+my $sfile = $_[0]->{'sessiondb'} ? $_[0]->{'sessiondb'} :
+	    $_[0]->{'pidfile'} =~ /^(.*)\/[^\/]+$/ ? "$1/sessiondb"
+						     : return;
 eval "use SDBM_File";
 dbmopen(%sessiondb, $sfile, 0700);
 eval { $sessiondb{'1111111111'} = 'foo bar' };
@@ -1235,7 +1230,7 @@ sub delete_session_id
 {
 return 1 if (&is_readonly_mode());
 &open_session_db($_[0]);
-local $ex = exists($sessiondb{$_[1]});
+my $ex = exists($sessiondb{$_[1]});
 delete($sessiondb{$_[1]});
 dbmclose(%sessiondb);
 return $ex;
@@ -1303,11 +1298,10 @@ are :
 =cut
 sub update_members
 {
-local $m;
-foreach $m (@{$_[3]}) {
+foreach my $m (@{$_[3]}) {
 	if ($m !~ /^\@(.*)$/) {
 		# Member is a user
-		local ($u) = grep { $_->{'name'} eq $m } @{$_[0]};
+		my ($u) = grep { $_->{'name'} eq $m } @{$_[0]};
 		if ($u) {
 			$u->{'modules'} = [ @{$_[2]}, @{$u->{'ownmods'}} ];
 			&modify_user($u->{'name'}, $u);
@@ -1315,8 +1309,8 @@ foreach $m (@{$_[3]}) {
 		}
 	else {
 		# Member is a group
-		local $gname = substr($m, 1);
-		local ($g) = grep { $_->{'name'} eq $gname } @{$_[1]};
+		my $gname = substr($m, 1);
+		my ($g) = grep { $_->{'name'} eq $gname } @{$_[1]};
 		if ($g) {
 			$g->{'modules'} = [ @{$_[2]}, @{$g->{'ownmods'}} ];
 			&modify_group($g->{'name'}, $g);
@@ -1561,7 +1555,7 @@ is not given, a salt will be selected randomly.
 =cut
 sub encrypt_password
 {
-local ($pass, $salt) = @_;
+my ($pass, $salt) = @_;
 if ($gconfig{'md5pass'}) {
 	# Use MD5 encryption
 	$salt ||= '$1$'.substr(time(), -8).'$xxxxxxxxxxxxxxxxxxxxxx';
@@ -1583,8 +1577,8 @@ authenticate as, as array references.
 =cut
 sub get_unixauth
 {
-local @rv;
-local @ua = split(/\s+/, $_[0]->{'unixauth'});
+my @rv;
+my @ua = split(/\s+/, $_[0]->{'unixauth'});
 foreach my $ua (@ua) {
 	if ($ua =~ /^(\S+)=(\S+)$/) {
 		push(@rv, [ $1, $2 ]);
@@ -1604,7 +1598,7 @@ returned by get_unixauth.
 =cut
 sub save_unixauth
 {
-local @ua;
+my @ua;
 foreach my $ua (@{$_[1]}) {
 	if ($ua->[0] ne "*") {
 		push(@ua, "$ua->[0]=$ua->[1]");
@@ -1623,7 +1617,7 @@ Removes the specified user from all groups.
 =cut
 sub delete_from_groups
 {
-local ($user) = @_;
+my ($user) = @_;
 foreach my $g (&list_groups()) {
 	local @mems = @{$g->{'members'}};
 	local $i = &indexof($user, @mems);
@@ -1643,11 +1637,11 @@ an error message.
 =cut
 sub check_password_restrictions
 {
-local ($name, $pass) = @_;
-local %miniserv;
+my ($name, $pass) = @_;
+my %miniserv;
 &get_miniserv_config(\%miniserv);
-local ($user) = grep { $_->{'name'} eq $name } &list_users();
-local $minsize = $user ? $user->{'minsize'} : undef;
+my ($user) = grep { $_->{'name'} eq $name } &list_users();
+my $minsize = $user ? $user->{'minsize'} : undef;
 $minsize ||= $miniserv{'pass_minsize'};
 if (length($pass) < $minsize) {
 	return &text('cpass_minsize', $minsize);
@@ -1711,8 +1705,8 @@ Returns an MD5 or Unix-crypted session ID.
 =cut
 sub hash_session_id
 {
-local ($sid) = @_;
-local $use_md5 = &md5_perl_module();
+my ($sid) = @_;
+my $use_md5 = &md5_perl_module();
 if (!$hash_session_id_cache{$sid}) {
         if ($use_md5) {
                 # Take MD5 hash
@@ -1733,27 +1727,27 @@ Returns a string encrypted in MD5 format.
 =cut
 sub hash_md5_session
 {
-local $passwd = $_[0];
-local $use_md5 = &md5_perl_module();
+my $passwd = $_[0];
+my $use_md5 = &md5_perl_module();
 
 # Add the password
-local $ctx = eval "new $use_md5";
+my $ctx = eval "new $use_md5";
 $ctx->add($passwd);
 
 # Add some more stuff from the hash of the password and salt
-local $ctx1 = eval "new $use_md5";
+my $ctx1 = eval "new $use_md5";
 $ctx1->add($passwd);
 $ctx1->add($passwd);
-local $final = $ctx1->digest();
-for($pl=length($passwd); $pl>0; $pl-=16) {
+my $final = $ctx1->digest();
+for(my $pl=length($passwd); $pl>0; $pl-=16) {
 	$ctx->add($pl > 16 ? $final : substr($final, 0, $pl));
 	}
 
 # This piece of code seems rather pointless, but it's in the C code that
 # does MD5 in PAM so it has to go in!
-local $j = 0;
-local ($i, $l);
-for($i=length($passwd); $i; $i >>= 1) {
+my $j = 0;
+my ($i, $l);
+for(my $i=length($passwd); $i; $i >>= 1) {
 	if ($i & 1) {
 		$ctx->add("\0");
 		}
@@ -1764,8 +1758,8 @@ for($i=length($passwd); $i; $i >>= 1) {
 $final = $ctx->digest();
 
 # Convert the 16-byte final string into a readable form
-local $rv;
-local @final = map { ord($_) } split(//, $final);
+my $rv;
+my @final = map { ord($_) } split(//, $final);
 $l = ($final[ 0]<<16) + ($final[ 6]<<8) + $final[12];
 $rv .= &to64($l, 4);
 $l = ($final[ 1]<<16) + ($final[ 7]<<8) + $final[13];
@@ -1809,8 +1803,8 @@ has already been called.
 =cut
 sub session_db_key
 {
-local ($sid) = @_;
-local $hash = &hash_session_id($sid);
+my ($sid) = @_;
+my $hash = &hash_session_id($sid);
 return $sessiondb{$hash} ? $hash : $sid;
 }
 
@@ -1823,16 +1817,16 @@ created and granted access to the module.
 =cut
 sub setup_anonymous_access
 {
-local ($path, $mod) = @_;
+my ($path, $mod) = @_;
 
 # Find out what users and paths we grant access to currently
 my %miniserv;
 &get_miniserv_config(\%miniserv);
-local @anon = split(/\s+/, $miniserv{'anonymous'});
-local $found = 0;
-local $user;
+my @anon = split(/\s+/, $miniserv{'anonymous'});
+my $found = 0;
+my $user;
 foreach my $a (@anon) {
-        local ($p, $u) = split(/=/, $a);
+        my ($p, $u) = split(/=/, $a);
 	$found++ if ($p eq $path);
 	$user = $u;
 	}
