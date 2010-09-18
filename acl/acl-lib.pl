@@ -327,6 +327,8 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 					$dbh->errstr);
 			$cmd->finish();
 			}
+		$_[0]->{'id'} = $id;
+		$_[0]->{'proto'} = $proto;
 		}
 	elsif ($proto eq "ldap") {
 		# Add user to LDAP
@@ -356,7 +358,8 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 			&error("Failed to add user to LDAP : ".
 			       ($rv ? $rv->error : "Unknown error"));
 			}
-
+		$_[0]->{'id'} = $dn;
+		$_[0]->{'proto'} = 'ldap';
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	$user{'proto'} = $proto;
@@ -879,6 +882,8 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 					$dbh->errstr);
 			$cmd->finish();
 			}
+		$_[0]->{'id'} = $id;
+		$_[0]->{'proto'} = $proto;
 		}
 	elsif ($proto eq "ldap") {
 		# Add group to LDAP
@@ -907,6 +912,8 @@ if ($miniserv{'userdb'} && !$miniserv{'userdb_addto'}) {
 			&error("Failed to add group to LDAP : ".
 			       ($rv ? $rv->error : "Unknown error"));
 			}
+		$_[0]->{'id'} = $dn;
+		$_[0]->{'proto'} = 'ldap';
 		}
 	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	$group{'proto'} = $proto;

@@ -9187,7 +9187,6 @@ if ($proto eq "mysql") {
 	$cstr .= ";port=$port" if ($port);
 	my $dbh = $drh->connect($cstr, $user, $pass, { });
 	$dbh || return &text('sql_emysqlconnect', $drh->errstr);
-	$dbh->{'AutoCommit'} = 1;
 	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
 	}
 elsif ($proto eq "postgresql") {
@@ -9199,7 +9198,6 @@ elsif ($proto eq "postgresql") {
 	$cstr .= ";port=$port" if ($port);
 	my $dbh = $drh->connect($cstr, $user, $pass);
 	$dbh || return &text('sql_epostgresqlconnect', $drh->errstr);
-	$dbh->{'AutoCommit'} = 1;
 	return wantarray ? ($dbh, $proto, $prefix, $args) : $dbh;
 	}
 elsif ($proto eq "ldap") {
