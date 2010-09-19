@@ -9250,7 +9250,9 @@ sub disconnect_userdb
 my ($str, $h) = @_;
 if ($str =~ /^(mysql|postgresql):/) {
 	# DBI disconnnect
-	$h->commit();
+	if (!$h->{'AutoCommit'}) {
+		$h->commit();
+		}
 	$h->disconnect();
 	}
 elsif ($str =~ /^ldap:/) {
