@@ -102,8 +102,7 @@ else {
 			}
 
 		# Store group membership
-		@glist = &list_groups();
-		($group) = grep { $_->{'name'} eq $in{'group'} } @glist;
+		$newgroup = &get_group($in{'group'});
 		if ($in{'group'} ne ($oldgroup ? $oldgroup->{'name'} : '')) {
 			# Group has changed - update the member lists
 			if ($oldgroup) {
@@ -113,13 +112,13 @@ else {
 					  @{$oldgroup->{'members'}} ];
 				&modify_group($oldgroup->{'name'}, $oldgroup);
 				}
-			if ($group) {
+			if ($newgroup) {
 				# Put into new
-				push(@{$group->{'members'}}, $in{'name'});
-				&modify_group($in{'group'}, $group);
+				push(@{$newgroup->{'members'}}, $in{'name'});
+				&modify_group($in{'group'}, $newgroup);
 				}
 			}
-		elsif ($in{'old'} ne $in{'name'} && $oldgroup && $group) {
+		elsif ($in{'old'} ne $in{'name'} && $oldgroup && $newgroup) {
 			# Name has changed - rename in group
 			local $idx = &indexof(
 				$in{'old'}, @{$oldgroup->{'members'}});
@@ -147,7 +146,7 @@ else {
 		}
 	if ($base_remote_user eq $in{'old'} &&
 	    &indexof("acl", @mods) == -1 &&
-	    (!$group || &indexof("acl", @{$group->{'modules'}}) == -1)) {
+	    (!$newgroup || &indexof("acl", @{$newgroup->{'modules'}}) == -1)) {
 		&error($text{'save_edeny'});
 		}
 
@@ -162,20 +161,20 @@ else {
 		&copy_acl_files($me->{'name'}, $in{'name'}, $me->{'modules'});
 		}
 
-	if ($group) {
+	if ($newgroup) {
 		# Add modules from group to list
 		local @ownmods;
 		foreach $m (@mods) {
 			push(@ownmods, $m)
-				if (&indexof($m, @{$group->{'modules'}}) < 0);
+				if (&indexof($m, @{$newgroup->{'modules'}}) < 0);
 			}
-		@mods = &unique(@mods, @{$group->{'modules'}});
+		@mods = &unique(@mods, @{$newgroup->{'modules'}});
 		$user{'ownmods'} = \@ownmods;
 
 		# Copy ACL files for group
 		local $name = $in{'old'} ? $in{'old'} : $in{'name'};
 		&copy_group_user_acl_files($in{'group'}, $name,
-				      [ @{$group->{'modules'}}, "" ]);
+				      [ @{$newgroup->{'modules'}}, "" ]);
 		}
 	$user{'modules'} = \@mods;
 	delete($user{'skill'});
@@ -348,7 +347,7 @@ else {
 		}
 	}
 
-if ($in{'old'} && $in{'acl_security_form'} && !$group) {
+if ($in{'old'} && $in{'acl_security_form'} && !$newgroup) {
 	# Update user's global ACL
 	&foreign_require("", "acl_security.pl");
 	&foreign_call("", "acl_security_save", \%uaccess, \%in);

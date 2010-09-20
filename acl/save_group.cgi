@@ -15,13 +15,11 @@ elsif ($in{'but_delete'}) {
 	exit;
 	}
 
-@glist = &list_groups();
-@ulist = &list_users();
 if ($in{'old'}) {
+	# Get the original group
 	%group = ( );
-	foreach $g (@glist) {
-		$old = $g if ($g->{'name'} eq $in{'old'});
-		}
+	$old = &get_group($in{'old'});
+	$old || &error($text{'gedit_egone'});
 	$group{'members'} = $old->{'members'};
 	$group{'proto'} = $old->{'proto'};
 	$group{'id'} = $old->{'id'};
@@ -33,15 +31,12 @@ $in{'name'} =~ /^[A-z0-9\-\_\.\@]+$/ && $in{'name'} !~ /^\@/ ||
 	&error(&text('gsave_ename', $in{'name'}));
 $in{'name'} eq 'webmin' && &error($text{'gsave_enamewebmin'});
 if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
-	foreach $g (@glist) {
-		if ($g->{'name'} eq $in{'name'}) {
-			&error(&text('gsave_edup', $in{'name'}));
-			}
-		}
+	$clash = &get_group($in{'name'});
+	$clash && &error(&text('gsave_edup', $in{'name'}));
 	}
 $in{'desc'} !~ /:/ || &error($text{'gsave_edesc'});
 
-# Find the current group
+# Find the current parent group
 if ($in{'old'}) {
 	foreach $g (&list_groups()) {
 		if (&indexof('@'.$in{'old'}, @{$g->{'members'}}) >= 0) {
@@ -61,8 +56,7 @@ if (defined($in{'group'})) {
 		}
 
 	# Store parent group membership
-	@glist = &list_groups();
-	($group) = grep { $_->{'name'} eq $in{'group'} } @glist;
+	$newgroup = &get_group($in{'group'});
 	if ($in{'group'} ne ($oldgroup ? $oldgroup->{'name'} : '')) {
 		# Group has changed - update the member lists
 		if ($oldgroup) {
@@ -71,9 +65,9 @@ if (defined($in{'group'})) {
 				  @{$oldgroup->{'members'}} ];
 			&modify_group($oldgroup->{'name'}, $oldgroup);
 			}
-		if ($group) {
-			push(@{$group->{'members'}}, '@'.$in{'name'});
-			&modify_group($in{'group'}, $group);
+		if ($newgroup) {
+			push(@{$newgroup->{'members'}}, '@'.$in{'name'});
+			&modify_group($in{'group'}, $newgroup);
 			}
 		}
 	}
@@ -86,20 +80,20 @@ if ($oldgroup) {
 	@mods = grep { &indexof($_, @{$oldgroup->{'modules'}}) < 0 } @mods;
 	}
 
-if ($group) {
+if ($newgroup) {
 	# Add modules from parent group to list
 	local @ownmods;
 	foreach $m (@mods) {
 		push(@ownmods, $m)
-			if (&indexof($m, @{$group->{'modules'}}) < 0);
+			if (&indexof($m, @{$newgroup->{'modules'}}) < 0);
 		}
-	@mods = &unique(@mods, @{$group->{'modules'}});
+	@mods = &unique(@mods, @{$newgroup->{'modules'}});
 	$group{'ownmods'} = \@ownmods;
 
 	# Copy ACL files for parent group
 	local $name = $in{'old'} ? $in{'old'} : $in{'name'};
 	&copy_group_acl_files($in{'group'}, $name,
-			      [ @{$group->{'modules'}}, "" ]);
+			      [ @{$newgroup->{'modules'}}, "" ]);
 	}
 
 # Store group options
@@ -112,6 +106,8 @@ if ($in{'old'}) {
 	&modify_group($in{'old'}, \%group);
 
 	# recursively update all member users and groups
+	@glist = &list_groups();
+	@ulist = &list_users();
 	&update_members(\@ulist, \@glist, $group{'modules'},
 			$old->{'members'});
 	}

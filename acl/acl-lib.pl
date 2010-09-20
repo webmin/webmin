@@ -11,7 +11,6 @@ Library for editing webmin users, passwords and access rights.
 
 =cut
 
-# XXX use get_user / get_group
 # XXX make read_acl faster when we only care about one user
 
 BEGIN { push(@INC, ".."); };
@@ -105,7 +104,8 @@ if ($miniserv{'userdb'}) {
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Fetch users with SQL
 		my %userid;
-		my $cmd = $dbh->prepare("select id,name,pass from webmin_user".
+		my $cmd = $dbh->prepare(
+			"select id,name,pass from webmin_user".
 			($only ? " where name in (".
 				 join(",", map { "'$_'" } @$only).")" : ""));
 		$cmd && $cmd->execute() ||
@@ -188,7 +188,7 @@ my ($user) = grep { $_->{'name'} eq $username } @rv;
 return $user;
 }
 
-=head2 list_groups
+=head2 list_groups([&only-groups])
 
 Returns a list of hashes, one per Webmin group. Group membership is stored in
 /etc/webmin/webmin.groups, and other attributes in the config file. Useful
@@ -200,9 +200,13 @@ keys include :
 
 =item modules - Modules to grant to members
 
+If the only-groups parameter is given, limit the list to just groups with
+those group names.
+
 =cut
 sub list_groups
 {
+my ($only) = @_;
 my @rv;
 my %miniserv;
 &get_miniserv_config(\%miniserv);
@@ -212,12 +216,15 @@ open(GROUPS, "$config_directory/webmin.groups");
 while(<GROUPS>) {
 	s/\r|\n//g;
 	local @g = split(/:/, $_);
-	local $group = { 'name' => $g[0],
-			 'members' => [ split(/\s+/, $g[1]) ],
-			 'modules' => [ split(/\s+/, $g[2]) ],
-			 'desc' => $g[3],
-			 'ownmods' => [ split(/\s+/, $g[4]) ] };
-	push(@rv, $group);
+	if (@g) {
+		next if ($only && &indexof($g[0], @$only) < 0);
+		local $group = { 'name' => $g[0],
+				 'members' => [ split(/\s+/, $g[1]) ],
+				 'modules' => [ split(/\s+/, $g[2]) ],
+				 'desc' => $g[3],
+				 'ownmods' => [ split(/\s+/, $g[4]) ] };
+		push(@rv, $group);
+		}
 	}
 close(GROUPS);
 
@@ -229,7 +236,9 @@ if ($miniserv{'userdb'}) {
 		# Fetch groups with SQL
 		my %groupid;
 		my $cmd = $dbh->prepare(
-			"select id,name,description from webmin_group");
+			"select id,name,description from webmin_group ".
+			($only ? " where name in (".
+				 join(",", map { "'$_'" } @$only).")" : ""));
 		$cmd && $cmd->execute() ||
 			&error("Failed to query groups : ".$dbh->errstr);
 		while(my ($id, $name, $desc) = $cmd->fetchrow()) {
@@ -244,7 +253,9 @@ if ($miniserv{'userdb'}) {
 
 		# Add group attributes
 		my $cmd = $dbh->prepare(
-			"select id,attr,value from webmin_group_attr");
+			"select id,attr,value from webmin_group_attr ".
+			($only && %userid ?
+                         " where id in (".join(",", keys %userid).")" : ""));
 		$cmd && $cmd->execute() ||
 			&error("Failed to query group attrs : ".$dbh->errstr);
 		while(my ($id, $attr, $value) = $cmd->fetchrow()) {
@@ -258,9 +269,15 @@ if ($miniserv{'userdb'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Find groups with LDAP query
+		my $filter = '(objectClass='.$args->{'groupclass'}.')';
+		if ($only) {
+			my $gfilter =
+				"(|".join("", map { "(cn=$_)" } @$only).")";
+			$filter = "(&".$filter.$gfilter.")";
+			}
 		my $rv = $dbh->search(
 			base => $prefix,
-			filter => '(objectClass='.$args->{'groupclass'}.')',
+			filter => $filter,
 			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error("Failed to search groups : ".

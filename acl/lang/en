@@ -236,6 +236,7 @@ gedit_rights=Webmin group access rights
 gedit_modules=Members' modules
 gedit_members=Member users and groups
 gedit_desc=Group description
+gedit_egone=Selected group no longer exists!
 
 gdelete_err=Failed to delete group
 gdelete_ecannot=You are not allowed to delete groups

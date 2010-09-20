@@ -24,6 +24,9 @@ else {
 		%user = %$u;
 		delete($user{'name'});
 		}
+	else {
+		%user = ( );
+		}
 	$user{'skill'} = $user{'risk'} = 'high' if ($in{'risk'});
 	}
 $me = &get_user($base_remote_user);
@@ -51,7 +54,8 @@ print &ui_hidden_table_start($text{'edit_rights'}, "width=100%", 2, "rights",
 # Username
 print &ui_table_row($text{'edit_user'},
 	$access{'rename'} || !$in{'user'} ?
-		&ui_textbox("name", $user{'name'}, 30) : $user{'name'});
+		&ui_textbox("name", $user{'name'}, 30,
+			    0, undef, "autocomplete=off") : $user{'name'});
 
 # Source user for clone
 if ($in{'clone'}) {
@@ -130,7 +134,7 @@ if ($user{'lastchange'} && $miniserv{'pass_maxdays'}) {
 	}
 print &ui_table_row($text{'edit_pass'},
 	&ui_select("pass_def", $passmode, \@opts)." ".
-	&ui_password("pass", undef, 25).
+	&ui_password("pass", undef, 25, 0, undef, "autocomplete=off").
 	($lockbox || $tempbox ? "<br>" : "").$lockbox.$tempbox.$expmsg);
 
 # Real name

@@ -8,17 +8,18 @@ $access{'groups'} || &error($text{'gedit_ecannot'});
 if ($in{'group'}) {
 	# Editing an existing group
 	&ui_print_header(undef, $text{'gedit_title'}, "");
-	foreach $g (&list_groups()) {
-		if ($g->{'name'} eq $in{'group'}) {
-			%group = %$g;
-			}
-		}
+	$g = &get_group($in{'group'});
+	$g || &error($text{'gedit_egone'});
+	%group = %$g;
 	}
 else {
 	# Creating a new group
 	&ui_print_header(undef, $text{'gedit_title2'}, "");
-	foreach $g (&list_groups()) {
-		if ($g->{'name'} eq $in{'clone'}) {
+	%group = ( );
+	if ($in{'clone'}) {
+		# Copy modules from clone
+		$g = &get_group($in{'clone'});
+		if ($g) {
 			$group{'modules'} = $g->{'modules'};
 			}
 		}
@@ -34,7 +35,7 @@ print &ui_hidden_table_start($text{'gedit_rights'}, "width=100%", 2, "rights",
 
 # Show the group name
 print &ui_table_row($text{'gedit_group'},
-	&ui_textbox("name", $group{'name'}, 30));
+	&ui_textbox("name", $group{'name'}, 30, 0, undef, "autocomplete=off"));
 
 # Show group description
 print &ui_table_row($text{'gedit_desc'},
