@@ -257,6 +257,10 @@ for(my $i=0; $i<@attrs; $i+=2) {
 	local $v = $attrs[$i+1];
 	push(@{$replace{$attrs[$i]}}, ref($v) ? @$v : $v);
 	}
+if ($_[0]->{'pass'} eq $_[1]->{'pass'}) {
+	# Don't change password attribute if not change
+	delete($replace{'userPassword'});
+	}
 # Do rename to new DN first
 if ($_[0]->{'user'} ne $_[1]->{'user'}) {
 	local $newdn = $_[0]->{'dn'};
