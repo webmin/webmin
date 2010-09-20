@@ -480,9 +480,9 @@ $conf ||= &get_config();
 local $dir = &get_current_dir();
 chdir("/");
 local $fmt = &get_ipfw_format();
+&system_logged("$config{'ipfw'} -f flush >/dev/null 2>&1");
 if ($fmt == 0) {
 	# Apply each rule in turn
-	&system_logged("$config{'ipfw'} -f flush >/dev/null 2>&1");
 	local $r;
 	foreach $r (@$conf) {
 		if (!$r->{'other'} &&
