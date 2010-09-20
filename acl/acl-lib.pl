@@ -11,6 +11,9 @@ Library for editing webmin users, passwords and access rights.
 
 =cut
 
+# XXX use get_user / get_group
+# XXX make read_acl faster when we only care about one user
+
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
@@ -18,7 +21,7 @@ do 'md5-lib.pl';
 %access = &get_module_acl();
 $access{'switch'} = 0 if (&is_readonly_mode());
 
-=head2 list_users
+=head2 list_users([&only-users])
 
 Returns a list of hashes containing Webmin user details. Useful keys include :
 
@@ -30,9 +33,13 @@ Returns a list of hashes containing Webmin user details. Useful keys include :
 
 =item theme - Custom theme, if any
 
+If the only-users parameter is given, limit the list to just users with
+those usernames.
+
 =cut
 sub list_users
 {
+my ($only) = @_;
 my (%miniserv, @rv, %acl, %logout);
 local %_;
 &read_acl(undef, \%acl);
@@ -47,7 +54,8 @@ while(<PWFILE>) {
 	s/\r|\n//g;
 	local @user = split(/:/, $_);
 	if (@user) {
-		local(%user);
+		my %user;
+		next if ($only && &indexof($user[0], @$only) < 0);
 		$user{'name'} = $user[0];
 		$user{'pass'} = $user[1];
 		$user{'sync'} = $user[2];
@@ -97,7 +105,9 @@ if ($miniserv{'userdb'}) {
 	if ($proto eq "mysql" || $proto eq "postgresql") {
 		# Fetch users with SQL
 		my %userid;
-		my $cmd = $dbh->prepare("select id,name,pass from webmin_user");
+		my $cmd = $dbh->prepare("select id,name,pass from webmin_user".
+			($only ? " where name in (".
+				 join(",", map { "'$_'" } @$only).")" : ""));
 		$cmd && $cmd->execute() ||
 			&error("Failed to query users : ".$dbh->errstr);
 		while(my ($id, $name, $pass) = $cmd->fetchrow()) {
@@ -112,7 +122,9 @@ if ($miniserv{'userdb'}) {
 
 		# Add user attributes
 		my $cmd = $dbh->prepare(
-			"select id,attr,value from webmin_user_attr");
+			"select id,attr,value from webmin_user_attr ".
+			($only && %userid ?
+			 " where id in (".join(",", keys %userid).")" : ""));
 		$cmd && $cmd->execute() ||
 			&error("Failed to query user attrs : ".$dbh->errstr);
 		while(my ($id, $attr, $value) = $cmd->fetchrow()) {
@@ -126,9 +138,15 @@ if ($miniserv{'userdb'}) {
 		}
 	elsif ($proto eq "ldap") {
 		# Find users with LDAP query
+		my $filter = '(objectClass='.$args->{'userclass'}.')';
+		if ($only) {
+			my $ufilter =
+				"(|".join("", map { "(cn=$_)" } @$only).")";
+			$filter = "(&".$filter.$ufilter.")";
+			}
 		my $rv = $dbh->search(
 			base => $prefix,
-			filter => '(objectClass='.$args->{'userclass'}.')',
+			filter => $filter,
 			scope => 'sub');
 		if (!$rv || $rv->code) {
 			&error("Failed to search users : ".
@@ -154,6 +172,20 @@ if ($miniserv{'userdb'}) {
 	}
 
 return @rv;
+}
+
+=head2 get_user(username)
+
+Returns a hash ref of details of the user with some name, in the same format
+as list_users. Returns undef if not found
+
+=cut
+sub get_user
+{
+my ($username) = @_;
+my @rv = &list_users([ $username ]);
+my ($user) = grep { $_->{'name'} eq $username } @rv;
+return $user;
 }
 
 =head2 list_groups
@@ -254,6 +286,20 @@ if ($miniserv{'userdb'}) {
 	}
 
 return @rv;
+}
+
+=head2 get_group(groupname)
+
+Returns a hash ref of details of the group with some name, in the same format
+as list_groups. Returns undef if not found
+
+=cut
+sub get_group
+{
+my ($groupname) = @_;
+my @rv = &list_groups([ $groupname ]);
+my ($group) = grep { $_->{'name'} eq $groupname } @rv;
+return $group;
 }
 
 =head2 list_modules

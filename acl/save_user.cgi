@@ -26,14 +26,12 @@ elsif ($in{'but_delete'}) {
 	}
 
 # Get the user object
-@ulist = &list_users();
 if ($in{'old'}) {
 	%user = ( );
 	$in{'name'} = $in{'old'} if (!$access{'rename'});
 	&can_edit_user($in{'old'}) || &error($text{'save_euser'});
-	foreach $u (@ulist) {
-		$old = $u if ($u->{'name'} eq $in{'old'});
-		}
+	$old = &get_user($in{'old'});
+	$old || &error($text{'edit_egone'});
 	$user{'proto'} = $old->{'proto'};
 	$user{'id'} = $old->{'id'};
 	}
@@ -47,11 +45,8 @@ $in{'name'} =~ /^[A-z0-9\-\_\.\@]+$/ && $in{'name'} !~ /^\@/ ||
 	&error(&text('save_ename', $in{'name'}));
 $in{'name'} eq 'webmin' && &error($text{'save_enamewebmin'});
 if (!$in{'old'} || $in{'old'} ne $in{'name'}) {
-	foreach $u (@ulist) {
-		if ($u->{'name'} eq $in{'name'}) {
-			&error(&text('save_edup', $in{'name'}));
-			}
-		}
+	$clash = &get_user($in{'name'});
+	$clash && &error(&text('save_edup', $in{'name'}));
 	}
 !$access{'logouttime'} || $in{'logouttime_def'} ||
 	$in{'logouttime'} =~ /^\d+$/ || &error($text{'save_elogouttime'});
@@ -274,7 +269,7 @@ else {
 	# Password synchronization (deprecated)
 	&foreign_check("useradmin") || &error($text{'save_eos'});
 	&foreign_require("useradmin", "user-lib.pl");
-	foreach $uu (&foreign_call("useradmin", "list_users")) {
+	foreach $uu (&useradmin::list_users()) {
 		$user{'pass'} = $uu->{'pass'}
 			if ($uu->{'user'} eq $in{'name'});
 		}
@@ -330,14 +325,17 @@ if ($in{'temp'}) {
 if ($in{'old'}) {
 	# update user and all ACLs
 	&modify_user($in{'old'}, \%user);
-	foreach $u (&list_users()) {
-		%uaccess = &get_module_acl($u->{'name'});
-		local @au = split(/\s+/, $uaccess{'users'});
-		local $idx = &indexof($in{'old'}, @au);
-		if ($idx != -1) {
-			$au[$idx] = $in{'name'};
-			$uaccess{'users'} = join(" ", @au);
-			&save_module_acl(\%uaccess, $u->{'name'});
+	if ($in{'old'} ne $user{'name'}) {
+		# Change username in other user's ACLs
+		foreach $u (&list_users()) {
+			%uaccess = &get_module_acl($u->{'name'});
+			local @au = split(/\s+/, $uaccess{'users'});
+			local $idx = &indexof($in{'old'}, @au);
+			if ($idx != -1) {
+				$au[$idx] = $in{'name'};
+				$uaccess{'users'} = join(" ", @au);
+				&save_module_acl(\%uaccess, $u->{'name'});
+				}
 			}
 		}
 	}

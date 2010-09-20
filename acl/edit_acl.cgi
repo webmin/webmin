@@ -10,9 +10,7 @@ if ($in{'group'}) {
 	$who = $in{'group'};
 	}
 else {
-	foreach $u (&list_users()) {
-		$me = $u if ($u->{'name'} eq $base_remote_user);
-		}
+	$me = &get_user($base_remote_user);
 	@mcan = $access{'mode'} == 1 ? @{$me->{'modules'}} :
 		$access{'mode'} == 2 ? split(/\s+/, $access{'mods'}) :
 				       ( &list_modules() , "" );

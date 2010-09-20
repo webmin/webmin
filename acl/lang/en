@@ -69,6 +69,7 @@ edit_risk_medium=Admin user
 edit_risk_low=Normal user
 edit_groupmods=(In addition to modules from group)
 edit_euser=You are not allowed to edit this user
+edit_egone=Selected user no longer exists!
 edit_ecreate=You are not allowed to create users
 edit_theme=Personal UI theme
 edit_themeglobal=From Webmin Configuration

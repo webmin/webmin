@@ -5,19 +5,20 @@ do 'acl-lib.pl';
 # Returns files and directories that can be backed up
 sub backup_config_files
 {
-local @rv;
+my @rv;
 
 # Add primary user and group files
-local %miniserv;
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 push(@rv, $miniserv{'userfile'});
 push(@rv, &acl_filename());
 
 # Add all .acl files for users and groups
-local $u;
-foreach $u (&list_users(), &list_groups()) {
-	push(@rv, "$config_directory/$u->{'name'}.acl",
-		  glob("$config_directory/*/$u->{'name'}.acl"));
+foreach my $u (&list_users(), &list_groups()) {
+	if (!$u->{'proto'}) {
+		push(@rv, "$config_directory/$u->{'name'}.acl",
+			  glob("$config_directory/*/$u->{'name'}.acl"));
+		}
 	}
 
 # Add /etc/webmin/config
@@ -52,10 +53,11 @@ return undef;
 sub pre_restore
 {
 # Remove user and group .acl files
-local $u;
-foreach $u (&list_users(), &list_groups()) {
-	unlink("$config_directory/$u->{'name'}.acl",
-	       glob("$config_directory/*/$u->{'name'}.acl"));
+foreach my $u (&list_users(), &list_groups()) {
+	if (!$u->{'proto'}) {
+		unlink("$config_directory/$u->{'name'}.acl",
+		       glob("$config_directory/*/$u->{'name'}.acl"));
+		}
 	}
 return undef;
 }
@@ -65,14 +67,13 @@ return undef;
 sub post_restore
 {
 # Splice global config entries for users into real config
-local %aclbackup;
+my %aclbackup;
 &read_file("$config_directory/config.aclbackup", \%aclbackup);
 unlink("$config_directory/config.aclbackup");
-local $k;
-foreach $k (keys %gconfig) {
+foreach my $k (keys %gconfig) {
 	delete($gconfig{$k}) if ($k =~ /^(lang_|notabs_|skill_|risk_|theme_|ownmods_)/);
 	}
-foreach $k (keys %aclbackup) {
+foreach my $k (keys %aclbackup) {
 	$gconfig{$k} = $aclbackup{$k} if ($k =~ /^(lang_|notabs_|skill_|risk_|theme_|ownmods_)/);
 	}
 &write_file("$config_directory/config", \%gconfig);
@@ -81,7 +82,7 @@ foreach $k (keys %aclbackup) {
 %aclbackup = ( );
 &read_file("$config_directory/miniserv.conf.aclbackup", \%aclbackup);
 unlink("$config_directory/miniserv.conf.aclbackup");
-local %miniserv;
+my %miniserv;
 &get_miniserv_config(\%miniserv);
 foreach $k (keys %miniserv) {
 	delete($miniserv{$k}) if ($k =~ /^(preroot_)/);

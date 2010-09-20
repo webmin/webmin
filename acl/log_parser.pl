@@ -7,8 +7,8 @@ do 'acl-lib.pl';
 # Converts logged information from this module into human-readable form
 sub parse_webmin_log
 {
-local ($user, $script, $action, $type, $object, $p) = @_;
-local $g = $type eq 'group' ? "_g" : "";
+my ($user, $script, $action, $type, $object, $p) = @_;
+my $g = $type eq 'group' ? "_g" : "";
 if ($action eq 'modify') {
 	if ($p->{'old'} ne $p->{'name'}) {
 		return &text('log_rename'.$g, "<tt>$p->{'old'}</tt>",

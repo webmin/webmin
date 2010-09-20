@@ -5,7 +5,7 @@ do 'acl-lib.pl';
 # Output HTML for editing security options for the acl module
 sub acl_security_form
 {
-local $o = $_[0];
+my ($o) = @_;
 print "<tr> <td valign=top><b>$text{'acl_users'}</b></td>\n";
 print "<td valign=top>\n";
 printf "<input type=radio name=users_def value=1 %s> %s\n",

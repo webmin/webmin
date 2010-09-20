@@ -10,31 +10,23 @@ if ($in{'user'}) {
 	# Editing an existing user
 	&can_edit_user($in{'user'}) || &error($text{'edit_euser'});
 	&ui_print_header(undef, $text{'edit_title'}, "");
-	foreach $u (&list_users()) {
-		if ($u->{'name'} eq $in{'user'}) {
-			%user = %$u;
-			}
-		if ($u->{'name'} eq $base_remote_user) {
-			$me = $u;
-			}
-		}
+	$u = &get_user($in{'user'});
+	$u || &error($text{'edit_egone'});
+	%user = %$u;
 	}
 else {
 	# Creating a new user
 	$access{'create'} || &error($text{'edit_ecreate'});
 	&ui_print_header(undef, $text{'edit_title2'}, "");
-	foreach $u (&list_users()) {
-		if ($u->{'name'} eq $in{'clone'}) {
-			# Initial settings come from clone
-			%user = %$u;
-			delete($user{'name'});
-			}
-		if ($u->{'name'} eq $base_remote_user) {
-			$me = $u;
-			}
+	if ($in{'clone'}) {
+		# Initial settings come from clone
+		$u = &get_user($in{'clone'});
+		%user = %$u;
+		delete($user{'name'});
 		}
 	$user{'skill'} = $user{'risk'} = 'high' if ($in{'risk'});
 	}
+$me = &get_user($base_remote_user);
 
 # Give up if readonly
 if ($user{'readonly'} && !$in{'readwrite'}) {
