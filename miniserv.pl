@@ -3023,6 +3023,7 @@ elsif ($canmode == 1) {
 	if ($uinfo && &password_crypt($pass, $uinfo->{'pass'})) {
 		# Password is valid .. but check for expiry
 		local $lc = $uinfo->{'lastchanges'};
+		print DEBUG "validate_user: Password is valid lc=$lc pass_maxdays=$config{'pass_maxdays'}\n";
 		if ($config{'pass_maxdays'} && $lc && !$uinfo->{'nochange'}) {
 			local $daysold = (time() - $lc)/(24*60*60);
 			print DEBUG "maxdays=$config{'pass_maxdays'} daysold=$daysold temppass=$uinfo->{'temppass'}\n";
@@ -3042,7 +3043,12 @@ elsif ($canmode == 1) {
 			}
 		return ( $user, 0, 0 );
 		}
+	elsif (!$uinfo) {
+		print DEBUG "validate_user: User $webminuser not found\n";
+		return ( undef, 0, 0 );
+		}
 	else {
+		print DEBUG "validate_user: User $webminuser password mismatch $pass != $uinfo->{'pass'}\n";
 		return ( undef, 0, 0 );
 		}
 	}
@@ -3536,10 +3542,12 @@ if ($header{'cookie'} !~ /testing=1/ && $vu &&
 
 # check with main process for delay
 if ($config{'passdelay'} && $vu) {
+	print DEBUG "handle_login: requesting delay vu=$vu acptip=$acptip ok=$ok\n";
 	print $PASSINw "delay $vu $acptip $ok\n";
 	<$PASSOUTr> =~ /(\d+) (\d+)/;
 	$blocked = $2;
 	sleep($1);
+	print DEBUG "handle_login: delay=$1 blocked=$2\n";
 	}
 
 if ($ok && (!$expired ||
@@ -3547,6 +3555,7 @@ if ($ok && (!$expired ||
 	# Logged in OK! Tell the main process about
 	# the new SID
 	local $sid = &generate_random_id($pass);
+	print DEBUG "handle_login: sid=$sid\n";
 	print $PASSINw "new $sid $authuser $acptip\n";
 
 	# Run the post-login script, if any
@@ -3555,6 +3564,7 @@ if ($ok && (!$expired ||
 
 	# Check for a redirect URL for the user
 	local $rurl = &login_redirect($authuser, $pass, $host);
+	print DEBUG "handle_login: redirect URL rurl=$rurl\n";
 	if ($rurl) {
 		# Got one .. go to it
 		&write_data("HTTP/1.0 302 Moved Temporarily\r\n");
@@ -4167,7 +4177,7 @@ if ($config{'userdb'}) {
 			}
 
 		# Extract attributes
-		my $pass = $u->get_value('pass');
+		my $pass = $u->get_value('webminPass');
 		$user = { 'name' => $username,
 			  'id' => $u->dn(),
 			  'pass' => $pass,

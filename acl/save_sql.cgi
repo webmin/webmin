@@ -8,12 +8,6 @@ $access{'pass'} || &error($text{'sql_ecannot'});
 &error_setup($text{'sql_err'});
 $p = $in{'proto'};
 
-if ($in{'schema'}) {
-	# Redirect to schema download page
-	&redirect("schema.cgi");
-	return;
-	}
-
 # Parse inputs
 if ($p eq 'mysql' || $p eq 'postgresql' || $p eq 'ldap') {
 	gethostbyname($in{$p."_host"}) ||

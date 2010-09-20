@@ -74,7 +74,8 @@ push(@ldapgrid,
      &ui_textbox("ldap_groupclass", $proto eq "ldap" && $args->{'groupclass'} ?
 				     $args->{'groupclass'} : "webminGroup",30));
 push(@ldapgrid,
-     &ui_submit($text{'sql_schema'}, 'schema'), "");
+     &ui_button($text{'sql_schema'}, undef, 0,
+		"onClick='window.location=\"schema.cgi\"'"), "");
 $ldapgrid = &ui_grid_table(\@ldapgrid, 2, 100);
 
 print &ui_table_row(undef,

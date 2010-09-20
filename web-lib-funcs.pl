@@ -1689,7 +1689,7 @@ $rv .= "' value=\"...\">";
 return $rv;
 }
 
-=head2 read_acl(&user-module-hash, &user-list-hash)
+=head2 read_acl(&user-module-hash, &user-list-hash, [&only-users])
 
 Reads the Webmin acl file into the given hash references. The first is indexed
 by a combined key of username,module , with the value being set to 1 when
@@ -1699,9 +1699,13 @@ the value being an array ref of allowed modules.
 This function is deprecated in favour of foreign_available, which performs a
 more comprehensive check of module availability.
 
+If the only-users array ref parameter is given, the results may be limited to
+users in that list of names.
+
 =cut
 sub read_acl
 {
+my ($usermod, $userlist, $only) = @_;
 if (!%main::acl_hash_cache) {
 	# Read from local files
 	local $_;
@@ -1717,52 +1721,61 @@ if (!%main::acl_hash_cache) {
 			}
 		}
 	close(ACL);
-
-	# Read from user DB
-	my $userdb = &get_userdb_string();
-	my ($dbh, $proto, $prefix, $args) =
-		$userdb ? &connect_userdb($userdb) : ( );
-	if (ref($dbh)) {
-		if ($proto eq "mysql" || $proto eq "postgresql") {
-			# Select usernames and modules from SQL DB
-			my $cmd = $dbh->prepare("select webmin_user.name,webmin_user_attr.value from webmin_user,webmin_user_attr where webmin_user.id = webmin_user_attr.id and webmin_user_attr.attr = 'modules'");
-			if ($cmd && $cmd->execute()) {
-				while(my ($user, $mods) = $cmd->fetchrow()) {
-					my @mods = split(/\s+/, $mods);
-					foreach my $m (@mods) {
-						$main::acl_hash_cache{$user,
-								      $m}++;
-						}
-					$main::acl_array_cache{$user} = \@mods;
-					}
-				}
-			$cmd->finish() if ($cmd);
-			}
-		elsif ($proto eq "ldap") {
-			# Find users in LDAP
-			my $rv = $dbh->search(
-				base => $prefix,
-				filter => '(objectClass='.
-					  $args->{'userclass'}.')',
-				scope => 'sub',
-				attrs => [ 'cn', 'webminModule' ]);
-			if ($rv && !$rv->code) {
-				foreach my $u ($rv->all_entries) {
-					my $user = $u->get_value('cn');
-					my @mods =$u->get_value('webminModule');
-					foreach my $m (@mods) {
-						$main::acl_hash_cache{$user,
-								      $m}++;
-						}
-					$main::acl_array_cache{$user} = \@mods;
-					}
-				}
-			}
-		&disconnect_userdb($userdb, $dbh);
-		}
 	}
-if ($_[0]) { %{$_[0]} = %main::acl_hash_cache; }
-if ($_[1]) { %{$_[1]} = %main::acl_array_cache; }
+%$usermod = %main::acl_hash_cache if ($usermod);
+%$userlist = %main::acl_array_cache if ($userlist);
+
+# Read from user DB
+my $userdb = &get_userdb_string();
+my ($dbh, $proto, $prefix, $args) =
+	$userdb ? &connect_userdb($userdb) : ( );
+if (ref($dbh)) {
+	if ($proto eq "mysql" || $proto eq "postgresql") {
+		# Select usernames and modules from SQL DB
+		my $cmd = $dbh->prepare(
+			"select webmin_user.name,webmin_user_attr.value ".
+			"from webmin_user,webmin_user_attr ".
+			"where webmin_user.id = webmin_user_attr.id ".
+			"and webmin_user_attr.attr = 'modules' ".
+			($only ? " and webmin_user.name in (".
+				 join(",", map { "'$_'" } @$only).")" : ""));
+		if ($cmd && $cmd->execute()) {
+			while(my ($user, $mods) = $cmd->fetchrow()) {
+				my @mods = split(/\s+/, $mods);
+				foreach my $m (@mods) {
+					$usermod->{$user,$m}++ if ($usermod);
+					}
+				$userlist->{$user} = \@mods if ($userlist);
+				}
+			}
+		$cmd->finish() if ($cmd);
+		}
+	elsif ($proto eq "ldap") {
+		# Find users in LDAP
+		my $filter = '(objectClass='.$args->{'userclass'}.')';
+		if ($only) {
+			my $ufilter =
+				"(|".join("", map { "(cn=$_)" } @$only).")";
+			$filter = "(&".$filter.$ufilter.")";
+			}
+		my $rv = $dbh->search(
+			base => $prefix,
+			filter => $filter,
+			scope => 'sub',
+			attrs => [ 'cn', 'webminModule' ]);
+		if ($rv && !$rv->code) {
+			foreach my $u ($rv->all_entries) {
+				my $user = $u->get_value('cn');
+				my @mods =$u->get_value('webminModule');
+				foreach my $m (@mods) {
+					$usermod->{$user,$m}++ if ($usermod);
+					}
+				$userlist->{$user} = \@mods if ($userlist);
+				}
+			}
+		}
+	&disconnect_userdb($userdb, $dbh);
+	}
 }
 
 =head2 acl_filename
@@ -2952,7 +2965,7 @@ my %foreign_module_info = &get_module_info($_[0]);
 
 # Check list of allowed modules
 my %acl;
-&read_acl(\%acl, undef);
+&read_acl(\%acl, undef, [ $base_remote_user ]);
 return 0 if (!$acl{$base_remote_user,$_[0]} &&
 	     !$acl{$base_remote_user,'*'});
 
@@ -6013,7 +6026,7 @@ if ($serv->{'fast'} || !$sn) {
 			if ($base_remote_user ne 'root' &&
 			    $base_remote_user ne 'admin') {
 				# Need to fake up a login for the CGI!
-				&read_acl(undef, \%acl);
+				&read_acl(undef, \%acl, [ 'root' ]);
 				$ENV{'BASE_REMOTE_USER'} =
 					$ENV{'REMOTE_USER'} =
 						$acl{'root'} ? 'root' : 'admin';
@@ -7152,7 +7165,7 @@ returned by get_module_info.
 sub get_available_module_infos
 {
 my (%acl, %uacl);
-&read_acl(\%acl, \%uacl);
+&read_acl(\%acl, \%uacl, [ $base_remote_user ]);
 my $risk = $gconfig{'risk_'.$base_remote_user};
 my @rv;
 foreach my $minfo (&get_all_module_infos($_[0])) {

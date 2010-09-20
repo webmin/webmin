@@ -11,8 +11,6 @@ Library for editing webmin users, passwords and access rights.
 
 =cut
 
-# XXX make read_acl faster when we only care about one user
-
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
