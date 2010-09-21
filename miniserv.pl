@@ -3020,7 +3020,8 @@ elsif ($canmode == 0) {
 elsif ($canmode == 1) {
 	# Attempt Webmin authentication
 	my $uinfo = &get_user_details($webminuser);
-	if ($uinfo && &password_crypt($pass, $uinfo->{'pass'})) {
+	if ($uinfo &&
+	    &password_crypt($pass, $uinfo->{'pass'}) eq $uinfo->{'pass'}) {
 		# Password is valid .. but check for expiry
 		local $lc = $uinfo->{'lastchanges'};
 		print DEBUG "validate_user: Password is valid lc=$lc pass_maxdays=$config{'pass_maxdays'}\n";
