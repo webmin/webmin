@@ -593,6 +593,7 @@ if ($user{'proto'}) {
 			       ($rv ? $rv->error : "Unknown error"));
 			}
 		}
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
 else {
 	# In local files
@@ -1074,6 +1075,7 @@ if ($group{'proto'}) {
 			       ($rv ? $rv->error : "Unknown error"));
 			}
 		}
+	&disconnect_userdb($miniserv{'userdb'}, $dbh);
 	}
 else {
 	# Update local file
@@ -1680,8 +1682,8 @@ sub delete_from_groups
 {
 my ($user) = @_;
 foreach my $g (&list_groups()) {
-	local @mems = @{$g->{'members'}};
-	local $i = &indexof($user, @mems);
+	my @mems = @{$g->{'members'}};
+	my $i = &indexof($user, @mems);
 	if ($i >= 0) {
 		splice(@mems, $i, 1);
 		$g->{'members'} = \@mems;
