@@ -132,9 +132,11 @@ if ($user{'lastchange'} && $miniserv{'pass_maxdays'}) {
 		$expmsg = "<br>".$text{'edit_passtoday'};
 		}
 	}
+$js = "onChange='form.pass.disabled = value != 0;'";
 print &ui_table_row($text{'edit_pass'},
-	&ui_select("pass_def", $passmode, \@opts)." ".
-	&ui_password("pass", undef, 25, 0, undef, "autocomplete=off").
+	&ui_select("pass_def", $passmode, \@opts, 1, 0, 0, 0, $js)." ".
+	&ui_password("pass", undef, 25, $passmode != 0, undef,
+		     "autocomplete=off").
 	($lockbox || $tempbox ? "<br>" : "").$lockbox.$tempbox.$expmsg);
 
 # Real name
