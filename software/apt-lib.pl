@@ -139,7 +139,8 @@ local (@rv, $pkg, %done);
 
 # Use dump to get versions
 &execute_command("$apt_get_command update");
-&open_execute_command(DUMP, "LANG='' LC_ALL='' apt-cache dump", 1, 1);
+&open_execute_command(DUMP,
+	"LANG='' LC_ALL='' apt-cache dump 2>/dev/null", 1, 1);
 while(<DUMP>) {
 	if (/^\s*Package:\s*(\S+)/) {
 		$pkg = { 'name' => $1 };
@@ -177,7 +178,7 @@ sub update_system_search
 {
 local (@rv, $pkg);
 &open_execute_command(DUMP, "LANG='' LC_ALL='' $apt_search_command search ".
-			    quotemeta($_[0]), 1, 1);
+			    quotemeta($_[0])." 2>/dev/null", 1, 1);
 while(<DUMP>) {
 	if (/^(\S+)\s*-\s*(.*)/) {
 		push(@rv, { 'name' => $1, 'desc' => $2 });
@@ -200,7 +201,7 @@ if (&has_command("apt-show-versions")) {
 	# pinned versions and backports into account
 	local @rv;
 	&open_execute_command(PKGS,
-		"LANG='' LC_ALL='' apt-show-versions", 1, 1);
+		"LANG='' LC_ALL='' apt-show-versions 2>/dev/null", 1, 1);
 	while(<PKGS>) {
 		if (/^(\S+)\/(\S+)\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/) {
 			local $pkg = { 'name' => $1,
@@ -243,7 +244,7 @@ else {
 			}
 		&open_execute_command(PKGS,
 			"LANG='' LC_ALL='' apt-cache showpkg ".
-			join(" ", @somenames), 1, 1);
+			join(" ", @somenames)." 2>/dev/null", 1, 1);
 		local $pkg = undef;
 		while(<PKGS>) {
 			s/\r|\n//g;
@@ -284,7 +285,7 @@ sub set_pinned_versions
 local ($pkgs) = @_;
 local %pkgmap = map { $_->{'name'}, $_ } @$pkgs;
 &open_execute_command(PKGS,
-	"LANG='' LC_ALL='' apt-cache policy", 1, 1);
+	"LANG='' LC_ALL='' apt-cache policy 2>/dev/null", 1, 1);
 while(<PKGS>) { 
 	s/\r|\n//g;
 	if (/\s+(\S+)\s+\-\>\s+(\S+)/) {
