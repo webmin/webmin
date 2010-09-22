@@ -441,7 +441,11 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 			$attach->{'filename'} = $1;
 			}
 		elsif ($attach->{'header'}->{'content-type'} =~
-		    /name\s*=\s*"([^"]+)"/i) {
+		       /name\s*=\s*"([^"]+)"/i) {
+			$attach->{'filename'} = $1;
+			}
+		elsif ($attach->{'header'}->{'content-type'} =~
+		       /name\s*=\s*([^;\s]+)/i) {
 			$attach->{'filename'} = $1;
 			}
 
