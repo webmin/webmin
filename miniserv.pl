@@ -3245,7 +3245,7 @@ if (!$uinfo) {
 	return (undef, 0, 1, undef) if (!$realuser);
 	local $uinfo = &get_user_details($realuser);
 	return (undef, 0, 1, undef) if (!$uinfo);
-	local $up = $uinfo{'pass'};
+	local $up = $uinfo->{'pass'};
 
 	# Work out possible domain names from the hostname
 	local @doms = ( $_[2] );
@@ -3342,14 +3342,17 @@ if (!$uinfo) {
 
 	if ($up eq 'x') {
 		# PAM or passwd file authentication
+		print DEBUG "can_user_login: Validate with PAM\n";
 		return ( $_[0], $use_pam ? 2 : 3, 0, $realuser, $sudo );
 		}
 	elsif ($up eq 'e') {
 		# External authentication
+		print DEBUG "can_user_login: Validate externally\n";
 		return ( $_[0], 4, 0, $realuser, $sudo );
 		}
 	else {
 		# Fixed Webmin password
+		print DEBUG "can_user_login: Validate by Webmin\n";
 		return ( $_[0], 1, 0, $realuser, $sudo );
 		}
 	}
