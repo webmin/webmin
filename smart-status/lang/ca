@@ -30,21 +30,21 @@ monitor_other=Altres...
 monitor_edrive=Hi falta la unitat a comprovar o bé és invàlida
 monitor_nosuch=Aquesta unitat no existeix
 monitor_nosmart=No hi ha suport SMART
-monitor_errorsfound=He informat de $1 errors
+monitor_errorsfound=S'ha informat de $1 errors
 monitor_errorsinced=Els errors s'han incrementat de $2 a $1
 
 short_title=Auto Test Breu
-short_doing=Iniciant l'auto test breu del $1...
+short_doing=S'està iniciant l'auto test breu del $1...
 short_failed=...ha fallat!
 short_ok=...el test s'ha executat bé. Mira l'estat de la unitat a la pàgina principal del mòdul per veure'n els resultats.
 
 ext_title=Auto Test Extès
-ext_doing=Iniciant l'auto test extès del $1...
+ext_doing=S'està iniciant l'auto test extès del $1...
 ext_failed=$short_failed
 ext_ok=$short_ok
 
 data_title=Test de Recopilació de Dades
-data_doing=Iniciant la recopilació de dades fora de línia a $1...
+data_doing=S'està iniciant la recopilació de dades fora de línia a $1...
 data_failed=...ha fallat!
 data_ok=...la recopilació s'ha executat bé. Mira l'estat de la unitat a la pàgina principal del mòdul per veure'n els resultats.
 

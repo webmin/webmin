@@ -3,7 +3,7 @@
 La primera taula d'aquesta pàgina permet especificar el directori a què
 canviarà el servidor amb <tt>chroot</tt> quan entri un usuari FTP anònim.
 Es pot triar un directori diferent per classes d'usuaris diferents,
-o bé es pot fer servir un únic directori per totes les classes.
+o bé es pot utilitzar un únic directori per totes les classes.
 Si no s'especifica cap directori, El servidor farà un <tt>chroot</tt>
 al directori arrel de l'usuari <tt>ftp</tt>.
 <p>
@@ -13,7 +13,7 @@ Com que el servidor fa crides externes a programes com <tt>ls</tt> i
 <tt>bin</tt> amb aquests programes, un directori <tt>lib</tt> amb totes
 les llibreries compartides necessàries, i un directori <tt>etc</tt> que
 contingui els fitxers <tt>passwd</tt> i <tt>group</tt>. Quan el servidor
-fa servir <tt>chroot</tt> per limitar l'accés al directori arrel anònim,
+utilitza <tt>chroot</tt> per limitar l'accés al directori arrel anònim,
 no pot accedir a cap programa fora d'aquest directori.
 <p>
 

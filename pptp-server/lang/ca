@@ -28,7 +28,7 @@ conf_mode0=Configuració global
 conf_mode1=Valors específics de PPTP
 conf_mode2=Fitxer personalitzat
 conf_ipdesc=Les adreces IP de tots dos rangs es poden introduir com una sola adreça (com 192.168.1.1) o com un rang (com 192.168.2.32-64)
-conf_err=No he pogut desar les opcions del servidor
+conf_err=No s'han pogut desar les opcions del servidor
 conf_espeed=Hi falta la velocitat en bauds o bé és incorrecta
 conf_elisten=Hi falta l'adreça a escoltar o bé és invàlida
 conf_eoption=Hi falta el fitxer d'opcions PPP personalitzat o bé sembla invàlid
@@ -59,12 +59,12 @@ options_name=Nom del servidor per a l'autenticació
 options_hn=Nom de host real
 options_mtu=Mida màxima dels paquets enviats
 options_mru=Mida màxima dels paquets rebuts
-options_err=No he pogut desar les opcions PPP
+options_err=No s'han pogut desar les opcions PPP
 options_emtu=Hi falta la mida màxima dels paquets enviats o bé és invàlida
 options_emru=Hi falta la mida màxima dels paquets rebuts bé és invàlida
 options_ename=Hi falta el nom del servidor per a l'autenticació o bé és invàlid
 options_version=PPPd versió $1
-options_msdesc=Les opcions de sota activen el mètode d'autenticació MS-CHAP i el xifratge MPPE, que és l'emprat per defecte pels clients VPN de Windows. No obstant, MPPE necessita suport tant al dimoni PPP com al kernel del sistema operatiu.
+options_msdesc=Les opcions de sota activen el mètode d'autenticació MS-CHAP i el xifratge MPPE, que és l'utilitzat per defecte pels clients VPN de Windows. No obstant, MPPE necessita suport tant al dimoni PPP com al nucli del sistema operatiu.
 options_mschap=Autenticació MS-CHAP
 options_mschap-v2=Autenticació MS-CHAP versió 2
 options_chapms=$options_mschap
@@ -104,17 +104,17 @@ edit_secret_sav=Desa
 edit_secret_del=Suprimeix
 edit_secret_return=a la llista de comptes
 
-save_secret_esave=No he pogut desar el compte
+save_secret_esave=No s'ha pogut desar el compte
 save_secret_enoip='$1' no és una adreça vàlida
 
-stop_err=No he pogut aturar el servidor PPTP
+stop_err=No s'ha pogut aturar el servidor PPTP
 stop_egone=Ja no està en execució
 stop_ecannot=No tens permís per aturar el servidor PPTP
 
-start_err=No he pogut iniciar el servidor PPTP
+start_err=No s'ha pogut iniciar el servidor PPTP
 start_ecannot=No tens permís per iniciar el servidor PPTP
 
-apply_err=No he pogut reiniciar el servidor PPTP
+apply_err=No s'ha pogut reiniciar el servidor PPTP
 apply_ecannot=No tens permís per reiniciar el servidor PPTP
 
 conns_title=Connexions Actives
@@ -129,20 +129,20 @@ conns_none=No hi ha cap connexió PPTP activa en aquests moments.
 conns_unknown=Desconegut
 conns_user=Usuari
 
-disc_err=No he pogut desconnectar
+disc_err=No s'ha pogut desconnectar
 disc_egone=La connexió ja no és activa
 disc_ekill=El procés ja no està en execució
 
-log_secret_create=He creat el compte PPP $1
-log_secret_modify=He modificat el compte PPP $1
-log_secret_delete=He suprimit el compte PPP $1
-log_deletes=He suprimit $1 comptes PPP
-log_conf=He modificat les opcions del servidor PPTP
-log_options=He modificat les opcions PPP
-log_disc=He desconnectat el client $1
-log_start=He iniciat el servidor PPTP
-log_stop=He aturat el servidor PPTP
-log_apply=He aplicat la configuració del servidor PPTP
+log_secret_create=S'ha creat el compte PPP $1
+log_secret_modify=S'ha modificat el compte PPP $1
+log_secret_delete=S'ha suprimit el compte PPP $1
+log_deletes=S'han suprimit $1 comptes PPP
+log_conf=S'han modificat les opcions del servidor PPTP
+log_options=S'han modificat les opcions PPP
+log_disc=S'ha desconnectat el client $1
+log_start=S'ha iniciat el servidor PPTP
+log_stop=S'ha aturat el servidor PPTP
+log_apply=S'ha aplicat la configuració del servidor PPTP
 
 acl_conf=Pot editar la configuració
 acl_options=Pot editar les opcions

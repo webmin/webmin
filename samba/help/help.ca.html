@@ -54,7 +54,7 @@ per a cada directori compartit, els més importants són els següents:<p>
          <b>Directori compartit</b>
       </td>
       <td>
-         El directori a compartir. Els clients que fan servir aquest
+         El directori a compartir. Els clients que utilitzen aquest
          directori compartit només poden accedir als fitxers dins de 
          o per sota d'aquest directori.
       </td>
@@ -115,7 +115,7 @@ d'una impressora nova són: <p>
       <td><b>Impressora Unix</b></td>
       <td>
          La impressora Unix a compartir. Aquesta pot ser qualsevol
-         impressora que faries servir per imprimir amb l'ordre <tt>lpr</tt>.
+         impressora que utilitzaries per imprimir amb l'ordre <tt>lpr</tt>.
       </td>
    </tr>
    <tr>
@@ -142,10 +142,10 @@ d'una impressora nova són: <p>
          <b>Tipus d'impressora</b>
       </td>
       <td>
-         El nom del driver de la impressora que cal utilitzar. Si 
+         El nom del controlador de la impressora que cal utilitzar. Si 
          introdueixes un valor per a aquesta opció, i coincideix amb
-         un driver d'impressora als clients PC, llavors els usuaris no
-         hauran de triar un driver d'impressió en afegir aquesta impressora.
+         un controlador d'impressora als clients PC, llavors els usuaris no
+         hauran de triar un controlador d'impressió en afegir aquesta impressora.
       </td>
    </tr>
 </table><p>
@@ -153,7 +153,7 @@ d'una impressora nova són: <p>
 Igual que pels directoris compartits, hi ha moltes més opcions disponibles
 per a les impressores compartides. Tan aviat com s'afegeix una impressora
 compartida, aquesta queda a disposició dels clients. Sota Windows 95 i NT,
-es pot afegir una impressora fent servir l'opció <tt>Afegir Impressora</tt>
+es pot afegir una impressora utilitzant l'opció <tt>Afegir Impressora</tt>
 del plafó de control d'impressores. Un cop afegida, l'usuari hi pot imprimir
 igual que per qualsevol altra impressora local o de xarxa. <p>
 
@@ -185,8 +185,8 @@ per a més detalls. <p>
 
 Algunes versions de Windows no permeten el subministrament d'un nom
 d'usuari en accedir a un recurs - en lloc d'això, es dóna el nom 
-emprat en entrar a Windows. Si tots els clients entren a Windows amb
-el mateix nom que fan servir per a Unix, no hi ha cap problema.
+utilitzat en entrar a Windows. Si tots els clients entren a Windows amb
+el mateix nom que utilitzen per a Unix, no hi ha cap problema.
 Ara bé, si no és així, tens 2 opcions:
 <ol>
 <li>Windows 95 i NT poden muntar un recurs manualment, ja sigui 
@@ -200,7 +200,7 @@ Ara bé, si no és així, tens 2 opcions:
    subministrada contra una llista d'usuaris per tal de trobar el
    nom d'usuari correcte. L'opció del recurs <tt>Usuaris Unix</tt>
    permet especificar els usuaris o grups d'usuaris a comprovar.
-   Tingues en compte que fer servir aquesta opció amb un nombre
+   Tingues en compte que utilitzar aquesta opció amb un nombre
    gran d'usuaris no és gaire segur, ja que 2 persones podrien
    tenir la mateixa contrasenya. <p>
 </ul>
@@ -220,10 +220,10 @@ i un PC no estan xifrades. Això és dolent per 2 raons:
 </ol>
 <p>
 
-Afortunadament, el Samba pot fer servir contrasenyes xifrades.
+Afortunadament, el Samba pot utilitzar contrasenyes xifrades.
 No obstant, no és possible de fer coincidir les contrasenyes 
 enviades pels clients amb el fitxer de contrasenyes normal de 
-Unix perquè es fan servir formes diferents de xifratge.
+Unix perquè s'utilitzen formes diferents de xifratge.
 Per aquest motiu, el Samba ha de mantenir la seva pròpia llista
 d'usuaris i contrasenyes. <p>
 
@@ -239,7 +239,7 @@ Per activar el mode de contrasenyes xifrades del Samba, heu de:
     què pots convertir alguns o tots els usuaris Unix existents a
     usuaris Samba. Es convertiran els noms d'usuaris, noms reals,
     UIDs i shells - però no les contrasenyes.
-<li>Per assignar contrasenyes als usuaris, fes servir l'opció
+<li>Per assignar contrasenyes als usuaris, utilitza l'opció
     <tt>Edita els usuaris i les contrasenyes de Samba</tt> de la
     pàgina principal. Això mostrarà una llista d'usuaris Samba,
     dels quals en pots triar un per editar. La contrasenya de cada

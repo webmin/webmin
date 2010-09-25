@@ -1,6 +1,6 @@
 line1=Opcions configurables,11
 default_mode=Estil de la llista de processos per defecte,4,last-Darrer triat,tree-Arbre de processos,user-Ordenada per usuaris,size-Ordenada per mida,cpu-Ordenada per CPU,search-Formulari de recerca,run-Formulari d'execució
 cut_length=Trunca les ordres al nombre de caràcters,3,Il·limitat
-trace_java=Mostra el rastreig de les crides del sistema emprant,1,1-Applet Java,0-Text
+trace_java=Mostra el rastreig de les crides del sistema utilitzant,1,1-Applet Java,0-Text
 line2=Configuració del sistema,11
 ps_style=Estil de la sortida de l'ordre PS,1,sysv-SYSV,linux-Linux,hpux-HPUX,freebsd-FreeBSD,macos-MacOS,openbsd-OpenBSD

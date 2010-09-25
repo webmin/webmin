@@ -26,15 +26,15 @@ edit_all=Tots els hosts
 edit_sel=Els hosts llistats...
 edit_none=Cap host
 
-save_err=No he pogut desar l'exportació
+save_err=No s'ha pogut desar l'exportació
 save_edir=Hi falta el directori per exportar o bé no existeix
 save_eanon=Hi falta l'usuari per a root o bé no existeix
 save_erw=No has introduït cap host per a lectura/escriptura
 save_eroot=No has introduït cap host per accés root
 save_eaccess=No has introduït cap host per a l'accés al muntatge
 
-log_create_export=He creat l'exportació de $1
-log_delete_export=He suprimit l'exportació de $1
-log_modify_export=He modificat l'exportació de $1
-log_apply=He aplicat la configuració
+log_create_export=S'ha creat l'exportació de $1
+log_delete_export=S'ha suprimit l'exportació de $1
+log_modify_export=S'ha modificat l'exportació de $1
+log_apply=S'ha aplicat la configuració
 

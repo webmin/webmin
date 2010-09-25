@@ -176,18 +176,18 @@ mod_create=Afegeix mòdul PAM
 mod_header=Opcions del mòdul PAM
 mod_name=Nom del servei
 mod_mod=Mòdul PAM
-mod_type=Fes-lo servir al pas
+mod_type=Utilitza'l al pas
 mod_type_auth=Autenticació
 mod_type_account=Verificació de comptes
 mod_type_session=Configuració de sessió
 mod_type_password=Canvi de contrasenya
 mod_control=Nivell d'error
 mod_args=Arguments del mòdul
-mod_err=No he pogut desar el mòdul
+mod_err=No s'ha pogut desar el mòdul
 
-pwdb_shadow=Fes servir el fitxer de contrasenyes ocultes
+pwdb_shadow=Utilitza el fitxer de contrasenyes ocultes
 pwdb_nullok=Accepta contrasenyes nul·les
-pwdb_md5=Fes servir contrasenyes amb xifrat MD5
+pwdb_md5=Utilitza contrasenyes amb xifratge MD5
 pwdb_nodelay=Interval entre connexions fallides
 
 unix_nullok_secure=Accepta contrasenyes nul·les en TTYs segures
@@ -245,14 +245,14 @@ time_services=Serveis
 time_ttys=TTYs
 time_users=Usuaris
 time_times=Hores d'accés
-time_info=Tots els camps poden contenir valors múltiples separats per |, i els valor poden fer servir * com a escarràs o ! com a negació.
+time_info=Tots els camps poden contenir valors múltiples separats per |, i els valors poden utilitzar * com a escarràs o ! com a negació.
 
 group_services=Serveis
 group_ttys=TTYs
 group_users=Usuaris
 group_times=Hores d'accés
 group_groups=Afegeix grups
-group_info=Tots els camps poden contenir valors múltiples separats per |, i els valor poden fer servir * com a escarràs o ! com a negació.
+group_info=Tots els camps poden contenir valors múltiples separats per |, i els valors poden utilitzar * com a escarràs o ! com a negació.
 
 wheel_group=Comprova la pertinença del grup
 wheel_group_def=Defecte (<tt>wheel</tt> o GID 0)
@@ -273,20 +273,20 @@ mail_edir=Hi falta el directori de spool de correu  o bé no és vàlid
 
 stack_service=Passa la comprovació al servei PAM
 
-log_pam_create=He creat el servei PAM $1
-log_pam_delete=He suprimit el servei PAM $1
-log_mod_create=He afegit el mòdul PAM $1 al servei $2
-log_mod_modify=He modificat el mòdul PAM $1 al servei $2
-log_mod_delete=He suprimit el mòdul PAM $1 al servei $2
-log_mod_move=He substituït els mòduls PAM al servei $3
-log_mod_move_l=He canviat el mòdul PAM $1 pel $2 al servei $3
-log_inc_create=He afegit la inclusió $1 per al servei $2
-log_inc_modify=He modificat la inclusió $1 per al servei $2
-log_inc_delete=He suprimit la inclusió $1 per al servei $2
-log_incs=He actualitzat la inclusió per al servei $1
+log_pam_create=S'ha creat el servei PAM $1
+log_pam_delete=S'ha suprimit el servei PAM $1
+log_mod_create=S'ha afegit el mòdul PAM $1 al servei $2
+log_mod_modify=S'ha modificat el mòdul PAM $1 al servei $2
+log_mod_delete=S'ha suprimit el mòdul PAM $1 al servei $2
+log_mod_move=S'han substituït els mòduls PAM al servei $3
+log_mod_move_l=S'ha canviat el mòdul PAM $1 pel $2 al servei $3
+log_inc_create=S'ha afegit la inclusió $1 per al servei $2
+log_inc_modify=S'ha modificat la inclusió $1 per al servei $2
+log_inc_delete=S'ha suprimit la inclusió $1 per al servei $2
+log_incs=S'ha actualitzat la inclusió per al servei $1
 
 inc_edit=Edició de Servei Inclòs
 inc_create=Creació de Servei Inclòs
 inc_header=Detalls del servei PAM inclòs
 inc_inc=Servei PAM inclòs
-inc_err=No he pogut desar el servei inclòs
+inc_err=No s'ha pogut desar el servei inclòs

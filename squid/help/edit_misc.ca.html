@@ -12,8 +12,8 @@ Això permetrà de renomenar el fitxer abans d'enviar el senyal de rotació.
 <p>
 Tingues en compte que l'ordre 'squid -k rotate' normalment envia un senyal
 USR1 al procés squid en execució. En certes situacions (p. ex., Linux amb
-E/S asíncrona), USR1 es fa servir per altres propòsits, de manera que -k
-utilitza un altre senyal, És millor acostumar-se a fer servir 'squid -k rotate'
+E/S asíncrona), USR1 s'utilitza per altres propòsits, de manera que -k
+utilitza un altre senyal, És millor acostumar-se a utilitzar 'squid -k rotate'
 en lloc de 'kill -USR1 <pid>'.
 <p>
 <b>Text dels missatges d'error</b>: Text HTML per incloure als missatges
@@ -43,24 +43,24 @@ les peticions ICP es registren sobre access.log. Pots desactivar-ho si la
 càrrega ICP és MOLT alta per accelerar-ho tot plegat o bé si vols simplificar
 les anàlisis dels registres.
 <p>
-<b>Salts directes mínims</b>: Per defecte, 4. Si fas servir els patracols
-de <i>ping</i> ICMP, fes recerques directes pels llocs que no estan més
+<b>Salts directes mínims</b>: Per defecte, 4. Si utilitzes els patracols
+<i>ping</i> d'ICMP, fes recerques directes pels llocs que no estan més
 lluny d'aquest nombre mínim de salts.
 <p>
 <b>Conserva memòria per a un ús futur</b>: Per defecte, 'Sí'. Si està posat,
-Squid mantindrà memòria de reserva allotjada (però no usada) disponible
+Squid mantindrà memòria de reserva allotjada (però no utilitzada) disponible
 per a un ús futur. Si la memòria és preciosa al teu sistema i et sembla 
 que la llibreria malloc supera en rendiment a les rutines de Squid,
 desactiva-ho.
 <p>
 <b>Quantitat de memòria a conservar</b>: Per defecte, 'Il·limitada'.
 Si s'estableix a un valor diferent de zero, Squid mantindrà, com a molt,
-el límit especificat de reserves de memòria allotjada (però no usada).
+el límit especificat de reserves de memòria allotjada (però no utilitzada).
 Totes les peticions free() que excedeixin aquest límit seran gestionades
 per la llibreria malloc. Squid no preallotja memòria, només aquells
 objectes a desar que d'una altra manera serien alliberats per free().
 Així, no hi ha problema en establir memory_pools_limit a un valor
-raonablement alt encara que la teva configuració faci servir menys memòria.
+raonablement alt encara que la teva configuració utilitzi menys memòria.
 <p>
 Si no està establert (defecte) o està posat a zero, Squid retindrà tota la
 memòria que pugui. Això és, no hi haurà cap límit de memòria de desat.
@@ -70,14 +70,14 @@ opció substitueix la vella opció 'http_anonymizer' amb una cosa molt més
 configurable. Ara pots especificar amb exactitud quines capçaleres es
 permeten, i quines es treuen de les peticions sortints.
 <p>
-Hi ha dos mètodes per fer servir l'opció. Pots permetre capçaleres
+Hi ha dos mètodes per utilitzar l'opció. Pots permetre capçaleres
 específiques (negant així totes les altres), o pots negar capçaleres
 específiques (permetent així totes les altres).
 <p>
 <b>Simula Agent d'Usuari</b>: Per defecte, 'Cap'. Si filtres la capçalera
 'User-Agent' amb l'opció <b>Capçaleres que no s'han de filtrar</b>,
 pot provocar que alguns servidors Web rebutgin la teva petició. 
-Fes servir això per simular-ne un.
+Utilitza això per simular-ne un.
 <p>
 <b>Host Accelerat HTTP</b>: Per defecte, 'Cap'. Si vols executar Squid com
 un accelerador httpd, estableix-ho a l'adreça del servidor HTTP real.
@@ -86,7 +86,7 @@ un accelerador httpd, estableix-ho a l'adreça del servidor HTTP real.
 <p>
 <b>Acceleració HTTP Amb Proxy</b>: Per defecte, 'Desactivat'. Activa-ho si
 vols que Squid funcioni com una proxy tradicional, tot i oferint acceleració
-HTTP. Aquesta opció també hauria d'estar activada si fas servir proxy
+HTTP. Aquesta opció també hauria d'estar activada si utilitzes proxy
 transparent.
 <p>
 <b>L'accelerador HTTP Fa Servir la Capçalera del Host</b>: Per defecte,

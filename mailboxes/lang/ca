@@ -1,10 +1,10 @@
 index_title=Lectura del Correu d'Usuaris
-index_none=NO tens permís per llegir el correu de cap usuari d'aquest sistema.
+index_none=No tens permís per llegir el correu de cap usuari d'aquest sistema.
 index_header=Bústies d'usuaris
 index_empty=No hi ha correu
 index_return=a la llista d'usuaris
 index_esystem=No s'ha detectat al sistema cap dels servidors de correu suportats (Exim, Qmail, Postfix i Sendmail). Hauràs d'ajustar la <a href='$1'>configuració del mòdul</a> per configurar manualment el servidor de correu i possiblement els camins del correu.
-index_esystem2=No s'ha trobat al sistema el servidor de correu establert a la <a href='$1'>configuració del mòdul</a>. Hauràs de modificar la configuració per que faci servir el servidor correcte.
+index_esystem2=No s'ha trobat al sistema el servidor de correu establert a la <a href='$1'>configuració del mòdul</a>. Hauràs de modificar la configuració per que utilitzi el servidor correcte.
 index_esystem3=S'ha produït un error en contactar el sistema de correu establert a la <a href='$1'>configuració del mòdul</a>: $2.
 index_system6=Servidor de correu: Exim
 index_system5=Servidor de correu: Qmail+VPopMail
@@ -158,10 +158,10 @@ view_gnupg_0=La signatura de $1 és vàlida.
 view_gnupg_1=La signatura de $1 és vàlida, però no s'ha pogut establir la cadena de fiabilitat.
 view_gnupg_2=La signatura de $1 <b>NO</b> és vàlida.
 view_gnupg_3=L'ID de clau $1 no és a la teva llista, així que no es pot verificar la signatura.
-view_gnupg_4=No he pogut verificar la signatura: $1
+view_gnupg_4=No s'ha pogut verificar la signatura: $1
 view_crypt=Desxifratge de correu GnuPG
 view_crypt_1=El missatge està xifrat, però el suport GnuPG no està instal·lat.
-view_crypt_2=No he pogut desxifrar el missatge: $1
+view_crypt_2=No s'ha pogut desxifrar el missatge: $1
 view_crypt_3=El correu s'ha desxifrat correctament.
 view_crypt_4=La part xifrada del missatge s'ha desxifrat correctament.
 view_recv=<a href='$2'>Obtingues l'ID de clau $1 del servidor de claus</a>.
@@ -203,8 +203,8 @@ reply_attach3=Adjuncions pujades
 reply_send=Envia el Correu
 reply_ecannot=No tens permís per enviar correu amb aquest usuari
 reply_body=Text del missatge
-reply_errc=No he pogut copiar el correu
-reply_errm=No he pogut desplaçar el correu
+reply_errc=No s'ha pogut copiar el correu
+reply_errm=No s'ha pogut desplaçar el correu
 reply_return=a la redacció del correu
 reply_efwdnone=No existeix cap dels missatges reenviats
 reply_dsn=Demana notificació de l'estat de lectura
@@ -226,33 +226,33 @@ reply_spell=Comprova l'ortografia
 reply_draft=Desa com a Esborrany
 reply_save=Desa i Edita
 
-send_err=No he pogut enviar el correu
+send_err=No s'ha pogut enviar el correu
 send_eto=Hi falta l'adreça To
 send_efrom=Hi falta l'adreça From
 send_esubject=Hi falta l'asssumpte del correu
 send_title=Correu Enviat
 send_title2=Correu Desat
-send_ok=Correu enviat correctament a to $1
-send_sending=Enviant el correu a $1...
+send_ok=S'ha enviat correctament el correu a $1
+send_sending=S'està enviant el correu a $1...
 send_ecannot=No tens permís per enviar correu amb aquest usuari
 send_esmtp=L'ordre SMTP $1 ha fallat: $2
 send_eattach=Les adjuncions no poden fer més de $1 Kb.
 send_eperms=L'usuari $1 no pot llegir $2
 send_eperms2=No tens permís per enviar el fitxer $1
 send_epath=L'executable de Sendmail $1 no existeix.
-send_efile=No he pogut llegir l'adjunció $1: $2
+send_efile=No s'ha pogut llegir l'adjunció $1: $2
 send_done=...fet.
 
 send_epass=No pots signar cap missatge perquè la teva frase de contrasenya encara no està configurada al mòdul de GnuPG.
-send_esign=No he pogut signar el missatge: $1
-send_ekey=No he pogut trobar la clau per a l'adreça de correu $1
-send_ecrypt=No he pogut xifrar el missatge: $1
+send_esign=No s'ha pogut signar el missatge: $1
+send_ekey=No s'ha pogut trobar la clau per a l'adreça de correu $1
+send_ecrypt=No s'ha pogut xifrar el missatge: $1
 send_eword=Paraula '$1' incorrecta
 send_eword2=Paraula '$1' incorrecta - possible correcció: $2
 send_eline=A la línia $1:
 send_espell=S'han trobat els error ortogràfics següents al missatge...
 send_draft=El correu per a $1 s'ha desat a la carpeta d'esborranys.
-send_drafting=Desant el correu per a $1 a la carpeta d'esborranys...
+send_drafting=S'està desant el correu per a $1 a la carpeta d'esborranys...
 send_eattachsize=L'adjunció de correu excedeix la mida màxima permesa de $1 bytes
 
 delete_title=Supressió de Correu
@@ -274,9 +274,9 @@ delete_ecopycannot=No tens permís per copiar els correus a l'usuari especificat
 delete_emovenone=No has seleccionat cap correu per desplaçar
 delete_ecopynone=No has seleccionat cap correu per copiar
 delete_nobutton=No has fet clic a cap botó
-delete_ereport=No he pogut informar com a spam: $1
-delete_errc=No he pogut copiar el correu
-delete_errm=No he pogut desplaçar el correu
+delete_ereport=No s'ha pogut informar com a spam: $1
+delete_errc=No s'ha pogut copiar el correu
+delete_errm=No s'ha pogut desplaçar el correu
 
 confirm_title=Confirmació de Supressió
 confirm_warn=Segur que vols suprimir els $1 missatges seleccionats d'aquesta carpeta?
@@ -320,12 +320,12 @@ folder_sent=Enviat
 folder_drafts=Drafts
 folder_trash=Trash
 
-detach_err=No he pogut separar el fitxer
+detach_err=No s'ha pogut separar el fitxer
 detach_edir=No has introduït cap fitxer o directori per desar
-detach_eopen=No he pogut obrir $1: $2
-detach_ewrite=No he pogut gravar a $1: $2
+detach_eopen=No s'ha pogut obrir $1: $2
+detach_ewrite=No s'ha pogut escriure a $1: $2
 detach_title=Alliberament de Fitxer
-detach_ok=He gravat l'adjunció al fitxer del servidor $1 ($2).
+detach_ok=S'ha escrit l'adjunció al fitxer del servidor $1 ($2).
 
 sform_title=Recerca Avançada
 sform_header=Opcions avançades de recerca de correu
@@ -391,38 +391,38 @@ acl_sec=Inclou grups secundaris
 acl_dir=Pot llegir els fitxer de correu del directori
 acl_dirauto=Decideix automàticament (qualsevol lloc si tots els usuaris són visibles, enlloc altrament)
 
-log_delmail=He suprimit $1 missatges de $2
-log_movemail=He desplaçat $1 missatges de $2 a $3
-log_copymail=He copiat $1 missatges de $2 a $3
-log_send=He enviat el correu a $1
-log_read=He llegit el correu de $1
+log_delmail=S'han suprimit $1 missatges de $2
+log_movemail=S'han desplaçat $1 missatges de $2 a $3
+log_copymail=S'han copiat $1 missatges de $2 a $3
+log_send=S'ha enviat el correu a $1
+log_read=S'ha llegit el correu de $1
 
 emodified=Aquesta carpeta s'ha modificat des de la darrera visualització! Torna a la <a href='$1'>llista de correu</a> i torna-ho a provar.
 
-razor_title=Informant com a Spam
-razor_title2=Informant com a Ham
-razor_report=Informant aquest missatge a Razor i altres bases de dades de blocatge de spam de SpamAssassin...
-razor_report2=Informant dels missatges seleccionats a Razor i altres bases de dades SpamAssassin de blocatge de spam...
-razor_report3=Desinformant els missatges seleccionats a Razor i altres bases de dades SpamAssassin de blocatge de spam...
+razor_title=Informació com a Spam
+razor_title2=Informació com a Ham
+razor_report=S'està informant aquest missatge a Razor i altres bases de dades de bloqueig de spam de SpamAssassin...
+razor_report2=S'està informant dels missatges seleccionats a Razor i altres bases de dades SpamAssassin de bloqueig de spam...
+razor_report3=S'està desinformant els missatges seleccionats a Razor i altres bases de dades SpamAssassin de bloqueig de spam...
 razor_done=... fet.
 razor_err=... ha fallat! Mira el missatge d'error de sobre per saber-ne el motiu.
-razor_moved=...fet, i l'he desaplaçat a la carpeta $1.
-razor_deleted=...fet, i també he suprimit el missatge.
+razor_moved=...fet, i s'ha desaplaçat a la carpeta $1.
+razor_deleted=...fet, i també s'ha suprimit el missatge.
 
-ham_title=Informant com a Ham
-ham_report=Informant aquest missatges com a no spam a Razor i altres base de dades SpamAssassin...
+ham_title=Informació com a Ham
+ham_report=S'està informant aquest missatges com a no spam a Razor i altres base de dades SpamAssassin...
 
-black_title=Denegant el Remitent
-black_done=He afegit l'adreça de correu $1 a la llista d'adreces denegades de SpamAssassin.
+black_title=Denegació de Remitent
+black_done=S'ha afegit l'adreça de correu $1 a la llista d'adreces denegades de SpamAssassin.
 black_already=L'adreça de correu $1 ja és a la llista d'adreces denegades de SpamAssassin.
 
-white_title=Permetent Remitent
-white_done=He afegit l'adreça de correu $1 a la llista d'adreces permeses de SpamAssassin.
+white_title=Autorització de Remitent
+white_done=S'ha afegit l'adreça de correu $1 a la llista d'adreces permeses de SpamAssassin.
 white_already=L'adreça de correu $1 ja és a la llista d'adreces permeses de SpamAssassin.
 
 ldap_emod=Falta el mòdul Perl $1 necessari per connectar amb LDAP
-ldap_econn=No he pogut connectar amb el servidor LDAP $1 port $2
-ldap_elogin=No he pogut lligar el servidor LDAP $1 com a $2: $3
+ldap_econn=No s'ha pogut connectar amb el servidor LDAP $1 port $2
+ldap_elogin=No s'ha pogut vincular el servidor LDAP $1 com a $2: $3
 ldap_ehost=No hi ha cap servidor LDAP establert a la configuració del mòdul
 ldap_eport=No hi ha cap port de servidor vàlid LDAP establert a la configuració del mòdul
 ldap_euser=No hi ha cap entrada LDAP establerta a la configuració del mòdul

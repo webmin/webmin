@@ -3,4 +3,4 @@ refresh=Segons entre refrescs de l'estat RAID,3,Mai
 line2=Configuració del sistema,11
 raidtab=Fitxer de configuració RAIDTools,0
 mdadm=Fitxer de configuració MDADM,0
-mdstat=Fitxer d'estat del RAID de kernel,0
+mdstat=Fitxer d'estat del RAID de nucli,0

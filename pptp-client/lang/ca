@@ -1,15 +1,15 @@
 index_title=Client VPN PPTP
 index_epptp=No s'ha trobat al sistema el programa client PPTP $1. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_eppp=El programa servidor PPP $1 no està instal·lat al sistema. PPTP en depèn per poder operar.
-index_eoptions=El fitxer d'opcions globals PPP de PPTP $1 no existeix. Crea'l o bé canvia la <a href='$2'>configuració del mòdul</a> per fer servir un fitxer diferent o cap en absolut.
+index_eoptions=El fitxer d'opcions globals PPP de PPTP $1 no existeix. Crea'l o bé canvia la <a href='$2'>configuració del mòdul</a> per utilitzar un fitxer diferent o cap en absolut.
 index_header=Túnels Definits
 index_none=Encara no s'ha definit cap túnel PPTP.
 index_tunnel=Túnel $1
 index_add=Afegeix un nou túnel VPN PPTP.
 index_conn=Connecta't a:
 index_pass=amb la contrasenya opcional:
-index_conndesc=Fes clic sobre aquest botó per connectar amb el túnel VPN PPTP seleccionat utilitzant la seva configuració actual.
-index_disc=Desconnecta't de:
+index_conndesc=Fes clic sobre aquest botó per connectar el túnel VPN PPTP seleccionat utilitzant la seva configuració actual.
+index_disc=Desconnecta:
 index_discdesc=Fes clic sobre aquest botó per desconnectar el túnel VPN PPTP actiu seleccionat i treure totes les rutes que hi passen.
 index_return=a la llista de PPTP tunnel list
 index_opts=Edita les Opcions Globals PPP
@@ -19,21 +19,21 @@ index_boot=Connecta en engegar:
 index_noboot=&lt;No connectis&gt;
 index_bootdesc=Canvia aquesta opció per controlar si la connexió VPN PPTP s'inicia en engegar el sistema o no.
 
-disc_err=No he pogut desconnectar el túnel
+disc_err=No s'ha pogut desconnectar el túnel
 disc_egone=Ja no està actiu
-disc_ekill=No he pogut matar el procés
+disc_ekill=No s'ha pogut matar el procés
 disc_done=El túnel $1 s'ha desconnectat correctament.
 
-conn_err=No he pogut connectar amb el túnel
+conn_err=No s'ha pogut connectar el túnel
 conn_egone=El túnel ja no existeix
-cone_ealready=Aa està connectat
+cone_ealready=Ja està connectat
 conn_einvalid=Hi falta l'adreça IP del servidor al fitxer de configuració
 conn_title=Connexió al Túnel
-conn_cmd=Establint una connexió PPTP amb l'ordre $1...
+conn_cmd=S'està establint una connexió PPTP amb l'ordre $1...
 conn_ok=...connexió activada amb èxit utilitzant la interfície $1. La teva adreça local és $2, i l'adreça remota és $3.
 conn_timeout=...la connexió ha fallat! Mira els missatges de registre més avall per saber-ne el perquè.
-conn_routes=Afegint rutes amb ordres...
-conn_mppe=El protocol MPPE per a xifratge VPN necessita el dimoni PPP i suport del kernel. No obstant, l'error de més amunt suggereix que un dels dos o tots dos no estan disponibles al sistema. Si el servidor PPTP no exigeix MPPE, prova de desactivar totes les opcions relacionades a la pàgina d'<a href='$1'>Opcions Globals PPP</a>.
+conn_routes=S'estan afegint rutes amb ordres...
+conn_mppe=El protocol MPPE per a xifratge VPN necessita el dimoni PPP i suport del nucli. No obstant, l'error de més amunt suggereix que un dels dos o tots dos no estan disponibles al sistema. Si el servidor PPTP no exigeix MPPE, prova de desactivar totes les opcions relacionades a la pàgina d'<a href='$1'>Opcions Globals PPP</a>.
 
 edit_title1=Addició de Túnel PPTP
 edit_title2=Edició de Túnel PPTP
@@ -64,7 +64,7 @@ edit_none=Cap
 edit_global=Fitxer global estàndard
 edit_ofile=Un altre fitxer...
 
-save_err=No he pogut desar el nom del túnel
+save_err=No s'ha pogut desar el nom del túnel
 save_ename=Hi falta tunnel name
 save_eserver=Hi falta el servidor a connectar o bé és invàlid
 save_elogin=Hi falta el nom d'usuari o bé és invàlid
@@ -76,22 +76,22 @@ save_egw=Portal invàlid per a la xarxa a la ruta $1
 save_ehost=Adreça IP del host invàlida a la ruta $1
 save_emask2=No cal màscara per a la ruta del host $1
 save_egw2=Portal del host invàlid a la ruta $1
-save_erename=No he pogut renomenar el fitxer del túnel
+save_erename=No s'ha pogut renomenar el fitxer del túnel
 save_eclash=Ja existeix un túnel o un <i>peer</i> PPP amb el mateix nom
 save_efile=Hi falta el fitxer d'opcions PPP o bé és invàlid
 
 opts_title=Opcions Globals del PPP
-opts_desc=Els valors de sota es prenen de $1, i s'aplicaran a tots els túnels que es configurin per a fer servir el fitxer estàndard d'opcions globals del PPP.
+opts_desc=Els valors de sota es prenen de $1, i s'aplicaran a tots els túnels que es configurin per a utilitzar el fitxer estàndard d'opcions globals del PPP.
 opts_header=Opcions PPP per a tots els túnels
 opts_mtu=Mida màxima dels paquets enviats
 opts_mru=Mida màxima dels paquets
-opts_err=No he pogut desar les opcions globals del PPP
+opts_err=No s'han pogut desar les opcions globals del PPP
 opts_emtu=Hi falta la mida màxima dels paquets enviats o bé és invàlida
 opts_emru=Hi falta la mida màxima dels paquets rebuts o bé és invàlida
-opts_msdesc=Les opcions de sota activen el xifratge MPPE, utilitzat pels servidors VPN de Windows. No obstant, MPPE necessita suport tant al dimoni PPP com al kernel del sistema operatiu.
+opts_msdesc=Les opcions de sota activen el xifratge MPPE, utilitzat pels servidors VPN de Windows. No obstant, MPPE necessita suport tant al dimoni PPP com al nucli del sistema operatiu.
 
-mppe_mppe-40=Fes servir xifratge MPPE de 40 bits
-mppe_mppe-128=Fes servir xifratge MPPE de 128 bits
+mppe_mppe-40=Utilitza xifratge MPPE de 40 bits
+mppe_mppe-128=Utilitza xifratge MPPE de 128 bits
 mppe_mppe-stateless=Activa el mode MPPE sense estat
 mppe_mppe=Activa el xifratge MPPE
 mppe_m2=Cal utilitzar-lo
@@ -102,12 +102,12 @@ mppe_mppe-stateful=Activa el mode MPPE amb estat
 mppe_old=Atenció - S'han trobat les directives MPPE d'estil antic $1 al fitxer de configuració, tot i que el dimoni PPP suporta les directives d'estil nou.
 mppe_new=Atenció - S'han trobat les directives MPPE d'estil nou $1 al fitxer de configuració, tot i que el dimoni PPP només suporta les directives d'estil antic.
 
-log_create=He creat el túnel PPTP $1
-log_update=He modificat el túnel PPTP $1
-log_delete=He suprimit el túnel PPTP $1
-log_conn=He connectat el túnel $1
-log_conn_l=He connectat el túnel $1 amb l'adreça local $2
-log_failed=No he pogut connectar el túnel $1
-log_disc=He desconnectat el túnel $1
-log_opts=He editat les opcions globals del PPP
+log_create=S'ha creat el túnel PPTP $1
+log_update=S'ha modificat el túnel PPTP $1
+log_delete=S'ha suprimit el túnel PPTP $1
+log_conn=S'ha connectat el túnel $1
+log_conn_l=S'ha connectat el túnel $1 amb l'adreça local $2
+log_failed=No s'ha pogut connectar el túnel $1
+log_disc=S'ha desconnectat el túnel $1
+log_opts=S'han editat les opcions globals del PPP
 

@@ -78,18 +78,18 @@ edit_open=Fitxers i Connexions
 edit_trace=Rastreja el Procés
 edit_return=als detalls del procés
 
-kill_err=No he pogut enviar el senyal $1 al procés $2
+kill_err=No s'ha pogut enviar el senyal $1 al procés $2
 kill_title=Envia el Senyal
-kill_sent=he enviat
+kill_sent=s'ha enviat
 kill_ecannot=No tens permís per matar processos
 
-renice_err=No he pogut canviar el nivell <i>nice</i> de $1
+renice_err=No s'ha pogut canviar el nivell <i>nice</i> de $1
 renice_ecannot=No tens permís per canviar els nivells <i>nice</i> dels processos.
 
 linux_pri=Prioritat
 linux_tty=TTY
 linux_status=Estat
-linux_wchan=Esperant a
+linux_wchan=Esperant
 linux_mem=Memòria
 linux_group=Grup
 linux_ruser=Usuari real
@@ -117,7 +117,7 @@ freebsd_lim=Límit de memòria
 hpux_pri=Prioritat
 hpux_tty=TTY
 hpux_status=Estat
-hpux_wchan=Esperant a
+hpux_wchan=Esperant
 hpux_stime=$stime
 
 hpuxstat_0=Inexistent
@@ -140,12 +140,12 @@ sysv_stime=$stime
 sysv_task=ID de Tasca
 sysv_zone=Nom de la Zona
 
-log_run=He executat l'ordre "$1"
-log_kill=He enviat el senyal $1 al procés $2
-log_kills=He enviat el senyal $1 a $2 processos
-log_kill_l=He enviat el senyal $1 al procés $2
-log_kills_l=He enviat el senyal $1 als processos<br>$2
-log_renice=He canviat la prioritat del procés $2 a $1
+log_run=S'ha executat l'ordre "$1"
+log_kill=S'ha enviat el senyal $1 al procés $2
+log_kills=S'ha enviat el senyal $1 a $2 processos
+log_kill_l=S'ha enviat el senyal $1 al procés $2
+log_kills_l=S'ha enviat el senyal $1 als processos<br>$2
+log_renice=S'ha canviat la prioritat del procés $2 a $1
 
 acl_manage=Gestiona els processos com un usuari
 acl_manage_def=Usuari Webmin actual
@@ -171,9 +171,9 @@ open_type=Tipus
 open_proto=Protocol
 open_desc=Detalls
 open_fd=Descriptor de fitxer
-open_listen1=Escoltant el port $1
-open_listen2=Escoltant l'adreça $1 port $2
-open_recv=Rebent sobre $1:$2
+open_listen1=S'està escoltant el port $1
+open_listen2=S'està escoltant l'adreça $1 port $2
+open_recv=S'està rebent sobre $1:$2
 open_conn=Connectat des de $1 a $2 en estat $3
 open_cwd=Directori actual
 open_rtd=Directori arrel
@@ -188,11 +188,11 @@ open_inode=Inode
 open_file=Camí
 
 trace_title=Rastreig de Procés
-trace_start=Iniciant el rastreig de les crides del sistema de $1...
+trace_start=S'està iniciant el rastreig de les crides del sistema de $1...
 trace_doing=Rastreig de les crides del sistema de $1:
 trace_done=...el procés s'ha acabat.
 trace_failed=...el rastreig ha fallat!
-trace_sorry=Aquesta pàgina necessita que el navegador tingui suport de Java. Per emprar un rastreig de procés només text, ajusta la configuració del mòdul.
+trace_sorry=Aquesta pàgina necessita que el navegador tingui suport de Java. Per utilitzar un rastreig de procés només text, ajusta la configuració del mòdul.
 trace_syscalls=Rastreja les crides del sistema:
 trace_all=Totes
 trace_sel=Les llistades...
@@ -200,4 +200,4 @@ trace_change=Canvia
 
 windows_threads=Fils del procés
 
-syslog_dmesg=Missatges del kernel
+syslog_dmesg=Missatges del nucli

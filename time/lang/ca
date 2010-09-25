@@ -48,23 +48,23 @@ minute=Minut
 second=Segon
 
 error_cnf=Error: no s'ha trobat l'ordre $1
-error_hw=No puc establir l'hora del maquinari: $1
-error_sync=No puc sincronitzar amb l'hora del sistema: $1
+error_hw=No es pot establir l'hora del maquinari: $1
+error_sync=No es pot sincronitzar amb l'hora del sistema: $1
 error_ediff=La diferència del servidor horari amb l'hora local és massa gran: $1 dies
 error_entp=La sincronització horària NTP ha fallat: $1
 error_etimeserver=No hi ha cap servidor horari a sincronitzar amb el que has introduït
 
 log_set_date=Estableix l'hora del sistema a $1
 log_set_hwclock=Estableix l'hora del maquinari a $1
-log_remote_date=He obtingut l'hora del sistema de $2
-log_remote_hwclock=He obtingut l'hora del maquinari de $2
-log_remote_date_l=He obtingut l'hora del sistema $1 de $2
-log_remote_hwclock_l=He obtingut l'hora del maquinari $1 de $2
-log_sync=He sincronitzat l'hora del sistema amb l'hora del maquinari
-log_sync_s=He sincronitzat l'hora del maquinari amb l'hora del sistema
-log_timezone=He canviat la zona horària a $1
+log_remote_date=S'ha obtingut l'hora del sistema de $2
+log_remote_hwclock=S'ha obtingut l'hora del maquinari de $2
+log_remote_date_l=S'ha obtingut l'hora del sistema $1 de $2
+log_remote_hwclock_l=S'ha obtingut l'hora del maquinari $1 de $2
+log_sync=S'ha sincronitzat l'hora del sistema amb l'hora del maquinari
+log_sync_s=S'ha sincronitzat l'hora del maquinari amb l'hora del sistema
+log_timezone=S'ha canviat la zona horària a $1
 
-timezone_err=No he pogut desar la zona horària
+timezone_err=No s'ha pogut desar la zona horària
 timezone_ecannot=No tens permís per canviar la zona horària
 timezone_enone=No has seleccionat cap zona
 

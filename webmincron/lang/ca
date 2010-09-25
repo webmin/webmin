@@ -1,0 +1,18 @@
+edit_mins=Minuts
+edit_hours=Hores
+edit_days=Dies
+edit_months=Mesos
+edit_weekdays=Dies de la setmana
+edit_all=Tots
+edit_selected=Seleccionats...
+edit_run=Executa-ho Ara
+edit_clone=Clona el Treball
+edit_return=al treball cron
+edit_special1=Planificació simple...
+edit_special0=A les hores i els dies seleccionats a sota...
+edit_special_hourly=Cada hora
+edit_special_daily=Cada dia (a mitjanit)
+edit_special_weekly=Cada setmana (el diumenge)
+edit_special_monthly=Cada mes (el dia 1)
+edit_special_yearly=Cada any (el dia 1 de Gener)
+

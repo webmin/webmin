@@ -28,11 +28,11 @@ err_nowatch=No has seleccionat cap Grup d'Observació. Selecciona'n almenys un pe
 err_noserv=No has seleccionat cap Servei per al grup d'observació
 err_nomemb=No has seleccionat cap Host/Membre per al grup d'observació
 err_monrun=MON is no està en execució a la màquina host. Inicia MON, si et plau.
-stop_err=No he pogut aturar MON
+stop_err=No s'ha pogut aturar MON
 stop_epid=Ja no està en execució
-start_err=No he pogut iniciar MON
-restart_err=No he pogut reiniciar MON
-restart_epid=No he pogut obtenir el PID
+start_err=No s'ha pogut iniciar MON
+restart_err=No s'ha pogut reiniciar MON
+restart_epid=No s'ha pogut obtenir el PID
 
 ETIQUETES:
 other=Altres (separats per espais)
@@ -118,11 +118,11 @@ service_units_m=minuts
 service_units_h=hores
 service_units_d=dies
 service_units_w=setmanes
-service_monitor=Fent servir el monitor
+service_monitor=S'està utilitzant el monitor
 service_mon1=Monitor estàndard
 service_mon0=Un altre monitor...
 service_args=Paràmetres del monitor
-service_period=Monitoritzant el període $1
+service_period=S'està monitoritzant el període $1
 service_days=Dies a comprovar
 service_hours=Hores a comprovar
 service_all=Tots
@@ -146,7 +146,7 @@ service_after_num=Després de $1 fallades
 service_aftertime=En l'interval de temps
 service_newperiod=Afegeix un nou període
 service_delperiod=Suprimeix aquest període
-service_err=No he pogut desar el servei
+service_err=No s'ha pogut desar el servei
 service_ename=Hi falta el nom del servei o bé és invàlid
 service_einterval=Hi falta l'interval de comprovació o bé és invàlid
 service_eother=Hi falta el monitor o bé és invàlid
@@ -162,7 +162,7 @@ service_known2=Període definit
 
 status_title=Estat de MON
 status_ecgi=El programa CGI $1 d'estat de MON no existeix. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-status_eperl=El programa CGI d'estat de MON necessita el mòdul perl $1. <a href='$2'>Fes clic aquí</a> per instal·lar-lo directament des de CPAN.
+status_eperl=El programa CGI d'estat de MON necessita el mòdul Perl $1. <a href='$2'>Fes clic aquí</a> per instal·lar-lo directament des de CPAN.
 status_esame=El programa CGI d'estat de MON $1 s'ha configurat al script <tt>mon.cgi</tt> en aquest mòdul de Webmin, no el prorama CGI que ve amb MON. Ajusteu la <a href='$2'>configuració del mòdul</a> per utilitzar el camí correcte.
 
 users_title=Usuaris de MON
@@ -178,18 +178,18 @@ user_header=Detalls de l'usuari de MON
 user_user=Usuari
 user_pass=Contrasenya
 user_leave=Deixa-ho tal com està
-user_err=No he pogut desar l'usuari
+user_err=No s'ha pogut desar l'usuari
 user_euser=Hi falta el nom de l'usuari o bé és invàlid
 user_esame=ja existeix un usuari amb aquest mateix nom
 
 auth_title=Ordres de Client
-auth_desc=Aquesta pàgina permet controlar quines ordres de MON poden ser executades per quins usuaris quan fan servir els programes client.
+auth_desc=Aquesta pàgina permet controlar quines ordres de MON poden ser executades per quins usuaris quan utilitzen els programes client.
 auth_cmd=Ordres de MON
 auth_users=Usuaris permesos
 auth_none=Ningú
 auth_all=Tothom
 auth_sel=Només els usuaris
-auth_err=No he pogut desar les ordres dels clients
+auth_err=No s'han pogut desar les ordres dels clients
 auth_eusers=No has introduït cap usuari per a l'ordre $1
 
 periods_title=Períodes definits
@@ -197,7 +197,7 @@ periods_period=Nom del període
 periods_times=Dies i hores
 periods_alldays=Cada dia
 periods_allhours=Cada hora
-periods_err=No he pogut desar els períodes definits
+periods_err=No s'han pogut desar els períodes definits
 periods_ename='$1' no és un nom de període vàlid
 periods_ehour=Hi falta l'hora del període $1 o bé és invàlida (ha de ser com ara 9am o 5pm)
 

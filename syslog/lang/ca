@@ -25,7 +25,7 @@ index_view=Visualitza...
 index_viewfile=Visualitza el fitxer de registre:
 index_viewok=Visualitza
 
-restart_ekill=No he pogut enviar el senyal al procés syslog $1: $2
+restart_ekill=No s'ha pogut enviar el senyal al procés syslog $1: $2
 restart_ecannot=No tens permés per reiniciar syslog
 start_ecannot=NO tens permís per iniciar syslog
 
@@ -65,7 +65,7 @@ view_empty=El fitxer de registre està buit
 view_refresh=Refresca
 view_filter=Mostra només les línies amb el text $1
 
-save_err=No he pogut desar el registre
+save_err=No s'ha pogut desar el registre
 save_efile='$1' no és un nom de fitxer vàlid: $2
 save_epipe='$1' no és un <i>pipe</i> amb nom vàlid
 save_epipe2=Hi falta l'ordre contra la qual cal enviar el <i>pipe</i>
@@ -85,11 +85,11 @@ save_ecannot6=No tens permís per visualitzar registres arbitraris
 save_ecannot7=No tens permís per visualitzar aquest registre extra
 save_emissing=Hi falta el fitxer de registre a visualitzar
 
-log_modify=He modificat el registre a $1
-log_create=He afegit el registre a $1
-log_delete=He suprimit el registre a $1
-log_apply=He aplicat els canvis
-log_start=He iniciat el servidor de registres
+log_modify=S'ha modificat el registre a $1
+log_create=S'ha afegit el registre a $1
+log_delete=S'ha suprimit el registre a $1
+log_apply=S'han aplicat els canvis
+log_start=S'ha iniciat el servidor de registres
 
 desc_sysmesg=Missatges del Sistema
 desc_mail=Registre de Correu

@@ -10,6 +10,6 @@ index_edit=Edita l'anterior
 acl_user=Executa les ordres com a usuari
 acl_user_def=Usuari Webmin actual
 
-log_run=He executat l'ordre $1
-log_clear=He netejat l'historial d'ordres
+log_run=S'ha executat l'ordre $1
+log_clear=S'ha netejat l'historial d'ordres
 

@@ -17,7 +17,7 @@ Alguns servidors FTP també validen l'adreça de correu electrònic
 <p>
 <b>Programa DNS de Squid</b>: Per defecte, dnsserver. Especifica la ubicació
 de l'executable pel procés dnslookup. El valor per defecte és un servidor de
-noms cau no blocant que s'instal·la per defecte amb Squid.
+noms cau no bloquejant que s'instal·la per defecte amb Squid.
 <p>
 <b>Nombre de programes DNS</b>: Per defecte, 5. El nombre de processos 
 creats per a consultes de noms DNS. per caus amb una gran càrrega en 
@@ -30,13 +30,13 @@ Normalment, dnsserver desactiva l'opció de resolució RES_DEFNAMES
 localment els components dels noms de host. Per permetre que dnsserver
 interpreti components de noms, activa aquesta opció.
 <p>
-<b>Adreces del servidor DNS</b>: Per defecte, fa servir el fitxer resolv.conf.
-Fes-ho servir si vols especificar una llista de servidors de noms DNS
+<b>Adreces del servidor DNS</b>: Per defecte, utilitza el fitxer resolv.conf.
+Utilitza-ho si vols especificar una llista de servidors de noms DNS
 (adreces IP) en lloc dels que hi ha al fitxer /etc/resolv.conf.
 <p>
 <b>Programa de neteja del cau</b>: Per defecte, 'unlinkd'. Especifica la
 ubicació del procés executable d'esborrat de fitxers. Això pot ser innecessari
-si fas servir E/S asíncrona, ja que en algunes versions es gestiona mitjançant
+si utilitzes E/S asíncrona, ja que en algunes versions es gestiona mitjançant
 un fil.
 <p>
 <b>Programa de <i>ping</i> de Squid</b>: Per defecte, 'pinger'. Especifica 

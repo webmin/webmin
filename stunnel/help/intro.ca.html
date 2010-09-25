@@ -7,7 +7,7 @@ mena de cadena de dades que es pugui enviar normalment a través del protocol
 TCP. <p>
 El protocol SSL permet que els clients i els servidors s'autentifiquin els 
 uns als altres, de manera que un client pot estar segur que s'està connectant
-al host que es pensa que és. Això es fa emprant certificats emesos per una
+al host que es pensa que és. Això es fa utilitzant certificats emesos per una
 autoritat certificadora reconeguda pel client (per tal que pugui ser verificat)
 i associat amb un nom de host particular. Sense certificats, un atacant podria
 redireccionar una connexió SSL al seu propi servidor i capturar informació
@@ -32,8 +32,8 @@ com el servidor POP3, que no suporten SSL. Aquest disseny permet protegir
 qualsevol servidor que normalment s'executa des d'inetd, com ara els servidors
 telnet, NNTP i IMAP. <p>
 Tot i així, no tots els servidors es poden protegir de forma útil amb xifratge,
-perquè no tenen cap client per fer servir el mode SSL. Per exemple, no he
-sentit parlar mai de cap client telnet o FTP que pugui fer servir SSL,
+perquè no tenen cap client per utilitzar el mode SSL. Per exemple, no he
+sentit parlar mai de cap client telnet o FTP que pugui utilitzar SSL,
 perquè el paquet SSH normal ja permet entrades remotes i transferències de
 fitxers xifrades. <p>
 Aquest mòdul Webmin facilita la configuració de superserveis que executen

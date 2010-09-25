@@ -46,5 +46,5 @@ index_startmsg=Fes clic sobre aquest botó per iniciar el dimoni d'OpenSL al sist
 index_stop=Atura OpenSLP
 index_stopmsg=Fes clic sobre aquest botó per aturar el dimoni d'OpenSLP del sistema.
 
-stop_err=No he pogut aturar OpenSLP
-start_err=No he pogut iniciar OpenSLP
+stop_err=No s'ha pogut aturar OpenSLP
+start_err=No s'ha pogut iniciar OpenSLP

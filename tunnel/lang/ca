@@ -3,7 +3,7 @@ index_url=Introdueix l'URL a obrir:
 index_open=Obre
 
 link_eurl=URL de túnel invàlid: $1
-link_elogin=No he pogut entrar a $1 com $2
+link_elogin=No s'ha pogut entrar a $1 com $2
 link_eautologin=Usuari o contrasenya invàlida per a. Fes clic <a href='$2'>aquí</a> per entrar.
 link_enouser=Cal un usuari i una contrasenya per entrar a $1,  però no n'has configurat cap.
 link_ebadurl=No tens permís per accedir l'URL $1
@@ -16,6 +16,6 @@ login_pass=Contrasenya
 login_login=Entra
 login_clear=Neteja
 
-seturl_err=No he pogut obrir l'URL
+seturl_err=No s'ha pogut obrir l'URL
 seturl_eurl=Has introduït un URL invàlid
 

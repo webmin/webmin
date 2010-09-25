@@ -55,7 +55,7 @@ no_mailer=Inclou la versió de Webmin a la capçalera X-Mailer?,1,0-Sí,1-No
 
 line1=Configuració del sistema,11
 mail_system=Servidor de correu instal·lat,1,1-Sendmail,0-Postfix,2-Qmail,3-Detecta'l automàticament,4-Qmail+LDAP,5-Qmail+VPopMail,6-Exim,3-Detecta'l automàticament
-send_mode=Envia el correu emprant,10,-El programa servidor de correu,El servidor SMTP
+send_mode=Envia el correu utilitzant,10,-El programa servidor de correu,El servidor SMTP
 no_crlf=Afegeix un retorn de carro ( \r ) a cada línia,1,0-Sí,1-No
 smtp_user=Nom d'usuari SMTP al servidor de correu,3,Cap
 smtp_pass=Contrasenya SMTP al servidor de correu,3,Cap

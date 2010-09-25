@@ -1,7 +1,7 @@
 <header>Client VPN PPTP</header>
 
 Aquest mòdul permet crear connexions VPN amb altres servidors que utilitzin
-el protocol PPTP. El mòdul empra el programa client PPTP estàndard de Linux
+el protocol PPTP. El mòdul utilitza el programa client PPTP estàndard de Linux
 i el dimoni PPP. Els servidors remots han d'estar executant un dimoni PPTP,
 que es pot configurar amb el mòdul Servidor VPN PPTP de Webmin. <p>
 
@@ -11,7 +11,7 @@ Un túnel també pot tenir rutes estàtiques associades per activar-les quan
 es fa la connexió. Per defecte, només es crea una ruta cap al servidor de 
 l'altre extrem del túnel quan s'activa la connexió. <p>
 
-Un cop s'ha creat un túnel, es pot activar fent servir el botó
+Un cop s'ha creat un túnel, es pot activar utilitzant el botó
 <b>Connecta't a</b> del peu de la pàgina principal. Pot haver-hi qualsevol
 nombre de túnels activats en qualsevol moment, i els que estan actius 
 es poden tancar amb el botó <b>Desconnectat de</b>.  <p>
@@ -20,7 +20,7 @@ A la pàgina principal també hi ha el botó <b>Edita les Opcions Globals PPP</b>
 per editar els valors que s'apliquen a tots els túnels. Els més importants
 són aquells relacionats amb MPPE, un protocol de xifratge utilitzat pels
 servidors VPN de Microsoft per assegurar les connexions PPTP. No obstant,
-per tal que MPPE funcioni, cal suport tant al dimoni PPP com al kernel del
+per tal que MPPE funcioni, cal suport tant al dimoni PPP com al nucli del
 sistema. Les versions de PPPd 2.4.2 en amunt suporten MPPE nativament,
 i també hi ha un pedaç per a versions més velles.  <p>
 

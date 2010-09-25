@@ -4,9 +4,9 @@ index_eversion=No sembla que la versió del fitxer de configuració de sendmail si
 index_epath=L'executable sendmail $1 no està instal·lat al sistema. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta, o bé que el sendmail no estigui instal·lat.
 index_return=a la configuració sendmail
 index_stop=Atura Sendmail
-index_stopmsg=Fes clic sobre aquest botó per aturar el procés sendmail en execució. Això impedirà que els usuaris locals rebin correu des d'altres sistemes, i també impedirà que puguin fer servir aquest sistema com a servidor de correu.
+index_stopmsg=Fes clic sobre aquest botó per aturar el procés sendmail en execució. Això impedirà que els usuaris locals rebin correu des d'altres sistemes, i també impedirà que puguin utilitzar aquest sistema com a servidor de correu.
 index_start=Inicia Sendmail
-index_startmsg=Fes clic sobre aquest botó per iniciar el sendmail amb l'ordre $1. Fins que això no es faci, no es podrà lliurar correu als usuaris locals des d'altres sistemes ni els clients podran fer servir aquest sistema com a a servidor de correu.
+index_startmsg=Fes clic sobre aquest botó per iniciar el sendmail amb l'ordre $1. Fins que això no es faci, no es podrà lliurar correu als usuaris locals des d'altres sistemes ni els clients podran utilitzar aquest sistema com a a servidor de correu.
 index_version2=Sendmail versió $1, configuració $2 
 index_xversion=Sendmail versió $1
 index_version=Configuració Sendmail $1
@@ -36,7 +36,7 @@ opts_loglevel=Nivell de registre
 opts_mimebounce=Codifica amb MIME els missatges rebotats
 opts_default=Defecte
 opts_save=Desa i Aplica
-opts_err=No he pogut desar les opcions
+opts_err=No s'han pogut desar les opcions
 opts_ehost='$1' no és un nom de host o de domini vàlid
 opts_einvalid='$1' no és un valor vàlid de '$2'
 opts_blame=Opcions de seguretat de fitxers
@@ -95,13 +95,13 @@ aform_return=a l'àlies
 aform_cmt=Descripció
 
 afile_title=Edició del Fitxer d'Adreces
-afile_desc=Fes servir l'àrea de text de sota per editar les adreces del fitxer $1.
+afile_desc=Utilitza l'àrea de text de sota per editar les adreces del fitxer $1.
 afile_efile=No tens permís per editar $1.
 afile_undo=Desfés els canvis
-afile_ewrite=No he pogut escriure al fitxer d'adreces: $1
+afile_ewrite=No s'ha pogut escriure al fitxer d'adreces: $1
 
 ffile_title=Edita el Fitxer de Filtre
-ffile_desc=Fes servir el formulari de sota per establir les regles de filtratge del fitxer $1.
+ffile_desc=Utilitza el formulari de sota per establir les regles de filtratge del fitxer $1.
 ffile_efile=No tens permís per editar $1.
 ffile_line=Si el camp $1 $2 $3, llavors reenvia a $4
 ffile_from=de
@@ -112,18 +112,18 @@ ffile_body=cos
 ffile_what0=no coincideix
 ffile_what1=coincideix
 ffile_other=Altrament reenvia a $1
-ffile_err=No he pogut desar el fitxer de filtre
+ffile_err=No s'ha pogut desar el fitxer de filtre
 ffile_ematch=Hi falta el patró
 ffile_eaction=Hi falta l'adreça de reenviament
 
 rfile_title=Edició del Fitxer d'Autoresposta
 rfile_desc2=També pots afegir capçaleres de correu o reemplaçar les capçaleres per defecte utilitzades en l'autoresposta posant-hi línies com ara:<br><tt>From: foo@bar.com</tt><br><tt>Subject: De vacances</tt><br>a dalt de tot del missatge, separat del cos per una sola línia en blanc.
-rfile_desc=Fes servir l'àrea de text de sota per editar el missatge d'autoresposta de $1. El missatge pot contenir les macros $SUBJECT, $FROM, $TO, $DATE i $BODY, que s'expandiran quan s'activi l'autoresposta.
+rfile_desc=Utilitza l'àrea de text de sota per editar el missatge d'autoresposta de $1. El missatge pot contenir les macros $SUBJECT, $FROM, $TO, $DATE i $BODY, que s'expandiran quan s'activi l'autoresposta.
 rfile_efile=No tens permís per editar $1.
 rfile_undo=Desfés els canvis
 rfile_replies=Rastreja les respostes per evitar bucles infinits en el correu
 rfile_none=No 
-rfile_file=Sí, fent servir el fitxer de registre
+rfile_file=Sí, utilitzant el fitxer de registre
 rfile_period=Interval mínim entre respostes
 rfile_default=Per defecte (1 hora)
 rfile_secs=segons
@@ -136,7 +136,7 @@ rfile_auto=Automàtica (basada en l'adreça del destinatari)
 rfile_efrom=Hi falta l'adreça From:
 rfile_fromdesc=Cal especificar una adreça From: sempre que sigui possible, ja que el mètode automàtic pot no ser fiable.
 
-asave_err=No he pogut desar l'àlies
+asave_err=No s'ha pogut desar l'àlies
 asave_ecannot2=No tens permís per editar l'àlies
 asave_ecannot=No tens permís per editar aquest àlies
 asave_emax=No tens permís per crear més de $1 àlies
@@ -153,7 +153,7 @@ asave_etype4none=No has donat cap programa
 asave_etype6=El fitxer de filtre '$1' no és vàlid
 asave_esame=Només tens permès de crear un àlies amb el mateix nom que el teu nom d'usuari Webmin
 
-adelete_err=No he pogut suprimir els àlies
+adelete_err=No s'han pogut suprimir els àlies
 adelete_enone=No n'hi ha cap de seleccionat
 adelete_ecannot=No tens permís per suprimir l'àlies $1
 
@@ -162,7 +162,7 @@ cws_ecannot=No tens permís per editar els dominis locals
 cws_domains=Dominis gestionats per aquest servidor
 cws_desc1=Apart del correu a $1, sendmail només acceptarà el lliurament local per als dominis i noms de host llistats a la caixa de text de sota. Si vols que el servidor de correu gestioni dominis de correu múltiples, han d'estar tots llistats en aquest formulari.
 cws_desc2=Tingues en compte que el sol fet d'incloure un domini a la llista, normalment no n'hi ha prou. Has d'assegurar també que hi ha algun registre DNS d'aquest domini, i que apunta al teu sistema.
-cws_err=No he pogut desar els dominis locals
+cws_err=No s'han pogut desar els dominis locals
 cws_ehost='$1' no és un nom de host o de domini vàlid
 cws_eip='$1' és una adreça IP no un domini
 
@@ -171,9 +171,9 @@ masq_ecannot=No tens permís per configurar l'emmascarament
 masq_domain=Emmascara com a domini
 masq_domains=Dominis per emmascarar
 masq_ndomains=Dominis que no s'han d'emmascarar
-masq_desc1=Si es dóna un domini aquí sobre, el sendmail alterarà l'adreça <tt>From</tt> de tots els missatges sortints de manera que sembli que provenen d'aquest domini. A més a més, tots els missatges que passin a través del sistema des d'un dels hosts o dominis llistats a sota, també tindran la seva adreça <tt>From</tt> modificada de la mateixa forma. Tingues en compte que tot emmascarament de dominis definida aquí es pot redefinir per a usuaris específics fent servir la pàgina <a href='$1'>Adreces de Sortida</a>.
+masq_desc1=Si es dóna un domini aquí sobre, el sendmail alterarà l'adreça <tt>From</tt> de tots els missatges sortints de manera que sembli que provenen d'aquest domini. A més a més, tots els missatges que passin a través del sistema des d'un dels hosts o dominis llistats a sota, també tindran la seva adreça <tt>From</tt> modificada de la mateixa forma. Tingues en compte que tot emmascarament de dominis definida aquí es pot redefinir per a usuaris específics utilitzant la pàgina <a href='$1'>Adreces de Sortida</a>.
 masq_desc2=Aquesta característica pot ser útil si vols que el correu del teu sistema aparenti venir del nom del domini, més que no pas del nom del host, o bé si el teu sistema és el concentrador de correu d'un cert nombre d'altres hosts que executen els seus propis servidors de correu.
-masq_err=No he pogut desar l'emmascarament del domini
+masq_err=No s'ha pogut desar l'emmascarament del domini
 masq_edomain='$1' no és un nom de domini vàlid per a un emmascarament
 masq_ehost='$1' no és un nom vàlid de host ni de domini
 masq_eip='$1' és una adreça IP, no un domini
@@ -182,16 +182,16 @@ trusts_title=Usuaris Fiables
 trusts_ecannot=No tens permís per editar els usuaris fiables
 trusts_users=Usuaris locals fiables de sendmail
 trusts_desc=Si un usuari local prova d'enviar correu, el sendmail només li permetrà de donar una adreça <tt>From:</tt> diferent si l'usuari és a la llista de sota. Aquesta restricció existeix per evitar que els usuaris falsifiquin correu amb adreces <tt>From:</tt> simulades des del teu sistema.
-trusts_err=No he pogut desar els usuaris fiables
+trusts_err=No s'han pogut desar els usuaris fiables
 trusts_euser='$1' no és un usuari vàlid
 
 virtusers_title=Mapejats d'Adreces
 virtusers_ecannot=No tens permís per editar el mapejat d'adreces
 virtusers_efeature=La configuració del teu sendmail no té activada la característica de mapejat d'adreça (<tt>virtuser</tt>). <a href='$1'>Fes clic aquí</a> per configurar característiques de sendmail.
-virtusers_efile=El fitxer de text $1 a partir del qual es construeix la base de dades de mapejat $2 no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per fer servir el camí correcte.
+virtusers_efile=El fitxer de text $1 a partir del qual es construeix la base de dades de mapejat $2 no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per fer utilitzar el camí correcte.
 virtusers_createfile=O, si aquesta característica ja està activada, <a href='$1'>fes clic aquí</a> per crear el fitxer.
-virtusers_desc1=El mapejat d'adreces és similar als <a href='$1'>àlies</a>, però està més adaptat a a un sistema que gestiona dominis múltiples de correu. Es poden fer servir per redireccionar el correu de tot un domini a una adreça, gestionar els usuaris amb el mateix nom sota dominis diferents, o mapejar tot el correu d'un domini a un altre.
-virtusers_desc2=Tingues en compte que hi ha d'haver una entrada a la taula de <a href='$1'>dominis locals</a> per als dominis que es fan servir per mapejar adreces, i hi ha d'haver un registre MX de DNS per cada domini que apunti al teu sistema.
+virtusers_desc1=El mapejat d'adreces és similar als <a href='$1'>àlies</a>, però està més adaptat a a un sistema que gestiona dominis múltiples de correu. Es poden utilitzar per redireccionar el correu de tot un domini a una adreça, gestionar els usuaris amb el mateix nom sota dominis diferents, o mapejar tot el correu d'un domini a un altre.
+virtusers_desc2=Tingues en compte que hi ha d'haver una entrada a la taula de <a href='$1'>dominis locals</a> per als dominis que s'utilitzen per mapejar adreces, i hi ha d'haver un registre MX de DNS per cada domini que apunti al teu sistema.
 virtusers_for=Correu de...
 virtusers_to=Envia'l a...
 virtusers_error=Error $1
@@ -223,7 +223,7 @@ vform_ecannot=No tens permís per editar aquest mapejat d'adreces
 vsave_ecannot=No tens permís per editar mapeigs d'adreces
 vsave_ecannot2=No tens permís per editar aquest mapejat d'adreces
 vsave_emax=No tens permís per crear més de $1 mapeigs d'adreces
-vsave_err=No he pogut desar el mapejat d'adreces
+vsave_err=No s'ha pogut desar el mapejat d'adreces
 vsave_efrom='$1' no és una adreça vàlida
 vsave_efromdup=El mapejat de l'adreça '$1' ja està definit
 vsave_edom='$1' no és un domini vàlid
@@ -236,14 +236,14 @@ vsave_ecannot4=No tens permís per crear mapeigs de dominis
 vsave_edomdom=A un domini només s'hi pot mapejar un altre domini
 vsave_ecannot5=No tens permís per crear mapeigs que retornin error
 
-vdelete_err=No he pogut suprimir els mapejats d'adreces
+vdelete_err=No s'han pogut suprimir els mapejats d'adreces
 vdelete_ecannot=No tens permís per suprimir el mapejat de $1
 
 mailers_title=Encaminament de Dominis
 mailers_cannot=No tens permís per editar l'encaminament de dominis
 mailers_edirective=El teu fitxer de configuració del sendmail no té la directiva necessària per encaminar dominis.
 mailers_efeature=La configuració del teu sendmail no té activada la característica d'encaminament de dominis (<tt>mailertable</tt>). <a href='$1'>Fes clic aquí</a> per configurar característiques de sendmail.
-mailers_efile=El fitxer de text $1 a partir del qual es construeix la base de dades d'encaminament $2 no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per fer servir el camí correcte.
+mailers_efile=El fitxer de text $1 a partir del qual es construeix la base de dades d'encaminament $2 no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per utilitzar el camí correcte.
 mailers_desc1=L'encaminament de dominis ofereix una forma per definir un mètode especial de transferència de correu entre certs dominis. Això pot ser útil si el teu sistema és un portal de servidors de correu que no són accessibles des de fora de la xarxa, o bé si vols forçar l'encaminament de tot el correu d'un domini en particular cap a un altre servidor.
 mailers_desc2=Cal que <b>no</b> hi hagi cap entrada a la llista de <a href='$1'>dominis locals</a> de cap domini encaminat. Tanmateix, cal que tinguis un registre MX de DNS apuntant al teu sistema per a tots els dominis a qui fa de portal.
 mailers_desc3=També hauries de tenir una entrada a la llista de <a href='$1'>dominis de reemissió< /a> per a cada domini.
@@ -278,18 +278,18 @@ mform_error=Error
 mform_ecannot=No tens permís per editar l'encaminament de domini
 
 msave_ecannot=No tens permís per editar l'encaminament de domini
-msave_err=No he pogut desar l'encaminament de domini
+msave_err=No s'ha pogut desar l'encaminament de domini
 msave_edomain='$1' no és un nom vàlid de host ni de domini
 msave_edup=L'encaminament de domini de '$1' ja està definit
 
-mdelete_err=no he pogut suprimit les rutes de domini
+mdelete_err=No s'han pogut suprimit les rutes de domini
 mdelete_ecannot=No tens permís per suprimir la ruta de $1
 
 generics_title=Adreces de Sortida
 generics_cannot=No tens permís per editar adreces de sortida
 generics_econfig=El teu fitxer de configuració del sendmail no té la directiva necessària per mapejar adreces de sortida.
 generics_efeature=La configuració del teu sendmail bo té activada la característica de mapeig d'adreça sortint (<tt>generics</tt>). <a href='$1'>Fes clic aquí</a> per configurar característiques de sendmail.
-generics_efile=El fitxer de text $1 a partir del qual es construeix la base de dades d'adreces de sortida no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per fer servir el camí correcte.
+generics_efile=El fitxer de text $1 a partir del qual es construeix la base de dades d'adreces de sortida no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per utilitzar el camí correcte.
 generics_desc1=El mapejat d'adreces de sortida permet modificar les adreces <tt>From:</tt> del correu enviat des del sistema, o a través del sistema des d'altres hosts de la teva xarxa local. Això pot ser útil si estàs hostatjant múltiples dominis dins d'un sistema i vols que el correu de certs usuaris sembli provenir d'un domini diferent.
 generics_desc2=Tingues en compte que hi ha d'haver una entrada a la taula de <a href='$1'>dominis de sortida</a> per cada domini que tingui adreces de sortida mapejades. Pensa també que el mapejat d'adreces de sortida no funciona amb el correu que es lliura als usuaris locals.
 generics_from=Correu de...
@@ -308,20 +308,20 @@ gform_ecannot=No tens permís per editar aquesta adreça de sortida
 gsave_ecannot=No tens permís per editar adreces de sortida
 gsave_ecannot2=No tens permís per editar aquesta adreça de sortida
 gsave_ecannot3=No tens permís per desar aquesta adreça de sortida
-gsave_err=No he pogut desar les adreces de sortida
+gsave_err=No s'han pogut desar les adreces de sortida
 gsave_efrom='$1' no és una adreça de procedència vàlida
 gsave_ematch=L'adreça de procedència no coincideix amb '$1'
 gsave_eto='$1' no és una nova adreça vàlida
 gsave_ealready=Ja existeix un mapejat id'adreça de sortida per '$1'
 
-gdelete_err=No he pogut suprimir els mapejats d'adreces de sortida
+gdelete_err=No s'han pogut suprimir els mapejats d'adreces de sortida
 gdelete_ecannot=No tens permís per suprimir el mapejat de $1
 
 cgs_title=Dominis de Sortida
 cgs_ecannot=No tens permís per editar dominis de sortida
 cgs_header=Adreces de sortida de dominis
 cgs_desc=A part del correu enviat pels usuaris locals, el sendmail mapejarà les <a href='$1'>adreces de sortida</a> només per al correu provinent dels hosts i dominis llistats a la caixa de text de sota. Així, per tal que una entrada d'adreça de sortida funcioni, el domini de l'adreça origen ha d'estar inclòs en aquesta llista.
-cgs_err=No he pogut desar els dominis de sortida
+cgs_err=No s'han pogut desar els dominis de sortida
 cgs_ehost='$1' no és un nom vàlid de host ni de domini
 cgs_eip='$1' és una adreça IP, no un domini
 
@@ -329,7 +329,7 @@ domains_title=Mapejat de Dominis
 domains_ecannot=No tens permís per editar el mapejat de dominis
 domains_econfig=El fitxer de configuració del sendmail no té la directiva necessària per mapejar dominis.
 domains_efeature=La configuració de sendmail no té activada la característica de mapejat de dominis (<tt>domaintable</tt>). <a href='$1'>Fes clic aquí</a> per configurar les característiques de sendmail.
-domains_efile=El fitxer de text $1 a partir del qual es construeix la base de dades de mapejat de dominis $2 no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per fer servir el camí correcte.
+domains_efile=El fitxer de text $1 a partir del qual es construeix la base de dades de mapejat de dominis $2 no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per utilitzar el camí correcte.
 domains_desc=El mapejat de dominis modifica l'adreça <tt>To:</tt> dels missatges enviats des de, reenviats a través de o lliurats al teu sistema. Les adreces <tt>From:</tt> dels missatges reenviats i els missatges per als usuaris locals també es modifiquen. Això pot ser útil si el teu nom de domini canvia, i vols canviar totes les ocurrències del domini antic al nou.
 domains_from=Del domini...
 domains_to=Al domini...
@@ -343,18 +343,18 @@ dform_to=Al domini
 dform_ecannot=No tens permís per editar mapeigs de dominis
 
 dsave_ecannot=No tens permís per editar mapeigs de dominis
-dsave_err=No he pogut desar el mapejat de dominis
+dsave_err=No s'ha pogut desar el mapejat de dominis
 dsave_edomain='$1' no és un nom de domini vàlid
 dsave_ealready=Ja existeix un mapejat de domini per a '$1'
 
-ddelete_err=no he pogut suprimir els mapejats de domini
+ddelete_err=No s'han pogut suprimir els mapejats de domini
 ddelete_ecannot=No tens permís per suprimir el mapejat de $1
 
 access_title=Control de Spam
 access_ecannot=No tens permís per configurar el control de <i>spam</i>
 access_efeature=La configuració del teu sendmail no té activada la característica de control de spam (<tt>access_db</tt>). <a href='$1'>Fes clic aquí</a> per configurar característiques de sendmail.
-access_efile=El fitxer de text $1 a partir del qual es construeix la base de dades del control de <i>spam</i> $2 no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per fer servir el camí correcte.
-access_desc1=La característica de control de <i>spam</i> del sendmail impedeix que arribi <i>spam</i> als usuaris rebutjant-lo des de certes adreces, i impedeix els remitents de fer servir el teu sistema per reenviar correu. Per defecte, el sendmail acceptarà correu des de qualsevol adreça per a un usuari local, però impedirà que qualsevol altre client o servidor reenviï correu a través del teu servidor. Generalment, és desitjable afegir regles de control de <i>spam</i> per rebutjar el correu <i>spam</i>, i regles per permetre a les altres màquines de la teva xarxa de reenviar correu a través del teu sistema.
+access_efile=El fitxer de text $1 a partir del qual es construeix la base de dades del control de <i>spam</i> $2 no existeix. Pot ser que hagis de modificar la <a href='$3'>configuració del mòdul</a> per utilitzar el camí correcte.
+access_desc1=La característica de control de <i>spam</i> del sendmail impedeix que arribi <i>spam</i> als usuaris rebutjant-lo des de certes adreces, i impedeix els remitents d'utilitzar el teu sistema per reenviar correu. Per defecte, el sendmail acceptarà correu des de qualsevol adreça per a un usuari local, però impedirà que qualsevol altre client o servidor reenviï correu a través del teu servidor. Generalment, és desitjable afegir regles de control de <i>spam</i> per rebutjar el correu <i>spam</i>, i regles per permetre a les altres màquines de la teva xarxa de reenviar correu a través del teu sistema.
 access_desc2=Tingues en compte que, per defecte, el sendmail deixarà que els clients de correu executant-se localment enviïn correu via SMTP a qualsevol lloc. Així doncs, no hi ha cap necessitat d'afegir la xarxa local <tt>127.0.0</tt> a la llista de tots aquells que tenen permès d'enviar.
 access_source=Origen...
 access_action=Acció...
@@ -385,7 +385,7 @@ sform_err=Codi d'error
 sform_msg=Missatge
 sform_ecannot=No tens permís per editar aquest control de <i>spam</i>
 
-ssave_err=No he pogut desar la regla de control de <i>spam</i>
+ssave_err=No s'ha pogut desar la regla de control de <i>spam</i>
 ssave_etype0='$1' no és una adreça vàlida
 ssave_etype1='$1' no és una adreça de xarxa vàlida
 ssave_etype2='$1' no és un nom d'usuari vàlid
@@ -394,7 +394,7 @@ ssave_ecode='$1' no és un codi d'error SMTP vàlid
 ssave_ealready=Ja existeix una regla de control de spam '$1'
 ssave_ecannot2=No tens permís per desar aquesta regla de control de spam
 
-sdelete_err=no puc suprimir les regles de control de spam
+sdelete_err=No es pot suprimir les regles de control de spam
 sdelete_ecannot=No tens permís per suprimir la regla de $1
 
 relay_title=Dominis de Reemissió
@@ -402,8 +402,8 @@ relay_ecannot=No tens permís per editar dominis de reemissió
 relay_eversion=La característica de dominis de reemissió només està suportada pel sendmail versió 8.9 i posteriors.
 relay_domains=Dominis pels quals la reemissió està permesa
 relay_desc1=A menys que estigui permès per les regles de <a href='$1'>control de <i>spam</i></a>, el sendmail només permetrà la reemissió dels dominis llistats a la caixa de text de sota. Els missatges d'entrada que no són per a un usuari local ni per a un dels dominis llistats, serà rebutjat.
-relay_desc2=Si el sistema està fent de portal de diferents dominis que no són directament accessibles des de fora de la xarxa local (fent servir la característica d'<a href='$1'>encaminament de dominis</a>), llavors tots aquests dominis haurien d'estar llistats aquí.
-relay_err=No he pogut desar els dominis de reemissió
+relay_desc2=Si el sistema està fent de portal de diferents dominis que no són directament accessibles des de fora de la xarxa local (utilitzant la característica d'<a href='$1'>encaminament de dominis</a>), llavors tots aquests dominis haurien d'estar llistats aquí.
+relay_err=No s'han pogut desar els dominis de reemissió
 relay_edomain='$1' no és un nom de domini vàlid
 
 mailq_title=Cua de Correu
@@ -435,19 +435,19 @@ mailq_search=Busca missatges en cua tals que
 mailq_quar=En quarantena
 
 flushq_title=Buidat de la Cua
-flushq_desc=Forçant el lliurament de tots els missatges amb l'ordre $1...
-flushq_desc2=Forçant el lliurament dels $1 missatges seleccionats...
+flushq_desc=S'està forçant el lliurament de tots els missatges amb l'ordre $1...
+flushq_desc2=S'està forçant el lliurament dels $1 missatges seleccionats...
 flushq_ecannot=No tens permís per buidar la cua de correu
 
 searchq_title=Resultats de la Recerca de Cues
 searchq_none=No s'ha trobat cap missatge a les cues.
 
-delq_err=No he pogut suprimir el missatge
+delq_err=No s'ha pogut suprimir el missatge
 delq_ecannot=No tens permís per treure missatges de la cua
 delq_locked=El fitxer està en aquests moments bloquejat per enviar
 delq_enone=No has seleccionat cap missatge per suprimir
-delq_titles=Suprimint Missatges
-delq_file=Suprimint el fitxer de correu $1...
+delq_titles=Supressió de Missatges
+delq_file=S'està suprimint el fitxer de correu $1...
 delq_efile=nom de fitxer invàlid!
 delq_egone=ja ha estat suprimit o enviat
 delq_elocked=bloquejat per enviar
@@ -514,7 +514,7 @@ view_desc=Missatge $1 de $2
 view_desc2=Missatge $1 de l'usuari $2
 view_desc3=Missatge $1
 view_sent=Missatge $1 de la llista de correu enviat
-view_qdesc=He posat en cua el missatge $1
+view_qdesc=S'ha posat en cua el missatge $1
 view_headers=Capçaleres de correu
 view_body=Text del missatge
 view_attach=Adjuncions
@@ -549,7 +549,7 @@ reply_send=Envia Correu
 reply_ecannot=No tens permís per enviar correu amb aquest usuari
 reply_body=Text del missatge
 
-send_err=No he pogut enviar el correu
+send_err=No s'ha pogut enviar el correu
 send_eto=Hi falta l'adreça de destinació
 send_efrom=Hi falta l'adreça del remitent
 send_title=Correu Enviat
@@ -587,10 +587,10 @@ search_results3=$1 missatges de correu que no coincideixen amb $2...
 search_results4=$1 missatges de correu que coincideixen amb els criteris de recerca...
 search_local=A les carpetes locals
 search_all=A totes les carpetes
-search_eboolean=Les recerques lògiques emprant 'i' i 'o' al mateix temps no estan suportades
+search_eboolean=Les recerques lògiques utilitzant 'i' i 'o' al mateix temps no estan suportades
 
 file_title=Edició de Fitxer Sendmail
-file_desc=Fes servir la caixa de text de sota per editar manualment el fitxer $1 de sendmail.
+file_desc=Utilitza la caixa de text de sota per editar manualment el fitxer $1 de sendmail.
 file_undo=Desfés els canvis
 file_edit=Edita manualment $1
 file_ealiases=Només pots editar un fitxer d'àlies si tens accés a tots els àlies.
@@ -601,7 +601,9 @@ file_edomains=No tens permís per editar el fitxer de mapejat de dominis.
 file_eaccess=No tens permís per editar el fitxer de control de <i>spam</i>.
 file_ecannot=No tens permís per editar aquest fitxer
 file_emode=Mode desconegut!
-file_err=No he pogut editar el fitxer
+file_err=No s'ha pogut editar el fitxer
+file_ealias=El format de la línia del fitxer d'àlies és invàlid: $1
+file_etab=El format de la línia del fitxer de mapejats és invàlid: $1
 
 acl_opts=Pot editar les opcions del sendmail
 acl_ports=Pot editar els ports de xarxa
@@ -670,56 +672,56 @@ acl_asame=Igual que el nom de l'usuari
 acl_usersu=Amb UID en el rang
 acl_spam=Adreces de control de <i>spam</i> que aquest usuari pot editar
 
-log_opts=He canviat les opcions del sendmail
-log_ports=He canviat els ports de xarxa
-log_alias_create=He creat l'àlies $1
-log_alias_modify=He modificat l'àlies $1
-log_alias_delete=He suprimit l'àlies $1
-log_alias_manual=He editat manualment el fitxer d'àlies $1
-log_cws=He canviat els dominis locals
-log_masq=He canviat l'emmascarament de dominis
-log_trusts=He canviat els usuaris fiables
-log_virtuser_create=He creat el mapejat d'adreça $1
-log_virtuser_modify=He modificat el mapejat d'adreça $1
-log_virtuser_delete=He suprimit el mapejat d'adreça $1
-log_virtuser_manual=He editat manualment el fitxer de mapejat d'adreces $1
-log_mailer_create=He creat l'encaminament de dominis $1
-log_mailer_modify=He modificat l'encaminament de dominis $1
-log_mailer_delete=He suprimit l'encaminament de dominis $1
-log_mailer_manual=He editat manualment el fitxer d'encaminament de dominis $1
-log_generic_create=He creat l'adreça de sortida $1
-log_generic_modify=He modificat l'adreça de sortida $1
-log_generic_delete=He suprimit l'adreça de sortida $1
-log_generic_manual=He editat manualment el fitxer d'adreces de sortida $1
-log_cgs=He canviat els dominis de sortida
-log_domain_create=He creat el mapejat de domini $1
-log_domain_modify=He modificat el mapejat de domini $1
-log_domain_delete=He suprimit el mapejat de domini $1
-log_domain_manual=He editat manualment el fitxer de el mapejat de dominis $1
-log_access_create=He creat el control de de <i>spam</i> de $1
-log_access_modify=He modificat el control de <i>spam</i> de $1
-log_access_delete=He suprimit el control de <i>spam</i> de $1
-log_access_manual=He editat manualment el fitxer de control de <i>spam</i> de $1
-log_relay=He canviat els dominis de reenviament
-log_flushq=He buidat la cua de correu
-log_delmailq=He suprimit correu de $1 de la cua
-log_delmailqs=He suprimit $1 correus de la cua
-log_stop=He aturat el dimoni del sendmail
-log_start=He iniciat el dimoni del sendmail
-log_delmail=He suprimit $1 missatges de $2
-log_movemail=He desplaçat $1 missatges de $2 a $3
-log_send=He enviat el correu a $1
-log_feature_create=He afegit l'entrada M4 $1
-log_feature_modify=He modificat l'entrada M4 $1
-log_feature_delete=He suprimit l'entrada M4 $1
-log_feature_move=He desplaçat l'entrada M4 $1
-log_build=He reconstruït la configuració de sendmail
-log_delete_aliases=He suprimit $1 àlies
-log_delete_virtusers=He suprimit $1 mapejats d'adreces
-log_delete_domains=He suprimit $1 
-log_delete_accesses=He suprimit $1 entrades de control de spam
-log_delete_generics=He suprimit $1 adreces de sortida
-log_delete_mailers=He suprimit $1 rutes de domini
+log_opts=S'han canviat les opcions del sendmail
+log_ports=S'han canviat els ports de xarxa
+log_alias_create=S'ha creat l'àlies $1
+log_alias_modify=S'ha modificat l'àlies $1
+log_alias_delete=S'ha suprimit l'àlies $1
+log_alias_manual=S'ha editat manualment el fitxer d'àlies $1
+log_cws=S'han canviat els dominis locals
+log_masq=S'ha canviat l'emmascarament de dominis
+log_trusts=S'han canviat els usuaris fiables
+log_virtuser_create=S'ha creat el mapejat d'adreça $1
+log_virtuser_modify=S'ha modificat el mapejat d'adreça $1
+log_virtuser_delete=S'ha suprimit el mapejat d'adreça $1
+log_virtuser_manual=S'ha editat manualment el fitxer de mapejat d'adreces $1
+log_mailer_create=S'ha creat l'encaminament de dominis $1
+log_mailer_modify=S'ha modificat l'encaminament de dominis $1
+log_mailer_delete=S'ha suprimit l'encaminament de dominis $1
+log_mailer_manual=S'ha editat manualment el fitxer d'encaminament de dominis $1
+log_generic_create=S'ha creat l'adreça de sortida $1
+log_generic_modify=S'ha modificat l'adreça de sortida $1
+log_generic_delete=S'ha suprimit l'adreça de sortida $1
+log_generic_manual=S'ha editat manualment el fitxer d'adreces de sortida $1
+log_cgs=S'han canviat els dominis de sortida
+log_domain_create=S'ha creat el mapejat de domini $1
+log_domain_modify=S'ha modificat el mapejat de domini $1
+log_domain_delete=S'ha suprimit el mapejat de domini $1
+log_domain_manual=S'ha editat manualment el fitxer de el mapejat de dominis $1
+log_access_create=S'ha creat el control de <i>spam</i> de $1
+log_access_modify=S'ha modificat el control de <i>spam</i> de $1
+log_access_delete=S'ha suprimit el control de <i>spam</i> de $1
+log_access_manual=S'ha editat manualment el fitxer de control de <i>spam</i> de $1
+log_relay=S'han canviat els dominis de reenviament
+log_flushq=S'ha buidat la cua de correu
+log_delmailq=S'ha suprimit correu de $1 de la cua
+log_delmailqs=S'han suprimit $1 correus de la cua
+log_stop=S'ha aturat el dimoni del sendmail
+log_start=S'ha iniciat el dimoni del sendmail
+log_delmail=S'han suprimit $1 missatges de $2
+log_movemail=S'han desplaçat $1 missatges de $2 a $3
+log_send=S'ha enviat el correu a $1
+log_feature_create=S'ha afegit l'entrada M4 $1
+log_feature_modify=S'ha modificat l'entrada M4 $1
+log_feature_delete=S'ha suprimit l'entrada M4 $1
+log_feature_move=S'ha desplaçat l'entrada M4 $1
+log_build=S'ha reconstruït la configuració de sendmail
+log_delete_aliases=S'han suprimit $1 àlies
+log_delete_virtusers=S'han suprimit $1 mapejats d'adreces
+log_delete_domains=S'ha suprimit $1 
+log_delete_accesses=S'han suprimit $1 entrades de control de spam
+log_delete_generics=S'han suprimit $1 adreces de sortida
+log_delete_mailers=S'han suprimit $1 rutes de domini
 
 match_from=Coincidències amb From:
 match_subject=Coincidències amb Subject:
@@ -774,7 +776,7 @@ feature_defmode0=Indefineix
 feature_mailer=Mètode de lliurament de correu
 feature_ostype=Tipus de sistema operatiu
 feature_old=Línia de configuració actual
-feature_err=No he pogut desar l'entrada de configuració
+feature_err=No s'ha pogut desar l'entrada de configuració
 feature_efeat=La característica $1 ja existeix
 feature_edef=La definició $1 ja existeix
 feature_emailer=El lliurador $1 ja existeix
@@ -792,20 +794,20 @@ mailer_local=Lliurament Unix local
  
 build_title=Reconstrucció de la Configuració Sendmail
 build_em4=No s'ha trobat al sistema l'ordre $1 necessària per a reconstruir el fitxer de configuració de Sendmail.
-build_ebuild=No he pogut construir la configuració: $1
+build_ebuild=No s'ha pogut construir la configuració: $1
 build_rusure=Segur que vols substituir el fitxer de configuració de Sendmail $1 amb una nova versió feta a partir de $2?
 build_rusure2=Tingues en compte que si has fet canvis al Sendmail a la pàgina d'Opcions de Sendmail, reconstruir el fitxer de configuració ignorarà aquests canvis si no els has fet també al fitxer M4.
 build_ok=Sí, substitueix-lo ara mateix
 build_diff=Es faran els canvis següents al fitxer de configuració de Sendmail...
 build_nodiff=El fitxer de configuració de sendmail ja està actualitzat.
 
-stop_err=No he pogut aturar sendmail
+stop_err=No s'ha pogut aturar sendmail
 stop_ecannot=No tens permís per aturar sendmail
 stop_epid=Sembla que sendmail no s'està executant
-restart_epids=No he pogut trobar els porcessos sendmail
-restart_ekill=no he pogut enviar el senyal als porcessos sendmail: $1
+restart_epids=No s'han pogut trobar els processos sendmail
+restart_ekill=no s'ha pogut enviar el senyal als porcessos sendmail: $1
 
-start_err=No he pogut iniciar sendmail
+start_err=No s'ha pogut iniciar sendmail
 start_ecannot=No tens permís per iniciar sendmail
 
 ports_title=Ports  de Xarxa
@@ -824,7 +826,7 @@ ports_mod_C=No canonifiquis els noms de host
 ports_mod_E=Desactiva ETRN
 ports_def1=Accepta correu al port 25 i a totes les adreces
 ports_def0=Accepta correu només als ports de sota...
-ports_err=No he pogut desar els ports de xarxa
+ports_err=No s'han pogut desar els ports de xarxa
 ports_ecannot=No tens permís per gestionar els ports de xarxa
 ports_ename=Nom de port invàlid a la fila $1
 ports_eclash=Nom de port duplicat a la fila $1

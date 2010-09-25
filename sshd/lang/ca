@@ -1,7 +1,7 @@
 index_title=Servidor SSH
 index_econfig=No es troba al sistema el fitxer de configuració $1 del servidor SSH. Pot ser que SSHD no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_esshd=No s'ha trobat al sistema el programa servidor SSH $1. Pot ser que SSHD no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_eversion=No he pogut obtenir un número de versió del programa servidor SSH $1. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta. La resposta de l'ordre $3 ha estat: $4
+index_eversion=No s'ha pogut obtenir un número de versió del programa servidor SSH $1. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta. La resposta de l'ordre $3 ha estat: $4
 index_eversion2=El programa servidor SSH $1 és de la versió $2, però Webmin només suporta SSH versions 1 i 2.
 index_return=a l'índex del mòdul
 index_apply=Aplica els Canvis
@@ -46,7 +46,7 @@ users_motd=Mostra <tt>/etc/motd</tt> en connectar
 users_banner=Fitxer de missatge previ a la connexió
 users_banner_def=Cap
 users_known=Ignora els fitxers <tt>known_hosts</tt> dels usuaris
-users_err=No he pogut desar els usuaris i els grups
+users_err=No s'han pogut desar els usuaris i els grups
 users_eexpire=Hi falten els dies d'avís d'expiració o bé són invàlids
 users_ebanner=Hi falta el fitxer de missatge previ o bé és invàlid
 users_authkeys=Fitxer de claus autoritzades d'usuari
@@ -81,7 +81,7 @@ net_grace_s=segons
 net_tcp=Permet el reenviament TCP
 net_gateway=Permet la connexió a ports reenviats
 net_reverse=Fes validació inversa de les adreces IP clients
-net_err=No he pogut desar la xarxa
+net_err=No s'ha pogut desar la xarxa
 net_elisten=Hi falta l'adreça IP per escoltar o bé és invàlida.
 net_eport=Hi falta el número de port per escoltar  o bé és invàlid.
 net_eidle=Hi falta el temps límit d'inacció  o bé és invàlid.
@@ -123,9 +123,9 @@ misc_quiet=Fes un enregistrament mínim
 misc_regen=Interval de regeneració de les claus del servidor
 misc_regen_def=Mai
 misc_fascist=Fes un enregistrament exhaustiu
-misc_separ=Fes servir processos separats sense privilegis
+misc_separ=Utilitza processos separats sense privilegis
 misc_pid=Fitxer de PID
-misc_err=No he pogut desar les opcions miscel·lànies
+misc_err=No s'ha pogut desar les opcions miscel·lànies
 misc_exoff=Hi falta l'<i>offset</i> de la pantalla X11o bé és invàlid.
 misc_exauth=Hi falta el camí de <tt>xauth</tt>o bé és invàlid.
 misc_eumask=Hi falta l'umask octal de 4 dígits bé és invàlid.
@@ -133,12 +133,12 @@ misc_ebits=Hi falta la mida de la clau del servidor bé és invàlida.
 misc_eregen=Hi falta l'interval de regeneració de claus bé és invàlid.
 misc_epid=Hi falta el camí del fitxer de PID o bé és invàlid.
 
-start_err=No he pogut iniciar el servidor SSH
+start_err=No s'ha pogut iniciar el servidor SSH
 apply_epid=No s'està executant
 
 hosts_title=Opcions de Host Client
 hosts_header=Hosts Client SSH
-hosts_none=No s'ha definit cap opció de host client. Totes les connexions de clients SSH faran servir els valors per defecte.
+hosts_none=No s'ha definit cap opció de host client. Totes les connexions de clients SSH utilitzaran els valors per defecte.
 hosts_all=Tots els Hosts
 hosts_add=Afegeix opcions pel host client.
 hosts_return=a la llista de hosts clients
@@ -165,7 +165,7 @@ host_usersh=Estableix només connexions RSH
 host_rsh=Prova RSH si SSH falla
 host_agent=Reenvia l'agent d'autenticació
 host_x11=Reenvia les connexions X11
-host_priv=Fes servir un port origen privilegiat
+host_priv=Utilitza un port origen privilegiat
 host_strict=Afegeix el host al fitxer <tt>known_hosts</tt>
 host_ask=Pregunta a l'usuari
 host_lforward=Ports locals per reenviar al servidor
@@ -183,7 +183,7 @@ host_prots2=Només 2
 host_prots12=1 i llavors 2
 host_prots21=2 i llavors 1
 host_prots_sel=Selecciona...
-host_err=No he pogut desar les opcions del host
+host_err=No s'han pogut desar les opcions del host
 host_ename=Hi falta el nom de host o bé és invàlid.
 host_euser=Hi falta el nom d'usuari o bé és invàlid.
 host_ehostname=Hi falta el nom de host real o bé és invàlid.
@@ -199,33 +199,33 @@ host_proxy=Ordre proxy de connexió
 host_proxy_def=Cap
 host_eproxy=Hi falta l'ordre proxy de connexió o bé sembla invàlida
 
-log_users=He canviat les opcions d'autenticació
-log_net=He canviat les opcions de xarxa
-log_access=He canviat el control d'accés
-log_misc=He canviat les opcions miscel·lànies
-log_create_host=He creat opcions pel(s) host(s) $1
-log_update_host=He actualitzat les opcions del(s) host(s) $1
-log_delete_host=He suprimit les opcions del(s) host(s) $1
-log_create_all=He creat les opcions per a tots els hosts
-log_update_all=He actualitzat les opcions de tots els hosts
-log_delete_all=He suprimit les opcions de tots els hosts
-log_stop=He aturat el servidor SSH
-log_start=He iniciat el servidor SSH
-log_apply=He aplicat la configuració
+log_users=S'han canviat les opcions d'autenticació
+log_net=S'han canviat les opcions de xarxa
+log_access=S'ha canviat el control d'accés
+log_misc=S'han canviat les opcions miscel·lànies
+log_create_host=S'ha(n) creat opcions pel(s) host(s) $1
+log_update_host=S'ha(n) actualitzat les opcions del(s) host(s) $1
+log_delete_host=S'ha(n) suprimit les opcions del(s) host(s) $1
+log_create_all=S'han creat les opcions per a tots els hosts
+log_update_all=S'han actualitzat les opcions de tots els hosts
+log_delete_all=S'han suprimit les opcions de tots els hosts
+log_stop=S'ha aturat el servidor SSH
+log_start=S'ha iniciat el servidor SSH
+log_apply=S'ha aplicat la configuració
 log_manual=Editant manualment el fitxer de configuració $1
 
 sync_title=Configuració de la Clau SSH de l'Usuari
-sync_desc=Aquesta pàgina permet configurar la configuració automàtica de SSH dels nous usuaris Unix creats al sistema. Si està configurada, els nous usuaris no hauran d'executar <tt>ssh-keygen</tt> abans de fer servir SSH.
+sync_desc=Aquesta pàgina permet configurar la configuració automàtica de SSH dels nous usuaris Unix creats al sistema. Si està configurada, els nous usuaris no hauran d'executar <tt>ssh-keygen</tt> abans d'utilitzar SSH.
 sync_create=Configura la clau SSH dels nous usuaris Unix
 sync_auth=Copia el nou <tt>identify.pub</tt> a <tt>authorized_keys</tt>
-sync_pass=Fes servir la contrasenya com a frase de pas
+sync_pass=Utilitza la contrasenya com a frase de pas
 sync_gnupg=Configura la clau GNUPG dels nous usuaris Unix
 sync_type=Tipus de clau
 sync_auto=&lt;Automàtic&gt;
 
 keys_title=Claus SSH del Host
 keys_desc=Aquesta pàgina permet visualitzar les claus SSH d'aquest host.
-keys_none=No he pogut trobar cat entrada HostKey a la configuració de SSHD.
+keys_none=No s'ha pogut trobar cap entrada HostKey a la configuració de SSHD.
 
 manual_title=Edició dels Fitxers de Configuració
 manual_ecannot=No tens permís per editar el fitxer de configuració del servidor SSH
@@ -233,8 +233,8 @@ manual_ok=Edita
 manual_efile=El fitxer seleccionat no forma part de la configuració del servidor SSH
 manual_file=Edita el fitxer de configuració:
 manual_edata=No has introduït res!
-manual_err=No he pogut desar la configuració del fitxer
+manual_err=No s'ha pogut desar la configuració del fitxer
 
-dknown_err=No he pogut suprimir els hosts coneguts
+dknown_err=No s'han pogut suprimir els hosts coneguts
 dknown_enone=No n'hi ha cap de seleccionat
 

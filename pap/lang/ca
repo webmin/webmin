@@ -6,7 +6,7 @@ index_server=Servidor
 index_uany=Qualsevol
 index_sany=Qualsevol
 index_create=Crea nou compte PPP.
-index_info=Webmin es pot configurar per tal que els canvis a la llista d'usuaris Unix s'apliquin automàticament a la llista de comptes PPP. Això només funcionarà si es fa servir el mòdul <tt>Usuaris i Grups</tt> de Webmin per afegir, suprimir o canviar usuaris.
+index_info=Webmin es pot configurar per tal que els canvis a la llista d'usuaris Unix s'apliquin automàticament a la llista de comptes PPP. Això només funcionarà si s'utilitza el mòdul <tt>Usuaris i Grups</tt> de Webmin per afegir, suprimir o canviar usuaris.
 index_onadd=Afegeix un compte PPP quan s'afegeixi un usuari Unix, pel servidor
 index_onchange=Canvia el compte PPP quan es canviï un usuari Unix
 index_ondelete=Suprimeix el compte PPP quan se suprimeixi un usuari Unix
@@ -40,7 +40,7 @@ edit_secret_save=Desa
 edit_secret_del=Suprimeix
 edit_secret_return=a la llista de comptes
 
-save_secret_esave=No he pogut desar el compte
+save_secret_esave=No s'ha pogut desar el compte
 save_secret_enoip='$1' no es una adreça vàlida
 
 log_create=He creat el compte PPP $1
@@ -121,7 +121,7 @@ mgetty_mode=Mode de mòdem
 mgetty_df=Dades o fax
 mgetty_d=Només dades
 mgetty_f=Només fax
-mgetty_err=No he pogut desar el port sèrie
+mgetty_err=No s'ha pogut desar el port sèrie
 mgetty_etty=Hi falta el dispositiu sèrie o bé no existeix
 mgetty_espeed=Hi falta la velocitat o bé és invàlida
 mgetty_eanswer=Hi falta el nombre de trucs o bé és invàlid
@@ -129,7 +129,7 @@ mgetty_eback=Hi falta el nombre de segons de retorn de trucada o bé és invàlid
 mgetty_eclash=El port sèrie $1 ja està en ús
 mgetty_apply=Aplica la Configuració
 mgetty_applydesc=Fes clic sobre aquest botó per aplicar la configuració actual del port sèrie executant l'ordre $1 i matant tots els processos Mgetty.
-mgetty_applyerr=No he pogut aplicar la configuració
+mgetty_applyerr=No s'ha pogut aplicar la configuració
 mgetty_ecannot=No tens permís per editar les configuracions dels ports sèrie
 
 dialin_title=Accés de l'ID de Trucada
@@ -149,7 +149,7 @@ dialin_edit=Edita el Número d'ID de Trucada
 dialin_create=Creació de Número d'ID de Trucada
 dialin_header=Detalls del número d'ID de trucada
 dialin_move=Desplaça
-dialin_err=No he pogut desar el número d'ID de trucada
+dialin_err=No s'ha pogut desar el número d'ID de trucada
 dialin_enumber=Hi falta el número de telèfon o bé és incorrecte
 dialin_ecannot=No tens permís per editar l'ID d'accés de trucada
 
@@ -159,6 +159,6 @@ acl_direct=Ves directament a una pàgina
 sync_ecannot=No tens permís per editar les opcions de sincronització Unix-ppp
 sync_title=Sincronització d'Usuaris
 
-delete_err=No he pogut suprimir els comptes
+delete_err=No s'han pogut suprimir els comptes
 delete_enone=No has seleccionat cap compte
 

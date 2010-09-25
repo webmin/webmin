@@ -1,7 +1,7 @@
 index_title=Servidor CVS
 index_ecvs=No s'ha trobat al sistema l'ordre CVS $1. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_eversion=No he pogut obtenir la versió a partir de l'ordre CVS $1. La sortida és $2.
-index_eroot=El directori arrel de CVS no s'ha establert correctament. Has de fer servir la <a href='$1'>configuració del mòdul</a> per establir-lo abans que aquest mòdul pugui funcionar.
+index_eversion=No s'ha pogut obtenir la versió a partir de l'ordre CVS $1. La sortida és $2.
+index_eroot=El directori arrel de CVS no s'ha establert correctament. Has d'utilitzar la <a href='$1'>configuració del mòdul</a> per establir-lo abans que aquest mòdul pugui funcionar.
 index_initdesc=Alternativament, pots crear un nou repositori CVS sota $1 fent clic al botó de sota.
 index_init=Inicialitza el Repositori
 index_version=Versió CVS $1
@@ -44,7 +44,7 @@ edit_pass0=Estableix a...
 edit_unix=Accedeix els fitxers com l'usuari Unix
 edit_unixdef=Igual que l'usuari
 
-save_err=No he pogut desar l'usuari CVS
+save_err=No s'ha pogut desar l'usuari CVS
 save_euser=Hi falta el nom d'usuari o bé és invàlid
 save_eunix=Hi falta el nom de l'usuari Unix o bé és invàlid
 save_ecopy=L'usuari Unix del qual s'ha de copiar la contrasenya no existeix
@@ -57,7 +57,7 @@ access_readers0=Els usuaris llistats són només lectura...
 access_writers1=Tots els usuaris poden escriure
 access_writers0=Només poden escriure els usuaris llistats...
 access_desc=Si un usuari està a totes dues llistes de lectura i escriptura, se li donarà accés només lectura.
-access_err=No he pogut desar el control d'accés d'usuaris
+access_err=No s'ha pogut desar el control d'accés d'usuaris
 access_euser=L'usuari '$1' no existeix
 access_ecannot=No tens permís per editar el control d'accés d'usuaris
 
@@ -83,19 +83,19 @@ config_hist_W=Fitxer de treball suprimit
 config_hist_A=Fitxer afegit
 config_hist_M=Fitxer modificat
 config_hist_R=Fitxer eliminat
-config_lock=Directori de blocatges de fitxers
-config_err=No he pogut desar la configuració del servidor
-config_elock=Hi falta el directori de blocatges de fitxers o bé és invàlid
+config_lock=Directori de bloqueigs de fitxers
+config_err=No s'ha pogut desar la configuració del servidor
+config_elock=Hi falta el directori de bloqueigs de fitxers o bé és invàlid
 config_ecannot=No tens permís per editar la configuració del servidor
 
-log_setup=He configurat el Servidor CVS
-log_activate=He activat el servidor CVS
-log_deactivate=He desactivat el servidor CVS
-log_create_user=He creat l'usuari $1
-log_delete_user=He suprimit l'usuari $1
-log_modify_user=He modificat l'usuari $1
-log_access=He canviat el control d'accés d'usuaris
-log_config=He canviat la configuració del servidor
+log_setup=S'ha configurat el Servidor CVS
+log_activate=S'ha activat el servidor CVS
+log_deactivate=S'ha desactivat el servidor CVS
+log_create_user=S'ha creat l'usuari $1
+log_delete_user=S'ha suprimit l'usuari $1
+log_modify_user=S'ha modificat l'usuari $1
+log_access=S'ha canviat el control d'accés d'usuaris
+log_config=S'ha canviat la configuració del servidor
 
 acl_passwd=Pot gestionar els usuaris CVS
 acl_access=Pot editar el control d'accés d'usuaris
@@ -104,6 +104,6 @@ acl_cvsweb=Pot veure el repositori CVS
 acl_setup=Pot configurar inetd o xinetd per per executar el servidor CVS
 acl_init=Pot inicialitzar el repositori
 
-init_err=No he pogut inicialitzar el repositori
+init_err=No s'ha pogut inicialitzar el repositori
 init_ecannot=No tens permís per inicialitzar repositoris
 

@@ -22,7 +22,7 @@ períodes de temps, tal i com es defineix més avall.
 <P>
 Si es defineix un nom de servei &quot;default&quot;  dins d'un
 grup d'observació anomenat &quot;default&quot; (vegeu més amunt),
-llavors la definició default/default es farà servir per a manipular
+llavors la definició default/default s'utilitzarà per a manipular
 trampes desconegudes de mon.
 <P>
 
@@ -45,7 +45,7 @@ com a <I>temps</I>.
 Aquesta paraula clau pren el mateix argument d'especificació de temps
 que <B>interval</B><I>,</I> i fa que el servei esperi una desviació d'una
 font exterior al menys amb aquest freqüència, altrament s'enregistrarà
-una fallada. Això es fa servir per a serveis de l'estil de <i>hearbeat</i>.
+una fallada. Això s'utilitza per a serveis de l'estil de <i>hearbeat</i>.
 <P>
 
 <DT><B>trapduration</B><I> temps</I>
@@ -114,7 +114,7 @@ No executar un monitor programat durant el temps identificat per <I>període</I>.
 
 <DT><B>depend</B><I> expressió</I>
 <DD>
-La paraula clau <B>depend</B> es fa servir per especificar una expressió de
+La paraula clau <B>depend</B> s'utilitza per especificar una expressió de
 dependència que s'avalua a veritat o fals, en el sentit booleà. Les 
 dependències són, de fet, expressions Perl, i n'han d'obeir totes les
 regles sintàctiques. Les expressions s'avaluen en l'espai del seu propi
@@ -128,11 +128,11 @@ de l'estat d'operació es calculen de forma recursiva, de manera que si el
 servei a depèn del servei B, i el servei B depèn del servei C, llavors el
 servei A depèn del servei C. Els estats d'operació correctes (que s'avaluen
 a &quot;1&quot;) són &quot;STAT_OK&quot;, &quot;STAT_COLDSTART&quot;, 
-&quot;STAT_WARMSTART&quot;, i &quot;STAT_UNKNOWN&quot;. Es pot fer servir
+&quot;STAT_WARMSTART&quot;, i &quot;STAT_UNKNOWN&quot;. Es pot utilitzar
 la paraula &quot;SELF&quot; (tot en majúscules) per al grup (p. ex.,
 &quot;SELF:service&quot;), i és un abreujament del grup d'observació actual.
 <P>
-Aquesta característica es pot fer servir per controlar els avisos dels
+Aquesta característica es pot utilitzar per controlar els avisos dels
 serveis que depenen d'altres serveis. p. ex., una prova SMTP que depèn
 de la màquina a la qual es fa ping.
 <P>
@@ -160,7 +160,7 @@ i l'estat del servei romandrà igual.
 <H3>Definicions de Període</H3>
 
 <P>
-Els períodes es fan servir per definir les condicions que han de permetre
+Els períodes s'utilitzen per definir les condicions que han de permetre
 el lliurament dels avisos.
 <P>
 <DL COMPACT>
@@ -261,7 +261,7 @@ paràmetres que mon passarà automàticament als programes d'avís.
 Es crida quan un servei fa la transició d'estat de fallada a operatiu.
 El script <B>upalert</B> es crida subministrant els mateixos paràmetres
 que el script <B>alert</B>, amb l'addició del paràmetre <B>-u</B>,
-que es fa servir simplement per deixar que un script d'avís sàpiga que
+que s'utilitza per deixar que un script d'avís sàpiga que
 està essent cridat com a <B>upalert</B>. Es poden especificar avisos
 múltiples per a cada definició de període. Tingues en compte que la
 conducta per defecte és que s'enviï un avís <B>upalert</B> independentment
@@ -284,7 +284,7 @@ la sintaxi del paràmetre <B>interval</B> (&quot;30s&quot;, &quot;1m&quot;,
 etc.), i controla l'execució de <B>upalert</B>.
 Si un servei torna a estar operatiu després de fallar durant un temps
 més gran o igual que el valor d'aquesta opció, llavors es cridarà un
-<B>upalert</B>. Fes servir aquesta opció per evitar que es cridi
+<B>upalert</B>. Utilitza aquesta opció per evitar que es cridi
 un <B>upalert</B> a causa de  &quot;blips&quot; (petits talls).
 <P>
 

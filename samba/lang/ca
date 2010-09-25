@@ -62,19 +62,19 @@ global_group=Grups Samba
 global_gedit=Afegeix i Edita els grups Samba
 global_gconvert=Converteix els grups Unix a grups Samba
 global_gsync=Configura la sincronització automàtica dels grups Unix i els grups Samba
-global_winbind=Lliga'l al Domini
+global_winbind=Vincula'l al Domini
 global_bind=Opcions Winbind
 
 error_nosamba=No s'ha trobat l'executable servidor de samba <tt>$1</tt>. O bé el Samba no està instal·lats, o bé la <a href="$2">configuració del mòdul</a> és incorrecta.
 error_version=El Webmin no ha pogut obtenir la versió de l'executable servidor de Samba <tt>$1</tt>. Comprova la <a href="$2">configuració del mòdul</a> per assegurar que el camí és el correcte.
 error_config=No s'ha trobat el fitxer de configuració $1. Segurament, el Samba no està instal·lat, o bé la <a href="$2">configuració del mòdul</a> és incorrecta.
 error_include=Webmin no pot manipular els fitxers de configuració de Samba que empren les directives <tt>config</tt> o <tt>include</tt>.
-error_delshare=No he pogut suprimir el recurs
+error_delshare=No s'ha pogut suprimir el recurs
 error_delcopy=El recurs '$1' és una còpia del recurs
-error_savename=No he pogut desar els noms de fitxers
+error_savename=No s'han pogut desar els noms de fitxers
 
 convert_title=Conversió d'Usuaris
-convert_msg=Aquest formulari permet sincronitzar ls llista d'usuaris de Unix i de Samba. Quan el Samba fa servir <a href=$1>contrasenyes xifrades</a>, s'utilitza una llista separada d'usuaris i contrasenyes en lloc de la llista d'usuaris del sistema.
+convert_msg=Aquest formulari permet sincronitzar ls llista d'usuaris de Unix i de Samba. Quan el Samba utilitza <a href=$1>contrasenyes xifrades</a>, s'utilitza una llista separada d'usuaris i contrasenyes en lloc de la llista d'usuaris del sistema.
 convert_noconv=No converteixis o elimina aquests usuaris:
 convert_ncdesc=La llista d'usuaris a no convertir pot contenir noms d'usuari, UIDs, noms de grup prefixats amb <tt>@</tt>, o rangs d'UIDs com ara <i>500-1000</i> o <i>500-</i>.
 convert_update=Actualitza els usuaris del Samba a partir dels detalls de Unix
@@ -83,7 +83,7 @@ convert_delete=Suprimeix els usuaris de Samba que no existeixin en Unix
 convert_newuser=Per a nous usuaris, estableix la contrasenya a:
 convert_nopasswd=Sense contrasenya
 convert_lock=Compte bloquejat
-convert_passwd=Fes servir aquesta contrasenya
+convert_passwd=Utilitza aquesta contrasenya
 convert_convert=Converteix els Usuaris
 convert_cannot=Els usuaris Unix no es poden convertir a usuaris Samba
 
@@ -106,7 +106,7 @@ net_idle=Temps d'inacció abans de desconnectar
 net_trustlist=Fitxer de hosts/usuaris fiables
 net_netinterface=Interfícies de Xarxa
 net_auto=Automàtic
-net_uselist=Fes servir llista...
+net_uselist=Utilitza llista...
 net_interface=Interfície
 net_netmask=Màscara de subxarxa
 net_keepalive=Paquets 'keepalive'
@@ -117,7 +117,7 @@ net_listen=Escolta l'adreça
 net_socket=Opcions del sòcol
 
 passwd_title=Opcions de Contrasenya
-passwd_encrypt=Fes servir contrasenyes xifrades
+passwd_encrypt=Utilitza contrasenyes xifrades
 passwd_allownull=Permet contrasenyes nul·les
 passwd_program=Programa de contrasenyes
 passwd_case=Distinció entre majúscules i minúscules
@@ -140,7 +140,7 @@ smb_title=Opcions de Xarxa Windows
 smb_workgroup=Grup de treball
 smb_wins=Mode WINS
 smb_winsserver=Sigues un servidor WINS
-smb_useserver=Fes servir un servidor
+smb_useserver=Utilitza un servidor
 smb_description=Descripció del servidor
 smb_descriptionnone=Cap
 smb_name=Nom del servidor
@@ -200,7 +200,7 @@ fmisc_maxconn=Nombre màxim de connexions
 fmisc_fake=Simula oplocks
 fmisc_oplocks=Activa oplocks
 fmisc_level2=Oplocks només lectura
-fmisc_sharemode=Fes servir modes del recurs
+fmisc_sharemode=Utilitza modes del recurs
 fmisc_strict=Bloqueig estricte
 fmisc_sync=Sync després d'escriure
 fmisc_volume=Nom del volum
@@ -273,7 +273,7 @@ print_queue=Ordre de mostra de la cua
 print_delete=Ordre de supressió de treball
 print_pause=Ordre de suspensió de treball
 print_unresume=Ordre de represa de treball
-print_driver=Driver d'Impressora
+print_driver=Controlador d'Impressora
 
 pshare_title1=Impressora Compartida
 pshare_title2=Edició d'Impressora Compartida
@@ -308,7 +308,7 @@ sec_rwuser=Usuaris lectura/escriptura
 sec_rwgroup=Grups lectura/escriptura
 
 esync_title=Sincronització d'Usuaris
-esync_msg=Webmin es pot configurar de manera que els canvis a la llista d'usuaris de Unix s'apliquin automàticament a la llista d'usuaris del Samba. Això només funcionarà si es fa servir el mòdul <b>Usuaris i Grups</b> de Webmin per a afegir, suprimir o canviar usuaris.
+esync_msg=Webmin es pot configurar de manera que els canvis a la llista d'usuaris de Unix s'apliquin automàticament a la llista d'usuaris del Samba. Això només funcionarà si s'utilitza el mòdul <b>Usuaris i Grups</b> de Webmin per a afegir, suprimir o canviar usuaris.
 esync_add=Afegeix un usuari de Samba quan s'afegeixi un usuari Unix
 esync_chg=Canvia l'usuari de Samba quan es canviï l'usuari Unix
 esync_del=Suprimeix l'usuari de Samba quan se suprimeixi l'usuari Unix
@@ -320,43 +320,43 @@ esync_cannot=No es pot configurar la sincronització d'usuaris
 esync_egid=Hi falta el SID o RID del grup o bé és invàlid
 
 mkpass_title=Conversió d'Usuaris
-mkpass_convfail=No he pogut convertir l'usuari
-mkpass_msg=Convertint usuaris Unix...
+mkpass_convfail=No s'ha pogut convertir l'usuari
+mkpass_msg=S'estan convertint els usuaris Unix...
 mkpass_skip=ometent
 mkpass_same=és el mateix
 mkpass_update=actualitzant
 mkpass_del=suprimint
-mkpass_passfail=No he pogut establir la contrasenya
+mkpass_passfail=No s'ha pogut establir la contrasenya
 
-savecopy_fail=No he pogut crear la còpia
-savecopy_global=El nom 'global' no es pot fer servir per a cap recurs
+savecopy_fail=No s'ha pogut crear la còpia
+savecopy_global=El nom 'global' no es pot utilitzar per a cap recurs
 savecopy_exist=Ja existeix un recurs anomenat '$1'
 savecopy_ename=No has introduït cap nom de recurs
 
-saveuser_fail=No he pogut desar l'usuari
+saveuser_fail=No s'ha pogut desar l'usuari
 saveuser_uid='$1' no és un UID de Unix vàlid
 saveuser_colon=El nom real no pot contenir el caràcter :
 saveuser_home=El directori arrel '$1' no existeix
 saveuser_shell=$1 no és una shell vàlida
-saveuser_pass=No he pogut canviar la contrasenya amb smbpasswd : $1
+saveuser_pass=No s'ha pogut canviar la contrasenya amb smbpasswd : $1
 saveuser_ews=No es pot activar l'opció 'Compte de fiabilitat d'estació de treball' per als usuaris existents
 
-savefmisc_fail=No he pogut desar les opcions miscel·lànies
+savefmisc_fail=No s'han pogut desar les opcions miscel·lànies
 savefmisc_number='$1' no és un nombre vàlid de connexions
 
-savefperm_fail=No he pogut desar els permisos de fitxers
+savefperm_fail=No s'han pogut desar els permisos de fitxers
 savefperm_mode='$1' no és un mode de fitxer Unix vàlid
 
-savefshare_fail=No he pogut desar el recurs
+savefshare_fail=No s'ha pogut desar el recurs
 savefshare_nopath=No s'ha donat el camí
 savefshare_exist=Ja existeix un recurs anomenat '$1'
 savefshare_mode='$1' no és un nom de recurs vàlid
-savefshare_global=El nom 'global' o es pot fer servir per a cap recurs
+savefshare_global=El nom 'global' o es pot utilitzar per a cap recurs
 savefshare_owner=Hi falta l'usuari del nou directori o bé és invàlid
 savefshare_group=Hi falta grup del nou directori o bé és invàlid
 savefshare_perms=Hi falten els permisos del nou directori o bé són invàlids
 
-savemisc_fail=No he pogut desar les opcions
+savemisc_fail=No s'han pogut desar les opcions
 savemisc_lockdir=El directori que conté el directori de bloqueigs no existeix
 savemisc_logdir=El directori que conté el fitxer de registre no existeix
 savemisc_logsize='$1' no és una mida del registre vàlida
@@ -365,41 +365,43 @@ savemisc_chroot=El directori chroot '$1' no existeix
 savemisc_smbrun=El programa smbrun '$1' no existeix o no és executable
 savemisc_time='$1' no és un marge de temps vàlid
 
-savenet_fail=No he pogut desar les opcions
+savenet_fail=No s'han pogut desar les opcions
 savenet_timeout='$1' no és un temps límit de desconnexió vàlid
 savenet_ip='$1' no és un byte IP vàlid
 savenet_keep='$1' no és un interval 'keepalive' vàlid
 savenet_maxxmit='$1' no és una mida màxima de paquet vàlida
 
-savepass_fail=No he pogut desar les opcions
+savepass_fail=No s'han pogut desar les opcions
 savepass_nopass=La teva versió de Samba no suporta contrasenyes xifrades
 savepass_passwd=No s'ha donat cap programa de canvi de contrasenyes
 savepass_level='$1' no és un valor vàlid de caixa
 savepass_chat=El guió de canvi de contrasenya és buit
 
-savepopts_fail=No he pogut desar les opcions de la impressora
+savepopts_fail=No s'han pogut desar les opcions de la impressora
 savepopts_number=L'espai lliure mínim ha de ser un número
 
-saveprint_fail=No he pogut desar les opcions
+saveprint_fail=No s'han pogut desar les opcions
 saveprint_printcap=El fitxer printcap '$1' no existeix
 saveprint_cache='$1' no és un temps de cau vàlid
 
-savepshare_fail=No he pogut desar la impressora compartida
+savepshare_fail=No s'ha pogut desar la impressora compartida
 savepshare_exist=Ja existeix un recurs anomenat '$1'
 savepshare_name='$1' no és un nom de recurs vàlid
-savepshare_global=El nom 'global' no es pot fer servir per a cap recurs
+savepshare_global=El nom 'global' no es pot utilitzar per a cap recurs
 
-savesec_fail=No he pogut desar la seguretat
+savesec_fail=No s'ha pogut desar la seguretat
 
-savesmb_fail=No he pogut desar les opcions
+savesmb_fail=No s'han pogut desar les opcions
 savesmb_size='$1' no és una mida vàlida de disc
 savesmb_oslevel='$1' no és una prioritat de mestre d'exploració vàlida
 savesmb_server=Has d'introduir un servidor de contrasenyes
 
-start_err=No he pogut iniciar els servidors Samba
+start_err=No s'han pogut iniciar els servidors Samba
 start_fail=$1 ha fallat
 
-swats_fail=No he pogut desar el nom d'usuari
+restart_err=No s'han pogut reiniciar els servidors Samba
+
+swats_fail=No s'ha pogut desar el nom d'usuari
 swats_user=Falta el nom d'usuari SWAT
 
 viewu_index=Usuaris Actuals
@@ -418,48 +420,48 @@ viewu_ecmd=No sembla que el programa d'estat de samba $1 estigui instal·lat al s
 viewu_kill=Desconnecta els Usuaris Seleccionats
 viewu_enone=No has seleccionat cap usuari
 
-log_apply=He reiniciat els servidors Samba
-log_stop=He aturat els servidors Samba
-log_start=He iniciat els servidors Samba
-log_save_fshare=He modificat el directori compartit $1
-log_save_pshare=He modificat la impressora compartida $1
-log_save_sec=He modificat la seguretat i el control d'accés del recurs $1
-log_save_fperm=He modificat els permisos de fitxers del recurs $1
-log_save_fname=He modificat el nomenament de fitxers del recurs $1
-log_save_fmisc=He modificat les opcions miscel·lànies del recurs $1
-log_save_popts=He modificat les opcions de la impressora compartida $1
-log_default_fshare=He canviat les opcions del directori compartit
-log_default_pshare=He canviat les opcions de la impressora compartida
-log_kill=He desconnectat el procés $1
-log_skill=He desconnectat el procés $1 del recurs $2
-log_create_fshare=He creat el directori compartit $1
-log_kills=He desconnectat $1 processos
-log_skills=He desconnectat $1 processos del recurs $2
-log_create_pshare=He creat la impressora compartida $1
-log_delete_fshare=He suprimit el directori compartit $1
-log_delete_pshare=He suprimit la impressora compartida $1
-log_delete_shares=He suprimit $1 recursos compartits
-log_net=He canviat les opcions de xarxa Unix
-log_smb=He canviat les opcions de xarxa Windows
-log_pass=He canviat les opcions d'autenticació
-log_print=He canviat les opcions d'impressió de Windows a Unix
-log_misc=He canviat les opcions miscel·lànies
+log_apply=S'han reiniciat els servidors Samba
+log_stop=S'han aturat els servidors Samba
+log_start=S'han iniciat els servidors Samba
+log_save_fshare=S'ha modificat el directori compartit $1
+log_save_pshare=S'ha modificat la impressora compartida $1
+log_save_sec=S'ha modificat la seguretat i el control d'accés del recurs $1
+log_save_fperm=S'han modificat els permisos de fitxers del recurs $1
+log_save_fname=S'ha modificat el nomenament de fitxers del recurs $1
+log_save_fmisc=S'han modificat les opcions miscel·lànies del recurs $1
+log_save_popts=S'han modificat les opcions de la impressora compartida $1
+log_default_fshare=S'han canviat les opcions del directori compartit
+log_default_pshare=S'han canviat les opcions de la impressora compartida
+log_kill=S'ha desconnectat el procés $1
+log_skill=S'ha desconnectat el procés $1 del recurs $2
+log_create_fshare=S'ha creat el directori compartit $1
+log_kills=S'han desconnectat $1 processos
+log_skills=S'han desconnectat $1 processos del recurs $2
+log_create_pshare=S'ha creat la impressora compartida $1
+log_delete_fshare=S'ha suprimit el directori compartit $1
+log_delete_pshare=S'ha suprimit la impressora compartida $1
+log_delete_shares=S'han suprimit $1 recursos compartits
+log_net=S'han canviat les opcions de xarxa Unix
+log_smb=S'han canviat les opcions de xarxa Windows
+log_pass=S'han canviat les opcions d'autenticació
+log_print=S'han canviat les opcions d'impressió de Windows a Unix
+log_misc=S'han canviat les opcions miscel·lànies
 log_bind=Canvia les opcions Winbind
-log_sync=He configurat la sincronització d'usuaris Unix
-log_epass=He convertit els usuaris Unix a usuaris Samba
-log_epass_l=He convertit els usuaris Unix a usuaris Samba ($1 creat(s(, $2 modificat(s), $3 suprimit(s))
-log_copy=He copiat el recurs $2 a $1
-log_save_euser=He modificat l'usuari Samba $1
-log_delete_euser=He suprimit l'usuari Samba $1
-log_create_group=He creat el grup Samba $1
-log_modify_group=He modificat el grup Samba $1
-log_delete_group=He suprimit el grup Samba $1
-log_gsync=He configurat la sincronització de grups Unix
-log_manual=He editat manualment el fitxer de configuració $1
+log_sync=S'ha configurat la sincronització d'usuaris Unix
+log_epass=S'han convertit els usuaris Unix a usuaris Samba
+log_epass_l=S'han convertit els usuaris Unix a usuaris Samba ($1 creat(s(, $2 modificat(s), $3 suprimit(s))
+log_copy=S'ha copiat el recurs $2 a $1
+log_save_euser=S'ha modificat l'usuari Samba $1
+log_delete_euser=S'ha suprimit l'usuari Samba $1
+log_create_group=S'ha creat el grup Samba $1
+log_modify_group=S'ha modificat el grup Samba $1
+log_delete_group=S'ha suprimit el grup Samba $1
+log_gsync=S'ha configurat la sincronització de grups Unix
+log_manual=S'ha editat manualment el fitxer de configuració $1
 
 swat_title=Connexió SWAT
 swat_list=Connexió SWAT
-swat_msg1=El teu nom i contrasenya SWAT actuals són incorrectes. Fes servir el formulari inferior per tornar-te a connectar.
+swat_msg1=El teu nom i contrasenya SWAT actuals són incorrectes. Utilitza el formulari inferior per tornar-te a connectar.
 swat_msg2=Cal un usuari i una contrasenya per connectar-se al SWAT. Normalment, això pot ser un usuari qualsevol del sistema.
 swat_msg3=No pots executar el SWAT des de Webmin, ja que la configuració del Samba té establerta l'opció <tt>$1:...</tt> (allow hosts).
 swat_msg4=No obstant, pots connectar directament amb el SWAT a $1
@@ -549,7 +551,7 @@ acl_edit=editar
 acl_group_opts=Opcions del grup Samba
 acl_maint_groups=Pot veure, editar i afegir grups
 acl_maint_gsync=Pot mantenir la sincronia automàtica entre grups Unix i Samba
-acl_winbind=Es pot lligar a dominis
+acl_winbind=Pot vincular a dominis
 
 groups_title=Grups Samba
 groups_name=Nom del grup
@@ -580,7 +582,7 @@ gedit_unixgr=Grup...
 gedit_none=Cap
 gedit_set=Els llistats...
 
-gsave_err=No he pogut desar el grup
+gsave_err=No s'ha pogut desar el grup
 gsave_eunix=Hi falta el nom del grup i GID Unix, oi bé és invàlid
 gsave_ename=Hi falta el nom del grup
 gsave_epriv=Hi falten els privilegis del grup
@@ -602,25 +604,25 @@ check_user2=$1: No estan especificats a la pàgina de <a href='$2'>Configuració d
 check_group1=$1: Els grups només estan suportats a la versió 3 de Samba.
 check_group2=$1: No estan especificats a la pàgina de <a href='$2'>Configuració del Mòdul</a> ni el camí de l'ordre smbgroupedit ni el de l'ordre net.
 
-winbind_title=Lligam de Domini
-winbind_ecannot=No tens permís per lligar a dominis
-winbind_msg=Es pot utilitzar aquest formulari per lligar aquest servidor Samba a un domini de Windows, típicament gestionat per un servidor diferent.
-winbind_header=Lliga a un domini Windows
-winbind_user=Lliga com a usuari
-winbind_dom=Lliga al domini
-winbind_save=Lliga'l Ara
+winbind_title=Vinculació a Domini
+winbind_ecannot=No tens permís per vincular a dominis
+winbind_msg=Es pot utilitzar aquest formulari per vincular aquest servidor Samba a un domini de Windows, típicament gestionat per un servidor diferent.
+winbind_header=Vincula a un domini Windows
+winbind_user=Vincula com a usuari
+winbind_dom=Vincula al domini
+winbind_save=Vincula'l Ara
 winbind_default=Domini de la configuració de Samba
 winbind_pass=Contrasenya de l'usuari
-winbind_err=No he pogut lligar al domini
+winbind_err=No s'ha pogut vincular al domini
 winbind_euser=Hi falta el nom d'usuari
 winbind_edom=Hi falta el nom del domini
-winbind_cmd=Lligant al domini amb l'ordre $1...
+winbind_cmd=S'està vinculant al domini amb l'ordre $1...
 winbind_failed=...ha fallat! Vegeu la sortida de sobre per veure'n la raó.
 winbind_ok=...completat
 
 bind_title=Opcions Winbind
 bind_ecannot=No tens permís per editar les opcions winbind
-bind_header=Opcions de lligam del domini Windows
+bind_header=Opcions de vincle a domini Windows
 bind_local=Activa Winbind per als comptes locals
 bind_trust=Confia en els usuaris del servidor de domini
 bind_users=No permetis el llistat d'usuaris
@@ -630,16 +632,16 @@ bind_cache=Nombre de segons que cal posar els detalls de l'usuari al cau
 bind_uid=Rang de UIDs dels usuaris de Windows
 bind_gid=Rang de GIDs dels grups de Windows
 bind_backend=Repositori LDAP per al mapejat de comptes
-bind_err=No he pogut desar les opcions Winbind
+bind_err=No s'han pogut desar les opcions Winbind
 bind_erealm=Reialme Kerberos invàlid
 bind_ecache=Hi falta el temps de cau o bé és invàlid
 bind_euid=Rang de UID invàlid - ha de ser com 20000-30000
 bind_egid=Rang de GID invàlid - ha de ser com 20000-30000
 
 manual_title=Edició del Fitxer de Configuració
-manual_desc=Editant el fitxer de configuració de Samba $1...
-manual_err=No he pogut desar el fitxer de configuració
+manual_desc=S'està editant el fitxer de configuració de Samba $1...
+manual_err=No s'ha pogut desar el fitxer de configuració
 manual_edata=No has introduït res!
 
-delete_err=No he pogut suprimir els recursos
+delete_err=No s'han pogut suprimir els recursos
 delete_enone=No has seleccionat cap recurs

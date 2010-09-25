@@ -2,13 +2,13 @@ index_title=Canvi de Contrasenyes
 index_header=Selecciona un usuari per canviar-ne la contrasenya
 index_return=a la llista d'usuaris
 index_user=Canvia la contrasenya de l'usuari:
-index_euseradmin=Aquest mòdul no es pot fer servir perquè el mòdul d'Usuaris i Grups no està instal·lat o no està suportat pel sistema.
+index_euseradmin=Aquest mòdul no es pot utilitzar perquè el mòdul d'Usuaris i Grups no està instal·lat o no està suportat pel sistema.
 index_toomany=Hi ha massa usuaris al sistema com per mostrar-los. Introdueix a sota el nom de l'usuari la contrasenya del qual vols canviar...
 index_none=No tens accés a cap usuari per canviar-ne la contrasenya.
 
 passwd_title=Canvi de Contrasenya
-passwd_header=Canviant la contrasenya de l'usuari Unix
-passwd_for=Canviant la contrasenya de
+passwd_header=Canvi de la contrasenya de l'usuari Unix
+passwd_for=Canvi de la contrasenya de
 passwd_old=Contrasenya anterior
 passwd_new=Nova contrasenya
 passwd_repeat=Nova contrasenya (altre cop)
@@ -16,16 +16,16 @@ passwd_expire=Força l'usuari a canviar la contrasenya a la pròxima entrada
 passwd_others=Canvia la contrasenya en els altres mòduls
 passwd_change=Canvia
 passwd_reset=Esborra el formulari
-passwd_err=No he pogut canviar la contrasenya
+passwd_err=No s'ha pogut canviar la contrasenya
 passwd_ecannot=No tens permís per canviar la contrasenya d'aquest usuari
 passwd_euser=L'usuari no existeix
 passwd_eold=La contrasenya anterior és incorrecta
 passwd_erepeat=Les contrasenyes noves no són iguals
 passwd_ecmd=$1 ha fallat: $2
-passwd_ok=He canviat amb èxit la contrasenya de l'usuari $1. Si aquest és el teu usuari de Webmin, t'hauràs de tornar a connectar un altre cop.
+passwd_ok=S'ha canviat amb èxit la contrasenya de l'usuari $1. Si aquest és el teu usuari de Webmin, t'hauràs de tornar a connectar un altre cop.
 passwd_ok2=La contrasenya de l'usuari $1 s'ha canviat correctament.
 
-log_passwd=He canviat la contrasenya de l'usuari $1
+log_passwd=S'ha canviat la contrasenya de l'usuari $1
 
 acl_repeat=Ha de tornar a introduir la contrasenya altre cop
 acl_old=Ha d'introduir la contrasenya anterior

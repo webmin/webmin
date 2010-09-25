@@ -24,23 +24,23 @@ edit_term=Mostra la sortida en una terminal
 edit_copious=Produeix un munt de sortides
 edit_desc=Descripció de tipus MIME
 
-save_err=No he pogut desar el programa de tipus MIME
+save_err=No s'ha pogut desar el programa de tipus MIME
 save_etype=Hi falta el tipus MIME o bé és invàlid
 save_eprogram=Hi falta el programa manipulador
 save_eclash=Ja existeix un programa activat per al tipus MIME introduït
 save_etest=Hi falta l'ordre de prova o bé és invàlida
 save_edesc=Descripció de tipus MIME invàlida
 
-delete_err=No he pogut suprimir els programes de tipus MIME
-disable_err=No he pogut desactivar els programes de tipus MIME
+delete_err=No s'han pogut suprimir els programes de tipus MIME
+disable_err=No s'han pogut desactivar els programes de tipus MIME
 disable_eclash=Ja existeix un programa de tipus MIME desactivat per a $1
-enable_err=No he pogut activar els programes de tipus MIME
+enable_err=No s'han pogut activar els programes de tipus MIME
 enable_eclash=Ja existeix un programa de tipus MIME activat per a $1
 delete_enone=No n'has seleccionat cap
 
-log_delete_mailcap=He suprimit el programa de tipus MIME per a $1
-log_create_mailcap=He creat el programa de tipus MIME per a $1
-log_modify_mailcap=He modificat el programa de tipus MIME per a $1
-log_delete_mailcaps=He suprimit $1 programes de tipus MIME
-log_disable_mailcaps=He desactivat $1 programes de tipus MIME
-log_enable_mailcaps=He activat $1 programes de tipus MIME
+log_delete_mailcap=S'ha suprimit el programa de tipus MIME per a $1
+log_create_mailcap=S'ha creat el programa de tipus MIME per a $1
+log_modify_mailcap=S'ha modificat el programa de tipus MIME per a $1
+log_delete_mailcaps=S'han suprimit $1 programes de tipus MIME
+log_disable_mailcaps=S'han desactivat $1 programes de tipus MIME
+log_enable_mailcaps=S'han activat $1 programes de tipus MIME

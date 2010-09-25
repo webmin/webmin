@@ -1,7 +1,7 @@
 line1=Opcions configurables,11
-dynamic=Fes servir un número aleatori per la llista d'àlies,1,1-Sí,0-No
+dynamic=Utilitza un número aleatori per la llista d'àlies,1,1-Sí,0-No
 sort_mode=Ordena les llistes de correu per,1,1-Nom,0-Ordre de creació
-perms=Permisos dels fitxers de majordomo,1,1-Gravable per l'usuari,0-Gravable per l'usuari i el grup
+perms=Permisos dels fitxers de majordomo,1,1-Escrivible per l'usuari,0- per l'usuari i el grup
 line2=Configuració del sistema,11
 majordomo_cf=Camí complet del fitxer de configuració de majordomo,0
 program_dir=Directori que conté els programes de majordomo,0

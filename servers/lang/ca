@@ -48,13 +48,13 @@ edit_fast=Fes crides RPC ràpides
 edit_auto=Decideix automàticament
 edit_status=Estat del servidor
 edit_timeout=Límit de temps en intentar connectar
-edit_failed=No he pogut connectar
+edit_failed=No s'ha pogut connectar
 edit_baduser=Entrada rebutjada
 edit_invalid=L'usuari no pot fer RPCs
-edit_version=Executant Webmin $1
+edit_version=S'està executant Webmin $1
 edit_same=Només disponible quan no s'està en mode d'autenticació de sessió, i quan la contrasenya s'ha posat a disposició dels programes de Webmin.
 
-save_err=No he pogut desar el servidor
+save_err=No s'ha pogut desar el servidor
 save_ehost=Hi falta el nom del host o bé no és correcte
 save_ehost2=El host no existeix
 save_eport=Hi falta el port o bé no és correcte
@@ -65,26 +65,26 @@ save_elogin=Usuari o contrasenya invàlids
 save_egroup2=Nom del nou grup invàlid
 
 find_title=Recerca de Servidors
-find_new=He trobat un servidor nou a $1
-find_but=He trobat un servidor nou a $1, però l'autenticació ha fallat: $2
-find_already=He trobat un servidor ja conegut a $1
-find_skip=Ignorant el servidor a $1
-find_me=He trobat aquest servidor a $1
+find_new=S'ha trobat un servidor nou a $1
+find_but=S'ha trobat un servidor nou a $1, però l'autenticació ha fallat: $2
+find_already=S'ha trobat un servidor ja conegut a $1
+find_skip=S'està ignorant el servidor a $1
+find_me=S'ha trobat aquest servidor a $1
 find_escan=La xarxa a escanejar ha de ser una adreça de classe C.
-find_eiface=No he pogut trobar la interfície a escanejar
+find_eiface=No s'ha pogut trobar la interfície a escanejar
 find_none=Cap servidor ha respost a l'escaneig.
 find_ecannot=No tens permís per buscar servidors
-find_scanning=Rastrejant servidors a la xarxa...
-find_broading=Retransmetent als servidors de les adreces...
+find_scanning=S'estan rastrejant servidors a la xarxa...
+find_broading=S'està retransmetent als servidors de les adreces...
 find_eport=Hi falta el número de port o bé és invàlid
 
-log_modify=He modificat el servidor $1
-log_create=He registrat el servidor $1
-log_delete=He suprimit el servidor $1
-log_find=He trobat el servidor $1
-log_deletes=He suprimit $1 servidors
+log_modify=S'ha modificat el servidor $1
+log_create=S'ha registrat el servidor $1
+log_delete=S'ha suprimit el servidor $1
+log_find=S'ha trobat el servidor $1
+log_deletes=S'han suprimit $1 servidors
 
-link_elogin=No he pogut connectar a $1 com a $2
+link_elogin=No s'ha pogut connectar a $1 com a $2
 link_ecannot=No tens permís per utilitzar aquest servidor
 link_essl=No tens instal·lada la llibreria Perl Net::SSLeay
 link_eautologin=Usuari o contrasenya errònia per a $1. <a href='$2'>Fes clic aquí</a> per provar-ho altre cop.
@@ -113,7 +113,7 @@ login_login=Entra
 
 this_server=aquest servidor
 
-delete_err=No he pogut suprimir els servidors
+delete_err=No s'han pogut suprimir els servidors
 delete_enone=No n'has seleccionat cap
 delete_ecannot=No tens permís per suprimir servidors
 
@@ -128,7 +128,7 @@ auto_iface=Xarxa a la interfície $1
 auto_user=Usuari dels nous servidors
 auto_pass=Contrasenya dels nous servidors
 auto_type=Tipus de sistema per defecte
-auto_err=No he pogut desar els valors trobats automàticament
+auto_err=No s'han pogut desar els valors trobats automàticament
 auto_emins=Hi falta  el nombre de minuts o bé és invàlid
 auto_enet=Hi falta l'adreça de la xarxa o bé és invàlida
 auto_eiface=Hi falta la interfície de xarxa o bé és invàlida

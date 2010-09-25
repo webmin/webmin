@@ -18,4 +18,4 @@ mail_dir_qmail=Directori de correu Qmail al directori arrel,0
 mail_style=Estil dels directoris de correu,4,0-mail/usuari,1-mail/u/usuari,2-mail/u/us/usuari,3-mail/u/s/usuari
 start_cmd=Ordre per iniciar QMail,3,Executa el script rc
 stop_cmd=Ordre per aturar QMail,3,Mata qmail-send
-apply_cmd=Ordre per aplicar la configuració,3,Envia simplement el senyal HUP
+apply_cmd=Ordre per aplicar la configuració,3,Envia el senyal HUP
