@@ -1,7 +1,7 @@
 index_title=Client ADSL
 index_eadsl= No s'ha trobat al sistema l'ordre $1 de RP-PPPoE. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_econfig=No s'ha trobat al sistema el fitxer de configuració ADSL RP-PPPoE $1. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_emodem=El fitxer de configuració actual és per a un mòdem en un Linux de RedHat, no una connexió ADSL. Fes servir la pàgina de <a href='$2'>configuració del mòdul</a> per especificar un dels altres fitxers <tt>ifcfg-ppp*</tt> de $1, o bé un que encara no existeixi per tal que el mòdul el creï per a tu.
+index_emodem=El fitxer de configuració actual és per a un mòdem en un Linux de RedHat, no una connexió ADSL. Utilitza la pàgina de <a href='$2'>configuració del mòdul</a> per especificar un dels altres fitxers <tt>ifcfg-ppp*</tt> de $1, o bé un que encara no existeixi per tal que el mòdul el creï per a tu.
 index_stop=Desactiva l'ADSL
 index_stopdesc=Actualment, la teva connexió ADSL està activa amb l'adreça IP $1. Fes clic sobre aquest botó per a desactivar-la amb l'ordre $2.
 index_start=Activa l'ADSL
@@ -38,13 +38,13 @@ index_fw_masquerade=Per al portal NAT
 index_connect=Temps durant el qual cal intentar la connexió
 index_forever=Sempre
 
-start_err=No he pogut activar la connexió ADSL
+start_err=No s'ha pogut activar la connexió ADSL
 start_title=Activació de l'ADSL
 start_ip=S'ha establert una connexió ADSL amb adreça IP $1.
 start_demand=Com que la connexió sota petició està activada, la connexió ADSL només s'activarà quan calgui.
 start_bg=La connexió ADSL no s'ha activat en 20 segons. El client ADSL seguirà provant de connectar-se en segon pla fins que reïxi.
 
-save_err=No he pogut desar la configuració ADSL
+save_err=No s'ha pogut desar la configuració ADSL
 save_eeth=Hi falta la interfície Ethernet o bé sembla invàlida
 save_etimeout=Hi falta el temps límit o bé és invàlid
 save_euser=Hi falta el nom de l'usuari o bé és invàlid
@@ -53,15 +53,15 @@ save_emss=Hi falta la mida màxima de paquet o bé és invàlida
 save_title=Desa la Configuració
 save_desc=La configuració del client ADSL ha estat desada amb èxit, però no s'utilitzarà fins que et reconnectis.
 
-stop_err=No he pogut tancar la connexió ADSL
+stop_err=No s'ha pogut tancar la connexió ADSL
 stop_title=Desactivació de l'ADSL
 stop_ok=La connexió ADSL s'ha desactivat amb èxit.
 stop_failed=Per alguna raó. la connexió ADSL encara està activa!
 
-log_save=He desat la configuració del client
-log_stop=He desactivat l'ADSL
-log_start=He activat l'ADSL
-log_bootup=He activat l'ADSL en engegar el sistema
-log_bootdown=He desactivat l'ADSL en engegar el sistema
-log_setup=He aplicat la configuració per defecte
+log_save=S'ha desat la configuració del client
+log_stop=S'ha desactivat l'ADSL
+log_start=S'ha activat l'ADSL
+log_bootup=S'ha activat l'ADSL en engegar el sistema
+log_bootdown=S'ha desactivat l'ADSL en engegar el sistema
+log_setup=S'ha aplicat la configuració per defecte
 

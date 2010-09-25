@@ -132,7 +132,7 @@ session_pass=Contrasenya
 session_login=Entra
 session_clear=Neteja
 session_failed=L'entrada ha fallat. Prova-ho un altre cop, si et plau.
-session_logout=Has sortit amb èxit. Fes servir el formulari de sota per tornar a entrar.
+session_logout=Has sortit amb èxit. Utilitza el formulari de sota per tornar a entrar.
 session_timed_out=La sessió s'ha cancel·lat després de $1 minuts d'inactivitat.
 session_save=Recorda la contrasenya
 
@@ -219,7 +219,7 @@ sday_6=Dss
 
 emodule=Accés denegat : L'usuari $1 no té permís per utilitzar el mòdul $2
 emodulecheck=El mòdul $1 no està disponible en aquest sistema
-elock_tries=No he pogut blocar el fitxer $1 després de $2 minuts
+elock_tries=No he pogut bloquejar el fitxer $1 després de $2 minuts
 
 skill_high=Expert
 skill_medium=Mitjà
@@ -247,7 +247,7 @@ feedback_emodule=Has triat d'incloure la configuració del mòdul en el correu, pe
 feedback_emodule2=El mòdul seleccionat no existeix
 feedback_econfig=No tens un accés complet al mòdul seleccionat.
 feedback_via=He enviat l'informe a $1 a través del servidor SMTP $2.
-feedback_prog=He enviat l'informe a $1 fent servir el programa $2 de sendmail.
+feedback_prog=He enviat l'informe a $1 utilitzant el programa $2 de sendmail.
 feedback_esend=No he pogut enviar l'informe a través del programa sendmail ni del servidor SMTP local.
 feedback_to=Envia l'informe a les adreces
 feedback_enoto=No has introduït cap adreça per enviar l'informe
@@ -281,7 +281,7 @@ password_eold=La contrasenya actual és incorrecta
 password_enew1=No has introduït la contrasenya nova
 password_enew2=Les contrasenyes noves no coincideixen
 password_epam=Error PAM: $1
-password_emodpam=El mòdul perl Authen::PAM necessari per al canvi de contrasenya no està instal·lat!
+password_emodpam=El mòdul Perl Authen::PAM necessari per al canvi de contrasenya no està instal·lat!
 password_enewpass=No es permet la nova contrasenya: $1
 
 ui_mandatory=Aquest camp és obligatori

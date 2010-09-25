@@ -3,11 +3,11 @@
 Aquest mòdul permet configurar FreeSWAN, una implementació lliure dels protocols
 VPN IPsec per a Linux. IPsec xifra de forma transparent totes les dades que
 viatgen entre dues xarxes i, contràriament a altres protocols VPN, fa ús de
-les adreces IP existents per a la VPN, en lloc de crear-ne de noves. S'empra
+les adreces IP existents per a la VPN, en lloc de crear-ne de noves. S'utilitza
 típicament per permetre que clients remots accedeixin a una xarxa privada
 interna a través d'Internet. <p>
 
-Per tal que dos sistemes es comuniquin fent servir IPsec, cadascun ha de tenir
+Per tal que dos sistemes es comuniquin utilitzant IPsec, cadascun ha de tenir
 una connexió definida que conté l'adreça IP, nom de host identificador, clau
 RSA i xarxa privada (si n'hi ha) de tots dos sistemes. Cada connexió 
 configurada es mostra com una icona a la pàgina principal del mòdul. Sovint,
@@ -15,7 +15,7 @@ els detalls de la configuració que introdueixes en crear una configuració,
 seran idèntics a tots dos sistemes, només amb les seccions <b>local</b> i
 <b>remota</b> intercanviades.
 
-Tot host que vulgui comunicar-se fent servir IPsec ha de tenir una parella
+Tot host que vulgui comunicar-se utilitzant IPsec ha de tenir una parella
 de claus pública/privada, utilitzades tant pel xifratge com per a
 l'autenticació, Cada cap de la connexió ha de conèixer la clau pública de
 l'altre extrem, que es pot emmagatzemar a la configuració de la connexió 
@@ -25,7 +25,7 @@ la Clau Pública</b> d'aquest mòdul per veure la clau d'aquest host. <p>
 IPsec és més complex de configurar que altres protocols VPN, però és més
 segur i potent, i es considera l'estàndard industrial. Desgraciadament,
 pots cometre molts error de configuració que poden causar que la connexió 
-no s'iniciï, o simplement que sigui incapaç en silenci d'encarrilar el
+no s'iniciï, o que sigui incapaç en silenci d'encarrilar el
 trànsit. Tot i que aquest mòdul et protegeix d'error simples, no et pot
 estalviar altres problemes conceptuals més seriosos. <p>
 
@@ -35,7 +35,7 @@ A la pàgina principal d'aquest mòdul hi ha icones per a qualsevol connexió
 IPsec existent, i un enllaç per a crear-ne una de nova, els quals et duran
 tots dos a un formulari de detalls similar quan hi facis clic. A sota
 d'aquestes, hi ha icones per editar els valors globals (com ara les interfícies
-de xarxa a emprar), i mostrar la clau pública del sistema. <p>
+de xarxa a utilitzar), i mostrar la clau pública del sistema. <p>
 
 Si estàs utilitzant la versió 2 de FreeSWAN, també hi veuràs icones
 per editar els diversos fitxers de polítiques que determinen quina mena de 
@@ -46,7 +46,7 @@ Típicament, aquests es poden deixar sense canvis, ja que el valor per defecte
 Prop del peu de la pàgina, hi ha uns botons per iniciar i aturar el procés
 servidor FreeSWAN i aplicar-li la configuració actual bo i executant-se.
 El sistema no podrà establir ni rebre connexions IPsec si el servidor no 
-està actiu. Es pot fer servir el botó <b>Inicia connexió</b> d'aquesta
+està actiu. Es pot utilitzar el botó <b>Inicia connexió</b> d'aquesta
 secció per forçar l'establiment d'un túnel IPsec que no s'activi automàticament
 quan s'inicia el sistema. <p>
 

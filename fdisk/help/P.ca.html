@@ -4,15 +4,15 @@ Intenta reprogramar el joc de xips de la interfície IDE amb el mode PIO
 especificat, o bé intenta autosintonitzar el "millor" mode PIO suportat
 per la unitat.
 <p>
-Aquesta característica està suportada pel kernel només per a jocs de xips
+Aquesta característica està suportada pel nucli només per a jocs de xips
 "coneguts", i fins i tot així el suport és deficient. Alguns jocs de xips
 IDE no poden alterar el mode PIO d'una sola unitat, en aquest cas pot ser
 que forcin el mode PIO de totes dues unitats. Molts jocs de xips IDE suporten
 més o menys dels sis modes PIO estàndard (0 a 5), així que el valor exacte
 de la velocitat implementada de fet variarà depenent de la sofisticació 
-dels jocs de xips/drivers.
+dels jocs de chips/controladors.
 <p>
-<i>Fes-ho servir amb molt de compte!</i><br>
+<i>Utilitza-ho amb molt de compte!</i><br>
 Aquesta característica no té cap mena de protecció contra pota-tendres,
 i un resultat no reeixit pot provocar una <i>corrupció massiva del sistema
 de fitxers!</i>

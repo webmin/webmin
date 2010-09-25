@@ -1,6 +1,6 @@
 index_title=Tallafocs BSD
 index_eipfw=No s'ha trobat al sistema l'ordre $1 del tallafocs BSD. Pot ser que no estigui instal·lada, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_elist=S'ha produït un error en obtenir les regles actives del tallafocs emprant l'ordre $1: $2. Pot ser que el kernel no estigui configurat per suportar tallafocs, o bé que la <a href='$3'>configuració del mòdul</a> sigui incorrecta.
+index_elist=S'ha produït un error en obtenir les regles actives del tallafocs utilitzant l'ordre $1: $2. Pot ser que el nucli no estigui configurat per suportar tallafocs, o bé que la <a href='$3'>configuració del mòdul</a> sigui incorrecta.
 index_version=IPFW versió $1
 index_apply=Aplica la Configuració
 index_applydesc=Fes clic sobre aquest botó per fer activa la configuració del tallafocs llistada a sobre. Totes les regles que estan actives actualment seran descartades i substituïdes
@@ -35,7 +35,7 @@ index_radd=Afegeix
 index_add=Afegeix una nova regla del tallafocs.
 index_add2=Afegeix Regla del Tallafocs
 index_delete=Suprimeix les Seleccionades
-index_existing=Webmin ha detectat $1 regles del tallafocs IPFW actualment en ús que no estan enregistrades al fitxer $2. Probablement, aquestes regles s'han configurat des d'un script que aquest mòdul no sap llegir ni editar.<p>Si vols fer servir aquest mòdul per gestionar el tallafocs IPFW, fes clic sobre el botó de sota per convertir les regles existents a un fitxer desat, i llavors desactivar el script del tallafocs.
+index_existing=Webmin ha detectat $1 regles del tallafocs IPFW actualment en ús que no estan enregistrades al fitxer $2. Probablement, aquestes regles s'han configurat des d'un script que aquest mòdul no sap llegir ni editar.<p>Si vols utilitzar aquest mòdul per gestionar el tallafocs IPFW, fes clic sobre el botó de sota per convertir les regles existents a un fitxer desat, i llavors desactivar el script del tallafocs.
 index_saveex=Desa les Regles del Tallafocs
 index_headerex=Configuració del tallafocs existent
 
@@ -118,7 +118,7 @@ edit_src-port=Des del port d'origen...
 edit_dst-addr=A l'adreça de destinació...
 edit_dst-port=Al port de destinació...
 
-save_err=No he pogut desar la regla
+save_err=No s'ha pogut desar la regla
 save_enum=Hi falta el número de regla o bé és invàlid
 save_eskipto=Hi falta el número de regla per saltar-hi o bé és invàlid
 save_efwdip=Hi falta l'adreça IP de reenviament o bé és invàlida
@@ -149,7 +149,7 @@ save_elimit=Hi falta el límit màxim o bé és invàlid
 save_edstport=Hi falta el port de destinació o bé és invàlid
 save_esrcport=Hi falta el port d'origen o bé és invàlid
 
-apply_err=No he pogut aplicar la configuració
+apply_err=No s'ha pogut aplicar la configuració
 
 desc_if=Si $1
 desc_and=i
@@ -198,21 +198,21 @@ desc_all=per a tots els paquets
 desc_in=el paquet és d'entrada
 desc_out=el paquet és de sortida
 
-log_create_rule=He creat la regla $1
-log_delete_rule=He suprimit la regla $1
-log_modify_rule=He modificat la regla $1
-log_move_rule=He desplaçat la regla $1
-log_create_rule_l=He creat la regla $1 $2
-log_delete_rule_l=He suprimit la regla $1 $2
-log_modify_rule_l=He modificat la regla $1 $2
-log_move_rule_l=He desplaçat la regla $1 $2
-log_apply=He aplicat la configuració del tallafocs
-log_bootup=He activat el tallafocs en engegar el sistema
-log_bootdown=He desactivat el tallafocs en engegar el sistema
-log_convert=He convertit les regles actives del tallafocs
-log_setup=He dut a terme la configuració inicial del tallafocs
-log_unapply=He revertit la configuració del tallafocs
-log_delsel=He suprimit $1 regles
+log_create_rule=S'ha creat la regla $1
+log_delete_rule=S'ha suprimit la regla $1
+log_modify_rule=S'ha modificat la regla $1
+log_move_rule=S'ha desplaçat la regla $1
+log_create_rule_l=S'ha creat la regla $1 $2
+log_delete_rule_l=S'ha suprimit la regla $1 $2
+log_modify_rule_l=S'ha modificat la regla $1 $2
+log_move_rule_l=S'ha desplaçat la regla $1 $2
+log_apply=S'ha aplicat la configuració del tallafocs
+log_bootup=S'ha activat el tallafocs en engegar el sistema
+log_bootdown=S'ha desactivat el tallafocs en engegar el sistema
+log_convert=S'han convertit les regles actives del tallafocs
+log_setup=S'ha dut a terme la configuració inicial del tallafocs
+log_unapply=S'ha revertit la configuració del tallafocs
+log_delsel=S'han suprimit $1 regles
 
 cluster_title=Servidors del Tallafocs del Cluster
 cluster_none=Encara no s'ha afegit cap servidor al cluster del tallafocs.
@@ -226,12 +226,12 @@ cluster_return=als servidors del cluster
 cluster_delete=Elimina els Seleccionats
 
 add_title=Addició de Servidors
-add_msg=Afegint $1...
-add_gmsg=Afegint servidors al grup $1...
-add_err=No he pogut afegir el servidor
-add_gerr=No he pogut afegir el grup
+add_msg=S'està afegint $1...
+add_gmsg=S'estan afegint servidors al grup $1...
+add_err=No s'ha pogut afegir el servidor
+add_gerr=No s'ha pogut afegir el grup
 add_echeck=El servidor $1 no té el mòdul de Tallafocs IPFW
 add_emissing=EL servidor $1 no té la configuració del tallafocs IPFW
-add_ok=He afegit $1, amb $2 regles del tallafocs actives.
+add_ok=S'ha afegit $1, amb $2 regles del tallafocs actives.
 
 

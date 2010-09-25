@@ -58,7 +58,7 @@ edit_sync2=$no
 edit_sync0=$default
 edit_in=en
 
-save_err=No he pogut desar l'exportació
+save_err=No s'ha pogut desar l'exportació
 save_edir=El directori '$1' no existeix
 save_enetgroup=Hi falta el grup de xarxa o és invàlid
 save_enetwork='$1' no és una xarxa vàlida
@@ -67,7 +67,7 @@ save_ehost='$1' no és un nom de host vàlid
 save_euids=Els UIDs no fiables han de ser una llista de números o rangs separada per comes
 save_egids=Els GIDs no fiables han de ser una llista de números o rangs separada per comes
 save_pfs='$1' ja està exportat com a directori
-save_create_dir=No puc crear el directori '$1'
+save_create_dir=No es pot crear el directori '$1'
 
 exports_webnfs=Clients&nbsp;WebNFS
 exports_ngroup=Grup de xarxa&nbsp;$1
@@ -77,11 +77,11 @@ exports_hosts=Hosts&nbsp;$1
 exports_host=Host&nbsp;$1
 exports_gss=Xarxa autenticada:&nbsp;$1
 
-log_modify=He modificat l'exportació NFS $1
-log_modify_l=He modificat l'exportació NFS $1 a $2
-log_delete=He suprimit l'exportació NFS $1
-log_delete_l=He seleccionat l'exportació NFS $1 a $2
-log_create=He creat l'exportació NFS $1
-log_create_l=He creat l'exportació NFS $1 a $2
-log_apply=He aplicat la configuració
-log_delete_exports=He suprimit $1 exportacions NFS
+log_modify=S'ha modificat l'exportació NFS $1
+log_modify_l=S'ha modificat l'exportació NFS $1 a $2
+log_delete=S'ha suprimit l'exportació NFS $1
+log_delete_l=S'ha seleccionat l'exportació NFS $1 a $2
+log_create=S'ha creat l'exportació NFS $1
+log_create_l=S'ha creat l'exportació NFS $1 a $2
+log_apply=S'ha aplicat la configuració
+log_delete_exports=S'han suprimit $1 exportacions NFS

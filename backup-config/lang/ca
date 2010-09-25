@@ -24,6 +24,8 @@ index_tabrestore=Restaura-ho ara
 edit_title1=Creació de Còpia Planificada
 edit_title2=Edició de Còpia Planificada
 edit_header=Opcions de la còpia planificada
+edit_header2=Ordres pre i post de la còpia
+edit_header3=Planificació de la còpia
 edit_email=Envia el resultat a l'adreça
 edit_emode=Quan cal enviar el correu
 edit_emode0=Sempre
@@ -40,8 +42,10 @@ edit_nofiles=Fitxers de configuració del servidor
 edit_run=Desa-ho i Fes la Còpia Ara
 edit_return=al formulari de còpia
 edit_other=Altres fitxers llistats...
+edit_pre=Ordre pre de la còpia
+edit_post=Ordre post de la còpia
 
-save_err=No he pogut desar la còpia
+save_err=No s'ha pogut desar la còpia
 save_emods=No has seleccionat cap mòdul
 save_ewebmin=No has seleccionat ni els fitxers de configuració de Webmin ni els del servidor
 
@@ -74,14 +78,14 @@ backup_eport=Hi falta el port FTP del seridor o bé és invàlid
 backup_esport=Hi falta el port SSH del seridor o bé és invàlid
 backup_emods=No has seleccionat cap mòdul
 backup_title=Configuració de Còpia
-backup_doing=Començant la còpia dels fitxers de configuració de mòduls a $1...
+backup_doing=S'està començant la còpia dels fitxers de configuració de mòduls a $1...
 backup_failed=... ha fallat! $1
 backup_done=... completa. La mida final de la còpia és de $1 i conté $2 fitxers.
 
 restore_err=La restauració ha fallat
 restore_title=Configuració de Restauració
-restore_doing=Començant la restauració dels fitxers de configuració de mòduls de $1...
-restore_testing=Extraient el contingut de la còpia de $1...
+restore_doing=S'està començant la restauració dels fitxers de configuració de mòduls de $1...
+restore_testing=S'està extraient el contingut de la còpia de $1...
 restore_failed=... ha fallat! $1
 restore_done=... completa. S'han restaurat $1 fitxers.
 restore_done2=... els fitxers de la còpia són:
@@ -93,15 +97,15 @@ nice_sshp=$2 al port $3 de $1 via SSH
 nice_upload=fitxer pujat
 nice_download=navegador
 
-log_backup=He copiat $1 mòduls a $2
-log_restore=He restaurat $1 mòduls de $2
-log_create_backup=He creat còpia de $1 mòduls a $2
-log_modify_backup=He modificat la còpia de $1 mòduls a $2
-log_delete_backup=He suprimit la còpia de $1 mòduls a $2
-log_run_backup=He executat la còpia de $1 mòduls a $2
+log_backup=S'han copiat $1 mòduls a $2
+log_restore=S'han restaurat $1 mòduls de $2
+log_create_backup=S'ha creat còpia de $1 mòduls a $2
+log_modify_backup=S'ha modificat la còpia de $1 mòduls a $2
+log_delete_backup=S'ha suprimit la còpia de $1 mòduls a $2
+log_run_backup=S'ha executat la còpia de $1 mòduls a $2
 
 run_title=Còpia de Configuracions
-run_doing=Iniciant la còpia de $1 mòduls a $2...
+run_doing=S'està iniciant la còpia de $1 mòduls a $2...
 run_ok=...la còpia s'ha completat correctament.
 run_failed=...la còpia ha fallat! Vegeu el missatge d'error per saber-ne el motiu.
 
@@ -111,3 +115,7 @@ email_ok=a $1 ha reeixit.
 email_sfailed=La còpia de la configuració a $1 ha fallat
 email_sok=La còpia de la configuració a $1 ha reeixit
 email_final=La mida final del fitxer de còpia és de $1
+email_pre=S'està executant l'ordre pre $1...
+email_post=S'està executant l'ordre post $1...
+email_prefailed=L'ordre prèvia a la còpia ha fallat!
+

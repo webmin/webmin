@@ -25,7 +25,7 @@ index_athrow=Llença
 index_adefault=Lliura-ho a la teva bústia
 index_aforward=Reenvia-ho a $1
 index_afolder=Desa-ho a la carpeta $1
-index_afile=Grava-ho al fitxer $1
+index_afile=Escriu-ho al fitxer $1
 index_areply=Envia una resposta automàtica a $1
 index_delete=Suprimeix els Filtres Seleccionats
 index_acontinue=$1, i continua
@@ -65,7 +65,7 @@ edit_continue=Continua amb les altres regles de filtratge, fins i tot després d'
 edit_amode6=Envia una resposta automàtica
 edit_amode7=Desa'l a una nova carpeta anomenada
 
-save_err=No he pogut desar el filtre
+save_err=No s'ha pogut desar el filtre
 save_econdheader=Hi falta la capçalera de correu o bé és invàlida
 save_econdlevel=La puntuació mínima de spam ha de ser un enter més gran de zero
 save_esmall=Hi falta la mida màxima del correu o bé és invàlida
@@ -82,7 +82,7 @@ save_enewfolder3=Ja existeix una carpeta amb aquest nom
 save_estart=Data d'inici d'autorespostes invàlida
 save_eend=Data de fi d'autorespostes invàlida
 
-delete_err=No he pogut suprimir els filtres
+delete_err=No s'han pogut suprimir els filtres
 delete_enone=No n'has seleccionat cap
 
 aliases_type1=Adreça $1
@@ -101,11 +101,11 @@ auto_header=Opcions de resposta automàtica de correu
 auto_enabled=Resposta automàtica activada
 auto_reply=Missatge de resposta
 auto_period=Interval mínim entre respostes
-auto_err=No he pogut desar la resposta automàtica
+auto_err=No s'ha pogut desar la resposta automàtica
 
 forward_title=Reenviament de Correu
 forward_header=Opcions de reenviament de correu
 forward_enabled=Reenviament de correu activat
 forward_to=Reenvia a les adreces
 forward_cont=Lliura'l també normalment
-forward_err=No he pogut desar el reenviament de correu
+forward_err=No s'ha pogut desar el reenviament de correu

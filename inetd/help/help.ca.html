@@ -19,7 +19,7 @@ s'inicia per manipular les dades de la nova connexió. <p>
 No tots els serveis d'Internet estan gestionats per aquest mòdul.
 Els servidors que reben moltes connexions, com ara HTTPD, SMB o NFS 
 s'executen separadament per evitar haver d'iniciar un nou procés per 
-cada petició. Aquests serveis es poden configurar fent servir altres
+cada petició. Aquests serveis es poden configurar utilitzant altres
 mòduls Webmin, com ara <a href=/samba/>Samba</a> o
 <a href=/apache/>Apache</a>. <p>
 
@@ -39,10 +39,10 @@ detalls del nou servei:
 <li><b>Nom del Servei</b><br>
    Cada servei ha de tenir una parella única de nom i protocol.
    Això vol dir que dos serveis poden tenir el mateix nom si
-   i només si fan servir protocols diferents. <p>
+   i només si utilitzen protocols diferents. <p>
 <li><b>Protocol</b><br>
    El protocol de comunicació utilitzat per aquest servei.
-   Gairebé tots els serveis d'Internet fan servir el protocol
+   Gairebé tots els serveis d'Internet utilitzen el protocol
    <tt>TCP</tt>, i la resta el protocol <tt>UDP</tt>. <p>
 <li><b>Port</b><br>
    Cada servei té un número de port que ha de ser únic en tot el 
@@ -53,7 +53,7 @@ detalls del nou servei:
    servei. Un àlies no pot tenir el mateix nom que un servei o un
    àlies del mateix protocol que ja existeixi. <p>
 </ul><p>
-Es poden fer servir els noms dels serveis d'Internet en lloc de noms de port
+Es poden utilitzar els noms dels serveis d'Internet en lloc de noms de port
 amb les ordres tals com ara <tt>telnet</tt>. Per exemple, pots introduir
 <tt>telnet foo.bar.com smtp</tt> per connectar-te al port 25 del host 
 <tt>foo.bar.com</tt>, assumint que el servei d'Internet <tt>smtp</tt>

@@ -10,12 +10,12 @@ index_group=Membres de $1
 index_clear=Neteja l'historial
 
 run_title=Executa l'Ordre
-run_err=No he pogut executar l'ordre
+run_err=No s'ha pogut executar l'ordre
 run_ecmd=No has introduït cap ordre
-run_failed=No l'he pogut executar a $1: $2
+run_failed=No s'ha pogut executar a $1: $2
 run_success=Resposta de $1...
 run_enone=No has seleccionat cap servidor per executar
 
-log_clear=He netejat l'historial d'ordres
-log_run=He executat $1 a $2 servidors
-log_run_l=He executat $1 a $2
+log_clear=S'ha netejat l'historial d'ordres
+log_run=S'ha executat $1 a $2 servidors
+log_run_l=S'ha executat $1 a $2

@@ -7,14 +7,14 @@ index_eschema=Webmin s'ha connectat amb el servidor LDAP, però no ha pogut obten
 index_eimap=$1. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_emd5=Aquest mòdul s'ha <a href='$1'>configurat</a> per utilitzar xifratge MD5 amb les contrasenyes, però el mòdul Perl $2 no està instal·lat. Fes clic <a href='$3'>aquí</a> per tal de descarregar i instal·Lar el mòdul $2.
 index_eslappasswd=Aquest mòdul s'ha <a href='$1'>configurat</a> per utilitzar xifratge LDAP MD5 amb les contrasenyes, però el programa <tt>$2</tt> utilitzat per xifrar les contrasenyes no està instal·lat
-index_eusearch=No he pogut buscar usuaris a $1: $2
+index_eusearch=No s'han pogut buscar usuaris a $1: $2
 index_uadd=Afegeix un nou usuari LDAP.
 index_gadd=Afegeix un nou grup LDAP.
-index_unone=No he trobat cap usuari LDAP a $1.
-index_gnone=No he trobat cap grup LDAP a $1.
+index_unone=No s'ha trobat cap usuari LDAP a $1.
+index_gnone=No s'ha trobat cap grup LDAP a $1.
 index_return=a la llista d'usuaris
 index_greturn=a la llista de grups
-index_egsearch=No he pogut buscar grups a $1: $2
+index_egsearch=No s'han pogut buscar grups a $1: $2
 index_samba=Samba
 index_cyrus=IMAP
 index_users=Usuaris LDAP
@@ -22,8 +22,8 @@ index_groups=Grups LDAP
 
 conn_eldap_host=No s'ha trobat cap fitxer de configuració del client LDAP al sistema, així que el servidor LDAP s'ha de configurar a la pàgina de configuració del mòdul
 conn_elogin=No s'ha trobat cap fitxer de configuració del client LDAP al sistema, així que l'entrada a LDAP s'ha de configurar a la pàgina de configuració del mòdul
-imap_econn=No he pogut connectar amb el servidor IMAP $1
-imap_elogin=No he pogut entrar al servidor IMAP $1 com a $2: $3
+imap_econn=No s'ha pogut connectar amb el servidor IMAP $1
+imap_elogin=No s'ha pogut entrar al servidor IMAP $1 com a $2: $3
 
 uedit_cap=Capacitats de l'usuari
 uedit_samba=Usuaris Samba
@@ -39,25 +39,25 @@ uedit_return=als detalls de l'usuari
 uedit_quota=Quota IMAP
 uedit_unquota=No ho canviïs
 
-usave_eadd=No he pogut afegir l'usuari a la base de dades LDAP: $1
-usave_emod=No he pogut modificar l'usuari de la base de dades LDAP: $1
-usave_emoddn=No he pogut renomenar l'usuari de la base de dades LDAP: $1
-usave_egroupmod=No he pogut modificar el grup $1 a la base de dades LDAP: $2
-usave_edelete=No he pogut suprimir l'usuari de la base de dades LDAP: $1
-usave_eicreate=No he pogut crear l'usuari
-usave_eiacl=No he pogut donar drets a l'administrador
+usave_eadd=No s'ha pogut afegir l'usuari a la base de dades LDAP: $1
+usave_emod=No s'ha pogut modificar l'usuari de la base de dades LDAP: $1
+usave_emoddn=No s'ha pogut renomenar l'usuari de la base de dades LDAP: $1
+usave_egroupmod=No s'ha pogut modificar el grup $1 a la base de dades LDAP: $2
+usave_edelete=No s'ha pogut suprimir l'usuari de la base de dades LDAP: $1
+usave_eicreate=No s'ha pogut crear l'usuari
+usave_eiacl=No s'han pogut donar drets a l'administrador
 usave_eimap=L'usuari ha estat desat amb èxit a la base de dades LDAP, però s'ha produït un error d'IMAP: $1: $2
-usave_eiquota=No he pogut establir la quota IMAP
-usave_eisub=No he pogut subscriure l'usuari a la carpeta $1
-usave_eifolder=No he pogut crear la carpeta $1
-usave_eilogin=No he pogut entrar amb el nou usuari
+usave_eiquota=No s'ha pogut establir la quota IMAP
+usave_eisub=No s'ha pogut subscriure l'usuari a la carpeta $1
+usave_eifolder=No s'ha pogut crear la carpeta $1
+usave_eilogin=No s'ha pogut entrar amb el nou usuari
 usave_ecyruspass=Cal introduir la contrasenya normal de l'usuari o bé seleccionar l'opció "Sense contrasenya" en activar IMAP.
-usave_ebook=No he pogut crear l'entrada de la llibreta d'adreces: $1
-usave_emodbook=No he pogut modificar l'entrada de la llibreta d'adreces: $1
-usave_emodbookdn=No he pogut renomenar l'entrada de la llibreta d'adreces: $1
+usave_ebook=No s'ha pogut crear l'entrada de la llibreta d'adreces: $1
+usave_emodbook=No s'ha pogut modificar l'entrada de la llibreta d'adreces: $1
+usave_emodbookdn=No s'ha pogut renomenar l'entrada de la llibreta d'adreces: $1
 usave_egone=L'usuari ja no existeix!
 usave_ex86=Aquest usuari no serveix per a establir la contrasenya d'un usuari Samba en sistemes no Intel, ja que depèn d'un programa compilat x86.
-usave_esamba=Aquest mòdul no es pot emprar per establir la contrasenya d'un usuari Samba, ja que el mòdul de Compartició de Fitxers Windows Samba no està instal·lat.
+usave_esamba=Aquest mòdul no es pot utilitzar per establir la contrasenya d'un usuari Samba, ja que el mòdul de Compartició de Fitxers Windows Samba no està instal·lat.
 usave_ealiasdup=L'àlies $1 ja està utilitzat per $2
 usave_eattrdup=L'objecte $1 ja està utilitzant $2 $3
 usave_eattrdupu=L'usuari $1 ja està utilitzant $2 $3
@@ -73,16 +73,16 @@ gedit_cap=Capacitats de grup
 gedit_samba=Grup Samba
 
 gsave_egone=El grup ja no existeix!
-gsave_edelete=No he pogut suprimir el grup de la base de dades LDAP: $1
-gsave_eadd=No he pogut afegir el grup a la base de dades LDAP: $1
-gsave_emod=No he pogut modificar el grup a la base de dades LDAP: $1
-gsave_emoddn=No he pogut renomenar el grup a la base de dades LDAP: $1
+gsave_edelete=No s'ha pogut suprimir el grup de la base de dades LDAP: $1
+gsave_eadd=No s'ha pogut afegir el grup a la base de dades LDAP: $1
+gsave_emod=No s'ha pogut modificar el grup a la base de dades LDAP: $1
+gsave_emoddn=No s'ha pogut renomenar el grup a la base de dades LDAP: $1
 
-gdel_group=Suprimint l'entrada de grup LDAP...
+gdel_group=S'està suprimint l'entrada de grup LDAP...
 
-udel_pass=Suprimint l'entrada d'usuari LDAP...
-udel_book=Suprimint de la llibreta d'adreces...
-udel_imap=Suprimint la carpeta IMAP...
+udel_pass=S'està suprimint l'entrada d'usuari LDAP...
+udel_book=S'està suprimint de la llibreta d'adreces...
+udel_imap=S'està suprimint la carpeta IMAP...
 udel_warnimap=La bústia de correu existent se suprimirà en suprimir el directori arrel!
 udel_failed=...ha fallat!: $1
 

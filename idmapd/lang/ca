@@ -1,5 +1,5 @@
 index_title=Configuració d'idmapd
-index_eidmapd=No he trobat el dimoni $1. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
+index_eidmapd=No s'ha trobat el dimoni $1. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 general=Configuració General
 mapping=Configuració de mapejat
 pipefs_dir=Directori pipefs
@@ -7,5 +7,5 @@ domain=Nom de domini
 nobody_user=Usuari nobody
 nobody_group=Grup nobody
 save=Desa la configuració i reinicia el dimoni
-save_err=No he pogut desar el fitxer de configuració $1
+save_err=No s'ha pogut desar el fitxer de configuració $1
 error_dir=El directory $1 no existeix

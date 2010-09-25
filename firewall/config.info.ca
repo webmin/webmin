@@ -8,5 +8,5 @@ after_cmd=Ordre a executar després de canviar les regles,3,Cap
 before_apply_cmd=Ordre a executar abans d'aplicar la configuració,3,Cap
 after_apply_cmd=Ordre a executar després d'aplicar la configuració,3,Cap
 line1=Configuració del sistema,11
-save_file=Fitxer de desat IPtables a editar,3,Fes servir el valor per defecte del sistema o de Webmin
+save_file=Fitxer de desat IPtables a editar,3,Utilitza el valor per defecte del sistema o de Webmin
 direct=Edita directament les regles del tallafocs enlloc del fitxer,1,1-Sí,0-No

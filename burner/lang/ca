@@ -47,11 +47,11 @@ edit_other=Altres dispositius...
 edit_fly=Mode de còpia
 edit_fly1=Directe del CD a la gravadora
 edit_fly0=Utilitza un fitxer temporal
-edit_srcdrv=Driver del dispositiu font
-edit_dstdrv=Driver del dispositiu destí
+edit_srcdrv=Controlador del dispositiu font
+edit_dstdrv=Controlador del dispositiu destí
 edit_ecannot=No tens permís per editar aquest perfil de gravació
 
-save_err=No he pogut desar el perfil
+save_err=No s'ha pogut desar el perfil
 save_ename=Hi falta el nom del perfil
 save_eiso=Hi falta el nom del fitxer imatge ISO o bé és invàlid
 save_esource=Hi falta el directori origen $1 o bé és invàlid
@@ -81,20 +81,20 @@ burn_bfast=Esborrat ràpid
 burn_ball=Esborrat lent
 burn_bg=Executa la gravació en segon pla
 burn_edev=No pots gravar un CD fins que no hagis configurat una gravadora a la pàgina d'<a href='$1'>Opcions de dispositiu</a>.
-burn_header=Gravant el CD amb l'ordre $1...
-burn_theader=Fent una prova de gravació amb l'ordre $1...
-burn_header2=Gravant el CD en segon pla amb l'ordre $1...
-burn_theader2=Fent una prova de gravació en segon pla amb l'ordre $1...
-burn_mheader=Creant un sistema de fitxers ISO amb l'ordre $1...
-burn_mfailed=No he pogut crear el sistema de fitxers ISO!
-burn_egone=He suprimit la imatge ISO - Hauràs de tornar al <a href='$1'>perfil de gravació</a> per tornar-la a regenerar.
+burn_header=S'està gravant el CD amb l'ordre $1...
+burn_theader=S'està fent una prova de gravació amb l'ordre $1...
+burn_header2=S'està gravant el CD en segon pla amb l'ordre $1...
+burn_theader2=S'està fent una prova de gravació en segon pla amb l'ordre $1...
+burn_mheader=S'està creant un sistema de fitxers ISO amb l'ordre $1...
+burn_mfailed=No s'ha pogut crear el sistema de fitxers ISO!
+burn_egone=S'ha suprimit la imatge ISO - Hauràs de tornar al <a href='$1'>perfil de gravació</a> per tornar-la a regenerar.
 burn_egone2=S'han esborrat les pistes àudio temporals - Hauràs de tornar al <a href='$1'>perfil de gravació</a> per regenerar-les.
 burn_700=Atenció! La teva imatge ISO té una mida de $1 Mb, que està per damunt dels 700 Mb permesos fins i tot als CDs de 80 minuts.
 burn_650=Atenció! La teva imatge ISO té una mida de $1 Mb, que està per sobre dels 650 Mb permesos en un CD normal. No obstant, t'hi cabrà en un CD de 80 minuts.
 burn_size=La imatge ISO generada fa $1 Mb, d'un total de $2 Mb permesos en un CD normal.
 burn_nomp3s=No hi ha cap fitxer als directoris seleccionats.
-burn_mp3header=Convertint els fitxers MP3 a pistes àudio amb l'ordre $1...
-burn_mp3failed=No he pogut convertir cap fitxer MP3!
+burn_mp3header=S'estan convertint els fitxers MP3 a pistes àudio amb l'ordre $1...
+burn_mp3failed=No s'ha pogut convertir cap fitxer MP3!
 burn_mp3failed2=Atenció - alguns fitxers MP3 no s'han pogut convertir, però la resta han reeixit
 burn_mp3format=No sembla que el fitxer $1 estigui en format MP3.
 burn_746=Atenció! La mida total de les pistes fa $1 Mb, que està per damunt dels 746 Mb permesos en un CD àudio normal. No obstant, t'hi cabrà en un CD de 80 minuts.
@@ -110,7 +110,7 @@ dev_none=&lt;Cap&gt;
 dev_speed=Velocitat de gravació
 dev_other=Altres...
 dev_extra=Opcions extres de <tt>cdrecord</tt>
-dev_err=No he pogut desar les opcions del dispositiu
+dev_err=No s'han pogut desar les opcions del dispositiu
 dev_eother=Hi falta la velocitat de gravació o bé és invàlida
 dev_ecannot=No tens permís per editar les opcions del dispositiu
 
@@ -144,6 +144,6 @@ acl_all=Tots
 acl_sel=Els seleccionats a sota...
 acl_dirs=Permet els directoris per als fitxers origen
 
-delete_err=No he pogut suprimir els perfils de gravació
+delete_err=No s'han pogut suprimir els perfils de gravació
 delete_enone=No has seleccionat cap perfil
 

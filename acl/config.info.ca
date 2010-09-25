@@ -3,4 +3,4 @@ display=Forma de mostrar els usuaris i els grups,1,1-Només els noms,0-Noms i mòd
 select=Mostra els mòduls d'usuaris amb,1,0-Taula,1-Menú desplegable
 order=Ordena els usuaris i grups per,1,0-L'ordre del fitxer,1-El nom
 line2=Configuració del sistema,11
-ssleay=Camí del programa openssl o ssleay,3,Automàtic
+ssleay=Camí del programa <tt>openssl</tt> o <tt>ssleay</tt>,3,Automàtic

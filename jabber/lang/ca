@@ -2,19 +2,19 @@ index_title=Servidor IM Jabber
 index_econfig=El fitxer de configuració $1 de Jabber no existeix. O bé el Jabber no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
 index_edir=El directori base $1 de Jabber no existeix. O bé el Jabber no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
 index_emodules=Els mòduls Perl $1 i $2 necessaris per tal que Webmin gestioni la configuració XML de Jabber no estan instal·lats. <a href='$3'>Fes clic aquí</a> per instal·lar-los directament des de CPAN.
-index_emodule=El mòdul perl $1 necessari per tal que Webmin gestioni la configuració XML de Jabber no està instal·lat. <a href='$2'>Fes clic aquí</a> per instal·lar-lo directament des de CPAN.
+index_emodule=El mòdul Perl $1 necessari per tal que Webmin gestioni la configuració XML de Jabber no està instal·lat. <a href='$2'>Fes clic aquí</a> per instal·lar-lo directament des de CPAN.
 index_expat=Assegura't de tenir instal·lades les capçaleres i llibreries Expat de C abans d'intentar instal·lar els mòduls Perl, ja que en depenen i fallarà si no estan disponibles.
-index_eparse=El mòdul perl $1 no ha pogut analitzar el fitxer de configuració de Jabber: $2
+index_eparse=El mòdul Perl $1 no ha pogut analitzar el fitxer de configuració de Jabber: $2
 index_ejabberd=No s'ha trobat al sistema el programa servidor $1 de Jabber. O bé el Jabber no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
 index_eversion=Webmin només suporta Jabber versió $2, però l'ordre $3 ha donat la següent informació de versió: $1
 index_eversion2=Webmin només suporta les versions de Jabber per sota de $2, però l'ordre $3 ha donat la següent informació de versió: $1
 index_start=Inicia el Servidor Jabber
-index_startmsg=Fes clic sobre aquest botó per iniciar el servidor Jabber al sistema. Fins que no s'iniciï, no el podrà fer servir cap client de missatgeria instantània.
+index_startmsg=Fes clic sobre aquest botó per iniciar el servidor Jabber al sistema. Fins que no s'iniciï, no el podrà utilitzar cap client de missatgeria instantània.
 index_stop=Atura el Servidor Jabber
-index_stopmsg=Fes clic sobre aquest botó per aturar el servidor Jabber en execució al sistema. Mentre estigui aturat, no el podrà fer servir cap client de missatgeria instantània.
+index_stopmsg=Fes clic sobre aquest botó per aturar el servidor Jabber en execució al sistema. Mentre estigui aturat, no el podrà utilitzar cap client de missatgeria instantània.
 index_restart=Aplica els Canvis
 index_restartmsg=Fes clic sobre aquest botó per aplicar la configuració actual aturant i reiniciant el servidor Jabber.
-index_comments=Atenció - el fitxer de configuració $1 de Jabber conté comentaris, que s'eliminaran si es fan canvis de configuració fent servir aquest mòdul.
+index_comments=Atenció - el fitxer de configuració $1 de Jabber conté comentaris, que s'eliminaran si es fan canvis de configuració utilitzant aquest mòdul.
 index_return=al menú de Jabber
 index_version=Versió Jabber $1
 
@@ -26,7 +26,7 @@ general_elogfmt=Format del registre d'errors
 general_rlog=Fitxer de registre d'accés
 general_rlogfmt=Format del registre d'accés
 general_pidfile=Fitxer d'ID de procés
-general_err=No he pogut desar les opcions generals
+general_err=No s'han pogut desar les opcions generals
 general_ehost=Hi falta el nom de host del servidor o bé és invàlid
 general_eelog=Hi falta el fitxer de registre d'errors o bé és invàlid
 general_eelogfmt=Hi falta el format del registre d'errors o bé és invàlid Missing error log format
@@ -43,16 +43,16 @@ messages_rinstr=Instruccions d'enregistrament
 messages_rnotify=Notifica l'administrador de l'enregistrament
 messages_rfields=Camps d'enregistrament obligatoris
 messages_vcard2jud=Envia la vCard al directori d'usuari de Jabber
-messages_err=No he pogut desar els missatges
+messages_err=No s'han pogut desar els missatges
 messages_evcard=XML de vCard invàlid: $1
 messages_etag=El XML de la vCard del servidor no comença amb &lt;vCard&gt;
 
 modules_title=Mòduls de Jabber
-modules_desc=Els mòduls llistats a sota es fan servir per tal de processar els missatges rebuts pel gestor de sessions de Jabber. Canvia aquesta llista només si saps el que estàs fent.
+modules_desc=Els mòduls llistats a sota s'utilitzen per tal de processar els missatges rebuts pel gestor de sessions de Jabber. Canvia aquesta llista només si saps el que estàs fent.
 modules_header=Mòduls de gestió de sessió del servidor Jabber
 modules_mod=Nom del mòdul
 modules_so=Llibreria compartida
-modules_err=No he pogut desar els mòduls de Jabber
+modules_err=No s'han pogut desar els mòduls de Jabber
 modules_emod='$1' no és un nom de mòdul vàlid
 modules_eso=La llibreria compartida '$1' no existeix
 
@@ -66,7 +66,7 @@ karma_none=Sense límits
 karma_low=Límits baixos de trànsit
 karma_medium=Límits mitjans de trànsit
 karma_high=Límits alts de trànsit
-karma_sel=Fes servir els valors de sota...
+karma_sel=Utilitza els valors de sota...
 karma_heartbeat=Longitud en segons del període (<tt>heartbeat</tt>)
 karma_init=Períodes d'inicialització (<tt>init</tt>)
 karma_max=Karma màxim (<tt>max</tt>)
@@ -74,7 +74,7 @@ karma_inc=Increment de karma (<tt>inc</tt>)
 karma_dec=Decrement de karma (<tt>dec</tt>)
 karma_penalty=Períodes de càstig (<tt>penalty</tt>)
 karma_restore=Períodes de restauració (<tt>restore</tt>)
-karma_err=No he pogut desar les opcions de karma
+karma_err=No s'han pogut desar les opcions de karma
 karma_eheartbeat=Hi falta la longitud del període o bé és invàlid
 karma_einit=Hi falta el període d'inicialització o bé és invàlid
 karma_emax=Hi falta el karma màxim o bé és invàlid
@@ -92,13 +92,13 @@ ips_all=Totes les adreces
 ips_deny=IPs de clients denegades
 ips_none=Cap
 ips_sel=Adreces/màscares llistades...
-ips_err=No he pogut desar el control d'accés IP
+ips_err=No s'ha pogut desar el control d'accés IP
 ips_eaddr='$1' no és una adreça IP o adreça/màscara IP vàlida
 
 file_title=Edició de la Configuració
-file_desc=Fes servir el formulari de sota per editar directament el fitxer de configuració de Jabber. Això ho pots fer només si entens el format de configuració XML.
+file_desc=Utilitza el formulari de sota per editar directament el fitxer de configuració de Jabber. Això ho pots fer només si entens el format de configuració XML.
 file_header=Edita el fitxer de configuració de Jabber
-file_err=No he pogut desar el fitxer de configuració
+file_err=No s'ha pogut desar el fitxer de configuració
 
 admin_title=Usuaris Administradors
 admin_header=Usuaris administradors del servidor
@@ -114,8 +114,8 @@ filter_max=Nombre màxim de regles filtratge
 filter_conds=Condicions de filtratge permeses
 filter_acts=Accions de filtratge permeses
 
-restart_err=No he pogut aplicar els canvis
-stop_err=No he pogut aturar Jabber
-stop_epid=No he pogut trobar el procés de Jabber
-start_err=No he pogut iniciar Jabber
+restart_err=No s'han pogut aplicar els canvis
+stop_err=No s'ha pogut aturar Jabber
+stop_epid=No s'ha pogut trobar el procés de Jabber
+start_err=No s'ha pogut iniciar Jabber
 

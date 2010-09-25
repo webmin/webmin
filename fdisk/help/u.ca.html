@@ -2,17 +2,17 @@
 
 Estableix l'opció desenmascarament d'interrupcions de la unitat.
 <p>
-Permet que el driver desemmascari les altres interrupcions durant el procés
+Permet que el controlador desemmascari les altres interrupcions durant el procés
 d'una interrupció de disc, que millora de forma important la resposta del
 Linux i elimina els errors "serial port overrun".
 <p>
-<u>Fes servir aquesta opció amb compte</u>: algunes combinacions 
+<u>Utilitza aquesta opció amb compte</u>: algunes combinacions 
 d'unitat/controladora no toleren les latències d'E/S incrementades quan
 s'activa aquesta característica, cosa que pot produir una <i>corrupció
 massiva del sistema de fitxers</i>.<br>
 En particular, les interfícies IDE CMD-640B i RZ1000 poden no ser fiables
 (degut a un defecte del maquinari) quan s'activa aquesta opció amb versions
-del kernel més velles que la 2.0.13.<br>
+del nucli més velles que la 2.0.13.<br>
 
 <hr>
 

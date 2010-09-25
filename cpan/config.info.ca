@@ -5,5 +5,5 @@ def_args=Arguments per defecte de Makefile.PL,0
 incpackages=Inclou els mòduls Perl dels paquets de programari,1,1-Sí,0-No
 incyum=Instal·la els mòduls Perl des de YUM o APT si estan disponibles,1,1-Sí,0-No
 line2=Configuració del sistema,11
-packages=Llista dels mòduls perl de CPAN,0
+packages=Llista dels mòduls Perl de CPAN,0
 cpan=URL de base dels mòduls de CPAN,0

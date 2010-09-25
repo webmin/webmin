@@ -58,7 +58,7 @@ edit_anon_notset=No establert
 edit_anon_noaccess=No té accés
 edit_async=Escriptures asíncrones
 
-save_err=No he pogut desar l'exportació
+save_err=No s'ha pogut desar l'exportació
 save_edir=El directori '$1' no existeix
 save_enetgroup=Hi falta el grup de xarxa o bé no és vàlid
 save_enetwork='$1' no és una xarxa vàlida
@@ -68,10 +68,10 @@ save_enohost='$1' - No has especificat cap host
 save_euids=Els UIDs no fiables han de ser una llista de números o rangs separats per comes
 save_egids=Els GIDs no fiables han de ser una llista de números o rangs separats per comes
 
-log_modify=He modificat l'exportació NFS $1
-log_modify_l=He modificat l'exportació NFS $1 to $2
-log_delete=He suprimit l'exportació NFS $1
-log_delete_l=He suprimit l'exportació NFS $1 to $2
-log_create=He creat l'exportació NFS $1
-log_create_l=He creat l'exportació NFS $1 to $2
-log_apply=He aplicat la configuració
+log_modify=S'ha modificat l'exportació NFS $1
+log_modify_l=S'ha modificat l'exportació NFS $1 to $2
+log_delete=S'ha suprimit l'exportació NFS $1
+log_delete_l=S'ha suprimit l'exportació NFS $1 to $2
+log_create=S'ha creat l'exportació NFS $1
+log_create_l=S'ha creat l'exportació NFS $1 to $2
+log_apply=S'ha aplicat la configuració

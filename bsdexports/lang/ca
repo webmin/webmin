@@ -9,7 +9,7 @@ index_apply=Aplica els Canvis
 index_applydesc=Fes clic sobre aquest botó per alicar la configuració actual d'exportacions de fitxers. Això farà que tots els directoris llistats més amunt quedin disponibles amb les opcions especificades.
 index_return=a la llista d'exportacions
 
-delete_err=No he pogut suprimir les exportacions
+delete_err=No s'han pogut suprimir les exportacions
 delete_enone=No n'has seleccionat cap
 
 edit_title1=Edició d'Exportació
@@ -32,7 +32,7 @@ edit_hosts=Hosts / grups de xarxa
 edit_network=Xarxa
 edit_mask=Màscara
 
-save_err=No he pogut desar l'exportació
+save_err=No s'ha pogut desar l'exportació
 save_edir='$1' no és un directori o bé no existeix
 save_enone=Has d'introduir almenys un directori per exportar
 save_esub=Només pots donar un directori si tries l'opció <b>Exporta els subdirectoris</b>
@@ -46,4 +46,4 @@ save_enetmask='$1' no és una màscara vàlida
 save_esame1=El directori <tt>$1</tt> ja està exportat a <tt>$2</tt>. El sistema operatiu no permet que els directoris del mateix sistema de fitxers <i>local</i> siguin exportats al mateix host per separat
 save_esame2=El directori <tt>$1</tt> ja està exportat a <tt>$2</tt>. El sistema operatiu no permet que els directoris del mateix sistema de fitxers <i>local</i> siguin exportats a la mateixa xarxa per separat
 
-restart_err=No he pogut aplicar els canvis
+restart_err=No s'han pogut aplicar els canvis

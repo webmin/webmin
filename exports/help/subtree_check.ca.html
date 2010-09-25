@@ -1,0 +1,14 @@
+<header>Desactiva la comprovació de subarbres</header>
+
+Aquesta opció desactiva la comprovació de subarbres, que té
+algunes implicacions de seguretat, però que pot millorar la
+fiabilitat en algunes circumstàncies. <p>
+
+Si s'exporta un subdirectori d'un sistema de fitxers, però no s'exporta
+tot el sistema de fitxers, llavors, sempre que arriba una petició NFS
+el servidor ha de comprovar no solament que el fitxer accedit estigui
+al sistema de fitxers apropiat (cosa que és fàcil), sinó que també
+està a l'arbre exportat (cosa que és més difícil). <p>
+
+<footer>
+

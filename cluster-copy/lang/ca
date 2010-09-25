@@ -33,36 +33,36 @@ edit_return=a la còpia del cluster
 edit_email=Envia la sortida a
 edit_none=Ningú
 
-save_err=No he pogut desar el treball cron del cluster
+save_err=No s'ha pogut desar el treball cron del cluster
 save_efiles=No has introduït cap fitxer per copiar
 save_edest=Hi falta el directori de destí
 save_eservers=No has introduït cap servidor per copiar
 save_efile=El fitxer '$1' a copiar no és un camí absolut
 save_eemail=Hi falta l'adreça de correu o bé és invàlida
 
-exec_title=Copiant Fitxers
-exec_files1=Copiant $1 fitxers als servidors $2 seleccionats...
-exec_files2=Copiant $1 als servidors $2 seleccionats...
+exec_title=Còpia de Fitxers
+exec_files1=S'estan copiant $1 fitxers als servidors $2 seleccionats...
+exec_files2=S'està copiant $1 als servidors $2 seleccionats...
 exec_under=(sota el directori $1)
-exec_failed=No he pogut copiar a $1: $2
-exec_success=He copiat els fitxers següents a $1:
-exec_made=He creat els directoris següents a $1:
+exec_failed=No s'ha pogut copiar a $1: $2
+exec_success=S'han copiat els fitxers següents a $1:
+exec_made=S'han creat els directoris següents a $1:
 exec_nohosts=No has seleccionat cap host per executar, o bé els grups seleccionats no contenen cap host útil.
 exec_nothing=No s'ha copiat cap fitxer a $1.
-exec_not=No he pogut copiar els fitxers següents a $1:
+exec_not=No s'han pogut copiar els fitxers següents a $1:
 exec_cmd=Sortida de l'ordre de post-còpia a $1:
 exec_before=Sortida de l'ordre pre-còpia a $1:
-exec_on=No he pogut executar a $1: $2
+exec_on=No s'ha pogut executar a $1: $2
 
-log_create=He creat la còpia de $1 a $2 servidors
-log_modify=He modificat còpia de $1 a $2 servidors
-log_delete=He suprimit còpia de $1 a $2 servidors
-log_exec=He copiat $1 a $2 servidors
-log_deletes=He suprimit $1 còpies
+log_create=S'ha creat la còpia de $1 a $2 servidors
+log_modify=S'ha modificat la còpia de $1 a $2 servidors
+log_delete=S'ha suprimit la còpia de $1 a $2 servidors
+log_exec=S'ha copiat $1 a $2 servidors
+log_deletes=S'han suprimit $1 còpies
  
 email_subject_succeeded=La còpia de cluster de $1 ha reeixit
 email_subject_failed=La còpia de cluster de $1 ha fallat
 
-delete_err=No he pogut suprimir les còpies
+delete_err=No s'han pogut suprimir les còpies
 delete_enone=No has seleccionat cap còpia
 

@@ -30,7 +30,7 @@ edit_ejob=L'ordre planificada ja no existeix!
 edit_ecannot=No tens permís per editar aquesta ordre planificada
 edit_showfull=Mostra el script sencer.
 
-create_err=No he pogut crear l'ordre planificada
+create_err=No s'ha pogut crear l'ordre planificada
 create_euser=Hi falta el nom d'usuari o bé no és vàlid
 create_edate=Hi falta la data o l'hora, o bé no és vàlida
 create_ecmd=No has introduït cap ordre
@@ -39,7 +39,7 @@ create_edir=Hi falta el directori o bé no és vàlid
 create_ecannot=No tens permís per crear ordres planificades per a aquest usuari
 create_eallow=L'usuari especificat no té permís per executar ordres planificades
 
-delete_err=No he pogut cancel·lar l'ordre
+delete_err=No s'ha pogut cancel·lar l'ordre
 delete_egone=Ordre ja executada o suprimida
 
 acl_users=Pot editar les ordres programades de
@@ -53,15 +53,15 @@ run_title=Execució de l'Ordre
 run_output=Sortida de l'ordre programada...
 run_none=No s'ha generat cap sortida
 
-allow_err=No he pogut desar els usuaris permesos
+allow_err=No s'ha pogut desar els usuaris permesos
 allow_ecannot=No tens permís per gestionar els usuaris permesos
 allow_eusers=No has introduït cap usuari
 
-deletes_err=No he pogut cancel·lar les ordres
+deletes_err=No s'ha pogut cancel·lar les ordres
 deletes_enone=No has seleccionat cap ordre
 
-log_allow=He canviat els usuaris permesos
-log_create_job=He creat l'ordre planificada per a $1
-log_delete_job=He cancel·lat l'ordre planificada per a $1
-log_exec_job=He executat l'ordre planificada per a $1
-log_delete_jobs=He cancel·lat $1 ordres planificades
+log_allow=S'han canviat els usuaris permesos
+log_create_job=S'ha creat l'ordre planificada per a $1
+log_delete_job=S'ha cancel·lat l'ordre planificada per a $1
+log_exec_job=S'ha executat l'ordre planificada per a $1
+log_delete_jobs=S'han cancel·lat $1 ordres planificades

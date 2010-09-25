@@ -5,7 +5,7 @@ auto_chroot=Ordre per trobar el directori chroot,3,Utilitza el directori fixat a
 named_user=Usuari sota el qual s'executa BIND,3,Defecte
 named_group=Grup sota el qual s'executa BIND,3,Defecte
 zones_file=Afegeix les zones noves al fitxer,3,named.conf
-relative_paths=Fes servir camins relatius de fitxer de zona a <tt>named.conf</tt>,1,1-Sí,0-No
+relative_paths=Utilitza camins relatius de fitxer de zona a <tt>named.conf</tt>,1,1-Sí,0-No
 keys_dir=Directorsi de claus DNSSEC,3,EL mateix que els fitxers de zones
 
 line1=Opcions de presentació,11

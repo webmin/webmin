@@ -34,7 +34,7 @@ conf_logfile=Fitxer de registre de heartbeat
 conf_logfacility=Utilitat de registre syslog
 conf_initdead=Temps inicial de mort
 conf_ok=Desa les Opcions
-conf_err=No he pogut desar les opcions
+conf_err=No s'han pogut desar les opcions
 conf_ebaud=Hi falta la velocitat en bauds o bé és invàlida
 conf_ebcast=No has introduït cap interfície de retransmissió heartbeat
 conf_ebcastif='$1' no és una interfície de retransmissió vàlida
@@ -81,7 +81,7 @@ node_broad=Adreça de retransmissió
 node_servs=Serveis del recurs
 node_serv=Servei
 node_args=Arguments addicionals
-node_err=No he pogut desar el recurs del <i>cluster</i>
+node_err=No s'ha pogut desar el recurs del <i>cluster</i>
 node_enone=Hi falta el node primari o bé és invàlid
 node_eip='$1' no és una adreça IP vàlida
 node_ecidr='$1' no és un CIDR vàlid
@@ -93,12 +93,12 @@ auth_mode=Mode d'autenticació
 auth_crc=CRC (Sense seguretat)
 auth_sha1=SHA1 amb contrasenya
 auth_md5=MD5 amb contrasenya
-auth_err=No he pogut desar les claus d'autenticació
+auth_err=No s'han pogut desar les claus d'autenticació
 auth_emd5=Hi falta la contrasenya MD5 o bé és invàlida
 auth_esha1=Hi falta la contrasenya SHA1 o bé és invàlida
 
-start_err=No he pogut iniciar heartbeat
+start_err=No s'ha pogut iniciar heartbeat
 
-apply_err=No he pogut aplicar els canvis
+apply_err=No s'han pogut aplicar els canvis
 apply_epid=El procés ja no esta`en execució
 

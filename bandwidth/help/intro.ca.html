@@ -5,7 +5,7 @@ l'amplada de banda per port, host, protocol i hora per al trànsit enviat
 o reenviat a través del sistema. És útil tant per a hosts independents com
 per aquells que actuen de portal (possiblement amb NAT) d'una xarxa. <p>
 
-Abans de poder-lo fer servir, el mòdul ha de configurar algunes regles del
+Abans de poder-lo utilitzar, el mòdul ha de configurar algunes regles del
 tallafocs i una entrada de syslog per capturar el trànsit enviat i rebut 
 a través del sistema. En el moment de configurar-lo, has de seleccionar
 la interfície de xarxa externa del sistema sobre la qual es monitoritzarà
@@ -27,7 +27,7 @@ per generar informes resumint el trànsit per una de les categories següents:
     connexions a cadascun dels servidors.
 <li><b>Port extern</b><br>
     El port d'algun servidor fora de la xarxa al qual s'han enviat les dades.
-    Això es pot fer servir per determinar a quins serveis estan accedint
+    Això es pot utilitzar per determinar a quins serveis estan accedint
     els usuaris de la xarxa.
 <li><b>Port</b><br>
     Ambdós ports, intern i extern. Útil per comparar tot lús de la xarxa
@@ -40,7 +40,7 @@ com ara 192.168.1.0. El port es pot introduir per nom o per número,
 i coincidirà tant amb TCP com amb UDP. <p>
 
 L'informe també es pot limitar al trànsit recollit entre hores seleccionades,
-fent servir els camps <b>Per al trànsit després de</b> i <b>Per al trànsit
+utilitzant els camps <b>Per al trànsit després de</b> i <b>Per al trànsit
 abans de</b>. Com que el trànsit es resumeix cada hora, no pots limitar 
 l'informe amb una precisió més gran d'una hora. <p>
 

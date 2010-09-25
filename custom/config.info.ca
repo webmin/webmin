@@ -4,5 +4,4 @@ width=Amplada de la finestra de l'editor,3,Defecte (80 caràcters)
 height=Alçada de la finestra de l'editor,3,Defecte (20 caràcters)
 wrap=Mode wrap de l'editor,1,-Defecte (Soft),hard-Hard,off-Desactivat
 columns=Columnes per mostrar-hi les ordres,1,2-2,1-1
-line2=Configuració del sistema,11
-
+line2=Ordena les ordres per,1,desc-Nom d'ordre,html-Descripció,-Ordenació d'ordres

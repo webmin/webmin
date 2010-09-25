@@ -5,7 +5,7 @@ index_elog=El fitxer $1 utilitzat per al registre d'amplada de banda és de fet u
 index_edir=El directori per emmagatzemar les dades $1 de bandwidth no existeix, o no és un directori. Ajusta la <a href='$2'>configuració del mòdul</a> per utilitzar un camí diferent.
 index_emod=El mòdul $1 de Webmin no es troba instal·lat al sistema, o bé no està suportat pel SO. El mòdul de Monitorització d'Amplada de Banda no pot operar sense ell.
 index_esyslog=No hi ha cap mòdul de Registres del Sistema instal·lat ni suportat pel sistema. El mòdul de Monitorització d'Amplada de Banda no pot operar sense  un d'ells.
-index_firesys=Utilitzant el tallafocs $1 i $2
+index_firesys=S'està utilitzant el tallafocs $1 i $2
 index_setupcannot=De totes maneres, tu no tens permís per configurar-lo.
 index_setupdesc=Abans que aquest mòdul pugui informar de l'ús de la xarxa al sistema, cal configurar-lo per monitoritzar el trànsit en la interfície de xarxa externa seleccionada.
 index_setupdesc2=<b>Atenció - aquest mòdule registrarà TOT el transit de xarxa enviat o rebut sobre la interfície seleccionada. Això consumirà molt espai al disc dur i molt temps de CPU en una connexió de xraxa ràpida.</b>
@@ -39,7 +39,7 @@ index_from=Per al trànsit després de
 index_to=Per al trànsit abans de
 index_efrom=Data i hora inicial invàlida
 index_eto=Data i hora final invàlida
-index_err=NO he pogut generar l'informe
+index_err=No s'ha pogut generar l'informe
 index_usage=Trànsit de la xarxa <font color=#ff0000>baixat</font> i <font color=#0000ff>pujat</font>
 index_hhour=Hora
 index_hhost=Host
@@ -52,14 +52,14 @@ index_low=Només els ports del servidor
 index_resolv=Resol els noms de host
 index_nomatch=No hi ha trànsit que coincideixi amb els criteris seleccionats.
 index_turnoff=Desactiva la Monitorització
-index_turnoffdesc=Fes clic sobre aquest botó per eliminar les regles del tallafocs, la configuració syslog i el treball cron emprats per a la monitorització de l'amplada de banda. Totes les dades recollides existents es mantindran intactes.
+index_turnoffdesc=Fes clic sobre aquest botó per eliminar les regles del tallafocs, la configuració syslog i el treball cron utilitzats per a la monitorització de l'amplada de banda. Totes les dades recollides existents es mantindran intactes.
 index_rotate=Actualitza les Estadístiques
 index_rotatedesc=Fes clic sobre aquest botó per processar tot el trànsit de xarxa registrat fins ara, fent-lo immediatament disponible per a l'informe.
 index_eiptables=Atenció - La teva configuració d'IPtables té un error: $1. Establir la monitorització d'amplada de banda esborrarà totes les regles del tallafocs.
 index_return=al formulari d'informe
 
-log_setup=He configurat la monitorització de l'amplada de banda sobre la interfície $1
-log_turnoff=He desactivat la monitorització de l'amplada de banda
+log_setup=S'ha configurat la monitorització de l'amplada de banda sobre la interfície $1
+log_turnoff=S'ha desactivat la monitorització de l'amplada de banda
 log_rotate=Estadístiques actualitzades
 
 acl_setup=Pot configurar i desactivar la monitorització
@@ -68,7 +68,7 @@ turnoff_ecannot=No tens permís per desactivar la monitorització
 
 setup_ecannot=No tens permís per activar la monitorització
 setup_eiface=Hi falta el nom de la interfície o bé és invàlid
-setup_ezone=No he pogut trobar cap zona Shorewall per a la interfícies seleccionada
+setup_ezone=No s'ha pogut trobar cap zona Shorewall per a la interfícies seleccionada
 
 system_firewall=IPtables
 system_ipfw=IPFW
@@ -79,6 +79,6 @@ syslog_syslog=Syslog
 syslog_syslog-ng=Syslog-NG
 
 rotate_title=Actualització d'Estadístiques
-rotate_doing=Processant el trànsit de xarxa registrat...
+rotate_doing=S'està processant el trànsit de xarxa registrat...
 rotate_done=...fet.
 

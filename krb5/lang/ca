@@ -7,7 +7,7 @@ kdc_log=Fitxer de registre KDC
 admin_log=Fitxer de registre del servidor d'administració
 
 libdefaults=Configuració per Defecte
-dns_kdc=Fes servir DNS per consultar KDC
+dns_kdc=Utilitza DNS per consultar KDC
 default_realm=Reialme
 domain=Nom de domini
 default_kdc=KDC

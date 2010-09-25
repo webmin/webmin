@@ -17,8 +17,8 @@ httpd_dir=Directori arrel del servidor Apache,0
 httpd_path=Camí de l'executable httpd,0
 httpd_version=Versió Apache,3,Detécta-la automàticament
 apachectl_path=Camí de l'ordre apachectl,3,Cap
-start_cmd=Ordre per iniciar Apache,3,Fes servir apachectl o inicia manualment
-stop_cmd=Ordre per aturar Apache,3,Fes servir apachectl o mata el procés
+start_cmd=Ordre per iniciar Apache,3,Utilitza apachectl o inicia manualment
+stop_cmd=Ordre per aturar Apache,3,Utilitza apachectl o mata el procés
 ,restart-Executa les ordres d'inici i aturada.
 graceful_cmd=Ordre per rellegir la configuració,3,La mateixa que per aplicar-la
 httpd_conf=Camí de httpd.conf o apache2.conf,3,Automàtic

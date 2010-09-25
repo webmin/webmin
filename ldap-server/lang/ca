@@ -25,9 +25,9 @@ connect_euser2=No s'ha trobat cap usuari d'entrada a la configuració del servido
 connect_epass2=No s'ha trobat cap contrasenya d'entrada a la configuració del servidor LDAP
 connect_epass3=La contrasenya de la configuració LDAP està xifrada i no pot ser utilitzada per Webmin
 connect_emod=El mòdul Perl $1 necessari per connectar amb el servidor LDAP no està instal·lat. El missatge d'error complet de Perl és: $2
-connect_eldap=No he pogut connectar amb el servidor LDAP $1 al port $2
-connect_essl=No he pogut iniciar el xifratge TLS amb el servidor LDAP $1: $2
-connect_elogin=No he pogut entrar al servidor LDAP $1 amb l'usuari $2: $3
+connect_eldap=No s'ha pogut connectar amb el servidor LDAP $1 al port $2
+connect_essl=No s'ha pogut iniciar el xifratge TLS amb el servidor LDAP $1: $2
+connect_elogin=No s'ha pogut entrar al servidor LDAP $1 amb l'usuari $2: $3
 connect_cpan=Pots fer que el mòdul Perl <tt>$1</tt> <a href='$2'>s'instal·li automàticament</a> des de CPAN.
 
 slapd_title=Configuració del Servidor OpenLDAP
@@ -45,7 +45,7 @@ slapd_leave=No la canviïs
 slapd_set=Estableix a
 slapd_cachesize=Índexs a desar al cau
 slapd_dbcachesize=Entrades de la base de dades a desar al cau
-slapd_err=No he pogut desar la configuració del servidor LDAP
+slapd_err=No s'ha pogut desar la configuració del servidor LDAP
 slapd_elocal=No hi ha cap servidor LDAP instal·lat en aquest sistema
 slapd_esuffix=Hi falta el DN arrel o bé sembla invàlid - ha de ser de la forma <tt>dc=elteudomini,dc=com</tt>
 slapd_erootdn=Hi falta l'entrada de l'usuari d'administració o bé sembla invàlid - ha de ser de la forma <tt>cn=Manager,dc=elteudomini,dc=com</tt>
@@ -83,7 +83,7 @@ schema_title=Gestió de l'Esquema
 schema_file=Nom
 schema_desc=Descripció
 schema_pagedesc=L'esquema LDAP determina quines classes d'objectes i atributs es poden emmagatzemar a la base de dades LDAP. Aquesta pàgina permet seleccionar quins tipus d'esquemes estan suportats pel servidor - però ves amb compte amb deseleccionar entrades que estiguin utilitzades per objectes existents.
-schema_err=No he pogut desar l'esquema
+schema_err=No s'ha pogut desar l'esquema
 schema_move=Desplaça
 schema_act=Accions...
 schema_view=Visualitza
@@ -94,7 +94,7 @@ schema_eheader=Contingut del fitxer d'esquema
 schema_path=Nom de fitxer complet
 schema_edesc=Aquesta pàgina permet editar manualment un fitxer d'esquema LDAP. Això només s'ha de fer si estàs familiaritzat/da amb el format del fitxer, ja que Webmin no en fa cap comprovació.
 schema_return=a la llista d'esquemes
-schema_emove=No he trobat el fitxer d'esquema a desplaçar!
+schema_emove=No s'ha trobat el fitxer d'esquema a desplaçar!
 schema_ecannot=No tens permís per gestionar l'esquema LDAP
 
 acl_title=Control d'Accés LDAP
@@ -137,30 +137,30 @@ browser_return=a l'explorador de la base de dades
 browser_toomany=El nombre de subobjectes és més gran que el límit de $1 de Webmin.
 browser_toomany2=El nombre de subobjectes que coincideixen amb $1 és més gran que el límit de $2 de Webmin.
 browser_nomatch=No hi ha cap objecte que coincideixi amb la recerca de $1.
-browser_search=He trobat objectes que coincideixen:
+browser_search=S'han trobat objectes que coincideixen:
 browser_search2=Mostro els objectes que coincideixen:
 browser_sok=Busca
 
-save_err=No he pogut canviar l'atribut
-save_ebase=No he pogut obtenir l'objecte $1 de la base de dades
+save_err=No s'ha pogut canviar l'atribut
+save_ebase=No s'ha pogut obtenir l'objecte $1 de la base de dades
 save_emodify=La modificació LDAP de $2 a $1 ha fallat: $3
 save_enone=No has introduït cap valor
 
-add_err=No he pogut afegir l'atribut
+add_err=No s'ha pogut afegir l'atribut
 add_eadd=Hi falta el nom de l'atribut o bé és invàlid
 add_evalue=Hi falta el valor
 add_emodify=L'addició LDAP de $2 a $1 ha fallat: $3
 
-delete_err=No he pogut eliminar els atributs
+delete_err=No s'han pogut eliminar els atributs
 delete_enone=No n'has seleccionat cap
 delete_emodify=La supressió LDAP de $2 de $1 ha fallat: $3
 
-sdelete_err=No he pogut suprimir els objectes
+sdelete_err=No s'han pogut suprimir els objectes
 sdelete_edn=No s'ha trobat l'objecte $1
 sdelete_edel=La supressió LDAP de $1 ha fallat: $2
 
-rename_err=No he pogut renomenar l'objecte
-rename_eget=No he pogut trobar l'objecte amb DN $1
+rename_err=No s'ha pogut renomenar l'objecte
+rename_eget=No s'ha pogut trobar l'objecte amb DN $1
 rename_enew=Sembla que el nou nom no és vàlid
 rename_erename=El newdn LDAP de $2 de $1 ha fallat: $3
 
@@ -175,11 +175,11 @@ oadd_edn2=Hi falta el valor del DN o bé és invàlid
 oadd_eclasses=No has introduït cap classe d'objecte
 oadd_eclass='$1' no sembla una classe d'objecte vàlida
 oadd_ename=Sembla que el nom de l'atribut $1 és invàlid
-oadd_eget=No he pogut obtenir l'objecte $1: $2
-oadd_eget2=No he pogut comprovar les contradiccions amb $1: $2
+oadd_eget=No s'ha pogut obtenir l'objecte $1: $2
+oadd_eget2=No s'han pogut comprovar les contradiccions amb $1: $2
 oadd_eclash=Ja existeix un objecte amb el DN $1
 oadd_eadd=L'addició LDAP de $1 ha fallat: $2
-oadd_err=No he pogut crear el nou objecte
+oadd_err=No s'ha pogut crear el nou objecte
 
 create_title=Creació d'Arbre
 create_ecannot=No tens permís per crear un nou arbre
@@ -195,60 +195,60 @@ create_virt=Mapejat d'Adreça
 create_group=Grup Unix
 create_edom=Hi falta el nom de domini o bé és invàlid
 create_edn=Hi falta el nom distingit o bé és invàlid
-create_err=No he pogut crear el nou arbre
-create_doingdn=Creant el DN base $1...
+create_err=No s'ha pogut crear el nou arbre
+create_doingdn=S'està creant el DN base $1...
 create_edoingdn=...ha fallat: $1
 create_done=...fet
-create_doingex=Creant l'objecte d'exemple amb DN $1...
+create_doingex=S'està creant l'objecte d'exemple amb DN $1...
 create_edoingex=...ha fallat: $1. No obstant, l'arbre encara es pot utilitzar.
-create_eoc=No he pogut trobar una classe d'objecte apropiada per al nou DN
+create_eoc=No s'ha pogut trobar una classe d'objecte apropiada per al nou DN
 
 eunknown=Error desconegut
 
-apply_err=No he pogut aplicar la configuració
+apply_err=No s'ha pogut aplicar la configuració
 apply_ecmd=$1 ha fallat: $2
 apply_ecannot=No tens permès d'aplicar la configuració
 
-stop_err=No he pogut aturar el servidor LDAP
+stop_err=No s'ha pogut aturar el servidor LDAP
 stop_ecmd=$1 ha fallat: $2
 stop_egone=Ja no està en execució!
 stop_ekill=El procés de matat ha fallat: $1
 stop_ecannot=No tens permís per aturar el servidor LDAP
 
-start_err=No he pogut inicialitzar el servidor LDAP
+start_err=No s'ha pogut inicialitzar el servidor LDAP
 start_ecmd=$1 ha fallat: $2
 start_ecannot=No tens permís per iniciar el servidor LDAP
 
-log_create_dn=He creat l'objecte $1
-log_delete_dn=He suprimit l'objecte $1
-log_rename_dn=He renomenat l'objecte $1
-log_delete_dns=He suprimit $1 objectes
-log_create_attr=He afegit l'atribut a l'objecte $2
-log_create_attr_l=He afegit l'atribut $1 amb el valor $3 a l'objecte $2
-log_modify_attr=He actualitzat l'atribut a l'objecte $2
-log_modify_attr_l=He actualitzat l'atribut $1 amb el valor $3 a l'objecte $2
-log_delete_attr=He suprimit de l'objecte $2
-log_delete_attr_l=He suprimit l'atribut $1 de l'objecte $2
-log_delete_attrs=He suprimit $1 atributs de l'objecte $2
-log_stop=He aturat el servidor LDAP
-log_start=He iniciat el servidor LDAP
-log_apply=He aplicat la configuració
-log_slapd=He canviat la configuració del servidor LDAP
-log_schema=He canviat els esquemes LDAP activats
-log_gencert=He generat un nou certificat SSL
-log_sfile=He modificat un nou fitxer d'esquema $1
-log_sup=He desplaçat cap amunt el fitxer d'esquema $1
-log_sdown=He desplaçat cap avall el fitxer d'esquema $1
-log_create=He creat el nou DN $1
-log_bootup=He activat el servidor LDAP en engegar el sistema
-log_bootdown=He desactivat el servidor LDAP en engegar el sistema
-log_perms=He corregit els permisos del servidor LDAP
-log_create_access=He creat la regla de control d'accés per a $1
-log_delete_access=He suprimit la regla de control d'accés per a $1
-log_modify_access=He actualitzat la regla de control d'accés per a $1
-log_up_access=He desplaçat cap amunt la regla de control d'accés per a $1
-log_down_access=He desplaçat cap avall la regla de control d'accés per a $1
-log_delete_accesses=He suprimit $1 regles de control d'accés
+log_create_dn=S'ha creat l'objecte $1
+log_delete_dn=S'ha suprimit l'objecte $1
+log_rename_dn=S'ha renomenat l'objecte $1
+log_delete_dns=S'han suprimit $1 objectes
+log_create_attr=S'ha afegit l'atribut a l'objecte $2
+log_create_attr_l=S'ha afegit l'atribut $1 amb el valor $3 a l'objecte $2
+log_modify_attr=S'ha actualitzat l'atribut a l'objecte $2
+log_modify_attr_l=S'ha actualitzat l'atribut $1 amb el valor $3 a l'objecte $2
+log_delete_attr=S'ha suprimit de l'objecte $2
+log_delete_attr_l=S'ha suprimit l'atribut $1 de l'objecte $2
+log_delete_attrs=S'han suprimit $1 atributs de l'objecte $2
+log_stop=S'ha aturat el servidor LDAP
+log_start=S'ha iniciat el servidor LDAP
+log_apply=S'ha aplicat la configuració
+log_slapd=S'ha canviat la configuració del servidor LDAP
+log_schema=S'han canviat els esquemes LDAP activats
+log_gencert=S'ha generat un nou certificat SSL
+log_sfile=S'ha modificat un nou fitxer d'esquema $1
+log_sup=S'ha desplaçat cap amunt el fitxer d'esquema $1
+log_sdown=S'ha desplaçat cap avall el fitxer d'esquema $1
+log_create=S'ha creat el nou DN $1
+log_bootup=S'ha activat el servidor LDAP en engegar el sistema
+log_bootdown=S'ha desactivat el servidor LDAP en engegar el sistema
+log_perms=S'han corregit els permisos del servidor LDAP
+log_create_access=S'ha creat la regla de control d'accés per a $1
+log_delete_access=S'ha suprimit la regla de control d'accés per a $1
+log_modify_access=S'ha actualitzat la regla de control d'accés per a $1
+log_up_access=S'ha desplaçat cap amunt la regla de control d'accés per a $1
+log_down_access=S'ha desplaçat cap avall la regla de control d'accés per a $1
+log_delete_accesses=S'han suprimit $1 regles de control d'accés
 log_all=tots els objectes
 
 gencert_title=Generació de Certificat
@@ -259,10 +259,10 @@ gencert_dest=Ubicació dels fitxers de certificat i clau
 gencert_dest2=Directori dels fitxers de certificat i clau
 gencert_same=Fitxers de configuració actuals
 gencert_dir=Directori
-gencert_err=No he pogut generar el certificat
+gencert_err=No s'ha pogut generar el certificat
 gencert_edest=El directori de destinació no existeix
 
-perms_err=No he pogut corregit el propietari
+perms_err=No s'ha pogut corregit el propietari
 
 acl_slapd=Pot configurar el servidor LDAP
 acl_ldif=$acl_slapd
@@ -298,6 +298,7 @@ eacl_title2=Edició de Regla de Control d'Accés
 eacl_header=Detalls de la regla de control d'accés a la base de dades LDAP
 eacl_what=Objectes permesos
 eacl_what1=Tots els objectes
+eacl_what2=Objectes sense DN
 eacl_what0=Objectes amb DN
 eacl_mtype=tipus de coincidència
 eacl_regex=expressió regular
@@ -315,7 +316,7 @@ eacl_users=Usuaris autenticats
 eacl_anonymous=Clients anònims
 eacl_other=Altres DN...
 eacl_every=Tothom
-eacl_err=No he pogut desar la regla de control d'accés
+eacl_err=No s'ha pogut desar la regla de control d'accés
 eacl_edn=Hi falta el DN o bé és invàlid - ha de ser de la forma <tt>uid=pep,dc=elmeudomini,dc=com</tt>
 eacl_efilter=Hi falta el filtre o bé és invàlid - ha de ser de la forma <tt>(objectClass=posixAccount)</tt>
 eacl_eattrs=Hi falta la llista separada per comes d'atributs

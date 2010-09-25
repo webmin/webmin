@@ -13,23 +13,23 @@ edit_group=Membres de $1
 edit_this=aquest servidor
 edit_all=&lt;Tots els servidors&gt;
 
-save_err=No he pogut desar el treball cron de cluster
+save_err=No s'ha pogut desar el treball cron de cluster
 
 exec_title=Execució de Treball Cron de Cluster
-exec_cmd=Executant $1 als servidors seleccionats...
-exec_failed=No he pogut executar-lo a $1: $2
+exec_cmd=S'està executant $1 als servidors seleccionats...
+exec_failed=No s'ha pogut executar a $1: $2
 exec_success=Resposta de $1...
 exec_nohosts=No has seleccionat cat host per executar o bé els grups seleccionats no contenen cap host útil.
 
-log_run=He executat $1 a $2 servidors
-log_run_l=He executat $1 a $2
-log_create=He creat el treball cron de cluster de $1
-log_create_l=He creat el treball cron de cluster $2 de $1
-log_modify=He modificat el treball cron de cluster de $1
-log_modify_l=He modificat el treball cron de cluster $2 de $1
-log_delete=He suprimit el treball cron de cluster de $1
-log_delete_l=He suprimit el treball cron de cluster $2 de $1
-log_deletes=he suprimit $1 treballs cron de cluster
+log_run=S'ha executat $1 a $2 servidors
+log_run_l=S'ha executat $1 a $2
+log_create=S'ha creat el treball cron de cluster de $1
+log_create_l=S'ha creat el treball cron de cluster $2 de $1
+log_modify=S'ha modificat el treball cron de cluster de $1
+log_modify_l=S'ha modificat el treball cron de cluster $2 de $1
+log_delete=S'ha suprimit el treball cron de cluster de $1
+log_delete_l=S'ha suprimit el treball cron de cluster $2 de $1
+log_deletes=S'han suprimit $1 treballs cron de cluster
 
-delete_err=No he pogut suprimir els treballs cron de cluster
+delete_err=No s'han pogut suprimir els treballs cron de cluster
 delete_enone=No has seleccionat cap treball

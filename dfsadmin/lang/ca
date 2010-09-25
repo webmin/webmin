@@ -23,8 +23,8 @@ edit_listed=Els hosts llistats...
 edit_header2=Opcions del recurs
 edit_nosub=Permet el muntatge de subdirectoris
 edit_nosuid=Permet fitxers 'setuid'
-edit_des=Els clients han d'emprar DES
-edit_kerberos=Els clients han d'emprar kerberos
+edit_des=Els clients han d'utilitzar DES
+edit_kerberos=Els clients han d'utilitzar Kerberos
 edit_anon=Usuari anònim
 edit_anon0=No establert
 edit_anon1=Sense accés
@@ -32,7 +32,7 @@ edit_aclok=Permet ACLs
 edit_public=Recurs WebNFS
 edit_index=Fitxer d'índex WebNFS
 
-save_err=No he pogut desar el recurs
+save_err=No s'ha pogut desar el recurs
 save_edirectory='$1' no és un nom de directori vàlid
 save_edirectory2=El directori '$1' no existeix
 save_erw=No has llistat cap host per a la compartició lectura/escriptura
@@ -51,7 +51,7 @@ acl_view=Pot editar els recursos NFS
 
 ecannot=No tens permís per gestionar recursos NFS
 
-delete_err=No he pogut suprimir els recursos compartits
+delete_err=No s'han pogut suprimir els recursos compartits
 delete_enone=No has seleccionat cap recurs
 
-restart_err=No he pogut aplicar els canvis
+restart_err=No s'han pogut aplicar els canvis

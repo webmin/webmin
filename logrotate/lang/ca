@@ -1,7 +1,7 @@
 index_title=Rotació de Fitxers de Registre
 index_econf=No s'ha trobat al sistema el fitxer de configuració de rotació de registres $1. O bé logrotate no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
 index_ecmd=No s'ha trobat al sistema el programa de rotació de registres $1. O bé no està instal·lat, o bé la <a href='$2'>configuració del mòdul</a> és incorrecta.
-index_eversion=No he pogut obtenir la versió de logrotate amb l'ordre $1: $2
+index_eversion=No s'ha pogut obtenir la versió de logrotate amb l'ordre $1: $2
 index_version=Logrotate versió $1
 index_add=Afegeix un nou fitxer de registre per rotar.
 index_file=Fitxer de registre
@@ -65,7 +65,7 @@ edit_now=Fes la Rotació Ara
 global_title=Opcions Globals
 global_header=Opcions per defecte de tots els fitxers de registre
 
-save_err=No he pogut desar el registre
+save_err=No s'ha pogut desar el registre
 save_efile=Hi falta el nom del fitxer de registre o bé és invàlid
 save_esize=Hi falta la mida màxima o bé és invàlida
 save_erotate=Hi falta el nombre màxim de registres vells a mantenir o bé és invàlid
@@ -81,14 +81,14 @@ save_eerrors=Hi falta l'adreça de correu per als missatges d'error
 save_epre=El script de pre-rotació no pot contenir cap línia <tt>endscript</tt> ni <tt>endrotate</tt>
 save_epost=El script de post-rotació no pot contenir cap línia <tt>endscript</tt> ni <tt>endrotate</tt>
 
-log_modify_sched=He canviat el treball cron de rotació de registres
-log_create_sched=He creat el treball cron de rotació de registres
-log_delete_sched=He suprimit el treball cron de rotació de registres
-log_global=He modificat les opcions globals
-log_create=He afegit la rotació del fitxer de registre $1
-log_modify=He modificat la rotació del fitxer de registre $1
-log_delete=He suprimit la rotació del fitxer de registre $1
-log_delete_logs=He suprimit la rotació de $1 fitxers de registre
+log_modify_sched=S'ha canviat el treball cron de rotació de registres
+log_create_sched=S'ha creat el treball cron de rotació de registres
+log_delete_sched=S'ha suprimit el treball cron de rotació de registres
+log_global=S'han modificat les opcions globals
+log_create=S'ha afegit la rotació del fitxer de registre $1
+log_modify=S'ha modificat la rotació del fitxer de registre $1
+log_delete=S'ha suprimit la rotació del fitxer de registre $1
+log_delete_logs=S'ha suprimit la rotació de $1 fitxers de registre
 
 sched_title=Planificació de la Rotació de Registres
 sched_desc=Per tal que es dugui a terme la rotació de registres configurada utilitzant aquest mòdul, cal que cron executi l'ordre $1 a intervals regulars (normalment, a diari).
@@ -97,14 +97,14 @@ sched_sched=Treball cron de rotació de registres
 sched_disabled=Desactivat
 sched_enabled=Activat, a les hores de sota...
 sched_save=Actualitza el Treball Cron
-sched_err=No he pogut desar la planificació de la rotació
+sched_err=No s'ha pogut desar la planificació de la rotació
 
 force_title=Forçat de la Rotació de Registres
-force_doing=Forçant la rotació immediata de tots els registres...
-force_doingone=Forçant la rotació immediata d'un fitxer de registre...
+force_doing=S'està forçant la rotació immediata de tots els registres...
+force_doingone=S'està forçant la rotació immediata d'un fitxer de registre...
 force_done=...fet.
 force_failed=...ha fallat! Vegeu la sortida de sobre per saber-ne el perquè.
 
-delete_err=No he pogut suprimir els registres
+delete_err=No s'han pogut suprimir els registres
 delete_enone=No has seleccionar cap registre
 

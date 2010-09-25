@@ -6,6 +6,6 @@ cfrun=Camí del programa cfrun,0
 cfrun_hosts=Camí del fitxer d'opcions del servidor,3,Automàtic
 cfd=Camí del programa cfd,0
 cfd_conf=Camí del fitxer cfd.conf,3,Automàtic
-start_cmd=Ordre per iniciar cfd,3,Executa simplement el dimoni
-stop_cmd=Ordre per aturar cfd,3,Mata simplement el procés
+start_cmd=Ordre per iniciar cfd,3,Executa el dimoni
+stop_cmd=Ordre per aturar cfd,3,Mata el procés
 

@@ -1,6 +1,6 @@
 index_title=Motor de Configuració
 index_ecommand=No s'ha trobat al sistema l'ordre $1 del Motor de Configuració. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
-index_eversion=No he pogut obtenir la versió del Motor de Configuració a partir de l'ordre $1. La sortida de l'ordre és: $2
+index_eversion=No s'ha pogut obtenir la versió del Motor de Configuració a partir de l'ordre $1. La sortida de l'ordre és: $2
 index_eversion2=L'ordre $1 del Motor de Configuració al sistema és la versió $2, però aquest mòdul Webmin només suporta les versions $3.
 index_econfig=No s'ha trobat al sistema el fitxer de configuració $1 del Motor de Configuració. Pot ser que no estigui instal·lat, o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_version=Versió de CFengine $1
@@ -39,7 +39,7 @@ index_disable=Desactiva el fitxer $1
 index_disable2=Desactiva $1 fitxers
 index_ignore=Ignora $1 camins
 index_procs=Busca els processos que coincideixin amb $1
-index_procs2=He trobat $1 coincidències
+index_procs2=S'han trobat $1 coincidències
 index_shellcommands=Executa l'ordre $1
 index_shellcommands2=Executa $1 ordres
 index_tidy=Suprimeix els fitxers de $1
@@ -150,7 +150,7 @@ edit_disrot1=Trunca el fitxer
 edit_disrot2=Rota'l $1 vegades
 edit_disnew=Afegeix un nou fitxer per desactivar
 edit_editfile=Fitxer a editar
-edit_editscript=Editant el script
+edit_editscript=Edició del script
 edit_editnew=Afegeix un nou fitxer a editar
 edit_ignore=Noms de fitxers a ignorar
 edit_proc=Busca processos que coincideixin amb
@@ -194,7 +194,7 @@ edit_route=Portal per defecte
 edit_reqfs=Sistema de fitxers a verificar
 edit_reqfree=Espai lliure mínim
 
-save_err=No he pogut desar la classe
+save_err=No s'ha pogut desar la classe
 save_eclass=Hi falta el nom de la classe o bé és invàlid
 save_elinkfrom=Hi falta l'origen de l'enllaç simbòlic $1 o bé és invàlid
 save_elinkto=Hi falta la destinació l'enllaç simbòlic $1 o bé és invàlida
@@ -286,7 +286,7 @@ section_required=Verifica sistemes de fitxers
 section_disks=$section_required
 
 run_title=Execució del Motor de Configuració
-run_desc=Aquesta pàgina es pot fer servir per executar el Motor de Configuració en aquest host. En executar-lo, es portaran a terme totes les accions que has configurat allà on sigui necessari.
+run_desc=Aquesta pàgina es pot utilitzar per executar el Motor de Configuració en aquest host. En executar-lo, es portaran a terme totes les accions que has configurat allà on sigui necessari.
 run_header=Opcions per a executar CFengine en aquest host
 run_dry=Mostra només el que es faria
 run_noifc=Pot canviar interfícies de xarxa
@@ -295,7 +295,7 @@ run_nocmd=Pot executar ordres shell
 run_notidy=Pot endreçar directoris
 run_nolinks=Pot crear enllaços simbòlics
 run_verbose=Mostra una sortida exhaustiva
-run_exec=Executant l'ordre $1...
+run_exec=S'està executant l'ordre $1...
 run_ok=Executa'l ara
 
 cfd_title=Dimoni del Motor de Configuració
@@ -314,14 +314,14 @@ push_users=Usuaris que poden executar <tt>cfrun</tt>
 push_host=Nom del host client
 push_opts=Opcions de CFengine del client
 push_push=Executa les Configuracions del Host
-push_pushdesc=Fes clic sobre aquest botó per executar el Motor de Configuració sobre cadascun dels hosts llistats a sobre utilitzant l'ordre $1. Per al processament, es farà servir la configuració local de cada host, si no és que ho tens arranjat per tal que la configuració mestra es distribueixi a cada host.
-push_err=No he pogut desar les opcions del servidor
+push_pushdesc=Fes clic sobre aquest botó per executar el Motor de Configuració sobre cadascun dels hosts llistats a sobre utilitzant l'ordre $1. Per al processament, s'utilitzarà la configuració local de cada host, si no és que ho tens arranjat per tal que la configuració mestra es distribueixi a cada host.
+push_err=No s'han pogut desar les opcions del servidor
 push_edomain=Hi falta el nom de domini o bé és invàlid
 push_ehost='$1' no és un nom de host vàlid
 push_ethis='$1' és aquest host!
 push_return=als hosts de configuració remota
 push_title2=Execució de Configuracions de Host
-push_exec=Executant les configuracions del host amb l'ordre $1...
+push_exec=S'estan executant les configuracions del host amb l'ordre $1...
 push_ecmd=No s'ha trobat al sistema l'ordre $1 d'execució remota del Motor de Configuració. Pot ser que no estigui instal·lada,  o bé que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 
 type_control_0=El camp de sota llista les accions que es porten a terme quan s'executa el motor de configuració, ien l'ordre en què seran executades. Les accions que no estan llistades no es processaran, encara que estiguin llistades a la pàgina principal.
@@ -331,13 +331,13 @@ type_links=Els enllaços simbòlics creats a sota es crearan allà on no existeixin
 type_admit=El dimoni del motor de configuració només permetrà l'accés als directoris llistats a sota des dels hosts llistats al costat de cada directori. Els hosts es poden introduir com una adreça IP, un nom de host o un patró (com ara <tt>*.foo.com</tt>).
 type_grant=$type_admit
 type_deny=El dimoni del motor de configuració impedirà l'accés als directoris llistats a sota des dels hosts llistats al costat de cada directori, encara que estiguin llistats a l'acció Directoris permesos. Els hosts es poden introduir com una adreça IP, un nom de host o un patró (com ara <tt>*.foo.com</tt>).
-type_groups=Fes servir la taula de sota per definir grups de hosts addicionals que es puguin fer servir a qualsevol de la configuració lloc com a noms de classe. Els grups també poden contenir ordres shell entre cometes que s'executin per determinar si el grup s'avalua com a cert o com a fals.
+type_groups=Utilitza la taula de sota per definir grups de hosts addicionals que es puguin utilitzar a qualsevol de la configuració lloc com a noms de classe. Els grups també poden contenir ordres shell entre cometes que s'executin per determinar si el grup s'avalua com a cert o com a fals.
 type_classes=$type_group
 type_copy=Cada fitxer o directori (i el seu contingut) llistat a sota es copiarà a la destinació triada quan calgui. També pots triar de copiar a partir d'un host remot, sempre i quan aquest host estigui executant el dimoni del motor de configuració i permeti que aquest host copiï fitxers.
 type_disable=Els fitxers llistats a sota es verificaran per veure si existeixen i compleixen els criteris de tipus i mida seleccionats, i altrament es desactivaran renomenant-los o truncant-los.
-type_editfiles=La caixa de text de sota es pot fer servir per a introduir un script que editi el fitxer seleccionat, afegint, suprimint o actualitzant línies on calgui. Per a la sintaxi d'aquest script, vegeu la documentació completa de CFengine.
+type_editfiles=La caixa de text de sota es pot utilitzar per a introduir un script que editi el fitxer seleccionat, afegint, suprimint o actualitzant línies on calgui. Per a la sintaxi d'aquest script, vegeu la documentació completa de CFengine.
 type_ignore=Tots els fitxers o directoris introduïts a sota seran ignorats per totes les accions 'Copia fitxers', 'Estableix els permisos' i 'Endreça directoris'. Cada entrada pot ser un camí complet, una expressió regular estil shell o un nom de fitxer.
-type_processes=Fes servir el camp de sota per buscar els processos que coincideixin amb el patró donat i, opcionalment, enviar-hi un senyal per matar-los. Quan es mata un procés, també pots especificar una ordre per reiniciar-lo.
+type_processes=Utilitza el camp de sota per buscar els processos que coincideixin amb el patró donat i, opcionalment, enviar-hi un senyal per matar-los. Quan es mata un procés, també pots especificar una ordre per reiniciar-lo.
 type_shellcommands=Les ordres llistades a sota s'executaran cada cop que s'executi el motor de configuració. Els camps d'usuari i grup són opcionals - si no hi introdueixes res, l'ordre s'executarà com a root. El camp de temps límit també és opcional - si no hi introdueixes res, CFengine esperarà fins que l'ordre s'hagi completat.
 type_tidy=Els directoris llistats a sota s'escanejaran per tal de trobar fitxers que coincideixin amb els criteris de nom, data i hora seleccionats cada cop que s'executi CFengine. Tot fitxer trobat serà suprimit sense fer-ne cap còpia.
 type_miscmounts=Els muntatges NFS llistats a sota seran verificats i muntats, si cal, quan s'executi CFengine. El camp del camí i el servidor NFS s'ha d'introduir en la forma estàndard <tt>nomdeservidor:/cami/nom</tt>. Les opcions de muntatge han d'estar en el mateix format utilitzat en el fitxer <tt>/etc/fstab</tt>, i són opcionals.
@@ -346,22 +346,22 @@ type_defaultroute=Quan s'executa aquesta acció, el motor de configuració comprov
 type_required=Els sistemes de fitxers llistats a sota seran verificats quan s'executi aquesta acció per comprovar que estan muntats, altrament es mostrarà un missatge d'avís. També es verificarà cada sistema de fitxers per veure si el seu espai lliure ha caigut per sota del mínim (si n'hi ha).
 type_disks=$type_required
 
-stop_err=No he pogut aturar el dimoni del Motor de Configuració
+stop_err=No s'ha pogut aturar el dimoni del Motor de Configuració
 stop_epids=Ja no està en execució
-stop_ekill=No he pogut matar el procés: $1
+stop_ekill=No s'ha pogut matar el procés: $1
 
-start_err=No he pogut iniciar el dimoni del Motor de Configuració
+start_err=No s'ha pogut iniciar el dimoni del Motor de Configuració
 
-log_create_section=He creat l'acció $1 i la classe
-log_create_class=He afegit la classe a l'acció $1
-log_modify_class=He modificat la classe de l'acció $1
-log_delete_class=He eliminat la classe de l'acció $1
-log_delete_section=He suprimit la secció $1
-log_run=He executat el motor de configuració
-log_start=He iniciat el dimoni
-log_stop=He aturat el dimoni
-log_push=He canviat els hosts de configuració remota
-log_prun=He executat les configuracions dels hosts
+log_create_section=S'ha creat l'acció $1 i la classe
+log_create_class=S'ha afegit la classe a l'acció $1
+log_modify_class=S'ha modificat la classe de l'acció $1
+log_delete_class=S'ha eliminat la classe de l'acció $1
+log_delete_section=S'ha suprimit la secció $1
+log_run=S'ha executat el motor de configuració
+log_start=S'ha iniciat el dimoni
+log_stop=S'ha aturat el dimoni
+log_push=S'han canviat els hosts de configuració remota
+log_prun=S'han executat les configuracions dels hosts
 
 hosts_title=Cluster CFengine de Webmin CFengine
 hosts_hosts=Servidors del Cluster
@@ -376,13 +376,13 @@ hosts_opts=Opcions de les configuracions en execució
 hosts_return=a la llista de servidors
 
 add_title=Addició de Servidors
-add_msg=Afegint $1...
-add_gmsg=Afegint els servidors al grup $1 ..
-add_err=No he pogut afegir el servidor
-add_gerr=No he pogut afegir el grup
+add_msg=S'està afegint $1...
+add_gmsg=S'estan afegint els servidors al grup $1...
+add_err=No s'ha pogut afegir el servidor
+add_gerr=No s'ha pogut afegir el grup
 add_echeck=El servidor $1 no té el mòdul del motor de configuració
 add_ecfengine=CFengine no està instal·lat al servidor $1
-add_ok=He afegit el servidor $1 ($2 $3)
+add_ok=S'ha afegit el servidor $1 ($2 $3)
 add_eversion=El CFengine del servidor $1 és de la versió $2, però aquest Webmin només suporta les versions $3.
 
 host_title=Servidor Gestionat
@@ -395,9 +395,9 @@ host_cfg=Configuració CFengine actual de $1
 host_ver=Versió CFengine
  
 cluster_title=Executa el Motor de Configuració
-cluster_header=Executant el motor de configuració a tots els hosts del cluster...
+cluster_header=S'està executant el motor de configuració a tots els hosts del cluster...
 cluster_success=Sortida de CFengine a $1...
-cluster_failed=No he pogut executar CFengine a $1: $2
+cluster_failed=No s'ha pogut executar CFengine a $1: $2
  
 this_server=aquest servidor
  

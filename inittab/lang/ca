@@ -39,15 +39,15 @@ save_inittab_err=No tens permís per desar processos
 save_inittab_noid=Error, no has introduït cap nom de procés
 save_inittab_already=Error, aquest nom de procés ja existeix
 
-log_modify=He modificat el procés init $1
-log_rename=He renomenat el procés init $1 a $2
-log_create=He creat el procés init $1
-log_delete=He suprimit el procés init $1
-log_apply=He aplicat la configuració
-log_deletes=He suprimit $1 processos init
+log_modify=S'ha modificat el procés init $1
+log_rename=S'ha renomenat el procés init $1 a $2
+log_create=S'ha creat el procés init $1
+log_delete=S'ha suprimit el procés init $1
+log_apply=S'ha aplicat la configuració
+log_deletes=S'han suprimit $1 processos init
 
-apply_err=No he pogut aplicar la configuració
+apply_err=No s'ha pogut aplicar la configuració
 
-delete_err=No he pogut suprimir els processos
+delete_err=No s'han pogut suprimir els processos
 delete_enone=No has seleccionat cap procés
 

@@ -66,7 +66,7 @@ lcedit_special_monthly=cada mes (el dia 1)
 lcedit_special_yearly=cada any (el dia 1 de gener)
 lcedit_special_reboot=quan es reengega el sistema
 
-save_err=No he pogut desar el treball cron
+save_err=No s'ha pogut desar el treball cron
 save_ecmd=No has introduït l'ordre a executar
 save_euser=Has de seleccionar un usuari
 save_euser2=L'usuari '$1' no existeix
@@ -91,7 +91,7 @@ env_value=Valor
 env_user=De a l'usuari
 env_active=Activa
 env_details=Detalls de la variable d'entorn
-env_err=No he pogut desar la variable d'entorn
+env_err=No s'ha pogut desar la variable d'entorn
 env_ename=Hi falta el nom de la variable o bé és invàlid
 env_order=Nota - Aquesta configuració de variable d'entorn només s'aplicarà als treball cron després d'ella en la llista de treballs a la pàgina principal del mòdul.
 env_where=Afegeix variable d'entorn
@@ -103,7 +103,7 @@ env_leave=Posició actual
 exec_title=Execució de Treball Cron
 exec_ecannot=No tens permís per executar treballs cron d'aquest usuari
 exec_cmd=El resultat de l'ordre $1 ...
-exec_cmdbg=Executant l'ordre $1 com a procés en segon pla.
+exec_cmdbg=S'està executant l'ordre $1 com a procés en segon pla.
 exec_none=No s'ha generat cap sortida
 
 acl_users=Pot editar treballs cron de
@@ -122,23 +122,23 @@ acl_kill=Pot matar treballs Cron
 acl_hourly=Limita els treballs com a màxim a cada hora
 acl_hourlydef=Tal i com està a la Configuració del Mòdul
 
-log_modify=He modificat el treball Cron de $1
-log_modify_l=He modificat el treball Cron "$2" de $1
-log_create=He creat el treball Cron de $1
-log_create_l=He creat el treball Cron "$2" de $1
-log_delete=He suprimit el treball Cron de $1
-log_exec=He executat el treball Cron com $1
-log_exec_l=He executat el treball Cron "$2" com a $1
-log_kill=He matat el treball Cron de $1
-log_kill_l=He matat el treball Cron "$2" de $1
-log_allow=He canviat l'accés de l'usuari a Cron
-log_env_create=He creat la variable d'entorn de $1
-log_env_modify=He modificat la variable d'entorn de $1
-log_env_delete=He suprimit la variable d'entorn de $1
-log_move=He desplaçat el treball Cron de $1
-log_crons_delete=He suprimit $1 treballs Cron
-log_crons_disable=He desactivat $1 treballs Cron
-log_crons_enable=He activat $1 treballs Cron
+log_modify=S'ha modificat el treball Cron de $1
+log_modify_l=S'ha modificat el treball Cron "$2" de $1
+log_create=S'ha creat el treball Cron de $1
+log_create_l=S'ha creat el treball Cron "$2" de $1
+log_delete=S'ha suprimit el treball Cron de $1
+log_exec=S'ha executat el treball Cron com $1
+log_exec_l=S'ha executat el treball Cron "$2" com a $1
+log_kill=S'ha matat el treball Cron de $1
+log_kill_l=S'ha matat el treball Cron "$2" de $1
+log_allow=S'ha canviat l'accés de l'usuari a Cron
+log_env_create=S'ha creat la variable d'entorn de $1
+log_env_modify=S'ha modificat la variable d'entorn de $1
+log_env_delete=S'ha suprimit la variable d'entorn de $1
+log_move=S'ha desplaçat el treball Cron de $1
+log_crons_delete=S'han suprimit $1 treballs Cron
+log_crons_disable=S'han desactivat $1 treballs Cron
+log_crons_enable=S'han activat $1 treballs Cron
 
 ecopy=S'ha detectat un error a la nova configuració de Cron: $1 $2
 
@@ -156,10 +156,10 @@ ucwhen_month=El dia $3 de cada mes a les $2:$1
 ucwhen_weekday=Cada $3 a les $2:$1
 ucwhen_cron=A l'hora $1 de cron
 
-move_err=No he pogut desplaçar el treball Cron
+move_err=No s'ha pogut desplaçar el treball Cron
 move_etype=Aquest treball cron no es pot desplaçar
 
-kill_err=No he pogut matar el treball Cron
+kill_err=No s'ha pogut matar el treball Cron
 kill_ecannot=No tens permís per matar aquest treball
 kill_egone=Ja no està en execució
 kill_ekill=No s'ha pogut matar: $1
@@ -174,5 +174,5 @@ range_end=fins a $1
 range_estart=Hi falta la data inicial de l'interval o bé és invàlida
 range_eend=Hi falta la data final de l'interval o bé és invàlida
 
-delete_err=No he pogut suprimir els treballs Cron
+delete_err=No s'han pogut suprimir els treballs Cron
 delete_enone=No has seleccionat res

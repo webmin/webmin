@@ -2,14 +2,14 @@
 
 Si el sistema està configurat per a utilitzar un servidor LDAP per a 
 emmagatzemar usuaris i grups Unix,es pot utilitzar aquest mòdul per gestionar
-els usuaris d'una base de dades LDAP. LDAP es fa servir sovint com una 
+els usuaris d'una base de dades LDAP. LDAP s'utilitza sovint com una 
 alternativa a NIS per a sincronitzar la informació dels usuaris a través de
 múltiples sistemes d'una xarxa, com una base de dades que pot emmagatzemar
 atributs addicionals per a cada usuari, a més a més dels estàndards Unix
 nom d'usuari, shell, i altres. <p>
 
 Naturalment, hi ha d'haver un servidor LDAP executant-se al sistema o en 
-algun host de la xarxa per poder fer servir aquest mòdul. A més a més, 
+algun host de la xarxa per poder utilitzar aquest mòdul. A més a més, 
 cal configurar un o més hosts per a utilitzar LDAP per autenticar usuaris
 i/o grups. No es pot fer cap d'aquestes tasques des d'aquest mòdul -s'han
 de fer manualment, o amb altres mòduls Webmin per aquest propòsit. <p>
@@ -28,7 +28,7 @@ Crearà bústies per a cada nou usuari, subscriurà l'usuari a les seves bústies
 i li donarà permisos d'administrador sobre les mateixes. Si se suprimeix un
 usuari LDAP, la seva bústia IMAP també ho serà. Actualment, aquesta
 característica només funciona amb el servidor IMAP Cyrus - no s'ha provat
-i probablement no sigui necessari per altres servidors, que fan servir
+i probablement no sigui necessari per altres servidors, que utilitzen
 el directori arrel de l'usuari per a emmagatzemar el correu. <p>
 
 <hr>

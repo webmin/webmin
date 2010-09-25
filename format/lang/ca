@@ -11,7 +11,7 @@ index_type=Tipus
 index_extent=Extensió
 index_start=Inici
 index_end=Fi
-index_use=Usat
+index_use=Utilitzat
 index_free=Lliure
 index_format=Aquest disc no està formatat
 index_return=a la llista de discs
@@ -42,25 +42,25 @@ edit_tasks=Tasques de Partició
 edit_newfs=Nou Sistema de Fitxers
 edit_newdesc1=Construeix un nou sistema de fitxers en aquesta partició, esborrant de forma permanent qualsevol fitxer existent. Has de fer-ho després de crear una nova partició o canviar-ne una d'existent.
 edit_newdesc2=No pots crear un nou sistema de fitxers en aquesta partició, ja que encara no s'ha configurat.
-edit_newdesc3=No pots crear un nou sistema de fitxers en aquesta partició, ja que està actualment muntada. Fes servir el <a href=/mount/>mòdul de sistemes de fitxers</a> per desmuntar abans aquesta partició.
+edit_newdesc3=No pots crear un nou sistema de fitxers en aquesta partició, ja que està actualment muntada. Utilitza el <a href=/mount/>mòdul de sistemes de fitxers</a> per desmuntar abans aquesta partició.
 edit_fsckfs=Reparació de Sistema de Fitxers
 edit_fsck=Repara
 edit_fsckdesc1=Crida el programa <tt>fsck</tt> per reparar un sistema de fitxers per tal que pugui ser muntat. Això pot ser necessari si el sistema no s'ha tancat apropiadament.
 edit_fsckdesc2=No pots verificar el sistema de fitxers d'aquesta partició perquè encara no s'ha configurat.
-edit_fsckdesc3=No pots verificar el sistema de fitxers d'aquesta partició perquè està muntat. Fes servir el <a href=/mount/>mòdul de sistemes de fitxers</a> per desmuntar-lo abans.
+edit_fsckdesc3=No pots verificar el sistema de fitxers d'aquesta partició perquè està muntat. Utilitza el <a href=/mount/>mòdul de sistemes de fitxers</a> per desmuntar-lo abans.
 edit_fsckdesc4==No pots verificar el sistema de fitxers d'aquesta partició perquè no en conté cap.
 edit_fsckdesc5==No pots verificar el sistema de fitxers d'aquesta partició perquè només es poden verificar els sistemes de fitxers <tt>UFS</tt>.
 edit_tunefs=Sintonització de Sistema de Fitxers
 edit_tune=Sintonitza
 edit_tunedesc1=Permet modificar diversos paràmetres d'un sistema de fitxers existent
 edit_tunedesc2=No pots sintonitzar el sistema de fitxers d'aquesta partició perquè encara no s'ha configurat.
-edit_tunedesc3=No pots sintonitzar el sistema de fitxers d'aquesta partició perquè està muntat. Fes servir el <a href=/mount/>mòdul de sistemes de fitxers</a> per desmuntar-lo abans.
+edit_tunedesc3=No pots sintonitzar el sistema de fitxers d'aquesta partició perquè està muntat. Utilitza el <a href=/mount/>mòdul de sistemes de fitxers</a> per desmuntar-lo abans.
 edit_tunedesc4=No pots sintonitzar el sistema de fitxers d'aquesta partició perquè no en té cap.
 edit_tunedesc5=No pots sintonitzar el sistema de fitxers d'aquesta partició perquè només es poden sintonitzar els sistemes de fitxers <tt>UFS</tt>.
 
 save_ecannot=No tens permís per editar aquest disc
-save_edelete=No he pogut suprimir la partició
-save_esave=No he pogut desar la partició
+save_edelete=No s'ha pogut suprimir la partició
+save_esave=No s'ha pogut desar la partició
 save_estart='$1' no és un cilindre inicial vàlid
 save_eend='$1' no és un cilindre final
 save_estartmin=El cilindre inicial ha de ser > 0
@@ -88,8 +88,8 @@ ufs_s=Mida del sistema de fitxers
 ufs_t=Pistes / cilindres
 ufs_cb=Nombre màxim de blocs contigus
 newfs_create=Crea Sistema de Fitxers
-newfs_err=No he pogut crear el sistema de fitxers
-newfs_exec=Executant l'ordre $1...
+newfs_err=No s'ha pogut crear el sistema de fitxers
+newfs_exec=S'està executant l'ordre $1...
 newfs_failed=...l'ordre ha fallat!
 newfs_ok=...ordre completa.
 
@@ -100,13 +100,13 @@ fsck_mode0=Informa només de l'estat del sistema de fitxers.
 fsck_mode1=Verifica tot el sistema de fitxers, però no corregeixis cap error.
 fsck_mode2=Verifica i corregeix tots els errors trobats al sistema de fitxers.
 fsck_repair=Repara
-fsck_exec=Executant l'ordre $1...
+fsck_exec=S'està executant l'ordre $1...
 fsck_0=no s'ha detectat cap error
 fsck_1=paràmetres incorrectes
 fsck_32=el sistema de fitxers necessita verificació
-fsck_34=no puc obrir el dispositiu
+fsck_34=no es pot obrir el dispositiu
 fsck_36=s'han detectat errors no corregibles
-fsck_37=procés mort durant la verificació
+fsck_37=el procés ha mort durant la verificació
 fsck_39=s'han detectat errors no corregibles!
 fsck_40=no s'ha detectat cap error
 fsck_unknown=error desconegut
@@ -123,8 +123,8 @@ tunefs_a=Nombre màxim de blocs contigus
 tunefs_d=Retard rotacional
 tunefs_e=Nombre màxim de blocs de fitxer per grup de cilindres
 tunefs_m=Espai reservat
-tunefs_err=No he pogut sintonitzar el sistema de fitxers
-tunefs_exec=Executant l'ordre $1...
+tunefs_err=No s'ha pogut sintonitzar el sistema de fitxers
+tunefs_exec=S'està executant l'ordre $1...
 tunefs_failed=...l'ordre ha fallat!
 tunefs_ok=...ordre completa.
 
