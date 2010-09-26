@@ -8,6 +8,7 @@ require './spam-lib.pl';
 &can_use_check("score");
 &ui_print_header($header_subtext, $text{'score_title'}, "");
 $conf = &get_config();
+@plugins = &list_spamassassin_plugins();
 
 print "$text{'score_desc'}<p>\n";
 &start_form("save_score.cgi", $text{'score_header'});
@@ -53,33 +54,37 @@ $received = &find("num_check_received", $conf);
 print &ui_table_row($text{'score_received'},
 	&opt_field("num_check_received", $received, 5, 2));
 
-print &ui_table_hr();
+if (&indexof("Mail::SpamAssassin::Plugin::TextCat", @plugins) >= 0) {
+	print &ui_table_hr();
 
-# Acceptable languages
-@langs = &find_value("ok_languages", $conf);
-%langs = map { $_, 1 } split(/\s+/, join(" ", @langs));
-$lmode = !@langs ? 2 : $langs{'all'} ? 1 : 0;
-delete($langs{'all'});
-print &ui_table_row($text{'score_langs'},
-	&ui_radio("langs_def", $lmode,
-		  [ [ 2, $text{'default'}." (".$text{'score_langsall'}.")" ],
-		    [ 1, $text{'score_langsall'} ],
-		    [ 0, $text{'score_langssel'} ] ])."<br>\n".
-	&ui_select("langs", [ keys %langs ],
-		   [ &list_spamassassin_languages() ], 10, 1, 1));
+	# Acceptable languages
+	@langs = &find_value("ok_languages", $conf);
+	%langs = map { $_, 1 } split(/\s+/, join(" ", @langs));
+	$lmode = !@langs ? 2 : $langs{'all'} ? 1 : 0;
+	delete($langs{'all'});
+	print &ui_table_row($text{'score_langs'},
+		&ui_radio("langs_def", $lmode,
+			  [ [ 2, $text{'default'}.
+				 " (".$text{'score_langsall'}.")" ],
+			    [ 1, $text{'score_langsall'} ],
+			    [ 0, $text{'score_langssel'} ] ])."<br>\n".
+		&ui_select("langs", [ keys %langs ],
+			   [ &list_spamassassin_languages() ], 10, 1, 1));
 
-# Acceptable locales
-@locales = &find_value("ok_locales", $conf);
-%locales = map { $_, 1 } split(/\s+/, join(" ", @locales));
-$lmode = !@locales ? 2 : $locales{'all'} ? 1 : 0;
-delete($locales{'all'});
-print &ui_table_row($text{'score_locales'},
-	&ui_radio("locales_def", $lmode,
-		  [ [ 2, $text{'default'}." (".$text{'score_localesall'}.")" ],
-		    [ 1, $text{'score_localesall'} ],
-		    [ 0, $text{'score_localessel'} ] ])."<br>\n".
-	&ui_select("locales", [ keys %locales ],
-		   [ &list_spamassassin_locales() ], 5, 1, 1));
+	# Acceptable locales
+	@locales = &find_value("ok_locales", $conf);
+	%locales = map { $_, 1 } split(/\s+/, join(" ", @locales));
+	$lmode = !@locales ? 2 : $locales{'all'} ? 1 : 0;
+	delete($locales{'all'});
+	print &ui_table_row($text{'score_locales'},
+		&ui_radio("locales_def", $lmode,
+			  [ [ 2, $text{'default'}.
+				 " (".$text{'score_localesall'}.")" ],
+			    [ 1, $text{'score_localesall'} ],
+			    [ 0, $text{'score_localessel'} ] ])."<br>\n".
+		&ui_select("locales", [ keys %locales ],
+			   [ &list_spamassassin_locales() ], 5, 1, 1));
+	}
 
 &end_form(undef, $text{'save'});
 &ui_print_footer($redirect_url, $text{'index_return'});

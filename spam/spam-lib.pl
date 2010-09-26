@@ -104,8 +104,8 @@ if ($include_config_files || $forglobal) {
 		closedir(DIR);
 		local $f;
 		foreach $f (@files) {
-			if ($f =~ /\.cf$/) {
-				local $add = &get_config("$file/$f");
+			if ($f =~ /\.(cf|pre)$/) {
+				local $add = &get_config("$file/$f",$forglobal);
 				map { $_->{'index'} += scalar(@rv) } @$add;
 				push(@rv, @$add);
 				}
@@ -1083,6 +1083,20 @@ while(<LANGS>) {
 		}
 	}
 close(LANGS);
+return @rv;
+}
+
+# list_spamassassin_plugins()
+# Returns a list of plugins enabled, both globally and for this user
+sub list_spamassassin_plugins
+{
+my @rv;
+if ($config{'global_cf'}) {
+	my $gconf = &get_config($config{'global_cf'}, 1);
+	push(@rv, &find_value("loadplugin", $gconf));
+	}
+my $conf = &get_config();
+push(@rv, &find_value("loadplugin", $conf));
 return @rv;
 }
 

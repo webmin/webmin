@@ -21,26 +21,30 @@ $hits_param = &version_atleast(3.0) ? "required_score" : "required_hits";
 &parse_opt($conf, "rbl_timeout", \&timeout_check);
 &parse_opt($conf, "num_check_received", \&received_check);
 
-if ($in{'langs_def'} == 2) {
-	&save_directives($conf, "ok_languages", [ ], 1);
-	}
-elsif ($in{'langs_def'} == 1) {
-	&save_directives($conf, "ok_languages", [ "all" ], 1);
-	}
-else {
-	&save_directives($conf, "ok_languages",
-			 [ join(" ", split(/\0/, $in{'langs'})) ], 1);
+if (defined($in{'langs_def'})) {
+	if ($in{'langs_def'} == 2) {
+		&save_directives($conf, "ok_languages", [ ], 1);
+		}
+	elsif ($in{'langs_def'} == 1) {
+		&save_directives($conf, "ok_languages", [ "all" ], 1);
+		}
+	else {
+		&save_directives($conf, "ok_languages",
+				 [ join(" ", split(/\0/, $in{'langs'})) ], 1);
+		}
 	}
 
-if ($in{'locales_def'} == 2) {
-	&save_directives($conf, "ok_locales", [ ], 1);
-	}
-elsif ($in{'locales_def'} == 1) {
-	&save_directives($conf, "ok_locales", [ "all" ], 1);
-	}
-else {
-	&save_directives($conf, "ok_locales",
-			 [ join(" ", split(/\0/, $in{'locales'})) ], 1);
+if (defined($in{'locales_def'})) {
+	if ($in{'locales_def'} == 2) {
+		&save_directives($conf, "ok_locales", [ ], 1);
+		}
+	elsif ($in{'locales_def'} == 1) {
+		&save_directives($conf, "ok_locales", [ "all" ], 1);
+		}
+	else {
+		&save_directives($conf, "ok_locales",
+				 [ join(" ", split(/\0/, $in{'locales'})) ], 1);
+		}
 	}
 
 &flush_file_lines();
