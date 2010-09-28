@@ -137,6 +137,7 @@ job_title1=Create Backup Job
 job_title2=Edit Backup Job
 job_header=Backup job details
 job_name=Backup job name
+job_enabled=Backup job enabled?
 job_def=Default type
 job_def0=Default definiton
 job_def1=Stand-alone job

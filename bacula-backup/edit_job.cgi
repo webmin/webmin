@@ -58,6 +58,11 @@ print &ui_table_start($text{'job_header'}, "width=100%", 4);
 print &ui_table_row($text{'job_name'},
 	&ui_textbox("name", $name=&find_value("Name", $mems), 40), 3);
 
+# Job enabled?
+$enabled = &find_value("Enabled", $mems);
+print &ui_table_row($text{'job_enabled'},
+	&ui_yesno_radio("enabled", lc($enabled) ne 'no'));
+
 # Default or source
 $defs = &find_value("JobDefs", $mems);
 $dmode = $defs ? 2 : $job->{'name'} eq 'Job' ? 1 : 0;

@@ -45,6 +45,8 @@ else {
 		$clash && &error($text{'job_eclash'});
 		}
 	&save_directive($conf, $job, "Name", $in{'name'}, 1);
+	&save_directive($conf, $job, "Enabled",
+			$in{'enabled'} ? undef : "No", 1);
 
 	if ($in{'dmode'} == 0) {
 		$job->{'name'} = "JobDefs";

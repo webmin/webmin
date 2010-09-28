@@ -14,3 +14,5 @@ Added support for automatic volume labelling and max volume size, thanks to Casp
 Add support for setting the Maximum concurrent jobs on a storage daemon, thanks to Caspar Smit.
 ---- Changes since 1.510 ----
 Added a field for setting the compression level for a fileset.
+---- Changes since 1.520 ----
+Added an option to disable a backup job.
