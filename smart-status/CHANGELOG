@@ -17,3 +17,5 @@ Added support for FreeBSD and OSX systems, if they have the smartctl package ins
 Fixed the collapsible section showing raw SMART status output.
 ---- Changes since 1.500 ----
 Use disk IDs for SMART monitoring instead of device names, which may change.
+---- Changes since 1.520 ----
+Fix support for 3ware hardware RAID arrays with non-contiguous disks.
