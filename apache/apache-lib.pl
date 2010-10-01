@@ -370,11 +370,11 @@ push(@get_config_cache, &get_config_file($acc, \%seenfiles));
 foreach $v (@virt) {
 	$mref = $v->{'members'};
 	foreach $idn ("ResourceConfig", "AccessConfig", "Include") {
-		local $inc = &find_directive_struct($idn, $mref);
-		next if (!$inc);
-		local @incs = &expand_apache_include($inc->{'words'}->[0]);
-		foreach my $ginc (@incs) {
-			push(@$mref, &get_config_file($ginc, \%seenfiles));
+		foreach $inc (&find_directive_struct($idn, $mref)) {
+			local @incs = &expand_apache_include($inc->{'words'}->[0]);
+			foreach my $ginc (@incs) {
+				push(@$mref, &get_config_file($ginc, \%seenfiles));
+				}
 			}
 		}
 	}
@@ -814,7 +814,7 @@ foreach $e (@{$_[0]}) {
 		$names = " (";
 		foreach $ed (split(/\s+/, $e->{'name'})) {
 			# nodo50 v0.1 - Change 000004 - Open new window for Help in Apache module and mod_apachessl Help from http://www.apache-ssl.org and
-			# nodo50 v0.1 - Change 000004 - Abre nueva ventana para Ayuda del módulo Apache y para mod_apachessl busca la Ayuda en http://www.apache-ssl.org and
+			# nodo50 v0.1 - Change 000004 - Abre nueva ventana para Ayuda del mï¿½dulo Apache y para mod_apachessl busca la Ayuda en http://www.apache-ssl.org and
 			$names .= "<tt><a href='".($e->{'module'} eq 'mod_apachessl' ? 'http://www.apache-ssl.org/docs.html#'.$ed : $apache_docbase."/".$e->{'module'}.".html#".lc($ed))."'>".$ed."</a></tt> ";
 			#$names .= "<tt><a href='".$apache_docbase."/".$e->{'module'}.".html#".lc($ed)."'>".$ed."</a></tt> ";
 			# nodo50 v0.1 - Change 000004 - End
