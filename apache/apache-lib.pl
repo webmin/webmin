@@ -343,7 +343,7 @@ if (@get_config_cache) {
 # read primary config file
 ($conf) = &find_httpd_conf();
 return undef if (!$conf);
-local %seenfiles;
+my %seenfiles;
 @get_config_cache = &get_config_file($conf, \%seenfiles);
 
 # Read main resource and access config files
@@ -368,6 +368,7 @@ push(@get_config_cache, &get_config_file($acc, \%seenfiles));
 # Read extra config files in VirtualHost sections
 @virt = &find_directive_struct("VirtualHost", \@get_config_cache);
 foreach $v (@virt) {
+	my %seenfiles;
 	$mref = $v->{'members'};
 	foreach $idn ("ResourceConfig", "AccessConfig", "Include") {
 		foreach $inc (&find_directive_struct($idn, $mref)) {
