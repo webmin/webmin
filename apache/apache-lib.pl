@@ -370,11 +370,13 @@ push(@get_config_cache, &get_config_file($acc, \%seenfiles));
 foreach $v (@virt) {
 	$mref = $v->{'members'};
 	foreach $idn ("ResourceConfig", "AccessConfig", "Include") {
-		local $inc = &find_directive_struct($idn, $mref);
-		next if (!$inc);
-		local @incs = &expand_apache_include($inc->{'words'}->[0]);
-		foreach my $ginc (@incs) {
-			push(@$mref, &get_config_file($ginc, \%seenfiles));
+		foreach $inc (&find_directive_struct($idn, $mref)) {
+			local @incs = &expand_apache_include(
+					$inc->{'words'}->[0]);
+			foreach my $ginc (@incs) {
+				push(@$mref, &get_config_file($ginc,
+							      \%seenfiles));
+				}
 			}
 		}
 	}
