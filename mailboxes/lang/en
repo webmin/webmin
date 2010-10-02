@@ -307,6 +307,7 @@ search_local=In local folders
 search_all=In all folders
 search_limit=(from last $1 messages)
 search_status=With status
+search_attach=Must have attachments?
 search_allstatus=Any
 search_onestatus=Only status
 search_latest=Messages to search
