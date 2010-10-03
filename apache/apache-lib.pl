@@ -388,7 +388,7 @@ return \@get_config_cache;
 # Returns a list of config hash refs from some file
 sub get_config_file
 {
-local ($file, $seen) = @_;
+my ($file, $seen) = @_;
 
 # Convert sites-enabled to real path in sites-available
 $file = &simplify_path(&resolve_links($file));
@@ -400,7 +400,7 @@ if (opendir(DIR, $file)) {
 	closedir(DIR);
 	foreach my $f (sort { $a cmp $b } @files) {
 		next if ($f =~ /^\./);
-		push(@rv, &get_config_file("$file/$f"));
+		push(@rv, &get_config_file("$file/$f", $seen));
 		}
 	}
 else {
@@ -415,7 +415,7 @@ else {
 foreach $inc (&find_directive_struct("Include", \@rv)) {
 	local @incs = &expand_apache_include($inc->{'words'}->[0]);
 	foreach my $ginc (@incs) {
-		push(@rv, &get_config_file($ginc));
+		push(@rv, &get_config_file($ginc, $seen));
 		}
 	}
 
