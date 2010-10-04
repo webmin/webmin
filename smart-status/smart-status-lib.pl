@@ -50,32 +50,36 @@ sub list_smart_disks_partitions_fdisk
 &foreign_require("fdisk");
 local @rv;
 local %tcount = ( "/dev/twe", 0, "/dev/twa", 0 );
-foreach my $d (&fdisk::list_disks_partitions()) {
+foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
+		    &fdisk::list_disks_partitions()) {
 	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
 	    $d->{'model'} =~ /3ware|amcc/i) {
-		# Actually a 3ware RAID device .. but we want to probe the
-		# underlying real disks, so add fake devices for them
-		foreach my $twdev (keys %tcount) {
-			next if (!-r $twdev.$tcount{$twdev});
-			my @subdisks = &list_3ware_subdisks($d,$tcount{$twdev});
-			if (!@subdisks) {
-				my $count = &count_subdisks($d, "3ware",
-						    $twdev.$tcount{$twdev});
-				next if (!$count);
-				@subdisks = ( 0 .. $count-1 );
-				}
-			foreach my $i (@subdisks) {
-				push(@rv, { 'device' => $twdev.$tcount{$twdev},
-					    'prefix' => $twdev.$tcount{$twdev},
-					    'desc' => '3ware physical disk '.$i,
-					    'type' => 'scsi',
-					    'subtype' => '3ware',
-					    'subdisk' => $i,
-					    'id' => $d->{'id'},
-					  });
-				}
-			$tcount{$twdev}++;
+		# A 3ware hardware RAID device.
+
+		# First find the controllers.
+		local @ctrls = &list_3ware_controllers();
+
+		# For each controller, find all the units (u0, u1, etc..)
+		local @units;
+		foreach my $c (@ctrls) {
+			push(@units, &list_3ware_subdisks($c));
 			}
+
+		# Assume that /dev/sdX maps to units in order
+		my $i = 0;
+		foreach my $sd (@{$units[$twcount]->[1]}) {
+			push(@rv, { 'device' => "/dev/twe".$i,
+				    'prefix' => "/dev/twe".$i,
+				    'desc' => '3ware physical disk unit '.
+				      $units[$twcount]->[0].' number '.$sd,
+				    'type' => 'scsi',
+				    'subtype' => '3ware',
+				    'subdisk' => $i,
+				    'id' => $d->{'id'},
+				  });
+			$i++;
+			}
+		$twcount++;
 		}
 	elsif ($d->{'device'} =~ /^\/dev\/cciss\/(.*)$/) {
 		# HP Smart Array .. add underlying disks
@@ -100,19 +104,44 @@ return sort { $a->{'device'} cmp $b->{'device'} ||
 	      $a->{'subdisk'} <=> $b->{'subdisk'} } @rv;
 }
 
-=head2 list_3ware_subdisks(&drive, number)
+=head2 list_3ware_subdisks(controller)
 
-Returns a list of numbers of 3ware sub-disk
+Returns a list of units and list of sub-disks
 
 =cut
 sub list_3ware_subdisks
 {
-local ($d, $n) = @_;
-local $out = &backquote_command("tw_cli info c$n");
+local ($ctrl) = @_;
+local $out = &backquote_command("tw_cli info $ctrl");
 return () if ($?);
 my @rv;
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /^p(\d+)\s+/) {
+	if ($l =~ /^(u\d+)\s/) {
+		push(@rv, [ $1, [ ] ]);
+		}
+	elsif ($l =~ /^(p\d+)\s+(\S+)\s+(\S+)/ &&
+	       $2 ne 'NOT-PRESENT') {
+		my ($u) = grep { $_->[0] eq $3 } @rv;
+		if ($u) {
+			push(@{$u->[1]}, $1);
+			}
+		}
+	}
+return @rv;
+}
+
+=head2 list_3ware_controllers()
+
+Returns a list of 3ware controllers, each of which is just a string like c0
+
+=cut
+sub list_3ware_controllers
+{
+local $out = &backquote_command("tw_cli show");
+return () if ($?);
+my @rv;
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^(c\d+)\s/) {
 		push(@rv, $1);
 		}
 	}
