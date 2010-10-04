@@ -2558,7 +2558,7 @@ my $rv = eval {
 		}
 	elsif ($str =~ /^(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+(\S+)/) {
 		# Format like Dec  7 12:58:52 2004 GMT
-		local $tm = timelocal($5, $4, $3, $2, &month_to_number($1),
+		local $tm = timegm($5, $4, $3, $2, &month_to_number($1),
 			      $6 < 50 ? $6+100 : $6 < 1000 ? $6 : $6-1900);
 		local $tz = $7;
 		if ($tz =~ /^(\-|\+)?\d+$/) {
