@@ -1684,6 +1684,7 @@ if ($config{'defines_file'}) {
 	local %def;
 	&read_env_file($config{'defines_file'}, \%def);
 	if ($config{'defines_name'}) {
+		# Looking for var like OPTIONS='-Dfoo -Dbar'
 		local $var = $def{$config{'defines_name'}};
 		foreach my $v (split(/\s+/, $var)) {
 			if ($v =~ /^-[Dd](\S+)$/) {
@@ -1695,7 +1696,13 @@ if ($config{'defines_file'}) {
 			}
 		}
 	else {
-		push(@rv, map { $_."=".$def{$_} } keys %def);
+		# Looking for regular name=value directives.
+		# Remove $SUFFIX variable seen on debian that is computed
+		# dynamically, but is usually empty.
+		foreach my $k (keys %def) {
+			$def{$k} =~ s/\$SUFFIX//g;
+			push(@rv, $k."=".$def{$k});
+			}
 		}
 	}
 foreach my $md (split(/\t+/, $config{'defines_mods'})) {
