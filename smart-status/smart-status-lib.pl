@@ -15,7 +15,8 @@ Returns the version number of the SMART tools on this system
 sub get_smart_version
 {
 if (!defined($smartctl_version_cache)) {
-	local $out = `$config{'smartctl'} --version 2>&1 </dev/null`;
+	local $out = &backquote_command(
+			"$config{'smartctl'} --version 2>&1 </dev/null");
 	if ($out =~ /smartmontools release\s+(\S+)/i) {
 		$smartctl_version_cache = $1;
 		}
@@ -49,7 +50,7 @@ sub list_smart_disks_partitions_fdisk
 {
 &foreign_require("fdisk");
 local @rv;
-local %tcount = ( "/dev/twe", 0, "/dev/twa", 0 );
+my $twcount = 0;
 foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 		    &fdisk::list_disks_partitions()) {
 	if (($d->{'type'} eq 'scsi' || $d->{'type'} eq 'raid') &&
@@ -58,23 +59,33 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 
 		# First find the controllers.
 		local @ctrls = &list_3ware_controllers();
+		print STDERR "ctrls=",join(" ", @ctrls),"\n";
 
 		# For each controller, find all the units (u0, u1, etc..)
 		local @units;
 		foreach my $c (@ctrls) {
 			push(@units, &list_3ware_subdisks($c));
 			}
+		use Data::Dumper;
+		print STDERR "units=",Dumper(\@units),"\n";
 
 		# Assume that /dev/sdX maps to units in order
 		my $i = 0;
-		foreach my $sd (@{$units[$twcount]->[1]}) {
-			push(@rv, { 'device' => "/dev/twe".$i,
-				    'prefix' => "/dev/twe".$i,
+		foreach my $sd (@{$units[$twcount]->[2]}) {
+			my $c = $units[$twcount]->[1];
+			my $cidx = &indexof($c, @ctrls);
+			my $dev = "/dev/twa".$cidx;
+			if (!-r $dev) {
+				$dev = "/dev/twe".$cidx;
+				}
+			print STDERR "dev=$dev sd=$sd\n";
+			push(@rv, { 'device' => $dev,
+				    'prefix' => $dev,
 				    'desc' => '3ware physical disk unit '.
 				      $units[$twcount]->[0].' number '.$sd,
 				    'type' => 'scsi',
 				    'subtype' => '3ware',
-				    'subdisk' => $i,
+				    'subdisk' => substr($sd, 1),
 				    'id' => $d->{'id'},
 				  });
 			$i++;
@@ -106,7 +117,7 @@ return sort { $a->{'device'} cmp $b->{'device'} ||
 
 =head2 list_3ware_subdisks(controller)
 
-Returns a list of units and list of sub-disks
+Returns a list, each element of which is a unit, controller and list of subdisks
 
 =cut
 sub list_3ware_subdisks
@@ -117,13 +128,13 @@ return () if ($?);
 my @rv;
 foreach my $l (split(/\r?\n/, $out)) {
 	if ($l =~ /^(u\d+)\s/) {
-		push(@rv, [ $1, [ ] ]);
+		push(@rv, [ $1, $ctrl, [ ] ]);
 		}
 	elsif ($l =~ /^(p\d+)\s+(\S+)\s+(\S+)/ &&
 	       $2 ne 'NOT-PRESENT') {
 		my ($u) = grep { $_->[0] eq $3 } @rv;
 		if ($u) {
-			push(@{$u->[1]}, $1);
+			push(@{$u->[2]}, $1);
 			}
 		}
 	}
@@ -219,7 +230,8 @@ if (&get_smart_version() > 5.0) {
 	# Use new command format
 
 	# Check support
-	local $out = `$config{'smartctl'} $extra_args  -i $qd 2>&1`;
+	local $out = &backquote_command(
+			"$config{'smartctl'} $extra_args  -i $qd 2>&1");
 	if ($out =~ /SMART\s+support\s+is:\s+Available/i) {
 		$rv{'support'} = 1;
 		}
@@ -249,7 +261,8 @@ if (&get_smart_version() > 5.0) {
 		}
 
 	# Check status
-	$out = `$config{'smartctl'} $extra_args -H $qd 2>&1`;
+	$out = &backquote_command(
+		"$config{'smartctl'} $extra_args -H $qd 2>&1");
 	if ($out =~ /test result: FAILED/i) {
 		$rv{'check'} = 0;
 		}
@@ -261,7 +274,8 @@ else {
 	# Use old command format
 
 	# Check status
-	local $out = `$config{'smartctl'} $extra_args -c $qd 2>&1`;
+	local $out = &backquote_command(
+			"$config{'smartctl'} $extra_args -c $qd 2>&1");
 	if ($out =~ /supports S.M.A.R.T./i) {
 		$rv{'support'} = 1;
 		}
@@ -441,6 +455,7 @@ if ($drive && defined($drive->{'subdisk'})) {
 elsif ($config{'ata'}) {
 	$extra_args .= " -d ata";
 	}
+print STDERR "device=$device args=$extra_args\n";
 return $extra_args;
 }
 
