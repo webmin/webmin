@@ -59,15 +59,12 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 
 		# First find the controllers.
 		local @ctrls = &list_3ware_controllers();
-		print STDERR "ctrls=",join(" ", @ctrls),"\n";
 
 		# For each controller, find all the units (u0, u1, etc..)
 		local @units;
 		foreach my $c (@ctrls) {
 			push(@units, &list_3ware_subdisks($c));
 			}
-		use Data::Dumper;
-		print STDERR "units=",Dumper(\@units),"\n";
 
 		# Assume that /dev/sdX maps to units in order
 		my $i = 0;
@@ -78,7 +75,6 @@ foreach my $d (sort { $a->{'device'} cmp $b->{'device'} }
 			if (!-r $dev) {
 				$dev = "/dev/twe".$cidx;
 				}
-			print STDERR "dev=$dev sd=$sd\n";
 			push(@rv, { 'device' => $dev,
 				    'prefix' => $dev,
 				    'desc' => '3ware physical disk unit '.
@@ -455,7 +451,6 @@ if ($drive && defined($drive->{'subdisk'})) {
 elsif ($config{'ata'}) {
 	$extra_args .= " -d ata";
 	}
-print STDERR "device=$device args=$extra_args\n";
 return $extra_args;
 }
 
