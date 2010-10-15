@@ -4,7 +4,7 @@
 
 require './proftpd-lib.pl';
 &ReadParse();
-@users = split(/\s+/, $in{'users'});
+@users = split(/\r?\n/, $in{'users'});
 &open_lock_tempfile(USERS, ">$config{'ftpusers'}");
 foreach $u (@users) {
 	&print_tempfile(USERS, $u,"\n");

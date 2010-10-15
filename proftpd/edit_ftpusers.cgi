@@ -7,16 +7,13 @@ require './proftpd-lib.pl';
 	undef, undef, undef, undef, &restart_button());
 
 print &text('ftpusers_desc', "<tt>$config{'ftpusers'}</tt>"),"<p>\n";
-print "<form action=save_ftpusers.cgi method=post>\n";
-print "<textarea wrap=on rows=5 cols=80 name=users>";
-open(USERS, $config{'ftpusers'});
-while(<USERS>) {
-	s/\s+/ /g;
-	print;
-	}
-close(USERS);
-print "</textarea><br>\n";
-print "<input type=submit value='$text{'save'}'></form>\n";
+print &ui_form_start("save_ftpusers.cgi", "post");
+print &ui_table_start(undef, undef, 2);
+print &ui_table_row(undef,
+	&ui_textarea("users", &read_file_contents($config{'ftpusers'}), 10, 80),
+	2);
+print &ui_table_end();
+print &ui_form_end([ [ undef, $text{'save'} ] ]);
 
 &ui_print_footer("", $text{'index_return'});
 
