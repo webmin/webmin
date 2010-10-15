@@ -69,5 +69,6 @@ else {
 	print "$text{'install_ok'}<p>\n";
 	}
 
+&webmin_log("install");
 &ui_print_footer("", $text{'index_return'});
 

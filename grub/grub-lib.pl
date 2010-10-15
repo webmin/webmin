@@ -100,6 +100,23 @@ else {
 	}
 }
 
+# swap_directives(&dir1, &dir2)
+# Swaps two blocks in the config file
+sub swap_directives
+{
+my ($dir1, $dir2) = @_;
+local $lref = &read_file_lines($config{'menu_file'});
+if ($dir1->{'line'} > $dir2->{'line'}) {
+	($dir1, $dir2) = ($dir2, $dir1);
+	}
+my @lines1 = @$lref[$dir1->{'line'} .. $dir1->{'eline'}];
+my @lines2 = @$lref[$dir2->{'line'} .. $dir2->{'eline'}];
+my $len1 = $dir1->{'eline'} - $dir1->{'line'} + 1;
+my $len2 = $dir2->{'eline'} - $dir2->{'line'} + 1;
+splice(@$lref, $dir2->{'line'}, $len2, @lines1);
+splice(@$lref, $dir1->{'line'}, $len1, @lines2);
+}
+
 # find(name, &config)
 sub find
 {

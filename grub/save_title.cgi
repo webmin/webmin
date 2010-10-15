@@ -4,6 +4,7 @@
 
 require './grub-lib.pl';
 &ReadParse();
+&lock_file($config{'menu_file'});
 $conf = &get_menu_config();
 if (!$in{'new'}) {
 	$old = $title = $conf->[$in{'idx'}];
@@ -74,6 +75,9 @@ else {
 	&save_directive($conf, $old, $title);
 	}
 
-&flush_file_lines();
+&flush_file_lines($config{'menu_file'});
+&unlock_file($config{'menu_file'});
+&webmin_log($in{'new'} ? 'create' : $in{'delete'} ? 'delete' : 'modify',
+            'title', undef, $title);
 &redirect("");
 

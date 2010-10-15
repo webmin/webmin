@@ -67,3 +67,10 @@ install_desc=Installing GRUB on $1 with commands $2 and $3 ..
 install_ok=.. install complete.
 install_failed=.. install failed!
 
+log_create_title=Created boot option $1
+log_delete_title=Deleted boot option $1
+log_modify_title=Modified boot option $1
+log_up_title=Moved up boot option $1
+log_down_title=Moved down  boot option $1
+log_global=Changed global options
+log_install=Installed GRUB

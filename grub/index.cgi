@@ -24,17 +24,26 @@ if (!&has_command($config{'grub_path'})) {
 @crlinks = ( "<a href='edit_title.cgi?new=1'>$text{'index_add'}</a>" );
 $conf = &get_menu_config();
 $def = &find_value("default", $conf);
-foreach $t (&find("title", $conf)) {
+@t = &find("title", $conf);
+$i = 0;
+foreach $t (@t) {
 	push(@icons, $t->{'chainloader'} ? "images/chain.gif"
 					 : "images/kernel.gif");
 	local $tt = &html_escape($t->{'value'});
 	push(@titles, $def == $i ? "<b>$tt</b>" : $tt);
 	push(@links, "edit_title.cgi?idx=$t->{'index'}");
+	push(@befores, $i == 0 ? "&lt;&lt;&nbsp;|&nbsp;" :
+		"<a href='up.cgi?idx=$i'>".
+		"&lt;&lt;</a>&nbsp;|&nbsp;");
+	push(@afters, $i == @t-1 ? "&nbsp;|&nbsp;&gt;&gt;" :
+		"&nbsp;|&nbsp;<a href='down.cgi?idx=$i'>".
+		"&gt;&gt;</a>");
 	$i++;
 	}
 if (@links) {
 	print &ui_links_row(\@crlinks);
-	&icons_table(\@links, \@titles, \@icons, 4);
+	&icons_table(\@links, \@titles, \@icons, 4, undef, undef, undef,
+		     \@befores, \@afters);
 	}
 else {
 	print "<b>$text{'index_none'}</b><p>\n";

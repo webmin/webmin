@@ -2,3 +2,6 @@
 Converted all code to use the new Webmin user interface library.
 ---- Changes since 1.400 ----
 Multiple module lines in menu.lst are now preserved and editable. This prevents breakage sometimes seen on kernels using Xen.
+---- Changes since 1.520 ----
+Added arrows to move boot options up or down in the list of those available.
+Added locking and logging, so that changes can be viewed in the Webmin Actions Log module.

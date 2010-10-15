@@ -5,6 +5,7 @@
 require './grub-lib.pl';
 &ReadParse();
 &error_setup($text{'global_err'});
+&lock_file($config{'menu_file'});
 $conf = &get_menu_config();
 &error_setup($text{'global_err'});
 
@@ -57,6 +58,8 @@ else {
 	$config{'install'} = $in{'other'};
 	}
 &write_file("$module_config_directory/config", \%config);
-&flush_file_lines();
+&flush_file_lines($config{'menu_file'});
+&unlock_file($config{'menu_file'});
+&webmin_log("global");
 &redirect("");
 
