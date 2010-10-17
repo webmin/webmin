@@ -32,6 +32,8 @@ else {
 		local @mems;
 		if ($in{"to_$i"} == 0) {
 			$in{"file_$i"} || &error($text{'logging_efile'});
+			$in{"file_$i"} =~ /^\// ||
+				&error($text{'logging_efile2'});
 			local @fvals = ( $in{"file_$i"} );
 			if ($in{"vmode_$i"} == 1) {
 				push(@fvals, 'versions', 'unlimited');

@@ -544,6 +544,7 @@ logging_none=No logging channels defined.
 logging_err=Failed to save logging options
 logging_ename='$1' is not a valid channel name
 logging_efile=Missing log filename
+logging_efile2=Log filename must be an absolute path
 logging_ever='$1' is not a valid number of versions
 logging_esize='$1' is not a valid log size
 
