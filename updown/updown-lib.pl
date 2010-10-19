@@ -125,7 +125,9 @@ for($i=0; $_[0]->{"url_$i"}; $i++) {
 	$progress_callback_count = $i;
 	local $path;
 	if (-d $_[0]->{'dir'}) {
-		if ($_[0]->{"page_$i"} =~ /([^\/]+)$/) {
+		local $page = $_[0]->{"page_$i"};
+		$page =~ s/\?.*$//;
+		if ($page =~ /([^\/]+)$/) {
 			$path = "$_[0]->{'dir'}/$1";
 			}
 		else {
