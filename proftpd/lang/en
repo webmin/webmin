@@ -5,6 +5,7 @@ index_eversion=The version of ProFTPD server $1 is not supported by Webmin. Only
 index_econf=The ProFTPD config file $1 does not exist or is not valid. Maybe your <a href='$2'>module configuration</a> is incorrect.
 index_apply=Apply Changes
 index_applymsg=Click this button to apply the current configuration by sending a SIGHUP signal to the running ProFTPD process.
+index_applymsg2=Click this button to apply the current configuration by stopping and re-starting ProFTPD.
 index_start=Start Server
 index_startmsg=Click this button to start the FTP server with the current configuration. You can also configure the server to be started automatically when needed using the <a href='$1'>Internet Services</a> module.
 index_startmsg2=Click this button to start the FTP server with the current configuration. You can also configure the server to be started automatically when needed using inetd or some equivalent program.

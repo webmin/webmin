@@ -228,7 +228,10 @@ if (!$inet) {
 	}
 if (!$inet && $pid) {
 	print &ui_buttons_row("apply.cgi",
-			      $text{'index_apply'}, $text{'index_applymsg'});
+			      $text{'index_apply'},
+			      &get_proftpd_version() > 1.22 ? 
+				$text{'index_applymsg2'} :
+				$text{'index_applymsg'});
 	print &ui_buttons_row("stop.cgi",
 			      $text{'index_stop'}, $text{'index_stopmsg'});
 	}
