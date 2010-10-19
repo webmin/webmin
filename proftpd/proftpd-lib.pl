@@ -818,6 +818,7 @@ if (&get_proftpd_version() > 1.22) {
 	# Stop and re-start
 	local $err = &stop_proftpd();
 	return $err if ($err);
+	sleep(1);	# Wait for clean shutdown
 	return &start_proftpd();
 	}
 else {
