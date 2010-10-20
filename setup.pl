@@ -80,29 +80,29 @@ print "Unless you want to run multiple versions of Webmin at the same time\n";
 print "you can just accept the defaults.\n";
 print "\n";
 print "Config file directory [/etc/webmin]: ";
-if ($ENV{'config_dir'}) {
-	$config_dir = $ENV{'config_dir'};
+if ($ENV{'config_directory'}) {
+	$config_directory = $ENV{'config_directory'};
 	}
 else {
-	chop($config_dir = <STDIN>);
+	chop($config_directory = <STDIN>);
 	}
-$config_dir ||= "/etc/webmin";
-$config_dir =~ s/\\/\//g;
-if ($config_dir !~ /^([a-z]:)?\//i) {
+$config_directory ||= "/etc/webmin";
+$config_directory =~ s/\\/\//g;
+if ($config_directory !~ /^([a-z]:)?\//i) {
 	&errorexit("Config directory must be an absolute path");
 	}
-if (!-d $config_dir) {
-	mkdir($config_dir, 0755) ||
-		&errorexit("Failed to create directory $config_dir");
+if (!-d $config_directory) {
+	mkdir($config_directory, 0755) ||
+		&errorexit("Failed to create directory $config_directory");
 	}
-if (-r "$config_dir/config") {
-	print "Found existing Webmin configuration in $config_dir\n";
+if (-r "$config_directory/config") {
+	print "Found existing Webmin configuration in $config_directory\n";
 	print "\n";
 	$upgrading=1
 	}
 
 # We can now load the main Webmin library
-$ENV{'WEBMIN_CONFIG'} = $config_dir;
+$ENV{'WEBMIN_CONFIG'} = $config_directory;
 $ENV{'WEBMIN_VAR'} = "/var/webmin";	# not really used
 require "$wadir/web-lib.pl";
 
@@ -111,7 +111,7 @@ if ($upgrading) {
 	print "\n";
 
 	# Get current var path
-	open(VAR, "$config_dir/var-path");
+	open(VAR, "$config_directory/var-path");
 	chop($var_dir = <VAR>);
 	$var_directory = $var_dir;
 	close(VAR);
@@ -123,7 +123,7 @@ if ($upgrading) {
 	$perl = &get_perl_path();
 
 	# Get old os name and version
-	&read_file("$config_dir/config", \%gconfig);
+	&read_file("$config_directory/config", \%gconfig);
 	$os_type = $gconfig{'os_type'};
 	$os_version = $gconfig{'os_version'};
 	$real_os_type = $gconfig{'real_os_type'};
@@ -135,10 +135,10 @@ if ($upgrading) {
 	if (!$miniserv{'inetd'}) {
 		# Stop old version
 		if ($os_type eq "windows") {
-			system("$config_dir/stop.bat >/dev/null 2>&1");
+			system("$config_directory/stop.bat >/dev/null 2>&1");
 			}
 		else {
-			system("$config_dir/stop >/dev/null 2>&1");
+			system("$config_directory/stop >/dev/null 2>&1");
 			}
 		}
 
@@ -146,7 +146,7 @@ if ($upgrading) {
 	&copy_to_wadir();
 
 	# Update ACLs
-	system("$perl ".&quote_path("$wadir/newmods.pl")." $config_dir $allmods");
+	system("$perl ".&quote_path("$wadir/newmods.pl")." $config_directory $allmods");
 
 	# Update miniserv.conf with new root directory and mime types file
 	$miniserv{'root'} = $wadir;
@@ -165,13 +165,13 @@ if ($upgrading) {
 		}
 
 	# Remove old cache of module infos
-	unlink("$config_dir/module.infos.cache");
+	unlink("$config_directory/module.infos.cache");
 	}
 else {
 	# Config directory exists .. make sure it is not in use
-	@files = grep { !/rpmsave/ } &files_in_dir($config_dir);
-	if (@files && $config_dir ne "/etc/webmin") {
-		&errorexit("Config directory $config_dir is not empty");
+	@files = grep { !/rpmsave/ } &files_in_dir($config_directory);
+	if (@files && $config_directory ne "/etc/webmin") {
+		&errorexit("Config directory $config_directory is not empty");
 		}
 
 	# Ask for log directory
@@ -350,16 +350,16 @@ else {
 	&copy_to_wadir();
 
 	# Create webserver config file
-	open(PERL, ">$config_dir/perl-path");
+	open(PERL, ">$config_directory/perl-path");
 	print PERL $perl,"\n";
 	close(PERL);
-	open(VAR, ">$config_dir/var-path");
+	open(VAR, ">$config_directory/var-path");
 	print VAR $var_dir,"\n";
 	close(VAR);
 
 	print "Creating web server config files..";
-	$ufile = "$config_dir/miniserv.users";
-	$kfile = "$config_dir/miniserv.pem";
+	$ufile = "$config_directory/miniserv.users";
+	$kfile = "$config_directory/miniserv.pem";
 	%miniserv = (	'port' => $port,
 		    	'root' => $wadir,
 			'mimetypes' => "$wadir/mime.types",
@@ -371,10 +371,10 @@ else {
 			'logtime' => 168,
 			'ppath' => $ppath,
 			'ssl' => $ssl,
-			'env_WEBMIN_CONFIG' => $config_dir,
+			'env_WEBMIN_CONFIG' => $config_directory,
 			'env_WEBMIN_VAR' => $var_dir,
 			'atboot' => $atboot,
-			'logout' => "$config_dir/logout-flag",
+			'logout' => "$config_directory/logout-flag",
 			'listen' => 10000,
 			'denyfile' => "\\.pl\$",
 			'log' => 1,
@@ -467,7 +467,7 @@ else {
 	print "\n";
 
 	print "Creating access control file..\n";
-	$afile = "$config_dir/webmin.acl";
+	$afile = "$config_directory/webmin.acl";
 	open(AFILE, ">$afile");
 	if ($ENV{'defaultmods'}) {
 		print AFILE "$login: $ENV{'defaultmods'}\n";
@@ -482,7 +482,7 @@ else {
 
 	if ($login ne "root" && $login ne "admin") {
 		# Allow use of RPC by this user
-		open(ACL, ">$config_dir/$login.acl");
+		open(ACL, ">$config_directory/$login.acl");
 		print ACL "rpc=1\n";
 		close(ACL);
 		}
@@ -497,17 +497,17 @@ if (!$ENV{'noperlpath"'} && $os_type ne 'windows') {
 
 print "Creating start and stop scripts..\n";
 if ($os_type eq "windows") {
-	open(START, ">>$config_dir/start.bat");
-	print START "$perl \"$wadir/miniserv.pl\" $config_dir/miniserv.conf\n";
+	open(START, ">>$config_directory/start.bat");
+	print START "$perl \"$wadir/miniserv.pl\" $config_directory/miniserv.conf\n";
 	close(START);
 	$start_cmd = "sc start ".($ENV{'bootscript'} || "webmin");
 
-	open(STOP, ">>$config_dir/stop.bat");
+	open(STOP, ">>$config_directory/stop.bat");
 	print STOP "echo Not implemented\n";
 	close(STOP);
 	}
 else {
-	open(START, ">$config_dir/start");
+	open(START, ">$config_directory/start");
 	print START "#!/bin/sh\n";
 	print START "echo Starting Webmin server in $wadir\n";
 	print START "trap '' 1\n";
@@ -518,28 +518,28 @@ else {
 	print START "PERLLIB=$perllib\n";
 	print START "export PERLLIB\n";
 	if ($os_type eq "hpux") {
-		print START "exec '$wadir/miniserv.pl' $config_dir/miniserv.conf &\n";
+		print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf &\n";
 		}
 	else {
-		print START "exec '$wadir/miniserv.pl' $config_dir/miniserv.conf\n";
+		print START "exec '$wadir/miniserv.pl' $config_directory/miniserv.conf\n";
 		}
 	close(START);
-	$start_cmd = "$config_dir/start";
+	$start_cmd = "$config_directory/start";
 
-	open(STOP, ">$config_dir/stop");
+	open(STOP, ">$config_directory/stop");
 	print STOP "#!/bin/sh\n";
 	print STOP "echo Stopping Webmin server in $wadir\n";
-	print STOP "pidfile=\`grep \"^pidfile=\" $config_dir/miniserv.conf | sed -e 's/pidfile=//g'\`\n";
+	print STOP "pidfile=\`grep \"^pidfile=\" $config_directory/miniserv.conf | sed -e 's/pidfile=//g'\`\n";
 	print STOP "kill \`cat \$pidfile\`\n";
 	close(STOP);
 
-	open(RESTART, ">$config_dir/restart");
+	open(RESTART, ">$config_directory/restart");
 	print RESTART "#!/bin/sh\n";
-	print RESTART "$config_dir/stop && $config_dir/start\n";
+	print RESTART "$config_directory/stop && $config_directory/start\n";
 	close(RESTART);
 
-	chmod(0755, "$config_dir/start", "$config_dir/stop",
-		    "$config_dir/restart");
+	chmod(0755, "$config_directory/start", "$config_directory/stop",
+		    "$config_directory/restart");
 	}
 print "..done\n";
 print "\n";
@@ -550,18 +550,18 @@ if ($upgrading) {
 else {
 	print "Copying config files..\n";
 	}
-system("$perl ".&quote_path("$wadir/copyconfig.pl")." ".&quote_path("$os_type/$real_os_type")." ".&quote_path("$os_version/$real_os_version")." ".&quote_path($wadir)." ".$config_dir." \"\" ".$allmods);
+system("$perl ".&quote_path("$wadir/copyconfig.pl")." ".&quote_path("$os_type/$real_os_type")." ".&quote_path("$os_version/$real_os_version")." ".&quote_path($wadir)." ".$config_directory." \"\" ".$allmods);
 if (!$upgrading) {
 	# Store the OS and version
-	&read_file("$config_dir/config", \%gconfig);
+	&read_file("$config_directory/config", \%gconfig);
 	$gconfig{'os_type'} = $os_type;
 	$gconfig{'os_version'} = $os_version;
 	$gconfig{'real_os_type'} = $real_os_type;
 	$gconfig{'real_os_version'} = $real_os_version;
 	$gconfig{'log'} = 1;
-	&write_file("$config_dir/config", \%gconfig);
+	&write_file("$config_directory/config", \%gconfig);
 	}
-open(VER, ">$config_dir/version");
+open(VER, ">$config_directory/version");
 print VER $ver,"\n";
 close(VER);
 print "..done\n";
@@ -615,44 +615,44 @@ if (!defined($miniserv{'passdelay'}) && $os_type ne 'windows') {
 
 # Save configs
 &put_miniserv_config(\%miniserv);
-&write_file("$config_dir/config", \%gconfig);
+&write_file("$config_directory/config", \%gconfig);
 
 if (!$ENV{'nouninstall'} && $os_type ne "windows") {
-	print "Creating uninstall script $config_dir/uninstall.sh ..\n";
-	open(UN, ">$config_dir/uninstall.sh");
+	print "Creating uninstall script $config_directory/uninstall.sh ..\n";
+	open(UN, ">$config_directory/uninstall.sh");
 	print UN <<EOF;
 #!/bin/sh
 printf "Are you sure you want to uninstall Webmin? (y/n) : "
 read answer
 printf "\n"
 if [ "\$answer" = "y" ]; then
-	$config_dir/stop
+	$config_directory/stop
 	echo "Running uninstall scripts .."
-	(cd "$wadir" ; WEBMIN_CONFIG=$config_dir WEBMIN_VAR=$var_dir LANG= "$wadir/run-uninstalls.pl")
+	(cd "$wadir" ; WEBMIN_CONFIG=$config_directory WEBMIN_VAR=$var_dir LANG= "$wadir/run-uninstalls.pl")
 	echo "Deleting $wadir .."
 	rm -rf "$wadir"
-	echo "Deleting $config_dir .."
-	rm -rf "$config_dir"
+	echo "Deleting $config_directory .."
+	rm -rf "$config_directory"
 	echo "Done!"
 fi
 EOF
-	chmod(0755, "$config_dir/uninstall.sh");
+	chmod(0755, "$config_directory/uninstall.sh");
 	print "..done\n";
 	print "\n";
 	}
 
 if ($os_type ne "windows") {
 	print "Changing ownership and permissions ..\n";
-	system("chown -R root $config_dir");
-	system("chgrp -R bin $config_dir");
-	system("chmod -R og-rw $config_dir");
-	system("chmod 755 $config_dir/{sendmail,qmailadmin,postfix}*/config >/dev/null 2>&1");
-	system("chmod 755 $config_dir/{sendmail,qmailadmin,postfix}*/autoreply.pl >/dev/null 2>&1");
-	system("chmod 755 $config_dir/{sendmail,qmailadmin,postfix}*/filter.pl >/dev/null 2>&1");
-	system("chmod 755 $config_dir/squid*/squid-auth.pl >/dev/null 2>&1");
-	system("chmod 755 $config_dir/squid*/users >/dev/null 2>&1");
-	system("chmod 755 $config_dir/cron*/range.pl >/dev/null 2>&1");
-	system("chmod +r $config_dir/version");
+	system("chown -R root $config_directory");
+	system("chgrp -R bin $config_directory");
+	system("chmod -R og-rw $config_directory");
+	system("chmod 755 $config_directory/{sendmail,qmailadmin,postfix}*/config >/dev/null 2>&1");
+	system("chmod 755 $config_directory/{sendmail,qmailadmin,postfix}*/autoreply.pl >/dev/null 2>&1");
+	system("chmod 755 $config_directory/{sendmail,qmailadmin,postfix}*/filter.pl >/dev/null 2>&1");
+	system("chmod 755 $config_directory/squid*/squid-auth.pl >/dev/null 2>&1");
+	system("chmod 755 $config_directory/squid*/users >/dev/null 2>&1");
+	system("chmod 755 $config_directory/cron*/range.pl >/dev/null 2>&1");
+	system("chmod +r $config_directory/version");
 	if (!$ENV{'nochown'}) {
 		system("chown -R root \"$wadir\"");
 		system("chgrp -R bin \"$wadir\"");
@@ -670,12 +670,12 @@ if ($os_type ne "windows") {
 
 # Save target directory if one was specified
 if ($wadir ne $srcdir) {
-	open(INSTALL, ">$config_dir/install-dir");
+	open(INSTALL, ">$config_directory/install-dir");
 	print INSTALL $wadir,"\n";
 	close(INSTALL);
 	}
 else {
-	unlink("$config_dir/install-dir");
+	unlink("$config_directory/install-dir");
 	}
 
 if (!$ENV{'nopostinstall'}) {
