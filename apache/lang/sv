@@ -1,8 +1,8 @@
 acl_aliasdir=Begr&#228;nsa alias till mapp
 acl_all=Alla
-acl_apply=Kunna genomf&#246;ra &#228;ndringar?
-acl_create=Kann skapa virtuella servrar?
-acl_defserv=Default server
+acl_apply=kan genomf&#246;ra &#228;ndringar?
+acl_create=Kan skapa virtuella servrar?
+acl_defserv=Standard server
 acl_dir=Begr&#228;nsa filer till mapp
 acl_dirs=Apache direktiv tillg&#228;ngliga<br><font size=-1> (&#196;mnen av typ begr&#228;nsning under) </font>
 acl_dirs0=Alla
@@ -13,7 +13,7 @@ acl_htaccess=endast .htaccess
 acl_names=Kan &#228;ndra server namn?
 acl_pipe=Kunna skicka loggar till program?
 acl_sel=Angivna ...
-acl_stop=Kunna starta och stanna Apache?
+acl_stop=Kan starta och stanna Apache?
 acl_types=Tillg&#228;ngliga direktiv typer
 acl_vaddr=Kunna &#228;ndra adress f&#246;r virtuella servrar?
 acl_vall=Alla servrar
@@ -745,6 +745,7 @@ mod_log_config_enofilprog=Loggfil eller program saknas
 mod_log_config_file=Fil ...
 mod_log_config_filprog=Fil eller program
 mod_log_config_format=Format
+mod_log_config_ifset=om inst&#228;lld
 mod_log_config_log=&#197;tkomst loggfiler
 mod_log_config_named=Namngivet loggformat
 mod_log_config_nick=Kortnamn
@@ -925,7 +926,6 @@ mod_vhost_alias_root=Automatisk virtuell v&#228;rd rot
 mod_vhost_alias_script=Automatisk virtuell v&#228;rd cgi-bin
 mods_available=Tillg&#228;nglig f&#246;r installation
 mods_desc=Denna sida aktiverar eller avaktiverar moduler i apache.
-Klicka i resp ur rutorna, 
 mods_disabled=Avst&#228;ngd
 mods_ecannot=Du har inte till&#229;telse att konfigurera Apache moduler.
 mods_enabled=Aktiverad
