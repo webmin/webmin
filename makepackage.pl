@@ -104,6 +104,7 @@ PSTAMP="Jamie Cameron"
 BASEDIR="/opt/webmin"
 CLASSES="none"
 PSTAMP="$pstamp"
+MAXINST="2"
 EOF
 close(INFO);
 print ".. done\n\n";
