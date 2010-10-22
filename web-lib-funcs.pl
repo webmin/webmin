@@ -7587,7 +7587,7 @@ return &theme_select_all_link(@_) if (defined(&theme_select_all_link));
 my ($field, $form, $text) = @_;
 $form = int($form);
 $text ||= $text{'ui_selall'};
-return "<a class='select_all' href='#' onClick='document.forms[$form].$field.checked = true; for(i=0; i<document.forms[$form].$field.length; i++) { document.forms[$form].${field}[i].checked = true; } return false'>$text</a>";
+return "<a class='select_all' href='#' onClick='var ff = document.forms[$form].$field; ff.checked = true; for(i=0; i<ff.length; i++) { if (!ff[i].disabled) { ff[i].checked = true; } } return false'>$text</a>";
 }
 
 =head2 select_invert_link(field, form, text)
@@ -7608,7 +7608,7 @@ return &theme_select_invert_link(@_) if (defined(&theme_select_invert_link));
 my ($field, $form, $text) = @_;
 $form = int($form);
 $text ||= $text{'ui_selinv'};
-return "<a class='select_invert' href='#' onClick='document.forms[$form].$field.checked = !document.forms[$form].$field.checked; for(i=0; i<document.forms[$form].$field.length; i++) { document.forms[$form].${field}[i].checked = !document.forms[$form].${field}[i].checked; } return false'>$text</a>";
+return "<a class='select_invert' href='#' onClick='var ff = document.forms[$form].$field; ff.checked = !ff.checked; for(i=0; i<ff.length; i++) { if (!ff[i].disabled) { ff[i].checked = !ff[i].checked; } } return false'>$text</a>";
 }
 
 =head2 select_rows_link(field, form, text, &rows)
