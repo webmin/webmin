@@ -79,8 +79,8 @@ return @rv;
 }
 
 # list_define_types()
-# Returns a list of known define types. Some (but not all) will have human-readable
-# descriptions
+# Returns a list of known define types. Some (but not all) will have human-
+# readable descriptions
 sub list_define_types
 {
 local (@rv, $d);
