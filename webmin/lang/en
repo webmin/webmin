@@ -20,6 +20,8 @@ access_all=Allow from all addresses
 access_allow=Only allow from listed addresses
 access_deny=Deny from listed addresses
 access_libwrap=Also check TCP-wrappers <tt>hosts.allow</tt> and <tt>hosts.deny</tt> files?
+access_elibwrap=IP access control using TCP-wrappers is not available, as the $1 Perl module is not installed.
+access_libwrapcpan=<a href='$1'>Click here</a> to have Webmin automatically install the missing Perl module.
 access_err=Failed to update access list
 access_enone=No addresses entered
 access_enet='$1' is not a valid network address

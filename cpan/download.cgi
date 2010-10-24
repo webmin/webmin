@@ -155,6 +155,9 @@ elsif ($in{'source'} == 3) {
 		}
 	$need_unlink = 1;
 	}
+else {
+	&error("Unknown source mode $in{'source'}");
+	}
 
 # Check if the file looks like a perl module
 foreach $pfile (@pfile) {
