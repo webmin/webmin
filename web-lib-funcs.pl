@@ -4459,7 +4459,15 @@ return () if ($_[0] =~ /^\./);
 my (%rv, $clone, $o);
 my $mdir = &module_root_directory($_[0]);
 &read_file_cached("$mdir/module.info", \%rv) || return ();
-$clone = -l $mdir;
+if (-l $mdir) {
+	# A clone is a module that links to another directory under the root
+	foreach my $r (@root_directories) {
+		if (&is_under_directory($r, $mdir)) {
+			$clone = 1;
+			last;
+			}
+		}
+	}
 foreach $o (@lang_order_list) {
 	$rv{"desc"} = $rv{"desc_$o"} if ($rv{"desc_$o"});
 	$rv{"longdesc"} = $rv{"longdesc_$o"} if ($rv{"longdesc_$o"});
