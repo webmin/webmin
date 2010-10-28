@@ -25,8 +25,9 @@ if ($config{'perllib'}) {
 	push(@INC, split(/:/, $config{'perllib'}));
 	$ENV{'PERLLIB'} .= ':'.$config{'perllib'};
 	}
+@startup_msg = ( );
 
-# Check is SSL is enabled and available
+# Check if SSL is enabled and available
 if ($config{'ssl'}) {
 	eval "use Net::SSLeay";
 	if (!$@) {
@@ -42,6 +43,19 @@ if ($config{'ssl'}) {
 		    defined(&Net::SSLeay::CTX_set_verify)) {
 			$client_certs = 1;
 			}
+		}
+	}
+
+# Check if IPv6 is enabled and available
+if ($config{'ipv6'}) {
+	eval "use Socket6";
+	if (!$@) {
+		push(@startup_msg, "IPv6 support enabled");
+		$use_ipv6 = 1;
+		}
+	else {
+		push(@startup_msg, "IPv6 support cannot be enabled without ".
+				   "the Socket6 perl module");
 		}
 	}
 
@@ -117,28 +131,35 @@ elsif (!$config{'no_pam'}) {
 			$pam_password = "test";
 			$pamh->pam_authenticate();
 			if ($pam_conv_func_called) {
-				$pam_msg = "PAM authentication enabled";
+				push(@startup_msg,
+				     "PAM authentication enabled");
 				$use_pam = 1;
 				}
 			else {
-				$pam_msg = "PAM test failed - maybe /etc/pam.d/$config{'pam'} does not exist";
+				push(@startup_msg,
+				    "PAM test failed - maybe ".
+				    "/etc/pam.d/$config{'pam'} does not exist");
 				}
 			}
 		else {
-			$pam_msg = "PAM initialization of Authen::PAM failed";
+			push(@startup_msg,
+			     "PAM initialization of Authen::PAM failed");
 			}
 		}
 	else {
-		$pam_msg = "Perl module Authen::PAM needed for PAM is not installed : $@";
+		push(@startup_msg,
+		     "Perl module Authen::PAM needed for PAM is ".
+		     "not installed : $@");
 		}
 	}
 if ($config{'pam_only'} && !$use_pam) {
-	print STDERR $pam_msg;
+	print STDERR $startup_msg[0],"\n";
 	print STDERR "PAM use is mandatory, but could not be enabled!\n";
 	exit(1);
 	}
 elsif ($pam_msg && !$use_pam) {
-	$pam_msg2 = "Continuing without the Authen::PAM perl module";
+	push(@startup_msg,
+	     "Continuing without the Authen::PAM perl module");
 	}
 
 # Check if the User::Utmp perl module is installed
@@ -146,10 +167,12 @@ if ($config{'utmp'}) {
 	eval "use User::Utmp;";
 	if (!$@) {
 		$write_utmp = 1;
-		$utmp_msg = "UTMP logging enabled";
+		push(@startup_msg, "UTMP logging enabled");
 		}
 	else {
-		$utmp_msg = "Perl module User::Utmp needed for Utmp logging is not installed : $@";
+		push(@startup_msg, 
+		     "Perl module User::Utmp needed for Utmp logging is ".
+		     "not installed : $@");
 		}
 	}
 
@@ -159,20 +182,23 @@ if ($@) {
 	eval "use Crypt::UnixCrypt";
 	if (!$@) {
 		$use_perl_crypt = 1;
-		$crypt_msg = "Using Crypt::UnixCrypt for password encryption\n";
+		push(@startup_msg, 
+		     "Using Crypt::UnixCrypt for password encryption");
 		}
 	else {
-		$crypt_msg = "crypt() function un-implemented, and Crypt::UnixCrypt not installed - password authentication will probably fail\n";
+		push(@startup_msg, 
+		     "crypt() function un-implemented, and Crypt::UnixCrypt ".
+		     "not installed - password authentication will fail");
 		}
 	}
 
 # Check if /dev/urandom really generates random IDs, by calling it twice
 local $rand1 = &generate_random_id("foo", 1);
 local $rand2 = &generate_random_id("foo", 2);
-local $rand_msg;
 if ($rand1 eq $rand2) {
 	$bad_urandom = 1;
-	$rand_msg = "Random number generator file /dev/urandom is not reliable";
+	push(@startup_msg,
+	     "Random number generator file /dev/urandom is not reliable");
 	}
 
 # Check if we can call sudo
@@ -182,7 +208,9 @@ if ($config{'sudo'} && &has_command("sudo")) {
 		$use_sudo = 1;
 		}
 	else {
-		$sudo_msg = "Perl module IO::Pty needed for calling sudo is not installed : $@";
+		push(@startup_msg,
+		     "Perl module IO::Pty needed for calling sudo is not ".
+		     "installed : $@");
 		}
 	}
 
@@ -397,23 +425,41 @@ if ($config{'inetd'}) {
 
 # Build list of sockets to listen on
 if ($config{"bind"} && $config{"bind"} ne "*") {
-	push(@sockets, [ inet_aton($config{'bind'}), $config{'port'} ]);
+	push(@sockets, [ inet_aton($config{'bind'}), $config{'port'},
+		         PF_INET ]);
+	# XXX v6 support
 	}
 else {
-	push(@sockets, [ INADDR_ANY, $config{'port'} ]);
+	# XXX v6 support - why can't listen on port 10000 on both protos?
+	push(@sockets, [ INADDR_ANY, $config{'port'}, PF_INET ]);
+	if ($use_ipv6) {
+		#push(@sockets, [ in6addr_any(), $config{'port'},
+		#		 Socket6::PF_INET6() ]);
+		}
 	}
 foreach $s (split(/\s+/, $config{'sockets'})) {
 	if ($s =~ /^(\d+)$/) {
 		# Just listen on another port on the main IP
-		push(@sockets, [ $sockets[0]->[0], $s ]);
+		# XXX v6 support
+		push(@sockets, [ $sockets[0]->[0], $s, $sockets[0]->[2] ]);
 		}
-	elsif ($s =~ /^(\S+):(\d+)$/) {
+	elsif ($s =~ /^([0-9\.]+):(\d+)$/) {
 		# Listen on a specific port and IP
-		push(@sockets, [ $1 eq "*" ? INADDR_ANY : inet_aton($1), $2 ]);
+		# XXX v6 support
+		push(@sockets, [ $1 eq "*" ? INADDR_ANY : inet_aton($1), $2,
+				 PF_INET ]);
 		}
 	elsif ($s =~ /^([0-9\.]+):\*$/ || $s =~ /^([0-9\.]+)$/) {
-		# Listen on the main port on another IP
-		push(@sockets, [ inet_aton($1), $sockets[0]->[1] ]);
+		# Listen on the main port on another IPv4 address
+		push(@sockets, [ inet_aton($1), $sockets[0]->[1],
+				 PF_INET ]);
+		}
+	elsif (($s =~ /^([0-9a-f\:]+):\*$/ || $s =~ /^([0-9a-f\:]+)$/) &&
+	       $use_ipv6) {
+		# Listen on the main port on another IPv6 address
+		push(@sockets, [ inet_pton(Socket6::AF_INET6(), $1),
+				 $sockets[0]->[1],
+				 Socket6::PF_INET6() ]);
 		}
 	}
 
@@ -422,24 +468,33 @@ $proto = getprotobyname('tcp');
 @sockerrs = ( );
 $tried_inaddr_any = 0;
 for($i=0; $i<@sockets; $i++) {
+	print STDERR "socket=",join(" ", @{$sockets[$i]}),"\n";
 	$fh = "MAIN$i";
-	socket($fh, PF_INET, SOCK_STREAM, $proto) ||
-		die "Failed to open socket : $!";
+	socket($fh, $sockets[$i]->[2], SOCK_STREAM, $proto) ||
+		die "Failed to open socket family $sockets[$i]->[2] : $!";
 	setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
+	$pack = $sockets[$i]->[2] eq PF_INET ?
+			pack_sockaddr_in($sockets[$i]->[1],
+					 $sockets[$i]->[0]) :
+			pack_sockaddr_in6($sockets[$i]->[1],
+                                          $sockets[$i]->[0]);
 	for($j=0; $j<5; $j++) {
-		last if (bind($fh, pack_sockaddr_in($sockets[$i]->[1],
-						    $sockets[$i]->[0])));
+		last if (bind($fh, $pack));
 		sleep(1);
 		}
 	if ($j == 5) {
 		# All attempts failed .. give up
-		if ($sockets[$i]->[0] eq INADDR_ANY) {
-			push(@sockerrs, "Failed to bind to port $sockets[$i]->[1] : $!");
+		if ($sockets[$i]->[0] eq INADDR_ANY ||
+		    $use_ipv6 && $sockets[$i]->[0] eq in6addr_any()) {
+			push(@sockerrs,
+			     "Failed to bind to port $sockets[$i]->[1] : $!");
 			$tried_inaddr_any = 1;
 			}
 		else {
-			$ip = inet_ntoa($sockets[$i]->[0]);
-			push(@sockerrs, "Failed to bind to IP $ip port $sockets[$i]->[1] : $!");
+			$ip = &network_to_address($sockets[$i]->[0]);
+			push(@sockerrs,
+			     "Failed to bind to IP $ip port ".
+			     "$sockets[$i]->[1] : $!");
 			}
 		}
 	else {
@@ -490,12 +545,9 @@ eval { setsid(); };	# may not work on Windows
 open(STDIN, "</dev/null");
 open(STDOUT, ">/dev/null");
 &log_error("miniserv.pl started");
-&log_error($pam_msg) if ($pam_msg);
-&log_error($pam_msg2) if ($pam_msg2);
-&log_error($utmp_msg) if ($utmp_msg);
-&log_error($crypt_msg) if ($crypt_msg);
-&log_error($sudo_msg) if ($sudo_msg);
-&log_error($rand_msg) if ($rand_msg);
+foreach $msg (@startup_msg) {
+	&log_error($msg);
+	}
 
 # write out the PID file
 &write_pid_file();
@@ -5420,3 +5472,51 @@ foreach my $f (readdir(CRONS)) {
 		}
 	}
 }
+
+# Check if some address is valid IPv4, returns 1 if so.
+sub check_ipaddress
+{
+return $_[0] =~ /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/ &&
+	$1 >= 0 && $1 <= 255 &&
+	$2 >= 0 && $2 <= 255 &&
+	$3 >= 0 && $3 <= 255 &&
+	$4 >= 0 && $4 <= 255;
+}
+
+# Check if some IPv6 address is properly formatted, and returns 1 if so.
+sub check_ip6address
+{
+  my @blocks = split(/:/, $_[0]);
+  return 0 if (@blocks == 0 || @blocks > 8);
+  my $ib = $#blocks;
+  my $where = index($blocks[$ib],"/");
+  my $m = 0;
+  if ($where != -1) {
+    my $b = substr($blocks[$ib],0,$where);
+    $m = substr($blocks[$ib],$where+1,length($blocks[$ib])-($where+1));
+    $blocks[$ib]=$b;
+  }
+  return 0 if ($m <0 || $m >128); 
+  my $b;
+  my $empty = 0;
+  foreach $b (@blocks) {
+	  return 0 if ($b ne "" && $b !~ /^[0-9a-f]{1,4}$/i);
+	  $empty++ if ($b eq "");
+	  }
+  return 0 if ($empty > 1 && !($_[0] =~ /^::/ && $empty == 2));
+  return 1;
+}
+
+# network_to_address(binary)
+# Given a network address in binary IPv4 or v4 format, return the string form
+sub network_to_address
+{
+local ($addr) = @_;
+if (length($addr) == 4 || !$use_ipv6) {
+	return inet_ntoa($addr);
+	}
+else {
+	return Socket6::inet_ntop(Socket6::AF_INET6(), $addr);
+	}
+}
+
