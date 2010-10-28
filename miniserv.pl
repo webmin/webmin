@@ -410,7 +410,7 @@ if ($config{'inetd'}) {
 		}
 
 	# Work out the hostname for this web server
-	$host = &get_socket_name(SOCK);
+	$host = &get_socket_name(SOCK, 0);
 	$host || exit;
 	$port = $config{'port'};
 	$acptaddr = getpeername(SOCK);
@@ -425,29 +425,62 @@ if ($config{'inetd'}) {
 
 # Build list of sockets to listen on
 if ($config{"bind"} && $config{"bind"} ne "*") {
-	push(@sockets, [ inet_aton($config{'bind'}), $config{'port'},
-		         PF_INET ]);
-	# XXX v6 support
+	# Listening on a specific IP
+	if (&check_ip6address($config{'bind'})) {
+		# IP is v6
+		$use_ipv6 || die "Cannot bind to $config{'bind'} without IPv6";
+		push(@sockets, [ inet_pton(Socket6::AF_INET6(),$config{'bind'}),
+				 $config{'port'},
+				 Socket6::PF_INET6() ]);
+		}
+	else {
+		# IP is v4
+		push(@sockets, [ inet_aton($config{'bind'}),
+				 $config{'port'},
+				 PF_INET ]);
+		}
 	}
 else {
-	# XXX v6 support - why can't listen on port 10000 on both protos?
-	push(@sockets, [ INADDR_ANY, $config{'port'}, PF_INET ]);
+	# Listening on all IPs
 	if ($use_ipv6) {
-		#push(@sockets, [ in6addr_any(), $config{'port'},
-		#		 Socket6::PF_INET6() ]);
+		# Accept IPv6 and v4 connections
+		push(@sockets, [ in6addr_any(), $config{'port'},
+				 Socket6::PF_INET6() ]);
+		}
+	else {
+		# Accept IPv4 only
+		push(@sockets, [ INADDR_ANY, $config{'port'}, PF_INET ]);
 		}
 	}
 foreach $s (split(/\s+/, $config{'sockets'})) {
 	if ($s =~ /^(\d+)$/) {
 		# Just listen on another port on the main IP
-		# XXX v6 support
 		push(@sockets, [ $sockets[0]->[0], $s, $sockets[0]->[2] ]);
 		}
-	elsif ($s =~ /^([0-9\.]+):(\d+)$/) {
+	elsif ($s =~ /^\*:(\d+)$/) {
+		# Listening on all IPs on some port
+		if ($use_ipv6) {
+			push(@sockets, [ in6addr_any(), $config{'port'},
+					 Socket6::PF_INET6() ]);
+			}
+		else {
+			push(@sockets, [ INADDR_ANY, $config{'port'},
+					 PF_INET ]);
+			}
+		}
+	elsif ($s =~ /^(\S+):(\d+)$/) {
 		# Listen on a specific port and IP
-		# XXX v6 support
-		push(@sockets, [ $1 eq "*" ? INADDR_ANY : inet_aton($1), $2,
-				 PF_INET ]);
+		my ($ip, $port) = ($1, $2);
+		if (&check_ip6address($ip)) {
+			$use_ipv6 || die "Cannot bind to $ip without IPv6";
+			push(@sockets, [ inet_pton(Socket6::AF_INET6(),
+						   $ip),
+					 $port, Socket6::PF_INET6() ]);
+			}
+		else {
+			push(@sockets, [ inet_aton($ip), $port,
+					 PF_INET ]);
+			}
 		}
 	elsif ($s =~ /^([0-9\.]+):\*$/ || $s =~ /^([0-9\.]+)$/) {
 		# Listen on the main port on another IPv4 address
@@ -500,6 +533,7 @@ for($i=0; $i<@sockets; $i++) {
 	else {
 		listen($fh, SOMAXCONN);
 		push(@socketfhs, $fh);
+		$ipv6fhs{$fh} = $sockets[$i]->[2] eq PF_INET ? 0 : 1;
 		}
 	}
 foreach $se (@sockerrs) {
@@ -749,17 +783,31 @@ while(1) {
 				}
 
 			# Check username of connecting user
-			local ($peerp, $peera) = unpack_sockaddr_in($acptaddr);
+			local ($peerp, $peerb, $peera);
+			if ($ipv6fhs{$s}) {
+				# Extract IPv6 address
+				($peerp, $peerb) =
+					unpack_sockaddr_in6($acptaddr);
+				$peera = inet_ntop(Socket6::AF_INET6(), $peerb);
+				}
+			else {
+				# Extract IPv4 address
+				($peerp, $peerb) =
+					unpack_sockaddr_in($acptaddr);
+				$peera = inet_ntoa($peerb);
+				}
 			$localauth_user = undef;
-			if ($config{'localauth'} && inet_ntoa($peera) eq "127.0.0.1") {
+			if ($config{'localauth'} && $peera eq "127.0.0.1") {
 				if (open(TCP, "/proc/net/tcp")) {
 					# Get the info direct from the kernel
+					$peerh = sprintf("%4.4X", $peerp);
 					while(<TCP>) {
 						s/^\s+//;
 						local @t = split(/[\s:]+/, $_);
 						if ($t[1] eq '0100007F' &&
-						    $t[2] eq sprintf("%4.4X", $peerp)) {
-							$localauth_user = getpwuid($t[11]);
+						    $t[2] eq $peerh) {
+							$localauth_user =
+							    getpwuid($t[11]);
 							last;
 							}
 						}
@@ -768,10 +816,11 @@ while(1) {
 				if (!$localauth_user) {
 					# Call lsof for the info
 					local $lsofpid = open(LSOF,
-						"$config{'localauth'} -i TCP\@127.0.0.1:$peerp |");
+						"$config{'localauth'} -i ".
+						"TCP\@127.0.0.1:$peerp |");
 					while(<LSOF>) {
 						if (/^(\S+)\s+(\d+)\s+(\S+)/ &&
-						    $2 != $$ && $2 != $lsofpid) {
+						    $2 != $$ && $2 != $lsofpid){
 							$localauth_user = $3;
 							}
 						}
@@ -780,9 +829,10 @@ while(1) {
 				}
 
 			# Work out the hostname for this web server
-			$host = &get_socket_name(SOCK);
+			$host = &get_socket_name(SOCK, $ipv6fhs{$s});
 			if (!$host) {
-				print STDERR "Failed to get local socket name : $!\n";
+				print STDERR
+				    "Failed to get local socket name : $!\n";
 				close(SOCK);
 				next;
 				}
@@ -815,6 +865,7 @@ while(1) {
 				&close_all_sockets();
 				close(LISTEN);
 
+				# XXX IPv6 - refactor to not resolve IP again
 				print DEBUG
 				  "main: Starting handle_request loop pid=$$\n";
 				while(&handle_request($acptaddr,
@@ -847,7 +898,7 @@ while(1) {
 					 getsockname(LISTEN)))[1]);
 		if ((!@deny || !&ip_match($fromip, $toip, @deny)) &&
 		    (!@allow || &ip_match($fromip, $toip, @allow))) {
-			local $listenhost = &get_socket_name(LISTEN);
+			local $listenhost = &get_socket_name(LISTEN, 0);
 			send(LISTEN, "$listenhost:$config{'port'}:".
 				  ($use_ssl || $config{'inetd_ssl'} ? 1 : 0).":".
 				  ($config{'listenhost'} ?
@@ -3447,21 +3498,34 @@ sub urandom_timeout
 close(RANDOM);
 }
 
-# get_socket_name(handle)
+# get_socket_name(handle, ipv6-flag)
 # Returns the local hostname or IP address of some connection
 sub get_socket_name
 {
+local ($fh, $ipv6) = @_;
 return $config{'host'} if ($config{'host'});
-local $sn = getsockname($_[0]);
+local $sn = getsockname($fh);
 return undef if (!$sn);
-local $myaddr = (unpack_sockaddr_in($sn))[1];
+local $myaddr;
+if ($ipv6) {
+	$myaddr = (unpack_sockaddr_in6($sn))[1];
+	}
+else {
+	$myaddr = (unpack_sockaddr_in($sn))[1];
+	}
 if (!$get_socket_name_cache{$myaddr}) {
 	local $myname;
 	if (!$config{'no_resolv_myname'}) {
-		$myname = gethostbyaddr($myaddr, AF_INET);
+		$myname = gethostbyaddr($myaddr,
+					$ipv6 ? Socket6::AF_INET6() : AF_INET);
 		}
 	if ($myname eq "") {
-		$myname = inet_ntoa($myaddr);
+		if ($ipv6) {
+			$myname = inet_ntop(Socket6::AF_INET6(), $myaddr);
+			}
+		else {
+			$myname = inet_ntoa($myaddr);
+			}
 		}
 	$get_socket_name_cache{$myaddr} = $myname;
 	}
