@@ -416,8 +416,12 @@ if ($config{'inetd'}) {
 	$acptaddr = getpeername(SOCK);
 	$acptaddr || exit;
 
+	# Work out remote and local IPs
+	(undef, $peera, undef) = &get_address_ip($acptaddr, 0);
+	(undef, $locala) = &get_socket_ip(SOCK, 0);
+
 	print DEBUG "main: Starting handle_request loop pid=$$\n";
-	while(&handle_request($acptaddr, getsockname(SOCK))) { }
+	while(&handle_request($peera, $locala)) { }
 	print DEBUG "main: Done handle_request loop pid=$$\n";
 	close(SOCK);
 	exit;
@@ -782,20 +786,14 @@ while(1) {
 					&allocate_pipes();
 				}
 
+			# Work out IP and port of client
+			local ($peerb, $peera, $peerp) =
+				&get_address_ip($acptaddr, $ipv6fhs{$s});
+
+			# Work out the local IP
+			(undef, $locala) = &get_socket_ip(SOCK, $ipv6fhs{$s});
+
 			# Check username of connecting user
-			local ($peerp, $peerb, $peera);
-			if ($ipv6fhs{$s}) {
-				# Extract IPv6 address
-				($peerp, $peerb) =
-					unpack_sockaddr_in6($acptaddr);
-				$peera = inet_ntop(Socket6::AF_INET6(), $peerb);
-				}
-			else {
-				# Extract IPv4 address
-				($peerp, $peerb) =
-					unpack_sockaddr_in($acptaddr);
-				$peera = inet_ntoa($peerb);
-				}
 			$localauth_user = undef;
 			if ($config{'localauth'} && $peera eq "127.0.0.1") {
 				if (open(TCP, "/proc/net/tcp")) {
@@ -868,8 +866,7 @@ while(1) {
 				# XXX IPv6 - refactor to not resolve IP again
 				print DEBUG
 				  "main: Starting handle_request loop pid=$$\n";
-				while(&handle_request($acptaddr,
-						      getsockname(SOCK))) { }
+				while(&handle_request($peera, $locala)) { }
 				print DEBUG
 				  "main: Done handle_request loop pid=$$\n";
 				shutdown(SOCK, 1);
@@ -1175,8 +1172,7 @@ while(1) {
 # Where the real work is done
 sub handle_request
 {
-$acptip = inet_ntoa((unpack_sockaddr_in($_[0]))[1]);
-$localip = $_[1] ? inet_ntoa((unpack_sockaddr_in($_[1]))[1]) : undef;
+local ($acptip, $localip) = @_;
 print DEBUG "handle_request: from $acptip to $localip\n";
 if ($config{'loghost'}) {
 	$acpthost = gethostbyaddr(inet_aton($acptip), AF_INET);
@@ -3498,35 +3494,47 @@ sub urandom_timeout
 close(RANDOM);
 }
 
+# get_socket_ip(handle, ipv6-flag)
+# Returns the local IP address of some connection, as both a string and in
+# binary format
+sub get_socket_ip
+{
+local ($fh, $ipv6) = @_;
+local $sn = getsockname($fh);
+return undef if (!$sn);
+return &get_address_ip($sn, $ipv6);
+}
+
+# get_address_ip(address, ipv6-flag)
+# Given a sockaddr object in binary format, return the binary address, text
+# address and port number
+sub get_address_ip
+{
+local ($sn, $ipv6) = @_;
+if ($ipv6) {
+	local ($p, $b) = unpack_sockaddr_in6($sn);
+	return ($b, inet_ntop(Socket6::AF_INET6(), $b), $p);
+	}
+else {
+	local ($p, $b) = unpack_sockaddr_in($sn);
+	return ($b, inet_ntoa($myaddr), $p);
+	}
+}
+
 # get_socket_name(handle, ipv6-flag)
 # Returns the local hostname or IP address of some connection
 sub get_socket_name
 {
 local ($fh, $ipv6) = @_;
 return $config{'host'} if ($config{'host'});
-local $sn = getsockname($fh);
-return undef if (!$sn);
-local $myaddr;
-if ($ipv6) {
-	$myaddr = (unpack_sockaddr_in6($sn))[1];
-	}
-else {
-	$myaddr = (unpack_sockaddr_in($sn))[1];
-	}
+local ($mybin, $myaddr) = &get_socket_ip($fh, $ipv6);
 if (!$get_socket_name_cache{$myaddr}) {
 	local $myname;
 	if (!$config{'no_resolv_myname'}) {
-		$myname = gethostbyaddr($myaddr,
+		$myname = gethostbyaddr($mybin,
 					$ipv6 ? Socket6::AF_INET6() : AF_INET);
 		}
-	if ($myname eq "") {
-		if ($ipv6) {
-			$myname = inet_ntop(Socket6::AF_INET6(), $myaddr);
-			}
-		else {
-			$myname = inet_ntoa($myaddr);
-			}
-		}
+	$myname ||= $myaddr;
 	$get_socket_name_cache{$myaddr} = $myname;
 	}
 return $get_socket_name_cache{$myaddr};
