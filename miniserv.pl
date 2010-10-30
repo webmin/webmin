@@ -421,14 +421,15 @@ if ($config{'inetd'}) {
 	(undef, $locala) = &get_socket_ip(SOCK, 0);
 
 	print DEBUG "main: Starting handle_request loop pid=$$\n";
-	while(&handle_request($peera, $locala)) { }
+	while(&handle_request($peera, $locala, 0)) { }
 	print DEBUG "main: Done handle_request loop pid=$$\n";
 	close(SOCK);
 	exit;
 	}
 
 # Build list of sockets to listen on
-if ($config{"bind"} && $config{"bind"} ne "*") {
+$config{'bind'} = '' if ($config{'bind'} eq '*');
+if ($config{'bind'}) {
 	# Listening on a specific IP
 	if (&check_ip6address($config{'bind'})) {
 		# IP is v6
@@ -446,30 +447,30 @@ if ($config{"bind"} && $config{"bind"} ne "*") {
 	}
 else {
 	# Listening on all IPs
+	push(@sockets, [ INADDR_ANY, $config{'port'}, PF_INET ]);
 	if ($use_ipv6) {
-		# Accept IPv6 and v4 connections
+		# Also IPv6
 		push(@sockets, [ in6addr_any(), $config{'port'},
 				 Socket6::PF_INET6() ]);
-		}
-	else {
-		# Accept IPv4 only
-		push(@sockets, [ INADDR_ANY, $config{'port'}, PF_INET ]);
 		}
 	}
 foreach $s (split(/\s+/, $config{'sockets'})) {
 	if ($s =~ /^(\d+)$/) {
 		# Just listen on another port on the main IP
 		push(@sockets, [ $sockets[0]->[0], $s, $sockets[0]->[2] ]);
+		if ($use_ipv6 && !$config{'bind'}) {
+			# Also listen on that port on the main IPv6 address
+			push(@sockets, [ $sockets[1]->[0], $s,
+					 $sockets[1]->[2] ]);
+			}
 		}
 	elsif ($s =~ /^\*:(\d+)$/) {
 		# Listening on all IPs on some port
+		push(@sockets, [ INADDR_ANY, $config{'port'},
+				 PF_INET ]);
 		if ($use_ipv6) {
 			push(@sockets, [ in6addr_any(), $config{'port'},
 					 Socket6::PF_INET6() ]);
-			}
-		else {
-			push(@sockets, [ INADDR_ANY, $config{'port'},
-					 PF_INET ]);
 			}
 		}
 	elsif ($s =~ /^(\S+):(\d+)$/) {
@@ -510,11 +511,13 @@ for($i=0; $i<@sockets; $i++) {
 	socket($fh, $sockets[$i]->[2], SOCK_STREAM, $proto) ||
 		die "Failed to open socket family $sockets[$i]->[2] : $!";
 	setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
-	$pack = $sockets[$i]->[2] eq PF_INET ?
-			pack_sockaddr_in($sockets[$i]->[1],
-					 $sockets[$i]->[0]) :
-			pack_sockaddr_in6($sockets[$i]->[1],
-                                          $sockets[$i]->[0]);
+	if ($sockets[$i]->[2] eq PF_INET) {
+		$pack = pack_sockaddr_in($sockets[$i]->[1], $sockets[$i]->[0]);
+		}
+	else {
+		$pack = pack_sockaddr_in6($sockets[$i]->[1], $sockets[$i]->[0]);
+		setsockopt($fh, 41, 26, pack("l", 1));	# IPv6 only
+		}
 	for($j=0; $j<5; $j++) {
 		last if (bind($fh, $pack));
 		sleep(1);
@@ -863,10 +866,12 @@ while(1) {
 				&close_all_sockets();
 				close(LISTEN);
 
-				# XXX IPv6 - refactor to not resolve IP again
 				print DEBUG
 				  "main: Starting handle_request loop pid=$$\n";
-				while(&handle_request($peera, $locala)) { }
+				while(&handle_request($peera, $locala,
+						      $ipv6fhs{$s})) {
+					# Loop until keepalive stops
+					}
 				print DEBUG
 				  "main: Done handle_request loop pid=$$\n";
 				shutdown(SOCK, 1);
@@ -1168,14 +1173,14 @@ while(1) {
 	@passout = grep { defined($_) } @passout;
 	}
 
-# handle_request(remoteaddress, localaddress)
+# handle_request(remoteaddress, localaddress, ipv6-flag)
 # Where the real work is done
 sub handle_request
 {
-local ($acptip, $localip) = @_;
-print DEBUG "handle_request: from $acptip to $localip\n";
+local ($acptip, $localip, $ipv6) = @_;
+print DEBUG "handle_request: from $acptip to $localip ipv6=$ipv6\n";
 if ($config{'loghost'}) {
-	$acpthost = gethostbyaddr(inet_aton($acptip), AF_INET);
+	$acpthost = &to_hostname($acptip);
 	$acpthost = $acptip if (!$acpthost);
 	}
 else {
@@ -2155,6 +2160,7 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	$ENV{"SERVER_PORT"} = $port;
 	$ENV{"REMOTE_HOST"} = $acpthost;
 	$ENV{"REMOTE_ADDR"} = $acptip;
+	$ENV{"REMOTE_ADDR_PROTOCOL"} = $ipv6 ? 6 : 4;
 	$ENV{"REMOTE_USER"} = $authuser;
 	$ENV{"BASE_REMOTE_USER"} = $authuser ne $baseauthuser ?
 					$baseauthuser : undef;
@@ -2547,13 +2553,20 @@ sub b64decode
 sub ip_match
 {
 local(@io, @mo, @ms, $i, $j, $hn, $needhn);
-@io = split(/\./, $_[0]);
+@io = &check_ip6address($_[0]) ? split(/:/, $_[0])
+			       : split(/\./, $_[0]);
 for($i=2; $i<@_; $i++) {
 	$needhn++ if ($_[$i] =~ /^\*(\S+)$/);
 	}
 if ($needhn && !defined($hn = $ip_match_cache{$_[0]})) {
-	$hn = gethostbyaddr(inet_aton($_[0]), AF_INET);
-	$hn = "" if (&to_ipaddress($hn) ne $_[0]);
+	# Reverse-lookup hostname if any rules match based on it
+	$hn = &to_hostname($_[0]);
+	if (&check_ip6address($_[0])) {
+		$hn = "" if (&to_ip6address($hn) ne $_[0]);
+		}
+	else {
+		$hn = "" if (&to_ipaddress($hn) ne $_[0]);
+		}
 	$ip_match_cache{$_[0]} = $hn;
 	}
 for($i=2; $i<@_; $i++) {
@@ -2564,6 +2577,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	if ($_[$i] =~ /^(\S+)\/(\S+)$/) {
 		# Compare with network/mask
+		# XXX IPv6 support
 		@mo = split(/\./, $1); @ms = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
 			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
@@ -2577,6 +2591,7 @@ for($i=2; $i<@_; $i++) {
 		}
 	elsif ($_[$i] eq 'LOCAL') {
 		# Compare with local network
+		# XXX IPv6 support
 		local @lo = split(/\./, $_[1]);
 		if ($lo[0] < 128) {
 			$mismatch = 1 if ($lo[0] != $io[0]);
@@ -2591,12 +2606,8 @@ for($i=2; $i<@_; $i++) {
 					  $lo[2] != $io[2]);
 			}
 		}
-	elsif ($_[$i] !~ /^[0-9\.]+$/) {
-		# Compare with hostname
-		$mismatch = 1 if ($_[0] ne &to_ipaddress($_[$i]));
-		}
-	else {
-		# Compare with IP or network
+	elsif ($_[$i] =~ /^[0-9\.]+$/) {
+		# Compare with IPv4 address or network
 		@mo = split(/\./, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
 		for($j=0; $j<@mo; $j++) {
@@ -2604,6 +2615,20 @@ for($i=2; $i<@_; $i++) {
 				$mismatch = 1;
 				}
 			}
+		}
+	elsif ($_[$i] =~ /^[a-f0-9:]+$/) {
+		# Compare with IPv6 address or network
+		@mo = split(/:/, $_[$i]);
+		while(@mo && !$mo[$#mo]) { pop(@mo); }
+		for($j=0; $j<@mo; $j++) {
+			if ($mo[$j] != $io[$j]) {
+				$mismatch = 1;
+				}
+			}
+		}
+	elsif ($_[$i] !~ /^[0-9\.]+$/) {
+		# Compare with hostname
+		$mismatch = 1 if ($_[0] ne &to_ipaddress($_[$i]));
 		}
 	return 1 if (!$mismatch);
 	}
@@ -2659,15 +2684,63 @@ sub trigger_reload
 $need_reload = 1;
 }
 
+# to_ipaddress(address, ...)
 sub to_ipaddress
 {
 local (@rv, $i);
 foreach $i (@_) {
 	if ($i =~ /(\S+)\/(\S+)/ || $i =~ /^\*\S+$/ ||
-	    $i eq 'LOCAL' || $i =~ /^[0-9\.]+$/) { push(@rv, $i); }
-	else { push(@rv, join('.', unpack("CCCC", inet_aton($i)))); }
+	    $i eq 'LOCAL' || $i =~ /^[0-9\.]+$/ || $i =~ /^[a-f0-9:]+$/) {
+		# A pattern or IP, not a hostname, so don't change
+		push(@rv, $i);
+		}
+	else {
+		# Lookup IP address
+		push(@rv, join('.', unpack("CCCC", inet_aton($i))));
+		}
 	}
 return wantarray ? @rv : $rv[0];
+}
+
+# to_ip6address(address, ...)
+sub to_ip6address
+{
+local (@rv, $i);
+foreach $i (@_) {
+	if ($i =~ /(\S+)\/(\S+)/ || $i =~ /^\*\S+$/ ||
+	    $i eq 'LOCAL' || $i =~ /^[0-9\.]+$/ || $i =~ /^[a-f0-9:]+$/) {
+		# A pattern, not a hostname, so don't change
+		push(@rv, $i);
+		}
+	else {
+		# Lookup IPv6 address
+		local ($inaddr, $addr);
+		(undef, undef, undef, $inaddr) =
+		    getaddrinfo($i, undef, Socket6::AF_INET6(), SOCK_STREAM);
+		if ($inaddr) {
+			push(@rv, undef);
+			}
+		else {
+			(undef, $addr) = unpack_sockaddr_in6($inaddr);
+			push(@rv, inet_ntop(Socket6::AF_INET6(), $addr));
+			}
+		}
+	}
+return wantarray ? @rv : $rv[0];
+}
+
+# to_hostname(ipv4|ipv6-address)
+# Reverse-resolves an IPv4 or 6 address to a hostname
+sub to_hostname
+{
+local ($addr) = @_;
+if (&check_ip6address($_[0])) {
+	return gethostbyaddr(inet_pton(Socket6::AF_INET6(), $addr),
+			     Socket6::AF_INET6());
+	}
+else {
+	return gethostbyaddr(inet_aton($addr), AF_INET);
+	}
 }
 
 # read_line(no-wait, no-limit)
@@ -3517,7 +3590,7 @@ if ($ipv6) {
 	}
 else {
 	local ($p, $b) = unpack_sockaddr_in($sn);
-	return ($b, inet_ntoa($myaddr), $p);
+	return ($b, inet_ntoa($b), $p);
 	}
 }
 

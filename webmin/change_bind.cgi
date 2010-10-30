@@ -16,7 +16,9 @@ for($i=0; defined($in{"ip_def_$i"}); $i++) {
 		}
 	else {
 		$ip = $in{"ip_$i"};
-		&check_ipaddress($ip) || &error(&text('bind_eip2', $ip));
+		&check_ipaddress($ip) ||
+		    $in{'ipv6'} && &check_ip6address($ip) ||
+			&error(&text('bind_eip2', $ip));
 		}
 	if ($in{"port_def_$i"} == 1) {
 		$port = $in{"port_$i"};
@@ -32,6 +34,10 @@ for($i=0; defined($in{"ip_def_$i"}); $i++) {
 $in{'listen_def'} || $in{'listen'} =~ /^\d+$/ || &error($text{'bind_elisten'});
 $in{'hostname_def'} || $in{'hostname'} =~ /^[a-z0-9\.\-]+$/i ||
 	&error($text{'bind_ehostname'});
+if ($in{'ipv6'}) {
+	eval "use Socket6";
+	@$ && &error(&text('bind_eipv6', "<tt>Socket6</tt>"));
+	}
 
 # Update config file
 &lock_file($ENV{'MINISERV_CONFIG'});
@@ -44,6 +50,7 @@ else {
 	$miniserv{'bind'} = $first->[0];
 	}
 $miniserv{'sockets'} = join(" ", map { "$_->[0]:$_->[1]" } @sockets);
+$miniserv{'ipv6'} = $in{'ipv6'};
 if ($in{'listen_def'}) {
 	delete($miniserv{'listen'});
 	}
@@ -89,6 +96,7 @@ if ($tconfig{'inframe'}) {
 	# Theme uses frames, so we need to redirect the whole frameset
 	$url .= ":$miniserv{'port'}";
 	&ui_print_header(undef, $text{'bind_title'}, "");
+	print $text{'bind_redirecting'},"<p>\n";
 	print "<script>\n";
 	print "top.location = '$url';\n";
 	print "</script>\n";

@@ -787,7 +787,8 @@ foreach $s (split(/\s+/, $_[0]->{'sockets'})) {
 		# Listen on a specific port and IP
 		push(@sockets, [ $1, $2 ]);
 		}
-	elsif ($s =~ /^([0-9\.]+):\*$/ || $s =~ /^([0-9\.]+)$/) {
+	elsif ($s =~ /^([0-9\.]+):\*$/ || $s =~ /^([0-9\.]+)$/ ||
+	       $s =~ /^([a-f0-9:]+):\*$/ || $s =~ /^([a-f0-9:]+)$/) {
 		# Listen on the main port on another IP
 		push(@sockets, [ $1, "*" ]);
 		}

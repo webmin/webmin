@@ -38,7 +38,11 @@ foreach $s (@sockets, [ undef, "*" ]) {
 $stable .= &ui_columns_end();
 print &ui_table_row($text{'bind_sockets'}, $stable);
 
-# Show listen address
+# IPv6 enabled?
+print &ui_table_row($text{'bind_ipv6'},
+	&ui_yesno_radio("ipv6", $miniserv{'ipv6'}));
+
+# Show UDP listen address
 print &ui_table_row($text{'bind_listen'},
     &ui_radio("listen_def", $miniserv{"listen"} ? 0 : 1,
 	[ [ 1, $text{'bind_none'} ],
