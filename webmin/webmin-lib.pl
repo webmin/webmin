@@ -1387,9 +1387,18 @@ returns 1 if a match is found.
 sub ip_match
 {
 local(@io, @mo, @ms, $i, $j);
-@io = split(/\./, $_[0]);
-local $hn = gethostbyaddr(inet_aton($_[0]), AF_INET);
-undef($hn) if ((&to_ipaddress($hn))[0] ne $_[0]);
+@io = &check_ip6address($_[0]) ? split(/:/, $_[0])
+			       : split(/\./, $_[0]);
+
+# Resolve to hostname and check that it forward resolves again
+$hn = &to_hostname($_[0]);
+if (&check_ip6address($_[0])) {
+	$hn = "" if (&to_ip6address($hn) ne $_[0]);
+	}
+else {
+	$hn = "" if (&to_ipaddress($hn) ne $_[0]);
+	}
+
 for($i=1; $i<@_; $i++) {
 	local $mismatch = 0;
 	local $ip = $_[$i];
@@ -1399,6 +1408,7 @@ for($i=1; $i<@_; $i++) {
                 }
 	if ($ip =~ /^(\S+)\/(\S+)$/) {
 		# Compare with network/mask
+		# XXX IPv6 support
 		@mo = split(/\./, $1); @ms = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
 			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
@@ -1413,19 +1423,29 @@ for($i=1; $i<@_; $i++) {
 	elsif ($ip eq 'LOCAL') {
 		# Just assume OK for now
 		}
-	elsif ($ip !~ /^[0-9\.]+$/) {
-		# Compare with hostname
-		$mismatch = 1 if ($_[0] ne &to_ipaddress($ip));
-		}
-	else {
-		# Compare with IP or network
-		@mo = split(/\./, $ip);
+	elsif ($_[$i] =~ /^[0-9\.]+$/) {
+		# Compare with IPv4 address or network
+		@mo = split(/\./, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
 		for($j=0; $j<@mo; $j++) {
 			if ($mo[$j] != $io[$j]) {
 				$mismatch = 1;
 				}
 			}
+		}
+	elsif ($_[$i] =~ /^[a-f0-9:]+$/) {
+		# Compare with IPv6 address or network
+		@mo = split(/:/, $_[$i]);
+		while(@mo && !$mo[$#mo]) { pop(@mo); }
+		for($j=0; $j<@mo; $j++) {
+			if ($mo[$j] != $io[$j]) {
+				$mismatch = 1;
+				}
+			}
+		}
+	elsif ($_[$i] !~ /^[0-9\.]+$/) {
+		# Compare with hostname
+		$mismatch = 1 if ($_[0] ne &to_ipaddress($_[$i]));
 		}
 	return 1 if (!$mismatch);
 	}

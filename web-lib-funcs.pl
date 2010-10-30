@@ -15,6 +15,8 @@ Example code:
 #use warnings;
 use Socket;
 use POSIX;
+eval "use Socket6";
+$ipv6_module_error = $@;
 
 use vars qw($user_risk_level $loaded_theme_library $wait_for_input
 	    $done_webmin_header $trust_unknown_referers $unsafe_index_cgi
@@ -25,7 +27,7 @@ use vars qw($module_index_name $number_to_month_map $month_to_number_map
 	    $umask_already $default_charset $licence_status $os_type
 	    $licence_message $script_name $loaded_theme_oo_library
 	    $done_web_lib_funcs $os_version $module_index_link
-	    $called_from_webmin_core);
+	    $called_from_webmin_core $ipv6_module_error);
 
 =head2 read_file(file, &hash, [&order], [lowercase], [split-char])
 
@@ -1880,16 +1882,15 @@ else {
 	}
 
 if (!$nowait) {
-	# wait for miniserv to come back up
-	$addr = inet_aton($miniserv{'bind'} ? $miniserv{'bind'} : "127.0.0.1");
+	# Wait for miniserv to come back up
+	my $addr = $miniserv{'bind'} || "127.0.0.1";
 	my $ok = 0;
 	for($i=0; $i<20; $i++) {
+		my $err;
 		sleep(1);
-		socket(STEST, PF_INET, SOCK_STREAM, getprotobyname("tcp"));
-		my $rv = connect(STEST,
-				 pack_sockaddr_in($miniserv{'port'}, $addr));
+		&open_socket($addr, $miniserv{'port'}, STEST, \$err);
 		close(STEST);
-		last if ($rv && ++$ok >= 2);
+		last if (!$err && ++$ok >= 2);
 		}
 	$i < 20 || &error("Failed to restart Webmin server!");
 	}
@@ -2530,26 +2531,57 @@ $fh = &callers_package($fh);
 if ($gconfig{'debug_what_net'}) {
 	&webmin_debug_log('TCP', "host=$host port=$port");
 	}
-if (!socket($fh, PF_INET, SOCK_STREAM, getprotobyname("tcp"))) {
-	if ($err) { $$err = "Failed to create socket : $!"; return 0; }
-	else { &error("Failed to create socket : $!"); }
-	}
-my $addr;
-if (!($addr = inet_aton($host))) {
-	if ($err) { $$err = "Failed to lookup IP address for $host"; return 0; }
-	else { &error("Failed to lookup IP address for $host"); }
-	}
-if ($gconfig{'bind_proxy'}) {
-	if (!bind($fh,pack_sockaddr_in(0, inet_aton($gconfig{'bind_proxy'})))) {
-		if ($err) { $$err = "Failed to bind to source address : $!"; return 0; }
-		else { &error("Failed to bind to source address : $!"); }
+
+# Lookup IP address for the host. Try v4 first, and failing that v6
+my $ip;
+my $proto = getprotobyname("tcp");
+if ($ip = &to_ipaddress($host)) {
+	# Create IPv4 socket and connection
+	if (!socket($fh, PF_INET, SOCK_STREAM, $proto)) {
+		my $msg = "Failed to create socket : $!";
+		if ($err) { $$err = $msg; return 0; }
+		else { &error($msg); }
+		}
+	my $addr = inet_aton($ip);
+	if ($gconfig{'bind_proxy'}) {
+		# BIND to outgoing IP
+		if (!bind($fh,pack_sockaddr_in(0, inet_aton($gconfig{'bind_proxy'})))) {
+			my $msg = "Failed to bind to source address : $!";
+			if ($err) { $$err = $msg; return 0; }
+			else { &error($msg); }
+			}
+		}
+	if (!connect($fh, pack_sockaddr_in($port, $addr))) {
+		my $msg = "Failed to connect to $host:$port : $!";
+		if ($err) { $$err = $msg; return 0; }
+		else { &error($msg); }
 		}
 	}
-if (!connect($fh, pack_sockaddr_in($port, $addr))) {
-	if ($err) { $$err = "Failed to connect to $host:$port : $!"; return 0; }
-	else { &error("Failed to connect to $host:$port : $!"); }
+elsif ($ip = &to_ip6address($host)) {
+	# Create IPv6 socket and connection
+	if (!socket($fh, Socket6::PF_INET6(), SOCK_STREAM, $proto)) {
+		my $msg = "Failed to create IPv6 socket : $!";
+		if ($err) { $$err = $msg; return 0; }
+		else { &error($msg); }
+		}
+	my $addr = inet_pton(Socket6::AF_INET6(), $ip);
+	if (!connect($fh, pack_sockaddr_in6($port, $addr))) {
+		my $msg = "Failed to IPv6 connect to $host:$port : $!";
+		if ($err) { $$err = $msg; return 0; }
+		else { &error($msg); }
+		}
 	}
-my $old = select($fh); $| =1; select($old);
+else {
+	# Resolution failed
+	my $msg = "Failed to lookup IP address for $host";
+	if ($err) { $$err = $msg; return 0; }
+	else { &error($msg); }
+	}
+
+# Disable buffering
+my $old = select($fh);
+$| = 1;
+select($old);
 return 1;
 }
 
@@ -2629,13 +2661,61 @@ it cannot be resolved.
 sub to_ipaddress
 {
 if (&check_ipaddress($_[0])) {
-	return $_[0];
+	return $_[0];	# Already in v4 format
+	}
+elsif (&check_ip6address($_[0])) {
+	return undef;	# A v6 address cannot be converted to v4
 	}
 else {
 	my $hn = gethostbyname($_[0]);
 	return undef if (!$hn);
 	local @ip = unpack("CCCC", $hn);
 	return join("." , @ip);
+	}
+}
+
+=head2 to_ip6address(hostname)
+
+Converts a hostname to IPv6 address, or returns undef if it cannot be resolved.
+
+=cut
+sub to_ip6address
+{
+if (&check_ip6address($_[0])) {
+	return $_[0];	# Already in v6 format
+	}
+elsif (&check_ipaddress($_[0])) {
+	return undef;	# A v4 address cannot be v6
+	}
+elsif (!&supports_ipv6()) {
+	return undef;	# Cannot lookup
+	}
+else {
+	# Perform IPv6 DNS lookup
+	my $inaddr;
+	(undef, undef, undef, $inaddr) =
+	    getaddrinfo($_[0], undef, Socket6::AF_INET6(), SOCK_STREAM);
+	return undef if (!$inaddr);
+	my $addr;
+	(undef, $addr) = unpack_sockaddr_in6($inaddr);
+	return inet_ntop(Socket6::AF_INET6(), $addr);
+	}
+}
+
+=head2 to_hostname(ipv4|ipv6-address)
+
+Reverse-resolves an IPv4 or 6 address to a hostname
+
+=cut
+sub to_hostname
+{
+my ($addr) = @_;
+if (&check_ip6address($addr) && &supports_ipv6()) {
+	return gethostbyaddr(inet_pton(Socket6::AF_INET6(), $addr),
+			     Socket6::AF_INET6());
+	}
+else {
+	return gethostbyaddr(inet_aton($addr), AF_INET);
 	}
 }
 
@@ -8195,6 +8275,16 @@ if ($_[0]) {
 	#return 0 if (!-r &module_root_directory($_[0])."/rbac-mapping");
 	}
 return 1;
+}
+
+=head2 supports_ipv6()
+
+Returns 1 if outgoing IPv6 connections can be made
+
+=cut
+sub supports_ipv6
+{
+return $ipv6_module_error ? 0 : 1;
 }
 
 =head2 use_rbac_module_acl(user, module)

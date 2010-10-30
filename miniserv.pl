@@ -506,7 +506,6 @@ $proto = getprotobyname('tcp');
 @sockerrs = ( );
 $tried_inaddr_any = 0;
 for($i=0; $i<@sockets; $i++) {
-	print STDERR "socket=",join(" ", @{$sockets[$i]}),"\n";
 	$fh = "MAIN$i";
 	socket($fh, $sockets[$i]->[2], SOCK_STREAM, $proto) ||
 		die "Failed to open socket family $sockets[$i]->[2] : $!";

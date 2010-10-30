@@ -111,7 +111,7 @@ if (!@h) {
         }
 
 foreach (@h) {
-        if (!inet_aton($_)) { &error(&text('save_ehost', $_, $_[0])); }
+        if (!&to_ipaddress($_)) { &error(&text('save_ehost', $_, $_[0])); }
         }
 }
 
