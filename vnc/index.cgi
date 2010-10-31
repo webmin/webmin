@@ -54,12 +54,11 @@ else {
 	$addr = $config{'host'} ? $config{'host'} :
 		$ENV{'SERVER_NAME'} ? $ENV{'SERVER_NAME'} :
 				      &to_ipaddress(&get_system_hostname());
-	socket(STEST, PF_INET, SOCK_STREAM, getprotobyname("tcp"));
-	$SIG{ALRM} = \&connect_timeout;
+	$SIG{ALRM} = "connect_timeout";
 	alarm(10);
-	$rv = connect(STEST, pack_sockaddr_in($config{'port'}, inet_aton($addr)));
+	&open_socket($addr, $port, STEST, \$err);
 	close(STEST);
-	$rv || &error_exit(&text('index_esocket', $addr, $config{'port'}));
+	$err && &error_exit(&text('index_esocket', $addr, $config{'port'}));
 	$port = $config{'port'};
 	}
 

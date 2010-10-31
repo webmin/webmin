@@ -27,17 +27,18 @@ if ($config{'no_test'}) {
 	}
 else {
 	# Check if the telnet server is running
-	if (inet_aton($addr)) {
-		socket(STEST, PF_INET, SOCK_STREAM, getprotobyname("tcp"));
+	$ip = &to_ipaddress($addr) || &to_ip6address($addr);
+	if ($ip) {
 		$SIG{ALRM} = "connect_timeout";
 		alarm(10);
-		$rv = connect(STEST, pack_sockaddr_in($port, inet_aton($addr)));
+		&open_socket($ip, $port, STEST, \$err);
 		close(STEST);
+		$rv = !$err;
 		}
 	}
 if (!$rv) {
 	# Not running! Show an error
-	if (inet_aton($addr)) {
+	if ($ip) {
 		print "<p>",&text(
 			$config{'mode'} ? 'index_esocket2' : 'index_esocket',
 			$addr, $port),"<p>\n";

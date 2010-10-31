@@ -259,8 +259,7 @@ if ($in{'by'}) {
 			# Resolv the hostname
 			local $resolved;
 			if ($in{'resolv'} && $in{'by'} eq 'host') {
-				$resolved = gethostbyaddr(inet_aton($host),
-							  AF_INET);
+				$resolved = &to_hostname($host);
 				}
 
 			# Skip traffic to high ports, if requested

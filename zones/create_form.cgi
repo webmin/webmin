@@ -92,7 +92,7 @@ print &ui_table_row($text{'create_domain'},
 		    &ui_textbox("domain", $domain, 20));
 
 if ($resolv eq "dns") {
-	@servers = map { gethostbyaddr(inet_aton($_), AF_INET) || $_ }
+	@servers = map { &to_hostname($_) || $_ }
 			 @{$dns->{'nameserver'}};
 	$server = join(" ", @servers);
 	}

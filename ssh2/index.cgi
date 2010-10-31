@@ -18,17 +18,18 @@ else {
 	$addr = $config{'host'} ? $config{'host'} :
 		$ENV{'SERVER_NAME'} ? $ENV{'SERVER_NAME'} :
 				      &to_ipaddress(&get_system_hostname());
+	$ip = &to_ipaddress($addr) || &to_ip6address($addr);
 	$port = $config{'port'} ? $config{'port'} : 22;
-	if (inet_aton($addr)) {
-		socket(STEST, PF_INET, SOCK_STREAM, getprotobyname("tcp"));
+	if ($ip) {
 		$SIG{ALRM} = "connect_timeout";
 		alarm(10);
-		$rv = connect(STEST, pack_sockaddr_in($port, inet_aton($addr)));
+		&open_socket($ip, $port, STEST, \$err);
 		close(STEST);
+		$rv = !$err;
 		}
 	}
 if (!$rv) {
-	if (inet_aton($addr)) {
+	if ($ip) {
 		print "<p>",&text('index_esocket2', $addr, $port),"<p>\n";
 		}
 	else {
