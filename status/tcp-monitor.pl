@@ -36,7 +36,7 @@ print &ui_table_row($text{'tcp_alarm'},
 
 sub parse_tcp_dialog
 {
-&check_ipaddress($in{'host'}) || gethostbyname($in{'host'}) ||
+&to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
 	&error($text{'tcp_ehost'});
 $_[0]->{'host'} = $in{'host'};
 

@@ -2,18 +2,18 @@
 
 sub get_dns_status
 {
-if (&has_command("nslookup")) {
+if (&has_command("dig")) {
+	local $out;
+	&execute_command("dig \@".quotemeta($_[0]->{'server'})." ".
+			 quotemeta($_[0]->{'host'}), undef, \$out, \$out);
+	return $out =~ /\Q$_[0]->{'host'}.\E\s+\S+\s+IN\s+A\s+\Q$_[0]->{'address'}\E/ ? { 'up' => 1 } : { 'up' => 0 };
+	}
+elsif (&has_command("nslookup")) {
 	local $out;
 	local $cmd = "server $_[0]->{'server'}\n$_[0]->{'host'}\n";
 	&execute_command("nslookup", \$cmd, \$out, \$out);
 	return $out =~ /\Q$_[0]->{'address'}\E/ ? { 'up' => 1 }
 					        : { 'up' => 0 };
-	}
-elsif (&has_command("dig")) {
-	local $out;
-	&execute_command("dig \@".quotemeta($_[0]->{'server'})." ".
-			 quotemeta($_[0]->{'host'}), undef, \$out, \$out);
-	return $out =~ /\Q$_[0]->{'host'}.\E\s+\S+\s+IN\s+A\s+\Q$_[0]->{'address'}\E/ ? { 'up' => 1 } : { 'up' => 0 };
 	}
 else {
 	return { 'up' => - 1 };
@@ -36,7 +36,8 @@ sub parse_dns_dialog
 {
 &has_command("nslookup") || &has_command("dig") ||
 	&error($text{'dns_ecmds'});
-gethostbyname($in{'server'}) || &error($text{'dns_eserver'});
+&to_ipaddress($in{'server'}) || &to_ip6address($in{'server'}) ||
+	&error($text{'dns_eserver'});
 $_[0]->{'server'} = $in{'server'};
 $in{'host'} =~ /^[a-z0-9\.\-\_]+$/i || &error($text{'dns_ehost'});
 $_[0]->{'host'} = $in{'host'};

@@ -86,7 +86,8 @@ if ($in{'host_def'}) {
 	delete($_[0]->{'host'});
 	}
 else {
-	gethostbyname($in{'host'}) || &error($text{'query_ehost'});
+	&to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
+		&error($text{'query_ehost'});
 	$_[0]->{'host'} = $in{'host'};
 	}
 

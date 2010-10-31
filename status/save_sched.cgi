@@ -46,7 +46,7 @@ if ($in{'smtp_def'}) {
 	}
 else {
 	if (!$in{'from_def'}) {
-		gethostbyname($in{'smtp'}) || &check_ipaddress($in{'smtp'}) ||
+		&to_ipaddress($in{'smtp'}) || &to_ip6address($in{'smtp'}) ||
 			&error($text{'sched_esmtp'});
 		}
 	$config{'sched_smtp'} = $in{'smtp'};

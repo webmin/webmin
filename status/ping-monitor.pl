@@ -7,22 +7,25 @@ use Socket;
 sub get_ping_status
 {
 local $wait = defined($_[0]->{'wait'}) ? $_[0]->{'wait'} : 5;
-local $ip = inet_aton($_[0]->{'host'});
+local $ip = &to_ipaddress($_[0]->{'host'}) ||
+	    &to_ip6address($_[0]->{'host'});
 return { 'up' => 0 } if (!$ip);
-if ($config{'pinger'}) {
-	# Call a ping command
+local $ipv6 = &to_ip6address($_[0]->{'host'}) &&
+	      !&to_ipaddress($_[0]->{'host'});
+if ($config{'pinger'} || $ipv6) {
+	# Call a ping command if configured, or if using IPv6 since the built-
+	# in code doesn't support it yet
 	local $cmd;
-	if ($config{'pinger'} eq "linux" &&
-	    $gconfig{'os_type'} =~ /-linux$/) {
+	local $auto_pinger = $config{'pinger'} eq "linux" || !$config{'pinger'};
+	if ($auto_pinger && $gconfig{'os_type'} =~ /-linux$/) {
 		# Use linux command
-		$cmd = "ping -c 1 -w $wait";
+		$cmd = ($ipv6 ? "ping6" : "ping")." -c 1 -w $wait";
 		}
-	elsif ($config{'pinger'} eq "linux" &&
-	       $gconfig{'os_type'} eq 'freebsd') {
+	elsif ($auto_pinger && $gconfig{'os_type'} eq 'freebsd') {
 		# Use FreeBSD command
-		$cmd = "ping -c 1 -W ".($wait * 1000);
+		$cmd = ($ipv6 ? "ping6" : "ping")." -c 1 -W ".($wait * 1000);
 		}
-	elsif ($config{'pinger'} eq "linux") {
+	elsif ($auto_pinger) {
 		# Don't know command for this OS
 		return { 'up' => - 1 };
 		}
@@ -53,7 +56,7 @@ print &ui_table_row($text{'ping_wait'},
 sub parse_ping_dialog
 {
 #$config{'ping_cmd'} || &error($text{'ping_econfig'});
-&check_ipaddress($in{'host'}) || gethostbyname($in{'host'}) ||
+&to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
 	&error($text{'ping_ehost'});
 $in{'wait'} =~ /^(\d*\.)?\d+$/ || &error($text{'ping_ewait'});
 $_[0]->{'host'} = $in{'host'};
