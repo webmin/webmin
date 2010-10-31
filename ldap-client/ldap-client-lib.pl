@@ -206,7 +206,8 @@ if ($ldap_hosts) {
 	foreach my $host (@hosts) {
 		eval {
 			$ldap = Net::LDAP->new($host, port => $port,
-				scheme => $use_ssl == 1 ? 'ldaps' : 'ldap');
+				scheme => $use_ssl == 1 ? 'ldaps' : 'ldap',
+				inet6 => &should_use_inet6($host));
 			};
 		if ($@) {
 			$err = &text('ldap_econn2',
@@ -235,7 +236,8 @@ elsif ($uri) {
 				$port = 636;
 				}
 			$ldap = Net::LDAP->new($host, port => $port,
-					       scheme => $proto);
+				       scheme => $proto,
+				       inet6 => &should_use_inet6($host));
 			if (!$ldap) {
 				$err = &text('ldap_econn',
 					     "<tt>$host</tt>","<tt>$port</tt>");
@@ -263,7 +265,8 @@ else {
 
 	foreach $host (@hosts) {
 		$ldap = Net::LDAP->new($host, port => $port,
-			       scheme => $use_ssl == 1 ? 'ldaps' : 'ldap');
+			       scheme => $use_ssl == 1 ? 'ldaps' : 'ldap',
+			       inet6 => &should_use_inet6($host));
 		if (!$ldap) {
 			$err = &text('ldap_econn',
 				     "<tt>$host</tt>", "<tt>$port</tt>");
@@ -333,6 +336,14 @@ if (!$mesg || $mesg->code) {
 	else { &error($err); }
 	}
 return $ldap;
+}
+
+# should_use_inet6(host)
+# Returns 1 if some host has a v6 address but not v4
+sub should_use_inet6
+{
+local ($host) = @_;
+return !&to_ipaddress($host) && &to_ip6address($host);
 }
 
 # base_chooser_button(field, node, form)
