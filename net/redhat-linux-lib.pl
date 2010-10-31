@@ -428,7 +428,7 @@ local (%conf, @st, %sysctl, %st, @boot);
 if (!$supports_dev_gateway) {
 	# Just update a single file
 	if ($in{'gateway_def'}) { delete($conf{'GATEWAY'}); }
-	elsif (!gethostbyname($in{'gateway'})) {
+	elsif (!&to_ipaddress($in{'gateway'})) {
 		&error(&text('routes_edefault', $in{'gateway'}));
 		}
 	else { $conf{'GATEWAY'} = $in{'gateway'}; }
@@ -483,9 +483,9 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	next if (!$dev);
 	$net = $in{"net_$i"}; $netmask = $in{"netmask_$i"}; $gw = $in{"gw_$i"};
 	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
-	gethostbyname($net) || &error(&text('routes_enet', $net));
+	&to_ipaddress($net) || &error(&text('routes_enet', $net));
 	&check_ipaddress($netmask) || &error(&text('routes_emask', $netmask));
-	gethostbyname($gw) || &error(&text('routes_egateway', $gw));
+	&to_ipaddress($gw) || &error(&text('routes_egateway', $gw));
 	if ($netmask eq "255.255.255.255") {
 		push(@st, "$dev host $net gw $gw\n");
 		}
@@ -498,7 +498,8 @@ for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	$net = $in{"lnet_$i"}; $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
 	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
-	gethostbyname($net) || $net =~ /^(\S+)\/(\d+)$/ && gethostbyname($1) ||
+	&to_ipaddress($net) ||
+	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
 		&error(&text('routes_enet', $net));
 	&check_ipaddress($netmask) || &error(&text('routes_emask', $netmask));
 	if ($netmask eq "255.255.255.255") {

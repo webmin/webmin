@@ -194,7 +194,7 @@ else { delete($conf{'IPFORWARDING'}); }
 local %ifcs = map { $_->{'fullname'}, 1 } &all_interfaces();
 
 if (!$in{'gateway_def'}) {
-	gethostbyname($in{'gateway'}) ||
+	&to_ipaddress($in{'gateway'}) ||
 		&error(&text('routes_edefault', $in{'gateway'}));
 	$ifcs{$in{'gatewaydev'}} ||
 		&error(&text('routes_edevice', $in{'gatewaydev'}));

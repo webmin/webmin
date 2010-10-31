@@ -245,7 +245,7 @@ sub parse_routing
 # Parse route inputs
 local (@routes, $r, $i);
 if (!$in{'gateway_def'}) {
-	gethostbyname($in{'gateway'}) ||
+	&to_ipaddress($in{'gateway'}) ||
 		&error(&text('routes_edefault', $in{'gateway'}));
 	local @def = ( "default", $in{'gateway'}, undef, undef );
 	if (!$in{'gatewaydev_def'}) {

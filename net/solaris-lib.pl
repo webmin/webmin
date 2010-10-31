@@ -186,8 +186,7 @@ return $_[0] eq "dhcp";
 # Is some address valid for a bootup interface
 sub valid_boot_address
 {
-return 1 if (&check_ipaddress($_[0]));
-return gethostbyname($_[0]) ? 1 : 0;
+return &to_ipaddress($_[0]) ? 1 : 0;
 }
 
 # get_dns_config()
@@ -386,8 +385,8 @@ print &ui_table_row($text{'routes_forward'},
 sub parse_routing
 {
 local @defrt = split(/\s+/, $in{'defrt'});
-foreach $d (@defrt) {
-	gethostbyname($d) || &error(&text('routes_edefault', $d));
+foreach my $d (@defrt) {
+	&to_ipaddress($d) || &error(&text('routes_edefault', $d));
 	}
 &lock_file("/etc/defaultrouter");
 if (@defrt) {

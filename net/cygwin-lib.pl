@@ -250,8 +250,7 @@ return $_[0] =~ /^(dhcp|netmask)$/;
 # Is some address valid for a bootup interface
 sub valid_boot_address
 {
-return 1 if (&check_ipaddress($_[0]));
-return gethostbyname($_[0]) ? 1 : 0;
+return &to_ipaddress($_[0]) ? 1 : 0;
 }
 
 # get_dns_config()

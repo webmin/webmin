@@ -521,9 +521,10 @@ for($i=0; defined($dev = $in{"dev_$i"}); $i++) {
 	local $netmask = $in{"netmask_$i"};
 	local $gw = $in{"gw_$i"};
 	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
-	gethostbyname($net) || &error(&text('routes_enet', $net));
-		&check_ipaddress_any($netmask) || &error(&text('routes_emask', $netmask));
-	gethostbyname($gw) || &error(&text('routes_egateway', $gw));
+	&to_ipaddress($net) || &error(&text('routes_enet', $net));
+	&check_ipaddress_any($netmask) ||
+		&error(&text('routes_emask', $netmask));
+	&to_ipaddress($gw) || &error(&text('routes_egateway', $gw));
 	local $prefix = &mask_to_prefix($netmask);
 	push(@{$st{$dev}}, [ "up", "ip route add $net/$prefix via $gw" ]);
 	}
@@ -533,9 +534,11 @@ for($i=0; defined($dev = $in{"ldev_$i"}); $i++) {
 	local $netmask = $in{"lnetmask_$i"};
 	next if (!$dev && !$net);
 	$dev =~ /^\S+$/ || &error(&text('routes_edevice', $dev));
-	gethostbyname($net) || $net =~ /^(\S+)\/(\d+)$/ && gethostbyname($1) ||
+	&to_ipaddress($net) ||
+	    $net =~ /^(\S+)\/(\d+)$/ && &to_ipaddress("$1") ||
 		&error(&text('routes_enet', $net));
-		&check_ipaddress_any($netmask) || &error(&text('routes_emask', $netmask));
+	&check_ipaddress_any($netmask) ||
+		&error(&text('routes_emask', $netmask));
 	local $prefix = &mask_to_prefix($netmask);
 	push(@{$hr{$dev}}, [ "up", "ip route add $net/$prefix dev $dev" ]);
 	}
