@@ -34,6 +34,15 @@ if ($module_name ne 'htaccess') {
 		local ($ver, $mods) = &httpd_info($httpd);
 		if ($ver) {
 			local @mods = map { "$_/$ver" } &configurable_modules();
+			foreach my $m (@mods) {
+				if ($m =~ /(\S+)\/(\S+)/) {
+					$httpd_modules{$1} = $2;
+					}
+				}
+			# Call again now that known modules have been set, as
+			# sometimes there are dependencies due to LoadModule
+			# statements in an IfModule block
+			@mods = map { "$_/$ver" } &configurable_modules();
 			local %site = ( 'size' => $st[7],
 					'path' => $httpd,
 					'modules' => join(' ', @mods),
@@ -52,7 +61,9 @@ if (&read_file($site_file, \%site)) {
 	local($m, $f, $d);
 	$httpd_size = $site{'size'};
 	foreach $m (split(/\s+/, $site{'modules'})) {
-		if ($m =~ /(\S+)\/(\S+)/) { $httpd_modules{$1} = $2; }
+		if ($m =~ /(\S+)\/(\S+)/) {
+			$httpd_modules{$1} = $2;
+			}
 		}
 	foreach $m (keys %httpd_modules) {
 		if (!-r "$module_root_directory/$m.pl") {
