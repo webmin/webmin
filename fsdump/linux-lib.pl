@@ -204,7 +204,8 @@ if ($in{'mode'} == 0) {
 	delete($_[0]->{'hfile'});
 	}
 else {
-	gethostbyname($in{'host'}) || &check_ipaddress($in{'host'}) ||
+	&to_ipaddress($in{'host'}) ||
+	    &to_ip6address($in{'host'}) ||
 		&error($text{'dump_ehost'});
 	$_[0]->{'host'} = $in{'host'};
 	$in{'huser'} =~ /^\S*$/ || &error($text{'dump_ehuser'});
@@ -656,7 +657,8 @@ if ($in{'mode'} == 0) {
 	$cmd .= " -f '$in{'file'}'";
 	}
 else {
-	gethostbyname($in{'host'}) || &check_ipaddress($in{'host'}) ||
+	&to_ipaddress($in{'host'}) ||
+	    &to_ip6address($in{'host'}) ||
 		&error($text{'restore_ehost'});
 	$in{'huser'} =~ /^\S*$/ || &error($text{'restore_ehuser'});
 	$in{'hfile'} || &error($text{'restore_ehfile'});

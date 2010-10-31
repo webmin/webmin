@@ -2148,7 +2148,7 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 			delete($options{machinename});
 			if (!$in{smbfs_mname_def})
 				{ $options{machinename} = $in{smbfs_mname}; }
-			elsif (!gethostbyname($in{'smbfs_server'})) {
+			elsif (!&to_ipaddress($in{'smbfs_server'})) {
 				# No hostname found for the server.. try to guess
 				local($out, $sname);
 				$sname = $in{'smbfs_server'};
@@ -2167,8 +2167,7 @@ elsif ($_[0] eq $smbfs_fs || $_[0] eq "cifs") {
 				}
 			delete($options{"ip"});
 			if (!$in{"smbfs_mname_def"}) {
-				gethostbyname($in{"smbfs_mname"}) ||
-				    &check_ipaddress($in{"smbfs_mname"}) ||
+				&to_ipaddress($in{"smbfs_mname"}) ||
 					&error($text{'linux_emname'});
 				$options{"ip"} = $in{"smbfs_mname"};
 				}

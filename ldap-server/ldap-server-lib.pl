@@ -39,7 +39,7 @@ local ($server, $port, $user, $pass, $ssl);
 if ($config{'server'}) {
 	# Remote box .. everything must be set
 	$server = $config{'server'};
-	gethostbyname($server) || return &text('connect_eserver',
+	&to_ipaddress($server) || return &text('connect_eserver',
 					       "<tt>$server</tt>");
 	$port = $config{'port'};
 	$user = $config{'user'};

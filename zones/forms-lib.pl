@@ -546,7 +546,7 @@ $section->add_input($text{'create_domain'}, $dinput);
 
 local (@servers, $server);
 if ($resolv eq "dns") {
-	@servers = map { gethostbyaddr(inet_aton($_), AF_INET) || $_ }
+	@servers = map { &to_ipaddress($_) || &to_ip6address($_) || $_ }
 			 @{$dns->{'nameserver'}};
 	$server = join(" ", @servers);
 	}

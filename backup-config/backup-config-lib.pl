@@ -231,7 +231,9 @@ if ($mode == 0) {
 	}
 elsif ($mode == 1) {
 	# FTP server
-	gethostbyname($in{"$_[0]_server"}) || &error($text{'backup_eserver1'});
+	&to_ipaddress($in{"$_[0]_server"}) ||
+	  &to_ip6address($in{"$_[0]_server"}) ||
+	    &error($text{'backup_eserver1'});
 	$in{"$_[0]_path"} =~ /^\/\S/ || &error($text{'backup_epath'});
 	$in{"$_[0]_user"} =~ /^[^:]*$/ || &error($text{'backup_euser'});
 	$in{"$_[0]_pass"} =~ /^[^\@]*$/ || &error($text{'backup_epass'});
@@ -244,7 +246,9 @@ elsif ($mode == 1) {
 	}
 elsif ($mode == 2) {
 	# SSH server
-	gethostbyname($in{"$_[0]_sserver"}) || &error($text{'backup_eserver2'});
+	&to_ipaddress($in{"$_[0]_sserver"}) ||
+	  &to_ip6address($in{"$_[0]_sserver"}) ||
+	    &error($text{'backup_eserver2'});
 	$in{"$_[0]_spath"} =~ /^\/\S/ || &error($text{'backup_epath2'});
 	$in{"$_[0]_suser"} =~ /^[^:]*$/ || &error($text{'backup_euser'});
 	$in{"$_[0]_spass"} =~ /^[^\@]*$/ || &error($text{'backup_epass'});

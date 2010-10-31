@@ -1430,7 +1430,7 @@ elsif ($in{$f} eq "thishost") {
 	$rule->{$f."-thishost"} = 1;
 	}
 elsif ($in{$f} eq "host") {
-	gethostbyname($in{$f."_host"}) ||
+	&to_ipaddress($in{$f."_host"}) ||
 		&error($text{'save_ehost'.$f});
 	$rule->{$f."-host"} = $in{$f."_host"};
 	&check_ipaddress($in{$f."_mask"}) ||
@@ -1438,7 +1438,7 @@ elsif ($in{$f} eq "host") {
 	$rule->{$f."-mask"} = $in{$f."_mask"};
 	}
 elsif ($in{$f} eq "numhost") {
-	gethostbyname($in{$f."_numhost"}) ||
+	&to_ipaddress($in{$f."_numhost"}) ||
 		&error($text{'save_ehost'.$f});
 	$rule->{$f."-numhost"} = $in{$f."_numhost"};
 	$in{$f."_nummask"} = "32" if ($in{$f."_nummask"} eq "");
@@ -1470,7 +1470,7 @@ elsif ($in{$f} eq "thishost") {
 	$rule->{$f."-thishost"} = 1;
 	}
 elsif ($in{$f} eq "host") {
-	gethostbyname($in{$f."_host"}) ||
+	&to_ipaddress($in{$f."_host"}) ||
 		&error($text{'save_ehost'.$f});
 	$rule->{$f."-host"} = $in{$f."_host"};
 	&check_ipaddress($in{$f."_mask"}) ||
@@ -1478,7 +1478,7 @@ elsif ($in{$f} eq "host") {
 	$rule->{$f."-mask"} = $in{$f."_mask"};
 	}
 elsif ($in{$f} eq "numhost") {
-	gethostbyname($in{$f."_numhost"}) ||
+	&to_ipaddress($in{$f."_numhost"}) ||
 		&error($text{'save_ehost'.$f});
 	$rule->{$f."-numhost"} = $in{$f."_numhost"};
 	$in{$f."_nummask"} = "32" if ($in{$f."_nummask"} eq "");

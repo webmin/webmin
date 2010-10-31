@@ -317,8 +317,7 @@ for($i=0; defined($in{"Port_$i"}); $i++) {
 
 	if ($bdef) { push(@blist, "*"); }
 	elsif ($b =~ /^\S+$/ &&
-	       (gethostbyname($b) || &check_ipaddress($b) ||
-		&check_ip6address($b))) { push(@blist, $b); }
+	       (&to_ipaddress($b) || &to_ip6address($b))) { push(@blist, $b); }
 	else { &error(&text('core_eaddress', $b)); }
 
 	if ($pdef) { push(@plist, undef); }
@@ -576,8 +575,8 @@ local(@nv, $nv, $addr);
 foreach $nv (@nv) {
 	if ($nv =~ /^(\S+):(\d+|\*)$/) { $addr = $1; }
 	else { $addr = $nv; }
-	if (!gethostbyname($addr) && !&check_ipaddress($addr) &&
-	    !&check_ip6address($addr) && $addr ne '*') {
+	if (!&to_ipaddress($addr) &&
+	    !&to_ip6address($addr) && $addr ne '*') {
 		&error(&text('core_evirtaddr', $addr));
 		}
 	if ($nv =~ /^(\S+):(\d+|\*)$/ && &check_ip6address($1)) {
