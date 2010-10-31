@@ -15,7 +15,8 @@ else {
 	&error_setup($text{'ethers_err'});
 	lc($in{'mac'}) =~ /^([0-9a-f]{2}:){5}[0-9a-f]{2}$/ ||
 		&error($text{'ethers_emac'});
-	gethostbyname($in{'ip'}) || &error($text{'ethers_eip'});
+	&to_ipaddress($in{'ip'}) || &to_ip6address($in{'ip'}) ||
+		&error($text{'ethers_eip'});
 	@ether = ( $in{'mac'}, $in{'ip'} );
 	if ($in{'line'} eq '') {
 		&table_add($t, "\t", \@ether);

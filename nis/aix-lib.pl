@@ -175,7 +175,8 @@ $in{'domain_def'} || $in{'domain'} =~ /^[A-Za-z0-9\.\-\_]+$/ ||
 if ($in{'boot'} && $in{'domain_def'}) {
 	&error($text{'server_ebootdom'});
 	}
-$in{'type'} || gethostbyname($in{'slave'}) || &error($text{'server_eslave'});
+$in{'type'} || &to_ipaddress($in{'slave'}) ||
+	&to_ip6address($in{'slave'}) || &error($text{'server_eslave'});
 -d $in{'dir'} || &error($text{'server_edir'});
 -d $in{'pwdir'} || &error($text{'server_epwdir'});
 &update_makefile($var->{'NOPUSH'}, $in{'nopush'});

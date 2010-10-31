@@ -18,7 +18,7 @@ if ($in{'broadcast'}) {
 else {
 	@servers = split(/\s+/, $in{'servers'});
 	foreach $s (@servers) {
-		gethostbyname($s) || &check_ipaddress($s) ||
+		&to_ipaddress($s) || &to_ip6address($s) ||
 			&error(&text('client_eserver', $s));
 		}
 	$nis->{'servers'} = \@servers;

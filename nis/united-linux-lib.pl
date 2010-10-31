@@ -209,7 +209,8 @@ $in{'minuid'} =~ /^\d+$/ || &error($text{'server_eminuid'});
 $in{'mingid'} =~ /^\d+$/ || &error($text{'server_emingid'});
 $in{'domain_auto'} || $in{'domain'} =~ /^[A-Za-z0-9\.\-]+$/ ||
 	&error($text{'server_edomain'});
-$in{'type'} || gethostbyname($in{'slave'}) || &error($text{'server_eslave'});
+$in{'type'} || &to_ipaddress($in{'slave'}) ||
+	&to_ip6address($in{'slave'}) || &error($text{'server_eslave'});
 &update_makefile($var->{'MINUID'}, $in{'minuid'});
 &update_makefile($var->{'MINGID'}, $in{'mingid'});
 &update_makefile($var->{'NOPUSH'}, $in{'nopush'});
