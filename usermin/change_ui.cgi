@@ -7,8 +7,8 @@ $access{'ui'} || &error($text{'acl_ecannot'});
 &error_setup($text{'ui_err'});
 &ReadParse();
 $in{'feedback_def'} || $in{'feedback'} =~ /\S/ || &error($text{'ui_efeedback'});
-$in{'feedbackmail_def'} || gethostbyname($in{'feedbackmail'}) ||
-    &check_ipaddress($in{'feedbackmail'}) || &error($text{'ui_efeedbackmail'});
+$in{'feedbackmail_def'} || &to_ipaddress($in{'feedbackmail'}) ||
+    &to_ip6address($in{'feedbackmail'}) || &error($text{'ui_efeedbackmail'});
 $in{'feedbackhost_def'} || $in{'feedbackhost'} =~ /^\S+$/ ||
 	&error($text{'ui_efeedbackhost'});
 

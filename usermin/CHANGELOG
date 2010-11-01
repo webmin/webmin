@@ -45,3 +45,5 @@ Added a field for allowed SSL cipher types.
 Expired passwords can now be changed using an external command, instead of PAM or directly updating /etc/shadow. This is set on the Authentication page.
 ---- Changes since 1.470 ----
 Added a field to the Operating System and Environment page for additional Perl module directories.
+---- Changes since 1.520 ----
+IPv6 support for Usermin can now be enabled on the Ports and Addresses page.

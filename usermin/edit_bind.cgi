@@ -19,17 +19,16 @@ my @sockets = &webmin::get_miniserv_sockets(\%miniserv);
 my $stable = &ui_columns_start([ $text{'bind_sip'}, $text{'bind_sport'} ]);
 my $i = 0;
 foreach $s (@sockets, [ undef, "*" ]) {
-	use Data::Dumper;
-	print "<!-- " . Dumper($s) . " -->\n";
 	# IP address
 	my @cols;
 	push(@cols, &ui_select("ip_def_$i",
 	                       $s->[0] eq "" ? 0 :
-	                      $s->[0] eq "*" ? 1 : 2,
+	                       $s->[0] eq "*" ? 1 : 2,
 	                       [ [ 0, "&nbsp;" ],
 	                       [ 1, $text{'bind_sip1'} ],
 	                       [ 2, $text{'bind_sip2'} ] ])." ".
-	                       &ui_textbox("ip_$i", $s->[0] eq "*" ? undef : $s->[0], 20));
+	                       &ui_textbox("ip_$i",
+				  $s->[0] eq "*" ? undef : $s->[0], 20));
 
 	# Port
 	push(@cols, &ui_select("port_def_$i", $s->[1] eq "*" ? 0 : 1,
@@ -41,6 +40,10 @@ foreach $s (@sockets, [ undef, "*" ]) {
 	}
 $stable .= &ui_columns_end();
 print &ui_table_row($text{'bind_sockets'}, $stable);
+
+# IPv6 enabled?
+print &ui_table_row($webmin::text{'bind_ipv6'},
+	&ui_yesno_radio("ipv6", $miniserv{'ipv6'}));
 
 # Show web server hostname
 print &ui_table_row($text{'bind_hostname'},
