@@ -96,7 +96,7 @@ else {
 		&set_member_value($xinet, 'redirect');
 		}
 	else {
-		&to_ipaddress($in{'rhost'}) || &to_ip6address($in{'rhost'}) ||
+		&to_ipaddress($in{'rhost'}) ||
 			&error($text{'serv_erhost'});
 		$in{'rport'} =~ /^\d+$/ || &error($text{'serv_erport'});
 		@type = grep { $_ ne 'INTERNAL' } @type;

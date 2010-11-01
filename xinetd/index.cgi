@@ -109,29 +109,20 @@ print "<input type=submit name=disable value='$text{'index_disable'}'>\n";
 print "</form>\n";
 
 print &ui_hr();
-print "<table>\n";
-print "<form action=edit_defaults.cgi>\n";
-print "<tr> <td><input type=submit value=\"$text{'index_defaults'}\"></td>\n";
-print "<td>$text{'index_defaultsmsg'} \n";
-print "</td> </tr>\n";
-print "</form>\n";
+
+print &ui_buttons_start();
+print &ui_buttons_row("edit_defaults.cgi", $text{'index_defaults'},
+		      $text{'index_defaultsmsg'});
 
 if ($pid = &is_xinetd_running()) {
-	print "<form action=restart.cgi>\n";
-	print "<input type=hidden name=pid value=$pid>\n";
-	print "<tr> <td><input type=submit value=\"$text{'index_apply'}\"></td>\n";
-	print "<td>$text{'index_applymsg'} \n";
-	print "</td></tr>\n";
-	print "</form>\n";
+	print &ui_buttons_row("restart.cgi", $text{'index_apply'},
+			      $text{'index_applymsg'});
 	}
 else {
-	print "<form action=start.cgi>\n";
-	print "<tr> <td><input type=submit value=\"$text{'index_start'}\"></td>\n";
-	print "<td>$text{'index_startmsg'} \n";
-	print "</td> </tr>\n";
-	print "</form>\n";
+	print &ui_buttons_row("start.cgi", $text{'index_start'},
+			      $text{'index_startmsg'});
 	}
-print "</table>\n";
+print &ui_buttons_end();
 
 &ui_print_footer("/", $text{'index'});
 
