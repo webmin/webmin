@@ -58,8 +58,8 @@ else {
 		&save_directive("HostName", $conf);
 		}
 	else {
-		&check_ipaddress($in{'hostname'}) ||
-			gethostbyname($in{'hostname'}) ||
+		&to_ipaddress($in{'hostname'}) ||
+		    &to_ip6address($in{'hostname'}) ||
 			&error($text{'host_ehostname'});
 		&save_directive("HostName", $conf, $in{'hostname'});
 		}

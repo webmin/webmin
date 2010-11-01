@@ -14,10 +14,19 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 		&save_directive("ListenAddress", $conf);
 		}
 	else {
-		for($i=0; defined($a = $in{"address_$i"}); $i++) {
-			next if (!$a);
-			&check_ipaddress($a) || gethostbyname($a) ||
-				&error(&text('net_eladdress', $a));
+		for($i=0; defined($in{"mode_$i"}); $i++) {
+			next if ($in{"mode_$i"} == 0);
+			if ($in{"mode_$i"} == 1) {
+				$a = "0.0.0.0";
+				}
+			elsif ($in{"mode_$i"} == 2) {
+				$a = "::";
+				}
+			elsif ($in{"mode_$i"} == 3) {
+				$a = $in{"address_$i"};
+				&check_ipaddress($a) || &check_ip6address($a) ||
+					&error(&text('net_eladdress', $a));
+				}
 			if ($in{"port_${i}_def"}) {
 				push(@listens, $a);
 				}
@@ -38,7 +47,7 @@ else {
 		}
 	else {
 		&check_ipaddress($in{'listen'}) ||
-		  ($version{'number'} >= 2 && gethostbyname($in{'listen'})) ||
+		  ($version{'number'} >= 2 && &to_ipaddress($in{'listen'})) ||
 		    &error($text{'net_elisten'});
 		&save_directive("ListenAddress", $conf, $in{'listen'});
 		}

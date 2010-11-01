@@ -17,8 +17,15 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 	foreach $l (@listens, { }) {
 		local ($a, $p) = $l->{'values'}->[0] =~ /^(.*):(\d+)$/ ?
 				   ($1, $2) : ($l->{'values'}->[0]);
+		$amode = $a eq "::" ? 2 : $a eq "0.0.0.0" ? 1 :
+			 $a eq "" ? 0 : 3;
 		push(@table, [
-			&ui_textbox("address_$i", $a, 25),
+			&ui_select("mode_$i", $amode,
+				   [ [ 0, "&nbsp;" ],
+				     [ 1, $text{'net_all4'} ],
+				     [ 2, $text{'net_all6'} ],
+				     [ 3, $text{'net_sel'} ] ])." ".
+			&ui_textbox("address_$i", $amode == 3 ? $a : "", 25),
 			&ui_opt_textbox("port_$i", $p, 6, $text{'default'})
 			]);
 		$i++;

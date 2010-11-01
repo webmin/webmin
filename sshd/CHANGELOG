@@ -15,3 +15,5 @@ Added a field to allow or deny SSH 2 public key authentication.
 Converted all pages the use the new Webmin UI library, for a more consistent look and layout.
 ---- Changes since 1.500 ----
 Added a field for editing the maximum login attempts per connection.
+---- Changes since 1.520 ----
+Added support for listening on IPv6 addresses.
