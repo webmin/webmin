@@ -47,8 +47,8 @@ else {
 			local $ac = $a;
 			$ac =~ s/:(\d+)$//;
 			$ac eq '*' || $ac eq '_default_' ||
-			    gethostbyname($ac) ||
-			    $ac =~ /^\[(\S+)\]$/ && &check_ip6address("$1") ||
+			    &to_ipaddress($ac) ||
+			    $ac =~ /^\[(\S+)\]$/ && &to_ip6address("$1") ||
 				&error(&text('vserv_eaddr2', $ac));
 			}
 		$addr = join(" ", @addrs);
@@ -66,9 +66,8 @@ else {
 		elsif ($in{'addr'} !~ /\S/) {
 			&error($text{'vserv_eaddr1'});
 			}
-		elsif (!gethostbyname($in{'addr'}) &&
-		       !&check_ipaddress($in{'addr'}) &&
-		       !&check_ip6address($in{'addr'})) {
+		elsif (!&to_ipaddress($in{'addr'}) &&
+		       !&to_ip6address($in{'addr'})) {
 			&error(&text('vserv_eaddr2', $in{'addr'}));
 			}
 		elsif (&check_ip6address($in{'addr'})) {

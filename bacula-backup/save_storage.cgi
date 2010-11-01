@@ -45,7 +45,8 @@ else {
 	$in{'pass'} || &error($text{'storage_epass'});
 	&save_directive($conf, $storage, "Password", $in{'pass'}, 1);
 
-	gethostbyname($in{'address'}) || &error($text{'storage_eaddress'});
+	&to_ipaddress($in{'address'}) || &to_ip6address($in{'address'}) ||
+		&error($text{'storage_eaddress'});
 	&save_directive($conf, $storage, "Address", $in{'address'}, 1);
 
 	$in{'port'} =~ /^\d+$/ && $in{'port'} > 0 && $in{'port'} < 65536 ||

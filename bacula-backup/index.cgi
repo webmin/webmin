@@ -59,7 +59,7 @@ if (&is_bacula_running("bacula-dir")) {
 	$conconf = &get_bconsole_config();
 	$condir = &find("Director", $conconf);
 	$conaddr = &find_value("Address", $condir->{'members'});
-	if (!gethostbyname($conaddr)) {
+	if (!&to_ipaddress($conaddr) && !&to_ip6address($conaddr)) {
 		# Offer to fix hostname
 		print &text('index_econsole2',
 			"<tt>$console_cmd</tt>", "<tt>$conaddr</tt>"),"<p>\n";

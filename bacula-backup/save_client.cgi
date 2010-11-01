@@ -45,7 +45,8 @@ else {
 	$in{'pass'} || &error($text{'client_epass'});
 	&save_directive($conf, $client, "Password", $in{'pass'}, 1);
 
-	gethostbyname($in{'address'}) || &error($text{'client_eaddress'});
+	&to_ipaddress($in{'address'}) || &to_ip6address($in{'address'}) ||
+		&error($text{'client_eaddress'});
 	&save_directive($conf, $client, "Address", $in{'address'}, 1);
 
 	$in{'port'} =~ /^\d+$/ && $in{'port'} > 0 && $in{'port'} < 65536 ||

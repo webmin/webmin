@@ -141,7 +141,8 @@ sub check_hosts
 local $h;
 if ($gconfig{'os_version'} < 7) {
 	foreach $h (@_) {
-		gethostbyname($h) || &error(&text('save_ehost', $h));
+		&to_ipaddress($h) || &to_ip6address($h) ||
+			&error(&text('save_ehost', $h));
 		}
 	}
 }

@@ -63,7 +63,7 @@ else {
 	else {
 		&error_setup($text{'ssub_failsave'});
 		# Validate and save inputs
-		gethostbyname($in{'network'}) || &check_ipaddress($in{'network'}) ||
+		&to_ipaddress($in{'network'}) ||
 			&error("'$in{'network'}' $text{'ssub_invalidsubaddr'}");
 		&check_ipaddress($in{'netmask'}) ||
 			&error("'$in{'netmask'}' $text{'ssub_invalidnmask'}");

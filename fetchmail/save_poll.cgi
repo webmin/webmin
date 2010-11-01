@@ -112,8 +112,8 @@ else {
 
 sub check_host
 {
-return 1 if (gethostbyname($_[0]));
-return 0 if (gethostbyname("www.webmin.com"));	# only fail if we are online
+return 1 if (&to_ipaddress($_[0]) || &to_ip6address($_[0]));
+return 0 if (&to_ipaddress("www.webmin.com"));	# only fail if we are online
 return 1;
 }
 

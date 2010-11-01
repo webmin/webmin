@@ -220,7 +220,7 @@ else {
 	local $nv = $in{$_[0]};
 	local @nv = split(/\s+/, $nv);
 	if ($_[1] == 0) {
-		gethostbyname($nv) || &check_ipaddress($nv) ||
+		&to_ipaddress($nv) ||
 			&error("$_[0] '$nv' $text{'sopt_invalidip'}");
 		}
 	elsif ($_[1] == 1) {
@@ -229,7 +229,7 @@ else {
 	elsif ($_[1] == 2) {
 		local $ip;
 		foreach $ip (@nv) {
-			gethostbyname($ip) || &check_ipaddress($ip) ||
+			&to_ipaddress($ip) ||
 				&error("'$ip' $text{'sopt_invalidip'}");
 			}
 		$nv = join(", ", @nv);

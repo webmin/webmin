@@ -30,8 +30,7 @@ elsif ($in{'addr'} !~ /\S/) {
 	}
 else {
 	foreach $a (split(/\s+/, $in{'addr'})) {
-		gethostbyname($a) || &check_ipaddress($a) ||
-		    &check_ip6address($a) ||
+		&to_ipaddress($a) || &to_ip6address($a) ||
 			&error(&text('cvirt_eaddr2', $a));
 		push(@addrs, &check_ip6address($a) ? "[$a]" : $a);
 		}

@@ -10,8 +10,8 @@ $p = $in{'proto'};
 
 # Parse inputs
 if ($p eq 'mysql' || $p eq 'postgresql' || $p eq 'ldap') {
-	gethostbyname($in{$p."_host"}) ||
-	  $in{$p."_host"} =~ /^(\S+):(\d+)$/ && gethostbyname($1) ||
+	&to_ipaddress($in{$p."_host"}) ||
+	  $in{$p."_host"} =~ /^(\S+):(\d+)$/ && &to_ipaddress("$1") ||
 	    &error($text{'sql_ehost'});
 	$in{$p."_user"} =~ /^\S+$/ || &error($text{'sql_euser'});
 	$in{$p."_pass"} =~ /^\S*$/ || &error($text{'sql_epass'});

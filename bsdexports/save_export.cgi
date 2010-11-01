@@ -68,7 +68,7 @@ if ($in{'cmode'} == 0) {
 	@hl || &error($text{'save_ehosts'});
 	$exp{'hosts'} = \@hl;
 	foreach $h (@hl) {
-		$ip = gethostbyname($h);
+		$ip = &to_ipaddress($h) || &to_ip6address($h);
 		if ($ip) { push(@iplist, $ip); }
 		}
 	}
@@ -96,7 +96,7 @@ for($i=0; $i<@exps; $i++) {
 		}
 	next if (!$samefs);
 	foreach $h (@{$exps[$i]->{'hosts'}}) {
-		$ip = gethostbyname($h);
+		$ip = &to_ipaddress($h) || &to_ip6address($h);
 		if ($ip && &indexof($ip, @iplist) >= 0) {
 			# Another export on this filesystem is to the same host
 			&error(&text('save_esame1', $samefs, $h));

@@ -7,7 +7,7 @@ require './bacula-backup-lib.pl';
 $conconf = &get_bconsole_config();
 $condir = &find("Director", $conconf);
 $addr = &get_system_hostname();
-if (!gethostbyname($addr)) {
+if (!&to_ipaddress($addr) && !&to_ip6address($addr)) {
 	$addr = "localhost";
 	}
 &save_directive($conconf, $condir, "Address", $addr, 1);

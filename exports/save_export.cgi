@@ -42,7 +42,7 @@ else {
 		}
 	elsif ($in{'mode'} == 3) { $exp{'host'} = ""; }
 	else {
-		$in{'host'} =~ /\*/ || gethostbyname($in{'host'}) ||
+		$in{'host'} =~ /\*/ || &to_ipaddress($in{'host'}) ||
 			&error(&text('save_ehost', $in{'host'}));
 		$exp{'host'} = $in{'host'};
 		}

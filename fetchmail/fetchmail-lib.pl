@@ -197,14 +197,16 @@ splice(@$lref, $_[0]->{'line'}, $_[0]->{'eline'} - $_[0]->{'line'} + 1,
 sub poll_lines
 {
 local @rv;
+local $name = $_[0]->{'poll'};
+$name = "\"$name\"" if ($name =~ /[\s:;,]/);
 if ($_[0]->{'skip'}) {
-	push(@rv, "skip $_[0]->{'poll'}");
+	push(@rv, "skip $name");
 	}
 elsif ($_[0]->{'defaults'}) {
-	push(@rv, "defaults $_[0]->{'poll'}");
+	push(@rv, "defaults $name");
 	}
 else {
-	push(@rv, "poll $_[0]->{'poll'}");
+	push(@rv, "poll $name");
 	}
 push(@rv, "\tproto $_[0]->{'proto'}") if ($_[0]->{'proto'});
 push(@rv, "\tauth $_[0]->{'auth'}") if ($_[0]->{'auth'});

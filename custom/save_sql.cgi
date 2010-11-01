@@ -40,7 +40,8 @@ else {
 		delete($cmd->{'host'});
 		}
 	else {
-		gethostbyname($in{'host'}) || &error($text{'sql_ehost'});
+		&to_ipaddress($in{'host'}) ||
+			&error($text{'sql_ehost'});
 		$cmd->{'host'} = $in{'host'};
 		}
 	&parse_params_inputs($cmd);
