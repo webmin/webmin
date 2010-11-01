@@ -37,7 +37,7 @@ else {
 		$in{'tcpw'} =~ /^\S+$/ || &error($text{'save_etcpw'});
 		}
 	if (!$in{'iface_def'}) {
-		gethostbyname($in{'iface'}) || &check_ipaddress($in{'iface'}) ||
+		&to_ipaddress($in{'iface'}) || &to_ip6address($in{'iface'}) ||
 			&error($text{'save_eiface'});
 		}
 	if ($in{'mode'} == 0 || $in{'mode'} == 1) {
@@ -48,7 +48,7 @@ else {
 		}
 	else {
 		# Connecting to remote host and port
-		gethostbyname($in{'rhost'}) || &check_ipaddress($in{'rhost'}) ||
+		&to_ipaddress($in{'rhost'}) || &to_ip6address($in{'rhost'}) ||
 			&error($text{'save_erhost'});
 		$in{'rport'} =~ /^\d+$/ || &error($text{'save_erport'});
 		}
