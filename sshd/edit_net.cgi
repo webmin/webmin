@@ -15,8 +15,12 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 	$i = 0;
 	@table = ( );
 	foreach $l (@listens, { }) {
-		local ($a, $p) = $l->{'values'}->[0] =~ /^(.*):(\d+)$/ ?
-				   ($1, $2) : ($l->{'values'}->[0]);
+		local ($a, $p) = $l->{'values'}->[0] =~ /^([^:]*):(\d+)$/ ||
+				 $l->{'values'}->[0] =~ /^\[(.*)\]:(\d+)$/ ?
+				   ($1, $2) :
+				 $l->{'values'}->[0] =~ /^\[(.*)\]$/ ?
+				   ($1) :
+				   ($l->{'values'}->[0]);
 		$amode = $a eq "::" ? 2 : $a eq "0.0.0.0" ? 1 :
 			 $a eq "" ? 0 : 3;
 		push(@table, [

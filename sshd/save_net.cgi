@@ -20,12 +20,13 @@ if ($version{'type'} eq 'openssh' && $version{'number'} >= 3) {
 				$a = "0.0.0.0";
 				}
 			elsif ($in{"mode_$i"} == 2) {
-				$a = "::";
+				$a = "[::]";
 				}
 			elsif ($in{"mode_$i"} == 3) {
 				$a = $in{"address_$i"};
 				&check_ipaddress($a) || &check_ip6address($a) ||
 					&error(&text('net_eladdress', $a));
+				$a = "[$a]" if (&check_ip6address($a));
 				}
 			if ($in{"port_${i}_def"}) {
 				push(@listens, $a);
