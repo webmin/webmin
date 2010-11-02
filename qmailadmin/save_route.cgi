@@ -18,8 +18,8 @@ else {
 	# saving or creating .. check inputs
 	$in{'from'} =~ /^[A-Za-z0-9\.\-]+$/ ||
 		&error(&text('rsave_efrom', $in{'from'}));
-	$in{'to_def'} || gethostbyname($in{'to'}) ||
-		&check_ipaddress($in{'to'}) ||
+	$in{'to_def'} ||
+	    &to_ipaddress($in{'to'}) || &to_ip6address($in{'to'}) ||
 			&error(&text('rsave_eto', $in{'to'}));
 	$in{'port_def'} || $in{'port'} =~ /^\d+$/ ||
 		&error(&text('rsave_eport', $in{'port'}));

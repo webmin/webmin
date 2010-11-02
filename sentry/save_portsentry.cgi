@@ -54,7 +54,7 @@ if (defined($in{'ignore'})) {
 	$in{'ignore'} =~ s/\r//g;
 	$in{'ignore'} =~ s/\n*$/\n/;
 	foreach $h (split(/\s+/, $in{'ignore'})) {
-		gethostbyname($h) || &check_ipaddress($h) ||
+		&to_ipaddress($h) ||
 		  ($h =~ /^([0-9\.]+)\/(\d+)/ && &check_ipaddress($1)) ||
 			&error(&text('portsentry_eignore', $h));
 		}

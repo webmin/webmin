@@ -81,7 +81,7 @@ if ($in{'cfg'}) {
 			[ "none", [ 'hostname' => $hostname ] ] ]);
 		}
 	else {
-		gethostbyname($hostname) ||
+		&to_ipaddress($hostname) ||
 			$form->validate_redirect("create_form.cgi",
 			    [ [ "hostname", $text{'create_eresolvname'} ] ]);
 		push(@sysidcfg, [ 'network_interface' =>

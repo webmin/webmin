@@ -12,9 +12,8 @@ if ($old && $in{'direct'}) {
 	&delete_route($old);
 	}
 else {
-	gethostbyname($in{'defroute'}) ||
-		&check_ipaddress($in{'defroute'}) ||
-			&error(&text('rsave_eto', $in{'defroute'}));
+	&to_ipaddress($in{'defroute'}) || &to_ip6address($in{'defroute'}) ||
+		&error(&text('rsave_eto', $in{'defroute'}));
 	if ($old) {
 		&modify_route($old, { 'from' => '',
 				      'to' => $in{'defroute'} } );

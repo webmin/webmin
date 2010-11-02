@@ -21,7 +21,7 @@ if (defined($in{'foreign'})) {
 if (defined($in{'multiple'})) {
 	@multiple = split(/\s+/, $in{'multiple'});
 	foreach $m (@multiple) {
-		gethostbyname($m) || &check_ipaddress($m) ||
+		&to_ipaddress($m) ||
 			&error(&text('hostsentry_emultiple', $m));
 		}
 	}
