@@ -17,7 +17,7 @@ if ($in{'mode'} == 0) {
 	}
 elsif ($in{'mode'} == 1) {
 	# Database of some type
-	gethostbyname($in{'dbhost'}) || &error($text{'db_edbhost'});
+	&to_ipaddress($in{'dbhost'}) || &error($text{'db_edbhost'});
 	$in{'dbdb'} =~ /^[a-z0-9\.\-\_]+$/ || &error($text{'db_edbdb'});
 	$in{'dbport_def'} || $in{'dbport'} =~ /^\d+$/ ||
 		&error($text{'db_edbport'});
@@ -26,7 +26,8 @@ elsif ($in{'mode'} == 1) {
 	}
 elsif ($in{'mode'} == 3) {
 	# LDAP
-	gethostbyname($in{'ldaphost'}) || &error($text{'db_eldaphost'});
+	&to_ipaddress($in{'ldaphost'}) || &to_ip6address($in{'ldaphost'}) ||
+		&error($text{'db_eldaphost'});
 	$in{'ldapport_def'} || $in{'ldapport'} =~ /^\d+$/ ||
 		&error($text{'db_eldapport'});
 	$in{'ldapdn'} =~ /^\S+$/ || &error($text{'db_eldapdn'});

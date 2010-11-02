@@ -905,7 +905,11 @@ if ($@) {
 	return &text('connect_eldapmod', "<tt>Net::LDAP</tt>");
 	}
 local $port = $config{'port'} || 389;
-local $ldap = Net::LDAP->new($config{'server'}, port => $port);
+local $inet6 = !&to_ipaddress($config{'server'}) &&
+	        &to_ip6address($config{'server'});
+local $ldap = Net::LDAP->new($config{'server'},
+			     port => $port,
+			     inet6 => $inet6);
 if (!$ldap) {
 	return &text('connect_eldap', "<tt>$config{'server'}</tt>", $port);
 	}
