@@ -4,6 +4,9 @@
 
 require './user-lib.pl';
 $access{'logins'} || &error($text{'who_ecannot'});
+if (&foreign_check("mailboxes")) {
+	&foreign_require("mailboxes");
+	}
 
 &ui_print_header(undef, $text{'who_title'}, "");
 
@@ -11,11 +14,13 @@ $access{'logins'} || &error($text{'who_ecannot'});
 @whos = &logged_in_users();
 @table = ( );
 foreach $w (@whos) {
+	$tm = defined(&mailboxes::parse_mail_date) ?
+		&mailboxes::parse_mail_date($w->{'when'}) : undef;
 	push(@table, [
 		"<a href='list_logins.cgi?username=".&urlize($w->{'user'})."'>".
 		&html_escape($w->{'user'})."</a>",
 		&html_escape($w->{'tty'}),
-		&html_escape($w->{'when'}),
+		&html_escape($tm ? &make_date($tm) : $w->{'when'}),
 		$w->{'from'} ? &html_escape($w->{'from'})
 			     : $text{'logins_local'},
 		]);

@@ -2518,6 +2518,7 @@ sub parse_mail_date
 {
 local ($str) = @_;
 $str =~ s/^[, \t]+//;
+$str =~ s/\s+$//;
 open(OLDSTDERR, ">&STDERR");	# suppress STDERR from Time::Local
 close(STDERR);
 my $rv = eval {
@@ -2549,17 +2550,27 @@ my $rv = eval {
 				      $7 < 50 ? $7+100 : $7 < 1000 ? $7 : $7-1900);
 		return $tm;
 		}
-	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d{1,2})\s+(\d+):(\d+):(\d+)/) {
+	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d{1,2})\s+(\d+):(\d+):(\d+)/ &&
+	       &month_to_number($2)) {
 		# Format like Tue Dec  7 12:58:52
 		local @now = localtime(time());
 		local $tm = timelocal($6, $5, $4, $3, &month_to_number($2),
 				      $now[5]);
 		return $tm;
 		}
-	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d{1,2})\s+(\d+):(\d+)/) {
+	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d{1,2})\s+(\d+):(\d+)$/ &&
+	       defined(&month_to_number($2))) {
 		# Format like Tue Dec  7 12:58
 		local @now = localtime(time());
 		local $tm = timelocal(0, $5, $4, $3, &month_to_number($2),
+				      $now[5]);
+		return $tm;
+		}
+	elsif ($str =~ /^(\S+)\s+(\d{1,2})\s+(\d+):(\d+)$/ &&
+	       defined(&month_to_number($1))) {
+		# Format like Dec  7 12:58
+		local @now = localtime(time());
+		local $tm = timelocal(0, $4, $3, $2, &month_to_number($1),
 				      $now[5]);
 		return $tm;
 		}
