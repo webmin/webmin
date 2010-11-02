@@ -33,10 +33,11 @@ if (@servers && $config{'display_mode'}) {
 		local @cols;
 		local $table =
 			"<table cellpadding=0 cellspacing=0 width=100%><tr>\n";
-		if (!$access{'links'}) {
+		if (!$access{'links'} || !$s->{'port'}) {
 			$table .= "<td>\n";
 			$table .= ($s->{'realhost'} || $s->{'host'});
-			$table .= ":$s->{'port'}</td>\n";
+			$table .= ":$s->{'port'}" if ($s->{'port'});
+			$table .= "</td>\n";
 			}
 		else {
 			if ($s->{'user'} || $s->{'autouser'}) {

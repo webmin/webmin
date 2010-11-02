@@ -131,7 +131,8 @@ else {
 		$net = { 'name' => $in{'net_proto'},
 			 'type' => 0,
 			 'values' => [ $in{'net_host'} ] };
-		gethostbyname($in{'net_host'}) ||
+		&to_ipaddress($in{'net_host'}) ||
+		    &to_ip6address($in{'net_host'}) ||
 			&error($text{'destination_enet_host'});
 		&save_directive($conf, $dest, undef, $net, 1);
 

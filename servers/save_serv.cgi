@@ -24,9 +24,15 @@ if ($in{'delete'}) {
 else {
 	# validate inputs
 	$in{'host'} =~ /^\S+$/ || &error($text{'save_ehost'});
-	$in{'port'} =~ /^\d+$/ || &error($text{'save_eport'});
+	if ($in{'port_def'}) {
+		$in{'mode'} == 0 || &error($text{'save_eport2'});
+		}
+	else {
+		$in{'port'} =~ /^\d+$/ || &error($text{'save_eport'});
+		}
 	if ($in{'mode'} == 1) {
-		gethostbyname($in{'host'}) || &error($text{'save_ehost2'});
+		&to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
+			&error($text{'save_ehost2'});
 		$in{'wuser'} =~ /\S/ || &error($text{'save_euser'});
 		$in{'wpass'} =~ /\S/ || &error($text{'save_epass'});
 		}
@@ -78,7 +84,7 @@ else {
 		push(@groups, $in{'newgroup'});
 		}
 	$serv->{'host'} = $in{'host'};
-	$serv->{'port'} = $in{'port'};
+	$serv->{'port'} = $in{'port_def'} ? undef : $in{'port'};
 	$serv->{'type'} = $in{'type'};
 	$serv->{'ssl'} = $in{'ssl'};
 	$serv->{'desc'} = $in{'desc_def'} ? undef : $in{'desc'};

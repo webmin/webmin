@@ -41,7 +41,8 @@ if ($in{'sched'}) {
 	$config{'auto_self'} = $in{'self'};
 	$in{'email_def'} || $in{'email'} =~ /\S/ ||&error($text{'auto_eemail'});
 	$config{'auto_email'} = $in{'email_def'} ? undef : $in{'email'};
-	$in{'smtp_def'} || gethostbyname($in{'smtp'}) ||
+	$in{'smtp_def'} || &to_ipaddress($in{'smtp'}) ||
+	    &to_ip6address($in{'smtp'}) ||
 		&error($text{'auto_esmtp'});
 	$config{'auto_smtp'} = $in{'smtp_def'} ? undef : $in{'smtp'};
 	&save_module_config();

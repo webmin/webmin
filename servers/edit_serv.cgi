@@ -27,8 +27,15 @@ print &ui_table_start($text{'edit_details'}, undef, 2);
 print &ui_table_row($text{'edit_host'},
 		    &ui_textbox("host", $s->{'host'}, 60));
 
-print &ui_table_row($text{'edit_port'},
-		    &ui_textbox("port", $s->{'port'}, 5));
+if ($in{'new'} || $s->{'port'}) {
+	print &ui_table_row($text{'edit_port'},
+			    &ui_textbox("port", $s->{'port'}, 5));
+	}
+else {
+	print &ui_table_row($text{'edit_port'},
+			    &ui_opt_textbox("port", $s->{'port'}, 5,
+					    $text{'edit_portnone'}));
+	}
 
 if ($s->{'realhost'}) {
 	print &ui_table_row($text{'edit_realhost'},
