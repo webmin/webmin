@@ -2556,6 +2556,13 @@ my $rv = eval {
 				      $now[5]);
 		return $tm;
 		}
+	elsif ($str =~ /^(\S+)\s+(\S+)\s+(\d{1,2})\s+(\d+):(\d+)/) {
+		# Format like Tue Dec  7 12:58
+		local @now = localtime(time());
+		local $tm = timelocal(0, $5, $4, $3, &month_to_number($2),
+				      $now[5]);
+		return $tm;
+		}
 	elsif ($str =~ /^(\S+)\s+(\d+)\s+(\d+):(\d+):(\d+)\s+(\d+)\s+(\S+)/) {
 		# Format like Dec  7 12:58:52 2004 GMT
 		local $tm = timegm($5, $4, $3, $2, &month_to_number($1),

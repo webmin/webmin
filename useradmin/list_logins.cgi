@@ -4,6 +4,7 @@
 
 require './user-lib.pl';
 &ReadParse();
+&foreign_require("mailboxes");
 
 # Work out who we can list for
 $u = $in{'username'};
@@ -22,15 +23,15 @@ elsif ($access{'logins'} ne "*") {
 # Build the table data
 @table = ( );
 foreach $l (&list_last_logins($u, $config{'last_count'})) {
+	$tm = &mailboxes::parse_mail_date($l->[3]);
 	push(@table, [
 		$u ? ( ) : ( "<tt>".&html_escape($l->[0])."</tt>" ),
 		&html_escape($l->[2]) || $text{'logins_local'},
 		&html_escape($l->[1]),
-		&html_escape($l->[3]),
+		&make_date($tm),
 		$l->[4] ? ( &html_escape($l->[4]),
 			    &html_escape($l->[5]) )
-			: { 'type' => 'string', 'columns' => 2,
-			    'value' => "<i>$text{'logins_still'}</i>" },
+			: ( "<i>$text{'logins_still'}</i>", "" ),
 		]);
 	}
 
