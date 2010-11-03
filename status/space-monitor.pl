@@ -11,6 +11,10 @@ foreach $f (&mount::list_mounted()) {
 	}
 if ($m) {
 	local @sp = &mount::disk_space($m->[2], $m->[0]);
+	if (!$sp[0]) {
+		return { 'up' => -1,
+			 'desc' => $text{'space_dferr'} };
+		}
 	if ($_[0]->{'min'} =~ /^(\S+)%/) {
 		# Compare percentage
 		local $pc = $sp[1] * 100.0 / $sp[0];
@@ -51,7 +55,7 @@ sub show_space_dialog
 if (&foreign_check("mount")) {
 	# Can get filesystem list from mount module
 	&foreign_require("mount", "mount-lib.pl");
-	local @mounted = &mount::list_mounted();
+	local @mounted = grep { $_->[0] =~ /^\// } &mount::list_mounted();
 	local ($got) = grep { $_->[0] eq $_[0]->{'fs'} } @mounted;
 	print &ui_table_row($text{'space_fs'},
 		&ui_select("fs", !$_[0]->{'fs'} ? $mounted[0]->[0] :
