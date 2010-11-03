@@ -10,7 +10,7 @@ $port = &get_squid_port();
 
 # Validate inputs
 if ($in{'enabled'} == 1) {
-	gethostbyname($in{'net'}) ||
+	&to_ipaddress($in{'net'}) ||
 	    ($in{'net'} =~ /^([0-9\.]+)\/(\d+)$/ &&
 	    &check_ipaddress($1) && $2 > 0 && $2 <= 32) ||
 		&error($text{'iptables_enet'});

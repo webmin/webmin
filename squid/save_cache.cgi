@@ -213,7 +213,7 @@ return $_[0] =~ /^\d+$/ ? undef : &text('scache_emsg12',$_[0]);
 
 sub check_host
 {
-return gethostbyname($_[0]) || &check_ipaddress($_[0]) ? undef
+return &to_ipaddress($_[0]) || &to_ip6address($_[0]) ? undef
 		: &text('scache_emsg13',$_[0]);
 }
 

@@ -27,7 +27,7 @@ if ($in{'delete'}) {
 else {
 	# validate inputs
 	$whatfailed = $text{'schost_ftsc'};
-	gethostbyname($in{'host'}) || &check_ipaddress($in{'host'}) ||
+	&to_ipaddress($in{'host'}) || &to_ip6address($in{'host'}) ||
 		&error(&text('schost_emsg1',$in{'host'}));
 	$in{'proxy'} =~ /^\d+$/ ||
 		&error(&text('schost_emsg2',$in{'proxy'}));

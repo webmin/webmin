@@ -113,7 +113,7 @@ foreach $p (@ports, '') {
 	printf "<input type=radio name=$_[0]_addr_def_$i value=0 %s>\n",
 		$p =~ /:/ ? 'checked' : '';
 	printf "<input name=$_[0]_addr_$i size=20 value='%s'></td>\n",
-		$p =~ /^(\S+):/ ? $1 : '';
+		$p =~ /^\[(\S+)\]:/ || $p =~ /^(\S+):/ ? $1 : '';
 	if ($squid_version >= 2.5) {
 		# Show port options
 		printf "<td><input name=$_[0]_opts_$i size=40 value='%s'></td>\n",

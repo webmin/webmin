@@ -64,8 +64,10 @@ else {
 			$to = $in{"to_$i"}; $mask = $in{"mask_$i"};
 			next if (!$from && !$to && !$mask);
 			&check_ipaddress($from) ||
+			    &check_ip6address($from) ||
 			       &error(&text('aclsave_efrom',$from));
 			!$to || &check_ipaddress($to) ||
+			   &check_ip6address($to) ||
 			       &error(&text('aclsave_eto',$to));
 			$mask =~ /^\d*$/ || &check_ipaddress($mask) ||
 			       &error(&text('aclsave_enmask',$mask));
@@ -79,7 +81,7 @@ else {
 		for($i=0; defined($ip = $in{"ip_$i"}); $i++) {
 			$mask = $in{"mask_$i"};
 			next if (!$mask || !$ip);
-			&check_ipaddress($ip) ||
+			&check_ipaddress($ip) || &check_ip6address($ip) ||
 				&error(&text('aclsave_eip',$ip));
 			$mask =~ /^\d+$/ || &check_ipaddress($mask) ||
 			       &error(&text('aclsave_enmask',$mask));

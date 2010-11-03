@@ -16,8 +16,9 @@ if ($config{'squid_start'}) {
 	$errs = &read_file_contents($temp);
 	unlink($temp);
 	&reset_environment();
-	if ($errs && $errs =~ /\d+\/\d+\/\d+/) {
-		&system_logged("$config{'squid_stop'} >/dev/null 2>&1 </dev/null");
+	if (!&is_squid_running()) {
+		&system_logged(
+			"$config{'squid_stop'} >/dev/null 2>&1 </dev/null");
 		&error("<pre>$errs</pre>");
 		}
 	}

@@ -51,7 +51,7 @@ return $_[0] =~ /^\d+$/ ? undef : &text('sport_emsg1',$_[0]);
 
 sub check_address
 {
-return &check_ipaddress($_[0]) || gethostbyname($_[0]) ? undef :
+return &to_ipaddress($_[0]) || &to_ip6address($_[0]) ? undef :
 	&text('sport_emsg2',$_[0]);
 
 }
@@ -74,8 +74,9 @@ for($i=0; defined($port = $in{"$_[0]_port_$i"}); $i++) {
 		}
 	else {
 		$addr = $in{"$_[0]_addr_$i"};
-		gethostbyname($addr) || &check_ipaddress($addr) ||
+		&to_ipaddress($addr) || &to_ip6address($addr) ||
 			&error("'$addr' is not a valid proxy address");
+		$addr = "[$addr]" if (&check_ip6address($addr));
 		push(@ports, { 'name' => $_[0],
 			       'values' => [ "$addr:$port" ] } );
 		}

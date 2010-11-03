@@ -67,16 +67,16 @@ if ($type eq "src" || $type eq "dst") {
 		"<td><b>$text{'acl_toip'}</b></td>\n";
 	print "     <td><b>$text{'acl_nmask'}</b></td> </tr>\n";
 	for($i=0; $i<=@vals; $i++) {
-		if ($vals[$i] =~ /^([\d\.]+)-([\d\.]+)\/([\d\.]+)$/) {
+		if ($vals[$i] =~ /^([a-z0-9\.\:]+)-([a-z0-9\.\:]+)\/([\d\.]+)$/) {
 			$from = $1; $to = $2; $mask = $3;
 			}
-		elsif ($vals[$i] =~ /^([\d\.]+)-([\d\.]+)$/) {
+		elsif ($vals[$i] =~ /^([a-z0-9\.\:]+)-([a-z0-9\.\:]+)$/) {
 			$from = $1; $to = $2; $mask = "";
 			}
-		elsif ($vals[$i] =~ /^([\d\.]+)\/([\d\.]+)$/) {
+		elsif ($vals[$i] =~ /^([a-z0-9\.\:]+)\/([\d\.]+)$/) {
 			$from = $1; $to = ""; $mask = $2;
 			}
-		elsif ($vals[$i] =~ /^([\d\.]+)$/) {
+		elsif ($vals[$i] =~ /^([a-z0-9\.\:]+)$/) {
 			$from = $1; $to = ""; $mask = "";
 			}
 		else { $from = $to = $mask = ""; }
@@ -93,7 +93,7 @@ elsif ($type eq "myip") {
 	print "<tr> <td><b>$text{'acl_ipaddr'}</b></td> ",
 		"<td><b>$text{'acl_nmask'}</b></td> </tr>\n";
 	for($i=0; $i<=@vals; $i++) {
-		if ($vals[$i] =~ /^([\d\.]+)\/([\d\.]+)$/) {
+		if ($vals[$i] =~ /^([a-z0-9\.\:]+)\/([\d\.]+)$/) {
 			$ip = $1; $mask = $2;
 			}
 		else { $ip = $mask = ""; }
