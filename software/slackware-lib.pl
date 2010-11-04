@@ -41,7 +41,8 @@ foreach $f (@list) {
 	$packages{$i,'class'} = $text{'slack_unclass'};
 	&open_tempfile(PKG, "$package_dir/$f");
 	while(<PKG>) {
-		if (/^PACKAGE LOCATION:\s+disk([a-z]+)\d+/i) {
+		if (/^PACKAGE LOCATION:\s+disk([a-z]+)\d+/i ||
+		    /^PACKAGE LOCATION:\s+\S+\/([a-z]+)\/[^\/]+$/i) {
 			$packages{$i,'class'} = $class_map{$1};
 			}
 		elsif (/^PACKAGE DESCRIPTION:/i) {
