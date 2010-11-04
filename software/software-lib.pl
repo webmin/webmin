@@ -231,6 +231,14 @@ for(my $i=0; $i<@sp1 || $i<@sp2; $i++) {
 				}
 			}
 		}
+	elsif ($v1 =~ /^\d+$/ && $v2 !~ /^\d+$/) {
+		# Numeric compared to non-numeric - numeric is always higher
+		$comp = 1;
+		}
+	elsif ($v1 =~ /^\d+$/ && $v2 !~ /^\d+$/) {
+		# Non-numeric compared to numeric - numeric is always higher
+		$comp = -1;
+		}
 	else {
 		# String compare only
 		$comp = $v1 cmp $v2;
