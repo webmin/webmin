@@ -21,8 +21,14 @@ if (!$in{'ports_def'}) {
 		# IP address
 		if (!$in{"addr_${i}_def"}) {
 			&check_ipaddress($in{"addr_$i"}) ||
+			   &check_ip6address($in{"addr_$i"}) ||
 				&error(&text('ports_eaddr', $i+1));
 			push(@opts, "Address=".$in{"addr_$i"});
+			}
+
+		# Family
+		if ($in{"family_${i}"}) {
+			push(@opts, "Family=".$in{"family_${i}"});
 			}
 
 		# TCP port

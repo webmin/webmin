@@ -29,7 +29,7 @@ print &ui_columns_start([
 	], 100);
 $i = 0;
 @tds = ( "valign=top", "valign=top", "valign=top" );
-@known_opts = ( 'Name', 'Address', 'Port', 'Modifiers' );
+@known_opts = ( 'Name', 'Address', 'Port', 'Modifiers', 'Family' );
 foreach $p (@ports, { }) {
 	@cols = ( );
 	foreach $k (@known_opts) {
@@ -47,7 +47,13 @@ foreach $p (@ports, { }) {
 		}
 	push(@cols, &ui_textbox("name_$i", $p->{'Name'}, 10));
 	push(@cols, &ui_opt_textbox("addr_$i", $p->{'Address'}, 15,
-				    $text{'ports_all'}, $text{'ports_ip'}));
+				    $text{'ports_all'}, $text{'ports_ip'}).
+		    "<br>\n".
+		    $text{'ports_family'}." ".
+		    &ui_select("family_$i", $p->{'Family'},
+			       [ [ '', $text{'default'} ],
+				 [ 'inet', $text{'ports_inet'} ],
+				 [ 'inet6', $text{'ports_inet6'} ] ]));
 	push(@cols, &ui_opt_textbox("port_$i", $p->{'Port'}, 6,
 				    $text{'default'}." (25)"));
 	@mods = ( );
