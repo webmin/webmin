@@ -41,11 +41,11 @@ else {
 # Dump the file
 &switch_acl_uid();
 $temp = &transname();
-$p = &unmake_chroot($p);
 if (!&can_access($p)) {
 	# ACL rules prevent access to file
 	&error_exit(&text('view_eaccess', &html_escape($p)));
 	}
+$p = &unmake_chroot($p);
 
 if ($in{'format'}) {
 	# An archive of a directory was requested .. create it
