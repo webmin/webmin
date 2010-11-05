@@ -11,15 +11,15 @@ if (!$no_check_support) {
 		$cifs_support = 4;
 		}
 	if (&has_command("mount.smbfs")) {
-		$smbfs_support = &backquote_command("mount.smbfs -v", 1) =~ /username=/i ? 4 : 3;
+		$smbfs_support = &backquote_command("mount.smbfs -v 2>&1", 1) =~ /username=/i ? 4 : 3;
 		$smbfs_fs = "smbfs";
 		}
 	elsif (&has_command("mount.smb")) {
-		$smbfs_support = &backquote_command("mount.smb -v", 1) =~ /username=/i ? 4 : 3;
+		$smbfs_support = &backquote_command("mount.smb -v 2>&1", 1) =~ /username=/i ? 4 : 3;
 		$smbfs_fs = "smb";
 		}
 	elsif (&has_command("smbmount")) {
-		$smbfs_support = &backquote_command("smbmount -v", 1) =~ /Version\s+2/i ? 2 : 1;
+		$smbfs_support = &backquote_command("smbmount -v 2>&1", 1) =~ /Version\s+2/i ? 2 : 1;
 		$smbfs_fs = "smbfs";
 		}
 	$swaps_support = -r "/proc/swaps";
