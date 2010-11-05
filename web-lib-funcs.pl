@@ -771,6 +771,7 @@ my $charset = defined($main::force_charset) ? $main::force_charset
 if (defined(&theme_header)) {
 	$module_name = &get_module_name();
 	&theme_header(@_);
+	$miniserv::page_capture = 1;
 	return;
 	}
 print "<!doctype html public \"-//W3C//DTD HTML 3.2 Final//EN\">\n";
@@ -908,6 +909,7 @@ if (@_ > 1) {
 	print "</td></tr></table>\n";
 	print $tconfig{'postheader'};
 	}
+$miniserv::page_capture = 1;
 }
 
 =head2 get_html_title(title)
@@ -1044,6 +1046,7 @@ my $charset = defined($main::force_charset) ? $main::force_charset
 &load_theme_library();
 if (defined(&theme_popup_header)) {
 	&theme_popup_header(@_);
+	$miniserv::page_capture = 1;
 	return;
 	}
 print "<!doctype html public \"-//W3C//DTD HTML 3.2 Final//EN\">\n";
@@ -1075,6 +1078,7 @@ if (!$_[3]) {
 		&theme_popup_prebody(@_);
 		}
 	}
+$miniserv::page_capture = 1;
 }
 
 =head2 footer([page, name]+, [noendbody])
@@ -1088,6 +1092,7 @@ a link destination, and the second the link text. For example :
 =cut
 sub footer
 {
+$miniserv::page_capture = 0;
 &load_theme_library();
 my %this_module_info = &get_module_info(&get_module_name());
 if (defined(&theme_footer)) {
@@ -1157,6 +1162,7 @@ Outputs html for a footer for a popup window, started by popup_header.
 =cut
 sub popup_footer
 {
+$miniserv::page_capture = 0;
 &load_theme_library();
 if (defined(&theme_popup_footer)) {
 	&theme_popup_footer(@_);
@@ -5197,6 +5203,7 @@ if ($gconfig{'logfiles'} && !&get_module_variable('$no_log_file_changes')) {
 		}
 	@main::locked_file_diff = undef;
 	}
+
 if ($gconfig{'logfullfiles'}) {
 	# Save the original contents of any modified files
 	my $i = 0;
@@ -5220,6 +5227,18 @@ if ($gconfig{'logfullfiles'}) {
 		}
 	%main::orig_file_data = undef;
 	%main::orig_file_type = undef;
+	}
+
+if ($miniserv::page_capture_out) {
+	# Save the whole page output
+	mkdir("$ENV{'WEBMIN_VAR'}/output", 0700);
+	open(PAGEOUT, ">$ENV{'WEBMIN_VAR'}/output/$id");
+	print PAGEOUT $miniserv::page_capture_out;
+	close(PAGEOUT);
+	if ($gconfig{'logperms'}) {
+		chmod(oct($gconfig{'logperms'}),
+		      "$ENV{'WEBMIN_VAR'}/output/$id");
+		}
 	}
 
 # Log to syslog too
@@ -5259,6 +5278,8 @@ if ($gconfig{'logsyslog'}) {
 		eval { syslog("info", "%s", "[$info{'desc'}] $msg"); };
 		}
 	}
+
+print STDERR $miniserv::page_capture_out,"\n";
 }
 
 =head2 additional_log(type, object, data, [input])

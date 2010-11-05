@@ -2981,6 +2981,8 @@ sub WRITE
 $r = shift;
 my($buf,$len,$offset) = @_;
 &write_to_sock(substr($buf, $offset, $len));
+$miniserv::page_capture_out .= substr($buf, $offset, $len)
+	if ($miniserv::page_capture);
 }
  
 sub PRINT
@@ -2990,13 +2992,18 @@ $$r++;
 my $buf = join(defined($,) ? $, : "", @_);
 $buf .= $\ if defined($\);
 &write_to_sock($buf);
+$miniserv::page_capture_out .= $buf
+	if ($miniserv::page_capture);
 }
  
 sub PRINTF
 {
 shift;
 my $fmt = shift;
-&write_to_sock(sprintf $fmt, @_);
+my $buf = sprintf $fmt, @_;
+&write_to_sock($buf);
+$miniserv::page_capture_out .= $buf
+	if ($miniserv::page_capture);
 }
  
 # Send back already read data while we have it, then read from SOCK
