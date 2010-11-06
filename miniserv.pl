@@ -442,12 +442,12 @@ if ($config{'bind'}) {
 		# IP is v4
 		push(@sockets, [ inet_aton($config{'bind'}),
 				 $config{'port'},
-				 PF_INET ]);
+				 PF_INET() ]);
 		}
 	}
 else {
 	# Listening on all IPs
-	push(@sockets, [ INADDR_ANY, $config{'port'}, PF_INET ]);
+	push(@sockets, [ INADDR_ANY, $config{'port'}, PF_INET() ]);
 	if ($use_ipv6) {
 		# Also IPv6
 		push(@sockets, [ in6addr_any(), $config{'port'},
@@ -467,7 +467,7 @@ foreach $s (split(/\s+/, $config{'sockets'})) {
 	elsif ($s =~ /^\*:(\d+)$/) {
 		# Listening on all IPs on some port
 		push(@sockets, [ INADDR_ANY, $config{'port'},
-				 PF_INET ]);
+				 PF_INET() ]);
 		if ($use_ipv6) {
 			push(@sockets, [ in6addr_any(), $config{'port'},
 					 Socket6::PF_INET6() ]);
@@ -484,13 +484,13 @@ foreach $s (split(/\s+/, $config{'sockets'})) {
 			}
 		else {
 			push(@sockets, [ inet_aton($ip), $port,
-					 PF_INET ]);
+					 PF_INET() ]);
 			}
 		}
 	elsif ($s =~ /^([0-9\.]+):\*$/ || $s =~ /^([0-9\.]+)$/) {
 		# Listen on the main port on another IPv4 address
 		push(@sockets, [ inet_aton($1), $sockets[0]->[1],
-				 PF_INET ]);
+				 PF_INET() ]);
 		}
 	elsif (($s =~ /^([0-9a-f\:]+):\*$/ || $s =~ /^([0-9a-f\:]+)$/) &&
 	       $use_ipv6) {
@@ -510,7 +510,7 @@ for($i=0; $i<@sockets; $i++) {
 	socket($fh, $sockets[$i]->[2], SOCK_STREAM, $proto) ||
 		die "Failed to open socket family $sockets[$i]->[2] : $!";
 	setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
-	if ($sockets[$i]->[2] eq PF_INET) {
+	if ($sockets[$i]->[2] eq PF_INET()) {
 		$pack = pack_sockaddr_in($sockets[$i]->[1], $sockets[$i]->[0]);
 		}
 	else {
@@ -539,7 +539,7 @@ for($i=0; $i<@sockets; $i++) {
 	else {
 		listen($fh, SOMAXCONN);
 		push(@socketfhs, $fh);
-		$ipv6fhs{$fh} = $sockets[$i]->[2] eq PF_INET ? 0 : 1;
+		$ipv6fhs{$fh} = $sockets[$i]->[2] eq PF_INET() ? 0 : 1;
 		}
 	}
 foreach $se (@sockerrs) {
@@ -550,7 +550,7 @@ foreach $se (@sockerrs) {
 if (!@socketfhs && !$tried_inaddr_any) {
 	print STDERR "Falling back to listening on any address\n";
 	$fh = "MAIN";
-	socket($fh, PF_INET, SOCK_STREAM, $proto) ||
+	socket($fh, PF_INET(), SOCK_STREAM, $proto) ||
 		die "Failed to open socket : $!";
 	setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
 	bind($fh, pack_sockaddr_in($sockets[0]->[1], INADDR_ANY)) ||
@@ -565,7 +565,7 @@ elsif (!@socketfhs && $tried_inaddr_any) {
 if ($config{'listen'}) {
 	# Open the socket that allows other webmin servers to find this one
 	$proto = getprotobyname('udp');
-	if (socket(LISTEN, PF_INET, SOCK_DGRAM, $proto)) {
+	if (socket(LISTEN, PF_INET(), SOCK_DGRAM, $proto)) {
 		setsockopt(LISTEN, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
 		bind(LISTEN, pack_sockaddr_in($config{'listen'}, INADDR_ANY));
 		listen(LISTEN, SOMAXCONN);
@@ -901,10 +901,10 @@ while(1) {
 		    (!@allow || &ip_match($fromip, $toip, @allow))) {
 			local $listenhost = &get_socket_name(LISTEN, 0);
 			send(LISTEN, "$listenhost:$config{'port'}:".
-				  ($use_ssl || $config{'inetd_ssl'} ? 1 : 0).":".
-				  ($config{'listenhost'} ?
+				 ($use_ssl || $config{'inetd_ssl'} ? 1 : 0).":".
+				 ($config{'listenhost'} ?
 					&get_system_hostname() : ""),
-				  0, $from)
+				 0, $from)
 				if ($listenhost);
 			}
 		}

@@ -2543,7 +2543,7 @@ my $ip;
 my $proto = getprotobyname("tcp");
 if ($ip = &to_ipaddress($host)) {
 	# Create IPv4 socket and connection
-	if (!socket($fh, PF_INET, SOCK_STREAM, $proto)) {
+	if (!socket($fh, PF_INET(), SOCK_STREAM, $proto)) {
 		my $msg = "Failed to create socket : $!";
 		if ($err) { $$err = $msg; return 0; }
 		else { &error($msg); }
