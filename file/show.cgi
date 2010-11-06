@@ -109,11 +109,11 @@ if ($in{'format'}) {
 	print "Content-length: $st[7]\n";
 	print "Content-type: $type\n\n";
 	open(FILE, $temp);
+	unlink($temp);
 	while(read(FILE, $buf, 1024)) {
 		print $buf;
 		}
 	close(FILE);
-	unlink($temp);
 	}
 else {
 	if (!open(FILE, $p)) {
@@ -158,5 +158,6 @@ sub ok_exit
 {
 print "Content-type: text/plain\n\n";
 print "\n";
+exit;
 }
 
