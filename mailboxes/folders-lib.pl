@@ -2548,7 +2548,7 @@ else {
 
 # disable_html_images(html, disable?, &urls)
 # Turn off some or all images in HTML email. Mode 0=Do nothing, 1=Offsite only,
-# 2=All images. Returns the number of images found.
+# 2=All images. Returns the URL of images found in &urls
 sub disable_html_images
 {
 local ($html, $dis, $urls) = @_;

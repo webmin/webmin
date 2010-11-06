@@ -24,3 +24,5 @@ Added an option to search for actions by non-Webmin users (such as those authent
 ---- Changes since 1.440 ----
 Added the list_webmin_log function, for other modules wanting to search the Webmin log.
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.520 ----
+Actions in Webmin which produce output (like deleting a user or creating a domain) now have that output logged, and it can be viewed on the Action Details page.

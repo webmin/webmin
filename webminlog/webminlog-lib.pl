@@ -246,6 +246,17 @@ else {
 	}
 }
 
+=head2 get_action_output(&action)
+
+Returns the text of the page that generated this action, or undef if none.
+
+=cut
+sub get_action_output
+{
+local ($act) = @_;
+return &read_file_contents("$ENV{'WEBMIN_VAR'}/output/$act->{'id'}");
+}
+
 =head2 expand_base_dir(base)
 
 Finds files either under some dir, or starting with some path in the same

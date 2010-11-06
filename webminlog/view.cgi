@@ -72,6 +72,19 @@ print &ui_table_row(undef,
 	&ui_submit($text{'save'}, "annosave"));
 print &ui_hidden_table_end("anno");
 
+# Page output, if any
+$output = &get_action_output($act);
+if ($output && &foreign_check("mailboxes")) {
+	&foreign_require("mailboxes");
+	$output = &mailboxes::filter_javascript($output);
+	$output = &mailboxes::safe_urls($output);
+	$output = &mailboxes::disable_html_images($output, 1);
+	print &ui_hidden_table_start($text{'view_output'}, "width=100%", 1,
+				     "output", 0);
+	print &ui_table_row(undef, $output, 2);
+	print &ui_hidden_table_end("output");
+	}
+
 # Raw log data, hidden by default
 print &ui_hidden_table_start($text{'view_raw'}, "width=100%", 1, "raw", 0);
 @tds = ( "width=20% ");
@@ -93,9 +106,10 @@ $rtable .= &ui_columns_end();
 print &ui_table_row(undef, $rtable, 2);
 print &ui_hidden_table_end("raw");
 
-# display modified files
+# display modified and commands run files
 $rbcount = 0;
 $i = 0;
+$fhtml = "";
 foreach $d (&list_diffs($act)) {
 	local $t = $text{"view_type_".$d->{'type'}};
 	local $rb;
@@ -108,7 +122,7 @@ foreach $d (&list_diffs($act)) {
 	$rbcount++ if ($rb);
 	if ($t =~ /\$2/ || !$d->{'diff'}) {
 		# Diff is just a single line message
-		print &ui_hidden_table_start($cbox.
+		$fhtml .= &ui_hidden_table_start($cbox.
 		      &text("view_type_".$d->{'type'},
 			    "<tt>$d->{'object'}</tt>",
 			    "<tt>".&html_escape($d->{'diff'})."</tt>"),
@@ -116,29 +130,31 @@ foreach $d (&list_diffs($act)) {
 		}
 	else {
 		# Show multi-line diff
-		print &ui_hidden_table_start(
+		$fhtml .= &ui_hidden_table_start(
 			$cbox.&text("view_type_".$d->{'type'},
 			            "<tt>$d->{'object'}</tt>"),
 			"width=100%", 2, "diff$i", 1);
-		print &ui_table_row(undef,
+		$fhtml .= &ui_table_row(undef,
 			"<pre>".&html_escape($d->{'diff'})."</pre>", 2);
 		if ($d->{'input'}) {
 			# And input too
-			print &ui_table_row(undef,
+			$fhtml .= &ui_table_row(undef,
 				"<b>".&text('view_input')."</b><br>".
 				"<pre>".&html_escape($d->{'input'})."</pre>",2);
 			}
 		}
-	print &ui_hidden_table_end("diff$i");
+	$fhtml .= &ui_hidden_table_end("diff$i");
 	$i++;
 	$anydiffs++;
 	}
 if ($rbcount) {
-	print &ui_links_row([ &select_all_link("r"),
-			      &select_invert_link("r") ]);
+	$fhtml .= &ui_links_row([ &select_all_link("r"),
+			          &select_invert_link("r") ]);
 	}
-
-print "<b>$text{'view_nofiles'}</b><p>\n" if (!$anydiffs);
+print &ui_hidden_table_start($text{'view_files'}, "width=100%", 1, "files", 0);
+$fhtml .= "<b>$text{'view_nofiles'}</b><p>\n" if (!$anydiffs);
+print &ui_table_row(undef, $fhtml, 2);
+print &ui_hidden_table_end("raw");
 
 # Show rollback button
 if (@files && $rbcount) {

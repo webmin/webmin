@@ -5239,6 +5239,7 @@ if ($miniserv::page_capture_out) {
 		chmod(oct($gconfig{'logperms'}),
 		      "$ENV{'WEBMIN_VAR'}/output/$id");
 		}
+	$miniserv::page_capture_out = undef;
 	}
 
 # Log to syslog too
@@ -5278,8 +5279,6 @@ if ($gconfig{'logsyslog'}) {
 		eval { syslog("info", "%s", "[$info{'desc'}] $msg"); };
 		}
 	}
-
-print STDERR $miniserv::page_capture_out,"\n";
 }
 
 =head2 additional_log(type, object, data, [input])
