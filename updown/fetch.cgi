@@ -50,11 +50,11 @@ if ($ENV{'PATH_INFO'}) {
 		print "Content-size: $st[7]\n";
 		print "Content-type: application/zip\n\n";
 		open(FILE, $temp);
+		unlink($temp);
 		while(<FILE>) {
 			print $_;
 			}
 		close(FILE);
-		unlink($temp);
 		}
 	else {
 		# Work out the type
