@@ -288,7 +288,7 @@ else {
 		$spf->{'ptr'} = $in{'spfptr'};
 		$spf->{'a:'} = [ split(/\s+/, $in{'spfas'}) ];
 		foreach my $a (@{$spf->{'a:'}}) {
-			gethostbyname($a) || &error(&text('edit_espfa', $a));
+			&to_ipaddress($a) || &error(&text('edit_espfa', $a));
 			}
 		$spf->{'mx:'} = [ split(/\s+/, $in{'spfmxs'}) ];
 		foreach my $mx (@{$spf->{'mx:'}}) {
@@ -299,6 +299,15 @@ else {
 			&check_ipaddress($ip) ||
 			  ($ip =~ /^(\S+)\/\d+$/ && &check_ipaddress($1)) ||
 			    &error(&text('edit_espfip', $ip));
+			}
+		if (&supports_ipv6()) {
+			$spf->{'ip6:'} = [ split(/\s+/, $in{'spfip6s'}) ];
+			foreach my $ip (@{$spf->{'ip6:'}}) {
+				&check_ip6address($ip) ||
+				  ($ip =~ /^(\S+)\/\d+$/ &&
+				   &check_ip6address($1)) ||
+				    &error(&text('edit_espfip6', $ip));
+				}
 			}
 		$spf->{'include:'} = [ split(/\s+/, $in{'spfincludes'}) ];
 		foreach my $i (@{$spf->{'include:'}}) {

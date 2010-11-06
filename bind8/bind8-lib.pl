@@ -1057,6 +1057,12 @@ elsif ($type eq "SPF") {
 		&ui_textarea("spfip4s", join("\n", @{$spf->{'ip4:'}}),
 		  	     3, 40), 3);
 
+	if (&supports_ipv6()) {
+		print &ui_table_row($text{'value_spfip6s'},
+			&ui_textarea("spfip6s", join("\n", @{$spf->{'ip6:'}}),
+				     3, 40), 3);
+		}
+
 	print &ui_table_row($text{'value_spfincludes'},
 		&ui_textarea("spfincludes", join("\n", @{$spf->{'include:'}}),
 		  	     3, 40), 3);
