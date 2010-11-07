@@ -105,8 +105,7 @@ if ($in{'new'} || &printer_support('editdest')) {
 			$rhost = $in{'rhost'};
 			$rport = 515;
 			}
-		gethostbyname($rhost) ||
-		    &check_ipaddress($rhost) ||
+		&to_ipaddress($rhost) || &to_ip6address($rhost) ||
 			&error(&text('save_erhost', $rhost));
 		$rport =~ /^\d+$/ || &error(&text('save_erport', $rport));
 		$in{'rqueue'} =~ /^[A-z0-9\-\_\.\/]+$/ ||
@@ -157,7 +156,7 @@ if ($in{'new'} || &printer_support('editdest')) {
 		}
 	elsif ($in{'dest'} == 5) {
 		# direct connection printing
-		gethostbyname($in{'dhost'}) || &check_ipaddress($in{'dhost'}) ||
+		&to_ipaddress($in{'dhost'}) || &to_ip6address($in{'dhost'}) ||
 			&error(&text('save_edhost', $in{'dhost'}));
 		$in{'dport'} =~ /^\d+$/ || &error($text{'save_edport'});
 		$prn{'dhost'} = $in{'dhost'};

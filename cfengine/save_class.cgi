@@ -190,7 +190,7 @@ else {
 			@hosts ||
 			    &error(&text('save_egranthosts', $in{"dir_$i"}));
 			foreach $h (@hosts) {
-				gethostbyname($h) || &check_ipaddress($h) ||
+				&to_ipaddress($h) ||
 				    $h =~ /\*/ || $h =~ /=/ ||
 					&error(&text('save_egranthost', $h));
 				push(@values, $h);
@@ -303,7 +303,7 @@ else {
 
 			&sdelete($copy, "server");
 			if (!$in{"server_def_$i"}) {
-				gethostbyname($in{"server_$i"}) ||
+				&to_ipaddress($in{"server_$i"}) ||
 					&error(&text('save_ecopyserver', $d));
 				$copy->{'server'} = $in{"server_$i"};
 				}

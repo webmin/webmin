@@ -13,7 +13,7 @@ $opts->{'domain'} = $in{'domain'};
 $opts->{'access'} = join(",", split(/\s+/, $in{'access'}));
 for($i=0; defined($in{"host_$i"}); $i++) {
 	next if (!$in{"host_$i"});
-	gethostbyname($in{"host_$i"}) || &check_ipaddress($in{"host_$i"}) ||
+	&to_ipaddress($in{"host_$i"}) ||
 		&error(&text('push_ehost', $in{"host_$i"}));
 	&to_ipaddress($in{"host_$i"}) ne &to_ipaddress(&get_system_hostname())||
 		&error(&text('push_ethis', $in{"host_$i"}));

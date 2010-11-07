@@ -404,9 +404,9 @@ else {
 
 sub check_ipmask
 {
-return &check_ipaddress($_[0]) || gethostbyname($_[0]) ||
+return &to_ipaddress($_[0]) ||
 	$_[0] =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&
-		(&check_ipaddress("$1") || gethostbyname("$1")) &&
+		&to_ipaddress("$1") &&
 		(&check_ipaddress("$2") || ($2 =~ /^\d+$/ && $2 <= 32));
 }
 
