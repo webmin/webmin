@@ -69,14 +69,14 @@ return $_[0] =~ /^\d+$/ ? undef : $text{'acl_erate'};
 
 sub check_ntp
 {
-return $_[0] =~ /^(\S+):(\d+)$/ && gethostbyname($1) ? undef
+return $_[0] =~ /^(\S+):(\d+)$/ && &to_ipaddress("$1") ? undef
 						     : $text{'acl_entp'};
 }
 
 
 sub valid_srcdest
 {
-return gethostbyname($_[0]) ||
+return &to_ipaddress($_[0]) ||
 	   ($_[0] =~ /^([0-9\.]+)\/(\d+)$/ &&
 	    &check_ipaddress($1) && $2 > 0 && $2 <= 32) ||
 	   ($_[0] =~ /^([0-9\.]+)\/([0-9\.]+)$/ &&

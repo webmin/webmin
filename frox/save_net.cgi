@@ -24,7 +24,7 @@ $conf = &get_config();
 
 sub check_listen
 {
-return gethostbyname($_[0]) ? undef : $text{'net_ehost'};
+return &to_ipaddress($_[0]) ? undef : $text{'net_ehost'};
 }
 
 sub check_port
@@ -39,7 +39,8 @@ return $_[0] =~ /^[a-z]+(\d*)(:\d+)?$/ ? undef : $text{'net_eiface'};
 
 sub check_proxy
 {
-return $_[0] =~ /^(\S+):(\d+)$/ && gethostbyname($1) ? undef : $text{'net_eproxy'};
+return $_[0] =~ /^(\S+):(\d+)$/ && &to_ipaddress($1) ?
+	undef : $text{'net_eproxy'};
 }
 
 sub check_ip

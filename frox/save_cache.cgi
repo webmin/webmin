@@ -40,7 +40,7 @@ return $_[0] =~ /^\d+$/ ? undef : $text{'cache_esize'};
 
 sub check_proxy
 {
-return $_[0] =~ /^(\S+):(\d+)$/ && gethostbyname($1) ?
+return $_[0] =~ /^(\S+):(\d+)$/ && &to_ipaddress($1) ?
 	undef : $text{'cache_eproxy'};
 }
 
