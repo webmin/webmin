@@ -47,7 +47,7 @@ if ($ENV{'PATH_INFO'}) {
 				     "<tt>".&html_escape($out)."</tt>"));
 			}
 		@st = stat($temp);
-		print "Content-size: $st[7]\n";
+		print "Content-length: $st[7]\n";
 		print "Content-type: application/zip\n\n";
 		open(FILE, $temp);
 		unlink($temp);
@@ -79,7 +79,7 @@ if ($ENV{'PATH_INFO'}) {
 			print "Content-Disposition: Attachment\n";
 			}
 		@st = stat($file);
-		print "Content-size: $st[7]\n";
+		print "Content-length: $st[7]\n";
 		print "Content-type: $type\n\n";
 		while(<FILE>) {
 			print $_;
