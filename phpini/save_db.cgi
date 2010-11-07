@@ -47,7 +47,7 @@ if ($in{"mysql.default_host_def"}) {
 	&save_directive($conf, "mysql.default_host", undef);
 	}
 else {
-	gethostbyname($in{"mysql.default_host"}) ||
+	&to_ipaddress($in{"mysql.default_host"}) ||
 		&error($text{'db_ehost'});
 	&save_directive($conf, "mysql.default_host",
 			$in{"mysql.default_host"});

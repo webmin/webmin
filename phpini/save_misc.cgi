@@ -26,7 +26,7 @@ $conf = &get_config($in{'file'});
 		$in{"allow_url_fopen"} || undef);
 
 # Save email sending options
-$in{"smtp_def"} || gethostbyname($in{"smtp"}) || &error($text{'misc_esmtp'});
+$in{"smtp_def"} || &to_ipaddress($in{"smtp"}) || &error($text{'misc_esmtp'});
 &save_directive($conf, "SMTP",
 		$in{"smtp_def"} ? undef : $in{"smtp"});
 $in{"smtp_port_def"} || $in{"smtp_port"} =~ /^\d+$/ ||
