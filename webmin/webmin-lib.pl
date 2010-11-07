@@ -1407,8 +1407,7 @@ for($i=1; $i<@_; $i++) {
                 $ip = $1."/".&prefix_to_mask($2);
                 }
 	if ($ip =~ /^(\S+)\/(\S+)$/) {
-		# Compare with network/mask
-		# XXX IPv6 support
+		# Compare with IPv4 network/mask
 		@mo = split(/\./, $1); @ms = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
 			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
@@ -1438,7 +1437,7 @@ for($i=1; $i<@_; $i++) {
 		@mo = split(/:/, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
 		for($j=0; $j<@mo; $j++) {
-			if ($mo[$j] != $io[$j]) {
+			if ($mo[$j] ne $io[$j]) {
 				$mismatch = 1;
 				}
 			}
@@ -1474,7 +1473,6 @@ allowed IPs, or an error message if not
 sub valid_allow
 {
 local ($h) = @_;
-local $i;
 if ($h =~ /^([0-9\.]+)\/(\d+)$/) {
 	&check_ipaddress($1) ||
 		return &text('access_enet', "$1");
@@ -1491,15 +1489,18 @@ elsif ($h =~ /^[0-9\.]+$/) {
 	&check_ipaddress($h) ||
 		return &text('access_eip', $h);
 	}
+elsif ($h =~ /^[a-f0-9:]+$/) {
+	&check_ip6address($h) ||
+		return &text('access_eip6', $h);
+	}
 elsif ($h =~ /^\*\.(\S+)$/) {
 	# *.domain is OK
 	}
 elsif ($h eq 'LOCAL') {
 	# Local means any on local nets
 	}
-elsif ($i = join('.', unpack("CCCC", inet_aton($h)))) {
-	# Resolve a hostname
-	$h = $i;
+elsif (&to_ipaddress($h) || &to_ip6address($h)) {
+	# Resolvable hostname
 	}
 else {
 	return &text('access_ehost', $h);

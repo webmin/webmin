@@ -9,6 +9,7 @@ require './webmin-lib.pl';
 $raddr = $ENV{'REMOTE_ADDR'};
 if ($in{"access"}) {
 	@hosts = split(/\s+/, $in{"ip"});
+	push(@hosts, "LOCAL") if ($in{'local'});
 	if (!@hosts) { &error($text{'access_enone'}); }
 	foreach $h (@hosts) {
 		$err = &valid_allow($h);

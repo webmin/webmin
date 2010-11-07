@@ -2575,8 +2575,7 @@ for($i=2; $i<@_; $i++) {
 		$_[$i] = $1."/".&prefix_to_mask($2);
 		}
 	if ($_[$i] =~ /^(\S+)\/(\S+)$/) {
-		# Compare with network/mask
-		# XXX IPv6 support
+		# Compare with IPv4 network/mask
 		@mo = split(/\./, $1); @ms = split(/\./, $2);
 		for($j=0; $j<4; $j++) {
 			if ((int($io[$j]) & int($ms[$j])) != int($mo[$j])) {
@@ -2588,9 +2587,8 @@ for($i=2; $i<@_; $i++) {
 		# Compare with hostname regexp
 		$mismatch = 1 if ($hn !~ /$1$/);
 		}
-	elsif ($_[$i] eq 'LOCAL') {
-		# Compare with local network
-		# XXX IPv6 support
+	elsif ($_[$i] eq 'LOCAL' && &check_ipaddress($_[1])) {
+		# Compare with local IPv4 network
 		local @lo = split(/\./, $_[1]);
 		if ($lo[0] < 128) {
 			$mismatch = 1 if ($lo[0] != $io[0]);
@@ -2603,6 +2601,13 @@ for($i=2; $i<@_; $i++) {
 			$mismatch = 1 if ($lo[0] != $io[0] ||
 					  $lo[1] != $io[1] ||
 					  $lo[2] != $io[2]);
+			}
+		}
+	elsif ($_[$i] eq 'LOCAL' && &check_ip6address($_[1])) {
+		# Compare with local IPv6 network, which is always first 4 words
+		local @lo = split(/:/, $_[1]);
+		for(my $i=0; $i<4; $i++) {
+			$mismatch = 1 if ($lo[$i] ne $io[$i]);
 			}
 		}
 	elsif ($_[$i] =~ /^[0-9\.]+$/) {
@@ -2620,7 +2625,7 @@ for($i=2; $i<@_; $i++) {
 		@mo = split(/:/, $_[$i]);
 		while(@mo && !$mo[$#mo]) { pop(@mo); }
 		for($j=0; $j<@mo; $j++) {
-			if ($mo[$j] != $io[$j]) {
+			if ($mo[$j] ne $io[$j]) {
 				$mismatch = 1;
 				}
 			}
