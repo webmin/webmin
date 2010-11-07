@@ -8,8 +8,8 @@ $conf = &get_config();
 &error_setup($text{'vserv_err'});
 
 # Validate inputs
-$in{'addr_def'} || gethostbyname($in{'addr'}) ||
-    &check_ipaddress($in{'addr'}) ||
+$in{'addr_def'} || &to_ipaddress($in{'addr'}) ||
+    &to_ip6address($in{'addr'}) ||
 	&error($text{'vserv_eaddr'});
 $in{'Port_def'} || $in{'Port'} =~ /^\d+$/ ||
 	&error($text{'vserv_eport'});

@@ -172,12 +172,14 @@ for($i=0; defined($type = $in{"allow_type_$i"}); $i++) {
 	if ($mode == 0) { $what = "all"; }
 	elsif ($mode == 1) { $what = "none"; }
 	elsif ($mode == 2) {
-		&check_ipaddress($what) || &error(&text('mod_core_eip', $what));
+		&check_ipaddress($what) || &check_ip6address($what) ||
+			&error(&text('mod_core_eip', $what));
 		}
 	elsif ($mode == 3) {
 		$what =~ /^[0-9\.]+\.$/ ||
-			$what =~ /^([0-9\.]+)\/\d+$/ && &check_ipaddress($1) ||
-				&error(&text('mod_core_enet', $what));
+		    $what =~ /^([0-9\.]+)\/\d+$/ && &check_ipaddress("$1") ||
+		    $what =~ /^([a-f0-9:]+)\/\d+$/ && &check_ip6address("$1") ||
+			&error(&text('mod_core_enet', $what));
 		}
 	elsif ($mode == 4) {
 		$what =~ /^[A-Za-z0-9\.\-]+$/ ||

@@ -25,7 +25,7 @@ else {
 	&error_setup($text{'vserv_err'});
 
 	# Check inputs
-	gethostbyname($in{'addr'}) || &to_ipaddress($in{'addr'}) ||
+	&to_ipaddress($in{'addr'}) || &to_ip6address($in{'addr'}) ||
 		&error($text{'vserv_eaddr'});
 	$in{'Port_def'} || $in{'Port'} =~ /^\d+$/ ||
 		&error($text{'vserv_eport'});
