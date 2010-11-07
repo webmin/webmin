@@ -158,12 +158,11 @@ else {
 			$rule->{$s} = "me";
 			}
 		else {
-			gethostbyname($in{$s}) ||
-			    &check_ipaddress($in{$s}) ||
+			&to_ipaddress($in{$s}) ||
 			    ($in{$s} =~ /^([0-9\.]+)\/(\d+)$/ &&
-			     &check_ipaddress($1)) ||
+			     &check_ipaddress("$1")) ||
 			    ($in{$s} =~ /^([0-9\.]+)\/(\d+)\{([0-9,]+)\}$/ &&
-			     &check_ipaddress($1) &&
+			     &check_ipaddress("$1") &&
 			     $ipfw_version >= 2) ||
 				&error($text{'save_e'.$s});
 			$rule->{$s} = $in{$s};

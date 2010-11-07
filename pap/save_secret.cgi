@@ -35,7 +35,7 @@ elsif ($in{'ips_mode'} == 1) { $sec{'ips'} = [ "-" ]; }
 elsif ($in{'ips_mode'} == 2) {
 	@ips = split(/\s+/, $in{'ips'});
 	foreach $ip (@ips) {
-		if (!gethostbyname($ip)) {
+		if (!&to_ipaddress($ip)) {
 			&error(&text('save_secret_enoip', $ip));
 			}
 		}

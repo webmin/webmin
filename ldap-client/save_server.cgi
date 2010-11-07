@@ -31,7 +31,8 @@ else {
 	# Set host and port directives
 	@hosts = split(/\s+/, $in{'host'});
 	foreach $h (@hosts) {
-		gethostbyname($h) || &error(&text('server_ehost', $h));
+		&to_ipaddress($h) || &to_ip6address($h) ||
+			&error(&text('server_ehost', $h));
 		}
 	@hosts || &error($text{'server_ehosts'});
 	&save_directive($conf, "host", join(" ", @hosts));

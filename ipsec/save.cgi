@@ -119,7 +119,7 @@ else {
 			$conn->{'values'}->{$d} = '%opportunistic';
 			}
 		else {
-			gethostbyname($in{$d}) || &error($text{"save_e${d}"});
+			&to_ipaddress($in{$d}) || &error($text{"save_e${d}"});
 			$conn->{'values'}->{$d} = $in{$d};
 			}
 

@@ -25,7 +25,7 @@ else {
 	$prog->{'enabled'} = $in{'enabled'};
 	$in{'name'} =~ /^\S+$/ || &error($text{'master_ename'});
 	if (!$in{'host_def'}) {
-		gethostbyname($in{'host'}) || &error($text{'master_ehost'});
+		&to_ipaddress($in{'host'}) || &error($text{'master_ehost'});
 		$in{'type'} eq 'inet' || &error($text{'master_einet'});
 		$prog->{'name'} = $in{'host'}.":".$in{'name'};
 		}
