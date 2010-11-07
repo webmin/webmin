@@ -28,7 +28,7 @@ if ($in{'delete'}) {
 else {
 	# Validate inputs
 	$in{'tunnel'} =~ /\S/ || &error($text{'save_ename'});
-	gethostbyname($in{'server'}) || &error($text{'save_eserver'});
+	&to_ipaddress($in{'server'}) || &error($text{'save_eserver'});
 	$in{'login_def'} || $in{'login'} =~ /^\S+$/ ||
 		&error($text{'save_elogin'});
 	$in{'remote_def'} || $in{'remote'} =~ /^\S+$/ ||
@@ -44,7 +44,7 @@ else {
 		push(@routes, "add default dev TUNNEL_DEV");
 		}
 	elsif ($in{'adddef'} == 2) {
-		gethostbyname($in{'def'}) || &error($text{'save_edef'});
+		&to_ipaddress($in{'def'}) || &error($text{'save_edef'});
 		push(@routes, "add default gw ".$in{'def'});
 		}
 
