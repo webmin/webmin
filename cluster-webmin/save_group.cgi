@@ -15,7 +15,7 @@ foreach $h (@allhosts) {
 	}
 
 # Validate inputs
-$in{'name'} =~ /^[A-z0-9\-\_\.]+$/ ||
+$in{'name'} =~ /^[A-z0-9\-\_\.\@]+$/ ||
 	&error(&text('group_ename', $in{'name'}));
 $in{'name'} ne $in{'old'} && $taken{$in{'name'}} &&
 	&error(&text('group_etaken', $in{'name'}));
