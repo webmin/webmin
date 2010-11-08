@@ -48,7 +48,9 @@ if (!-d $in{'dir'} && $in{'mkdir'}) {
 	mkdir($in{'dir'}, 0755) || &error(&text('upload_emkdir', $!));
 	}
 
-# Save the actual files
+&ui_print_header(undef, $text{'upload_title'}, "");
+
+# Save the actual files, showing progress
 $msg = undef;
 for($i=0; defined($d = $in{"upload$i"}); $i++) {
 	$f = $in{"upload${i}_filename"};
@@ -60,6 +62,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 	else {
 		$path = $in{'dir'};
 		}
+	print &text('upload_saving', "<tt>$path</tt>"),"<br>\n";
 	if (!&open_tempfile(FILE, ">$path", 1)) {
 		&error(&text('upload_eopen', "<tt>$path</tt>", $!));
 		}
@@ -67,9 +70,11 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 	&close_tempfile(FILE);
 	push(@uploads, $path);
 	@st = stat($path);
+	print &text('upload_saved', &nice_size($st[7])),"<p>\n";
 
 	$estatus = undef;
 	if ($in{'zip'}) {
+		print &text('upload_unzipping', "<tt>$path</tt>"),"<br>\n";
 		local ($err, $out);
 		$path =~ /^(\S*\/)/;
 		local $dir = $1;
@@ -175,6 +180,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 			}
 		$estatus = $err ? &text('email_extfailed', $err)
 				: &text('email_extdone_'.$fmt);
+		print &text('upload_unzipdone', $estatus),"<p>\n";
 		}
 
 	# Add to email message
@@ -189,16 +195,6 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 
 # Switch back to root
 &switch_uid_back();
-
-&ui_print_header(undef, $text{'upload_title'}, "");
-
-print "<p>$text{'upload_done'}<p>\n";
-foreach $u (@uploads) {
-	@st = stat($u);
-	print "<tt>$u</tt> ",@st ? "($st[7] bytes)" : "",
-	      $ext{$u} ? " $ext{$u}" : "","<p>\n";
-	}
-print "<p>\n";
 
 # Save the settings
 if ($module_info{'usermin'}) {
