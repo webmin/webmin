@@ -5,16 +5,20 @@ require './bind8-lib.pl';
 &ReadParse();
 $conf = &get_config();
 
+$dparams = join("&", map { "d=".&urlize($_) } split(/\0/, $in{'d'}));
 if ($in{'update'}) {
 	# Redirect to mass update form
-	&redirect("mass_update_form.cgi?".
-		  join("&", map { "d=".&urlize($_) } split(/\0/, $in{'d'})));
+	&redirect("mass_update_form.cgi?".$dparams);
 	exit;
 	}
 elsif ($in{'create'}) {
 	# Redirect to mass create form
-	&redirect("mass_rcreate_form.cgi?".
-		  join("&", map { "d=".&urlize($_) } split(/\0/, $in{'d'})));
+	&redirect("mass_rcreate_form.cgi?".$dparams);
+	exit;
+	}
+elsif ($in{'rdelete'}) {
+	# Redirect to mass record delete form
+	&redirect("mass_rdelete_form.cgi?".$dparams);
 	exit;
 	}
 

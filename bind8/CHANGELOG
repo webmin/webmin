@@ -119,3 +119,5 @@ Added new NSEC3 algorithms for DNSSEC.
 Changed the default DNSSEC algorithm from DSA to the stronger RSASHA1.
 ---- Changes since 1.510 ----
 On Linux systems, /dev/urandom is used for generating entropy for DNSSEC.
+---- Changes since 1.520 ----
+Added the Delete Records In Selected button to the main page, for removing the same record in multiple domains at once.

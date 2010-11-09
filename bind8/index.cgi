@@ -237,7 +237,8 @@ elsif (@zones && (!@views || !$config{'by_view'})) {
 	print &ui_form_end([ $access{'delete'} ?
 			      ( [ "delete", $text{'index_massdelete'} ] ) : ( ),
 			     [ "update", $text{'index_massupdate'} ],
-			     [ "create", $text{'index_masscreate'} ] ]);
+			     [ "create", $text{'index_masscreate'} ],
+			     [ "rdelete", $text{'index_massrdelete'} ] ]);
 	}
 elsif (@zones) {
 	# Show zones under views
@@ -304,7 +305,8 @@ elsif (@zones) {
 			$access{'delete'} ?
 			  ( [ "delete", $text{'index_massdelete'} ] ) : ( ),
 			[ "update", $text{'index_massupdate'} ],
-			[ "create", $text{'index_masscreate'} ] ]);
+			[ "create", $text{'index_masscreate'} ],
+			[ "rdelete", $text{'index_massrdelete'} ], ]);
 		}
 	}
 else {
