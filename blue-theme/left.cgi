@@ -12,7 +12,7 @@ use WebminCore;
 @cats = &get_visible_modules_categories();
 @modules = map { @{$_->{'modules'}} } @cats;
 
-print &popup_header();
+&popup_header();
 print <<EOF;
 <link rel="stylesheet" type="text/css" href="left.css" />
 <script>
@@ -150,7 +150,7 @@ if ($ENV{'HTTP_WEBMIN_SERVERS'}) {
 	print "<div class='aftericon'><a target=_top href='$ENV{'HTTP_WEBMIN_SERVERS'}'>$text{'header_servers'}</a></div>";
 	}
 
-print &popup_footer();
+&popup_footer();
 
 # print_category_opener(name, &allcats, label)
 # Prints out an open/close twistie for some category
