@@ -49,6 +49,7 @@ if ($access{'theme'}) {
 	# Overlay
 	if (!$in{'overlay'}) {
 		$newoverlay = undef;
+		$user->{'overlay'} = undef;
 		}
 	else {
 		$newoverlay = $in{'overlay'};
