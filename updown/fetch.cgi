@@ -40,8 +40,10 @@ if ($ENV{'PATH_INFO'}) {
 	if (-d $file) {
 		# Zip up the whole directory
 		($shortfile = $file) =~ s/^.*\///g;
+		$shortfile =~ s/\s+//g;
 		$temp = &transname($shortfile.".zip");
-		$out = &backquote_command("cd ".quotemeta($file)." && zip -r $temp .");
+		$out = &backquote_command("cd ".quotemeta($file).
+					  " && zip -r ".quotemeta($temp)." .");
 		if ($?) {
 			&error(&text('fetch_ezipcmd',
 				     "<tt>".&html_escape($out)."</tt>"));
