@@ -79,9 +79,10 @@ my $cmd = "apt-get -s install ".
 my $out = &backquote_command($cmd);
 my @rv;
 foreach my $l (split(/\r?\n/, $out)) {
-	if ($l =~ /Inst\s+(\S+)\s+\[(\S+)\]/) {
+	if ($l =~ /Inst\s+(\S+)\s+\[(\S+)\]\s+\(([^ \)]+)/ ||
+	    $l =~ /Inst\s+(\S+)\s+\[(\S+)\]/) {
 		my $pkg = { 'name' => $1,
-			    'version' => $2 };
+			    'version' => $3 || $2 };
 		if ($pkg->{'version'} =~ s/^(\S+)://) {
 			$pkg->{'epoch'} = $1;
 			}
