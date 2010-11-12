@@ -5454,6 +5454,7 @@ foreach my $cron (@webmincrons) {
 		my $pid = fork();
 		if (!$pid) {
 			# Run via a wrapper command, which we run like a CGI
+			dbmclose(%sessiondb);
 
 			# Setup CGI-like environment
 			$envtz = $ENV{"TZ"};
