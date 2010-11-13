@@ -29,8 +29,11 @@ $sidname = $miniserv{'sidname'} || "sid";
 print "Set-Cookie: banner=0; path=/$sec\r\n" if ($gconfig{'loginbanner'});
 print "Set-Cookie: $sidname=x; path=/$sec\r\n" if ($in{'logout'});
 print "Set-Cookie: testing=1; path=/$sec\r\n";
-&ui_print_unbuffered_header(undef, undef, undef, undef, undef, 1, 1, undef,
-			    undef, "onLoad='document.forms[0].pass.value = \"\"; document.forms[0].user.focus()'");
+&ui_print_unbuffered_header(
+	undef, undef, undef, undef, undef, 1, 1, undef,
+	"<title>$text{'session_header'}</title>",
+	"onLoad='document.forms[0].pass.value = \"\"; ".
+	"document.forms[0].user.focus()'");
 
 if ($tconfig{'inframe'}) {
 	# Framed themes lose original page
