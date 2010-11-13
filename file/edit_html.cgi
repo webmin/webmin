@@ -13,7 +13,7 @@ if ($in{'text'} || $in{'file'} && !&is_html_file($in{'file'})) {
 	}
 
 &popup_header($in{'file'} ? $text{'html_title'} : $text{'html_title2'},
-	      undef, $text_mode ? undef : "onload='initEditor()'");
+	      undef, $text_mode ? undef : "onload='xinha_init()'");
 
 # Output HTMLarea init code
 print <<EOF;
@@ -21,14 +21,16 @@ print <<EOF;
   _editor_url = "$gconfig{'webprefix'}/$module_name/xinha/";
   _editor_lang = "en";
 </script>
-<script type="text/javascript" src="xinha/htmlarea.js"></script>
+<script type="text/javascript" src="xinha/XinhaCore.js"></script>
 
 <script type="text/javascript">
-var editor = null;
-function initEditor() {
-  editor = new HTMLArea("body");
-  editor.generate();
-  return false;
+xinha_init = function()
+{
+xinha_editors = [ "body" ];
+xinha_plugins = [ ];
+xinha_config = new Xinha.Config();
+xinha_editors = Xinha.makeEditors(xinha_editors, xinha_config, xinha_plugins);
+Xinha.startEditors(xinha_editors);
 }
 </script>
 EOF
