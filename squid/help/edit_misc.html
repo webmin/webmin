@@ -36,14 +36,11 @@ There are two methods of using this option.  You may either allow specific heade
 <p>
 <b>Fake User-Agent</b>: Default is 'none'.  If you filter the User-Agent header with the <b>Headers to pass through</b> option it may cause some Web servers to refuse your request.  Use this to fake one up.
 <p>
-<b>HTTP Accel Host</b>: Default is 'none'.  If you want to run Squid as an httpd accelerator, set this to the address of the real HTTP server.
+<b>WCCP Router Address</b>: Use this option to define your WCCP ``home'' router for Squid.
 <p>
-<b>HTTP Accel Port</b>: Default is 'none'.  In addition to setting the <b>HTTP Accel Host</b> you must set the real servers port, here, if you are using Squid as an accelerator.
+<b>WCCP Incoming Address</b>:  Use this option if you require WCCP messages to be received on only one interface. Do NOT use this option if you're unsure how many interfaces you have, or if you know you have only one interface.
 <p>
-<b>HTTP Accel With Proxy</b>: Default is 'off'.  Enable this if you would like for your Squid to act as a traditional proxy while also providing HTTP acceleration.  This option should also be enabled when using transparent proxying.
+<b>WCCP Outgoing Address</b>: Use this option if you require WCCP messages to be sent out on only one interface. Do NOT use this option if you're unsure how many interfaces you have, or if you know you have only one interface.
 <p>
-<b>HTTP Accel Uses Host Header</b>: Default is off.  HTTP/1.1 requests include a Host: header which is basically the hostname from the URL.  Squid can be an accelerator for different HTTP servers by looking at this header.  However, Squid does NOT check the value of the Host header, so it opens a big security hole.  We recommend that this option remain disabled unless you are sure of what you are doing.
-<p>
-However, you will need to enable this option if you run Squid as a transparent proxy.  Otherwise, virtual servers which require the Host: header will not be properly cached.
 
 <hr>
