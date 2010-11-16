@@ -4292,11 +4292,14 @@ if ($module_name && !$main::no_acl_check &&
 # Check the Referer: header for nasty redirects
 my @referers = split(/\s+/, $gconfig{'referers'});
 my $referer_site;
-if ($ENV{'HTTP_REFERER'} =~/^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?([^\/:@]+)/) {
+my $r = $ENV{'HTTP_REFERER'};
+if ($r =~ /^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?\[([^\]]+)\]/ ||
+    $r =~ /^(http|https|ftp):\/\/([^:\/]+:[^@\/]+@)?([^\/:@]+)/) {
 	$referer_site = $3;
 	}
 my $http_host = $ENV{'HTTP_HOST'};
 $http_host =~ s/:\d+$//;
+$http_host =~ s/^\[(\S+)\]$/$1/;
 my $unsafe_index = $unsafe_index_cgi ||
 		   &get_module_variable('$unsafe_index_cgi');
 if ($0 &&
@@ -4319,7 +4322,7 @@ if ($0 &&
 	if ($referer_site) {
 		# From a known host
 		print &text('referer_warn',
-		     "<tt>".&html_escape($ENV{'HTTP_REFERER'})."</tt>", $url);
+			    "<tt>".&html_escape($r)."</tt>", $url);
 		print "<p>\n";
 		print &text('referer_fix1', &html_escape($http_host)),"<p>\n";
 		print &text('referer_fix2', &html_escape($http_host)),"<p>\n";

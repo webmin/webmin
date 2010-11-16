@@ -405,7 +405,7 @@ if ($config{'inetd'}) {
 
 	# Initialize SSL for this connection
 	if ($use_ssl) {
-		$ssl_con = &ssl_connection_for_ip(SOCK);
+		$ssl_con = &ssl_connection_for_ip(SOCK, 0);
 		$ssl_con || exit;
 		}
 
@@ -850,7 +850,8 @@ while(1) {
 
 				# Initialize SSL for this connection
 				if ($use_ssl) {
-					$ssl_con = &ssl_connection_for_ip(SOCK);
+					$ssl_con = &ssl_connection_for_ip(
+							SOCK, $ipv6fhs{$s});
 					$ssl_con || exit;
 					}
 
@@ -4094,17 +4095,17 @@ Net::SSLeay::CTX_use_certificate_file(
 return $ssl_ctx;
 }
 
-# ssl_connection_for_ip(socket)
+# ssl_connection_for_ip(socket, ipv6-flag)
 # Returns a new SSL connection object for some socket, or undef if failed
 sub ssl_connection_for_ip
 {
-local ($sock) = @_;
+local ($sock, $ipv6) = @_;
 local $sn = getsockname($sock);
 if (!$sn) {
 	print STDERR "Failed to get address for socket $sock\n";
 	return undef;
 	}
-local $myip = inet_ntoa((unpack_sockaddr_in($sn))[1]);
+local (undef, $myip, undef) = &get_address_ip($sn, $ipv6);
 local $ssl_ctx = $ssl_contexts{$myip} || $ssl_contexts{"*"};
 local $ssl_con = Net::SSLeay::new($ssl_ctx);
 if ($config{'ssl_cipher_list'}) {
