@@ -5998,7 +5998,7 @@ foreach my $sn (keys %remote_session) {
 	delete($remote_session{$sn});
 	delete($remote_session_server{$sn});
 	}
-foreach $fh (keys %fast_fh_cache) {
+foreach my $fh (keys %fast_fh_cache) {
 	close($fh);
 	delete($fast_fh_cache{$fh});
 	}
@@ -6015,7 +6015,7 @@ sub remote_error_setup
 $main::remote_error_handler = $_[0] || \&error;
 }
 
-=head2 remote_rpc_call(server, structure)
+=head2 remote_rpc_call(server, &structure)
 
 Calls rpc.cgi on some server and passes it a perl structure (hash,array,etc)
 and then reads back a reply structure. This is mainly for internal use only,

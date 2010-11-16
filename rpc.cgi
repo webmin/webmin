@@ -13,8 +13,9 @@ use POSIX;
 &init_config();
 if ($ENV{'REQUEST_METHOD'} eq 'POST') {
 	local $got;
-	while(length($rawarg) < $ENV{'CONTENT_LENGTH'}) {
-		read(STDIN, $got, $ENV{'CONTENT_LENGTH'}) > 0 || last;
+	local $left = $ENV{'CONTENT_LENGTH'} - length($rawarg);
+	while($left > 0) {
+		read(STDIN, $got, $left) > 0 || last;
 		$rawarg .= $got;
 		}
 	}
@@ -49,9 +50,10 @@ if ($arg->{'newsession'}) {
 		close(STDOUT);
 		close(miniserv::SOCK);
 		local $stime = time();
+		local $rcount = 0;
 		while(1) {
 			local ($rawcmd, $cmd, @rv);
-			alarm(10);
+			alarm($rcount ? 360 : 60);
 			open(FIFO, $fifo1) || last;
 			while(<FIFO>) {
 				$rawcmd .= $_;
@@ -98,6 +100,7 @@ EOF
 				}
 			close(FIFO);
 			last if ($cmd->{'action'} eq 'quit');
+			$rcount++;
 			}
 		unlink($fifo1);
 		unlink($fifo2);
