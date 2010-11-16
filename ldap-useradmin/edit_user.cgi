@@ -173,11 +173,7 @@ print &ui_table_row($text{'shell'},
 
 # Generate password if needed
 if ($in{'new'} && $mconfig{'random_password'}) {
-	&seed_random();
-	foreach (1 .. 15) {
-		$random_password .= $random_password_chars[
-					rand(scalar(@random_password_chars))];
-		}
+	$random_password = &useradmin::generate_random_password();
 	}
 
 # Check if temporary locking is supported

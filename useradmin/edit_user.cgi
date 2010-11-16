@@ -165,11 +165,7 @@ print &ui_table_row(&hlink($text{'shell'}, "shell"),
 # Get the password, generate random if needed
 $pass = $n ne "" ? $uinfo{'pass'} : $config{'lock_string'};
 if ($n eq "" && $config{'random_password'}) {
-	&seed_random();
-	foreach (1 .. 15) {
-		$random_password .= $random_password_chars[
-					rand(scalar(@random_password_chars))];
-		}
+	$random_password = &generate_random_password();
 	}
 
 # Check if temporary locking is supported

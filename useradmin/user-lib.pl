@@ -2602,4 +2602,19 @@ while(my @uinfo = &my_getpwent()) {
 &my_endpwent();
 }
 
+=head2 generate_random_password()
+
+Returns a randomly generated 15 character password
+
+=cut
+sub generate_random_password
+{
+&seed_random();
+my $rv;
+foreach (1 .. 15) {
+	$rv .= $random_password_chars[rand(scalar(@random_password_chars))];
+	}
+return $rv;
+}
+
 1;
