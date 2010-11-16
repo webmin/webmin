@@ -11,7 +11,8 @@ $table = $tables[$in{'table'}];
 
 if ($in{'add'}) {
 	# Redirect to the rule page for adding a rule
-	&redirect("edit_rule.cgi?table=$in{'table'}&chain=$in{'chain'}&new=1");
+	&redirect("edit_rule.cgi?table=".&urlize($in{'table'}).
+		  "&chain=".&urlize($in{'chain'})."&new=1");
 	}
 elsif ($in{'delete'} && $in{'confirm'}) {
 	# Delete this entire chain and all rules in it
@@ -27,7 +28,7 @@ elsif ($in{'delete'} && $in{'confirm'}) {
 	&unlock_file($iptables_save_file);
 	&webmin_log("delete", "chain", undef, { 'chain' => $in{'chain'},
 						'table' => $table->{'name'} });
-	&redirect("index.cgi?table=$in{'table'}");
+	&redirect("index.cgi?table=".&urlize($in{'table'}));
 	}
 elsif ($in{'clear'} && $in{'confirm'}) {
 	# Delete all rules from this chain
@@ -42,7 +43,7 @@ elsif ($in{'clear'} && $in{'confirm'}) {
 	&unlock_file($iptables_save_file);
 	&webmin_log("clear", "chain", undef, { 'chain' => $in{'chain'},
 					       'table' => $table->{'name'} });
-	&redirect("index.cgi?table=$in{'table'}");
+	&redirect("index.cgi?table=".&urlize($in{'table'}));
 	}
 elsif ($in{'delete'} || $in{'clear'}) {
 	# Ask for confirmation on deleting the chain
@@ -51,16 +52,18 @@ elsif ($in{'delete'} || $in{'clear'}) {
 	&ui_print_header(undef, $text{$mode.'_title'}, "");
 
 	@rules = grep { $_->{'chain'} eq $in{'chain'} } @{$table->{'rules'}};
-	print "<form action=save_policy.cgi>\n";
-	print "<input type=hidden name=table value='$in{'table'}'>\n";
-	print "<input type=hidden name=chain value='$in{'chain'}'>\n";
-	print "<input type=hidden name=$mode value=1>\n";
+	print &ui_form_start("save_policy.cgi");
+	print &ui_hidden("table", $in{'table'});
+	print &ui_hidden("chain", $in{'chain'});
+	print &ui_hidden($mode, 1);
 	print "<center><b>",&text($mode.'_rusure', "<tt>$in{'chain'}</tt>",
 				  scalar(@rules)),"</b><p>\n";
-	print "<input type=submit name=confirm value='$text{'delete_ok'}'>\n";
-	print "</center></form>\n";
+	print &ui_submit($text{'delete_ok'}, 'confirm');
+	print "</center>\n";
+	print &ui_form_end();
 
-	&ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
+	&ui_print_footer("index.cgi?table=".&urlize($in{'table'}),
+			 $text{'index_return'});
 	}
 elsif ($in{'rename'} && $in{'newname'}) {
 	# Rename a chain
@@ -96,7 +99,7 @@ elsif ($in{'rename'} && $in{'newname'}) {
 	&unlock_file($iptables_save_file);
 	&webmin_log("rename", "chain", undef, { 'chain' => $in{'chain'},
 						'table' => $table->{'name'} });
-	&redirect("index.cgi?table=$in{'table'}");
+	&redirect("index.cgi?table=".&urlize($in{'table'}));
 	}
 elsif ($in{'rename'}) {
 	# Show chain rename form
@@ -125,7 +128,8 @@ elsif ($in{'rename'}) {
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'rename_ok'} ] ]);
 
-	&ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
+	&ui_print_footer("index.cgi?table=".&urlize($in{'table'}),
+			 $text{'index_return'});
 	}
 elsif ($in{'delsel'}) {
 	# Just delete selected rules
@@ -142,7 +146,7 @@ elsif ($in{'delsel'}) {
 	&webmin_log("delsel", "chain", undef, { 'chain' => $in{'chain'},
 					        'table' => $table->{'name'},
 						'count' => scalar(@d)});
-	&redirect("index.cgi?table=$in{'table'}");
+	&redirect("index.cgi?table=".&urlize($in{'table'}));
 	}
 elsif ($in{'movesel'} && $in{'dest'}) {
 	# Move selected rules to new chain
@@ -164,7 +168,7 @@ elsif ($in{'movesel'} && $in{'dest'}) {
 	&webmin_log("movesel", "chain", undef, { 'chain' => $in{'chain'},
 					         'table' => $table->{'name'},
 						 'count' => scalar(@d)});
-	&redirect("index.cgi?table=$in{'table'}");
+	&redirect("index.cgi?table=".&urlize($in{'table'}));
 	}
 elsif ($in{'movesel'}) {
 	# Show rule move form
@@ -193,7 +197,8 @@ elsif ($in{'movesel'}) {
 	print &ui_table_end();
 	print &ui_form_end([ [ undef, $text{'move_ok'} ] ]);
 
-	&ui_print_footer("index.cgi?table=$in{'table'}", $text{'index_return'});
+	&ui_print_footer("index.cgi?table=".&urlize($in{'table'}),
+			 $text{'index_return'});
 	}
 else {
 	# Change the default for this chain
@@ -207,6 +212,6 @@ else {
 	&unlock_file($iptables_save_file);
 	&webmin_log("modify", "chain", undef, { 'chain' => $in{'chain'},
 					        'table' => $table->{'name'} });
-	&redirect("index.cgi?table=$in{'table'}");
+	&redirect("index.cgi?table=".&urlize($in{'table'}));
 	}
 
