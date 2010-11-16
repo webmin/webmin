@@ -73,3 +73,5 @@ Put back the option to use Cingular as an SMS carrier.
 ---- Changes since 1.510 ----
 The Check File or Directory monitor can now use a pattern like /tmp/* to check sizes for all files in a directory.
 Added a monitor-level option to run a command if the monitor times out.
+---- Changes since 1.520 ----
+Enhanced the free memory monitor to be able to check virtual memory as well.

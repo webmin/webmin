@@ -282,10 +282,15 @@ change_file=File or directory to monitor (fail if changed)
 
 jabber_eparser=The Perl module $1 is not installed on your system.
 
-memory_min2=Minimum free memory
-memory_emin=Missing or invalid amount of free memory
+memory_min2=Minimum free real memory
+memory_emin=Missing or invalid amount of free real memory
 memory_eproc=Webmin does not know how to check free memory on your operating system
-memory_free2=$1 free
+memory_free2=$1 real memory free
+memory_freeswap=$1 virtual memory free
+memory_freelow=Only $1 real memory free
+memory_freelowswap=Only $1 virtual memory free
+memory_minswap=Minimum free virtual memory
+memory_eminswap=Missing or invalid amount of free virtual memory
 
 proftpd_etype=This monitor cannot be used when ProFTPD is run stand-alone
 
