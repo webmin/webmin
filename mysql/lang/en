@@ -70,7 +70,9 @@ dbase_toomany=There are too many tables to display. Find tables matching:
 dbase_index=Index
 dbase_view=View
 dbase_addview=Create View
-dbase_jump=Or edit table:
+dbase_jump=Edit table:
+dbase_vjump=Edit view:
+dbase_ijump=Edit index:
 
 ddrop_err=Failed to drop database
 ddrop_title=Drop Database

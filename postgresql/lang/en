@@ -74,7 +74,10 @@ dbase_toomany=There are too many objects to display. Find objects matching:
 dbase_index=Index
 dbase_view=View
 dbase_seq=Sequence
-dbase_jump=Or edit table:
+dbase_jump=Edit table:
+dbase_vjump=Edit view:
+dbase_ijump=Edit index:
+dbase_sjump=Edit sequence:
 
 table_title=Edit Table
 table_title2=Create Table

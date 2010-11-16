@@ -57,6 +57,7 @@ if (@titles+@indexes+@views+@seqs > $max_dbs && !$in{'search'}) {
 	print &ui_submit($text{'index_search'}),"<br>\n";
 	print &ui_form_end();
 
+	# Table selector
 	print &ui_form_start("edit_table.cgi");
 	print $text{'dbase_jump'},"\n";
 	print &ui_hidden("db", $in{'db'}),"\n";
@@ -64,6 +65,39 @@ if (@titles+@indexes+@views+@seqs > $max_dbs && !$in{'search'}) {
 			 1, 0, 0, 0, "onChange='form.submit()'"),"\n";
 	print &ui_submit($text{'index_jumpok'}),"<br>\n";
 	print &ui_form_end();
+
+	# View selector (if any)
+	if (@views) {
+		print &ui_form_start("edit_view.cgi");
+		print $text{'dbase_vjump'},"\n";
+		print &ui_hidden("db", $in{'db'}),"\n";
+		print &ui_select("view", undef, [ map { [ $_ ] } @views ],
+				 1, 0, 0, 0, "onChange='form.submit()'"),"\n";
+		print &ui_submit($text{'index_jumpok'}),"<br>\n";
+		print &ui_form_end();
+		}
+
+	# Index selector (if any)
+	if (@indexes) {
+		print &ui_form_start("edit_index.cgi");
+		print $text{'dbase_ijump'},"\n";
+		print &ui_hidden("db", $in{'db'}),"\n";
+		print &ui_select("index", undef, [ map { [ $_ ] } @indexes ],
+				 1, 0, 0, 0, "onChange='form.submit()'"),"\n";
+		print &ui_submit($text{'index_jumpok'}),"<br>\n";
+		print &ui_form_end();
+		}
+
+	# Sequence selector (if any)
+	if (@seqs) {
+		print &ui_form_start("edit_seq.cgi");
+		print $text{'dbase_sjump'},"\n";
+		print &ui_hidden("db", $in{'db'}),"\n";
+		print &ui_select("seq", undef, [ map { [ $_ ] } @seqs ],
+				 1, 0, 0, 0, "onChange='form.submit()'"),"\n";
+		print &ui_submit($text{'index_jumpok'}),"<br>\n";
+		print &ui_form_end();
+		}
 	}
 elsif (@titles || @indexes || @views || @seqs) {
 	@icons = ( ( map { "images/table.gif" } @titles ),
