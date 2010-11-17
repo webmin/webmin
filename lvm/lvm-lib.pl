@@ -324,6 +324,9 @@ else {
 			else {
 				$lv->{'is_snap'} = 1;
 				}
+			if (/destination\s+for\s+\/dev\/[^\/]+\/(\S+)/) {
+				$lv->{'snap_of'} = $1;
+				}
 			}
 		elsif (/Stripes\s+(\d+)/) {
 			$lv->{'stripes'} = $1;

@@ -110,8 +110,14 @@ if ($in{'lv'}) {
 if ($lv->{'is_snap'}) {
 	if ($in{'lv'}) {
 		# Show which LV this is a snapshot of
-		local @snapof = grep { $_->{'size'} == $lv->{'size'} &&
-				       $_->{'has_snap'} } @lvs;
+		local @snapof;
+		if ($lv->{'snap_of'}) {
+			@snapof = grep { $_->{'name'} eq $lv->{'snap_of'}} @lvs;
+			}
+		else {
+			@snapof = grep { $_->{'size'} == $lv->{'size'} &&
+					 $_->{'has_snap'} } @lvs;
+			}
 		if (@snapof == 1) {
 			$snapsel = "<tt>$snapof[0]->{'name'}</tt>";
 			}
