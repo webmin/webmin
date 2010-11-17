@@ -216,6 +216,9 @@ print &ui_table_row(
 	"<td>".&ui_date_input($etm[3], $etm[4], $etm[5],
 			       "dend", "mend", "yend")." ".
             &date_chooser_button("dend", "mend", "yend")."</td> </tr>\n".
+	"<tr> <td><b>$text{'index_charset'}</b></td> ".
+	"<td>".&ui_opt_textbox("charset", $r->{'charset'}, 20,
+		       $text{'default'}." (iso-8859-1)")."</td> </tr>\n".
 	"</table>",
 	undef, \@tds);
 

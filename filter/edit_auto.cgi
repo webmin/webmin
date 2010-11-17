@@ -28,6 +28,11 @@ print &ui_table_row($text{'auto_reply'},
 	&ui_textarea("reply", $filter->{'reply'}->{'autotext'}, 5, 80,
 		     undef, $dis));
 
+# Character set
+print &ui_table_row($text{'auto_charset'},
+	&ui_opt_textbox("charset", $filter->{'reply'}->{'charset'}, 20,
+		       $text{'default'}." (iso-8859-1)"));
+
 # Period
 if (!$config{'reply_force'}) {
 	$r = $filter->{'reply'};

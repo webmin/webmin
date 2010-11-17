@@ -232,15 +232,18 @@ foreach $f (@files) {
 
 # Work out the content type and encoding
 $type = $rbody =~ /<html[^>]*>|<body[^>]*>/i ? "text/html" : "text/plain";
+$cs = $rheader{'Charset'};
+delete($rheader{'Charset'});
 if ($rbody =~ /[\177-\377]/) {
 	# High-ascii
 	$enc = "quoted-printable";
 	$encrbody = &quoted_encode($rbody);
-	$type .= "; charset=iso-8859-1";
+	$type .= "; charset=".($cs || "iso-8859-1");
 	}
 else {
 	$enc = undef;
 	$encrbody = $rbody;
+	$type .= "; charset=$cs" if ($cs);
 	}
 
 # run sendmail and feed it the reply

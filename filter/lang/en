@@ -39,6 +39,7 @@ index_noperiod=No minimum
 index_mins=minutes
 index_astart=Don't send autoreply before
 index_aend=Don't send autoreply after
+index_charset=Autoreply message character set
 index_nowebmin=This module is only for use in Usermin. If it is visible in Webmin, the theme you are using is incomplete.
 
 edit_title1=Create Filter
@@ -81,6 +82,7 @@ save_enewfolder2=Invalid new folder name
 save_enewfolder3=A folder with the same name already exists
 save_estart=Invalid autoreply start date
 save_eend=Invalid autoreply end date
+save_echarset=Missing or invalid autoreply character set
 
 delete_err=Failed to delete filters
 delete_enone=None selected
@@ -100,6 +102,7 @@ auto_title=Email Automatic Reply
 auto_header=Automatic email reply options
 auto_enabled=Automatic response enabled?
 auto_reply=Reply message
+auto_charset=Message character set
 auto_period=Minimum interval between replies
 auto_err=Failed to save automatic reply
 

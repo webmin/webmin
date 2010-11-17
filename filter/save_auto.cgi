@@ -62,6 +62,16 @@ elsif ($in{'enabled'}) {
 			"$user_module_config_directory/replies";
 		}
 
+	# Save character set
+	if ($in{'charset_def'}) {
+		delete($filter->{'reply'}->{'charset'});
+		}
+	else {
+		$in{'charset'} =~ /^[a-z0-9\.\-\_]+$/i ||
+			error($text{'save_echarset'});
+		$filter->{'reply'}->{'charset'} = $in{'charset'};
+		}
+
 	if ($old) {
 		&modify_filter($filter);
 		}

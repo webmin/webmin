@@ -32,6 +32,9 @@ while(<FILE>) {
 	elsif (/^From:\s*(.*)/) {
 		$simple->{'from'} = $1;
 		}
+	elsif (/^Charset:\s*(\S+)/) {
+		$simple->{'charset'} = $1;
+		}
 	else {
 		push(@lines, $_);
 		}
@@ -74,6 +77,9 @@ if ($simple->{'autoreply_end'}) {
 	}
 if ($simple->{'from'}) {
 	&print_tempfile(AUTO, "From: $simple->{'from'}\n");
+	}
+if ($simple->{'charset'}) {
+	&print_tempfile(AUTO, "Charset: $simple->{'charset'}\n");
 	}
 &print_tempfile(AUTO, $simple->{'autotext'});
 &close_tempfile(AUTO);
