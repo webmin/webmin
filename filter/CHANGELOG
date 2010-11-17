@@ -28,3 +28,5 @@ When an autoreply is deleted, the underlying message file is deleted too.
 Autoreply messages starting with <html> or <body> will now be sent using the text/html MIME type.
 ---- Changes since 1.430 ----
 Quick autoreply and forward setup pages now only show un-conditional rules.
+---- Changes since 1.450 ----
+Added option to select the character set of automatic reply messages.
