@@ -7435,7 +7435,8 @@ Relative URLs can also be parsed, if the base information is provided.
 =cut
 sub parse_http_url
 {
-if ($_[0] =~ /^(http|https):\/\/([^:\/]+)(:(\d+))?(\/\S*)?$/) {
+if ($_[0] =~ /^(http|https):\/\/\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
+    $_[0] =~ /^(http|https):\/\/([^:\/]+)(:(\d+))?(\/\S*)?$/) {
 	# An absolute URL
 	my $ssl = $1 eq 'https';
 	return ($2, $3 ? $4 : $ssl ? 443 : 80, $5 || "/", $ssl);

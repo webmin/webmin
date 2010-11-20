@@ -77,9 +77,20 @@ else {
 
 sub show_http_dialog
 {
-local $url = $_[0]->{'host'} ? ($_[0]->{'ssl'} ? "https" : "http").
-	     		    "://$_[0]->{'host'}:$_[0]->{'port'}$_[0]->{'page'}"
-			     : "http://";
+local $url;
+if ($_[0]->{'host'}) {
+	$url = ($_[0]->{'ssl'} ? "https" : "http")."://";
+	if (&check_ip6address($_[0]->{'host'})) {
+		$url .= "[".$_[0]->{'host'}."]";
+		}
+	else {
+		$url = $_[0]->{'host'};
+		}
+	$url .= ":$_[0]->{'port'}$_[0]->{'page'}";
+	}
+else {
+	$url = "http://";
+	}
 print &ui_table_row($text{'http_url'},
 	&ui_textbox("url", $url, 50), 3);
 
@@ -106,29 +117,12 @@ print &ui_table_row($text{'http_regexp'},
 
 sub parse_http_dialog
 {
-if ($in{'url'} =~ /^(http|https):\/\/([^:]+):(\d+)(\/.*)$/) {
-	$_[0]->{'ssl'} = $1 eq "https";
-	$_[0]->{'host'} = $2;
-	$_[0]->{'port'} = $3;
-	$_[0]->{'page'} = $4;
-	}
-elsif ($in{'url'} =~ /^(http|https):\/\/([^\/]+)(\/.*)$/) {
-	$_[0]->{'ssl'} = $1 eq "https";
-	$_[0]->{'host'} = $2;
-	$_[0]->{'port'} = $1 eq "https" ? 443 : 80;
-	$_[0]->{'page'} = $3;
-	}
-elsif ($in{'url'} =~ /^(http|https):\/\/([^:]+):(\d+)$/) {
-	$_[0]->{'ssl'} = $1 eq "https";
-	$_[0]->{'host'} = $2;
-	$_[0]->{'port'} = $3;
-	$_[0]->{'page'} = "/";
-	}
-elsif ($in{'url'} =~ /^(http|https):\/\/([^\/]+)$/) {
-	$_[0]->{'ssl'} = $1 eq "https";
-	$_[0]->{'host'} = $2;
-	$_[0]->{'port'} = $1 eq "https" ? 443 : 80;
-	$_[0]->{'page'} = "/";
+local ($host, $port, $page, $ssl) = &parse_http_url($in{'url'});
+if ($host) {
+	$_[0]->{'ssl'} = $ssl;
+	$_[0]->{'host'} = $host;
+	$_[0]->{'port'} = $port;
+	$_[0]->{'page'} = $page;
 	}
 else {
 	&error($text{'http_eurl'});
