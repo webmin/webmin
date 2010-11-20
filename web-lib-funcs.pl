@@ -7430,16 +7430,21 @@ return substr($file, 0, length($dir)) eq $dir;
 =head2 parse_http_url(url, [basehost, baseport, basepage, basessl])
 
 Given an absolute URL, returns the host, port, page and ssl flag components.
+If a username and password are given before the hostname, return those too.
 Relative URLs can also be parsed, if the base information is provided.
 
 =cut
 sub parse_http_url
 {
-if ($_[0] =~ /^(http|https):\/\/\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
-    $_[0] =~ /^(http|https):\/\/([^:\/]+)(:(\d+))?(\/\S*)?$/) {
+if ($_[0] =~ /^(http|https):\/\/([^\@]+\@)?\[([^\]]+)\](:(\d+))?(\/\S*)?$/ ||
+    $_[0] =~ /^(http|https):\/\/([^\@]+\@)?([^:\/]+)(:(\d+))?(\/\S*)?$/) {
 	# An absolute URL
 	my $ssl = $1 eq 'https';
-	return ($2, $3 ? $4 : $ssl ? 443 : 80, $5 || "/", $ssl);
+	my @rv = ($3, $4 ? $5 : $ssl ? 443 : 80, $6 || "/", $ssl);
+	if ($2 =~ /^([^:]+):(\S+)\@/) {
+		push(@rv, $1, $2);
+		}
+	return @rv;
 	}
 elsif (!$_[1]) {
 	# Could not parse
@@ -7447,13 +7452,13 @@ elsif (!$_[1]) {
 	}
 elsif ($_[0] =~ /^\/\S*$/) {
 	# A relative to the server URL
-	return ($_[1], $_[2], $_[0], $_[4]);
+	return ($_[1], $_[2], $_[0], $_[4], $_[5], $_[6]);
 	}
 else {
 	# A relative to the directory URL
 	my $page = $_[3];
 	$page =~ s/[^\/]+$//;
-	return ($_[1], $_[2], $page.$_[0], $_[4]);
+	return ($_[1], $_[2], $page.$_[0], $_[4], $_[5], $_[6]);
 	}
 }
 

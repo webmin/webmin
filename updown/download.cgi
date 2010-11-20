@@ -13,11 +13,9 @@ $i = 0;
 @urls || &error($text{'download_enone'});
 foreach $u (@urls) {
 	local ($proto, $host, $port, $page, $ssl);
-	if ($u =~ /^(http|https):\/\/([^\/]+)(\/.*)$/) {
-		$proto = "http";
-		$ssl = $1 eq 'https';
-		$host = $2; $page = $3; $port = $ssl ? 443 : 80;
-		if ($host =~ /^(.*):(\d+)$/) { $host = $1; $port = $2; }
+	if ($u =~ /^http/) {
+		($host, $port, $page, $ssl, $user, $pass) = &parse_http_url($u);
+		$proto = $ssl ? "https" : "http";
 		}
 	elsif ($u =~ /^ftp:\/\/([^\/]+)(:21)?(\/.*)$/) {
 		$proto = "ftp";
