@@ -173,11 +173,12 @@ if [ "$upgrading" = 1 ]; then
 	$perl "$wadir/newmods.pl" $config_dir $allmods
 
 	# Update miniserv.conf with new root directory and mime types file
-	grep -v "^root=" $config_dir/miniserv.conf | grep -v "^mimetypes=" >$tempdir/$$.miniserv.conf
+	grep -v "^root=" $config_dir/miniserv.conf | grep -v "^mimetypes=" | grep -v "^server=" >$tempdir/$$.miniserv.conf
 	if [ $? != "0" ]; then exit 1; fi
 	mv $tempdir/$$.miniserv.conf $config_dir/miniserv.conf
 	echo "root=$wadir" >> $config_dir/miniserv.conf
 	echo "mimetypes=$wadir/mime.types" >> $config_dir/miniserv.conf
+	echo "server=MiniServ/$ver" >> $config_dir/miniserv.conf
 	grep logout= $config_dir/miniserv.conf >/dev/null
 	if [ $? != "0" ]; then
 		echo "logout=$config_dir/logout-flag" >> $config_dir/miniserv.conf
@@ -505,6 +506,7 @@ else
 		echo "pam=$pam" >> $cfile
 	fi
 	echo premodules=WebminCore >> $cfile
+	echo "server=MiniServ/$ver" >> $cfile
 
 	# Append package-specific info to config file
 	if [ -r "$wadir/miniserv-conf" ]; then
