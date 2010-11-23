@@ -45,7 +45,12 @@ elsif ($in{'tall'} == 0) {
 	$to = $to ? $to + 24*60*60 - 1 : time();
 	}
 
-&ui_print_header(undef, $text{'search_title'}, "");
+if ($in{'csv'}) {
+	print "Content-type: text/csv\n\n";
+	}
+else {
+	&ui_print_header(undef, $text{'search_title'}, "");
+	}
 
 # Perform initial search in index
 &build_log_index(\%index);
@@ -115,7 +120,31 @@ $searchmsg = join(" ",
 	  $fromstr eq $tostr ? &text('search_critt2', $tostr) :
 	    &text('search_critt', $fromstr, $tostr));
 
-if (@match) {
+if ($in{'csv'}) {
+	# Show search results as CSV
+	foreach $act (sort { $b->{'time'} <=> $a->{'time'} } @match) {
+		$minfo = $m eq "global" ? 
+				{ 'desc' => $text{'search_global'} } :
+				$minfo_cache{$m};
+		if (!$minfo) {
+			local %minfo = &get_module_info($m);
+			$minfo = $minfo_cache{$m} = \%minfo;
+			}
+		local $desc = &get_action_description($act, 0);
+		$desc =~ s/<[^>]+>//g;
+		@cols = ( $desc, 
+			  $minfo->{'desc'},
+			  $act->{'user'},
+			  $act->{'ip'} );
+		if ($config{'host_search'}) {
+			push(@cols, $act->{'webmin'});
+			}
+		push(@cols, &make_date($act->{'time'}));
+		print join(",", map { "\"$_\"" } @cols),"\n";
+		}
+	}
+elsif (@match) {
+	# Show search results in table
 	if ($in{'sid'}) {
 		print "<b>",&text('search_sid', "<tt>$match[0]->{'user'}</tt>",
 				  "<tt>$in{'sid'}</tt>")," ..</b><p>\n";
@@ -172,17 +201,21 @@ if (@match) {
 		print &ui_columns_row(\@cols);
 		}
 	print &ui_columns_end();
+	print "<a href='search.cgi/webminlog.csv?$in&csv=1'>$text{'search_csv'}</a><p>\n";
 	}
 else {
 	# Tell the user that nothing matches
 	print "<p><b>$text{'search_none2'} $searchmsg.</b><p>\n";
 	}
 
-if ($in{'return'}) {
-	&ui_print_footer($in{'return'}, $in{'returndesc'});
-	}
-else {
-	&ui_print_footer("", $text{'index_return'});
+if (!$in{'csv'}) {
+	# Show page footer
+	if ($in{'return'}) {
+		&ui_print_footer($in{'return'}, $in{'returndesc'});
+		}
+	else {
+		&ui_print_footer("", $text{'index_return'});
+		}
 	}
 
 sub parse_time

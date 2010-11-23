@@ -53,6 +53,7 @@ search_err=Search failed
 search_global=None
 search_global_login=Logged into Webmin
 search_global_logout=Logged out of Webmin
+search_csv=Export as CSV.
 
 view_title=Action Details
 view_header=Details of logged action $1
