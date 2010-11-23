@@ -284,7 +284,9 @@ if (!$noborder && !$WRAPPER_OPEN) {
 	     . "% class='ui_columns'>\n";
 	$rv .= "<tr><td>\n";
 	}
-$WRAPPER_OPEN++;
+if (!$noborder) {
+	$WRAPPER_OPEN++;
+	}
 local @classes;
 push(@classes, "ui_table") if (!$noborder);
 push(@classes, "sortable") if (!$href);
