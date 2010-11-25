@@ -2565,6 +2565,11 @@ if ($ip = &to_ipaddress($host)) {
 	}
 elsif ($ip = &to_ip6address($host)) {
 	# Create IPv6 socket and connection
+	if (!&supports_ipv6()) {
+		$msg = "IPv6 connections are not supported";
+		if ($err) { $$err = $msg; return 0; }
+		else { &error($msg); }
+		}
 	if (!socket($fh, Socket6::PF_INET6(), SOCK_STREAM, $proto)) {
 		my $msg = "Failed to create IPv6 socket : $!";
 		if ($err) { $$err = $msg; return 0; }
