@@ -45,7 +45,7 @@ foreach $m (@ARGV) {
 	$subdir = $forcedir || $mod;
 	$copydir = "/tmp/create-module/$subdir";
 	system("rm -rf $copydir");
-	system("cp -r -L $mod $copydir");
+	system("cp -r -L $mod $copydir 2>/dev/null || cp -R -L $mod $copydir");
 
 	# Find type from .info file
 	undef(%minfo);
@@ -68,8 +68,8 @@ foreach $m (@ARGV) {
 	unlink("/tmp/create-module/$subdir/IDEAS");
 	system("cd /tmp/create-module && find . -name \\*.svn-work | xargs rm -rf");
 	system("cd /tmp/create-module && find . -name \\*.svn-base | xargs rm -rf");
-	system("cd /tmp/create-module && find . -name \\*.cgi | xargs -r chmod +x");
-	system("cd /tmp/create-module && find . -name \\*.pl | xargs -r chmod +x");
+	system("cd /tmp/create-module && find . -name \\*.cgi | xargs chmod +x");
+	system("cd /tmp/create-module && find . -name \\*.pl | xargs chmod +x");
 	system("cd /tmp/create-module && tar $flags $file $subdir") && die "Failed to create tar file";
 	}
 if ($file =~ /^(.*)\.gz$/i) {
