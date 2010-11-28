@@ -236,9 +236,14 @@ if ($@) {
 &read_users_file();
 
 # Setup SSL if possible and if requested
-if (!-r $config{'keyfile'} ||
-    $config{'certfile'} && !-r $config{'certfile'}) {
+if (!-r $config{'keyfile'}) {
 	# Key file doesn't exist!
+	print STDERR "SSL key file $config{'keyfile'} does not exist\n";
+	$use_ssl = 0;
+	}
+elsif ($config{'certfile'} && !-r $config{'certfile'}) {
+	# Cert file doesn't exist!
+	print STDERR "SSL cert file $config{'certfile'} does not exist\n";
 	$use_ssl = 0;
 	}
 @ipkeys = &get_ipkeys(\%config);
@@ -368,17 +373,9 @@ if ($config{'debuglog'}) {
 %webmincron_last = ( );
 &read_file($config{'webmincron_last'}, \%webmincron_last);
 
-# Re-direct STDERR to a log file
-if ($config{'errorlog'} ne '-') {
-	open(STDERR, ">>$config{'errorlog'}") || die "failed to open $config{'errorlog'} : $!";
-	if ($config{'logperms'}) {
-		chmod(oct($config{'logperms'}), $config{'errorlog'});
-		}
-	}
-select(STDERR); $| = 1; select(STDOUT);
-
 if ($config{'inetd'}) {
 	# We are being run from inetd - go direct to handling the request
+	&redirect_stderr_to_log();
 	$SIG{'HUP'} = 'IGNORE';
 	$SIG{'TERM'} = 'DEFAULT';
 	$SIG{'PIPE'} = 'DEFAULT';
@@ -553,13 +550,16 @@ if (!@socketfhs && !$tried_inaddr_any) {
 	socket($fh, PF_INET(), SOCK_STREAM, $proto) ||
 		die "Failed to open socket : $!";
 	setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
-	bind($fh, pack_sockaddr_in($sockets[0]->[1], INADDR_ANY)) ||
-		die "Failed to bind to port $sockets[0]->[1] : $!";
+	if (!bind($fh, pack_sockaddr_in($sockets[0]->[1], INADDR_ANY))) {
+		print STDERR "Failed to bind to port $sockets[0]->[1] : $!";
+		exit(1);
+		}
 	listen($fh, SOMAXCONN);
 	push(@socketfhs, $fh);
 	}
 elsif (!@socketfhs && $tried_inaddr_any) {
-	die "Could not listen on any ports";
+	print STDERR "Could not listen on any ports";
+	exit(1);
 	}
 
 if ($config{'listen'}) {
@@ -584,6 +584,7 @@ eval { setsid(); };	# may not work on Windows
 # Close standard file handles
 open(STDIN, "</dev/null");
 open(STDOUT, ">/dev/null");
+&redirect_stderr_to_log();
 &log_error("miniserv.pl started");
 foreach $msg (@startup_msg) {
 	&log_error($msg);
@@ -5678,3 +5679,16 @@ else {
 	}
 }
 
+# redirect_stderr_to_log()
+# Re-direct STDERR to error log file
+sub redirect_stderr_to_log
+{
+if ($config{'errorlog'} ne '-') {
+	open(STDERR, ">>$config{'errorlog'}") ||
+		die "failed to open $config{'errorlog'} : $!";
+	if ($config{'logperms'}) {
+		chmod(oct($config{'logperms'}), $config{'errorlog'});
+		}
+	}
+select(STDERR); $| = 1; select(STDOUT);
+}
