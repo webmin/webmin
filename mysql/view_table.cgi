@@ -258,7 +258,9 @@ if ($total || $in{'new'}) {
 	# Add an empty row for inserting
 	$realrows = scalar(@data);
 	if ($in{'new'}) {
-		push(@data, [ map { undef } @str ]);
+		push(@data, [ map { $_->{'default'} eq 'NULL' ? '' :
+				    $_->{'default'} eq 'CURRENT_TIMESTAMP' ? '':
+				      $_->{'default'} } @str ]);
 		$row{$realrows} = 1;
 		}
 
