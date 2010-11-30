@@ -162,7 +162,7 @@ if (!@rv || $@) {
 	ref($t) || &error("Failed to list databases : $t");
 	@rv = map { $_->[0] } @{$t->{'data'}};
 	}
-return @rv;
+return sort { lc($a) cmp lc($b) } @rv;
 }
 
 # list_tables(database, [empty-if-denied], [no-filter-views])

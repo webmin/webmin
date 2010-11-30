@@ -149,7 +149,7 @@ sub list_databases
 {
 local $force_nodbi = 1;
 local $t = &execute_sql_safe($config{'basedb'}, 'select * from pg_database order by datname');
-return map { $_->[0] } @{$t->{'data'}};
+return sort { lc($a) cmp lc($b) } map { $_->[0] } @{$t->{'data'}};
 }
 
 # supports_schemas(database)
