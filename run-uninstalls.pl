@@ -19,9 +19,13 @@ foreach $m (@mods) {
 	    -r "$mdir/uninstall.pl") {
 		# Call this module's uninstall function
 		eval {
+			$main::error_must_die = 1;
 			&foreign_require($m->{'dir'}, "uninstall.pl");
 			&foreign_call($m->{'dir'}, "module_uninstall");
 			};
+		if ($@) {
+			print STDERR "$m->{'dir'}/postinstall.pl failed : $@\n";
+			}
 		}
 	}
 

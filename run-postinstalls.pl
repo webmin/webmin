@@ -35,9 +35,13 @@ foreach $m (@mods) {
 	    -r "$mdir/postinstall.pl") {
 		# Call this module's postinstall function
 		eval {
+			$main::error_must_die = 1;
 			&foreign_require($m->{'dir'}, "postinstall.pl");
 			&foreign_call($m->{'dir'}, "module_install");
 			};
+		if ($@) {
+			print STDERR "$m->{'dir'}/postinstall.pl failed : $@\n";
+			}
 		}
 	}
 
