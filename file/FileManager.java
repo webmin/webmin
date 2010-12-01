@@ -1594,6 +1594,10 @@ class EditorWindow extends FixedFrame implements CbButtonCallback
 				// Convert to DOS newlines
 				s = FileManager.replace_str(s, "\n", "\r\n");
 				}
+			else {
+				// Remove any DOS newlines
+				s = FileManager.replace_str(s, "\r\n", "\n");
+				}
 			URL u = new URL(filemgr.getDocumentBase(),
 					"save.cgi"+filemgr.urlize(save_path)+
 					"?rand="+System.currentTimeMillis()+
