@@ -238,7 +238,9 @@ if ($@) {
 # Setup SSL if possible and if requested
 if (!-r $config{'keyfile'}) {
 	# Key file doesn't exist!
-	print STDERR "SSL key file $config{'keyfile'} does not exist\n";
+	if ($config{'keyfile'}) {
+		print STDERR "SSL key file $config{'keyfile'} does not exist\n";
+		}
 	$use_ssl = 0;
 	}
 elsif ($config{'certfile'} && !-r $config{'certfile'}) {
