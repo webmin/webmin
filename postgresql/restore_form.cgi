@@ -34,6 +34,11 @@ print &ui_table_row($text{'restore_only'},
 print &ui_table_row($text{'restore_clean'},
 		    &ui_yesno_radio("clean", 0));
 
+print &ui_table_row($text{'restore_tables'},
+		    &ui_opt_textbox("tables", undef, 60,
+				    $text{'restore_tables1'}."<br>",
+				    $text{'restore_tables0'}));
+
 print &ui_table_end();
 print &ui_form_end([ [ "go", $text{'restore_go'} ] ]);
 

@@ -71,3 +71,5 @@ Re-wrote the entire user interface to use Webmin's new UI library, for a more co
 Added a history of previous commands to the Execute SQL page.
 ---- Changes since 1.510 ----
 Added greater than / less than selectors to the table data search form.
+---- Changes since 1.530 ----
+Added an option to the restore form to limit the restore to only certain tables.

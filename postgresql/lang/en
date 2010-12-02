@@ -453,6 +453,9 @@ restore_ecmd=The restore command $1 was not found on your system
 restore_ecannot=You are not allowed to restore backups
 restore_only=Only restore data, not tables?
 restore_clean=Delete tables before restoring?
+restore_tables=Tables to restore
+restore_tables1=All in backup file
+restore_tables0=Listed tables
 restore_failed=Restore failed : $1
 
 backup_title=Backup Database

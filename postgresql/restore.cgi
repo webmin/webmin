@@ -23,19 +23,20 @@ else {
 	&close_tempfile(DATA);
 	}
 
-$db_find_f = 0 ;
+# Validate tables list
+if ($in{'tables_def'}) {
+	$tables = undef;
+	}
+else {
+	$in{'tables'} =~ /\S/ || &error($text{'restore_etables'});
+	$tables = [ split(/\s+/, $in{'tables'}) ];
+	}
 
-if ( $in{'db'} ) {
+# Validate database
+&indexof($in{'db'}, &list_databases()) >= 0 ||
+	&error(&text('restore_edb'));
 
-    foreach ( &list_databases() ) {
-
-        if ( $_ eq $in{'db'} ) { $db_find_f = 1 ; }
-    }
-}
-
-if ( $db_find_f == 0 ) { &error ( &text ( 'restore_edb' ) ) ; }
-
-$err = &restore_database($in{'db'}, $path, $in{'only'}, $in{'clean'});
+$err = &restore_database($in{'db'}, $path, $in{'only'}, $in{'clean'}, $tables);
 if ($err) {
 	&error(&text('restore_failed', "<pre>$err</pre>"));
 	}

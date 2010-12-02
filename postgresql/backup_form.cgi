@@ -67,12 +67,17 @@ if (!$in{'all'}) {
 	# Show input to select tables
 	$t = $c{'backup_tables_'.$in{'db'}};
 	@tables = &list_tables($in{'db'});
-	print &ui_table_row($text{'backup_tables'},
-		&ui_radio("tables_def", $t ? 0 : 1,
-			  [ [ 1, $text{'backup_alltables'} ],
-			    [ 0, $text{'backup_seltables'} ] ])."<br>".
-		&ui_select("tables", [ split(/\s+/, $t) ],
-			   [ sort @tables ], 5, 1));
+	if (@tables) {
+		print &ui_table_row($text{'backup_tables'},
+			&ui_radio("tables_def", $t ? 0 : 1,
+				  [ [ 1, $text{'backup_alltables'} ],
+				    [ 0, $text{'backup_seltables'} ] ])."<br>".
+			&ui_select("tables", [ split(/\s+/, $t) ],
+				   [ sort @tables ], 5, 1));
+		}
+	else {
+		print &ui_hidden("tables_def", 1);
+		}
 	}
 
 print &ui_hidden_table_end("main");
