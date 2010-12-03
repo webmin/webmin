@@ -38,7 +38,7 @@ if ($config{'pinger'} || $ipv6) {
 	}
 else {
 	# Use builtin code
-	local $rv = &ping_icmp($ip, $wait);
+	local $rv = &ping_icmp(inet_aton($ip), $wait);
 	return { 'up' => $rv ? 1 : 0 };
 	}
 }
