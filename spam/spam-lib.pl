@@ -542,7 +542,6 @@ sub can_use_page
 local %avail_icons;
 if ($module_info{'usermin'}) {
 	%avail_icons = map { $_, 1 } split(/,/, $config{'avail_icons'});
-	$avail_icons{'awl'} = 1;	# Always usable
 	}
 else {
 	%avail_icons = map { $_, 1 } split(/,/, $access{'avail'});
