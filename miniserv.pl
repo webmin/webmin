@@ -553,7 +553,7 @@ if (!@socketfhs && !$tried_inaddr_any) {
 		die "Failed to open socket : $!";
 	setsockopt($fh, SOL_SOCKET, SO_REUSEADDR, pack("l", 1));
 	if (!bind($fh, pack_sockaddr_in($sockets[0]->[1], INADDR_ANY))) {
-		print STDERR "Failed to bind to port $sockets[0]->[1] : $!";
+		print STDERR "Failed to bind to port $sockets[0]->[1] : $!\n";
 		exit(1);
 		}
 	listen($fh, SOMAXCONN);
