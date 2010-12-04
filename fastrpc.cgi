@@ -234,8 +234,8 @@ while(1) {
 		# execute a function
 		print STDERR "fastrpc: call $arg->{'module'}::$arg->{'func'}(",join(",", @{$arg->{'args'}}),")\n" if ($gconfig{'rpcdebug'});
 		local @rv;
-		local $main::error_must_die = 1;
 		eval {
+			local $main::error_must_die = 1;
 			@rv = &foreign_call($arg->{'module'},
 					    $arg->{'func'},
 					    @{$arg->{'args'}});
@@ -269,8 +269,14 @@ while(1) {
 			$rv = eval $arg->{'code'};
 			}
 		print STDERR "fastrpc: eval $arg->{'module'} $arg->{'code'} done = $rv error = $@\n" if ($gconfig{'rpcdebug'});
-		$rawrv = &serialise_variable(
-			{ 'status' => 1, 'rv' => $rv } );
+		if ($@) {
+			$rawrv = &serialise_variable(
+				{ 'status' => 0, 'rv' => $@ } );
+			}
+		else {
+			$rawrv = &serialise_variable(
+				{ 'status' => 1, 'rv' => $rv } );
+			}
 		}
 	elsif ($arg->{'action'} eq 'quit') {
 		print STDERR "fastrpc: quit\n" if ($gconfig{'rpcdebug'});

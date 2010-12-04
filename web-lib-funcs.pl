@@ -6195,7 +6195,18 @@ if ($serv->{'fast'} || !$sn) {
 		}
 	my $from = &unserialise_variable($fromstr);
 	if (!$from) {
+		# No response at all
 		return &$main::remote_error_handler("Remote Webmin error");
+		}
+	elsif (ref($from) ne 'HASH') {
+		# Not a hash?!
+		return &$main::remote_error_handler(
+			"Invalid remote Webmin response : $from");
+		}
+	elsif (!$from->{'status'}) {
+		# Call failed
+		$from->{'rv'} =~ s/\s+at\s+(\S+)\s+line\s+(\d+)(,\s+<\S+>\s+line\s+(\d+))?//;
+		return &$main::remote_error_handler($from->{'rv'});
 		}
 	if (defined($from->{'arv'})) {
 		return @{$from->{'arv'}};
