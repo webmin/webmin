@@ -376,6 +376,9 @@ if ($config{'debuglog'}) {
 %webmincron_last = ( );
 &read_file($config{'webmincron_last'}, \%webmincron_last);
 
+# Pre-cache lang files
+&precache_files();
+
 if ($config{'inetd'}) {
 	# We are being run from inetd - go direct to handling the request
 	&redirect_stderr_to_log();
@@ -4156,6 +4159,7 @@ sub reload_config_file
 &read_mime_types();
 &build_config_mappings();
 &read_webmin_crons();
+&precache_files();
 if ($config{'session'}) {
 	dbmclose(%sessiondb);
 	dbmopen(%sessiondb, $config{'sessiondb'}, 0700);
@@ -4206,6 +4210,7 @@ my %vital = ("port", 80,
 	  "max_post", 10000,
 	  "expires", 7*24*60*60,
 	  "pam_test_user", "root",
+	  "precache", "lang/en */lang/en",
 	 );
 foreach my $v (keys %vital) {
 	if (!$config{$v}) {
@@ -5631,6 +5636,22 @@ foreach my $f (readdir(CRONS)) {
 			print DEBUG "adding cron id=$cron{'id'} module=$cron{'module'} func=$cron{'func'}\n";
 			push(@webmincrons, \%cron);
 			}
+		}
+	}
+}
+
+# precache_files()
+# Read into the Webmin cache all files marked for pre-caching
+sub precache_files
+{
+undef(%main::read_file_cache);
+foreach my $g (split(/\s+/, $config{'precache'})) {
+	foreach my $f (glob("$config{'root'}/$g")) {
+		my @st = stat($f);
+		next if (!@st);
+		$main::read_file_cache{$f} = { };
+		&read_file($f, $main::read_file_cache{$f});
+		$main::read_file_cache_time{$f} = $st[9];
 		}
 	}
 }

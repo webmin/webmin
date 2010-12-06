@@ -105,6 +105,26 @@ else {
 		}
 	}
 }
+
+=head2 read_file_cached_with_stat(file, &hash, [&order], [lowercase], [split-char])
+
+Like read_file, but reads from an in-memory cache if the file has already been
+read in this Webmin script AND has not changed.
+
+=cut
+sub read_file_cached_with_stat
+{
+my $realfile = &translate_filename($_[0]);
+my $t = $main::read_file_cache_time{$realfile};
+my @st = stat($realfile);
+if ($t && $st[9] != $t) {
+	# Changed, invalidate cache
+	delete($main::read_file_cache{$realfile});
+	}
+my $rv = &read_file_cached(@_);
+$main::read_file_cache_time{$realfile} = $st[9];
+return $rv;
+}
  
 =head2 write_file(file, &hash, [join-char])
 
@@ -4414,7 +4434,7 @@ my ($dir) = ($_[1] || "lang");
 
 # Read global lang files
 foreach my $o (@lang_order_list) {
-	my $ok = &read_file_cached("$root/$dir/$o", \%text);
+	my $ok = &read_file_cached_with_stat("$root/$dir/$o", \%text);
 	return () if (!$ok && $o eq $default_lang);
 	}
 if ($ol) {
@@ -4430,10 +4450,10 @@ if ($_[0]) {
 	delete($text{'__norefs'});
 	my $mdir = &module_root_directory($_[0]);
 	foreach my $o (@lang_order_list) {
-		&read_file_cached("$mdir/$dir/$o", \%text);
+		&read_file_cached_with_stat("$mdir/$dir/$o", \%text);
 		}
 	if ($ol) {
-		foreach $o (@lang_order_list) {
+		foreach my $o (@lang_order_list) {
 			&read_file_cached("$mdir/$ol/$o", \%text);
 			}
 		}
