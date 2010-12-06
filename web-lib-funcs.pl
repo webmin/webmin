@@ -4437,8 +4437,12 @@ if ($_[0]) {
 		}
 	&read_file_cached("$config_directory/$_[0]/custom-lang", \%text);
 	}
-foreach $k (keys %text) {
-	$text{$k} =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/text_subs($2 || $3,\%text)/ge;
+
+# Replace references to other strings
+if (!$text{'__norefs'}) {
+	foreach $k (keys %text) {
+		$text{$k} =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/text_subs($2 || $3,\%text)/ge;
+		}
 	}
 
 if (defined(&theme_load_language)) {

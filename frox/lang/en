@@ -145,3 +145,4 @@ log_stop=Stopped Frox server
 log_start=Started Frox server
 log_apply=Applied configuration
 
+__norefs=1

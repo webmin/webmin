@@ -1116,18 +1116,20 @@ if ($? || $out =~ /could not|error|failed/i) {
 return undef;
 }
 
-# restore_database(database, source-path, only-data, clear-db)
+# restore_database(database, source-path, only-data, clear-db, [&only-tables])
 # Restores the contents of a PostgreSQL backup into the specified database.
 # Returns undef on success, or an error message on failure.
 sub restore_database
 {
-local ($db, $path, $only, $clean) = @_;
+local ($db, $path, $only, $clean, $tables) = @_;
+local $tablesarg = join(" ", map { " -t ".quotemeta($_) } @$tables);
 local $cmd = &quote_path($config{'rstr_cmd'}).
 	     (!$postgres_login ? "" :
 	      &supports_pgpass() ? " -U $postgres_login" : " -u").
 	     ($config{'host'} ? " -h $config{'host'}" : "").
 	     ($only ? " -a" : "").
 	     ($clean ? " -c" : "").
+	     $tablesarg.
 	     " -d $db ".&quote_path($path);
 if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
 	$cmd = &command_as_user($postgres_login, 0, $cmd);

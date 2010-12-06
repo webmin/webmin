@@ -148,3 +148,4 @@ acl_view=Can edit disks and partitions?
 
 ecannot=You are not allowed to edit partitions
 
+__norefs=1

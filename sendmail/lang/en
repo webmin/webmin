@@ -836,3 +836,4 @@ ports_eclash=Duplicate port name in row $1
 ports_eaddress=Missing or invalid IP address in row $1
 ports_eport=Missing or invalid port number in row $1
 
+__norefs=1

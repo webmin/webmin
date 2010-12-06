@@ -24,7 +24,7 @@ bind_desc2=This form can be used to change the port number that Usermin listens 
 bind_erestart=An error occurring starting Usermin with the new address and port settings : $1
 
 mods_title=Usermin Modules
-umods_title=$mods_title
+umods_title=Usermin Modules
 mods_desc1=Usermin modules can be added after installation by using the form to the right. Modules are typically distributed in <tt>.wbm</tt> files, each of which can contain one or more modules. Modules can also be installed from RPM files if supported by your operating system.
 mods_install=Install Module
 mods_local=From local file
@@ -491,3 +491,4 @@ blocked_cleardesc=Click this button to clear all current host and user blocks, b
 
 mobile_title=Mobile Device Options
 
+__norefs=1

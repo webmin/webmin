@@ -95,7 +95,7 @@ linux_group=Group
 linux_ruser=Real user
 linux_rgroup=Real group
 linux_pgid=Process group ID
-linux_stime=$stime
+linux_stime=Started
 
 linuxstat_R=Running
 linuxstat_S=Sleeping
@@ -111,14 +111,14 @@ freebsd_ruser=Real user
 freebsd_rgroup=Real group
 freebsd_tty=TTY
 freebsd_pgid=Process group
-freebsd_stime=$stime
+freebsd_stime=Started
 freebsd_lim=Memory limit
 
 hpux_pri=Priority
 hpux_tty=TTY
 hpux_status=Status
 hpux_wchan=Waiting for
-hpux_stime=$stime
+hpux_stime=Started
 
 hpuxstat_0=Nonexistent
 hpuxstat_S=Sleeping
@@ -136,7 +136,7 @@ sysv_ruser=Real user
 sysv_rgroup=Real group
 sysv_pgid=Process group ID
 sysv_tty=TTY
-sysv_stime=$stime
+sysv_stime=Started
 sysv_task=Task ID
 sysv_zone=Zone name
 
@@ -201,3 +201,4 @@ trace_change=Change
 windows_threads=Threads in process
 
 syslog_dmesg=Kernel messages
+__norefs=1

@@ -323,3 +323,4 @@ smfwizard_manpage_section=Specify manpage section
 smfwizard_manpage_section_error=*Section must be non-null!*
 smfwizard_manpage_manpath=Specify manpath
 smfwizard_manpage_manpath_error=*Manpath must be non-null!*
+__norefs=1

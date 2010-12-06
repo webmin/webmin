@@ -156,3 +156,4 @@ srun_cmd=Executing SQL command $1 ..
 srun_eprepare=.. SQL error : $1
 srun_eexecute=.. execution error : $1
 srun_none=.. no results were returned.
+__norefs=1

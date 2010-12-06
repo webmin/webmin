@@ -33,3 +33,4 @@ log_deletes=Deleted $1 cluster cron jobs
 
 delete_err=Failed to delete cluster cron jobs
 delete_enone=None selected
+__norefs=1

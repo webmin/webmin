@@ -241,3 +241,4 @@ manual_err=Failed to save config file
 dknown_err=Failed to delete known hosts
 dknown_enone=None selected
 
+__norefs=1

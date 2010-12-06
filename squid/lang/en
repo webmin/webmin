@@ -971,3 +971,4 @@ cachemgr_all=Use this password for all actions
 cachemgr_others=Other actions:
 cachemgr_enone=None entered - you should select <i>No passwords required</i> instead
 cachemgr_err=Failed to save cache manager passwords
+__norefs=1

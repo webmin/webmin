@@ -19,3 +19,4 @@ run_enone=No servers to run on selected
 log_clear=Cleared command history
 log_run=Ran $1 on $2 servers
 log_run_l=Ran $1 on $2
+__norefs=1

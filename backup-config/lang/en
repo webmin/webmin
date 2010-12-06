@@ -119,3 +119,4 @@ email_pre=Running pre-backup command $1 ..
 email_post=Running post-backup command $1 ..
 email_prefailed=Pre-backup command failed!
 
+__norefs=1

@@ -120,3 +120,4 @@ uninstalls_err=Failed to uninstall modules
 uninstalls_enone=None selected
 uninstalls_emod=$1 failed : $2
 uninstalls_rusure=Are you sure you want to un-install the $1 selected modules? $2 sub-modules and $3 files will be removed.
+__norefs=1

@@ -45,3 +45,4 @@ delete_enone=None selected
 
 chooser_ip=Select free IP address
 chooser_none=No free IP addresses were found in any of your subnets!
+__norefs=1

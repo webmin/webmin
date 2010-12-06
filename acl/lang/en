@@ -337,7 +337,7 @@ switch_euser=You are not allowed to switch to this user
 switch_eold=Existing session not found!
 
 rbac_title=Setup RBAC
-rbac_desc=Webmin's RBAC integration provides a way for user module and ACL permissions to be determined from an RBAC (Role Based Access Control) database, rather than Webmin's own configuration files. Once RBAC support is enabled, any user for whom the <b>$edit_rbacdeny1</b> option is selected will have his capabilities determined by RBAC rather than Webmin's own access control settings.
+rbac_desc=Webmin's RBAC integration provides a way for user module and ACL permissions to be determined from an RBAC (Role Based Access Control) database, rather than Webmin's own configuration files. Once RBAC support is enabled, any user for whom the <b>RBAC controls all modules and ACLs</b> option is selected will have his capabilities determined by RBAC rather than Webmin's own access control settings.
 rbac_esolaris=RBAC is only supported on Solaris at the moment, and so cannot be used on this $1 system.
 rbac_eperl=The Perl module $1 needed for RBAC integration is not installed. <a href='$2'>Click here</a> to have it installed now.
 rbac_ecpan=You do not have access to Webmin's Perl Modules page in order to install the necessary $1 module for RBAC integration.
@@ -448,3 +448,4 @@ makedn_still=Some problems were found even after DN creation : $1
 schema_title=Download LDAP Schema
 schema_desc=Before Webmin can use an LDAP server to store users and groups it must be configured to use the schema below. This can typically be done by saving the schema definition in <tt>/etc/ldap/schema</tt> or <tt>/etc/openldap/schema</tt> as <tt>webmin.schema</tt>, then configuring the server to load that schema file.
 schema_download=Download schema file : <a href=$1>$1</a>
+__norefs=1

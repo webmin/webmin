@@ -72,3 +72,4 @@ perl_title=Perl Module
 perl_header=Documentation for Perl module $1
 perl_emod=Invalid Perl module name
 
+__norefs=1

@@ -343,3 +343,4 @@ gmass_header=Quota changes to apply to selected groups
 gmass_count=The changes below will apply to $1 selected groups ..
 gmass_ok=Update Groups
 gmass_err=Failed to update group quotas
+__norefs=1

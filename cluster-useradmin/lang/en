@@ -164,3 +164,4 @@ log_add_group=Added users and groups from hosts in group $1
 log_refresh=Refreshed users and groups
 log_sync=Synchronized users and groups
 
+__norefs=1

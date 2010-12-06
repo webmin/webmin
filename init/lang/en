@@ -164,3 +164,4 @@ change_err=You are not allowed to switch runlevels
 change_title=Switch Runlevel
 change_cmd=Switching to runlevel $1 with command $2. This may take some time, and Webmin might not be available anymore after switching.
 
+__norefs=1

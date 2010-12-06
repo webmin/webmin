@@ -293,3 +293,4 @@ hdelete_err=Failed to delete host addresses
 hdelete_enone=None selected
 idelete_err=Failed to delete IPv6 host addresses
 
+__norefs=1

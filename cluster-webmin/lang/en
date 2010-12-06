@@ -330,3 +330,4 @@ config_have=On servers that have it
 config_group=On members of group $1
 config_on=On $1
 config_err=Failed to save module configuration
+__norefs=1

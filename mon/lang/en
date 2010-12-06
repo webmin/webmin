@@ -203,3 +203,4 @@ periods_ehour=Missing or invalid hour for period $1 (must be like 9am or 5pm)
 
 show_title=Operational Status
 show_ecgi=The MON status program $1 does not exist. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
+__norefs=1

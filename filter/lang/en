@@ -112,3 +112,4 @@ forward_enabled=Email forwarding enabled?
 forward_to=Forward to addresses
 forward_cont=Also deliver normally?
 forward_err=Failed to save email forwarding
+__norefs=1

@@ -38,3 +38,4 @@ log_delete_export=Deleted export of $1
 log_modify_export=Modified export of $1
 log_apply=Applied configuration
 
+__norefs=1

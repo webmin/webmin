@@ -95,3 +95,4 @@ log_apply=Applied configuration
 log_global=Changed global options
 
 
+__norefs=1

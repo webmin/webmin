@@ -344,3 +344,4 @@ rename_header=Chain rename options
 rename_adjust=Modify other rules that jump to this chain?
 rename_none=None
 rename_ecannot=You are not allowed to rename chains
+__norefs=1

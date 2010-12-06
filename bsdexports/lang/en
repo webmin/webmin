@@ -47,3 +47,4 @@ save_esame1=The directory <tt>$1</tt> is already being exported to <tt>$2</tt>. 
 save_esame2=The directory <tt>$1</tt> is already being exported to <tt>$2</tt>. Your operating system does not allow directories on the same <i>local</i> filesystem to be exported to the same network separately
 
 restart_err=Failed to apply changes
+__norefs=1

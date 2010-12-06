@@ -266,3 +266,4 @@ disk_dsize=<b>Disk size:</b> $1
 disk_model=<b>Make and model:</b> $1
 disk_cylinders=<b>Cylinders:</b> $1
 
+__norefs=1

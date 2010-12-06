@@ -1,2 +1,3 @@
 my_msg=Some message here
 my_subs=Your name is $1
+__norefs=1

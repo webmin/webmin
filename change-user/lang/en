@@ -36,3 +36,4 @@ acl_lang=Can change language?
 acl_theme=Can change theme?
 acl_pass=Can change password (when set in Webmin) ?
 
+__norefs=1

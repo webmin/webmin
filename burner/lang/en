@@ -147,3 +147,4 @@ acl_dirs=Allow directories for source files
 delete_err=Failed to delete burn profiles
 delete_enone=None selected
 
+__norefs=1

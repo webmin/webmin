@@ -4,3 +4,4 @@ index_evirtualmin=The URL contains Virtualmin-specific variables, but no server 
 
 acl_link=Redirect to URL
 acl_elink=Missing URL to redirect to
+__norefs=1

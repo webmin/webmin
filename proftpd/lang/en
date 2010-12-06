@@ -453,3 +453,4 @@ proftpd_apply=Apply Changes
 proftpd_stop=Stop ProFTPd
 proftpd_start=Start ProFTPd
 
+__norefs=1

@@ -893,3 +893,4 @@ status_interval1=Never
 status_interval0=Every
 status_mins=minutes
 status_pkgs=Collect available package updates?
+__norefs=1

@@ -192,3 +192,4 @@ manual_title=Edit Config File
 manual_desc=Editing Dovecot configuration file $1 ..
 manual_err=Failed to save config file
 manual_edata=Nothing entered!
+__norefs=1

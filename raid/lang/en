@@ -148,3 +148,4 @@ delete_title=Delete RAID Array
 delete_rusure=Are you sure you want to delete the RAID array $1, which uses $2 of disk space?
 delete_ok=Yes, Delete It
 delete_eidx=No RAID array selected!
+__norefs=1

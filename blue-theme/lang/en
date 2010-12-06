@@ -41,3 +41,4 @@ right_updates=Package updates
 right_upok=All installed packages are up to date
 right_upneed=$1 package updates are available
 right_upsec=$1 package updates are available, of which $2 are security updates
+__norefs=1

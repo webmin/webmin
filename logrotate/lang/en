@@ -58,7 +58,7 @@ edit_errorsno=Nobody
 edit_errorsto=Address or user
 edit_post=Commands to run after rotation
 edit_pre=Commands to run before rotation
-edit_default=$default ($1)
+edit_default=Default ($1)
 edit_sharedscripts=Only run scripts once for all files?
 edit_now=Rotate Now
 
@@ -108,3 +108,4 @@ force_failed=.. failed! See the output above for the reason why.
 delete_err=Failed to delete logs
 delete_enone=None selected
 
+__norefs=1

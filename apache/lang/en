@@ -1124,3 +1124,4 @@ mods_available=Available for installation
 mods_ecannot=You are not allowed to configure Apache modules
 mods_save=Enable Selected Modules
 mods_desc=This page allows you to select which optional Apache modules are enabled, using the checkbox next to each module name. Be careful when disabling a module, as any existing directives that are specific to it will be no longer recognized.
+__norefs=1

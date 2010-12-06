@@ -68,3 +68,4 @@ timezone_err=Failed to save timezone
 timezone_ecannot=You are not allowed to change the timezone
 timezone_enone=No zone selected
 
+__norefs=1

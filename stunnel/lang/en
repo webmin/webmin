@@ -69,3 +69,4 @@ log_create=Created SSL tunnel $1
 log_delete=Deleted SSL tunnel $1
 log_modify=Modified SSL tunnel $1
 log_delete_stunnels=Deleted $1 SSL tunnels
+__norefs=1

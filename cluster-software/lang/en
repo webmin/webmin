@@ -176,3 +176,4 @@ deletes_rusure=Are you sure you want to uninstall the packages $1 from the selec
 deletes_ok=Delete them all
 
 
+__norefs=1

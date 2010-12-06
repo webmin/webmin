@@ -19,3 +19,4 @@ login_clear=Clear
 seturl_err=Failed to open URL
 seturl_eurl=Invalid URL entered
 
+__norefs=1

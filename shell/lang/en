@@ -13,3 +13,4 @@ acl_user_def=Current Webmin user
 log_run=Ran command $1
 log_clear=Cleared command history
 
+__norefs=1

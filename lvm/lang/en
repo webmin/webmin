@@ -178,3 +178,4 @@ log_resize_pv=Resized physical volume $1 in VG $2
 
 blocks=blocks
 
+__norefs=1

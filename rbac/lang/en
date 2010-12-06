@@ -250,3 +250,4 @@ prctl_res=Resource
 prctl_priv=Privilege type
 prctl_limit=Upper limit
 prctl_action=Action
+__norefs=1

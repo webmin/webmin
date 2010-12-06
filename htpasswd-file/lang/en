@@ -53,3 +53,4 @@ log_create=Created user $1
 log_delete=Deleted user $1
 log_modify=Modified user $1
 
+__norefs=1

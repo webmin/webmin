@@ -315,3 +315,4 @@ add_ediff=Server $1 is using a different print system ($2) to this server
 add_ediff2=Server $1 is using a different print driver ($2) to this server
 add_ok=Added $1, with $2 printers.
 
+__norefs=1

@@ -107,3 +107,4 @@ acl_init=Can initialized repository?
 init_err=Failed to initialize repository
 init_ecannot=You are not allowed to initialize a repository
 
+__norefs=1

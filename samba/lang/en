@@ -646,3 +646,4 @@ manual_edata=Nothing entered!
 
 delete_err=Failed to delete shares
 delete_enone=None selected
+__norefs=1

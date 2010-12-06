@@ -141,7 +141,7 @@ vsave_err=Failed to save virtual mapping
 vsave_edomain='$1' is not a valid email domain
 vsave_euser='$1' is not a valid email username
 vsave_eprepend='$1' is not a valid mapping prefix
-vsave_eboth=You cannot select both '$vform_all' and '$vform_none'
+vsave_eboth=You cannot select both 'Any address not matching another virtual mapping' and 'Nothing'
 
 vdelete_err=Failed to delete virtual mappings
 
@@ -401,3 +401,4 @@ match_!headers=Headers don't match
 delq_titles=Deleting Messages
 delq_rusure=Are you sure you want to delete the $1 selected queued messages?
 delq_confirm=Delete Messages
+__norefs=1

@@ -859,3 +859,4 @@ root_epass1=No new password entered
 root_epass2=Passwords do not match
 root_none=No password!
 root_auto=Automatic (typically <tt>root</tt>)
+__norefs=1

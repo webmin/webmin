@@ -98,9 +98,9 @@ desc_amd.master=Automounter maps
 desc_auto_home=Automounter home
 desc_auto_master=Automounter maps
 desc_auto_local=Automounter local
-desc_auto.home=$desc_auto_home
-desc_auto.master=$desc_auto_master
-desc_auto.local=$desc_auto_local
+desc_auto.home=Automounter home
+desc_auto.master=Automounter maps
+desc_auto.local=Automounter local
 desc_automount=Automounter maps
 desc_netgroup=Netgroups
 desc_netgrp=Netgroups
@@ -306,3 +306,4 @@ eswitch_err=Failed to save service
 eswitch_enone=No sources selected!
 
 
+__norefs=1

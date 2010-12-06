@@ -287,3 +287,4 @@ webmin_eperl=Perl is not installed at $1
 webmin_eroot=The directory $1 does not exist or does not contain Webmin.
 webmin_title=Install Webmin
 
+__norefs=1

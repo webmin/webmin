@@ -31,3 +31,4 @@ save_eservice=Daemon names contain bad characters
 
 del_errtitle=Error on rules delete
 del_enone=No rules marked to delete
+__norefs=1

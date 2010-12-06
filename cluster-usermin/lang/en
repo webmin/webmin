@@ -320,3 +320,4 @@ update_onhost=Results of update on $1 ..
 update_failed=.. update failed : $1
 update_none=.. no updates were found.
 
+__norefs=1

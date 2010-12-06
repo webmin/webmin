@@ -127,3 +127,4 @@ delete_enone=None selected
 
 check_epostfix=Procmail is not enabled in your Postfix configuration. The configuration file <tt>$2</tt> must have the <tt>$1</tt> option set to <tt>$3</tt>.
 check_esendmail=Sendmail is not setup to use Procmail for local delivery. This can be configured in Webmin's <a href='$1'>Sendmail Mail Server</a> module.
+__norefs=1

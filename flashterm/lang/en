@@ -2,3 +2,4 @@ index_title=FlashTerm
 index_esocket=Socket failed : $1
 index_eport=Port $1 is already in use, perhaps by another Flash policy server
 index_etelnet=This system is not running a Telnet server on port $1.
+__norefs=1

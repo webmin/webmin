@@ -74,3 +74,4 @@ log_up_title=Moved up boot option $1
 log_down_title=Moved down  boot option $1
 log_global=Changed global options
 log_install=Installed GRUB
+__norefs=1

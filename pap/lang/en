@@ -162,3 +162,4 @@ sync_title=User Synchronization
 delete_err=Failed to delete accounts
 delete_enone=None selected
 
+__norefs=1

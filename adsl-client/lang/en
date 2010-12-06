@@ -65,3 +65,4 @@ log_bootup=Enabled ADSL at boot time
 log_bootdown=Disabled ADSL at boot time
 log_setup=Set up default configuration
 
+__norefs=1

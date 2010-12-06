@@ -134,3 +134,4 @@ log_disable_l=Disabled services $1
 config_dirdef=Xinetd configuration file
 config_dirto=New file in directory
 
+__norefs=1

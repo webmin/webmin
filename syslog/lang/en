@@ -108,3 +108,4 @@ acl_sel=Only listed files and those under listed directories ..
 acl_extra=Extra log files for this user
 acl_syslog=Can view logs from syslog?
 acl_others=Can view logs from other modules?
+__norefs=1

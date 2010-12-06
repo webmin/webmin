@@ -1,6 +1,6 @@
 index_title=Webalizer Logfile Analysis
 index_version=Webalizer version $1
-index_version_webalizer=$index_version
+index_version_webalizer=Webalizer version $1
 index_version_awffull=AWFFull
 index_ewebalizer=The logfile analysis command $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
 index_econf=The Webalizer configuration file $1 was not found on your system. Maybe it is not installed, or your <a href='$2'>module configuration</a> is incorrect.
@@ -163,3 +163,4 @@ acl_this=Current webmin user
 acl_any=Any user
 acl_add=Can add new logfiles for analysis?
 
+__norefs=1

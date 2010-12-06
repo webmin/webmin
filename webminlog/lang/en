@@ -119,3 +119,4 @@ rollback_nodeleted=Skipped non-existant file $1.
 rollback_enone=No files selected
 
 log_rollback=Rolled back action $1 in module $2
+__norefs=1

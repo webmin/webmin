@@ -285,7 +285,7 @@ procmail_title=Procmail Spam Delivery
 procmail_ok=Change Procmail Delivery
 procmail_desc=The form can be used to change the Procmail configuration that determines what happens to messages classified as spam.
 
-simple_title=$header_title
+simple_title=Header and Body Tests
 simple_desc=This page allows you to define additional tests that SpamAssassin will apply to email, based on message headers, the body content, URLs found in the body. The name assigned to each test is up to you, but is usually something like CONTAINS_FOO.
 simple_switch=Switch to advanced mode ..
 simple_header=Message tests to apply
@@ -380,3 +380,4 @@ dawl_ecannot=You are not allowed to manage the auto-whitelist for this user
 dawl_doing=Deleting auto-whitelists for all users ..
 dawl_done=.. deleted $2 entries from $1 users.
 dawl_title=Delete All Auto-Whitelists
+__norefs=1

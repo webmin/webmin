@@ -75,3 +75,4 @@ log_delete_l=Deleted NFS export $1 to $2
 log_create=Created NFS export $1
 log_create_l=Created NFS export $1 to $2
 log_apply=Applied configuration
+__norefs=1

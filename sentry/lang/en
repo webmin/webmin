@@ -104,3 +104,4 @@ log_hostsentry_stop=Stopped hostsentry daemon
 log_portsentry_start=Started portsentry daemon
 log_portsentry_stop=Stopped portsentry daemon
 
+__norefs=1

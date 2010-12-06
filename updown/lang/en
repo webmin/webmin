@@ -132,3 +132,4 @@ email_upsize=Uploaded size: $1
 email_upextract=Extraction status: $1
 email_subjectu=Upload complete
 email_upmsg=The following uploads have completed :
+__norefs=1

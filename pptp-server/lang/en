@@ -67,8 +67,8 @@ options_version=PPPd version $1
 options_msdesc=The options below enable the MS-CHAP authentication method and MPPE encryption, used by default by Windows VPN clients. However, MPPE requires support in both the PPP daemon and operating system kernel.
 options_mschap=MS-CHAP authentication
 options_mschap-v2=MS-CHAP version 2 authentication
-options_chapms=$options_mschap
-options_chapms-v2=$options_mschap-v2
+options_chapms=MS-CHAP authentication
+options_chapms-v2=MS-CHAP version 2 authentication
 
 secrets_title=PPP Accounts
 secrets_ecannot=You are not allowed to edit PPP accounts
@@ -150,3 +150,4 @@ acl_secrets=Can manage PPTP accounts?
 acl_conns=Can view connections?
 acl_stop=Can stop and start PPTP server?
 acl_apply=Can apply configuration?
+__norefs=1

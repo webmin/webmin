@@ -452,3 +452,4 @@ params_create=Create custom parameter
 params_header=Custom parameter details
 params_err=Failed to save custom parameter
 params_varname=Invalid parameter name (must be a valid shell variable name)
+__norefs=1

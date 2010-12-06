@@ -19,3 +19,4 @@ save_egone=Website no longer exists
 log_create=Created website $1
 log_modify=Modified website $1
 log_delete=Deleted website $1
+__norefs=1

@@ -43,3 +43,4 @@ acl_mode6=Users matching
 acl_expire=Can force users to change password at next login?
 acl_sec=Include secondary groups?
 acl_notusers=Except for users
+__norefs=1

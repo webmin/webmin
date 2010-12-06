@@ -461,3 +461,4 @@ ecompile=An error has occurred building a program for listing mounted filesystem
 freebsd_eaddr=Missing or invalid server address
 freebsd_eworkgroup=Missing or invalid workgroup
 
+__norefs=1

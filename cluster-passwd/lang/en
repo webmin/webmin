@@ -6,3 +6,4 @@ passwd_err=Failed to change password
 passwd_title=Changing Password
 passwd_on=Changing password on $1 ..
 passwd_euser=User does not exist!
+__norefs=1

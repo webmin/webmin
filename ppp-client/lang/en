@@ -103,3 +103,4 @@ log_connect=Connected with $1
 log_fail=Failed to connect with $1
 log_disconnect=Disconnected from $1
 
+__norefs=1

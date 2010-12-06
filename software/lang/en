@@ -389,3 +389,4 @@ hpux_enforce_scripts=Enforce scripts?
 hpux_enforce_dsa=Enforce disk space analysis?
 hpux_root=Root directory
 
+__norefs=1

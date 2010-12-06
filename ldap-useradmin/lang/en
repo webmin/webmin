@@ -94,3 +94,4 @@ raw_for=For $1
 batch_samba=Create Samba account for new users?
 batch_descafter3=In <b>create</b> and <b>modify</b> lines, you can optionally append extra fields containing LDAP atttributes in <i>name</i>=<i>value</i> format, to be assigned to the new or modified users.
 batch_eattr=Invalid LDAP attribute at line $1 : $2
+__norefs=1

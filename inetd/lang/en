@@ -105,3 +105,4 @@ log_create_rprog_l=Created RPC $1 number $2 for program $3
 log_modify_rprog_l=Modified RPC $1 number $2 for program $3
 log_delete_rprog_l=Deleted RPC $1 number $2 for program $3
 
+__norefs=1

@@ -116,3 +116,4 @@ log_vgetty_delete=Deleted serial port $1
 
 email_subject=Voicemail message
 email_body=Voicemail message received at $1 by $2.
+__norefs=1

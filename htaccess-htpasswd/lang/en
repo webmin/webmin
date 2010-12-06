@@ -123,3 +123,4 @@ search_noprot=Skipping Apache options file $1, as it does not protect the direct
 search_open=Could not open Apache options file $1 : $2
 search_done=.. done
 
+__norefs=1

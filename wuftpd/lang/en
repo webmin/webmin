@@ -236,3 +236,4 @@ log_misc=Changed miscellaneous options
 log_restart=Applied changed
 log_start=Started FTP server
 
+__norefs=1

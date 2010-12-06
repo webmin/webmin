@@ -31,7 +31,7 @@ connect_elogin=Failed to login to LDAP server $1 as $2 : $3
 connect_cpan=You can have the <tt>$1</tt> Perl module <a href='$2'>automatically installed</a> from CPAN.
 
 slapd_title=OpenLDAP Server Configuration
-ldif_title=$slapd_title
+ldif_title=OpenLDAP Server Configuration
 slapd_header=Global LDAP server options
 slapd_suffix=Root DN for LDAP database
 slapd_rootdn=Administration login DN
@@ -265,7 +265,7 @@ gencert_edest=Destination directory does not exist
 perms_err=Failed to fix file ownership
 
 acl_slapd=Can configure LDAP server?
-acl_ldif=$acl_slapd
+acl_ldif=Can configure LDAP server?
 acl_schema=Can manage schema?
 acl_acl=Can edit access control?
 acl_browser=Can browse and edit database?
@@ -322,3 +322,4 @@ eacl_efilter=Missing or invalid filter - should be like <tt>(objectClass=posixAc
 eacl_eattrs=Missing or invalid comma-separated list of attributes
 eacl_ewho=Missing or invalid-looking DN in row $1
 eacl_eaccess=Missing or invalid access level in row $1
+__norefs=1

@@ -656,3 +656,4 @@ restore_enofiles=None of the selected files are in the backup
 restore_level_F=Full
 restore_level_D=Differential
 restore_level_I=Incremental
+__norefs=1

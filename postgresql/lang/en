@@ -613,3 +613,4 @@ seq_ecannot=You are not allowed to manage sequences
 
 dgrant_err=Failed to reset grants
 dgrant_enone=No objects selected
+__norefs=1

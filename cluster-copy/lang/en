@@ -66,3 +66,4 @@ email_subject_failed=Cluster copy of $1 failed
 delete_err=Failed to delete copies
 delete_enone=None selected
 
+__norefs=1

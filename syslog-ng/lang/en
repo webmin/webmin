@@ -288,3 +288,4 @@ log_apply=Applied configuration
 log_start=Started Syslog-NG server
 log_stop=Stopped Syslog-NG server
 log_options=Changed global options
+__norefs=1

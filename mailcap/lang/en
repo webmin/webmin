@@ -44,3 +44,4 @@ log_modify_mailcap=Modified MIME type program for $1
 log_delete_mailcaps=Deleted $1 MIME type programs
 log_disable_mailcaps=Disabled $1 MIME type programs
 log_enable_mailcaps=Enabled $1 MIME type programs
+__norefs=1

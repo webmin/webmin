@@ -102,3 +102,4 @@ start_err=Failed to start heartbeat
 apply_err=Failed to apply changes
 apply_epid=Process is no longer running
 
+__norefs=1

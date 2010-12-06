@@ -18,3 +18,4 @@ search_mod=Module
 search_page=Help page
 search_line=Match on
 search_results=Webmin help pages matching $1
+__norefs=1

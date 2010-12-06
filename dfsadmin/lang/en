@@ -55,3 +55,4 @@ delete_err=Failed to delete shares
 delete_enone=None selected
 
 restart_err=Failed to apply changes
+__norefs=1

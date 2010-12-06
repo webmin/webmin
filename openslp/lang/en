@@ -48,3 +48,4 @@ index_stopmsg=Click this button to stop the OpenSLP daemon on your system.
 
 stop_err=Failed to stop OpenSLP
 start_err=Failed to start OpenSLP
+__norefs=1

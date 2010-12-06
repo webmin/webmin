@@ -25,3 +25,4 @@ log_create_record=Created $1 record $2 in zone $3
 log_modify_record=Modified $1 record $2 in zone $3
 log_boot=Created primary configuration file
 
+__norefs=1

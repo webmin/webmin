@@ -53,9 +53,9 @@ edit_anonuid=Treat untrusted users as
 edit_default=Default
 edit_anongid=Treat untrusted groups as
 edit_sync=Immediately sync all writes?
-edit_sync1=$yes
-edit_sync2=$no
-edit_sync0=$default
+edit_sync1=Yes
+edit_sync2=No
+edit_sync0=Default
 edit_in=in
 
 save_err=Failed to save export
@@ -85,3 +85,4 @@ log_create=Created NFS export $1
 log_create_l=Created NFS export $1 to $2
 log_apply=Applied configuration
 log_delete_exports=Deleted $1 NFS exports
+__norefs=1

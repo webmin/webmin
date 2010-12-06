@@ -152,3 +152,4 @@ email_regsubject=System $1 registered
 email_reg=The system $1 has been automatically registered.
 email_unregsubject=System $1 un-registered
 email_unreg=The system $1 has been automatically un-registered.
+__norefs=1

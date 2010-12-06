@@ -9,3 +9,4 @@ nobody_group=Nobody group
 save=Save config and restart daemon
 save_err=Failed to save config file $1
 error_dir=Directory $1 does not exist
+__norefs=1

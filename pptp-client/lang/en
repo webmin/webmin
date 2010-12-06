@@ -111,3 +111,4 @@ log_failed=Failed to connect tunnel $1
 log_disc=Disconnected tunnel $1
 log_opts=Edited global PPP options
 
+__norefs=1

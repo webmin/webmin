@@ -5,3 +5,4 @@ index_credits=MindTerm applet developed by <a href='$1' target=_top>AppGate</a>.
 index_esocket=There is no telnet server running on $1 port $2.
 index_esocket2=There is no SSH server running on $1 port $2.
 index_elookup=Failed to lookup IP address for $1 to test telnet or SSH server.
+__norefs=1

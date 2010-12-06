@@ -168,3 +168,4 @@ acl_anyfile=Can edit any file as a PHP configuration?
 acl_manual=Can manually edit configuration files?
 acl_inis=Additional configuration files<br>(In <i>filename</i>=<i>description</i> format)
 acl_user=Read and write files as user
+__norefs=1

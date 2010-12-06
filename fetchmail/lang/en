@@ -133,3 +133,4 @@ user_return=user's configuration
 
 email_ok=Fetchmail output
 email_failed=Fetchmail error
+__norefs=1

@@ -227,3 +227,4 @@ email_failed=Backup failed!
 
 newtape_subject=Tape change $1 for backup of $2 on $3
 newtape_body=The backup of $2 on $3 has reached the maximum amount of data allowed on tape $1. You will need to load a new tape and hit the 'Tape Loaded' link in Webmin's Filesystem Backup module for the backup to continue.
+__norefs=1

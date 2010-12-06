@@ -40,11 +40,12 @@ short_ok=.. test started OK. See the drive status on the module's main page for 
 
 ext_title=Extended Self Test
 ext_doing=Starting extended self test of $1 ..
-ext_failed=$short_failed
-ext_ok=$short_ok
+ext_failed=.. failed!
+ext_ok=.. test started OK. See the drive status on the module's main page for the results.
 
 data_title=Data Collection Test
 data_doing=Starting offline data collection on $1 ..
 data_failed=.. failed!
 data_ok=.. collection started OK. See the drive status on the module's main page for the results.
 
+__norefs=1
