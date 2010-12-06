@@ -4423,9 +4423,11 @@ if ($ol) {
 		}
 	}
 &read_file_cached("$config_directory/custom-lang", \%text);
+my $norefs = $text{'__norefs'};
 
 if ($_[0]) {
 	# Read module's lang files
+	delete($text{'__norefs'});
 	my $mdir = &module_root_directory($_[0]);
 	foreach my $o (@lang_order_list) {
 		&read_file_cached("$mdir/$dir/$o", \%text);
@@ -4436,10 +4438,11 @@ if ($_[0]) {
 			}
 		}
 	&read_file_cached("$config_directory/$_[0]/custom-lang", \%text);
+	$norefs = $text{'__norefs'} if ($norefs);
 	}
 
 # Replace references to other strings
-if (!$text{'__norefs'}) {
+if (!$norefs) {
 	foreach $k (keys %text) {
 		$text{$k} =~ s/\$(\{([^\}]+)\}|([A-Za-z0-9\.\-\_]+))/text_subs($2 || $3,\%text)/ge;
 		}
