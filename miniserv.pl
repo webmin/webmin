@@ -6,6 +6,7 @@ package miniserv;
 use Socket;
 use POSIX;
 use Time::Local;
+eval "use Time::HiRes;";
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 

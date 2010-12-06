@@ -5319,12 +5319,14 @@ if ($gconfig{'debug_modules'}) {
 	my @dmods = split(/\s+/, $gconfig{'debug_modules'});
 	return 0 if (&indexof($main::initial_module_name, @dmods) < 0);
 	}
-my $now = time();
+my $now;
+eval 'use Time::HiRes qw(gettimeofday); ($now, $ms) = gettimeofday';
+$now ||= time();
 my @tm = localtime($now);
 my $line = sprintf
-	"%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s \"%s\"",
+	"%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d.%6.6d] %s %s %s %s \"%s\"",
         $$, $tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900,
-        $tm[2], $tm[1], $tm[0],
+        $tm[2], $tm[1], $tm[0], $ms,
 	$remote_user || "-",
 	$ENV{'REMOTE_HOST'} || "-",
 	&get_module_name() || "-",
