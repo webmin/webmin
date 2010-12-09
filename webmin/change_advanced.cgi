@@ -85,6 +85,18 @@ if (defined($in{'preload'})) {
 	&save_preloads(\%miniserv, [ ]);
 	}
 
+# Save pre-cache option
+if ($in{'precache_mode'} == 0) {
+	$miniserv{'precache'} = 'none';
+	}
+elsif ($in{'precache_mode'} == 1) {
+	$miniserv{'precache'} = '';
+	}
+else {
+	$in{'precache'} =~ /\S/ || &error($text{'advanced_eprecache'});
+	$miniserv{'precache'} = $in{'precache'};
+	}
+
 # Save password pass option
 $miniserv{'pass_password'} = $in{'pass'};
 

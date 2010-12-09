@@ -52,6 +52,17 @@ elsif ($preloads[0]->[0] eq "main" && $preloads[0]->[1] eq "web-lib-funcs.pl") {
 			    &ui_yesno_radio("preload", 1));
 	}
 
+# Files to pre-cache
+$mode = $miniserv{'precache'} eq 'none' ? 0 :
+        $miniserv{'precache'} eq '' ? 1 : 2;
+print &ui_table_row($text{'advanced_precache'},
+	&ui_radio("precache_mode", $mode,
+		  [ [ 0, $text{'advanced_precache0'}."<br>" ],
+		    [ 1, $text{'advanced_precache1'}."<br>" ],
+		    [ 2, &text('advanced_precache2',
+			  &ui_textbox("precache",
+			   $mode == 2 ? $miniserv{'precache'} : "", 40)) ] ]));
+
 # Show call stack on error
 print &ui_table_row($text{'advanced_stack'},
 		    &ui_yesno_radio("stack", int($gconfig{'error_stack'})));
