@@ -197,6 +197,20 @@ return @rv;
 sub update_system_updates
 {
 &execute_command("$apt_get_command update");
+
+# Find held packages by dpkg
+local %holds;
+if ($config{'package_system'} eq 'debian') {
+	&open_execute_command(HOLDS,
+		"LANG='' LC_ALL='' dpkg --get-selections", 1, 1);
+	while(<HOLDS>) {
+		if (/^(\S+)\s+hold/) {
+			$holds{$1}++;
+			}
+		}
+	close(HOLDS);
+	}
+
 if (&has_command("apt-show-versions")) {
 	# This awesome command can give us all updates in one hit, and takes
 	# pinned versions and backports into account
@@ -204,7 +218,8 @@ if (&has_command("apt-show-versions")) {
 	&open_execute_command(PKGS,
 		"LANG='' LC_ALL='' apt-show-versions 2>/dev/null", 1, 1);
 	while(<PKGS>) {
-		if (/^(\S+)\/(\S+)\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/) {
+		if (/^(\S+)\/(\S+)\s+upgradeable\s+from\s+(\S+)\s+to\s+(\S+)/ &&
+		    !$holds{$1}) {
 			local $pkg = { 'name' => $1,
 				       'source' => $2,
 				       'version' => $4 };
@@ -230,7 +245,7 @@ else {
 		$currentmap{$pkg->{'name'}} ||= $pkg;
 		}
 	local @rv;
-	local @names = keys %currentmap;
+	local @names = grep { !$holds{$_} } keys %currentmap;
 	while(scalar(@names)) {
 		local @somenames;
 		if (scalar(@names) > 100) {
