@@ -3387,22 +3387,24 @@ if ($any_attach) {
 
 # Uploaded attachments
 if (!$main::no_browser_uploads) {
-	my $atable;
+	my $atable = "<div>\n";
 	for(my $i=0; $i<$count; $i++) {
 		$atable .= &ui_upload("attach$i", 80, 0,
 				      "style='width:100%'")."<br>";
 		}
+	$atable .= "</div> <div id=attachblock></div>\n";
 	print &ui_hidden("attachcount", int($i)),"\n";
-	print &ui_table_row(undef, $atable, 2, [ undef, "id=attachblock" ]);
+	print &ui_table_row(undef, $atable, 2);
 	}
 if ($server_attach) {
-	my $atable;
+	my $atable = "<div>\n";
 	for(my $i=0; $i<$count; $i++) {
 		$atable .= &ui_textbox("file$i", undef, 60, 0, undef,
 				       "style='width:95%'").
 			   &file_chooser_button("file$i"),"<br>\n";
 		}
-	print &ui_table_row(undef, $atable, 2, [ undef, "id=ssattachblock" ]);
+	$atable .= "</div> <div id=sattachblock></div>\n";
+	print &ui_table_row(undef, $atable, 2);
 	print &ui_hidden("ssattachcount", int($i)),"\n";
 	}
 
