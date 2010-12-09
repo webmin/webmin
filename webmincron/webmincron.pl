@@ -3,6 +3,7 @@
 
 $main::no_acl_check = 1;
 $main::no_referers_check = 1;
+$main::webmin_script_type = 'cron';
 do './webmincron-lib.pl';
 $cron = $ARGV[0];
 

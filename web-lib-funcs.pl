@@ -3999,6 +3999,25 @@ $config_file = "$config_directory/config";
 $null_file = $gconfig{'os_type'} eq 'windows' ? "NUL" : "/dev/null";
 $path_separator = $gconfig{'os_type'} eq 'windows' ? ';' : ':';
 
+# Work out of this is a web, command line or cron job
+if (!$main::webmin_script_type) {
+	if ($ENV{'SCRIPT_NAME'}) {
+		# Run via a CGI
+		$main::webmin_script_type = 'web';
+		}
+	else {
+		# Cron jobs have no TTY
+		if ($gconfig{'os_type'} eq 'windows' ||
+		    open(DEVTTY, ">/dev/tty")) {
+			$main::webmin_script_type = 'cmd';
+			close(DEVTTY);
+			}
+		else {
+			$main::webmin_script_type = 'cron';
+			}
+		}
+	}
+
 # If debugging is enabled, open the debug log
 if ($gconfig{'debug_enabled'} && !$main::opened_debug_log++) {
 	my $dlog = $gconfig{'debug_file'} || $main::default_debug_log_file;
@@ -4095,25 +4114,6 @@ else {
 			}
 		}
 	&error("Script was not run with full path (failed to find $0 under $root_directory)") if (!$rok);
-	}
-
-# Work out of this is a web, command line or cron job
-if (!$main::webmin_script_type) {
-	if ($ENV{'SCRIPT_NAME'}) {
-		# Run via a CGI
-		$main::webmin_script_type = 'web';
-		}
-	else {
-		# Cron jobs have no TTY
-		if ($gconfig{'os_type'} eq 'windows' ||
-		    open(DEVTTY, ">/dev/tty")) {
-			$main::webmin_script_type = 'cmd';
-			close(DEVTTY);
-			}
-		else {
-			$main::webmin_script_type = 'cron';
-			}
-		}
 	}
 
 # Set the umask based on config
@@ -5172,7 +5172,7 @@ my $script_name = $0 =~ /([^\/]+)$/ ? $1 : '-';
 my $id = sprintf "%d.%d.%d", $now, $$, $main::action_id_count;
 $main::action_id_count++;
 my $line = sprintf "%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d] %s %s %s %s %s \"%s\" \"%s\" \"%s\"",
-	$id, $tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900,
+	$id, $tm[3], ucfirst($number_to_month_map{$tm[4]}), $tm[5]+1900,
 	$tm[2], $tm[1], $tm[0],
 	$remote_user || '-',
 	$main::session_id || '-',
@@ -5352,7 +5352,7 @@ $now ||= time();
 my @tm = localtime($now);
 my $line = sprintf
 	"%s [%2.2d/%s/%4.4d %2.2d:%2.2d:%2.2d.%6.6d] %s %s %s %s \"%s\"",
-        $$, $tm[3], $text{"smonth_".($tm[4]+1)}, $tm[5]+1900,
+        $$, $tm[3], ucfirst($number_to_month_map{$tm[4]}), $tm[5]+1900,
         $tm[2], $tm[1], $tm[0], $ms,
 	$remote_user || "-",
 	$ENV{'REMOTE_HOST'} || "-",
