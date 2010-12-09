@@ -5646,6 +5646,7 @@ sub precache_files
 {
 undef(%main::read_file_cache);
 foreach my $g (split(/\s+/, $config{'precache'})) {
+	next if ($g eq "none");
 	foreach my $f (glob("$config{'root'}/$g")) {
 		my @st = stat($f);
 		next if (!@st);
