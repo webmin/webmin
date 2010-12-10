@@ -114,6 +114,7 @@ if (!$in{'new'}) {
 
 	# Save button
 	print "<td>",&ui_submit($text{'save'}),"</td>\n";
+	print "<td>",&ui_submit($text{'edit_saverun'}, 'saverun'),"</td>\n";
 	print &ui_form_end();
 
 	# Run button

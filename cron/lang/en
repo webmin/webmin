@@ -48,6 +48,7 @@ edit_weekdays=Weekdays
 edit_all=All
 edit_selected=Selected ..
 edit_run=Run Now
+edit_saverun=Save and Run Now
 edit_clone=Clone Job
 edit_return=cron job
 edit_ctrl=Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.

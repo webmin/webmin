@@ -93,6 +93,14 @@ if ($in{'new'}) {
 else {
 	&webmin_log("modify", "cron", $in{'user'}, \%in);
 	}
-&redirect("");
+
+if ($in{'saverun'}) {
+	# Redirect to execute form
+	&redirect("exec_cron.cgi?idx=$in{'idx'}");
+	}
+else {
+	# Just go back to main menu
+	&redirect("");
+	}
 
 
