@@ -228,6 +228,7 @@ if (!$access{'edonly'}) {
 	print "&nbsp;\n";
 
 	print &ui_form_end();
+	$form++;
 	}
 }
 

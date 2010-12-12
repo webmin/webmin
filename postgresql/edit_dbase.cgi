@@ -228,71 +228,51 @@ else {
 # Display buttons for adding tables, views and so on
 sub show_buttons
 {
-print "<table><tr>\n";
+print &ui_form_start("table_form.cgi");
+print &ui_hidden("db", $in{'db'});
+
 if ($access{'tables'}) {
 	# Add a new table
-	print &ui_form_start("table_form.cgi");
-	print &ui_hidden("db", $in{'db'});
-	print "<td>",&ui_submit($text{'dbase_add'})." ".$text{'dbase_fields'}.
-		     " ".&ui_textbox("fields", 4, 4),"</td>\n";
-	print &ui_form_end();
-	$form++;
+	print &ui_submit($text{'dbase_add'})." ".$text{'dbase_fields'}.
+		         " ".&ui_textbox("fields", 4, 4);
+	print "&nbsp;\n";
 
 	# Add a new view
 	if (&supports_views() && $access{'views'}) {
-		print &ui_form_start("edit_view.cgi");
-		print &ui_hidden("db", $in{'db'});
-		print &ui_hidden("new", 1);
-		print "<td>",&ui_submit($text{'dbase_vadd'}),"</td>\n";
-		print &ui_form_end();
-		$form++;
+		print &ui_submit($text{'dbase_vadd'}, 'addview');
+		print "&nbsp;\n";
 		}
 
 	# Add a new sequence
 	if (&supports_sequences() && $access{'seqs'}) {
-		print &ui_form_start("edit_seq.cgi");
-		print &ui_hidden("db", $in{'db'});
-		print &ui_hidden("new", 1);
-		print "<td>",&ui_submit($text{'dbase_sadd'}),"</td>\n";
-		print &ui_form_end();
-		$form++;
+		print &ui_submit($text{'dbase_sadd'}, 'addseq');
+		print "&nbsp;\n";
 		}
 	}
 
 # Drop database button
 if ($access{'delete'}) {
-	print &ui_form_start("drop_dbase.cgi");
-	print &ui_hidden("db", $in{'db'});
-	print "<td>",&ui_submit($text{'dbase_drop'}),"</td>\n";
-	print &ui_form_end();
-	$form++;
+	print &ui_submit($text{'dbase_drop'}, 'dropdb');
+	print "&nbsp;\n";
 	}
 
 # Backup and restore buttons
 if (&get_postgresql_version() >= 7.2) {
 	if ($access{'backup'}) {
-		print &ui_form_start("backup_form.cgi");
-		print &ui_hidden("db", $in{'db'});
-		print "<td>",&ui_submit($text{'dbase_bkup'}),"</td>\n";
-		print &ui_form_end();
-		$form++;
+		print &ui_submit($text{'dbase_bkup'}, 'backupdb');
+		print "&nbsp;\n";
 		}
 	if ($access{'restore'}) {
-		print &ui_form_start("restore_form.cgi");
-		print &ui_hidden("db", $in{'db'});
-		print "<td>",&ui_submit($text{'dbase_rstr'}),"</td>\n";
-		print &ui_form_end();
-		$form++;
+		print &ui_submit($text{'dbase_rstr'}, 'restoredb');
+		print "&nbsp;\n";
 		}
 	}
 
 # Execute SQL form
-print &ui_form_start("exec_form.cgi");
-print &ui_hidden("db", $in{'db'});
-print "<td>",&ui_submit($text{'dbase_exec'}),"</td>\n";
+print &ui_submit($text{'dbase_exec'}, 'exec');
+print "&nbsp;\n";
+
 print &ui_form_end();
 $form++;
-
-print "</tr></table>\n";
 }
 

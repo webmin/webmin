@@ -25,7 +25,8 @@ elsif ($in{'exec'}) {
 	}
 
 $access{'edonly'} && &error($text{'dbase_ecannot'});
-&ui_print_header(undef, $text{'table_title2'}, "", "table_form");
+$desc = "<tt>$in{'db'}</tt>";
+&ui_print_header($desc, $text{'table_title2'}, "", "table_form");
 
 print &ui_form_start("create_table.cgi", "post");
 print &ui_hidden("db", $in{'db'}),"\n";

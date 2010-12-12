@@ -5,7 +5,35 @@
 require './postgresql-lib.pl';
 &ReadParse();
 &can_edit_db($in{'db'}) || &error($text{'dbase_ecannot'});
-&ui_print_header(undef, $text{'table_title2'}, "", "table_form");
+
+# Redirect to other pages depending on button
+if ($in{'addview'}) {
+	&redirect("edit_view.cgi?new=1&db=".&urlize($in{'db'}));
+	return;
+	}
+elsif ($in{'addseq'}) {
+	&redirect("edit_seq.cgi?new=1&db=".&urlize($in{'db'}));
+	return;
+	}
+elsif ($in{'dropdb'}) {
+	&redirect("drop_dbase.cgi?db=".&urlize($in{'db'}));
+	return;
+	}
+elsif ($in{'backupdb'}) {
+	&redirect("backup_form.cgi?db=".&urlize($in{'db'}));
+	return;
+	}
+elsif ($in{'restoredb'}) {
+	&redirect("restore_form.cgi?db=".&urlize($in{'db'}));
+	return;
+	}
+elsif ($in{'exec'}) {
+	&redirect("exec_form.cgi?db=".&urlize($in{'db'}));
+	return;
+	}
+
+$desc = "<tt>$in{'db'}</tt>";
+&ui_print_header($desc, $text{'table_title2'}, "", "table_form");
 
 # Start of form block
 print &ui_form_start("create_table.cgi", "post");
