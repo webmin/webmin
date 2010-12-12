@@ -197,52 +197,37 @@ else {
 sub show_buttons
 {
 if (!$access{'edonly'}) {
-	print "<table><tr>\n";
-
-	# Add a new table
 	print &ui_form_start("table_form.cgi");
 	print &ui_hidden("db", $in{'db'});
-	print "<td>",&ui_submit($text{'dbase_add'})." ".$text{'dbase_fields'}.
-		     " ".&ui_textbox("fields", 4, 4),"</td>\n";
-	print &ui_form_end();
-	$form++;
+
+	# Add a new table
+	print &ui_submit($text{'dbase_add'})." ".$text{'dbase_fields'}.
+			  " ".&ui_textbox("fields", 4, 4);
+	print "&nbsp;\n";
 
 	# Add a new view
 	if (&supports_views() && $access{'views'}) {
-		print &ui_form_start("edit_view.cgi");
-		print &ui_hidden("db", $in{'db'});
-		print &ui_hidden("new", 1);
-		print "<td>",&ui_submit($text{'dbase_addview'}),"</td>\n";
-		print &ui_form_end();
-		$form++;
+		print &ui_submit($text{'dbase_addview'}, 'addview');
+		print "&nbsp;\n";
 		}
 
 	# Delete this database
 	if ($access{'delete'}) {
-		print &ui_form_start("drop_dbase.cgi");
-		print &ui_hidden("db", $in{'db'});
-		print "<td>",&ui_submit($text{'dbase_drop'}),"</td>\n";
-		print &ui_form_end();
-		$form++;
+		print &ui_submit($text{'dbase_drop'}, 'dropdb');
+		print "&nbsp;\n";
 		}
 
 	# Open backup form
 	if ($access{'buser'}) {
-		print &ui_form_start("backup_form.cgi");
-		print &ui_hidden("db", $in{'db'});
-		print "<td>",&ui_submit($text{'dbase_backup'}),"</td>\n";
-		print &ui_form_end();
-		$form++;
+		print &ui_submit($text{'dbase_backup'}, 'backupdb');
+		print "&nbsp;\n";
 		}
 
 	# Execute SQL form
-	print &ui_form_start("exec_form.cgi");
-	print &ui_hidden("db", $in{'db'});
-	print "<td>",&ui_submit($text{'dbase_exec'}),"</td>\n";
-	print &ui_form_end();
-	$form++;
+	print &ui_submit($text{'dbase_exec'}, 'exec');
+	print "&nbsp;\n";
 
-	print "</tr></table>\n";
+	print &ui_form_end();
 	}
 }
 
