@@ -8,11 +8,6 @@ $edit = &get_command($in{'id'}, $in{'idx'});
 &error_setup($text{'view_err'});
 $edit->{'edit'} && &can_run_command($edit) || &error($text{'edit_ecannot'});
 
-# Run the before-command
-if ($edit->{'before'}) {
-	&system_logged("$edit->{'before'} >/dev/null 2>&1 </dev/null");
-	}
-
 # Work out proper filename
 $file = $edit->{'edit'};
 if ($file !~ /^\//) {
@@ -27,6 +22,11 @@ if ($file !~ /^\//) {
 if ($edit->{'envs'} || @{$edit->{'args'}}) {
 	# Do environment variable substitution
 	chop($file = `echo "$file"`);
+	}
+
+# Run the before-command
+if ($edit->{'before'}) {
+	&system_logged("$edit->{'before'} >/dev/null 2>&1 </dev/null");
 	}
 
 # Save the file
