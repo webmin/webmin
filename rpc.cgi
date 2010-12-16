@@ -17,6 +17,7 @@ if ($ENV{'REQUEST_METHOD'} eq 'POST') {
 	while($left > 0) {
 		read(STDIN, $got, $left) > 0 || last;
 		$rawarg .= $got;
+		$left = $ENV{'CONTENT_LENGTH'} - length($rawarg);
 		}
 	}
 else {
