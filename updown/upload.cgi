@@ -17,11 +17,11 @@ if (defined($in{'email_def'}) && !$in{'email_def'}) {
 	}
 if ($can_mode != 3) {
 	# User can be entered
-	defined(@uinfo = getpwnam($in{'user'})) ||
+	length(@uinfo = getpwnam($in{'user'})) ||
 		&error($text{'upload_euser'});
 	&can_as_user($in{'user'}) ||
 		&error(&text('upload_eucannot', $in{'user'}));
-	$in{'group_def'} || defined(@ginfo = getgrnam($in{'group'})) ||
+	$in{'group_def'} || length(@ginfo = getgrnam($in{'group'})) ||
 		&error($text{'upload_egroup'});
 	$can_mode == 0 || $in{'group_def'} || &in_group(\@uinfo, \@ginfo) ||
 		&error($text{'upload_egcannot'});
@@ -41,7 +41,7 @@ $found || &error($text{'upload_enone'});
 	&error(&text('upload_eaccess', "<tt>$in{'dir'}</tt>", $!));
 
 # Switch to the upload user
-&switch_uid_to($uinfo[2], defined(@ginfo) ? $ginfo[2] : $uinfo[3]);
+&switch_uid_to($uinfo[2], length(@ginfo) ? $ginfo[2] : $uinfo[3]);
 
 # Create the directory if needed
 if (!-d $in{'dir'} && $in{'mkdir'}) {
@@ -163,7 +163,7 @@ for($i=0; defined($d = $in{"upload$i"}); $i++) {
 			# Doesn't look possible
 			$err = $text{'upload_notcomp'};
 			}
-		&switch_uid_to($uinfo[2], defined(@ginfo) ? $ginfo[2] : $uinfo[3]);
+		&switch_uid_to($uinfo[2], length(@ginfo) ? $ginfo[2] : $uinfo[3]);
 		if (!$err) {
 			local $j = join("<br>",
 				map { "&nbsp;&nbsp;<tt>$_</tt>" } @files);

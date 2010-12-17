@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 
-BEGIN { push(@INC, ".."); };
-use WebminCore;
+require './web-lib.pl';
 @available = ("webmin", "system", "servers", "cluster", "hardware", "", "net");
 &init_config();
 $hostname = &get_display_hostname();
@@ -35,10 +34,9 @@ if (!defined($in{'cat'})) {
 
 # Show standard header
 $gconfig{'sysinfo'} = 0 if ($gconfig{'sysinfo'} == 1);
-$main::theme_index_page = 1;
-$title = $gconfig{'nohostname'} ? $text{'main_title2'} :
-        &text('main_title', $ver, $hostname, $ostr);
-&header($title, "",
+$theme_index_page = 1;
+&header($gconfig{'nohostname'} ? $text{'main_title2'} :
+	&text('main_title', $ver, $hostname, $ostr), "",
 	undef, undef, 1, 1);
 print $text{'main_header'};
 
@@ -57,10 +55,9 @@ elsif ($gconfig{"notabs_${base_remote_user}"} == 2 ||
 		if ($pos % $cols == 0) { print "<tr>\n"; }
 		print "<td valign=top align=center>\n";
 		local $idx = $m->{'index_link'};
-		$desc = $m->{'longdesc'} || $m->{'desc'};
 		print "<table border><tr><td><a href=$m->{'dir'}/$idx>",
 		      "<img src=$m->{'dir'}/images/icon.gif border=0 ",
-		      "width=48 height=48 title=\"$desc\"></a></td></tr></table>\n";
+		      "width=48 height=48></a></td></tr></table>\n";
 		print "<a href=$m->{'dir'}/$idx>$m->{'desc'}</a></td>\n";
 		if ($pos % $cols == $cols - 1) { print "</tr>\n"; }
 		$pos++;
@@ -96,10 +93,9 @@ else {
 		next if ($m->{'category'} ne $in{'cat'});
 
 		if ($pos % $cols == 0) { print "<tr>\n"; }
-		$desc = $m->{'longdesc'} || $m->{'desc'};
 		print "<td valign=top align=center width=$per\%>\n";
 		print "<table border bgcolor=#ffffff><tr><td><a href=$m->{'dir'}/>",
-		      "<img src=$m->{'dir'}/images/icon.gif title=\"$desc\" border=0></a>",
+		      "<img src=$m->{'dir'}/images/icon.gif alt=\"\" border=0></a>",
 		      "</td></tr></table>\n";
 		print "<a href=$m->{'dir'}/><font color=#000000>$m->{'desc'}</font></a></td>\n";
 		if ($pos++ % $cols == $cols - 1) { print "</tr>\n"; }
@@ -127,21 +123,12 @@ if ($miniserv{'logout'} && !$gconfig{'alt_startpage'} &&
     !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&
     $ENV{'HTTP_USER_AGENT'} !~ /webmin/i) {
     print "<table width=95% align=center><tr><td width=100%><b><font color='#FFFFFF'>&nbsp;&nbsp;";
-    print &text('main_version', $ver, $hostname, $ostr)."\n"
+    print &text('main_version', $ver, $hostname, $ostr)
 	if (!$gconfig{'nohostname'});
-    print $text{'main_readonly'}."\n" if (&is_readonly_mode());
     print "</font></b>\n";
     print "</td>\n";
 
-    print "<td align=right><img src='images/theme_by.jpg' border='0'>&nbsp;&nbsp;</td>\n";
     print "</tr></table>\n";
-
-	}
-
-# Check for incorrect OS
-if (&foreign_check("webmin")) {
-	&foreign_require("webmin", "webmin-lib.pl");
-	&webmin::show_webmin_notifications();
 	}
 
 print $text{'main_footer'};

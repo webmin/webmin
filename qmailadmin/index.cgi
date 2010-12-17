@@ -39,7 +39,7 @@ if (!$config{'mailq_count'}) {
 	     "$text{'routes_title'}<br>(smtproutes)",
 	     "$text{'percents_title'}<br>(percenthack)",
 	     "$text{'assigns_title'}<br>(assign)",
-	     defined(@queue) ?
+	     length(@queue) ?
 	       "$text{'queue_title'}<br>".&text('queue_count', scalar(@queue)) :
 	       "$text{'queue_title'}<br>(qmail-qread)",
 	     $text{'boxes_title'} );

@@ -288,7 +288,7 @@ if ($driver_handle &&
 	$cstr .= ";port=$config{'port'}" if ($config{'port'});
 	local @uinfo;
 	if ($postgres_sameunix &&
-	    defined(@uinfo = getpwnam($postgres_login))) {
+	    (@uinfo = getpwnam($postgres_login))) {
 		# DBI call which must run in subprocess
 		pipe(OUTr, OUTw);
 		if (!($pid = fork())) {

@@ -45,15 +45,15 @@ $in{'dir'} || &error($text{'upload_edir'});
 $download{'dir'} = $in{'dir'};
 if ($can_mode != 3) {
 	# User can be entered
-	defined(@uinfo = getpwnam($in{'user'})) || &error($text{'upload_euser'});
+	length(@uinfo = getpwnam($in{'user'})) || &error($text{'upload_euser'});
 	&can_as_user($in{'user'}) ||
 		&error(&text('download_eucannot', $in{'user'}));
 	$download{'uid'} = $uinfo[2];
-	$in{'group_def'} || defined(@ginfo = getgrnam($in{'group'})) ||
+	$in{'group_def'} || length(@ginfo = getgrnam($in{'group'})) ||
 		&error($text{'upload_egroup'});
 	$can_mode == 0 || $in{'group_def'} || &in_group(\@uinfo, \@ginfo) ||
 		&error($text{'download_egcannot'});
-	$download{'gid'} = defined(@ginfo) ? $ginfo[2] : $uinfo[3];
+	$download{'gid'} = length(@ginfo) ? $ginfo[2] : $uinfo[3];
 	}
 else {
 	# User is fixed

@@ -1,10 +1,9 @@
 #!/usr/local/bin/perl
 
-BEGIN { push(@INC, ".."); };
-use WebminCore;
+require './web-lib.pl';
 @available = ("webmin", "system", "servers", "cluster", "hardware", "", "net");
 &init_config();
-$hostname = &get_display_hostname();
+$hostname = &get_system_hostname();
 $ver = &get_webmin_version();
 &get_miniserv_config(\%miniserv);
 if ($gconfig{'real_os_type'}) {
@@ -21,26 +20,19 @@ else {
 &ReadParse();
 
 # Redirect if the user has only one module
-@msc_modules = &get_visible_module_infos()
+@msc_modules = &get_available_module_infos()
 	if (!length(@msc_modules));
-
-if (!defined($in{'cat'})) {
-	# Maybe redirect to some module after login
-	local $goto = &get_goto_module(\@msc_modules);
-	if ($goto) {
-		&redirect($goto->{'dir'}.'/');
-		exit;
-		}
+if (@msc_modules == 1 && $gconfig{'gotoone'}) {
+	&redirect("$msc_modules[0]->{'dir'}/");
+	exit;
 	}
 
 # Show standard header
 $gconfig{'sysinfo'} = 0 if ($gconfig{'sysinfo'} == 1);
-$main::theme_index_page = 1;
-$title = $gconfig{'nohostname'} ? $text{'main_title2'} :
-        &text('main_title', $ver, $hostname, $ostr);
-&header($title, "",
+$theme_index_page = 1;
+&header($gconfig{'nohostname'} ? $text{'main_title2'} :
+	&text('main_title', $ver, $hostname, $ostr), "",
 	undef, undef, 1, 1);
-print $text{'main_header'};
 
 if (!@msc_modules) {
 	# use has no modules!
@@ -56,12 +48,10 @@ elsif ($gconfig{"notabs_${base_remote_user}"} == 2 ||
 	foreach $m (@msc_modules) {
 		if ($pos % $cols == 0) { print "<tr>\n"; }
 		print "<td valign=top align=center>\n";
-		local $idx = $m->{'index_link'};
-		$desc = $m->{'longdesc'} || $m->{'desc'};
-		print "<table border><tr><td><a href=$m->{'dir'}/$idx>",
+		print "<table border><tr><td><a href=/$m->{'dir'}/>",
 		      "<img src=$m->{'dir'}/images/icon.gif border=0 ",
-		      "width=48 height=48 title=\"$desc\"></a></td></tr></table>\n";
-		print "<a href=$m->{'dir'}/$idx>$m->{'desc'}</a></td>\n";
+		      "width=48 height=48></a></td></tr></table>\n";
+		print "<a href=/$m->{'dir'}/>$m->{'desc'}</a></td>\n";
 		if ($pos % $cols == $cols - 1) { print "</tr>\n"; }
 		$pos++;
 		}
@@ -96,12 +86,11 @@ else {
 		next if ($m->{'category'} ne $in{'cat'});
 
 		if ($pos % $cols == 0) { print "<tr>\n"; }
-		$desc = $m->{'longdesc'} || $m->{'desc'};
 		print "<td valign=top align=center width=$per\%>\n";
-		print "<table border bgcolor=#ffffff><tr><td><a href=$m->{'dir'}/>",
-		      "<img src=$m->{'dir'}/images/icon.gif title=\"$desc\" border=0></a>",
+		print "<table border bgcolor=#ffffff><tr><td><a href=/$m->{'dir'}/>",
+		      "<img src=$m->{'dir'}/images/icon.gif alt=\"\" border=0></a>",
 		      "</td></tr></table>\n";
-		print "<a href=$m->{'dir'}/><font color=#000000>$m->{'desc'}</font></a></td>\n";
+		print "<a href=/$m->{'dir'}/><font color=#000000>$m->{'desc'}</font></a></td>\n";
 		if ($pos++ % $cols == $cols - 1) { print "</tr>\n"; }
 		}
 	while($pos++ % $cols) {
@@ -126,25 +115,33 @@ else {
 if ($miniserv{'logout'} && !$gconfig{'alt_startpage'} &&
     !$ENV{'SSL_USER'} && !$ENV{'LOCAL_USER'} &&
     $ENV{'HTTP_USER_AGENT'} !~ /webmin/i) {
+	print "<table width=100% cellpadding=0 cellspacing=0><tr>\n";
+	if ($gconfig{'skill_'.$base_remote_user}) {
+		print "<td><b>$text{'main_skill'}:</b>\n";
+		foreach $s ('high', 'medium', 'low') {
+			print "&nbsp;|&nbsp;" if ($done_first_skill++);
+			if ($gconfig{'skill_'.$base_remote_user} eq $s) {
+				print $text{'skill_'.$s};
+				}
+			else {
+				print "<a href='switch_skill.cgi?skill=$s&",
+				   "cat=$in{'cat'}'>", "<font color=000000>", $text{'skill_'.$s},"</font></a>";
+				}
+			}
+		print "</td>\n";
+		}
     print "<table width=95% align=center><tr><td width=100%><b><font color='#FFFFFF'>&nbsp;&nbsp;";
-    print &text('main_version', $ver, $hostname, $ostr)."\n"
+    print &text('main_version', $ver, $hostname, $ostr)
 	if (!$gconfig{'nohostname'});
-    print $text{'main_readonly'}."\n" if (&is_readonly_mode());
     print "</font></b>\n";
     print "</td>\n";
 
-    print "<td align=right><img src='images/theme_by.jpg' border='0'>&nbsp;&nbsp;</td>\n";
+print "<td align=right><a href='http://www.msclinux.com/'>",
+          "<img src='images/theme_by.jpg' border='0'></a>&nbsp;&nbsp;</div><br>\n";
     print "</tr></table>\n";
 
 	}
 
-# Check for incorrect OS
-if (&foreign_check("webmin")) {
-	&foreign_require("webmin", "webmin-lib.pl");
-	&webmin::show_webmin_notifications();
-	}
-
-print $text{'main_footer'};
 &footer();
 
 
