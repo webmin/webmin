@@ -52,7 +52,7 @@ if (@_ > 0) {
     }
 
 @msc_modules = &get_visible_module_infos()
-	if (!length(@msc_modules));
+	if (!scalar(@msc_modules));
 
 print '<body bgcolor=#424242 link=#000000 vlink=#000000 text=#000000 leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" '.$_[8].'>';
 

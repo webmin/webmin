@@ -20,7 +20,7 @@ if (open(VERSION, "$module_config_directory/version")) {
 # Parses lilo.conf and returns a list of directives
 sub get_lilo_conf
 {
-return @lilo_conf_cache if (length(@lilo_conf_cache));
+return @lilo_conf_cache if (scalar(@lilo_conf_cache));
 open(CONF, $config{'lilo_conf'});
 local $lnum = -1;
 local ($image, $line);

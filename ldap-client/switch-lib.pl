@@ -6,7 +6,7 @@ $nsswitch_config_file = $config{'nsswitch_conf'} || "/etc/nsswitch.conf";
 # Returns an array ref of information from nsswitch.conf
 sub get_nsswitch_config
 {
-if (!length(@get_nsswitch_cache)) {
+if (!scalar(@get_nsswitch_cache)) {
 	@get_nsswitch_cache = ( );
 	local $lnum = 0;
 	open(CONF, $nsswitch_config_file);

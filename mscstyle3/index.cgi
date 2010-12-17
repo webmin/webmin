@@ -22,7 +22,7 @@ else {
 
 # Redirect if the user has only one module
 @msc_modules = &get_visible_module_infos()
-	if (!length(@msc_modules));
+	if (!scalar(@msc_modules));
 
 if (!defined($in{'cat'})) {
 	# Maybe redirect to some module after login

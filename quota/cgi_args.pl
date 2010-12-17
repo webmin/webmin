@@ -23,13 +23,13 @@ elsif ($cgi eq 'edit_group_quota.cgi') {
 		    '&group='.&urlize($group{0,'group'}) : 'none';
 	}
 elsif ($cgi eq 'user_filesys.cgi' || $cgi eq 'copy_user_form.cgi') {
-	return length(@uinfo) ?
+	return scalar(@uinfo) ?
 		'user='.&urlize($remote_user) : 'user=root';
 	}
 elsif ($cgi eq 'group_filesys.cgi' || $cgi eq 'copy_group_form.cgi') {
-	if (length(@uinfo)) {
+	if (scalar(@uinfo)) {
 		my @ginfo = getgrgid($uinfo[3]);
-		return 'group='.&urlize($ginfo[0]) if (length(@ginfo));
+		return 'group='.&urlize($ginfo[0]) if (scalar(@ginfo));
 		}
 	return 'group=bin';
 	}

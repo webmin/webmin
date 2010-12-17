@@ -23,7 +23,7 @@ return &find_textfile($config{'generics_file'}, &generics_dbm($_[0]));
 # list_generics(textfile)
 sub list_generics
 {
-if (!length(@list_generics_cache)) {
+if (!scalar(@list_generics_cache)) {
 	@list_generics_cache = ( );
 	local $lnum = 0;
 	local $cmt;

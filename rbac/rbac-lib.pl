@@ -11,7 +11,7 @@ use WebminCore;
 # Returns a list of user attribute objects
 sub list_user_attrs
 {
-if (!length(@list_user_attrs_cache)) {
+if (!scalar(@list_user_attrs_cache)) {
 	@list_user_attrs_cache = ( );
 	local $lnum = 0;
 	open(ATTR, $config{'user_attr'});
@@ -142,7 +142,7 @@ return @rv;
 # Returns a list of all profiles
 sub list_prof_attrs
 {
-if (!length(@list_prof_attrs_cache)) {
+if (!scalar(@list_prof_attrs_cache)) {
 	@list_prof_attrs_cache = ( );
 	local $lnum = 0;
 	open(ATTR, $config{'prof_attr'});
@@ -285,7 +285,7 @@ return @rv;
 # Returns a user of all authorizations
 sub list_auth_attrs
 {
-if (!length(@list_auth_attrs_cache)) {
+if (!scalar(@list_auth_attrs_cache)) {
 	@list_auth_attrs_cache = ( );
 	local $lnum = 0;
 	open(ATTR, $config{'auth_attr'});
@@ -406,7 +406,7 @@ return join(",", @auths);
 # Returns a user of all execorizations
 sub list_exec_attrs
 {
-if (!length(@list_exec_attrs_cache)) {
+if (!scalar(@list_exec_attrs_cache)) {
 	@list_exec_attrs_cache = ( );
 	local $lnum = 0;
 	open(ATTR, $config{'exec_attr'});
@@ -496,7 +496,7 @@ return $rv;
 # Returns a list of policy config file directives
 sub get_policy_config
 {
-if (!length(@policy_conf_cache)) {
+if (!scalar(@policy_conf_cache)) {
 	@policy_conf_cache = ( );
 	local $lnum = 0;
 	open(ATTR, $config{'policy_conf'});
@@ -571,7 +571,7 @@ elsif ($old && $old->{'enabled'} && !$value) {
 # Returns a list of project objects
 sub list_projects
 {
-if (!length(@list_projects_cache)) {
+if (!scalar(@list_projects_cache)) {
 	@list_projects_cache = ( );
 	local $lnum = 0;
 	open(ATTR, $config{'project'});
@@ -808,7 +808,7 @@ foreach $c (&rbac_config_files()) {
 # Returns 1 list of all encryption algorithms, including the internal __unix__
 sub list_crypt_algorithms
 {
-if (!length(@list_crypt_algorithms_cache)) {
+if (!scalar(@list_crypt_algorithms_cache)) {
 	push(@list_crypt_algorithms_cache, { 'name' => '__unix__' } );
 	local $lnum = 0;
 	open(CRYPT, $config{'crypt_conf'});

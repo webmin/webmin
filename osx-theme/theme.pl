@@ -20,7 +20,7 @@ print "<body $_[8]>\n";
 
 # Get all modules visible to this user
 @osx_modules = &get_available_module_infos()
-	if (!length(@osx_modules));
+	if (!scalar(@osx_modules));
 
 # Show table of categories
 local $one = @osx_modules == 1 && $gconfig{'gotoone'};

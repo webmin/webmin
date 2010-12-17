@@ -219,7 +219,7 @@ if (@_ > 0) {
     }
 
 @msc_modules = &get_visible_module_infos()
-	if (!length(@msc_modules));
+	if (!scalar(@msc_modules));
 
 print "</head>\n";
 local $dir = $current_lang_info->{'dir'} ? "dir=\"$current_lang_info->{'dir'}\""

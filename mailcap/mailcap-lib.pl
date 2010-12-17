@@ -19,7 +19,7 @@ else {
 # Returns a list of /etc/mailcap entries
 sub list_mailcap
 {
-if (!length(@list_mailcap_cache)) {
+if (!scalar(@list_mailcap_cache)) {
   @list_mailcap_cache = ( );
   open(CAP, $mailcap_file);
   local $lnum = 0;

@@ -16,7 +16,7 @@ else {
 
 # Redirect if the user has only one module
 @msc_modules = &get_visible_module_infos()
-	if (!length(@msc_modules));
+	if (!scalar(@msc_modules));
 if (@msc_modules == 1 && $gconfig{'gotoone'}) {
 	&redirect("$msc_modules[0]->{'dir'}/");
 	exit;

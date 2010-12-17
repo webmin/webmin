@@ -23,7 +23,7 @@ return &find_textfile($config{'domains_file'}, &domains_dbm($_[0]));
 # list_domains(textfile)
 sub list_domains
 {
-if (!length(@list_domains_cache)) {
+if (!scalar(@list_domains_cache)) {
 	@list_domains_cache = ( );
 	local $lnum = 0;
 	local $cmt;

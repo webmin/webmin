@@ -72,7 +72,7 @@ elsif ($in{'mode'} == 2) {
 # Returns a list of NUT attribute names and values for some UPS
 sub get_ups_values
 {
-if (!length(@get_ups_cache)) {
+if (!scalar(@get_ups_cache)) {
 	local @rv;
 	open(SENS, "upsc ".quotemeta($_[0])." |");
 	while(<SENS>) {

@@ -23,7 +23,7 @@ return $gconfig{'os_type'} eq 'solaris';
 # Parses the syslog-ng config file into an array ref of objects
 sub get_config
 {
-if (!length(@get_config_cache)) {
+if (!scalar(@get_config_cache)) {
 	# First read file into tokens
 	@get_config_cache = &read_config_file($config{'syslogng_conf'});
 	}

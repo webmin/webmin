@@ -3508,12 +3508,12 @@ if (!$uinfo) {
 	return ( undef, 0, 1, undef ) if (!@uinfo && !$pamany);
 
 	if (@uinfo) {
-		if (length(@allowusers)) {
+		if (scalar(@allowusers)) {
 			# Only allow people on the allow list
 			return ( undef, 0, 0, undef )
 				if (!&users_match(\@uinfo, @allowusers));
 			}
-		elsif (length(@denyusers)) {
+		elsif (scalar(@denyusers)) {
 			# Disallow people on the deny list
 			return ( undef, 0, 0, undef )
 				if (&users_match(\@uinfo, @denyusers));

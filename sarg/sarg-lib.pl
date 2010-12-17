@@ -13,7 +13,7 @@ $cron_cmd = "$module_config_directory/generate.pl";
 # Parses the sarg config file into directives
 sub get_config
 {
-if (!length(@get_config_cache)) {
+if (!scalar(@get_config_cache)) {
 	local $lnum = 0;
 	open(CONF, $config{'sarg_conf'});
 	while(<CONF>) {

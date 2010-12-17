@@ -22,9 +22,9 @@ if (open(READ, $readers_file)) {
 	}
 print "<tr> <td width=50% valign=top nowrap>\n";
 printf "<input type=radio name=readers_def value=1 %s> %s\n",
-	length(@readers) ? "" : "checked", $text{'access_readers1'};
+	scalar(@readers) ? "" : "checked", $text{'access_readers1'};
 printf "<input type=radio name=readers_def value=0 %s> %s<br>\n",
-	length(@readers) ? "checked" : "", $text{'access_readers0'};
+	scalar(@readers) ? "checked" : "", $text{'access_readers0'};
 print "<textarea rows=20 cols=30 name=readers>",
 	join("\n", @readers),"</textarea>",
 	&user_chooser_button("readers", 1),"</td>\n";
@@ -40,9 +40,9 @@ if (open(WRITE, $writers_file)) {
 	}
 print "<td width=50% valign=top nowrap>\n";
 printf "<input type=radio name=writers_def value=1 %s> %s\n",
-	length(@writers) ? "" : "checked", $text{'access_writers1'};
+	scalar(@writers) ? "" : "checked", $text{'access_writers1'};
 printf "<input type=radio name=writers_def value=0 %s> %s<br>\n",
-	length(@writers) ? "checked" : "", $text{'access_writers0'};
+	scalar(@writers) ? "checked" : "", $text{'access_writers0'};
 print "<textarea rows=20 cols=30 name=writers>",
 	join("\n", @writers),"</textarea>",
 	&user_chooser_button("writers", 1),"</td> </tr>\n";

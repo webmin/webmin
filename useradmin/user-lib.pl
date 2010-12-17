@@ -97,7 +97,7 @@ Or if it supports FreeBSD master.passwd info, it will also have keys :
 =cut
 sub list_users
 {
-return @list_users_cache if (length(@list_users_cache));
+return @list_users_cache if (scalar(@list_users_cache));
 
 # read the password file
 local (@rv, $_, %idx, $lnum, @pw, $p, $i, $j);
@@ -306,7 +306,7 @@ if ($pft == 1) {
 	       "$_[0]->{'gid'}:$_[0]->{'class'}:$_[0]->{'change'}:".
 	       "$_[0]->{'expire'}:$_[0]->{'real'}:$_[0]->{'home'}:".
 	       "$_[0]->{'shell'}");
-	if (length(@list_users_cache)) {
+	if (scalar(@list_users_cache)) {
 		map { $_->{'line'}++ if ($_->{'line'} >= $_[0]->{'line'}) }
 		    @list_users_cache;
 		}
@@ -337,7 +337,7 @@ else {
 	# add to /etc/passwd
 	$lref = &read_file_lines($config{'passwd_file'});
 	$_[0]->{'line'} = &nis_index($lref);
-	if (length(@list_users_cache)) {
+	if (scalar(@list_users_cache)) {
 		map { $_->{'line'}++ if ($_->{'line'} >= $_[0]->{'line'}) }
 		    @list_users_cache;
 		}
@@ -351,7 +351,7 @@ else {
 		# Find correct place to insert in shadow file
 		$lref = &read_file_lines($config{'shadow_file'});
 		$_[0]->{'sline'} = &nis_index($lref);
-		if (length(@list_users_cache)) {
+		if (scalar(@list_users_cache)) {
 			map { $_->{'sline'}++
 			      if ($_->{'sline'} >= $_[0]->{'sline'}) }
 			    @list_users_cache;
@@ -400,7 +400,7 @@ else {
 		}
 	}
 &flush_file_lines() if (!$batch_mode);
-push(@list_users_cache, $_[0]) if (length(@list_users_cache));
+push(@list_users_cache, $_[0]) if (scalar(@list_users_cache));
 &refresh_nscd() if (!$batch_mode);
 }
 
@@ -568,7 +568,7 @@ else {
 		}
 	}
 @list_users_cache = grep { $_->{'user'} ne $_[0]->{'user'} } @list_users_cache
-	if (length(@list_users_cache));
+	if (scalar(@list_users_cache));
 if (!$batch_mode) {
 	&flush_file_lines();
 	&refresh_nscd();
@@ -591,7 +591,7 @@ contain the keys :
 =cut
 sub list_groups
 {
-return @list_groups_cache if (length(@list_groups_cache));
+return @list_groups_cache if (scalar(@list_groups_cache));
 
 local(@rv, $lnum, $_, %idx, $g, $i, $j, @gr);
 $lnum = 0;
@@ -740,7 +740,7 @@ else {
 	local $lref;
 	$lref = &read_file_lines($config{'group_file'});
 	$_[0]->{'line'} = &nis_index($lref);
-	if (length(@list_groups_cache)) {
+	if (scalar(@list_groups_cache)) {
 		map { $_->{'line'}++ if ($_->{'line'} >= $_[0]->{'line'}) }
 		    @list_groups_cache;
 		}
@@ -751,7 +751,7 @@ else {
 	if ($gft == 2) {
 		$lref = &read_file_lines($config{'gshadow_file'});
 		$_[0]->{'sline'} = &nis_index($lref);
-		if (length(@list_groups_cache)) {
+		if (scalar(@list_groups_cache)) {
 			map { $_->{'sline'}++
 			      if ($_->{'sline'} >= $_[0]->{'sline'}) }
 			    @list_groups_cache;
@@ -767,7 +767,7 @@ else {
 	&flush_file_lines();
 	}
 &refresh_nscd();
-push(@list_groups_cache, $_[0]) if (length(@list_groups_cache));
+push(@list_groups_cache, $_[0]) if (scalar(@list_groups_cache));
 }
 
 =head2 modify_group(&old, &details)
@@ -860,7 +860,7 @@ else {
 		}
 	}
 @list_groups_cache = grep { $_ ne $_[0] } @list_groups_cache
-	if (length(@list_groups_cache));
+	if (scalar(@list_groups_cache));
 &refresh_nscd();
 }
 

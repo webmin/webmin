@@ -1283,7 +1283,7 @@ else {
 #         2 and the maildir name for ~/Maildir style
 sub postfix_mail_system
 {
-if (!length(@mail_system_cache)) {
+if (!scalar(@mail_system_cache)) {
 	local $home_mailbox = &get_current_value("home_mailbox");
 	if ($home_mailbox) {
 		@mail_system_cache = $home_mailbox =~ /^(.*)\/$/ ?
@@ -1535,7 +1535,7 @@ return &parse_value_header_checks(@_);
 # Returns an array reference of entries from the Postfix master.cf file
 sub get_master_config
 {
-if (!length(@master_config_cache)) {
+if (!scalar(@master_config_cache)) {
 	@master_config_cache = ( );
 	local $lnum = 0;
 	local $prog;
@@ -2080,7 +2080,7 @@ sub supports_map_type
 {
 local ($type) = @_;
 return 1 if ($type eq 'hash');	# Assume always supported
-if (!length(@supports_map_type_cache)) {
+if (!scalar(@supports_map_type_cache)) {
 	@supports_map_type = ( );
 	open(POSTCONF, "$config{'postfix_config_command'} -m |");
 	while(<POSTCONF>) {

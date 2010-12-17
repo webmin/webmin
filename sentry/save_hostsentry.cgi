@@ -52,7 +52,7 @@ foreach $m (@mods) {
 &unlock_file($mods);
 
 $basedir = &get_hostsentry_dir();
-if (length(@foreign)) {
+if (scalar(@foreign)) {
 	&lock_file("$basedir/moduleForeignDomain.allow");
 	&open_tempfile(FOREIGN, ">$basedir/moduleForeignDomain.allow");
 	foreach $f (@foreign) {
@@ -61,7 +61,7 @@ if (length(@foreign)) {
 	&close_tempfile(FOREIGN);
 	&unlock_file("$basedir/moduleForeignDomain.allow");
 	}
-if (length(@multiple)) {
+if (scalar(@multiple)) {
 	&lock_file("$basedir/moduleMultipleLogins.allow");
 	&open_tempfile(MULTIPLE, ">$basedir/moduleMultipleLogins.allow");
 	foreach $m (@multiple) {

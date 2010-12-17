@@ -315,7 +315,7 @@ div.title_menu {
     }
 
 @msc_modules = &get_available_module_infos()
-	if (!length(@msc_modules));
+	if (!scalar(@msc_modules));
 
 print "</head>\n";
 if ($theme_no_table) {

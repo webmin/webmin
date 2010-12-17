@@ -26,7 +26,7 @@ $| = 1;
 # Returns a structure containing the details of all disks and partitions
 sub list_disks_partitions
 {
-if (length(@list_disks_partitions_cache)) {
+if (scalar(@list_disks_partitions_cache)) {
 	return @list_disks_partitions_cache;
 	}
 
@@ -872,7 +872,7 @@ if ($raid_module) {
 		}
 	}
 if ($lvm_module) {
-	if (!length(@physical_volumes)) {
+	if (!scalar(@physical_volumes)) {
 		@physical_volumes = ();
 		foreach $vg (&foreign_call("lvm", "list_volume_groups")) {
 			push(@physical_volumes,

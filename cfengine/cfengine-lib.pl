@@ -29,7 +29,7 @@ $cfrun_hosts = $config{'cfrun_hosts'} ? $config{'cfrun_hosts'} :
 # a list of classes, each containing options for the section type.
 sub get_config
 {
-if (!length(@get_config_cache)) {
+if (!scalar(@get_config_cache)) {
 	@get_config_cache = &get_config_file($cfengine_conf);
 	}
 return \@get_config_cache;
@@ -39,7 +39,7 @@ return \@get_config_cache;
 # Parses the cfd.conf file
 sub get_cfd_config
 {
-if (!length(@get_cfd_config_cache)) {
+if (!scalar(@get_cfd_config_cache)) {
 	@get_cfd_config_cache = &get_config_file($cfd_conf);
 	}
 return \@get_cfd_config_cache;

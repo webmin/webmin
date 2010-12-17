@@ -255,7 +255,7 @@ return defined(&software::update_system_updates);
 sub updates_available
 {
 my ($nocache) = @_;
-if (!length(@updates_available_cache)) {
+if (!scalar(@updates_available_cache)) {
 	if ($nocache || &cache_expired($updates_cache_file)) {
 		# Get from original source
 		@updates_available_cache = &software::update_system_updates();

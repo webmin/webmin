@@ -13,7 +13,7 @@ use WebminCore;
 # Returns a list of dovecot config entries
 sub get_config
 {
-if (!length(@get_config_cache)) {
+if (!scalar(@get_config_cache)) {
 	@get_config_cache = ( );
 	local $lnum = 0;
 	local ($section, @sections);
