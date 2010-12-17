@@ -31,7 +31,7 @@ if (($url =~ /\$VIRTUALSERVER_/ || $url =~ /\$\{VIRTUALSERVER_/) &&
 		}
 	}
 if ($url && $config{'immediate'}) {
-	&redirect($access{'link'});
+	&redirect($url);
 	}
 else {
 	# Show a link page

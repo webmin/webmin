@@ -1,6 +1,6 @@
 name=Link
 desc=Custom Link
 category=others
-version=1.4
+version=1.5
 depends=1.170
 readonly=1
