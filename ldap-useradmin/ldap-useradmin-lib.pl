@@ -169,7 +169,7 @@ else {
 # Returns a list of users, in the same format as the useradmin module
 sub list_users
 {
-if (!defined(@list_users_cache)) {
+if (!length(@list_users_cache)) {
 	local $ldap = &ldap_connect();
 	local $base = &get_user_base();
 	local $rv = $ldap->search(base => $base,
@@ -213,7 +213,7 @@ local $rv = $ldap->add($_[0]->{'dn'}, attr => \@attrs);
 if ($rv->code) {
 	&error(&text('usave_eadd', $rv->error));
 	}
-push(@list_users_cache, $_[0]) if (defined(@list_users_cache));
+push(@list_users_cache, $_[0]) if (length(@list_users_cache));
 $ldap->unbind();
 &useradmin::refresh_nscd() if (!$batch_mode);
 }
@@ -230,7 +230,7 @@ if ($rv->code) {
 	}
 $ldap->unbind();
 @list_users_cache = grep { $_ ne $_[0] } @list_users_cache
-        if (defined(@list_users_cache));
+        if (length(@list_users_cache));
 &useradmin::refresh_nscd() if (!$batch_mode);
 }
 
@@ -292,7 +292,7 @@ $ldap->unbind();
 # Returns a list of groups, in the same format as the useradmin module
 sub list_groups
 {
-if (!defined(@list_groups_cache)) {
+if (!length(@list_groups_cache)) {
 	local $ldap = &ldap_connect();
 	local $base = &get_group_base();
 	local $rv = $ldap->search(base => $base,
@@ -325,7 +325,7 @@ local $rv = $ldap->add($_[0]->{'dn'}, attr => \@attrs);
 if ($rv->code) {
 	&error(&text('gsave_eadd', $rv->error));
 	}
-push(@list_groups_cache, $_[0]) if (defined(@list_groups_cache));
+push(@list_groups_cache, $_[0]) if (length(@list_groups_cache));
 $ldap->unbind();
 &useradmin::refresh_nscd() if (!$batch_mode);
 }
@@ -342,7 +342,7 @@ if ($rv->code) {
 	}
 $ldap->unbind();
 @list_groups_cache = grep { $_ ne $_[0] } @list_groups_cache
-        if (defined(@list_groups_cache));
+        if (length(@list_groups_cache));
 &useradmin::refresh_nscd() if (!$batch_mode);
 }
 

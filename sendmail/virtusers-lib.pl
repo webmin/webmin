@@ -23,7 +23,7 @@ return &find_textfile($config{'virtusers_file'}, &virtusers_dbm($_[0]));
 # list_virtusers(textfile)
 sub list_virtusers
 {
-if (!defined(@list_virtusers_cache)) {
+if (!length(@list_virtusers_cache)) {
 	@list_virtusers_cache = ( );
 	local $lnum = 0;
 	local $cmt;

@@ -1960,7 +1960,7 @@ if ($changed || !$filecount || $znc{'version'} != $zone_names_version ||
 	}
 
 # Use in-memory cache
-if (defined(@list_zone_names_cache)) {
+if (length(@list_zone_names_cache)) {
 	return @list_zone_names_cache;
 	}
 

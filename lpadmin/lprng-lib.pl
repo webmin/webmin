@@ -255,7 +255,7 @@ return $rv;
 # Returns an array of associative arrays containing printcap fields
 sub list_printcap
 {
-return @list_printcap_cache if (defined(@list_printcap_cache));
+return @list_printcap_cache if (length(@list_printcap_cache));
 local(@rv, @line, @comment, $line, $cont, $lnum, $i, %done, $capfile);
 foreach $capfile ($config{'printcap_file'}, $config{'ro_printcap_file'}) {
 	next if (!$capfile || $done{$capfile}++);

@@ -12,7 +12,7 @@ use WebminCore;
 sub get_config
 {
 local $file = $_[0] || $config{'auth_ldap'};
-if (!defined(@get_config_cache)) {
+if (!length(@get_config_cache)) {
 	local $lnum = 0;
 	@get_config_cache = ( );
 	&open_readfile(CONF, $file);

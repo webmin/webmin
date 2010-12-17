@@ -65,7 +65,7 @@ return %mdstat;
 sub get_raidtab
 {
 local ($raiddev, $device, %mdstat);
-return \@get_raidtab_cache if (defined(@get_raidtab_cache));
+return \@get_raidtab_cache if (length(@get_raidtab_cache));
 %mdstat = &get_mdstat();
 
 if ($raid_mode eq "raidtools") {
@@ -601,7 +601,7 @@ if ($mounted) { return ($mounted->[0], $mounted->[2], 1,
 			&indexof($mounted, @mounted)); }
 elsif ($mount) { return ($mount->[0], $mount->[2], 0,
 			 &indexof($mount, @mounts)); }
-if (!defined(@physical_volumes)) {
+if (!length(@physical_volumes)) {
 	@physical_volumes = ();
 	foreach $vg (&lvm::list_volume_groups()) {
 		push(@physical_volumes,

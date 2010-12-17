@@ -982,7 +982,7 @@ return $config{'host'} eq '' || $config{'host'} eq 'localhost' ||
 # Returns the parsed my.cnf file
 sub get_mysql_config
 {
-if (!defined(@mysql_config_cache)) {
+if (!length(@mysql_config_cache)) {
 	if (!-r $config{'my_cnf'}) {
 		return undef;
 		}

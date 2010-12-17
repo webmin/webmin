@@ -9,7 +9,7 @@ use WebminCore;
 # Returns an array reference containing the contents of the Frox config file
 sub get_config
 {
-    if (!defined(@get_config_cache)) {
+    if (!length(@get_config_cache)) {
 	    local $lnum = 0;
 	    open(CONF, $config{'frox_conf'});
 	    while(<CONF>) {

@@ -23,7 +23,7 @@ return &find_textfile($config{'access_file'}, &access_dbm($_[0]));
 # list_access(textfile)
 sub list_access
 {
-if (!defined(@list_access_cache)) {
+if (!length(@list_access_cache)) {
 	@list_access_cache = ( );
 	local $lnum = 0;
 	open(ACC, $_[0]);

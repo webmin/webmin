@@ -1044,9 +1044,9 @@ elsif ($access{'awl_groups'}) {
 	# Check if the user is a member of any of the allowed groups
 	local %ugroups;
 	local @uinfo = getpwnam($user);
-	return 0 if (!defined(@uinfo));
+	return 0 if (!length(@uinfo));
 	local @ginfo = getgrgid($uinfo[3]);
-	$ugroups{$ginfo[0]}++ if (defined(@ginfo));
+	$ugroups{$ginfo[0]}++ if (length(@ginfo));
 	foreach my $o (&other_groups($user)) {
 		$ugroups{$o}++;
 		}

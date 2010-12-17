@@ -59,7 +59,7 @@ reference with the following keys :
 sub list_cron_jobs
 {
 local (@rv, $lnum, $f);
-if (defined(@cron_jobs_cache)) {
+if (length(@cron_jobs_cache)) {
 	return @cron_jobs_cache;
 	}
 

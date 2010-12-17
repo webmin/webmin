@@ -30,7 +30,7 @@ else {
 	if (&supports_users()) {
 		# Include user home
 		@uinfo = getpwnam($remote_user);
-		if ($access{'home'} && defined(@uinfo)) {
+		if ($access{'home'} && length(@uinfo)) {
 			push(@accessdirs, &resolve_links($uinfo[7]));
 			}
 		}

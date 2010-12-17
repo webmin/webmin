@@ -201,7 +201,7 @@ return &list_user_folders(@_);
 # mail file in home dir, and maildir in home dir
 sub get_mail_style
 {
-if (!defined(@mail_style_cache)) {
+if (!length(@mail_style_cache)) {
 	if ($config{'auto'}) {
 		# Based on mail server
 		if ($config{'mail_system'} == 1) {

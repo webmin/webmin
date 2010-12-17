@@ -289,7 +289,7 @@ return &ui_opt_textbox($name, $value, 10, $text{'pool_none'});
 sub get_active_interface
 {
 local ($zinfo, $net) = @_;
-if (!defined(@active_interfaces_cache)) {
+if (!length(@active_interfaces_cache)) {
 	@active_interfaces_cache = &net::active_interfaces();
 	}
 local $address = $net->{'address'};
@@ -307,7 +307,7 @@ sub get_active_mount
 {
 local ($zinfo, $fs) = @_;
 local $dir = &get_zone_root($zinfo).$fs->{'dir'};
-if (!defined(@active_mounts_cache)) {
+if (!length(@active_mounts_cache)) {
 	@active_mounts_cache = &mount::list_mounted();
 	}
 local ($mount) = grep { $_->[0] eq $dir } @active_mounts_cache;

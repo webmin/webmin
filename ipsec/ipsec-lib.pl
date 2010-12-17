@@ -353,7 +353,7 @@ return undef;
 # Returns a list of IPsec secret keys
 sub list_secrets
 {
-if (!defined(@list_secrets_cache)) {
+if (!length(@list_secrets_cache)) {
 	local (@lines);
 	local $lnum = 0;
 	open(SEC, $config{'secrets'});

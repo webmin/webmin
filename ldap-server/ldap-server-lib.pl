@@ -635,7 +635,7 @@ sub check_ldap_permissions
 {
 local @uinfo;
 if ($config{'data_dir'} && $config{'ldap_user'} &&
-    defined(@uinfo = getpwnam($config{'ldap_user'}))) {
+    length(@uinfo = getpwnam($config{'ldap_user'}))) {
 	opendir(DATADIR, $config{'data_dir'});
 	local @datafiles = grep { !/^\./ } readdir(DATADIR);
 	closedir(DATADIR);

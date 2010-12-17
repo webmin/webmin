@@ -261,7 +261,7 @@ else {
 # Returns a list of all SMTP routes
 sub list_routes
 {
-if (!defined(@list_routes_cache)) {
+if (!length(@list_routes_cache)) {
 	local $lnum = 0;
 	local @rv;
 	open(ROUTES, $qmail_routes_file);
@@ -387,7 +387,7 @@ print "</table></td></tr></table></form>\n";
 # Returns a list of all virtualdomains file entries
 sub list_virts
 {
-if (!defined(@list_virts_cache)) {
+if (!length(@list_virts_cache)) {
 	local $lnum = 0;
 	local @rv;
 	open(VIRTS, $qmail_virts_file);
@@ -592,7 +592,7 @@ return $r;
 # Returns a list of qmail user assignments
 sub list_assigns
 {
-if (!defined(@list_assigns_cache)) {
+if (!length(@list_assigns_cache)) {
 	local @rv;
 	local $lnum = 0;
 	open(ASSIGNS, $qmail_assigns_file);

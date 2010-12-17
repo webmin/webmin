@@ -63,7 +63,7 @@ elsif ($in{'mode'} == 2) {
 # Returns a list of lm_sensors names, values and maxes
 sub get_sensors_values
 {
-if (!defined(@get_sensors_cache)) {
+if (!length(@get_sensors_cache)) {
 	local @rv;
 	open(SENS, "sensors 2>/dev/null |");
 	while(<SENS>) {

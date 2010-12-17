@@ -23,7 +23,7 @@ return &find_textfile($config{'mailers_file'}, &mailers_dbm($_[0]));
 # list_mailers(textfile)
 sub list_mailers
 {
-if (!defined(@list_mailers_cache)) {
+if (!length(@list_mailers_cache)) {
 	local $lnum = 0;
 	@list_mailers_cache = ( );
 	local $cmt;
