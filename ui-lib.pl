@@ -913,13 +913,13 @@ if (defined($opts_title)) {
 	}
 $rv .= "<tr class='ui_multi_select_row'>";
 $rv .= "<td>".&ui_select($name."_opts", [ ], $leftover,
-			 $size, 0, 0, $dis, $wstyle)."</td>\n";
+			 $size, 1, 0, $dis, $wstyle)."</td>\n";
 $rv .= "<td>".&ui_button("->", $name."_add", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 1)'")."<br>".
 	      &ui_button("<-", $name."_remove", $dis,
 		 "onClick='multi_select_move(\"$name\", form, 0)'")."</td>\n";
 $rv .= "<td>".&ui_select($name."_vals", [ ], $values,
-			 $size, 0, 0, $dis, $wstyle)."</td>\n";
+			 $size, 1, 0, $dis, $wstyle)."</td>\n";
 $rv .= "</tr></table>\n";
 $rv .= &ui_hidden($name, join("\n", map { $_->[0] } @$values));
 return $rv;
@@ -945,15 +945,27 @@ var opts_idx = opts.selectedIndex;
 var vals_idx = vals.selectedIndex;
 if (dir == 1 && opts_idx >= 0) {
 	// Moving from options to selected list
-	var o = opts.options[opts_idx];
-	vals.options[vals.options.length] = new Option(o.text, o.value);
-	opts.remove(opts_idx);
+	for(var i=0; i<opts.options.length; i++) {
+		var o = opts.options[i];
+		if (o.selected) {
+			vals.options[vals.options.length] =
+				new Option(o.text, o.value);
+			opts.remove(i);
+			i--;
+			}
+		}
 	}
 else if (dir == 0 && vals_idx >= 0) {
 	// Moving the other way
-	var o = vals.options[vals_idx];
-	opts.options[opts.options.length] = new Option(o.text, o.value);
-	vals.remove(vals_idx);
+	for(var i=0; i<vals.options.length; i++) {
+		var o = vals.options[i];
+		if (o.selected) {
+			opts.options[opts.options.length] =
+				new Option(o.text, o.value);
+			vals.remove(i);
+			i--;
+			}
+		}
 	}
 // Fill in hidden field
 var hid = f.elements[name];
