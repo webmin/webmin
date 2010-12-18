@@ -36,7 +36,7 @@ while($line = <FILE>) {
 		if ($line =~ /^[^"]*"[^"]*$/) {
 			# Line has only one ", meaning that a ; in the middle
 			# of a quoted string broke it! Fix up
-			$line .= $comment;
+			$line .= ";".$comment;
 			$comment = "";
 			}
 		}
