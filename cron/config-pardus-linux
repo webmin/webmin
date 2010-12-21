@@ -1,0 +1,24 @@
+cron_input=1
+cron_deny_file=/var/spool/cron/deny
+cron_dir=/var/spool/cron/crontabs
+cron_deny_all=2
+cron_delete_command=crontab -u USER -r
+cron_user_delete_command=crontab -r
+cron_edit_command=crontab -u USER -e
+cron_user_edit_command=crontab -e
+cron_allow_file=/var/spool/cron/allow
+cron_get_command=crontab -u USER -l
+cron_user_get_command=crontab -l
+vixie_cron=0
+max_len=80
+run_parts=run-parts
+show_run=0
+show_time=0
+match_mode=0
+match_user=1
+kill_subs=0
+show_comment=0
+hourly_only=0
+max_jobs=100
+vixie_cron=0
+

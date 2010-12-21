@@ -1,0 +1,7 @@
+config_file=/etc/openldap/slapd.conf
+schema_dir=/etc/openldap/schema
+slapd=/usr/libexec/slapd
+ldap_user=ldap
+browse_max=100
+data_dir=/var/lib/openladp-data
+

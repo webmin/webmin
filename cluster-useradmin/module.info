@@ -1,6 +1,6 @@
 name=Cluster Users
 desc=Cluster Users and Groups
-os_support=slackware-linux redhat-linux mandrake-linux solaris debian-linux suse-linux united-linux hpux freebsd osf1 open-linux unixware turbo-linux openbsd corel-linux cobalt-linux irix netbsd msc-linux aix generic-linux openserver macos gentoo-linux trustix-linux coherent-linux
+os_support=slackware-linux redhat-linux mandrake-linux solaris debian-linux suse-linux united-linux hpux freebsd osf1 open-linux unixware turbo-linux openbsd corel-linux cobalt-linux irix netbsd msc-linux aix generic-linux openserver macos gentoo-linux trustix-linux coherent-linux pardus-linux
 depends=useradmin servers
 category=cluster
 desc_ca=Usuaris i Grups de Cluster

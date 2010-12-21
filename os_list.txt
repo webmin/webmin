@@ -1,3 +1,16 @@
+#Pardus
+Pardus			        1.0	                pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+1.0\s+/i
+Pardus			       2007	                pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2007\s+/i
+Pardus			       2007.1 Felis chaus	pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2007.1\s+/i
+Pardus			       2007.2 Caracac caracal	pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2007.2\s+/i
+Pardus			       2007.3 Lynx lynx	        pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2007.3\s+/i
+Pardus			       2008	                pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2008\s+/i
+Pardus			       2008.1 Hyaena hyaena               pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2008.1\s+/i
+Pardus			       2008.2 Canis aureus	          pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2008.2\s+/i
+Pardus			       2009	                pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2009\s+/i
+Pardus			       2009.1 Anthropoides virgo	                pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2009.1\s+/i
+Pardus			       2009.2 Geronticus eremita	pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2009.2\s+/i
+Pardus			       2011	                pardus-linux	$1	`cat /etc/pardus-release` =~ /Pardus\s+2011\s+/i
 # Sun Solaris
 Sun Solaris			2.5.1	solaris		2.5.1	$uname =~ /SunOS.*\s5\.5\.1\s/i
 Sun Solaris			2.6	solaris		2.6	$uname =~ /SunOS.*\s5\.6\s/i

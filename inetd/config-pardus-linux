@@ -1,0 +1,15 @@
+show_empty=0
+extended_inetd=1
+rpc_inetd=1
+inetd_conf_file=/etc/xinetd.conf
+rpc_protocols=tcp udp
+restart_command=killall -HUP inetd
+services_file=/etc/services
+protocols_file=/etc/protocols
+rpc_file=/etc/rpc
+tcpd_path=/usr/sbin/tcpd
+allow_file=/etc/hosts.allow
+deny_file=/etc/hosts.deny
+sort_mode=0
+ipv6=0
+qm_mode=0

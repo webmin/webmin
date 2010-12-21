@@ -1,0 +1,17 @@
+show_list=0
+httpd_dir=/etc/apache2
+httpd_path=/usr/sbin/apache2
+httpd_conf=/etc/apache2/httpd.conf
+apachectl_path=/usr/sbin/apachectl
+virt_name=httpd.conf
+virt_file=/etc/apache2/httpd.conf
+start_cmd=service apache start
+stop_cmd=service apache stop
+show_order=0
+max_servers=100
+test_config=1
+test_manual=0
+test_always=0
+test_apachectl=1
+auto_mods=1
+show_names=0

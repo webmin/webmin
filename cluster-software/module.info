@@ -1,6 +1,6 @@
 name=Cluster Software
 desc=Cluster Software Packages
-os_support=cobalt-linux mandrake-linux redhat-linux open-linux msc-linux suse-linux united-linux turbo-linux debian-linux solaris openserver gentoo-linux trustix-linux coherent-linux slackware-linux windows
+os_support=cobalt-linux mandrake-linux redhat-linux open-linux msc-linux suse-linux united-linux turbo-linux debian-linux solaris openserver gentoo-linux trustix-linux coherent-linux slackware-linux windows pardus-linux
 depends=software servers
 category=cluster
 desc_hu=Klaszter szoftver csomag

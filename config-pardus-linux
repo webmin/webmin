@@ -1,0 +1,10 @@
+find_pid_command=ps auwwwx | grep NAME | grep -v grep | awk '{ print $2 }'
+path=/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin
+ld_env=LD_LIBRARY_PATH
+passwd_file=/etc/shadow
+passwd_uindex=0
+passwd_pindex=1
+passwd_cindex=2
+passwd_mindex=4
+by_view=0
+tempdelete_days=7

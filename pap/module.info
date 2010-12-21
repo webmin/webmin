@@ -1,6 +1,6 @@
 name=PPP
 category=net
-os_support=redhat-linux mandrake-linux suse-linux united-linux slackware-linux debian-linux open-linux turbo-linux corel-linux msc-linux generic-linux gentoo-linux cobalt-linux solaris trustix-linux coherent-linux openmamba-linux
+os_support=redhat-linux mandrake-linux suse-linux united-linux slackware-linux debian-linux open-linux turbo-linux corel-linux msc-linux generic-linux gentoo-linux cobalt-linux solaris trustix-linux coherent-linux openmamba-linux pardus-linux
 desc=PPP Dialin Server
 desc_ca=Comptes PPP
 desc_es=Nombres y Claves de Acceso de Usuarios PPP

@@ -1,7 +1,7 @@
 category=system
 desc_ko_KR.euc=PAM ¿Œ¡ı
 risk=high
-os_support=redhat-linux mandrake-linux open-linux debian-linux/2.2-* corel-linux suse-linux united-linux turbo-linux cobalt-linux msc-linux generic-linux gentoo-linux slackware-linux{-d "/etc/pam.d"} trustix-linux sol-linux coherent-linux openmamba-linux macos
+os_support=redhat-linux mandrake-linux open-linux debian-linux/2.2-* corel-linux suse-linux united-linux turbo-linux cobalt-linux msc-linux generic-linux gentoo-linux slackware-linux{-d "/etc/pam.d"} trustix-linux sol-linux coherent-linux openmamba-linux macos pardus-linux
 desc_pl=Autoryzacja przez PAM
 desc=PAM Authentication
 desc_sv=PAM-autentisering
