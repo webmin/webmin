@@ -4,6 +4,7 @@ threshold_pc=Threshold percentage to highlight used quota,3,Don't show
 pc_show=Usage percentages to show,1,2-Hard and soft,1-Hard only,0-Soft only
 sort_mode=Sort users and groups by,1,0-Blocks used,2-Name,1-Order from repquota,3-Hard block quota,4-Soft block quota,5-Percent of hard quota used,6-Percent of soft quota used
 block_mode=Show quotas in,1,1-Kilobytes (where possible),0-Blocks
+hide_uids=Show deleted users?,1,0-Yes,1-No
 line1.1=Quota email messages,11
 email_msg=Email message for users over quota,9,80,5,\t
 email_subject=Subject for email message to users,3,Default

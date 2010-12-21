@@ -144,6 +144,8 @@ elsif ($n) {
 	# Generate table of groups
 	foreach $i (@order) {
 		next if (!&can_edit_group($group{$i,'group'}));
+		next if ($config{'hide_uids'} &&
+			 $group{$i,'group'} =~ /^#/);
 		local @cols;
 		if ($access{'ro'}) {
 			push(@cols, $group{$i,'group'});

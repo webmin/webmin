@@ -146,6 +146,8 @@ elsif ($n) {
 	# Generate table of users
 	foreach $i (@order) {
 		next if (!&can_edit_user($user{$i,'user'}));
+		next if ($config{'hide_uids'} &&
+			 $user{$i,'user'} =~ /^#/);
 		local @cols;
 		if ($access{'ro'}) {
 			push(@cols, $user{$i,'user'});

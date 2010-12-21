@@ -39,3 +39,5 @@ Converted all pages to use the new Webmin UI library, for a more consistent look
 Converted commands in the module's API file to POD format, and added more details about each function.
 ---- Changes since 1.470 ----
 Added a module access control option to restrict allowed groups by GID range.
+---- Changes since 1.530 ----
+Added a Module Config option to hide quotas for deleted users and groups.

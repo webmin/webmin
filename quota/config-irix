@@ -10,3 +10,4 @@ block_mode=1
 show_grace=0
 email_msg=Disk usage for user ${USER} on filesystem ${FS} has reached ${PERCENT}% of the	allowed quota.		${USED} of disk space is being used, out of a maximum of ${QUOTA}.
 pc_show=1
+hide_uids=0
