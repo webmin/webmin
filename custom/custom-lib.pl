@@ -32,6 +32,7 @@ while($f = readdir(DIR)) {
 		$cmd{'usermin'} = int($o[5]);
 		$cmd{'timeout'} = int($o[6]);
 		$cmd{'clear'} = int($o[7]);
+		$cmd{'format'} = $o[8] eq '-' ? undef : $o[8];
 		}
 	elsif ($f =~ /^(\d+)\.edit$/) {
 		# Read file-editor file
@@ -172,7 +173,7 @@ else {
 		   $c->{'user'}," ",int($c->{'raw'})," ",int($c->{'su'})," ",
 		   int($c->{'order'})," ",int($c->{'noshow'})," ",
 		   int($c->{'usermin'})," ",int($c->{'timeout'})," ",
-		   int($c->{'clear'}),"\n");
+		   int($c->{'clear'})," ",($c->{'format'} || "-"),"\n");
 	}
 
 

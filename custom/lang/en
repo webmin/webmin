@@ -53,6 +53,9 @@ edit_timeout=Maximum time to wait for command?
 edit_timeoutdef=Forever
 edit_secs=seconds
 edit_clear=Clear environment variables?
+edit_format=Output style
+edit_format0=Show in Webmin UI
+edit_format1=Output with MIME type
 edit_servers=Run on Webmin servers
 edit_this=this server
 edit_clone=Clone
@@ -66,6 +69,7 @@ save_euser=Missing or invalid user
 save_eorder=Ordering on main page must be a number
 save_etimeout=Missing or invalid maximum time to wait
 save_eusermin=Commands that run on other servers cannot be run from Usermin
+save_eformat=Invalid output MIME type
 
 run_err=Failed to execute command
 run_ecannot=You are not allowed to run this command

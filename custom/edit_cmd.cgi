@@ -73,12 +73,17 @@ print &ui_table_row(&hlink($text{'edit_usermin'},"usermin"),
 
 # Command timeout
 print &ui_table_row(&hlink($text{'edit_timeout'},"timeout"),
-	&ui_opt_textbox("timeout", $cmd->{'timeout'}, 6, $text{'default'}).
-	" ".$text{'edit_secs'});
+	&ui_opt_textbox("timeout", $cmd->{'timeout'} || undef, 6,
+	  $text{'default'})." ".$text{'edit_secs'});
 
 # Clear environment?
 print &ui_table_row(&hlink($text{'edit_clear'},"clear"),
 	&ui_yesno_radio("clear", $cmd->{'clear'}));
+
+# Output format
+print &ui_table_row(&hlink($text{'edit_format'}, "format"),
+	&ui_opt_textbox("format", $cmd->{'format'}, 20, $text{'edit_format0'},
+			$text{'edit_format1'}));
 
 # Show Webmin servers to run on
 @servers = &list_servers();

@@ -30,3 +30,5 @@ The sort order of commands can now be set on the Module Config page, and is resp
 ---- Changes since 1.510 ----
 Fixed a bug that broke remote command execution with parameters.
 Added a new parameter type for selecting multiple items from a menu.
+---- Changes since 1.530 ----
+Added an option for custom commands to have their output displayed without any Webmin UI, in a selectable MIME type.

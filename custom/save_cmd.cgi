@@ -54,6 +54,14 @@ else {
 	$cmd->{'order'} = $in{'order_def'} ? 0 : int($in{'order'});
 	$cmd->{'timeout'} = $in{'timeout_def'} ? 0 : int($in{'timeout'});
 	$cmd->{'clear'} = $in{'clear'};
+	if ($in{'format_def'}) {
+		delete($cmd->{'format'});
+		}
+	else {
+		$in{'format'} =~ /^[a-z0-9\.\_\-]+\/[a-z0-9\.\_\-]+/i ||
+			&error($text{'save_eformat'});
+		$cmd->{'format'} = $in{'format'};
+		}
 	$cmd->{'noshow'} = $in{'noshow'};
 	$cmd->{'usermin'} = $in{'usermin'};
 	@hosts = split(/\0/, $in{'hosts'});

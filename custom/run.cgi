@@ -34,7 +34,14 @@ else {
 @servers = &list_servers();
 
 # Run and display output
-&ui_print_unbuffered_header($cmd->{'desc'}, $text{'run_title'}, "", -d "help" ? "run" : undef);
+if ($cmd->{'format'}) {
+	print "Content-type: ",$cmd->{'format'},"\n";
+	print "\n";
+	}
+else {
+	&ui_print_unbuffered_header($cmd->{'desc'}, $text{'run_title'}, "",
+				    -d "help" ? "run" : undef);
+	}
 
 &remote_error_setup(\&remote_custom_handler);
 
@@ -45,9 +52,11 @@ foreach $h (@hosts) {
 	if (@{$cmd->{'hosts'}}) {
 		$txt .= 'on';
 		}
-	print &text($txt, "<tt>".&html_escape($displaystr)."</tt>",
-		  $server->{'desc'} || "<tt>$server->{'host'}</tt>"),"\n";
-	print "<pre>" if (!$cmd->{'raw'});
+	if (!$cmd->{'format'}) {
+		print &text($txt, "<tt>".&html_escape($displaystr)."</tt>",
+		    $server->{'desc'} || "<tt>$server->{'host'}</tt>"),"\n";
+		print "<pre>" if (!$cmd->{'raw'});
+		}
 	$remote_custom_error = undef;
 	if ($h == 0) {
 		# Run locally
@@ -70,16 +79,20 @@ foreach $h (@hosts) {
 		}
 	if (!$remote_custom_error) {
 		print $out if ($h != 0);
-		if (!$got) {
+		if (!$got && !$cmd->{'format'}) {
 			print "<i>$text{'run_noout'}</i>\n";
 			}
 		}
-	print "</pre>\n" if (!$cmd->{'raw'});
-	if ($remote_custom_error) {
-		print "<b>$remote_custom_error</b><p>\n";
-		}
-	elsif ($timeout) {
-		print "<b>",&text('run_timeout', $cmd->{'timeout'}),"</b><p>\n";
+
+	if (!$cmd->{'format'}) {
+		print "</pre>\n" if (!$cmd->{'raw'});
+		if ($remote_custom_error) {
+			print "<b>$remote_custom_error</b><p>\n";
+			}
+		elsif ($timeout) {
+			print "<b>",&text('run_timeout',
+					  $cmd->{'timeout'}),"</b><p>\n";
+			}
 		}
 
 	# Only log non-upload inputs
@@ -93,7 +106,9 @@ foreach $h (@hosts) {
 	}
 &webmin_log("exec", "command", $cmd->{'id'}, \%cmdin);
 unlink(@unlink) if (@unlink);
-&ui_print_footer("", $text{'index_return'});
+if (!$cmd->{'format'}) {
+	&ui_print_footer("", $text{'index_return'});
+	}
 
 sub remote_custom_handler
 {
