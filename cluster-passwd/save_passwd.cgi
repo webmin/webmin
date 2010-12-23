@@ -16,6 +16,8 @@ $user || &error($passwd::text{'passwd_euser'});
 if ($access{'old'} == 1 ||
     $access{'old'} == 2 && $user->{'user'} ne $remote_user) {
 	&unix_crypt($in{'old'}, $user->{'pass'}) eq $user->{'pass'} ||
+	   &useradmin::encrypt_password($in{'old'}, $user->{'pass'}) eq
+	   $user->{'pass'} ||
 		&error($passwd::text{'passwd_eold'});
 	}
 if ($access{'repeat'}) {
