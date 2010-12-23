@@ -8,7 +8,8 @@ require './filter-lib.pl';
 # Show page header and get the filter
 if ($in{'new'}) {
 	&ui_print_header(undef, $text{'edit_title1'}, "");
-	$filter = { 'actiondefault' => 1 };
+	$filter = { 'actiondefault' => 1,
+		    'nobounce' => 1 };
 	if ($in{'header'}) {
 		# Initial filter is based on URL params
 		$filter->{'condheader'} = $in{'header'};
@@ -145,7 +146,10 @@ print &ui_table_row(
 print &ui_table_row(
 	&ui_oneradio("amode", 1, $text{'edit_amode1'}, $amode == 1),
 	&ui_textarea("forward", $amode == 1 ?
-		join("\n", split(/,/, $filter->{'action'})) : "", 3, 70),
+		join("\n", split(/,/, $filter->{'action'})) : "", 3, 70).
+	"<br>\n".
+	&ui_checkbox("nobounce", 1, $text{'edit_nobounce'},
+		     $filter->{'nobounce'}),
 	undef, \@tds);
 
 # Save to a folder or file

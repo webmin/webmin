@@ -30,3 +30,5 @@ Autoreply messages starting with <html> or <body> will now be sent using the tex
 Quick autoreply and forward setup pages now only show un-conditional rules.
 ---- Changes since 1.450 ----
 Added option to select the character set of automatic reply messages.
+---- Changes since 1.460 ----
+Added a checkbox (on by default) to not forward bounce emails, which can cause mail loops.

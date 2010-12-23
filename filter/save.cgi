@@ -106,6 +106,7 @@ else {
 		$in{'forward'} =~ s/\s+/,/g;
 		$filter->{'action'} = $in{'forward'};
 		$filter->{'actiontype'} = '!';
+		$filter->{'nobounce'} = $in{'nobounce'};
 		}
 	elsif ($in{'amode'} == 0) {
 		# Write to a folder or file

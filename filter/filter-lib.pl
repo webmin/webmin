@@ -65,19 +65,27 @@ local @rv;
 local @pmrc = &procmail::parse_procmail_file($file || $procmail::procmailrc);
 foreach my $r (@pmrc) {
 	# Check for un-supported recipes
-	if (@{$r->{'conds'}} > 1 ||
-	    $r->{'block'} ||
-	    $r->{'name'}) {
+	local @conds = @{$r->{'conds'}};
+	if ($r->{'block'} || $r->{'name'}) {
 		next;
 		}
 
 	# Check for flags
 	local %flags = map { $_, 1 } @{$r->{'flags'}};
 
+	# Check for bounce condition
+	local $nobounce;
+	if (@conds && $conds[0]->[0] eq '!' &&
+	    $conds[0]->[1] =~ /FROM_MAILER/) {
+		$nobounce = 1;
+		shift(@conds);
+		}
+	next if (@conds > 1);	# Multiple conditions are not supported
+
 	# Work out condition type
 	local ($condtype, $cond);
-	if (@{$r->{'conds'}}) {
-		($condtype, $cond) = @{$r->{'conds'}->[0]};
+	if (@conds) {
+		($condtype, $cond) = @{$conds[0]};
 		if ($condtype && $condtype ne "<" && $condtype ne ">") {
 			# Unsupported conditon type
 			next;
@@ -110,6 +118,7 @@ foreach my $r (@pmrc) {
 			  'continue' => $flags{'c'},
 			  'actiontype' => $r->{'type'},
 			  'action' => $r->{'action'},
+			  'nobounce' => $nobounce,
 			  'index' => scalar(@rv),
 			  'recipe' => $r };
 
@@ -236,7 +245,6 @@ elsif ($filter->{'condtype'} eq '<' || $filter->{'condtype'} eq '>') {
 elsif ($filter->{'cond'}) {
 	@conds = ( [ "", $filter->{'cond'} ] );
 	}
-$recipe->{'conds'} = \@conds;
 
 # Set action section
 if ($filter->{'actionspam'}) {
@@ -268,7 +276,12 @@ else {
 		# Enable locking for file delivery
 		$recipe->{'lockfile'} ||= "";
 		}
+	if ($filter->{'actiontype'} eq '!' && $filter->{'nobounce'}) {
+		# Add condition to suppress forwarding of bounces
+		unshift(@conds, [ '!', '^FROM_MAILER' ]);
+		}
 	}
+$recipe->{'conds'} = \@conds;
 
 # Set flags
 push(@flags, "B") if ($filter->{'body'});

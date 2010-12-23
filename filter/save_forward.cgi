@@ -19,7 +19,8 @@ elsif ($in{'enabled'}) {
 	# Create or update
 	if (!$filter) {
 		$filter = { 'actiontype' => '!',
-			    'body' => 0 };
+			    'body' => 0,
+			    'nobounce' => 1 };
 		}
 	$filter->{'continue'} = $in{'continue'};
 	$in{'forward'} =~ /\S/ || &error($text{'save_eforward'});
