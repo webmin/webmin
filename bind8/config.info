@@ -23,6 +23,7 @@ short_names=Convert record names to canonical form?,1,0-Yes,1-No
 extra_forward=Extra record types for forward zones,0
 extra_reverse=Extra record types for reverse zones,0
 largezones=Show records in zones?,1,0-Yes,1-No (for large zones)
+default_view=Default view for new zones,3,First in list
 
 line2=Zone file options,11
 soa_style=Serial number style,1,0-Running number,1-Date based (YYYYMMDDnn),2-Unix time

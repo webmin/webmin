@@ -23,8 +23,10 @@ print &ui_table_row($text{'mcreate_dom'},
 $conf = &get_config();
 @views = &find("view", $conf);
 if (@views) {
+	($defview) = grep { lc($_->{'values'}->[0]) eq
+			    lc($config{'default_view'}) } @views;
 	print &ui_table_row($text{'mcreate_view'},
-		&ui_select("view", undef,
+		&ui_select("view", $defview ? $defview->{'index'} : undef,
 			[ map { [ $_->{'index'}, $_->{'values'}->[0] ] }
 			      grep { &can_edit_view($_) } @views ]), 3);
 	}

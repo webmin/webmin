@@ -121,3 +121,5 @@ Changed the default DNSSEC algorithm from DSA to the stronger RSASHA1.
 On Linux systems, /dev/urandom is used for generating entropy for DNSSEC.
 ---- Changes since 1.520 ----
 Added the Delete Records In Selected button to the main page, for removing the same record in multiple domains at once.
+---- Changes since 1.530 ----
+The default view for new zones can now be set via an option on the Module Config page.

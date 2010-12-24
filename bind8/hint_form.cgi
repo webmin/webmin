@@ -43,8 +43,10 @@ print &ui_table_row($text{'hcreate_real'},
 # Create in view
 @views = grep { &can_edit_view($_) && !$hashint{$_} } @views;
 if (@views) {
+	($defview) = grep { lc($_->{'values'}->[0]) eq
+			    lc($config{'default_view'}) } @views;
 	print &ui_table_row($text{'mcreate_view'},
-		&ui_select("view", undef,
+		&ui_select("view", $defview ? $defview->{'index'} : undef,
 		  [ map { [ $_->{'index'}, $_->{'values'}->[0] ] }
 			@views ]), 3);
 	}
