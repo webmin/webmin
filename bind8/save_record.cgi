@@ -294,6 +294,8 @@ else {
 		foreach my $mx (@{$spf->{'mx:'}}) {
 			&valname($mx) || &error(&text('edit_espfmx', $mx));
 			}
+		@{$spf->{'mx:'}} <= 10 ||
+			&error(&text('edit_espfmxmax', 10));
 		$spf->{'ip4:'} = [ split(/\s+/, $in{'spfip4s'}) ];
 		foreach my $ip (@{$spf->{'ip4:'}}) {
 			&check_ipaddress($ip) ||
