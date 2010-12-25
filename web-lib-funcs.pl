@@ -6215,10 +6215,16 @@ if ($serv->{'fast'} || !$sn) {
 	my $tostr = &serialise_variable($_[1]);
 	print $fh length($tostr)," $fh\n";
 	print $fh $tostr;
-	my $rlen = int(<$fh>);
+	my $rstr = <$fh>;
+	if ($rstr eq '') {
+		return &$main::remote_error_handler(
+			"Error reading response length from fastrpc.cgi : $!")
+		}
+	my $rlen = int($rstr);
 	my ($fromstr, $got);
 	while(length($fromstr) < $rlen) {
-		return &$main::remote_error_handler("Failed to read from fastrpc.cgi")
+		return &$main::remote_error_handler(
+			"Failed to read from fastrpc.cgi : $!")
 			if (read($fh, $got, $rlen - length($fromstr)) <= 0);
 		$fromstr .= $got;
 		}
