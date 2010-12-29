@@ -728,6 +728,28 @@ push(@rvwords, $rvword);
 return join("\" \"", @rvwords);
 }
 
+# join_record_values(&record)
+# Given the values for a record, joins them into a space-separated string
+# with quoting if needed
+sub join_record_values
+{
+local ($r) = @_;
+if ($r->{'type'} eq 'SOA') {
+	# Multiliple lines, with brackets
+	local $v = $r->{'values'};
+	return "$v->[0] $v->[1] (\n\t\t\t$v->[2]\n\t\t\t$v->[3]\n".
+	       "\t\t\t$v->[4]\n\t\t\t$v->[5]\n\t\t\t$v->[6] )";
+	}
+else {
+	# All one one line
+	local @rv;
+	foreach my $v (@{$r->{'values'}}) {
+		push(@rv, $v =~ /\s/ ? "\"$v\"" : $v);
+		}
+	return join(" ", @rv);
+	}
+}
+
 # compute_serial(old)
 # Given an old serial number, returns a new one using the configured method
 sub compute_serial

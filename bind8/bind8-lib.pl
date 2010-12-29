@@ -1604,6 +1604,150 @@ foreach my $view (@views) {
 return 0;
 }
 
+# create_master_zone(name, &slave-ips, [view], [file], &records)
+# A convenience function for creating a new master zone, if it doesn't exist
+# yet. Mainly useful for Virtualmin, to avoid excessive transfer of BIND
+# configuration data.
+# Returns 0 on success, 1 if BIND is not setup, 2 if the zone already exists,
+# or 3 if the view doesn't exist, or 4 if the zone file couldn't be created
+sub create_master_zone
+{
+local ($name, $slaves, $viewname, $file, $records) = @_;
+local $parent = &get_config_parent();
+local $conf = $parent->{'members'};
+local $opts = &find("options", $conf);
+if (!$opts) {
+	return 1;
+	}
+
+# Check if exists in the view
+if ($viewname) {
+	local ($v) = grep { $_->{'value'} eq $viewname } &find("view", $conf);
+	@zones = &find("zone", $v->{'members'});
+	}
+else {
+	@zones = &find("zone", $conf);
+	}
+local ($z) = grep { $_->{'value'} eq $name } @zones;
+return 2 if ($z);
+
+# Create it
+local $dir = { 'name' => 'zone',
+               'values' => [ $name ],
+               'type' => 1,
+               'members' => [ { 'name' => 'type',
+                                'values' => [ 'master' ] },
+                            ]
+	     };
+local $base = $config{'master_dir'} || &base_directory();
+if ($base !~ /^([a-z]:)?\//) {
+	# Master dir is relative .. make absolute
+	$base = &base_directory()."/".$base;
+	}
+if (!$file) {
+	# File has default name and is under default directory
+	$file = &automatic_filename($name, $_[0] =~ /in-addr/i ? 1 : 0, $base,
+				    $viewname);
+	}
+push(@{$dir->{'members'}}, { 'name' => 'file',
+			     'values' => [ $file ] } );
+
+# Add slave IPs
+if (@$slaves) {
+	my $also = { 'name' => 'also-notify',
+		     'type' => 1,
+		     'members' => [ ] };
+	my $allow = { 'name' => 'allow-transfer',
+		      'type' => 1,
+		      'members' => [ ] };
+	foreach my $s (@$slaves) {
+		push(@{$also->{'members'}}, { 'name' => $s });
+		push(@{$allow->{'members'}}, { 'name' => $s });
+		}
+	push(@{$dir->{'members'}}, $also, $allow);
+	push(@{$dir->{'members'}}, { 'name' => 'notify',
+				     'values' => [ 'yes' ] });
+	}
+
+# Create the zone file, with records
+&open_tempfile(ZONE, ">".&make_chroot($file), 1, 1) || return 4;
+&close_tempfile(ZONE);
+&set_ownership(&make_chroot($file));
+foreach my $r (@$records) {
+	&create_record($file, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
+			      $r->{'type'}, &join_record_values($r),
+			      $r->{'comment'});
+	}
+
+# Get and validate view(s)
+local @views;
+if ($viewname) {
+	foreach my $vn (split(/\s+/, $viewname)) {
+		my ($view) = grep { $_->{'value'} eq $vn }
+				    &find("view", $conf);
+		push(@views, $view);
+		}
+	return 3 if (!@views);
+	}
+else {
+	# Top-level only
+	push(@views, undef);
+	}
+
+# Create the zone in all views
+foreach my $view (@views) {
+	&create_zone($dir, $conf, $view ? $view->{'index'} : undef);
+	}
+
+return 0;
+}
+
+# get_master_zone_file(name, [chroot])
+# Returns the absolute path to a master zone records file
+sub get_master_zone_file
+{
+local ($name, $chroot) = @_;
+local $conf = &get_config();
+local @zones = &find("zone", $conf);
+local ($v, $z);
+foreach $v (&find("view", $conf)) {
+        push(@zones, &find("zone", $v->{'members'}));
+        }
+local ($z) = grep { lc($_->{'value'}) eq lc($name) } @zones;
+return undef if (!$z);
+local $file = &find("file", $z->{'members'});
+return undef if (!$file);
+local $filename = &absolute_path($file->{'values'}->[0]);
+$filename = &make_chroot($filename) if ($chroot);
+return $filename;
+}
+
+# get_master_zone_records(name)
+# Returns a list of all the records in a master zone, each of which is a hashref
+sub get_master_zone_records
+{
+local ($name) = @_;
+local $filename = &get_master_zone_file($name, 0);
+return ( ) if (!$filename);
+return &read_zone_file($filename, $name);
+}
+
+# save_master_zone_records(name, &records)
+# Update all the records in the master zone, based on a list of hashrefs
+sub save_master_zone_records
+{
+local ($name, $records) = @_;
+local $filename = &get_master_zone_file($name, 0);
+return 0 if (!$filename);
+&open_tempfile(ZONE, ">".&make_chroot($file), 1, 1) || return 0;
+&close_tempfile(ZONE);
+foreach my $r (@$records) {
+	&create_record($file, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
+			      $r->{'type'}, $r->{'values'}, $r->{'comment'});
+	}
+return 1;
+}
+
 # delete_zone(name, [view], [file-too])
 # Delete one zone from named.conf
 # Returns 0 on success, 1 if the zone was not found, or 2 if the view was not found.
@@ -1715,7 +1859,8 @@ if ($config{'restart_cmd'} eq 'restart') {
 	}
 elsif ($config{'restart_cmd'}) {
 	# Custom command
-	local $out = &backquote_logged("$config{'restart_cmd'} 2>&1 </dev/null");
+	local $out = &backquote_logged(
+		"$config{'restart_cmd'} 2>&1 </dev/null");
 	if ($?) {
 		return &text('restart_ecmd', "<pre>$out</pre>");
 		}
