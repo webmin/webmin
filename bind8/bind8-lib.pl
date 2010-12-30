@@ -1739,11 +1739,11 @@ sub save_master_zone_records
 local ($name, $records) = @_;
 local $filename = &get_master_zone_file($name, 0);
 return 0 if (!$filename);
-&open_tempfile(ZONE, ">".&make_chroot($file), 1, 1) || return 0;
+&open_tempfile(ZONE, ">".&make_chroot($filename), 1, 1) || return 0;
 &close_tempfile(ZONE);
 foreach my $r (@$records) {
-	&create_record($file, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
-			      $r->{'type'}, $r->{'values'}, $r->{'comment'});
+	&create_record($filename, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
+		       $r->{'type'}, &join_record_values($r), $r->{'comment'});
 	}
 return 1;
 }
@@ -1875,6 +1875,45 @@ else {
 	elsif (!&kill_logged('HUP', $pid)) {
 		return &text('restart_esig', $pid, $!);
 		}
+	}
+&refresh_nscd();
+return undef;
+}
+
+# restart_zone(domain, [view])
+# Call ndc or rndc to apply a single zone. Returns undef on success or an error
+# message on failure.
+sub restart_zone
+{
+local ($dom, $view) = @_;
+local $out;
+if ($view) {
+	# Reload a zone in a view
+	$out = &try_cmd("reload ".quotemeta($dom)." IN ".quotemeta($view).
+			" 2>&1 </dev/null");
+	}
+else {
+	# Just reload one top-level zone
+	$out = &try_cmd("reload ".quotemeta($dom)." 2>&1 </dev/null");
+	}
+if ($out =~ /not found/i) {
+	# Zone is not known to BIND yet - do a total reload
+	local $err = &restart_bind();
+	return $err if ($err);
+	if ($access{'remote'}) {
+		# Restart all slaves too
+		&error_setup();
+		local @slaveerrs = &restart_on_slaves();
+		if (@slaveerrs) {
+			return &text('restart_errslave',
+			     "<p>".join("<br>",
+					map { "$_->[0]->{'host'} : $_->[1]" }
+					    @slaveerrs));
+			}
+		}
+	}
+elsif ($? || $out =~ /failed|not found|error/i) {
+	return &text('restart_endc', "<tt>".&html_escape($out)."</tt>");
 	}
 &refresh_nscd();
 return undef;
