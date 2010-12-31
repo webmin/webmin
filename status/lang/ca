@@ -252,7 +252,8 @@ space_eother=Hi falta el sistema de fitxers o bé no és vàlid
 space_inode=Inodes mínims Lliures
 space_ierr=Només hi ha $1 inodes lliures
 space_merr=Només $1 d'espai lliure
-space_perr=Nomé un $1% lliure
+space_perr=Només un $1% lliure
+space_dferr=No s'ha pogut obtenir la mida del sistema de fitxers
 
 load_time=Comprovació de la càrrega mitjana
 load_1=1 minut
@@ -279,12 +280,17 @@ acl_sched=Pot canviar la monitorització planificada
 
 change_file=Fitxer o directori a monitoritzar (falla si es canvia)
 
-jabber_eparser=EL mòdul Perl $1 no està instal·lat al sistema.
+jabber_eparser=El mòdul Perl $1 no està instal·lat al sistema.
 
-memory_min2=Memòria lliure mínima
-memory_emin=Hi falta la quantitat de memòria lliure o bé és invàlida
+memory_min2=Memòria lliure real mínima
+memory_emin=Hi falta la quantitat de memòria lliure real o bé és invàlida
 memory_eproc=Webmin no sap com comprovar la memòria lliure en aquest sistema operatiu
-memory_free2=$1 lliures
+memory_free2=$1 de memòria lliure real
+memory_freeswap=$1 de memòria lliure virtual
+memory_freelow=Només hi ha $1 de memòria lliure real
+memory_freelowswap=Només hi ha $1 de memòria lliure virtual
+memory_minswap=Memòria lliure virtual mínima
+memory_eminswap=Hi falta la quantitat de memòria lliure virtual o bé és invàlida
 
 proftpd_etype=No es pot utilitzar aquest monitor quan ProFTPD s'executa en mode independent
 

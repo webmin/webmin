@@ -189,6 +189,7 @@ euser_shell=Shell
 euser_option=Opcions d'usuari
 euser_normal=Usuari normal
 euser_noexpire=La contrasenya no expira mai
+euser_locked=El compte està bloquejat
 euser_nopwrequired=No cal contrasenya
 euser_disable=Compte desactivat
 euser_trust=Compte de fiabilitat d'estació de treball

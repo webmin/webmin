@@ -70,7 +70,9 @@ dbase_toomany=Hi ha massa taules per mostrar. Busca les taules que coincideixin 
 dbase_index=Índex
 dbase_view=Vista
 dbase_addview=Crea Vista
-dbase_jump=O edita la taula:
+dbase_jump=Edita la taula:
+dbase_vjump=Edita la vista:
+dbase_ijump=Edita l'índex:
 
 ddrop_err=No s'ha pogut destruir la base de dades
 ddrop_title=Destrucció de Base de Dades

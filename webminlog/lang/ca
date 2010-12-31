@@ -53,6 +53,7 @@ search_err=La recerca ha fallat
 search_global=Cap
 search_global_login=Ha entrat a Webmin
 search_global_logout=Ha sortit de Webmin
+search_csv=Exporta com a CSV
 
 view_title=Detalls de l'Acció
 view_header=Detalls de l'acció registrada $1
@@ -82,6 +83,8 @@ view_rollback2=Reverteix els Fitxers Seleccionats
 view_return=als detalls de l'acció
 view_input=Entrada de l'ordre
 view_anno=Notes de l'entrada de registre
+view_output=Contingut de la pàgina de Webmin
+view_files=Fitxers canviats i programes executats
 view_raw=Dades del registre pelades
 view_rawname=Nom del paràmetre
 view_rawvalue=valor del paràmetre

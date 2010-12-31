@@ -5,6 +5,7 @@ index_eversion=La versió del servidor ProFTPD $1 no està suportada per Webmin. N
 index_econf=El fitxer de configuració de ProFTPD $1 no existeix o no és vàlid. Pot ser que la <a href='$2'>configuració del mòdul</a> sigui incorrecta.
 index_apply=Aplica els Canvis
 index_applymsg=Fes clic sobre aquest botó per aplicar la configuració actual enviant un senyal SIGHUP al procés ProFTPD en execució.
+index_applymsg2=Fes clic sobre aquest botó per aplicar la configuració actual aturant i reiniciant ProFTPD.
 index_start=Engega el Servidor
 index_startmsg=Fes clic sobre aquest botó per engegar el servidor FTP amb la configuració actual. També pots fer que el servidor s'engegui automàticament quan calgui amb el mòdul <a href='$1'>Serveis d'Internet</a>.
 index_startmsg2=Fes clic sobre aquest botó per engegar el servidor FTP amb la configuració actual. També pots fer que el servidor s'engegui automàticament quan calgui amb <i>inetd</i> o algun programa equivalent.

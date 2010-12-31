@@ -74,7 +74,10 @@ dbase_toomany=Hi ha massa objectes per mostrar. Busca els objectes que coincidei
 dbase_index=Índex
 dbase_view=Vista
 dbase_seq=Seqüència
-dbase_jump=O edita la taula:
+ dbase_jump=Edita la taula:
+dbase_vjump=Edita la vista:
+dbase_ijump=Edita l'índex:
+dbase_sjump=Edita la seqüència:
 
 table_title=Edició de Taula
 table_title2=Creació de Taula

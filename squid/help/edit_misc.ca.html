@@ -1,36 +1,18 @@
 <header>Opcions Miscel·lànies</header>
 
-<b>Adreces inicials de prova de DNS</b>: Servidors DNS que Squid consultarà
-per saber si les consultes DNS funcionen correctament.
+<b>Adreces inicials de prova de DNS</b>: Servidors DNS que Squid consultarà per saber si les consultes DNS funcionen correctament.
 <p>
-<b>Rotacions del fitxer de registre SIGUSR1</b>: Per defecte, 10 o 0,
-depenent del sistema. Especifica el nombre de rotacions de fitxers de
-registre a efectuar quan introdueixes 'squid -k rotate'. Per defecte és 10,
-que rotarà amb les extensions 0 a 9. Establint logfile_rotate a 0, es
-desactiva la rotació, però els fitxers de registres es tanquen i es reobren.
-Això permetrà de renomenar el fitxer abans d'enviar el senyal de rotació.
+<b>Rotacions del fitxer de registre SIGUSR1</b>: Per defecte, 10 o 0, depenent del sistema. Especifica el nombre de rotacions de fitxers de registre a efectuar quan introdueixes 'squid -k rotate'. Per defecte és 10, que rotarà amb les extensions 0 a 9. Establint logfile_rotate a 0, es desactiva la rotació, però els fitxers de registres es tanquen i es reobren.  Això permetrà de renomenar el fitxer abans d'enviar el senyal de rotació.
 <p>
-Tingues en compte que l'ordre 'squid -k rotate' normalment envia un senyal
-USR1 al procés squid en execució. En certes situacions (p. ex., Linux amb
-E/S asíncrona), USR1 s'utilitza per altres propòsits, de manera que -k
-utilitza un altre senyal, És millor acostumar-se a utilitzar 'squid -k rotate'
-en lloc de 'kill -USR1 <pid>'.
+Tingues en compte que l'ordre 'squid -k rotate' normalment envia un senyal USR1 al procés squid en execució. En certes situacions (p. ex., Linux amb E/S asíncrona), USR1 s'utilitza per altres propòsits, de manera que -k utilitza un altre senyal, És millor acostumar-se a utilitzar 'squid -k rotate' en lloc de 'kill -USR1 <pid>'.
 <p>
-<b>Text dels missatges d'error</b>: Text HTML per incloure als missatges
-d'error. En fa un "mailto" a la teva adreça d'administració, o potser tant
-sols un enllaç a la pàgina Web de la teva organització.
+<b>Text dels missatges d'error</b>: Text HTML per incloure als missatges d'error. En fa un "mailto" a la teva adreça d'administració, o potser tant sols un enllaç a la pàgina Web de la teva organització.
 <p>
-Per incloure això en els teus missatges d'error, has de reescriure els
-fitxers de plantilles d'error  (que es troben al directori "errors").
-Quan vulguis que aparegui la línia 'err_html_text', insereix l'etiqueta
-%L al fitxer de plantilla d'error.
+Per incloure això en els teus missatges d'error, has de reescriure els fitxers de plantilles d'error  (que es troben al directori "errors").  Quan vulguis que aparegui la línia 'err_html_text', insereix l'etiqueta %L al fitxer de plantilla d'error.
 <p>
-<b>Estadístiques per client</b>: Si vols desactivar la recopilació 
-d'estadístiques per client, llavors desactiva aquí client_db.
+<b>Estadístiques per client</b>: Si vols desactivar la recopilació d'estadístiques per client, llavors desactiva aquí client_db.
 <p>
-<b>Capçalera X-Forwarded-For</b>: Per defecte, 'activat'. Si està posat,
-Squid inclourà el nom o l'adreça IP del sistema en les peticions HTTP que
-reenviï. Per defecte, es veu així:
+<b>Capçalera X-Forwarded-For</b>: Per defecte, 'activat'. Si està posat, Squid inclourà el nom o l'adreça IP del sistema en les peticions HTTP que reenviï. Per defecte, es veu així:
 <p>
 <center>X-Forwarded-For: 192.1.2.3</center>
 <p>
@@ -38,69 +20,27 @@ Si ho desactives, apareixerà com:
 <p>
 <center>X-Forwarded-For: unknown</center>
 <p>
-<b>Registra les peticions ICP</b>: Per defecte, 'Activat'. Si està activat,
-les peticions ICP es registren sobre access.log. Pots desactivar-ho si la
-càrrega ICP és MOLT alta per accelerar-ho tot plegat o bé si vols simplificar
-les anàlisis dels registres.
+<b>Registra les peticions ICP</b>: Per defecte, 'Activat'. Si està activat, les peticions ICP es registren sobre access.log. Pots desactivar-ho si la càrrega ICP és MOLT alta per accelerar-ho tot plegat o bé si vols simplificar les anàlisis dels registres.
 <p>
-<b>Salts directes mínims</b>: Per defecte, 4. Si utilitzes els patracols
-<i>ping</i> d'ICMP, fes recerques directes pels llocs que no estan més
-lluny d'aquest nombre mínim de salts.
+<b>Salts directes mínims</b>: Per defecte, 4. Si utilitzes els patracols <i>ping</i> d'ICMP, fes recerques directes pels llocs que no estan més lluny d'aquest nombre mínim de salts.
 <p>
-<b>Conserva memòria per a un ús futur</b>: Per defecte, 'Sí'. Si està posat,
-Squid mantindrà memòria de reserva allotjada (però no utilitzada) disponible
-per a un ús futur. Si la memòria és preciosa al teu sistema i et sembla 
-que la llibreria malloc supera en rendiment a les rutines de Squid,
-desactiva-ho.
+<b>Conserva memòria per a un ús futur</b>: Per defecte, 'Sí'. Si està posat, Squid mantindrà memòria de reserva allotjada (però no utilitzada) disponible per a un ús futur. Si la memòria és preciosa al teu sistema i et sembla que la llibreria malloc supera en rendiment a les rutines de Squid, desactiva-ho.
 <p>
-<b>Quantitat de memòria a conservar</b>: Per defecte, 'Il·limitada'.
-Si s'estableix a un valor diferent de zero, Squid mantindrà, com a molt,
-el límit especificat de reserves de memòria allotjada (però no utilitzada).
-Totes les peticions free() que excedeixin aquest límit seran gestionades
-per la llibreria malloc. Squid no preallotja memòria, només aquells
-objectes a desar que d'una altra manera serien alliberats per free().
-Així, no hi ha problema en establir memory_pools_limit a un valor
-raonablement alt encara que la teva configuració utilitzi menys memòria.
+<b>Quantitat de memòria a conservar</b>: Per defecte, 'Il·limitada'.  Si s'estableix a un valor diferent de zero, Squid mantindrà, com a molt, el límit especificat de reserves de memòria allotjada (però no utilitzada).  Totes les peticions free() que excedeixin aquest límit seran gestionades per la llibreria malloc. Squid no preallotja memòria, només aquells objectes a desar que d'una altra manera serien alliberats per free().  Així, no hi ha problema en establir memory_pools_limit a un valor raonablement alt encara que la teva configuració utilitzi menys memòria.
 <p>
-Si no està establert (defecte) o està posat a zero, Squid retindrà tota la
-memòria que pugui. Això és, no hi haurà cap límit de memòria de desat.
+Si no està establert (defecte) o està posat a zero, Squid retindrà tota la memòria que pugui. Això és, no hi haurà cap límit de memòria de desat.
 <p>
-<b>Capçaleres que no s'han de filtrar</b>: Per defecte, 'Totes'. Aquesta
-opció substitueix la vella opció 'http_anonymizer' amb una cosa molt més
-configurable. Ara pots especificar amb exactitud quines capçaleres es
-permeten, i quines es treuen de les peticions sortints.
+<b>Capçaleres que no s'han de filtrar</b>: Per defecte, 'Totes'. Aquesta opció substitueix la vella opció 'http_anonymizer' amb una cosa molt més configurable. Ara pots especificar amb exactitud quines capçaleres es permeten, i quines es treuen de les peticions sortints.
 <p>
-Hi ha dos mètodes per utilitzar l'opció. Pots permetre capçaleres
-específiques (negant així totes les altres), o pots negar capçaleres
-específiques (permetent així totes les altres).
+Hi ha dos mètodes per utilitzar l'opció. Pots permetre capçaleres específiques (negant així totes les altres), o pots negar capçaleres específiques (permetent així totes les altres).
 <p>
-<b>Simula Agent d'Usuari</b>: Per defecte, 'Cap'. Si filtres la capçalera
-'User-Agent' amb l'opció <b>Capçaleres que no s'han de filtrar</b>,
-pot provocar que alguns servidors Web rebutgin la teva petició. 
-Utilitza això per simular-ne un.
+<b>Simula Agent d'Usuari</b>: Per defecte, 'Cap'. Si filtres la capçalera 'User-Agent' amb l'opció <b>Capçaleres que no s'han de filtrar</b>, pot provocar que alguns servidors Web rebutgin la teva petició.  Utilitza això per simular-ne un.
 <p>
-<b>Host Accelerat HTTP</b>: Per defecte, 'Cap'. Si vols executar Squid com
-un accelerador httpd, estableix-ho a l'adreça del servidor HTTP real.
+<b>Adreça del Router WCCP</b>: Utilitza aquesta opció per a definir el teu <i>router</i> "arrel" per a Squid.
 <p>
-<b>Port Accelerat HTTP</b>: Per defecte, 'Cap'.  In addition to setting the <b>HTTP Accel Host</b> you must set the real servers port, here, if you are using Squid as an accelerator.
+<b>Adreça WCCP d'entrada</b>: Utilitza aquesta opció si necessites que els missategs WCCP es rebin només en una sola interfície. NO utilitzis aquesta opció si no està segur/a de quantes interfícies tens o si saps que només en tens una.
 <p>
-<b>Acceleració HTTP Amb Proxy</b>: Per defecte, 'Desactivat'. Activa-ho si
-vols que Squid funcioni com una proxy tradicional, tot i oferint acceleració
-HTTP. Aquesta opció també hauria d'estar activada si utilitzes proxy
-transparent.
+<b>Adreça WCCP de sortida</b>: Utilitza aquesta opció si necessites que els missatges WCCP s'enviïn des d'una sola interfície. NO utilitzis aquesta opció si no està segur/a de quantes interfícies tens o si saps que només en tens una.
 <p>
-<b>L'accelerador HTTP Fa Servir la Capçalera del Host</b>: Per defecte,
-'Desactivat'. Les peticions HTTP/1.1 inclouen una capçalera Host: que és,
-bàsicament, el nom del host de l'URL. Veient, aquesta capçalera, Squid no
-pot actuar d'accelerador per a diferents servidors HTTP. No obstant, Squid 
-NO comprova el valor de la capçalera Host, de manera que això obre un gran
-forat de seguretat. Recomanem mantenir aquesta opció desactivada a menys
-que estiguis segur/a del que fas.
-<p>
-No obstant, hauràs d'activar aquesta opció si executes Squid com a proxy
-transparent. Altrament, els servidors virtuals que requereixen la
-capçalera Host: no es posaran al cau adequadament.
 
 <hr>
-
-

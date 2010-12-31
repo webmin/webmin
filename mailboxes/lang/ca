@@ -307,6 +307,7 @@ search_local=A les carpetes locals
 search_all=A totes les carpetes
 search_limit=(dels darrers $1 missatges)
 search_status=Amb estat
+search_attach=Ha de tenir adjuncions
 search_allstatus=Qualsevol
 search_onestatus=Només l'estat
 search_latest=Missatges a buscar
