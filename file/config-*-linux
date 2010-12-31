@@ -1,12 +1,15 @@
 xfs_acl=&has_command("getfacl") && &has_command("setfacl")
 ext2_acl=&has_command("getfacl") && &has_command("setfacl")
 ext3_acl=&has_command("getfacl") && &has_command("setfacl")
+ext4_acl=&has_command("getfacl") && &has_command("setfacl")
 reiserfs_acl=&has_command("getfacl") && &has_command("setfacl")
 xfs_attr=&has_command("attr")
 ext2_attr=&has_command("attr")
 ext3_attr=&has_command("attr")
+ext4_attr=&has_command("attr")
 ext2_ext=&has_command("lsattr") && &has_command("chattr")
 ext3_ext=&has_command("lsattr") && &has_command("chattr")
+ext4_ext=&has_command("lsattr") && &has_command("chattr")
 getfacl=getfacl
 setfacl=setfacl --set-file=-
 hide_dot_files=0
