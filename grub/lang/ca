@@ -67,3 +67,10 @@ install_desc=S'està instal·lant el GRUB a $1 amb les ordres $2 i $3...
 install_ok=...instal·lació completa.
 install_failed=...la instal·lació ha fallat!
 
+log_create_title=S'ha creat l'opció d'engegada $1
+log_delete_title=S'ha suprimit l'opció d'engegada $1
+log_modify_title=S'ha modificat l'opció d'engegada $1
+log_up_title=S'ha desplaçat cap amunt l'opció d'engegada $1
+log_down_title=S'ha desplaçat cap avall l'opció d'engegada $1
+log_global=S'han canviat les opcions globals
+log_install=S'ha instal·lat el GRUB

@@ -23,6 +23,8 @@ group_fields=Propietats extra de grups LDAP per permetre l'edició de<br>(AL form
 multi_fields=Permet valors múltiples a les propietats extra,1,1-Sí,0-No
 noclash=Atributs que no permeten duplicats,0
 person=Dóna la classe d'objecte <tt>person</tt> a tots els usuaris Unix,1,1-Sí,0-No
+user_filter=Filtre LDAP addicional d'usuaris,3,None,,,,Atribut=valor
+group_filter=Filtre LDAP addicional de grups,3,None,,,,Atribut=valor
 
 line5=Opcions del directori arrel,11
 homedir_perms=Permisos dels nous directoris arrel,3,Del mòdul d'Usuaris i Grups

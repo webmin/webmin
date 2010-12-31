@@ -576,6 +576,7 @@ mod_proxy_esize=Mida del cau invàlida
 mod_proxy_garbage=Interval de neteja del cau
 mod_proxy_nogc=Mai
 mod_proxy_hours=hores
+mod_proxy_seconds=segons
 mod_proxy_egarbage=Interval de neteja del cau invàlid
 mod_proxy_maxexp=Temps màxim d'expiració dels fitxers al cau
 mod_proxy_emaxexp=Temps màxim d'expiració dels fitxers al cau invàlid

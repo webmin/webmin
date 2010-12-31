@@ -137,6 +137,7 @@ job_title1=Creació de Treball de Còpia
 job_title2=Edició de Treball de Còpia
 job_header=Detalls del treball de còpia
 job_name=Nom del treball de còpia
+job_enabled=Treball de còpia activat
 job_def=Tipus per defecte
 job_def0=Definició per defecte
 job_def1=Treball independent
