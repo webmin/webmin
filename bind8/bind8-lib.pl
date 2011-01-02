@@ -1750,7 +1750,8 @@ return 1;
 
 # delete_zone(name, [view], [file-too])
 # Delete one zone from named.conf
-# Returns 0 on success, 1 if the zone was not found, or 2 if the view was not found.
+# Returns 0 on success, 1 if the zone was not found, or 2 if the view was not
+# found.
 sub delete_zone
 {
 local $parent = &get_config_parent();
@@ -1843,6 +1844,7 @@ if ($file) {
 	}
 
 &save_directive($parent, [ $z ], [ $z ]);
+&unlink_file($zone_names_cache);
 &flush_file_lines();
 return 0;
 }
