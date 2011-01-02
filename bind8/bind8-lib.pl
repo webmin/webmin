@@ -1674,9 +1674,17 @@ if (@$slaves) {
 &close_tempfile(ZONE);
 &set_ownership(&make_chroot($file));
 foreach my $r (@$records) {
-	&create_record($file, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
-			      $r->{'type'}, &join_record_values($r),
-			      $r->{'comment'});
+	if ($r->{'defttl'}) {
+		&create_defttl($file, $r->{'defttl'});
+		}
+	elsif ($r->{'generate'}) {
+		&create_generator($file, @{$r->{'generate'}});
+		}
+	elsif ($r->{'type'}) {
+		&create_record($file, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
+				      $r->{'type'}, &join_record_values($r),
+				      $r->{'comment'});
+		}
 	}
 
 # Get and validate view(s)
