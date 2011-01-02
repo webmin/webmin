@@ -1831,6 +1831,7 @@ local ($z) = grep { $_->{'value'} eq $_[0] } @zones;
 return 1 if (!$z);
 
 $z->{'values'} = [ $_[1] ];
+$z->{'value'} = $_[1];
 local $file = &find("file", $z->{'members'});
 if ($file) {
 	# Update the file too
@@ -1840,12 +1841,13 @@ if ($file) {
 		rename(&make_chroot($file->{'values'}->[0]),
 		       &make_chroot($newfile));
 		$file->{'values'}->[0] = $newfile;
+		$file->{'value'} = $newfile;
 		}
 	}
 
 &save_directive($parent, [ $z ], [ $z ]);
-&unlink_file($zone_names_cache);
 &flush_file_lines();
+&flush_zone_names();
 return 0;
 }
 
