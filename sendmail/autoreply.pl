@@ -65,7 +65,9 @@ if ($header{'x-webmin-autoreply'} ||
 if ($header{'x-mailing-list'} ||
     $header{'list-id'} ||
     $header{'precedence'} =~ /junk|bulk|list/i ||
-    $header{'to'} =~ /Multiple recipients of/i) {
+    $header{'to'} =~ /Multiple recipients of/i ||
+    $header{'from'} =~ /majordomo/i ||
+    $fromline =~ /majordomo/i) {
 	# Do nothing if post is from a mailing list
 	exit 0;
 	}
