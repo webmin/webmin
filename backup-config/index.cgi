@@ -58,7 +58,7 @@ print &ui_table_start($text{'index_header'}, undef, 2);
 print &ui_table_row($text{'edit_mods'},
 		    &ui_select("mods", \@dmods,
 		       [ map { [ $_->{'dir'}, $_->{'desc'} ] } @mods ],
-		       5, 1));
+		       10, 1));
 
 print &ui_table_row($text{'edit_dest'},
 		    &show_backup_destination("dest", $config{'dest'}, 2));

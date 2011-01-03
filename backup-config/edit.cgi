@@ -32,7 +32,7 @@ print &ui_hidden_table_start($text{'edit_header'}, "width=100%", 2,
 print &ui_table_row($text{'edit_mods'},
 		    &ui_select("mods", \@dmods,
 		       [ map { [ $_->{'dir'}, $_->{'desc'} ] } @mods ],
-		       5, 1));
+		       10, 1));
 
 # Show destination
 print &ui_table_row($text{'edit_dest'},
