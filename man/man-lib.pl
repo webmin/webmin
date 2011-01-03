@@ -3,6 +3,9 @@
 BEGIN { push(@INC, ".."); };
 use WebminCore;
 &init_config();
+if ($module_info{'usermin'}) {
+	&switch_to_remote_user();
+	}
 
 $google_host = "www.google.com";
 $google_port = 80;
