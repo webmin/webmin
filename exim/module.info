@@ -3,3 +3,4 @@ category=servers
 hidden=1
 desc_ca=Servidor de Correu Exim
 desc=Exim Mailserver
+desc_nl=Exim Mailserver
