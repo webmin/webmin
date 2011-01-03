@@ -1,0 +1,5 @@
+search_cmd=man -k PAGE
+man_dir=/usr/share/man/ /opt/man /usr/local/man
+man_cmd_sect=man SECTION PAGE
+man_cmd=man PAGE
+strip_letters=1
