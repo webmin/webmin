@@ -469,10 +469,10 @@ foreach $s (split(/\s+/, $config{'sockets'})) {
 		}
 	elsif ($s =~ /^\*:(\d+)$/) {
 		# Listening on all IPs on some port
-		push(@sockets, [ INADDR_ANY, $config{'port'},
+		push(@sockets, [ INADDR_ANY, $1,
 				 PF_INET() ]);
 		if ($use_ipv6) {
-			push(@sockets, [ in6addr_any(), $config{'port'},
+			push(@sockets, [ in6addr_any(), $1,
 					 Socket6::PF_INET6() ]);
 			}
 		}
