@@ -978,7 +978,9 @@ line.
 sub validate_key_cert
 {
 local $key = &read_file_contents($_[0]);
-$key =~ /BEGIN RSA PRIVATE KEY/i || &error(&text('ssl_ekey', $_[0]));
+$key =~ /BEGIN RSA PRIVATE KEY/i ||
+    $key =~ /BEGIN PRIVATE KEY/i ||
+	&error(&text('ssl_ekey', $_[0]));
 if (!$_[1]) {
 	$key =~ /BEGIN CERTIFICATE/ || &error(&text('ssl_ecert', $_[0]));
 	}
