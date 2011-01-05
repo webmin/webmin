@@ -70,9 +70,11 @@ foreach $h (@hosts) {
 			}
 
 		# Save the .acl file
-		local $cd = &remote_eval($s->{'host'}, "acl", '$config_directory');
+		local $cd = &remote_eval($s->{'host'}, "acl",
+					 '$config_directory');
+		$sfx = $in{'_acl_user'} ? "acl" : "gacl";
 		&remote_foreign_call($s->{'host'}, "acl", "write_file",
-			"$cd/$in{'_acl_mod'}/$who.acl", \%maccess);
+			"$cd/$in{'_acl_mod'}/$who.$sfx", \%maccess);
 
 		# Recursively update the ACL for all member users and groups
 		if ($in{'_acl_group'}) {
