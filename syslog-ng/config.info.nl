@@ -1,0 +1,12 @@
+line1=Configureerbare opties,11
+lines=Standaard aantal regels om te bekijken,0,6
+refresh=Seconden tussen verversen van log overzicht,3,Nooit
+compressed=Gecomprimeerde log files invoegen bij zoeken?,1,1-Ja,0-Nee
+line2=Systeem configuratie,11
+syslogng_conf=Pad naar de Syslog-NG config file,0
+alt_syslogng_conf=Pad naar alternatieve config file,3,Geen
+syslogng_cmd=Pad naar het Syslog-NG programma,0
+pid_file=Syslog-NG PID file,3,Geen
+start_cmd=Opdracht om Syslog-NG te starten,3,De server normaal laten werken
+restart_cmd=Opdracht om veranderingen toe te voegen,3,Kil en herstart server
+tail_cmd=Tail opdracht en argumenten,3,Standaard (tail -n LINES)

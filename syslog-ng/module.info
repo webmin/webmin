@@ -3,3 +3,4 @@ category=system
 depends=proc
 longdesc=Configure the Syslog-NG server on your system and view its log files.
 desc_ca=Registres del Sistema NG
+desc_nl=Systeem Log NG
