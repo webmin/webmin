@@ -137,3 +137,4 @@ Catalan translation updates by Jaume Badiella.
 ---- Changes since 1.530 ----
 Sped up the loading of language files by pre-caching them in memory when Webmin is started, and not performing sub-string substitutions in most modules.
 Added support for Pardus Linux, thanks to Kaan Ozdincer.
+Major Dutch updates, thanks to Gandyman.
