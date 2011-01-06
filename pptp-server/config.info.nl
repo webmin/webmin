@@ -1,0 +1,10 @@
+line2=Systeem configuratie,11
+pptpd=Volledig pad naar het PPTP daemon programma,0
+file=PPTP configuratie file,0
+pid_file=Volledig pad naar de PPTP PID file,0
+pap_file=PPP accounten file,0
+ppp_options=Standaard PPP optie file,0
+pptp_ppp_options=PPTP PPP optie file,3,Standaard (/etc/ppp/options.pptp)
+start_cmd=Opdracht om de PPTP daemon te starten,3,Het programma normaal uitvoeren
+stop_cmd=Opdracht om de PPTP daemon te stoppen,3,Het programma killen
+log_file=File waar PPP berichten in gelogd worden,0
