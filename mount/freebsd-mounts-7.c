@@ -3,6 +3,8 @@
 #include <sys/param.h>
 #include <sys/ucred.h>
 #include <sys/mount.h>
+#include <stdlib.h>
+#include <string.h>
 
 char *find_type(int t);
 char *expand_flags(int f);
