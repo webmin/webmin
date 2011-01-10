@@ -1,11 +1,11 @@
 line1=Configureerbare opties,11
-test_config=Test de config file voordat veranderingen worden toegevoegd?,1,1-Yes,0-No
+test_config=Test de config file voordat veranderingen worden toegevoegd?,1,1-Ja,0-Nee
 test_manual=Test de config file na handmatige veranderingen?,1,1-Ja,0-Nee
 test_always=Test de config file na veranderingen?,1,1-Ja,0-Nee
 line2=Systeem configuratie,11
 proftpd_conf=Pad naar de ProFTPD config file,0
 add_file=File om een nieuwe virtuele hosts aan toe te voegen,3,Laatste file in configuratie
-proftpd_path=Pad naar de ProFTPD executable,0
+proftpd_path=Pad naar het ProFTPD programma,0
 pid_file=Pad naar de ProFTPD PID file,3,Geen
 ftpusers=Pad naar de ftpusers file,0
 start_cmd=Opdracht om ProFTPD te starten,3,Automatisch
