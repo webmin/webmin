@@ -49,7 +49,7 @@ containing : blocks-total, blocks-free, files-total, files-free
 sub free_space
 {
 local(@out, @rv);
-$out = `df -k $_[0]`;
+$out = &backquote_command("df -k $_[0]");
 $out =~ /Mounted on\n\S+\s+(\d+)\s+\d+\s+(\d+)/;
 if ($_[1]) {
 	push(@rv, int($1*1024/$_[1]), int($2*1024/$_[1]));
@@ -57,7 +57,7 @@ if ($_[1]) {
 else {
 	push(@rv, $1, $2);
 	}
-$out = `df -i $_[0]`;
+$out = &backquote_command("df -i $_[0]");
 $out =~ /Mounted on\n\S+\s+(\d+)\s+\d+\s+(\d+)/;
 push(@rv, $1, $2);
 return @rv;
@@ -114,15 +114,16 @@ if ($_[0]->[4]%2 == 1) {
 	# test user quotas
 	if (-r "$dir/quota.user" || -r "$dir/aquota.user") {
 		local $stout = &supports_status($dir, "user");
-		if ($stout =~ /is\s+(on|off)/) {
+		if ($stout =~ /is\s+(on|off|enabled|disabled)/) {
 			# Can use output from -p mode
-			if ($stout =~ /is\s+on/) {
+			if ($stout =~ /is\s+(on|enabled)/) {
 				$rv += 1;
 				}
 			}
 		else {
 			# Fall back to testing by running quotaon
-			$out = `$config{'user_quotaon_command'} $dir 2>&1`;
+			$out = &backquote_command(
+				"$config{'user_quotaon_command'} $dir 2>&1");
 			if ($out =~ /Device or resource busy/i) {
 				# already on..
 				$rv += 1;
@@ -133,7 +134,8 @@ if ($_[0]->[4]%2 == 1) {
 				}
 			else {
 				# was off.. need to turn on again
-				`$config{'user_quotaoff_command'} $dir 2>&1`;
+				&execute_command(
+				  "$config{'user_quotaoff_command'} $dir 2>&1");
 				}
 			}
 		}
@@ -142,15 +144,16 @@ if ($_[0]->[4] > 1) {
 	# test group quotas
 	if (-r "$dir/quota.group" || -r "$dir/aquota.group") {
 		local $stout = &supports_status($dir, "group");
-		if ($stout =~ /is\s+(on|off)/) {
+		if ($stout =~ /is\s+(on|off|enabled|disabled)/) {
 			# Can use output from -p mode
-			if ($stout =~ /is\s+on/) {
+			if ($stout =~ /is\s+(on|enabled)/) {
 				$rv += 2;
 				}
 			}
 		else {
 			# Fall back to testing by running quotaon
-			$out = `$config{'group_quotaon_command'} $dir 2>&1`;
+			$out = &backquote_command(
+				"$config{'group_quotaon_command'} $dir 2>&1");
 			if ($out =~ /Device or resource busy/i) {
 				# already on..
 				$rv += 2;
@@ -161,7 +164,8 @@ if ($_[0]->[4] > 1) {
 				}
 			else {
 				# was off.. need to turn on again
-				`$config{'group_quotaoff_command'} $dir 2>&1`;
+				&execute_command(
+				 "$config{'group_quotaoff_command'} $dir 2>&1");
 				}
 			}
 		}
@@ -177,9 +181,10 @@ Internal function to check if the quotaon -p flag is supported.
 sub supports_status
 {
 if (!defined($supports_status_cache{$_[0],$_[1]})) {
-	local $stout = `$config{$_[1].'_quotaon_command'} -p $_[0] 2>&1`;
+	local $stout = &backquote_command(
+		"$config{$_[1].'_quotaon_command'} -p $_[0] 2>&1");
 	$supports_status_cache{$_[0],$_[1]} =
-		$stout =~ /is\s+(on|off)/ ? $stout : 0;
+		$stout =~ /is\s+(on|off|enabled|disabled)/ ? $stout : 0;
 	}
 return $supports_status_cache{$_[0],$_[1]};
 }
@@ -202,7 +207,7 @@ local($out, $qf, @qfile, $flags, $version);
 return if (&is_readonly_mode());
 
 # Check which version of quota is being used
-$out = `quota -V 2>&1`;
+$out = &backquote_command("quota -V 2>&1");
 if ($out =~ /\s(\d+\.\d+)/) {
 	$version = $1;
 	}
