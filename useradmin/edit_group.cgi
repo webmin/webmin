@@ -76,7 +76,9 @@ if ($config{'membox'} == 0) {
 	# Nicer left/right chooser
 	print &ui_table_row(&hlink($text{'gedit_members'}, "gmembers"),
 		&ui_multi_select("members",
-			[ map { [ $_, $_ ] } split(/,/ , $group{'members'}) ],
+			[ map { [ $_, $_ ] }
+			      sort { lc($a) cmp lc($b) }
+				   split(/,/ , $group{'members'}) ],
 			[ map { [ $_->{'user'}, $_->{'user'} ] } @ulist ],
 			10, 1, 0,
 			$text{'gedit_allu'}, $text{'gedit_selu'}, 150));
