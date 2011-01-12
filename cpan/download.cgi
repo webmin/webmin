@@ -125,11 +125,28 @@ elsif ($in{'source'} == 3) {
 			}
 		}
 	close(LIST);
+
+	# Fail if any modules are missing from CPAN
 	for($i=0; $i<@cpan; $i++) {
 		push(@missing, "<tt>$cpan[$i]</tt>") if (!$source[$i]);
 		}
-	&install_error(&text('download_ecpan', join(" ", @missing)))
-		if (@missing);
+
+	if ($in{'missingok'}) {
+		# If missing modules are OK, exclude them from the sources list
+		for($i=0; $i<@cpan; $i++) {
+			if (!$source[$i]) {
+				splice(@source, $i, 1);
+				splice(@cpan, $i, 1);
+				$i--;
+				}
+			}
+		@cpan || &install_error(&text('download_ecpan',
+					      join(" ", @missing)));
+		}
+	elsif (@missing) {
+		# Fail due to missing modules
+		&install_error(&text('download_ecpan', join(" ", @missing)));
+		}
 	$source = join("<br>", @source);
 
 	# Download the actual modules
@@ -284,6 +301,12 @@ for($i=0; $i<@mods; $i++) {
 	}
 print &ui_table_row(@mods > 1 ? $text{'download_mods'} : $text{'download_mod'},
 		    $modmsg);
+
+# Missing modules
+if (@missing) {
+	print &ui_table_row($text{'download_missingok'},
+			    join(" ", @missing));
+	}
 
 # Source
 print &ui_table_row($text{'download_src'}, $source);

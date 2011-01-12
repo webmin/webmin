@@ -9,7 +9,7 @@ require './cpan-lib.pl';
 
 if ($in{'upgrade'}) {
 	# Just redirect to the install page from CPAN
-	&redirect("download.cgi?source=3&cpan=".
+	&redirect("download.cgi?missingok=1&source=3&cpan=".
 		  &urlize(join(" ", @d)));
 	exit;
 	}

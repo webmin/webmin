@@ -61,6 +61,7 @@ download_missing=Missing $1 modules
 download_nomissing=All installed
 download_ebuild=One or more of the Perl modules needs $1 to be built, but this Perl module is not installed.
 download_yum=Installing Perl module $1 from package $2 ..
+download_missingok=Modules missing from CPAN
 
 install_title=Install Module
 install_untar=Untarring module file

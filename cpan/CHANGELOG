@@ -24,3 +24,5 @@ Modules can be forcibly compiled and install from the latest source instead of A
 ---- Changes since 1.440 ----
 Sped up the fetching of Perl modules installed from RPM and Debian packages.
 Switched the install and current modules tabs.
+---- Changes since 1.530 ----
+When upgrading multiple Perl modules from CPAN, don't give up because just one could not be found.
