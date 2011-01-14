@@ -59,6 +59,7 @@ index_addr=Adresse
 index_any=Toutes
 index_apply=Appliquer les changements
 index_applymsg=Cliquez sur ce bouton pour appliquer la configuration actuelle en envoyant un signal SIGHUP au processus ProFTPD actif.
+index_applymsg2=Cliquez sur ce bouton pour appliquer la configuration actuelle en arr&#234;tant puis red&#233;marrant ProFTPD.
 index_create=Cr&#233;er un Serveur virtuel
 index_defdesc=Prend en charge toutes les connexions non g&#233;r&#233;es par des serveurs virtuels.
 index_defserv=Serveur par d&#233;faut

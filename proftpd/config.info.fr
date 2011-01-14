@@ -1,0 +1,12 @@
+line1=Options configurables,11
+test_config=Tester le fichier de configuration avant d'appliquer les changement ?,1,1-Oui,0-Non
+test_manual=Tester le fichier de configuration apr&#232;s avoir apport&#233; des changement manuels ?,1,1-Oui,0-Non
+test_always=Tester le fichier de configuration apr&#232;s un autre changement ?,1,1-Oui,0-Non
+line2=Configuration syst&#232;me,11
+proftpd_conf=Chemin vers le fichier de configuration ProFTPD,0
+add_file=Fichier auquel seront rajout&#233;s les nouveaux h&#244;tes virtuels,3,Dernier fichier dans la configuration
+proftpd_path=Chemin vers l'ex&#233;cutable ProFTPD,0
+pid_file=Chemin vers le fichier PID ProFTPD,3,Aucun
+ftpusers=Chemin vers le fichier ftpusers,0
+start_cmd=Commande pour d&#233;marrer ProFTPD,3,Automatique
+stop_cmd=Commande pour arr&#234;ter ProFTPD,3,Tuer seulement le processus

@@ -1,0 +1,7 @@
+file=Fichier de configuration FreeSWAN IPsec,0
+secrets=Fichier des secrets IPsec,0
+ipsec=Chemin complet vers la commande ipsec,0
+start_cmd=Commande pour d&#233;marrer le serveur IPsec,0
+stop_cmd=Commande pour arr&#234;ter le serveur IPsec,0
+restart_cmd=Commande pour red&#233;marrer le serveur IPsec,3,Arr&#234;ter et red&#233;marrage instantan&#233;
+logfile=Fichier de log des messages IPsec,0

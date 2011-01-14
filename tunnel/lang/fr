@@ -1,0 +1,13 @@
+index_open=Ouvrir
+index_url=Entrez une URL &#224; ouvrir :
+link_ebadurl=Vous n'&#234;tes pas autoris&#233; &#224; acc&#233;der &#224; l'URL $1
+link_enouser=Un identifiant et un mot de passe sont requis pour se connecter &#224; $1 mais aucun n'a &#233;t&#233; configur&#233;.
+login_clear=Effacer
+login_desc=Vous devez sp&#233;cifiez un identifiant et un mot de passe pour de connecter &#224; $1.
+login_header=Authentification au site Web
+login_login=Identifiant
+login_pass=Mot de passe
+login_title=Connexion au site Web
+login_user=Identifiant
+seturl_err=L'ouverture de l'URL a &#233;chou&#233;
+seturl_eurl=Vous avez entr&#233; une URL invalide

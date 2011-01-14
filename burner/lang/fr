@@ -55,6 +55,7 @@ config_sox=Commande SOX pour d&#233;coder les WAV et OGG
 config_temp=R&#233;pertoire des fichiers temporaires
 config_temp_def=R&#233;pertoire temporaire de webmin
 create_title=Cr&#233;er le profil de gravure
+delete_enone=Aucune s&#233;lection
 dev_device=Graveur
 dev_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; editer les options du graveur.
 dev_eother=La vitesse de gravure manque ou est invalide
@@ -100,6 +101,7 @@ edit_title=Editer le profil de gravure
 edit_trans=G&#233;n&#233;rer le fichier TRANS.TBL ?
 edit_volid=Nom du CD
 index_add=Ajouter un nouveau profile de type:
+index_delete=supprimer les Profils S&#233;lectionn&#233;s
 index_ecdrecord=La commande de gravure de CD $1 n'a pas &#233;t&#233; trouv&#233;e sur votre syst&#232;me. Peut-&#234;tre n'est-elle pas install&#233;e, ou votre <a href='$2'>configuration de module</a> est incorrecte.
 index_files=Fichiers &#224; graver
 index_global=Options globales

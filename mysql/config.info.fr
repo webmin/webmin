@@ -1,0 +1,16 @@
+line1=Options configurables,11
+login=Identifiant d'administration
+pass=Mot de passe d'administration,12
+charset=Encodage des caract&#232;res pour les donn&#233;es MySQL,15,charset
+line2=Configuration du syst&#232;me
+mysqlshow=Chemin vers la commande mysqlshow,0
+mysqladmin=Chemin vers la commande mysqladmin,0
+mysql=Chemin vers la commande mysql,0
+mysqldump=Chemin vers la commande mysqldump,0
+mysqlimport=Chemin vers la commande mysqlimport,0
+mysqld=Chemin vers la commande mysqld,3,Automatique
+start_cmd=Commande pour d&#233;marrer le serveur MySQL,0
+stop_cmd=Commande pour arr&#234;ter le serveur MySQL,3,Automatique
+mysql_data=Chemin vers le r&#233;pertoire des bases de donn&#233;es MySQL,3,Aucun
+port=Port MySQL sur lequel se connecter,3,Par d&#233;faut
+my_cnf=Fichier de configuration MySQL,0
