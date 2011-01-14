@@ -27,48 +27,50 @@ else {
 	}
 &ui_print_header($desc, $text{'view_title'}, "");
 
-print "<form action=delete_queues.cgi>\n";
-print "<input type=hidden name=file value='$in{'id'}'>\n";
-print "<table width=100% border=1>\n";
-print "<tr> <td $tb><table width=100% cellpadding=0 cellspacing=0><tr>",
-      "<td><b>$text{'view_headers'}</b></td>\n";
+print &ui_form_start("delete_queues.cgi");
+if (!@sub && $config{'top_buttons'} == 2) {
+	print &ui_submit($text{'view_delete'}, "delete");
+	print "<p>\n";
+	}
+print &ui_hidden("file", $in{'id'});
+
+# Start of headers section
 if ($in{'headers'}) {
-	print "<td align=right><a href='view_mailq.cgi?id=$in{'id'}&headers=0$subs'>$text{'view_noheaders'}</a></td>\n";
+	$rlink = "<a href='view_mailq.cgi?id=$in{'id'}&headers=0$subs'>".
+		 "$text{'view_noheaders'}</a>";
 	}
 else {
-	print "<td align=right><a href='view_mailq.cgi?id=$in{'id'}&headers=1$subs'>$text{'view_allheaders'}</a></td>\n";
+	$rlink = "<a href='view_mailq.cgi?id=$in{'id'}&headers=1$subs'>".
+		 "$text{'view_allheaders'}</a>";
 	}
-print "</tr></table></td> </tr>\n";
+print &ui_table_start($text{'view_headers'}, "width=100%", 2, undef, $rlink);
 
-print "<tr> <td $cb><table width=100%>\n";
 if ($in{'headers'}) {
 	# Show all the headers
 	if ($mail->{'fromline'}) {
-		print "<tr> <td><b>$text{'mail_rfc'}</b></td>",
-		      "<td>",&html_escape($mail->{'fromline'}),"</td> </tr>\n";
+		print &ui_table_row($text{'mail_rfc'},
+				    &html_escape($mail->{'fromline'}));
 		}
 	foreach $h (@{$mail->{'headers'}}) {
-		print "<tr> <td><b>$h->[0]:</b></td> ",
-		      "<td>",&html_escape(&decode_mimewords($h->[1])),
-		      "</td> </tr>\n";
+		print &ui_table_row($h->[0],
+			&html_escape(&decode_mimewords($h->[1])));
 		}
 	}
 else {
 	# Just show the most useful headers
-	print "<tr> <td><b>$text{'mail_from'}</b></td> ",
-	      "<td>",&html_escape($mail->{'header'}->{'from'}),"</td> </tr>\n";
-	print "<tr> <td><b>$text{'mail_to'}</b></td> ",
-	      "<td>",&html_escape($mail->{'header'}->{'to'}),"</td> </tr>\n";
-	print "<tr> <td><b>$text{'mail_cc'}</b></td> ",
-	      "<td>",&html_escape($mail->{'header'}->{'cc'}),"</td> </tr>\n"
+	print &ui_table_row($text{'mail_from'},
+		&html_escape($mail->{'header'}->{'from'}));
+	print &ui_table_row($text{'mail_to'},
+		&html_escape($mail->{'header'}->{'to'}));
+	print &ui_table_row($text{'mail_cc'},
+		&html_escape($mail->{'header'}->{'cc'}))
 		if ($mail->{'header'}->{'cc'});
-	print "<tr> <td><b>$text{'mail_date'}</b></td> ",
-	      "<td>",&html_escape($mail->{'header'}->{'date'}),"</td> </tr>\n";
-	print "<tr> <td><b>$text{'mail_subject'}</b></td> ",
-	      "<td>",&html_escape(
-			$mail->{'header'}->{'subject'}),"</td> </tr>\n";
+	print &ui_table_row($text{'mail_date'},
+		&html_escape($mail->{'header'}->{'date'}));
+	print &ui_table_row($text{'mail_subject'},
+		&html_escape($mail->{'header'}->{'subject'}));
 	}
-print "</table></td></tr></table><p>\n";
+print &ui_table_end();
 
 # Find body attachment
 @attach = @{$mail->{'attach'}};
@@ -79,42 +81,45 @@ foreach $a (@attach) {
 		}
 	}
 if ($body) {
-	print "<table width=100% border=1><tr><td $cb><pre>\n";
+	print &ui_table_start($text{'view_body'}, "width=100%", 2);
+	$bodyhtml = "";
 	foreach $l (&wrap_lines($body->{'data'}, $config{'wrap_width'})) {
-		print &link_urls_and_escape($l),"\n";
+		$bodyhtml .= &link_urls_and_escape($l)."\n";
 		}
-	print "</pre></td></tr></table><p>\n";
+	print &ui_table_row(undef, "<pre>".$bodyhtml."</pre>", 2);
+	print &ui_table_end();
 	}
 
 # Display other attachments
 @attach = grep { $_ ne $body } @attach;
 @attach = grep { !$_->{'attach'} } @attach;
 if (@attach) {
-	print "<table width=100% border=1>\n";
-	print "<tr> <td $tb><b>$text{'view_attach'}</b></td> </tr>\n";
-	print "<tr> <td $cb>\n";
+	print &ui_columns_start([ $text{'view_afile'}, $text{'view_atype'},
+				  $text{'view_asize'} ], 100, 0);
 	foreach $a (@attach) {
 		if ($a->{'type'} eq 'message/rfc822') {
-			push(@titles, $text{'view_sub'});
-			push(@links, "view_mailq.cgi?id=$in{'id'}$subs&sub=$a->{'idx'}");
+			print &ui_columns_row([
+				"<a href='view_mailq.cgi?id=$in{'id'}$subs&sub=$a->{'idx'}'>$text{'view_sub'}</a>",
+				undef,
+				&nice_size(length($a->{'data'})),
+				]);
 			}
 		else {
-			push(@titles, $a->{'filename'} ?
-			    &decode_mimewords($a->{'filename'}) : $a->{'type'});
-			push(@links, "detach_queue.cgi?id=$in{'id'}&attach=$a->{'idx'}$subs");
+			print &ui_columns_row([
+				"<a href='detach_queue.cgi?id=$in{'id'}&attach=$a->{'idx'}$subs'>$a->{'filename'}</a>",
+				$a->{'type'},
+				&nice_size(length($a->{'data'})),
+				]);
 			}
-		push(@icons, "images/boxes.gif");
 		}
-	&icons_table(\@links, \@titles, \@icons, 8);
-	print "</td></tr></table><p>\n";
+	print &ui_columns_end();
 	}
 
 # Display buttons
 if (!@sub) {
-	print "<input type=submit value=\"$text{'view_delete'}\" name=delete>\n";
-	print "<p>\n";
+	print &ui_submit($text{'view_delete'}, "delete");
 	}
-print "</form>\n";
+print &ui_form_end();
 
 &ui_print_footer(!@sub ? ( ) : ( "view_mailq.cgi?id=$in{'id'}", $text{'view_return'} ),
 	"mailq.cgi", $text{'mailq_return'},

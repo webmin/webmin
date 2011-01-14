@@ -1338,7 +1338,8 @@ local @qfiles = ( &recurse_files("$config{'mailq_dir'}/active"),
 		  &recurse_files("$config{'mailq_dir'}/deferred"),
 		  &recurse_files("$config{'mailq_dir'}/corrupt"),
 		  &recurse_files("$config{'mailq_dir'}/hold"),
-);
+		  &recurse_files("$config{'mailq_dir'}/maildrop"),
+		);
 local $f = $_[0];
 local ($file) = grep { $_ =~ /\/$f$/ } @qfiles;
 return undef if (!$file);

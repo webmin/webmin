@@ -513,6 +513,10 @@ view_mark1=Read
 view_mark2=Special
 view_return=original email
 view_sub=Attached Email
+view_body=Message text
+view_afile=Attachment name
+view_atype=Attachment type
+view_asize=File size
 
 compose_title=Compose Email
 reply_title=Reply to Email
