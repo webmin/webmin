@@ -1,0 +1,7 @@
+dirs=Directories to index,9,50,5,\t
+skip=Directories to skip,9,50,3,\t
+fs=Filesystem types to skip,0
+units=Minumum units for sizes,1,1-bytes,1024-kB,1048576-MB,1073741824-GB
+min=Minimum directory size to display,0,10,,bytes
+xdev=Limit search to one filesystem?,1,1-Yes,0-No
+bsize=Filesystem block size (in bytes),3,Unknown

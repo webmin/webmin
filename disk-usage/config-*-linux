@@ -1,0 +1,6 @@
+dirs=/tmp
+units=1048576
+min=0
+xdev=0
+bsize=512
+fs=nfs nfs4 smbfs proc devpty devfs usbdevfs sysfs rpc_pipefs autofs

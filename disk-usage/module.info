@@ -1,0 +1,5 @@
+desc=Disk Usage
+depends=cron
+version=1.1
+desc_es=Uso de Disco
+desc_de=Festplattenverbrauch

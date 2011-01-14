@@ -1,0 +1,22 @@
+index_none=No disk usage data has been collected yet. Either set up scheduled collection, or use the button below to collect data now.
+index_sched=Setup Scheduled Collection
+index_scheddesc=Click this button to set up the automatic scheduled collection of disk usage data for the configured directories.
+index_run=Collect Usage Now
+index_rundesc=Click here to scan the configured directories immediately to compute their disk usage.
+index_for=For directory $1
+index_fors=For directories $1
+index_return=usage tree
+index_dir=Directory
+index_total=Total
+index_files=Files
+
+run_title=Collect Usage
+run_doing=Now collecting disk usage ..
+run_done=.. done.
+
+sched_title=Scheduled Collection
+sched_header=Scheduled disk usage collection options
+sched_enabled=Scheduled collection enabled?
+sched_at=Yes, at times selected below ..
+sched_err=Failed to save scheduled collection
+__norefs=1

@@ -1,0 +1,6 @@
+dirs=/tmp
+units=1048576
+min=0
+xdev=0
+bsize=512
+fs=nfs devfs ctfs proc mntfs objfs fs autofs
