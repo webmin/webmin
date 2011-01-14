@@ -139,3 +139,4 @@ Sped up the loading of language files by pre-caching them in memory when Webmin 
 Added support for Pardus Linux, thanks to Kaan Ozdincer.
 Major Dutch updates, thanks to Gandyman.
 Majoe French translation update, thanks to ButterflyOfFire.
+Allow per-language language overrides to be defined, in custom-lang-$code files.

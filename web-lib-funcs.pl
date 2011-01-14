@@ -4443,6 +4443,10 @@ if ($ol) {
 		}
 	}
 &read_file_cached("$config_directory/custom-lang", \%text);
+foreach my $o (@lang_order_list) {
+	next if ($o eq "en");
+	&read_file_cached("$config_directory/custom-lang-$o", \%text);
+	}
 my $norefs = $text{'__norefs'};
 
 if ($_[0]) {
@@ -4458,6 +4462,11 @@ if ($_[0]) {
 			}
 		}
 	&read_file_cached("$config_directory/$_[0]/custom-lang", \%text);
+	foreach my $o (@lang_order_list) {
+		next if ($o eq "en");
+		&read_file_cached("$config_directory/$_[0]/custom-lang-$o",
+				  \%text);
+		}
 	$norefs = $text{'__norefs'} if ($norefs);
 	}
 
