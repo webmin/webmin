@@ -4622,11 +4622,12 @@ $rv{'category'} = $module_categories{$_[0]}
 $rv{'realdesc'} = $rv{'desc'};
 my %descs;
 &read_file_cached("$config_directory/webmin.descs", \%descs);
-if ($descs{$_[0]." ".$current_lang}) {
-	$rv{'desc'} = $descs{$_[0]." ".$current_lang};
-	}
-elsif ($descs{$_[0]}) {
+if ($descs{$_[0]}) {
 	$rv{'desc'} = $descs{$_[0]};
+	}
+foreach my $o (@lang_order_list) {
+	my $ov = $descs{$_[0]." ".$o} || $descs{$_[0]."_".$o};
+	$rv{'desc'} = $ov if ($ov);
 	}
 
 if (!$_[2]) {
