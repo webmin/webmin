@@ -859,5 +859,13 @@ sub boot_iface_hardware
 return $_[0] =~ /^eth/;
 }
 
+# supports_address6([&iface])
+# Returns 1 if managing IPv6 interfaces is supported
+sub supports_address6
+{
+local ($iface) = @_;
+return !$iface || $iface->{'virtual'} eq '';
+}
+
 1;
 

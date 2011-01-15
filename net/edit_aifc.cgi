@@ -3,14 +3,25 @@
 # Edit or create an active interface
 
 require './net-lib.pl';
+@act = &active_interfaces();
 
 &ReadParse();
 if ($in{'new'}) {
+	# New real or virtual interface
 	&ui_print_header(undef, $text{'aifc_create'}, "");
 	&can_create_iface() || &error($text{'ifcs_ecannot'});
+	if ($in{'virtual'}) {
+		# Pick a virtual number
+		$vmax = int($net::min_virtual_number);
+		foreach my $e (@act) {
+			$vmax = $e->{'virtual'}
+				if ($e->{'name'} eq $in{'virtual'} &&
+				    $e->{'virtual'} > $vmax);
+			}
+		}
 	}
 else {
-	@act = &active_interfaces();
+	# Editing existing interface
 	$a = $act[$in{'idx'}];
 	&can_iface($a) || &error($text{'ifcs_ecannot_this'});
 	&ui_print_header(undef, $text{'aifc_edit'}, "");
@@ -28,7 +39,7 @@ print &ui_table_start(
 # Interface name, perhaps editable
 if ($in{'new'} && $in{'virtual'}) {
 	$namefield = $in{'virtual'}.":".
-		     &ui_textbox("virtual", undef, 3).
+		     &ui_textbox("virtual", $vmax+1, 3).
 		     &ui_hidden("name", $in{'virtual'});
 	}
 elsif ($in{'new'}) {

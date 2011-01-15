@@ -104,6 +104,13 @@ while($f = readdir(CONF)) {
 		$b->{'ether'} = $conf{'MACADDR'};
 		$b->{'dhcp'} = ($conf{'BOOTPROTO'} eq 'dhcp');
 		$b->{'bootp'} = ($conf{'BOOTPROTO'} eq 'bootp');
+		local @ip6s;
+		push(@ip6s, [ split(/\//, $conf{'IPV6ADDR'}) ])
+			if ($conf{'IPV6ADDR'});
+		push(@ip6s, map { [ split(/\//, $_) ] }
+				split(/\s+/, $conf{'IPV6ADDR_SECONDARIES'}));
+		$b->{'address6'} = [ map { $_->[0] } @ip6s ];
+		$b->{'netmask6'} = [ map { $_->[1] } @ip6s ];
 		$b->{'edit'} = ($b->{'name'} !~ /^ppp|irlan/);
 		$b->{'desc'} = $conf{'NAME'};
 		$b->{'index'} = scalar(@rv);
@@ -158,6 +165,15 @@ else {
 		if ($_[0]->{'virtual'} ne '');
 	$conf{'BOOTPROTO'} = $_[0]->{'bootp'} ? "bootp" :
 			     $_[0]->{'dhcp'} ? "dhcp" : "none";
+	delete($conf{'IPV6ADDR'});
+	delete($conf{'IPV6ADDR_SECONDARIES'});
+	local @ip6s;
+	for(my $i=0; $i<@{$b->{'address6'}}; $b++) {
+		push(@ip6s, $b->{'address6'}->[$i]."/".
+			    $b->{'netmask6'}->[$i]);
+		}
+	$conf{'IPV6ADDR'} = shift(@ip6s);
+	$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
 	}
 $conf{'NAME'} = $_[0]->{'desc'};
 &write_env_file("$net_scripts_dir/ifcfg-$name", \%conf);
@@ -765,6 +781,14 @@ sub save_dhcp_hostname
 sub boot_iface_hardware
 {
 return $_[0] =~ /^eth/;
+}
+
+# supports_address6([&iface])
+# Returns 1 if managing IPv6 interfaces is supported
+sub supports_address6
+{
+local ($iface) = @_;
+return !$iface || $iface->{'virtual'} eq '';
 }
 
 1;

@@ -29,9 +29,11 @@ if (!$access{'bootonly'}) {
 		print &ui_form_start("delete_aifcs.cgi", "post");
 		push(@links, &select_all_link("d"),
 			     &select_invert_link("d") );
-		push(@tds, "width=5");
+		push(@tds, "width=5 valign=top");
 		}
-	push(@tds, "width=20%", "width=20%", "width=20%", "width=20%");
+	push(@tds, "width=20% valign=top", "width=20% valign=top",
+		   "width=20% valign=top", "width=20% valign=top");
+	push(@tds, "width=20% valign=top") if (&supports_address6());
 	if ($allow_add) {
 		push(@links,
 		     "<a href='edit_aifc.cgi?new=1'>$text{'ifcs_add'}</a>");
@@ -42,6 +44,8 @@ if (!$access{'bootonly'}) {
 				  $text{'ifcs_type'},
 				  $text{'ifcs_ip'},
 				  $text{'ifcs_mask'},
+				  &supports_address6() ?
+					( $text{'ifcs_ip6'} ) : ( ),
 				  $text{'ifcs_status'} ], 100, 0, \@tds);
 
 	# Show table of interfaces
@@ -78,6 +82,10 @@ if (!$access{'bootonly'}) {
 		      (%minfo ? " ($minfo{'desc'})" : ""));
 		push(@cols, &html_escape($a->{'address'}));
 		push(@cols, &html_escape($a->{'netmask'}));
+		if (&supports_address6()) {
+			push(@cols, join("<br>\n", map { &html_escape($_) }
+						    @{$a->{'address6'}}));
+			}
 		push(@cols, $a->{'up'} ? $text{'ifcs_up'} :
 			"<font color=#ff0000>$text{'ifcs_down'}</font>");
 		if ($a->{'edit'} && &can_iface($a)) {
@@ -115,13 +123,16 @@ if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
 	push(@links, "<a href='edit_range.cgi?new=1'>$text{'ifcs_radd'}</a>");
 	}
 print &ui_links_row(\@links);
-@tds = ( "width=5", "width=20%", "width=20%", "width=20%",
-	 "width=20%", "width=20%");
+@tds = ( "width=5 valign=top", "width=20% valign=top", "width=20% valign=top",
+	 "width=20% valign=top", "width=20% valign=top",
+	 "width=20% valign=top");
+push(@tds, "width=20% valign=top") if (&supports_address6());
 print &ui_columns_start([ "",
 			  $text{'ifcs_name'},
 			  $text{'ifcs_type'},
 			  $text{'ifcs_ip'},
 			  $text{'ifcs_mask'},
+			  &supports_address6() ? ( $text{'ifcs_ip6'} ) : ( ),
 			  $text{'ifcs_act'} ], 100, 0, \@tds);
 
 @boot = &boot_interfaces();
@@ -152,7 +163,11 @@ foreach $a (@boot) {
 			}
 		push(@cols, &iface_type($a->{'name'}));
 		push(@cols, "$a->{'start'} - $a->{'end'}");
-		splice(@mytds, 3, 2, "colspan=2 width=40%");
+		if (&supports_address6()) {
+			# IPv6 not possible for ranges
+			push(@cols, "");
+			}
+		splice(@mytds, 3, 2, "colspan=2 width=40% valign=top");
 		}
 	else {
 		# A normal single interface
@@ -188,6 +203,10 @@ foreach $a (@boot) {
 					       $text{'ifcs_auto'});
 		push(@cols, $a->{'netmask'} ? &html_escape($a->{'netmask'})
 					    : $text{'ifcs_auto'});
+		if (&supports_address6()) {
+			push(@cols, join("<br>\n", map { &html_escape($_) }
+						    @{$a->{'address6'}}));
+			}
 		}
 	push(@cols, $a->{'up'} ? $text{'yes'} : $text{'no'});
 	if ($can) {

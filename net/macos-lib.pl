@@ -481,5 +481,13 @@ return ( "/etc/hostconfig", "/etc/resolv.conf", "/etc/iftab" );
 #system("killall -HUP lookupd >/dev/null 2>&1");
 #}
 
+# supports_address6([&iface])
+# Returns 1 if managing IPv6 interfaces is supported
+sub supports_address6
+{
+local ($iface) = @_;
+return 0;
+}
+
 1;
 

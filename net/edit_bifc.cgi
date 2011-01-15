@@ -5,19 +5,32 @@
 require './net-lib.pl';
 &ReadParse();
 !$in{'new'} || &can_create_iface() || &error($text{'ifcs_ecannot'});
+@boot = &boot_interfaces();
 
 # Show page title and get interface
 if ($in{'new'} && $in{'bond'}) {
+	# New bonding interface
 	&ui_print_header(undef, $text{'bonding_create'}, "");
 	}
 elsif ($in{'new'} && $in{'vlan'}) {
+	# New VLAN
 	&ui_print_header(undef, $text{'vlan_create'}, "");
 	}
 elsif ($in{'new'}) {
+	# New real or virtual interface
 	&ui_print_header(undef, $text{'bifc_create'}, "");
+	if ($in{'virtual'}) {
+		# Pick a virtual number
+		$vmax = int($net::min_virtual_number);
+		foreach my $e (@boot) {
+			$vmax = $e->{'virtual'}
+				if ($e->{'name'} eq $in{'virtual'} &&
+				    $e->{'virtual'} > $vmax);
+			}
+		}
 	}
 else {
-	@boot = &boot_interfaces();
+	# Editing existing
 	$b = $boot[$in{'idx'}];
 	&can_iface($b) || &error($text{'ifcs_ecannot_this'});
 	&ui_print_header(undef, $text{'bifc_edit'}, "");
@@ -47,7 +60,8 @@ if (defined(&can_iface_desc) && &can_iface_desc($b)) {
 # Interface name
 if ($in{'new'} && $in{'virtual'}) {
 	# New virtual interface
-	$namefield = $in{'virtual'}.":".&ui_textbox("virtual", undef, 3).
+	$namefield = $in{'virtual'}.":".
+		     &ui_textbox("virtual", $vmax+1, 3).
 		     &ui_hidden("name", $in{'virtual'});
 	}
 elsif ($in{'new'}) {
@@ -130,6 +144,21 @@ else {
 	print &ui_table_row($opts[0]->[1], $opts[0]->[2]);
 	}
 
+# Show the IPv6 field
+if (&supports_address6($b)) {
+	$table6 = &ui_columns_start([ $text{'ifcs_address6'},
+				      $text{'ifcs_netmask6'} ], 50);
+	for($i=0; $i<=@{$b->{'address6'}}; $i++) {
+		$table6 .= &ui_columns_row([
+		    &ui_textbox("address6_$i",
+				$b->{'address6'}->[$i], 40),
+		    &ui_textbox("netmask6_$i",
+				$b->{'netmask6'}->[$i] || 64, 10) ]);
+		}
+	$table6 .= &ui_columns_end();
+	print &ui_table_row($text{'ifcs_mode6'}, $table6, 3);
+	}
+
 # MTU
 if (&can_edit("mtu", $b) && $access{'mtu'}) {
 	$mtufield = &ui_opt_textbox(
@@ -208,7 +237,7 @@ if (($in{'new'} && $in{'virtual'} eq "") ||
     (!$in{'new'} && $b->{'virtual'} eq "" &&
      defined(&boot_iface_hardware) &&
      &boot_iface_hardware($b->{'name'}))) {
-	$hardfield = &ui_opt_textbox("ether", $b->{'ether'}, 18,
+	$hardfield = &ui_opt_textbox("ether", $b->{'ether'}, 30,
 				     $text{'aifc_default'});
 	print &ui_table_row($text{'aifc_hard'}, $hardfield);
 	}

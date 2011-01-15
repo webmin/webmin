@@ -183,12 +183,43 @@ else {
 		$b->{'ether'} = $in{'ether'};
 		}
 
+	# Activate at boot flag
 	if ($in{'new'} && !$access{'up'} ||
 	    &can_edit("up", $b) && $in{'up'} && $access{'up'}) {
 		$b->{'up'}++;
 		}
 	elsif (!$access{'up'}) {
 		$b->{'up'} = $oldb->{'up'};
+		}
+
+	# Save IPv6 addresses
+	if (&supports_address6($b) && defined($in{'address6_0'})) {
+		@address6 = ( );
+		@netmask6 = ( );
+		%clash6 = ( );
+		foreach $e (@boot) {
+			if ($e->{'fullname'} ne $b->{'fullname'}) {
+				foreach $a6 (@{$e->{'address6'}}) {
+					$clash6{$a6} = $e;
+					}
+				}
+			}
+		for($i=0; defined($in{'address6_'.$i}); $i++) {
+			next if ($in{'address6_'.$i} !~ /\S/);
+			&check_ip6address($in{'address6_'.$i}) ||
+				&error(&text('aifc_eaddress6', $i+1));
+			$c = $clash6{$in{'address6_'.$i}};
+			$c && &error(&text('aifc_eclash6', $i+1, $c->{'name'}));
+			push(@address6, $in{'address6_'.$i});
+			$in{'netmask6_'.$i} =~ /^\d+$/ &&
+			    $in{'netmask6_'.$i} > 0 &&
+			    $in{'netmask6_'.$i} <= 128 ||
+				&error(&text('aifc_enetmask6', $i+1));
+			push(@netmask6, $in{'netmask6_'.$i});
+			$clash6{$in{'address6_'.$i}} = $b;
+			}
+		$b->{'address6'} = \@address6;
+		$b->{'netmask6'} = \@netmask6;
 		}
 
 	if ($in{'bond'}) {

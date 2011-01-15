@@ -12,72 +12,34 @@ while(<IFC>) {
 	if (/^\S+/) { push(@lines, $_); }
 	else { $lines[$#lines] .= $_; }
 	}
-  close(IFC);
-  foreach $l (@lines) {
-	  local %ifc;
-	  $l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
-	  $l =~ /^(\S+)/; $ifc{'fullname'} = $1;
-	  if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
-	  if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
-	  elsif (!$_[0]) { next; }
-	  if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
-	  if ($l =~ /Bcast:(\S+)/) { $ifc{'broadcast'} = $1; }
-	  if ($l =~ /HWaddr (\S+)/) { $ifc{'ether'} = $1; }
-	  if ($l =~ /MTU:(\d+)/) { $ifc{'mtu'} = $1; }
-	  if ($l =~ /P-t-P:(\S+)/) { $ifc{'ptp'} = $1; }
-	  $ifc{'up'}++ if ($l =~ /\sUP\s/);
-	  $ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
-	  $ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
-	  $ifc{'index'} = scalar(@rv);
-	  push(@rv, \%ifc);
-
-
-	  # We detect IPV6 adresses. An interface can have multiple IPv6
-	  # addresses. So we have to scan the entire line to extract each
-	  # of them. 
-	  if ($l =~ /inet6 addr:\s+(\S+)\/(\S+)/) { 
-		  local($fin)=0;
-		  local($ic)=0;
-		  local $j=1;
-		  while (!$fin) {
-			  local %ifc;
-			  local $where;
-			  $where=index($l,"inet6 addr:",$ic);
-			  if ($where != -1) {
-				  local $sub_l = substr($l, $where, (length($l) - $where));
-				  $sub_l =~ /inet6 addr: (\S+)\/(\S+)/; 
-				  $ifc{'address'} = $1; 
-				  $ifc{'netmask'} = $2; 
-				  $l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
-
-				# An IPv6 address has to be up
-				  $ifc{'up'}++;
-
-				# The fe80 type IPV6 adresses and the IPv6 loopback interface address 
-				# are set to be non-modifiable (for "security" reason)	
-				  if (index($ifc{'address'},"fe80") != -1 ) {
-				  } 
-				  elsif ($ifc{'address'} eq "::1") {
-				  }
-				  else {
-					  $l =~ /^(\S+)/; $ifc{'fullname'} = $1 . "-IPV6-" . $j;
-					  $ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
-				  }
-				  $ifc{'ether'}=$rv[-1]{'ether'};
-				  #printf "$ifc{'ether'}\n";
-				  $ifc{'index'} = scalar(@rv);
-				  push(@rv, \%ifc);
-
-# We add an offset to look for another possible IPv6 address ot he interface
-				  $ic=$where+1;
-				  $j++;
-			  } 
-			  else 
-			  {
-				  $fin=1;
-			  }
-      }
-	  }
+close(IFC);
+foreach $l (@lines) {
+	local %ifc;
+	$l =~ /^([^:\s]+)/; $ifc{'name'} = $1;
+	$l =~ /^(\S+)/; $ifc{'fullname'} = $1;
+	if ($l =~ /^(\S+):(\d+)/) { $ifc{'virtual'} = $2; }
+	if ($l =~ /inet addr:(\S+)/) { $ifc{'address'} = $1; }
+	elsif (!$_[0]) { next; }
+	if ($l =~ /Mask:(\S+)/) { $ifc{'netmask'} = $1; }
+	if ($l =~ /Bcast:(\S+)/) { $ifc{'broadcast'} = $1; }
+	if ($l =~ /HWaddr (\S+)/) { $ifc{'ether'} = $1; }
+	if ($l =~ /MTU:(\d+)/) { $ifc{'mtu'} = $1; }
+	if ($l =~ /P-t-P:(\S+)/) { $ifc{'ptp'} = $1; }
+	$ifc{'up'}++ if ($l =~ /\sUP\s/);
+	$ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
+	local (@address6, @netmask6, @scope6);
+	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(\S+)//) {
+		local ($address6, $netmask6, $scope6) = ($1, $2, $3);
+		push(@address6, $address6);
+		push(@netmask6, $netmask6);
+		push(@scope6, $scope6);
+		}
+	$ifc{'address6'} = \@address6;
+	$ifc{'netmask6'} = \@netmask6;
+	$ifc{'scope6'} = \@scope6;
+	$ifc{'edit'} = ($ifc{'name'} !~ /^ppp/);
+	$ifc{'index'} = scalar(@rv);
+	push(@rv, \%ifc);
 	}
 return @rv;
 }

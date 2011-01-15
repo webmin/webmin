@@ -510,5 +510,13 @@ return ( split(" ", `echo -n /etc/hostname.*[!~]`),
 	 "/etc/sysctl.conf" );
 }
 
+# supports_address6([&iface])
+# Returns 1 if managing IPv6 interfaces is supported
+sub supports_address6
+{
+local ($iface) = @_;
+return 0;
+}
+
 1;
 
