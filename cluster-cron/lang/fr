@@ -1,32 +1,27 @@
-index_title=T&#226;ches Cron sur clusters
-index_add=Cr&#233;er une nouvelle t&#226;che Cron sur clusters
-index_none=Aucune t&#226;che Cron sur clusters n'a &#233;t&#233; d&#233;finie.
-index_servers=Ex&#233;cuter sur les serveurs
-index_return=&#224; la liste des t&#226;ches Cron sur clusters
-index_more=$1 de plus...
-index_run=Ex&#233;cuter&nbsp;maintenant...
-
-edit_title=&#201;diton d'une t&#226;che Cron sur clusters
 create_title=Cr&#233;ation d'une t&#226;che Cron sur clusters
-edit_servers=Ex&#233;cuter sur les serveurs
-edit_group=Membres de $1
-edit_this=Ce serveur
 edit_all=&lt;Tous les h&#244;tes&gt;
-
-save_err=Impossible d'enregistrer la t&#226;che Cron sur clusters
-
-exec_title=Ex&#233;cution d'une t&#226;che Cron sur clusters
+edit_group=Membres de $1
+edit_servers=Ex&#233;cuter sur les serveurs
+edit_this=Ce serveur
+edit_title=&#201;diton d'une t&#226;che Cron sur clusters
 exec_cmd=Ex&#233;cution de $1 sur les serveurs s&#233;lectionn&#233;s en cours...
 exec_failed=Impossible d'ex&#233;cuter sur $1 : $2
-exec_success=Sortie de $1...
 exec_nohosts=Aucun h&#244;te s&#233;lectionn&#233; sur lequel ex&#233;cuter ou les groupes s&#233;lectionn&#233;s ne contiennent aucun h&#244;te susceptible d'&#234;tre utilis&#233;.
-
-log_run=Ex&#233;cut&#233; $1 sur $2 serveurs
-log_run_l=Ex&#233;cut&#233; $1 sur $2
+exec_success=Sortie de $1...
+exec_title=Ex&#233;cution d'une t&#226;che Cron sur clusters
+index_add=Cr&#233;er une nouvelle t&#226;che Cron sur clusters
+index_more=$1 de plus...
+index_none=Aucune t&#226;che Cron sur clusters n'a &#233;t&#233; d&#233;finie.
+index_return=&#224; la liste des t&#226;ches Cron sur clusters
+index_run=Ex&#233;cuter&nbsp;maintenant...
+index_servers=Ex&#233;cuter sur les serveurs
+index_title=T&#226;ches Cron sur clusters
 log_create=Cr&#233;&#233; la t&#226;che Cron sur clusters pour $1
 log_create_l=Cr&#233;&#233; la t&#226;che Cron sur les clusters $2 pour $1
-log_modify=Modifi&#233; la t&#226;che Cron sur clusters $1
-log_modify_l=Modifi&#233; la t&#226;che Cron sur les clusters $2 pour $1
 log_delete=Supprim&#233; la t&#226;che Cron sur clusters pour $1
 log_delete_l=Supprim&#233; la t&#226;che Cron sur les clusters $2 pour $1
-
+log_modify=Modifi&#233; la t&#226;che Cron sur clusters $1
+log_modify_l=Modifi&#233; la t&#226;che Cron sur les clusters $2 pour $1
+log_run=Ex&#233;cut&#233; $1 sur $2 serveurs
+log_run_l=Ex&#233;cut&#233; $1 sur $2
+save_err=Impossible d'enregistrer la t&#226;che Cron sur clusters

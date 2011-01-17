@@ -1,3 +1,2 @@
 standard_url=URL de la liste des modules standard,3,www.webmin.com
 third_url=URL de la liste des modules non-standard,3,www.webmin.com
-warn_days=Nombre de jours pour alerter les utilisateur avant l'expiration du mot de passe,0,5

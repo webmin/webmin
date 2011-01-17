@@ -1,80 +1,76 @@
-index_title=Surveillance de bande passante
+acl_setup=Peut activer ou d&#233;sactiver la surveillance?
+index_all=&lt;tout&gt;
+index_by=Voir le trafic par
+index_edir=Le r&#233;pertoire d'enregistrement des donn&#233;es de bande passante $1 n'existe pas ou n'est pas un r&#233;pertoire. Modifiez la <a href='$2'>configuration du module</a> pour utiliser un autre chemin.
 index_efiresys=Aucun des pare-feux support&#233;s (IPtables, IPFW, IPFilter ou Shorewall) n'a pu &#234;tre d&#233;tect&#233; sur votre syst&#232;me. V&#233;rifiez que les modules noyaux appropri&#233;s sont charg&#233;s ou configur&#233;s.
 index_efiresys2=Le pare-feu $1 a &#233;t&#233; configur&#233; mais n'a pu &#234;tre trouv&#233;. Modifiez les param&#232;tres de <a href='$2'>configuration du module</a> pour utiliser un autre pare-feu.
-index_elog=Le fichier $1 utilis&#233; comme journal de l'utilisation de la bande passante est en fait un r&#233;pertoire. Modifiez <a href='$2'>module configuration</a> to use a different path.
-index_edir=Le r&#233;pertoire d'enregistrement des donn&#233;es de bande passante $1 n'existe pas ou n'est pas un r&#233;pertoire. Modifiez la <a href='$2'>configuration du module</a> pour utiliser un autre chemin.
-index_emod=Le module Webmin $1 n'est pas install&#233; sur ce syst&#232;me ou n'est pas support&#233; par votre syst&#232;me d'exploitation. Le module de Surveillance de bande passante ne peut fonctionner sans celui-ci.
-index_esyslog=Aucun des modules de gestion des Journaux Syst&#232;me n'est install&#233;. Neither of the System Logs modules are installed on this system and supported by your OS.  Le module de Surveillance de bande passante ne peut fonctionner sans au moins un d'eux.
-index_firesys=via le pare-feu $1 et $2
-index_setupcannot=Cependant, vous n'avez pas les permissions pour l'installer !
-index_setupdesc=Avant que ce module puisse rendre compte de l'utilisation r&#233;seau de votre syst&#232;me, il doit &#234;tre install&#233; pour surveiller le trafic sur l'interface r&#233;seau externe choisie.
-index_missing3=Jusqu'&#224; quatre r&#232;gles de pare-feu doivent &#234;tre ajout&#233;es, et une entr&#233;e dans la configuration de syslog doit &#234;tre cr&#233;&#233;e.
-index_missing2=Jusqu'&#224; quatre r&#232;gles de pare-feu doivent &#234;tre ajout&#233;es.
-index_missing1=Une entr&#233;e dans la configuration de syslog doit &#234;tre cr&#233;&#233;e.
-index_iface=Interface r&#233;seau externe
-index_setup=Installer maintenant
-index_by=Voir le trafic par
-index_hour=heure
-index_host=h&#244;te
-index_proto=protocole
-index_iport=port interne
-index_oport=port externe
-index_port=port
-index_for=pour
-index_all=&lt;tout&gt;
-index_forhour=heure..
-index_forhost=h&#244;te..
-index_forproto=protocole..
-index_foriport=port interne..
-index_foroport=port externe..
-index_search=G&#233;n&#233;rer le rapport
-index_none=Aucun trafic n'a encore &#233;t&#233; trait&#233; par ce module. Si vous venez d'installer le service, au moins une heure peut &#234;tre n&#233;cessaire avant qu'un trafic ne soit trait&#233;.
+index_efrom=Date ou heure de d&#233;but invalide.
+index_ehost=H&#244;te invalide ou manquant
 index_ehour=Heure invalide - doit avoir le format aaaa-mm-jj hh:mm
+index_eiptables=Attention - Votre configuration d'IPTables a une erreur : $1. Activer la surveillance de bande passante va effacer toutes vos r&#232;gles du pare-feu.
+index_elog=Le fichier $1 utilis&#233; comme journal de l'utilisation de la bande passante est en fait un r&#233;pertoire. Modifiez <a href='$2'>module configuration</a> to use a different path.
+index_emod=Le module Webmin $1 n'est pas install&#233; sur ce syst&#232;me ou n'est pas support&#233; par votre syst&#232;me d'exploitation. Le module de Surveillance de bande passante ne peut fonctionner sans celui-ci.
 index_eport=Nom de port inconnu
 index_eproto=Protocole manquant
-index_ehost=H&#244;te invalide ou manquant
-index_from=Pour le trafic apr&#232;s
-index_to=Pour le trafic avant
-index_efrom=Date ou heure de d&#233;but invalide.
-index_eto=Date ou heure de fin invalide.
 index_err=Impossible de g&#233;n&#233;rer le rapport
-index_usage=Trafic r&#233;seau <font color=#ff0000>download&#233;</font> et <font color=#0000ff>upload&#233;</font>
-index_hhour=Heure
-index_hhost=H&#244;te
+index_esyslog=Aucun des modules de gestion des Journaux Syst&#232;me n'est install&#233;. Neither of the System Logs modules are installed on this system and supported by your OS.  Le module de Surveillance de bande passante ne peut fonctionner sans au moins un d'eux.
+index_eto=Date ou heure de fin invalide.
+index_firesys=via le pare-feu $1 et $2
+index_for=pour
+index_forhost=h&#244;te..
+index_forhour=heure..
+index_foriport=port interne..
+index_foroport=port externe..
+index_forproto=protocole..
+index_from=Pour le trafic apr&#232;s
 index_hday=Jour
-index_hproto=Protocole
+index_hhost=H&#244;te
+index_hhour=Heure
 index_hiport=Port
 index_hoport=Port
+index_host=h&#244;te
+index_hour=heure
 index_hport=Port
+index_hproto=Protocole
+index_iface=Interface r&#233;seau externe
+index_iport=port interne
 index_low=Ports du serveur uniquement?
-index_resolv=R&#233;soudre les noms d'h&#244;tes?
+index_missing1=Une entr&#233;e dans la configuration de syslog doit &#234;tre cr&#233;&#233;e.
+index_missing2=Jusqu'&#224; quatre r&#232;gles de pare-feu doivent &#234;tre ajout&#233;es.
+index_missing3=Jusqu'&#224; quatre r&#232;gles de pare-feu doivent &#234;tre ajout&#233;es, et une entr&#233;e dans la configuration de syslog doit &#234;tre cr&#233;&#233;e.
 index_nomatch=Aucun trafic ne correspond au crit&#232;re s&#233;lectionn&#233;.
-index_turnoff=Arr&#234;ter la surveillance
-index_turnoffdesc=Cliquez sur ce bouton pour enlever les r&#232;gles du pare-feu, la configuration syslog et les t&#226;ches planifi&#233;es utilis&#233;es pour la surveillance de la bande passante. Toutes les donn&#233;es rassembl&#233;es existantes demeureront intactes.
+index_none=Aucun trafic n'a encore &#233;t&#233; trait&#233; par ce module. Si vous venez d'installer le service, au moins une heure peut &#234;tre n&#233;cessaire avant qu'un trafic ne soit trait&#233;.
+index_oport=port externe
+index_other=Autres ...
+index_port=port
+index_proto=protocole
+index_resolv=R&#233;soudre les noms d'h&#244;tes?
+index_return=Formulaire de rapport
 index_rotate=Mise &#224; jour des Statistiques
 index_rotatedesc=Cliquez ce bouton pour analyser tout le trafic d&#233;j&#224; enregistr&#233; jusqu'&#224; maintenant, afin de le rendre disponible pour cr&#233;er un rapport imm&#233;diatement.
-index_eiptables=Attention - Votre configuration d'IPTables a une erreur : $1. Activer la surveillance de bande passante va effacer toutes vos r&#232;gles du pare-feu.
-index_return=Formulaire de rapport
-
+index_search=G&#233;n&#233;rer le rapport
+index_setup=Installer maintenant
+index_setupcannot=Cependant, vous n'avez pas les permissions pour l'installer !
+index_setupdesc=Avant que ce module puisse rendre compte de l'utilisation r&#233;seau de votre syst&#232;me, il doit &#234;tre install&#233; pour surveiller le trafic sur l'interface r&#233;seau externe choisie.
+index_setupdesc2=<b> ATTENTION - Ce module va "Logger" tout le trafique r&#233;seau re&#231;u ou envoy&#233; sur l'interface s&#233;lectionn&#233;.Cela risque,avec une connection reseau qui rapide, de consommer une part importante de votre espace disque et de vos ressources CPU .</b>
+index_title=Surveillance de bande passante
+index_to=Pour le trafic avant
+index_turnoff=Arr&#234;ter la surveillance
+index_turnoffdesc=Cliquez sur ce bouton pour enlever les r&#232;gles du pare-feu, la configuration syslog et les t&#226;ches planifi&#233;es utilis&#233;es pour la surveillance de la bande passante. Toutes les donn&#233;es rassembl&#233;es existantes demeureront intactes.
+index_usage=Trafic r&#233;seau <font color=#ff0000>download&#233;</font> et <font color=#0000ff>upload&#233;</font>
+log_rotate=Statistiques mises &#224; jour
 log_setup=Installer la surveillance de bande passante sur l'interface $1
 log_turnoff=D&#233;sactiver la surveillance de bande passante
-log_rotate=Statistiques mises &#224; jour
-
-acl_setup=Peut activer ou d&#233;sactiver la surveillance?
-
-turnoff_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; d&#233;sactiver la surveillance
-
-setup_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; activer la surveillance
-setup_ezone=Impossible de trouver la zone Shorewall pour l'interface s&#233;lectionn&#233;e
-
-system_firewall=IPtables
-system_ipfw=IPFW
-system_ipfilter=IPFilter
-system_shorewall=Shorewall
-
-syslog_syslog=Syslog
-syslog_syslog-ng=Syslog-NG
-
-rotate_title=Statistiques en cours de mise &#224; jour ..
 rotate_doing=Analyse du trafic r&#233;seau enregistr&#233; ..
 rotate_done=.. termin&#233;.
+rotate_title=Statistiques en cours de mise &#224; jour ..
+setup_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; activer la surveillance
+setup_eiface=Nom d'interface invalide ou manquant
+setup_ezone=Impossible de trouver la zone Shorewall pour l'interface s&#233;lectionn&#233;e
+syslog_syslog=Syslog
+syslog_syslog-ng=Syslog-NG
+system_firewall=IPtables
+system_ipfilter=IPFilter
+system_ipfw=IPFW
+system_shorewall=Shorewall
+turnoff_ecannot=Vous n'&#234;tes pas autoris&#233; &#224; d&#233;sactiver la surveillance

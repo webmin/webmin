@@ -1,8 +1,7 @@
-index_title=Changement des mots de passe de clusters
-index_noservers=Aucun serveur sur lequel g&#233;rer les utilisateurs n'a &#233;t&#233; d&#233;fini dans le module <a href=$1>Utilisateurs et groupes de clusters</a>.
 index_hosts=Tous les changements de mot de passe effectu&#233;s &#224; l'aide de ce module seront effectu&#233;s sur la totalit&#233; des $1 h&#244;tes g&#233;r&#233;s par le module Utilisateurs et groupes de clusters.
-
+index_noservers=Aucun serveur sur lequel g&#233;rer les utilisateurs n'a &#233;t&#233; d&#233;fini dans le module <a href=$1>Utilisateurs et groupes de clusters</a>.
+index_title=Changement des mots de passe de clusters
 passwd_err=Impossible de changer le mot de passe
-passwd_title=Changement de mot de passe
+passwd_euser=L'utilisateur n'existe pas !
 passwd_on=Changement de mot de passe sur $1 en cours...
-
+passwd_title=Changement de mot de passe

@@ -1,0 +1,16 @@
+apply_err=&#201;chec de l'application de la configuration
+apply_failed=Une erreur de configuration a &#233;t&#233; d&#233;tect&#233;e
+apply_problem=&#201;chec de l'application de la configuration : $1
+backup_done=... sauvegarde effectu&#233;e avec succ&#232;s.
+backup_ok=Sauvegarder maintenant
+backup_return=Page de sauvegarde
+backup_wait=Attendre les r&#233;sultats ?
+cancel_enone=aucune n'est s&#233;lectionn&#233;e
+tls_none=Aucune
+tls_require=N'accepter que les connections TLS ?
+tls_verify=V&#233;rifier les clients TLS ?
+weekdaynum_1=Premi&#232;re
+weekdaynum_2=Deuxi&#232;me
+weekdaynum_3=Troisi&#232;me
+weekdaynum_4=Quatri&#232;me
+weekdaynum_5=Cinqui&#232;me
