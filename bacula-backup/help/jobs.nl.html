@@ -1,0 +1,36 @@
+<header>Backup Taken</header>
+
+Een taak is het meest belangrijke configureerbare onderdeel in Bacula, omdat hierin alle settings staan voor de client, de files en waar een backup van gemaakt moet worden. Hiervoor is het altijd
+het beste om als eerste uw client en fileset te definieren voordat u een backup taak gaat aanmaken. <p>
+
+Iedere taak heeft de vollogende belangrijke attributen :<br>
+
+<dl>
+<dt>Taak naam
+<dd>Een unieke naam voor deze taak.
+<dt>Taak type
+<dd>Dit bepaald wat voor soort actie de taak zal uitvoeren. In bijna alle gevallen zal dit moeten
+worden ingesteld op <b>Backup</b>.
+<dt>Backup level
+<dd>Dit bepaald of de taak een complete of een gedeeltelijke backup uitvoert van de geselecteerd
+files.
+<dt>Client om te backuppen
+<dd>Indien uw Bacula systeem diverse clients bevat bepaald deze optie van welke client de files
+worden gelezen door deze backup taak.
+<dt>File set bepalen voor de backup
+<dd>De geselecteerde file set bepaald welke files en directory's zitten in de backup.
+<dt>Backup in een planning
+<dd>Met deze optie bepaald u of een taak automatisch word uitgevoerd in een gepland schema, en
+wanneer dit moet gebeuren.
+<dt>Bestemming opslag apparaat
+<dd>Indien uw Bacula configuratie is opgezet met meerdere opslag deamons bepaald deze optie naar
+welk apparaat de backup word geschreven.
+</dl><p>
+
+Om het taken proces zo simpel mogelijk te maken laat Bacula u een <b>Standaard definitie</b> taken
+aanmaken die niet zelf iets uitvoeren maar settings specificeren voor de echte taken. Wanneer u een
+taak bewerkt zal het <b>Standaard type</b> veld bepalen of het een standaard definitie is, of het
+settings zijn van een andere standaard setting of geen van beide. <p>
+
+<footer>
+

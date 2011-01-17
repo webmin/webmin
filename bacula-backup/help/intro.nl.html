@@ -1,0 +1,37 @@
+<header>Bacula Backup</header>
+
+Bacula is een set computer programma's waarmee u (of de systeem administrator) alles kan beheren
+wat betreft backuppen, herstellen en diverse soorten data kan verifieren over een netwerk of
+op een computer. Bacula kan ook werken op een enkele computer en enventueel de data backuppen
+naar diverse soorten media, inclusief tape of harddisken.<p>
+
+In technisch opzicht is het een netwerk Client/Server gebaseerd backup programma. Bacula is
+relatief gezien erg makkelijk in gebruik en zeer efficient terwijl het zeer veel opslag beheer
+opties heeft waardoor het makkelijk is om verloren of beschadigde files te herstellen. Door
+het modulaire ontwerp is Bacula te gebruiken op een enkel computer systeem of op te schalen
+naar een systeem met honderden computers die over een netwerk zijn verspreid.<p>
+
+Het Bacula systeem is verdeeld in drie verschillende deamons, die eventueel ook nog eens op
+verschillende hosts kunnen werken.
+De drie deamons zijn :<br>
+<dl>
+<dt>De Director of hoofd server.
+<dd>Op de director of hoofdserver worden alle taken opgeslagen voor de clients en bevat bijna
+    alle configuratie settings, en is verantwoordelijk voor het starten van de backup taken.
+    Deze Webmin module moet aan het werk zijn op het systeem waar de hoofd server is geinstalleerd.
+<dt>File Daemon
+<dd>Deze deamon is verantwoordelijk voor het lezen van de files waar een backup van gemaakt moet
+    worden. Een Bacula configuratie kan meerdere file deamons bevatten waarbij iedere deamon aan
+    het werk is op het systeem waar een backup gemaakt moet worden.
+<dt>Opslag Daemon
+<dd>De opslag deamon is verantwoordelijk voor het schrijven van de data die naar een media
+    geschreven moet worden, zoals een tape drive of een file. Normaal gesproken heeft u maar
+    1 opslag deamon nodig (die op dezelfde host werkt als de hoofd server), maar een complexe
+    Bacula setup kan ook diverse systemen bevatten met meerdere deamons en verschillende opslag
+    media om de backup belasting te verminderen op de systemen.
+</dl>
+
+Deze Webmin module kan een systeem beheren welke 1 of meerdere Bacula deamons heeft geinstalleerd. <p>
+
+<footer>
+

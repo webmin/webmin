@@ -1,0 +1,38 @@
+<header>Opslag Daemons</header>
+
+Iedere ingang op deze pagina bepaald een verbinding naar een particulier
+apparaat op een Bacula opslag deamon.Normaal gesproken werkt de deamon op
+hetzelfde systeem, echter het is mogelijk om meer dan 1 deamon te definieren
+waarbij sommige deamons zich kunnen bevinden op een remote hosts met verschillende
+tape drives of met meer harddisk ruimte. <p>
+
+De belangrijke attributen voor iedere deamon zijn :<br>
+<dl>
+<dt>Opslag naam
+<dd>Een unieke naam die gebruikt word op dit systeem om de deamon te identificeren.
+<dt>Bacula SD wachtwoord
+<dd>Dit veld moet het wachtwoord bevatten wat gebruikt word door de opslag deamon op het remote
+systeem, welke gevonden kan worden in de <tt>/etc/bacula/bacula-sd.conf</tt> file.
+<dt>Hostnaam of IP adres
+<dd>De volledige hostnaam of het IP adres van het systeem waar de opslag deamon werkt.
+<dt>Opslag apparaat naam
+<dd>In iedere opslag deamon kunnen 1 of meerdere apparaten gedefinieerd worden, waarbij ze allemaal
+corresponderen met een verschillende directory of tape drive. Dit veld bepaald welk apparaat
+welke particuliere deamon verbinding gebruikt.
+<dt>Media type naam
+<dd>Dit veld moet een korte naam bevatten voor het type media wat word gebruikt door het opslag
+apparaat, bijvoorbeeld <i>File</i> of <i>DDS-2</i>. Het moet wel hetzelfde zijn als in de
+<b>Opslag Apparaten</b> sectie op de opslag server.
+</dl>
+
+Het is vaak nuttig om meerdere ingangen voor dezelfde host te hebben op deze pagina,
+waarbij een ieder een verschillend opslag apparaat heeft. Hierdoor kunt u backups maken
+die geschreven worden naar verschillende directory's of tape drives. <p>
+
+Indien de TLS opties worden getoont in het opslag deamon formulier kunt u deze gebruiken
+om een veilige verbinding op te zetten tussen de director en de remote opslag server.
+Dit is normaal gesproken niet nodig in een simpele Bacula configuratie omdat de opslag
+en director deamons normaal gesproken op hetzelfde systeem werken. <p>
+
+<footer>
+
