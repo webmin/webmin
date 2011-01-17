@@ -123,3 +123,4 @@ On Linux systems, /dev/urandom is used for generating entropy for DNSSEC.
 Added the Delete Records In Selected button to the main page, for removing the same record in multiple domains at once.
 ---- Changes since 1.530 ----
 The default view for new zones can now be set via an option on the Module Config page.
+When adding cluster slave servers, their IPs are added to the also-notify and allow-transfer blocks of each domain added to the slave.

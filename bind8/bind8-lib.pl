@@ -342,6 +342,7 @@ $pm = $_[0]->{'members'};
 @oldv = ref($_[1]) ? @{$_[1]} : &find($_[1], $pm);
 @newv = @{$_[2]};
 for($i=0; $i<@oldv || $i<@newv; $i++) {
+	local $oldeline = $i<@oldv ? $oldv[$i]->{'eline'} : undef;
 	if ($i >= @oldv && !$_[5]) {
 		# a new directive is being added.. put it at the end of
 		# the parent
@@ -388,7 +389,7 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 					&make_chroot($oldv[$i]->{'file'}));
 			$ol = $oldv[$i]->{'eline'} - $oldv[$i]->{'line'} + 1;
 			splice(@$lref, $oldv[$i]->{'line'}, $ol);
-			&renumber($parent, $oldv[$i]->{'eline'},
+			&renumber($parent, $oldeline,
 				  $oldv[$i]->{'file'}, -$ol);
 			}
 		splice(@$pm, &indexof($oldv[$i], @$pm), 1);
@@ -406,7 +407,7 @@ for($i=0; $i<@oldv || $i<@newv; $i++) {
 			$newv[$i]->{'line'} = $oldv[$i]->{'line'};
 			$newv[$i]->{'eline'} =
 				$oldv[$i]->{'line'} + scalar(@nl) - 1;
-			&renumber($parent, $oldv[$i]->{'eline'},
+			&renumber($parent, $oldeline,
 				  $oldv[$i]->{'file'}, scalar(@nl) - $ol);
 			}
 		$pm->[&indexof($oldv[$i], @$pm)] = $newv[$i];

@@ -41,6 +41,20 @@ $add_error_msg = join("", @_);
 }
 &remote_error_setup(\&add_error);
 
+# Build map from zone names to configs
+$conf = &get_config();
+%zmap = ( );
+@zoneconfs = &find("zone", $conf);
+foreach $v (@views) {
+	push(@zoneconfs, &find("zone", $v->{'members'}));
+	}
+foreach $z (@zoneconfs) {
+	$type = &find_value("type", $z->{'members'});
+	if ($type eq "master") {
+		$zmap{$z->{'value'}} = $z;
+		}
+	}
+
 # Make sure each host is set up for BIND
 @zones = grep { $_->{'type'} eq 'master' } &list_zone_names();
 foreach $s (@add) {
@@ -98,6 +112,7 @@ foreach $s (@add) {
 		# Add all master zones from this server to the slave
 		$zcount = 0;
 		$zerr = 0;
+		$sip = &to_ipaddress($s->{'host'});
 		foreach $zone (grep { !$rgot{$_->{'name'}} } @zones) {
 			($slaveerr) = &create_on_slaves($zone->{'name'}, $myip,
 				undef, [ $s->{'host'} ], $zone->{'view'});
@@ -111,9 +126,33 @@ foreach $s (@add) {
 				}
 			}
 
-		# Restart the slave too
+		# Restart the slave
 		if ($zcount) {
 			&remote_foreign_call($s, "bind8", "restart_bind");
+			}
+
+		# Add slave IP to master zone allow-transfer and also-notify
+		# blocks
+		$dchanged = 0;
+		foreach $zone (@zones) {
+			$z = $zmap{$zone->{'name'}};
+			next if (!$z || !$sip);
+			foreach $d ("also-notify", "allow-transfer") {
+				$n = &find($d, $z->{'members'});
+				next if (!$n);
+				($got) = grep { $_->{'name'} eq $sip }
+					      @{$n->{'members'}};
+				next if ($got);
+				push(@{$n->{'members'}}, { 'name' => $sip });
+				&lock_file($z->{'file'});
+				&save_directive($z, $d, [ $n ], 1);
+				&flush_file_lines($z->{'file'});
+				$dchanged++;
+				}
+			}
+		if ($dchanged) {
+			&unlock_all_files();
+			&restart_bind();
 			}
 
 		# Tell the user
@@ -126,7 +165,8 @@ foreach $s (@add) {
 			print "<p>\n";
 			}
 		else {
-			print &text('add_createok', $s->{'host'}, $zcount),"<p>\n";
+			print &text('add_createok', $s->{'host'},
+				    $zcount),"<p>\n";
 			}
 		}
 	}
