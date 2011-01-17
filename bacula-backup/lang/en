@@ -372,7 +372,7 @@ dvolumes_ebacula=Bacula error : $1
 
 mount_title=Mount or Unmount
 mount_header=Storage mount or un-mount options
-mount_storage=Storge device
+mount_storage=Storage device
 mount_slot=Auto-loader slot
 mount_noslot=None
 mount_slotno=Slot number
