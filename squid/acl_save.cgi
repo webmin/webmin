@@ -89,11 +89,11 @@ else {
 			}
 		}
 	elsif ($in{'type'} eq "srcdomain") {
-		push(@vals, split(/\s+/, $in{'vals'}));
+		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		if (!@vals && !$in{'keep'}) { &error($text{'aclsave_ecdom'}); }
 		}
 	elsif ($in{'type'} eq "dstdomain") {
-		push(@vals, split(/\s+/, $in{'vals'}));
+		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		if (!@vals && !$in{'keep'}) { &error($text{'aclsave_esdom'}); }
 		}
 	elsif ($in{'type'} eq "time") {
@@ -110,11 +110,11 @@ else {
 		}
 	elsif ($in{'type'} eq "url_regex") {
 		push(@vals, "-i") if ($in{'caseless'});
-		push(@vals, split(/\s+/, $in{'vals'}));
+		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "urlpath_regex") {
 		push(@vals, "-i") if ($in{'caseless'});
-		push(@vals, split(/\s+/, $in{'vals'}));
+		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "port") {
 		push(@vals, split(/\s+/, $in{'vals'}));
@@ -130,7 +130,7 @@ else {
 		push(@vals, $in{'vals'});
 		}
 	elsif ($in{'type'} eq "user" || $in{'type'} eq "ident") {
-		push(@vals, split(/\s+/, $in{'vals'}));
+		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "src_as" || $in{'type'} eq "dst_as") {
 		push(@vals, split(/\s+/, $in{'vals'}));
@@ -140,16 +140,16 @@ else {
 		}
 	elsif ($in{'type'} eq "proxy_auth" && $squid_version >= 2.3) {
 		push(@vals, $in{'authall'} ? "REQUIRED"
-					   : split(/\s+/, $in{'vals'}));
+					   : split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "proxy_auth_regex" ||
 	       $in{'type'} eq "ident_regex") {
 		push(@vals, "-i") if ($in{'caseless'});
-		push(@vals, split(/\s+/, $in{'vals'}));
+		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "srcdom_regex" || $in{'type'} eq "dstdom_regex") {
 		push(@vals, "-i") if ($in{'caseless'});
-		push(@vals, split(/\s+/, $in{'vals'}));
+		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "myport") {
 		$in{'vals'} =~ /^\d+$/ ||
@@ -162,7 +162,7 @@ else {
 		push(@vals, $in{'vals'});
 		}
 	elsif ($in{'type'} eq "arp") {
-		push(@vals, split(/\s+/, $in{'vals'}));
+		push(@vals, split(/[\r\n]+/, $in{'vals'}));
 		}
 	elsif ($in{'type'} eq "external") {
 		$in{'class'} || &error($text{'eacl_eclass'});
