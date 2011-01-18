@@ -23,10 +23,11 @@ sub boot_interfaces
 my @ifaces = &get_interface_defs();
 my @autos = &get_auto_defs();
 my @rv;
-local $index_ip_v6 =1;
+my %v6map;
 foreach $iface (@ifaces) {
 	my ($name, $addrfam, $method, $options) = @$iface;
-	if ($addrfam eq 'inet' || $addrfam eq 'inet6') {
+	if ($addrfam eq 'inet') {
+		# IPv4 interface .. parse and add to list
 		my $cfg = { };
 		$cfg->{'fullname'} = $name;
 		if ($cfg->{'fullname'} =~ /(\S+):(\d+)/) {
@@ -35,52 +36,50 @@ foreach $iface (@ifaces) {
 			}
 		else {
 			$cfg->{'name'} = $cfg->{'fullname'};
-		}
-		if($addrfam eq 'inet6'){
-			$cfg->{'fullname'} .= "-IPv6-" . $index_ip_v6;
-			$index_ip_v6 ++;
-		}		
-		
+			}
 		if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
 			$cfg->{'up'} = &indexof($name, @autos) >= 0;
-      #$cfg->{'up'} = 1;
 			}
 		else {
 			$cfg->{'up'} = 1;
 			}
 		foreach $option (@$options) {
-			($param, $value) = @$option;
-			if ($param eq 'noauto') { $cfg->{'up'} = 0; }
+			my ($param, $value) = @$option;
+			if ($param eq 'noauto') {
+				$cfg->{'up'} = 0;
+				}
 			elsif($param eq 'up') { 
-				$cfg->{"partner"} = &get_teaming_partner($cfg->{'name'}, $value);
+				$cfg->{"partner"} =
+				  &get_teaming_partner($cfg->{'name'}, $value);
 				%options = &get_module_defs($name);
-				
 				$cfg->{'mode'} = $options{'mode'};
 				$cfg->{'miimon'} = $options{'miimon'};
 				$cfg->{'downdelay'} = $options{'downdelay'};
 				$cfg->{'updelay'} = $options{'updelay'};
-			}
+				}
 			elsif($param eq 'bond_mode') { 
 				$cfg->{'mode'} = $value;
-			}
+				}
 			elsif($param eq 'bond_miimon') { 
 				$cfg->{'miimon'} = $value;
-			}
+				}
 			elsif($param eq 'bond_downdelay') { 
 				$cfg->{'downdelay'} = $value;
-			}
+				}
 			elsif($param eq 'bond_updelay') { 
 				$cfg->{'updelay'} = $value;
-			}
+				}
 			elsif($param eq 'slaves') { 
 				$cfg->{'partner'} = $value;
-			}
+				}
 			elsif($param eq 'hwaddr') {
 				local @v = split(/\s+/, $value);
 				$cfg->{'ether_type'} = $v[0];
 				$cfg->{'ether'} = $v[1];
-			}
-			else { $cfg->{$param} = $value; }
+				}
+			else {
+				$cfg->{$param} = $value;
+				}
 			}
 		$cfg->{'dhcp'} = ($method eq 'dhcp');
 		$cfg->{'bootp'} = ($method eq 'bootp');
@@ -93,6 +92,37 @@ foreach $iface (@ifaces) {
 				$cfg->{'address'}, $cfg->{'netmask'});
 			}
 		push(@rv, $cfg);
+		}
+	elsif ($addrfam eq "inet6") {
+		# IPv6 interface .. add to matching v4 block
+		my $v6cfg = { 'address6' => [ ],
+			      'netmask6' => [ ] };
+		foreach $option (@$options) {
+			my ($param, $value) = @$option;
+			if ($param eq "address") {
+				push(@{$v6cfg->{'address6'}}, $value);
+				}
+			elsif ($param eq "netmask") {
+				push(@{$v6cfg->{'netmask6'}}, $value);
+				}
+			elsif ($param eq "up" &&
+			       $value =~ /ifconfig\s+(\S+)\s+inet6\s+add\s+([a-f0-9:]+)\/(\d+)/ &&
+				$1 eq $name) {
+				# Additional v6 address
+				push(@{$v6cfg->{'address6'}}, $2);
+				push(@{$v6cfg->{'netmask6'}}, $3);
+				}
+			}
+		$v6map{$name} = $v6cfg;
+		}
+	}
+# Merge in v6 interface settings
+foreach my $iface (@rv) {
+	my $v6cfg = $v6map{$iface->{'fullname'}};
+	if ($v6cfg) {
+		foreach my $k (keys %$v6cfg) {
+			$iface->{$k} = $v6cfg->{$k};
+			}
 		}
 	}
 return @rv;
