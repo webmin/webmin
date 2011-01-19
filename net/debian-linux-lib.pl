@@ -138,17 +138,21 @@ my $name = $cfg->{'virtual'} ne "" ? $cfg->{'name'}.":".$cfg->{'virtual'}
 my @options;
 my $method;
 my @modules_var;
-if ($cfg->{'dhcp'} == 1) { $method = 'dhcp'; }
-elsif ($cfg->{'bootp'} == 1) { $method = 'bootp'; }
+if ($cfg->{'dhcp'} == 1) {
+	$method = 'dhcp';
+	}
+elsif ($cfg->{'bootp'} == 1) {
+	$method = 'bootp';
+	}
 else {
 	$method = 'static';
 	push(@options, ['address', $cfg->{'address'}]);
 	push(@options, ['netmask', $cfg->{'netmask'}]);
 	push(@options, ['broadcast', $cfg->{'broadcast'}])
-	    if ($cfg->{'broadcast'} && !&is_ipv6_address($cfg->{'address'}));
+		if ($cfg->{'broadcast'});
 	my ($ip1, $ip2, $ip3, $ip4) = split(/\./, $cfg->{'address'});
 	my ($nm1, $nm2, $nm3, $nm4) = split(/\./, $cfg->{'netmask'});
-	if ($cfg->{'address'} && $cfg->{'netmask'} && !&is_ipv6_address($cfg->{'address'})) {
+	if ($cfg->{'address'} && $cfg->{'netmask'}) {
 		my $network = sprintf "%d.%d.%d.%d",
 					($ip1 & int($nm1))&0xff,
 					($ip2 & int($nm2))&0xff,
@@ -156,9 +160,9 @@ else {
 					($ip4 & int($nm4))&0xff;
 		push(@options, ['network', $network]);
 		}
-	if(&is_ipv6_address($cfg->{'address'})){
+	if (@{$cfg->{'address6'}}) {
 		push(@options, ['pre-up', 'modprobe ipv6']);
-	}
+		}
 	}
 my @autos = get_auto_defs();
 my $amode = $gconfig{'os_version'} > 3 || scalar(@autos);
@@ -170,81 +174,106 @@ if ($cfg->{'ether'}) {
 
 # Set bonding parameters
 if(($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {
-	push(@options, ['bond_mode ' . $cfg->{'mode'}]);
-	push(@options, ['bond_miimon ' . $cfg->{'miimon'}]);
-	push(@options, ['bond_updelay ' . $cfg->{'updelay'}]);
-	push(@options, ['bond_downdelay ' . $cfg->{'downdelay'}]);
-	push(@options, ['slaves ' . $cfg->{'partner'}]);
-}
-elsif($cfg->{'bond'} == 1) {
-	push(@options, ['up', '/sbin/ifenslave ' . $cfg->{'name'} . " " . $cfg->{'partner'}]);
-	push(@options, ['down', '/sbin/ifenslave -d ' . $cfg->{'name'} . " " . $cfg->{'partner'}]);
-}
+	push(@options, ['bond_mode '.$cfg->{'mode'}]);
+	push(@options, ['bond_miimon '.$cfg->{'miimon'}]);
+	push(@options, ['bond_updelay '.$cfg->{'updelay'}]);
+	push(@options, ['bond_downdelay '.$cfg->{'downdelay'}]);
+	push(@options, ['slaves '.$cfg->{'partner'}]);
+	}
+elsif ($cfg->{'bond'} == 1) {
+	push(@options, ['up', '/sbin/ifenslave '.$cfg->{'name'}." ".
+			      $cfg->{'partner'}]);
+	push(@options, ['down', '/sbin/ifenslave -d '.$cfg->{'name'}." ".
+			        $cfg->{'partner'}]);
+	}
 
 # Set specific lines for vlan tagging
 if($cfg->{'vlan'} == 1){
-	push(@options, ['pre-up', 'vconfig add ' . $cfg->{'physical'} . ' ' . $cfg->{'vlanid'}]);
-	push(@options, ['post-down', 'vconfig rem ' . $cfg->{'physical'} . ' ' . $cfg->{'vlanid'}]);
-}
+	push(@options, ['pre-up', 'vconfig add '.$cfg->{'physical'}.' '.
+				  $cfg->{'vlanid'}]);
+	push(@options, ['post-down', 'vconfig rem '.$cfg->{'physical'}.' '.
+				     $cfg->{'vlanid'}]);
+	}
 
+# Find the existing interface section
 my @ifaces = get_interface_defs();
-my $changeit = 0;
+my $found = 0;
+my $found6 = 0;
 foreach $iface (@ifaces) {
 	local $address;
-	foreach $opt(@{$iface->[3]}){
+	foreach my $opt (@{$iface->[3]}) {
 		if($opt->[0] eq 'address'){
 			$address = $opt->[1];
 			last;
-		}			
-	}
-	if( ($iface->[0] eq $cfg->{'fullname'}) && 
-	( ($iface->[1] eq 'inet' && !&is_ipv6_address($cfg->{'address'}))||
-	  ($iface->[1] eq 'inet6' && &is_ipv6_address($cfg->{'address'}) && $address eq $cfg->{'address'}) ) ){
-		$changeit = 1;
-		foreach $o (@{$iface->[3]}) {
-			if ($o->[0] eq 'gateway') {
-				push(@options, $o);
 			}
 		}
+	if ($iface->[0] eq $cfg->{'fullname'} && $iface->[1] eq 'inet') {
+		# Found interface to change
+		$found = 1;
+		foreach my $o (@{$iface->[3]}) {
+			if ($o->[0] eq 'gateway') {
+				push(@options, $o);
+				}
+			}
+		}
+	if ($iface->[0] eq $cfg->{'fullname'} && $iface->[1] eq 'inet6') {
+		# Found IPv6 block
+		$found6 = 1;
+		}
 	}
-}
-if ($changeit == 0) {
-	if($in{'vlan'} == 1) {
-		new_interface_def($cfg->{'physical'} . '.' . $cfg->{'vlanid'}, 'inet', $method, \@options);
-	} elsif (&is_ipv6_address($cfg->{'address'})) {
-		new_interface_def($cfg->{'name'}, 'inet6', $method, \@options);
-	}
-	else{
-		new_interface_def($cfg->{'fullname'}, 'inet', $method, \@options);
-	}
-	if (($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {}
-	elsif ($cfg->{'bond'} == 1) {
-		new_module_def($cfg->{'fullname'}, $cfg->{'mode'}, $cfg->{'miimon'}, $cfg->{'downdelay'}, $cfg->{'updelay'});
-	}
-} 
-else {
-	if($in{'vlan'} == 1) {
-		modify_interface_def($cfg->{'physical'} . '.' . $cfg->{'vlanid'}, 'inet', $method, \@options, 0);
-	} elsif (&is_ipv6_address($cfg->{'address'})) {
-		modify_interface_def($cfg->{'name'}, 'inet6', $method, \@options, 0);
-	}
-	else{
-		modify_interface_def($cfg->{'fullname'}, 'inet', $method, \@options, 0);
-	}
-	if (($cfg->{'bond'} == 1) && ($gconfig{'os_version'} >= 5)) {}
-        elsif ($cfg->{'bond'} == 1) {
-		modify_module_def($cfg->{'fullname'}, 0, $cfg->{'mode'}, $cfg->{'miimon'}, $cfg->{'downdelay'}, $cfg->{'updelay'});
-	}
-}
 
+if (!$found) {
+	# Add a new interface section
+	if ($in{'vlan'} == 1) {
+		&new_interface_def($cfg->{'physical'}.'.'.$cfg->{'vlanid'},
+				   'inet', $method, \@options);
+		}
+	else {
+		&new_interface_def($cfg->{'fullname'},
+				   'inet', $method, \@options);
+		}
+	if ($cfg->{'bond'} == 1 && $gconfig{'os_version'} >= 5) {
+		# Not sure why nothing needs to be done here?
+		}
+	elsif ($cfg->{'bond'} == 1) {
+		&new_module_def($cfg->{'fullname'}, $cfg->{'mode'},
+			        $cfg->{'miimon'}, $cfg->{'downdelay'},
+			        $cfg->{'updelay'});
+		}
+	} 
+else {
+	# Update existing section
+	if($in{'vlan'} == 1) {
+		&modify_interface_def($cfg->{'physical'}.'.'.$cfg->{'vlanid'},
+				      'inet', $method, \@options, 0);
+		}
+	else {
+		&modify_interface_def($cfg->{'fullname'},
+				      'inet', $method, \@options, 0);
+		}
+	if ($cfg->{'bond'} == 1 && $gconfig{'os_version'} >= 5) {
+		# Not sure why nothing needs to be done here?
+		}
+        elsif ($cfg->{'bond'} == 1) {
+		&modify_module_def($cfg->{'fullname'}, 0, $cfg->{'mode'},
+				   $cfg->{'miimon'}, $cfg->{'downdelay'},
+				   $cfg->{'updelay'});
+		}
+	}
+
+# XXX update inet6 section too
+
+# Set auto option to include this interface, or not
 if ($amode) {
 	if ($cfg->{'up'}) {
 		if($in{'vlan'} == 1) {
-			@autos = &unique(@autos, $cfg->{'physical'} . '.' . $cfg->{'vlanid'});
-		} else {
+			@autos = &unique(@autos, $cfg->{'physical'}.'.'.
+				 		 $cfg->{'vlanid'});
+			}
+		else {
 			@autos = &unique(@autos, $cfg->{'fullname'});
- 		}
-	}
+			}
+		}
 	else {
 		@autos = grep { $_ ne $cfg->{'fullname'} } @autos;
 		}
@@ -392,6 +421,7 @@ sub new_module_def
 # Delete a boot-time interface
 sub delete_interface
 {
+# XXX inet6 too
 my $cfg = $_[0];
 	local @address = ('address',$cfg->{'address'});
 	delete_interface_def(&is_ipv6_address($cfg->{'address'})?$cfg->{'name'}:$cfg->{'fullname'}, &is_ipv6_address($cfg->{'address'})?'inet6':'inet','',\@address);
