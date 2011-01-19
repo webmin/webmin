@@ -28,7 +28,7 @@ foreach $l (@lines) {
 	$ifc{'up'}++ if ($l =~ /\sUP\s/);
 	$ifc{'promisc'}++ if ($l =~ /\sPROMISC\s/);
 	local (@address6, @netmask6, @scope6);
-	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(\S+)//) {
+	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(Global)//i) {
 		local ($address6, $netmask6, $scope6) = ($1, $2, $3);
 		push(@address6, $address6);
 		push(@netmask6, $netmask6);
@@ -69,14 +69,9 @@ else {
 		}
 	else {
 		$cmd .= "ifconfig $a->{'name'}";
-		if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
-		if (&is_ipv6_address($a->{'address'})) { 
-			$cmd .= " inet6 add ";
-			if ($a->{'netmask'}) {
-				  $a->{'address'} .= "/$a->{'netmask'}";
-				  $a->{'netmask'} = ''; 
-				}
-			} 
+		if ($a->{'virtual'} ne "") {
+			$cmd .= ":$a->{'virtual'}";
+			}
 		}
 	$cmd .= " $a->{'address'}";
 	if ($a->{'netmask'}) { $cmd .= " netmask $a->{'netmask'}"; }
@@ -87,11 +82,30 @@ else {
 	}
 local $out = &backquote_logged("$cmd 2>&1");
 if ($?) { &error($out); }
+
+# Apply ethernet address
 if ($a->{'ether'} && !&use_ifup_command($a)) {
-	# Apply ethernet address
 	$out = &backquote_logged(
 		"ifconfig $a->{'name'} hw ether $a->{'ether'} 2>&1");
 	if ($?) { &error($out); }
+	}
+
+if ($a->{'virtual'} eq '') {
+	# Remove old IPv6 addresses
+	local $l = &backquote_command("ifconfig $a->{'name'}");
+	while($l =~ s/inet6 addr:\s*(\S+)\/(\d+)\s+Scope:(\S+)//) {
+		local $cmd = "ifconfig $a->{'name'} inet6 del $1/$2 2>&1";
+		$out = &backquote_logged($cmd);
+		&error("Failed to remove old IPv6 address : $out") if ($?);
+		}
+
+	# Add IPv6 addresses
+	for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
+		local $cmd = "ifconfig $a->{'name'} inet6 add ".
+		     $a->{'address6'}->[$i]."/".$a->{'netmask6'}->[$i]." 2>&1";
+		$out = &backquote_logged($cmd);
+		&error("Failed to add IPv6 address : $out") if ($?);
+		}
 	}
 }
 
@@ -99,24 +113,30 @@ if ($a->{'ether'} && !&use_ifup_command($a)) {
 # Shutdown some active interface
 sub deactivate_interface
 {
-local $name = $_[0]->{'name'}.
-	      ($_[0]->{'virtual'} ne "" ? ":$_[0]->{'virtual'}" : "");
-local $address = $_[0]->{'address'}.
-        ($_[0]->{'virtual'} ne "" ? ":$_[0]->{'virtual'}" : "");
-local $netmask = $_[0]->{'netmask'};
+local $a = $_[0];
+local $name = $a->{'name'}.
+	      ($a->{'virtual'} ne "" ? ":$a->{'virtual'}" : "");
+local $address = $a->{'address'}.
+        ($a->{'virtual'} ne "" ? ":$a->{'virtual'}" : "");
+local $netmask = $a->{'netmask'};
  
-if ($_[0]->{'virtual'} ne "") {
+if ($a->{'virtual'} ne "") {
 	# Shutdown virtual interface by setting address to 0
 	local $out = &backquote_logged("ifconfig $name 0 2>&1");
 	}
-elsif (&is_ipv6_address($address)){
-	local $out = &backquote_logged("ifconfig $name inet6 del $address/$netmask 2>&1");
+# Delete all v6 addresses
+for(my $i=0; $i<@{$a->{'address6'}}; $i++) {
+	local $cmd = "ifconfig $a->{'name'} inet6 del ".
+		     $a->{'address6'}->[$i]."/".$a->{'netmask6'}->[$i];
+	&backquote_logged("$cmd 2>&1");
 	}
+
+# Check if still up somehow
 local ($still) = grep { $_->{'fullname'} eq $name } &active_interfaces();
-if ($still && !&is_ipv6_address($address)) {
+if ($still) {
 	# Old version of ifconfig or non-virtual interface.. down it
 	local $out;
-	if (&use_ifup_command($_[0])) {
+	if (&use_ifup_command($a)) {
 		$out = &backquote_logged("ifdown $name 2>&1");
 		}
 	else {
@@ -168,6 +188,7 @@ return "VmWare" if ($_[0] =~ /^vmnet/);
 return "Wireless" if ($_[0] =~ /^wlan/);
 return "Bonded" if ($_[0] =~ /^bond/);
 return "OpenVZ" if ($_[0] =~ /^venet/);
+return "Bridge" if ($_[0] =~ /^br/);
 return $text{'ifcs_unknown'};
 }
 
@@ -253,22 +274,23 @@ sub list_interfaces
 sub delete_route
 {
 local ($route) = @_;
-	local $cmd = "route " . (&is_ipv6_address($route->{'dest'})? "-A inet6 ":"-A inet ") . "del ";
-	
-	if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' || $route->{'dest'} eq '::') {
-	$cmd .= " default";
+local $cmd = "route ".
+	(&check_ip6address($route->{'dest'}) ? "-A inet6 ":"-A inet ")."del ";
+if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' ||
+    $route->{'dest'} eq '::') {
+		$cmd .= " default";
 	}
 elsif ($route->{'netmask'} eq '255.255.255.255') {
 	$cmd .= " -host $route->{'dest'}";
 	}
-	elsif (!&is_ipv6_address($route->{'dest'})) {
+elsif (!&check_ip6address($route->{'dest'})) {
 	$cmd .= " -net $route->{'dest'}";
 	if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
 		$cmd .= " netmask $route->{'netmask'}";
 		}
 	}
-	else{
-		$cmd .= "$route->{'dest'}/$route->{'netmask'}";
+else {
+	$cmd .= "$route->{'dest'}/$route->{'netmask'}";
 	}
 if ($route->{'gateway'}) {
 	$cmd .= " gw $route->{'gateway'}";
@@ -285,27 +307,28 @@ return $? ? $out : undef;
 sub create_route
 {
 local ($route) = @_;
-	local $cmd = "route " . (&is_ipv6_address($route->{'dest'})? "-A inet6 ":"-A inet ") . "add ";
-	
-	if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' || $route->{'dest'} eq '::') {
+local $cmd = "route ".
+	(&check_ip6address($route->{'dest'}) ? "-A inet6 ":"-A inet ")."add ";
+if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' ||
+    $route->{'dest'} eq '::') {
 	$cmd .= " default";
 	}
-	elsif ($route->{'netmask'} eq '255.255.255.255') {
-		$cmd .= " -host $route->{'dest'}";
+elsif ($route->{'netmask'} eq '255.255.255.255') {
+	$cmd .= " -host $route->{'dest'}";
+	}
+elsif (!&check_ip6address($route->{'dest'})) {
+	$cmd .= " -net $route->{'dest'}";
+	if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
+		$cmd .= " netmask $route->{'netmask'}";
 		}
-	elsif (!&is_ipv6_address($route->{'dest'})) {
-		$cmd .= " -net $route->{'dest'}";
-		if ($route->{'netmask'} && $route->{'netmask'} ne '0.0.0.0') {
-			$cmd .= " netmask $route->{'netmask'}";
-		}
-		}
-	else{
-		$cmd .= "$route->{'dest'}/$route->{'netmask'}";
+	}
+else {
+	$cmd .= "$route->{'dest'}/$route->{'netmask'}";
 	}
 if ($route->{'gateway'}) {
 	$cmd .= " gw $route->{'gateway'}";
 	}
-	elsif ($route->{'iface'}) {
+elsif ($route->{'iface'}) {
 	$cmd .= " dev $route->{'iface'}";
 	}
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");

@@ -44,6 +44,7 @@ else {
 		$b->{'virtual'} = $oldb->{'virtual'}
 			if (defined($oldb->{'virtual'}));
 		$b->{'code'} = $oldb->{'code'};
+		$b->{'fullname'} = $oldb->{'fullname'};
 		}
 	elsif (defined($in{'virtual'})) {
 		# creating a virtual interface
@@ -60,6 +61,7 @@ else {
 			}
 		$b->{'name'} = $in{'name'};
 		$b->{'virtual'} = $in{'virtual'};
+		$b->{'fullname'} = $b->{'name'}.":".$b->{'virtual'};
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
@@ -75,6 +77,7 @@ else {
 			&error(&text('aifc_evirtmin', $min_virtual_number));
 		$b->{'name'} = $1;
 		$b->{'virtual'} = $3;
+		$b->{'fullname'} = $b->{'name'}.":".$b->{'virtual'};
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
@@ -86,6 +89,7 @@ else {
 				}
 			}
 		$b->{'name'} = $in{'name'};
+		$b->{'fullname'} = $in{'name'};
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
@@ -97,6 +101,7 @@ else {
 				}
 			}
 		$b->{'name'} = $in{'name'};
+		$b->{'fullname'} = $in{'name'};
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($b) || &error($text{'ifcs_ecannot'});
 		}
@@ -197,10 +202,10 @@ else {
 		@address6 = ( );
 		@netmask6 = ( );
 		%clash6 = ( );
-		foreach $e (@boot) {
-			if ($e->{'fullname'} ne $b->{'fullname'}) {
-				foreach $a6 (@{$e->{'address6'}}) {
-					$clash6{$a6} = $e;
+		foreach $eb (@boot) {
+			if ($eb->{'fullname'} ne $b->{'fullname'}) {
+				foreach $a6 (@{$eb->{'address6'}}) {
+					$clash6{$a6} = $eb;
 					}
 				}
 			}

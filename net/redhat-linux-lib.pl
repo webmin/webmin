@@ -168,7 +168,7 @@ else {
 	delete($conf{'IPV6ADDR'});
 	delete($conf{'IPV6ADDR_SECONDARIES'});
 	local @ip6s;
-	for(my $i=0; $i<@{$b->{'address6'}}; $b++) {
+	for(my $i=0; $i<@{$b->{'address6'}}; $i++) {
 		push(@ip6s, $b->{'address6'}->[$i]."/".
 			    $b->{'netmask6'}->[$i]);
 		}

@@ -93,6 +93,21 @@ if ($in{'new'} || !&is_ipv6_address($a->{'address'})) {
 	print &ui_table_row($text{'ifcs_broad'}, $broadfield);
 	}
 
+# Show the IPv6 field
+if (&supports_address6($a)) {
+	$table6 = &ui_columns_start([ $text{'ifcs_address6'},
+				      $text{'ifcs_netmask6'} ], 50);
+	for($i=0; $i<=@{$a->{'address6'}}; $i++) {
+		$table6 .= &ui_columns_row([
+		    &ui_textbox("address6_$i",
+				$a->{'address6'}->[$i], 40),
+		    &ui_textbox("netmask6_$i",
+				$a->{'netmask6'}->[$i] || 64, 10) ]);
+		}
+	$table6 .= &ui_columns_end();
+	print &ui_table_row($text{'ifcs_mode6a'}, $table6, 3);
+	}
+
 # Show MTU
 if (!$access{'mtu'}) {
 	# Cannot be edited

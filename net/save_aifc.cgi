@@ -18,9 +18,11 @@ else {
 	# Validate and save inputs
 	&error_setup($text{'aifc_err2'});
 	if (!$in{'new'}) {
+		# Editing existing interface
 		$olda = $acts[$in{'idx'}];
 		&can_iface($olda) || &error($text{'ifcs_ecannot_this'});
 		$a->{'name'} = $olda->{'name'};
+		$a->{'fullname'} = $olda->{'fullname'};
 		$a->{'virtual'} = $olda->{'virtual'}
 			if (defined($olda->{'virtual'}));
 		}
@@ -39,6 +41,7 @@ else {
 			}
 		$a->{'name'} = $in{'name'};
 		$a->{'virtual'} = $in{'virtual'};
+		$a->{'fullname'} = $a->{'name'}.":".$a->{'virtual'};
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($a) || &error($text{'ifcs_ecannot'});
 		}
@@ -54,17 +57,19 @@ else {
 			&error(&text('aifc_evirtmin', $min_virtual_number));
 		$a->{'name'} = $1;
 		$a->{'virtual'} = $3;
+		$a->{'fullname'} = $a->{'name'}.":".$a->{'virtual'};
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($a) || &error($text{'ifcs_ecannot'});
 		}
 	elsif ($in{'name'} =~ /^[a-z]+\d*(\.\d+)?$/) {
 		# creating a real interface
 		foreach $ea (@acts) {
-			if ($ea->{'name'} eq $in{'name'} && !&is_ipv6_address($ea->{'address'}) && !&is_ipv6_address($in{'address'}) ) {
+			if ($ea->{'name'} eq $in{'name'}) {
 				&error(&text('aifc_edup', $in{'name'}));
 				}
 			}
 		$a->{'name'} = $in{'name'};
+		$a->{'fullname'} = $in{'name'};
 		&can_create_iface() || &error($text{'ifcs_ecannot'});
 		&can_iface($a) || &error($text{'ifcs_ecannot'});
 		}
@@ -109,7 +114,7 @@ else {
 			$olda->{'broadcast'};
 		}
 	elsif (!$in{'broadcast_def'}) {
-		&is_ipv6_address($a->{address})|| &check_ipaddress_any($in{'broadcast'}) ||
+		&check_ipaddress_any($in{'broadcast'}) ||
 			&error(&text('aifc_ebroad', $in{'broadcast'}));
 		$a->{'broadcast'} = $in{'broadcast'};
 		}
@@ -125,11 +130,42 @@ else {
 		$a->{'mtu'} = $in{'mtu'} if ($olda->{'mtu'} ne $in{'mtu'});
 		}
 
+	# Save active flag
 	if (!$access{'up'}) {
 		$a->{'up'} = $in{'new'} ? 1 : $olda->{'up'};
 		}
 	elsif ($in{'up'}) {
 		$a->{'up'}++;
+		}
+
+	# Save IPv6 addresses
+	if (&supports_address6($a) && defined($in{'address6_0'})) {
+		@address6 = ( );
+		@netmask6 = ( );
+		%clash6 = ( );
+		foreach $eb (@acts) {
+			if ($eb->{'fullname'} ne $a->{'fullname'}) {
+				foreach $a6 (@{$eb->{'address6'}}) {
+					$clash6{$a6} = $eb;
+					}
+				}
+			}
+		for($i=0; defined($in{'address6_'.$i}); $i++) {
+			next if ($in{'address6_'.$i} !~ /\S/);
+			&check_ip6address($in{'address6_'.$i}) ||
+				&error(&text('aifc_eaddress6', $i+1));
+			$c = $clash6{$in{'address6_'.$i}};
+			$c && &error(&text('aifc_eclash6', $i+1, $c->{'name'}));
+			push(@address6, $in{'address6_'.$i});
+			$in{'netmask6_'.$i} =~ /^\d+$/ &&
+			    $in{'netmask6_'.$i} > 0 &&
+			    $in{'netmask6_'.$i} <= 128 ||
+				&error(&text('aifc_enetmask6', $i+1));
+			push(@netmask6, $in{'netmask6_'.$i});
+			$clash6{$in{'address6_'.$i}} = $a;
+			}
+		$a->{'address6'} = \@address6;
+		$a->{'netmask6'} = \@netmask6;
 		}
 
 	if (!$in{'ether_def'} && $a->{'virtual'} eq "" &&
@@ -143,15 +179,9 @@ else {
 			   ($a->{'virtual'} eq '' ? '' : ':'.$a->{'virtual'});
 
 	# Bring it up
-	if( !is_ipv6_address($a->{'address'}) || (&is_ipv6_address($a->{'address'}) && $olda->{'address'} ne $a->{'address'}) ){
 	&activate_interface($a);
 	&webmin_log($in{'new'} ? 'create' : 'modify',
 		    "aifc", $a->{'fullname'}, $a);
-	}elsif(&is_ipv6_address($a->{'address'}) && $olda->{'address'} eq $a->{'address'}){
-     &deactivate_interface($olda);
-     &activate_interface($a);
-       
-  }
-}
+	}
 &redirect("list_ifcs.cgi?mode=active");
 
