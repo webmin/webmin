@@ -28,7 +28,8 @@ local $rv = [
 	[ 'AnonymousGroup', 0, 6, 'virtual global', 1.13 ],
 	[ 'AuthAliasOnly', 0, 6, 'virtual anon global', 1.13 ],
 	[ 'AuthUsingAlias', 0, 6, 'anon', 1.20 ],
-	[ 'Bind', 0, 0, 'virtual', 1.16 ],
+	[ 'Bind', 0, 0, 'virtual', '1.16-1.27' ],
+	[ 'DefaultAddress', 0, 0, 'virtual', '1.27' ],
 	[ 'CDPath', 1, 2, 'virtual anon global', 1.20 ],
 	[ 'Class Classes', 1, 3, 'virtual', 1.20 ],
 	[ 'CommandBufferSize', 0, 0, 'virtual global', 1.20 ],
@@ -344,6 +345,20 @@ return (1, $text{'mod_core_bind'},
 sub save_Bind
 {
 return &parse_opt("Bind", '^(\d+)\.(\d+)\.(\d+)\.(\d+)|([0-9:]+)$',
+		  $text{'mod_core_ebind'});
+}
+
+sub edit_DefaultAddress
+{
+return (1, $text{'mod_core_bind'},
+	&opt_input($_[0]->{'value'}, "DefaultAddress", $text{'mod_core_bind_all'}, 15));
+}
+sub save_DefaultAddress
+{
+$in{'DefaultAddress_def'} || &to_ipaddress($in{'DefaultAddress'}) ||
+	&to_ip6address($in{'DefaultAddress'}) ||
+	&error(text{'mod_core_ebind'});
+return &parse_opt("DefaultAddress", '^\S+$',
 		  $text{'mod_core_ebind'});
 }
 
