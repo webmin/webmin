@@ -4,6 +4,10 @@
 
 $no_acl_check++;
 require './usermin-lib.pl';
+if (!-r "$config{'usermin_dir'}/miniserv.conf") {
+	# Usermin not installed
+	exit(0);
+	}
 
 # Get the update source
 if ($config{'upsource'}) {
