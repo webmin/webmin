@@ -353,7 +353,7 @@ else {
 		push(@table, [
 		    &interface_sel("gatewaydev$r",
 				   $conf{'GATEWAYDEV'} ||
-				     $conf{'IPV6_DEFAULTGW'} || "*"),
+				     $conf{'IPV6_DEFAULTDEV'} || "*"),
 		    &ui_textbox("gateway$r", $conf{'GATEWAY'}, 15),
 		    &ui_textbox("gateway6$r", $conf{'IPV6_DEFAULTGW'}, 30),
 		    ]);
@@ -706,6 +706,41 @@ else {
 	delete($conf{'GATEWAY'});
 	delete($conf{'GATEWAYDEV'});
 	}
+&write_env_file($network_config, \%conf);
+&unlock_file($network_config);
+}
+
+# get_default_ipv6_gateway()
+# Returns the default gateway IPv6 address (if one is set) and device (if set)
+# boot time settings.
+sub get_default_ipv6_gateway
+{
+local %conf;
+&read_env_file($network_config, \%conf);
+local @boot = &boot_interfaces();
+local ($gifc) = grep { $_->{'gateway6'} && $_->{'virtual'} eq '' } @boot;
+return ( $gifc->{'gateway6'}, $gifc->{'fullname'} ) if ($gifc);
+return $conf{'IPV6_DEFAULTGW'} ? ( $conf{'IPV6_DEFAULTGW'},
+				   $conf{'IPV6_DEFAULTDEV'} ) : ( );
+}
+
+# set_default_ipv6_gateway(gateway, device)
+# Sets the default gateway to the given IPv6 address accessible via the given
+# device, in the boot time settings.
+sub set_default_ipv6_gateway
+{
+&lock_file($network_config);
+&read_env_file($network_config, \%conf);
+local @boot = grep { $->{'virtual'} eq '' } &boot_interfaces();
+foreach $b (@boot) {
+	delete($b->{'gateway6'});
+	if ($_[0] && $b->{'fullname'} eq $_[1]) {
+		$b->{'gateway6'} = $_[0];
+		&save_interface($b);
+		}
+	}
+delete($conf{'IPV6_DEFAULTGW'});
+delete($conf{'IPV6_DEFAULTDEV'});
 &write_env_file($network_config, \%conf);
 &unlock_file($network_config);
 }
