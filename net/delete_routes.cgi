@@ -14,6 +14,6 @@ foreach $d (sort { $b <=> $a } @d) {
 	&error($err) if ($err);
 	}
 &webmin_log("delete", "routes", scalar(@d));
-&redirect("list_routes.cgi");
+&redirect("list_routes.cgi?mode=active");
 
 

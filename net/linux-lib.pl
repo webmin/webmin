@@ -274,7 +274,8 @@ sub delete_route
 {
 local ($route) = @_;
 local $cmd = "route ".
-	(&check_ip6address($route->{'dest'}) ? "-A inet6 ":"-A inet ")."del ";
+	(&check_ip6address($route->{'dest'}) || $route->{'dest'} eq '::' ?
+	 "-A inet6 " : "-A inet ")."del ";
 if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' ||
     $route->{'dest'} eq '::') {
 		$cmd .= " default";
@@ -307,7 +308,9 @@ sub create_route
 {
 local ($route) = @_;
 local $cmd = "route ".
-	(&check_ip6address($route->{'dest'}) ? "-A inet6 ":"-A inet ")."add ";
+	(&check_ip6address($route->{'dest'}) ||
+	 &check_ip6address($route->{'gateway'}) ?
+	 "-A inet6 " : "-A inet ")."add ";
 if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0' ||
     $route->{'dest'} eq '::') {
 	$cmd .= " default";
