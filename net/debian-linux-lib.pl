@@ -160,9 +160,6 @@ else {
 					($ip4 & int($nm4))&0xff;
 		push(@options, ['network', $network]);
 		}
-	if (@{$cfg->{'address6'}}) {
-		push(@options, ['pre-up', 'modprobe ipv6']);
-		}
 	}
 my @autos = get_auto_defs();
 my $amode = $gconfig{'os_version'} > 3 || scalar(@autos);
@@ -265,6 +262,9 @@ else {
 my @options6;
 my @address6 = @{$cfg->{'address6'}};
 my @netmask6 = @{$cfg->{'netmask6'}};
+if (@address6) {
+	push(@options6, ['pre-up', '/sbin/modprobe -q ipv6 ; /bin/true']);
+	}
 if (@address6) {
 	push(@options6, [ "address", shift(@address6) ]);
 	push(@options6, [ "netmask", shift(@netmask6) ]);
@@ -530,7 +530,11 @@ return ( "/etc/hostname", "/etc/HOSTNAME", "/etc/mailname" );
 sub routing_input
 {
 local ($addr, $router) = &get_default_gateway();
-local @ifaces = &get_interface_defs();
+local ($addr6, $router6) = &get_default_ipv6_gateway();
+local @ifaces = grep { $_->[1] eq 'inet' && $_->[0] ne 'lo' }
+		     &get_interface_defs();
+local @ifaces6 = grep { $_->[1] eq 'inet6' && $_->[0] ne 'lo' }
+		      &get_interface_defs();
 
 # Show default gateway
 print &ui_table_row($text{'routes_default'},
@@ -539,8 +543,18 @@ print &ui_table_row($text{'routes_default'},
 		    [ 0, $text{'routes_gateway'}." ".
 			 &ui_textbox("gateway", $addr, 15)." ".
 			 &ui_select("gatewaydev", $router,
-				[ map { $_->[0] } grep { $_->[0] ne 'lo' }
-				      @ifaces ]) ] ]));
+				[ map { $_->[0] } @ifaces ]) ] ]));
+
+if (@ifaces6) {
+	# Show default IPv6 gateway
+	print &ui_table_row($text{'routes_default6'},
+		&ui_radio("gateway6_def", $addr6 ? 0 : 1,
+			  [ [ 1, $text{'routes_none'} ],
+			    [ 0, $text{'routes_gateway'}." ".
+				 &ui_textbox("gateway6", $addr6, 15)." ".
+				 &ui_select("gatewaydev6", $router6,
+					[ map { $_->[0] } @ifaces6 ]) ] ]));
+	}
 
 # Get static routes
 local ($d, @st, @hr);
@@ -590,14 +604,25 @@ print &ui_table_row($text{'routes_local'},
 
 sub parse_routing
 {
+# Save IPv4 address
 local ($dev, $gw);
 if (!$in{'gateway_def'}) {
-		&check_ipaddress_any($in{'gateway'}) ||
+	&check_ipaddress($in{'gateway'}) ||
 		&error(&text('routes_egateway', $in{'gateway'}));
 	$gw = $in{'gateway'};
 	$dev = $in{'gatewaydev'};
 	}
 &set_default_gateway($gw, $dev);
+
+# Save IPv6 address
+local ($dev6, $gw6);
+if (!$in{'gateway6_def'}) {
+	&check_ip6address($in{'gateway6'}) ||
+		&error(&text('routes_egateway6', $in{'gateway6'}));
+	$gw6 = $in{'gateway6'};
+	$dev6 = $in{'gatewaydev6'};
+	}
+&set_default_ipv6_gateway($gw6, $dev6);
 
 # Parse static and local routes
 local %st;
@@ -882,7 +907,7 @@ sub get_default_gateway
 {
 local @ifaces = &get_interface_defs();
 local ($router, $addr);
-foreach $iface (@ifaces) {
+foreach $iface (grep { $_->[1] eq 'inet' } @ifaces) {
 	foreach $o (@{$iface->[3]}) {
 		if ($o->[0] eq 'gateway') {
 			return ( $o->[1], $iface->[0] );
@@ -898,8 +923,42 @@ return ( );
 sub set_default_gateway
 {
 local @ifaces = &get_interface_defs();
-local $iface;
-foreach $iface (@ifaces) {
+foreach my $iface (grep { $_->[1] eq 'inet' } @ifaces) {
+	# Remove the gateway directive
+	$iface->[3] = [ grep { $_->[0] ne 'gateway' } @{$iface->[3]} ];
+
+	# Add if needed
+	if ($iface->[0] eq $_[1]) {
+		push(@{$iface->[3]}, [ 'gateway', $_[0] ]);
+		}
+	&modify_interface_def(@$iface);
+	}
+}
+
+# get_default_ipv6_gateway()
+# Returns the default gateway IPv6 address (if one is set) and device (if set)
+# boot time settings.
+sub get_default_ipv6_gateway
+{
+local @ifaces = &get_interface_defs();
+local ($router, $addr);
+foreach $iface (grep { $_->[1] eq 'inet6' } @ifaces) {
+	foreach $o (@{$iface->[3]}) {
+		if ($o->[0] eq 'gateway') {
+			return ( $o->[1], $iface->[0] );
+			}
+		}
+	}
+return ( );
+}
+
+# set_default_ipv6_gateway([gateway, device])
+# Sets the default IPv6 gateway to the given IP accessible via the given device,
+# in the boot time settings.
+sub set_default_ipv6_gateway
+{
+local @ifaces = &get_interface_defs();
+foreach my $iface (grep { $_->[1] eq 'inet6' } @ifaces) {
 	# Remove the gateway directive
 	$iface->[3] = [ grep { $_->[0] ne 'gateway' } @{$iface->[3]} ];
 
