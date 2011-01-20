@@ -74,24 +74,22 @@ else {
 	}
 print &ui_table_row($text{'ifcs_mask'}, $netmaskfield);
 
-# Broadcast address field, except for IPv6
-if ($in{'new'} || !&is_ipv6_address($a->{'address'})) {
-	if (!$access{'broadcast'}) {
-		# Cannot be edited
-		$broadfield = $a ? $a->{'broadcast'} : $config{'def_broadcast'};
-		}
-	elsif ($in{'new'}) {
-		# Can enter or use default
-		$broadfield = &ui_opt_textbox(
-			"broadcast", $config{'def_broadcast'}, 15,
-			$text{'ifcs_auto'});
-		}
-	else {
-		# Allow editing
-		$broadfield = &ui_textbox("broadcast", $a->{'broadcast'}, 15);
-		}
-	print &ui_table_row($text{'ifcs_broad'}, $broadfield);
+# Broadcast address field
+if (!$access{'broadcast'}) {
+	# Cannot be edited
+	$broadfield = $a ? $a->{'broadcast'} : $config{'def_broadcast'};
 	}
+elsif ($in{'new'}) {
+	# Can enter or use default
+	$broadfield = &ui_opt_textbox(
+		"broadcast", $config{'def_broadcast'}, 15,
+		$text{'ifcs_auto'});
+	}
+else {
+	# Allow editing
+	$broadfield = &ui_textbox("broadcast", $a->{'broadcast'}, 15);
+	}
+print &ui_table_row($text{'ifcs_broad'}, $broadfield);
 
 # Show the IPv6 field
 if (&supports_address6($a)) {

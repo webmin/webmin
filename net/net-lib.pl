@@ -350,16 +350,6 @@ foreach my $a (&boot_interfaces()) {
 return @rv;
 }
 
-# is_ipv6_address(ipaddr)
-# Returns 1 if the given ip address is from IPV6 type, 0 if not.
-# IPV6 address field separator is ":", this character is researched inside IP adress string
-sub is_ipv6_address
-{
-  local ($ipaddr) = @_;
-  return 1 if (index($ipaddr,":") != -1);
-  return 0;
-}
-
 # check_netmask(netmask,ipaddress_associated)
 # check if some netmask is properly formatted accordingly
 # the associated address format (IPv4 or IPv6)

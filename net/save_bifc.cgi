@@ -84,7 +84,7 @@ else {
 	elsif ($in{'name'} =~/^[a-z]+\d*(\.\d+)?$/) {
 		# creating a real interface
 		foreach $eb (@boot) {
-			if ($eb->{'fullname'} eq $in{'name'} && (!&is_ipv6_address($in{'address'}))) {
+			if ($eb->{'fullname'} eq $in{'name'}) {
 				&error(&text('bifc_edup', $in{'name'}));
 				}
 			}
@@ -161,8 +161,7 @@ else {
 		}
 	elsif (&can_edit("broadcast", $b)) {
 		# Manually entered broadcast
-		&is_ipv6_address($in{'address'}) || 
-		    ($auto && !$in{'broadcast'}) ||
+		($auto && !$in{'broadcast'}) ||
 			&check_ipaddress($in{'broadcast'}) ||
 			&error(&text('bifc_ebroad', $in{'broadcast'}));
 		$b->{'broadcast'} = $in{'broadcast'};
@@ -227,42 +226,41 @@ else {
 		$b->{'netmask6'} = \@netmask6;
 		}
 
+	# Save bonding settings
 	if ($in{'bond'}) {
 		$b->{'bond'} = 1;
 		if ($in{'partner'}) {
 			$b->{'partner'} = $in{'partner'};
-		}
+			}
 		if ($in{'bondmode'} ne ''){
 			$mode = $in{'bondmode'};
 			$b->{'mode'} = $mode;
-		}
+			}
 		if ($in{'miimon'} ne ''){
 			$b->{'miimon'} = $in{'miimon'};
-		}
+			}
 		if ($in{'updelay'} ne ''){
 			$b->{'updelay'} = $in{'updelay'};
-		}
+			}
 		if ($in{'downdelay'} ne ''){
 			$b->{'downdelay'} = $in{'downdelay'};
+			}
 		}
-	}
 	
-	if($in{'vlan'} == 1) {
+	# Save VLAN settings
+	if ($in{'vlan'} == 1) {
 		$b->{'vlan'} = 1;
-		
-		if($in{'physical'}) {
+		if ($in{'physical'}) {
 			$b->{'physical'} = $in{'physical'};
-		}
-		if($in{'vlanid'}) {
+			}
+		if ($in{'vlanid'}) {
 			$b->{'vlanid'} = $in{'vlanid'};
+			}
 		}
-  }
-  if(&is_ipv6_address){
-     $b->{'fullname'} = $in{'name'};
-  }   
-  else{
-    $b->{'fullname'} = $b->{'name'}.( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
-  } 
+
+	# Save the interface with its final name
+	$b->{'fullname'} = $b->{'name'}.
+		( $b->{'virtual'} eq '' ? '' : ':'.$b->{'virtual'});
 	&save_interface($b);
 
 	if ($in{'activate'}) {
@@ -276,9 +274,10 @@ else {
 			}
 		else {
 			if ($in{'bond'}) {
-				if (($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5)) {}
+				if (($gconfig{'os_type'} eq 'debian-linux') &&
+				    ($gconfig{'os_version'} >= 5)) {}
 				else {&load_module($b);}
-			}
+				}
 			&activate_interface($b);
 			}
 		}

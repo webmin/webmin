@@ -117,18 +117,16 @@ elsif ($b && $b->{'netmask'}) {
 	# Cannot edit
 	push(@grid, $text{'ifcs_mask'}, "<tt>$b->{'netmask'}</tt>");
 	}
-if (!$b || !&is_ipv6_address($b->{'address'})){
-	if (&can_edit("broadcast", $b) && $access{'broadcast'}) {
-		# Can edit broadcast address
-		push(@grid, $text{'ifcs_broad'},
-		    &ui_opt_textbox("broadcast",
-			$b ? $b->{'broadcast'} : $config{'def_broadcast'},
-			15, $text{'ifcs_auto'}));
-		}
-	elsif ($b && $b->{'broadcast'}) {
-		# Broadcast is fixed
-		push(@grid, $text{'ifcs_broad'}, "<tt>$b->{'broadcast'}</tt>");
-		}
+if (&can_edit("broadcast", $b) && $access{'broadcast'}) {
+	# Can edit broadcast address
+	push(@grid, $text{'ifcs_broad'},
+	    &ui_opt_textbox("broadcast",
+		$b ? $b->{'broadcast'} : $config{'def_broadcast'},
+		15, $text{'ifcs_auto'}));
+	}
+elsif ($b && $b->{'broadcast'}) {
+	# Broadcast is fixed
+	push(@grid, $text{'ifcs_broad'}, "<tt>$b->{'broadcast'}</tt>");
 	}
 push(@opts, [ "address", $text{'ifcs_static2'}, &ui_grid_table(\@grid, 2) ]);
 

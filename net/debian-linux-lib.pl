@@ -261,7 +261,34 @@ else {
 		}
 	}
 
-# XXX update inet6 section too
+# Create IPv6 options
+my @options6;
+my @address6 = @{$cfg->{'address6'}};
+my @netmask6 = @{$cfg->{'netmask6'}};
+if (@address6) {
+	push(@options6, [ "address", shift(@address6) ]);
+	push(@options6, [ "netmask", shift(@netmask6) ]);
+	}
+while(@address6) {
+	my $a = shift(@address6);
+	my $n = shift(@netmask6);
+	push(@options6, [ "up","ifconfig $cfg->{'fullname'} inet6 add $a/$n" ]);
+	}
+
+if (!$found6 && @{$cfg->{'address6'}}) {
+	# Need to add IPv6 block
+	&new_interface_def($cfg->{'fullname'},
+			   'inet6', 'static', \@options6);
+	}
+elsif ($found6 && @{$cfg->{'address6'}}) {
+	# Need to update IPv6 block
+	&modify_interface_def($cfg->{'fullname'},
+			      'inet6', 'static', \@options6, 0);
+	}
+elsif ($found6 && !@{$cfg->{'address6'}}) {
+	# Need to delete IPv6 block
+	&delete_interface_def($cfg->{'fullname'}, 'inet6');
+	}
 
 # Set auto option to include this interface, or not
 if ($amode) {
@@ -421,14 +448,15 @@ sub new_module_def
 # Delete a boot-time interface
 sub delete_interface
 {
-# XXX inet6 too
 my $cfg = $_[0];
-	local @address = ('address',$cfg->{'address'});
-	delete_interface_def(&is_ipv6_address($cfg->{'address'})?$cfg->{'name'}:$cfg->{'fullname'}, &is_ipv6_address($cfg->{'address'})?'inet6':'inet','',\@address);
-	my @autos = get_auto_defs();
-	if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
-		@autos = grep { $_ ne $cfg->{'fullname'} } @autos;
-		&modify_auto_defs(@autos);
+&delete_interface_def($cfg->{'fullname'}, 'inet');
+if (@{$cfg->{'address6'}}) {
+	&delete_interface_def($cfg->{'fullname'}, 'inet6');
+	}
+my @autos = get_auto_defs();
+if ($gconfig{'os_version'} >= 3 || scalar(@autos)) {
+	@autos = grep { $_ ne $cfg->{'fullname'} } @autos;
+	&modify_auto_defs(@autos);
 	}
 }
 
@@ -829,9 +857,9 @@ foreach $option (@$options) {
 # the parameters should be (name, addrfam)
 sub delete_interface_def
 {
-	local ($name, $addrfam, $method) = @_;
-	modify_interface_def($name, $addrfam, '', [], 1);
-	modify_module_def($name, 1);
+local ($name, $addrfam, $method) = @_;
+&modify_interface_def($name, $addrfam, '', [], 1);
+&modify_module_def($name, 1);
 }
 
 sub os_feedback_files
