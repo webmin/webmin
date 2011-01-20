@@ -56,10 +56,12 @@ if (defined(&list_routes)) {
 	$i = 0;
 	foreach $route (&list_routes()) {
 		local @cols = (
-			$route->{'dest'} eq "0.0.0.0" ? $text{'routes_def'}
-						      : $route->{'dest'},
-			$route->{'gateway'} eq "0.0.0.0" ? $text{'routes_nogw'}
-							 : $route->{'gateway'},
+			$route->{'dest'} eq "0.0.0.0" ? $text{'routes_def'} :
+			$route->{'dest'} eq "::" ? $text{'routes_def6'} :
+						   $route->{'dest'},
+			$route->{'gateway'} eq "0.0.0.0" ? $text{'routes_nogw'}:
+			$route->{'gateway'} eq "::" ? $text{'routes_nogw'}
+						    : $route->{'gateway'},
 			$route->{'netmask'} eq "0.0.0.0" ? ""
 							 : $route->{'netmask'},
 			$route->{'iface'} || $text{'routes_any'},

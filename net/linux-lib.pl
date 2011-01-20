@@ -209,17 +209,16 @@ while(<ROUTES>) {
 	}
 close(ROUTES);
 &open_execute_command(ROUTES, "netstat -rn -A inet6", 1, 1);
-	while(<ROUTES>) {
-		s/\s+$//;
-		if (/^([0-9a-z:]+)\/([0-9]+)\s+([0-9a-z:]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
-			push(@rv, { 'dest' => $1,
-				'gateway' => $3,
-				'netmask' => $2,
-				'iface' => $4 });
-						}
+while(<ROUTES>) {
+	s/\s+$//;
+	if (/^([0-9a-z:]+)\/([0-9]+)\s+([0-9a-z:]+)\s+\S+\s+\S+\s+\S+\s+\S+\s+(\S+)$/) {
+		push(@rv, { 'dest' => $1,
+			    'gateway' => $3,
+			    'netmask' => $2,
+			    'iface' => $4 });
+		}
 	}
-
-	close(ROUTES);
+close(ROUTES);
 return @rv;
 }
 

@@ -100,6 +100,7 @@ while($f = readdir(CONF)) {
 							       $b->{'netmask'});
 			}
 		$b->{'gateway'} = $conf{'GATEWAY'};
+		$b->{'gateway6'} = $conf{'IPV6_DEFAULTGW'};
 		$b->{'mtu'} = $conf{'MTU'};
 		$b->{'ether'} = $conf{'MACADDR'};
 		$b->{'dhcp'} = ($conf{'BOOTPROTO'} eq 'dhcp');
@@ -157,6 +158,12 @@ else {
 		}
 	else {
 		delete($conf{'GATEWAY'});
+		}
+	if ($_[0]->{'gateway6'}) {
+		$conf{'IPV6_DEFAULTGW'} = $_[0]->{'gateway6'};
+		}
+	else {
+		delete($conf{'IPV6_DEFAULTGW'});
 		}
 	$conf{'MTU'} = $_[0]->{'mtu'};
 	$conf{'MACADDR'} = $_[0]->{'ether'};
@@ -342,25 +349,31 @@ else {
 	# multiple default routers can exist, one per interface
 	my @table;
 	local $r = 0;
-	if ($conf{'GATEWAY'}) {
-		push(@table, [ &interface_sel("gatewaydev$r",
-					      $conf{'GATEWAYDEV'} || "*"),
-			       &ui_textbox("gateway$r", $conf{'GATEWAY'}, 15),
-			     ]);
+	if ($conf{'GATEWAY'} || $conf{'IPV6_DEFAULTGW'}) {
+		push(@table, [
+		    &interface_sel("gatewaydev$r",
+				   $conf{'GATEWAYDEV'} ||
+				     $conf{'IPV6_DEFAULTGW'} || "*"),
+		    &ui_textbox("gateway$r", $conf{'GATEWAY'}, 15),
+		    &ui_textbox("gateway6$r", $conf{'IPV6_DEFAULTGW'}, 30),
+		    ]);
 		$r++;
 		}
 	local @boot = &boot_interfaces();
 	foreach $b (grep { $_->{'gateway'} && $_->{'virtual'} eq '' } @boot) {
 		push(@table, [ &interface_sel("gatewaydev$r", $b->{'name'}),
 			       &ui_textbox("gateway$r", $b->{'gateway'}, 15),
+			       &ui_textbox("gateway6$r", $b->{'gateway6'}, 30),
 			     ]);
 		$r++;
 		}
 	push(@table, [ &interface_sel("gatewaydev$r"),
-		       &ui_textbox("gateway$r", undef, 15) ]);
+		       &ui_textbox("gateway$r", undef, 15),
+		       &ui_textbox("gateway6$r", undef, 30), ]);
 	print &ui_table_row($text{'routes_default2'},
 		&ui_columns_table(
-			[ $text{'routes_ifc'}, $text{'routes_gateway'} ],
+			[ $text{'routes_ifc'}, $text{'routes_gateway'},
+			  $text{'routes_gateway6'} ],
 			undef, \@table, undef, 1));
 	}
 
@@ -479,6 +492,8 @@ else {
 		}
 	delete($conf{'GATEWAY'});
 	delete($conf{'GATEWAYDEV'});
+	delete($conf{'IPV6_DEFAULTDEV'});
+	delete($conf{'IPV6_DEFAULTGW'});
 
 	for($r=0; defined($in{"gatewaydev$r"}); $r++) {
 		next if (!$in{"gatewaydev$r"});
@@ -488,13 +503,18 @@ else {
 			# For any interface
 			$conf{'GATEWAY'} && &error(&text('routes_eclash'));
 			$conf{'GATEWAY'} = $in{"gateway$r"};
+			$conf{'IPV6_DEFAULTGW'} &&
+				&error(&text('routes_eclash6'));
+			$conf{'IPV6_DEFAULTGW'} = $in{"gateway6$r"};
 			}
 		else {
 			# For a specific interface
-			local ($b) = grep { $_->{'fullname'} eq $in{"gatewaydev$r"} } @boot;
+			local ($b) = grep { $_->{'fullname'} eq
+					    $in{"gatewaydev$r"} } @boot;
 			$b->{'gateway'} && &error(&text('routes_eclash2',
 							$in{"gatewaydev$r"}));
 			$b->{'gateway'} = $in{"gateway$r"};
+			$b->{'gateway6'} = $in{"gateway6$r"};
 			}
 		}
 	}
@@ -651,7 +671,6 @@ local %conf;
 local @boot = &boot_interfaces();
 local ($gifc) = grep { $_->{'gateway'} && $_->{'virtual'} eq '' } @boot;
 return ( $gifc->{'gateway'}, $gifc->{'fullname'} ) if ($gifc);
-
 return $conf{'GATEWAY'} ? ( $conf{'GATEWAY'}, $conf{'GATEWAYDEV'} ) : ( );
 }
 
