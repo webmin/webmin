@@ -172,6 +172,9 @@ else {
 		push(@ip6s, $b->{'address6'}->[$i]."/".
 			    $b->{'netmask6'}->[$i]);
 		}
+	if (@ip6s && lc($conf{'IPV6INIT'}) ne 'yes') {
+		$conf{'IPV6INIT'} = 'yes';
+		}
 	$conf{'IPV6ADDR'} = shift(@ip6s);
 	$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
 	}
@@ -182,6 +185,18 @@ if (-d &translate_filename($devices_dir)) {
 		   "$devices_dir/ifcfg-$name");
 	}
 &unlock_file("$net_scripts_dir/ifcfg-$name");
+
+# Make sure IPv6 is enabled globally
+if (@{$b->{'address6'}}) {
+	local %conf;
+	&lock_file($network_config);
+	&read_env_file($network_config, \%conf);
+	if (lc($conf{'NETWORKING_IPV6'}) ne 'yes') {
+		$conf{'NETWORKING_IPV6'} = 'yes';
+		&write_env_file($network_config, \%conf);
+		}
+	&unlock_file($network_config);
+	}
 }
 
 # delete_interface(&details)

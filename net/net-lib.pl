@@ -359,7 +359,7 @@ sub check_netmask
   local($ret);
   
   # Detect IP address type (V4, V6) and check syntax accordingly
-  if ( &is_ipv6_address($address)  ) {
+  if ( &check_ip6address($address)  ) {
     $ret=&check_ip6netmask($netmask);
   }
   
