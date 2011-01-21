@@ -197,7 +197,14 @@ else {
 		}
 
 	# Save IPv6 addresses
-	if (&supports_address6($b) && defined($in{'address6_0'})) {
+	if (&supports_address6($b) && $in{'mode6'} eq 'auto') {
+		# Dynamic configuration
+		delete($b->{'address6'});
+		delete($b->{'netmask6'});
+		$b->{'auto6'} = 1;
+		}
+	elsif (&supports_address6($b) && $in{'mode6'} eq 'address') {
+		# Static addresses
 		@address6 = ( );
 		@netmask6 = ( );
 		%clash6 = ( );
@@ -222,6 +229,7 @@ else {
 			push(@netmask6, $in{'netmask6_'.$i});
 			$clash6{$in{'address6_'.$i}} = $b;
 			}
+		delete($b->{'auto6'});
 		$b->{'address6'} = \@address6;
 		$b->{'netmask6'} = \@netmask6;
 		}

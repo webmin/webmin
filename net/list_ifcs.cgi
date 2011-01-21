@@ -204,7 +204,8 @@ foreach $a (@boot) {
 		push(@cols, $a->{'netmask'} ? &html_escape($a->{'netmask'})
 					    : $text{'ifcs_auto'});
 		if (&supports_address6()) {
-			push(@cols, join("<br>\n", map { &html_escape($_) }
+			push(@cols, $a->{'auto6'} ? $text{'ifcs_auto6'} :
+				      join("<br>\n", map { &html_escape($_) }
 						    @{$a->{'address6'}}));
 			}
 		}

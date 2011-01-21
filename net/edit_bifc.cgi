@@ -154,7 +154,10 @@ if (&supports_address6($b)) {
 				$b->{'netmask6'}->[$i] || 64, 10) ]);
 		}
 	$table6 .= &ui_columns_end();
-	print &ui_table_row($text{'ifcs_mode6'}, $table6, 3);
+	print &ui_table_row($text{'ifcs_mode6'},
+		&ui_radio_table("mode6", $b->{'auto6'} ? "auto" : "address",
+			[ [ "auto", $text{'ifcs_auto6'} ],
+			  [ "address", $text{'ifcs_static2'}, $table6 ] ]));
 	}
 
 # MTU

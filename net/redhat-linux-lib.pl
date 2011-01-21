@@ -110,8 +110,14 @@ while($f = readdir(CONF)) {
 			if ($conf{'IPV6ADDR'});
 		push(@ip6s, map { [ split(/\//, $_) ] }
 				split(/\s+/, $conf{'IPV6ADDR_SECONDARIES'}));
-		$b->{'address6'} = [ map { $_->[0] } @ip6s ];
-		$b->{'netmask6'} = [ map { $_->[1] } @ip6s ];
+		if (@ip6s) {
+			# Static IPv6 addresses
+			$b->{'address6'} = [ map { $_->[0] } @ip6s ];
+			$b->{'netmask6'} = [ map { $_->[1] } @ip6s ];
+			}
+		elsif ($conf{'IPV6INIT'}) {
+			$b->{'auto6'} = 1;
+			}
 		$b->{'edit'} = ($b->{'name'} !~ /^ppp|irlan/);
 		$b->{'desc'} = $conf{'NAME'};
 		$b->{'index'} = scalar(@rv);
@@ -179,11 +185,13 @@ else {
 		push(@ip6s, $b->{'address6'}->[$i]."/".
 			    $b->{'netmask6'}->[$i]);
 		}
-	if (@ip6s && lc($conf{'IPV6INIT'}) ne 'yes') {
+	if ((@ip6s || $b->{'auto6'}) && lc($conf{'IPV6INIT'}) ne 'yes') {
 		$conf{'IPV6INIT'} = 'yes';
 		}
-	$conf{'IPV6ADDR'} = shift(@ip6s);
-	$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
+	if (@ip6s) {
+		$conf{'IPV6ADDR'} = shift(@ip6s);
+		$conf{'IPV6ADDR_SECONDARIES'} = join(" ", @ip6s);
+		}
 	}
 $conf{'NAME'} = $_[0]->{'desc'};
 &write_env_file("$net_scripts_dir/ifcfg-$name", \%conf);

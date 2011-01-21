@@ -113,6 +113,9 @@ foreach $iface (@ifaces) {
 				push(@{$v6cfg->{'netmask6'}}, $3);
 				}
 			}
+		if ($method eq "manual" && !@{$v6cfg->{'address6'}}) {
+			$v6cfg->{'auto6'} = 1;
+			}
 		$v6map{$name} = $v6cfg;
 		}
 	}
@@ -262,7 +265,7 @@ else {
 my @options6;
 my @address6 = @{$cfg->{'address6'}};
 my @netmask6 = @{$cfg->{'netmask6'}};
-if (@address6) {
+if (@address6 || $cfg->{'auto6'}) {
 	push(@options6, ['pre-up', '/sbin/modprobe -q ipv6 ; /bin/true']);
 	}
 if (@address6) {
@@ -275,17 +278,19 @@ while(@address6) {
 	push(@options6, [ "up","ifconfig $cfg->{'fullname'} inet6 add $a/$n" ]);
 	}
 
-if (!$found6 && @{$cfg->{'address6'}}) {
+# Add, update or delete IPv6 inteface
+my $method = $cfg->{'auto6'} ? "manual" : "static";
+if (!$found6 && @options6) {
 	# Need to add IPv6 block
 	&new_interface_def($cfg->{'fullname'},
-			   'inet6', 'static', \@options6);
+			   'inet6', $method, \@options6);
 	}
-elsif ($found6 && @{$cfg->{'address6'}}) {
+elsif ($found6 && @options6) {
 	# Need to update IPv6 block
 	&modify_interface_def($cfg->{'fullname'},
-			      'inet6', 'static', \@options6, 0);
+			      'inet6', $method, \@options6, 0);
 	}
-elsif ($found6 && !@{$cfg->{'address6'}}) {
+elsif ($found6 && !@options6) {
 	# Need to delete IPv6 block
 	&delete_interface_def($cfg->{'fullname'}, 'inet6');
 	}

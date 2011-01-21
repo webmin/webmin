@@ -128,6 +128,22 @@ while($f = readdir(ETC)) {
 			$ifc{'dhcp'}++;
 			}
 		$ifc{'up'}++;
+		if (open(FILE6, "$etc/hostname6\.$ifc{'fullname'}")) {
+			# Also has an IPv6 address
+			local $address6 = <FILE6>;
+			chop($address6);
+			close(FILE6);
+			if ($address6) {
+				local $netmask6;
+				($address6, $netmask6) = split(/\//, $address6);
+				$netmask6 ||= 64;
+				$ifc{'address6'} = [ $address6 ];
+				$ifc{'netmask6'} = [ $netmask6 ];
+				}
+			else {
+				$ifc{'auto6'} = 1;
+				}
+			}
 		push(@rv, \%ifc);
 		}
 	}
@@ -146,6 +162,16 @@ if (!$_[0]->{'dhcp'}) {
 	&print_tempfile(IFACE, $_[0]->{'address'},"\n");
 	}
 &close_tempfile(IFACE);
+if (@{$_[0]->{'address6'}} || $_[0]->{'auto6'}) {
+	&open_lock_tempfile(IFACE6, ">/etc/hostname6.$name");
+	if (!$_[0]->{'auto6'}) {
+		&print_tempfile(IFACE6, $_[0]->{'address6'}->[0],"\n");
+		}
+	&close_tempfile(IFACE6);
+	}
+else {
+	&unlink_logged("/etc/hostname6.$name");
+	}
 }
 
 # delete_interface(&details)
@@ -155,6 +181,7 @@ sub delete_interface
 local $name = $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
 				       : $_[0]->{'name'};
 &unlink_logged("/etc/hostname.$name");
+&unlink_logged("/etc/hostname6.$name");
 }
 
 # iface_type(name)
