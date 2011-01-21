@@ -229,6 +229,7 @@ else {
 			push(@netmask6, $in{'netmask6_'.$i});
 			$clash6{$in{'address6_'.$i}} = $b;
 			}
+		@address6 || &error($text{'aifc_eaddresses6'});
 		delete($b->{'auto6'});
 		$b->{'address6'} = \@address6;
 		$b->{'netmask6'} = \@netmask6;

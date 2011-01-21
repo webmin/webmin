@@ -19,7 +19,16 @@ foreach $l (@lines) {
 	local %ifc;
 	$l =~ /^([^:\s]+):/; $ifc{'name'} = $1;
 	$l =~ /^(\S+):/; $ifc{'fullname'} = $1;
-	if ($l =~ /inet6\s+(\S+)/) { next; }	# skip IPv6 for now
+	if ($l =~ /inet6\s+(\S+)\/(\d+)/) {
+		# Find matching IPv6 interface, set address
+		my ($address6, $netmask6) = ($1, $2);
+		my ($ifc4) = grep { $_->{'fullname'} eq $ifc{'fullname'} } @rv;
+		if ($ifc4) {
+			$ifc4->{'address6'} = [ $address6 ];
+			$ifc4->{'netmask6'} = [ $netmask6 ];
+			}
+		next;
+		}
 	if ($l =~ /^(\S+):(\d+):\s/) { $ifc{'virtual'} = $2; }
 	if ($l =~ /inet\s+(\S+)/) { $ifc{'address'} = $1; }
 	if ($l =~ /netmask\s+(\S+)/) { $ifc{'netmask'} = &parse_hex($1); }
@@ -44,17 +53,24 @@ return @rv;
 sub activate_interface
 {
 local $a = $_[0];
+
+# Check if already up
 local @active = &active_interfaces();
 local ($already) = grep { $_->{'fullname'} eq $_[0]->{'fullname'} } @active;
 if (!$already) {
+	# Bring up for the first time
 	if ($a->{'virtual'} eq "") {
-		local $out = &backquote_logged("ifconfig $a->{'name'} plumb 2>&1");
+		local $out = &backquote_logged(
+		 "ifconfig $a->{'name'} plumb 2>&1");
 		if ($out) { &error(&text('aifc_eexist', $a->{'name'})); }
 		}
 	elsif ($gconfig{'os_version'} >= 8) {
-		&system_logged("ifconfig $a->{'name'}:$a->{'virtual'} plumb >/dev/null 2>&1");
+		&system_logged(
+		 "ifconfig $a->{'name'}:$a->{'virtual'} plumb >/dev/null 2>&1");
 		}
 	}
+
+# Set IP address and netmask
 local $cmd = "ifconfig $a->{'name'}";
 if ($a->{'virtual'} ne "") { $cmd .= ":$a->{'virtual'}"; }
 $cmd .= " $a->{'address'}";
@@ -68,6 +84,11 @@ if ($a->{'up'}) { $cmd .= " up"; }
 else { $cmd .= " down"; }
 local $out = &backquote_logged("$cmd 2>&1");
 if ($?) { &error("$cmd : $out"); }
+
+# Set IPv6 address
+# XXX
+
+# Set MAC address
 if ($a->{'ether'}) {
 	$out = &backquote_logged(
 		"ifconfig $a->{'name'} ether $a->{'ether'} 2>&1");
@@ -650,7 +671,7 @@ return $netmask;
 sub supports_address6
 {
 local ($iface) = @_;
-return 0;
+return !$iface || $iface->{'virtual'} eq '' ? 2 : 0;
 }
 
 1;

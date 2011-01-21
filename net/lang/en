@@ -41,6 +41,7 @@ ifcs_ecannot=You are not allowed to edit network interfaces
 ifcs_ecannot_this=You are not allowed to edit this network interface
 ifcs_range=Range $1
 ifcs_static2=Static configuration
+ifcs_static3=IPv6 enabled
 ifcs_mode=IPv4 address
 ifcs_mode6=IPv6 addresses
 ifcs_address6=IPv6 address
@@ -71,6 +72,7 @@ aifc_eclash=The interface $1 is already using this IP address
 aifc_eaddress6=IPv6 address in row $1 is not valid
 aifc_enetmask6=IPv6 netmask in row $1 must be an integer between 1 and 128
 aifc_eclash6=IPv6 address in row $1 is already in use by interface $2
+aifc_eaddresses6=No IPv6 addresses entered
 
 bifc_create=Create Bootup Interface
 bifc_edit=Edit Bootup Interface

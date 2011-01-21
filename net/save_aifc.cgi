@@ -139,7 +139,8 @@ else {
 		}
 
 	# Save IPv6 addresses
-	if (&supports_address6($a) && defined($in{'address6_0'})) {
+	if (&supports_address6($a) && $in{'mode6'} eq 'address') {
+		# Has IPv6 addresses
 		@address6 = ( );
 		@netmask6 = ( );
 		%clash6 = ( );
@@ -164,8 +165,14 @@ else {
 			push(@netmask6, $in{'netmask6_'.$i});
 			$clash6{$in{'address6_'.$i}} = $a;
 			}
+		@address6 || &error($text{'aifc_eaddresses6'});
 		$a->{'address6'} = \@address6;
 		$a->{'netmask6'} = \@netmask6;
+		}
+	elsif (&supports_address6($a) && $in{'mode6'} eq 'none') {
+		# IPv6 addresses disabled
+		delete($a->{'address6'});
+		delete($a->{'netmask6'});
 		}
 
 	if (!$in{'ether_def'} && $a->{'virtual'} eq "" &&
