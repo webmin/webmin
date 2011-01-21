@@ -233,6 +233,12 @@ else {
 		$b->{'address6'} = \@address6;
 		$b->{'netmask6'} = \@netmask6;
 		}
+	elsif (&supports_address6($b) && $in{'mode6'} eq 'none') {
+		# IPv6 disabled
+		delete($b->{'address6'});
+		delete($b->{'netmask6'});
+		delete($b->{'auto6'});
+		}
 
 	# Save bonding settings
 	if ($in{'bond'}) {

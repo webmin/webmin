@@ -155,9 +155,12 @@ if (&supports_address6($b)) {
 		}
 	$table6 .= &ui_columns_end();
 	print &ui_table_row($text{'ifcs_mode6'},
-		&ui_radio_table("mode6", $b->{'auto6'} ? "auto" : "address",
-			[ [ "auto", $text{'ifcs_auto6'} ],
-			  [ "address", $text{'ifcs_static2'}, $table6 ] ]));
+		&ui_radio_table("mode6",
+			$b->{'auto6'} ? "auto" :
+			@{$b->{'address6'}} ? "address" : "none",
+			[ [ "none", $text{'ifcs_none6'} ],
+			  [ "auto", $text{'ifcs_auto6'} ],
+			  [ "address", $text{'ifcs_static2'}, $table6 ] ]), 2);
 	}
 
 # MTU
