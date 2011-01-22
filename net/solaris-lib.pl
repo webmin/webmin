@@ -86,9 +86,27 @@ else { $cmd .= " down"; }
 local $out = &backquote_logged("$cmd 2>&1");
 if ($?) { &error("$cmd : $out"); }
 
-# Set IPv6 address
-# XXX
-# XXX need to add virtual interface for each IPv6 address?
+if ($_[0]->{'virtual'} eq '') {
+	# Remove existing IPv6 addresses, except for the first one
+	if ($already) {
+		for(my $i=1; $i<@{$already->{'address6'}}; $i++) {
+			local $cmd = "ifconfig $_[0]->{'name'} inet6 removeif ".
+				     $already->{'address6'}->[$i];
+			local $out = &backquote_logged("$cmd 2>&1");
+			if ($?) { &error("$cmd : $out"); }
+			}
+		}
+
+	# Add all new addresses
+	for(my $i=($already ? 1 : 0); $i<@{$_[0]->{'address6'}}; $i++) {
+		local $cmd = "ifconfig $_[0]->{'name'} inet6 addif ".
+			     $_[0]->{'address6'}->[$i]."/".
+			     $_[0]->{'netmask6'}->[$i];
+		local $out = &backquote_logged("$cmd 2>&1");
+		if ($?) { &error("$cmd : $out"); }
+		}
+	# XXX routes too
+	}
 
 # Set MAC address
 if ($a->{'ether'}) {
@@ -201,21 +219,39 @@ if (!$_[0]->{'dhcp'}) {
 	}
 &close_tempfile(IFACE);
 
-# Create IPv6 config files
-if ($_[0]->{'auto6'} || @{$_[0]->{'address6'}}) {
-	# Create empty
-	}
-# XXX
+if ($_[0]->{'virtual'} eq '') {
+	# Create IPv6 config files
+	if ($_[0]->{'auto6'} || @{$_[0]->{'address6'}}) {
+		# Create empty file for main interface
+		&open_lock_tempfile(IFACE, ">/etc/hostname6.$name");
+		&close_tempfile(IFACE);
 
-if (@{$_[0]->{'address6'}} || $_[0]->{'auto6'}) {
-	&open_lock_tempfile(IFACE6, ">/etc/hostname6.$name");
-	if (!$_[0]->{'auto6'}) {
-		&print_tempfile(IFACE6, $_[0]->{'address6'}->[0],"\n");
+		# Create a file for each virtual interface
+		my %created;
+		for(my $i=0; $i<@{$_[0]->{'address6'}}; $i++) {
+			my $n = $i + 1;
+			my $f = "/etc/hostname6.${name}:${n}";
+			&open_lock_tempfile(IFACE, ">$f");
+			&print_tempfile(IFACE, $_[0]->{'address6'}->[$i]."/".
+					       $_[0]->{'netmask6'}->[$i]."\n");
+			&close_tempfile(IFACE);
+			$created{$f} = 1;
+			}
+
+		# Delete other IPv6 alias files
+		foreach my $f (glob("/etc/hostname6.".$name.":*")) {
+			if (!$created{$f}) {
+				&unlink_logged($f);
+				}
+			}
 		}
-	&close_tempfile(IFACE6);
-	}
-else {
-	&unlink_logged("/etc/hostname6.$name");
+	else {
+		# Delete all IPv6 files
+		&unlink_logged("/etc/hostname6.$name");
+		foreach my $f (glob("/etc/hostname6.".$name.":*")) {
+			&unlink_logged($f);
+			}
+		}
 	}
 }
 
