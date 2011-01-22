@@ -56,4 +56,4 @@ Updated bonding support to use the new format in Debian 5.0, thanks to Caspar Sm
 Added a field for editing the MAC address to apply at boot time on Redhat and Debian-based systems.
 Include hostname configuration files in backups, thanks to Caspar Smit.
 ---- Changes since 1.530 ----
-Static IPv6 addresses and default routes on Redhat, CentOS, Fedora, Debian and Ubuntu Linux systems can now be viewed and managed.
+Static IPv6 addresses and default routes on Redhat, CentOS, Fedora, Debian and Ubuntu Linux systems, and Solaris can now be viewed and managed.
