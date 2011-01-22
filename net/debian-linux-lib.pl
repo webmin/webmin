@@ -211,7 +211,8 @@ foreach $iface (@ifaces) {
 		# Found interface to change
 		$found = 1;
 		foreach my $o (@{$iface->[3]}) {
-			if ($o->[0] eq 'gateway') {
+			if ($o->[0] eq 'gateway' ||
+			    $o->[0] eq 'pre-up' && $o->[1] =~ /brctl/) {
 				push(@options, $o);
 				}
 			}
