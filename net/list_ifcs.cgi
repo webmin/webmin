@@ -34,6 +34,7 @@ if (!$access{'bootonly'}) {
 	push(@tds, "width=20% valign=top", "width=20% valign=top",
 		   "width=20% valign=top", "width=20% valign=top");
 	push(@tds, "width=20% valign=top") if (&supports_address6());
+	push(@tds, "width=5% valign=top");
 	if ($allow_add) {
 		push(@links,
 		     "<a href='edit_aifc.cgi?new=1'>$text{'ifcs_add'}</a>");
@@ -124,9 +125,9 @@ if ($allow_add && defined(&supports_ranges) && &supports_ranges()) {
 	}
 print &ui_links_row(\@links);
 @tds = ( "width=5 valign=top", "width=20% valign=top", "width=20% valign=top",
-	 "width=20% valign=top", "width=20% valign=top",
-	 "width=20% valign=top");
-push(@tds, "width=20% valign=top") if (&supports_address6());
+	 "width=20% valign=top", "width=20% valign=top" );
+push(@tds, "width=20% valign=top xxx") if (&supports_address6());
+push(@tds, "width=5% valign=top");
 print &ui_columns_start([ "",
 			  $text{'ifcs_name'},
 			  $text{'ifcs_type'},

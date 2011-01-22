@@ -87,23 +87,37 @@ local $out = &backquote_logged("$cmd 2>&1");
 if ($?) { &error("$cmd : $out"); }
 
 if ($_[0]->{'virtual'} eq '') {
-	# Remove existing IPv6 addresses, except for the first one
+	# Remove existing IPv6 addresses, except for ones we want to keep
+	my %need6 = map { $_, 1 } @{$_[0]->{'address6'}};
 	if ($already) {
-		for(my $i=1; $i<@{$already->{'address6'}}; $i++) {
-			local $cmd = "ifconfig $_[0]->{'name'} inet6 removeif ".
-				     $already->{'address6'}->[$i];
-			local $out = &backquote_logged("$cmd 2>&1");
-			if ($?) { &error("$cmd : $out"); }
+		if (@{$already->{'address6'}}) {
+			# Never remove first IPv6 address, which is dynamic
+			$need6{$already->{'address6'}->[0]} = 1;
+			}
+		foreach my $a (@{$already->{'address6'}}) {
+			if (!$need6{$a}) {
+				# Not needed, can remove
+				local $cmd = "ifconfig $_[0]->{'name'} inet6 ".
+					     "removeif ".$a;
+				local $out = &backquote_logged("$cmd 2>&1");
+				if ($?) { &error("$cmd : $out"); }
+				}
+			else {
+				# Don't need to add this one later
+				$need6{$a} = 0;
+				}
 			}
 		}
 
 	# Add all new addresses
-	for(my $i=($already ? 1 : 0); $i<@{$_[0]->{'address6'}}; $i++) {
-		local $cmd = "ifconfig $_[0]->{'name'} inet6 addif ".
-			     $_[0]->{'address6'}->[$i]."/".
-			     $_[0]->{'netmask6'}->[$i];
-		local $out = &backquote_logged("$cmd 2>&1");
-		if ($?) { &error("$cmd : $out"); }
+	for(my $i=0; $i<@{$_[0]->{'address6'}}; $i++) {
+		if ($need6{$_[0]->{'address6'}->[$i]}) {
+			local $cmd = "ifconfig $_[0]->{'name'} inet6 addif ".
+				     $_[0]->{'address6'}->[$i]."/".
+				     $_[0]->{'netmask6'}->[$i]." up";
+			local $out = &backquote_logged("$cmd 2>&1");
+			if ($?) { &error("$cmd : $out"); }
+			}
 		}
 	# XXX routes too
 	}
@@ -453,7 +467,8 @@ else {
 
 sub routing_config_files
 {
-return ( "/etc/defaultrouter", "/etc/notrouter", "/etc/gateways" );
+return ( "/etc/defaultrouter", "/etc/defaultrouter6",
+	 "/etc/notrouter", "/etc/gateways" );
 }
 
 sub network_config_files
@@ -475,14 +490,33 @@ close(DEFRT);
 return @defrt;
 }
 
+# get_ipv6_defaultrouters()
+# Returns a list of all IPv6 default routers
+sub get_ipv6_defaultrouters
+{
+local @defrt;
+&open_readfile(DEFRT, "/etc/defaultrouter6");
+while(<DEFRT>) {
+	s/#.*$//g;
+	if (/(\S+)/) { push(@defrt, $1); }
+	}
+close(DEFRT);
+return @defrt;
+}
+
 sub routing_input
 {
-# show default router(s) input
+# Show default IPv4 router(s) input
 local @defrt = &get_defaultrouters();
 print &ui_table_row($text{'routes_defaults'},
 	&ui_textarea("defrt", join("\n", @defrt), 3, 40));
 
-# show router input
+# Show default IPv6 router(s) input
+local @defrt6 = &get_ipv6_defaultrouters();
+print &ui_table_row($text{'routes_defaults6'},
+	&ui_textarea("defrt6", join("\n", @defrt6), 3, 40));
+
+# Show router input
 local $notrt = (-r "/etc/notrouter");
 local $gatew = (-r "/etc/gateways");
 print &ui_table_row($text{'routes_forward'},
@@ -495,6 +529,7 @@ print &ui_table_row($text{'routes_forward'},
 
 sub parse_routing
 {
+# Save IPv4 default routers
 local @defrt = split(/\s+/, $in{'defrt'});
 foreach my $d (@defrt) {
 	&to_ipaddress($d) || &error(&text('routes_edefault', $d));
@@ -510,6 +545,23 @@ else {
 	}
 &unlock_file("/etc/defaultrouter");
 
+# Save IPv6 default routers
+local @defrt6 = split(/\s+/, $in{'defrt6'});
+foreach my $d (@defrt6) {
+	&to_ip6address($d) || &error(&text('routes_edefault6', $d));
+	}
+&lock_file("/etc/defaultrouter6");
+if (@defrt6) {
+	&open_tempfile(DEFRT, ">/etc/defaultrouter6");
+	foreach $d (@defrt6) { &print_tempfile(DEFRT, $d,"\n"); }
+	&close_tempfile(DEFRT);
+	}
+else {
+	&unlink_file("/etc/defaultrouter6");
+	}
+&unlock_file("/etc/defaultrouter6");
+
+# Save router enabled flag
 &lock_file("/etc/gateways");
 &lock_file("/etc/notrouter");
 if ($in{'router'} == 0) {
@@ -572,6 +624,32 @@ else {
 &unlock_file("/etc/defaultrouter");
 }
 
+# get_default_ipv6_gateway()
+# Returns the default gateway IPv6 address (if one is set) boot time
+# settings.
+sub get_default_ipv6_gateway
+{
+local @defrt = &get_ipv6_defaultrouters();
+return @defrt ? ( $defrt[0] ) : ( );
+}
+
+# set_default_ipv6_gateway(gateway, device)
+# Sets the default gateway to the given IP accessible via the given device,
+# in the boot time settings.
+sub set_default_ipv6_gateway
+{
+&lock_file("/etc/defaultrouter6");
+if ($_[0]) {
+	&open_tempfile(DEF, ">/etc/defaultrouter6");
+	&print_tempfile(DEF, $_[0],"\n");
+	&close_tempfile(DEF);
+	}
+else {
+	&unlink_file("/etc/defaultrouter6");
+	}
+&unlock_file("/etc/defaultrouter6");
+}
+
 # list_routes()
 # Returns a list of active routes
 sub list_routes
@@ -580,7 +658,7 @@ local @rv;
 &open_execute_command(ROUTES, "netstat -rn", 1, 1);
 while(<ROUTES>) {
 	s/\s+$//;
-	if (/^([0-9\.]+|default)\s+([0-9\.]+)\s+\S+\s+\S+\s+\S+(\s+(\S+))?$/) {
+	if (/^([0-9a-f:\.\/]+|default)\s+([0-9a-f:\.]+)\s+\S+\s+\S+\s+\S+(\s+(\S+))?$/) {
 		local $r = { 'dest' => $1 eq "default" ? "0.0.0.0" : $1,
 			     'gateway' => $2,
 			     'iface' => $4 };
@@ -589,6 +667,9 @@ while(<ROUTES>) {
 				  $r->{'dest'} =~ /\.0\.0$/ ? "255.255.0.0" :
 				  $r->{'dest'} =~ /\.0$/ ? "255.255.255.0" :
 							   undef;
+		if ($r->{'dest'} =~ s/\/(\d+)$//) {
+			$r->{'netmask'} = $1;
+			}
 		push(@rv, $r);
 		}
 	}
@@ -603,11 +684,19 @@ sub delete_route
 {
 local ($route) = @_;
 local $cmd = "route delete";
+local $inet6 = &check_ip6address($route->{'dest'}) ||
+	       &check_ip6address($route->{'gateway'});
+if ($inet6) {
+	$cmd .= " -inet6";
+	}
 if (!$route->{'dest'} || $route->{'dest'} eq '0.0.0.0') {
 	$cmd .= " default";
 	}
 else {
 	$cmd .= " $route->{'dest'}";
+	if ($route->{'netmask'} && $inet6) {
+		$cmd .= "/$route->{'netmask'}";
+		}
 	}
 if ($route->{'gateway'}) {
 	$cmd .= " $route->{'gateway'}";
@@ -619,7 +708,7 @@ elsif ($route->{'iface'}) {
 		$cmd .= " $aiface->{'address'}";
 		}
 	}
-if ($route->{'netmask'}) {
+if ($route->{'netmask'} && !$inet6) {
 	$cmd .= " $route->{'netmask'}";
 	}
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
@@ -631,12 +720,20 @@ return $? ? $out : undef;
 sub create_route
 {
 local ($route) = @_;
+local $inet6 = &check_ip6address($route->{'dest'}) ||
+	       &check_ip6address($route->{'gateway'});
 local $cmd = "route add ";
+if ($inet6) {
+	$cmd .= " -inet6";
+	}
 if (!$route->{'dest'}) {
 	$cmd .= " default";
 	}
 else {
 	$cmd .= " $route->{'dest'}";
+	if ($route->{'netmask'} && $inet6) {
+		$cmd .= "/$route->{'netmask'}";
+		}
 	}
 if ($route->{'gateway'}) {
 	$cmd .= " $route->{'gateway'}";
@@ -648,7 +745,7 @@ elsif ($route->{'iface'}) {
 		$cmd .= " $aiface->{'address'}";
 		}
 	}
-if ($route->{'netmask'}) {
+if ($route->{'netmask'} && !$inet6) {
 	$cmd .= " $route->{'netmask'}";
 	}
 local $out = &backquote_logged("$cmd 2>&1 </dev/null");
@@ -661,19 +758,26 @@ return $? ? $out : undef;
 sub apply_network
 {
 local (%done, $b, $a);
+
+# Activate all boot-time interfaces
 foreach $b (&boot_interfaces()) {
+	next if ($b->{'name'} eq 'lo0');
 	&apply_interface($b);
 	$done{$b->{'fullname'}}++;
 	}
 foreach $a (&active_interfaces()) {
+	next if ($a->{'name'} eq 'lo0');
 	if (!$done{$a->{'fullname'}} && !$a->{'zone'}) {
 		&deactive_interface($a);
 		}
 	}
+
+# Apply default IPv4 router
 local @infile = &get_defaultrouters();
 local @routes = &list_routes();
 local @inmem = map { $_->{'gateway'} }
-		   grep { $_->{'dest'} eq "0.0.0.0" } @routes;
+		   grep { $_->{'dest'} eq "0.0.0.0" &&
+			  !&check_ip6address($_->{'gateway'}) } @routes;
 if (join(" ", @infile) ne join(" ", @inmem)) {
 	# Fix up default routes
 	local $r;
@@ -682,6 +786,23 @@ if (join(" ", @infile) ne join(" ", @inmem)) {
 		}
 	foreach $r (@infile) {
 		&system_logged("route add default $r >/dev/null 2>&1");
+		}
+	}
+
+# Apply default IPv6 router
+local @infile = &get_ipv6_defaultrouters();
+local @routes = &list_routes();
+local @inmem = map { $_->{'gateway'} }
+		   grep { $_->{'dest'} eq "0.0.0.0" &&
+			  &check_ip6address($_->{'gateway'}) } @routes;
+if (join(" ", @infile) ne join(" ", @inmem)) {
+	# Fix up default routes
+	local $r;
+	foreach $r (@inmem) {
+		&system_logged("route delete -inet6 default $r >/dev/null 2>&1");
+		}
+	foreach $r (@infile) {
+		&system_logged("route add -inet6 default $r >/dev/null 2>&1");
 		}
 	}
 }
