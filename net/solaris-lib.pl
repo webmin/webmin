@@ -20,12 +20,13 @@ foreach $l (@lines) {
 	$l =~ /^([^:\s]+):/; $ifc{'name'} = $1;
 	$l =~ /^(\S+):/; $ifc{'fullname'} = $1;
 	if ($l =~ /inet6\s+(\S+)\/(\d+)/) {
-		# Find matching IPv6 interface, set address
+		# Found an IPv6 interface, which might be real or virtual. Look
+		# for the previous interface with the same name, and add to it.
 		my ($address6, $netmask6) = ($1, $2);
-		my ($ifc4) = grep { $_->{'fullname'} eq $ifc{'fullname'} } @rv;
+		my ($ifc4) = grep { $_->{'fullname'} eq $ifc{'name'} } @rv;
 		if ($ifc4) {
-			$ifc4->{'address6'} = [ $address6 ];
-			$ifc4->{'netmask6'} = [ $netmask6 ];
+			push(@{$ifc4->{'address6'}}, $address6);
+			push(@{$ifc4->{'netmask6'}}, $netmask6);
 			}
 		next;
 		}
@@ -87,6 +88,7 @@ if ($?) { &error("$cmd : $out"); }
 
 # Set IPv6 address
 # XXX
+# XXX need to add virtual interface for each IPv6 address?
 
 # Set MAC address
 if ($a->{'ether'}) {
@@ -126,6 +128,8 @@ push(@rv, { 'name' => 'lo0',
 	    'netmask' => '255.0.0.0',
 	    'up' => 1,
 	    'edit' => 0 });
+
+# Search for IPv4 interface files
 local $etc = &translate_filename("/etc");
 opendir(ETC, $etc);
 while($f = readdir(ETC)) {
@@ -149,26 +153,38 @@ while($f = readdir(ETC)) {
 			$ifc{'dhcp'}++;
 			}
 		$ifc{'up'}++;
-		if (open(FILE6, "$etc/hostname6\.$ifc{'fullname'}")) {
-			# Also has an IPv6 address
-			local $address6 = <FILE6>;
-			chop($address6);
-			close(FILE6);
-			if ($address6) {
-				local $netmask6;
-				($address6, $netmask6) = split(/\//, $address6);
-				$netmask6 ||= 64;
-				$ifc{'address6'} = [ $address6 ];
-				$ifc{'netmask6'} = [ $netmask6 ];
-				}
-			else {
-				$ifc{'auto6'} = 1;
-				}
-			}
 		push(@rv, \%ifc);
 		}
 	}
 closedir(ETC);
+
+# Re-scan for /etc/hostname6 files, for IPv6 addresses
+opendir(ETC, $etc);
+while($f = readdir(ETC)) {
+        if ($f =~ /^hostname6\.(\S+):(\d+)$/ || $f =~ /^hostname6\.(\S+)/) {
+		local ($name, $virtual) = ($1, $2);
+		local ($ifc) = grep { $_->{'fullname'} eq $name } @rv;
+		next if (!$ifc);
+		local $address6 = &read_file_contents("/etc/$f");
+		chop($address6);
+		if ($address6) {
+			# Has a static IPv6 address
+			local $netmask6;
+			($address6, $netmask6) = split(/\//, $address6);
+			$netmask6 ||= 64;
+			push(@{$ifc->{'address6'}}, $address6);
+			push(@{$ifc->{'netmask6'}}, $netmask6);
+			$ifc->{'auto6'} = 0;
+			}
+		elsif (!$address6 && $virtual eq '' &&
+		       !@{$ifc->{'address6'}}) {
+			# Empty hostname6.xxx file, indicating dynamic address
+			$ifc->{'auto6'} = 1;
+			}
+		}
+	}
+closedir(ETC);
+
 return @rv;
 }
 
@@ -176,6 +192,7 @@ return @rv;
 # Create or update a boot-time interface
 sub save_interface
 {
+# Update IPv4 config file
 local $name = $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
 				       : $_[0]->{'name'};
 &open_lock_tempfile(IFACE, ">/etc/hostname.$name");
@@ -183,6 +200,13 @@ if (!$_[0]->{'dhcp'}) {
 	&print_tempfile(IFACE, $_[0]->{'address'},"\n");
 	}
 &close_tempfile(IFACE);
+
+# Create IPv6 config files
+if ($_[0]->{'auto6'} || @{$_[0]->{'address6'}}) {
+	# Create empty
+	}
+# XXX
+
 if (@{$_[0]->{'address6'}} || $_[0]->{'auto6'}) {
 	&open_lock_tempfile(IFACE6, ">/etc/hostname6.$name");
 	if (!$_[0]->{'auto6'}) {
@@ -203,6 +227,9 @@ local $name = $_[0]->{'virtual'} ne "" ? $_[0]->{'name'}.":".$_[0]->{'virtual'}
 				       : $_[0]->{'name'};
 &unlink_logged("/etc/hostname.$name");
 &unlink_logged("/etc/hostname6.$name");
+foreach my $f (glob("/etc/hostname6.".$name.":*")) {
+	&unlink_logged($f);
+	}
 }
 
 # iface_type(name)
@@ -671,7 +698,7 @@ return $netmask;
 sub supports_address6
 {
 local ($iface) = @_;
-return !$iface || $iface->{'virtual'} eq '' ? 2 : 0;
+return !$iface || $iface->{'virtual'} eq '' ? 1 : 0;
 }
 
 1;

@@ -143,30 +143,18 @@ else {
 	}
 
 # Show the IPv6 field
-$supp = &supports_address6($b);
-if ($supp) {
-	if ($supp == 1) {
-		# Multiple IPs allowed
-		$table6 = &ui_columns_start([ $text{'ifcs_address6'},
-					      $text{'ifcs_netmask6'} ], 50);
-		for($i=0; $i<=@{$b->{'address6'}}; $i++) {
-			$table6 .= &ui_columns_row([
-			    &ui_textbox("address6_$i",
-					$b->{'address6'}->[$i], 40),
-			    &ui_textbox("netmask6_$i",
-					$b->{'netmask6'}->[$i] || 64, 10) ]);
-			}
-		$table6 .= &ui_columns_end();
+if (&supports_address6($b)) {
+	# Multiple IPs allowed
+	$table6 = &ui_columns_start([ $text{'ifcs_address6'},
+				      $text{'ifcs_netmask6'} ], 50);
+	for($i=0; $i<=@{$b->{'address6'}}; $i++) {
+		$table6 .= &ui_columns_row([
+		    &ui_textbox("address6_$i",
+				$b->{'address6'}->[$i], 40),
+		    &ui_textbox("netmask6_$i",
+				$b->{'netmask6'}->[$i] || 64, 10) ]);
 		}
-	else {
-		# Just one
-		@grid = ( $text{'ifcs_address6'},
-			  &ui_textbox("address6_0", $b->{'address6'}->[0], 40),
-			  $text{'ifcs_netmask6'},
-			  &ui_textbox("netmask6_0",
-				      $b->{'netmask6'}->[0] || 64, 10) );
-		$table6 = &ui_grid_table(\@grid, 2);
-		}
+	$table6 .= &ui_columns_end();
 	print &ui_table_row($text{'ifcs_mode6'},
 		&ui_radio_table("mode6",
 			$b->{'auto6'} ? "auto" :

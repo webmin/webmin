@@ -92,28 +92,17 @@ else {
 print &ui_table_row($text{'ifcs_broad'}, $broadfield);
 
 # Show the IPv6 field
-$supp = &supports_address6($a);
-if ($supp) {
-	if ($supp == 1) {
-		# Multiple addresses supported
-		$table6 = &ui_columns_start([ $text{'ifcs_address6'},
-					      $text{'ifcs_netmask6'} ], 50);
-		for($i=0; $i<=@{$a->{'address6'}}; $i++) {
-			$table6 .= &ui_columns_row([
-			    &ui_textbox("address6_$i",
-					$a->{'address6'}->[$i], 40),
-			    &ui_textbox("netmask6_$i",
-					$a->{'netmask6'}->[$i] || 64, 10) ]);
-			}
-		$table6 .= &ui_columns_end();
+if (&supports_address6($a)) {
+	$table6 = &ui_columns_start([ $text{'ifcs_address6'},
+				      $text{'ifcs_netmask6'} ], 50);
+	for($i=0; $i<=@{$a->{'address6'}}; $i++) {
+		$table6 .= &ui_columns_row([
+		    &ui_textbox("address6_$i",
+				$a->{'address6'}->[$i], 40),
+		    &ui_textbox("netmask6_$i",
+				$a->{'netmask6'}->[$i] || 64, 10) ]);
 		}
-	else {
-		# Just one address
-		$table6 = &ui_textbox("address6_0", $a->{'address6'}->[0], 40).
-			  " <b>".$text{'ifcs_netmask6'}."</b> ".
-			  &ui_textbox("netmask6_0",
-				      $a->{'netmask6'}->[0] || 64, 10);
-		}
+	$table6 .= &ui_columns_end();
 	print &ui_table_row($text{'ifcs_mode6a'},
 		&ui_radio_table("mode6",
 			@{$a->{'address6'}} ? "address" : "none",
