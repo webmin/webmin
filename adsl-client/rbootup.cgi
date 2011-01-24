@@ -8,7 +8,7 @@ require './adsl-client-lib.pl';
 
 &lock_file($config{'pppoe_conf'});
 $conf = &get_config();
-&save_directive($conf, "ONBOOT", $in{'onboot'});
+&save_directive($conf, "ONBOOT", $in{'onboot'} ? 'yes' : 'no');
 &flush_file_lines();
 &unlock_file($config{'pppoe_conf'});
 &webmin_log($in{'onboot'} eq 'yes' ? 'bootup' : 'bootdown');
