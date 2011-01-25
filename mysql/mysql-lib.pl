@@ -1335,13 +1335,13 @@ sub backup_database
 local ($db, $file, $compress, $drop, $where, $charset, $compatible,
        $tables, $user, $single) = @_;
 if ($compress == 0) {
-	$writer = ">$file";
+	$writer = ">".quotemeta($file);
 	}
 elsif ($compress == 1) {
-	$writer = "| gzip -c >$file";
+	$writer = "| gzip -c >".quotemeta($file);
 	}
 elsif ($compress == 2) {
-	$writer = "| bzip2 -c >$file";
+	$writer = "| bzip2 -c >".quotemeta($file);
 	}
 local $dropsql = $drop ? "--add-drop-table" : "";
 local $singlesql = $single ? "--single-transaction" : "";
