@@ -455,14 +455,15 @@ xinha_init = function()
 xinha_editors = [ "body" ];
 xinha_plugins = [ ];
 xinha_config = new Xinha.Config();
+xinha_config.hideSomeButtons(" print showhelp about killword toggleborders ");
 xinha_editors = Xinha.makeEditors(xinha_editors, xinha_config, xinha_plugins);
 Xinha.startEditors(xinha_editors);
 }
 </script>
 EOF
 	print &ui_table_row(undef,
-		&ui_textarea("body", $quote, 20, 80, undef, 0,
-		  	     "style='width:100%' id=body"), 2);
+		&ui_textarea("body", $quote, 40, 80, undef, 0,
+		  	     "style='width:99%' id=body"), 2);
 	}
 else {
 	# Show text editing area
