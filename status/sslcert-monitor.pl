@@ -68,7 +68,25 @@ elsif ($_[0]->{'mismatch'} && $_[0]->{'url'} &&
 	local $cn = $1;
 	local $match = $1;
 	$match =~ s/\*/\.\*/g;	# Make perl RE
-	if ($host !~ /^$match$/i) {
+	local @matches = ( $match );
+	if ($info =~ /Subject\s+Alternative\s+Name.*\r?\n\s*(.*)\n/) {
+		# Add UCC alternate names
+		local $alts = $1;
+		$alts =~ s/^\s+//;
+		$alts =~ s/\s+$//;
+		foreach my $a (split(/[, ]+/, $alts)) {
+			if ($a =~ /^DNS:(\S+)/) {
+				$match = $1;
+				$match =~ s/\*/\.\*/g;  # Make perl RE
+				push(@matches, $match);
+				}
+			}
+		}
+	local $ok = 0;
+	foreach $match (@matches) {
+		$ok++ if ($host =~ /^$match$/i);
+		}
+	if (!$ok) {
 		$desc = &text('sslcert_ematch', "<tt>$host</tt>",
 			      "<tt>$cn</tt>");
 		}

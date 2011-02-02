@@ -75,3 +75,5 @@ The Check File or Directory monitor can now use a pattern like /tmp/* to check s
 Added a monitor-level option to run a command if the monitor times out.
 ---- Changes since 1.520 ----
 Enhanced the free memory monitor to be able to check virtual memory as well.
+---- Changes since 1.530 ----
+Update the SSL certificate monitor to check alternate names as well when looking for hostname mismatches.
