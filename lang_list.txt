@@ -1,5 +1,6 @@
 lang=en,titles=1	English (US)
 lang=en_GB,titles=1,fallback=en	English (UK)
+lang=en.UTF-8,charset=UTF-8,titles=1,fallback=en	English UTF-8
 lang=de,titles=1	German
 lang=ru_SU,charset=koi8-r,titles=0	Russian KOI8
 lang=ru_RU,charset=windows-1251,titles=0	Russian CP1251
@@ -23,7 +24,7 @@ lang=ja_JP.euc,charset=EUC-JP,titles=0	Japanese
 lang=ja_JP.UTF-8,charset=UTF-8,titles=0	Japanese
 lang=si,charset=iso-8859-2,titles=0	Slovenian
 lang=ko_KR.euc,charset=EUC-KR,titles=0	Korean
-lang=ko_KR.UTF-8,charset=UTF-8,titles=0	Korean (UTF-8)
+lang=ko_KR.UTF-8,charset=UTF-8,titles=0	Korean UTF-8
 lang=ca,titles=1        Catalan
 lang=cz,charset=iso-8859-2,titles=0	Czech
 lang=th,charset=tis-620,titles=0	Thai
