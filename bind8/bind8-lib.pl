@@ -1184,27 +1184,28 @@ return 1;
 # (without :: and leading zeroes in all parts) 
 sub expand_ip6
 {
-local($n);
-for($n = 6 - ($_[0] =~ s/([^:]):(?=[^:])/$1:/g); $n > 0; $n--) {
-	$_[0] =~ s/::/:0::/;
+my ($ip) = @_;
+for(my $n = 6 - ($ip =~ s/([^:]):(?=[^:])/$1:/g); $n > 0; $n--) {
+	$ip =~ s/::/:0::/;
 	}
-$_[0] =~ s/::/:/;
-$_[0] =~ s/^:/0:/;
-$_[0] =~ s/:$/:0/;
-$_[0] =~ s/(:|^)0(?=\w)/$1/;
-$_[0] =~ tr/[A-Z]/[a-z]/;
-return $_[0];
+$ip =~ s/::/:/;
+$ip =~ s/^:/0:/;
+$ip =~ s/:$/:0/;
+$ip =~ s/(:|^)0(?=\w)/$1/;
+$ip =~ tr/[A-Z]/[a-z]/;
+return $ip;
 }
 
 # expandall_ip6(ip)
 # Transform IPv6 address to the expanded form containing all internal 0's 
 sub expandall_ip6
 {
-&expand_ip6($_[0]);
-$_[0] =~ s/(:|^)(\w{3})(?=:|$)/:0$2/g;
-$_[0] =~ s/(:|^)(\w{2})(?=:|$)/:00$2/g;
-$_[0] =~ s/(:|^)(\w)(?=:|$)/:000$2/g;
-return $_[0];
+my ($ip) = @_;
+$ip = &expand_ip6($ip);
+$ip =~ s/(:|^)(\w{3})(?=:|$)/:0$2/g;
+$ip =~ s/(:|^)(\w{2})(?=:|$)/:00$2/g;
+$ip =~ s/(:|^)(\w)(?=:|$)/:000$2/g;
+return $ip;
 }
 
 # check_ip6address(ip)
