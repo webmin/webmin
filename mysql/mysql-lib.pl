@@ -317,17 +317,7 @@ else {
 	local $temp = &transname();
 	if (@params) {
 		# Sub in ? parameters
-		local $p;
-		local $pos = -1;
-		foreach $p (@params) {
-			$pos = index($sql, '?', $pos+1);
-			&error("Incorrect number of parameters") if ($pos < 0);
-			local $qp = $p;
-			$qp =~ s/'/''/g;
-			$qp = $qp eq '' ? 'NULL' : "'$qp'";
-			$sql = substr($sql, 0, $pos).$qp.substr($sql, $pos+1);
-			$pos += length($qp)-1;
-			}
+		$sql = &replace_sql_parameters($sql, @params);
 		}
 	open(TEMP, ">$temp");
 	if ($sql_charset) {
@@ -348,10 +338,36 @@ else {
 	}
 }
 
+# replace_sql_parameters(sql, params)
+# Returns a string with ? replaced by parameter text
+sub replace_sql_parameters
+{
+my ($sql, @params) = @_;
+my $pos = -1;
+foreach my $p (@params) {
+	$pos = index($sql, '?', $pos+1);
+	&error("Incorrect number of parameters") if ($pos < 0);
+	local $qp = $p;
+	$qp =~ s/'/''/g;
+	$qp = $qp eq '' ? 'NULL' : "'$qp'";
+	$sql = substr($sql, 0, $pos).$qp.substr($sql, $pos+1);
+	$pos += length($qp)-1;
+	}
+return $sql;
+}
+
 # execute_sql_logged(database, command, param, ...)
+# Calls execute_sql, but logs the command first
 sub execute_sql_logged
 {
-&additional_log('sql', $_[0], $_[1]);
+local ($db, $sql, @params) = @_;
+if (@params) {
+	eval {
+		local $main::error_must_die = 1;
+		$sql = &replace_sql_parameters($sql, @params);
+		}
+	}
+&additional_log('sql', $db, $sql);
 return &execute_sql(@_);
 }
 
