@@ -84,6 +84,9 @@ main_title=Webmin $1 op $2 ($3)
 main_title2=Webmin
 umain_title=Usermin $1 op $2 ($3)
 umain_title2=Usermin
+main_logout=Loguit
+main_unused=Ongebruikte Modules
+main_refreshmods=Ververs Modules
 
 sysinfo_title=Systeem Informatie
 sysinfo_header0=Systeem
@@ -249,3 +252,14 @@ search_none=Geen virtuele servers overeenkomend met $1gevonden.
 
 ssearch_title=Zoek systemen
 ssearch_none=Geen VM2 systemen overeenkomend met $1gevonden.
+
+day_0=Zondag
+day_1=Maandag
+day_2=Dinsdag
+day_3=Woensdag
+day_4=Donderdag
+day_5=Vrijdag
+day_6=Zaterdag
+
+category_=Overige
+category_net=Netwerken
