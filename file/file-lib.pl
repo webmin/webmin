@@ -388,17 +388,19 @@ if ($zip) {
 	$err = &extract_archive(&unmake_chroot($path), $zip-1);
 	if (!$err) {
 		# Refresh whole dir
-		$refresh = $in{'dir'};
+		$refresh = $dir;
 		}
 	}
 $info = &file_info_line(&unmake_chroot($refresh), $refresh);
 print "<script>\n";
 print "opener.document.FileManager.",
-      "upload_notify(\"$refresh\", \"$info\");\n";
+      "upload_notify(\"".&quote_escape($refresh)."\", ",
+      "\"".&quote_escape($info)."\");\n";
 if ($err) {
 	$err =~ s/\r//g;
 	$err =~ s/\n/\\n/g;
-	print "opener.document.FileManager.","upload_error(\"",&text('zip_err', $err),"\");\n";
+	print "opener.document.FileManager.",
+	      "upload_error(\"",&quote_escape(&text('zip_err', $err)),"\");\n";
 	}
 print "close();\n";
 print "</script>\n";
