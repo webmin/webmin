@@ -1105,18 +1105,28 @@ public class FileManager extends Applet
 	       file_str = path_str.substring(sl+1);
 	RemoteFile par = find_directory(par_str, false);
 	RemoteFile upfile = par.find(file_str);
-	if (upfile == null) {
-		// Need to add this file/directory
-		upfile = new RemoteFile(this, info, par);
-		par.add(upfile);
+	try {
+		if (upfile == null) {
+			// Need to add this file/directory
+			upfile = new RemoteFile(this, info, par);
+			par.add(upfile);
+			}
+		else if (upfile.type == RemoteFile.DIR) {
+			// Is a directory .. refresh from server
+			FileNode upnode = (FileNode)nodemap.get(upfile);
+			if (upnode != null)
+				upnode.refresh();
+			}
+		show_files(showing_files);
 		}
-	else if (upfile.type == RemoteFile.DIR) {
-		// Is a directory .. refresh from server
-		FileNode upnode = (FileNode)nodemap.get(upfile);
-		if (upnode != null)
-			upnode.refresh();
+	catch(Exception e) {
+		// In some cases, any attempt to make an HTTP request to
+		// refresh the directory may fail because Java apparently has
+		// some security rules that limit what a function called from
+		// JavaScript is allowed to do. All we can do is ignore the
+		// exception :-(
+		e.printStackTrace();
 		}
-	show_files(showing_files);
 	}
 
 	// Called back by Javascript to show an upload-related error
