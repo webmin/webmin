@@ -175,6 +175,11 @@ if ($config{'user_setquota_command'} &&
 		# Pass numeric UID
 		$user = $1;
 		}
+	elsif ($user =~ /^\d+$/) {
+		# Username is numeric .. convert to UID
+		local $uid = getpwnam($user);
+		$user = $uid if (defined($uid));
+		}
 	local $cmd = $config{'user_setquota_command'}." ".quotemeta($user)." ".
 		     int($_[2])." ".int($_[3])." ".int($_[4])." ".int($_[5]).
 		     " ".quotemeta($_[1]);
@@ -232,6 +237,11 @@ if ($config{'group_setquota_command'} &&
 	if ($group =~ /^#(\d+)$/) {
 		# Pass numeric UID
 		$group = $1;
+		}
+	elsif ($group =~ /^\d+$/) {
+		# Group name is numeric .. convert to GID
+		local $gid = getgrnam($group);
+		$group = $gid if (defined($gid));
 		}
 	local $cmd =$config{'group_setquota_command'}." ".quotemeta($group)." ".
 		     int($_[2])." ".int($_[3])." ".int($_[4])." ".int($_[5]).
