@@ -318,56 +318,62 @@ splice(@$lref, $_[1]->{'line'}, $lines);
 # Add a new $generate line to some zone file
 sub create_generator
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $f = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($f);
 push(@$lref, join(" ", '$generate', @_[1..4]).
 	     ($_[5] ? " ;$_[5]" : ""));
-&flush_file_lines();
+&flush_file_lines($f);
 }
 
 # modify_generator(file, &old, range, lhs, type, rhs, [comment])
 # Updates an existing $generate line in some zone file
 sub modify_generator
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $f = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($f);
 $lref->[$_[1]->{'line'}] = join(" ", '$generate', @_[2..5]).
 			   ($_[6] ? " ;$_[6]" : "");
-&flush_file_lines();
+&flush_file_lines($f);
 }
 
 # delete_generator(file, &old)
 # Deletes a $generate line in some zone file
 sub delete_generator
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $f = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($f);
 splice(@$lref, $_[1]->{'line'}, 1);
-&flush_file_lines();
+&flush_file_lines($f);
 }
 
 # create_defttl(file, value)
 # Adds a $ttl line to a records file
 sub create_defttl
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $f = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($f);
 splice(@$lref, 0, 0, "\$ttl $_[1]");
-&flush_file_lines();
+&flush_file_lines($f);
 }
 
 # modify_defttl(file, &old, value)
 # Updates the $ttl line with a new value
 sub modify_defttl
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $f = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($f);
 $lref->[$_[1]->{'line'}] = "\$ttl $_[2]";
-&flush_file_lines();
+&flush_file_lines($f);
 }
 
 # delete_defttl(file, &old)
 # Removes the $ttl line from a records file
 sub delete_defttl
 {
-local $lref = &read_file_lines(&make_chroot(&absolute_path($_[0])));
+local $f = &make_chroot(&absolute_path($_[0]));
+local $lref = &read_file_lines($f);
 splice(@$lref, $_[1]->{'line'}, 1);
-&flush_file_lines();
+&flush_file_lines($f);
 }
 
 
