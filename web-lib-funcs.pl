@@ -4798,7 +4798,7 @@ if (!@main::list_languages_cache) {
 return @main::list_languages_cache;
 }
 
-=head2 read_env_file(file, &hash)
+=head2 read_env_file(file, &hash, [include-commented])
 
 Similar to Webmin's read_file function, but handles files containing shell
 environment variables formatted like :
@@ -4815,6 +4815,10 @@ sub read_env_file
 local $_;
 &open_readfile(FILE, $_[0]) || return 0;
 while(<FILE>) {
+	if ($_[2]) {
+		# Remove start of line comments
+		s/^\s*#+\s*//;
+		}
 	s/#.*$//g;
 	if (/^\s*(export\s*)?([A-Za-z0-9_\.]+)\s*=\s*"(.*)"/i ||
 	    /^\s*(export\s*)?([A-Za-z0-9_\.]+)\s*=\s*'(.*)'/i ||
