@@ -6930,6 +6930,7 @@ if ($_[0] == 2) {
 			    &nice_size($progress_size)),"<br>\n";
 		}
 	else {
+		$progress_size = undef;
 		print &text('progress_nosize', $progress_callback_url),"<br>\n";
 		}
 	$last_progress_time = $last_progress_size = undef;
