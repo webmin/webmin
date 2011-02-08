@@ -144,7 +144,7 @@ if ($still) {
 		}
 	local ($still) = grep { $_->{'fullname'} eq $name }
 		      &active_interfaces();
-	if ($still) {
+	if ($still && $still->{'up'}) {
 		&error($out ? "<pre>$out</pre>"
 			    : "Interface is still active even after being ".
 			      "shut down");
