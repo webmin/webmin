@@ -401,7 +401,10 @@ if ($_[0]->{'is_snap'}) {
 else {
 	$cmd .= " -p ".quotemeta($_[0]->{'perm'});
 	$cmd .= " -C ".quotemeta($_[0]->{'alloc'});
-	$cmd .= " -i ".quotemeta($_[0]->{'stripe'}) if ($_[0]->{'stripe'});
+	$cmd .= " -i ".quotemeta($_[0]->{'stripe'})
+		if ($_[0]->{'stripe'});
+	$cmd .= " -I ".quotemeta($_[0]->{'stripesize'})
+		if ($_[0]->{'stripesize'} && $_[0]->{'stripe'});
 	$cmd .= " ".quotemeta($_[0]->{'vg'});
 	}
 $cmd .= $suffix;

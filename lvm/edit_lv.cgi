@@ -164,6 +164,13 @@ if (!$in{'lv'} && !$lv->{'is_snap'}) {
 	print &ui_table_row($text{'lv_stripe'},
 		&ui_opt_textbox("stripe", undef, 4, $text{'lv_nostripe'},
 				$text{'lv_stripes2'}), 3);
+
+	# And strip size
+	print &ui_table_row($text{'lv_stripesize'},
+		&ui_select("stripesize", undef,
+			   [ [ undef, $text{'default'} ],
+			     map { [ $_, $_." kB" ] }
+				 map { 2**$_ } (2 .. 9) ]));
 	}
 elsif (!$lv->{'is_snap'}) {
 	# Show current striping

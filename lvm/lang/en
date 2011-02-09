@@ -71,6 +71,7 @@ lv_stripe=Volume striping
 lv_nostripe=Disabled (always allocate from start)
 lv_stripes=Stripe across $1 physical volumes
 lv_stripes2=Physical volumes to stripe across
+lv_stripesize=Stripe size
 lv_err=Failed to save logical volume
 lv_ename=Missing or invalid volume name
 lv_esame=A logical volume with the same name already exists

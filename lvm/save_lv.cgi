@@ -89,6 +89,7 @@ else {
 			$lv->{'perm'} = $in{'perm'};
 			$lv->{'alloc'} = $in{'alloc'};
 			$lv->{'stripe'} = $in{'stripe'} if (!$in{'stripe_def'});
+			$lv->{'stripesize'} = $in{'stripesize'};
 			}
 		$err = &create_logical_volume($lv);
 		&error("<pre>$err</pre>") if ($err);
