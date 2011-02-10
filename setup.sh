@@ -811,7 +811,7 @@ if [ "$nopostinstall" = "" ]; then
 fi
 
 # Enable background collection
-if [ "$upgrading" != 1 ]; then
+if [ "$upgrading" != 1 -a -r $config_dir/system-status/enable-collection.pl ]; then
 	echo "Enabling background status collection .."
 	$config_dir/system-status/enable-collection.pl 5
 	echo "..done"
