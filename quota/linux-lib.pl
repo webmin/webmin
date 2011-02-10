@@ -227,16 +227,18 @@ if ($_[1]%2 == 1) {
 			&close_tempfile(QUOTAFILE);
 			&set_ownership_permissions(undef, undef, 0600,
 						   "$_[0]/quota.user");
-			&system_logged("convertquota -u / 2>&1");
+			&system_logged("convertquota -u $_[0] 2>&1");
 			$ok = 1 if (!$?);
 			&unlink_file("$_[0]/quota.user");
 			}
 		if (!$ok) {
 			# Try to create an [a]quota.user file
-			&open_tempfile(QUOTAFILE, ">>$_[0]/$qf", 0, 1);
-			&close_tempfile(QUOTAFILE);
-			&set_ownership_permissions(undef, undef, 0600,
-						   "$_[0]/$qf");
+			if ($version < 4) {
+				&open_tempfile(QUOTAFILE, ">>$_[0]/$qf", 0, 1);
+				&close_tempfile(QUOTAFILE);
+				&set_ownership_permissions(undef, undef, 0600,
+							   "$_[0]/$qf");
+				}
 			&run_quotacheck($_[0]) || &run_quotacheck($_[0], "-u -f") || &run_quotacheck($_[0], "-u -f -m") || &run_quotacheck($_[0], "-u -f -m -c");
 			}
 		}
@@ -255,16 +257,18 @@ if ($_[1] > 1) {
 			&close_tempfile(QUOTAFILE);
 			&set_ownership_permissions(undef, undef, 0600,
 						   "$_[0]/quota.group");
-			&system_logged("convertquota -g / 2>&1");
+			&system_logged("convertquota -g $_[0] 2>&1");
 			$ok = 1 if (!$?);
 			&unlink_file("$_[0]/quota.group");
 			}
 		if (!$ok) {
 			# Try to create an [a]quota.group file
-			&open_tempfile(QUOTAFILE, ">>$_[0]/$qf", 0, 1);
-			&close_tempfile(QUOTAFILE);
-			&set_ownership_permissions(undef, undef, 0600,
-						   "$_[0]/$qf");
+			if ($version < 4) {
+				&open_tempfile(QUOTAFILE, ">>$_[0]/$qf", 0, 1);
+				&close_tempfile(QUOTAFILE);
+				&set_ownership_permissions(undef, undef, 0600,
+							   "$_[0]/$qf");
+				}
 			&run_quotacheck($_[0]) || &run_quotacheck($_[0], "-u -f") || &run_quotacheck($_[0], "-u -f -m") || &run_quotacheck($_[0], "-u -f -m -c");
 			}
 		}
