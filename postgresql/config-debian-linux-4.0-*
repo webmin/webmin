@@ -1,7 +1,7 @@
 hba_conf=/etc/postgresql/*/main/pg_hba.conf
 psql=/usr/bin/psql
-start_cmd=/etc/init.d/postgresql-* start
-stop_cmd=/etc/init.d/postgresql-* stop
+start_cmd=/etc/init.d/postgresql* start
+stop_cmd=/etc/init.d/postgresql* stop
 basedb=template1
 perpage=25
 plib=
