@@ -277,7 +277,7 @@ foreach my $file (&recursive_find_ldif($config{'config_file'})) {
 			$dir->{'value'} = $value;
 			push(@rv, $dir);
 			}
-		elsif (/^(\s+\S.*)$/ && @rv && $rv[$#rv]->{'file'} eq $file) {
+		elsif (/^\s+(\S.*)$/ && @rv && $rv[$#rv]->{'file'} eq $file) {
 			# Continuation line
 			local $dir = $rv[$#rv];
 			$dir->{'value'} .= $1;
@@ -860,7 +860,7 @@ foreach my $f (@ldap_lock_files) {
 sub unlock_slapd_files
 {
 foreach my $f (@ldap_lock_files) {
-	&lock_file($f);
+	&unlock_file($f);
 	}
 @ldap_lock_files = ( );
 }
