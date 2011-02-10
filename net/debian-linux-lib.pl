@@ -557,7 +557,7 @@ if (@ifaces6) {
 		&ui_radio("gateway6_def", $addr6 ? 0 : 1,
 			  [ [ 1, $text{'routes_none'} ],
 			    [ 0, $text{'routes_gateway'}." ".
-				 &ui_textbox("gateway6", $addr6, 15)." ".
+				 &ui_textbox("gateway6", $addr6, 30)." ".
 				 &ui_select("gatewaydev6", $router6,
 					[ map { $_->[0] } @ifaces6 ]) ] ]));
 	}
