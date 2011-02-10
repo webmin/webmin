@@ -681,6 +681,11 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 			&system_logged("chkconfig --add ".quotemeta($_[0]));
 			&system_logged("chkconfig ".quotemeta($_[0])." on");
 			}
+		elsif (&has_command("insserv") && !$config{'no_chkconfig'} &&
+		       $data =~ /Default-Start:/i) {
+			# Call the insserv command to enable
+			&system_logged("insserv ".quotemeta($_[0]));
+			}
 		else {
 			# Just link up the init script
 			local $s;
@@ -852,6 +857,7 @@ if ($init_mode eq "init") {
 	local ($daemon, %daemon);
 	local $file = &action_filename($_[0]);
 	local @chk = &chkconfig_info($file);
+	local $data = &read_file_contents($file);
 
 	if ($config{'daemons_dir'} &&
 	    &read_env_file("$config{'daemons_dir'}/$_[0]", \%daemon)) {
@@ -864,6 +870,11 @@ if ($init_mode eq "init") {
 	elsif (&has_command("chkconfig") && !$config{'no_chkconfig'} && @chk) {
 		# Call chkconfig to remove the links
 		&system_logged("chkconfig ".quotemeta($_[0])." off");
+		}
+	elsif (&has_command("insserv") && !$config{'no_chkconfig'} &&
+	       $data =~ /Default-Start:/i) {
+		# Call insserv to remove the links
+		&system_logged("insserv -r ".quotemeta($_[0]));
 		}
 	else {
 		# Just unlink the S links
