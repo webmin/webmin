@@ -667,6 +667,9 @@ sub parse_ldap_access
 local ($a) = @_;
 local @v = @{$a->{'values'}};
 local $p = { };
+if ($v[0] =~ /^\{(\d+)\}/) {
+	$p->{'order'} = $1;
+	}
 shift(@v);			# Remove to or {x}to
 if ($v[0] !~ /^(filter|attrs)=/) {
 	$p->{'what'} = shift(@v);	# Object
@@ -720,6 +723,9 @@ sub store_ldap_access
 {
 local ($a, $p) = @_;
 local @v = ( 'to' );
+if ($p->{'order'}) {
+	$v[0] = "{".$p->{'order'}."}".$v[0];
+	}
 push(@v, $p->{'what'});
 if ($p->{'filter'}) {
 	push(@v, "filter=$p->{'filter'}");
