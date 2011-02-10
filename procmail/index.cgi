@@ -155,6 +155,7 @@ if (@conf) {
 	}
 else {
 	print "<b>$text{'index_none'}</b><p>\n";
+	print &ui_links_row(\@links);
 	}
 
 # Manual edit button
