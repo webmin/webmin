@@ -176,7 +176,12 @@ elsif (!$lv->{'is_snap'}) {
 	# Show current striping
 	print &ui_table_row($text{'lv_stripe'},
 		$lv->{'stripes'} > 1 ? &text('lv_stripes', $lv->{'stripes'})
-				     : $text{'lv_nostripe'}, 3);
+				     : $text{'lv_nostripe'});
+
+	if ($lv->{'stripes'} && $lv->{'stripesize'}) {
+		print &ui_table_row($text{'lv_stripesize'},
+			&nice_size($lv->{'stripesize'}*1024));
+		}
 	}
 
 # Show free disk space

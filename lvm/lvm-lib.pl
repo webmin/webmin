@@ -64,6 +64,9 @@ else {
 		elsif (/PE\s+Size\s+\(\S+\)\s+(\S+)/i) {
 			$pv->{'pe_size'} = $1;
 			}
+		elsif (/PE\s+Size\s+(\S+)\s+(\S+)/i) {
+			$pv->{'pe_size'} = &mult_units($1, $2);
+			}
 		elsif (/Total\s+PE\s+(\S+)/i) {
 			$pv->{'pe_total'} = $1;
 			}
@@ -85,17 +88,14 @@ return @rv;
 sub get_physical_volume_usage
 {
 local @rv;
-open(DISPLAY, "pvdisplay -v ".quotemeta($_[0]->{'device'})." |");
-local $started;
+open(DISPLAY, "pvdisplay -m ".quotemeta($_[0]->{'device'})." |");
+local $lastlen;
 while(<DISPLAY>) {
-	if (/^\s*LV\s+Name/i) {
-		$started = 1;
+	if (/Physical\s+extent\s+(\d+)\s+to\s+(\d+)/) {
+		$lastlen = $2 - $1 + 1;
 		}
-	elsif ($started && /^\s*\/dev\/\S+\/(\S+)\s+(\d+)\s+(\d+)/) {
-		push(@rv, [ $1, $2, $3 ]);
-		}
-	elsif ($started) {
-		last;
+	elsif (/Logical\s+volume\s+\/dev\/(\S+)\/(\S+)/) {
+		push(@rv, [ $2, $lastlen ]);
 		}
 	}
 close(DISPLAY);
@@ -293,7 +293,7 @@ else {
 	local $lv;
 	local $_;
 	local ($vg) = grep { $_->{'name'} eq $_[0] } &list_volume_groups();
-	open(DISPLAY, "lvdisplay |");
+	open(DISPLAY, "lvdisplay -m |");
 	while(<DISPLAY>) {
 		s/\r|\n//g;
 		if (/LV\s+Name\s+(.*\/(\S+))/i) {
@@ -330,6 +330,9 @@ else {
 			}
 		elsif (/Stripes\s+(\d+)/) {
 			$lv->{'stripes'} = $1;
+			}
+		elsif (/Stripe\s+size\s+(\S+)\s+(\S+)/) {
+			$lv->{'stripesize'} = &mult_units($1, $2);
 			}
 		elsif (/Allocated\s+to\s+snapshot\s+([0-9\.]+)%/i) {
 			$lv->{'snapusage'} = $1;
