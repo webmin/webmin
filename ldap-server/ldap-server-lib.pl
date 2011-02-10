@@ -760,7 +760,7 @@ if ($gconfig{'os_type'} eq 'redhat-linux') {
 	&read_env_file("/etc/sysconfig/ldap", \%ldap);
 	if (!$ldap{'SLAPD_LDAP'} &&
 	    !$ldap{'SLAPD_LDAPI'} &&
-	    !$ldap{'SLAPD
+	    !$ldap{'SLAPD_LDAPS'}) {
 		&read_env_file("/etc/sysconfig/ldap", \%ldap, 1);
 		}
 	return { 'ldap' => $ldap{'SLAPD_LDAP'} eq 'yes' ? 1 : 0,
