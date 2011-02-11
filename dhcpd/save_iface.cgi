@@ -54,7 +54,13 @@ elsif ($config{'interfaces_type'} eq 'suse') {
 	&write_env_file("/etc/sysconfig/dhcpd", \%dhcpd);
 	}
 elsif ($config{'interfaces_type'} eq 'debian') {
-	if (-r "/etc/default/dhcp") {
+	if (-r "/etc/default/isc-dhcp-server") {
+		# Write to Debian 6.0 environment file
+		&read_env_file("/etc/default/isc-dhcp-server", \%dhcpd);
+		$dhcpd{'INTERFACES'} = $iface;
+		&write_env_file("/etc/default/isc-dhcp-server", \%dhcpd);
+		}
+	elsif (-r "/etc/default/dhcp") {
 		# Write to Debian environment file
 		&read_env_file("/etc/default/dhcp", \%dhcpd);
 		$dhcpd{'INTERFACES'} = $iface;
@@ -76,7 +82,7 @@ elsif ($config{'interfaces_type'} eq 'debian') {
 				$lref->[$i] = "INTERFACES=\"$iface\"";
 				}
 			}
-		&flush_file_lines();
+		&flush_file_lines("/etc/init.d/dhcp");
 		}
 	}
 elsif ($config{'interfaces_type'} eq 'caldera') {
@@ -92,7 +98,6 @@ elsif ($config{'interfaces_type'} eq 'gentoo') {
 	$dhcp{'IFACE'} = $iface;
 	&write_env_file("/etc/conf.d/dhcp", \%dhcp);
 	}
-
 
 &redirect("");
 
