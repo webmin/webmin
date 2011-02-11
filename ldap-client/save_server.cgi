@@ -6,7 +6,10 @@ require './ldap-client-lib.pl';
 &ReadParse();
 
 &lock_file($config{'auth_ldap'});
-&lock_file($config{'secret'});
+@secrets = split(/\t+/, $config{'secret'});
+foreach $secret (@secrets) {
+	&lock_file($secret);
+	}
 $conf = &get_config();
 $uri = &find_svalue("uri", $conf);
 
@@ -116,7 +119,9 @@ else {
 # Write out config
 &flush_file_lines();
 &unlock_file($config{'auth_ldap'});
-&unlock_file($config{'secret'});
+foreach $secret (@secrets) {
+	&unlock_file($secret);
+	}
 
 &webmin_log("server");
 &redirect("");

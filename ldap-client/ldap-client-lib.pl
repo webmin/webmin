@@ -118,7 +118,8 @@ foreach my $c (@$conf) {
 # Returns the password used when the root user connects to the LDAP server
 sub get_rootbinddn_secret
 {
-&open_readfile(SECRET, $config{'secret'}) || return undef;
+local @secrets = split(/\t+/, $config{'secret'});
+&open_readfile(SECRET, $secrets[0]) || return undef;
 local $secret = <SECRET>;
 close(SECRET);
 $secret =~ s/\r|\n//g;
@@ -129,14 +130,17 @@ return $secret;
 # Saves the password used when the root user connects to the LDAP server
 sub save_rootbinddn_secret
 {
+local @secrets = split(/\t+/, $config{'secret'});
 if (defined($_[0])) {
-	&open_tempfile(SECRET, ">$config{'secret'}");
-	&print_tempfile(SECRET, $_[0],"\n");
-	&close_tempfile(SECRET);
-	&set_ownership_permissions(0, 0, 0600, $config{'secret'});
+	foreach my $secret (@secrets) {
+		&open_tempfile(SECRET, ">$secret");
+		&print_tempfile(SECRET, $_[0],"\n");
+		&close_tempfile(SECRET);
+		&set_ownership_permissions(0, 0, 0600, $secret);
+		}
 	}
 else {
-	&unlink_file($config{'secret'});
+	&unlink_file(@secrets);
 	}
 }
 
