@@ -201,7 +201,7 @@ print &ui_table_row(&hlink($text{'pass'}, "pass"),
 		( [ 2, $text{'nochange'},
 		    &ui_hidden("encpass", $pass) ] ) :
 		( [ 2, $text{'encrypted'},
-		    &ui_textbox("encpass", $passmode == 2 ? $pass : "", 40) ] )
+		    &ui_textbox("encpass", $passmode == 2 ? $pass : "", 60) ] )
 	  ]).
 	  ($can_disable ? "&nbsp;&nbsp;".&ui_checkbox("disable", 1,
 				$text{'uedit_disabled'}, $disabled) : "")

@@ -60,7 +60,7 @@ return @rv;
 }
 
 # use_md5()
-# Returns 1 if pam is set up to use MD5 encryption
+# Returns 1 if pam is set up to use MD5 encryption, 2 for blowfish, 3 for SHA512
 sub use_md5
 {
 if (defined($use_md5_cache)) {
@@ -78,6 +78,12 @@ if (&foreign_check("pam")) {
 		if ($m->{'type'} eq 'password') {
 			if ($m->{'args'} =~ /md5/) {
 				$md5 = 1;
+				}
+			elsif ($m->{'args'} =~ /sha512/) {
+				$md5 = 3;
+				}
+			elsif ($m->{'args'} =~ /blowfish/) {
+				$md5 = 2;
 				}
 			elsif ($m->{'module'} =~ /pam_stack\.so/ &&
 			       $m->{'args'} =~ /service=(\S+)/) {
@@ -102,11 +108,24 @@ if (&foreign_check("pam")) {
 			}
 		}
 	}
-elsif (&open_readfile(PAM, "/etc/pam.d/passwd")) {
+if (!$md5 && &open_readfile(PAM, "/etc/pam.d/passwd")) {
 	# Otherwise try to check the PAM file directly
 	while(<PAM>) {
 		s/#.*$//g;
-		$md5 = 1 if (/^password.*md5/);
+		if (/^password.*md5/) { $md5 = 1; }
+		elsif (/^password.*blowfish/) { $md5 = 2; }
+		elsif (/^password.*sha512/) { $md5 = 3; }
+		}
+	close(PAM);
+	}
+if (!$md5 && (&open_readfile(PAM, "/etc/pam.d/common-password") ||
+	      &open_readfile(PAM, "/etc/pam.d/system-auth"))) {
+	# Then try reading common password config file
+	while(<PAM>) {
+		s/#.*$//g;
+		if (/^password.*md5/) { $md5 = 1; }
+		elsif (/^password.*blowfish/) { $md5 = 2; }
+		elsif (/^password.*sha512/) { $md5 = 3; }
 		}
 	close(PAM);
 	}

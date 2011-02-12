@@ -60,17 +60,8 @@ else {
 		# Validate inputs
 		if ($access{'old'} == 1 ||
 		    $access{'old'} == 2 && $user->{'user'} ne $remote_user) {
-			$chash = undef;
-			eval {
-				# May fail if crypt is broken
-				local $main::error_must_die = 1;
-				$chash = &unix_crypt($in{'old'},
-						     $user->{'pass'});
-				};
-			$md5hash = &useradmin::encrypt_password(
-					   $in{'old'}, $user->{'pass'});
-			$chash eq $user->{'pass'} ||
-			   $md5hash eq $user->{'pass'} ||
+			&useradmin::validate_password(
+			    $in{'old'}, $user->{'pass'}) ||
 				&error($text{'passwd_eold'});
 			}
 		if ($access{'repeat'}) {

@@ -1769,6 +1769,10 @@ elsif ($config{'md5'} == 3) {
 	# Always use blowfish
 	$format = 2;
 	}
+elsif ($config{'md5'} == 4) {
+	# Always use SHA512
+	$format = 3;
+	}
 elsif ($config{'md5'} == 1 && !$config{'skip_md5'}) {
 	# Up to system
 	$format = &use_md5() if (defined(&use_md5));
@@ -1798,6 +1802,14 @@ elsif ($format == 2) {
 		}
 	return &encrypt_blowfish($pass, $salt);
 	}
+elsif ($format == 3) {
+	# SHA512 is selected .. use it
+	local $err = &check_sha512();
+	if ($err) {
+		&error($text{'usave_edigestsha512'});
+		}
+	return &encrypt_sha512($pass, $salt);
+	}
 else {
 	# Just do old-style crypt() DES encryption
 	if ($salt !~ /^[a-z0-9]{2}/i) {
@@ -1807,6 +1819,45 @@ else {
 	$salt ||= chr(int(rand(26))+65) . chr(int(rand(26))+65);
 	return &unix_crypt($pass, $salt);
 	}
+}
+
+# validate_password(password, hash)
+# Compares a password with a hash to see if they match, returns 1 if so,
+# 0 otherwise. Tries all supported hashing schemes.
+sub validate_password
+{
+local ($passwd, $hash) = @_;
+
+# Classic Unix crypt
+local $chash = eval {
+	local $main::error_must_die = 1;
+	&unix_crypt($passwd, $hash);
+	};
+return 1 if ($chash eq $hash);
+
+# MD5
+if (!&check_md5()) {
+	local $mhash = &encrypt_md5($passwd, $hash);
+	return 1 if ($mhash eq $hash);
+	}
+
+# Blowfish
+if (!&check_blowfish()) {
+	local $mhash = &encrypt_blowfish($passwd, $hash);
+	return 1 if ($mhash eq $hash);
+	}
+
+# SHA1
+if (!&check_sha512()) {
+	local $shash = &encrypt_sha512($passwd, $hash);
+	return 1 if ($shash eq $hash);
+	}
+
+# Some other hashing, maybe supported by crypt
+local $ohash = eval { crypt($passwd, $hash) };
+return 1 if ($ohash eq $hash);
+
+return 0;
 }
 
 =head2 build_user_used([&uid-hash], [&shell-list], [&username-hash])

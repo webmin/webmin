@@ -38,7 +38,7 @@ $salt ||= substr(time(), -8);
 
 # Use built-in crypt support for MD5, if we can
 if (&unix_crypt_supports_md5()) {
-	return &unix_crypt($passwd, $magic.$salt.'$xxxxxxxxxxxxxxxxxxxxxx');
+	return crypt($passwd, $magic.$salt.'$xxxxxxxxxxxxxxxxxxxxxx');
 	}
 
 # Add the password, magic and salt
@@ -113,8 +113,9 @@ return $rv;
 # Returns 1 if the built-in crypt() function can already do MD5
 sub unix_crypt_supports_md5
 {
-return &unix_crypt('test', '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/') eq
-       '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/';
+my $hash = '$1$A9wB3O18$zaZgqrEmb9VNltWTL454R/';
+my $newhash = eval { crypt('test', $hash) };
+return $newhash eq $hash;
 }
 
 @itoa64 = split(//, "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
@@ -182,6 +183,31 @@ if (!$salt) {
 	$salt = '$2a$'.'08'.'$'.$base64;
 	}
 return Crypt::Eksblowfish::Bcrypt::bcrypt($passwd, $salt);
+}
+
+# unix_crypt_supports_sha512()
+# Returns 1 if the built-in crypt() function can already do SHA512
+sub unix_crypt_supports_sha512
+{
+my $hash = '$6$Tk5o/GEE$zjvXhYf/dr5M7/jan3pgunkNrAsKmQO9r5O8sr/Cr1hFOLkWmsH4iE9hhqdmHwXd5Pzm4ubBWTEjtMeC.h5qv1';
+my $newhash = eval { crypt('test', $hash) };
+return $newhash eq $hash;
+}
+
+# check_sha512()
+# Returns undef if SHA512 hashing is supported, or an error message if not
+sub check_sha512
+{
+return &unix_crypt_supports_sha512() ? undef : 'Crypt::SHA';
+}
+
+# encrypt_sha512(password, [salt])
+# Hashes a password, possibly with the give salt, with SHA512
+sub encrypt_sha512
+{
+local ($passwd, $salt) = @_;
+$salt ||= '$6$'.substr(time(), -8).'$';
+return crypt($passwd, $salt);
 }
 
 1;
