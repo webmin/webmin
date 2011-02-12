@@ -112,7 +112,7 @@ foreach $f (sort { lc($a) cmp lc($b) } readdir(DIR)) {
 	    $f eq "core" || $f eq "README" || $f eq "rc" || $f eq "rcS" ||
 	    -d "$dir/$f" || $f =~ /\.swp$/ || $f eq "skeleton" ||
 	    $f =~ /\.lock$/ || $f =~ /\.dpkg-(old|dist)$/ ||
-	    $f =~ /^\.depend\./) { next; }
+	    $f =~ /^\.depend\./ || $f eq '.legacy-bootordering') { next; }
 	if (@stbuf = stat("$dir/$f")) {
 		push(@rv, "$f $stbuf[1]");
 		}
@@ -381,6 +381,7 @@ in with supported parameters to the action, like 'start' and 'stop'.
 =cut
 sub init_description
 {
+# Read contents of script, extract start/stop commands
 open(FILE, $_[0]);
 local @lines = <FILE>;
 close(FILE);
@@ -426,6 +427,17 @@ elsif ($config{'init_info'} || $data =~ /BEGIN INIT INFO/) {
 			$desc = $2;
 			}
 		}
+	}
+elsif ($_[0] =~ /^\/etc\/init.d\/(\S+)$/ && -r "/etc/init/$1.conf") {
+	# Upstart description file exists
+	open(CONF, "/etc/init/$1.conf");
+	while(<CONF>) {
+		if (/^description\s+"([^"]+)"/) {
+			$desc = $1;
+			last;
+			}
+		}
+	close(CONF);
 	}
 else {
 	# Use the first comments

@@ -23,6 +23,10 @@ elsif ($in{type} == 1) {
 	$file = &runlevel_filename($in{runlevel}, $in{startstop},
 				   $in{number}, $in{action});
 	}
+if (&has_command("insserv")) {
+	&system_logged("insserv -r ".quotemeta($in{action}));
+	}
+&unlink_logged("/etc/init/$in{'action'}.conf");
 &unlink_logged($file);
 &webmin_log('delete', 'action', $in{'action'});
 &redirect("");
