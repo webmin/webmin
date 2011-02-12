@@ -398,16 +398,16 @@ my $defclass = $status ? 'opener_shown' : 'opener_hidden';
 my $text = defined($tconfig{'cs_text'}) ? $tconfig{'cs_text'} :
         defined($gconfig{'cs_text'}) ? $gconfig{'cs_text'} : "000000";
 if (!$WRAPPER_OPEN) { # If we're not already inside of a wrapper, wrap it
-	$rv .= "<table class='shrinkwrapper' $tabletags>\n";
+	$rv .= "<table class='shrinkwrapper ui_table' $tabletags>\n";
 	$rv .= "<tr><td>\n";
 	}
 $WRAPPER_OPEN++;
 my $colspan = 1;
 $rv .= "<table class='ui_table' $tabletags>\n";
 if (defined($heading) || defined($rightheading)) {
-	$rv .= "<thead><tr>";
+	$rv .= "<thead><tr class='ui_table_head'>";
 	if (defined($heading)) {
-		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#$text>$heading</font></b></a></td>";
+		$rv .= "<td><a href=\"javascript:hidden_opener('$divid', '$openerid')\" id='$openerid'><img border=0 src='$gconfig{'webprefix'}/images/$defimg'></a> <a href=\"javascript:hidden_opener('$divid', '$openerid')\"><b><font color=#ffffff>$heading</font></b></a></td>";
 		}
         if (defined($rightheading)) {
                 $rv .= "<td align=right>$rightheading</td>";
