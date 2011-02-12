@@ -90,20 +90,21 @@ sub create_driver
 local $drv = "$cups_ppd_dir/$_[0]->{'name'}.ppd";
 undef($cups_driver_options);
 if ($_[1]->{'mode'} == 0) {
-	&system_logged("rm -f \"$drv\"");
+	&unlink_file($drv);
 	return undef;
 	}
 elsif ($_[1]->{'mode'} == 2) {
-	&system_logged("rm -f \"$drv\"");
+	&unlink_file($drv);
 	return $_[1]->{'file'};
 	}
 else {
 	# Copy the driver into place
 	if ($_[1]->{'ppd'} =~ /\.gz$/) {
-		&system_logged("gunzip -c '$_[1]->{'ppd'}' >$drv");
+		&system_logged("gunzip -c ".quotemeta($_[1]->{'ppd'}).
+			       " >".quotemeta($drv));
 		}
 	else {
-		&system_logged("cp $_[1]->{'ppd'} $drv");
+		&copy_source_dest($_[1]->{'ppd'}, $drv);
 		}
 	chmod(0777, $drv);
 	$cups_driver_options = $_[1]->{'opts'};	# for modify_printer
@@ -114,7 +115,7 @@ else {
 # delete_driver(name)
 sub delete_driver
 {
-&system_logged("rm -f \"$cups_ppd_dir/$_[0].ppd\"");
+&unlink_file("$cups_ppd_dir/$_[0].ppd");
 }
 
 # driver_input(&printer, &driver)
@@ -140,6 +141,7 @@ foreach my $mp (split(/\s+/, $config{'model_path'})) {
 				    " -type f -print", 1, 1);
 	while(<FIND>) {
 		chop;
+		next if (/\.xml$/);	# Ignore XML PPD sources
 		/([^\/]+)$/;
 		next if ($donefile{$1}++);
 		push(@files, $_);

@@ -529,38 +529,21 @@ sub parse_cups_ppd
 {
 local ($file) = @_;
 local %ppd;
-if ($file =~ /\/([^\/+])\.xml$/) {
-	# XML format PPD
-	$ppd{'NickName'} = $1;
-	open(PPD, $file);
-	while(<PPD>) {
-		if (/<make>(\S+)<\/make>/) {
-			$ppd{'Manufacturer'} = $1;
-			}
-		if (/<model>(\S+)<\/model>/) {
-			$ppd{'ModelName'} = $1;
-			}
-		}
-	close(PPD);
+if ($file =~ /\.gz$/) {
+	open(PPD, "gunzip -c ".quotemeta($file)." |");
 	}
 else {
-	# Old text format PPD
-	if ($file =~ /\.gz$/) {
-		open(PPD, "gunzip -c ".quotemeta($file)." |");
-		}
-	else {
-		open(PPD, $file);
-		}
-	while(<PPD>) {
-		if (/^\s*\*(\S+):\s*"(.*)"/ || /^\s*\*(\S+):\s*(\S+)/) {
-			$ppd{$1} = $2;
-			}
-		elsif (/^\s*\*(\S+)\s+(\S+)\/([^:]+):/) {
-			$ppd{$1}->{$2} = $3 if (!defined($ppd{$1}->{$2}));
-			}
-		}
-	close(PPD);
+	open(PPD, $file);
 	}
+while(<PPD>) {
+	if (/^\s*\*(\S+):\s*"(.*)"/ || /^\s*\*(\S+):\s*(\S+)/) {
+		$ppd{$1} = $2;
+		}
+	elsif (/^\s*\*(\S+)\s+(\S+)\/([^:]+):/) {
+		$ppd{$1}->{$2} = $3 if (!defined($ppd{$1}->{$2}));
+		}
+	}
+close(PPD);
 return \%ppd;
 }
 
