@@ -451,8 +451,8 @@ text_return=main menu
 text_undo=undo
 text_ecannot=You are not allowed to edit the configuration file
 
-index_buttetext=Configfile
-index_text=Edit configfile in texteditor (caution!)
+index_buttetext=Manually Edit Configuration
+index_text=Edit configuration file manually text
 
 stop_err=Failed to stop DHCP server
 stop_ekill=Not running!
