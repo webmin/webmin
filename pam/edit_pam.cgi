@@ -117,8 +117,9 @@ if (&include_style(\@pams) == 3) {
 				     "incs", @incs ? 1 : 0);
 	@grid = ( );
 	foreach $p (sort { $a->{'name'} cmp $b->{'name'} } @pams) {
-		$desc = $p->{'name'}." ".
-			($p->{'desc'} || $text{'desc_'.$p->{'name'}});
+		$desc = $p->{'name'};
+		$dstr = $p->{'desc'} || $text{'desc_'.$p->{'name'}};
+		$desc .= " ($dstr)" if ($dstr);
 		push(@grid, &ui_checkbox("inc", $p->{'name'}, $desc,
 					 $inced{$p->{'name'}}));
 		}
