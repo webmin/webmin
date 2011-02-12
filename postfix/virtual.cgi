@@ -30,7 +30,7 @@ print &ui_form_end([ [ undef, $text{'opts_save'} ] ]);
 
 # Current map contents
 print &ui_hr();
-if (&get_current_value($virtual_maps) eq "")
+if (&get_real_value($virtual_maps) eq "")
 {
     print ($text{'no_map'}."<br><br>");
 }
