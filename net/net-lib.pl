@@ -397,7 +397,7 @@ else {
 	my @o = split(/\s+/, $value);
 	for(my $i = 0; $i<scalar(@o)+2; $i++) {
 		$rv .= &ui_select($name."_".$i, $o[$i],
-				  [ [ "", "&nbsp;" ], @$opts ], 1, 0, 1);
+				  [ [ "", "&nbsp;" ], @$opts ], 1, 0, 1)."<br>";
 		}
 	return $rv;
 	}

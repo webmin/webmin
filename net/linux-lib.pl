@@ -488,7 +488,7 @@ sub order_input
 {
 my @o = split(/\s+/, $_[0]->{'order'});
 @o = map { s/nis\+/nisplus/; s/yp/nis/; $_; } @o;
-my @opts = ( [ "files", "Hosts" ], [ "dns", "DNS" ], [ "nis", "NIS" ],
+my @opts = ( [ "files", "Hosts file" ], [ "dns", "DNS" ], [ "nis", "NIS" ],
 	     [ "nisplus", "NIS+" ], [ "ldap", "LDAP" ], [ "db", "DB" ],
 	     [ "mdns4", "Multicast DNS" ] );
 if (&indexof("mdns4_minimal", @o) >= 0) {
