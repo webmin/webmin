@@ -527,22 +527,40 @@ return { 'driver' => $drv->{'desc'},
 # Converts a CUPS-style .ppd file into a hash of names and values
 sub parse_cups_ppd
 {
+local ($file) = @_;
 local %ppd;
-if ($_[0] =~ /\.gz$/) {
-	open(PPD, "gunzip -c '$_[0]' |");
+if ($file =~ /\/([^\/+])\.xml$/) {
+	# XML format PPD
+	$ppd{'NickName'} = $1;
+	open(PPD, $file);
+	while(<PPD>) {
+		if (/<make>(\S+)<\/make>/) {
+			$ppd{'Manufacturer'} = $1;
+			}
+		if (/<model>(\S+)<\/model>/) {
+			$ppd{'ModelName'} = $1;
+			}
+		}
+	close(PPD);
 	}
 else {
-	open(PPD, $_[0]);
-	}
-while(<PPD>) {
-	if (/^\s*\*(\S+):\s*"(.*)"/ || /^\s*\*(\S+):\s*(\S+)/) {
-		$ppd{$1} = $2;
+	# Old text format PPD
+	if ($file =~ /\.gz$/) {
+		open(PPD, "gunzip -c ".quotemeta($file)." |");
 		}
-	elsif (/^\s*\*(\S+)\s+(\S+)\/([^:]+):/) {
-		$ppd{$1}->{$2} = $3 if (!defined($ppd{$1}->{$2}));
+	else {
+		open(PPD, $file);
 		}
+	while(<PPD>) {
+		if (/^\s*\*(\S+):\s*"(.*)"/ || /^\s*\*(\S+):\s*(\S+)/) {
+			$ppd{$1} = $2;
+			}
+		elsif (/^\s*\*(\S+)\s+(\S+)\/([^:]+):/) {
+			$ppd{$1}->{$2} = $3 if (!defined($ppd{$1}->{$2}));
+			}
+		}
+	close(PPD);
 	}
-close(PPD);
 return \%ppd;
 }
 
