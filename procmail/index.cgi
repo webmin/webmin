@@ -18,7 +18,7 @@ if (!$module_info{'usermin'} && !&has_command($config{'procmail'})) {
 	&foreign_require("software", "software-lib.pl");
 	$lnk = &software::missing_install_link(
 			"procmail", $text{'index_procmail'},
-			"../$module_name/", $text{'index_header'});
+			"../$module_name/", $text{'index_title'});
 	print $lnk,"<p>\n" if ($lnk);
 
 	&ui_print_footer("/", $text{'index_return'});
