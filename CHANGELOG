@@ -140,3 +140,4 @@ Added support for Pardus Linux, thanks to Kaan Ozdincer.
 Major Dutch updates, thanks to Gandyman.
 Majoe French translation update, thanks to ButterflyOfFire.
 Allow per-language language overrides to be defined, in custom-lang.$code files.
+Updated numerous modules to improve support for Debian 6 and Ubuntu 10.10.
