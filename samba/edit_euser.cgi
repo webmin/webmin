@@ -21,7 +21,7 @@ print "<tr $tb> <td><b>$text{'euser_title'}</b></td> </tr>\n";
 print "<tr $cb> <td><table width=100%>\n";
 
 print "<tr> <td align=right><b>$text{'euser_name'}</b></td>\n";
-print "<td><font size=+1><i>$u->{'name'}</i></font></td>\n";
+print "<td><tt>$u->{'name'}</tt></td>\n";
 
 print "<td align=right><b>$text{'euser_uid'}</b></td>\n";
 print "<td><input name=uid size=5 value=\"$u->{'uid'}\"></td> </tr>\n";
