@@ -15,10 +15,10 @@ if ($in{'delete'}) {
 else {
 	# parse inputs
 	$version = &get_postgresql_version();
-	if ($in{'pass_def'} == 0) {
-		$in{'pass'} =~ /^\S+$/ || &error($text{'user_epass'});
-		$sql .= $version >= 7 ? " with password '$in{'pass'}'"
-				      : " with password $in{'pass'}";
+	if ($in{'ppass_def'} == 0) {
+		$in{'ppass'} =~ /^\S+$/ || &error($text{'user_epass'});
+		$sql .= $version >= 7 ? " with password '$in{'ppass'}'"
+				      : " with password $in{'ppass'}";
 		}
 	elsif ($in{'pass_def'} == 1) {
 		$sql .= " with password ''";
@@ -39,20 +39,20 @@ else {
 		$sql .= " valid until '$in{'until'}'";
 		}
 	if ($in{'new'}) {
-		$in{'name'} =~ /^\S+$/ || &error($text{'user_ename'});
+		$in{'pname'} =~ /^\S+$/ || &error($text{'user_ename'});
 		&execute_sql_logged($config{'basedb'},
-				    "create user \"$in{'name'}\" $sql");
-		&webmin_log("create", "user", $in{'name'});
+				    "create user \"$in{'pname'}\" $sql");
+		&webmin_log("create", "user", $in{'pname'});
 		}
 	else {
 		&execute_sql_logged($config{'basedb'},
 				    "alter user \"$in{'user'}\" $sql");
 		if (&get_postgresql_version() >= 7.4 &&
-		    $in{'name'} ne $in{'user'}) {
+		    $in{'pname'} ne $in{'user'}) {
 			# Rename too
 			&execute_sql_logged($config{'basedb'},
 		    		"alter user \"$in{'user'}\" ".
-				"rename to \"$in{'name'}\"");
+				"rename to \"$in{'pname'}\"");
 			}
 		&webmin_log("modify", "user", $in{'user'});
 		}

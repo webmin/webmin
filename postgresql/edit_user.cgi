@@ -24,25 +24,25 @@ print &ui_table_start($text{'user_header'}, undef, 2);
 # Username, not always editable
 print &ui_table_row($text{'user_name'},
 	$in{'new'} || &get_postgresql_version() >= 7.4 ?
-		&ui_textbox("name", $user[0], 40) :
+		&ui_textbox("pname", $user[0], 40) :
 		$user[0]);
 
 if ($in{'new'}) {
 	# For new users, can select empty or specific password
 	print &ui_table_row($text{'user_passwd'},
-	      &ui_radio("pass_def", 1,
+	      &ui_radio("ppass_def", 1,
 			[ [ 1, $text{'user_none'} ],
 			  [ 0, $text{'user_setto'} ] ])." ".
-		     &ui_password("pass", undef, 20));
+		     &ui_password("ppass", undef, 20));
 	}
 else {
 	# For existing users, can select empty, leave unchanged or
 	# specific password
 	print &ui_table_row($text{'user_passwd'},
-	      &ui_radio("pass_def", 2,
+	      &ui_radio("ppass_def", 2,
 			[ [ 2, $text{'user_nochange'} ],
 			  [ 0, $text{'user_setto'} ] ])." ".
-		     &ui_password("pass", undef, 20));
+		     &ui_password("ppass", undef, 20));
 	}
 
 # Can create databases?
