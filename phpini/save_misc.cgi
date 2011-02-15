@@ -44,6 +44,14 @@ else {
 	&has_command($fp) || &error($text{'misc_esendmail'});
 	&save_directive($conf, "sendmail_path", $in{"sendmail_path"});
 	}
+ 
+# Save Include open options
+&save_directive($conf, "allow_url_include",
+	$in{"allow_url_include"} || undef);
+
+# Save CGI Fix Path
+&save_directive($conf, "cgi.fix_pathinfo",
+	$in{"cgi.fix_pathinfo"} || undef);
 
 &flush_file_lines_as_user($in{'file'});
 &unlock_file($in{'file'});

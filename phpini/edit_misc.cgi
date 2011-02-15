@@ -43,6 +43,14 @@ print &ui_table_row($text{'misc_sendmail'},
 		    &ui_opt_textbox("sendmail_path", $sendmail, 60,
 				    $text{'misc_none'}), 3);
 
+# Include open options
+print &ui_table_row($text{'misc_include'},
+	&onoff_radio("allow_url_include"));
+
+# CGI Fix Path options
+print &ui_table_row($text{'misc_path'},
+	&onoff_radio("cgi.fix_pathinfo"));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 
