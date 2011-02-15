@@ -226,7 +226,8 @@ if (defined($in{old}) && !$access{'simple'}) {
 		# Not in mount table
 		}
 	elsif ($mold[0] ne $minfo[0] || $mold[1] ne $minfo[1] ||
-	       $mold[5] ne $minfo[5] || &diff_opts($mold[3], $minfo[3])) {
+	       $mold[4] != $minfo[4] || $mold[5] ne $minfo[5] ||
+	       &diff_opts($mold[3], $minfo[3])) {
 		# Apply any changes in mount options
 		&change_mount($in{old}, @minfo);
 		@plog = ( "modify", "dir", $in{'directory'},
