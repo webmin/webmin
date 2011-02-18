@@ -137,6 +137,8 @@ order_hesiod=Hesiod
 order_ldap=LDAP
 order_user=User printers
 order_xfn=XFN
+order_mdns4=Multicast DNS
+order_mdns4_minimal=Multicast DNS (minimal)
 
 desc_aliases=Sendmail aliases
 desc_mail=Sendmail aliases
