@@ -662,7 +662,7 @@ if ($txt =~ /^v=spf1/) {
 		if ($w eq "a" || $w eq "mx" || $w eq "ptr") {
 			$spf->{$w} = 1;
 			}
-		elsif ($w =~ /^(a|mx|ip4|ip6|ptr|include):(\S+)$/) {
+		elsif ($w =~ /^(a|mx|ip4|ip6|ptr|include|exists):(\S+)$/) {
 			push(@{$spf->{"$1:"}}, $2);
 			}
 		elsif ($w eq "-all") {
@@ -704,7 +704,7 @@ local @rv = ( "v=spf1" );
 foreach my $s ("a", "mx", "ptr") {
 	push(@rv, $s) if ($spf->{$s});
 	}
-foreach my $s ("a", "mx", "ip4", "ip6", "ptr", "include") {
+foreach my $s ("a", "mx", "ip4", "ip6", "ptr", "include", "exists") {
 	foreach my $v (@{$spf->{"$s:"}}) {
 		push(@rv, "$s:$v");
 		}
