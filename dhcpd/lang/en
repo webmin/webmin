@@ -152,7 +152,7 @@ listl_start=Start Date
 listl_end=End Date
 listl_return=network and host list
 listl_all=List all active and expired leases
-listl_delete2=Click on a lease IP address from the list below to delete it.
+listl_delete=Delete Selected Leases
 listl_unknown=Unknown
 listl_allocs=$1 IP addresses available, $2 allocated ($3 %)
 listl_mode=Display mode :
@@ -161,6 +161,8 @@ listl_mode_1=Subnets and usage
 listl_size=Total IPs
 listl_used=Allocated
 listl_pc=Percentage
+listl_err=Failed to deleted leases
+listl_enone=None selected
 
 restart_errmsg1=Failed to restart dhcpd
 restart_errmsg2=Failed to signal process

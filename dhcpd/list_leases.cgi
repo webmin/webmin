@@ -163,14 +163,21 @@ else {
 			}
 
 		# Table header, with sorting
-		print "<b>$text{'listl_delete2'}</b><br>\n";
+		@tds = ( "width=5" );
+		print &ui_form_start("delete_leases.cgi", "post");
+		print &ui_hidden("all", $in{'all'});
+		print &ui_hidden("network", $in{'network'});
+		print &ui_hidden("netmask", $in{'netmask'});
+		@links = ( &select_all_link("d"), &select_invert_link("d") );
+		print &ui_links_row(\@links);
 		print &ui_columns_start([
+			"",
 			&sort_link("ipaddr"),
 			&sort_link("ether"),
 			&sort_link("host"),
 			&sort_link("start"),
 			&sort_link("end"),
-			]);
+			], 100, 0, \@tds);
 
 		foreach $lease (@leases) {
 			local @cols;
@@ -178,10 +185,7 @@ else {
 			local $starts = &find('starts', $mems);
 			local $ends = &find('ends', $mems);
 			local $ht = $lease->{'expired'} ? "i" : "tt";
-			push(@cols, "<$ht><a href='delete_lease.cgi?".
-			      "idx=$lease->{'index'}&all=$in{all}&".
-			      "network=$in{'network'}&netmask=$in{'netmask'}'>".
-			      "$lease->{'values'}->[0]</a></$ht>");
+			push(@cols, "<$ht>$lease->{'values'}->[0]</$ht>");
 			local $hard = &find('hardware', $mems);
 			push(@cols,$hard->{'values'}->[1] ?
 				"<tt>$hard->{'values'}->[1]</tt>" :
@@ -191,10 +195,8 @@ else {
 					      $client->{'values'}->[0])."</tt>"
 					    : undef);
 			if ($config{'lease_tz'}) {
-				local @st = localtime($lease->{'stime'});
-				local @et = localtime($lease->{'etime'});
-				$s = sprintf "%4.4d/%2.2d/%2.2d %2.2d:%2.2d:%2.2d", $st[5]+1900, $st[4]+1, $st[3], $st[2], $st[1], $st[0];
-				$e = sprintf "%4.4d/%2.2d/%2.2d %2.2d:%2.2d:%2.2d", $et[5]+1900, $et[4]+1, $et[3], $et[2], $et[1], $et[0];
+				$s = &make_date($lease->{'stime'});
+				$e = &make_date($lease->{'etime'});
 				}
 			else {
 				$s = $starts->{'values'}->[1]." ".
@@ -205,9 +207,11 @@ else {
 
 			push(@cols, "<tt>$s</tt>");
 			push(@cols, "<tt>$e</tt>");
-			print &ui_columns_row(\@cols);
+			print &ui_checked_columns_row(\@cols, \@tds, "d",
+						      $lease->{'index'});
 			}
 		print &ui_columns_end();
+		print &ui_form_end([ [ undef, $text{'listl_delete'} ] ]);
 		}
 	else {
 		print "<b>",&text($in{'all'} ? 'listl_lfnotcont' :
