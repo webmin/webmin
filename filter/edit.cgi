@@ -193,6 +193,9 @@ if ($amode == 6) {
 		$etm[4]++; $etm[5] += 1900;
 		}
 	}
+else {
+	$period = 60;
+	}
 if ($config{'reply_force'}) {
 	$replyblock = "";
 	}
