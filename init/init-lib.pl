@@ -419,15 +419,6 @@ if ($config{'chkconfig'}) {
 			}
 		}
 	}
-elsif ($config{'init_info'} || $data =~ /BEGIN INIT INFO/) {
-	# Find the suse-style Description: line
-	foreach (@lines) {
-		s/\r|\n//g;
-		if (/^#\s*(Description|Short-Description):\s*(.*)/) {
-			$desc = $2;
-			}
-		}
-	}
 elsif ($_[0] =~ /^\/etc\/init.d\/(\S+)$/ && -r "/etc/init/$1.conf") {
 	# Upstart description file exists
 	open(CONF, "/etc/init/$1.conf");
@@ -438,6 +429,15 @@ elsif ($_[0] =~ /^\/etc\/init.d\/(\S+)$/ && -r "/etc/init/$1.conf") {
 			}
 		}
 	close(CONF);
+	}
+elsif ($config{'init_info'} || $data =~ /BEGIN INIT INFO/) {
+	# Find the suse-style Description: line
+	foreach (@lines) {
+		s/\r|\n//g;
+		if (/^#\s*(Description|Short-Description):\s*(.*)/) {
+			$desc = $2;
+			}
+		}
 	}
 else {
 	# Use the first comments
