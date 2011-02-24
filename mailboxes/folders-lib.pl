@@ -847,7 +847,7 @@ if ($index->{'lastchange'} != $folder->{'lastchange'} ||
 	foreach my $k (@todelete) {
 		delete($index->{$k});
 		}
-	print DEBUG "deleted $dc mesages from index\n";
+	print DEBUG "deleted $dc messages from index\n";
 
 	# Record index update time
 	$index->{'lastchange'} = $folder->{'lastchange'} || time();

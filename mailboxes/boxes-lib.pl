@@ -709,7 +709,7 @@ while(<SOURCE>) {
 			close(DEST);
 			close(SOURCE);
 			unlink($tmpf);
-			&error("Index on $f is corrupt - did not find expected mesage start at line $lnum");
+			&error("Index on $f is corrupt - did not find expected message start at line $lnum");
 			}
 		$fline[$i] = 1;
 		}
