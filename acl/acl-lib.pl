@@ -2057,12 +2057,12 @@ if ($str =~ /^mysql:/) {
 		 "create table webmin_user_attr ".
 		   "(id int(20) not null, ".
 		   "attr varchar(32) not null, ".
-		   "value varchar(255), ".
+		   "value varchar(4096), ".
 		   "primary key(id, attr))",
 		 "create table webmin_group_attr ".
 		   "(id int(20) not null, ".
 		   "attr varchar(32) not null, ".
-		   "value varchar(255), ".
+		   "value varchar(4096), ".
 		   "primary key(id, attr))",
 		 "create table webmin_user_acl ".
 		   "(id int(20) not null, ".
