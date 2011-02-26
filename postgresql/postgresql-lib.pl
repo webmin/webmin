@@ -277,7 +277,9 @@ if ($gconfig{'debug_what_sql'}) {
 		}
 	&webmin_debug_log('SQL', "db=$_[0] sql=$sql".$params);
 	}
-$sql =~ s/\\/\\\\/g;
+if ($sql !~ /^\s*\\/) {
+	$sql =~ s/\\/\\\\/g;
+	}
 if ($driver_handle &&
     $sql !~ /^\s*(create|drop)\s+database/ && $sql !~ /^\s*\\/ &&
     !$force_nodbi) {
@@ -362,13 +364,16 @@ if ($driver_handle &&
 else {
 	# Check for a \ command
         my $break_f = 0 ;
-        if ( $sql =~ /^\s*\\/ ) {
-            $break_f = 1 ;
-            if ( $sql !~ /^\s*\\copy\s+/ &&
-                 $sql !~ /^\s*\\i\s+/ ) {
-                &error ( &text ( 'r_command', ) ) ;
-            }
-        }
+	if ($sql =~ /^\s*\\l\s*$/) {
+		# \l command to list encodings needs no special handling
+		}
+        elsif ($sql =~ /^\s*\\/ ) {
+		$break_f = 1 ;
+		if ($sql !~ /^\s*\\copy\s+/ &&
+                    $sql !~ /^\s*\\i\s+/) {
+			&error ( &text ( 'r_command', ) ) ;
+			}
+		}
 
 	if (@params) {
 		# Sub in ? parameters
@@ -404,7 +409,7 @@ else {
 
 	delete($ENV{'LANG'});		# to force output to english
 	delete($ENV{'LANGUAGE'});
-        if ( $break_f == 0 ) {
+        if ($break_f == 0) {
 		# Running a normal SQL command, not one with a \
 		#$ENV{'PAGER'} = "cat";
 		if (&foreign_check("proc")) {
@@ -464,10 +469,10 @@ else {
 
 		$emsgf = &transname();
 		$rc = &system_logged ( "$cmd >$emsgf 2>&1");
-		$emsg  = `cat $emsgf` ;
-		unlink ( $emsgf ) ;
+		$emsg  = &read_file_contents($emsgf);
+		&unlink_file($emsgf) ;
 		if ($rc) {
-			&error ( "<pre>$emsg</pre>" );
+			&error("<pre>$emsg</pre>");
 			}
 		else {
 			@titles = ( "     Command Invocation      " ) ;
