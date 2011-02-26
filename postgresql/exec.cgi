@@ -24,7 +24,9 @@ else {
 	if (@data) {
 		print &ui_columns_start($d->{'titles'});
 		foreach $r (@data) {
-			print &ui_columns_row($r);
+			@prow = map { ref($_) eq 'ARRAY' ? join(", ", @$_)
+							 : $_ } @$r;
+			print &ui_columns_row(\@prow);
 			}
 		print &ui_columns_end();
 		}
