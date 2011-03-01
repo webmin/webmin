@@ -10,7 +10,7 @@ foreach $z (@zones) {
 	$v = $z->{'name'};
 	next if ($z->{'type'} eq 'view' ||
 		 $v eq "." || !&can_edit_zone($z) ||
-		 &arpa_to_ip($v) !~ /$in{'search'}/i);
+		 &arpa_to_ip($v) !~ /\Q$in{'search'}\E/i);
 	$t = $z->{'type'};
 	if ($z->{'view'}) {
 		push(@zlinks, "edit_$t.cgi?index=$z->{'index'}".
@@ -34,7 +34,7 @@ if (@zlinks == 1) {
 	}
 
 &ui_print_header(undef, $text{'find_title'}, "");
-print &text('find_match', "<tt>$in{'search'}</tt>"),"<p>\n";
+print &text('find_match', "<tt>".&html_escape($in{'search'})."</tt>"),"<p>\n";
 
 if ($len) {
 	# sort list of zones
