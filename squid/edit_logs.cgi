@@ -116,6 +116,8 @@ if ($squid_version >= 2.2) {
 	if (!$bad_ident) {
 		print "<tr><td valign=top><b>$text{'elogs_prilfa'}</b></td> <td colspan=3>\n";
 		@acls = &find_config("acl", $conf);
+		unshift(@acls, { 'values' => [ 'all' ] })
+			if ($squid_version >= 3);
 		foreach $acl (@acls) {
 			$aclv = $acl->{'values'}->[0];
 			next if ($doneacl{$aclv}++);

@@ -33,6 +33,7 @@ printf "<input type=radio name=action value=deny %s> $text{'aicp_d'}</td> </tr>\
 
 for($i=1; $i<@icp; $i++) { $match{$icp[$i]}++; }
 @acls = grep { !$done{$_->{'values'}->[0]}++ } &find_config("acl", $conf);
+unshift(@acls, { 'values' => [ 'all' ] }) if ($squid_version >= 3);
 $r = @acls; $r = 10 if ($r > 10);
 
 print "<tr> <td valign=top><b>$text{'aicp_ma'}</b></td>\n";

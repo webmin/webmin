@@ -34,6 +34,7 @@ printf "<input type=radio name=action value=deny %s> $text{'ahttp_d'}</td> </tr>
 
 for($i=2; $i<@delay; $i++) { $match{$delay[$i]}++; }
 @acls = grep { !$done{$_->{'values'}->[0]}++ } &find_config("acl", $conf);
+unshift(@acls, { 'values' => [ 'all' ] }) if ($squid_version >= 3);
 $r = @acls; $r = 10 if ($r > 10);
 
 print "<tr> <td valign=top><b>$text{'ahttp_ma'}</b></td>\n";

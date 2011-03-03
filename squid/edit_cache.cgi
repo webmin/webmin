@@ -131,6 +131,7 @@ if ($squid_version < 2) {
 print "<tr> <td valign=top><b>$text{'ec_ncua'}</b></td> <td>\n";
 print "<table>\n";
 @acls = grep { !$acldone{$_->{'values'}->[0]}++ } &find_config("acl", $conf);
+unshift(@acls, { 'values' => [ 'all' ] }) if ($squid_version >= 3);
 if ($squid_version >= 2.6) {
 	# 2.6+ plus uses "cache deny"
 	@v = &find_config("cache", $conf);
