@@ -105,7 +105,7 @@ if (!$in{'save'}) {
 			}
 		if ($in{'all'}) {
 			$dir = &date_subs($in{'path'});
-			&make_dir($dir, 0755) if ($in{'mkdir'});
+			&make_backup_dir($dir) if ($in{'mkdir'});
 			$path = $dir."/".$db.".".$suf;
 			}
 		else {

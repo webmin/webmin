@@ -32,10 +32,13 @@ foreach $db (@dbs) {
 		next;
 		}
 	$format = $config{'backup_format_'.$sf};
+	$mkdir = $config{'backup_mkdir_'.$sf};
 	$suf = $format eq "p" ? "sql" :
 	       $format eq "t" ? "tar" : "post";
 	if ($all) {
-		$file = &date_subs("$config{'backup_'}/$db.$suf");
+		$dir = &date_subs($config{'backup_'});
+		$file = "$dir/$db.$suf";
+		&make_backup_dir($dir) if ($mkdir);
 		}
 	else {
 		$file = &date_subs($config{'backup_'.$db});

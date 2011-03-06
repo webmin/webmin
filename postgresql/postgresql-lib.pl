@@ -754,6 +754,19 @@ if ($cmd) {
 return 1;
 }
 
+# make_backup_dir(directory)
+# Create a directory that PostgreSQL can backup into
+sub make_backup_dir
+{
+local ($dir) = @_;
+if (!-d $dir) {
+	&make_dir($dir, 0755);
+	if ($postgres_sameunix && defined(getpwnam($postgres_login))) {
+		&set_ownership_permissions($postgres_login, undef, undef, $dir);
+		}
+	}
+}
+
 sub quote_table
 {
 local @tn = split(/\./, $_[0]);
