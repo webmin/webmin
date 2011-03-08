@@ -49,7 +49,8 @@ local $rv = [
 	[ 'Group', 0, 5, 'virtual anon', undef, 0.99, 9 ],
 	[ 'GroupOwner', 0, 5, 'anon directory ftpaccess', 0.99 ],
 	[ 'GroupPassword', 1, 6, 'virtual anon global', 0.99 ],
-	[ 'HiddenStor', 0, 2, 'virtual anon directory global', 1.20 ],
+	[ 'HiddenStor', 0, 2, 'virtual anon directory global', '1.20-1.31' ],
+	[ 'HiddenStores', 0, 2, 'virtual anon directory global', 1.31 ],
 	[ 'HideGroup', 1, 2, 'directory anon', 0.99 ],
 	[ 'HideNoAccess', 0, 2, 'directory anon', 0.99 ],
 	[ 'HideUser', 1, 2, 'directory anon', 0.99 ],
@@ -684,6 +685,18 @@ return (1, $text{'mod_core_hstor'},
 sub save_HiddenStor
 {
 return &parse_choice("HiddenStor", "");
+}
+
+sub edit_HiddenStores
+{
+return (1, $text{'mod_core_hstor'},
+	&choice_input($_[0]->{'value'}, "HiddenStores", "",
+		      "$text{'yes'},on", "$text{'no'},off",
+		      "$text{'default'},"));
+}
+sub save_HiddenStores
+{
+return &parse_choice("HiddenStores", "");
 }
 
 sub edit_HideGroup
