@@ -358,24 +358,27 @@ if (open(TAB, $iconfig{'inittab_file'})) {
 		}
 	close(TAB);
 	}
-elsif (&has_command("runlevel")) {
+
+if (&has_command("runlevel")) {
 	# Use runlevel command to get current level
 	local $out = &backquote_command("runlevel");
 	if ($out =~ /^(\S+)\s+(\S+)/) {
 		push(@rv, $2);
 		}
 	}
+elsif (&has_command("who")) {
+	# Use who -r command to get runlevel
+	local $out = &backquote_command("who -r 2>/dev/null");
+	if (!$? && $out =~ /run-level\s+(\d+)/) {
+		push(@rv, $1);
+		}
+	}
+
+# Add statically configured runlevels
 if ($config{"inittab_rl_$rv[0]"}) {
 	@rv = split(/,/, $config{"inittab_rl_$rv[0]"});
 	}
 push(@rv, $config{'inittab_extra'});
-
-# Add current runlevel. This is needed on EC2, as the boot runlevel can be
-# 4 even if inittab says 3!
-local $out = &backquote_command("who -r 2>/dev/null");
-if (!$? && $out =~ /run-level\s+(\d+)/) {
-	push(@rv, $1);
-	}
 return &unique(@rv);
 }
 
