@@ -359,7 +359,8 @@ $n=0; while(<QUOTA>) {
 	if (/^(Disk|\s+Filesystem)/) { next; }
 	if (/^(\S+)$/) {
 		# Bogus wrapped line
-		$filesys{$n,'filesys'} = $mtab{$1};
+		my $dev = $1;
+		$filesys{$n,'filesys'} = $mtab{&resolve_and_simplify($dev)};
 		local $nl = <QUOTA>;
 		$nl =~/^\s+(\S+)\s+(\S+)\s+(\S+)(.{8}\s+)(\S+)\s+(\S+)\s+(\S+)(.*)/ ||
 		      $nl =~ /^.{15}.(.{7}).(.{7}).(.{7})(.{8}.)(.{7}).(.{7}).(.{7})(.*)/;
@@ -386,8 +387,8 @@ $n=0; while(<QUOTA>) {
 		$filesys{$n,'sfiles'} = int($7);
 		$filesys{$n,'hfiles'} = int($8);
 		$filesys{$n,'gfiles'} = $9;
-		$dev = $1; $dev =~ s/\s+$//g; $dev =~ s/^\s+//g;
-		$filesys{$n,'filesys'} = $mtab{$dev};
+		my $dev = $1; $dev =~ s/\s+$//g; $dev =~ s/^\s+//g;
+		$filesys{$n,'filesys'} = $mtab{&resolve_and_simplify($dev)};
 		$filesys{$n,'gblocks'} = &trunc_space($filesys{$n,'gblocks'});
 		$filesys{$n,'gfiles'} = &trunc_space($filesys{$n,'gfiles'});
 		$n++;
@@ -510,7 +511,7 @@ local($rv, $line, %mtab, @m, @line);
 %mtab = &get_mtab_map();
 @line = split(/\n/, $_[0]);
 for(my $i=0; $i<@line; $i++) {
-	if ($line[$i] =~ /^(\S+): blocks in use: (\d+), limits \(soft = (\d+), hard = (\d+)\)$/ && $mtab{&resolve_links("$1")} eq $_[1]) {
+	if ($line[$i] =~ /^(\S+): blocks in use: (\d+), limits \(soft = (\d+), hard = (\d+)\)$/ && $mtab{&resolve_and_simplify("$1")} eq $_[1]) {
 		# Found old-style lines to change
 		$rv .= "$1: blocks in use: $2, limits (soft = $_[2], hard = $_[3])\n";
 		$line[++$i] =~ /^\s*inodes in use: (\d+), limits \(soft = (\d+), hard = (\d+)\)$/;
@@ -524,7 +525,7 @@ for(my $i=0; $i<@line; $i++) {
 		$line[++$i] =~ /^used\s+(\S+) inodes,\s+limits:\s+soft=(\d+)\s+hard=(\d+)/i;
 		$rv .= "Used $1 inodes, limits: soft=$_[4] hard=$_[5]\n";
 		}
-	elsif ($line[$i] =~ /^\s+(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/ && $mtab{&resolve_links("$1")} eq $_[1]) {
+	elsif ($line[$i] =~ /^\s+(\S+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/ && $mtab{&resolve_and_simplify("$1")} eq $_[1]) {
 		# New-style line to change
 		$rv .= "  $1 $2 $_[2] $_[3] $5 $_[4] $_[5]\n";
 		}
@@ -669,10 +670,10 @@ local(@rv, %mtab, @m);
 $ENV{'EDITOR'} = $ENV{'VISUAL'} = "cat";
 open(GRACE, "$_[0] 2>&1 |");
 while(<GRACE>) {
-	if (/^(\S+): block grace period: (\d+) (\S+), file grace period: (\d+) (\S+)/ && $mtab{&resolve_links("$1")} eq $_[1]) {
+	if (/^(\S+): block grace period: (\d+) (\S+), file grace period: (\d+) (\S+)/ && $mtab{&resolve_and_simplify("$1")} eq $_[1]) {
 		@rv = ($2, $name_to_unit{$3}, $4, $name_to_unit{$5});
 		}
-	elsif (/^\s+(\S+)\s+(\d+)(\S+)\s+(\d+)(\S+)/ && $mtab{&resolve_links("$1")} eq $_[1]) {
+	elsif (/^\s+(\S+)\s+(\d+)(\S+)\s+(\d+)(\S+)/ && $mtab{&resolve_and_simplify("$1")} eq $_[1]) {
 		@rv = ($2, $name_to_unit{$3}, $4, $name_to_unit{$5});
 		}
 	elsif (/^device\s+(\S+)\s+\((\S+)\):/i && $2 eq $_[1]) {
@@ -699,11 +700,11 @@ local($rv, $line, @m, %mtab, @line);
 @line = split(/\n/, $_[0]);
 for(my $i=0; $i<@line; $i++) {
 	$line = $line[$i];
-	if ($line =~ /^(\S+): block grace period: (\d+) (\S+), file grace period: (\d+) (\S+)/ && $mtab{&resolve_links("$1")} eq $_[1]) {
+	if ($line =~ /^(\S+): block grace period: (\d+) (\S+), file grace period: (\d+) (\S+)/ && $mtab{&resolve_and_simplify("$1")} eq $_[1]) {
 		# replace this line
 		$line = "$1: block grace period: $_[2] $unit_to_name{$_[3]}, file grace period: $_[4] $unit_to_name{$_[5]}";
 		}
-	elsif ($line =~ /^\s+(\S+)\s+(\d+)(\S+)\s+(\d+)(\S+)/ && $mtab{&resolve_links("$1")} eq $_[1]) {
+	elsif ($line =~ /^\s+(\S+)\s+(\d+)(\S+)\s+(\d+)(\S+)/ && $mtab{&resolve_and_simplify("$1")} eq $_[1]) {
 		# replace new-style line
 		$line = "  $1 $_[2]$unit_to_name{$_[3]} $_[4]$unit_to_name{$_[5]}";
 		}
@@ -775,10 +776,10 @@ local $mm = $module_info{'usermin'} ? "usermount" : "mount";
 local ($m, %mtab);
 foreach $m (&foreign_call($mm, "list_mounted", 1)) {
 	if ($m->[3] =~ /loop=([^,]+)/) {
-		$mtab{&resolve_links("$1")} = $m->[0];
+		$mtab{&resolve_and_simplify("$1")} = $m->[0];
 		}
 	else {
-		$mtab{&resolve_links($m->[1])} = $m->[0];
+		$mtab{&resolve_and_simplify($m->[1])} = $m->[0];
 		}
 	}
 return %mtab;

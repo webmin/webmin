@@ -606,5 +606,13 @@ return &ui_select($_[0], $_[1],
 	[ map { [ $_, $uarr[$_] ] } (0..$#uarr) ]);
 }
 
+# resolve_and_simplify(path)
+# Resolve symlinks from a path, and simplify the result to remove dots
+sub resolve_and_simplify
+{
+my ($path) = @_;
+return &simplify_path(&resolve_links($path));
+}
+
 1;
 
