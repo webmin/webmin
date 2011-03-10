@@ -49,7 +49,8 @@ return @rv;
 sub activate_interface
 {
 local $a = $_[0];
-if($a->{'vlan'} == 1) {
+# For Debian 5.0+ the "vconfig add" command is deprecated, this is handled by ifup.
+if(($a->{'vlan'} == 1) && !(($gconfig{'os_type'} eq 'debian-linux') && ($gconfig{'os_version'} >= 5))) {
 	local $vconfigCMD = "vconfig add " .
 			    $a->{'physical'} . " " . $a->{'vlanid'};
 	local $vconfigout = &backquote_logged("$vconfigCMD 2>&1");
@@ -59,7 +60,12 @@ if($a->{'vlan'} == 1) {
 local $cmd;
 if (&use_ifup_command($a)) {
 	# Use Debian ifup command
-        if ($a->{'up'}) { $cmd .= "ifup $a->{'fullname'}"; }
+	if($a->{'vlan'} == 1) {
+		# name and fullname for VLAN tagged interfaces are "auto" so we need to ifup using physical and vlanid. 
+		if ($a->{'up'}) { $cmd .= "ifup $a->{'physical'}" . "." . $a->{'vlanid'}; }
+	        else { $cmd .= "ifdown $a->{'physical'}" . "." . $a->{'vlanid'}; }
+	}
+        elsif ($a->{'up'}) { $cmd .= "ifup $a->{'fullname'}"; }
         else { $cmd .= "ifdown $a->{'fullname'}"; }
 	}
 else {
@@ -157,7 +163,7 @@ if ($still) {
 
 # use_ifup_command(&iface)
 # Returns 1 if the ifup command must be used to bring up some interface.
-# True on Debian 5.0+ for non-ethernet, typically bonding ifaces.
+# True on Debian 5.0+ for non-ethernet, typically bonding and VLAN tagged interfaces.
 sub use_ifup_command
 {
 local ($iface) = @_;

@@ -188,7 +188,10 @@ elsif ($cfg->{'bond'} == 1) {
 	}
 
 # Set specific lines for vlan tagging
-if($cfg->{'vlan'} == 1){
+if(($cfg->{'vlan'} == 1) && ($gconfig{'os_version'} >= 5)) {
+	push(@options, ['vlan_raw_device '.$cfg->{'physical'}]);
+	}
+elsif($cfg->{'vlan'} == 1){
 	push(@options, ['pre-up', 'vconfig add '.$cfg->{'physical'}.' '.
 				  $cfg->{'vlanid'}]);
 	push(@options, ['post-down', 'vconfig rem '.$cfg->{'physical'}.' '.
