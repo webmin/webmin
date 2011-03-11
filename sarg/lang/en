@@ -142,8 +142,8 @@ sched_sched=Scheduled report enabled?
 sched_yes=Yes, at times selected below ..
 sched_clear=Clear report directory each time?
 sched_dir=Report directory
-sched_edir=No destination report directory has been defined on the <a href='$1'>$log_title</a> page. This must be set before scheduled reporting can be enabled.
-sched_esfile=No Squid log file has been defined on the <a href='$1'>$log_title</a> page. This must be set before scheduled reporting can be enabled.
+sched_edir=No destination report directory has been defined on the <a href='$1'>Log Source and Report Destination</a> page. This must be set before scheduled reporting can be enabled.
+sched_esfile=No Squid log file has been defined on the <a href='$1'>Log Source and Report Destination</a> page. This must be set before scheduled reporting can be enabled.
 sched_range=Generate report for date range
 sched_rall=All records in log file
 sched_rsel=Those from $1 to $2 days ago
