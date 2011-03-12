@@ -67,12 +67,29 @@ else {
 if ($in{'run'}) {
 	# Execute the backup now
 	&ui_print_unbuffered_header(undef, $text{'run_title'}, "");
+
+	# Run the pre-backup command, if any
+	if ($backup->{'pre'} =~ /\S/) {
+		$preout = &backquote_command(
+			"($backup->{'pre'}) 2>&1 </dev/null");
+		print &text('email_pre',
+			"<tt>".&html_escape($backup->{'pre'})."</tt>")."<br>\n".
+			"<pre>".&html_escape($preout)."</pre>\n";
+		if ($?) {
+			$err = $text{'email_prefailed'};
+			}
+		}
+
 	@mods = split(/\s+/, $backup->{'mods'});
 	$nice = &nice_dest($backup->{'dest'}, 1);
-	print &text('run_doing', scalar(@mods), "<tt>$nice</tt>"),"<br>\n";
-	$err = &execute_backup(\@mods, $backup->{'dest'}, \$size, undef,
-			       $backup->{'configfile'}, $backup->{'nofiles'},
-			       [ split(/\t+/, $backup->{'others'}) ]);
+	if (!$err) {
+		print &text('run_doing', scalar(@mods),
+			    "<tt>$nice</tt>"),"<br>\n";
+		$err = &execute_backup(
+			\@mods, $backup->{'dest'}, \$size, undef,
+			$backup->{'configfile'}, $backup->{'nofiles'},
+			[ split(/\t+/, $backup->{'others'}) ]);
+		}
 	if ($err) {
 		print "<pre>$err</pre>";
 		print "$text{'run_failed'}<p>\n";
@@ -80,6 +97,16 @@ if ($in{'run'}) {
 	else {
 		print "$text{'run_ok'}<p>\n";
 		}
+
+	# Run the post-backup command, if any
+	if (!$err && $backup->{'post'} =~ /\S/) {
+		$postout = &backquote_command(
+			"($backup->{'post'}) 2>&1 </dev/null");
+		print &text('email_post',
+		      "<tt>".&html_escape($backup->{'post'})."</tt>")."<br>\n".
+		      "<pre>".&html_escape($postout)."</pre>\n";
+		}
+
 	&webmin_log("run", "backup", $backup->{'dest'}, $backup);
 	&ui_print_footer("edit.cgi?id=$in{'id'}", $text{'edit_return'},
 			 "index.cgi?mode=sched", $text{'index_return'});

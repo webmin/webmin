@@ -20,3 +20,5 @@ Backup files are now given 600 permissions, to prevent reading by non-root users
 Added an option on the restore form to just show the contents of a backup.
 ---- Changes since 1.510 ----
 Added fields to the scheduled backup page for pre and post backup commands.
+---- Changes since 1.530 ----
+When a scheduled backup is run manually, and pre and post commands are now also run.
