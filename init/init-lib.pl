@@ -354,7 +354,7 @@ local $id = $config{'inittab_id'};
 if (open(TAB, $iconfig{'inittab_file'})) {
 	# Read the inittab file
 	while(<TAB>) {
-		if (/^$id:(\d+):/) { @rv = ( $1 ); }
+		if (/^$id:(\d+):/ && $1) { @rv = ( $1 ); }
 		}
 	close(TAB);
 	}
