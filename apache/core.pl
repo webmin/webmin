@@ -1075,10 +1075,13 @@ sub edit_ServerTokens
 {
 local $v = $_[0]->{'value'};
 $v = "ProductOnly" if ($v eq "Prod");
+$v = "Min" if ($v eq "Minimal");
 return (1, $text{'core_header'},
 	&select_input($v, "ServerTokens", "Full",
 		      "$text{'core_verosmod'},Full",
-		      "$text{'core_veros'},OS", "$text{'core_ver'},Min",
+		      "$text{'core_veros'},OS",
+		      "$text{'core_ver'},Min",
+		      "$text{'core_minor'},Minor",
 		      $_[1]->{'version'} >= 1.313 ?
 			("$text{'core_product'},ProductOnly") : (),
 		      $_[1]->{'version'} >= 2.041 ?
