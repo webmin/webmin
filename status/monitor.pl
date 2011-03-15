@@ -267,7 +267,7 @@ sub send_status_pager
 {
 local ($text) = @_;
 return if (!$config{'sched_pager'});
-return if (!&has_command($config{'pager_cmd'}));
+return if (!$config{'pager_cmd'});
 system("$config{'pager_cmd'} ".quotemeta($config{'sched_pager'})." ".
        quotemeta($text)." >/dev/null 2>&1 </dev/null");
 }
@@ -487,6 +487,10 @@ if ($tmpl && $tmpl->{$type}) {
 else {
 	# Use built-in
 	if ($type eq 'sms') {
+		return &text('monitor_pager_'.$suffix,
+			     $host, $serv->{'desc'}, $now);
+		}
+	elsif ($type eq 'pager') {
 		return &text('monitor_pager_'.$suffix,
 			     $host, $serv->{'desc'}, $now);
 		}
