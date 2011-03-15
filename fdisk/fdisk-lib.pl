@@ -586,7 +586,7 @@ local @rv;
 if ($_[0] eq "4" || $_[0] eq "6" ||
     $_[0] eq "1" || $_[0] eq "e") { @rv = ( "msdos" ); }
 elsif ($_[0] eq "b" || $_[0] eq "c") { @rv = ( "vfat" ); }
-elsif ($_[0] eq "83") { @rv = ( "ext3", "ext4", "ext2" ); }
+elsif ($_[0] eq "83") { @rv = ( "ext3", "ext4", "ext2", "xfs", "reiserfs" ); }
 elsif ($_[0] eq "82") { @rv = ( "swap" ); }
 elsif ($_[0] eq "81") { @rv = ( "minix" ); }
 else { return ( ); }
