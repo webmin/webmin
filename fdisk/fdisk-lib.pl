@@ -1159,8 +1159,10 @@ else { return " $_[2] $in{$_[0]}"; }
 # can_edit_disk(device)
 sub can_edit_disk
 {
+my ($device) = @_;
+$device =~ s/\d+$//;
 foreach (split(/\s+/, $access{'disks'})) {
-        return 1 if ($_ eq "*" || $_ eq $_[0]);
+        return 1 if ($_ eq "*" || $_ eq $device);
         }
 return 0;
 }
