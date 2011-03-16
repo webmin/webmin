@@ -216,8 +216,8 @@ if (!$in{'new'} && !$pinfo->{'extended'}) {
 			$text{'edit_mkfs2'}, $text{'edit_mkfsmsg2'},
 			&ui_hidden("dev", $dev),
 			&ui_select("type", $rt,
-			  [ map { [ $_, $text{"fs_$_"} ] }
-				&supported_filesystems() ]));
+                                [ map { [ $_, $fdisk::text{"fs_".$_}." ($_)" ] }
+                                      &fdisk::supported_filesystems() ]));
 		}
 
 	if (!$in{'new'} && @stat && $stat[2] == 0 && &can_fsck($stat[1])) {
