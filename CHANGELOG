@@ -141,3 +141,4 @@ Major Dutch updates, thanks to Gandyman.
 Majoe French translation update, thanks to ButterflyOfFire.
 Allow per-language language overrides to be defined, in custom-lang.$code files.
 Updated numerous modules to improve support for Debian 6 and Ubuntu 10.10.
+If a browser asks for gzip compression and a file with a .gz extension exists in the same directory as a static file, Webmin will now serve the gzipped file instead.

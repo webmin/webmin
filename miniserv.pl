@@ -1433,6 +1433,9 @@ if ($method eq 'POST' &&
 	print DEBUG "handle_request: posted_data=$posted_data\n";
 	}
 
+# work out accepted encodings
+%acceptenc = map { $_, 1 } split(/,/, $header{'accept-encoding'});
+
 # replace %XX sequences in page
 $page =~ s/%(..)/pack("c",hex($1))/ge;
 
@@ -2429,15 +2432,29 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 	}
 else {
 	# A file to output
-	print DEBUG "handle_request: outputting file\n";
-	open(FILE, $full) || &http_error(404, "Failed to open file");
+	print DEBUG "handle_request: outputting file $full\n";
+	$gzfile = $full.".gz";
+	if ($config{'gzip'} ne '0' && -r $gzfile && $acceptenc{'gzip'}) {
+		# Using gzipped version
+		@stopen = stat($gzfile);
+		if ($stopen[9] >= $stfull[9] && open(FILE, $gzfile)) {
+			print DEBUG "handle_request: using gzipped $gzfile\n";
+			$gzipped = 1;
+			}
+		}
+	if (!$gzipped) {
+		# Using original file
+		@stopen = @stfull;
+		open(FILE, $full) || &http_error(404, "Failed to open file");
+		}
 	binmode(FILE);
 	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Date: $datestr\r\n".
 		      "Server: $config{server}\r\n".
 		      "Content-type: ".&get_type($full)."\r\n".
-		      "Content-length: $stfull[7]\r\n".
-		      "Last-Modified: ".&http_date($stfull[9])."\r\n".
+		      "Content-length: $stopen[7]\r\n".
+		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
+		      ($gzipped ? "Content-Encoding: gzip\r\n" : "").
 		      "Expires: ".&http_date(time()+$config{'expires'})."\r\n";
 	&write_data($resp);
 	$rv = &write_keep_alive();
