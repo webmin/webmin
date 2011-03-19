@@ -334,7 +334,7 @@ sub execute_dump
 {
 local $fh = $_[1];
 local ($cmd);
-($flag, $hfile) = &dump_flag($_[0], $_[4]);
+local ($flag, $hfile) = &dump_flag($_[0], $_[4]);
 local $tapecmd = $_[0]->{'multi'} && $_[0]->{'fs'} eq 'tar' ? $multi_cmd :
 		 $_[0]->{'notape'} ? undef :
 		 $_[0]->{'multi'} ? undef :
@@ -441,21 +441,21 @@ if ($_[0]->{'remount'}) {
 return $got ? 0 : 1;
 }
 
-# dump_flag(&dump)
+# dump_flag(&dump, at-time)
 # Given a dump, returns the -f flag and server-side file
 sub dump_flag
 {
 local ($flag, $hfile);
 if ($_[0]->{'huser'}) {
-	$hfile = &date_subs($_[0]->{'hfile'});
+	$hfile = &date_subs($_[0]->{'hfile'}, $_[1]);
 	$flag = " -f '$_[0]->{'huser'}\@$_[0]->{'host'}:$hfile'";
 	}
 elsif ($_[0]->{'host'}) {
-	$hfile = &date_subs($_[0]->{'hfile'});
+	$hfile = &date_subs($_[0]->{'hfile'}, $_[1]);
 	$flag = " -f '$_[0]->{'host'}:$hfile'";
 	}
 else {
-	$flag = " -f '".&date_subs($_[0]->{'file'})."'";
+	$flag = " -f '".&date_subs($_[0]->{'file'}, $_[1])."'";
 	}
 return ($flag, $hfile);
 }
