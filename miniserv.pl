@@ -2434,6 +2434,7 @@ else {
 	# A file to output
 	print DEBUG "handle_request: outputting file $full\n";
 	$gzfile = $full.".gz";
+	$gzipped = 0;
 	if ($config{'gzip'} ne '0' && -r $gzfile && $acceptenc{'gzip'}) {
 		# Using gzipped version
 		@stopen = stat($gzfile);
