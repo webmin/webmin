@@ -1752,8 +1752,17 @@ return 0 if (!$filename);
 &open_tempfile(ZONE, ">".&make_chroot($filename), 1, 1) || return 0;
 &close_tempfile(ZONE);
 foreach my $r (@$records) {
-	&create_record($filename, $r->{'name'}, $r->{'ttl'}, $r->{'class'},
-		       $r->{'type'}, &join_record_values($r), $r->{'comment'});
+	if ($r->{'defttl'}) {
+		&create_defttl($filename, $r->{'defttl'});
+		}
+	elsif ($r->{'generate'}) {
+		&create_generator($filename, @{$r->{'generate'}});
+		}
+	elsif ($r->{'type'}) {
+		&create_record($filename, $r->{'name'}, $r->{'ttl'},
+			       $r->{'class'}, $r->{'type'},
+			       &join_record_values($r), $r->{'comment'});
+		}
 	}
 return 1;
 }
