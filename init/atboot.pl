@@ -44,6 +44,7 @@ elsif ($init_mode eq "init") {
 				     "# Required-Start: \$network \$syslog\n",
 				     "# Required-Stop: \$network\n",
 				     "# Default-Start: ",join(" ", @start),"\n",
+				     "# Default-Stop:\n",
 				     "# Description: $desc\n",
 				     "### END INIT INFO\n");
 			}

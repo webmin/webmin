@@ -637,6 +637,7 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 				     "# Required-Start: \$network \$syslog\n",
 				     "# Required-Stop: \$network\n",
 				     "# Default-Start: ",join(" ", @start),"\n",
+				     "# Default-Stop:\n",
 				     "# Description: $_[1]\n",
 				     "### END INIT INFO\n");
 			}
