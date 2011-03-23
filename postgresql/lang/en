@@ -218,6 +218,8 @@ newdb_epath=Missing database path
 newdb_user=Owned by user
 newdb_encoding=Character set encoding
 newdb_eencoding=Missing character set encoding
+newdb_template=Template database
+newdb_notemplate=None
 
 user_title=PostgreSQL Users
 user_ecannot=You are not allowed to edit users

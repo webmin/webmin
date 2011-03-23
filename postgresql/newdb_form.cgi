@@ -34,6 +34,12 @@ if (&get_postgresql_version() >= 8) {
 print &ui_table_row($text{'newdb_path'},
 	&ui_opt_textbox("path", undef, 40, $text{'default'}));
 
+# Template DB
+print &ui_table_row($text{'newdb_template'},
+	&ui_select("template", undef,
+		   [ [ undef, "&lt;".$text{'newdb_notemplate'}."&gt;" ],
+		     &list_databases() ]));
+
 print &ui_table_end();
 print &ui_form_end([ [ undef, $text{'create'} ] ]);
 

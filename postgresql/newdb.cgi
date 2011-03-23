@@ -27,6 +27,9 @@ if (!$in{'encoding_def'} && &get_postgresql_version() >= 8) {
 	$in{'encoding'} =~ /\S/ || &error($text{'newdb_eencoding'});
 	$cmd .= " encoding = '$in{'encoding'}'";
 	}
+if ($in{'template'}) {
+	$cmd .= " template = $in{'template'}";
+	}
 &execute_sql_logged($config{'basedb'}, $cmd);
 &webmin_log("create", "db", $in{'db'});
 if ($access{'dbs'} ne '*') {
