@@ -11,6 +11,7 @@ Pardus			       2009	                pardus-linux	$1	`cat /etc/pardus-release 2>
 Pardus			       2009.1 Anthropoides virgo	                pardus-linux	$1	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2009.1\s+/i
 Pardus			       2009.2 Geronticus eremita	pardus-linux	$1	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2009.2\s+/i
 Pardus			       2011	                pardus-linux	$1	`cat /etc/pardus-release 2>/dev/null` =~ /Pardus\s+2011\s+/i
+
 # Sun Solaris
 Sun Solaris			2.5.1	solaris		2.5.1	$uname =~ /SunOS.*\s5\.5\.1\s/i
 Sun Solaris			2.6	solaris		2.6	$uname =~ /SunOS.*\s5\.6\s/i
@@ -62,6 +63,9 @@ Haansoft Linux			$1	redhat-linux	10.0	`cat /etc/Haansoft-release 2>/dev/null` =~
 cAos Linux			$1	redhat-linux	sprintf("%.1f", 10.0+$1)	`cat /etc/caos-release 2>/dev/null` =~ /release\s+(\S+)/i
 Wind River Linux		3.0	redhat-linux	18.0	`cat /etc/wrs-release 2>/dev/null` =~ /Wind\s+River\s+Linux\s+3\.0/
 Wind River Linux		2.0	redhat-linux	16.0	`cat /etc/wrs-release 2>/dev/null` =~ /Wind\s+River\s+Linux\s+2\.0/
+
+# Amazon Linux
+Amazon Linux			$1	redhat-linux	20.0	`cat /etc/system-release 2>/dev/null` =~ /Amazon\s+Linux.*\s2011/
 
 # Free Redhat Linux and Fedora
 Redhat Linux			$1	redhat-linux	$1	`cat /etc/redhat-release 2>/dev/null` =~ /red.*hat.*release\s+(\S+)/i && `cat /etc/redhat-release 2>/dev/null` !~ /[eE]nterprise|AS|ES|WS|[aA]dvanced/
