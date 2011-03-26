@@ -14,64 +14,90 @@ use WebminCore;
 sub get_config
 {
 if (!scalar(@get_config_cache)) {
-	@get_config_cache = ( );
-	local $lnum = 0;
-	local ($section, @sections);
-	open(CONF, $config{'dovecot_config'});
-	while(<CONF>) {
-		s/\r|\n//g;
-		if (/^\s*(#?)\s*([a-z0-9\_]+)\s*(\S*)\s*\{\s*$/) {
-			# Start of a section .. add this as a value too
-			local $oldsection = $section;
-			if ($section) {
-				push(@sections, $section);	# save old
-				}
-			$section = { 'name' => $2,
-				     'value' => $3,
-				     'enabled' => !$1,
-				     'section' => 1,
-				     'members' => [ ],
-				     'indent' => scalar(@sections),
-				     'line' => $lnum,
-				     'eline' => $lnum };
-			if ($oldsection) {
-				$section->{'sectionname'} =
-					$oldsection->{'name'};
-				$section->{'sectionvalue'} =
-					$oldsection->{'value'};
-				}
-			push(@get_config_cache, $section);
-			}
-		elsif (/^\s*(#?)\s*}\s*$/ && $section) {
-			# End of a section
-			$section->{'eline'} = $lnum;
-			$section->{'eline'} = $lnum;
-			if (@sections) {
-				$section = pop(@sections);
-				}
-			else {
-				$section = undef;
-				}
-			}
-		elsif (/^\s*(#?)([a-z0-9\_]+)\s+=\s*(.*)/) {
-			# A directive inside a section
-			local $dir = { 'name' => $2,
-				       'value' => $3,
-				       'enabled' => !$1,
-				       'line' => $lnum };
-			if ($section) {
-				$dir->{'sectionname'} = $section->{'name'};
-				$dir->{'sectionvalue'} = $section->{'value'};
-				push(@{$section->{'members'}}, $dir);
-				$section->{'eline'} = $lnum;
-				}
-			push(@get_config_cache, $dir);
-			}
-		$lnum++;
-		}
-	close(CONF);
+	@get_config_cache = &read_config_file($config{'dovecot_config'});
 	}
 return \@get_config_cache;
+}
+
+# read_config_file(filename)
+# Convert a file into a list od directives
+sub read_config_file
+{
+local ($file) = @_;
+local $filedir = $file;
+$filedir =~ s/\/[^\/]+$//;
+local $lnum = 0;
+local ($section, @sections);
+open(CONF, $file);
+local @lines = <CONF>;
+close(CONF);
+local $_;
+local @rv;
+local $section;
+foreach (@lines) {
+	s/\r|\n//g;
+	if (/^\s*(#?)\s*([a-z0-9\_]+)\s*(\S*)\s*\{\s*$/) {
+		# Start of a section .. add this as a value too
+		local $oldsection = $section;
+		if ($section) {
+			push(@sections, $section);	# save old
+			}
+		$section = { 'name' => $2,
+			     'value' => $3,
+			     'enabled' => !$1,
+			     'section' => 1,
+			     'members' => [ ],
+			     'indent' => scalar(@sections),
+			     'line' => $lnum,
+			     'eline' => $lnum,
+			     'file' => $file, };
+		if ($oldsection) {
+			$section->{'sectionname'} =
+				$oldsection->{'name'};
+			$section->{'sectionvalue'} =
+				$oldsection->{'value'};
+			}
+		push(@rv, $section);
+		}
+	elsif (/^\s*(#?)\s*}\s*$/ && $section) {
+		# End of a section
+		$section->{'eline'} = $lnum;
+		$section->{'eline'} = $lnum;
+		if (@sections) {
+			$section = pop(@sections);
+			}
+		else {
+			$section = undef;
+			}
+		}
+	elsif (/^\s*(#?)([a-z0-9\_]+)\s+=\s*(.*)/) {
+		# A directive inside a section
+		local $dir = { 'name' => $2,
+			       'value' => $3,
+			       'enabled' => !$1,
+			       'line' => $lnum,
+			       'file' => $file, };
+		if ($section) {
+			$dir->{'sectionname'} = $section->{'name'};
+			$dir->{'sectionvalue'} = $section->{'value'};
+			push(@{$section->{'members'}}, $dir);
+			$section->{'eline'} = $lnum;
+			}
+		push(@rv, $dir);
+		}
+	elsif (/^\s*!(include|include_try)\s+(\S+)/) {
+		# Include file(s)
+		local $glob = $2;
+		if ($glob !~ /^\//) {
+			$glob = $filedir."/".$glob;
+			}
+		foreach my $i (glob($glob)) {
+			push(@rv, &read_config_file($i));
+			}
+		}
+	$lnum++;
+	}
+return @rv;
 }
 
 # find(name, &config, [disabled-mode], [sectionname], [sectionvalue])
@@ -126,7 +152,6 @@ return wantarray ? @rv : $rv[0];
 sub save_directive
 {
 local ($conf, $name, $value, $sname, $svalue) = @_;
-local $lref = &read_file_lines($config{'dovecot_config'});
 local $dir = ref($name) ? $name : &find($name, $conf, 0, $sname, $svalue);
 local $newline = ref($name) ? "$name->{'name'} = $value" : "$name = $value";
 if ($sname) {
@@ -134,13 +159,15 @@ if ($sname) {
 	}
 if ($dir && defined($value)) {
 	# Updating some directive
+	local $lref = &read_file_lines($dir->{'file'});
 	$lref->[$dir->{'line'}] = $newline;
 	$dir->{'value'} = $value;
 	}
 elsif ($dir && !defined($value)) {
 	# Deleting some directive
+	local $lref = &read_file_lines($dir->{'file'});
 	splice(@$lref, $dir->{'line'}, 1);
-	&renumber($conf, $dir->{'line'}, -1);
+	&renumber($conf, $dir->{'line'}, $dir->{'file'}, -1);
 	@$conf = grep { $_ ne $dir } @$conf;
 	}
 elsif (!$dir && defined($value)) {
@@ -148,8 +175,9 @@ elsif (!$dir && defined($value)) {
 	local $cmt = &find($name, $conf, 1, $sname, $svalue);
 	if ($cmt) {
 		# After comment
+		local $lref = &read_file_lines($cmt->{'file'});
 		splice(@$lref, $cmt->{'line'}+1, 0, $newline);
-		&renumber($conf, $cmt->{'line'}+1, 1);
+		&renumber($conf, $cmt->{'line'}+1, $cmt->{'file'}, 1);
 		push(@$conf, { 'name' => $name,
 			       'value' => $value,
 			       'line' => $cmt->{'line'}+1,
@@ -161,9 +189,10 @@ elsif (!$dir && defined($value)) {
 		local @insect = grep { $_->{'sectionname'} eq $sname &&
 				       $_->{'sectionvalue'} eq $svalue } @$conf;
 		@insect || &error("Failed to find section $sname $svalue !");
+		local $lref = &read_file_lines($insect[$#insect]->{'file'});
 		local $line = $insect[$#insect]->{'line'}+1;
 		splice(@$lref, $line, 0, $newline);
-		&renumber($conf, $line, 1);
+		&renumber($conf, $line, $insect[$#insect]->{'file'}, 1);
 		push(@$conf, { 'name' => $name,
 			       'value' => $value,
 			       'line' => $line,
@@ -171,7 +200,8 @@ elsif (!$dir && defined($value)) {
 			       'sectionvalue' => $svalue });
 		}
 	else {
-		# Need to put at end
+		# Need to put at end of main config
+		local $lref = &read_file_lines($config{'dovecot_config'});
 		push(@$lref, $newline);
 		push(@$conf, { 'name' => $name,
 			       'value' => $value,
@@ -187,7 +217,7 @@ elsif (!$dir && defined($value)) {
 sub save_section
 {
 local ($conf, $section) = @_;
-local $lref = &read_file_lines($config{'dovecot_config'});
+local $lref = &read_file_lines($section->{'file'});
 local $indent = "  " x $section->{'indent'};
 local @newlines;
 push(@newlines, $indent.$section->{'name'}." ".$section->{'value'}." {");
@@ -197,17 +227,20 @@ foreach my $m (@{$section->{'members'}}) {
 push(@newlines, $indent."}");
 local $oldlen = $section->{'eline'} - $section->{'line'} + 1;
 splice(@$lref, $section->{'line'}, $oldlen, @newlines);
-&renumber($conf, $section->{'eline'}, scalar(@newlines)-$oldlen);
+&renumber($conf, $section->{'eline'}, $section->{'file'},
+	  scalar(@newlines)-$oldlen);
 $section->{'eline'} = $section->{'line'} + scalar(@newlines) - 1;
 }
 
-# renumber(&conf, line, offset)
+# renumber(&conf, line, file, offset)
 sub renumber
 {
-local ($conf, $line, $offset) = @_;
+local ($conf, $line, $file, $offset) = @_;
 foreach my $c (@$conf) {
-	$c->{'line'} += $offset if ($c->{'line'} >= $line);
-	$c->{'eline'} += $offset if ($c->{'eline'} >= $line);
+	if ($c->{'file'} eq $file) {
+		$c->{'line'} += $offset if ($c->{'line'} >= $line);
+		$c->{'eline'} += $offset if ($c->{'eline'} >= $line);
+		}
 	}
 }
 
@@ -244,7 +277,7 @@ sub stop_dovecot
 {
 local $script = &get_initscript();
 if ($script) {
-	local $out = &backquote_logged("$script stop 2>&1");
+	local $out = &backquote_logged("$script stop 2>&1 </dev/null");
 	return $? ? "<pre>$out</pre>" : undef;
 	}
 else {
@@ -265,7 +298,7 @@ sub start_dovecot
 {
 local $script = &get_initscript();
 local $cmd = $script ? "$script start" : $config{'dovecot'};
-local $out = &backquote_logged("$cmd 2>&1");
+local $out = &backquote_logged("$cmd 2>&1 </dev/null");
 return $? ? "<pre>$out</pre>" : undef;
 }
 
@@ -323,5 +356,28 @@ local ($forindex) = @_;
 return ( "dotlock", "fcntl", "flock", $forindex ? ( ) : ( "lockf" ) );
 }
 
+# lock_dovecot_files([&conf])
+# Lock all files in the Dovecot config
+sub lock_dovecot_files
+{
+local ($conf) = @_;
+$conf ||= &get_config();
+foreach my $f (&unique(map { $_->{'file'} } @$conf)) {
+	&lock_file($f);
+	}
+}
+
+# unlock_dovecot_files([&conf])
+# Release lock on all files
+sub unlock_dovecot_files
+{
+local ($conf) = @_;
+$conf ||= &get_config();
+foreach my $f (reverse(&unique(map { $_->{'file'} } @$conf))) {
+	&unlock_file($f);
+	}
+}
+
 1;
+r
 

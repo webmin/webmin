@@ -9,12 +9,24 @@ print &ui_form_start("save_ssl.cgi", "post");
 print &ui_table_start($text{'ssl_header'}, "width=100%", 4);
 
 # SSL cert and key files
-$cert = &find_value("ssl_cert_file", $conf);
+if (&find_value("ssl_cert", $conf, 2)) {
+	$cert = &find_value("ssl_cert", $conf);
+	$cert =~ s/^<//;
+	}
+else {
+	$cert = &find_value("ssl_cert_file", $conf);
+	}
 print &ui_table_row($text{'ssl_cert'},
 	    &ui_opt_textbox("cert", $cert, 40, &getdef("ssl_cert_file")), 3,
 	    [ undef, "nowrap" ]);
 
-$key = &find_value("ssl_key_file", $conf);
+if (&find_value("ssl_key", $conf, 2)) {
+	$key = &find_value("ssl_key", $conf);
+	$key =~ s/^<//;
+	}
+else {
+	$key = &find_value("ssl_key_file", $conf);
+	}
 print &ui_table_row($text{'ssl_key'},
 	    &ui_opt_textbox("key", $key, 40, &getdef("ssl_key_file")), 3,
 	    [ undef, "nowrap" ]);
@@ -26,7 +38,13 @@ print &ui_table_row($text{'ssl_pass'},
 	    [ undef, "nowrap" ]);
 
 # SSL CA file
-$ca = &find_value("ssl_ca_file", $conf);
+if (&find_value("ssl_ca", $conf, 2)) {
+	$ca = &find_value("ssl_ca", $conf);
+	$ca =~ s/^<//;
+	}
+else {
+	$ca = &find_value("ssl_ca_file", $conf);
+	}
 print &ui_table_row($text{'ssl_ca'},
 	    &ui_opt_textbox("ca", $ca, 40,
 		&getdef("ssl_ca_file", [ [ "", $text{'ssl_none'} ] ])), 3,

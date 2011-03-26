@@ -4,8 +4,8 @@
 require './dovecot-lib.pl';
 &ReadParse();
 &error_setup($text{'login_err'});
-&lock_file($config{'dovecot_config'});
 $conf = &get_config();
+&lock_dovecot_files($conf);
 
 # Allowed and default realm
 &save_directive($conf, "auth_realms",
@@ -66,6 +66,12 @@ if ($usec = &find_section("userdb", $conf, undef, "auth", "default")) {
 elsif (&find("auth_userdb", $conf, 2)) {
 	# Version 0.99 format
 	&save_directive($conf, "auth_userdb", $userdb);
+	}
+elsif (&find_value("driver", $conf, 2, "userdb")) {
+	# Version 2.0 format
+	$args = $userdb =~ s/\s+(\S.*)$// ? $1 : undef;
+	&save_directive($conf, "driver", $userdb, "userdb");
+	&save_directive($conf, "args", $args, "userdb");
 	}
 else {
 	# Version 1.0 format
@@ -133,6 +139,12 @@ elsif (&find("auth_passdb", $conf, 2)) {
 	# Version 0.99 format
 	&save_directive($conf, "auth_passdb", $passdb);
 	}
+elsif (&find_value("driver", $conf, 2, "passdb")) {
+	# Version 2.0 format
+	$args = $passdb =~ s/\s+(\S.*)$// ? $1 : undef;
+	&save_directive($conf, "driver", $passdb, "passdb");
+	&save_directive($conf, "args", $args, "passdb");
+	}
 else {
 	# Version 1.0 format
 	&save_directive($conf, "passdb", $passdb, "auth", "default");
@@ -177,7 +189,7 @@ if (&find("login_processes_count", $conf, 2)) {
 	}
 
 &flush_file_lines();
-&unlock_file($config{'dovecot_config'});
+&unlock_dovecot_files($conf);
 &webmin_log("login");
 &redirect("");
 

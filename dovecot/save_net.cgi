@@ -4,8 +4,8 @@
 require './dovecot-lib.pl';
 &ReadParse();
 &error_setup($text{'net_err'});
-&lock_file($config{'dovecot_config'});
 $conf = &get_config();
+&lock_dovecot_files($conf);
 
 &save_directive($conf, "protocols", join(" ", split(/\0/, $in{'protocols'})));
 $sslopt = &find("ssl_disable", $conf, 2) ? "ssl_disable" : "ssl";
@@ -31,7 +31,7 @@ foreach $l (@listens) {
 	}
 
 &flush_file_lines();
-&unlock_file($config{'dovecot_config'});
+&unlock_dovecot_files($conf);
 &webmin_log("net");
 &redirect("");
 

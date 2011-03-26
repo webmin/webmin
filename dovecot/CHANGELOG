@@ -17,3 +17,5 @@ The locking methods for mailboxes and index files can be configured on the Mail 
 Added fields for setting the index and control files locations.
 ---- Changes since 1.430 ----
 Added fields to the SSL page for an optional CA certificate file and private key password.
+---- Changes since 1.530 ----
+Added support for Dovecot 2.0, which renames many configuration directives and splits up the config using include files.

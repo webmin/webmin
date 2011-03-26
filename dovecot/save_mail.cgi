@@ -4,8 +4,8 @@
 require './dovecot-lib.pl';
 &ReadParse();
 &error_setup($text{'mail_err'});
-&lock_file($config{'dovecot_config'});
 $conf = &get_config();
+&lock_dovecot_files($conf);
 
 # Mail file location
 if ($in{'envmode'} == 4) {
@@ -100,7 +100,7 @@ foreach $l ("mbox_read_locks", "mbox_write_locks") {
 	}
 
 &flush_file_lines();
-&unlock_file($config{'dovecot_config'});
+&unlock_dovecot_files($conf);
 &webmin_log("mail");
 &redirect("");
 

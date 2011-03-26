@@ -20,7 +20,7 @@ print &ui_table_row($text{'login_realm'},
 
 # Authentication mechanisms (MD5, etc..)
 if (&find("auth_mechanisms", $conf, 2)) {
-	# Version 0.99 format
+	# Version 0.99 and 2.0 format
 	@mechs = split(/\s+/, &find_value("auth_mechanisms", $conf));
 	}
 else {
@@ -45,6 +45,12 @@ elsif ($usec = &find_section("userdb", $conf, undef, "auth", "default")) {
 	$userdb = $usec->{'value'};
 	$args = &find_value("args", $conf, undef, "userdb", $usec->{'value'});
 	$userdb .= " $args" if ($args);
+	}
+elsif (&find_value("driver", $conf, 2, "userdb")) {
+	# Version 2.0 format
+	$userdb = &find_value("driver", $conf, undef, "userdb");
+	$args = &find_value("args", $conf, undef, "userdb");
+	$userdb .= " ".$args if ($args);
 	}
 else {
 	# Version 1.0 format
@@ -112,6 +118,12 @@ elsif ($psec = &find_section("passdb", $conf, undef, "auth", "default")) {
 	$args = &find_value("args", $conf, undef, "passdb", $psec->{'value'});
 	$passdb .= " $args" if ($args);
 	$alpha_opts = 1;
+	}
+elsif (&find_value("driver", $conf, 2, "passdb")) {
+	# Version 2.0 format
+	$passdb = &find_value("driver", $conf, undef, "passdb");
+	$args = &find_value("args", $conf, undef, "passdb");
+	$passdb .= " ".$args if ($args);
 	}
 else {
 	# Version 1.0 format
