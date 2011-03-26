@@ -1,0 +1,9 @@
+type=ipf
+what=rules services groups nat pat spoof
+fw_any=0
+rusure=1
+show_desc=1
+perpage=40
+add_files=0
+open_log=1
+frags=0

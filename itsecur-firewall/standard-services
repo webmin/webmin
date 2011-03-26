@@ -1,0 +1,223 @@
+AOL			TCP	5190	 	#AOL Instant Messanger
+AP-Defender		TCP	2626	 	#Defender Authentication Service
+BackDoor-Setup		TCP	5000	 	#Use by Boinet Lite, Blazer 5, Bubbel Trojans
+Backage			TCP	 411	 	#Backage Trojan
+BackDoor-G		TCP	1243	 	#Also used by Subseven, Tiles Trojans
+Citrix-ICA		TCP	1494	 	#ICA Gerneral Service
+Connect-BackDoor	TCP	4000	 	#Also used by SkyDance Trojan
+CrackDown		TCP	4444	 	#Crackdown Trojan
+DaCryptic		TCP	1074	 	#DaCryptic Trojan
+DameWare		TCP	6129	 	#DameWare Mini Remote Control Protocol
+DayTime			TCP	  13	UDP	13	 	#DayTime Server Protocol
+DerSphere		TCP	1000	 	#Also used by Insane Network Trojans
+DerSphere-II		TCP	2000	 	#Also used by SennaSpy Trojan Generator
+Direct-Connect		TCP	 411-412 	#Direct Connect P2P Application
+Discard			TCP	   9	 	#Discard Server Protocol
+DNS			TCP	  53	UDP	53	 	#Domain Name Service
+Echo			TCP	   7	 	#Echo Protocol
+eDonkey-4661		TCP	4661	 	#eDonkey Protocol
+eDonkey-4662		TCP	4662		#eDonkey Protocol
+nTrust-Admin		TCP	 710		#nTrust CA Administration Service
+nTrust-Key-Mgmt		TCP	 709		#nTrust Key Management Service
+ERP-1			TCP	12345-12349	#ERP Service
+Exec			TCP	 512		#Remote Execution
+Finger			TCP	  79		#UNIX Finger Protocol
+Freak2K			TCP	7001		#Also used by Freak88, NetSnooper Gold Trojans
+FTP			TCP	  21		#File Transfer Protocol
+GateCrasher		TCP	6970		#GateCrasher Trojan
+GNUtella-RTR		TCP	6347	UDP	6347		#Also used by BearShare, ToadNode, LimeWire
+GNUtella		TCP	6346	UDP	6346		#Also used by BearShare, ToadNode, LimeWire
+Gopher			TCP	  70		#Internet Gopher Protocol
+GoToMyPC		TCP	8200		#GotoMy PC
+H323			TCP	1720		#Video Conference Transmission over IP
+HackaTACK-31785		TCP	31785		#HackAttack
+HackaTACK-31787		TCP	31787		#HackAttack				
+HackaTACK-31788		TCP	31788		#HackAttack
+HackaTACK-31790		TCP	31790		#HackAttack
+HackaTACK-31792		TCP	31792		#HackAttack
+HotLine-Client		TCP	5500-5503	#HotLine Client Connection
+HTTP			TCP	  80		#Hyper-Text Transfer Protocol
+HTTPS			TCP	 443		#TLS/SSL
+ICKiller		TCP	1027		#ICKiller
+IDENT			TCP	 113		#Identify RCS Keyword String in Files
+IKE			TCP	 500	UDP	500		#IPSec Internet Key Exchange
+IMAP			TCP	 143		#Interactive Mail Protocol
+iMesh			TCP	5000		#Also used by many Trojans and UPNP Service
+InCommand		TCP	1029		#Also used by ICQ Nuke 98 Trojan
+IPSO-CMP		TCP	1111		#IPSO Clustering Management Protocol
+IRC-1			TCP	6660-6670	#Internet Relay Chat
+IRC-2			TCP	7000		#Internet Relay Chat
+Jade			TCP	1024		#Also used by Latinus, NetSPY, Rat Trojans
+Kaos			TCP	1212		#Kaos Trojan
+KazzaA			TCP	1214		#Fast Track P2P Protocol
+Kerberos-v5		TCP	  88	UDP	88		#Kerberos Authentication Version 5
+Kerberos		TCP	 750	UDP	750		#Kerberos Authentication
+Kuang2			TCP	17300		#Kuang2 Trojan
+LDAP			TCP	 389		#Lightweight Directory Access Protocol
+LDAP-SSL		TCP	 636		#Lightweight Directory Access Protocol over TLS/SSL
+Rlogin			TCP	 513		#Rlogin
+iNotes			TCP	1352		#Lotus iNotes Web Access Protocol
+lpdw0rm			TCP	 515		#Used by Ramen Trojans and Printer Service
+Madster			TCP	5025		#Formally called Aimster
+####Microsoft-TS		TCP	 445		#Microsoft CIFS's over TCP
+Mneah			TCP	4666		#The Mneah Trojan
+MSN-File Transfer	TCP	6891-6900	#MSN File Tranfer
+MSN-Messenger		TCP	1863		#MSN Instant Messenger
+MSSQL-Mon		TCP	1434		#MSSQL Monitor
+MSSQL			TCP	1433		#MSSQL Server
+mysql			TCP	3306		#MySQL Server	
+MultiDropper		TCP	1035		#MultiDropper Trojan
+Napster-Client		TCP	6600-6699	#Napster Client also used by WinMX
+Napster-Dir4		TCP	4444		#Napster Directory Connections
+Napster-Dir5		TCP	5555		#Napster Directory Connections
+Napster-Dir6		TCP	6666		#Napster Directory Connections
+Napster-Dir7		TCP	7777		#Napster Directory Connections
+Napster-Dir8		TCP	8888		#Napster Directory Connections
+Napster-Redirector	TCP	8875		#Napster Redirector
+NBSession		TCP	 139		#NetBios Session Service
+NCP			TCP	 524		#Novell Netware Core Protocol
+NetShow			TCP	1755		#Microsoft NetShow-Windows Media Player
+NetSTAT			TCP	  15		#UNIX NetSTAT Protocol
+NFSD			TCP	2049	UDP	2049		#Network File System Deamon
+NNTP			TCP	 119		#Network News Tranfer Protocol
+NTP			TCP	 123	UDP	123		#Network Time Protocol
+OAS-NameServer		TCP	2649		#Oracle Application Server
+OAS-ORB			TCP	2651		#Oracle Application Server
+OpenWindows		TCP	2000		#Open Windows
+####Orbix-1570		TCP	1570		#IONA Orbix Deamon
+####Orbix-1571		TCP	1571		#IONA Orbix Deamon
+PcAnywhere-Date		TCP	5631		#pcAnywhere
+PcTele-FileSync		TCP	2299		#Symantec PcTelecommute File Syncronization
+POP2			TCP	 109		#Post Office Protocol Verion 2
+POP3			TCP	 110		#Post Office Protocol Verion 3
+667-Trojans		TCP	 667		#Misc Trojans
+PPTP			TCP	1723		#Point 2 Point Tunnelling Protocol
+Quake			TCP	26000	UDP	26000		#Quake
+RainWall Command	TCP	6374		#RainWall High Avaiablility Deamon
+RAT			TCP	1097-1098	#Remote Administration Tool Trojan
+####Real-Audio		TCP	7070		#Real Audio
+Remote-Strom		TCP	1025		#Used by Fraggle Rock, NetSPY and MD5 BackDoor Trojans
+####RTSP			TCP	 554		#RealTime Streaming Protocol
+Secure-ID-Prop		TCP	5510		#Token based Authentication Service
+ShadyShell		TCP	1337		#ShadyShell Trojan
+####RSH			TCP	 514		#Remote Shell
+SMTP			TCP	  25		#Simple Mail Tranfer Protocol
+Sockets-DES		TCP	   1		#Also used by the TCP MUX Service
+SQLNET-1		TCP	1521		#Oracle SQL Net Verison 1 Service
+SQLNET-2-1521		TCP	1521		#Part of Oracle SQLNet Verison 2 Service
+SQLNET-2-1525		TCP	1525		#Part of Oracle SQLNet Verison 2 Service
+SQLNET-2-1526		TCP	1526		#Part of Oracle SQLNet Verison 2 Service
+SSH			TCP	  22		#Secure Shell
+####SSH2			TCP	  22		#Secure Shell Version 2 also blocks version 1
+Safe-T-Net		TCP	32557		#Safe-T-Net Configuration
+Squid			TCP	3128		#Squid Proxy 
+StoneBeat-Control	TCP	3002		#StoneBeat Control
+StoneBeat-Deamon	TCP	3001		#StoneBeat Deamon HeartBeat
+SubSeven		TCP	27374		#Also used by BadBlood, EGO, Lion and WebHead Trojans
+T120			TCP	1503		#H323 Application Sharing Protocol
+TACACS+			TCP	  49		#Terminal Access Control Access Control System
+Term-Serv		TCP	3389		#Terminal Server
+High-Ports		TCP	1024-65535	#TCP High Ports
+Telnet			TCP	  23		#Telnet Protocol
+TerrorTrojan		TCP	3456		#Terror Trojan
+TheFLU			TCP	5534		#The FLU Trojan
+Time			TCP	  37		#Time Server Protocol
+TransScout		TCP	2004-2005	#TransScout Trojan
+Trinoo			TCP	1524		#Trinoo Trojan
+UltorsTrojan		TCP	1234		#Also used by SubSeven Java Client
+UUCP			TCP	 540		#Unix 2 Unix Copy Program
+WAIS			TCP	 210		#Wide Area Information Servers
+####Winframe		TCP	1494		#Winframe
+X11			TCP	6000-6063	#XWindows System
+Yahoo-Messenger		TCP	5050		#Yahoo Messenger
+Yahoo-Voice		TCP	5000-5001	#Yahoo Voice
+Yahoo-WebCam		TCP	5100		#Yahoo WebCam
+Webmin			TCP	10000
+Usermin			TCP	20000
+
+
+Archie		UDP	1525		#Archie Internet Protocol
+Biff		UDP	 512		#Give notice of incoming mail messages
+Blubster	UDP	41170		#Uses Manolito Protocol P2P
+Bootp		UDP	  67		#Bootstrap Protocol Server
+Citrix-ICABrowse UDP	1640		#Citrix ICA Browsing
+CU-SeeMe	UDP	7648-7652	#Video Conferencing
+DHCP-Reply	UDP	  68		#DHCP Reply
+DHCP-Request	UDP	  67		#DHCP Request
+DirectConnect	UDP	411-412		#DirectConnect P2p Application
+Discard		UDP	   9		#Discard Server Protocol
+Echo		UDP	   7		#Echo
+eDonkey-4665	UDP	4665		#eDonkey
+FreeTel-out	UDP	21300		#RealTime Full Duplex Voice Communication
+H323-RAS	UDP	1719		#RAS and Associated connection H323
+H323-RASOnly	UDP	1719		#Endpoint to Gatekeeper communications
+HackaTack-31789	UDP	31789		#HackaTack Trojan
+HackaTack-31791	UDP	31791		#HackaTack Trojan
+HotLine-Tracker	UDP	5499		#HotLine Tracker Connections
+ICQ-Locator	UDP	4000		#Mirabilis ICQ Version
+Interphone	UDP	22555		#VocalTec Internet Phone
+L2TP		UDP	1701		#Layer 2 Tunnelling Protocol
+Microsoft-DS	UDP	 445		#CIFS over UDP
+MSN-1863	UDP	1863		#MSN
+MSN-1590	UDP	5190		#MSN
+MSN-Voice	UDP	6901		#MSN Voice
+MSSQL-MON	UDP	1434		#MSSQL Monitor
+MSSQL-Server	UDP	1433		#MSSQL Server
+Name		UDP	  42		#HostName Server
+NBDatagram	UDP	 138		#NetBIOS Datagram Service
+NBName		UDP	 137		#NetBIOS Name Service
+RADIUS-2	UDP	1812		#Remote Authentication Dial-In User Service V2
+NoBackO		UDP	1201		#NoBackO Trojan
+OnTime		UDP	1622		#OnTime
+PcAnywhere	UDP	5632		#PcAnywhere
+RADIUS		UDP	1645		#Remote Authentication Dial-In User Service
+RainWall-Deamon	UDP	6372		#RainWall Deamon
+RailWall-Status	UDP	6374		#RainWall Remote Management Status
+RainWall-Stop	UDP	6373		#RainWall Monitoring
+RexxRave	UDP	1104		#RexxRave Trojan
+RIP		UDP	 520		#Routing Information Protocol
+SecureID	UDP	5500		#Token Based Authentication
+SIP		UDP	5060		#Shared Whiteboard and Instant Messenger Apps
+SNMP		UDP	 161		#Simple Network Management Protocol
+SNMP-Trap	UDP	 162		#SNMP Trap
+SteamWorks	UDP	1558		#Steamworks
+SWTP-SMS	UDP	9282		#Software Management Server
+Syslog		UDP	 514		#UNIX Syslog Protocol
+TACACS		UDP	  49		#Terminal Access Control Access Control System
+TFTP		UDP	  69		#Trivial File Transfer Protocol
+TIME		UDP	  37		#Time Server Protocol
+High-Ports	UDP	1024-65535	#High Ports
+Vosaic-Data	UDP	20000-20030	#Vosaic Data
+Who		UDP	 513		#UNIX Who Protocol
+WinMX		UDP	6257		#Also uses Napster Ports
+Yahoo V-Chat	UDP	5000-5010	#Yahoo Voice Chat
+
+Dest-Unreach	ICMP	3	#ICMP Destination Unreachable
+Echo-Reply	ICMP	0	#ICMP Echo-Reply
+Echo-Request	ICMP	8	#ICMP Echo-Request
+Info-Reply	ICMP	16	#ICMP Info Reply
+Info-Request	ICMP	15	#ICMP Info Request
+Mask-Reply	ICMP	18	#ICMP Mask Reply
+Mask-Request	ICMP	17	#ICMP Mask Request
+Param-Prblm	ICMP	12	#ICMP Parameter Problem
+Redirect	ICMP	5	#ICMP Route Redirect
+Source-Quench	ICMP	4	#ICMP Source Quench
+Time-exceeded	ICMP	11	#ICMP Time to Live Exceeded
+TimeStamp	ICMP	13	#ICMP Time Stamp
+TimeStamp-Reply	ICMP	14	#ICMP TimeStamp Reply	
+
+AH			IP	51	#IPSec Authentication Header Protocol
+BackWeb		IP	17	#Push Web Application Directly to Desktops
+EGP			IP	 8	#Exterior Gateway Protocol
+ESP			IP	50	#IPsec Encapsulation Security Paylod Protocol
+WEB_Mapped		IP	 6	#HTTP and FTP Port Mapping Service
+IGMP			IP	 2	#Internet Group Management Protocol
+IGRP			IP	 9	#Cisco Interior Gateway Routing Protocol
+MSSQL_Resolver	IP	17	#Block MSSQL Sapphire/Slammer Worms
+OSPF			IP	89	#Open Shortest Path First
+RIP-Response	IP	17	#RIP Routing Response
+SMTP_Mapped		IP	 6	#SMTP Port Mapping Service
+SSH_V2		IP	 6	#SSH Version 2
+TraceRoute		IP	17	#Unix TraceRoute
+VRRP			IP	112	#Virtual Router Redundancy Protocol
+GRE			IP	47

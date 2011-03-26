@@ -1,0 +1,15 @@
+line1=Configurable options,11
+fw_any=Include firewall in <b>Any</b> destination?,1,1-Yes,0-No
+frags=Block fragmented packets?,1,1-Yes,0-No
+auto_dir=Automatic backup directory,3,None
+rusure=Ask for confirmation before saving rule?,1,1-Yes,0-No
+show_desc=Show rule descriptions?,1,1-Yes,0-No
+perpage=Logs to show per page,0,5
+refresh=Seconds between log view refreshes,3,Never
+all_files=Include rotated versions of log file,1,1-Yes,0-No
+from=From: address for emails,3,Automatic (webmin@hostname)
+open_log=Open logs in new window?,1,1-Yes,0-No
+line2=System configuration,11
+type=Firewall type,1,iptables-IPtables,ipf-IPF
+log=Firewall log file,3,Automatic based on firewall type
+authlog=Security log file,3,Automatic based on OS
