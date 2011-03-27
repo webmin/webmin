@@ -793,6 +793,11 @@ advanced_nice=CPU priority for scheduled jobs
 advanced_pri=Priority level
 advanced_sclass=IO class for scheduled jobs
 advanced_sprio=IO priority for scheduled jobs
+advanced_gzip=Server gzip compressed static files?
+advanced_gzipauto=If pre-compressed .gz file exists
+advanced_gzip0=Never
+advanced_gzip1=Always compress dynamically
+advanced_egzip=Gzip compression cannot be enabled unless the $1 perl module is installed
 
 syslog_errorlog=Webmin error log
 

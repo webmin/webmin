@@ -110,6 +110,13 @@ if (&foreign_check("proc")) {
 		}
 	}
 
+# Gzip static files?
+print &ui_table_row($text{'advanced_gzip'},
+	&ui_radio("gzip", $miniserv{'gzip'},
+		  [ [ '', $text{'advanced_gzipauto'} ],
+		    [ 0, $text{'advanced_gzip0'} ],
+		    [ 1, $text{'advanced_gzip1'} ] ]));
+
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
 

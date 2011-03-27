@@ -267,6 +267,14 @@ if ($use_ssl) {
 		}
 	}
 
+# Load gzip library if enabled
+if ($config{'gzip'} eq '1') {
+	eval "use Compress::Zlib";
+	if (!$@) {
+		$use_gzip = 1;
+		}
+	}
+
 # Setup syslog support if possible and if requested
 if ($use_syslog) {
 	open(ERRDUP, ">&STDERR");
@@ -2429,6 +2437,31 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		unlink($infile) if ($infile);
 		$rv = 0;
 		}
+	}
+elsif ($use_gzip && $acceptenc{'gzip'} && &should_gzip_file($full)) {
+	# Load and compress file
+	print DEBUG "handle_request: outputting gzipped file $full\n";
+	open(FILE, $full) || &http_error(404, "Failed to open file");
+	{
+		local $/ = undef;
+		$data = <FILE>;
+		}
+	close(FILE);
+	@stopen = stat($file);
+	$data = Compress::Zlib::memGzip($data);
+	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
+		      "Date: $datestr\r\n".
+		      "Server: $config{server}\r\n".
+		      "Content-type: ".&get_type($full)."\r\n".
+		      "Content-length: ".length($data)."\r\n".
+		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
+		      "Content-Encoding: gzip\r\n".
+		      "Expires: ".&http_date(time()+$config{'expires'})."\r\n";
+	&write_data($resp);
+	$rv = &write_keep_alive();
+	&write_data("\r\n");
+	&reset_byte_count();
+	&write_data($data);
 	}
 else {
 	# A file to output
@@ -5735,3 +5768,12 @@ if ($config{'errorlog'} ne '-') {
 	}
 select(STDERR); $| = 1; select(STDOUT);
 }
+
+# should_gzip_file(filename)
+# Returns 1 if some path should be gzipped
+sub should_gzip_file
+{
+my ($path) = @_;
+return $path !~ /\.(gif|png|jpg|jpeg|tif|tiff)$/i;
+}
+

@@ -100,6 +100,13 @@ else {
 # Save password pass option
 $miniserv{'pass_password'} = $in{'pass'};
 
+# Save gzip option
+if ($in{'gzip'} == 1) {
+	eval "use Compress::Zlib";
+	$@ && &error(&text('advanced_egzip', '<tt>Compress::Zlib</tt>'));
+	}
+$miniserv{'gzip'} = $in{'gzip'};
+
 &lock_file($ENV{'MINISERV_CONFIG'});
 &put_miniserv_config(\%miniserv);
 &unlock_file($ENV{'MINISERV_CONFIG'});
