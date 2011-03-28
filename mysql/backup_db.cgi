@@ -107,7 +107,8 @@ if (!$in{'save'}) {
 		# Run and check before-backup command (for all DBs)
 		$bok = &execute_before(undef, STDOUT, 1, $in{'file'}, undef);
 		if (!$bok) {
-			print "$main::whatfailed : ",$text{'backup_ebefore'},"<p>\n";
+			print "$main::whatfailed : ",
+			      $text{'backup_ebefore'},"<p>\n";
 			goto donebackup;
 			}
 		}
@@ -124,9 +125,11 @@ if (!$in{'save'}) {
 			}
 		if ($cron && $cmode == 0) {
 			# Run and check before-backup command (for one DB)
-			$bok = &execute_before($db, STDOUT, 1, $file, $in{'all'} ? undef : $db);
+			$bok = &execute_before($db, STDOUT, 1, $file,
+					       $in{'all'} ? undef : $db);
 			if (!$bok) {
-				print "$main::whatfailed : ",$text{'backup_ebefore'},"<p>\n";
+				print "$main::whatfailed : ",
+				      $text{'backup_ebefore'},"<p>\n";
 				next;
 				}
 			}
