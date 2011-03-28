@@ -22,7 +22,7 @@ index_eversion=The PostgreSQL database on your system is version $1, but Webmin 
 index_elibrary=The PostgreSQL client program $1 could not be run because it could not find the Postgres shared libraries. Check the <a href='$2'>module configuration</a> and make sure the <i>Path to PostgreSQL shared libraries</i> is set.
 index_ldpath=Your shared library path is set to $1, and the output from $2 was :
 index_version=PostgreSQL version $1
-index_setup=The PostgreSQL host configuration file $1 was not found on your system, indicating that the database has not been initialized yet. Click the button below to setup PostgreSQL with the command $2.
+index_setup=The PostgreSQL host configuration file $1 was not found on your system, indicating that the database has not been initialized yet. Click the button below to setup PostgreSQL.
 index_setupok=Initialize Database
 index_nomod=Warning: The Perl module $1 is not installed on your system, so Webmin will not be able to reliably access your PostgreSQL database. <a href='$2'>Click here</a> to install it now.
 index_nomods=Warning: The Perl modules $1 and $2 are not installed on your system, so Webmin will not be able to reliably access your PostgreSQL database. <a href='$3'>Click here</a> to install them now.
