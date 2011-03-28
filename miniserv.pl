@@ -2438,31 +2438,6 @@ if (&get_type($full) eq "internal/cgi" && $validated != 4) {
 		$rv = 0;
 		}
 	}
-elsif ($use_gzip && $acceptenc{'gzip'} && &should_gzip_file($full)) {
-	# Load and compress file
-	print DEBUG "handle_request: outputting gzipped file $full\n";
-	open(FILE, $full) || &http_error(404, "Failed to open file");
-	{
-		local $/ = undef;
-		$data = <FILE>;
-		}
-	close(FILE);
-	@stopen = stat($file);
-	$data = Compress::Zlib::memGzip($data);
-	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
-		      "Date: $datestr\r\n".
-		      "Server: $config{server}\r\n".
-		      "Content-type: ".&get_type($full)."\r\n".
-		      "Content-length: ".length($data)."\r\n".
-		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
-		      "Content-Encoding: gzip\r\n".
-		      "Expires: ".&http_date(time()+$config{'expires'})."\r\n";
-	&write_data($resp);
-	$rv = &write_keep_alive();
-	&write_data("\r\n");
-	&reset_byte_count();
-	&write_data($data);
-	}
 else {
 	# A file to output
 	print DEBUG "handle_request: outputting file $full\n";
@@ -2482,22 +2457,48 @@ else {
 		open(FILE, $full) || &http_error(404, "Failed to open file");
 		}
 	binmode(FILE);
+
+	# Build common headers
 	local $resp = "HTTP/1.0 $ok_code $ok_message\r\n".
 		      "Date: $datestr\r\n".
 		      "Server: $config{server}\r\n".
 		      "Content-type: ".&get_type($full)."\r\n".
-		      "Content-length: $stopen[7]\r\n".
 		      "Last-Modified: ".&http_date($stopen[9])."\r\n".
-		      ($gzipped ? "Content-Encoding: gzip\r\n" : "").
 		      "Expires: ".&http_date(time()+$config{'expires'})."\r\n";
-	&write_data($resp);
-	$rv = &write_keep_alive();
-	&write_data("\r\n");
-	&reset_byte_count();
-	while(read(FILE, $buf, 1024) > 0) {
-		&write_data($buf);
+
+	if (!$gzipped && $use_gzip && $acceptenc{'gzip'} &&
+	    &should_gzip_file($full)) {
+		# Load and compress file, then output
+		print DEBUG "handle_request: outputting gzipped file $full\n";
+		open(FILE, $full) || &http_error(404, "Failed to open file");
+		{
+			local $/ = undef;
+			$data = <FILE>;
 		}
-	close(FILE);
+		close(FILE);
+		@stopen = stat($file);
+		$data = Compress::Zlib::memGzip($data);
+		$resp .= "Content-length: ".length($data)."\r\n".
+			 "Content-Encoding: gzip\r\n";
+		&write_data($resp);
+		$rv = &write_keep_alive();
+		&write_data("\r\n");
+		&reset_byte_count();
+		&write_data($data);
+		}
+	else {
+		# Stream file output
+		$resp .= "Content-length: $stopen[7]\r\n";
+		$resp .= "Content-Encoding: gzip\r\n" if ($gzipped);
+		&write_data($resp);
+		$rv = &write_keep_alive();
+		&write_data("\r\n");
+		&reset_byte_count();
+		while(read(FILE, $buf, 1024) > 0) {
+			&write_data($buf);
+			}
+		close(FILE);
+		}
 	}
 
 # log the request
