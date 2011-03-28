@@ -566,7 +566,7 @@ foreach $av (@{$v->{'members'}}) {
 if ($_[3] == 0) {
 	# text area
 	return &ui_table_row($_[0],
-		&ui_textarea($_[1], join("\n", @av), 3, 15));
+		&ui_textarea($_[1], join("\n", @av), 3, 50));
 	}
 else {
 	# text row
@@ -640,7 +640,8 @@ sub save_forwarders
 local ($i, $ip, $pr, @vals);
 for($i=0; defined($ip = $in{"$_[0]_ip_$i"}); $i++) {
 	next if (!$ip);
-	&check_ipaddress($ip) || &error(&text('eip', $ip));
+	&check_ipaddress($ip) || &check_ip6address($ip) ||
+		&error(&text('eip', $ip));
 	$pr = $in{"$_[0]_pr_${i}_def"} ? undef : $in{"$_[0]_pr_$i"};
 	!$pr || $pr =~ /^\d+$/ || &error(&text('eport', $pr));
 	push(@vals, { 'name' => $ip,

@@ -21,8 +21,8 @@ else {
 if ($in{'rev'}) {
 	local($ipv4);
 	($ipv4 = &check_net_ip($in{'zone'})) ||
-	$config{'support_aaaa'} &&
-	(($in{'zone'} =~ /^([\w:]+)(\/\d+)$/) || &check_ip6address($1)) ||
+	  $config{'support_aaaa'} &&
+	  (($in{'zone'} =~ /^([\w:]+)(\/\d+)$/) || &check_ip6address($1)) ||
 		&error(&text('create_enet', $in{'zone'}));
 	if ($ipv4) {
 		$in{'zone'} = &ip_to_arpa($in{'zone'});
@@ -40,7 +40,7 @@ else {
 $in{'zone'} =~ s/\.$//;
 @masters = split(/\s+/, $in{'masters'});
 foreach $m (@masters) {
-	&check_ipaddress($m) ||
+	&check_ipaddress($m) || &check_ip6address($m) ||
 		&error(&text('create_emaster', $m));
 	}
 #if (!@masters) {

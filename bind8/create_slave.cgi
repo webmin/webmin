@@ -52,7 +52,7 @@ foreach $z (&find("zone", $vconf)) {
 $masterport = $in{'port_def'} ? undef : $in{'port'};
 @masters = split(/\s+/, $in{'masters'});
 foreach $m (@masters) {
-	&check_ipaddress($m) ||
+	&check_ipaddress($m) || &check_ip6address($m) ||
 		&error(&text('create_emaster', $m));
 	}
 if (!@masters) {
