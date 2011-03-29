@@ -49,6 +49,10 @@ else {
 		$filter->{'condheader'} = $in{'condmenu'} || $in{'condheader'};
 		$filter->{'condheader'} =~ /^[a-zA-Z0-9\-]+$/ ||
 			&error($text{'save_econdheader'});
+		if (!$in{'condregexp'} &&
+		    $in{'condvalue'} !~ /^[a-zA-Z0-9_ ]+$/) {
+			$in{'condvalue'} = quotemeta($in{'condvalue'});
+			}
 		if ($in{'condmode'} == 0) {
 			$filter->{'condvalue'} = $in{'condvalue'};
 			}

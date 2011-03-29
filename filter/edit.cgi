@@ -72,6 +72,22 @@ elsif ($filter->{'condvalue'} =~ /^(.*)\.\*$/ ||
 	$condvalue = $1;
 	$condmode = 0;
 	}
+if ($condvalue =~ /^[a-zA-Z0-9_ ]*$/) {
+	# Contains no special chars, so not a regexp
+	$regexp = 0;
+	}
+else {
+	# Has special chars .. but if they are all escaped, then not a regexp
+	$condre = $condvalue;
+	$condre =~ s/\\./x/g;
+	if ($condre =~ /^[a-zA-Z0-9_ ]*$/) {
+		$condvalue =~ s/\\(.)/$1/g;
+		$regexp = 0;
+		}
+	else {
+		$regexp = 1;
+		}
+	}
 print &ui_table_row(
 	&ui_oneradio("cmode", 4, $text{'edit_cmode4'}, $cmode == 4),
 	&text('edit_cheader2',
@@ -89,7 +105,8 @@ print &ui_table_row(
 			   [ 1, $text{'edit_modecont'} ],
 			   [ 2, $text{'edit_modeend'} ] ]),
 	      &ui_textbox("condvalue", $condvalue, 40, 0, undef,
-			  "onFocus='form.cmode[3].checked = true'")),
+			  "onFocus='form.cmode[3].checked = true'")." ".
+	      &ui_checkbox("condregexp", 1, $text{'edit_regexp'}, $regexp)),
 	undef, \@tds);
 
 # Smaller

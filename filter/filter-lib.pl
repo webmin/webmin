@@ -502,19 +502,19 @@ elsif ($f->{'condheader'}) {
 	if ($f->{'condvalue'} =~ /^\.\*(.*)\$$/) {
 		$cond = &text('index_cheader2',
 			"<tt>".&html_escape($f->{'condheader'})."</tt>",
-			"<tt>".&html_escape($1)."</tt>");
+			"<tt>".&html_escape(&prettify_regexp("$1"))."</tt>");
 		}
 	elsif ($f->{'condvalue'} =~ /^\.\*(.*)\.\*$/ ||
 	       $f->{'condvalue'} =~ /^\.\*(.*)$/) {
 		$cond = &text('index_cheader1',
 			"<tt>".&html_escape($f->{'condheader'})."</tt>",
-			"<tt>".&html_escape($1)."</tt>");
+			"<tt>".&html_escape(&prettify_regexp("$1"))."</tt>");
 		}
 	elsif ($f->{'condvalue'} =~ /^(.*)\.\*$/ ||
 	       $f->{'condvalue'} =~ /^(.*)$/) {
 		$cond = &text('index_cheader0',
 			"<tt>".&html_escape($f->{'condheader'})."</tt>",
-			"<tt>".&html_escape($1)."</tt>");
+			"<tt>".&html_escape(&prettify_regexp("$1"))."</tt>");
 		}
 	}
 elsif ($f->{'condtype'} eq '<' || $f->{'condtype'} eq '>') {
@@ -532,6 +532,19 @@ else {
 		}
 	}
 return wantarray ? ( $cond, $lastalways ) : $cond;
+}
+
+# prettify_regexp(string)
+# If a string contains only \ quoted special characters, remove the \s
+sub prettify_regexp
+{
+my ($str) = @_;
+my $re = $str;
+$re =~ s/\\./x/g;
+if ($re =~ /^[a-zA-Z0-9_ ]*$/) {
+	$str =~ s/\\(.)/$1/g;
+	}
+return $str;
 }
 
 # describe_action(&filter, &folder, [homedir])

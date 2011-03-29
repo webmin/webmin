@@ -15,6 +15,7 @@ index_cheader2=Header $1 must end with $2
 edit_modestart=starts with
 edit_modecont=contains
 edit_modeend=ends with
+edit_regexp=Regular expression?
 index_cre=Headers match $1
 index_cre2=Body matches $1
 index_calways=Always
