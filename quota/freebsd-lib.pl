@@ -188,14 +188,18 @@ if ($?) { return -1; }
 @rep = split(/\n/, $rep);
 @rep = grep { !/^root\s/ } @rep[3..$#rep];
 for($n=0; $n<@rep; $n++) {
-	if ($rep[$n] =~ /(\S+)\s*[\-\+]{2}\s+(\d+)\s+(\d+)\s+(\d+)\s.{0,15}\s(\d+)\s+(\d+)\s+(\d+)/ || $rep[$n] =~ /(\S+)\s+..(.{8})(.{8})(.{8}).{7}(.{8})(.{8})(.{8})/) {
+	if ($rep[$n] =~ /(\S+)\s*[\-\+]{2}\s+(\d+)\s+(\d+)\s+(\d+)\s(.{0,15})\s(\d+)\s+(\d+)\s+(\d+)(.*)/ || $rep[$n] =~ /(\S+)\s+..(.{8})(.{8})(.{8})(.{7})(.{8})(.{8})(.{8})(.*)/) {
 		$user{$n,'user'} = $1;
 		$user{$n,'ublocks'} = int($2);
 		$user{$n,'sblocks'} = int($3);
 		$user{$n,'hblocks'} = int($4);
-		$user{$n,'ufiles'} = int($5);
-		$user{$n,'sfiles'} = int($6);
-		$user{$n,'hfiles'} = int($7);
+		$user{$n,'gblocks'} = $5;
+		$user{$n,'ufiles'} = int($6);
+		$user{$n,'sfiles'} = int($7);
+		$user{$n,'hfiles'} = int($8);
+		$user{$n,'gfiles'} = $9;
+		$user{$n,'gblocks'} = &trunc_space($user{$n,'gblocks'});
+		$user{$n,'gfiles'} = &trunc_space($user{$n,'gfiles'});
 		}
 	}
 return $n;
@@ -212,14 +216,18 @@ if ($?) { return -1; }
 @rep = split(/\n/, $rep);
 @rep = @rep[3..$#rep];
 for($n=0; $n<@rep; $n++) {
-	if ($rep[$n] =~ /(\S+)\s*[\-\+]{2}\s+(\d+)\s+(\d+)\s+(\d+)\s.{0,15}\s(\d+)\s+(\d+)\s+(\d+)/ || $rep[$n] =~ /(\S+)\s+..(.{8})(.{8})(.{8}).{7}(.{8})(.{8})(.{8})/) {
+	if ($rep[$n] =~ /(\S+)\s*[\-\+]{2}\s+(\d+)\s+(\d+)\s+(\d+)\s(.{0,15})\s(\d+)\s+(\d+)\s+(\d+)(.*)/ || $rep[$n] =~ /(\S+)\s+..(.{8})(.{8})(.{8})(.{7})(.{8})(.{8})(.{8})/) {
 		$group{$n,'group'} = $1;
 		$group{$n,'ublocks'} = int($2);
 		$group{$n,'sblocks'} = int($3);
 		$group{$n,'hblocks'} = int($4);
-		$group{$n,'ufiles'} = int($5);
-		$group{$n,'sfiles'} = int($6);
-		$group{$n,'hfiles'} = int($7);
+		$group{$n,'gblocks'} = $5;
+		$group{$n,'ufiles'} = int($6);
+		$group{$n,'sfiles'} = int($7);
+		$group{$n,'hfiles'} = int($8);
+		$group{$n,'gfiles'} = $9;
+		$group{$n,'gblocks'} = &trunc_space($group{$n,'gblocks'});
+		$group{$n,'gfiles'} = &trunc_space($group{$n,'gfiles'});
 		}
 	}
 return $n;
