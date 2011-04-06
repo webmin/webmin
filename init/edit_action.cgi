@@ -128,7 +128,8 @@ elsif (!$config{'expert'} || $access{'bootup'} == 2) {
 	# Show if action is currently running
 	if ($hasarg{'status'} && $config{'status_check'}) {
 		$out = &backquote_command("$file status</dev/null 2>/dev/null");
-		if ($out =~ /not\s+running/i) {
+		if ($out =~ /not\s+running/i ||
+		    $out =~ /no\s+server\s+running/i) {
 			$status = "<font color=#ff0000>$text{'no'}</font>";
 			}
 		elsif ($out =~ /running/i) {
