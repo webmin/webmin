@@ -163,6 +163,7 @@ listl_used=Allocated
 listl_pc=Percentage
 listl_err=Failed to deleted leases
 listl_enone=None selected
+listl_refresh=Refresh list
 
 restart_errmsg1=Failed to restart dhcpd
 restart_errmsg2=Failed to signal process

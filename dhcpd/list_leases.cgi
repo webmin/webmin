@@ -1,7 +1,6 @@
 #!/usr/local/bin/perl
 # list_leases.cgi
 # List all active leases
-# XXX compute number of available IPs from ranges, and subtract those allocated
 
 require './dhcpd-lib.pl';
 require 'timelocal.pl';
@@ -16,6 +15,8 @@ if ($in{'network'}) {
 	$desc = &text('listl_network', "<tt>$in{'network'}</tt>",
 			       "<tt>$in{'netmask'}</tt>");
 	}
+print "Refresh: $config{'lease_refresh'}\r\n"
+	if ($config{'lease_refresh'});
 &ui_print_header($desc, $text{'listl_header'}, "");
 
 # Work out how many IPs we have in our subnet ranges
@@ -169,7 +170,13 @@ else {
 		print &ui_hidden("network", $in{'network'});
 		print &ui_hidden("netmask", $in{'netmask'});
 		@links = ( &select_all_link("d"), &select_invert_link("d") );
-		print &ui_links_row(\@links);
+		$links = "<table width=100%><tr><td>".
+			 &ui_links_row(\@links).
+			 "</td><td align=right>".
+			 &ui_links_row([ "<a href='list_leases.cgi?$in'>".
+					 "$text{'listl_refresh'}</a>" ]).
+			 "</td></tr></table>\n";
+		print $links;
 		print &ui_columns_start([
 			"",
 			&sort_link("ipaddr"),
@@ -211,6 +218,7 @@ else {
 						      $lease->{'index'});
 			}
 		print &ui_columns_end();
+		print $links;
 		print &ui_form_end([ [ undef, $text{'listl_delete'} ] ]);
 		}
 	else {

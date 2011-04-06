@@ -3,6 +3,7 @@ lease_sort=Sort leases by,1,0-Order in file,1-IP address,2-Hostname
 hostnet_list=Display subnets and hosts as,1,0-Icons,1-List
 dhcpd_nocols=Icons in row,0,5
 lease_tz=Display leases times in,1,0-GMT,1-Local time
+lease_refresh=Seconds between refreshing lease list,3,Never
 show_ip=Show IP addresses for hosts?,1,1-Yes,0-No
 show_mac=Show MAC addresses for hosts?,1,1-Yes,0-No
 group_name=Show group names as,1,1-<tt>domain&#45;name</tt> option,0-Name or member count,2-Description
