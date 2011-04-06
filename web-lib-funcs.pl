@@ -3291,7 +3291,7 @@ my $func = "${pkg}::$_[1]";
 return defined(&$func);
 }
 
-=head2 get_system_hostname([short])
+=head2 get_system_hostname([short], [skip-file])
 
 Returns the hostname of this system. If the short parameter is set to 1,
 then the domain name is not prepended - otherwise, Webmin will attempt to get
@@ -3301,11 +3301,15 @@ the fully qualified hostname, like foo.example.com.
 sub get_system_hostname
 {
 my $m = int($_[0]);
+my $skipfile = $_[1];
 if (!$main::get_system_hostname[$m]) {
 	if ($gconfig{'os_type'} ne 'windows') {
 		# Try some common Linux hostname files first
 		my $fromfile;
-		if ($gconfig{'os_type'} eq 'redhat-linux') {
+		if ($skipfile) {
+			# Never get from file
+			}
+		elsif ($gconfig{'os_type'} eq 'redhat-linux') {
 			my %nc;
 			&read_env_file("/etc/sysconfig/network", \%nc);
 			if ($nc{'HOSTNAME'}) {
@@ -3334,7 +3338,7 @@ if (!$main::get_system_hostname[$m]) {
 				}
 			}
 
-		# If we found a hostname, use it if value
+		# If we found a hostname in a file, use it
 		if ($fromfile && ($m || $fromfile =~ /\./)) {
 			if ($m) {
 				$fromfile =~ s/\..*$//;
