@@ -43,6 +43,11 @@ if ($gconfig{'eazel'}) {
 	push(@wtitles, $text{'syslet_title'});
 	push(@wicons, "images/syslet.gif");
 	}
+if (&foreign_check("mailboxes")) {
+	push(@wlinks, "edit_sendmail.cgi");
+	push(@wtitles, $text{'sendmail_title'});
+	push(@wicons, "images/sendmail.gif");
+	}
 push(@wlinks, "edit_ssl.cgi", "edit_ca.cgi");
 push(@wtitles, $text{'ssl_title'}, $text{'ca_title'});
 push(@wicons, "images/ssl.gif", "images/ca.gif");

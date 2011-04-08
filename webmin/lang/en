@@ -903,4 +903,22 @@ status_interval1=Never
 status_interval0=Every
 status_mins=minutes
 status_pkgs=Collect available package updates?
+
+sendmail_title=Sending Email
+sendmail_desc=This page controls how Webmin sends email, such as from scheduled backups or background monitoring. It also effects email sent using the Read User Mail module.
+sendmail_header=Mail sending options
+sendmail_system=Local mail server
+sendmail_smtp=Send email using
+sendmail_smtp0=Local mail server command
+sendmail_smtp1=Via SMTP to local mail server
+sendmail_smtp2=Via SMTP to remote mail server
+sendmail_login=SMTP server authentication
+sendmail_login1=Don't authenticate
+sendmail_login0=Login as
+sendmail_pass=with password
+sendmail_auth=SMTP authentication method
+sendmail_from=From address for email from Webmin
+sendmail_fromdef=Default ($1)
+sendmail_fromaddr=Address
+
 __norefs=1
