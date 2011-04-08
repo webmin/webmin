@@ -620,6 +620,7 @@ log_savekey=Uploaded existing SSL key
 log_deletecache=Deleted $1 URLs from cache
 log_clearcache=Cleared all URLs from cache
 log_lock=Changed file locking
+log_sendmail=Changed mail sending options
 
 themes_title=Webmin Themes
 themes_desc=Themes control the appearance of the Webmin user interface, including icons, colours, backgrounds and the layout of pages. The selection box below can be used to choose one of the themes installed on your system.
@@ -920,5 +921,9 @@ sendmail_auth=SMTP authentication method
 sendmail_from=From address for email from Webmin
 sendmail_fromdef=Default ($1)
 sendmail_fromaddr=Address
+sendmail_err=Failed to save mail sending options
+sendmail_esmtp=Missing or un-resolvable SMTP server hostname
+sendmail_elogin=Missing SMTP server login
+sendmail_efrom=Missing or incorrectly formatted from address
 
 __norefs=1

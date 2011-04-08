@@ -101,3 +101,5 @@ Added a field to the Debugging Log File page to select modules to debug for.
 Added an option to the User Interface page to always put the hostname before the page title.
 ---- Changes since 1.510 ----
 Strong PCI-compliant ciphers can now be selected on the SSL Encryption page.
+---- Changes since 1.540 ----
+Added the Sending Email page which controls how Webmin itself sends messages.
