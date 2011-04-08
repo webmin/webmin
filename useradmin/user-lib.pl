@@ -1821,45 +1821,6 @@ else {
 	}
 }
 
-# validate_password(password, hash)
-# Compares a password with a hash to see if they match, returns 1 if so,
-# 0 otherwise. Tries all supported hashing schemes.
-sub validate_password
-{
-local ($passwd, $hash) = @_;
-
-# Classic Unix crypt
-local $chash = eval {
-	local $main::error_must_die = 1;
-	&unix_crypt($passwd, $hash);
-	};
-return 1 if ($chash eq $hash);
-
-# MD5
-if (!&check_md5()) {
-	local $mhash = &encrypt_md5($passwd, $hash);
-	return 1 if ($mhash eq $hash);
-	}
-
-# Blowfish
-if (!&check_blowfish()) {
-	local $mhash = &encrypt_blowfish($passwd, $hash);
-	return 1 if ($mhash eq $hash);
-	}
-
-# SHA1
-if (!&check_sha512()) {
-	local $shash = &encrypt_sha512($passwd, $hash);
-	return 1 if ($shash eq $hash);
-	}
-
-# Some other hashing, maybe supported by crypt
-local $ohash = eval { crypt($passwd, $hash) };
-return 1 if ($ohash eq $hash);
-
-return 0;
-}
-
 =head2 build_user_used([&uid-hash], [&shell-list], [&username-hash])
 
 Fills in hashes with used UIDs, shells and usernames, based on existing users.
