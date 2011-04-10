@@ -1571,7 +1571,8 @@ if ($config{'userfile'}) {
 		($authuser, $authpass) = split(/:/, &b64decode($1), 2);
 		print DEBUG "handle_request: doing basic auth check authuser=$authuser authpass=$authpass\n";
 		local ($vu, $expired, $nonexist) =
-			&validate_user($authuser, $authpass, $host);
+			&validate_user($authuser, $authpass, $host,
+				       $acptip, $port);
 		print DEBUG "handle_request: vu=$vu expired=$expired nonexist=$nonexist\n";
 		if ($vu && (!$expired || $config{'passwd_mode'} == 1)) {
 			$authuser = $vu;
@@ -1639,7 +1640,8 @@ if ($config{'userfile'}) {
 				}
 
 			local ($vu, $expired, $nonexist) =
-				&validate_user($in{'user'}, $in{'pass'}, $host);
+				&validate_user($in{'user'}, $in{'pass'}, $host,
+					       $acptip, $port);
 			local $hrv = &handle_login(
 					$vu || $in{'user'}, $vu ? 1 : 0,
 				      	$expired, $nonexist, $in{'pass'},
@@ -3241,12 +3243,12 @@ sub urlize {
   return $tmp2;
 }
 
-# validate_user(username, password, host)
+# validate_user(username, password, host, remote-ip, webmin-port)
 # Checks if some username and password are valid. Returns the modified username,
 # the expired / temp pass flag, and the non-existence flag
 sub validate_user
 {
-local ($user, $pass, $host) = @_;
+local ($user, $pass, $host, $actpip, $port) = @_;
 return ( ) if (!$user);
 print DEBUG "validate_user: user=$user pass=$pass host=$host\n";
 local ($canuser, $canmode, $notexist, $webminuser, $sudo) =
@@ -3298,7 +3300,7 @@ elsif ($canmode == 1) {
 	}
 elsif ($canmode == 2 || $canmode == 3) {
 	# Attempt PAM or passwd file authentication
-	local $val = &validate_unix_user($canuser, $pass);
+	local $val = &validate_unix_user($canuser, $pass, $acptip, $port);
 	print DEBUG "validate_user: unix val=$val\n";
 	if ($val && $sudo) {
 		# Need to check if this Unix user can sudo
@@ -3324,7 +3326,7 @@ else {
 	}
 }
 
-# validate_unix_user(user, password)
+# validate_unix_user(user, password, remote-ip, local-port)
 # Returns 1 if a username and password are valid under unix, 0 if not,
 # or 2 if the account has expired.
 # Checks PAM if available, and falls back to reading the system password
@@ -3339,6 +3341,8 @@ if ($use_pam) {
 	local $pamh = new Authen::PAM($config{'pam'}, $pam_username,
 				      \&pam_conv_func);
 	if (ref($pamh)) {
+		$pamh->pam_set_item("PAM_RHOST", $_[2]) if ($_[2]);
+		$pamh->pam_set_item("PAM_TTY", $_[3]) if ($_[3]);
 		local $pam_ret = $pamh->pam_authenticate();
 		if ($pam_ret == PAM_SUCCESS()) {
 			# Logged in OK .. make sure password hasn't expired
