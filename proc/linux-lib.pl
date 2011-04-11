@@ -6,7 +6,7 @@ use Time::Local;
 sub list_processes
 {
 local($pcmd, $line, $i, %pidmap, @plist, $dummy, @w, $_);
-local $out = `ps V`;
+local $out = &backquote_command("ps V 2>&1");
 if ($out =~ /version\s+([0-9\.]+)\./ && $1 >= 2 || $out =~ /version\s+\./) {
 	# New version of ps, as found in redhat 6
 	local $width;
@@ -52,7 +52,7 @@ if ($out =~ /version\s+([0-9\.]+)\./ && $1 >= 2 || $out =~ /version\s+\./) {
 else {
 	# Old version of ps
 	$pcmd = join(' ' , @_);
-	open(PS, "ps aulxhwwww $pcmd |");
+	open(PS, "ps aulxhwwww $pcmd 2>/dev/nul |");
 	for($i=0; $line=<PS>; $i++) {
 		chop($line);
 		if ($line =~ /ps aulxhwwww/) { $i--; next; }
@@ -105,7 +105,7 @@ return undef;
 sub find_mount_processes
 {
 local($out);
-$out = `fuser -m $_[0]`;
+$out = &backquote_command("fuser -m ".quotemeta($_[0])." 2>/dev/null");
 $out =~ s/[^0-9 ]//g;
 $out =~ s/^\s+//g; $out =~ s/\s+$//g;
 return split(/\s+/, $out);
@@ -116,8 +116,8 @@ return split(/\s+/, $out);
 sub find_file_processes
 {
 local($out, $files);
-$files = join(' ', @_);
-$out = `fuser $files`;
+$files = join(' ', map { quotemeta($_) } @_);
+$out = &backquote_command("fuser $files 2>/dev/null");
 $out =~ s/[^0-9 ]//g;
 $out =~ s/^\s+//g; $out =~ s/\s+$//g;
 return split(/\s+/, $out);
