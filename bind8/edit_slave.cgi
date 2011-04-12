@@ -81,6 +81,9 @@ if ($access{'whois'} && &has_command($config{'whois_cmd'}) &&
 	push(@titles, $text{'master_whois'});
 	push(@images, "images/whois.gif");
 	}
+push(@links, "xfer.cgi?index=$in{'index'}&view=$in{'view'}");
+push(@titles, $text{'slave_xfer'});
+push(@images, "images/xfer.gif");
 if (@links) {
 	print &ui_hr() if ($done_recs);
 	&icons_table(\@links, \@titles, \@images);

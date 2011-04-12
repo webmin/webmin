@@ -3279,5 +3279,39 @@ if (&find_byname("nscd")) {
 	}
 }
 
+# transfer_slave_records(zone, &masters, [file])
+# Transfer DNS records from a master into some file. Returns a map from master
+# IPs to errors.
+sub transfer_slave_records
+{
+my ($dom, $masters, $file) = @_;
+my %rv;
+my $dig = &has_command("dig");
+foreach my $ip (@$masters) {
+	if (!$dig) {
+		$rv{$ip} = "Missing dig command";
+		}
+	else {
+		my $out = &backquote_logged("$dig IN AXFR ".quotemeta($dom).
+					    " \@".quotemeta($ip)." 2>&1");
+		if ($?) {
+			$rv{$ip} = $out;
+			}
+		elsif (!$out) {
+			$rv{$ip} = "No records transferred";
+			}
+		else {
+			if ($file) {
+				&open_tempfile(XFER, ">$file");
+				&print_tempfile(XFER, $out);
+				&close_tempfile(XFER);
+				$file = undef;
+				}
+			}
+		}
+	}
+return \%rv;
+}
+
 1;
 

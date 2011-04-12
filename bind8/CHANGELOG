@@ -125,3 +125,5 @@ Added the Delete Records In Selected button to the main page, for removing the s
 The default view for new zones can now be set via an option on the Module Config page.
 When adding cluster slave servers, their IPs are added to the also-notify and allow-transfer blocks of each domain added to the slave.
 IPv6 addresses can now be used for remote nameservers in slave and delegation zones.
+---- Changes since 1.540 ----
+Added the Test Zone Transfer button to the slave zone page, to check if zone transfers are possible or not.

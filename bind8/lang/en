@@ -192,6 +192,7 @@ slave_apply=Force Update
 slave_applymsg2=Click this button to force a re-transfer of the zone from the master server, so that it gets all the latest records.
 slave_last=Last transferred : $1
 slave_never=Never
+slave_xfer=Test Zone Transfer
 
 screate_title1=Create Slave Zone
 screate_title2=Create Stub Zone
@@ -1109,4 +1110,11 @@ trusted_ealg=Missing or invalid algorithm number in row $1
 trusted_ekey=Missing base-64 encoded trusted zone key in row $1
 trusted_setup=For DNSSEC to be useful to verify the majority of signed zones on the Internet, BIND must be configured to use a DLV server. Webmin can set this up for you, using the ICS DLV server at $1.
 trusted_ok=Setup DLV and Enable DNSSEC Verification
+
+xfer_title=Test Zone Transfer
+xfer_doing=Testing transfer of slave zone from $1 ..
+xfer_failed=.. from $1 : Failed : $2
+xfer_done=.. from $1 : Completed OK
+xfer_count=Test transfer successfully fetched $1 records from at least one nameserver. Actual transfers by BIND should also succeed.
+
 __norefs=1
