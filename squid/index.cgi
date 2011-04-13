@@ -92,14 +92,7 @@ if ($squid_version < 2) {
 	}
 else {
 	local $file = &get_auth_file($conf);
-	if ($file) {
-		open(AUTH, $file);
-		local $line = <AUTH>;
-		close(AUTH);
-		if (!$line || $line =~ /^(\S+):(\S+)/) {
-			$auth = 2;
-			}
-		}
+	$auth = 2 if ($file);
 	}
 $calamaris = &has_command($config{'calamaris'});
 $delay = $squid_version >= 2.3;
