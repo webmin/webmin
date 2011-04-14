@@ -89,8 +89,8 @@ if ($spam) {
 	$isspam = undef;
 	open(SPAMOUT, $temp);
 	while(<SPAMOUT>) {
-		if (/^X-Spam-Status:\s+(\S+)/i) {
-			$isspam = lc($1) eq 'yes' ? 1 : 0;
+		if (/^X-Spam-Status:\s+Yes/i) {
+			$isspam = 1;
 			last;
 			}
 		last if (!/\S/);
