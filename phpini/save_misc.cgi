@@ -53,6 +53,10 @@ else {
 &save_directive($conf, "cgi.fix_pathinfo",
 	$in{"cgi.fix_pathinfo"} || undef);
 
+# Save Timezone
+&save_directive($conf, "date.timezone",
+	$in{"date.timezone"} || undef);
+
 &flush_file_lines_as_user($in{'file'});
 &unlock_file($in{'file'});
 &graceful_apache_restart();

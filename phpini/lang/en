@@ -154,6 +154,7 @@ misc_esendmail=Invalid command for sending email
 misc_esendmail2=Missing command for sending email
 misc_include=Allow opening of remote Includes?
 misc_path=CGI Fix Path Info?
+misc_timezone=PHP Timezone
 
 log_manual=Manually edit file $1
 log_vars=Changed PHP variables in $1

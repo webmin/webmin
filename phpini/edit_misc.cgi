@@ -8,6 +8,27 @@ $conf = &get_config($in{'file'});
 
 &ui_print_header("<tt>$in{'file'}</tt>", $text{'misc_title'}, "");
 
+# Build list of timezones
+my %tzlist = ({});
+# This may possibly want to be a configuration option, however this is the
+# standard locaation almost certainly used by a particular PHP installation.
+open(TZTAB, "/usr/share/zoneinfo/zone.tab");
+while(<TZTAB>) {
+	chomp;
+	s/#.*$//;
+	next if /^(\s)*$/;
+	# File format is tab-separated with fields, in order:
+	# Country code, Coordinates, Timezone name, Comments
+	my($tz_cc, $tz_coord, $tz_tz, $tz_comm) = split(/\t/);
+	# Stored as a hash for potential future-compatibility.
+	$tzlist{$tz_tz} = { 
+		'country' => $tz_cc, 
+		'coords' => $tz_coord, 
+		'comment' => $tz_comm
+		};
+	}
+close(TZTAB);
+
 print &ui_form_start("save_misc.cgi", "post");
 print &ui_hidden("file", $in{'file'}),"\n";
 print &ui_table_start($text{'misc_header'}, "width=100%", 4);
@@ -43,6 +64,9 @@ print &ui_table_row($text{'misc_sendmail'},
 		    &ui_opt_textbox("sendmail_path", $sendmail, 60,
 				    $text{'misc_none'}), 3);
 
+
+print &ui_table_hr();
+
 # Include open options
 print &ui_table_row($text{'misc_include'},
 	&onoff_radio("allow_url_include"));
@@ -50,6 +74,14 @@ print &ui_table_row($text{'misc_include'},
 # CGI Fix Path options
 print &ui_table_row($text{'misc_path'},
 	&onoff_radio("cgi.fix_pathinfo"));
+
+# PHP Timezone Dropdown
+$tzlist{''}{'comment'} = "[ Default ]" if not exists $tzlist{''};
+$curr_timezone = &find_value("date.timezone", $conf);
+$tzlist{$curr_timezone}{'comment'} = "Custom timezone" if not exists $tzlist{$curr_timezone};
+# TODO: Figure out a good way to list the descriptions for each timezone.
+print &ui_table_row(&hlink($text{'misc_timezone'}, "misc_timezone"),
+&ui_select("date.timezone", $curr_timezone, [sort keys %tzlist], 1, 0, 0, 0));
 
 print &ui_table_end();
 print &ui_form_end([ [ "save", $text{'save'} ] ]);
