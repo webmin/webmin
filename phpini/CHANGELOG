@@ -2,3 +2,5 @@
 First version of this module, which can edit the global PHP configuration file and other per-domain files.
 ---- Changes since 1.480 ----
 Added an access control option to limit file IO to a particular Unix user.
+---- Changes since 1.540 ----
+Added support for selecting the timezone on the Other Settings page, thanks to Matt Lewandowsky.
