@@ -415,7 +415,7 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 				push(@headers, [ $1, $2 ]);
 				}
 			elsif ($lines[$l] =~ /^\s+(.*)/) {
-				$headers[$#headers]->[1] .= $1
+				$headers[$#headers]->[1] .= " ".$1
 					unless($#headers < 0);
 				}
 			$l++;
@@ -426,7 +426,7 @@ if ($ct =~ /multipart\/(\S+)/i && ($ct =~ /boundary="([^"]+)"/i ||
 		foreach $h (@headers) {
 			$attach->{'header'}->{lc($h->[0])} = $h->[1];
 			}
-		if ($attach->{'header'}->{'content-type'} =~ /^([^;]+)/) {
+		if ($attach->{'header'}->{'content-type'} =~ /^([^;\s]+)/) {
 			$attach->{'type'} = lc($1);
 			}
 		else {
@@ -2359,7 +2359,7 @@ while(1) {
 		$mail->{'rawheaders'} .= $line."\n";
 		}
 	elsif ($line =~ /^\s+(.*)/) {
-		$headers[$#headers]->[1] .= $1 unless($#headers < 0);
+		$headers[$#headers]->[1] .= " ".$1 unless($#headers < 0);
 		$mail->{'rawheaders'} .= $line."\n";
 		}
 	elsif ($line =~ /^From\s+(\S+).*\d+/ &&
