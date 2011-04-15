@@ -495,7 +495,22 @@ such as init.d, OSX and FreeBSD.
 =cut
 sub action_status
 {
-if ($init_mode eq "init") {
+if ($init_mode eq "upstart") {
+	# Check service status
+	local $out = &backquote_command("initctl status ".
+					quotemeta($_[0])." 2>&1");
+	if (!$?) {
+		if (-r "/etc/init/$_[0].conf") {
+			# Config script exists
+			return 2;
+			}
+		else {
+			# Not started
+			return 1;
+			}
+		}
+	}
+if ($init_mode eq "init" || $init_mode eq "upstart") {
 	# Look for init script
 	local ($a, $exists, $starting, %daemon);
 	foreach $a (&list_actions()) {
@@ -514,22 +529,6 @@ if ($init_mode eq "init") {
 		$starting = lc($daemon{'ONBOOT'}) eq 'yes' ? 1 : 0;
 		}
 	return !$exists ? 0 : $starting ? 2 : 1;
-	}
-elsif ($init_mode eq "upstart") {
-	# Check service status
-	local $out = &backquote_command("initctl ".quotemeta($_[0])." 2>&1");
-	if ($?) {
-		# Upstart doesn't know about it
-		return 0;
-		}
-	elsif (-r "/etc/init/$_[0].conf") {
-		# Config script exists
-		return 2;
-		}
-	else {
-		# Not started
-		return 1;
-		}
 	}
 elsif ($init_mode eq "local") {
 	# Look for entry in rc.local
@@ -591,7 +590,26 @@ local $st = &action_status($_[0]);
 return if ($st == 2);	# already starting!
 local ($daemon, %daemon);
 
-if ($init_mode eq "init" || $init_mode eq "local") {
+if ($init_mode eq "upstart" && !-r "$config{'init_dir'}/$_[0]") {
+	# Create upstart action if missing, as long as this isn't an old-style
+	# init script
+	my $cfile = "/etc/init/$_[0].conf";
+	my $cfile_dis = $cfile.".disabled";
+	if (-r $cfile_dis) {
+		# Just disabled .. re-enable
+		&rename_logged($cfile_dis, $cfile);
+		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
+		}
+	elsif (-r $cfile) {
+		# Config file exists, make sure it is enabled
+		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
+		}
+	else {
+		# Need to create config
+		# XXX
+		}
+	}
+if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart") {
 	# In these modes, we create a script to run
 	if ($config{'daemons_dir'} &&
 	    &read_env_file("$config{'daemons_dir'}/$_[0]", \%daemon)) {
@@ -705,7 +723,8 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 		$need_links++;
 		}
 
-	if ($need_links && $init_mode eq "init") {
+	if ($need_links && ($init_mode eq "init" ||
+			    $init_mode eq "upstart")) {
 		local $data = &read_file_contents($fn);
 		if (&has_command("chkconfig") && !$config{'no_chkconfig'} &&
 		    (@chk && $chk[3] || $data =~ /Default-Start:/i)) {
@@ -716,7 +735,8 @@ if ($init_mode eq "init" || $init_mode eq "local") {
 		elsif (&has_command("insserv") && !$config{'no_chkconfig'} &&
 		       $data =~ /Default-Start:/i) {
 			# Call the insserv command to enable
-			&system_logged("insserv ".quotemeta($_[0]));
+			&system_logged("insserv ".quotemeta($_[0]).
+				       " >/dev/null 2>&1");
 			}
 		else {
 			# Just link up the init script
@@ -884,7 +904,13 @@ sub disable_at_boot
 local $st = &action_status($_[0]);
 return if ($st != 2);	# not currently starting
 
-if ($init_mode eq "init") {
+if ($init_mode eq "upstart") {
+	# Just use insserv to disable, and rename away .conf file
+	&system_logged("insserv -r ".quotemeta($_[0])." >/dev/null 2>&1");
+	&rename_logged("/etc/init/$_[0].conf",
+		       "/etc/init/$_[0].conf.disabled");
+	}
+if ($init_mode eq "init" || $init_mode eq "upstart") {
 	# Unlink or disable init script
 	local ($daemon, %daemon);
 	local $file = &action_filename($_[0]);
@@ -905,26 +931,20 @@ if ($init_mode eq "init") {
 		}
 	else {
 		# Just unlink the S links
-		foreach (&action_levels('S', $_[0])) {
-			/^(\S+)\s+(\S+)\s+(\S+)$/;
+		foreach my $a (&action_levels('S', $_[0])) {
+			$a =~ /^(\S+)\s+(\S+)\s+(\S+)$/;
 			&delete_rl_action($_[0], $1, 'S');
 			}
 
 		if (@chk) {
 			# Take out the K links as well, since we know how to put
 			# them back from the chkconfig info
-			foreach (&action_levels('K', $_[0])) {
-				/^(\S+)\s+(\S+)\s+(\S+)$/;
+			foreach my $a (&action_levels('K', $_[0])) {
+				$a =~ /^(\S+)\s+(\S+)\s+(\S+)$/;
 				&delete_rl_action($_[0], $1, 'K');
 				}
 			}
 		}
-	}
-elsif ($init_mode eq "upstart") {
-	# Just use insserv to disable, and rename away .conf file
-	&system_logged("insserv -r ".quotemeta($_[0]));
-	&rename_logged("/etc/init/$_[0].conf",
-		       "/etc/init/$_[0].conf.disabled");
 	}
 elsif ($init_mode eq "local") {
 	# Take out of rc.local file
@@ -1489,8 +1509,10 @@ with 'name', 'desc', 'boot', 'status' and 'pid' keys.
 =cut
 sub list_upstart_services
 {
+# Start with native upstart services
 my @rv;
 my $out = &backquote_command("initctl list");
+my %done;
 foreach my $l (split(/\r?\n/, $out)) {
 	if ($l =~ /^(\S+)\s+(start|stop)\/([a-z]+)/) {
 		my $s = { 'name' => $1,
@@ -1515,8 +1537,36 @@ foreach my $l (split(/\r?\n/, $out)) {
 			$s->{'boot'} = 'stop';
 			}
 		push(@rv, $s);
+		$done{$s->{'name'}} = 1;
 		}
 	}
+
+# Also add legacy init scripts
+my ($rl) = &get_inittab_runlevel();
+foreach my $a (&list_actions()) {
+	$a =~ s/\s+\d+$//;
+	next if ($done{$a});
+	my $f = &action_filename($a);
+	my $s = { 'name' => $a,
+		  'legacy' => 1 };
+	my $l = glob("/etc/rc$rl.d/S*$a");
+	$s->{'boot'} = $l ? 'start' : 'stop';
+	$s->{'desc'} = &init_description($f);
+	my $out = &backquote_command("$f status 2>&1 </dev/null");
+	if ($out =~ /not\s+running/i ||
+	    $out =~ /no\s+server\s+running/i ||
+	    $out =~ /not\s+access\s+PID/i) {
+		$s->{'status'} = 'waiting';
+		}
+	elsif ($out =~ /running/i) {
+		$s->{'status'} = 'running';
+		}
+	elsif ($out =~ /stopped/) {
+		$s->{'status'} = 'waiting';
+		}
+	push(@rv, $s);
+	}
+
 return sort { $a->{'name'} cmp $b->{'name'} } @rv;
 }
 
