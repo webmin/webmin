@@ -45,6 +45,10 @@ if ($config{'hostconfig'}) {
 elsif ($config{'rc_dir'}) {
 	$init_mode = "rc";
 	}
+elsif ($config{'init_base'} && -d "/etc/init" &&
+       &has_command("insserv") && &has_command("initctl")) {
+	$init_mode = "upstart";
+	}
 elsif ($config{'init_base'}) {
 	$init_mode = "init";
 	}
@@ -429,17 +433,6 @@ if ($config{'chkconfig'}) {
 			}
 		}
 	}
-elsif ($_[0] =~ /^\/etc\/init.d\/(\S+)$/ && -r "/etc/init/$1.conf") {
-	# Upstart description file exists
-	open(CONF, "/etc/init/$1.conf");
-	while(<CONF>) {
-		if (/^description\s+"([^"]+)"/) {
-			$desc = $1;
-			last;
-			}
-		}
-	close(CONF);
-	}
 elsif ($config{'init_info'} || $data =~ /BEGIN INIT INFO/) {
 	# Find the suse-style Description: line
 	foreach (@lines) {
@@ -521,6 +514,22 @@ if ($init_mode eq "init") {
 		$starting = lc($daemon{'ONBOOT'}) eq 'yes' ? 1 : 0;
 		}
 	return !$exists ? 0 : $starting ? 2 : 1;
+	}
+elsif ($init_mode eq "upstart") {
+	# Check service status
+	local $out = &backquote_command("initctl ".quotemeta($_[0])." 2>&1");
+	if ($?) {
+		# Upstart doesn't know about it
+		return 0;
+		}
+	elsif (-r "/etc/init/$_[0].conf") {
+		# Config script exists
+		return 2;
+		}
+	else {
+		# Not started
+		return 1;
+		}
 	}
 elsif ($init_mode eq "local") {
 	# Look for entry in rc.local
@@ -894,11 +903,6 @@ if ($init_mode eq "init") {
 		# Call chkconfig to remove the links
 		&system_logged("chkconfig ".quotemeta($_[0])." off");
 		}
-	elsif (&has_command("insserv") && !$config{'no_chkconfig'} &&
-	       $data =~ /Default-Start:/i) {
-		# Call insserv to remove the links
-		&system_logged("insserv -r ".quotemeta($_[0]));
-		}
 	else {
 		# Just unlink the S links
 		foreach (&action_levels('S', $_[0])) {
@@ -915,6 +919,12 @@ if ($init_mode eq "init") {
 				}
 			}
 		}
+	}
+elsif ($init_mode eq "upstart") {
+	# Just use insserv to disable, and rename away .conf file
+	&system_logged("insserv -r ".quotemeta($_[0]));
+	&rename_logged("/etc/init/$_[0].conf",
+		       "/etc/init/$_[0].conf.disabled");
 	}
 elsif ($init_mode eq "local") {
 	# Take out of rc.local file
@@ -999,6 +1009,10 @@ elsif ($init_mode eq "win32") {
 	local $err = &start_win32_service($name);
 	return (!$err, $err);
 	}
+elsif ($init_mode eq "upstart") {
+	# Run upstart action
+	return &start_upstart_service($name);
+	}
 else {
 	return (0, "Bootup mode $init_mode not supported");
 	}
@@ -1038,6 +1052,10 @@ elsif ($init_mode eq "win32") {
 	# Start Windows service
 	local $err = &stop_win32_service($name);
 	return (!$err, $err);
+	}
+elsif ($init_mode eq "upstart") {
+	# Stop upstart action
+	return &stop_upstart_service($name);
 	}
 else {
 	return (0, "Bootup mode $init_mode not supported");
@@ -1461,6 +1479,65 @@ sub unlock_rc_files
 foreach my $f (split(/\s+/, $config{'rc_conf'})) {
 	&unlock_file($f);
 	}
+}
+
+=head2 list_upstart_services
+
+Returns a list of all known upstart services, each of which is a hash ref
+with 'name', 'desc', 'boot', 'status' and 'pid' keys.
+
+=cut
+sub list_upstart_services
+{
+my @rv;
+my $out = &backquote_command("initctl list");
+foreach my $l (split(/\r?\n/, $out)) {
+	if ($l =~ /^(\S+)\s+(start|stop)\/([a-z]+)/) {
+		my $s = { 'name' => $1,
+			  'goal' => $2,
+			  'status' => $3 };
+		if ($l =~ /process\s+(\d+)/) {
+			$s->{'pid'} = $1;
+			}
+		open(CONF, "/etc/init/$s->{'name'}.conf") ||
+		   open(CONF, "/etc/init/$s->{'name'}.conf.disabled");
+		while(<CONF>) {
+			if (/^description\s+"([^"]+)"/) {
+				$s->{'desc'} = $1;
+				last;
+				}
+			}
+		close(CONF);
+		if (-r "/etc/init/$s->{'name'}.conf") {
+			$s->{'boot'} = 'start';
+			}
+		elsif (-r "/etc/init/$s->{'name'}.conf.disabled") {
+			$s->{'boot'} = 'stop';
+			}
+		push(@rv, $s);
+		}
+	}
+return sort { $a->{'name'} cmp $b->{'name'} } @rv;
+}
+
+# start_upstart_service(name)
+# Run the upstart service with some name, and return an OK flag and output
+sub start_upstart_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"service ".quotemeta($name)." start 2>&1 </dev/null");
+return (!$?, $out);
+}
+
+# stop_upstop_service(name)
+# Shut down the upstop service with some name, and return an OK flag and output
+sub stop_upstop_service
+{
+my ($name) = @_;
+my $out = &backquote_logged(
+	"service ".quotemeta($name)." stop 2>&1 </dev/null");
+return (!$?, $out);
 }
 
 =head2 reboot_system

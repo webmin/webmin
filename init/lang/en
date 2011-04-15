@@ -1,4 +1,5 @@
 index_title=Bootup and Shutdown
+index_mode=Boot system : $1
 index_add=Create a new bootup and shutdown action.
 index_reboot=Reboot System
 index_rebootmsg=Click on this button to immediately reboot the system. All currently logged in users will be disconnected and all services will be re-started.
@@ -42,6 +43,11 @@ index_rdesc=Description
 index_rboot=Start at boot?
 index_radd=Create a new action.
 index_unknown=Unknown
+index_uname=Service name
+index_udesc=Service description
+index_uboot=Start at boot?
+index_ustatus=Running now?
+index_uadd=Create a new service.
 
 edit_title=Edit Action
 create_title=Create Action
@@ -163,5 +169,12 @@ mass_ok=.. done.
 change_err=You are not allowed to switch runlevels
 change_title=Switch Runlevel
 change_cmd=Switching to runlevel $1 with command $2. This may take some time, and Webmin might not be available anymore after switching.
+
+mode_init=SysV init
+mode_osx=MacOS
+mode_local=Single boot script
+mode_win32=Windows services
+mode_rc=FreeBSD RC scripts
+mode_upstart=Upstart
 
 __norefs=1

@@ -5,7 +5,8 @@
 
 require './init-lib.pl';
 require './hostconfig-lib.pl';
-&ui_print_header(undef, $text{'index_title'}, "", undef, 1, 1);
+&ui_print_header(&text('index_mode', $text{'mode_'.$init_mode}),
+		 $text{'index_title'}, "", undef, 1, 1);
 
 if ($init_mode eq "osx" && $access{'bootup'}) {
 	# This hostconfig if block written by Michael A Peters <mpeters@mac.com>
@@ -60,6 +61,9 @@ elsif ($init_mode eq "init" && $access{'bootup'}) {
 				}
 			}
 		}
+
+	# For each action, look at /etc/rc*.d/* files to see if it is 
+	# started at boot
 	@boot = &get_inittab_runlevel();
 	for($i=0; $i<@acts; $i++) {
 		foreach $s (&action_levels('S', $acts[$i])) {
@@ -299,6 +303,46 @@ elsif ($init_mode eq "rc" && $access{'bootup'}) {
 			     [ "addboot_start", $text{'index_addboot_start'} ],
 			     [ "delboot_stop", $text{'index_delboot_stop'} ],
 			    ]);
+	}
+elsif ($init_mode eq "upstart" && $access{'bootup'}) {
+	# Show upstart actions
+	print &ui_form_start("mass_upstarts.cgi", "post");
+	@links = ( &select_all_link("d"),
+		   &select_invert_link("d"),
+		   "<a href='edit_upstart.cgi?new=1'>$text{'index_uadd'}</a>" );
+	print &ui_links_row(\@links);
+	print &ui_columns_start([ "", $text{'index_uname'},
+				  $text{'index_udesc'},
+				  $text{'index_uboot'},
+				  $text{'index_ustatus'}, ]);
+	foreach $u (&list_upstart_services()) {
+		print &ui_columns_row([
+			&ui_checkbox("d", $u->{'name'}, undef),
+			"<a href='edit_upstart.cgi?name=".
+			  &urlize($u->{'name'})."'>$u->{'name'}</a>",
+			$u->{'desc'},
+			$u->{'boot'} eq 'start' ? $text{'yes'} :
+			  $u->{'boot'} eq 'stop' ?
+			  "<font color=#ff0000>$text{'no'}</font>" :
+			  "<i>$text{'index_unknown'}</i>",
+			$u->{'status'} eq 'running' ? $text{'yes'} :
+			  $u->{'status'} eq 'waiting' ?
+			  "<font color=#ff0000>$text{'no'}</font>" :
+			  "<i>$text{'index_unknown'}</i>",
+			]);
+		}
+	print &ui_columns_end();
+	print &ui_links_row(\@links);
+	print &ui_form_end([ [ "start", $text{'index_start'} ],
+			     [ "stop", $text{'index_stop'} ],
+			     undef,
+			     [ "addboot", $text{'index_addboot'} ],
+			     [ "delboot", $text{'index_delboot'} ],
+			     undef,
+			     [ "addboot_start", $text{'index_addboot_start'} ],
+			     [ "delboot_stop", $text{'index_delboot_stop'} ],
+			    ]);
+
 	}
 
 # reboot/shutdown buttons
