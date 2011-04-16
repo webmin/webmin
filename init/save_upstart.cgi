@@ -18,7 +18,7 @@ if (!$in{'new'}) {
 if ($in{'delete'}) {
 	# Delete the service
 	&disable_at_boot($in{'name'});
-	&unlink_logged($cfile);
+	&delete_upstat_service($in{'name'});
 	&webmin_log("delete", "upstart", $in{'name'});
 	}
 elsif ($in{'new'}) {
@@ -31,34 +31,19 @@ elsif ($in{'new'}) {
 	$in{'server'} =~ /\S/ || &error($text{'upstart_eserver'});
 	($bin, $args) = split(/\s+/, $in{'server'});
 	&has_command($bin) || &error($text{'upstart_eserver2'});
+	$in{'prestart'} =~ s/\r//g;
 
 	# Create the config file
-	&open_lock_tempfile(CFILE, ">$cfile");
-	&print_tempfile(CFILE,
-	  "# $in{'name'}\n".
-	  "#\n".
-	  "# $in{'desc'}\n".
-	  "\n".
-	  "description  \"$in{'desc'}\"\n".
-	  "\n".
-	  "start on runlevel [2345]\n".
-	  "stop on runlevel [!2345]\n".
-	  "\n"
-	  );
-	if ($in{'prestart'}) {
-		&print_tempfile(CFILE,
-		  "pre-start script\n".
-		  join("\n",
-		    map { "    ".$_."\n" }
-			split(/\n/, $in{'prestart'}))."\n".
-		  "end script\n".
-		  "\n");
-		}
-	&print_tempfile(CFILE, "exec ".$in{'server'}."\n");
-	&close_tempfile(CFILE);
+	&create_upstart_service($in{'name'}, $in{'desc'}, $in{'server'},
+				$in{'prestart'});
 
 	# Enable at boot if selected
-	&enable_at_boot($in{'name'}) if ($in{'boot'});
+	if ($in{'boot'} == 0) {
+		&disable_at_boot($in{'name'});
+		}
+	else {
+		&enable_at_boot($in{'name'});
+		}
 
 	&webmin_log("create", "upstart", $in{'name'});
 	}

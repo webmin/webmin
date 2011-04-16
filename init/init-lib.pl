@@ -610,7 +610,8 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 		}
 	else {
 		# Need to create config
-		# XXX
+		&create_upstart_service($_[0], $_[1], $_[2]);
+		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
 		}
 	}
 if ($init_mode eq "init" || $init_mode eq "local" || $init_mode eq "upstart") {
@@ -1578,8 +1579,11 @@ foreach my $a (&list_actions()) {
 return sort { $a->{'name'} cmp $b->{'name'} } @rv;
 }
 
-# start_upstart_service(name)
-# Run the upstart service with some name, and return an OK flag and output
+=head2 start_upstart_service(name)
+
+Run the upstart service with some name, and return an OK flag and output
+
+=cut
 sub start_upstart_service
 {
 my ($name) = @_;
@@ -1588,14 +1592,67 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
-# stop_upstart_service(name)
-# Shut down the upstop service with some name, and return an OK flag and output
+=head2 stop_upstart_service(name)
+
+Shut down the upstop service with some name, and return an OK flag and output
+
+=cut
 sub stop_upstart_service
 {
 my ($name) = @_;
 my $out = &backquote_logged(
 	"service ".quotemeta($name)." stop 2>&1 </dev/null");
 return (!$?, $out);
+}
+
+=head2 create_upstart_service(name, description, command, [pre-script])
+
+Create a new upstart service with the given details.
+
+=cut
+sub create_upstart_service
+{
+my ($name, $desc, $server, $prestart) = @_;
+my $cfile = "/etc/init/$name.conf";
+&open_lock_tempfile(CFILE, ">$cfile");
+&print_tempfile(CFILE,
+  "# $name\n".
+  "#\n".
+  "# $desc\n".
+  "\n".
+  "description  \"$desc\"\n".
+  "\n".
+  "start on runlevel [2345]\n".
+  "stop on runlevel [!2345]\n".
+  "\n".
+  "expect fork\n".
+  "\n"
+  );
+if ($prestart) {
+	&print_tempfile(CFILE,
+	  "pre-start script\n".
+	  join("\n",
+	    map { "    ".$_."\n" }
+		split(/\n/, $prestart))."\n".
+	  "end script\n".
+	  "\n");
+	}
+&print_tempfile(CFILE, "exec ".$server."\n");
+&close_tempfile(CFILE);
+}
+
+=head2 delete_upstart_service(name)
+
+Delete all traces of some upstart service
+
+=cut
+sub delete_upstart_service
+{
+my ($name) = @_;
+&system_logged("insserv -r ".quotemeta($name)." >/dev/null 2>&1");
+my $cfile = "/etc/init/$name.conf";
+my $ifile = "/etc/init.d/$name";
+&unlink_logged($cfile, $ifile);
 }
 
 =head2 reboot_system
