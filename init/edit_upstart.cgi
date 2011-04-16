@@ -41,6 +41,17 @@ else {
 	$conf = &read_file_contents($cfile);
 	print &ui_table_row($text{'upstart_conf'},
 			    &ui_textarea("conf", $conf, 20, 80));
+
+	# Current status
+	if ($u->{'boot'} eq 'start' || $u->{'boot'} eq 'stop') {
+		print &ui_table_row($text{'upstart_boot'},
+			    &ui_yesno_radio("boot", $u->{'boot'} eq 'start'));
+		}
+	if ($u->{'status'} eq 'waiting' || $u->{'status'} eq 'running') {
+		print &ui_table_row($text{'upstart_status'},
+			$u->{'status'} eq 'waiting' ? $text{'upstart_status0'} :
+				&text('upstart_status1', $u->{'pid'}));
+		}
 	}
 
 print &ui_table_end();
@@ -48,7 +59,7 @@ if ($in{'new'}) {
 	print &ui_form_end([ [ undef, $text{'create'} ] ]);
 	}
 else {
-	print &ui_form_end([ [ undef, $text{'create'} ],
+	print &ui_form_end([ [ undef, $text{'save'} ],
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 

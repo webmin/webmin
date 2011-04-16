@@ -49,7 +49,7 @@ if ($enable || $disable) {
 			&disable_at_boot($b);
 			}
 		}
-	&webmin_log($enable ? 'massenable' : 'massdisable', 'action',
+	&webmin_log($enable ? 'massenable' : 'massdisable', 'upstart',
 		    join(" ", @sel));
 	}
 
