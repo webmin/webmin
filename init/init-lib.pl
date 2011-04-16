@@ -912,14 +912,16 @@ if ($init_mode eq "upstart") {
 	# Just use insserv to disable, and comment out start line in .conf file
 	&system_logged("insserv -r ".quotemeta($_[0])." >/dev/null 2>&1");
 	my $cfile = "/etc/init/$_[0].conf";
-	my $lref = &read_file_lines($cfile);
-	foreach my $l (@$lref) {
-		if ($l =~ /^\s*start/) {
-			$l = "#".$l;
-			last;
+	if (-r $cfile) {
+		my $lref = &read_file_lines($cfile);
+		foreach my $l (@$lref) {
+			if ($l =~ /^\s*start/) {
+				$l = "#".$l;
+				last;
+				}
 			}
+		&flush_file_lines($cfile);
 		}
-	&flush_file_lines($cfile);
 	}
 if ($init_mode eq "init" || $init_mode eq "upstart") {
 	# Unlink or disable init script
@@ -1586,9 +1588,9 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
-# stop_upstop_service(name)
+# stop_upstart_service(name)
 # Shut down the upstop service with some name, and return an OK flag and output
-sub stop_upstop_service
+sub stop_upstart_service
 {
 my ($name) = @_;
 my $out = &backquote_logged(

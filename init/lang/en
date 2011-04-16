@@ -165,6 +165,13 @@ mass_starting=Starting action $1 ..
 mass_stopping=Stopping action $1 ..
 mass_failed=.. failed!
 mass_ok=.. done.
+mass_ustart=Starting Services
+mass_urestart=Restarting Services
+mass_ustop=Stopping Services
+mass_uenable=Enabling service $1 at boot time.
+mass_udisable=Disabling service $1 at boot time.
+mass_ustarting=Starting service $1 ..
+mass_ustopping=Stopping service $1 ..
 
 change_err=You are not allowed to switch runlevels
 change_title=Switch Runlevel
@@ -176,5 +183,13 @@ mode_local=Single boot script
 mode_win32=Windows services
 mode_rc=FreeBSD RC scripts
 mode_upstart=Upstart
+
+upstart_title1=Create Upstart Service
+upstart_title2=Edit Upstart Service
+upstart_egone=Service no longer exists!
+upstart_elegacy=Not an upstart service!
+upstart_header=Upstart service details
+upstart_name=Service name
+upstart_conf=Configuration file
 
 __norefs=1

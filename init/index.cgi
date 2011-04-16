@@ -316,10 +316,15 @@ elsif ($init_mode eq "upstart" && $access{'bootup'}) {
 				  $text{'index_uboot'},
 				  $text{'index_ustatus'}, ]);
 	foreach $u (&list_upstart_services()) {
+		if ($u->{'legacy'}) {
+			$l = "edit_action.cgi?0+".&urlize($u->{'name'});
+			}
+		else {
+			$l = "edit_upstart.cgi?name=".&urlize($u->{'name'});
+			}
 		print &ui_columns_row([
 			&ui_checkbox("d", $u->{'name'}, undef),
-			"<a href='edit_upstart.cgi?name=".
-			  &urlize($u->{'name'})."'>$u->{'name'}</a>",
+			"<a href='$l'>$u->{'name'}</a>",
 			$u->{'desc'},
 			$u->{'boot'} eq 'start' ? $text{'yes'} :
 			  $u->{'boot'} eq 'stop' ?
