@@ -500,14 +500,15 @@ if ($init_mode eq "upstart") {
 	local $out = &backquote_command("initctl status ".
 					quotemeta($_[0])." 2>&1");
 	if (!$?) {
-		if (-r "/etc/init/$_[0].conf") {
-			# Config script exists
-			return 2;
+		my $cfile = "/etc/init/$_[0].conf";
+		open(CONF, $cfile);
+		while(<CONF>) {
+			if (/^(#*)\s*start/) {
+				return $1 ? 1 : 2;
+				}
 			}
-		else {
-			# Not started
-			return 1;
-			}
+		close(CONF);
+		return 1;	# Should never happen
 		}
 	}
 if ($init_mode eq "init" || $init_mode eq "upstart") {
@@ -590,19 +591,22 @@ local $st = &action_status($_[0]);
 return if ($st == 2);	# already starting!
 local ($daemon, %daemon);
 
-if ($init_mode eq "upstart" && !-r "$config{'init_dir'}/$_[0]") {
+if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
+				-r "/etc/init/$_[0].conf")) {
 	# Create upstart action if missing, as long as this isn't an old-style
 	# init script
 	my $cfile = "/etc/init/$_[0].conf";
-	my $cfile_dis = $cfile.".disabled";
-	if (-r $cfile_dis) {
-		# Just disabled .. re-enable
-		&rename_logged($cfile_dis, $cfile);
-		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
-		}
-	elsif (-r $cfile) {
+	if (-r $cfile) {
 		# Config file exists, make sure it is enabled
 		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
+		my $lref = &read_file_lines($cfile);
+		foreach my $l (@$lref) {
+			if ($l =~ /^#+\s*start/) {
+				$l =~ s/^#+//;
+				last;
+				}
+			}
+		&flush_file_lines($cfile);
 		}
 	else {
 		# Need to create config
@@ -905,10 +909,17 @@ local $st = &action_status($_[0]);
 return if ($st != 2);	# not currently starting
 
 if ($init_mode eq "upstart") {
-	# Just use insserv to disable, and rename away .conf file
+	# Just use insserv to disable, and comment out start line in .conf file
 	&system_logged("insserv -r ".quotemeta($_[0])." >/dev/null 2>&1");
-	&rename_logged("/etc/init/$_[0].conf",
-		       "/etc/init/$_[0].conf.disabled");
+	my $cfile = "/etc/init/$_[0].conf";
+	my $lref = &read_file_lines($cfile);
+	foreach my $l (@$lref) {
+		if ($l =~ /^\s*start/) {
+			$l = "#".$l;
+			last;
+			}
+		}
+	&flush_file_lines($cfile);
 	}
 if ($init_mode eq "init" || $init_mode eq "upstart") {
 	# Unlink or disable init script
@@ -1521,21 +1532,16 @@ foreach my $l (split(/\r?\n/, $out)) {
 		if ($l =~ /process\s+(\d+)/) {
 			$s->{'pid'} = $1;
 			}
-		open(CONF, "/etc/init/$s->{'name'}.conf") ||
-		   open(CONF, "/etc/init/$s->{'name'}.conf.disabled");
+		open(CONF, "/etc/init/$s->{'name'}.conf");
 		while(<CONF>) {
-			if (/^description\s+"([^"]+)"/) {
+			if (/^description\s+"([^"]+)"/ && !$s->{'desc'}) {
 				$s->{'desc'} = $1;
-				last;
+				}
+			elsif (/^(#*)\s*start/ && !$s->{'boot'}) {
+				$s->{'boot'} = $1 ? 'stop' : 'start';
 				}
 			}
 		close(CONF);
-		if (-r "/etc/init/$s->{'name'}.conf") {
-			$s->{'boot'} = 'start';
-			}
-		elsif (-r "/etc/init/$s->{'name'}.conf.disabled") {
-			$s->{'boot'} = 'stop';
-			}
 		push(@rv, $s);
 		$done{$s->{'name'}} = 1;
 		}
