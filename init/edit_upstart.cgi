@@ -24,12 +24,24 @@ print &ui_table_start($text{'upstart_header'}, undef, 2);
 
 if ($in{'new'}) {
 	# Service name
+	print &ui_table_row($text{'upstart_name'},
+			    &ui_textbox("name", undef, 30));
 
 	# Description
+	print &ui_table_row($text{'upstart_desc'},
+			    &ui_textbox("desc", undef, 60));
 
 	# Pre-start script
+	print &ui_table_row($text{'upstart_prestart'},
+			    &ui_textarea("prestart", undef, 5, 80));
 
 	# Server command
+	print &ui_table_row($text{'upstart_server'},
+			    &ui_textbox("server", undef, 60));
+
+	# Start at boot?
+	print &ui_table_row($text{'upstart_boot'},
+			    &ui_yesno_radio("boot", 1));
 	}
 else {
 	# Service name (non-editable)

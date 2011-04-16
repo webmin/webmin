@@ -5,10 +5,10 @@ require './init-lib.pl';
 &error_setup($text{'upstart_err'});
 $access{'bootup'} || &error($text{'edit_ecannot'});
 &ReadParse();
+@upstarts = &list_upstart_services();
 
 # Get the service
 if (!$in{'new'}) {
-	@upstarts = &list_upstart_services();
 	($u) = grep { $_->{'name'} eq $in{'name'} } @upstarts;
 	$u || &error($text{'upstart_egone'});
 	$u->{'legacy'} && &error($text{'upstart_elegacy'});
@@ -19,9 +19,21 @@ if ($in{'delete'}) {
 	# XXX
 	}
 elsif ($in{'new'}) {
-	# Create the config file
+	# Validate inputs and check for clash
+	$in{'name'} =~ /^[a-z0-9\.\_\-]+$/i ||
+		&error($text{'upstart_ename'});
+	($clash) = grep { $_->{'name'} eq $in{'name'} } @upstarts;
+	$clash && &error($text{'upstart_eclash'});
+	$in{'desc'} || &error($text{'upstart_edesc'});
+	$in{'server'} =~ /\S/ || &error($text{'upstart_eserver'});
+	($bin, $args) = split(/\s+/, $in{'server'});
+	&has_command($bin) || &error($text{'upstart_eserver2'});
 
-	# Enable at boot
+	# Create the config file
+	# XXX
+
+	# Enable at boot if selected
+	&enable_at_boot($in{'name'}) if ($in{'boot'});
 	}
 else {
 	# Just save the config file
