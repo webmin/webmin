@@ -6,6 +6,7 @@ require './init-lib.pl';
 $access{'bootup'} || &error($text{'edit_ecannot'});
 &ReadParse();
 @upstarts = &list_upstart_services();
+$cfile = "/etc/init/$in{'name'}.conf";
 
 # Get the service
 if (!$in{'new'}) {
@@ -16,7 +17,9 @@ if (!$in{'new'}) {
 
 if ($in{'delete'}) {
 	# Delete the service
-	# XXX
+	&disable_at_boot($in{'name'});
+	&unlink_logged($cfile);
+	&webmin_log("delete", "upstart", $in{'name'});
 	}
 elsif ($in{'new'}) {
 	# Validate inputs and check for clash
@@ -30,14 +33,37 @@ elsif ($in{'new'}) {
 	&has_command($bin) || &error($text{'upstart_eserver2'});
 
 	# Create the config file
-	# XXX
+	&open_lock_tempfile(CFILE, ">$cfile");
+	&print_tempfile(CFILE,
+	  "# $in{'name'}\n".
+	  "#\n".
+	  "# $in{'desc'}\n".
+	  "\n".
+	  "description  \"$in{'desc'}\"\n".
+	  "\n".
+	  "start on runlevel [2345]\n".
+	  "stop on runlevel [!2345]\n".
+	  "\n"
+	  );
+	if ($in{'prestart'}) {
+		&print_tempfile(CFILE,
+		  "pre-start script\n".
+		  join("\n",
+		    map { "    ".$_."\n" }
+			split(/\n/, $in{'prestart'}))."\n".
+		  "end script\n".
+		  "\n");
+		}
+	&print_tempfile(CFILE, "exec ".$in{'server'}."\n");
+	&close_tempfile(CFILE);
 
 	# Enable at boot if selected
 	&enable_at_boot($in{'name'}) if ($in{'boot'});
+
+	&webmin_log("create", "upstart", $in{'name'});
 	}
 else {
 	# Just save the config file
-	$cfile = "/etc/init/$in{'name'}.conf";
 	$in{'conf'} =~ /\S/ || &error($text{'upstart_econf'});
 	$in{'conf'} =~ s/\r//g;
 	&open_lock_tempfile(CONF, ">$cfile");
