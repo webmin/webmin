@@ -54,4 +54,11 @@ elsif ($init_mode eq "win32") {
 	# Delete win32 service
 	&delete_win32_service($product);
 	}
-
+elsif ($init_mode eq "rc") {
+	# Delete FreeBSD RC script
+	&delete_rc_script($product);
+	}
+elsif ($init_mode eq "upstart") {
+	# Delete upstart service
+	&delete_upstart_service($product);
+	}

@@ -14,9 +14,7 @@ if (!$in{'new'}) {
 
 if ($in{'delete'}) {
 	# Delete the action script
-	&lock_file($rc->{'file'});
-	unlink($rc->{'file'});
-	&unlock_file($rc->{'file'});
+	&delete_rc_script($in{'name'});
 	&webmin_log("delete", "action", $in{'name'});
 	&redirect("");
 	}

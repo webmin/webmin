@@ -1491,6 +1491,24 @@ local $out = &backquote_logged("$rc->{'file'} forcestop 2>&1 </dev/null");
 return (!$?, $out);
 }
 
+=head2 delete_rc_script(name)
+
+Delete the FreeBSD RC script with some name
+
+=cut
+sub delete_rc_script
+{
+local ($name) = @_;
+my @rcs = &list_rc_scripts();
+my ($rc) = grep { $_->{'name'} eq $name } @rcs;
+if ($rc) {
+	&lock_rc_files();
+	&disable_rc_script($in{'name'});
+	&unlock_rc_files();
+	&unlink_logged($rc->{'file'});
+	}
+}
+
 =head2 lock_rc_files
 
 Internal function to lock all FreeBSD rc.conf files.

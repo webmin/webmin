@@ -18,7 +18,8 @@ if (!$in{'new'}) {
 if ($in{'delete'}) {
 	# Delete the service
 	&disable_at_boot($in{'name'});
-	&delete_upstat_service($in{'name'});
+	&stop_upstart_service($in{'name'});
+	&delete_upstart_service($in{'name'});
 	&webmin_log("delete", "upstart", $in{'name'});
 	}
 elsif ($in{'new'}) {
