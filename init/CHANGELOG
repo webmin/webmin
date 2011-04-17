@@ -20,3 +20,5 @@ Re-wrote all user interface code to use the new Webmin UI library, for a more co
 Updated the API used by other modules to allow new actions to be created on MacOS X systems, such as the firewall startup script.
 ---- Changes since 1.440 ----
 Converted commands in the module's API file to POD format, and added more details about each function.
+---- Changes since 1.540 ----
+Added support for the Upstart boot system, seen on Ubuntu 10 and later.
