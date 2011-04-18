@@ -37,7 +37,8 @@ if ($in{'new'}) {
 
 	# Server command
 	print &ui_table_row($text{'upstart_server'},
-			    &ui_textbox("server", undef, 60));
+			    &ui_textbox("server", undef, 60)."<br>\n".
+			    &ui_checkbox("fork", 1, $text{'upstart_fork'}, 0));
 
 	# Start at boot?
 	print &ui_table_row($text{'upstart_boot'},
@@ -72,6 +73,8 @@ if ($in{'new'}) {
 	}
 else {
 	print &ui_form_end([ [ undef, $text{'save'} ],
+			     [ 'start', $text{'index_start'} ],
+			     [ 'stop', $text{'index_stop'} ],
 			     [ 'delete', $text{'delete'} ] ]);
 	}
 

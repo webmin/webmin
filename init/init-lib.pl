@@ -566,7 +566,7 @@ elsif ($init_mode eq "osx") {
 	}
 }
 
-=head2 enable_at_boot(action, description, startcode, stopcode, statuscode)
+=head2 enable_at_boot(action, description, startcode, stopcode, statuscode, &opts)
 
 Makes some action start at boot time, creating the script by copying the
 specified file if necessary. The parameters are :
@@ -580,6 +580,8 @@ specified file if necessary. The parameters are :
 =item stopcode - Shell commands to run at shutdown time.
 
 =item statuscode - Shell code to output the action's status.
+
+=item opts - Hash ref of additional options, like : fork -> server will fork into background
 
 If this is called for a named action that already exists (even if it isn't
 enabled), only the first parameter needs to be given.
@@ -610,7 +612,7 @@ if ($init_mode eq "upstart" && (!-r "$config{'init_dir'}/$_[0]" ||
 		}
 	else {
 		# Need to create config
-		&create_upstart_service($_[0], $_[1], $_[2]);
+		&create_upstart_service($_[0], $_[1], $_[2], $_[5]->{'fork'});
 		&system_logged("insserv ".quotemeta($_[0])." >/dev/null 2>&1");
 		}
 	}
@@ -1623,14 +1625,14 @@ my $out = &backquote_logged(
 return (!$?, $out);
 }
 
-=head2 create_upstart_service(name, description, command, [pre-script])
+=head2 create_upstart_service(name, description, command, [pre-script], [fork])
 
 Create a new upstart service with the given details.
 
 =cut
 sub create_upstart_service
 {
-my ($name, $desc, $server, $prestart) = @_;
+my ($name, $desc, $server, $prestart, $forks) = @_;
 my $cfile = "/etc/init/$name.conf";
 &open_lock_tempfile(CFILE, ">$cfile");
 &print_tempfile(CFILE,
@@ -1642,10 +1644,14 @@ my $cfile = "/etc/init/$name.conf";
   "\n".
   "start on runlevel [2345]\n".
   "stop on runlevel [!2345]\n".
-  "\n".
-  "expect fork\n".
   "\n"
   );
+if ($forks) {
+	&print_tempfile(CFILE,
+	  "expect fork\n".
+	  "\n"
+	  );
+	}
 if ($prestart) {
 	&print_tempfile(CFILE,
 	  "pre-start script\n".

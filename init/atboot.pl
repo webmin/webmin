@@ -120,7 +120,9 @@ elsif ($init_mode eq "win32") {
 elsif ($init_mode eq "rc" || $init_mode eq "upstart") {
 	# Create RC or upstart script
 	&enable_at_boot($product, $ucproduct, "$config_directory/start",
-					      "$config_directory/stop");
+					      "$config_directory/stop",
+					      undef,
+					      { 'fork' => 1 });
 	}
 
 $config{'atboot_product'} = $product;

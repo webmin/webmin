@@ -15,6 +15,13 @@ if (!$in{'new'}) {
 	$u->{'legacy'} && &error($text{'upstart_elegacy'});
 	}
 
+if ($in{'start'} || $in{'stop'}) {
+	# Just redirect to the start page
+	&redirect("mass_upstarts.cgi?d=".&urlize($in{'name'}).
+		  ($in{'start'} ? "start=1" : "stop=1"));
+	exit;
+	}
+
 if ($in{'delete'}) {
 	# Delete the service
 	&disable_at_boot($in{'name'});
@@ -36,7 +43,7 @@ elsif ($in{'new'}) {
 
 	# Create the config file
 	&create_upstart_service($in{'name'}, $in{'desc'}, $in{'server'},
-				$in{'prestart'});
+				$in{'prestart'}, $in{'fork'});
 
 	# Enable at boot if selected
 	if ($in{'boot'} == 0) {
