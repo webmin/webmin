@@ -4713,7 +4713,13 @@ else {
 		$cache{'mtime_'.$r} = $st[9];
 		}
 	$cache{'lang'} = $current_lang;
-	&write_file($cache_file, \%cache) if (!$_[0] && $< == 0 && $> == 0);
+	if (!$_[0] && $< == 0 && $> == 0) {
+		eval {
+			# Don't fail if cache write fails
+			local $main::error_must_die = 1;
+			&write_file($cache_file, \%cache);
+			}
+		}
 	}
 
 # Override descriptions for modules for current user
